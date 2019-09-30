@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: cfa9d6a1a287281bec91facf04c73506db81f84a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4962070d69af98d0c7b10dc6f931612766529dce
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711559"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515710"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムの設定のカスタマイズ
 
@@ -39,6 +39,8 @@ Azure SSIS 統合ランタイムのカスタム セットアップ インター�
 -   カスタム セットアップを備えた Azure SSIS IR を仮想ネットワークに参加させる必要がある場合は、Azure Resource Manager 仮想ネットワークのみがサポートされます。 クラシック仮想ネットワークはサポートされません。
 
 -   Azure-SSIS IR では現在のところ、管理共有をご利用いただけません。
+
+-   Azure-SSIS IR では、IBM iSeries Access ODBC ドライバーはサポートされません。 カスタム セットアップ中にインストール エラーが表示される場合があります。 サポートについては、IBM のサポートにお問い合わせください。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -10,17 +10,16 @@ ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 2bb1a9c3922f435b6be78614aacff6e85bf475ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 32450d0c5fbb5599b286921b9653ae68faf40ecf
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130740"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070152"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>App Service Environment v1 の概要
 
@@ -29,7 +28,7 @@ ms.locfileid: "62130740"
 
 ## <a name="overview"></a>概要
 
-App Service 環境は、Azure App Service アプリを高スケールで安全に実行するために完全に分離された専用の環境を提供する、[Azure App Service](../overview.md) の [Premium][PremiumTier] サービス プラン オプションです。App Service 環境には、Web Apps、Mobile Apps、API Apps が含まれています。  
+App Service 環境は、[Azure App Service](../overview.md) アプリを高スケールで安全に実行するための完全に分離された専用の環境を提供する Azure App Service の [Premium][PremiumTier] サービス プラン オプションであり、Web Apps、Mobile Apps、API Apps が含まれています。  
 
 App Service 環境は、以下を必要とするアプリケーション ワークロードに最適です。
 
@@ -40,9 +39,9 @@ App Service 環境は、以下を必要とするアプリケーション ワー�
 
 App Service 環境は、単一の顧客のアプリケーションだけを実行するために分離され、常に仮想ネットワークにデプロイされます。  顧客は、受信および送信アプリケーション ネットワーク トラフィックをきめ細かく制御できます。また、アプリケーションは、オンプレミスの企業リソースへの仮想ネットワーク経由のセキュリティで保護された高速接続を確立できます。
 
-App Service 環境で高スケールおよびセキュリティで保護されたネットワーク アクセスを有効にする方法の概要については、App Service 環境の [AzureCon の詳細][AzureConDeepDive]に関する記述を参照してください。
+App Service 環境で高スケールで安全なネットワーク アクセスを有効にする方法の概要については、App Service 環境の [AzureCon の詳細][AzureConDeepDive]に関する記述を参照してください。
 
-複数の App Service 環境を使用する水平方向のスケーリングの詳細については、[地理的に分散されたアプリのフットプリント][GeodistributedAppFootprint]のセットアップ方法に関する記事を参照してください。
+複数の App Service Environment を使用する水平方向のスケーリングの詳細については、[地理的に分散されたアプリのフットプリント][GeodistributedAppFootprint]のセットアップ方法に関する記事を参照してください。
 
 AzureCon Deep Dive に示されたセキュリティ アーキテクチャがどのように構成されたかを確認するには、App Service 環境での [レイヤード セキュリティ アーキテクチャ](app-service-app-service-environment-layered-security.md) のインプリメントに関する記事を参照してください。
 
@@ -62,29 +61,29 @@ App Service 環境は、1 つのフロントエンド コンピューティン�
 
 たとえば、これにより、開発アプリまたはテスト アプリ向けの App Service プランでは、性能の低いコンピューティング リソースを含むワーカー プールを 1 つ作成できます。  2 番目 (または 3 番目) のワーカー プールでは、実稼働アプリを実行する App Service プラン向けにより性能の高いコンピューティング リソースを使用することができます。
 
-フロントエンドとワーカー プールで使用可能なコンピューティング リソースの量の詳細については、[App Service Environment の構成方法][HowToConfigureanAppServiceEnvironment]に関するページを参照してください。  
+フロントエンドとワーカー プールで使用可能なコンピューティング リソースの量の詳細については、[App Service 環境の構成方法][HowToConfigureanAppServiceEnvironment]に関するページを参照してください。  
 
-App Service Environment でサポートされる使用可能なコンピューティング リソースのサイズの詳細については、[App Service の料金][AppServicePricing]のページで、Premium 価格レベルの App Service Environment で使用できるオプションを確認してください。
+App Service 環境でサポートされる使用可能なコンピューティング リソースのサイズの詳細については、「[App Service の料金][AppServicePricing]」ページで、Premium 価格レベルの App Service 環境で使用できるオプションを確認してください。
 
 ## <a name="virtual-network-support"></a>Virtual Network のサポート
 
-App Service Environment は、Azure Resource Manager の仮想ネットワーク、**または**クラシック デプロイ モデルの仮想ネットワークの**どちらにでも**作成できます ([仮想ネットワークについて詳しくはこちら][MoreInfoOnVirtualNetworks])。  App Service 環境は常に仮想ネットワーク (もっと正確に言えば、仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。  
+App Service 環境は、Azure Resource Manager 仮想ネットワーク、**または**クラシック デプロイ モデル仮想ネットワークの**どちらにでも**作成できます ([仮想ネットワークについて詳しくはこちら][MoreInfoOnVirtualNetworks])。  App Service 環境は常に仮想ネットワーク (もっと正確に言えば、仮想ネットワークのサブネット内) に存在するため、仮想ネットワークのセキュリティ機能を使用して、受信と送信の両方のネットワーク通信を制御できます。  
 
 App Service Environment は、パブリック IP アドレスでインターネットに接続することも、Azure 内部ロード バランサー (ILB) アドレスだけで内部接続することもできます。
 
-[ネットワーク セキュリティ グループ][NetworkSecurityGroups]を使用して、受信ネットワーク通信を、App Service Environment が存在するサブネットに制限できます。  これによって、Web アプリケーション ファイアウォールやネットワーク SaaS プロバイダーなど、アップストリーム デバイスおよびサービスの背後でアプリを実行できます。
+[ネットワーク セキュリティ グループ][NetworkSecurityGroups]を使用して、受信ネットワーク通信を、App Service 環境が存在するサブネットに制限できます。  これによって、Web アプリケーション ファイアウォールやネットワーク SaaS プロバイダーなど、アップストリーム デバイスおよびサービスの背後でアプリを実行できます。
 
-また、アプリは、内部データベースや Web サービスなどの企業リソースに頻繁にアクセスする必要があります。  一般的な方法では、これらのエンドポイントを、Azure 仮想ネットワーク内を通過する内部ネットワーク トラフィックのみが使用できるようにします。  App Service Environment が内部サービスと同じ仮想ネットワークに参加すると、その環境内で実行されているアプリは、[サイト間][SiteToSite]接続や [Azure ExpressRoute][ExpressRoute] 接続で到達可能なエンドポイントなど、内部サービスにアクセスできます。
+また、アプリは、内部データベースや Web サービスなどの企業リソースに頻繁にアクセスする必要があります。  一般的な方法では、これらのエンドポイントを、Azure 仮想ネットワーク内を通過する内部ネットワーク トラフィックのみが使用できるようにします。  App Service 環境が内部サービスと同じ仮想ネットワークに参加すると、その環境内で実行されているアプリは、[サイト間接続][SiteToSite]や [Azure ExpressRoute][ExpressRoute] 接続で到達可能なエンドポイントを含めて、内部サービスにアクセスできます。
 
-仮想ネットワークとオンプレミス ネットワークでの App Service 環境の機能の詳細については、「[App Service 環境のネットワーク アーキテクチャの概要][NetworkArchitectureOverview]」、「[App Service 環境への受信トラフィックを制御する方法][ControllingInboundTraffic]」、および「[App Service 環境からバックエンド リソースへの安全な接続][SecurelyConnectingToBackends]」をご覧ください。 
+仮想ネットワークとオンプレミス ネットワークでの App Service 環境の機能の詳細については、[ネットワーク アーキテクチャ][NetworkArchitectureOverview]、[受信トラフィックの制御][ControllingInboundTraffic]、および[バックエンド リソースへの接続][SecurelyConnectingToBackends]に関する記事をご覧ください。 
 
 ## <a name="getting-started"></a>使用の開始
 
-App Service 環境の使用を開始するには、[App Service Environment の作成方法][HowToCreateAnAppServiceEnvironment]に関するページを参照してください。
+App Service 環境の使用を開始するには、「[App Service Environment を作成する方法][HowToCreateAnAppServiceEnvironment]」を参照してください。
 
-App Service Environment のネットワーク アーキテクチャの概要については、「[App Service 環境のネットワーク アーキテクチャの概要][NetworkArchitectureOverview]」をご覧ください。
+App Service 環境のネットワーク アーキテクチャの概要については、[ネットワーク アーキテクチャの概要][NetworkArchitectureOverview]に関する記事を参照してください。
 
-ExpressRoute での App Service Environment の使用方法の詳細については、「[ExpressRoute を使用した App Service 環境のネットワーク構成の詳細][NetworkConfigDetailsForExpressRoute]」をご覧ください。
+ExpressRoute での App Service 環境の使用方法の詳細については、[ExpressRoute を使用した App Service 環境のネットワーク構成の詳細][NetworkConfigDetailsForExpressRoute]に関する記事をご覧ください。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

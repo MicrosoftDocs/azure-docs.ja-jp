@@ -3,192 +3,80 @@ title: Java を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 Java のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/03/2019
+ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 4348400e66e4b975d1eeb899cab8bb5024260149
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: b295c5a945f41059ca98e96d742bc5e1f6b4bf9f
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721836"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744801"
 ---
 # <a name="azure-storage-samples-using-java"></a>Java を使用した Azure Storage サンプル
 
-## <a name="java-sample-index"></a>Java サンプルのインデックス
-
 次の表は、各サンプルで扱っているサンプル リポジトリとシナリオの概要を示したものです。 リンクをクリックすると、対応するサンプル コードが GitHub で表示されます。
 
-<table style="font-size:90%"><thead><tr><th style="font-size:110%">エンドポイント</th><th style="font-size:110%">シナリオ</th><th style="font-size:110%">サンプル コード</th></tr></thead><tbody>
-<tr>
-<td rowspan="16"><b>BLOB</b></td>
-<td>Append Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>ブロック BLOB</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>クライアント側の暗号化</td>
-<td><a href="https://github.com/Azure-Samples/storage-java-client-side-encryption">Java での Azure クライアント側暗号化の概要</a></td>
-</tr>
-<tr>
-<td>BLOB のコピー</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>コンテナーの作成</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>Delete Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>Delete Container</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>BLOB のメタデータ/プロパティ/統計</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>コンテナーの ACL/メタデータ/プロパティ</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>ページ範囲の取得</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java#L399">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>BLOB/コンテナーのリース</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>BLOB/コンテナーのリスト</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>ページ BLOB</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>SAS</td>
-<td><a href="https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513">SAS テストのサンプル</a></td>
-</tr>   
-<tr>
-<td>サービスのプロパティ</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td>Snapshot Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java">Java での Azure Blob service の概要</a></td>
-</tr>
-<tr>
-<td rowspan="9"><b>ファイル</b></td>
-<td>共有/ディレクトリ/ファイルの作成</td>
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Java での Azure File サービスの概要</a></td>
-</tr>
-<tr>
-<td>共有/ディレクトリ/ファイルの削除</td>
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Java での Azure File サービスの概要</a></td>
-</tr>
-<tr>
-<td>ディレクトリのプロパティ/メタデータ</td>
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Java での Azure File サービスの概要</a></td>
-</tr>
-<tr>
-<td>ファイルのダウンロード</td>
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Java での Azure File サービスの概要</a></td>
-</tr>
-<tr>
-<td>ファイルのプロパティ/メタデータ/メトリック</td>
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Java での Azure File サービスの概要</a></td>
-</tr>
-<tr>
-<td>ファイル サービスのプロパティ</td>
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Java での Azure File サービスの概要</a></td>
-</tr>
-<tr>
-<td>ディレクトリとファイルのリスト</td>
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Java での Azure File サービスの概要</a></td>
-</tr>
-<tr>
-<td>共有のリスト</td>
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java">Java での Azure File サービスの概要</a></td>
-</tr>
-<tr>
-<td>共有のプロパティ/メタデータ/統計</td>
-<td><a href="https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java">Java での Azure File サービスの概要</a></td>
-</tr>
-<tr>
-<td rowspan="8"><b>キュー</b></td>
-<td>メッセージの追加</td>
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java#L63">Java での Azure Queue サービスの概要</a></td>
-</tr>
-<tr>
-<td>クライアント側の暗号化</td>
-<td><a href="https://github.com/Azure-Samples/storage-java-client-side-encryption/blob/master/src/gettingstarted/KeyVaultGettingStarted.java">Java での Azure クライアント側暗号化の概要</a></td>
-</tr>
-<tr>
-<td>キューの作成</td>
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Java での Azure Queue サービスの概要</a></td>
-</tr>
-<tr>
-<td>メッセージ/キューの削除</td>
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Java での Azure Queue サービスの概要</a></td>
-</tr>
-<tr>
-<td>メッセージのピーク</td>
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Java での Azure Queue サービスの概要</a></td>
-</tr>
-<tr>
-<td>キューの ACL/メタデータ/統計</td>
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Java での Azure Queue サービスの概要</a></td>
-</tr>
-<tr>
-<td>キュー サービスのプロパティ</td>
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java">Java での Azure Queue サービスの概要</a></td>
-</tr>
-<tr>
-<td>更新メッセージ</td>
-<td><a href="https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java">Java での Azure Queue サービスの概要</a></td>
-</tr>
-<tr>
-<td rowspan="7"><b>テーブル</b></td>
-<td>テーブルの作成</td>
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td>
-</tr>
-<tr>
-<td>エンティティ/テーブルの削除</td>
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td>
-</tr>
-<tr>
-<td>エンティティの挿入/マージ/置換</td>
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td>
-</tr>
-<tr>
-<td>エンティティのクエリ</td>
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td>
-</tr>
-<tr>
-<td>テーブルの照会</td>
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td>
-</tr>
-<tr>
-<td>テーブルの ACL/プロパティ</td>
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java">Java での Azure Table service の概要</a></td>
-</tr>
-<tr>
-<td>エンティティの更新</td>
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td>
-</tr>
-</tbody>
-</table>
-<br/>
+## <a name="blob-samples"></a>BLOB のサンプル
 
+| **シナリオ** | **サンプル コード** |
+|--------------|-----------------|
+| Append Blob | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| ブロック BLOB | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| クライアント側の暗号化 | [Java での Azure クライアント側暗号化の概要](https://github.com/Azure-Samples/storage-java-client-side-encryption) |
+| BLOB のコピー | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| コンテナーの作成 | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| Delete Blob | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| Delete Container | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| BLOB のメタデータ/プロパティ/統計 | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
+| コンテナーの ACL/メタデータ/プロパティ | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
+| ページ範囲の取得 | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java#L399) |
+| BLOB/コンテナーのリース | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| BLOB/コンテナーのリスト | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| ページ BLOB | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| SAS | [SAS テストのサンプル](https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513) |
+| サービスのプロパティ | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
+| Snapshot Blob | [Java での Azure Blob service の概要](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+
+## <a name="file-samples"></a>ファイルのサンプル
+
+| **シナリオ** | **サンプル コード** |
+|--------------|-----------------|
+| 共有/ディレクトリ/ファイルの作成 | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
+| 共有/ディレクトリ/ファイルの削除 | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
+| ディレクトリのプロパティ/メタデータ | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
+| ファイルのダウンロード | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
+| ファイルのプロパティ/メタデータ/メトリック | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
+| ファイル サービスのプロパティ | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
+| ディレクトリとファイルのリスト | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
+| 共有のリスト | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
+| 共有のプロパティ/メタデータ/統計 | [Java での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
+
+## <a name="queue-samples"></a>キューのサンプル
+
+| **シナリオ** | **サンプル コード** |
+|--------------|-----------------|
+| メッセージの追加 | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java#L63) |
+| クライアント側の暗号化 | [Java での Azure クライアント側暗号化の概要](https://github.com/Azure-Samples/storage-java-client-side-encryption/blob/master/src/gettingstarted/KeyVaultGettingStarted.java) |
+| キューの作成 | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
+| メッセージ/キューの削除 | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
+| メッセージのピーク | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java) |
+| キューの ACL/メタデータ/統計 | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
+| キュー サービスのプロパティ | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
+| 更新メッセージ | [Java での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
+|
+## <a name="table-samples"></a>テーブルのサンプル
+
+| **シナリオ** | **サンプル コード** |
+|--------------|-----------------|
+| テーブルの作成 | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
+| エンティティ/テーブルの削除 | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
+| エンティティの挿入/マージ/置換 | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
+| エンティティのクエリ | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
+| テーブルの照会 | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
+| テーブルの ACL/プロパティ | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java) |
+| エンティティの更新 | [Java での Azure Table service の概要](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 ## <a name="azure-code-samples-library"></a>Azure のコード サンプル ライブラリ
 
 完全なサンプル ライブラリを表示するには、[Azure のコード サンプル](https://azure.microsoft.com/resources/samples/?service=storage) ライブラリにアクセスしてください。このライブラリには、ダウンロードしてローカルで実行できる Azure Storage のサンプルが用意されています。 コード サンプル ライブラリでは、サンプル コードが .zip 形式で提供されます。 また、各サンプルの GitHub リポジトリを参照して複製することもできます。
@@ -209,4 +97,5 @@ Azure Storage ライブラリのインストール方法と概要については
 他の言語のサンプルについては、以下のページをご覧ください。
 
 * .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
+* Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
 * その他すべての言語: [Azure Storage のサンプル](storage-samples.md)

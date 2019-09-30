@@ -1,5 +1,5 @@
 ---
-title: ポリシーをプログラムで作成してコンプライアンス データを表示する
+title: プログラムによるポリシーの作成
 description: この記事では、Azure Policy のポリシーをプログラムで作成して管理する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
@@ -7,21 +7,18 @@ ms.date: 01/31/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: c4bb06bd4c75dfeb164341d8cc5084030d3a08a7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 695e04dcbc7762c85dd0dd9aaff6e5fd9fe99348
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65979307"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155573"
 ---
-# <a name="programmatically-create-policies-and-view-compliance-data"></a>ポリシーをプログラムで作成してコンプライアンス データを表示する
+# <a name="programmatically-create-policies"></a>プログラムによるポリシーの作成
 
 この記事では、ポリシーをプログラムで作成して管理する方法について説明します。 Azure Policy の定義によって、さまざまなルールや効果がリソースに適用されます。 適用することで、リソースは会社の標準やサービス レベル アグリーメントに準拠した状態で維持されます。
 
 コンプライアンスについては、「[コンプライアンス データの取得](getting-compliance-data.md)」を参照してください。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 

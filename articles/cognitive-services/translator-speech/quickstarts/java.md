@@ -3,20 +3,20 @@ title: クイック スタート:Translator Speech API (Java)
 titlesuffix: Azure Cognitive Services
 description: Translator Speech API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 587c55148d3c5ee2bdad5b25747e5dd8dadc35ba
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bdf207fadd71d843e4ee72a645e787d3d50c12f5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442168"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966423"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>クイック スタート:Translator Speech API (Java)
 <a name="HOLTop"></a>

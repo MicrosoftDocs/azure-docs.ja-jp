@@ -3,21 +3,21 @@ title: Databricks Notebook でデータを変換する - Azure | Microsoft Docs
 description: Databricks Notebook を実行してデータを処理または変換する方法を説明します。
 services: data-factory
 documentationcenter: ''
-ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
+author: nabhishek
+ms.author: abnarain
+manager: jroth
+ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 03/15/2018
-author: sharonlo101
-ms.author: shlo
-manager: craigg
-ms.openlocfilehash: 2bc8b84d4b98036acc93788dee88444786df139e
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 23166a4a0110629674db6ccc9d225118264b3c15
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335843"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233068"
 ---
 # <a name="transform-data-by-running-a-databricks-notebook"></a>Databricks Notebook を実行してデータを変換する
 
@@ -111,6 +111,19 @@ Databricks Notebook アクティビティのサンプルの JSON 定義を次に
 ```
 
 ライブラリの種類の詳細については、[Databricks のドキュメント](https://docs.azuredatabricks.net/api/latest/libraries.html#managedlibrarieslibrary)を参照してください。
+
+## <a name="passing-parameters-between-notebooks-and-data-factory"></a>ノートブックと Data Factory の間でパラメーターを渡す
+
+Databricks アクティビティの *baseParameters* プロパティを使用して、Data Factory のパラメーターをノートブックに渡すことができます。 
+
+場合によっては、ノートブックから Data Factory に特定の値を戻すことが必要になる場合があります。これは、Data Factory の制御フロー (条件チェック) に使用したり、ダウンストリームのアクティビティで使用したりできます (サイズの上限は 2 MB)。 
+
+1. ノートブックでは、[dbutils.notebook.exit("returnValue")](https://docs.azuredatabricks.net/user-guide/notebooks/notebook-workflows.html#notebook-workflows-exit) を呼び出すことができ、対応する "returnValue" が Data Factory に返されます。
+
+2. `'@activity('databricks notebook activity name').output.runOutput'` などの式を使用して、Data Factory で出力を使用できます。 
+
+   > [!IMPORTANT]
+   > JSON オブジェクトを渡す場合は、プロパティ名を追加することによって値を取得できます。 例: `'@activity('databricks notebook activity name').output.runOutput.PropertyName'`
 
 ## <a name="how-to-upload-a-library-in-databricks"></a>Databricks でライブラリをアップロードする方法
 

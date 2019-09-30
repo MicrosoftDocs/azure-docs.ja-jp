@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 06/27/2019
-ms.openlocfilehash: e4b7de3931c0d3508e5af6aa6bf85dfa18641aee
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 04802b8b25ca21cc0099874e5a9ea69748868f6e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624982"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103204"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>チュートリアル:SQL Database マネージド インスタンスをフェールオーバー グループに追加する
 
@@ -29,7 +29,9 @@ SQL Database マネージド インスタンスをフェールオーバー グ�
 > - [テスト フェールオーバー]
 
   > [!NOTE]
-  > マネージド インスタンスの作成にはかなりの時間がかかることがあります。 そのため、このチュートリアルの完了には数時間かかることがあります。 プロビジョニング時間の詳細については、「[マネージド インスタンスの管理操作](sql-database-managed-instance.md#managed-instance-management-operations)」を参照してください。 マネージド インスタンスでのフェールオーバー グループの使用は、現在プレビュー段階です。 
+  > - このチュートリアルを実行するときは、[マネージド インスタンスのフェールオーバー グループを設定するための前提条件](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets)を使用して、リソースを構成するようにしてください。 
+  > - マネージド インスタンスの作成にはかなりの時間がかかることがあります。 そのため、このチュートリアルの完了には数時間かかることがあります。 プロビジョニング時間の詳細については、「[マネージド インスタンスの管理操作](sql-database-managed-instance.md#managed-instance-management-operations)」を参照してください。 
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,16 +40,18 @@ SQL Database マネージド インスタンスをフェールオーバー グ�
 - Azure サブスクリプション。まだお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。 
 
 
-## <a name="1----create-resource-group-and-primary-managed-instance"></a>1 - リソース グループとプライマリ マネージド インスタンスを作成する
+## <a name="1---create-resource-group-and-primary-managed-instance"></a>1 - リソース グループとプライマリ マネージド インスタンスを作成する
 この手順では、Azure portal を使用して、リソース グループとフェールオーバー グループのプライマリ マネージド インスタンスを作成します。 
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 
-1. Azure portal の左上隅にある **[リソースの作成]** を選択します。 
-1. 検索ボックスに「`managed instance`」と入力し、Azure SQL Managed Instance のオプションを選択します。 
-1. **[作成]** を選択して、**SQL マネージド インスタンス**の作成ページを起動します。 
+1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「Azure SQL」と入力します。 (省略可能) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
+1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 [データベース] タイルで [詳細の表示] を選択すると、さまざまなデータベースに関する追加情報を表示できます。
+1. **[SQL マネージド インスタンス]** タイルで **[作成]** を選択します。 
+
+    ![マネージド インスタンスの選択](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. **[Azure SQL Database Managed Instance の作成]** ページの **[基本]** タブでは、次のようにします。
     1. **[プロジェクトの詳細]** で、ドロップダウンから自分の**サブスクリプション**を選び、リソース グループを**新規作成**することを選択します。 「`myResourceGroup`」など、リソース グループの名前を入力します。 
-    1. **[Managed Instance Details]\(マネージド インスタンスの詳細\)** で、マネージド インスタンスの名前と、マネージド インスタンスをデプロイするリージョンを指定します。 必ず、[ペアのリージョン](/azure/best-practices-availability-paired-regions)が存在するリージョンを選択してください。 **[コンピューティングとストレージ]** は既定値のままにしておきます。 
+    1. **[Managed Instance Details]\(マネージド インスタンスの詳細\)** で、マネージド インスタンスの名前と、マネージド インスタンスをデプロイするリージョンを指定します。 **[コンピューティングとストレージ]** は既定値のままにしておきます。 
     1. **[管理者アカウント]** で、`azureuser` などの管理者ログインと、複雑な管理者パスワードを指定します。 
 
     ![プライマリ MI を作成する](media/sql-database-managed-instance-failover-group-tutorial/primary-sql-mi-values.png)
@@ -79,7 +83,7 @@ SQL Database マネージド インスタンスをフェールオーバー グ�
     | **Name** |  セカンダリ マネージド インスタンスで使用される仮想ネットワークの名前 (`vnet-sql-mi-secondary` など)。 |
     | **アドレス空間** | 仮想ネットワークのアドレス空間 (`10.128.0.0/16` など)。 | 
     | **サブスクリプション** | プライマリ マネージド インスタンスとリソース グループが存在するサブスクリプション。 |
-    | **[リージョン]** | セカンダリ マネージド インスタンスをデプロイする場所。これは、プライマリ マネージド インスタンスと[ペアのリージョン](/azure/best-practices-availability-paired-regions)に存在する必要があります。  |
+    | **[リージョン]** | セカンダリ マネージド インスタンスをデプロイする場所。 |
     | **サブネット** | サブネットの名前。 `default` は既定で自動的に指定されます。 |
     | **アドレス範囲**| サブネットのアドレス範囲。 これは、`10.128.0.0/24` など、プライマリ マネージド インスタンスの仮想ネットワークで使用されるサブネット アドレス範囲とは異なる必要があります。  |
     | &nbsp; | &nbsp; |
@@ -92,13 +96,16 @@ SQL Database マネージド インスタンスをフェールオーバー グ�
 
 2 つ目のマネージド インスタンスは、次のようなものである必要があります。
 - 空である。 
-- プライマリ マネージド インスタンスに対応する[ペアのリージョン](/azure/best-practices-availability-paired-regions)内に配置されている。 
 - プライマリ マネージド インスタンスとは異なるサブネットと IP 範囲がある。 
 
 セカンダリ マネージド インスタンスを作成するには、これらの手順に従います。 
 
-1. [Azure portal](http://portal.azure.com) で、 **[リソースの作成]** を選択し、*Azure SQL Managed Instance* を検索します。 
-1. Microsoft によって公開された **Azure SQL Managed Instance** オプションを選び、次のページで **[作成]** を選択します。
+1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「Azure SQL」と入力します。 (省略可能) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
+1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 [データベース] タイルで [詳細の表示] を選択すると、さまざまなデータベースに関する追加情報を表示できます。
+1. **[SQL マネージド インスタンス]** タイルで **[作成]** を選択します。 
+
+    ![マネージド インスタンスの選択](media/sql-database-managed-instance-failover-group-tutorial/select-managed-instance.png)
+
 1. **[Azure SQL Database Managed Instance の作成]** ページの **[基本]** タブで、セカンダリ マネージド インスタンスを構成するために必要なフィールドに入力します。 
 
    次の表には、セカンダリ マネージド インスタンスに必要な値が示されています。
@@ -108,7 +115,7 @@ SQL Database マネージド インスタンスをフェールオーバー グ�
     | **サブスクリプション** |  プライマリ マネージド インスタンスがあるサブスクリプション。 |
     | **リソース グループ**| プライマリ マネージド インスタンスがあるリソース グループ。 |
     | **マネージド インスタンス名** | 新しいセカンダリ マネージド インスタンスの名前 (`sql-mi-secondary` など)  | 
-    | **[リージョン]**| セカンダリ マネージド インスタンスの[ペアのリージョン](/azure/best-practices-availability-paired-regions)の場所。  |
+    | **[リージョン]**| セカンダリ マネージド インスタンスの場所。  |
     | **マネージド インスタンス管理者ログイン** | 新しいセカンダリ マネージド インスタンスに使用するログイン (`azureuser` など)。 |
     | **パスワード** | 新しいセカンダリ マネージド インスタンス用の管理者ログインで使用される複雑なパスワード。  |
     | &nbsp; | &nbsp; |
@@ -208,9 +215,8 @@ SQL Database マネージド インスタンスをフェールオーバー グ�
 ## <a name="7---create-a-failover-group"></a>7 - フェールオーバー グループを作成する
 この手順では、フェールオーバー グループを作成し、それに両方のマネージド インスタンスを追加します。 
 
-1. [Azure portal](https://portal.azure.com) で、 **[すべてのサービス]** に移動し、検索ボックスに「`managed instance`」と入力します。 
-1. (省略可能) **[SQL マネージド インスタンス]** の横にある星を選択し、左側のナビゲーション バーにショートカットとしてマネージド インスタンスを追加します。 
-1. **[SQL マネージド インスタンス]** を選択し、プライマリ マネージド インスタンス (`sql-mi-primary` など) を選びます。 
+1. [Azure portal](https://portal.azure.com) の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「Azure SQL」と入力します。 (省略可能) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
+1. 最初のセクションで作成したプライマリ マネージド インスタンス (`sql-mi-primary` など) を選択します。 
 1. **[設定]** で **[インスタンスのフェールオーバー グループ]** に移動し、 **[グループの追加]** を選択して **[インスタンスのフェールオーバー グループ]** ページを開きます。 
 
    ![フェールオーバー グループを追加する](media/sql-database-managed-instance-failover-group-tutorial/add-failover-group.png)

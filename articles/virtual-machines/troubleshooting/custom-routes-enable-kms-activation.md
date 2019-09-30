@@ -4,22 +4,21 @@ description: Azure で強制トンネリングを使用している場合に、A
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue, azure-resource-manager
 ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/20/2018
 ms.author: genli
-ms.openlocfilehash: 2877fae66584ec24fb6e62b20d66ded36157b824
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d554629c4a03b81ee3c04d27f6365c1a8734c952
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990353"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058189"
 ---
 # <a name="windows-activation-fails-in-forced-tunneling-scenario"></a>強制トンネリングを使用したライセンス認証の問題
 
@@ -27,7 +26,7 @@ ms.locfileid: "68990353"
 
 ## <a name="symptom"></a>症状
 
-Azure 仮想ネットワーク サブネットで[強制トンネリング](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)を有効にし、インターネットへのすべてのトラフィックをオンプレミス ネットワークに戻すようにします。 このシナリオでは、Windows Server 2012 R2 (またはそれ以降のバージョンの Windows) を実行する Azure の仮想マシン (VM) で Windows を正常にライセンス認証することができます。 ただし、それ以前のバージョンの Windows を実行する VM では、Windows のライセンス認証に失敗します。
+Azure 仮想ネットワーク サブネットで[強制トンネリング](../../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)を有効にし、インターネットへのすべてのトラフィックをオンプレミス ネットワークに戻すようにします。 このシナリオでは、Windows を実行する Azure 仮想マシン (VM) が Windows のライセンス認証に失敗します。
 
 ## <a name="cause"></a>原因
 

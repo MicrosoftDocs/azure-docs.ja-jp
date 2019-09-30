@@ -7,22 +7,22 @@ author: rloutlaw
 manager: justhe
 keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions
-ms.devlang: java
 ms.topic: quickstart
+ms.devlang: java
 ms.date: 08/10/2018
 ms.author: routlaw
 ms.reviewer: glenga
-ms.custom: mvc, devcenter, seo-java-july2019
-ms.openlocfilehash: 116d211e366e17ba667baf1e1deae719b56dc3ee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 381298abcfa4fa707af6b382565b4bfb990e96e6
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542748"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899499"
 ---
-# <a name="create-your-first-function-with-java-and-maven"></a>Java と Maven を使用して初めての関数を作成する
+# <a name="quickstart-use-java-to-create-and-publish-a-function-to-azure-functions"></a>クイック スタート:Java を使用して関数を作成し、Azure Functions に発行する
 
-この記事では、Maven コマンド ライン ツールを使用して Java 関数を作成し、Azure Functions に発行する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求を使用してトリガーできるようになります。
+この記事では、Maven コマンドライン ツールを使用して Java 関数を作成し、Azure Functions に発行する方法を説明します。 完了すると、関数コードは Azure の[従量課金プラン](functions-scale.md#consumption-plan)で実行され、HTTP 要求を使用してトリガーできるようになります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 

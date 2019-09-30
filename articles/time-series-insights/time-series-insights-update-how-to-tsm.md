@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 05faf77d22f77da87e7c22d47473e6debf0f77c8
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 245a69f5e5834e68bbbd17a96859a93bc16eacbe
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461089"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744199"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのデータ モデリング
 
@@ -31,7 +31,7 @@ ms.locfileid: "67461089"
 
     [![1 つの種類を作成する](media/v2-update-how-to-tsm/portal-one.png)](media/v2-update-how-to-tsm/portal-one.png#lightbox)
 
-1. **[追加]** を選択します。
+1. **[+ 追加]** を選択します。
 1. 種類に関係するすべての詳細情報を入力して、 **[作成]** を選択します。 この操作により、環境に種類が作成されます。
 
     [![種類を追加する](media/v2-update-how-to-tsm/portal-two.png)](media/v2-update-how-to-tsm/portal-two.png#lightbox)
@@ -66,11 +66,11 @@ ms.locfileid: "67461089"
 
     [![階層を選択する](media/v2-update-how-to-tsm/portal-six.png)](media/v2-update-how-to-tsm/portal-six.png#lightbox)
 
-1. **[追加]** を選択します。
+1. **[+ 追加]** を選択します。
 
     [![階層を追加する](media/v2-update-how-to-tsm/portal-seven.png)](media/v2-update-how-to-tsm/portal-seven.png#lightbox)
 
-1. 右側のウィンドウで **[レベルの追加]** を選択します。
+1. 右側のウィンドウで **[+ Add Level]\(+ レベルの追加\)** を選択します。
 
     [![レベルを追加する](media/v2-update-how-to-tsm/portal-eight.png)](media/v2-update-how-to-tsm/portal-eight.png#lightbox)
 

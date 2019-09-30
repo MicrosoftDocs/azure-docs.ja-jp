@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ae6c2bd27e9192966ecffb4d4296063201fca970
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 992e3f7aa53fdd006d29c06113cd30b07a406f3b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098014"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734334"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
@@ -67,7 +67,7 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 
 関数を実装するコードを次に示します。
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# スクリプト
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Monitor/run.csx)]
 
@@ -103,7 +103,7 @@ JavaScript サンプルでは通常の JSON オブジェクトをパラメータ
 
 その実装を次に示します。 データ転送に使われる POCO と同様に、API 呼び出しを処理し、応答 JSON を解析するロジックは、C# で共有クラスに抽象化されます。 これは [Visual Studio サンプル コード](#run-the-sample)の一部です。
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# スクリプト
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_GetIsClear/run.csx)]
 
@@ -117,7 +117,7 @@ JavaScript サンプルでは通常の JSON オブジェクトをパラメータ
 
 SMS メッセージを送信するコードを次に示します。
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# スクリプト
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_SendGoodWeatherAlert/run.csx)]
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8ac0497b13dad6795e8dc7ffaf761fe887a9953
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e156585ba063515bd8be573b5d99b41e7ce35d1
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65988623"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932485"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション
 
@@ -30,7 +30,7 @@ NPS の拡張機能内では、Azure Multi-Factor Authentication の UPN の代�
 
 代替ログイン ID を構成するには、`HKLM\SOFTWARE\Microsoft\AzureMfa` に移動して次のレジストリ値を編集します。
 
-| Name | Type | 既定値 | 説明 |
+| 名前 | 種類 | 既定値 | 説明 |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | string | Empty | UPN の代わりに使用する Active Directory 属性の名前を指定します。 この属性は、AlternateLoginId 属性として使用されます。 このレジストリ値が[有効な Active Directory 属性](https://msdn.microsoft.com/library/ms675090.aspx) (メールや displayName など) に設定されている場合、その属性の値がユーザーの UPN の代わりに認証に使用されます。 このレジストリ値が空または構成されていない場合、AlternateLoginId が無効になり、ユーザーの UPN が認証に使用されます。 |
 | LDAP_FORCE_GLOBAL_CATALOG | ブール値 | False | このフラグを使用して、AlternateLoginId を検索する LDAP 検索でグローバル カタログの使用を強制します。 グローバル カタログとしてドメイン コントローラーを構成し、AlternateLoginId 属性をグローバル カタログに追加してから、このフラグを有効にします。 <br><br> LDAP_LOOKUP_FORESTS が構成されている (空でない) 場合、レジストリ設定の値に関係なく、**このフラグが true として適用されます**。 この場合、NPS の拡張機能では、各フォレストに対してグローバル カタログが AlternateLoginId 属性で構成される必要があります。 |
@@ -44,9 +44,12 @@ NPS の拡張機能内では、Azure Multi-Factor Authentication の UPN の代�
 
 IP 許可リストを構成するには、`HKLM\SOFTWARE\Microsoft\AzureMfa` に移動して次のレジストリ値を構成します。
 
-| Name | Type | 既定値 | 説明 |
+| 名前 | 種類 | 既定値 | 説明 |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | string | Empty | セミコロンで区切られた IP アドレスの一覧を提供します。 サービス要求の送信元のマシン (NAS/VPN サーバーなど) の IP アドレスが含まれます。 IP 範囲とサブネットはサポートされません。 <br><br> (*10.0.0.1;10.0.0.2;10.0.0.3* など)。
+
+> [!NOTE]
+> このレジストリ キーは既定でインストーラーによって作成されず、サービスの再起動時に AuthZOptCh ログにエラーが示されます。 ログのこのエラーは無視してもかまいませんが、このレジストリ キーが作成され、不要な場合に空のままにすると、エラー メッセージは返されません。
 
 `IP_WHITELIST` 内に存在する IP アドレスからの要求である場合、2 段階認証はスキップされます。 IP リストが、RADIUS 要求の *ratNASIPAddress* 属性で提供される IP アドレスと比較されます。 RADIUS 要求に ratNASIPAddress 属性がない場合、"P_WHITE_LIST_WARNING::IP Whitelist is being ignored as source IP is missing in RADIUS request in NasIpAddress attribute" という警告がログに記録されます。
 

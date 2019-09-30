@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 5345bbf2514c8b06ab80d4563227725a398f9407
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898333"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933196"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Azure Maps を使用した IoT 空間分析の実装
 
@@ -41,10 +41,10 @@ ms.locfileid: "69898333"
 ```JSON
 {
     "data": {
-         "properties": {
+        "properties": {
             "Engine": "ON"
-         },
-         "systemProperties": {
+        },
+        "systemProperties": {
             "iothub-content-type": "application/json",
             "iothub-content-encoding": "utf-8",
             "iothub-connection-device-id": "ContosoRentalDevice",
@@ -52,13 +52,13 @@ ms.locfileid: "69898333"
             "iothub-connection-auth-generation-id": "636959817064335548",
             "iothub-enqueuedtime": "2019-06-18T00:17:20.608Z",
             "iothub-message-source": "Telemetry"
-         },
-         "body": { 
-                    "location": { 
-                        "type": "Point",
-                        "coordinates": [ -77.025988698005662, 38.9015330523316 ]
-                     } 
-                 } 
+        },
+        "body": { 
+            "location": { 
+                "type": "Point",
+                "coordinates": [ -77.025988698005662, 38.9015330523316 ]
+            } 
+        } 
     }
 }
 ```
@@ -104,7 +104,7 @@ ms.locfileid: "69898333"
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する 
 
-Azure Maps 空間分析に基づいてビジネス ロジックを実装するには、作成したリソース グループに Azure Maps アカウントを作成する必要があります。 [アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys)に関するページの手順に従って、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。また、[認証の詳細](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication#view-authentication-details)に関するページを参照して、自分のサブスクリプション キーを取得する方法を確認します。
+Azure Maps 空間分析に基づいてビジネス ロジックを実装するには、作成したリソース グループに Azure Maps アカウントを作成する必要があります。 [アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)に関するページの手順に従って、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従って、お使いのアカウントのプライマリ サブスクリプション キーを取得します。
 
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
@@ -167,7 +167,7 @@ Azure Maps の Data Upload API を使用してジオフェンスをアップロ�
     
     URL パス内の `dataFormat` パラメーターに対する "geojson" 値は、アップロードされるデータの形式を表します。
 
-3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key の値は、実際の Azure Maps のサブスクリプション キーに置き換えてください。
+3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key の値は、実際の Azure Maps のプライマリ サブスクリプション キーに置き換えてください。
    
     ![Postman のキーと値のペアから成るパラメーター](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
@@ -224,7 +224,7 @@ Azure Functions は、コンピューティング インフラストラクチャ
 6. [C# コード](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)を自分の関数にコピーし、 **[保存]** をクリックします。
  
 7. C# スクリプト内で、次のパラメーターを置き換えます。
-    * **SUBSCRIPTION_KEY** を、自分の Azure Maps アカウントのサブスクリプション キーに置き換えます。
+    * **SUBSCRIPTION_KEY** を、自分の Azure Maps アカウントのプライマリ サブスクリプション キーに置き換えます。
     * **UDID** を、自分がアップロードしたジオフェンスの udId に置き換えます。 
     * スクリプト内の **CreateBlobAsync** 関数では、データ ストレージ アカウントでイベントごとに BLOB を作成します。 **ACCESS_KEY**、**ACCOUNT_NAME**、および **STORAGE_CONTAINER_NAME** を、自分のストレージ アカウントのアクセス キー、アカウント名、およびデータ ストレージ コンテナーに置き換えます。
 

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 09/10/2019
 ms.author: bwren
-ms.openlocfilehash: 11c3ded45e87e815b6c694f0a3f9c0ccb96f8750
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 746166713a6d7d90afb77fb03cf86b311178c5f5
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813913"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899660"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Azure Monitor へのログ データの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Azure Monitor にログ データを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Azure Monitor に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -52,14 +52,14 @@ HTTP データ コレクター API を使用するには、JavaScript Object Not
 | パラメーター | 説明 |
 |:--- |:--- |
 | CustomerID |Log Analytics ワークスペースの一意識別子です。 |
-| Resource |API のリソース名は "/api/logs" です。 |
+| リソース |API のリソース名は "/api/logs" です。 |
 | API Version |この要求で使用する API のバージョン。 現時点では "2016-04-01" です。 |
 
 ### <a name="request-headers"></a>要求ヘッダー
 | ヘッダー | 説明 |
 |:--- |:--- |
 | Authorization |承認の署名。 HMAC-SHA256 ヘッダーの作成方法については、この記事の後半で説明します。 |
-| Log-Type |送信中のデータのレコード型を指定します。 このパラメーターのサイズ制限は 100 文字です。 |
+| Log-Type |送信中のデータのレコード型を指定します。 文字、数字、アンダースコア (_) のみを含めることができ、100 文字を超えることはできません。 |
 | x-ms-date |RFC 1123 形式による、要求が処理された日付。 |
 | x-ms-AzureResourceId | データを関連付ける必要がある Azure リソースのリソース ID。 これにより、[_ResourceId](log-standard-properties.md#_resourceid) プロパティに値が設定され、[リソース コンテキスト](design-logs-deployment.md#access-mode) クエリにデータを含めることができます。 このフィールドが指定されない場合、リソース コンテキスト クエリにデータは含まれません。 |
 | time-generated-field | データ項目のタイムスタンプを含む、データ内のフィールドの名前。 フィールドを指定すると、フィールドのコンテンツは **TimeGenerated** の値に使用されます。 このフィールドを指定しない場合、**TimeGenerated** の既定値は、メッセージが取り込まれた時刻になります。 メッセージ フィールドのコンテンツは、ISO 8601 形式 (YYYY-MM-DDThh:mm:ssZ) である必要があります。 |
@@ -100,7 +100,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 次のセクションのサンプルには、承認ヘッダーを作成するのに役立つサンプル コードが含まれています。
 
 ## <a name="request-body"></a>要求本文
-メッセージの本文は JSON 形式である必要があります。 次の形式でプロパティ名と値をペアにして、レコードを 1 つ以上含める必要があります。
+メッセージの本文は JSON 形式である必要があります。 ここには、プロパティ名と値がペアになったレコードを、次の形式で 1 つ以上含める必要があります。 プロパティ名には、文字、数字、アンダースコア (_) のみを使用できます。
 
 ```json
 [
@@ -145,7 +145,7 @@ Azure Monitor HTTP データ コレクター API 経由でデータを送信す�
 | Boolean |_b |
 | Double |_d |
 | Date/time |_t |
-| GUID |_g |
+| GUID (文字列として格納) |_g |
 
 Azure Monitor において各プロパティに対して使用されるデータ型は、新しいレコードのレコード型が既に存在するかどうかによって異なります。
 
@@ -199,7 +199,7 @@ HTTP 状態コード 200 は、要求が処理するために受信されたこ�
 | 400 |正しくない要求 |MissingContentType |コンテンツの種類が指定されていませんでした。 |
 | 400 |正しくない要求 |MissingLogType |必須の値であるログの種類が指定されていませんでした。 |
 | 400 |正しくない要求 |UnsupportedContentType |コンテンツの種類が **application/json** に設定されていませんでした。 |
-| 403 |許可されていません |InvalidAuthorization |サービスで要求を認証できませんでした。 ワークスペース ID と接続キーが有効であるかどうかを確認してください。 |
+| 403 |Forbidden |InvalidAuthorization |サービスで要求を認証できませんでした。 ワークスペース ID と接続キーが有効であるかどうかを確認してください。 |
 | 404 |見つかりません | | 指定された URL が正しくないか、要求が大きすぎます。 |
 | 429 |要求が多すぎます | | サービスはアカウントの大量のデータを処理しています。 後で要求を再試行してください。 |
 | 500 |内部サーバー エラー |UnspecifiedError |サービスで内部エラーが発生しました。 要求を再試行してください。 |
@@ -477,7 +477,7 @@ Data Collector API は、自由形式のデータを Azure ログに収集する
 | 代替手段 | 説明 | 最も適しているデータ |
 |---|---|---|
 | [カスタム イベント](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Application Insights でのネイティブ SDK ベースのインジェスト | 通常はアプリケーション内で SDK を使用してインストルメント化される Application Insights では、カスタム イベントを使用してカスタム データを送信できます。 | <ul><li> アプリケーション内で生成されるが、SDK によって既定のデータの種類 (要求、依存関係、例外など) のいずれかとして取得されないデータ。</li><li> Application Insights で他のアプリケーション データに最も頻繁に関連付けられるデータ。 </li></ul> |
-| Azure Monitor ログの [Data Collector API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) | Azure Monitor ログの Data Collector API は、データを取り込むための完全に拡張可能な方法です。 JSON オブジェクト形式のデータはすべてここで送信できます。 送信されたデータが処理され、ログ内の他のデータや他の Application Insights データと関連付けるためにログで使用できるようになります。 <br/><br/> データは、ファイルとして Azure BLOB に簡単にアップロードできます。これらのファイルは Azure BLOB で処理され、Log Analytics にアップロードされます。 このようなパイプラインの実装例については、[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)の記事をご覧ください。 | <ul><li> Application Insights 内でインストルメント化されたアプリケーション内で必ずしも生成されるわけではないデータ。</li><li> 例として、ルックアップ テーブル、ファクト テーブル、参照データ、事前に集計された統計などがあります。 </li><li> 他の Azure Monitor データ (Application Insights、ログの他の種類のデータ、Security Center、コンテナー/VM 用 Azure Monitor など) と相互参照されるデータ。 </li></ul> |
+| Azure Monitor ログの Data Collector API | Azure Monitor ログの Data Collector API は、データを取り込むための完全に拡張可能な方法です。 JSON オブジェクト形式のデータはすべてここで送信できます。 送信されたデータが処理され、ログ内の他のデータや他の Application Insights データと関連付けるためにログで使用できるようになります。 <br/><br/> データは、ファイルとして Azure BLOB に簡単にアップロードできます。これらのファイルは Azure BLOB で処理され、Log Analytics にアップロードされます。 このようなパイプラインの実装例については、[こちら](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api)の記事をご覧ください。 | <ul><li> Application Insights 内でインストルメント化されたアプリケーション内で必ずしも生成されるわけではないデータ。</li><li> 例として、ルックアップ テーブル、ファクト テーブル、参照データ、事前に集計された統計などがあります。 </li><li> 他の Azure Monitor データ (Application Insights、ログの他の種類のデータ、Security Center、コンテナー/VM 用 Azure Monitor など) と相互参照されるデータ。 </li></ul> |
 | [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Azure Data Explorer (ADX) は、Application Insights Analytics と Azure Monitor ログを強化するデータ プラットフォームです。 一般提供 ("GA") が開始されたこのデータ プラットフォームを raw 形式で使用すると、クラスターに対する完全な柔軟性 (RBAC、リテンション率、スキーマなど) が得られます (ただし、管理オーバーヘッドが必要になります)。 ADX には、[CSV、TSV、JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) の各ファイルを含め、多数の[インジェスト オプション](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods)が用意されています。 | <ul><li> Application Insights またはログで他のどのデータにも関連付けられないデータ。 </li><li> Azure Monitor ログで現在提供されていない高度なインジェスト機能や処理機能を必要とするデータ。 </li></ul> |
 
 

@@ -5,20 +5,17 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.openlocfilehash: b422718a1eaec483acdc2c8ab37442b9aea78aaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/04/2019
+ms.openlocfilehash: 275c7bc8127855712c191141ef681526da7c377b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510781"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309502"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL の読み取りレプリカを作成し、管理する方法
 
 この記事では、Azure portal を使用して Azure Database for MySQL サービスの読み取りレプリカを作成および管理する方法を学習します。
-
-> [!IMPORTANT]
-> マスター サーバーと同じ Azure リージョン内、または選択した他の任意の Azure リージョン内に読み取りレプリカを作成できます。 リージョン間レプリケーションは、現在パブリック プレビュー段階です。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -45,9 +42,12 @@ ms.locfileid: "65510781"
 
     ![Azure Database for MySQL - レプリカ名](./media/howto-read-replica-portal/replica-name.png)
 
-6. レプリカ サーバーの場所を選択します。 任意の Azure リージョンにレプリカを作成できます。 既定の場所は、マスター サーバーと同じです
+6. レプリカ サーバーの場所を選択します。 既定の場所は、マスター サーバーの場所と同じです。
 
     ![Azure Database for MySQL - レプリカの場所](./media/howto-read-replica-portal/replica-location.png)
+
+   > [!NOTE]
+   > レプリカを作成できるリージョンの詳細については、[読み取りレプリカの概念に関する記事](concepts-read-replicas.md)を参照してください。 
 
 7. **[OK]** を選択して、レプリカの作成を確認します。
 

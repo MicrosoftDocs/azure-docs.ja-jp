@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: f7617348a98899251dcd3b8f1645c40bd297ffdb
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b994f75327cb78cd422d75682ee68ea7840a87e8
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073553"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193962"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合
 
@@ -84,6 +84,9 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 
 > [!WARNING]
 > Azure AD またはサード パーティの認証を使用している場合は、Application Gateway で [cookie ベースのセッション アフィニティ](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity)機能を有効にしてください。
+
+> [!WARNING]
+> Application Gateway WAF が開発者ポータルで OpenAPI 仕様のダウンロードを中断しないようにするには、ファイアウォール規則 `942200 - "Detects MySQL comment-/space-obfuscated injections and backtick termination"` を無効にする必要があります。
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>リソース マネージャーのリソース グループの作成
 

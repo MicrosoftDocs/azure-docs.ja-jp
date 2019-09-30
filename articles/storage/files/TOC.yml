@@ -1,5 +1,5 @@
-- name: Azure Storage のドキュメント
-  href: /azure/storage/
+- name: Azure Files のドキュメント
+  href: index.yml
 - name: 概要
   expanded: true
   items:
@@ -49,6 +49,8 @@
       href: storage-files-scale-targets.md
     - name: セキュリティ
       items:
+        - name: Authorization
+          href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure Storage セキュリティ
           href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: ストレージ アカウントの暗号化

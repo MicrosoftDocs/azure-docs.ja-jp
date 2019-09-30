@@ -1,8 +1,8 @@
-- name: Azure データ エクスプローラーのドキュメント
+- name: Azure Data Explorerのドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure データ エクスプローラーとは
+    - name: Azure Data Explorerとは
       href: data-explorer-overview.md
 - name: クイック スタート
   expanded: true
@@ -38,14 +38,20 @@
           href: create-cluster-database-csharp.md
         - name: Python
           href: create-cluster-database-python.md
+        - name: Azure Resource Manager テンプレート
+          href: create-cluster-database-resource-manager.md
     - name: データの取り込み
       items:
         - name: イベント ハブ
           href: ingest-data-event-hub.md
         - name: Event Grid
           href: ingest-data-event-grid.md
+        - name: IoT Hub
+          href: ingest-data-iot-hub.md
         - name: ワンクリックでのインジェスト
           href: ingest-data-one-click.md
+        - name: ストリーミング インジェスト
+          href: ingest-data-streaming.md
         - name: Kafka
           href: ingest-data-kafka.md
         - name: Python
@@ -84,12 +90,20 @@
       items:
         - name: Power BI
           items:
+            - name: ベスト プラクティス
+              href: power-bi-best-practices.md
             - name: コネクタ
               href: power-bi-connector.md
             - name: インポートされたクエリ
               href: power-bi-imported-query.md
             - name: SQL クエリ
               href: power-bi-sql-query.md
+        - name: Excel
+          items:
+            - name: コネクタ
+              href: excel-connector.md
+            - name: 空のクエリ
+              href: excel-blank-query.md
         - name: Grafana
           href: grafana.md
         - name: ODBC コネクタ
@@ -118,10 +132,18 @@
           href: dealing-with-duplicates.md
     - name: 監視
       items:
+        - name: 診断ログを使用してインジェストを監視する
+          href: using-diagnostic-logs.md
         - name: メトリックを使用してクラスターの正常性を監視する
           href: using-metrics.md
     - name: 他のツールとの統合
       items:
+        - name: Azure Data Factory
+          items:
+            - name: Azure Data Factory テンプレートを使用してデータを一括コピーする
+              href: data-factory-template.md
+            - name: Azure Data Factory を使用して制御コマンドを実行する
+              href: data-factory-command-activity.md
         - name: Apache Spark コネクタ
           href: spark-connector.md
         - name: Python を使用して Databricks から接続する

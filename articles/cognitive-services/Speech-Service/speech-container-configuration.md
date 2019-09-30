@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: dapine
-ms.openlocfilehash: c4598e5e99012694a798e44c0d37e9578486751b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f7e2e95b553039b88267f730787fbbac82099948
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932107"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105180"
 ---
 # <a name="configure-speech-service-containers"></a>Speech Service コンテナーを構成する
 
@@ -94,8 +94,10 @@ ms.locfileid: "68932107"
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
-|{API_KEY} | 音声リソースの API キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | リージョンを含むエンドポイントの値。|`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+| **{API_KEY}** | Azure `Speech` の [キー] ページの `Speech` リソースのエンドポイント キー。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | 課金エンドポイントの値は、Azure `Speech` の [概要] ページで確認できます。| 明示的な例が必要であれば、[必須パラメーターの収集](speech-container-howto.md#gathering-required-parameters)に関するページを参照してください。 |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](#billing-configuration-setting)」を参照してください。

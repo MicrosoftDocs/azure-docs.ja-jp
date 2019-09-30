@@ -1,23 +1,23 @@
 ---
-title: Azure Blockchain Workbench のトラブルシューティング
-description: Azure Blockchain Workbench アプリケーションのトラブルシューティング方法。
+title: Azure Blockchain Workbench プレビューのトラブルシューティング
+description: Azure Blockchain Workbench プレビュー アプリケーションのトラブルシューティング方法。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: b0263761a4aaf663b16584fbf9caa11bb124d5c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8fec065b629f2f2b93e78a63521ea0ce4669dd4e
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510087"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844024"
 ---
-# <a name="azure-blockchain-workbench-troubleshooting"></a>Azure Blockchain Workbench のトラブルシューティング
+# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure Blockchain Workbench プレビューのトラブルシューティング
 
 PowerShell スクリプトを利用すると、開発時のデバッグやサポートに役立ちます。 トラブルシューティングのために、スクリプトで概要を生成し、詳細なログを収集することができます。 収集されるログの内容は次のとおりです。
 
@@ -27,6 +27,8 @@ PowerShell スクリプトを利用すると、開発時のデバッグやサポ
 * Azure 監視 (Azure Monitor ログ)
 
 この情報を利用して、次の手順を決定し、問題の根本原因を特定することができます。
+
+[!INCLUDE [Preview note](./includes/preview.md)]
 
 ## <a name="troubleshooting-script"></a>トラブルシューティング スクリプト
 

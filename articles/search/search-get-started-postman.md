@@ -1,5 +1,5 @@
 ---
-title: REST クイックスタート:Postman を使用してインデックスの作成、読み込み、クエリの実行を行う - Azure Search
+title: クイック スタート:REST API シリーズを使用して Postman で検索インデックスを作成する - Azure Search
 description: Postman、サンプル データ、および定義を使用して Azure Search REST API を呼び出す方法について説明します。
 author: HeidiSteen
 manager: nitinme
@@ -7,14 +7,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 07/11/2019
+ms.date: 09/10/2019
 ms.author: heidist
-ms.openlocfilehash: b1fcca0b135852660890f9f7591ee115d2ef2b47
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 138fd3d50a5f462c6a0ad954043f107c3c250917
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656779"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881543"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-postman-using-rest-apis"></a>クイック スタート:REST API を使用して Postman に Azure Search インデックスを作成する
 > [!div class="op_single_selector"]

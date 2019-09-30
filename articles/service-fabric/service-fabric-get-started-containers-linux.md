@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
 ms.author: atsenthi
-ms.openlocfilehash: dde124a568581c53a4168b1c84e5df8a9d55155f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2bb9a5e8e42901f22d9f68d691684614c7161620
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599552"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650670"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Linux で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -181,28 +181,11 @@ Service Fabric コンテナー アプリケーションを作成するには、�
 ![コンテナー用 Service Fabric Yeoman ジェネレーター][sf-yeoman]
 
 ## <a name="configure-container-repository-authentication"></a>コンテナー リポジトリの認証を構成する
- コンテナーでプライベート リポジトリを使用した認証が必要な場合は、`RepositoryCredentials` を追加します。 この記事では、myregistry.azurecr.io コンテナー レジストリのアカウント名とパスワードを追加します。 適切なサービス パッケージに対応する 'ServiceManifestImport' タグにポリシーが追加されていることを確認します。
 
-```xml
-   <ServiceManifestImport>
-      <ServiceManifestRef ServiceManifestName="MyServicePkg" ServiceManifestVersion="1.0.0" />
-    <Policies>
-        <ContainerHostPolicies CodePackageRef="Code">
-        <RepositoryCredentials AccountName="myregistry" Password="=P==/==/=8=/=+u4lyOB=+=nWzEeRfF=" PasswordEncrypted="false"/>
-        <PortBinding ContainerPort="80" EndpointRef="myServiceTypeEndpoint"/>
-        </ContainerHostPolicies>
-    </Policies>
-   </ServiceManifestImport>
-``` 
-
-リポジトリのパスワードを暗号化することをお勧めします。 手順については、「[Service Fabric アプリケーションでシークレットを管理する](service-fabric-application-secret-management.md)」を参照してください。
-
-### <a name="configure-cluster-wide-credentials"></a>クラスター全体の資格情報を構成する
-[こちらのドキュメント](
-service-fabric-get-started-containers.md#configure-cluster-wide-credentials)を参照してください
+コンテナー イメージのダウンロード用にさまざまな種類の認証を構成する方法については、[コンテナー リポジトリの認証](configure-container-repository-credentials.md)に関する記事を参照してください。
 
 ## <a name="configure-isolation-mode"></a>分離モードの構成
-6\.3 のランタイム リリースでは、Linux コンテナーで VM 分離がサポートされています。つまり、process と hyperv の 2 つの分離モードがサポートされています。 hyperv 分離モードでは、各コンテナーとコンテナー ホスト間でカーネルが分離されます。 hyperv 分離は、[Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) を使用して実装されています。 分離モードは、Linux クラスター用にアプリケーション マニフェスト ファイルの `ServicePackageContainerPolicy` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 既定は、プロセス分離モードです。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
+6\.3 のランタイム リリースでは、Linux コンテナーで VM 分離がサポートされています。つまり、process と Hyper-V の 2 つの分離モードがサポートされています。 Hyper-V 分離モードでは、各コンテナーとコンテナー ホスト間でカーネルが分離されます。 Hyper-V 分離は、[Clear Containers](https://software.intel.com/en-us/articles/intel-clear-containers-2-using-clear-containers-with-docker) を使用して実装されています。 分離モードは、Linux クラスター用にアプリケーション マニフェスト ファイルの `ServicePackageContainerPolicy` 要素に指定されます。 指定できる分離モードは、`process`、`hyperv`、および `default` です。 既定は、プロセス分離モードです。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
 
 ```xml
 <ServiceManifestImport>
@@ -277,7 +260,7 @@ Service Fabric クラスター全体で **HEALTHCHECK** 統合を無効化する
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-https://github.com/Azure-Samples/service-fabric-containers/ にあるテンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
+[https://github.com/Azure-Samples/service-fabric-containers/](https://github.com/Azure-Samples/service-fabric-containers/ ) にあるテンプレートに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
 
 
 ```bash

@@ -88,11 +88,11 @@ Microsoft Account にサインインすると、[個人用サブスクリプシ�
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-Cognitive Services の API は、Microsoft マネージド データ センターの拡大しているネットワーク上でホストされます。 [Azure リージョン一覧](https://azure.microsoft.com/regions)で API ごとのリージョン別の可用性がわかります。
+Cognitive Services の API は、Microsoft マネージド データ センターの拡大しているネットワーク上でホストされます。 [Azure リージョン一覧](https://azure.microsoft.com/regions)で API ごとのリージョン別の提供状況がわかります。
 
 まだサポートされていないリージョンを探しているのですか。 [UserVoice フォーラム](https://cognitive.uservoice.com/)に機能要求を記入してご連絡ください。
 
-## <a name="supported-cultural-languages"></a>サポートされるカルチャの言語
+## <a name="supported-cultural-languages"></a>サポートされる言語 (カルチャ)
 
  Cognitive Services では、さまざまなカルチャ言語がサービス レベルでサポートされています。 各 API で利用可能な言語は、[サポート対象の言語一覧](language-support.md)に関するページで検索できます。
 

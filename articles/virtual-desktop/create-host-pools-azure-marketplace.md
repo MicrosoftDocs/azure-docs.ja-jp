@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 04/05/2019
+ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: f692303140db1441aa34aacef62523d7f596dba1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204730"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208382"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>チュートリアル:Azure Marketplace を使用してホスト プールを作成する
 
@@ -26,7 +26,11 @@ ms.locfileid: "67204730"
 > * Active Directory ドメインに VM を参加させる。
 > * Windows Virtual Desktop に VM を登録する。
 
-作業を開始する前に、PowerShell セッションで使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)します (まだの場合のみ)。
+作業を開始する前に、PowerShell セッションで使用する [Windows Virtual Desktop PowerShell モジュールをダウンロードしてインポート](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)します (まだの場合のみ)。 その後、次のコマンドレットを実行して、アカウントにサインインします。
+
+```powershell
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+```
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -40,7 +44,7 @@ ms.locfileid: "67204730"
 2. Marketplace の検索ウィンドウに「**Windows Virtual Desktop**」と入力します。
 3. **[Windows Virtual Desktop - Provision a host pool]\(Windows Virtual Desktop - ホスト プールのプロビジョニング\)** を選択し、 **[作成]** を選択します。
 
-どのブレードにどのような情報を入力するかについては、ガイダンスに従ってください。
+その後、次のセクションの手順に従って、適切なブレードに情報を入力します。
 
 ### <a name="basics"></a>基本
 
@@ -52,6 +56,9 @@ ms.locfileid: "67204730"
 4. **[新規作成]** を選択して、新しいリソース グループの名前を指定します。
 5. **[場所]** には、Active Directory サーバーに接続している仮想ネットワークと同じ場所を選択します。
 6. **[OK]** を選択します。
+
+>[!IMPORTANT]
+>純粋な Azure Active Directory Domain Services と Azure Active Directory ソリューションを使用している場合は、ドメイン参加および資格情報のエラーを防ぐために、必ず Azure Active Directory Domain Services と同じリージョンにホスト プールをデプロイしてください。
 
 ### <a name="configure-virtual-machines"></a>仮想マシンの構成
 
@@ -66,7 +73,7 @@ ms.locfileid: "67204730"
 **[Virtual machine setting]\(仮想マシンの設定\)** ブレードで必要な操作は次のとおりです。
 
 >[!NOTE]
-> ご使用の VM を Azure Active Directory Domain Services (Azure AD DS) 環境へ参加させる場合は、ドメイン参加ユーザーが [AAD DC Administrators グループ](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-admingroup#task-3-configure-administrative-group)のメンバーでもあることを確認します。
+> ご使用の VM を Azure Active Directory Domain Services (Azure AD DS) 環境へ参加させる場合は、ドメイン参加ユーザーが [AAD DC Administrators グループ](../active-directory-domain-services/tutorial-create-instance.md#configure-an-administrative-group)のメンバーでもあることを確認します。
 
 1. **[イメージ ソース]** で、ソースを選択し、その探し方と格納方法に関する適切な情報を入力します。 マネージド ディスクを使用しない場合には、.vhd ファイルが含まれるストレージ アカウントを選択します。
 2. Active Directory ドメインに VM を参加させるドメイン アカウントのユーザー プリンシパル名とパスワードを入力します。 このユーザー名とパスワードは、仮想マシン上にローカル アカウントとして作成されます。 このローカル アカウントは、後でリセットできます。

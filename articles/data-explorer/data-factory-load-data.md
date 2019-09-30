@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 2142fbf03daa6667b20db43f9212a2b5e6d7dd44
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657525"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70803985"
 ---
 # <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer にデータをコピーする 
 
@@ -34,7 +34,7 @@ Azure Data Factory には、Azure Data Explorer にデータを読み込む際�
 * [Azure Data Explorer クラスターとデータベース](create-cluster-database-portal.md)
 * データのソースです。
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) > **[分析]**  >  **[Data Factory]** を選択します。
 
@@ -117,6 +117,8 @@ Azure Data Factory を使用して Azure Data Explorer にデータを読み込�
 
 以下で指定する Azure Data Explorer のコピー先テーブル (シンク) にデータをコピーする、Azure Data Explorer の新しいリンクされたサービスが作成されます。
 
+#### <a name="create-the-azure-data-explorer-linked-service"></a>Azure Data Explorer のリンクされたサービスを作成する
+
 1. **[コピー先データ ストア]** ページで、既存のデータ ストア接続を使用するか、 **[新しい接続の作成]** をクリックして新しいデータ ストアを指定できます。
 
     ![[Destination data store]\(コピー先データ ストア\) ページ](media/data-factory-load-data/destination-create-connection.png)
@@ -142,6 +144,8 @@ Azure Data Factory を使用して Azure Data Explorer にデータを読み込�
 
     > [!NOTE]
     > このサービス プリンシパルは、Azure Data Explorer サービスにアクセスするために Azure Data Factory によって使用されます。 サービス プリンシパルの場合は、[Azure Active Directory (Azure AD) サービス プリンシパルを作成](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal)します。 **Azure Key Vault** のメソッドは使用しないでください。
+
+#### <a name="configure-the-azure-data-explorer-data-connection"></a>Azure Data Explorer データ接続を構成する
 
 1. **[コピー先データ ストア]** が開きます。 作成した Azure Data Explorer データ接続が使用可能です。 **[次へ]** を選択して接続を構成します。
 

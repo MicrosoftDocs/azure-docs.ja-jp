@@ -5,13 +5,14 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: 6d729d9303326dd43f3bc5ae943d6ab788c818f3
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d994fe1501dedf6a8ea2c3366f6559c7abac0892
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534448"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091614"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Azure HDInsight で Apache HBase Master (HMaster) を開始できない
 
@@ -43,7 +44,7 @@ HMaster では、WAL フォルダーに対して基本的な list コマンド�
 
 ### <a name="issue"></a>問題
 
-`hbase: meta` テーブルがオンラインになっていないことを示すメッセージが表示される場合があります。 `hbck` を実行すると、`hbase: meta table replicaId 0 is not found on any region.` であることが報告される場合があります。HMaster ログに、次のメッセージが表示されることがあります。`No server address listed in hbase: meta for region hbase: backup <region name>`。  
+`hbase: meta` テーブルがオンラインになっていないことを示すメッセージが表示される場合があります。 `hbck` を実行すると、`hbase: meta table replicaId 0 is not found on any region.` であることが報告される場合があります。HMaster ログに、次のメッセージが表示されることがあります`No server address listed in hbase: meta for region hbase: backup <region name>`。  
 
 ### <a name="cause"></a>原因
 

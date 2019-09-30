@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: 199fcdf2ebf10852906b842f09fe7beafd2acdb5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326619"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883575"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Application Gateway での SSL ターミネーションとエンド ツー エンド SSL の概要
 
@@ -95,7 +95,7 @@ Application Gateway は、既知のバックエンド インスタンスのみ�
    
 > [!NOTE] 
 >
-> SSL 証明書を信頼するためには、バックエンド サーバーのその証明書が Applicatin Gateway の信頼されているストアに含まれている CA によって発行されている必要があります。証明書が信頼されている CA によって発行されていない場合は、Application Gateway によって、証明書を発行している CA の証明書が信頼されている CA によって発行されているかどうかがチェックされます。信頼されている CA が見つかる (この時点で信頼できる安全な接続が確立されます) か、信頼されている CA を見つけることができなくなる (この時点で、Applicatin Gateway によってバックエンドが正常でないとマークされます) まで、この操作が続行されます。 そのため、バックエンド サーバーの証明書には、ルート CA と中間 CA の両方を含めることをお勧めします。
+> SSL 証明書を信頼するためには、バックエンド サーバーのその証明書が Application Gateway の信頼されているストアに含まれている CA によって発行されている必要があります。証明書が信頼されている CA によって発行されていない場合は、Application Gateway によって、証明書を発行している CA の証明書が信頼されている CA によって発行されているかどうかがチェックされます。信頼されている CA が見つかる (この時点で信頼できる安全な接続が確立されます) か、信頼されている CA を見つけることができなくなる (Application Gateway によってバックエンドが正常でないとマークされます) まで、この操作が続行されます。 そのため、バックエンド サーバーの証明書には、ルート CA と中間 CA の両方を含めることをお勧めします。
 
 - 証明書が自己署名済みの場合、または不明な仲介者によって署名されている場合、 v2 SKU でエンド ツー エンド SSL を有効にするには、信頼できるルート証明書を定義する必要があります。 Application Gateway は、サーバー証明書のルート証明書がプールに関連付けられたバックエンドの HTTP 設定の信頼されたルート証明書のいずれかと一致するバックエンドとのみ通信します。
 

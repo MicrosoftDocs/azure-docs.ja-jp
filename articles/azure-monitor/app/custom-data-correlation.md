@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: evternov
-ms.openlocfilehash: 9bc94f653f5e70883b483fa44f6a17f6e9e9eaf1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 3abf50b3467ce9a97f2163a10ad1782f6e1c9c20
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594436"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258438"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Application Insights のデータをカスタム データ ソースと関連付ける
 
@@ -28,7 +28,7 @@ Application Insights は、例外、トレース、ページ ビューなど、�
 
 - データ エンリッチメントやルックアップ テーブル: たとえば、サーバー名を補う情報として、サーバーの所有者やそのサーバーがあるラボの場所を追加します。 
 - Application Insights 以外のデータ ソースとの関連付け: たとえば Web ストアでの購入に関するデータと、購入フルフィルメント サービスからの情報とを関連付けることで、出荷予定時刻がどの程度正確であったかを調査します。 
-- まったく独自のデータ: Application Insights を支えている Azure Monitor ログ プラットフォームのクエリ言語とパフォーマンスは、Microsoft の多くのお客様に支持されており、そうしたお客様が Application Insights とはまったく関係のないデータも照会したいと考えています。 たとえば、[こちら]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/)に記載されているようなスマート ホーム導入の一環として、ソーラー パネルのパフォーマンスを追跡する用途が考えられます。
+- まったく独自のデータ: Application Insights を支えている Azure Monitor ログ プラットフォームのクエリ言語とパフォーマンスは、Microsoft の多くのお客様に支持されており、そうしたお客様が Application Insights とはまったく関係のないデータも照会したいと考えています。 たとえば、[こちら](https://www.catapultsystems.com/blogs/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/)に記載されているようなスマート ホーム導入の一環として、ソーラー パネルのパフォーマンスを追跡する用途が考えられます。
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>カスタム データを Application Insights のデータと関連付ける方法 
 

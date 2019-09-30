@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b90b4806e86ed0ba33500cf31a6ed892241ceabe
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c7b0dc39d2da403383f245b9ff3227734c58cbbe
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423461"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193488"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker ナレッジ ベースの制限と境界
 
@@ -44,19 +44,31 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 ## <a name="metadata-limits"></a>メタデータの制限
 
+### <a name="by-azure-search-pricing-tier"></a>Azure Search 価格レベル
+
 ナレッジ ベースごとのメタデータ フィールドの最大数は、 **[Azure Search レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)** に基づきます。
 
 |**Azure Search 層** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |QnA Maker サービスごとの最大のメタデータ フィールド数 (すべてのナレッジ ベースにわたって)|1,000|100*|1,000|1,000|1,000|1,000|
 
+### <a name="by-name-and-value"></a>名前と値
+
+次の表に、メタデータの名前および値に使用できる文字と長さを示します。
+
+|Item|使用できる文字|正規表現パターン マッチ|最大文字数|
+|--|--|--|--|
+|名前|以下の文字を使用可能:<br>英数字<br>`_` (アンダースコア)|`^[a-zA-Z0-9_]+$`|100|
+|値|以下を除くすべての文字を使用可能:<br>`:` (コロン)<br>`|` (縦棒)|`^[^:|]+$`|500|
+|||||
+
 ## <a name="knowledge-base-content-limits"></a>ナレッジ ベースのコンテンツの制限
 ナレッジ ベース内のコンテンツの全体的な制限は以下のとおりです。
 * 回答のテキストの長さ: 25,000
 * 質問のテキストの長さ: 1,000
 * メタデータのキー/値のテキストの長さ: 100
-* メタデータ名でサポートされる文字: アルファベット、数字、_  
-* メタデータ値でサポートされる文字: : と | を除くすべての文字 
+* メタデータ名でサポートされる文字: アルファベット、数字、`_`  
+* メタデータ値でサポートされる文字: `:` と `|` を除くすべての文字 
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
 * 代替の質問の最大数: 300
@@ -78,8 +90,4 @@ URL ページから QnA を抽出するためにクロールできるディー�
 
 ## <a name="next-steps"></a>次の手順
 
-サービス レベルを変更するタイミングと方法について学びます。
-
-* [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): 現在のレベルよりも多くのソース ファイルまたはより大きなドキュメントをナレッジ ベースに含める必要がある場合は、QnA Maker サービスの価格レベルをアップグレードします。
-* [App Service](how-to/upgrade-qnamaker-service.md#upgrade-app-service): ナレッジ ベースでクライアント アプリの要求をより多く提供する必要がある場合は、アプリ サービスの価格レベルをアップグレードします。
-* [Azure Search](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): 多数のナレッジ ベースを使用する予定の場合は、Azure Search サービスの価格レベルをアップグレードします。
+[サービス価格レベル](How-To/set-up-qnamaker-service-azure.md#upgrade-qna-maker)を変更するタイミングと方法について学びます。

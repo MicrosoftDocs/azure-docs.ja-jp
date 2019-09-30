@@ -4,7 +4,7 @@ description: Azure Portal を使用して仮想ネットワーク (クラシッ�
 services: virtual-network
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: c8e298a1-f6d9-4bec-b6cd-3c6ff2271dcd
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: a29aa4ac802cfc708203e7e2d125cb421e4bb9a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 748faddf74e77542160871cdc0cf4cb4eca588c9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60937493"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058431"
 ---
 # <a name="create-a-virtual-network-classic-by-using-the-azure-portal"></a>Azure ポータルを使用した仮想ネットワーク (従来型) の作成
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]

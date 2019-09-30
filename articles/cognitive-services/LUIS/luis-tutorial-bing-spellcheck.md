@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: f8f22c70870b149f916eb767c5eb310e063d7413
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 43cb2f0c3ef0f845afcd309dccb35bc632ffd324
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945089"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390960"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 

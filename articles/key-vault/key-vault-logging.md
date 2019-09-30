@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fc0f259a4866f7eb2438938c7a10989db9200aa4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 997651887c3c378e4791553d5ff05f585ad169ea
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976967"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000661"
 ---
 # <a name="azure-key-vault-logging"></a>Azure Key Vault のログ記録
 
@@ -35,7 +35,7 @@ ms.locfileid: "68976967"
 > この記事では、Azure PowerShell を使用して診断ログを更新する方法を説明します。 また、Azure portal の **[診断ログ]** セクションで、Azure Monitor を使用して診断ログを更新することもできます。 
 >
 
-Key Vault の概要については、「[Azure Key Vault とは](key-vault-whatis.md)」を参照してください。 Key Vault が使用可能な場所については、[価格に関するページ](https://azure.microsoft.com/pricing/details/key-vault/)をご覧ください。
+Key Vault の概要については、「[Azure Key Vault とは](key-vault-overview.md)」を参照してください。 Key Vault が使用可能な場所については、[価格に関するページ](https://azure.microsoft.com/pricing/details/key-vault/)をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 73d7aebf3dbff59320e0ef92cbd54811503c71b4
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: ba20a048faecc9e37a2bfbe750de0fbeba88d538
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792271"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163984"
 ---
 # <a name="tutorial-design-a-multi-tenant-database-by-using-azure-database-for-postgresql--hyperscale-citus-preview"></a>チュートリアル: Azure Database for PostgreSQL - Hyperscale (Citus) (プレビュー) を使用して、マルチテナント データベースを設計する
 
@@ -118,7 +118,7 @@ CREATE TABLE impressions (
 );
 ```
 
-psql で次を実行すると、新しく作成されたテーブルがテーブルの一覧に表示されます。
+次を実行すると、psql のテーブルの一覧に新しく作成されたテーブルが表示されます。
 
 ```postgres
 \dt
@@ -150,9 +150,11 @@ for dataset in companies campaigns ads clicks impressions geo_ips; do
 done
 ```
 
-psql 内に戻って、データを一括読み込みします。 psql は必ず、データ ファイルをダウンロードしたところと同じディレクトリで実行してください。
+psql 内に戻って、データを一括読み込みします。 psql は必ず、データ ファイルをダウンロードしたディレクトリと同じディレクトリで実行してください。
 
 ```sql
+SET CLIENT_ENCODING TO 'utf8';
+
 \copy companies from 'companies.csv' with csv
 \copy campaigns from 'campaigns.csv' with csv
 \copy ads from 'ads.csv' with csv
@@ -223,12 +225,12 @@ SELECT c.id, clicked_at, latlon
 
 ## <a name="customize-the-schema-per-tenant"></a>テナントごとにスキーマをカスタマイズする
 
-場合によっては、各テナントに他のテナントが必要としない特別な情報を保存する必要があります。 しかし、すべてのテナントは同一のデータベース スキーマを持つ共通インフラストラクチャを共有しています。 その追加データはどこに入れることができるのでしょうか?
+場合によっては、各テナントに他のテナントが必要としない特別な情報を保存する必要があります。 ただし、すべてのテナントは同一のデータベース スキーマを持つ共通インフラストラクチャを共有しています。 追加データはどこに移動できますか?
 
 コツは、PostgreSQL の JSONB のような制約のない列タイプを使用することです。  スキーマには、`clicks` に `user_data` という JSONB フィールドがあります。
 会社 (例: 会社 5) は、この列を使用して、ユーザーがモバイル デバイス上にいるかどうかを追跡できます。
 
-より多くクリックしたのはモバイルであるか従来の訪問者であるかを検索するためのクエリを、以下に示します。
+クリックを多く行った実行元が、デバイスであるか従来の訪問者であるかを検索するためのクエリを、以下に示します。
 
 ```sql
 SELECT

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 05/24/2019
-ms.openlocfilehash: 0b3af3d29e6e938f0301d751a79170c7c1964b45
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.date: 09/10/2019
+ms.openlocfilehash: 8944a5adbe1b9e129b4a95c64aaa7a75fb96ac82
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66243792"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845554"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>チュートリアル:DMS を使用して Oracle を Azure Database for PostgreSQL にオンラインで移行する (プレビュー)
 
@@ -166,27 +166,6 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 
     `'YES'` 応答を受け取るはずです。
 
-> [!IMPORTANT]
-> このシナリオのパブリック プレビュー リリースでは、Azure Database Migration Service は Oracle バージョン 10g または 11g をサポートしています。 Oracle バージョン 12c 以降を実行しているお客様は、ODBC ドライバーの Oracle への接続に許可される最低限の認証プロトコルが 8 であることに注意してください。 バージョン 12c 以降の Oracle ソースの場合、次のように認証プロトコルを構成する必要があります。
->
-> * SQLNET.ORA を更新します。
->
->    ```
->    SQLNET.ALLOWED_LOGON_VERSION_CLIENT = 8
->    SQLNET.ALLOWED_LOGON_VERSION_SERVER = 8
->    ```
->
-> * 新しい設定を反映するために、コンピューターを再起動します。
-> * 既存ユーザーのパスワードを変更します。
->
->    ```
->    ALTER USER system IDENTIFIED BY {pswd}
->    ```
->
->   詳細については、[この](http://www.dba-oracle.com/t_allowed_login_version_server.htm)ページを参照してください。
->
-> 最後に、認証プロトコルを変更するとクライアント認証に影響する可能性があることに注意してください。
-
 ## <a name="assess-the-effort-for-an-oracle-to-azure-database-for-postgresql-migration"></a>Oracle から Azure Database for PostgreSQL への移行作業の評価
 
 Oracle から Azure Database for PostgreSQL への移行に必要な作業の評価には、ora2pg を使用することをお勧めします。 `ora2pg -t SHOW_REPORT` ディレクティブを使用して、すべての Oracle オブジェクト、推定移行コスト (開発者の日数単位)、変換の一部として特別な注意が必要になる可能性がある特定のデータベース オブジェクトがリストされたレポートを作成します。
@@ -215,67 +194,60 @@ psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.dat
 
 ## <a name="set-up-the-schema-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でのスキーマの設定
 
-既定では、Oracle では schema.table.column はすべて大文字で保持されますが、PostgreSQL では schema.table.column は小文字で保持されます。 Azure Database Migration Service で Oracle から Azure Database for PostgreSQL へのデータの移動を開始するには、schema.table.column を Oracle ソースと同じ文字形式にする必要があります。
+Azure Database Migration Service で移行パイプラインを開始する前に、ora2pg を使用して、Oracle のテーブル スキーマ、ストアド プロシージャ、パッケージなどのデータベース オブジェクトを変換して、Postgres との互換性を確保することができます。 ora2pg の操作方法については、以下のリンクを参照してください。
 
-たとえば、Oracle ソースのスキーマが “HR”.”EMPLOYEES”.”EMPLOYEE_ID” の場合、PostgreSQL スキーマでも同じ形式を使用する必要があります。
+* [ora2pg を Windows にインストールする](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf)
+* [Oracle から Azure PostgreSQL への移行に関するクックブック](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
-schema.table.column の文字形式が Oracle と Azure Database for PostgreSQL で確実に同じとなるようにするため、次の手順を行うことをお勧めします。
+Azure Database Migration Service で PostgreSQL のテーブル スキーマを作成することもできます。 このサービスでは、接続されている Oracle ソースのテーブル スキーマにアクセスし、互換性のあるテーブル スキーマを Azure Database for PostgreSQL に作成します。 Azure Database Migration Service によるスキーマの作成とデータの移動が完了したら、Azure Database for PostgreSQL のスキーマ形式を検証して確認してください。
+
+> [!IMPORTANT]
+> Azure Database Migration Service によって作成されるのはテーブル スキーマだけです。ストアド プロシージャ、パッケージ、インデックスなど、他のデータベース オブジェクトは作成されません。
+
+また、全体の読み込みを実行するため、ターゲット データベース内の外部キーはドロップしてください。 外部キーのドロップに使用できるスクリプトについては、[ここ](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)の記事の「**サンプル スキーマを移行する**」セクションを参照してください。 Azure Database Migration Service を使い、全体の読み込みと同期を実行します。
+
+### <a name="when-the-postgresql-table-schema-already-exists"></a>PostgreSQL のテーブル スキーマが既に存在する場合
+
+Azure Database Migration Service を使用したデータ移動を開始する前に、ora2pg などのツールを使用して PostgreSQL スキーマを作成する場合、Azure Database Migration Service 内のターゲット テーブルにソース テーブルをマップします。
+
+1. Oracle から Azure Database for PostgreSQL への新しい移行プロジェクトを作成するとき、[スキーマの選択] ステップでターゲット データベースとターゲット スキーマを選択するように求められます。 ターゲット データベースとターゲット スキーマを入力します。
+
+   ![ポータルのサブスクリプションの表示](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+
+2. **[移行の設定]** 画面に Oracle ソース内のテーブルが一覧表示されます。 Azure Database Migration Service は、テーブル名に基づいてソース テーブルとターゲット テーブルの照合を試みます。 一致するものの大文字と小文字が異なるターゲット テーブルが複数存在した場合は、マップ先となるターゲット テーブルを選択することができます。
+
+    ![ポータルのサブスクリプションの表示](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
-> 別のアプローチを使用して大文字のスキーマを派生させることができます。 Microsoft は、この手順の改善と自動化に取り組んでいます。
+> ソース テーブルの名前を別の名前のテーブルにマップする必要がある場合は、メール [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com) でご連絡ください。そのプロセスを自動化するスクリプトを Microsoft が提供いたします。
 
-1. ora2pg を使用してスキーマを小文字でエクスポートします。 テーブル作成 sql スクリプトで、手動によりスキーマを大文字 "SCHEMA" で作成します。
-2. トリガー、シーケンス、プロシージャ、型、関数などの残りの Oracle オブジェクトを、Azure Database for PostgreSQL にインポートします。
-3. TABLE と COLUMN を大文字にするには、次のスクリプトを実行します。
+### <a name="when-the-postgresql-table-schema-doesnt-exist"></a>PostgreSQL のテーブル スキーマが存在しない場合
 
-   ```
-   -- INPUT: schema name
-   set schema.var = “HR”;
+ターゲット PostgreSQL データベースにテーブル スキーマ情報が存在しない場合、Azure Database Migration Service はソース スキーマを変換してターゲット データベースに再作成します。 Azure Database Migration Service によって作成されるのはテーブル スキーマだけであることに注意してください。ストアド プロシージャ、パッケージ、インデックスなど、他のデータベース オブジェクトは作成されません。
+Azure Database Migration Service でスキーマを自動的に作成するには、既存のテーブルを備えていないスキーマがターゲット環境に含まれている必要があります。 Azure Database Migration Service によってなんらかのテーブルが検出された場合、ora2pg などの外部ツールによってスキーマが作成されたものと見なされます。
 
-   -- Generate statements to rename tables and columns
-   SELECT 1, 'SET search_path = "' ||current_setting('schema.var')||'";'
-   UNION ALL 
-   SELECT 2, 'alter table "'||c.relname||'" rename '||a.attname||' to "'||upper(a.attname)||'";'
-   FROM pg_class c
-   JOIN pg_attribute a ON a.attrelid = c.oid
-   JOIN pg_type t ON a.atttypid = t.oid
-   LEFT JOIN pg_catalog.pg_constraint r ON c.oid = r.conrelid
-    AND r.conname = a.attname
-   WHERE c.relnamespace = (select oid from pg_namespace where nspname=current_setting('schema.var')) AND a.attnum > 0 AND c.relkind ='r'
-   UNION ALL
-   SELECT 3, 'alter table '||c.relname||' rename to "'||upper(c.relname)||'";'
-   FROM pg_catalog.pg_class c
-    LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-   WHERE c.relkind ='r' AND n.nspname=current_setting('schema.var')
-   ORDER BY 1;
-   ```
+> [!IMPORTANT]
+> Azure Database Migration Service では、Azure Database Migration Service またはツール (ora2pg など) のどちらか一方のみを使用し、同じ方法ですべてのテーブルが作成されている必要があります。
 
-* 全体の読み込みを実行するため、外部キーをターゲット データベースにドロップします。 外部キーのドロップに使用できるスクリプトについては、[ここ](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online)の記事の「**サンプル スキーマを移行する**」セクションを参照してください。
-* Azure Database Migration Service を使い、全体の読み込みと同期を実行します。
-* ターゲットの Azure Database for PostgreSQL インスタンス内のデータがソースに取り込まれたら、Azure Database Migration Service でデータベース カットオーバーを実行します。
-* SCHEMA、TABLE、COLUMN を小文字にするには (アプリケーションのクエリのために Azure Database for PostgreSQL のスキーマをこのようにする必要がある場合)、次のスクリプトを実行します。
+作業を開始するには:
 
-  ```
-  -- INPUT: schema name
-  set schema.var = hr;
-  
-  -- Generate statements to rename tables and columns
-  SELECT 1, 'SET search_path = "' ||current_setting('schema.var')||'";'
-  UNION ALL
-  SELECT 2, 'alter table "'||c.relname||'" rename "'||a.attname||'" to '||lower(a.attname)||';'
-  FROM pg_class c
-  JOIN pg_attribute a ON a.attrelid = c.oid
-  JOIN pg_type t ON a.atttypid = t.oid
-  LEFT JOIN pg_catalog.pg_constraint r ON c.oid = r.conrelid
-     AND r.conname = a.attname
-  WHERE c.relnamespace = (select oid from pg_namespace where nspname=current_setting('schema.var')) AND a.attnum > 0 AND c.relkind ='r'
-  UNION ALL
-  SELECT 3, 'alter table "'||c.relname||'" rename to '||lower(c.relname)||';'
-  FROM pg_catalog.pg_class c
-     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
-  WHERE c.relkind ='r' AND n.nspname=current_setting('schema.var')
-  ORDER BY 1;
-  ```
+1. 実際のアプリケーションの要件に基づいて、ターゲット データベースにスキーマを作成します。 既定では、PostgreSQL のテーブル スキーマと列の名前には小文字が使用されます。 一方、Oracle のテーブル スキーマと列には、既定で全大文字が使用されます。
+2. [スキーマの選択] ステップで、ターゲット データベースとターゲット スキーマを指定します。
+3. Azure Database for PostgreSQL で作成するスキーマに基づいて、Azure Database Migration Service では次の変換規則が使用されます。
+
+    Oracle ソースのスキーマ名が Azure Database for PostgreSQL のものと一致する場合、Azure Database Migration Service では、"*大文字と小文字の区別をターゲット側に合わせてテーブル スキーマを作成*" します。
+
+    例:
+
+    | ソース Oracle スキーマ | ターゲット PostgreSQL Database.Schema | DMS によって作成される schema.table.column |
+    | ------------- | ------------- | ------------- |
+    | HR | targetHR.public | public.countries.country_id |
+    | HR | targetHR.trgthr | trgthr.countries.country_id |
+    | HR | targetHR.TARGETHR | "TARGETHR"."COUNTRIES"."COUNTRY_ID" |
+    | HR | targetHR.HR | "HR"."COUNTRIES"."COUNTRY_ID" |
+    | HR | targetHR.Hr | *大文字と小文字が混在する名前はマップできません |
+
+    *大文字と小文字が混在するスキーマ名とテーブル名をターゲット PostgreSQL に作成する場合は、[dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com) にお問い合わせください。 大文字と小文字が混在するテーブル スキーマをターゲット PostgreSQL データベースに設定するためのスクリプトを提供いたします。
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 

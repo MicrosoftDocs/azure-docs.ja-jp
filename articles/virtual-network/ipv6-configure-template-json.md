@@ -12,16 +12,18 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/26/2019
 ms.author: kumud
-ms.openlocfilehash: e97a5a478871d94e074b59558a11df1ec752b0f9
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: b397c874045a89f5992aeadacfbbd4434a486977
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249842"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012835"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-with-basic-load-balancer-in-azure---template-preview"></a>IPv6 デュアル スタック アプリケーションと Basic Load Balancer を Azure でデプロイする - テンプレート (プレビュー)
 
-この記事では、適用する Azure Resource Manager VM テンプレートの一部と共にIPv6 構成タスクのリストを示します。 この記事で説明されているテンプレートを使用して、Azure でデュアル スタック (IPv4 と IPv6) アプリケーションを展開します。これには、 IPv4 と IPv6 のサブネットを持つデュアル スタック仮想ネットワーク、デュアル (IPv4 と IPv6) のフロントエンド構成を持つロード バランサー、デュアル IP 構成、ネットワーク セキュリティ グループ、およびパブリック IP を持つ NIC の仮想マシンが含まれます。 
+この記事では、適用する Azure Resource Manager VM テンプレートの一部と共にIPv6 構成タスクのリストを示します。 この記事で説明されているテンプレートを使用して、Basic Load Balancer でデュアル スタック (IPv4 と IPv6) アプリケーションをデプロイします。これには、IPv4 と IPv6 のサブネットを持つデュアル スタック仮想ネットワーク、デュアル (IPv4 と IPv6) のフロントエンド構成を持つ Basic Load Balancer、デュアル IP 構成、ネットワーク セキュリティ グループ、およびパブリック IP を持つ NIC の仮想マシンが含まれます。
+
+Standard Load Balancer を使用してデュアル スタック (IPV4 + IPv6) アプリケーションをデプロイするには、「[IPv6 デュアル スタック アプリケーションと Standard Load Balancer を Azure でデプロイする - テンプレート (プレビュー)](ipv6-configure-standard-load-balancer-template-json.md)」を参照してください。
 
 ## <a name="required-configurations"></a>必要構成
 
@@ -176,7 +178,7 @@ ms.locfileid: "68249842"
 ```
 
 ## <a name="sample-vm-template-json"></a>VM テンプレートのサンプル JSON
-Azure Resource Manager テンプレートを使用して Azure 仮想ネットワークで IPv6 デュアル スタック アプリケーションをデプロイするには、[こちら](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)のサンプル テンプレートを表示してください。
+Azure 仮想ネットワークで Azure Resource Manager テンプレートを使用し、Basic Load Balancer を使用して IPv6 デュアル スタック アプリケーションをデプロイするには、[こちら](https://azure.microsoft.com/resources/templates/ipv6-in-vnet/)のサンプル テンプレートを表示してください。
 
 ## <a name="next-steps"></a>次の手順
 

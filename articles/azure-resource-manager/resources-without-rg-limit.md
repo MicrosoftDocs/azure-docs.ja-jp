@@ -3,15 +3,15 @@ title: 数が 800 に制限されない Azure リソース
 description: リソース グループ内に 800 より多くのインスタンスを作成できる Azure リソースの種類の一覧を示します。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 7/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: a796896450a5b786e3b78aeddd81e6d66b02eb94
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: eec448dcbf1c550b6b0a0ee0f17505fd6ddd3c74
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700187"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194741"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 

@@ -3,20 +3,20 @@ title: チュートリアル:Translator Speech API (C#)
 titleSuffix: Azure Cognitive Services
 description: Translator Speech API を使用して、テキストをリアルタイムに翻訳します。
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a3853dd810182948e12b578c33b8cb91bef4b1cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 669322aefb152729cc120abc0d7a52ce9d1151da
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67445577"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965278"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>チュートリアル:C# での Translator Speech アプリケーション
 

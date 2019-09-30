@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: dbf45853f5f7a440578f3a9005831a4ef63d85e7
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 49b5b03356790bd45b2ad29897a57b746af1abe1
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65778855"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140683"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB から Azure SQL Database にデータをコピーする
 
@@ -78,8 +77,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. Azure サービスに SQL サーバーへのアクセスを許可します。 Data Factory サービスから Azure SQL サーバーにデータを書き込むことができるように、Azure SQL サーバーで **[Azure サービスへのアクセスを許可]** の設定が**オン**になっていることを確認します。 この設定を確認して有効にするには、次の手順を実行します。
 
-    1. 左側にある **[More services (その他のサービス)]** ハブをクリックし、**[SQL サーバー]** をクリックします。
-    2. サーバーを選択し、**[設定]** の **[ファイアウォール]** をクリックします。
+    1. 左側にある **[More services (その他のサービス)]** ハブをクリックし、 **[SQL サーバー]** をクリックします。
+    2. サーバーを選択し、 **[設定]** の **[ファイアウォール]** をクリックします。
     3. **[ファイアウォールの設定]** ページの **[Azure サービスへのアクセスを許可]** で **[オン]** をクリックします。
 
 
@@ -88,14 +87,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケーションを作成します。
 
 1. **Visual Studio** を起動します。
-2. **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。
-3. 右側にあるプロジェクトの種類の一覧で、**[Visual C#]** -> **[コンソール アプリ (.NET Framework)]** の順に選択します。 .NET バージョン 4.5.2 以降が必要です。
+2. **[ファイル]** をクリックし、 **[新規作成]** をポイントして、 **[プロジェクト]** をクリックします。
+3. 右側にあるプロジェクトの種類の一覧で、 **[Visual C#]**  ->  **[コンソール アプリ (.NET Framework)]** の順に選択します。 .NET バージョン 4.5.2 以降が必要です。
 4. 名前として「**ADFv2Tutorial**」と入力します。
 5. **[OK]** をクリックしてプロジェクトを作成します。
 
 ## <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
-1. **[ツール]** -> **[NuGet パッケージ マネージャー]** -> **[パッケージ マネージャー コンソール]** の順にクリックします。
+1. **[ツール]**  ->  **[NuGet パッケージ マネージャー]**  ->  **[パッケージ マネージャー コンソール]** の順にクリックします。
 2. **パッケージ マネージャー コンソール**で、次のコマンドを実行してパッケージをインストールします。 詳細については、[Microsoft.Azure.Management.DataFactory nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)を参照してください。
 
     ```powershell
@@ -120,7 +119,7 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     ```
 
     
-2. 変数を設定する次のコードを **Main** メソッドに追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. 変数を設定する次のコードを **Main** メソッドに追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     ```csharp
     // Set variables
@@ -161,7 +160,7 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
     ```
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。
 

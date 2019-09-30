@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: a6f872880b61a5bd9510abda2f15e2edea16e940
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 78c07330558241c889f284bcaf7302ce1327b5b8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703871"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389795"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>REST を使用して Media Services アカウントにファイルをアップロードする
 
@@ -39,7 +39,7 @@ Media Services で、デジタル ファイルをアセットに関連付けら�
 
 このセクションでは、新しいアセットを作成する方法を示します。
 
-1. **[Assets]\(資産\)**  ->  **[Create or update an Asset]\(資産を作成または更新する\)** を選択します。
+1. **[Assets]\(アセット\)**  ->  **[Create or update an Asset]\(アセットを作成または更新する\)** を選択します。
 2. **[送信]** をクリックします。
 
     ![アセットを作成する](./media/upload-files/postman-create-asset.png)
@@ -50,7 +50,7 @@ Media Services で、デジタル ファイルをアセットに関連付けら�
 
 このセクションでは、作成されたアセットに対して生成された SAS URL を取得する方法を示します。 作成された SAS URL には読み取り/書き込みアクセス許可が設定されており、アセット コンテナーにデジタル ファイルをアップロードするために使用できます。
 
-1. **[Assets]\(資産\)**  ->  **[List the Asset URLs]\(資産 URL の一覧表示\)** を選択します。
+1. **[Assets]\(アセット\)**  ->  **[List the Asset URLs]\(アセット URL の一覧表示\)** を選択します。
 2. **[送信]** をクリックします。
 
     ![ファイルをアップロードする](./media/upload-files/postman-create-sas-locator.png)
@@ -59,7 +59,7 @@ Media Services で、デジタル ファイルをアセットに関連付けら�
 
 ## <a name="upload-a-file-to-blob-storage-using-the-upload-url"></a>アップロード URL を使用して BLOB ストレージにファイルをアップロードする
 
-Azure Storage API または SDK (たとえば、[Storage REST API](../../storage/common/storage-rest-api-auth.md)、[JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md)、[.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) を使用します。
+Azure Storage API または SDK ([Storage REST API](../../storage/common/storage-rest-api-auth.md) や [.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md)) を使用します。
 
 ## <a name="next-steps"></a>次の手順
 

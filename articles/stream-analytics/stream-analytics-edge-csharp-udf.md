@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5597109a65a8af88bf286977d039656635565ed9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: cadc603a94d5d17ad2df419f8507c37f9e3272f8
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53086907"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173305"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-edge-job-preview"></a>チュートリアル: Azure Stream Analytics Edge ジョブの C# ユーザー定義関数を記述する (プレビュー)
 
-Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用すると、独自の関数で Azure Stream Analytics のクエリ言語を拡張できます。 既存のコード (DLL を含む) を再利用し、算術演算ロジックや複雑なロジックを C# で使用することができます。 UDF を実装するための 3 つの方法は、Stream Analytics プロジェクト内の分離コード ファイル、ローカル C# プロジェクトからの UDF、ストレージ アカウントの既存パッケージからの UDF です。 このチュートリアルでは、分離コードの方法を使用して、基本的な C# 関数を実装します。 Stream Analytics Edge ジョブの UDF 機能は現在プレビュー段階にあります。運用環境のワークロードでは使用しないでください。
+Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用すると、独自の関数で Azure Stream Analytics のクエリ言語を拡張できます。 既存のコード (DLL を含む) を再利用し、算術演算ロジックや複雑なロジックを C# で使用することができます。 UDF は次の 3 つの方法で実装できます。Stream Analytics プロジェクト内の分離コード ファイル、ローカル C# プロジェクトからの UDF、ストレージ アカウントの既存パッケージからの UDF です。 このチュートリアルでは、分離コードの方法を使用して、基本的な C# 関数を実装します。 Stream Analytics Edge ジョブの UDF 機能は現在プレビュー段階にあります。運用環境のワークロードでは使用しないでください。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -45,9 +45,9 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 
 2. **[ファイル] > [新規] > [プロジェクト]** を選択します。
 
-3. 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、**[Azure Stream Analytics Edge Application]\(Azure Stream Analytics Edge アプリケーション\)** を選択します。
+3. 左側のテンプレートの一覧で **[Stream Analytics]** を選択し、 **[Azure Stream Analytics Edge Application]\(Azure Stream Analytics Edge アプリケーション\)** を選択します。
 
-4.  プロジェクトの**名前**、**場所**、および**ソリューション名**を入力し、**[OK]** を選択します。
+4.  プロジェクトの**名前**、**場所**、および**ソリューション名**を入力し、 **[OK]** を選択します。
 
     ![Visual Studio で Azure Stream Analytics Edge プロジェクトを作成する](./media/stream-analytics-edge-csharp-udf/stream-analytics-create-edge-app.png)
 
@@ -62,8 +62,8 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
     |**設定**  |**推奨値**  |
     |---------|---------|
     |アセンブリ ソース  |  ローカル プロジェクト参照または分離コード   |
-    |リソース  |  現在のアカウントからデータを選択します   |
-    |サブスクリプション  |  サブスクリプションを選択します。   |
+    |Resource  |  現在のアカウントからデータを選択します   |
+    |Subscription  |  サブスクリプションを選択します。   |
     |ストレージ アカウント  |  ストレージ アカウントを選択します。   |
     |コンテナー  |  ストレージ アカウントに作成したコンテナーを選択します。   |
 
@@ -113,11 +113,11 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 
 1. Edge の[温度シミュレーター サンプル データ ファイル](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Sample%20Data/TemperatureSampleData.json)をダウンロードします。
 
-2. **ソリューション エクスプローラー**で、**[入力]** を展開し、**Input.json** を右クリックして、**[ローカル入力の追加]** を選択します。
+2. **ソリューション エクスプローラー**で、 **[入力]** を展開し、**Input.json** を右クリックして、 **[ローカル入力の追加]** を選択します。
 
    ![Visual Studio で Stream Analytics ジョブにローカル入力を追加する](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
-3. ダウンロードしたサンプル データのローカル入力ファイル パスを指定し、**[保存]** を選択します。
+3. ダウンロードしたサンプル データのローカル入力ファイル パスを指定し、 **[保存]** を選択します。
 
     ![Visual Studio での Stream Analytics ジョブに対するローカル入力構成](./media/stream-analytics-edge-csharp-udf/stream-analytics-local-input-config.png)
 

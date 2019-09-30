@@ -7,14 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: c07326cc3a4334f1873eef2dc23da05156a93577
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce5dc7e17020e1e4564ebe1f531645f7329718dc
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64574650"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900689"
 ---
-# <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>スクリプト アクションを使用して HDInsight の Apache Spark クラスターの Jupyter Notebook で外部の Python パッケージをインストールする
+# <a name="script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-on-hdinsight"></a>HDInsight の Apache Spark の Jupyter Notebook に外部の Python パッケージをインストールするスクリプト アクション
+
 > [!div class="op_single_selector"]
 > * [cell magic の使用](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [スクリプト アクションの使用](apache-spark-python-package-installation.md)
@@ -66,7 +67,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
     |パラメーター | 値 |
     |---|---|
     |スクリプトの種類 | ドロップダウン リストから **[- カスタム]** を選択します。|
-    |Name |テキスト ボックスに「`tensorflow`」と入力します。|
+    |名前 |テキスト ボックスに「`tensorflow`」と入力します。|
     |Bash スクリプト URI |テキスト ボックスに「`https://hdiconfigactions.blob.core.windows.net/linuxtensorflow/tensorflowinstall.sh`」と入力します。 |
     |ノードの種類 | **[ヘッド]** を選択し、 **[ワーカー]** チェック ボックスをオンにします。 |
 
@@ -96,7 +97,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 
     結果は次のようになります。
     
-    ![TensorFlow コード実行](./media/apache-spark-python-package-installation/execution.png "TensorFlow コードの実行")
+    ![TensorFlow コード実行](./media/apache-spark-python-package-installation/tensorflow-execution.png "TensorFlow コードの実行")
 
 > [!NOTE]  
 > クラスターには 2 つの Python インストールがあります。 Spark では、`/usr/bin/anaconda/bin` の Anaconda Python インストールが使用され、これは既定で Python 2.7 環境になります。 Python 3.x を使用し、PySpark3 カーネルにパッケージをインストールするには、その環境用の `conda` 実行可能ファイルへのパスを使用し、`-n` パラメーターを使用して、環境を指定します。 たとえば、コマンド `/usr/bin/anaconda/envs/py35/bin/conda install -c conda-forge ggplot -n py35` は、`conda-forge` チャネルを使用して `ggplot` パッケージを Python 3.5 環境にインストールします。

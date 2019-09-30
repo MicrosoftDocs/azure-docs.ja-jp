@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d41ad2518f885bbaa02dda3b01f0c02e9fc1d217
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd6717c132d32d54c16e7678695a09e35181a057
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080079"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086546"
 ---
 # <a name="web-app-that-signs-in-users---move-to-production"></a>ユーザーをサインインさせる Web アプリ - 運用環境への移行
 
@@ -37,12 +37,16 @@ Web アプリはユーザーをサインインさせると、サインインし�
 > [!div class="nextstepaction"]
 > [Web API を呼び出す Web アプリ](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive---web-app-tutorial"></a>詳細情報 - Web アプリのチュートリアル
+### <a name="deep-dive---aspnet-core-web-app-tutorial"></a>詳細情報 - ASP.NET Core Web アプリのチュートリアル
 
-ASP.NET Core チュートリアル: [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) を使用してユーザーをサインインさせる他の方法について説明します。 これは、サインインを追加する方法など、Web アプリの運用環境対応コードを使用したプログレッシブ チュートリアルです。
+ASP.NET Core チュートリアル: [ms-identity-aspnetcore-webapp-tutorial](https://github.com/Azure-Samples/ms-identity-aspnetcore-webapp-tutorial) を使用してユーザーをサインインさせる他の方法について説明します。 このサンプルは、以下のアカウントでのサインインを追加する方法など、Web アプリの運用環境対応コードを使用したプログレッシブ チュートリアルです。
 
-<!--- Removed the diagram as it's already shown in the above link to GitHub
+- 自分の組織
+- 複数の組織
+- 職場または学校アカウント、または個人用 Microsoft アカウント
+- [Azure AD B2C](https://aka.ms/aadb2c)
+- 各国のクラウド
 
-![Tutorial overview](media/scenarios/aspnetcore-webapp-tutorial.svg)
+### <a name="sample-code---java-web-app"></a>サンプル コード - Java Web アプリ
 
---->
+GitHub のサンプルで Java Web アプリの詳細を学習してください。[Microsoft ID プラットフォームを使用してユーザーをサインインさせ、Microsoft Graph を呼び出す Java Web アプリケーション](https://github.com/Azure-Samples/ms-identity-java-webapp)

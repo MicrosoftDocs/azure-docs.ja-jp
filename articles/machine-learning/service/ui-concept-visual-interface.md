@@ -1,7 +1,7 @@
 ---
 title: ビジュアル インターフェイス
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) を構成する用語、概念、ワークフローについて説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning 用のビジュアル インターフェイス (プレビュー) を構成する用語、概念、ワークフローについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 05/15/2019
-ms.openlocfilehash: 1cb56386f52d1c7b1ec357b912c648c1961b4c1d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: f560887a48ce4754b26a54ef0e18093c5577af34
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677985"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128801"
 ---
-# <a name="what-is-the-visual-interface-for-azure-machine-learning-service"></a>Azure Machine Learning service 用のビジュアル インターフェイスとは 
+# <a name="what-is-the-visual-interface-for-azure-machine-learning"></a>Azure Machine Learning 用のビジュアル インターフェイスとは 
 
-Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー) では、コードを記述することなく、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、追跡を行うことができます。
+Azure Machine Learning 用のビジュアル インターフェイス (プレビュー) では、コードを記述することなく、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、追跡を行うことができます。
 
 プログラミングは必要ありません。[データセット](#dataset)と[モジュール](#module)を視覚的に接続して、モデルを構築します。
 
-ビジュアル インターフェイスでは、Azure Machine Learning service [ワークスペース](concept-workspace.md)を使用し、次の操作を行います。
+ビジュアル インターフェイスでは、Azure Machine Learning [ワークスペース](concept-workspace.md)を使用し、次の操作を行います。
 
 + ワークスペースに示す[実験](#experiment)の成果物を作成する
 + [データセット](#dataset)にアクセスする
@@ -81,7 +81,7 @@ Azure Machine Learning service 用のビジュアル インターフェイス (�
 | Azure Machine Learning コンピューティング | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-コンピューティング先は、自分の Machine Learning [ワークスペース](concept-workspace.md)に接続されています。 [Azure portal](https://portal.azure.com) で自分のワークスペースのコンピューティング先を管理します。
+コンピューティング先は、自分の Machine Learning [ワークスペース](concept-workspace.md)に接続されています。 [Azure portal](https://portal.azure.com) または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で、自分のワークスペースのコンピューティング先を管理します。
 
 ## <a name="deployment"></a>Deployment
 
@@ -95,8 +95,8 @@ Web サービスでは、アプリケーションと自分のスコアリング 
 
 * 予測分析と機械学習の基本について学習する: [チュートリアル: ビジュアル インターフェイスで自動車価格を予測する](ui-tutorial-automobile-price-train-score.md)
 * いずれかのサンプルを使用して、ニーズに合わせて変更します。
-    * [サンプル 1 - 回帰: 価格を予測する](ui-sample-regression-predict-automobile-price-basic.md)
-    * [サンプル 2 - 回帰: 価格を予測し、アルゴリズムを比較する](ui-sample-regression-predict-automobile-price-compare-algorithms.md)
-    * [サンプル 3 - 分類: 信用リスクを予測する](ui-sample-classification-predict-credit-risk-basic.md)
-    * [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
-    * [サンプル 5 - 分類:顧客離れ、強い欲求、アップセルを予測する](ui-sample-classification-predict-churn.md)
+    * [サンプル 1 - 回帰: 価格を予測する](how-to-ui-sample-regression-predict-automobile-price-basic.md)
+    * [サンプル 2 - 回帰: 価格を予測し、アルゴリズムを比較する](how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md)
+    * [サンプル 3 - 分類: 信用リスクを予測する](how-to-ui-sample-classification-predict-credit-risk-basic.md)
+    * [サンプル 4 - 分類: 信用リスクを予測する (費用重視)](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+    * [サンプル 5 - 分類:顧客離れ、強い欲求、アップセルを予測する](how-to-ui-sample-classification-predict-churn.md)

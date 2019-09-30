@@ -2,8 +2,8 @@
 title: デプロイ アーキテクチャ - Azure Dedicated HSM | Microsoft Docs
 description: アプリケーション アーキテクチャの一部として Azure Dedicated HSM を使用するときの基本設計に関する考慮事項
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: f078df7677e771d131f15056ac4a54a58a3134bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: 93755ded8f9db27cf8e78079f32e90cccfac2831
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60912289"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883835"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure Dedicated HSM のデプロイ アーキテクチャ
 
@@ -29,7 +29,7 @@ Azure の専用 HSM は、暗号化キーの保管機能を Azure 内で実現�
 
 HSM は、Microsoft のデータ センター全体に分散され、高可用性ソリューションの基盤となる一対のデバイスとして容易にプロビジョニングできます。 災害に対する回復性の高いソリューションとなるよう、これらを複数のリージョン全体にデプロイすることもできます。 専用 HSM は現在、以下のリージョンで提供されています。
 
-* 米国東部
+* East US
 * 米国東部 2
 * 米国西部
 * 米国中南部

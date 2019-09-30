@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: diberry
-ms.openlocfilehash: 82285b27822b6c93f8efc24579bb99c308649ac0
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5b0516f3d610c0a518d6afc461dddebfb68a7c5d
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932668"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213516"
 ---
-# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>更新:LUIS アプリの API バージョン 3.x への移行
+# <a name="preview-migrate-to-api-version-3x-for-luis-apps"></a>プレビュー:LUIS アプリの API バージョン 3.x への移行
 
 クエリ予測エンドポイント API が変更されました。 このガイドでは、バージョン 3 のエンドポイント API に移行する方法について説明します。 
 
@@ -80,7 +80,7 @@ V3 の応答オブジェクトの変更には、[事前構築済みエンティ�
 
 V3 API には異なるクエリ文字列パラメーターがあります。
 
-|パラメーター名|Type|Version|既定値|目的|
+|パラメーター名|Type|Version|Default|目的|
 |--|--|--|--|--|
 |`log`|ブール値|V2 および V3|false|ログ ファイルにクエリを格納します。| 
 |`query`|string|V3 のみ|既定値なし - GET 要求では必須|**V2 では**、予測される発話は `q` パラメーター内にあります。 <br><br>**V3 では**、この機能は `query` パラメーターで渡されます。|
@@ -108,7 +108,7 @@ V3 API には異なるクエリ文字列パラメーターがあります。
 }
 ```
 
-|プロパティ|Type|Version|既定値|目的|
+|プロパティ|Type|Version|Default|目的|
 |--|--|--|--|--|
 |`dynamicLists`|array|V3 のみ|不要。|[動的リスト](#dynamic-lists-passed-in-at-prediction-time)を使用すると、既に LUIS アプリに存在し、トレーニングおよび発行済みの既存のリスト エンティティを拡張することができます。|
 |`externalEntities`|array|V3 のみ|不要。|[外部エンティティ](#external-entities-passed-in-at-prediction-time)を使用すると、LUIS アプリが実行時にエンティティを特定してラベル付けを行い、それを既存のエンティティの特徴として使用できるようになります。 |
@@ -418,7 +418,7 @@ V3 では、エンティティ メタデータを返す `verbose` フラグで�
     },
     "dynamicLists": [
         {
-            "listEntityName":"ProductList",
+            "listEntity*":"ProductList",
             "requestLists":[
                 {
                     "name": "Azure Cognitive Services",

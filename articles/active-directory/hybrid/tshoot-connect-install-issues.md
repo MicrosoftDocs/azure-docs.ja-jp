@@ -15,12 +15,12 @@ ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e077127681f8bd7b650ab22f2d036efd7f9733ee
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e75ad29c5b4a76de5317991995f132c6cb53bbe3
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60454793"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70211848"
 ---
 # <a name="troubleshoot-azure-ad-connect-install-issues"></a>トラブルシューティング:Azure AD Connect のインストールの問題
 
@@ -58,7 +58,7 @@ ms.locfileid: "60454793"
 
 ## <a name="next-steps"></a>次の手順
 - [Azure AD Connect 同期](how-to-connect-sync-whatis.md)。
-- [ハイブリッド ID とは](whatis-hybrid-identity.md)。
+- [ハイブリッド ID とは](whatis-hybrid-identity.md)
 
 
 

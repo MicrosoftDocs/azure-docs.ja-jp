@@ -1,25 +1,22 @@
 ---
 title: Azure リソースの探索
-description: Resource Graph のクエリ言語を使用して、リソースを探索し、どのように接続されているかを確認する方法について学習します。
+description: Resource Graph クエリ言語を使用してリソースを探索し、それらがどのように接続されているかを確認する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 04/23/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 0b4a75558f5e82b707ae5d012acef4d2c5c4b7a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 148d69b96291737088a1472a9affd8bb9e43ab1b
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723818"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241119"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Resource Graph を使用してご利用の Azure リソースを探索する
 
 Azure Resource Graph では、し、Azure リソースを迅速かつ大規模に探索および確認する機能が提供されています。 迅速に応答するよう設計されており、ご利用の環境のほか、Azure リソースを構成するプロパティの詳細を確認する優れた手段となっています。
-
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="explore-virtual-machines"></a>仮想マシンの詳細を確認する
 
@@ -259,17 +256,25 @@ JSON 結果は次の例のように構成されます。
 
 ## <a name="explore-virtual-machines-to-find-public-ip-addresses"></a>仮想マシンを探索してパブリック IP アドレスを確認する
 
-この Azure CLI の一連のクエリは、最初に仮想マシンに接続されているすべてのネットワーク インターフェイス (NIC) リソースを検索し、それらを格納します。 次に、NIC の一覧を使用して、パブリック IP アドレスである各 IP アドレスのリソースを検索し、それらの値を格納します。 最後に、パブリック IP アドレスの一覧を提供します。
+この一連のクエリでは、最初に仮想マシンに接続されているすべてのネットワーク インターフェイス (NIC) リソースが検索され、それらが格納されます。 次に、NIC の一覧を使用して、パブリック IP アドレスである各 IP アドレスのリソースが検索され、それらの値が格納されます。 最後に、パブリック IP アドレスの一覧が提供されます。
 
 ```azurecli-interactive
-# Use Resource Graph to get all NICs and store in the 'nic' variable
+# Use Resource Graph to get all NICs and store in the 'nics.txt' file
 az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20" --output table | tail -n +3 > nics.txt
 
 # Review the output of the query stored in 'nics.txt'
 cat nics.txt
 ```
 
-次のクエリの中で `nics.txt` ファイルを使用して、関連するネットワーク インターフェイス リソースの詳細情報を取得します。これには、NIC にアタッチされているパブリック IP アドレスが含まれます。
+```azurepowershell-interactive
+# Use Resource Graph to get all NICs and store in the $nics variable
+$nics = Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | project nic = tostring(properties['networkProfile']['networkInterfaces'][0]['id']) | where isnotempty(nic) | distinct nic | limit 20"
+
+# Review the output of the query stored in the variable
+$nics.nic
+```
+
+次のクエリでは、ファイル (Azure CLI) または変数 (Azure PowerShell) を使用して、関連するネットワーク インターフェイス リソースの詳細情報を取得します。これには、NIC にアタッチされているパブリック IP アドレスが含まれます。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'nics.txt' file to get all related public IP addresses and store in 'publicIp.txt' file
@@ -279,11 +284,24 @@ az graph query -q="where type =~ 'Microsoft.Network/networkInterfaces' | where i
 cat ips.txt
 ```
 
-最後に、`ips.txt` に格納されているパブリック IP アドレス リソースの一覧を使用して、そこから実際のパブリック IP アドレスを取得して表示します。
+```azurepowershell-interactive
+# Use Resource Graph  with the $nics variable to get all related public IP addresses and store in $ips variable
+$ips = Search-AzGraph -Query "where type =~ 'Microsoft.Network/networkInterfaces' | where id in ('$($nics.nic -join "','")') | project publicIp = tostring(properties['ipConfigurations'][0]['properties']['publicIPAddress']['id']) | where isnotempty(publicIp) | distinct publicIp"
+
+# Review the output of the query stored in the variable
+$ips.publicIp
+```
+
+最後に、ファイル (Azure CLI) または変数 (Azure PowerShell) に格納されているパブリック IP アドレス リソースの一覧を使用して、関連するオブジェクトから実際のパブリック IP アドレスを取得して表示します。
 
 ```azurecli-interactive
 # Use Resource Graph with the 'ips.txt' file to get the IP address of the public IP address resources
 az graph query -q="where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$(awk -vORS="','" '{print $0}' ips.txt | sed 's/,$//')') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip" --output table
+```
+
+```azurepowershell-interactive
+# Use Resource Graph with the $ips variable to get the IP address of the public IP address resources
+Search-AzGraph -Query "where type =~ 'Microsoft.Network/publicIPAddresses' | where id in ('$($ips.publicIp -join "','")') | project ip = tostring(properties['ipAddress']) | where isnotempty(ip) | distinct ip"
 ```
 
 ## <a name="next-steps"></a>次の手順

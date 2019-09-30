@@ -1,19 +1,19 @@
 ---
 title: 例:多層構造ファセット - Azure Search
 description: 複数レベルの分類法を表すファセット構造を構築し、アプリケーション ページに含めることができる、入れ子になったナビゲーション構造を作成する方法について説明します。
-author: cstone
+author: HeidiSteen
 manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: chstone
-ms.openlocfilehash: 5a6fda0157f0f3a4ca5861acd4bcbead7839e451
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.author: heidist
+ms.openlocfilehash: 9a56bba55f9b3a59126168bc2bbbd50927c3fc78
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649929"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274078"
 ---
 # <a name="example-multi-level-facets-in-azure-search"></a>例:Azure Search の多層構造ファセット
 

@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 6f0176253d0f1953e9c779a317cfe7bf453acb8f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: b8ba341252679a07e50f9b276f7f485b08a6acba
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385453"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164862"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
 
@@ -106,7 +106,7 @@ Visual Studio または Azure Portal で過去の実行履歴を表示するに�
 
 ## <a name="create-automated-deployment-templates"></a>自動デプロイ テンプレートを作成する
 
-ロジック アプリのソリューションを作成したら、アプリをキャプチャし、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md#template-deployment)として世界中の Azure リージョンにデプロイすることができます。 この機能を使用すると、パラメーターを変更して、異なるバージョンのアプリを作成したり、Azure Pipelines にソリューションを統合したりできます。 Azure Functions をデプロイ テンプレートに含めることもできるので、すべての依存関係を含むソリューション全体を 1 つのテンプレートとして管理できます。 [ロジック アプリ デプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)方法について学習してください。
+ロジック アプリのソリューションを作成したら、アプリをキャプチャし、[Azure Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)として世界中の Azure リージョンにデプロイすることができます。 この機能を使用すると、パラメーターを変更して、異なるバージョンのアプリを作成したり、Azure Pipelines にソリューションを統合したりできます。 Azure Functions をデプロイ テンプレートに含めることもできるので、すべての依存関係を含むソリューション全体を 1 つのテンプレートとして管理できます。 [ロジック アプリ デプロイを自動化する](logic-apps-azure-resource-manager-templates-overview.md)方法について学習してください。
 
 Azure 関数を使用したデプロイ テンプレートの例については、[Azure クイックスタート テンプレート レポジトリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)を参照してください。
 

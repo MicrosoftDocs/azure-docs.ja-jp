@@ -1,80 +1,59 @@
 ---
-title: Azure Active Directory Domain Services:マネージド ドメインでの同期 | Microsoft Docs
-description: Azure Active Directory Domain Services のマネージド ドメインでの同期について
+title: Azure AD Domain Services の同期のしくみ | Microsoft Docs
+description: Azure AD テナントまたはオンプレミス Active Directory Domain Services 環境から Azure Active Directory Domain Services のマネージド ドメインへのオブジェクトと資格情報の同期プロセスのしくみについて説明します。
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 08/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 475817985885cdd6023e72f20ecf35a3ca582924
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 88a5e5fa1267e834a04c46ed38868cf74acd9bb0
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67472436"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70171940"
 ---
-# <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでの同期
-次の図は、Azure AD Domain Services のマネージド ドメインにおける同期のしくみを示しています。
+# <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメイン内でのオブジェクトと資格情報の同期のしくみ
 
-![Azure AD Domain Services での同期](./media/active-directory-domain-services-design-guide/sync-topology.png)
+Azure Active Directory Domain Services (AD DS) のマネージド ドメイン内のオブジェクトと資格情報は、ドメイン内でローカルに作成するか、Azure Active Directory (AD) テナントから同期することができます。 Azure AD DS を初めてデプロイするときに、一方向の自動同期が構成され、Azure AD からオブジェクトがレプリケートされます。 この一方向の同期は引き続きバックグラウンドで実行され、Azure AD からの変更を反映して Azure AD DS マネージド ドメインを最新の状態に保ちます。
 
-## <a name="synchronization-from-your-on-premises-directory-to-your-azure-ad-tenant"></a>オンプレミスのディレクトリから Azure AD テナントへの同期
-Azure AD Connect Sync は、ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュの Azure AD テナントへの同期に使用されます。 UPN やオンプレミスの SID (セキュリティ識別子) などのユーザー アカウントの属性が同期されます。 Azure AD Domain Services を使用すると、NTLM および Kerberos 認証に必要な従来の資格情報ハッシュも、Azure AD テナントに同期されます。
+ハイブリッド環境では、Azure AD Connect を使用して、オンプレミスの AD DS ドメインのオブジェクトと資格情報を Azure AD に同期できます。 これらのオブジェクトが Azure AD に正常に同期されると、自動バックグラウンド同期によって、Azure AD DS マネージド ドメインを使用するアプリケーションでそれらのオブジェクトと資格情報を使用できるようになります。
 
-書き戻しを構成すると、Azure AD ディレクトリで行われた変更が、オンプレミスの Active Directory に同期されます。 たとえば、Azure AD のセルフサービス パスワード管理を使用してパスワードを変更すると、変更されたパスワードがオンプレミスの AD ドメインで更新されます。
+次の図は、Azure AD DS、Azure AD、およびオプションのオンプレミスの AD DS 環境間で同期がどのように行われるかを示しています。
 
-> [!NOTE]
-> 既知のバグ/問題がすべて修正されているよう、常に最新バージョンの Azure AD Connect を使用してください。
->
->
+![Azure AD Domain Services のマネージド ドメインでの同期の概要](./media/active-directory-domain-services-design-guide/sync-topology.png)
 
-## <a name="synchronization-from-your-azure-ad-tenant-to-your-managed-domain"></a>Azure AD テナントからマネージド ドメインへの同期
-ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュは、Azure AD テナントから Azure AD Domain Services のマネージド ドメインに同期されます。 この同期プロセスは自動的に行われます。 この同期プロセスを構成、監視、または管理する必要はありません。 Azure AD ディレクトリ内のオブジェクトの数に応じて、初期同期には数時間から数日かかることがあります。 初期同期の完了後、Azure AD で行われた変更がマネージド ドメインで更新されるまでに約 20 から 30 分かかります。 この同期間隔は、Azure AD で実行されたパスワードの変更や属性の変更に適用されます。
+## <a name="synchronization-from-azure-ad-to-azure-ad-ds"></a>Azure AD から Azure AD DS への同期
 
-また同期プロセスは、一方向性のプロセスです。 マネージド ドメインは、カスタムの組織単位 (OU) を作成した場合を除き、主に読み取り専用です。 そのため、マネージド ドメイン内でユーザー属性、ユーザー パスワード、またはグループ メンバーシップを変更することはできません。 したがって、マネージド ドメインから Azure AD テナントに、逆方向に変更内容が同期されることはありません。
+ユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュは、Azure AD から Azure AD DS に一方向で同期されます。 この同期プロセスは自動的に行われます。 この同期プロセスを構成、監視、または管理する必要はありません。 Azure AD ディレクトリ内のオブジェクトの数に応じて、初期同期には数時間から数日かかることがあります。 初期同期が完了した後、Azure AD 内で加えられた変更 (パスワードや属性の変更など) は、Azure AD DS に自動的に同期されます。
 
-## <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>複数フォレストのオンプレミス環境からの同期
-多くの組織が、複数のアカウント フォレストで構成された複雑なオンプレミスの ID インフラストラクチャを持っています。 Azure AD Connect では、複数フォレストの環境から Azure AD テナントへのユーザー、グループ、および資格情報ハッシュの同期をサポートしています。
+設計上、同期プロセスは一方向です。 Azure AD DS から Azure AD への変更の逆方向の同期は行われません。 Azure AD DS マネージド ドメインは、作成できるカスタムの組織単位 (OU) を除き、主に読み取り専用です。 Azure AD DS マネージド ドメイン内でユーザー属性、ユーザー パスワード、またはグループ メンバーシップを変更することはできません。
 
-これに対し、Azure AD テナントは非常にシンプルでフラットな名前空間です。 Azure AD によって保護されたアプリケーションにユーザーが確実にアクセスできるようにするには、異なるフォレストのユーザー アカウント間における UPN の競合を解決する必要があります。 Azure AD Domain Services のマネージド ドメインは Azure AD テナントとよく似ています。 マネージド ドメイン内の OU はフラットな構造になっています。 ユーザー アカウントとグループは、異なるオンプレミス ドメインまたはフォレストから同期されても、すべて "AADDC Users" コンテナー内に格納されます。 オンプレミスで階層状の OU 構造を構成している場合があります。 その場合も、マネージド ドメインでは単純でフラットな OU 構造が維持されます。
+## <a name="attribute-synchronization-and-mapping-to-azure-ad-ds"></a>属性の同期と Azure AD DS へのマッピング
 
-## <a name="exclusions---what-isnt-synchronized-to-your-managed-domain"></a>除外項目 - マネージド ドメインに同期されないもの
-次のオブジェクトや属性は、Azure AD テナントまたはマネージド ドメインに同期されません。
+次の表では、一般的な属性の一部と、これらが Azure AD DS に同期される方法を示します。
 
-* **除外対象の属性:** Azure AD Connect を使用して、オンプレミス ドメインから Azure AD テナントへの同期から、特定の属性を除外することができます。 これらの除外対象の属性は、マネージド ドメインでは使用できません。
-* **グループ ポリシー:** オンプレミス ドメインで構成されたグループ ポリシーは、マネージド ドメインに同期されません。
-* **Sysvol 共有:** 同様に、オンプレミス ドメインの SYSVOL 共有の内容も、マネージド ドメインに同期されません。
-* **コンピューター オブジェクト:** オンプレミス ドメインに参加したコンピューターのコンピューター オブジェクトは、マネージド ドメインに同期されません。 これらのコンピューターはマネージド ドメインと信頼関係がなく、オンプレミス ドメインにのみ属します。 マネージド ドメイン内にあるコンピューター オブジェクトは、マネージド ドメインに明示的にドメイン参加させたコンピューターのものだけです。
-* **ユーザーとグループの SidHistory 属性:** オンプレミス ドメインのプライマリ ユーザーおよびプライマリ グループの SID は、マネージド ドメインに同期されます。 ただし、ユーザーとグループの既存の SidHistory 属性については、オンプレミス ドメインからマネージド ドメインに同期されません。
-* **組織単位 (OU) の構造:** オンプレミス ドメインで定義された組織単位は、マネージド ドメインに同期されません。 マネージド ドメインには、2 つの組み込み OU があります。 既定では、マネージド ドメインはフラットな OU 構造をしています。 ただし、[マネージド ドメイン内にカスタムの OU を作成](create-ou.md)することができます。
-
-## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>特定の属性がマネージド ドメインに同期される方法
-次の表では、一般的な属性の一部を示し、これらがマネージド ドメインに同期される方法を説明します。
-
-| マネージド ドメイン内の属性 | source | メモ |
+| Azure AD DS 内の属性 | source | メモ |
 |:--- |:--- |:--- |
-| UPN |Azure AD テナントのユーザーの UPN 属性 |Azure AD テナントの UPN 属性は、そのままマネージド ドメインに同期されます。 そのため、UPN を使用することが、マネージド ドメインにサインインする最も確実な方法になります。 |
-| SAMAccountName |Azure AD テナントのユーザーに設定、または自動生成された mailNickname 属性 |SAMAccountName 属性は、Azure AD テナントの mailNickname 属性を同期元とします。 複数のユーザー アカウントで mailNickname 属性が同じ場合は、SAMAccountName が自動生成されます。 ユーザーの mailNickname または UPN プレフィックスが 20 文字を超える場合は、SAMAccountName 属性の 20 文字以下の制限を満たすために SAMAccountName が自動生成されます。 |
-| パスワード |Azure AD テナントのユーザー パスワード |NTLM または Kerberos 認証に必要な資格情報ハッシュ (補足の資格情報とも呼ばれます) は、Azure AD テナントから同期されます。 Azure AD テナントが同期されたテナントの場合は、これらの資格情報の同期元はオンプレミス ドメインになります。 |
-| プライマリ ユーザーおよびグループの SID |自動生成 |ユーザーおよびグループ アカウントのプライマリ SID は、マネージド ドメインで自動生成されます。 この属性は、オンプレミス AD ドメインのオブジェクトのプライマリ ユーザーおよびグループの SID とは一致しません。 この不一致の原因は、マネージド ドメインがオンプレミス ドメインとは異なる SID の名前空間を持つためです。 |
-| ユーザーとグループの SID 履歴 |オンプレミスのプライマリ ユーザーおよびグループの SID |マネージド ドメインのユーザーおよびグループの SidHistory 属性は、オンプレミス ドメインの対応するプライマリ ユーザーまたはグループの SID と一致するように設定されています。 この機能により、リソースを再度 ACL 処理する必要がなくなるため、オンプレミスのアプリケーションをリフト アンド シフト方式でマネージド ドメインに簡単に移行することができます。 |
+| UPN | Azure AD テナント内のユーザーの *UPN* 属性 | Azure AD テナントの UPN 属性は、そのまま Azure AD DS に同期されます。 Azure AD DS マネージド ドメインにサインインする最も確実な方法は、UPN を使用することです。 |
+| SAMAccountName | Azure AD テナントのユーザーに設定、または自動生成された *mailNickname* 属性 | *SAMAccountName* 属性は、Azure AD テナントの *mailNickname* 属性を同期元とします。 複数のユーザー アカウントで *mailNickname* 属性が同じ場合は、*SAMAccountName* が自動生成されます。 ユーザーの *mailNickname* または *UPN* プレフィックスが 20 文字を超える場合は、*SAMAccountName* 属性の 20 文字以下の制限を満たすために *SAMAccountName* が自動生成されます。 |
+| パスワード | Azure AD テナントのユーザー パスワード | NTLM または Kerberos 認証に必要な従来のパスワード ハッシュは、Azure AD テナントから同期されます。 Azure AD Connect を使用して Azure AD テナントがハイブリッド同期用に構成されている場合、これらのパスワード ハッシュはオンプレミスの AD DS 環境から供給されます。 |
+| プライマリ ユーザーおよびグループの SID | 自動生成 | ユーザーおよびグループ アカウントのプライマリ SID は、Azure AD DS 内に自動生成されます。 この属性は、オンプレミスの AD DS 環境内のオブジェクトのプライマリ ユーザーおよびグループの SID とは一致しません。 この不一致の原因は、Azure AD DS マネージド ドメインにオンプレミス AD DS ドメインとは異なる SID 名前空間があることです。 |
+| ユーザーとグループの SID 履歴 | オンプレミスのプライマリ ユーザーおよびグループの SID | Azure AD DS 内のユーザーおよびグループの *SidHistory* 属性は、オンプレミスの AD DS 環境内の対応するプライマリ ユーザーまたはグループの SID と一致するように設定されています。 この機能により、リソースを再度 ACL 処理する必要がなくなるため、オンプレミスのアプリケーションを Azure AD DS にリフトアンドシフトすることが簡単になります。 |
 
-> [!NOTE]
-> **UPN 形式を使用したマネージド ドメインへのサインイン:** マネージド ドメインの一部ユーザー アカウントの SAMAccountName 属性が自動生成される場合があります。 複数のユーザーで mailNickname 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーのSAMAccountName が自動生成されることがあります。 そのため SAMAccountName 形式 (例: "CONTOSO100\joeuser") は、ドメインにサインインするうえで常に確実な方法というわけではありません。 ユーザーの自動生成された SAMAccountName が、UPN プレフィックスとは異なる場合があります。 マネージド ドメインに確実にサインインするには、UPN 形式 (例: 「joeuser@contoso100.com」) を使用します。
+> [!TIP]
+> **UPN 形式を使用したマネージド ドメインへのサインイン** Azure AD DS マネージド ドメイン内の一部ユーザー アカウントに対して `CONTOSO\driley` などの *SAMAccountName* 属性が自動生成される場合があります。 ユーザーの自動生成された *SAMAccountName* が、UPN プレフィックスとは異なる場合があるため、常に信頼できるサインイン方法ではありません。 たとえば、複数のユーザーで *mailNickname* 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーの *SAMAccountName* が自動生成されることがあります。 Azure AD DS マネージド ドメインに確実にサインインするには、`driley@contoso.com` などの UPN 形式を使用します。
 
 ### <a name="attribute-mapping-for-user-accounts"></a>ユーザー アカウントの属性のマッピング
-次の表は、Azure AD テナントのユーザー オブジェクトの特定の属性が、マネージド ドメインの対応する属性にどのように同期されるかを示しています。
 
-| Azure AD テナントのユーザー属性 | マネージド ドメインのユーザー属性 |
+次の表は、Azure AD 内のユーザー オブジェクトの特定の属性が、Azure AD DS 内の対応する属性にどのように同期されるかを示しています。
+
+| Azure AD 内のユーザー属性 | Azure AD DS 内のユーザー属性 |
 |:--- |:--- |
 | accountEnabled |userAccountControl (ACCOUNT_DISABLED ビットの設定または解除) |
 | city |l |
@@ -101,9 +80,10 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 | userPrincipalName |userPrincipalName |
 
 ### <a name="attribute-mapping-for-groups"></a>グループの属性のマッピング
-次の表は、Azure AD テナントのグループ オブジェクトの特定の属性が、マネージド ドメインの対応する属性にどのように同期されるかを示しています。
 
-| Azure AD テナントのグループ属性 | マネージド ドメインのグループ属性 |
+次の表は、Azure AD 内のグループ オブジェクトの特定の属性が、Azure AD DS 内の対応する属性にどのように同期されるかを示しています。
+
+| Azure AD 内のグループ属性 | Azure AD DS 内のグループ属性 |
 |:--- |:--- |
 | displayName |displayName |
 | displayName |SAMAccountName (自動生成される場合があります) |
@@ -113,20 +93,44 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 | onPremiseSecurityIdentifier |sidHistory |
 | securityEnabled |groupType |
 
+## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>オンプレミスの AD DS から Azure AD と Azure AD DS への同期
+
+Azure AD Connect は、オンプレミスの AD DS 環境から Azure AD へのユーザー アカウント、グループ メンバーシップ、および資格情報ハッシュの同期に使用されます。 UPN やオンプレミスのセキュリティ識別子 (SID) などのユーザー アカウントの属性が同期されます。 Azure AD Domain Services を使用してサインインするために、NTLM および Kerberos 認証に必要な従来のパスワード ハッシュも、Azure AD に同期されます。
+
+ライトバックを構成すると、Azure AD からの変更がオンプレミスの AD DS 環境に同期されます。 たとえば、ユーザーが Azure AD のセルフサービス パスワード管理を使用してパスワードを変更すると、パスワードがオンプレミスの AD DS 環境内で更新されます。
+
+> [!NOTE]
+> 既知のバグ/問題がすべて修正されているよう、常に最新バージョンの Azure AD Connect を使用してください。
+
+### <a name="synchronization-from-a-multi-forest-on-premises-environment"></a>複数フォレストのオンプレミス環境からの同期
+
+多くの組織には、複数のフォレストを含む、かなり複雑なオンプレミスの AD DS 環境があります。 Azure AD Connect では、複数フォレストの環境から Azure AD へのユーザー、グループ、および資格情報ハッシュの同期がサポートされます。
+
+Azure AD には、はるかに単純なフラット型名前空間があります。 Azure AD によって保護されたアプリケーションにユーザーが確実にアクセスできるようにするには、異なるフォレストのユーザー アカウント間における UPN の競合を解決する必要があります。 Azure AD DS マネージド ドメインでは、Azure AD と同様に、フラットな OU 構造が使用されます。 階層的な OU 構造をオンプレミスで構成した場合でも、ユーザー アカウントとグループは、異なるオンプレミス ドメインまたはフォレストから同期されても、すべて *AADDC Users* コンテナー内に格納されます。 Azure AD DS マネージド ドメインでは、階層的な OU 構造が平坦化されます。
+
+前に説明したように、Azure AD DS から Azure AD への同期は行われません。 Azure AD DS に[カスタム組織単位 (OU) を作成](create-ou.md)し、そのカスタム OU 内にユーザー、グループ、またはサービス アカウントを作成することができます。 カスタム OU 内に作成されたオブジェクトは、いずれも Azure AD に同期されません。 これらのオブジェクトは Azure AD DS マネージド ドメイン内でのみ使用可能で、Azure AD PowerShell コマンドレット、Azure AD Graph API、または Azure AD の管理 UI を使用して表示することはできません。
+
+## <a name="what-isnt-synchronized-to-azure-ad-ds"></a>Azure AD DS に同期されないもの
+
+次のオブジェクトまたは属性は、Azure AD または Azure AD DS に同期されません。
+
+* **除外対象の属性:** Azure AD Connect を使用して、オンプレミスの AD DS 環境から Azure AD への同期から、特定の属性を除外することを選択できます。 これらの除外された属性は、Azure AD DS では使用できません。
+* **グループ ポリシー:** オンプレミスの AD DS 環境内で構成されているグループ ポリシーは、Azure AD DS に同期されません。
+* **sysvol フォルダー:** オンプレミスの AD DS 環境内の *Sysvol* フォルダーの内容は、Azure AD DS に同期されません。
+* **コンピューター オブジェクト:** オンプレミスの AD DS 環境に参加しているコンピューターのコンピューター オブジェクトは、Azure AD DS に同期されません。 これらのコンピューターは、Azure AD DS マネージド ドメインとの信頼関係がなく、オンプレミスの AD DS 環境にのみ属しています。 Azure AD DS では、マネージド ドメインに明示的にドメイン参加させたコンピューターのコンピューター オブジェクトのみが表示されます。
+* **ユーザーとグループの SidHistory 属性:** オンプレミスの AD DS 環境からのプライマリ ユーザーおよびプライマリ グループの SID は、Azure AD DS に同期されます。 ただし、ユーザーとグループの既存の *SidHistory* 属性は、オンプレミスの AD DS 環境から Azure AD DS に同期されません。
+* **組織単位 (OU) の構造:** オンプレミスの AD DS 環境内で定義されている組織単位は、Azure AD DS と同期しません。 Azure AD DS には、ユーザー用に 1 つとコンピューター用に 1 つ、合計 2 つの組み込み OU があります。 Azure AD DS マネージド ドメインにはフラットな OU 構造があります。 [マネージド ドメイン内にカスタムの OU を作成](create-ou.md)することを選択できます。
+
 ## <a name="password-hash-synchronization-and-security-considerations"></a>パスワード ハッシュの同期とセキュリティに関する考慮事項
-Azure AD Domain Services を有効にすると、Azure AD ディレクトリによってパスワード ハッシュが生成され、NTLM および Kerberos 互換の形式で保存されます。 
 
-既存のクラウド ユーザー アカウントの場合、Azure AD ではクリア テキストのパスワードは保存されないので、これらのハッシュを自動的に生成することはできません。 そのため、Microsoft では、パスワード ハッシュを生成して Azure AD に保存するために、[クラウド ユーザーにパスワードをリセットまたは変更](active-directory-ds-getting-started-password-sync.md)するよう求めています。 Azure AD Domain Services を有効にした後に Azure AD で作成されたクラウド ユーザー アカウントの場合、パスワード ハッシュが生成され、NTLM および Kerberos 互換の形式で保存されます。 
+Azure AD DS を有効にすると、NTLM + Kerberos 認証用の従来のパスワード ハッシュが必要になります。 Azure AD にはクリア テキストのパスワードが格納されないため、既存のユーザー アカウントに対してこれらのハッシュを自動的に生成することはできません。 NTLM および Kerberos 互換のパスワード ハッシュは、生成されて格納された後、常に暗号化されて Azure AD に保存されます。 暗号化キーは、Azure AD テナントごとに一意です。 これらのハッシュは、Azure AD DS だけが復号化キーにアクセスできるように暗号化されます。 Azure AD 内の他のサービスやコンポーネントは、復号化キーにアクセスすることはできません。 その後、従来のパスワード ハッシュは、Azure AD から Azure AD DS マネージド ドメインのドメイン コントローラーに同期されます。 Azure AD DS 内のこれらのマネージド ドメイン コントローラーのディスクは、保存時に暗号化されます。 オンプレミスの AD DS 環境にパスワードが保存され、セキュリティで保護される場合と同様に、これらのパスワード ハッシュは、これらのドメイン コントローラーに保存され、セキュリティで保護されます。
 
-Azure AD Connect 同期を使用してオンプレミスの AD から同期されたユーザー アカウントの場合、[NTLM および Kerberos 互換の形式でパスワード ハッシュを同期するように Azure AD Connect を構成](active-directory-ds-getting-started-password-sync-synced-tenant.md)する必要があります。
+クラウドのみの Azure AD 環境では、必要なパスワード ハッシュを生成して Azure AD に保存するために、[ユーザーにパスワードをリセットまたは変更](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds)するよう求めています。 Azure AD Domain Services を有効にした後に Azure AD で作成されたクラウド ユーザー アカウントの場合、パスワード ハッシュが生成され、NTLM および Kerberos 互換の形式で保存されます。 これらの新しいアカウントでは、パスワードをリセットまたは変更する必要がなく、従来のパスワード ハッシュが生成されます。
 
-NTLM および Kerberos 互換のパスワード ハッシュは、常に暗号化されて Azure AD に保存されます。 これらのハッシュは、Azure AD Domain Services だけが復号化キーにアクセスできるように暗号化されます。 Azure AD 内の他のサービスやコンポーネントは、復号化キーにアクセスすることはできません。 暗号化キーは、Azure AD テナントごとに一意です。 Azure AD Domain Services は、マネージド ドメインのドメイン コントローラーにパスワード ハッシュを同期します。 Windows Server AD ドメイン コントローラーにパスワードが保存され、セキュリティで保護される場合と同様に、これらのパスワード ハッシュは、これらのドメイン コントローラーに保存され、セキュリティで保護されます。 これらのマネージド ドメイン コントローラーのディスクは、保存時に暗号化されます。
+Azure AD Connect を使用してオンプレミスの AD DS 環境から同期されたハイブリッド ユーザー アカウントの場合、[NTLM および Kerberos 互換の形式でパスワード ハッシュを同期するように Azure AD Connect を構成](tutorial-configure-password-hash-sync.md)する必要があります。
 
-## <a name="objects-that-are-not-synchronized-to-your-azure-ad-tenant-from-your-managed-domain"></a>マネージド ドメインから Azure AD テナントに同期されないオブジェクト
-この記事の前のセクションで説明したとおり、マネージド ドメインから Azure AD テナントへの同期はありません。 ただし、マネージド ドメイン内に[カスタムの組織単位 (OU) を作成](create-ou.md)することができます。 これらのカスタム OU 内には、ほかの OU、ユーザー、グループ、またはサービス アカウントを作成することもできます。 カスタム OU 内に作成されたオブジェクトは、いずれも Azure AD テナントに同期されません。 これらのオブジェクトはマネージド ドメイン内でのみ使用することができます。 そのため、Azure AD PowerShell コマンドレット、Azure AD Graph API、または Azure AD の管理 UI を使用しても、これらのオブジェクトは表示されません。
+## <a name="next-steps"></a>次の手順
 
-## <a name="related-content"></a>関連コンテンツ
-* [機能 - Azure AD Domain Services](active-directory-ds-features.md)
-* [デプロイ シナリオ - Azure AD Domain Services](scenarios.md)
-* [Azure AD Domain Services のネットワークに関する考慮事項](network-considerations.md)
-* [Azure AD ドメイン サービスの使用開始](create-instance.md)
+パスワード同期の仕様について詳しくは、[Azure AD Connect を使用したパスワード ハッシュ同期の方法](../active-directory/hybrid/how-to-connect-password-hash-synchronization.md?context=/azure/active-directory-domain-services/context/azure-ad-ds-context)に関する記事をご覧ください。
+
+Azure AD DS の使用を開始するには、[マネージド ドメインを作成](tutorial-create-instance.md)します。

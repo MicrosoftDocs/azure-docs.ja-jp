@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/08/2018
+ms.date: 08/27/2019
 ms.author: danlep
-ms.openlocfilehash: 9690f900b6fe8d81fbebc3fcf5b7022b12bc3b96
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: f80956ec401737766f7a85540e90be70b9d621e7
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310259"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114702"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
@@ -21,7 +21,7 @@ Azure Kubernetes Service (AKS) で Azure Container Registry (ACR) を使用す�
 
 これらのいずれかの認証方法のみを構成する必要があります。 最も一般的な手法は、[AKS サービス プリンシパルを使用してアクセス権を付与する](#grant-aks-access-to-acr)ことです。 特定のニーズがある場合、必要に応じて [Kubernetes シークレットを使用してアクセス権を付与する](#access-with-kubernetes-secret)ことができます。
 
-この記事では、AKS クラスターを既に作成しており、`kubectl` コマンド ライン クライアントを使用してクラスターにアクセスできることを前提としています。
+この記事では、AKS クラスターを既に作成しており、`kubectl` コマンド ライン クライアントを使用してクラスターにアクセスできることを前提としています。 代わりにクラスターを作成し、クラスター作成時にコンテナーのレジストリへのアクセスを構成する場合は、[チュートリアルのAKS クラスターのデプロイ](../aks/tutorial-kubernetes-deploy-cluster.md)に関する記事または「[Azure Kubernetes Service から Azure Container Registry の認証を受ける (プレビュー)](../aks/cluster-container-registry-integration.md)」を参照してください。
 
 ## <a name="grant-aks-access-to-acr"></a>ACR へのアクセス許可を AKS に付与する
 

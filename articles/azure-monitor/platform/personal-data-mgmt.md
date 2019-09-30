@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 29c91f2dcff04a2d21973e79c5719c3f4d84181b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: a443931b8340552251fbcbe534f009eeeaf953aa
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827381"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69617303"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
@@ -98,6 +98,11 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
 プライバシー処理の一環として、Microsoft は "*消去*" API パスを提供しています。 実行に関するリスク、パフォーマンスへの潜在的な影響、Log Analytics データの総集計や測定などにおけるスキューの発生の可能性があり、このパスは慎重に使用する必要があります。 プライベート データを処理する別のアプローチについては、「[個人データの処理に関する戦略](#strategy-for-personal-data-handling)」セクションを参照してください。
 
 消去は高度な特権が必要な操作であり、Azure Resource Manager でロールが明示的に付与されない限り、Azure のアプリまたはユーザーは (リソース所有者でさえも) 実行のアクセス許可を得られません。 このロールは "_データ消去者_" であり、データ損失の可能性があるため慎重に委任する必要があります。 
+
+> [!IMPORTANT]
+> システム リソースを管理するために、消去要求は 1 時間あたり 50 要求に制限されます。 消去要求の実行をバッチ処理するには、消去が必要なすべてのユーザー ID を述語に含む 1 つのコマンドを送信します。 複数の ID を指定するには、[in 演算子](/azure/kusto/query/inoperator)を使用します。 消去要求を実行する前にクエリを実行して、想定される結果になることを確認するようにします。 
+
+
 
 Azure Resource Manager ロールが割り当てられると、2 つの新しい API パスが利用できるようになります。 
 

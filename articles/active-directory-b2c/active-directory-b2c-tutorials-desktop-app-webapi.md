@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b4b70ddfe6ea2baf42227cc83ed0cc14969b3e92
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 75469d4522cea2914e0f69d5aa1850e468cb0d50
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66508095"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064851"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してデスクトップ アプリから Node.js Web API へのアクセスを許可する
 
-このチュートリアルでは、Azure Active Directory (Azure AD) B2C で保護された Node.js Web API リソースを Windows Presentation Foundation (WPF) デスクトップ アプリから呼び出す方法について説明します。
+このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) で保護された Node.js Web API リソースを Windows Presentation Foundation (WPF) デスクトップ アプリから呼び出す方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -37,10 +37,10 @@ ms.locfileid: "66508095"
 
 ## <a name="add-a-web-api-application"></a>Web API アプリケーションを追加する
 
-アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。 
+アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. アプリケーションの名前を入力します。 たとえば、*webapi1* とします。
@@ -76,14 +76,14 @@ ms.locfileid: "66508095"
 
 ## <a name="configure-the-sample"></a>サンプルの構成
 
-Web API を登録し、スコープを定義したので、Azure AD B2C テナントを使用するように Web API コードを構成します。 このチュートリアルでは、GitHub からダウンロードできるサンプル Node.js Web アプリケーションを構成します。 
+Web API を登録し、スコープを定義したので、Azure AD B2C テナントを使用するように Web API コードを構成します。 このチュートリアルでは、GitHub からダウンロードできるサンプル Node.js Web アプリケーションを構成します。
 
 [ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi.git
 ```
-Node.js Web API サンプルでは、Passport.js ライブラリを使用して、Azure AD B2C で API 呼び出しを保護できるようにします。 
+Node.js Web API サンプルでは、Passport.js ライブラリを使用して、Azure AD B2C で API 呼び出しを保護できるようにします。
 
 1. `index.js` ファイルを開きます。
 2. Azure AD B2C テナントの登録情報でサンプルを構成します。 次のコード行を変更します。
@@ -111,7 +111,7 @@ Node.js Web API サンプルでは、Passport.js ライブラリを使用して�
 1. Visual Studio で **active-directory-b2c-wpf** ソリューションを開きます。
 2. **F5** キーを押してデスクトップ アプリを実行します。
 3. [デスクトップ アプリにおける Azure Active Directory B2C を使用したユーザーの認証に関するチュートリアル](active-directory-b2c-tutorials-desktop-app.md)で使用したメール アドレスとパスワードでサインインします。
-4. **[Call API]** ボタンをクリックします。 
+4. **[Call API]** ボタンをクリックします。
 
 デスクトップ アプリケーションで、Web API に要求が送信されて、ログインしているユーザーの表示名を含む応答が取得されます。 保護されているデスクトップ アプリケーションでは、Azure AD B2C テナント内の保護された Web API が呼び出されます。
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 435de6e6516256d350ad93b121dd5a38d1512ddc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fa80ebea93ae897ba01ff54bdb797ed4194665cd
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68558861"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70068859"
 ---
 # <a name="what-is-speech-to-text"></a>音声変換の概要
 
@@ -63,13 +63,7 @@ Speech SDK のサンプル コードは、GitHub 上で入手できます。 こ
 
 ## <a name="customization"></a>カスタマイズ
 
-Speech Services 音声サービスで使用される汎用モデルのほかに、エクスペリエンスに固有の音響、言語、および発音の各モデルをカスタムで作成できます。 カスタマイズ オプションの一覧を以下に示します。
-
-| モデル | 説明 |
-|-------|-------------|
-| [音響モデル](how-to-customize-acoustic-models.md) | 自動車や工場のような特定の環境で、特定の記録条件の下、アプリケーション、ツール、またはデバイスを使用する場合は、カスタム音響モデルを作成すると便利です。 たとえば、アクセント記号付きの音声、特定の背景ノイズ、録音に特定のマイクを使用する場合などです。 |
-| [言語モデル](how-to-customize-language-model.md) | 医療用語や IT の専門用語など、業界固有のボキャブラリと文法の文字起こしを向上させるには、カスタム言語モデルを作成します。 |
-| [発音モデル](how-to-customize-pronunciation.md) | カスタムの発音モデルを使用すると、発音形式と単語または用語の表示を定義できます。 製品名や頭字語などのカスタマイズされた用語を処理する場合に便利です。 始めるにあたって必要なのは、発音ファイル (単純な .txt ファイル) のみです。 |
+音声サービスで使用される標準のベースライン モデルに加えて、使用可能なデータを使用してニーズに合わせてモデルをカスタマイズしたり、会話のスタイル、語彙、周囲の雑音など、音声認識の障壁となっている課題を解消したりすることができます。「[Custom Speech とは](how-to-custom-speech.md)」を参照してください。
 
 > [!NOTE]
 > カスタマイズのオプションは、言語やロケールによって異なります ([サポートされる言語](supported-languages.md)に関するページを参照してください)。

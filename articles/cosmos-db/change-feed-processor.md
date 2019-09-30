@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e5142e9b4e7c2c79fd2b7e41123db4422334b730
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467785"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073698"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プロセッサ 
 
@@ -76,7 +76,9 @@ ms.locfileid: "68467785"
 
 これら 3 つの条件が適用されると、変更フィード プロセッサでは、均等分散アルゴリズムを使って、リース コンテナー内のすべてのリースが実行中のすべてのインスタンスに分散され、コンピューティングが並列化されます。 1 つのリースは一度に 1 つのインスタンスによってのみ所有されるため、インスタンスの最大数はリースの数と同じになります。
 
-インスタンスは拡大および縮小される可能性があり、変更フィード プロセッサではそれに従って再配布することで負荷が動的に調整されます。
+インスタンス数は増減する可能性があり、変更フィード プロセッサではそれに従って再配布することで負荷が動的に調整されます。
+
+さらに、スループットまたはストレージの増加に応じて、変更フィード プロセッサでコンテナーを動的に調整できます。 コンテナーが拡張されると、変更フィード プロセッサでは、リースを動的に増やし、既存のインスタンス間で新しいリースを分散することによって、これらのシナリオが透過的に処理されます。
 
 ## <a name="change-feed-and-provisioned-throughput"></a>変更フィードとプロビジョニング済みスループット
 
@@ -85,12 +87,14 @@ Cosmos コンテナーとの間のデータ移動では常に RU を消費する
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [GitHub の使用例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
 * [GitHub のその他のサンプル](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
 
 ## <a name="next-steps"></a>次の手順
 
-以下の記事で、変更フィードに関してさらに詳しく知ることができます。
+以下の記事で、変更フィード プロセッサに関してさらに詳しく知ることができます。
 
 * [変更フィードの概要](change-feed.md)
-* [変更フィードを読み取る方法](read-change-feed.md)
-* [Azure Functions を活用した変更フィードの使用](change-feed-functions.md)
+* [変更フィード プロセッサ ライブラリから移行する方法](how-to-migrate-from-change-feed-library.md)
+* [変更フィード推定機能の使用](how-to-use-change-feed-estimator.md)
+* [変更フィード プロセッサの開始時刻](how-to-configure-change-feed-start-time.md)

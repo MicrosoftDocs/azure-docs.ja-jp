@@ -3,7 +3,7 @@ title: PIM で Azure AD ロールを割り当てる - Azure Active Directory | M
 description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールを割り当てる方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1760d0e0bd356a05d84c07eda005e0526da5d13
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 64c08f2dcf6df67401160775db60bf613d1c5241
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476521"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804462"
 ---
 # <a name="assign-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールを割り当てる
 

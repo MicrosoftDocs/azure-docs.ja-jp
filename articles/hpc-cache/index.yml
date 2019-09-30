@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Azure HPC Cache プレビューのドキュメント
+summary: 読み取り集中型のハイ パフォーマンス コンピューティング (HPC) ワークロードのファイル アクセスを高速化するには、Azure HPC Cache を使用します。
+metadata:
+  title: Microsoft Azure HPC Cache
+  description: Azure HPC Cache を作成および使用して、コンピューティング リソースとストレージの間の待ち時間の問題を解決する方法について説明します。 Azure HPC Cache は、ファイルベースの読み取り負荷の高いワークロードを対象としており、Azure Blob Storage とオンプレミスのハードウェア ファイラーが組み込まれた集約型の仮想ファイル システムを作成できます。
+  ms.service: hpc-cache
+  ms.topic: landing-page
+  ms.collection: collection
+  author: ekpgh
+  ms.author: v-erkell
+  ms.date: 09/24/2019
+  ms.openlocfilehash: 266f1e62f57c0d795d154dc29c159c609212b73b
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71299894"
+landingContent:
+- title: Azure HPC Cache について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure HPC Cache とは
+      url: hpc-cache-overview.md
+- title: 作業開始
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure HPC Cache の前提条件を構成する
+      url: hpc-cache-prereqs.md
+    - text: キャッシュを作成する
+      url: hpc-cache-create.md
+    - text: ストレージを追加する
+      url: hpc-cache-add-storage.md
+    - text: クライアントをマウントする
+      url: hpc-cache-mount.md
+  - linkListType: concept
+    links:
+    - text: 集約された名前空間を計画する
+      url: hpc-cache-namespace.md
+    - text: データをストレージ ターゲットに移動する (必要な場合)
+      url: hpc-cache-ingest.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: サポート チケットを開く
+      url: hpc-cache-support-ticket.md

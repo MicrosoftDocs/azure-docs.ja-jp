@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d03e43ab2c26131c35eb78815d34cd959cc785
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 78daf578647e087fcc673d612ce24814a53ee331
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347480"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213561"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>チュートリアル:JFrog Artifactory と Azure Active Directory の統合
 
@@ -95,11 +95,11 @@ JFrog Artifactory に対する Azure AD SSO を構成してテストするには
     > [!NOTE]
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[JFrog Artifactory Client クライアント サポート チーム](https://support.jfrog.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. JFrog Artifactory アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+1. JFrog Artifactory アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
-1. これに加え、JFrog Artifactory アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。  **[グループ要求 (プレビュー)]**   ダイアログの  **[ユーザー属性とクレーム]**   セクションで、次の手順を実行します。
+1. これに加え、JFrog Artifactory アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
     a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
 

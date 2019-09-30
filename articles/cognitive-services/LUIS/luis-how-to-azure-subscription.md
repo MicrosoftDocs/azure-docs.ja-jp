@@ -1,7 +1,7 @@
 ---
-title: サブスクリプション キー - LUIS
+title: オーサリング キーとランタイム キーの使用方法 - LUIS
 titleSuffix: Azure Cognitive Services
-description: 無料の最初の 1000 のエンドポイント クエリの使用には、サブスクリプション キーを作成する必要がありません。 HTTP 403 または 429 の形式で _クォータ不足_ エラーが表示される場合、キーを作成して、アプリに割り当てる必要があります。
+description: Language Understanding (LUIS) を初めて使用するときは、オーサリング キーを作成する必要はありません。 アプリを発行する場合は、ランタイム エンドポイントを使用し、ランタイム キーを作成してアプリに割り当てる必要があります。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,133 +9,138 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/09/2019
 ms.author: diberry
-ms.openlocfilehash: 1f8b84722c881cee1fe196e5a614b58cf3c19031
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1fb57a7c6cc694c56667d589eae39442ee9e82ac
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932854"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984377"
 ---
-# <a name="using-subscription-keys-with-your-luis-app"></a>LUIS アプリでのサブスクリプション キーの使用
+# <a name="using-authoring-and-runtime-resource-keys"></a>オーサリングおよびランタイム リソース キーの使用
 
-Language Understanding (LUIS) を初めて使用するときは、サブスクリプション キーを作成する必要はありません。 最初に 1000 エンドポイント クエリが提供されます。 
-
-テストおよびプロトタイプについてのみ、Free (F0) レベルを使用します。 運用システムについては、[有料](https://aka.ms/luis-price-tier)レベルを使用してください。 運用環境でのエンドポイントのクエリには、[作成者キー](luis-concept-keys.md#authoring-key)を使用しないでください。
-
+オーサリングおよびランタイム リソースによって、LUIS アプリと予測エンドポイントに認証が提供されます。
 
 <a name="create-luis-service"></a>
-<a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
+<a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>
 
-## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Azure portal 内で予測エンドポイント ランタイム リソースを作成する
+LUIS ポータルにサインインすると、進む手順を選択できます。
 
-[予測エンドポイント リソース](get-started-portal-deploy-app.md#create-the-endpoint-resource)は、Azure portal 内で作成します。 このリソースは、エンドポイントの予測クエリでのみ使用します。 このアプリに変更を加えるために、このリソースを使用しないでください。
+* 無料[試用版キー](#trial-key) - 作成といくつかの予測エンドポイント クエリが用意されています。
+* 新しい Azure LUIS オーサリング リソース - 新しいリソースを作成します。 これは、予測エンドポイント リソースと同じではありません。 
 
-Language Understanding リソースまたは Cognitive Services リソースを作成できます。 Language Understanding リソースを作成する場合、リソース名の後にリソースの種類を設定することをお勧めします。 
 
-<a name="programmatic-key" ></a>
-<a name="authoring-key" ></a>
-<a name="endpoint-key" ></a>
-<a name="use-endpoint-key-in-query" ></a>
-<a name="api-usage-of-ocp-apim-subscription-key" ></a>
-<a name="key-limits" ></a>
-<a name="key-limit-errors" ></a>
-<a name="key-concepts"></a>
-<a name="authoring-key"></a>
-<a name="create-and-use-an-endpoint-key"></a>
-<a name="assign-endpoint-key"></a>
-<a name="assign-resource"></a>
+<a name="starter-key"></a>
 
-### <a name="using-resource-from-luis-portal"></a>LUIS ポータルからリソースを使用する
+## <a name="sign-in-to-luis-portal-and-begin-authoring"></a>LUIS ポータルにサインインして作成を開始する
 
-LUIS ポータルからリソースを使用する場合は、キーと場所を把握しておく必要はありません。 代わりに、リソース テナント、サブスクリプション、リソース名を把握しておく必要があります。
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、使用条件に同意します。
+1. 使用する LUIS オーサリング キーの種類 (無料試用版キーまたは新しい Azure LUIS オーサリング キー) を選択して、LUIS アプリを開始します。 
 
-LUIS ポータルで LUIS アプリにリソースを[割り当てる](#assign-resource-key-to-luis-app-in-luis-portal)と、キーと場所は [管理] セクションの **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** ページのクエリ予測エンドポイント URL の一部として設定されます。
- 
-### <a name="using-resource-from-rest-api-or-sdk"></a>REST API または SDK からリソースを使用する
+    ![Language Understanding のオーサリング リソースの種類を選択する](./media/luis-how-to-azure-subscription/sign-in-create-resource.png)
 
-REST API または SDK からリソースを使用する場合は、キーと場所を把握しておく必要があります。 この情報は、[管理] セクションの **[Keys and Endpoint settings]\(キーとエンドポイントの設定\)** ページおよび Azure portal のリソースの [概要] ページや [キー] ページのクエリ予測エンドポイント URL の一部として設定されます。
+1. リソース選択プロセスが完了したら、[新しいアプリを作成](luis-how-to-start-new-app.md#create-new-app-in-luis)します。 
 
-## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>LUIS ポータルの LUIS アプリにリソース キーを割り当てる
+## <a name="trial-key"></a>試用版キー
 
-LUIS 向けの新しいリソースを作成するたびに、[LUIS アプリにそのリソースを割り当てる](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)必要があります。 割り当てた後は、新しいリソースを作成しない限り、この手順をもう一度実行する必要はありません。 ご自分のアプリのリージョンを拡張したり、より多くの予測クエリをサポートしたりする場合に、新しいリソースを作成します。
+お客様用の試用版 (スターター) キーが用意されています。 これは、予測エンドポイント ランタイムに対してクエリ (1 か月に最大 1000 個まで) を実行するための認証キーとして使用されます。 
 
-<!-- content moved to luis-reference-regions.md, need replacement links-->
-<a name="regions-and-keys"></a>
-<a name="publishing-to-europe"></a>
-<a name="publishing-to-australia"></a>
+これは、LUIS ポータルの **[ユーザー設定]** ページと **[管理] -> [Azure リソース]** ページの両方に表示されます。 
 
-### <a name="unassign-resource"></a>リソースの割り当てを解除する
-エンドポイント キーは、割り当てを解除しても Azure からは削除されません。 LUIS からのリンクが解除されるだけです。 
+予測エンドポイントを発行する準備ができたら、オーサリングおよび予測ランタイム キーを作成して割り当て、スターター キーの機能を置き換えます。 
 
-エンドポイント キーが割り当て解除されたり、アプリに割り当てられていないときには、エンドポイント URL に対するどの要求でもエラー `401 This application cannot be accessed with the current subscription` が返されます。 
+## <a name="create-resources-in-the-azure-portal"></a>Azure portal でリソースを作成する
 
-### <a name="include-all-predicted-intent-scores"></a>予測されたすべての意図スコアを含める
-**[Include all predicted intent scores]\(予測されたすべての意図スコアを含める\)** チェック ボックスをオンにすると、エンドポイントのクエリ応答に各意図の予測スコアを含めることができます。 
+1. [Azure Portal](https://azure.microsoft.com/free/) にサインインします。 
+1. **[+ リソースの作成]** を選択します。
+1. 検索ボックスに「 `Language understanding`」と入力します。
+1. **[作成]** を選択して、作成プロセスを開始します。 
+1. オーサリングおよび予測エンドポイント ランタイム キーを作成するには **[両方]** を選択します。 
+1. リソースを作成するために必要な情報を入力し、 **[作成]** を選択してプロセスを終了します。
 
-この設定を使用すると、チャットボットまたは LUIS 呼び出し元のアプリケーションは、返される意図のスコアに基づいてプログラムによる意思決定を行うことができます。 一般に、最も興味深いのは最上位の 2 つの意図です。 最高スコアが None 意図の場合、チャットボットは None 意図と他の高スコア意図をはっきり選択するためのフォローアップ質問を行うことができます。 
+    ![Language Understanding リソースを作成する](./media/luis-how-to-azure-subscription/create-resource-in-azure.png)
 
-意図とそのスコアには、エンドポイントのログにも含まれています。 これらのログを[エクスポート](luis-how-to-start-new-app.md#export-app)して、スコアを分析できます。 
+    |名前|目的|
+    |--|--|
+    |リソース名| 選択したカスタム名。オーサリングおよび予測エンドポイント クエリの URL の一部として使用されます。|
+    |サブスクリプション名| リソースに対して課金されるサブスクリプション。|
+    |Resource group| 選択または作成するカスタム リソース グループ名。 リソース グループを使用すると、同じリージョン内でのアクセスと管理のために Azure リソースをグループ化できます。|
+    |オーサリングの場所|モデルに関連付けられている領域。|
+    |オーサリングの価格レベル|価格レベルによって、1 秒および 1 か月あたりの最大トランザクション数が決まります。|
+    |ランタイムの場所|発行される予測エンドポイント ランタイムに関連付けられているリージョン。|
+    |ランタイム価格レベル|価格レベルによって、1 秒および 1 か月あたりの最大トランザクション数が決まります。|
 
-```JSON
-{
-  "query": "book a flight to Cairo",
-  "topScoringIntent": {
-    "intent": "None",
-    "score": 0.5223427
-  },
-  "intents": [
-    {
-      "intent": "None",
-      "score": 0.5223427
-    },
-    {
-      "intent": "BookFlight",
-      "score": 0.372391433
-    }
-  ],
-  "entities": []
-}
-```
+    両方のリソースが作成されたら、LUIS ポータルでリソースを割り当てます。
 
-### <a name="enable-bing-spell-checker"></a>Bing のスペル チェック機能を有効にする 
-**[Endpoint url settings]\(エンドポイント URL 設定)** では、 **[Bing spell checker]\(Bing のスペル チェック機能)** トグルによって、LUIS での予測前にスペルミスがある単語を収集できます。 **[Bing Spell Check キー](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)** を作成します。 
+## <a name="create-resources-in-azure-cli"></a>Azure CLI でのリソース作成
 
-**spellCheck=true** querystring パラメーターと **bing-spell-check-subscription-key={YOUR_BING_KEY_HERE}** を追加します。 `{YOUR_BING_KEY_HERE}` を実際の Bing スペル チェック機能キーに置き換えます。
+[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用し、各リソースを個別に作成します。 
 
-```JSON
-{
-  "query": "Book a flite to London?",
-  "alteredQuery": "Book a flight to London?",
-  "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.780123
-  },
-  "entities": []
-}
-```
+リソース `kind`:
 
-### <a name="publishing-regions"></a>公開リージョン
+* 作成: `LUIS.Authoring`
+* 予測: `LUIS` 
 
-公開[リージョン](luis-reference-regions.md) ([ヨーロッパ](luis-reference-regions.md#publishing-to-europe)および[オーストラリア](luis-reference-regions.md#publishing-to-australia)での公開を含む) の詳細を確認してください。 公開リージョンは、オーサリング リージョンとは異なります。 アプリの作成は、エンドポイントのクエリに使用する公開リージョンに対応するオーサリング リージョンで行います。
+1. Azure CLI にサインインします。
 
-## <a name="assign-resource-without-luis-portal"></a>LUIS ポータルを使用せずにリソースを割り当てる
+    ```console
+    az login
+    ```
 
-CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへの LUIS リソースの割り当てを自動化する必要があります。 そのためには、次の手順を実行する必要があります。
+    ブラウザー開いたら、正しいアカウントを選択し、認証できます。
+
+1. **LUIS オーサリング リソース**を作成します。種類に `LUIS.Authoring`、名前に `my-luis-authoring-resource`、_既存_リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 
+
+    ```console
+    az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
+    ```
+
+1. **LUIS 予測エンドポイント リソース**を作成します。種類に `LUIS`、名前に `my-luis-prediction-resource`、_既存_リソース グループに `my-resource-group`、リージョンに `westus` を指定します。 無料レベル以上のスループットが必要であれば、`F0` を `S0` に変更します。 詳細は、[価格レベルとスループット](luis-boundaries.md#key-limits)に関するページをご覧ください。
+
+    ```console
+    az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
+    ```
+
+    > [!Note] 
+    > LUIS ポータルで **[管理]、[Azure リソース]** の順に選択して割り当てるまで、LUIS ポータルでこのキーが使用されることは**ありません**。
+
+## <a name="assign-an-authoring-resource-in-the-luis-portal-for-all-apps"></a>すべてのアプリに対して LUIS ポータルでオーサリング リソースを割り当てる
+
+LUIS の 1 つのアプリまたはすべてのアプリに対して、オーサリング リソースを割り当てることができます。 次の手順では、すべてのアプリを 1 つのオーサリング リソースに割り当てます。
+
+1. [LUIS ポータル](https://www.luis.ai)にサインインします。
+1. 上部のナビゲーション バーで、一番右にあるユーザー アカウントを選択し、 **[設定]** を選択します。
+1. **[ユーザー設定]** ページで、 **[Add authoring resource]\(オーサリング リソースの追加\)** を選択し、既存のオーサリング リソースを選択します。 **[保存]** を選択します。 
+
+## <a name="assign-a-resource-to-an-app"></a>アプリにリソースを割り当てる
+
+次の手順に従って、1 つのリソース (オーサリングまたは予測エンドポイント ランタイム) をアプリに割り当てることができます。
+
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、 **[マイ アプリ]** の一覧からアプリを選択します。
+1. **[管理] -> [Azure リソース]** ページに移動します。
+
+    ![LUIS ポータルで [管理] -> [Azure リソース] を選択して、アプリにリソースを割り当てます。](./media/luis-how-to-azure-subscription/manage-azure-resources-prediction.png)
+
+1. [Prediction resources]\(予測リソース\) または [Authoring resource]\(オーサリング リソース\) タブを選択し、 **[Add prediction resource]\(予測リソースの追加\)** または **[Add authoring resource]\(オーサリング リソースの追加\)** ボタンを選択します。 
+1. フォーム内のフィールドを選択して適切なリソースを探し、 **[保存]** を選択します。  
+
+### <a name="assign-runtime-resource-without-using-luis-portal"></a>LUIS ポータルを使用せずにランタイム リソースを割り当てる
+
+CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへの LUIS ランタイム リソースの割り当てを自動化する必要があります。 そのためには、次の手順を実行する必要があります。
 
 1. こちらの [Web サイト](https://resources.azure.com/api/token?plaintext=true)から Azure Resource Manager トークンを取得します。 このトークンには有効期限があるため、速やかに使用してください。 この要求からは、Azure Resource Manager トークンが返されます。
 
     ![Azure Resource Manager トークンを要求して Azure Resource Manager トークンを受け取る](./media/luis-manage-keys/get-arm-token.png)
 
-1. ご使用のユーザー アカウントで利用できるサブスクリプション全体で、[LUIS Azure アカウントの取得 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c) からこのトークンを使用して LUIS リソースを要求します。 
+1. ご使用のユーザー アカウントで利用できるサブスクリプション全体で、[Get LUIS azure accounts API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5be313cec181ae720aa2b26c) からこのトークンを使用して LUIS ランタイム リソースを要求します。 
 
     この POST API には、次の設定が必要です。
 
     |ヘッダー|値|
     |--|--|
     |`Authorization`|`Authorization` の値は `Bearer {token}` です。 トークンの値の前に、`Bearer` という単語とスペースを 1 つ入力する必要があることに注意してください。| 
-    |`Ocp-Apim-Subscription-Key`|実際の[オーサリング キー](luis-how-to-account-settings.md)。|
+    |`Ocp-Apim-Subscription-Key`|実際のオーサリング キー。|
 
     この API は、LUIS サブスクリプションの JSON オブジェクトの配列を返します。この配列に、サブスクリプション ID、リソース グループ、リソース名 (アカウント名として返される) が含まれます。 LUIS アプリに割り当てる LUIS リソースである要素を配列から 1 つ見つけてください。 
 
@@ -143,15 +148,37 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
 
     この POST API には、次の設定が必要です。
 
-    |Type|Setting|値|
+    |種類|Setting|値|
     |--|--|--|
     |ヘッダー|`Authorization`|`Authorization` の値は `Bearer {token}` です。 トークンの値の前に、`Bearer` という単語とスペースを 1 つ入力する必要があることに注意してください。|
-    |ヘッダー|`Ocp-Apim-Subscription-Key`|実際の[オーサリング キー](luis-how-to-account-settings.md)。|
+    |ヘッダー|`Ocp-Apim-Subscription-Key`|実際のオーサリング キー。|
     |ヘッダー|`Content-type`|`application/json`|
     |Querystring|`appid`|LUIS アプリ ID。 
     |Body||{"AzureSubscriptionId":"ddda2925-af7f-4b05-9ba1-2155c5fe8a8e",<br>"ResourceGroup": "resourcegroup-2",<br>"AccountName": "luis-uswest-S0-2"}|
 
     この API は、成功した場合、201 - created 状態を返します。 
+
+## <a name="unassign-resource"></a>リソースの割り当てを解除する
+
+1. [LUIS ポータル](https://www.luis.ai)にサインインし、 **[マイ アプリ]** の一覧からアプリを選択します。
+1. **[管理] -> [Azure リソース]** ページに移動します。
+1. [Prediction resources]\(予測リソース\) または [Authoring resource]\(オーサリング リソース\) タブを選択し、リソースの **[Unassign resource]\(リソースの割り当てを解除する\)** ボタンを選択します。 
+
+リソースの割り当てを解除しても、Azure からは削除されません。 LUIS からのリンクが解除されるだけです。 
+
+## <a name="reset-authoring-key"></a>オーサリング キーをリセットする
+
+**[オーサリング リソースが移行された](luis-migration-authoring.md)アプリの場合**: オーサリング キーが侵害された場合は、Azure portal のそのオーサリング リソースの **[キー]** ページでキーをリセットします。 
+
+**まだ移行されていないアプリの場合**: LUIS ポータルのすべてのアプリでキーがリセットされます。 オーサリング API を使用してアプリを作成する場合は、Ocp-Apim-Subscription-Key の値を新しいキーに変更する必要があります。
+
+## <a name="regenerate-azure-key"></a>Azure キーを再生成する
+
+Azure portal の **[キー]** ページで、Azure キーを再生成します。
+
+## <a name="delete-account"></a>アカウントを削除する
+
+アカウントが削除されるときにどのようなデータが削除されるかについては、[データ ストレージと削除](luis-concept-data-storage.md#accounts)についての記事を参照してください。
 
 ## <a name="change-pricing-tier"></a>価格レベルの変更
 
@@ -163,39 +190,16 @@ CI/CD パイプラインなどの自動化を目指す場合、LUIS アプリへ
     ![ご自身の LUIS 支払いレベルの変更](./media/luis-usage-tiers/plans.png)
 1.  価格の変更が完了したら、ポップアップ ウィンドウで新しい価格レベルを確認します。 
     ![ご自身の LUIS 支払いレベルの確認](./media/luis-usage-tiers/updated.png)
-1. 必ず **[発行]** ページで[このエンドポイント キーを割り当て](#assign-endpoint-key)て、すべてのエンドポイントのクエリで使用します。 
+1. 必ず **[発行]** ページで[このエンドポイント キーを割り当て](#assign-a-resource-to-an-app)て、すべてのエンドポイントのクエリで使用します。 
 
-## <a name="fix-http-status-code-403-and-429"></a>HTTP 状態コード 403 および 429 を解決する
+## <a name="viewing-azure-resource-metrics"></a>Azure リソース メトリックの表示
 
-価格レベルの 1 秒あたりのトランザクション数または 1 か月あたりのトランザクション数を超えると、403 および 429 のエラー状態コードを取得します。
-
-### <a name="when-you-receive-an-http-403-error-status-code"></a>HTTP 403 エラー状態コードを受信した場合
-
-無料の 1000 エンドポイント クエリをすべて使用しているか、価格レベルの 1 か月あたりのトランザクションのクォータを超えた場合は、HTTP 403 エラー状態コードが表示されます。 
-
-このエラーを解決するには、高いレベルに[価格レベルを変更](luis-how-to-azure-subscription.md#change-pricing-tier)するか、[新しいリソースを作成](get-started-portal-deploy-app.md#create-the-endpoint-resource)して[アプリに割り当てる](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)必要があります。
-
-このエラーの解決方法は次のとおりです。
-
-* [Azure portal](https://portal.azure.com) で、Language Understanding リソースの **[リソース管理] -> [価格レベル]** で、価格レベルをより高い TP レベルに変更します。 リソースが既に Language Understanding アプリに割り当てられている場合、Language Understanding ポータルでは何もする必要はありません。
-*  使用量が最も高い価格レベルを超えた場合は、ロード バランサーを使って Language Understanding リソースをその前に追加します。 これには、Kubernetes または Docker Compose を含む [Language Understanding コンテナー](luis-container-howto.md)が役立ちます。
-
-### <a name="when-you-receive-an-http-429-error-status-code"></a>HTTP 429 エラー状態コードを受信した場合
-
-この状態コードは、1 秒あたりのトランザクションが価格レベルを超えると返されます。  
-
-解決方法は次のとおりです。
-
-* 最高レベルではない場合は、[価格レベルを上げる](#change-pricing-tier)ことができます。
-* 使用量が最も高い価格レベルを超えた場合は、ロード バランサーを使って Language Understanding リソースをその前に追加します。 これには、Kubernetes または Docker Compose を含む [Language Understanding コンテナー](luis-container-howto.md)が役立ちます。
-* この状態コードが表示された場合は、自分で実装する[再試行ポリシー](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)を使用してクライアント アプリケーションの要求をゲートすることができます。 
-
-## <a name="viewing-summary-usage"></a>使用状況の表示
+### <a name="viewing-azure-resource-summary-usage"></a>Azure リソース概要の使用状況の表示
 Azure で LUIS の使用に関する情報を表示できます。 **[概要]** ページには、呼び出し、エラーなど、最近の概要情報が表示されます。 LUIS エンドポイント要求を行ったらすぐに、 **[概要] ページ**を確認します。使用状況が表示されるまでに最大で 5 分かかります。
 
 ![使用状況の表示](./media/luis-usage-tiers/overview.png)
 
-## <a name="customizing-usage-charts"></a>使用状況グラフのカスタマイズ
+### <a name="customizing-azure-resource-usage-charts"></a>Azure リソースの使用状況グラフのカスタマイズ
 メトリックより、データの詳細ビューを確認できます。
 
 ![Default metrics](./media/luis-usage-tiers/metrics-default.png)
@@ -204,7 +208,7 @@ Azure で LUIS の使用に関する情報を表示できます。 **[概要]** 
 
 ![カスタム メトリック](./media/luis-usage-tiers/metrics-custom.png)
 
-## <a name="total-transactions-threshold-alert"></a>トランザクション合計しきい値のアラート
+### <a name="total-transactions-threshold-alert"></a>トランザクション合計しきい値のアラート
 トランザクションしきい値に達したこと、たとえば、トランザクション数が 10,000 になったことを知るには、アラートを作成します。 
 
 ![既定のアラート](./media/luis-usage-tiers/alert-default.png)
@@ -213,4 +217,7 @@ Azure で LUIS の使用に関する情報を表示できます。 **[概要]** 
 
 ## <a name="next-steps"></a>次の手順
 
-[バージョン](luis-how-to-manage-versions.md)を使用してご自身の LUIS アプリへの変更を管理する方法を確認します。
+* [バージョンを使用](luis-how-to-manage-versions.md)してアプリのライフ サイクルを制御する方法を確認します。
+* [オーサリング リソース](luis-concept-keys.md#authoring-key)やそのリソースの[共同作成者](luis-concept-keys.md#contributions-from-other-authors)などの概念を理解します。
+* オーサリング リソースとランタイム リソースの[作成方法](luis-how-to-azure-subscription.md)を確認します
+* 新しい[オーサリング リソース](luis-migration-authoring.md)に移行します 

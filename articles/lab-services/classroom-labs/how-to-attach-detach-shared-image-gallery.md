@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: de4e9fb4b15f4c346926fe46f23255c668204c2e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d8f16baccd3a4980ee9dbe410cb2a95878b346d4
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413888"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390022"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーをアタッチまたはデタッチする
 教師/ラボ管理者は、テンプレート VM イメージを他のユーザーが再利用できるよう、Azure [共有イメージ ギャラリー](../../virtual-machines/windows/shared-image-galleries.md)に保存することができます。 最初の手順として、ラボ管理者は、ラボ アカウントに既存の共有イメージ ギャラリーをアタッチします。 共有イメージ ギャラリーがアタッチされたら、ラボ アカウントで作成されたラボは、共有イメージ ギャラリーにイメージを保存できます。 その他の教師は、共有イメージ ギャラリーからこのイメージを選択して、そのクラスのテンプレートを作成できます。 
 
 この記事では、共有イメージ ギャラリーをラボ アカウントにアタッチしたり、ラボ アカウントからデタッチしたりする方法について説明します。 
+
+> [!NOTE]
+> Shared Image Gallery サービスに関連するコストについては、[Shared Image Gallery の料金](../../virtual-machines/windows/shared-image-galleries.md#billing)に関するページを参照してください。
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>ラボ アカウントの作成時に構成する
 ラボ アカウントを作成する際、共有イメージ ギャラリーをラボ アカウントにアタッチすることができます。 共有イメージ ギャラリーは、ドロップダウン リストから既存のものを選択するか、新たに作成することができます。 共有イメージ ギャラリーを作成してラボ アカウントにアタッチするには、 **[新規作成]** を選択し、ギャラリーの名前を入力して、 **[OK]** をクリックします。 
@@ -76,12 +79,6 @@ ms.locfileid: "65413888"
     Azure Lab Services ID が、ラボにアタッチされた共有イメージ ギャラリーに共同作成者として追加されます これにより、教師/IT 管理者は共有イメージ ギャラリーに仮想マシン イメージを保存できます。 このラボ アカウントで作成されるラボはすべて、アタッチされた共有イメージ ギャラリーにアクセスできます。 
 
     アタッチされた共有イメージ ギャラリー内のすべてのイメージは、既定で有効になります。 一覧でイメージを選択し、 **[選択したイメージを有効にする]** または **[選択したイメージを無効にする]** ボタンを使用して、選択したイメージを有効にしたり無効にしたりできます。 
-
-## <a name="save-an-image-to-the-shared-image-gallery"></a>共有イメージ ギャラリーに既存のイメージを保存する
-共有イメージ ギャラリーがアタッチされたら、ラボ アカウントの管理者または教師は、他の教員が再利用できるよう共有イメージ ギャラリーにテンプレート イメージを保存またはアップロードできます。 共有イメージ ギャラリーにイメージをアップロードする手順については、[共有イメージ ギャラリーの概要](../../virtual-machines/windows/shared-images.md)に関するページを参照してください。 
-
-> [!NOTE]
-> 現在、クラスルーム ラボのユーザー インターフェイス (UI) には、ラボ イメージを共有イメージ ギャラリーに保存する機能がありません。 
 
 ## <a name="detach-a-shared-image-gallery"></a>共有イメージ ギャラリーをデタッチする
 ラボには共有イメージ ギャラリーを 1 つだけ接続できます。 別の共有イメージ ギャラリーをアタッチする場合は、現在のギャラリーをデタッチしてから、新しいギャラリーをアタッチします。 ラボから共有イメージ ギャラリーをデタッチするには、ツールバーで **[デタッチ]** を選択し、デタッチ操作を確認します。 

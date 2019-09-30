@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: dd1a46ea008ce5f8fb02dd468b27494d231717f0
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 53399fbdeba44b184ef4e76c89affefd29dbc413
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483928"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915319"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>HDInsight 上の Apache Storm で Azure Event Hubs からのイベントを処理する (C#)
 
@@ -135,12 +135,12 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 1. イベント ハブが作成されたら、Azure Portal の **EventHub** 設定を表示し、 **[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを追加します。
 
-   | Name | アクセス許可 |
+   | 名前 | アクセス許可 |
    | --- | --- |
    | ライター |Send |
    | リーダー |リッスン |
 
-    ![[共有アクセス ポリシー] ウィンドウのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
+    ![[共有アクセス ポリシー] ウィンドウのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/share-access-policies.png)
 
 2. **reader** ポリシーと **writer** ポリシーを選択します。 両方のポリシーのプライマリ キー値をコピーして保存します (これらは後で使用します)。
 
@@ -152,7 +152,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 3. **EventHubWriter** プロジェクトで、**App.config** ファイルを開きます。 前に構成したイベント ハブの情報を使用して、次のキーの値を入力します。
 
-   | キー | 値 |
+   | Key | 値 |
    | --- | --- |
    | EventHubPolicyName |writer (*Send* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
    | EventHubPolicyKey |writer ポリシーのキー。 |
@@ -168,7 +168,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 2. **EventHubReader** の **App.config** ファイルを開きます。 前に構成したイベント ハブの情報を使用して、次のキーの値を入力します。
 
-   | キー | 値 |
+   | Key | 値 |
    | --- | --- |
    | EventHubPolicyName |reader (*listen* 権限を持つポリシーに別の名前を使用した場合は、その名前を使用) |
    | EventHubPolicyKey |reader ポリシーのキー。 |
@@ -182,15 +182,15 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 1. **ソリューション エクスプローラー**で **EventHubReader** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
-    ![ソリューション エクスプローラーのスクリーンショット ([HDInsight の Storm に送信] を強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/submittostorm.png)
+    ![ソリューション エクスプローラーのスクリーンショット ([HDInsight の Storm に送信] を強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/submit-to-apache-storm.png)
 
 2. **[トポロジの送信]** ダイアログ ボックスで該当する **[Storm クラスター]** を選択します。 **[追加の構成]** を展開し、 **[Java ファイル パス]** 、 **[...]** の順に選択し、前の手順でダウンロードした JAR ファイルがあるディレクトリを選択します。 最後に、 **[送信]** をクリックします。
 
-    ![[トポロジの送信] ダイアログ ボックスのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/submit.png)
+    ![[トポロジの送信] ダイアログ ボックスのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/submit-storm-topology.png)
 
 3. トポロジが送信されると、 **[Storm トポロジ ビューアー]** が表示されます。 トポロジに関する情報を表示するには、左側のウィンドウにある **[EventHubReader]** トポロジを選択します。
 
-    ![Storm トポロジ ビューアーのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/topologyviewer.png)
+    ![Storm トポロジ ビューアーのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/storm-topology-viewer.png)
 
 4. **ソリューション エクスプローラー**で **EventHubWriter** プロジェクトを右クリックし、 **[HDInsight の Storm に送信]** を選択します。
 
@@ -212,7 +212,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 トポロジを停止するには、 **[Storm トポロジ ビューアー]** で各トポロジを選択し、 **[強制終了]** をクリックします。
 
-![Storm トポロジ ビューアーのスクリーンショット ([強制終了] ボタンを強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/killtopology.png)
+![Storm トポロジ ビューアーのスクリーンショット ([強制終了] ボタンを強調表示)](./media/apache-storm-develop-csharp-event-hub-topology/kill-storm-topology1.png)
 
 ## <a name="delete-your-cluster"></a>クラスターを削除する
 

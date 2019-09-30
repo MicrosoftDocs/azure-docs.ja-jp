@@ -7,13 +7,13 @@ keywords: terraform, devops, 仮想マシン, Azure, スケール セット, ネ
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2018
-ms.openlocfilehash: 21fea65ed7056afa57d9acbacb2457bb4d09cff5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: a6bc0879d07cadc6c5b0b1a21b11b3075ec69719
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002302"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169877"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Terraform を使用して Azure 仮想マシン スケール セットを作成する
 
@@ -80,7 +80,7 @@ Azure Cloud Shell 内で、次の手順を実行します。
 
 1. 以下のコードをエディターに貼り付けます。
 
-   ```JSON
+   ```hcl
    variable "location" {
     description = "The location where resources will be created"
    }
@@ -124,7 +124,7 @@ Azure Cloud Shell 内で、次の手順を実行します。
 1. 次のコードをエディターに貼り付けて、仮想マシンの完全修飾ドメイン名 (FQDN) が表示されるようにします。
    :
 
-   ```JSON
+   ```hcl
     output "vmss_public_ip" {
         value = "${azurerm_public_ip.vmss.fqdn}"
     }
@@ -157,7 +157,7 @@ Azure Cloud Shell 内で、次の手順を実行します。
 
 1. 次のコードをファイルの末尾に貼り付けて、仮想マシンの完全修飾ドメイン名 (FQDN) が表示されるようにします。
 
-   ```JSON
+   ```hcl
    resource "azurerm_resource_group" "vmss" {
     name     = "${var.resource_group_name}"
     location = "${var.location}"
@@ -219,7 +219,7 @@ Azure Cloud Shell 内で、次の手順を実行します。
    terraform apply
    ```
 
-   **location** 変数は `variables.tf` で定義されていますが設定されていないため、Terraform により "location" の値を求められます。 "米国西部" などの任意の有効な場所を入力でき、続いて Enter キーを押します  (スペースを含む値はかっこで囲みます)。
+   **location** 変数は `variables.tf` で定義されていますが設定されていないため、Terraform により "location" の値を求められます。 "米国西部" などの任意の有効な場所を入力でき、続いて Enter キーを押します (スペースを含む値はかっこで囲みます)。
 
 1. Terraform は、`output.tf` ファイルでの定義に従って出力します。 次のスクリーンショットに示すように、FQDN の形式は &lt;id>.&lt;location>.cloudapp.azure.com のようになります。 id 値は計算された値で、location は Terraform の実行時に指定した値です。
 
@@ -252,7 +252,7 @@ Cloud Shell で、次の手順を実行します。
 
 1. ファイルの末尾に次のコードを貼り付けます。
 
-   ```JSON
+   ```hcl
    resource "azurerm_lb" "vmss" {
     name                = "vmss-lb"
     location            = "${var.location}"
@@ -369,7 +369,7 @@ Cloud Shell で、次の手順を実行します。
 
 1. 以下のコードをエディターに貼り付けます。
 
-   ```JSON
+   ```hcl
    #cloud-config
    packages:
     - nginx
@@ -393,7 +393,7 @@ Cloud Shell で、次の手順を実行します。
 
 1. 次のコードをファイルの末尾に貼り付けてデプロイをカスタマイズします。
 
-    ```JSON
+    ```hcl
     variable "application_port" {
        description = "The port that you want to expose to the external load balancer"
        default     = 80
@@ -417,7 +417,7 @@ Cloud Shell で、次の手順を実行します。
      :wq
      ```
 
-1. Terraform プランを作成して、仮想マシン スケール セットのデプロイを視覚化します  (選択したパスワードと、リソースの場所を指定する必要があります)。
+1. Terraform プランを作成して、仮想マシン スケール セットのデプロイを視覚化します (選択したパスワードと、リソースの場所を指定する必要があります)。
 
     ```bash
     terraform plan
@@ -458,7 +458,7 @@ SSH "*ジャンプボックス*" は、ネットワーク上の他のサーバ�
 
 1. ファイルの末尾に次のコードを貼り付けます。
 
-   ```JSON
+   ```hcl
    resource "azurerm_public_ip" "jumpbox" {
     name                         = "jumpbox-public-ip"
     location                     = "${var.location}"
@@ -528,7 +528,7 @@ SSH "*ジャンプボックス*" は、ネットワーク上の他のサーバ�
 
 1. 次のコードをファイルの末尾に貼り付けて、デプロイの完了時にジャンプボックスのホスト名が表示されるようにします。
 
-   ```
+   ```hcl
    output "jumpbox_public_ip" {
       value = "${azurerm_public_ip.jumpbox.fqdn}"
    }

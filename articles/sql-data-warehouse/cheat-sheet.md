@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: overview
 ms.subservice: design
-ms.date: 04/17/2018
+ms.date: 08/23/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 38d353541b233f3cd9466e8dcf6c2b84083bd859
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 1bbb0148e6f4be2afc777960afcda9c727328206
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515783"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195064"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のチート シート
 このチート シートは、Azure SQL Data Warehouse ソリューションを構築する場合に役立つヒントとベスト プラクティスを提供します。 開始する前に、SQL Data Warehouse とは何か、および SQL Data Warehouse でないものは何かを説明する「[Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns)」(Azure SQL Data Warehouse ワークロード パターンとアンチ パターン) を読んで、各手順の詳細を参照してください。
@@ -35,7 +35,7 @@ ms.locfileid: "66515783"
 
 ## <a name="data-migration"></a>データ移行
 
-まず、データを [Azure Data Lake Store](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) または Azure Blob Storage に読み込みます。 次に、PolyBase を使って SQL Data Warehouse のステージング テーブルにデータを読み込みます。 次の構成を使用します。
+まず、データを [Azure Data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) または Azure Blob Storage に読み込みます。 次に、PolyBase を使って SQL Data Warehouse のステージング テーブルにデータを読み込みます。 次の構成を使用します。
 
 | 設計 | 推奨 |
 |:--- |:--- |
@@ -96,9 +96,11 @@ ELT を必要とするステージング テーブルでは、パーティショ
 
 ## <a name="incremental-load"></a>段階的な読み込み
 
-データを段階的に読み込む場合、まず、データの読み込みに大きいリソース クラスを割り当てていることを確認します。 SQL Data Warehouse への ELT パイプラインを自動化するために PolyBase および ADF V2 を使うことをお勧めします。
+データを段階的に読み込む場合、まず、データの読み込みに大きいリソース クラスを割り当てていることを確認します。  これは特に、クラスター化列ストア インデックスを使用してテーブルへの読み込みを行う際に重要となります。  詳細については、[リソース クラス](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management)に関するページを参照してください。  
 
-履歴データの更新の大きなバッチの場合は、最初に関係のあるデータを削除します。 その後、新しいデータを一括挿入します。 この 2 段階のアプローチがより効率的です。
+SQL Data Warehouse への ELT パイプラインを自動化するために PolyBase および ADF V2 を使うことをお勧めします。
+
+履歴データ内の大きなバッチを更新する場合、テーブルに保持したいデータは、INSERT、UPDATE、DELETE を使用する代わりに、[CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) を使用して書き込むことを検討してください。
 
 ## <a name="maintain-statistics"></a>統計を管理する
  自動統計が一般公開されるまで、SQL Data Warehouse では、手動の統計のメンテナンスが必要です。 データに*大幅な*変更が発生したときに統計を更新することが重要です。 これにより、クエリ プランを最適化できます。 すべての統計の管理に時間がかかりすぎる場合は、統計を作成する列を限定します。 
@@ -157,8 +159,8 @@ SQL Database と Azure Analysis Services はハブとスポークのアーキテ
 <!--Other Web references-->
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[データ移行]:https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
+[データ移行]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
-[Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
+[Azure Data Lake Storage]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
 [sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

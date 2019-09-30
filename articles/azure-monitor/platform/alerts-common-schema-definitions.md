@@ -1,6 +1,6 @@
 ---
-title: Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義
-description: Webhooks、Logic Apps、Azure Functions、Automation Runbooks の共通アラート スキーマ定義について説明します
+title: Azure Monitor の共通アラート スキーマ定義
+description: Azure Monitor の共通アラート スキーマ定義について
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,24 +8,22 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: c37ecfbadd7345fea347ff488895f16ba505c818
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5f05b95085048515c5f8612f3029ffb2efa28091
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594379"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916028"
 ---
 # <a name="common-alert-schema-definitions"></a>共通アラート スキーマ定義
 
-この記事では、Webhooks、Logic Apps、Azure Functions、Automation Runbooks の[共通アラート スキーマ定義](https://aka.ms/commonAlertSchemaDocs)について説明します。 
+この記事では、Azure Monitor や、Webhooks、Azure Logic Apps、Azure Functions、Azure Automation Runbook の[共通アラート スキーマ定義](https://aka.ms/commonAlertSchemaDocs)について説明します。 
 
-## <a name="overview"></a>概要
+すべてのアラート インスタンスでは、影響を受けたリソースおよびアラートの原因が記述されています。 これらのインスタンスは、共通スキーマの以下のセクションに記述されています。
+* **要点**: すべてのアラートの種類において共通の一連の標準化されたフィールド。これらのフィールドでは、アラート対象のリソースと、追加の共通アラート メタデータ (重大度や説明など) が記述されています。 
+* **アラート コンテキスト**: アラートの原因が記述されているフィールドと、アラートの種類に基づいて異なるフィールドのセット。 たとえば、メトリック アラートの場合はメトリック名やメトリック値などのフィールドがアラート コンテキストにあり、アクティビティ ログ アラートの場合はそのアラートを生成したイベントに関する情報があります。 
 
-すべてのアラート インスタンスでは、**影響を受けたリソース**および**アラートの原因**が記述されており、これらのインスタンスは次のセクションの共通スキーマで記述されています。
-* **要点**: すべてのアラートの種類において共通の一連の**標準化されたフィールド**。これらのフィールドでは、アラート対象の**リソース**と、追加の共通アラート メタデータ (重大度や説明など) が記述されています。 
-* **アラート コンテキスト**: **アラートの原因**が記述されているフィールドと、**アラートの種類に基づいて**異なるフィールドのセット。 たとえば、メトリック アラートの場合はメトリック名やメトリック値などのフィールドがアラート コンテキストにあり、アクティビティ ログ アラートの場合はそのアラートを生成したイベントに関する情報があります。 
-
-##### <a name="sample-alert-payload"></a>アラートのペイロードのサンプル
+**アラートのペイロードのサンプル**
 ```json
 {
   "schemaId": "azureMonitorCommonAlertSchema",
@@ -74,25 +72,25 @@ ms.locfileid: "67594379"
 }
 ```
 
-## <a name="essentials-fields"></a>"essentials" のフィールド
+## <a name="essentials"></a>要点
 
 | フィールド | 説明|
 |:---|:---|
 | alertId | アラート インスタンスを一意に識別する GUID。 |
 | alertRule | そのアラート インスタンスを生成したアラート ルールの名前。 |
-| Severity | アラートの重大度。 指定できる値Sev0、Sev1、Sev2、Sev3、Sev4 |
-| signalType | アラート ルールが定義されていたシグナルを示します。 指定できる値Metric、Log、Activity Log |
-| monitorCondition | アラートが発生すると、アラートの監視条件は "Fired" に設定されます。 アラート発生の原因になった状態が解消されると、監視条件は "Resolved" に設定されます。   |
+| 重大度 | アラートの重大度。 指定できる値Sev0、Sev1、Sev2、Sev3、または Sev4。 |
+| signalType | アラート ルールが定義されていたシグナルを示します。 指定できる値Metric、Log、または Activity Log。 |
+| monitorCondition | アラートが発生すると、アラートの監視条件は **Fired** に設定されます。 アラート発生の原因になった状態が解消されると、監視条件は **Resolved** に設定されます。   |
 | monitoringService | アラートを生成した監視サービスまたはソリューション。 アラート コンテキストのフィールドは、監視サービスによって決まります。 |
-| alertTargetIds | アラートの影響を受けたすべてのターゲットの ARM ID のリスト。 Log Analytics ワークスペースまたは Application Insights インスタンスで定義されているログ アラートの場合は、それぞれのワークスペース/アプリケーションになります。 |
-| originAlertId | 生成元の監視サービスによって生成された警告インスタンスの ID。 |
-| firedDateTime | 警告インスタンスが生成された日時 (UTC) |
-| resolvedDateTime | アラート インスタンスの監視状態が "Resolved" に設定された日時 (UTC)。 現在はメトリック アラートに対してのみ適用されます。|
-| description | アラート ルールで定義されている説明 |
+| alertTargetIds | アラートの影響を受けるターゲットである Azure Resource Manager ID の一覧。 Log Analytics ワークスペースまたは Application Insights インスタンスで定義されているログ アラートの場合は、それぞれのワークスペースまたはアプリケーションになります。 |
+| originAlertId | 生成元の監視サービスによって生成された、アラート インスタンスの ID。 |
+| firedDateTime | アラート インスタンスが発生した日時 (協定世界時 (UTC))。 |
+| resolvedDateTime | アラート インスタンスの監視状態が **Resolved** に設定された日時 (UTC)。 現在はメトリック アラートに対してのみ適用されます。|
+| description | アラート ルールで定義されている説明。 |
 |essentialsVersion| essentials セクションのバージョン番号。|
-|alertContextVersion | alertContext セクションのバージョン番号 |
+|alertContextVersion | `alertContext` セクションのバージョン番号。 |
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "essentials": {
@@ -114,13 +112,13 @@ ms.locfileid: "67594379"
 }
 ```
 
-## <a name="alert-context-fields"></a>"alertContext" のフィールド
+## <a name="alert-context"></a>アラート コンテキスト
 
 ### <a name="metric-alerts"></a>メトリック アラート
 
-#### <a name="monitoringservice--platform"></a>monitoringService = "Platform"
+#### <a name="monitoringservice--platform"></a>`monitoringService` = `Platform`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -154,12 +152,11 @@ ms.locfileid: "67594379"
 ### <a name="log-alerts"></a>ログ アラート
 
 > [!NOTE]
-> + カスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、ペイロード スキーマが後述するものに戻ります。
-> + 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 **アラートのサイズがこのしきい値を超えると、検索結果はログ アラートのペイロードに埋め込まれません。** これは、フラグ "IncludedSearchResults" を確認して判断できます。 検索結果が含まれていないシナリオでは、[Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) と組み合わせて検索クエリを使用することをお勧めします。 
+> カスタム JSON ペイロードが定義されているログ アラートの場合、共通スキーマを有効にすると、ペイロード スキーマが後述のものに戻ります。 共通スキーマが有効なアラートには、アラートごとに 256 KB の上限サイズがあります。 アラートのサイズがこのしきい値を超える場合、検索結果はログ アラートのペイロードに埋め込まれません。 `IncludedSearchResults` フラグを調べることによって、これを判断できます。 検索結果が含まれない場合は、[Log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get) と組み合わせて検索クエリを使用する必要があります。 
 
-#### <a name="monitoringservice--log-analytics"></a>monitoringService = "Log Analytics"
+#### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -224,9 +221,9 @@ ms.locfileid: "67594379"
 }
 ```
 
-#### <a name="monitoringservice--application-insights"></a>monitoringService = "Application Insights"
+#### <a name="monitoringservice--application-insights"></a>`monitoringService` = `Application Insights`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -289,9 +286,9 @@ ms.locfileid: "67594379"
 
 ### <a name="activity-log-alerts"></a>アクティビティ ログ アラート
 
-#### <a name="monitoringservice--activity-log---administrative"></a>monitoringService = "Activity Log - Administrative"
+#### <a name="monitoringservice--activity-log---administrative"></a>`monitoringService` = `Activity Log - Administrative`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -316,22 +313,118 @@ ms.locfileid: "67594379"
 }
 ```
 
-#### <a name="monitoringservice--servicehealth"></a>monitoringService = 'ServiceHealth'
+#### <a name="monitoringservice--activity-log---policy"></a>`monitoringService` = `Activity Log - Policy`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
+```json
+{
+  "alertContext": {
+    "authorization": {
+      "action": "Microsoft.Resources/checkPolicyCompliance/read",
+      "scope": "/subscriptions/<GUID>"
+    },
+    "channels": "Operation",
+    "claims": "{\"aud\":\"https://management.azure.com/\",\"iss\":\"https://sts.windows.net/<GUID>/\",\"iat\":\"1566711059\",\"nbf\":\"1566711059\",\"exp\":\"1566740159\",\"aio\":\"42FgYOhynHNw0scy3T/bL71+xLyqEwA=\",\"appid\":\"<GUID>\",\"appidacr\":\"2\",\"http://schemas.microsoft.com/identity/claims/identityprovider\":\"https://sts.windows.net/<GUID>/\",\"http://schemas.microsoft.com/identity/claims/objectidentifier\":\"<GUID>\",\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier\":\"<GUID>\",\"http://schemas.microsoft.com/identity/claims/tenantid\":\"<GUID>\",\"uti\":\"Miy1GzoAG0Scu_l3m1aIAA\",\"ver\":\"1.0\"}",
+    "caller": "<GUID>",
+    "correlationId": "<GUID>",
+    "eventSource": "Policy",
+    "eventTimestamp": "2019-08-25T11:11:34.2269098+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Warning",
+    "operationName": "Microsoft.Authorization/policies/audit/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "isComplianceCheck": "True",
+      "resourceLocation": "eastus2",
+      "ancestors": "<GUID>",
+      "policies": "[{\"policyDefinitionId\":\"/providers/Microsoft.Authorization/policyDefinitions/<GUID>/\",\"policySetDefinitionId\":\"/providers/Microsoft.Authorization/policySetDefinitions/<GUID>/\",\"policyDefinitionReferenceId\":\"vulnerabilityAssessmentMonitoring\",\"policySetDefinitionName\":\"<GUID>\",\"policyDefinitionName\":\"<GUID>\",\"policyDefinitionEffect\":\"AuditIfNotExists\",\"policyAssignmentId\":\"/subscriptions/<GUID>/providers/Microsoft.Authorization/policyAssignments/SecurityCenterBuiltIn/\",\"policyAssignmentName\":\"SecurityCenterBuiltIn\",\"policyAssignmentScope\":\"/subscriptions/<GUID>\",\"policyAssignmentSku\":{\"name\":\"A1\",\"tier\":\"Standard\"},\"policyAssignmentParameters\":{}}]"
+    },
+    "status": "Succeeded",
+    "subStatus": "",
+    "submissionTimestamp": "2019-08-25T11:12:46.1557298+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--activity-log---autoscale"></a>`monitoringService` = `Activity Log - Autoscale`
+
+**サンプル値**
+```json
+{
+  "alertContext": {
+    "channels": "Admin, Operation",
+    "claims": "{\"http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn\":\"Microsoft.Insights/autoscaleSettings\"}",
+    "caller": "Microsoft.Insights/autoscaleSettings",
+    "correlationId": "<GUID>",
+    "eventSource": "Autoscale",
+    "eventTimestamp": "2019-08-21T16:17:47.1551167+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Insights/AutoscaleSettings/Scaleup/Action",
+    "operationId": "<GUID>",
+    "properties": {
+      "description": "The autoscale engine attempting to scale resource '/subscriptions/d<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS' from 9 instances count to 10 instances count.",
+      "resourceName": "/subscriptions/<GUID>/resourceGroups/voiceassistancedemo/providers/Microsoft.Compute/virtualMachineScaleSets/alexademo",
+      "oldInstancesCount": "9",
+      "newInstancesCount": "10",
+      "activeAutoscaleProfile": "{\r\n  \"Name\": \"Auto created scale condition\",\r\n  \"Capacity\": {\r\n    \"Minimum\": \"1\",\r\n    \"Maximum\": \"10\",\r\n    \"Default\": \"1\"\r\n  },\r\n  \"Rules\": [\r\n    {\r\n      \"MetricTrigger\": {\r\n        \"Name\": \"Percentage CPU\",\r\n        \"Namespace\": \"microsoft.compute/virtualmachinescalesets\",\r\n        \"Resource\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"ResourceLocation\": \"eastus\",\r\n        \"TimeGrain\": \"PT1M\",\r\n        \"Statistic\": \"Average\",\r\n        \"TimeWindow\": \"PT5M\",\r\n        \"TimeAggregation\": \"Average\",\r\n        \"Operator\": \"GreaterThan\",\r\n        \"Threshold\": 0.0,\r\n        \"Source\": \"/subscriptions/<GUID>/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachineScaleSets/testVMSS\",\r\n        \"MetricType\": \"MDM\",\r\n        \"Dimensions\": [],\r\n        \"DividePerInstance\": false\r\n      },\r\n      \"ScaleAction\": {\r\n        \"Direction\": \"Increase\",\r\n        \"Type\": \"ChangeCount\",\r\n        \"Value\": \"1\",\r\n        \"Cooldown\": \"PT1M\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "lastScaleActionTime": "Wed, 21 Aug 2019 16:17:47 GMT"
+    },
+    "status": "Succeeded",
+    "submissionTimestamp": "2019-08-21T16:17:47.2410185+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--activity-log---security"></a>`monitoringService` = `Activity Log - Security`
+
+**サンプル値**
+```json
+{
+  "alertContext": {
+    "channels": "Operation",
+    "correlationId": "<GUID>",
+    "eventSource": "Security",
+    "eventTimestamp": "2019-08-26T08:34:14+00:00",
+    "eventDataId": "<GUID>",
+    "level": "Informational",
+    "operationName": "Microsoft.Security/locations/alerts/activate/action",
+    "operationId": "<GUID>",
+    "properties": {
+      "threatStatus": "Quarantined",
+      "category": "Virus",
+      "threatID": "2147519003",
+      "filePath": "C:\\AlertGeneration\\test.eicar",
+      "protectionType": "Windows Defender",
+      "actionTaken": "Blocked",
+      "resourceType": "Virtual Machine",
+      "severity": "Low",
+      "compromisedEntity": "testVM",
+      "remediationSteps": "[\"No user action is necessary\"]",
+      "attackedResourceType": "Virtual Machine"
+    },
+    "status": "Active",
+    "submissionTimestamp": "2019-08-26T09:28:58.3019107+00:00"
+  }
+}
+```
+
+#### <a name="monitoringservice--servicehealth"></a>`monitoringService` = `ServiceHealth`
+
+**サンプル値**
 ```json
 {
   "alertContext": {
     "authorization": null,
-    "channels": "Admin",
+    "channels": 1,
     "claims": null,
     "caller": null,
     "correlationId": "f3cf2430-1ee3-4158-8e35-7a1d615acfc7",
-    "eventSource": "ServiceHealth",
+    "eventSource": 2,
     "eventTimestamp": "2019-06-24T11:31:19.0312699+00:00",
     "httpRequest": null,
     "eventDataId": "<GUID>",
-    "level": "Informational",
+    "level": 3,
     "operationName": "Microsoft.ServiceHealth/maintenance/action",
     "operationId": "<GUID>",
     "properties": {
@@ -355,13 +448,14 @@ ms.locfileid: "67594379"
     },
     "status": "Active",
     "subStatus": null,
-    "submissionTimestamp": "2019-06-24T11:31:31.7147357+00:00"
+    "submissionTimestamp": "2019-06-24T11:31:31.7147357+00:00",
+    "ResourceType": null
   }
 }
 ```
-#### <a name="monitoringservice--resource-health"></a>monitoringService = 'Resource Health'
+#### <a name="monitoringservice--resource-health"></a>`monitoringService` = `Resource Health`
 
-##### <a name="sample-values"></a>サンプルの値
+**サンプル値**
 ```json
 {
   "alertContext": {
@@ -390,6 +484,6 @@ ms.locfileid: "67594379"
 
 ## <a name="next-steps"></a>次の手順
 
-- [共通アラート スキーマの詳細を確認する](https://aka.ms/commonAlertSchemaDocs)
-- [共通アラートのスキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法について説明します。](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations) 
+- [共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)について学習します。
+- [共通アラート スキーマを利用してすべてのアラートを処理するロジック アプリを作成する方法](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-integrations)について学習します。 
 

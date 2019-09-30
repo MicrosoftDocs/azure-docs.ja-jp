@@ -1,21 +1,21 @@
 ---
 title: Azure Blockchain Workbench SQL DB ファイアウォールを構成する
-description: Azure Blockchain Workbench SQL DB ファイアウォールを構成する方法を説明します。
+description: Azure Blockchain Workbench Preview SQL DB ファイアウォールを構成する方法を説明します。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 09/09/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: d56e7f4750510dc7bb50dbb316dce320b8e8d12b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0153065ca0ccd6cf34456d630d7437d5ea7c5b48
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510022"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845218"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Azure Blockchain Workbench データベース ファイアウォールを構成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "65510022"
 
 ルールを構成するデータベースに接続する手順は、以下の通りです。
 
-1. Azure Blockchain Workbench リソースの**所有者**権限を持つアカウントで Azure Portal にサインインします。
+1. Azure Blockchain Workbench リソースの**所有者**アクセス許可を持つアカウントで Azure portal にサインインします。
 2. 左側のナビゲーション ペインで、 **[リソース グループ]** を選択します。
 3. Blockchain Workbench のデプロイにリソース グループの名前を選択します。
 4. **[タイプ]** を選択してリソースの一覧を並べ替えて、使用する **SQL Server** を選択します。

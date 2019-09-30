@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 07/19/2019
+ms.date: 09/4/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 1349e07662504564fdf48a53f24525c4a16aa477
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: c685b2314d15e431ccac3470fd337ca92697e1a5
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326902"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241174"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -94,6 +94,12 @@ FQDN のタグにより、ファイアウォール経由の既知の Azure サ�
 
 すべてのイベントは Azure Monitor と統合されます。そのため、ログをストレージ アカウントにアーカイブしたり、イベントをイベント ハブにストリーム配信したり、それらを Azure Monitor ログに送信したりできます。
 
+## <a name="pci-soc-and-iso-compliant"></a>PCI、SOC、ISO 準拠
+
+Azure Firewall は、Payment Card Industry (PCI)、Service Organization Controls (SOC)、国際標準化機構 (ISO) に準拠しています。 現在、SOC 1 Type 2、SOC 2 Type 2、SOC 3、PCI DSS のほか、ISO 27001、27018、20000-1、22301、9001、27017 に対応しています。
+
+詳細については、[Microsoft コンプライアンス ガイド](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)を参照してください。
+
 ## <a name="known-issues"></a>既知の問題
 
 Azure Firewall には、次の既知の問題があります。
@@ -112,6 +118,7 @@ TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク �
 |Availability Zones は、デプロイ時にのみ構成できます。|Availability Zones は、デプロイ時にのみ構成できます。 ファイアウォールがデプロイされた後、Availability Zones を構成することはできません。|これは設計によるものです。|
 |受信接続での SNAT|DNAT に加えて、ファイアウォールのパブリック IP アドレスを使用した (受信) 接続は SNAT によっていずれかのファイアウォールのプライベート IP に変換されます。 対称的なルーティングを実現するために、現在このような要件が (アクティブ/アクティブ NVA に対しても) 適用されます。|HTTP/S の元の送信元を保持するには、[XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) ヘッダーを使用することを検討します。 たとえば、ファイアウォールの直前に [Azure Front Door](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) などのサービスを使用します。 Azure Front Door とチェーンの一部としてファイアウォールに WAF を追加することもできます。
 |SQL の FQDN のフィルター処理がプロキシ モードでのみサポートされる (ポート 1433)|Azure SQL Database、Azure SQL Data Warehouse、Azure SQL Managed Instance の場合:<br><br>プレビュー期間中、SQL の FQDN のフィルター処理は、プロキシ モードでのみサポートされます (ポート 1433)。<br><br>Azure SQL IaaS の場合:<br><br>標準以外のポートを使っている場合は、アプリケーション ルールでそれらのポートを指定できます。|リダイレクト モードの SQL では (Azure 内から接続する場合の既定)、代わりに Azure Firewall ネットワーク ルールの一部として SQL サービス タグを使ってアクセスをフィルター処理できます。
+|TCP ポート 25 でアウトバウンド トラフィックが許可されない| TCP ポート 25 を使用するアウトバウンド SMTP 接続はブロックされます。 ポート 25 は主に、認証されていないメール配信で使用されます。 仮想マシンでは、これがプラットフォームの既定の動作となります。 詳細については、「[Azure でのアウトバウンド SMTP 接続に関する問題のトラブルシューティング](../virtual-network/troubleshoot-outbound-smtp-connectivity.md)」を参照してください。 ただし、仮想マシンとは異なり、Azure Firewall でこの機能を有効にすることは現在できません。|SMTP のトラブルシューティング記事に記載されている推奨される方法に従ってメールを送信してください。 または、アウトバウンド SMTP アクセスを必要とする仮想マシンについては、ファイアウォールへの既定のルートから除外し、代わりにインターネットへの直接アウトバウンド アクセスを構成します。
 
 ## <a name="next-steps"></a>次の手順
 

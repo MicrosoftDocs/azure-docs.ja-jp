@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 09/06/2019
 ms.author: lewlu
-ms.openlocfilehash: 886e0ff353ab270bb823629d2068508531c14fc2
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 49b92037fed6436d28f777761b18cf5f66e03025
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516862"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859165"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>顔データを別の Face サブスクリプションに移行する
 
-このガイドでは、顔データ (顔と一緒に保存したPersonGroup オブジェクトなど) を別の Azure Cognitive Services Face API サブスクリプションに移動する方法について説明します。 データを移動するには、スナップショット機能を使用します。 これにより、運用を移行または拡張するときに、PersonGroup または FaceList オブジェクトを繰り返し構築およびトレーニングする必要がなくなります。 たとえば、無料試用版サブスクリプションを使用して PersonGroup オブジェクトを作成し、それを有料サブスクリプションに移行することが必要になる場合があります。 または、大規模なエンタープライズ運用のためにリージョン間で顔データを同期することが必要な場合もあります。
+このガイドでは、顔データ (顔と一緒に保存したPersonGroup オブジェクトなど) を別の Azure Cognitive Services Face API サブスクリプションに移動する方法について説明します。 データを移動するには、スナップショット機能を使用します。 これにより、運用を移行または拡張するときに、PersonGroup または FaceList オブジェクトを繰り返し構築およびトレーニングする必要がなくなります。 たとえば、無料試用版サブスクリプションを使用して PersonGroup オブジェクトを作成し、それを有料サブスクリプションに移行することが必要になる場合があります。 または、大規模なエンタープライズ運用のために異なるリージョンのサブスクリプション間で顔データを同期することが必要な場合もあります。
 
 この同じ移行戦略は、LargePersonGroup オブジェクトと LargeFaceList オブジェクトにも適用されます。 このガイドの概念についてよくわからない場合は、「[顔認識の概念](../concepts/face-recognition.md)」ガイドにあるそれらの定義を参照してください。 このガイドでは、C# と共に Face API .NET クライアント ライブラリを使用しています。
 
@@ -41,7 +41,9 @@ ms.locfileid: "68516862"
 
 ## <a name="create-face-clients"></a>顔クライアントを作成する
 
-*Program.cs* の **Main** メソッドで、ソース サブスクリプション用とターゲット サブスクリプション用の 2 つの [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) インスタンスを作成します。 この例では、東アジア リージョンの Face サブスクリプションをソースとして使用し、米国西部サブスクリプションをターゲットとして使用します。 この例で、Azure リージョン間でデータを移行する方法について説明します。 サブスクリプションが異なるリージョンにある場合は、`Endpoint` 文字列を変更してください。
+*Program.cs* の **Main** メソッドで、ソース サブスクリプション用とターゲット サブスクリプション用の 2 つの [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) インスタンスを作成します。 この例では、東アジア リージョンの Face サブスクリプションをソースとして使用し、米国西部サブスクリプションをターゲットとして使用します。 この例で、Azure リージョン間でデータを移行する方法について説明します。 
+
+[!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ```csharp
 var FaceClientEastAsia = new FaceClient(new ApiKeyServiceClientCredentials("<East Asia Subscription Key>"))

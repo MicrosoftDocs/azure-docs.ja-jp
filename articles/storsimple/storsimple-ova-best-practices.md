@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b5ffc16a7c9dacef3036ca5ce225265252dcdf5d
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: a8aed646f03b777722518152354cfe80cea043a0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516758"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002798"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array のベスト プラクティス
 
@@ -199,7 +199,7 @@ StorSimple ボリュームの ACR を構成する際は、次のベスト プラ
 ### <a name="data-security-and-encryption"></a>データ セキュリティと暗号化
 StorSimple Virtual Array には、データの機密性と整合性を確保するデータ セキュリティと暗号化の機能が備わっています。 これらの機能を使用するときは、次のベスト プラクティスに従うようお勧めします。 
 
-* データが仮想アレイからクラウドに送信される前に AES-256 暗号化を適用するためにクラウド ストレージの暗号化キーを定義します。 データが最初に暗号化される場合、このキーは不要です。 キーは、 [Azure Key Vault](../key-vault/key-vault-whatis.md)などのキー管理システムを使用して生成し、安全に保管することができます。
+* データが仮想アレイからクラウドに送信される前に AES-256 暗号化を適用するためにクラウド ストレージの暗号化キーを定義します。 データが最初に暗号化される場合、このキーは不要です。 キーは、 [Azure Key Vault](../key-vault/key-vault-overview.md)などのキー管理システムを使用して生成し、安全に保管することができます。
 * StorSimple Manager サービスを介してストレージ アカウントを構成する際は、必ず SSL モードを有効にし、StorSimple デバイスとクラウド間のネットワーク通信に安全なチャネルを作成します。
 * 一連の管理者に変更が生じたことによるアクセスの変化に対応するために、ストレージ アカウントのキーは、(Azure Storage サービスにアクセスして) 定期的に再生成します。
 * 仮想アレイ上のデータは圧縮され、重複除去されてから、Azure に送信されます。 Windows Server ホストでデータ重複除去役割サービスを使用することはお勧めできません。

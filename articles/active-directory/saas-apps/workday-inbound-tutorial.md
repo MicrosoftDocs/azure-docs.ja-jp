@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31cf1f6da515aa9b453987383e78f466c5ba4fb9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c357cba8ce2fbe2ad902d5c215f8adbfc99a9f0a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65827291"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813020"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -489,6 +489,9 @@ Active Directory ドメインへのユーザー プロビジョニングを構�
    > [!TIP]
    > 初めてプロビジョニング アプリを構成するときは、属性マッピングと式をテストして検証し、目的の結果が得られていることを確認する必要があります。 Microsoft は、Workday の少数のテスト ユーザーを使用してマッピングをテストするために **[ソース オブジェクト スコープ]** の下のスコープ フィルターを使用することをお勧めします。 マッピングが機能していることを確認したら、フィルターを削除するか、徐々に拡張してより多くのユーザーを含めることができます。
 
+   > [!CAUTION] 
+   > プロビジョニング エンジンの既定の動作では、スコープ外に出るユーザーが無効化または削除されます。 これはご使用の Workday と AD の統合には望ましくない場合があります。 この既定の動作をオーバーライドするには、「[スコープ外に出るユーザー アカウントの削除をスキップする](../manage-apps/skip-out-of-scope-deletions.md)」の記事を参照してください。
+  
 1. **[対象オブジェクトのアクション]** フィールドでは、Active Directory 上で実行されるアクションをグローバルにフィルター処理できます。 **作成**と**更新**が最も一般的です。
 
 1. **[属性マッピング]** セクションでは、個別の Workday 属性を Active Directory の属性にマッピングする方法を定義できます。
@@ -1333,66 +1336,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 ### <a name="exporting-and-importing-your-configuration"></a>構成のエクスポートとインポート
 
-このセクションでは、Microsoft Graph API と Graph Explorer を使用して、Workday Provisioning の属性マッピングとスキーマを JSON ファイルにエクスポートし、それを Azure AD にインポートする方法について説明します。
-
-#### <a name="step-1-retrieve-your-workday-provisioning-app-service-principal-id-object-id"></a>手順 1:Workday Provisioning アプリのサービス プリンシパル ID (オブジェクト ID) を取得します
-
-1. [Azure portal](https://portal.azure.com) を起動し、Workday プロビジョニング アプリケーションの [プロパティ] セクションに移動します。
-1. プロビジョニング アプリの [プロパティ] セクションで、"*オブジェクト ID*" フィールドに関連付けられている GUID 値をコピーします。 この値はアプリの **ServicePrincipalId** とも呼ばれ、Graph Explorer の操作で使用されます。
-
-   ![Workday アプリのサービス プリンシパル ID](./media/workday-inbound-tutorial/wd_export_01.png)
-
-#### <a name="step-2-sign-into-microsoft-graph-explorer"></a>手順 2:Microsoft Graph Explorer にサインインします
-
-1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を起動します
-1. [Sign-In with Microsoft]\(Microsoft を使用してサインイン\) ボタンをクリックし、Azure AD 全体管理者またはアプリ管理者の資格情報を使用してサインインします。
-
-    ![Graph のサインイン](./media/workday-inbound-tutorial/wd_export_02.png)
-
-1. サインインに成功すると、左側のウィンドウにユーザー アカウントの詳細が表示されます。
-
-#### <a name="step-3-retrieve-the-provisioning-job-id-of-the-workday-provisioning-app"></a>手順 3:Workday Provisioning アプリのプロビジョニング ジョブ ID を取得します
-
-Microsoft Graph Explorer で、[servicePrincipalId] を「[手順 1](#step-1-retrieve-your-workday-provisioning-app-service-principal-id-object-id)」から抽出した **ServicePrincipalId** に置き換え、次の GET クエリを実行します。
-
-```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs
-```
-
-次の応答を受け取ります。 応答に存在する "id attribute" をコピーします。 この値は **ProvisioningJobId** であり、基になるスキーマ メタデータを取得するために使用されます。
-
-   [![プロビジョニング ジョブ ID](./media/workday-inbound-tutorial/wd_export_03.png)](./media/workday-inbound-tutorial/wd_export_03.png#lightbox)
-
-#### <a name="step-4-download-the-provisioning-schema"></a>手順 4:プロビジョニング スキーマをダウンロードする
-
-Microsoft Graph Explorer で、[servicePrincipalId] と [ProvisioningJobId] を、前の手順で取得した ServicePrincipalId と ProvisioningJobId に置き換えて、次の GET クエリを実行します。
-
-```http
-   GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs/[ProvisioningJobId]/schema
-```
-
-応答から JSON オブジェクトをコピーしてファイルに保存し、スキーマのバックアップを作成します。
-
-#### <a name="step-5-import-the-provisioning-schema"></a>手順 5:プロビジョニング スキーマをインポートする
-
-> [!CAUTION]
-> Azure portal を使用して変更できない構成用にスキーマを変更する必要がある場合、または有効で機能しているスキーマを使用して以前にバックアップしたファイルから構成を復元する必要がある場合にのみ、この手順を実行します。
-
-Microsoft Graph Explorer で、[servicePrincipalId] と [ProvisioningJobId] を、前の手順で取得した ServicePrincipalId と ProvisioningJobId に置き換えて、次の PUT クエリを構成します。
-
-```http
-    PUT https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/jobs/[ProvisioningJobId]/schema
-```
-
-[Request Body]\(要求本文\) タブで、JSON スキーマ ファイルの内容をコピーします。
-
-   [![要求本文](./media/workday-inbound-tutorial/wd_export_04.png)](./media/workday-inbound-tutorial/wd_export_04.png#lightbox)
-
-[Request Headers]\(要求ヘッダー\) タブで、値が "application/json" の Content-Type ヘッダー属性を追加します。
-
-   [![要求ヘッダー](./media/workday-inbound-tutorial/wd_export_05.png)](./media/workday-inbound-tutorial/wd_export_05.png#lightbox)
-
-[Run Query]\(クエリの実行\) ボタンをクリックして新しいスキーマをインポートします。
+[プロビジョニング構成のエクスポートとインポート](../manage-apps/export-import-provisioning-configuration.md)に関する記事を参照してください。
 
 ## <a name="managing-personal-data"></a>個人データの管理
 

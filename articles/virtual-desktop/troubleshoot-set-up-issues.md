@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: 7ab8ec9536af74102d2c9384ea3d0d0503f58f63
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 93f111eb4439b89ac367ad7e7b951e26cecb86e4
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816480"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981092"
 ---
 # <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
 
@@ -53,7 +53,7 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 
 **原因:** サインインしているユーザーに、Azure Active Directory の TenantCreator ロールが割り当てられていません。
 
-**解決策:** [Azure Active Directory テナント内のユーザーに TenantCreator アプリケーション ロールを割り当てる](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role-to-a-user-in-your-azure-active-directory-tenant)の指示に従います。 指示に従った後、ユーザーを TenantCreator ロールに割り当てます。
+**解決策:** [Azure Active Directory テナント内のユーザーに TenantCreator アプリケーション ロールを割り当てる](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory#assign-the-tenantcreator-application-role)の指示に従います。 指示に従った後、ユーザーを TenantCreator ロールに割り当てます。
 
 ![TenantCreator ロールを割り当てたスクリーンショット。](media/TenantCreatorRoleAssigned.png)
 

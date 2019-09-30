@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5e384520c1b8d6cf5e3b182bbddf41a5f4f7f8f6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c71bf9be94799c2b109d57393e70e99a0710e252
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707819"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995518"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Azure HDInsight で実行される Apache Spark ジョブのデバッグ
 
@@ -29,14 +29,14 @@ ms.locfileid: "64707819"
 ## <a name="track-an-application-in-the-yarn-ui"></a>YARN UI でのアプリケーションの追跡
 1. YARN UI を起動します。 **[クラスター ダッシュボード]** の **[Yarn]** をクリックします。
    
-    ![Launch YARN UI](./media/apache-spark-job-debugging/launch-yarn-ui.png)
+    ![Launch YARN UI](./media/apache-spark-job-debugging/launch-apache-yarn-ui.png)
    
    > [!TIP]  
    > Ambari UI から YARN UI を起動してもかまいません。 Ambari UI を起動するには、 **[クラスター ダッシュボード]** の **[Ambari ホーム]** をクリックします。 Ambari UI から **[YARN]** 、 **[クイック リンク]** の順にクリックし、アクティブな Resource Manager をクリックして、 **[Resource Manager UI]** をクリックします。 
 
 2. Jupyter Notebook を使用して Spark ジョブを開始したため、アプリケーションの名前は **remotesparkmagics** (ノートブックから開始されたすべてのアプリケーションに使用される名前) になっています。 ジョブに関する詳しい情報を確認するには、アプリケーション名に対応するアプリケーション ID をクリックします。 これによりアプリケーション ビューが起動されます。
    
-    ![Find Spark application ID](./media/apache-spark-job-debugging/find-application-id.png)
+    ![Find Spark application ID](./media/apache-spark-job-debugging/find-application-id1.png)
    
     Jupyter Notebook から起動されたアプリケーションの場合、ノートブックを終了するまでステータスは常に **[実行中]** になります。
 3. アプリケーション ビューからドリルダウンして、アプリケーションやログ (stdout/stderr) に関連付けられているコンテナーを探すことができます。 次のように、 **[追跡 URL]** に対応するリンクをクリックして Spark UI を起動することもできます。 
@@ -48,17 +48,17 @@ ms.locfileid: "64707819"
 
 1. Spark UI を起動するには、アプリケーション ビューから **[追跡 URL]** に対応するリンクをクリックします (上のスクリーン ショットを参照)。 Jupyter Notebook で実行中のアプリケーションによって開始されたすべての Spark ジョブを表示できます。
    
-    ![View Spark jobs](./media/apache-spark-job-debugging/view-spark-jobs.png)
+    ![View Spark jobs](./media/apache-spark-job-debugging/view-apache-spark-jobs.png)
 2. **[Executors]** タブをクリックすると、実行プログラムごとの処理や記憶域の情報が表示されます。 **[Thread Dump (スレッド ダンプ)]** リンクをクリックして呼び出し履歴を取得することもできます。
    
     ![View Spark executors](./media/apache-spark-job-debugging/view-spark-executors.png)
 3. アプリケーションに関連付けられているステージを確認するには、 **[Stages (ステージ)]** タブをクリックします。
    
-    ![View Spark stages](./media/apache-spark-job-debugging/view-spark-stages.png)
+    ![Spark ステージの表示](./media/apache-spark-job-debugging/view-apache-spark-stages.png "Spark ステージの表示")
    
     1 つのステージに複数のタスクが存在する場合もあり、対応する実行の統計を表示することができます (下図参照)。
    
-    ![View Spark stages](./media/apache-spark-job-debugging/view-spark-stages-details.png) 
+    ![Spark ステージの詳細の表示](./media/apache-spark-job-debugging/view-spark-stages-details.png "Spark ステージの詳細の表示") 
 4. ステージの詳細ページから DAG Visualization を起動できます。 以下に示したように、ページの上部にある **[DAG Visualization]** リンクを展開してください。
    
     ![View Spark stages DAG visualization](./media/apache-spark-job-debugging/view-spark-stages-dag-visualization.png)
@@ -87,14 +87,14 @@ ms.locfileid: "64707819"
 
 1. Spark History Server を起動するには、[概要] ブレードから、 **[クラスター ダッシュボード]** の **[Spark History Server]** をクリックします。
    
-    ![Launch Spark History Server](./media/apache-spark-job-debugging/launch-spark-history-server.png)
+    ![Spark History Server の起動1](./media/apache-spark-job-debugging/launch-spark-history-server.png "Spark History Server の起動1")
    
    > [!TIP]  
    > Ambari UI から Spark History Server の UI を起動してもかまいません。 Ambari UI を起動するには、[概要] ブレードから、 **[クラスター ダッシュボード]** の **[Ambari ホーム]** をクリックします。 Ambari UI から **[Spark]** 、 **[クイック リンク]** の順にクリックし、 **[Spark History Server UI]** をクリックします。
 
 2. 完了済みのすべてのアプリケーションが一覧表示されます。 アプリケーションをドリルダウンして、より詳しい情報を入手するには、アプリケーション ID をクリックします。
    
-    ![Launch Spark History Server](./media/apache-spark-job-debugging/view-completed-applications.png)
+    ![Spark History Server の起動2](./media/apache-spark-job-debugging/view-completed-applications.png "Spark History Server の起動2")
 
 ## <a name="see-also"></a>関連項目
 *  [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)

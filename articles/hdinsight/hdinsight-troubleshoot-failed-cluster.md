@@ -1,19 +1,19 @@
 ---
 title: HDInsight クラスターでジョブが遅いか失敗する場合のトラブルシューティング - Azure HDInsight
-description: HDInsight クラスターの処理速度が遅いとき、または処理が失敗したときに、診断とトラブルシューティングを行います。
+description: Azure HDInsight クラスターで遅延またはエラーが発生しているジョブを診断し、トラブルシューティングします。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 03/19/2019
-ms.openlocfilehash: 0f405f542a8408c290704f1707ca10a24b08f861
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: troubleshooting
+ms.date: 08/15/2019
+ms.openlocfilehash: efb2ac4be074508107bb31ae321c27a3d1263d9e
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65203628"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105339"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>HDInsight クラスターでジョブが遅いか失敗する場合のトラブルシューティング
 
@@ -54,7 +54,7 @@ HDInsight では、クラスターに関する問題の識別とトラブルシ�
 
 Azure Portal は次の情報を提供できます。
 
-![HDInsight、Azure Portal の情報](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
+![HDInsight、Azure Portal の情報](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) を使うこともできます。
 
@@ -80,7 +80,7 @@ az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 
 Apache Ambari の Web UI と REST API を使って、HDInsight クラスターを管理および監視できます。 Ambari は Linux ベースの HDInsight クラスターに付属しています。 Azure Portal の HDInsight ページで **[クラスター ダッシュボード]** ウィンドウを選びます。  **[HDInsight クラスター ダッシュボード]** ウィンドウを選んで Ambari UI を開き、クラスターのログイン資格情報を入力します。  
 
-![Ambari UI](./media/hdinsight-troubleshoot-failed-cluster/ambari-ui.png)
+![Apache Ambari ダッシュボードの概要](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
 サービス ビューの一覧を開くには、Azure Portal のページで **[Ambari Views]** を選びます。  この一覧は、インストールされているライブラリに依存します。 たとえば、YARN Queue Manager、Hive View、Tez View などが表示される場合があります。  構成とサービスの情報を表示するには、サービスのリンクを選びます。
 
@@ -119,7 +119,7 @@ Apache Hive、Apache Pig、または Apache Sqoop ジョブが失敗する一般
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (502 状態コード)
 
-これは、ゲートウェイ ノードからの汎用メッセージであり、最も一般的な障害状態コードです。 考えられる原因の 1 つは、アクティブなヘッド ノードで WebHCat サービスがダウンしていることです。 この可能性を確認するには、次の CURL コマンドを使います。
+このコードは、ゲートウェイ ノードからの汎用メッセージであり、最も一般的な障害状態コードです。 考えられる原因の 1 つは、アクティブなヘッド ノードで WebHCat サービスがダウンしていることです。 この可能性を確認するには、次の CURL コマンドを使います。
 
 ```bash
 curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v1/status?user.name=admin
@@ -127,7 +127,7 @@ curl -u admin:{HTTP PASSWD} https://{CLUSTERNAME}.azurehdinsight.net/templeton/v
 
 Ambari では、WebHCat サービスがダウンしているホストを示すアラートが表示されます。 そのホストのサービスを再起動することにより、WebHCat サービスのバックアップを試みることができます。
 
-![WebHCat サーバーの再起動](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat.png)
+![Apache Ambari の WebHCat サーバーの再起動](./media/hdinsight-troubleshoot-failed-cluster/restart-webhcat-server.png)
 
 WebHCat サーバーがまだ回復しない場合は、エラー メッセージの操作ログを確認します。 さらに詳細な情報を得るには、ノードで参照されている `stderr` および `stdout` ファイルを確認します。
 
@@ -176,7 +176,7 @@ YARN レベルでは、2 種類のタイムアウトがあります。
 
     次の図は、714.4 の過剰使用状態の joblauncher キューを示したものです。 既定のキューに借用可能な空き容量がある限り、これは許容されます。 しかし、クラスターが完全に利用されて、YARN メモリの容量が 100% になると、新しいジョブは待機する必要があり、最終的にタイムアウトが発生します。
 
-    ![Joblauncher キュー](./media/hdinsight-troubleshoot-failed-cluster/joblauncher-queue.png)
+    ![HDInsight ジョブ ランチャー キュー ビュー](./media/hdinsight-troubleshoot-failed-cluster/hdi-job-launcher-queue.png)
 
     この問題を解決するには 2 つの方法があります。新しいジョブを送信する数を減らす方法と、クラスターをスケールアップすることによって古いジョブを処理する速度を上げる方法です。
 
@@ -208,9 +208,9 @@ YARN レベルでは、2 種類のタイムアウトがあります。
 
 Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。  Hadoop サービス ライブラリのバージョンが正しくないと、クラスターの障害の原因になる可能性があります。  Ambari UI で **[Admin]\(管理\)** メニューを選び、 **[Stacks and Versions]\(スタックとバージョン\)** を選びます。  ページの上部で **[Versions]\(バージョン\)** タブを選び、サービスのバージョン情報を確認します。
 
-![スタックとバージョン](./media/hdinsight-troubleshoot-failed-cluster/stack-versions.png)
+![Apache Ambari スタックとバージョン](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 
-## <a name="step-5-examine-the-log-files"></a>ステップ 5:ログ ファイルを調べる
+## <a name="step-5-examine-the-log-files"></a>手順 5:ログ ファイルを調べる
 
 HDInsight クラスターを構成する多くのサービスとコンポーネントから、多くの種類のログが生成されます。 [WebHCat ログファイル](#check-your-webhcat-service)については既に説明しました。 以下のセクションでは、クラスターに関する問題の絞り込みの調査で他に役立つ可能性がある他のいくつかのログ ファイルについて説明します。
 
@@ -232,7 +232,7 @@ HDInsight の Ambari UI には、複数の **[Quick Links]\(クイック リン�
 
 たとえば、HDFS ログの場合は次のように選びます。
 
-![ログ ファイルへの Ambari クイック リンク](./media/hdinsight-troubleshoot-failed-cluster/quick-links.png)
+![ログ ファイルへの Ambari クイック リンク](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-quick-links.png)
 
 ### <a name="view-hadoop-generated-log-files"></a>Hadoop で生成されたログ ファイルを表示する
 

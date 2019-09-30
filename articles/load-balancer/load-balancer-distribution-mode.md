@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 98fdf76dc2e1cb8171e7b0b37216d5f5405a1e6a
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 0d3ddf2e005338a19972cfcdef025579764f7f23
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275429"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114709"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer の分散モードを構成する
 
@@ -42,7 +42,7 @@ Load Balancer は、ソース IP アフィニティ分散モードを使用し�
 
 もう 1 つの使用シナリオは、メディア アップロードです。 データのアップロードを UDP 経由で行い、コントロール プレーンは TCP 経由で実現します。
 
-* クライアントが、負荷分散されたパブリック アドレスに対する TCP セッションを開始し、特定の DIP に送られます。 チャネルは、接続の正常性を監視するためにアクティブのままになります。
+* クライアントで、負荷分散されたパブリック アドレスに対する TCP セッションが開始され、特定の DIP に送られます。 チャネルは、接続の正常性を監視するためにアクティブのままになります。
 * 同じクライアント コンピューターからの新しい UDP セッションが、負荷分散された同じパブリック エンドポイントに対して開始されます。 接続先は前回の TCP 接続と同じ DIP エンドポイントになります。 コントロール チャネルは TCP 経由で維持しつつ、メディア アップロードを高スループットで実行できます。
 
 > [!NOTE]
@@ -50,9 +50,26 @@ Load Balancer は、ソース IP アフィニティ分散モードを使用し�
 
 ## <a name="configure-source-ip-affinity-settings"></a>ソース IP アフィニティ設定を構成する
 
-Resource Manager を使用してデプロイされた仮想マシンの場合は、PowerShell を使用して、既存の負荷分散規則でのロード バランサーの分散設定を変更します。 これにより分散モードが更新されます。 
+### <a name="azure-portal"></a>Azure ポータル
 
-```powershell
+分散モードの構成を変更するには、ポータルで負荷分散規則を変更します。
+
+1. Azure portal にサインインし、 **[リソース グループ]** をクリックして、変更するロード バランサーが含まれているリソース グループを見つけます。
+2. ロード バランサーの概要ブレードで、 **[設定]** の **[負荷分散規則]** をクリックします。
+3. [負荷分散規則] ブレードで、分散モードを変更する負荷分散規則をクリックします。
+4. 規則の **[セッション永続化]** ドロップ ダウン ボックスを変更することで、分散モードが変更されます。  次のオプションを使用できます。
+    
+    * **[None (hash-based)]\(なし (ハッシュベース)\)** - 同じクライアントからの連続した要求が、任意の仮想マシンによって処理できることを指定します。
+    * **[Client IP (source IP affinity 2-tuple)]\(クライアント IP (ソース IP アフィニティ 2 タプル)\)** - 同じクライアント IP アドレスからの連続する要求が、同じ仮想マシンによって処理されることを指定します。
+    * **[Client IP and protocol (source IP affinity 3-tuple)]\(クライアント IP とプロトコル (ソース IP アフィニティ 3 タプル)\)** - 同じクライアント IP アドレスとプロトコルの組み合わせからの連続する要求が、同じ仮想マシンによって処理されることを指定します。
+
+5. 分散モードを選択し、 **[保存]** をクリックします。
+
+### <a name="azure-powershell"></a>Azure PowerShell
+
+Resource Manager を使用してデプロイされた仮想マシンの場合は、PowerShell を使用して、既存の負荷分散規則でのロード バランサーの分散設定を変更します。 次のコマンドで、分散モードが更新されます。 
+
+```azurepowershell-interactive
 $lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
 $lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
 Set-AzLoadBalancer -LoadBalancer $lb
@@ -60,7 +77,7 @@ Set-AzLoadBalancer -LoadBalancer $lb
 
 従来の仮想マシンの場合は、Azure PowerShell を使用して分散設定を変更します。 次のようにして、Azure エンドポイントを仮想マシンに追加してロード バランサー分散モードを構成します。
 
-```powershell
+```azurepowershell-interactive
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
@@ -94,7 +111,7 @@ Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Pro
 
 エンドポイントが負荷分散エンドポイント セットの一部である場合、分散モードは負荷分散エンドポイント セットで構成される必要があります。
 
-```azurepowershell
+```azurepowershell-interactive
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 

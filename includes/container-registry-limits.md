@@ -9,13 +9,13 @@ ms.date: 05/14/2019
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: ee8ff3529524a63ca2e54a64327570197f363538
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67181539"
 ---
-| Resource | Basic | 標準 | Premium |
+| リソース | Basic | 標準 | Premium |
 |---|---|---|---|
 | ストレージ<sup>1</sup> | 10 GiB | 100 GiB| 500 GiB |
 | イメージ レイヤーの最大サイズ | 200 GiB | 200 GiB | 200 GiB |

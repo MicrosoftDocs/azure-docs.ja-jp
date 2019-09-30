@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f4f081001f2573bccc58205ccc7955739b7f5c4c
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: ca7985ee302b35f8e7b39c46c229c7b0b263ffce
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779285"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70170657"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions のネットワーク オプション
 
@@ -52,8 +52,10 @@ IP 制限を使用すると、アプリへのアクセスを許可または拒�
 ## <a name="private-site-access"></a>プライベート サイトへのアクセス
 
 プライベート サイト アクセスとは、Azure 仮想ネットワークなどプライベート ネットワークのみからアプリにアクセスできるようにすることです。 
-* プライベート サイトへのアクセスは、**サービス エンドポイント**が構成されている場合に [Premium](./functions-premium-plan.md) と [App Service プラン](functions-scale.md#app-service-plan)で利用可能です。 詳細については、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)」を参照してください。
-    * サービス エンドポイントがあれば、仮想ネットワーク統合が構成されていても、関数はインターネットへの完全な送信アクセスを引き続き持つことに注意してください。
+* プライベート サイトへは、**サービス エンドポイント**が構成されている場合に [Premium](./functions-premium-plan.md)、[従量課金プラン](functions-scale.md#consumption-plan)および [App Service プラン](functions-scale.md#app-service-plan)でアクセスできます。 
+    * サービス エンドポイントは、[プラットフォーム機能]、[ネットワーク]、[アクセス制限を構成する]、[ルールの追加] からアプリごとに構成できます。 ルールの "種類" として、仮想ネットワークを選択できるようになりました。
+    * 詳細については、「[仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)」を参照してください。
+        * サービス エンドポイントがあれば、仮想ネットワーク統合が構成されていても、関数はインターネットへの完全な送信アクセスを引き続き持つことに注意してください。
 * プライベート サイトには、内部ロード バランサー (ILB) を使用して App Service Environment が構成されている場合にもアクセスできます。 詳細については、「[App Service Environment で内部ロード バランサーを作成して使用する](../app-service/environment/create-ilb-ase.md)」を参照してください。
 
 ## <a name="virtual-network-integration"></a>仮想ネットワークの統合
@@ -99,6 +101,13 @@ Functions の仮想ネットワーク統合では、App Service Web アプリで
 * [ゲートウェイが必要な VNet 統合](../app-service/web-sites-integrate-with-vnet.md#gateway-required-vnet-integration)
 
 仮想ネットワーク統合の使用について詳しくは、「[関数アプリを Azure 仮想ネットワークに統合する](functions-create-vnet.md)」を参照してください。
+
+### <a name="restricting-your-storage-account-to-a-virtual-network"></a>お使いのストレージ アカウントを仮想ネットワークに制限する
+
+> [!note] 
+> お使いのストレージ アカウントにアクセス制限を構成後、お使いの関数アプリでそのストレージ アカウントが使用できるようになるには、当面、最大で 12 時間かかります。 この期間中、お使いのアプリケーションは完全にオフラインになります。
+
+お使いのアプリケーションのストレージ アカウントを仮想ネットワークに制限すると、より高いレベルのセキュリティを実現できます。 その後、お使いのサイトをその仮想ネットワークと統合して、お使いのストレージ アカウントにアクセスできるようにします。 この構成は、仮想ネットワークの統合をサポートするすべての計画でサポートされています。
 
 ## <a name="virtual-network-triggers-non-http"></a>仮想ネットワーク トリガー (非 HTTP)
 

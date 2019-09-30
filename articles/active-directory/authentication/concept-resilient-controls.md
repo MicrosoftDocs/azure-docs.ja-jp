@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9be48d8f403d3ddde993ebdcf0142b55e52afce
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 675e970bbdaeb035273eb87394dda610e070aa39
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779675"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125106"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Azure Active Directory で回復性があるアクセス制御管理戦略を作成する
 
@@ -145,28 +145,28 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:Any
   * 許可の制御:ドメインへの参加が必要
-  * 状態:Disabled
+  * 状態:無効
 * ポリシー 2:Windows 以外のプラットフォームをブロック
   * 名前:EM002 - ENABLE IN EMERGENCY:MFA Disruption[2/4] - Exchange SharePoint - Block access except Windows
   * ユーザーとグループ:すべてのユーザーを含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:デバイス プラットフォームは、Windows 以外のすべてのプラットフォームを含む
   * 許可の制御:ブロック
-  * 状態:Disabled
+  * 状態:無効
 * ポリシー 3:CorpNetwork 以外のネットワークをブロック
   * 名前:EM003 - ENABLE IN EMERGENCY:MFA Disruption[3/4] - Exchange SharePoint - Block access except Corporate Network
   * ユーザーとグループ:すべてのユーザーを含める。 CoreAdmins、EmergencyAccess を除外する
   * クラウド アプリ:Exchange Online と SharePoint Online
   * 条件:場所は、CorpNetwork 以外のすべての場所を含む
   * 許可の制御:ブロック
-  * 状態:Disabled
+  * 状態:無効
 * ポリシー 4:EAS を明示的にブロックする
   * 名前:EM004 - ENABLE IN EMERGENCY:MFA Disruption[4/4] - Exchange - Block EAS for all users
   * ユーザーとグループ:すべてのユーザーを含める
   * クラウド アプリ:Exchange Online を含める
   * 条件:クライアント アプリ:Exchange Active Sync
   * 許可の制御:ブロック
-  * 状態:Disabled
+  * 状態:無効
 
 アクティブ化の順序:
 
@@ -187,14 +187,14 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
   * クラウド アプリ:Salesforce。
   * 条件:なし
   * 許可の制御:ブロック
-  * 状態:Disabled
+  * 状態:無効
 * ポリシー 2:(攻撃対象領域を減らすため) モバイル以外の任意のプラットフォームからのセールス チームをブロックする
   * 名前:EM002 - ENABLE IN EMERGENCY:Device Compliance Disruption[2/2] - Salesforce - Block All platforms except iOS and Android
   * ユーザーとグループ:SalesforceContingency を含める。 SalesAdmins を除外する
   * クラウド アプリ:Salesforce
   * 条件:デバイス プラットフォームは、iOS と Android 以外のすべてのプラットフォームを含む
   * 許可の制御:ブロック
-  * 状態:Disabled
+  * 状態:無効
 
 アクティブ化の順序:
 
@@ -232,7 +232,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 1. 変更管理戦略の一環として、アクセス制御が完全に動作するようになったら直ちに、実装したコンティンジェンシーをロールバックできるように、すべての変更と以前の状態を文書化します。
 2. MFA を無効にしている間は、悪意のあるユーザーがパスワード スプレーやフィッシング攻撃を使用してパスワードを取得しようとするものと想定します。 また、悪意のあるユーザーは、以前はどのリソースにもアクセスできなかったパスワードを既に持っていて、この期間中にアクセスを試みるかもしれません。 管理職などの重要なユーザーについては、MFA を無効にする前に、それらのユーザーのパスワードをリセットすることで、このリスクを軽減することができます。
 3. すべてのサインイン アクティビティをアーカイブし、MFA が無効にされていた期間に誰がアクセスしたかを識別します。
-4. この期間中に[報告されたすべてのリスク イベントをトリアージ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)します。
+4. この期間中に[報告されたすべてのリスク検出をトリアージ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)します。
 
 ## <a name="after-a-disruption"></a>中断の後
 
@@ -242,7 +242,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 2. コンティンジェンシー ポリシーを無効にします。 
 3. 中断中に行って文書化した他のすべての変更をロールバックします。
 4. 緊急アクセス用アカウントを使用した場合は、緊急アクセス用アカウントの手順の一部として、忘れずに資格情報を再生成し、新しい資格情報の詳細を物理的にセキュリティ保護します。
-5. 不審なアクティビティのため、中断後も引き続き[報告されたすべてのリスク イベントをトリアージ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)します。
+5. 不審なアクティビティのため、中断後も引き続き[報告されたすべてのリスク検出をトリアージ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-sign-ins)します。
 6. [PowerShell を使用して](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0)一連のユーザーを対象に発行されたすべての更新トークンを取り消します。 すべての更新トークンの取り消しは中断中に使用された特権アカウントについて重要であり、そうすることで、強制的に再認証が行われ、復元されたポリシーの制御に対応します。
 
 ## <a name="emergency-options"></a>緊急時のオプション
@@ -254,7 +254,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
    1. 送信 IP アドレスのインベントリがない場合、または企業ネットワークの内部と外部でアクセスを有効にする必要があった場合は、0.0.0.0/1 と 128.0.0.0/1 を指定することにより、IPv4 アドレス空間全体を信頼できる IP アドレスとして追加できます。
 
 >[!IMPORTANT]
- > アクセスのブロックを解除するために信頼できる IP アドレスの範囲を広げた場合、IP アドレスに関連するリスク イベント (たとえば、あり得ない移動や未知の場所) は生成されなくなります。
+ > アクセスのブロックを解除するために信頼できる IP アドレスの範囲を広げた場合、IP アドレスに関連するリスク検出 (たとえば、あり得ない移動や未知の場所) は生成されなくなります。
 
 >[!NOTE]
  > Azure MFA に対する[信頼できる IP アドレス](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-mfasettings)の構成は、[Azure AD Premium ライセンス](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-licensing)でのみ使用できます。

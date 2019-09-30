@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: diberry
-ms.openlocfilehash: 85f6be7a897908ef9198ac71ada809efb7c033bc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c4ea9c5663755a4feb1693dd925d99b10c466140
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650536"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256603"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager を使用した複数のキーにわたるエンドポイント クォータの管理
 Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **[Publish]\(公開\)** ページの **[Resources and Keys]\(リソースとキー\)** セクションで LUIS アプリケーションに追加します。 
@@ -48,7 +48,7 @@ New-AzResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![luis-traffic-manager リソース グループ内の 2 つの LUIS キーが表示された Azure portal のスクリーンショット](./media/traffic-manager/luis-keys.png)
 
-2. [LUIS][LUIS] Web サイトの **[Manage]\(管理\)** セクションの **[Keys and endpoints]\(キーとエンドポイント\)** ページで、アプリにキーを割り当てて、右上のメニューで **[Publish]\(公開\)** ボタンを選択してアプリを再公開します。 
+2. [LUIS][LUIS] Web サイトの **[管理]** セクションの **[Azure リソース]** ページで、アプリにキーを割り当てて、右上のメニューで **[公開]** ボタンを選択してアプリを再公開します。 
 
     **エンドポイント**列の URL の例では、エンドポイント キーをクエリ パラメーターとして指定した GET 要求を使用します。 2 つの新しいキーのエンドポイント URL をコピーします。 これらは、この記事で後述する Traffic Manager の構成の一部として使用されます。
 

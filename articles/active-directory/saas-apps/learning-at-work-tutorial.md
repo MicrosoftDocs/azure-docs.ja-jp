@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f04e6f8df55059e2aa2981f85f40e487c6f0f8b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3249957fa20c208d0fd06c676200753163d4bfc8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68823688"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376074"
 ---
 # <a name="tutorial-integrate-learning-at-work-with-azure-active-directory"></a>チュートリアル:Learning at Work と Azure Active Directory の統合
 
@@ -90,9 +90,9 @@ Learning at Work で Azure AD SSO を構成してテストするには、次の�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Learning at Work クライアント サポート チーム](https://www.learninga-z.com/site/contact/support)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. Learning at Work アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、 **nameidentifier**  は  **user.userprincipalname** にマップされています。
+5. Learning at Work アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットは、既定の属性の一覧を示しています。ここで、**nameidentifier** は **user.userprincipalname** にマップされています。
 
-    ご自分の組織のセットアップに基づいて、Azure AD の **nameidentifier** 値を更新できます。この値は、SABA クラウドの**ユーザー ID** と一致する必要があります。そのためには、 **[編集]**   アイコンをクリックして属性マッピングを編集して変更する必要があります。
+    ご自分の組織のセットアップに基づいて、Azure AD の **nameidentifier** 値を更新できます。この値は、SABA クラウドの**ユーザー ID** と一致する必要があります。そのためには、 **[編集]** アイコンをクリックして属性マッピングを編集して変更する必要があります。
 
     ![image](common/edit-attribute.png)
 
@@ -140,7 +140,7 @@ Learning at Work で Azure AD SSO を構成してテストするには、次の�
 
 ### <a name="create-learning-at-work-test-user"></a>Learning at Work テスト ユーザーの作成
 
-このセクションでは、Learning at Work で B.Simon というユーザーを作成します。  [Learning at Work サポート チーム](https://www.learninga-z.com/site/contact/support)と連携して、Learning at Work プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Learning at Work で B.Simon というユーザーを作成します。 [Learning at Work サポート チーム](https://www.learninga-z.com/site/contact/support)と連携し、Learning at Work プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト 
 

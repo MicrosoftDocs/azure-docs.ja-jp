@@ -104,6 +104,8 @@
               href: concepts-monitoring.md
             - name: サーバー ログ
               href: concepts-server-logs.md
+            - name: 監査ログ
+              href: concepts-audit.md
             - name: クエリ ストア
               items:
                 - name: クエリ ストア
@@ -144,6 +146,12 @@
           href: concepts-hyperscale-choose-distribution-column.md
         - name: テーブル コロケーション
           href: concepts-hyperscale-colocation.md
+        - name: データ アクセスとセキュリティ
+          items:
+            - name: ファイアウォール規則
+              href: concepts-hyperscale-firewall-rules.md
+            - name: SSL の構成
+              href: concepts-hyperscale-ssl-connection-security.md
         - name: PostgreSQL 拡張機能
           href: concepts-hyperscale-extensions.md
         - name: リソース
@@ -152,86 +160,96 @@
               href: concepts-hyperscale-configuration-options.md
 - name: ハウツー ガイド
   items:
-    - name: ユーザーの作成
-      href: howto-create-users.md
-    - name: 最適化
+    - name: 単一サーバー
       items:
-        - name: 一括挿入
-          href: howto-optimize-bulk-inserts.md
-        - name: 自動バキューム
-          href: howto-optimize-autovacuum.md
-        - name: クエリの統計コレクション
-          href: howto-optimize-query-stats-collection.md
-        - name: TOAST テーブル戦略
-          href: howto-optimize-query-time-with-toast-table-storage-strategy.md
-    - name: ファイアウォールの管理
+        - name: ユーザーの作成
+          href: howto-create-users.md
+        - name: 最適化
+          items:
+            - name: 一括挿入
+              href: howto-optimize-bulk-inserts.md
+            - name: 自動バキューム
+              href: howto-optimize-autovacuum.md
+            - name: クエリの統計コレクション
+              href: howto-optimize-query-stats-collection.md
+            - name: TOAST テーブル戦略
+              href: howto-optimize-query-time-with-toast-table-storage-strategy.md
+        - name: ファイアウォールの管理
+          items:
+            - name: Azure ポータル
+              href: howto-manage-firewall-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-firewall-using-cli.md
+        - name: サーバーの復元
+          items:
+            - name: Azure ポータル
+              href: howto-restore-server-portal.md
+            - name: Azure CLI
+              href: howto-restore-server-cli.md
+        - name: データベースの移行
+          items:
+            - name: ダンプと復元
+              href: howto-migrate-using-dump-and-restore.md
+            - name: インポートとエクスポート
+              href: howto-migrate-using-export-and-import.md
+            - name: 最小限のダウンタイムでの移行
+              href: howto-migrate-online.md
+        - name: サーバー パラメーターの構成
+          items:
+            - name: Azure ポータル
+              href: howto-configure-server-parameters-using-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-parameters-using-cli.md
+        - name: ストレージの自動拡張
+          items:
+            - name: Azure ポータル
+              href: howto-auto-grow-storage-portal.md
+            - name: Azure CLI
+              href: howto-auto-grow-storage-cli.md
+        - name: サーバー ログへのアクセス
+          items:
+            - name: Azure ポータル
+              href: howto-configure-server-logs-in-portal.md
+            - name: Azure CLI
+              href: howto-configure-server-logs-using-cli.md
+        - name: 監視
+          items:
+            - name: メトリックに基づいたアラートの作成
+              href: howto-alert-on-metric.md
+        - name: トラブルシューティング
+          items:
+            - name: 接続エラーのトラブルシューティング
+              href: howto-troubleshoot-common-connection-issues.md
+        - name: 高度な脅威保護
+          items:
+            - name: Azure ポータル
+              href: howto-database-threat-protection-portal.md
+        - name: Virtual Network
+          items:
+            - name: Azure ポータル
+              href: howto-manage-vnet-using-portal.md
+            - name: Azure CLI
+              href: howto-manage-vnet-using-cli.md
+        - name: サーバーの再起動
+          items:
+            - name: Azure ポータル
+              href: howto-restart-server-portal.md
+            - name: Azure CLI
+              href: howto-restart-server-cli.md
+        - name: レプリケーション
+          items:
+            - name: Azure portal を使用した読み取りレプリカの管理
+              href: howto-read-replicas-portal.md
+            - name: 読み取りレプリカ Azure CLI の管理、REST API
+              href: howto-read-replicas-cli.md
+    - name: Hyperscale (Citus)
       items:
-        - name: Azure ポータル
-          href: howto-manage-firewall-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-firewall-using-cli.md
-    - name: サーバーの復元
-      items:
-        - name: Azure ポータル
-          href: howto-restore-server-portal.md
-        - name: Azure CLI
-          href: howto-restore-server-cli.md
-    - name: データベースの移行
-      items:
-        - name: ダンプと復元
-          href: howto-migrate-using-dump-and-restore.md
-        - name: インポートとエクスポート
-          href: howto-migrate-using-export-and-import.md
-        - name: 最小限のダウンタイムでの移行
-          href: howto-migrate-online.md
-    - name: サーバー パラメーターの構成
-      items:
-        - name: Azure ポータル
-          href: howto-configure-server-parameters-using-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-parameters-using-cli.md
-    - name: ストレージの自動拡張
-      items:
-        - name: Azure ポータル
-          href: howto-auto-grow-storage-portal.md
-        - name: Azure ポータル
-          href: howto-auto-grow-storage-cli.md
-    - name: サーバー ログへのアクセス
-      items:
-        - name: Azure ポータル
-          href: howto-configure-server-logs-in-portal.md
-        - name: Azure CLI
-          href: howto-configure-server-logs-using-cli.md
-    - name: 監視
-      items:
-        - name: メトリックに基づいたアラートの作成
-          href: howto-alert-on-metric.md
-    - name: トラブルシューティング
-      items:
-        - name: 接続エラーのトラブルシューティング
-          href: howto-troubleshoot-common-connection-issues.md
-    - name: 高度な脅威保護
-      items:
-        - name: Azure ポータル
-          href: howto-database-threat-protection-portal.md
-    - name: Virtual Network
-      items:
-        - name: Azure ポータル
-          href: howto-manage-vnet-using-portal.md
-        - name: Azure CLI
-          href: howto-manage-vnet-using-cli.md
-    - name: サーバーの再起動
-      items:
-        - name: Azure ポータル
-          href: howto-restart-server-portal.md
-        - name: Azure CLI
-          href: howto-restart-server-cli.md
-    - name: レプリケーション
-      items:
-        - name: Azure portal を使用した読み取りレプリカの管理
-          href: howto-read-replicas-portal.md
-        - name: Azure CLI を使用した読み取りレプリカの作成
-          href: howto-read-replicas-cli.md
+        - name: スケーリング
+          href: howto-hyperscale-scaling.md
+        - name: ファイアウォールの管理
+          items:
+            - name: Azure ポータル
+              href: howto-hyperscale-manage-firewall-using-portal.md
 - name: リファレンス
   items:
     - name: Azure CLI

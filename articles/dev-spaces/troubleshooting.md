@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 6ab2e0866c4e6c5cc8f89cb490504f6ca6a076fc
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: b16a7d874f15747c14df1d728be824fac76de2be
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019644"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993958"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -456,3 +456,40 @@ azure-cli                         2.0.60 *
 ```
 azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
 ```
+
+## <a name="error-unauthorized-authentication-required-when-trying-to-use-a-docker-image-from-a-private-registry"></a>プライベート レジストリから Docker イメージを使用しようとすると、"unauthorized: authentication required" (未承認: 認証が必要) というエラーが発生する
+
+### <a name="reason"></a>理由
+
+認証を必要とするプライベート レジストリから Docker イメージを使用しています。 [imagePullSecrets](https://kubernetes.io/docs/concepts/configuration/secret/#using-imagepullsecrets) を使用して、このプライベート レジストリからイメージを認証およびプルすることを Dev Spaces に許可することができます。
+
+### <a name="try"></a>試す
+
+imagePullSecrets を使用するには、イメージを使用する名前空間に [Kubernetes シークレットを作成](https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod)します。 次に、`azds.yaml` で imagePullSecret としてシークレットを指定します。
+
+`azds.yaml` で imagePullSecrets を指定する例を次に示します。
+
+```
+kind: helm-release
+apiVersion: 1.1
+build:
+  context: $BUILD_CONTEXT$
+  dockerfile: Dockerfile
+install:
+  chart: $CHART_DIR$
+  values:
+  - values.dev.yaml?
+  - secrets.dev.yaml?
+  set:
+    # Optional, specify an array of imagePullSecrets. These secrets must be manually created in the namespace.
+    # This will override the imagePullSecrets array in values.yaml file.
+    # If the dockerfile specifies any private registry, the imagePullSecret for the registry must be added here.
+    # ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
+    #
+    # This uses credentials from secret "myRegistryKeySecretName".
+    imagePullSecrets:
+      - name: myRegistryKeySecretName
+```
+
+> [!IMPORTANT]
+> `azds.yaml` で imagePullSecrets を設定すると、`values.yaml` で指定された imagePullSecrets はオーバーライドされます。

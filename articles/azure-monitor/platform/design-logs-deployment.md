@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 1c2416d9fb1d45116bb6594b29863c1fe8f524a3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5d6e68b4b17c31056ed1f96a779823fc856962fb
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883215"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034742"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -71,7 +71,7 @@ System Center Operations Manager 2012 R2 以降を使用している場合:
 |:---|:---|
 | [アクセス モード](#access-mode) | ユーザーがワークスペースにアクセスするために使用する方法。  使用可能なデータの範囲と適用されるアクセス制御モードを定義します。 |
 | [アクセス制御モード](#access-control-mode) | アクセス許可をワークスペース レベルとリソース レベルのどちらで適用するかを定義するワークスペースの設定。 |
-| [アクセス許可](manage-access.md#manage-accounts-and-users) | ワークスペースまたはリソースについて、個々のユーザーまたはユーザー グループに適用される許可。 ユーザーがアクセスできるデータを定義します。 |
+| [アクセス許可](manage-access.md) | ワークスペースまたはリソースについて、個々のユーザーまたはユーザー グループに適用される許可。 ユーザーがアクセスできるデータを定義します。 |
 | [テーブル レベルの RBAC](manage-access.md#table-level-rbac) | アクセス モードまたはアクセス制御モードに関係なく、すべてのユーザーに適用されるオプションのきめ細かいアクセス許可。 ユーザーがアクセスできるデータ型を定義します。 |
 
 ## <a name="access-mode"></a>アクセス モード
@@ -105,7 +105,7 @@ Azure Monitor では、ログ検索の実行コンテキストに応じて適切
 | | ワークスペース コンテキスト | リソース コンテキスト |
 |:---|:---|:---|
 | モデルの利用対象者 | 全体管理。 データ収集を構成する必要がある管理者と多様なリソースにアクセスする必要があるユーザー。 また、現時点では、Azure 外部のリソースのログにアクセスする必要があるユーザーにとって必要です。 | アプリケーション チーム。 監視されている Azure リソースの管理者。 |
-| ログを表示するために必要なもの | ワークスペースに対するアクセス許可。 「[アカウントとユーザーの管理](manage-access.md#manage-accounts-and-users)」の**ワークスペースのアクセス許可**に関する説明をご覧ください。 | リソースへの読み取りアクセス。 「[アカウントとユーザーの管理](manage-access.md#manage-accounts-and-users)」の**リソースのアクセス許可**に関する説明をご覧ください。 アクセス許可は継承する (含まれているリソース グループなどから) ことも、リソースに直接割り当てることもできます。 リソースのログに対するアクセス許可は自動的に割り当てられます。 |
+| ログを表示するために必要なもの | ワークスペースに対するアクセス許可。 「[ワークスペースのアクセス許可を使用してアクセスを管理する](manage-access.md#manage-access-using-workspace-permissions)」の**ワークスペースのアクセス許可**の説明を参照してください。 | リソースへの読み取りアクセス。 「[Azure のアクセス許可を使用してアクセスを管理する](manage-access.md#manage-access-using-azure-permissions)」の「**リソースのアクセス許可**」を参照してください。 アクセス許可は継承する (含まれているリソース グループなどから) ことも、リソースに直接割り当てることもできます。 リソースのログに対するアクセス許可は自動的に割り当てられます。 |
 | アクセス許可の範囲 | ワークスペース。 ワークスペースへのアクセス権を持つユーザーは、アクセス許可を持っているテーブルについて、ワークスペース内のすべてのログを照会できます。 [テーブル アクセス制御](manage-access.md#table-level-rbac)に関する説明をご覧ください。 | Azure リソース。 ユーザーは、自分がアクセス権を持つ特定のリソース、リソース グループまたはサブスクリプションのログをすべてのワークスペースから照会できますが、その他のリソースのログは照会できません。 |
 | ログにアクセスする方法 | <ul><li>**Azure Monitor** メニューで **[ログ]** を開始します。</li></ul> <ul><li>**Log Analytics ワークスペース**で **[ログ]** を開始します。</li></ul> <ul><li>Azure Monitor [Workbooks](../visualizations.md#workbooks) から。</li></ul> | <ul><li>Azure リソースのメニューで **[ログ]** を開始します</li></ul> <ul><li>**Azure Monitor** メニューで **[ログ]** を開始します。</li></ul> <ul><li>**Log Analytics ワークスペース**で **[ログ]** を開始します。</li></ul> <ul><li>Azure Monitor [Workbooks](../visualizations.md#workbooks) から。</li></ul> |
 
@@ -128,7 +128,7 @@ Azure Monitor では、ログ検索の実行コンテキストに応じて適切
     > [!NOTE]
     > ワークスペースへのリソース アクセス許可のみを持つユーザーは、ワークスペース アクセス モードが **[リソースまたはワークスペースのアクセス許可を使用]** に設定されていることを前提として、リソース コンテキスト モードを使用してワークスペースにアクセスすることのみできます。
 
-ポータル、PowerShell、または Resource Manager テンプレートを使用してアクセス制御モードを変更する方法については、[アクセス制御モードの定義](manage-access.md#define-access-control-mode)に関する記事を参照してください。
+ポータル、PowerShell、または Resource Manager テンプレートを使用してアクセス制御モードを変更する方法については、「[アクセス制御モードを構成する](manage-access.md#configure-access-control-mode)」を参照してください。
 
 ## <a name="recommendations"></a>Recommendations
 

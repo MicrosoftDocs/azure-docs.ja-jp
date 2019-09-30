@@ -7,16 +7,16 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: 95704f2694892b349d0967fca2160dabd990b472
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: c1ae3a9ed8a775161aaf85ab2c91b1e43113d2e2
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810142"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279449"
 ---
 # <a name="assess-large-numbers-of-hyper-v-vms-for-migration-to-azure"></a>Azure への移行のために多数の Hyper-V VM を評価する
 
-この記事では、Azure Migrate Server Assessment ツールを使用して、Azure に移行するために多数 (1,000 超) のオンプレミス Hyper-V VM を評価する方法について説明します。
+この記事では、Azure Migrate Server Assessment ツールを使用して、Azure に移行するために多数のオンプレミス Hyper-V VM を評価する方法について説明します。
 
 [Azure Migrate](migrate-services-overview.md) では、アプリ、インフラストラクチャ、およびワークロードを検出、評価、および Microsoft Azure に移行するために役立つツールのハブが提供されます。 このハブには、Azure Migrate ツールと、サードパーティ製の独立系ソフトウェア ベンダー (ISV) オファリングが含まれています。 
 
@@ -46,9 +46,10 @@ ms.locfileid: "67810142"
 
 **計画** | **制限**
 --- | --- 
-**Azure Migrate プロジェクト** | 1 つのプロジェクト内で最大 10,000 個の VM を評価します。
-**Azure Migrate アプライアンス** | 1 つのアプライアンスで最大 5,000 個の VM を検出できます。<br/> アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。<br/> アプライアンスは、1 つの Azure Migrate リソースにのみ関連付けることができます。<br/><br/> 
-**Azure Migrate の評価** | 1 回の評価で最大 10,000 個の VM を評価できます。
+**Azure Migrate プロジェクト** | 1 つのプロジェクトで最大 35,000 個の VM を評価します。
+**Azure Migrate アプライアンス** | 1 つのアプライアンスで最大 5,000 個の VM を検出できます。<br/> アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。<br/> 1 つのアプライアンスは、1 つの Azure Migrate リソースにのみ関連付けることができます。<br/> 任意の数のアプライアンスを 1 つの Azure Migrate プロジェクトに関連付けることができます。 <br/><br/> 
+**グループ** | 1 つのグループに最大 35,000 個の VM を追加できます。
+**Azure Migrate の評価** | 1 回の評価で最大 35,000 個の VM を評価できます。
 
 
 

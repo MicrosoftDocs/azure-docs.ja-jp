@@ -5,14 +5,14 @@ services: Azure, Marketplace, Cloud Partner Portal,
 author: dan-wesley
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 08/15/2019
 ms.author: pabutler
-ms.openlocfilehash: 6efdb1c28777d9230727066fdba03d2850be62b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 940b50cf4a04abacd4d7be2104dd97fb8b3db736
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935920"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883122"
 ---
 <a name="private-skus-and-plans"></a>プライベート SKU とプラン
 ============
@@ -37,7 +37,7 @@ SKU をプライベートとしてマークするには、SKU がプライベー
 
 ![SKU をプライベートとしてマークする](./media/cloud-partner-portal-publish-virtual-machine/markingskuprivate.png)
 
-別の SKU でディスクを再利用し、価格または説明を変更することができます。 ディスクを再利用するには、[Does this SKU re-use images from a public SKU (この SKU でパブリック SKU からイメージを再利用しますか?)] というメッセージに対する応答として **[はい]** を選択します。
+別の SKU でディスクを再利用し、価格または説明を変更することができます。 ディスクを再利用するには、[Does this SKU reuse images from a public SKU (この SKU でパブリック SKU からイメージを再利用しますか?)] というメッセージに対する応答として **[はい]** を選択します。
 
 SKU がプライベートとしてマークされ、かつプランに再利用可能なディスクを持つ他の SKU がある場合、SKU が別の SKU のディスクを再利用することを示すよう求められます。 プライベート SKU の対象ユーザーを指定するようにも求められます。
 
@@ -47,13 +47,11 @@ SKU がプライベートとしてマークされ、かつプランに再利用�
 <a name="select-an-image"></a>イメージの選択
 ------------------
 
-プライベート SKU の新しいディスクを提供したり、別の SKU で既に提供されているディスクを再利用して価格や説明のみを変更したりすることができます。 ディスクを再利用するには、[Does this SKU re-use images from a public SKU (この SKU でパブリック SKU からイメージを再利用しますか?)] というメッセージに対する応答として **[はい]** を選択します。
+プライベート SKU の新しいディスクを提供したり、別の SKU で既に提供されているディスクを再利用して価格や説明のみを変更したりすることができます。 ディスクを再利用するには、[Does this SKU reuse images from a public SKU (この SKU でパブリック SKU からイメージを再利用しますか?)] というメッセージに対する応答として **[はい]** を選択します。
 
 ![イメージの再利用を示す](./media/cloud-partner-portal-publish-virtual-machine/selectimage1.png)
 
-SKU が別の SKU のイメージを再利用することを確認した後、そのイメージのソースである SKU を特定します。
-
-次の画面キャプチャのメッセージでは、選択した SKU のイメージを再利用するプライベート SKU を特定する方法を示しています。
+SKU でイメージを再利用することを確認したら、イメージのソースである "*ベース*" SKU を選択します。
 
 ![イメージの選択](./media/cloud-partner-portal-publish-virtual-machine/selectimage2.png)
 
@@ -84,15 +82,93 @@ CSV ファイルの内容のサンプル:
 
 手動入力から CSV のアップロード ビューに切り替えるか、CSV から手動入力に切り替えるとき、SKU へのアクセス権があるサブスクリプション ID の以前のリストは保持されません。 プランの保存時に、警告が表示されてリストが上書きされます。
 
-<a name="sync-private-subscriptions"></a>プライベート サブスクリプションの同期
+<a name="managing-private-audiences"></a>プライベート対象ユーザーを管理する
 -------------------------
 
-プライベート SKU またはプランを使用した発行済みオファーにサブスクリプションを追加する場合は、対象ユーザーの情報を追加するためにオファーを再発行する必要はありません。 Azure サブスクリプション ID (プランと SKU) またはテナント ID (プランのみ) を使用するだけで、対象ユーザーを追加できます。
+**プラン全体を再公開せずに対象ユーザーを更新するには、(UI または API を使用して) 対象ユーザーの変更を行い、"プライベート対象ユーザーの同期" アクションを開始します。**
 
-<a name="previewing-private-offers"></a>プライベート オファーをプレビュー
+対象ユーザーが 10 個以下のサブスクリプションの場合は、CPP UI を使用して完全に管理できます。
+
+対象ユーザーが 10 を超えるサブスクリプションの場合は、CPP UI にアップロードできる CSV ファイルを使用するか、API を使用して管理できます。
+
+API を使用し、CSV ファイルを保持したくない場合は、次の手順に従って、API を使用して直接対象ユーザーを管理できます。
+
+> [!NOTE]
+> Azure サブスクリプション ID (プランと SKU) またはテナント ID (プランのみ) を使用して、対象ユーザーをプライベート プランに追加できます。
+
+###  <a name="managing-subscriptions-with-the-api"></a>API を使用したサブスクリプションの管理
+
+API を使用すると、CSV のアップロードまたは対象ユーザーの直接管理ができます (CSV を使用する必要はありません)。 一般に、対象ユーザーのメンバーを追加または削除するには、プランを取得し、`restrictedAudience` オブジェクトを更新してから、これらの変更をプランに返信するだけです。
+
+プログラムを使用して対象ユーザー リストを更新する方法を次に示します。
+
+1. [プラン データを取得](cloud-partner-portal-api-retrieve-specific-offer.md)します。
+
+    ```
+    GET https://cloudpartner.azure.com/api/publishers//offers/?api-version=2017-10-31&includeAllPricing=true
+    ```
+
+2. 次の JPath クエリを使用して、プランの各 SKU で、制限された対象ユーザー オブジェクトを検索します。
+
+    ```
+    $.definition.plans[*].restrictedAudience
+    ```
+3. プランの制限された対象ユーザー オブジェクトを更新します。
+
+    **プライベート プランのサブスクリプションリストを最初に CSV ファイルからアップロードした場合:**
+
+    "*restrictedAudience*" オブジェクトは次のようになります。
+    ```
+    "restrictedAudience": {
+                  "uploadedCsvUri": "{SasUrl}"
+    }
+    ```
+
+    制限された対象ユーザー オブジェクトごとに、次のようにします。
+
+    a. `restrictedAudience.uploadedCsvUri` のコンテンツをダウンロードします。 コンテンツは、単にヘッダーが含まれる CSV ファイルです。 例:
+
+        type,id,description
+        subscriptionId,541a269f-3df2-486e-8fe3-c8f9dcf28205,sub1
+        subscriptionId,c0da499c-25ec-4e4b-a42a-6e75635253b9,sub2
+
+    b. 必要に応じて、ダウンロードした CSV ファイルのサブスクリプションを追加または削除します。
+
+    c. 更新された CSV ファイルを [Azure Blob Storage](../../storage/blobs/storage-blobs-overview.md) や [OneDrive](https://onedrive.live.com)などの場所にアップロードし、ファイルへの読み取り専用リンクを作成します。 これが新しい "*SasUrl*" になります。
+
+    d. `restrictedAudience.uploadedCsvUri` キーを新しい "*SasUrl*" で更新します。
+
+    **プライベート プランのサブスクリプションの元の一覧を Cloud パートナー ポータルから手動で入力した場合:**
+
+    "*restrictedAudience*" オブジェクトは次のようになります。
+
+    ```
+    "restrictedAudience": {
+        "manualEntries": [{
+            "type": "subscriptionId",
+            "id": "541a269f-3df2-486e-8fe3-c8f9dcf28205",
+            "description": "sub1"
+            }, {
+            "type": "subscriptionId",
+            "id": "c0da499c-25ec-4e4b-a42a-6e75635253b9",
+            "description": "sub2"
+            }
+        ]}
+    ```
+
+    a. 制限された対象ユーザー オブジェクトごとに、必要に応じて `restrictedAudience.manualEntries` リスト内のエントリを追加または削除します。
+
+4. プライベート プランの各 SKU のすべての "*restrictedAudience*" オブジェクトの更新が完了したら、[プランを更新](cloud-partner-portal-api-creating-offer.md)します。
+
+    ```
+    PUT https://cloudpartner.azure.com/api/publishers/<publisherId>/offers/<offerId>?api-version=2017-10-31
+    ```
+    これで、更新された対象ユーザー リストが有効になります。
+
+<a name="previewing-private-offers"></a>プライベート プランをプレビューする
 -------------------------
 
-プレビュー/ステージングの段階では、プラン レベルのプレビュー サブスクリプションのみが SKU にアクセスできます。 これは対象ユーザーにプランがどのように表示されるかを確認するためのテストの段階であり、あらゆる種類の公開の標準になります。
+プレビュー/ステージングの段階では、プラン レベルのプレビュー サブスクリプションのみが SKU にアクセスできます。 このテスト ステージでは、対象の顧客に表示されるプランをプレビューできます。
 
 ステージング プランにアクセスするプラン レベルのプレビュー サブスクリプション:
 

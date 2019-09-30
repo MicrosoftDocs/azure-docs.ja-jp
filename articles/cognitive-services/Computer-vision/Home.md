@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4f823b62237e8018f092d7a94fb479f7fbdd38da
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 915388b850b1b046dae91a20540881480694a944
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565772"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967051"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -75,6 +75,6 @@ Cognitive Services 全般に言えることですが、Computer Vision サービ
 
 以下のクイック スタート ガイドに従って、実際に Computer Vision を使ってみましょう。
 
-- [クイック スタート:画像を分析する](quickstarts-sdk/csharp-analyze-sdk.md)
-- [クイック スタート:手書きのテキストを抽出する](quickstarts-sdk/csharp-hand-text-sdk.md)
-- [クイック スタート:サムネイルを生成する](quickstarts-sdk/csharp-thumb-sdk.md)
+- [クイック スタート:Computer Vision .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [クイック スタート:Computer Vision Python SDK](quickstarts-sdk/python-sdk.md)
+- [クイック スタート:Computer Vision Java SDK](quickstarts-sdk/java-sdk.md)

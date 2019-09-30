@@ -1,6 +1,6 @@
 ---
 title: 詳細情報 - 高度な分析 - Azure HDInsight
-description: 高度な分析において、どのようにアルゴリズムを使用してビッグ データを処理するのかについて説明します。
+description: 高度な分析において、Azure HDInsight でどのようにアルゴリズムを使用してビッグ データを処理するのかについて説明します。
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: ac0edf2de4337154b665b8f3898134a7c2fd1f4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dde4b4efc62ec444cbbd662a70e7507a1b8f70e7
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712394"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066979"
 ---
 # <a name="deep-dive---advanced-analytics"></a>詳細情報 - 高度な分析
 
@@ -23,17 +23,17 @@ HDInsight を使用すると、大量の構造化されたデータ、構造化�
 
 ## <a name="advanced-analytics-process"></a>高度な分析のプロセス
 
-![Process](./media/apache-hadoop-deep-dive-advanced-analytics/process.png)
+![高度な分析のプロセス フロー](./media/apache-hadoop-deep-dive-advanced-analytics/hdinsight-analytic-process.png)
 
-ビジネス上の問題を特定し、データの収集と処理を開始したら、予測する課題を象徴するモデルを作成する必要があります。 モデルは 1 つ以上の機械学習アルゴリズムを使用して、お客様のビジネス上のニーズに最適な予測タイプを作成します。  ご利用のデータはテストや評価に使用する分を残して、その大部分をモデルのトレーニングに使用する必要があります。 
+ビジネス上の問題を特定し、データの収集と処理を開始したら、予測する課題を象徴するモデルを作成する必要があります。 モデルは 1 つ以上の機械学習アルゴリズムを使用して、お客様のビジネス上のニーズに最適な予測タイプを作成します。  ご利用のデータはテストや評価に使用する分を残して、その大部分をモデルのトレーニングに使用する必要があります。
 
-使用するモデルを作成、読み込み、テスト、評価したら、次はそのモデルをデプロイして、お客様の質問に対する回答を開始するようにします。 最後にモデルのパフォーマンスを監視して、必要に応じて調整します。 
+使用するモデルを作成、読み込み、テスト、評価したら、次はそのモデルをデプロイして、お客様の質問に対する回答を開始するようにします。 最後にモデルのパフォーマンスを監視して、必要に応じて調整します。
 
 ## <a name="common-types-of-algorithms"></a>アルゴリズムの一般的なタイプ
 
 高度な分析ソリューションは、機械学習アルゴリズムのセットを提供します。 アルゴリズムのカテゴリと、関連する一般的なビジネス ユース ケースの概要を次に示します。
 
-![機械学習のユース ケース](./media/apache-hadoop-deep-dive-advanced-analytics/ml-use-cases.png)
+![機械学習のカテゴリの概要](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-use-cases.png)
 
 最適なアルゴリズムを選択するとともに、トレーニング用のデータを与える必要があるかどうかについても検討する必要があります。 機械学習アルゴリズムは次のように分類されます。
 
@@ -98,7 +98,7 @@ HDInsight を使用した、高度な分析の機械学習パイプラインの�
 
 この例では、Alex Krizhevsky、Vinod Nair、Geoffrey Hinton らによって編集と配布が行なわれている CIFAR-10 の画像セットを使用します。 CIFAR-10 のデータセットには、相互排他的な 10 個のクラスに属している 32×32 のカラー画像が 60,000 枚含まれています。
 
-![イメージ](./media/apache-hadoop-deep-dive-advanced-analytics/ml-images.png)
+![機械学習の画像の例](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-images.png)
 
 このデータセットの詳細については、Alex Krizhevsky の『[Learning Multiple Layers of Features from Tiny Images (小さな画像から特徴を学習するマルチ レイヤー)](https://www.cs.toronto.edu/~kriz/learning-features-2009-TR.pdf)』をご覧ください。
 
@@ -111,7 +111,7 @@ HDInsight を使用した、高度な分析の機械学習パイプラインの�
 
 10,000 枚の画像の前処理とスコア付け全体でかかる時間は、4 つのワーカー ノードを持つ 1 つのクラスターで 1 分未満です。 このモデルは、最大 9,100 枚 (91%) の画像のラベルを正確に予測します。 最もよく見られた分類エラーが混同行列から分かります。 たとえば、犬を猫としたり猫を犬として誤ってラベル付けしたりすることが、他のラベル ペアよりも頻繁に発生するということが混同行列で示されます。
 
-![結果](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
+![機械学習の結果のグラフ](./media/apache-hadoop-deep-dive-advanced-analytics/machine-learning-results.png)
 
 ### <a name="try-it-out"></a>実際に使ってみてください
 

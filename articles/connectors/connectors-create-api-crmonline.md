@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: Mattp123
 ms.author: matp
+manager: carmonm
 ms.reviewer: estfan, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/18/2018
 tags: connectors
-ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce83e6b1847a8f08467cb7877e517bdaace27953
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60313752"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051013"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>Azure Logic Apps を使用して Dynamics 365 レコードを管理する
 
@@ -26,7 +27,7 @@ Azure Logic Apps および Dynamics 365 コネクタを使用すると、Dynamic
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * [Dynamics 365 アカウント](https://dynamics.microsoft.com)
 
@@ -133,11 +134,11 @@ Dynamics 365 アクションでのデータのフィルター処理方法を指�
 | フィールド | 説明 |
 |-------|-------------|
 | **Owner** | 有効なユーザー ID またはチーム レコード ID にする必要があります。 |
-| **[所有者の種類]** | **systemusers** または **teams** にする必要があります。 |
+| **[所有者の種類]** | `systemusers` または `teams` のいずれかである必要があります。 |
 | **[関連]** | 有効なレコード ID (アカウント ID や連絡先レコード ID など) にする必要があります。 |
-| **[関連の種類]** | 参照タイプ (**accounts** または **contacts**) にする必要があります。 |
+| **[関連の種類]** | 参照型 (`accounts` や `contacts` など) である必要があります。 |
 | **お客様** | 有効なレコード ID (アカウント ID や連絡先レコード ID など) にする必要があります。 |
-| **[顧客の種類]** | 参照タイプ (**accounts** または **contacts**) にする必要があります。 |
+| **[顧客の種類]** | 参照型 (`accounts` や `contacts` など) である必要があります。 |
 |||
 
 この例では、 **[新しいレコードの作成]** アクションによって新しいタスク レコードが作成されます。
@@ -188,11 +189,6 @@ Dynamics 365 アクションでのデータのフィルター処理方法を指�
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
 コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/dynamicscrmonline/)を参照してください。
-
-## <a name="get-support"></a>サポートを受ける
-
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

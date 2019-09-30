@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fa47e029434b70166403b8603c820d611690f2
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c88457653d73931600c37f5e332cc4327dc7957a
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975979"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102879"
 ---
 # <a name="tutorial-integrate-shmoop-for-schools-with-azure-active-directory"></a>チュートリアル:Shmoop For Schools と Azure Active Directory の統合
 
@@ -91,16 +91,16 @@ Shmoop For Schools で Azure AD SSO を構成してテストするには、次�
     > [!NOTE]
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Shmoop For Schools クライアント サポート チーム](mailto:support@shmoop.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. Shmoop For Schools アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
+5. Shmoop For Schools アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。 **[編集]** アイコンをクリックして、 **[ユーザー属性]** ダイアログを開きます。
 
     ![image](common/edit-attribute.png)
 
     > [!NOTE]
     > Shmoop For Schools では、 **[教師]** と **[学生]** の 2 つのユーザー ロールがサポートされます。 ユーザーに適切なロールを割り当てられるように、Azure AD でそのロールを設定します。 Azure AD でロールを構成する方法については、[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)を参照してください。
 
-6. その他に、Shmoop For Schools アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。  **[ユーザー属性]**   ダイアログの  **[ユーザー要求]**   セクションで、以下の手順を行って、以下の表のように SAML トークン属性を追加します。 
+6. その他に、Shmoop For Schools アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[ユーザー属性]** ダイアログの **[ユーザー要求]** セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。 
 
-    | EnableAdfsAuthentication |  ソース属性|
+    | Name |  ソース属性|
     | --------- | --------------- |
     | role      | user.assignedroles |
 

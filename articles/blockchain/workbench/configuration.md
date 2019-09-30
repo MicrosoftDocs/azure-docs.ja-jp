@@ -1,21 +1,21 @@
 ---
 title: Azure Blockchain Workbench 構成リファレンス
-description: Azure Blockchain Workbench アプリケーションの構成の概要。
+description: Azure Blockchain Workbench Preview アプリケーションの構成の概要。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1c737106b47b95fcc6d1abdadc81398a3bc9256d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60578982"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845101"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 構成リファレンス
 
@@ -55,7 +55,7 @@ Azure Blockchain Workbench アプリケーションは、構成メタデータ�
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | 一意のワークフロー名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| 名前 | 一意のワークフロー名。 対応するスマート コントラクトでは、該当するコントラクト クラスに対して同じ **Name** を使用する必要があります。 | はい | 50 |
 | DisplayName | ワークフローのわかりやすい表示名。 | はい | 255 |
 | Description | ワークフローの説明。 | いいえ | 255 |
 | Initiators | [ApplicationRoles](#application-roles) のコレクション。 ワークフローでコントラクトを作成する権限を持つユーザーに割り当てられるロール。 | はい | |
@@ -209,7 +209,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | 関数の一意の名前。 対応するスマート コントラクトでは、該当する関数に対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| 名前 | 関数の一意の名前。 対応するスマート コントラクトでは、該当する関数に対して同じ **Name** を使用する必要があります。 | はい | 50 |
 | DisplayName | 関数のわかりやすい表示名。 | はい | 255 |
 | Description | 関数の説明。 | いいえ | 255 |
 | Parameters | 関数のパラメーターに対応する[識別子](#identifiers)のコレクション。 | はい | |
@@ -257,7 +257,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | 状態の一意の名前。 対応するスマート コントラクトでは、該当する状態に対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| 名前 | 状態の一意の名前。 対応するスマート コントラクトでは、該当する状態に対して同じ **Name** を使用する必要があります。 | はい | 50 |
 | DisplayName | 状態のわかりやすい表示名。 | はい | 255 |
 | Description | 状態の説明。 | いいえ | 255 |
 | PercentComplete | Blockchain Workbench のユーザー インターフェイスに表示される整数値。ビジネス ロジックの制御フロー内の進行状況を示します。 | はい | |
@@ -371,7 +371,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | アプリケーション ロールの一意の名前。 対応するスマート コントラクトでは、該当するロールに対して同じ **Name** を使用する必要があります。 基本データ型は予約されています。 アプリケーション ロールに [Type](#type) と同じ名前を付けることはできません| はい | 50 |
+| 名前 | アプリケーション ロールの一意の名前。 対応するスマート コントラクトでは、該当するロールに対して同じ **Name** を使用する必要があります。 基本データ型は予約されています。 アプリケーション ロールに [Type](#type) と同じ名前を付けることはできません| はい | 50 |
 | Description | アプリケーション ロールの説明。 | いいえ | 255 |
 
 ### <a name="application-roles-example"></a>アプリケーション ロールの例
@@ -394,7 +394,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 | フィールド | Description | 必須 | 最大長 |
 |-------|-------------|:--------:|-----------:|
-| Name | プロパティまたはパラメーターの一意の名前。 対応するスマート コントラクトでは、該当するプロパティまたはパラメーターに対して同じ **Name** を使用する必要があります。 | はい | 50 |
+| 名前 | プロパティまたはパラメーターの一意の名前。 対応するスマート コントラクトでは、該当するプロパティまたはパラメーターに対して同じ **Name** を使用する必要があります。 | はい | 50 |
 | DisplayName | プロパティまたはパラメーターのわかりやすい表示名。 | はい | 255 |
 | Description | プロパティまたはパラメーターの説明。 | いいえ | 255 |
 

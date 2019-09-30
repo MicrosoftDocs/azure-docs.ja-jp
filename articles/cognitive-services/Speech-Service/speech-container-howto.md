@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 14a360e7dc672266e8445a5ae5eb2168ae766af8
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 4b8ea102c7acc55acec05234303ff4c215a4bc0f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741859"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105160"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
 
@@ -25,8 +25,8 @@ Speech コンテナーでは、堅牢なクラウド機能とエッジの局所�
 
 |Function|機能|最新|
 |-|-|--|
-|音声テキスト変換| <li>連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。|1.1.3|
-|テキスト読み上げ| <li>テキストを自然な音声に変換します。 プレーンテキストの入力または音声合成マークアップ言語 (SSML) に対応しています。 |1.1.0|
+|音声テキスト変換| <li>連続するリアルタイムの音声またはバッチ音声録音を、中間結果を含むテキストに文字起こしします。|1.2.0|
+|テキスト読み上げ| <li>テキストを自然な音声に変換します。 プレーンテキストの入力または音声合成マークアップ言語 (SSML) に対応しています。 |1.2.0|
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -39,6 +39,8 @@ Speech コンテナーを使用する前に、次の前提条件を満たす必�
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
 |Speech リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure _Speech_ リソース。 どちらの値も、Azure portal の **Speech** の [概要] ページと [キー] ページで確認できます。 コンテナーを起動するには、両方が必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
@@ -101,10 +103,10 @@ Speech のコンテナー イメージを入手できます。
 次のタグは、この形式の例です。
 
 ```
-1.1.3-amd64-en-us-preview
+1.2.0-amd64-en-us-preview
 ```
 
-次の表に、1.1.3 バージョンのコンテナーの**音声テキスト変換**でサポートされているロケールを示します。
+次の表に、1.2.0 バージョンのコンテナーの**音声テキスト変換**でサポートされているロケールを示します。
 
 |言語ロケール|Tags|
 |--|--|
@@ -129,10 +131,10 @@ Speech のコンテナー イメージを入手できます。
 次のタグは、この形式の例です。
 
 ```
-1.1.0-amd64-en-us-jessarus-preview
+1.2.0-amd64-en-us-jessarus-preview
 ```
 
-次の表に、1.1.0 バージョンのコンテナーの "**テキスト読み上げ**" でサポートされているロケールを示します。
+次の表に、1.2.0 バージョンのコンテナーの "**テキスト読み上げ**" でサポートされているロケールを示します。
 
 |言語ロケール|Tags|サポートされている音声|
 |--|--|--|
@@ -174,16 +176,12 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 ## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
 
-3 つのコンテナーのいずれかを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 このコマンドには、次のパラメーターが使用されます。
+コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{ENDPOINT_URI}` と `{API_KEY}` の値を取得する方法の詳細については、[必要なパラメーターの収集](#gathering-required-parameters)に関する記事を参照してください。
 
-**プレビュー期間中**は、コンテナーを起動するために課金設定が有効になっている必要がありますが、使用量は課金されません。
+`docker run` コマンドの[例](speech-container-configuration.md#example-docker-run-commands)を利用できます。
 
-| プレースホルダー | 値 |
-|-------------|-------|
-|{API_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の Speech の [キー] ページで入手できます。  |
-|{ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure portal の Speech の [概要] ページで入手できます。|
-
-次の例の `docker run` コマンドでは、これらのパラメーターをお客様独自の値に置き換えてください。
+> [!NOTE]
+> **プレビュー期間中**は、コンテナーを起動するために課金設定が有効になっている必要がありますが、使用量は課金されません。
 
 ### <a name="text-to-speech"></a>テキスト読み上げ
 

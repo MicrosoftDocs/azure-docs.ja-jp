@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: e51313bbed21459de9f717edd123887caed18f4b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7113914fe8681ca099fc0f3fc1e4a7d064c19480
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400662"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000263"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
 
@@ -77,9 +77,9 @@ Node.js 用 Azure IoT Hub デバイス SDK:
 
 Python 用 Azure IoT Hub デバイス SDK: 
 
-* [pip](https://pypi.python.org/pypi/azure-iothub-device-client/) からインストールする
+* [pip](https://pypi.org/project/azure-iot-device/) からインストールする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-python)
-* API のリファレンス: [C API リファレンス](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)に関するページを参照してください。
+* [API リファレンス](https://docs.microsoft.com/python/api/azure-iot-device)
 
 iOS 用 Azure IoT Hub デバイス SDK: 
 
@@ -112,7 +112,7 @@ Node.js 用 Azure IoT Hub サービス SDK:
 Python 用 Azure IoT Hub サービス SDK: 
 
 * [pip](https://pypi.python.org/pypi/azure-iothub-service-client/) からダウンロードする
-* [ソース コード](https://github.com/Azure/azure-iot-sdk-python)
+* [ソース コード](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated)
 
 C 用 Azure IoT Hub サービス SDK: 
 
@@ -157,8 +157,8 @@ Node.js 用の Azure Provisioning Device SDK および Azure Provisioning Servic
 
 Python 用の Azure Provisioning Device SDK および Azure Provisioning Service SDK:
 
-* [ソース コード](https://github.com/Azure/azure-iot-sdk-python)
-* pip から [Device SDK](https://pypi.org/project/azure-iot-provisioning-device-client/) および [Service SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/) をダウンロードします。
+* [ソース コード](https://github.com/Azure/azure-iot-device)
+* pip から [Device SDK](https://pypi.org/project/azure-iot-device/) および [Service SDK](https://pypi.org/project/azure-iothub-provisioningserviceclient/) をダウンロードします。
 
 ## <a name="next-steps"></a>次の手順
 

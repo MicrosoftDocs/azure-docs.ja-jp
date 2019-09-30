@@ -3,22 +3,20 @@ title: Data Factory を使用したスケジュール設定と実行 | Microsoft
 description: Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 088a83df-4d1b-4ac1-afb3-0787a9bd1ca5
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6ea8a03f45a3655c5761e0011876c6232b5bf36b
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61258957"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135306"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
 > [!NOTE]
@@ -184,7 +182,7 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 ### <a name="dataset-availability"></a>データセットの可用性 
 次の表では、**availability** セクションで使用できるプロパティについて説明します。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |はい |NA |
 | interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |はい |NA |
@@ -232,7 +230,7 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 
 データセット定義の **policy** セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。 次の表では、**policy** セクションで使用できるプロパティについて説明します。
 
-| ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
+| ポリシー名 | 説明 | 適用先 | 必須 | Default |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | **Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ |NA |
 | minimumRows | **Azure SQL データベース**または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ |NA |

@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/17/2019
+ms.date: 08/28/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: f22273a28d5e4207712bdba71ef788629d51916e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 10e0f24642d54c43d6c818773d0eb17815ab784b
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321662"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996916"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -130,7 +130,7 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
     ![アクセス ポリシーの設定](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. **[シークレットのアクセス許可]** で、 **[取得]** を選択して、CDN がこれらのアクセス許可を実行して証明書を取得し、一覧表示できるようにします。 
+3. [証明書のアクセス許可] を選択し、[Get]\(取得\) と [List]\(一覧\) のチェック ボックスをオンにします。これによって、CDN がこれらのアクセス許可を実行して証明書を取得および一覧表示できるようにします。
 
 4. **[OK]** を選択します。 
 
@@ -174,7 +174,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* がカスタム ドメイン名で、*Value* が CDN エンドポイントのホスト名です。
 
-| 名前            | Type  | 値                 |
+| 名前            | 種類  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -312,6 +312,9 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
     Microsoft の分析の結果、アプリケーションに対する要求が SNI クライアント要求だけであることがわかった場合、既にあるドメインは今後数か月内に単一の証明書へと徐々に移行されます。 アプリケーションに対する非 SNI クライアント要求が Microsoft によって検出された場合、ご利用のドメインは、IP ベースの TLS/SSL による SAN 証明書のまま維持されます。 どちらの場合でも、クライアントの要求に対するサービスやサポートは、それらの要求が SNI か非 SNI かにかかわらず中断されません。
 
+7. *証明書の更新では、独自の証明書の持ち込みをどのように処理しますか。*
+
+    より新しい証明書が PoP インフラストラクチャにデプロイされるようにするには、単に新しい証明書を Azure KeyVault にアップロードします。その後、Azure CDN の SSL 設定で最新の証明書バージョンを選択し、保存します。 そのようにすると、Azure CDN によって、新しい更新された証明書が反映されます。 
 
 ## <a name="next-steps"></a>次の手順
 

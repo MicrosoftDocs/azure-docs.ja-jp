@@ -1,18 +1,18 @@
 ---
-title: チュートリアル - Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する - Azure
+title: チュートリアル - Azure HDInsight での Apache Kafka と Enterprise セキュリティ パッケージ
 description: チュートリアル - Enterprise セキュリティ パッケージを使用して Azure HDInsight に Kafka 用の Apache Ranger ポリシーを構成する方法について説明します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
-ms.date: 06/24/2019
-ms.openlocfilehash: ba16a975aa3b1e60393006ef49a7e422c572931e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 09/04/2019
+ms.openlocfilehash: 6d92ebc743bae97ecfa1591add27f470792dcafc
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441382"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037168"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache Kafka ポリシーを構成する (プレビュー)
 
@@ -36,7 +36,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
 2. Azure Active Directory (AD) 管理者の資格情報を使用してサインインします。 Azure AD 管理者の資格情報は、HDInsight クラスターの資格情報や Linux HDInsight ノード SSH の資格情報と同じではありません。
 
-   ![Apache Ranger 管理 UI](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-kafka/apache-ranger-admin-login.png)
 
 ## <a name="create-domain-users"></a>ドメイン ユーザーの作成
 
@@ -64,7 +64,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
    * '*' は、文字が 0 回以上出現することを示します。
    * '?' は、1 文字を示します。
 
-   ![Apache Ranger 管理 UI の作成ポリシー](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
+   ![Apache Ranger 管理 UI の作成ポリシー 1](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy.png)
 
    **[ユーザーの選択]** にドメイン ユーザーが自動的に設定されない場合は、Ranger が Azure AD と同期されるまでしばらく待ってください。
 
@@ -79,7 +79,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
    |ユーザーの選択  |  marketing_user1 |
    |アクセス許可  | publish、consume、create |
 
-   ![Apache Ranger 管理 UI の作成ポリシー](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
+   ![Apache Ranger 管理 UI の作成ポリシー 2](./media/apache-domain-joined-run-kafka/apache-ranger-admin-create-policy-2.png)  
 
 6. **[Add]\(追加\)** をクリックしてポリシーを保存します。
 
@@ -183,7 +183,7 @@ Enterprise セキュリティ パッケージ (ESP) の Apache Kafka クラス�
 
 9. Ranger UI から監査アクセス イベントを表示します。
 
-   ![Ranger UI ポリシーの監査](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
+   ![Ranger UI ポリシーの監査アクセス イベント ](./media/apache-domain-joined-run-kafka/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

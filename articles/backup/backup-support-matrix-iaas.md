@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/02/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: df9e60c8d517c35029e425d50dba81a18c2f1114
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1b7e3a8a937682559440086e90af18bfc85b8f75
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617362"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71018684"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 [Azure Backup サービス](backup-overview.md)を使用すると、オンプレミスのコンピューターとワークロード、および Azure 仮想マシン (VM) をバックアップできます。 この記事では、Azure Backup を使用して Azure VM をバックアップする場合のサポート設定と制限事項について概説します。
@@ -151,19 +151,20 @@ Azure に移行済みの VM をバックアップする  | サポートされて
 マルチ VM 整合性をバックアップする | Azure Backup では、複数の VM 間でデータとアプリケーションに整合性はありません。
 [[診断設定]](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview) でバックアップする  | サポートされていません。 <br/><br/> 診断設定を使った Azure VM の復元が [[新規作成]](backup-azure-arm-restore-vms.md#create-a-vm) オプションを使用してトリガーされた場合、復元は失敗します。
 ゾーン固定 VM の復元 | サポートされています (2019 年 1 月以降にバックアップされた、[可用性ゾーン](https://azure.microsoft.com/global-infrastructure/availability-zones/)が使用可能な VM の場合)。<br/><br/>現在は、VM で固定されているものと同じゾーンへの復元がサポートされています。 ただし、ゾーンが使用できない場合、復元は失敗します。
+Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) のバックアップと復元がサポートされます。 これらの VM は、復旧ポイントから復元されると、[Gen2 VM](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) として復元されます。
 
 
 ## <a name="vm-storage-support"></a>VM ストレージのサポート
 
 **コンポーネント** | **サポート**
 --- | ---
-Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを備えた VM をバックアップします。 <br/><br/> 最大 4 TB のディスク サイズがサポートされます。<br/><br/>4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、[こちらの記事](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)を参照してください。
-データ ディスク サイズ | ディスクごとに最大で 4,095 GB。<br/><br/>4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、[こちらの記事](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)を参照してください。
+Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを備えた VM をバックアップします。 <br/><br/> ディスクごとに最大 30 TB までの仮想マシンで、1 つの VM にあるすべてのディスクを組み合わせて最大 256 TB のバックアップをサポートします。
+データ ディスク サイズ | ディスクごとに最大で 30 TB。
 ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。
 マネージド ディスク | サポートされています。
 暗号化されたディスク | サポートされています。<br/><br/> Azure Disk Encryption が有効になっている Azure VM を (Azure AD アプリを使用して、または使用せずに) バックアップできます。<br/><br/> 暗号化された VM は、ファイル/フォルダー レベルでは復旧できません。 VM 全体を復旧する必要があります。<br/><br/> Azure Backup によって既に保護されている VM で暗号化を有効にできます。
 書き込みアクセラレータが有効になっているディスク | サポートされていません。<br/><br/> Azure Backup は、バックアップ中に書き込みアクセラレータが有効になっているディスクを自動的に除外します。 これらはバックアップされないため、VM の復旧ポイントからこれらのディスクを復元することはできません。
-重複除去されたディスクをバックアップする | サポートされていません。
+重複除去された VM/ディスクのバックアップと復元 | Azure Backup では、重複除去はサポートされていません。 詳しくは、こちらの[記事](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support)を参照してください。 <br/> <br/>  - Azure Backup では、Recovery Services コンテナー内の VM 全体で重複除去されることはありません <br/> <br/>  - 復元中に重複除去状態の VM がある場合、コンテナーで形式が認識されないため、ファイルを復元することはできません
 保護された VM にディスクを追加する | サポートされています。
 保護された VM でディスクのサイズを変更する | サポートされています。
 共有ストレージ| クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバーを使用して VM をバックアップすることはお勧めできません。 バックアップ中に CSV ライターが失敗する可能性があります。 また、復元時に CSV ボリュームを含むディスクが起動しない可能性があります。
@@ -179,7 +180,7 @@ Azure VM のデータ ディスク数 | 16 個以下のデータ ディスクを
 複数のネットワーク アダプターを持つ VM  | サポートされています。 <br/><br/> 特別なネットワーク設定での VM の復元について[詳細を確認](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)してください。
 パブリック IP アドレスを持つ VM    | サポートされています。<br/><br/> 既存のパブリック IP アドレスを NIC に関連付けるか、復元後にアドレスを作成して NIC に関連付けます。
 NIC/サブネットでのネットワーク セキュリティ グループ (NSG) |   サポートされています。
-予約済み IP アドレス (静的) | サポートされていません。<br/><br/> 予約済み IP アドレスを持ち、エンドポイントが定義されていない VM はバックアップできません。
+静的 IP アドレス | サポートされていません。<br/><br/> 復元ポイントから作成された新しい VM には、動的 IP アドレスが割り当てられます。<br/><br/> クラシック VM では、予約済み IP アドレスを持ち、エンドポイントが定義されていない VM はバックアップできません。
 動的 IP アドレス |    サポートされています。<br/><br/> ソース VM の NIC が動的 IP アドレスを使用する場合、既定では、復元された VM の NIC も動的 IP アドレスを使用します。
 Azure の Traffic Manager   | サポートされています。<br/><br/>バックアップされた VM が Traffic Manager にある場合、復元された VM を同じ Traffic Manager インスタンスに手動で追加します。
 Azure DNS | サポートされています。

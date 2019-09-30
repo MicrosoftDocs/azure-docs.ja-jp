@@ -3,20 +3,21 @@ title: Visual Studio を使用して自動化されたワークフローを作�
 description: Azure Logic Apps と Visual Studio を使用して、エンタープライズ統合のためのタスク、ビジネス プロセス、およびワークフローを自動化します
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
-ms.reviewer: klam, LADocs
-ms.suite: integration
 ms.date: 04/25/2019
-ms.openlocfilehash: 51d1af24a22f7ed86b01b1c7c79b204cd552a7ea
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c9248e5bcc9ebd819518b6ee609f529ea9b8f8bc
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385425"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051702"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
 
@@ -82,6 +83,8 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
    ![Azure リソース グループ プロジェクトを作成する](./media/quickstart-create-logic-apps-with-visual-studio/create-azure-cloud-service-project.png)
 
    > [!NOTE]
+   > リソース グループ名には、文字、数字、ピリオド (`.`)、アンダースコア (`_`)、ハイフン (`-`)、およびかっこ (`(`、`)`) のみを含めることができます。ただし、リソース グループ名をピリオド (`.`) で "*終了する*" ことはできません。
+   >
    > **[クラウド]** または **[Azure リソース グループ]** が表示されない場合は、Azure SDK for Visual Studio がインストールされていることを確認してください。
 
    Visual Studio 2019 を使用している場合は、以下の手順に従ってください。

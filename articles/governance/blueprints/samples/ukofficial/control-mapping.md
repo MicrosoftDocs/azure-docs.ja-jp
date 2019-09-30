@@ -8,18 +8,21 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 945898105aab7261ee494a86aeff10337599feb3
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 654ae2da9bcdb6d73de47730aff6870c2e3dfaeb
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226005"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001537"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>UK OFFICIAL および UK NHS のブループリント サンプルのコントロール マッピング
 
 以下の記事では、UK OFFICIAL および UK NHS のブループリント サンプルが、UK OFFICIAL および UK NHS コントロールにどのようにマップされるのかについて詳しく説明します。 コントロールの詳細については、[UK OFFICIAL](https://www.gov.uk/government/publications/government-security-classifications) に関するページをご覧ください。
 
 以下のマッピングでは、マップ先は **UK OFFICIAL** コントロールと **UK NHS** コントロールです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 次に、 **[\[プレビュー\]: UK OFFICIAL コントロールと UK NHS コントールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする]** ビルトイン ポリシー イニシアチブを見つけて選択します。
+
+> [!IMPORTANT]
+> 以下の各コントロールは、1 つ以上の [Azure Policy](../../../policy/overview.md) 定義に関連します。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。ただし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義でも対応されていないコントロールが含まれています。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/ukofficial/control-mapping.md)に関するページを参照してください。
 
 ## <a name="1-data-in-transit-protection"></a>1 転送中のデータの保護
 
@@ -33,11 +36,11 @@ ms.locfileid: "68226005"
 このブループリントでは、特定の暗号化コントロールを適用し、脆弱な暗号化設定の使用を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、暗号化コントロールの使用に関するポリシーの適用を支援します。
 最適でない暗号化構成が Azure リソースのどこに存在しているかを把握することにより、適切な是正措置を実施し、リソースの構成を情報セキュリティ ポリシーに準拠させることができます。 具体的には、このブループリントによって割り当てられるポリシーでは、データ レイク ストレージ アカウントの暗号化の要求、SQL データベースでの Transparent Data Encryption の要求、ストレージ アカウント、SQL データベース、仮想マシン ディスク、および自動化アカウント変数での暗号化の不足の監査、ストレージ アカウントおよび Redis Cache へのセキュリティで保護されていない接続の監査、仮想マシンの脆弱なパスワード暗号化の監査、暗号化されていない Service Fabric 通信の監査を行います。
 
-- 暗号化されていない SQL データベースを Azure Security Center で監視する
+- SQL データベースで Transparent Data Encryption を有効にする必要がある
 - 仮想マシンでディスク暗号化を適用する必要がある
 - Automation アカウント変数は、暗号化する必要がある
 - ストレージ アカウントへの安全な転送を有効にする必要がある
-- Service Fabric クラスターで ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある
+- Service Fabric クラスターでは、ClusterProtectionLevel プロパティを EncryptAndSign に設定する必要がある
 - SQL データベースで Transparent Data Encryption を有効にする必要がある
 - SQL DB Transparent Data Encryption をデプロイする
 - Data Lake Store アカウントの暗号化を要求する
@@ -151,7 +154,7 @@ Azure では、Azure のリソースにアクセスできるユーザーの管�
 
 このブループリントでは、Azure リソースのログ設定を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、システム イベントのログ記録の徹底を支援します。 割り当てられたポリシーでは、指定された Log Analytics ワークスペースにログを送信していない仮想マシンがないかどうかも監査されます。
 
-- 未監査の SQL サーバーの Azure Security Center での監視
+- SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 - 診断設定の監査
 - SQL サーバー レベルの監査設定の監査
 - \[プレビュー\]:Linux VM への Log Analytics エージェントのデプロイ

@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b1c0d33a7d920f76bcbea6d8d6babc7390003bc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60383758"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70275210"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -60,7 +60,7 @@ ms.locfileid: "60383758"
 
 多くの組織の環境には、オンプレミス Active Directory フォレストが複数存在します。 複数のオンプレミス Active Directory フォレストが使用される理由はさまざまです。 一般的な例として、アカウント リソース フォレストのある設計や、合併や買収の結果としての状況があります。
 
-複数のフォレストがある場合は、1 つの Azure AD Connect 同期サーバーがすべてのフォレストにアクセスできる必要があります。 サーバーをドメインに参加させる必要はありません。 すべてのフォレストに到達する必要がある場合は、境界ネットワーク (DMZ、非武装地帯、スクリーン サブネットとも呼ばれます) にサーバーを配置できます。
+複数のフォレストがある場合は、1 つの Azure AD Connect 同期サーバーがすべてのフォレストにアクセスできる必要があります。 サーバーをドメインに参加させる必要があります。 すべてのフォレストに到達する必要がある場合は、境界ネットワーク (DMZ、非武装地帯、スクリーン サブネットとも呼ばれます) にサーバーを配置できます。
 
 Azure AD Connect のインストール ウィザードには、複数のフォレストで表されるユーザーを統合するためのいくつかのオプションが用意されています。 その目的は、ユーザーが Azure AD 内で 1 回だけ表されるようにすることです。 インストール ウィザードのカスタム インストール パスで構成できる一般的なトポロジはいくつかあります。 **[ユーザーを一意に識別]** ページで、トポロジを表す対応するオプションを選択します。 統合は、ユーザーに対してのみ構成されます。 重複しているグループは既定の構成に統合されません。
 

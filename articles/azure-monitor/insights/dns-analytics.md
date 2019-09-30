@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6dd5872d5ec3e79e3c76b1807aea946015fb0eac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9fac349657340486674e4a899b21821b45cc0703
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60496493"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982587"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -182,10 +182,7 @@ DNS タイルには、データ収集中の DNS サーバーの数が含まれ�
 
 ## <a name="feedback"></a>フィードバック
 
-フィードバックを送信する方法は 2 つあります。
-
-- **UserVoice**。 DNS 分析の機能についてアイデアを投稿できます。 [Log Analytics に関する UserVoice ページ](https://aka.ms/dnsanalyticsuservoice)をご覧ください。
-- **コーホートへの参加**。 Microsoft が実施しているコーホートに参加して、DNS 分析の機能向上にご協力ください。コーホートに参加すると、新機能にいち早く触れることができます。 コーホートへの参加に関心がある場合は、[こちらの簡単なアンケート](https://aka.ms/dnsanalyticssurvey)にご記入ください。
+フィードバックを提供するには、[Log Analytics UserVoice ページ](https://aka.ms/dnsanalyticsuservoice)にアクセスして、使用している DNS Analytics 機能のアイデアを投稿してください。 
 
 ## <a name="next-steps"></a>次の手順
 

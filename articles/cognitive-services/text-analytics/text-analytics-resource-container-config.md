@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/20/2019
+ms.date: 08/21/2019
 ms.author: dapine
-ms.openlocfilehash: 65d88e6c201f633a260e31544444341e636e9941
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f1c42002343de1dd3b3ef6b9c9e35f458db925f4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552253"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051125"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>Text Analytics の docker コンテナーの構成
 
@@ -93,60 +93,26 @@ Text Analytics コンテナーでは、トレーニングやサービスのデ�
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
-|{API_KEY} | Azure `Text Analytics` の [キー] ページで使用可能な `Text Analytics` リソースのエンドポイント キー。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
-|{ENDPOINT_URI} | 課金エンドポイントの値は、Azure `Text Analytics` の [概要] ページで確認できます。|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
+| **{API_KEY}** | Azure `Text Analytics` の [キー] ページで使用可能な `Text Analytics` リソースのエンドポイント キー。 |`xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`|
+| **{ENDPOINT_URI}** | 課金エンドポイントの値は、Azure `Text Analytics` の [概要] ページで確認できます。| 明示的な例が必要であれば、[必須パラメーターの収集](how-tos/text-analytics-how-to-install-containers.md#gathering-required-parameters)に関するページを参照してください。 |
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](how-tos/text-analytics-how-to-install-containers.md#billing)」を参照してください。
 > ApiKey の値は、Azure `Text Analytics` リソース キー ページにある**キー**です。 
 
-## <a name="key-phrase-extraction-container-docker-examples"></a>キー フレーズ抽出コンテナー docker の例
+#### <a name="key-phrase-extractiontabkeyphrase"></a>[キー フレーズ抽出](#tab/keyphrase)
 
-次の docker 例はキー フレーズ抽出コンテナーに対するものです。 
+[!INCLUDE [key-phrase-extraction-docker-examples](includes/key-phrase-extraction-docker-examples.md)]
 
-### <a name="basic-example"></a>基本的な例 
+#### <a name="language-detectiontablanguage"></a>[言語検出](#tab/language)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
+[!INCLUDE [language-detection-docker-examples](includes/language-detection-docker-examples.md)]
 
-### <a name="logging-example"></a>ログの例 
+#### <a name="sentiment-analysistabsentiment"></a>[感情分析](#tab/sentiment)
 
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/keyphrase Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+[!INCLUDE [sentiment-analysis-docker-examples](includes/sentiment-analysis-docker-examples.md)]
 
-## <a name="language-detection-container-docker-examples"></a>言語検出コンテナー docker の例
-
-次の docker 例は言語検出コンテナーに対するものです。 
-
-### <a name="basic-example"></a>基本的な例
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>ログの例
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/language Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
- 
-## <a name="sentiment-analysis-container-docker-examples"></a>感情分析コンテナー docker の例
-
-次の docker 例は感情分析コンテナーに対するものです。 
-
-### <a name="basic-example"></a>基本的な例
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} 
-  ```
-
-### <a name="logging-example"></a>ログの例
-
-  ```
-  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 mcr.microsoft.com/azure-cognitive-services/sentiment Eula=accept Billing={ENDPOINT_URI} ApiKey={API_KEY} Logging:Console:LogLevel:Default=Information
-  ```
+***
 
 ## <a name="next-steps"></a>次の手順
 

@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7df2f9aa56e22bd4060c823b02900fa914a0fd7f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 5d36def4faa98f4b8e42c93cf3e222c2ec7ca89a
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532802"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073839"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>MSAL.js を使用してクライアント アプリケーションを初期化する
 この記事では、ユーザー エージェント アプリケーションのインスタンスを使用して JavaScript 用 Microsoft Authentication Library (MSAL.js) を初期化する方法について説明します。 ユーザー エージェント アプリケーションは、Web ブラウザーなどのユーザー エージェントでクライアント コードが実行されるパブリック クライアント アプリケーションの一種です。 これらのクライアントでは、シークレットは格納されません。ブラウザーのコンテキストが公開されアクセス可能であるからです。 クライアント アプリケーションの種類とアプリケーションの構成オプションの詳細については、[概要](msal-client-applications.md)に関するページを参照してください。
@@ -123,7 +123,7 @@ export type Configuration = {
 
 - **validateAuthority**: 省略可能。  トークンの発行者を検証します。 既定値は `true` です。 B2C アプリケーションの場合、機関の値は既知でありポリシーによって異なる可能性があるので、機関の検証は機能せず、必然的に `false` に設定されます。
 
-- **redirectUri**: 省略可能。  アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録したいずれかのリダイレクト URI と完全に一致させる必要があります (ただし、URL エンコードが必要)。 既定値は `window.location.href` です。
+- **redirectUri**: 省略可能。  アプリのリダイレクト URI。アプリは、この URI で認証応答を送受信することができます。 ポータルで登録した URI のいずれかと完全に一致させる必要があります。 既定値は `window.location.href` です。
 
 - **postLogoutRedirectUri**: 省略可能。  サインアウト後、ユーザーを `postLogoutRedirectUri` にリダイレクトします。既定では、 `redirectUri`です。
 

@@ -4,8 +4,8 @@ description: Azure Notification Hubs を使用する Swift iOS アプリにプ�
 services: notification-hubs
 documentationcenter: ios
 author: mikeparker104
-manager: patniko
-editor: spelluru
+manager: femila
+editor: jwargo
 ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,12 +14,14 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: miparker
-ms.openlocfilehash: c35044918876b2c7710e26f6b868bc1096c2f538
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: b830538f81d1696c34db3e4f66a07346c17bcdcc
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340403"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211957"
 ---
 # <a name="tutorial-push-notifications-to-swift-ios-apps-that-use-the-notification-hubs-rest-api"></a>チュートリアル:Notification Hubs REST API を使用する Swift iOS アプリにプッシュ通知を送信する
 
@@ -87,7 +89,7 @@ ms.locfileid: "67340403"
 
 1. プロビジョニングした通知ハブからの独自の値を使用して、次の構成エントリが含まれるように **devsettings.plist** を更新します。
 
-   | キー                            | Type                     | 値                     |
+   | Key                            | 種類                     | 値                     |
    |--------------------------------| -------------------------| --------------------------|
    | notificationHubKey             | string                   | \<hubKey>                  |
    | notificationHubKeyName         | string                   | \<hubKeyName>              |
@@ -408,7 +410,7 @@ SharedAccessSignature sig=<UrlEncodedSignature>&se=<ExpiryEpoch>&skn=<KeyName>&s
 
 1. 次のように要求ヘッダーを構成します。
 
-   | キー           | 値            |
+   | Key           | 値            |
    | ------------- | ---------------- |
    | Content-Type  | application/json |
    | Authorization | \<sasToken>       |
@@ -656,7 +658,7 @@ class NotificationRegistrationService {
 
 1. 次のように要求ヘッダーを構成します。
 
-   | キー                            | 値                          |
+   | Key                            | 値                          |
    | ------------------------------ | ------------------------------ |
    | Content-Type                   | application/json;charset=utf-8 |
    | Authorization                  | \<sasToken>                     |

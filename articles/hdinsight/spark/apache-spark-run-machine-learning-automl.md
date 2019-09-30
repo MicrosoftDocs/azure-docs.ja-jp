@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight の Apache Spark 上で自動化された機械学習 (AutoML) を使用して Azure Machine Learning ワークロードを実行する
+title: Azure HDInsight の Apache Spark 上で Azure Machine Learning ワークロードを実行する
 description: Azure HDInsight の Apache Spark 上で 自動化された機械学習 (AutoML) を使用して Azure Machine Learning ワークロードを実行する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: ff6a071a2d157bf79ab27fcbf4f9753fdbcac118
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 599fa62d253eda7992d7d7db4f5178d3ce428a9c
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354866"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814041"
 ---
-# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-automl-on-apache-spark-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark 上で自動化された機械学習 (AutoML) を使用して Azure Machine Learning ワークロードを実行する
+# <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>HDInsight の Apache Spark 上で自動化された機械学習を使用して Azure Machine Learning ワークロードを実行する
 
 Azure Machine Learning では、機械学習モデルの構築、トレーニング、およびデプロイを簡略化して迅速化します。 Automated Machine Learning (AutoML) では、規定目標機能があるトレーニング データで開始し、アルゴリズムと機能選択の組み合わせを反復して、トレーニング スコアに基づきデータの最適なモデルを自動的に選択します。 HDInsight を使用することにより、お客様は多数のノードでクラスターをプロビジョニングできます。 HDInsight クラスターの Spark で実行されている AutoML では、ユーザーはこれらのノード間でコンピューティング能力を使用して、スケールアウト形式でトレーニング ジョブを実行したり、複数のトレーニング ジョブを並列で実行したりできます。 これによりユーザーは、他のビッグ データ ワークロードとコンピューティングを共有しながら AutoML 実験を実行できます。
  
@@ -34,7 +34,7 @@ Zeppelin ノートブックを使用して AutoML を使用することもでき
 
 ## <a name="authentication-for-workspace"></a>ワークスペースの認証
 
-ワークスペースの作成と実験の送信を行うには、認証トークンが必要です。 このトークンは、[Azure AD アプリケーション](../../active-directory/develop/app-objects-and-service-principals.md)を使用して生成できます。 アカウントで多要素認証が有効になっていない場合は、必要な認証トークンを [Azure AD ユーザー](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python)を使用して生成することもできます。  
+ワークスペースの作成と実験の送信を行うには、認証トークンが必要です。 このトークンは、[Azure AD アプリケーション](../../active-directory/develop/app-objects-and-service-principals.md)を使用して生成できます。 アカウントで多要素認証が有効になっていない場合は、必要な認証トークンを [Azure AD ユーザー](/azure/python/python-sdk-azure-authenticate)を使用して生成することもできます。  
 
 次のコード スニペットでは、**Azure AD アプリケーション**を使用して、認証トークンが作成されます。
 

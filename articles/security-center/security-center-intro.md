@@ -3,9 +3,8 @@ title: Azure Security Center とは | Microsoft Docs
 description: Azure Security Center の主な機能とそのしくみについて説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 6/06/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 2ef207a14582e6ba0d9f8a25c0314c5ec639c7cb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.date: 06/06/2019
+ms.author: memildin
+ms.openlocfilehash: e02fd0de00b8feed15fcd51b657afcc015d816f2
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882856"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202113"
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 
@@ -38,7 +37,7 @@ Azure Security Center は、3 つの緊急性が高いセキュリティの課�
 
 このような課題からお客様自身を保護できるように、Security Center には次のツールが用意されています。
 
--   **セキュリティ体制を強化する**:Security Center では環境が評価されます。リソースの状態、つまりセキュリティで保護されているかどうかを把握できます。
+-   **セキュリティ体制を強化する**:Security Center を使用すると、ご自分の環境を評価することができ、リソースの状態や、それらがセキュリティで保護されているかどうかを把握できます。
 
 -   **脅威からの保護**:Security Center ではワークロードが評価され、脅威防止の推奨事項と脅威検出アラートが生成されます。
 

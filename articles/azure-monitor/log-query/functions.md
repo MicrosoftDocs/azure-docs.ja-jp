@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 4b3116230a085bfbb9a6139fbada4179d802bf5e
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 75beb7b66863efd2fb3679f034a3663dca4a6d2f
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296068"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076696"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Azure Monitor ログ クエリでの関数の使用
 
@@ -30,7 +30,7 @@ Azure portal の Log Analytics で **[保存]** をクリックした後、次�
 
 | Setting | 説明 |
 |:---|:---|
-| Name           | **クエリ エクスプローラー**に表示されるクエリの名前。 |
+| 名前           | **クエリ エクスプローラー**に表示されるクエリの名前。 |
 | 名前を付けて保存        | Function |
 | 関数のエイリアス | この関数を他のクエリの中で使用するための短い名前。 スペースを含めることはできず、一意である必要があります。 |
 | Category       | 保存したクエリと関数を**クエリ エクスプローラー**内で整理するためのカテゴリ。 |
@@ -38,8 +38,6 @@ Azure portal の Log Analytics で **[保存]** をクリックした後、次�
 > [!NOTE]
 > Azure Monitor 内の関数に、別の関数を含めることはできません。
 
-> [!NOTE]
-> Azure Monitor ログ クエリに関数を保存することは可能ですが、現時点で、Application Insights クエリには保存できません。
 
 
 

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 63e23275a68ddde9385bb252dcb872d02c5cea08
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 070365c79e14b80c50c70aa3277a6eddd9286a37
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405973"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018739"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall-preview"></a>ファイアウォールを使用した Azure HDInsight クラスターの送信ネットワーク トラフィックの構成 (プレビュー)
 
@@ -63,7 +63,8 @@ Azure portal で新しいファイアウォール「**Test-FW01**」を選択し
    | **Name** | **ソース アドレス** | **プロトコル:ポート** | **ターゲット FQDN** | **メモ** |
    | --- | --- | --- | --- | --- |
    | Rule_2 | * | https:443 | login.windows.net | Windows ログイン アクティビティを許可する |
-   | Rule_3 | * | https:443、http:80 | <storage_account_name.blob.core.windows.net> | クラスターが WASB によってサポートされている場合は、WASB のルールを追加します。 https 接続のみを使用するには、[[安全な転送が必須](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)] がストレージ アカウントで有効になっていることを確認します。 |
+   | Rule_3 | * | https:443 | login.microsoftonline.com | Windows ログイン アクティビティを許可する |
+   | Rule_4 | * | https:443、http:80 | <storage_account_name.blob.core.windows.net> | クラスターが WASB によってサポートされている場合は、WASB のルールを追加します。 https 接続のみを使用するには、[[安全な転送が必須](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)] がストレージ アカウントで有効になっていることを確認します。 |
 
 1. **[追加]** をクリックします。
 
@@ -81,7 +82,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
    | **Name** | **プロトコル** | **ソース アドレス** | **宛先アドレス** | **宛先ポート** | **メモ** |
    | --- | --- | --- | --- | --- | --- |
    | Rule_1 | UDP | * | * | `123` | Time サービス |
-   | Rule_2 | 任意 | * | DC_IP_Address_1、DC_IP_Address_2 | `*` | Enterprise セキュリティ パッケージ (ESP) を使用している場合は、ESP クラスター用に AAD DS との通信を許可するネットワーク ルールを [IP アドレス] セクションに追加します。 ドメイン コントローラーの IP アドレスはポータルの [AAD-DS] セクションで確認できます | 
+   | Rule_2 | Any | * | DC_IP_Address_1、DC_IP_Address_2 | `*` | Enterprise セキュリティ パッケージ (ESP) を使用している場合は、ESP クラスター用に AAD DS との通信を許可するネットワーク ルールを [IP アドレス] セクションに追加します。 ドメイン コントローラーの IP アドレスはポータルの [AAD-DS] セクションで確認できます | 
    | Rule_3 | TCP | * | Data Lake Storage アカウントの IP アドレス | `*` | Azure Data Lake Storage を使用している場合は、ADLS Gen1 と Gen2 での SNI の問題に対処するネットワーク ルールを [IP アドレス] セクションに追加することができます。 このオプションでは、トラフィックはファイアウォールにルーティングされ、大量のデータ読み込みのためにコストが上がる可能性がありますが、トラフィックはファイル ログに記録されて監査可能になります。 Data Lake Storage アカウントの IP アドレスを決定します。 `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` などの powershell コマンドを使用して、FQDN を IP アドレスに解決できます。|
    | Rule_4 | TCP | * | * | `12000` | (省略可能) Log Analytics を使用している場合は、Log Analytics ワークスペースとの通信を可能にするネットワーク ルールを [IP アドレス] セクションに作成します。 |
 
@@ -93,7 +94,7 @@ HDInsight クラスターを正しく構成するネットワーク ルールを
 
 1. **[追加]** をクリックして、ネットワーク ルール コレクションの作成を完了します。
 
-   ![タイトル:アプリケーション ルール コレクションの詳細を入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
+   ![タイトル:アプリケーション ルール コレクションを入力する](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
 ### <a name="create-and-configure-a-route-table"></a>ルート テーブルを作成して構成する
 

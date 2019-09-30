@@ -1,6 +1,6 @@
 ---
 title: YARN で可用性の高い Spark Streaming ジョブを作成する - Azure HDInsight
-description: 高可用性シナリオ用に Spark Streaming を設定する方法。
+description: Azure HDInsight での高可用性シナリオ用に Apache Spark Streaming を設定する方法
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: 79a36ad39284dc66467ba7c500a363668f78b893
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e4414a64b2ee34ec16fde56dd750f2faa26b2e09
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720659"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002979"
 ---
 # <a name="create-high-availability-apache-spark-streaming-jobs-with-yarn"></a>YARN で高可用性 Apache Spark Streaming ジョブを作成する
 
@@ -21,7 +21,7 @@ ms.locfileid: "64720659"
 
 Spark Streaming が作成する実行時間の長いジョブの間に、データに変換を適用して、結果をファイル システム、データベース、ダッシュボード、コンソールにプッシュすることができます。 Spark Streaming は、定義された期間についてイベントのバッチを最初に収集することで、データのマイクロバッチを処理します。 次に、そのバッチを処理と出力のために送信します。 バッチの間隔は、通常、1 秒未満で定義されます。
 
-![Spark Streaming](./media/apache-spark-streaming-high-availability/spark-streaming.png)
+![Spark Streaming](./media/apache-spark-streaming-high-availability/apache-spark-streaming.png)
 
 ## <a name="dstreams"></a>DStream
 
@@ -29,7 +29,7 @@ Spark Streaming は、"*分離されたストリーム*" (DStream) を使って�
 
 Spark コアは *Resilient Distributed Dataset* (RDD) を使います。 RDD は、クラスター内の複数のノードにデータを分散します。ここでは通常、パフォーマンスを最大限高めるため、各ノードがデータを完全にメモリ内に保持します。 各 RDD は、バッチ間隔の間に収集されたイベントを表します。 バッチ間隔が経過すると、Spark Streaming はその間隔内のすべてのデータを含む新しい RDD を生成します。 この継続的な一連の RDD が DStream に収集されます。 Spark Streaming アプリケーションは、各バッチの RDD に格納されているデータを処理します。
 
-![Spark DStream](./media/apache-spark-streaming-high-availability/DStream.png)
+![Spark DStream](./media/apache-spark-streaming-high-availability/apache-spark-dstream.png)
 
 ## <a name="spark-structured-streaming-jobs"></a>Spark Structured Streaming ジョブ
 
@@ -57,7 +57,7 @@ RDD には、高可用性でフォールト トレラントの Spark Streaming �
 
 HDInsight では、クラスターの処理は *Yet Another Resource Negotiator* (YARN) によって調整されます。 Spark Streaming の高可用性の設計には、Spark Streaming の技法だけでなく、YARN コンポーネントの技法も含まれます。  YARN を使った構成の例を次に示します。 
 
-![YARN のアーキテクチャ](./media/apache-spark-streaming-high-availability/yarn-arch.png)
+![YARN のアーキテクチャ](./media/apache-spark-streaming-high-availability/hdi-yarn-architecture.png)
 
 次のセクションでは、この構成の設計に関する考慮事項について説明します。
 

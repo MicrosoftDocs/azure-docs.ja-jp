@@ -1,5 +1,5 @@
 ---
-title: Azure の Durable Functions での HTTP API
+title: Durable Functions の HTTP API - Azure Functions
 description: Azure Functions の Durable Functions 拡張機能で HTTP API を実装する方法を説明します。
 services: functions
 author: cgillum
@@ -7,43 +7,86 @@ manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 09/07/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 11ae418ddbe007c6fd5aa44ef22ed7fddec9c702
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 094ae511337556ef0c67c86f6d8692cae005430a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087264"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033965"
 ---
-# <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
+# <a name="http-api-reference"></a>HTTP API リファレンス
 
-Durable Task 拡張機能は、次のタスクの実行で使用できる一連の HTTP API を公開します。
+Durable Functions 拡張機能では、[オーケストレーション](durable-functions-types-features-overview.md#orchestrator-functions)、 [エンティティ](durable-functions-types-features-overview.md#entity-functions)、および[タスク ハブ](durable-functions-task-hubs.md)で管理タスクを実行するために使用できる一連の組み込み HTTP API が公開されています。 これらの HTTP API は、Azure Functions ホストによって承認されているが Durable Functions 拡張機能によって直接処理される拡張性 webhook です。
 
-* オーケストレーション インスタンスの状態を取得します。
-* 待機中のオーケストレーション インスタンスにイベントを送信します。
-* 実行中のオーケストレーション インスタンスを終了します。
+拡張機能によって実装されるすべての HTTP API には、次のパラメーターが必要です。 すべてのパラメーターのデータ型は `string` です。
 
-これらの各 HTTP API は、Durable Task 拡張機能によって直接処理される webhook 操作です。 関数アプリの関数に固有のものではありません。
+| パラメーター        | パラメーターのタイプ  | 説明 |
+|------------------|-----------------|-------------|
+| **`taskHub`**    | クエリ文字列    | [タスク ハブ](durable-functions-task-hubs.md)の名前。 指定しない場合は、現在の関数アプリのタスク ハブの名前が想定されます。 |
+| **`connection`** | クエリ文字列    | ストレージ アカウントの接続文字列の**名前**。 指定しない場合は、関数アプリの既定の接続文字列が想定されます。 |
+| **`systemKey`**  | クエリ文字列    | API の呼び出しに必要な承認キー。 |
 
-> [!NOTE]
-> これらの操作は、[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) クラスのインスタンス管理 API を使用して直接呼び出すこともできます。 詳しくは、[インスタンス管理](durable-functions-instance-management.md)に関する記事をご覧ください。
+`systemKey` は、Azure Functions ホストによって自動生成される承認キーです。 このキーにより、Durable Task 拡張機能 API へのアクセスが特別に許可されます。また、このキーは[他の承認キー](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)と同じ方法で管理できます。 .NET の `CreateCheckStatusResponse` や `CreateHttpManagementPayload` API、または JavaScript の `createCheckStatusResponse` や `createHttpManagementPayload` API などの[オーケストレーション クライアント バインド](durable-functions-bindings.md#orchestration-client) API を使用して、正しい `taskHub`、`connection`、`systemKey` クエリ文字列値を含む URL を生成できます。
 
-## <a name="http-api-url-discovery"></a>HTTP API URL の検出
+以降のセクションで、この拡張機能でサポートされる特定の HTTP API とその使用方法の例について説明します。
 
-[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) クラスでは、[CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_) API を公開します。これは、サポートされるすべての操作へのリンクを含む HTTP 応答ペイロードを生成するのに使用できます。 この API の使用方法を示す HTTP トリガー関数の例を次に示します。
+## <a name="start-orchestration"></a>オーケストレーションの開始
 
-### <a name="c"></a>C#
+指定されたオーケストレーター関数の新しいインスタンスの実行を開始します。
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
+### <a name="request"></a>Request
 
-### <a name="javascript-functions-2x-only"></a>JavaScript (Functions 2.x のみ)
+Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
+```http
+POST /admin/extensions/DurableTaskExtension/orchestrators/{functionName}/{instanceId?}
+     ?taskHub={taskHub}
+     &connection={connectionName}
+     &code={systemKey}
+```
 
-これらの関数例では、次の JSON 応答データが生成されます。 すべてのフィールドのデータ型は `string` です。
+Functions ランタイム バージョン 2.x の URL 形式は、パラメーターがすべて同じですが、プレフィックスが若干異なります。
 
-| フィールド                   |説明                           |
+```http
+POST /runtime/webhooks/durabletask/orchestrators/{functionName}/{instanceId?}
+     ?taskHub={taskHub}
+     &connection={connectionName}
+     &code={systemKey}
+```
+
+この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
+
+| フィールド              | パラメーターのタイプ  | 説明 |
+|--------------------|-----------------|-------------|
+| **`functionName`** | URL             | 開始するオーケストレーター関数の名前。 |
+| **`instanceId`**   | URL             | 省略可能なパラメーター。 オーケストレーション インスタンスの ID。 指定しない場合、オーケストレーター関数はランダムなインスタンス ID で開始します。 |
+| **`{content}`**    | 要求内容 | 省略可能。 JSON 形式のオーケストレーター関数入力。 |
+
+### <a name="response"></a>Response
+
+返される可能性がある状態コード値は、いくつかあります。
+
+* **HTTP 202 (Accepted)** :指定されたオーケストレーター関数は実行を開始するようにスケジュールされました。 `Location` 応答ヘッダーには、オーケストレーションの状態をポーリングするための URL が含まれています。
+* **HTTP 400 (Bad request)** :指定されたオーケストレーター関数が存在しないか、指定されたインスタンス ID が無効だったか、要求コンテンツが有効な JSON ではありませんでした。
+
+`RestartVMs` オーケストレーター関数を開始し、JSON オブジェクトペイロードを含む要求の例を次に示します。
+
+```http
+POST /runtime/webhooks/durabletask/orchestrators/RestartVMs?code=XXX
+Content-Type: application/json
+Content-Length: 83
+
+{
+    "resourceGroup": "myRG",
+    "subscriptionId": "111deb5d-09df-4604-992e-a968345530a9"
+}
+```
+
+**HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
+
+| フィールド                       | 説明                          |
 |-----------------------------|--------------------------------------|
 | **`id`**                    |オーケストレーション インスタンスの ID。 |
 | **`statusQueryGetUri`**     |オーケストレーション インスタンスの状態の URL。 |
@@ -52,66 +95,38 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 | **`purgeHistoryDeleteUri`** |オーケストレーション インスタンスの "消去履歴" URL。 |
 | **`rewindPostUri`**         |(プレビュー) オーケストレーション インスタンスの "巻き戻し" URL。 |
 
-次は応答の例です。
+すべてのフィールドのデータ型は `string` です。
+
+`abc123` を ID として持つオーケストレーション インスタンスの応答ペイロードの例を次に示します (読みやすいように書式設定されています)。
 
 ```http
-HTTP/1.1 202 Accepted
-Content-Length: 923
-Content-Type: application/json; charset=utf-8
-Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
-
 {
-    "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "purgeHistoryDeleteUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
-    "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
+    "id": "abc123",
+    "purgeHistoryDeleteUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123?code=XXX",
+    "sendEventPostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123/raiseEvent/{eventName}?code=XXX",
+    "statusQueryGetUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123?code=XXX",
+    "terminatePostUri": "http://localhost:7071/runtime/webhooks/durabletask/instances/abc123/terminate?reason={text}&code=XXX"
 }
 ```
 
-> [!NOTE]
-> webhook URL の形式は、実行している Azure Functions ホストのバージョンによって異なる場合があります。 上記の例は、Azure Functions 2.x ホスト用の形式です。
+http 応答は、"*ポーリング コンシューマー パターン*" と互換性があるように意図されています。 また、次の重要な応答ヘッダーも含まれています。
 
-## <a name="async-operation-tracking"></a>非同期操作の追跡
+* **[場所]** :状態エンドポイントの URL。 この URL には、`statusQueryGetUri` フィールドと同じ値が含まれます。
+* **Retry-After**:ポーリング操作の間に待機する秒数。 既定値は `10` です。
 
-上記の HTTP 応答は、Durable Functions で実行時間の長い HTTP 非同期 API を実装するのに役立つように設計されています。 これは、*ポーリング コンシューマー パターン*と呼ばれる場合もあります。 クライアント/サーバー フローは次のように動作します。
+非同期 HTTP ポーリング パターンの詳細については、[HTTP 非同期操作の追跡](durable-functions-http-features.md#async-operation-tracking)に関するドキュメントをご覧ください。
 
-1. クライアントが、オーケストレーター関数など、実行時間の長いプロセスを開始する HTTP 要求を発行します。
-2. 対象の HTTP トリガーが、`statusQueryGetUri` 値の `Location` ヘッダーを含む HTTP 202 応答を返します。
-3. クライアントが `Location` ヘッダー内の URL をポーリングします。 クライアントは引き続き、`Location` ヘッダーを含む HTTP 202 応答を参照します。
-4. インスタンスが完了 (または失敗) すると、`Location` ヘッダー内のエンドポイントから HTTP 200 が返されます。
-
-このプロトコルでは、HTTP エンドポイントのポーリングと `Location` ヘッダーのフォローをサポートする、外部のクライアントまたはサービスでの実行時間の長いプロセスを調整できます。 基本の部分は、Durable Functions HTTP API に既に組み込まれています。
-
-> [!NOTE]
-> 既定では、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) によって提供される HTTP ベースのすべてのアクションで、標準的な非同期操作パターンがサポートされています。 この機能により、実行時間の長い Durable Functions を Logic Apps ワークフローの一部として組み込むことができます。 Logic Apps での非同期 HTTP パターンのサポートについて詳しくは、[Azure Logic Apps ワークフロー アクションおよびトリガーに関するドキュメント](../../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns)をご覧ください。
-
-## <a name="http-api-reference"></a>HTTP API リファレンス
-
-拡張機能によって実装されるすべての HTTP API では、次のパラメーターを指定します。 すべてのパラメーターのデータ型は `string` です。
-
-| パラメーター        | パラメーターのタイプ  | 説明 |
-|------------------|-----------------|-------------|
-| **`taskHub`**    | クエリ文字列    | [タスク ハブ](durable-functions-task-hubs.md)の名前。 指定しない場合は、現在の関数アプリのタスク ハブの名前が想定されます。 |
-| **`connection`** | クエリ文字列    | ストレージ アカウントの接続文字列の**名前**。 指定しない場合は、関数アプリの既定の接続文字列が想定されます。 |
-| **`systemKey`**  | クエリ文字列    | API の呼び出しに必要な承認キー。 |
-
-`systemKey` は、Azure Functions ホストによって自動生成される承認キーです。 このキーにより、Durable Task 拡張機能 API へのアクセスが特別に許可されます。また、このキーは[他の承認キー](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)と同じ方法で管理できます。 前述の `CreateCheckStatusResponse` API を使用すると、`systemKey` 値を最も簡単に検出できます。
-
-以降のセクションで、この拡張機能でサポートされる特定の HTTP API とその使用方法の例について説明します。
-
-### <a name="get-instance-status"></a>インスタンスの状態を取得する
+## <a name="get-instance-status"></a>インスタンスの状態を取得する
 
 指定されたオーケストレーション インスタンスの状態を取得します。
 
-#### <a name="request"></a>Request
+### <a name="request"></a>Request
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/{instanceId}
-    ?taskHub={taskHub
+    ?taskHub={taskHub}
     &connection={connectionName}
     &code={systemKey}
     &showHistory=[true|false]
@@ -141,9 +156,9 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 | **`showHistoryOutput`** | クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、関数の出力はオーケストレーションの実行履歴に含まれます。|
 | **`createdTimeFrom`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以降に作成されたインスタンスにフィルター処理されます。|
 | **`createdTimeTo`**     | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以前に作成されたインスタンスにフィルター処理されます。|
-| **`runtimeStatus`**     | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を参照するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関するトピックをご覧ください。 |
+| **`runtimeStatus`**     | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を確認するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関する記事をご覧ください。 |
 
-#### <a name="response"></a>Response
+### <a name="response"></a>Response
 
 返される可能性がある状態コード値は、いくつかあります。
 
@@ -222,14 +237,14 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}
 
 **HTTP 202** の応答には、前述の `statusQueryGetUri` フィールドと同じ URL を参照する **Location** 応答ヘッダーも含まれています。
 
-### <a name="get-all-instances-status"></a>すべてのインスタンス ステータスを取得する
+## <a name="get-all-instances-status"></a>すべてのインスタンス ステータスを取得する
 
 'インスタンスの状態を取得する' 要求から `instanceId` を削除して、すべてのインスタンスの状態のクエリを実行することもできます。 この場合、基本のパラメーターは 'インスタンスの状態を取得する' と同じです。 フィルター処理用のクエリ文字列パラメーターもサポートされています。
 
-覚えておくべきことの 1 つは、`connection` と `code` が省略可能であることです。 関数に対する匿名認証がある場合、コードは必要ありません。
+覚えておくべきことの 1 つは、`connection` と `code` が省略可能であることです。 関数に対する匿名認証がある場合、`code` は必要ありません。
 AzureWebJobsStorage アプリ設定で定義されているのとは異なるストレージの接続文字列を使用しない場合は、接続クエリ文字列パラメーターを無視してかまいません。
 
-#### <a name="request"></a>Request
+### <a name="request"></a>Request
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -269,10 +284,10 @@ GET /runtime/webhooks/durableTask/instances?
 | **`showHistoryOutput`** | クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、関数の出力はオーケストレーションの実行履歴に含まれます。|
 | **`createdTimeFrom`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以降に作成されたインスタンスにフィルター処理されます。|
 | **`createdTimeTo`**     | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以前に作成されたインスタンスにフィルター処理されます。|
-| **`runtimeStatus`**     | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を参照するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関するトピックをご覧ください。 |
+| **`runtimeStatus`**     | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を確認するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関する記事をご覧ください。 |
 | **`top`**               | クエリ文字列    | 省略可能なパラメーター。 指定した場合、クエリによって返されるインスタンス数が制限されます。 |
 
-#### <a name="response"></a>Response
+### <a name="response"></a>Response
 
 次に、オーケストレーション ステータスを含む応答ペイロードの例を示します (読みやすくなるように、形式を整えています)。
 
@@ -333,11 +348,11 @@ GET /runtime/webhooks/durableTask/instances?
 
 次の要求ヘッダーで継続トークンの値を設定すると、結果の次のページを取得できます。 この要求ヘッダーの名前も `x-ms-continuation-token` です。
 
-### <a name="purge-single-instance-history"></a>単一インスタンス履歴を消去する
+## <a name="purge-single-instance-history"></a>単一インスタンス履歴を消去する
 
 指定したオーケストレーション インスタンスの履歴および関連する成果物を削除します。
 
-#### <a name="request"></a>Request
+### <a name="request"></a>Request
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -363,7 +378,7 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 |-------------------|-----------------|-------------|
 | **`instanceId`**  | URL             | オーケストレーション インスタンスの ID。 |
 
-#### <a name="response"></a>Response
+### <a name="response"></a>Response
 
 以下の HTTP 状態コード値が返される可能性があります。
 
@@ -384,11 +399,11 @@ DELETE /runtime/webhooks/durabletask/instances/{instanceId}
 }
 ```
 
-### <a name="purge-multiple-instance-history"></a>複数インスタンス履歴を消去する
+## <a name="purge-multiple-instance-histories"></a>複数インスタンス履歴を消去する
 
 '単一インスタンス履歴を消去する' 要求から `{instanceId}` を削除することで、タスク ハブ内の複数インスタンスの履歴および関連する成果物を削除することもできます。 インスタンス履歴を選択して消去するには、'すべてのインスタンス ステータスを取得する' 要求で説明したものと同じフィルターを使用します。
 
-#### <a name="request"></a>Request
+### <a name="request"></a>Request
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -420,12 +435,12 @@ DELETE /runtime/webhooks/durabletask/instances
 |-----------------------|-----------------|-------------|
 | **`createdTimeFrom`** | クエリ文字列    | 消去されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以降に作成されたインスタンスにフィルター処理されます。|
 | **`createdTimeTo`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、消去されるインスタンスの一覧が特定の ISO8601 タイムスタンプの時刻以前に作成されたインスタンスにフィルター処理されます。|
-| **`runtimeStatus`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、消去されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を参照するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関するトピックをご覧ください。 |
+| **`runtimeStatus`**   | クエリ文字列    | 省略可能なパラメーター。 指定した場合、消去されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を確認するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関する記事をご覧ください。 |
 
 > [!NOTE]
 > この操作は、インスタンスや履歴のテーブルに多数の行がある場合、Azure Storage の I/O の観点から非常にコスト効率が悪くなることがあります。 これらのテーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](durable-functions-perf-and-scale.md#instances-table)」のドキュメントを参照してください。
 
-#### <a name="response"></a>Response
+### <a name="response"></a>Response
 
 以下の HTTP 状態コード値が返される可能性があります。
 
@@ -446,11 +461,11 @@ DELETE /runtime/webhooks/durabletask/instances
 }
 ```
 
-### <a name="raise-event"></a>イベントを発生させる
+## <a name="raise-event"></a>イベントを発生させる
 
 実行中のオーケストレーション インスタンスにイベント通知メッセージを送信します。
 
-#### <a name="request"></a>Request
+### <a name="request"></a>Request
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -478,7 +493,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}
 | **`eventName`**   | URL             | ターゲット オーケストレーション インスタンスが待機しているイベントの名前。 |
 | **`{content}`**   | 要求内容 | JSON 形式のイベント ペイロード。 |
 
-#### <a name="response"></a>Response
+### <a name="response"></a>Response
 
 返される可能性がある状態コード値は、いくつかあります。
 
@@ -499,11 +514,11 @@ Content-Length: 6
 
 この API の応答には内容は含まれません。
 
-### <a name="terminate-instance"></a>インスタンスを終了する
+## <a name="terminate-instance"></a>インスタンスを終了する
 
 実行中のオーケストレーション インスタンスを終了します。
 
-#### <a name="request"></a>Request
+### <a name="request"></a>Request
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -532,7 +547,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate
 | **`instanceId`**  | URL             | オーケストレーション インスタンスの ID。 |
 | **`reason`**      | クエリ文字列    | 省略可能。 オーケストレーション インスタンスの終了の理由。 |
 
-#### <a name="response"></a>Response
+### <a name="response"></a>Response
 
 返される可能性がある状態コード値は、いくつかあります。
 
@@ -548,11 +563,11 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 この API の応答には内容は含まれません。
 
-### <a name="rewind-instance-preview"></a>rewind インスタンス (プレビュー)
+## <a name="rewind-instance-preview"></a>rewind インスタンス (プレビュー)
 
 最後に失敗した操作を再実行することにより、失敗したオーケストレーション インスタンスを実行状態に復元します。
 
-#### <a name="request"></a>Request
+### <a name="request"></a>Request
 
 Functions ランタイム バージョン 1.x の場合、要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -581,7 +596,7 @@ POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind
 | **`instanceId`**  | URL             | オーケストレーション インスタンスの ID。 |
 | **`reason`**      | クエリ文字列    | 省略可能。 オーケストレーション インスタンスを rewind する理由。 |
 
-#### <a name="response"></a>Response
+### <a name="response"></a>Response
 
 返される可能性がある状態コード値は、いくつかあります。
 
@@ -597,11 +612,14 @@ POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7
 
 この API の応答には内容は含まれません。
 
-### <a name="signal-entity-preview"></a>Signal エンティティ (プレビュー)
+## <a name="signal-entity"></a>エンティティへのシグナル通知
 
 一方向の操作メッセージを [Durable Entity](durable-functions-types-features-overview.md#entity-functions) に送信します。 エンティティが存在しない場合、自動的に作成されます。
 
-#### <a name="request"></a>Request
+> [!NOTE]
+> Durable Entity は Durable Functions 2.0 以降で使用できます。
+
+### <a name="request"></a>Request
 
 HTTP 要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -631,7 +649,7 @@ Content-Type: application/json
 5
 ```
 
-#### <a name="response"></a>Response
+### <a name="response"></a>Response
 
 この操作には、複数の応答の可能性があります。
 
@@ -641,11 +659,11 @@ Content-Type: application/json
 
 成功した HTTP 要求の応答には内容は含まれません。 失敗した HTTP 要求は、応答の内容に JSON 形式のエラー情報が含まれている場合があります。
 
-### <a name="query-entity-preview"></a>Query エンティティ (プレビュー)
+## <a name="query-entity"></a>エンティティのクエリの実行
 
 指定されたエンティティの状態を取得します。
 
-#### <a name="request"></a>Request
+### <a name="request"></a>Request
 
 HTTP 要求は次のような形式です (わかりやすくするために複数行が示されています)。
 
@@ -656,7 +674,7 @@ GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
     &code={systemKey}
 ```
 
-#### <a name="response"></a>Response
+### <a name="response"></a>Response
 
 この操作には、2 つの応答の可能性があります。
 
@@ -665,8 +683,8 @@ GET /runtime/webhooks/durabletask/entities/{entityType}/{entityKey}
 
 成功した応答は、JSON でシリアル化されたエンティティの状態がその内容に含まれます。
 
-#### <a name="example"></a>例
-次に示すのは、`steps` という名前の既存の `Counter` エンティティの状態を取得する HTTP 要求の例です。
+### <a name="example"></a>例
+次の例の HTTP 要求では、`steps` という名前の既存の `Counter` エンティティの状態を取得します。
 
 ```http
 GET /runtime/webhooks/durabletask/entities/Counter/steps
@@ -683,4 +701,4 @@ GET /runtime/webhooks/durabletask/entities/Counter/steps
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [エラーの対処方法を知る](durable-functions-error-handling.md)
+> [Application Insights を使用して Durable Functions を監視する方法を確認する](durable-functions-diagnostics.md)

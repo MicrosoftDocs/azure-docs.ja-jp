@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: banders
 ms.openlocfilehash: c19c6af68bcde753ec9bed990e08aa81eabdd37d
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68679416"
 ---
 # <a name="automatically-renew-reservations"></a>予約を自動的に更新する

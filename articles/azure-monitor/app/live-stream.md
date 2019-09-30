@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f8203cade1d2e34a9852e945df03dc2fddc1fbe5
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4e1d83d99f6df9407e24e2ae57af70f68858092d
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359421"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012749"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream:1 秒の待機時間での監視と診断
 
@@ -107,7 +107,12 @@ Application Insights Telemetry だけでなく、Windows パフォーマンス �
 ![サンプリングされたライブ エラー](./media/live-stream/live-stream-filter.png)
 
 ## <a name="sdk-requirements"></a>SDK の要件
+
+### <a name="net"></a>.NET
 カスタムの Live Metrics Stream は、バージョン 2.4.0-beta2 以降の [Application Insights SDK for web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) で使用できます。 NuGet パッケージ マネージャーで [リリース前のパッケージを含める] を必ず選択してください。
+
+### <a name="nodejs"></a>Node.js
+Live Metrics Stream は、バージョン 1.3.0 以降の [Node.js 用 Application Insights SDK](https://npmjs.com/package/applicationinsights) で使用できます。 コードで SDK を構成するときは、必ず `setSendLiveMetrics(true)` を使用してください。
 
 ## <a name="secure-the-control-channel"></a>コントロール チャネルの保護
 指定したカスタム フィルター条件は、Application Insights SDK の Live Metrics コンポーネントに送信されます。 フィルターに顧客 ID などの機密情報が含まれている可能性があります。 インストルメンテーション キーに加え、シークレット API キーを使用してチャネルをセキュリティで保護できます。

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 9154e5d58a36bde1827d63d11d57a77b4289a781
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 477733dcb76647b2c03f79dea4f55c3102d262b8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64689365"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376202"
 ---
 # <a name="analyzing-video-and-audio-files"></a>ビデオおよびオーディオ ファイルの分析
 
@@ -62,7 +62,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="transcript"></a>transcript
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|行 ID。|
 |text|トランスクリプトそのもの。|
@@ -100,7 +100,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="ocr"></a>ocr
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|OCR 行 ID。|
 |text|OCR テキスト。|
@@ -143,10 +143,10 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="faces"></a>faces
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|顔 ID。|
-|name|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
+|名前|顔の名前。 "Unknown #0"、識別された著名人、または顧客のトレーニング担当者になることができます。|
 |confidence|顔認識の信頼度。|
 |description|著名人の説明 |
 |thumbnailId|その顔のサムネイルの ID|
@@ -188,7 +188,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="shots"></a>shots
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|スナップショット ID。|
 |keyFrames|ショット内のキー フレームの一覧 (各キー フレームに ID とインスタンスの時間範囲の一覧があります)。 キー フレームのインスタンスには、keyFrame のサムネイル ID 付きサムネイル フィードがあります。|
@@ -245,7 +245,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="statistics"></a>statistics
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |CorrespondenceCount|ビデオ内の通知の数|
 |WordCount|話者あたり単語の数|
@@ -258,7 +258,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 センチメントは、sentimentType フィールド (肯定/中立/否定) によって集計されます。 例: 0-0.1、0.1-0.2。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|センチメント ID。|
 |averageScore |センチメントの種類 (肯定/中立/否定) が同じすべてのインスタンスのすべてのスコアの平均値。|
@@ -293,10 +293,10 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="labels"></a>labels
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|ラベル ID。|
-|name|ラベル名 (例: "Computer"、"TV")。|
+|名前|ラベル名 (例: "Computer"、"TV")。|
 |language|ラベル名の言語 (翻訳時)。 BCP-47|
 |instances|このラベルが出現する時間範囲の一覧 (1 つのラベルが複数回出現する可能性があります)。 各インスタンスに confidence フィールドがあります。 |
 
@@ -352,7 +352,7 @@ Media Services v3 プリセットを使用してコンテンツを分析する�
 
 ### <a name="keywords"></a>keywords
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|キーワード ID。|
 |text|キーワードのテキスト。|
@@ -403,7 +403,7 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 
 成人向けまたはわいせつなコンテンツを含むことが検出されたビデオでは、秘密ビューしか利用できない場合があります。 ユーザーは、コンテンツの人間によるレビューの要求を送信できます。この場合、IsAdult 属性に、人間によるレビューの結果が含まれます。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |id|ビジュアル コンテンツ モデレーションの ID|
 |adultScore|(コンテンツ モデレーターからの) 成人スコア|

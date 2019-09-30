@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 88d5cfbbcb29cacc2e8c1c6a226367c5f23e8231
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 882228c7cb49a6a419b2b5e0bb200da3391d4584
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64926301"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802556"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共有サービス ブループリント サンプルをデプロイする
 
@@ -29,11 +29,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 最初に、サンプルをスターターとして使用して環境内に新しいブループリントを作成することにより、ブループリント サンプルを実装します。
 
-1. **[すべてのサービス]** を選択し、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** を選択します。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側の **[はじめに]** ページで、 _[ブループリントの作成]_ の下にある **[作成]** ボタンを選択します。
 
-1. 検索、 **ISO 27001。Shared Services\(ISO 27001: 共有サービス\)** ブループリント サンプルを検索し、 **このサンプルを使用する** を選択します。
+1. 検索、 **ISO 27001。Shared Services\(ISO 27001: 共有サービス\)** ブループリント サンプルを検索し、**このサンプルを使用する** を選択します。
 
 1. ブループリント サンプルの _[基本]_ を入力します。
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 環境でのブループリント サンプルのコピーの作成が完了しました。 これは**下書き**モードで作成されており、割り当ておよびデプロイの前に**発行**する必要があります。 ブループリント サンプルのコピーは、お使いの環境や必要性に応じてカスタマイズできますが、それが原因で ISO 27001 標準を満たさなくなる場合もあります。
 
-1. **[すべてのサービス]** を選択し、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** を選択します。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側の **[ブループリントの定義]** ページを選択します。 ブループリント サンプルのコピーを、フィルターを使用して検索し、選択します。
 
@@ -58,7 +58,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 正常に**発行**されたブループリント サンプルのコピーは、保存先の管理グループ内のサブスクリプションに割り当てることができます。 この手順では、ブループリント サンプルのコピーの各デプロイを一意にするためのパラメーターを指定します。
 
-1. **[すべてのサービス]** を選択し、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** を選択します。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側の **[ブループリントの定義]** ページを選択します。 ブループリント サンプルのコピーを、フィルターを使用して検索し、選択します。
 
@@ -115,14 +115,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |許可されるストレージ アカウントの SKU|ポリシー割り当て|Allowed storage SKU (許可されるストレージの SKU)|許可される診断ログのストレージ アカウントの SKU の一覧。 既定値は _["Standard_LRS"]_ です。|
 |許可される仮想マシンの SKU|ポリシー割り当て|デプロイが許可される仮想マシンの SKU の一覧。 既定値は " _["Standard_DS1_v2", "Standard_DS2_v2"]\(["Standard_DS1_v2"、"Standard_DS2_v2"]\)_ " です。|
 |ISO 27001 用ブループリント イニシアティブ|ポリシー割り当て|診断ログを監査するリソースの種類|診断ログ設定が無効になっていないかを監査するリソースの種類の一覧。 使用できる値は、[Azure Monitor 診断ログのスキーマ](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type)に関するページで確認できます。|
-|Log Analytics resource group (Log Analytics リソース グループ)|リソース グループ|Name|**[ロック済み]** - **組織名**と `-sharedsvsc-log-rg` を連結して、リソース グループを一意にします。|
-|Log Analytics resource group (Log Analytics リソース グループ)|リソース グループ|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
+|Log Analytics resource group (Log Analytics リソース グループ)|Resource group|名前|**[ロック済み]** - **組織名**と `-sharedsvsc-log-rg` を連結して、リソース グループを一意にします。|
+|Log Analytics resource group (Log Analytics リソース グループ)|Resource group|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
 |Log Analytics テンプレート|Resource Manager テンプレート|サービス階層|Log Analytics ワークスペースの階層を設定します。 既定値は _[PerNode]_ です。|
 |Log Analytics テンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _[365]_ です。|
 |Log Analytics テンプレート|Resource Manager テンプレート|Location|Log Analytics ワークスペースを作成するために使用されるリージョン。 既定値は_米国西部 2_ です。|
-|Network resource group (ネットワーク リソース グループ)|リソース グループ|Name|**[ロック済み]** - **組織名**と `-sharedsvcs-net-rg` を連結して、リソース グループを一意にします。|
-|Network resource group (ネットワーク リソース グループ)|リソース グループ|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
-|Azure Firewall テンプレート|Resource Manager テンプレート|Azure Firewall のプライベート IP|[Azure Firewall](../../../../firewall/overview.md) のプライベート IP を構成します。 この値は、共有サービスのサブネット上の既定のルート テーブルとしても使用されます。 **[Azure Firewall サブネットのアドレス プレフィックス]** に定義されている CIDR 表記の一部にする必要があります。 既定値は _10.0.4.4_ です。|
+|Network resource group (ネットワーク リソース グループ)|Resource group|名前|**[ロック済み]** - **組織名**と `-sharedsvcs-net-rg` を連結して、リソース グループを一意にします。|
+|Network resource group (ネットワーク リソース グループ)|Resource group|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
+|Azure Firewall テンプレート|Resource Manager テンプレート|Azure ファイアウォールのプライベート IP|[Azure ファイアウォール](../../../../firewall/overview.md)のプライベート IP を構成します。 この値は、共有サービスのサブネット上の既定のルート テーブルとしても使用されます。 **[Azure Firewall サブネットのアドレス プレフィックス]** に定義されている CIDR 表記の一部にする必要があります。 既定値は _10.0.4.4_ です。|
 |Azure Firewall テンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _[365]_ です。|
 |ネットワーク セキュリティ グループ テンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _[365]_ です。|
 |仮想ネットワークとルート テーブルのテンプレート|Resource Manager テンプレート|仮想ネットワーク アドレス プレフィックス|Virtual Network の CIDR 表記。 既定値は _10.0.0.0/16_ です。|
@@ -132,25 +132,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |仮想ネットワークとルート テーブルのテンプレート|Resource Manager テンプレート|Application Gateway サブネット アドレス プレフィックス|Application Gateway サブネットの CIDR 表記。 既定値は _10.0.2.0/24_ です。|
 |仮想ネットワークとルート テーブルのテンプレート|Resource Manager テンプレート|Virtual Network ゲートウェイ サブネット アドレス プレフィックス|Virtual Network ゲートウェイ サブネットの CIDR 表記。 既定値は _10.0.3.0/24_ です。|
 |仮想ネットワークとルート テーブルのテンプレート|Resource Manager テンプレート|Azure Firewall サブネット アドレス プレフィックス|[Azure ファイアウォール](../../../../firewall/overview.md) サブネットの CIDR 表記。 **Azure ファイアウォールのプライベート IP** パラメーターを含める必要があります。|
-|Key Vault リソース グループ|リソース グループ|Name|**[ロック済み]** - **組織名**と `-sharedsvcs-kv-rg` を連結して、リソース グループを一意にします。|
-|Key Vault リソース グループ|リソース グループ|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
-|キー コンテナー テンプレート|Resource Manager テンプレート|Jumpbox 管理者ユーザー名|Jumpbox のユーザー名。 **[Jumpbox のテンプレート]** 内の同じプロパティの値に一致する必要があります。 既定値は _[jb-admin-user]_ です。|
-|キー コンテナー テンプレート|Resource Manager テンプレート|Jumpbox 管理者の SSH キーまたはパスワード|Jumpbox のアカウントのキーまたはパスワード。 **[Jumpbox のテンプレート]** 内の同じプロパティの値に一致する必要があります。 既定値はありませんが、空白のままにしておくことはできません。|
-|キー コンテナー テンプレート|Resource Manager テンプレート|ドメイン管理者のユーザー名|Active Directory VM にアクセスしたり、他の VM をドメインに参加させたりするために使用するユーザー名。 **[Active Directory Domain Services テンプレート]** 内の **[Domain admin user]\(ドメイン管理者ユーザー\)** プロパティの値に一致する必要があります。 既定値は _[domain-admin-user]_ です。|
-|キー コンテナー テンプレート|Resource Manager テンプレート|ドメイン管理者のパスワード|ドメイン管理ユーザーのパスワード。 既定値はありませんが、空白のままにしておくことはできません。|
-|キー コンテナー テンプレート|Resource Manager テンプレート|AAD オブジェクト ID|キー コンテナー インスタンスにアクセスする必要があるアカウントの AAD オブジェクト識別子。 既定値はありませんが、空白のままにしておくことはできません。 Azure portal でこの値を検索するには、 _[サービス]_ で [ユーザー] を検索して選択します。 _[名前]_ ボックスを使用してアカウント名をフィルター処理し、そのアカウントを選択します。 _[ユーザー プロファイル]_ ページで、 _[オブジェクト ID]_ の横にある [クリックしてコピー] アイコンを選択します。  |
-|キー コンテナー テンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _[365]_ です。|
-|キー コンテナー テンプレート|Resource Manager テンプレート|キー コンテナー SKU|作成されるキー コンテナーの SKU を指定します。 既定値は _[Premium]_ です。|
-|Jumpbox resource group (Jumpbox リソース グループ)|リソース グループ|Name|**[ロック済み]** - **組織名**と `-sharedsvcs-jb-rg` を連結して、リソース グループを一意にします。|
-|Jumpbox resource group (Jumpbox リソース グループ)|リソース グループ|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
+|Key Vault リソース グループ|Resource group|名前|**[ロック済み]** - **組織名**と `-sharedsvcs-kv-rg` を連結して、リソース グループを一意にします。|
+|Key Vault リソース グループ|Resource group|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
+|Key Vault テンプレート|Resource Manager テンプレート|Jumpbox 管理者ユーザー名|Jumpbox のユーザー名。 **[Jumpbox のテンプレート]** 内の同じプロパティの値に一致する必要があります。 既定値は _[jb-admin-user]_ です。|
+|Key Vault テンプレート|Resource Manager テンプレート|Jumpbox 管理者の SSH キーまたはパスワード|Jumpbox のアカウントのキーまたはパスワード。 **[Jumpbox のテンプレート]** 内の同じプロパティの値に一致する必要があります。 既定値はありませんが、空白のままにしておくことはできません。|
+|Key Vault テンプレート|Resource Manager テンプレート|ドメイン管理者のユーザー名|Active Directory VM にアクセスしたり、他の VM をドメインに参加させたりするために使用するユーザー名。 **[Active Directory Domain Services テンプレート]** 内の **[Domain admin user]\(ドメイン管理者ユーザー\)** プロパティの値に一致する必要があります。 既定値は _[domain-admin-user]_ です。|
+|Key Vault テンプレート|Resource Manager テンプレート|ドメイン管理者のパスワード|ドメイン管理ユーザーのパスワード。 既定値はありませんが、空白のままにしておくことはできません。|
+|Key Vault テンプレート|Resource Manager テンプレート|AAD オブジェクト ID|Key Vault インスタンスにアクセスする必要があるアカウントの AAD オブジェクト識別子。 既定値はありませんが、空白のままにしておくことはできません。 Azure portal でこの値を検索するには、 _[サービス]_ で [ユーザー] を検索して選択します。 _[名前]_ ボックスを使用してアカウント名をフィルター処理し、そのアカウントを選択します。 _[ユーザー プロファイル]_ ページで、 _[オブジェクト ID]_ の横にある [クリックしてコピー] アイコンを選択します。  |
+|Key Vault テンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _[365]_ です。|
+|Key Vault テンプレート|Resource Manager テンプレート|Key Vault SKU|作成される Key Vault の SKU を指定します。 既定値は _[Premium]_ です。|
+|Jumpbox resource group (Jumpbox リソース グループ)|Resource group|名前|**[ロック済み]** - **組織名**と `-sharedsvcs-jb-rg` を連結して、リソース グループを一意にします。|
+|Jumpbox resource group (Jumpbox リソース グループ)|Resource group|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
 |Jumpbox のテンプレート|Resource Manager テンプレート|Jumpbox 管理者ユーザー名|Jumpbox VM にアクセスするために使用するユーザー名。 **[Key Vault テンプレート]** 内の同じプロパティの値に一致する必要があります。 既定値は _[jb-admin-user]_ です。|
-|Jumpbox のテンプレート|Resource Manager テンプレート|Jumpbox 管理者のパスワード (Key Vault リソース ID)|キー コンテナーのリソース ID。 "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv" を使用し、`{subscriptionId}` をお使いのサブスクリプション ID、`{orgName}` を **[組織名]** ブループリント パラメーターに置き換えます。|
+|Jumpbox のテンプレート|Resource Manager テンプレート|Jumpbox 管理者のパスワード (Key Vault リソース ID)|Key Vault のリソース ID。 "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv" を使用し、`{subscriptionId}` をお使いのサブスクリプション ID、`{orgName}` を **[組織名]** ブループリント パラメーターに置き換えます。|
 |Jumpbox のテンプレート|Resource Manager テンプレート|Jumpbox 管理者のパスワード (Key Vault シークレット名)|Jumpbox 管理者のユーザー名。 **[Key Vault テンプレート]** プロパティの **[Jumpbox 管理者ユーザー名]** の値に一致する必要があります。|
 |Jumpbox のテンプレート|Resource Manager テンプレート|Jumpbox オペレーティング システム|Jumpbox VM のオペレーティングシステムを決定します。 既定値は _[Windows]_ です。|
-|Active Directory Domain Services resource group (Active Directory Domain Services のリソース グループ)|リソース グループ|Name|**[ロック済み]** - **組織名**と `-sharedsvcs-adds-rg` を連結して、リソース グループを一意にします。|
-|Active Directory Domain Services resource group (Active Directory Domain Services のリソース グループ)|リソース グループ|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
+|Active Directory Domain Services resource group (Active Directory Domain Services のリソース グループ)|Resource group|名前|**[ロック済み]** - **組織名**と `-sharedsvcs-adds-rg` を連結して、リソース グループを一意にします。|
+|Active Directory Domain Services resource group (Active Directory Domain Services のリソース グループ)|Resource group|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
 |Active Directory Domain Services テンプレート|Resource Manager テンプレート|ドメイン管理者のユーザー名|ADDS Jumpbox のユーザー名。 **[Key Vault テンプレート]** 内の同じプロパティの値に一致する必要があります。 既定値は _[adds-admin-user]_ です。|
-|Active Directory Domain Services テンプレート|Resource Manager テンプレート|ドメイン管理者のパスワード (Key Vault リソース ID)|キー コンテナーのリソース ID。 "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv" を使用し、`{subscriptionId}` をお使いのサブスクリプション ID、`{orgName}` を **[組織名]** ブループリント パラメーターに置き換えます。|
+|Active Directory Domain Services テンプレート|Resource Manager テンプレート|ドメイン管理者のパスワード (Key Vault リソース ID)|Key Vault のリソース ID。 "/subscriptions/{subscriptionId}/resourceGroups/{orgName}-sharedsvcs-kv-rg/providers/Microsoft.KeyVault/vaults/{orgName}-sharedsvcs-kv" を使用し、`{subscriptionId}` をお使いのサブスクリプション ID、`{orgName}` を **[組織名]** ブループリント パラメーターに置き換えます。|
 |Active Directory Domain Services テンプレート|Resource Manager テンプレート|ドメイン管理者のパスワード (Key Vault シークレット名)|ドメイン管理者のユーザー名。 **[Key Vault テンプレート]** 内のプロパティ **[ドメイン管理者のユーザー名]** の値に一致する必要があります。|
 |Active Directory Domain Services テンプレート|Resource Manager テンプレート|ドメイン名|サンプルで作成された Active Directory の名前。 既定値は _[contoso.com]_ です。|
 |Active Directory Domain Services テンプレート|Resource Manager テンプレート|Domain admin user (ドメイン管理者ユーザー)|管理者の AD アカウント用およびデバイスを AD ドメインに参加させるためのユーザー名。 **[Key Vault テンプレート]** 内の **[AD admin username]\(AD 管理者のユーザー名\)** プロパティの値に一致する必要があります。 既定値は _[domain-admin-user]_ です。|

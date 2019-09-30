@@ -1,6 +1,6 @@
 ---
 title: リモート監視ソリューションを (IntelliJ IDE 経由で) ローカルにデプロイする - Azure | Microsoft Docs
-description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のために IntelliJ を使用してローカル コンピューターにデプロイする方法を示します。
+description: この攻略ガイドでは、テストおよび開発のために IntelliJ を使用してリモート監視ソリューション アクセラレータをローカル コンピューターにデプロイする方法を示します。
 author: v-krghan
 manager: dominicbetts
 ms.author: v-krghan
@@ -8,18 +8,18 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2b55fea69fe1affb6cab5d360f1e8355c3bb720d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
+ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66015437"
+ms.lasthandoff: 07/01/2019
+ms.locfileid: "70743308"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>リモート監視ソリューション アクセラレータのローカルでのデプロイ - IntelliJ
 
 [!INCLUDE [iot-accelerators-selector-local](../../includes/iot-accelerators-selector-local.md)]
 
-この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 また、IntelliJ でマイクロ サービスを実行する方法も示します。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、ローカルのマイクロサービス デプロイで使用するクラウド サービスは、クラウド内の IoT Hub、Cosmos DB、Azure Stream Analytics、および Azure Time Series Insights サービスです。
+この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 IntelliJ でマイクロサービスを実行する方法を学習できます。 ローカルのマイクロサービス デプロイで使用するクラウド サービスは、IoT Hub、Azure Cosmos DB、Azure Stream Analytics、Azure Time Series Insights です。
 
 リモート監視ソリューション アクセラレータをローカル コンピューター上の Docker で実行する場合、[リモート監視ソリューション アクセラレータをローカルでデプロイする - Docker](iot-accelerators-remote-monitoring-deploy-local-docker.md) に関するページを参照してください。
 
@@ -37,11 +37,13 @@ ms.locfileid: "66015437"
 * [Docker](https://www.docker.com)
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [IntelliJ コミュニティ エディション](https://www.jetbrains.com/idea/download/)
-* [IntelliJ プラグイン Scala](https://plugins.jetbrains.com/plugin/1347-scala)
-* [IntelliJ プラグイン SBT](https://plugins.jetbrains.com/plugin/5007-sbt)
-* [IntelliJ プラグイン SBT Executor](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
+* [IntelliJ Scala プラグイン](https://plugins.jetbrains.com/plugin/1347-scala)
+* [IntelliJ SBT プラグイン](https://plugins.jetbrains.com/plugin/5007-sbt)
+* [IntelliJ SBT Executor プラグイン](https://plugins.jetbrains.com/plugin/7247-sbt-executor)
 * [Nginx](https://nginx.org/en/download.html)
-* [Node.js v8](https://nodejs.org/) - このソフトウェアは、スクリプトが Azure リソースを作成するために使用する PCS CLI の前提条件です。 Node.js v10 は使用しないでください。
+* [Node.js v8](https://nodejs.org/)
+
+Node.js v8 は、スクリプトで Azure リソースを作成するために使用する PCS CLI の前提条件です。 Node.js v10 は使用しないでください。
 
 > [!NOTE]
 > IntelliJ IDE は Windows と Mac で利用できます。
@@ -52,30 +54,31 @@ ms.locfileid: "66015437"
 
 複製してローカル バージョンのリポジトリを作成するには、コマンドライン環境を使用してローカル コンピューター上の適切なフォルダーに移動します。 その後、次のいずれかのコマンド セットを実行して、Java リポジトリを複製します。
 
-Java マイクロサービスの実装の最新バージョンをダウンロードするには、次のコマンドを実行します。
+* Java マイクロサービスの実装の最新バージョンをダウンロードするには、次のコマンドを実行します。
 
+  ```cmd/sh
+  git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+  ```
 
-```cmd/sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+* 最新のサブモジュールを取得するには、次のコマンドを実行します。
 
-# To retrieve the latest submodules, run the following command:
-
-cd azure-iot-pcs-remote-monitoring-java
-git submodule foreach git pull origin master
-```
+   ```cmd/sh
+   cd azure-iot-pcs-remote-monitoring-java
+   git submodule foreach git pull origin master
+    ```
 
 > [!NOTE]
-> これらのコマンドでは、マイクロサービスのローカル実行に使用するスクリプトだけでなく、すべてのマイクロサービスのソース コードがダウンロードされます。 Docker 内のマイクロサービスを実行するためのソース コードは必要ありませんが、後でソリューション アクセラレータを変更し、その変更をローカルにテストすることを予定している場合は、ソース コードが役に立ちます。
+> これらのコマンドでは、マイクロサービスのローカル実行に使用するスクリプトだけでなく、すべてのマイクロサービスのソース コードがダウンロードされます。 Docker でマイクロサービスを実行する場合、このソース コードは必要ありません。 ただし、後でソリューション アクセラレータを変更して変更内容をローカルでテストする予定がある場合は、このソース コードが役立ちます。
 
 ## <a name="deploy-the-azure-services"></a>Azure サービスをデプロイする
 
-この記事ではマイクロサービスをローカルに実行する方法を示しますが、これらはクラウド内で実行されている Azure サービスに依存します。 Azure サービスをデプロイするには、次のスクリプトを使用します。 次のスクリプトの例では、Windows コンピューターで Java リポジトリを使用していることを前提としています。 別の環境で作業している場合は、パス、ファイル拡張子、およびパスの区切り記号を適切に調整してください。
+この記事ではマイクロサービスをローカルに実行する方法を示しますが、これらはクラウド内で実行されている Azure サービスに依存します。 Azure サービスをデプロイするには、次のスクリプトを使用します。 このスクリプトの例では、Windows マシンで Java リポジトリを使用していることを前提としています。 別の環境で作業している場合は、パス、ファイル拡張子、およびパスの区切り記号を適切に調整してください。
 
 ### <a name="create-new-azure-resources"></a>新しい Azure リソースを作成する
 
 必要な Azure リソースをまだ作成していない場合は、次の手順のようにします。
 
-1. コマンドライン環境で、リポジトリの複製コピーの **\services\scripts\local\launch** フォルダーに移動します。
+1. コマンドライン環境で、複製コピーしたリポジトリ内の **\services\scripts\local\launch** フォルダーに移動します。
 
 1. 次のコマンドを実行して **pcs** CLI ツールをインストールし、Azure アカウントにサインインします。
 
@@ -85,40 +88,44 @@ git submodule foreach git pull origin master
     ```
 
 1. **start.cmd** スクリプトを実行します。 このスクリプトでは、次の情報を入力するよう求められます。
+
    * ソリューション名。
    * 使用する Azure サブスクリプション。
    * 使用する Azure データセンターの場所。
 
-     スクリプトで、指定したソリューション名のリソース グループが Azure に作成されます。 このリソース グループには、ソリューション アクセラレータが使用する Azure リソースが含まれます。 該当するリソースが不要になった場合は、このリソース グループを削除できます。
+   このスクリプトにより、指定したソリューション名のリソース グループが Azure に作成されます。 このリソース グループには、ソリューション アクセラレータが使用する Azure リソースが含まれます。 このリソース グループは、該当するリソースが不要になったら削除できます。
 
-     また、このスクリプトは、プレフィックス **PCS** を持つ一連の環境変数をローカル コンピューターに追加します。 これらの環境変数では、リモート監視で Azure Key Vault リソースから読み取れるようにするための詳細が提供されます。 リモート監視では、この Key Vault リソースからその構成値が読み取られます。
+   また、このスクリプトにより、ローカル コンピューターに一連の環境変数も追加されます。 各変数名には、**PCS** というプレフィックスが付いています。 これらの環境変数では、リモート監視で Azure Key Vault リソースからその構成値を読み取れるようにするための詳細が提供されます。
 
-     > [!TIP]
-     > また、このスクリプトは、完了すると、 **\<実際のホーム フォルダー\>\\.pcs\\\<ソリューション名\>.env** という名前のファイルに環境変数を保存します。 これらは、将来のソリューション アクセラレータのデプロイに使用できます。 **docker-compose** を実行すると、ローカル コンピューターに設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
+   > [!TIP]
+   > このスクリプトが完了すると、環境変数は、 **\<実際のホーム フォルダー\>\\.pcs\\\<ソリューション名\>.env** という名前のファイルに保存されます。 これらは、将来のソリューション アクセラレータのデプロイに使用できます。 **docker-compose** を実行すると、ローカル コンピューターで設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
 
-1. コマンドライン環境を終了します。
+1. コマンドライン環境を閉じます。
 
 ### <a name="use-existing-azure-resources"></a>既存の Azure リソースを使用する
 
-必要な Azure リソースを既に作成している場合は、ローカル コンピューターに対応する環境変数を作成します。
-以下に対する環境変数を設定します。
-* **PCS_KEYVAULT_NAME** - Azure Key Vault リソースの名前
-* **PCS_AAD_APPID** - AAD アプリケーションの ID
-* **PCS_AAD_APPSECRET** - AAD アプリケーションのシークレット
+必要な Azure リソースを既に作成済みの場合は、ローカル コンピューターで対応する環境変数を設定します。
+* **PCS_KEYVAULT_NAME**: Key Vault リソースの名前。
+* **PCS_AAD_APPID**: Azure Active Directory (Azure AD) アプリケーションの ID。
+* **PCS_AAD_APPSECRET**: Azure AD アプリケーションのシークレット。
 
-構成値はこの Azure Key Vault リソースから読み取られます。 これらの環境変数は、デプロイから **\<実際のホーム フォルダー\>\\.pcs\\\<ソリューション名\>.env** ファイルに保存される可能性があります。 **docker-compose** を実行すると、ローカル コンピューターに設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
+構成値はこの Key Vault リソースから読み取られます。 これらの環境変数は、デプロイから **\<実際のホーム フォルダー\>\\.pcs\\\<ソリューション名\>.env** ファイルに保存できます。 **docker-compose** を実行すると、ローカル コンピューターに設定した環境変数が、**services\\scripts\\local\\.env** ファイル内の値をオーバーライドすることに注意してください。
 
-マイクロサービスで必要な構成の一部は、初期デプロイ上に作成された **Key Vault** インスタンスに格納されます。 必要に応じて、Key Vault 内の対応する変数を変更する必要があります。
+マイクロサービスで必要な構成の一部は、初回デプロイ時に作成された Key Vault のインスタンスに格納されます。 このキー コンテナー内の対応する変数は、必要に応じて変更する必要があります。
 
 ## <a name="run-the-microservices"></a>マイクロサービスを実行する
 
-このセクションでは、リモート監視マイクロサービスを実行します。 Web UI をネイティブで実行し、Docker でデバイス シミュレーション サービス、認証サービス、ASA Manager サービスを実行し、IntelliJ でマイクロサービスを実行します。
+このセクションでは、リモート監視マイクロサービスを実行します。 以下を実行します。
+
+* ネイティブで Web UI。
+* Docker で Azure IoT デバイス シミュレーション、認証、Azure Stream Analytics Manager サービス。
+* IntelliJ でマイクロサービス。
 
 ### <a name="run-the-device-simulation-service"></a>デバイス シミュレーション サービスを実行する
 
-新しいコマンド プロンプト ウィンドウを開いて、前のセクションで **start.cmd** スクリプトによって設定された環境変数にアクセスできることを確認します。
+新しいコマンド プロンプト ウィンドウを開きます。 前のセクションで **start.cmd** スクリプトによって設定された環境変数にアクセスできることを確認します。
 
-デバイス シミュレーション サービス用の Docker コンテナーを起動するには、次のコマンドを実行します。 このサービスは、リモート監視ソリューション用のデバイスをシミュレートします。
+次のコマンドを実行して、デバイス シミュレーション サービス用の Docker コンテナーを開きます。 このサービスは、リモート監視ソリューション用のデバイスをシミュレートします。
 
 ```cmd
 <path_to_cloned_repository>\services\device-simulation\scripts\docker\run.cmd
@@ -126,107 +133,106 @@ git submodule foreach git pull origin master
 
 ### <a name="run-the-auth-service"></a>認証サービスを実行する
 
-新しいコマンド プロンプト ウィンドウを開き、次のコマンドを実行して認証サービス用の Docker コンテナーを起動します。 このサービスを使用すると、Azure IoT ソリューションにアクセスする権限を持つユーザーを管理できます。
+新しいコマンド プロンプト ウィンドウを開き、次のコマンドを実行して認証サービス用の Docker コンテナーを開きます。 このサービスを使用することで、Azure IoT ソリューションにアクセスする権限を持つユーザーを管理できます。
 
 ```cmd
 <path_to_cloned_repository>\services\auth\scripts\docker\run.cmd
 ```
 
-### <a name="run-the-asa-manager-service"></a>ASA Manager サービスを実行する
+### <a name="run-the-stream-analytics-manager-service"></a>Stream Analytics Manager サービスを実行する
 
-新しいコマンド プロンプト ウィンドウを開き、次のコマンドを実行して ASA Manager サービス用の Docker コンテナーを起動します。 このサービスを使用すると、構成の設定、開始、停止、状態の監視など、Azure Stream Analytics (ASA) ジョブを管理できます。
+新しいコマンド プロンプト ウィンドウを開き、次のコマンドを実行して Stream Analytics Manager サービス用の Docker コンテナーを開きます。 このサービスを使用すると、Stream Analytics ジョブを管理できます。 このような管理には、ジョブ構成の設定やジョブの状態の開始、停止、監視が含まれます。
 
 ```cmd
 <path_to_cloned_repository>\services\asa-manager\scripts\docker\run.cmd
 ```
 
-### <a name="deploy-all-other-microservices-on-local-machine"></a>ローカル コンピューター上のその他すべてのマイクロサービスをデプロイする
+### <a name="deploy-all-other-microservices-on-your-local-machine"></a>ローカル コンピューター上にその他すべてのマイクロサービスをデプロイする
 
-次の手順では、IntelliJ のリモート監視マイクロサービスを実行する方法を示します。
+次の手順では、IntelliJ でリモート監視マイクロサービスを実行する方法を示します。
 
-#### <a name="import-project"></a>プロジェクトのインポート
+#### <a name="import-a-project"></a>プロジェクトをインポートする
 
-1. IntelliJ IDE を起動する
-1. **[Import Project]\(プロジェクトのインポート\)** を選択し、**azure-iot-pcs-remote-monitoring-java\services\build.sbt** を選択します
+1. IntelliJ IDE を開きます。
+1. **[Import Project]\(プロジェクトのインポート\)** を選択します。
+1. **azure-iot-pcs-remote-monitoring-java\services\build.sbt** を選択します。
 
-#### <a name="create-run-configurations"></a>実行の構成を作成する
+#### <a name="create-run-configurations"></a>実行構成を作成する
 
-1. **[Run]\(実行\) > [Edit Configurations]\(構成の編集\)** の順に選択します
-1. **[Add New Configuration]\(新しい構成の追加\) > [sbt task]\(sbt タスク\)** の順に選択します 
-1. **[Name]\(名前\)** を入力し、実行として「**Tasks**」と入力します 
-1. 実行するサービスに基づいて **[Working Directory]\(作業ディレクトリ\)** を選択します
-1. **[Apply]\(適用\) > [OK]** の順にクリックして選択内容を保存します。
-1. 次のサービスについて実行の構成を作成します。
+1. **[Run]\(実行\)**  >  **[Edit Configurations]\(構成の編集\)** の順に選択します。
+1. **[Add New Configuration]\(新しい構成の追加\)**  >  **[sbt task]\(sbt タスク\)** の順に選択します。
+1. **[Name]\(名前\)** を入力し、 **[Tasks]\(タスク\)** に「**run**」と入力します。
+1. 実行するサービスに基づいて **[Working Directory]\(作業ディレクトリ\)** を選択します。
+1. **[Apply]\(適用\)**  >  **[OK]** の順に選択して選択内容を保存します。
+1. 次の Web サービスについて実行構成を作成します。
     * WebService (services\config)
     * WebService (services\device-telemetry)
     * WebService (services\iothub-manager)
     * WebService (services\storage-adapter)
 
-次の図は、サービスの構成を追加する例を示しています。
+例として、次の図では、サービスの構成を追加する方法を示しています。
 
-[![Add-Configuration](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
+[![IntelliJ IDE の [Run/Debug Configurations]\(実行/デバッグ構成\) ウィンドウのスクリーンショット。左側のウィンドウの sbt タスク リストで強調表示された [storageAdapter] オプションと、右側のウィンドウの [Name]\(名前\)、[Tasks]\(タスク\)、[Working directory]\(作業ディレクトリ\)、[VM parameters]\(VM パラメーター\) の各ボックスの入力内容を示しています。](./media/deploy-locally-intellij/run-configurations.png)](./media/deploy-locally-intellij/run-configurations.png#lightbox)
 
+#### <a name="create-a-compound-configuration"></a>複合構成を作成する
 
-#### <a name="create-compound-configuration"></a>複合構成を作成する
+1. すべてのサービスをまとめて実行するには、 **[Add new Configuration]\(新しい構成の追加\)**  >  **[Compound]\(複合\)** の順に選択します。
+1. **[Name]\(名前\)** を入力し、 **[add sbt tasks]\(sbt タスクの追加\)** を選択します。
+1. **[Apply]\(適用\)**  >  **[OK]** の順に選択して選択内容を保存します。
 
-1. すべてのサービスを実行するには、 **[Add new Configuration]\(新しい構成の追加\) > [Compound]\(複合\)** の順に選択します
-1. **[Name]\(名前\)** を入力し、**sbt タスクを追加**します
-1. **[Apply]\(適用\) > [OK]** の順にクリックして選択内容を保存します。
+例として、次の図では、すべての sbt タスクを 1 つの構成に追加する方法を示しています。
 
-次の図は、すべての sbt タスクを 1 つの構成に追加する例を示しています。
+[![IntelliJ IDE の [Run/Debug Configurations]\(実行/デバッグ構成\) ウィンドウのスクリーンショット。左側のウィンドウの [Compound]\(複合\) の一覧で強調表示された [AllServices] オプションと、右側のウィンドウで強調された [sbt Task 'deviceTelemetry']\(sbt タスク 'deviceTelemetry'\) オプションを示しています。](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
 
-[![Add-All-Services](./media/deploy-locally-intellij/all-services.png)](./media/deploy-locally-intellij/all-services.png#lightbox)
+**[Run]\(実行\)** を選択して、ローカル コンピューター上で Web サービスをビルドして実行します。
 
-**[Run]\(実行\)** をクリックして、ローカル コンピューター上で Web サービスをビルドして実行します。
+Web サービスごとにコマンド プロンプト ウィンドウと Web ブラウザー ウィンドウが開きます。 コマンド プロンプトに、実行中のサービスからの出力が表示されます。 ブラウザー ウィンドウでは、状態を監視することができます。 コマンド プロンプト ウィンドウまたは Web ページは閉じないでください。そのような操作を行うと Web サービスが停止します。
 
-Web サービスごとにコマンド プロンプトと Web ブラウザー ウィンドウが開きます。 コマンド プロンプトには実行中のサービスの出力が表示され、ブラウザー ウィンドウでは状態を監視することができます。 コマンド プロンプトや Web ページを閉じると Web サービスが停止するため、閉じないでください。
+サービスの状態にアクセスするには、次の URL に移動します。
 
-
-サービスの状態にアクセスするには、以下の URL に移動します。
-* IoT-Hub Manager [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
-* デバイス テレメトリ [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
-* config [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
-* storage-adapter [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
-
+* IoT-Hub Manager: [http://localhost:9002/v1/status](http://localhost:9002/v1/status)
+* デバイス テレメトリ: [http://localhost:9004/v1/status](http://localhost:9004/v1/status)
+* config: [http://localhost:9005/v1/status](http://localhost:9005/v1/status)
+* storage-adapter: [http://localhost:9022/v1/status](http://localhost:9022/v1/status)
 
 ### <a name="start-the-stream-analytics-job"></a>Stream Analytics ジョブの開始
 
 Stream Analytics ジョブを開始するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) に移動します。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 1. ソリューション用に作成された**リソース グループ**に移動します。 このリソース グループの名前は、**start.cmd** スクリプトを実行したときにソリューション用に選択した名前です。
-1. リソースの一覧で **[Stream Analytics ジョブ]** をクリックします。
-1. Stream Analytics ジョブの **[概要]** ページで、 **[開始]** ボタンをクリックします。 次に、 **[開始]** をクリックしてジョブをすぐに開始します。
+1. リソースの一覧で **[Stream Analytics ジョブ]** を選択します。
+1. Stream Analytics ジョブの **[概要]** ページで、 **[開始]** ボタンを選択し、 **[開始]** を選択してジョブを開始します。
 
 ### <a name="run-the-web-ui"></a>Web UI を実行する
 
-この手順では、Web UI を開始します。 新しいコマンド プロンプト ウィンドウを開いて、**start.cmd** スクリプトによって設定された環境変数にアクセスできることを確認します。 リポジトリのローカル コピーにある **webui** フォルダーに移動し、次のコマンドを実行します。
+この手順では、Web UI を開始します。 新しいコマンド プロンプト ウィンドウを開きます。 **start.cmd** スクリプトによって設定された環境変数にアクセスできることを確認します。 リポジトリのローカル コピー内の **webui** フォルダーに移動し、次のコマンドを実行します。
 
 ```cmd
 npm install
 npm start
 ```
 
-起動が完了すると、ブラウザーに **http:\//localhost:3000/dashboard** ページが表示されます。 このページには、エラーが存在する可能性があります。 エラーがない状態でアプリケーションを表示するには、次の手順を実行してください。
+**start** コマンドが完了すると、ブラウザーには、[http://localhost:3000/dashboard](http://localhost:3000/dashboard) というアドレスのページが表示されます。 このページには、エラーが存在する可能性があります。 エラーがない状態でアプリケーションを表示するには、次の手順を実行してください。
 
-### <a name="configure-and-run-nginx"></a>NGINX を構成および実行する
+### <a name="configure-and-run-nginx"></a>Nginx を構成および実行する
 
-ローカル コンピューターで実行されているマイクロサービスと Web アプリケーションをリンクするリバース プロキシ サーバーを設定します。
+ローカル コンピューターで実行されているマイクロサービスに Web アプリケーションをリンクさせるリバース プロキシ サーバーを設定します。
 
-* リポジトリのローカル コピーにある **webui\scripts\localhost** フォルダーから **nginx.conf** ファイルを **nginx\conf** インストール ディレクトリにコピーします。
-* **nginx** を実行します。
+1. リポジトリのローカル コピー内にある **webui\scripts\localhost** フォルダーから **nginx.conf** ファイルを **nginx\conf** インストール ディレクトリにコピーします。
+1. Nginx を実行します。
 
-**nginx** の実行の詳細については、[nginx for Windows](https://nginx.org/en/docs/windows.html) を参照してください。
+Nginx の実行の詳細については、「[nginx for Windows](https://nginx.org/en/docs/windows.html)」を参照してください。
 
 ### <a name="connect-to-the-dashboard"></a>ダッシュボードに接続する
 
-リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで http:\//localhost:9000 に移動します。
+リモート監視ソリューションのダッシュボードにアクセスするには、ブラウザーで http://localhost:9000 に移動します。
 
 ## <a name="clean-up"></a>クリーンアップ
 
-不必要な課金を避けるために、テストを完了したら、Azure サブスクリプションからクラウド サービスを削除します。 サービスを削除するには、[Azure portal](https://ms.portal.azure.com) に移動し、**start.cmd** スクリプトが作成したリソース グループを削除します。
+不必要な課金を避けるために、テストが完了したら、お使いの Azure サブスクリプションからクラウド サービスを削除してください。 サービスを削除するには、[Azure portal](https://ms.portal.azure.com) に移動し、**start.cmd** スクリプトによって作成されたリソース グループを削除します。
 
-また、GitHub からソース コードを複製するときに作成されたリモート監視リポジトリのローカル コピーを削除することもできます。
+また、GitHub からソース コードを複製したときに作成されたリモート監視リポジトリのローカル コピーも削除してかまいません。
 
 ## <a name="next-steps"></a>次の手順
 

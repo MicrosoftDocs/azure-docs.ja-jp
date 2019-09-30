@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 08/29/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: bdb66ec65d493c6af2f33bf6ed6e4a2bb2154235
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8a455fdb8ef81b0e06d1f77f7a9cdd5bec351b2b
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897039"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164280"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>PowerShell を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成する (プレビュー)
 
@@ -80,7 +80,7 @@ PowerShell を使用したサインインの詳細については、「[Azure Po
 
 ## <a name="assign-permissions-with-rbac"></a>RBAC を使用してアクセス許可を割り当てる
 
-Azure PowerShell からユーザー委任 SAS を作成するには、PowerShell へのサインインに使用する Azure AD アカウントに、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールが割り当てられている必要があります。 このアクセス許可により、Azure AD アカウントが*ユーザー委任キー*を要求できるようにします。 ユーザー委任キーは、ユーザー委任 SAS に署名するために使用します。 **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを提供するロールは、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルで割り当てられている必要があります。 ユーザー委任 SAS を作成するための RBAC アクセス許可の詳細については、「[Create a user delegation SAS](/rest/api/storageservices/create-user-delegation-sas)」 (ユーザー委任 SAS の作成) の「**Assign permissions with RBAC**」 (RBAC によるアクセス許可の割り当て) セクションを参照してください。
+Azure PowerShell からユーザー委任 SAS を作成するには、PowerShell へのサインインに使用する Azure AD アカウントに、**Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを含むロールが割り当てられている必要があります。 このアクセス許可により、Azure AD アカウントが*ユーザー委任キー*を要求できるようにします。 ユーザー委任キーは、ユーザー委任 SAS に署名するために使用されます。 **Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey** アクションを提供するロールは、ストレージ アカウント、リソース グループ、またはサブスクリプションのレベルで割り当てられている必要があります。 ユーザー委任 SAS を作成するための RBAC アクセス許可の詳細については、「[Create a user delegation SAS](/rest/api/storageservices/create-user-delegation-sas)」 (ユーザー委任 SAS の作成) の「**Assign permissions with RBAC**」 (RBAC によるアクセス許可の割り当て) セクションを参照してください。
 
 Azure AD セキュリティ プリンシパルに RBAC ロールを割り当てるための十分なアクセス許可がない場合は、アカウント所有者または管理者に依頼して、必要なアクセス許可を割り当ててもらう必要がある場合があります。
 
@@ -100,7 +100,7 @@ New-AzRoleAssignment -SignInName <email> `
 
 Azure PowerShell を使用してユーザー委任 SAS を作成すると、SAS への署名に使用されるユーザー委任キーが暗黙的に作成されます。 SAS に指定した開始時刻と有効期限は、ユーザー委任キーの開始時刻と有効期限としても使用されます。 
 
-ユーザー委任キーの最大有効期間は開始日から 7 日であるため、開始時刻から 7 日以内の SAS の有効期限を指定する必要があります。 ユーザー委任キーの有効期限が切れると SAS は無効になるため、有効期限が 7 日を超える SAS でも、7 日間だけ有効になります。
+ユーザー委任キーが有効な最大間隔は開始日から 7 日であるため、SAS の有効期限を開始時刻から 7 日以内で指定する必要があります。 ユーザー委任キーの有効期限が切れると SAS は無効になるため、有効期限が 7 日を超える SAS でも、7 日間だけ有効になります。
 
 Azure PowerShell を使用してコンテナーまたは BLOB のユーザー委任 SAS を作成するには、まず、`-UseConnectedAccount` パラメーターを指定して新しい Azure Storage コンテキスト オブジェクトを作成します。 `-UseConnectedAccount` パラメーターは、コマンドで、サインインに使用した Azure AD アカウントの下にコンテキスト オブジェクトを作成することを指定します。
 
@@ -114,7 +114,7 @@ $ctx = New-AzStorageContext -StorageAccountName <storage-account> -UseConnectedA
 
 コンテナーのユーザー委任 SAS トークンを返すには、[New-AzStorageContainerSASToken](/powershell/module/az.storage/new-azstoragecontainersastoken) コマンドを呼び出し、前に作成した Azure Storage コンテキスト オブジェクトを渡します。
 
-次の例では、コンテナーのユーザー委任 SAS トークンを返します。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
+次の例では、コンテナーのユーザー委任 SAS トークンを返します。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```powershell
 New-AzStorageContainerSASToken -Context $ctx `
@@ -123,7 +123,7 @@ New-AzStorageContainerSASToken -Context $ctx `
     -ExpiryTime <date-time>
 ```
 
-返されるユーザー委任 SAS トークンは次のようになります。
+返されるユーザー委任 SAS トークンは、次のようになります。
 
 ```
 ?sv=2018-11-09&sr=c&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-05T22%3A24%3A36Z&ske=2019-08-07T07%3A
@@ -134,7 +134,7 @@ New-AzStorageContainerSASToken -Context $ctx `
 
 BLOB のユーザー委任 SAS トークンを返すには、[New-AzStorageBlobSASToken](/powershell/module/az.storage/new-azstorageblobsastoken) コマンドを呼び出し、前に作成した Azure Storage コンテキスト オブジェクトを渡します。
 
-次の構文では、BLOB のユーザー委任 SAS を返します。 この例では、`-FullUri` パラメーターを指定しており、これは SAS トークンを追加した BLOB URI を返します。 角かっこ内のプレースホルダー値を独自の値で置き換えてください。
+次の構文では、BLOB のユーザー委任 SAS を返します。 この例では、`-FullUri` パラメーターを指定しており、これにより SAS トークンを追加した BLOB URI が返されます。 かっこ内のプレースホルダー値を独自の値に置き換えることを忘れないでください。
 
 ```powershell
 New-AzStorageBlobSASToken -Context $ctx `
@@ -145,7 +145,7 @@ New-AzStorageBlobSASToken -Context $ctx `
     -FullUri
 ```
 
-返されるユーザー委任 SAS URI は次のようになります。
+返されるユーザー委任 SAS URI は、次のようになります。
 
 ```
 https://storagesamples.blob.core.windows.net/sample-container/blob1.txt?sv=2018-11-09&sr=b&sig=<sig>&skoid=<skoid>&sktid=<sktid>&skt=2019-08-06T21%3A16%3A54Z&ske=2019-08-07T07%3A00%3A00Z&sks=b&skv=2018-11-09&se=2019-08-07T07%3A00%3A00Z&sp=racwd
@@ -165,7 +165,10 @@ Revoke-AzStorageAccountUserDelegationKeys -ResourceGroupName <resource-group> `
     -StorageAccountName <storage-account>
 ```
 
+> [!IMPORTANT]
+> ユーザーの委任キーと RBAC ロールの割り当てはいずれも Azure Storage によってキャッシュされるため、失効プロセスの開始と、既存のユーザーの委任 SAS の無効化の間に、遅延が発生する可能性があります。
+
 ## <a name="next-steps"></a>次の手順
 
 - [ユーザー委任 SAS を作成する (REST API)](/rest/api/storageservices/create-user-delegation-sas)
-- [ユーザー委任キーの取得操作](/rest/api/storageservices/get-user-delegation-key)
+- [Get User Delegation Key 操作](/rest/api/storageservices/get-user-delegation-key)

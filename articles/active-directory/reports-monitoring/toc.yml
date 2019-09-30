@@ -37,10 +37,12 @@
       href: concept-usage-insights-report.md
     - name: リスクの高いサインイン
       href: concept-risky-sign-ins.md
-    - name: リスク イベント
+    - name: リスク検出
       href: concept-risk-events.md
     - name: リスクのあるユーザー
       href: concept-user-at-risk.md
+    - name: プロビジョニング ログ
+      href: concept-provisioning-logs.md
     - name: レポート API
       href: concept-reporting-api.md
     - name: Azure Monitor での Azure AD ログ

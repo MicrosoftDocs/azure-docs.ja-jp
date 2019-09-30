@@ -1,64 +1,103 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 上の Jenkins
+### YamlMime:Landing
+title: Azure 上の Jenkins のドキュメント
+summary: Jenkins を使用して、Azure で継続的インテグレーションと継続的デリバリーを自動化する方法について説明します。
 metadata:
-  title: Azure 上の Jenkins のドキュメント - チュートリアル、サンプル、リファレンス、リソース
-  description: Jenkins をデプロイして Azure と統合する
+  title: Azure 上の Jenkins のドキュメント
+  description: Jenkins を使用して、Azure で継続的インテグレーションと継続的デリバリーを自動化する方法について説明します。
+  services: azure
   ms.service: jenkins
-  keywords: 'Jenkins, Azure, DevOps, チュートリアル, サンプル, リファレンス'
-  author: tomarchermsft
-  manager: jeconnoc
-  ms.author: tarcher
   ms.topic: landing-page
-  ms.date: 08/27/2018
-  ms.custom: seo-java-july2019
-abstract:
-  description: オープンソースの Jenkins サーバーを使用してクラウドでアプリを作成し、Azure にデプロイします。 Microsoft が提供するクイックスタート、チュートリアル、サンプル パイプラインを使用して、Azure 上の Jenkins をインストール、構成、スケーリングし、アプリの継続的インテグレーション (CI) を設定する方法を確認してください。
-  aside:
-    image:
-      alt: Jenkins ロゴ
-      height: 133
-      width: 110
-      src: media/Jenkins.png
-    title: null
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Azure に Jenkins システムを作成し、アプリを構築します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template'
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: アプリの継続的インテグレーションの設定、クラウドでのエージェントの実行、ジョブでの Azure サービスの使用を行います。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/jenkins/java-deploy-webapp-tutorial">Azure App Service</a>、<a href="/azure/container-service/kubernetes/container-service-kubernetes-jenkins">Kubernetes</a>、または <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Linux VM</a> に CI を設定する。
-          - html: <a href="/azure/jenkins/execute-cli-jenkins-pipeline">パイプライン ジョブでリソースをプロビジョニングする</a>。
-          - html: <a href="/azure/jenkins/jenkins-azure-vm-agents">Azure VM エージェントでスケーリングする</a>。
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: パイプライン用のサンプル スクリプトおよびステージ。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-devops-utils/tree/master/jenkins">Jenkinsfile ステージおよびスニペット</a>'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: プラグイン
-            html: '<p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM エージェント</a><p><a href="https://plugins.jenkins.io/azure-app-service">Azure App Service</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure Storage</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure コンテナー エージェント</a><p><a href="https://plugins.jenkins.io/azure-function">Azure 関数プラグイン</a><p><a href="https://plugins.jenkins.io/azure-acs">Azure Container Service プラグイン</a>'
-  - type: paragraph
-    text: '<h4>Jenkins® は、Software in the Public Interest, Inc. の登録商標です。[Jenkins® のロゴ](https://wiki.jenkins.io/display/JENKINS/Logo)は、[Jenkins プロジェクト](https://jenkins.io)の [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) に基づいて使用が許諾されています。</h4>'
+  author: TomArcherMsft
+  ms.author: tarcher
+  ms.date: 09/17/2019
+  ms.openlocfilehash: 3d0a74df70b2007812acf22a40e8bd210948fae2
+  ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71104286"
+landingContent:
+- title: Azure 上の Jenkins について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 上の Jenkins について
+      url: overview.md
+  - linkListType: reference
+    links:
+    - text: Azure 用の Jenkins プラグイン
+      url: jenkins-plugins.md
+  - linkListType: architecture
+    links:
+    - text: Jenkins アーキテクチャ
+      url: /azure/architecture/reference-architectures/jenkins/
+- title: Jenkins をインストール､構成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Jenkins サーバーを作成する
+      url: install-jenkins-solution-template.md
+  - linkListType: download
+    links:
+    - text: サンプルのジョブとスクリプト
+      url: https://github.com/azure/jenkins
+- title: Jenkins と Azure を使用したスケーリング
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Container Instances でのスケーリング
+      url: /azure/container-instances/container-instances-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+    - text: Azure VM エージェントでのスケーリング
+      url: jenkins-azure-vm-agents.md
+- title: Azure Functions への CI/CD
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Functions へのデプロイ
+      url: jenkins-azure-functions-deploy.md
+- title: AKS への CI/CD
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: GitHub から AKS へのデプロイ
+      url: /azure/aks/jenkins-continuous-deployment?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+    - text: 青/緑パターンを使用した AKS へのデプロイ
+      url: jenkins-aks-blue-green-deployment.md
+    - text: Azure Dev Spaces プラグインを使用したデプロイ
+      url: tutorial-jenkins-dev-spaces.md
+- title: App Service への CI/CD
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: パイプライン ジョブでの Azure リソースの作成
+      url: execute-cli-jenkins-pipeline.md
+    - text: GitHub から App Service へのデプロイ
+      url: tutorial-jenkins-deploy-web-app-azure-app-service.md
+  - linkListType: how-to-guide
+    links:
+    - text: App Service プラグインを使用したデプロイ
+      url: deploy-jenkins-app-service-plugin.md
+- title: Azure DevOps への CI/CD
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure DevOps Services を使用した Linux VM へのデプロイ
+      url: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+- title: Azure Storage への CI/CD
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Jenkins C/I ソリューションでの Azure Storage の使用
+      url: /azure/storage/storage-java-jenkins-continuous-integration-solution?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+- title: Linux VM への CI/CD
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Linux VM での開発インフラストラクチャの作成
+      url: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json
+- title: Service Fabric への CI/CD
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Service Fabric アプリのビルドとデプロイ
+      url: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins?toc=/azure/jenkinstoc.json&bc=/azure/bread/toc.json

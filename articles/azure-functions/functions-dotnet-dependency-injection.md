@@ -9,23 +9,23 @@ keywords: Azure 関数、関数、サーバーレス アーキテクチャ
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/28/2019
+ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 1dbbb6e7bd88e08520225515c422529dc260e1b2
-ms.sourcegitcommit: b49431b29a53efaa5b82f9be0f8a714f668c38ab
+ms.openlocfilehash: 09bcce6daf519c7d5e99c7c120064f5c8bb92475
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68377376"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996874"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
 Azure Functions では、依存関係の挿入 (DI) ソフトウェア デザイン パターンがサポートされています。これは、クラスと依存関係の間で[制御の反転 (IoC)](https://docs.microsoft.com/dotnet/standard/modern-web-apps-azure-architecture/architectural-principles#dependency-inversion) を実現するための技術です。
 
-Azure Functions は、ASP.NET Core の依存関係の挿入機能の上にビルドされます。 Azure Functions アプリで DI 機能を使用する前に、[ASP.NET Core の依存関係の挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)のサービス、有効期間、デザイン パターンを把握しておくことをお勧めします。
+- Azure Functions の依存関係挿入は、.NET Core の依存関係挿入機能を基盤としています。 [.NET Core 依存関係挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)について理解していることが推奨されます。 ただし、依存関係のオーバーライド方法と、従量課金プランで Azure Functions により構成値を読み取る方法に違いがあります。
 
-依存関係の挿入のサポートは、Azure Functions 2.x から開始されます。
+- 依存関係の挿入のサポートは、Azure Functions 2.x から開始されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,13 +35,11 @@ Azure Functions は、ASP.NET Core の依存関係の挿入機能の上にビル
 
 - [Microsoft.NET.Sdk.Functions パッケージ](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/) バージョン 1.0.28 以降
 
-- 省略可能:[Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) - スタートアップ時に HttpClient を登録する場合にのみ必要
-
 ## <a name="register-services"></a>サービスを登録する
 
-サービスを登録するには、構成用のメソッドを作成して、`IFunctionsHostBuilder` インスタンスにコンポーネントを追加することができます。  Azure Functions ホストにより、`IFunctionsHostBuilder` のインスタンスが作成され、メソッドに直接渡されます。
+サービスを登録するには、構成用のメソッドを作成し、`IFunctionsHostBuilder` インスタンスにコンポーネントを追加します。  Azure Functions ホストにより、`IFunctionsHostBuilder` のインスタンスが作成され、メソッドに直接渡されます。
 
-このメソッドを登録するには、起動時に使用される型名を指定する `FunctionsStartup` アセンブリ属性を追加します。 またコードでは、Nuget の [Microsoft.Azure.Cosmos](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) のプレリリースが参照されます。
+このメソッドを登録するには、起動時に使用される型名を指定する `FunctionsStartup` アセンブリ属性を追加します。
 
 ```csharp
 using System;
@@ -49,7 +47,6 @@ using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.Azure.Cosmos;
 
 [assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
 
@@ -60,18 +57,30 @@ namespace MyNamespace
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddHttpClient();
+
             builder.Services.AddSingleton((s) => {
-                return new CosmosClient(Environment.GetEnvironmentVariable("COSMOSDB_CONNECTIONSTRING"));
+                return new MyService();
             });
+
             builder.Services.AddSingleton<ILoggerProvider, MyLoggerProvider>();
         }
     }
 }
 ```
 
+### <a name="caveats"></a>注意事項
+
+ランタイム前後の一連の登録手順実行によりスタートアップ クラスが処理されます。 そのため、以下の点に注意してください。
+
+- *スタートアップ クラスは設定と登録だけを目的とします。* スタートアップ プロセス中、スタートアップ時に登録されるサービスを使用しないでください。 たとえば、スタートアップ中に登録されているロガーにメッセージを記録しないでください。 登録プロセスのこの時点は、サービスを利用するには早すぎます。 `Configure` メソッドが実行されると、Functions ランタイムは追加の依存関係を引き続き登録します。これがサービスの動作に影響を与える可能性があります。
+
+- *依存関係挿入コンテナーでは、明示的に登録された型のみが保持されます*。 挿入可能な型として利用できる唯一のサービスは `Configure` メソッド内で設定されるサービスです。 結果的に、`BindingContext` や `ExecutionContext` のような Functions 固有の型は設定中に利用できず、また、挿入可能な型として利用できません。
+
 ## <a name="use-injected-dependencies"></a>挿入された依存関係を使用する
 
-ASP.NET Core では、コンストラクターの挿入を使用して、依存関係を関数で使用できるようにします。 次のサンプルでは、`IMyService` と `HttpClient` の依存関係が、HTTP によってトリガーされる関数にどのように挿入されるかを示します。
+コンストラクターの挿入は、依存関係を関数で利用できるようにする目的で使用されます。 コンストラクターの挿入を使用するには、静的クラスを使用しないことが必須となります。
+
+次のサンプルでは、`IMyService` と `HttpClient` の依存関係が、HTTP によってトリガーされる関数にどのように挿入されるかを示します。 この例では、スタートアップ時に `HttpClient` を登録するために必要な [Microsoft.Extensions.Http](https://www.nuget.org/packages/Microsoft.Extensions.Http/) パッケージが使用されています。
 
 ```csharp
 using System;
@@ -82,7 +91,6 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace MyNamespace
 {
@@ -112,24 +120,23 @@ namespace MyNamespace
 }
 ```
 
-コンストラクターの挿入の使用は、依存関係の注入を利用する場合には静的関数を使用すべきでないことを意味します。
-
 ## <a name="service-lifetimes"></a>サービスの有効期間
 
-Azure Function アプリでは、[ASP.NET の依存関係の挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)と同じサービスの有効期間 (一時、スコープ付き、シングルトン) が提供されます。
+Azure Functions アプリのサービス有効期間は [ASP.NET 依存関係挿入](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes)と同じになります。 Functions アプリの場合、各種サービス有効期間が次のように動作します。
 
-関数アプリでは、スコープ付きのサービスの有効期間は、関数の実行の有効期間に一致します。 スコープ付きサービスは毎回作成されます。 実行時のそのサービスに対する後続の要求では、既存のサービス インスタンスが再利用されます。 シングルトン サービスの有効期間はホストの有効期間に一致し、そのインスタンスでの関数の実行全体で再利用されます。
-
-接続とクライアント (たとえば、`SqlConnection`、`CloudBlobClient`、または `HttpClient` のインスタンス) には、シングルトンの有効期間のサービスをお勧めします。
+- **一時的**:一時的なサービスは、サービスが要求されるたびに作成されます。
+- **スコープ付き**:スコープ付きサービスの有効期間は、関数実行の有効期間に一致します。 スコープ付きサービスは毎回作成されます。 実行時のそのサービスに対する後続の要求では、既存のサービス インスタンスが再利用されます。
+- **シングルトン**:シングルトン サービスの有効期間はホストの有効期間に一致し、そのインスタンスでの関数実行間で再利用されます。 シングルトン サービスの有効期間は、`SqlConnection` インスタンスや `HttpClient` インスタンスなど、接続やクライアントに推奨されます。
 
 GitHub の[さまざまなサービスの有効期間のサンプル](https://aka.ms/functions/di-sample)を表示するか、ダウンロードします。
 
 ## <a name="logging-services"></a>ログ記録サービス
 
-独自のログ記録プロバイダーが必要な場合は、`ILoggerProvider` インスタンスを登録する方法をお勧めします。 Azure Functions によって Application Insights が自動的に追加されます。
+独自のログ記録プロバイダーが必要であれば、カスタムの型を `ILoggerProvider` インスタンスとして登録します。 Azure Functions によって Application Insights が自動的に追加されます。
 
 > [!WARNING]
-> サービス コレクションに `AddApplicationInsightsTelemetry()` を追加しないでください。環境によって提供されるサービスと競合するサービスが登録されます。
+> - サービス コレクションに `AddApplicationInsightsTelemetry()` を追加しないでください。環境によって提供されるサービスと競合するサービスが登録されます。
+> - 組み込みの Application Insights 機能を使用している場合、独自の `TelemetryConfiguration` または `TelemetryClient` を登録しないでください。
 
 ## <a name="function-app-provided-services"></a>関数アプリで提供されるサービス
 
@@ -145,6 +152,51 @@ GitHub の[さまざまなサービスの有効期間のサンプル](https://ak
 ### <a name="overriding-host-services"></a>ホスト サービスのオーバーライド
 
 ホストによって提供されるサービスのオーバーライドは、現在サポートされていません。  オーバーライドしたいサービスがある場合は、[問題を作成し、GitHub でそれらを提案してください](https://github.com/azure/azure-functions-host)。
+
+## <a name="working-with-options-and-settings"></a>オプションと設定の使用
+
+[アプリ設定](./functions-how-to-use-azure-function-app-settings.md#settings)に定義されている値は `IConfiguration` インスタンスで利用できます。それにより、スタートアップ クラスのアプリ設定値を読み取ることができます。
+
+`IConfiguration` インスタンスからカスタムの型に値を抽出できます。 アプリ設定値をカスタムの型にコピーすると、その値が挿入可能になり、サービスのテストが簡単になります。 次のクラスについて考えてください。名前がアプリ設定と一致するプロパティが含まれています。
+
+```csharp
+public class MyOptions
+{
+    public string MyCustomSetting { get; set; }
+}
+```
+
+`Startup.Configure` メソッド内から次のコードを使用し、`IConfiguration` インスタンスの値をカスタムの型に抽出することができます。
+
+```csharp
+builder.Services.AddOptions<MyOptions>()
+                .Configure<IConfiguration>((settings, configuration) =>
+                                           {
+                                                configuration.Bind(settings);
+                                           });
+```
+
+`Bind` を呼び出すと、プロパティ名が一致する値が構成からカスタム インスタンスにコピーされます。 これで IoC コンテナーで options インスタンスを関数に挿入できるようになりました。
+
+options オブジェクトは、汎用 `IOptions` インターフェイスのインスタンスとして関数に挿入されます。 `Value` プロパティを使用し、構成で見つかった値にアクセスします。
+
+```csharp
+using System;
+using Microsoft.Extensions.Options;
+
+public class HttpTrigger
+{
+    private readonly MyOptions _settings;
+
+    public HttpTrigger(IOptions<MyOptions> options)
+    {
+        _service = service;
+        _settings = options.Value;
+    }
+}
+```
+
+オプションの使用に関する詳細については、「[ASP.NET Core のオプション パターン](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

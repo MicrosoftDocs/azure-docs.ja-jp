@@ -4,7 +4,7 @@ description: ポイント対サイト接続の問題のトラブルシューテ�
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: vpn-gateway
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: genli
-ms.openlocfilehash: cab40284f36f21f9de72ee4dc1faf78153621d26
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 0a32f9a9fde0983a5b97f7342a111d40ef01c686
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66475961"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104819"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング:Azure ポイント対サイト接続の問題
 
@@ -48,8 +48,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
     | 証明書 | Location |
     | ------------- | ------------- |
     | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
-    | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
-    | AzureGateway-*GUID*.cloudapp.net、AzureRoot.cer    | ローカル コンピューター\信頼されたルート証明機関|
+    | AzureRoot.cer    | ローカル コンピューター\信頼されたルート証明機関|
 
 3. C:\Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID> に移動し、ユーザーおよびコンピューターのストアに手動で証明書 (*.cer ファイル) をインストールします。
 
@@ -85,7 +84,7 @@ Windows 10 または Windows Server 2016 を IKEv2 用に準備するには:
    | Windows 10 バージョン 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
    |  |  |  |  |
 
-2. レジストリ キーの値を設定します。 レジストリの "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload" REG_DWORD キーを作成するか、または 1 に設定します。
+2. レジストリ キーの値を設定します。 レジストリの `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD キーを 1 として作成するか、1 に設定します。
 
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN クライアント エラー:予期していない、または形式が間違ったメッセージを受信しました
 
@@ -258,7 +257,7 @@ VPN クライアント構成パッケージをダウンロードしようとす�
 
 ポイント対サイト クライアント上で VPN 接続をダイヤルすると、VPN クライアントにより Azure 仮想ネットワークにルートが追加されます。 IP ヘルパー サービスによって、VPN クライアントのサブネットのルートが追加されます。 
 
-VPN クライアントの範囲が 10.0.0.0/8 の小規模なサブネット (10.0.12.0/24 など) に属する場合、 10\.0.12.0/24 のルートではなく、優先順位の高い 10.0.0.0/8 のルートが追加されます。 
+VPN クライアントの範囲が 10.0.0.0/8 の小規模なサブネット (10.0.12.0/24 など) に属する場合、 10.0.12.0/24 のルートではなく、優先順位の高い 10.0.0.0/8 のルートが追加されます。 
 
 この不適切なルートにより、具体的なルートが定義されていない 10.50.0.0/24 など、10.0.0.0/8 の範囲内の別のサブネットに属する他のオンプレミス ネットワークとの接続が切断されます。 
 

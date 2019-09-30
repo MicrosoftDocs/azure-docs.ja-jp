@@ -4,9 +4,9 @@ description: このチュートリアルでは、Azure Notification Hubs を使�
 services: notification-hubs
 documentationcenter: ios
 keywords: プッシュ通知,プッシュ通知,iOS プッシュ通知
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: b7fcd916-8db8-41a6-ae88-fc02d57cb914
 ms.service: notification-hubs
 ms.workload: mobile
@@ -15,13 +15,15 @@ ms.devlang: objective-c
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/21/2019
-ms.author: jowargo
-ms.openlocfilehash: c5793d2388ddd7bb59d68f8f7fd7af773179ed41
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 05/21/2019
+ms.openlocfilehash: 0335f5c71f99e6c7a90ce920c25e6bb7e9b4a08f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65988203"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211934"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して iOS アプリにプッシュ通知を送信する
 
@@ -49,7 +51,7 @@ ms.locfileid: "65988203"
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、数分で[無料の Azure アカウントを作成](https://azure.microsoft.com/free)できます。
 * [Windows Azure Messaging Framework]
-*  [Xcode]
+* [Xcode]
 * iOS 10 (またはこれ以降のバージョン) に対応したデバイス
 * [Apple Developer Program](https://developer.apple.com/programs/) メンバーシップ
   

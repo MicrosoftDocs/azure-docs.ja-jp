@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.openlocfilehash: 28d635dc5042799790d032ef4b46bf28118cb326
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.date: 09/12/2019
+ms.openlocfilehash: 25251b617522840412a4868331e155285f64a18c
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947163"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962586"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>サポートされている Azure Database for MySQL サーバー バージョン
 
@@ -26,15 +26,15 @@ Azure Database for MySQL では現在、次のバージョンがサポートさ�
 
 ## <a name="mysql-version-56"></a>MySQL バージョン 5.6
 
-バグ修正プログラムのリリース:5.6.42
+バグ修正プログラムのリリース:5.6.44
 
-MySQL 5.6.42 の機能強化と修正については、MySQL の[リリース ノート](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-42.html)をご覧ください。
+このバージョンの機能強化と修正については、MySQL の[リリース ノート](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-44.html)をご覧ください。
 
 ## <a name="mysql-version-57"></a>MySQL バージョン 5.7
 
-バグ修正プログラムのリリース:5.7.24
+バグ修正プログラムのリリース:5.7.26
 
-MySQL 5.7.24 の機能強化と修正については、MySQL の[リリース ノート](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-24.html)をご覧ください。
+このバージョンの機能強化と修正については、MySQL の[リリース ノート](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-26.html)をご覧ください。
 
 ## <a name="mysql-version-80"></a>MySQL バージョン 8.0
 
@@ -43,7 +43,7 @@ MySQL 5.7.24 の機能強化と修正については、MySQL の[リリース �
 
 バグ修正プログラムのリリース:8.0.15
 
-MySQL 8.0.15 の機能強化と修正については、MySQL の[リリース ノート](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html)をご覧ください。
+このバージョンの機能強化と修正については、MySQL の[リリース ノート](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-15.html)をご覧ください。
 
 ## <a name="managing-updates-and-upgrades"></a>更新プログラムとアップグレードの管理
 このサービスでは、バグ修正バージョンの更新プログラムの適用が自動管理されます。 たとえば、5.7.20 から 5.7.21 などです。  

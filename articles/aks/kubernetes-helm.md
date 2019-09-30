@@ -7,31 +7,31 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: 76a5391cbe142851d9b1f60ea9346af2e7a35d6a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bc74ac660c5bba0624416d0a1724d959a4c385a7
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66392138"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305270"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール
 
-[Helm][helm] は、Kubernetes アプリケーションのインストールとライフサイクルの管理に役立つオープン ソースのパッケージ化ツールです。 *APT* や *Yum* などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャートの管理に使用されます。
+[Helm][helm] は、Kubernetes アプリケーションのライフサイクルをインストールおよび管理するのに役立つオープン ソースのパッケージ化ツールです。 *APT* や *Yum* などの Linux パッケージ マネージャーと同様に、Helm は、構成済みの Kubernetes リソースのパッケージである Kubernetes チャートの管理に使用されます。
 
 この記事では、AKS 上の Kubernetes クラスターに Helm を構成して使用する方法を説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用した場合][aks-quickstart-cli]または [Azure portal を使用した場合][aks-quickstart-portal]の AKS のクイックスタートを参照してください。
 
-Helm CLI もインストールする必要があります。これは、開発システムで実行されるクライアントです。 Helm を使用してアプリケーションを起動、停止、管理することができます。 Azure Cloud Shell を使用している場合、Helm CLI は既にインストールされています。 お使いのローカル プラットフォームでのインストール手順については、「[Installing Helm (Helm のインストール)][helm-install]」をご覧ください。
+Helm CLI もインストールする必要があります。これは、開発システムで実行されるクライアントです。 Helm を使用してアプリケーションを起動、停止、管理することができます。 Azure Cloud Shell を使用している場合、Helm CLI は既にインストールされています。 お使いのローカル プラットフォームでのインストール手順については、「[Installing Helm][helm-install]」 (Helm のインストール) をご覧ください。
 
 > [!IMPORTANT]
 > Helm は Linux ノードで実行するものです。 クラスター内に Windows Server ノードがある場合、Helm ポッドが確実に Linux ノードでのみ実行されるようにスケジュールする必要があります。 また、インストールする Helm チャートが確実に正しいノードで実行されるようにスケジュールする必要もあります。 この記事のコマンドでは、[node-selectors][k8s-node-selector] を使用し、ポッドが正しいノードにスケジュールされるが、一部の Helm チャートではノード セレクターが公開されないようにします。 [taints][taints] などの、他のオプションをクラスターで使用することを検討することもできます。
 
 ## <a name="create-a-service-account"></a>サービス アカウントの作成
 
-RBAC が有効になった AKS クラスターに Helm をデプロイする前に、Tiller サービスのサービス アカウントとロール バインディングが必要になります。 RBAC 対応のクラスターの Helm / Tiller に関する詳細については、「[Tiller, Namespaces, and RBAC][tiller-rbac]」(Tiller、名前空間、および RBAC) を参照してください。 ご利用の AKS クラスターが RBAC に対応していない場合は、この手順をスキップしてください。
+RBAC が有効になった AKS クラスターに Helm をデプロイする前に、Tiller サービスのサービス アカウントとロール バインディングが必要になります。 RBAC 対応クラスター内の Helm/Tiller のセキュリティ保護の詳細については、[Tiller、名前空間、および RBAC][tiller-rbac] に関する記事を参照してください。 ご利用の AKS クラスターが RBAC に対応していない場合は、この手順をスキップしてください。
 
 `helm-rbac.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。
 
@@ -64,16 +64,18 @@ kubectl apply -f helm-rbac.yaml
 
 ## <a name="secure-tiller-and-helm"></a>Tiller と Helm をセキュリティで保護する
 
-Helm クライアントと Tiller サービスは TLS/SSL を使用して互いに認証および通信を行います。 この認証方法では、Kubernetes クラスターをセキュリティで保護して、どのサービスをデプロイできるかを確認できます。 セキュリティを強化するために、独自の署名証明書を生成できます。 各 Helm ユーザーは独自のクライアント証明書を受信し、Tiller は証明書が適用された Kubernetes クラスターで初期化されていました。 詳しくは、「[Using TLS/SSL between Helm and Tiller][helm-ssl]」(Helm と Tiller 間での TLS/SSL の使用) を参照してください。
+Helm クライアントと Tiller サービスは TLS/SSL を使用して互いに認証および通信を行います。 この認証方法では、Kubernetes クラスターをセキュリティで保護して、どのサービスをデプロイできるかを確認できます。 セキュリティを強化するために、独自の署名証明書を生成できます。 各 Helm ユーザーは独自のクライアント証明書を受信し、Tiller は証明書が適用された Kubernetes クラスターで初期化されていました。 詳しくは、「[Using TLS/SSL between Helm and Tiller][helm-ssl]」 (Helm と Tiller 間での TLS/SSL の使用) を参照してください。
 
-RBAC 対応の Kubernetes クラスターを使用している場合、Tiller のクラスターに対するアクセスのレベルを制御できます。 Tiller のデプロイに使用される Kubernetes 名前空間を定義し、Tiller によるリソースのデプロイに使用できる名前空間を制限できます。 この方法により、さまざまな名前空間の Tiller インスタンスを作成し、デプロイ境界を制限したり、Helm クライアントのユーザーの範囲を特定の名前空間に制限したりできます。 詳しくは、「[Helm role-based access controls][helm-rbac]」(Helm でのロール ベースのアクセス制御) を参照してください。
+RBAC 対応の Kubernetes クラスターを使用している場合、Tiller のクラスターに対するアクセスのレベルを制御できます。 Tiller のデプロイに使用される Kubernetes 名前空間を定義し、Tiller によるリソースのデプロイに使用できる名前空間を制限できます。 この方法により、さまざまな名前空間の Tiller インスタンスを作成し、デプロイ境界を制限したり、Helm クライアントのユーザーの範囲を特定の名前空間に制限したりできます。 詳しくは、「[Helm role-based access controls][helm-rbac]」 (Helm でのロール ベースのアクセス制御) を参照してください。
 
 ## <a name="configure-helm"></a>Helm の構成
 
-基本的な Tiller を AKS にデプロイするには、[helm init][helm-init] コマンドを使用します。 ご利用のクラスターが RBAC に対応していない場合は、`--service-account` 引数と値を削除します。 Tiller と Helm 用に TLS または SSL を構成した場合、この基本的な初期化手順はスキップし、次の例に示されているように必要な `--tiller-tls-` を指定します。
+基本的な Tiller を AKS クラスターにデプロイするには、[helm init][helm-init] コマンドを使用します。 ご利用のクラスターが RBAC に対応していない場合は、`--service-account` 引数と値を削除します。 次の例でも、[history-max][helm-history-max] が 200 に設定されます。
+
+Tiller と Helm 用に TLS または SSL を構成した場合、この基本的な初期化手順はスキップし、次の例に示されているように必要な `--tiller-tls-` を指定します。
 
 ```console
-helm init --service-account tiller --node-selectors "beta.kubernetes.io/os"="linux"
+helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
 Helm と Tiller 間に TLS または SSL を構成した場合、次の例に示されているように、`--tiller-tls-*` パラメーターと独自の証明書の名前を指定します。
@@ -85,8 +87,9 @@ helm init \
     --tiller-tls-key tiller.key.pem \
     --tiller-tls-verify \
     --tls-ca-cert ca.cert.pem \
+    --history-max 200 \
     --service-account tiller \
-    --node-selectors "beta.kubernetes.io/os"="linux"
+    --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
 ## <a name="find-helm-charts"></a>Helm チャートの検索
@@ -140,7 +143,7 @@ $ helm repo update
 Hold tight while we grab the latest from your chart repositories...
 ...Skip local chart repository
 ...Successfully got an update from the "stable" chart repository
-Update Complete. ⎈ Happy Helming!⎈
+Update Complete.
 ```
 
 ## <a name="run-helm-charts"></a>Helm チャートの実行
@@ -217,6 +220,7 @@ Kubernetes アプリケーションのデプロイの管理について詳しく
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
 [helm-list]: https://docs.helm.sh/helm/#helm-list
+[helm-history-max]: https://helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
 [helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
 [helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
 [helm-search]: https://docs.helm.sh/helm/#helm-search

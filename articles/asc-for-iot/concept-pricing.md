@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 603df1def011232ad2120c37ad1ba256f2a30526
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: e742848df56e4e2be1b9edf42586e642f0c938cb
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596515"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933799"
 ---
 # <a name="pricing-and-associated-costs"></a>価格と関連コスト
 
@@ -66,9 +66,10 @@ Azure Security Center for IoT には、直接的な価格には含まれない 2
 | **Log Analytics ストレージ** |  |
 | デバイスの推奨事項とアラート| サービスによって生成されるセキュリティ推奨事項とアラート | 非オプション |
 | 生セキュリティ データ| セキュリティ エージェントによって収集される、IoT デバイスからの生セキュリティ データ | "_生デバイス セキュリティ イベントの保存_" を無効にします |
+|
 
 >[!Important]
-> オプトアウトすると、使用可能なセキュリティ機能に重大な影響があります。
+> オプトアウトすると、Azure Security Center for IoT のセキュリティ機能の可用性に重大な影響があります。 
   
 | オプトアウト | 影響 |
 | --- | --- |

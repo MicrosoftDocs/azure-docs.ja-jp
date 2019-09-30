@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 5ecd5ee4a053d3ebb550b6f2387a0e915b3c2c23
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5366fb1d32020bfbcfaba36c60c0eb5441e92070
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569401"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71055220"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure SQL Database 用の Azure CLI サンプル
 
@@ -28,7 +28,7 @@ Azure SQL Database は、<a href="/cli/azure">Azure CLI</a> を使用して構�
 
 CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
-## <a name="single-database--elastic-pools"></a>単一データベースとエラスティック プール
+## <a name="single-database--elastic-poolstabsingle-database"></a>[単一データベースとエラスティック プール](#tab/single-database)
 
 次の表には、Azure SQL Database の Azure CLI スクリプト例へのリンクが含まれています。
 
@@ -46,7 +46,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 [単一データベースの Azure CLI API](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases) に関するセクションを参照してください。
 
-## <a name="managed-instance"></a>マネージド インスタンス
+## <a name="managed-instancetabmanaged-instance"></a>[Managed Instance](#tab/managed-instance)
 
 次の表には、Azure SQL Database Managed Instance の Azure CLI スクリプト例へのリンクが含まれています。
 
@@ -58,3 +58,5 @@ CLI をローカルにインストールして使用する場合、このトピ�
 |||
 
 詳細については、[マネージド インスタンスの Azure CLI API](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) に関するセクションを参照してください。また、[こちらで他の例](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)もご覧いただけます。
+
+---

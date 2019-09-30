@@ -10,21 +10,20 @@ ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 84575dcb67845a074ce19cf9d819e1dda3f90e20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c887ae5568bfd0f72f8d90daecd95547ed7b8b7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130791"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070402"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>App Service 環境への受信トラフィックを制御する方法
 ## <a name="overview"></a>概要
-App Service 環境は、Azure Resource Manager 仮想ネットワーク**と**クラシック デプロイ モデル[仮想ネットワーク][virtualnetwork]の**どちらにでも**作成できます。  App Service 環境の作成時に、新しい仮想ネットワークと新しいサブネットを定義できます。  または、既存の仮想ネットワークと既存のサブネットに App Service 環境を作成することもできます。  また、2016 年 6 月に行われた変更で、パブリック アドレス範囲と RFC1918 アドレス空間 (つまりプライベート アドレス) のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました。  App Service 環境の作成方法の詳細については、「[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]」を参照してください。
+App Service 環境は、Azure Resource Manager 仮想ネットワーク**または**クラシック デプロイ モデル[仮想ネットワーク][virtualnetwork]の**どちらにでも**作成できます。  App Service 環境の作成時に、新しい仮想ネットワークと新しいサブネットを定義できます。  または、既存の仮想ネットワークと既存のサブネットに App Service 環境を作成することもできます。  また、2016 年 6 月に行われた変更で、パブリック アドレス範囲と RFC1918 アドレス空間 (つまりプライベート アドレス) のどちらかを使用した仮想ネットワークに ASE をデプロイできるようになりました。  App Service 環境の作成方法の詳細については、「[App Service 環境の作成方法][HowToCreateAnAppServiceEnvironment]」を参照してください。
 
 App Service 環境は常にサブネット内で作成する必要があります。これは、HTTP トラフィックと HTTPS トラフィックが特定のアップストリーム IP アドレスのみから受け取られるように、アップストリーム デバイスおよびサービスの背後で受信トラフィックをロックダウンするために使用できるネットワーク境界がサブネットによって提供されるためです。
 
@@ -53,7 +52,7 @@ App Service 環境で使用されるポートの一覧を次に示します。 �
 ## <a name="outbound-connectivity-and-dns-requirements"></a>発信接続と DNS の要件
 App Service 環境が正常に機能するためには、さまざまなエンドポイントへの発信アクセスも必要です。 [ExpressRoute を使用した環境のネットワーク構成](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) の記事の「必要なネットワーク接続」というセクションに、App Service Environment で使用されるすべての外部エンドポイントが掲載されています。
 
-App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャが必要です。  何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。  [Azure Portal][NewPortal] の App Service 環境管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
+App Service 環境では、仮想ネットワーク用に構成された有効な DNS インフラストラクチャが必要です。  何らかの理由で、App Service Environment の作成後に DNS 構成が変わった場合、開発者は強制的に App Service Environment から新しい DNS 構成を選択することができます。  [Azure portal][NewPortal] の App Service 環境管理ブレードの上部にある [再起動] アイコンを使用して、ローリングする環境の再起動をトリガーすると、新しい DNS 構成が自動的に選択されます。
 
 また、App Service 環境を作成する前に、vnet 上のカスタム DNS サーバーをセットアップしておくことをお勧めします。  App Service 環境の作成中に仮想ネットワークの DNS 構成が変更された場合、App Service 環境の作成プロセスは失敗します。  同様に、VPN ゲートウェイの他端にカスタム DNS サーバーが存在していて、その DNS サーバーが到達不能または使用できない場合、App Service 環境の作成プロセスも失敗します。
 
@@ -118,9 +117,9 @@ Visual Studio でのリモート デバッグが使用されている場合、�
 ASE でアプリが IP SSL を使用するように構成されている場合、外部の顧客に特殊なポート ペアのマッピングは表示されず、外部の顧客がマッピングを確認する必要はありません。  アプリへのトラフィックは、構成済みの IP SSL アドレスに通常流れていきます。  特殊なポート ペアへの変換は、ASE を含むサブネットへのトラフィックのルーティングの最終段階において内部で自動的に実行されます。 
 
 ## <a name="getting-started"></a>使用の開始
-App Service 環境の使用を開始するには、「[App Service 環境の概要][IntroToAppServiceEnvironment]」を参照してください。
+App Service 環境の使用を開始するには、「 [App Service 環境の概要][IntroToAppServiceEnvironment]
 
-アプリの App Service 環境からバックエンド リソースへの安全な接続の詳細については、「[App Service 環境からバックエンド リソースへの安全な接続][SecurelyConnecttoBackend]」を参照してください。
+アプリの App Service 環境からバックエンド リソースへの安全な接続の詳細については、「[App Service 環境からバックエンド リソースに安全に接続する][SecurelyConnecttoBackend]」を参照してください。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

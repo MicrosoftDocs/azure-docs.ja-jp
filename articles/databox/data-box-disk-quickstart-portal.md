@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 02/26/2019
+ms.date: 09/03/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 65bf4e973ce33b2898abf585fe306a8bc85c64a0
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: b07adc955b7904c6e6a3278480cec5a2be91ec35
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477794"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70232913"
 ---
 ::: zone target="docs"
 
@@ -24,7 +25,7 @@ ms.locfileid: "67477794"
 
 ::: zone target="chromeless"
 
-# <a name="get-started-with-azure-data-box-disk-using-azure-portal"></a>Azure portal を使用して Azure Data Box Disk の使用を開始する
+## <a name="get-started-with-azure-data-box-disk"></a>Azure Data Box Disk を使ってみる 
 
 ::: zone-end
 
@@ -40,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 ::: zone target="chromeless"
 
-このクイック スタートでは、Azure portal を使用して Azure Data Box Disk をデプロイする方法について説明します。 この手順には、Azure へのアップロードのための前提条件の確認、ディスクのロック解除、データの接続とディスクへのコピーが含まれます。
+このガイドでは、Azure portal で Azure Data Box Disk を使用する手順について説明します。 このガイドは次の疑問にお答えします。
 
 ::: zone-end
 
@@ -60,16 +61,16 @@ Azure Portal ([https://aka.ms/azuredataboxfromdiskdocs](https://aka.ms/azuredata
 
 ::: zone target="chromeless"
 
-## <a name="prerequisites"></a>前提条件
-
-- Data Box Disk を注文済みであること。「[チュートリアル:Azure Data Box Disk を注文する](data-box-disk-deploy-ordered.md)」を参照してください。
-- ディスクの受け取りが済んでいて、ポータルでジョブの状態が **[配信済み]** に更新されていること。
-- データのコピー元として使用できるクライアント コンピューターがあること。 クライアント コンピューターの要件は以下のとおりです。
-
-    - [サポート対象のオペレーティング システム](data-box-disk-system-requirements.md#supported-operating-systems-for-clients)が実行されていること。
-    - Windows クライアントである場合は、[その他の必須ソフトウェア](data-box-disk-system-requirements.md#other-required-software-for-windows-clients)がインストールされていること。
+> [!div class="checklist"]
+>
+> - **前提条件を確認する**: ディスクとケーブル、オペレーティング システム、その他ソフトウェアの数を確認します。
+> - **接続してロックを解除する**: デバイスを接続し、データのコピー先となるディスクのロックを解除します。
+> - **データをディスクにコピーして検証する**: ディスク上のあらかじめ作成されたフォルダーにデータをコピーします。
+> - **ディスクを返送する**: データのアップロード先となるストレージ アカウントがある Azure データセンターにディスクを返送します。
+> - **Azure 内のデータを検証する**: コピー元のデータ サーバーからデータを削除する前に、ストレージ アカウントにデータがアップロードされたことを確認します。
 
 ::: zone-end
+
 
 ::: zone target="docs"
 

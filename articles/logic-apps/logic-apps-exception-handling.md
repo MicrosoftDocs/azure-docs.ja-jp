@@ -1,21 +1,20 @@
 ---
-title: エラーと例外の処理 - Azure Logic Apps | Microsoft Docs
+title: エラーと例外の処理 - Azure Logic Apps
 description: Azure Logic Apps におけるエラーと例外の処理パターンについて説明します。
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: dereklee
 ms.author: deli
-manager: jeconnoc
+ms.reviewer: klam, estfan, LADocs
 ms.date: 01/31/2018
 ms.topic: article
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60996599"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208179"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Azure Logic Apps におけるエラーと例外の処理
 
@@ -90,7 +89,7 @@ ms.locfileid: "60996599"
 
 <a name="default-retry"></a>
 
-### <a name="default"></a>既定値
+### <a name="default"></a>Default
 
 再試行ポリシーを指定しなかった場合は、既定のポリシーが使用されます。実質的には[指数間隔ポリシー](#exponential-interval)であり、最大 4 回の再試行が送信される間隔は、7.5 秒を増加係数として指数関数的に増やされます。 間隔の範囲は 5 秒から 45 秒です。 
 
@@ -219,13 +218,15 @@ ms.locfileid: "60996599"
 
 スコープの制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。
 
+<a name="get-results-from-failures"></a>
+
 ### <a name="get-context-and-results-for-failures"></a>エラーのコンテキストと結果を取得する
 
-スコープ単位でエラーをキャッチできるのは便利ですが、失敗したアクションや返されたエラーまたは状態コードを正確に把握するためには、スコープの結果だけでなくコンテキストが必要となります。 `@result()` 式を使用すると、スコープ内のすべてのアクションの結果に関するコンテキストが得られます。
+スコープ単位でエラーをキャッチできるのは便利ですが、失敗したアクションや返されたエラーまたは状態コードを正確に把握するためには、スコープの結果だけでなくコンテキストが必要となります。
 
-`@result()` 式は、単一のパラメーター (スコープの名前) を受け取り、そのスコープに含まれるアクションの結果をすべて含んだ配列を返します。 これらのアクションのオブジェクトには、アクションの開始時刻、終了時刻、状態、入力、相関 ID、出力など、 **\@actions()** オブジェクトと同じ属性を含まれます。 **\@result()** 関数と **runAfter** プロパティを組み合わせるだけで、スコープ内で失敗したすべてのアクションのコンテキストを受け取ることができます。
+[`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) 関数を使用すると、スコープ内のすべてのアクションの結果に関するコンテキストが得られます。 `result()` 関数は、単一のパラメーター (スコープの名前) を受け取り、そのスコープ内のアクションの結果をすべて含む配列を返します。 これらのアクションのオブジェクトには、`@actions()` オブジェクトと同じ属性 (アクションの開始時刻、終了時刻、状態、入力、相関 ID、出力など) が含まれます。 `@result()` 式と `runAfter` プロパティを組み合わせるだけで、スコープ内で失敗したすべてのアクションのコンテキストを受け取ることができます。
 
-スコープ内の **Failed** となったアクションごとにアクションを実行し、失敗したアクションに到達するまで結果の配列をフィルター処理するには、 **\@result()** を **[[配列のフィルター処理]](../connectors/connectors-native-query.md)** アクションと [**For each**](../logic-apps/logic-apps-control-flow-loops.md) ループと組み合わせて使用します。 抽出した結果の配列を **For each** ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。 
+スコープ内の **Failed** となったアクションごとにアクションを実行し、失敗したアクションに到達するまで結果の配列をフィルター処理するには、`@result()`[ 式を **[配列のフィルター処理]** ](../connectors/connectors-native-query.md) アクションと [**For each**](../logic-apps/logic-apps-control-flow-loops.md) ループと組み合わせて使用します。 抽出した結果の配列を **For each** ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。
 
 次の例では、"My_Scope" というスコープ内で失敗したすべてのアクションの応答本文を含む HTTP POST 要求が送信されます (詳細については例の後に記載)。
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: helohr
-ms.openlocfilehash: d5f0dbf916096b608495c0cc1017d919616653d4
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899701"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70233257"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
 
@@ -154,7 +154,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 
 診断ツールの Azure Resource Manager テンプレートをデプロイするには:
 
-1.  GitHub の Azure RDS-Templates ページに移動します。
+1.   [GitHub の Azure RDS-Templates ページ](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy)に移動します。
 2.  Azure にテンプレートをデプロイし、テンプレートの指示に従います。 次の情報を使用できることを確認してください。
 
     -   Client-Id

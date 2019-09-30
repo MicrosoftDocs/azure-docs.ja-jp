@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 9e62dd25c3ff16e280eda1ad11053ef520a85e4d
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 57e9cec16326068cc7de74b8f7266fbe47808fed
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706523"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845439"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Logic Apps でのデプロイを自動化するために Azure Resource Manager テンプレートを作成する
 
@@ -83,10 +83,10 @@ LogicAppTemplate モジュールが Azure のテナントとサブスクリプ�
 
 ### <a name="generate-template-with-powershell"></a>PowerShell を使用したテンプレートの生成
 
-LogicAppTemplate モジュールをインストールした後にテンプレートを生成するには、次の PowerShell コマンドを実行します。
+LogicAppTemplate モジュールと [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) をインストールした後にテンプレートを生成するには、次の PowerShell コマンドを実行します。
 
 ```text
-PS> Get-LogicAppTemplate
+PS> Get-LogicAppTemplate -Token (az account get-access-token | ConvertFrom-Json).accessToken -LogicApp <logic-app-name> -ResourceGroup <Azure-resource-group-name> -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json
 ```
 
 推奨事項に従って [Azure Resource Manager クライアント ツール](https://github.com/projectkudu/ARMClient)からトークンをパイプ処理するには、代わりに次のコマンドを実行します。この中の `$SubscriptionId` はお使いの Azure サブスクリプション ID です。

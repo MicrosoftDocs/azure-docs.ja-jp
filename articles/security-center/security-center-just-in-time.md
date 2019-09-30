@@ -2,31 +2,25 @@
 title: Azure Security Center での Just-In-Time 仮想マシン アクセス | Microsoft Docs
 description: このドキュメントでは、Azure Security Center での Just-In-Time VM アクセスにより、Azure 仮想マシンへのアクセスを制御しやすくする方法を示します。
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: 671930b1-fc84-4ae2-bf7c-d34ea37ec5c7
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: f3e6cc0464c8f395db7cac0ebf8a16230f5ebcbe
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872927"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910604"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-In-Time を使用した仮想マシン アクセスの管理
 
 Just-In-Time (JIT) 仮想マシン (VM) アクセスを使用すると、Azure VM への受信トラフィックをロックダウンすることができるので、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。
 
 > [!NOTE]
-> Just-In-Time 機能は、Security Center の Standard レベルで利用できます。  Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+> Just-In-Time 機能は、Security Center の Standard レベルで利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
 
 
 > [!NOTE]
@@ -72,11 +66,11 @@ VM で JIT ポリシーを構成するには、3 つの方法があります。
 ASC から JIT ポリシーを構成し、JIT のポリシー使用して VM へのアクセスを要求できます。
 
 
-### <a name="jit-asc">ASC で VM の JIT アクセスを構成する</a>
+### ASC で VM の JIT アクセスを構成する <a name="jit-asc"></a>
 
 1. **[Security Center]** ダッシュボードを開きます。
 
-2. 左のウィンドウで、 **[Just-In-Time VM アクセス]** を選択します。
+2. 左のウィンドウで、 **[Just-in-time VM access] (Just-In-Time VM アクセス)** を選択します。
 
     ![[Just-in-time VM access] (Just-In-Time VM アクセス) タイル](./media/security-center-just-in-time/just-in-time.png)
 
@@ -87,7 +81,7 @@ ASC から JIT ポリシーを構成し、JIT のポリシー使用して VM へ
     **[Just-in-time VM access] (Just-In-Time VM アクセス)** には、VM の状態に関する情報が表示されます。
 
     - **[構成済み]** - Just-In-Time VM アクセスをサポートするように構成されている VM。 表示されるデータは 1 週間以内のものであり、VM ごとに承認済みの要求の数、最終アクセス日時、最後のユーザーの情報が含まれます。
-    - **[推奨]** - Just-In-Time VM アクセスをサポートできるが、そのように構成されてはいない VM。 これらの VM では Just-In-Time VM アクセス制御を有効にすることをお勧めします。 
+    - **[推奨]** - Just-In-Time VM アクセスをサポートできるが、そのように構成されてはいない VM。 これらの VM では Just-In-Time VM アクセス制御を有効にすることをお勧めします。
     - **[推奨なし]** - 以下のような VM には、ジャスト イン タイム VM アクセスは推奨されない場合があります。
       - NSG がない - Just-In-Time ソリューションには設定済みの NSG が必要です。
       - クラシック VM - Security Center の Just-In-Time VM アクセスでは、現在 Azure Resource Manager 経由でデプロイされた VM のみがサポートされています。 Just-In-Time ソリューションではクラシック デプロイはサポートされていません。 
@@ -131,7 +125,7 @@ ASC から VM へのアクセス権を要求するには、以下の手順に従
 
     - **[接続の詳細]** 列のアイコンは、NSG または FW で JIT が有効かどうかを示します。 両方が有効な場合は、ファイアウォールのアイコンのみ表示されます。
 
-    - **[接続の詳細]** 列では、VM への接続に必要な正しい情報と合わせて、開かれているポートも示されます。
+    - **[接続の詳細]** 列では、VM を接続するために必要な情報と、その開かれているポートが示されます。
 
       ![Just-In-Time アクセスを要求する](./media/security-center-just-in-time/request-just-in-time-access.png)
 
@@ -213,7 +207,7 @@ Azure portal では、VM に接続しようとすると、Azure は、Just-In-Ti
   アクセスは、次の規定のパラメーターを使用して要求します。
 
   - **接続元 IP アドレス**:"任意" (*) (変更できません)
-  - **時間範囲**:3 時間 (変更できません)  <!--Isn't this set in the policy-->
+  - **時間範囲**:3 時間 (変更できません) <!--Isn't this set in the policy-->
   - **[ポート番号]** : Windows では RDP ポート 3389/Linux ではポート 22 (変更可能)
 
     > [!NOTE]
@@ -223,7 +217,7 @@ Azure portal では、VM に接続しようとすると、Azure は、Just-In-Ti
 
   ![JIT プロンプト](./media/security-center-just-in-time/jit-prompt.png)
 
-## VM でプログラムから JIT ポリシーを構成する<a name="jit-program"></a>
+## VM でプログラムから JIT ポリシーを構成する <a name="jit-program"></a>
 
 REST API および PowerShell から Just-In-Time を設定し使用できます。
 

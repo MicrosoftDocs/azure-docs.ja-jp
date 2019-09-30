@@ -3,16 +3,17 @@ title: Azure HDInsight 用の仮想ネットワークを計画する
 description: Azure Virtual Network のデプロイを計画して HDInsight を他のクラウド リソースまたはデータ センター内のリソースに接続する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 135855ee33f783e85b398c7f9716c2c897633de9
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 2647a8c33bf777cb2d97dcfe89799097ad719ac3
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779539"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077023"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Azure HDInsight 用の仮想ネットワークを計画する
 
@@ -212,7 +213,7 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 マネージド サービスとして HDInsight には、VNET からの受信および送信トラフィックの両方に対して、HDInsight の正常性および管理サービスへの無制限アクセスが必要です。 NSG を使用する場合は、これらのサービスが引き続き HDInsight クラスターと通信できることを確認する必要があります。
 
-![Azure のカスタム VNET に作成された HDInsight のエンティティの図](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
+![Azure のカスタム VNET に作成された HDInsight のエンティティの図](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
 
 ### <a name="hdinsight-with-network-security-groups"></a>HDInsight とネットワーク セキュリティ グループ
 

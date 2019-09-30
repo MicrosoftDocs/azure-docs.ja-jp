@@ -4,14 +4,15 @@ description: Apache Hadoop YARN と Azure HDInsight の操作についてよく�
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 8bfe249b0295bc860cf17a006c3787ff8afa676b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 107230a4d8c2e0427c2fcf2a8862559c707831a1
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69573716"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076567"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop YARN のトラブルシューティング
 
@@ -33,27 +34,27 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
 1. **[Ambari Views]** アイコンを選択し、グリッド パターンを選択します。 次に、 **[YARN Queue Manager]\(YARN キュー マネージャー\)** を選択します。
 
-    ![Ambari Views アイコンをクリックする](media/hdinsight-troubleshoot-yarn/create-queue-1.png)
+    ![Ambari Views アイコンをクリックする](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. **default** キューを選びます。
 
-    ![default キューを選択する](media/hdinsight-troubleshoot-yarn/create-queue-2.png)
+    ![default キューを選択する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. **default** キューで、**容量**を 50% から 25% に変更します。 **thriftsvr** キューで、**容量**を 25% に変更します。
 
-    ![default キューと thriftsvr キューの容量を 25% に変更する](media/hdinsight-troubleshoot-yarn/create-queue-3.png)
+    ![default キューと thriftsvr キューの容量を 25% に変更する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. 新しいキューを作成し、 **[キューの追加]** を選択します。
 
-    ![[キューの追加] を選択する](media/hdinsight-troubleshoot-yarn/create-queue-4.png)
+    ![[キューの追加] を選択する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. 新しいキューの名前を指定します。
 
-    ![キューの名前を Spark にする](media/hdinsight-troubleshoot-yarn/create-queue-5.png)  
+    ![キューの名前を Spark にする](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. **[容量]** の値は 50% のままにして、 **[アクション]** ボタンをクリックします。
 
-    ![[アクション] ボタンを選択する](media/hdinsight-troubleshoot-yarn/create-queue-6.png)  
+    ![[アクション] ボタンを選択する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. **[Save and Refresh Queues]\(キューの保存と更新\)** を選択します。
 
-    ![[Save and Refresh Queues]\(キューの保存と更新\) を選択する](media/hdinsight-troubleshoot-yarn/create-queue-7.png)  
+    ![[Save and Refresh Queues]\(キューの保存と更新\) を選択する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
 
 これらの変更は YARN Scheduler UI にすぐに表示されます。
 

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 05/07/2019
+ms.date: 08/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa2e26666ce863d98b5c47201eeadb1d7f6a5d2c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e7c5786f4510e11d431f9e80dd52d1ffc3adb410
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164511"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129179"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
 
@@ -69,13 +69,14 @@ IoT Hub またはイベント ハブを登録するときに、データの読�
 
 次の図は、SKU が S1 で容量が 3 の Time Series Insights 環境を示しています。 この環境は、1 日あたり 300 万イベントを受信できます。
 
-![環境の SKU の現在の容量](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
+[![環境の SKU の現在の容量](media/diagnose-and-solve-problems/environment-sku-current-capacity.png)](media/diagnose-and-solve-problems/environment-sku-current-capacity.png#lightbox)
 
-たとえば、この環境はイベント ハブからメッセージを取り込むとします。 次の図は、受信レートを示します。
+たとえば、ある環境でイベント ハブからメッセージを取り込むとします。 1 日の受信レートは、最大 67,000 メッセージです。 このレートは毎分およそ 46 メッセージに相当します。 
 
-[![イベント ハブの受信レートの例](media/diagnose-and-solve-problems/eventhub-ingress-rate.png)](media/diagnose-and-solve-problems/eventhub-ingress-rate.png#lightbox)
+* 各イベント ハブ メッセージが 1 つの Time Series Insights イベントにフラット化されている場合、調整は行われません。 
+* 各イベント ハブ メッセージが 100 個の Time Series Insights イベントにフラット化されている場合は、毎分 4,600 イベントを受信することになります。 
 
-1 日の受信レートは、最大 67,000 メッセージです。 このレートは毎分およそ 46 メッセージに相当します。 各イベント ハブ メッセージが 1 つの Time Series Insights イベントにフラット化されている場合、調整は行われません。 各イベント ハブ メッセージが 100 個の Time Series Insights イベントにフラット化されている場合は、毎分 4,600 イベントを受信することになります。 容量 3 の S1 SKU 環境は、毎分 2,100 イベントしか受信できません (100 万イベント/日 = 700 イベント/分 × 3 ユニット = 2,100 イベント/分)。 この設定の場合、調整によるタイム ラグが発生します。
+容量 3 の S1 SKU 環境は、毎分 2,100 イベントしか受信できません (100 万イベント/日 = 700 イベント/分 × 3 ユニット = 2,100 イベント/分)。 
 
 フラット化のロジックのしくみについては、「[サポートされている JSON 構造](./how-to-shape-query-json.md)」を参照してください。
 

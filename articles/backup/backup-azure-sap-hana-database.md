@@ -5,35 +5,38 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: f5a76ef44ebef0689ec0587434996f28ba7b7025
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68735536"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067100"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA データベースを Azure にバックアップする
 
 [Azure Backup](backup-overview.md) では、Azure への SAP HANA データベースのバックアップがサポートされます。
 
 > [!NOTE]
-> 現在、この機能はパブリック プレビュー段階にあります。 現在は、運用環境に対応しておらず、保証された SLA はありません。 
+> 現在、この機能はパブリック プレビュー段階にあります。 現在は、運用環境に対応しておらず、保証された SLA はありません。
 
 ## <a name="scenario-support"></a>シナリオのサポート
 
 **サポート** | **詳細**
 --- | ---
 **サポートされている地域** | オーストラリア南東部、オーストラリア東部 <br> ブラジル南部 <br> カナダ中部、カナダ東部 <br> 東南アジア、東アジア <br> 米国東部、米国東部 2、米国中西部、米国西部、米国西部 2、米国中北部、米国中部、米国中南部<br> インド中部、インド南部 <br> 東日本、西日本<br> 韓国中部、韓国南部 <br> 北ヨーロッパ、西ヨーロッパ <br> 英国南部、英国西部
-**サポートされている VM オペレーティング システム** | SLES 12 SP2 または SP3。
-**サポートされている HANA のバージョン** | HANA 1.x の場合は SDC、HANA 2.x SPS03 以下の場合は MDC
+**サポートされている VM オペレーティング システム** | SLES 12 SP2、SP3、SP4。
+**サポートされている HANA のバージョン** | HANA 1.x の場合は SDC、HANA 2.x SPS04 Rev 42 以下の場合は MDC
 
 ### <a name="current-limitations"></a>現時点での制限事項
 
 - バックアップできるのは、Azure VM で実行されている SAP HANA データベースのみとなります。
-- SAP HANA のバックアップは、Azure portal でのみ構成できます。 この機能は、PowerShell、CLI、REST API では構成できません。
-- データベースはスケールアップ モードでのみバックアップできます。
+- バックアップできるのは、単一の Azure VM で実行されている SAP HANA インスタンスだけです。 同じ Azure VM 内の複数の HANA インスタンスは現在サポートされていません。
+- データベースはスケールアップ モードでのみバックアップできます。 スケールアウト (複数の Azure VM 上の HANA インスタンス) のバックアップは、現在サポートされていません。
+- 拡張サーバー (別のノード上に存在する動的階層化) では、動的階層化を使用して SAP HANA インスタンスをバックアップすることはできません。 これは、本質的にスケールアウトであり、それはサポートされていません。
+- 同じサーバーで動的階層化が有効になっている SAP HANA インスタンスをバックアップすることはできません。 動的階層化は、現在サポートされていません。
+- SAP HANA のバックアップは、Azure portal でのみ構成できます。 PowerShell と CLI を使用してこの機能を構成することはできません。
 - データベースのログは、15 分ごとにバックアップできます。 ログ バックアップでは、データベースの完全バックアップが正常に完了した後にのみ、フローが開始されます。
 - 完全および差分バックアップを作成することができます。 増分バックアップは現在サポートされていません。
 - バックアップ ポリシーは、SAP HANA バックアップに対して適用した後、変更することはできません。 別の設定でバックアップする場合は、新しいポリシーを作成するか、別のポリシーを割り当てます。
@@ -44,23 +47,16 @@ ms.locfileid: "68735536"
 
 バックアップを構成する前に、必ず、次の操作を行ってください。
 
-1. SAP HANA データベースを実行している VM に、公式の Microsoft [.NET Core ランタイム 2.1](https://dotnet.microsoft.com/download/linux-package-manager/sles/runtime-current) パッケージをインストールします。 以下の点に注意してください。
-    - 必要なのは **dotnet-runtime-2.1** のみです。 **aspnetcore-runtime-2.1** は必要ありません。
-    - VM からインターネットにアクセスできない場合は、ページで指定されている Microsoft パッケージ フィードから dotnet-runtime-2.1 (および依存するすべての RPM) のオフライン キャッシュをミラーリングまたは指定します。
-    - パッケージのインストール時に、オプションを指定するよう求められる場合があります。 その場合は、 **[解決策 2]** を指定します。
-
-        ![パッケージのインストール オプション](./media/backup-azure-sap-hana-database/hana-package.png)
-
-2. VM で、次のように zypper を使用して、公式の SLES パッケージ/メディアから ODBC ドライバー パッケージをインストールして有効にします。
+1. SAP HANA データベースを実行している VM に、次のように zypper を使用して、公式の SLES パッケージ/メディアから ODBC ドライバー パッケージをインストールして有効にします。
 
     ```unix
     sudo zypper update
     sudo zypper install unixODBC
     ```
 
-3. [以下](#set-up-network-connectivity)の手順の説明に従って、Azure に到達できるように、VM からインターネットへの接続を許可します。
+2. [以下](#set-up-network-connectivity)の手順の説明に従って、Azure に到達できるように、VM からインターネットへの接続を許可します。
 
-4. HANA がルート ユーザーとしてインストールされている仮想マシンで事前登録スクリプトを実行します。 このスクリプトはフロー内の[ポータル](#discover-the-databases)で提供され、[適切なアクセス許可](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions)を設定する必要があります。
+3. HANA がルート ユーザーとしてインストールされている仮想マシンで事前登録スクリプトを実行します。 このスクリプトはフロー内の[ポータル](#discover-the-databases)で提供され、[適切なアクセス許可](backup-azure-sap-hana-database-troubleshoot.md#setting-up-permissions)を設定する必要があります。
 
 ### <a name="set-up-network-connectivity"></a>ネットワーク接続を設定する
 
@@ -68,6 +64,7 @@ ms.locfileid: "68735536"
 
 - Azure データセンターの [IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)をダウンロードしてから、これらの IP アドレスへのアクセスを許可できます。
 - ネットワーク セキュリティ グループ (NSG) を使用している場合は、Azure Cloud の[サービス タグ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)を使用して、Azure パブリック IP アドレスをすべて許可することができます。 [Set-AzureNetworkSecurityRule コマンドレット](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurenetworksecurityrule?view=azuresmps-4.0.0)を使用して、NSG ルールを変更することができます。
+- 転送は HTTPS 経由で行われるため、ポート 443 がホワイトリストに登録されている必要があります。
 
 ## <a name="onboard-to-the-public-preview"></a>パブリック プレビューにオンボードする
 
@@ -79,8 +76,6 @@ ms.locfileid: "68735536"
     ```powershell
     PS C:>  Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Microsoft.RecoveryServices
     ```
-
-
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
@@ -106,9 +101,9 @@ ms.locfileid: "68735536"
 
 1. [手順 2] で、 **[バックアップの構成]** をクリックします。
 2. **[バックアップする項目の選択]** で、保護するデータベースをすべて選択し、 **[OK]** を選びます。
-3.  **[バックアップ ポリシー]**  >  **[バックアップ ポリシーの選択]** で、以下の手順に従って、データベースの新しいバックアップ ポリシーを作成します。
+3. **[バックアップ ポリシー]**  >  **[バックアップ ポリシーの選択]** で、以下の手順に従って、データベースの新しいバックアップ ポリシーを作成します。
 4. ポリシーを作成した後、 **[バックアップ]** メニューの **[バックアップの有効化]** をクリックします。
-5. ポータルの  **[通知]**   領域で、バックアップ構成の進行状況を追跡します。
+5. ポータルの **[通知]** 領域で、バックアップ構成の進行状況を追跡します。
 
 ### <a name="create-a-backup-policy"></a>バックアップ ポリシーの作成
 
@@ -182,6 +177,15 @@ Azure Backup でバックアップされているデータベースの (HANA Stu
     - **[log_backup_using_backint]** を **[True]** に設定します。
 
 
+## <a name="upgrading-protected-10-dbs-to-20"></a>保護された 1.0 DB の 2.0 へのアップグレード
+
+SAP HANA 1.0 DB を保護しているときに、2.0 にアップグレードする場合は、次の手順を実行します。
+
+- 古い SDC DB のデータ保持の保護を停止します。
+- (sid と mdc) の適切な詳細を指定して、事前登録スクリプトを再実行します。 
+- 拡張機能を再登録します (バックアップ -> 詳細の表示 -> 関連する Azure VM の選択 > 再登録)。 
+- 同じ VM に対して [DB の再検出] をクリックします。 これにより、手順 2 の新しい DB が適切な詳細と共に表示されます (SDC ではなく SYSTEMDB とテナント DB )。 
+- これらの新しいデータベースを保護します。
 
 ## <a name="next-steps"></a>次の手順
 

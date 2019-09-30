@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 27961413d0dddc165f90ebde1c5e1aee6b8d9fd3
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 36ba9e2d3385184f32876a6d067b58f7c21a90bd
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981837"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003289"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-sql-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB SQL API アカウントにデータを移行する
  
@@ -193,7 +193,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
    ![Azure で移行されたデータを検証する](./media/cosmosdb-sql-api-migrate-data-striim/portal-validate-results.png)
 
-Azure の Striim ソリューションを使用することにより、Oracle、Cassandra、MongoDB、およびその他のさまざまなソースから Azure Cosmos DB にデータを継続的に移行することができます。 Striim で移行パスを設定する際の問題については、[Striim Web サイト](https://go2.striim.com/request-support-striim)でサポート要求を提出してください。
+Azure の Striim ソリューションを使用することにより、Oracle、Cassandra、MongoDB、およびその他のさまざまなソースから Azure Cosmos DB にデータを継続的に移行することができます。 詳細については、[Striim の Web サイト](https://www.striim.com/)や [Striim の 30 日間無料お試し版のダウンロード](https://go2.striim.com/download-free-trial) ページにアクセスしてください。Striim で移行パスを設定しようとして問題が発生した場合、[サポート リクエスト](https://go2.striim.com/request-support-striim)を提出してください。
 
 ## <a name="next-steps"></a>次の手順
 

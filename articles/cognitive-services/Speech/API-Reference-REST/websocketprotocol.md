@@ -3,20 +3,20 @@ title: Bing Speech の WebSocket プロトコル | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: WebSocket に基づく Bing Speech のプロトコル ドキュメント
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e7f51d49624d5019bec058a2d12f6ca2f1366938
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515320"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966884"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Bing Speech の WebSocket プロトコル
 
@@ -78,7 +78,7 @@ Content-Length: 0
 
 トークン アクセスでは、次のヘッダー情報が必要になります。
 
-| Name | 形式 | 説明 |
+| 名前 | 形式 | 説明 |
 |----|----|----|
 | Ocp-Apim-Subscription-Key | ASCII | Your subscription key (サブスクリプション キー) |
 
@@ -508,7 +508,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | フィールド | 説明 | 使用法 |
 | ----- | ----------- | ----- |
-| Name | `Connection` | 必須 |
+| 名前 | `Connection` | 必須 |
 | Id | この接続要求の *X-ConnectionId* ヘッダーに使用された接続識別子の値 | 必須 |
 | start | クライアントが接続要求を送信した時刻 | 必須 |
 | End | 接続が正常に確立されたという通知をクライアントが受信した時刻 (エラーが発生した場合は、接続が拒否された時刻や失敗した時刻) | 必須 |
@@ -522,7 +522,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | NoNetwork | クライアントが接続を試行したが、ネットワーク スタックから、利用可能な物理ネットワークがないと報告された。 |
 | NoAuthorization | 接続のための認証トークンを取得しようとしているときに、クライアント接続が失敗した。 |
 | NoResources | 接続の試行中に、クライアントで一部のローカル リソース (メモリなど) が足りなくなった。 |
-| 許可されていません | WebSocket アップグレード要求でサービスが HTTP `403 Forbidden` ステータス コードを返したため、クライアントがサービスに接続できなかった。 |
+| Forbidden | WebSocket アップグレード要求でサービスが HTTP `403 Forbidden` ステータス コードを返したため、クライアントがサービスに接続できなかった。 |
 | 権限がありません | WebSocket アップグレード要求でサービスが HTTP `401 Unauthorized` ステータス コードを返したため、クライアントがサービスに接続できなかった。 |
 | BadRequest | WebSocket アップグレード要求でサービスが HTTP `400 Bad Request` ステータス コードを返したため、クライアントがサービスに接続できなかった。 |
 | ServerUnavailable | WebSocket アップグレード要求でサービスが HTTP `503 Server Unavailable` ステータス コードを返したため、クライアントがサービスに接続できなかった。 |
@@ -548,7 +548,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | フィールド | 説明 | 使用法 |
 | ----- | ----------- | ----- |
-| Name | Microphone | 必須 |
+| 名前 | Microphone | 必須 |
 | start | クライアントが、マイクまたはその他の音声ストリームからの音声入力の使用を開始した時刻。または、キーワード スポッターからトリガーを受信した時刻 | 必須 |
 | End | クライアントがマイクや音声ストリームの使用を停止した時刻 | 必須 |
 | Error | 発生したエラーの説明 (発生した場合)。 マイクの操作が正常に実行された場合は、このフィールドは省略してください。 このフィールドの最大長は 50 文字です。 | エラーの場合は必須 (その他の場合は省略) |
@@ -568,7 +568,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | フィールド | 説明 | 使用法 |
 | ----- | ----------- | ----- |
-| Name | ListeningTrigger | 省略可能 |
+| 名前 | ListeningTrigger | 省略可能 |
 | start | クライアントのリスニング トリガーが開始された時刻 | 必須 |
 | End | クライアントのリスニング トリガーが終了した時刻 | 必須 |
 | Error | 発生したエラーの説明 (発生した場合)。 トリガー操作に成功した場合は、このフィールドは省略してください。 このフィールドの最大長は 50 文字です。 | エラーの場合は必須 (その他の場合は省略) |

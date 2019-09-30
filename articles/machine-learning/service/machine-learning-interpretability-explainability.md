@@ -1,6 +1,6 @@
 ---
 title: モデルの解釈可能性
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Machine Learning SDK を使用して、モデルから得られる予測の理由を説明する方法について説明します。 トレーニング中と推論中に、モデルで予測が行われる方法を理解するために使用できます。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
 ms.date: 06/21/2019
-ms.openlocfilehash: 2e8eb79c4baebebb1974a977394215545ef944db
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6b825e61542dabc92baf482ede6c93edc486e059
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872401"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002355"
 ---
-# <a name="model-interpretability-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用したモデルの解釈可能性
+# <a name="model-interpretability-with-azure-machine-learning"></a>Azure Machine Learning でのモデルの解釈可能性
 
 この記事では、Azure Machine Learning Python SDK のさまざまな解釈可能性パッケージを使用してモデルが行った予測の理由を説明する方法について説明します。
 
@@ -219,7 +219,7 @@ Python の `numpy.array`、`pandas.DataFrame`、`iml.datatypes.DenseData`、ま�
 
 ### <a name="train-and-explain-remotely"></a>リモート環境でトレーニングと説明を行う
 
-Azure Machine Learning service でサポートされているさまざまなコンピューティング先でトレーニングできますが、このセクションの例では Azure Machine Learning コンピューティング先を使用してこれを行う方法を示します。
+Azure Machine Learning でサポートされているさまざまなコンピューティング先でトレーニングできますが、このセクションの例では Azure Machine Learning コンピューティング先を使用してこれを行う方法を示します。
 
 1. ローカルの Jupyter ノートブック (run_explainer.py など) でトレーニング スクリプトを作成します。
 
@@ -474,7 +474,7 @@ Explainer は元のモデルと共にデプロイでき、ローカルの説明�
 
 1. イメージをコンピューティング先にデプロイします。
 
-   1. スコアリング ファイルを作成します (この手順の前に、「[Azure Machine Learning service を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)」の手順を実行して元の予測モデルを登録します)
+   1. スコアリング ファイルを作成します (この手順の前に、「[Azure Machine Learning を使用してモデルをデプロイする](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where)」の手順を実行して元の予測モデルを登録します)。
 
         ```python
         %%writefile score.py

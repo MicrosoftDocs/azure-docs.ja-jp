@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 40e54daa60efedd84b32c72f29d1e2a8858c27da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7349287945a56bb7674e364f515d0b763015ed59
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66162540"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262314"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>チュートリアル:IoT ハブに関するメトリックと診断ログを設定して使用する
 
@@ -126,7 +126,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>診断ログを有効にする 
 
-新しい IoT ハブを作成すると、既定では[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)が無効になっています。 このセクションでは、お客様のハブの診断ログを有効にします。
+新しい IoT ハブを作成すると、既定では[診断ログ](../azure-monitor/platform/resource-logs-overview.md)が無効になっています。 このセクションでは、お客様のハブの診断ログを有効にします。
 
 1. まず、お客様のハブがポータルに表示されていない場合は、 **[リソース グループ]** をクリックし、Contoso-Resources というリソース グループをクリックしてください。 表示されたリソースの一覧からハブを選択します。 
 
@@ -210,7 +210,7 @@ IoT Hub はまだ [Azure Monitor のメトリック](/azure/azure-monitor/platfo
 
     フィールドに入力します。
 
-    **[名前]** :お客様のアラート ルールの名前を指定します (*telemetry-messages* など)。
+    **Name**:お客様のアラート ルールの名前を指定します (*telemetry-messages* など)。
 
     **説明**:お客様のアラートの説明を入力します (「*送信済みテレメトリ メッセージが 1,000 件に達したときのアラート*」など)。 
 
@@ -240,7 +240,7 @@ IoT Hub はまだ [Azure Monitor のメトリック](/azure/azure-monitor/platfo
 
    **[クラシック アラートの表示]** 画面で、 **[メトリック アラートの追加 (クラシック)]** をクリックし、 **[ルールの追加]** ウィンドウで次のフィールドを設定します。
 
-   **[名前]** :お客様のアラート ルールの名前を指定します (*number-of-messages-used* など)。
+   **Name**:お客様のアラート ルールの名前を指定します (*number-of-messages-used* など)。
 
    **説明**:お客様のアラートの説明を入力します (「*クォータに近づきつつあるときのアラート*」など)。
 

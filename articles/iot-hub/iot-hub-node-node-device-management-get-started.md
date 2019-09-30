@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/25/2017
-ms.openlocfilehash: 88d9abda7d56deefc5880eb50799ac89a89ac44f
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/20/2019
+ms.openlocfilehash: 98ec53d384186968d69c3f84cdfa12fbdbe92b71
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780950"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147444"
 ---
 # <a name="get-started-with-device-management-nodejs"></a>デバイス管理の開始 (Node.js)
 
@@ -33,7 +33,7 @@ ms.locfileid: "68780950"
 
 * **dmpatterns_getstarted_service.js**: シミュレートされたデバイス アプリでダイレクト メソッドを呼び出し、応答を表示し、更新された報告されるプロパティを表示します。
 
-このチュートリアルを完了するには、以下が必要です。
+## <a name="prerequisites"></a>前提条件
 
 * Node.js バージョン 10.0.x 以降。 「[Prepare your development environment (開発環境を準備する)](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md)」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
 
@@ -49,7 +49,7 @@ ms.locfileid: "68780950"
 
 ## <a name="create-a-simulated-device-app"></a>シミュレート対象デバイス アプリの作成
 
-このセクションでは、次の手順を実行します。
+このセクションでは、次の作業を行います。
 
 * クラウドによって呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。
 
@@ -58,40 +58,40 @@ ms.locfileid: "68780950"
 * 報告されるプロパティを使用して、デバイス ツイン クエリで、デバイスとデバイスの最後の再起動時間を識別できるようにします。
 
 1. **manageddevice** という名前の空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**manageddevice** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
-      
-    ```
+
+    ```cmd/sh
     npm init
     ```
 
 2. コマンド プロンプトで、**manageddevice** フォルダーに移動し、次のコマンドを実行して、**azure-iot-device** Device SDK パッケージと **azure-iot-device-mqtt** パッケージをインストールします。
-   
-    ```
+
+    ```cmd/sh
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
 3. テキスト エディターを使用して、**manageddevice** フォルダーに **dmpatterns_getstarted_device.js** ファイルを作成します。
 
 4. **dmpatterns_getstarted_device.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
-   
-    ```
+
+    ```javascript
     'use strict';
-   
+
     var Client = require('azure-iot-device').Client;
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。  接続文字列を、デバイスの接続文字列に置き換えます。  
-   
-    ```
-    var connectionString = 'HostName={youriothostname};DeviceId=myDeviceId;SharedAccessKey={yourdevicekey}';
+5. **connectionString** 変数を追加し、それを使用して **Client** インスタンスを作成します。  `{yourdeviceconnectionstring}` プレースホルダーの値を、先ほど「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」でコピーしたデバイス接続文字列に置き換えます。  
+
+    ```javascript
+    var connectionString = '{yourdeviceconnectionstring}';
     var client = Client.fromConnectionString(connectionString, Protocol);
     ```
 
 6. デバイスにダイレクト メソッドを実装する次の関数を追加します。
-   
-    ```
+
+    ```javascript
     var onReboot = function(request, response) {
-   
+
         // Respond the cloud app for the direct method
         response.send(200, 'Reboot started', function(err) {
             if (err) {
@@ -100,7 +100,7 @@ ms.locfileid: "68780950"
                 console.log('Response to method \'' + request.methodName + '\' sent successfully.');
             }
         });
-   
+
         // Report the reboot before the physical restart
         var date = new Date();
         var patch = {
@@ -110,7 +110,7 @@ ms.locfileid: "68780950"
                 }
             }
         };
-   
+
         // Get device Twin
         client.getTwin(function(err, twin) {
             if (err) {
@@ -123,7 +123,7 @@ ms.locfileid: "68780950"
                 });  
             }
         });
-   
+
         // Add your device's reboot API for physical restart.
         console.log('Rebooting!');
     };
@@ -131,8 +131,7 @@ ms.locfileid: "68780950"
 
 7. IoT Hub への接続を開き、ダイレクト メソッド リスナーを開始します。
 
-   
-    ```
+    ```javascript
     client.open(function(err) {
         if (err) {
             console.error('Could not open IotHub client');
@@ -159,14 +158,14 @@ ms.locfileid: "68780950"
 このセクションでは、ダイレクト メソッドを使用してデバイスでのリモート再起動を開始する Node.js コンソール アプリケーションを作成します。 このアプリは、デバイス ツイン クエリを使用して、そのデバイスの前回の再起動時刻を検出します。
 
 1. **triggerrebootondevice** という名前の空のフォルダーを作成します。 コマンド プロンプトで次のコマンドを使用して、**triggerrebootondevice** フォルダー内に新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
-   
-    ```
+
+    ```cmd/sh
     npm init
     ```
 
 2. コマンド プロンプトで、**triggerrebootondevice** フォルダーに移動し、次のコマンドを実行して、**azure-iothub** Device SDK パッケージと **azure-iot-device-mqtt** パッケージをインストールします。
-   
-    ```
+
+    ```cmd/sh
     npm install azure-iothub --save
     ```
 
@@ -174,18 +173,16 @@ ms.locfileid: "68780950"
 
 4. **dmpatterns_getstarted_service.js** ファイルの先頭に、次の 'require' ステートメントを追加します。
 
-  
-    ```
+    ```javascript
     'use strict';
-   
+
     var Registry = require('azure-iothub').Registry;
     var Client = require('azure-iothub').Client;
     ```
 
-5. 次の変数宣言を追加して、プレース ホルダーの値を置き換えます。
+5. 次の変数宣言を追加し、`{iothubconnectionstring}` プレースホルダーの値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT Hub 接続文字列に置き換えます。
 
-   
-    ```
+    ```javascript
     var connectionString = '{iothubconnectionstring}';
     var registry = Registry.fromConnectionString(connectionString);
     var client = Client.fromConnectionString(connectionString);
@@ -193,18 +190,18 @@ ms.locfileid: "68780950"
     ```
 
 6. ターゲット デバイスを再起動するダイレクトメソッドを呼び出す次の関数を追加します。
-   
-    ```
+
+    ```javascript
     var startRebootDevice = function(twin) {
-   
+
         var methodName = "reboot";
-   
+
         var methodParams = {
             methodName: methodName,
             payload: null,
             timeoutInSeconds: 30
         };
-   
+
         client.invokeDeviceMethod(deviceToReboot, methodParams, function(err, result) {
             if (err) {
                 console.error("Direct method error: "+err.message);
@@ -216,12 +213,12 @@ ms.locfileid: "68780950"
     ```
 
 7. デバイスを照会して最後の再起動時間を取得する次の関数を追加します。
-   
-    ```
+
+    ```javascript
     var queryTwinLastReboot = function() {
-   
+
         registry.getTwin(deviceToReboot, function(err, twin){
-   
+
             if (twin.properties.reported.iothubDM != null)
             {
                 if (err) {
@@ -238,8 +235,7 @@ ms.locfileid: "68780950"
 
 8. 再起動ダイレクト メソッドをトリガーする関数と最後の再起動時間のクエリを実行する関数を呼び出す次のコードを追加します。
 
-   
-    ```
+    ```javascript
     startRebootDevice();
     setInterval(queryTwinLastReboot, 2000);
     ```
@@ -252,18 +248,24 @@ ms.locfileid: "68780950"
 
 1. コマンド プロンプトで、**manageddevice** フォルダーに移動し、次のコマンドを実行して再起動のダイレクト メソッドのリッスンを開始します。
 
-   
-    ```
+    ```cmd/sh
     node dmpatterns_getstarted_device.js
     ```
 
 2. コマンド プロンプトで、**triggerrebootondevice** フォルダーに移動し、次のコマンドを実行してデバイス ツインのリモート再起動とクエリをトリガーして最後の再起動時刻を検索します。
 
-   
-    ```
+    ```cmd/sh
     node dmpatterns_getstarted_service.js
     ```
 
-3. ダイレクト メソッドに対するデバイスの応答がコンソールに表示されます。
+3. 再起動ダイレクト メソッドに対するデバイスの応答と再起動の状態がコンソールに表示されます。
+
+   サービスによって送信された再起動ダイレクト メソッドに対するデバイスの応答を次に示します。
+
+   ![manageddevice アプリの出力](./media/iot-hub-node-node-device-management-get-started/device.png)
+
+   再起動をトリガーしてデバイス ツインの前回の再起動時刻をポーリングするサービスを次に示します。
+
+   ![triggerrebootondevice アプリの出力](./media/iot-hub-node-node-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

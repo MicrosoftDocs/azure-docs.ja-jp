@@ -1,6 +1,6 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Anomaly Detector API のドキュメント
+summary: Anomaly Detector API を使用して、データを経時的に監視し、機械学習により異常を検出する方法を説明します。 分量、業種、シナリオを問わず、データに関する分析情報が得られます。
 metadata:
   title: Anomaly Detector API - チュートリアル、クイックスタート、API リファレンス
   titleSuffix: Azure Cognitive Services
@@ -12,62 +12,102 @@ metadata:
   ms.service: cognitive-services
   ms.subservice: anomaly-detector
   ms.topic: landing-page
-  ms.date: 03/26/2019
+  ms.date: 09/10/2019
   ms.author: aahi
-abstract:
-  description: Anomaly Detector API を使用すると、お客様のアプリに簡単に異常検出機能を組み込むことができるので、ユーザーが問題を迅速に特定し、損害と影響を最小限に抑えるのに役立ちます。 機械学習に関する経験は不要です。 1 回の API 呼び出しで、事前にトレーニング済みの AI モデルをアクティブにすることができます。このモデルは、種類や量を問わずあらゆる時系列データを取り込めるほか、データに合わせて最適な異常検出モデルを選択して高い精度を実現したり、インシデントの発生後すぐに自動で通知したりすることもできます。 サービスは、あらゆる規模の異常を検出できるようにカスタマイズできます。  ビジネス インシデントの特定、IoT デバイスのトラフィック監視、不正や市場の変化への対応などには、Anomaly Detector をぜひご利用ください。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/anomaly-detector/overview
-            html: <p>Anomaly Detector API について学びましょう</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Anomaly Detector API とは
-          - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-            html: <p>この API に関するベスト プラクティスを活用し、異常検出の結果を最適化しましょう</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Anomaly Detector API の利用に関するベスト プラクティス
-          - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-            html: <p>異常検出の感度の調整方法や、さまざまな検出モードの利用などについて説明します。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Anomaly Detection API の利用
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 時系列データの異常検出に利用できる言語は次のとおりです。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/logo_Csharp.svg
-            href: quickstarts/detect-data-anomalies-csharp
-            text: 'C#'
-          - image:
-              src: media/logo_Java.svg
-            href: quickstarts/detect-data-anomalies-java
-            text: Java
-          - image:
-              src: media/logo_python.svg
-            href: quickstarts/detect-data-anomalies-python
-            text: Python
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: '<p><a href="https://aka.ms/anomaly-detector-rest-api-ref">Anomaly Detector API</a></p>'
-          - title: SDK
-            html: '<p><a href="https://aka.ms/anomaly-detector-dotnet-ref">.NET</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2089915">Go</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090370">Python</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=2090788">Node.JS</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.openlocfilehash: d073adfbc1b05bbd4d92f5cfb500184653444f4b
+  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/18/2019
+  ms.locfileid: "71086778"
+landingContent:
+- title: Anomaly Detector API について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Anomaly Detector API とは
+      url: overview.md
+  - linkListType: get-started
+    links:
+    - text: Anomaly Detector のデモ
+      url: https://aka.ms/adDemo
+  - linkListType: video
+    links:
+    - text: Anomaly Detector API の概要
+      url: https://channel9.msdn.com/Shows/AI-Show/Introducing-Azure-Anomaly-Detector?WT.mc_id=ai-c9-niner
+    - text: Anomaly Detection API で使用されるアルゴリズム
+      url: https://www.youtube.com/embed/ERTaAnwCarM
+  - linkListType: reference
+    links:
+    - text: 異常検出で使用されるアルゴリズム (ホワイトペーパー)
+      url: https://arxiv.org/abs/1906.03821
+- title: データの異常を検出する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# の使用
+      url: quickstarts/detect-data-anomalies-csharp-sdk.md
+    - text: Python の使用
+      url: quickstarts/detect-data-anomalies-python-sdk.md
+  - linkListType: tutorial
+    links:
+    - text: バッチ検出と Power BI を使用して異常を視覚化する
+      url: tutorials/batch-anomaly-detection-powerbi.md
+    - text: Azure Databricks を使用してストリーミング データの異常を検出する
+      url: tutorials/batch-anomaly-detection-powerbi.md
+  - linkListType: video
+    links:
+    - text: Azure Databricks を使用した、ストリーミング データの異常検出
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-detection-on-streaming-data-using-Azure-Databricks
+- title: 検出結果を最適化する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: データの異常検出モードとパラメーターを調整します。
+      url: how-to/identify-anomalies.md
+    - text: ベスト プラクティスを使用して、異常検出の結果を最適化します。
+      url: concepts/anomaly-detection-best-practices.md
+  - linkListType: video
+    links:
+    - text: Anomaly Detector のベスト プラクティス
+      url: https://channel9.msdn.com/Shows/AI-Show/Anomaly-Detector-v10-Best-Practices
+- title: Docker コンテナーを使用する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Anomaly Detector コンテナーのインストールと実行
+      url: anomaly-detector-container-howto.md
+    - text: Anomaly Detector コンテナーを構成する
+      url: anomaly-detector-container-configuration.md
+    - text: コンテナー インスタンスを Azure にデプロイする
+      url: how-to/deploy-anomaly-detection-on-container-instances.md
+  - linkListType: video
+    links:
+    - text: コンテナー サポートとともに Anomaly Detector をオンプレミスで使用する
+      url: https://channel9.msdn.com/Shows/AI-Show/Bring-Anomaly-Detector-on-premise-with-containers-support
+- title: Anomaly Detector コミュニティに参加する
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Microsoft Teams 上での Anomaly Detector Advisors グループへの参加
+      url: https://aka.ms/adadvisorsjoin
+    - text: お勧めのユーザー生成コンテンツ
+      url: user-generated-content.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://aka.ms/anomaly-detector-rest-api-ref
+    - text: .NET SDK
+      url: https://aka.ms/anomaly-detector-dotnet-ref
+    - text: .Python SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090370
+    - text: Go SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2089915
+    - text: Node.js SDK
+      url: https://go.microsoft.com/fwlink/?linkid=2090788
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure CLI
+      url: /cli/azure/cognitiveservices#az-cognitiveservices-list

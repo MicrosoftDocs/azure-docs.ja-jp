@@ -4,7 +4,7 @@ description: Azure で Windows VM に関する RDP の問題をトラブルシ�
 services: virtual-machines-windows
 documentationcenter: ''
 author: genlin
-manager: gwallace
+manager: dcscontentpm
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 45c69812-d3e4-48de-a98d-39a0f5675777
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 877f882d95b52e559630c0834fb37fffb58fb0a7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67710215"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057265"
 ---
 # <a name="troubleshoot-rdp-issues"></a>RDP の問題をトラブルシューティングする
 

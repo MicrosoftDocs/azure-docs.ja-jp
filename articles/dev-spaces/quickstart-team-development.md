@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用したチーム Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: cb1cc62125e668544eb4af9f84b477b273bfe30e
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 0abfe655e30b62829a7d353b6da85bb51e378f6d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706254"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842590"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用した Kubernetes 上でのチーム開発
 
@@ -39,7 +39,7 @@ ms.locfileid: "67706254"
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
-az aks create -g MyResourceGroup -n MyAKS --location eastus --node-vm-size Standard_DS2_v2 --node-count 1 --disable-rbac --generate-ssh-keys
+az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
 *MyAKS* クラスターは、*Standard_DS2_v2* サイズを使用し、RBAC を無効にして 1 つのノードで作成されます。
@@ -146,12 +146,12 @@ azds space select -n dev/azureuser2 -y
 
 ```cmd
 $ azds space list
-Name            Selected
---------------  --------
-default         False
-dev             False
-dev/azureuser1  False
-dev/azureuser2  True
+   Name            DevSpacesEnabled
+-  --------------  ----------------
+   default         False
+   dev             True
+   dev/azureuser1  True
+*  dev/azureuser2  True
 ```
 
 `azds list-uris` を使用して、現在選択されている空間 (*dev/azureuser2*) 内のサンプル アプリケーションの URL を表示します。
@@ -201,6 +201,9 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 `azds up` コマンドの出力に表示されているパブリック URL を開いて、*dev/azureuser2* 開発空間の *bikesharingweb* サービスに移動します。 ユーザーとして *Aurelia Briggs (顧客)* を選択します。 更新されたテキストが右上隅に表示されていることを確認します。 この変更がすぐに表示されない場合は、ページを更新するか、ブラウザーのキャッシュをクリアする必要があります。
 
 ![更新した Azure Dev Spaces 自転車共有サンプル アプリケーション](media/quickstart-team-development/bikeshare-update.png)
+
+> [!NOTE]
+> `azds up` の実行中にサービスに移動すると、`azds up` コマンドの出力に HTTP 要求のトレースも表示されます。 それらのトレースを、サービスのトラブルシューティングやデバッグに活かすことができます。 トレースは、`azds up` の実行時に `--disable-http-traces` を使用して無効にできます。
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>その他の開発空間が変更されていないことを確認する
 

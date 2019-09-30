@@ -1,8 +1,6 @@
 ---
 title: Azure で HTTP によってトリガーされる関数を作成する
 description: Azure Functions Core Tools と Azure CLI を使用して、Azure で初めての Python 関数を作成する方法について説明します。
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 04/24/2019
@@ -10,13 +8,13 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
-manager: jeconnoc
-ms.openlocfilehash: 5b90702f89af260a67b69bf96c2e079a45298723
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+manager: gwallace
+ms.openlocfilehash: 28169bfb8dead65c543a3752a709f33487854e60
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575446"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844734"
 ---
 # <a name="create-an-http-triggered-function-in-azure"></a>Azure で HTTP によってトリガーされる関数を作成する
 
@@ -28,7 +26,7 @@ ms.locfileid: "69575446"
 
 始める前に、以下のものを用意する必要があります。
 
-+ [Python 3.6](https://www.python.org/downloads/) のインストール。
++ [Python 3.6.x](https://www.python.org/downloads/) をインストールします。
 
 + [Azure Functions Core Tools](./functions-run-local.md#v2) バージョン 2.7.1575 以降をインストールします。
 
@@ -40,7 +38,13 @@ ms.locfileid: "69575446"
 
 ## <a name="create-and-activate-a-virtual-environment-optional"></a>仮想環境を作成してアクティブにする (任意)
 
-Python 関数をローカルで開発し、テストするには、Python 3.6 環境を利用することが推奨されます。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。
+Python 関数をローカルで開発し、テストするには、Python 3.6 環境を利用することが推奨されます。 次のコマンドを実行して、`.venv` という名前の仮想環境を作成してアクティブにします。 
+
+> [!NOTE]
+> お使いの Linux ディストリビューションに Python をインストールする際、venv がインストールされなかった場合は、次のコマンドを使用してインストールできます。
+> ```command
+> sudo apt-get install python3-venv
+>
 
 ### <a name="bash"></a>Bash:
 
@@ -104,7 +108,7 @@ _HttpTrigger_ という名前のサブフォルダーが作成されます。こ
 
 次のコマンドでは、Azure にある同じ Azure Functions ランタイムを使用してローカル実行される関数アプリが起動されます。
 
-```bash
+```console
 func host start
 ```
 
@@ -134,7 +138,7 @@ Application started. Press Ctrl+C to shut down.
 
 Http Functions:
 
-        HttpTrigger: http://localhost:7071/api/MyHttpTrigger
+        HttpTrigger: http://localhost:7071/api/HttpTrigger
 
 [8/27/2018 10:38:27 PM] Host started (29486ms)
 [8/27/2018 10:38:27 PM] Job host started
@@ -168,7 +172,33 @@ az functionapp create --resource-group myResourceGroup --os-type Linux \
 
 これで、Azure でローカル関数プロジェクトを関数アプリに公開できます。
 
-[!INCLUDE [functions-publish-project](../../includes/functions-publish-project.md)]
+## <a name="deploy-the-function-app-project-to-azure"></a>Azure に関数アプリのプロジェクトをデプロイする
+
+Azure で関数アプリを作成した後、[`func azure functionapp publish`](functions-run-local.md#project-file-deployment) Core Tools コマンドを使用して Azure にプロジェクト コードをデプロイすることができます。 以下の例の `<APP_NAME>` は、前の手順で作成したアプリの名前に置き換えてください。
+
+```command
+func azure functionapp publish <APP_NAME> --build remote
+```
+
+`--build remote` オプションは、デプロイ パッケージ内のファイルから Python プロジェクトを Azure にリモートでビルドします。 
+
+次のような出力が表示されます (読みやすくするために一部が省略されています)。
+
+```output
+Getting site publishing info...
+...
+
+Preparing archive...
+Uploading content...
+Upload completed successfully.
+Deployment completed successfully.
+Syncing triggers...
+Functions in myfunctionapp:
+    HttpTrigger - [httpTrigger]
+        Invoke url: https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....
+```
+
+`HttpTrigger` の `Invoke url` 値をコピーします。これを使用して Azure で関数をテストできるようになります。 URL には、関数キーである `code` クエリ文字列が含まれています。 このキーにより、他のユーザーが Azure で HTTP トリガー エンドポイントを呼び出すことが難しくなります。
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 

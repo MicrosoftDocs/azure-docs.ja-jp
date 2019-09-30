@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 334d277370bb8d6678679c887f6a2b89d65652c3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 19795d5dc3998f601de8121176e52ef9dc83ee47
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569475"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958460"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database 監査ログの形式
 
@@ -59,7 +59,7 @@ BLOB ストレージに格納されている監査ログは、Azure Storage ア�
 | database_principal_id | database_principal_id_d | アクションが実行されるデータベース ユーザー コンテキストの ID | int | int |
 | database_principal_name | database_principal_name_s | アクションが実行されるデータベース ユーザー コンテキストの名前 | sysname | string |
 | duration_milliseconds | duration_milliseconds_d | クエリ実行時間 (ミリ秒) | bigint | int |
-| event_time | event_time_t | 監査可能なアクションが発生する日付と時刻 | datetime2 | Datetime |
+| event_time | event_time_t | 監査可能なアクションが発生する日付と時刻 | datetime2 | datetime |
 | host_name | 該当なし | クライアント ホスト名 | string | 該当なし |
 | is_column_permission | is_column_permission_s | 列レベルのアクセス許可であるかどうかを示すフラグ。 1 = true、0 = false | bit | string |
 | 該当なし | is_server_level_audit_s | この監査がサーバー レベルであるかどうかを示すフラグ | 該当なし | string |

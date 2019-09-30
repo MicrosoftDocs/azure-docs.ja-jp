@@ -6,6 +6,8 @@
       href: sql-database-technical-overview.md
     - name: どの SQL オプションを選択すればよいですか?
       href: sql-database-paas-vs-sql-server-iaas.md
+    - name: 機能の比較
+      href: sql-database-features.md
     - name: リリース ノート
       href: sql-database-release-notes.md
     - name: ゲートウェイの IP 移行に関する更新情報
@@ -17,7 +19,7 @@
       href: sql-database-single-database-quickstart-guide.md
     - name: マネージド インスタンスのクイック スタート ガイド
       href: sql-database-managed-instance-quickstart-guide.md
-    - name: Create
+    - name: 作成
       items:
         - name: 単一データベース
           href: sql-database-single-database-get-started.md
@@ -42,7 +44,7 @@
           href: sql-database-import.md
         - name: マネージド インスタンスにデータベースのバックアップを復元する
           href: sql-database-managed-instance-get-started-restore.md
-    - name: Query
+    - name: クエリ
       href: sql-database-connect-query.md
       items:
         - name: SSMS
@@ -162,7 +164,7 @@
           href: sql-database-reserved-capacity.md
         - name: Premium RS サービス レベルから移行する
           href: sql-database-service-tiers-prs.md
-    - name: コンピューティングとストレージ
+    - name: サービス階層
       items:
         - name: 概要
           href: sql-database-service-tiers-general-purpose-business-critical.md
@@ -219,10 +221,16 @@
       items:
         - name: マネージド インスタンスのドキュメント
           href: sql-database-managed-instance-index.yml
-        - name: マネージド インスタンスの機能
+        - name: マネージド インスタンスの概要
           href: sql-database-managed-instance.md
         - name: マネージド インスタンスの FAQ
           href: sql-database-managed-instance-faq.md
+        - name: インスタンス プール
+          items:
+            - name: インスタンス プールの概要
+              href: sql-database-instance-pools.md
+            - name: インスタンス プールの攻略ガイド
+              href: sql-database-instance-pools-how-to.md
         - name: Management API リファレンス
           href: sql-database-managed-instance-create-manage.md
         - name: リソース制限
@@ -294,6 +302,8 @@
                   href: sql-database-vnet-service-endpoint-rule-overview.md
                 - name: 仮想ネットワーク エンドポイント - PowerShell
                   href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Private Link
+              href: sql-database-private-endpoint-overview.md
         - name: アクセス制御
           items:
             - name: アクセス制御
@@ -325,7 +335,7 @@
             - name: Bring Your Own Key を使用した TDE
               href: transparent-data-encryption-byok-azure-sql.md
         - name: セキュリティ属性
-          href: sql-database-security-attributes.md
+          href: sql-database-security-controls.md
         - name: 機能の制限
           href: sql-database-feature-restrictions.md
     - name: スケーラビリティ
@@ -384,10 +394,8 @@
               href: sql-database-advisor.md
     - name: データベース機能
       items:
-        - name: SQL Database の機能のドキュメント
+        - name: 概要
           href: sql-database-features-index.yml
-        - name: SQL 機能の比較
-          href: sql-database-features.md
         - name: マルチモデル機能
           href: sql-database-multi-model-features.md
         - name: メモリ内
@@ -506,6 +514,8 @@
           href: sql-database-managed-instance-migrate.md
         - name: マネージド インスタンスへの TDE 証明書の移行
           href: sql-database-managed-instance-migrate-tde-certificate.md
+        - name: ポイントインタイム リストア
+          href: sql-database-managed-instance-point-in-time-restore.md
         - name: マネージド インスタンス サブネットのサイズの決定
           href: sql-database-managed-instance-determine-size-vnet-subnet.md
         - name: マネージド インスタンス用の新しい VNet とサブネットの作成

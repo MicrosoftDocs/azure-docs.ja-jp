@@ -1,21 +1,21 @@
 ---
 title: HDInsight での Apache Phoenix - Azure HDInsight
-description: ''
+description: Apache Phoenix の概要
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.author: ashishth
-ms.openlocfilehash: 7d9aafeb920eab7f6a87061a135bf2e464add436
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/05/2019
+ms.openlocfilehash: becb4e4787c21e18455144108274f585ba25cb72
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64697990"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105381"
 ---
-# <a name="apache-phoenix-in-hdinsight"></a>HDInsight の Apache Phoenix
+# <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight の Apache Phoenix
 
 [Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](hbase/apache-hbase-overview.md) 上に構築されるオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、HBase に対して SQL のようなクエリを使うことができます。 Phoenix は基盤の JDBC ドライバーを使って、ユーザーが SQL テーブル、インデックス、ビュー、およびシーケンスを作成、削除、変更でき、行を個別または一括でアップサートできるようします。 Phoenix は、MapReduce ではなく noSQL ネイティブ コンパイルを使ってクエリをコンパイルして、HBase に基づく待機時間の短いアプリケーションを作成できるようにします。 Phoenix では、コプロセッサを追加して、クライアントが指定したコードの実行をサーバーのアドレス空間でサポートすることにより、データと共存したコードを実行します。 このアプローチにより、クライアント/サーバーのデータ転送が最小限に抑えられます。
 
@@ -129,11 +129,11 @@ HDInsight HBase クラスターには、構成の変更を行うための [Ambar
 
 2. 左側のメニューのサービス一覧から **[HBase]** を選び、 **[Configs]\(構成\)** タブを選びます。
 
-    ![Ambari の HBase の構成](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Apache Ambari HBase の構成](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. **[Phoenix SQL]** 構成セクションを探して、Phoenix を有効または無効にしたり、クエリのタイムアウトを設定します。
 
-    ![Ambari の Phoenix SQL 構成セクション](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Ambari の Phoenix SQL 構成セクション](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
 ## <a name="see-also"></a>関連項目
 

@@ -1,6 +1,6 @@
 ---
 title: 'Azure Toolkit for IntelliJ を使用した失敗した Spark ジョブのデバッグ (プレビュー) '
-description: Azure Toolkit for IntelliJ のHDInsight ツールを使用し、HDInsight クラスターで SSH によりアプリケーションをリモート デバッグする方法の手順を示すガイダンス
+description: Azure Toolkit for IntelliJ の HDInsight ツールを使用したアプリケーションのデバッグのガイダンス
 keywords: デバッグ、intellij のリモート デバッグ、ssh、intellij、hdinsight、intellij のデバッグ、デバッグ
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: aff9f0f70377ebc6e741618b22ff82bc06251521
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a07dcd58263674aa6fd360e138c0b9c999ea644e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295912"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814153"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Azure Toolkit for IntelliJ を使用した失敗した Spark ジョブのデバッグ (プレビュー)
 
@@ -83,7 +83,7 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
 6. 出力ウィンドウからアプリケーション ID を確認できます。
    
-   ![リモート実行ボタン](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)   
+   ![リモート実行の結果](./media/apache-spark-intellij-tool-failure-debug/hdinsight-remotely-run-result.png)   
 
 ## <a name="download-failed-job-profile"></a>失敗したジョブのプロファイルをダウンロードする
 
@@ -91,9 +91,9 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
 1. **Microsoft Azure Storage Explorer** を開き、失敗したジョブに対するクラスターの HDInsight アカウントを見つけて、失敗したジョブのリソースを、対応する場所である **\hdp\spark2-events\\.spark-failures\\\<アプリケーション ID>** からローカル フォルダーにダウンロードします。 ダウンロードの進行状況が **[アクティビティ]** ウィンドウに表示されます。
 
-   ![失敗したファイルをダウンロードする](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
+   ![失敗したファイルをダウンロードする1](./media/apache-spark-intellij-tool-failure-debug/hdinsight-find-spark-file-001.png)
 
-   ![失敗したファイルをダウンロードする](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)   
+   ![失敗したファイルをダウンロードする2](./media/apache-spark-intellij-tool-failure-debug/spark-on-cosmos-doenload-file-2.png)   
 
 ## <a name="configure-local-debugging-environment-and-debug-on-failure"></a>ローカルのデバッグ環境を構成して失敗をデバッグする
 
@@ -101,13 +101,13 @@ Spark Scala/Java アプリケーション作成した後、次の手順を実行
 
 2. IntelliJ IDEA で、**Spark Failure Debug** 構成ファイルを作成し、 **[Spark Job Failure Context location] (Spark ジョブの失敗したコンテキストの場所)** フィールドで前にダウンロードされた失敗したジョブのリソースから FTD ファイルを選択します。
    
-   ![リモート実行ボタン](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
+   ![失敗構成の作成](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-failure-configuration-01.png)
 
 4. ツールバーのローカル実行ボタンをクリックすると、エラーが [実行] ウィンドウに表示されます。
    
-   ![リモート実行ボタン](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
+   ![run-failure-configuration1](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuraion-01.png)
 
-   ![リモート実行ボタン](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
+   ![run-failure-configuration2](./media/apache-spark-intellij-tool-failure-debug/local-run-failure-configuration.png)
 
 5. ログに示されているようにブレークポイントを設定した後、ローカル デバッグ ボタンをクリックして、IntelliJ の通常の Scala/Java プロジェクトと同様にローカル デバッグを実行します。
 

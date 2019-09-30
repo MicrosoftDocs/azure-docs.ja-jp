@@ -8,12 +8,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: 284c9bb1b9032d2f9caf0ce62c45ffa7cd8bf9d4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: e325618ed1cdec6149ac31771c8bd67ecea7d559
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476849"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993802"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Apache Spark とは - Azure HDInsight
 
@@ -25,7 +25,7 @@ Apache Spark は、ビッグデータ分析アプリケーションのパフォ�
 
 Spark には、クラスターの計算処理をインメモリで行うための基本的な要素が備わっています。 Spark ジョブは、データをメモリに読み込んでキャッシュし、それを繰り返しクエリできます。 メモリ内計算は、Hadoop 分散ファイル システム (HDFS) 経由でデータを共有する Hadoop などのディスクベースのアプリケーションよりもはるかに高速です。 また Spark は、Scala プログラミング言語との親和性が高く、分散データ セットをローカル コレクションのように扱うことができます。 計算内容をすべて map 処理と reduce 処理に分ける必要がありません。
 
-![従来の MapReduce と Spark](./media/apache-spark-overview/mapreduce-vs-spark.png)
+![従来の MapReduce と Spark](./media/apache-spark-overview/map-reduce-vs-spark1.png)
 
 Azure HDInsight の Spark クラスターでは、フル マネージドの Spark サービスを利用できます。 以下の一覧は、HDInsight で Spark クラスターを作成する利点をまとめたものです。
 
@@ -57,7 +57,7 @@ HDInsight の Spark クラスターでは、Microsoft Power BI などの BI ツ�
 
 ## <a name="spark-cluster-architecture"></a>Spark クラスターのアーキテクチャ
 
-![HDInsight Spark のアーキテクチャ](./media/apache-spark-overview/spark-architecture.png)
+![HDInsight Spark のアーキテクチャ](./media/apache-spark-overview/hdi-spark-architecture.png)
 
 HDInsight クラスターで Spark を実行する方法を理解することで、Spark のコンポーネントを理解しやすくなります。
 

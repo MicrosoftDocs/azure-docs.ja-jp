@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: d977d5a25db0cbe641179bce860e9f67c60f29ab
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 2d53f1bfc6eade535bfb1b3bb07d5115ffe5fc80
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67340801"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967961"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>R Tools for Visual Studio からのジョブの送信
 
@@ -55,11 +55,12 @@ RTVS は、[R インタラクティブ ウィンドウ](https://docs.microsoft.c
 5. `A first look at R` ソリューション フォルダー内の `1-Getting Started with R.R` ファイルを開きます。
 6. ファイルの先頭から、R Ctrl + Enter キーを押して、1 回に 1 行ずつを R インタラクティブ ウィンドウに送信します。 一部の行では、パッケージをインストールするために時間がかかる場合があります。
     * または、Ctrl + A キー を押して R ファイルのすべての行を選択した後で、Ctrl + Enter キー を押してすべて実行するか、ツール バーで [Execute Interactive]\(対話型で実行\) アイコンを選択します。
-        ![[Execute interactive]\(対話形式で実行\)](./media/r-server-submit-jobs-r-tools-vs/execute-interactive.png)
+
+        ![対話型で実行](./media/r-server-submit-jobs-r-tools-vs/execute-interactive1.png)
 
 7. スクリプトのすべての行を実行すると、次のような出力が表示されます。
 
-    ![[データ サイエンスの設定...]](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
+    ![ワークスペース](./media/r-server-submit-jobs-r-tools-vs/visual-studio-workspace.png)
 
 ## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>HDInsight ML Services クラスターにジョブを送信する
 
@@ -82,20 +83,20 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
     # Create the Spark Cluster compute context
     mySparkCluster <- RxSpark(
           sshUsername = mySshUsername,
-      sshHostname = mySshHostname,
-      sshSwitches = mySshSwitches,
-      sshProfileScript = mySshProfileScript,
-      consoleOutput = TRUE,
-      hdfsShareDir = myHdfsShareDir,
-      shareDir = myShareDir,
-      sshClientDir = mySshClientDir
+          sshHostname = mySshHostname,
+          sshSwitches = mySshSwitches,
+          sshProfileScript = mySshProfileScript,
+          consoleOutput = TRUE,
+          hdfsShareDir = myHdfsShareDir,
+          shareDir = myShareDir,
+          sshClientDir = mySshClientDir
     )
-    
+
     # Set the current compute context as the Spark compute context defined above
     rxSetComputeContext(mySparkCluster)
     ```
-    
-    ![Spark コンテキストの設定](./media/r-server-submit-jobs-r-tools-vs/spark-context.png)
+
+   ![Spark コンテキストの設定](./media/r-server-submit-jobs-r-tools-vs/apache-spark-context.png)
 
 1. [R インタラクティブ] ウィンドウで次のコマンドを実行します。
 
@@ -107,23 +108,22 @@ PuTTY が搭載された Windows コンピューターから Microsoft ML Server
 
     次のような出力が表示されます。
 
-    ![正常に実行された rx コマンド](./media/r-server-submit-jobs-r-tools-vs/rx-commands.png)
-
+    ![正常に実行された rx コマンド](./media/r-server-submit-jobs-r-tools-vs/successful-rx-commands.png) a
 1. `rxHadoopCopy` によって、サンプル データ フォルダーの `people.json` ファイルが新しく作成された `/user/RevoShare/newUser` フォルダーに正常にコピーされたことを確認します。
 
     1. Azure の HDInsight ML Services クラスターのウィンドウで、左側のメニューから **[ストレージ アカウント]** を選択します。
 
-        ![ストレージ アカウント](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
+        ![ストレージ アカウント](./media/r-server-submit-jobs-r-tools-vs/hdinsight-storage-accounts.png)
 
     2. クラスターの既定のストレージ アカウントを選択し、コンテナー/ディレクトリ名をメモします。
 
     3. ストレージ アカウントのウィンドウの左側のメニューで **[コンテナー]** を選択します。
 
-        ![Containers](./media/r-server-submit-jobs-r-tools-vs/containers.png)
+        ![Containers](./media/r-server-submit-jobs-r-tools-vs/hdi-storage-containers.png)
 
     4. クラスターのコンテナー名を選択し、 **[user]** フォルダーを参照して (一覧の一番下の *[さらに読み込む]* のクリックが必要な場合があります)、 *[RevoShare]* 、 **[newUser]** の順に選択します。 `newUser` フォルダーに `people.json` ファイルが表示されます。
 
-        ![コピーされたファイル](./media/r-server-submit-jobs-r-tools-vs/copied-file.png)
+        ![コピーされたファイル](./media/r-server-submit-jobs-r-tools-vs/hdinsight-copied-file.png)
 
 1. 現在の Apache Spark コンテキストの使用が完了したら、コンテキストを停止する必要があります。 複数のコンテキストを同時に実行することはできません。
 

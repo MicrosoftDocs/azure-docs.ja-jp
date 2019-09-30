@@ -6,15 +6,15 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 06/12/2019
+ms.date: 08/12/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 496aa065b3b10eac546dbe41f5a2650acc112d29
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 6b9a74ee6530d8fc195490b0f1414e6348e855f6
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68310512"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743604"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>チュートリアル:Azure コンテナー レジストリで基本イメージの更新時にコンテナー イメージ ビルドを自動化する 
 
@@ -72,7 +72,16 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ### <a name="tasks-triggered-by-a-base-image-update"></a>基本イメージの更新によってトリガーされるタスク
 
-* 現時点では、Dockerfile からのイメージ ビルドの場合、ACR タスクによって、同じ Azure コンテナー レジストリ、パブリック Docker Hub リポジトリ、または Microsoft Container Registry 内のパブリック リポジトリ内の基本イメージへの依存関係が検出されます。 `FROM` ステートメントで指定された基本イメージがこれらの場所のいずれかにある場合、基本イメージが更新された場合はこのイメージが常にリビルドされるように、ACR タスクによってフックが追加されます。
+* Dockerfile からのイメージ ビルドでは、ACR タスクによって、以下の場所にある基本イメージへの依存関係が検出されます。
+
+  * タスクが実行されるのと同じ Azure コンテナー レジストリ
+  * 同じリージョン内の別の Azure コンテナー レジストリ 
+  * Docker Hub 内のパブリック リポジトリ 
+  * Microsoft コンテナー レジストリ内のパブリック リポジトリ
+
+   `FROM` ステートメントで指定された基本イメージがこれらの場所のいずれかにある場合、基本イメージが更新された場合はこのイメージが常にリビルドされるように、ACR タスクによってフックが追加されます。
+
+* 現在、ACR タスクでは、アプリケーション (*実行時*) イメージの基本イメージの更新のみが追跡されます。 マルチステージ Dockerfiles で使用される中間 (*ビルド時*) イメージの基本イメージの更新は追跡されません。  
 
 * [az acr task create][az-acr-task-create] コマンドを使用して ACR タスクを作成すると、既定では、そのタスクでは基本イメージの更新によるトリガーが*有効*になっています。 つまり、`base-image-trigger-enabled` プロパティは True に設定されています。 タスクでこの動作を無効にする場合は、このプロパティを False に更新します。 たとえば、次の [az acr task update][az-acr-task-update] コマンドを実行します。
 
@@ -82,7 +91,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 * ACR タスクでコンテナー イメージの依存関係 (基本イメージがどこに含まれるか) を特定して追跡できるようにするため、最初に**少なくとも 1 回**、タスクをトリガーする必要があります。 たとえば、[az acr task run][az-acr-task-run] コマンドを使用してタスクを手動でトリガーします。
 
-* 基本イメージの更新時にタスクをトリガーするには、基本イメージに `node:9-alpine` などの "*安定した*" タグがなければなりません。 このタグ付けは、OS およびフレームワークの修正プログラムを使用して最新の安定版リリースに更新された基本イメージでは一般的なものです。 基本イメージは、新しいバージョン タグで更新された場合、タスクをトリガーしません。 イメージのタグ付けの詳細については、[ベスト プラクティス ガイダンス](https://stevelasker.blog/2018/03/01/docker-tagging-best-practices-for-tagging-and-versioning-docker-images/)に関するページを参照してください。 
+* 基本イメージの更新時にタスクをトリガーするには、基本イメージに `node:9-alpine` などの "*安定した*" タグがなければなりません。 このタグ付けは、OS およびフレームワークの修正プログラムを使用して最新の安定版リリースに更新された基本イメージでは一般的なものです。 基本イメージは、新しいバージョン タグで更新された場合、タスクをトリガーしません。 イメージのタグ付けの詳細については、[ベスト プラクティス ガイダンス](container-registry-image-tag-version.md)に関するページを参照してください。 
 
 ### <a name="base-image-update-scenario"></a>基本イメージ更新シナリオ
 
@@ -116,7 +125,6 @@ az acr task create \
     --arg REGISTRY_NAME=$ACR_NAME.azurecr.io \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
     --file Dockerfile-app \
-    --branch master \
     --git-access-token $GIT_PAT
 ```
 
@@ -217,7 +225,7 @@ az acr task list-runs --registry $ACR_NAME --output table
 出力は次のようになります。 最後に実行されたビルドのトリガーは "イメージの更新" であり、これは、タスクが基本イメージのクイック タスクによって開始されたことを示しています。
 
 ```console
-$ az acr task list-builds --registry $ACR_NAME --output table
+$ az acr task list-runs --registry $ACR_NAME --output table
 
 Run ID    TASK            PLATFORM    STATUS     TRIGGER       STARTED               DURATION
 --------  --------------  ----------  ---------  ------------  --------------------  ----------

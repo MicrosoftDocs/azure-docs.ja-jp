@@ -4,17 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: d37efdaf7e8f2b2b2cb6d3c5fcc90e166feab96a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 34ff0e792fc388f3083e2d490b2658822793988f
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968193"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906977"
 ---
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [JDK 7 以降](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>Gradle を使用してプロジェクトを初期化する
 
@@ -88,10 +87,12 @@ public class GetLanguages {
 }
 ```
 
-次の行を `GetLanguages` クラスに追加します。
+次の行を `GetLanguages` クラスに追加します。 ご覧のとおり、サブスクリプション キーとエンドポイントが環境変数から読み取られます。
 
 ```java
-String url = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/languages?api-version=3.0";
 ```
 
 Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。

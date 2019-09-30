@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: atsenthi
-ms.openlocfilehash: 08864d6a965921f7f6d284dc53bd2586d30fedd1
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: cdbb545e981e50e23bbbb011dc54577acf7974f7
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014422"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241748"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、カスタマイズできる Service Fabric クラスターのさまざまなファブリック設定について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 詳細については、[Azure クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-azure.md)に関するページを参照してください。 スタンドアロン クラスターでは、*ClusterConfig.json* ファイルを更新し、クラスターで構成のアップグレードを実行することによって設定をカスタマイズします。 詳細については、[スタンドアロン クラスターの構成のアップグレード](service-fabric-cluster-config-upgrade-windows-server.md)に関するページを参照してください。
@@ -236,6 +236,8 @@ ms.locfileid: "69014422"
 |UserMaxStandByReplicaCount |int、既定値は 1 |動的|ユーザー サービス用にシステムが保持するスタンバイ レプリカの既定の最大数。 |
 |UserReplicaRestartWaitDuration |時間 (秒単位)、既定値は 60.0 \* 30 |動的|timespan を秒単位で指定します。 永続化されたレプリカがダウンすると、Windows Fabric はレプリカが復帰するまでこの期間待機します。この期間が過ぎると、(状態のコピーを必要とする) 新しい代替レプリカが作成されます。 |
 |UserStandByReplicaKeepDuration |時間 (秒単位)、既定値は 3600.0 \* 24 \* 7 |動的|timespan を秒単位で指定します。 永続化されたレプリカがダウン状態から復帰したときに、既に置き換えられている場合があります。 このタイマーは、FM がスタンバイ レプリカを破棄するまでに保持する時間を決定します。 |
+|WaitForInBuildReplicaSafetyCheckTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60 * 10)|動的|timespan を秒単位で指定します。 オプションの WaitForInBuildReplica 安全性チェック タイムアウトに対する構成エントリ。 この構成では、ノードの非アクティブ化とアップグレードに関する WaitForInBuildReplica 安全性チェックのタイムアウトが定義されます。 次のいずれかに該当する場合、この安全性チェックは失敗します。- プライマリが作成されていて、ft ターゲット レプリカ セットのサイズが 1 より大きい。- 現在のレプリカがビルド中であり、永続化されている。- これは現在のプライマリであり、新しいレプリカがビルドされている。前のいずれかの条件が満たされている場合でも、タイムアウトが経過した場合は、この安全性チェックはスキップされます。 |
+|WaitForReconfigurationSafetyCheckTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(60.0 * 10)|動的|timespan を秒単位で指定します。 オプションの WaitForReconfiguration 安全性チェック タイムアウトに対する構成エントリ。 この構成では、ノードの非アクティブ化とアップグレードに関する WaitForReconfiguration 安全性チェックのタイムアウトが定義されます。 チェックされているレプリカが再構成されているパーティションの一部である場合、この安全性チェックは失敗します。 パーティションが再構成中であっても、このタイムアウトが経過すると、安全性チェックはスキップされます。|
 
 ## <a name="faultanalysisservice"></a>FaultAnalysisService
 
@@ -309,7 +311,7 @@ ms.locfileid: "69014422"
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
 |EnableApplicationTypeHealthEvaluation |ブール値、既定値は false |静的|クラスターの正常性評価ポリシー: アプリケーションの種類ごとの正常性評価を有効にします。 |
-|MaxSuggestedNumberOfEntityHealthReports|int、既定値は 500 |動的|ウォッチドッグの正常性報告ロジックに関する問題を発生させる前にエンティティが持つことができる正常性レポートの最大数。 各正常性エンティティは、比較的少ない数の正常性レポートを持つと想定されます。 レポートの数がこの数を上回った場合、ウォッチドッグの実装に問題がある可能性があります。 レポートの数が多すぎるエンティティは、エンティティの評価時に警告正常性レポート全体でフラグが設定されます。 |
+|MaxSuggestedNumberOfEntityHealthReports|int、既定値は 100 |動的|ウォッチドッグの正常性報告ロジックに関する問題を発生させる前にエンティティが持つことができる正常性レポートの最大数。 各正常性エンティティは、比較的少ない数の正常性レポートを持つと想定されます。 レポートの数がこの数を上回った場合、ウォッチドッグの実装に問題がある可能性があります。 レポートの数が多すぎるエンティティは、エンティティの評価時に警告正常性レポート全体でフラグが設定されます。 |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 
@@ -390,7 +392,7 @@ ms.locfileid: "69014422"
 
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|Enabled |ブール値、既定値は false |静的|ImageStoreService の Enabled フラグ。 既定値: false |
+|有効 |ブール値、既定値は false |静的|ImageStoreService の Enabled フラグ。 既定値: false |
 |MinReplicaSetSize | int、既定値は 3 |静的|ImageStoreService の MinReplicaSetSize。 |
 |PlacementConstraints | string、既定値は "" |静的| ImageStoreService の PlacementConstraints。 |
 |QuorumLossWaitDuration | 時間 (秒単位)、既定値は MaxValue |静的| timespan を秒単位で指定します。 ImageStoreService の QuorumLossWaitDuration。 |
@@ -647,6 +649,7 @@ ms.locfileid: "69014422"
 |AADClusterApplication|string、既定値は ""|静的|クラスターを表す Web API アプリケーションの名前または ID |
 |AADLoginEndpoint|string、既定値は ""|静的|Azure Government "https:\//login.microsoftonline.us" のような既定以外の環境用に指定される AAD ログイン エンドポイント。既定値は Azure Commercial。 |
 |AADTenantId|string、既定値は ""|静的|テナント ID (GUID) |
+|AcceptExpiredPinnedClusterCertificate|ブール値、既定値は FALSE|動的|サムプリントによって宣言された有効期限切れのクラスター証明書を受け付けるかどうかを示すフラグ。クラスターの稼働状態を維持するため、クラスター証明書にのみ適用されます。 |
 |AdminClientCertThumbprints|string、既定値は ""|動的|管理者ロールでクライアントによって使用される証明書のサムプリント。 コンマ区切りの名前リストです。 |
 |AADTokenEndpointFormat|string、既定値は ""|静的|Azure Government "https:\//login.microsoftonline.us/{0}" のような既定以外の環境用に指定される AAD トークン エンドポイント。既定値は Azure Commercial。 |
 |AdminClientClaims|string、既定値は ""|動的|管理クライアントから期待される、考えられるすべての要求。ClientClaims と同じ形式です。この一覧は ClientClaims に内部的に追加されるため、同じエントリを ClientClaims に追加する必要はありません。 |

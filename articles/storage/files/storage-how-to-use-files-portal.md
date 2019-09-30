@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 10/18/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d7618d2542b1c1d83ed7328c8a32d80f2d0e66a
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b7665caad60a5135da5780da242772af3c0a05a4
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699528"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984882"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-with-the-azure-portal"></a>クイック スタート:Azure portal を使用した Azure ファイル共有の作成および管理 
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows、Linux、macOS でマウントできます。 このガイドでは、[Azure Portal](https://portal.azure.com/) を使用して Azure ファイル共有を操作する方法の基本について説明します。
@@ -46,7 +46,7 @@ SMB を使用してファイル共有をマウントするには、お使いの 
 ### <a name="using-an-azure-file-share-from-the-azure-portal"></a>Azure portal から Azure ファイル共有を使用する
 Azure Portal 経由で実行されるすべての要求はファイル REST API で処理されるため、SMB アクセスのないクライアント上のファイルとディレクトリを作成、変更、削除できます。 ファイル REST プロトコルは直接使用する (つまり手動で REST HTTP 呼び出しを作成する) こともできますが、(Azure portal を使用する以外で) ファイル REST プロトコルを使用する最も一般的な方法は、[Azure PowerShell モジュール](storage-how-to-use-files-powershell.md)、[Azure CLI](storage-how-to-use-files-cli.md)、または Azure Storage SDK を使用することです。いずれの方法でも、任意のスクリプト/プログラミング言語でファイル REST プロトコルの便利なラッパーが提供されます。 
 
-Azure Files のほとんどのユーザーは、SMB プロトコルを介して Azure ファイル共有を操作したいと考えていると予想されます。その方が、使用できることを期待している既存のアプリケーションやツールを使用できるためです。しかし、SMB よりもファイル REST API を使用する方が有益な理由がいくつかあります。その理由を次に示します。
+Azure Files のほとんどのユーザーは、SMB プロトコルを介して Azure ファイル共有を操作したいと考えていると予想されます。これにより、ユーザーが使用できると予想する既存のアプリケーションやツールを使用できるためです。しかし、SMB よりもファイル REST API を使用する方が有益な理由がいくつかあります。その理由を次に示します。
 
 - SMB アクセスが不可能なラップトップ、タブレット、モバイル デバイスなど、外出先から Azure ファイル共有をすばやく変更する必要がある。
 - ポート 445 がブロックされていないオンプレミスのクライアントなど、SMB 共有をマウントできないクライアントからスクリプトまたはアプリケーションを実行する必要がある。

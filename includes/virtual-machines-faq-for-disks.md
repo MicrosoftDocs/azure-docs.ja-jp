@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 21fe92bf4a33dc44545f1bd54c718db6c0a38532
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843254"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69541497"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -143,7 +143,48 @@ GPT パーティション分割は OS ディスクではなく、データ デ�
 
 **どのような種類のディスクでスナップショットがサポートされますか。**
 
-Premium SSD、Standard SSD、および Standard HDD でスナップショットがサポートされます。 これらの 3 つのディスクの種類では、すべてのディスク サイズでスナップショットがサポートされます (最大 32 TiB のサイズのディスクを含みます)。 Ultra SSD では、スナップショットはサポートされません。
+Premium SSD、Standard SSD、および Standard HDD でスナップショットがサポートされます。 これらの 3 つのディスクの種類では、すべてのディスク サイズでスナップショットがサポートされます (最大 32 TiB のサイズのディスクを含みます)。 Ultra ディスクでは、スナップショットはサポートされません。
+
+## <a name="ultra-disks"></a>Ultra ディスク
+
+**Ultra ディスクは現在、どのリージョンでサポートされていますか?**
+- 米国東部 2
+- 東南アジア
+- 北ヨーロッパ
+
+**Ultra ディスクは現在、どの VM シリーズでサポートされていますか?**
+- ESv3
+- DSv3
+
+**Ultra ディスクのスループットを何に設定したらよいですか?**
+ディスクのスループットを何に設定したらよいかがわからない場合は、まず 16 KiB の IO サイズを想定し、アプリケーションを監視してそこからパフォーマンスを調整することをお勧めします。 数式は次のとおりです:MBps 単位のスループット = IOPS の数 * 16 / 1000。
+
+**ディスクを 40000 IOPS に構成しましたが、12800 IOPS しか表示されません。ディスクのパフォーマンスが表示されないのはなぜですか?**
+ディスク スロットルに加えて、VM レベルで課される IO スロットルが存在します。 使用している VM サイズが、ディスク上に構成されているレベルをサポートできることを確認してください。 VM によって課される IO 制限に関連する詳細については、「[Azure の Windows 仮想マシンのサイズ](../articles/virtual-machines/windows/sizes.md)」を参照してください。
+
+**Ultra ディスクでキャッシュ レベルを使用できますか?**
+いいえ。Ultra ディスクでは、他のディスクの種類でサポートされている異なるキャッシュ方法はサポートされません。 ディスク キャッシュは [なし] に設定してください。
+
+**Ultra ディスクを既存の VM に接続できますか?**
+現在の VM を、Ultra ディスクをサポートするリージョンと可用性ゾーンのペアに配置しなければならなくなる可能性があります。 詳細については、[Ultra ディスクの使用開始](../articles/virtual-machines/windows/disks-enable-ultra-ssd.md)に関するページを参照してください。
+
+**Ultra ディスクを VM の OS ディスクとして使用できますか?**
+いいえ。Ultra ディスクはデータ ディスクとしてのみ、かつ 4K のネイティブ ディスクとしてのみサポートされます。
+
+**既存のディスクを Ultra ディスクに変換できますか?**
+いいえ。ただし、既存のディスクから Ultra ディスクにデータを移行することは可能です。 既存のディスクを Ultra ディスクに移行するには、両方のディスクを同じ VM に接続し、ディスクのデータを 1 つのディスクからもう一方のディスクにコピーするか、またはデータ移行のためのサードパーティ ソリューションを利用します。
+
+**Ultra ディスクのスナップショットを作成できますか?**
+いいえ。スナップショットはまだ使用できません。
+
+**Ultra ディスクに対して Azure Backup は使用できますか?**
+いいえ。Azure Backup のサポートはまだ使用できません。
+
+**Ultra ディスクを可用性セットで実行されている VM に接続できますか?**
+いいえ。これはまだサポートされていません。
+
+**Ultra ディスクを使用する VM に対して Azure Site Recovery (ASR) を有効にできますか?**
+いいえ。Ultra ディスクに対して ASR はまだサポートされていません。
 
 ## <a name="standard-ssd-disks"></a>Standard SSD ディスク
 

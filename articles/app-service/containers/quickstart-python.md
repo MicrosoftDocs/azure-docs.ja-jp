@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/29/2019
+ms.date: 08/23/2019
 ms.author: cephalin
-ms.openlocfilehash: 163876d63ba2127dd3f3444e95b284918e60e368
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: d4f1cd5193f29e929c822966ca427c6e6ebf67de
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951992"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070968"
 ---
 # <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Python アプリを作成する
 
@@ -37,7 +36,7 @@ ms.locfileid: "68951992"
 
 ## <a name="download-the-sample-locally"></a>サンプルをローカルでダウンロードする
 
-ターミナル ウィンドウで、次のコマンドを実行して、ローカル コンピューターにサンプル アプリケーションを複製し、サンプル コードのあるディレクトリに移動します。
+ターミナル ウィンドウで、次のコマンドを実行して、お使いのローカル コンピューターにサンプル アプリケーションを複製し、サンプル コードのあるディレクトリに移動します。
 
 ```bash
 git clone https://github.com/Azure-Samples/python-docs-hello-world
@@ -82,7 +81,7 @@ Cloud Shell で、クイックスタートのディレクトリを作成し、�
 ```bash
 mkdir quickstart
 
-cd quickstart
+cd $HOME/quickstart
 ```
 
 次に、以下のコマンドを実行して、サンプル アプリのリポジトリをクイックスタートのディレクトリに複製します。
@@ -105,7 +104,7 @@ Checking connectivity... done.
 
 サンプル コードが含まれているディレクトリに移動し、`az webapp up` コマンドを実行します。
 
-次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、および `-`)。 **
+次の例では、`<app-name>` をグローバルに一意のアプリ名に置き換えてください (*有効な文字は `a-z`、`0-9`、および `-`* )
 
 ```bash
 cd python-docs-hello-world
@@ -184,7 +183,7 @@ az webapp up -n <app-name> -l <location-name>
 
 <a href="https://portal.azure.com" target="_blank">Azure portal</a> に移動し、お客様が作成したアプリを管理します。
 
-左側のメニューで **[App Services]** をクリックしてから、お客様の Azure アプリの名前をクリックします。
+左側のメニューで、 **[App Services]** を選択し、お客様の Azure アプリの名前を選択します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/quickstart-python/app-service-list.png)
 

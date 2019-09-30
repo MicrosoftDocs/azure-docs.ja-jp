@@ -10,23 +10,22 @@ ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 5e25de1ad2042ac978c3698165b9d9baba20e816
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d9eedcdc66dceabdd6506c5b64f0c15c874efee
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130689"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70070141"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>App Service 環境によるレイヤード セキュリティ アーキテクチャの実装
 ## <a name="overview"></a>概要
 App Service Environment は、Virtual Network にデプロイされる分離されたランタイム環境です。開発者は、セキュリティ アーキテクチャを階層化し、物理的なアプリケーションの層ごとにネットワーク アクセスのレベルに違いを設けることができます。
 
-一般に、API バックエンドは通常のインターネット アクセスから隠し、アップストリームの Web アプリにのみ API の呼び出しを許可することが望ましいと考えられています。  App Service Environment を含んだサブネットに対して[ネットワーク セキュリティ グループ (NSG)][NetworkSecurityGroups] を使用することで、API アプリケーションへのパブリック アクセスを制限することができます。
+一般に、API バックエンドは通常のインターネット アクセスから隠し、アップストリームの Web アプリにのみ API の呼び出しを許可することが望ましいと考えられています。  App Service 環境を含んだサブネットに対して[ネットワーク セキュリティ グループ (NSG)][NetworkSecurityGroups] を使用することで、API アプリケーションへのパブリック アクセスを制限することができます。
 
 以下の図は、WebAPI ベースのアプリを App Service Environment にデプロイしたアーキテクチャの例です。  3 つの Web アプリのインスタンスが、独立した 3 つの App Service Environment に別々にデプロイされ、バックエンドにある同じ WebAPI アプリを呼び出します。
 
@@ -39,9 +38,9 @@ App Service Environment は、Virtual Network にデプロイされる分離さ�
 ## <a name="determining-the-network-behavior"></a>ネットワークの動作の決定
 必要なネットワーク セキュリティ ルールを把握するためには、API アプリを含んだ App Service Environment へのアクセスをどのネットワーク クライアントに許可し、どのクライアントをブロックするかを調べる必要があります。
 
-[ネットワーク セキュリティ グループ (NSG)][NetworkSecurityGroups] はサブネットに適用され、そのサブネットの中に App Service Environment がデプロイされます。そのため NSG 内のルールは、App Service Environment 上で動作する**すべて**のアプリに適用されます。  この記事のサンプル アーキテクチャを使用して、"apiase" を含んだサブネットに対してネットワーク セキュリティ グループを適用すると、"apiase" App Service Environment 上で動作するすべてのアプリが同じセキュリティ ルール一式で保護されます。 
+[ネットワーク セキュリティ グループ (NSG)][NetworkSecurityGroups] はサブネットに適用され、そのサブネットの中に App Service 環境がデプロイされます。そのため NSG 内のルールは、App Service 環境上で動作する**すべての**アプリに適用されます。  この記事のサンプル アーキテクチャを使用して、"apiase" を含んだサブネットに対してネットワーク セキュリティ グループを適用すると、"apiase" App Service Environment 上で動作するすべてのアプリが同じセキュリティ ルール一式で保護されます。 
 
-* **アップストリームの呼び出し元の送信 IP アドレスを判断する:** アップストリームの呼び出し元の IP アドレスとは何ですか。  これらのアドレスは NSG で明示的にアクセスを許可する必要があります。  App Service Environment 間の呼び出しは "インターネット" を介した呼び出しと見なされるので、3 つのアップストリーム App Service Environment にそれぞれ割り当てられた送信 IP アドレスを、"apiase" サブネットの NSG でアクセスを許可する必要があります。   App Service Environment で実行されるアプリが送信に使う IP アドレスを調べる方法については、[ネットワーク アーキテクチャ][NetworkArchitecture]の概要の記事をご覧ください。
+* **アップストリームの呼び出し元の送信 IP アドレスを判断する:** アップストリームの呼び出し元の IP アドレスとは何ですか。  これらのアドレスは NSG で明示的にアクセスを許可する必要があります。  App Service Environment 間の呼び出しは "インターネット" を介した呼び出しと見なされるので、3 つのアップストリーム App Service Environment にそれぞれ割り当てられた送信 IP アドレスを、"apiase" サブネットの NSG でアクセスを許可する必要があります。   App Service 環境で実行されるアプリの送信 IP アドレスを調べる方法については、[ネットワーク アーキテクチャ][NetworkArchitecture]の概要の記事をご覧ください。
 * **バックエンド API アプリは自己呼び出しを行うか。**  バックエンド アプリケーションが自己呼び出しを行うかどうかは、見逃しやすいポイントです。  App Service Environment のバックエンド API アプリケーションに自己呼び出しが伴う場合、それも "インターネット" を介した呼び出しと見なされます。  サンプル アーキテクチャのケースでは、"apiase" App Service Environment の送信 IP アドレスについてもアクセスを許可する必要があります。
 
 ## <a name="setting-up-the-network-security-group"></a>ネットワーク セキュリティ グループの設定
@@ -51,7 +50,7 @@ App Service Environment は、Virtual Network にデプロイされる分離さ�
 
     New-AzureNetworkSecurityGroup -Name "RestrictBackendApi" -Location "South Central US" -Label "Only allow web frontend and loopback traffic"
 
-最初に、Azure の管理インフラストラクチャに使用する明示的な許可ルールを追加します (App Service Environment の[受信トラフィック][InboundTraffic]の記事を参照)。
+最初に、Azure の管理インフラストラクチャに使用する明示的な許可ルールを追加します (App Service 環境の[受信トラフィック][InboundTraffic]の記事を参照)。
 
     #Open ports for access by Azure management infrastructure
     Get-AzureNetworkSecurityGroup -Name "RestrictBackendApi" | Set-AzureNetworkSecurityRule -Name "ALLOW AzureMngmt" -Type Inbound -Priority 100 -Action Allow -SourceAddressPrefix 'INTERNET' -SourcePortRange '*' -DestinationAddressPrefix '*' -DestinationPortRange '454-455' -Protocol TCP
@@ -94,9 +93,9 @@ App Service Environment は、Virtual Network にデプロイされる分離さ�
 ## <a name="additional-links-and-information"></a>その他のリンクおよび情報
 [ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md)に関する情報。
 
-[送信 IP アドレス][NetworkArchitecture]と App Service Environment について。
+[送信 IP アドレス][NetworkArchitecture]と App Service 環境について。
 
-App Service Environment で使用される[ネットワーク ポート][InboundTraffic]。
+App Service 環境で使用される[ネットワーク ポート][InboundTraffic]。
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

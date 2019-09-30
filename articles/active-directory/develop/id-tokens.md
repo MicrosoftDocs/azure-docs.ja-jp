@@ -11,18 +11,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 08/27/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85145d4a81eb4d12910758e01dda675ea378a46b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 4968d1acbccca9c2c46b4bbb6f0853b82e8d7f71
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853175"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074264"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft ID プラットフォームの ID トークン
 
@@ -30,7 +30,7 @@ ms.locfileid: "68853175"
 
 ## <a name="using-the-id_token"></a>id_token を使用する
 
-ID トークンは、ユーザーが本人の主張どおりの人物であることを検証し、ユーザーについてその他の役に立つ情報を取得するために使用されます。[アクセス トークン](access-tokens.md)の代わりに、承認のために使用してはなりません。 これによって提供される要求は、アプリケーション内の UX、データベースのキー設定、およびクライアント アプリケーションへのアクセス提供のために使用できます。
+ID トークンは、ユーザーが本人の主張どおりの人物であることを検証し、ユーザーについてその他の役に立つ情報を取得するために使用されます。[アクセス トークン](access-tokens.md)の代わりに、承認のために使用してはなりません。 これによって提供される要求は、アプリケーション内の UX でデータベースのキーとして使用でき、クライアント アプリケーションへのアクセスが提供されます。  データベースのキーを作成するときは、ゲスト シナリオが乱雑になるため、`idp` は使用しないでください。  キーの処理は `sub` (常に一意) のみで実行する必要があり、必要に応じてルーティングのために `tid` が使用されます。  サービス間でデータを共有する必要がある場合、複数のサービスで同じ `oid` が取得されるため、`oid` + `sub` + `tid` で機能します。
 
 ## <a name="claims-in-an-id_token"></a>id_token の要求
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 41fa5a859e738c2bb70e4885aa856f247e922492
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e43bc4b8eb1db91493f279f5c46681483e4b18c4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448989"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261397"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB での診断ログ 
 
-1 つまたは複数の Azure Cosmos DB データベースを使い始めた後、データベースのアクセス方法と時間を監視したいと考えるのではないでしょうか。 この記事では、Azure プラットフォームで利用できるログの概要を示します。 [Azure Storage](https://azure.microsoft.com/services/storage/) にログを送信するための監視を目的として診断ログを有効にする方法、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にログをストリーミングする方法、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)にログをエクスポートする方法を説明します。
+1 つまたは複数の Azure Cosmos データベースを使い始めた後、データベースのアクセス方法と時間を監視したいと考えるのではないでしょうか。 この記事では、Azure プラットフォームで利用できるログの概要を示します。 [Azure Storage](https://azure.microsoft.com/services/storage/) にログを送信するための監視を目的として診断ログを有効にする方法、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にログをストリーミングする方法、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)にログをエクスポートする方法を説明します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -78,7 +78,7 @@ Azure 診断ログはリソースによって出力され、そのリソース�
 
 1. **[診断設定]** ページで以下の詳細情報をフォームに入力します。 
 
-    * **[名前]** :作成するログの名前を入力します。
+    * **Name**:作成するログの名前を入力します。
 
     * 次のサービスにログを格納できます。
 
@@ -183,7 +183,7 @@ Azure PowerShell の構成方法について詳しくは、「[Azure PowerShell 
 ### <a id="storage"></a>ログ用に新しいストレージ アカウントを作成する
 ログに既存のストレージ アカウントを使うこともできますが、このチュートリアルでは、Azure Cosmos DB ログ専用の新しいストレージ アカウントを作成します。 便宜上、ストレージ アカウントの詳細を **sa** という変数に格納します。
 
-さらに管理を簡単にするために、このチュートリアルでは、Azure Cosmos DB データベースと同じリソース グループを使います。 **ContosoResourceGroup**、**contosocosmosdblogs**、**North Central US** の各パラメーターは、適宜、実際の値に置き換えてください。
+さらに管理を簡単にするために、このチュートリアルでは、Azure Cosmos データベースと同じリソース グループを使います。 **ContosoResourceGroup**、**contosocosmosdblogs**、**North Central US** の各パラメーターは、適宜、実際の値に置き換えてください。
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup `
@@ -397,7 +397,7 @@ Azure Monitor ログで診断データを表示するには、次の図のよう
 <a id="#queries"></a>
 ### <a name="queries"></a>クエリ
 
-**[ログ検索]** ボックスに入力して Azure Cosmos DB コンテナーの監視に利用できるその他のクエリを紹介します。 これらのクエリは[新しい言語](../log-analytics/log-analytics-log-search-upgrade.md)で使用できます。 
+**[ログ検索]** ボックスに入力して Azure Cosmos コンテナーの監視に利用できるその他のクエリを紹介します。 これらのクエリは[新しい言語](../log-analytics/log-analytics-log-search-upgrade.md)で使用できます。 
 
 各ログ検索から返されるデータの意味については、「[Azure Cosmos DB ログを解釈する](#interpret)」をご覧ください。
 
@@ -436,7 +436,7 @@ Azure Monitor ログで診断データを表示するには、次の図のよう
 * 実行時間が 3 ミリ秒を超えている操作をクエリするには:
 
     ```
-    AzureDiagnostics | where toint(duration_s) > 30000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    AzureDiagnostics | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
     ```
 
 * 操作を実行しているエージェントをクエリするには:
@@ -448,7 +448,7 @@ Azure Monitor ログで診断データを表示するには、次の図のよう
 * 実行時間が長い操作が実行された時刻をクエリするには:
 
     ```
-    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , toint(duration_s)/1000 | render timechart
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , duration_s | render timechart
     ```
 
 新しいログ検索言語の使い方について詳しくは、「[Azure Monitor ログでのログ検索について](../log-analytics/log-analytics-log-search-new.md)」をご覧ください。 
@@ -474,14 +474,14 @@ Azure Storage と Azure Monitor ログに格納されている診断データは
 | **clientIpAddress** | **clientIpAddress_s** | クライアントの IP アドレス。 |
 | **requestCharge** | **requestCharge_s** | 操作に使用された RU 数 |
 | **collectionRid** | **collectionId_s** | コレクションの一意の ID。|
-| **duration** | **duration_s** | 操作の期間 (ティック単位)。 |
+| **duration** | **duration_s** | 操作時間 (ミリ秒)。 |
 | **requestLength** | **requestLength_s** | 要求の長さ (バイト単位)。 |
 | **responseLength** | **responseLength_s** | 応答の長さ (バイト単位)。|
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | [リソース トークン](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens)が認証に使われると、この値は空ではありません。 値は、ユーザーのリソース ID を示します。 |
 
 ## <a name="next-steps"></a>次の手順
 
-- ロギングを有効にする方法、および各種 Azure サービスでサポートされるメトリックとログのカテゴリーについて理解を深めるには、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」と「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md)」の両方をご覧ください。
+- ロギングを有効にする方法、および各種 Azure サービスでサポートされるメトリックとログのカテゴリーについて理解を深めるには、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」と「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/resource-logs-overview.md)」の両方をご覧ください。
 - Event Hubs については次の記事をご覧ください。
    - [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

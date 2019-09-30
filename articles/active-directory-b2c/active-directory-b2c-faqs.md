@@ -1,25 +1,25 @@
 ---
-title: Azure Active Directory B2C についてよく寄せられる質問
-description: Azure Active Directory B2C についてよく寄せられる質問 (FAQ)。
+title: Azure Active Directory B2C についてよく寄せられる質問 (FAQ)
+description: Azure Active Directory B2C についてよく寄せられる質問への回答。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 6f25cfb2c0e07278220cdd04ee38472157f1be4d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d852b786c1cc1c1eb9d39b931f9b8a142f969815
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612486"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065866"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
-このページには、Azure Active Directory (Azure AD) B2C に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
+このページには、Azure Active Directory B2C (Azure AD B2C) に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
 
 ### <a name="why-cant-i-access-the-azure-ad-b2c-extension-in-the-azure-portal"></a>Azure Portal で Azure AD B2C の拡張機能にアクセスできないのはなぜですか。
 
@@ -37,17 +37,15 @@ Azure AD B2C は、Microsoft Office 365 のユーザーの認証に使用でき�
 
 Azure AD テナントでは、テナントに属するユーザーは、`<xyz>@<tenant domain>` の形式の電子メール アドレスを使用してサインインします。 `<tenant domain>` は、テナントの確認済みドメインの 1 つ、または初期の `<...>.onmicrosoft.com` ドメインです。 この種類のアカウントは、職場または学校アカウントです。
 
-Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意のメール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com など) を使用してサインインします。 この種類のアカウントはローカル アカウントです。 ローカル アカウントとして任意のユーザー名もサポートしています (joe、bob、sarah、jim など)。 Azure Portal で Azure AD B2C の ID プロバイダーを構成する場合、この 2 種類のローカル アカウントのいずれかを選択できます。 Azure AD B2C テナントで、 **[ID プロバイダー]** をクリックし、[ローカル アカウント] の **[ユーザー名]** を選択します。
+Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意のメール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com など) を使用してサインインします。 この種類のアカウントはローカル アカウントです。 ローカル アカウントとして任意のユーザー名もサポートしています (joe、bob、sarah、jim など)。 Azure Portal で Azure AD B2C の ID プロバイダーを構成する場合、この 2 種類のローカル アカウントのいずれかを選択できます。 ご利用の Azure AD B2C テナントで、 **[ID プロバイダー]** 、 **[ローカル アカウント]** 、 **[ユーザー名]** の順に選択します。
 
 アプリケーションのユーザー アカウントは常に、サインアップ ユーザー フローによって、サインアップもしくはサインイン ユーザー フローによって、または Azure AD Graph API を使用して作成する必要があります。 Azure Portal で作成されたユーザー アカウントは、テナントを管理するためだけに使用されます。
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
 
-現在、Facebook、Google+、LinkedIn、Amazon、Twitter (プレビュー)、WeChat (プレビュー)、Weibo (プレビュー)、および QQ (プレビュー) をサポートしています。 お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。
+現在のところ、Amazon、Facebook、GitHub (プレビュー)、Google、LinkedIn、Microsoft アカウント (MSA)、QQ (プレビュー)、Twitter、WeChat (プレビュー)、Weibo (プレビュー) など、いくつかのソーシャル ID プロバイダーをサポートしています。 お客様からご要望があれば、他の人気のあるソーシャル ID プロバイダーへのサポート追加を検討します。
 
-Azure AD B2C でも[カスタム ポリシー](active-directory-b2c-overview-custom.md)のサポートがを追加されています。 開発者は、これらのカスタム ポリシーを使用して、[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーで独自のポリシーを作成できます。
-
-[カスタム ポリシー スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)を使ってカスタム ポリシーの作成をお試しください。
+Azure AD B2C も[カスタム ポリシー](active-directory-b2c-overview-custom.md)をサポートしています。 カスタム ポリシーを使用すると、[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーに対して独自のポリシーを作成できます。 [カスタム ポリシー スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)を使ってカスタム ポリシーの作成をお試しください。
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>さまざまなソーシャル ID プロバイダーからお客様に関する情報をさらに収集するためにスコープを構成できますか。
 
@@ -126,9 +124,9 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 
 はい。  [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md) (パブリック プレビュー中) に関する記事を確認してください。 Microsoft では、36 言語の翻訳を提供しおり、お客様は、ニーズに合わせて任意の文字列をオーバーライドすることができます。
 
-### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を login.microsoftonline.com から login.contoso.com に変更できますか。
+### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-contosob2clogincom-to-logincontosocom"></a>Azure AD B2C によって提供されているサインアップおよびサインイン ページで独自の URL を使用できますか。 たとえば、URL を contoso.b2clogin.com から login.contoso.com に変更できますか。
 
-現時点では連携しません。 この機能は検討中です。 Azure Portal の **[ドメイン]** タブでドメインを確認しても、この目的は達成できません。
+現時点では連携しません。 この機能は検討中です。 Azure Portal の **[ドメイン]** タブでドメインを確認しても、この目的は達成できません。 ただし、b2clogin.com では[ニュートラルな最上位ドメイン](b2clogin.md)が提供されているため、マイクロソフトに言及することなく外部の表示を実装できます。
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを削除する方法はありますか。
 
@@ -145,7 +143,7 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 1. **[アプリケーションをすべて表示]** を選択します。
 1. **b2c-extensions-app** という名前のアプリケーションを選択し、 **[削除]** を選択した後、確認を求められたら **[はい]** を選択します。
 1. **[管理]** の下で **[ユーザー設定]** を選択します。
-1. **[LinkedIn アカウント接続]** の下で **[いいえ]** を選択した後、 **[保存]** を選択します。
+1. 表示される場合は、 **[LinkedIn アカウント接続]** の下で **[いいえ]** を選択した後、 **[保存]** を選択します。
 1. **[管理]** の下で、 **[プロパティ]** を選択します。
 1. **[Azure リソースのアクセス管理]** の下で **[はい]** を選択した後、 **[保存]** を選択します。
 1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。

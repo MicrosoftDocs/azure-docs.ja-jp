@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: 87483c967641489e9548f38c99eebbf121d0d252
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 835686d639679cca7e9a83b5297b365953835e47
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490750"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880744"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Microsoft 顧客契約の課金アカウントの概要
 
@@ -51,7 +51,7 @@ Azure portal で、請求書を表示し、ドキュメントをダウンロー�
 
 各課金プロファイルには、その請求書の支払いに使用される独自の支払方法があります。 以下の支払方法がサポートされています。
 
-| Type             | 定義  |
+| 種類             | 定義  |
 |------------------|-------------|
 |Azure クレジット    |  クレジットは請求書の対象料金に自動的に適用され、支払う必要のある金額が減額されます。 詳細については、[課金プロファイルの Azure クレジット残高の追跡](billing-mca-check-azure-credits-balance.md)に関するページを参照してください。 |
 |小切手/電信送金 | アカウントで小切手/電信送金による支払いが承認されている場合、 小切手/電信送金で請求書に記載される請求金額を支払うことができます。 支払いの指示は請求書で与えられます |
@@ -67,8 +67,8 @@ Azure プランは Azure サブスクリプションの価格とサービス レ
 
 | プラン             | 定義  |
 |------------------|-------------|
-|Microsoft Azure プラン   | 任意のワークロードを実行できるサブスクリプションをユーザーが作成できるようにします。 詳細については、[Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0017g/)に関するページを参照してください |
-|Dev/Test 用の Microsoft Azure プラン | Visual Studio サブスクライバーが、開発またはテスト ワークロードに制限されているサブスクリプションを作成できるようにします。 これらのサブスクリプションは、お得な料金、Azure portal での専用の仮想マシン画像へのアクセスなどの利点が得られます。 詳細については、[開発/テスト向け Microsoft Azure プラン](https://azure.microsoft.com/offers/ms-azr-0148g/)に関するページを参照してください|
+|Microsoft Azure プラン   | 任意のワークロードを実行できるサブスクリプションをユーザーが作成できるようにします。  |
+|Dev/Test 用の Microsoft Azure プラン | Visual Studio サブスクライバーが、開発またはテスト ワークロードに制限されているサブスクリプションを作成できるようにします。 これらのサブスクリプションは、お得な料金、Azure portal での専用の仮想マシン画像へのアクセスなどの利点が得られます。 |
 
 ## <a name="invoice-sections"></a>請求書セクション
 

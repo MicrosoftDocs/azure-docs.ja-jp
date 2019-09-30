@@ -1,24 +1,24 @@
 ---
-title: GitHub に接続する - Azure Logic Apps | Microsoft Docs
+title: GitHub に接続する - Azure Logic Apps
 description: GitHub REST API と Azure Logic Apps を使用して、GitHub のイベントを監視します
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 03/02/2018
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+manager: carmonm
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: 0d2ff9368bc244a5afd6fafc40cf476b90a80a52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6a6e2a803ee2a272189abf0f21796b2305eea40b
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61462561"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050891"
 ---
-# <a name="connect-to-github"></a>GitHub に接続する
+# <a name="connect-to-github-from-azure-logic-apps"></a>Azure Logic Apps から GitHub に接続する
 
 GitHub は、Git のすべての分散リビジョン コントロールとソース コード管理 (SCM) 機能、およびその他の機能を提供する、Web ベースの Git リポジトリ ホスティング サービスです。
 
@@ -37,10 +37,10 @@ GitHub コネクタの使用を開始するには、[最初にロジック ア�
 > [!INCLUDE [Steps to create a connection to GitHub](../../includes/connectors-create-api-github.md)]
 > 
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+## <a name="connector-reference"></a>コネクタのレファレンス
 
-Swagger で定義されているトリガーとアクション、および制限事項については、[コネクタの詳細](/connectors/github/)に関するページをご覧ください。
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、[コネクタのリファレンス ページ](/connectors/github/)を参照してください。
 
-## <a name="find-more-connectors"></a>その他のコネクタ
+## <a name="next-steps"></a>次の手順
 
-* [コネクタの一覧](apis-list.md)をご覧ください。
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

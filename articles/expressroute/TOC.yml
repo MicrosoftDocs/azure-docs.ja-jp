@@ -58,8 +58,8 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: ネットワーク間接続
       href: cross-network-connectivity.md
-    - name: Azure の一般的なセキュリティ属性
-      href: expressroute-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: expressroute-security-controls.md
     - name: 高可用性を実現する設計
       href: designing-for-high-availability-with-expressroute.md
     - name: ディザスター リカバリーの設計

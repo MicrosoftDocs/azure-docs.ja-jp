@@ -5,15 +5,15 @@ services: virtual-machines
 author: shants123
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 4/30/2019
+ms.date: 8/22/2019
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: c2931fa410cf92755a5df5b7129dcf93de900930
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b2a7bbef2c421281780c0191fa32381468899bbf
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181155"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020341"
 ---
 Azure では、定期的にそのプラットフォームを更新して、仮想マシンのホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。 これらの更新の目的は、ホスティング環境のソフトウェア コンポーネントの修正から、ネットワーク コンポーネントのアップグレード、ハードウェアの使用停止まで、広い範囲に及びます。 
 
@@ -21,7 +21,7 @@ Azure では、定期的にそのプラットフォームを更新して、仮�
 
 - 更新で再起動を必要としない場合、VM は、ホストの更新中に一時停止されるか、または既に更新済みのホストにライブ移行されます。
 
-- メンテナンスで再起動が必要な場合は、計画メンテナンスが通知されます。 Azure により、都合の良いときに自分でメンテナンスを開始できる時間枠も与えられます。 セルフ メンテナンスの時間枠は、そのメンテナンスが緊急でない限り、通常は 30 日間です。 Azure は、計画されたプラットフォーム メンテナンスで VM の再起動を必要とするケースの数を減らすためのテクノロジに投資しています。 
+- メンテナンスで再起動が必要な場合は、計画メンテナンスが通知されます。 Azure により、都合の良いときに自分でメンテナンスを開始できる時間枠も与えられます。 セルフ メンテナンスの時間枠は、そのメンテナンスが緊急でない限り、通常は 35 日間です。 Azure は、計画されたプラットフォーム メンテナンスで VM の再起動を必要とするケースの数を減らすためのテクノロジに投資しています。 
 
 このページでは、2 種類のメンテナンスが Azure でどのように実行されるかについて説明します。 計画外のイベント (停止) の詳細については、 [Windows 向けの VM の可用性の管理](../articles/virtual-machines/windows/manage-availability.md)に関する記事または [Linux](../articles/virtual-machines/linux/manage-availability.md) 向けの該当する記事をご覧ください。
 
@@ -39,7 +39,7 @@ VM 内で、[Linux](../articles/virtual-machines/linux/scheduled-events.md) ま�
 
 再起動を必要としないメンテナンス操作は、一度に 1 つの障害ドメインに適用されます。 それらは、警告の正常性シグナルを受信した場合、停止します。 
 
-こうした種類の更新が、一部のアプリケーションに影響を与える可能性があります。 VM を別のホストにライブ移行する場合、影響を受けやすい一部のワークロードでは、VM の一時停止に至るまでの数分間にわずかなパフォーマンスの低下が見られることがあります。 VM のメンテナンスに対する準備をして Azure のメンテナンスの影響を減らすには、そのようなアプリケーションに [Linux](../articles/virtual-machines/linux/scheduled-events.md) または [Windows 向けの Scheduled Events を使用](../articles/virtual-machines/windows/scheduled-events.md)してみてください。 Azure では、こうした影響されやすいアプリケーション向けのメンテナンス管理機能に取り組んでいます。 
+こうした種類の更新が、一部のアプリケーションに影響を与える可能性があります。 VM を別のホストにライブ移行する場合、影響を受けやすい一部のワークロードでは、VM の一時停止に至るまでの数分間にわずかなパフォーマンスの低下が見られることがあります。 VM のメンテナンスに対する準備をして Azure のメンテナンスの影響を減らすには、そのようなアプリケーションに [Linux](../articles/virtual-machines/linux/scheduled-events.md) または [Windows 向けの Scheduled Events を使用](../articles/virtual-machines/windows/scheduled-events.md)してみてください。 また、Azure ではそのような、影響がゼロではない、[Azure Dedicated Host](../articles/virtual-machines/windows/dedicated-hosts.md) および [Isolated VM](../articles/security/fundamentals/isolation-choices.md) に対するプラットフォーム メンテナンスについても完全に管理できるようになっています。 メンテナンス管理機能はプレビュー段階であり、[サインアップ フォーム](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)を送信することでアクセスを要求できます。 影響がゼロではないプラットフォーム更新をスキップし、35 日間のローリング期間内の都合のよいときに、それらの更新をバッチとして適用することを選択できます。
 
 ### <a name="live-migration"></a>ライブ マイグレーション
 

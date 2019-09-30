@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e56be394bc7667dfca9a0b417593e8e587073712
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 000dacb7530b52784a68663d295fde9784d50e29
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699643"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013559"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Azure Files にファイル共有を作成する
 Azure のファイル共有は、 [Azure portal](https://portal.azure.com/)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。 このチュートリアルでは、次の事項について説明します。
@@ -41,24 +41,25 @@ Azure ファイル共有を作成するには、既存のストレージ アカ�
 
 
 ## <a name="create-file-share-through-powershell"></a>PowerShell を使用したファイル共有の作成
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-PowerShell の使用を準備するために、Azure PowerShell コマンドレットをダウンロードしてインストールします。 インストール先とインストール方法については、 [Azure PowerShell のインストールおよび構成方法](https://azure.microsoft.com/documentation/articles/powershell-install-configure/) に関するページを参照してください。
+PowerShell の使用を準備するために、Azure PowerShell コマンドレットをダウンロードしてインストールします。 インストール先とインストール方法については、 [Azure PowerShell のインストールおよび構成方法](https://docs.microsoft.com/powershell/azure/overview) に関するページを参照してください。
 
 > [!Note]  
 > 最新の Azure PowerShell モジュールをダウンロードしてインストールするか、アップグレードすることをお勧めします。
 
-1. **ストレージ アカウントとキーのコンテキストを作成します**。コンテキストは、ストレージ アカウント名とアカウント キーをカプセル化します。  [Azure portal](https://portal.azure.com/) からアカウント キーをコピーする手順については、 [ストレージ アカウントのアクセス キー](../common/storage-account-manage.md#access-keys)に関するページを参照してください。
+1. **新しいストレージ アカウントを作成します**。ストレージ アカウントは、Azure ファイル共有だけでなく他のストレージ リソース (BLOB やキューなど) をデプロイできるストレージの共有プールです。
 
-    ```powershell
-    $storageContext = New-AzStorageContext <storage-account-name> <storage-account-key>
+    ```PowerShell
+    $resourceGroup = "myresourcegroup"
+    $storAcctName = "myuniquestorageaccount"
+    $region = "westus2"
+    $storAcct = New-AzStorageAccount -ResourceGroupName $resourceGroup -Name $storAcctName -SkuName Standard_LRS -Location $region -Kind StorageV2
     ```
-    
+
 2. **新しいファイル共有を作成します**。    
     
     ```powershell
-    $share = New-AzStorageShare logs -Context $storageContext
+    $shareName = "myshare"
+    $share = New-AzStorageShare -Context $storAcct.Context -Name $shareName
     ```
 
 > [!Note]  

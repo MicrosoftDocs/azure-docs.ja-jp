@@ -1,20 +1,20 @@
 ---
 title: Azure Blob Storage モジュールをデバイスにデプロイする - Azure IoT Edge | Microsoft Docs
 description: Azure Blob Storage モジュールをご利用の IoT Edge デバイスにデプロイして、そのエッジにデータを格納します。
-author: kgremban
-ms.author: kgremban
+author: arduppal
+ms.author: arduppal
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
 ms.custom: seodec18
-ms.reviewer: kgremban
+ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: 089c90abb999751db77bbe1d89d1d118ae712b52
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: e5420bbe7f65dcef4997d909b3bc4ede00dd9902
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947076"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844228"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>IoT Edge モジュール上の Azure Blob Storage を自分のデバイスにデプロイする
 
@@ -93,7 +93,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
      > [!IMPORTANT]
      > モジュールの特定の位置を指す、ストレージ マウント値の後半を変更しないでください。 ストレージ マウントは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
 
-1. 次の JSON をコピーして、 **[モジュール ツインの必要なプロパティの設定]** ボックスに貼り付けて、モジュールの [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) プロパティと [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) プロパティを設定します。 各プロパティを適切な値で構成して保存し、デプロイを続行します。
+1. 次の JSON をコピーして、 **[モジュール ツインの必要なプロパティの設定]** ボックスに貼り付けて、モジュールの [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) プロパティと [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) プロパティを設定します。 各プロパティを適切な値で構成して保存し、デプロイを続行します。 IoT Edge シミュレーターを使用している場合は、値を、これらのプロパティの関連する環境変数 ([deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) と [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) の説明セクションに記載) に設定します。
 
    ```json
    {
@@ -207,7 +207,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
      > [!IMPORTANT]
      > モジュールの特定の位置を指す、ストレージ マウント値の後半を変更しないでください。 ストレージ マウントは常に、Linux コンテナーの場合は **:/blobroot** で、Windows コンテナーの場合は **:C:/BlobRoot** 終わる必要があります。
 
-1. 次の JSON を *deployment.template.json* ファイルに追加して、モジュールの [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) と [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) を構成します。 各プロパティを適切な値で構成して、ファイルを保存します。
+1. 次の JSON を *deployment.template.json* ファイルに追加して、モジュールの [deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) と [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) を構成します。 各プロパティを適切な値で構成して、ファイルを保存します。 IoT Edge シミュレーターを使用している場合は、値を、これらのプロパティの関連する環境変数 ([deviceToCloudUploadProperties](how-to-store-data-blob.md#devicetoclouduploadproperties) と [deviceAutoDeleteProperties](how-to-store-data-blob.md#deviceautodeleteproperties) の説明セクションに記載) に設定します。
 
    ```json
    "<your azureblobstorageoniotedge module name>":{

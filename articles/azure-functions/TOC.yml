@@ -54,7 +54,7 @@
     - name: Functions と Logic Apps
       href: functions-twitter-email.md
     - name: VS Code での Python 関数の開発
-      href: tutorial-vs-code-serverless-python.md
+      href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: サーバーレス API のための OpenAPI 定義
       href: functions-openapi-definition.md
     - name: 仮想ネットワークへの接続
@@ -74,7 +74,17 @@
     - name: Azure Serverless Community Library
       href: 'https://www.serverlesslibrary.net/'
     - name: Azure のサンプル
-      href: /samples/browse/?products=azure-functions
+      items:
+        - name: 'C#'
+          href: /samples/browse/?products=azure-functions&languages=csharp
+        - name: JavaScript
+          href: /samples/browse/?products=azure-functions&languages=javascript
+        - name: Java
+          href: /samples/browse/?products=azure-functions&languages=java
+        - name: Python
+          href: /samples/browse/?products=azure-functions&languages=python
+        - name: TypeScript
+          href: /samples/browse/?products=azure-functions&languages=typescript
     - name: Azure CLI
       href: functions-cli-samples.md
 - name: 概念
@@ -88,6 +98,10 @@
       href: functions-premium-plan.md
     - name: デプロイメント
       href: functions-deployment-technologies.md
+    - name: イベントとメッセージング
+      items:
+        - name: 同一入力のための設計
+          href: functions-idempotent.md
     - name: トリガーとバインド
       items:
         - name: トリガーとバインディングについて
@@ -124,6 +138,8 @@
           href: 'functions-reference-node.md#typescript'
     - name: 診断
       href: ../app-service/overview-diagnostics.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: 従量課金プランのコスト
+      href: functions-consumption-costs.md
     - name: パフォーマンスに関する考慮事項
       href: functions-best-practices.md
     - name: 関数プロキシ
@@ -178,6 +194,8 @@
           href: functions-deployment-slots.md
         - name: Azure Pipelines を使用してビルドおよびデプロイする
           href: functions-how-to-azure-devops.md
+        - name: GitHub アクションを使用して構築およびデプロイする
+          href: functions-how-to-github-actions.md
         - name: ZIP 展開
           href: deployment-zip-push.md
         - name: パッケージから実行
@@ -202,6 +220,7 @@
           href: disable-function.md
     - name: 監視
       href: functions-monitoring.md
+      displayName: 'App Insights, Application Insights, logs, logging'
     - name: セキュリティ保護
       items:
         - name: SSL 証明書の購入
@@ -226,6 +245,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: キー コンテナーからのシークレットの参照
           href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: geo ディザスター リカバリー
+          href: functions-geo-disaster-recovery.md
     - name: 統合
       items:
         - name: SQL Database への接続
@@ -240,6 +261,8 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: HTTP 関数エンドポイントのカスタマイズ
           href: functions-create-serverless-api.md
+        - name: オンプレミスのリソースの管理
+          href: functions-hybrid-powershell.md
     - name: トラブルシューティング
       items:
         - name: ストレージのトラブルシューティング
@@ -254,7 +277,7 @@
           href: 'https://docs.microsoft.com/python/api/azure-functions/azure.functions?view=azure-python'
     - name: アプリ設定のリファレンス
       href: functions-app-settings.md
-    - name: バインド
+    - name: トリガーとバインド
       items:
         - name: BLOB ストレージ
           href: functions-bindings-storage-blob.md
@@ -262,8 +285,10 @@
           items:
             - name: Functions 1.x
               href: functions-bindings-cosmosdb.md
+              displayName: Azure Cosmos DB
             - name: Functions 2.x
               href: functions-bindings-cosmosdb-v2.md
+              displayName: Azure Cosmos DB
         - name: Event Grid
           href: functions-bindings-event-grid.md
         - name: Event Hubs

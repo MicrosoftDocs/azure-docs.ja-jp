@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 4cc21a4dbab7d5114eed8414c6530eab5f42bb00
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: bf30e805a06222bf8c74429df54565073d7d919b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478851"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933065"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>Azure Maps を使用してストア ロケーターを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "68478851"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルの手順を完了するためには、まず [Azure Maps アカウントを作成](./tutorial-search-location.md#createaccount)し、[アカウントのサブスクリプション キーを取得](./tutorial-search-location.md#getkey)する必要があります。
+このチュートリアルの手順を完了するためには、まず [Azure Maps アカウントを作成](./tutorial-search-location.md#createaccount)し、[主キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従ってアカウントのプライマリ サブスクリプション キーを取得する必要があります。
 
 ## <a name="design"></a>設計
 
@@ -417,7 +417,7 @@ ms.locfileid: "68478851"
             center: [-90, 40],
             zoom: 2,
 
-            //Add your Azure Maps subscription key to the map SDK.
+            //Add your Azure Maps primary subscription key to the map SDK.
             authOptions: {
                 authType: 'subscriptionKey',
                 subscriptionKey: '<Your Azure Maps Key>'

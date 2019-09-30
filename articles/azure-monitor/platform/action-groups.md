@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/22/2019
+ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 52d7b84fe6210d8a4d46814ad6749bed0463478e
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: a0b0df9110f062b5f9c23840cb21308b634c9c81
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405652"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69898151"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 アクション グループは、Azure サブスクリプションの所有者によって定義された通知設定のコレクションです。 Azure Monitor および Service Health のアラートでは、アクション グループを使用して、アラートがトリガーされたことをユーザーに通知します。 ユーザーの要件に応じて、さまざまなアラートで同じアクション グループを使用することも、異なるアクション グループを使用することもあります。 1 つのサブスクリプションで最大 2,000 のアクション グループを構成できます。
@@ -76,6 +76,11 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 > [!NOTE]
 > 次の各項目の数値の制限については、[監視のためのサブスクリプション サービスの制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits)に関するセクションを参照してください。  
 
+### <a name="automation-runbook"></a>Automation Runbook
+Runbook ペイロードの制限については、[Azure サブスクリプション サービスの制限](../../azure-subscription-service-limits.md)に関するページを参照してください。
+
+アクション グループには、限られた数の Runbook アクションを保持できます。 
+
 ### <a name="azure-app-push-notifications"></a>Azure アプリのプッシュ通知
 アクション グループには、限られた数の Azure アプリのアクションを保持できます。
 
@@ -87,6 +92,16 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./../../azure-monitor/platform/alerts-rate-limiting.md)の記事を参照してください。
 
+### <a name="email-azure-resource-manager-role"></a>電子メールの Azure Resource Manager のロール
+サブスクリプションのロールのメンバーに電子メールを送信します。
+
+アクション グループには、電子メールに関する限られた数のアクションを持つことができます。 [レート制限情報](./../../azure-monitor/platform/alerts-rate-limiting.md)の記事を参照してください。
+
+### <a name="function"></a>Function
+アクションとして構成された Function App の関数キーは Functions API から読み込まれます。これは現在、アプリ設定 "AzureWebJobsSecretStorageType" を "files" に構成するには v2 の関数アプリが必要です。 詳細については、「[Changes to Key Management in Functions V2 (Functions V2 でのキー管理の変更)]( https://aka.ms/funcsecrets)」を参照してください。
+
+アクション グループには、限られた数の Function アクションを保持できます。
+
 ### <a name="itsm"></a>ITSM
 ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../../azure-monitor/platform/itsmc-overview.md)の作成方法を確認してください。
 
@@ -95,51 +110,7 @@ ITSM アクションには ITSM 接続が必要です。 [ITSM 接続](../../azu
 ### <a name="logic-app"></a>ロジック アプリ
 アクション グループには、限られた数のロジック アプリのアクションを保持できます。
 
-### <a name="function"></a>Function
-アクションとして構成された Function App の関数キーは Functions API から読み込まれます。これは現在、アプリ設定 "AzureWebJobsSecretStorageType" を "files" に構成するには v2 の関数アプリが必要です。 詳細については、「[Changes to Key Management in Functions V2 (Functions V2 でのキー管理の変更)]( https://aka.ms/funcsecrets)」を参照してください。
-
-アクション グループには、限られた数の Function アクションを保持できます。
-
-### <a name="automation-runbook"></a>Automation Runbook
-Runbook ペイロードの制限については、[Azure サブスクリプション サービスの制限](../../azure-subscription-service-limits.md)に関するページを参照してください。
-
-アクション グループには、限られた数の Runbook アクションを保持できます。 
-
-### <a name="sms"></a>sms
-その他の重要な情報については、[レート制限情報](./../../azure-monitor/platform/alerts-rate-limiting.md)と [SMS アラート動作](../../azure-monitor/platform/alerts-sms-behavior.md)に関する各ページを参照してください。
-
-アクション グループには、限られた数の SMS アクションを保持できます。  
-
-### <a name="voice"></a>音声
-[レート制限情報](./../../azure-monitor/platform/alerts-rate-limiting.md)の記事を参照してください。
-
-アクション グループには、限られた数の音声アクションを保持できます。
-
-### <a name="webhook"></a>Webhook
-Webhook は、次のルールを使用して再試行されます。 Webhook の呼び出しが最大 2 回再試行されるのは、HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合です。 1 回目の再試行は 10 秒後に実行されます。 2 回目の再試行は 100 秒後に実行されます。 2 回失敗した後の 30 分間、エンドポイントはアクション グループから呼び出されません。 
-
-発信元 IP アドレスの範囲
- - 13.72.19.232
- - 13.106.57.181
- - 13.106.54.3
- - 13.106.54.19
- - 13.106.38.142
- - 13.106.38.148
- - 13.106.57.196
- - 13.106.57.197
- - 52.244.68.117
- - 52.244.65.137
- - 52.183.31.0
- - 52.184.145.166
- - 51.4.138.199
- - 51.5.148.86
- - 51.5.149.19
-
-これらの IP アドレスへの変更に関する更新情報を受け取るには、アクション グループ サービスに関する情報の通知を監視するサービス正常性アラートを構成することをお勧めします。
-
-アクション グループには、限られた数の Webhook アクションを保持できます。
-
-#### <a name="secure-webhook"></a>Secure Webhook
+### <a name="secure-webhook"></a>Secure Webhook
 **Secure Webhook 機能は現在、プレビュー段階です。**
 
 アクション グループの Webhook アクションを使用すると、Azure Active Directory を利用して、アクション グループと、保護された Web API (Webhook エンドポイント) との間の接続をセキュリティで保護することができます。 この機能を利用するための全体的なワークフローを次に示します。 Azure AD アプリケーションとサービス プリンシパルの概要については、「[Microsoft ID プラットフォーム (v2.0) の概要](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)」を参照してください。
@@ -156,12 +127,12 @@ Webhook は、次のルールを使用して再試行されます。 Webhook の
     - Azure AD アプリケーションのオブジェクト ID を使用するように、PowerShell スクリプトの変数 $myAzureADApplicationObjectId を変更します。
     - 変更したスクリプトを実行します。
     
-1. アクション グループの Webhook アクションを構成します。
+1. アクション グループの Secure Webhook アクションを構成します。
     - スクリプトから値 $myApp.ObjectId をコピーし、Webhook アクション定義の [アプリケーション オブジェクト ID] フィールドに入力します。
     
     ![Secure Webhook アクション](./media/action-groups/action-groups-secure-webhook.png)
 
-##### <a name="secure-webhook-powershell-script"></a>Secure Webhook PowerShell スクリプト
+#### <a name="secure-webhook-powershell-script"></a>Secure Webhook PowerShell スクリプト
 
 ```PowerShell
 Connect-AzureAD -TenantId "<provide your Azure AD tenant ID here>"
@@ -229,6 +200,41 @@ Write-Host "My Azure AD Application ($myApp.ObjectId): " + $myApp.ObjectId
 Write-Host "My Azure AD Application's Roles"
 Write-Host $myApp.AppRoles
 ```
+
+### <a name="sms"></a>sms
+その他の重要な情報については、[レート制限情報](./../../azure-monitor/platform/alerts-rate-limiting.md)と [SMS アラート動作](../../azure-monitor/platform/alerts-sms-behavior.md)に関する各ページを参照してください。
+
+アクション グループには、限られた数の SMS アクションを保持できます。  
+
+### <a name="voice"></a>音声
+[レート制限情報](./../../azure-monitor/platform/alerts-rate-limiting.md)の記事を参照してください。
+
+アクション グループには、限られた数の音声アクションを保持できます。
+
+### <a name="webhook"></a>Webhook
+Webhook は、次のルールを使用して再試行されます。 Webhook の呼び出しが最大 2 回再試行されるのは、HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合です。 1 回目の再試行は 10 秒後に実行されます。 2 回目の再試行は 100 秒後に実行されます。 2 回失敗した後の 30 分間、エンドポイントはアクション グループから呼び出されません。 
+
+発信元 IP アドレスの範囲
+ - 13.72.19.232
+ - 13.106.57.181
+ - 13.106.54.3
+ - 13.106.54.19
+ - 13.106.38.142
+ - 13.106.38.148
+ - 13.106.57.196
+ - 13.106.57.197
+ - 52.244.68.117
+ - 52.244.65.137
+ - 52.183.31.0
+ - 52.184.145.166
+ - 51.4.138.199
+ - 51.5.148.86
+ - 51.5.149.19
+
+これらの IP アドレスへの変更に関する更新情報を受け取るには、アクション グループ サービスに関する情報の通知を監視するサービス正常性アラートを構成することをお勧めします。
+
+アクション グループには、限られた数の Webhook アクションを保持できます。
+
 
 
 ## <a name="next-steps"></a>次の手順

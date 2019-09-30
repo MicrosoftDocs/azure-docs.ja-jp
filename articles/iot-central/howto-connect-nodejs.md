@@ -3,17 +3,17 @@ title: 汎用の Node.js クライアント アプリケーションを Azure Io
 description: デバイス開発者として、汎用の Node.js デバイスを Azure IoT Central アプリケーションに接続する方法。
 author: dominicbetts
 ms.author: dobett
-ms.date: 06/14/2019
+ms.date: 09/12/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3b73344a233182fe8366795cfa111b706c6d06ac
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 75b900ecb37ae8d092d4e37129b7f39f801c470d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876259"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066439"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)
 
@@ -25,8 +25,8 @@ ms.locfileid: "69876259"
 
 この記事の手順を完了するには、次のものが必要です。
 
-1. Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
-1. [Node.js](https://nodejs.org/) バージョン 4.0.0 以降がインストールされた開発用コンピューター。 バージョンを確認するには、コマンド ラインで `node --version` を実行できます。 Node.js は、さまざまなオペレーティング システムで使用できます。
+- Azure IoT Central アプリケーション。 詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central.md)に関するページをご覧ください。
+- [Node.js](https://nodejs.org/) バージョン 4.0.0 以降がインストールされた開発用コンピューター。 バージョンを確認するには、コマンド ラインで `node --version` を実行できます。 Node.js は、さまざまなオペレーティング システムで使用できます。
 
 ## <a name="create-a-device-template"></a>デバイス テンプレートを作成する
 
@@ -36,7 +36,7 @@ Azure IoT Central アプリケーションでは、次の測定値、デバイ�
 
 **[Measurements]\(測定)** ページで、次のテレメトリを追加します。
 
-| 表示名 | フィールド名  | Units | Min | max | 小数点以下の桁数 |
+| 表示名 | フィールド名  | Units | Min | Max | 小数点以下の桁数 |
 | ------------ | ----------- | ----- | --- | --- | -------------- |
 | 気温  | 温度 | F     | 60  | 110 | 0              |
 | 湿度     | 湿度    | %     | 0   | 100 | 0              |
@@ -64,7 +64,7 @@ Azure IoT Central アプリケーションでは、次の測定値、デバイ�
 
 **[Measurements]\(測定)** ページで、次のイベントを追加します。
 
-| 表示名 | フィールド名  | Severity |
+| 表示名 | フィールド名  | 重大度 |
 | ------------ | ----------- | -------- |
 | 過熱  | overheat    | Error    |
 
@@ -98,7 +98,7 @@ Azure IoT Central アプリケーションでは、次の測定値、デバイ�
 
 **[設定]** ページで、次の**数値**の設定を追加します。
 
-| 表示名    | フィールド名     | Units | 10 進数 | Min | max  | Initial |
+| 表示名    | フィールド名     | Units | 10 進数 | Min | Max  | Initial |
 | --------------- | -------------- | ----- | -------- | --- | ---- | ------- |
 | ファン速度       | fanSpeed       | rpm   | 0        | 0   | 3000 | 0       |
 | Set Temperature | setTemperature | F     | 0        | 20  | 200  | 80      |
@@ -125,11 +125,13 @@ Countdown コマンドに次の入力フィールドを追加します。
 
 Azure IoT Central アプリケーションで、前のセクションで作成したデバイス テンプレートに実デバイスを追加します。
 
-次に、"デバイスの追加" チュートリアルの手順に従って、[実デバイスの接続文字列を生成](tutorial-add-device.md#generate-connection-string)します。 この接続文字列を次のセクションで使用します。
+**[デバイスの接続]** ページで、次のデバイスの接続情報をメモしておきます。**スコープ ID**、**デバイス ID**、**主キー**。 これらの値は、この攻略ガイドで後述するデバイス コードに追加します。
+
+![デバイスの接続情報](./media/howto-connect-nodejs/device-connection.png)
 
 ### <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
 
-次の手順は、アプリケーションに追加した実デバイスを実装するクライアント アプリケーションを作成する方法を示しています。 ここで、Node.js アプリケーションは実際のデバイスを表しています。 
+次の手順は、アプリケーションに追加した実デバイスを実装するクライアント アプリケーションを作成する方法を示しています。 ここで、Node.js アプリケーションは実際のデバイスを表しています。
 
 1. マシンに `connected-air-conditioner-adv` という名前のフォルダーを作成します。 コマンドライン環境でそのフォルダーに移動します。
 
@@ -137,7 +139,7 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
 
     ```cmd/sh
     npm init
-    npm install azure-iot-device azure-iot-device-mqtt --save
+    npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
 1. `connected-air-conditioner-adv` フォルダー内に **connectedAirConditionerAdv.js** という名前のファイルを作成します。
@@ -148,22 +150,31 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
     "use strict";
 
     // Use the Azure IoT device SDK for devices that connect to Azure IoT Central.
-    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
+    var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
-    var ConnectionString = require('azure-iot-device').ConnectionString;
+    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
+    var SymmetricKeySecurityClient = require('azure-iot-security-symmetric-key').SymmetricKeySecurityClient;
+    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
 1. このファイルに次の変数宣言を追加します。
 
     ```javascript
-    var connectionString = '{your device connection string}';
+    var provisioningHost = 'global.azure-devices-provisioning.net';
+    var idScope = '{your Scope ID}';
+    var registrationId = '{your Device ID}';
+    var symmetricKey = '{your Primary Key};
+    var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
+    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
+    var hubClient;
+
     var targetTemperature = 0;
     var locLong = -122.1215;
     var locLat = 47.6740;
-    var client = clientFromConnectionString(connectionString);
     ```
 
-    プレースホルダー `{your device connection string}` を[デバイスの接続文字列](tutorial-add-device.md#generate-connection-string)に更新します。 このサンプルでは、`targetTemperature` を 0 に初期化します。デバイスから現在の読み取りを取得したり、デバイス ツインから値を取得したりできます。
+    `{your Scope ID}`、`{your Device ID}`、`{your Primary Key}` の各プレースホルダーを、前に書き留めた値で更新します。 このサンプルでは、`targetTemperature` を 0 に初期化します。デバイスから現在の読み取りを取得したり、デバイス ツインから値を取得したりできます。
 
 1. テレメトリ、状態、イベント、および場所測定を Azure IoT Central アプリケーションに送信するには、ファイルに次の関数を追加します。
 
@@ -187,7 +198,7 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
             lat: locationLat }
         });
       var message = new Message(data);
-      client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
+      hubClient.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
         (res ? `; status: ${res.constructor.name}` : '')));
     }
@@ -262,14 +273,14 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
     // Handle countdown command
     function onCountdown(request, response) {
       console.log('Received call to countdown');
-
+    
       var countFrom = (typeof(request.payload.countFrom) === 'number' && request.payload.countFrom < 100) ? request.payload.countFrom : 10;
-
+    
       response.send(200, (err) => {
         if (err) {
           console.error('Unable to send method response: ' + err.toString());
         } else {
-          client.getTwin((err, twin) => {
+          hubClient.getTwin((err, twin) => {
             function doCountdown(){
               if ( countFrom >= 0 ) {
                 var patch = {
@@ -282,7 +293,7 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
                 setTimeout(doCountdown, 2000 );
               }
             }
-
+    
             doCountdown();
           });
         }
@@ -301,13 +312,13 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
         console.log('Device successfully connected to Azure IoT Central');
 
         // Create handler for countdown command
-        client.onDeviceMethod('countdown', onCountdown);
+        hubClient.onDeviceMethod('countdown', onCountdown);
 
         // Send telemetry measurements to Azure IoT Central every 1 second.
         setInterval(sendTelemetry, 1000);
 
         // Get device twin from Azure IoT Central.
-        client.getTwin((err, twin) => {
+        hubClient.getTwin((err, twin) => {
           if (err) {
             console.log(`Error getting device twin: ${err.toString()}`);
           } else {
@@ -325,8 +336,20 @@ Azure IoT Central アプリケーションで、前のセクションで作成�
       }
     };
 
-    // Start the device (connect it to Azure IoT Central).
-    client.open(connectCallback);
+    // Start the device (register and connect to Azure IoT Central).
+    provisioningClient.register((err, result) => {
+      if (err) {
+        console.log('Error registering device: ' + err);
+      } else {
+        console.log('Registration succeeded');
+        console.log('Assigned hub=' + result.assignedHub);
+        console.log('DeviceId=' + result.deviceId);
+        var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
+        hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
+
+        hubClient.open(connectCallback);
+      }
+    });
     ```
 
 ## <a name="run-your-nodejs-application"></a>Node.js アプリケーションを実行する

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39282e816be875e598d7e0599eeb358a79941be7
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478061"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910061"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Automation での変数アセット
 
@@ -60,7 +60,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 ## <a name="activities"></a>Activities
 
-次の表のアクティビティは、Runbook および DSC 構成で資格情報にアクセスするために使用されます。
+Runbook および DSC 構成内の変数にアクセスするために、次の表のアクティビティが使用されます。 Get-AzureRmAutomationVariable コマンドレットと Get-AutomationVariable コマンドレットの違いは、このドキュメントの冒頭で明確に説明されています。
 
 | Activities | 説明 |
 |:---|:---|

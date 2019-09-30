@@ -1,19 +1,20 @@
 ---
-title: Azure HDInsight IO キャッシュ (プレビュー) を使用して Apache Spark のワークロードのパフォーマンスを改善する
+title: Azure HDInsight IO キャッシュ (プレビュー) を使用した場合の Apache Spark のワークロード パフォーマンス
 description: Azure HDInsight IO キャッシュについて、およびそれを使用して Apache Spark のパフォーマンスを向上させる方法について説明します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: b77e7e9d5a68439e7f336ecb26e91031d80a7606
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f3f171d4dfd3642dc71724afbe084c3fcbf8beaa
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695201"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091067"
 ---
-# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>Azure HDInsight IO キャッシュ (プレビュー) を使用して Apache Spark のワークロードのパフォーマンスを改善する
+# <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache"></a>Azure HDInsight IO キャッシュを使用して Apache Spark のワークロードのパフォーマンスを改善する 
 
 IO キャッシュは、Apache Spark のジョブのパフォーマンスを改善する、Azure HDInsight 用のデータ キャッシュ サービスです。 IO キャッシュは [Apache TEZ](https://tez.apache.org/) や [Apache Hive](https://hive.apache.org/) のワークロードでも機能し、[Apache Spark](https://spark.apache.org/) のクラスター上で実行できます。 IO キャッシュは RubiX と呼ばれるオープン ソースのキャッシュ コンポーネントを使用します。 RubiX はビッグ データ分析エンジンで使用されるローカル ディスク キャッシュで、クラウド ストレージ システムからデータにアクセスします。 RubiX は、キャッシュ目的でオペレーティング メモリを予約するのではなくソリッド ステート ドライブ (SSD) を使用するため、キャッシュ システム間で一意です。 IO キャッシュ サービスはクラスターの各ワーカー ノード上に RubiX メタデータ サーバーを起動して管理します。 また、RubiX キャッシュの透過的な使用のためにクラスターのすべてのサービスを構成します。
 

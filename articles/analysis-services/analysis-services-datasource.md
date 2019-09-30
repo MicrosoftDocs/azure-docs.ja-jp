@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 09/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7abd0ac3d95825594dffe385bccc1672d0f71c5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81fc73ffd61a49eae1c4f107733b6f9f53efbb4f
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66142556"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993383"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -34,7 +34,7 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 ||||
 
 <a name="tab1400a">1</a> - 1400 以上の表形式モデルのみ。   
-<a name="azsqlmanaged">2</a> - Azure SQL Database Managed Instance がサポートされています。 マネージ インスタンスはプライベート IP アドレスを持つ Azure VNet 内で実行されるため、オンプレミス データ ゲートウェイが必要です。 パブリック エンドポイントを持つ Azure SQL Database Managed Instance は現在サポートされていません。   
+<a name="azsqlmanaged">2</a> - Azure SQL Database Managed Instance がサポートされています。 マネージド インスタンスはプライベート IP アドレスを使用して Azure VNet 内で実行されるため、インスタンスでパブリックエンド ポイントを有効にする必要があります。 有効になっていない場合は、オンプレミス データ ゲートウェイが必要です。    
 <a name="databricks">3</a> - Spark コネクタを使用する Azure Databricks は現在サポートされていません。   
 <a name="gen2">4</a> - ADLS Gen2 は現在サポートされていません。
 
@@ -42,7 +42,7 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 **プロバイダー**   
 Azure データ ソースに接続するメモリ内モデルおよび DirectQuery モデルは、.NET Framework SQL Server 用データ プロバイダーを使います。
 
-## <a name="on-premises-data-sources"></a>オンプレミス データ ソース
+## <a name="other-data-sources"></a>他のデータ ソース
 
 Azure AS サーバーからオンプレミスのデータ ソースに接続するには、オンプレミスのゲートウェイが必要です。 ゲートウェイを使うときは、64 ビットのプロバイダーが必要です。
 
@@ -76,7 +76,7 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 |OData フィード<sup>[1](#tab1400b)</sup>     |  
 |ODBC クエリ     | 
 |OLE DB     |   
-|Postgre SQL データベース<sup>[1](#tab1400b)</sup>    | 
+|PostgreSQL データベース<sup>[1](#tab1400b)</sup>    | 
 |Salesforce オブジェクト<sup>[1](#tab1400b)</sup> |  
 |Salesforce レポート<sup>[1](#tab1400b)</sup> |
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  
@@ -113,6 +113,10 @@ Azure Analysis Services のデータ モデルでは、特定のデータ ソー
 クラウド データ ソースの場合:
 
 * SQL 認証を使っている場合、権限借用にはサービス アカウントを使う必要があります。
+
+## <a name="oauth-credentials"></a>OAuth 資格情報
+
+1400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure SQL Data Warehouse、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 有効なトークンを生成するには、SSMS を使用して資格情報を設定します。
 
 ## <a name="next-steps"></a>次の手順
 [オンプレミス ゲートウェイ](analysis-services-gateway.md)   

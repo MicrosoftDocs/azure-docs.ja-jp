@@ -1,7 +1,7 @@
 ---
 title: ノートブック VM にモデルをデプロイする方法
-titleSuffix: Azure Machine Learning service
-description: ノートブック VM を使用して、Web サービスとして Azure Machine Learning service のモデルをデプロイする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: ノートブック VM を使用して、Web サービスとして Azure Machine Learning のモデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,26 +10,26 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 08/08/2019
-ms.openlocfilehash: d6b26dfe1eb8ea65dd7c751a148c599123b0f6db
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 046f998038c47a48a8528bf36d87ac836395eec2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947902"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002823"
 ---
 # <a name="deploy-a-model-to-notebook-vms"></a>ノートブック VM にモデルをデプロイする
 
-Azure Machine Learning service を使用して、ノートブック VM に Web サービスとしてモデルをデプロイする方法について説明します。 次のいずれかの条件に当てはまる場合は、ノートブック VM を使用します。
+Azure Machine Learning を使用して、ノートブック VM に Web サービスとしてモデルをデプロイする方法について説明します。 次のいずれかの条件に当てはまる場合は、ノートブック VM を使用します。
 
 - モデルを迅速にデプロイおよび検証する必要があります。
 - 開発中のモデルをテストします。
 
 > [!TIP]
-> ノートブック VM の Jupyter Notebook から、同じ VM 上の Web サービスへのモデルのデプロイは、_ローカル デプロイ_です。 この場合、"ローカル" コンピューターはノートブック VM です。 デプロイの詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+> ノートブック VM の Jupyter Notebook から、同じ VM 上の Web サービスへのモデルのデプロイは、_ローカル デプロイ_です。 この場合、"ローカル" コンピューターはノートブック VM です。 デプロイの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Notebook VM が実行されている Azure Machine Learning service のワークスペース 詳細については、[環境とワークスペースの設定](tutorial-1st-experiment-sdk-setup.md)に関する記事を参照してください。
+- Notebook VM が実行されている Azure Machine Learning のワークスペース 詳細については、[環境とワークスペースの設定](tutorial-1st-experiment-sdk-setup.md)に関する記事を参照してください。
 
 ## <a name="deploy-to-the-notebook-vms"></a>ノートブック VM にデプロイする
 

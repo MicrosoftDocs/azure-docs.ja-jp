@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bbce41271914df4bb8a75804bc66ae538fe766fa
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 5ae12742c2ad50d5bf1caaf14ae2f6d34bd6d3a2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716767"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70880794"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて
 
-Azure Active Directory (Azure AD) B2C によってアプリケーションに提供されるユーザー インターフェイス (UI) をカスタマイズしたり、ブランド名を付けたりする機能は、一貫性のある操作性を顧客に与えるために重要です。 そのような操作性には、サインアップ、サインイン、プロファイル編集、パスワード リセットが含まれます。 この記事では、アプリケーションの UI カスタマイズに役立つ情報を提供します。
+Azure Active Directory B2C (Azure AD B2C) によってアプリケーションに提供されるユーザー インターフェイス (UI) をカスタマイズしたり、ブランド名を付けたりする機能は、一貫性のある操作性を顧客に与えるために重要です。 そのような操作性には、サインアップ、サインイン、プロファイル編集、パスワード リセットが含まれます。 この記事では、アプリケーションの UI カスタマイズに役立つ情報を提供します。
 
 これらの操作性のニーズに基づき、さまざまな方法でアプリケーションの UI をカスタマイズします。 例:
 
@@ -134,6 +134,9 @@ Azure AD B2C テナントで [[言語のカスタマイズ]](active-directory-b2
 
 ## <a name="next-steps"></a>次の手順
 
-- ユーザー フローを使用している場合は、次のチュートリアルで UI のカスタマイズを開始できます:「[Azure Active Directory B2C でアプリケーションのユーザー インターフェイスをカスタマイズする](tutorial-customize-ui.md)」。
-- カスタム ポリシーを使用している場合は、次の記事で UI のカスタマイズを開始できます:「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」。
+- **ユーザー フロー**を使用している場合は、次のチュートリアルで UI のカスタマイズを開始できます:
 
+    「[Azure Active Directory B2C でアプリケーションのユーザー インターフェイスをカスタマイズする](tutorial-customize-ui.md)」。
+- **カスタム ポリシー**を使用している場合は、次の記事で UI のカスタマイズを開始できます:
+
+    「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」。

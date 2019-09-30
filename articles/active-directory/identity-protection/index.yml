@@ -12,12 +12,12 @@ metadata:
   ms.author: joflore
   ms.date: 08/20/2019
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 5f69dff8568c308d7a8eb9d80e247ef7cfc58acd
-  ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+  ms.openlocfilehash: b493af4372c612c41bafeaef863d8542e6730cb1
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/21/2019
-  ms.locfileid: "69874105"
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70126211"
 landingContent:
 - title: Identity Protection について
   linkLists:
@@ -27,14 +27,14 @@ landingContent:
       url: overview-v2.md
     - text: セキュリティの概要の紹介
       url: security-overview.md
-- title: リスク イベントの調査
+- title: リスク検出の調査
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: リスク ポリシーの構成
       url: howto-configure-risk-policies.md
-    - text: 危険なユーザーとサインインの調査
-      url: howto-investigate-risky-users-signins.md
+    - text: リスクの調査
+      url: howto-investigate-risk.md
   - linkListType: reference
     links:
     - text: イベントの種類
@@ -47,7 +47,7 @@ landingContent:
       url: flows.md
   - linkListType: how-to-guide
     links:
-    - text: リスク イベントのシミュレーション
+    - text: リスク検出をシミュレートする
       url: playbook.md
   - linkListType: quickstart
     links:

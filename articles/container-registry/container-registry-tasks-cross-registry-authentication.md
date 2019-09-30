@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 8fac70e7e5125ae86b2b5ce13041bbf1fd067bbe
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641524"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509085"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>ACR タスクでの Azure マネージド ID を使用したクロスレジストリ認証 
 
@@ -76,7 +76,7 @@ steps:
 
 ### <a name="create-task"></a>タスクを作成する
 
-次の [az acr task create][az-acr-task-create] コマンドを実行して、タスク *helloworldtask* を作成します。 このタスクのコンテキストはローカル システムで、このコマンドは作業ディレクトリのファイル `helloworldtask.yaml` を参照します。 ユーザー割り当て ID のリソース ID を `--assign-identity` パラメーターで渡します。 
+次の [az acr task create][az-acr-task-create] コマンドを実行して、タスク *helloworldtask* を作成します。 このタスクはソース コードのコンテキストなしで実行され、このコマンドは作業ディレクトリ内のファイル `helloworldtask.yaml` を参照します。 ユーザー割り当て ID のリソース ID を `--assign-identity` パラメーターで渡します。 
 
 ```azurecli
 az acr task create \
@@ -95,7 +95,7 @@ az acr task create \
 
 ### <a name="create-task"></a>タスクを作成する
 
-次の [az acr task create][az-acr-task-create] コマンドを実行して、タスク *helloworldtask* を作成します。 このタスクのコンテキストはローカル システムで、このコマンドは作業ディレクトリのファイル `helloworldtask.yaml` を参照します。 `--assign-identity` パラメーターを値なしで指定すると、システム割り当て ID がタスクで有効になります。 
+次の [az acr task create][az-acr-task-create] コマンドを実行して、タスク *helloworldtask* を作成します。 このタスクはソース コードのコンテキストなしで実行され、このコマンドは作業ディレクトリ内のファイル `helloworldtask.yaml` を参照します。 `--assign-identity` パラメーターを値なしで指定すると、システム割り当て ID がタスクで有効になります。 
 
 ```azurecli
 az acr task create \
@@ -216,8 +216,8 @@ cf10
 
 ## <a name="next-steps"></a>次の手順
 
-* [ACR タスクにおけるマネージド ID の有効化](container-registry-tasks-authentication-managed-identity.md)について学習します。
-* [ACR タスクの YAML 参照](container-registry-tasks-reference-yaml.md)に関するページを参照してください。
+* [ACR タスクにおけるマネージド ID の有効化](container-registry-tasks-authentication-managed-identity.md)について学習する。
+* [ACR タスクの YAML 参照](container-registry-tasks-reference-yaml.md)に関するページを参照する
 
 <!-- LINKS - Internal -->
 [az-login]: /cli/azure/reference-index#az-login

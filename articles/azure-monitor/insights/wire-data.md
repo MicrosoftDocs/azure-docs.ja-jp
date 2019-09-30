@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: b7968de8ad4357241eb8d86d51e991f4bbab959d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e1324bb90c0b92daf709b695a0a8b3af9161c2e
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65601579"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905423"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -60,9 +60,9 @@ Log Analytics エージェントに加えて、ワイヤ データ ソリュー�
 
 | **接続先ソース** | **サポートされています** | **説明** |
 | --- | --- | --- |
-| Windows エージェント | はい | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [Windows の Log Analytics エージェント](../../azure-monitor/platform/agent-windows.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)」を参照してください。 |
-| Linux エージェント | はい | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [Linux の Log Analytics エージェント](../../azure-monitor/learn/quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)」を参照してください。 |
-| System Center Operations Manager 管理グループ | はい | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Azure Monitor への直接接続が必要です。 |
+| Windows エージェント | はい | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [Windows の Log Analytics エージェント](../platform/agent-windows.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](vminsights-enable-overview.md#supported-operating-systems)」を参照してください。 |
+| Linux エージェント | はい | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [Linux の Log Analytics エージェント](../learn/quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](vminsights-enable-overview.md#supported-operating-systems)」を参照してください。 |
+| System Center Operations Manager 管理グループ | はい | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](../platform/om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Azure Monitor への直接接続が必要です。 |
 | Azure ストレージ アカウント | いいえ | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
 Windows では、データの収集と送信のために System Center Operations Manager と Azure Monitor の両方で Microsoft Monitoring Agent (MMA) が使用されます。 状況に応じて、このエージェントは System Center Operations Manager エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます。 System Center Operations Manager と Azure Monitor では、MMA バージョンが少し異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Azure Monitor、またはその両方にレポートできます。
@@ -89,7 +89,7 @@ Windows または Linux コンピューターがサービスに直接接続で�
 
 ### <a name="operating-systems"></a>オペレーティング システム
 
-次のセクションでは、Dependency Agent でサポートされているオペレーティング システムを一覧します。 ワイヤ データでは、すべてのオペレーティング システムで 32 ビット アーキテクチャがサポートされていません。
+次のセクションでは、Dependency Agent でサポートされているオペレーティング システムを示します。 ワイヤ データでは、すべてのオペレーティング システムで 32 ビット アーキテクチャがサポートされていません。
 
 #### <a name="windows-server"></a>Windows Server
 
@@ -160,7 +160,7 @@ Windows または Linux コンピューターがサービスに直接接続で�
 
 ### <a name="dependency-agent-downloads"></a>Dependency Agent のダウンロード
 
-| ファイル | OS | バージョン | SHA-256 |
+| ファイル | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
@@ -187,7 +187,7 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 Windows を実行している各コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
 1. [環境でホストされている Windows コンピューターからのデータの収集](../../azure-monitor/platform/agent-windows.md)に関する記事の手順に従って、Log Analytics エージェントをインストールします。
-2. 前のセクションのリンクを使用して Windows Dependency Agent をダウンロードしてから、次のコマンドを使用して実行します。`InstallDependencyAgent-Windows.exe`
+2. 前のセクションのリンクを使用して Windows の Dependency Agent をダウンロードしてから、次のコマンドを使用して実行します。`InstallDependencyAgent-Windows.exe`
 3. ウィザードに従ってエージェントをインストールします。
 4. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントの場合、ログ ディレクトリは %Programfiles%\Microsoft Dependency Agent\logs です。
 
@@ -202,7 +202,7 @@ InstallDependencyAgent-Windows.exe /?
 | <code>/?</code> | コマンド ライン オプションの一覧を取得します。 |
 | <code>/S</code> | ユーザー プロンプトを表示せずにサイレント インストールを実行します。 |
 
-Windows Dependency Agent のファイルは、既定で C:\Program Files\Microsoft Dependency Agent に配置されます。
+Windows の Dependency Agent のファイルは、既定で C:\Program Files\Microsoft Dependency agent に配置されます。
 
 ### <a name="install-the-dependency-agent-on-linux"></a>Linux に Dependency Agent をインストールする
 
@@ -230,7 +230,7 @@ InstallDependencyAgent-Linux64.bin -help
 
 Dependency Agent のファイルは、次のディレクトリに保存されます。
 
-| **ファイル** | **場所** |
+| **ファイル** | **Location** |
 | --- | --- |
 | コア ファイル | /opt/microsoft/dependency-agent |
 | ログ ファイル | /var/opt/microsoft/dependency-agent/log |
@@ -240,7 +240,7 @@ Dependency Agent のファイルは、次のディレクトリに保存されま
 
 ### <a name="installation-script-examples"></a>インストール スクリプトの例
 
-Dependency Agent を同時に多数のサーバーに対して簡単にデプロイするには、スクリプトの使用が便利です。 次のスクリプトの例を使用すると、Dependency Agent をダウンロードして Windows または Linux にインストールできます。
+Dependency Agent を同時に多数のサーバーに対して簡単にデプロイするには、スクリプトを使用すると便利です。 次のスクリプトの例を使用すると、Dependency Agent をダウンロードして Windows または Linux にインストールできます。
 
 #### <a name="powershell-script-for-windows"></a>Windows 用 PowerShell スクリプト
 
@@ -277,7 +277,7 @@ Node $NodeName
 
 {
 
-    # Download and install the Dependency Agent
+    # Download and install the Dependency agent
 
     xRemoteFile DAPackage
 
@@ -417,7 +417,6 @@ Azure Portal の Log Analytics ワークスペースの **[概要]** ページ�
 | ProcessName | プロセスのパスとファイル名 |
 | RemoteIPLongitude | IP の経度の値 |
 | RemoteIPLatitude | IP の緯度の値 |
-
 
 ## <a name="next-steps"></a>次の手順
 

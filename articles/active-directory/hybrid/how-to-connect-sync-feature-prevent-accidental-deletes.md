@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1244dd460196e5882caab0d4b526850da48d084
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 03c09a751119c1d6effa5795f2dbf7da422b7806
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60383391"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135793"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同期: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
@@ -56,7 +56,9 @@ Azure AD にエクスポートするようにステージングされた削除�
 4. 右にある **[アクション]** で、 **[コネクタの検索領域]** を選択します。
 5. ポップアップ ウィンドウの **[Scope (範囲)]** で、 **[Disconnected Since (切断時刻)]** を選択し、過去の時間を選択します。 **[Search (検索)]** をクリックします。 このページには、削除されようとしているすべてのオブジェクトが表示されます。 各項目をクリックすると、そのオブジェクトに関する追加情報を取得できます。 また、 **[Column Setting (列設定)]** をクリックして、グリッドに表示する属性を追加することもできます。
 
-![[コネクタの検索領域]](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
+![コネクタ スペースの検索](./media/how-to-connect-sync-feature-prevent-accidental-deletes/searchcs.png)
+
+[!NOTE] すべての削除が望ましいかどうかわからず、安全な道を選択することがあります。 PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold` を使用すると、望ましくない削除を許可する可能性があるしきい値を無効にするのではなく、新しいしきい値を設定できます。 
 
 すべての削除が望まれる場合、次のように操作します。
 

@@ -1,83 +1,97 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Event Grid のドキュメント
+summary: Azure Event Grid を使用して、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応する方法について説明します。
 metadata:
-  title: Azure Event Grid のドキュメント - チュートリアル、API リファレンス
-  description: Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。
+  title: Azure Event Grid のドキュメント
+  description: Azure Event Grid を使用して、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応する方法について説明します。
   services: event-grid
-  author: dougeby
-  manager: dougeby
   ms.service: event-grid
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 08/10/2017
-  ms.author: dougeby
-abstract:
-  description: Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベントの使用を可能にする、完全に管理されたインテリジェントなイベント ルーティング サービスです。 Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Event Grid の使用方法を確認してください。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: カスタム イベントを作成してサブスクライブする方法を学習します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-grid/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/event-grid/custom-event-quickstart
-          - image:
-              src: /azure/event-grid/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/event-grid/custom-event-quickstart-powershell
-          - image:
-              src: /azure/event-grid/media/index/portal.svg
-            text: Azure Portal
-            href: /azure/event-grid/custom-event-quickstart-portal
-      - type: paragraph
-        text: Blob Storage イベントのルーティング方法を学習します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-grid/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fevent-grid%2ftoc.json
-          - image:
-              src: /azure/event-grid/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: イベントに対応するアプリケーションを開発する方法を学習します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">ロジック アプリを使用して VM への変更を監視する</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">アップロードされたイメージをサイズ変更する</a>
-          - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Azure Automation を Event Grid と統合する</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: サービスを大まかに接続する Azure メッセージング モデルを選択する
-            href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
-            image:
-              src: /learn/achievements/choose-a-messaging-model-in-azure-to-connect-your-services.svg
-              href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-event-grid">対話型学習の詳細...</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/az.eventgrid">PowerShell</a></p>
-          - title: REST API
-            html: <p><a href="/rest/api/eventgrid">REST</a></p>
-          - title: スキーマ
-            html: <p><a href="/azure/event-grid/subscription-creation-schema ">サブスクリプション スキーマ</a></p><p><a href="/azure/event-grid/event-schema">イベント スキーマ</a></p>
+  ms.collection: collection
+  author: spelluru
+  ms.author: spelluru
+  ms.date: 09/06/2019
+  ms.openlocfilehash: 65eea06d0e31b0d4f9c151ed94719814be5086de
+  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70772136"
+landingContent:
+- title: Event Grid について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Event Grid とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Event Grid の概念
+      url: concepts.md
+    - text: イベント ソース
+      url: event-sources.md
+    - text: イベント ハンドラー
+      url: event-handlers.md
+    - text: イベント フィルター
+      url: event-filtering.md
+- title: シナリオ
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Blob Storage のイベントを Web エンドポイントにルーティングする
+      url: blob-event-quickstart-portal.md
+    - text: イベント ハンドラーとしての Queue storage
+      url: custom-event-to-queue-storage.md
+    - text: イベント ハンドラーとしての Event Hubs
+      url: custom-event-to-eventhub.md
+    - text: カスタム イベントを Web エンドポイントにルーティングする
+      url: custom-event-quickstart-portal.md
+    - text: プライベート コンテナー レジストリからイベントを送信する
+      url: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
+  - linkListType: tutorial
+    links:
+    - text: VM が変更されたときに電子メールで通知する
+      url: monitor-virtual-machine-changes-event-grid-logic-app.md
+    - text: アップロードされたイメージのサイズ変更
+      url: resize-images-on-storage-blob-upload-event.md
+    - text: Automation Runbook のトリガー
+      url: ensure-tags-exists-on-new-virtual-machines.md
+    - text: IoT Hub デバイスが追加されたときにメールを送信する
+      url: publish-iot-hub-events-to-logic-apps.md
+    - text: Service Bus イベントへの応答
+      url: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - text: Event Hubs からのデータのストリーム配信
+      url: event-grid-event-hubs-integration.md
+    - text: Media Services イベントのルーティング
+      url: ..//media-services/latest/job-state-events-cli-how-to.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - text: ハイブリッド接続へのルーティング
+      url: custom-event-to-hybrid-connection.md
+- title: 高度な概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティと認証
+      url: security-authentication.md
+    - text: 配信と再試行
+      url: delivery-and-retry.md
+    - text: イベント ドメイン
+      url: event-domains.md
+    - text: geo ディザスター リカバリー
+      url: geo-disaster-recovery.md
+- title: カスタマイズ
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: カスタム イベントを Web エンドポイントにルーティングする
+      url: custom-event-quickstart-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム トピックの作成
+      url: scripts/event-grid-cli-create-custom-topic.md
+    - text: カスタム トピックへのサブスクライブ
+      url: scripts/event-grid-cli-subscribe-custom-topic.md
+    - text: カスタム トピックに投稿する
+      url: post-to-custom-topic.md
+    - text: Event Grid スキーマへのカスタム フィールドのマップ
+      url: input-mappings.md

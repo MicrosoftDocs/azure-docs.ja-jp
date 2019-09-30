@@ -8,6 +8,9 @@
 - name: クイック スタート
   expanded: true
   items:
+    - name: 最初のクエリを実行する - Azure portal
+      displayName: 'portal, resource, graph, explorer'
+      href: first-query-portal.md
     - name: 最初のクエリを実行する - Azure CLI
       displayName: 'extension, docker'
       href: first-query-azurecli.md

@@ -1,73 +1,108 @@
 ---
-title: Azure Active Directory Domain Services:グループの管理されたサービス アカウントを作成する | Microsoft Docs
+title: Azure AD Domain Services のグループの管理されたサービス アカウント | Microsoft Docs
 description: Azure Active Directory Domain Services マネージド ドメインで使用する、グループで管理されるサービス アカウント (gMSA) を作成する方法について説明します。
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: e6faeddd-ef9e-4e23-84d6-c9b3f7d16567
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/09/2019
 ms.author: iainfou
-ms.openlocfilehash: 3742aed7ff39e0a2f6bdf353fb9f261176027422
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612948"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898226"
 ---
-# <a name="create-a-group-managed-service-account-gmsa-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでグループの管理されたサービス アカウント (gMSA) を作成する
-この記事では、Azure AD Domain Services のマネージド ドメインで管理されたサービス アカウントを作成する方法について説明します。
+# <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Azure AD Domain Services でグループの管理されたサービス アカウント (gMSA) を作成する
 
-## <a name="managed-service-accounts"></a>管理されたサービス アカウント
-スタンドアロンの管理されたサービス アカウント (sMSA) とは、パスワードが自動的に管理されるマネージド ドメイン アカウントです。 これは、サービス プリンシパル名 (SPN) の管理を簡略化し、他の管理者に管理を委任できるようにします。 この種類の管理されたサービス アカウント (MSA) は、Windows Server 2008 R2 および Windows 7 で導入されました。
+多くの場合、アプリケーションとサービスは、他のリソースで自身を認証するために ID を必要とします。 たとえば、Web サービスは、データベース サービスで認証を行う必要がある可能性があります。 アプリケーションまたはサービスに複数のインスタンス (Web サーバー ファームなど) がある場合、それらのリソースの ID を手動で作成して構成すると時間がかかります。 代わりに、グループの管理されたサービス アカウント (gMSA) を Azure Active Directory Domain Services (Azure AD DS) マネージド ドメインで作成することができます。 Windows OS は、gMSA の資格情報を自動的に管理します。これにより、大規模なリソース グループの管理が簡素化されます。
 
-グループの管理されたサービス アカウント (gMSA) は、ドメイン上の多数のサーバーに同じ利点を提供します。 相互認証プロトコルを機能させるには、サーバー ファームにホストされているサービスのすべてのインスタンスが同じサービス プリンシパルを使用する必要があります。 gMSA がサービス プリンシパルとして使用される場合、Windows オペレーティング システムは、管理者に依存する代わりにアカウントのパスワードを管理します。
+この記事では、Azure AD DS マネージド ドメインで gMSA を作成する方法について説明します。
 
-**詳細情報:**
-- [グループの管理されたサービス アカウントの概要](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
-- [グループの管理されたサービス アカウントの使用開始](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+## <a name="before-you-begin"></a>開始する前に
 
+この記事を完了するには、以下のリソースと特権が必要です。
 
-## <a name="using-service-accounts-in-azure-ad-domain-services"></a>Azure AD Domain Services でのサービス アカウントの使用
-Azure AD Domain Services のマネージド ドメインは、Microsoft によってロックダウンおよび管理されます。 Azure AD Domain Services でサービス アカウントを使用する場合、いくつかの重要な考慮事項があります。
+* 有効な Azure サブスクリプション
+    * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+* ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
+    * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
+* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
+    * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
+* Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
+    * 必要に応じて、[管理 VM を作成する][tutorial-create-management-vm]チュートリアルを完了します。
 
-### <a name="create-service-accounts-within-custom-organizational-units-ou-on-the-managed-domain"></a>マネージド ドメインでカスタム組織単位 (OU) 内にサービス アカウントを作成する
-組み込みの 'AADDC ユーザー' または 'AADDC コンピューター' 組織単位には、サービス アカウントを作成できません。 マネージド ドメインに[カスタム OU を作成](create-ou.md)し、そのカスタム OU 内にサービス アカウントを作成します。
+## <a name="managed-service-accounts-overview"></a>管理されたサービス アカウントの概要
 
-### <a name="the-key-distribution-services-kds-root-key-is-already-pre-created"></a>キー配布サービス (KDS) ルート キーは既に事前作成されている
-キー配布サービス (KDS) ルート キーは、Azure AD Domain Services のマネージド ドメインに作成済みです。 KDS ルート キーを作成する必要はなく、作成する権限もありません。 マネージド ドメインで KDS ルート キーを表示することもできません。
+スタンドアロンの管理されたサービス アカウント (sMSA) とは、パスワードが自動的に管理されるドメイン アカウントです。 このアプローチでは、サービス プリンシパル名 (SPN) の管理が簡素化され、他の管理者への委任管理が可能になります。 アカウントの資格情報を手動で作成したりローテーションしたりする必要はありません。
 
-## <a name="sample---create-a-gmsa-using-powershell"></a>サンプル - PowerShell を使用して gMSA を作成する
-次の例では、PowerShell を使用してカスタム OU を作成する方法を示します。 ```-Path``` パラメーターを使用して OU を指定することで、その OU 内に gMSA を作成できます。
+グループの管理されたサービス アカウント (gMSA) は、同じ管理の簡素化をドメイン内の複数のサーバーに対して提供します。 gMSA を使用すると、サーバー ファームでホストされているサービスのすべてのインスタンスが、相互認証プロトコルを機能させるために同じサービス プリンシパルを使用できます。 gMSA がサービス プリンシパルとして使用されると、Windows オペレーティング システムは、管理者に依存する代わりに、再びアカウントのパスワードを管理します。
+
+詳細については、[グループの管理されたサービス アカウントの (gMSA) 概要][gmsa-overview]に関する記事を参照してください。
+
+## <a name="using-service-accounts-in-azure-ad-ds"></a>Azure AD DS でのサービス アカウントの使用
+
+Azure AD DS マネージド ドメインは、Microsoft によってロックダウンおよび管理されるため、サービス アカウントを使用する際の考慮事項がいくつかあります。
+
+* マネージド ドメインのカスタム組織単位 (OU) 内にサービス アカウントを作成する。
+    * 組み込みの *AADDC ユーザー* または *AADDC コンピューター*の OU には、サービス アカウントを作成できません。
+    * 代わりに、Azure AD DS マネージド ドメインに[カスタム OU を作成][create-custom-ou]し、そのカスタム OU 内にサービス アカウントを作成します。
+* キー配布サービス (KDS) ルート キーが事前に作成されている。
+    * KDS ルート キーは、gMSA のパスワードの生成と取得に使用されます。 Azure AD DS では、KDS ルートは自動的に作成されます。
+    * 別のものを作成したり、既定の KDS ルート キーを表示したりする権限はありません。
+
+## <a name="create-a-gmsa"></a>gMSA を作成する
+
+まず、[New-ADOrganizationalUnit][New-AdOrganizationalUnit] コマンドレットを使用してカスタム OU を作成します。 カスタム OU の作成と管理について詳しくは、[Azure AD DS のカスタム OU][create-custom-ou] に関する記事を参照してください。
+
+次の例では、*contoso.com* という名前の Azure AD DS マネージド ドメインで、*myNewOU* という名前のカスタム OU を作成します。 独自の OU とマネージド ドメイン名を使用します。
 
 ```powershell
-# Create a new custom OU on the managed domain
-New-ADOrganizationalUnit -Name "MyNewOU" -Path "DC=contoso,DC=COM"
-
-# Create a service account 'WebFarmSvc' within the custom OU.
-New-ADServiceAccount -Name WebFarmSvc  `
--DNSHostName ` WebFarmSvc.contoso.com  `
--Path "OU=MYNEWOU,DC=contoso,DC=com"  `
--KerberosEncryptionType AES128, AES256  ` -ManagedPasswordIntervalInDays 30  `
--ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
-http/WebFarmSvc.contoso.com/contoso,  `
-http/WebFarmSvc/contoso.com, http/WebFarmSvc/contoso  `
--PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+New-ADOrganizationalUnit -Name "myNewOU" -Path "DC=contoso,DC=COM"
 ```
 
-**PowerShell コマンドレット ドキュメント:**
-- [New-ADOrganizationalUnit コマンドレット](https://docs.microsoft.com/powershell/module/addsadministration/new-adorganizationalunit)
-- [New-ADServiceAccount コマンドレット](https://docs.microsoft.com/powershell/module/addsadministration/New-ADServiceAccount)
+次に、[New-ADServiceAccount][New-ADServiceAccount] コマンドレットを使用して gMSA を作成します。 次のパラメーターの例が定義されています。
 
+* **-Name** は *WebFarmSvc* に設定されます
+* **-Path** パラメーターは、前の手順で作成された gMSA のカスタム OU を指定します。
+* DNS エントリとサービス プリンシパル名が *WebFarmSvc.contoso.com* に対して設定されます。
+* *CONTOSO-SERVER$* のプリンシパルでは、ID を使用するパスワードの取得が可能です。
+
+独自の名前とドメイン名を指定します。
+
+```powershell
+New-ADServiceAccount -Name WebFarmSvc `
+    -DNSHostName WebFarmSvc.contoso.com `
+    -Path "OU=MYNEWOU,DC=contoso,DC=com" `
+    -KerberosEncryptionType AES128, AES256 `
+    -ManagedPasswordIntervalInDays 30 `
+    -ServicePrincipalNames http/WebFarmSvc.contoso.com/contoso.com, `
+        http/WebFarmSvc.contoso.com/contoso, `
+        http/WebFarmSvc/contoso.com, `
+        http/WebFarmSvc/contoso `
+    -PrincipalsAllowedToRetrieveManagedPassword CONTOSO-SERVER$
+```
+
+これで、必要に応じて gMSA を使用するようにアプリケーションとサービスを構成できるようになりました。
 
 ## <a name="next-steps"></a>次の手順
-- [マネージド ドメインでカスタム OU を作成する](create-ou.md)
-- [グループの管理されたサービス アカウントの概要](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)
-- [グループの管理されたサービス アカウントの使用開始](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts)
+
+gMSA の詳細については、「[グループの管理されたサービス アカウントの概要][gmsa-start]」を参照してください。
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+[create-custom-ou]: create-ou.md
+
+<!-- EXTERNAL LINKS -->
+[New-ADOrganizationalUnit]: /powershell/module/addsadministration/New-AdOrganizationalUnit
+[New-ADServiceAccount]: /powershell/module/addsadministration/New-AdServiceAccount
+[gmsa-overview]: /windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview
+[gmsa-start]: /windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts

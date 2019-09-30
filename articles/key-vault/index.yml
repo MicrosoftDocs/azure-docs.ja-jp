@@ -1,91 +1,96 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Key Vault のドキュメント
+### YamlMime:Landing
+title: Azure Key Vault のドキュメント
+summary: Key Vault を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
 metadata:
-  title: Azure Key Vault のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: 'Learn how to use Key Vault to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
-  author: barclayn
-  manager: barbkess
-  layout: LandingPage
+  title: Azure Key Vault のドキュメント
+  description: Key Vault を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
+  services: key-vault
   ms.service: key-vault
   ms.topic: landing-page
-  ms.date: 09/14/2018
-  ms.author: barclayn
-abstract:
-  description: Key Vault を使用して、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護して管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、リソースやソリューションにアクセスして暗号化するキーやシークレットを作成および管理する方法を紹介します。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/key-vault/key-vault-whatis
-            html: <p>Azure Key Vault に関連する基本概念について説明します。</p>
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_article.svg'
-            title: 概念
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cli.svg
-            text: Azure CLI
-            href: /azure/key-vault/quick-create-cli
-          - image:
-              src: media/index/logo_powershell.svg
-            text: PowerShell
-            href: /azure/key-vault/quick-create-powershell
-          - image:
-              src: media/index/portal.svg
-            text: Azure Portal
-            href: /azure/key-vault/quick-create-portal
-          - image:
-              src: media/index/logo_NET.svg
-            text: .NET
-            href: /azure/key-vault/quick-create-net
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            href: /azure/key-vault/quick-create-node
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: さまざまなシナリオで Key Vault を使用する方法について説明します
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/key-vault/tutorial-net-create-vault-azure-web-app">Web アプリケーションから Key Vault を使ってみる</a>
-          - html: <a href="/azure/key-vault/tutorial-net-linux-virtual-machine">Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法</a></li>
-          - html: <a href="/azure/key-vault/tutorial-net-windows-virtual-machine">Azure Windows 仮想マシンを使用して Azure Key Vault を使用する方法</a>
-          - html: <a href="/azure/key-vault/tutorial-python-linux-virtual-machine">Azure Linux 仮想マシンを使用して Azure Key Vault を使用する方法</a>
-          - html: <a href="/azure/key-vault/tutorial-python-windows-virtual-machine">Azure Windows 仮想マシンを使用して Azure Key Vault を使用する方法</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Key Vault を使用してサーバー アプリでシークレットを管理する
-            href: /learn/modules/manage-secrets-with-azure-key-vault/
-            image:
-              src: /learn/achievements/manage-secrets-with-azure-key-vault.svg
-              href: /learn/modules/manage-secrets-with-azure-key-vault/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-key-vault">対話型学習の詳細...</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: '<p><a href="/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault">PowerShell</a></p><p><a href="/cli/azure/keyvault">Azure CLI 2</a></p>'
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/key-vault">.NET</a></p><p><a href="/java/api/overview/azure/keyvault">Java</a></p><p><a href="/python/api/overview/azure/key-vault">Python</a></p><p><a href="/javascript/api/overview/azure/key-vault">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/keyvault">REST API</a></p>
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: cbd1ca9ead64bfda8401876ec54487f767363d3c
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71299785"
+landingContent:
+- title: Azure Key Vault について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Key Vault とは
+      url: key-vault-overview.md
+  - linkListType: concept
+    links:
+    - text: 基本的な概念
+      url: basic-concepts.md
+    - text: 論理的な削除
+      url: key-vault-ovw-soft-delete.md
+    - text: Throttling
+      url: key-vault-ovw-throttling.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: quick-create-cli.md
+    - text: Azure PowerShell
+      url: quick-create-powershell.md
+    - text: ポータル
+      url: quick-create-portal.md
+    - text: .NET
+      url: quick-create-net.md
+    - text: Node.js
+      url: quick-create-node.md
+- title: チュートリアル
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Web アプリケーションからの Key Vault
+      url: tutorial-net-create-vault-azure-web-app.md
+    - text: Key Vault と Azure Linux 仮想マシン
+      url: tutorial-net-linux-virtual-machine.md
+    - text: Key Vault と Azure Windows 仮想マシン
+      url: tutorial-net-windows-virtual-machine.md
+    - text: Key Vault と Python - Linux
+      url: tutorial-python-linux-virtual-machine.md
+    - text: Key Vault と Python - Windows
+      url: tutorial-python-windows-virtual-machine.md
+- title: Key Vault とストレージ キー
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI を使用してストレージ キーを管理する
+      url: key-vault-ovw-storage-keys.md
+    - text: Azure PowerShell を使用してストレージ キーを管理する
+      url: key-vault-overview-storage-keys-powershell.md
+    - text: SAS トークンをコードにフェッチする
+      url: storage-keys-sas-tokens-code.md
+- title: Key Vault アプリの統合
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 開発者ガイド
+      url: key-vault-developers-guide.md
+    - text: マネージド ID を使用して Key Vault にアクセスする
+      url: managed-identity.md
+  - linkListType: tutorial
+    links:
+    - text: .NET Azure Web アプリで Key Vault を使用する
+      url: tutorial-net-create-vault-azure-web-app.md
+  - linkListType: reference
+    links:
+    - text: 認証、要求、応答
+      url: authentication-requests-and-responses.md
+    - text: Key Vault REST API リファレンス
+      url: /rest/api/keyvault/
+- title: Microsoft Learn
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure Key Vault を使用してサーバー アプリでシークレットを管理する
+      url: /learn/modules/manage-secrets-with-azure-key-vault/

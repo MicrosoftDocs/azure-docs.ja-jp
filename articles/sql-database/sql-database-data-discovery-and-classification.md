@@ -7,20 +7,21 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: vainolo
-ms.author: arib
+author: barmichal
+ms.author: mibar
 ms.reviewer: vanto
-ms.date: 03/22/2019
-ms.openlocfilehash: a606364503172d5cb1ddcf00262eb81b9423b55b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/22/2019
+ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569052"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009985"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL Database および SQL Data Warehouse のデータの検出と分類
 
-データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **保護**を行う高度な機能が用意されます。
+データの検出と分類では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **保護**を行う高度な機能が用意されます。
+
 最も機微なデータの検出と分類 (ビジネス/金融、医療、個人を特定できる情報 (PII) など) は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
 
 - データのプライバシー基準および規制のコンプライアンス要件を満たす支援。
@@ -76,7 +77,7 @@ Information Protection ポリシー管理の一環として、カスタム ラ�
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
-2. [Azure SQL Database] ウィンドウの [セキュリティ] で、 **[Advanced Data Security]** に移動します。 [Advanced Data Security] をクリックして有効にし、 **[データの検出と分類 (プレビュー)]** カードをクリックします。
+2. [Azure SQL Database] ウィンドウの [セキュリティ] で、 **[Advanced Data Security]** に移動します。 [Advanced Data Security を有効にします] をクリックして、 **[データの検出と分類]** カードをクリックします。
 
    ![データベースのスキャン](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -137,12 +138,17 @@ T-SQL を使って、列の分類を追加/削除し、データベース全体�
 - 1 つ以上の列の分類の削除:[DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - データベースのすべての分類の表示: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
+### <a name="manage-classifications-using-rest-apis"></a>Rest API を使用して分類を管理する
+
 REST API を使用して、分類をプログラムで管理することもできます。 公開された REST API は、次の操作をサポートします。
 
-- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): 指定された列の機密ラベルを作成または更新します
+- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 指定された列の機密ラベルを作成または更新します
 - [削除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): 指定された列の機密ラベルを削除します
+- [推奨の無効化](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) - 指定された列に対する秘密度の推奨を無効にします
+- [推奨の有効化](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) - 指定された列に対する秘密度の推奨を有効にします (既定では、すべての列で推奨事項が有効になっています)
 - [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): 指定された列の機密ラベルを取得します
 - [現在の内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 指定されたデータベースの現在の機密ラベルを取得します
+
 - [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 指定されたデータベースの推奨される機密ラベルを取得します
 
 ## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Azure PowerShell を使用してデータの検出と分類を管理する

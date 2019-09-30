@@ -1,22 +1,22 @@
 ---
-title: Blob ストレージの開発とテストに Azurite オープンソース エミュレーターを使用する (プレビュー)
-description: Azurite オープンソース エミュレーター (プレビュー) は、Azure Blob ストレージ アプリケーションをテストするための無料のローカル環境を提供します。
+title: Azure Storage の開発とテストに Azurite オープンソース エミュレーターを使用する (プレビュー)
+description: Azurite オープンソース エミュレーター (プレビュー) では、Azure Storage アプリケーションをテストするための無料のローカル環境が提供されます。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 06/12/2019
+ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: ebecd6cf9af5395e4da2b395ca9b2ff974a75409
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e611afd6f10154636eb2e0dd08437b4f7468d6b3
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721690"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309525"
 ---
-# <a name="use-the-azurite-open-source-emulator-for-blob-storage-development-and-testing-preview"></a>Blob ストレージの開発とテストに Azurite オープンソース エミュレーターを使用する (プレビュー)
+# <a name="use-the-azurite-open-source-emulator-for-azure-storage-development-and-testing-preview"></a>Azure Storage の開発とテストに Azurite オープンソース エミュレーターを使用する (プレビュー)
 
-Azurite バージョン 3 オープンソース エミュレーター (プレビュー) は、Azure Blob ストレージ アプリケーションをテストするための無料のローカル環境を提供します。 ローカルでのアプリケーションの動作に満足できたら、クラウドでの Azure Storage アカウントの使用に切り替えることができます。 エミュレーターは、Windows、Linux、および MacOS でのクロスプラットフォーム サポートを提供します。 Azurite v3 は、Azure Blob サービスによって実装された API をサポートします。
+Azurite バージョン 3.2 オープンソース エミュレーター (プレビュー) では、Azure Blob Storage アプリケーションおよび Azure Queue storage アプリケーションをテストするための無料のローカル環境が提供されます。 ローカルでのアプリケーションの動作に満足できたら、クラウドでの Azure Storage アカウントの使用に切り替えることができます。 エミュレーターは、Windows、Linux、および MacOS でのクロスプラットフォーム サポートを提供します。 Azurite v3 は、Azure Blob サービスによって実装された API をサポートします。
 
 Azurite は今後のストレージ エミュレーター プラットフォームです。 Azurite は [Azure ストレージ エミュレーター](storage-use-emulator.md)よりも優先されます。 Azurite は、最新バージョンの Azure Storage API をサポートするために引き続き更新されます。
 
@@ -35,18 +35,21 @@ Visual Studio Code で、 **[EXTENSIONS]** ウィンドウを選択し、 **[EXT
 
 または、ブラウザーで [VS Code 拡張機能のマーケット](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite)に移動します。 **[Install]\(インストール\)** を選択して Visual Studio Code を開き、Azurite 拡張機能ページに直接アクセスします。
 
-Azurite をすばやく開始または終了するには、VS Code ステータスバーで **[Azurite Blob Service]** をクリックするか、VS Code コマンド パレットで次のコマンドを発行します。 コマンド パレットを開くには、VS Code で **F1** キーを押します。
+Azurite をすばやく開始または終了するには、VS Code ステータスバーで **[Azurite Blob Service]** または **[Azurite Queue Service]** をクリックするか、VS Code コマンド パレットで次のコマンドを発行します。 コマンド パレットを開くには、VS Code で **F1** キーを押します。
 
 拡張機能では、次の Visual Studio Code コマンドがサポートされています。
 
    * **Azurite:Start** - すべての Azurite サービスを開始します
    * **Azurite:Close** - すべての Azurite サービスを閉じます
    * **Azurite:Clean** - すべての Azurite サービス永続性データをリセットします
-   * **Azurite:Start** -blob サービスを開始します
-   * **Azurite:Close** - blob サービスを閉じます
-   * **Azurite:Clean** - blob サービスを消去します
+   * **Azurite:Start Blob Service** - Blob Service を開始します
+   * **Azurite:Close Blob Service** - Blob Service を閉じます
+   * **Azurite:Clean Blob Service** - Blob Service をクリーンアップします
+   * **Azurite:Start Queue Service** - Queue service を開始します
+   * **Azurite:Close Queue Service** - Queue service を閉じます
+   * **Azurite:Clean Queue Service** - Queue service をクリーンアップします
 
-Visual Studio Code 内で Azurite を構成するには、拡張機能ウィンドウを選択し、 **[Azurite]** を右クリックします。 **[Configure Extension Settings]\(拡張機能の設定の構成\)** を選択します。
+Visual Studio Code 内で Azurite を構成するには、拡張機能ウィンドウを選択します。 **Azurite** の **[管理]** (歯車) アイコンを選択します。 **[Configure Extension Settings]\(拡張機能の設定の構成\)** を選択します。
 
 ![Azurite の拡張機能の設定の構成](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
@@ -56,6 +59,8 @@ Visual Studio Code 内で Azurite を構成するには、拡張機能ウィン�
    * **Azurite:Blob Port** - Blob service のリスニング ポート。 既定のポートは 10000 です。
    * **Azurite:Debug** - Azurite チャネルにデバッグ ログを出力します。 既定値は **false** です。
    * **Azurite:Location** - ワークスペースの場所のパス。 既定値は Visual Studio Code の作業フォルダーです。
+   * **Azurite:Queue Host** - Queue サービスのリッスン エンドポイント。 既定の設定は 127.0.0.1 です。
+   * **Azurite:Queue Port** - Queue サービスのリッスン ポート。 既定のポートは 10001 です。
    * **Azurite:Silent** - サイレント モードではアクセス ログが無効になります。 既定値は **false** です。
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>NPM を使用して Azurite をインストールして実行する
@@ -81,15 +86,22 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 次のコマンドは Azurite Docker を実行します。 `-p 10000:10000` パラメーターにより、ホスト マシンのポート 10000 から Docker インスタンスに要求がリダイレクトされます。
 
 ```console
-docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 ```
 
 **ワークスペースの場所を指定する**:
 
-次の例で、`-v c:/azurite:/data` パラメーターは `c:/azurite` を Azurite の永続化されているデータの場所として指定します。
+次の例で、`-v c:/azurite:/data` パラメーターでは Azurite の永続的なデータの場所として *c:/azurite* が指定されています。 Docker コマンドを実行する前に、*c:/azurite* ディレクトリを作成しておく必要があります。
 
 ```console
-docker run -p 10000:10000 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+```
+
+**Blob Service だけを実行する**
+
+```console
+docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+    azurite-blob --blobHost 0.0.0.0 --blobPort 10000
 ```
 
 **すべての Azurite パラメーターを設定する**:
@@ -98,11 +110,14 @@ docker run -p 10000:10000 -v c:/azurite:/data mcr.microsoft.com/azure-storage/az
 
 ```console
 docker run -p 8888:8888
+           -p 9999:9999
            -v c:/azurite:/workspace mcr.microsoft.com/azure-storage/azurite azurite
            -l /workspace
            -d /workspace/debug.log
            --blobPort 8888
            --blobHost 0.0.0.0
+           --queuePort 9999
+           --queueHost 0.0.0.0
 ```
 
 起動時に Azurite を構成する方法の詳細については、「[コマンド ライン オプション](#command-line-options)」を参照してください。
@@ -143,13 +158,15 @@ azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 このセクションでは、Azurite を起動するときに使用できるコマンドライン スイッチについて詳しく説明します。 すべてのコマンドライン スイッチは省略可能です。
 
 ```console
-C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>]
-    [-l | --location <workspace path>] [-s | --silent] [-d | --debug <log file path>]
+C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
+    [-d | --debug <log file path>] [-l | --location <workspace path>]
+    [--queueHost <IP address>] [--queuePort <port address>]
+    [-s | --silent] [-h | --help]
 ```
 
-**-l** スイッチは **--location** のショートカット、 **-s** は **--silent** のショートカット、 **-d** は **--debug** のショートカットです。
+**-d** は **--debug** のショートカット、 **-l** スイッチは **--location** のショートカット、 **-s** は **--silent** のショートカット、 **-h** は **--help** のショートカットです。
 
-### <a name="listening-host"></a>リッスン中のホスト
+### <a name="blob-listening-host"></a>BLOB リスニング ホスト
 
 **省略可能**: 既定では、Azurite はローカル サーバーとして 127.0.0.1 をリッスンします。 要件に合わせてアドレスを設定するには、 **--blobHost** スイッチを使用します。
 
@@ -168,7 +185,7 @@ azurite --blobHost 0.0.0.0
 > [!CAUTION]
 > リモート要求を許可すると、システムが外部からの攻撃に対して脆弱になる可能性があります。
 
-### <a name="listening-port-configuration"></a>リスニング ポート構成
+### <a name="blob-listening-port-configuration"></a>BLOB リスニング ポートの構成
 
 **省略可能**: 既定では、Azurite は Blob service をポート 10000 でリッスンします。 必要なリスニング ポートを指定するには、 **--blobPort** スイッチを使用します。
 
@@ -185,6 +202,46 @@ azurite --blobPort 8888
 
 ```console
 azurite --blobPort 0
+```
+
+使用中のポートは Azurite の起動時に表示されます。
+
+### <a name="queue-listening-host"></a>キュー リスニング ホスト
+
+**省略可能**: 既定では、Azurite はローカル サーバーとして 127.0.0.1 をリッスンします。 要件に合わせてアドレスを設定するには、 **--queueHost** スイッチを使用します。
+
+ローカル コンピューターの要求のみを受け入れる:
+
+```console
+azurite --queueHost 127.0.0.1
+```
+
+リモート要求を許可する:
+
+```console
+azurite --queueHost 0.0.0.0
+```
+
+> [!CAUTION]
+> リモート要求を許可すると、システムが外部からの攻撃に対して脆弱になる可能性があります。
+
+### <a name="queue-listening-port-configuration"></a>キュー リスニング ポートの構成
+
+**省略可能**: Azurite の既定では、ポート 10001 で Queue サービスがリッスンされます。 必要なリスニング ポートを指定するには、 **--queuePort** スイッチを使用します。
+
+> [!NOTE]
+> カスタマイズされたポートを使用した後、Azure Storage ツールまたは SDK で、接続文字列または対応する構成を更新する必要があります。
+
+Queue サービスのリスニング ポートをカスタマイズします。
+
+```console
+azurite --queuePort 8888
+```
+
+使用可能なポートをシステムに自動選択させる:
+
+```console
+azurite --queuePort 0
 ```
 
 使用中のポートは Azurite の起動時に表示されます。

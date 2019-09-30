@@ -11,18 +11,21 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8c1c96fdb1f4f42c7592791881b855f74d411171
+ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123469"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70018282"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスを自動的にスケーリングする  
 
 Azure API Management サービス インスタンスは、一連の規則に基づいて自動的にスケーリングできます。 この動作は Azure Monitor を使用して有効化および構成でき、Azure API Management サービスの **Standard** および **Premium** レベルでのみサポートされています。
 
 この記事では、自動スケールの構成手順を説明し、自動スケール規則の最適な構成を提案します。
+
+> [!NOTE]
+> **従量課金**レベルの API Management サービスは、トラフィックに基づいて自動的にスケールされます。追加の構成は必要ありません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,7 +36,7 @@ Azure API Management サービス インスタンスは、一連の規則に基�
 + [Azure API Management インスタンスの容量](api-management-capacity.md)の概念を理解している。
 + [Azure API Management インスタンスの手動スケーリングのプロセス](upgrade-and-scale.md)について、コストの影響を含めて理解している。
 
-[!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
+[!INCLUDE [premium-standard.md](../../includes/api-management-availability-premium-standard.md)]
 
 ## <a name="azure-api-management-autoscale-limitations"></a>Azure API Management の自動スケールの制限事項
 

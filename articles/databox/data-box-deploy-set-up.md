@@ -6,16 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 6a725784c419b67f7738b70ad867d2d6ef8b0785
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.localizationpriority: high
+ms.openlocfilehash: 528be96f95523089c78562814c292fb0f40849e1
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65795975"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70240238"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル:ケーブルを配線して Azure Data Box に接続する
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="cable-and-connect-to-your-device"></a>ケーブルを配線してデバイスに接続する
+
+::: zone-end
+
+::: zone target="docs"
 
 このチュートリアルでは、Azure Data Box のケーブル配線、接続、起動の方法について説明します。
 
@@ -64,6 +77,38 @@ ms.locfileid: "65795975"
 
     ![Data Box の電源ボタン](media/data-box-deploy-set-up/data-box-powered-door-open.png)
 
+::: zone-end
+
+::: zone target="chromeless"
+
+デバイスを受け取ったら、デバイスにケーブルを配線してデバイスに接続する必要があります。 
+
+## <a name="cable-your-device"></a>デバイスにケーブルを配線する
+
+1. デバイスが改ざんされたり破損していたりする形跡がある場合、作業を続行しないでください。 交換用のデバイスを発送するよう Microsoft サポートに問い合わせてください。
+2. デバイスのケーブルを接続する前に、次のケーブルがあることを確認します。
+    
+    - (付属品) デバイス接続用の IEC60320 C-13 コネクタが付いた定格 10A 以上のアース付き電源コード。
+    - RJ-45 CAT 6 ネットワーク ケーブル 1 本 (MGMT ネットワーク インターフェイスで使用)
+    - 10 GbE SFP+ Twinax 銅線ケーブル 2 本 (10 Gbps DATA 1、DATA 2 ネットワーク インターフェイスで使用)
+    - RJ-45 CAT 6A OR ネットワーク ケーブル 1 本、RJ-45 CAT 6 ネットワーク ケーブル 1 本 (それぞれ 10 Gbps または 1 Gbps として構成されている DATA 3 ネットワーク インターフェイスで使用)
+
+3. デバイスを取り外して平らな場所に置きます。 
+    
+4. 次に示すようにしてデバイスのケーブルを接続します。  
+
+    ![ケーブル配線した Data Box デバイスのバックプレーン](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)  
+
+    1. 電源ケーブルをデバイスに接続します。
+    2. RJ-45 CAT 6 ネットワーク ケーブルを使用して、ホスト コンピューターをデバイス上の管理ポート (MGMT) に接続します。 
+    3. SFP+ Twinax 銅線ケーブルを使用して、10 Gbps 以上 (1 Gbps よりも望ましい) のデータ用 DATA 1 または DATA 2 ネットワーク インターフェイスを少なくとも 1 つ接続します。 
+    4. デバイスの電源を入れます。 電源ボタンはデバイスのフロント パネルにあります。
+
+::: zone-end
+
+::: zone target="docs"
+
+
 ## <a name="connect-to-your-device"></a>デバイスに接続する
 
 次のステップを実行して、ローカル Web UI とポータル UI を使用してデバイスを設定します。
@@ -92,6 +137,22 @@ ms.locfileid: "65795975"
 
 デバイスの設定が完了したら、デバイス共有に接続し、コンピューターからデバイスにデータをコピーすることができます。 
 
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="connect-your-device"></a>ご利用のデバイスを接続する
+
+1. デバイスのパスワードを取得するには、[Azure Portal](https://portal.azure.com) で **[全般] > [デバイスの詳細]** に移動します。
+2. Data Box に接続するために使用するコンピューターのイーサネット アダプターを、静的 IP アドレス 192.168.100.5、サブネット 255.255.255.0 で構成します。 `https://192.168.100.10` からデバイスのローカル Web UI にアクセスします。 デバイスを起動してから接続するまで最大 5 分かかることがあります。 
+3. Azure portal からパスワードを使用してサインインします。 Web サイトのセキュリティ証明書に問題があることを示すエラーが表示されます。 ブラウザー固有の手順に従い Web ページに進みます。
+4. 既定では、10 Gbps のデータ インターフェイス(または 1 Gbps) のネットワーク設定は、DHCP として構成されます。 必要に応じて、このインターフェイスを静的インターフェイスとして構成し、IP アドレスを入力することができます。 
+
+::: zone-end
+
+
+::: zone target="docs"
+
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
@@ -104,4 +165,6 @@ ms.locfileid: "65795975"
 
 > [!div class="nextstepaction"]
 > [データを Data Box にコピーする](./data-box-deploy-copy-data.md)
+
+::: zone-end
 

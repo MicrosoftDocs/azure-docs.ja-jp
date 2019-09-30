@@ -1,20 +1,20 @@
 ---
-title: プレビュー - Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
+title: Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 description: Standard SKU でロード バランサーを使用して、Azure Kubernetes Service (AKS) でサービスを公開する方法について説明します。
 services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 09/05/2019
 ms.author: zarhoads
-ms.openlocfilehash: 422189952096ef25b69e62aa2708c59385b0637a
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: d2a0ff5db6707c4f765c71937a7d0f0749401959
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898954"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172198"
 ---
-# <a name="preview---use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
+# <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Standard SKU ロード バランサーを使用する
 
 Azure Kubernetes Service (AKS) でアプリケーションへのアクセスを提供するために、Azure Load Balancer を作成して使用できます。 AKS で実行されるロード バランサーは、内部または外部ロード バランサーとして使用できます。 内部ロード バランサーは、AKS クラスターと同じ仮想ネットワークで実行されているアプリケーションに対してのみ Kubernetes サービスへのアクセスを可能にします。 外部ロード バランサーは、1 つ以上のイングレス用のパブリック IP を受け取り、そのパブリック IP を使用して外部から Kubernetes サービスにアクセスできるようにします。
 
@@ -23,8 +23,6 @@ Azure Load Balancer は、*Basic* と *Standard* の 2 つの SKU で使用で�
 この記事では、Azure Kubernetes Service (AKS) で *Standard* SKU を使用する Azure Load Balancer を作成し、使用する方法について説明します。
 
 この記事は、Kubernetes および Azure Load Balancer の基本的な概念を理解していることを前提としています。 詳細については、「[Azure Kubernetes Services (AKS) における Kubernetes の中心概念][kubernetes-concepts]」と「[Azure Load Balancer の概要][azure-lb]」を参照してください。
-
-現在、この機能はプレビュー段階にあります。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -36,17 +34,11 @@ CLI をローカルにインストールして使用する場合、この記事�
 
 既存のサブネットまたはリソース グループを使用する場合、AKS クラスターのサービス プリンシパルにはネットワーク リソースを管理するアクセス許可が必要です。 一般に、委任されたリソースのサービス プリンシパルには*ネットワーク共同作成者*ロールを割り当てます。 アクセス許可の詳細については、[他の Azure リソースへの AKS アクセスの委任][aks-sp]に関する記事を参照してください。
 
-ロード バランサーの SKU を既定の *Basic* ではなく *Standard* に設定する AKS クラスターを作成する必要があります。 AKS クラスターの作成については後の手順で説明します。最初に、プレビュー機能をいくつか有効にする必要があります。
-
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
->
-> * [AKS のサポート ポリシー][aks-support-policies]
-> * [Azure サポートに関する FAQ][aks-faq]
+ロード バランサーの SKU を既定の *Basic* ではなく *Standard* に設定する AKS クラスターを作成する必要があります。
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-Azure Load Balancer Standard SKU を使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
+Azure Load Balancer Standard SKU を使用するには、*aks-preview* CLI 拡張機能のバージョン 0.4.12 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -56,47 +48,17 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-aksazurestandardloadbalancer-preview-feature"></a>AKSAzureStandardLoadBalancer プレビュー機能を登録する
-
-*Standard* SKU を使用するロード バランサーを使用できる AKS クラスターを作成するには、サブスクリプションで *AKSAzureStandardLoadBalancer* 機能フラグを有効にする必要があります。 *AKSAzureStandardLoadBalancer* 機能は、仮想マシン スケール セットを使用してクラスターを作成するときに *VMSSPreview* も使用します。 この機能は、クラスターを構成するときに、最新のサービス拡張機能のセットを提供します。 必須ではありませんが、*VMSSPreview* 機能フラグも有効にすることをお勧めします。
-
-> [!CAUTION]
-> サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
-
-次の例に示されているように、[az feature register][az-feature-register] コマンドを使用して *VMSSPreview* および *AKSAzureStandardLoadBalancer* 機能フラグを登録します。
-
-```azurecli-interactive
-az feature register --namespace "Microsoft.ContainerService" --name "VMSSPreview"
-az feature register --namespace "Microsoft.ContainerService" --name "AKSAzureStandardLoadBalancer"
-```
-
-> [!NOTE]
-> *VMSSPreview* または *AKSAzureStandardLoadBalancer* 機能フラグを正常に登録した後に作成されたすべての AKS クラスターでは、このプレビュー クラスター エクスペリエンスが使用されます。 完全にサポートされた通常のクラスターを引き続き作成するには、運用サブスクリプションでプレビュー機能を有効にしないでください。 プレビュー機能のテストには、別のテストまたは開発用 Azure サブスクリプションを使用します。
-
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
-
-```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAzureStandardLoadBalancer')].{Name:name,State:properties.state}"
-```
-
-準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
-
-```azurecli-interactive
-az provider register --namespace Microsoft.ContainerService
-```
-
 ### <a name="limitations"></a>制限事項
 
 *Standard* SKU を使用するロード バランサーをサポートする AKS クラスターを作成し、管理する場合、次の制限が適用されます。
 
-* ロード バランサーに対して *Standard* SKU を使用する場合、パブリック アドレスを許可する必要があり、IP 作成を禁止する Azure Policy は作成しないようにする必要があります。 AKS クラスターは、AKS クラスター用に作成されたのと同じリソース グループ (通常、名前の先頭が *MC_* ) に *Standard* SKU パブリック IP を自動的に作成します。 AKS により、パブリック IP が *Standard* SKU ロード バランサーに割り当てられます。 AKS クラスターからのエグレス トラフィックを許可するために、このパブリック IP が必要です。 また、このパブリック IP は、コントロール プレーンとエージェント ノードの間の接続を維持するため、および前のバージョンの AKS との互換性を維持するためにも必要です。
-* ロード バランサーに対して *Standard* SKU を使用する場合、Kubernetes バージョン 1.13.5 以降を使用する必要があります。
-
-この機能がプレビュー段階にある間は、追加で次の制限もあります。
-
-* AKS でロード バランサーに対して *Standard* SKU を使用する場合、ロード バランサーのエグレスに独自のパブリック IP アドレスを設定することはできません。 AKS がロード バランサーに割り当てる IP アドレスを使用する必要があります。
-* これは、[ノード パブリック IP 機能](use-multiple-node-pools.md#assign-a-public-ip-per-node-in-a-node-pool)では使用できません。
+* AKS クラスターからのエグレス トラフィックを許可するために、パブリック IP または IP プレフィックスが少なくとも 1 つ必要です。 パブリック IP または IP プレフィックスは、コントロール プレーンとエージェント ノードの間の接続を維持するためと、前のバージョンの AKS との互換性を維持するためにも必要です。 *Standard* SKU ロード バランサーでパブリック IP または IP プレフィックスを指定するための次のオプションがあります:
+    * 独自のパブリック IP を指定する。
+    * 独自のパブリック IP プレフィックスを指定する。
+    * 最大 100 までの数字を指定し、AKS クラスターとして作成された同じリソース グループでそれだけの数の *Standard* SKU パブリック IP を作成することを AKS クラスターに許可します。名前は通常、*MC_* で始まります。 AKS により、パブリック IP が *Standard* SKU ロード バランサーに割り当てられます。 既定では、パブリック IP、パブリック IP プレフィックス、または IP の数が指定されていない場合、同じリソース グループでパブリック IP が 1 つ自動的に作成されます。 また、パブリック アドレスを許可する必要があり、IP 作成を禁止する Azure Policy は作成しないようにする必要があります。
+* ロード バランサーに対して *Standard* SKU を使用する場合、Kubernetes バージョン 1.13 以降を使用する必要があります。
+* ロード バランサー SKU は、AKS クラスターの作成時にのみ定義できます。 AKS クラスターが作成された後にロード バランサー SKU を変更することはできません。
+* 1 つのクラスターで使用できるロード バランサー SKU は 1 つのみです。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -125,16 +87,18 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
-*Standard* SKU を使用するロード バランサーをサポートする AKS クラスターを実行するには、クラスターで *load-balancer-sku* パラメーターを *standard* に設定する必要があります。 このパラメーターにより、クラスターが作成されるときに、*Standard* SKU を使用するロード バランサーが作成されます。 クラスターで *LoadBalancer* サービスを実行すると、*Standard* SK ロード バランサーの構成がサービスの構成で更新されます。 *myAKSCluster* という名前の AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。
+*Standard* SKU を使用するロード バランサーをサポートする AKS クラスターを実行するには、クラスターで *load-balancer-sku* パラメーターを *standard* に設定する必要があります。 このパラメーターにより、クラスターが作成されるときに、*Standard* SKU を使用するロード バランサーが作成されます。 クラスターで *LoadBalancer* サービスを実行すると、*Standard* SKU ロード バランサーの構成がサービスの構成で更新されます。 *myAKSCluster* という名前の AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。
 
 > [!NOTE]
 > *load-balancer-sku* プロパティは、クラスターの作成時にのみ使用できます。 AKS クラスターが作成された後にロード バランサー SKU を変更することはできません。 また、1 つのクラスターで使用できるロード バランサー SKU の種類は 1 つのみです。
+> 
+> 独自のパブリック IP を使用する場合、*load-balancer-outbound-ips* パラメーターまたは *load-balancer-outbound-ip-prefixes* パラメーターを使用します。 いずれのパラメーターも、[クラスターの更新](#optional---provide-your-own-public-ips-or-prefixes-for-egress)時に使用できます。
 
 ```azurecli-interactive
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
     --node-count 1 \
     --load-balancer-sku standard \
     --generate-ssh-keys
@@ -309,6 +273,105 @@ azure-vote-front    LoadBalancer   10.0.227.198   52.179.23.131   80:31201/TCP  
 > [!NOTE]
 > また、ロード バランサーを内部にして、パブリック IP を公開しないように構成することもできます。 ロード バランサーを内部として構成するには、*LoadBalancer* サービスにアノテーションとして `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` を追加します。 サンプルの yaml マニフェストと内部ロード バランサーの詳細について、[こちら][internal-lb-yaml]で確認できます。
 
+## <a name="optional---scale-the-number-of-managed-public-ips"></a>任意 - 管理対象のパブリック IP の数を拡大縮小する
+
+既定で作成される管理対象の送信パブリック IP と共に *Standard* SKU ロード バランサーを使用するとき、*load-balancer-managed-ip-count* パラメーターを使用し、管理対象の送信パブリック IP の数を拡大縮小できます。
+
+既存のクラスターを更新するには、次のコマンドを実行します。 このパラメーターをクラスター作成時に設定し、複数の管理対象送信パブリック IP を与えることもできます。
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-managed-outbound-ip-count 2
+```
+
+上の例では、*myResourceGroup* の *myAKSCluster* クラスターに対して、管理対象の送信パブリック IP の数が *2* に設定されます。 
+
+また、*load-balancer-managed-ip-count* パラメーターを使用して、`--load-balancer-managed-outbound-ip-count` パラメーターを追加し、それを希望する値に設定するときに、クラスターの作成時に管理対象の送信パブリック IP の初期数を設定することもできます。 管理対象の送信パブリック IP の既定数は 1 です。
+
+## <a name="optional---provide-your-own-public-ips-or-prefixes-for-egress"></a>任意 - エグレスのために独自のパブリック IP またはプレフィックスを指定する
+
+*Standard* SKU ロード バランサーの使用時、AKS クラスターによって、AKS クラスターに対して作成された同じリソース グループでパブリック IP が自動的に作成され、そのパブリック IP が *Standard* SKU ロード バランサーに割り当てられます。 あるいは、クラスター作成時に独自のパブリック IP を割り当てたり、既存のクラスターのロード バランサー プロパティを更新したりできます。
+
+複数の IP アドレスまたはプレフィックスを導入することで、1 つのロード バランサー オブジェクトの背後で IP アドレスを定義するとき、複数のバックアップ サービスを定義できます。 特定のノードのエグレス エンドポイントは、そのノードが関連付けられているサービスに依存します。
+
+> [!IMPORTANT]
+> *Standard* SKU ロード バランサーと共に、エグレス用の *Standard* SKU パブリック IP を使用する必要があります。 [az network public-ip show][az-network-public-ip-show] コマンドを使用することで、パブリック IP の SKU を検証できます。
+>
+> ```azurecli-interactive
+> az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
+> ```
+
+[az network public-ip show][az-network-public-ip-show] コマンドを使用すると、パブリック IP の ID が一覧表示されます。
+
+```azurecli-interactive
+az network public-ip show --resource-group myResourceGroup --name myPublicIP --query id -o tsv
+```
+
+上のコマンドでは、*myResourceGroup* リソース グループの *myPublicIP* パブリック IP の IP が表示されます。
+
+*load-balancer-outbound-ips* パラメーターを指定して *az aks update* コマンドを使用すると、パブリック IP でクラスターが更新されます。
+
+次の例では、*load-balancer-outbound-ips* パラメーターと共に前のコマンドからの ID が使用されます。
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
+```
+
+*Standard* SKU ロード バランサーと共に、エグレス用のパブリック IP プレフィックスを使用することもできます。 次の例では、[az network public-ip prefix show][az-network-public-ip-prefix-show] コマンドを使用し、パブリック IP プレフィックスの IP が一覧表示されます。
+
+```azurecli-interactive
+az network public-ip prefix show --resource-group myResourceGroup --name myPublicIPPrefix --query id -o tsv
+```
+
+上のコマンドでは、*myResourceGroup* リソース グループの *myPublicIPPrefix* パブリック IP プレフィックスの IP が表示されます。
+
+次の例では、*load-balancer-outbound-ip-prefixes* パラメーターと前のコマンドからの ID が使用されています。
+
+```azurecli-interactive
+az aks update \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
+```
+
+> [!IMPORTANT]
+> パブリック IP と IP プレフィックスは、AKS クラスターと同じリージョンにあり、同じサブスクリプションに含まれている必要があります。 
+
+### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>クラスター作成時に独自のパブリック IP またはプレフィックスを定義する
+
+エグレス エンドポイントをホワイトリストに記載するといったシナリオを支援する目的で、クラスター作成時、エグレス用に独自の IP アドレスや IP プレフィックスを導入することがあります。 クラスター作成手順に上のコードと同じパラメーターを追加し、クラスターのライフサイクルの開始時に独自のパブリック IP と IP プレフィックスを定義します。
+
+*load-balancer-outbound-ips* パラメーターを指定して *az aks create* コマンドを使用し、開始時に自分のパブリック IP で新しいクラスターを作成します。
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ips <publicIpId1>,<publicIpId2>
+```
+
+*load-balancer-outbound-ip-prefixes* パラメーターを指定して *az aks create* コマンドを使用し、開始時に自分のパブリック IP プレフィックスで新しいクラスターを作成します。
+
+```
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --vm-set-type VirtualMachineScaleSets \
+    --node-count 1 \
+    --load-balancer-sku standard \
+    --generate-ssh-keys \
+    --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
+```
+
 ## <a name="clean-up-the-standard-sku-load-balancer-configuration"></a>Standard SKU ロード バランサーの構成をクリーンアップする
 
 サンプル アプリケーションとロード バランサーの構成を削除するには、[kubectl delete][kubectl-delete] を使用します。
@@ -346,6 +409,8 @@ kubectl delete -f standard-lb.yaml
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-group-create]: /cli/azure/group#az-group-create
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[az-network-public-ip-show]: /cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show
+[az-network-public-ip-prefix-show]: /cli/azure/network/public-ip/prefix?view=azure-cli-latest#az-network-public-ip-prefix-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
 [azure-lb]: ../load-balancer/load-balancer-overview.md
 [azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus
@@ -355,3 +420,4 @@ kubectl delete -f standard-lb.yaml
 [use-kubenet]: configure-kubenet.md
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
+

@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/10/2018
+ms.date: 08/10/2018
 ms.author: dacurwin
-ms.openlocfilehash: 78f35f30503a6d4f5ead222799f160a88fe2c1d5
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 3c451d1bd77fa1cec85a9d42b5d4d3d819b2d19a
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639819"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210353"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 

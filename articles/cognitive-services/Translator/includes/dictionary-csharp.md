@@ -4,19 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 5a56744173974b470999f846da49d144f2013fbb
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 55ad3591a8c2e7d5de6d1efe255e0f3a4b3c11bd
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968089"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907034"
 ---
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
-* [.NET SDK](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
-* [Json.NET NuGet パッケージ](https://www.nuget.org/packages/Newtonsoft.Json/)
-* [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download)、または任意のテキスト エディター
-* Translator Text の Azure サブスクリプション キー
+[!INCLUDE [Setup and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-net-core-project"></a>.NET Core プロジェクトを作成する
 
@@ -46,6 +43,31 @@ using System.Text;
 using Newtonsoft.Json;
 ```
 
+## <a name="get-subscription-information-from-environment-variables"></a>環境変数からサブスクリプション情報を取得する
+
+以下の行を `Program` クラスに追加します。 これらの行で、環境変数からサブスクリプション キーとエンドポイントを読み取り、問題が発生した場合はエラーをスローします。
+
+```csharp
+private const string key_var = "TRANSLATOR_TEXT_SUBSCRIPTION_KEY";
+private static readonly string subscriptionKey = Environment.GetEnvironmentVariable(key_var);
+
+private const string endpoint_var = "TRANSLATOR_TEXT_ENDPOINT";
+private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
+
+static Program()
+{
+    if (null == subscriptionKey)
+    {
+        throw new Exception("Please set/export the environment variable: " + key_var);
+    }
+    if (null == endpoint)
+    {
+        throw new Exception("Please set/export the environment variable: " + endpoint_var);
+    }
+}
+// The code in the next section goes here.
+```
+
 ## <a name="create-a-function-to-get-alternate-translations"></a>翻訳の代替候補を取得するための関数を作成する
 
 `Program` クラス内に、`AltTranslation` という関数を作成します。 このクラスには、Dictionary リソースを呼び出してその結果をコンソールに出力するコードがカプセル化されています。
@@ -60,14 +82,14 @@ static void AltTranslation()
 }
 ```
 
-## <a name="set-the-subscription-key-host-name-and-path"></a>サブスクリプション キー、ホスト名、パスを設定する
+## <a name="construct-the-uri"></a>URI を作成する
 
-次の行を `AltTranslation` 関数に追加します。 `route` には、`api-version` と共に別途 2 つのパラメーターが追加されていることがわかります。 翻訳の入力と出力は、これらのパラメーターを使用して設定します。 このサンプルでは、英語 (`en`) とスペイン語 (`es`) です。
+次の行を `AltTranslation` 関数に追加します。 `api-version` と共に別途 2 つのパラメーターが宣言されていることがわかります。 翻訳の入力と出力は、これらのパラメーターを使用して設定します。 このサンプルでは、英語 (`en`) とスペイン語 (`es`) です。
 
 ```csharp
-string host = "https://api.cognitive.microsofttranslator.com";
-string route = "/dictionary/lookup?api-version=3.0&from=en&to=es";
-string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+string route = "/dictionary/lookup?api-version=3.0";
+static string params_ = "from=en&to=es";
+static string uri = endpoint + path + params_;
 ```
 
 次に、翻訳対象のテキストを含む JSON オブジェクトを作成してシリアル化する必要があります。 `body` 配列には複数のオブジェクトを渡すことができる点に注目してください。
@@ -76,8 +98,6 @@ string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 System.Object[] body = new System.Object[] { new { Text = @"Elephants" } };
 var requestBody = JsonConvert.SerializeObject(body);
 ```
-
-
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>クライアントをインスタンス化して要求を行う
 
@@ -109,7 +129,7 @@ using (var request = new HttpRequestMessage())
 request.Method = HttpMethod.Post;
 
 // Construct the full URI
-request.RequestUri = new Uri(host + route);
+request.RequestUri = new Uri(uri);
 
 // Add the serialized JSON object to your request
 request.Content = new StringContent(requestBody, Encoding.UTF8, "application/json");
@@ -142,7 +162,8 @@ Cognitive Services のマルチサービス サブスクリプションを使用
 
 ```csharp
 AltTranslation();
-Console.ReadLine();
+Console.WriteLine("Press any key to continue.");
+Console.ReadKey();
 ```
 
 ## <a name="run-the-sample-app"></a>サンプル アプリを実行する

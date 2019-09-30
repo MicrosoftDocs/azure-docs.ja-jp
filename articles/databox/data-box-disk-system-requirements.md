@@ -6,21 +6,37 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 09/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 10ddf4c42ac5aa2d1cffd7cbca6930896103d2c5
-ms.sourcegitcommit: 72f1d1210980d2f75e490f879521bc73d76a17e1
+ms.localizationpriority: high
+ms.openlocfilehash: fb2fd89664517e44cf5128a5c82e583f03087061
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67147779"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70307693"
 ---
+::: zone target="docs"
+
 # <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk のシステム要件
 
 この記事では、Microsoft Azure Data Box Disk ソリューション、および Data Box Disk に接続するクライアントのシステム要件のうち、重要なものについて説明します。 この情報は、Data Box Disk をデプロイする前によく確認し、デプロイ時やそれ以降の操作時にも、必要に応じて繰り返し参照することをお勧めします。
 
 システム要件には、ディスクに接続するクライアントでサポートされるプラットフォーム、サポートされるストレージ アカウント、およびストレージの種類が含まれます。
 
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="review-prerequisites"></a>前提条件を確認する
+
+1. 次を使用して Data Box Disk を注文済みであること。「[チュートリアル: Azure Data Box Disk を注文する](data-box-disk-deploy-ordered.md)」 ディスクと、ディスクごとに 1 つの接続ケーブルを受けとっていること。
+2. データのコピー元として使用できるクライアント コンピューターがあること。 クライアント コンピューターの要件は以下のとおりです。
+
+    - サポート対象のオペレーティング システムが実行されていること。
+    - その他の必須ソフトウェアがインストールされていること。
+
+::: zone-end
 
 ## <a name="supported-operating-systems-for-clients"></a>クライアントでサポートされるオペレーティング システム
 
@@ -79,8 +95,11 @@ Data Box Disk でサポートされるストレージの種類の一覧を次に
 | Azure Files  | |
 | Managed Disks | |
 
+::: zone target="docs"
 
 ## <a name="next-step"></a>次のステップ
 
 * [Azure Data Box Disk をデプロイする](data-box-disk-deploy-ordered.md)
+
+::: zone-end
 

@@ -1,7 +1,7 @@
 ---
 title: Estimator を使用して ML モデルをトレーニングする
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service の Estimator クラスを使用して従来の機械学習モデルとディープ ラーニング モデルを単一ノードおよび分散トレーニングする方法を説明します
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning の Estimator クラスを使用して、従来の機械学習モデルとディープ ラーニング モデルの単一ノードのトレーニングと分散トレーニングを実行する方法を説明します
 ms.author: maxluk
 author: maxluk
 services: machine-learning
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 10aee302377c4f71e47d93f5cd975043efcea375
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 041f80937e3ebae15dd5bd64858ccbd8269104a0
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815907"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002591"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Azure Machine Learning で Estimator を使用してモデルをトレーニングする
 
@@ -107,7 +107,7 @@ estimator = Estimator(source_directory='./my-keras-proj',
 
 上記のコードでは、`Estimator` コンストラクターに対して次の新しいパラメーターを公開しています。
 
-パラメーター | 説明 | 既定値
+パラメーター | 説明 | Default
 --|--|--
 `custom_docker_image`| 使用するイメージの名前。 パブリックな Docker リポジトリ (この場合は Docker Hub) にあるイメージのみを指定します。 プライベートな docker リポジトリにあるイメージを使用するには、コンストラクターの `environment_definition` パラメーターを利用します｡ [例を参照](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/how-to-use-estimator.ipynb)してください。 | `None`
 `node_count`| トレーニング ジョブに使用するノードの数。 | `1`

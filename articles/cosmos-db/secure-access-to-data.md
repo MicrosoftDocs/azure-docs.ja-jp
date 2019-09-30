@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: e321091f2abcff4c385b442ac6474c0592845e2e
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: f2e01e42a53f6f099191c03f45d6521668ea73a1
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602037"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616684"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Azure Cosmos DB のデータへのアクセスをセキュリティで保護する
 
@@ -105,7 +105,7 @@ Cosmos DB リソース トークンにより、付与されたアクセス許可
 <a id="users"></a>
 
 ## <a name="users"></a>ユーザー
-Cosmos DB ユーザーは、Cosmos DB データベースに関連付けらていれます。  各データベースには、0 人以上の Cosmos DB ユーザーを含めることができます。  次のコード サンプルは、Cosmos DB ユーザー リソースを作成する方法を示しています。
+Cosmos DB ユーザーは、Cosmos データベースに関連付けらていれます。  各データベースには、0 人以上の Cosmos DB ユーザーを含めることができます。  次のコード サンプルは、Cosmos DB ユーザー リソースを作成する方法を示しています。
 
 ```csharp
 //Create a user.
@@ -193,5 +193,5 @@ Azure Cosmos DB では、データベースまたはコレクションにある�
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
 ## <a name="next-steps"></a>次の手順
-* Cosmos DB データベースのセキュリティの詳細については、[Cosmos DB:データベースのセキュリティ](database-security.md)に関するページを参照してください。
+* Cosmos データベースのセキュリティの詳細については、[Cosmos DB データベースのセキュリティ](database-security.md)に関するページを参照してください。
 * Azure Cosmos DB 認証トークンを作成する方法については、[Azure Cosmos DB リソースのアクセス制御](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)に関するページをご覧ください。

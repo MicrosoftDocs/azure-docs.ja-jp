@@ -1,65 +1,81 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: ハイブリッド ID のドキュメント
+summary: Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 これをハイブリッド ID と呼んでいます。
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275e
-  title: ハイブリッド ID のドキュメント
-  description: Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。
-  services: active-directory
   author: billmath
+  description: Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。
   manager: daveba
-  ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 05/18/2018
   ms.author: billmath
-abstract:
-  description: Microsoft の ID ソリューションでは、オンプレミスとクラウドを基盤とする機能を利用する際に、場所に関係なく、1 つのユーザー ID ですべてのリソースの認証と権限付与を行います。 これをハイブリッド ID と呼んでいます。</br></br></br>Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 このトピックでは、計画、デプロイ、運用の各手順を紹介しています。 関連するトピックのリンク集としてご利用ください。
-  aside:
-    image:
-      alt: Channel 9 のビデオ
-      height: 110
-      src: media/index/video2.png
-      width: 250
-    title: 'オンプレミスのディレクトリをクラウドに拡張 (1:11:12)'
-    href: 'https://channel9.msdn.com/Events/Ignite/2015/BRK3862/player'
-    width: 250
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
-            html: <p>パスワード ハッシュ同期を使用してクラウドへの ID の拡張を開始する方法について説明します</p>
-            image:
-              alt: パスワード ハッシュの同期
-              src: media/index/azuread2.png
-            title: パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
-          - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
-            html: <p>パススルー認証を使用してクラウドへの ID の拡張を開始する方法について説明します。</p>
-            image:
-              alt: パススルー認証
-              src: media/index/manage2.png
-            title: パススルー認証 (PTA) を使用して単一 AD フォレストを統合する
-          - href: /azure/active-directory/hybrid/tutorial-federation
-            html: <p>オンプレミスの Active Directory フェデレーション サービス (AD FS) と Azure AD を使用して Azure Active Directory (Azure AD) Connect を統合する方法を説明します。</p>
-            image:
-              alt: フェデレーション
-              src: media/index/federate2.png
-            title: フェデレーションを使用して単一 AD フォレストを統合する
-  - title: ハウツー ガイド
-    items:
-      - type: paragraph
-        text: ハイブリッド ID のさまざまなタスクを実行する方法について説明します
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-custom">ハイブリッド ID 環境に Azure AD Connect をインストールする</a>
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-sso">Azure AD Connect によるシームレス シングル サインオン</a>
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-prerequisites">Azure AD Connect の前提条件</a>
-          - html: <a href="/azure/active-directory/hybrid/reference-connect-version-history">Azure AD Connect のバージョンのリリース履歴</a>
-          - html: <a href="/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler">Azure AD Connect 同期スケジューラの管理</a>
+  ms.collection: na
+  ms.date: 08/15/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: fa9007d0e9ad59ee0ffb29fe1c5c74c8530d84fa
+  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70162197"
+landingContent:
+- title: ハイブリッド ID について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: ハイブリッド ID とは
+      url: whatis-hybrid-identity.md
+- title: ユーザーとグループのライフサイクルを管理するための最適なソリューションを特定する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD Connect と Connect Health とは
+      url: whatis-azure-ad-connect.md
+  - linkListType: tutorial
+    links:
+    - text: パスワード ハッシュの同期 (PHS) を使用して単一 AD フォレストを統合する
+      url: tutorial-password-hash-sync.md
+    - text: パススルー認証 (PTA) を使用して単一 AD フォレストを統合する
+      url: tutorial-passthrough-authentication.md
+    - text: フェデレーションを使用して単一 AD フォレストを統合する
+      url: tutorial-federation.md
+- title: 組織に最適な認証方法を選択する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: パスワード ハッシュ同期とは
+      url: whatis-phs.md
+    - text: パススルー認証とは
+      url: how-to-connect-pta.md
+    - text: フェデレーションとは
+      url: whatis-fed.md
+    - text: シングル サインオンとは
+      url: how-to-connect-sso.md
+  - linkListType: concept
+    links:
+    - text: どの認証方法が適しているかを特定する
+      url: /azure/security/fundamentals/choose-ad-authn
+- title: ハイブリッド ID の使用を開始する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 簡単設定による Azure AD Connect のインストール
+      url: how-to-connect-install-express.md
+    - text: カスタム設定による Azure AD Connect のインストール
+      url: how-to-connect-install-custom.md
+    - text: AD DS コネクタ アカウントの構成
+      url: how-to-connect-configure-ad-ds-connector-account.md
+    - text: ADSync のサービス アカウント パスワードの変更
+      url: how-to-connect-sync-change-serviceacct-pass.md
+    - text: Azure AD コネクタ アカウント パスワードの変更
+      url: how-to-connect-azureadaccount.md
+    - text: AD DS アカウントのパスワードの変更
+      url: how-to-connect-sync-change-addsacct-pass.md
+  - linkListType: reference
+    links:
+    - text: 必要なポートとプロトコル
+      url: reference-connect-ports.md
+    - text: アカウントとアクセス許可
+      url: reference-connect-accounts-permissions.md
+    - text: Azure AD Connect のバージョン履歴
+      url: reference-connect-version-history.md

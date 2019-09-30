@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/13/2019
 ms.locfileid: "68977256"
 ---
-# <a name="preview-azure-dedicated-hosts"></a>プレビュー: Azure 専用ホスト
+# <a name="preview-azure-dedicated-hosts"></a>プレビュー:Azure 専用ホスト
 
 Azure 専用ホストは、1 つの Azure サブスクリプションに対して専用の物理サーバーを提供するサービスであり、1 つ以上の仮想マシンをホストできます。 専用ホストは、データ センターで使用されるものと同じ物理サーバーであり、リソースとして提供されます。 リージョン、可用性ゾーン、障害ドメイン内に専用ホストをプロビジョニングできます。 次に、プロビジョニングされたホストに VM を直接配置し、ニーズに最も合った構成にすることができます。
 

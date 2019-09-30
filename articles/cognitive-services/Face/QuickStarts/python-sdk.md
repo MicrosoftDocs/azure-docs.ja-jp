@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 07/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 011345cca1ed1c763a628c94401320862182c9cc
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: f237af58bb98f667d4481a88bbb4daa77657468c
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707351"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966925"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>クイック スタート:Python 用 Face クライアント ライブラリ
 
@@ -26,6 +26,7 @@ Python 用 Face クライアント ライブラリを使用すると、次のこ
 * 似た顔の検索
 * 人物グループを作成してトレーニングする
 * 顔を識別する
+* 顔を確認する
 * データ移行のためのスナップショットを作成する
 
 [リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [パッケージ (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [サンプル](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=0)
@@ -71,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-Face
 
 以下のクラスとインターフェイスにより、Face Python SDK の主要な機能の一部が処理されます。
 
-|EnableAdfsAuthentication|説明|
+|名前|説明|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | このクラスは、Face サービスを使用するための承認を表し、すべての Face 機能に必要です。 サブスクリプション情報を使用してこれをインスタンス化し、他のクラスのインスタンスを生成するために使用します。 |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|このクラスは、人間の顔に対して実行できる基本的な検出と認識のタスクを処理します。 |
@@ -90,6 +91,7 @@ pip install --upgrade azure-cognitiveservices-Face
 * [似た顔を探す](#find-similar-faces)
 * [人物グループを作成してトレーニングする](#create-and-train-a-person-group)
 * [顔を識別する](#identify-a-face)
+* [顔を確認する](#verify-faces)
 * [データ移行のためのスナップショットを作成する](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>クライアントを認証する
@@ -108,6 +110,14 @@ pip install --upgrade azure-cognitiveservices-Face
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_detect)]
 
 その他の検出シナリオについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py) 上のサンプル コードを参照してください。
+
+### <a name="display-and-frame-faces"></a>顔を表示してフレームに収める
+
+次のコードは、指定された画像をディスプレイに出力し、DetectedFace.faceRectangle プロパティを使用して顔の周りに四角形を描画します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_frame)]
+
+![顔の周囲に赤い四角形が描画されている若い女性](../images/face-rectangle-result.png)
 
 ## <a name="find-similar-faces"></a>似た顔の検索
 
@@ -161,7 +171,7 @@ pip install --upgrade azure-cognitiveservices-Face
 
 ## <a name="identify-a-face"></a>顔を識別する
 
-次のコードは、複数の顔が含まれている画像を取得し、画像内の各人物の ID を特定します。 検出された各顔は、**PersonGroup** と比較されます。これは、いくつかの顔が関連付けられているさまざまな **Person** オブジェクトのデータベースです。 
+次のコードは、複数の顔が含まれている画像を取得し、画像内の各人物の ID を特定します。 検出された顔はそれぞれ、顔の特徴が確認されているさまざまな **Person** オブジェクトのデータベース、つまり **PersonGroup** と比較されます。
 
 > [!IMPORTANT]
 > この例を実行するには、まず、「[人物グループを作成してトレーニングする](#create-and-train-a-person-group)」のコードを実行する必要があります。
@@ -178,6 +188,32 @@ pip install --upgrade azure-cognitiveservices-Face
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify)]
 
+## <a name="verify-faces"></a>顔を確認する
+
+確認操作では、顔 ID と、別の顔 ID または **Person** オブジェクトのいずれかを取得し、同じ人に属しているかどうかを判断します。
+
+次のコードでは、2 つのソース画像から顔を検出し、ターゲット画像から検出された顔と照らしてそれらを確認します。
+
+### <a name="get-test-images"></a>テスト イメージを取得する
+
+次のコード ブロックでは、確認操作のソース画像とターゲット画像を指す変数を宣言します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_baseurl)]
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_photos)]
+
+### <a name="detect-faces-for-verification"></a>確認対象の顔を検出する
+
+次のコードは、ソース画像とターゲット画像から顔を検出して、それらを変数に保存します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify_detect)]
+
+### <a name="get-verification-results"></a>確認の結果を取得する
+
+次のコードでは、各ソース画像をターゲット画像と比較し、同じ人物のものであるかどうかを示すメッセージを出力します。
+
+[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
+
 ## <a name="take-a-snapshot-for-data-migration"></a>データ移行のためのスナップショットを作成する
 
 スナップショット機能を使用すると、トレーニング済みの **PersonGroup** などの保存した顔データを別の Azure Cognitive Services Face サブスクリプションに移動できます。 この機能を利用するのは、たとえば、無料試用版サブスクリプションを使用して **PersonGroup** オブジェクトを作成してあり、それを有料サブスクリプションに移行することが必要になった場合などです。 スナップショット機能の広範な概要については、[顔データの移行](../Face-API-How-to-Topics/how-to-migrate-face-data.md)に関するページを参照してください。
@@ -188,7 +224,7 @@ pip install --upgrade azure-cognitiveservices-Face
 
 まず、Face リソースを含む 2 つ目の Azure サブスクリプションが必要です。そのためには、「[設定](#setting-up)」セクションの手順に従います。 
 
-次に、スクリプトの先頭付近で以下の変数を作成します。 また、自分の Azure アカウントのサブスクリプション ID と、新しい (ターゲット) アカウントのキーおよびサブスクリプション ID のための、新しい環境変数も作成する必要があります。 
+次に、スクリプトの先頭付近で以下の変数を作成します。 また、お使いの Azure アカウントのサブスクリプション ID と新しい (ターゲット) アカウントのキー、エンドポイント、サブスクリプション ID のための、新しい環境変数を作成する必要があります。 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
 
@@ -249,7 +285,7 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、Java 用の Face ライブラリを使用して基本的なタスクを行う方法について学習しました。 次は、リファレンス ドキュメントを参照して、ライブラリの詳細について学習してください。
+このクイックスタートでは、Python 用の Face ライブラリを使用して基本的なタスクを行う方法について学習しました。 次は、リファレンス ドキュメントを参照して、ライブラリの詳細について学習してください。
 
 > [!div class="nextstepaction"]
 > [Face API リファレンス (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)

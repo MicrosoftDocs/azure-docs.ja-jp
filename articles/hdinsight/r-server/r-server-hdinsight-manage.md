@@ -1,6 +1,6 @@
 ---
 title: HDInsight で ML Services クラスターを管理する - Azure
-description: Azure HDInsight で ML Services クラスターを管理する方法について説明します。
+description: Azure HDInsight で ML Services クラスターに対するさまざまなタスクを管理する方法について説明します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: fa838f371607f3c0b0f76f81d6755c842a5901f7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d31eb9ccb5df9137bebb877cce169cf657113d30
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448955"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967753"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight で ML Services クラスターを管理する
 
@@ -31,7 +31,7 @@ ms.locfileid: "67448955"
 
 HDInsight で ML Services クラスターに対して複数の同時ユーザーを有効にするには、RStudio Community バージョンが実行されているエッジ ノードのユーザーを追加します。 HDInsight クラスターを作成するときに、2 人のユーザー (HTTP ユーザーと SSH ユーザー) を指定する必要があります。
 
-![同時ユーザー 1](./media/r-server-hdinsight-manage/concurrent-users-1.png)
+![同時ユーザー 1](./media/r-server-hdinsight-manage/hdi-concurrent-users1.png)
 
 - **クラスター ログイン ユーザー名**: 作成した HDInsight クラスターを保護するために使用される、HDInsight ゲートウェイを介した認証用の HTTP ユーザー。 この HTTP ユーザーは、Apache Ambari UI、Apache Hadoop YARN UI、およびその他の UI コンポーネントにアクセスするために使用されます。
 - **Secure Shell (SSH) ユーザー名**: Secure Shell を介してクラスターにアクセスする SSH ユーザー。 このユーザーは、ヘッド ノード、ワーカー ノード、エッジ ノードすべてに対応する Linux システムのユーザーです。 そのため、Secure Shell を使用して、リモート クラスター内の任意のノードにアクセスできます。
@@ -66,7 +66,7 @@ RStudio はクラスターのエッジ ノードで実行されているため�
 
 次のスクリーンショットは出力を示しています。
 
-![同時ユーザー 3](./media/r-server-hdinsight-manage/concurrent-users-2.png)
+![同時ユーザー 3](./media/r-server-hdinsight-manage/hdi-concurrent-users2.png)
 
 "Current Kerberos password:" というメッセージが表示されたら、単に **Enter** キーを押して無視します。 `useradd` コマンドの `-m` オプションは、システムによってユーザーのホーム フォルダーが作成されることを示します。このフォルダーは、RStudio Community バージョンに必要です。
 
@@ -209,7 +209,7 @@ HDInsight ML Services を使うと、Hive および Parquet 内のデータに�
    >
    >
 
-   ![スクリプト アクションの追加](./media/r-server-hdinsight-manage/submitscriptaction.png)
+   ![スクリプト アクションの追加](./media/r-server-hdinsight-manage/submit-script-action.png)
 
 4. **[作成]** を選択してスクリプトを実行します。 スクリプトが完了すると、R パッケージをすべてのワーカー ノードで使用できるようになります。
 

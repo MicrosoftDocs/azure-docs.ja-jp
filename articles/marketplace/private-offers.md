@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/1/2018
 ms.author: pabutler
-ms.openlocfilehash: 35134d828098af0cff3d585dee600ee1808b00c4
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3d97fd167f0f946239d4de24bb180796ebb498d3
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013631"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70885876"
 ---
 # <a name="private-offers"></a>プライベート オファー
 
@@ -29,11 +29,11 @@ ms.locfileid: "69013631"
 
 公開元は、プライベート オファーを利用して、一般に公開される Marketplace の世界規模の利用可用性を活かすことができるうえに、取引と構成をカスタマイズするために必要な交渉を柔軟に行って、それらを提供できます。 さらに、これらの特性により、企業がクラウド上のマーケットプレースを活発に利用するための道が開きます。  企業は、各自が想定した望みどおりの方法で、購入と販売を行うことができます。
 
-現時点では、プライベート オファーは、仮想マシン、Azure アプリケーション (ソリューション テンプレートまたはマネージド アプリケーションとして実装)、および SaaS アプリを提供するために利用できます。 パブリック オファーと同じように、プライベート オファーも、[Cloud パートナー ポータル](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus)上で作成して管理できます。  顧客に対するプライベート オファーへのアクセス権は、数分で許可することも取り消すこともできます。
+現時点では、プライベート オファーは、仮想マシン、Azure アプリケーション (ソリューション テンプレートまたはマネージド アプリケーションとして実装)、および SaaS アプリを提供するために利用できます。 パブリック オファーと同じように、プライベート オファーも、[Cloud パートナー ポータル](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)上で作成して管理できます。  顧客に対するプライベート オファーへのアクセス権は、数分で許可することも取り消すこともできます。
 
 ## <a name="creating-private-offers-using-skus-and-plans"></a>SKU とプランを使用したプライベート オファーの作成
 
-公開元は、新しい SKU またはプランを作成し、それらをプライベートに設定することによって、"*パブリック SKU またはプランを含む新規または既存のオファー*" のプライベート版を簡単に作成できます。  [プライベート SKU](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus) とプランはオファーのコンポーネントであり、ターゲット顧客のみが見ることができ、購入することができます。 プライベート SKU またはプランでは、基本イメージを再利用でき、パブリック SKU またはプランに対してすでに発行されているオファーのメタデータも再利用できます。 公開元は、このオプションを使用して、パブリック オファーのプライベート版を複数作成でき、同じ基本イメージとオファーのメタデータを複数のバージョンで公開する必要はありません。 仮想マシンと Azure アプリケーションを提供するオファーのみ、プライベート SKU とパブリック SKU で基本イメージを共有しているときに、オファーの基本イメージを変更すると、その基本イメージを使用しているすべてのパブリック SKU とプライベート SKU に変更が反映されます。
+公開元は、新しい SKU またはプランを作成し、それらをプライベートに設定することによって、"*パブリック SKU またはプランを含む新規または既存のオファー*" のプライベート版を簡単に作成できます。  [プライベート SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md) とプランはオファーのコンポーネントであり、ターゲット顧客のみが見ることができ、購入することができます。 プライベート SKU またはプランでは、基本イメージを再利用でき、パブリック SKU またはプランに対してすでに発行されているオファーのメタデータも再利用できます。 公開元は、このオプションを使用して、パブリック オファーのプライベート版を複数作成でき、同じ基本イメージとオファーのメタデータを複数のバージョンで公開する必要はありません。 仮想マシンと Azure アプリケーションを提供するオファーのみ、プライベート SKU とパブリック SKU で基本イメージを共有しているときに、オファーの基本イメージを変更すると、その基本イメージを使用しているすべてのパブリック SKU とプライベート SKU に変更が反映されます。
 
 "*プライベート SKU またはプランのみが含まれている新しいオファー*" の場合、公開元は、他のオファーと同じようにオファーを作成でき、作成後に SKU またはプランをプライベートとしてマークします。 プライベート SKU またはプランのみが含まれているオファーの場合、そのオファーに関連付けられていない顧客は、[Azure Marketplace](https://azuremarketplace.microsoft.com) でも [Azure portal](https://azure.microsoft.com/features/azure-portal/) でも、オファーを検索したりアクセスしたりすることはできません。
 
@@ -52,4 +52,4 @@ ms.locfileid: "69013631"
 
 ## <a name="next-steps"></a>次の手順
 
-これらの新機能を活用して、[Azure Marketplace](https://azuremarketplace.microsoft.com/sell) での販売を開始できます。
+プライベート オファーの使用を開始するには、「[プライベート SKU とプラン](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)」ガイドの手順に従ってください。

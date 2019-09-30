@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: ae809dd4841d6df8caabebfaded263b52f386834
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2359befc05bff867a8f8b17943ed67d906ff4971
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845033"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534346"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Azure Storage アカウントのカスタム ドメイン名の構成
 
@@ -27,7 +27,7 @@ Azure ストレージ アカウントの BLOB データにアクセスするた�
 > 現在、ストレージ アカウントでは、アカウントあたり 1 つのカスタム ドメインしかサポートされていません。 Web サービス エンドポイントと Blob service エンドポイントの両方にカスタム ドメイン名をマッピングすることはできません。
 > 
 > [!NOTE]
-> このマッピングは、サブドメイン (たとえば、www\.contoso.com) でのみ機能します。 Web エンドポイントをルート ドメイン (たとえば、contoso.com) で使用可能にしたい場合は、[カスタム ドメインをもつ Azure CDN を使用する](storage-https-custom-domain-cdn.md)必要があります。
+> このマッピングは、サブドメイン (たとえば、www\.contoso.com) でのみ機能します。 Web エンドポイントをルート ドメイン (たとえば、contoso.com) で使用可能にしたい場合は、[カスタム ドメインを Azure CDN エンドポイントに追加する](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain)必要があります。
 
 次の表は、*mystorageaccount* というストレージ アカウントにある BLOB データのサンプル URL を示します。 ストレージ アカウントに登録されているカスタム ドメインは *www\.contoso.com* です。
 

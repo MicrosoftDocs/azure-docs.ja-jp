@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: overview
 ms.date: 4/30/2019
 ms.author: victorh
-ms.openlocfilehash: 2a494b924107baeabbcf412af7e1bbdb1db0f753
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 6755825aa123b3d7d1eed23291790ff3dc477ac5
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66752006"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382483"
 ---
 # <a name="whats-new-in-azure-application-gateway"></a>Azure Application Gateway の新着情報
 
@@ -27,6 +27,7 @@ Azure Application Gateway は、継続的に更新されます。 常に最新�
 
 |機能  |説明  |追加日  |
 |---------|---------|---------|
+|その他のメトリック |ご利用のアプリケーション ゲートウェイ v2 SKU を監視するのに役立つ次の新しいメトリックを追加しました。[タイミング関連のメトリック](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#timing-metrics)、バックエンド応答の状態、受信バイト数、送信バイト数、クライアント TLS プロトコル、現在のコンピューティング ユニット。 「[Application Gateway V2 SKU でサポートされるメトリック](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-supported-by-application-gateway-v2-sku)」を参照してください。 |2019 年 8 月 |
 |WAF カスタム規則 |Applicaiton Gateway WAF_v2 では、カスタム ルールの作成がサポートされるようになりました。 [Application Gateway のカスタム ルール](custom-waf-rules-overview.md)に関する記事を参照してください。 |2019 年 6 月 |
 |自動スケーリング、ゾーン冗長性、静的 VIP のサポートの一般公開 |自動スケーリング、ゾーン冗長性、パフォーマンスの向上、静的 VIP、Key Vault、ヘッダーの書き換えをサポートする v2 SKU の一般公開。 [Application Gateway の自動スケーリングのドキュメント](application-gateway-autoscaling-zone-redundant.md)を参照してください。 |2019 年 4 月 |
 |Key Vault の統合 |Application Gateway では、HTTPS が有効なリスナーにアタッチされているサーバー証明書用の Key Vault との統合 (パブリック プレビュー段階) がサポートされるようになりました。 「[Key Vault 証明書での SSL 終了](key-vault-certs.md)」を参照してください。 |2019 年 4 月 |

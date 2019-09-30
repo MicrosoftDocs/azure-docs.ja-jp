@@ -1,28 +1,27 @@
 ---
 title: Azure HDInsight での大規模なストリーミング
-description: スケーラブルな HDInsight クラスターでデータ ストリーミングを使用する方法。
+description: Azure HDInsight のスケーラブルな Apache クラスターでデータ ストリーミングを使用する方法。
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 97bc2e585ccce250dd83dc855c3eda5f958186a7
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 76d1947ae6fbdf7577cc9b8db9d902dc55350b7f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484066"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105333"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>HDInsight での大規模なストリーミング
 
 リアルタイム ビッグ データ ソリューションは、動いているデータに作用します。 通常、このデータは到着時に最も高い価値があります。 受信データ ストリームがその瞬間で処理できるよりも大きくなった場合は、リソースを制限する必要がある可能性があります。 または、オンデマンドでノードを追加することによって、HDInsight クラスターをスケール アップし、ストリーミング ソリューションに対応することができます。
 
-
 ストリーミング アプリケーションでは、1 つまたは複数のデータ ソースが、有用な情報をすべて取りこぼすことなく速やかに取り込む必要があるイベント (場合により 1 秒あたり数百万個) を生成しています。 受信イベントは、[Apache Kafka](kafka/apache-kafka-introduction.md) や [Event Hubs](https://azure.microsoft.com/services/event-hubs/) などのサービスによって、*ストリーム バッファリング* (*イベント キュー*とも呼ばれる) を使用して処理されます。 イベントを収集したら、[Apache Storm](storm/apache-storm-overview.md) または [Apache Spark ストリーミング](spark/apache-spark-streaming-overview.md)などの*ストリーム処理*レイヤー内でリアルタイム分析システムを使用して、データを分析できます。 処理済みのデータは、[Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/) などの長期ストレージ システムに格納し、[Power BI](https://powerbi.microsoft.com)、Tableau、カスタム Web ページなどのビジネス インテリジェンス ダッシュ ボードにリアルタイムで表示できます。
 
-
-![HDInsight ストリーミング パターン](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
+![Azure HDInsight ストリーミング パターン](./media/hdinsight-streaming-at-scale-overview/HDInsight-streaming-patterns.png)
 
 ## <a name="apache-kafka"></a>Apache Kafka
 

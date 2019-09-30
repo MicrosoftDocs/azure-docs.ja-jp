@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 08/19/2019
+ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: ef559a53980b35eb09333a3c2889cee3efed59ee
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c4aa9c146e50dc45b8856b5611e3032b1ba703f8
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907139"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70393883"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language"></a>クイック スタート:Translator Text API を使用してテキストの言語を検出する
 

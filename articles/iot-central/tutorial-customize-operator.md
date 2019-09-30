@@ -58,7 +58,7 @@ ms.locfileid: "69877267"
 
     | Setting     | 値 |
     | ----------- | ----- |
-    | Name        | Maximum temperature |
+    | 名前        | Maximum temperature |
     | 時間範囲  | Past 1 week |
     | 測定タイプ | テレメトリ |
     | Measurement | 温度 |

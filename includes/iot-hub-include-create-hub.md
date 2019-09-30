@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: bf63a9fb552b2a41ce7b9945faeda362592d8efb
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: e01bb13b904aaf8671512daa3ef3cbad182f01e3
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558837"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161953"
 ---
 ここでは、[Azure portal](https://portal.azure.com) を使用して IoT ハブを作成する方法について説明します。
 
@@ -50,7 +50,7 @@ ms.locfileid: "69558837"
 
     - **[詳細設定]**  >  **[Device-to-cloud パーティション]** : このプロパティでは、device-to-cloud メッセージがそのメッセージの同時閲覧者数に関連付けられます。 ほとんどのハブでは、4 つのパーティションのみが必要となります。
 
-1. このチュートリアルでは、既定の選択のままにして、 **[確認および作成]** を選択して選択内容を確認します。 次の画面のようになります。
+1. この記事では、既定の選択のままにして、 **[確認および作成]** を選択して選択内容を確認します。 次の画面のようになります。
 
    ![新しいハブを作成するための情報を確認する](./media/iot-hub-include-create-hub/iot-hub-create-review-vs2019.png)
 

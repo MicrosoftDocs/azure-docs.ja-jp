@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: apimpm
-ms.openlocfilehash: 45e1ad6bd757ec5acaf784c94e4cfb5e487ce9ba
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 52eeedf4651cee012569034ae635a4736b3f3335
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975733"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135534"
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成
 
@@ -88,7 +88,7 @@ Azure API Management サービス インスタンスを作成すると、Azure �
 -   API Management ゲートウェイの IP アドレスを指す A レコードを構成する。
 
 > [!NOTE]
-> API Management インスタンスの IP アドレスは静的ですが、いくつかのシナリオで変更される可能性があります。 このため、カスタム ドメインを構成するときは CNAME を使用することをお勧めします。 DNS 構成方法を選択するときは、このことを考慮してください。 詳細については、「[API Mananagement の FAQ](https://docs.microsoft.com/azure/api-management/api-management-faq#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)」を参照してください。
+> API Management インスタンスの IP アドレスは静的ですが、いくつかのシナリオで変更される可能性があります。 このため、カスタム ドメインを構成するときは CNAME を使用することをお勧めします。 DNS 構成方法を選択するときは、このことを考慮してください。 詳細については、「[API Mananagement の FAQ](api-management-faq.md#how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

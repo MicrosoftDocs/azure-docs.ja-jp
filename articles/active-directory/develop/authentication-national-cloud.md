@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abaf8c910710000930f4e0ab6200d0ebd75b8d46
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: ca82efbd4e26ccb8a169c84332e3d24196fae95e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835198"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135857"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 
@@ -68,9 +68,6 @@ ms.locfileid: "68835198"
   - トークン共通エンドポイントは `https://login.microsoftonline.de/common/oauth2/token` です。
 
 シングルテナント アプリケーションの場合は、前の URL にある "common" をテナント ID またはテナント名に置き換えます。 例: `https://login.microsoftonline.de/contoso.com`。
-
-> [!NOTE]
-> [Azure AD v2.0 承認]( https://docs.microsoft.com/azure/active-directory/develop/active-directory-appmodel-v2-overview)およびトークン エンドポイントは、グローバル サービスに対してのみ使用できます。 各国のクラウドのデプロイではサポートされていません。
 
 ## <a name="microsoft-graph-api"></a>Microsoft Graph API
 

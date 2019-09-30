@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
-ms.openlocfilehash: 9d88b8101f37fde5d1ab8ac11253884b6534e3b5
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 675e10101d01d831aad7652c70cbfcf320085a3c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726765"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999162"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護するベスト プラクティス
 この記事では、PaaS (platform-as-a-service) の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -71,7 +71,7 @@ RBAC の詳細については、次の記事をご覧ください。
 ## <a name="use-client-side-encryption-for-high-value-data"></a>価値の高いデータのクライアント側暗号化を使用する
 クライアント側暗号化を使用すると、Azure Storage にアップロードする前に転送中データをプログラムで暗号化でき、取得するときにデータをプログラムで複合化できます。 これは転送中のデータの暗号化ですが、保存データの暗号化も可能です。 クライアント側暗号化が最も安全にデータを暗号化できる方法ですが、アプリケーションのプログラムを変更し、キー管理プロセスを組み込む必要があります。
 
-また、クライアント側暗号化では、暗号化キーを制御できる担当者を 1 人に限定できます。 独自の暗号化キーを生成し、管理することができます。 エンベロープ手法を使用して、Azure ストレージ クライアント ライブラリでコンテンツ暗号化キー (CEK) を生成し、キーの暗号化キー (KEK) を使用して CEK をラップ (暗号化) します。 KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルで管理することも、[Azure Key Vault](/azure/key-vault/key-vault-whatis) に格納することもできます。
+また、クライアント側暗号化では、暗号化キーを制御できる担当者を 1 人に限定できます。 独自の暗号化キーを生成し、管理することができます。 エンベロープ手法を使用して、Azure ストレージ クライアント ライブラリでコンテンツ暗号化キー (CEK) を生成し、キーの暗号化キー (KEK) を使用して CEK をラップ (暗号化) します。 KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルで管理することも、[Azure Key Vault](/azure/key-vault/key-vault-overview) に格納することもできます。
 
 クライアント側暗号化は、Java と .NET のストレージ クライアント ライブラリに組み込まれています。 クライアント アプリケーション内のデータの暗号化と、独自の暗号化キーの生成および管理の詳細については、「[Client-side encryption and Azure Key Vault for Microsoft Azure Storage (Microsoft Azure Storage のクライアント側暗号化と Azure Key Vault)](/azure/storage/common/storage-client-side-encryption)」をご覧ください。
 

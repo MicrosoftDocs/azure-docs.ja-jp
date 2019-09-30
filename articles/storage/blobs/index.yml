@@ -1,0 +1,153 @@
+### YamlMime:Landing
+title: Azure Blob Storage のドキュメント
+summary: Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
+metadata:
+  title: Azure Blob Storage のドキュメント
+  description: Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
+  services: storage
+  ms.service: storage
+  ms.subservice: blobs
+  ms.topic: landing-page
+  ms.collection: collection
+  author: normesta
+  ms.author: normesta
+  ms.date: 08/20/2019
+  ms.openlocfilehash: 3bc4bf920f4c780f0b73cdd75e62d8aff77b3c94
+  ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70875573"
+landingContent:
+- title: Blob Storage について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Blob Storage とは
+      url: storage-blobs-overview.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Portal の使用
+      url: storage-quickstart-blobs-portal.md
+    - text: Storage Explorer を使用する
+      url: storage-quickstart-blobs-storage-explorer.md
+  - linkListType: concept
+    links:
+    - text: ストレージ アカウントの概要
+      url: ../common/storage-account-overview.md
+    - text: データの冗長性
+      url: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: ストレージ アカウントの作成
+      url: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: ブロック BLOB ストレージ アカウントの作成
+      url: storage-blob-create-account-block-blob.md
+    - text: カスタム ドメインを構成する
+      url: storage-custom-domain-name.md
+- title: 分析と分析情報
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Data Lake Storage Gen2
+      url: data-lake-storage-introduction.md
+  - linkListType: quickstart
+    links:
+    - text: Databricks を使用したデータの分析
+      url: data-lake-storage-quickstart-create-databricks-account.md
+  - linkListType: concept
+    links:
+    - text: ビッグ データの処理
+      url: data-lake-storage-data-scenarios.md
+    - text: マルチプロトコル アクセス
+      url: data-lake-storage-multi-protocol-access.md
+    - text: ベスト プラクティス
+      url: data-lake-storage-best-practices.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Databricks を使用してデータの抽出、変換、読み込みを行う
+      url: ../../azure-databricks/databricks-extract-load-sql-data-warehouse.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Azure HDInsight の Apache Hive を使用したデータの抽出、変換、読み込み
+      url: data-lake-storage-tutorial-extract-transform-load-hive.md
+    - text: Event Grid を使用して Databricks テーブルにデータを挿入する
+      url: data-lake-storage-events.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: Azure HDInsight クラスターで使用する
+      url: ../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Power BI で使用する
+      url: data-lake-storage-use-power-bi.md
+- title: アプリケーションを開発する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET の使用
+      url: storage-quickstart-blobs-dotnet.md
+    - text: Python の使用
+      url: storage-quickstart-blobs-python.md
+    - text: イベントを Web エンドポイントにルーティングする
+      url: ../../event-grid/blob-event-quickstart-portal.md
+    - text: 静的 Web サイトのホスト
+      url: storage-blob-static-website-how-to.md
+  - linkListType: concept
+    links:
+    - text: イベントを処理する
+      url: storage-blob-event-overview.md
+    - text: 静的な Web サイト
+      url: storage-blob-static-website.md
+  - linkListType: tutorial
+    links:
+    - text: 画像データをアップロードする Web アプリを作成する
+      url: storage-upload-process-images.md
+- title: セキュリティと ID の管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Storage へのアクセスを承認する
+      url: ../common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Data Lake のアクセス制御
+      url: data-lake-storage-access-control.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD アカウントを使用して BLOB データにアクセスする
+      url: ../common/storage-access-blobs-queues-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: RBAC を使用したアクセス権の管理
+      url: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: マネージド ID を使用して Blob Storage へのアクセスを承認する
+      url: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: データの転送
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: データ転送ソリューションの比較
+      url: ../common/storage-choose-data-transfer-solution.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: オフライン転送に Azure Data Box を使用する
+      url: ../../databox/data-box-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: AzCopy を使用して転送する
+      url: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: Azure Data Factory を使用して転送する
+      url: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: パフォーマンスと拡張性
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: スケーラビリティとパフォーマンス
+      url: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - text: パフォーマンスとスケーラビリティのチェックリスト
+      url: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+  - linkListType: tutorial
+    links:
+    - text: パフォーマンスとスケーラビリティに合わせて最適化する
+      url: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+- title: データのバックアップとアーカイブを行う
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ホット、クール、アーカイブ ストレージ
+      url: storage-blob-storage-tiers.md
+    - text: Blob Storage のライフサイクルを管理する
+      url: storage-lifecycle-management-concepts.md

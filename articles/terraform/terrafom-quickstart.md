@@ -1,18 +1,18 @@
 ---
-title: Azure 上の Terraform の概要。
+title: Azure 上の Terraform の概要
 description: Azure Cosmos DB と Azure Container Instances をデプロイして、Azure 上の Terraform の使用を開始します。
 services: terraform
 author: neilpeterson
 ms.service: azure
 ms.topic: quickstart
-ms.date: 02/04/2019
+ms.date: 09/20/2019
 ms.author: nepeters
-ms.openlocfilehash: 57ab3fbc584932cb7d08bda76530bbe95ce61a6f
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c53f3a31b46f00d3207cd8f47dcfbfa131c03666
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699079"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173508"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Azure 用の Terraform 構成の作成
 
@@ -24,7 +24,7 @@ ms.locfileid: "68699079"
 
 **[今すぐ試す]** を選択して、Azure Cloud Shell を開きます。 開いたら、「`code .`」と入力して、Cloud Shell のコード エディターを開きます。
 
-```azurecli-interactive
+```bash
 code .
 ```
 
@@ -34,7 +34,7 @@ code .
 
 完了したら、ファイルを `main.tf` として保存します。 この操作は、コード エディターの右上部分にある省略記号を使用して実行できます。
 
-```azurecli-interactive
+```hcl
 resource "azurerm_resource_group" "vote-resource-group" {
   name     = "vote-resource-group"
   location = "westus"
@@ -67,7 +67,7 @@ resource "azurerm_cosmosdb_account" "vote-cosmos-db" {
 
 [terraform init](https://www.terraform.io/docs/commands/init.html) コマンドを実行すると、作業ディレクトリが初期化されます。 Cloud Shell のターミナルで `terraform init` を実行して、新しい構成をデプロイする準備をします。
 
-```azurecli-interactive
+```bash
 terraform init
 ```
 
@@ -75,13 +75,13 @@ terraform init
 
 `terraform plan` を実行して、新しい Terraform 構成をテストします。
 
-```azurecli-interactive
+```bash
 terraform plan --out plan.out
 ```
 
 [terraform apply](https://www.terraform.io/docs/commands/apply.html) を使用し、プラン ファイルの名前を指定して、構成を適用します。 このコマンドを実行すると、Azure サブスクリプション内のリソースがデプロイされます。
 
-```azurecli-interactive
+```bash
 terraform apply plan.out
 ```
 
@@ -98,7 +98,7 @@ Azure コンテナー インスタンスを含めるように構成を更新し�
 
 この構成には、コンテナー インスタンスの完全修飾ドメイン名 (FQDN) を返す出力ブロックも含まれています。
 
-```azurecli-interactive
+```hcl
 resource "azurerm_container_group" "vote-aci" {
   name                = "vote-aci"
   location            = "${azurerm_resource_group.vote-resource-group.location}"
@@ -134,13 +134,13 @@ output "dns" {
 
 `terraform plan` を実行して、更新されたプランを作成し、加えられる変更を視覚化します。 Azure コンテナー インスタンス リソースが構成に追加されたことを確認できます。
 
-```azurecli-interactive
+```bash
 terraform plan --out plan.out
 ```
 
 最後に、`terraform apply` を実行して構成を適用します。
 
-```azurecli-interactive
+```bash
 terraform apply plan.out
 ```
 
@@ -156,7 +156,7 @@ terraform apply plan.out
 
 完了したら、[terraform destroy](https://www.terraform.io/docs/commands/destroy.html) コマンドを使用して、Azure リソースとリソース グループを削除できます。
 
-```azurecli-interactive
+```bash
 terraform destroy -auto-approve
 ```
 

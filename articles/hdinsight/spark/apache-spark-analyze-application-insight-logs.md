@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/09/2018
-ms.openlocfilehash: 730ecd306bf33709ed5d9fa334b64f7cd7a482dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 846239c0122f3f2cadc40e7965ae690d4ba3e538
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066486"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899849"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>HDInsight 上の Apache Spark で Application Insights テレメトリ ログを分析する
 
@@ -39,7 +39,7 @@ HDInsight 上の [Apache Spark](https://spark.apache.org/) を使用して Appli
 
 以下の図に、この例のサービス アーキテクチャを示します。
 
-![データが Application Insights から BLOB ストレージに流れ、HDInsight 上の Spark で処理される様子を示した図](./media/apache-spark-analyze-application-insight-logs/appinsightshdinsight.png)
+![データが Application Insights から BLOB ストレージに流れ、HDInsight 上の Spark で処理される様子を示した図](./media/apache-spark-analyze-application-insight-logs/application-insights.png)
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -72,7 +72,7 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
 1. [Azure ポータル](https://portal.azure.com)で、HDInsight クラスター上の Spark を選択します。 **[クイック リンク]** セクションで **[クラスター ダッシュボード]** を選択してから、[クラスター ダッシュボード] セクションで **[Jupyter Notebook]** を選択します。
 
-    ![クラスター ダッシュボード](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
+    ![クラスター ダッシュボード](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 
 2. Jupyter のページの右上隅にある **[New]** をクリックし、 **[PySpark]** を選択します。 新しいブラウザーのタブが開き、Python ベースの Jupyter Notebook が表示されます。
 
@@ -215,7 +215,7 @@ HDInsight クラスターを作成する場合は、クラスターの作成中�
 
 1. [Azure ポータル](https://portal.azure.com)で、HDInsight クラスター上の Spark を選択します。 **[クイック リンク]** セクションで **[クラスター ダッシュボード]** を選択してから、[クラスター ダッシュボード] セクションで **[Jupyter Notebook]** を選択します。
 
-    ![クラスター ダッシュボード](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
+    ![クラスター ダッシュボード](./media/apache-spark-analyze-application-insight-logs/hdi-cluster-dashboards.png)
 2. Jupyter のページの右上隅にある **[新規作成]** をクリックし、 **[Scala]** を選択します。 新しいブラウザーのタブが開き、Scala ベースの Jupyter Notebook が表示されます。
 3. ページの 1 番目のフィールド (**セル**と呼びます) に、次のテキストを入力します。
 

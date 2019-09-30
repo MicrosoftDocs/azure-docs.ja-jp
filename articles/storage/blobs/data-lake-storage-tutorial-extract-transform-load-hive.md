@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 344dddb4e16f23ae40028c090c499d210adb8837
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f58785b17a1e6236636744c32dac07a6c9ed138d
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855453"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992247"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Apache Hive を使用したデータの抽出、変換、および読み込み
 
@@ -92,26 +92,26 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    このコマンドにより **.csv** ファイルが抽出されます。
 
-4. 次のコマンドを使用して、Data Lake Storage Gen2 ファイル システムを作成します。
+4. 次のコマンドを使用して、Data Lake Storage Gen2 コンテナーを作成します。
 
    ```bash
-   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+   hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   `<file-system-name>` プレースホルダーを、ファイル システムに付ける名前に置き換えます。
+   `<container-name>` プレースホルダーを、ご自身のコンテナーに付ける名前に置き換えます。
 
    `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
 
 5. 次のコマンドを使用して、ディレクトリを作成します。
 
    ```bash
-   hdfs dfs -mkdir -p abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
+   hdfs dfs -mkdir -p abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data
    ```
 
 6. 次のコマンドを使用して *.csv* ファイルをディレクトリにコピーします。
 
    ```bash
-   hdfs dfs -put "<file-name>.csv" abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
+   hdfs dfs -put "<file-name>.csv" abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data/
    ```
 
    ファイル名にスペースや特殊文字が含まれる場合は、ファイル名を引用符で囲んでください。
@@ -128,7 +128,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
    nano flightdelays.hql
    ```
 
-2. 次のテキストに変更を加えます。`<file-system-name>` と `<storage-account-name>` のプレースホルダーを実際のファイル システムとストレージ アカウントの名前に置き換えてください。 マウスの右ボタンをクリックしたまま Shift キーを押して、そのテキストを nano コンソールにコピーして貼り付けます。
+2. 次のテキストに変更を加えます。`<container-name>` と `<storage-account-name>` のプレースホルダーを実際のコンテナーとストレージ アカウントの名前に置き換えてください。 マウスの右ボタンをクリックしたまま Shift キーを押して、そのテキストを nano コンソールにコピーして貼り付けます。
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -160,14 +160,14 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/data';
 
     -- Drop the delays table if it exists
     DROP TABLE delays;
     -- Create the delays table and populate it with data
     -- pulled in from the CSV file (via the external table defined previously)
     CREATE TABLE delays
-    LOCATION 'abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
+    LOCATION 'abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/processed'
     AS
     SELECT YEAR AS year,
         FL_DATE AS flight_date,
@@ -218,7 +218,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
     GROUP BY origin_city_name;
     ```
 
-   このクエリにより、悪天候による遅延が発生した都市の一覧と平均遅延時間が取得され、`abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` に保存されます。 その後、Sqoop がこの場所からデータを読み取り、Azure SQL Database にエクスポートします。
+   このクエリにより、悪天候による遅延が発生した都市の一覧と平均遅延時間が取得され、`abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` に保存されます。 その後、Sqoop がこの場所からデータを読み取り、Azure SQL Database にエクスポートします。
 
 7. Beeline を終了するには、プロンプトで「 `!quit` 」と入力します。
 
@@ -300,7 +300,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 
 ## <a name="export-and-load-the-data"></a>データのエクスポートと読み込み
 
-これまでのセクションで、変換済みデータを `abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` という場所にコピーしました。 このセクションでは、Sqoop を使用して、`abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` のデータを、Azure SQL データベースに作成したテーブルにエクスポートします。
+これまでのセクションで、変換済みデータを `abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` という場所にコピーしました。 このセクションでは、Sqoop を使用して、`abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/tutorials/flightdelays/output` のデータを、Azure SQL データベースに作成したテーブルにエクスポートします。
 
 1. 次のコマンドを使用して、Sqoop が SQL データベースを認識できることを確認します。
 
@@ -313,7 +313,7 @@ Apache Hive ジョブの一環として、.csv ファイルから **delays** と
 2. 次のコマンドを使って、**hivesampletable** テーブルから **delays** テーブルにデータをエクスポートします。
 
    ```bash
-   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<file-system-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
+   sqoop export --connect 'jdbc:sqlserver://<SERVER_NAME>.database.windows.net:1433;database=<DATABASE_NAME>' --username <ADMIN_LOGIN> --password <ADMIN_PASSWORD> --table 'delays' --export-dir 'abfs://<container-name>@.dfs.core.windows.net/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
    ```
 
    Sqoop は **delays** テーブルを含むデータベースに接続して、`/tutorials/flightdelays/output` ディレクトリから **delays** テーブルにデータをエクスポートします。

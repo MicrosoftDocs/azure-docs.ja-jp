@@ -7,34 +7,36 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 05/15/2017
+ms.date: 08/26/2019
 ms.author: robinsh
-ms.openlocfilehash: 9bf34fd48c3a4a9a9672ac162f63dcce118b2c0a
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: c07b110f0d4c31713ab432b5b5e337f3b69dfc55
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668168"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147726"
 ---
 # <a name="get-started-with-device-twins-net"></a>デバイス ツインの使用 (.NET)
+
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
 
-このチュートリアルの最後には、次の .NET コンソール アプリが完成します。
+このチュートリアルでは、次の .NET コンソール アプリを作成します。
 
-* **CreateDeviceIdentity**: .NET アプリ。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイス アプリを接続します。
+* **CreateDeviceIdentity**。 このアプリでは、デバイス ID および関連するセキュリティ キーを作成し、シミュレートされたデバイス アプリに接続します。
 
-* **AddTagsAndQuery**: .NET バックエンド アプリ。タグを追加してデバイス ツインのクエリを実行します。
+* **AddTagsAndQuery**。 このバックエンド アプリでは、タグを追加し、デバイス ツインのクエリを行います。
 
-* **ReportConnectivity**: .NET デバイス アプリ。以前作成したデバイス ID を使用して IoT hub に接続するデバイスをシミュレートし、接続の状態を報告します。
+* **ReportConnectivity**。 このデバイス アプリでは、作成済みのデバイス ID を使用して IoT hub に接続するデバイスをシミュレートし、その接続の状態を報告します。
 
 > [!NOTE]
 > デバイス アプリとバックエンド アプリの両方をビルドするために使用できる Azure IoT SDK については、記事「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。
-> 
+>
 
-このチュートリアルを完了するには、以下が必要です。
+## <a name="prerequisites"></a>前提条件
 
 * 見ることができます。
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
+
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -52,32 +54,36 @@ ms.locfileid: "68668168"
 
 ## <a name="create-the-service-app"></a>デバイス アプリを作成する
 
-このセクションでは、**myDeviceId** に関連付けられたデバイス ツインに場所のメタデータを追加する .NET コンソール アプリを (C# を使用) 作成します。 その後、米国にあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT Hub に格納されているデバイス ツインに対してクエリを実行します。
+このセクションでは、**myDeviceId** に関連付けられたデバイス ツインに場所のメタデータを追加する .NET コンソール アプリを C# を使用して作成します。 その後、米国にあるデバイスで、携帯ネットワーク接続を報告しているものを選択して、IoT Hub に格納されているデバイス ツインに対してクエリを実行します。
 
-1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 プロジェクトに **AddTagsAndQuery** という名前を付けます。
-   
-    ![New Visual C# Windows Classic Desktop project](./media/iot-hub-csharp-csharp-twin-getstarted/createnetapp.png)
+1. Visual Studio で、 **[新しいプロジェクトの作成]** を選択します。 **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 
-2. ソリューション エクスプローラーで **AddTagsAndQuery** プロジェクトを右クリックし、 **[NuGet パッケージの管理...]** をクリックします。
+1. **[新しいプロジェクトの構成]** で、プロジェクトに **AddTagsAndQuery** という名前を付けます。
 
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices** を検索します。 **[インストール]** を選択して、**Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
-   
-    ![NuGet Package Manager window](./media/iot-hub-csharp-csharp-twin-getstarted/servicesdknuget.png)
+    ![AddTagsAndQuery プロジェクトを構成する](./media/iot-hub-csharp-csharp-twin-getstarted/config-addtagsandquery-app.png)
 
-4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. ソリューション エクスプローラーで **AddTagsAndQuery** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+
+1. **[参照]** を選択し、**Microsoft.Azure.Devices** を探して選択します。 **[インストール]** を選択します。
+
+    ![NuGet Package Manager window](./media/iot-hub-csharp-csharp-twin-getstarted/nuget-package-addtagsandquery-app.png)
+
+   この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
+
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp  
     using Microsoft.Azure.Devices;
     ```
 
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT Hub 接続文字列に置き換えます。
+1. **Program** クラスに次のフィールドを追加します。 `{iot hub connection string}` を、「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えてください。
 
     ```csharp  
     static RegistryManager registryManager;
     static string connectionString = "{iot hub connection string}";
     ```
 
-6. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
     ```csharp  
     public static async Task AddTagsAndQuery()
@@ -93,27 +99,27 @@ ms.locfileid: "68668168"
                 }
             }";
         await registryManager.UpdateTwinAsync(twin.DeviceId, patch, twin.ETag);
-   
+
         var query = registryManager.CreateQuery(
           "SELECT * FROM devices WHERE tags.location.plant = 'Redmond43'", 100);
         var twinsInRedmond43 = await query.GetNextAsTwinAsync();
         Console.WriteLine("Devices in Redmond43: {0}", 
           string.Join(", ", twinsInRedmond43.Select(t => t.DeviceId)));
-   
+
         query = registryManager.CreateQuery("SELECT * FROM devices WHERE tags.location.plant = 'Redmond43' AND properties.reported.connectivity.type = 'cellular'", 100);
         var twinsInRedmond43UsingCellular = await query.GetNextAsTwinAsync();
         Console.WriteLine("Devices in Redmond43 using cellular network: {0}", 
           string.Join(", ", twinsInRedmond43UsingCellular.Select(t => t.DeviceId)));
     }
     ```
-   
-    **RegistryManager** クラスに、サービスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、まず **registryManager** オブジェクトを初期化し、**myDeviceId** のデバイス ツインを取得して、最後にタグを目的の位置情報で更新します。
-   
-    更新後、2 つのクエリを実行します。1 番目のクエリでは、**Redmond43** 工場にあるデバイスのデバイス ツインのみを選択し、2 番目のクエリでは携帯ネットワーク経由で接続しているデバイスのみを選択します。
-   
-    前のコードでは、**query** オブジェクトの作成時に返されるドキュメントの最大数を指定します。 **query** オブジェクトには、**GetNextAsTwinAsync** メソッドを複数回呼び出してすべての結果を取得する際に使用できる **HasMoreResults** のブール型プロパティが含まれます。 **GetNextAsJson** というメソッドは、集計クエリの結果など、デバイス ツインではない結果に使用できます。
 
-7. 最後に、**Main** メソッドに次の行を追加します。
+    **RegistryManager** クラスに、サービスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 前のコードでは、まず **registryManager** オブジェクトを初期化し、**myDeviceId** のデバイス ツインを取得して、最後にタグを目的の位置情報で更新します。
+
+    更新後、2 つのクエリを実行します。1 番目のクエリでは、**Redmond43** 工場にあるデバイスのデバイス ツインのみを選択し、2 番目のクエリでは携帯ネットワーク経由で接続しているデバイスのみを選択します。
+
+    前のコードでは、**query** オブジェクトの作成時に、返されるドキュメントの最大数を指定します。 **query** オブジェクトには、**GetNextAsTwinAsync** メソッドを複数回呼び出してすべての結果を取得する際に使用できる **HasMoreResults** のブール型プロパティが含まれます。 **GetNextAsJson** というメソッドは、集計クエリの結果など、デバイス ツインではない結果に使用できます。
+
+1. 最後に、**Main** メソッドに次の行を追加します。
 
     ```csharp  
     registryManager = RegistryManager.CreateFromConnectionString(connectionString);
@@ -122,10 +128,8 @@ ms.locfileid: "68668168"
     Console.ReadLine();
     ```
 
-8. ソリューション エクスプローラーで、 **[スタートアップ プロジェクトの設定...]** を開き、**AddTagsAndQuery** プロジェクトの **[アクション]** が **[開始]** になっていることを確認します。 ソリューションをビルドします。
+1. **AddTagsAndQuery** プロジェクトを右クリックし、 **[デバッグ]** を選択してから、 **[新しいインスタンスを開始]** を選択して、このアプリケーションを実行します。 **Redmond43** にあるすべてのデバイスを照会するクエリの結果には、1 件のデバイスが表示され、携帯ネットワークを使用するデバイスに絞り込んだ結果には 0 件のデバイスが表示されます。
 
-9. **AddTagsAndQuery** プロジェクトを右クリックし、 **[デバッグ]** を選択してから、 **[新しいインスタンスを開始]** を選択して、このアプリケーションを実行します。 **Redmond43** にあるすべてのデバイスを照会するクエリの結果には、1 件のデバイスが表示され、携帯ネットワークを使用するデバイスに絞り込んだ結果には 0 件のデバイスが表示されます。
-   
     ![ウィンドウに表示されたクエリの結果](./media/iot-hub-csharp-csharp-twin-getstarted/addtagapp.png)
 
 次のセクションでは、接続情報を報告し、前のセクションのクエリの結果を変更するデバイス アプリを作成します。
@@ -134,17 +138,17 @@ ms.locfileid: "68668168"
 
 このセクションでは、**myDeviceId** としてハブに接続し、報告されるプロパティに携帯ネットワークを使用しているという情報を含めるよう更新する .NET コンソール アプリを作成します。
 
-1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 プロジェクトに **ReportConnectivity** という名前をつけます。
-   
-    ![New Visual C# Windows Classic device app](./media/iot-hub-csharp-csharp-twin-getstarted/createdeviceapp.png)
-    
-2. ソリューション エクスプローラーで **ReportConnectivity** プロジェクトを右クリックし、 **[NuGet パッケージの管理...]** をクリックします。
+1. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。 **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索します。 **[インストール]** を選択して、**Microsoft.Azure.Devices.Client** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet パッケージへの参照とその依存関係が追加されます。
-   
-    ![NuGet Package Manager window Client app](./media/iot-hub-csharp-csharp-twin-getstarted/clientsdknuget.png)
+1. **[新しいプロジェクトの構成]** で、プロジェクトに **ReportConnectivity** という名前を付けます。 **[ソリューション]** で、 **[ソリューションに追加]** を選択してから、 **[作成]** を選択します。
 
-4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. ソリューション エクスプローラーで **ReportConnectivity** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+
+1. **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を探して選択します。 **[インストール]** を選択します。
+
+   この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet パッケージへの参照とその依存関係が追加されます。
+
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp  
     using Microsoft.Azure.Devices.Client;
@@ -152,15 +156,14 @@ ms.locfileid: "68668168"
     using Newtonsoft.Json;
     ```
 
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで記したデバイス接続文字列に置き換えてください。
+1. **Program** クラスに次のフィールドを追加します。 `{device connection string}` を、「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」で書き留めたデバイス接続文字列に置き換えます。
 
     ```csharp  
-    static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;
-      DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
+    static string DeviceConnectionString = "HostName=<yourIotHubName>.azure-devices.net;DeviceId=<yourIotDeviceName>;SharedAccessKey=<yourIotDeviceAccessKey>";
     static DeviceClient Client = null;
     ```
 
-6. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
     ```csharp
     public static async void InitClient()
@@ -181,9 +184,9 @@ ms.locfileid: "68668168"
     }
     ```
 
-    **Client** オブジェクトに、デバイスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 上記のコードは**クライアント**オブジェクトを初期化し、次に **myDeviceId** のデバイス ツインを取得します。
+    **Client** オブジェクトに、デバイスからデバイス ツインとやりとりするのに必要なすべてのメソッドが表示されます。 上記のコードでは、**クライアント** オブジェクトが初期化された後、**myDeviceId** のデバイス ツインが取得されます。
 
-7. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
     ```csharp  
     public static async void ReportConnectivity()
@@ -191,7 +194,7 @@ ms.locfileid: "68668168"
         try
         {
             Console.WriteLine("Sending connectivity data as reported property");
-            
+
             TwinCollection reportedProperties, connectivity;
             reportedProperties = new TwinCollection();
             connectivity = new TwinCollection();
@@ -207,9 +210,9 @@ ms.locfileid: "68668168"
     }
     ```
 
-   上記のコードは、**myDeviceId**の報告対象プロパティを接続情報で更新します。
+   上記のコードでは、**myDeviceId** の報告されるプロパティが接続情報で更新されます。
 
-8. 最後に、**Main** メソッドに次の行を追加します。
+1. 最後に、**Main** メソッドに次の行を追加します。
 
     ```csharp
     try
@@ -226,24 +229,28 @@ ms.locfileid: "68668168"
     Console.ReadLine();
     ```
 
-9. ソリューション エクスプローラーで、 **[スタートアップ プロジェクトの設定...]** を開き、**ReportConnectivity** プロジェクトの **[アクション]** が **[開始]** になっていることを確認します。 ソリューションをビルドします。
+1. ソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。
 
-10. **ReportConnectivity** プロジェクトを右クリックし、 **[デバッグ]** を選択してから、 **[新しいインスタンスを開始]** を選択して、このアプリケーションを実行します。 ツインの情報を取得し、次に接続性が*報告対象プロパティ*として送信される様子が見られます。
-   
+1. **[共通プロパティ]**  >  **[スタートアップ プロジェクト]** で、 **[マルチ スタートアップ プロジェクト]** を選択します。 **ReportConnectivity** では、 **[アクション]** として **[開始]** を選択します。 **[OK]** を選択して変更を保存します。  
+
+1. **ReportConnectivity** プロジェクトを右クリックし、 **[デバッグ]** を選択してから、 **[新しいインスタンスを開始]** を選択して、このアプリを実行します。 アプリでツインの情報が取得された後、接続性が "***報告されるプロパティ***" として送信される様子が見られます。
+
     ![デバイス アプリを実行して接続性を報告](./media/iot-hub-csharp-csharp-twin-getstarted/rundeviceapp.png)
-       
-11. これで、デバイスが接続情報を報告したため、両方のクエリで表示されるようになります。 .NET **AddTagsAndQuery** アプリを実行して、クエリをもう一度実行します。 今回は、**myDeviceId** が両方のクエリ結果に表示されるはずです。
-   
+
+   デバイスの接続情報が報告された後、両方のクエリで表示されるようになります。
+
+1. **AddTagsAndQuery** プロジェクトを右クリックし、 **[デバッグ]**  >  **[新しいインスタンスを開始]** を選択して、クエリを再実行します。 今回は、**myDeviceId** が両方のクエリ結果に表示されるはずです。
+
     ![デバイスの接続性が正常に報告される](./media/iot-hub-csharp-csharp-twin-getstarted/tagappsuccess.png)
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 バックエンド アプリからデバイスのメタデータをタグとして追加し、シミュレート対象デバイス アプリでデバイス ツインのデバイスの接続情報を報告するよう記述しました。 さらに、SQL に似た IoT Hub クエリ言語を使用してこの情報を照会する方法も学習しました。
 
-詳細については、次のリソースをご覧ください。
+次のリソースで詳細を確認できます。
 
-* デバイスからテレメトリを送信する: [デバイスから IoT ハブにテレメトリを送信する方法](quickstart-send-telemetry-dotnet.md)のチュートリアル、
+* デバイスからテレメトリを送信する方法を確認するには、[デバイスから IoT ハブへのテレメトリの送信](quickstart-send-telemetry-dotnet.md)に関するチュートリアルをご覧ください。
 
-* デバイス ツインの必要なプロパティを使用してデバイスを構成する: [必要なプロパティを使用してデバイスを構成する](tutorial-device-twins.md)方法のチュートリアル、
+* デバイス ツインの必要なプロパティを使用してデバイスを構成する方法を確認するには、[必要なプロパティを使用したデバイスの構成](tutorial-device-twins.md)に関するチュートリアルをご覧ください。
 
-* デバイスを対話形式で制御する (ユーザー制御アプリからファンをオンにするなど): [ダイレクト メソッドの使用](quickstart-control-device-dotnet.md)に関するチュートリアル。
+* ユーザー制御アプリからファンをオンにするなど、デバイスを対話形式で制御する方法を確認するには、[ダイレクト メソッドの使用](quickstart-control-device-dotnet.md)に関するチュートリアルをご覧ください。

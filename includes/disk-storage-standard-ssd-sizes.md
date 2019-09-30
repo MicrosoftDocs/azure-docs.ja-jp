@@ -9,10 +9,10 @@ ms.date: 03/18/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 22d8d196381e82aab52c4d33e08fb13ea9184619
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67471285"
 ---
 | Standard SSD のサイズ | E4 | E6 | E10 | E15 | E20 | E30 | E40 | E50 | E60 | E70 | E80 |

@@ -1,35 +1,35 @@
 ---
-title: 'チュートリアル: Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する'
-description: このチュートリアルでは、Azure PowerShell を使用して Azure Firewall をデプロイおよび構成する方法を学習します。
+title: Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
+description: この記事では、Azure PowerShell を使用して Azure Firewall をデプロイおよび構成する方法を学習します。
 services: firewall
 author: vhorne
 ms.service: firewall
-ms.topic: tutorial
+ms.topic: article
 ms.date: 5/3/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 608674d6e049c71d22c7bf91f37fcb16ffccc581
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.openlocfilehash: a9987808feb895276f3f9e62fe66c1b353b52e72
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65144916"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073078"
 ---
-# <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>チュートリアル:Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
+# <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
 オンプレミス ネットワークを Azure 仮想ネットワークに接続してハイブリッド ネットワークを作成する場合、ご利用の Azure ネットワーク リソースへのアクセスを制御する機能が、全体的なセキュリティ プランの中で重要な役割を果たします。
 
 Azure Firewall を使用すれば、許可するネットワーク トラフィックと拒否するネットワーク トラフィックを定義するルールを使って、ハイブリッド ネットワークにおけるネットワーク アクセスを制御できます。
 
-このチュートリアルでは、3 つの仮想ネットワークを作成します。
+この記事では、3 つの仮想ネットワークを作成します。
 
 - **VNet-Hub** - ファイアウォールは、この仮想ネットワーク内に存在します。
 - **VNet-Spoke** - スポーク仮想ネットワークは Azure 上のワークロードを表します。
-- **VNet-Onprem** - オンプレミス仮想ネットワークはオンプレミス ネットワークを表します。 実際のデプロイでは、VPN 接続または ExpressRoute 接続のいずれかで接続できます。 わかりやすくするため、このチュートリアルでは VPN ゲートウェイ接続を使用し、Azure に配置された仮想ネットワークがオンプレミス ネットワークを表すために使用されます。
+- **VNet-Onprem** - オンプレミス仮想ネットワークはオンプレミス ネットワークを表します。 実際のデプロイでは、VPN 接続または ExpressRoute 接続のいずれかで接続できます。 わかりやすくするため、この記事では VPN ゲートウェイ接続を使用し、Azure に配置された仮想ネットワークがオンプレミスのネットワークを表すために使用されます。
 
 ![ハイブリッド ネットワークでのファイアウォール](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * 変数を宣言する
@@ -43,12 +43,13 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 > * 仮想マシンの作成
 > * ファイアウォールをテストする
 
+このチュートリアルを完了する代わりに Azure portal を使用する場合は、「[チュートリアル: Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する](tutorial-hybrid-portal.md)」を参照してください。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルでは、PowerShell をローカルで実行する必要があります。 Azure PowerShell モジュールをインストールしておく必要があります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
+この記事では、PowerShell をローカルで実行する必要があります。 Azure PowerShell モジュールをインストールしておく必要があります。 バージョンを確認するには、`Get-Module -ListAvailable Az` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzAccount` を実行して Azure との接続を作成します。
 
 このシナリオが正しく機能するために重要な要件が 3 つあります。
 
@@ -58,7 +59,7 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
    Azure Firewall サブネット上に UDR は必要ありません。BGP からルートを学習するためです。
 - VNet-Hub を VNet-Spoke にピアリングするときは **AllowGatewayTransit** を設定し、VNet-Spoke を VNet-Hub にピアリングするときは **UseRemoteGateways** を設定してください。
 
-これらのルートの作成方法については、このチュートリアルの「[ルートを作成する](#create-the-routes)」セクションをご覧ください。
+これらのルートの作成方法については、この記事の「[ルートを作成する](#create-the-routes)」セクションをご覧ください。
 
 >[!NOTE]
 >Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。 既定では、Azure Firewall はオンプレミス ネットワークへの強制トンネリングをサポートしません。
@@ -74,7 +75,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="declare-the-variables"></a>変数を宣言する
 
-以下の例では、このチュートリアルの値を使って変数を宣言します。 いくつかの値については、ご利用のサブスクリプションで使用するために実際の値で置き換えることが必要になる場合があります。 変数を必要に応じて変更したうえでコピーし、PowerShell コンソールに貼り付けます。
+以下の例では、この記事の値を使って変数を宣言します。 いくつかの値については、ご利用のサブスクリプションで使用するために実際の値で置き換えることが必要になる場合があります。 変数を必要に応じて変更したうえでコピーし、PowerShell コンソールに貼り付けます。
 
 ```azurepowershell
 $RG1 = "FW-Hybrid-Test"
@@ -118,7 +119,7 @@ $SNnameGW = "GatewaySubnet"
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>ファイアウォールのハブ仮想ネットワークを作成する
 
-まず、このチュートリアルのリソースを含めるためのリソース グループを作成します。
+まず、この記事のリソースを含めるためのリソース グループを作成します。
 
 ```azurepowershell
   New-AzResourceGroup -Name $RG1 -Location $Location1
@@ -292,7 +293,7 @@ New-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupNam
 
 #### <a name="verify-the-connection"></a>接続を確認する
 
-*Get-AzVirtualNetworkGatewayConnection*コマンドレットを使用して、接続が成功したことを確認できます。*-Debug* は指定しても指定しなくてもかまいません。 次のコマンドレットを使用します。値は実際の値に置き換えてください。 プロンプトが表示されたら、**A** を選択して **All** を実行します。 この例では、テストする接続の名前が *-Name* で示されています。
+*Get-AzVirtualNetworkGatewayConnection*コマンドレットを使用して、接続が成功したことを確認できます。 *-Debug* は指定しても指定しなくてもかまいません。 次のコマンドレットを使用します。値は実際の値に置き換えてください。 プロンプトが表示されたら、**A** を選択して **All** を実行します。 この例では、テストする接続の名前が *-Name* で示されています。
 
 ```azurepowershell
 Get-AzVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGroupName $RG1
@@ -496,5 +497,4 @@ Set-AzFirewall -AzureFirewall $azfw
 
 次に、Azure Firewall のログを監視することができます。
 
-> [!div class="nextstepaction"]
-> [チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)
+[チュートリアル:Azure Firewall のログを監視する](./tutorial-diagnostics.md)

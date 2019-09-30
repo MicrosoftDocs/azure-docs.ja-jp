@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: lagayhar
-ms.openlocfilehash: 778690fb2796cea3154b3acbb662341fdaea87da
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1074495f5ac9112b6ce4f67ad2d81ee57b28e720
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60699140"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012689"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Azure Application Insights Java SDK で Micrometer を使用する方法
 Micrometer のアプリケーション監視では、JVM ベースのアプリケーション コードのメトリックが測定され、好みの監視システムにデータをエクスポートできます。 この記事では、Spring Boot アプリケーションと非 Spring Boot アプリケーションの両方に対して Application Insights で Micrometer を使用する方法を説明します。
@@ -64,7 +64,7 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
 次の依存関係を pom.xml ファイルまたは build.gradle ファイルに追加します。
 
 * Application Insights Spring-boot-starter 2.1.2 以降
-* Azure-spring-boot-metrics-starters 2.0.7 以降  
+* Azure-spring-boot-metrics-starters 2.1.5 以降  
 * [Application Insights リソース](../../azure-monitor/app/create-new-resource.md )
 
 手順:
@@ -75,12 +75,12 @@ Micrometer のアプリケーション監視では、JVM ベースのアプリ�
     <dependency> 
           <groupId>com.microsoft.azure</groupId>
           <artifactId>azure-spring-boot-metrics-starter</artifactId>
-          <version>2.0.7</version>
+          <version>2.1.6</version>
     </dependency>
     ```
 1. 次のプロパティを使用して、Application Insights のインストルメンテーション キーで application.properties または yml ファイルを更新します。
 
-     `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
+     `management.metrics.export.azuremonitor.instrumentation-key=<your-instrumentation-key-here>`
 3. アプリケーションをビルドして実行します
 4. 集計前のメトリックが Azure Monitor に自動収集されます。 Application Insights Spring Boot スターターを微調整する方法の詳細については、[GitHub の readme](https://github.com/Microsoft/azure-spring-boot/releases/latest) をご覧ください。
 

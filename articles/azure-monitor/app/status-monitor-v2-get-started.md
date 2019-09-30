@@ -3,7 +3,7 @@ title: Azure Status Monitor v2 - 概要 | Microsoft Docs
 description: Status Monitor v2 のクイックスタート ガイド。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: a0c836c8ef947e190a0090b3435eec1c53ded436
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d9c354edac3cbd3faccaa261654e56f858befdf6
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326255"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058248"
 ---
 # <a name="get-started-with-status-monitor-v2"></a>Status Monitor v2 の概要
 

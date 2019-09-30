@@ -8,19 +8,37 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/30/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 85c6ff59b5f73e88c82ee8b788bd9f35d18bc0ed
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697968"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277481"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
 QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
+
+
+## <a name="how-to-get-the-qnamaker-service-hostname"></a>QnA Maker サービスのホスト名を取得する方法
+
+QnA Maker サービスのホスト名は、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 ホスト名は、 https:// *{ホスト名}* .azurewebsites.net という形式の URL です。
+    
+1. [Azure portal](https://portal.azure.com) で QnA Maker サービス (リソース グループ) に移動します。
+
+    ![QnAMaker の Azure リソース グループ (Azure portal)](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-resourcegroup.png)
+
+1. QnA Maker リソースに関連付けられている App Service を選択します。 通常、名前は同じです。
+
+     ![QnAMaker の App Service を選択する](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
+
+1. ホスト名 URL は [概要] セクションで確認できます。
+
+    ![QnA Maker のホスト名](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
+    
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>QnA Maker ポータルでヘルプ ボットを使用する
 
@@ -98,6 +116,14 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 **[ユーザー設定]** [ページ](https://www.qnamaker.ai/UserSettings)の **[エンドポイント キー]** で、ナレッジ ベースのバージョン値の隣に注意のアイコンが表示されているときは、アプリ サービスを更新してください。
 
+### <a name="i-deleted-my-existing-search-service-how-can-i-fix-this"></a>既存の検索サービスを削除してしまいました。 どうしたらいいですか。
+
+Azure Search インデックスを削除した場合、この操作は最終的なものであり、インデックスを復旧することはできません。 
+
+### <a name="i-deleted-my-testkb-index-in-my-search-service-how-can-i-fix-this"></a>検索サービスの `testkb` インデックスを削除してしまいました。 どうしたらいいですか。 
+
+古いデータを回復することはできません。 新しい QnA Maker リソースを作成し、ナレッジ ベースを再度作成してください。
+
 ### <a name="when-should-i-refresh-my-endpoint-keys"></a>エンドポイント キーは、どのようなときに更新すべきでしょうか?
 
 エンドポイント キーの更新は、鍵漏えいのおそれがある場合に行ってください。
@@ -108,7 +134,7 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 ### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>QnA Maker で使用される Azure Search リソースの名前を変更するには、どうすればよいですか。
 
-Azure Search リソースの名前は、QnA Maker リソース名の後にいくつかのランダムな文字が追加されたものです。 そのため、QnA Maker の複数の Search リソースを識別することが難しくなります。 別の Azure Search サービスを作成し (任意の方法で名前を付け)、それを QnA サービスに接続します。 手順は、[Azure Search をアップグレードする](How-To/upgrade-qnamaker-service.md#upgrade-azure-search-service)ために必要な手順と同様です。
+Azure Search リソースの名前は、QnA Maker リソース名の後にいくつかのランダムな文字が追加されたものです。 そのため、QnA Maker の複数の Search リソースを識別することが難しくなります。 別の Azure Search サービスを作成し (任意の方法で名前を付け)、それを QnA サービスに接続します。 手順は、[Azure Search をアップグレードする](How-To/set-up-qnamaker-service-azure.md#upgrade-the-azure-search-service)ために必要な手順と同様です。
 
 ### <a name="when-qna-maker-returns-runtime-core-is-not-initialized-how-do-i-fix-it"></a>QnA Maker から `Runtime core is not initialized,` が返された場合は、どのように解決すればよいですか?
 
@@ -136,9 +162,25 @@ App Service のディスク領域がいっぱいになっている可能性が�
 
 いいえ。QnA Maker に関して [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) を使用する必要はありません。 ただし、QnA Maker は  [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0) に用意されているいくつかのテンプレートの 1 つとして提供されています。 Bot Service では、Microsoft Bot Framework を使用してインテリジェントなボットを迅速に開発し、サーバーレス環境で実行することができます。
 
-### <a name="how-can-i-create-a-bot-with-qna-maker"></a>QnA Maker でボットを作成するにはどうすればよいですか?
+### <a name="how-can-i-create-a-new-bot-with-qna-maker"></a>QnA Maker で新しいボットを作成するにはどうすればよいですか?
 
 Azure Bot Service でボットを作成するには、[こちら](./Tutorials/create-qna-bot.md)のドキュメントの手順に従ってください。
+
+### <a name="how-do-i-use-a-different-knowledge-base-with-an-existing-azure-bot-service"></a>既存の Azure Bot Service で別のナレッジ ベースを使用する方法
+
+次のナレッジ ベースに関する情報が必要です。
+
+* ナレッジ ベース ID。
+* ナレッジ ベースの公開されたエンドポイント ホスト名 - 公開後に **[設定]** ページで見つかります。
+* ナレッジ ベースの公開されたエンドポイント キー - 公開後に **[設定]** ページで見つかります。 
+
+この情報を使用して、Azure portal でご利用のボットのアプリ サービスにアクセスします。 **[設定] -> [構成] -> [アプリケーション設定]** で、これらの値を変更します。  
+
+ナレッジ ベースのエンドポイント キーは、ABS サービスで `QnAAuthkey` としてラベルが付けられます。 
+
+### <a name="can-two-or-more-client-applications-share-a-knowledge-base"></a>2 つ以上のクライアント アプリケーションでナレッジ ベースを共有できますか? 
+
+はい。ナレッジ ベースには、任意の数のクライアントからクエリを実行できます。 ナレッジ ベースからの応答が低速であるか、タイムアウトになっている場合は、ナレッジ ベースに関連付けられているアプリ サービスのサービス レベルをアップグレードすることを検討してください。
 
 ### <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>QnA Maker サービスを Web サイトに埋め込むにはどうすればよいですか?
 

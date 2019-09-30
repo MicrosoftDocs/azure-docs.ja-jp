@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/23/2019
+ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: 32c903e5d469a9a3e7b98bd406b5512d752bb210
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: df9a7325d3ffc2362ff14b9a618ca0db7928b337
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017789"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376332"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
 この記事では、現在 Microsoft Azure によって提供されている Storage キューと Service Bus キューという 2 種類のキューの相違点と共通点について説明します。 この情報を使用すると、それぞれのテクノロジを比較対照して、現在のニーズに最適なのはどちらのソリューションかを十分な情報に基づいて判断できるようになります。
@@ -52,7 +52,9 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 * アプリケーションでメッセージを実行時間の長い並列ストリームとして処理する必要がある場合 (メッセージは、自身の [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) プロパティを使用してストリームに関連付けられます)。 このモデルでは、処理を行うアプリケーションの各ノードは、メッセージではなくストリームに対して競合します。 処理を行うノードにストリームが渡されると、そのノードはトランザクションを使用してアプリケーション ストリームの状態を確認できます。
 * 複数のメッセージをキューに送信したりキューから受信したりする際にトランザクション動作と原子性が必要な場合。
 * アプリケーションで処理するメッセージのサイズが 64 KB を超えることはあっても 256 KB の制限に到達することはないと考えられる場合。
-* ロールベースのアクセス モデルを提供して、キューの送信側と受信側に異なる権限/アクセス許可を与える必要がある場合。 詳細については、「[Active Directory のロールベースのアクセス制御 (プレビュー)](service-bus-role-based-access-control.md)」を参照してください。
+* ロールベースのアクセス モデルを提供して、キューの送信側と受信側に異なる権限/アクセス許可を与える必要がある場合。 詳細については、次の記事を参照してください。
+    - [マネージド ID による認証](service-bus-managed-service-identity.md)
+    - [アプリケーションからの認証](authenticate-application.md)
 * キューのサイズが 80 GB を超えることはない場合。
 * AMQP 1.0 標準ベースのメッセージング プロトコルを使用する必要がある場合。 AMQP の詳細情報については「[Service Bus AMQP の概要](service-bus-amqp-overview.md)」をご覧ください。
 * いずれは、キュー ベースのポイント ツー ポイントの通信から、キューに送信されたメッセージの一部またはすべての独立したコピーを受信する追加の受信側 (サブスクライバー) をシームレスに統合できるメッセージ交換パターンに移行することを考えている場合。 後者は、Service Bus によってネイティブで提供される発行/サブスクライブ機能を指します。
@@ -68,7 +70,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 | 比較条件 | Storage キュー | Service Bus キュー |
 | --- | --- | --- |
 | 順序の保証 |**いいえ** <br/><br>詳細については、追加情報セクションの最初のメモをご覧ください。</br> |**はい - 先入れ先出し法 (FIFO)**<br/><br>(メッセージング セッションを使用) |
-| 配信保証 |**At-Least-Once** |**At-Least-Once**<br/><br/>**At-Most-Once** |
+| 配信保証 |**At-Least-Once** |**At-Least-Once** (PeekLock 受信モードを使用 - これは既定値です) <br/><br/>**At-Most-Once** (ReceiveAndDelete 受信モードを使用) <br/> <br/> さまざまな[受信モード](service-bus-queues-topics-subscriptions.md#receive-modes)に関する詳細  |
 | 分割不可能な操作のサポート |**いいえ** |**はい**<br/><br/> |
 | 受信動作 |**非ブロッキング**<br/><br/>(新しいメッセージがない場合はすぐに完了します) |**タイムアウトあり/なしのブロッキング**<br/><br/>(長いポーリングまたは ["Comet 手法"](https://go.microsoft.com/fwlink/?LinkId=613759) を提供します)<br/><br/>**非ブロッキング**<br/><br/>(.NET マネージド API のみを使用) |
 | プッシュ型 API |**いいえ** |**はい**<br/><br/>[OnMessage](/dotnet/api/microsoft.servicebus.messaging.queueclient.onmessage#Microsoft_ServiceBus_Messaging_QueueClient_OnMessage_System_Action_Microsoft_ServiceBus_Messaging_BrokeredMessage__) と **OnMessage** セッション .NET API |
@@ -83,7 +85,6 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 * Storage キューのメッセージは一般的に先入れ先出しですが、メッセージの表示タイムアウト期限を過ぎたとき (たとえば処理中にクライアント アプリケーションがクラッシュした場合) などに順番が変わることがあります。 表示タイムアウトが過ぎると、別の worker がデキューするために、メッセージがキューに再度表示されます。 そのとき、もともとエンキュー時に後ろにあったメッセージの後にメッセージが (再デキューのために) 配置されることがあります。
 * Service Bus キューで FIFO パターンを保証するには、メッセージング セッションを使用する必要があります。 **Peek & Lock** モードで受信したメッセージの処理中にアプリケーションがクラッシュした場合、キューの受信側は、次にメッセージング セッションを受け取ったときに、TTL (time-to-live) 期間が経過した後、失敗したメッセージから開始します。
 * Storage キューは、アプリケーション コンポーネントを分離してスケーラビリティや耐障害性を向上させ、負荷平準化やプロセス ワークフロー構築を容易にするなどの、標準的なキュー シナリオをサポートするように設計されています。
-* Service Bus キューは、*At-Least-Once* の配信保証をサポートしています。 
 * Service Bus セッションのコンテキストでのメッセージ処理に関する不整合は、セッション状態を使用してセッションのメッセージ シーケンスの処理の進捗に関連するアプリケーションの状態を格納することと、受け取ったメッセージの解決に関するトランザクションの使用とセッション状態の更新によって回避できます。 この種の整合性機能は、他のベンダーの製品では *1 回きりの処理*と呼ばれることもありますが、トランザクションの失敗によって明示的にメッセージが再配信されるので、その用語は厳密には適切でありません。
 * Storage キューでは、開発者とオペレーション チームの双方に対し、キュー、テーブル、BLOB で一貫性のあるプログラミング モデルを提供します。
 * Service Bus キューは、1 つのキューのコンテキストでローカル トランザクションをサポートします。
@@ -174,7 +175,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 
 | 比較条件 | Storage キュー | Service Bus キュー |
 | --- | --- | --- |
-| Authentication |**対称キー** |**対称キー** |
+| 認証 |**対称キー** |**対称キー** |
 | セキュリティ モデル |SAS トークンを介した委任アクセス。 |SAS |
 | ID プロバイダー フェデレーション |**いいえ** |**はい** |
 

@@ -11,21 +11,21 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 09/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 18e8f577a52ff36f5e6c4eb8f9697d301f056911
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 96f1f98f95bb726864553c81245e250cf907fb05
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081397"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961539"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する
 Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護された shell (SSH) 接続を使用してコマンド ラインから管理します。 Linux にまだ慣れていない場合や、簡単にトラブルシューティングする場合などは、リモート デスクトップを使用する方が操作が簡単なことがあります。 この記事では、Resource Manager デプロイ モデルを使用して、Linux VM のデスクトップ環境 ([xfce](https://www.xfce.org)) とリモート デスクトップ ([xrdp](https://www.xrdp.org)) をインストールして構成する方法を詳しく説明します。
 
 
 ## <a name="prerequisites"></a>前提条件
-この記事は、Ubuntu 16.04 LTS VM が Azure にあることを前提としています。 VM を作成する必要がある場合は、次のいずれかの方法を実行してください。
+この記事は、Ubuntu 18.04 LTS VM が Azure にあることを前提としています。 VM を作成する必要がある場合は、次のいずれかの方法を実行してください。
 
 - [Azure CLI](quick-create-cli.md)
 - [Azure Portal](quick-create-portal.md)
@@ -34,7 +34,7 @@ Azure の Linux 仮想マシン (VM) は、通常、セキュリティで保護�
 ## <a name="install-a-desktop-environment-on-your-linux-vm"></a>Linux VM にデスクトップ環境をインストールする
 Azure のほとんどの Linux VM では、デスクトップ環境は既定でインストールされていません。 通常、Linux VM は、デスクトップ環境ではなく、SSH 接続を使用して管理されます。 Linux で利用できるデスクトップ環境にはさまざまな種類があります。 選択したデスクトップ環境によっては、ディスク容量を 1 ～ 2 GB 使用し、必要なパッケージのすべてのインストールと構成が完了するまでに 5 ～ 10 分かかるものもあります。
 
-次の例では、軽量 [xfce4](https://www.xfce.org/) デスクトップ環境を Ubuntu 16.04 LTS VM にインストールします。 他のディストリビューションではコマンドが若干異なります (たとえば、Red Hat Enterprise Linux をインストールし、適切な `selinux` 規則をする場合は `yum` を使用し、SUSE にインストールするには `zypper` を使用します)。
+次の例では、軽量 [xfce4](https://www.xfce.org/) デスクトップ環境を Ubuntu 18.04 LTS VM にインストールします。 他のディストリビューションではコマンドが若干異なります (たとえば、Red Hat Enterprise Linux をインストールし、適切な `selinux` 規則をする場合は `yum` を使用し、SUSE にインストールするには `zypper` を使用します)。
 
 最初に、VM に SSH 接続します。 次の例では、*myvm.westus.cloudapp.azure.com* という名前の VM に *azureuser* のユーザー名を使用して接続しています。 独自の値を使用してください。
 
@@ -55,7 +55,7 @@ sudo apt-get install xfce4
 デスクトップ環境がインストールできましたので、リモート デスクトップ サービスを構成して着信接続をリッスンします。 [xrdp](http://xrdp.org) はオープン ソースのリモート デスクトップ プロトコル (RDP) サーバーであり、ほとんどの Linux ディストリビューションで使用でき、xfce も問題なく使用できます。 Ubuntu VM に次のように xrdp をインストールします。
 
 ```bash
-sudo apt-get install xrdp=0.6.1-2
+sudo apt-get -y install xrdp
 sudo systemctl enable xrdp
 ```
 

@@ -7,20 +7,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 979cbe16653c09ea1b019310d820b070be4a5a91
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a722ce39a679fa13e1fe849c46b44f786ea5ee42
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946062"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390267"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>リスト エンティティを使用してエンティティの検出を向上する 
-このチュートリアルでは、[リスト エンティティ](luis-concept-entity-types.md)を使用してエンティティの検出を向上する方法について説明します。 リスト エンティティは、用語の完全一致なので、ラベルを付ける必要はありません。  
+この記事では、[リスト エンティティ](luis-concept-entity-types.md)を使用してエンティティの検出を向上させる方法について説明します。 リスト エンティティは、用語の完全一致なので、ラベルを付ける必要はありません。  
 
-このチュートリアルでは、以下の内容を学習します。
+この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * リスト エンティティを作成する 
@@ -37,7 +37,7 @@ ms.locfileid: "68946062"
 > [!Tip]
 > サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)に登録できます。
 
-このチュートリアルのコードは、すべて [Azure-Samples GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)で入手できます。 
+この記事のコードは、すべて [Azure-Samples GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/tutorial-list-entity)で入手できます。 
 
 ## <a name="use-homeautomation-app"></a>HomeAutomation アプリを使用する
 HomeAutomation アプリを使用すると、照明、エンターテイメント システム、暖房や冷房などの環境制御などのデバイスを制御できます。 このようなシステムには、製造元の名前、ニックネーム、頭字語、スラングなどのさまざまな名前があります。 
@@ -59,7 +59,7 @@ HomeAutomation.Device エンティティは、少数のデバイスや名前の�
 
 このシナリオには、**リスト エンティティ**が適しています。建物やキャンパス内のデバイスの用語セットは、膨大であっても既知のセットだからです。 リスト エンティティを使用すると、LUIS はサーモスタットのセット内の考えられる値をすべて受け取り、それを "サーモスタット" という単一のデバイスのみに解決することができます。 
 
-このチュートリアルでは、サーモスタットを含むエンティティ リストを作成します。 このチュートリアルのサーモスタットの代替名は次のとおりです。 
+この記事では、サーモスタットを含むエンティティ リストを作成します。 この記事のサーモスタットの代替名は次のとおりです。 
 
 |サーモスタットの代替名|
 |--|

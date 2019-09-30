@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: ca2f346950d84fda736437f439efc5d35e342799
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 5329323122d8470b19055040b6f00b6db7c0e75f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934571"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70998947"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric セキュリティの概要
 [Azure Service Fabric](../../service-fabric/service-fabric-overview.md) は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における課題に対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高い、ミッション クリティカルで要求の厳しいワークロードの実装に注力できます。
@@ -132,7 +132,7 @@ Active Directory ドメイン内のコンピューター グループを使用�
 ### <a name="manage-secrets-in-service-fabric-applications"></a>Service Fabric アプリケーションでシークレットを管理する
 シークレットは、ストレージ接続文字列、パスワード、プレーン テキストで処理できないその他の値など、機密情報である可能性があります。
 
-[Azure Key Vault](../../key-vault/key-vault-whatis.md) を使用してキーとシークレットを管理できます。 ただし、アプリケーションでのシークレットの使用は、特定のクラウド プラットフォームに依存しません。 任意の場所でホストされているクラスターにアプリケーションをデプロイできます。 このフローには、次の 4 つの主な手順があります。
+[Azure Key Vault](../../key-vault/key-vault-overview.md) を使用してキーとシークレットを管理できます。 ただし、アプリケーションでのシークレットの使用は、特定のクラウド プラットフォームに依存しません。 任意の場所でホストされているクラスターにアプリケーションをデプロイできます。 このフローには、次の 4 つの主な手順があります。
 
 1.  データ暗号化証明書を取得します。
 2.  クラスターに証明書をインストールします。

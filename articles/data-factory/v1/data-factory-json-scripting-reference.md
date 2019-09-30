@@ -3,22 +3,20 @@ title: Azure Data Factory - JSON スクリプトのリファレンス | Microsof
 description: Data Factory のエンティティ用の JSON スキーマを紹介します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-editor: ''
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 279a016d60ecb1bc80baf92a7fa60365145e397d
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836259"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70736001"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -284,7 +282,7 @@ Azure Data Factory のデータセットは次のように定義されます。
 
 次の表では、上記の JSON のプロパティについて説明します。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | 名前 | データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |はい |NA |
 | type | データセットの型。 Azure Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 Data Factory でサポートされるデータ ストアとデータセットの種類の全一覧については、「[データ ストア](#data-stores)」セクションを参照してください。 |
@@ -316,7 +314,7 @@ structure:
 
 次の表では、**availability** セクションで使用できるプロパティについて説明します。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |はい |NA |
 | interval |頻度の乗数を指定します<br/><br/>"frequency x interval" により、スライスが生成される頻度が決まります。<br/><br/>データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/><b>メモ</b>:frequency に Minute を指定する場合は、interval を 15 以上に設定することをお勧めします |はい |NA |
@@ -336,7 +334,7 @@ structure:
 
 データセット定義の **policy** セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。
 
-| ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
+| ポリシー名 | 説明 | 適用先 | 必須 | Default |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |**Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ |NA |
 | minimumRows |**Azure SQL データベース**または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ |NA |
@@ -3550,7 +3548,7 @@ auto-
 ### <a name="linked-service"></a>リンクされたサービス
 FTP のリンクされたサービスを定義するには、リンクされたサービスの **type** を **FtpServer** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | host |FTP サーバーの名前または IP アドレス |はい |&nbsp; |
 | authenticationType |認証の種類を指定します |はい |Basic、Anonymous |
@@ -4828,7 +4826,7 @@ Web テーブルからデータをコピーする場合は、コピー アクテ
 | [Azure Batch](#azure-batch) |[.NET カスタム アクティビティ](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Machine Learning バッチ実行アクティビティ](#machine-learning-batch-execution-activity)、[Machine Learning 更新リソース アクティビティ](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL Database](#azure-sql-database-1)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse-1)、[SQL Server](#sql-server-1) |[ストアド プロシージャ](#stored-procedure-activity) |
+| [Azure SQL Database](#azure-sql-database)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse)、[SQL Server](#sql-server-1) |[ストアド プロシージャ](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>オンデマンド Azure HDInsight クラスター
 Azure Data Factory サービスは、データを処理するための Windows/Linux ベースのオンデマンド HDInsight クラスターを自動的に作成します。 このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。 このリンクされたサービスでは、変換アクティビティとして、[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、Hadoop ストリーミング アクティビティ、[Spark アクティビティ](#hdinsight-spark-activity)を実行することができます。
@@ -4941,7 +4939,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| Type |type プロパティは次の値に設定されます。**AzureML**。 |はい |
+| 種類 |type プロパティは次の値に設定されます。**AzureML**。 |はい |
 | mlEndpoint |バッチ スコアリング URL です。 |はい |
 | apiKey |公開されたワークスペース モデルの API です。 |はい |
 
@@ -4969,7 +4967,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| Type |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
+| 種類 |type プロパティは次の値に設定されます。**AzureDataLakeAnalytics**。 |はい |
 | accountName |Azure Data Lake Analytics アカウント名。 |はい |
 | dataLakeAnalyticsUri |Azure Data Lake Analytics URI。 |いいえ |
 | authorization |Data Factory Editor で **[承認]** ボタンをクリックし、OAuth ログインを完了すると、承認コードが自動的に取得されます。 |はい |
@@ -4997,58 +4995,6 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
     }
 }
 ```
-
-## <a name="azure-sql-database"></a>Azure SQL Database
-Azure SQL のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](#stored-procedure-activity) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。
-
-### <a name="linked-service"></a>リンクされたサービス
-Azure SQL Database のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDatabase** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
-
-| プロパティ | 説明 | 必須 |
-| --- | --- | --- |
-| connectionString |connectionString プロパティの Azure SQL データベース インスタンスに接続するために必要な情報を指定します。 |はい |
-
-#### <a name="json-example"></a>JSON の例
-
-```json
-{
-    "name": "AzureSqlLinkedService",
-    "properties": {
-        "type": "AzureSqlDatabase",
-        "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-    }
-}
-```
-
-このリンクされたサービスの詳細については、 [Azure SQL コネクタ](data-factory-azure-sql-connector.md#linked-service-properties) に関する記事を参照してください。
-
-## <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
-Azure SQL Data Warehouse のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。
-
-### <a name="linked-service"></a>リンクされたサービス
-Azure SQL Data Warehouse のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDW** に設定し、**typeProperties** セクションで以下のプロパティを指定します。
-
-| プロパティ | 説明 | 必須 |
-| --- | --- | --- |
-| connectionString |connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 |はい |
-
-#### <a name="json-example"></a>JSON の例
-
-```json
-{
-    "name": "AzureSqlDWLinkedService",
-    "properties": {
-        "type": "AzureSqlDW",
-        "typeProperties": {
-            "connectionString": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
-        }
-    }
-}
-```
-
-詳細については、[Azure SQL Data Warehouse コネクタ](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties)に関する記事を参照してください。
 
 ## <a name="sql-server"></a>SQL Server
 SQL Server のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。

@@ -8,22 +8,22 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5bb1a4dd9d652481dfe1a2727ee0e5fe7601e96a
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 95d27bab243f6805436465f5027e519d33e20f6f
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812756"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69563227"
 ---
-# <a name="accessing-the-vmware-solution-by-cloudsimple-portal-from-azure-portal"></a>Azure portal から CloudSimple による Azure VMware ソリューションにアクセスする
+# <a name="access-the-vmware-solution-by-cloudsimple-portal-from-the-azure-portal"></a>Azure portal から CloudSimple ポータルによる Azure VMware ソリューションにアクセスする
 
 CloudSimple ポータルへのアクセスにはシングル サインオンがサポートされています。 Azure portal にサインインした後は、もう一度サインインしなくても CloudSimple ポータルにアクセスできます。 初めて CloudSimple ポータルにアクセスすると、[CloudSimple Service Authorization](#consent-to-cloudsimple-service-authorization-application) アプリケーションを承認するように求められます。  承認は、1 回限りの操作です。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-組み込みの**所有者**ロールを持っているユーザーと、組み込みの**共同作成者**ロールを持っているユーザーが、CloudSimple ポータルにアクセスできます。  ロールは、CloudSimple サービスがデプロイされているリソース グループに対して構成されている必要があります。  CloudSimple サービス オブジェクトに対してロールを構成することもできます。  ご自身のロールの確認について詳しくは、「[ロールの割り当てを表示する](https://docs.microsoft.com/azure/role-based-access-control/check-access)」の記事を参照してください。
+組み込みの**所有者**ロールを持っているユーザーと、組み込みの**共同作成者**ロールを持っているユーザーが、CloudSimple ポータルにアクセスできます。  ロールは、CloudSimple サービスがデプロイされているリソース グループに対して構成されている必要があります。  CloudSimple サービス オブジェクトに対してロールを構成することもできます。  ご自身のロールの確認について詳しくは、「[ロールの割り当てを表示する](https://docs.microsoft.com/azure/role-based-access-control/check-access)」の記事を参照してください。 組み込みの**所有者**または**共同作成者**ロールが与えられているユーザーだけが CloudSimple ポータルにアクセスできます。  ロールはサブスクリプションで構成する必要があります。  ご自身のロールの確認について詳しくは、「[ロールの割り当てを表示する](https://docs.microsoft.com/azure/role-based-access-control/check-access)」の記事を参照してください。
 
-カスタム ロールを使用している場合、そのロールの ```Actions``` に次のいずれかの操作が必要です。  カスタム ロールの詳細については、「[Azure リソースのカスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。  いずれかの操作が ```NotActions``` に含まれている場合、ユーザーは CloudSimple ポータルにアクセスできません。 
+カスタム ロールを使用している場合、そのロールの ```Actions``` に次のいずれかの操作が必要です。  カスタム ロールの詳細については、「[Azure リソースのカスタム ロール](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)」を参照してください。  いずれかの操作が ```NotActions``` に含まれている場合、ユーザーは CloudSimple ポータルにアクセスできません。
 
 ```
 Microsoft.VMwareCloudSimple/*
@@ -48,7 +48,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
     ![CloudSimple ポータルを起動する](media/launch-cloudsimple-portal.png)
 
-> [!TIP]
+> [!NOTE]
 > Azure portal から直接プライベート クラウド操作 (プライベート クラウドの作成や拡張など) を選択すると、CloudSimple ポータルの指定のページが表示されます。
 
 CloudSimple ポータルで、サイド メニューの **[ホーム]** を選択してプライベート クラウドに関する概要情報を表示します。 プライベート クラウドのリソースと容量が、注意が必要なアラートとタスクと共に表示されます。 一般的な作業については、ページの上部にある名前付きアイコンをクリックします。
@@ -57,7 +57,7 @@ CloudSimple ポータルで、サイド メニューの **[ホーム]** を選�
 
 ## <a name="consent-to-cloudsimple-service-authorization-application"></a>CloudSimple Service Authorization アプリケーションに同意する
 
-Azure portal から CloudSimple ポータルを初めて起動するには、CloudSimple Service Authorization アプリケーションに同意する必要があります。  要求されたアクセス許可を付与し、CloudSimple ポータルにアクセスするには、 **[同意する]** を選択します。 
+Azure portal から CloudSimple ポータルを初めて起動するには、CloudSimple Service Authorization アプリケーションに同意する必要があります。  要求されたアクセス許可を付与し、CloudSimple ポータルにアクセスするには、 **[同意する]** を選択します。
 
 ![CloudSimple Service Authorization に同意する - 管理者](media/cloudsimple-azure-consent.png)
 

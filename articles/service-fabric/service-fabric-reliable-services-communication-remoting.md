@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: f9cd6e2fee738d2d42c790b4eb7b9a876a44b01d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a9ef2cd695f9591f299bb85b95d14d60b987c38d
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772977"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258688"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>C# での Reliable Services を使用したサービスのリモート処理
 
@@ -320,6 +320,11 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>リモート処理 V1 からリモート処理 V2 (インターフェイス互換) にアップグレードする
 
 V1 から V2 (インターフェイス互換、V2_1 と呼ばれます) にアップグレードするには、2 段階のアップグレードが必要です。 この順序で以下の手順に従います。
+
+> [!NOTE]
+> V1 から V2 にアップグレードする場合は、V2 を使用するように `Remoting` 名前空間が更新されていることを確認します。 例:'Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client`
+>
+>
 
 1. 次の属性を使用して、V1 サービスを V2_1 サービスにアップグレードします。
 この変更によって、サービスは V1 および V2_1 リスナーでリッスンするようになります。

@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 0f4657cdd71a104ca111f62a6e9757b5a33b46e8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 362b7457538a16d389c3cc40fc44da19b073c0b0
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592311"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142911"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Azure Data Box Heavy とは
 
@@ -68,7 +68,7 @@ Data Box Heavy は、ネットワークにほとんどまたはまったく影�
 | 累乗                                                    | 両方のデバイス ノードで共有される 4 基の内蔵電源装置 (PSU) <br> 1,200 ワット定格消費電力|
 | ストレージの容量                                        | 最大 1 PB (ロー)、各 14 TB のディスク 70 台 <br> 使用可能な容量は 770 TB|
 | ノードの数                                          | デバイスごとに 2 つの独立したノード (各 500 TB) |
-| ノードあたりのネットワーク インターフェイス数                             | ノードあたり 4 つのネットワーク インターフェイス <br><br> MGMT、DATA3 <ul><li> 2 X 1 GbE インターフェイス </li><li> MGMT は管理および初期セットアップ用、ユーザー構成不可 </li><li> DATA3 はユーザー構成可能であり、既定では動的ホスト構成プロトコル (DHCP)</li><li>1 GbE ネットワーク インターフェイスは 10 GbE インターフェイスとしての構成も可能</li></ul>DATA1、DATA2 データ インターフェイス <ul><li>2 X 40 GbE インターフェイス </li><li> ユーザー構成可能 (既定値の DHCP の場合)、または静的</li></ul>|
+| ノードあたりのネットワーク インターフェイス数                             | ノードあたり 4 つのネットワーク インターフェイス <br><br> MGMT、DATA3 <ul><li> 2 X 1 GbE インターフェイス </li><li> MGMT は管理および初期セットアップ用、ユーザー構成不可 </li><li> DATA3 はユーザー構成可能であり、既定では動的ホスト構成プロトコル (DHCP)</li></ul>DATA1、DATA2 データ インターフェイス <ul><li>2 X 40 GbE インターフェイス </li><li> ユーザー構成可能 (既定値の DHCP の場合)、または静的</li></ul>|
 
 
 ## <a name="components"></a>コンポーネント

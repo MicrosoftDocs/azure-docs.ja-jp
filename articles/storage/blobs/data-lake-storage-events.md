@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: ce132c6a6859156b209a26b5950eb6a509f446fc
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656131"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904655"
 ---
 # <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>チュートリアル:Azure Data Lake Storage Gen2 イベントを使用して Databricks Delta テーブルを更新する
 
@@ -140,10 +140,9 @@ ms.locfileid: "69656131"
 
     spark.conf.set("fs.azure.account.auth.type", "OAuth")
     spark.conf.set("fs.azure.account.oauth.provider.type", "org.apache.hadoop.fs.azurebfs.oauth2.ClientCredsTokenProvider")
-    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId")
+    spark.conf.set("fs.azure.account.oauth2.client.id", "<appId>")
     spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")
     spark.conf.set("fs.azure.account.oauth2.client.endpoint", "https://login.microsoftonline.com/<tenant>/oauth2/token")
-    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "true")
 
     adlsPath = 'abfss://data@contosoorders.dfs.core.windows.net/'
     inputPath = adlsPath + dbutils.widgets.get('source_file')
@@ -151,6 +150,9 @@ ms.locfileid: "69656131"
     ```
 
     このコードによって、**source_file** という名前のウィジェットが作成されます。 後で、このコードを呼び出し、そのウィジェットにファイル パスを渡す Azure 関数を作成します。  また、このコードは、ストレージ アカウントを使用してサービス プリンシパルを認証し、他のセルで使用する変数をいくつか作成します。
+
+    > [!NOTE]
+    > 運用設定では、認証キーを Azure Databricks に格納することを検討してください。 次に、認証キーではなくルック アップ キーをコード ブロックに追加します。 <br><br>たとえば、`spark.conf.set("fs.azure.account.oauth2.client.secret", "<password>")` というコード行を使用する代わりに、`spark.conf.set("fs.azure.account.oauth2.client.secret", dbutils.secrets.get(scope = "<scope-name>", key = "<key-name-for-service-credential>"))` というコード行を使用します。 <br><br>このチュートリアルの完了後、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」で、このアプローチの例を参照してください。
 
 2. **Shift + Enter** キーを押して、このブロック内のコードを実行します。
 
@@ -309,7 +311,7 @@ ms.locfileid: "69656131"
         log.LogInformation(eventGridEvent.Data.ToString());
 
         if (eventGridEvent.EventType == "Microsoft.Storage.BlobCreated" | | eventGridEvent.EventType == "Microsoft.Storage.FileRenamed") {
-            var fileData = ((JObject)(eventGridEvent.Data)) .ToObject<StorageBlobCreatedEventData>();
+            var fileData = ((JObject)(eventGridEvent.Data)).ToObject<StorageBlobCreatedEventData>();
             if (fileData.Api == "FlushWithClose") {
                 log.LogInformation("Triggering Databricks Job for file: " + fileData.Url);
                 var fileUrl = new Uri(fileData.Url);
@@ -382,6 +384,27 @@ ms.locfileid: "69656131"
    返されるテーブルには、最新のレコードが表示されます。
 
    ![テーブルに最新のレコードが表示される](./media/data-lake-storage-events/final_query.png "テーブルに最新のレコードが表示される")
+
+6. このレコードを更新するには、`customer-order-update.csv` という名前のファイルを作成し、そのファイルに次の情報を貼り付けて、ローカル コンピューターに保存します。
+
+   ```
+   InvoiceNo,StockCode,Description,Quantity,InvoiceDate,UnitPrice,CustomerID,Country
+   536371,99999,EverGlow Single,22,1/1/2018 9:01,33.85,20993,Sierra Leone
+   ```
+
+   この CSV ファイルは、前出のファイルとほぼ同じものですが、発注数量が `228` から `22` に変更されています。
+
+7. Storage Explorer で、このファイルを自分のストレージ アカウントの **input** フォルダーにアップロードします。
+
+8. `select` クエリを再実行して、更新された Delta テーブルを表示します。
+
+   ```
+   %sql select * from customer_data
+   ```
+
+   返されるテーブルには、更新後のレコードが表示されます。
+
+   ![テーブルに更新後のレコードが表示される](./media/data-lake-storage-events/final_query-2.png "テーブルに更新後のレコードが表示される")
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

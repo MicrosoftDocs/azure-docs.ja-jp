@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 553118486d1148f63e79ca25c32ed7dd8a3b7414
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 00753ee8d7d128222e9fb773f00a23720813a237
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736798"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146458"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 
@@ -43,7 +43,7 @@ Office 365 など SharePoint と OneDrive が搭載されている一部の製�
 
 3. Power BI からの確認の電子メールで、 **[Yes, that's me]\(はい、私です\)** を選びます。
 
-4. Power BI ユーザー アカウントで、[Microsoft 365 管理センター](https://admin.microsoft.com)にサインインします。 管理されていないテナントで既に確認済みのドメイン名の **[管理者になる]**  に誘導するメッセージを受信します。 **[Yes, I want to be the admin]\(はい、管理者になります\)** を選択します。
+4. Power BI ユーザー アカウントで、[Microsoft 365 管理センター](https://portal.office.com/admintakeover)にサインインします。 管理されていないテナントで既に確認済みのドメイン名の **[管理者になる]**  に誘導するメッセージを受信します。 **[Yes, I want to be the admin]\(はい、管理者になります\)** を選択します。
   
    ![[管理者になる] の最初のスクリーン ショット](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -88,39 +88,33 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 ### <a name="support-for-external-admin-takeover"></a>外部管理者の引き継ぎのサポート
 外部管理者の引き継ぎは、次のオンライン サービスによってサポートされています。
 
-- Power BI
 - Azure Rights Management
 - Exchange Online
 
 サポートされているサービス プランは次のとおりです。
 
-- Power BI Free
-- Power BI Pro
 - PowerApps Free
 - PowerFlow Free
 - 個人向け RMS
 - Microsoft Stream
 - Dynamics 365 無料試用版
 
-外部管理者の引き継ぎは、たとえば、Office の無償のサブスクリプション経由など、SharePoint、OneDrive、または Skype For Business を含むサービス プランを保持しているサービスではサポートされません。 アンマネージド テナントからドメイン名を削除し、目的のテナントでその有効性を確認する [**ForceTakeover** オプション](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)を任意で使用できます。 この ForceTakeover オプションでユーザーが移動することはありません。サブスクリプションへのアクセスが保持されます。 そうではなく、このオプションではドメイン名のみが移動します。 
+外部管理者の引き継ぎは、たとえば、Office の無償のサブスクリプション経由など、SharePoint、OneDrive、または Skype For Business を含むサービス プランを保持しているサービスではサポートされません。 
+
+アンマネージド テナントからドメイン名を削除し、目的のテナントでその有効性を確認する [**ForceTakeover** オプション](#azure-ad-powershell-cmdlets-for-the-forcetakeover-option)を任意で使用できます。 **ForceTakeover オプションでユーザーが移動することはありません。サブスクリプションへのアクセスが保持されます。このオプションでは、ドメイン名のみが移動します。**
 
 #### <a name="more-information-about-rms-for-individuals"></a>個人向け RMS の詳細
 
-[個人向け RMS](/azure/information-protection/rms-for-individuals) の場合、所有しているテナントと同じリージョンにアンマネージド テナントがあるとき、自動的に作成された [Azure Information Protection テナント キー](/azure/information-protection/plan-implement-tenant-key)と[既定の保護テンプレート](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates)もドメイン名と共に移動します。 
+[個人向け RMS](/azure/information-protection/rms-for-individuals) の場合、所有しているテナントと同じリージョンにアンマネージド テナントがあるとき、自動的に作成された [Azure Information Protection テナント キー](/azure/information-protection/plan-implement-tenant-key)と[既定の保護テンプレート](/azure/information-protection/configure-usage-rights#rights-included-in-the-default-templates)もドメイン名と共に移動します。
 
-アンマネージド テナントが異なるリージョンにあるときは、キーとテンプレートは移動しません。 たとえば、アンマネージド テナントがヨーロッパにあり、所有しているテナントが北米にあるとします。 
+アンマネージド テナントが異なるリージョンにあるときは、キーとテンプレートは移動しません。 たとえば、アンマネージド テナントがヨーロッパにあり、所有している組織が北米にあるとします。
 
 個人向け RMS は保護コンテンツを開くために Azure AD 対応として設計されていますが、ユーザーがコンテンツ保護もすることを防ぎません。 ユーザーが個人向け RMS サブスクリプションでコンテンツを保護したとき、キーとテンプレートが移動していなければ、ドメイン引き継ぎ後、そのコンテンツにアクセスできなくなります。
-
-#### <a name="more-information-about-power-bi"></a>Power BI の詳細情報
-
-外部引き継ぎを実行すると、引き継ぎの前に作成された Power BI コンテンツは、[Power BI アーカイブ済みワークスペース](/power-bi/service-admin-power-bi-archived-workspace)に配置されます。 新しいテナントで使用するすべてのコンテンツを手動で移行する必要があります。
 
 ### <a name="azure-ad-powershell-cmdlets-for-the-forcetakeover-option"></a>ForceTakeover オプションの Azure AD PowerShell コマンドレット
 「[PowerShell の例](#powershell-example)」で使用されているコマンドレットを以下に示します。
 
-
-コマンドレット | 使用法 
+コマンドレット | 使用法
 ------- | -------
 `connect-msolservice` | 指示に従い、管理対象テナントにサインインします。
 `get-msoldomain` | 現在のテナントに関連付けられているドメイン名を表示します。
@@ -129,6 +123,9 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 `get-msoldomainverificationdns –Domainname <domainname> –Mode DnsTxtRecord` | ドメインの新しい DNS TXT レコード (MS=xxxxx) に含める情報を提示します。 TXT レコードのプロパゲートに一定の時間がかかるため、確認が直ちに行われるわけではありません。数分間待機してから、 **-ForceTakeover** オプションを検討します。 
 `confirm-msoldomain –Domainname <domainname> –ForceTakeover Force` | <li>お使いのドメイン名がまだ確認済みではない場合、 **-ForceTakeover** オプションを使って続行できます。 TXT レコードが作成され、引き継ぎプロセスが開始されたことを確認します。<li>**- ForceTakeover** オプションは、引き継ぎをブロックしている Office 365 サービスが管理されていないテナントに含まれている場合など、外部管理者の引き継ぎを強制的に行う場合のみ、コマンドレットに追加する必要があります。
 `get-msoldomain` | ドメインの一覧に、ドメイン名が "**確認済み**" と表示されるようになりました。
+
+> [!NOTE]
+> 外部の引き継ぎ強制オプションの実行から 10 日後に管理対象外の Azure AD 組織が削除されます。
 
 ### <a name="powershell-example"></a>PowerShell の例
 

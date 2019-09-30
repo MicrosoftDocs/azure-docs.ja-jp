@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 9907b880b2c0cedd9d720e438088335e5af6522e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: aa25bbb54893fa84bb345a317850df4125faed25
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876537"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003301"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルの概要
 
@@ -27,7 +27,7 @@ CAF 基盤ブループリント サンプルは、クラウド資産を管理す
 
 この実装には、セキュリティで保護され、完全に監視されたエンタープライズ対応の基盤を提供するための、複数の Azure サービスが組み込まれています。 この環境は、以下で構成されます。
 
-- [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) インスタンス。共有サービス環境にデプロイされた VM 用に使用されるシークレットをホストします。
+- [Azure Key Vault](../../../../key-vault/key-vault-overview.md) インスタンス。共有サービス環境にデプロイされた VM 用に使用されるシークレットをホストします。
 - [Log Analytics](../../../../azure-monitor/overview.md)。診断ログに使用する [Storage アカウント](../../../../storage/common/storage-introduction.md)への安全なデプロイを開始した時点から、すべてのアクションとサービス ログが中心的な場所に確保されるようにデプロイされます。
 - [Azure Security Center](../../../../security-center/security-center-intro.md) (標準バージョン)。移行されたワークロードを脅威から保護します。
 - また、このブループリントでは、以下に関する [Azure ポリシー](../../../policy/overview.md)の定義とデプロイも行われます。 

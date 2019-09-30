@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: de5febaeecd176a8718364720132d3fa4433c57f
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 52bbb52b13a3606e3ddc8deca2da8505233c9352
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443620"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062023"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB への Azure Stream Analytics の出力  
 Stream Analytics では、 JSON 出力のターゲットを [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) にすることができるため、構造化されていない JSON データに対してデータ アーカイブと待機時間の短いクエリを有効にすることができます。 このドキュメントでは、この構成を実装するためのベスト プラクティスについて説明します。
@@ -57,7 +57,7 @@ Azure Cosmos DB ではワークロードに基づいてパーティションが�
 
 `CosmosDB Output contains multiple rows and just one row per partition key. If the output latency is higher than expected, consider choosing a partition key that contains at least several hundred records per partition key.`
 
-パーティション キー プロパティを選ぶ際に重要なのは、多数の異なる値を持つものを選ぶことです。そうすると、それらの値全体でワークロードが均等に分散されます。 パーティションを分割すると、当然ながら、同一のパーティション キーを含む要求ではスループットが単一パーティションの最大値に制限されます。 また、同一パーティション キーに属するドキュメントのストレージ容量は最大 10GB に制限されます。 理想的なパーティション キーとは、クエリ内でフィルターとして頻繁に使用され、ソリューションのスケーラビリティを確保するために十分なカーディナリティを持つものを指します。
+パーティション キー プロパティを選ぶ際に重要なのは、多数の異なる値を持つものを選ぶことです。そうすると、それらの値全体でワークロードが均等に分散されます。 パーティションを分割すると、当然ながら、同一のパーティション キーを含む要求ではスループットが単一パーティションの最大値に制限されます。 また、同一パーティション キーに属するドキュメントのストレージ容量は最大 10 GB に制限されます。 理想的なパーティション キーとは、クエリ内でフィルターとして頻繁に使用され、ソリューションのスケーラビリティを確保するために十分なカーディナリティを持つものを指します。
 
 また、パーティション キーは DocumentDB のストアド プロシージャやトリガーでトランザクションの境界条件としても使用されます。 パーティション キーは、トランザクション内で同時に発生するドキュメントが同一のパーティション キーの値を共有できるように選択する必要があります。 [Cosmos DB でのパーティション分割](../cosmos-db/partitioning-overview.md)に関する記事に、パーティション キーの選択について詳しく説明されています。
 
@@ -66,7 +66,7 @@ Azure Cosmos DB ではワークロードに基づいてパーティションが�
 複数の固定コンテナーに書き込む機能は非推奨であり、Stream Analytics ジョブのスケールアウトには推奨されません。
 
 ## <a name="improved-throughput-with-compatibility-level-12"></a>互換性レベル 1.2 でのスループットの向上
-互換性レベル 1.2 では、Stream Analytics で Cosmos DB への一括書き込みのためのネイティブ統合がサポートされます。 これにより、スループットを最大化し、スロットル リクエストを効率的に処理して、効果的に Cosmos DB への書き込みを行うことができます。 この強化された書き込みメカニズムは、新しい互換性レベルで利用できます。これは、アップサートの動作が異なるためです。  1\.2 以前のアップサートの動作は、ドキュメントの挿入またはマージです。 1\.2 では、アップサートの動作がドキュメントの挿入または置換に変更されています。 
+互換性レベル 1.2 では、Stream Analytics で Cosmos DB への一括書き込みのためのネイティブ統合がサポートされます。 これにより、スループットを最大化し、スロットル リクエストを効率的に処理して、効果的に Cosmos DB への書き込みを行うことができます。 この強化された書き込みメカニズムは、新しい互換性レベルで利用できます。これは、アップサートの動作が異なるためです。  1\.2 以前のアップサートの動作は、ドキュメントの挿入またはマージです。 1\.2 では、アップサートの動作がドキュメントの挿入または置換に変更されています。
 
 1\.2 以前では、Cosmos DB へのドキュメントの一括アップサートは、カスタム ストアド プロシージャを使用してパーティション キーごとに行われます。このとき、バッチはトランザクションとして書き込まれます。 1 つのレコードで一時的なエラー (スロットリング) が発生しただけでも、バッチ全体を再試行する必要があります。 このため、妥当なスロットリングのシナリオであっても、比較的低速になります。 以下の比較は、このようなジョブが 1.2 でどのように動作するかを示しています。
 
@@ -79,7 +79,7 @@ Azure Cosmos DB ではワークロードに基づいてパーティションが�
 ![Cosmos DB のメトリックの比較](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
 1\.2 を使用することで、Stream Analytics は Cosmos DB で使用可能なスループットの 100% をより賢く利用することができ、スロットリング/速度の制限による再送信はほとんどありません。 これにより、コンテナーで同時に実行されるクエリなどの他のワークロードにも優れたエクスペリエンスが提供されます。 1k から 10k のメッセージ/秒のシンクとして Cosmos DB を使用する ASA がどのようにスケール アウトするか試してみたい場合は、この [azure サンプル プロジェクト](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)で実行できます。
-Cosmos DB の出力スループットは 1.0 と 1.1 で同じある点に注意してください。 現在 1.2 は既定ではないため、Stream Analytics ジョブの[互換性レベルを設定](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)するには、ポータルを使用するか、[create job REST API 呼び出し](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job)を使用します。 Cosmos DB を使用する ASA では互換性レベル 1.2 を使用することを "*強くお勧め*" します。 
+Cosmos DB の出力スループットは 1.0 と 1.1 で同じある点に注意してください。 現在 1.2 は既定ではないため、Stream Analytics ジョブの[互換性レベルを設定](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-compatibility-level)するには、ポータルを使用するか、[create job REST API 呼び出し](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job)を使用します。 Cosmos DB を使用する ASA では互換性レベル 1.2 を使用することを "*強くお勧め*" します。
 
 
 
@@ -92,9 +92,18 @@ Stream Analytics で Cosmos DB を出力として作成すると、情報の入�
 |フィールド           | 説明|
 |-------------   | -------------|
 |出力エイリアス    | ASA クエリ内でこの出力を意味する別名。|
-|サブスクリプション    | Azure サブスクリプションを選択します。|
+|Subscription    | Azure サブスクリプションを選択します。|
 |Account ID      | Azure Cosmos DB アカウントの名前またはエンドポイント URI。|
 |アカウント キー     | Azure Cosmos DB アカウントの共有アクセス キー。|
 |Database        | Azure Cosmos DB データベース名。|
 |コンテナー名 | 使用するコンテナーの名前。 `MyContainer` は有効な入力の例です。`MyContainer` という 1 つのコンテナーが存在する必要があります。  |
 |ドキュメント ID     | 省略可能。 挿入操作または更新操作の基にする必要がある固有キーとして使用される出力イベント内の列名。 空のままにすると、更新オプションはなく、すべてのイベントが挿入されます。|
+
+## <a name="error-handling-and-retries"></a>エラー処理と再試行
+
+Cosmos DB へのイベントの送信中に一時的な障害、サービスの利用不可、または調整が発生した場合、Stream Analytics では、操作を正常に完了するために無期限に再試行が行われます。 ただし、再試行が行われないエラーがいくつかあります。たとえば、次のようなエラーです。
+
+- Unauthorized (HTTP 状態コード 401)
+- NotFound (HTTP 状態コード 404)
+- Forbidden (HTTP 状態コード 403)
+- BadRequest (HTTP 状態コード 400)

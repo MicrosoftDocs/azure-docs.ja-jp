@@ -1,31 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Digital Twins プレビューのドキュメント
+summary: Azure Digital Twins を使って、人、場所、物を繋ぎ、空間インテリジェンスにより IoT ソリューションを構築します。 クイック スタートとチュートリアルを通じて、仮想スマート ビルディングを監視し、概要の詳細について学び、物理環境をモデル化する次世代の IoT ソリューションを作成します。
 metadata:
   title: Azure Digital Twins プレビューのドキュメント - チュートリアル、API リファレンス | Microsoft Docs
   description: Azure Digital Twins を使用してスマートな空間ソリューションを作成します。
-  author: dsk-2015
-  manager: timlt
-  ms.service: digital-twins
   services: digital-twins
+  ms.service: digital-twins
+  ms.subservice: digital-twins
   ms.topic: landing-page
-  ms.date: 10/15/2018
-  ms.author: dkshir
-abstract:
-  description: Azure Digital Twins を使って、人、場所、物を繋ぎ、空間インテリジェンスにより IoT ソリューションを構築します。 クイック スタートとチュートリアルを通じて、仮想スマート ビルディングを監視し、概要の詳細について学び、物理環境をモデル化する次世代の IoT ソリューションを作成します。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: <a href="quickstart-view-occupancy-dotnet">Azure Digital Twins .NET サンプルを使って、大気質の良い利用可能な部屋を見つける</a>方法を説明します。
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure Digital Twins ソリューションをカスタマイズまたは使用して、施設を監視する方法を説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/digital-twins/tutorial-facilities-setup">サンプル ビルディングをプロビジョニングする</a>
-          - html: <a href="/azure/digital-twins/tutorial-facilities-udf">ビルディングの状態を監視する</a>
-          - html: <a href="/azure/digital-twins/tutorial-facilities-events">ビルディングから通知を受け取る</a>
-          - html: <a href="/azure/digital-twins/tutorial-facilities-analyze">ビルディングからのイベントを分析する</a>
+  ms.collection: collection
+  author: KingdomOfEnds
+  ms.author: v-adgera
+  ms.date: 09/03/2019
+  ms.openlocfilehash: b5a449d09b1068dbf874828b9e65b1ac318b58fd
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71219732"
+landingContent:
+- title: Azure Digital Twins について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Digital Twins とは
+      url: about-digital-twins.md
+  - linkListType: concept
+    links:
+    - text: Digital Twins のオブジェクト モデルと空間インテリジェンス グラフを理解する
+      url: concepts-objectmodel-spatialgraph.md
+  - linkListType: video
+    links:
+    - text: Azure Digital Twins の概要
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Digital-Twins-Introduction
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 使用可能な部屋を確認する
+      url: quickstart-view-occupancy-dotnet.md
+  - linkListType: tutorial
+    links:
+    - text: デプロイと構成
+      url: tutorial-facilities-setup.md
+    - text: 状態のプロビジョニングと監視
+      url: tutorial-facilities-udf.md
+    - text: Logic Apps を使用した通知
+      url: tutorial-facilities-events.md
+    - text: Time Series Insights を使用したイベントの視覚化
+      url: tutorial-facilities-analyze.md
+- title: Azure Digital Twins を使用した開発
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: デバイスの接続性とテレメトリの受信
+      url: concepts-device-ingress.md
+    - text: データ処理とユーザー定義関数
+      url: concepts-user-defined-functions.md
+  - linkListType: how-to-guide
+    links:
+    - text: Postman の設定
+      url: how-to-configure-postman.md
+    - text: ユーザー定義関数の作成
+      url: how-to-user-defined-functions.md
+- title: API リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: ユーザー定義関数クライアント ライブラリ
+      url: reference-user-defined-functions-client-library.md
+  - linkListType: how-to-guide
+    links:
+    - text: Digital Twins Swagger の使用
+      url: how-to-use-swagger.md

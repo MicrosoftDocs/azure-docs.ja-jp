@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 07/09/2019
-ms.openlocfilehash: e5666a64e4160964e2c1b35707a0f064edb72460
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 09/22/2019
+ms.openlocfilehash: 619c36257f9166492e98d88335d767f358e3feca
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706904"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179130"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>チュートリアル:DMS を使用して SQL Server を Azure SQL Database の単一データベースまたはプールされたデータベースにオンラインで移行する
 
@@ -78,16 +78,16 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 - いずれかのテーブルに主キーがない場合は、データベースと特定のテーブルで変更データ キャプチャ (CDC) を有効にします。
     > [!NOTE]
     > 以下のスクリプトを使用すると、主キーがないテーブルを見つけることができます。
-
+    
     ```sql
     USE <DBName>;
     go
     SELECT is_tracked_by_cdc, name AS TableName
     FROM sys.tables WHERE type = 'U' and is_ms_shipped = 0 AND
     OBJECTPROPERTY(OBJECT_ID, 'TableHasPrimaryKey') = 0;
-     ```
+    ```
 
-    >結果に 'is_tracked_by_cdc' が '0' のテーブルが 1 つ以上表示される場合は、「[変更データ キャプチャの有効化と無効化 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017)」の記事で説明されているプロセスを使用して、データベースと特定のテーブルの変更キャプチャを有効にします。
+    結果に 'is_tracked_by_cdc' が '0' のテーブルが 1 つ以上表示される場合は、「[変更データ キャプチャの有効化と無効化 (SQL Server)](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-2017)」の記事で説明されているプロセスを使用して、データベースと特定のテーブルの変更キャプチャを有効にします。
 
 - ソース SQL Server のディストリビューター ロールを構成します。
 
@@ -132,12 +132,12 @@ Azure Database Migration Service を使用して、最短のダウンタイム�
 1. DMA で、新規 (+) アイコンを選択し、 **[評価]** プロジェクト タイプを選択します。
 2. プロジェクト名を指定し、 **[Source server type]\(ソース サーバーの種類\)** テキスト ボックスで **SQL Server**、 **[ターゲット サーバーの種類]** テキスト ボックスで **Azure SQL Database** を選択した後、 **[作成]** を選択してプロジェクトを作成します。
 
-    Azure SQL Database の単一データベースまたはプールされたデータベースに移行するソース SQL Server データベースを評価する際には、次のいずれかまたは両方の評価レポート タイプを選択できます。
+   Azure SQL Database の単一データベースまたはプールされたデータベースに移行するソース SQL Server データベースを評価する際には、次のいずれかまたは両方の評価レポート タイプを選択できます。
 
    - データベース互換性をチェックする
    - 機能の類似性をチェックする
 
-     どちらのレポート タイプも、既定で選択されています。
+   どちらのレポート タイプも、既定で選択されています。
 
 3. DMA の **[オプション]** 画面で **[次へ]** を選択します。
 4. **[ソースの選択]** 画面の **[サーバーへの接続]** ダイアログ ボックスで、SQL Server への接続詳細を入力し、 **[接続]** を選択します。

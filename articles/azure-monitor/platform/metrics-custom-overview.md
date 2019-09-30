@@ -5,15 +5,15 @@ author: ancav
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d52cb4d7b8e29838338baddd45a175661801b19b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60254062"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844665"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor のカスタム メトリック
 
@@ -29,7 +29,7 @@ Azure でリソースやアプリケーションをデプロイするとき、�
 
 Azure Monitor にカスタム メトリックを送信するときは、報告する各データ ポイント (または値) に次の情報が含まれている必要があります。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 Azure Monitor にカスタム メトリックを送信するには、メトリックを送信する側のエンティティで、要求の **Bearer** ヘッダーに有効な Azure Active Directory (Azure AD) トークンが存在する必要があります。 有効なベアラー トークンを取得するいくつかの方法がサポートされています。
 1. [Azure リソースの管理 ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。 Azure リソース自身 (VM など) に ID を付与します。 マネージド サービス ID (MSI) は、特定の操作を実行するためのアクセス許可をリソースに提供するように設計されています。 たとえば、自身に関するメトリックをリソースが出力できるようにします。 リソース (またはその MSI) には、別のリソースに対する "**メトリックの発行元の監視**" アクセス許可を付与することもできます。 このアクセス許可を付与すると、その MSI で他のリソースのメトリックも生成できるようになります。
 2. [Azure AD サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)。 このシナリオでは、Azure リソースについてのメトリックを出力するためのアクセス許可を Azure AD アプリケーション (またはサービス) に割り当てることができます。
@@ -60,7 +60,7 @@ Azure Monitor に送信されるデータ ポイントには、それぞれタ�
 ### <a name="namespace"></a>名前空間
 名前空間は類似のメトリックを分類またはグループ化する方法です。 名前空間を使用すると、収集する情報またはパフォーマンス指標に基づいてメトリックのグループを分離できます。 たとえば、**ContosoMemoryMetrics** という名前空間では、アプリをプロファイリングするメモリ使用量メトリックを追跡し、 **ContosoAppTransaction** という別の名前空間では、アプリケーション内のユーザー トランザクションに関するすべてのメトリックを追跡するといったことが可能です。
 
-### <a name="name"></a>Name
+### <a name="name"></a>名前
 **Name** は、報告されるメトリックの名前です。 通常は、測定内容を識別するのに十分なほど説明的な名前です。 たとえば、特定の VM で使用されるメモリのバイト数を測定するメトリックの場合は、 **Memory Bytes In Use** などのようなメトリック名になります。
 
 ### <a name="dimension-keys"></a>ディメンション キー
@@ -168,15 +168,31 @@ Azure Monitor では、すべてのメトリックを 1 分刻みの間隔で保
 ## <a name="supported-regions"></a>サポートされているリージョン
 パブリック プレビュー期間中、カスタム メトリックを発行する機能は一部の Azure リージョンでのみ利用できます。 つまりメトリックは、サポートされているいずれかのリージョンにあるリソースに対してしか発行できません。 次の表は、カスタム メトリックがサポートされている Azure リージョンを示したものです。 この表には、それらのリージョンにあるリソースのメトリックが発行される、対応エンドポイントも示してあります。
 
-|Azure リージョン|リージョンのエンドポイントのプレフィックス|
+|Azure リージョン |リージョンのエンドポイントのプレフィックス|
 |---|---|
-|米国東部| https:\//eastus.monitoring.azure.com/ |
+| **米国およびカナダ** | |
+|米国中西部 | https:\//westcentralus.monitoring.azure.com/ |
+|米国西部 2       | https:\//westus2.monitoring.azure.com/ |
+|米国中北部 | https:\//northcentralus.monitoring.azure.com
 |米国中南部| https:\//southcentralus.monitoring.azure.com/ |
-|米国中西部| https:\//westcentralus.monitoring.azure.com/ |
-|米国西部 2| https:\//westus2.monitoring.azure.com/ |
-|東南アジア| https:\//southeastasia.monitoring.azure.com/ |
-|北ヨーロッパ| https:\//northeurope.monitoring.azure.com/ |
-|西ヨーロッパ| https:\//westeurope.monitoring.azure.com/ |
+|米国中部      | https:\//centralus.monitoring.azure.com |
+|カナダ中部 | https:\//canadacentral.monitoring.azure.comc
+|East US| https:\//eastus.monitoring.azure.com/ |
+| **ヨーロッパ** | |
+|北ヨーロッパ    | https:\//northeurope.monitoring.azure.com/ |
+|西ヨーロッパ     | https:\//westeurope.monitoring.azure.com/ |
+|英国南部 | https:\//uksouth.monitoring.azure.com
+|フランス中部 | https:\//francecentral.monitoring.azure.com |
+| **アフリカ** | |
+|南アフリカ北部 | https:\//southafricanorth.monitoring.azure.com
+| **アジア** | |
+|インド中部 | https:\//centralindia.monitoring.azure.com
+|オーストラリア東部 | https:\//australiaeast.monitoring.azure.com
+|東日本 | https:\//japaneast.monitoring.azure.com
+|東南アジア  | https:\//southeastasia.monitoring.azure.com |
+|東アジア | https:\//eastasia.monitoring.azure.com
+|韓国中部   | https:\//koreacentral.monitoring.azure.com
+
 
 ## <a name="quotas-and-limits"></a>クォータと制限
 Azure Monitor では、カスタム メトリックの使用に次の制限があります。

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 07/30/2019
+ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: ee4551f6a31436ef2322fcea3a0c479b45036993
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697626"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70032675"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Text Analytics API とは
 
@@ -81,7 +81,7 @@ ID をベースに出力は 1 つの JSON ドキュメントとして返され�
 
 ## <a name="data-limits"></a>データ制限
 
-Text Analytics API のエンドポイントはすべて、未加工のテキスト データを受け取ります。 現在の上限はドキュメントあたり 5,120 文字です。それより大きなドキュメントを分析する必要がある場合は小さなまとまりに分割できます。 分割ではなく、上限を増やす必要がある場合は[お問い合わせください](https://azure.microsoft.com/overview/sales-number/)。要件について説明いたします。
+Text Analytics API のエンドポイントはすべて、未加工のテキスト データを受け取ります。 現在の上限はドキュメントあたり 5,120 文字です。それより大きなドキュメントを分析する必要がある場合は小さなまとまりに分割できます。
 
 | 制限 | 値 |
 |------------------------|---------------|
@@ -93,7 +93,7 @@ Text Analytics API のエンドポイントはすべて、未加工のテキス�
 
 | レベル          | 1 秒あたりの要求数 | 1 分あたりの要求数 |
 |---------------|---------------------|---------------------|
-| マルチサービス | 1000                | 1000                |
+| S/マルチサービス | 1000                | 1000                |
 | S0/F0         | 100                 | 300                 |
 | S1            | 200                 | 300                 |
 | S2            | 300                 | 300                 |

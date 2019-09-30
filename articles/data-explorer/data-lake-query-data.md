@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: ef4dfc4370c71eac1978a6f3535b571a5e6009b5
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950137"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383376"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Data Lake でデータのクエリを実行する (プレビュー)
 
@@ -50,6 +50,7 @@ Azure Data Explorer は、Azure BLOB ストレージおよび Azure Data Lake St
     > * 細かいパーティション分割を使用することでパフォーマンスの向上が期待されます。 たとえば、日単位のパーティションを使用する外部テーブルでのクエリは、月単位のパーティション テーブルを使用したクエリよりもパフォーマンスが良くなります。
     > * パーティションを使用する外部テーブルを定義するときは、ストレージ構造が同一であると想定します。
 たとえば、テーブルが yyyy/MM/dd 形式 (既定) の DateTime パーティションで定義されている場合、URI ストレージ ファイルのパスは *container1/yyyy/MM/dd/all_exported_blobs* である必要があります。 
+    > * 外部テーブルが datetime 列によってパーティション分割されている場合は、閉じた範囲の時間フィルターをクエリに含めるようにしてください (たとえば、範囲が閉じていないこちらの `ArchivedProducts | where Timestamp > ago(1h)` よりも、クエリ `ArchivedProducts | where Timestamp between (ago(1h) .. 10m)` の方がパフォーマンスが良くなります)。 
 
 1. 外部テーブルは Web UI の左側のウィンドウに表示されます
 

@@ -22,6 +22,7 @@
     - name: アプリケーション プロキシを使用してオンプレミス アプリを追加する
       href: application-proxy-add-on-premises-application.md
 - name: 概念
+  expanded: true
   items:
     - name: クラウド アプリとシングル サインオン
       items:
@@ -228,14 +229,20 @@
               href: Customize-application-attributes.md
             - name: スコープ フィルター
               href: define-conditional-rules-for-provisioning-user-accounts.md
+            - name: スコープ外のユーザーの削除のスキップ
+              href: skip-out-of-scope-deletions.md
             - name: プロビジョニング状態の確認
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: 自動ユーザー プロビジョニングについてのレポート
               href: check-status-user-account-provisioning.md
+            - name: 構成のエクスポートとインポート
+              href: export-import-provisioning-configuration.md
         - name: ユーザー プロビジョニングのトラブルシューティング
           items:
             - name: ユーザー プロビジョニングのトラブルシューティング
               href: application-provisioning-config-problem.md
+            - name: プロビジョニング ログ
+              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
             - name: マッピングするための属性の同期 - ギャラリー アプリ
               href: user-provisioning-sync-attributes-for-mapping.md
             - name: 長時間かかる - ギャラリー アプリ
@@ -286,6 +293,8 @@
                   href: application-proxy-configure-single-sign-on-on-premises-apps.md
             - name: 発行に関するチュートリアル
               items:
+                - name: Azure AD Domain Services との統合
+                  href: /azure/active-directory-domain-services/deploy-azure-app-proxy?context=azure/active-directory/manage-apps/context/manage-apps-context
                 - name: Power BI との統合
                   href: application-proxy-integrate-with-power-bi.md
                 - name: Cloud App Security との統合
@@ -342,12 +351,18 @@
       items:
         - name: 属性マッピングの式の書き方
           href: functions-for-customizing-application-data.md
+    - name: Azure AD Connect プロビジョニング エージェント
+      items:
+        - name: プロビジョニング エージェントのバージョン履歴
+          href: provisioning-agent-release-version-history.md
     - name: オンプレミス アプリ用のアプリケーション プロキシ
       items:
         - name: アプリケーション プロキシのバージョン履歴
           href: application-proxy-release-version-history.md
 - name: リソース
   items:
+    - name: 開発者向けのサポート オプションとヘルプ オプション
+      href: /azure/active-directory/develop/developer-support-help-options?context=azure/active-directory/manage-apps/context/manage-apps-context
     - name: Azure フィードバック フォーラム
       href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
     - name: MSDN フォーラム

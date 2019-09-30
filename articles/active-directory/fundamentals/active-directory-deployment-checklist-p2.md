@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 767e3caf577bc1b7a49bd56570b8aeedbe307edc
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 7b5678fb0edcecae9ffa6a3c27f3dc6334ecf505
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68693888"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125342"
 ---
 # <a name="azure-active-directory-feature-deployment-guide"></a>Azure Active Directory 機能のデプロイ ガイド
 
@@ -55,7 +55,7 @@ ms.locfileid: "68693888"
 | [AD FS のエクストラネット スマート ロックアウトを有効にする](/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection) | AD FS のエクストラネット ロックアウトは、ブルート フォース パスワード推測攻撃からの保護を行います。同時に、有効な AD FS ユーザーには引き続き自分のアカウントを使用させます。 | |
 | [条件付きアクセス ポリシーを使用して Azure AD Multi-Factor Authentication をデプロイする](../authentication/howto-mfa-getstarted.md) | 条件付きアクセス ポリシーを使用して、機密性の高いアプリケーションにアクセスするときには 2 段階認証を実行するようユーザーに要求します。 | Azure AD Premium P1 |
 | [Azure Active Directory Identity Protection を有効にする](../identity-protection/enable.md) | 組織内のユーザーについて、リスクのあるサインインや侵害された資格情報の追跡を有効にします。 | Azure AD Premium P2 |
-| [リスク イベントを使用して多要素認証とパスワード変更をトリガーする](../authentication/tutorial-risk-based-sspr-mfa.md) | 多要素認証、パスワードのリセット、リスクに基づいたサインインのブロックなどのイベントをトリガーできるオートメーションを有効にします。 | Azure AD Premium P2 |
+| [リスク検出を使用して多要素認証とパスワード変更をトリガーする](../authentication/tutorial-risk-based-sspr-mfa.md) | 多要素認証、パスワードのリセット、リスクに基づいたサインインのブロックなどのイベントをトリガーできるオートメーションを有効にします。 | Azure AD Premium P2 |
 | [セルフサービスのパスワード リセットと Azure AD Multi-Factor Authentication の集中型登録 (プレビュー) を有効にする](../authentication/concept-registration-mfa-sspr-converged.md) | Azure Multi-Factor Authentication とセルフ サービス パスワード リセットの両方について、ユーザーが 1 つの共通操作で登録できるようにします。 | Azure AD Premium P1 |
 
 ## <a name="phase-2-import-users-enable-synchronization-and-manage-devices"></a>フェーズ 2:ユーザーのインポート、同期の有効化、デバイスの管理

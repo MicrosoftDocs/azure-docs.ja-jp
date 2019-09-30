@@ -425,7 +425,7 @@
       href: hyper-v-azure-powershell-resource-manager.md
     - name: PowerShell を使用して Azure への Hyper-V VM (VMM あり) のディザスター リカバリーを設定する
       href: hyper-v-vmm-powershell-resource-manager.md
-    - name: フェールオーバーを調整するための復旧計画に Azure Automation Runbook を追加する
+    - name: Automation Runbook を復旧計画に追加する
       href: site-recovery-runbook-automation.md
 - name: 監視
   items:

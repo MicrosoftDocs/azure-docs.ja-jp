@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0bdef508e12a3b11143149b330da73838b53f860
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 12ddbe9f43baf68f6c11c9b720a0f684316af46a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439008"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065313"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C で RESTful API との対話を[カスタム ポリシー](active-directory-b2c-overview-custom.md)に追加できます。 この記事では、RESTful サービスと対話する Azure AD B2C ユーザー体験を作成する方法について説明します。
+Azure Active Directory B2C (Azure AD B2C) で RESTful API との対話を[カスタム ポリシー](active-directory-b2c-overview-custom.md)に追加できます。 この記事では、RESTful サービスと対話する Azure AD B2C ユーザー体験を作成する方法について説明します。
 
 対話には REST API 要求と Azure AD B2C の間の情報の要求の交換が含まれています。 要求の交換の特性を次に示します。
 
@@ -97,8 +97,10 @@ public class ResponseContent
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
         <Item Key="ServiceUrl">https://myfunction.azurewebsites.net/api/HttpTrigger1?code=bAZ4lLy//ZHZxmncM8rI7AgjQsrMKmVXBpP0vd9smOzdXDDUIaLljA==</Item>
-        <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
@@ -114,6 +116,8 @@ public class ResponseContent
 ```
 
 **InputClaims** 要素によって、REST サービスに送信される要求が定義されます。 この例では、要求 `givenName` の値が要求 `email` として REST サービスに送信されます。 **OutputClaims** 要素によって、REST サービスから期待される要求が定義されます。
+
+`AuthenticationType` と `AllowInsecureAuthInProduction` の上のコメントに、運用環境に移行するときに行う必要がある変更が指定されています。 実稼働用の RESTful API をセキュリティで保護する方法については、「[基本認証を使用した RESTful API のセキュリティ保護](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)」と「[証明書認証を使用した RESTful API のセキュリティ保護](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)」を参照してください。
 
 ## <a name="add-the-claim-definition"></a>要求の定義を追加する
 
@@ -251,5 +255,13 @@ REST API 呼び出しをオーケストレーション手順として使用で�
 
 ## <a name="next-steps"></a>次の手順
 
-- 検証プロファイルとして対話を設計することもできます。 詳細については、「[チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」をご覧ください。
-- [プロファイルの編集を変更してユーザーから追加情報を収集する方法](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+検証プロファイルとして対話を設計することもできます。 詳細については、「[チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」をご覧ください。
+
+[プロファイルの編集を変更してユーザーから追加情報を収集する方法](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
+
+[リファレンス: RESTful 技術プロファイル](restful-technical-profile.md)
+
+API をセキュリティで保護する方法については、次の記事を参照してください。
+
+* [基本認証 (ユーザー名とパスワード) を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+* [クライアント証明書を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

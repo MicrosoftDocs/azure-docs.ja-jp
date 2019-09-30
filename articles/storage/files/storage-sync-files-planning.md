@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: f89e7307d75b159886cb47bde3e1fceb5ed557f5
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9c46181d5ab449d28c2e2e93cc583a3551f114bc
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699343"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061747"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -241,7 +241,7 @@ Azure ファイル同期は、次のソリューションと連携しないこ�
 ## <a name="region-availability"></a>利用可能なリージョン
 Azure File Sync は、次のリージョンでのみ利用できます。
 
-| リージョン | データ センターの場所 |
+| Region | データ センターの場所 |
 |--------|---------------------|
 | オーストラリア東部 | ニュー サウス ウェールズ州 |
 | オーストラリア南東部 | ビクトリア州 |
@@ -254,12 +254,15 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 | East US | バージニア州 |
 | 米国東部 2 | バージニア州 |
 | フランス中部 | パリ |
-| 韓国中部| ソウル |
-| 韓国南部| 釜山 |
+| フランス南部* | マルセイユ |
+| 韓国中部 | ソウル |
+| 韓国南部 | 釜山 |
 | 東日本 | 東京、埼玉 |
 | 西日本 | 大阪 |
 | 米国中北部 | イリノイ州 |
 | 北ヨーロッパ | アイルランド |
+| 南アフリカ北部 | ヨハネスブルグ |
+| 南アフリカ西部* | ケープタウン |
 | 米国中南部 | テキサス |
 | インド南部 | チェンナイ |
 | 東南アジア | シンガポール |
@@ -274,6 +277,8 @@ Azure File Sync は、次のリージョンでのみ利用できます。
 | 米国西部 2 | ワシントン |
 
 Azure File Sync は、ストレージ同期サービスと同じリージョンの Azure ファイル共有との同期のみをサポートしています。
+
+アスタリスクが付いているリージョンでは、Azure サポートに連絡して、これらのリージョンの Azure Storage へのアクセス権を要求する必要があります。 このプロセスについては、[このドキュメント](https://azure.microsoft.com/global-infrastructure/geographies/)で概説されています。
 
 ### <a name="azure-disaster-recovery"></a>Azure ディザスター リカバリー
 Azure リージョンの損失を防ぐため、Azure File Sync には [geo 冗長ストレージの冗長性](../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (GRS) オプションが統合されています。 GRS ストレージは、プライマリ リージョンのストレージ (通常、操作している) と、ペアのセカンダリ リージョンとの間でブロックの非同期レプリケーションを使用することで機能します。 Azure リージョンが一時的または永続的にオフラインになる障害が発生した場合、Microsoft はペアのリージョンにストレージをフェールオーバーします。 
@@ -296,12 +301,15 @@ geo 冗長ストレージと Azure File Sync との間のフェールオーバ�
 | East US             | 米国西部            |
 | 米国東部 2           | 米国中部         |
 | フランス中部      | フランス南部       |
+| フランス南部        | フランス中部     |
 | 東日本          | 西日本         |
 | 西日本          | 東日本         |
 | 韓国中部       | 韓国南部        |
 | 韓国南部         | 韓国中部      |
 | 北ヨーロッパ        | 西ヨーロッパ        |
 | 米国中北部    | 米国中南部   |
+| 南アフリカ北部  | 南アフリカ西部  |
+| 南アフリカ西部   | 南アフリカ北部 |
 | 米国中南部    | 米国中北部   |
 | インド南部         | インド中部      |
 | 東南アジア      | 東アジア          |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f54643883028d93b56c7e122f43db95bb6d0b8c1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ff666437790a1e32dde83f9e3be90b4c62637181
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560881"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307752"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータルで新しいアプリを作成する
 
@@ -23,9 +23,9 @@ ms.locfileid: "68560881"
 
 アプリの構築は無料で行うことができます。Azure のサブスクリプションは不要です。 アプリをデプロイする準備ができたら、[アプリをデプロイするためのクイック スタート](get-started-portal-deploy-app.md)を参照します。 この記事では、Azure Cognitive Services リソースを作成し、アプリに割り当てる方法が説明されています。
 
-## <a name="create-an-app"></a>アプリを作成する
+[!INCLUDE [Sign in to LUIS](./includes/sign-in-process.md)]
 
-1. ブラウザー内で [LUIS ポータル](https://www.luis.ai)を開き、サインインします。 初めてサインインする場合は、LUIS ポータルの無料のユーザー アカウントを作成する必要があります。
+## <a name="create-an-app"></a>アプリを作成する
 
 1. コンテキスト ツールバーから **[新しいアプリの作成]** を選択します。
 

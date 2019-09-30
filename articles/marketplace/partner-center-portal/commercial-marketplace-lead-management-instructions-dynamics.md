@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: evansma
-ms.openlocfilehash: 17ae6dc8d1d583e5223a64ee079731fa5d9dc63c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 03d67249ef1d74844a7e9019e90f6331ecfdf0c3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901439"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102970"
 ---
 # <a name="configure-lead-management-for-dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement のリード管理の構成
 
@@ -97,7 +97,7 @@ ms.locfileid: "69901439"
 
     ![Add permissions](./media/commercial-marketplace-lead-management-instructions-dynamics/api-permissions.png)
 
-14. Azure portal 上で手順 1-13 を完了したら、URL (https://tenant.crm.dynamics.com) など) に移動して、Dynamics 365 for Customer Engagement インスタンスに移動します。
+14. Azure portal 上で手順 1-13 を完了したら、URL (`https://tenant.crm.dynamics.com` など) に移動して、Dynamics 365 for Customer Engagement インスタンスに移動します。
 15. 上部のナビゲーション バーで歯車アイコンと **[詳細設定]** を選択して、[設定] にアクセスします。
 16. [設定] ページが表示されたら、上部のナビゲーション バーから [設定] メニューにアクセスし、 **[セキュリティ]** を選択します。
 17. [セキュリティ] ページで、 **[ユーザー]** を選択します。  [ユーザー] ページで、[有効になっているユーザー] ドロップダウンを選択し、 **[アプリケーション ユーザー]** に切り替えます。

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 22955ba4b885b264210dc8788f2a410b785b28b4
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883977"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966932"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Prediction API でモデルを使用する
 
@@ -44,8 +44,6 @@ Prediction API にイメージを送信するには、まず予測のイテレ�
 
 ![イメージ ファイルと Prediction-Key 値を使用するための Prediction URL が赤い四角形で囲まれた、パフォーマンス タブが表示されます。](./media/use-prediction-api/prediction-api-info.png)
 
-> [!TIP]
-> __Prediction-Key__ は、[Azure portal](https://portal.azure.com) ページのプロジェクトに関連付けられている Custom Vision Azure リソースの __[キー]__ ブレードでも見つけることができます。
 
 このガイドでは、ローカル イメージを使用します。そのため、 **[If you have an image file]\(イメージ ファイルがある場合\)** の下にある URL を一時的な場所にコピーします。 対応する __Prediction-Key__ 値もコピーします。
 

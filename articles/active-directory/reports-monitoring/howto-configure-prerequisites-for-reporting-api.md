@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 08/30/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f925a86504d68fd08b83c63e4da8b37b4aa25f85
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: f7b6fab4a4a36691bbdeb11975c7a93b97ab86cb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989902"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241478"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API にアクセスするための前提条件
 
-[Azure Active Directory (Azure AD) レポート API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。
+[Azure Active Directory (Azure AD) レポート API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-reports-and-events-preview) は、一連の REST ベースの API を使用してデータへのプログラムによるアクセスを提供します。 これらの API は、プログラミング言語やツールから呼び出すことができます。
 
-Reporting API は、 [OAuth](https://msdn.microsoft.com/library/azure/dn645545.aspx) を使用して Web API へのアクセスを承認します。
+Reporting API は、 [OAuth](https://docs.microsoft.com/azure/api-management/api-management-howto-protect-backend-with-aad) を使用して Web API へのアクセスを承認します。
 
 レポート API へのアクセスを準備するには、次が必要です。
 
@@ -50,7 +50,7 @@ API を介してレポート データにアクセスするには、次のいず
 
 ## <a name="register-an-application"></a>アプリケーションを登録する
 
-スクリプトを使用してレポート API にアクセスする場合でも、アプリケーションを登録する必要があります。 これにより、承認の呼び出しと、コードによるトークンの受信に必要な**アプリケーション ID** が得られます。
+スクリプトを使用してレポート API にアクセスする場合でも、登録する必要があります。 登録することで、承認の呼び出しと、コードによるトークンの受信に必要な**アプリケーション ID** が得られます。
 
 Azure AD Reporting API にアクセスするようにディレクトリを構成するには、Azure AD テナントの**グローバル管理者**ディレクトリ ロールのメンバーでもある Azure 管理者アカウントで [Azure portal](https://portal.azure.com) にサインインする必要があります。
 
@@ -68,21 +68,21 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/02.png) 
 
-3. **[アプリの登録]** ページから、 **[新しいアプリケーションの登録]** を選択します。
+3. **[アプリの登録]** ページから、 **[New registration]\(新しい登録\)** を選択します。
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
-4. **[作成]** ページで、以下の手順を実行します。
+4. **[アプリケーションの登録]** ページ:
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
     a. **[名前]** ボックスに、「`Reporting API application`」と入力します。
 
-    b. **アプリケーションの種類**として **[Web アプリ/API]** を選択します。
+    b. **[サポートされているアカウントの種類]** で、 **[この組織のディレクトリ内のアカウントのみ]** を選択します。
 
-    c. **[サインオン URL]** ボックスに、「`https://localhost`」と入力します。
+    c. **[リダイレクト URL]** で **[Web]** を選択し、テキスト ボックスに「`https://localhost`」と入力します。
 
-    d. **作成** を選択します。 
+    d. **[登録]** を選択します。 
 
 
 ## <a name="grant-permissions"></a>アクセス許可を付与する 
@@ -101,48 +101,26 @@ Azure AD Reporting API にアクセスするようにディレクトリを構成
 
 **API を使用するためのアクセス許可をアプリケーションに付与するには:**
 
-1. **[アプリの登録]** ページからアプリケーションを選択して、 **[設定]** を選択します。 
+
+1. **[API のアクセス許可]** 、 **[アクセス許可の追加]** の順に選択します。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/05.png)
 
-2. **[設定]** ページで、 **[必要なアクセス許可]** を選択します。 
+2. **[API アクセス許可の要求]** ページで、 **[サポートされているレガシ API]** の **[Azure Active Directory Graph]** を見つけます。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. **[必要なアクセス許可]** ページの **[API]** の一覧で、 **[Windows Azure Active Directory]** をクリックします。 
+3. **[必要なアクセス許可]** ページで、 **[アプリケーションのアクセス許可]** を選択し、 **[ディレクトリ]** を展開して、 **[Directory.ReadAll]** チェック ボックスをオンにします。  **[アクセス許可の追加]** を選択します.
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
-4. **[アクセスの有効化]** ページで、 **[ディレクトリ データの読み取り]** をオンにして、 **[サインインとユーザー プロファイルの読み取り]** をオフにします。 
+4. **[Reporting API Application - API Permissions]\(レポート API アプリケーション - API のアクセス許可\)** ページで、 **[Grant admin consent]\(管理者の同意の付与\)** を選択します。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/08.png)
 
-5. 上部のツール バーで **[保存]** をクリックします。
+5. 注:**Microsoft Graph** は、API の登録時に既定で追加されます。
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/15.png)
-
-6. **[必要なアクセス許可]** ページで、上部ツール バーの **[追加]** をクリックします。
-
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/32.png)
-
-7. **[API アクセスの追加]** ページで、 **[API を選択します]** をクリックします。
-
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/31.png)
-
-8. **[API を選択します]** ページで、 **[Microsoft Graph]** をクイックして、 **[選択]** をクリックします。
-
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/33.png)
-
-9. **[アクセスの有効化]** ページで、 **[すべての監査ログ データの読み取り]** をオンにして、 **[選択]** をクリックします。  
-
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/34.png)
-
-10. **[API アクセスの追加]** ページで、 **[完了]** をクリックします。  
-
-11. **[必要なアクセス許可]** ページで、上部のツール バーの **[アクセス許可の付与]** をクリックし、 **[はい]** をクリックします。
-
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/17.png)
-
 
 ## <a name="gather-configuration-settings"></a>構成設定を収集する 
 
@@ -185,7 +163,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 
 ### <a name="get-your-applications-client-secret"></a>アプリケーションのクライアント シークレットを取得する
-アプリケーションのクライアント シークレットを取得するには、新しいキーを作成し、その新しいキーを保存するときにその値を保存する必要があります。これは、後でこの値を取得することができないためです。
+ API を使用して監査ログへのアクセスまたはサインインを試みるときにエラーが発生しないようにします。
 
 **アプリケーションのクライアント シークレットを取得するには:**
 
@@ -195,17 +173,11 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 2.  **[アプリの登録]** ページから、アプリケーションを選択します。
 
-3. アプリケーション ページの上部のツール バーで、 **[設定]** を選択します。 
-
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/05.png)
-
-4. **[設定]** ページの **[API アクセス]** セクションで、 **[キー]** をクリックします。 
+3.  **[API Application]\(API アプリケーション\)** ページで **[Certificates and Secrets]\(証明書とシークレット\)** を選択し、 **[Client Secrets]\(クライアント シークレット\)** セクションで **[+ New Client Secret]\(+ 新しいクライアント シークレット\)** をクリックします。 
 
     ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/12.png)
 
-5. **[キー]** ページで、次の手順を実行します。
-
-    ![アプリケーションを登録する](./media/howto-configure-prerequisites-for-reporting-api/14.png)
+5. **[クライアント シークレットの追加]** ページで、以下を追加します。
 
     a. **[説明]** ボックスに、「`Reporting API`」と入力します。
 
@@ -225,7 +197,7 @@ Reporting API への呼び出しを構成するときに、これらの値が必
 
 ### <a name="error-failed-to-get-user-roles-from-ad-graph"></a>エラー:AD Graph からユーザー ロールを取得できませんでした
 
-Graph エクスプローラーを使用してサインインにアクセスしようとしたときに、このようなエラー メッセージが表示される場合があります。 以下の図に示すように、Graph エクスプローラー UI の両方のサインイン ボタンを使用して、アカウントにサインインしていることを確認してください。 
+ Graph エクスプローラーを使用してサインインするときにエラーが発生しないようにするには、Graph エクスプローラーの UI の両方のサインイン ボタンを使用してアカウントにサインインします。 
 
 ![Graph エクスプローラー](./media/troubleshoot-graph-api/graph-explorer.png)
 
@@ -236,21 +208,19 @@ Graph エクスプローラーを使用してサインインにアクセスし�
 ![アクセス許可の変更 UI](./media/troubleshoot-graph-api/modify-permissions.png)
 
 
-### <a name="error-neither-tenant-is-b2c-or-tenant-doesnt-have-premium-license"></a>エラー:テナントが B2C ではなく、テナントに Premium ライセンスもありません
+### <a name="error-tenant-is-not-b2c-or-tenant-doesnt-have-premium-license"></a>エラー:テナントが B2C ではないか、またはテナントに Premium ライセンスがありません
 
 サインイン レポートへのアクセスには、Azure Active Directory Premium 1 (P1) ライセンスが必要です。 サインインへのアクセス中にこのようなエラー メッセージが表示された場合は、テナントに Azure AD P1 ライセンスがあることを確認してください。
 
-### <a name="error-user-is-not-in-the-allowed-roles"></a>エラー:許可されているロールのユーザーではありません 
+### <a name="error-the-allowed-roles-does-not-include-user"></a>エラー:許可されたロールにユーザーが含まれません。 
 
-API を使用して監査ログやサインインにアクセスしようとしたときにこのようなエラー メッセージが表示された場合は、ご利用のアカウントが、Azure Active Directory テナントの**セキュリティ閲覧者**または**レポート閲覧者**のロールに属していることを確認してください。 
+ API を使用して監査ログへのアクセスまたはサインインを試みるときにエラーが発生しないようにします。 アカウントが Azure Active Directory テナントの**セキュリティ閲覧者**ロールまたは**レポート閲覧者**ロールの一部であることを確認します。
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>エラー:アプリケーションに AAD の 'ディレクトリ データの読み取り' アクセス許可がありません 
 
-「[Azure Active Directory レポート API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)」の手順に従って、ご利用のアプリケーションが適切なアクセス許可セットを使用して実行されていることを確認してください。 
-
 ### <a name="error-application-missing-msgraph-api-read-all-audit-log-data-permission"></a>エラー:アプリケーションに MSGraph API の 'すべての監査ログ データの読み取り' アクセス許可がありません
 
-「[Azure Active Directory レポート API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)」の手順に従って、ご利用のアプリケーションが適切なアクセス許可セットを使用して実行されていることを確認してください。 
+「[Azure Active Directory レポート API にアクセスするための前提条件](howto-configure-prerequisites-for-reporting-api.md)」の手順に従って、アプリケーションが適切なアクセス許可のセットを使用して実行されていることを確認してください。 
 
 ## <a name="next-steps"></a>次の手順
 

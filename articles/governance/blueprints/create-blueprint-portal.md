@@ -7,13 +7,12 @@ ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: 97d0615fcc4f86c295441ec6a0eb8b86ba6b11b5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 473e16c610e7dee0b2838cb1a54ef7cd98958889
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059699"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232974"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>クイック スタート:ポータル内でブループリントを定義して割り当てる
 

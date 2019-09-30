@@ -3,13 +3,13 @@ author: wesmc7777
 ms.author: wesmc
 ms.service: iot-hub
 ms.topic: include
-ms.date: 10/26/2018
-ms.openlocfilehash: eef073f5f4d1eb39fd5ccd8dafacd7074158fa37
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.date: 08/20/2019
+ms.openlocfilehash: c412f7f3e20e4d04083e457bfb245b850b65e126
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68667833"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050409"
 ---
 > [!div class="op_single_selector"]
 > * [Node.JS](../articles/iot-hub/iot-hub-node-node-twin-getstarted.md)
@@ -17,7 +17,7 @@ ms.locfileid: "68667833"
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
 > * [Python](../articles/iot-hub/iot-hub-python-twin-getstarted.md)
 
-デバイス ツインは、デバイスの状態に関する情報 (メタデータ、構成、状態) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。
+デバイス ツインは、デバイスに関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。
 
 [!INCLUDE [iot-hub-basic](iot-hub-basic-whole.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "68667833"
 
 * ソリューション バックエンドからデバイス メタデータを格納する。
 
-* デバイス アプリで利用できる機能や状態 (たとえば、使用される接続方法) などの現在の状態に関する情報を報告する。
+* デバイス アプリで利用できる機能や状態 (たとえば、使用される接続方法) などの現在の状態に関する情報をレポートする。
 
 * デバイス アプリとバックエンド アプリの間で実行時間の長いワークフロー (ファームウェアや構成の更新など) の状態を同期する。
 
@@ -33,22 +33,26 @@ ms.locfileid: "68667833"
 
 デバイス ツインは、同期のほか、デバイスの構成と状態の照会に対応しています。 デバイス ツインを使用するタイミングの詳細については、[デバイス ツインの理解](../articles/iot-hub/iot-hub-devguide-device-twins.md)に関するドキュメントを参照してください。
 
-デバイス ツインは IoT ハブに格納され、次のものを含みます。
+デバイス ツインは IoT ハブに格納され、以下の要素が含まれます。
 
-* "*タグ*": ソリューション バックエンドからのみアクセスできるデバイス メタデータです。
+* **タグ**。 ソリューション バックエンドからのみアクセスできるデバイス メタデータです。
 
-* "*必要なプロパティ*": ソリューション バックエンドから変更でき、デバイス アプリから監視できる JSON オブジェクトです。
+* **必要なプロパティ**。 ソリューション バックエンドから変更でき、デバイス アプリから監視できる JSON オブジェクトです。
 
-* "*報告されるプロパティ*": デバイス アプリから変更でき、ソリューション バックエンドから読み取り可能な JSON オブジェクトです。 タグとプロパティに配列を含めることはできませんが、オブジェクトは入れ子にできます。
+* **報告されるプロパティ**。 デバイス アプリから変更でき、ソリューション バックエンドから読み取り可能な JSON オブジェクトです。
+
+タグとプロパティに配列を含めることはできませんが、オブジェクトは入れ子にできます。
+
+次の図は、デバイス ツイン組織を示しています。
 
 ![デバイス ツインの機能を示した画像](./media/iot-hub-selector-twin-get-started/twin.png)
 
 さらに、ソリューション バックエンドは、上記のすべてのデータに基づいてデバイス ツインに対してクエリを実行できます。
-デバイス ツインの詳細については、[デバイス ツイン](../articles/iot-hub/iot-hub-devguide-device-twins.md)に関するページを、クエリについては [IoT Hub クエリ言語](../articles/iot-hub/iot-hub-devguide-query-language.md)のリファレンスを参照してください。
+デバイス ツインの詳細については、[デバイス ツインの理解](../articles/iot-hub/iot-hub-devguide-device-twins.md)に関するページを参照してください。 クエリ実行の詳細については、[IoT Hub クエリ言語](../articles/iot-hub/iot-hub-devguide-query-language.md)に関するページを参照してください。
 
 
 このチュートリアルでは、次の操作方法について説明します。
 
-* デバイス ツインに "*タグ*" を追加するバックエンド アプリのほか、接続チャネルをデバイス ツインの "*報告されるプロパティ*" として報告するシミュレーション対象デバイス アプリを作成します。
+* デバイス ツインにタグを追加するバックエンド アプリのほか、接続チャネルをデバイス ツインの報告されるプロパティとしてレポートするシミュレーション対象デバイス アプリを作成します。
 
 * 以前に作成したタグとプロパティのフィルターを使用して、バックエンド アプリからデバイスに対してクエリを実行します。

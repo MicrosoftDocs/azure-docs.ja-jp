@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/20/2019
 tags: connectors
-ms.openlocfilehash: d9c29837e99d327112e6a9d648a5c56cc35e8555
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: d57ea1a881980203b1c8f216239b27b64f0d71cd
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296658"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051044"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Azure Logic Apps を使用して Azure BLOB ストレージ内に BLOB を作成して管理する
 
@@ -38,7 +39,7 @@ ms.locfileid: "67296658"
 
 * Azure Blob Storage トリガーではチャンクはサポートされていません。 ファイルのコンテンツを要求する場合、トリガーは 50 MB 以下のファイルのみを選択します。 50 MB より大きいファイルを取得するには、次のパターンに従います。
 
-  * **BLOB が追加または変更されたとき (プロパティのみ)** といった、ファイルのプロパティを返す Azure Blob Storage トリガーを使用します。
+  * ファイルのプロパティを返す Azure Blob Storage トリガーを使用します (**BLOB が追加または変更されたとき (プロパティのみ)** など)。
 
   * Azure Blob Storage トリガーの **BLOB コンテンツの取得**アクションに従います。これは、暗黙的にチャンクを使用してファイル全体を読み取ります。
 

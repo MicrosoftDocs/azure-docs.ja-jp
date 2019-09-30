@@ -1,23 +1,23 @@
 ---
-title: Azure の容量が予約された SQL Data Warehouse 料金を前払いする | Microsoft Docs
-description: コスト削減のために容量が予約された SQL Data Warehouse 料金を前払いする方法について説明します。
+title: Azure の容量が予約された SQL Data Warehouse 料金のコストを節約する
+description: コスト削減のために容量が予約された SQL Data Warehouse 料金のコストを節約する方法について説明します。
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 6ee7a661434bb756c6cf196937229db19d06b373
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 381a709c74f5fcf6bb1f89f07ad84d5e3af0c5e0
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779980"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70806281"
 ---
-# <a name="prepay-for-sql-data-warehouse-charges-with-reserved-capacity"></a>容量が予約された SQL Data Warehouse 料金の前払い
+# <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>容量が予約された SQL Data Warehouse 料金のコストを節約する
 
-1 年間または 3 年間の cDWU 使用状況について前払いすることで、Azure SQL Data Warehouse にかかるコストを削減することができます。 SQL Data Warehouse の予約容量を購入するには、Azure リージョンと期間を選択する必要があります。 その後、SQL Data Warehouse SKU をカートに追加して、購入する cDWU ユニットの数量を選択します。
+1 年分または 3 年分の cDWU の使用に関する予約をコミットすることによって、Azure SQL Data Warehouse にかかるコストを節約することができます。 SQL Data Warehouse の予約容量を購入するには、Azure リージョンと期間を選択する必要があります。 その後、SQL Data Warehouse SKU をカートに追加して、購入する cDWU ユニットの数量を選択します。
 
 予約を購入すると、予約の属性に一致する SQL Data Warehouse 使用状況は従量課金制で課金されなくなります。
 
@@ -27,7 +27,7 @@ ms.locfileid: "68779980"
 
 価格の詳細については、[SQL Data Warehouse の予約容量オファー](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/)に関するページを参照してください。
 
-Azure SQL Data Warehouse の予約容量は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) で購入できます。 予約容量を購入するには:
+Azure SQL Data Warehouse の予約容量は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) で購入できます。 予約の支払いは、[前払いまたは月払い](billing-monthly-payments-reservations.md)で行います。 予約容量を購入するには:
 
 - 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制サブスクリプションで所有者ロールを所持している必要があります。
 - エンタープライズ サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 その設定が無効になっている場合は、EA 管理者である必要があります。
@@ -45,7 +45,7 @@ SQL Data Warehouse の予約サイズは、使用するコンピューティン�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのサービス]**  >  **[予約]** を選択します。
-3. サブスクリプションを選択します。 [サブスクリプション] リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量の初期コストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。
+3. サブスクリプションを選択します。 [サブスクリプション] リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P)。
    - エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。
    - 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
 4. スコープを選択します。 [スコープ] リストを使用して、サブスクリプション スコープを選択します。

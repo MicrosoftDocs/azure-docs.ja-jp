@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
-ms.custom: mvc, devcenter, seo-java-august2019
-ms.openlocfilehash: a69590adc329361ac1c2191e7a984757af4f69af
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: ca6a1063f6ddd5c42d0d08f43b87a3387cc46a14
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977103"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859267"
 ---
-# <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>クイック スタート:Service Fabric に Java Reliable Services アプリケーションをデプロイする
+# <a name="quickstart--deploy-a-java-app-to-azure-service-fabric-on-linux"></a>クイック スタート:Azure Service Fabric on Linux に Java アプリをデプロイする
+
+このクイックスタートでは、Linux 開発者マシンで Eclipse IDE を使用して、Azure Service Fabric に初めての Java アプリケーションをデプロイする方法を示します。 最後まで読み進めていけば、Java Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。
 
 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。
-
-このクイック スタートでは、Linux 開発者コンピューターで Eclipse IDE を使用して、Service Fabric に初めての Java アプリケーションをデプロイする方法を示します。 最後まで読み進めていけば、Java Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。
 
 ![アプリケーションのスクリーンショット](./media/service-fabric-quickstart-java/votingapp.png)
 

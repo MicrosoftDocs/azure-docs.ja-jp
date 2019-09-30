@@ -1,5 +1,5 @@
 ---
-title: Azure AD による Web API の保護 | Microsoft Docs
+title: クイック スタート:Azure Active Directory による Web API のセキュリティ保護
 description: 認証のために Azure AD と連携する Node.js REST Web API を構築する方法について説明します。
 services: active-directory
 documentationcenter: nodejs
@@ -14,14 +14,14 @@ ms.devlang: javascript
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: ryanwi
-ms.custom: aaddev
+ms.custom: seo-javascript-september2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dcbe10c08d581e2ec01e1616da49b7a1b31018d
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: 7307afb2ce9e10326c42f96733d3f80979c4a4b3
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545986"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056534"
 ---
 # <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>クイック スタート:Azure Active Directory による Web API のセキュリティ保護
 
@@ -82,7 +82,7 @@ az ad app create --display-name node-aad-demo --homepage http://localhost --iden
 
 Azure Active Directory に接続する前に、次の情報が必要です。
 
-| Name  | 説明 | 構成ファイルの変数名 |
+| 名前  | 説明 | 構成ファイルの変数名 |
 | ------------- | ------------- | ------------- |
 | テナント名  | 認証に使用する[テナント名](quickstart-create-new-tenant.md) | `tenantName`  |
 | クライアント ID  | クライアント ID は、AAD の _アプリケーション ID_ に使用される OAuth の用語です。 |  `clientID`  |

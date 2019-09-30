@@ -5,27 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47a6f475b5f1152850ec918b196883c6974f4d95
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2c31867f4de0e49e2c82733dc859f17ba060bdaa
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60415621"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69561344"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>動作のしくみ: Azure AD のセルフ サービスによるパスワードのリセット
 
 セルフサービスによるパスワードのリセット (SSPR) はどのように動作するのでしょうか? そのオプションはインターフェイスでは何を意味するのでしょうか? 以降では、Azure Active Directory (Azure AD) SSPR の詳細について説明します。
-
-|     |
-| --- |
-| Azure AD のセルフ サービスによるパスワードのリセットの方法であるモバイル アプリ通知およびモバイル アプリ コードは、Azure Active Directory のパブリック プレビューの機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
-|     |
 
 ## <a name="how-does-the-password-reset-portal-work"></a>パスワード リセット ポータルのしくみ
 
@@ -61,8 +56,8 @@ ms.locfileid: "60415621"
 
 SSPR が有効になっている場合は、認証方法として以下のオプションの少なくとも 1 つを選択する必要があります。 これらのオプションは、"ゲート" と呼ばれることもあります。 **2 つ以上の認証方法を選択**することを強くお勧めします。そうすれば、一方の認証方法を利用できない場合でも、必要があれば、ユーザーはもう一方の認証方法を利用できます。 次に示されている方法の追加の詳細については、「[認証方法とは](concept-authentication-methods.md)」を参照してください。
 
-* モバイル アプリ通知 (プレビュー)
-* モバイル アプリ コード (プレビュー)
+* モバイル アプリの通知
+* モバイル アプリ コード
 * Email
 * 携帯電話
 * 会社電話
@@ -86,7 +81,7 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 
 ユーザーに必要最低限の方法が登録されていない場合は、管理者にパスワードのリセットを依頼するよう指示するエラー ページが表示されます。
 
-#### <a name="mobile-app-and-sspr-preview"></a>モバイル アプリおよび SSPR (プレビュー)
+#### <a name="mobile-app-and-sspr"></a>モバイル アプリおよび SSPR
 
 Microsoft Authenticator アプリなどのモバイル アプリを使用している場合、パスワードのリセット方法として、次の注意事項を理解しておく必要があります。
 

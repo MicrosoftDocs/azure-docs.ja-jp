@@ -1,19 +1,18 @@
 ---
-title: Site Recovery を使用して Azure に VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する | Microsoft Docs
+title: Site Recovery を使用して Azure に VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 description: Site Recovery を使用して、Azure に System Center VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する方法について説明します。
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 653db1497fcce5981bba7416f073b0330ca2861f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 59e6bbbca982d428d4e590cb647f186e1c3fec3a
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66398145"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813771"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Azure に VMM クラウドのオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 

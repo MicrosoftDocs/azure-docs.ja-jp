@@ -36,16 +36,24 @@
   items:
     - name: ユーザーの管理
       items:
-        - name: Azure AD への新しいユーザーの追加
+        - name: ユーザーの作成
           href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: ユーザーの一括作成 (プレビュー)
+          href: users-bulk-add.md
         - name: ユーザー プロファイルの管理
           href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: ユーザー情報をダウンロードする (プレビュー)
+          href: users-bulk-download.md
         - name: ユーザー アカウントの共有
           href: users-sharing-accounts.md
         - name: 管理者ロールへのユーザーの割り当て
           href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: ユーザーの一括削除 (プレビュー)
+          href: users-bulk-delete.md
         - name: 削除済みユーザーの復元
           href: /azure/active-directory/fundamentals/active-directory-users-restore?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: ユーザーの一括復元 (プレビュー)
+          href: users-bulk-restore.md
         - name: 非管理対象ディレクトリのアカウントを削除する
           href: users-close-account.md
         - name: B2B ユーザーの追加
@@ -74,16 +82,26 @@
       items:
         - name: グループでのアクセスの管理
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
-        - name: Azure portal でのグループの管理
+        - name: グループとメンバーの一覧の検索 (プレビュー)
+          href: groups-members-owners-search.md
+        - name: グループの作成 (Azure portal)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: グループの管理 (PowerShell for Graph (v2))
           href: groups-settings-v2-cmdlets.md
         - name: グループの管理 (PowerShell MSOnline)
           href: groups-settings-cmdlets.md
-        - name: グループ メンバーの管理
+        - name: グループ メンバーの追加または削除
           href: /azure/active-directory/fundamentals/active-directory-groups-members-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: メンバーの一括追加 (プレビュー)
+          href: groups-bulk-import-members.md
+        - name: メンバーの一括削除 (プレビュー)
+          href: groups-bulk-remove-members.md
+        - name: メンバー リストの一括ダウンロード (プレビュー)
+          href: groups-bulk-download-members.md
         - name: グループ所有者を管理する
           href: /azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: グループ リストの一括ダウンロード (プレビュー)
+          href: groups-bulk-download.md
         - name: グループ内のグループの管理
           href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: SaaS アプリへのグループ アクセスの追加

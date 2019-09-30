@@ -1,7 +1,7 @@
 ---
 title: 既存のモデルを使用してデプロイする
-titleSuffix: Azure Machine Learning service
-description: サービスの外部でトレーニングされたモデルと共に Azure Machine Learning service を使用する方法について説明します。 Azure Machine Learning service の外部で作成されたモデルを登録してから、それらを Web サービスまたは Azure IoT Edge モジュールとしてデプロイできます。
+titleSuffix: Azure Machine Learning
+description: サービスの外部でトレーニングされたモデルと共に Azure Machine Learning を使用する方法について説明します。 Azure Machine Learning の外部で作成されたモデルを登録してから、それらを Web サービスまたは Azure IoT Edge モジュールとしてデプロイできます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,32 +10,32 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: cbbfd5f7beb7270bf55e952c818b4802d9d9ecab
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: a864ec8c9bbdf90f04c98c8d9656c863fb32b653
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847992"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162472"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Azure Machine Learning service で既存のモデルを使用する
+# <a name="use-an-existing-model-with-azure-machine-learning"></a>Azure Machine Learning で既存のモデルを使用する
 
-Azure Machine Learning service で既存の機械学習モデルを使用する方法について説明します。
+Azure Machine Learning で既存の機械学習モデルを使用する方法について説明します。
 
-Azure Machine Learning service の外部でトレーニングされた機械学習モデルがある場合でも、そのサービスを使用してモデルを Web サービスまたは IoT Edge デバイスとしてデプロイできます。 
+Azure Machine Learning の外部でトレーニングされた機械学習モデルがある場合でも、そのサービスを使用してモデルを Web サービスまたは IoT Edge デバイスとしてデプロイできます。 
 
 > [!TIP]
-> この記事では、既存モデルの登録とデプロイに関する基本情報を提供します。 デプロイされると、Azure Machine Learning service によってモデルを監視できます。 また、デプロイに送信された入力データを保存し、データ ドリフト分析やモデルの新しいバージョンのトレーニングに使用できます。
+> この記事では、既存モデルの登録とデプロイに関する基本情報を提供します。 デプロイされると、Azure Machine Learning によってご利用のモデルを監視できます。 また、デプロイに送信された入力データを保存し、データ ドリフト分析やモデルの新しいバージョンのトレーニングに使用できます。
 >
 > ここで使用されている概念と用語の詳細については、[機械学習モデルの管理、デプロイ、および監視](concept-model-management-and-deployment.md)に関するページを参照してください。
 >
-> 展開プロセスの一般的な情報については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+> デプロイ プロセスの一般的な情報については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)」を参照してください。
 
     > [!TIP]
-    > この記事の Python の例では、`ws` 変数がお使いの Azure Machine Learning service のワークスペースに設定されていることを前提としています。
+    > この記事の Python の例では、`ws` 変数がご利用の Azure Machine Learning のワークスペースに設定されていることを前提としています。
     >
     > CLI の例では、`myworkspace` と `myresourcegroup` のプレースホルダーを使用しています。 これらは、ワークスペースと、それを含むリソース グループの名前に置き換えてください。
 
@@ -46,7 +46,7 @@ Azure Machine Learning service の外部でトレーニングされた機械学�
 * トレーニング済みのモデル。 モデルは、開発環境上の 1 つ以上のファイルに保存する必要があります。
 
     > [!NOTE]
-    > Azure Machine Learning service の外部でトレーニングされたモデルの登録例を示すために、この記事のサンプル コード スニペットでは、Paolo Ripamonti の Twitter センチメント分析プロジェクトで作成されたモデル [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) を使用します。
+    > Azure Machine Learning の外部でトレーニングされたモデルの登録例を示すために、この記事のサンプル コード スニペットでは、Paolo Ripamonti の Twitter センチメント分析プロジェクトで作成されたモデル [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) を使用します。
 
 ## <a name="register-the-models"></a>モデルを登録する
 
@@ -58,7 +58,7 @@ from azureml.core.model import Model
 #      only some of the files from the directory
 model = Model.register(model_path = "./models",
                        model_name = "sentiment",
-                       description = "Sentiment analysis model trained outside Azure Machine Learning service",
+                       description = "Sentiment analysis model trained outside Azure Machine Learning",
                        workspace = ws)
 ```
 
@@ -76,23 +76,40 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 
 ## <a name="define-inference-configuration"></a>推論構成を定義する
 
-推論構成には、デプロイされたモデルの実行に使用される環境を定義します。 推論構成からは、デプロイ時にモデルの実行に使用される次のファイルが参照されます。
+推論構成には、デプロイされたモデルの実行に使用される環境を定義します。 推論構成からは、デプロイ時にモデルの実行に使用される次のエンティティが参照されます。
 
-* ランタイム。 ランタイムの現在有効な唯一の値は Python です。
 * エントリ スクリプト。 このファイル (`score.py` という名前) では、デプロイされたサービスの開始時にモデルが読み込まれます。 また、データを受信し、それをモデルに渡してから応答を返す処理も担当します。
-* Conda 環境ファイル。 このファイルには、モデルとエントリ スクリプトの実行に必要な Python パッケージが定義されます。 
+* Azure Machine Learning [環境](how-to-use-environments.md)。 環境には、モデルとエントリ スクリプトの実行に必要なソフトウェアの依存関係を定義します。
 
-Python SDK を使用した基本的な推論構成の例を次に示します。
+次の例で、SDK を使用して環境を作成し、推論構成でそれを使用する方法を示します。
 
 ```python
 from azureml.core.model import InferenceConfig
+from azureml.core import Environment
+from azureml.core.environment import CondaDependencies
 
-inference_config = InferenceConfig(runtime= "python", 
-                                   entry_script="score.py",
-                                   conda_file="myenv.yml")
+# Create the environment
+myenv = Environment(name="myenv")
+conda_dep = CondaDependencies()
+
+# Define the packages needed by the model and scripts
+conda_dep.add_conda_package("tensorflow")
+conda_dep.add_conda_package("numpy")
+conda_dep.add_conda_package("scikit-learn")
+conda_dep.add_pip_package("keras")
+
+# Adds dependencies to PythonSection of myenv
+myenv.python.conda_dependencies=conda_dep
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
 ```
 
-詳細については、[InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) のリファレンスを参照してください。
+詳細については、次の記事を参照してください。
+
++ [環境の使用方法](how-to-use-environments.md)。
++ [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) のリファレンス。
+
 
 この CLI では YAML ファイルから推論構成が読み込まれます。
 
@@ -104,7 +121,21 @@ inference_config = InferenceConfig(runtime= "python",
 }
 ```
 
-推論構成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+CLI では、conda 環境は、推論構成から参照される `myenv.yml` ファイルに定義されます。 次の YAML は、このファイルの内容です。
+
+```yaml
+name: inference_environment
+dependencies:
+- python=3.6.2
+- tensorflow
+- numpy
+- scikit-learn
+- pip:
+    - azureml-defaults
+    - keras
+```
+
+推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="entry-script"></a>エントリ スクリプト。
 
@@ -116,13 +147,13 @@ inference_config = InferenceConfig(runtime= "python",
 次の Python コードはエントリ スクリプトの例です (`score.py`)。
 
 ```python
+import os
 import pickle
 import json
 import time
 from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 from gensim.models.word2vec import Word2Vec
-from azureml.core.model import Model
 
 # SENTIMENT
 POSITIVE = "POSITIVE"
@@ -138,8 +169,8 @@ def init():
     global encoder
     global w2v_model
 
-    # Get the path where the model(s) registered as the name 'sentiment' can be found.
-    model_path = Model.get_model_path('sentiment')
+    # Get the path where the deployed model can be found.
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), './models')
     # load models
     model = load_model(model_path + '/model.h5')
     w2v_model = Word2Vec.load(model_path + '/model.w2v')
@@ -189,25 +220,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-エントリ スクリプトの詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
-
-### <a name="conda-environment"></a>Conda 環境
-
-次の YAML は、モデルとエントリ スクリプトの実行に必要な Conda 環境について説明するものです。
-
-```yaml
-name: inference_environment
-dependencies:
-- python=3.6.2
-- tensorflow
-- numpy
-- scikit-learn
-- pip:
-    - azureml-defaults
-    - keras
-```
-
-詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="define-deployment"></a>デプロイを定義する
 

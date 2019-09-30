@@ -8,13 +8,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 07/04/2017
-ms.openlocfilehash: 6d2d0540786f1aa4bec35cf4bec26212cb7df7ae
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.date: 08/26/2019
+ms.openlocfilehash: 4f9f4661a2c6c78438414029e803abc624a773ca
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404197"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161974"
 ---
 # <a name="get-started-with-device-twins-java"></a>デバイス ツインの概要 (Java)
 
@@ -28,11 +28,11 @@ ms.locfileid: "68404197"
 > [!NOTE]
 > デバイス アプリとバックエンド アプリの両方をビルドするために使用できる Azure IoT SDK については、記事「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。
 
-このチュートリアルを完了するには、次のものが必要です。
+## <a name="prerequisites"></a>前提条件
 
-* 最新の [Java SE Development Kit 8](https://aka.ms/azure-jdks)
+* [Java SE Development Kit 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable)。 JDK 8 のダウンロードを利用するには、「**長期サポート**」の「**Java 8**」を選択します。
 
-* [Maven 3](https://maven.apache.org/install.html)
+* [Maven 3](https://maven.apache.org/download.cgi)
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成できます)。
 
@@ -54,23 +54,23 @@ ms.locfileid: "68404197"
 
 このセクションでは、**myDeviceId** に関連付けられている IoT Hub 内のデバイス ツインに、場所のメタデータをタグとして追加する Java アプリを作成します。 このアプリは、IoT hub で米国内のデバイスのクエリを最初に実行した後、移動体通信ネットワーク接続を報告しているデバイスのクエリを実行します。
 
-1. 開発用コンピューターで、`iot-java-twin-getstarted` という名前の空のフォルダーを作成します。
+1. 開発用コンピューターで、**iot-java-twin-getstarted** という名前の空のフォルダーを作成します。
 
-2. コマンド プロンプトで次のコマンドを使用して、`iot-java-twin-getstarted` フォルダー内に **add-tags-query** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
+2. コマンド プロンプトで次のコマンドを使用して、**iot-java-twin-getstarted** フォルダー内に **add-tags-query** という名前の Maven プロジェクトを作成します。
 
-    ```
+    ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=add-tags-query -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-3. コマンド プロンプトで、`add-tags-query` フォルダーに移動します。
+3. コマンド プロンプトで、**add-tags-query** フォルダーに移動します。
 
-4. テキスト エディターを使用して、`add-tags-query` フォルダー内の `pom.xml` ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリで **iot-service-client** パッケージを使用して IoT Hub と通信できるようになります。
+4. テキスト エディターを使用して、**add-tags-query** フォルダー内の **pom.xml** ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリで **iot-service-client** パッケージを使用して IoT Hub と通信できるようになります。
 
     ```xml
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.7.23</version>
+      <version>1.17.1</version>
       <type>jar</type>
     </dependency>
     ```
@@ -96,9 +96,9 @@ ms.locfileid: "68404197"
     </build>
     ```
 
-6. `pom.xml` ファイルを保存して閉じます。
+6. **pom.xml** ファイルを保存して閉じます。
 
-7. テキスト エディターで、`add-tags-query\src\main\java\com\mycompany\app\App.java` ファイルを開きます。
+7. テキスト エディターを使用して、**add-tags-query\src\main\java\com\mycompany\app\App.java** ファイルを開きます。
 
 8. ファイルに次の **import** ステートメントを追加します。
 
@@ -111,7 +111,7 @@ ms.locfileid: "68404197"
     import java.util.Set;
     ```
 
-9. 次のクラスレベル変数を **App** クラスに追加します。 `{youriothubconnectionstring}` は、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えてください。
+9. 次のクラスレベル変数を **App** クラスに追加します。 `{youriothubconnectionstring}` を、「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えます。
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -127,7 +127,7 @@ ms.locfileid: "68404197"
     public static void main( String[] args ) throws IOException
     ```
 
-11. **main** メソッドに次のコードを追加して、**DeviceTwin** オブジェクトと **DeviceTwinDevice** オブジェクトを作成します。 **DeviceTwin** オブジェクトは、IoT Hub との通信を処理します。 **DeviceTwinDevice** オブジェクトは、プロパティとタグを使用してデバイス ツインを表現します。
+11. **main** メソッドのコードを、**DeviceTwin** オブジェクトと **DeviceTwinDevice** オブジェクトを作成する次のコードに置き換えます。 **DeviceTwin** オブジェクトは、IoT Hub との通信を処理します。 **DeviceTwinDevice** オブジェクトは、プロパティとタグを使用してデバイス ツインを表現します。
 
     ```java
     // Get the DeviceTwin and DeviceTwinDevice objects
@@ -176,7 +176,7 @@ ms.locfileid: "68404197"
     System.out.println(device);
     ```
 
-14. IoT hub でデバイス ツインのクエリを実行するには、前の手順で追加した `try` ブロックの後ろに次のコードを追加します。 このコードは、2 つのクエリを実行します。 各クエリは、最大 100 台のデバイスを返します。
+14. IoT hub でデバイス ツインのクエリを実行するには、前の手順で追加した `try` ブロックの後ろに次のコードを追加します。 このコードは、2 つのクエリを実行します。 各クエリでは、最大 100 台のデバイスが返されます。
 
     ```java
     // Query the device twins in IoT Hub
@@ -205,11 +205,11 @@ ms.locfileid: "68404197"
     }
     ```
 
-15. `add-tags-query\src\main\java\com\mycompany\app\App.java` ファイルを保存して閉じます。
+15. **add-tags-query\src\main\java\com\mycompany\app\App.java** ファイルを保存して閉じます。
 
-16. **add-tags-query** アプリをビルドし、エラーを修正します。 コマンド プロンプトで `add-tags-query` フォルダーに移動し、次のコマンドを実行します。
+16. **add-tags-query** アプリをビルドし、エラーを修正します。 コマンド プロンプトで **add-tags-query** フォルダーに移動し、次のコマンドを実行します。
 
-    ```
+    ```cmd/sh
     mvn clean package -DskipTests
     ```
 
@@ -217,28 +217,38 @@ ms.locfileid: "68404197"
 
 このセクションでは、IoT Hub に送信される、報告されるプロパティ値を設定する Java コンソール アプリを作成します。
 
-1. コマンド プロンプトで次のコマンドを実行して、`iot-java-twin-getstarted` フォルダー内に **simulated-device** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
+1. コマンド プロンプトで次のコマンドを使用して、**iot-java-twin-getstarted** フォルダー内に **simulated-device** という名前の Maven プロジェクトを作成します。
 
-    ```
+    ```cmd/sh
     mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
     ```
 
-2. コマンド プロンプトで、`simulated-device` フォルダーに移動します。
+2. コマンド プロンプトで、**simulated-device** フォルダーに移動します。
 
-3. テキスト エディターを使用して、`simulated-device` フォルダー内の `pom.xml` ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリで **iot-device-client** パッケージを使用して IoT Hub と通信できるようになります。
+3. テキスト エディターを使用して、**simulated-device** フォルダー内の **pom.xml** ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリの **iot-device-client** パッケージを使用して IoT ハブと通信できるようになります。
 
     ```xml
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.14.2</version>
+      <version>1.17.5</version>
     </dependency>
     ```
 
     > [!NOTE]
     > [Maven 検索](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22iot-device-client%22%20g%3A%22com.microsoft.azure.sdk.iot%22)を使用して、**iot-device-client** の最新バージョンを確認できます。
 
-4. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
+4. **dependencies** ノードに、次の依存関係を追加します。 この依存関係によって、Apache [SLF4J](https://www.slf4j.org/) ログ記録ファサード用の NOP が構成され、ログ記録を実装するためにデバイス クライアント SDK によって使用されます。 この構成は省略可能ですが、省略した場合、アプリの実行時にコンソールに警告が表示される可能性があります。 デバイス クライアント SDK でのログ記録の詳細については、*Samples for the Azure IoT device SDK for Java* readme ファイルに含まれている[ログ記録](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/readme.md#logging)を参照してください。
+
+    ```xml
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-nop</artifactId>
+      <version>1.7.28</version>
+    </dependency>
+    ```
+
+5. **dependencies** ノードの後に、次の **build** ノードを追加します。 この構成では、Java 1.8 を使用してアプリをビルドするように Maven に指示しています。
 
     ```xml
     <build>
@@ -256,11 +266,11 @@ ms.locfileid: "68404197"
     </build>
     ```
 
-5. `pom.xml` ファイルを保存して閉じます。
+6. **pom.xml** ファイルを保存して閉じます。
 
-6. テキスト エディターで、`simulated-device\src\main\java\com\mycompany\app\App.java` ファイルを開きます。
+7. テキスト エディターを使用して、**simulated-device\src\main\java\com\mycompany\app\App.java** ファイルを開きます。
 
-7. ファイルに次の **import** ステートメントを追加します。
+8. ファイルに次の **import** ステートメントを追加します。
 
     ```java
     import com.microsoft.azure.sdk.iot.device.*;
@@ -271,17 +281,17 @@ ms.locfileid: "68404197"
     import java.util.Scanner;
     ```
 
-8. 次のクラスレベル変数を **App** クラスに追加します。 `{youriothubname}` を IoT Hub 名に置き換え、`{yourdevicekey}` を「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
+9. 次のクラスレベル変数を **App** クラスに追加します。 `{yourdeviceconnectionstring}` を、「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」でコピーしておいたデバイス接続文字列に置き換えます。
 
     ```java
-    private static String connString = "HostName={youriothubname}.azure-devices.net;DeviceId=myDeviceID;SharedAccessKey={yourdevicekey}";
+    private static String connString = "{yourdeviceconnectionstring}";
     private static IotHubClientProtocol protocol = IotHubClientProtocol.MQTT;
     private static String deviceId = "myDeviceId";
     ```
 
-    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。 
+    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。
 
-1. デバイス ツインの更新に関する情報を出力するには、次のメソッドを **App** クラスに追加します。
+10. デバイス ツインの更新に関する情報を出力するには、次のメソッドを **App** クラスに追加します。
 
     ```java
     protected static class DeviceTwinStatusCallBack implements IotHubEventCallback {
@@ -292,24 +302,26 @@ ms.locfileid: "68404197"
       }
     ```
 
-9. 次の操作を行うコードを **main** メソッドに追加します。
+11. **main** メソッドのコードを次のコードに置き換えます。
+
     * IoT Hub と通信するデバイス クライアントを作成します。
+
     * デバイス ツインのプロパティを格納する **Device** オブジェクトを作成します。
 
-      ```java
-      DeviceClient client = new DeviceClient(connString, protocol);
+    ```java
+    DeviceClient client = new DeviceClient(connString, protocol);
 
-      // Create a Device object to store the device twin properties
-      Device dataCollector = new Device() {
+    // Create a Device object to store the device twin properties
+    Device dataCollector = new Device() {
       // Print details when a property value changes
       @Override
       public void PropertyCall(String propertyKey, Object propertyValue, Object context) {
         System.out.println(propertyKey + " changed to " + propertyValue);
       }
-      };
-      ```
+    };
+    ```
 
-10. 報告されるプロパティ **connectivityType** を作成して IoT Hub に送信する次のコードを **main** メソッドに追加します。
+12. 報告されるプロパティ **connectivityType** を作成して IoT Hub に送信する次のコードを **main** メソッドに追加します。
 
     ```java
     try {
@@ -329,7 +341,7 @@ ms.locfileid: "68404197"
     }
     ```
 
-11. 次のコードを **main** メソッドの末尾に追加します。 **Enter** キーが押されるまで待機することで、IoT Hub がデバイス ツイン操作の状態を報告するための時間を取ることができます。
+13. 次のコードを **main** メソッドの末尾に追加します。 **Enter** キーが押されるまで待機することで、IoT Hub がデバイス ツイン操作の状態を報告するための時間を取ることができます。
 
     ```java
     System.out.println("Press any key to exit...");
@@ -341,17 +353,17 @@ ms.locfileid: "68404197"
     client.close();
     ```
 
-1. **main** メソッドのシグネチャを変更し、下の例外を追加します。
+14. **main** メソッドのシグネチャを変更し、下の例外を追加します。
 
      ```java
      public static void main(String[] args) throws URISyntaxException, IOException
      ```
 
-1. `simulated-device\src\main\java\com\mycompany\app\App.java` ファイルを保存して閉じます。
+15. **simulated-device\src\main\java\com\mycompany\app\App.java** ファイルを保存して閉じます。
 
-13. **simulated-device** アプリをビルドし、エラーを修正します。 コマンド プロンプトで `simulated-device` フォルダーに移動し、次のコマンドを実行します。
+16. **simulated-device** アプリをビルドし、エラーを修正します。 コマンド プロンプトで **simulated-device** フォルダーに移動し、次のコマンドを実行します。
 
-    ```
+    ```cmd/sh
     mvn clean package -DskipTests
     ```
 
@@ -359,9 +371,9 @@ ms.locfileid: "68404197"
 
 これで、コンソール アプリを実行する準備が整いました。
 
-1. `add-tags-query` フォルダーのコマンド プロンプトで次のコマンドを実行して **add-tags-query** サービス アプリを実行します。
+1. **add-tags-query** フォルダーのコマンド プロンプトで、次のコマンドを実行して、**add-tags-query** サービス アプリを実行します。
 
-    ```
+    ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
@@ -369,23 +381,23 @@ ms.locfileid: "68404197"
 
     デバイス ツインに **plant** タグと **region** タグが追加されていることを確認できます。 最初のクエリはデバイスを返しますが、2 つ目のクエリは返しません。
 
-2. `simulated-device` フォルダーのコマンド プロンプトで、次のコマンドを実行して、報告されるプロパティ **connectivityType** をデバイス ツインに追加します。
+2. **simulated-device** フォルダーのコマンド プロンプトで、次のコマンドを実行して、報告されるプロパティ **connectivityType** をデバイス ツインに追加します。
 
-    ```
+    ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
     ![デバイス クライアントが報告されるプロパティ **connectivityType** を追加する](./media/iot-hub-java-java-twin-getstarted/device-app-1.png)
 
-3. `add-tags-query` フォルダーのコマンド プロンプトで次のコマンドを実行して、**add-tags-query** サービス アプリの 2 回目の実行を行います。
+3. **add-tags-query** フォルダーのコマンド プロンプトで、次のコマンドを実行して、**add-tags-query** サービス アプリの 2 回目の実行を行います。
 
-    ```
+    ```cmd/sh
     mvn exec:java -Dexec.mainClass="com.mycompany.app.App"
     ```
 
     ![タグの値を更新し、デバイスのクエリを実行する Java IoT Hub サービス アプリ](./media/iot-hub-java-java-twin-getstarted/service-app-2.png)
 
-    デバイスが **connectivityType** プロパティを IoT Hub に送信しているため、2 回目のクエリではデバイスが返ります。
+    デバイスによって **connectivityType** プロパティが IoT Hub に送信されているため、2 回目のクエリではデバイスが返ります。
 
 ## <a name="next-steps"></a>次の手順
 

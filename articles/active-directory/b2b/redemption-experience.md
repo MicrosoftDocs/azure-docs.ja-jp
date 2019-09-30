@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80eaa134130195fce00ee6a4d68851e478c4532
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2d32818f9e96e931f9e8c3c13554752327c5c456
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67052491"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622626"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B コラボレーションの招待の利用
 
@@ -38,10 +38,10 @@ ms.locfileid: "67052491"
 招待メールの代わりに、アプリまたはポータルへの直接リンクをゲストに提供することができます。 まず、[Azure portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) または [PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell) を介して、ゲスト ユーザーをディレクトリに追加する必要があります。 その後、直接サインオン リンクを含む、[ユーザーにアプリケーションをデプロイするためのカスタマイズ可能な方法](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences)のいずれかを使用できます。 ゲストには、招待メールではなく直接リンクを使用する際にも、初回の同意エクスペリエンスが示されます。
 
 > [!IMPORTANT]
-> 直接リンクはテナントに固有である必要があります。 つまり、共有アプリが配置されている、テナントでゲストを認証できるように、テナント ID または確認済みドメインが含まれている必要があります。 https://myapps.microsoft.com のような一般的な URL では、認証のためにホーム テナントにリダイレクトされるため、ゲスト向けには機能しません。 テナント コンテキストを含む直接リンクの例をいくつか以下に示します。
- > - アプリ アクセス パネル: https://myapps.microsoft.com/?tenantid=&lt;テナント ID&gt; 
- > - 確認済みドメインのアプリ アクセス パネル: https://myapps.microsoft.com/&lt;確認済みドメイン&gt;
- > - Azure portal: https://portal.azure.com/&lt;テナント ID&gt;
+> 直接リンクはテナントに固有である必要があります。 つまり、共有アプリが配置されている、テナントでゲストを認証できるように、テナント ID または確認済みドメインが含まれている必要があります。 [https://myapps.microsoft.com](https://myapps.microsoft.com ) のような一般的な URL では、認証のためにホーム テナントにリダイレクトされるため、ゲスト向けには機能しません。 テナント コンテキストを含む直接リンクの例をいくつか以下に示します。
+ > - アプリ アクセス パネル: https://myapps.microsoft.com/?tenantid=&lt ;テナント ID&gt; 
+ > - 確認済みドメインのアプリ アクセス パネル: https://myapps.microsoft.com/&lt ;確認済みドメイン&gt;
+ > - Azure portal: https://portal.azure.com/&lt ;テナント ID&gt;
  > - 個々のアプリ: [直接サインオン リンク](../manage-apps/end-user-experiences.md#direct-sign-on-links)の使用方法を参照してください
 
 直接リンク経由の招待メールが推奨されるケースがいくつかあります。 このような特殊なケースが組織にとって重要な場合は、引き続き招待メールを送信する方法を使用してユーザーを招待することをお勧めします。

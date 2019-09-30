@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 08/19/2019
 ms.author: juliako
-ms.openlocfilehash: 01b386c820a09af0e616698aabc58a886c30bb09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 466ab0737aa5af40bd1bc137b98ab57a48feafde
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65550925"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637353"
 ---
 # <a name="transforms-and-jobs"></a>Transform と Job
 
@@ -119,5 +119,6 @@ Media Services v3 または Video Indexer によってトリガーされる音�
 - 開発を開始する前に、「[Media Services v3 API を使用した開発](media-services-apis-overview.md)」を確認してください (API や命名規則などへのアクセスに関する情報が含まれています)。
 - 次のチュートリアルをご覧ください。
 
-    - [チュートリアル:.NET を使用してビデオをアップロード、エンコード、ストリーム配信する](stream-files-tutorial-with-api.md)
-    - [チュートリアル:.NET を使用して Media Services v3 でビデオを分析する](analyze-videos-tutorial-with-api.md)
+    - [チュートリアル:リモート ファイルを URL に基づいてエンコードし、ビデオをストリーム配信する](stream-files-tutorial-with-rest.md)
+    - [チュートリアル:ビデオのアップロード、エンコード、ストリーミング](stream-files-tutorial-with-api.md)
+    - [チュートリアル:Media Services v3 を使用してビデオを分析する](analyze-videos-tutorial-with-api.md)

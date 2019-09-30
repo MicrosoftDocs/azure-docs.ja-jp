@@ -3,7 +3,7 @@ title: よく寄せられる質問 - Azure 専用 HSM | Microsoft Docs
 description: Azure 専用 HSM に関するさまざまなトピックに対応したよく寄せられる質問
 services: dedicated-hsm
 author: johncdawson
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.custom: mvc
 ms.service: key-vault
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 5/8/2019
-ms.author: barclayn
-ms.openlocfilehash: b73b6bdc0158591565281ca2e86a9a474c4196d9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: b79ed7ea3113f097f767ad7ff8bdc47b4e4916eb
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65467736"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883569"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -66,7 +66,7 @@ Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) �
 
 2019 年 3 月下旬の時点では、Dedicated HSM は次に示す 14 のリージョンで使用できます。 追加のリージョンについては計画中であり、お客様の Microsoft アカウント担当者を介して検討することができます。
 
-* 米国東部
+* East US
 * 米国東部 2
 * 米国西部
 * 米国中南部

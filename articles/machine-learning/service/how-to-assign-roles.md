@@ -1,7 +1,7 @@
 ---
 title: Azure Machine Learning ワークスペースでのロールの管理
-titleSuffix: Azure Machine Learning service
-description: ロールベースのアクセス制御 (RBAC) を使用して、Azure Machine Learning service ワークスペースにアクセスする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: ロールベースのアクセス制御 (RBAC) を使用して、Azure Machine Learning ワークスペースにアクセスする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f28397717d5c89e5a5bcd5e7bdc17b4feb49577
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 22ce9ea44dde6da4d1194463fe266ed00c5a3f96
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467975"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067705"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースへのアクセスの管理
 
@@ -107,11 +107,13 @@ az role definition create --role-definition data_scientist_role.json
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
 ```
 
+カスタム ロールの詳細については、「[Azure リソースのカスタム ロール](/azure/role-based-access-control/custom-roles)」を参照してください。
 
-詳細については、「[Azure リソースのカスタム ロール](/azure/role-based-access-control/custom-roles)」を参照してください。
+カスタム ロールで使用できる操作 (アクション) の詳細については、「[リソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 - [エンタープライズ セキュリティの概要](concept-enterprise-security.md)
 - [仮想ネットワーク内での実験と推論/スコアの安全な実行](how-to-enable-virtual-network.md)
 - [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)
+- [リソース プロバイダー操作](/azure/role-based-access-control/resource-provider-operations#microsoftmachinelearningservices)

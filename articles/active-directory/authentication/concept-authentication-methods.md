@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/17/2019
+ms.date: 08/16/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1322c919906dc2d0dd23de538fa2c1992fbe5da0
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3b0c91357e5ab15b88c92b04fd0896b989e83953
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164822"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051433"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -31,7 +31,7 @@ Microsoft では、認証方法を利用できない場合に備えて、ユー�
 | パスワード | MFA と SSPR |
 | セキュリティの質問 | SSPR のみ |
 | 電子メール アドレス | SSPR のみ |
-| Microsoft Authenticator アプリ | MFA、および SSPR のパブリック プレビュー |
+| Microsoft Authenticator アプリ | MFA と SSPR |
 | OATH ハードウェア トークン | MFA および SSPR のパブリック プレビュー |
 | sms | MFA と SSPR |
 | 音声通話 | MFA と SSPR |
@@ -41,7 +41,7 @@ Microsoft では、認証方法を利用できない場合に備えて、ユー�
 
 |     |
 | --- |
-| MFA と SSPR 用の OATH ハードウェア トークンと、Azure AD のセルフ サービスによるパスワードのリセットの方法であるモバイル アプリ通知またはモバイル アプリ コードは、Azure Active Directory のパブリック プレビューの機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
+| MFA と SSPR の OATH ハードウェア トークンは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
 
 ## <a name="password"></a>パスワード
@@ -156,7 +156,7 @@ Microsoft Authenticator アプリまたは他のサードパーティ アプリ�
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH ハードウェア トークン (パブリック プレビュー)
 
-OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。
+OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていて、すべてのトークンと互換性があるとは限りません。 秘密鍵は Base32 でエンコードする必要があります。
 
 ![OATH トークンの MFA サーバー OATH トークン ブレードへのアップロード](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
@@ -194,6 +194,8 @@ CSV ファイルのサイズによって異なりますが、この処理には�
 > 国番号と電話番号の間にスペースを入れる必要があります。
 >
 > パスワードのリセットは内線番号をサポートしていません。 +1 4255551234X12345 の形式であっても、電話がかけられる前に内線番号は削除されます。
+
+Microsoft は、一貫した SMS や音声ベース Multi-Factor Authentication のプロンプトが同じ番号で配信されることを保証しません。 ユーザーのために、Microsoft は、ルートを調整して SMS の配信率を向上させる際に任意のタイミングでショート コードを追加または削除する場合があります。 Microsoft は、米国とカナダ以外の国/地域ではショート コードをサポートしていません。
 
 #### <a name="text-message"></a>テキスト メッセージ
 

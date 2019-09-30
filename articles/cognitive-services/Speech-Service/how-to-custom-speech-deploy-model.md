@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 15e2ce437a746d15622dc4e093a63c87448f100d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: fcd3e5fd6db0d7c18a5f9bfba030cd3d809b452f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559666"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802523"
 ---
 # <a name="deploy-a-custom-model"></a>カスタム モデルをデプロイする
 
-データをアップロードして検査し、正確性を評価し、カスタム モデルをトレーニングした後は、アプリ、ツール、および製品で使用するカスタム エンドポイントをデプロイできます。 このドキュメントでは、Custom Speech ポータルを使用してエンドポイントを作成およびデプロイする方法について説明します。
+データをアップロードして検査し、正確性を評価し、カスタム モデルをトレーニングした後は、アプリ、ツール、および製品で使用するカスタム エンドポイントをデプロイできます。 このドキュメントでは、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)を使用してエンドポイントを作成およびデプロイする方法について説明します。
 
 ## <a name="create-a-custom-endpoint"></a>カスタム エンドポイントを作成する
 
-新しいカスタム エンドポイントを作成するには、ページの一番上の [Custom Speech] メニューから **[デプロイ]** を選択します。 これが最初の実行の場合は、表に記載されているエンドポイントがないことがわかります。 エンドポイントを作成したら、このページを使用して、デプロイされた各エンドポイントを追跡します。
+新しいカスタム エンドポイントを作成するには、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)にサインインし、ページの一番上の [Custom Speech] メニューから **[デプロイ]** を選択します。 これが最初の実行の場合は、表に記載されているエンドポイントがないことがわかります。 エンドポイントを作成したら、このページを使用して、デプロイされた各エンドポイントを追跡します。
 
 次に、 **[エンドポイントの追加]** を選択し、カスタム エンドポイントの **[名前]** と **[説明]** を入力します。 このエンドポイントに関連付けるカスタム モデルを選択します。 このページから、ログを有効にすることもできます。 ログを使用すると、エンドポイントのトラフィックを監視できます。 無効にすると、トラフィックは保存されません。
 

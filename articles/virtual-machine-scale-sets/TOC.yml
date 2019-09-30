@@ -163,8 +163,8 @@
           maintainContext: true
     - name: スケール セットの FAQ
       href: virtual-machine-scale-sets-faq.md
-    - name: セキュリティ属性
-      href: virtual-machine-scale-sets-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: virtual-machine-scale-sets-security-controls.md
 - name: 方法
   items:
     - name: 計画と設計
@@ -240,6 +240,8 @@
           href: virtual-machine-scale-sets-automatic-upgrade.md
         - name: インスタンス保護 (プレビュー)
           href: virtual-machine-scale-sets-instance-protection.md
+        - name: 削除時の終了通知 (プレビュー)
+          href: virtual-machine-scale-sets-terminate-notification.md
         - name: 共有イメージ ギャラリー
           items:
             - name: 概要

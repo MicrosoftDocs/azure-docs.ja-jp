@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b92b9d953b6dd941b8b5f445ad64059f557c2980
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122389"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061797"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>ポータルを使用して Application Gateway 用カスタム プローブを作成する
 
@@ -57,7 +57,7 @@ Application Gateway がまだない場合は、[Application Gateway の作成](a
    |**パス**|/ または別のパス|カスタム プローブの完全な URL の残りの部分です。 パスは先頭が "/" である必要があります。 既定のパス http:\//contoso.com では "/" のみを使用します。 |
    |**間隔 (秒)**|30|正常性を確認するためにプローブを実行する頻度です。 30 秒未満に設定しないようにすることをお勧めします。|
    |**タイムアウト (秒)**|30|タイムアウトまでにプローブが待機する時間です。タイムアウトまでの時間は、バックエンドの正常性ページが利用可能であることを確認するために HTTP 呼び出しを実行できるだけの長さである必要があります。|
-   |**異常のしきい値**|3|異常であると見なされるまでの試行の失敗回数です。 しきい値を 0 に設定すると、正常性チェックが失敗した場合に、バックエンドが異常であると即座に判断されます。|
+   |**異常のしきい値**|3|異常であると見なされるまでの試行の失敗回数です。 しきい値は 1 以上に設定できます。|
 
    > [!IMPORTANT]
    > ホスト名はサーバー名と同じではありません。 この値は、アプリケーション サーバーで実行されている仮想ホストの名前です。 プローブは、 http://(ホスト名):(httpsetting のポート)/urlPath に送信されます。

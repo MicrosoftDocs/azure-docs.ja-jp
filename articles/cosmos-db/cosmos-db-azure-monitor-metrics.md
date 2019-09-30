@@ -5,13 +5,13 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/18/2019
-ms.openlocfilehash: 2eb61a6b9afa3cabf1733be120dfbdacb7de4534
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 09/01/2019
+ms.openlocfilehash: 762c910336fa2b50a46eda23cf66d8a7aa383c52
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276532"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241224"
 ---
 # <a name="monitor-and-debug-azure-cosmos-db-metrics-from-azure-monitor"></a>Azure Monitor から Azure Cosmos DB メトリックを監視およびデバッグする
 
@@ -54,8 +54,8 @@ Azure Cosmos DB メトリックは Azure Monitor API から表示できます。
             
 |メトリック (メトリックの表示名)|ユニット (集計の種類) |説明|Dimensions| 時間の細分性| 従来のメトリックのマッピング | 使用法 |
 |---|---|---|---| ---| ---| ---|
-| TotalRequests (要求の合計数) | カウント (カウント) | 行われた要求の数| DatabaseName、CollectionName、Region、StatusCode| All | TotalRequests、Http 2xx、Http 3xx、Http 400、Http 401、内部サーバー エラー、サービス使用不可、要求の調整、1 秒あたりの平均要求数 | 分単位の細分性で、コレクションの状態コードごとの要求数を監視するために使用されます。 1 秒あたりの平均要求数を取得するには、分単位の Count 集計を使用して 60 で割ります。 |
-| MetadataRequests (メタデータの要求数) |カウント (カウント) | メタデータの要求数。 Azure Cosmos DB はメタデータ コレクションをアカウントごとに保持します。これにより、コレクションやデータベースなどとそれらの構成を無料で列挙できます。 | DatabaseName、CollectionName、Region、StatusCode| All| |メタデータ要求によるスロットルを監視するために使用されます。|
+| TotalRequests (要求の合計数) | カウント (カウント) | 行われた要求の数| DatabaseName、CollectionName、Region、StatusCode| All | TotalRequests、Http 2xx、Http 3xx、Http 400、Http 401、内部サーバー エラー、サービス使用不可、要求の調整、1 秒あたりの平均要求数 | 分単位の細分性で、コンテナーの状態コードごとの要求数を監視するために使用されます。 1 秒あたりの平均要求数を取得するには、分単位の Count 集計を使用して 60 で割ります。 |
+| MetadataRequests (メタデータの要求数) |カウント (カウント) | メタデータの要求数。 Azure Cosmos DB ではアカウントごとにシステム メタデータ コンテナーが保持されており、コレクションやデータベースなどとそれらの構成を無料で列挙できます。 | DatabaseName、CollectionName、Region、StatusCode| All| |メタデータ要求によるスロットルを監視するために使用されます。|
 | MongoRequests (Mongo 要求数) | カウント (カウント) | 実行された Mongo 要求の数 | DatabaseName、CollectionName、Region、CommandName、ErrorCode| All |Mongo クエリ要求率、Mongo 更新要求率、Mongo 削除要求率、Mongo 挿入要求率、Mongo カウント要求率| Mongo 要求エラー、コマンドのタイプごとの使用量を監視するために使用されます。 |
 
 ### <a name="request-unit-metrics"></a>要求ユニット メトリック
@@ -64,17 +64,17 @@ Azure Cosmos DB メトリックは Azure Monitor API から表示できます。
 |---|---|---|---| ---| ---| ---|
 | MongoRequestCharge (Mongo 要求の料金) | カウント (合計) |使用された Mongo 要求の単位数| DatabaseName、CollectionName、Region、CommandName、ErrorCode| All |Mongo クエリ要求の料金、Mongo 更新要求の料金、Mongo 削除要求の料金、Mongo 挿入要求の料金、Mongo カウント要求の料金| 1 分間の Mongo リソース RU を監視するために使用されます。|
 | TotalRequestUnits (合計要求ユニット数)| カウント (合計) | 消費された要求の単位数| DatabaseName、CollectionName、Region、StatusCode |All| TotalRequestUnits| 1 分単位の細分性で RU の合計使用量を監視するために使用されます。 1 秒あたりの RU の平均使用量を取得するには、分単位の合計量を使用して 60 で割ります。|
-| ProvisionedThroughput (プロビジョニングされたスループット)| カウント (最大) |コレクション単位の細分性でプロビジョニングされたスループット| DatabaseName、CollectionName| 5 M| | コレクションあたりのプロビジョニングされたスループットを監視するために使用されます。|
+| ProvisionedThroughput (プロビジョニングされたスループット)| カウント (最大) |コンテナー単位の細分性でプロビジョニングされたスループット| DatabaseName、ContainerName| 5 M| | コンテナーあたりのプロビジョニングされたスループットを監視するために使用されます。|
 
 ### <a name="storage-metrics"></a>Storage のメトリック
 
 |メトリック (メトリックの表示名)|ユニット (集計の種類)|説明|Dimensions| 時間の細分性| 従来のメトリックのマッピング | 使用法 |
 |---|---|---|---| ---| ---| ---|
 | AvailableStorage (使用可能なストレージ) |バイト (合計) | リージョンあたりの 5 分単位の細分性で報告された使用可能なストレージの合計| DatabaseName、CollectionName、Region| 5 M| 使用可能なストレージ| 使用可能なストレージ容量を監視するために使用されます (固定ストレージ コレクションにのみ適用されます)。最小の細分性は 5 分にする必要があります。| 
-| DataUsage (データ利用状況) |バイト (合計) |リージョンあたりの 5 分単位の細分性で報告されたデータ使用量の合計| DatabaseName、CollectionName、Region| 5 M |データ サイズ | 収集時およびリージョンごとの合計データ使用量を監視するために使用されます。最小の細分性は 5 分にする必要があります。|
-| IndexUsage (インデックスの使用量) | バイト (合計) |リージョンあたりの 5 分単位の細分性で報告されたインデックス使用量の合計| DatabaseName、CollectionName、Region| 5 M| インデックス サイズ| 収集時およびリージョンごとの合計データ使用量を監視するために使用されます。最小の細分性は 5 分にする必要があります。 |
-| DocumentQuota (ドキュメントのクォータ) | バイト (合計) | リージョンあたりの 5 分単位の細分性で報告されたストレージ クォータの合計。| DatabaseName、CollectionName、Region| 5 M |ストレージの容量| 収集時およびリージョンごとの合計クォータを監視するために使用されます。最小の細分性は 5 分にする必要があります。|
-| DocumentCount (ドキュメント数) | カウント (合計) |リージョンあたりの 5 分単位の細分性で報告された合計ドキュメント数| DatabaseName、CollectionName、Region| 5 M |ドキュメント数|収集時およびリージョンごとのドキュメント数を監視するために使用されます。最小の細分性は 5 分にする必要があります。|
+| DataUsage (データ利用状況) |バイト (合計) |リージョンあたりの 5 分単位の細分性で報告されたデータ使用量の合計| DatabaseName、CollectionName、Region| 5 M |データ サイズ | コンテナーおよびリージョンでの合計データ使用量を監視するために使用されます。最小の細分性は 5 分にする必要があります。|
+| IndexUsage (インデックスの使用量) | バイト (合計) |リージョンあたりの 5 分単位の細分性で報告されたインデックス使用量の合計| DatabaseName、CollectionName、Region| 5 M| インデックス サイズ| コンテナーおよびリージョンでの合計データ使用量を監視するために使用されます。最小の細分性は 5 分にする必要があります。 |
+| DocumentQuota (ドキュメントのクォータ) | バイト (合計) | リージョンあたりの 5 分単位の細分性で報告されたストレージ クォータの合計。| DatabaseName、CollectionName、Region| 5 M |ストレージの容量| コンテナーおよびリージョンでの合計クォータを監視するために使用されます。最小の細分性は 5 分にする必要があります。|
+| DocumentCount (ドキュメント数) | カウント (合計) |リージョンあたりの 5 分単位の細分性で報告された合計ドキュメント数| DatabaseName、CollectionName、Region| 5 M |ドキュメント数|コンテナーおよびリージョンでのドキュメント数を監視するために使用されます。最小の細分性は 5 分にする必要があります。|
 
 ### <a name="latency-metrics"></a>待機時間のメトリック
 

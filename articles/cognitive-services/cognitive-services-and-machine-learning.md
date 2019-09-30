@@ -7,14 +7,14 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: d7049c729140591717782b191f970f4295140cb8
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: b0345773956a0adc5c7f403195c496a3ea5e6fd6
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697921"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982338"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services と機械学習
 
@@ -65,7 +65,7 @@ Cognitive Services は次の場合に使用します。
 
 コグニティブ サービスでは、ユーザーに対してトレーニング済みのモデルが提供されます。 これはデータとアルゴリズムを統合したもので、REST API や SDK から利用できます。 シナリオによっては、このサービスを数分で実装できます。  コグニティブ サービスは、テキスト内のキー フレーズや画像内の項目識別といった一般的な問題を解決します。 
 
-機械学習は、通常、適切に実装するために長時間を要するプロセスです。 コグニティブ サービスと同等の機能を実現するために、この時間を費やしてデータの収集、クリーニング、変換、アルゴリズムの選択、モデルのトレーニング、およびデプロイが行われます。 機械学習では、きわめて特殊な問題や具体的な問題をはじめとするあらゆる種類の問題を解決することが可能です。 これらの機械学習の問題では、主題、機械学習、データ サイエンスの 1 つ以上に精通している必要があります。
+機械学習は、通常、適切に実装するために長時間を要するプロセスです。 コグニティブ サービスと同等の機能を実現するために、この時間を費やしてデータの収集、クリーニング、変換、アルゴリズムの選択、モデルのトレーニング、およびデプロイが行われます。 機械学習では、きわめて特殊な問題や具体的な問題を解決することが可能です。 機械学習の問題では、データ サイエンスの専門知識だけでなく、検討中の問題の特定の主題とデータについて理解する必要があります。
 
 ## <a name="what-kind-of-data-do-you-have"></a>保有するデータの種類
 
@@ -131,6 +131,10 @@ Cognitive Services は次の場合に使用します。
 |--|--|
 |[Custom Vision](./custom-vision-service/home.md)|Tensorflow for Android、CoreML for iOS11、ONNX for Windows ML に対して[エクスポート](./Custom-Vision-Service/export-model-python.md)|
 
+## <a name="learn-more"></a>詳細情報
+
+* [アーキテクチャ ガイド - Microsoft の機械学習製品とは](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
+* [機械学習 - ディープ ラーニングと機械学習の比較の概要](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>次の手順
 

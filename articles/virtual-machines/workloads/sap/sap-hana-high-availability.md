@@ -7,18 +7,17 @@ author: MSSedusch
 manager: gwallace
 editor: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 78d14add09a89b7ec4d4844a12ffa0434d714b3a
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 7b9d3791d44e9541df7fc95c34b5e8c83a4295b3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67709097"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70078388"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性
 
@@ -101,8 +100,8 @@ Azure Marketplace には、SUSE Linux Enterprise Server for SAP Applications 12 
 GitHub にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイできます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。
 テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure portal で[データベース テンプレート][template-multisid-db] or the [converged template][template-converged] on the Azure portal. 
-    The database template creates the load-balancing rules for a database only. The converged template also creates the load-balancing rules for an ASCS/SCS and ERS (Linux only) instance. If you plan to install an SAP NetWeaver-based system and you want to install the ASCS/SCS instance on the same machines, use the [converged template][template-converged]または集約型テンプレートを開きます。データベース テンプレートでは、データベース用の負荷分散規則のみが作成されます。統合テンプレートでは、ASCS/SCS および ERS (Linux のみ) インスタンス用の負荷分散規則も作成されます。SAP NetWeaver ベースのシステムをインストールして、同じコンピューターに ASCS/SCS インスタンスをインストールする場合は、集約型テンプレートを使用します。
+1. Azure portal で、[データベース テンプレート][template-multisid-db]または[集約型テンプレート][template-converged]を開きます。 
+    データベース テンプレートでは、データベース用の負荷分散規則のみが作成されます。 統合テンプレートでは、ASCS/SCS および ERS (Linux のみ) インスタンス用の負荷分散規則も作成されます。 SAP NetWeaver ベースのシステムをインストールする予定があり、同じコンピューターに ASCS/SCS インスタンスをインストールする場合は、[集約型テンプレート][template-converged]を使用します。
 
 1. 次のパラメーターを入力します。
     - **[Sap System Id]\(SAP システム ID\)** :インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使われます。

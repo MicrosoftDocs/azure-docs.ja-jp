@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21136046bad8cb58432de367f0de06d1d0457eec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3799496d13259c943847625a2cf6a39a8edb1d35
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67083784"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207245"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Azure Active Directory における管理タスク別の管理者ロール
 
@@ -111,7 +111,7 @@ ADFS セキュリティ レポートを読み取る | セキュリティ閲覧�
 タスク | 最小特権ロール | その他のロール
 ---- | --------------------- | ----------------
 Azure AD Domain Services インスタンスを作成する | グローバル管理者 | 
-Azure AD Domain Services の全タスクを実行する | Azure AD DC Administrators グループ ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-administer-domain#administrative-tasks-you-can-perform-on-a-managed-domain)) | 
+Azure AD Domain Services の全タスクを実行する | Azure AD DC Administrators グループ ([ドキュメントを参照](../../active-directory-domain-services/tutorial-create-management-vm.md#administrative-tasks-you-can-perform-on-an-azure-ad-ds-managed-domain)) | 
 すべての構成を読み取る | AD DS サービスを含む Azure サブスクリプションの閲覧者 | 
 
 ## <a name="devices"></a>デバイス
@@ -143,6 +143,13 @@ Microsoft Graph または Azure AD Graph に対するアプリケーションの
 エンタープライズ アプリケーションのセルフ サービスを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | クラウド アプリケーション管理者、アプリケーション管理者
 シングル サインオンのプロパティを更新する | エンタープライズ アプリケーション所有者 ([ドキュメントを参照](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | クラウド アプリケーション管理者、アプリケーション管理者
 
+## <a name="entitlement-management"></a>エンタイトルメント管理
+タスク | 最小特権ロール | その他のロール
+---- | --------------------- | ----------------
+カタログにリソースを追加する | ユーザー管理者 | エンタイトルメント管理を使用すると、このタスクをカタログ所有者に委任できます ([ドキュメントを参照](../governance/entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager))
+カタログに SharePoint Online サイトを追加する | 全体管理者
+
+
 ## <a name="groups"></a>グループ
 
 タスク | 最小特権ロール | その他のロール
@@ -169,10 +176,10 @@ MFA ポリシーを構成し、有効または無効にする| セキュリテ�
 サインイン リスク ポリシーを構成し、有効または無効にする| セキュリティ管理者 | 
 ユーザー リスク ポリシーを構成し、有効または無効にする | セキュリティ管理者 | 
 週刊ダイジェストを構成する | セキュリティ管理者| 
-すべてのリスク イベントを閉じる | セキュリティ管理者 | 
+すべてのリスク検出を無視する | セキュリティ管理者 | 
 脆弱性を修正または無視する | セキュリティ管理者 | 
 すべての構成を読み取る | セキュリティ閲覧者 | 
-すべてのリスク イベントを読み取る | セキュリティ閲覧者 | 
+すべてのリスク検出を読み取る | セキュリティ閲覧者 | 
 脆弱性を読み取る | セキュリティ閲覧者 | 
 
 ## <a name="licenses"></a>ライセンス
@@ -276,7 +283,7 @@ Azure AD ロールのアクセス レビューを読み取る  | セキュリテ
 ---- | --------------------- | ----------------
 MFA の信頼できる IP アドレスを構成する | 条件付きアクセス管理者 | 
 カスタム コントロールを作成する | 条件付きアクセス管理者 | セキュリティ管理者
-名前付きの場所を作成する | 条件付きアクセス管理者 | セキュリティ管理者
+ネームド ロケーションを作成する | 条件付きアクセス管理者 | セキュリティ管理者
 ポリシーの作成 | 条件付きアクセス管理者 | セキュリティ管理者
 利用規約を作成する | 条件付きアクセス管理者 | セキュリティ管理者
 VPN 接続の証明書を作成する | 条件付きアクセス管理者 | セキュリティ管理者
@@ -285,10 +292,10 @@ VPN 接続の証明書を作成する | 条件付きアクセス管理者 | セ�
 VPN 接続の証明書を削除する | 条件付きアクセス管理者 | セキュリティ管理者
 クラシック ポリシーを無効にする | 条件付きアクセス管理者 | セキュリティ管理者
 カスタム コントロールを管理する | 条件付きアクセス管理者 | セキュリティ管理者
-名前付きの場所を管理する | 条件付きアクセス管理者 | セキュリティ管理者
+ネームド ロケーションを管理する | 条件付きアクセス管理者 | セキュリティ管理者
 利用規約を管理する | 条件付きアクセス管理者 | セキュリティ管理者
 すべての構成を読み取る | セキュリティ閲覧者 | セキュリティ管理者
-名前付きの場所を読み取る | セキュリティ閲覧者 | 条件付きアクセス管理者、セキュリティ管理者
+ネームド ロケーションを読み取る | セキュリティ閲覧者 | 条件付きアクセス管理者、セキュリティ管理者
 
 ## <a name="security---identity-security-score"></a>セキュリティ - ID セキュリティ スコア
 

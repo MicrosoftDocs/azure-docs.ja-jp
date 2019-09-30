@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/31/2019
-ms.openlocfilehash: a0da13e82811d500dee50c2231500245c7e011a6
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 87dca4cf06bd8c5982e5f83a2498496c4bec69fd
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383438"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984874"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Azure Stream Analytics からの出力を理解する
 
@@ -265,11 +265,14 @@ Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions
 | --- | --- |
 | 関数アプリ |Azure Functions アプリの名前です。 |
 | Function |ご自分の Azure Functions アプリ内にある関数の名前です。 |
-| キー |別のサブスクリプションの Azure 関数を使用するには、ご自分の関数にアクセスするためのキーを指定します。 |
+| Key |別のサブスクリプションの Azure 関数を使用するには、ご自分の関数にアクセスするためのキーを指定します。 |
 | 最大バッチ サイズ |ご自分の Azure 関数に送信される各出力バッチの最大サイズを設定できるプロパティです。 入力の単位はバイトです。 既定値は 262,144 バイト (256 KB) です。 |
 | 最大バッチ カウント  |Azure Functions に送信される各バッチのイベントの最大数を指定できるプロパティです。 既定値は 100 です。 |
 
 Azure Stream Analytics は、Azure 関数から 413 ("http の要求したエンティティが大きすぎる") 例外を受け取ると、Azure Functions に送信するバッチのサイズを縮小します。 Azure 関数コードで、この例外を使用して、Azure Stream Analytics がサイズの大きいバッチを送信しないようにします。 また、関数で使用する最大バッチ カウントおよび最大バッチ サイズの値が Stream Analytics ポータルに入力した値と矛盾しないことを確認します。
+
+> [!NOTE]
+> テスト接続中、Stream Analytics から Azure Functions に空のバッチが送信され、この 2 つの間の接続が機能するかどうかがテストされます。 テスト接続に合格するように、Functions アプリで空のバッチ要求が処理されるようにします。
 
 また、時間枠内に開始するイベントがない場合も、出力は生成されません。 その結果、**computeResult** 関数は呼び出されません。 この動作は、組み込みのウィンドウ集計関数と一致します。
 
@@ -307,7 +310,7 @@ Azure Stream Analytics は、Azure 関数から 413 ("http の要求したエン
 | Azure Service Bus トピック | はい | 自動的に選択されます。 パーティション数は、[Service Bus SKU とサイズ](../service-bus-messaging/service-bus-partitioning.md)に基づいています。 パーティション キーは、各パーティションに固有の整数値です。| 出力トピック内のパーティションの数と同じです。  |
 | Azure Service Bus キュー | はい | 自動的に選択されます。 パーティション数は、[Service Bus SKU とサイズ](../service-bus-messaging/service-bus-partitioning.md)に基づいています。 パーティション キーは、各パーティションに固有の整数値です。| 出力キュー内のパーティションの数と同じです。 |
 | Azure Cosmos DB | はい | クエリの PARTITION BY 句に基づきます。 | [完全に並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
-| Azure Functions | いいえ | なし | 適用不可。 |
+| Azure Functions | はい | クエリの PARTITION BY 句に基づきます。 | [完全に並列化されたクエリ](stream-analytics-scale-jobs.md)に対する入力のパーティション分割に従います。 |
 
 出力ライターの数は、クエリ内の `INTO <partition count>` ([INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) に関するページを参照してください) 句を使用して制御することもできます。これは、目的のジョブ トポロジを実現するのに役立ちます。 出力アダプターがパーティション分割されていない場合は、ある入力パーティションにデータがないと、到着遅延時間までの遅延が発生します。 このような場合は、出力が 1 つのライターにマージされるため、ご使用のパイプラインにボトルネックが発生する可能性があります。 到着遅延ポリシーの詳細については、[Azure Stream Analytics のイベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)に関する記事を参照してください。
 

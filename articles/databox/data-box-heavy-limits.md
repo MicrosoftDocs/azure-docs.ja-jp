@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: article
-ms.date: 07/03/2019
+ms.date: 08/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 021aedc94b59f73e18679783cfc8b981924769c3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 76e543a5bec749db55eb77649d2f6e0526f2cb1d
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592355"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126121"
 ---
 # <a name="azure-data-box-heavy-limits"></a>Azure Data Box Heavy の制限
 
@@ -26,7 +26,8 @@ Azure Data Box Heavy デバイスをデプロイおよび運用する際には�
 
 ## <a name="data-box-heavy-limits"></a>Data Box Heavy の制限
 
-- Data Box では、ノードあたり最大 10 億ファイルを格納できます。
+- Data Box Heavy では、ノードあたり最大 10 億ファイルを格納できます。
+- Data Box Heavy は、クラウドでノードあたり最大 512 個のコンテナーまたは共有をサポートしています。 ユーザー共有内の最上位レベルのディレクトリは、クラウド内のコンテナーまたは Azure ファイル共有になります。
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限
 

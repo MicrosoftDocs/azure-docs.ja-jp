@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:ビジュアル インターフェイスで機械学習モデルをデプロイする
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service のビジュアル インターフェイスで予測分析ソリューションを構築する方法について説明します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行います。 このチュートリアルは、線形回帰を使用した自動車価格の予測に関する 2 部構成のシリーズのパート 2 です。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning のビジュアル インターフェイスで予測分析ソリューションを構築する方法について説明します。 ドラッグ アンド ドロップ モジュールを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行います。 このチュートリアルは、線形回帰を使用した自動車価格の予測に関する 2 部構成のシリーズのパート 2 です。
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/11/2019
-ms.openlocfilehash: 1e30650f932d15d23d7ffe7bd9b9fe07e9872511
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 9378c6a14c3b755a6456ef68ecd73730cb77fc79
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891613"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128976"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで機械学習モデルをデプロイする
 
@@ -105,7 +105,7 @@ REST 呼び出しのサンプルは、Web サービスの詳細ページの **[C
 
 ## <a name="manage-models-and-deployments"></a>モデルとデプロイの管理
 
-ビジュアル インターフェイスで作成したモデルおよび Web サービスのデプロイは、Azure Machine Learning service ワークスペースからも管理できます。
+ビジュアル インターフェイスで作成したモデルおよび Web サービスのデプロイは、Azure Machine Learning ワークスペースからも管理できます。
 
 1. [Azure Portal](https://portal.azure.com/) でワークスペースを開きます。  
 
@@ -119,6 +119,8 @@ REST 呼び出しのサンプルは、Web サービスの詳細ページの **[C
 
     [![詳細な実行レポートを示すスクリーンショット](./media/ui-tutorial-automobile-price-deploy/deployment-details.png)](./media/ui-tutorial-automobile-price-deploy/deployment-details.png#lightbox)
 
+これらのモデルとデプロイは、[ワークスペース ランディング ページ (プレビュー)](https://ml.azure.com) の **[モデル]** および **[エンドポイント]** セクションでも見つけることができます。
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [aml-ui-cleanup](../../../includes/aml-ui-cleanup.md)]
@@ -128,4 +130,4 @@ REST 呼び出しのサンプルは、Web サービスの詳細ページの **[C
 このチュートリアルでは、ビジュアル インターフェイスで機械学習モデルを作成、デプロイ、および使用する際の主な手順を学習しました。 ビジュアル インターフェイスを使用して他の種類の問題を解決する方法の詳細については、他のサンプル実験を参照してください。
 
 > [!div class="nextstepaction"]
-> [クレジット リスク分類のサンプル](ui-sample-classification-predict-credit-risk-cost-sensitive.md)
+> [クレジット リスク分類のサンプル](how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md)

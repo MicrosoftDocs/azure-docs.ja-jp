@@ -10,18 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2019
+ms.date: 08/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: a3c6eca548eb61d6b7b239b4292b9c77ca2dec6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2cbc8843d41b760c52b9ca5ccfb6d940bd454136
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702695"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164817"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure リソース プロバイダーと種類
 
-リソースをデプロイするときに、リソース プロバイダーと種類に関する情報を取得しなければならないケースは少なくありません。 この記事では、次のことについて説明します。
+リソースをデプロイするときに、リソース プロバイダーと種類に関する情報を取得しなければならないケースは少なくありません。 たとえば、キーとシークレットを格納するには、Microsoft.KeyVault リソース プロバイダーを使用します。 このリソース プロバイダーには、キー コンテナーを作成する vaults というリソースの種類が用意されています。
+
+リソースの種類を表す名前は、 **{resource-provider}/{resource-type}** のような形式になります。 キー コンテナーのリソースの種類は **Microsoft.KeyVault/vaults** です。
+
+この記事では、次のことについて説明します。
 
 * Azure のすべてのリソース プロバイダーを表示する
 * リソース プロバイダーの登録ステータスを確認する

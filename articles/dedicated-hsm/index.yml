@@ -1,59 +1,52 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure の専用 HSM のドキュメント
+### YamlMime:Landing
+title: Azure Dedicated HSM のドキュメント
+summary: Azure Dedicated HSM を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
 metadata:
-  title: Azure の専用 HSM のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: 'Learn how to use Azure Dedicated HSM to create and maintain keys that access and encrypt your cloud resources, apps, and solutions. Tutorials, API references, and more.'
+  title: Azure Dedicated HSM のドキュメント
+  description: Azure Dedicated HSM を使用して、クラウドのリソース、アプリ、ソリューションにアクセスして暗号化するキーを作成および管理する方法について説明します。 チュートリアルや API リファレンスなどを提供します。
   services: dedicated-hsm
-  author: barclayn
-  manager: barbkess
-  layout: LandingPage
-  ms.assetid: null
   ms.service: dedicated-hsm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/21/2018
-  ms.author: barclayn
-abstract:
-  description: 専用 HSM 機能と、使用している環境に適用されるかどうかについて説明します。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/dedicated-hsm/overview
-            html: <p>Azure の専用 HSM の全容を学習します。</p>
-            image:
-              src: media/index/hsm.svg
-            title: Azure の専用 HSM の概要
-          - href: /azure/dedicated-hsm/faq
-            html: <p>専用 HSM を使用する場合の設計に関する考慮事項</p>
-            image:
-              src: media/index/guide.svg
-            title: デプロイ アーキテクチャの決定
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/cli.svg
-            text: Azure CLI
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-cli
-          - image:
-              src: media/index/logo_powershell.svg
-            text: PowerShell
-            href: /azure/dedicated-hsm/tutorial-deploy-hsm-powershell
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: FAQ
-            html: <p><a href="/azure/dedicated-hsm/faq/">よく寄せられる質問</a></p>
+  author: msmbaldwin
+  ms.author: mbaldwin
+  manager: rkarlin
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 9e592fdb5fa87487f131bb0aca0c6176175e5385
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300098"
+landingContent:
+- title: Dedicated HSM について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 専用 HSM とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: 高可用性
+      url: high-availability.md
+    - text: 物理的なセキュリティ
+      url: physical-security.md
+    - text: ネットワーク
+      url: networking.md
+    - text: サポート
+      url: supportability.md
+    - text: 監視
+      url: monitoring.md
+- title: 作業開始
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure CLI を使用した仮想ネットワークへのデプロイ
+      url: tutorial-deploy-hsm-cli.md
+    - text: Azure PowerShell を使用した仮想ネットワークへのデプロイ
+      url: tutorial-deploy-hsm-powershell.md
+- title: シナリオ
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Azure Dedicated HSM のデプロイ アーキテクチャ
+      url: deployment-architecture.md

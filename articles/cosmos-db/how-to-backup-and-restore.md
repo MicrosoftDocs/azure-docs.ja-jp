@@ -4,15 +4,15 @@ description: この記事では、バックアップから Azure Cosmos DB デ�
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/01/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: c32c333de94d1ed0089323e00e6dbbaaebb36488
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19ca835ca8211202cd358ac2ec3695675183a372
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241044"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240760"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Azure Cosmos DB でバックアップからデータを復元する 
 
@@ -39,7 +39,7 @@ ms.locfileid: "66241044"
   * 誤ってデータベースまたはコンテナーを削除した場合は、重要度 B または重要度 C の Azure サポート ケースを開きます。 
   * 誤ってコンテナー内でいくつかのドキュメントを削除または破損させた場合は、重要度 A の Azure サポート ケースを開きます。 
 
-データの破損が発生したときに、コンテナー内のドキュメントが変更または削除された場合は、**できるだけ迅速にコンテナーを削除**してください。 コンテナーを削除することで、Azure Cosmos DB でのバックアップの上書きを防止できます。 何らかの理由により削除ができない場合は、できるだけ迅速にチケットを申請する必要があります。 Azure Cosmos アカウント名、データベース名、コレクション名に加えて、データが復元可能な特定の時点を指定する必要があります。 その時点で利用可能な最善のバックアップを特定できるように、できるだけ厳密に示すことが重要です。 また、UTC で時間を指定することも重要です。 
+データの破損が発生したときに、コンテナー内のドキュメントが変更または削除された場合は、**できるだけ迅速にコンテナーを削除**してください。 コンテナーを削除することで、Azure Cosmos DB でのバックアップの上書きを防止できます。 何らかの理由により削除ができない場合は、できるだけ迅速にチケットを申請する必要があります。 Azure Cosmos アカウント名、データベース名、コンテナー名に加えて、データが復元可能な特定の時点を指定する必要があります。 その時点で利用可能な最善のバックアップを特定できるように、できるだけ厳密に示すことが重要です。 また、UTC で時間を指定することも重要です。 
 
 次のスクリーンショットは、Azure portal を使ってデータを復元するコンテナー (コレクション/グラフ/テーブル) に関するサポート リクエストを作成する方法を示しています。 要請の優先度付けに役立つように、データの種類、復元の目的、データが削除された時刻などの追加の詳細を提示します。
 

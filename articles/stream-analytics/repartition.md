@@ -4,15 +4,15 @@ description: この記事では、パーティション再分割を使用して�
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.date: 07/26/2019
+ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 9c802e6d23daf502da351549c66a7dae1247c068
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: fcbef434d3b88c20cdaaeab92a973e5fbe41680d
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517352"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266438"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>パーティション再分割を使用して Azure Stream Analytics での処理を最適化する
 
@@ -54,7 +54,17 @@ SELECT * INTO output FROM step1 PARTITION BY DeviceID UNION step2 PARTITION BY D
 
 ## <a name="repartitions-for-sql-output"></a>SQL 出力のためのパーティション再分割
 
-ジョブで出力に SQL データベースを使用する場合、スループットを最大化するために、最適なパーティション数に一致するように明示的なパーティション再分割を使用します。 SQL は 8 つのライターで最適に動作するため、フラッシュする前またはさらに上流の段階でフローを 8 つに再分割すると、ジョブのパフォーマンスを向上させることができます。 詳細については、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」を参照してください。
+ジョブで出力に SQL データベースを使用する場合、スループットを最大化するために、最適なパーティション数に一致するように明示的なパーティション再分割を使用します。 SQL は 8 つのライターで最適に動作するため、フラッシュする前またはさらに上流の段階でフローを 8 つに再分割すると、ジョブのパフォーマンスを向上させることができます。 
+
+入力パーティションが 8 個より多い場合、入力パーティション構成の継承は適切な選択ではない可能性があります。 出力ライターの数を明示的に指定するために、クエリ内で [INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count) を使用することを検討してください。 
+
+次の例では、自然にパーティション分割されているかどうかに関係なく、入力から読み取り、DeviceID ディメンションに従ってストリームを10倍に再分割し、データを出力にフラッシュします。 
+
+```sql
+SELECT * INTO [output] FROM [input] PARTITION BY DeviceID INTO 10
+```
+
+詳細については、「[Azure SQL Database への Azure Stream Analytics の出力](stream-analytics-sql-output-perf.md)」を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

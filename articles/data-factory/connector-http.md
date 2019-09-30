@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/09/2019
 ms.author: jingwang
-ms.openlocfilehash: a6fa08596f5778b2c188fe3402801cf487b32ae4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 6dd40527cdb073c76872c5768a7bea44b74155b7
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966982"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092064"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して HTTP エンドポイントからデータをコピーする
 
@@ -34,6 +34,11 @@ ms.locfileid: "68966982"
 - **Web テーブル コネクタ**では、HTML Web ページからテーブルの内容を抽出します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
+
+この HTTP コネクタは、次のアクティビティでサポートされます。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
 
 HTTP ソースから、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
 
@@ -166,12 +171,12 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 
 データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 
 
-- **Parquet 形式、区切りテキスト形式およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
-- **ORC/Avro/JSON 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
+- **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**については、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット](#format-based-dataset)」セクションを参照してください。
+- **ORC 形式**などのその他の形式については、「[他の形式のデータセット](#other-format-dataset)」セクションを参照してください。
 
-### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のデータセット
+### <a name="format-based-dataset"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のデータセット
 
-コピー先またはコピー元との間で **Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 HTTP では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
+コピー先またはコピー元との間で **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのデータセットおよびサポートされる設定について参照してください。 HTTP では、形式ベースのデータセットの `location` 設定において、次のプロパティがサポートされています。
 
 | プロパティ    | 説明                                                  | 必須 |
 | ----------- | ------------------------------------------------------------ | -------- |
@@ -212,7 +217,7 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 
 ### <a name="other-format-dataset"></a>他の形式のデータセット
 
-**ORC/Avro/JSON 形式**のデータを HTTP からコピーする場合、次のプロパティがサポートされます。
+**ORC 形式**のデータを HTTP からコピーする場合、次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -274,12 +279,12 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 
 ### <a name="http-as-source"></a>ソースとしての HTTP
 
-- コピー元から **Parquet 形式、区切りテキスト形式およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
-- コピー元から **ORC/Avro/JSON 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
+- コピー元から **Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**でコピーするには、「[Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース](#format-based-source)」セクションを参照してください。
+- コピー元から **ORC 形式**などの他の形式でコピーするには、「[他の形式のソース](#other-format-source)」セクションを参照してください。
 
-#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式およびバイナリ形式のソース
+#### <a name="format-based-source"></a> Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式のソース
 
-**Parquet 形式、区切りテキスト形式およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 HTTP では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
+**Parquet 形式、区切りテキスト形式、JSON 形式、Avro 形式、およびバイナリ形式**のデータをコピーするには、[Parquet 形式](format-parquet.md)、[区切りテキスト形式](format-delimited-text.md)、[Avro 形式](format-avro.md)、および[バイナリ形式](format-binary.md)に関する記事で、形式ベースのコピー アクティビティのソースと、サポートされる設定について参照してください。 HTTP では、形式ベースのコピー ソースの `storeSettings` 設定において、次のプロパティがサポートされています。
 
 | プロパティ                 | 説明                                                  | 必須 |
 | ------------------------ | ------------------------------------------------------------ | -------- |
@@ -336,7 +341,7 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
 
 #### <a name="other-format-source"></a>他の形式のソース
 
-**ORC/Avro/JSON 形式**のデータを HTTP からコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
+**ORC 形式**のデータを HTTP からコピーする場合、コピー アクティビティの **source** セクションで次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
@@ -374,6 +379,10 @@ ClientCertificate 認証を使用するには、**authenticationType** プロパ
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
 
 
 ## <a name="next-steps"></a>次の手順

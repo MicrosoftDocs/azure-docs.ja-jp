@@ -1,5 +1,5 @@
 ---
-title: QnA ボット - Azure Bot Service - QnA Maker
+title: チュートリアル:QnA ボット - Azure Bot Service - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: 既存のナレッジ ベース用の発行ページから、QnA チャット ボットを作成します。 このボットでは、Bot Framework SDK v4 が使用されます。 ボットを構築するためにコードを記述する必要はありません。すべてのコードが自動的に提供されます。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 07/31/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 4bb987a5a091871bec2c0cc8cec6d9ab804bb244
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: ea6e0d266c181d930f3d18171b09d222e53da7ab
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697987"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390901"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>チュートリアル:Azure Bot Service v4 を使用して QnA ボットを作成する
 
@@ -53,7 +53,7 @@ ms.locfileid: "68697987"
     |Subscription|目的を参照。|QnA Maker リソースを作成するために使用したのと同じサブスクリプションを選択します。|
     |Resource group|`my-tutorial-rg`|ボット関連の Azure リソースすべてに使用されるリソース グループ。|
     |Location|`west us`|ボットの Azure リソースの場所。|
-    |価格レベル|`F0`|Azure ボット サービス用の Free レベル。|
+    |Pricing tier|`F0`|Azure ボット サービス用の Free レベル。|
     |アプリの名前|`my-tutorial-kb-bot-app`|これは、ご利用のボットのみをサポートする Web アプリです。 これは、ご利用の QnA Maker サービスで既に使用されている名前と同じにしないでください。 QnA Maker の Web アプリを他のリソースと共有することはサポートされていません。|
     |SDK 言語|C#|これは、ボット フレームワーク SDK によって使用される基になるプログラミング言語です。 使用する選択肢は、[C#](https://github.com/Microsoft/botbuilder-dotnet) または [Node.js](https://github.com/Microsoft/botbuilder-js) です。|
     |QnA 認証キー|**変更しない**|この値は自動的に入力されます。|

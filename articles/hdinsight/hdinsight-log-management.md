@@ -2,18 +2,18 @@
 title: HDInsight クラスターのログを管理する - Azure HDInsight
 description: HDInsight アクティビティ ログ ファイルの種類、サイズ、およびリテンション期間ポリシーを決定します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.author: hrasheed
-ms.openlocfilehash: d4774dcc96e5f7639ca0b03bca992c9a3126230b
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: c069b620e129177be5d374f5b23b5e54befd8ca2
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623892"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105423"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -79,11 +79,11 @@ Apache Ambari には Web UI と REST API が用意されており、HDInsight �
 
 サービス ビューの一覧を開くには、HDInsight の Azure Portal ページで **[Ambari Views]** ウィンドウを選びます。  この一覧は、インストールされているライブラリによって異なります。  たとえば、YARN Queue Manager、Hive View、Tez View などが表示される場合があります。  構成とサービスの情報を表示するには、サービスのリンクを選びます。  Ambari UI の **[Stack and Version]\(スタックとバージョン\)** ページには、クラスター サービスの構成とサービスのバージョン履歴に関する情報が表示されます。 Ambari UI のこのセクションに移動するには、 **[Admin]\(管理\)** メニューを選んでから、 **[Stacks and Versions]\(スタックとバージョン\)** を選びます。  サービスのバージョン情報を見るには、 **[Versions]\(バージョン\)** タブを選びます。
 
-![スタックとバージョン](./media/hdinsight-log-management/stack-versions.png)
+![Apache Ambari の [Admin]\(管理\) の [Stacks and Versions]\(スタックとバージョン\)](./media/hdinsight-log-management/ambari-stack-versions.png)
 
-Ambari UI を使って、クラスターの特定のホスト (またはノード) で実行されている任意 (またはすべて) のサービスの構成をダウンロードできます。  **[Hosts]\(ホスト\)** メニューを選んでから、目的のホストのリンクを選びます。 ホストのページで、 **[Host Actions]\(ホスト アクション\)** ボタンを選んでから、 **[Download Client Configs]\(クライアント構成のダウンロード\)** を選びます。 
+Ambari UI を使って、クラスターの特定のホスト (またはノード) で実行されている任意 (またはすべて) のサービスの構成をダウンロードできます。  **[Hosts]\(ホスト\)** メニューを選んでから、目的のホストのリンクを選びます。 ホストのページで、 **[Host Actions]\(ホスト アクション\)** ボタンを選んでから、 **[Download Client Configs]\(クライアント構成のダウンロード\)** を選びます。
 
-![ホストのクライアント構成](./media/hdinsight-log-management/client-configs.png)
+![Apache Ambari のホスト クライアント構成のダウンロード](./media/hdinsight-log-management/download-client-configs.png)
 
 ### <a name="view-the-script-action-logs"></a>スクリプト アクション ログを表示する
 
@@ -93,7 +93,7 @@ HDInsight の[スクリプト アクション](hdinsight-hadoop-customize-cluste
 
 ここでは、さまざまなサービスのジョブ実行ログ ファイルを確認します。  Apache HBase や Apache Spark など、多くのサービスがあります。 Hadoop クラスターでは多数の詳細ログが生成されるので、役に立つ (役に立たない) ログを判断するには時間がかかることがあります。  ログ ファイル管理の対象を絞り込むには、ログ システムを理解することが重要です。  ログ ファイルの例を次に示します。
 
-![HDInsight のログ ファイルの例](./media/hdinsight-log-management/logs.png)
+![HDInsight サンプル ログ ファイルのサンプル出力](./media/hdinsight-log-management/hdi-log-file-example.png)
 
 ### <a name="access-the-hadoop-log-files"></a>Hadoop のログ ファイルにアクセスする
 
@@ -146,9 +146,9 @@ YARN ResourceManager UI は、クラスターのヘッド ノード上で実行�
 
 削除できるログ ファイルを決定した後は、さまざまな Hadoop サービスのログ パラメーターを調整して、指定期間後にログ ファイルを自動的に削除できます。
 
-一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure Portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure Portal で **[アクティビティ ログ]** リンクを選んで、ARM ログのアーカイブをセットアップします。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、 **[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。 
+一部のログ ファイルについては、低コストのログ ファイル アーカイブ方法を使うことができます。 Azure Resource Manager のアクティビティ ログの場合、Azure Portal を使ってこの方法を調べることができます。  HDInsight インスタンスの Azure Portal で **[アクティビティ ログ]** リンクを選んで、ARM ログのアーカイブをセットアップします。  アクティビティ ログ検索ページの上部にある **[エクスポート]** メニュー項目を選んで、 **[アクティビティ ログのエクスポート]** ウィンドウを開きます。  サブスクリプション、リージョン、ストレージ アカウントにエクスポートするかどうか、ログを保持する日数を入力します。 この同じウィンドウで、イベント ハブにエクスポートするかどうかを指定することもできます。
 
-![ログ ファイルのエクスポート](./media/hdinsight-log-management/archive.png)
+![Azure portal の [アクティビティ ログのエクスポート] (プレビュー)](./media/hdinsight-log-management/hdi-export-log-files.png)
 
 代わりに、PowerShell でログをアーカイブするスクリプトを作成できます。  PowerShell スクリプトの例は、「[Archive Azure Automation logs to Azure Blob Storage](https://gallery.technet.microsoft.com/scriptcenter/Archive-Azure-Automation-898a1aa8)」(Azure Automation のログを Azure Blob Storage にアーカイブする) をご覧ください。
 

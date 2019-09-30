@@ -1,29 +1,101 @@
 ---
-title: Azure Site Recovery の最新情報 | Microsoft Docs
+title: Azure Site Recovery の最新情報
 description: Azure Site Recovery で導入された新機能の概要を紹介します
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 09/12/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce71665a924c6681af418075d8cc635c73f8a1a
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 867a2dc9739e839a6957190f93311a811556df15
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717669"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010244"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、継続的に更新され、改善されています。 最新情報を入手し続ける助けになるように、この記事では、最新のリリース、新機能、および新しいコンテンツに関する情報を提供します。 このページは定期的に更新されます。
 
-Site Recovery の機能について提案がおありの場合は、ぜひ[フィードバックをお聞かせください](https://feedback.azure.com/forums/256299-site-recovery)。
+[Azure 更新プログラム](https://azure.microsoft.com/updates/?product=site-recovery) チャネルで Site Recovery の更新通知をフォローし、サブスクライブすることができます。
+
+## <a name="supported-updates"></a>サポートされる更新プログラム
+
+Site Recovery コンポーネントでは、N-4 バージョン (N は最新リリース バージョン) がサポートされています。 これらの概要を次の表に示します。
+
+**Update** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
+--- | --- | --- | --- | --- | ---
+[ロールアップ 40](https://support.microsoft.com/help/4517283/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
+[ロールアップ 39](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
+[ロールアップ 38](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+[ロールアップ 37](https://support.microsoft.com/help/4508614/) | 9.25.5241.1 | 5.1.4300.0 | 9.25.5241.1 | 5.1.4300.0 | 2.0.9163.0
+[ロールアップ 36](https://support.microsoft.com/help/4503156/) | 9.24.5211.1 | 5.1.4150.0 | 9.24.5211.1 | 5.1.4150.0 | 2.0.9160.0 
+        
+
+更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
 
 
-## <a name="installing-updates"></a>更新プログラムのインストール
+## <a name="updates-september-2019"></a>更新プログラム (2019 年 9 月)
 
-Site Recovery の更新プログラムのサポートと手順については、[この記事を参照](service-updates-how-to.md)してください。
+### <a name="update-rollup-40"></a>更新プログラム ロールアップ 40
+
+[更新プログラム ロールアップ 40](h https://support.microsoft.com/help/4521530/update-rollup-40-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**Update** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+
+
+
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+
+Azure VM ディザスター リカバリーの新機能をまとめて表に示します。
+
+**機能** | **詳細**
+--- | ---
+**フェールバック後のクリーンアップ** | セカンダリ Azure にフェールオーバーしてから、プライマリ リージョンにフェールバックした後、Site Recovery ではセカンダリ リージョンのマシンが自動的にクリーンアップされます。 VM と NIC を手動で削除する必要はありません。
+**テスト フェールオーバーでの IP アドレスの保持** | ディザスター リカバリーの訓練中にソース VM の IP アドレスを保持し、テスト フェールオーバーの静的 IP アドレスを選択できるようになりました。
+
+### <a name="vmwarephysical-server-disaster-recovery"></a>VMware/物理サーバーのディザスター リカバリー
+
+今月追加された機能は、表にまとめられています。
+
+**機能** | **詳細**
+--- | ---
+新しいプロセス サーバー アラート | 新しいプロセス サーバー アラートを追加しました。 [詳細情報](vmware-physical-azure-monitor-process-server.md)。 
+
+### <a name="hyper-v-disaster-recovery"></a>Hyper-V のディザスター リカバリー
+
+今月追加された機能は、表にまとめられています。
+
+**機能** | **詳細**
+--- | ---
+ストレージ アカウント | Site Recovery では、Hyper-V から Azure へのディザスター リカバリーに対してファイアウォールが有効になっている、ストレージ アカウントの使用をサポートするようになりました。  ターゲット アカウントとして、またはキャッシュ ストレージに対して、ファイアウォールが有効なストレージ アカウントを選択できます。 ファイアウォールが有効なアカウントを使用している場合は必ず、[信頼された Microsoft サービスを許可] オプションを有効にしてください。
+
+
+## <a name="updates-august-2019"></a>更新プログラム (2019 年 8 月)
+
+### <a name="update-rollup-39"></a>更新プログラム ロールアップ 39
+
+[更新プログラム ロールアップ 39](https://support.microsoft.com/help/4517283/update-rollup-39-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**Update** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+
+
+### <a name="azure-vm-disaster-recovery"></a>Azure VM のディザスター リカバリー
+
+Azure VM ディザスター リカバリーの新機能をまとめて表に示します。
+
+**機能** | **詳細**
+--- | ---
+**Azure AD を使用しない暗号化** | Windows を実行しているマネージド ディスクへの Azure VM レプリケーションで、Azure AD アプリを使用しない暗号化がサポートされるようになりました。
+**フェールオーバー用のネットワーク リソース** | 別のリージョンにフェールオーバーするときに、ネットワーク リソースの設定 (NSG、負荷分散、パブリック IP アドレス) を VM に接続できるようになりました。 
 
 ## <a name="updates-july-2019"></a>更新 (2019 年 7 月)
 

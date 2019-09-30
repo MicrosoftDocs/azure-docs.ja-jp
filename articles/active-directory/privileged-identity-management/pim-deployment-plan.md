@@ -3,7 +3,7 @@ title: Privileged Identity Management (PIM) をデプロイする - Azure Active
 description: Azure AD Privileged Identity Management (PIM) のデプロイを計画する方法について説明します。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 02/08/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7413fcf7992195753cba86a50b7d53a144b36023
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 4ff46a693766ab12b53baba1ad8e4a56e174a076
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476441"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804489"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) をデプロイする
 
@@ -99,7 +99,7 @@ PIM を使用するには、お客様のディレクトリに次のいずれか�
 
 #### <a name="stakeholders-pim-for-azure-ad-roles"></a>利害関係者:Azure AD ロール用の PIM
 
-| Name | Role | Action |
+| 名前 | Role | Action |
 | --- | --- | --- |
 | 名前とメール | **ID アーキテクトまたは Azure グローバル管理者**<br/>この変更をどのように組織内の主要な ID 管理インフラストラクチャに合わせるかを定義する責任がある、ID 管理チームの代表。 | SO/R/I |
 | 名前とメール | **サービス所有者 / ライン マネージャー**<br/>サービスまたはサービス グループの IT 所有者の代表。 主に決定を下し、チームの PIM のロールアウトを支援します。 | SO/R/I |
@@ -109,7 +109,7 @@ PIM を使用するには、お客様のディレクトリに次のいずれか�
 
 #### <a name="stakeholders-pim-for-azure-resource-roles"></a>利害関係者:Azure リソース ロール用の PIM
 
-| Name | Role | Action |
+| 名前 | Role | Action |
 | --- | --- | --- |
 | 名前とメール | **サブスクリプション / リソース所有者**<br/>PIM をデプロイする必要がある各サブスクリプションまたはリソースの IT 所有者の代表 | SO/R/I |
 | 名前とメール | **セキュリティ所有者**<br/>計画が組織のセキュリティ要件を満たしていることをサインオフできるセキュリティ チームの代表。 | SO/R |

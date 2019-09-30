@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 9f6f3d43f80b3c69b0c1106b8e395b4d8f5d32ab
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: cf04efd8dac3ba4d252701d79c65b1bf56619fe0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640701"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968237"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>システム割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする (プレビュー)
 
@@ -93,15 +93,9 @@ Azure Service Fabric アプリケーションのマネージド ID 機能にア�
     これは、前述の ID からサービスへのマッピングと同等ですが、サービス定義の観点からのものになります。 ID は、アプリケーション マニフェストで宣言されているように、ここではフレンドリ名 (`WebAdmin`) で参照されます。
 
 ## <a name="next-steps"></a>次の手順
-
 * Azure Service Fabric での[マネージド ID のサポート](./concepts-managed-identity.md)を確認します
-
 * マネージド ID サポートを備えた[新しい Azure Service Fabric クラスターをデプロイする](./configure-new-azure-service-fabric-enable-managed-identity.md) 
-
 * 既存の Azure Service Fabric クラスターで[マネージド ID を有効にする](./configure-existing-cluster-enable-managed-identity-token-service.md)
-
 * [ソース コードから Service Fabric アプリケーションのマネージド ID](./how-to-managed-identity-service-fabric-app-code.md) を活用する
-
 * [ユーザー割り当てのマネージド ID を持つアプリケーションをデプロイする](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
-
 * [Azure Service Fabric アプリケーションに他の Azure リソースへのアクセスを許可する](./how-to-grant-access-other-resources.md)

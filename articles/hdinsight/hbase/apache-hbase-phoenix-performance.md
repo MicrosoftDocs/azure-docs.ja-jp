@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight における Phoenix のパフォーマンス
-description: Phoenix のパフォーマンスを最適化するためのベスト プラクティス。
+description: Azure HDInsight クラスターの Apache Phoenix のパフォーマンスを最適化するためのベスト プラクティス
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: 4fc4d1843ddb8d007ca062d928ebbddf90909583
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2a40802070510939332c3f5e876293445cf2df1
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64690047"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810426"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix のパフォーマンスに関するベスト プラクティス
 
@@ -33,14 +33,14 @@ Phoenix のテーブルで定義された主キーによって、基になる HB
 
 |rowkey|       address|   phone| firstName| lastName|
 |------|--------------------|--------------|-------------|--------------|
-|  1,000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole|
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole|
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji|
 
 ただし、頻繁に lastName でクエリを実行する場合、この主キーはあまり役に立たない可能性があります。各クエリで、すべての lastName の値を読み取るためのフル テーブル スキャンが必要になるためです。 代わりに、lastName、firstName、社会保障番号の列で主キーを定義できます。 この最後の列によって、父と息子などの、住所と名前が同じ 2 人を区別できます。
 
 |rowkey|       address|   phone| firstName| lastName| socialSecurityNum |
 |------|--------------------|--------------|-------------|--------------| ---|
-|  1,000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
+|  1000|1111 San Gabriel Dr.|1-425-000-0002|    John|Dole| 111 |
 |  8396|5415 San Gabriel Dr.|1-230-555-0191|  Calvin|Raji| 222 |
 
 この新しい主キーを使用して、Phoenix は次のような行キーを生成します。

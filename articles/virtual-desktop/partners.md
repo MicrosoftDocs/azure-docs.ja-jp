@@ -7,27 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: helohr
-ms.openlocfilehash: bd5ec1e75fa1669b0ca33e4cb4629793b09a9bad
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ddfe5c855b6cd0171494f1af20dc5eb4ae571a6e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036137"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918990"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
 この記事では、Windows Virtual Desktop のパートナーをアルファベット順に示します。
-
-## <a name="active-cypher"></a>Active Cypher
-
-![Active Cypher ロゴ](./media/partners/active-cypher.png)
-
-Active Cypher は、Windows Virtual Desktop の付加価値サービス プロバイダーであり、企業をセキュリティ侵害およびデータ損失から保護するために、IT 担当者に対して暗号化テクノロジを提供します。 Active Cypher を使用すると、革新的な暗号化テクノロジにより、Azure で Windows Virtual Desktop を実行するための全体的なファイル保護戦略がサポートされます。
-
-Active Cypher を Windows Virtual Desktop で使用すると、データを誤って損失することを防止できる一方で、ユーザー データのアクセシビリティおよびモビリティを有効にする追加の機能を利用できます。 Active Cypher を使用すると、Windows Virtual Desktop の使用時に、Azure Information Protection の既存のグループ セキュリティ ポリシーとアクセス許可を活用してユーザー ファイルを暗号化できます。
-
-- [共同ソリューションの概要を参照する。](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3oNLu)
-- [パートナーの Web サイトにアクセスする。](https://activecypher.com/)
 
 ## <a name="cloudjumper"></a>CloudJumper
 

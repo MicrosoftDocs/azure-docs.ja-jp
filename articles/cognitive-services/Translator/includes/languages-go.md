@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 707e6c1fb063ca7c8580df4ace2685417fd7847d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 05355ad37183d4c14cb8f6598141292ded0386d9
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968153"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906963"
 ---
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [Prerequisites](prerequisites-go.md)]
 
-このクイック スタートでは以下が必要です。
-
-* [Go](https://golang.org/doc/install)
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
@@ -30,6 +28,7 @@ import (
     "log"
     "net/http"
     "net/url"
+    "os"
 )
 ```
 
@@ -37,16 +36,18 @@ import (
 
 アプリケーションの main 関数を作成しましょう。 コードが 1 行だけであることがわかります。 これは、Translator Text 用にサポートされている言語の一覧を取得して印刷するための 1 つの関数を作成しているためです。
 
+このサンプルは、環境変数 `TRANSLATOR_TEXT_ENDPOINT` から Translator Text のエンドポイントを読み取ることを試みます。 環境変数を使い慣れていない場合は、`endpoint` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
+
 このコードをプロジェクトにコピーします。
 
 ```go
 func main() {
-    /*
-     * This calls our getLanguages function, which we'll
-     * create in the next section. It takes a single argument,
-     * the subscription key.
-     */
-    getLanguages()
+    if "" == os.Getenv("TRANSLATOR_TEXT_ENDPOINT") {
+      log.Fatal("Please set/export the environment variable TRANSLATOR_TEXT_ENDPOINT.")
+    }
+    endpoint := os.Getenv("TRANSLATOR_TEXT_ENDPOINT")
+    uri := endpoint + "/languages?api-version=3.0"
+    getLanguages(uri)
 }
 ```
 
@@ -55,7 +56,7 @@ func main() {
 サポートされている言語の一覧を取得する関数を作成しましょう。
 
 ```go
-func getLanguages() {
+func getLanguages(uri string) {
     /*  
      * In the next few sections, we'll add code to this
      * function to make a request and handle the response.
@@ -69,9 +70,8 @@ func getLanguages() {
 
 ```go
 // Build the request URL. See: https://golang.org/pkg/net/url/#example_URL_Parse
-u, _ := url.Parse("https://api.cognitive.microsofttranslator.com/languages")
+u, _ := url.Parse(uri)
 q := u.Query()
-q.Add("api-version", "3.0")
 u.RawQuery = q.Encode()
 ```
 

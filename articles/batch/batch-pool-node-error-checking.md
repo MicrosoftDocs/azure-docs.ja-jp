@@ -5,14 +5,14 @@ services: batch
 ms.service: batch
 author: mscurrell
 ms.author: markscu
-ms.date: 07/16/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 9481263773cc919fecacce80191cf209ec2a1282
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: d115b7d56609b95f2ea10b3fee2f8900102b94e4
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359248"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012484"
 ---
 # <a name="check-for-pool-and-node-errors"></a>プールとノードのエラーのチェック
 
@@ -64,7 +64,7 @@ Batch は削除プロセス中に[プールの状態](https://docs.microsoft.com
 
 ## <a name="pool-compute-node-errors"></a>プールのコンピューティング ノードエラー
 
-Batch がプール内のノードを正常に割り当てた場合でも、さまざまな問題が原因で一部のノードが異常な状態になったり、タスクを実行できなくなったりする場合があります。 これらのノードによって引き続き料金が発生してしまうので、使用できないノードに対する支払いを回避するために問題を検出することが重要です。
+Batch がプール内のノードを正常に割り当てた場合でも、さまざまな問題が原因で一部のノードが異常な状態になったり、タスクを実行できなくなったりする場合があります。 これらのノードによって引き続き料金が発生してしまうので、使用できないノードに対する支払いを回避するために問題を検出することが重要です。 一般的なノードエラーに加えて、現在の[ジョブの状態](https://docs.microsoft.com/rest/api/batchservice/job/get#jobstate)を把握しておくと、トラブルシューティングに役立ちます。
 
 ### <a name="start-task-failures"></a>開始タスクの失敗
 
@@ -118,7 +118,7 @@ Batch が原因を特定できる場合、ノードの[エラー](https://docs.m
 
 ### <a name="node-disk-full"></a>ノードのディスクがいっぱいである
 
-ジョブ ファイル、タスク ファイル、共有ファイルには、プール ノード VM の一時ドライブが Batch によって使用されます。 
+ジョブ ファイル、タスク ファイル、共有ファイルには、プール ノード VM の一時ドライブが Batch によって使用されます。
 
 - アプリケーション パッケージ ファイル
 - タスク リソース ファイル

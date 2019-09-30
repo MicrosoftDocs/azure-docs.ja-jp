@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 87acc6e8c561349b734bd9cd98300b65e730abe7
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 316ed596cfa49987e229004c388267286ff50927
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928086"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000963"
 ---
 # <a name="design-secure-applications-on-azure"></a>セキュリティで保護されたアプリケーションを Azure 上で設計する
 この記事では、クラウド向けのアプリケーションを設計するときに考慮すべきセキュリティ アクティビティと制御について説明します。 Microsoft [セキュリティ開発ライフサイクル (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) の要件と設計のフェーズ中に考慮すべきセキュリティの質問と概念に加えて、トレーニング用のリソースについて説明します。 目標は、より安全なアプリケーションの設計に使用できるアクティビティと Azure サービスの定義を手助けすることです。
@@ -153,7 +153,7 @@ Azure は、Web サイトと Web アプリケーションのホストに使用�
 
 | Threat | セキュリティ プロパティ | 潜在的な Azure プラットフォームの軽減策 |
 | ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| なりすまし               | Authentication        | [HTTPS 接続を要求する](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
+| なりすまし               | 認証        | [HTTPS 接続を要求する](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl?view=aspnetcore-2.1&tabs=visual-studio)。 |
 | 改ざん              | 整合性             | SSL/TLS 証明書を検証する。 SSL/TLS を使用するアプリケーションは、接続先エンティティの X.509 証明書を完全に検証する必要があります。 [x509 証明書を管理](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-certificates)するには、Azure Key Vault 証明書を使用します。 |
 | 否認            | 否認防止       | Azure の[監視と診断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)を有効にする。|
 | 情報漏えい | 機密情報       | [保存中](../fundamentals/encryption-atrest.md)と[転送中](../fundamentals/data-encryption-best-practices.md#protect-data-in-transit)の機密データを暗号化する。 |
@@ -242,7 +242,7 @@ Web アプリケーションの開発のための ID 中心のアプローチを
 
 キーや資格情報の紛失は、よくある問題です。 資格情報やその他のシークレットを紛失するよりも悪い唯一のことは、権限のない第三者がキーや資格情報にアクセスすることです。 攻撃者は、自動化された方法や手動の方法を利用して、GitHub などのコード レポジトリに格納されているキーやシークレットを見つける可能性があります。 これらのパブリックなコード レポジトリやその他のサーバーには、キーやシークレットを格納しないでください。
 
-キー、証明書、シークレット、および接続文字列は、常にキー管理ソリューションに格納してください。 キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用できます。 Azure では、[Azure Key Vault](../../key-vault/key-vault-whatis.md) によりクラウドで HSM を提供しています。
+キー、証明書、シークレット、および接続文字列は、常にキー管理ソリューションに格納してください。 キーやシークレットをハードウェア セキュリティ モジュール (HSM) に格納する一元化されたソリューションを使用できます。 Azure では、[Azure Key Vault](../../key-vault/key-vault-overview.md) によりクラウドで HSM を提供しています。
 
 Azure Key Vault は*シークレット ストア*であり、アプリケーション シークレットを格納するための一元的なクラウド サービスです。 Key Vault は、アプリケーションのシークレットを中央の 1 か所に保存し、アクセスをセキュリティで保護し、アクセス許可を制御し、アクセスをログに記録することで、機密データを保護します。
 
@@ -277,7 +277,7 @@ Azure Key Vault は*シークレット ストア*であり、アプリケーシ�
 
 基本的には、開発プロジェクトに含まれるものはすべて、デプロイ時に公開されると考えてください。 プロジェクトにはいかなる機密データも含めないでください。
 
-[Azure Key Vault](../../key-vault/key-vault-whatis.md) については既に説明しました。 Key Vault を使用すれば、キーやパスワードなどのシークレットをハードコーディングするのではなく、格納することができます。 Key Vault を Azure リソースのマネージド ID と組み合わせて使用すると、Azure の Web アプリで、ソース管理や構成にシークレットを格納することなく、シークレットの構成値に簡単かつ安全にアクセスすることができます。 詳細については、「[Azure Key Vault を使用してサーバー アプリでシークレットを管理する](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)」を参照してください。
+[Azure Key Vault](../../key-vault/key-vault-overview.md) については既に説明しました。 Key Vault を使用すれば、キーやパスワードなどのシークレットをハードコーディングするのではなく、格納することができます。 Key Vault を Azure リソースのマネージド ID と組み合わせて使用すると、Azure の Web アプリで、ソース管理や構成にシークレットを格納することなく、シークレットの構成値に簡単かつ安全にアクセスすることができます。 詳細については、「[Azure Key Vault を使用してサーバー アプリでシークレットを管理する](https://docs.microsoft.com/learn/modules/manage-secrets-with-azure-key-vault/)」を参照してください。
 
 ### <a name="implement-fail-safe-measures"></a>フェールセーフ対策を実装する
 

@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge Filer のサポート チケットを開く
-description: Azure FXT Edge Filer ノードの起動と安全なシャットダウンのための手順
+description: Azure FXT Edge Filer システムに関するサポートを受けるためのチケットを開く手順
 author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: v-erkell
-ms.openlocfilehash: 82b6477b42d627baff10d9bde46452bf43900ffd
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 04bc7c4d2ff96ef8b403449cf58d131bdc22a101
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828245"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624109"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Azure FXT Edge Filer のサポート チケットを開く
 

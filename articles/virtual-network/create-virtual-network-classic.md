@@ -4,7 +4,7 @@ description: Azure で、複数のサブネットを含んだ仮想ネットワ�
 services: virtual-network
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: d934386a47c339cd3abdf72578736b44d40e7952
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202869"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059008"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する
 
@@ -47,11 +47,11 @@ ms.locfileid: "67202869"
 
     |Setting|値|
     |---|---|
-    |Name|myVnet|
+    |名前|myVnet|
     |アドレス空間|10.0.0.0/16|
     |サブネット名|パブリック|
     |サブネットのアドレス範囲|10.0.0.0/24|
-    |リソース グループ|**[新規作成]** を選択して、「**myResourceGroup**」と入力します。|
+    |Resource group|**[新規作成]** を選択して、「**myResourceGroup**」と入力します。|
     |サブスクリプションと場所|サブスクリプションと場所を選択します。
 
     Azure を初めてご利用の場合は、[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)、[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)、[場所](https://azure.microsoft.com/regions) (*リージョン*とも呼ばれる) について、それぞれのリンク先のページでご覧ください。

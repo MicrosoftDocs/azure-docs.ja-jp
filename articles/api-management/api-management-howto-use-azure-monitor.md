@@ -9,17 +9,16 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c3148adc42cb4f899a87d894909eedff4c798575
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 598168285ee67921ab17ab8c2ce780753c562f81
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680247"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072342"
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -64,8 +63,9 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
     ![metrics](./media/api-management-azure-monitor/api-management-metrics-blade.png)
 
-2. ドロップダウン リストで、関心のあるメトリックを選択します。 たとえば、**[Successful Gateway Requests]\(成功したゲートウェイ要求\)** を選択します。 さらにメトリックをグラフに追加することもできます。
-3. グラフには、成功した API 呼び出しの合計数が表示されます。
+1. ドロップダウン リストで、関心のあるメトリックを選択します。 **Requests**など。 
+1. グラフには、API 呼び出しの合計数が表示されます。
+1. **[Requests]\(要求数\)** メトリックのディメンションを使用して、グラフをフィルター処理できます。 たとえば、 **[フィルターの追加]** をクリックし、 **[Backend Response Code]\(バックエンド応答コード\)** を選択し、値として「500」と入力します。 これで、API バックエンドで失敗した要求の数がグラフに表示されるようになりました。   
 
 ## <a name="set-up-an-alert-rule-for-unauthorized-request"></a>許可されていない要求に対するアラート ルールをセットアップする
 
@@ -84,11 +84,11 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 2. このアラートに対して **[新しいアラート ルール]** をクリックします。
 3. **[条件の追加]** をクリックします。
 4. [シグナルの種類] ドロップダウンの **[メトリック]** を選択します。
-5. 監視するシグナルとして、**[Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\)** を選択します。
+5. 監視するシグナルとして、 **[Unauthorized Gateway Requests]\(未承認ゲートウェイ要求\)** を選択します。
 
     ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-6. **[シグナル ロジックの構成]** ビューで、アラートをトリガーするしきい値を指定して、**[完了]** をクリックします。
+6. **[シグナル ロジックの構成]** ビューで、アラートをトリガーするしきい値を指定して、 **[完了]** をクリックします。
 
     ![alerts](./media/api-management-azure-monitor/threshold.png)
 
@@ -118,7 +118,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
     ![アクティビティ ログ](./media/api-management-azure-monitor/api-management-activity-logs-blade.png)
 
-3. 目的のフィルター処理の範囲を選択し、**[適用]** をクリックします。
+3. 目的のフィルター処理の範囲を選択し、 **[適用]** をクリックします。
 
 ## <a name="diagnostic-logs"></a>診断ログ
 

@@ -9,12 +9,12 @@ ms.date: 07/03/2018
 ms.topic: conceptual
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 4e0a3c5aa849799872371ef1c5ac0867babffebb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 24a66c5218bb75672ae784b19213116efdb83690
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686422"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232450"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Azure Dev Spaces ツールのアップグレード方法
 
@@ -48,6 +48,3 @@ Visual Studio のツールを更新するには、 **[Tools] (ツール) > [Exte
 ## <a name="next-steps"></a>次の手順
 
 新しいクラスターを作成して、新しいツールをテストします。 [Azure Dev Spaces](/azure/dev-spaces) でクイック スタートおよびチュートリアルをお試しください。
-
-> [!WARNING]
-> 既存クラスター上の Azure Dev Spaces には、パッチは即座に適用されません。そのため、すべての Azure デプロイで確実に最新バージョンが使用されるように、ツールをアップグレードした後、新しいクラスターを作成します。

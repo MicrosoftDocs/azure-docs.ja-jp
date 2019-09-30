@@ -5,7 +5,7 @@ keywords: 請求書,請求書のダウンロード,Azure の請求書,Azure の�
 services: billing
 documentationcenter: ''
 author: genlin
-manager: adpick
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.service: billing
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 16b2eaef74a7aa0e3e28bfcbb6dbd9da568db6cf
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 2c65696a37e33cd6ced93639677659e110a1db6d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491400"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121798"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
 
 ほとんどのサブスクリプションの場合は、請求書を [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) からダウンロードするか、メールで送信することができます。 エンタープライズ契約 (EA) の Azure のお客様 (EA のお客様) の場合、お客様の組織の請求書をダウンロードすることはできません。 請求書は、登録のために請求書を受信するよう設定されているユーザーに送信されます。
 
-EA のお客様である場合や [Microsoft 顧客契約](#check-access-to-a-microsoft-customer-agreement)を結んでいる場合は、[Azure portal](https://portal.azure.com/) で使用量をダウンロードできます。 その他のサブスクリプションの場合は、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスして使用量をダウンロードします。
+EA のお客様である場合や [Microsoft 顧客契約](#check-access-to-a-microsoft-customer-agreement)を結んでいる場合は、[Azure portal](https://portal.azure.com/) で使用量をダウンロードできます。
 
 請求書と使用状況情報を取得するアクセス許可を持つのは、特定のロール (アカウント管理者やエンタープライズ管理者など) だけです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
 
@@ -46,11 +46,13 @@ Microsoft 顧客契約を結んでいる場合、請求書と使用量の情報�
 
     ![Screenshot that shows the Billing & usage option](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. PDF 請求書のコピーを表示するには、 **[請求書のダウンロード]** をクリックします。 "**使用できません**" というメッセージが表示される場合は、「[前回の請求期間の請求書が表示されない理由](#noinvoice)」を参照してください。
+3. [ダウンロード] ボタンをクリックして、PDF 請求書のコピーをダウンロードし、 **[請求書のダウンロード]** を選択します。 "**使用できません**" というメッセージが表示される場合は、「[前回の請求期間の請求書が表示されない理由](#noinvoice)」を参照してください。
 
-    ![Screenshot that shows billing periods, the download option, and total charges for each billing period](./media/billing-download-azure-invoice-daily-usage-date/billing4.png)
+    ![Screenshot that shows billing periods, the download option, and total charges for each billing period](./media/billing-download-azure-invoice-daily-usage-date/downloadinvoice.png)
 
-4. 請求期間をクリックして、毎日の使用状況を表示することもできます。
+4. また、 **[CSV のダウンロード]** をクリックして、消費量と見積料金の日単位の内訳をダウンロードすることもできます。
+
+    ![請求書と使用状況のダウンロード ページを示すスクリーンショット](./media/billing-download-azure-invoice-daily-usage-date/usageandinvoice.png)
 
 請求書の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。 コスト管理に関するヘルプについては、[Azure の課金とコスト管理で想定外の料金を防ぐ](billing-getting-started.md)方法に関するページを参照してください。
 
@@ -62,7 +64,7 @@ Microsoft 顧客契約を結んでいる場合、請求書と使用量の情報�
 2. 課金プロファイルを選択します。
 3. **[請求書]** を選択します。
 4. 請求書グリッドで、ダウンロードする請求書の行を探します。
-5. 行の末尾にある省略記号 (`...`) をクリックします。
+5. 行の末尾にある [ダウンロード] ボタンをクリックします。
 6. ダウンロードのコンテキスト メニューで、 **[請求書]** を選択します。
 
 最後の請求期間の請求書が表示されない場合は、**追加情報**に関するページを参照してください。 <!-- Fix this -->
@@ -119,37 +121,19 @@ Microsoft 顧客契約を結んでいる場合は、メールの請求書の取�
 
 上記の手順に従い、 **[オプト アウト]** をクリックすることで、メールの請求書の取得をオプトアウトできます。すべての所有者、共同作成者、閲覧者、および請求書管理者も、メールの請求書の取得からオプトアウトされます。 閲覧者の場合は、メールの請求書の基本設定を変更できません。
 
-## <a name="download-usage"></a>使用状況のダウンロード
+## <a name="download-usage-in-azure-portal"></a>Azure portal で使用状況をダウンロードする
 
- ほとんどのサブスクリプションの場合は、毎日の使用状況ファイルを [Azure アカウント センター](https://account.azure.com/Subscriptions)で検索します。 EA のお客様である場合や Microsoft 顧客契約を結んでいる場合は、[Azure portal](https://portal.azure.com/) で使用量をダウンロードできます。 <!-- TO DO: update PayG experience to Ibiza once it ships-->
+ ほとんどのサブスクリプションでは、次の手順に従って、毎日の使用状況を確認してください。
 
-### <a name="download-usage-from-the-account-center-csv"></a>アカウント センターから使用状況をダウンロードする (.csv)
+1. Azure portal の [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) ページから、[請求書へのアクセス権を持つユーザー](billing-manage-access.md)として自分のサブスクリプションを選択します。
 
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/subscriptions)にサインインします。
+2. **[請求書]** を選択します。
 
-2. 請求書と使用状況を確認するサブスクリプションを選択します。
+    ![Screenshot that shows the Billing & usage option](./media/billing-download-azure-invoice-daily-usage-date/billingandusage.png)
 
-3. **[請求履歴]** を選択します。
+3. 確認する請求書期間の [ダウンロード] ボタンをクリックします。
 
-    ![Screenshot that shows billing history option](./media/billing-download-azure-invoice-daily-usage-date/Billinghisotry.png)
-
-4. 過去 6 回の請求期間と、現行の未請求期間の明細も確認できます。
-
-    ![Screenshot that shows billing periods, options to download invoice and daily usage, and total charges for each billing period](./media/billing-download-azure-invoice-daily-usage-date/billingSum.png)
-
-5. 見積もりを作成した時点での料金の見積もりを表示するには、 **[現在の明細書の表示]** を選択します。 この情報は毎日更新されますが、すべての累計使用量が含まれていない可能性があります。 その月の実際の請求書は、この見積もりとは異なる場合があります。
-
-    ![Screenshot that shows the View Current Statement option](./media/billing-download-azure-invoice-daily-usage-date/billingSum2.png)
-
-    ![Screenshot that shows the estimate of current charges](./media/billing-download-azure-invoice-daily-usage-date/billingSum3.png)
-
-6. CSV ファイル形式で毎日の使用状況データをダウンロードするには、 **[利用状況のダウンロード]** を選択します。 バージョンが 2 つある場合は、バージョン 2 をダウンロードします。
-
-    ![Screenshot that shows the Download Usage option](./media/billing-download-azure-invoice-daily-usage-date/DLusage.png)
-
-Azure アカウント センターにアクセスできるのは、アカウント管理者のみです。 所有者などの他の課金管理者は、[課金 API](billing-usage-rate-card-overview.md) を使用して使用状況の情報を取得できます。
-
-毎日の使用状況の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。 コスト管理に関するヘルプについては、[Azure の課金とコスト管理で想定外の料金を防ぐ](billing-getting-started.md)方法に関するページを参照してください。
+4. **[CSV のダウンロード]** をクリックして、消費量と見積料金の日単位の内訳をダウンロードします。  CSV ファイル準備には数分かかる場合があります。
 
 ### <a name="download-usage-for-ea-customers"></a>EA のお客様の使用量のダウンロード
 

@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pabutler
-ms.openlocfilehash: bd7a78730186e4ea3d34449fd7977f7575bb8180
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd19723b80fdf4e4fc7e4581a9b8dcb80ca42045
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935231"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962902"
 ---
 # <a name="dynamics-365-for-finance-and-operations-offer"></a>Dynamics 365 for Finance and Operations プラン
 
@@ -23,7 +23,7 @@ ms.locfileid: "64935231"
 
 Dynamics 365 for Finance and Operations アプリを開発して AppSource に公開するには、次の手順を使用します。
 
-1. 前提条件として、[Dev Center Certified](https://dev.windows.com/en-us/registration?accountProgram=Azure) であることが必要です。
+1. 前提条件として、[Dev Center Certified](https://dev.windows.com/registration?accountProgram=Azure) であることが必要です。
 2. コードをアップグレードします。
 3. [ライフサイクル サービス](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lifecycle-services/lcs) (LCS) を使用してデータをビルド、パッケージング、およびデプロイします。
 4. 実装方法を LCS で作成します。

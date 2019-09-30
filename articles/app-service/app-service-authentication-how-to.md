@@ -4,21 +4,21 @@ description: App Service で認証と承認をカスタマイズし、ユーザ�
 services: app-service
 documentationcenter: ''
 author: cephalin
-manager: cfowler
+manager: gwallace
 editor: ''
 ms.service: app-service
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ee8d8c54bd618780e00d9975f2fc6950cd795d44
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 105728bdab9c70bb807f38e4a09d5be863694c16
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098543"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231978"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Azure App Service 上での認証と承認の高度な使用方法
 
@@ -130,7 +130,7 @@ GET /.auth/logout?post_logout_redirect_uri=/index.html
 GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
 ```
 
-[Azure Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行する必要があります。
+[Azure Cloud Shell](../cloud-shell/quickstart.md) で次のコマンドを実行します。
 
 ```azurecli-interactive
 az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
@@ -230,7 +230,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 ## <a name="limit-the-domain-of-sign-in-accounts"></a>サインイン アカウントのドメインの制限
 
-Microsoft アカウントと Azure Active Directory の両方に複数のドメインからサインインできます。 たとえば、Microsoft アカウントでは _outlook.com_、_live.com_、_hotmail.com_ アカウントが許可されます。 Azure Active Directory では、サインイン アカウントに任意の数のカスタム ドメインが許可されます。 この動作は、ユーザーが _outlook.com_ アカウントでアクセスすることが望ましくない内部アプリでは望ましくない場合があります。 サインイン アカウントのドメイン名を制限するには、以下の手順に従います。
+Microsoft アカウントと Azure Active Directory の両方に複数のドメインからサインインできます。 たとえば、Microsoft アカウントでは _outlook.com_、_live.com_、_hotmail.com_ アカウントが許可されます。 Azure AD では、サインイン アカウントに任意の数のカスタム ドメインが許可されます。 ただし、ユーザーを独自のブランドの Azure AD サインインページ (`contoso.com`など) に直接誘導することもできます。 サインイン アカウントのドメイン名を提示するには、以下の手順に従います。
 
 [https://resources.azure.com](https://resources.azure.com) で、**subscriptions** >  **_\< subscription\_ name_**  > **resourceGroups** >  **_\< resource\_ group\_ name>_**  > **providers** > **Microsoft.Web** > **sites** >  **_\< app\_ name>_**  > **config** > **authsettings** に移動します。 
 
@@ -239,6 +239,54 @@ Microsoft アカウントと Azure Active Directory の両方に複数のドメ�
 ```json
 "additionalLoginParams": ["domain_hint=<domain_name>"]
 ```
+
+この設定で、`domain_hint` クエリ文字列パラメーターがログイン リダイレクト URL に追加されます。 
+
+> [!IMPORTANT]
+> クライアントは、リダイレクト URL を受け取った後で `domain_hint` パラメーターを削除し、別のドメインでログインできます。 そのため、この機能は便利ですが、セキュリティ機能ではありません。
+>
+
+## <a name="authorize-or-deny-users"></a>ユーザーを承認または拒否する
+
+App Service は最も単純な承認ケース (つまり、認証されていない要求の拒否) を処理しますが、アプリでは、特定のユーザー グループだけにアクセスを制限するなど、よりきめ細かな承認動作が必要になる場合があります。 場合によっては、サインインしたユーザーに対してアクセスを許可または拒否するためのカスタム アプリケーション コードの記述が必要になります。 また、App Service やお使いの ID プロバイダーが、コードの変更を必要とせずにサポートできる場合もあります。
+
+- [サーバー レベル](#server-level-windows-apps-only)
+- [ID プロバイダー レベル](#identity-provider-level)
+- [アプリケーション レベル](#application-level)
+
+### <a name="server-level-windows-apps-only"></a>サーバー レベル (Windows アプリのみ)
+
+Windows アプリでは、*Web.config* ファイルを編集して IIS Web サーバーの承認動作を定義できます。 Linux アプリは、IIS を使用しないため、*Web.config* を使用して構成することはできません。
+
+1. `https://<app-name>.scm.azurewebsites.net/DebugConsole` に移動します
+
+1. App Service ファイルのブラウザー エクスプローラーで、*site/wwwroot* に移動します。 *Web.config* が存在しない場合は、 **+**  >  **[新しいファイル]** を選択して作成します。 
+
+1. *Web.config* の鉛筆を選択して編集します。 次の構成コードを追加し、 **[保存]** をクリックします。 *Web.config* が既に存在する場合は、すべての内容を含めた `<authorization>` 要素を追加するだけです。 許可するアカウントを `<allow>` 要素に追加します。
+
+    ```xml
+    <?xml version="1.0" encoding="utf-8"?>
+    <configuration>
+       <system.web>
+          <authorization>
+            <allow users="user1@contoso.com,user2@contoso.com"/>
+            <deny users="*"/>
+          </authorization>
+       </system.web>
+    </configuration>
+    ```
+
+### <a name="identity-provider-level"></a>ID プロバイダー レベル
+
+ID プロバイダーによって特定のターンキー承認が提供される場合があります。 例:
+
+- [Azure App Service](configure-authentication-provider-aad.md) の場合、Azure AD で直接、[エンタープライズ レベルのアクセスを管理](../active-directory/manage-apps/what-is-access-management.md)できます。 説明については、「[アプリケーションへのユーザー アクセスの削除方法](../active-directory/manage-apps/methods-for-removing-user-access.md)」をご覧ください。
+- [Google](configure-authentication-provider-google.md) の場合、特定の[組織](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations)に属する Google API プロジェクトを、その組織内のユーザーだけにアクセスを許可するように構成できます ([Google の「**Setting up OAuth 2.0**」サポート ページ](https://support.google.com/cloud/answer/6158849?hl=en)をご覧ください)。
+
+### <a name="application-level"></a>アプリケーション レベル
+
+他のいずれのレベルでも必要な承認が提供されない場合、またはお使いのプラットフォームまたは ID プロバイダーがサポートされていない場合、[ユーザーの要求](#access-user-claims)に基づいてユーザーを承認するカスタム コードを記述する必要があります。
+
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]

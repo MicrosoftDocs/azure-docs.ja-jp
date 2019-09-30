@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/28/2019
 ms.author: victorh
-ms.openlocfilehash: 3acae8f7d34bb02905e6e8d479b7de5ccab1bb7a
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 896e1fb3e93fc0a542f0dca75cc1d87b3a2c237c
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850992"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057907"
 ---
-# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway のバックエンドの正常性、診断ログ、およびメトリック
+# <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
 Azure Application Gateway を使用すると、次の方法でリソースを監視できます。
 
@@ -22,7 +22,7 @@ Azure Application Gateway を使用すると、次の方法でリソースを監
 
 * [ログ](#diagnostic-logging):リソースのパフォーマンス、アクセス、その他のデータを記録したログは、監視のために保存し使用することができます。
 
-* [メトリック](#metrics):現在、Application Gateway にはパフォーマンス カウンターを表示する 7 つのメトリックがあります。
+* [[メトリック]](application-gateway-metrics.md):Application Gateway には、システムが想定どおりに実行されていることを確認するのに役立ついくつかのメトリックがあります。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -105,7 +105,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 ログを保存するための 3 つのオプションがあります。
 
 * **ストレージ アカウント**:ストレージ アカウントは、ログを長期間保存し、必要に応じて参照する場合に最適です。
-* **イベント ハブ**:イベント ハブは、他のセキュリティ情報/イベント管理 (SEIM) ツールと統合してリソースに関するアラートを取得する場合に便利なオプションです。
+* **イベント ハブ**:イベント ハブは、他のセキュリティ情報/イベント管理 (SIEM) ツールと統合してリソースに関するアラートを取得する場合に便利なオプションです。
 * **Azure Monitor ログ**: Azure Monitor ログは、アプリケーションをリアルタイムに監視したり、傾向を見たりする一般的な用途に最適です。
 
 ### <a name="enable-logging-through-powershell"></a>PowerShell を使用したログの有効化
@@ -309,6 +309,8 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 |details.data     | 要求で見つかった、ルールに一致するデータ。         |
 |details.file     | ルールが含まれている構成ファイル。        |
 |details.line     | イベントをトリガーした、構成ファイル内の行番号。       |
+|hostname   | Application Gateway のホスト名または IP アドレス。    |
+|transactionId  | 同じ要求内で発生した複数の規則違反をグループ化するのに役立つ、指定されたトランザクションの一意の ID。   |
 
 ```json
 {
@@ -333,6 +335,8 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
       "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
       "line": "865"
     }
+    "hostname": "40.90.218.100", 
+    "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
   }
 } 
 
@@ -359,67 +363,6 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 #### <a name="analyzing-access-logs-through-goaccess"></a>GoAccess を介してアクセス ログを分析する
 
 Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナライザーをインストールし、Application Gateway アクセス ログに対して実行する、Resource Manager テンプレートを発行しています。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、重要な HTTP トラフィック統計情報が提供されます。 詳細については、[GitHub の Resource Manager テンプレート フォルダーにある Readme ファイル](https://aka.ms/appgwgoaccessreadme)を参照してください。
-
-## <a name="metrics"></a>メトリック
-
-メトリックは特定の Azure リソース用の機能で、ポータルでパフォーマンス カウンターを表示できます。 Application Gateway に関しては、次のメトリックを利用できます。
-
-- **現在の接続数**
-- **失敗した要求**
-- **正常なホストの数**
-
-   バックエンド プールごとにフィルター処理を行って、特定のバックエンド プールの正常/異常なホストを表示できます。
-
-
-- **応答の状態**
-
-   応答状態コードの分布をさらに分類し、2xx、3xx、4xx、5xx のカテゴリで応答を表示できます。
-
-- **スループット**
-- **要求の合計数**
-- **異常なホストの数**
-
-   バックエンド プールごとにフィルター処理を行って、特定のバックエンド プールの正常/異常なホストを表示できます。
-
-アプリケーション ゲートウェイに移動して **[監視]** の **[メトリック]** を選択します。 利用できる値を表示するには、 **[メトリック]** ドロップダウン リストを選択します。
-
-次の画像では、最後の 30 分間に表示された 3 つのメトリックの例を確認できます。
-
-[![](media/application-gateway-diagnostics/figure5.png "メトリック ビュー")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
-
-現在のメトリックの一覧を確認するには、「[Azure Monitor のサポートされるメトリック](../azure-monitor/platform/metrics-supported.md)」を参照してください。
-
-### <a name="alert-rules"></a>アラート ルール
-
-リソースのメトリックに基づいてアラート ルールを開始できます。 たとえば、Application Gateway のスループットが指定した期間にしきい値を上回るか下回る場合、またはしきい値に等しい場合、アラートで webhook を呼び出したり、管理者に電子メールを送信したりできます。
-
-次の例では、スループットのしきい値を超えた後に管理者に電子メールを送信するアラート ルールの作成手順を説明します。
-
-1. **[メトリック アラートの追加]** を選択して **[ルールの追加]** ページを開きます。 このページには、メトリック ページからもアクセスできます。
-
-   ![[メトリック アラートの追加] ボタン][6]
-
-2. **[ルールの追加]** ページで、名前、条件、通知の各セクションに入力して、 **[OK]** を選択します。
-
-   * **[条件]** セレクターに入力できるのは、 **[より大きい]** 、 **[以上]** 、 **[未満]** 、または **[以下]** の 4 つの値です。
-
-   * **[期間]** セレクターで、5 分から 6 時間までの期間を選択します。
-
-   * **[メールの所有者、投稿者、閲覧者]** を選択すると、そのリソースのアクセス権を持つユーザーに基づいて電子メールを動的に送信できます。 それ以外の場合は、ユーザーのコンマ区切りの一覧を **[追加の管理者メール]** ボックスに指定できます。
-
-   ![[ルールの追加] ページ][7]
-
-しきい値を超えた場合、次の図のような電子メールが送信されます。
-
-![しきい値違反の電子メール][8]
-
-メトリック アラートを作成すると、アラートの一覧が表示されます。 この一覧には、すべてのアラート ルールの概要が示されます。
-
-![アラートとルールの一覧][9]
-
-アラート通知の詳細については、「[Microsoft Azure のアラートの概要](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」を参照してください。
-
-webhook の詳細および webhook とアラートを使用する方法については、「[Azure メトリック アラートでの webhook の構成](../azure-monitor/platform/alerts-webhooks.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

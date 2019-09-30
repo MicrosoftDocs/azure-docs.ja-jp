@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 366c0c50cee521c5e70496403fd77211a875065f
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 740b3fae81521fec2cba31e3b8fd161f767c4380
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606752"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858974"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル:画像の中にある顔を検出してフレームに収める Android アプリの作成
 
@@ -37,7 +37,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `FACE_SUBSCRIPTION_KEY` と `FACE_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+- [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 - [Android Studio](https://developer.android.com/studio/) (API レベル 22 以降) (Face クライアント ライブラリで必要)。
 
 ## <a name="create-the-android-studio-project"></a>Android Studio プロジェクトを作成する
@@ -56,17 +57,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 *activity_main.xml* を開きます。 Layout Editor で、 **[Text]\(テキスト\)** タブを選択し、その内容を次のコードに置き換えます。
 
-[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/res/layout/activity_main.xml?range=1-18)]
+[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/res/layout/activity_main.xml?name=snippet_activitymain)]
 
 ### <a name="create-the-main-class"></a>main クラスを作成する
 
 *MainActivity.java* を開き、既存の `import` ステートメントを次のコードに置き換えます。
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=3-11)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_imports)]
 
 次に、**MainActivity** クラスの内容を次のコードに置き換えます。 これは、新しいアクティビティを開始するイベント ハンドラーを **Button** 上に作成して、ユーザーが写真を選択できるようにするものです。 写真は **ImageView** に表示されます。
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=29-68)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_mainactivity_methods)]
 
 ### <a name="try-the-app"></a>アプリを試す
 
@@ -86,17 +87,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **MainActivity.java** に戻り、次の `import` ステートメントを追加します。
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=13-14)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_face_imports)]
 
 次に、**MainActivity** クラス内の **onCreate** メソッドの上に次のコードを挿入します。
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=17-27)]
-
-`<Subscription Key>` を実際のサブスクリプション キーに置き換える必要があります。 さらに、キーの適切なリージョン識別子を使用して、`<API endpoint>` を実際の Face API エンドポイントに置き換えます (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。 無料試用版のサブスクリプション キーは、**westus** リージョンで生成されます。
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_mainactivity_fields)]
 
 **[Project]\(プロジェクト\)** ウィンドウで **[app]\(アプリ\)** 、 **[manifests]\(マニフェスト\)** を順に展開し、*AndroidManifest.xml* を開きます。 `manifest` 要素の直接の子として、次の要素を挿入します。
 
-[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/AndroidManifest.xml?range=5)]
+[!code-xml[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/AndroidManifest.xml?name=snippet_manifest_entry)]
 
 ## <a name="upload-image-and-detect-faces"></a>画像をアップロードして顔を検出する
 
@@ -106,13 +105,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 次の 2 つのメソッドを **MainActivity** クラスに挿入します。 顔検出が完了すると、アプリは **drawFaceRectanglesOnBitmap** メソッドを呼び出して **ImageView** を変更することに注意してください。 次に、このメソッドを定義します。
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=70-150)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_detection_methods)]
 
 ## <a name="draw-face-rectangles"></a>顔の四角形を描画する
 
 次のヘルパー メソッドを **MainActivity** クラスに挿入します。 このメソッドでは、各 **Face** インスタンスの四角形の座標を使用して、検出されたそれぞれの顔を囲む四角形を描画します。
 
-[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?range=152-173)]
+[!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_drawrectangles)]
 
 最後に、**onActivityResult** 内の **detectAndFrame** メソッドの呼び出しをコメント解除します。
 

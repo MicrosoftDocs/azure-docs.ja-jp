@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/23/2019
 ms.author: banders
-ms.openlocfilehash: 90c7014e3c22ac7186854d5c01b911aa630d20dd
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 9e4e05acd88e9b0f0c17d4dd4caf5eb5a883d63d
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774672"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70012594"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払い
 
@@ -24,7 +24,8 @@ ms.locfileid: "68774672"
 
 > [!IMPORTANT]
 > * 請求書支払い (小切手/電信送金) はビジネス アカウントのみでご利用いただけます。
-> * 請求書支払いに切り替える前に、すべての未払いの料金を支払う必要があります。
+> * 請求書支払いに切り替える前に、すべての未払いの料金を支払います。
+> * 現在、中国のグローバル Azure では、請求書支払いはサポートされていません。
 
 ## <a name="request-to-pay-by-invoice"></a>請求書による支払いを要求する
 
@@ -64,7 +65,7 @@ ms.locfileid: "68774672"
          Specific region & series of Subscription:
 
     - **[会社名]** と **[会社の住所]** は、Azure アカウントに指定した情報と一致させる必要があります。 情報を表示または更新するには、「[Azure アカウントのプロファイル情報を変更する](billing-how-to-change-azure-account-profile.md)」を参照してください。
-    - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加する必要があります。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。 請求連絡先情報を更新するには、[Azure アカウント センター](https://account.azure.com/Profile)に移動します。
+    - 与信限度額を承認する前に、Azure portal で請求連絡先情報を追加します。 連絡先の詳細を会社の買掛金または財務部門に関連付ける必要があります。 請求連絡先情報を更新するには、[Azure アカウント センター](https://account.azure.com/Profile)に移動します。
 
 6. 連絡先情報と優先連絡方法を確認し、 **[作成]** をクリックします。
 
@@ -72,7 +73,7 @@ ms.locfileid: "68774672"
 
 ## <a name="switch-to-invoice-pay-checkwire-transfer"></a>請求書支払い (小切手/電信送金) に切り替える
 
-請求書による支払いが承認されると、Azure portal で請求書支払い (小切手/電信送金) に切り替えられます。
+請求書による支払いが承認されると、Azure portal で請求書支払い (小切手/電信送金) に切り替えることができます。
 
 Microsoft Online Services Program アカウントの場合は、Azure サブスクリプションを小切手/電信送金に切り替えることができます。 Microsoft 顧客契約を結んでいる場合は、課金プロファイルを小切手/電信送金に切り替えることができます。 [アカウントの種類を確認する方法をご覧ください](#check-access-to-a-microsoft-customer-agreement)。
 
@@ -93,7 +94,7 @@ Azure サブスクリプションを請求書支払い (小切手/電信送金) 
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>課金プロファイルを小切手/電信送金に切り替える
 
-課金プロファイルを小切手/電信送金に切り替えるには、次の手順に従います。 課金プロファイルの既定の支払い方法を変更できるのは、Azure にサインアップしたユーザーのみであることに注意してください。
+課金プロファイルを小切手/電信送金に切り替えるには、次の手順に従います。 課金プロファイルの既定の支払い方法を変更できるのは、Azure にサインアップしたユーザーのみです。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. **[コストの管理と請求]** で検索します。

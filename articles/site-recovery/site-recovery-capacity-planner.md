@@ -6,19 +6,18 @@ manager: carmonm
 services: site-recovery
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/27/2018
+ms.date: 08/22/2019
 ms.author: raynew
-ms.openlocfilehash: eeadfd6a57ff8a26f3f124e2a807fcd66e77b85f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7501982f90cd145e0fc918bf976a840323a31127
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61036745"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972572"
 ---
 # <a name="plan-capacity-for-hyper-v-vm-disaster-recovery"></a>Hyper-V VM のディザスター リカバリーの容量を計画する 
 
-[Azure へのデプロイを行う Azure Site Recovery Deployment Planner for Hyper-V](site-recovery-hyper-v-deployment-planner.md) の新しい強化されたバージョンが使用可能になりました。 これは従来のツールに代わるものです。 デプロイの計画には新しいツールを使用します。
-このツールでは次の指標が提供されます。
+Hyper-V から Azure へのデプロイ用の [Azure Site Recovery Deployment Planner] (site-recovery-hyper-v-deployment-planner.md) によって、次のものが提供されます。
 
 * ディスク数、ディスク サイズ、IOPS、変更頻度、いくつかの VM 特性に基づく VM の適格性評価
 * ネットワーク帯域幅ニーズ対 RPO の評価

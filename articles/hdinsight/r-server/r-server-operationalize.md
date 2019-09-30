@@ -1,6 +1,6 @@
 ---
 title: HDInsight の ML サービスの運用化 - Azure
-description: Azure HDInsight で ML サービスを運用化する方法について説明します。
+description: Azure HDInsight で ML Services を使用して、データ モデルを運用化し、予測を行う方法について説明します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 36d2ebe00f735089633240914421e2259181e63e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4980b4d3a4ec7165a4aba3d02561f6c666150924
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448980"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967659"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の ML サービス クラスターの運用化
 
@@ -21,7 +21,7 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight 上の ML サービス クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[ML サービス]** を選択してください。
+* HDInsight 上の ML Services クラスター。 [Azure portal を使用した Apache Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-portal.md)に関するページを参照し、 **[クラスターの種類]** で **[ML Services]** を選択してください。
 
 * Secure Shell (SSH) クライアント:SSH クライアントは、HDInsight クラスターにリモート接続し、そのクラスター上でコマンドを直接実行するために使用されます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -50,31 +50,31 @@ HDInsight で ML サービス クラスターを使用して、ご自身のデ�
 
 1. 選択できるオプションが表示されます。 次のスクリーンショットに示すように、最初のオプションを選択して、**ML Server を運用化のために構成**します。
 
-    ![ワンボックス操作](./media/r-server-operationalize/admin-util-one-box-1.png)
+    ![ワンボックス操作 1](./media/r-server-operationalize/admin-util-one-box-1.png)
 
 1. 次に表示されるオプションでは、ML Server を運用化する方法を選択します。 表示されたオプションから最初のオプションを選択します。それには「**A**」を入力します。
 
-    ![ワンボックス操作](./media/r-server-operationalize/admin-util-one-box-2.png)
+    ![ワンボックス操作 2](./media/r-server-operationalize/admin-util-one-box-2.png)
 
 1. メッセージが表示されたら、ローカル管理者ユーザーのパスワードを入力し、さらに、もう一度入力します。
 
 1. 操作が成功したことを示す出力が表示されます。 また、メニューから他のオプションを選択するよう求められます。 E を選択して、メイン メニューに戻ります。
 
-    ![ワンボックス操作](./media/r-server-operationalize/admin-util-one-box-3.png)
+    ![ワンボックス操作 3](./media/r-server-operationalize/admin-util-one-box-3.png)
 
 1. 必要に応じて、次のように診断テストを実行することで、診断チェックを実行できます。
 
     a. メイン メニューから、**6** を選択して、診断テストを実行します。
 
-    ![ワンボックス操作](./media/r-server-operationalize/diagnostic-1.png)
+    ![diagnostic1](./media/r-server-operationalize/hdinsight-diagnostic1.png)
 
     b. Diagnostic Tests メニューから、**A** を選択します。メッセージが表示されたら、ローカル管理者ユーザーに対して指定したパスワードを入力します。
 
-    ![ワンボックス操作](./media/r-server-operationalize/diagnostic-2.png)
+    ![diagnostic2](./media/r-server-operationalize/hdinsight-diagnostic2.png)
 
     c. 出力を確認し、全体的な正常性が pass であることを確かめます。
 
-    ![ワンボックス操作](./media/r-server-operationalize/diagnostic-3.png)
+    ![diagnostic3](./media/r-server-operationalize/hdinsight-diagnostic3.png)
 
     d. 表示されたメニュー オプションから「**E**」を入力して、メイン メニューに戻ります。次に、「**8**」を入力して、管理ユーティリティを終了します。
 

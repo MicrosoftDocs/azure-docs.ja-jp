@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 884ded67c25aca78225baef2d7e4c5de1cc94fd0
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 48d2463eee2caeaae36118bf736d00eed84c897a
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782285"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186210"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
@@ -23,7 +23,43 @@ ms.locfileid: "68782285"
 
 ## <a name="general"></a>全般
 
-### <a name="components-enabled-not-working"></a>シナリオ: "Update Management" ソリューションのコンポーネントは有効であり、この仮想マシンの構成を行っている
+### <a name="rp-register"></a>シナリオ:サブスクリプションで Automation リソース プロバイダーを登録できない
+
+#### <a name="issue"></a>問題
+
+Automation アカウントでソリューションを使用するときに次のエラーが発生することがあります。
+
+```error
+Error details: Unable to register Automation Resource Provider for subscriptions:
+```
+
+#### <a name="cause"></a>原因
+
+Automation リソース プロバイダーがサブスクリプションに登録されていません。
+
+#### <a name="resolution"></a>解決策
+
+Automation リソース プロバイダーを登録するには、Azure portal で次の手順を実行します。
+
+1. Azure サービスの一覧の下部にある **[すべてのサービス]** をクリックし、 _[全般]_ サービス グループの **[サブスクリプション]** を選択します。
+2. サブスクリプションを選択します。
+3. " _[設定]_ " で、 **[リソース プロバイダー]** をクリックします。
+4. リソース プロバイダーの一覧で、**Microsoft.Automation** リソース プロバイダーが登録されていることを確認します。
+5. このプロバイダーが一覧にない場合は、[](/azure/azure-resource-manager/resource-manager-register-provider-errors)示されている手順に従って **Microsoft.Automation** プロバイダーを登録します。
+
+### <a name="mw-exceeded"></a>シナリオ:スケジュールされた更新管理がエラー MaintenanceWindowExceeded で失敗した
+
+#### <a name="issue"></a>問題
+
+更新の既定のメンテナンス時間は 120 分です。 メンテナンス期間は、最大 6 時間つまり 360 分まで増やすことができます。
+
+#### <a name="resolution"></a>解決策
+
+スケジュール済みの更新プログラムの展開で失敗したものがあれば編集し、メンテナンス期間を延長します。
+
+メンテナンス期間の詳細については、「[更新プログラムをインストールする](../automation-update-management.md#install-updates)」を参照してください。
+
+### <a name="components-enabled-not-working"></a>シナリオ:"Update Management" ソリューションのコンポーネントは有効であり、この仮想マシンの構成を行っている
 
 #### <a name="issue"></a>問題
 
@@ -77,6 +113,24 @@ $s = New-AzureRmAutomationSchedule -ResourceGroupName mygroup -AutomationAccount
 
 New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -AutomationAccountName $aa -Schedule $s -Windows -AzureVMResourceId $azureVMIdsW -NonAzureComputer $nonAzurecomputers -Duration (New-TimeSpan -Hours 2) -IncludedUpdateClassification Security,UpdateRollup -ExcludedKbNumber KB01,KB02 -IncludedKbNumber KB100
 ```
+
+### <a name="updates-nodeployment"></a>シナリオ:デプロイなしの更新プログラムのインストール
+
+### <a name="issue"></a>問題
+
+Update Management に Windows コンピューターを登録すると、デプロイなしで更新プログラムがインストールされる場合があります。
+
+### <a name="cause"></a>原因
+
+Windows では、更新プログラムは、使用可能になるとすぐに自動的にインストールされます。 このため、更新プログラムをコンピューターにデプロイするスケジュールを設定しなかった場合、混乱が生じる可能性があります。
+
+### <a name="resolution"></a>解決策
+
+Windows レジストリキー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` の既定は "4" - **自動でダウンロードしてインストールする**に設定されています。
+
+Update Management クライアントの場合は、このキーを "3" - **自動でダウンロードするが、自動でインストールはしない**に設定することをお勧めします。
+
+詳細については、[自動更新の構成](https://docs.microsoft.com/en-us/windows/deployment/update/waas-wu-settings#configure-automatic-updates)に関する記事を参照してください。
 
 ### <a name="nologs"></a>シナリオ:Update Management のポータルにマシンが表示されない
 
@@ -242,6 +296,7 @@ Failed to start the runbook. Check the parameters passed. RunbookName Patch-Micr
 |`0x8024001E`| サービスまたはシステムがシャットダウン中のため、更新操作が完了しませんでした。|
 |`0x8024002E`| Windows Update サービスが無効です。|
 |`0x8024402C`     | WSUS サーバーを使用している場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` の下の `WUServer` と `WUStatusServer` のレジストリ値に正しい WSUS サーバーが含まれていることを確認します。        |
+|`0x80072EE2`|ネットワーク接続の問題、または構成された WSUS サーバーとの通信に問題があります。 WSUS 設定を確認し、クライアントからアクセス可能であることを確認します。|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update サービス (wuauserv) が実行されており、無効になっていないことを確認します。        |
 |その他の一般的な例外     | 考えられる解決策をインターネットで検索し、最寄りの IT サポートと連携してください。         |
 
@@ -298,7 +353,31 @@ Linux 上で正常に開始した後に更新プログラムの実行中にエ�
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
 ```
 
-### <a name="other"></a>シナリオ:問題が上記の一覧にない
+## <a name="patches-are-not-installed"></a>修正プログラムがインストールされない
+
+### <a name="machines-do-not-install-updates"></a>マシンで更新プログラムがインストールされない
+
+* マシン上で直接更新プログラムを実行してみてください。 マシンで更新プログラムを実行できない場合は、[トラブルシューティング ガイドで、発生する可能性のあるエラーの一覧](https://docs.microsoft.com/azure/automation/troubleshoot/update-management#hresult)をご覧ください。
+* 更新プログラムがローカルで実行される場合は、[Update Management からの VM の削除](https://docs.microsoft.com/azure/automation/automation-update-management#remove-a-vm-from-update-management)に関するページで説明されている手順に従って、マシン上でエージェントを削除し、再インストールしてみてください。
+
+### <a name="i-know-updates-are-available-but-they-dont-show-as-needed-on-my-machines"></a>更新プログラムを利用できることは知っていますが、必要なときに自分のコンピューターに表示されない
+
+* これは、多くの場合、WSUS/SCCM から更新プログラムを取得するようにマシンが構成されているのに、WSUS/SCCM で更新プログラムが承認されなかったときに起こります。
+* WSUS/SCCM のためにマシンが構成されているかどうかは、[このドキュメントの「レジストリを編集して自動更新を構成する」セクション内のレジストリ キーに対して "UseWUServer" レジストリ キーを相互参照する](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)ことでチェックできます
+
+### <a name="updates-show-as-installed-but-i-cant-find-them-on-my-machine"></a>**インストールされると更新プログラムが表示されますが、コンピューター上で検索できません**
+
+* 更新プログラムは多くの場合、他の更新プログラムによって置き換えられます。 詳細については、[Windows Update のトラブルシューティング ガイドの「この更新プログラムの置き換え」](https://docs.microsoft.com/windows/deployment/update/windows-update-troubleshooting#the-update-is-not-applicable-to-your-computer)を参照してください
+
+### <a name="installing-updates-by-classification-on-linux"></a>**Linux での更新プログラムの分類別インストール**
+
+* 分類 ([緊急更新プログラムとセキュリティ更新プログラム]) 別に Linux に更新プログラムを展開する場合、特に CentOS に関する重要な注意事項があります。 これらの[制限事項は、Update Management の概要に関するページに記載されています](https://docs.microsoft.com/azure/automation/automation-update-management#linux-2)
+
+### <a name="kb2267602-is-consistently--missing"></a>**KB2267602 が一貫して欠落している**
+
+* KB2267602 は [Windows Defender の定義更新](https://www.microsoft.com/wdsi/definitions)です。 これは毎日更新されます。
+
+## <a name="other"></a>シナリオ:問題が上記の一覧にない
 
 ### <a name="issue"></a>問題
 

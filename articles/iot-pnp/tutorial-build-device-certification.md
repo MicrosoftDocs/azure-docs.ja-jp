@@ -1,5 +1,5 @@
 ---
-title: 認定の準備が整った Azure IoT プラグ アンド プレイ プレビュー デバイスの構築 | Microsoft Docs
+title: 認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスの構築 | Microsoft Docs
 description: デバイス開発者として、認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスを構築する方法について学習します。
 author: tbhagwat3
 ms.author: tanmayb
@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: bfa611eba8e7a990626fbace8b930962615e0594
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 524bc3b2650ad7b435cba6b6b9d4084ffa5cf96c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878753"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932672"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>認定の準備が整った IoT プラグ アンド プレイ プレビュー デバイスの構築
 
@@ -33,7 +33,7 @@ ms.locfileid: "69878753"
 このチュートリアルを完了するには、次のものが必要です。
 
 - [Visual Studio Code](https://code.visualstudio.com/download)
-- [VS Code 用 Azure IoT Workbench 拡張機能](https://github.com/Azure/Azure-IoT-PnP-Preview/blob/master/VSCode/README.md#installation)
+- [VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 拡張機能パック
 
 また、[デバイス機能モデルを使用してデバイスを作成する方法のクイックスタート](quickstart-create-pnp-device.md)で作成した IoT プラグ アンド プレイ デバイスも必要です。
 
@@ -85,6 +85,18 @@ VS Code で**デバイス情報**インターフェイスを表示するには:
 
 1. **デバイス情報**インターフェイスのローカル コピーを作成するために、フィルター処理された一覧でこれを選択し、 **[ダウンロード]** を選択します。 VS Code に、インターフェイス ファイルが表示されます。
 
+Azure CLI を使用して**デバイス情報**インターフェイスを表示するには:
+
+1. [Azure IoT CLI 拡張機能をインストールします](howto-install-pnp-cli.md)。
+
+1. 次の Azure CLI コマンドを使用して、デバイス情報インターフェイス ID を含むインターフェイスを表示します。
+
+    ```cmd/sh
+    az iot pnp interface show --interface urn:azureiot:DeviceManagement:DeviceInformation:1
+    ```
+
+詳細については、[Azure CLI 用の Azure IoT 拡張機能のインストールと使用](howto-install-pnp-cli.md)に関するページを参照してください。
+
 ## <a name="update-device-code"></a>デバイス コードの更新
 
 ### <a name="enable-device-provisioning-through-the-azure-iot-device-provisioning-service-dps"></a>Azure IoT Device Provisioning Service (DPS) を介したデバイス プロビジョニングを有効にする
@@ -124,7 +136,7 @@ VS Code で**デバイス情報**インターフェイスを表示するには:
 
 #### <a name="implement-the-model-information-and-sdk-information-interfaces"></a>モデル情報と SDK 情報のインターフェイスを実装する
 
-Azure IoT device SDK は、モデル情報と SDK 情報のインターフェイスを実装します。 VS Code のコード生成関数を使用すると、デバイス コードで Azure IoT プラグ アンド プレイ デバイス SDK が使用されます。
+Azure IoT device SDK は、モデル情報と SDK 情報のインターフェイスを実装します。 VS Code のコード生成関数を使用すると、デバイス コードで IoT プラグ アンド プレイ デバイス SDK が使用されます。
 
 Azure IoT device SDK を使用しないことを選択した場合は、SDK のソース コードを独自の実装の参照用に使用できます。
 

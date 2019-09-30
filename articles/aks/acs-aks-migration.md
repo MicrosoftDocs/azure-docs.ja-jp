@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: dcee8da943603fb0978caf9992be76347ca197d6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 66f76a8a706f60df786786cbd1ce00b7eafd8d7e
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65977709"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097894"
 ---
 # <a name="migrate-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Azure Container Service (ACS) から Azure Kubernetes Service (AKS) に移行する
 
@@ -35,10 +35,9 @@ ACS と AKS では、移行に影響を与える重要な部分に違いがあ�
 
 ## <a name="differences-between-kubernetes-versions"></a>Kubernetes のバージョン間の違い
 
-Kubernetes の新しいバージョンに移行 (たとえば、1.7.x から 1.9.x に移行) する場合は、Kubernetes API に対するいくつかの変更を把握するために、次のリソースを確認してください。
+Kubernetes の新しいバージョンに移行している場合は、次のリソースで Kubernetes におけるバージョン管理方法を理解してください。
 
-* [ThirdPartyResource を CustomResourceDefinition に移行する](https://kubernetes.io/docs/tasks/access-kubernetes-api/migrate-third-party-resource/)
-* [バージョン 1.8 および 1.9 でのワークロード API の変更点](https://kubernetes.io/docs/reference/workloads-18-19/)
+* [Kubernetes のバージョンとバージョン スキューのサポート ポリシー](https://kubernetes.io/docs/setup/release/version-skew-policy/#supported-versions)
 
 ## <a name="migration-considerations"></a>移行に関する考慮事項
 
@@ -48,7 +47,7 @@ Kubernetes コントロール プレーンは AKS によって管理されます
 
 例:
 
-| Name | Count | VM サイズ | オペレーティング システム |
+| 名前 | Count | VM サイズ | オペレーティング システム |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standard_D2_v2 | Windows |

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: lahugh
-ms.openlocfilehash: 668d686f296763f5ed51dc6361691352d22e0738
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 965c1181399b76523b624d53dc47e59de0208ecb
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094712"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258263"
 ---
 # <a name="pool-resize-start-event"></a>プールのサイズ変更の開始イベント
 
@@ -26,10 +26,12 @@ ms.locfileid: "70094712"
 
 ```
 {
-    "poolId": "myPool1",
-    "nodeDeallocationOption": "invalid",
-    "currentDedicated": 0,
-    "targetDedicated": 2,
+    "id": "myPool1",
+    "nodeDeallocationOption": "Invalid",
+    "currentDedicatedNodes": 0,
+    "targetDedicatedNodes": 2,
+    "currentLowPriorityNodes": 0,
+    "targetLowPriorityNodes": 2,
     "enableAutoScale": false,
     "isAutoPool": false
 }
@@ -37,9 +39,11 @@ ms.locfileid: "70094712"
 
 |要素|型|メモ|
 |-------------|----------|-----------|
-|poolId|string|プールの ID。|
-|nodeDeallocationOption|string|プールからノードが削除されるとき、プールのサイズが減少するかを指定します。<br /><br /> 次のいずれかの値になります。<br /><br /> **requeue** – 実行中のタスクを終了して、再度キューに入れます。 このタスクは、ジョブが有効になると再び実行されます。 タスクが終了するとすぐにノードを削除します。<br /><br /> **terminate** – 実行中のタスクを終了します。 タスクは再び実行されることがありません。 タスクが終了するとすぐにノードを削除します。<br /><br /> **taskcompletion** – 現在実行中のタスクが完了することを許可します。 待機中に新しいタスクをスケジュールしません。 すべてのタスクが完了するとノードを削除します。<br /><br /> **Retaineddata** - 現在実行中のタスクを完了できるようにしてから、すべてのタスク データ保有期間が終了するまで待機します。 待機中に新しいタスクをスケジュールしません。 すべてのタスク保有期間が終了したとき、ノードを削除します。<br /><br /> 既定値は requeue です。<br /><br /> プールのサイズが増加している場合、値は**無効**に設定されます。|
-|currentDedicated|Int32|プールに現在割り当てられているコンピューティング ノードの数。|
-|targetDedicated|Int32|プールに要求されたコンピューティング ノード数。|
-|enableAutoScale|Bool|プールのサイズを自動的に調整し続けるかどうかを指定します。|
-|isAutoPool|Bool|プールがジョブの AutoPool メカニズムを介して作成されたかどうかを指定します。|
+|`id`|string|プールの ID。|
+|`nodeDeallocationOption`|string|プールからノードが削除されるとき、プールのサイズが減少するかを指定します。<br /><br /> 次のいずれかの値になります。<br /><br /> **requeue** – 実行中のタスクを終了して、再度キューに入れます。 このタスクは、ジョブが有効になると再び実行されます。 タスクが終了するとすぐにノードを削除します。<br /><br /> **terminate** – 実行中のタスクを終了します。 タスクは再び実行されることがありません。 タスクが終了するとすぐにノードを削除します。<br /><br /> **taskcompletion** – 現在実行中のタスクが完了することを許可します。 待機中に新しいタスクをスケジュールしません。 すべてのタスクが完了するとノードを削除します。<br /><br /> **Retaineddata** - 現在実行中のタスクを完了できるようにしてから、すべてのタスク データ保有期間が終了するまで待機します。 待機中に新しいタスクをスケジュールしません。 すべてのタスク保有期間が終了したとき、ノードを削除します。<br /><br /> 既定値は requeue です。<br /><br /> プールのサイズが増加している場合、値は**無効**に設定されます。|
+|`currentDedicatedNodes`|Int32|プールに現在割り当てられているコンピューティング ノードの数。|
+|`targetDedicatedNodes`|Int32|プールに要求されたコンピューティング ノード数。|
+|`currentLowPriorityNodes`|Int32|プールに現在割り当てられているコンピューティング ノードの数。|
+|`targetLowPriorityNodes`|Int32|プールに要求されたコンピューティング ノード数。|
+|`enableAutoScale`|Bool|プールのサイズを自動的に調整し続けるかどうかを指定します。|
+|`isAutoPool`|Bool|プールがジョブの AutoPool メカニズムを介して作成されたかどうかを指定します。|

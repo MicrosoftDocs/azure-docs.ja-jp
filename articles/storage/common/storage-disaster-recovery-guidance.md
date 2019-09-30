@@ -9,12 +9,12 @@ ms.date: 02/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7785c6b5c575bf862b1ba0edccc75fc1c6031b08
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: b2cd7232bce674dfa5aa2c6f4b6d9386fa7a189b
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015655"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376445"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)
 
@@ -168,7 +168,6 @@ VM をシャットダウンすると、一時ディスクに格納されてい�
 次の機能またはサービスは、プレビュー リリースのアカウントのフェールオーバーではサポートされていません。
 
 - Azure File Sync では、ストレージ アカウントのフェールオーバーはサポートされていません。 Azure File Sync でクラウド エンドポイントとして使用されている Azure ファイル共有を含むストレージ アカウントは、フェールオーバーしないでください。 それを行うと、同期の動作が停止し、新しく階層化されたファイルの場合は予期せずデータが失われる可能性があります。  
-- Azure Data Lake Storage Gen2 階層型名前空間を使用しているストレージ アカウントは、フェールオーバーできません。
 - アーカイブ済みの BLOB 含むストレージ アカウントは、フェールオーバーできません。 アーカイブ済み BLOB は、フェールオーバーする計画がない別のストレージ アカウントで保持してください。
 - Premium ブロック BLOB 含むストレージ アカウントは、フェールオーバーできません。 現在、Premium ブロック BLOB をサポートするストレージ アカウントでは、geo 冗長がサポートされていません。
 - フェールオーバーの完了後、フェールオーバー元で有効になっている場合は、[イベント サブスクリプション](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-overview)、[ライフサイクル ポリシー](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)、[Storage Analytics Logging](https://docs.microsoft.com/rest/api/storageservices/about-storage-analytics-logging) の動作が停止します。

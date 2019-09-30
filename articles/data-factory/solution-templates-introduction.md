@@ -8,15 +8,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/04/2019
-author: gauravmalhot
-ms.author: gamal
+author: djpmsft
+ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: d239e44364c3a4879f2f131717511385a4bd7037
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: eb7a7eb8e1bdacae4b74e3a0019a376c440fe4d5
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234446"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091974"
 ---
 # <a name="templates"></a>テンプレート
 
@@ -56,7 +56,7 @@ Data Factory では、データ ファクトリ パイプライン テンプレ�
 
     -   \<ソース\> から \<ターゲット\> へのコピー
 
-        -   Amazon S3 から Azure Data Lake Store Gen 2 へ
+        -   [Amazon S3 から Azure Data Lake Store Gen 2 へ](solution-template-migration-s3-azure.md)
 
         -   Google Big Query から Azure Data Lake Store Gen 2 へ
 

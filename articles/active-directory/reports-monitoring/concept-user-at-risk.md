@@ -15,26 +15,26 @@ ms.date: 01/17/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 950d0dc2f4a1a88e0c317b3398c7492cc6c52e2a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 3e6b79c7d5c2ed9744dc00eb1588c35f8ea94a76
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989839"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127645"
 ---
 # <a name="users-flagged-for-risk-report-in-the-azure-portal"></a>Azure portal におけるリスクのフラグ付きユーザー レポート
 
-Azure Active Directory (Azure AD) は、ユーザー アカウントに関連する疑わしい動作を検出します。 検出された動作ごとに、"[リスク イベント](concept-risk-events.md)" と呼ばれるレコードが作成されます。
+Azure Active Directory (Azure AD) は、ユーザー アカウントに関連する疑わしい動作を検出します。 検出された動作ごとに、"[リスク検出](concept-risk-events.md)" と呼ばれるレコードが作成されます。
 
 セキュリティ レポートには、[Azure portal](https://portal.azure.com) から **[Azure Active Directory]** ブレードを選択し、 **[セキュリティ]** セクションに移動することでアクセスできます。 
 
-検出されたリスク イベントは、以下のものの計算に使用されます。
+検出されたリスク検出は、以下のものの計算に使用されます。
 
 - **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
 
 - **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 
 
-これらのリスク イベントをトリガーするポリシーを構成する方法については、[ユーザー リスク ポリシーを構成する方法](../identity-protection/howto-user-risk-policy.md)に関するページを参照してください。 
+これらのリスク検出をトリガーするポリシーを構成する方法については、[ユーザー リスク ポリシーを構成する方法](../identity-protection/howto-user-risk-policy.md)に関するページを参照してください。 
 
 ![リスクの高いサインイン](./media/concept-user-at-risk/10.png)
 
@@ -45,9 +45,9 @@ Azure Active Directory (Azure AD) は、ユーザー アカウントに関連す
 
 - リスクのフラグ付きユーザーは、**Azure Active Directory の Free エディションと Basic エディション**で一覧表示できます。 
 
-- 加えて、**Azure Active Directory Premium 1** エディションでは、各レポートについて検出された、基になるリスク イベントの一部を調べることができます。 
+- 加えて、**Azure Active Directory Premium 1** エディションでは、各レポートについて検出された、基になるリスク検出の一部を調べることができます。 
 
-- **Azure Active Directory Premium 2** エディションでは、基になるすべてのリスク イベントについて最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
+- **Azure Active Directory Premium 2** エディションでは、基になるすべてのリスク検出について最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
 
 
 ## <a name="users-at-risk-report-for-azure-ad-free-and-basic-editions"></a>Azure AD の Free エディションと Basic エディションにおける危険な状態のユーザー レポート
@@ -73,7 +73,7 @@ Azure AD Premium エディションのリスクのフラグ付きユーザー �
 
 - 侵害された可能性のあるユーザー アカウントの一覧 
 
-- 検出された[リスク イベントの種類](concept-risk-events.md)に関する集計情報
+- 検出された[リスク検出の種類](concept-risk-events.md)に関する集計情報
 
 - レポートをダウンロードするオプション
 
@@ -89,11 +89,11 @@ Azure AD Premium エディションのリスクのフラグ付きユーザー �
 
 - すべてのイベントを閉じる
 
-- そのユーザーについて報告されたリスク イベントを調査する 
+- そのユーザーについて報告されたリスク検出を調査する 
 
 ![リスクの高いサインイン](./media/concept-user-at-risk/324.png)
 
-リスク イベントを調査するには、一覧からリスク イベントを 1 つ選択してその **[詳細]** ブレードを表示します。 **[詳細]** ブレードで、リスク イベントを手動で閉じるか、手動で閉じたリスク イベントを再アクティブ化することができます。 
+リスク検出を調査するには、一覧からリスク検出を 1 つ選択してその **[詳細]** ブレードを開きます。 **[詳細]** ブレードで、リスク検出を手動で閉じるか、手動で閉じたリスク検出を再アクティブ化することができます。 
 
 ![リスクの高いサインイン](./media/concept-user-at-risk/325.png)
 

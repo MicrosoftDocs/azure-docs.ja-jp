@@ -1,22 +1,19 @@
 ---
 title: カスタム イメージを使用して Linux 上で Azure Functions を作成する
 description: カスタム Linux イメージで実行する Azure Functions を作成する方法について説明します。
-services: functions
-keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 06/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
-ms.devlang: azure-cli
-manager: jeconnoc
-ms.openlocfilehash: 525cb444ad7b1b78de867f83539ac338ddd144e9
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+manager: gwallace
+ms.openlocfilehash: 1865b1b96b5b8794f1518d639825ccd2f1dcd090
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562918"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773136"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>カスタム イメージを使用して Linux で関数を作成する
 
@@ -56,7 +53,7 @@ Azure Functions を使用して、独自のカスタム コンテナー内の Li
 
 ## <a name="create-the-local-function-app-project"></a>ローカルの関数アプリ プロジェクトを作成する
 
-コマンド ラインから次のコマンドを実行し、現在のローカル ディレクトリの `MyFunctionProj` フォルダー内に関数アプリ プロジェクトを作成します。
+コマンド ラインから次のコマンドを実行し、現在のローカル ディレクトリの `MyFunctionProj` フォルダー内に関数アプリ プロジェクトを作成します。 Python プロジェクトの場合は、[仮想環境で実行する必要があります](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional)。
 
 ```bash
 func init MyFunctionProj --docker
@@ -68,7 +65,7 @@ func init MyFunctionProj --docker
 
 * `dotnet`: .NET Core クラス ライブラリ プロジェクト (.csproj) を作成します。
 * `node`: JavaScript プロジェクトを作成します。
-* `python`: Python プロジェクトを作成します。
+* `python`: Python プロジェクトを作成します。  
 
 コマンドを実行すると、次のような出力が表示されます。
 
@@ -146,9 +143,8 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 
 ![Function App をローカルでテストします。](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-必要に応じて、もう一度関数をテストできます。今回は、次の URL を使用してローカルのコンテナーでテストします。
-
-`http://localhost:8080/api/myhttptrigger?name=<yourname>`
+> [!NOTE]
+> この時点で、特定の HTTP 関数を呼び出そうとすると、HTTP 401 エラー応答が返されます。 関数が実行されているのはローカル コンテナー内ですが、Azure 内で実行される想定になっているためです。つまり、Azure 内で実行するのであれば関数キーが必要になります。 コンテナーはまだ関数アプリに公開されていないため、使用できる関数キーは存在しません。 後で Core Tools を使用してコンテナーを公開すると、関数キーが見えるようになります。 ローカル コンテナーで実行されている関数をテストしたい場合は、[承認キー](functions-bindings-http-webhook.md#authorization-keys)を `anonymous` に変更してください。 
 
 コンテナー内に Function App を確認した後で、実行を停止します。 これで、カスタム イメージを Docker Hub アカウントにプッシュできます。
 
@@ -162,7 +158,7 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 docker login --username <docker-id>
 ```
 
-「ログインに成功しました」のメッセージで、ログインしていることを確認します。 サインインしたら、[docker push](https://docs.docker.com/engine/reference/commandline/push/) コマンドを使用して Docker Hub にイメージをプッシュします。
+"ログインに成功しました" のメッセージで、ログインしていることを確認します。 サインインしたら、[docker push](https://docs.docker.com/engine/reference/commandline/push/) コマンドを使用して Docker Hub にイメージをプッシュします。
 
 ```bash
 docker push <docker-id>/mydockerimage:v1.0.0

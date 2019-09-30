@@ -8,15 +8,15 @@ editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 09/03/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 30bd7c68ae1c88aba288b515d0ec32581f90b868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9c7f920c6b66995d53ef742a9faf574286a51d69
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088181"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390440"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions-preview"></a>App Service と Azure Functions の Key Vault 参照を使用する (プレビュー)
 
@@ -38,7 +38,8 @@ Key Vault からシークレットを読み取るには、Key Vault を作成し
 
 1. 先に作成したアプリケーション ID に対して、[Key Vault でアクセス ポリシー](../key-vault/key-vault-secure-your-key-vault.md#key-vault-access-policies)を作成します。 このポリシーで "Get" シークレット アクセス許可を有効にします。 "承認されているアプリケーション" または `applicationId` 設定を構成しないでください。これは、マネージド ID との互換性がないためです。
 
-    キー コンテナーのアプリケーション ID へのアクセス許可は 1 回限りの操作であり、すべての Azure サブスクリプションで同じです。 これを使用して、必要な数だけ証明書をデプロイできます。 
+    > [!NOTE]
+    > Key Vault 参照では現在、[ネットワーク制限](../key-vault/key-vault-overview-vnet-service-endpoints.md)があるキー コンテナーに格納されているシークレットを解決できません。
 
 ## <a name="reference-syntax"></a>参照構文
 
@@ -184,3 +185,27 @@ Function App の擬似テンプレートの例は次のようになります。
 
 > [!NOTE] 
 > この例では、ソース管理デプロイはアプリケーション設定に依存します。 アプリ設定は非同期で更新されるため、通常、これは安全ではありません。 しかしながら、`WEBSITE_ENABLE_SYNC_UPDATE_SITE` アプリケーション設定を含めているため、同期で更新されます。 つまり、ソース管理デプロイは、アプリケーションが完全に更新されたときにのみ開始されます。
+
+## <a name="troubleshooting-key-vault-references"></a>Key Vault 参照のトラブルシューティング
+
+参照が正しく解決されない場合は、代わりに参照値が使用されます。 つまり、アプリケーションの設定では、値の構文が `@Microsoft.KeyVault(...)` である環境変数が作成されます。 この場合に、アプリケーションで特定の構造のシークレットが想定されていると、エラーがスローされることがあります。
+
+最も一般的な原因は、[Key Vault アクセス ポリシー](#granting-your-app-access-to-key-vault)が正しく構成されていないことです。 ただし、シークレットが既に存在していないか、参照自体の構文エラーが原因である可能性もあります。
+
+構文が正しい場合は、組み込みの検出機能を使用して現在の解決状態を確認して、エラーの他の原因を確認できます。
+
+### <a name="using-the-detector-for-app-service"></a>App Service の検出機能の使用
+
+1. ポータルで、アプリに移動します。
+2. **[Diagnose and solve prolems]\(問題の診断と解決\)** を選択します。
+3. **[Availability and Performance]\(可用性とパフォーマンス\)** を選択し、 **[Web app down]\(Web アプリのダウン\)** を選択します。
+4. **[Key Vault Application Settings Diagnostics]\(Key Vault のアプリケーション設定の診断\)** を見つけて、 **[詳細情報]** をクリックします。
+
+
+### <a name="using-the-detector-for-azure-functions"></a>Azure Functions の検出機能の使用
+
+1. ポータルで、アプリに移動します。
+2. **[プラットフォーム機能]** に移動します。
+3. **[Diagnose and solve prolems]\(問題の診断と解決\)** を選択します。
+4. **[Availability and Performance]\(可用性とパフォーマンス\)** を選択し、 **[Function app down or reporting errors]\(関数アプリのダウンまたはエラーの報告\)** を選択します。
+5. **[Key Vault Application Settings Diagnostics]\(Key Vault のアプリケーション設定の診断\)** をクリックします。

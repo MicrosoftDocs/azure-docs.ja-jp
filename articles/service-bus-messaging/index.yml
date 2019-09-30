@@ -1,163 +1,115 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Service Bus メッセージングのドキュメント
+summary: オンプレミスとクラウド環境の間でアプリケーションやサービスを接続するメッセージングを設定する方法について説明します。
 metadata:
-  document_id: ''
-  title: Azure Service Bus メッセージングのドキュメント - チュートリアル、クイック スタート、API リファレンス
-  meta.description: Learn how to set up messaging that connects applications and services across on-premises and cloud environments.
+  title: Azure Service Bus メッセージングのドキュメント
+  description: オンプレミスとクラウド環境の間でアプリケーションやサービスを接続するメッセージングを設定する方法について説明します。
   services: service-bus-messaging
-  author: spelluru
-  manager: femila
   ms.service: service-bus-messaging
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 05/16/2018
+  ms.collection: collection
+  author: spelluru
   ms.author: spelluru
-abstract:
-  description: Azure Service Bus は、アプリケーションとサービスの間で情報を送信するために使用できるマルチテナント クラウド メッセージング サービスです。 非同期操作により、柔軟なブローカー メッセージング、構造化された先入れ先出し型 (FIFO) のメッセージング、および発行/購読機能が可能になります。<p>Azure Service Bus のメッセージング サービスを使用して、キューとの間でメッセージを送受信し、トピックとサブスクリプションを使用してメッセージを発行、サブスクライブする方法を説明します。</p>
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/service-bus-messaging/media/index/azure-messaging-and-event-based-architecture.png'
-      width: 250
-    title: 'Azure メッセージングおよびイベントベースのアーキテクチャ (1:24:32)'
-    href: 'https://azure.microsoft.com/resources/videos/build-2018-azure-messaging-and-event-based-architecture-in-the-real-world-lessons-learned-rebuilding-microsoft-s-supply-chain-on-azure-serverless/'
-    width: 250
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Service Bus <b>キュー</b>との間でメッセージを送受信する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_net.svg
-            text: .NET
-            href: /azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_java.svg
-            text: Java
-            href: /azure/service-bus-messaging/service-bus-java-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_nodejs.svg
-            text: Node.js
-            href: /azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_python.svg
-            text: Python
-            href: /azure/service-bus-messaging/service-bus-python-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/ruby.svg
-            text: Ruby
-            href: /azure/service-bus-messaging/service-bus-ruby-how-to-use-queues
-          - image:
-              src: /azure/service-bus-messaging/media/index/portal.svg
-            text: Azure ポータル
-            href: /azure/service-bus-messaging/service-bus-quickstart-portal
-          - image:
-              src: /azure/service-bus-messaging/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/service-bus-messaging/service-bus-quickstart-cli
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/service-bus-messaging/service-bus-quickstart-powershell
-      - type: paragraph
-        text: Service Bus の<b>トピックとサブスクリプション</b>を使用してメッセージを発行、サブスクライブする方法を説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_net.svg
-            text: .NET
-            href: /azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_java.svg
-            text: Java
-            href: /azure/service-bus-messaging/service-bus-java-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_nodejs.svg
-            text: Node.js
-            href: /azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_php.svg
-            text: PHP
-            href: /azure/service-bus-messaging/service-bus-php-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_python.svg
-            text: Python
-            href: /azure/service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/ruby.svg
-            text: Ruby
-            href: /azure/service-bus-messaging/service-bus-ruby-how-to-use-topics-subscriptions
-          - image:
-              src: /azure/service-bus-messaging/media/index/portal.svg
-            text: Azure ポータル
-            href: /azure/service-bus-messaging/service-bus-quickstart-portal
-          - image:
-              src: /azure/service-bus-messaging/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/service-bus-messaging/service-bus-quickstart-cli
-          - image:
-              src: /azure/service-bus-messaging/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/service-bus-messaging/service-bus-quickstart-powershell
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure Service Bus を使用してメッセージの作成、管理、送受信を行う方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-cli">トピック/サブスクリプションと Azure CLI を使用して在庫の品揃えを更新する</a>
-          - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-portal">トピック/サブスクリプションと Azure portal を使用して在庫の品揃えを更新する</a>
-          - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-powershell">トピック/サブスクリプションと Azure PowerShell を使用して在庫の品揃えを更新する</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Service Bus を使用してメッセージ ベース通信ワークフローを実装する
-            href: /learn/modules/implement-message-workflows-with-service-bus/
-            image:
-              src: /learn/achievements/implement-message-workflows-with-service-bus.svg
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-service-bus">対話型学習の詳細...</a>
-  - title: 無料の Pluralsight ビデオ トレーニング
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: .NET を用いた Azure での開発
-            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 一般的なタスクを管理するためのスクリプトを探します。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-service-bus/tree/master/samples/Management">Azure PowerShell</a>'
-          - html: '<a href="https://github.com/Azure/azure-service-bus/tree/master/samples/Management">Azure CLI</a>'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/powershell/module/az.servicebus/">Azure PowerShell</a></p><p><a href="/cli/azure/servicebus">Azure CLI</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET Framework</a></p><p><a href="/dotnet/api/microsoft.azure.servicebus">.NET Standard</a></p><p><a href="/java/api/overview/azure/servicebus">Java</a></p><p><a href="/javascript/api/overview/azure/service-bus">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/servicebus/">REST API リファレンス</a></p>
+  ms.date: 09/12/2019
+  ms.openlocfilehash: e1104c8caf1080aab3b6c5300dcbe4cd04d6b61a
+  ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70962494"
+landingContent:
+- title: Service Bus メッセージングについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Service Bus メッセージングとは
+      url: service-bus-messaging-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure メッセージング サービスの比較
+      url: ../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json
+    - text: Azure キューと Service Bus キューの比較
+      url: service-bus-azure-and-service-bus-queues-compared-contrasted.md
+    - text: キュー、トピック、サブスクリプション
+      url: service-bus-queues-topics-subscriptions.md
+- title: Service Bus キューを作成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure ポータル
+      url: service-bus-quickstart-portal.md
+    - text: Azure CLI
+      url: service-bus-quickstart-cli.md
+    - text: Azure PowerShell
+      url: service-bus-quickstart-powershell.md
+    - text: Azure Resource Manager テンプレート
+      url: service-bus-resource-manager-namespace-queue.md
+- title: Service Bus トピックとサブスクリプションの作成
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure ポータル
+      url: service-bus-quickstart-topics-subscriptions-portal.md
+    - text: Azure Resource Manager テンプレート
+      url: service-bus-resource-manager-namespace-topic.md
+- title: メッセージの送受信 - キュー
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET
+      url: service-bus-dotnet-get-started-with-queues.md
+    - text: Java
+      url: service-bus-java-how-to-use-queues.md
+    - text: Node.js
+      url: service-bus-nodejs-how-to-use-queues-new-package.md
+    - text: Python
+      url: service-bus-python-how-to-use-queues.md
+    - text: PHP
+      url: service-bus-php-how-to-use-queues.md
+    - text: Ruby
+      url: service-bus-ruby-how-to-use-queues.md
+- title: メッセージの発行とサブスクライブ
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET
+      url: service-bus-dotnet-how-to-use-topics-subscriptions.md
+    - text: Java
+      url: service-bus-java-how-to-use-topics-subscriptions.md
+    - text: Node.js
+      url: service-bus-nodejs-how-to-use-topics-subscriptions-new-package.md
+    - text: Python
+      url: service-bus-python-how-to-use-topics-subscriptions.md
+    - text: PHP
+      url: service-bus-php-how-to-use-topics-subscriptions.md
+    - text: Ruby
+      url: service-bus-ruby-how-to-use-topics-subscriptions.md
+- title: 監視と管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell を使用したエンティティのプロビジョニング
+      url: service-bus-manage-with-ps.md
+    - text: Azure Monitor を使用した Service Bus の監視
+      url: service-bus-metrics-azure-monitor.md
+    - text: 診断ログの設定
+      url: service-bus-diagnostic-logs.md
+    - text: メッセージ エンティティの一時停止と再アクティブ化
+      url: entity-suspend.md
+    - text: Azure リソース マネージャー テンプレートの使用
+      url: service-bus-resource-manager-overview.md
+    - text: 例外のトラブルシューティング
+      url: service-bus-messaging-exceptions.md
+- title: セキュリティ保護
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 認証と承認
+      url: service-bus-authentication-and-authorization.md
+    - text: 共有アクセス署名を使用した認証
+      url: service-bus-sas.md
+    - text: Azure Active Directory を使用したマネージド ID の認証
+      url: service-bus-managed-service-identity.md
+    - text: Azure Active Directory を使用したアプリケーションの認証
+      url: authenticate-application.md

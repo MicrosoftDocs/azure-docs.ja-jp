@@ -6,14 +6,14 @@ services: key-vault
 ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
-manager: barbkess
+manager: rkarlin
 ms.date: 03/01/2019
-ms.openlocfilehash: 7ba85d74f9126f4586313dc4e2b365d1e11f3798
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 68c9279333e9ee92cbca1034f70801c153b6cdb8
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934188"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000546"
 ---
 # <a name="manage-storage-account-keys-with-azure-key-vault-and-the-azure-cli"></a>Azure Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する 
 
@@ -67,7 +67,7 @@ Key Vault を使用してストレージ アカウント キーを管理する�
 
 1. 既存のストレージ アカウントを取得します。
 1. 既存の Key Vault をフェッチします。
-1. Key Vault のマネージド ストレージ アカウントをコンテナーに追加します。 `key1` を、再生成期間 180 日でアクティブ キーとして設定します。
+1. Key Vault のマネージド ストレージ アカウントをコンテナーに追加します。 `key1` を、再生成期間 90 日でアクティブ キーとして設定します。
 1. `key1` を使用して、指定したストレージ アカウント用のストレージ コンテキストを設定します。
 
 > [!NOTE]
@@ -158,7 +158,7 @@ Key Vault から [Shared Access Signature トークン](../storage/common/storag
 - サービス プリンシパルと証明書を使用します。 
 - サービス プリンシパルとパスワードを使用します。 この方法は推奨されません。
 
-詳細については、「[Azure Key Vault:基本的な概念](key-vault-whatis.md#basic-concepts)」を参照してください。
+詳細については、「[Azure Key Vault:基本的な概念](basic-concepts.md)」を参照してください。
 
 次の例では、Shared Access Signature トークンをフェッチする方法を示します。 Shared Access Signature 定義を作成したら、トークンをフェッチします。 
 

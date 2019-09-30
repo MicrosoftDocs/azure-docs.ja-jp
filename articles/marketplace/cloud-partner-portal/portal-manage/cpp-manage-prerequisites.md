@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 62269490355414a6b75759361cd574ac7e90e162
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598669"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087472"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Cloud パートナー ポータルでアカウントを管理するための前提条件 
 
@@ -21,7 +21,7 @@ ms.locfileid: "68598669"
 
 ## <a name="account-terms-and-guidelines"></a>アカウントの条件とガイドライン
 
-アカウントを作成する前に、[Microsoft サービス規約](https://www.microsoft.com/servicesagreement)と [Microsoft 利用規約](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright/default.aspx)に記載されているお客様の権利と責任を入念に見直してください。  
+アカウントを作成する前に、[Microsoft サービス規約](https://www.microsoft.com/servicesagreement)と [Microsoft 利用規約](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright)に記載されているお客様の権利と責任を入念に見直してください。  
 
 お客様のアカウント名は、慎重に選択してください。  それはお客様の組織を表すことになるため、著作権で保護されている言葉や問題のある単語を含めることはできません。  たとえば、Microsoft では、"Azure" や "Microsoft" などの著作権で保護された用語をアカウント名として使用することを禁止しています。  詳細については、「[Azure Marketplace Publisher Guide (Azure Marketplace パブリッシャー ガイド)](https://docs.microsoft.com/azure/marketplace/guidelines)」をご覧ください。
 

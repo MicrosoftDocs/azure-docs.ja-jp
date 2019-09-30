@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: b60d8a8fb9b9300a6914ad33b2f760fb5adde3b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 019f9f2019619053f87a7923d656513a419d4675
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723482"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231445"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーのレプリケーション ポリシーの構成と管理
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して VMware VM を Azure に レプリケートする場合の、レプリケーション ポリシーの構成方法について説明します。
@@ -42,11 +42,19 @@ ms.locfileid: "60723482"
 
 ## <a name="edit-a-policy"></a>ポリシーを編集する
 
+レプリケーション ポリシーは、作成後に変更できます。
+
+- ポリシーの変更は、そのポリシーを使用するすべてのマシンに適用されます。
+- レプリケートされたマシンを別のレプリケーション ポリシーに関連付ける場合は、関連するマシンの保護を無効にしてから、再度有効にする必要があります。
+
+次のようにポリシーを編集します。
 1. **[管理]**  >  **[Site Recovery インフラストラクチャ]**  >  **[レプリケーション ポリシー]** を選択します。
 2. 変更するレプリケーション ポリシーを選択します。
 3. **[設定の編集]** をクリックし、必要に応じて RPO しきい値/復旧ポイントのリテンション時間/アプリ整合性スナップショットの頻度の各フィールドを更新します。
 4. アプリケーション整合性ポイントの生成をオフにするには、 **[アプリ整合性スナップショットの頻度]** フィールドのドロップダウンで "Off" 値を選択します。
 5. **[Save]** をクリックします。 30 ～ 60 秒でポリシーが更新されます。
+
+
 
 ## <a name="disassociate-or-delete-a-replication-policy"></a>レプリケーション ポリシーの関連付け解除と削除
 

@@ -1,65 +1,101 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure VPN Gateway のドキュメント
+### YamlMime:Landing
+title: VPN Gateway のドキュメント
+summary: Azure VPN ゲートウェイを構成、作成、管理する方法について説明します。 オンプレミスの場所から仮想ネットワークへの暗号化されたクロスプレミス接続を作成します。または、暗号化された接続を VNet 間に作成します。
 metadata:
-  document_id: null
-  title: VPN Gateway のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: 'Learn how to configure, create, and manage an Azure VPN gateway. Create encrypted cross-premises connections to your virtual network from on-premises locations, or create encrypted connections between VNets.'
+  title: VPN Gateway のドキュメント
+  description: Azure VPN ゲートウェイを構成、作成、管理する方法について説明します。
   services: vpn-gateway
-  author: cherylmc
-  manager: jeconnoc
   ms.service: vpn-gateway
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/26/2018
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: Azure VPN ゲートウェイを構成、作成、管理する方法について説明します。 オンプレミスの場所から仮想ネットワークへの暗号化されたクロスプレミス接続を作成します。または、暗号化された接続を VNet 間に作成します。
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure VPN ゲートウェイを作成、構成、管理する方法について説明します。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/vpn-gateway/vpn-gateway-tutorial-create-gateway-powershell">VPN ゲートウェイを作成して管理する</a>
-  - title: 無料の Pluralsight ビデオ トレーニング
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 管理者
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure ソリューション アーキテクト
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 一般的なタスクのサンプル スクリプトです。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/vpn-gateway/powershell-samples">PowerShell</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: '<p><a href="/powershell/module/az.network#vpn">PowerShell</a></p><p><a href="/cli/azure/network/vnet-gateway">Azure CLI</a></p>'
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/overview/azure/network">Java</a></p><p><a href="/javascript/api/overview/azure/virtual-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/network-gateway/">REST API リファレンス</a></p>
+  ms.date: 08/28/2019
+  ms.openlocfilehash: 5a75e2ef81c2ea584e7819d278f63e5ae53b9ce9
+  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/11/2019
+  ms.locfileid: "70885609"
+landingContent:
+- title: VPN Gateway について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: VPN ゲートウェイとは
+      url: vpn-gateway-about-vpngateways.md
+  - linkListType: concept
+    links:
+    - text: ポイント対サイト接続
+      url: point-to-site-about.md
+    - text: BGP
+      url: vpn-gateway-bgp-overview.md
+    - text: ゾーン冗長ゲートウェイ
+      url: about-zone-redundant-vnet-gateways.md
+    - text: VPN Gateway に関する FAQ
+      url: vpn-gateway-vpn-faq.md
+- title: 作業開始
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: VPN ゲートウェイの作成
+      url: create-routebased-vpn-gateway-portal.md
+    - text: サイト間接続を作成する
+      url: vpn-gateway-howto-site-to-site-resource-manager-portal.md
+    - text: ポイント対サイト接続を作成する
+      url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
+  - linkListType: tutorial
+    links:
+    - text: VPN ゲートウェイを作成して管理する
+      url: vpn-gateway-tutorial-create-gateway-powershell.md
+    - text: サイト間接続を作成して管理する
+      url: vpn-gateway-tutorial-vpnconnection-powershell.md
+- title: VPN デバイス
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: サイト間接続用の VPN デバイス
+      url: vpn-gateway-about-vpn-devices.md
+  - linkListType: how-to-guide
+    links:
+    - text: VPN デバイスの構成
+      url: vpn-gateway-3rdparty-device-config-overview.md
+    - text: デバイス構成スクリプトのダウンロード
+      url: vpn-gateway-download-vpndevicescript.md
+- title: 管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ゲートウェイ構成の設定
+      url: vpn-gateway-about-vpn-gateway-settings.md
+    - text: ポイント対サイト ルーティング
+      url: vpn-gateway-about-point-to-site-routing.md
+    - text: ゲートウェイの SKU
+      url: vpn-gateway-about-vpn-gateway-settings.md#gwsku
+  - linkListType: how-to-guide
+    links:
+    - text: VPN ゲートウェイの確認
+      url: vpn-gateway-verify-connection-resource-manager.md
+    - text: VPN ゲートウェイの削除
+      url: vpn-gateway-delete-vnet-gateway-portal.md
+    - text: ローカル ネットワーク ゲートウェイを変更する
+      url: vpn-gateway-modify-local-network-gateway-portal.md
+- title: セキュリティと監視
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: セキュリティ コントロール
+      url: vpn-gateway-security-controls.md
+  - linkListType: how-to-guide
+    links:
+    - text: 監視とアラート
+      url: vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/network/vnet-gateway
+    - text: Azure PowerShell
+      url: /powershell/module/az.network#vpn
+    - text: REST
+      url: /rest/api/network-gateway

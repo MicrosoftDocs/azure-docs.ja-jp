@@ -3,20 +3,20 @@ title: REST を使用した Bing Speech 認識 API の開始 | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: REST を使用して Microsoft Cognitive Services の音声認識 API にアクセスし、音声をテキストに変換します。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ead4026ecec4878c69bc21a9ebc989eaf3d69a13
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e962a12c6c27737f95e78e80036e51bac41147d5
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515131"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965778"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>クイック スタート:Bing Speech 認識 REST API を使用する
 
@@ -66,7 +66,7 @@ https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitive
 
 | 認識モード  | 言語 | 出力形式 | サービス URI |
 |---|---|---|---|
-| `interactive` | pt-BR | 既定値 | https:\//speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| `interactive` | pt-BR | Default | https:\//speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | `conversation` | en-US | 詳細 | https:\//speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
 | `dictation` | fr-FR | シンプル | https:\//speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 

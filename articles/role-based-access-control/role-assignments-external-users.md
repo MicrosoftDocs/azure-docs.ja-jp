@@ -1,5 +1,5 @@
 ---
-title: RBAC を使用して外部ユーザーの Azure リソースへのアクセスを管理する | Microsoft Docs
+title: RBAC を使用して外部ゲスト ユーザーの Azure リソースへのアクセスを管理する | Microsoft Docs
 description: ロールベースのアクセス制御 (RBAC) を使用して、組織外のユーザーの Azure リソースへのアクセスを管理する方法について説明します。
 services: active-directory
 documentationcenter: ''
@@ -12,123 +12,197 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 03/20/2018
+ms.date: 09/12/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: d919453816436366c00dde506210a2ed38cc69b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 12f4b0276074b6732cf57443f51ef5d867f205a6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952216"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967329"
 ---
-# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>RBAC を使用して外部ユーザーの Azure リソースへのアクセスを管理する
+# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>RBAC を使用して外部ゲスト ユーザーの Azure リソースへのアクセスを管理する
 
-ロールベースのアクセス制御 (RBAC) では、環境内の特定のリソースへのアクセスが必要なものの、インフラストラクチャ全体や課金に関連するスコープへのアクセスが必ずしも必要ではない外部のコラボレーター、ベンダー、フリーランサーと連携している大企業や SMB 向けの、優れたセキュリティ管理を実現できます。 RBAC では、管理者アカウント (サブスクリプション レベルでのサービス管理者ロール) によって管理される 1 つの Azure サブスクリプションの所有者を柔軟に設定できるほか、管理者権限を付与することなく、複数のユーザーを同じサブスクリプションでの業務に招待することができます。
+ロールベースのアクセス制御 (RBAC) では、環境内の特定のリソースへのアクセスが必要なものの、インフラストラクチャ全体や課金に関連するスコープへのアクセスが必ずしも必要ではない外部のコラボレーター、ベンダー、フリーランサーと連携している大企業や中小企業向けの、優れたセキュリティ管理を実現できます。 [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) の機能を使用して外部ゲスト ユーザーと共同作業を行うことができます。また、RBAC を使用して、自分の環境でゲスト ユーザーに必要なアクセス許可のみを付与することができます。
 
-> [!NOTE]
-> Office 365 管理センターからプロビジョニングされた Office 365 サブスクリプションまたは Azure Active Directory ライセンス (例:Azure Active Directory へのアクセス) が Microsoft 365 管理センターからプロビジョニングされたものの場合、RBAC の使用資格はありません。
+## <a name="when-would-you-invite-guest-users"></a>ゲスト ユーザーを招待するタイミング
 
-## <a name="assign-rbac-roles-at-the-subscription-scope"></a>RBAC ロールをサブスクリプション スコープで割り当てる
+ここでは、ゲスト ユーザーを組織に招待し、アクセス許可を付与するシナリオ例をいくつか示します。
 
-RBAC が使用されるケースとして一般的な 2 つの例を次に示します (ただし、これらに限定されません)。
+- プロジェクトの Azure リソースにアクセスするために、電子メール アカウントしか持っていない外部の自営仕入先を許可します。
+- 外部パートナーが特定のリソースまたはサブスクリプション全体を管理することを許可します。
+- 組織外のサポート エンジニア (Microsoft サポートなど) に、問題をトラブルシューティングしてもらうために Azure リソースに一時的にアクセスすることを許可します。
 
-* 特定のリソースまたはサブスクリプション全体を管理するために組織の外部のユーザー (管理者ユーザーの Azure Active Directory テナントに属していないユーザー) を招待する場合
-* 組織の内部のユーザー (管理者ユーザーの Azure Active Directory テナントに属しているユーザー) であるが、サブスクリプション全体または環境内の特定のリソース グループやリソース スコープへの詳細なアクセスを必要とする別のチームまたはグループに属しているユーザーと連携する場合
+## <a name="permission-differences-between-member-users-and-guest-users"></a>メンバー ユーザーとゲスト ユーザーのアクセス許可の違い
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-outside-of-azure-active-directory"></a>Azure Active Directory の外部のユーザーにサブスクリプション レベルでアクセス権を付与する
+ディレクトリのネイティブ メンバー (メンバー ユーザー) は、B2B コラボレーション ゲスト (ゲスト ユーザー) として別のディレクトリから招待されたユーザーとは異なるアクセス許可を持ちます。 たとえば、メンバー ユーザーはほとんどすべてのディレクトリ情報を読み取ることができますが、ゲスト ユーザーにはディレクトリのアクセス許可が制限されています。 メンバー ユーザーとゲスト ユーザーの詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」を参照してください。
 
-RBAC ロールは、サブスクリプションの**所有者**のみが付与できます。 そのため、管理者は、このロールが事前に割り当てられているユーザーまたは Azure サブスクリプションを作成したユーザーとしてログインする必要があります。
+## <a name="add-a-guest-user-to-your-directory"></a>ゲスト ユーザーをディレクトリに追加する
 
-管理者としてサインインした後、Azure Portal で [サブスクリプション] を選択し、目的のサブスクリプションを選択します。
-![Azure Portal のサブスクリプション ブレード](./media/role-assignments-external-users/0.png) 既定では、管理者ユーザーが Azure サブスクリプションを購入している場合、そのユーザーが **[アカウント管理者]** として表示され、これがサブスクリプション ロールとなります。 Azure サブスクリプション ロールの詳細については、「[ Azure サブスクリプション管理者を追加または変更する](../billing/billing-add-change-azure-subscription-administrator.md)」を参照してください。
+Azure Active Directory ページを使用してディレクトリにゲスト ユーザーを追加するには、次の手順を実行します。
 
-この例では、ユーザー "alflanigan@outlook.com" が AAD テナント "Default tenant Azure" の "無料試用版" サブスクリプションの**所有者**です。 このユーザーは初期 Microsoft アカウントが "Outlook" (Microsoft アカウント = Outlook、Live など) である Azure サブスクリプションの作成者なので、このテナントに追加される他のすべてのユーザーの既定のドメイン名は **"\@alflaniganuoutlook.onmicrosoft.com"** となります。 仕様により、新しいドメインの構文は、テナントを作成したユーザーのユーザー名とドメイン名を組み合わせ、拡張子 **".onmicrosoft.com"** を追加することで構成されます。
-さらに、新しいテナント用にカスタム ドメイン名を追加して確認すると、ユーザーはそのカスタム ドメイン名でサインインできます。 Azure Active Directory テナントのカスタム ドメイン名を確認する方法の詳細については、[ディレクトリへのカスタム ドメイン名の追加](../active-directory/fundamentals/add-custom-domain.md)に関する記事を参照してください。
+1. 組織の外部コラボレーション設定が、ゲストを招待できるように構成されていることを確認します。 詳細については、「[B2B 外部コラボレーションを有効にしてゲストを招待できるユーザーを管理する](../active-directory/b2b/delegate-invitations.md)」を参照してください。
 
-この例では、"Default tenant Azure" ディレクトリに "\@alflanigan.onmicrosoft.com" というドメイン名のユーザーのみが含まれています。
+1. Azure portal で、 **[Azure Active Directory]**  >  **[ユーザー]**  >  **[新しいゲスト ユーザー]** の順にクリックします。
 
-サブスクリプションの選択後、管理者ユーザーは **[アクセス制御 (IAM)]** 、 **[新しいロールの追加]** の順にクリックする必要があります。
+    ![Azure portal の [新しいゲスト ユーザー] 機能](./media/role-assignments-external-users/invite-guest-user.png)
 
-![Azure Portal の [アクセス制御 (IAM)] 機能](./media/role-assignments-external-users/1.png)
+1. 手順に従って新しいゲスト ユーザーを追加します。 詳細については、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md#add-guest-users-to-the-directory)」を参照してください。
 
-![Azure Portal の [アクセス制御 (IAM)] 機能で新しいユーザーを追加する](./media/role-assignments-external-users/2.png)
+ゲスト ユーザーをディレクトリに追加すると、共有アプリへの直接リンクをゲスト ユーザーに送信するか、ゲスト ユーザーが招待メール内の引き換えの URL をクリックできます。
 
-次の手順では、割り当てるロールと RBAC ロールの割り当て先のユーザーを選択します。 管理者ユーザーの場合、 **[ロール]** ドロップダウン メニューには Azure で利用できる組み込み RBAC ロールのみが表示されます。 各ロールとその割り当て可能なスコープの詳細については、[Azure リソースの組み込みロール](built-in-roles.md)に関するページを参照してください。
+![ゲスト ユーザーの招待メール](./media/role-assignments-external-users/invite-email.png)
 
-次に、管理者ユーザーは外部ユーザーのメール アドレスを追加する必要があります。 想定される動作として、既存のテナントに外部ユーザーが表示されません。 外部ユーザーを招待すると、そのユーザーは、 **[サブスクリプション] の [アクセス制御 (IAM)]** 内に、現在サブスクリプション スコープで RBAC ロールが割り当てられているすべてのユーザーと共に表示されます。
+ゲスト ユーザーがディレクトリにアクセスできるようになるには、招待プロセスを完了する必要があります。
 
-![新しい RBAC ロールにアクセス許可を追加する](./media/role-assignments-external-users/3.png)
+![ゲスト ユーザーの招待レビューのアクセス許可](./media/role-assignments-external-users/invite-review-permissions.png)
 
-![サブスクリプション レベルでの RBAC ロールの一覧](./media/role-assignments-external-users/4.png)
+招待プロセスの詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](../active-directory/b2b/redemption-experience.md)」を参照してください。
 
-ユーザー "chessercarlton@gmail.com" は、"無料試用版" サブスクリプションの**所有者**になるよう招待されています。 招待を送信すると、外部ユーザーにはアクティブ化リンクが含まれた確認メールが届きます。
-![RBAC ロールについての招待メール](./media/role-assignments-external-users/5.png)
+## <a name="grant-access-to-a-guest-user"></a>ゲスト ユーザーにアクセス権を付与する
 
-組織の外部のユーザーである新しいユーザーは、"Default tenant Azure" ディレクトリ内に既存の属性がありません。 属性は、外部ユーザーがディレクトリ内に記録されることに対して同意した後に作成されます。このディレクトリとは、外部ユーザーがロールを割り当てられたサブスクリプションに関連付けられているディレクトリです。
+RBAC でアクセス権を付与するには、ロールを割り当てます。 ゲスト ユーザーにアクセス権を付与するには、メンバー ユーザー、グループ、サービス プリンシパル、またはマネージド ID の場合と[同じ手順](role-assignments-portal.md#add-a-role-assignment)を実行します。 次の手順に従って、異なるスコープのゲスト ユーザーにアクセス権を付与します。
 
-![RBAC ロールについての招待メールのメッセージ](./media/role-assignments-external-users/6.png)
+1. Azure Portal で、 **[すべてのサービス]** をクリックします。
 
-この時点から外部ユーザーは Azure Active Directory テナントに外部ユーザーとして表示され、Azure Portal で確認できるようになります。
+1.  アクセスが適用されるリソースのセット (スコープとも呼ばれます) を選択します。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
 
-![ユーザー ブレード Azure Active Directory (Azure Portal)](./media/role-assignments-external-users/7.png)
+1. 特定のリソースをクリックします。
 
-**[ユーザー]** ビューでは、Azure Portal の異なるアイコンの種類によって外部ユーザーを認識できます。
+1. **[アクセス制御 (IAM)]** をクリックします。
 
-ただし、**所有者**または**共同作成者**のアクセス権を**サブスクリプション** スコープで外部ユーザーに付与しても、**全体管理者**が許可しない限り、管理者ユーザーのディレクトリに外部ユーザーがアクセスすることはできません。 ユーザーのプロパティでは、 **[メンバー]** と **[ゲスト]** という 2 つの共通パラメーターがある **[ユーザー タイプ]** を確認できます。 メンバーはディレクトリに登録されているユーザーであるのに対し、ゲストは外部ソースからディレクトリに招待されているユーザーです。 詳細については、「[Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](../active-directory/active-directory-b2b-admin-add-users.md)」を参照してください。
+    次のスクリーンショットは、リソース グループのアクセス制御 (IAM) ブレードの例を示しています。 ここでアクセス制御を変更すると、リソース グループにのみ適用されます。
 
-> [!NOTE]
-> ポータルで資格情報を入力した後に、外部ユーザーが正しいディレクトリを選択してサインインしていることを確認してください。 同じユーザーは、複数のディレクトリにアクセスすることができるほか、Azure Portal の右上にあるユーザー名をクリックすることで、ドロップダウン リストから適切なディレクトリを 1 つ選択することができます。
+    ![リソース グループの [アクセス制御 (IAM)] ブレード](./media/role-assignments-external-users/access-control-resource-group.png)
 
-外部ユーザーは、ディレクトリのゲストとなっている間、Azure サブスクリプションのすべてのリソースを管理できますが、ディレクトリにはアクセスできません。
+1. **[ロールの割り当て]** タブをクリックして、このスコープのすべてのロールの割り当てを表示します。
 
-![Azure Active Directory へのアクセス制限 (Azure portal)](./media/role-assignments-external-users/9.png)
+1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。
 
-Azure Active Directory と Azure サブスクリプションには、他の Azure リソース (例: 仮想マシン、仮想ネットワーク、Web アプリ、ストレージなど) と Azure サブスクリプションとの間にあるような子と親の関係はありません。 後者はすべて Azure サブスクリプションの下で作成、管理、課金されますが、Azure ディレクトリへのアクセスの管理には Azure サブスクリプションが使用されます。 詳細については、[Azure サブスクリプションを Azure AD に関連付ける方法](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
+    ロールを割り当てるためのアクセス許可がない場合は、[ロールの割り当ての追加] オプションは無効になります。
 
-すべての組み込み RBAC ロールのうち、**所有者**と**共同作成者**は環境内の全リソースへの完全な管理アクセスが可能ですが、共同作成者は新しい RBAC ロールを作成および削除できないという違いがあります。 **仮想マシン共同作成者**のような他の組み込みロールは、リソースの作成先となっている**リソース グループ**に関係なく、名前によって示されるリソースのみへの完全な管理アクセスが可能です。
+    ![[追加] メニュー](./media/role-assignments-external-users/add-menu.png)
 
-**仮想マシン共同作成者**の組み込み RBAC ロールをサブスクリプション レベルで割り当てると、そのロールが割り当てられたユーザーは次のようになります。
+1. **[ロール]** ボックスの一覧で、 **[仮想マシン共同作成者]** などのロールを選択します。
 
-* デプロイ日や属しているリソース グループに関係なく、すべての仮想マシンを表示できる
-* サブスクリプション内の仮想マシンへの完全な管理アクセスができる
-* サブスクリプション内の他の種類のリソースを表示できない
-* 課金の観点からはどのような変更も加えることができない
+1. **[選択]** 一覧で、ゲスト ユーザーを選択します。 一覧にユーザーが表示されない場合には、 **[選択]** ボックスに表示名、メール アドレス、オブジェクト識別子を入力してディレクトリを検索します。
 
-## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>組み込み RBAC ロールを外部ユーザーに割り当てる
+   ![[ロールの割り当ての追加] ウィンドウ](./media/role-assignments-external-users/add-role-assignment.png)
 
-このテストの別のシナリオ向けに、外部ユーザー "alflanigan@gmail.com" が**仮想マシン共同作成者**として追加されています。
+1. **[保存]** をクリックして、選択したスコープでロールを割り当てます。
 
-![[仮想マシン共同作成者] 組み込みロール](./media/role-assignments-external-users/11.png)
+    ![仮想マシン共同作成者のロールの割り当て](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-この組み込みロールが割り当てられた外部ユーザーは、通常、仮想マシンと、それに隣接するデプロイ時に必要な Resource Manager 限定のリソースのみを表示および管理できます。 仕様により、これらの制限されたロールは、Azure Portal で作成された対応するリソースのみへのアクセスを提供します。
+## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>ディレクトリにまだ存在しないゲスト ユーザーにアクセス権を付与する
 
-![Azure Portal の仮想マシン共同作成者ロールの概要](./media/role-assignments-external-users/12.png)
+RBAC でアクセス権を付与するには、ロールを割り当てます。 ゲスト ユーザーにアクセス権を付与するには、メンバー ユーザー、グループ、サービス プリンシパル、またはマネージド ID の場合と[同じ手順](role-assignments-portal.md#add-a-role-assignment)を実行します。
 
-## <a name="grant-access-at-a-subscription-level-for-a-user-in-the-same-directory"></a>同じディレクトリのユーザーにサブスクリプション レベルでアクセス権を付与する
+ゲスト ユーザーがディレクトリにまだ存在しない場合は、[ロールの割り当ての追加] ウィンドウからユーザーを直接招待できます。
 
-このプロセスのフローは、RBAC ロールを付与する管理者の観点でも、ロールへのアクセス権を付与されるユーザーの観点でも、外部ユーザーを追加するプロセスと同じです。 ここでの違いは、サインイン後にサブスクリプション内のすべてのリソース スコープがダッシュボードで利用できるようになるため、招待されるユーザーに招待メールが届かないことです。
+1. Azure Portal で、 **[すべてのサービス]** をクリックします。
 
-## <a name="assign-rbac-roles-at-the-resource-group-scope"></a>リソース グループ スコープで RBAC ロールを割り当てる
+1.  アクセスが適用されるリソースのセット (スコープとも呼ばれます) を選択します。 たとえば、 **[管理グループ]** 、 **[サブスクリプション]** 、 **[リソース グループ]** 、またはリソースを選択できます。
 
-RBAC ロールを**リソース グループ** スコープで割り当てるプロセスは、外部ユーザーと内部ユーザー (同じディレクトリに属しているユーザー)、どちらの種類のユーザーの場合でも、サブスクリプション レベルでロールを割り当てるプロセスと同じです。 RBAC ロールを割り当てられているユーザーの環境では、そのユーザーにアクセス権が割り当てられているリソース グループのみを、Azure Portal の **[リソース グループ]** アイコンから表示できます。
+1. 特定のリソースをクリックします。
 
-## <a name="assign-rbac-roles-at-the-resource-scope"></a>リソース スコープで RBAC ロールを割り当てる
+1. **[アクセス制御 (IAM)]** をクリックします。
 
-Azure のリソース スコープで RBAC ロールを割り当てるプロセスは、サブスクリプション レベルやリソース グループ レベルでロールを割り当てるプロセスと同じであり、両方のシナリオと同じワークフローに従います。 ここでも、RBAC ロールが割り当てられているユーザーが表示できるのは、 **[すべてのリソース]** タブに表示する場合も、ダッシュボードに直接表示する場合も、そのユーザーにアクセス権が割り当てられている項目のみです。
+1. **[ロールの割り当て]** タブをクリックして、このスコープのすべてのロールの割り当てを表示します。
 
-リソース グループ スコープまたはリソース スコープでの RBAC に共通する重要な点は、ユーザーが正しいディレクトリにサインインすることです。
+1. **[追加]**  >  **[ロールの割り当ての追加]** をクリックして、[ロールの割り当ての追加] ウィンドウを開きます。
 
-![Azure Portal でのディレクトリ ログイン](./media/role-assignments-external-users/13.png)
+    ![[追加] メニュー](./media/role-assignments-external-users/add-menu.png)
 
-## <a name="assign-rbac-roles-for-an-azure-active-directory-group"></a>RBAC ロールを Azure Active Directory グループに割り当てる
+1. **[ロール]** ボックスの一覧で、 **[仮想マシン共同作成者]** などのロールを選択します。
 
-Azure の 3 種類のスコープで RBAC を使用するすべてのシナリオでは、割り当て済みユーザーとして各種リソースを管理およびデプロイする特権が与えられ、個人のサブスクリプションを管理する必要がありません。 割り当て済みユーザーによってそれ以降に作成されたすべてのリソースは、RBAC ロールが割り当てられているサブスクリプション、リソース グループ、またはリソース スコープに関係なく、ユーザーがアクセスできる 1 つの Azure サブスクリプションの下で課金されます。 この方法により、リソースの管理者がだれであっても、その Azure サブスクリプション全体について課金管理者のアクセス許可を付与されているユーザーが、使用量の概要を全体的に把握できます。
+1. **[選択]** 一覧に、招待する相手のメール アドレスを入力し、その人物を選択します。
 
-より大きな組織の場合は、RBAC ロールを同じ方法で Azure Active Directory グループに適用できます。これは、管理者ユーザーの観点で、各ユーザーに対して個別にではなく、チームまたは部門全体に対して詳細なアクセス権を付与する必要があると考えると、極めて時間効率および管理効率に優れた方法です。 この例を示すために、**共同作成者**ロールがテナント内の 1 つのグループにサブスクリプション レベルで追加されています。
+   ![[ロールの割り当ての追加] ウィンドウでゲスト ユーザーを招待する](./media/role-assignments-external-users/add-role-assignment-new-guest.png)
 
-![AAD グループ用の RBAC ロールを追加する](./media/role-assignments-external-users/14.png)
+1. **[保存]** をクリックしてゲスト ユーザーをディレクトリに追加し、ロールを割り当てて、招待を送信します。
 
-これらのグループは、Azure Active Directory 内でのみプロビジョニングされ、管理されるセキュリティ グループです。
+    しばらくすると、ロールの割り当ての通知と、招待に関する情報が表示されます。
 
+    ![ロールの割り当てと招待されたユーザーへの通知](./media/role-assignments-external-users/invited-user-notification.png)
+
+1. ゲスト ユーザーを手動で招待するには、右クリックして、通知の招待リンクをコピーします。 招待プロセスを開始するため、招待リンクをクリックしないでください。
+
+    招待リンクの形式は次のとおりです。
+
+    `https://invitations.microsoft.com/redeem/...`
+
+1. ゲスト ユーザーに招待リンクを送信して招待プロセスを完了します。
+
+    招待プロセスの詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](../active-directory/b2b/redemption-experience.md)」を参照してください。
+
+## <a name="remove-a-guest-user-from-your-directory"></a>ディレクトリからゲスト ユーザーを削除する
+
+ディレクトリからゲスト ユーザーを削除する前に、まずそのゲスト ユーザーのすべてのロールの割り当てを削除する必要があります。 ディレクトリからゲスト ユーザーを削除するには、次の手順を実行します。
+
+1. ゲスト ユーザーにロールが割り当てられている管理グループ、サブスクリプション、リソース グループ、リソースなどのスコープで**アクセス制御 (IAM)** を開きます。
+
+1. **[ロールの割り当て]** タブをクリックして、すべてのロールの割り当てを表示します。
+
+1. ロールの割り当ての一覧で、ロールの割り当てを削除するゲスト ユーザーの隣にチェックマークを追加します。
+
+   ![ロールの割り当てを削除する](./media/role-assignments-external-users/remove-role-assignment-select.png)
+
+1. **[削除]** をクリックします。
+
+   ![ロールの割り当ての削除メッセージ](./media/role-assignments-external-users/remove-role-assignment.png)
+
+1. 表示されるロールの割り当ての削除メッセージで、 **[はい]** をクリックします。
+
+1. 左側のナビゲーション バーで、 **[Azure Active Directory]**  >  **[ユーザー]** をクリックします。
+
+1. 削除するゲスト ユーザーをクリックします。
+
+1. **[削除]** をクリックします。
+
+   ![ゲスト ユーザーを削除する](./media/role-assignments-external-users/delete-guest-user.png)
+
+1. 表示される削除メッセージで、 **[はい]** をクリックします。
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+### <a name="guest-user-cannot-browse-the-directory"></a>ゲスト ユーザーがディレクトリを参照できません
+
+ゲスト ユーザーは、ディレクトリ アクセス許可を制限されています。 たとえば、ゲスト ユーザーはディレクトリを参照することができず、グループやアプリケーションを検索することができません。 詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」を参照してください。
+
+![ゲスト ユーザーがディレクトリ内のユーザーを参照できません](./media/role-assignments-external-users/directory-no-users.png)
+
+ゲスト ユーザーがディレクトリで追加の特権を必要とする場合は、ゲスト ユーザーにディレクトリ ロールを割り当てることができます。 ゲスト ユーザーにディレクトリへのフル読み取りアクセス権を付与する場合は、Azure AD の[ディレクトリ閲覧者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)ロールにゲスト ユーザーを追加できます。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
+
+![ディレクトリ閲覧者ロールの割り当て](./media/role-assignments-external-users/directory-roles.png)
+
+### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>ゲスト ユーザーは、ユーザー、グループ、またはサービス プリンシパルを参照してロールを割り当てることはできません
+
+ゲスト ユーザーは、ディレクトリ アクセス許可を制限されています。 ゲスト ユーザーがスコープの[所有者](built-in-roles.md#owner)であっても、ロールの割り当てを作成して他のユーザーにアクセス権を付与しようとした場合に、ユーザー、グループ、またはサービス プリンシパルの一覧を参照できません。
+
+![ゲスト ユーザーがセキュリティ プリンシパルを参照してロールを割り当てられません](./media/role-assignments-external-users/directory-no-browse.png)
+
+ゲスト ユーザーは、ディレクトリ内のユーザーの正確なサインイン名を知っていれば、アクセス権を付与することができます。 ゲスト ユーザーにディレクトリへのフル読み取りアクセス権を付与する場合は、Azure AD の[ディレクトリ閲覧者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)ロールにゲスト ユーザーを追加できます。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
+
+### <a name="guest-user-cannot-register-applications-or-create-service-principals"></a>ゲスト ユーザーがアプリケーションを登録できません、またはサービス プリンシパルを作成できません
+
+ゲスト ユーザーは、ディレクトリ アクセス許可を制限されています。 ゲスト ユーザーがアプリケーションを登録できる、またはサービス プリンシパルを作成できる必要がある場合は、Azure AD の[アプリケーション開発者](../active-directory/users-groups-roles/directory-assign-admin-roles.md)ロールにゲスト ユーザーを追加します。 詳細については、「[Azure Active Directory テナントでパートナー組織からユーザーにアクセス許可を付与する](../active-directory/b2b/add-guest-to-role.md)」を参照してください。
+
+![ゲスト ユーザーがアプリケーションを登録できません](./media/role-assignments-external-users/directory-access-denied.png)
+
+### <a name="guest-user-does-not-see-the-new-directory"></a>ゲスト ユーザーに新しいディレクトリが表示されません
+
+ゲスト ユーザーにディレクトリへのアクセス権が付与されていても、 **[ディレクトリ + サブスクリプション]** ウィンドウで切り替えようとしたときに Azure portal の一覧に新しいディレクトリが表示されない場合は、ゲスト ユーザーが招待プロセスを完了していることを確認してください。 招待プロセスの詳細については、「[Azure Active Directory B2B コラボレーションの招待の利用](../active-directory/b2b/redemption-experience.md)」を参照してください。
+
+### <a name="guest-user-does-not-see-resources"></a>ゲスト ユーザーにリソースが表示されません
+
+ゲスト ユーザーにディレクトリへのアクセスが許可されていても、Azure portal でアクセス権を付与されているリソースが表示されない場合は、ゲスト ユーザーが正しいディレクトリを選択していることを確認してください。 ゲスト ユーザーは、複数のディレクトリにアクセス権を持つ場合があります。 ディレクトリを切り替えるには、左上にある **[ディレクトリ + サブスクリプション]** をクリックし、適切なディレクトリをクリックします。
+
+![Azure portal の [ディレクトリ + サブスクリプション] ウィンドウ](./media/role-assignments-external-users/directory-subscription.png)
+
+## <a name="next-steps"></a>次の手順
+
+- [Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md)
+- [Azure Active Directory B2B コラボレーション ユーザーのプロパティ](../active-directory/b2b/user-properties.md)
+- [B2B コラボレーションの招待メールの要素 - Azure Active Directory](../active-directory/b2b/invitation-email-elements.md)

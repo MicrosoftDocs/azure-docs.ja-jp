@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 63b5130e3cade54a2fbc432b2391ad3ee1ea8a1a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 3da22d11dce1e535763476d906ac45f3da22bc8d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004025"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141282"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>サンプル:画像処理アプリの探索 (C#)
 
@@ -33,7 +33,7 @@ Computer Vision を使用して、光学文字認識 (OCR) を実行し、スマ
 サンプル アプリを調べる前に、次の前提条件を満たしていることを確認します。
 
 * [Visual Studio 2015 ](https://visualstudio.microsoft.com/downloads/)以降が必要です。
-* Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。
+* Computer Vision のサブスクリプション キーが必要です。 無料試用版のキーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Computer Vision をサブスクライブし、キーを取得します。 サービス エンドポイント URL もメモしておきます。
 
 ## <a name="get-the-sample-app"></a>サンプル アプリを入手する
 
@@ -69,19 +69,20 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    * VisionAPI-WPF-Samples  
 
    SampleUserControlLibrary プロジェクトを使用できない場合は、`Microsoft/Cognitive-Vision-Windows` リポジトリを再帰的に複製したことを確認します。
-1. Visual Studio で、Ctrl + Shift + B キーを押すか、リボン メニューから **[ビルド]** を選択し、**[ソリューションのビルド]** を選択して、ソリューションをビルドします。
+1. Visual Studio で、Ctrl + Shift + B キーを押すか、リボン メニューから **[ビルド]** を選択し、 **[ソリューションのビルド]** を選択して、ソリューションをビルドします。
 
 ## <a name="run-and-interact-with-the-sample-app"></a>サンプル アプリを実行して操作する
 
 サンプル アプリを実行し、サムネイルの生成や画像のタグ付けなどのさまざまなタスクを実行するときに、サンプル アプリがユーザーや Computer Vision クライアント ライブラリとどのように相互作用するかを確認できます。 サンプル アプリを実行して操作するには、次のようにします。
 
-1. ビルドが完了した後、**F5** キーを押すか、リボン メニューから **[デバッグ]** を選択し、**[デバッグの開始]** を選択してサンプル アプリを実行します。
+1. ビルドが完了した後、**F5** キーを押すか、リボン メニューから **[デバッグ]** を選択し、 **[デバッグの開始]** を選択してサンプル アプリを実行します。
 1. サンプル アプリが表示されたら、ナビゲーション ウィンドウの **[Subscription Key Management]\(サブスクリプション キーの管理\)** を選択して、[Subscription Key Management]\(サブスクリプション キーの管理\) ページを表示します。
    ![[Subscription Key Management]\(サブスクリプション キーの管理\) ページ](../Images/Vision_UI_Subscription.PNG)  
 1. **[Subscription Key]\(サブスクリプション キー\)** にサブスクリプション キーを入力します。
-1. サブスクリプション キーに対する Computer Vision リソースのエンドポイント URL から `/vision/v1.0` を除いたものを、**[Endpoint]\(エンドポイント\)** に入力します。  
-   たとえば、Computer Vision 無料試用版のサブスクリプション キーを使用している場合は、米国中西部 Azure リージョンのエンドポイント URL `https://westcentralus.api.cognitive.microsoft.com` を入力します。
-1. 次にサンプル アプリを実行したときにサブスクリプション キーとエンドポイント URL を入力したくない場合は、**[Save Setting]\(設定の保存\)** を選択して、サブスクリプション キーとエンドポイント URL をお使いのコンピューターに保存します。 以前に保存したサブスクリプション キーとエンドポイント URL を削除する場合は、**[Delete Setting]\(設定の削除\)** を選択します。
+1. **[エンドポイント]** にエンドポイント URL を入力します。  
+   たとえば、Computer Vision 無料試用版のサブスクリプション キーを使用している場合は、`https://westcentralus.api.cognitive.microsoft.com`
+   [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)] というエンドポイント URL を入力します。
+1. 次にサンプル アプリを実行したときにサブスクリプション キーとエンドポイント URL を入力したくない場合は、 **[Save Setting]\(設定の保存\)** を選択して、サブスクリプション キーとエンドポイント URL をお使いのコンピューターに保存します。 以前に保存したサブスクリプション キーとエンドポイント URL を削除する場合は、 **[Delete Setting]\(設定の削除\)** を選択します。
 
    > [!NOTE]
    > サンプル アプリは、分離ストレージと `System.IO.IsolatedStorage` を使用して、サブスクリプション キーとエンドポイント URL を格納します。

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 8c7c8faad70022ba985a4041fd578becbaf70078
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 0bd97a6b1636d4b540c616958e5531c86362f597
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966864"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70276622"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントからデータをコピーする
 
@@ -25,7 +25,7 @@ ms.locfileid: "68966864"
 
 この REST コネクタ、[REST コネクタ](connector-http.md)および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
-- **REST コネクタ**では、具体的には RESTful API からのデータのコピーがサポートされます。 
+- **REST コネクタ**では、特に RESTful API からのデータのコピーがサポートされています。 
 - **HTTP コネクタ**では一般的に、HTTP エンドポイントからデータを取得します (たとえば、ファイルをダウンロードします)。 この REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
 - **Web テーブル コネクタ**では、HTML Web ページからテーブルの内容を抽出します。
 
@@ -175,50 +175,23 @@ REST からのデータ コピーについては、次のプロパティがサ�
 |:--- |:--- |:--- |
 | type | データセットの **type** プロパティを **RestResource** に設定する必要があります。 | はい |
 | relativeUrl | データを含むリソースへの相対 URL。 このプロパティが指定されていない場合は、リンクされたサービス定義に指定されている URL のみが使用されます。 | いいえ |
-| requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ |
-| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
-| requestBody | HTTP 要求の本文。 | いいえ |
-| paginationRules | 次のページ要求を作成する改ページ位置の自動修正規則。 詳細については、「[pagination support](#pagination-support)」(改ページ位置の自動調整のサポート) セクションを参照してください。 | いいえ |
 
-**例 1:改ページ位置の自動修正で Get メソッドを使用する**
+データセットに `requestMethod`、`additionalHeaders`、`requestBody`、および `paginationRules` を設定していた場合は現状のまま引き続きサポートされますが、今後のアクティビティ ソースでは新しいモデルを使用することをお勧めします。
+
+**例:**
 
 ```json
 {
     "name": "RESTDataset",
     "properties": {
         "type": "RestResource",
+        "typeProperties": {
+            "relativeUrl": "<relative url>"
+        },
+        "schema": [],
         "linkedServiceName": {
             "referenceName": "<REST linked service name>",
             "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "additionalHeaders": {
-                "x-user-defined": "helloworld"
-            },
-            "paginationRules": {
-                "AbsoluteUrl": "$.paging.next"
-            }
-        }
-    }
-}
-```
-
-**例 2:Post メソッドを使用する**
-
-```json
-{
-    "name": "RESTDataset",
-    "properties": {
-        "type": "RestResource",
-        "linkedServiceName": {
-            "referenceName": "<REST linked service name>",
-            "type": "LinkedServiceReference"
-        },
-        "typeProperties": {
-            "relativeUrl": "<relative url>",
-            "requestMethod": "Post",
-            "requestBody": "<body for POST REST request>"
         }
     }
 }
@@ -237,10 +210,14 @@ REST からのデータ コピーについては、次のプロパティがサ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの **type** プロパティを **RestSource** に設定する必要があります | はい |
+| requestMethod | HTTP メソッド。 使用できる値は、**Get** (既定値) と **Post** です。 | いいえ |
+| additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
+| requestBody | HTTP 要求の本文。 | いいえ |
+| paginationRules | 次のページ要求を作成する改ページ位置の自動修正規則。 詳細については、「[pagination support](#pagination-support)」(改ページ位置の自動調整のサポート) セクションを参照してください。 | いいえ |
 | httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (**TimeSpan** 値)。 この値は、応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 既定値は **00:01:40** です。  | いいえ |
 | requestInterval | 次のページに対する要求を送信する前に待機する時間。 既定値は **00:00:01** です。 |  いいえ |
 
-**例**
+**例 1:改ページ位置の自動修正で Get メソッドを使用する**
 
 ```json
 "activities":[
@@ -262,6 +239,46 @@ REST からのデータ コピーについては、次のプロパティがサ�
         "typeProperties": {
             "source": {
                 "type": "RestSource",
+                "additionalHeaders": {
+                    "x-user-defined": "helloworld"
+                },
+                "paginationRules": {
+                    "AbsoluteUrl": "$.paging.next"
+                },
+                "httpRequestTimeout": "00:01:00"
+            },
+            "sink": {
+                "type": "<sink type>"
+            }
+        }
+    }
+]
+```
+
+**例 2:Post メソッドを使用する**
+
+```json
+"activities":[
+    {
+        "name": "CopyFromREST",
+        "type": "Copy",
+        "inputs": [
+            {
+                "referenceName": "<REST input dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "outputs": [
+            {
+                "referenceName": "<output dataset name>",
+                "type": "DatasetReference"
+            }
+        ],
+        "typeProperties": {
+            "source": {
+                "type": "RestSource",
+                "requestMethod": "Post",
+                "requestBody": "<body for POST REST request>",
                 "httpRequestTimeout": "00:01:00"
             },
             "sink": {
@@ -274,7 +291,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 ## <a name="pagination-support"></a>改ページ位置の自動調整のサポート
 
-通常、REST API では、1 つの要求の応答ペイロード サイズが適切な数を超えないように制限しています。大量のデータを返すため、REST API は結果を複数のページに分割し、結果の次のページを取得するために連続する要求を送信するように呼び出し元に要求します。 通常、1 つのページに対する要求は動的で、前のページの応答から返される情報で構成されます。
+通常、REST API では、1 つの要求の応答ペイロードのサイズが適切な数値を超えないように制限されています。大量のデータが返される場合は、結果が複数のページに分割され、呼び出し元に連続する要求を送信して結果の次のページを取得することが要求されます。 通常、1 つのページに対する要求は動的で、前のページの応答から返される情報で構成されます。
 
 この汎用 REST コネクタでは、次の改ページ位置の自動修正パターンをサポートしています。 
 
@@ -285,11 +302,11 @@ REST からのデータ コピーについては、次のプロパティがサ�
 * 次の要求のヘッダー = 現在の応答本文のプロパティ値
 * 次の要求のヘッダー = 現在の応答ヘッダーのヘッダー値
 
-**改ページ位置の自動修正規則**はデータセット内のディクショナリとして定義されます。これには大文字と小文字を区別する 1 つまたは複数のキーと値のペアが含まれます。 構成は 2 番目のページから始まる要求を生成するのに使用されます。 コネクタは HTTP 状態コード 204 (コンテンツなし) を取得するか、"paginationRules" 内のいずれかの JSONPath 式で null が返されると、繰り返し処理を停止します。
+**改ページ位置の自動修正規則**はデータセット内のディクショナリとして定義されます。これには大文字と小文字を区別する 1 つまたは複数のキーと値のペアが含まれます。 構成は 2 番目のページから始まる要求を生成するのに使用されます。 コネクタで HTTP 状態コード 204 (コンテンツなし) が取得されるか、"paginationRules" 内のいずれかの JSONPath 式で null が返されると、繰り返し処理が停止されます。
 
 改ページ位置の自動修正規則で**サポートされるキー**:
 
-| キー | 説明 |
+| Key | 説明 |
 |:--- |:--- |
 | AbsoluteUrl | 次の要求を発行する URL を示します。 これは、**絶対 URL と相対 URL のどちらか**です。 |
 | QueryParameters.*request_query_parameter* または QueryParameters['request_query_parameter'] | "request_query_parameter" は、次の HTTP 要求 URL 内で 1 つのクエリ パラメーター名を参照するユーザー定義です。 |
@@ -336,23 +353,19 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 }
 ```
 
-対応する REST データセット構成、特に `paginationRules` は次のとおりです。
+対応する REST コピー アクティビティ ソース構成、特に `paginationRules` は次のようになります。
 
 ```json
-{
-    "name": "MyFacebookAlbums",
-    "properties": {
-            "type": "RestResource",
-            "typeProperties": {
-                "relativeUrl": "albums",
-                "paginationRules": {
-                    "AbsoluteUrl": "$.paging.next"
-                }
-            },
-            "linkedServiceName": {
-                "referenceName": "MyRestService",
-                "type": "LinkedServiceReference"
-            }
+"typeProperties": {
+    "source": {
+        "type": "RestSource",
+        "paginationRules": {
+            "AbsoluteUrl": "$.paging.next"
+        },
+        ...
+    },
+    "sink": {
+        "type": "<sink type>"
     }
 }
 ```

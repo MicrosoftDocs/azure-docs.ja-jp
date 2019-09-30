@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ad67b17d76e811d5977955c40f444c4b7c0a01e3
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 664a2a77203ae1bebd95391fa6a4ae906121465a
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478849"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916319"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Azure Maps を使用してさまざまな移動モードのルートを検索します
 
@@ -28,7 +28,7 @@ ms.locfileid: "68478849"
 
 ## <a name="prerequisites"></a>前提条件
 
-先に進む前に、最初のチュートリアルの手順に従って [Azure Maps アカウントを作成](./tutorial-search-location.md#createaccount)し、[アカウントのサブスクリプション キーを取得](./tutorial-search-location.md#getkey)してください。
+先に進む前に、[アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)に関するページの手順に従って、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従って、お使いのアカウントのプライマリ サブスクリプション キーを取得します。
 
 ## <a name="create-a-new-map"></a>新しいマップの作成
 

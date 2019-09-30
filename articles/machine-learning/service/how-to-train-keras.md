@@ -1,7 +1,7 @@
 ---
 title: Keras を使用したディープ ラーニング ニューラル ネットワークのトレーニング
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service を使用して、TensorFlow 上で実行される Keras ディープ ニューラル ネットワーク分類モデルをトレーニングして登録する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning を使用して、TensorFlow 上で実行される Keras ディープ ニューラル ネットワーク分類モデルをトレーニングして登録する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,20 +11,20 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: e7646330d9d89d5257a991b5095b7b6814aa3ba9
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9015fa445c64bffa74509e84d90eb77508da6d9e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966813"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076449"
 ---
-# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning-service"></a>Azure Machine Learning service で Keras 分類モデルをトレーニングして登録する
+# <a name="train-and-register-a-keras-classification-model-with-azure-machine-learning"></a>Azure Machine Learning を使用して Keras 分類モデルをトレーニングして登録する
 
-この記事では、Azure Machine Learning service を使用して、TensorFlow 上に構築された Keras 分類モデルをトレーニングして登録する方法について説明します。 これは、一般的な [MNIST データセット](http://yann.lecun.com/exdb/mnist/)を使用して、[TensorFlow](https://www.tensorflow.org/overview) 上で実行される [Keras Python ライブラリ](https://keras.io)を使用して構築されたディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類します。
+この記事では、Azure Machine Learning を使用して、TensorFlow 上に構築された Keras 分類モデルをトレーニングして登録する方法について説明します。 これは、一般的な [MNIST データセット](http://yann.lecun.com/exdb/mnist/)を使用して、[TensorFlow](https://www.tensorflow.org/overview) 上で実行される [Keras Python ライブラリ](https://keras.io)を使用して構築されたディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類します。
 
-Keras は、開発を簡素化するために他の一般的な DNN フレームワーク上で動作できる高レベルのニューラル ネットワーク API です。 Azure Machine Learning service では、エラスティック クラウド コンピューティング リソースを使用して、トレーニング ジョブを迅速にスケールアウトできます。 また、トレーニング実行、バージョン モデル、デプロイ モデル、その他多くを追跡することもできます。
+Keras は、開発を簡素化するために他の一般的な DNN フレームワーク上で動作できる高レベルのニューラル ネットワーク API です。 Azure Machine Learning では、エラスティック クラウド コンピューティング リソースを使用して、トレーニング ジョブを迅速にスケールアウトできます。 また、トレーニング実行、バージョン モデル、デプロイ モデル、その他多くを追跡することもできます。
 
-Keras モデルを最初から開発しているか、または既存のモデルをクラウドに導入しているかにかかわらず、Azure Machine Learning service は運用環境対応のモデルを構築するのに役立ちます。
+Keras モデルを最初から開発しているか、または既存のモデルをクラウドに導入しているかにかかわらず、Azure Machine Learning は運用環境対応のモデルを構築するのに役立ちます。
 
 機械学習とディープ ラーニングの違いについて詳しくは、[概念に関する記事](concept-deep-learning-vs-machine-learning.md)をご覧ください。
 
@@ -55,20 +55,16 @@ Keras モデルを最初から開発しているか、または既存のモデ�
 
 ```Python
 import os
-import urllib
-import shutil
 import azureml
-
 from azureml.core import Experiment
 from azureml.core import Workspace, Run
-
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
 ```
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
 
-[Azure Machine Learning service ワークスペース](concept-workspace.md)は、本サービスの最上位レベルのリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
+[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
 
 [前提条件のセクション](#prerequisites)で作成した `config.json` ファイルからワークスペース オブジェクトを作成します。
 
@@ -78,43 +74,36 @@ ws = Workspace.from_config()
 
 ### <a name="create-an-experiment"></a>実験の作成
 
-トレーニング スクリプトを保存するための実験とフォルダーを作成します。 この例では、"keras-mnist" という名前の実験を作成します。
+ご利用のワークスペースに "keras-mnist" という実験を作成します。
 
 ```Python
-script_folder = './keras-mnist'
-os.makedirs(script_folder, exist_ok=True)
-
 exp = Experiment(workspace=ws, name='keras-mnist')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>データセットとスクリプトをアップロードする
+### <a name="create-a-file-dataset"></a>ファイル データセットの作成
 
-[データストア](how-to-access-data.md)は、データをコンピューティング先にマウントまたはコピーすることでデータを格納およびアクセスできる場所です。 各ワークスペースには既定のデータストアがあります。 トレーニング中に簡単にアクセスできるように、データとトレーニング スクリプトをデータストアにアップロードします。
+`FileDataset` オブジェクトでは、ご利用のワークスペース データストアまたはパブリック URL 内の 1 つまたは複数のファイルが参照されます。 ファイルは任意の形式にすることができ、クラスには、ファイルのダウンロードまたはご利用のコンピューティングへのファイルのマウントを行うための機能が用意されています。 `FileDataset` を作成することにより、データソースの場所への参照を作成します。 データセットに任意の変換を適用した場合は、それらはデータセットにも格納されます。 データは既存の場所に残るので、追加のストレージ コストは発生しません。 詳細については、`Dataset` パッケージの[攻略](https://docs.microsoft.com/azure/machine-learning/service/how-to-create-register-datasets)ガイドを参照してください。
 
-1. MNIST データセットをローカルにダウンロードします。
+```python
+from azureml.core.dataset import Dataset
 
-    ```Python
-    os.makedirs('./data/mnist', exist_ok=True)
+web_paths = [
+            'http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz',
+            'http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz'
+            ]
+dataset = Dataset.File.from_files(path=web_paths)
+```
 
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz', filename = './data/mnist/train-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz', filename = './data/mnist/train-labels.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz', filename = './data/mnist/test-images.gz')
-    urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz', filename = './data/mnist/test-labels.gz')
-    ```
+他のユーザーと共有したり、さまざまな実験で再利用したり、トレーニング スクリプト内で名前で参照したりできるように、データセットをご利用のワークスペースに登録するには、`register()` メソッドを使います。
 
-1. MNIST データセットを既定のデータストアにアップロードします。
-
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/mnist', target_path='mnist', overwrite=True, show_progress=True)
-    ```
-
-1. Keras トレーニング スクリプト `keras_mnist.py` とヘルパー ファイル `utils.py` をアップロードします。
-
-    ```Python
-    shutil.copy('./keras_mnist.py', script_folder)
-    shutil.copy('./utils.py', script_folder)
-    ```
+```python
+dataset = dataset.register(workspace=ws,
+                           name='mnist dataset',
+                           description='training and test dataset',
+                           create_new_version=True)
+```
 
 ## <a name="create-a-compute-target"></a>コンピューティング ターゲットを作成する
 
@@ -142,11 +131,22 @@ except ComputeTargetException:
 
 [TensorFlow エスティメーター](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)は、コンピューティング先で TensorFlow トレーニング ジョブを起動するための単純な方法を提供します。 Keras は TensorFlow 上で実行されるため、TensorFlow エスティメーターを使用し、`pip_packages` 引数を使用して Keras ライブラリをインポートできます。
 
+まず、`Dataset` クラスを使用してワークスペース データストアからデータを取得します。
+
+```python
+dataset = Dataset.get_by_name(ws, 'mnist dataset')
+
+# list the files referenced by mnist dataset
+dataset.to_path()
+```
+
 TensorFlow エスティメーターは、ジェネリック [`estimator`](https://docs.microsoft.com//python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) クラスを介して実装されています。これは、任意のフレームワークをサポートするために使用できます。 さらに、DNN ハイパーパラメーター設定を含むディクショナリ `script_params` を作成します。 ジェネリック エスティメーターを使用したモデルのトレーニングの詳細については、[エスティメーターを使用した Azure Machine Learning によるモデルのトレーニング](how-to-train-ml-models.md)に関するページを参照してください。
 
-```Python
+```python
+from azureml.train.dnn import TensorFlow
+
 script_params = {
-    '--data-folder': ds.path('mnist').as_mount(),
+    '--data-folder': dataset.as_named_input('mnist').as_mount(),
     '--batch-size': 50,
     '--first-layer-neurons': 300,
     '--second-layer-neurons': 100,
@@ -203,7 +203,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Machine Learning service で Keras モデルをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
+この記事では、Azure Machine Learning で Keras モデルをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
 
 > [!div class="nextstepaction"]
 > [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)

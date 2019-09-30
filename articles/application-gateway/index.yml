@@ -1,69 +1,69 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Application Gateway のドキュメント
+### YamlMime:Landing
+title: Azure Application Gateway のドキュメント
+summary: アプリケーション ゲートウェイを作成する方法を説明します。 このドキュメントは、ご自分の Azure リソースへの Web トラフィックを計画、デプロイ、および管理するのに役立ちます。
 metadata:
-  title: Azure Application Gateway のドキュメント - チュートリアル、API リファレンス
-  meta.description: 'Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
+  title: Azure Application Gateway のドキュメント
+  description: クラウドベースのネットワーク セキュリティ サービスである Azure Firewall をデプロイする方法について説明します。
   services: application-gateway
-  author: vhorne
   ms.service: application-gateway
   ms.topic: landing-page
-  ms.date: 5/20/2019
+  author: vhorne
   ms.author: victorh
-abstract:
-  description: サービスとしてのアプリケーション配信コントローラー (ADC) である Application Gateway をデプロイする方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、スケーラブルな高可用性 Web フロントエンドを構築できるようにする、アプリケーション レベルのルーティングおよび負荷分散サービスを設定する方法を紹介します。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Application Gateway を使用してリソースへの Web トラフィックを管理する方法を説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-portal'
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-powershell'
-          - image:
-              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/cli.svg'
-            text: Azure CLI
-            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-cli'
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure でアプリケーション ゲートウェイをデプロイ、管理、監視する方法について説明します
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/application-gateway/application-gateway-web-application-firewall-portal">Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する</a>
-          - html: <a href="/azure/application-gateway/create-ssl-portal">SSL 終了でアプリケーション ゲートウェイを構成する</a>
-          - html: <a href="/azure/application-gateway/create-multiple-sites-portal">アプリケーション ゲートウェイを作成して、複数の Web サイトをホストするよう構成する</a>
-          - html: <a href="/azure/application-gateway/create-url-route-portal">パスベースのルーティング規則のあるアプリケーション ゲートウェイを作成する</a>
-          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">URL パスベースのリダイレクトのあるアプリケーション ゲートウェイを作成する</a>
-          - html: <a href="/azure/application-gateway/tutorial-autoscale-ps">Web アプリケーションのアクセスを改善するアプリケーション ゲートウェイを作成する</a>
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: アプリケーション ゲートウェイで Web トラフィックを管理する。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/application-gateway/cli-samples">Azure CLI</a>
-          - html: <a href="/azure/application-gateway/powershell-samples">Azure PowerShell</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Azure CLI</a></p>
-          - title: Languages
-            html: '<p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network/ApplicationGateways">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-network/azure.mgmt.network.v2018_08_01.operations.applicationgatewaysoperations">Python</a></p>'
-          - title: REST
-            html: '<p><a href="https://msdn.microsoft.com/library/mt684941">詳細な REST API リファレンス</a></p>'
+  ms.date: 09/18/2019
+  ms.openlocfilehash: ff940f474c6d5d6fd96a03c45be18de39f065b97
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71076022"
+landingContent:
+- title: Application Gateway について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Application Gateway とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: よく寄せられる質問
+      url: application-gateway-faq.md
+- title: アプリケーション ゲートウェイをデプロイする
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Application Gateway を使用して Web トラフィックを転送する
+      url: quick-create-portal.md
+- title: SSL 終了を使用してデプロイする
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Application Gateway での SSL 終了とエンド ツー エンド SSL
+      url: ssl-overview.md
+    - text: SSL ポリシーの概要
+      url: application-gateway-ssl-policy-overview.md
+  - linkListType: tutorial
+    links:
+    - text: SSL 終了でアプリケーション ゲートウェイを構成する
+      url: create-ssl-portal.md
+- title: 自動スケーリングとゾーン冗長 Application Gateway
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 自動スケーリングとゾーン冗長 Application Gateway v2
+      url: application-gateway-autoscaling-zone-redundant.md
+  - linkListType: tutorial
+    links:
+    - text: Web アプリケーションのアクセスを改善するアプリケーション ゲートウェイを作成する
+      url: tutorial-autoscale-ps.md
+- title: Application Gateway のトラブルシューティング
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Application Gateway の Resource Health の概要
+      url: resource-health-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Log Analytics を使用して Application Gateway Web アプリケーション ファイアウォールのログを調べる
+      url: log-analytics.md
+    - text: Application Gateway のバックエンドの正常性に関する問題
+      url: application-gateway-backend-health-troubleshooting.md

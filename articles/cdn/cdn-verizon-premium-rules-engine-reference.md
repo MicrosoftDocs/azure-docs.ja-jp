@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: 5fc611af75a7f733576f9343a4375fb56cacc030
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: aab93204c850223756f28a56ea550f912e28e0d2
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67593160"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69996768"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-reference"></a>Azure CDN from Verizon Premium ルール エンジンのリファレンス
 
@@ -70,6 +70,8 @@ Character | 説明
 \* | アスタリスクでは、直前の文字を 0 回以上一致すことができます。
 スペース | 空白文字は一般的にリテラル文字として扱われます。
 '値' | 一重引用符は、リテラル文字として扱われます。 一重引用符のセットには、特別な意味はありません。
+
+正規表現をサポートする一致条件と機能は、Perl Compatible Regular Expressions (PCRE) で定義されているパターンを受け入れます。
 
 ## <a name="next-steps"></a>次の手順
 

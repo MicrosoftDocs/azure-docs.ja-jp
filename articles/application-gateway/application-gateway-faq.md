@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: da8142ad035eec338a3c1ba1a23be7c2be470a04
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: fd4eef9771ae89e330c99b398ad6d473356213f5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891722"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858533"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -277,7 +277,11 @@ Application Gateway は、認証証明書を 10 件までサポートしてい�
 
 ### <a name="how-do-i-configure-https-listeners-for-com-and-net-sites"></a>.com と .net のサイトの HTTPS リスナーはどのように構成するのでしょうか? 
 
-複数ドメインベース (ホストベース) のルーティングでは、マルチサイト リスナーを作成し、プロトコルとして HTTPS を使用するリスナーを設定してから、リスナーとルーティング規則を関連付けます。 詳細については、[Application Gateway を使用した複数サイトのホスティング](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview)に関するページを参照してください。 
+複数ドメインベース (ホストベース) のルーティングでは、マルチサイト リスナーを作成し、プロトコルとして HTTPS を使用するリスナーを設定してから、リスナーとルーティング規則を関連付けます。 詳細については、[Application Gateway を使用した複数サイトのホスティング](https://docs.microsoft.com/azure/application-gateway/multiple-site-overview)に関するページを参照してください。
+
+### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>.pfx ファイルのパスワードに特殊文字を使用できますか?
+
+いいえ、.pfx ファイルのパスワードには英数字のみを使用してください。
 
 ## <a name="configuration---web-application-firewall-waf"></a>構成 - Web アプリケーション ファイアウォール (WAF)
 
@@ -349,7 +353,7 @@ PowerShell コマンドレット `Get-AzApplicationGatewayBackendHealth` とポ�
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Application Gateway でアラートを設定できますか?
 
-はい。 Application Gateway では、メトリックに基づいてアラートを構成します。 詳細については、[Application Gateway のメトリック](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics)に関するセクションと、[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)に関するページを参照してください。
+はい。 Application Gateway では、メトリックに基づいてアラートを構成します。 詳細については、[Application Gateway のメトリック](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics)に関するセクションと、[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)に関するページを参照してください。
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Application Gateway のトラフィック統計情報を分析するにはどうすればよいですか?
 

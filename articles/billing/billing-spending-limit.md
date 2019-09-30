@@ -9,18 +9,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 08/28/2019
 ms.author: banders
-ms.openlocfilehash: fb43f29827309fc8986ee6b4653f5edf303cc21d
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 1324b60de05805cd409975358ff78e5b2b27eef1
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490613"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70114443"
 ---
 # <a name="azure-spending-limit"></a>Azure の使用制限
 
-Azure の使用制限により、クレジット額を超過する支出が防止されます。 Azure 試用版プラン、または複数月にわたるクレジットが含まれるプランにサインアップする新規のすべてのお客様に対して、既定で使用制限が有効化されます。 使用制限は $0 です。 変更することはできません。 使用制限は、コミットメント プランや従量課金制料金のプランなどの一部のプランのサブスクリプションでは利用できません。 [Azure プランの完全な一覧および使用制限の可用性](https://azure.microsoft.com/support/legal/offer-details/)についてご覧ください。
+Azure の使用制限により、クレジット額を超過する支出が防止されます。 Azure 試用版プラン、または複数月にわたるクレジットが含まれるプランにサインアップする新規のすべてのお客様に対して、既定で使用制限が有効化されます。 使用制限は 0 ドルであり、変更できません。 たとえば、使用制限を 100 ドルに変更することはできません。 ただし、使用制限の削除はできます。 それには、制限なしとするか、ほとんどの種類の使用を防ぐゼロの制限にするかのいずれかとなります。 使用制限は、コミットメント プランや従量課金制料金のプランなどの一部のプランのサブスクリプションでは利用できません。 [Azure プランの完全な一覧および使用制限の可用性](https://azure.microsoft.com/support/legal/offer-details/)についてご覧ください。
 
 ## <a name="reaching-a-spending-limit"></a>使用制限への到達
 

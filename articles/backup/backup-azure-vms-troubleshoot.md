@@ -6,20 +6,42 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 810484060850400a6af8e5be4cf16164eb8f18cc
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 1b3d02d5cfdae2f196f2f35f075dd8c250b5ece1
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688904"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860329"
 ---
-# <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
+# <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Azure 仮想マシンでのバックアップ エラーのトラブルシューティング
+
 次の情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
 
 ## <a name="backup"></a>バックアップ
+
 このセクションでは、Azure 仮想マシンのバックアップ操作のエラーについて説明します。
+
+### <a name="basic-troubleshooting"></a>基本的なトラブルシューティング
+
+* VM エージェント (WA エージェント) が[最新バージョン](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)であることを確認します。
+* Windows または Linux の VM OS バージョンがサポートされていることを確認します。「[Azure VM バックアップのサポート マトリックス](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas)」を参照してください。
+* 別のバックアップ サービスが実行されていないことを確認します。
+   * スナップショット拡張機能の問題が確実に起こらないようにするには、[拡張機能をアンインストールして強制的に再読み込みしてから、バックアップを再試行してください](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-backup-extension-fails-to-update-or-load)。
+* VM がインターネットに接続されていることを確認します。
+   * 別のバックアップ サービスが実行されていないことを確認します。
+* `Services.msc` から、**Windows Azure ゲスト エージェント** サービスが**実行中**であることを確認します。 **Windows Azure ゲスト エージェント** サービスが見つからない場合は、[Recovery Services コンテナーの Azure VM をバックアップする](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)方法の記事を参照してインストールします。
+* **[イベント ログ]** には、Windows Server バックアップなどの他のバックアップ製品が原因であり、Azure Backup が原因ではないバックアップの失敗が表示される場合があります。 次の手順を使用して、Azure Backup に関する問題かどうかを確認します。
+   * イベント ソースまたはメッセージのエントリの **[バックアップ]** でエラーが発生した場合は、Azure IaaS VM Backup のバックアップが成功したかどうかと、目的のスナップショットの種類で復元ポイントが作成されたかどうかを確認します。
+    * Azure Backup が機能している場合は、別のバックアップ ソリューションの問題である可能性があります。
+    * Azure Backup が正常に動作していても "Windows Server バックアップ" に失敗したイベント ビューアー エラーの例を次に示します。<br>
+    ![Windows Server バックアップの失敗](media/backup-azure-vms-troubleshoot/windows-server-backup-failing.png)
+    * Azure Backup が失敗した場合は、この記事の「一般的な VM バックアップのエラー」セクションの対応するエラー コードを確認してください。
+
+## <a name="common-issues"></a>一般的な問題
+
+Azure 仮想マシンでのバックアップ エラーに関する一般的な問題を次に示します。
 
 ## <a name="copyingvhdsfrombackupvaulttakinglongtime---copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime - コンテナーからのバックアップされたデータのコピーがタイムアウトしました
 
@@ -36,7 +58,7 @@ ms.locfileid: "68688904"
 VM が [失敗] 状態にあるため、バックアップ操作に失敗しました。 バックアップに成功するには、VM の状態が [実行中]、[停止済み]、または [停止済み (割り当て解除)] である必要があります。
 
 * VM が**実行**と**シャットダウン**の間の一時的な状態である場合は、状態が変わるのを待ちます。 その後、バックアップ ジョブをトリガーします。
-*  VM が Linux VM で、Security-Enhanced Linux カーネル モジュールが使用されている場合は、Azure Linux エージェントのパス **/var/lib/waagent** をセキュリティ ポリシーから除外して、Backup 拡張機能が確実にインストールされるようにします。
+* VM が Linux VM で、Security-Enhanced Linux カーネル モジュールが使用されている場合は、Azure Linux エージェントのパス **/var/lib/waagent** をセキュリティ ポリシーから除外して、Backup 拡張機能が確実にインストールされるようにします。
 
 ## <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed - ファイル システム整合性スナップショットの取得で VM の 1 つ以上のマウント ポイントの凍結に失敗しました
 
@@ -148,7 +170,7 @@ Windows サービス **COM+ System** Application での問題のためにバッ�
 
 管理者特権での (管理者) コマンド プロンプトで、次のコマンドを実行します。
 
-```
+```text
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
 REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTimeFromHost /t REG_SZ /d True /f
 ```
@@ -163,16 +185,15 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTi
 
 | エラーの詳細 | 対処法 |
 | ------ | --- |
-| エラー コード:320001<br/> エラー メッセージ:VM が存在しないため、操作を実行できませんでした。 <br/> <br/> エラー コード:400094 <br/> エラー メッセージ:仮想マシンが存在しません <br/> <br/>  Azure 仮想マシンが見つかりませんでした。  |このエラーは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップする VM が引き続き検索される場合に発生します。 このエラーを解決するには、次の手順を実行します。 <ol><li> 同じ名前と同じリソース グループ名、**クラウド サービス名**を持つ仮想マシンを作成し直します。<br>**or**</li><li> バックアップ データを削除して、または削除しないで、仮想マシンの保護を停止します。 詳細については、「[仮想マシンの保護を停止する](backup-azure-manage-vms.md#stop-protecting-a-vm)」を参照してください。</li></ol>|
+| **エラー コード**:320001<br/> **エラー メッセージ**:VM が存在しないため、操作を実行できませんでした。 <br/> <br/> **エラー コード**:400094 <br/> **エラー メッセージ**:仮想マシンが存在しません <br/> <br/>  Azure 仮想マシンが見つかりませんでした。  |このエラーは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップする VM が引き続き検索される場合に発生します。 このエラーを解決するには、次の手順を実行します。 <ol><li> 同じ名前と同じリソース グループ名、**クラウド サービス名**を持つ仮想マシンを作成し直します。<br>**or**</li><li> バックアップ データを削除して、または削除しないで、仮想マシンの保護を停止します。 詳細については、「[仮想マシンの保護を停止する](backup-azure-manage-vms.md#stop-protecting-a-vm)」を参照してください。</li></ol>|
 | VM はプロビジョニングに失敗した状態です: <br>VM を再起動し、VM が実行中とシャットダウンのいずれかの状態になっていることを確認します。 | このエラーは、いずれかの拡張機能が失敗して、VM がプロビジョニングに失敗した状態になる場合に発生します。 拡張機能の一覧に移動し、失敗した拡張機能があるかどうかを確認して、それを削除し、仮想マシンを再起動してみます。 すべての拡張機能が実行状態になっている場合は、VM エージェント サービスが実行されているかどうかを確認してください。 されていない場合は、VM エージェント サービスを再起動します。 |
-|エラー コード:UserErrorBCMPremiumStorageQuotaError<br/> エラー メッセージ:ストレージ アカウント内の空き領域の不足のために、仮想マシンのスナップショットをコピーできませんでした | VM バックアップ スタック V1 の Premium VM の場合、スナップショットはストレージ アカウントにコピーされます。 この手順により、スナップショット上で動作するバックアップ管理トラフィックが、プレミアム ディスクを使用するアプリケーションで利用できる IOPS の数を制限しないようになります。 <br><br>ストレージ アカウントの合計領域の 50% (17.5 TB) のみを割り当てることをお勧めします。 これにより、Azure Backup サービスが、スナップショットをストレージ アカウントにコピーし、ストレージ アカウント内のこのコピーされた場所からコンテナーにデータを転送することができます。 |
-| 仮想マシンが実行されていないため、Microsoft Recovery Services の拡張機能をインストールできませんでした <br>VM エージェントは、Azure Recovery Services 拡張機能の前提条件です。 Azure 仮想マシン エージェントをインストールしてから、登録操作をやり直してください。 |<ol> <li>VM エージェントが正しくインストールされていることを確認します。 <li>VM 構成のフラグが正しく設定されていることを確認します。</ol> VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法に関するセクションを参照してください。 |
-| スナップショットの操作は、**このドライブは、BitLocker ドライブ暗号化でロックされています。コントロール パネルからドライブのロックを解除してください。** というボリューム シャドウ コピー サービス (VSS) 操作エラーで失敗しました。 |VM 上のすべてのドライブで BitLocker をオフにして、VSS の問題が解決されたかどうかを確認します。 |
-| VM はバックアップできる状態ではありません。 |<ul><li>VM が**実行**と**シャットダウン**の間の一時的な状態である場合は、状態が変わるのを待ちます。 その後、バックアップ ジョブをトリガーします。 <li> VM が Linux VM で、Security-Enhanced Linux カーネル モジュールが使用されている場合は、Azure Linux エージェントのパス **/var/lib/waagent** をセキュリティ ポリシーから除外して、Backup 拡張機能が確実にインストールされるようにします。  |
+|**エラー コード**:UserErrorBCMPremiumStorageQuotaError<br/> **エラー メッセージ**:ストレージ アカウント内の空き領域の不足のために、仮想マシンのスナップショットをコピーできませんでした | VM バックアップ スタック V1 の Premium VM の場合、スナップショットはストレージ アカウントにコピーされます。 この手順により、スナップショット上で動作するバックアップ管理トラフィックが、プレミアム ディスクを使用するアプリケーションで利用できる IOPS の数を制限しないようになります。 <br><br>ストレージ アカウントの合計領域の 50% (17.5 TB) のみを割り当てることをお勧めします。 これにより、Azure Backup サービスが、スナップショットをストレージ アカウントにコピーし、ストレージ アカウント内のこのコピーされた場所からコンテナーにデータを転送することができます。 |
+| **エラー コード:380008** <br/> **エラー メッセージ**:仮想マシンが実行されていないため、Microsoft Recovery Services の拡張機能をインストールできませんでした | VM エージェントは、Azure Recovery Services 拡張機能の前提条件です。 Azure 仮想マシン エージェントをインストールしてから、登録操作をやり直してください。 <br> <ol> <li>VM エージェントが正しくインストールされていることを確認します。 <li>VM 構成のフラグが正しく設定されていることを確認します。</ol> VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法に関するセクションを参照してください。 |
+| **エラー コード**:ExtensionSnapshotBitlockerError <br/> **エラー メッセージ**:スナップショットの操作は、**このドライブは、BitLocker ドライブ暗号化でロックされています。コントロール パネルからドライブのロックを解除してください。** というボリューム シャドウ コピー サービス (VSS) 操作エラーで失敗しました。 |VM 上のすべてのドライブで BitLocker をオフにして、VSS の問題が解決されたかどうかを確認します。 |
+| **エラー コード**:VmNotInDesirableState <br/> **エラー メッセージ**:VM はバックアップできる状態ではありません。 |<ul><li>VM が**実行**と**シャットダウン**の間の一時的な状態である場合は、状態が変わるのを待ちます。 その後、バックアップ ジョブをトリガーします。 <li> VM が Linux VM で、Security-Enhanced Linux カーネル モジュールが使用されている場合は、Azure Linux エージェントのパス **/var/lib/waagent** をセキュリティ ポリシーから除外して、Backup 拡張機能が確実にインストールされるようにします。  |
 | VM エージェントが仮想マシンに存在しません: <br>前提条件と VM エージェントをインストールします。 その後、操作を再開します。 |VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法については、[こちら](#vm-agent)を参照してください。 |
-| Backup でファイル システムの一貫性のあるスナップショットの取得で VM の 1 つまたは複数のマウント ポイントをフリーズできませんでした。 | 次の手順を実行します。 <ul><li>**'tune2fs'** コマンドを使用して、マウントされているすべてのデバイスのファイル システムの状態を確認します。 たとえば、**tune2fs -l /dev/sdb1 \\** .\| grep **Filesystem state** のようにします。 <li>ファイル システムの状態がクリーンではないデバイスを、 **'umount'** コマンドを使用してマウント解除します。 <li> これらのデバイスで、 **'fsck'** コマンドを使用してファイルシステム整合性チェックを実行します。 <li> デバイスを再度マウントして、バックアップをやり直します。</ol> |
-| セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました。 | <ol><li> 管理者特権モードで **regedit.exe** を実行してレジストリ エディターを開きます。 <li> お使いのシステムに存在する .NET Framework のすべてのバージョンを識別します。 それらは、レジストリ キーの階層 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** の下にあります。 <li> レジストリ キー内に存在する各 .NET Framework に対して、次のキーを追加します。 <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>|
-| Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました。 | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2012_x64 をインストールします。<br/>このサービスのインストールを許可するレジストリ キーの値が正しい値に設定されていることを確認します。 つまり、**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** の **Start** 値を **4** ではなく **3** に設定します。 <br><br>インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから **MSIEXEC /UNREGISTER** と **MSIEXEC /REGISTER** を続けて実行して、インストール サービスを再起動します。  |
+| **エラー コード**:ExtensionSnapshotFailedNoSecureNetwork <br/> **エラー メッセージ**:セキュリティで保護されたネットワーク通信チャネルを作成できないため、スナップショット操作が失敗しました。 | <ol><li> 管理者特権モードで **regedit.exe** を実行してレジストリ エディターを開きます。 <li> お使いのシステムに存在する .NET Framework のすべてのバージョンを識別します。 それらは、レジストリ キーの階層 **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** の下にあります。 <li> レジストリ キー内に存在する各 .NET Framework に対して、次のキーを追加します。 <br> **SchUseStrongCrypto"=dword:00000001**。 </ol>|
+| **エラー コード**:ExtensionVCRedistInstallationFailure <br/> **エラー メッセージ**:Visual Studio 2012 用の Visual C++ 再頒布可能パッケージをインストールできないため、スナップショット操作が失敗しました。 | C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion に移動し、vcredist2013_x64 をインストールします。<br/>このサービスのインストールを許可するレジストリ キーの値が正しい値に設定されていることを確認します。 つまり、**HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** の **Start** 値を **4** ではなく **3** に設定します。 <br><br>インストールに関する問題が解消されない場合は、管理者特権でコマンド プロンプトから **MSIEXEC /UNREGISTER** と **MSIEXEC /REGISTER** を続けて実行して、インストール サービスを再起動します。  |
 
 
 ## <a name="jobs"></a>[ジョブ]
@@ -244,7 +265,7 @@ VM のバックアップは、基礎をなすストレージへのスナップ�
 - **NSG を使用してストレージへのネットワーク アクセスがブロックされています**。 IP の許可リストまたはプロキシ サーバーを使用してストレージへの[ネットワーク アクセスを有効にする](backup-azure-arm-vms-prepare.md#establish-network-connectivity)方法の詳細を参照してください。
 - **SQL Server のバックアップが構成されている VM はスナップショット タスクの遅延を引き起こすことがあります**。 既定では、VM バックアップによって Windows VM 上に VSS フル バックアップが作成されます。 SQL Server を実行していて SQL Server のバックアップを構成されている VM では、スナップショットの遅延が発生する可能性があります。 スナップショットの遅延が原因でバックアップが失敗する場合は、次のレジストリ キーを設定します。
 
-   ```
+   ```text
    [HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT]
    "USEVSSCOPYBACKUP"="TRUE"
    ```

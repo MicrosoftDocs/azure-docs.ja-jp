@@ -8,17 +8,17 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
-ms.date: 07/26/2019
-ms.openlocfilehash: df43b52514eebc3216dbec01cff0d8a3b14e7940
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.date: 08/01/2019
+ms.openlocfilehash: 8e2e9d30fa24e56711a0d6800a8ca9a34e53c12e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517420"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967221"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Azure Logic Apps で統合サービス環境 (ISE) に成果物を追加する
 
-[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成したら、ロジック アプリ、統合アカウント、カスタム コネクタなどの成果物を追加して、Azure 仮想ネットワーク内のリソースにアクセスできるようにします。
+[統合サービス環境 (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成したら、ロジック アプリ、統合アカウント、コネクタなどの成果物を追加して、Azure 仮想ネットワーク内のリソースにアクセスできるようにします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,7 @@ ms.locfileid: "68517420"
 
 <a name="create-logic-apps-environment"></a>
 
-## <a name="create-logic-apps-in-an-ise"></a>ISE 内でロジック アプリを作成する
+## <a name="create-logic-apps"></a>ロジック アプリを作成する
 
 統合サービス環境 (ISE) で実行されるロジック アプリを構築するには、次の手順を実行します。
 
@@ -57,7 +57,7 @@ ms.locfileid: "68517420"
 
 <a name="create-integration-account-environment"></a>
 
-## <a name="create-integration-accounts-in-an-ise"></a>ISE で統合アカウントを作成する
+## <a name="create-integration-accounts"></a>統合アカウントを作成する
 
 作成時に選択された [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) に基づいて、ISE には追加費用なしで特定の統合アカウントの使用が含まれます。 統合サービス環境 (ISE) に存在するロジック アプリは、同じ ISE に存在する統合アカウントのみを参照できます。 そのため、ISE で統合アカウントがロジック アプリと連携するには、統合アカウントとロジック アプリの両方で、場所として "*同じ環境*" を使用する必要があります。 統合アカウントと ISE の詳細については、「[ISE との統合アカウント](connect-virtual-network-vnet-isolated-environment-overview.md#create-integration-account-environment
 )」を参照してください。
@@ -84,9 +84,25 @@ ISE を使用する統合アカウントを作成するには、次の手順を�
 
 1. ISE で統合アカウントを管理するには、[統合サービス環境の管理](../logic-apps/ise-manage-integration-service-environment.md)に関する記事を参照してください。
 
+<a name="add-ise-connectors-environment"></a>
+
+## <a name="add-ise-connectors"></a>ISE のコネクタを追加する
+
+自分の ISE で使用できる (ただし自分の ISE にはデプロイされない) Microsoft のマネージド コネクタを追加できます。
+
+1. ISE メニューの **[設定]** で、 **[マネージド コネクタ]** を選択します。 ツールバーの **[追加]** を選択します。
+
+   ![マネージド コネクタを表示する](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
+
+1. **[新しいマネージド コネクタの追加]** ウィンドウの **[コネクタの検索]** ボックスの一覧を開きます。 希望するコネクタが利用可能である場合、そのコネクタを選択し、 **[作成]** を選択します。
+
+   ボックスの一覧に表示されるのは、候補となるコネクタのうち、自分の ISE にはデプロイされないコネクタだけです。 自分の ISE に既にデプロイされているコネクタは選択不可の状態で表示されます。
+
+   ![候補となるコネクタを選択する](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+
 <a name="create-custom-connectors-environment"></a>
 
-## <a name="create-custom-connectors-in-an-ise"></a>ISE でカスタム コネクタを作成する
+## <a name="create-custom-connectors"></a>カスタム コネクタを作成する
 
 ISE でカスタム コネクタを使用するには、ISE 内から直接これらのカスタム コネクタを作成します。
 

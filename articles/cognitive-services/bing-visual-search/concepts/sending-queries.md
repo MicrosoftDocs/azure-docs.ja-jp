@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 7/01/2019
+ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: 6604e5d5b3b77955c9e5f78df5d2a5b804bf09ef
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e857401591d45048962e9f606973dbf59dfe99c8
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883580"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194317"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Bing Visual Search API に検索クエリを送信する
 
@@ -242,7 +242,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 
 既定の分析情報の一覧については、「[既定の分析情報タグ](../default-insights-tag.md)」をご覧ください。
 
-残りのタグには、ユーザーが関心を持つ可能性のある他の分析情報が含まれています。 たとえば、画像にテキストが含まれる場合、タグの 1 つには TextResults 分析情報が含まれ、認識されたテキストが格納されている可能性があります。 または、Bing が画像でエンティティ (つまり、人、場所、または物) を認識した場合、タグの 1 つでそのエンティティが示されている可能性があります。 Visual Search は、入力画像から得られるさまざまな用語セット (タグ) も返します。 これらのタグを使用して、ユーザーは画像で見つかる概念を調べることができます。 たとえば、入力画像が有名なアスリートの場合、タグの 1 つは Sports で、スポーツの画像へのリンクが含まれる可能性があります。
+残りのタグには、ユーザーが関心を持つ可能性のある他の分析情報が含まれています。 たとえば、画像にテキストが含まれる場合、タグの 1 つには TextResults 分析情報が含まれ、認識されたテキストが格納されている可能性があります。 または、Bing が画像でエンティティ (つまり、文化的によく知られた有名な人、場所、または物) を認識した場合、タグの 1 つでそのエンティティが示されている可能性があります。 Visual Search は、入力画像から得られるさまざまな用語セット (タグ) も返します。 これらのタグを使用して、ユーザーは画像で見つかる概念を調べることができます。 たとえば、入力画像が有名なアスリートの場合、タグの 1 つは Sports で、スポーツの画像へのリンクが含まれる可能性があります。
 
 各タグには、分析情報の分類に使用できる表示名、分析情報が適用される関心領域を示す境界ボックス、分析情報自体、画像のサムネイルが含まれています。 たとえば、スポーツのジャージを着ている人の画像の場合、タグの 1 つにはジャージを囲む境界ボックスが含まれる可能性があり、VisualSearch 分析情報と ProductVisualSearch 分析情報が含まれます。 そして、別のタグには ImageResults 分析情報が含まれ、局所的に関連のある画像を取得するための /images/search API 要求の URL、またはユーザーを Bing.com 画像検索結果に移動させる Bing.com 検索 URL が含まれている可能性があります。
 
@@ -368,7 +368,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
     }
 ```
 
-画像に人、場所、物などの認識されたエンティティが含まれる場合、タグの 1 つには Entity 分析情報が含まれる可能性があります。
+文化的によく知られた有名な人、場所、物などの認識されたエンティティが画像に含まれる場合、タグの 1 つには Entity 分析情報が含まれる可能性があります。
 
 ```json
     {

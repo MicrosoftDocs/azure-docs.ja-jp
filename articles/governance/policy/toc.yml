@@ -65,7 +65,7 @@
             - name: リソース グループへのタグと値の強制
               displayName: 'deny, concat'
               href: samples/enforce-tag-on-resource-groups.md
-        - name: Locations
+        - name: 場所
           items:
             - name: 許可される場所
               displayName: 'deny, builtin, location'
@@ -257,6 +257,12 @@
     - name: Policy の効果について
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
+    - name: Azure Policy の割り当ての構造
+      displayName: 'parameters, enforcementmode, policyDefinitionId'
+      href: ./concepts/assignment-structure.md
+    - name: 新しいポリシーの影響の評価
+      displayName: 'audit, enforcementmode, compliance'
+      href: ./concepts/evaluate-impact.md
     - name: Kubernetes 用の Azure Policy
       displayName: 'aks, rego, k8s, opa, open policy agent, gatekeeper'
       href: ./concepts/rego-for-aks.md

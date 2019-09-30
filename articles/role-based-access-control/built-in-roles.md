@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/02/2019
+ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 09551eb2620349fa2445c1da3a7e0d66062ebaf0
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899729"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801379"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -36,7 +36,7 @@ ms.locfileid: "69899729"
 | 組み込みのロール | 説明 |
 | --- | --- |
 | [Owner](#owner) | リソースへのアクセスを含め、すべてを管理できます。 |
-| [Contributor](#contributor) | リソースへのアクセス以外のすべてを管理できます。 |
+| [Contributor](#contributor) | リソースへのアクセス権の付与以外のすべてを管理できます。 |
 | [Reader](#reader) | すべてを表示できますが、変更することはできません。 |
 | [AcrDelete](#acrdelete) | acr の削除 |
 | [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 |
@@ -54,15 +54,15 @@ ms.locfileid: "69899729"
 | [Automation Runbook Operator](#automation-runbook-operator) | Runbook のジョブを作成する方法については、Runbook のプロパティを参照してください。 |
 | [Avere 共同作成者](#avere-contributor) | Avere vFXT クラスターを作成および管理できます。 |
 | [Avere オペレーター](#avere-operator) | クラスターを管理するために Avere vFXT クラスターによって使用されます |
-| [Azure Event Hubs データ所有者 (プレビュー)](#azure-event-hubs-data-owner-preview) | Azure Event Hubs リソースへのフル アクセスを許可します。 |
-| [Azure Event Hubs データ受信者 (プレビュー)](#azure-event-hubs-data-receiver-preview) | Azure Event Hubs リソースへの受信アクセスを許可します。 |
-| [Azure Event Hubs データ送信者 (プレビュー)](#azure-event-hubs-data-sender-preview) | Azure Event Hubs リソースへの送信アクセスを許可します。 |
+| [Azure Event Hubs データ所有者](#azure-event-hubs-data-owner) | Azure Event Hubs リソースへのフル アクセスを許可します。 |
+| [Azure Event Hubs データ受信者](#azure-event-hubs-data-receiver) | Azure Event Hubs リソースへの受信アクセスを許可します。 |
+| [Azure Event Hubs データ送信者](#azure-event-hubs-data-sender) | Azure Event Hubs リソースへの送信アクセスを許可します。 |
 | [Azure Kubernetes Service クラスター管理者ロール](#azure-kubernetes-service-cluster-admin-role) | クラスター管理者の資格情報アクションを一覧表示します。 |
 | [Azure Kubernetes Service クラスター ユーザー ロール](#azure-kubernetes-service-cluster-user-role) | クラスター ユーザーの資格情報アクションを一覧表示します。 |
 | [Azure Maps データ閲覧者 (プレビュー)](#azure-maps-data-reader-preview) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 |
-| [Azure Service Bus データ所有者 (プレビュー)](#azure-service-bus-data-owner-preview) | Azure Service Bus リソースへのフル アクセスを許可します。 |
-| [Azure Service Bus データ受信者 (プレビュー)](#azure-service-bus-data-receiver-preview) | Azure Service Bus リソースへの受信アクセスを許可します。 |
-| [Azure Service Bus データ送信者 (プレビュー)](#azure-service-bus-data-sender-preview) | Azure Service Bus リソースへの送信アクセスを許可します。 |
+| [Azure Service Bus データ所有者](#azure-service-bus-data-owner) | Azure Service Bus リソースへのフル アクセスを許可します。 |
+| [Azure Service Bus データ受信者](#azure-service-bus-data-receiver) | Azure Service Bus リソースへの受信アクセスを許可します。 |
+| [Azure Service Bus データ送信者](#azure-service-bus-data-sender) | Azure Service Bus リソースへの送信アクセスを許可します。 |
 | [Azure Stack Registration Owner](#azure-stack-registration-owner) | Azure Stack の登録を管理できます。 |
 | [Backup Contributor](#backup-contributor) | バックアップ サービスを管理できますが、資格情報コンテナーの作成や他のユーザーに対するアクセス権の付与を行うことはできません |
 | [Backup Operator](#backup-operator) | バックアップ サービスを管理できます (バックアップの削除、資格情報コンテナーの作成、他のユーザーに対するアクセス権の付与を除く) |
@@ -70,6 +70,8 @@ ms.locfileid: "69899729"
 | [Billing Reader](#billing-reader) | 課金データへの読み取りアクセスを許可します |
 | [BizTalk Contributor](#biztalk-contributor) | BizTalk Services を管理できます。ただし、それらへのアクセスは含まれません。 |
 | [ブロックチェーン メンバー ノードへのアクセス (プレビュー)](#blockchain-member-node-access-preview) | ブロックチェーン メンバー ノードにアクセスできるようにします |
+| [ブループリント共同作成者](#blueprint-contributor) | ブループリントの定義を管理できますが、それらを割り当てることはできません。 |
+| [ブループリント オペレーター](#blueprint-operator) | 既存の発行済みのブループリントを割り当てることはできますが、ブループリントの新規作成はできません。 注: これは、ユーザーが割り当てたマネージド ID を使用して割り当てが行われた場合にのみ機能します。 |
 | [CDN Endpoint Contributor](#cdn-endpoint-contributor) | CDN エンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 |
 | [CDN Endpoint Reader](#cdn-endpoint-reader) | CDN エンドポイントを表示できますが、変更はできません。 |
 | [CDN Profile Contributor](#cdn-profile-contributor) | CDN プロファイルとそのエンドポイントを管理できますが、アクセス権を他のユーザーに付与することはできません。 |
@@ -556,7 +558,7 @@ ms.locfileid: "69899729"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
-## <a name="azure-event-hubs-data-owner-preview"></a>Azure Event Hubs データ所有者 (プレビュー)
+## <a name="azure-event-hubs-data-owner"></a>Azure Event Hubs データ所有者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -571,7 +573,7 @@ ms.locfileid: "69899729"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
-## <a name="azure-event-hubs-data-receiver-preview"></a>Azure Event Hubs データ受信者 (プレビュー)
+## <a name="azure-event-hubs-data-receiver"></a>Azure Event Hubs データ受信者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -586,7 +588,7 @@ ms.locfileid: "69899729"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
-## <a name="azure-event-hubs-data-sender-preview"></a>Azure Event Hubs データ送信者 (プレビュー)
+## <a name="azure-event-hubs-data-sender"></a>Azure Event Hubs データ送信者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -646,7 +648,7 @@ ms.locfileid: "69899729"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
-## <a name="azure-service-bus-data-owner-preview"></a>Azure Service Bus データ所有者 (プレビュー)
+## <a name="azure-service-bus-data-owner"></a>Azure Service Bus データ所有者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -661,7 +663,7 @@ ms.locfileid: "69899729"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
-## <a name="azure-service-bus-data-receiver-preview"></a>Azure Service Bus データ受信者 (プレビュー)
+## <a name="azure-service-bus-data-receiver"></a>Azure Service Bus データ受信者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -678,7 +680,7 @@ ms.locfileid: "69899729"
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
-## <a name="azure-service-bus-data-sender-preview"></a>Azure Service Bus データ送信者 (プレビュー)
+## <a name="azure-service-bus-data-sender"></a>Azure Service Bus データ送信者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -945,6 +947,44 @@ ms.locfileid: "69899729"
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.Blockchain/blockchainMembers/transactionNodes/connect/action | ブロックチェーン メンバーのトランザクション ノードに接続します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="blueprint-contributor"></a>ブループリント共同作成者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | ブループリントの定義を管理できますが、それらを割り当てることはできません。 |
+> | **Id** | 41077137-e803-4205-871c-5a86e6a753b4 |
+> | **アクション** |  |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.Blueprint/blueprints/* | ブループリントの定義またはブループリント アーティファクトを作成および管理します。 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="blueprint-operator"></a>ブループリント オペレーター
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | 既存の発行済みのブループリントを割り当てることはできますが、ブループリントの新規作成はできません。 注: これは、ユーザーが割り当てたマネージド ID を使用して割り当てが行われた場合にのみ機能します。 |
+> | **Id** | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
+> | **アクション** |  |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.Blueprint/blueprintAssignments/* | ブループリント割り当てを作成および管理します。 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -1268,7 +1308,7 @@ ms.locfileid: "69899729"
 > | **アクション** |  |
 > | Microsoft.Consumption/* |  |
 > | Microsoft.CostManagement/* |  |
-> | Microsoft.Billing/billingPeriods/read | 使用可能な請求期間を一覧表示します。 |
+> | Microsoft.Billing/billingPeriods/read |  |
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
@@ -1291,7 +1331,7 @@ ms.locfileid: "69899729"
 > | **アクション** |  |
 > | Microsoft.Consumption/*/read |  |
 > | Microsoft.CostManagement/*/read |  |
-> | Microsoft.Billing/billingPeriods/read | 使用可能な請求期間を一覧表示します。 |
+> | Microsoft.Billing/billingPeriods/read |  |
 > | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
@@ -1899,6 +1939,7 @@ ms.locfileid: "69899729"
 > | Microsoft.Insights/Register/Action | Microsoft Insights プロバイダーを登録します。 |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | Application Insights の Web テストの読み取り/書き込み/削除を行います。 |
+> | Microsoft.Insights/workbooks/* |  |
 > | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Log Analytics ソリューション パックの読み取り/書き込み/削除を行います。 |
 > | Microsoft.OperationalInsights/workspaces/savedSearches/* | Log Analytics によって保存された検索の読み取り/書き込み/削除を行います。 |
 > | Microsoft.OperationalInsights/workspaces/search/action | 検索クエリを実行します。 |
@@ -2474,6 +2515,7 @@ ms.locfileid: "69899729"
 > | Microsoft.Sql/managedInstances/databases/sensitivityLabels/* |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/managedInstances/securityAlertPolicies/* |  |
+> | Microsoft.Sql/managedInstances/databases/transparentDataEncryption/* |  |
 > | Microsoft.Sql/managedInstances/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーの作成と管理 |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定の作成と管理 |
@@ -2494,6 +2536,7 @@ ms.locfileid: "69899729"
 > | Microsoft.Sql/servers/databases/securityAlertPolicies/* | SQL サーバー データベース セキュリティの警告のポリシーの作成と管理 |
 > | Microsoft.Sql/servers/databases/securityMetrics/* | SQL サーバー データベース セキュリティ基準の作成と管理 |
 > | Microsoft.Sql/servers/databases/sensitivityLabels/* |  |
+> | Microsoft.Sql/servers/databases/transparentDataEncryption/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |

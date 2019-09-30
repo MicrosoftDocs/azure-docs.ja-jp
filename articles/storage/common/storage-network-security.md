@@ -9,31 +9,31 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 90f064ce5d6dc7ffa6b4c532ac30d9b4dd60e13f
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 00e69d9222444e3b700fca10e3f15b4b110e0c60
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981137"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241739"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
-Azure Storage では、多層型セキュリティ モデルが提供されています。 このモデルでは、サポートされているネットワークの特定のセットに、ストレージ アカウントを固定することができます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、ストレージ アカウントにアクセスできます。
+Azure Storage では、多層型セキュリティ モデルが提供されています。 このモデルでは、ネットワークの特定のサブセットに、ストレージ アカウントを固定することができます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、ストレージ アカウントにアクセスできます。 ストレージ アカウントへのアクセスを、Azure 仮想ネットワーク内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限できます。
 
 ネットワーク ルールが有効なときにストレージ アカウントにアクセスするアプリケーションでは、要求に対する適切な認可が必要です。 認可は、BLOB とキューに対する Azure Active Directory (Azure AD) の資格情報、有効なアカウント アクセス キー、または SAS トークンでサポートされています。
 
 > [!IMPORTANT]
 > ストレージ アカウントのファイアウォール ルールを有効にすると、Azure 仮想ネットワーク (VNet) 内で動作しているサービスから送信された要求でない限り、データに対して受信した要求は既定でブロックされます。 ブロックされる要求には、他の Azure サービスからの要求、Azure portal からの要求、ログおよびメトリック サービスからの要求などが含まれます。
 >
-> サービス インスタンスのサブネットを許可することで、VNet 内で動作する Azure サービスにアクセス権を付与できます。 後のセクションで説明する[例外](#exceptions)メカニズムによって、限られた数のシナリオを有効にします。 Azure portal にアクセスするには、設定済みの信頼できる境界 (IP または VNet) 内のコンピューター上にいる必要があります。
+> サービス インスタンスがホストされているサブネットからのトラフィックを許可することで、VNet 内で動作する Azure サービスにアクセス権を付与できます。 また、後のセクションで説明する[例外](#exceptions)メカニズムによって、限られた数のシナリオを有効にすることもできます。 Azure portal を通してストレージ アカウントからデータにアクセスするには、設定済みの信頼できる境界 (IP または VNet) 内のコンピューター上にいる必要があります。
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="scenarios"></a>シナリオ
 
-既定で (インターネット トラフィックを含む) すべてのネットワークからのトラフィックへのアクセスを拒否するようにストレージ アカウントを構成します。 その後、特定の VNet からのトラフィックへのアクセスを許可します。 この構成では、アプリケーションに対してセキュリティで保護されたネットワーク境界を構築することができます。 また、パブリック インターネットの IP アドレス範囲へのアクセスを許可して、インターネットやオンプレミスの特定のクライアントからの接続を有効にすることもできます。
+ストレージ アカウントをセキュリティで保護するには、最初に、(インターネット トラフィックを含む) すべてのネットワークからのトラフィックに対して既定でアクセスを拒否するように、ルールを構成する必要があります。 次に、特定の VNet からのトラフィックにアクセスを許可するルールを構成する必要があります。 この構成では、アプリケーションに対してセキュリティで保護されたネットワーク境界を構築することができます。 また、選択したパブリック インターネット IP アドレス範囲からのトラフィックにアクセスを許可して、インターネットやオンプレミスの特定のクライアントからの接続を有効にすることもできます。
 
-Azure Storage に対して、REST や SMB などのすべてのネットワーク プロトコルにネットワーク ルールが適用されます。 Azure portal、Storage Explorer、AZCopy などのツールを使用してデータにアクセスするには、明示的なネットワーク ルールが必要です。
+Azure Storage に対して、REST や SMB などのすべてのネットワーク プロトコルにネットワーク ルールが適用されます。 Azure portal、Storage Explorer、AZCopy などのツールを使用してデータにアクセスするには、明示的なネットワーク ルールを構成する必要があります。
 
 既存のストレージ アカウントに、または新しいストレージ アカウントを作成するときに、ネットワーク ルールを適用できます。
 
@@ -112,9 +112,9 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
 
 ## <a name="grant-access-from-a-virtual-network"></a>仮想ネットワークからアクセスの許可
 
-特定の VNet からのアクセスのみを許可するように、ストレージ アカウントを構成できます。
+特定のサブネットからのアクセスのみを許可するように、ストレージ アカウントを構成できます。 許可するサブネットは、同じサブスクリプション内の VNet に属していても、または異なる Azure Active Directory テナントに属するサブスクリプションなど、異なるサブスクリプション内のものであってもかまいません。
 
-VNet 内の Azure Storage に対する[サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)を有効にします。 このエンドポイントでは、Azure Storage サービスへの最適なルートがトラフィックに提供されます。 仮想ネットワークとサブネットの ID も、各要求と一緒に転送されます。 管理者は、その後、VNet 内の特定のサブネットからの要求の受信を許可するネットワーク ルールを、ストレージ アカウントに対して構成できます。 これらのネットワーク ルールによってアクセスを許可されたクライアントがデータにアクセスするには、ストレージ アカウントの認可要件を引き続き満たす必要があります。
+VNet 内の Azure Storage に対する[サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)を有効にします。 サービス エンドポイントでは、VNet からのトラフィックが、最適なパスを経由して、Azure Storage サービスにルーティングされます。 サブネットと仮想ネットワークの ID も、各要求と一緒に転送されます。 管理者は、その後、VNet 内の特定のサブネットからの要求の受信を許可するネットワーク ルールを、ストレージ アカウントに対して構成できます。 これらのネットワーク ルールによってアクセスを許可されたクライアントがデータにアクセスするには、ストレージ アカウントの認可要件を引き続き満たす必要があります。
 
 各ストレージ アカウントでは最大 100 個の仮想ネットワーク規則がサポートされ、それを [IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と組み合わせることができます。
 
@@ -131,7 +131,10 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
 
 ストレージ アカウントに仮想ネットワーク規則を適用するには、追加されるサブネットに対する適切なアクセス許可を持っている必要があります。 必要なアクセス許可は "*サブネットにサービスを参加させる*" であり、"*ストレージ アカウント共同作成者*" 組み込みロールに含まれます。 カスタム ロール定義に追加することもできます。
 
-ストレージ アカウントとアクセスが許可されている仮想ネットワークで、サブスクリプションが異なる可能性がありますが、これらのサブスクリプションは、同じ Azure AD テナントの一部である必要があります。
+ストレージ アカウントとアクセスを許可される仮想ネットワークは、異なる Azure AD テナントの一部であるサブスクリプションなど、異なるサブスクリプションに含まれていてもかまいません。
+
+> [!NOTE]
+> 異なる Azure Active Directory テナントの一部である仮想ネットワーク内のサブネットへのアクセスを許可するルールの構成は、現在、Powershell、CLI、および REST API でのみサポートされています。 このようなルールを Azure portal を使用して構成することはできませんが、ポータルで表示することはできます。
 
 ### <a name="managing-virtual-network-rules"></a>仮想ネットワーク規則の管理
 
@@ -149,6 +152,8 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
 
     > [!NOTE]
     > Azure Storage 用のサービス エンドポイントが、選択した仮想ネットワークとサブネットに対してまだ構成されていない場合は、この操作の中で構成することができます。
+    >
+    > 現在、ルールの作成時に選択できるのは、同じ Azure Active Directory テナントに属する仮想ネットワークのみです。 別のテナントに属する仮想ネットワーク内のサブネットにアクセスを許可するには、Powershell、CLI、または REST API を使用してください。
 
 1. 仮想ネットワークまたはサブネットのルールを削除するには、 **[...]** をクリックして仮想ネットワークまたはサブネットのコンテキスト メニューを開き、 **[削除]** をクリックします。
 
@@ -176,6 +181,9 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
     $subnet = Get-AzVirtualNetwork -ResourceGroupName "myresourcegroup" -Name "myvnet" | Get-AzVirtualNetworkSubnetConfig -Name "mysubnet"
     Add-AzStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet.Id
     ```
+
+    > [!TIP]
+    > 別の Azure AD テナントに属する VNet 内のサブネットに対するネットワーク ルールを追加するには、"/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name" という形式の完全修飾 **VirtualNetworkResourceId** パラメーターを使用します。
 
 1. 仮想ネットワークとサブネットのネットワーク ルールを削除します。
 
@@ -209,6 +217,11 @@ VNet 内の Azure Storage に対する[サービス エンドポイント](/azur
     $subnetid=(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
     az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
     ```
+
+    > [!TIP]
+    > 別の Azure AD テナントに属する VNet 内のサブネットに対するルールを追加するには、"/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name" という形式の完全修飾サブネット ID を使用します。
+    > 
+    > **subscription** パラメーターを使用して、別の Azure AD テナントに属する VNet のサブネット ID を取得できます。
 
 1. 仮想ネットワークとサブネットのネットワーク ルールを削除します。
 
@@ -344,7 +357,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 ストレージ アカウントとやり取りする一部の Microsoft サービスは、ネットワーク ルールでアクセスを許可できないネットワークから実行されます。
 
-この種のサービスを意図したとおりに動作させるには、一連の信頼できる Microsoft サービスがネットワーク ルールをバイパスするのを許可します。 そうすると、これらのサービスはストレージ アカウントにアクセスするために強力な認証を使用します。
+一部のサービスを意図したとおりに動作させるには、信頼済みの Microsoft サービスのサブセットに、ネットワーク ルールのバイパスを許可する必要があります。 そうすると、これらのサービスはストレージ アカウントにアクセスするために強力な認証を使用します。
 
 **[信頼された Microsoft サービスによる ... を許可します]** の例外を有効にすると、(サブスクリプションに登録されている場合は) 次のサービスにストレージ アカウントへのアクセスが許可されます。
 

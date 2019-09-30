@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/31/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 88a4fe8b9f0b477ed851a03742a9957c08b7cbf0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: d47caaf9dbca14364771e0d8ba1e7f6ce16ef2d6
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67455174"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70174634"
 ---
 ## <a name="run-the-function-locally"></a>関数をローカルで実行する
 
@@ -21,7 +21,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 1. 関数をテストするには、関数コードにブレークポイントを設定し、F5 キーを押して関数アプリ プロジェクトを開始します。 Core Tools からの出力が**ターミナル** パネルに表示されます。
 
-1. **ターミナル** パネルで、HTTP によってトリガーされる関数の URL エンドポイントをコピーします。 この URL には、`code` クエリ パラメーターに渡される関数キーが含まれています。
+1. **ターミナル** パネルで、HTTP によってトリガーされる関数の URL エンドポイントをコピーします。 
 
     ![Azure のローカル出力](./media/functions-run-function-test-local-vs-code/functions-vscode-f5.png)
 

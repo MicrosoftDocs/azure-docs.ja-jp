@@ -8,12 +8,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: f363e59e6faa6b115eb40a2a5d35432f02299d52
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 43d91bff6b8b67e79a9549c1524f918166c9adc4
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810034"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934008"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Azure Data Explorer を使用して Azure Monitor でデータのクエリを実行する (プレビュー)
 
@@ -56,7 +56,9 @@ Kusto Explorer、ADX Web Explorer、Jupyter Kqlmagic、または REST API を使
 
 > [!TIP]
 > * データベース名は、プロキシ クラスターで指定したリソースと同じ名前にする必要があります。 名前は大文字と小文字が区別されます。
-> * クロス クラスター クエリでは、[アプリとワークスペースの名前付け](#application-insights-app-and-log-analytics-workspace-names)が正しいことを確認してください。
+> * クロス クラスター クエリでは、Application Insights アプリと Log Analytics ワークスペースの名前付けが正しいことを確認してください。
+>     * 名前に特殊文字が含まれている場合は、プロキシ クラスター名の URL エンコードで置き換えられます。 
+>     * 名前に [KQL 識別子の名前規則](/azure/kusto/query/schema-entities/entity-names)を満たしていない文字が含まれている場合は、ダッシュ **-** 文字で置き換えられます。
 
 ### <a name="query-against-the-native-azure-data-explorer-cluster"></a>Azure Data Explorer ネイティブ クラスターにクエリを実行する 
 
@@ -105,7 +107,7 @@ union <ADX table>, cluster(CL1).database(<workspace-name>).<table name>
 
 ![Azure Data Explorer プロキシからのクロス クエリ](media/adx-proxy/cross-query-adx-proxy.png)
 
-union の代わりに [`join` 演算子](/azure/kusto/query/joinoperator)を使用するには、それを (プロキシに対してではなく) Azure Data Explorer ネイティブ クラスターに対して実行するためのヒントが必要になる場合があります。 
+union の代わりに [`join` 演算子](/azure/kusto/query/joinoperator)を使用するには、それを (プロキシに対してではなく) Azure Data Explorer ネイティブ クラスターに対して実行するための [`hint`](/azure/kusto/query/joinoperator#join-hints) が必要になる場合があります。 
 
 ## <a name="additional-syntax-examples"></a>その他の構文例
 
@@ -117,11 +119,6 @@ Application Insights (AI) または Log Analytics (LA) クラスターを呼び�
 | このサブスクリプション内のすべてのアプリ/ワークスペースを含むクラスター    |     cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>`)    |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>`)     |
 |サブスクリプション内のすべてのアプリ/ワークスペースを含み、このリソース グループのメンバーであるクラスター    |   cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |    cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>`)      |
 |このサブスクリプションで定義されているリソースのみを含むクラスター      |    cluster(`https://ade.applicationinsights.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.insights/components/<ai-app-name>`)    |  cluster(`https://ade.loganalytics.io/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/microsoft.operationalinsights/workspaces/<workspace-name>`)     |
-
-### <a name="application-insights-app-and-log-analytics-workspace-names"></a>Application Insights アプリと Log Analytics ワークスペースの名前
-
-* 名前に特殊文字が含まれている場合は、プロキシ クラスター名の URL エンコードで置き換えられます。 
-* 名前に [KQL 識別子の名前規則](/azure/kusto/query/schema-entities/entity-names)を満たしていない文字が含まれている場合は、ダッシュ **-** 文字で置き換えられます。
 
 ## <a name="next-steps"></a>次の手順
 

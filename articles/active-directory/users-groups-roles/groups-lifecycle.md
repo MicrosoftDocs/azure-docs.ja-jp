@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 074b9ec06818363a97253a587ac451a38999832f
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 56bfe92de24b9386252ee8719af66cc658948565
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837926"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844304"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Office 365 グループの有効期限ポリシーの構成
 
@@ -35,7 +35,7 @@ ms.locfileid: "68837926"
 現在、1 つのテナントの Office 365 グループで構成できる有効期限ポリシーは 1 つのみです。
 
 > [!NOTE]
-> Office 365 グループの有効期限ポリシーを構成および使用するには、有効期限ポリシーを適用するすべてのグループのメンバーの Azure AD Premium ライセンスを所有している必要があります。
+> Office 365 グループの有効期限ポリシーを構成および使用するには、有効期限ポリシーを適用するすべてのグループのメンバーの Azure AD Premium ライセンスを所有している必要がありますが、必ずしも割り当てる必要はありません。
 
 Azure AD PowerShell コマンドレットをダウンロードしてインストールする方法については、[Azure Active Directory PowerShell for Graph 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) に関するページを参照してください。
 
@@ -69,8 +69,11 @@ User | 所有する Office 365 グループを更新できます<br>所有する
   - **[保存]** を選択して完了し、設定を保存する。
 
 > [!NOTE]
-> 有効期限を初めて設定する場合、有効期限の間隔よりも古いグループは、有効期限まで残り 30 日に設定されます。 最初の更新に関する通知電子メールは 1 日以内に送信されます。 たとえば、グループ A は 400 日前に作成され、有効期限の間隔は 180 日に設定されているとします。 有効期限のポリシーを適用すると、グループ A は所有者が更新しないかぎりは削除まで 30 日に設定されます。
+> 有効期限を初めて設定する場合、有効期限の間隔よりも古いグループは、所有者が更新しない限り、有効期限まで残り 30 日に設定されます。 最初の更新に関する通知電子メールは 1 日以内に送信されます。
+>
 > 動的なグループを削除し復元する場合、そのグループは新しいグループとみなされ、規則に従って再度追加されます。 このプロセスには最大で 24 時間かかります。
+>
+> Teams で使用されるグループの有効期限の通知は、Teams の所有者フィードに表示されます。
 
 ## <a name="email-notifications"></a>電子メール通知
 

@@ -3,18 +3,18 @@ title: Azure Key Vault のキー、シークレット、証明書について - 
 description: キー、シークレット、証明書に関する Azure Key Vault の REST インターフェイスと開発者の詳細の概要です。
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 52a0bc1b07ebf1aed55551e37ecc122ff393c0f7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 4bbe9d9bfaf49fe93631787b347a3446e4b0f817
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703911"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000581"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 
@@ -25,7 +25,7 @@ Azure Key Vault では、Microsoft Azure アプリケーションとユーザー
 - 証明書:キーとシークレットを基に構築され、自動更新機能を追加します。
 - Azure Storage:Azure Storage アカウントのキーを自動的に管理できます。 内部的には、Key Vault は Azure ストレージ アカウントのキーを一覧表示し (同期)、定期的にキーを再生成 (ローテーション) できます。 
 
-Key Vault の一般的な情報については、「[Azure Key Vault とは](/azure/key-vault/key-vault-whatis)」をご覧ください。
+Key Vault の一般的な情報については、「[Azure Key Vault とは](/azure/key-vault/key-vault-overview)」をご覧ください。
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 
@@ -76,7 +76,7 @@ Key Vault 内のオブジェクトは、URL を使用して一意に識別され
 |`keyvault-name`|Microsoft Azure Key Vault サービスでのキー コンテナーの名前。<br /><br /> キー コンテナーの名前はユーザーが選択し、グローバルに一意です。<br /><br /> Key Vault の名前は、0 ～ 9、a ～ z、A ～ Z、- のみを使った 3 ～ 24 文字の文字列である必要があります。|  
 |`object-type`|オブジェクトの種類で、"keys" または "secrets" です。|  
 |`object-name`|`object-name` は、ユーザーが指定する名前で、キー コンテナー内で一意である必要があります。 名前は、0 ～ 9、a ～ z、A ～ Z、- のみを使った 1 ～ 127 文字の文字列である必要があります。|  
-|`object-version`|`object-version` はシステムが生成し、オブジェクトの一意のバージョンに対応するために必要に応じて使用される 32 文字の文字列識別子です。|  
+|`object-version`|`object-version` は、オブジェクトの一意のバージョンに対応するために必要に応じて使用される、システムで生成された 32 文字の文字列識別子です。|  
 
 ## <a name="key-vault-keys"></a>Key Vault のキー
 
@@ -85,7 +85,7 @@ Key Vault 内のオブジェクトは、URL を使用して一意に識別され
 Key Vault の暗号化キーは、JSON Web Key (JWK) オブジェクトとして表されます。 基本の JWK/JWA の仕様は、Key Vault の実装に固有のキーの種類も有効にするように拡張されます。 たとえば、HSM ベンダー固有のパッケージを使用してキーをインポートすると、Key Vault HSM でのみ使用できるキーの安全なトランスポートが可能です。  
 
 - **"ソフト" キー**:Key Vault によってソフトウェアで処理されるが、HSM 内のシステム キーを使って保存時に暗号化されるキー。 クライアントは、既存の RSA または EC (Elliptic Curve) キーをインポートするか、または Key Vault による生成を要求できます。
-- **"ハード" キー**:HSM (ハードウェア セキュリティ モジュール) で処理されるキー。 これらのキーは、Key Vault HSM セキュリティ ワールドのいずれかで保護されます (分離を維持するために場所ごとに 1 つのセキュリティ ワールドがあります)。 クライアントは、RSA または EC キーをインポートできます (ソフト形式で、または互換性のある HSM デバイスからエクスポートすることにより)。 クライアントは、Key Vault にキーの生成を要求することもできます。 このキーの種類は、HSM キー マテリアルを保持するために JWK 取得に T 属性を追加します。
+- **"ハード" キー**:HSM (ハードウェア セキュリティ モジュール) で処理されるキー。 これらのキーは、Key Vault HSM セキュリティ ワールドのいずれかで保護されます (分離を維持するために場所ごとに 1 つのセキュリティ ワールドがあります)。 クライアントは、RSA または EC キーをインポートできます (ソフト形式で、または互換性のある HSM デバイスからエクスポートすることにより)。 クライアントは、Key Vault にキーの生成を要求することもできます。 このキーの種類では、HSM キー マテリアルを取得するために、key_hsm 属性が JWK に追加されます。
 
      地理的境界について詳しくは、[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/privacy/)をご覧ください。  
 

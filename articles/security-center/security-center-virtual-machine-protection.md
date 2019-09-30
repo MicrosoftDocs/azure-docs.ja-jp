@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 03/20/2019
 ms.author: v-mohabe
-ms.openlocfilehash: cb6025b47aec50121a0f96f7b6cba7ad726db291
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c8f381a3440d742cca880f44b73cbc22bde92ecc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907968"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910557"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Azure Security Center でのマシンとアプリケーションの保護
 Azure Security Center は、Azure リソース、Azure 以外のサーバー、および仮想マシンのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は、仮想マシン (VM)、コンピューター、アプリケーション、ネットワーク、SQL、および ID とアクセスといった、Azure のリソースの種類に適用されます。
@@ -108,7 +108,6 @@ VM またはコンピューターは、マシンで Microsoft Monitoring Agent �
 各推奨事項の下に表示されるアイコンにより、注意が必要な VM とコンピューター、その推奨事項の種類をすばやく把握できます。 **リソースの種類**や**重大度**によって一覧を検索するフィルターを使用することもできます。
 
 各 VM のセキュリティの推奨事項をドリルダウンするには、[VM] をクリックします。
-ここには VM またはコンピューターのセキュリティに関する詳細が表示されます。 一番下には、推奨されるアクションと、各問題の重大度が表示されます。
 ![クラウド サービス](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>クラウド サービス
@@ -125,7 +124,7 @@ VM またはコンピューターは、マシンで Microsoft Monitoring Agent �
 ![OS バージョンの更新](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
 ### <a name="app-services"></a>App Services
-App Service 情報を表示するには、App Service をサブスクリプションで有効にする必要があります。 この機能を有効にする方法については、[Azure Security Center での App Service の保護](security-center-app-services.md)に関する記事を参照してください。
+App Service 情報を表示するには、サブスクリプションで App Service を有効にする必要があります。 この機能を有効にする方法については、「[Azure Security Center で App Service を保護する](security-center-app-services.md)」を参照してください。
 [!NOTE]
 > App Service の監視はプレビュー段階であり、Security Center の Standard レベルでのみ利用できます。
 
@@ -170,7 +169,7 @@ Microsoft Monitoring Agent をインストールするには
 
    ![MMS のインストール](./media/security-center-virtual-machine-recommendations/install-mms.png)
 
-新しいスケール セットを設定して自動的に Microsoft Monitoring Agent をインストールするには
+新しいスケール セットを設定して自動的に Microsoft Monitoring Agent をインストールするには:
 1. Azure Policy に移動して、 **[定義]** をクリックします。
 2. **Windows 仮想マシン スケール セット用の Log Analytics エージェントのデプロイ** ポリシーを検索してクリックします。
 3. **[割り当て]** をクリックします。

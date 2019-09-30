@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aab2aa4415345747a0e87b90ef0a7ee770ef3465
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 06b3a3f12b2955ae97c43b0caf6a4ac13c9b770a
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608127"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086742"
 ---
 # <a name="baseline-policy-require-mfa-for-service-management-preview"></a>ベースライン ポリシー:サービス管理のために MFA を要求する (プレビュー)
 
@@ -32,25 +32,25 @@ Azure Resource Manager を使用してご自身のサービスを管理する操
 
 このポリシーがテナントで有効になると、Azure 管理リソースにログインするすべてのユーザーに多要素認証が求められます。 ユーザーが MFA に登録されていない場合、そのユーザーが操作を続行するには、Microsoft Authenticator アプリを使用してユーザー登録を行う必要があります。
 
-[Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) を使用して対話型サインインを実行するには、[Connect AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用します。
+[Azure Powershell](https://docs.microsoft.com/powershell/azure/authenticate-azureps) を使用して対話型サインインを実行するには、[Connect-AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) コマンドレットを使用します。
 
 ```PowerShell
 Connect-AzAccount
 ```
 
-このコマンドレットを実行すると、トークン文字列が表示されます。 サインインするには、この文字列をコピーし、ブラウザーで  [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin)  に貼り付けます。 Azure に接続するために PowerShell セッションが認証されます。
+このコマンドレットを実行すると、トークン文字列が表示されます。 サインインするには、この文字列をコピーし、それをブラウザーの [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) に貼り付けます。 Azure に接続するために PowerShell セッションが認証されます。
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) を使用して対話型サインインを実行するには、 [az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login)  コマンドを実行します。
+[Azure CLI](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) を使用して対話型サインインを実行するには、[az login](https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest#az-login) コマンドを実行します。
 
 ```azurecli
 az login
 ```
 
-CLI で既定のブラウザーを開くことができる場合、開いたブラウザにサインイン ページが読み込まれます。 それ以外の場合は、ブラウザー ページを開いて、お使いのブラウザーで  [https://aka.ms/devicelogin](https://aka.ms/devicelogin) に移動した後、コマンド ラインの指示に従って承認コードを入力します。 その後、ブラウザーでアカウントの資格情報を使用してサインインします。
+CLI で既定のブラウザーを開くことができる場合、開いたブラウザにサインイン ページが読み込まれます。 それ以外の場合は、ブラウザー ページを開き、ブラウザーで [https://aka.ms/devicelogin](https://aka.ms/devicelogin) に移動した後、コマンド ラインの指示に従って承認コードを入力する必要があります。 その後、ブラウザーでアカウントの資格情報を使用してサインインします。
 
 ## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 
-**サービス管理のために MFA を要求する**ポリシーは、すべての Azure Resource Manager ユーザーに適用されます。したがって、デプロイが確実かつスムーズに行われるようにするための考慮事項がいくつかあります。 たとえば、MFA を実行できない、または実行すべきではないユーザーやサービス プリンシパルを Azure AD で特定する、ご自身の組織で使用されている先進認証に対応していないアプリケーションやクライアントを特定する、といった考慮事項です。
+**サービス管理のために MFA を要求する**ポリシーは、すべての Azure Resource Manager ユーザーに適用されます。
 
 ## <a name="enable-the-baseline-policy"></a>ベースライン ポリシーを有効にする
 
@@ -58,11 +58,11 @@ CLI で既定のブラウザーを開くことができる場合、開いたブ�
 
 このポリシーを有効にして管理者を保護するには:
 
-1.  **Azure portal**  にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
+1. グローバル管理者、セキュリティ管理者、または条件付きアクセス管理者として **Azure portal** にサインインします。
 1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
 1. ポリシーの一覧で、 **[Baseline policy: Require MFA for service management (preview)]\(サービス管理のために MFA を要求する (プレビュー)\)** を選択します。
 1. **[ポリシーを有効にする]** を **[ポリシーをすぐに使用する]** に設定します。
-1.  **[保存]** をクリックします。
+1. **[Save]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 

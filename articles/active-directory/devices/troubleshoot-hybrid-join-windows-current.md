@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4b0b5bd5972e544c4254ee0f425e27cc8c465f0
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 49658e3e57748ffb7542508530940aa5331f5db1
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297568"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162403"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスのトラブルシューティング 
 
@@ -110,7 +110,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 以降
 
-参加状態の出力の [Diagnostic Data] セクションで [Previous Registration] サブセクションを探します。
+参加状態の出力の [Diagnostic Data] セクションで [Previous Registration] サブセクションを探します。 このセクションは、デバイスがドメイン参加済みで、ハイブリッド Azure AD 参加ができない場合にのみ表示されます。
 [Error Phase] フィールドは参加エラーのフェーズを表し、[Client ErrorCode] は参加操作のエラー コードを表します。
 
 ```
@@ -181,7 +181,7 @@ WamDefaultAuthority: organizations
 
 ##### <a name="windows-10-1803-and-above"></a>Windows 10 1803 以降
 
-参加状態の出力の [Diagnostic Data] セクションで [DRS Discovery Test] を探します。
+参加状態の出力の [Diagnostic Data] セクションで [DRS Discovery Test] を探します。 このセクションは、デバイスがドメイン参加済みで、ハイブリッド Azure AD 参加ができない場合にのみ表示されます。
 
 ```
 +----------------------------------------------------------------------+
@@ -305,7 +305,7 @@ WamDefaultAuthority: organizations
 
 #### <a name="windows-10-1803-and-above"></a>Windows 10 1803 以降
 
-参加状態の出力の [Diagnostic Data] セクションで [Previous Registration] サブセクションを探します。
+参加状態の出力の [Diagnostic Data] セクションで [Previous Registration] サブセクションを探します。 このセクションは、デバイスがドメイン参加済みで、ハイブリッド Azure AD 参加ができない場合にのみ表示されます。
 [Registration Type] フィールドは、実行された参加の種類を表します。
 
 ```
@@ -404,6 +404,9 @@ WamDefaultAuthority: organizations
 - 代替ログイン ID
 - HTTP プロキシが見つからない
 
+## <a name="known-issues"></a>既知の問題
+- [設定] -> [アカウント] -> [職場または学校にアクセスする] で、Hybrid Azure AD 参加済みデバイスには、モバイル ホットスポットまたは外部 WiFi ネットワークに接続されているときに、Azure AD 用に 1 つとオンプレミス AD 用に 1 つという 2 つの異なるアカウントが表示される場合があります。 これは UI のみの問題であり、機能には影響しません。 
+ 
 ## <a name="next-steps"></a>次の手順
 
 [dsregcmd コマンドを使用したデバイスのトラブルシューティング](troubleshoot-device-dsregcmd.md)に進みます。

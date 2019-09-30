@@ -1,5 +1,5 @@
 ---
-title: バッチ テスト - LUIS
+title: チュートリアル:バッチ テスト - LUIS
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、バッチ テストを使用してアプリでの発話予測の問題を検出し、修正する方法を説明します。
 services: cognitive-services
@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 03/29/2019
+ms.topic: tutorial
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 0a3a9330eaa977f72cdbaba4e11aaa706b437fad
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: a0aa4d334dc5a42da8a3a8f269f70c874c9ad54d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945903"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375515"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>チュートリアル:バッチ テスト用のデータセット
 
@@ -95,7 +95,7 @@ ms.locfileid: "68945903"
 
 ## <a name="review-batch-results"></a>バッチ結果を確認する
 
-バッチのグラフには、結果の 4 つのセクションが表示されます。 グラフの右側にはフィルターがあります。 既定では、フィルターは一覧内の最初の意図に設定されています。 このフィルターには、すべての意図と、シンプルおよび複合エンティティのみが含まれています。 [グラフのセクション](luis-concept-batch-test.md#batch-test-results)またはグラフ内の点を選択すると、関連付けられた発話がグラフの下に表示されます。 
+バッチのグラフには、結果の 4 つのセクションが表示されます。 グラフの右側にはフィルターがあります。 このフィルターには意図とエンティティが含まれています。 [グラフのセクション](luis-concept-batch-test.md#batch-test-results)またはグラフ内の点を選択すると、関連付けられた発話がグラフの下に表示されます。 
 
 グラフの上にカーソルを置いている間は、マウス ホイールでグラフ内の表示を拡大または縮小できます。 これは、まとめて緊密にクラスタ化されたグラフ上に多数の点が存在する場合に役立ちます。 
 
@@ -103,27 +103,27 @@ ms.locfileid: "68945903"
 
 ### <a name="getjobinformation-test-results"></a>GetJobInformation のテスト結果
 
-フィルターで表示されている **GetJobInformation** のテスト結果は、4 つの予測のうちの 2 つが成功したことを示しています。 グラフの下に発話を表示するには、右上のセクションにある名前 **[False positive] (誤検知)** を選択します。 
+フィルターで表示されている **GetJobInformation** のテスト結果は、4 つの予測のうちの 2 つが成功したことを示しています。 グラフの下に発話を表示するには、右下のセクションにある名前 **[False negative] (検知漏れ)** を選択します。 
 
-![LUIS バッチ テストの発話](./media/luis-tutorial-batch-testing/hr-applyforjobs-false-positive-results.png)
+キーボードの Ctrl + E キーを使用してラベル ビューに切り替え、ユーザーの発話のテキストを正確に表示します。 
 
-発話のうちの 2 つが正しい意図 **GetJobInformation** ではなく、**ApplyForJob** として予測されているのはなぜでしょうか。 これらの 2 つの意図は、単語の選択や単語の配置の点から見て、非常に密接に関連しています。 さらに、**ApplyForJob** の例は **GetJobInformation** の例のほぼ 3 倍あります。 この発話の例のばらつきが **ApplyForJob** 意図に有利に働きます。 
+発話 `Is there a database position open in Los Colinas?` には _GetJobInformation_ のラベルが付けられていますが、現在のモデルでは発話が _ApplyForJob_ と予測されています。 
+
+**ApplyForJob** の例は **GetJobInformation** の例のほぼ 3 倍あります。 この発話の例のばらつきが **ApplyForJob** 意図に有利に働き、誤った予測の原因となります。 
 
 両方の意図に同じエラーの数があることに注意してください。 1 つの意図での正しくない予測が、もう一方の意図にも影響を与えます。 1 つの意図で発話が誤って予測され、もう 1 つの意図でも誤って予測されなかったため、これらはどちらもエラーになります。 
 
-![LUIS バッチ テストのフィルター エラー](./media/luis-tutorial-batch-testing/hr-intent-error-count.png)
+<a name="fix-the-app"></a>
 
-**[False positive] (誤検知)** セクション内の一番上の点に対応する発話は `Can I apply for any database jobs with this resume?` と `Can I apply for any database jobs with this resume?` です。 最初の発話の場合、単語 `resume` は **ApplyForJob** でのみ使用されました。 2 番目の発話の場合、単語 `apply` は **ApplyForJob** 意図でのみ使用されました。
-
-## <a name="fix-the-app"></a>アプリを修正する
+## <a name="how-to-fix-the-app"></a>アプリの修正方法
 
 このセクションの目的は、アプリを修正することによって、**GetJobInformation** ですべての発話が正しく予測されるようにすることです。 
 
-一見すばやい修正として、これらのバッチ ファイルの発話を正しい意図に追加する方法があります。 ただし、それは本来の方法ではありません。 それらを例として追加せずに、LUIS にこれらの発話を正しく予測させる必要があります。 
+一見すばやい修正として、これらのバッチ ファイルの発話を正しい意図に追加する方法があります。 これは本来の方法ではありません。 それらを例として追加せずに、LUIS にこれらの発話を正しく予測させる必要があります。 
 
 また、**ApplyForJob** の発話を、発話の量が **GetJobInformation** と同じになるまで削除する方法も考えられます。 それにより、テスト結果は修正される可能性がありますが、次回 LUIS がその意図を正確に予測することができなくなります。 
 
-最初の修正では、**GetJobInformation** にさらに発話を追加します。 2 番目の修正では、`resume` や `apply` などの単語の重みを **ApplyForJob** 意図に近づくように減らします。 
+**GetJobInformation** にさらに発話を追加するという修正を行います。 仕事に応募 "_ではなく_"、仕事情報の検索という意図を対象にしたまま、発話の長さ、単語の選択、単語の配置を変えてみてください。
 
 ### <a name="add-more-utterances"></a>さらに発話を追加する
 
@@ -161,15 +161,13 @@ ms.locfileid: "68945903"
 
 1. 上部のナビゲーション バーの **[Test]\(テスト\)** を選択します。 バッチの結果がまだ開いている場合は、 **[Back to list] (一覧に戻る)** を選択します。  
 
-2. バッチ名の右にある省略記号 (***...***) ボタンを選択し、 **[Run Dataset] (データセットの実行)** を選択します。 バッチ テストが完了するまで待ちます。 **[See results] (結果の表示)** ボタンが緑色になっていることに注意してください。 これは、バッチ全体が正常に実行されたことを示します。
+1. バッチ名の右にある省略記号 (***...***) ボタンを選択し、 **[実行]** を選択します。 バッチ テストが完了するまで待ちます。 **[See results] (結果の表示)** ボタンが緑色になっていることに注意してください。 これは、バッチ全体が正常に実行されたことを示します。
 
-3. **[See results]\(結果の表示\)** を選択します。 どの意図も、意図名の左側に緑色のアイコンが表示されています。 
-
-    ![バッチの結果のボタンが強調表示されている LUIS のスクリーンショット](./media/luis-tutorial-batch-testing/hr-batch-test-intents-no-errors.png)
+1. **[See results]\(結果の表示\)** を選択します。 どの意図も、意図名の左側に緑色のアイコンが表示されています。 
 
 ## <a name="create-batch-file-with-entities"></a>エンティティを含むバッチ ファイルを作成する 
 
-バッチ テストでエンティティを確認するために、バッチ JSON ファイル内でエンティティにラベルを付ける必要があります。 機械学習エンティティ、つまりシンプルおよび複合エンティティのみが使用されます。 機械学習されていないエンティティは、正規表現または明示的なテキスト一致のどちらかで常に見つかるため、追加しないでください。
+バッチ テストでエンティティを確認するために、バッチ JSON ファイル内でエンティティにラベルを付ける必要があります。 
 
 単語の合計 ([トークン](luis-glossary.md#token)) 数に関するエンティティの変動が予測品質に影響を与える場合があります。 ラベルの付いた発話を含む意図に指定されるトレーニング データに、さまざまな長さのエンティティが含まれていることを確認してください。 
 
@@ -178,7 +176,6 @@ ms.locfileid: "68945903"
 テストの発話で指定される **[Job] (仕事)** エンティティの値は通常、1 つまたは 2 つの単語であり、いくつかの例ではそれ以上の単語数になります。 _独自の_ 人事アプリに一般に多数の単語の仕事名が存在する場合、このアプリで **[Job] (仕事)** エンティティのラベルが付けられている発話の例はうまく機能しません。
 
 1. [VSCode](https://code.visualstudio.com/) などのテキスト エディターで `HumanResources-entities-batch.json` を作成するか、または[ダウンロード](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json)します。
-
 
 2. JSON 形式のバッチ ファイルで、テストで予測されるようにしたい**意図**を持つ発話や、その発話内の任意のエンティティの場所を含むオブジェクトの配列を追加します。 エンティティはトークン ベースであるため、各エンティティを文字で開始および終了するようにしてください。 発話をスペースで開始または終了しないでください。 これにより、バッチ ファイルのインポート中にエラーが発生します。  
 
@@ -200,8 +197,6 @@ ms.locfileid: "68945903"
 6. **[実行]** ボタンを選択します。 テストが完了するまで待ちます。
 
 7. **[See results]\(結果の表示\)** を選択します。
-
-[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ## <a name="review-entity-batch-results"></a>エンティティのバッチの結果を確認する
 

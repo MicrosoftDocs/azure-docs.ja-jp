@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0e59a28ce1fb3c562bf76420a5e62e347230e964
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: c3a7fb14dbd22730d95a5aaed146b59ad790ce6b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68669726"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70775868"
 ---
 エフェメラル OS ディスクは、ローカルの仮想マシン (VM) ストレージで作成され、リモートの Azure Storage に保存されません。 エフェメラル OS ディスクは、ステートレス ワークロードで適切に動作します。この場合、アプリケーションは個々の VM 障害を許容しますが、VM のデプロイ時間または個々の VM インスタンスの再イメージ化によって影響をより強く受けます。 エフェメラル OS ディスクでは、OS ディスクへの読み取り/書き込み待機時間が短縮され、VM の再イメージ化が高速化されます。 
  
@@ -175,7 +175,7 @@ Azure portal で、 **[ディスク]**  タブの **[詳細設定]** セクシ�
 
 
 ## <a name="reimage-a-vm-using-rest"></a>REST を使用して VM を再イメージ化する
-現時点では、エフェメラル OS ディスクで仮想マシン インスタンスを再イメージ化するには、唯一の方法として REST API を使用します。 スケール セットの場合、再イメージ化は Powershell、CLI、およびポータルを使用して既に利用できます。
+以下で説明するように REST API を使用するか Azure portal で VM の [概要] ウィンドウに移動することで、エフェメラル OS ディスクを使用して仮想マシンを再イメージ化できます。 スケール セットの場合、再イメージ化は Powershell、CLI、およびポータルを使用して既に利用できます。
 
 ```
 POST https://management.azure.com/subscriptions/{sub-

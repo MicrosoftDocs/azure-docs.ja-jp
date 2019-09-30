@@ -1,6 +1,6 @@
 ---
 title: Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
-description: Azure Portal を使用して HDInsight クラスターを作成および管理する方法について説明します。
+description: Azure portal を使用して Azure HDInsight クラスターを作成および管理する方法について説明します。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/06/2019
 ms.author: hrasheed
-ms.openlocfilehash: c745fceca5efa66b1b23661001d93ddb287fe37b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: dfe531f8b298be1d90df45f57918f87744912949
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460633"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077053"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用して HDInsight の Apache Hadoop クラスターを管理する
 
@@ -107,7 +107,7 @@ HDInsight 上の 既存の Apache Hadoop クラスター。  「[Azure Portal �
 |作成日|クラスターがデプロイされた日付。|
 |オペレーティング システム|**[Windows]** または **[Linux]** 。|
 |TYPE|Hadoop、HBase、Storm、Spark。|
-|バージョン|「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](hdinsight-component-versioning.md)」をご覧ください。|
+|Version|「[HDInsight で使用可能な Hadoop コンポーネントとバージョンとは](hdinsight-component-versioning.md)」をご覧ください。|
 |サブスクリプション|サブスクリプションの名前。|
 |既定のデータ ソース|クラスターの既定のファイル システムです。|
 |ワーカー ノードのサイズ|worker ノードの選択されている VM のサイズ。|
@@ -170,7 +170,7 @@ Ambari は、RESTful API がサポートする直感的で使いやすい Hadoop
 
 1. **[クラスター ダッシュボード]** を選択します。
 
-    ![HDInsight Hadoop クラスター メニュー](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
+    ![HDInsight Apache Hadoop クラスター メニュー](./media/hdinsight-administer-use-portal-linux/hdinsight-azure-portal-cluster-menu2.png)
 
 1. 新しいページから **[Ambari ホーム]** を選択します。
 1. クラスターのユーザー名とパスワードを入力します。  既定のクラスター ユーザー名は _admin_ です。
@@ -214,7 +214,7 @@ HDInsight クラスターは、2 つのユーザー アカウントを持つこ�
    | フィールド | 値 |
    | --- | --- |
    | スクリプトの種類 | ドロップダウン リストから **[- カスタム]** を選択します。|
-   | Name |"SSH パスワードの変更" |
+   | 名前 |"SSH パスワードの変更" |
    | Bash スクリプト URI |changepassword.sh ファイルへの URI |
    | ノードの種類:(ヘッド、worker、Nimbus、Supervisor、Zookeeper など) |表示するすべてのノード型に ✓ |
    | parameters |SSH ユーザー名と新しいパスワードを入力します。 ユーザー名とパスワードの間に、スペースを 1 つ入れる必要があります。 |

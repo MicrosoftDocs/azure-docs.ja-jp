@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 6e26f9d344a4c11c335d1ea34998c848cbe3598a
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: a9e8ddcca727c4c457e4d92a880fb0cafe5ca6f8
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66753753"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375742"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Azure VM を Availability Zones に移動する
 Azure の Availability Zones は、アプリケーションとデータをデータセンターの障害から保護するのに役立ちます。 それぞれの可用性ゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 回復性を確保するため、有効になっているリージョンにはいずれも最低 3 つのゾーンが別個に存在しています。 Availability Zones はリージョン内で物理的に分離されているため、データセンターで障害が発生してもアプリケーションとデータは保護されます。 Availability Zones により、Azure では仮想マシン (VM) の 99.99% のアップタイムというサービス レベル アグリーメント (SLA) が提供されます。 「[Azure の Availability Zones の概要](https://docs.microsoft.com/azure/availability-zones/az-overview#services-support-by-region)」で説明されているように、Availability Zones は一部のリージョンでサポートされています。
@@ -68,8 +68,8 @@ VM を "*単一インスタンス*" として特定のリージョンにデプ�
      最も一般的に使用されるネットワーク リソースについては、次のドキュメントを参照して、実際の環境に適したものをソース VM の構成に基づいて作成してください。
 
     - [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [ロード バランサー](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [パブリック IP](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+    - [ロード バランサー](https://docs.microsoft.com/azure/load-balancer)
+    - [パブリック IP](../virtual-network/virtual-network-public-ip-address.md)
     
    その他のネットワーク コンポーネントについては、ネットワークに関する[ドキュメント](https://docs.microsoft.com/azure/#pivot=products&panel=network)を参照してください。
 

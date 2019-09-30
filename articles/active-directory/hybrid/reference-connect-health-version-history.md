@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58de8de9a9fab67d743d4560ccda037d8f41301b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66299001"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562338"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: バージョンのリリース履歴
 Azure Active Directory チームは、Azure AD Connect Health を新機能で定期的に更新しています。 この記事では、リリースされたバージョンと機能の一覧を示します。  
@@ -31,6 +31,21 @@ Azure Active Directory チームは、Azure AD Connect Health を新機能で定
 
 Azure AD Connect Health for Sync は、Azure AD Connect のインストールと統合されます。 詳細については、[Azure AD Connect のリリース履歴](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)に関する記事をご覧ください。機能のフィードバックについては、[Connnect Health User Voice チャネル](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)で投票してください
 
+## <a name="july-2019"></a>2019 年 7 月
+**エージェントの更新**
+* AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.59.0) 
+   1. TestWindowsTransport でのテキスト変更
+   2. AD FS RP アップロードに関する変更
+   
+* AD FS 用の Azure AD Connect Health エージェント (バージョン 3.1.56.0) 
+   1. CheckOffice365Endpoints テストでの TestWindowsTransport のテストの追加と WsTrust エンドポイントのチェックの削除
+   2. OS と .NET に関する情報のログ記録
+   3. RP 構成メッセージのアップロード サイズの 1MB への増加。
+   4. バグの修正
+   
+* AD DS 用の Azure AD Connect Health エージェント (バージョン 3.1.56.0) 
+   1. OS と .NET に関する情報のログ記録 
+   2. バグの修正
 
 ## <a name="may-2019"></a>2019 年 5 月
 **エージェントの更新:** 

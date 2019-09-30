@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: e0dea5fcc7860e8653d542653e279010f8ede200
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: bd3f31f4247a9d80615634a64fee0c6eb3297fe5
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898849"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147242"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>チュートリアル:Azure Kubernetes Service (AKS) クラスターのデプロイ
 
@@ -83,13 +83,16 @@ AKS クラスターでは、Kubernetes のロールベースのアクセス制�
 az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
-    --node-count 1 \
+    --node-count 2 \
     --service-principal <appId> \
     --client-secret <password> \
     --generate-ssh-keys
 ```
 
 数分してデプロイが完了すると、この AKS デプロイに関する情報が JSON 形式で表示されます。
+
+> [!NOTE]
+> クラスターが確実に動作するようにするには、少なくとも 2 つのノードを実行する必要があります。
 
 ## <a name="install-the-kubernetes-cli"></a>Kubernetes CLI のインストール
 

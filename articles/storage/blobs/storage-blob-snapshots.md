@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 9c24f613de8bf26331f6fe328358aaf8a320d522
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0da3373ba2c13bd6a00a92a6b38bead86fc9a5ea
+ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65794229"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69897009"
 ---
 # <a name="create-a-blob-snapshot"></a>BLOB のスナップショットの作成
 
@@ -78,7 +78,7 @@ BLOB やスナップショットに関連するコピー操作は次のルール
 * ブロック BLOB のスナップショットを作成する場合、BLOB のコミットされたブロック リストもスナップショットにコピーされます。 コミット前のブロックはコピーされません。
 
 ## <a name="specify-an-access-condition"></a>アクセス条件の指定
-[CreateSnapshotAsync][dotnet_CreateSnapshotAsync] を呼び出すとき、アクセス条件を指定することで、その条件を満たしている場合にのみスナップショットを作成できます。 アクセス条件を指定するには、[AccessCondition][dotnet_AccessCondition] パラメーターを使用します。 指定した条件を満たしていない場合、スナップショットは作成されず、Blob service は状態コード [HTTPStatusCode][dotnet_HTTPStatusCode].PreconditionFailed を返します。
+[CreateSnapshotAsync][dotnet_CreateSnapshotAsync] を呼び出すとき、アクセス条件を指定することで、その条件を満たしている場合にのみスナップショットを作成できます。 アクセス条件を指定するには、[AccessCondition][dotnet_AccessCondition] パラメーターを使用します。 指定した条件を満たしていない場合、スナップショットは作成されず、Blob service では状態コード [HTTPStatusCode][dotnet_HTTPStatusCode].PreconditionFailed が返されます。
 
 ## <a name="delete-snapshots"></a>スナップショットの削除
 スナップショットを持つ BLOB は、スナップショットも削除しないと削除できません。 スナップショットは個別に削除することも、コピー元 BLOB が削除されたときにすべてのスナップショットを削除するように指定することもできます。 スナップショットがまだ存在する BLOB を削除しようとすると、エラーが発生します。
@@ -135,7 +135,7 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 不要な料金を回避するために、スナップショットを慎重に管理することをお勧めします。 次のベスト プラクティスに従えば、スナップショットの記憶域から発生するコストを最小限に抑えられます。
 
 * まったく同じデータで更新する場合も含め、BLOB を更新するときは必ずその BLOB に関連付けられているスナップショットを削除してから作成し直すようにします (アプリケーションの設計上、スナップショットを維持しなければならない場合を除く)。 BLOB のスナップショットを削除してから作成し直すことにより、BLOB とスナップショットの分化を確実に防ぐことができます。
-* BLOB のスナップショットを維持する場合は、[UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream]、または [UploadFromByteArray][dotnet_UploadFromByteArray] を呼び出して BLOB を更新しないようにしてください。 これらのメソッドを呼び出すと、BLOB 内のすべてのブロックが置き換えられ、ベース BLOB とスナップショットが大幅に分化します。 代わりに、[PutBlock][dotnet_PutBlock] メソッドと [PutBlockList][dotnet_PutBlockList] メソッドを使用して、最少数のブロックのみを更新するようにしてください。
+* BLOB のスナップショットを維持する場合は、[UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream]、または [UploadFromByteArray][dotnet_UploadFromByteArray] の呼び出しによる BLOB の更新を行わないようにします。 これらのメソッドを呼び出すと、BLOB 内のすべてのブロックが置き換えられ、ベース BLOB とスナップショットが大幅に分化します。 代わりに、[PutBlock][dotnet_PutBlock] メソッドと [PutBlockList][dotnet_PutBlockList] メソッドを使用して、最小数のブロックのみを更新するようにしてください。
 
 ### <a name="snapshot-billing-scenarios"></a>スナップショットの課金シナリオ
 ブロック BLOB とそのスナップショットについて料金が発生するしくみを次のシナリオで説明します。
@@ -172,7 +172,7 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 
 [dotnet_AccessCondition]: https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.accesscondition
 [dotnet_CloudBlockBlob]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._cloud_block_blob
-[dotnet_CreateSnapshotAsync]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob.generatedblobs.createsnapshotasync
+[dotnet_CreateSnapshotAsync]: https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.createsnapshotasync
 [dotnet_HTTPStatusCode]: https://docs.microsoft.com/java/api/com.microsoft.store.partnercenter.network.httpstatuscode
 [dotnet_PutBlockList]: /dotnet/api/microsoft.azure.storage.blob.cloudblockblob.putblocklist
 [dotnet_PutBlock]: /dotnet/api/microsoft.azure.storage.blob.cloudblockblob.putblock

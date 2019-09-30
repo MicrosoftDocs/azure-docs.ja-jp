@@ -24,7 +24,7 @@ Azure SQL データベースは、Microsoft Cloud (Azure) のリレーショナ�
 > - Azure portal を使用して単一データベースを作成する*
 > - Azure portal を使用してサーバーレベルの IP ファイアウォール規則を設定する
 > - SSMS を使用してデータベースに接続する
-> - SSMS のテーブルを作成する
+> - SSMS を使用してテーブルを作成する
 > - BCP を使用してデータを一括で読み込む
 > - SSMS を使用してデータを照会する
 
@@ -33,7 +33,7 @@ Azure SQL データベースは、Microsoft Cloud (Azure) のリレーショナ�
 > [!TIP]
 > 次の Microsoft Learn モジュールは、単純なデータベースの作成など、[Azure SQL Database に対してクエリを行う ASP.NET アプリケーションを開発および構成する](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)方法を無料で学習するのに役立ちます。
 > [!NOTE]
-> このチュートリアルでは、単一データベースを使用しています。 エラスティック プールでプールされたデータベース、またはマネージド インスタンスのインスタンス データベースを使用することもできます。 マネージド インスタンスへの接続については、以下のマネージド インスタンスのクイック スタートを参照してください。[クイック スタート:Azure SQL Database Managed Instance に接続するように Azure VM を構成する](sql-database-managed-instance-configure-vm.md)」および「[クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)。
+> このチュートリアルでは、単一データベースを使用しています。 エラスティック プールでプールされたデータベース、またはマネージド インスタンスのインスタンス データベースを使用することもできます。 マネージド インスタンスへの接続については、以下のマネージド インスタンスのクイック スタートを参照してください。[クイック スタート:「Azure SQL Database Managed Instance に接続するように Azure VM を構成する」](sql-database-managed-instance-configure-vm.md)および[「クイック スタート:オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する」](sql-database-managed-instance-configure-p2s.md)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,9 +42,9 @@ Azure SQL データベースは、Microsoft Cloud (Azure) のリレーショナ�
 - [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (最新バージョン)
 - [BCP と SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433) (最新バージョン)
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
-[Azure Portal](https://portal.azure.com/) にサインインします。
+[Azure portal](https://portal.azure.com/) にサインインする
 
 ## <a name="create-a-blank-single-database"></a>空の単一データベースを作成する
 
@@ -59,7 +59,7 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
 
 3. 前の画像で示されているように、 **[SQL Database]** のフォームに次の情報を入力します。
 
-    | Setting       | 推奨値 | 説明 |
+    | 設定       | 推奨値 | 説明 |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **データベース名** | *yourDatabase* | 有効なデータベース名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
     | **サブスクリプション** | *yourSubscription*  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -68,7 +68,7 @@ Azure SQL Database の単一データベースは、定義済みの一連のコ�
 
 4. **[サーバー]** をクリックして既存のデータベース サーバーを使用するか、新しいデータベース サーバーを作成して構成します。 既存のサーバーを選択するか、 **[新しいサーバーの作成]** をクリックして **[新しいサーバー]** フォームに次の情報を入力します。
 
-    | Setting       | 推奨値 | 説明 |
+    | 設定       | 推奨値 | 説明 |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **サーバー名** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
     | **サーバー管理者ログイン** | 有効な名前 | 有効なログイン名については、「[データベース識別子](/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
@@ -125,7 +125,7 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 1. SQL Server Management Studio を開きます。
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | Setting       | 推奨値 | 説明 |
+   | 設定       | 推奨値 | 説明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **サーバーの種類** | データベース エンジン | この値は必須です。 |
    | **サーバー名** | 完全修飾サーバー名 | たとえば、*yourserver.database.windows.net* などです。 |
@@ -133,7 +133,7 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
    | **ログイン** | サーバー管理者アカウント | サーバーの作成時に指定したアカウントです。 |
    | **パスワード** | サーバー管理者アカウントのパスワード | お客様がサーバーを作成したときに指定したパスワードです。 |
 
-   ![[サーバーへの接続]](./media/sql-database-design-first-database/connect.png)
+   ![[サーバーに接続]](./media/sql-database-design-first-database/connect.png)
 
 3. **[サーバーへの接続]** ダイアログ ボックスの **[オプション]** をクリックします。 **[データベースへの接続]** セクションに「*yourDatabase*」と入力して、このデータベースに接続します。
 
@@ -238,7 +238,7 @@ SQL Database サービスでは、サーバーレベルで IP ファイアウォ
 
 ## <a name="query-data"></a>データのクエリを実行する
 
-データベース テーブルから情報を取得するには、次のクエリを実行します。 SQL クエリの記述について詳しくは、[SQL クエリの記述](https://technet.microsoft.com/library/bb264565.aspx)に関するページを参照してください。 最初のクエリでは 4 つのテーブルをすべて結合し、"Dominick Pope" の指導を受けた生徒のうち、成績が 75% を超えている生徒を検索します。 次のクエリでは 4 つのテーブルをすべて結合し、"Noe Coleman" がこれまでに登録したコースを検索します。
+データベース テーブルから情報を取得するには、次のクエリを実行します。 SQL クエリの記述の詳細は、[SQL クエリの記述](https://technet.microsoft.com/library/bb264565.aspx)に関するページを参照してください。 最初のクエリでは 4 つのテーブルをすべて結合し、"Dominick Pope" の指導を受けた生徒のうち、成績が 75% を超えている生徒を検索します。 次のクエリでは 4 つのテーブルをすべて結合し、"Noe Coleman" がこれまでに登録したコースを検索します。
 
 1. SQL Server Management Studio のクエリ ウィンドウで、次のクエリを実行します。
 

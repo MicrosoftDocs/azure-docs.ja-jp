@@ -1,18 +1,19 @@
 ---
 title: 分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
-description: 分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
+description: Azure HDInsight での分散型深層学習用に Apache Spark で Caffe を使用する
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: d0d68263485c5ab6e57a349317b1975862470cc2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb234e5b34bd8046c4e65d7cc6812cde0db3b5b2
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721514"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995614"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>分散型深層学習用に Azure HDInsight Spark で Caffe を使用する
 
@@ -65,7 +66,7 @@ HDInsight は PaaS ソリューションであるため、優れたプラット�
 
 作業を開始するには、このスクリプト アクションをクラスターに対して実行して、すべての worker ノードとヘッド ノード (HDInsight 3.5 用) に適用します。 既存のクラスターでスクリプト アクションを実行するか、クラスターの作成時にスクリプト アクションを使用します。 スクリプト アクションの詳細については、[こちらの](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)ドキュメントを参照してください。
 
-![依存関係をインストールするスクリプト アクション](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
+![依存関係をインストールするスクリプト アクション](./media/apache-spark-deep-learning-caffe/submit-script-action.png)
 
 
 ## <a name="step-2-build-caffe-on-apache-spark-for-hdinsight-on-the-head-node"></a>手順 2:ヘッド ノードで HDInsight 用の Caffe on Apache Spark を構築する
@@ -175,7 +176,8 @@ CaffeOnSpark には、MNIST トレーニング用にネットワーク トポロ
     # solver mode: CPU or GPU
     solver_mode: CPU
 
-![Caffe 構成](./media/apache-spark-deep-learning-caffe/Caffe-1.png)
+![Caffe 構成 1](./media/apache-spark-deep-learning-caffe/caffe-configuration1.png
+)
 
 必要に応じて、他の行を変更してください。
 
@@ -184,7 +186,7 @@ CaffeOnSpark には、MNIST トレーニング用にネットワーク トポロ
 - "file:/Users/mridul/bigml/demodl/mnist_train_lmdb" を "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb" に変更します。
 - "file:/Users/mridul/bigml/demodl/mnist_test_lmdb/" を "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb" に変更します。
 
-![Caffe 構成](./media/apache-spark-deep-learning-caffe/Caffe-2.png)
+![Caffe 構成 2](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
 
 ネットワークを定義する方法の詳細については、[MNIST データセットに関する Caffe のドキュメント](https://caffe.berkeleyvision.org/gathered/examples/mnist.html)を参照してください。
 
@@ -204,15 +206,15 @@ CaffeOnSpark には、MNIST トレーニング用にネットワーク トポロ
 
     https://yourclustername.azurehdinsight.net/yarnui
    
-![YARN UI](./media/apache-spark-deep-learning-caffe/YARN-UI-1.png)
+![YARN UI](./media/apache-spark-deep-learning-caffe/apache-yarn-window-1.png)
 
 この特定のアプリケーションに割り当てられているリソースの数を確認できます。 [Scheduler (スケジューラ)] リンクをクリックすると、このアプリケーションで 9 個のコンテナーが実行されていることがわかります。 これは、YARN に要求している 8 個の Executor と、ドライバー プロセス用のもう 1 個のコンテナーに該当します。 
 
-![YARN スケジューラ](./media/apache-spark-deep-learning-caffe/YARN-Scheduler.png)
+![YARN スケジューラ](./media/apache-spark-deep-learning-caffe/apache-yarn-scheduler.png)
 
 エラーが発生している場合は、ドライバーまたはコンテナーのログを確認する必要があります。 ドライバーのログを表示するには、YARN UI のアプリケーション ID をクリックし、[Logs (ログ)] をクリックします。 ドライバーのログが stderr に書き込まれます。
 
-![YARN UI 2](./media/apache-spark-deep-learning-caffe/YARN-UI-2.png)
+![YARN UI 2](./media/apache-spark-deep-learning-caffe/apache-yarn-window-2.png)
 
 たとえば、ドライバーのログに次のようなエラーが表示されることがあります。これは、あまりにも多くの Executor を割り当てていることを示しています。
 

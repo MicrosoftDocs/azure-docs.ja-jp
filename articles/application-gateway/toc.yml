@@ -81,8 +81,10 @@
       items:
         - name: 正常性プローブ
           href: application-gateway-probe-overview.md
-        - name: 診断
+        - name: 診断ログとバックエンドの正常性
           href: application-gateway-diagnostics.md
+        - name: メトリック
+          href: application-gateway-metrics.md
     - name: App Service Web アプリとマルチテナントのサポート
       href: application-gateway-web-app-overview.md
     - name: WebSocket のサポート
@@ -225,6 +227,8 @@
           href: resource-health-overview.md
         - name: Log Analytics の使用
           href: log-analytics.md
+        - name: バックエンドの正常性に関する問題
+          href: application-gateway-backend-health-troubleshooting.md
     - name: v1 から v2 への移行
       href: migrate-v1-v2.md
 - name: リファレンス

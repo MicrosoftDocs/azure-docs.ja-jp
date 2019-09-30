@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 7683812c5ee98d21d5aa8191a88926669b2ed120
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 6485b7c102977f4fb6963418084f4da050c68558
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102357"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036521"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>チュートリアル:Azure VM での AlwaysOn 可用性グループの手動構成
 
@@ -81,6 +81,9 @@ ms.locfileid: "70102357"
    | 確認 |記憶域スペースを使用している場合を除き、既定値を使用します。 この表の次の注を参照してください。 |
 
 ### <a name="set-the-windows-server-failover-cluster-ip-address"></a>Windows Server フェールオーバー クラスターの IP アドレスを設定する
+
+  > [!NOTE]
+  > Windows Server 2019 では、クラスターは**クラスターネットワーク名**ではなく、**分散サーバー名**を作成します。 Windows Server 2019 を使用している場合は、このチュートリアルでクラスターのコア名を参照するすべての手順をスキップしてください。 クラスター ネットワーク名は、[PowerShell](virtual-machines-windows-portal-sql-create-failover-cluster.md#windows-server-2019) を使用して作成できます。 詳細については、ブログ記事内の「[フェールオーバー クラスター: クラスター ネットワーク オブジェクト](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)」を参照してください。 
 
 1. **フェールオーバー クラスター マネージャー**で、 **[クラスター コア リソース]** まで下にスクロールして、クラスターの詳細を展開します。 **[名前]** と **[IP アドレス]** リソースの両方が **[失敗]** 状態で表示されます。 クラスターにコンピューター自体と同じ IP アドレスが割り当てられていて、アドレスが重複するため、IP アドレス リソースをオンラインにすることができません。
 

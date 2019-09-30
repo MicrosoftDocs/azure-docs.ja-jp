@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dffba9106493e60b35538a5210a51cead7fb135
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 99d21e773fee59780d82004eaa7213598fe7c8bb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899630"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066139"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして ADFS を追加する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory (Azure AD) B2C で[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して ADFS ユーザー アカウントのサインインを有効にする方法について説明します。 [SAML 技術プロファイル](saml-technical-profile.md)をカスタム ポリシーに追加することで、サインインを有効にします。
+この記事では、Azure Active Directory B2C (Azure AD B2C) で[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して ADFS ユーザー アカウントのサインインを有効にする方法について説明します。 [SAML 技術プロファイル](saml-technical-profile.md)をカスタム ポリシーに追加することで、サインインを有効にします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +34,7 @@ ms.locfileid: "69899630"
 証明書を Azure AD B2C テナントに格納する必要があります。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用のテナントが含まれるディレクトリを選択します。
+2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のテナントが含まれるディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 5. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
@@ -45,7 +45,7 @@ ms.locfileid: "69899630"
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
-ユーザーが ADFS アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。 
+ユーザーが ADFS アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
 
 ADFS アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
@@ -138,7 +138,7 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
-    
+
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの ID に更新します。 たとえば、「 `Contoso-SAML2` 」のように入力します。
 
 3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
@@ -157,7 +157,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 - **your-tenant** は、実際のテナント名 (your-tenant.onmicrosoft.com など) に置き換えます。
 - **your-policy** は、実際のポリシー名に置き換えます。 たとえば、「B2C_1A_signup_signin_adfs」とします。
 - **your-technical-profile** は、お使いの SAML ID プロバイダー技術プロファイルの名前に置き換えます。 たとえば、「Contoso-SAML2」とします。
- 
+
 ブラウザーを開き、この URL に移動します。 正しい URL を入力し、XML メタデータ ファイルにアクセスできることを確認します。 ADFS 管理スナップインを使用して新しい証明書利用者信頼を追加するには、手動で設定を構成して、フェデレーション サーバーで次の手順を実行します。 この手順を完了するためには、ローカル コンピューター上の**管理者**のメンバーシップ、またはそれと同等であることが最低限求められます。
 
 1. [サーバー マネージャー] で、 **[ツール]** を選択し、 **[ADFS Management]\(ADFS 管理\)** を選択します。
@@ -168,7 +168,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 6. **[アクセス制御ポリシーの選択]** ページで、ポリシーを選択して、 **[次へ]** をクリックします。
 7. **[信頼の追加の準備完了]** ページで、設定を確認し、 **[次へ]** をクリックして証明書利用者信頼の情報を保存します。
 8. **[完了]** ページで、 **[閉じる]** をクリックすると、この操作によって、 **[要求規則の編集]** ダイアログ ボックスが自動的に表示されます。
-9. **[規則の追加]** を選択します。  
+9. **[規則の追加]** を選択します。
 10. **[要求規則テンプレート]** で、 **[LDAP 属性を要求として送信]** を選択します。
 11. **[要求規則名]** を指定します。 **[属性ストア]** で、 **[Active Directory の選択]** を選択し、次の要求を追加し、 **[完了]** 、 **[OK]** の順にクリックします。
 
@@ -179,19 +179,19 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
     | Given-Name | given_name |
     | E-Mail-Address | email |
     | Display-Name | 名前 |
-    
-    これらの名前は、[出力方向の要求の種類] ボックスの一覧には表示されないので注意してください。 手動で入力する必要があります (ドロップダウンは実際に編集可能です)。 
-    
-12.  証明書の種類によっては、HASH アルゴリズムを設定する必要があります。 証明書利用者信頼 (B2C デモ) のプロパティ ウィンドウで、 **[詳細]** タブを選択して、 **[セキュア ハッシュ アルゴリズム]** を `SHA-256` に変更し、 **[OK]** をクリックします。  
+
+    これらの名前は、[出力方向の要求の種類] ボックスの一覧には表示されないので注意してください。 手動で入力する必要があります (ドロップダウンは実際に編集可能です)。
+
+12.  証明書の種類によっては、HASH アルゴリズムを設定する必要があります。 証明書利用者信頼 (B2C デモ) のプロパティ ウィンドウで、 **[詳細]** タブを選択して、 **[セキュア ハッシュ アルゴリズム]** を `SHA-256` に変更し、 **[OK]** をクリックします。
 13. [サーバー マネージャー] で、 **[ツール]** を選択し、 **[ADFS Management]\(ADFS 管理\)** を選択します。
-14. 作成した証明書利用者信頼を選択し、 **[フェデレーション メタデータから更新]** を選択し、 **[更新]** をクリックします。 
+14. 作成した証明書利用者信頼を選択し、 **[フェデレーション メタデータから更新]** を選択し、 **[更新]** をクリックします。
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C アプリケーションを作成する
 
 Azure AD B2C との通信は、テナントで作成したアプリケーション経由で行われます。 このセクションでは、テスト アプリケーションをまだ作成していない場合にそれを作成するための省略可能な手順を紹介します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. アプリケーションの名前を入力します (*testapp1* など)。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: e9e37c54668ec0343cbfd45e51e90216955b46c4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d8fed68d9b830df359f8129d55f1b9911f69e8f1
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100019"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802259"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Azure での Oracle アプリケーションおよびソリューションの概要
 
@@ -26,13 +26,13 @@ ms.locfileid: "70100019"
 
 ## <a name="oracle-databases-on-azure-infrastructure"></a>Azure インフラストラクチャ上の Oracle データベース
 
-Azure Marketplace で入手可能な Linux イメージを使用して、Azure インフラストラクチャ上で Oracle データベースを実行します。
+Azure Marketplace で入手可能な Oracle Linux イメージの Oracle Database を使用して、Azure インフラストラクチャで Oracle データベースを実行します。
 
 * Oracle Database 12.1、12.2、および 18.3 Enterprise Edition 
 
 * Oracle Database 12.1、12.2、および 18.3 Standard Edition 
 
-Azure で一から作成したカスタム イメージに基づくソリューションにするか、オンプレミス環境からカスタム イメージをアップロードするかを選択することもできます。
+また、Azure で利用可能な Oracle Linux 以外のイメージに Oracle Database を設定したり、Azure で一から作成したカスタム イメージに基づいてソリューションを作成したり、オンプレミス環境からカスタム イメージをアップロードしたりすることも選択できます。
 
 必要に応じて、複数の接続ディスクを構成し、Oracle Automated Storage Management (ASM) をインストールすることでデータベースのパフォーマンスを向上させます。
 
@@ -46,11 +46,17 @@ Azure で一から作成したカスタム イメージに基づくソリュー�
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>高可用性とディザスター リカバリーのオプション
 
-* Azure インフラストラクチャ上で [Availability Zones](../../../availability-zones/az-overview.md) と組み合わせて Oracle Data Guard、Active Data Guard、または GoldenGate を構成し、高可用性を実現します。
+* Azure インフラストラクチャ上で、[Availability Zones](../../../availability-zones/az-overview.md) と組み合わせて [Oracle Data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956)、[FSFO を持つ Active Data Guard](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html)、[シャーディング](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html)、または [GoldenGate](https://www.oracle.com/middleware/technologies/goldengate.html) を構成し、リージョン内の高可用性を実現します。 また、可用性とディザスター リカバリーを強化するために、これらの構成を複数の Azure リージョンにわたって設定することもできます。
 
 * [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) を使用して、Azure 内の Oracle Linux VM と、オンプレミスまたは物理サーバーのディザスター リカバリーを調整および管理します。 
 
-* [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) を使用して、Oracle Real Application Clusters (RAC) を Azure で有効にします。
+* [Azure VMWare Solution](https://docs.azure.cloudsimple.com/oracle-rac/) または [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/) を使用して、Oracle Real Application Clusters (RAC) を Azure で有効にします。
+
+## <a name="backup-oracle-workloads"></a>Oracle ワークロードのバックアップ
+
+* [Azure Backup](https://docs.microsoft.com/en-us/azure/backup/backup-overview) を使用して Oracle VM をバックアップします。
+
+* Oracle RMAN を使用して Oracle Database をバックアップし、必要に応じて、[Azure Blob Fuse](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-how-to-mount-container-linux) を使用して、[冗長性の高い Azure Blob Storage アカウント](https://docs.microsoft.com/en-us/azure/storage/common/storage-redundancy)をマウントし、回復性を高めるために RMAN バックアップをそれに書き込みます。
 
 ## <a name="integration-of-azure-with-oci-preview"></a>Azure と OCI の統合 (プレビュー)
 

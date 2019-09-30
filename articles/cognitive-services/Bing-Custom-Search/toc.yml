@@ -31,6 +31,8 @@
               href: sdk-csharp-quick-start.md
             - name: Python の使用
               href: sdk-python-quickstart.md
+            - name: Java の使用
+              href: sdk-java-quickstart.md
 - name: チュートリアル
   items:
     - name: Custom Search Web ページの作成

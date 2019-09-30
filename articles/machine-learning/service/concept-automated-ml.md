@@ -1,7 +1,7 @@
 ---
 title: 自動化された ML/AutoML とは
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で、モデルにとって最適なアルゴリズムを選択するために指定するパラメーターと条件を使用することで、どのようにして自動的にアルゴリズムを選択し、それからモデルを生成して時間を節約できるかを説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で、モデルにとって最適なアルゴリズムを選択するために指定するパラメーターと条件を使用することで、どのようにして自動的にアルゴリズムを選択し、それからモデルを生成して時間を節約できるかを説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 06/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3fb4d953f575dcf6582f9f1c8c2a725971134159
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 32ff1ba599f4f95cc413bc2bb2c3bbc442405022
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856253"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035702"
 ---
 # <a name="what-is-automated-machine-learning"></a>自動化された機械学習とは
 
-自動化された機械学習 (AutoML とも呼ばれる) は、時間のかかる反復的な機械学習モデルの開発タスクを自動化するプロセスです。 これにより、データ サイエンティスト、アナリスト、開発は、モデルの品質を維持しながら、高いスケール、効率性、生産性で ML モデルを構築することができます。
+自動化された機械学習 (AutoML とも呼ばれる) は、時間のかかる反復的な機械学習モデルの開発タスクを自動化するプロセスです。 これにより、データ サイエンティスト、アナリスト、開発は、モデルの品質を維持しながら、高いスケール、効率性、生産性で ML モデルを構築することができます。 自動化された ML は、[Microsoft Research 部門](https://arxiv.org/abs/1705.05355)の最先端技術に基づいています。
 
 機械学習モデルの従来の開発はリソース集約型であり、ドメインに関する広範な知識と多数のモデルを生成して比較するための大量の時間を必要とします。 指定したターゲット メトリックを使用して自分の代わりに Azure Machine Learning にモデルのトレーニングと調整を行わせる場合は、自動化された ML を適用します。 それにより、サービスは、機能選択と組み合わせた ML アルゴリズムを介して反復し、それぞれの反復で、トレーニング スコアを含むモデルを生成します。 このスコアが高いほど、モデルがデータに「適合している」と見なされます。
 
@@ -39,7 +39,7 @@ ms.locfileid: "68856253"
 
 ## <a name="how-automated-ml-works"></a>自動 ML の動作
 
-**Azure Machine Learning service** を利用するとき、次の手順で自動 ML トレーニング実験を設計し、実験できます。
+**Azure Machine Learning** を利用するとき、次の手順で自動 ML トレーニング実験を設計し、実験できます。
 
 1. 解決すべき **ML 問題を特定します**。分類、予測、または回帰になります。
 
@@ -47,13 +47,13 @@ ms.locfileid: "68856253"
 
 1. [ローカル コンピューター、Azure Machine Learning コンピューティング、リモート VM、Azure Databricks](how-to-set-up-training-targets.md) など、**モデル トレーニングのためのコンピューティング先を構成します**。  リモート リソースでの自動トレーニングに関する詳細は[こちら](how-to-auto-train-remote.md)にあります。
 
-1. さまざまなモデルでの繰り返しの回数、ハイパーパラメーター設定、前処理/特徴付けの詳細、最良のモデルを決定するときに考慮されるメトリックを決定する**自動化された機械学習のパラメーターを構成します**。  自動トレーニング実験の設定は [Azure portal](how-to-create-portal-experiments.md) または [SDK](how-to-configure-auto-train.md) で構成できます。
+1. さまざまなモデルでの繰り返しの回数、ハイパーパラメーター設定、前処理/特徴付けの詳細、最良のモデルを決定するときに考慮されるメトリックを決定する**自動化された機械学習のパラメーターを構成します**。  自動トレーニング実験の設定は [Azure portal](how-to-create-portal-experiments.md)、[ワークスペース ランディング ページ (プレビュー)](https://ml.azure.com) または [SDK](how-to-configure-auto-train.md) で構成できます。 
 
 1. **トレーニング実行を送信します。**
 
   ![自動化された機械学習](./media/how-to-automated-ml/automl-concept-diagram2.png)
 
-トレーニング中、Azure Machine Learning サービスは、さまざまなアルゴリズムとパラメーターを試行する多数の並行パイプラインを作成します。 実験に定義されている終了基準に到達すると停止します。
+トレーニング中、Azure Machine Learning は、さまざまなアルゴリズムとパラメーターを試行する多数の並行パイプラインを作成します。 実験に定義されている終了基準に到達すると停止します。
 
 ログに記録された実行情報を調べることもできます。これには、実行中に収集した[メトリックが含まれています](how-to-understand-automated-ml.md)。 トレーニングを実行すると、モデルおよびデータ前処理を含む Python シリアル化オブジェクト (`.pkl` ファイル) が生成されます。
 
@@ -98,7 +98,12 @@ ms.locfileid: "68856253"
 
 自動化された時系列の実験は、多変量回帰問題として扱われます。 過去の時系列値は "ピボット" されて、他の予測因子とともにリグレッサーの追加ディメンションとなります。 このアプローチには、従来の時系列手法と異なり、トレーニング中に複数のコンテキスト変数とその関係を自然に取り込めるるという利点があります。 自動化された ML は、データセットおよび予測水平線のすべての項目について、単一であるがしばしば内部的に分岐するモデルを学習します。 したがって、モデルのパラメーターを見積もるために多くのデータを使用でき、目に見えない系列の一般化が可能になります。
 
-[時系列予測の自動化された機械学習](how-to-auto-train-forecast.md)について理解を深め、例を確認してください。
+[時系列予測の自動化された機械学習](how-to-auto-train-forecast.md)について理解を深め、例を確認してください。 または、次などの、高度な予測の構成の詳細なコード例については、[エネルギー需要ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を参照してください。
+
+* 休日の検出と特性付け
+* ローリング オリジン クロス検証
+* 構成可能なラグ
+* ローリング ウィンドウの集計機能
 
 ## <a name="ensemble"></a> アンサンブル モデル
 
@@ -121,9 +126,9 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 
 |統合|説明|
 |------------|-----------|
-|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|ML.NET 自動 ML とともに Visual Studio および Visual Studio Code を使用した .NET アプリでの自動モデル選択およびトレーニング (プレビュー)。|
+|[ML.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview)|Visual Studio および Visual Studio Code と ML.NET 自動 ML を使用した .NET アプリでの自動モデル選択およびトレーニング (プレビュー)。|
 |[HDInsight](../../hdinsight/spark/apache-spark-run-machine-learning-automl.md)|並列にしてある HDInsight クラスターの Spark で自動化された ML トレーニング ジョブをスケールアウトします。|
-|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|直接 Power BI で機械学習モデルを呼び出します (プレビュー)。|
+|[Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated)|Power BI での機械学習モデルの直接呼び出し (プレビュー)。|
 |[SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)|SQL Server 2019 ビッグ データ クラスターのデータに対して新しい機械学習モデルを作成します。|
 
 ## <a name="next-steps"></a>次の手順
@@ -133,7 +138,7 @@ Azure Machine Learning では、自動化された ML を使用して Python モ
 + 次のチュートリアルを修了してください。[チュートリアル:Azure Automated Machine Learning で回帰モデルを自動的にトレーニングする](tutorial-auto-train-models.md)
 
 + 自動トレーニング実験の設定を構成してください。
-  + Azure portal インターフェイスで、[こちらの手順](how-to-create-portal-experiments.md)を利用します。
+  + Azure portal インターフェイスまたはワークスペースのランディング ページ (プレビュー) で、[次の手順](how-to-create-portal-experiments.md)を使用します。
   + Python SDK で、[こちらの手順](how-to-configure-auto-train.md)を使用します。
 
 + [こちらの手順](how-to-auto-train-forecast.md)を使用し、時系列データを使用して自動トレーニングする方法について学習してください。

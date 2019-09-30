@@ -3,21 +3,20 @@ title: Azure Data Factory の If Condition アクティビティ | Microsoft Doc
 description: 条件に基づく処理フローは、If Condition アクティビティを使用して制御できます。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: 52f96b8fc2a1288c652169817a3a73d7b26caac9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fc6318b5033ff1297f917ab95b28f8ed9285e930
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66153475"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142482"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Azure Data Factory の If Condition アクティビティ
 If Condition アクティビティは、プログラミング言語における if ステートメントと同じ働きを持ちます。 条件が `true` に評価されたときの一連のアクティビティと `false` に評価されたときの一連のアクティビティが評価されます。 
@@ -66,7 +65,7 @@ If Condition アクティビティは、プログラミング言語における 
 
 プロパティ | 説明 | 使用できる値 | 必須
 -------- | ----------- | -------------- | --------
-name | if-condition アクティビティの名前。 | string | はい
+名前 | if-condition アクティビティの名前。 | string | はい
 type | **IfCondition** に設定する必要があります。 | String | はい
 expression | true または false に評価される式であることが必要です | 結果の型がブール値の式 | はい
 ifTrueActivities | 式が `true` に評価されたときに実行される一連のアクティビティです。 | Array | はい

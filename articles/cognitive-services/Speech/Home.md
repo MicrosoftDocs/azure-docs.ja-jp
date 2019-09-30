@@ -3,20 +3,20 @@ title: Microsoft Bing Speech Service | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: Microsoft Speech API を使用して、ユーザーとのリアルタイムでの対話など、音声駆動のアクションをアプリに追加します。
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d2c7211831658a18e65e04aa753607f4eb22dac8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff9de2557583eecd5ddb2acd97b445a93abc5fb6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515086"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966649"
 ---
 # <a name="what-is-bing-speech"></a>Bing Speech とは
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: ea7d3f56aa512b8f5998d710451ff3b37659ca13
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 642b21624ce3ffc993d5f29a413845044d703fd7
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697843"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984279"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Text Analytics で名前付きエンティティの認識を使用する方法
 
@@ -39,7 +39,7 @@ Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microso
 
 ## <a name="supported-types-for-named-entity-recognition"></a>名前付きエンティティ認識でサポートされている型
 
-| Type  | SubType | 例 |
+| 種類  | SubType | 例 |
 |:-----------   |:------------- |:---------|
 | Person        | 該当なし\*         | "Jeff", "Bill Gates"     |
 | Location      | 該当なし\*         | "Redmond, Washington", "Paris"  |
@@ -47,9 +47,8 @@ Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microso
 | Quantity      | Number        | "6", "six"     |
 | Quantity      | 割合    | "50%"､"fifty percent"|
 | Quantity      | Ordinal       | "2nd"､"second"     |
-| Quantity      | NumberRange   | "4 to 8"     |
 | Quantity      | Age           | "90 day old"､"30 years old"    |
-| Quantity      | 通貨      | "$10.99"     |
+| Quantity      | Currency      | "$10.99"     |
 | Quantity      | Dimension     | "10 miles"､"40 cm"     |
 | Quantity      | 気温   | "32 degrees"    |
 | DateTime      | 該当なし\*         | "6:30PM February 4, 2012"      |
@@ -59,7 +58,6 @@ Text Analytics [バージョン 2.1](https://westcentralus.dev.cognitive.microso
 | DateTime      | TimeRange     | "6pm to 7pm"     |
 | DateTime      | Duration      | "1 minute and 45 seconds"   |
 | DateTime      | Set           | "every Tuesday"     |
-| DateTime      | TimeZone      |    |
 | URL           | 該当なし\*         | "https:\//www.bing.com"    |
 | Email         | 該当なし\*         | "support@contoso.com" |
 
@@ -98,7 +96,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 + **POST** 要求を作成します。 この要求については次の API ドキュメントを確認してください。[Entities API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ エンティティ抽出用の HTTP エンドポイントを設定します。 そこには、`/entities` リソースが含まれている必要があります: `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
++ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、キー フレーズ抽出用の HTTP エンドポイントを設定します。 `/text/analytics/v2.1/entities` を含める必要があります (例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`)。
 
 + Text Analytics 操作用の[アクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)が含まれるように要求ヘッダーを設定します。
 

@@ -1,18 +1,18 @@
 ---
 title: パートナー センターでの商業マーケットプレース ポータルの概要
 description: パートナー センターの商業マーケットプレース ポータルの詳細と Azure Marketplace、AppSource 上、およびクラウド ソリューション プロバイダー (CSP) プログラムを通じてオファーを一覧表示および販売する方法について説明します。
-author: mattwojo
+author: ChJenk
 manager: evansma
-ms.author: mattwoj
+ms.author: v-chjen
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: ebf371c45868d8e620413f8f54b3531b1a17f817
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b0900dbfee81952ed014d976cc8d7136ea65f8fc
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65949597"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70191710"
 ---
 # <a name="overview-of-the-commercial-marketplace-portal-in-partner-center"></a>パートナー センターでの商業マーケットプレース ポータルの概要
 

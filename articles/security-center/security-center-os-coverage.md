@@ -1,39 +1,45 @@
 ---
-title: Azure Security Center でサポートされている機能とプラットフォーム | Microsoft Docs
-description: このドキュメントでは、Azure Security Center でサポートされる機能とプラットフォームの一覧を示します。
+title: Azure Security Center でサポートされているプラットフォーム | Microsoft Docs
+description: このドキュメントでは、Azure Security Center でサポートされるプラットフォームの一覧を示します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 6/03/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 1f5a144728614ee13bf4f08bb594f0546d446880
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 08/29/2019
+ms.author: memildin
+ms.openlocfilehash: 1d13db922ae84e4032304a8865ba6fcdafa65748
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640784"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201635"
 ---
-# <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Security Center でサポートされている機能とプラットフォーム
+# <a name="supported-platforms"></a>サポートされるプラットフォーム 
 
-セキュリティ状態の監視と推奨事項は、クラシック デプロイ モデルと Resource Manager デプロイ モデルのどちらかを使用して作成された仮想マシン (VM)、およびコンピューターで利用できます。
+## 仮想マシン/サーバー <a name="vm-server"></a>
+
+Security Center は、さまざまな種類のハイブリッド環境で仮想マシン/サーバーをサポートします。
+
+* Azure のみ
+* Azure とオンプレミス
+* Azure とその他のクラウド
+* Azure、その他のクラウド、およびオンプレミス
+
+Azure サブスクリプションでアクティブ化された Azure 環境では、Azure Security Center によって、サブスクリプション内にデプロイされている IaaS リソースが自動的に検出されます。
 
 > [!NOTE]
-> Azure リソースの詳細については、[クラシック デプロイ モデルと Resource Manager デプロイ モデル](../azure-classic-rm.md)に関するページを参照してください。
->
+> すべてのセキュリティ機能を利用するには、Azure Security Center が使用する [Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)をインストールし、[Azure Security Center にデータを送信するように適切に構成する](security-center-enable-data-collection.md#manual-agent)必要があります。
 
-## <a name="platforms-that-support-the-data-collection-agent"></a>データ コレクション エージェントをサポートするプラットフォーム 
-このセクションでは、Azure Security Center によって使用される、Log Analytics エージェントを実行できるプラットフォームを示します。
 
-### <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows コンピューターおよび VM でサポートされているプラットフォーム
-次の Windows オペレーティング システムがサポートされています。
+次のセクションでは、Azure Security Center が使用する [Log Analytics エージェント](../azure-monitor/platform/agents-overview.md#log-analytics-agent)を実行できる、サポート対象のサーバー オペレーティング システムの一覧を示します。
+
+### Windows Server オペレーティング システム <a name="os-windows"></a>
 
 * Windows Server 2019
 * Windows Server 2016
@@ -43,16 +49,14 @@ ms.locfileid: "69640784"
 * Windows Server 2008
 
 > [!NOTE]
-> Windows Defender ATP との統合は、Windows Server 2012 R2 および Windows Server 2016 のみをサポートしています。
+> Microsoft Defender ATP との統合は、Windows Server 2012 R2 および Windows Server 2016 のみをサポートしています。
 
-### <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux コンピューターおよび VM でサポートされているプラットフォーム
+上記の Windows オペレーティング システムでサポートされている機能の詳細については、「[仮想マシン/サーバーでサポートされる機能](security-center-services.md##vm-server-features)」をご覧ください。
 
-次の Linux オペレーティング システムがサポートされています。
-
-> [!NOTE]
-> サポートされている Linux オペレーティング システムの一覧は常に変更されているため、このトピックが最後に公開されてから変更があった場合は、サポートされているバージョンの最新の一覧を表示するために、[ここ](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems)をクリックしてください。
+### Linux オペレーティング システム <a name="os-linux"></a>
 
 64 ビット
+
 * CentOS 6 および 7
 * Amazon Linux 2017.09
 * Oracle Linux 6 および 7
@@ -68,103 +72,57 @@ ms.locfileid: "69640784"
 * Debian GNU/Linux 8 および 9
 * Ubuntu Linux 14.04 LTS および 16.04 LTS
 
-## <a name="vms-and-cloud-services"></a>VM とクラウド サービス
-クラウド サービスで実行する VM もサポートされます。 監視されるのは、運用スロットで実行するクラウド サービスの Web ロールと worker ロールだけです。 Cloud Services の詳細については、「[Azure Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)」をご覧ください。
-
-
-## <a name="supported-iaas-features"></a>サポートされている IaaS 機能
-
-> [!div class="mx-tableFixed"]
-> 
-
-|サーバー|Windows|||Linux|||価格|
-|----|----|----|----|----|----|----|----|
-|**Environment**|**Azure**||**Azure 以外**|**Azure**||**Azure 以外**||
-||**仮想マシン**|**Virtual Machine Scale Set**||**仮想マシン**|**Virtual Machine Scale Set**|
-|VMBA 脅威検出アラート|✔|✔|✔|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|推奨事項 (無料) 脅威の検出 (Standard)|
-|ネットワーク経由の脅威検出アラート|✔|✔|X|✔|✔|X|Standard|
-|Windows Defender ATP の統合|✔ (サポートされているバージョン)|✔ (サポートされているバージョン)|✔|X|X|X|Standard|
-|不足しているパッチ|✔|✔|✔|✔|✔|✔|無料|
-|セキュリティ構成|✔|✔|✔|✔|✔|✔|無料|
-|エンドポイント保護の評価|✔|✔|✔|X|X|X|無料|
-|JIT VM アクセス|✔|X|X|✔|X|X|Standard|
-|アダプティブ アプリケーション制御|✔|X|✔|✔|X|✔|Standard|
-|FIM|✔|✔|✔|✔|✔|✔|Standard|
-|ディスク暗号化の評価|✔|✔|X|✔|✔|X|無料|
-|サード パーティ デプロイ|✔|X|X|✔|X|X|無料|
-|NSG の評価|✔|✔|X|✔|✔|X|無料|
-|ファイルレス脅威の検出|✔|✔|✔|X|X|X|Standard|
-|ネットワーク マップ|✔|✔|X|✔|✔|X|Standard|
-|アダプティブ ネットワーク制御|✔|✔|X|✔|✔|X|Standard|
-|規制へのコンプライアンス ダッシュボードおよびレポート|✔|✔|✔|✔|✔|✔|Standard|
-|Docker でホストされている IaaS コンテナーに対する推奨事項と脅威の検出|X|X|X|✔|✔|✔|Standard|
-
-### <a name="supported-endpoint-protection-solutions"></a>サポートされているエンドポイント保護ソリューション
-
-次の表に、次の項目のマトリックスを示します。
- - Azure Security Center を使用して、各ソリューションをインストールできるかどうか。
- - Security Center で検出できるエンドポイント保護ソリューションはどれか。 これらのエンドポイント保護ソリューションのいずれかが検出された場合、Security Center で 1 つをインストールすることが推奨されることはありません。
-
-これらの各保護に対する推奨事項がいつ生成されるかの情報については、[エンドポイント保護の評価と推奨事項](security-center-endpoint-protection.md)に関するページを参照してください。
-
-| エンドポイント保護| プラットフォーム | Security Center のインストール | Security Center の検出 |
-|------|------|-----|-----|
-| Windows Defender (Microsoft Antimalware)| Windows Server 2016| いいえ、OS に組み込まれている| はい |
-| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 (下記の注を参照) | 拡張機能を介して | はい |
-| Trend Micro – すべてのバージョン* | Windows Server ファミリ  | いいえ | はい |
-| Symantec v12.1.1100 以降| Windows Server ファミリ  | いいえ | はい |
-| McAfee v10 以降 | Windows Server ファミリ  | いいえ | はい |
-| McAfee v10 以降 | Linux Server ファミリ  | いいえ | はい **\*** |
-| Sophos V9+| Linux Server ファミリ  | いいえ | はい  **\***  |
-
- **\*** カバレッジの状態とサポート データは、現在、保護されているサブスクリプションに関連付けられている Log Analytics ワークスペース内でのみ使用でき、Azure Security Center ポータルには反映されません。
-
 > [!NOTE]
-> - Windows Server 2008 R2 の仮想マシンで System Center Endpoint Protection (SCEP) が検出されるには、PowerShell 3.0 (またはそれ以降) の後で SCEP をインストールする必要があります。
-> - Trend Micro 保護の検出が Deep Security エージェント用にサポートされています。  OfficeScan エージェントはサポートされていません。
+> サポートされている Linux オペレーティング システムの一覧は常に変更されているため、このトピックが最後に公開されてから変更があった場合は、サポートされているバージョンの最新の一覧を表示するために、[ここ](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems)をクリックしてください。
 
-## <a name="supported-paas-features"></a>サポートされている PaaS 機能
+上記の Linux オペレーティングシステムでサポートされている機能の詳細については、「[仮想マシン/サーバーでサポートされる機能](security-center-services.md##vm-server-features)」をご覧ください。
 
+### マネージド仮想マシン サービス <a name="virtual-machine"></a>
 
-|Service|推奨事項 (無料)|脅威検出 (Standard)|
-|----|----|----|
-|SQL|✔| ✔|
-|PostGreSQL*|✔| ✔|
-|MySQL*|✔| ✔|
-|Azure BLOB ストレージ アカウント|✔| ✔|
-|App Services|✔| ✔|
-|Cloud Services|✔| X|
-|VNet|✔| NA|
-|サブネット|✔| NA|
-|NIC|✔| NA|
-|NSG|✔| NA|
-|Subscription|✔ **| ✔|
-|Batch|✔| NA|
-|Service Fabric|✔| NA|
-|Automation アカウント|✔| NA|
-|Load Balancer|✔| NA|
-|Search|✔| NA|
-|Service Bus|✔| NA|
-|Stream Analytics|✔| NA|
-|イベント ハブ|✔| NA|
-|ロジック アプリ|✔| NA|
-|ストレージ アカウント|✔| NA|
-|Redis|✔| NA|
-|Data Lake Analytics|✔| NA|
-|Key Vault|✔| NA|
+仮想マシンは、Azure Kubernetes (AKS)、Azure Databricks など、いくつかの Azure マネージド サービスの一部として、顧客サブスクリプションでも作成されます。 これらの仮想マシンも Azure Security Center によって検出され、Log Analytics エージェントは、上記のサポートされている [Windows/Linux オペレーティング システム](#os-windows)に従ってインストールおよび構成できます。
 
+### Cloud Services <a name="cloud-services"></a>
 
+クラウド サービスで実行する仮想マシン もサポートされます。 監視されるのは、運用スロットで実行するクラウド サービスの Web ロールと worker ロールだけです。 Cloud Services の詳細については、「[Azure Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)」をご覧ください。
 
+## PaaS サービス <a name="paas-services"></a>
 
-\* 現在、これらの機能はパブリック プレビューでサポートされています。
+Azure Security Center では、次の Azure PaaS リソースがサポートされています。
 
-\*\* AAD の推奨事項は、Standard サブスクリプションだけで使用できます
+* SQL
+* PostgreSQL
+* MySQL
+* Cosmos DB
+* ストレージ アカウント
+* App Service
+* Function
+* クラウド サービス
+* VNet
+* Subnet
+* NIC
+* NSG
+* Batch アカウント
+* Service Fabric アカウント
+* Automation アカウント
+* Load Balancer
+* Search
+* Service Bus 名前空間
+* Stream Analytics
+* イベント ハブの名前空間
+* ロジック アプリ
+* Redis
+* Data Lake Analytics
+* Data Lake Store
+* Key Vault
 
-
+上記の PaaS リソースの一覧でサポートされている機能の詳細については、「[PaaS サービスでサポートされる機能](security-center-services.md#paas-services)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
+- [Security Center によるデータの収集方法と Log Analytics エージェント](security-center-enable-data-collection.md)について確認します。
+- [Security Center でデータを管理および保護する](security-center-data-security.md)方法を確認します。
 - [Azure Security Center を導入するための設計上の考慮事項を計画し、理解する](security-center-planning-and-operations-guide.md)方法について説明しています。
+- [さまざまなクラウド環境で使用できる機能](security-center-services.md)について確認します。
 - [Azure Security Center での VM と サーバーの脅威検出](security-center-alerts-iaas.md)の詳細を確認します。
 - [Azure Security Center の使用に関してよく寄せられる質問](security-center-faq.md)が記載されています。
 - [Azure のセキュリティとコンプライアンスについてのブログ記事](https://blogs.msdn.com/b/azuresecurity/)を確認できます。

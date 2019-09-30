@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/18/2017
+ms.date: 08/18/2017
 ms.author: dacurwin
-ms.openlocfilehash: 83c4d8a90bf9ae348026c14beaec4975636b29b5
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: beac49585239a1ecc15588a6c8160bc34c84c6ad
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69018800"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210323"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
 

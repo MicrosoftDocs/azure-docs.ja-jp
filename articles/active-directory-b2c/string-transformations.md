@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a06447aaa6579052285e7e2cd93bf40183ed173f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83379cc194f23ebff977babc7124a7bc90f4bc60
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512584"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063454"
 ---
 # <a name="string-claims-transformations"></a>文字列要求変換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory (Azure AD) B2C の Identity Experience Framework スキーマの文字列要求変換の使用例を示します。 詳細については、「[ClaimsTransformations](claimstransformations.md)」を参照してください。
+この記事では、Azure Active Directory B2C (Azure AD B2C) の Identity Experience Framework スキーマの文字列要求変換の使用例を示します。 詳細については、「[ClaimsTransformations](claimstransformations.md)」を参照してください。
 
-## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual 
+## <a name="assertstringclaimsareequal"></a>AssertStringClaimsAreEqual
 
 2 つの要求を比較し、それらが指定された比較 inputClaim1、inputClaim2 および stringComparison によれば等しくない場合は、例外をスローします。
 
@@ -37,7 +37,7 @@ ms.locfileid: "66512584"
 
 ![AssertStringClaimsAreEqual の実行](./media/string-transformations/assert-execution.png)
 
-この要求変換を使用して、2 つの ClaimTypes が同じ値を持っていることを確認できます。 そうでない場合は、エラー メッセージがスローされます。 次の例では、**strongAuthenticationEmailAddress** ClaimType が **email** ClaimType と等しいことを確認します。 そうでない場合は、エラー メッセージがスローされます。 
+この要求変換を使用して、2 つの ClaimTypes が同じ値を持っていることを確認できます。 そうでない場合は、エラー メッセージがスローされます。 次の例では、**strongAuthenticationEmailAddress** ClaimType が **email** ClaimType と等しいことを確認します。 そうでない場合は、エラー メッセージがスローされます。
 
 ```XML
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
@@ -84,7 +84,7 @@ ms.locfileid: "66512584"
   - **stringComparison**:  ordinalIgnoreCase
 - 結果:エラーがスローされます
 
-## <a name="changecase"></a>ChangeCase 
+## <a name="changecase"></a>ChangeCase
 
 指定された要求の大文字または小文字を演算子に従って変更します。
 
@@ -94,7 +94,7 @@ ms.locfileid: "66512584"
 | InputParameter | toCase | string | 次のいずれかの値を指定できます。`LOWER` または `UPPER`。 |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
 
-この要求変換を使用して、任意の文字列 ClaimType を小文字または大文字に変更します。  
+この要求変換を使用して、任意の文字列 ClaimType を小文字または大文字に変更します。
 
 ```XML
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
@@ -119,7 +119,7 @@ ms.locfileid: "66512584"
 - 出力要求:
   - **email**: someone@contoso.com
 
-## <a name="createstringclaim"></a>CreateStringClaim 
+## <a name="createstringclaim"></a>CreateStringClaim
 
 ポリシーで指定された入力パラメーターから文字列要求を作成します。
 
@@ -224,7 +224,7 @@ ms.locfileid: "66512584"
     - **inputClaim1**: v1
 - 入力パラメーター:
     - **compareTo**:V1
-    - **operator**:EQUAL 
+    - **operator**:EQUAL
     - **ignoreCase**:  true
 - 出力要求:
     - **outputClaim**: true
@@ -258,7 +258,7 @@ ms.locfileid: "66512584"
 
 - 入力パラメーター:
     - **randomGeneratorType**:GUID
-- 出力要求: 
+- 出力要求:
     - **outputClaim**: bc8bedd2-aaa3-411e-bdee-2f1810b73dfc
 
 次の例では、0 ~ 1000 の範囲の整数のランダムな値を生成します。 値は OTP_{ランダム値} に書式設定されます。
@@ -284,7 +284,7 @@ ms.locfileid: "66512584"
     - **maximumNumber**:1000
     - **stringFormat**:OTP_{0}
     - **base64**: false
-- 出力要求: 
+- 出力要求:
     - **outputClaim**:OTP_853
 
 
@@ -298,7 +298,7 @@ ms.locfileid: "66512584"
 | InputParameter | stringFormat | string | {0} パラメーターを含む文字列の形式。 |
 | OutputClaim | outputClaim | string | この要求変換が呼び出された後に生成される ClaimType。 |
 
-この要求変換を使用して 1 つのパラメーター {0} を持つ任意の文字列の書式を設定します。 次の例では、**userPrincipalName** を作成します。 `Facebook-OAUTH` などのすべてのソーシャル ID プロバイダーの技術プロファイルは、**CreateUserPrincipalName** を呼び出して **userPrincipalName** を生成します。   
+この要求変換を使用して 1 つのパラメーター {0} を持つ任意の文字列の書式を設定します。 次の例では、**userPrincipalName** を作成します。 `Facebook-OAUTH` などのすべてのソーシャル ID プロバイダーの技術プロファイルは、**CreateUserPrincipalName** を呼び出して **userPrincipalName** を生成します。
 
 ```XML
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
@@ -392,7 +392,7 @@ ms.locfileid: "66512584"
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
   </InputClaims>
   <OutputClaims>
-    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />         
+    <OutputClaim ClaimTypeReferenceId="responseMsg" TransformationClaimType="restrictionValueClaim" />        
   </OutputClaims>
 </ClaimsTransformation>
 ```
@@ -431,7 +431,7 @@ ms.locfileid: "66512584"
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="domainAppId" TransformationClaimType="outputClaim" />
   </OutputClaims>
-</ClaimsTransformation> 
+</ClaimsTransformation>
 ```
 
 ### <a name="example"></a>例
@@ -513,7 +513,7 @@ ms.locfileid: "66512584"
 | OutputClaim | outputClaim2 | string | 文字列が等しい場合は、この出力要求に `stringMatchMsgCode` 入力パラメーターの値が含まれます。 |
 | OutputClaim | stringCompareResultClaim | ブール値 | 比較の結果の出力要求の種類。これは比較の結果に基づいて、`true` または `false` として設定されます。 |
 
-この要求変換を使用して、要求が、指定した値と等しいかどうかをチェックできます。 たとえば、以下の要求変換は **termsOfUseConsentVersion** 要求の値が `v1` と等しいかどうかをチェックします。 等しい場合、値を `v2` に変更します。 
+この要求変換を使用して、要求が、指定した値と等しいかどうかをチェックできます。 たとえば、以下の要求変換は **termsOfUseConsentVersion** 要求の値が `v1` と等しいかどうかをチェックします。 等しい場合、値を `v2` に変更します。
 
 ```XML
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
@@ -539,7 +539,7 @@ ms.locfileid: "66512584"
     - **inputClaim**: v1
 - 入力パラメーター:
     - **matchTo**:V1
-    - **stringComparison**: ordinalIgnoreCase 
+    - **stringComparison**: ordinalIgnoreCase
     - **stringMatchMsg**:B2C_V1_90005
     - **stringMatchMsgCode**:TOS は v2 にアップグレードされます
 - 出力要求:
@@ -560,7 +560,7 @@ ms.locfileid: "66512584"
 | OutputClaim | outputClaim | string | 文字列が等しい場合は、この出力要求に `outputClaimIfMatched` 入力パラメーターの値が含まれます。 または、文字列が一致しない場合は null です。 |
 | OutputClaim | stringCompareResultClaim | ブール値 | 比較の結果の出力要求の種類。これは比較の結果に基づいて、`true` または `false` として設定されます。 |
 
-たとえば、以下の要求変換は **ageGroup** 要求の値が `Minor` と等しいかどうかをチェックします。 等しい場合は、値を `B2C_V1_90001` に返します。 
+たとえば、以下の要求変換は **ageGroup** 要求の値が `Minor` と等しいかどうかをチェックします。 等しい場合は、値を `B2C_V1_90001` に返します。
 
 ```XML
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
@@ -585,7 +585,7 @@ ms.locfileid: "66512584"
     - **claimToMatch**:Minor
 - 入力パラメーター:
     - **matchTo**:Minor
-    - **stringComparison**: ordinalIgnoreCase 
+    - **stringComparison**: ordinalIgnoreCase
     - **outputClaimIfMatched**:B2C_V1_90001
 - 出力要求:
     - **isMinorResponseCode**:B2C_V1_90001

@@ -8,14 +8,14 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: f96171e1c75676a185edf4a1901ef65b7181135a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720999"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059212"
 ---
-# <a name="analyze-apache-hadoop-logs"></a>Apache Hadoop のログを分析する
+# <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Azure HDInsight の Apache Hadoop ログを分析する
 
 Azure HDInsight 上の各 Hadoop クラスターでは、Azure ストレージ アカウントが既定のファイル システムとして使用されています。 このストレージ アカウントを、既定のストレージ アカウントと呼びます。 クラスターは、既定のストレージ アカウントの Azure Table Storage と Blob Storage を使用してそのログを格納します。  クラスターの既定のストレージ アカウントを調べるには、[HDInsight での Apache Hadoop クラスターの管理](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts)に関するページを参照してください。 ログは、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
@@ -73,7 +73,7 @@ Power Query は、[Microsoft Power Query for Excel](https://www.microsoft.com/en
 5. **[ナビゲーター]** ウィンドウで hadoopservicelog テーブルを右クリックし、 **[編集]** を選択します。 4 つの列が表示されます。 必要に応じて、 **[パーティション キー]** 、 **[行キー]** 、および **[タイムスタンプ]** 列を削除します。これには、削除する列を選択し、リボンのオプションから **[列の削除]** をクリックします。
 6. [コンテンツ] 列にある展開アイコンをクリックし、Excel スプレッドシートにインポートする列を選択します。 このデモでは、TraceLevel と ComponentName を選択しています。これで、問題があるコンポーネントに関する基本的な情報が得られます。
    
-    ![HDInsight Hadoop logs choose columns](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png)
+    ![HDInsight Hadoop ログの Excel での列の選択](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-using-excel-power-query-filter.png "HDInsight Hadoop ログの Excel での列の選択")
 7. **[OK]** をクリックしてデータをインポートします。
 8. **[TraceLevel]** 、[Role]、 **[ComponentName]** の各列を選択し、リボンの **[グループ化]** コントロールをクリックします。
 9. [グループ化] ダイアログ ボックスで **[OK]** をクリックします。
@@ -93,7 +93,7 @@ Power Query は、[Microsoft Power Query for Excel](https://www.microsoft.com/en
    
         TraceLevel eq 'ERROR'
    
-    ![HDInsight Hadoop logs choose columns](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png)
+    ![HDInsight Hadoop ログの vs での列の選択](./media/apache-hadoop-debug-jobs/hdinsight-hadoop-analyze-logs-visual-studio-filter.png "HDInsight Hadoop ログの vs での列の選択")
    
     フィルターの作成の詳細については、「 [テーブル デザイナー用のフィルター文字列の作成](../../vs-azure-tools-table-designer-construct-filter-strings.md)」を参照してください。
 
@@ -110,7 +110,7 @@ Azure テーブルに書き込まれたログは、HDInsight クラスターで�
 ### <a name="access-the-ambari-ui"></a>Ambari UI にアクセスする
 Azure Portal から、HDInsight クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、 **[ダッシュボード]** をクリックします。
 
-![クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+![HDInsight クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>Yarn UI にアクセスする
@@ -120,7 +120,7 @@ YARN UI では、次の操作を実行できます。
 
 * **クラスターの状態を取得します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[About]** をクリックします。 割り当て済みメモリの合計、使用済みコア、クラスター リソース マネージャーの状態、クラスター バージョンなど、クラスターの状態に関する詳細が表示されます。
   
-    ![クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png)
+    ![YARN での HDInsight クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "YARN での HDInsight クラスター ダッシュボードの起動")
 * **ノードの状態を取得します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[Nodes]** をクリックします。 ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
 * **ジョブの状態を監視します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。 特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、 **[Applications]** の下にある該当リンクをクリックします。 さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
 

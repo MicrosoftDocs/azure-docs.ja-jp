@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.author: hamusa
-ms.openlocfilehash: c9c57a07100f2ea6db86408826bf74d05c8df5aa
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 0d279781cdc27dbf2140c0100d84de5128c6a3d5
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868677"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279421"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Azure への移行のために多数の VMware VM を評価する
 
@@ -48,7 +48,8 @@ ms.locfileid: "67868677"
 **計画** | **制限**
 --- | --- 
 **Azure Migrate プロジェクト** | 1 つのプロジェクトで最大 35,000 個の VM を評価します。
-**Azure Migrate アプライアンス** | 1 つのアプライアンスでは、1 つの vCenter Server にだけ接続できます。<br/><br/> 1 つのアプライアンスは、1 つの Azure Migrate リソースにのみ関連付けることができます。<br/> 1 つのアプライアンスでは、1 つの vCenter Server で最大 10,000 個の VM を検出できます。
+**Azure Migrate アプライアンス** | 1 つのアプライアンスでは、1 つの vCenter Server で最大 10,000 個の VM を検出できます。<br/> 1 つのアプライアンスでは、1 つの vCenter Server にだけ接続できます。<br/> 1 つのアプライアンスは、1 つの Azure Migrate リソースにのみ関連付けることができます。<br/>  任意の数のアプライアンスを 1 つの Azure Migrate プロジェクトに関連付けることができます。 <br/><br/> 
+**グループ** | 1 つのグループに最大 35,000 個の VM を追加できます。
 **Azure Migrate の評価** | 1 回の評価で最大 35,000 個の VM を評価できます。
 
 これらの制限事項を考慮して、デプロイの例をいくつか示します。

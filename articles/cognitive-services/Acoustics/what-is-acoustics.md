@@ -11,24 +11,27 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0685b65ce9204221e93a1ea4aa47a5e09eaac9f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932971"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390306"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics とは
-Project Acoustics は、3D 対話型エクスペリエンス用の波動音響エンジンです。 複雑なシーンの回折などの波動効果、ポータリングおよびリバーブ効果をモデル化します。手動のゾーン マークアップは必要ありません。 ゲーム エンジンとオーディオ ミドルウェアの統合も含まれます。 Project Acoustics の理念は、静的ライティングに似ています。詳細な物理学をオフラインでベイクし、物理的なベースラインを提供し、表現豊かな設計コントロールで軽量ランタイムを使用して、芸術的目標を達成します。
+Project Acoustics は、3D 対話型エクスペリエンス用の波動音響エンジンです。 複雑なシーンにおける閉鎖、障害、ポータリング、反響効果などの波動効果をモデル化します。手動のゾーン マークアップや CPU に負荷のかかるレイトレーシングは必要ありません。 ゲーム エンジンとオーディオ ミドルウェアの統合も含まれます。 Project Acoustics の理念は、静的ライティングに似ています。詳細な物理学をオフラインでベイクし、物理的なベースラインを提供し、表現豊かな設計コントロールで軽量ランタイムを使用して、仮想世界の音響効果に関する芸術的目標を達成します。
 
 ![Acoustics のボクセルを示している "Gears of War 4" のスクリーンショット](media/gears-with-voxels.jpg)
 
 ## <a name="using-wave-physics-for-interactive-acoustics"></a>対話型音響での波動物理学の使用
-レイベースの音響手法では、単一のソースからリスナーへのレイ キャストを使用して、オクルージョンを確認したり、いくつかのレイでローカル シーンのボリュームを予測することでリバーブを発生させたりすることができます。 しかし、これらの手法は信頼できない場合があります。小さな石で、大きな石と同じ程度に遮られるためです。 レイでは、音がオブジェクトの周りで屈折する方法 (回析として知られる現象) が考慮されません。 Project Acoustics のシミュレーションでは波動ベースのシミュレーションを使用して、これらの効果がキャプチャされます。 結果はより予測可能な信頼性の高いものとなります。
+レイベースの音響手法では、単一のソースからリスナーへのレイ キャストを使用して、オクルージョンを確認したり、いくつかのレイでローカル シーンのボリュームを予測することでリバーブを発生させたりすることができます。 しかし、これらの手法は信頼できない場合があります。小さな石で、大きな石と同じ程度に遮られるためです。 レイでは、音がオブジェクトの周りで屈折する方法 (回析として知られる現象) が考慮されません。 Project Acoustics のシミュレーションでは波動ベースのシミュレーションを使用して、これらの効果がキャプチャされます。 音響効果は、より予測可能で正確、かつシームレスなものとなります。
 
-Project Acoustics の重要な革新は、音響シミュレーションを従来のサウンド設計の概念と統合することです。 シミュレーション結果は、オクルージョン、ポータリング、リバーブの従来のオーディオ DSP パラメーターに変換されます。 デザイナーは、この変換プロセスの制御を使用します。 Project Acoustics の背後にあるコア テクノロジの詳細については、[研究プロジェクトのページ](https://www.microsoft.com/en-us/research/project/project-triton/)を参照してください。
+Project Acoustics の重要な革新は、リアルな音波ベースの音響シミュレーションを従来のサウンド設計の概念と統合することです。 シミュレーション結果は、オクルージョン、ポータリング、リバーブの従来のオーディオ DSP パラメーターに変換されます。 デザイナーは、この変換プロセスの制御を使用します。 Project Acoustics の背後にあるコア テクノロジの詳細については、[研究プロジェクトのページ](https://www.microsoft.com/en-us/research/project/project-triton/)を参照してください。
 
 ![シーンを通る波動伝搬の水平方向の 2D スライスを示すアニメーション](media/wave-simulation.gif)
+
+## <a name="video-presentation-from-gdc-2019-30-min"></a>GDC 2019 のビデオ プレゼンテーション (約 30 分)
+[![Project Acoustics のビデオ](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "クリックしてビデオを再生します")
 
 ## <a name="setup"></a>セットアップ
 [Project Acoustics Unity の統合](unity-integration.md)はドラッグ アンド ドロップで行われ、Unity オーディオ エンジン プラグインが含まれます。 Project Acoustics C# コントロール コンポーネントを各オーディオ オブジェクトにアタッチして、Unity オーディオ ソース コントロールを補強します。

@@ -1,25 +1,25 @@
 ---
 title: Google 認証の構成 - Azure App Service
-description: App Services アプリケーションに Google 認証を構成する方法について説明します。
+description: App Services アプリに Google 認証を構成する方法について説明します。
 services: app-service
 documentationcenter: ''
-author: mattchenderson
-manager: syntaxc4
+author: cephalin
+manager: gwallace
 editor: ''
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
 ms.service: app-service-mobile
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/19/2018
-ms.author: mahender
+ms.date: 09/02/2019
+ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4e28f4e330fa24476b717334dfc6d3265640c62a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fcbb284a0807ef88c5f40a7c8b65398d45bf73d7
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088225"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232132"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Google ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -29,33 +29,26 @@ ms.locfileid: "70088225"
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。 新しい Google アカウントを作成するには、 [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302)にアクセスしてください。
 
 ## <a name="register"> </a>Google にアプリケーションを登録する
-1. [Azure Portal]にログオンし、目的のアプリケーションに移動します。 **URL** をコピーします。この URL は、後で Google アプリを構成するために使用します。
-2. [Google apis](https://go.microsoft.com/fwlink/p/?LinkId=268303) Web サイトに移動して、Google アカウント資格情報でサインインします。 **[Create Project (プロジェクトの作成)]** をクリックして**プロジェクト名**を入力し、 **[Create (作成)]** をクリックします。
-3. プロジェクトが作成されたら選択します。 プロジェクト ダッシュボードから、 **[Go to APIs overview] (API の概要に移動)** をクリックします。
-4. **[Enable APIs and Services] (API とサービスの有効化)** を選択します。 **[Google+ API]** を検索し、それを選択します。 **[有効]** をクリックします。
-5. 左側のナビゲーションで、 **[Credentials (資格情報)]**  >  **[OAuth consent screen (OAuth 同意画面)]** の順にクリックした後、自分の**電子メール アドレス**を選択し、**製品名**を入力して、 **[Save (保存)]** をクリックします。
-6. **[Credentials (資格情報)]** タブで、 **[Create credentials (資格情報の作成)]**  >  **[OAuth client ID (OAuth クライアント ID)]** の順にクリックします。
-7. [Create client ID] (クライアント ID の作成) 画面で、 **[Web application] (Web アプリケーション)** を選択します。
-8. 前にコピーした App Service の **URL** を **[Authorized JavaScript Origins (承認された JavaScript 作成元)]** に、リダイレクト URI を **[Authorized Redirect URI (承認されたリダイレクト URI)]** に貼り付けます。 リダイレクト URI は、アプリケーションの URL にパス */.auth/login/google/callback* を追加したものです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/google/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。 **[Create]** をクリックします。
-9. 次の画面で、表示されているクライアント ID とクライアント シークレットの値を書き留めます。
+1. 「[サーバー側アプリの Google サインイン](https://developers.google.com/identity/sign-in/web/server-side-flow)」で Google のドキュメントに従い、次の情報を使用して、クライアント ID とクライアント シークレットを作成します (コードを変更する必要はありません)。
+    - **[Authorized JavaScript Origins]\(承認済みの JavaScript 生成元\)** には、`https://<app-name>.azurewebsites.net` を使用し、 *\<app-name>* にアプリの名前を指定します。
+    - **[Authorized Redirect URI] (承認済みのリダイレクト URI)** には `https://<app-name>.azurewebsites.net/.auth/login/google/callback` を使用します。
+1. クライアント ID とクライアント シークレットが作成されたら、それらの値をコピーします。
 
     > [!IMPORTANT]
     > クライアント シークレットは、重要なセキュリティ資格情報です。 このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
 
 ## <a name="secrets"> </a>Google の情報をアプリケーションに追加する
-1. [Azure Portal]に戻り、アプリケーションに移動します。 **[設定]** 、 **[認証/承認]** の順にクリックします。
+1. [Azure Portal] で App Service アプリに移動します。 左側のメニューで、 **[認証/承認]** を選択します。
 2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
 3. **[Google]** にアクセスしてください。 前の手順で取得した App ID と App Secret の値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。 次に、 **[OK]** をクリックします
-   
-   ![][1]
-   
-   App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。
+
+   App Service は認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 詳細については、「[ユーザーを承認または拒否する](app-service-authentication-how-to.md#authorize-or-deny-users)」を参照してください。
 4. (省略可能) Google によって認証されたユーザーしかサイトにアクセスできないように制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Google]** に設定します。 この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Google にリダイレクトされます。
 
-> [!CAUTION]
-> この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホームページを必要とするアプリには適切でない場合があります。 このようなアプリケーションの場合は、[ここ](overview-authentication-authorization.md#authentication-flow)で説明しているように、アプリが手動で自身のログインを開始する、 **[匿名要求を許可する (操作不要)]** が望ましいと考えられます。
-
+    > [!NOTE]
+    > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホームページを必要とするアプリには適切でない場合があります。 このようなアプリケーションの場合は、[ここ](overview-authentication-authorization.md#authentication-flow)で説明しているように、アプリが手動で自身のログインを開始する、 **[匿名要求を許可する (操作不要)]** が望ましいと考えられます。
+    
 5. **[Save]** をクリックします。
 
 これで、アプリケーションで認証に Google を使用する準備ができました。

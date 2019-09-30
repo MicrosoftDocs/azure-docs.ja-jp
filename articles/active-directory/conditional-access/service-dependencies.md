@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9aca2e4ea5e107358ff72e83562057830ece2cc
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 7c7f2abda282d0219dd8787a9f6a2b6c1cda15df
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509357"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257907"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスのサービス依存関係の概要 
 
@@ -43,7 +43,7 @@ ms.locfileid: "67509357"
 | :--                 | :--                                         | ---         | 
 | Azure Data Lake     | Microsoft Azure 管理 (ポータルおよび API) | 事前バインディング |
 | Microsoft Classroom | Exchange                                    | 事前バインディング |
-|                     | SharePoint                                  | 事前バインディング  |
+|                     | SharePoint                                  | 事前バインディング |
 | Microsoft Teams     | Exchange                                    | 事前バインディング |
 |                     | MS Planner                                  | 遅延バインディング  |
 |                     | SharePoint                                  | 事前バインディング |
@@ -57,6 +57,9 @@ ms.locfileid: "67509357"
 | Project             | Dynamics CRM                                | 事前バインディング |
 | Skype for Business  | Exchange                                    | 事前バインディング |
 | Visual Studio       | Microsoft Azure 管理 (ポータルおよび API) | 事前バインディング |
+| Microsoft フォーム     | Exchange                                    | 事前バインディング |
+|                     | SharePoint                                  | 事前バインディング |
+| Microsoft To-Do     | Exchange                                    | 事前バインディング |
 
 ## <a name="next-steps"></a>次の手順
 

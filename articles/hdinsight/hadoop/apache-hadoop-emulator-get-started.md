@@ -9,25 +9,26 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2cb99cfe765e1d3444f362e591812f5088c78c0e
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393151"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066685"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Apache Hadoop サンドボックス (仮想マシンのエミュレーター) の概要
 
 Hortonworks の Hadoop サンドボックスを仮想マシンにインストールする方法と、Apache Hadoop エコシステムについて学ぶことができます。 Hadoop、Hadoop 分散ファイル システム (HDFS)、ジョブの送信などについて理解できるように、サンドボックスにはローカル開発環境が用意されています。 Hadoop について理解できたら、HDInsight クラスターを作成して、Azure で Hadoop を使い始めることができます。 使用方法の詳細については、 [HDInsight での Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
+
 * [Oracle VirtualBox](https://www.virtualbox.org/). [こちら](https://www.virtualbox.org/wiki/Downloads)からダウンロードしてインストールします。
 
-
 ## <a name="download-and-install-the-virtual-machine"></a>仮想マシンのダウンロードとインストール
+
 1. [Cloudera のダウンロード](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html)を参照します。
 
-2. **[Choose Installation Type]** の下の **[VIRTUALBOX]** をクリックして、最新の Hortonworks サンドボックスを VM にダウンロードします。 サインインするか、または製品への関心についてのフォームを完了します。
+1. **[Choose Installation Type]** の下の **[VIRTUALBOX]** をクリックして、最新の Hortonworks サンドボックスを VM にダウンロードします。 サインインするか、または製品への関心についてのフォームを完了します。
 
 1. **[HDP SANDBOX (LATEST)]** ボタンをクリックしてダウンロードを開始します。
 
@@ -38,11 +39,12 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 ## <a name="start-the-virtual-machine"></a>仮想マシンの開始
 
 1. Oracle VM VirtualBox を開きます。
-2. **[ファイル]** メニューの **[Import Appliance (アプライアンスのインストール)]** をクリックしHortonworks Sandbox イメージを指定します。
+1. **[ファイル]** メニューの **[Import Appliance (アプライアンスのインストール)]** をクリックしHortonworks Sandbox イメージを指定します。
 1. Hortonworks Sandbox を選択し、 **[Start (開始)]** 、 **[Normal Start (通常の方法で開始)]** の順にクリックします。 仮想マシンのブート プロセスが終了すると、ログインに関する手順が表示されます。
 
-    ![[Normal Start (通常の方法で開始)]](./media/apache-hadoop-emulator-get-started/normal-start.png)
-2. Web ブラウザーを開き、表示された URL に移動します (通常は `http://127.0.0.1:8888`)。
+    ![virtualbox マネージャーの通常の方法での開始](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+
+1. Web ブラウザーを開き、表示された URL に移動します (通常は `http://127.0.0.1:8888`)。
 
 ## <a name="set-sandbox-passwords"></a>サンドボックスのパスワードの設定
 
@@ -72,7 +74,9 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
         select * from sample_07 limit 10;
 
 ## <a name="next-steps"></a>次の手順
-* [Hortonworks Sandbox で Visual Studio を使用する方法](../hdinsight-hadoop-emulator-visual-studio.md)
-* [Hortonworks Sandbox の使い方のヒント](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
-* [Hadoop チュートリアル: HDP の概要](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)
 
+* [Hortonworks Sandbox で Visual Studio を使用する方法](../hdinsight-hadoop-emulator-visual-studio.md)
+
+* [Hortonworks Sandbox の使い方のヒント](https://hortonworks.com/hadoop-tutorial/learning-the-ropes-of-the-hortonworks-sandbox/)
+
+* [Hadoop チュートリアル: HDP の概要](https://hortonworks.com/hadoop-tutorial/hello-world-an-introduction-to-hadoop-hcatalog-hive-and-pig/)

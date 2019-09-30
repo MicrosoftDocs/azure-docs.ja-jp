@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 09/04/2019
 ms.author: raynew
-ms.openlocfilehash: 49bd193303255cdf7d18fd5da9dec8d84c50a829
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 3fb36eb9b8507903d1aee00b82c375685a4dfa6c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019183"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279471"
 ---
 # <a name="azure-migrate-support-matrix"></a>Azure Migrate のサポート マトリックス
 
@@ -31,10 +31,10 @@ Azure Migrate サービスのバージョンには、次の 2 つがあります
 
 次の表は、サポートされる移行シナリオをまとめたものです。
 
-**Deployment** | **詳細*** 
+**Deployment** | **詳細** 
 --- | --- 
 **オンプレミスの評価** | VMware VM および Hyper-V VM 上で実行されているオンプレミスのワークロードとデータを評価します。 Azure Migrate Server Assessment と Microsoft Data Migration Assistant (DMA) のほか、Cloudamize、Corent Tech、および Turbonomic Server を含むサードパーティ ツールを使用して評価します。
-**Azure へのオンプレミスの移行** | 物理サーバー、VMware VM、Hyper-V VM、および AWS/GCP インスタンス上で実行されているワークロードとデータを Azure に移行します。 Azure Migrate Server Assessment と Azure Database Migration Service (DMS) のほか、Carbonite や CorentTech を含むサードパーティ ツールを使用して移行します。
+**Azure へのオンプレミスの移行** | 物理サーバー、VMware VM、Hyper-V VM、物理サーバー、クラウドベースの VM で実行されているワークロードとデータを Azure に移行します。 Azure Migrate Server Assessment と Azure Database Migration Service (DMS) のほか、Carbonite や CorentTech を含むサードパーティ ツールを使用して移行します。
 
 具体的なツールのサポートは、次のように要約されます。
 
@@ -53,12 +53,12 @@ CorentTech | 移行 | [詳細情報](https://www.corenttech.com/)。
 
 **サポート** | **詳細**
 --- | ---
-Subscription | サブスクリプションでは 1 つの Azure Migrate プロジェクトを使用できます。
+Subscription | 1 つのサブスクリプションに複数の Azure Migrate プロジェクトを含めることができます。
 Azure のアクセス許可 | Azure Migrate プロジェクトを作成するには、サブスクリプションに共同作成者または所有者アクセス許可が必要です。
 VMware VM  | 1 つのプロジェクトで最大 35,000 の VMware VM を評価します。
-Hyper-V VM | 1 つのプロジェクトで最大 10,000 の Hyper-V VM を評価します。
+Hyper-V VM | 1 つのプロジェクトで最大 35,000 の Hyper-V VM を評価します。
 
-プロジェクトには、VMware VM と Hyper-V VM の両方を評価の制限まで含めることができます。
+評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
 
 
 ## <a name="vmware-assessment-and-migration"></a>VMware の評価と移行

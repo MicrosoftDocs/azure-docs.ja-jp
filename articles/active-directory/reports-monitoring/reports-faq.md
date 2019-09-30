@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a9b1144e3ef1f1a49c39d694f465653da5881cb
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e8c3138b82c7dc4a7217e8cb67448a5d824398ba
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987918"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127018"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Azure Active Directory レポートに関するよく寄せられる質問
 
@@ -37,7 +37,7 @@ ms.locfileid: "68987918"
 
 **Q:現在 `https://graph.windows.net/<tenant-name>/reports/` エンドポイント API を使用しており、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。何に切り替える必要がありますか。**
 
-**A:**  [Identity Protection リスク イベント API](../identity-protection/graph-get-started.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク イベントが 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用します。 そのため、要した作業により、既存の MS Graph への投資が拡大され、この新しい標準プラットフォームへの移行開始が促進されます。
+**A:**  [Identity Protection リスク検出 API](../identity-protection/graph-get-started.md)  を使用して、Microsoft Graph 経由でセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク検出が 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用します。 そのため、要した作業により、既存の MS Graph への投資が拡大され、この新しい標準プラットフォームへの移行開始が促進されます。
 
 ---
 
@@ -107,7 +107,7 @@ ms.locfileid: "68987918"
 
 ## <a name="risky-sign-ins"></a>リスクの高いサインイン
 
-**Q:Identity Protection にリスク イベントがありますが、サインイン レポートの中に該当するサインインが見つかりません。これは期待される動作ですか?**
+**Q:Identity Protection にリスク検出がありますが、サインイン レポートの中に該当するサインインが見つかりません。これは期待される動作ですか?**
 
 **A:** はい、Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 それに対して、すべてのサインインのレポートには、対話型のサインインだけが表示されます。
 
@@ -115,7 +115,7 @@ ms.locfileid: "68987918"
 
 **Q:Azure portal でサインインまたはユーザーにリスクのフラグが付けられた理由はどうすれば調べることができますか。**
 
-**A:** **Azure AD Premium** サブスクリプションをお持ちの場合は、 **[リスクのフラグ付きユーザー]** でユーザーを選択するか、または **[危険なサインイン]** レポートでレコードを選択して、基になるリスク イベントに関する詳細を確認できます。 **Free** または **Basic** サブスクリプションをお持ちの場合は、危険レポートや危険なサインイン レポートでユーザーを表示できますが、基になる危険なイベント情報は確認できません。
+**A:** **Azure AD Premium** サブスクリプションをお持ちの場合は、 **[リスクのフラグ付きユーザー]** でユーザーを選択するか、または **[危険なサインイン]** レポートでレコードを選択して、基になるリスク検出に関する詳細を確認できます。 **Free** または **Basic** サブスクリプションをお持ちの場合は、危険レポートや危険なサインイン レポートでユーザーを表示できますが、基になるリスク検出情報は確認できません。
 
 ---
 
@@ -125,7 +125,7 @@ ms.locfileid: "68987918"
 
 ---
 
-**Q:リスク イベント "追加のリスクが検出されたサインイン" は何を意味していますか。**
+**Q:リスク検出 "追加のリスクが検出されたサインイン" は何を意味していますか。**
 
 **A:** 環境内のすべての危険なサインインについて知らせるために、"追加のリスクが検出されたサインイン" は、Azure AD Identity Protection サブスクライバー限定の検出で、サインインに対するプレースホルダーとして機能します。
 

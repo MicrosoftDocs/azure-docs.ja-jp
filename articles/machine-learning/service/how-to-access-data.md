@@ -1,7 +1,7 @@
 ---
 title: Azure ストレージ サービスのデータにアクセスする
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service でトレーニング中にデータストアを使用して Azure ストレージ サービスにアクセスする方法について説明します
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning でトレーニング中にデータストアを使用して Azure ストレージ サービスにアクセスする方法について説明します
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 08/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 545860a394c7eac953c1cbacc9dd05fc3737f6c1
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: eaed6e7b0ea044ba39a1055ad14de13d5deb9b05
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856171"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035312"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure ストレージ サービスのデータにアクセスする
 
@@ -151,7 +151,7 @@ datastore.download(target_path='your target path',
 
 次の表では、実行中にデータストアの使用方法をコンピューティング先に指示するメソッドの一覧を示します。 
 
-方法|Method|説明|
+方法|方法|説明|
 ----|-----|--------
 マウントする| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| コンピューティング先にデータストアをマウントするために使用します。
 ダウンロード|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|データストアの内容を `path_on_compute` によって指定された場所にダウンロードするために使用します。 <br> このダウンロードは実行前に行われます。
@@ -200,6 +200,7 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
 ```
+
 ### <a name="compute-and-datastore-matrix"></a>コンピューティングとデータストアのマトリックス
 
 現在、データストアは、次のマトリックスに示すストレージ サービスに対する接続情報の格納をサポートしています。 このマトリックスでは、コンピューティング先とデータストアの異なる組み合わせのシナリオで使用可能なデータ アクセス機能を示します。 詳細については、[Azure Machine Learning のコンピューティング先](how-to-set-up-training-targets.md#compute-targets-for-training)に関する記事を参照してください。
@@ -218,11 +219,22 @@ est = Estimator(source_directory='your code directory',
 > [!NOTE]
 > `as_mount()` ではなく `as_download()` を使用して、高度に反復的で大規模なデータ処理を高速で実行するシナリオがある場合があります。これは実験的に検証することができます。
 
+### <a name="accessing-source-code-during-training"></a>トレーニング中のソース コードへのアクセス
+
+Azure BLOB ストレージは、Azure ファイル共有よりも高いスループット速度を実現し、並列で開始される多数のジョブに対応します。 このため、ソース コード ファイルを転送するために BLOB ストレージを使用するように実行を構成することをお勧めします。
+
+次のコード例では、実行構成で、ソース コード転送に使用する BLOB データストアを指定します。
+
+```python 
+# workspaceblobstore is the default blob storage
+run_config.source_directory_data_store = "workspaceblobstore" 
+```
+
 ## <a name="access-data-during-scoring"></a>スコアリング中にデータにアクセスする
 
-Azure Machine Learning service には、スコアリングにモデルを使用する方法が複数用意されています。 これらの方法の一部では、データストアへのアクセスは提供されていません。 次の表を使用して、スコアリング中にデータストアへのアクセスが許可されるのはどの方法かを理解します。
+Azure Machine Learning には、スコアリングにモデルを使用する方法が複数用意されています。 これらの方法の一部では、データストアへのアクセスは提供されていません。 次の表を使用して、スコアリング中にデータストアへのアクセスが許可されるのはどの方法かを理解します。
 
-| Method | データストア アクセス | 説明 |
+| 方法 | データストア アクセス | 説明 |
 | ----- | :-----: | ----- |
 | [バッチ予測](how-to-run-batch-predictions.md) | ✔ | 大量のデータの予測を非同期的に行います。 |
 | [Web サービス](how-to-deploy-and-where.md) | &nbsp; | モデルを Web サービスとしてデプロイします。 |

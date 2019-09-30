@@ -1,20 +1,20 @@
 ---
 title: クラスター サイズのスケーリング - Azure HDInsight
-description: ワークロードに合わせて Azure HDInsight クラスターを柔軟にスケーリングする
+description: Azure HDInsight でワークロードに合わせて Apache Hadoop クラスターをエラスティックにスケーリングする
 author: ashishthaps
 ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: b85277a4238351b6448c2cf29676ae3d8c118385
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: dad796c8a7a34a782a4f78260ac38bd966eddde9
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077199"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105390"
 ---
-# <a name="scale-hdinsight-clusters"></a>HDInsight クラスターのスケーリング
+# <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 
 HDInsight では、クラスター内のワーカー ノードの数をスケールアップおよびスケールダウンできるようにすることで、柔軟性が提供されます。 この柔軟性により、クラスターを数時間後または週末に縮小したり、ビジネスの需要のピーク時に拡張したりできます。
 
@@ -37,7 +37,7 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 |[Azure CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<Target Instance Count> |
 |[Azure Portal](https://portal.azure.com)|HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスター サイズ]** を選択し、[クラスター サイズ] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。|  
 
-![クラスターのスケーリング](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![Azure portal のスケール クラスター オプション](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
 
 これらの方法のいずれかを使用すると、HDInsight クラスターを数分以内にスケールアップまたはスケールダウンできます。
 
@@ -112,7 +112,7 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 3. Ambari UI から、左側のメニューにあるサービスの一覧で **[YARN]** を選択します。  
 4. [YARN] ページから **[クイック リンク]** を選択し、アクティブなヘッド ノードにポインターを置き、 **[ResourceManager UI]** を選択します。
 
-    ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
+    ![Apache Ambari クイック リンク ResourceManager UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
 `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` を使用すると ResourceManager UI に直接アクセスできます。
 

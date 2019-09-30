@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 40a9016ac7a10175b51f0fb6f072dd089bde3a51
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 44315790116545dd888aed533731bbf01abe801d
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606278"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997304"
 ---
 # <a name="what-is-opc-vault"></a>OPC Vault とは
 
@@ -30,3 +30,10 @@ OPC Vault には証明書レジストリ、ストレージ、およびライフ�
 次の図は、OPC Vault の完全なアーキテクチャを示しています。
 
 ![OPC Vault のアーキテクチャ](media/overview-opc-vault-architecture/opc-vault.png)
+
+## <a name="next-steps"></a>次の手順
+
+ここでは OPC Vault とその用途について説明しました。次に以下の記事を読むことをお勧めします。
+
+> [!div class="nextstepaction"]
+> [OPC Vault アーキテクチャ](overview-opc-vault-architecture.md)

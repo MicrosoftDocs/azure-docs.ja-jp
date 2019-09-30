@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: danlep
 ms.openlocfilehash: f8821060b98ebfc954a6e59abad60350e6779b76
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67181540"
 ---
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | :--- |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのコンテナー グループ数 | 100<sup>1</sup> |
 | コンテナー グループあたりのコンテナーの数 | 60 |
@@ -25,7 +25,7 @@ ms.locfileid: "67181540"
 | 5 分あたりのコンテナーの削除件数 | 100<sup>1</sup> |
 
 
-<sup>1</sup>制限値の引き上げを要求するには、[Azure サポート リクエスト]を作成してください。[azure-support]<br />
+<sup>1</sup>制限値の引き上げを要求するには、[Azure サポート リクエスト][azure-support]を作成してください。<br />
 
 <!-- LINKS - External -->
 [azure-support]: https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest

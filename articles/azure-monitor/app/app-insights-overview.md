@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 06/03/2019
 ms.author: mbullwin
-ms.openlocfilehash: d702b2f76531bad53e3fd98645d2b6bbf0582c54
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 0f0f4da38b6b9b315508d956075840907fd46fd4
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774735"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883802"
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミス、ハイブリッド、または任意のパブリック クラウドでホストされている .NET、Node.js、Java EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio App Center と統合することで、モバイル アプリからテレメトリを監視および分析できます。
@@ -28,7 +28,7 @@ Application Insights は、複数のプラットフォームで使用できる W
 
 Web サービス アプリケーションだけでなく、バックグラウンド コンポーネントや Web ページ内の JavaScript 自体もインストルメント化することができます。 
 
-![アプリ内の Application Insights のインストルメンテーションが Application Insights のリソースにテレメトリを送信します。](./media/app-insights-overview/01-scheme.png)
+![アプリ内の Application Insights のインストルメンテーションが Application Insights のリソースにテレメトリを送信します。](./media/app-insights-overview/diagram.png)
 
 さらに、パフォーマンス カウンター、Azure Diagnostics、Docker のログなどのホスト環境からテレメトリをプルすることができます。 定期的に Web サービスに人工的な要求を送信する Web テストを設定することもできます。
 
@@ -139,12 +139,6 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
   * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
 * ブログ:
   * [Application Insights のブログ](https://azure.microsoft.com/blog/tag/application-insights)
-
-## <a name="videos"></a>ビデオ
-
-- 外部のビデオ: [ASP.NET アプリケーションでの Application Insights の構成](https://www.youtube.com/watch?v=blnGAVgMAfA)。
-- 外部のビデオ: [ASP.NET Core および Visual Studio での Application Insights の構成](https://www.youtube.com/watch?v=NoS9UhcR4gA&t)。
-- 外部のビデオ: [ASP.NET Core および Visual Studio Code での Application Insights の構成](https://youtu.be/ygGt84GDync)。
 
 <!--Link references-->
 

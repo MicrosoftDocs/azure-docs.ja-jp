@@ -4,18 +4,18 @@ description: Azure リソースのマネージド ID と Azure AD 認証をサ�
 services: active-directory
 author: MarkusVi
 ms.author: markvi
-ms.date: 06/19/2019
+ms.date: 09/24/2019
 ms.topic: conceptual
 ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5630c157ef7843726bcc17455a1e683e58b88ffd
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 4f4a5ae01376358ca78cd804cc853489ca007217
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905217"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264225"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID をサポートするサービス
 
@@ -33,7 +33,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
 | マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | システム割り当て済み | 使用可能 | プレビュー | プレビュー | プレビュー | 
-| ユーザー割り当て済み | プレビュー | プレビュー | プレビュー | プレビュー |
+| ユーザー割り当て済み | 使用可能 | プレビュー | プレビュー | プレビュー |
 
 Azure Virtual Machines のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -48,7 +48,7 @@ Azure Virtual Machines のために (それが提供されているリージョ�
 |マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
 | システム割り当て済み | 使用可能 | プレビュー | プレビュー | プレビュー |
-| ユーザー割り当て済み | プレビュー | プレビュー | プレビュー | プレビュー |
+| ユーザー割り当て済み | 使用可能 | プレビュー | プレビュー | プレビュー |
 
 Azure Virtual Machine Scale Sets のために (それが提供されているリージョンで) マネージド ID を 構成するには、次の一覧を参照してください。
 
@@ -76,8 +76,8 @@ Azure App Service のために (それが提供されているリージョンで
 
 |マネージド ID の種類 | すべて一般公開<br>グローバル Azure リージョン | Azure Government | Azure Germany | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| システム割り当て済み | プレビュー | 使用できません。 | 使用できません。 | 使用できません。 |
-| ユーザー割り当て済み | プレビュー | 使用できません。 | 使用できません。 | 使用できません。 |
+| システム割り当て済み | 使用可能 | 使用可能 | 使用できません。 | 使用できません。 |
+| ユーザー割り当て済み | 使用可能 | 使用可能 | 使用できません。 | 使用できません。 |
 
 [Azure Blueprints](../../governance/blueprints/overview.md) でマネージド ID を使用するには、次の一覧を参照してください。
 
@@ -210,7 +210,7 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 
 | クラウド | Resource ID | Status |
 |--------|------------|--------|
-| Azure Global | `https://eventhubs.azure.net` | プレビュー |
+| Azure Global | `https://eventhubs.azure.net` | 使用可能 |
 | Azure Government |  | 利用不可 |
 | Azure Germany |   | 利用不可 |
 | Azure China 21Vianet |  | 利用不可 |
@@ -219,19 +219,36 @@ Azure Resource Manager へのアクセスを構成するには、次の一覧を
 
 | クラウド | Resource ID | Status |
 |--------|------------|--------|
-| Azure Global | `https://servicebus.azure.net`  | プレビュー |
-| Azure Government |  | 利用不可 |
+| Azure Global | `https://servicebus.azure.net`  | 使用可能 |
+| Azure Government |  | 使用可能 |
 | Azure Germany |   | 利用不可 |
 | Azure China 21Vianet |  | 利用不可 |
+
+
+
+
+
+
+
+
 
 ### <a name="azure-storage-blobs-and-queues"></a>Azure Storage の BLOB とキュー
 
 | クラウド | Resource ID | Status |
 |--------|------------|--------|
 | Azure Global | `https://storage.azure.com/` <br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 使用可能 |
-| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 使用可能 |
-| Azure Germany | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 使用可能 |
-| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.windows.net` <br /><br />`https://<account>.queue.core.windows.net` | 使用可能 |
+| Azure Government | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.usgovcloudapi.net` <br /><br />`https://<account>.queue.core.usgovcloudapi.net` | 使用可能 |
+| Azure Germany | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.cloudapi.de` <br /><br />`https://<account>.queue.core.cloudapi.de` | 使用可能 |
+| Azure China 21Vianet | `https://storage.azure.com/`<br /><br />`https://<account>.blob.core.chinacloudapi.cn` <br /><br />`https://<account>.queue.core.chinacloudapi.cn` | 使用可能 |
+
+
+
+
+
+
+
+
+
 
 ### <a name="azure-analysis-services"></a>Azure Analysis Services
 

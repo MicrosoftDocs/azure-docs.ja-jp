@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/29/2017
-ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001993"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173486"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する
 
@@ -42,9 +42,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 空のディレクトリに次の名前で新しいファイルを 3 つ作成します。
 
-- ```variables.tf``` このファイルには、テンプレートに使用される変数の値が格納されます。
-- ```output.tf``` このファイルには、デプロイ後に表示される設定が記述されます。
-- ```vmss.tf``` このファイルには、デプロイしているインフラストラクチャのコードが格納されます。
+- `variables.tf`:このファイルには、テンプレートに使用される変数の値が格納されます。
+- `output.tf`:このファイルには、デプロイ後に表示される設定が記述されます。
+- `vmss.tf`:このファイルには、デプロイしているインフラストラクチャのコードが格納されます。
 
 ##  <a name="create-the-variables"></a>変数を作成する 
 
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 `variables.tf` ファイルを編集し、次のコードをコピーしてから変更を保存します。
 
-```tf 
+```hcl
 variable "location" {
   description = "The location where resources are created"
   default     = "East US"
@@ -70,7 +70,7 @@ variable "resource_group_name" {
 
 ファイルを保存します。
 
-Terraform テンプレートをデプロイするときに、アプリケーションへのアクセスに使用される完全修飾ドメイン名を取得できます。 Terraform の ```output``` リソースの種類を使用して、リソースの ```fqdn``` プロパティを取得します。 
+Terraform テンプレートをデプロイするときに、アプリケーションへのアクセスに使用される完全修飾ドメイン名を取得できます。 Terraform の `output` リソースの種類を使用して、リソースの `fqdn` プロパティを取得します。 
 
 `output.tf` ファイルを編集し、次のコードをコピーして、仮想マシンの完全修飾ドメイン名が表示されるようにします。 
 
@@ -89,9 +89,9 @@ output "vmss_public_ip" {
 
 また、すべてのリソースの作成場所となるリソース グループも必要です。 
 
-次のコードを編集し、```vmss.tf``` ファイルにコピーします。 
+次のコードを編集し、`vmss.tf` ファイルにコピーします。 
 
-```tf 
+```hcl
 
 resource "azurerm_resource_group" "vmss" {
   name     = "${var.resource_group_name}"
@@ -124,7 +124,7 @@ resource "azurerm_public_ip" "vmss" {
   name                         = "vmss-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}"
 
   tags {
@@ -145,7 +145,7 @@ resource "azurerm_public_ip" "vmss" {
 terraform init 
 ```
  
-コマンドを実行したディレクトリの ```.terraform``` フォルダー内に、Terraform レジストリからプロバイダー プラグインがダウンロードされます。
+コマンドを実行したディレクトリの `.terraform` フォルダー内に、Terraform レジストリからプロバイダー プラグインがダウンロードされます。
 
 次のコマンドを実行して、Azure にインフラストラクチャをデプロイします。
 
@@ -175,18 +175,17 @@ terraform apply
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>インフラストラクチャを編集して仮想マシン スケール セットを追加する
 
 この手順では、以前にデプロイしたネットワーク上に次のリソースを作成します。
-- アプリケーションにサービスを提供する Azure ロード バランサー (手順 4 でデプロイしたパブリック IP アドレスに接続します)
+- アプリケーションにサービスを提供する Azure ロード バランサー (前にデプロイしたパブリック IP アドレスに接続します)。
 - 1 つの Azure ロード バランサーおよびアプリケーションにサービスを提供するルール (前述の手順で構成したパブリック IP アドレスに接続します)
-- Azure バックエンド アドレス プール (ロード バランサーに割り当てます) 
-- アプリケーションで使用する正常性プローブ ポート (ロード バランサー上に構成します) 
-- ロード バランサーの背後に構成される仮想マシン スケール セット (前述の手順でデプロイした VNET 上で実行されます)
-- カスタム イメージからインストールした仮想マシン スケールのノード上の [nginx](https://nginx.org/)
+- Azure バックエンド アドレス プール (ロード バランサーに割り当てます)。
+- アプリケーションで使用する正常性プローブ ポート (ロード バランサー上に構成します)。
+- ロード バランサーの背後に構成される仮想マシン スケール セット (前にデプロイした VNET 上で実行されます)。
+- カスタム イメージからインストールした仮想マシン スケールのノード上の [Nginx](https://nginx.org/)。
 
 
 `vmss.tf` ファイルの末尾に次のコードを追加します。
 
-```tf
-
+```hcl
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
@@ -290,6 +289,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
       name                                   = "IPConfiguration"
       subnet_id                              = "${azurerm_subnet.vmss.id}"
       load_balancer_backend_address_pool_ids = ["${azurerm_lb_backend_address_pool.bpepool.id}"]
+      primary = true
     }
   }
   
@@ -302,7 +302,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
 次のコードを `variables.tf` に追加してデプロイをカスタマイズします。
 
-```tf 
+```hcl
 variable "application_port" {
     description = "The port that you want to expose to the external load balancer"
     default     = 80
@@ -355,7 +355,7 @@ resource "azurerm_public_ip" "jumpbox" {
   name                         = "jumpbox-public-ip"
   location                     = "${var.location}"
   resource_group_name          = "${azurerm_resource_group.vmss.name}"
-  public_ip_address_allocation = "static"
+  allocation_method            = "static"
   domain_name_label            = "${azurerm_resource_group.vmss.name}-ssh"
 
   tags {

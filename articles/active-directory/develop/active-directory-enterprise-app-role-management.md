@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 091fb7cb9e74166b1e01c00834c2346dd2f0fd8b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 699c8ce559d26ad226ad1dfd7f7266fe8c4acdfb
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835542"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207192"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する
 
@@ -59,7 +59,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
     ![[プロパティ] ページ](./media/active-directory-enterprise-app-role-management/tutorial_app_properties.png)
 
-6. 別のウィンドウで [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開き、以下の手順を実行します。
+6. 別のウィンドウで [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開き、以下の手順を実行します。
 
     a. テナントのグローバル管理者または共同管理者の資格情報を使用して、Graph Explorer サイトにサインインします。
 
@@ -186,7 +186,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
 既存のロールを更新するには、以下の手順を実行します。
 
-1. [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます
+1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
 
 2. テナントのグローバル管理者または共同管理者の資格情報を使用して、Graph Explorer サイトにサインインします。
 
@@ -224,7 +224,7 @@ Azure Active Directory (Azure AD) を使用して、アプリを承認した後�
 
 既存のロールを削除するには、以下の手順を実行します。
 
-1. 別のウィンドウで [Azure AD Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
+1. 別のウィンドウで [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を開きます。
 
 2. テナントのグローバル管理者または共同管理者の資格情報を使用して、Graph Explorer サイトにサインインします。
 

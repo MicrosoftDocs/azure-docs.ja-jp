@@ -3,16 +3,15 @@ title: Azure Data Factory の Mapping Data Flow の概要
 description: Azure Data Factory の Mapping Data Flow の概要の説明
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 051886f98d6d35594336291bbb2defb2a4acdfc5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6f4c124c59584c8538d85ac61650661ae559a77b
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233058"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70123923"
 ---
 # <a name="what-are-mapping-data-flows"></a>マッピング データ フローについて
 
@@ -26,4 +25,26 @@ Azure Data Factory のデータ フローの目的は、コーディングなし
 
 続いて、データ フロー アクティビティを実行する Azure Data Factory のパイプラインを使用して、データ フローのアクティビティをスケジュールおよび監視します。
 
-データ フロー デザイン サーフェス上にあるデバッグ モードのトグル スイッチにより、データ変換を対話的に作成できます。 デバッグ モードでは、データ フローを作成するためのデータ準備環境を利用できます。
+データ フロー デザイン サーフェス上にあるデバッグ モードのトグル スイッチにより、データ変換を対話的に作成できます。 デバッグ モードでは、データ フローを作成するためのデータ準備およびデータ プレビュー環境を利用できます。
+
+## <a name="begin-building-your-data-flow-logical-graph"></a>データ フロー論理グラフのビルドを開始する
+
+Factory リソースの下にある + 記号を使用して新しいデータ フローを作成して、データ フローのビルドを開始します。
+
+![新しいデータ フロー](media/data-flow/newdataflow2.png "新しいデータ フロー")
+
+ソース変換を構成して開始し、次に + 記号を使用して後続の各手順にデータ変換を追加します。 論理グラフの構築時には、"グラフの表示" および "グラフの非表示" ボタンを使用してグラフと構成間で切り替えを行えます。
+
+![グラフの表示](media/data-flow/showg.png "グラフの表示")
+
+## <a name="configure-transformation-logic"></a>変換ロジックを構成する
+
+![グラフの非表示](media/data-flow/hideg.png "グラフの非表示")
+
+グラフを非表示にすると、変換ノード間を水平方向に移動できるようになります。
+
+![移動](media/data-flow/showhide.png "移動")
+
+## <a name="next-steps"></a>次の手順
+
+* [ソース変換から開始する](data-flow-source.md)

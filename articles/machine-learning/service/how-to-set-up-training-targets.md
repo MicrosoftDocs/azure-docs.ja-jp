@@ -1,6 +1,6 @@
 ---
 title: モデル トレーニング用のコンピューティング先を作成して使用する
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 機械学習モデル トレーニング用のトレーニング環境 (コンピューティング ターゲット) を構成します。 トレーニング環境を簡単に切り替えることができます。 ローカルでトレーニングを開始します。 スケール アウトする必要がある場合は、クラウド ベースのコンピューティング先に切り替えます。
 services: machine-learning
 author: heatherbshapiro
@@ -11,18 +11,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: e73a64a9782535da31e2eacbaa2740007707c774
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 7c3bae2fff9e20ed9427c72b5f5f632d975f9f94
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872434"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034412"
 ---
-# <a name="set-up-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング ターゲットを設定する 
+# <a name="set-up-and-use-compute-targets-for-model-training"></a>モデル トレーニング用のコンピューティング先を設定して使用する 
 
-Azure Machine Learning service では、さまざまなリソースまたは環境でモデルをトレーニングでき、それらを総称して[__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-targets)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。  [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)に関するページで説明されているように、モデルのデプロイ用のコンピューティング先を作成することもできます。
+Azure Machine Learning では、さまざまなリソースまたは環境でご利用のモデルをトレーニングでき、それらを総称して[__コンピューティング先__](concept-azure-machine-learning-architecture.md#compute-targets)と呼びます。 コンピューティング先は、ローカル マシンでも、Azure Machine Learning コンピューティング、Azure HDInsight、リモート仮想マシンなどのクラウド リソースでもかまいません。  [モデルをデプロイする場所と方法](how-to-deploy-and-where.md)に関するページで説明されているように、モデルのデプロイ用のコンピューティング先を作成することもできます。
 
-Azure Machine Learning SDK、Azure portal、Azure CLI、または Azure Machine Learning VS Code 拡張機能を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング ターゲットがある場合、それらを Azure Machine Learning service ワークスペースに接続して使用できます。
+Azure Machine Learning SDK、Azure portal、ワークスペースのランディング ページ (プレビュー)、Azure CLI、または Azure Machine Learning VS Code 拡張機能を使用してコンピューティング ターゲットを作成および管理できます。 別のサービス (たとえば、HDInsight クラスター) によって作成されたコンピューティング先がある場合、それらを Azure Machine Learning ワークスペースに接続して使用できます。
  
 この記事では、モデル トレーニング用にさまざまなコンピューティング先を使用する方法について説明します。  すべてのコンピューティング先の手順が、同じワークフローに従います。
 1. まだない場合は、コンピューティング先を __作成__ します。
@@ -35,7 +35,7 @@ Azure Machine Learning SDK、Azure portal、Azure CLI、または Azure Machine 
 
 ## <a name="compute-targets-for-training"></a>モデル トレーニング用のコンピューティング先
 
-Azure Machine Learning service では、異なるコンピューティング先に対してさまざまなサポートが提供されています。 典型的なモデル開発ライフサイクルは、少量のデータを用いた開発と実験から始まります。 この段階では、ローカル環境を使用することをお勧めします。 たとえば、ローカル コンピューターやクラウドベースの VM などです。 より大規模なデータ セットにトレーニングをスケールアップする、または分散トレーニングを実行する段階で、Azure Machine Learning コンピューティングを使用して、実行を送信するたびに自動スケーリングするシングルノードまたはマルチノード クラスターを作成することをお勧めします。 独自のコンピューティング リソースを接続することもできますが、以下で説明するように、シナリオによってサポートが異なる場合があります:
+Azure Machine Learning では、異なるコンピューティング先に対してさまざまなサポートが提供されています。 典型的なモデル開発ライフサイクルは、少量のデータを用いた開発と実験から始まります。 この段階では、ローカル環境を使用することをお勧めします。 たとえば、ローカル コンピューターやクラウドベースの VM などです。 より大規模なデータ セットにトレーニングをスケールアップする、または分散トレーニングを実行する段階で、Azure Machine Learning コンピューティングを使用して、実行を送信するたびに自動スケーリングするシングルノードまたはマルチノード クラスターを作成することをお勧めします。 独自のコンピューティング リソースを接続することもできますが、以下で説明するように、シナリオによってサポートが異なる場合があります:
 
 [!INCLUDE [aml-compute-target-train](../../../includes/aml-compute-target-train.md)]
 
@@ -45,35 +45,11 @@ Azure Machine Learning service では、異なるコンピューティング先�
 
 ## <a name="whats-a-run-configuration"></a>実行構成とは
 
-トレーニングのときは、ローカル コンピューターで開始し、後で別のコンピューティング先でそのトレーニング スクリプトを実行するのが一般的です。 Azure Machine Learning service では、スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。 
+トレーニングのときは、ローカル コンピューターで開始し、後で別のコンピューティング先でそのトレーニング スクリプトを実行するのが一般的です。 Azure Machine Learning では、スクリプトを変更しなくても、さまざまなコンピューティング先でスクリプトを実行できます。
 
-必要なのは、**実行構成**で各コンピューティング先の環境を定義することだけです。  その後、異なるコンピューティング先でトレーニング実験を実行するときは、そのコンピューティングの実行構成を指定します。
+必要なのは、**実行構成**内で各コンピューティング先の環境を定義することだけです。  その後、異なるコンピューティング先でトレーニング実験を実行するときは、そのコンピューティングの実行構成を指定します。 環境を指定し、構成を実行するためにバインドする方法の詳細については、「[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)」を参照してください。
 
 詳しくは、この記事の最後にある[実験の送信](#submit)に関する説明をご覧ください。
-
-### <a name="manage-environment-and-dependencies"></a>環境と依存関係を管理する
-
-実行構成を作成するときは、コンピューティング先で環境と依存関係を管理する方法を決定する必要があります。 
-
-#### <a name="system-managed-environment"></a>システム管理環境
-
-Python 環境とスクリプトの依存関係を [Conda](https://conda.io/docs/) で自動的に管理したいときは、システム管理環境を使用します。 システム管理環境は既定で想定されており、最も一般的な選択肢です。 リモート コンピューティング先で便利であり、そのターゲットを構成できないときは特に有効です。 
-
-行う必要があるのは、[CondaDependency クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py)を使用して各パッケージ依存関係を指定することだけです。後は、Conda によって、お使いのワークスペースの **aml_config** ディレクトリに、パッケージの依存関係のリストが含まれる **conda_dependencies.yml** という名前のファイルが作成され、トレーニング実験を送信するときに Python 環境がセットアップされます。 
-
-新しい環境の初期セットアップは、必要な依存関係のサイズによっては数分かかる可能性があります。 パッケージの一覧が変更されない限り、セットアップ時間が発生するのは 1 回だけです。
-  
-次のコードでは、Scikit-learn を必要とするシステム管理環境の例を示します。
-    
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_system_managed)]
-
-#### <a name="user-managed-environment"></a>ユーザー管理環境
-
-ユーザー管理環境の場合は、ユーザーが環境を設定し、トレーニング スクリプトで必要なすべてのパッケージをコンピューティング ターゲットにインストールする必要があります。 トレーニング環境が (ローカル コンピューター上などに) 既に構成されている場合は、`user_managed_dependencies` を True に設定することで、セットアップ手順をスキップできます。 Conda で自動的に環境やインストールの確認が行われることはありません。
-
-次のコードでは、ユーザー管理環境用のトレーニング実行構成の例を示します。
-
-[!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/runconfig.py?name=run_user_managed)]
 
 ## <a name="whats-an-estimator"></a>Estimator とは
 
@@ -167,7 +143,7 @@ Azure Machine Learning コンピューティング環境は、実行をスケジ
 
 ### <a id="vm"></a>リモート仮想マシン
 
-Azure Machine Learning では、独自のコンピューティング リソースを用意してワークスペースに接続することもサポートされています。 任意のリモート VM もそのようなリソースの一種ですが、Azure Machine Learning service からアクセスできることが条件です。 リソースは、Azure VM でも、組織内またはオンプレミスのリモート サーバーでもかまいません。 具体的には、IP アドレスと資格情報 (ユーザー名とパスワードまたは SSH キー) があれば、任意のアクセス可能な VM をリモート実行に使用できます。
+Azure Machine Learning では、独自のコンピューティング リソースを用意してワークスペースに接続することもサポートされています。 任意のリモート VM もそのようなリソースの一種ですが、Azure Machine Learning からアクセスできることが条件です。 リソースは、Azure VM でも、組織内またはオンプレミスのリモート サーバーでもかまいません。 具体的には、IP アドレスと資格情報 (ユーザー名とパスワードまたは SSH キー) があれば、任意のアクセス可能な VM をリモート実行に使用できます。
 
 システムで構築済みの conda 環境、既存の Python 環境、または Docker コンテナーを使用できます。 Docker コンテナーで実行するには、Docker エンジンを VM で実行する必要があります。 この機能は、ローカル コンピューターよりも柔軟性がある、クラウドベースの開発/実験環境が必要な場合に特に役立ちます。
 
@@ -302,6 +278,7 @@ Azure portal でワークスペースに関連付けられたコンピューテ�
 * ワークスペースに[コンピューティング先を作成する](#portal-create)
 * ワークスペースの外部に作成された[コンピューティング ターゲットにアタッチする](#portal-reuse)
 
+
 コンピューティング先を作成してワークスペースにアタッチした後は、`ComputeTarget` オブジェクトを使用して実行構成でそれを使用します。 
 
 ```python
@@ -314,7 +291,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 ワークスペースのコンピューティング先を表示するには、次の手順を使用します。
 
-1. [Azure portal](https://portal.azure.com) に移動し、ワークスペースを開きます。 
+1. [Azure portal](https://portal.azure.com) に移動し、ワークスペースを開きます。 次の画像は Azure portal ですが、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) でも同じ手順にアクセスできます。
+ 
 1. __[アプリケーション]__ で __[Compute]__ を選択します。
 
     [![[計算] タブを表示する](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace-expanded.png)
@@ -349,7 +327,7 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 ### <a id="portal-reuse"></a>コンピューティング ターゲットにアタッチする
 
-Azure Machine Learning service ワークスペースの外部に作成されたコンピューティング ターゲットを使用するには、それらをアタッチする必要があります。 コンピューティング ターゲットをアタッチすることで、ワークスペースで利用できるようにします。
+Azure Machine Learning ワークスペースの外部に作成されたコンピューティング先を使用するには、それらをアタッチする必要があります。 コンピューティング ターゲットをアタッチすることで、ワークスペースで利用できるようにします。
 
 コンピューティング先の一覧を表示するには、前に説明した手順に従います。 その後、次の手順を使用して、コンピューティング ターゲットをアタッチします。 
 
@@ -378,7 +356,7 @@ Azure Machine Learning service ワークスペースの外部に作成された�
 
 ## <a name="set-up-with-cli"></a>CLI を使用した設定
 
-Azure Machine Learning service 用の [CLI 拡張機能](reference-azure-machine-learning-cli.md)を使用して、ワークスペースに関連付けられたコンピューティング先にアクセスすることができます。  CLI を使用して次のことができます。
+Azure Machine Learning 用の [CLI 拡張機能](reference-azure-machine-learning-cli.md)を使用して、ワークスペースに関連付けられたコンピューティング先にアクセスすることができます。  CLI を使用して次のことができます。
 
 * マネージド コンピューティング先を作成する
 * マネージド コンピューティング先を更新する
@@ -388,9 +366,9 @@ Azure Machine Learning service 用の [CLI 拡張機能](reference-azure-machine
 
 ## <a name="set-up-with-vs-code"></a>VS Code を使用した設定
 
-Azure Machine Learning service 用の [VS Code 拡張機能](how-to-vscode-tools.md#create-and-manage-compute-targets)を使用して、ワークスペースに関連付けられたコンピューティング先にアクセスし、これを作成および管理することができます。
+Azure Machine Learning 用の [VS Code 拡張機能](how-to-vscode-tools.md#create-and-manage-compute-targets)を使用して、ワークスペースに関連付けられたコンピューティング先にアクセスし、これを作成および管理することができます。
 
-## <a id="submit"></a>トレーニングの実行を送信する
+## <a id="submit"></a>Azure Machine Learning SDK を使用してトレーニングの実行を送信する
 
 実行構成を作成した後は、それを使用して実験を実行します。  トレーニングの実行を送信するためのコード パターンは、すべての種類のコンピューティング先について同じです。
 
@@ -427,13 +405,99 @@ Azure Machine Learning service 用の [VS Code 拡張機能](how-to-vscode-tools
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
+> [!TIP]
+> この例では、トレーニング用にコンピューティング ターゲットの 1 つのノードのみを使用するように既定で設定されています。 複数のノードを使用するには、実行構成の `node_count` を必要な数のノードに設定します。 たとえば、次のコードでは、トレーニングに使用するノードの数を 4 に設定しています。
+>
+> ```python
+> src.run_config.node_count = 4
+> ```
+
 または、次のことができます。
 
 * [Estimator での ML モデルのトレーニング](how-to-train-ml-models.md)に関する記事で示されているように、`Estimator` オブジェクトを使用して実験を送信します。
-* [CLI 拡張機能を使用](reference-azure-machine-learning-cli.md#experiments)して実験を送信します。
+* [ハイパーパラメーターのチューニング](how-to-tune-hyperparameters.md)用の HyperDrive 実行を送信します。
 * [VS Code 拡張機能](how-to-vscode-tools.md#train-and-tune-models)を介して実験を送信します。
 
-## <a name="github-tracking-and-integration"></a>GitHub の追跡と統合
+詳細については、[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) および [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) のドキュメントを参照してください。
+
+## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Azure Machine Learning CLI を使用して実行構成の作成および実行の送信を行う
+
+[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) と [Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)を使用して、実行構成を作成し、さまざまなコンピューティング先に実行を送信できます。 次の例は、既存の Azure Machine Learning ワークスペースがあること、および `az login` CLI コマンドを使用して Azure にログインしていることを前提としています。 
+
+### <a name="create-run-configuration"></a>実行構成の作成
+
+実行構成を作成する最も簡単な方法は、機械学習 Python スクリプトが格納されているフォルダーにナビゲートし、CLI コマンドを使用することです。
+
+```azurecli
+az ml folder attach
+```
+
+このコマンドにより、さまざまなコンピューティング先のためのテンプレート実行構成ファイルを含むサブフォルダー `.azureml` が作成されます。 これらのファイルをコピーして編集し、構成をカスタマイズできます。たとえば、Python パッケージを追加したり、Docker 設定を変更したりできます。  
+
+### <a name="structure-of-run-configuration-file"></a>実行構成ファイルの構造
+
+実行構成ファイルは YAML 形式で、次のセクションで構成されています。
+ * 実行するスクリプトとその引数
+ * コンピューティング先の名前 ("local" またはワークスペースの下にあるコンピューティングの名前)。
+ * 実行のためのパラメーター: フレームワーク、分散実行用コミュニケーター、最大期間、コンピューティング ノード数。
+ * 環境セクション。 このセクションのフィールドの詳細については、「[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)」を参照してください。
+   * 実行用にインストールする Python パッケージを指定するには、[conda 環境ファイル](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#create-env-file-manually)を作成し、__condaDependenciesFile__ フィールドを設定します。
+ * 実行履歴の詳細。ログ ファイル フォルダーを指定し、出力コレクションと実行履歴のスナップショットを有効または無効にします。
+ * 選択されたフレームワークに固有の構成の詳細。
+ * データ参照とデータ ストアの詳細。
+ * 新しいクラスターを作成するための Machine Learning コンピューティングに固有の構成の詳細。
+
+### <a name="create-an-experiment"></a>実験の作成
+
+最初に、自分の実行のための実験を作成します。
+
+```azurecli
+az ml experiment create -n <experiment>
+```
+
+### <a name="script-run"></a>スクリプトの実行
+
+スクリプトの実行を送信するには、コマンドを実行します。
+
+```azurecli
+az ml run submit-script -e <experiment> -c <runconfig> my_train.py
+```
+
+### <a name="hyperdrive-run"></a>HyperDrive の実行
+
+Azure CLI で HyperDrive を使用すると、パラメーターの調整実行を行うことができます。 まず、次の形式で HyperDrive 構成ファイルを作成します。 ハイパーパラメーターのチューニング パラメーターの詳細については、[モデルのハイパーパラメーターのチューニング](how-to-tune-hyperparameters.md)に関する記事を参照してください。
+
+```yml
+# hdconfig.yml
+sampling: 
+    type: random # Supported options: Random, Grid, Bayesian
+    parameter_space: # specify a name|expression|values tuple for each parameter.
+    - name: --penalty # The name of a script parameter to generate values for.
+      expression: choice # supported options: choice, randint, uniform, quniform, loguniform, qloguniform, normal, qnormal, lognormal, qlognormal
+      values: [0.5, 1, 1.5] # The list of values, the number of values is dependent on the expression specified.
+policy: 
+    type: BanditPolicy # Supported options: BanditPolicy, MedianStoppingPolicy, TruncationSelectionPolicy, NoTerminationPolicy
+    evaluation_interval: 1 # Policy properties are policy specific. See the above link for policy specific parameter details.
+    slack_factor: 0.2
+primary_metric_name: Accuracy # The metric used when evaluating the policy
+primary_metric_goal: Maximize # Maximize|Minimize
+max_total_runs: 8 # The maximum number of runs to generate
+max_concurrent_runs: 2 # The number of runs that can run concurrently.
+max_duration_minutes: 100 # The maximum length of time to run the experiment before cancelling.
+```
+
+実行構成ファイルと共にこのファイルを追加します。 その後、以下を使用して HyperDrive 実行を送信します。
+```azurecli
+az ml run submit-hyperdrive -e <experiment> -c <runconfig> --hyperdrive-configuration-name <hdconfig> my_train.py
+```
+
+runconfig の *arguments* セクションと HyperDrive 構成の *parameter space* に注意してください。これらには、トレーニング スクリプトに渡されるコマンドライン引数が含まれています。 runconfig の値は繰り返しごとに変わりませんが、HyperDrive 構成の範囲は反復処理されます。 両方のファイルで同じ引数を指定しないでください。
+
+これらの ```az ml``` CLI コマンドとすべての引数の詳細については、[リファレンス ドキュメント](reference-azure-machine-learning-cli.md)を参照してください。
+
+<a id="gitintegration"></a>
+
+## <a name="git-tracking-and-integration"></a>Git の追跡と統合
 
 ソース ディレクトリがローカル Git リポジトリであるトレーニング実行を開始すると、リポジトリに関する情報が実行履歴に格納されます。 たとえば、リポジトリの現在のコミット ID が履歴の一部としてログに記録されます。
 
@@ -451,4 +515,4 @@ Azure Machine Learning service 用の [VS Code 拡張機能](how-to-vscode-tools
 * より優れたモデルを構築するために、[ハイパーパラメーター](how-to-tune-hyperparameters.md)を効率的に調整する方法を学習します。
 * モデルのトレーニングが済んだら、[モデルをデプロイする方法と場所](how-to-deploy-and-where.md)を確認します。
 * [RunConfiguration クラス](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py)の SDK リファレンスを確認します。
-* [Azure Machine Learning サービスと Azure Virtual Networks を使用する](how-to-enable-virtual-network.md)
+* [Azure Machine Learning と Azure Virtual Network を使用する](how-to-enable-virtual-network.md)

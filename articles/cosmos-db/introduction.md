@@ -4,14 +4,14 @@ description: Azure Cosmos DB について説明します。 このグローバ�
 author: rimman
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 07/23/2019
+ms.date: 09/01/2019
 ms.author: rimman
-ms.openlocfilehash: ee863b6003444ec099753a6488f3fe4078338e60
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: f7396a747852e98b15c8c85e9b0d9a46326e6b25
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68384124"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240699"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -23,6 +23,11 @@ Azure サブスクリプションを必要とせず、課金や契約もなく [
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)
+
+[Cosmos DB ブートストラップ プログラム](https://azurecosmosdb.github.io/CosmosBootstrap/)を使用して、Azure Cosmos DB を基盤とするアプリケーションの構築または移行を能率化することもできます。 このプログラムにサインアップすると、皆さんのプロジェクトを支援する Azure Cosmos DB エンジニアが割り当てられ、その協力の下で、Azure Cosmos DB にデータを移行したり、Azure Cosmos DB をベースとした新しいアプリを作成したりすることができます。
+
+> [!div class="nextstepaction"]
+> [Cosmos DB ブートストラップ プログラムへのサインアップ](https://azurecosmosdb.github.io/CosmosBootstrap/)
 
 ![Azure Cosmos DB は世界規模で分散される Microsoft のデータベース サービスであり、柔軟なスケールアウト、短い待ち時間の保証、5 つの整合性モデル、充実した保証を提供する SLA を特徴としています](./media/introduction/azure-cosmos-db.png)
 

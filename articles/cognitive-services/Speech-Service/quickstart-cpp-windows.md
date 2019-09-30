@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: c795f1581ae36f100065c39cd47bc4efc564b9fe
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: a9c43e1d27a396a2c3e9123ce5ce538296c6870c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607893"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381892"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>クイック スタート:Windows 上で C++ と Speech SDK を使用して音声を認識する
 
-クイック スタートは[テキスト読み上げ](quickstart-text-to-speech-cpp-windows.md)と[音声翻訳](quickstart-translate-speech-cpp-windows.md)にも使用できます。
+[音声合成](quickstart-text-to-speech-cpp-windows.md)と[音声翻訳](quickstart-translate-speech-cpp-windows.md)のクイックスタートも利用できます。
 
-必要に応じて、別のプログラミング言語や環境を選択します。<br/>
+必要に応じて、別のプログラミング言語や環境を選択してください。<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、Windows 用の C++ コンソール アプリケーションを作成します。 Cognitive Services [Speech SDK](speech-sdk.md) を使用して、リアルタイムに PC のマイクからの音声をテキストに文字起こします。 このアプリケーションの構築には、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 以降 (任意のエディション) を使用します。
+この記事では、Windows 用の C++ コンソール アプリケーションを作成します。 Cognitive Services [Speech SDK](speech-sdk.md) を使用して、リアルタイムに PC のマイクからの音声をテキストに文字起こします。 このアプリケーションは、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2019 (任意のエディション) を使用して作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -36,7 +36,9 @@ ms.locfileid: "68607893"
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
-1. ソース ファイル *helloworld.cpp* を開きます。 最初の include ステートメント (`#include "stdafx.h"` または `#include "pch.h"`) の下にあるすべてのコードを、以下に置き換えます。
+1. ソース ファイル **helloworld.cpp** を開きます。
+
+1. すべてのコードを次のスニペットに置き換えます。
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp-windows/helloworld/helloworld.cpp#code)]
 
@@ -44,21 +46,17 @@ ms.locfileid: "68607893"
 
 1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
-1. プロジェクトへの変更内容を保存します。
+1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択します。
 
-## <a name="build-and-run-the-app"></a>アプリのビルドと実行
+## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 
-1. アプリケーションをビルドします。 メニュー バーから、 **[ビルド]**  >  **[ソリューションのビルド]** を選択します。 コードはエラーなくコンパイルされるはずです。
+1. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してアプリケーションをビルドします。 これで、コードは、エラーなしでコンパイルされます。
 
-   ![[ソリューションのビルド] オプションが強調表示された Visual Studio アプリケーションのスクリーン ショット](media/sdk/qs-cpp-windows-06-build.png)
+1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、**helloworld** アプリケーションを起動します。
 
-1. アプリケーションを起動します。 メニュー バーから、 **[デバッグ]**  >  **[デバッグの開始]** を選択するか、**F5** キーを押します。
+1. 英語の語句または文を読み上げます。 その音声が Speech Services に転送されてテキストに文字起こしされ、再びアプリケーションに戻されて表示されます。
 
-   ![[デバッグの開始] オプションが強調表示された Visual Studio アプリケーションのスクリーン ショット](media/sdk/qs-cpp-windows-07-start-debugging.png)
-
-1. コンソール ウィンドウが表示され、何か言うように求められます。 英語の語句または文を読み上げます。 音声が Speech Services に送信されてテキストに変換され、同じウィンドウに表示されます。
-
-   ![認識が成功した後のコンソール出力のスクリーンショット](media/sdk/qs-cpp-windows-08-console-output-release.png)
+   ![認識が成功した後のコンソール出力](media/sdk/qs-cpp-windows-08-console-output-release.png)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -69,5 +67,4 @@ ms.locfileid: "68607893"
 
 ## <a name="see-also"></a>関連項目
 
-- [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
-- [言語モデルをカスタマイズする](how-to-customize-language-model.md)
+- [Custom Speech 用のモデルをトレーニングする](how-to-custom-speech-train-model.md)

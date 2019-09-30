@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: dacurwin
-ms.openlocfilehash: a600c50e97f0d069443112a59d529c0d6f6fecad
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 6e3ce21419e131ceef65939202eb70a98f10b040
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737077"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982429"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Azure VM バックアップ上で実行されている SQL Server データベースに関する FAQ
 
@@ -32,14 +32,15 @@ ms.locfileid: "68737077"
   - 最新の完全バックアップの特定の時点が 15 日より前の場合は、代わりに次のログまたは差分バックアップが完全バックアップに変換されます。
   - 拡張機能のアップグレードのために取り消されたバックアップ ジョブはすべて、そのアップグレードが完了し、拡張機能が起動された後に再トリガーされます。
   - 復元中にデータベースを上書きすることを選択した場合は、次のログ/差分バックアップが失敗し、代わりに完全バックアップがトリガーされます。
-  - データベース復旧モデルの変更のために完全バックアップでログ チェーンをリセットする必要がある場合は、次のスケジュールで完全バックアップが自動的にトリガーされます。
+  - データベース復旧モデルの変更のために、完全バックアップでログ チェーンをリセットする必要がある場合は、次のスケジュールで完全バックアップが自動的にトリガーされます。
 
 機能としての自動回復は、すべてのユーザーに対して既定で有効になります。ただし、これを無効にすることを選択した場合は、次のことを実行してください。
 
   * SQL Server インスタンスで、*C:\Program Files\Azure Workload Backup\bin* フォルダーで **ExtensionSettingsOverrides.json** ファイルを作成または編集します。
-  *  **ExtensionSettingsOverrides.json** で、 *{"EnableAutoHealer":false}* を設定します。
+  * **ExtensionSettingsOverrides.json** で、 *{"EnableAutoHealer": false}* を設定します。
   * 変更を保存し、ファイルを閉じます。
-  * SQL Server インスタンスで、**タスク マネージャー**を開き、**AzureWLBackupCoordinatorSvc** サービスを再起動します。  
+  * SQL Server インスタンスで、**タスク マネージャー**を開き、**AzureWLBackupCoordinatorSvc** サービスを再起動します。
+   
 
 ## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>SQL サーバー上で実行される同時実行バックアップの数を制御できますか?
 
@@ -71,12 +72,12 @@ Azure Backup Recovery Services コンテナーは、そのコンテナーと同�
 **[バックアップ ジョブ]** メニューには、アドホック バックアップ ジョブしか表示されません。 スケジュールされたジョブの場合は、[Azure Monitor を使用した監視](backup-azure-monitoring-use-azuremonitor.md)を使用してください。
 
 ## <a name="are-future-databases-automatically-added-for-backup"></a>今後作成されるデータベースはバックアップに自動的に追加されますか?
-はい。この機能は、 [自動保護](backup-sql-server-database-azure-vms.md#enable-auto-protection)で実現できます。  
+はい。この機能は、[自動保護](backup-sql-server-database-azure-vms.md#enable-auto-protection)で実現できます。  
 
 ## <a name="if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups"></a>自動保護されたインスタンスからデータベースを削除した場合、バックアップはどうなりますか?
 自動保護されたインスタンスからデータベースが削除された場合でも、データベース バックアップは引き続き試行されます。 これは、削除されたデータベースが **[バックアップ項目]** に異常として表示され始め、引き続き保護されていることを示しています。
 
-このデータベースの保護を停止するための正しい方法は、このデータベースに対して**データを削除**した  **[バックアップの停止]** を実行することです。  
+このデータベースの保護を停止するための正しい方法は、このデータベースに対して**データを削除**した **[バックアップの停止]** を実行することです。  
 
 ## <a name="if-i-do-stop-backup-operation-of-an-autoprotected-database-what-will-be-its-behavior"></a>自動保護されたデータベースのバックアップ操作の停止を実行した場合、その動作はどうなりますか?
 **データを保持したバックアップの停止**を実行した場合、将来のバックアップは実行されず、既存の復旧ポイントはそのまま残ります。 そのデータベースは引き続き保護されていると見なされ、 **[バックアップ項目]** に表示されます。

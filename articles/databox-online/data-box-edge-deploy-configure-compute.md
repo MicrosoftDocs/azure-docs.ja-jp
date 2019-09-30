@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 09/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 7b3d725eb05c811d3fdd44516c1bde9a8dfbaaac
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: b641ae62ba6e0cdacaeb46b1ffee2f02c7544763
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64924325"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70277307"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge"></a>チュートリアル:Azure Data Box Edge を使用してデータを変換する
 
@@ -53,7 +53,7 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
     |フィールド  |値  |
     |---------|---------|
     |IoT Hub     | **[新規]** または **[既存]** を選択します。 <br> 既定では、IoT リソースの作成には Standard レベル (S1) が使用されます。 Free レベルの IoT リソースを使用するには、それを作成してから既存のリソースを選択します。 <br> いずれの場合も、IoT Hub リソースでは、Data Box Edge リソースによって使用されるのと同じサブスクリプションとリソース グループが使用されます。     |
-    |Name     |自分の IoT Hub リソースの名前を入力します。         |
+    |名前     |自分の IoT Hub リソースの名前を入力します。         |
 
     ![コンピューティングの開始](./media/data-box-edge-deploy-configure-compute/configure-compute-2.png)
 
@@ -61,6 +61,9 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
     
     ![コンピューティングの開始](./media/data-box-edge-deploy-configure-compute/configure-compute-3.png)
 
+    > [!NOTE]
+    > Data Box Edge デバイスに IoT Hub が関連付けられる前に **[コンピューティングの構成]** ダイアログを閉じた場合、IoT Hub は作成されますが、コンピューティングの構成には表示されません。 
+    
     Edge デバイスで Edge コンピューティング ロールが設定されると、2 つのデバイスが作成されます (IoT デバイスと IoT Edge デバイス)。 IoT Hub リソースでは、両方のデバイスを表示できます。 IoT Edge ランタイムは、この IoT Edge デバイス上でも動作しています。 現時点では、お客様の IoT Edge デバイスに対して使用できるのは Linux プラットフォームのみです。
 
 
@@ -108,7 +111,7 @@ Data Box Edge でコンピューティングを構成するために、IoT Hub �
     
     |フィールド  |値  |
     |---------|---------|
-    |Name     | モジュールの一意の名前。 このモジュールは、お客様の Data Box Edge に関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。        |
+    |名前     | モジュールの一意の名前。 このモジュールは、お客様の Data Box Edge に関連付けられている IoT Edge デバイスにデプロイできる Docker コンテナーです。        |
     |イメージの URI     | モジュールの対応するコンテナー イメージのイメージ URI。        |
     |資格情報が必要です     | チェック ボックスをオンにすると、一致する URL が含まれているモジュールの取得にユーザー名とパスワードが使用されます。        |
     |Input share (入力共有)     | 入力共有を選択します。 この例では、Edge ローカル共有が入力共有です。 ここで使用されるモジュールによって、Edge ローカル共有から Edge 共有にファイルが移動され、そこでクラウドにアップロードされます。        |

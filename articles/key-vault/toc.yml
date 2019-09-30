@@ -17,7 +17,7 @@
       href: quick-create-net.md
     - name: シークレットの設定と取得 - Node.js
       href: quick-create-node.md
-    - name: シークレットの設定と取得 - Resource Manager テンプレート
+    - name: シークレットの設定と取得 - テンプレート
       displayName: 'resource manager, resource manager template, arm'
       href: quick-create-template.md
 - name: チュートリアル
@@ -42,10 +42,12 @@
               href: tutorial-python-windows-virtual-machine.md
     - name: ストレージ アカウント キー
       items:
-        - name: Azure CLI を使用したマネージド ストレージ アカウント キー
+        - name: Azure CLI を使用したストレージ アカウント キーの管理
           href: key-vault-ovw-storage-keys.md
-        - name: PowerShell を使用したマネージド ストレージ アカウント キー
+        - name: PowerShell を使用したストレージ アカウント キーの管理
           href: key-vault-overview-storage-keys-powershell.md
+        - name: コードでの Shared Access Signature トークンの取得
+          href: storage-keys-sas-tokens-code.md
     - name: Azure コンテナー
       href: ../container-instances/container-instances-managed-identity.md
     - name: Azure Resource Manager テンプレート
@@ -58,18 +60,18 @@
       href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
 - name: 概念
   items:
+    - name: 基本的な概念
+      href: basic-concepts.md
     - name: セキュリティ
       items:
         - name: セキュリティの概要
           href: overview-security.md
-        - name: 一般的なセキュリティ属性
-          href: key-vault-security-attributes.md
+        - name: 組み込みのセキュリティ制御
+          href: key-vault-security-controls.md
         - name: セキュリティ ワールド
           href: key-vault-ovw-security-worlds.md
         - name: キー コンテナーのセキュリティ保護
           href: key-vault-secure-your-key-vault.md
-    - name: Key Vault とは
-      href: key-vault-whatis.md
     - name: 論理的な削除
       href: key-vault-ovw-soft-delete.md
     - name: Throttling
@@ -90,10 +92,14 @@
           href: create-certificate.md
         - name: 証明書作成の監視と管理
           href: create-certificate-scenarios.md
-    - name: Azure の一般的なセキュリティ属性
-      href: key-vault-security-attributes.md
 - name: ハウツー ガイド
   items:
+    - name: セキュリティ
+      items:
+        - name: Recommendations
+          href: security-recommendations.md
+    - name: App Service のマネージド ID を使用する
+      href: managed-identity.md
     - name: Azure Key Vault のログ記録
       href: key-vault-logging.md
     - name: ファイアウォールの内側にアクセスする

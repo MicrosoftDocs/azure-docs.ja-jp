@@ -1,17 +1,18 @@
 ---
 title: Azure HDInsight での Apache Spark の OutOfMemoryError 例外
-description: Azure HDInsight での Apache Spark のさまざまな OutOfMemoryError 例外
+description: Azure HDInsight での Apache Spark クラスターのさまざまな OutOfMemoryError 例外
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: f6ff654b8e51dfaf2697df69c7f220d41346c2bc
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: f3f89de07e2e17a4dda47ce3650391af38663004
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543469"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087200"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Azure HDInsight での Apache Spark の OutOfMemoryError 例外
 
@@ -119,11 +120,11 @@ Spark 構成の `SPARK_DAEMON_MEMORY` プロパティを編集し、すべての
 
 これを行うには、Ambari ブラウザー UI で、Spark2/Config/Advanced spark2-env セクションを選択します。
 
-![Advanced spark2-env セクション](./media/apache-spark-ts-outofmemory-heap-space/image01.png)
+![Advanced spark2-env セクション](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
 Spark History Server メモリを 1G から 4G に変更するには、次のプロパティを追加します。`SPARK_DAEMON_MEMORY=4g`
 
-![Spark プロパティ](./media/apache-spark-ts-outofmemory-heap-space/image02.png)
+![Spark プロパティ](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
 Ambari から、影響を受けるすべてのサービスを再起動してください。
 

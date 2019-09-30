@@ -9,13 +9,13 @@ ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
 ms.openlocfilehash: e8fe694cc757f5bcb9cf470f17306e8aa0028744
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67181535"
 ---
-| Resource | 既定の制限 | 上限 |
+| リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
 | [サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりの vCPU 数<sup>1</sup> |20 |10,000 |
 | サブスクリプションあたりの[共同管理者](../articles/billing-add-change-azure-subscription-administrator.md)数 |200 |200 |

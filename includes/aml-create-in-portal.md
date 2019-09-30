@@ -9,16 +9,18 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 08/14/2019
-ms.openlocfilehash: 507a6d998f83f5a399f78566967067d0ed92f8b0
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 11287ee5ca0df3e51bca20b39c35eb5ce33b88bd
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534408"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231068"
 ---
 1. 使用する Azure サブスクリプションの資格情報を使って、[Azure portal](https://portal.azure.com/) にサインインします。 
 
 1. Azure portal の左上隅にある **[+ リソースの作成]** を選択します。
+
+      ![新しいリソースを作成](media/aml-create-in-portal/portal-create-resource.png)
 
 1. 検索バーを使用して、**Machine Learning service ワークスペース**を見つけます。
 
@@ -26,7 +28,7 @@ ms.locfileid: "69534408"
 
 1. **[Machine Learning サービス ワークスペース]** ウィンドウで、 **[作成]** を選択して開始します。
 
-1. ワークスペースの名前、サブスクリプション、リソース グループ、場所を指定し、新しいワークスペースを構成します。
+1. 新しいワークスペースを構成するには、次の情報を指定します。
 
    フィールド|説明 
    ---|---
@@ -37,7 +39,10 @@ ms.locfileid: "69534408"
 
 1. ワークスペースの構成が完了したら、 **[作成]** を選択します。 
 
-   ワークスペースの作成には、しばらく時間がかかる場合があります。
+   > [!Warning] 
+   > クラウドへのワークスペースの作成には数分かかる場合があります。
 
-   プロセスが完了すると、デプロイ成功メッセージが表示されます。 新しいワークスペースを表示するには、 **[Go to resource]\(リソースに移動\)** を選択します。
+   プロセスが完了すると、デプロイ成功メッセージが表示されます。 
+ 
+ 1. 新しいワークスペースを表示するには、 **[Go to resource]\(リソースに移動\)** を選択します。
 

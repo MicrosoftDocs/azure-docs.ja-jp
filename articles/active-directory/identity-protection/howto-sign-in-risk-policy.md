@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0645e01c8ad9c620b77abd9af6cf7fe7c26ab4ea
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: d00376c6689b6be773f24e8acd09c3697fb6a799
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335409"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126305"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>方法:サインイン リスク ポリシーを構成する
 
-Azure Active Directory で検出される[リスク イベントの種類](../reports-monitoring/concept-risk-events.md#risk-event-types)の中には、リアルタイムとオフラインがあります。 ユーザーのサインイン時に検出されたの各リスク イベントは、リスクの高いサインインと呼ばれる論理概念に関係します。 リスクの高いサインインは、サインイン試行が、ユーザー アカウントの正当な所有者によって行われていない可能性があることを示します。
+Azure Active Directory で検出される[リスク検出の種類](../reports-monitoring/concept-risk-events.md#risk-detection-types)の中には、リアルタイムとオフラインがあります。 ユーザーのサインイン時に検出された各リスク検出は、リスクの高いサインインと呼ばれる論理概念に関係します。 リスクの高いサインインは、サインイン試行が、ユーザー アカウントの正当な所有者によって行われていない可能性があることを示します。
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>サインイン リスク ポリシーとは
 
-Azure AD は、ユーザーの各サインインを分析します。 この分析の目的は、サインインに付随する疑わしいアクションを検出することです。 たとえば、匿名 IP アドレスを使用して実行されたサインインや、なじみのない場所から開始されたサインインがあります。 Azure AD では、システムが検出できる疑わしいアクションをリスク イベントとも呼びます。 サインイン中に検出されたリスク イベントに基づいて、Azure AD は値を計算します。 この値は、サインインが正当なユーザーによって実行されていない確率 (低、中、高) を表します。 この確率は**サインイン リスク レベル**と呼ばれます。
+Azure AD は、ユーザーの各サインインを分析します。 この分析の目的は、サインインに付随する疑わしいアクションを検出することです。 たとえば、匿名 IP アドレスを使用して実行されたサインインや、なじみのない場所から開始されたサインインがあります。 Azure AD では、システムが検出できる疑わしいアクションをリスク検出とも呼びます。 サインイン中に検出されたリスク検出に基づいて、Azure AD は値を計算します。 この値は、サインインが正当なユーザーによって実行されていない確率 (低、中、高) を表します。 この確率は**サインイン リスク レベル**と呼ばれます。
 
 サインイン リスク ポリシーは、特定のサインイン リスク レベルに対して構成できる自動対応です。 この対応では、リソースへのアクセスをブロックするか、またはアクセスを取得するには多要素認証 (MFA) チャレンジの指定を要求するようにできます。
    

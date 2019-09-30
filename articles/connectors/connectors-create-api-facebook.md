@@ -1,24 +1,25 @@
 ---
-title: Facebook に接続する - Azure Logic Apps | Microsoft Docs
+title: Facebook に接続する - Azure Logic Apps
 description: Facebook REST API と Azure Logic Apps を使用して、タイムラインとページを管理します
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 11/07/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+manager: carmonm
+ms.reviewer: klam, LADocs
+ms.topic: conceptual
+ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 25595127d913d3cd093e0af3d7916e33fc7cb352
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 83431184d7e9c5970ece6af143ee9b5166da96d5
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105977"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050940"
 ---
-# <a name="get-started-with-the-facebook-connector"></a>Facebook コネクタの使用
+# <a name="manage-your-facebook-timeline-and-page-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Facebook のタイムラインとページを管理する
+
 Facebook に接続し、タイムラインへの投稿、ページ フィードの取得などを行います。 Facebook では、次の操作を実行できます。
 
 * Facebook から取得したデータに基づいてビジネス フローを構築できます。 
@@ -28,18 +29,20 @@ Facebook に接続し、タイムラインへの投稿、ページ フィード�
 まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
 
 ## <a name="create-a-connection-to-facebook"></a>Facebook への接続を作成する
+
 ロジック アプリにこのコネクタを追加するとき、Facebook に接続するロジック アプリを承認する必要があります。
 
 1. Facebook アカウントにサインインします。
+
 2. **[Authorize]** を選択し、ロジック アプリが Facebook に接続して使用することを許可します。 
 
 > [!INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
 > 
 
+## <a name="connector-reference"></a>コネクタのレファレンス
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/facebook/)を参照してください。
 
-[コネクタの詳細](/connectors/facebook/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。
+## <a name="next-steps"></a>次の手順
 
-## <a name="more-connectors"></a>その他のコネクタ
-[API リスト](apis-list.md)に戻ります。
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

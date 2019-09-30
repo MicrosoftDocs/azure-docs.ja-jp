@@ -11,12 +11,12 @@ ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 34c8c49166ea13d67c1f3d51805671c63dbb352b
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: d13e0b95d57e3063292319961d5e1138f994076e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312591"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812268"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 このチュートリアルでは、Azure Portal を使用して Azure Data Factory パイプラインを作成します。 このパイプラインは、Spark アクティビティとオンデマンドの Azure HDInsight のリンクされたサービスを使用して、データを変換します。 
@@ -81,7 +81,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **spark** フォルダーの下に、**inputfiles** という名前のサブフォルダーを作成します。 
 1. **inputfiles** サブフォルダーに **minecraftstory.txt** ファイルをアップロードします。 
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. 左側のメニューの **[新規]** を選択し、 **[データ + 分析]** を選択して、 **[Data Factory]** を選択します。 
@@ -153,7 +153,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
    e. **[サービス プリンシパル ID]** に、HDInsight クラスターを作成するアクセス許可を備えたサービス プリンシパルの ID を入力します。 
    
-      このサービス プリンシパルは、サブスクリプションまたはクラスターが作成されるリソース グループの共同作成者ロールのメンバーである必要があります。 詳細については、[Azure Active Directory アプリケーションとサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。
+      このサービス プリンシパルは、サブスクリプションまたはクラスターが作成されるリソース グループの共同作成者ロールのメンバーである必要があります。 詳細については、[Azure Active Directory アプリケーションとサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。 **[サービス プリンシパル ID]** は "*アプリケーション ID*" に、 **[サービス プリンシパル キー]** は "*クライアント シークレット*" の値に相当します。
    
    f. **[サービス プリンシパル キー]** に、キーを入力します。 
    

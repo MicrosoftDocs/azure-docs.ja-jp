@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: dc2c3e557f295bd3125c09d9b839716159dcf50b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e87ac268ab5448f38470f46bd6b0c7f2cdd204ce
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446453"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960573"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
@@ -80,14 +80,14 @@ AKS クラスターがまだない場合は、次のいずれかのドキュメ�
 
 5. HDInsight ネットワークと AKS クラスター ネットワークの間のピアリングを構成するには、仮想ネットワークを選択し、 __[ピアリング]__ を選択します。 __[+ 追加]__ を選択し、次の値を使用してフォームに値を入力します。
 
-   * __[名前]__ :このピアリング構成の一意の名前を入力します。
+   * __Name__:このピアリング構成の一意の名前を入力します。
    * __仮想ネットワーク__:**AKS クラスター**用の仮想ネットワークを選択するには、このフィールドを使用します。
 
      その他のフィールドはすべて既定値のままにし、 __[OK]__ を選択してピアリングを構成します。
 
 6. AKS クラスター ネットワークと HDInsight ネットワークの間のピアリングを構成するには、__AKS クラスターの仮想ネットワーク__ を選択し、 __[ピアリング]__ を選択します。 __[+ 追加]__ を選択し、次の値を使用してフォームに値を入力します。
 
-   * __[名前]__ :このピアリング構成の一意の名前を入力します。
+   * __Name__:このピアリング構成の一意の名前を入力します。
    * __仮想ネットワーク__:__HDInsight クラスター__ 用の仮想ネットワークを選択するには、このフィールドを使用します。
 
      その他のフィールドはすべて既定値のままにし、 __[OK]__ を選択してピアリングを構成します。
@@ -113,7 +113,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 3. Kafka 構成を表示するには、上部中央の __[Configs (構成)]__ を選択します。
 
-    ![Kafka の構成リンク](./media/apache-kafka-azure-container-services/select-kafka-config.png)
+    ![Kafka の構成リンク](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
 4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
@@ -135,7 +135,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 8. 構成を保存するには、 __[Save (保存)]__ ボタンを使用します。 変更を説明するテキスト メッセージを入力します。 変更が保存されたら、 __[OK]__ を保存します。
 
-    ![構成を保存するボタン](./media/apache-kafka-azure-container-services/save-button.png)
+    ![構成を保存するボタン](./media/apache-kafka-azure-container-services/save-configuration-button.png)
 
 9. Kafka の再起動時にエラーが発生しないようにするため、 __[Service Actions (サービス アクション)__ ] ボタンを使用して __[Turn On Maintenance Mode (メンテナンス モードの有効化)]__ を選択します。 [OK] を選択して、この操作を完了します。
 
@@ -143,7 +143,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 10. Kafka を再起動するには、 __[Restart (再起動)]__ ボタンをクリックし、 __[Restart All Affected (影響を受けるものをすべて再起動)]__ を選択します。 再起動を確認し、操作が完了したら __[OK]__ ボタンを使用します。
 
-    ![[Restart All Affected (影響を受けるものをすべて再起動)] が強調表示されている [Restart (再起動)] ボタン](./media/apache-kafka-azure-container-services/restart-button.png)
+    ![[Restart All Affected (影響を受けるものをすべて再起動)] が強調表示されている [Restart (再起動)] ボタン](./media/apache-kafka-azure-container-services/restart-required-button.png)
 
 11. メンテナンス モードを無効にするには、 __[Service Actions (サービス アクション)]__ ボタンをクリックし、 __[Turn Off Maintenance Mode (メンテナンス モードの無効化)]__ を選択します。 **[OK]** を選択して、この操作を完了します。
 
@@ -212,7 +212,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 11. Web ブラウザーを開き、サービスの外部 IP アドレスを入力します。 次の画像のようなページが表示されます。
 
-    ![Web ページの画像](./media/apache-kafka-azure-container-services/test-web-page.png)
+    ![Web ページの画像](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
 
 12. フィールドにテキストを入力し、 __[送信]__ ボタンを選択します。 データが Kafka に送信されます。 その後、アプリケーション内の Kafka コンシューマーによりメッセージが読み取られ、 __[Messages from Kafka]__ セクションに追加されます。
 

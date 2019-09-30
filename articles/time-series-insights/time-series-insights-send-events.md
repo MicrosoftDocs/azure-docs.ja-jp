@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: ae59e8115ca2d1ba69c8a3a099216eb3d98e2658
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 84eb0e230875b999218b67d47a66a3c92b494253
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66237689"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70072797"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
 
@@ -35,7 +35,7 @@ ms.locfileid: "66237689"
 1. イベント ハブを作成した後、イベント ハブの一覧でそれを選択します。
 1. メニューで、 **[エンティティ]** の **[イベント ハブ]** を選択します。
 1. イベント ハブの名前を選択して構成します。
-1. **[エンティティ]** で **[コンシューマー グループ]** を選択し、 **[コンシューマー グループ]** を選択します。
+1. **[概要]** で **[コンシューマー グループ]** を選択し、 **[コンシューマー グループ]** を選択します。
 
     [![コンシューマー グループを作成する](media/send-events/consumer-group.png)](media/send-events/consumer-group.png#lightbox)
 
@@ -68,13 +68,13 @@ Time Series Insights の更新では、インスタンスを使用して、受�
 
 1. 検索バーで「**Event Hubs**」を検索します。 返された一覧で、 **[Event Hubs]** を選択します。
 
-1. 自分のイベント ハブを選択します。
+1. 自分のイベント ハブ インスタンスを選択します。
 
-1. **[共有アクセス ポリシー]**  > **RootManageSharedAccessKey** に移動します。 **[接続文字列 - 主キー]** の値をコピーします。
+1. **[共有アクセス ポリシー]**  >  **[MySendPolicy]** にアクセスします。 **[接続文字列 - 主キー]** の値をコピーします。
 
     [![主キーの接続文字列の値をコピーする](media/send-events/sample-code-connection-string.png)](media/send-events/sample-code-connection-string.png#lightbox)
 
-1. https://tsiclientsample.azurewebsites.net/windFarmGen.html にアクセスします。 その URL では、シミュレートされた風力発電デバイスが実行されます。
+1. [https://aka.ms/MFASetup](https://tsiclientsample.azurewebsites.net/windFarmGen.html ) にアクセスします。 その URL では、シミュレートされた風力発電デバイスが実行されます。
 1. Web ページの **[Event Hub Connection String]\(イベント ハブ接続文字列\)** ボックスに、「[イベントをプッシュする](#push-events)」でコピーした接続文字列を貼り付けます。
   
     [![[イベント ハブ接続文字列] ボックスに主キーの接続文字列を貼り付ける](media/send-events/updated_two.png)](media/send-events/updated_two.png#lightbox)

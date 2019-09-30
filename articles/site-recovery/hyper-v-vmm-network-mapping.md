@@ -1,19 +1,18 @@
 ---
-title: Site Recovery を使用して Hyper-V VM (VMM 使用) を Azure にディザスター リカバリーするためのネットワーク マッピングについて | Microsoft Docs
+title: Site Recovery を使用して Hyper-V VM (VMM 使用) を Azure にディザスター リカバリーするためのネットワーク マッピングについて
 description: Azure Site Recovery を使用して、(VMM クラウドで管理されている) Hyper-V VM を Azure にディザスター リカバリーするためにネットワーク マッピングを設定する方法について説明します。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/30/2019
+ms.topic: conceptual
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: d2f7f83654f397cc6b93adbbebc25193155bcedb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399370"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813676"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hyper-V VM の Azure へのディザスター リカバリーのためにネットワーク マッピングを準備する
 

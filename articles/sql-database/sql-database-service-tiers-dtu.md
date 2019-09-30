@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 06/25/2019
-ms.openlocfilehash: c46913f24deffc7c4db95d8a77db1c49ae54b6ae
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/06/2019
+ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566679"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773206"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 
@@ -37,7 +37,7 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 |アップタイム SLA|99.99%|99.99%|99.99%|
 |バックアップ保有期間|7 日|35 日|35 日|
 |CPU|低|低、中、高|中、高|
-|IO スループット (概算) |DTU あたり 2.5 IOPS| DTU あたり 2.5 IOPS | DTU あたり 48 IOPS|
+|IO スループット (概算) |DTU あたり 1-5 IOPS| DTU あたり 1-5 IOPS | DTU あたり 25 IOPS|
 |IO 待機時間 (概算)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|2 ミリ秒 (読み取り/書き込み)|
 |列ストア インデックス作成 |該当なし|S3 以上|サポートされています|
 |インメモリ OLTP|該当なし|該当なし|サポートされています|

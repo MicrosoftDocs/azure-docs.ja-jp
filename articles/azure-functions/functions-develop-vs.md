@@ -1,21 +1,19 @@
 ---
 title: Visual Studio を使用する Azure Functions の開発 | Microsoft Docs
 description: Azure Functions Tools for Visual Studio 2019 を使用して、Azure Functions を開発およびテストする方法を説明します。
-services: functions
-documentationcenter: .net
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 10/08/2018
+ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 6040552ccee5269e4a04d8b7a1ee072400a8506d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ebc900735dfbb25206c4b22e3d20da62d85c61df
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68593272"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773155"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -43,6 +41,8 @@ Azure Storage アカウントなど、他の必要なリソースは、発行プ
 
 > [!NOTE]
 > Visual Studio 2017 では、Azure 開発ワークロードによって Azure Functions Tools が別個の拡張機能としてインストールされます。 Visual Studio 2017 を更新する場合、Azure Functions ツールの[最新バージョン](#check-your-tools-version)を使用していることも確認してください。 以下のセクションでは、Visual Studio 2017 の Azure Functions Tools 拡張機能を確認し、必要に応じて更新する方法について説明します。 
+>
+> Visual Studio 2019 を使用しているときは、これらのセクションを省略してください。
 
 ### <a name="check-your-tools-version"></a>Visual Studio 2017 でツールのバージョンを確認する
 
@@ -86,7 +86,7 @@ Visual Studio 2019 以降では、Azure Functions ツールの拡張機能が Vi
 
 [!INCLUDE [functions-local-settings-file](../../includes/functions-local-settings-file.md)]
 
-プロジェクトを発行しても local.settings.json の設定は自動的にアップロードされません。 これらの設定が Azure の関数アプリにも確実に存在するようにするには、プロジェクトを発行した後にそれらをアップロードする必要があります。 詳細については、「[Function App の設定](#function-app-settings)」を参照してください。
+プロジェクトを発行するとき、local.settings.json の設定は自動的にアップロードされません。 これらの設定が Azure の関数アプリにも確実に存在するようにするには、プロジェクトを発行した後にそれらをアップロードする必要があります。 詳細については、「[Function App の設定](#function-app-settings)」を参照してください。
 
 **ConnectionStrings** 内の値は発行されません。
 
@@ -201,7 +201,7 @@ Visual Studio から発行するときは、2 つのデプロイ方法のいず�
 
 ## <a name="function-app-settings"></a>Function App の設定
 
-Local.settings.json で追加したすべての設定は、Azure の関数アプリにも追加する必要があります。 プロジェクトを発行するとき、これらの設定は自動的にアップロードされません。
+Local.settings.json で追加したすべての設定は、Azure の関数アプリにも追加する必要があります。 プロジェクトを発行するときに、これらの設定は自動的にアップロードされません。
 
 Azure の関数アプリに必要な設定をアップロードする最も簡単な方法として、プロジェクトが正常に発行された後に表示される **[アプリケーション設定の管理]** リンクを使用できます。
 
@@ -212,6 +212,9 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 ![](./media/functions-develop-vs/functions-vstools-app-settings2.png)
 
 **[ローカル]** は local.settings.json ファイル内の設定値を表し、 **[リモート]** は Azure での関数アプリにおける現在の設定です。  新しいアプリ設定を作成するには、 **[設定の追加]** を選択します。 **[ローカルから値を挿入する]** リンクを使用して、設定値を **[リモート]** フィールドにコピーします。 **[OK]** を選択すると、保留中の変更がローカル設定ファイルと関数アプリに書き込まれます。
+
+> [!NOTE]
+> 既定では、local.settings.json ファイルはソース管理にチェックインされません。 これは、ソース管理からローカル関数プロジェクトを複製するときに、プロジェクトに local.settings.json ファイルがないことを意味します。 この場合、 **[アプリケーション設定]** ダイアログが期待どおりに動作するように、プロジェクトのルートに local.settings.json ファイルを手動で作成する必要があります。 
 
 以下のいずれかの方法を使用して、アプリケーション設定を管理することもできます。
 

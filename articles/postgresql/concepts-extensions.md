@@ -5,123 +5,220 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.openlocfilehash: 412ce3c5245f3f22bfb03740a0451670dc6a90a7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 09/10/2019
+ms.openlocfilehash: 383f5acb9f106bb4697433be99c53bb78d00b396
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448108"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091138"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
-PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを 1 つのパッケージにまとめて、1 つのコマンドでデータベースに読み込んだり、データベースから削除したりできます。 データベースに読み込まれた拡張機能は、組み込み機能と同じように動作します。 PostgreSQL 拡張機能の詳細については、「 [Packaging Related Objects into an Extension (拡張機能への関連オブジェクトのパッケージ化)](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)」をご覧ください。
+PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL 拡張機能の使用方法
-PostgreSQL 拡張機能を使用するには、その拡張機能がデータベースにインストールされている必要があります。 特定の拡張機能をインストールするには、psql ツールから  [CREATE EXTENSION](https://www.postgresql.org/docs/9.6/static/sql-createextension.html)  コマンドを実行して、パッケージ化されたオブジェクトをデータベースに読み込みます。
+PostgreSQL 拡張機能を使用するには、その拡張機能がデータベースにインストールされている必要があります。 特定の拡張機能をインストールするには、psql ツールから  [CREATE EXTENSION](https://www.postgresql.org/docs/current/sql-createextension.html)  コマンドを実行して、パッケージ化されたオブジェクトをデータベースに読み込みます。
 
-Azure Database for PostgreSQL で現在サポートされている主要な拡張機能のサブセットを次に示します。 ここにない拡張機能はサポートされていません。Azure Database for PostgreSQL サービスでは、独自の拡張機能を作成することはできません。
+Azure Database for PostgreSQL でサポートされる主要な拡張機能のサブセットを次に示します。 この情報は、`SELECT * FROM pg_available_extensions;`を実行して確認することもできます。 ここに示した以外の拡張機能はサポートされていません。 Azure Database for PostgreSQL で独自の拡張機能を作成することはできません。
 
-## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でサポートされる拡張機能
-Azure Database for PostgreSQL で現在サポートされている標準的な PostgreSQL 拡張機能を次の表に示します。 この情報は、`SELECT * FROM pg_available_extensions;`を実行して確認することもできます。
+## <a name="postgres-11-extensions"></a>Postgres 11 の拡張機能
 
-### <a name="data-types-extensions"></a>データ型の拡張機能
-
-> [!div class="mx-tableFixed"]
-> | **拡張機能** | **説明** |
-> |---|---|
-> | [chkpass](https://www.postgresql.org/docs/9.6/static/chkpass.html) | 自動暗号化パスワードのデータ型を提供します。 |
-> | [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | 大文字と小文字が区別されない文字列型を提供します。 |
-> | [cube](https://www.postgresql.org/docs/9.6/static/cube.html) | 多次元キューブのデータ型を提供します。 |
-> | [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | キー/値のペアのセットを格納するデータ型を提供します。 |
-> | [isn](https://www.postgresql.org/docs/9.6/static/isn.html) | 国際対応の製品番号規格のデータ型を提供します。 |
-> | [ltree](https://www.postgresql.org/docs/9.6/static/ltree.html) | 階層ツリー状の構造体のデータ型を提供します。 |
-
-### <a name="functions-extensions"></a>関数の拡張機能
+Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。 
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能** | **説明** |
-> |---|---|
-> | [earthdistance](https://www.postgresql.org/docs/9.6/static/earthdistance.html) | 地球の表面にある大圏距離を計算するための手段を提供します。 |
-> | [fuzzystrmatch](https://www.postgresql.org/docs/9.6/static/fuzzystrmatch.html) | 文字列間の類似点と相違点を特定する関数を提供します。 |
-> | [intarray](https://www.postgresql.org/docs/9.6/static/intarray.html) | 整数の null を含まない配列を操作する関数と演算子を提供します。 |
-> | [pgcrypto](https://www.postgresql.org/docs/9.6/static/pgcrypto.html) | 暗号化関数を提供します。 |
-> | [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 時刻または ID によってパーティション テーブルを管理します。 |
-> | [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | trigram 一致に基づいて英数字テキストの類似性を特定する関数と演算子を提供します。 |
-> | [tablefunc](https://www.postgresql.org/docs/9.6/static/tablefunc.html) | クロス集計を含む、テーブル全体を操作する関数を提供します。 |
-> | [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | 汎用一意識別子 (UUID) を生成します。 (この拡張機能に関する注意事項は下記を参照)。 |
-> | [orafce](https://github.com/orafce/orafce) | 商用データベースからエミュレートされている関数およびパッケージのサブセットを提供します。 |
+> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 構成要素へのアドレスの解析に使用されます。 |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US データセットの例|
+> |[btree_gin](https://www.postgresql.org/docs/11/btree-gin.html)                    | 1.3             | GIN で一般的なデータ型のインデックスを作成するためのサポート|
+> |[btree_gist](https://www.postgresql.org/docs/11/btree-gist.html)                   | 1.5             | GiST で一般的なデータ型のインデックスを作成するためのサポート|
+> |[citext](https://www.postgresql.org/docs/11/citext.html)                       | 1.5             | 大文字と小文字を区別しない文字列のデータ型|
+> |[cube](https://www.postgresql.org/docs/11/cube.html)                         | 1.4             | 多次元キューブのデータ型|
+> |[dblink](https://www.postgresql.org/docs/11/dblink.html)                       | 1.2             | データベース内から他の PostgreSQL データベースに接続する|
+> |[dict_int](https://www.postgresql.org/docs/11/dict-int.html)                     | 1.0             | 整数のテキスト検索辞書テンプレート|
+> |[earthdistance](https://www.postgresql.org/docs/11/earthdistance.html)                | 1.1             | 地表面上の大圏距離を計算する|
+> |[fuzzystrmatch](https://www.postgresql.org/docs/11/fuzzystrmatch.html)                | 1.1             | 文字列間の類似点と相違点を特定する|
+> |[hstore](https://www.postgresql.org/docs/11/hstore.html)                       | 1.5             | (キー、値) ペアのセットを格納するためのデータ型|
+> |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.2           | PostgreSQL の仮定のインデックス|
+> |[intarray](https://www.postgresql.org/docs/11/intarray.html)                     | 1.2             | 整数の 1 次元配列に対する関数、演算子、およびインデックスのサポート|
+> |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | 国際対応の製品番号規格のデータ型|
+> |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
+> |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | 監査機能を提供する|
+> |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | 暗号化関数|
+> |[pgrouting](https://pgrouting.org/)                    | 2.6.2           | pgRouting の拡張機能|
+> |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
+> |[pgstattuple](https://www.postgresql.org/docs/11/pgstattuple.html)                  | 1.5             | タプルレベルの統計情報を表示する|
+> |[pg_buffercache](https://www.postgresql.org/docs/11/pgbuffercache.html)               | 1.3             | 共有バッファー キャッシュを確認する|
+> |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 4.0.0           | 時刻または ID によってパーティション テーブルを管理するための拡張機能|
+> |[pg_prewarm](https://www.postgresql.org/docs/11/pgprewarm.html)                   | 1.2             | 関係データをプレウォームする|
+> |[pg_stat_statements](https://www.postgresql.org/docs/11/pgstatstatements.html)           | 1.6             | 実行されたすべての SQL ステートメントの実行統計情報を追跡する|
+> |[pg_trgm](https://www.postgresql.org/docs/11/pgtrgm.html)                      | 1.4             | trigram に基づくテキストの類似性の測定とインデックス検索|
+> |[plpgsql](https://www.postgresql.org/docs/11/plpgsql.html)                      | 1.0             | PL/pgSQL 手続き型言語|
+> |[plv8](https://plv8.github.io/)                         | 2.3.11          | PL/JavaScript (v8) の信頼された手続き型言語|
+> |[postgis](https://www.postgis.net/)                      | 2.5.1           | PostGIS ジオメトリ、地理、およびラスターの空間型と関数|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.5.1           | PostGIS SFCGAL 関数|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.5.1           | PostGIS Tiger ジオコーダとリバース ジオコーダ|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS トポロジの空間型と関数|
+> |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | リモート PostgreSQL サーバー用の外部データ ラッパー|
+> |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | クロス集計を含む、テーブル全体を操作する関数|
+> |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | アクセントを削除するテキスト検索辞書|
+> |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | 汎用一意識別子 (UUID) を生成する|
 
-### <a name="full-text-search-extensions"></a>フルテキスト検索の拡張機能
+## <a name="postgres-10-extensions"></a>Postgres 10 の拡張機能 
 
-> [!div class="mx-tableFixed"]
-> | **拡張機能** | **説明** |
-> |---|---|
-> | [dict\_int](https://www.postgresql.org/docs/9.6/static/dict-int.html) | 整数に対するテキスト検索ディクショナリのテンプレートを提供します。 |
-> | [unaccent](https://www.postgresql.org/docs/9.6/static/unaccent.html) | 語彙からアクセント記号 (分音記号) を削除するテキスト検索辞書。 |
-
-### <a name="index-types-extensions"></a>インデックス型の拡張機能
-
-> [!div class="mx-tableFixed"]
-> | **拡張機能** | **説明** |
-> |---|---|
-> | [btree\_gin](https://www.postgresql.org/docs/9.6/static/btree-gin.html) | 特定のデータ型に対して B ツリーのような動作を実装するサンプル GIN 演算子クラスを提供します。 |
-> | [btree\_gist](https://www.postgresql.org/docs/9.6/static/btree-gist.html) | B ツリーを実装する GiST インデックス演算子クラスを提供します。 |
-
-### <a name="language-extensions"></a>言語の拡張機能
-
-> [!div class="mx-tableFixed"]
-> | **拡張機能** | **説明** |
-> |---|---|
-> | [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL 読み込み可能な手続き型言語。 |
-> | [plv8](https://plv8.github.io/) | ストアド プロシージャ、トリガーなどに使用できる PostgreSQL の Javascript 言語拡張機能。 |
-
-### <a name="miscellaneous-extensions"></a>その他の拡張機能
-
-> [!div class="mx-tableFixed"]
-> | **拡張機能** | **説明** |
-> |---|---|
-> | [pg\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | リアルタイムで共有バッファー キャッシュの動作を確認する手段を提供します。 |
-> | [pg\_prewarm](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | 関係データをバッファー キャッシュに読み込む方法を提供します。 |
-> | [pg\_stat\_statements](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | サーバーで実行されるすべての SQL ステートメントの実行統計を追跡する手段を提供します。 (この拡張機能に関する注意事項は下記を参照)。 |
-> | [pgrowlocks](https://www.postgresql.org/docs/9.6/static/pgrowlocks.html) | 行レベルのロックに関する情報を表示するための手段を提供します。 |
-> | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | タプル レベルの統計を表示するための手段を提供します。 |
-> | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | 外部 PostgreSQL サーバーに格納されているデータへのアクセスに使用される外部データ ラッパーです。 (この拡張機能に関する注意事項は下記を参照)。|
-> | [hypopg](https://hypopg.readthedocs.io/en/latest/) | CPU やディスク コストのない仮定のインデックスを作成する手段の提供。 |
-> | [dblink](https://www.postgresql.org/docs/current/dblink.html) | データベース セッション内から他の PostgreSQL データベースへの接続をサポートするモジュール。 (この拡張機能に関する注意事項は下記を参照)。 |
-
-
-### <a name="postgis-extensions"></a>PostGIS 拡張機能
+Postgres バージョン 10 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能** | **説明** |
-> |---|---|
-> | [PostGIS](https://www.postgis.net/)、postgis\_topology、postgis\_tiger\_geocoder、postgis\_sfcgal | PostgreSQL の空間および地理なオブジェクト。 |
-> | address\_standardizer、address\_standardizer\_data\_us | 構成要素へのアドレスの解析に使用されます。 ジオコーディング アドレス正規化の手順をサポートするために使用されます。 |
-> | [pgrouting](https://pgrouting.org/) | PostGIS/PostgreSQL 地理空間データベースを拡張して、地理空間ルーティング機能を提供します。 |
+> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.5.1           | 構成要素へのアドレスの解析に使用されます。 |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.5.1           | Address Standardizer US データセットの例|
+> |[btree_gin](https://www.postgresql.org/docs/10/btree-gin.html)                    | 1.3             | GIN で一般的なデータ型のインデックスを作成するためのサポート|
+> |[btree_gist](https://www.postgresql.org/docs/10/btree-gist.html)                   | 1.5             | GiST で一般的なデータ型のインデックスを作成するためのサポート|
+> |[chkpass](https://www.postgresql.org/docs/10/chkpass.html)                       | 1.0             | 自動暗号化パスワードのデータ型|
+> |[citext](https://www.postgresql.org/docs/10/citext.html)                       | 1.4             | 大文字と小文字を区別しない文字列のデータ型|
+> |[cube](https://www.postgresql.org/docs/10/cube.html)                         | 1.2             | 多次元キューブのデータ型|
+> |[dblink](https://www.postgresql.org/docs/10/dblink.html)                       | 1.2             | データベース内から他の PostgreSQL データベースに接続する|
+> |[dict_int](https://www.postgresql.org/docs/10/dict-int.html)                     | 1.0             | 整数のテキスト検索辞書テンプレート|
+> |[earthdistance](https://www.postgresql.org/docs/10/earthdistance.html)                | 1.1             | 地表面上の大圏距離を計算する|
+> |[fuzzystrmatch](https://www.postgresql.org/docs/10/fuzzystrmatch.html)                | 1.1             | 文字列間の類似点と相違点を特定する|
+> |[hstore](https://www.postgresql.org/docs/10/hstore.html)                       | 1.4             | (キー、値) ペアのセットを格納するためのデータ型|
+> |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | PostgreSQL の仮定のインデックス|
+> |[intarray](https://www.postgresql.org/docs/10/intarray.html)                     | 1.2             | 整数の 1 次元配列に対する関数、演算子、およびインデックスのサポート|
+> |[isn](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | 国際対応の製品番号規格のデータ型|
+> |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
+> |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | 監査機能を提供する|
+> |[pgcrypto](https://www.postgresql.org/docs/10/pgcrypto.html)                     | 1.3             | 暗号化関数|
+> |[pgrouting](https://pgrouting.org/)                    | 2.5.2           | pgRouting の拡張機能|
+> |[pgrowlocks](https://www.postgresql.org/docs/10/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
+> |[pgstattuple](https://www.postgresql.org/docs/10/pgstattuple.html)                  | 1.5             | タプルレベルの統計情報を表示する|
+> |[pg_buffercache](https://www.postgresql.org/docs/10/pgbuffercache.html)               | 1.3             | 共有バッファー キャッシュを確認する|
+> |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 2.6.3           | 時刻または ID によってパーティション テーブルを管理するための拡張機能|
+> |[pg_prewarm](https://www.postgresql.org/docs/10/pgprewarm.html)                   | 1.1             | 関係データをプレウォームする|
+> |[pg_stat_statements](https://www.postgresql.org/docs/10/pgstatstatements.html)           | 1.6             | 実行されたすべての SQL ステートメントの実行統計情報を追跡する|
+> |[pg_trgm](https://www.postgresql.org/docs/10/pgtrgm.html)                      | 1.3             | trigram に基づくテキストの類似性の測定とインデックス検索|
+> |[plpgsql](https://www.postgresql.org/docs/10/plpgsql.html)                      | 1.0             | PL/pgSQL 手続き型言語|
+> |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (v8) の信頼された手続き型言語|
+> |[postgis](https://www.postgis.net/)                      | 2.4.3           | PostGIS ジオメトリ、地理、およびラスターの空間型と関数|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.4.3           | PostGIS SFCGAL 関数|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.4.3           | PostGIS Tiger ジオコーダとリバース ジオコーダ|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.4.3           | PostGIS トポロジの空間型と関数|
+> |[postgres_fdw](https://www.postgresql.org/docs/10/postgres-fdw.html)                 | 1.0             | リモート PostgreSQL サーバー用の外部データ ラッパー|
+> |[tablefunc](https://www.postgresql.org/docs/10/tablefunc.html)                    | 1.0             | クロス集計を含む、テーブル全体を操作する関数|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | 時系列データに対するスケーラブルな挿入と複雑なクエリを可能にします|
+> |[unaccent](https://www.postgresql.org/docs/10/unaccent.html)                     | 1.1             | アクセントを削除するテキスト検索辞書|
+> |[uuid-ossp](https://www.postgresql.org/docs/10/uuid-ossp.html)                    | 1.1             | 汎用一意識別子 (UUID) を生成する|
 
+## <a name="postgres-96-extensions"></a>Postgres 9.6 の拡張機能 
 
-### <a name="time-series-extensions"></a>時系列拡張機能
+Postgres バージョン 9.6 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
 
 > [!div class="mx-tableFixed"]
-> | **拡張機能** | **説明** |
-> |---|---|
-> | [TimescaleDB](https://docs.timescale.com/latest) | 高速の取り込みとクエリに対応した自動パーティション分割をサポートする時系列 SQL データベース。 時間指向の分析関数、最適化を提供し、時系列ワークロードに合わせて PostgreSQL を拡大縮小します。 TimescaleDB は、[Timescale, Inc.](https://www.timescale.com/) によって開発された、この会社の登録商標です。(この拡張機能に関する注意事項は下記を参照)。 |
+> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.2           | 構成要素へのアドレスの解析に使用されます。 |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.2           | Address Standardizer US データセットの例|
+> |[btree_gin](https://www.postgresql.org/docs/9.6/btree-gin.html)                    | 1.0             | GIN で一般的なデータ型のインデックスを作成するためのサポート|
+> |[btree_gist](https://www.postgresql.org/docs/9.6/btree-gist.html)                   | 1.2             | GiST で一般的なデータ型のインデックスを作成するためのサポート|
+> |[chkpass](https://www.postgresql.org/docs/9.6/chkpass.html)                       | 1.0             | 自動暗号化パスワードのデータ型|
+> |[citext](https://www.postgresql.org/docs/9.6/citext.html)                       | 1.3             | 大文字と小文字を区別しない文字列のデータ型|
+> |[cube](https://www.postgresql.org/docs/9.6/cube.html)                         | 1.2             | 多次元キューブのデータ型|
+> |[dblink](https://www.postgresql.org/docs/9.6/dblink.html)                       | 1.2             | データベース内から他の PostgreSQL データベースに接続する|
+> |[dict_int](https://www.postgresql.org/docs/9.6/dict-int.html)                     | 1.0             | 整数のテキスト検索辞書テンプレート|
+> |[earthdistance](https://www.postgresql.org/docs/9.6/earthdistance.html)                | 1.1             | 地表面上の大圏距離を計算する|
+> |[fuzzystrmatch](https://www.postgresql.org/docs/9.6/fuzzystrmatch.html)                | 1.1             | 文字列間の類似点と相違点を特定する|
+> |[hstore](https://www.postgresql.org/docs/9.6/hstore.html)                       | 1.4             | (キー、値) ペアのセットを格納するためのデータ型|
+> |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | PostgreSQL の仮定のインデックス|
+> |[intarray](https://www.postgresql.org/docs/9.6/intarray.html)                     | 1.2             | 整数の 1 次元配列に対する関数、演算子、およびインデックスのサポート|
+> |[isn](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | 国際対応の製品番号規格のデータ型|
+> |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
+> |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | 監査機能を提供する|
+> |[pgcrypto](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | 暗号化関数|
+> |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | pgRouting の拡張機能|
+> |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
+> |[pgstattuple](https://www.postgresql.org/docs/9.6/pgstattuple.html)                  | 1.4             | タプルレベルの統計情報を表示する|
+> |[pg_buffercache](https://www.postgresql.org/docs/9.6/pgbuffercache.html)               | 1.2             | 共有バッファー キャッシュを確認する|
+> |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 2.6.3           | 時刻または ID によってパーティション テーブルを管理するための拡張機能|
+> |[pg_prewarm](https://www.postgresql.org/docs/9.6/pgprewarm.html)                   | 1.1             | 関係データをプレウォームする|
+> |[pg_stat_statements](https://www.postgresql.org/docs/9.6/pgstatstatements.html)           | 1.4             | 実行されたすべての SQL ステートメントの実行統計情報を追跡する|
+> |[pg_trgm](https://www.postgresql.org/docs/9.6/pgtrgm.html)                      | 1.3             | trigram に基づくテキストの類似性の測定とインデックス検索|
+> |[plpgsql](https://www.postgresql.org/docs/9.6/plpgsql.html)                      | 1.0             | PL/pgSQL 手続き型言語|
+> |[plv8](https://plv8.github.io/)                         | 2.1.0          | PL/JavaScript (v8) の信頼された手続き型言語|
+> |[postgis](https://www.postgis.net/)                      | 2.3.2           | PostGIS ジオメトリ、地理、およびラスターの空間型と関数|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.3.2           | PostGIS SFCGAL 関数|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.3.2           | PostGIS Tiger ジオコーダとリバース ジオコーダ|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.2           | PostGIS トポロジの空間型と関数|
+> |[postgres_fdw](https://www.postgresql.org/docs/9.6/postgres-fdw.html)                 | 1.0             | リモート PostgreSQL サーバー用の外部データ ラッパー|
+> |[tablefunc](https://www.postgresql.org/docs/9.6/tablefunc.html)                    | 1.0             | クロス集計を含む、テーブル全体を操作する関数|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.1.1             | 時系列データに対するスケーラブルな挿入と複雑なクエリを可能にします|
+> |[unaccent](https://www.postgresql.org/docs/9.6/unaccent.html)                     | 1.1             | アクセントを削除するテキスト検索辞書|
+> |[uuid-ossp](https://www.postgresql.org/docs/9.6/uuid-ossp.html)                    | 1.1             | 汎用一意識別子 (UUID) を生成する|
+
+## <a name="postgres-95-extensions"></a>Postgres 9.5 の拡張機能 
+
+Postgres バージョン 9.5 を搭載した Azure Database for PostgreSQL サーバーでは、次の拡張機能を使用できます。
+
+> [!div class="mx-tableFixed"]
+> | **拡張機能**| **拡張機能のバージョン** | **説明** |
+> |---|---|---|
+> |[address_standardizer](http://postgis.net/docs/Address_Standardizer.html)         | 2.3.0           | 構成要素へのアドレスの解析に使用されます。 |
+> |[address_standardizer_data_us](http://postgis.net/docs/Address_Standardizer.html) | 2.3.0           | Address Standardizer US データセットの例|
+> |[btree_gin](https://www.postgresql.org/docs/9.5/btree-gin.html)                    | 1.0             | GIN で一般的なデータ型のインデックスを作成するためのサポート|
+> |[btree_gist](https://www.postgresql.org/docs/9.5/btree-gist.html)                   | 1.1             | GiST で一般的なデータ型のインデックスを作成するためのサポート|
+> |[chkpass](https://www.postgresql.org/docs/9.5/chkpass.html)                       | 1.0             | 自動暗号化パスワードのデータ型|
+> |[citext](https://www.postgresql.org/docs/9.5/citext.html)                       | 1.1             | 大文字と小文字を区別しない文字列のデータ型|
+> |[cube](https://www.postgresql.org/docs/9.5/cube.html)                         | 1.0             | 多次元キューブのデータ型|
+> |[dblink](https://www.postgresql.org/docs/9.5/dblink.html)                       | 1.1             | データベース内から他の PostgreSQL データベースに接続する|
+> |[dict_int](https://www.postgresql.org/docs/9.5/dict-int.html)                     | 1.0             | 整数のテキスト検索辞書テンプレート|
+> |[earthdistance](https://www.postgresql.org/docs/9.5/earthdistance.html)                | 1.0             | 地表面上の大圏距離を計算する|
+> |[fuzzystrmatch](https://www.postgresql.org/docs/9.5/fuzzystrmatch.html)                | 1.0             | 文字列間の類似点と相違点を特定する|
+> |[hstore](https://www.postgresql.org/docs/9.5/hstore.html)                       | 1.3             | (キー、値) ペアのセットを格納するためのデータ型|
+> |[hypopg](https://hypopg.readthedocs.io/en/latest/)                       | 1.1.1           | PostgreSQL の仮定のインデックス|
+> |[intarray](https://www.postgresql.org/docs/9.5/intarray.html)                     | 1.0             | 整数の 1 次元配列に対する関数、演算子、およびインデックスのサポート|
+> |[isn](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | 国際対応の製品番号規格のデータ型|
+> |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | 階層ツリー状の構造体のデータ型|
+> |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3             | 監査機能を提供する|
+> |[pgcrypto](https://www.postgresql.org/docs/9.5/pgcrypto.html)                     | 1.2             | 暗号化関数|
+> |[pgrouting](https://pgrouting.org/)                    | 2.3.0           | pgRouting の拡張機能|
+> |[pgrowlocks](https://www.postgresql.org/docs/9.5/pgrowlocks.html)                   | 1.1             | 行レベルのロック情報を表示する|
+> |[pgstattuple](https://www.postgresql.org/docs/9.5/pgstattuple.html)                  | 1.3             | タプルレベルの統計情報を表示する|
+> |[pg_buffercache](https://www.postgresql.org/docs/9.5/pgbuffercache.html)               | 1.1             | 共有バッファー キャッシュを確認する|
+> |[pg_partman](https://github.com/pgpartman/pg_partman)                   | 2.6.3           | 時刻または ID によってパーティション テーブルを管理するための拡張機能|
+> |[pg_prewarm](https://www.postgresql.org/docs/9.5/pgprewarm.html)                   | 1.0             | 関係データをプレウォームする|
+> |[pg_stat_statements](https://www.postgresql.org/docs/9.5/pgstatstatements.html)           | 1.3             | 実行されたすべての SQL ステートメントの実行統計情報を追跡する|
+> |[pg_trgm](https://www.postgresql.org/docs/9.5/pgtrgm.html)                      | 1.1             | trigram に基づくテキストの類似性の測定とインデックス検索|
+> |[plpgsql](https://www.postgresql.org/docs/9.5/plpgsql.html)                      | 1.0             | PL/pgSQL 手続き型言語|
+> |[postgis](https://www.postgis.net/)                      | 2.3.0           | PostGIS ジオメトリ、地理、およびラスターの空間型と関数|
+> |[postgis_sfcgal](https://www.postgis.net/)               | 2.3.0           | PostGIS SFCGAL 関数|
+> |[postgis_tiger_geocoder](https://www.postgis.net/)       | 2.3.0           | PostGIS Tiger ジオコーダとリバース ジオコーダ|
+> |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.3.0           | PostGIS トポロジの空間型と関数|
+> |[postgres_fdw](https://www.postgresql.org/docs/9.5/postgres-fdw.html)                 | 1.0             | リモート PostgreSQL サーバー用の外部データ ラッパー|
+> |[tablefunc](https://www.postgresql.org/docs/9.5/tablefunc.html)                    | 1.0             | クロス集計を含む、テーブル全体を操作する関数|
+> |[unaccent](https://www.postgresql.org/docs/9.5/unaccent.html)                     | 1.0             | アクセントを削除するテキスト検索辞書|
+> |[uuid-ossp](https://www.postgresql.org/docs/9.5/uuid-ossp.html)                    | 1.0             | 汎用一意識別子 (UUID) を生成する|
 
 
-## <a name="pgstatstatements"></a>pg_stat_statements
-SQL ステートメントの実行の統計を追跡する手段を提供するために、[Pg\_stat\_ステートメント拡張子](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html)が、すべての Azure Database for PostgreSQL サーバーにプリロードされています。
+## <a name="pg_stat_statements"></a>pg_stat_statements
+pg_stat_statements 拡張機能は、すべての Azure Database for PostgreSQL サーバーにプリロードされ、SQL ステートメントの実行統計情報を追跡する手段が提供されています。
 ステートメントをコントロールする設定`pg_stat_statements.track`は、拡張機能と既定値によって`top`にカウントされ、クライアントが直接発行したすべてのステートメントがすべて追跡されます。 その他の 2 つの追跡レベルは`none`と`all`です。 この設定は、[Azure portal](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-portal)または[Azure CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-server-parameters-using-cli)を通じてサーバーのパラメーターとして構成可能です。
 
 各 SQL ステートメントをログに記録する時はPg_stat_statements が提供するクエリの実行情報とサーバーのパフォーマンスに与える影響にトレードオフがあります。 pg_stat_statements 拡張機能を使用していない場合、`pg_stat_statements.track`を`none`に設定することをお勧めします。 一部のサード パーティ監視サービスがクエリ パフォーマンスの分析情報を実行するために Pg_stat_statements に依存することがありますので、そのようなケースに該当するかどうかを確認してください。
 
-## <a name="dblink-and-postgresfdw"></a>dblink および postgres_fdw
-dblink および postgres_fdw を使用して、1 つの PostgreSQL サーバーから別のサーバーに、または同一サーバー内の別のデータベースに接続できます。 受信側サーバーでは、ファイアウォールを経由した送信元サーバーからの接続を許可している必要があります。 これらの拡張機能を使用して Azure Database for PostgreSQL サーバー間を接続する場合、[Azure サービスへのアクセスを許可] を [オン] に設定することで実現できます。 拡張機能を使用して同じサーバーにループバックする場合にも、これは必要になります。 [Azure サービスへのアクセスを許可] 設定は、Postgres サーバー向けの Azure portal ページ内の [接続のセキュリティ ] の下にあります。 [Azure サービスへのアクセスを許可] を [オン] にすると、すべての Azure IP がホワイトリストに登録されます。
+## <a name="dblink-and-postgres_fdw"></a>dblink および postgres_fdw
+dblink および postgres_fdw を使用して、1 つの PostgreSQL サーバーから別のサーバーに、または同一サーバー内の別のデータベースに接続できます。 受信側サーバーでは、ファイアウォールを経由した送信元サーバーからの接続を許可している必要があります。 これらの拡張機能を使用して Azure Database for PostgreSQL サーバー間を接続する場合、[Azure サービスへのアクセスを許可] を [オン] に設定することで実現できます。 拡張機能を使用して同じサーバーにループバックする場合にも、これは必要になります。 [Azure サービスへのアクセスを許可] 設定は、Postgres サーバー向けの Azure portal ページ内の [接続のセキュリティ ] の下にあります。 [Azure サービスへのアクセスを許可] を [オン] にすると、すべての Azure IP が許可リストに設定されます。
 
 現時点では、Azure Database for PostgreSQL からの送信接続は、他の Azure Database for PostgreSQL サーバーへの接続を除き、サポートされていません。
 
 ## <a name="uuid"></a>uuid
 uuid-ossp 拡張機能の `uuid_generate_v4()` を使用する予定の場合、パフォーマンス上の利点について、pgcrypto 拡張機能の `gen_random_uuid()` と比較することを検討してください。
 
+
+## <a name="pgaudit"></a>pgAudit
+pgAudit 拡張機能では、セッションとオブジェクトの監査ログが提供されます。 Azure Database for PostgreSQL でこの拡張機能を使用する方法については、[監査の概念に関する記事](concepts-audit.md)を参照してください。 
 
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB は、PostgreSQL の拡張機能としてパッケージされた時系列データベースです。 TimescaleDB は、時間指向の分析関数、最適化を提供し、時系列ワークロードに合わせて PostgreSQL を拡大縮小します。

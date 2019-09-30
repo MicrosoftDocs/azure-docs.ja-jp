@@ -12,16 +12,16 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 2e28627359f339a3bf818a15d6a5c8e456fb554a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797526"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858487"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>SR-IOV を使用して InfiniBand を有効にする
 
-InfiniBand (IB) を使用してカスタム VM イメージを構成する最も簡単で推奨される方法は、InfiniBandDriverLinux または InfiniBandDriverWindows VM 拡張機能をデプロイに追加することです。
+HPC 用 IaaS VM を始める最も簡単で推奨される方法は、CentOS-HPC 7.6 VM OS イメージを使用することです。 カスタム VM イメージを使用している場合、InfiniBand (IB) でそれを構成する最も簡単で推奨される方法は、InfiniBandDriverLinux または InfiniBandDriverWindows VM 拡張機能をデプロイに追加することです。
 [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) および [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances) でこれらの VM 拡張機能を使用する方法について説明します
 
 SR-IOV 対応の VM (現在は HB および HC シリーズ) 上で InfiniBand を手動で構成するには、次の手順を実行します。 これらの手順は RHEL/CentOS 専用です。 Ubuntu (16.04 および 18.04)、および SLES (12 SP4 および 15) の場合、受信トレイ ドライバーは適切に機能します。

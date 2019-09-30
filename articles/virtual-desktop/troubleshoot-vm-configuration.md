@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 0e32c81f37a8b81511cd009dfddbcc546aee1797
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 03a8e8063f1a66b929311f09bf8e20cd4b951e43
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876752"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163297"
 ---
 # <a name="tenant-and-host-pool-creation"></a>テナントとホスト プールの作成
 
@@ -34,39 +34,45 @@ VM をドメインに参加させることができない場合、次の指示�
 
 **原因:** Azure Resource Manager テンプレート インターフェイスの修正で資格情報が入力されたとき、入力ミスがありました。
 
-**解決策:** 次の手順で資格情報を訂正します。
+**解決策:** 解決するには、次のいずれかの操作を行ってください。
 
-1. ドメインに VM を手動で追加します。
-2. 資格情報が確認されたら再デプロイします。 「[PowerShell を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)」を参照してください。
-3. 「[Joins an existing Windows VM to AD Domain](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)」 (既存の Windows VM を AD ドメインに参加させる) のテンプレートで VM をドメインに参加させます。
+- ドメインに VM を手動で追加します。
+- 資格情報が確認されたらテンプレートを再デプロイします。 「[PowerShell を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)」を参照してください。
+- 「[Joins an existing Windows VM to AD Domain](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)」 (既存の Windows VM を AD ドメインに参加させる) のテンプレートで VM をドメインに参加させます。
 
 ### <a name="error-timeout-waiting-for-user-input"></a>エラー:ユーザー入力の待機中にタイムアウトになりました
 
 **原因:** ドメイン参加の完了に使用するアカウントに多要素認証 (MFA) が設定されている可能性があります。
 
-**解決策:** 次の手順でドメイン参加を完了します。
+**解決策:** 解決するには、次のいずれかの操作を行ってください。
 
-1. アカウントの MFA を一時的に削除します。
-2. サービス アカウントを使用します。
+- アカウントの MFA を一時的に削除します。
+- サービス アカウントを使用します。
 
 ### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>エラー:プロビジョニング中に使用されたアカウントに、操作を完了するためのアクセス許可が与えられていません。
 
 **原因:** 使用中のアカウントには、コンプライアンスと規則により、ドメインに VM を参加させるためのアクセス許可が与えられていません。
 
-**解決策:** 次の手順を実行します。
+**解決策:** 解決するには、次のいずれかの操作を行ってください。
 
-1. 管理者グループに属するアカウントを使用します。
-2. 必要なアクセス許可を使用中のアカウントに与えます。
+- 管理者グループに属するアカウントを使用します。
+- 必要なアクセス許可を使用中のアカウントに与えます。
 
 ### <a name="error-domain-name-doesnt-resolve"></a>エラー:ドメイン名が解決されません。
 
-**原因 1:** ドメインが置かれている仮想ネットワーク (VNET) に関連付けられていないリソース グループに VM が入っています。
+**原因 1:** ドメインが置かれている仮想ネットワーク (VNET) に関連しない仮想ネットワークに VM が入っています。
 
 **解決策 1:** VM がプロビジョニングされた VNET と、ドメイン コントローラー (DC) が実行されている VNET の間に VNET ピアリングを作成します。 「[仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions)」を参照してください。
 
-**原因 2:** AadService (AADS) の使用時、DNS エントリが設定されませんでした。
+**原因 2:** Azure Active Directory Domain Services (Azure AD DS) を使用する場合、仮想ネットワークの DNS サーバーの設定が、管理対象のドメイン コントローラーを指すように更新されません。
 
-**解決策 2:** ドメイン サービスを設定するには、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns)」を参照してください。
+**解決策 2:** Azure AD DS を含む仮想ネットワークの DNS 設定を更新するには、「[Azure 仮想ネットワークの DNS 設定を更新する](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance#update-dns-settings-for-the-azure-virtual-network)」を参照してください。
+
+**原因 3:** ネットワーク インターフェイスの DNS サーバー設定が、仮想ネットワーク上の適切な DNS サーバーを指していません。
+
+**解決策 3:** 次のいずれかの操作を実行して、[DNS サーバーの変更] の手順に従って解決します。
+- [[DNS サーバーの変更]](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) の手順に従って、ネットワーク インターフェイスの DNS サーバー設定を **[カスタム]** に変更し、仮想ネットワーク上の DNS サーバーのプライベート IP アドレスを指定します。
+- [[DNS サーバーの変更]](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface#change-dns-servers) の手順に従って、ネットワーク インターフェイスの DNS サーバー設定を **[仮想ネットワークから継承する]** に変更し、その後、[[DNS サーバーの変更]](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers) の手順に従って、仮想ネットワークの DNS サーバーの設定を変更します。
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Windows Virtual Desktop Agent と Windows Virtual Desktop Boot Loader がインストールされていません
 
@@ -202,7 +208,12 @@ Windows Virtual Desktop サイドバイサイド スタックに問題がある�
 **解決策:** 次の手順で、セッション ホスト VM にサイドバイサイド スタックをインストールします。
 
 1. リモート デスクトップ プロトコル (RDP) を使用し、ローカル管理者としてセッション ホスト VM に直接入ります。
-2. まだ行っていない場合は、PowerShell セッションで使用する [Windows Virtual Desktop PowerShell モジュール](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)をダウンロードしてインポートします。
+2. まだ行っていない場合は、ご自分の PowerShell セッション内で使用する [Windows Virtual Desktop PowerShell モジュール](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)をダウンロードしてインポートし、次のコマンドレットを実行してご自分のアカウントにサインインします。
+    
+    ```powershell
+    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
+    ```
+    
 3. 「[PowerShell を使用してホスト プールを作成する](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)」を参照してサイドバイサイド スタックをインストールします。
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>誤作動する Windows Virtual Desktop サイドバイサイド スタックの修正方法

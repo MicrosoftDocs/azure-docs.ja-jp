@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: cc062f830facb0d617dc649ecd17acfff0a740af
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 8c346b75b30737645721d8b39a655a85ed446fae
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69618932"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229535"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>チュートリアル:Azure Active Directory Domain Services インスタンスを作成して構成する
 
@@ -44,7 +44,10 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 * 必要な Azure AD DS リソースを作成するためには、ご利用の Azure サブスクリプションに "*共同作成者*" 特権が必要です。
 * この Azure AD テナントは、[パスワード リセットのセルフサービス用に構成][configure-sspr]されている必要があります。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+> [!IMPORTANT]
+> Azure AD DS マネージド ドメインを作成した後は、そのインスタンスを別のリソース グループ、仮想ネットワーク、サブスクリプションなどに移動することはできません。Azure AD DS インスタンスをデプロイするときに、最適なサブスクリプション、リソース グループ、リージョン、および仮想ネットワークを慎重に選択してください。
+
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 このチュートリアルでは、Azure portal を使用して Azure AD DS インスタンスの作成と構成を行います。 最初に、[Azure portal](https://portal.azure.com) にサインインしてください。
 
@@ -61,6 +64,15 @@ Azure AD DS インスタンスを作成する際は、DNS 名を指定します�
 * **組み込みドメイン名:** 既定では、ディレクトリの組み込みドメイン名が使用されます ( *.onmicrosoft.com* サフィックス)。 マネージド ドメインに対するインターネット経由での Secure LDAP アクセスを有効にしたい場合、デジタル証明書を作成して、この既定のドメインとの接続をセキュリティで保護することはできません。 *.onmicrosoft.com* ドメインを所有するのは Microsoft であるため、証明機関 (CA) からは証明書が発行されません。
 * **カスタム ドメイン名:** 最も一般的な方法は、カスタム ドメイン名を指定することです。一般に、貴社が既に所有していて、なおかつルーティング可能なものを指定します。 ルーティング可能なカスタム ドメインを使用すれば、ご利用のアプリケーションをサポートするために必要なトラフィックを正しく送信することができます。
 * **ルーティング不可能なドメインのサフィックス:** 一般に、ルーティング不可能なドメイン名サフィックス (*contoso.local* など) は避けることをお勧めします。 *.local* サフィックスはルーティングできないため、DNS 解決で問題の原因となることがあります。
+
+> [!TIP]
+> カスタム ドメイン名を作成する場合は、既存の DNS 名前空間に注意してください。 ドメイン名には一意のプレフィックスを含めることをお勧めします。 たとえば、DNS ルート名が *contoso.com* である場合、*corp.contoso.com* または *ds.contoso.com* というカスタム ドメイン名で Azure AD DS マネージド ドメインを作成します。 オンプレミスの AD DS 環境を持つハイブリッド環境では、これらのプレフィックスが既に使用されている場合があります。 Azure AD DS には、一意のプレフィックスを使用してください。
+>
+> Azure AD DS マネージド ドメインにルート DNS 名を使用できますが、環境内の他のサービス用にいくつかの DNS レコードを追加作成することが必要になる場合があります。 たとえば、ルート DNS 名を使用するサイトをホストする Web サーバーを実行する場合、名前の競合が発生して、追加の DNS エントリが必要になる可能性があります。
+>
+> これらのチュートリアルとハウツー記事では、簡略な例として *contoso.com* というカスタム ドメインを使用しています。 すべてのコマンドで、一意のプレフィックスを含む、独自のドメイン名を指定してください。
+>
+> 詳細については、[ドメインの名前付けプレフィックスの選択][naming-prefix]に関するページを参照してください。
 
 DNS 名には、次の制限も適用されます。
 
@@ -199,7 +211,7 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 1. **[パスワードの変更]** ページで既存の (古い) パスワードを入力した後、新しいパスワードを入力して、それを確認します。
 1. **[Submit]\(送信\)** をクリックします。
 
-パスワードの変更後、Azure AD DS で新しいパスワードを使用できるようになるまでに数分かかります。 約 20 分後には、新しいパスワードを使用して、マネージド ドメインに参加しているコンピューターにサインインできるようになります。
+パスワードの変更後、Azure AD DS で新しいパスワードを使用したり、マネージド ドメインに参加しているコンピューターに正常にサインインしたりできるようになるまでには数分かかります。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -222,6 +234,9 @@ Azure AD に作成されたユーザー アカウントがクラウド専用の�
 [network-considerations]: network-considerations.md
 [create-dedicated-subnet]: ../virtual-network/virtual-network-manage-subnet.md#add-a-subnet
 [scoped-sync]: scoped-synchronization.md
-[on-prem-sync]: active-directory-ds-getting-started-password-sync-synced-tenant.md
+[on-prem-sync]: tutorial-configure-password-hash-sync.md
 [configure-sspr]: ../active-directory/authentication/quickstart-sspr.md
 [password-hash-sync-process]: ../active-directory/hybrid/how-to-connect-password-hash-synchronization.md#password-hash-sync-process-for-azure-ad-domain-services
+
+<!-- EXTERNAL LINKS -->
+[naming-prefix]: /windows-server/identity/ad-ds/plan/selecting-the-forest-root-domain#selecting-a-prefix

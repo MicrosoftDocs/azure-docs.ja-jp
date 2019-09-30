@@ -1,19 +1,19 @@
 ---
 title: Azure HDInsight のクラスター作成に失敗する問題のトラブルシューティング
-description: Azure HDInsight のクラスター作成に関する問題をトラブルシューティングする方法について説明します。
+description: Azure HDInsight の Apache クラスター作成に関する問題をトラブルシューティングする方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
-ms.date: 08/06/2019
-ms.openlocfilehash: c7092b2cbcef01ef71261b6f5498cde56a40c358
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 08/26/2019
+ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856534"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810679"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Azure HDInsight のクラスター作成に失敗する問題のトラブルシューティング
 
@@ -29,9 +29,9 @@ ms.locfileid: "68856534"
 
 ## <a name="permissions-issues"></a>アクセス許可の問題
 
-Data Lake Storage Gen 2 を使用している場合は、HDInsight クラスターに割り当てられたユーザー割り当てマネージド ID が、 **ストレージ BLOB データ共同作成者**ロールまたは**ストレージ BLOB データ所有者ロール**に存在することを確認します。 詳細な設定手順については、「[Azure HDInsight クラスターで Azure Data Lake Storage Gen2 を使用する](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account)」を参照してください。
+Azure Data Lake Storage Gen2 を使用しているときに、```AmbariClusterCreationFailedErrorCode```, ```Internal server error occurred while processing the request. Please retry the request or contact support.``` エラーが発生した場合は、Azure portal を開いてストレージ アカウントにアクセスし、Access Control (IAM) で、**ストレージ BLOB データ共同作成者**または**ストレージ BLOB データ所有者**ロールに、サブスクリプションの**ユーザー割り当てマネージド ID** へのアクセス権が確実に割り当てられているようにします。 詳しい手順については、「[Data Lake Storage Gen2 アカウントにマネージド ID のアクセス許可を設定する](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account)」を参照してください。
 
-Data Lake Storage Gen 1 を使用している場合は、[こちら](../hdinsight-hadoop-use-data-lake-store.md)で設定と構成の手順をご覧ください。 Data Lake Storage Gen 1 は、HBase クラスターではサポートされず、HDInsight バージョン 4.0 ではサポートされません。
+Azure Data Lake Storage Gen1 を使用している場合は、[こちら](../hdinsight-hadoop-use-data-lake-store.md)で設定と構成の手順をご覧ください。 Data Lake Storage Gen1 は、HBase クラスターではサポートされず、HDInsight バージョン 4.0 ではサポートされません。
 
 Azure Storage を使用している場合、ストレージ アカウント名がクラスター作成中に有効であることを確認します。
 
@@ -51,7 +51,7 @@ HDInsight の管理 IP アドレスとの通信が、仮想ネットワークま
 
 次の表の IP アドレスを送信元とするトラフィックを許可してください。
 
-| 送信元 IP アドレス | 宛先 | Direction |
+| 送信元 IP アドレス | Destination | Direction |
 |---|---|---|
 | 168.61.49.99 | *:443 | 受信 |
 | 23.99.5.239 | *:443 | 受信 |
@@ -73,6 +73,8 @@ Express Route または独自のカスタム DNS サーバーを使用してい�
 ## <a name="storage-account-name-restrictions"></a>ストレージ アカウント名の制限
 
 ストレージ アカウント名に使用できる文字数は 24 文字までで、特殊文字は使用できません。 これらの制限は、ストレージ アカウントの既定のコンテナー名にも適用されます。
+
+クラスター作成の場合、その他の命名規則制限も適用されます。 詳細は、[クラスターの命名規則制限](../hdinsight-hadoop-provision-linux-clusters.md#cluster-name)に関するページを参照してください。
 
 ## <a name="service-outages"></a>サービスの停止
 

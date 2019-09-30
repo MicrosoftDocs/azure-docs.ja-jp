@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/08/2018
-ms.openlocfilehash: 7e66f374a1f5f4fb050f366fdad0e787292101f8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.date: 09/20/2019
+ms.openlocfilehash: 7a628eb02170346a826cab19498d6fdf40cebddd
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526743"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173105"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Azure で Yeoman を使用して Terraform ベース テンプレートを作成する
 
@@ -115,7 +115,7 @@ Yeoman テンプレートは、**現在のディレクトリ**内にファイル
 
 1. Visual Studio Code を起動します
 
-1. メニュー バーから、**[ファイル] > [フォルダーを開く]** を選択し、作成したフォルダーを選択します。
+1. メニュー バーから、 **[ファイル] > [フォルダーを開く]** を選択し、作成したフォルダーを選択します。
 
     ![Visual Studio Code](media/terraform-vscode-module-generator/ymg-open-in-vscode.png)
 

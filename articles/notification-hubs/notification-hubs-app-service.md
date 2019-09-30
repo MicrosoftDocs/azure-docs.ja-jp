@@ -1,9 +1,9 @@
 ---
 title: App Service Mobile Apps との統合
 description: Azure Notification Hubs と Azure App Service Mobile Apps がどのように連携するかについて説明します。
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 documentationcenter: ''
 ms.assetid: 83132dff-a01d-4b31-a426-b57496852b81
@@ -14,13 +14,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: bb39949bc21ece819b7ac6e279390f8bdb0ee00a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: d6747193b8c82119e45a24e3e4bffc065db14e51
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157450"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212162"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>App Service Mobile Apps との統合
 

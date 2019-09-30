@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 837e3be209da1fe42ced9e4a23a75c46612cebd2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: ba6cc03a93b664e05a667116cbf845e777416c6b
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036634"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155425"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Azure CLI から Azure Storage 暗号化用にカスタマー マネージド キーを構成する
 
@@ -120,4 +120,4 @@ az storage account update
 ## <a name="next-steps"></a>次の手順
 
 - [保存データに対する Azure Storage 暗号化](storage-service-encryption.md) 
-- [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
+- [Azure Key Vault とは](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

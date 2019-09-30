@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: bd8bbc28247ecd924db25cb4b916d1d466065606
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 77dc50df7b46aeb6ddfddf92710d576f85492471
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562873"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801549"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>カスタム音声の正確性を評価する
 
@@ -51,11 +51,12 @@ Microsoft の音声テキスト変換ベースライン モデルまたはトレ
 
 モデルを並べて評価するには、次のように操作します。
 
-1. **[音声テキスト変換]、[Custom Speech]、[Testing]\(テスト\)** の順に移動します。
-2. **[テストの追加]** をクリックします。
-3. **[Evaluate accuracy]\(正確性の評価\)** を選択します。 テストの名前と説明を設定し、オーディオ + ヒューマン ラベル付け文字起こしデータセットを選択します。
-4. テストするモデルを最大で 2 つ選択します。
-5. **Create** をクリックしてください。
+1. [Custom Speech ポータル](https://speech.microsoft.com/customspeech)にサインインします。
+2. **[音声テキスト変換]、[Custom Speech]、[Testing]\(テスト\)** の順に移動します。
+3. **[テストの追加]** をクリックします。
+4. **[Evaluate accuracy]\(正確性の評価\)** を選択します。 テストの名前と説明を設定し、オーディオ + ヒューマン ラベル付け文字起こしデータセットを選択します。
+5. テストするモデルを最大で 2 つ選択します。
+6. **Create** をクリックしてください。
 
 テストが正常に作成されたら、結果を並べて比較できます。
 

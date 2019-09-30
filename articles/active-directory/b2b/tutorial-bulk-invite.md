@@ -5,136 +5,106 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 08/14/2018
+ms.date: 9/19/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3bd02afa1fe1aaba6602201f839468a58673c29
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68277996"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128719"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>チュートリアル:Azure AD B2B コラボレーション ユーザーを一括で招待する (プレビュー)
 
-Azure Active Directory (Azure AD) B2B コラボレーションを使用して外部パートナーと協力する場合は、複数のゲスト ユーザーを組織に同時に招待できます。 このチュートリアルでは、PowerShell を使用して、外部ユーザーに招待状を一括送信する方法について説明します。 具体的には、以下を実行します。
+|     |
+| --- |
+| この記事では、Azure Active Directory のパブリック プレビュー機能について説明します。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
+|     |
+
+
+Azure Active Directory (Azure AD) B2B コラボレーションを使用して外部パートナーと協力する場合は、複数のゲスト ユーザーを組織に同時に招待できます。 このチュートリアルでは、Azure portal を使用して、外部ユーザーに招待状を一括送信する方法について説明します。 具体的には、以下を実行します。
 
 > [!div class="checklist"]
-> * ユーザー情報を含むコンマ区切り値 (.csv) ファイルを準備する
-> * PowerShell スクリプトを実行して招待状を送信する
+> * **ユーザー一括招待 (プレビュー)** を使用して、ユーザー情報と招待状のユーザー設定を含むコンマ区切り値 (.csv) ファイルを準備する
+> * Azure AD に .csv ファイルをアップロードする
 > * ユーザーがディレクトリに追加されたことを確認する
 
-Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。 
+Azure Active Directory をお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="install-the-latest-azureadpreview-module"></a>最新の AzureADPreview モジュールをインストールする
-最新バージョンの Azure AD PowerShell for Graph モジュール (AzureADPreview) をインストールしていることを確認します。 
-
-最初に、どのモジュールをインストールしているかをチェックします。 管理者特権で Windows PowerShell を開き (管理者として実行)、次のコマンドを実行します。
- 
-```powershell  
-Get-Module -ListAvailable AzureAD*
-```
-
-出力に基づいて次のいずれかを行います。
-
-- 結果が返らない場合は、次のコマンドを実行して AzureADPreview モジュールをインストールします。
-  
-   ```powershell  
-   Install-Module AzureADPreview
-   ```
-- 結果に AzureAD モジュールだけが表示される場合は、次のコマンドを実行して AzureADPreview モジュールをインストールします。 
-
-   ```powershell 
-   Uninstall-Module AzureAD 
-   Install-Module AzureADPreview 
-   ```
-- 結果に AzureADPreview モジュールだけが表示されるが、最新のバージョンがあることを示すメッセージが表示される場合は、次のコマンドを実行してそのモジュールをインストールします。 
-
-   ```powershell 
-   Uninstall-Module AzureADPreview 
-   Install-Module AzureADPreview 
-  ```
-
-信頼されていないリポジトリからモジュールをインストールしていることを示すメッセージが表示される場合があります。 これは、PSGallery リポジトリを信頼されたリポジトリとして事前に設定していない場合に発生します。 **Y** キーを押してモジュールをインストールします。
-
-### <a name="get-test-email-accounts"></a>テスト用の電子メール アカウントを取得する
-
 招待状の送信先となる、複数のテスト用の電子メール アカウントが必要です。 このアカウントは、組織外にある必要があります。 gmail.com や outlook.com のアドレスなどのソーシャル アカウントを含む任意の種類のアカウントを使用できます。
 
-## <a name="prepare-the-csv-file"></a>CSV ファイルを準備する
+## <a name="invite-guest-users-in-bulk"></a>ゲスト ユーザーを一括招待する
 
-Microsoft Excel で、被招待者のユーザー名と電子メール アドレスの一覧を含む CSV ファイルを作成します。 列見出しとして **Name** と **InvitedUserEmailAddress** を必ず含めてください。 
+1. 組織のユーザー管理者アカウントで、Azure portal にサインインします。
+2. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
+3. **[管理]** の **[ユーザー]**  >  **[一括招待]** を選択します。
+4. **[ユーザー一括招待 (プレビュー)]** ページで、 **[ダウンロード]** を選択して、招待のプロパティを含んだ有効な .csv ファイルを取得します。
 
-たとえば、次の形式のワークシートを作成します。
+    ![一括招待のダウンロード ボタン](media/tutorial-bulk-invite/bulk-invite-button.png)
 
+5. この .csv ファイルを開いて、ゲスト ユーザーごとに 1 行追加します。 必要な値は次のとおりです。
 
-![保留中のユーザーの同意を示す PowerShell の出力](media/tutorial-bulk-invite/AddUsersExcel.png)
+   * **招待するメール アドレス** - 招待が送信されるユーザー
 
-ファイルを **C:\BulkInvite\Invitations.csv** として保存します。 
+   * **リダイレクト URL** - 招待されたユーザーが招待を承認した後に転送される URL
 
-Excel をお持ちでない場合は、メモ帳などの任意のテキスト エディターで CSV ファイルを作成できます。 行ごとに値をコンマで区切って入力します。 
+    ![ゲスト ユーザーが入力されている CSV ファイルの例](media/tutorial-bulk-invite/bulk-invite-csv.png)
 
-## <a name="sign-in-to-your-tenant"></a>テナントにサインインする
+   > [!NOTE]
+   > **[カスタマイズされた招待メッセージ]** にはコンマを使用しないでください。メッセージが正しく解析されなるためです。
 
-次のコマンドを実行してテナント ドメインに接続します。
+6. ファイルを保存します。
+7. **[ユーザー一括招待 (プレビュー)]** ページの **[csv ファイルをアップロードします]** で、そのファイルを参照します。 ファイルを選択すると、.csv ファイルの検証が開始されます。 
+8. ファイルの内容が検証されると、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
+9. ファイルが検証に合格したら、 **[送信]** を選択して、招待を追加する Azure の一括操作を開始します。 
+10. ジョブの状態を表示するには、 **[各操作の状態を表示するには、ここをクリックします]** を選択します。 または、 **[アクティビティ]** セクションの **[一括操作の結果 (プレビュー)]** を選択します。 一括操作に含まれる各行の項目の詳細については、 **[成功数]** 、 **[失敗数]** 、 **[要求数合計]** の各列の値を選択してください。 エラーが発生した場合、その理由が表示されます。
 
-```powershell
-Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
-```
-たとえば、「 `Connect-AzureAD -TenantDomain "contoso.onmicrosoft.com"` 」のように入力します。
+    ![一括操作の結果の例](media/tutorial-bulk-invite/bulk-operation-results.png)
 
-メッセージが表示されたら、資格情報を入力します。
+11. ジョブが完了すると、一括操作が成功したという通知が表示されます。
 
-## <a name="send-bulk-invitations"></a>招待状を一括送信する
+## <a name="verify-guest-users-in-the-directory"></a>ディレクトリのゲスト ユーザーを確認する
 
-招待メールを送信するには、次の PowerShell スクリプトを実行します (**c:\bulkinvite\invitations.csv** は CSV ファイルのパスです)。 
+追加したゲスト ユーザーがディレクトリに存在することを Azure portal または PowerShell で確認します。
 
-```powershell
-$invitations = import-csv c:\bulkinvite\invitations.csv
-   
-$messageInfo = New-Object Microsoft.Open.MSGraph.Model.InvitedUserMessageInfo
-   
-$messageInfo.customizedMessageBody = "Hello. You are invited to the Contoso organization."
-   
-foreach ($email in $invitations) 
-   {New-AzureADMSInvitation `
-      -InvitedUserEmailAddress $email.InvitedUserEmailAddress `
-      -InvitedUserDisplayName $email.Name `
-      -InviteRedirectUrl https://myapps.microsoft.com `
-      -InvitedUserMessageInfo $messageInfo `
-      -SendInvitationMessage $true
-   }
-```
-このスクリプトは、invitations.csv ファイル内の電子メール アドレスに招待状を送信します。 次の例のようなユーザーごとの出力が表示されます。
+### <a name="view-guest-users-in-the-azure-portal"></a>Azure portal でゲスト ユーザーを表示する
 
-![保留中のユーザーの同意を示す PowerShell の出力](media/tutorial-bulk-invite/B2BBulkImport.png)
+1. 組織のユーザー管理者アカウントで、Azure portal にサインインします。
+2. ナビゲーション ペインで、 **[Azure Active Directory]** を選択します。
+3. **[管理]** にある **[ユーザー]** を選択します。
+4. **[表示]** の **[ゲスト ユーザーのみ]** を選択して、追加したユーザーが一覧表示されていることを確認します。
 
-## <a name="verify-users-exist-in-the-directory"></a>ユーザーがディレクトリに存在することを確認する
+### <a name="view-guest-users-with-powershell"></a>PowerShell を使用してゲスト ユーザーを表示する
 
-招待されたユーザーが Azure AD に追加されたことを確認するには、次のコマンドを実行します。
+次のコマンドを実行します。
+
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
+
 招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#\@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、*lstokes_fabrikam.com#EXT#\@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待状を送信した組織になります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、ディレクトリ内のテスト用のユーザー アカウントを削除できます。 ユーザー アカウントを削除するには、次のコマンドを使用します。
+ディレクトリ内のテスト用ユーザー アカウントは、不要になったら、Azure portal の [ユーザー] ページで削除できます。それには、ゲスト ユーザーの横のチェック ボックスをオンにし、 **[削除]** を選択してください。 
+
+または、次の PowerShell コマンドを実行してユーザー アカウントを削除することもできます。
 
 ```powershell
  Remove-AzureADUser -ObjectId "<UPN>"
 ```
+
 次に例を示します。`Remove-AzureADUser -ObjectId "lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com"`
 
-
 ## <a name="next-steps"></a>次の手順
+
 このチュートリアルでは、組織の外部のゲスト ユーザーに招待状を一括送信しました。 次に、招待の受諾プロセスを理解します。
 
 > [!div class="nextstepaction"]
 > [Azure AD B2B コラボレーションの招待の受諾プロセスを確認する](redemption-experience.md)
-

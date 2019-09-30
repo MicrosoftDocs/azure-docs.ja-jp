@@ -11,20 +11,20 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17cea353df0337b062b89cd440f79f7869450f8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9289bfe9e90186896a753e5853d81d2f06669917
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113200"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125176"
 ---
-# <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>チュートリアル:リスク イベントを使用して多要素認証とパスワード変更をトリガーする
+# <a name="tutorial-use-risk-detections-to-trigger-multi-factor-authentication-and-password-changes"></a>チュートリアル:リスク検出を使用して多要素認証とパスワード変更をトリガーする
 
 このチュートリアルでは、Azure Active Directory (Azure AD) Identity Protection の機能を有効にします。この Azure AD Premium P2 機能は、単なる監視およびレポート ツール以上のものです。 組織の ID を保護するために、危険な動作に自動的に対処するリスクベースのポリシーを構成することができます。 これらのポリシーによって、自動的にブロックしたり、パスワードの変更の要求や Multi-Factor Authentication の強制などの修復を開始したりすることができます。
 
 既存の条件付きアクセス ポリシーに加えて、追加の保護レイヤーとして Azure AD Identity Protection ポリシーを使用することができます。 このようなポリシーを必要とするような危険な動作をユーザーがトリガーすることはないかもしれませんが、管理者として、ユーザーの保護に確信を持つことができます。
 
-リスク イベントをトリガーする可能性があるのは、次のような操作です。
+リスク検出をトリガーする可能性があるのは、次のような項目です。
 
 * 資格情報が漏洩したユーザー
 * 匿名の IP アドレスからのサインイン

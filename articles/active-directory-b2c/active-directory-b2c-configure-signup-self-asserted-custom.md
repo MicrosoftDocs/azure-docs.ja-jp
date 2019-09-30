@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ae6d55180785c9407662776a95fcba31f8ba5275
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e29e2e3e61594870cc9d704d64b1040a4211a520
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835201"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066226"
 ---
 #  <a name="add-claims-and-customize-user-input-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシーを使用した要求の追加とユーザー入力のカスタマイズ - | Microsoft Docs
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、新しいユーザー指定のエントリ (要求) を Azure Active Directory (Azure AD) B2C のサインアップ ユーザー体験に追加します。  このエントリをドロップダウン リストとして構成し、これが必須かどうかを定義します。
+この記事では、新しいユーザー指定のエントリ (要求) を Azure Active Directory B2C (Azure AD B2C) のサインアップ ユーザー体験に追加します。  このエントリをドロップダウン リストとして構成し、これが必須かどうかを定義します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -261,7 +261,7 @@ ms.locfileid: "67835201"
 ## <a name="test-the-custom-policy"></a>カスタム ポリシーをテストする
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. お使いの Azure AD テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いの Azure AD テナントを含むディレクトリを選択します。
+2. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 4. **[Identity Experience Framework (プレビュー)]** を選択します。
 5. **[カスタム ポリシーのアップロード]** を選択し、変更した 2 つのポリシー ファイルをアップロードします。

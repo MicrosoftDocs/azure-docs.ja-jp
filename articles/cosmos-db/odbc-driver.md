@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 352cd23f00e911b895e52aacaced1bfba38f7f84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b859d01a39f906f518a82d468c3c9267545b9a07
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257251"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616900"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
@@ -23,9 +23,9 @@ Azure Cosmos DB の ODBC ドライバーは ODBC 3.8 に準拠していて、ANS
 > ODBC ドライバーによる Azure Cosmos DB への接続は、現在は Azure Cosmos DB SQL API アカウントでのみサポートされています。
 
 ## <a name="why-do-i-need-to-normalize-my-data"></a>データを正規化すべき理由
-Azure Cosmos DB はスキーマレス データベースであり、厳格なスキーマの制約を受けないので、アプリケーションを迅速に開発し、データ モデルを迅速に反復することができます。 1 つの Azure Cosmos DB データベースに、さまざまな構造の JSON ドキュメントを格納できます。 これは迅速なアプリケーション開発には最適ですが、データ分析と BI ツールを使ってデータを分析し、レポートを作成する場合は、通常データをフラット化して特定のスキーマに準拠させる必要があります。
+Azure Cosmos DB はスキーマレス データベースであり、厳格なスキーマの制約を受けないので、アプリケーションを迅速に開発し、データ モデルを迅速に反復することができます。 1 つの Azure Cosmos データベースに、さまざまな構造の JSON ドキュメントを格納できます。 これは迅速なアプリケーション開発には最適ですが、データ分析と BI ツールを使ってデータを分析し、レポートを作成する場合は、通常データをフラット化して特定のスキーマに準拠させる必要があります。
 
-ここで役立つのが ODBC ドライバーです。 ODBC ドライバーを使用すると、Azure Cosmos DB 内のデータをデータ分析やレポート作成のニーズに適したテーブルとビューに再正規化できます。 再正規化されたスキーマが基になるデータに影響を与えたり、それに従うように開発者を制限したりすることはありません。 それどころか、ODBC に準拠したツールを活用してデータにアクセスできるようになります。 そのため、Azure Cosmos DB データベースは開発者チームにとって便利なだけでなく、データ アナリストも満足することでしょう。
+ここで役立つのが ODBC ドライバーです。 ODBC ドライバーを使用すると、Azure Cosmos DB 内のデータをデータ分析やレポート作成のニーズに適したテーブルとビューに再正規化できます。 再正規化されたスキーマが基になるデータに影響を与えたり、それに従うように開発者を制限したりすることはありません。 それどころか、ODBC に準拠したツールを活用してデータにアクセスできるようになります。 そのため、Azure Cosmos データベースは開発者チームにとって便利なだけでなく、データ アナリストも満足することでしょう。
 
 それでは、ODBC ドライバーを使ってみましょう。
 
@@ -48,7 +48,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
     ![Azure Cosmos DB ODBC データ ソース管理者](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>手順 2:Azure Cosmos DB データベースに接続する
+## <a id="connect"></a>手順 2:Azure Cosmos データベースに接続する
 
 1. [Azure Cosmos DB ODBC ドライバーをインストール](#install)したら、 **[ODBC データ ソース管理者]** ウィンドウで **[追加]** をクリックします。 ユーザー DSN またはシステム DSN を作成できます。 この例では、ユーザー DSN を作成します。
 
@@ -82,7 +82,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 使用できるサンプリング方法は、**コレクション マッピング**と**テーブル区切り記号**の 2 種類です。 サンプリング セッションではどちらのサンプリング方法も利用できますが、各コレクションが使用できるのは特定のサンプリング方法のみになります。 次の手順では、コレクション マッピングの方法を使って 1 つまた複数のコレクション内のデータのスキーマを作成します。 このサンプリング方法では、コレクションのページのデータを取得して、データの構造を判定します。 ODBC 側のテーブルにコレクションを入れ替えます。 このサンプリング方法は、コレクションのデータの種類が同じ場合は効率的で迅速です。 コレクションに異なる型のデータが含まれる場合は、[テーブル区切り記号のマッピング方法](#table-mapping)を使用することをお勧めします。この方法は、コレクション内のデータ構造を判定するより堅牢なサンプリング方法を提供します。 
 
-1. 「[Azure Cosmos DB データベースに接続する](#connect)」の手順 1 ～ 4 が完了したら、 **[Azure Cosmos DB ODBC Driver DSN Setup (Azure Cosmos DB ODBC ドライバーの DSN セットアップ)]** ウィンドウの **[スキーマ エディター]** をクリックします。
+1. 「[Azure Cosmos データベースに接続する](#connect)」の手順 1 から 4 が完了したら、 **[Azure Cosmos DB ODBC Driver DSN Setup]\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\)** ウィンドウの **[スキーマ エディター]** をクリックします。
 
     ![[Azure Cosmos DB ODBC Driver DSN Setup (Azure Cosmos DB ODBC ドライバーの DSN セットアップ)] ウィンドウの [スキーマ エディター] ボタン](./media/odbc-driver/odbc-driver-schema-editor.png)
 1. **[スキーマ エディター]** ウィンドウで、 **[新規作成]** をクリックします。
@@ -105,7 +105,7 @@ Azure Cosmos DB はスキーマレス データベースであり、厳格なス
 
 次の手順では、**テーブル区切り記号**のマッピング方法を使って 1 つまたは複数のコレクション内のデータのスキーマを作成します。 コレクションに異なる型のデータが含まれる場合は、このサンプリング方法を使用することをお勧めします。 この方法を使って、サンプリングのスコープを一連の属性と対応する値に設定できます。 たとえば、ドキュメントに "型" のプロパティが含まれる場合は、サンプリングのスコープをこのプロパティの値に設定できます。 サンプリングの最終的な結果は、指定した型の各値が記載されたテーブルのセットになります。 たとえば、型が自動車の場合は自動車のテーブルが生成され、型が飛行機の場合は飛行機のテーブルが生成されます。
 
-1. 「[Azure Cosmos DB データベースに接続する](#connect)」の手順 1 ～ 4 が完了したら、[Azure Cosmos DB ODBC Driver DSN Setup (Azure Cosmos DB ODBC ドライバーの DSN セットアップ)] ウィンドウの **[スキーマ エディター]** をクリックします。
+1. 「[Azure Cosmos データベースに接続する](#connect)」の手順 1 から 4 が完了したら、[Azure Cosmos DB ODBC Driver DSN Setup]\(Azure Cosmos DB ODBC ドライバーの DSN セットアップ\) ウィンドウの **[スキーマ エディター]** をクリックします。
 
 1. **[スキーマ エディター]** ウィンドウで、 **[新規作成]** をクリックします。
     **[スキーマを生成する]** ウィンドウに、Azure Cosmos DB アカウントのすべてのコレクションが表示されます。 

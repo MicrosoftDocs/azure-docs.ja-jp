@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 131333f140518f6fb2f63f17d0aa72692dc7d49a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: c1f50dfb499c220a4e13f043438798c556319ddf
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935069"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70092813"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>アクティブ geo レプリケーションの作成と使用
 
@@ -106,6 +106,10 @@ ms.locfileid: "68935069"
 ## <a name="preparing-secondary-database-for-failover"></a>フェールオーバー用セカンダリ データベースの準備
 
 フェールオーバー後にアプリケーションが新しいプライマリにすぐアクセスできることが確実になるよう、セカンダリ サーバーとデータベースの認証要件が正しく構成されていることを確認してください。 詳細については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。 フェールオーバー後のコンプライアンスを保証するために、セカンダリ データベースでのバックアップ保持ポリシーがプライマリのそれと一致していることを確認してください。 これらの設定はデータベースの一部ではなく、レプリケートされません。 既定では、セカンダリは 7 日間の既定の PITR 保持期間で構成されます。 詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
+
+> [!IMPORTANT]
+> ご使用のデータベースがフェールオーバー グループのメンバーである場合、geo レプリケーション フェールオーバー コマンドを使用して、そのフェールオーバーを開始することはできません。 グループのフェールオーバー コマンドを使用することを検討してください。 個々のデータベースをフェールオーバーする必要がある場合、最初にそれをフェールオーバー グループから削除する必要があります。 詳細については、[フェールオーバー グループ](sql-database-auto-failover-group.md)に関する記事をご覧ください。 
+
 
 ## <a name="configuring-secondary-database"></a>セカンダリ データベースの構成
 

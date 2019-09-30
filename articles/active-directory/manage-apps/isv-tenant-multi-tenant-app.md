@@ -12,12 +12,12 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69cc625500af60a753ad8e7db0363954088f3307
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 637adba89445e6974e83486f0641576225ccd268
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659449"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70812618"
 ---
 # <a name="create-an-azure-tenant-for-a-multi-tenant-application"></a>マルチテナント アプリケーション用に Azure テナントを作成する  
 
@@ -25,7 +25,7 @@ ms.locfileid: "67659449"
 
 ## <a name="costs-of-hosting-a-multi-tenant-application"></a>マルチテナント アプリケーションをホストするためのコスト
 
-Azure Active Directory は、Free、Basic、および Premium の 3 つの SKU で利用できます。 [詳細な機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)に関する記事を参照してください。
+Azure Active Directory は、複数のエディションで使用できます。 [詳細な機能の比較](https://azure.microsoft.com/pricing/details/active-directory/)に関する記事を参照してください。
 
 Azure サブスクリプションと Azure Active Directory は無料で作成でき、基本的な機能を使用できます。
 

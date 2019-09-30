@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: zhshang
-ms.openlocfilehash: f7cc05c8c2a299d809c4386d119fef58fa2548d5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 027f9f99161a0e4f76a39a15780bc840380a61ba
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269513"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232534"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Azure SignalR Service のパフォーマンス ガイド
 
@@ -426,7 +426,7 @@ REST API を使用して高密度のメッセージを送信することは、We
 
 ## <a name="performance-tools"></a>パフォーマンス ツール
 
-Azure SignalR Service のパフォーマンス ツールは、[GitHub](https://github.com/Azure/azure-signalr-bench/tree/master/SignalRServiceBenchmarkPlugin) にあります。
+Azure SignalR Service のパフォーマンス ツールは、[GitHub](https://github.com/Azure/azure-signalr-bench/) にあります。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: a75bdaf0e26193a5b2792b52923c085eff89b83f
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706394"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773044"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -82,7 +82,7 @@ param($MyFirstInputBinding, $MySecondInputBinding, $TriggerMetadata)
 $TriggerMetadata.sys
 ```
 
-| プロパティ   | Description                                     | Type     |
+| プロパティ   | Description                                     | 種類     |
 |------------|-------------------------------------------------|----------|
 | UtcNow     | 関数がトリガーされた日時 (UTC)        | DateTime |
 | MethodName | トリガーされた関数の名前     | string   |
@@ -134,7 +134,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 `Push-OutputBinding` の呼び出しに使用できる有効なパラメーターを次に示します。
 
-| 名前 | Type | 位置 | 説明 |
+| 名前 | 種類 | 位置 | 説明 |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | string | 1 | 設定する出力バインディングの名前。 |
 | **`-Value`** | Object | 2 | 設定する出力バインディングの値。パイプライン ByValue から受け取ります。 |
@@ -303,7 +303,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 スクリプトに渡される要求オブジェクトは `HttpRequestContext` 型で、次のプロパティを持ちます。
 
-| プロパティ  | Description                                                    | Type                      |
+| プロパティ  | Description                                                    | 種類                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | 要求の本文を格納するオブジェクト。 `Body` は、データに基づいて最適な型にシリアル化されます。 たとえば、データが JSON である場合はハッシュテーブルとして渡されます。 データが文字列の場合は文字列として渡されます。 | object |
 | **`Headers`** | 要求ヘッダーを格納するディクショナリ。                | Dictionary<string,string><sup>*</sup> |
@@ -318,7 +318,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 返すべき応答オブジェクトは `HttpResponseContext` 型で、次のプロパティを持ちます。
 
-| プロパティ      | Description                                                 | Type                      |
+| プロパティ      | Description                                                 | 種類                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | 応答の本文を格納するオブジェクト。           | object                    |
 | **`ContentType`** | 応答のコンテンツ タイプを設定するための省略表現。 | string                    |
@@ -403,14 +403,18 @@ Visual Studio Code や Azure Functions Core Tools などのツールを使用し
 
 ## <a name="dependency-management"></a>依存関係の管理
 
-PowerShell 関数では、サービスによる Azure モジュールの管理をサポートしています。 host.json を変更し、managedDependency の enabled プロパティを true に設定すると、requirements.psd1 ファイルが処理されるようになります。 最新の Azure モジュールが自動的にダウンロードされて、関数で使用できるようになります。
+PowerShell 関数では、サービスによる [PowerShell ギャラリー](https://www.powershellgallery.com) モジュールのダウンロードと管理がサポートされています。 host.json を変更し、managedDependency の enabled プロパティを true に設定すると、requirements.psd1 ファイルが処理されるようになります。 指定されているモジュールが自動的にダウンロードされて、関数で使用できるようになります。 
+
+現在サポートされているモジュールの最大数は 10 です。 サポートされている構文は、次に示すように、MajorNumber.* または厳密なモジュール バージョンです。 新しい PowerShell 関数アプリを作成すると、Azure Az モジュールが既定で組み込まれます。
+
+言語ワーカーによって、再起動時に更新されたモジュールが取得されます。
 
 host.json
 ```json
 {
-    "managedDependency": {
-        "enabled": true
-    }
+  "managedDependency": {
+          "enabled": true
+       }
 }
 ```
 
@@ -419,10 +423,11 @@ requirements.psd1
 ```powershell
 @{
     Az = '1.*'
+    SqlServer = '21.1.18147'
 }
 ```
 
-独自のカスタム モジュールまたは [PowerShell ギャラリー](https://powershellgallery.com)のモジュールを活用する方法が通常の方法とは若干異なります。
+独自のカスタム モジュールを利用する方法が、通常の方法とは若干異なります。
 
 ローカル コンピューターにモジュールをインストールすると、`$env:PSModulePath` にあるグローバルに利用できるフォルダーのいずれかにそのモジュールが格納されます。 関数は Azure で実行されるため、ローカル コンピューターにインストールされたモジュールにアクセスできなくなります。 そのため、PowerShell 関数アプリの `$env:PSModulePath` は、通常の PowerShell スクリプトの `$env:PSModulePath` とは異なるようにする必要があります。
 
@@ -433,16 +438,19 @@ Functions では、`PSModulePath` に次の 2 つのパスが存在します。
 
 ### <a name="function-app-level-modules-folder"></a>関数アプリレベルの `Modules` フォルダー
 
-カスタム モジュールまたは PowerShell ギャラリーの PowerShell モジュールを使用するために、関数の依存モジュールを `Modules` フォルダーに配置できます。 このフォルダーにあるモジュールは、自動的に Functions Runtime から利用できる状態になります。 関数アプリ内のどの関数でもこれらのモジュールを使用できます。
+カスタム モジュールを使用するには、関数が依存しているモジュールを `Modules` フォルダーに置きます。 このフォルダーにあるモジュールは、自動的に Functions Runtime から利用できる状態になります。 関数アプリ内のどの関数でもこれらのモジュールを使用できます。 
 
-この機能を活用するには、関数アプリのルートに `Modules` フォルダーを作成します。 自分の関数で使用したいモジュールをこの場所に保存します。
+> [!NOTE]
+> requirements.psd1 ファイルで指定されているモジュールは、自動的にダウンロードされてパスに組み込まれるため、modules フォルダーに含める必要はありません。 これらは、ローカル環境の $env:LOCALAPPDATA/AzureFunctions フォルダーに格納され、クラウドで実行されるときは /data/ManagedDependencies フォルダーに格納されます。
+
+カスタム モジュール機能を利用するには、関数アプリのルートに `Modules` フォルダーを作成します。 関数で使用したいモジュールをこの場所にコピーします。
 
 ```powershell
 mkdir ./Modules
-Save-Module MyGalleryModule -Path ./Modules
+Copy-Item -Path /mymodules/mycustommodule -Destination ./Modules -Recurse
 ```
 
-関数で使用するすべてのモジュールを `Save-Module` を使用して保存するか、独自のカスタム モジュールを `Modules` フォルダーにコピーします。 Modules フォルダーでは、関数アプリのフォルダー構造が次のようになっている必要があります。
+Modules フォルダーでは、関数アプリのフォルダー構造が次のようになっている必要があります。
 
 ```
 PSFunctionApp
@@ -450,11 +458,12 @@ PSFunctionApp
  | | - run.ps1
  | | - function.json
  | - Modules
- | | - MyGalleryModule
- | | - MyOtherGalleryModule
- | | - MyCustomModule.psm1
+ | | - MyCustomModule
+ | | - MyOtherCustomModule
+ | | - MySpecialModule.psm1
  | - local.settings.json
  | - host.json
+ | - requirements.psd1
 ```
 
 関数アプリを起動すると、PowerShell 言語ワーカーによりこの `Modules` フォルダーが `$env:PSModulePath` に追加されるため、通常の PowerShell スクリプトと同様に、モジュールの自動読み込みを利用できます。
@@ -503,21 +512,11 @@ PSWorkerInProcConcurrencyUpperBound
 
 ### <a name="considerations-for-using-concurrency"></a>コンカレンシーの使用に関する注意点
 
-PowerShell は、既定では "_シングル スレッド_" のスクリプト言語です。 ただし、同じプロセス内で複数の PowerShell 実行空間を使用することで、コンカレンシーを追加できます。 この機能は、Azure Functions PowerShell ランタイムの動作です。
-
-このアプローチにはいくつかの欠点があります。
-
-#### <a name="concurrency-is-only-as-good-as-the-machine-its-running-on"></a>コンカレンシーは、実行環境となるマシンに依存します。
-
-シングル コアのみをサポートしている [App Service プラン](functions-scale.md#app-service-plan) で関数アプリが実行されている場合、コンカレンシーはあまり役立ちません。 なぜなら、負荷の分散に役立つ追加のコアが存在しないためです。 この場合、実行空間と実行空間との間のコンテキスト切り替えをシングル コアで行わなければならないとパフォーマンスが変動する可能性があります。
-
-[従量課金プラン](functions-scale.md#consumption-plan)の運用に使用されるコアは 1 つだけであるため、コンカレンシーを活用することはできません。 コンカレンシーを十分に活用したい場合は、十分なコア数を備えた専用 App Service プランで実行されている関数アプリに関数をデプロイしてください。
-
-#### <a name="azure-powershell-state"></a>Azure PowerShell の状態
+PowerShell は、既定では "_シングル スレッド_" のスクリプト言語です。 ただし、同じプロセス内で複数の PowerShell 実行空間を使用することで、コンカレンシーを追加できます。 作成される実行空間の量は、PSWorkerInProcConcurrencyUpperBound のアプリケーション設定と一致します。 スループットは、選択したプランで使用可能な CPU とメモリの量によって影響を受けます。
 
 開発者の入力の手間を軽減するために、Azure PowerShell では、"_プロセスレベル_" のコンテキストと状態が使用されています。 ただし、関数アプリでコンカレンシーを有効にし、状態の変更を伴うアクションを呼び出した場合は、最終的に競合状態に陥る可能性があります。 このような競合状態をデバッグするのは困難です。なぜなら、一方の呼び出しが特定の状態に依存しているのに、もう一方の呼び出しがその状態を変更したためです。
 
-一部の操作にはかなりの時間がかかる可能性があるため、Azure PowerShell のコンカレンシーには非常に大きな価値があります。 しかし、実際に使用する場合には注意が必要です。 競合状態の発生が疑われる場合は、コンカレンシーの設定を `1` に戻してから、再度要求を試みてください。
+一部の操作にはかなりの時間がかかる可能性があるため、Azure PowerShell のコンカレンシーには非常に大きな価値があります。 しかし、実際に使用する場合には注意が必要です。 競合状態が発生していると思われる場合は、PSWorkerInProcConcurrencyUpperBound アプリ設定を `1` に設定し、代わりに、コンカレンシーに対して[言語ワーカー プロセス レベルの分離](functions-app-settings.md#functions_worker_process_count)を使用します。
 
 ## <a name="configure-function-scriptfile"></a>関数の `scriptFile` を構成する
 

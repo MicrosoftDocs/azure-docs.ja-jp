@@ -4,23 +4,20 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: 8a596293a5c1572b30ea6101dad16328c8db2634
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 935a6201e24e97deaa0a1a65e499310f74a49e2d
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181075"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059060"
 ---
-## <a name="what-is-queue-storage"></a>キュー ストレージとは
-Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。 キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。
+## <a name="what-is-queue-storage"></a>Queue storage とは
 
-キュー ストレージの一般的な用途には、次のようなものがあります。
+Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。 キューの 1 つのメッセージの最大サイズは 64 KB で、1 つのキューには、ストレージ アカウントの合計容量の上限に達するまで、数百万のメッセージを格納できます。 Queue storage は、多くの場合、非同期的な処理用に作業のバックログを作成するために使用されます。
 
-* 非同期に処理する作業のバックログを作成する
-* Azure Web ロールから worker ロールにメッセージを渡す
+## <a name="queue-service-concepts"></a>Queue サービスの概念
 
-## <a name="queue-service-concepts"></a>キュー サービスの概念
-キュー サービスには、次のコンポーネントが含まれます。
+Azure Queue サービスには、次のコンポーネントが含まれます。
 
 ![Queue1](./media/storage-queue-concepts-include/queue1.png)
 

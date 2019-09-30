@@ -3,7 +3,7 @@ title: Azure Status Monitor v2 の詳細な手順 | Microsoft Docs
 description: Status Monitor v2 を使い始めるための詳細な手順です。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 02f4fa45cbfa619825478520961b6411459973e4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 791db3de897231667d184f08ee152705c59a1e35
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326272"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057848"
 ---
 # <a name="status-monitor-v2-detailed-instructions"></a>Status Monitor v2:詳しい手順
 
@@ -161,7 +161,7 @@ SerializationVersion           1.1.0.1
 
 ### <a name="manually-download-the-latest-nupkg-file"></a>最新の nupkg ファイルを手動でダウンロードする
 
-1. [https://aka.ms/MFASetup](https://www.powershellgallery.com/packages/Az.ApplicationMonitor ) にアクセスします。
+1. https://www.powershellgallery.com/packages/Az.ApplicationMonitor にアクセスします。
 2. 「**Version History (バージョン履歴)** 」一覧から最新バージョンのファイルを選択します。
 3. 「**Installation Options (インストール オプション)** 」の「**Manual Download (手動ダウンロード)** 」を選択します。
 

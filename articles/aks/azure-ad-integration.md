@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 80137023643630e8472a70fcca6cb656aeba7123
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67616383"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103789"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -86,7 +86,7 @@ AKS クラスターに対して Azure AD 認証を提供するため、2 つの 
 
     e. **[アクセス許可の追加]** を選択して、更新を保存します。
 
-    f. **[同意する]** で、 **[管理者の同意を与えます]** を選択します。 現在のアカウントがテナント管理者ではない場合、このボタンは使用できます。
+    f. **[同意する]** で、 **[管理者の同意を与えます]** を選択します。 このボタンは使用できません。現在のアカウントは、テナント管理者として一覧に示されていません。
 
     アクセス許可が正常に付与されると、ポータルに次の通知が表示されます。
 
@@ -174,6 +174,9 @@ az aks create \
 AKS クラスターの作成には数分かかります。
 
 ## <a name="create-an-rbac-binding"></a>RBAC のバインドを作成する
+
+> [!NOTE]
+> クラスター ロールのバインド名では、大文字と小文字が区別されます。
 
 Azure Active Directory アカウントを AKS クラスターで使う前に、ロールのバインドまたはクラスター ロールのバインドを作成する必要があります。 付与するアクセス許可をロールによって定義し、それらをバインドによって目的のユーザーに適用します。 これらの割り当ては、特定の名前空間に適用することも、クラスター全体に適用することもできます。 詳細については、[RBAC 承認の使用][rbac-authorization]に関するページを参照してください。
 

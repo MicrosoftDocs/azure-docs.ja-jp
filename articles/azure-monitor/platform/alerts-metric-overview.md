@@ -7,12 +7,12 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: ce65d87142df64a9f0c27f3acdb4d6f25e86fb8a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4dd95d32bad76a610b88a4362e7887efdfaf6af0
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071622"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972060"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
@@ -64,7 +64,7 @@ Azure Monitor でメトリック アラートは、複数ディメンション�
 
 後続のチェックで "myVM" の使用率がしきい値を超えている場合、アラート ルールは、条件が解決されるまで再実行されません。
 
-しばらくして、"myVM" の使用率が標準 (しきい値未満) に戻った場合、動作は次のようになります。 アラート ルールでは、その条件をさらに 2 回監視してから、解決済みの通知を送信します。 アラート ルールは、条件が変動している場合のノイズを減らすため、3 つの連続する期間にアラート条件が検出されない場合に、解決済み/非アクティブ化済みのメッセージを送信します。
+しばらくすると、"myVM" の使用率が標準 (しきい値未満) に戻ります。 アラート ルールでは、その条件をさらに 2 回監視してから、解決済みの通知を送信します。 アラート ルールは、条件が変動している場合のノイズを減らすため、3 つの連続する期間にアラート条件が検出されない場合に、解決済み/非アクティブ化済みのメッセージを送信します。
 
 解決済みの通知が Web フックまたは電子メールで送信されると、Azure portal でのアラート インスタンスの状態 (監視状態と呼ばれる) も解決済みに設定されます。
 

@@ -9,18 +9,18 @@ ms.date: 12/06/2018
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
-ms.openlocfilehash: 24123278ff353860ff2af59f4fd77645dfc189e3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d5313f3f0fff128dd09f9c9857b7dd9921ea4f8
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938854"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992217"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Data Lake Storage Gen2 で HDFS CLI を使用する
 
 ストレージ アカウント内のデータにアクセスして管理するには、[Hadoop 分散ファイル システム (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) の場合と同様にコマンド ライン インターフェイスを使用します。 この記事では、作業を始めるのに役立つ例をいくつか示します。
 
-HDInsight では、それぞれのコンピューティング ノードにローカルに割り当てられている分散ファイル システムにアクセスします。 このファイル システムにアクセスするには、Hadoop でサポートされる HDFS などのファイル システムと直接対話するシェルを使用する必要があります。
+HDInsight では、それぞれのコンピューティング ノードにローカルに割り当てられている分散コンテナーにアクセスできます。 このコンテナーにアクセスするには、Hadoop でサポートされる HDFS などのファイル システムと直接対話するシェルを使用する必要があります。
 
 HDFS CLI の詳細については、[公式ドキュメント](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html)、および「[HDFS Permissions Guide (HDFS 権限ガイド)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)」を参照してください。
 
@@ -44,11 +44,11 @@ hdfs dfs -mkdir /samplefolder
 >[!IMPORTANT]
 >HDInsight クラスターの課金は、クラスターが作成された後に開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。 クラスターを削除する方法については、[トピックに関する記事](../../hdinsight/hdinsight-delete-cluster.md)を参照してください。 ただし、HDInsight クラスターを削除しても、Data Lake Storage Gen2 が使用可能なストレージ アカウントに保存されているデータは削除されません。
 
-## <a name="create-a-file-system"></a>ファイル システムを作成する
+## <a name="create-a-container"></a>コンテナーを作成する
 
-    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-* `<file-system-name>` プレースホルダーを、ファイル システムに付ける名前に置き換えます。
+* `<container-name>` プレースホルダーを、ご自身のコンテナーに付ける名前に置き換えます。
 
 * `<storage-account-name>` プレースホルダーは、実際のストレージ アカウントの名前に置き換えます。
 
@@ -56,7 +56,7 @@ hdfs dfs -mkdir /samplefolder
 
     hdfs dfs -ls <path>
 
-`<path>` プレースホルダーを、ファイル システムまたはファイル システム フォルダーの URI に置き換えます。
+`<path>` プレースホルダーを、コンテナーまたはコンテナー フォルダーの URI に置き換えます。
 
 次に例を示します。`hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
@@ -64,7 +64,7 @@ hdfs dfs -mkdir /samplefolder
 
     hdfs dfs -mkdir [-p] <path>
 
-`<path>` プレースホルダーを、ルート ファイル システム名またはファイル システム内のフォルダーに置き換えます。
+`<path>` プレースホルダーを、ルート コンテナー名またはお使いのコンテナー内のフォルダーに置き換えます。
 
 次に例を示します。`hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
 

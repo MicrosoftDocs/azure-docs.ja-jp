@@ -7,17 +7,16 @@ author: ColbyTresness
 manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.author: glenga
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: c54a5631222a6de261e9805f284a4dfa2801750f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: b47e828f3b8d760594cb04ba40ceaa7248050c52
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612927"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933475"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>JavaScript で最初の Durable Functions を作成する
 
@@ -163,4 +162,4 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 Visual Studio Code を使用して、JavaScript の Durable Functions アプリを作成して発行しました。
 
 > [!div class="nextstepaction"]
-> [Durable Functions の一般的なパターンについて学習する](durable-functions-concepts.md)
+> [Durable Functions の一般的なパターンについて学習する](durable-functions-overview.md#application-patterns)

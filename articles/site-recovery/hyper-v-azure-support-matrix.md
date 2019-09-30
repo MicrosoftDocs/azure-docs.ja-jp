@@ -1,19 +1,18 @@
 ---
-title: オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス | Microsoft Docs
+title: オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 description: Azure Site Recovery を使用して、Azure への Hyper-V VM のディザスター リカバリーを行う場合にサポートされるコンポーネントと要件の概要について説明します。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/10/2019
 ms.author: raynew
-ms.openlocfilehash: 3158ebddf6ffe5594c9daf0fd9f3e3fe980c0b24
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 784bf15a58e25ba4cba18494adc295343d0c175a
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845669"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098888"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>オンプレミス Hyper-V VM から Azure へのディザスター リカバリーのサポート マトリックス
 
@@ -133,7 +132,8 @@ geo 冗長ストレージ | はい | はい
 保存時の暗号化 (SSE)| はい | はい
 Premium Storage | はい | はい
 インポート/エクスポート サービス | いいえ | いいえ
-ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成された仮想ネットワークの Azure Storage ファイアウォール | いいえ | いいえ
+ファイアウォールが有効になっている Azure ストレージ アカウント | はい。 ターゲット ストレージとキャッシュの場合。 | はい。 ターゲット ストレージとキャッシュの場合。
+ストレージ アカウントの変更 | いいえ。 レプリケーションを有効にすると、ターゲット Azure ストレージ アカウントは変更できません。 変更するには、ディザスター リカバリーを無効にしてから再び有効にします。 | いいえ
 
 
 ## <a name="azure-compute-features"></a>Azure コンピューティング機能
@@ -151,7 +151,7 @@ Azure にレプリケートするオンプレミス VM は、この表にまと�
 **コンポーネント** | **要件** | **詳細**
 --- | --- | ---
 ゲスト オペレーティング システム | Site Recovery では、[Azure でサポートされている](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)すべてのオペレーティング システムがサポートされます。  | サポートされていない場合、前提条件の確認は失敗します。
-ゲスト オペレーティング システムのアーキテクチャ | 64 ビット | サポートされていない場合、前提条件の確認は失敗します。
+ゲスト オペレーティング システムのアーキテクチャ | 32 ビット (Windows Server 2008)/64 ビット | サポートされていない場合、前提条件の確認は失敗します。
 オペレーティング システムのディスク サイズ | 第 1 世代の VM では最大 2,048 GB です。<br/><br/> 第 2 世代の VM では最大 300 GB です。  | サポートされていない場合、前提条件の確認は失敗します。
 オペレーティング システムのディスク数 | 1 | サポートされていない場合、前提条件の確認は失敗します。
 データ ディスク数 | 16 以下  | サポートされていない場合、前提条件の確認は失敗します。
@@ -166,13 +166,13 @@ VM の種類 | 第 1 世代<br/><br/> 第 2 世代 -- Windows | OS ディスク�
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services コンテナーのアクション
 
-**アクション** |  **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
+**アクション** |  **Hyper-V (VMM あり)** | **Hyper-V (VMM なし)**
 --- | --- | ---
 リソース グループ間の資格情報コンテナーの移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ | いいえ
 リソース グループ間でストレージ、ネットワーク、Azure VM を移動<br/><br/> サブスクリプション内およびサブスクリプション間 | いいえ | いいえ
 
 > [!NOTE]
-> SCVMM で管理された Hyper-VM または SCVMM で管理されていない Hyper-VM をオンプレミスから Azure にレプリケートする際、ある特定の環境 (Hyper-V サイトまたは SCVMM のいずれか該当する方) からレプリケート先として使用できる AD テナントは 1 つだけです。
+> Hyper-VM をオンプレミスから Azure にレプリケートするときに、ある特定の環境 (Hyper-V サイトまたは VMM を持つ Hyper-V のいずれか該当する方) からレプリケート先として使用できる AD テナントは 1 つだけです。
 
 
 ## <a name="provider-and-agent"></a>プロバイダーとエージェント

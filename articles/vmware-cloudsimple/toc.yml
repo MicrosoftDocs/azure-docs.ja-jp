@@ -60,6 +60,8 @@
           href: access-cloudsimple-portal.md
         - name: オンプレミスのファイアウォールの構成
           href: on-premises-firewall-configuration.md
+        - name: vSphere クライアントにアクセスする
+          href: vcenter-access.md
         - name: ノードを管理する
           items:
             - name: ノードをプロビジョニングする
@@ -94,23 +96,19 @@
               href: public-ips.md
             - name: VPN 接続を設定する
               href: vpn-gateway.md
-            - name: CloudSimple への仮想ネットワーク接続に関するピア情報を取得する
+            - name: CloudSimple への仮想ネットワーク接続
               href: virtual-network-connection.md
-            - name: 管理タスクのために vSphere クライアント エスカレーション特権にアクセスする
-              href: 'https://docs.azure.cloudsimple.com/vsphere-access/'
         - name: CloudSimple ポータル アカウントを管理する
           items:
             - name: アカウントの概要を表示する
               href: account.md
             - name: ユーザーの一覧を表示する
               href: users.md
-            - name: プライベート クラウドへの仮想ネットワーク接続を設定する
-              href: virtual-network-connection.md
-        - name: VMware 仮想マシンをプライベート クラウド用に設定する
+        - name: CloudSimple 仮想マシンを設定する
           items:
-            - name: Azure で VM を作成する
+            - name: Azure で CloudSimple VM を作成する
               href: azure-create-vm.md
-            - name: Azure で VM を管理する
+            - name: Azure で CloudSimple VM を管理する
               href: azure-manage-vm.md
     - name: ハウツー ガイド
       items:
@@ -126,12 +124,14 @@
               href: migration-layer-2-vpn.md
         - name: プライベート クラウド ネットワーク
           items:
-            - name: オンプレミスとプライベート クラウドの間の VPN 接続
+            - name: プライベート クラウドへの VPN 接続
               href: set-up-vpn.md
             - name: ExpressRoute を使用したオンプレミス ネットワーク接続
               href: on-premises-connection.md
             - name: ExpressRoute を使用した Azure 仮想ネットワーク接続
               href: azure-expressroute-connection.md
+            - name: DNS 名前解決の構成
+              href: on-premises-dns-setup.md
         - name: VMware プラットフォーム
           items:
             - name: プライベート クラウドのアクセス許可モデルについて

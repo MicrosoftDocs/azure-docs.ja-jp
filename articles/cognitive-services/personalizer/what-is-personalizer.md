@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 05/07/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 99750971e11171c0b315cac38089c216d42c7ba6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 3132d31e9e45718fa95c39a1b8160ea303ded25d
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663666"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883668"
 ---
 # <a name="what-is-personalizer"></a>Personalizer とは
 
@@ -29,7 +29,7 @@ Azure Personalizer は、ユーザーのリアルタイムの動作から学習�
 
 ## <a name="how-does-personalizer-work"></a>Personalizer のしくみ
 
-Personalizer は、機械学習モデルを使用して、コンテキスト内で最上位に順位付けされるアクションを検出します。 クライアント アプリケーションは実行可能なアクションとアクションに関する情報の一覧と、コンテキストに関する情報 (ユーザーやデバイスなどに関する情報を含む場合がある) を提供します。Personalizer は、実行するアクションを決定します。 クライアント アプリケーションで選択されたアクションが使用されると、報酬スコアの形式で Personalizer にフィードバックが提供されます。 フィードバックの受信後、Personalizer によって、今後の順位付けのために使用される独自のモデルが自動的に更新されます。
+Personalizer は、機械学習モデルを使用して、コンテキスト内で最上位に順位付けされるアクションを検出します。 クライアント アプリケーションは実行可能なアクションとアクションに関する情報の一覧と、コンテキストに関する情報 (ユーザーやデバイスなどに関する情報を含む場合がある) を提供します。Personalizer は、実行するアクションを決定します。 クライアント アプリケーションで選択されたアクションが使用されると、報酬スコアの形式で Personalizer にフィードバックが提供されます。 フィードバックの受信後、Personalizer によって、今後の順位付けのために使用される独自のモデルが自動的に更新されます。 Personalizer は、時間の経過と共に 1 つのモデルをトレーニングします。このモデルは、それぞれの特徴に基づいて各コンテキストで選択する最適なアクションを提案することができます。
 
 ## <a name="how-do-i-use-the-personalizer"></a>Personalizer の使用方法
 
@@ -53,6 +53,8 @@ Personalizer は、機械学習モデルを使用して、コンテキスト内�
 * チャット ボットの応答を選択し、ユーザーの意図を明確にするか、アクションを提案します。
 * ビジネス プロセスの次のステップとして、ユーザーが行う必要がある候補のアクションを優先順付けします。
 
+Personalizer は、ユーザー プロファイル情報を保持および管理したり、個々のユーザーの基本設定や履歴を記録したりするサービスではありません。 Personalizer は、コンテキストにおけるアクションの各相互作用の特徴から、同様の特徴が発生したときに最大の報酬を得ることができる単一のモデルを学習します。 
+
 ## <a name="personalization-for-developers"></a>開発者向けの個人用設定
 
 Personalizer サービスには、次の 2 つの API があります。
@@ -64,5 +66,9 @@ Personalizer サービスには、次の 2 つの API があります。
 
 ## <a name="next-steps"></a>次の手順
 
-* [クイック スタート:C# でフィードバック ループを作成する](csharp-quickstart-commandline-feedback-loop.md)
+* [Personalizer の新機能](whats-new.md)
+* [Personalizer のしくみ](how-personalizer-works.md)
+* [強化学習とは](concepts-reinforcement-learning.md)
+* [Rank 要求の機能とアクションについて学習します](concepts-features.md)
+* [Reward 要求のスコアの特定について学習します](concept-rewards.md)
 * [対話型デモを使用する](https://personalizationdemo.azurewebsites.net/)

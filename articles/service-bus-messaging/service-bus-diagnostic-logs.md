@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6443cb727573645792a4e6c929b80c3406d72025
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60714143"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261799"
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
 
 Azure Service Bus の 2 種類のログを表示できます。
 * **[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)** これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
-* **[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)** 。 ジョブで発生するすべてのイベントに関する豊富な情報を含んだ診断ログを構成することができます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
+* **[診断ログ](../azure-monitor/platform/resource-logs-overview.md)** 。 ジョブで発生するすべてのイベントに関する豊富な情報を含んだ診断ログを構成することができます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
 ## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
 
@@ -52,7 +52,7 @@ Azure Service Bus の 2 種類のログを表示できます。
 
 新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断ログ]** ブレードに表示されます。
 
-診断の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)に関するページを参照してください。
+診断の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/resource-logs-overview.md)に関するページを参照してください。
 
 ## <a name="diagnostic-logs-schema"></a>診断ログのスキーマ
 
@@ -64,7 +64,7 @@ Azure Service Bus の 2 種類のログを表示できます。
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | 説明
+名前 | 説明
 ------- | -------
 ActivityId | 内部 ID。追跡目的で使用されます
 EventName | 操作の名前           

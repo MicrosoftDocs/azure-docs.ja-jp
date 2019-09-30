@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 09/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 973b097224b639a70d0904f1f82f2d95e3786d1f
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 9e597b03abfdeda01d74986b7b30c14de46fd3f1
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69969586"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861138"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
@@ -23,10 +23,10 @@ ms.locfileid: "69969586"
 
 |ダウンロード  |製品バージョン  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.33.23    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.33.23      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.2.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.2.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.1.25    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.1.25       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.0.5.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.0.5.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO と ADOMD (NuGet パッケージ)
 
@@ -34,8 +34,8 @@ Analysis Services 管理オブジェクト (AMO) と ADOMD クライアント �
 
 |Package  | 製品バージョン  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.2     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.2      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.0.5     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.0.5      |
 
 NuGet パッケージ アセンブリの AssemblyVersion は、セマンティック バージョニングであるMAJOR.MINOR.PATCH に従います。 NuGet 参照では、(MSI のインストールの結果として得られる) GAC 内に別のバージョンがある場合でも、必要なバージョンが読み込まれます。 PATCH は、リリースごとにインクリメントされます。 AMO と ADOMD のバージョンは常に同期されます。
 
@@ -73,7 +73,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
   
 ### <a name="oleddb-msolap"></a>OLEDDB (MSOLAP)  
   
-1.  [https://aka.ms/MFASetup](`C:\Program Files\Microsoft Analysis Services\AS OLEDB\`) にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
+1.  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
   
 2.  **[msolap.dll]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。 ファイル名が msolap140.dll である場合は、最新のバージョンよりも古いバージョンであるため、アップグレードする必要があります。
     
@@ -82,12 +82,12 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
   
 ### <a name="amo"></a>AMO
 
-1. [https://aka.ms/MFASetup](`C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\`) にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
+1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
 2. **[Microsoft.AnalysisServices]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。  
 
 ### <a name="adomd"></a>ADOMD
 
-1. [https://aka.ms/MFASetup](`C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\`) にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
+1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
 2. **[Microsoft.AnalysisServices.AdomdClient]**  >  **[プロパティ]**  >  **[詳細]** の順にクリック (最初は右クリック) します。  
 
 

@@ -81,6 +81,8 @@
       href: search-lucene-query-architecture.md
     - name: Cognitive Search
       href: cognitive-search-concept-intro.md
+    - name: スキルセット
+      href: cognitive-search-working-with-skillsets.md
     - name: ナレッジ ストア
       href: knowledge-store-concept-intro.md
     - name: プロジェクション
@@ -166,9 +168,7 @@
         - name: 複合データ型をモデル化する
           href: search-howto-complex-data-types.md
         - name: リレーショナル データをモデル化する
-          href: search-example-adventureworks-modeling.md
-        - name: 多層構造ファセットをモデル化する
-          href: search-example-adventureworks-multilevel-faceting.md
+          href: index-sql-relational-data.md
     - name: データを読み込む
       items:
         - name: データ インポートの概要
@@ -239,29 +239,33 @@
           href: cognitive-search-concept-troubleshooting.md
         - name: ドキュメント リンク
           href: cognitive-search-resources-documentation.md
-    - name: ナレッジ ストア (プレビュー)
+        - name: ナレッジ ストア (プレビュー)
+          items:
+            - name: Azure portal でのナレッジ ストアの作成
+              href: knowledge-store-create-portal.md
+            - name: REST と Postman を使用した作成
+              href: knowledge-store-howto.md
+            - name: Storage Explorer を使用した表示
+              href: knowledge-store-view-storage-explorer.md
+            - name: Power BI を使用した接続
+              href: knowledge-store-connect-power-bi.md
+    - name: ドキュメントにクエリを実行する
       items:
-        - name: Power BI を使用した接続
-          href: knowledge-store-connect-powerbi.md
-        - name: REST と Postman を使用した作成
-          href: knowledge-store-howto.md
-    - name: データのクエリを実行する
-      items:
-        - name: 基本的なクエリの作成
+        - name: クエリの種類と構成
           href: search-query-overview.md
-        - name: Search エクスプローラー (ポータル)
+        - name: 簡単なクエリを作成する
+          href: search-query-simple-examples.md
+        - name: 完全な Lucene 構文を使用する
+          href: search-query-lucene-examples.md
+        - name: Search エクスプローラーを使用する (ポータル)
           href: search-explorer.md
         - name: 単純なクエリ構文
           href: query-simple-syntax.md
         - name: Full Lucene クエリ構文
           href: query-lucene-syntax.md
-        - name: 例 (簡単な構文)
-          href: search-query-simple-examples.md
-        - name: 例 (完全な Lucene)
-          href: search-query-lucene-examples.md
         - name: moreLikeThis (プレビュー)
           href: search-more-like-this.md
-    - name: フィルターの使用
+    - name: フィルターを適用する
       items:
         - name: フィルターの概要
           href: search-filters.md
@@ -273,22 +277,20 @@
           href: search-query-troubleshoot-collection-filters.md
         - name: コレクション フィルターについて
           href: search-query-understand-collection-filters.md
+        - name: 多層構造ファセットの例
+          href: search-example-adventureworks-multilevel-faceting.md
     - name: 結果を処理する
       items:
         - name: ページ関連の機能
           href: search-pagination-page-layout.md
-    - name: 関連性のチューニング
-      items:
-        - name: スコアリング プロファイルの追加
+        - name: 関連性のチューニング (スコアリング プロファイル)
           href: index-add-scoring-profiles.md
-    - name: 管理
+    - name: 管理および監視
       items:
         - name: ポータルの管理
           href: search-manage.md
         - name: PowerShell の管理
           href: search-manage-powershell.md
-    - name: 監視
-      items:
         - name: Monitor アクティビティとログ記録
           href: search-monitor-usage.md
         - name: 検索トラフィックの分析

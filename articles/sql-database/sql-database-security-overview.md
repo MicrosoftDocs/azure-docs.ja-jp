@@ -36,7 +36,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 
 [仮想ネットワーク サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)では、Azure バックボーン経由で仮想ネットワーク接続を拡張し、Azure SQL Database でトラフィック元の仮想ネットワーク サブネットを識別できるようにします。 Azure SQL Database にトラフィックが到達できるようにするには、SQL の[サービス タグ](../virtual-network/security-overview.md)を使用して、ネットワーク セキュリティ グループを介したアウトバウンド トラフィックを許可します。
 
-[仮想ネットワーク規則](sql-database-vnet-service-endpoint-rule-overview.md)を使用すると、Azure SQL Database は、仮想ネットワーク内の選択されたサブネットから送信される通信のみを受け入れることができます。
+[仮想ネットワーク規則](sql-database-vnet-service-endpoint-rule-overview.md)を使用すると、Azure SQL Database は、仮想ネットワーク内の選択されたサブネットから送信される通信のみを受け入れるようにすることができます。
 
 > [!NOTE]
 > ファイアウォール規則でのアクセスの制御は、**マネージド インスタンス**には適用され*ません*。 必要なネットワーク構成について詳しくは、「[マネージド インスタンスへの接続](sql-database-managed-instance-connect-app.md)」を参照してください
@@ -46,7 +46,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
 > [!IMPORTANT]
 > Azure 内でのデータベースとデータベース サーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../role-based-access-control/overview.md)」を参照してください。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 
 認証は、ユーザーが本人の主張どおりの人物であることを証明するプロセスです。 Azure SQL Database では、次の 2 種類の認証がサポートされます。
 
@@ -63,7 +63,7 @@ IP ファイアウォール規則では、各要求の送信元 IP アドレス�
     使用できる追加の Azure AD 認証オプションには、[多要素認証](../active-directory/authentication/concept-mfa-howitworks.md)と[条件付きアクセス](sql-database-conditional-access.md)を含む、[SQL Server Management Studio 用の Active Directory ユニバーサル認証](sql-database-ssms-mfa-authentication.md)接続があります。
 
 > [!IMPORTANT]
-> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../role-based-access-control/overview.md)」を参照してください。 ファイアウォール規則でのアクセスの制御は、**マネージド インスタンス**には適用され*ません*。 必要なネットワーク構成について詳しくは、[マネージド インスタンスへの接続](sql-database-managed-instance-connect-app.md)に関する次の記事をご覧ください。
+> Azure 内でのデータベースとサーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../role-based-access-control/overview.md)」を参照してください。 ファイアウォール規則でのアクセスの制御は、**マネージド インスタンス**には適用され*ません*。 必要なネットワーク構成の詳細については、[マネージド インスタンスへの接続](sql-database-managed-instance-connect-app.md)に関する次の記事をご覧ください。
 
 ## <a name="authorization"></a>Authorization
 
@@ -104,7 +104,7 @@ SQL Server では、すべての接続に対して常に暗号化 (SSL/TLS) が�
 たとえば、ADO.NET ドライバーを使用している場合、これは、**Encrypt=True** と **TrustServerCertificate=False** によって達成されます。 Azure portal から接続文字列を取得する場合は、正しい設定になっています。
 
 > [!IMPORTANT]
-> Microsoft 以外のドライバーは、機能するために、既定で TLS を使用しないか、または TLS の以前のバージョン (1.2 未満) に依存している場合があります。 この場合も、SQL Server は引き続きデータベースへの接続を許可します。 ただし、特に機密データを格納する場合に、そのようなドライバーとアプリケーションの SQL Database への接続を許可することのセキュリティ上のリスクを評価することをお勧めします。 
+> Microsoft 以外のドライバーは、機能するために、既定で TLS を使用しないか、または TLS の以前のバージョン (1.2 未満) に依存している場合があります。 この場合も、SQL Server は引き続きデータベースへの接続を許可します。 ただし、特に機密データを格納する場合には、そのようなドライバーとアプリケーションによる SQL Database への接続許可について、セキュリティ上のリスクを評価することをお勧めします。 
 >
 > TLS と接続の詳細については、[TLS に関する考慮事項](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)に関するセクションを参照してください
 

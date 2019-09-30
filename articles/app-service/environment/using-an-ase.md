@@ -9,17 +9,16 @@ ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e9c34d3cfd5ce9bb3a8f9a9072f2843331065100
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cabefcc53106a53459975fc26513dc59ae7d3372
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66496517"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073206"
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
 
@@ -31,11 +30,11 @@ Azure App Service Environment は、ユーザーの Azure 仮想ネットワー�
 - **ストレージ**:ユーザーによって発行されたアプリのホストとして使用されます。
 
 > [!NOTE]
-> App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 ASEv1 では、使用するリソースを事前に管理する必要があります。 ASEv1 の構成と管理の方法については、[App Service Environment v1 の構成][ConfigureASEv1]に関するページを参照してください。 この記事の残りの部分では、ASEv2 について説明します。
+> App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンがあります。 ASEv1 では、使用するリソースを事前に管理する必要があります。 ASEv1 の構成と管理の方法については、「[App Service Environment v1 の構成][ConfigureASEv1]」を参照してください。 この記事の残りの部分では、ASEv2 について説明します。
 >
 >
 
-ASE は (ASEv1 と ASEv2 のどちらも)、アプリ アクセスに外部 VIP を使用したデプロイと内部 VIP を使用したデプロイが可能です。 外部 VIP を使用したデプロイは、外部 ASE と呼ばれます。 内部 VIP を使用したデプロイは、内部ロード バランサー (ILB) を使用するので、ILB ASE と呼ばれます。 ILB ASE の詳細については、[ILB ASE の作成と使用][MakeILBASE]に関するページを参照してください。
+ASE は (ASEv1 と ASEv2 のどちらも)、アプリ アクセスに外部 VIP を使用したデプロイと内部 VIP を使用したデプロイが可能です。 外部 VIP を使用したデプロイは、外部 ASE と呼ばれます。 内部 VIP を使用したデプロイは、内部ロード バランサー (ILB) を使用するので、ILB ASE と呼ばれます。 ILB ASE の詳細については、「[App Service Environment で内部ロード バランサーを作成して使用する][MakeILBASE]」を参照してください。
 
 ## <a name="create-an-app-in-an-ase"></a>ASE 内にアプリを作成する ##
 
@@ -44,7 +43,7 @@ ASE でアプリを作成する方法は通常の作成方法とほとんど同�
 - アプリのデプロイ先の場所として地理的な場所ではなく ASE を選択します。
 - ASE で作成する App Service プランはすべて、"分離" 価格レベルに属している必要があります。
 
-ASE をご利用でない場合は、[App Service Environment の作成][MakeExternalASE]に関するページの手順に従って作成できます。
+ASE をご利用でない場合は、「[外部 App Service Environment の作成][MakeExternalASE]」の手順に従って作成できます。
 
 ASE 内にアプリを作成するには:
 
@@ -92,7 +91,7 @@ ASE では、最大 100 インスタンスまでスケールアップするこ�
 
 ## <a name="ip-addresses"></a>IP アドレス ##
 
-App Service には、アプリに専用の IP アドレスを割り当てる機能があります。 [既存のカスタム SSL 証明書の Azure App Service へのバインド][ConfigureSSL]に関する記事で説明されているように、この機能は IP ベースの SSL を構成した後に利用できます。 ただし、ASE の場合は重要な例外があります。 ILB ASE では IP ベースの SSL に使用する追加の IP アドレスを追加することはできません。
+App Service には、アプリに専用の IP アドレスを割り当てる機能があります。 「[Azure App Service の SSL 証明書を購入して構成する][ConfigureSSL]」で説明されているように、この機能は IP ベースの SSL を構成した後に利用できます。 ただし、ASE の場合は重要な例外があります。 ILB ASE では IP ベースの SSL に使用する追加の IP アドレスを追加することはできません。
 
 ASEv1 では、使用する IP アドレスを事前にリソースとして割り当てておく必要があります。 ASEv2 では、マルチテナントの App Service の場合と同様、アプリの IP アドレスを使用します。 ASEv2 には、IP アドレスが 30 個を上限として、常に予備のアドレスが 1 つ存在します。 すぐに利用できる IP アドレスを常時確保するために、アドレスを 1 つ使用すると、そのたびに、別のアドレスが追加されます。 別の IP アドレスを割り当てるまでに、どうしても時間差が発生するので、IP アドレスを立て続けに追加することはできません。
 
@@ -100,20 +99,20 @@ ASEv1 では、使用する IP アドレスを事前にリソースとして割�
 
 ASEv2 では、App Service プランをスケールアウトすると、そのために必要なワーカーが自動的に追加されます。 各 ASE は 2 つのフロント エンドで作成されます。 さらに、フロント エンドは App Service プラン内の 15 インスタンスにつき 1 つの割合で自動的にスケールアウトされます。 たとえば、15 個のインスタンスが存在する場合、フロント エンド数は 3 つになります。 同様に、30 インスタンスまでスケールした場合は、フロント エンド数は 4 つです。
 
-ほとんどのシナリオで、この数のフロント エンドがあれば十分ですが、 より高速にスケールアウトすることもできます。 最小で 5 インスタンスにつき 1 フロント エンドの割合でスケールアウトするよう変更することができますが、 スケールアウト率の変更には料金がかかります。 詳細については、[Azure App Service の価格][Pricing]に関するページを参照してください。
+ほとんどのシナリオで、この数のフロント エンドがあれば十分ですが、 より高速にスケールアウトすることもできます。 最小で 5 インスタンスにつき 1 フロント エンドの割合でスケールアウトするよう変更することができますが、 スケールアウト率の変更には料金がかかります。 詳細については、「[App Service の価格][Pricing]」を参照してください。
 
 フロント エンド リソースは、ASE の HTTP/HTTPS エンドポイントです。 既定のフロント エンド構成では、各フロント エンドのメモリ使用量が常時 60% 程度となります。 顧客のワークロードがフロント エンドで実行されることはありません。 スケールに関して重要となるフロント エンドの要素は CPU で、これは主に HTTPS トラフィックによって決まります。
 
 ## <a name="app-access"></a>アプリのアクセス ##
 
-外部 ASE では、アプリを作成するときに使用されるドメインはマルチテナント App Service とは異なり、 ASE の名前を含みます。 外部 ASE の作成について詳しくは、[App Service Environment の作成][MakeExternalASE]に関するページを参照してください。 外部 ASE のドメイン名は、たとえば *.&lt;asename&gt;.p.azurewebsites.net* という形式になります。 たとえば、実際の ASE の名前が _external-ase_ で、その ASE でホストするアプリの名前が _contoso_ である場合、そのアプリには次の URL でアクセスすることになります。
+外部 ASE では、アプリを作成するときに使用されるドメインはマルチテナント App Service とは異なり、 ASE の名前を含みます。 外部 ASE の作成方法について詳しくは、「[外部 App Service Environment の作成][MakeExternalASE]」を参照してください。 外部 ASE のドメイン名は、たとえば *.&lt;asename&gt;.p.azurewebsites.net* という形式になります。 たとえば、実際の ASE の名前が _external-ase_ で、その ASE でホストするアプリの名前が _contoso_ である場合、そのアプリには次の URL でアクセスすることになります。
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
-contoso.scm.external-ase.p.azurewebsites.net は、Kudu コンソールにアクセスするとき、または Web 配置でアプリを発行するときに使用する URL です。 Kudu コンソールについては、[Azure App Service の Kudu コンソール][Kudu]に関するページを参照してください。 Kudu コンソールを使用すると、デバッグやファイルのアップロード、ファイルの編集など、さまざまな作業を Web UI で行うことができます。
+contoso.scm.external-ase.p.azurewebsites.net は、Kudu コンソールにアクセスするとき、または Web 配置でアプリを発行するときに使用する URL です。 Kudu コンソールの詳細については、「[Azure App Service の Kudu コンソール][Kudu]」を参照してください。 Kudu コンソールを使用すると、デバッグやファイルのアップロード、ファイルの編集など、さまざまな作業を Web UI で行うことができます。
 
-ILB ASE では、デプロイ時にドメインを決定します。 ILB ASE の作成方法について詳しくは、[ILB ASE の作成と使用][MakeILBASE]に関するページを参照してください。 ドメイン名として _ilb-ase.info_ を指定した場合、その ASE 内のアプリには、その指定したドメインをアプリの作成時に使用します。 たとえば _contoso_ という名前のアプリの URL は次のようになります。
+ILB ASE では、デプロイ時にドメインを決定します。 ILB ASE の作成方法について詳しくは、「[App Service Environment で内部ロード バランサーを作成して使用する][MakeILBASE]」を参照してください。 ドメイン名として _ilb-ase.info_ を指定した場合、その ASE 内のアプリには、その指定したドメインをアプリの作成時に使用します。 たとえば _contoso_ という名前のアプリの URL は次のようになります。
 
 - contoso.ilb-ase.info
 - contoso.scm.ilb-ase.info
@@ -130,7 +129,7 @@ ILB ASE では、デプロイ時にドメインを決定します。 ILB ASE の
 
 外部 ASE では、これらの発行オプションの動作はすべて同じです。 詳細については、[Azure App Service へのデプロイ][AppDeploy]に関するページを参照してください。 
 
-発行方法に大きな違いがあるのは ILB ASE です。 ILB ASE では、発行エンドポイントは ILB を介してしか利用できません。 ILB は、仮想ネットワークの ASE サブネット内のプライベート IP 上に存在します。 ILB へのネットワーク アクセスができなければ、その ASE にアプリを発行することができません。 [ILB ASE の作成と使用][MakeILBASE]に関するページで述べられているように、システム内にアプリ用の DNS を構成する必要があります。 SCM のエンドポイントも対象となります。 これらが適切に定義されてないと発行できません。 ご利用の IDE から直接発行するためには、ILB へのネットワーク アクセスが IDE にも必要です。
+発行方法に大きな違いがあるのは ILB ASE です。 ILB ASE では、発行エンドポイントは ILB を介してしか利用できません。 ILB は、仮想ネットワークの ASE サブネット内のプライベート IP 上に存在します。 ILB へのネットワーク アクセスができなければ、その ASE にアプリを発行することができません。 「[App Service Environment で内部ロード バランサーを作成して使用する][MakeILBASE]」で述べられているように、システム内にアプリ用の DNS を構成する必要があります。 SCM のエンドポイントも対象となります。 これらが適切に定義されてないと発行できません。 ご利用の IDE から直接発行するためには、ILB へのネットワーク アクセスが IDE にも必要です。
 
 既定では、インターネットベースの CI システム (GitHub、Azure DevOps など) は ILB ASE では動作しません。発行エンドポイントにインターネットでアクセスすることができないためです。 Azure devops でこの問題を回避するには、セルフホステッド リリース エージェントを内部ネットワーク内にインストールして、ILB にアクセスできるようにします。 プル モデルを使用した CI システム (Dropbox など) を使用することもできます。
 
@@ -148,7 +147,7 @@ App Service プランの料金に加え、ASE そのものの固定料金がか�
 
 フロント エンドのサイズを 2 コアに調整して、スケール率を調整しなかった場合、追加のコアの料金が発生します。  ASE は 2 つのフロント エンドで作成されています。このため、自動スケーリングしきい値を下回っていても、フロント エンドのサイズを 2 コアに拡張した場合は、追加の 2 つのコアの料金を支払うことになります。
 
-詳細については、[Azure App Service の価格][Pricing]に関するページを参照してください。
+詳細については、「[App Service の価格][Pricing]」を参照してください。
 
 ## <a name="delete-an-ase"></a>ASE の削除 ##
 

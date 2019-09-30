@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e30bd940d3312a16f2dd30b175deb6622cb8c01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834733"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69532408"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 
@@ -35,7 +35,7 @@ OAuth2 の暗黙的な許可は、OAuth2 仕様のセキュリティ問題を最
 
 典型的な [OAuth2 認証コード付与](https://tools.ietf.org/html/rfc6749#section-1.3.1) は、2 つの別個のエンドポイントを使用する認証付与です。 承認エンドポイントはユーザーによる操作の段階で使用され、その結果、承認コードが生成されます。 続いて、このコードをアクセス トークン (多くの場合は更新トークンも) と交換するために、トークン エンドポイントがクライアントによって使用されます。 Web アプリケーションは、承認サーバーがクライアントを認証できるように、トークン エンドポイントに独自のアプリケーション資格情報を示す必要があります。
 
-[OAuth2 の暗黙的な許可](https://tools.ietf.org/html/rfc6749#section-1.3.2)は、他の認証付与のバリアントです。 トークン エンドポイントにアクセスしたり、クライアントを認証したりすることなく、クライアントがアクセス トークン ([OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html) を使用する場合は id_token) を承認エンドポイントから直接取得できるようにします。 このバリアントは、Web ブラウザーで実行される JavaScript ベースのアプリケーションを想定したものです。元の OAuth2 仕様では、トークンは URI フラグメントとして返されます。 これにより、クライアントの JavaScript コードでトークン ビットを使用できるようになりますが、サーバーへのリダイレクトには含まれないことが保証されます。 ブラウザーを使用してトークンを返すと、承認エンドポイントから直接リダイレクトされます。 これには、クロス オリジン呼び出しに関する要件がなくなるという利点もあります。クロス オリジン呼び出しは、JavaScript アプリケーションがトークン エンドポイントにアクセスしなければならない場合に必要になるものです。
+[OAuth2 の暗黙的な許可](https://tools.ietf.org/html/rfc6749#section-1.3.2)は、他の認証付与のバリアントです。 トークン エンドポイントにアクセスしたり、クライアントを認証したりすることなく、クライアントがアクセス トークン ([OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html) を使用する場合は id_token) を承認エンドポイントから直接取得できるようにします。 このバリアントは、Web ブラウザーで実行される JavaScript ベースのアプリケーションを想定したものです。元の OAuth2 仕様では、トークンは URI フラグメントとして返されます。 これにより、クライアントの JavaScript コードでトークン ビットを使用できるようになりますが、サーバーへのリダイレクトには含まれないことが保証されます。 OAuth2 の暗黙的な許可では、承認エンドポイントで以前に指定されたリダイレクト URI を使用し、クライアントに直接アクセス トークンを発行します。 これには、クロス オリジン呼び出しに関する要件がなくなるという利点もあります。クロス オリジン呼び出しは、JavaScript アプリケーションがトークン エンドポイントにアクセスしなければならない場合に必要になるものです。
 
 OAuth2 の暗黙的な許可の重要な特性は、このフローでクライアントに更新トークンが返されないという事実です。 これが必要ではなく、実際にはセキュリティ上の問題になりうることを次のセクションで説明します。
 

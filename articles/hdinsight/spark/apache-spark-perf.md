@@ -1,6 +1,6 @@
 ---
 title: パフォーマンスのための Spark ジョブの最適化 - Azure HDInsight
-description: Spark クラスターのパフォーマンスを最適にするための一般的な戦略を示します。
+description: Azure HDInsight で Apache Spark クラスターのパフォーマンスを最適にするための一般的な戦略を示します。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 5701bb534d0fd0e25aab90f9d1035c96bb55c518
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 673c83c861e1f044a521786a903dd7b21db8c170
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476102"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995554"
 ---
-# <a name="optimize-apache-spark-jobs"></a>Apache Spark ジョブを最適化する
+# <a name="optimize-apache-spark-jobs-in-hdinsight"></a>HDInsight で Apache Spark ジョブを最適化する
 
 [Apache Spark](https://spark.apache.org/) クラスター構成を特定のワークロード用に最適化する方法を説明します。  最もよくある課題は、不適切な構成 (特に不適切なサイズの実行プログラム)、実行時間の長い操作、およびデカルト演算を生じるタスクが原因の、メモリ不足です。 ジョブは、適切なキャッシュを使用し、[データ スキュー](#optimize-joins-and-shuffles)を可能にすることで、高速化することができます。 最適なパフォーマンスを得るためには、実行時間が長くリソースを多く消費する Spark ジョブの実行を監視し、確認します。
 
@@ -96,7 +96,7 @@ Spark はデータをメモリ内に配置することで動作するため、�
 
 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) を使用する場合は、YARN が Spark の各ノード上のすべてのコンテナーで使用される最大合計メモリを制御します。  次の図は、重要なオブジェクトとそれらの関連性を示しています。
 
-![YARN の Spark メモリの管理](./media/apache-spark-perf/yarn-spark-memory.png)
+![YARN の Spark メモリの管理](./media/apache-spark-perf/apache-yarn-spark-memory.png)
 
 ''メモリ不足'' のメッセージに対処するには、次を試してください。
 

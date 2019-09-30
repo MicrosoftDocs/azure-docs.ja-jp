@@ -3,15 +3,15 @@ title: Azure Resource Manager テンプレートの関数 - 比較 | Microsoft D
 description: Azure Resource Manager テンプレートで値を比較するために使用する関数について説明します。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 09/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 0eafadd4049baea58aa882b3421eaa6a684a3a38
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 05e51af62be974f925fefc46ad63c489f27fd163
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205496"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194822"
 ---
 # <a name="comparison-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの比較関数
 
@@ -165,7 +165,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 前の例からの出力は次のようになります。
 
-| Name | Type | 値 |
+| 名前 | Type | 値 |
 | ---- | ---- | ----- |
 | checkNotEquals | Bool | True |
 

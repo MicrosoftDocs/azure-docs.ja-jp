@@ -59,6 +59,8 @@
       items:
         - name: イメージのプッシュとプル
           href: container-registry-get-started-docker-cli.md
+        - name: OCI 成果物のプッシュとプル
+          href: container-registry-oci-artifacts.md
         - name: リポジトリの表示
           href: container-registry-repositories.md
         - name: コンテナー イメージのインポート
@@ -69,6 +71,8 @@
           items:
             - name: イメージ データの削除 - CLI
               href: container-registry-delete.md
+            - name: タグが付けられていないマニフェストの保持ポリシー (プレビュー)
+              href: container-registry-retention-policy.md
             - name: タグとマニフェストの自動消去 (プレビュー)
               href: container-registry-auto-purge.md
         - name: クラシック レジストリのアップグレード
@@ -83,7 +87,7 @@
           href: container-registry-vnet.md
         - name: ファイアウォールの内側にアクセスする
           href: container-registry-firewall-access-rules.md
-        - name: Authentication
+        - name: 認証
           items:
             - name: 認証の概要
               href: container-registry-authentication.md

@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a6c12a2fdc8616dd6f7107d11e8f6c77401811fb
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8a567dbbd8c5e752b8d9294623a5f4d3f37e5a05
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968009"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906891"
 ---
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [JDK 7 以降](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
-* Translator Text の Azure サブスクリプション キー
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>Gradle を使用してプロジェクトを初期化する
 
@@ -44,7 +42,7 @@ plugins {
     application
 }
 application {
-    mainClassName = "LengthSentence"
+    mainClassName = "BreakSentence"
 }
 repositories {
     mavenCentral()
@@ -65,11 +63,11 @@ dependencies {
 mkdir -p src/main/java
 ```
 
-次に、このフォルダー内に `LengthSentence.java` というファイルを作成します。
+次に、このフォルダー内に `BreakSentence.java` というファイルを作成します。
 
 ## <a name="import-required-libraries"></a>必要なライブラリをインポートする
 
-`LengthSentence.java` を開き、次のインポート ステートメントを追加します。
+`BreakSentence.java` を開き、次のインポート ステートメントを追加します。
 
 ```java
 import java.io.*;
@@ -85,22 +83,23 @@ import com.squareup.okhttp.*;
 まず、プロジェクトのパブリック クラスを作成する必要があります。
 
 ```java
-public class LengthSentence {
+public class BreakSentence {
   // All project code goes here...
 }
 ```
 
-次の行を `LengthSentence` クラスに追加します。 `api-version` と共に、入力言語を定義できることがわかります。 このサンプルでは英語です。
+次の行を `BreakSentence` クラスに追加します。 まず、サブスクリプション キーとエンドポイントが環境変数から読み取られます。 `api-version` と共に、入力言語を定義できることがわかります。 このサンプルでは英語です。
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0&language=en";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/breaksentence?api-version=3.0&language=en";
 ```
 Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 
 ## <a name="create-a-client-and-build-a-request"></a>クライアントを作成して要求をビルドする
 
-次の行を `LengthSentence` クラスに追加して、`OkHttpClient` をインスタンス化します。
+次の行を `BreakSentence` クラスに追加して、`OkHttpClient` をインスタンス化します。
 
 ```java
 // Instantiates the OkHttpClient.
@@ -145,8 +144,8 @@ public static String prettify(String json_text) {
 ```java
 public static void main(String[] args) {
     try {
-        LengthSentence lengthSentenceRequest = new LengthSentence();
-        String response = lengthSentenceRequest.Post();
+        BreakSentence breakSentenceRequest = new BreakSentence();
+        String response = BreakSentenceRequest.Post();
         System.out.println(prettify(response));
     } catch (Exception e) {
         System.out.println(e);

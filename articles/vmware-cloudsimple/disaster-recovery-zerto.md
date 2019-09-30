@@ -8,19 +8,19 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3ad2372f9a9f90e4502b304a08477771fd6ef385
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 0e019a9229b671be2fb73e758bd39f33657bc2d4
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879179"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037417"
 ---
 # <a name="set-up-cloudsimple-private-cloud-as-a-disaster-recovery-site-for-on-premises-vmware-workloads"></a>CloudSimple プライベート クラウドをオンプレミスの VMware ワークロード用のディザスター リカバリー サイトとして設定する
 
 CloudSimple プライベート クラウドは、災害時にもビジネス継続性を提供するための、オンプレミス アプリケーションの復旧サイトとして設定できます。 この復旧ソリューションは、レプリケーションおよびオーケストレーションのプラットフォームとしての Zerto Virtual Replication に基づいています。 重要なインフラストラクチャとアプリケーション仮想マシンを、オンプレミスの vCenter からプライベート クラウドに継続的にレプリケートできます。 プライベート クラウドは、フェールオーバー テストの実施と、災害時のアプリケーションの可用性の確保のために使用することができます。 同様のアプローチに従って、プライベート クラウドを別の場所にある復旧サイトによって保護されるプライマリ サイトとして設定することができます。
 
 > [!NOTE]
-> お使いのディザスター リカバリー環境のサイズ設定に関するガイドラインについては、Zerto のドキュメント「[Zerto Virtual Replication のサイズ設定に関する考慮事項](http://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf)」を参照してください。
+> お使いのディザスター リカバリー環境のサイズ設定に関するガイドラインについては、Zerto のドキュメント「[Zerto Virtual Replication のサイズ設定に関する考慮事項](https://s3.amazonaws.com/zertodownload_docs/5.5U3/Zerto%20Virtual%20Replication%20Sizing.pdf)」を参照してください。
 
 CloudSimple ソリューション:
 

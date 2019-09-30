@@ -16,12 +16,14 @@
           href: quickstarts/detect-data-anomalies-java.md
         - name: Python の使用
           href: quickstarts/detect-data-anomalies-python.md
-    - name: Client
+    - name: クライアント ライブラリ
       items:
         - name: 'C# の使用'
           href: quickstarts/detect-data-anomalies-csharp-sdk.md
         - name: Python の使用
           href: quickstarts/detect-data-anomalies-python-sdk.md
+        - name: Node.js の使用
+          href: quickstarts/detect-data-anomalies-nodejs-sdk.md
 - name: チュートリアル
   items:
     - name: Power BI を使用して異常をバッチとして視覚化する

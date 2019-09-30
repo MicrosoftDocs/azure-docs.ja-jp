@@ -10,18 +10,18 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 53f65ec91a1e0f1e5a6322f0125bf83cd3e400b2
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 6cded49f14ae90f84b18c0a37059677c6c1fed99
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399097"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562794"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>サポートされている Azure Blockchain Service の台帳のバージョン
 
 Azure Blockchain Service では、既知の参加者のグループ (Azure Blockchain Service ではコンソーシアムと呼ばれます) 内のプライベート トランザクションの処理用に設計されている Ethereum ベースの [Quorum](https://www.goquorum.com/developers) 台帳が使用されます。
 
-現在、Azure Blockchain Service では [Quorum バージョン 2.2.1](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.1) と [Tessera トランザクション マネージャー](https://github.com/jpmorganchase/tessera)がサポートされています。
+現在、Azure Blockchain Service は [Quorum バージョン 2.2.3](https://github.com/jpmorganchase/quorum/releases/tag/v2.2.3) と [Tessera トランザクション マネージャー](https://github.com/jpmorganchase/tessera)をサポートしています。
 
 ## <a name="managing-updates-and-upgrades"></a>更新プログラムとアップグレードの管理
 

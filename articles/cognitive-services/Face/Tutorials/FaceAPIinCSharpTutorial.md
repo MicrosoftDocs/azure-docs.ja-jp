@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 54069fbaa8ad06d257ab835ed3b170fecb76d800
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 93932fac9a5e5d4c21adc99bd31e9366a9709cc2
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603336"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859119"
 ---
 # <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル:画像内の顔データを表示する WPF アプリの作成
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。
+- Face API サブスクリプション キー。 無料試用版のサブスクリプション キーは「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=face-api)」から取得できます。 または、[Cognitive Services アカウントの作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページの手順に従って、Face API サービスをサブスクライブし、キーを取得します。 次に、キーとサービス エンドポイント文字列用に、それぞれ `FACE_SUBSCRIPTION_KEY` と `FACE_ENDPOINT` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 - [Visual Studio 2015 または 2017](https://www.visualstudio.com/downloads/) の任意のエディション。
 
 ## <a name="create-the-visual-studio-project"></a>Visual Studio プロジェクトの作成
@@ -59,27 +59,31 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 *MainWindow.xaml* を開き、その内容を次のコードに置き換えます&mdash;このコードにより UI ウィンドウが作成されます。 `FacePhoto_MouseMove` メソッドと `BrowseButton_Click` メソッドは、後で定義するイベント ハンドラーです。
 
-[!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?range=1-18)]
+[!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
 ### <a name="create-the-main-class"></a>main クラスを作成する
 
 *MainWindow.xaml.cs* を開き、クライアント ライブラリの名前空間を、その他必要な名前空間と共に追加します。 
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=1-12)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_using)]
 
-次に、**MainWindow** クラスに次のコードを挿入します。 このコードにより、サブスクリプション キーを使用して **FaceClient** インスタンスが作成されます。サブスクリプション キーは自分で入力する必要があります。 `faceEndpoint` に含まれるリージョン文字列を、ご利用のサブスクリプションに適したリージョンに設定する必要があります (全リージョンのエンドポイント一覧については、[Face API のドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照)。
+次に、**MainWindow** クラスに次のコードを挿入します。 このコードでは、サブスクリプション キーとエンドポイントを使用して **FaceClient** インスタンスを作成します。
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=18-46)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_fields)]
 
-次に、次のコードを **MainWindow** メソッドに貼り付けます。
+次に、**MainWindow** コンストラクターを追加します。 ここでは、エンドポイント URL 文字列を確認した後、クライアント オブジェクトに関連付けています。
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=50-61)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
 最後に、**BrowseButton_Click** メソッドと **FacePhoto_MouseMove** メソッドをクラスに追加します。 これらのメソッドは、*MainWindow.xaml* で宣言されているイベント ハンドラーに対応しています。 **BrowseButton_Click** メソッドは **OpenFileDialog** を作成し、ユーザーが .jpg 画像を選択できるようにします。 その後、メイン ウィンドウに画像を表示します。 **BrowseButton_Click** と **FacePhoto_MouseMove** の残りのコードについては、後の手順で挿入します。 また、`faceList` の参照にも注意してください。これは、**DetectedFace** オブジェクトのリストです。 この参照では、アプリが実際の顔データを保存したり呼び出したりします。
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=64-90,146)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=148-150,187)]
+<!-- [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_end)] -->
+
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_start)]
+
+<!-- [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_end)] -->
 
 ### <a name="try-the-app"></a>アプリを試す
 
@@ -93,26 +97,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 **MainWindow** クラスで **FacePhoto_MouseMove** メソッドの下に次のメソッドを挿入します。 このメソッドにより、取得する顔の属性の一覧が定義され、送信した画像ファイルが **Stream** に読み込まれます。 その後、これらのオブジェクトの両方が **DetectWithStreamAsync** メソッド呼び出しに渡されます。
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=189-226)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_uploaddetect)]
 
 ## <a name="draw-rectangles-around-faces"></a>顔の周囲に四角形を描画する
 
 次に、画像内で検出されたそれぞれの顔の周囲に四角形を描画するコードを追加します。 **MainWindow** クラスで **BrowseButton_Click** メソッドの末尾にある `FacePhoto.Source = bitmapSource` 行の後に次のコードを挿入します。 このコードにより、**UploadAndDetectFaces** の呼び出しから検出された顔の一覧が設定されます。 その後、それぞれの顔の周囲に四角形が描画され、変更された画像がメイン ウィンドウに表示されます。
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=92-145)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_mid)]
 
 ## <a name="describe-the-faces"></a>顔を説明する
 
 **MainWindow** クラスで **UploadAndDetectFaces** メソッドの下に次のメソッドを追加します。 このメソッドにより、取得した顔の属性が、顔を説明する文字列に変換されます。
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=228-286)]
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_facedesc)]
 
 ## <a name="display-the-face-description"></a>顔の説明を表示する
 
 **FacePhoto_MouseMove** メソッドに次のコードを追加します。 検出された顔の四角形の上にカーソルを移動すると、このイベント ハンドラーによって顔を説明する文字列が `faceDescriptionStatusBar` に表示されます。
 
-[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?range=151-186)]
-
+[!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 
 ## <a name="run-the-app"></a>アプリの実行
 

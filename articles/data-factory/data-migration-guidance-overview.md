@@ -12,51 +12,53 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 7/30/2019
-ms.openlocfilehash: a61ddf57d4f01fcaf4a949add29c677aa94060a9
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827844"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931124"
 ---
-# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory を使用してデータ レイクまたはデータ ウェアハウスから Azure にデータを移行する 
+# <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Azure Data Factory を使用してデータ レイクまたはデータ ウェアハウスから Azure にデータを移行する
 
-データ レイクまたはエンタープライズ データ ウェアハウス (EDW) を Azure に移行するときに、データ移行を行うためのツールとして Azure Data Factory を使用できます。 データ レイクの移行とデータ ウェアハウスの移行は、次のシナリオに関連しています。 
+データ レイクまたはエンタープライズ データ ウェアハウス (EDW) を Microsoft Azure に移行する場合は、Azure Data Factory の使用を検討してください。 Azure Data Factory は、次のシナリオに適しています。
 
-- AWS S3、オンプレミス Hadoop ファイル システムから Azure へのビッグ データ ワークロードの移行。 
-- Oracle Exadata、Netezza、Teradata、AWS Redshift から Azure への EDW 移行。 
+- Amazon Simple Storage Service (Amazon S3) またはオンプレミスの Hadoop 分散ファイル システム (HDFS) から Azure へのビッグ データ ワークロードの移行
+- Oracle Exadata、Netezza、Teradata、Amazon Redshift から Azure への EDW 移行
 
-Azure Data Factory は、データ レイク移行では数 PB のデータを、データ ウェアハウス移行では数十 TB のデータを移動できます。 
+Azure Data Factory では、データ レイク移行の場合はペタバイト (PB) 単位のデータ、データ ウェアハウス移行の場合は数十テラバイト (TB) 単位のデータを移動できます。
 
-## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Azure Data Factory をデータ移行に使用できる理由 
+## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Azure Data Factory をデータ移行に使用できる理由
 
-- Azure Data Factory では、パフォーマンス、回復性、スケーラビリティに優れたサーバーレス方式でデータを移動するために処理能力を容易にスケールアップし、使用した分だけの料金を支払うことができます。  
-  - Azure Data Factory では、データ量とファイル数の制限はありません。
-  - Azure Data Factory は、ネットワークとストレージの帯域幅を 100% 利用して、環境内で最高のデータ移動スループットを実現できます。   
-  - Azure Data Factory は従量課金制の方針に従うため、料金の支払いが必要なのは Azure Data Factory を使用して Azure にデータを移行している時間に対してだけです。  
-- Azure Data Factory では、スケジュールされた段階的な読み込みだけでなく、1 回限りの履歴読み込みも実行できます。 
-- Azure Data Factory では、Azure IR を使用して、パブリックにアクセスできるデータ レイク/ウェアハウス エンドポイント間でデータを移動します。または、セルフホステッド IR を使用して、VNet 内またはファイアウォールの背後にあるデータ レイク/ウェアハウス エンドポイントのデータを移動します。 
-- Azure Data Factory はエンタープライズ レベルのセキュリティを備えています。MSI またはサービス ID を使用してサービス間の統合をセキュリティで保護するか、Azure Key Vault を利用して資格情報を管理します。 
+- Azure Data Factory では、処理能力を簡単にスケールアップし、ハイ パフォーマンス、回復性、スケーラビリティを備えたサーバーレス方式でデータを移動できます。 また、使用した分にのみ料金がかかります。 また、以下の点にも注意してください。 
+  - Azure Data Factory には、データ ボリュームまたはファイル数に制限がありません。
+  - Azure Data Factory ではネットワークとストレージの帯域幅をフルに活用し、環境内で最高ボリュームのデータ移動スループットを実現できます。
+  - Azure Data Factory では従量課金制が使用されるため、Azure へのデータ移行を実行するために実際に使用した時間に対してのみ料金がかかります。  
+- Azure Data Factory では 1 回限りの履歴読み込みとスケジュールされた増分読み込みの両方を実行できます。
+- Azure Data Factory では Azure 統合ランタイム (IR) を使用し、パブリックにアクセスできるデータ レイクとウェアハウス エンドポイント間でデータを移動します。 また、Azure Virtual Network (VNet) の内側またはファイアウォールの背後にあるデータ レイクとウェアハウス エンドポイントのデータ移動にセルフホステッド IR を使用することもできます。
+- Azure Data Factory はエンタープライズクラスのセキュリティを備えています。セキュリティで保護されたサービス間の統合には Windows インストーラー (MSI) またはサービス ID を使用できます。また、資格情報の管理には Azure Key Vault を使用できます。
 - Azure Data Factory は、コードを使用しない作成エクスペリエンスと、豊富な組み込みの監視ダッシュボードを提供します。  
 
 ## <a name="online-vs-offline-data-migration"></a>オンラインとオフラインのデータ移行
 
-Azure Data Factory は、ネットワーク (インターネット、ER、または VPN) 経由でデータを転送するための一般的なオンライン データ移行ツールですが、お客様の組織から Azure Data Center にデータ転送デバイスを物理的に送付し、オフラインでデータを移行することもできます。  
+Azure Data Factory は、ネットワーク (インターネット、ER、または VPN) を介してデータを転送するための標準のオンライン データ移行ツールです。 一方、オフラインのデータ移行の場合、ユーザーは組織から Azure データ センターにデータ転送デバイスを物理的に発送します。  
 
-オンラインとオフラインの移行方法を選択する際には、次の 3 つの重要な考慮事項があります。  
+オンラインとオフラインの移行方法のいずれかを選択する際には、次の 3 つの重要な考慮事項があります。  
 
-- 移行するデータのサイズ 
-- ネットワーク帯域幅 
-- 移行期間   
+- 移行するデータのサイズ
+- ネットワーク帯域幅
+- 移行期間
 
-2 週間 (の移行期間) 以内にデータ移行を完了したい場合に、オンライン移行ツール (Azure Data Factory) を使用するのが適切なデータ サイズとネットワーク帯域幅の組み合わせは、次の図のカット ラインで確認できます。   
+たとえば、2 週間 (*移行期間*) 以内に Azure Data Factory を使用してデータ移行を完了する予定があるとします。 次の表のピンク色と青色の分かれ目に注目してください。 各列の一番下にあるピンク色のセルは、移行期間が 2 週間に最も近く、2 週間未満であるデータ サイズ/ネットワーク帯域幅のペアを示します (青色のセルのサイズ/帯域幅のペアは、2 週間を超えるオンライン移行期間を示します)。 
 
-![オンラインとオフライン](media/data-migration-guidance-overview/online-offline.png)
+![オンラインとオフライン](media/data-migration-guidance-overview/online-offline.png) この表は、データのサイズと利用可能なネットワーク帯域幅に基づいて、オンライン移行 (Azure Data Factory) で目的の移行期間を満たすことができるかどうかを判断するために役立ちます。 オンライン移行期間が 2 週間を超える場合は、オフライン移行を使用することをお勧めします。
 
 > [!NOTE]
-> オンラインの移行方法の利点は、履歴データの読み込みと段階的なフィードの両方を最初から最後まで 1 つのツールで実行できることです。  これにより、移行期間全体にわたって、既存のストアと新しいストアの間でデータの同期を維持できるため、更新されたデータを使用して新しいストア上に ETL ロジックを再構築できます。 
+> オンライン移行を使用すると、1 つのツールで履歴データの読み込みと増分フィードの両方をエンドツーエンドで実現できます。  この方法では、移行期間中に、既存のストアと新しいストアの間でデータの同期を維持することができます。 つまり、新しいストア上に更新されたデータを使用して ETL ロジックを再構築できます。
 
 
 ## <a name="next-steps"></a>次の手順
 
 - [データを AWS S3 から Azure に移行する](data-migration-guidance-s3-azure-storage.md)
+- [オンプレミスの Hadoop クラスターから Azure へのデータの移行](data-migration-guidance-hdfs-azure-storage.md)
+- [オンプレミスの Netezza サーバーから Azure へのデータの移行](data-migration-guidance-netezza-azure-sqldw.md)

@@ -253,8 +253,26 @@
           href: virtual-network-public-ip-address.md
         - name: パブリック IP プレフィックス
           href: manage-public-ip-address-prefix.md
+    - name: リージョン間で移動する
+      items:
+        - name: ネットワーク セキュリティ グループ - ポータル
+          href: move-across-regions-nsg-portal.md
+        - name: ネットワーク セキュリティ グループ - PowerShell
+          href: move-across-regions-nsg-powershell.md
+        - name: 仮想ネットワーク - ポータル
+          href: move-across-regions-vnet-portal.md
+        - name: 仮想ネットワーク - PowerShell
+          href: move-across-regions-vnet-powershell.md
+        - name: パブリック IP - ポータル
+          href: move-across-regions-publicip-portal.md
+        - name: パブリック IP - PowerShell
+          href: move-across-regions-publicip-powershell.md
     - name: トラブルシューティング
       items:
+        - name: 仮想ネットワーク ピアリングの問題のトラブルシューティング
+          href: virtual-network-troubleshoot-peering-issues.md
+        - name: VNet または VPN 接続の構成および検証
+          href: virtual-network-configure-vnet-connections.md
         - name: ネットワーク セキュリティ グループ
           href: diagnose-network-traffic-filter-problem.md
         - name: Routes
@@ -273,6 +291,8 @@
           href: troubleshoot-outbound-smtp-connectivity.md
         - name: IP アドレス 168.63.129.16 について
           href: what-is-ip-address-168-63-129-16.md
+        - name: Azure VM の接続に関する問題のトラブルシューティング
+          href: troubleshoot-vm-connectivity.md
     - name: クラシック
       items:
         - name: 仮想ネットワークの作成と管理

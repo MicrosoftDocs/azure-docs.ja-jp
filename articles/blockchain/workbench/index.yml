@@ -1,36 +1,99 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Blockchain Workbench のドキュメント
+### YamlMime:Landing
+title: Azure Blockchain Workbench プレビューのドキュメント
+summary: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントで、Azure Blockchain Workbench のデプロイ方法と、Azure でブロックチェーン アプリケーションを作成して管理する方法を紹介します。
 metadata:
-  title: Azure Blockchain Workbench のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  title: Azure Blockchain Workbench プレビューのドキュメント - チュートリアル、API リファレンス
   description: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントで、Azure Blockchain Workbench のデプロイ方法と、Azure でブロックチェーン アプリケーションを作成して管理する方法を紹介します。
-  services: blockchain-workbench
-  author: patricka
-  manager: femila
-  ms.service: blockchain-workbench
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  services: azure-blockchain
+  ms.service: azure-blockchain
   ms.topic: landing-page
-  ms.date: 04/17/2018
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントで、Azure Blockchain Workbench のデプロイ方法と、Azure でブロックチェーン アプリケーションを作成して使用する方法を紹介します。
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure でブロックチェーン アプリケーションをデプロイ、作成、使用する方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-deploy">Azure Blockchain Workbench をデプロイする</a>
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-create-app">ブロックチェーン アプリを作成する</a>
-          - html: <a href="/azure/blockchain-workbench/blockchain-workbench-use">ブロックチェーン アプリを使用する</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/azure-blockchain-workbench">REST API</a></p>'
+  ms.date: 09/05/2019
+  ms.openlocfilehash: cc493ae3813cc1c53670b8f6ea46f915d7f9efee
+  ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/10/2019
+  ms.locfileid: "70845020"
+landingContent:
+- title: Azure Blockchain Workbench について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Blockchain Workbench とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: アーキテクチャ
+      url: architecture.md
+  - linkListType: video
+    links:
+    - text: Azure Blockchain Workbench の概要
+      url: https://channel9.msdn.com/Shows/Blocktalk/Introduction-to-Azure-Blockchain-Workbench
+- title: 作業開始
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Azure Blockchain Workbench を展開する
+      url: deploy.md
+  - linkListType: tutorial
+    links:
+    - text: Blockchain Workbench アプリケーションを作成する
+      url: create-app.md
+    - text: Blockchain Workbench アプリケーションを使用する
+      url: use.md
+  - linkListType: video
+    links:
+    - text: 初めての Azure Blockchain Workbench アプリケーションを構築する
+      url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+- title: サンプル コントラクト
+  linkLists:
+  - linkListType: download
+    links:
+    - text: シンプルなマーケットプレース
+      url: https://github.com/Azure-Samples/blockchain/blob/master/blockchain-workbench/application-and-smart-contract-samples/simple-marketplace
+    - text: 基本的な来歴管理
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/basic-provenance
+    - text: デジタル ロッカー
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/digital-locker
+    - text: 冷凍輸送
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/refrigerated-transportation
+    - text: 資産移転
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/asset-transfer
+    - text: 複数のワークフローに対応した高度なマーケットプレース
+      url: https://github.com/Azure-Samples/blockchain/tree/master/blockchain-workbench/application-and-smart-contract-samples/bazaar-item-listing
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: アプリケーション ユーザーの管理
+      url: manage-users.md
+    - text: アプリケーションの構成
+      url: configuration.md
+    - text: アプリケーションのバージョン管理
+      url: version-app.md
+- title: 統合
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: スマート コントラクトの統合パターン
+      url: integration-patterns.md
+  - linkListType: how-to-guide
+    links:
+    - text: オフチェーンのデータベースに接続する
+      url: getdb-details.md
+    - text: Excel でデータを使用する
+      url: data-excel.md
+    - text: Power BI でデータを使用する
+      url: data-powerbi.md
+    - text: SQL Management Studio でデータを使用する
+      url: data-sql-management-studio.md
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: use-api.md
+    - text: メッセージング API
+      url: messages-overview.md
+    - text: データベース ビュー
+      url: database-views.md

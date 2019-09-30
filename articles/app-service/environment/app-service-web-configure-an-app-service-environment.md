@@ -10,17 +10,16 @@ ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5c0b4117f6e7b48dce1746ad6eb3dbe29c0d16af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b8a05b7e8466187202e6a4d11efce288238cc19b
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130621"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069948"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>App Service Environment v1 の構成
 
@@ -71,7 +70,7 @@ ms.locfileid: "62130621"
 
 **自動スケール**:コンピューティング リソースの使用を管理するのに役立つ手段の 1 つが自動スケールです。 自動スケールは、フロント エンド プールに対して実行することも、ワーカー プールに対して実行することもできます。 いずれかのプール タイプのインスタンス数を午前中は増やし、夜間は減らすといったことが可能です。 また、ワーカー プールから利用できるワーカー数が特定のしきい値を下回ったときにインスタンスを追加することもできます。
 
-コンピューティング リソース プールのメトリックに基づいて自動スケール規則を設定する場合は、プロビジョニングの所要時間に注意してください。 App Service 環境の自動スケールの詳細については、[App Service 環境で自動スケールを構成する方法][ASEAutoscale]に関するページを参照してください。
+コンピューティング リソース プールのメトリックに基づいて自動スケール規則を設定する場合は、プロビジョニングの所要時間に注意してください。 App Service 環境の自動スケーリングの詳細については、[App Service 環境で自動スケーリングを構成する方法][ASEAutoscale]に関するページを参照してください。
 
 ### <a name="storage"></a>Storage
 各 ASE には、500 GB の記憶域が構成されています。 この領域は、ASE 内のすべてのアプリケーションに使用されます。 この記憶域は ASE の一部であり、ユーザーの記憶域を使用するように切り替えることはできません。 仮想ネットワーク ルーティングまたはセキュリティを調整する場合も、Azure Storage へのアクセスを許可する必要があります。そうしないと、ASE が機能しません。

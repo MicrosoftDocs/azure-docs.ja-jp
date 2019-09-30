@@ -186,7 +186,7 @@ VM のサイズにより、CPU、GPU、メモリなど、VM で利用できる�
 | [コンピューティングの最適化](sizes-compute.md)   | Fsv2          | メモリに対する CPU の比が大きくなっています。 トラフィックが中程度のアプリケーション、ネットワーク アプライアンス、バッチ処理に適しています。        |
 | [メモリの最適化](sizes-memory.md)    | Esv3、Ev3、M、DSv2、Dv2  | コアに対するメモリの比が大きくなっています。 リレーショナル データベース、中から大規模のキャッシュ、およびインメモリ分析に適しています。                 |
 | [ストレージの最適化](sizes-storage.md)      | Lsv2、Ls              | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
-| [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 負荷の高いグラフィック処理やビデオ編集に特化した VM です。       |
+| [GPU](sizes-gpu.md)          | NV、NVv2、NC、NCv2、NCv3、ND            | 負荷の高いグラフィック レンダリングやビデオ編集に特化した VM です。       |
 | [高性能](sizes-hpc.md) | H        | オプションで高スループットのネットワーク インターフェイス (RDMA) を備えた、最も強力な CPU VM です。 |
 
 ### <a name="find-available-vm-sizes"></a>使用可能な VM サイズを確認する
@@ -293,7 +293,7 @@ Start-AzVM `
    -Name "myVM"
 ```
 
-### <a name="delete-resource-group"></a>Delete resource group
+### <a name="delete-resource-group"></a>リソース グループの削除
 
 リソース グループを削除すると、リソース グループ内のすべてのものが削除されます。
 

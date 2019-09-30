@@ -1,22 +1,17 @@
 ---
 title: Azure Resource Manager テンプレートのベスト プラクティス
 description: Azure Resource Manager テンプレートを作成するための推奨されるアプローチについて説明します。 テンプレートを使用する場合の一般的な問題を回避するための推奨事項を示します。
-services: azure-resource-manager
-documentationcenter: na
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/12/2019
+ms.date: 09/12/2019
 ms.author: tomfitz
-ms.openlocfilehash: cdec216187050a449f23f72474e0265acce14c5f
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67867389"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983822"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure Resource Manager テンプレートのベスト プラクティス
 
@@ -47,7 +42,8 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 リソース グループのリージョンが一時的に使用できない場合は、メタデータが使用できないため、リソース グループ内のリソースを更新できません。 他のリージョン内のリソースは通常どおり機能しますが、それらを更新することはできません。 リスクを最小限に抑えるため、リソース グループとリソースは同じリージョンに配置するようにしてください。
 
 ## <a name="parameters"></a>parameters
-このセクションの情報は、[パラメーター](resource-group-authoring-templates.md#parameters)を使用するときに役に立ちます。
+
+このセクションの情報は、[パラメーター](template-parameters.md)を使用するときに役に立ちます。
 
 ### <a name="general-recommendations-for-parameters"></a>パラメーターに関する一般的な推奨事項
 
@@ -149,7 +145,9 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 ## <a name="variables"></a>変数
 
-[変数](resource-group-authoring-templates.md#variables)を使用する場合は、次の情報を活用してください。
+[変数](template-variables.md)を使用する場合は、次の情報を活用してください。
+
+* 変数名にはキャメル ケースを使用します。
 
 * テンプレート内で複数回使用する必要のある値には、変数を使用してください。 1 回しか使用しない値は、ハードコーディングすることでテンプレートが読みやすくなります。
 
@@ -173,7 +171,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 * 子リソースは、その親リソースに依存するように設定します。
 
-* [condition 要素](resource-group-authoring-templates.md#condition)が false に設定されているリソースは、依存関係の順序から自動的に削除されます。 依存関係は、リソースが常にデプロイされているかのように設定してください。
+* [condition 要素](conditional-resource-deployment.md)が false に設定されているリソースは、依存関係の順序から自動的に削除されます。 依存関係は、リソースが常にデプロイされているかのように設定してください。
 
 * 明示的に設定しなくても連鎖的な依存関係になるようにします。 たとえば、仮想マシンが仮想ネットワーク インターフェイスに依存し、その仮想ネットワーク インターフェイスは仮想ネットワークとパブリック IP アドレスに依存しているとします。 この場合、仮想マシンは、この 3 つのリソースすべての後にデプロイされますが、この仮想マシンを 3 つのリソースすべてに依存するものとして明示的に設定しないでください。 これにより依存関係の順序が明確になり、後でテンプレートを変更するのも簡単になります。
 
@@ -190,7 +188,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
      {
          "name": "[variables('storageAccountName')]",
          "type": "Microsoft.Storage/storageAccounts",
-         "apiVersion": "2016-01-01",
+         "apiVersion": "2019-06-01",
          "location": "[resourceGroup().location]",
          "comments": "This storage account is used to store the VM disks.",
          ...
@@ -201,43 +199,32 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 * テンプレートで "*パブリック エンドポイント*" (Azure Blob Storage のパブリック エンドポイントなど) を使用する場合、名前空間は "*ハードコーディングしない*" でください。 名前空間を動的に取得するには、**reference** 関数を使用します。 そうすることで、テンプレートのエンドポイントを手作業で変更することなく、別のパブリック名前空間環境にテンプレートをデプロイできます。 API バージョンは、テンプレートのストレージ アカウントで使用するものと同じバージョンに設定します。
    
    ```json
-   "osDisk": {
-       "name": "osdisk",
-       "vhd": {
-           "uri": "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
+   "diagnosticsProfile": {
+       "bootDiagnostics": {
+           "enabled": "true",
+           "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').primaryEndpoints.blob]"
        }
    }
    ```
    
-   作成している同じテンプレートにストレージ アカウントがデプロイされている場合、リソースの参照でプロバイダーの名前空間を指定する必要はありません。 簡単な構文の例を次に示します。
-   
-   ```json
-   "osDisk": {
-       "name": "osdisk",
-       "vhd": {
-           "uri": "[concat(reference(variables('storageAccountName'), '2016-01-01').primaryEndpoints.blob, variables('vmStorageAccountContainerName'), '/',variables('OSDiskName'),'.vhd')]"
-       }
-   }
-   ```
-   
-   テンプレート内にパブリック名前空間を使用するために構成されている他の値がある場合は、同じ **reference** 関数を反映するようにこれらの値を変更してください。 たとえば、仮想マシンの診断プロファイルの **storageUri** プロパティは次のように設定できます。
+   ストレージ アカウントが、作成しているものと同じテンプレートにデプロイされ、そのストレージ アカウントの名前がテンプレート内の別のリソースと共有されない場合、リソースを参照するときにプロバイダーの名前空間または API バージョンを指定する必要はありません。 簡単な構文の例を次に示します。
    
    ```json
    "diagnosticsProfile": {
        "bootDiagnostics": {
            "enabled": "true",
-           "storageUri": "[reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2016-01-01').primaryEndpoints.blob]"
+           "storageUri": "[reference(variables('storageAccountName')).primaryEndpoints.blob]"
        }
    }
    ```
-   
+     
    また、別のリソース グループにある既存のストレージ アカウントを参照することもできます。
 
    ```json
-   "osDisk": {
-       "name": "osdisk", 
-       "vhd": {
-           "uri":"[concat(reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts/', parameters('existingStorageAccountName')), '2016-01-01').primaryEndpoints.blob,  variables('vmStorageAccountContainerName'), '/', variables('OSDiskName'),'.vhd')]"
+   "diagnosticsProfile": {
+       "bootDiagnostics": {
+           "enabled": "true",
+           "storageUri": "[reference(resourceId(parameters('existingResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('existingStorageAccountName')), '2019-06-01').primaryEndpoints.blob]"
        }
    }
    ```
@@ -295,7 +282,7 @@ Azure サブスクリプションを管理する方法に関する推奨事項�
 
 ## <a name="outputs"></a>出力
 
-テンプレートを使用してパブリック IP アドレスを作成する場合は、IP アドレスの詳細と完全修飾ドメイン名 (FQDN) を返す [outputs セクション](resource-group-authoring-templates.md#outputs)を組み込みます。 出力値を使用して、デプロイ後に簡単にパブリック IP アドレスと FQDN についての詳細を取得できます。
+テンプレートを使用してパブリック IP アドレスを作成する場合は、IP アドレスの詳細と完全修飾ドメイン名 (FQDN) を返す [outputs セクション](template-outputs.md)を組み込みます。 出力値を使用して、デプロイ後に簡単にパブリック IP アドレスと FQDN についての詳細を取得できます。
 
 ```json
 "outputs": {

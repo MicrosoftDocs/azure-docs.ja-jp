@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 3e07b448e73bf64a3c1ec257948b3d61415480f0
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4c26431ee0d506dda547fb4027845baa15c9a134
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619841"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997878"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>ローカルでの開発とテストに Azure Cosmos Emulator を使用する
 
@@ -254,13 +254,13 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 |EnableTableEndpoint | Azure Table API を有効にします | CosmosDB.Emulator.exe /EnableTableEndpoint | |
 |TablePort | Azure Table エンドポイントに使用するポート番号です。 既定値は 8902 です。 | CosmosDB.Emulator.exe /TablePort=\<port\> | \<port\>:単一のポート番号|
 | KeyFile | 指定されたファイルから承認キーを読み取ります。 キーファイルの生成には、/GenKeyFile オプションを使用します | CosmosDB.Emulator.exe /KeyFile=\<file_name\> | \<file_name\>:ファイルへのパス |
-| ResetDataPath | 指定されたパスにある全部のファイルを、再帰的に削除します。 パスを指定しなかった場合には、既定値が %LOCALAPPDATA%\CosmosDbEmulator になります | CosmosDB.Emulator.exe /ResetDataPath[=\<path>] | \<path\>:ファイル パス  |
+| ResetDataPath | 指定されたパスにある全部のファイルを、再帰的に削除します。 パスを指定しなかった場合には、既定値が %LOCALAPPDATA%\CosmosDbEmulator になります | CosmosDB.Emulator.exe /ResetDataPath=\<path> | \<path\>:ファイル パス  |
 | StartTraces  |  デバッグ トレース ログの収集を開始します。 | CosmosDB.Emulator.exe /StartTraces | |
 | StopTraces     | デバッグ トレース ログの収集を停止します。 | CosmosDB.Emulator.exe /StopTraces  | |
 |FailOnSslCertificateNameMismatch | 証明書の SAN にエミュレーターのホストのドメイン名、ローカル IPv4 アドレス、"localhost"、"127.0.0.1" が含まれていない場合、既定では、エミュレーターにより自己署名 SSL 証明書が再生成されます。 このオプションを設定すると、その代わりにエミュレーターが起動に失敗します。 その後は /GenCert オプションを使って新しい自己署名 SSL 証明書を作成およびインストールする必要があります。 | CosmosDB.Emulator.exe /FailOnSslCertificateNameMismatch  | |
-| GenCert | 新しい自己署名 SSL 証明書を生成およびインストールします。 オプションで、ネットワーク経由でエミュレーターにアクセスするための追加の DNS 名を列挙したコンマ区切りリストを含めることもできます。 | CosmosDB.Emulator.exe /GenCert[ \<comma-separated list of additional dns-names\>] | |
+| GenCert | 新しい自己署名 SSL 証明書を生成およびインストールします。 オプションで、ネットワーク経由でエミュレーターにアクセスするための追加の DNS 名を列挙したコンマ区切りリストを含めることもできます。 | CosmosDB.Emulator.exe /GenCert=\<dns-names\> |\<dns-names\>: 追加の DNS 名のコンマ区切りリスト (省略可能)  |
 | DirectPorts |直接接続に使用するポートを指定します。 既定値は、10251、10252、10253、10254 です。 | CosmosDB.Emulator.exe /DirectPorts:\<directports\> | \<directports\>:4 つのポートのコンマ区切りリスト |
-| キー |エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。 | CosmosDB.Emulator.exe /Key:\<key\> | \<key\>:キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります|
+| Key |エミュレーターの承認キーです。 キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります。 | CosmosDB.Emulator.exe /Key:\<key\> | \<key\>:キーは、64 バイト ベクトルの Base 64 エンコーディングが施されている必要があります|
 | EnableRateLimiting | 要求レート制限の動作の有効化を指定します。 |CosmosDB.Emulator.exe /EnableRateLimiting | |
 | DisableRateLimiting |要求レート制限の動作の無効化を指定します。 |CosmosDB.Emulator.exe /DisableRateLimiting | |
 | NoUI | エミュレーターのユーザー インターフェイスを表示しません。 | CosmosDB.Emulator.exe /NoUI | |
@@ -367,7 +367,7 @@ docker pull mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
 
 md %LOCALAPPDATA%\CosmosDBEmulator\bind-mount
 
-docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator --rm
+docker run --name azure-cosmosdb-emulator --memory 2GB --mount "type=bind,source=%LOCALAPPDATA%\CosmosDBEmulator\bind-mount,destination=C:\CosmosDB.Emulator\bind-mount" --interactive --tty -p 8081:8081 -p 8900:8900 -p 8901:8901 -p 8902:8902 -p 10250:10250 -p 10251:10251 -p 10252:10252 -p 10253:10253 -p 10254:10254 -p 10255:10255 -p 10256:10256 -p 10350:10350 mcr.microsoft.com/cosmosdb/windows/azure-cosmos-emulator
 ```
 
 > [!NOTE]

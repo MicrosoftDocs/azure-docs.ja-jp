@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: iainfou
-ms.openlocfilehash: f575dd882c217badb3320b85229149d9793ceb5f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 2eaae9093614f1512dcd75d23c98bca871bf2850
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619032"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193334"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>チュートリアル:Azure Active Directory Domain Services のマネージド ドメイン用に Secure LDAP を構成する
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
-* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
+* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services マネージド ドメイン。
     * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]してください。
 * ご利用のコンピューターにインストールされた *LDP.exe* ツール。
     * 必要に応じて、*Active Directory Domain Services と LDAP* 用に[リモート サーバー管理ツール (RSAT)][rsat] をインストールしてください。
@@ -63,7 +63,7 @@ Secure LDAP を使用するには、デジタル証明書を使用して通信�
 
 * **信頼された発行者** - 証明書は、セキュリティで保護された LDAP を使用してマネージド ドメインに接続するコンピューターによって信頼された機関から発行される必要があります。 この機関は、これらのコンピューターによって信頼された公的 CA またはエンタープライズ CA が該当します。
 * **有効期間** - 証明書は少なくとも、今後 3 ～ 6 か月間有効である必要があります。 証明書の有効期限が切れると、マネージド ドメインへのセキュリティで保護された LDAP のアクセスが切断されます。
-* **サブジェクト名** - 証明書のサブジェクト名は、マネージド ドメインである必要があります。 たとえば、ドメインが *contoso.com* という名前である場合、証明書のサブジェクト名は *contoso.com* である必要があります。
+* **サブジェクト名** - 証明書のサブジェクト名は、マネージド ドメインである必要があります。 たとえば、ドメインが *contoso.com* という名前である場合、証明書のサブジェクト名は * *.contoso.com* である必要があります。
     * Secure LDAP が Azure AD Domain Services で正常に動作するように、証明書の DNS 名またはサブジェクト代替名がワイルドカード証明書であることが必要です。 ドメイン コントローラーにはランダムな名前が使用されます。サービスの可用性を確保するために、ドメイン コントローラーは追加したり削除したりすることができます。
 * **キー使用法** - 証明書は、"*デジタル署名*" および "*キーの暗号化*" に対して構成される必要があります。
 * **証明書の目的** - 証明書は、SSL サーバー認証に対して有効である必要があります。
@@ -78,7 +78,7 @@ $dnsName="contoso.com"
 $lifetime=Get-Date
 
 # Create a self-signed certificate for use with Azure AD DS
-New-SelfSignedCertificate -Subject $dnsName `
+New-SelfSignedCertificate -Subject *.$dnsName `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName
 ```
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject $dnsName `
 次の出力例は、証明書が正しく生成されてローカル証明書ストア (*LocalMachine\MY*) に格納されたことを示しています。
 
 ```output
-PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject $dnsName `
+PS C:\WINDOWS\system32> New-SelfSignedCertificate -Subject *.$dnsName `
 >>   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
 >>   -Type SSLServerAuthentication -DnsName *.$dnsName, $dnsName.com
 
@@ -213,15 +213,15 @@ Azure AD DS のマネージド ドメインに対するインターネット経�
 
     | Setting                           | 値        |
     |-----------------------------------|--------------|
-    | Source                            | IP アドレス |
+    | source                            | IP アドレス |
     | ソース IP アドレス/CIDR 範囲 | 実際の環境の有効な IP アドレスまたはその範囲 |
     | Source port ranges                | *            |
     | Destination                       | Any          |
     | 宛先ポート範囲           | 636          |
     | Protocol                          | TCP          |
     | Action                            | Allow        |
-    | 優先度                          | 401          |
-    | Name                              | AllowLDAPS   |
+    | Priority                          | 401          |
+    | 名前                              | AllowLDAPS   |
 
 1. 準備ができたら、 **[追加]** を選択して規則を保存し、適用します。
 
@@ -286,7 +286,7 @@ Azure AD DS のマネージド ドメインに格納されているオブジェ�
 > * Azure AD DS のマネージド ドメイン用に Secure LDAP のバインドとテストを行う
 
 > [!div class="nextstepaction"]
-> [Azure AD Domain Services のマネージド ドメインにおける同期の動作を確認する](synchronization.md)
+> [Hybrid Azure AD 環境のパスワード ハッシュ同期を構成する](tutorial-configure-password-hash-sync.md)
 
 <!-- INTERNAL LINKS -->
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md

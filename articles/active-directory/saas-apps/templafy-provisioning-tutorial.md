@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
 ms.openlocfilehash: 96270ccccd8f043f116f686938c8f47c5f4f0a41
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.sourcegitcommit: 8fea78b4521921af36e240c8a92f16159294e10a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
+ms.lasthandoff: 09/02/2019
 ms.locfileid: "68841910"
 ---
 # <a name="tutorial-configure-templafy-for-automatic-user-provisioning"></a>チュートリアル:Templafy を構成し、自動ユーザー プロビジョニングに対応させる

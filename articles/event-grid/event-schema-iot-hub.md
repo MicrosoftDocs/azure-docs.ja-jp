@@ -182,7 +182,7 @@ DeviceCreated イベントと DeviceDeleted イベントのスキーマは同じ
 | -------- | ---- | ----------- |
 | body | string | デバイスからのメッセージの内容。 |
 | properties | string | アプリケーション プロパティは、メッセージに追加できるユーザー定義の文字列です。 これらのフィールドは省略できます。 |
-| システム プロパティ | string | [システム プロパティ](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)は、メッセージのコンテンツとソースを特定するのに役立ちます。 デバイス テレメトリ メッセージは、メッセージ システム プロパティで contentType が JSON に設定され、contentEncoding が UTF-8 に設定された有効な JSON 形式でなければなりません。 これが設定されていない場合、IoT Hub は Base 64 エンコード形式でメッセージを書き込みます。  |
+| system properties | string | [システム プロパティ](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties)は、メッセージのコンテンツとソースを特定するのに役立ちます。 デバイス テレメトリ メッセージは、メッセージ システム プロパティで contentType が JSON に設定され、contentEncoding が UTF-8 に設定された有効な JSON 形式でなければなりません。 これが設定されていない場合、IoT Hub は Base 64 エンコード形式でメッセージを書き込みます。  |
 
 **デバイス接続**および**デバイス削除** IoT Hub イベントの場合、データ オブジェクトには次のプロパティが含まれます。
 

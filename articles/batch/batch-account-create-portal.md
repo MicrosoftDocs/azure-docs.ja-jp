@@ -10,17 +10,16 @@ ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6e1543d578e6812fd270bd76ec18bdfe8fe5ba6a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5cceb7cc179f78d6b6d7350e7c4f6c31bb9cbfed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68324019"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095727"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Azure Portal で Batch アカウントを作成する
 
@@ -115,7 +114,7 @@ Batch アカウントとシナリオの背景情報については、[機能の�
 
 ユーザー サブスクリプション モードで Batch アカウントを作成するときは、キー コンテナーのリソース グループを使用します。 プール割り当てモードとして **[ユーザー サブスクリプション]** を指定し、キー コンテナーを選択し、チェック ボックスをオンにして Azure Batch にそのキー コンテナーへのアクセスを許可します。 
 
-キー コンテナーへのアクセス権を手動で付与する場合は、キー コンテナーの **[アクセス ポリシー]** セクションに移動し、 **[Microsoft Azure Batch]** を選択します。 ドロップ ダウン メニューを使用して **[シークレットのアクセス許可]** を設定します。 Azure Batch には、少なくとも **[取得]** 、 **[一覧]** 、 **[設定]** 、および **[削除]** のアクセス許可を付与する必要があります。
+キー コンテナーへのアクセス権を手動で付与する場合は、キー コンテナーの **[アクセス ポリシー]** セクションに移動して、 **[アクセス ポリシーの追加]** を選択し、 **[Microsoft Azure Batch]** を検索します。 選択したら、ドロップ ダウン メニューを使用して **[シークレットのアクセス許可]** を設定する必要があります。 Azure Batch には、少なくとも **[取得]** 、 **[一覧]** 、 **[設定]** 、および **[削除]** のアクセス許可を付与する必要があります。
 
 ![Azure Batch のシークレットのアクセス許可](./media/batch-account-create-portal/secret-permissions.png)
 

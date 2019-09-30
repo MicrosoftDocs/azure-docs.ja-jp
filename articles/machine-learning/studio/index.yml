@@ -1,57 +1,53 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Machine Learning Studio のドキュメント
+### YamlMime:Landing
+title: Azure Machine Learning Studio のドキュメント
+summary: Machine Learning Studio は、予測分析ソリューションを構築、テスト、デプロイする際に使用できるドラッグ アンド ドロップ ツールです。
 metadata:
-  title: Azure Machine Learning Studio のドキュメント - チュートリアル、リファレンス | Microsoft Docs
-  description: Machine Learning Studio は、データに基づき予測分析ソリューションを構築、テスト、デプロイする際に使用できる、コラボレーションに対応したドラッグ アンド ドロップ ツールです。 チュートリアル、ビデオ、サンプル モデルでは、Studio を使用して機械学習モデルを構築し、デプロイする方法を紹介しています。
+  title: Machine Learning Studio のドキュメント - Azure
+  description: Machine Learning Studio は、予測分析ソリューションを構築、テスト、デプロイする際に使用できるドラッグ アンド ドロップ ツールです。
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: studio
   ms.topic: landing-page
+  ms.collection: collection
   author: j-martens
   ms.author: jmartens
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.date: 02/24/2019
-abstract:
-  description: Azure Machine Learning Studio は、データに基づき予測分析ソリューションを構築、テスト、デプロイするための、コラボレーションに対応したドラッグ アンド ドロップ ツールです。 チュートリアル、ビデオ、サンプル モデルでは、Studio を使用して機械学習モデルを構築し、デプロイする方法を紹介しています。
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: モデルの作成とデプロイについて説明する広範なチュートリアルに従います。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="create-experiment">初めての Studio 実験を作成する</a>
-          - html: <a href="tutorial-part1-credit-risk">信用リスクに対する予測ソリューションを作成およびデプロイする</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="powershell-module">PowerShell モジュール</a></p>
-          - title: モジュール
-            html: '<p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">アルゴリズムとモジュールのリファレンス</a></p>'
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/machinelearning/">REST 管理 API</a></p><p><a href="web-service-error-codes">Web サービスのエラー コード</a></p>'
-  - title: その他の Azure Machine Learning テクノロジ
-    items:
-      - type: paragraph
-        text: Azure Machine Learning で利用できるその他のテクノロジは次のとおりです。
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Machine Learning サービス
-            href: /azure/machine-learning/service/
-            image:
-              src: media/index/i_machine-learning.svg
-              href: /azure/machine-learning/service/
-          - title: データ サイエンス仮想マシン
-            href: /azure/machine-learning/data-science-virtual-machine/
-            image:
-              src: media/index/virtual-machines.svg
-              href: /azure/machine-learning/data-science-virtual-machine/
+  ms.date: 09/04/2019
+  ms.openlocfilehash: b6c9013d61df1a0076817af5baab0e0af6375083
+  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70309195"
+landingContent:
+- title: Studio を使ってみる
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Studio とは
+      url: what-is-ml-studio.md
+    - text: 初めての ML 実験を作成する
+      url: create-experiment.md
+    - text: 予測ソリューションを作成する
+      url: tutorial-part1-credit-risk.md
+- title: リファレンス コンテンツの確認
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: PowerShell モジュール
+      url: powershell-module.md
+    - text: アルゴリズムとモジュール
+      url: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index
+    - text: REST 管理 API
+      url: https://docs.microsoft.com/rest/api/machinelearning/
+    - text: Web サービスのエラー コード
+      url: web-service-error-codes.md
+- title: その他の Azure ML テクノロジ
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Machine Learning サービス
+      url: /azure/machine-learning/
+    - text: データ サイエンス仮想マシン
+      url: /azure/machine-learning/data-science-virtual-machine
+    - text: Microsoft の ML 製品の比較
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

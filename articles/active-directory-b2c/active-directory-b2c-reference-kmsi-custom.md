@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C の "サインインしたままにする (KMSI)" | Microsoft Docs
+title: Azure Active Directory B2C の "サインインしたままにする"
 description: Azure Active Directory B2C で "サインインしたままにする (KMSI)" を設定する方法を説明します。
 services: active-directory-b2c
 author: mmacy
@@ -7,21 +7,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/03/2018
+ms.date: 08/29/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e99dacbe7ae0f42919616e04e60bf4f21b9bd985
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 29cdf5e7723113b4673945bf5db3158680a44b79
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67835379"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147039"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で "サインインしたままにする (KMSI)" を有効にする
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、Web アプリケーションとネイティブ アプリケーションに対して "サインインしたままにする (KMSI)" 機能を有効にできます。 この機能では、ユーザー名とパスワードの再入力を求めることなく、戻ってきたユーザー にアプリケーションへのアクセスを許可します。 このアクセスは、ユーザーがサインアウトすると失効します。
+Azure Active Directory B2C (Azure AD B2C) ディレクトリにローカル アカウントを持つ Web およびネイティブ アプリケーションのユーザーに対して、"サインインしたままにする (KMSI)" 機能を有効にすることができます。 この機能を使用して、ユーザー名とパスワードの再入力を求めることなく、アプリケーションに戻ってきたユーザーにアクセスを許可します。 このアクセスは、ユーザーがサインアウトすると失効します。
 
 公共のコンピューターではこのオプションを有効にしないでください。
 
@@ -29,7 +29,9 @@ Azure Active Directory (Azure AD) B2C では、Web アプリケーションと�
 
 ## <a name="prerequisites"></a>前提条件
 
-ローカル アカウントのサインアップとサインインを許可するように構成されている Azure AD B2C テナント。 テナントがない場合は、「[チュートリアル: Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)」の手順に従って作成できます。
+ローカル アカウントのサインインを許可するように構成されている Azure AD B2C テナント。 KMSI は、外部 ID プロバイダー アカウントではサポートされていません。
+
+テナントがない場合は、「[チュートリアル: Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)」の手順に従って作成できます。
 
 ## <a name="add-a-content-definition-element"></a>コンテンツ定義要素を追加する
 
@@ -87,7 +89,7 @@ Azure Active Directory (Azure AD) B2C では、Web アプリケーションと�
 
 1. *TrustFrameworkExtensions.xml* ファイルで、識別子が `login-NonInteractive` の **TechnicalProfile** 要素と、識別子が `login-NonInteractive-PasswordChange` の **TechnicalProfile** 要素を探し、`IdentityExperienceFrameworkAppId` のすべての値を Identity Experience Framework アプリケーションのアプリケーション識別しに置き換えます ([概要](active-directory-b2c-get-started-custom.md)に関するページの説明をご覧ください)。
 
-    ```
+    ```XML
     <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
     ```
 
@@ -183,11 +185,3 @@ Azure Active Directory (Azure AD) B2C では、Web アプリケーションと�
 5. アップロードしたカスタムのポリシーをテストするには、Azure portal でポリシー ページに移動し、 **[今すぐ実行]** を選択します。
 
 [こちら](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in)でサンプル ポリシーを見つけることができます。
-
-
-
-
-
-
-
-

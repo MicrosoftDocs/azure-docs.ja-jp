@@ -1,61 +1,131 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Time Series Insights のドキュメント
+summary: 完全に管理されたイベント処理によってクラウド内で Azure IoT 分析を実行する方法について説明します。 アプリケーション、センサー、デバイスなどからリアルタイムでデータを分析します。
 metadata:
   title: Azure Time Series Insights のドキュメント - クイック スタート、チュートリアル、API リファレンス | Microsoft Docs
   description: 完全に管理されたイベント処理によってクラウド内で Azure IoT 分析を実行する方法について説明します。 アプリケーション、センサー、デバイスなどからリアルタイムでデータを分析します。
   services: time-series-insights
-  author: deepakpalled
-  manager: cshankar
   ms.service: time-series-insights
+  ms.subservice: time-series-insights
   ms.topic: landing-page
-  ms.date: 06/03/2019
-  ms.author: dpalled
-abstract:
-  description: Azure Time Series Insights へようこそ。 Azure Time Series Insights は、運用分析の改善に役立つ強力なデータ探索およびテレメトリ ツールを提供します。 このドキュメントでは、本サービス、その多くの機能を使用して作業を開始する方法、クライアント SDK、強力な Time Series Insights API シリーズについて説明します。 2 つのバージョンについて情報が提供されます。既に一般提供されているもの (Time Series Insights GA) と、プレビュー段階の主要なサービス更新 (Time Series Insights プレビュー) です。
-  aside:
-    image:
-      alt: ビデオによる Azure IoT Time Series Insights 機能の紹介
-      height: 110
-      src: media/index/new-tsi-intro.png
-      width: 250
-    title: 'IoT アプリのための Time Series Insight。 (13:31)'
-    href: 'https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics'
-    width: 250
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 数分で作業を開始できる簡単な例を使って Azure Time Series Insights について学習します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/time-series-insights/media/index/time-series-insights.svg'
-            text: Azure Time Series Insights GA の探索
-            href: /azure/time-series-insights/time-series-quickstart
-      - html: <p><a href="/azure/time-series-insights/time-series-insights-update-quickstart">Azure Time Series Insights プレビューの探索</a></p>
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure Time Series Insights 環境、単一ページの Web アプリなどを作成する方法を、いくつかの手順例を使用して説明します。
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Azure Time Series Insights GA
-            html: <p><a href="/azure/time-series-insights/tutorial-create-populate-tsi-environment">Azure Time Series Insights 環境の作成</a></p> <p><a href="/azure/time-series-insights/tutorial-create-tsi-sample-spa">単一ページの Web アプリの作成</a></p> <p><a href="/azure/time-series-insights/tutorial-explore-js-client-lib">JavaScript クライアント ライブラリの探索</a></p>
-          - title: Azure Time Series Insights プレビュー
-            html: <p><a href="/azure/time-series-insights/time-series-insights-update-create-environment">Azure Time Series Insights プレビューの環境を設定する</a></p>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Time Series Insights GA API
-            html: <p><a href="/rest/api/time-series-insights/ga">データ アクセス</a></p> <p><a href="/rest/api/time-series-insights/ga-query-api">クエリ API</a></p> <p><a href="/rest/api/time-series-insights/ga-query-syntax">クエリ構文</a></p>
-          - title: Time Series Insights プレビュー API
-            html: <p><a href="/rest/api/time-series-insights/preview-query">クエリ API</a></p> <p><a href="/rest/api/time-series-insights/preview-model">モデル API</a></p> <p><a href="/rest/api/time-series-insights/preview-env">環境 API</a></p> <p><a href="/rest/api/time-series-insights/preview-tsx">Time Series 式 API</a></p>
-          - title: クライアント SDK
-            html: '<p><a href="https://github.com/microsoft/tsiclient/blob/master/docs/API.md">JavaScript クライアント SDK</a></p>'
+  ms.collection: collection
+  author: KingdomOfEnds
+  ms.author: v-adgera
+  ms.date: 09/04/2019
+  ms.openlocfilehash: 46cea77843b388f128885891dcdbb9b01b6cd2f5
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71289174"
+landingContent:
+- title: Azure Time Series Insights について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Time Series Insights プレビューとは
+      url: time-series-insights-update-overview.md
+    - text: Azure Time Series Insights GA について
+      url: time-series-insights-overview.md
+  - linkListType: video
+    links:
+    - text: IoT アプリのための Time Series Insight。 (13:31)
+      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Time-Series-Insights-e2e-solution-for-industrial-IoT-analytics
+- title: プレビューの使用を開始する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Time Series Insights プレビューを探索する
+      url: time-series-insights-update-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Time Series Insights プレビューのチュートリアル
+      url: time-series-insights-update-create-environment.md
+    - text: 単一ページの Web アプリの作成
+      url: tutorial-create-tsi-sample-spa.md
+    - text: Time Series Insights JavaScript クライアント ライブラリ
+      url: tutorial-explore-js-client-lib.md
+  - linkListType: how-to-guide
+    links:
+    - text: プロビジョニングと管理
+      url: time-series-insights-update-how-to-manage.md
+  - linkListType: concept
+    links:
+    - text: Time Series Insights エクスプローラーでデータを視覚化する (プレビュー)
+      url: time-series-insights-update-explorer.md
+- title: 計画と準備 (プレビュー)
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Event Hubs への接続
+      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - text: IoT Hub への接続
+      url: time-series-insights-how-to-add-an-event-source-iothub.md
+    - text: 環境を計画する
+      url: time-series-insights-update-plan.md
+    - text: データ ストレージとイングレス
+      url: time-series-insights-update-storage-ingress.md
+  - linkListType: how-to-guide
+    links:
+    - text: データ アクセスの許可
+      url: time-series-insights-data-access.md
+    - text: クエリのための JSON の作成
+      url: time-series-insights-update-how-to-shape-events.md
+  - linkListType: concept
+    links:
+    - text: タイム シリーズ モデル
+      url: time-series-insights-update-tsm.md
+- title: GA の概要
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Time Series Insights GA の探索
+      url: time-series-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Time Series Insights 環境を作成する
+      url: tutorial-create-populate-tsi-environment.md
+    - text: 単一ページの Web アプリの作成
+      url: tutorial-create-tsi-sample-spa.md
+    - text: Time Series Insights JavaScript クライアント ライブラリ
+      url: tutorial-explore-js-client-lib.md
+  - linkListType: how-to-guide
+    links:
+    - text: 環境の作成
+      url: time-series-insights-get-started.md
+  - linkListType: concept
+    links:
+    - text: Time Series Insights エクスプローラーでデータを視覚化する
+      url: time-series-insights-explorer.md
+- title: GA の計画と準備
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Event Hubs への接続
+      url: time-series-insights-how-to-add-an-event-source-eventhub.md
+    - text: IoT Hub への接続
+      url: time-series-insights-how-to-add-an-event-source-iothub.md
+    - text: 環境を計画する
+      url: time-series-insights-environment-planning.md
+    - text: 環境のスケーリング
+      url: time-series-insights-how-to-scale-your-environment.md
+  - linkListType: how-to-guide
+    links:
+    - text: データ アクセスの許可
+      url: time-series-insights-data-access.md
+    - text: クエリのための JSON の作成
+      url: how-to-shape-query-json.md
+    - text: 送信イベント
+      url: time-series-insights-send-events.md
+- title: API リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Time Series Insights
+      url: /rest/api/time-series-insights/
+    - text: Azure Time Series Insights プレビュー
+      url: /rest/api/time-series-insights/preview
+    - text: Azure Time Series Insights GA
+      url: /rest/api/time-series-insights/ga
+    - text: JavaScript クライアント SDK
+      url: https://github.com/microsoft/tsiclient/blob/master/docs/API.md

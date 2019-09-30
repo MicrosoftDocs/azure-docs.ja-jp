@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 497ffb5acf6262dfb42f490efe68e1ea26c777cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a41a811e9313f79c9c3165e02cb5eaa4353b65ab
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64572375"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914466"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Azure Maps Search サービスを使用して住所を検索する
 
@@ -28,7 +28,7 @@ Maps Search サービスは、開発者が住所、場所、関心地点、事�
 
 ## <a name="prerequisites"></a>前提条件
 
-Maps サービス API を呼び出すには、Maps アカウントとキーが必要です。 アカウントを作成し、キーを取得する方法については、「[How to manage your Azure Maps account and keys](how-to-manage-account-keys.md)」(Azure Maps アカウントとキーを管理する方法) を参照してください。
+Maps サービス API を呼び出すには、Maps アカウントとキーが必要です。 アカウント作成の詳細については、[アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)に関するページにある手順に従ってください。また、[主キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従い、アカウントのプライマリ サブスクリプション キーを取得します。
 
 この記事では、[Postman アプリ](https://www.getpostman.com/apps)を使用して REST 呼び出しを構築します。 選択した任意の API 開発環境を使用できます。
 
@@ -58,7 +58,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
     ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_params.png)
 
-    | キー | 値 |
+    | Key | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Azure Maps キー\> |
@@ -72,7 +72,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 5. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | キー | 値 |
+    | Key | 値 |
     |------------------|-------------------------|
     | countrySet | US |
   
@@ -84,7 +84,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
     ![あいまい検索](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
-    | キー | 値 |
+    | Key | 値 |
     |-----|------------|
     | 緯度 | 47.620525 |
     | 経度 | -122.349274 |
@@ -108,7 +108,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
     ![住所検索](./media/how-to-search-for-address/address_search_params.png)
   
-    | キー | 値 |
+    | Key | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Azure Maps キー\> |
@@ -125,7 +125,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 6. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | キー | 値 |
+    | Key | 値 |
     |-----|------------|
     | typeahead | true |
 
@@ -149,7 +149,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
     ![住所の逆引き検索のパラメーター](./media/how-to-search-for-address/reverse_address_search_params.png)
   
-    | キー | 値 |
+    | Key | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Azure Maps キー\> |
@@ -161,7 +161,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
 5. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | キー | 値 |
+    | Key | 値 |
     |-----|------------|
     | number | true |
 
@@ -169,7 +169,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
 6. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | キー | 値 |
+    | Key | 値 |
     |-----|------------|
     | returnSpeedLimit | true |
   
@@ -177,7 +177,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 7. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | キー | 値 |
+    | Key | 値 |
     |-----|------------|
     | returnRoadUse | true |
 
@@ -185,7 +185,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 8. 次のキー/値のペアを **Params** セクションに追加し、 **[送信]** をクリックします。
 
-    | キー | 値 |
+    | Key | 値 |
     |-----|------------|
     | roadUse | true |
 
@@ -207,7 +207,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
   
 3. **[パラメーター]** をクリックして、要求 URL のクエリまたはパスのパラメーターとして使用する次のキーと値のペアを入力します。
   
-    | キー | 値 |
+    | Key | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
     | subscription-key | \<Azure Maps キー\> |

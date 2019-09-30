@@ -1,7 +1,7 @@
 ---
 title: チュートリアル:最初の ML モデルをトレーニングする
-titleSuffix: Azure Machine Learning service
-description: このチュートリアルでは、Azure Machine Learning service の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。
+titleSuffix: Azure Machine Learning
+description: このチュートリアルでは、Azure Machine Learning の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,17 +9,17 @@ ms.topic: tutorial
 author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
-ms.date: 07/20/2019
-ms.openlocfilehash: 17fee1f01bf883aa2a9845fe4f2817fb806056dd
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.date: 09/03/2019
+ms.openlocfilehash: b5d3a687adc8ecefcf581f7eda3b9e13d1973c62
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516232"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71004025"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
-このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 前のチュートリアルでは、[ワークスペースを作成し、開発環境を選択](tutorial-1st-experiment-sdk-setup.md)しました。 このチュートリアルでは、Azure Machine Learning service の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。 このチュートリアルを完了すると、より複雑な実験およびワークフローの開発にスケールアップするための、SDK の実用的な知識が得られます。
+このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 前のチュートリアルでは、[ワークスペースを作成し、開発環境を選択](tutorial-1st-experiment-sdk-setup.md)しました。 このチュートリアルでは、Azure Machine Learning の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。 このチュートリアルを完了すると、より複雑な実験およびワークフローの開発にスケールアップするための、SDK の実用的な知識が得られます。
 
 このチュートリアルでは、以下のタスクについて学習します。
 
@@ -31,14 +31,37 @@ ms.locfileid: "69516232"
 
 ## <a name="prerequisites"></a>前提条件
 
-唯一の前提条件は、前のチュートリアル「[環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を行うことです。
+唯一の前提条件は、このチュートリアルのパート 1 に従って[環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)ことです。
+
+チュートリアルのこのパートでは、パート 1 の最後で開いたサンプル Jupyter ノートブック `tutorials/tutorial-1st-experiment-sdk-train.ipynb` のコードを実行します。 この記事では、ノートブック内の同じコードについて説明します。
+
+## <a name="launch-jupyter-web-interface"></a>Jupyter の Web インターフェイスを起動する
+
+1. Azure portal のワークスペース ページで、左側の **[ノートブック VM]** を選択します。
+
+1. このチュートリアルのパート 1 で作成した VM の **[URI]** 列で **[Jupyter]** を選択します。
+
+    ![Jupyter ノートブック サーバーを開始する](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
+
+   リンクから、ノートブック サーバーが起動され、新しいブラウザー タブで Jupyter ノートブックの Web ページが開かれます。このリンクは、VM を作成するユーザーに対してのみ動作します。 ワークスペースの各ユーザーは、独自の VM を作成する必要があります。
+
+1. Jupyter ノートブックの Web ページで、最上位のフォルダー名を選択します。最上位のフォルダー名はユーザー名です。  
+
+   このフォルダーは、ノートブック VM 自体にではなく、ワークスペースの[ストレージ アカウント](concept-workspace.md#resources)に存在します。  ノートブック VM を削除しても、それまでの作業はすべて維持されます。  後で新しいノートブック VM を作成すると、この同じフォルダーが読み込まれます。 他のユーザーとワークスペースを共有すると、互いのフォルダーが表示されます。
+
+1. `samples-*` サブディレクトリを開き、同じ名前の `.yml` ファイル**ではなく**、Jupyter Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` を開きます。 
 
 ## <a name="connect-workspace-and-create-experiment"></a>ワークスペースを接続し、実験を作成する
 
-`Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 このノートブックを自分のワークスペース内のクラウド ノートブック サーバーで実行している場合、ファイルは自動的にルート ディレクトリに配置されます。
+> [!Important]
+> 以降この記事には、ノートブックと同じ内容が記載されています。  
+>
+> コードを実行しながら読み進めたい方は、ここで Jupyter Notebook に切り替えてください。 
+> ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、トップ メニューから **[セル] > [すべて実行]** の順に選択してノートブック全体を実行します。
+
+`Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 クラウド ノートブック サーバーでは、ファイルは自動的にルート ディレクトリに配置されます。
 
 次のコードで追加の認証が求められる場合は、単にリンクをブラウザーに貼り付け、認証トークンを入力します。
-
 
 ```python
 from azureml.core import Workspace
@@ -112,7 +135,7 @@ for alpha in alphas:
 experiment
 ```
 
-<table style="width:100%"><tr><th>Name</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
+<table style="width:100%"><tr><th>名前</th><th>ワークスペース</th><th>レポート ページ</th><th>ドキュメント ページ</th></tr><tr><td>diabetes-experiment</td><td><自分のワークスペースの名前></td><td>Azure portal へのリンク</td><td>ドキュメントへのリンク</td></tr></table>
 
 ## <a name="view-training-results-in-portal"></a>ポータルでトレーニング結果を表示する
 
@@ -174,7 +197,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-Azure Machine Learning service の他のチュートリアルを実行する予定の場合、このセクションは完了しないでください。
+Azure Machine Learning の他のチュートリアルを実行する予定の場合、このセクションを実行しないでください。
 
 ### <a name="stop-the-notebook-vm"></a>ノートブック VM を停止する
 

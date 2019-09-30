@@ -4,6 +4,8 @@
   items:
     - name: Azure portal について
       href: azure-portal-overview.md
+    - name: Azure Quickstart Center の概要
+      href: azure-portal-quickstart-center.md
     - name: サポートされているブラウザーとデバイス
       href: azure-portal-supported-browsers-devices.md
 - name: 概念
@@ -25,7 +27,7 @@
     - name: ユーザー設定のエクスポートまたは削除
       href: azure-portal-export-delete-settings.md
     - name: Azure portal の使い方に関するビデオ シリーズ
-      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
+      href: azure-portal-video-series.md
 - name: リファレンス
   items:
     - name: キーボード ショートカット

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9d459f88cd252303384acb4a72d0af0cce6ee226
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 828ec2b925535df3f925093466556447e703cd76
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67428468"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003814"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -135,7 +135,7 @@ HBase のリーダーとライターのテンプレートは、HBase Java API �
 
 2. **[新しいプロジェクト]** ウィンドウで、 **[インストール済み]**  >  **[テンプレート]** の順に展開して、 **[Azure Data Lake]** を選択します。 テンプレートの一覧から、 **[Storm Application]** を選択します。 画面の下部に、アプリケーションの名前として「 **WordCount** 」と入力します。
 
-    ![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/apache-storm-develop-csharp-visual-studio-topology/new-project.png)
+    ![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/apache-storm-develop-csharp-visual-studio-topology/apache-storm-new-project.png)
 
 3. プロジェクトの作成後、次のファイルが生成されます。
 
@@ -338,7 +338,7 @@ HBase のリーダーとライターのテンプレートは、HBase Java API �
 
 スパウトとボルトはコンポーネント間のデータ フローを定義するグラフに配置されます。 このトポロジのグラフは次のようになります。
 
-![コンポーネントの配置方法の図](./media/apache-storm-develop-csharp-visual-studio-topology/wordcount-topology.png)
+![コンポーネントの配置方法の図](./media/apache-storm-develop-csharp-visual-studio-topology/word-count-topology1.png)
 
 センテンスはスパウトから出力され、Splitter ボルトのインスタンスに配布されます。 Splitter ボルトがセンテンスを単語に分け、Counter ボルトに配布します。
 
@@ -461,7 +461,6 @@ return topologyBuilder;
   > [!NOTE]  
   > このバージョンは、Closure コードをテキスト ファイルから Java コンポーネントとして使用する方法も示しています。
 
-
 プロジェクトの送信時に使用されるトポロジを切り替えるには、クラスターへの送信前に `[Active(true)]` ステートメントを使用するトポロジに移動します。
 
 > [!NOTE]  
@@ -566,20 +565,20 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 
 1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[プロパティ]** を選びます。 プロジェクトのプロパティで、 **[出力の種類]** を **[コンソール アプリケーション]** に変更します。
 
-    ![プロジェクトのプロパティのスクリーンショット ([出力の種類] を強調表示)](./media/apache-storm-develop-csharp-visual-studio-topology/outputtype.png)
+    ![プロジェクトのプロパティのスクリーンショット ([出力の種類] を強調表示)](./media/apache-storm-develop-csharp-visual-studio-topology/hdi-output-type-window.png)
 
    > [!NOTE]
    > トポロジをクラスターにデプロイする前に、必ず **[出力の種類]** を **[クラス ライブラリ]** に戻すようにしてください。
 
-2. **ソリューション エクスプローラー**で、プロジェクトを右クリックして、 **[追加]**  >  **[新しいアイテム]** の順に選択します。 **[クラス]** を選んで、クラス名として「**LocalTest.cs**」と入力します。 最後に **[追加]** をクリックします。
+1. **ソリューション エクスプローラー**で、プロジェクトを右クリックして、 **[追加]**  >  **[新しいアイテム]** の順に選択します。 **[クラス]** を選んで、クラス名として「**LocalTest.cs**」と入力します。 最後に **[追加]** をクリックします。
 
-3. **LocalTest.cs** を開いて、先頭に次の **using** ステートメントを追加します。
+1. **LocalTest.cs** を開いて、先頭に次の **using** ステートメントを追加します。
 
     ```csharp
     using Microsoft.SCP;
     ```
 
-4. **LocalTest** クラスの内容として次のコードを使用します。
+1. **LocalTest** クラスの内容として次のコードを使用します。
 
     ```csharp
     // Drives the topology components
@@ -681,9 +680,9 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
     Console.ReadKey();
     ```
 
-2. 変更を保存して、**F5** キーをクリックするか、 **[デバッグ]**  >  **[デバッグの開始]** を使ってプロジェクトを起動します。 コンソール ウィンドウが表示され、テストの進行に合わせてステータスを記録します。 **[テストの完了]** と表示されたら、いずれかのキーを押してウィンドウを閉じます。
+1. 変更を保存して、**F5** キーをクリックするか、 **[デバッグ]**  >  **[デバッグの開始]** を使ってプロジェクトを起動します。 コンソール ウィンドウが表示され、テストの進行に合わせてステータスを記録します。 **[テストの完了]** と表示されたら、いずれかのキーを押してウィンドウを閉じます。
 
-3. **Windows エクスプローラー**を使って、プロジェクトが含まれるディレクトリを見つけます 例: **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。 このディレクトリで、**Bin** を開き、 **[デバッグ]** をクリックします。 テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。 それぞれのテキスト ファイルを開いてデータを確認します。
+1. **Windows エクスプローラー**を使って、プロジェクトが含まれるディレクトリを見つけます 例: **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。 このディレクトリで、**Bin** を開き、 **[デバッグ]** をクリックします。 テストの実行時に生成された、sentences.txt、counter.txt、splitter.txt というテキスト ファイルが表示されます。 それぞれのテキスト ファイルを開いてデータを確認します。
 
    > [!NOTE]  
    > これらのファイルでは、文字列データは 10 進数の値の配列として保存されます。 たとえば、**splitter.txt** ファイルの \[[97,103,111]] は *and* という単語を示します。
@@ -712,7 +711,7 @@ Context.Logger.Info("Component started");
 
 2. **スパウト**と**ボルト**については、 **[最新のエラー]** の列に直近のエラーの情報が表示されます。
 
-3. エラーの一覧にあるコンポーネントの **[Spout Id]** または **[Bolt Id]** を選びます。 詳細ページが表示され、詳細なエラー情報がページ下部の **[エラー]** セクションに表示されます。
+3. エラーの一覧にあるコンポーネントの **[Spout ID]** または **[Bolt ID]** を選びます。 詳細ページが表示され、詳細なエラー情報がページ下部の **[エラー]** セクションに表示されます。
 
 4. さらに詳細な情報を取得するには、 **[Executors]** セクションから **[ポート]** を選ぶと、過去数分間の Storm ワーカー ログが表示されます。
 

@@ -10,21 +10,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e15fa8c79663fc2517039124f9be8c1ecd57b8a8
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68837880"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382500"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory でアプリ登録のアクセス許可を委任する
 
-この記事では、Azure Active Directory (Azure AD) のカスタム ロールでアプリのアクセス許可を使用して、アプリケーション管理のニーズに対応する方法について説明します。 Azure Active Directory (Azure AD) では、アプリケーションの作成と管理のアクセス許可を次の方法で委任できます。
+この記事では、Azure Active Directory (Azure AD) のカスタム ロールによって付与されたアクセス許可を使用して、アプリケーション管理のニーズに対応する方法について説明します。 Azure AD では、アプリケーションの作成と管理のアクセス許可を次の方法で委任できます。
 
 - [アプリケーションを作成できるユーザーを制限](#restrict-who-can-create-applications)し、作成されたアプリケーションを管理できるユーザーを制限する。 Azure AD の既定では、すべてのユーザーがアプリケーションを登録し、作成されたアプリケーションのすべての側面を管理できます。 この権限は、選択されたユーザーのみがそのアクセス許可を持つように制限できます。
 - [アプリケーションに 1 人以上の所有者を割り当てる](#assign-application-owners)。 これは、特定のアプリケーションについての Azure AD 構成のすべての側面を管理する能力を一部のユーザーに付与するための簡単な方法です。
@@ -40,7 +40,7 @@ Azure AD の既定では、すべてのユーザーがアプリケーション�
 ### <a name="to-disable-the-default-ability-to-create-application-registrations-or-consent-to-applications"></a>アプリケーション登録またはアプリケーションへの同意を作成する既定の機能を無効にするには
 
 1. Azure AD 組織のグローバル管理者ロールに適したアカウントを使用して、Azure AD 組織にサインインします。
-1. 十分なアクセス許可を取得したら、次の一方または両方を設定します。
+1. 次のいずれかまたは両方を設定します。
 
     -  [組織の [ユーザー設定] ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings)で、 **[ユーザーはアプリケーションを登録できる]** 設定を [いいえ] に設定します。 これにより、ユーザーがアプリケーション登録を作成する既定の機能が無効になります。
     -  [エンタープライズ アプリケーションのユーザー設定](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/)で、 **[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** 設定を [いいえ] に設定します。 これにより、アプリケーションがユーザーの代わりに会社のデータにアクセスすることにユーザーが同意する既定の機能が無効になります。

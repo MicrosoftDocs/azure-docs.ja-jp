@@ -3,16 +3,17 @@ title: Azure HDInsight の管理 IP アドレス
 description: Azure HDInsight で仮想ネットワーク用のネットワーク セキュリティ グループとユーザー定義ルートを適切に構成するために、どの IP アドレスからの受信トラフィックを許可する必要があるかについて説明します。
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 0a41d1d57257db8f88481766e65eb8ee7569da87
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479199"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076628"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight の管理 IP アドレス
 
@@ -28,7 +29,7 @@ Azure で提供される DNS サービスを使用している場合は、ポー
 
 すべての Azure リージョンに適用される Azure HDInsight の正常性サービスと管理サービスに対して、次の IP アドレスからのトラフィックを許可します。
 
-| 送信元 IP アドレス | 宛先  | Direction |
+| 送信元 IP アドレス | Destination  | Direction |
 | ---- | ----- | ----- |
 | 168.61.49.99 | \*:443 | 受信 |
 | 23.99.5.239 | \*:443 | 受信 |

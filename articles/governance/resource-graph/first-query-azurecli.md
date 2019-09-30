@@ -7,12 +7,12 @@ ms.date: 07/26/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: afe32c197b5eab24ba298395bb2c9e83f847d6c5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6fffd9e0bbaea47bfeac56a7972a38df0cbef351
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562570"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164692"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>クイック スタート:Azure CLI を使用して最初の Resource Graph クエリを実行します
 
@@ -35,7 +35,7 @@ Azure CLI を Azure Resource Graph のクエリに対して有効にするには
    az extension add --name resource-graph
    ```
 
-1. 拡張機能がインストールされていて、必要なバージョン (**0.1.11** 以降) であることを検証します。
+1. 拡張機能がインストールされていて、必要なバージョン (**1.0.0** 以降) であることを検証します。
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)

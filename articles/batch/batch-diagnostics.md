@@ -8,24 +8,23 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 63d0196609e432b081e91a49b5b1410431223632
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: aa86d6cf22562fa1fac7d45de20b28aa0eec33aa
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323621"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261671"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
  
-この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して、Batch アカウントを監視する方法を説明します。 Azure Monitor は、Batch アカウント内のリソースの[メトリック](../azure-monitor/platform/data-platform-metrics.md)と[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)を収集します。 このデータを収集し、さまざまな方法で使用して、Batch アカウントの監視と問題の診断を行います。 [メトリック アラート](../azure-monitor/platform/alerts-overview.md)を構成して、メトリックが指定した値に達したときに通知を受信するように構成することもできます。 
+この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して、Batch アカウントを監視する方法を説明します。 Azure Monitor は、Batch アカウント内のリソースの[メトリック](../azure-monitor/platform/data-platform-metrics.md)と[診断ログ](../azure-monitor/platform/resource-logs-overview.md)を収集します。 このデータを収集し、さまざまな方法で使用して、Batch アカウントの監視と問題の診断を行います。 [メトリック アラート](../azure-monitor/platform/alerts-overview.md)を構成して、メトリックが指定した値に達したときに通知を受信するように構成することもできます。 
 
 ## <a name="batch-metrics"></a>Batch メトリック
 
@@ -48,6 +47,7 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 1. ポータルで、 **[すべてのサービス]**  >  **[Batch アカウント]** をクリックし、Batch アカウントの名前をクリックします。
 2. **[監視]** で **[メトリック]** をクリックします。
 3. 1 つまたは複数のメトリックを選択します。 必要に応じて、 **[サブスクリプション]** 、 **[リソース グループ]** 、 **[リソースの種類]** 、および **[リソース]** のドロップダウンを使用して、追加のリソース メトリックを選択します。
+    * カウントベースのメトリック ([Dedicated Core Count]\(専用コア数\) や [Low-Priority Node Count]\(優先順位の低いノードの数\) など) の場合は、[平均] 集計を使用します。 イベントベースのメトリック ([Pool Resize Complete Events]\(プール サイズの変更完了イベント\) など) の場合は、[カウント] 集計を使用します。
 
     ![Batch メトリック](media/batch-diagnostics/metrics-portal.png)
 
@@ -109,7 +109,7 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 
     ![Batch 診断](media/batch-diagnostics/diagnostics-portal.png)
 
-ログの収集を有効にするためのオプションとして、他に次のオプションがあります。ポータルで Azure Monitor を使用して診断設定を構成する。[Resource Manager テンプレート](../azure-monitor/platform/diagnostic-logs-stream-template.md)を使用する。または Azure PowerShell または Azure CLI を使用する。 「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md)」を参照してください。
+ログの収集を有効にするためのオプションとして、他に次のオプションがあります。ポータルで Azure Monitor を使用して診断設定を構成する。[Resource Manager テンプレート](../azure-monitor/platform/diagnostic-settings-template.md)を使用する。または Azure PowerShell または Azure CLI を使用する。 「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/resource-logs-overview.md)」を参照してください。
 
 
 ### <a name="access-diagnostics-logs-in-storage"></a>ストレージ内の診断ログにアクセスする
@@ -119,7 +119,7 @@ Batch 診断ログをストレージ アカウント内にアーカイブする�
 ```
 insights-{log category name}/resourceId=/SUBSCRIPTIONS/{subscription ID}/
 RESOURCEGROUPS/{resource group name}/PROVIDERS/MICROSOFT.BATCH/
-BATCHACCOUNTS/{batch account name}/y={four-digit numeric year}/
+BATCHACCOUNTS/{Batch account name}/y={four-digit numeric year}/
 m={two-digit numeric month}/d={two-digit numeric day}/
 h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
@@ -130,12 +130,15 @@ insights-metrics-pt1m/resourceId=/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXX
 RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/
 BATCHACCOUNTS/MYBATCHACCOUNT/y=2018/m=03/d=05/h=22/m=00/PT1H.json
 ```
-各 PT1H.json BLOB ファイルには、BLOB の URL で指定された時間 (例: h = 12) 内に発生した JSON 形式のイベントが含まれます。 現在の時間内にイベントが発生すると、PT1H.json ファイルにイベントが追加されます。 分の値 (m = 00) は常に 00 です。診断ログ イベントが個々の BLOB に 1 時間ごとに分類されるためです。 (時刻はすべて UTC 形式です)。
+各 `PT1H.json` BLOB ファイルには、BLOB の URL で指定された時間 (たとえば `h=12`) 内に発生した JSON 形式のイベントが含まれます。 現在の時間内にイベントが発生すると、`PT1H.json` ファイルにイベントが追加されます。 分の値 (`m=00`) は常に `00` です。診断ログ イベントが個々の BLOB に 1 時間ごとに分類されるためです。 (時刻はすべて UTC 形式です)。
 
+`PT1H.json` ログ ファイル内の `PoolResizeCompleteEvent` エントリの例を次に示します。 これには、専用ノードと優先順位の低いノードの現在の数と目標の数に関する情報に加え、操作の開始時刻と終了時刻が含まれます。
 
-ストレージ アカウント内の診断ログのスキーマの詳細については、[Azure 診断ログのアーカイブ](../azure-monitor/platform/archive-diagnostic-logs.md#schema-of-diagnostic-logs-in-the-storage-account)に関する記事を参照してください。
+```
+{ "Tenant": "65298bc2729a4c93b11c00ad7e660501", "time": "2019-08-22T20:59:13.5698778Z", "resourceId": "/SUBSCRIPTIONS/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/RESOURCEGROUPS/MYRESOURCEGROUP/PROVIDERS/MICROSOFT.BATCH/BATCHACCOUNTS/MYBATCHACCOUNT/", "category": "ServiceLog", "operationName": "PoolResizeCompleteEvent", "operationVersion": "2017-06-01", "properties": {"id":"MYPOOLID","nodeDeallocationOption":"Requeue","currentDedicatedNodes":10,"targetDedicatedNodes":100,"currentLowPriorityNodes":0,"targetLowPriorityNodes":0,"enableAutoScale":false,"isAutoPool":false,"startTime":"2019-08-22 20:50:59.522","endTime":"2019-08-22 20:59:12.489","resultCode":"Success","resultMessage":"The operation succeeded"}}
+```
 
-ストレージ アカウント内のログにプログラムでアクセスするには、Storage API を使用します。 
+ストレージ アカウント内の診断ログのスキーマの詳細については、[Azure 診断ログのアーカイブ](../azure-monitor/platform/resource-logs-collect-storage.md#schema-of-resource-logs-in-storage-account)に関する記事を参照してください。 ストレージ アカウント内のログにプログラムでアクセスするには、Storage API を使用します。 
 
 ### <a name="service-log-events"></a>サービス ログ イベント
 Azure Batch サービス ログが収集される場合、そのログには、プールやタスクなどの個々の Batch リソースの存続期間中に Azure Batch サービスによって生成されたイベントが含まれます。 Batch によって生成された各イベントが、JSON 形式で記録されます。 たとえば、次に示すのはサンプルの**プール作成イベント**の本文です。

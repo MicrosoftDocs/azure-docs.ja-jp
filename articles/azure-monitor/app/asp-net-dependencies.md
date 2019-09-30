@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mbullwin
-ms.openlocfilehash: c2f115564c81f38dd437f1d3ff1e33d7d162a42f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5e07243720872ff4555d4c000dcb7b0b7236e66f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326439"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126753"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Azure Application Insights での依存関係の追跡 
 
@@ -39,6 +39,7 @@ ms.locfileid: "68326439"
 |[ServiceBus Client SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| バージョン 3.0.0 以上。 |
 |Azure Cosmos DB | HTTP/HTTPS が使用されている場合にのみ、自動的に追跡されます。 TCP モードは、Application Insights ではキャプチャされません。 |
 
+依存関係が欠落している場合は、別の SDK を使用して、[自動収集された依存関係](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)の一覧にあることを確認します。 依存関係が自動収集されない場合でも、[TrackDependency 呼び出し](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)を使えば手動で追跡することができます。
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>コンソール アプリで自動依存関係追跡を設定する
 
@@ -90,7 +91,7 @@ SDK で自動追跡されない依存関係については、標準の自動収�
 
 ## <a name="tracking-ajax-calls-from-web-pages"></a>Web ページから AJAX 呼び出しを追跡する
 
-Web ページの場合、[こちら](javascript.md#ajax-performance)の説明にあるように、Application Insights JavaScript SDK によって AJAX 呼び出しが依存関係として自動収集されます。 このドキュメントでは、サーバー コンポーネントからの依存関係を主に取り上げています。
+Web ページの場合、Application Insights JavaScript SDK によって AJAX 呼び出しが依存関係として自動収集されます。
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>詳細な SQL 追跡で完全な SQL クエリを取得する
 
@@ -113,7 +114,7 @@ ASP.NET アプリケーションの場合、インストルメンテーション
 
 * [アプリケーション マップ](app-map.md)では、アプリと隣接コンポーネント間の依存関係が視覚化されます。
 * [トランザクションの診断](transaction-diagnostics.md)には、統合され、関連付けられたサーバー データが表示されます。
-* [[ブラウザー] タブ](javascript.md#ajax-performance)には、ユーザーのブラウザーからの AJAX 呼び出しが表示されます。
+* [[ブラウザー] タブ](javascript.md)には、ユーザーのブラウザーからの AJAX 呼び出しが表示されます。
 * 低速または失敗した要求からクリックしていき、依存関係呼び出しを確認します。
 * 依存関係データのクエリを実行するには、[Analytics](#logs-analytics) を使用できます。
 

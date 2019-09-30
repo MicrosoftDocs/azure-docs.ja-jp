@@ -1,6 +1,6 @@
 ---
 title: ワークスペース データのエクスポートまたは削除
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure portal、CLI、SDK、および認証済み REST API を使用してワークスペースをエクスポートまたは削除する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: ph-com
 ms.author: pahusban
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023972"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002838"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する 
 
@@ -27,9 +27,9 @@ Azure Machine Learning では、認証済み REST API を使用してワーク�
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>ワークスペース データを制御する
-Azure Machine Learning Services によって格納された製品内データは、Azure portal、CLI、SDK、および認証済み REST API を使用してエクスポートおよび削除することができます。 テレメトリ データには、Azure Privacy Portal を介してアクセスできます。 
+Azure Machine Learning によって格納された製品内データは、Azure portal、CLI、SDK、および認証済み REST API を使用してエクスポートおよび削除することができます。 テレメトリ データには、Azure Privacy Portal を介してアクセスできます。 
 
-Azure Machine Learning Services では、個人データは、実行履歴ドキュメント内のユーザー情報と、ユーザーのサービスとの対話のテレメトリ レコードで構成されます。
+Azure Machine Learning では、個人データは、実行履歴ドキュメント内のユーザー情報と、ユーザーのサービスとの対話のテレメトリ レコードで構成されます。
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>REST API を使用してワークスペース データを削除する 
 
@@ -57,13 +57,13 @@ Azure Machine Learning Services では、個人データは、実行履歴ドキ
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2018-03-01-preview
 
-### <a name="delete-assets"></a>資産を削除する
+### <a name="delete-assets"></a>アセットを削除する
 
-資産とその ID のリストを取得するには、次の呼び出しを使用します。
+アセットとその ID のリストを取得するには、次の呼び出しを使用します。
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2018-03-01-preview
 
-個々の資産は、次の呼び出しで削除できます。
+個々のアセットは、次の呼び出しで削除できます。
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2018-03-01-preview
 
@@ -172,13 +172,13 @@ Azure Machine Learning Services では、個人データは、実行履歴ドキ
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/models/{id}?api-version=2018-03-01-preview
 
-### <a name="export-assets"></a>資産をエクスポートする
+### <a name="export-assets"></a>アセットをエクスポートする
 
-資産とその ID のリストを取得するには、次の呼び出しを使用します。
+アセットとその ID のリストを取得するには、次の呼び出しを使用します。
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets?api-version=2018-03-01-preview
 
-個々の資産は、次の呼び出しで取得できます。
+個々のアセットは、次の呼び出しで取得できます。
 
     https://{location}.modelmanagement.azureml.net/api/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspace}/assets/{id}?api-version=2018-03-01-preview
 
@@ -232,13 +232,13 @@ Azure Machine Learning Services では、個人データは、実行履歴ドキ
 
     https://{location}.aether.ms/api/v1.0/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MachineLearningServices/workspaces/{workspaceName}/DataSources/{id}
 
-## <a name="delete-visual-interface-assets"></a>ビジュアル インターフェイス資産を削除する
+## <a name="delete-visual-interface-assets"></a>ビジュアル インターフェイス アセットを削除する
 
-実験で作成したビジュアル インターフェイスで、個々の資産を削除します。
+実験で作成したビジュアル インターフェイスで、個々のアセットを削除します。
 
-1. 左側で、削除する資産の種類を選択します。
+1. 左側で、削除するアセットの種類を選択します。
 
-    ![資産を削除する](media/how-to-export-delete-data.md/delete-experiment.png)
+    ![アセットを削除する](media/how-to-export-delete-data.md/delete-experiment.png)
 
 1. 一覧で、削除する個々の資産を選択します。
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: e35e86bee4dfee21d0a98867c3e0d1d7850ed0ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e64905cdfeac8d507df1c3dd92c245cb910a79b2
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65762005"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033572"
 ---
 # <a name="connect-excel-to-apache-hadoop-by-using-power-query"></a>Power Query を使用して Excel を Apache Hadoop に接続する
 マイクロソフトのビッグ データ ソリューションの重要な特徴の 1 つに、Azure HDInsight での Microsoft ビジネス インテリジェンス (BI) コンポーネントと Apache Hadoop クラスターの統合があります。 主な例は、Microsoft Power Query for Excel アドインを使用して Hadoop クラスターと関連付けられたデータを格納する Azure Storage アカウントに Excel を接続する機能です。 この記事では、Power Query をセットアップして、HDInsight で管理される Hadoop クラスターに関連付けられたデータの照会に使用する方法を説明します。
@@ -21,14 +21,14 @@ ms.locfileid: "65762005"
 ### <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。
 
-* **HDInsight クラスター**。 その構成方法については、「[Azure HDInsight の概要]」[hdinsight-get-started]を参照してください。
+* **HDInsight クラスター**。 その構成方法については、[Azure HDInsight の概要](./apache-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 * **ワークステーション** 。
 * **Office 2016、Office 2013 Professional Plus、Office 365 ProPlus、Excel 2013 Standalone、または Office 2010 Professional Plus**。
 
 ## <a name="install-power-query"></a>Power Query をインストールする
 Power Query は、HDInsight クラスターで実行される Hadoop ジョブによって出力されたデータや生成されたデータをインポートすることができます。
 
-Excel 2016 では、Power Query は [データ] リボンの [取得と変換] セクションに統合されています。 以前のバージョンの Excel の場合は、[Microsoft ダウンロード センター][powerquery-download]から Microsoft Power Query for Excel をダウンロードして、インストールします。
+Excel 2016 では、Power Query は [データ] リボンの [取得と変換] セクションに統合されています。 以前のバージョンの Excel の場合は、[Microsoft ダウンロード センター](https://go.microsoft.com/fwlink/?LinkID=286689)から Microsoft Power Query for Excel をダウンロードして、インストールします。
 
 ## <a name="import-hdinsight-data-into-excel"></a>HDInsight データを Excel へインポート
 Power Query for Excel アドインを使うと、HDInsight クラスターから Excel にデータを簡単にインポートして、そこで PowerPivot や Power Map のような BI ツールを使用してデータの調査、分析、表示ができます。
@@ -43,13 +43,13 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 
      - **[データ]** メニューをクリックし、 **[Get & Transform Data]\(データの取得と変換\)** リボンの **[データの取得]** をクリックして、 **[From Azure]\(Azure から\)** 、 **[From Azure HDInsight(HDFS)]\(Azure HDInsight(HDFS) から\)** を順にクリックします。
 
-       ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.excel2016.png)
+       ![HDI.PowerQuery.SelectHdiSource.2016](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource-excel2016.png)
 
    - Excel 2013/2010
 
      - **[Power Query]** メニューをクリックし、 **[Azure から]** 、 **[Microsoft Azure HDInsight から]** の順にクリックします。
    
-       ![HDI.PowerQuery.SelectHdiSource][image-hdi-powerquery-hdi-source]
+       ![HDI.PowerQuery.SelectHdiSource](./media/apache-hadoop-connect-excel-power-query/powerquery-selecthdisource.png)
        
        **注:** **[Power Query]** メニューが表示されない場合は、 **[ファイル]**  >  **[オプション]**  >  **[アドイン]** をクリックして、ページ下部にある **[管理]** ボックスの一覧の **[COM アドイン]** を選択します。 **[設定]** をクリックして、Power Query for Excel アドインのボックスがオンになっていることを確認します。
        
@@ -58,11 +58,12 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 5. **アカウント キー**に BLOB ストレージ アカウントのキーを入力し、 **[保存]** をクリックします。 (アカウント情報を入力するのは、最初にこのストアにアクセスするときだけです。)
 6. クエリ エディターの左側にある **[ナビゲーター]** ウィンドウで、BLOB ストレージ コンテナーの名前をダブルクリックします。 既定で、コンテナー名はクラスター名と同じです。
 7. **[名前]** 列 (フォルダーのパスは **../hive/warehouse/hivesampletable/** ) で **HiveSampleData.txt** を見つけて、HiveSampleData.txt の左側の **[バイナリ]** をクリックします。 HiveSampleData.txt はすべてのクラスターに用意されています。 必要に応じて、独自のファイルを使用できます。
-   
-    ![HDI.PowerQuery.ImportData][image-hdi-powerquery-importdata]
+
+    ![HDI Excel Power Query でのデータのインポート](./media/apache-hadoop-connect-excel-power-query/powerquery-importdata.png)
+
 8. 列名を変更することもできます。 準備ができたら **[閉じて読み込む]** をクリックします。  ブックにデータが読み込まれます。
-   
-    ![HDI.PowerQuery.ImportedTable][image-hdi-powerquery-imported-table]
+
+    ![HDI Excel Power Query でインポートされたテーブル](./media/apache-hadoop-connect-excel-power-query/powerquery-importedtable.png)
 
 ## <a name="next-steps"></a>次の手順
 この記事では、Power Query を使用して HDInsight から Excel にデータを取得する方法を学習しました。 同様に、Azure SQL Database に HDInsight からデータを取得することもできます。 また、HDInsight にデータをアップロードすることもできます。 詳細については、次の記事を参照してください。
@@ -74,9 +75,3 @@ Power Query for Excel アドインを使うと、HDInsight クラスターから
 * [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する](apache-hadoop-visual-studio-tools-get-started.md)。
 * [Azure HDInsight Tool for Visual Studio Code の使用](../hdinsight-for-vscode.md)。
 * [HDInsight にデータをアップロードする](./../hdinsight-upload-data.md)。
-
-[image-hdi-powerquery-hdi-source]: ./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.selecthdisource.png
-[image-hdi-powerquery-importdata]: ./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.importdata.png
-[image-hdi-powerquery-imported-table]: ./media/apache-hadoop-connect-excel-power-query/hdi.powerquery.importedtable.PNG
-
-[powerquery-download]: https://go.microsoft.com/fwlink/?LinkID=286689

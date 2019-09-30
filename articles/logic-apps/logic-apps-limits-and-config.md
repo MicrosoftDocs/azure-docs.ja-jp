@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 07/19/2019
-ms.openlocfilehash: 95df72875338b6964f42075404cf9c30ba132f9d
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 401b33c28e4ba91a0da5e4ab38f920e173302ea1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900207"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242368"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -26,7 +26,7 @@ ms.locfileid: "69900207"
 
 1 つのロジック アプリ定義の制限を次に示します。
 
-| Name | 制限 | メモ |
+| 名前 | 制限 | メモ |
 | ---- | ----- | ----- |
 | ワークフローごとのアクション数 | 500 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
 | アクションで許可される入れ子の深さ | 8 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
@@ -48,7 +48,7 @@ ms.locfileid: "69900207"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | 実行継続時間 | 90 日間 | 365 日 | 既定の制限を変更するには、[実行継続時間の変更](#change-duration)に関する記事を参照してください。 |
 | ストレージのリテンション期間 | 実行の開始時刻から 90 日間 | 365 日 | 既定の制限を変更するには、[ストレージのリテンション期間の変更](#change-retention)に関する記事を参照してください。 |
@@ -75,7 +75,7 @@ ms.locfileid: "69900207"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| Name | 制限 | メモ |
+| 名前 | 制限 | メモ |
 | ---- | ----- | ----- |
 | トリガーのコンカレンシー | * コンカレンシー制御がオフの場合は無制限 <p><p>* コンカレンシー制御がオンの場合、25 が既定値の制限となります。制御をオンにした後、元に戻すことはできません。 既定値は、1 から 50 までの値に変更することができます。 | この制限は、同時に (つまり、並列で) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)に関するページまたは「[インスタンスを順次トリガーする](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)」を参照してください。 |
 | 待機中の実行の最大数 | コンカレンシー制御がオンの場合、待機中の実行の最大数は 10 にコンカレンシー (トリガーのコンカレンシー) の数を加えたものになります。 最大数は 100 以下で変更することができます。 | この制限は、ロジック アプリで最大数の同時実行インスタンスが既に実行されている場合に、実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を変更するには、「[実行待機の制限を変更する](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)」を参照してください。 |
@@ -93,7 +93,7 @@ ms.locfileid: "69900207"
 
 ### <a name="multi-tenant-logic-apps-service"></a>マルチテナント Logic Apps サービス
 
-| Name | 制限 | メモ |
+| 名前 | 制限 | メモ |
 | ---- | ----- | ----- |
 | アクション:5 分あたりの実行数 | 既定の制限は 100,000、上限は 300,000 です。 | 既定の制限を変更するには、["高スループット" モードでのロジック アプリの実行](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)に関する記事をご覧ください。 または、必要に応じて複数のロジック アプリにワークロードを分散できます。 |
 | アクション:同時発信呼び出し数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮できます。 |
@@ -105,7 +105,9 @@ ms.locfileid: "69900207"
 
 ### <a name="integration-service-environment-ise"></a>統合サービス環境 (ISE)
 
-| Name | 制限 | メモ |
+Premium SKU のスループットの上限は次のとおりです。
+
+| 名前 | 制限 | メモ |
 |------|-------|-------|
 | 基本単位の実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 1 分あたり最大 4,000 回のアクション実行 (1 か月あたり最大 1 億 6,000 万回のアクション実行) が提供されます | |
 | スケール ユニットの実行制限 | インフラストラクチャの容量が 80% に達するとシステムが調整される | 各スケール ユニットでは、1 分あたり最大 2,000 回の追加アクション実行 (1 か月あたり最大 8,000 万回の追加アクション実行) を提供できます | |
@@ -113,6 +115,9 @@ ms.locfileid: "69900207"
 ||||
 
 通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のある負荷テストを実行するには、[Logic Apps チームに問い合わせ](mailto://logicappsemail@microsoft.com)の上、要件についてご相談ください。
+
+> [!NOTE]
+> [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) には、スケールアップのためのサービス レベル アグリーメント (SLA) や機能がないため、公開されている制限がありません。 この SKU は、実験、開発、テストにのみ使用し、運用環境やパフォーマンス テストには使用しないでください。
 
 <a name="request-limits"></a>
 
@@ -124,7 +129,7 @@ ms.locfileid: "69900207"
 
 コネクタ操作の中には、非同期呼び出しを行うものや webhook 要求をリッスンするものがあるため、これらの操作のタイムアウトはこれらの制限より長くなる場合があります。 詳細については、特定のコネクタの技術詳細をご覧ください。「[Workflow triggers and actions](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)」もご覧ください。
 
-| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | 送信要求 | 120 秒 | 240 秒 | これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern)または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 |
 | 同期応答 | 120 秒 | 240 秒 | 元の要求で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 |
@@ -132,7 +137,7 @@ ms.locfileid: "69900207"
 
 #### <a name="message-size"></a>メッセージ サイズ
 
-| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | メッセージ サイズ | 100 MB | 200 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 |
 | チャンクがある場合のメッセージ サイズ | 1 GB | 5 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 <p>統合サービス環境の場合、Logic Apps エンジンはこの制限をサポートしますが、コネクタには、エンジンの制限などに応じて独自のチャンク制限があります。[Azure Blob Storage コネクタ](/connectors/azureblob/)に関する記事を参照してください。 チャンクの詳細については、[チャンクを使用した大きいサイズのメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関する記事を参照してください。 |
@@ -141,7 +146,7 @@ ms.locfileid: "69900207"
 
 #### <a name="retry-policy"></a>再試行ポリシー
 
-| Name | 制限 | メモ |
+| 名前 | 制限 | メモ |
 | ---- | ----- | ----- |
 | 再試行 | 90 | 既定値は 4 です。 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
 | 再試行の最大間隔 | 1 日 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 |
@@ -154,7 +159,7 @@ ms.locfileid: "69900207"
 
 次に示すのは、Web API から作成できるカスタム コネクタの制限です。
 
-| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | カスタム コネクタの数 | Azure サブスクリプションあたり 1,000 | Azure サブスクリプションあたり 1,000 ||
 | カスタム コネクタの 1 分あたりの要求数 | 接続ごとに、1 分あたり 500 の要求 | *カスタム コネクタ*ごとに、1 分あたり 2,000 の要求 ||
@@ -164,7 +169,7 @@ ms.locfileid: "69900207"
 
 ## <a name="managed-identities"></a>マネージド ID
 
-| Name | 制限 |
+| 名前 | 制限 |
 | ---- | ----- |
 | マネージド ID が自動割り当てされているロジック アプリの数 (Azure サブスクリプションあたり) | 100 |
 |||
@@ -181,10 +186,10 @@ ms.locfileid: "69900207"
 
 * [Developer か Premium](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) かに関係なく、各 ISE は、合計 5 個の統合アカウントに制限されています。
 
-  | ISE SKU | 制限 |
-  |---------|-------|
-  | **Premium** | 合計 5 個 - [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) のみ。Free または Basic は不可。 |
-  | **開発者** | 合計 5 個 - Free (1 個に制限)、Standard、または両方。ただし、Basic は不可。 |
+  | ISE SKU | 統合アカウントの制限 |
+  |---------|----------------------------|
+  | **Premium** | 合計 5 個。[Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) アカウントのみ (無料の Standard アカウント 1 つを含む)。 Free または Basic アカウントは使用できません。 |
+  | **開発者** | 合計 5 個。[Free](../logic-apps/logic-apps-pricing.md#integration-accounts) (1 アカウントに制限) と [Standard](../logic-apps/logic-apps-pricing.md#integration-accounts) の組み合わせ、またはすべて Standard アカウント。 Basic アカウントは使用できません。 [Developer SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) は、運用やパフォーマンス テストにではなく、実験、開発、テストに使用してください。 |
   |||
 
 ISE に含まれている統合アカウント以外に追加する統合アカウントには、追加コストが適用されます。 ISE の価格と課金のしくみについては、[Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md#fixed-pricing)に関する記事を参照してください。 価格については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」を参照してください。
@@ -234,7 +239,7 @@ ISE に含まれている統合アカウント以外に追加する統合アカ�
 
 B2B プロトコルに適用されるメッセージ サイズの制限を次に示します。
 
-| Name | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
+| 名前 | マルチ テナントの制限 | 統合サービス環境の制限 | メモ |
 |------|--------------------|---------------------------------------|-------|
 | AS2 | v2 - 100 MB<br>v1 - 50 MB | v2 - 200 MB <br>v1 - 50 MB | デコードおよびエンコードに適用 |
 | X12 | 50 MB | 50 MB | デコードおよびエンコードに適用 |
@@ -255,11 +260,9 @@ B2B プロトコルに適用されるメッセージ サイズの制限を次に
 
 同じリージョン内のすべてのロジック アプリは、同じ IP アドレス範囲を使用します。 ロジック アプリが [HTTP](../connectors/connectors-native-http.md)、[HTTP + Swagger](../connectors/connectors-native-http-swagger.md)、および他の HTTP 要求を使用して直接実行する呼び出しをサポートするには、ロジック アプリが存在する場所に基づいて、Logic Apps サービスで使用される*すべて*の[着信](#inbound) IP アドレス*と*[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**受信**と**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。 
 
-[Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される*すべて*の[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。
+[Microsoft のマネージド コネクタ](../connectors/apis-list.md)が実行する呼び出しをサポートするには、ロジック アプリが存在するリージョンに基づいて、これらのコネクタで使用される*すべて*の[送信](#outbound) IP アドレスでファイアウォールを設定します。 これらのアドレスは、このセクションの**送信**の見出しの下に、リージョン別に並べ替えられて表示されます。 統合サービス環境 (ISE) 内で実行されるロジック アプリの場合は、[これらのポートを開いている](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)ことを確認してください。
 
-統合サービス環境 (ISE) 内で実行されるロジック アプリの場合は、[これらのポートを開いている](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#ports)ことを確認してください。
-
-[Azure Government](../azure-government/documentation-government-overview.md) と [Azure China 21Vianet](https://docs.microsoft.com/azure/china/) の場合、コネクタに対する予約済み IP アドレスは現在使用できません。
+カスタム コネクタ、[Azure Government](../azure-government/documentation-government-overview.md)、[Azure China 21Vianet](https://docs.microsoft.com/azure/china/) の場合、固定 IP アドレスまたは予約済み IP アドレスは使用できません。
 
 > [!IMPORTANT]
 >
@@ -275,7 +278,7 @@ Logic Apps は、ファイアウォール経由の Azure ストレージ アカ�
 
 ### <a name="inbound-ip-addresses---logic-apps-service-only"></a>受信 IP アドレス - Logic Apps サービスのみ
 
-| リージョン | IP |
+| Region | IP |
 |--------|----|
 | オーストラリア東部 | 13.75.153.66、52.187.231.161、104.210.89.222、104.210.89.244 |
 | オーストラリア南東部 | 13.73.115.153、40.115.78.70、40.115.78.237、52.189.216.28 |
@@ -307,7 +310,7 @@ Logic Apps は、ファイアウォール経由の Azure ストレージ アカ�
 
 ### <a name="outbound-ip-addresses---logic-apps-service--managed-connectors"></a>送信 IP アドレス - Logic Apps サービスとマネージド コネクタ
 
-| リージョン | Logic Apps IP | マネージド コネクタ IP |
+| Region | Logic Apps IP | マネージド コネクタ IP |
 |--------|---------------|-----------------------|
 | オーストラリア東部 | 13.75.149.4、52.187.226.96、52.187.226.139、52.187.227.245、52.187.229.130、52.187.231.184、104.210.90.241、104.210.91.55 | 13.70.72.192 - 13.70.72.207、13.72.243.10 |
 | オーストラリア南東部 | 13.70.159.205、13.73.114.207、13.77.3.139、13.77.56.167、13.77.58.136、52.189.214.42、52.189.220.75、52.189.222.77 | 13.77.50.240 - 13.77.50.255、13.70.136.174 |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b7265f8d5ec4b7336253787e9cb881900a52b79
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 29a30e466e78c3a71764b36bf8337aaeae8981f7
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963446"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69980498"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -87,7 +87,9 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件付きアクセスは、Exchange ActiveSync と連携しますか。
 
-はい。いくつかの[制限](block-legacy-authentication.md)がありますが、条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。 
+はい。条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。
+
+SharePoint Online や Exchange Online などの一部のクラウド アプリでは、レガシ認証プロトコルもサポートされています。 クライアント アプリでクラウド アプリへのアクセスにレガシ認証プロトコルを利用できる場合、そのようなアクセスの試行に対しては Azure AD の条件付きアクセス ポリシーを適用できません。 クライアント アプリがポリシーの適用を回避する事態を防ぐため、該当するクラウド アプリで先進認証のみを有効にできるかどうかを確認する必要があります。
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>Office 365 アプリでは条件付きアクセスをどのように構成すればよいですか。
 

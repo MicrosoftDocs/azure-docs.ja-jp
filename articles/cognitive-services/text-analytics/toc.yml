@@ -12,7 +12,7 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: Client
+    - name: クライアント ライブラリ
       items:
         - name: 'C#'
           href: quickstarts/csharp.md
@@ -54,13 +54,13 @@
   items:
     - name: Text Analytics API を呼び出す
       href: How-tos/text-analytics-how-to-call-api.md
-    - name: 言語を検出する
+    - name: 言語検出
       href: How-tos/text-analytics-how-to-language-detection.md
-    - name: センチメントを分析する
+    - name: センチメント分析
       href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: キー フレーズを抽出する
+    - name: キー フレーズの抽出
       href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: 名前付きエンティティの認識を呼び出す
+    - name: 名前付きエンティティの認識
       href: How-tos/text-analytics-how-to-entity-linking.md
     - name: コンテナーの使用
       items:

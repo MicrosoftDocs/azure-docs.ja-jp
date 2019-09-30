@@ -11,12 +11,12 @@ ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: ca2d28f3438fd166fa282488206662c95777bf3b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9228a94dcf27d8987b16e2caa2681cf973db0657
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104733"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050646"
 ---
 # <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Yammer アカウントの監視と管理を行う
 
@@ -30,7 +30,7 @@ Yammer アカウントから応答を取得し、その出力を他のアクシ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 
 
 * Yammer アカウントとユーザー資格情報。
 
@@ -65,7 +65,7 @@ Yammer アカウントから応答を取得し、その出力を他のアクシ�
        検索ボックスに、フィルターとして「yammer」と入力します。 
        アクションの一覧で、目的のアクションを選択します。
 
-1. Yammer へのサインインを求められたら、今すぐサインインして、アクセスを許可するようにします。
+1. Yammer へのサインインを求められたら、今すぐサインインして、アクセスを許可できるようにします。
 
 1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 

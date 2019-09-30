@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: aahi
-ms.openlocfilehash: 8f3d30866ac6db0cdece9af8144fcfa266871172
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: cd00f49aea08e5c94a9206b64f66f4424ef3ca04
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697899"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057647"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Azure コマンド ライン インターフェイス (CLI) を使用して Cognitive Services リソースを作成する
 
@@ -23,12 +23,12 @@ ms.locfileid: "68697899"
 
 このクイックスタートでは、[Azure コマンドライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用して、Azure Cognitive Services にサインアップし、単一サービスまたはマルチサービスを持つアカウントを作成する方法を学習します。 これらのサービスは Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表され、Azure Cognitive Services APIs の中の 1 つ以上の API に接続できます。
 
+[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 * 有効な Azure サブスクリプション - 無料[アカウントを作成](https://azure.microsoft.com/free/)します。
 * [Azure コマンド ライン インターフェイス (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-
-[!INCLUDE [cognitive-services-subscription-types](../../includes/cognitive-services-subscription-types.md)]
 
 ## <a name="install-the-azure-cli-and-sign-in"></a>Azure CLI をインストールしてサインインする 
 
@@ -138,7 +138,7 @@ az cognitiveservices account list-kinds
 ```azurecli-interactive
 az cognitiveservices account create \
     --name anomaly-detector-resource \
-    --group cognitive-services-resource-group \
+    --resource-group cognitive-services-resource-group \
     --kind AnomalyDetector \
     --sku F0 \
     --location westus2 \
@@ -168,7 +168,7 @@ Cognitive Service リソースのキーを取得するには、[az cognitiveserv
 価格レベル (および請求される金額) は、認証情報を使用して送信するトランザクションの数に基づきます。 各価格レベルにより、以下が指定されます。
 * 1 秒あたりに許可されるトランザクションの最大数 (TPS)。
 * 価格レベル内で有効にされるサービス機能。
-* 事前に定義されたトランザクションの量のコスト。 この量を超えると、サービスの[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)に関するページで指定されている追加料金が発生します。
+* 事前に定義されたトランザクションの量のコスト。 この量を超えると、サービスの「[価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/custom-vision-service/)」で指定されている追加料金が発生します。
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

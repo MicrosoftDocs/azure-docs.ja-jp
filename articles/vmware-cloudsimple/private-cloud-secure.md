@@ -73,4 +73,4 @@ RBAC の詳細については、「[Azure リソースのロールベースの�
 
 1. [ファイアウォール テーブル](firewall.md#add-a-new-firewall-table)を作成します。
 2. ファイアウォール テーブルに[規則を追加](firewall.md#create-a-firewall-rule)します。
-3. [ファイアウォール テーブルを VLAN またはサブネットにアタッチ](firewall.md#attach-vlanssubnet)します。
+3. [ファイアウォール テーブルを VLAN またはサブネットにアタッチ](firewall.md#attach-vlanssubnet します。

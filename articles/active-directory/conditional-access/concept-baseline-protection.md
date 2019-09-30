@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 819b2f3c54d97639eceae9aed60fdd5da2e7b3ef
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 572371f4abec413be5a2320c7d69d8126f26924f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608169"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533061"
 ---
 # <a name="what-are-baseline-policies"></a>ベースライン ポリシーとは?
 
-ベースライン ポリシーは、多くの一般的な攻撃から組織を保護するのに役立つ一連の定義済みポリシーです。 これらの一般的な攻撃としては、パスワード スプレー、リプレイ、およびフィッシングなどが考えられます。 ベースライン ポリシーは、Azure AD のすべてのエディションで使用できます。 この数年間で ID ベースの攻撃が増えているため、Microsoft はこれらのベースライン保護ポリシーをすべてのユーザーが利用できるようにしています。 これらの 4 つのポリシーの目標は、すべての組織が追加の費用なしでベースライン レベルのセキュリティを確実に有効にできるようにすることです。  
+ベースライン ポリシーは、多くの一般的な攻撃から組織を保護するために役立つ一連の定義済みのポリシーです。 これらの一般的な攻撃としては、パスワード スプレー、リプレイ、およびフィッシングなどが考えられます。 ベースライン ポリシーは、Azure AD のすべてのエディションで使用できます。 この数年間で ID ベースの攻撃が増えているため、Microsoft はこれらのベースライン保護ポリシーをすべてのユーザーが利用できるようにしています。 これらの 4 つのポリシーの目標は、すべての組織が追加の費用なしでベースライン レベルのセキュリティを確実に有効にできるようにすることです。  
 
 カスタマイズされた条件付きアクセス ポリシーを管理するには、Azure AD Premium ライセンスが必要です。
 
@@ -41,7 +41,7 @@ ms.locfileid: "68608169"
 
 管理者アカウントには権限とアクセス権があるため、特別な注意を払って対処する必要があります。 特権アカウントの保護を向上するための一般的な方法の 1 つは、特権アカウントがサインインに使用されるときに、強力な形式のアカウント検証を必須にすることです。 Azure Active Directory では、Azure Multi-Factor Authentication への登録とその使用を管理者に要求することで、アカウント検証を強力にすることができます。
 
-[管理者に MFA を要求する (プレビュー)](howto-baseline-protect-administrators.md)  は、最も高い特権を持つ Azure AD ロールであると見なされている次のディレクトリ ロールに対して多要素認証 (MFA) を要求するベースライン ポリシーです。
+[管理者に MFA を要求する (プレビュー)](howto-baseline-protect-administrators.md) は、最も高い特権を持つ Azure AD ロールであると見なされている次のディレクトリ ロールに多要素認証 (MFA) を要求するベースライン ポリシーです。
 
 * 全体管理者
 * SharePoint 管理者
@@ -52,7 +52,7 @@ ms.locfileid: "68608169"
 * 課金管理者
 * ユーザー管理者
 
-これらのアカウントがスクリプトまたはコードで使用されている組織の場合は、 [マネージド ID](../managed-identities-azure-resources/overview.md) に置き換えることを検討してください。
+組織のスクリプトまたはコードでこれらのアカウントが使用されている場合は、それを[マネージド ID](../managed-identities-azure-resources/overview.md) に置き換えることを検討してください。
 
 ### <a name="end-user-protection-preview"></a>エンド ユーザーの保護 (プレビュー)
 
@@ -87,7 +87,7 @@ ms.locfileid: "68608169"
 
 ベースライン ポリシーを有効にするには:
 
-1.  **Azure portal**  にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
+1. グローバル管理者、セキュリティ管理者、または条件付きアクセス管理者として **Azure portal** にサインインします。
 1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
 1. ポリシーの一覧では、有効にしたいベースライン ポリシーを選択します。
 1. **[ポリシーを有効にする]** を **[オン]** に設定します。

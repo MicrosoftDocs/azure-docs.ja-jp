@@ -8,16 +8,15 @@ manager: gwallace
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 3d5b2afd642a7eb042b2e6e07ef93a505f6b9648
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: f2bdfab82e1b9fb05d74f69536ec672a4b18a4bf
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774695"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114378"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -400,7 +399,7 @@ Service Bus トリガーには、いくつかの[メタデータ プロパティ
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |maxConcurrentCalls|16|メッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、`maxConcurrentCalls` を 1 に設定します。 |
 |prefetchCount|該当なし|基になる MessageReceiver に使用される既定の PrefetchCount。|
@@ -715,14 +714,19 @@ C# とC# スクリプトでは、出力バインドに次のパラメーター�
 * `out T paramName` - `T` は任意の JSON シリアル化可能な型にすることができます。 関数が終了したときにこのパラメーターの値が null の場合、Functions は、null オブジェクトでメッセージを作成します。
 * `out string` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
 * `out byte[]` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
-* `out BrokeredMessage` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
+* `out BrokeredMessage` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません (Functions 1.x の場合)。
+* `out Message` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません (Functions 2.x の場合)。
 * `ICollector<T>` または `IAsyncCollector<T>`- 複数のメッセージを作成する場合。 `Add` メソッドを呼び出すときに、メッセージが作成されます。
 
-非同期関数では、`out` パラメーターの代わりに戻り値または `IAsyncCollector` を使用します。
+C# 関数を使用する場合:
 
-これらのパラメーターは Azure Functions バージョン 1.x 用です。2.x では、`BrokeredMessage` の代わりに [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) を使用してください。
+* 非同期関数には、`out` パラメーターの代わりに戻り値または `IAsyncCollector` が必要です。
 
-JavaScript で、`context.bindings.<name from function.json>` を使用して、キューまたはトピックにアクセスします。 文字列、バイト配列、または (JSON に逆シリアル化された) Javascript オブジェクトを `context.binding.<name>` に割り当てることができます。
+* セッション ID にアクセスするには、 [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) 型にバインドし、`sessionId` プロパティを使用します。
+
+JavaScript で、`context.bindings.<name from function.json>` を使用して、キューまたはトピックにアクセスします。 文字列、バイト配列、または (JSON に逆シリアル化された) JavaScript オブジェクトを `context.binding.<name>` に割り当てることができます。
+
+C# 以外の言語で、セッションが有効なキューにメッセージを送信するには、組み込みの出力バインドではなく、[Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) を使用します。
 
 ## <a name="exceptions-and-return-codes"></a>例外とリターン コード
 
@@ -756,7 +760,7 @@ JavaScript で、`context.bindings.<name from function.json>` を使用して、
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------|
 |maxAutoRenewDuration|00:05:00|メッセージ ロックが自動的に更新される最大間隔。|
 |autoComplete|true|トリガーをすぐに完了としてマークする (オートコンプリート) か、呼び出しの処理が完了するまで待機するか。|

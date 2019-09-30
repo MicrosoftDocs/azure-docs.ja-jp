@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: ac1a4c77589f4ef88c9ee862cb871b376ca8a0fe
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 1c219c85836eb4730fa90918385555c433a12449
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483849"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915082"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm トポロジのデプロイと管理 
 
@@ -54,7 +54,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 3. **[新しいプロジェクト]** ダイアログで、 **[インストール済]**  >  **[テンプレート]** の順に展開して **[HDInsight]** を選択します。 テンプレートの一覧から **[Storm Sample]** を選択します。 ダイアログ ボックスの下部に、アプリケーションの名前を入力します。
 
-    ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
+    ![image](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
 4. **[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。
 
@@ -90,7 +90,7 @@ Nimbus サービスを使用してトポロジをプログラムによってデ�
 
 Visual Studio を使用してトポロジが送信されたら、**Storm トポロジ** ビューが表示されます。 実行中のトポロジに関する情報を表示するには、一覧からトポロジを選択します。
 
-![Visual Studio モニター](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
+![Visual Studio モニター](./media/apache-storm-deploy-monitor-topology-linux/visual-studio-monitor.png)
 
 > [!NOTE]  
 > また、**Storm トポロジ**は、 **[サーバー エクスプローラー]** で **[Azure]**  >  **[HDInsight]** の順に展開して、HDInsight クラスターの Storm を右クリックして **[View Storm Topologies]** を選択して表示できます。
@@ -217,7 +217,7 @@ Linux ベースの HDInsight クラスターの REST API のベース URI は、
 * **Ambari Web から**:ページの一番上から **[サービス]** を選択し、 **[Storm]** を選択します。 **[概要 ]** タブで **[Storm UI Server]** を選択します。 Storm UI と REST API をホストするノードの FQDN はページの一番上で確認できます。
 * **Ambari REST API から**:`curl -u admin -G "https:\//CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。 **CLUSTERNAME** をクラスター名に置き換えます。 メッセージが表示されたら、ログイン (管理者) アカウントのパスワードを入力します。 応答の「host_name」エントリにノードの FQDN が含まれます。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 
 REST API への要求では、HDInsight クラスターの管理者名とパスワードを使用して、 **基本認証**を使用する必要があります。
 

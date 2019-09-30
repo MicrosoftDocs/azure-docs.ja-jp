@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3918c37d985c6766fe6ad4601b70ddbd4597b0ba
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4d8955517450ce3b4efdf30e2790e4be678dfc7b
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087144"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735195"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
@@ -53,7 +53,7 @@ ms.locfileid: "70087144"
 
 関数を実装するコードを次に示します。
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# スクリプト
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SmsPhoneVerification/run.csx)]
 
@@ -84,7 +84,7 @@ ms.locfileid: "70087144"
 
 次に示すのは、4 桁のチャレンジ コードを生成して SMS メッセージを送信するコードです。
 
-### <a name="c"></a>C#
+### <a name="c-script"></a>C# スクリプト
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E4_SendSmsChallenge/run.csx)]
 

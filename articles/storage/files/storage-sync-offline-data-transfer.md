@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b0c9d55846a0240dde92de16ea17e9403a112c3e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 9264aa6d24256b991abefe35b41045caa2e76d67
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699216"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997776"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Azure File Sync に大量のデータを移行する
 次に示す 2 つの方法で Azure File Sync に大量のデータを移行できます。
@@ -22,9 +22,10 @@ ms.locfileid: "68699216"
 
 この記事では、Azure File Sync と互換性のある方法でファイルをオフライン移行する方法について説明します。同期を有効にした後で、以下の手順に従って、ファイルの競合を回避し、ファイルとフォルダーのアクセス制御リスト (ACL) とタイムスタンプを保持してください。
 
-## <a name="online-migration-tools"></a>オンライン移行ツール
-この記事で説明するプロセスは、Data Box だけでなく、その他のオフライン移行ツールにも対応しています。 また、AzCopy、Robocopy などのオンライン ツールや、パートナーのツールとサービスにも対応しています。 最初のアップロードの課題を克服した場合でも、この記事に記載されている手順に従って、Azure File Sync と互換性のある方法でこれらのツールを使用してください。
+## <a name="migration-tools"></a>移行ツール
+この記事で説明するプロセスは、Data Box だけでなく、その他のオフライン移行ツールにも対応しています。 また、インターネットでそのまま動作する AzCopy、Robocopy などのツールや、パートナーのツールとサービスにも対応しています。 最初のアップロードの課題を克服した場合でも、この記事に記載されている手順に従って、Azure File Sync と互換性のある方法でこれらのツールを使用してください。
 
+Azure File Sync を導入する前に、Windows Server 間で移動しなければならないケースもあります。そのような場合には [Storage Migration Service](https://aka.ms/storagemigrationservice) (SMS) が役立つ可能性があります。 Azure File Sync でサポートされるバージョンのサーバー OS (Windows Server 2012R2 以上) が必要であったり、単純に Azure File Sync 用の新しいシステムを購入するなど、移行の理由が何であれ、円滑な移行を支援するさまざまな機能と利点を SMS は備えています。
 
 ## <a name="benefits-of-using-a-tool-to-transfer-data-offline"></a>ツールを使用してデータをオフライン転送する利点
 Data Box などの転送ツールをオフライン移行に使用する主な利点は次のとおりです。

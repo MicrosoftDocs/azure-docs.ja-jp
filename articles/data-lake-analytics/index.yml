@@ -1,0 +1,91 @@
+### YamlMime:Landing
+title: Azure Data Lake Analytics のドキュメント
+summary: Azure Data Lake Analytics を使用すると、大規模なデータ セットに対応するビッグ データ分析ジョブを実行できます。
+metadata:
+  title: Azure Data Lake Analytics
+  description: Azure Data Lake Analytics を使用すると、大規模なデータ セットに対応するビッグ データ分析ジョブを実行できます。
+  services: data-lake-analytics
+  ms.service: data-lake-analytics
+  ms.subservice: subservice
+  ms.topic: landing-page
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 789144730d99a0686856cee29f77227698154cbc
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71220020"
+landingContent:
+- title: Data Lake Analytics について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Data Lake Analytics とは
+      url: data-lake-analytics-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Azure portal で U-SQL ジョブを作成する
+      url: data-lake-analytics-get-started-portal.md
+    - text: Azure CLI を使用して U-SQL ジョブを作成する
+      url: data-lake-analytics-get-started-cli.md
+    - text: Visual Studio Code で U-SQL ジョブを作成する
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+- title: U-SQL 言語の説明
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: U-SQL を使ってみる
+      url: data-lake-analytics-u-sql-get-started.md
+    - text: U-SQL 言語のリファレンス
+      url: https://docs.microsoft.com/u-sql/
+    - text: U-SQL カタログの概要
+      url: data-lake-analytics-u-sql-catalog.md
+    - text: ユーザー定義演算子を使用する
+      url: data-lake-analytics-u-sql-develop-user-defined-operators.md
+- title: U-SQL プログラムの開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Data Lake Tools for Visual Studio を使用する
+      url: data-lake-analytics-data-lake-tools-get-started.md
+    - text: Visual Studio で U-SQL データベース プロジェクトを使用する
+      url: data-lake-analytics-data-lake-tools-develop-usql-database.md
+    - text: ジョブ ブラウザーとジョブ ビューを使用する
+      url: data-lake-analytics-data-lake-tools-view-jobs.md
+    - text: ユーザー定義の C# コードをデバッグする
+      url: data-lake-analytics-debug-u-sql-jobs.md
+    - text: Azure Data Lake Tools for Visual Studio Code の使用
+      url: data-lake-analytics-data-lake-tools-for-vscode.md
+    - text: Visual Studio Code で U-SQL のカスタムコードを使用する
+      url: data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md
+    - text: SSIS を使用したジョブのスケジュール設定
+      url: data-lake-analytics-schedule-jobs-ssis.md
+- title: Data Lake Analytics の管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure portal を使用した管理
+      url: data-lake-analytics-manage-use-portal.md
+    - text: Azure CLI を使用した管理
+      url: data-lake-analytics-manage-use-cli.md
+    - text: .NET アプリを使用した管理
+      url: data-lake-analytics-manage-use-dotnet-sdk.md
+    - text: Azure portal でユーザーを追加する
+      url: data-lake-analytics-add-users.md
+    - text: ポリシーを使用して Azure Data Lake Analytics を管理する
+      url: data-lake-analytics-policies.md
+- title: 継続的インテグレーションと継続的配置
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: CI/CD パイプラインの設定
+      url: data-lake-analytics-cicd-overview.md
+    - text: U-SQL アセンブリの管理
+      url: data-lake-analytics-cicd-manage-assemblies.md
+    - text: U-SQL スクリプトのテスト
+      url: data-lake-analytics-cicd-test.md
+    - text: U-SQL SDK の使用
+      url: data-lake-analytics-u-sql-sdk.md

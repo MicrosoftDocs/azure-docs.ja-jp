@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 09/04/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 458808f9d2c496ae4c29b05bd8a3531b94ba78c0
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 9d4822d07a95fcdec32c0c4146562884302fa4f8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422674"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308318"
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -211,7 +211,7 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 > 
 
 ### <a name="service-to-bgp-community-value"></a>BGP コミュニティ値へのサービス
-さらに、Microsoft は、所属先のサービスに基づいてプレフィックスにもタグ付けします。 これは、Microsoft ピアリングにのみ該当します。 次の表に、サービスと BGP コミュニティ値のマッピングを示します。
+さらに、Microsoft は、所属先のサービスに基づいてプレフィックスにもタグ付けします。 これは、Microsoft ピアリングにのみ該当します。 次の表に、サービスと BGP コミュニティ値のマッピングを示します。 最新の値の完全な一覧を表示するには、Get-AzBgpServiceCommunity コマンドレットを実行します。
 
 | **サービス** | **BGP コミュニティ値** |
 | --- | --- |

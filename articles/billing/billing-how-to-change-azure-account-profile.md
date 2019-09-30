@@ -2,7 +2,7 @@
 title: Azure アカウントのプロファイル情報を変更する | Microsoft Docs
 description: Azure 管理アカウントのプロファイルおよび連絡先のメール アドレスを変更にする方法について説明します。
 author: genlin
-manager: alherz
+manager: dcscontentpm
 tags: billing
 ms.assetid: 9d4ef5d9-11fc-4684-ace6-467f4ce26ba8
 ms.service: billing
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dea54f2e692174e12cb2dc1f0e0e0ed9fca127bc
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: e52d1f80f4e4028bd3d450c245ec02b65bcce69c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516570"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121637"
 ---
 # <a name="change-the-profile-information-for-your-azure-account"></a>Azure アカウントのプロファイル情報を変更する
 

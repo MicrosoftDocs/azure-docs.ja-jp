@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 05/03/2019
+ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6b551ee9a0a9c7ef9a8f5ff1bd7452a24dc04b7
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 70f0badc170c65b11bc244b5ed4ec2f9a205c72d
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014194"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70084876"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -270,3 +270,7 @@ Office チームでは、Office ポータルに現在の製品名が反映され
 * [Azure AD コミュニティ](https://social.msdn.microsoft.com/Forums/azure/en-US/newthread?category=windowsazureplatform&forum=WindowsAzureAD&prof=required)にアクセスして、技術的な質問と回答を探し、質問をすることができます。
 
 [Azure AD のサポートを受ける](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
+
+**Q:同期ステップのエラーの後にイベント 6311 と 6401 が発生するのはなぜですか。**
+
+イベント 6311 - "**The server encountered an unexpected error while performing a callback (コールバックの実行中にサーバーで予期しないエラーが発生しました)** " および 6401 - "**管理エージェント コントローラーで予期しないエラーが発生しました**" は、同期ステップのエラー後に常にログに記録されます。 これらのエラーを解決するには、同期ステップのエラーをクリーンアップする必要があります。  詳細については、「[同期中のエラーのトラブルシューティング](tshoot-connect-sync-errors.md)」および「[Azure AD Connect Sync を使用したオブジェクト同期のトラブルシューティング](tshoot-connect-objectsync.md)」を参照してください

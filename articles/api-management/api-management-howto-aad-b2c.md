@@ -9,16 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 644cc2a4175043b523d53b39f17483c6f3acfe96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4260f4640f488e67d6bb3101ff2cf7d269e2bf3e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696741"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073655"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Azure API Management で Azure Active Directory B2C を使用して開発者アカウントを承認する方法
 
@@ -36,7 +35,7 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 1. 開始するには、[Azure portal](https://portal.azure.com) にサインインし、API Management インスタンスを探します。
 
    > [!NOTE]
-   > まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の使用][Get started with Azure API Management]に関するチュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
+   > まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の使用に関するチュートリアル][Get started with Azure API Management]の「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
 
 2. **[ID]** で 上部にある **[+追加]** をクリックします。
 

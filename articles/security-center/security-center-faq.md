@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center のよく寄せられる質問 (FAQ) | Microsoft Docs
-description: この FAQ は、Azure セキュリティ センターについて寄せられる質問とその回答です。
+description: この FAQ は、Azure Security Center について寄せられる質問とその回答です。
 services: security-center
 documentationcenter: na
 author: monhaber
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: v-mohabe
-ms.openlocfilehash: 6e41453a096f4812b9ba541a2693b9c9b975b7c9
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 33ce4c3c7f7cba8310ca75ffd0de3ecb24ad6d8d
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68779072"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873411"
 ---
-# <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
+# <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center によく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
 
 > [!NOTE]
-> 2017 年 6 月上旬以降、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行います。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
+> Security Center では、データの収集と格納に Microsoft Monitoring Agent を使用しています。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。
 >
 >
 
 ## <a name="general-questions"></a>一般的な質問
 ### <a name="what-is-azure-security-center"></a>Azure Security Center とは
-Azure セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+Azure Security Center は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-### <a name="how-do-i-get-azure-security-center"></a>Azure セキュリティ センターはどうしたら取得できますか。
+### <a name="how-do-i-get-azure-security-center"></a>Azure Security Center はどうしたら取得できますか。
 Azure Security Center は、Microsoft Azure サブスクリプションで有効化し、[Azure Portal](https://azure.microsoft.com/features/azure-portal/) からアクセスします ([ポータルにサインイン](https://portal.azure.com)して、 **[参照]** を選択し、 **[セキュリティ センター]** までスクロールします)。  
 
 ## <a name="billing"></a>課金
-### <a name="how-does-billing-work-for-azure-security-center"></a>Azure セキュリティ センターの課金のしくみを教えてください。
+### <a name="how-does-billing-work-for-azure-security-center"></a>Azure Security Center の課金のしくみを教えてください。
 Azure Security Center は 2 つのレベルで提供されます。
 
 **Free レベル**では、Azure リソースのセキュリティ状態の表示、基本的なセキュリティ ポリシー、セキュリティに関する推奨事項、パートナーのセキュリティ製品やサービスとの統合が提供されます。
@@ -63,7 +63,7 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 - **Free レベル** - Security Center によって既定のワークスペースに 'SecurityCenterFree' ソリューションが有効化されます。 Free レベルの料金はかかりません。
 - **Standard レベル** - Security Center によって既定のワークスペースに 'Security' ソリューションが有効化されます。
 
-価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。 この価格ページでは、2017 年 6 月からのセキュリティ データ ストレージと日割り課金の変更が反映されています。
+価格の詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」を参照してください。
 
 > [!NOTE]
 > Security Center で作成されたワークスペースのログ分析の価格レベルは、Security Center の課金には影響しません。
@@ -146,7 +146,7 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
 
 1. Standard レベルのサブスクリプションを構成する場合、そのサブスクリプションのセキュリティ ポリシーを開き、 **[Free]** レベルを選択します。
 
-   ![価格レベル][1]
+   ![Pricing tier][1]
 
 2. 次に、 **[セキュリティ ポリシー - データ収集]** ブレードで **[オフ]** を選択して自動プロビジョニングを無効にします。
    ![データ収集][2]
@@ -161,7 +161,7 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
 次の条件に該当する場合、自動プロビジョニングの停止を検討する可能性があります。
 
 - Security Center による自動的なエージェントのインストールが、サブスクリプション全体に適用されている。  VM のサブセットには自動インストールを適用できません。 Microsoft Monitoring Agent ではインストールできない重要な VM がある場合は、自動プロビジョニングを停止する必要があります。
-- Microsoft Monitoring Agent (MMA) 拡張機能をインストールすると、エージェントのバージョンが更新される。 これは、ダイレクト エージェントと SCOM エージェントに該当します (後者の場合、SCOM と MMA で共通のランタイム ライブラリが共有され、それはプロセスで更新されます)。 インストールされている SCOM エージェントがバージョン 2012 であり、これがアップグレードされている場合、SCOM サーバーもバージョン 2012 になっていると、管理容易性の機能が失われる恐れがあります。 インストールされている SCOM エージェントがバージョン 2012 の場合、自動プロビジョニングの停止を検討する必要があります。
+- Microsoft Monitoring Agent (MMA) 拡張機能をインストールすると、エージェントのバージョンが更新される。 これは、ダイレクト エージェントと SCOM エージェントに該当します (後者の場合、SCOM と MMA で共通のランタイム ライブラリが共有され、それはプロセスで更新されます)。 インストールされている SCOM エージェントがバージョン 2012 であり、これがアップグレードされている場合、SCOM サーバーもバージョン 2012 になっていると、管理容易性の機能が失われる恐れがあります。 インストールされている SCOM エージェントがバージョン 2012 の場合、自動プロビジョニングの停止を検討してください。
 - サブスクリプション (一元化されたワークスペース) の外部にカスタム ワークスペースを保持している場合、自動プロビジョニングを停止する必要があります。 手動で Microsoft Monitoring Agent 拡張機能をインストールして、Security Center が接続をオーバーライドせずに、お使いのワークスペースに接続できます。
 - サブスクリプションごとに複数のワークスペースが作成されることを回避したいと考えていて、サブスクリプション内に独自のカスタム ワークスペースがある場合、次の 2 つの選択肢があります。
 
@@ -177,7 +177,7 @@ Security Center がお使いの VM からセキュリティ データを収集�
 
 エージェントをいずれかの既存のカスタム ワークスペースまたは Security Center が作成したワークスペースに接続できます。 カスタム ワークスペースの 'Security' または 'SecurityCenterFree' ソリューションが有効になっていない場合は、ソリューションを適用する必要があります。 適用するには、 **[セキュリティ ポリシー – 価格レベル]** ブレードを利用して、カスタム ワークスペースまたはサブスクリプションを選択します。
 
-   ![価格レベル][1]
+   ![Pricing tier][1]
 
 Security Center は、選択された価格レベルに基づいて、ワークスペース上で適切なソリューションを有効にします。
 
@@ -253,19 +253,19 @@ Security Center で VM に Microsoft Monitoring Agent がインストールさ�
 ### <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>ワークスペースにはセキュリティ ソリューションが既にあります。 課金にどのような影響がありますか?
 Security & Audit ソリューションは、Azure VM で Security Center Standard レベルの機能を有効にするために使用されます。 Security & Audit ソリューションがワークスペースに既にインストールされている場合、Security Center は既存のソリューションを使用します。 課金額の変更はありません。
 
-## <a name="using-azure-security-center"></a>Azure セキュリティ センターの使用
+## <a name="using-azure-security-center"></a>Azure Security Center の使用
 ### <a name="what-is-a-security-policy"></a>セキュリティ ポリシーとは何ですか。
 セキュリティ ポリシーは、指定されたサブスクリプション内のリソースに対して推奨されるコントロールのセットを定義します。 Azure Security Center では、セキュリティに関する会社の要件、各サブスクリプションでのアプリケーションの種類やデータの機密度に合わせて Azure サブスクリプションのポリシーを定義します。
 
-Azure Security Center で有効になっているセキュリティ ポリシーが、セキュリティに関する推奨事項と監視を促進します。 セキュリティ ポリシーの詳細については、「 [Azure セキュリティ センターでのセキュリティ ヘルスの監視](security-center-monitoring.md)」を参照してください。
+Azure Security Center で有効になっているセキュリティ ポリシーが、セキュリティに関する推奨事項と監視を促進します。 セキュリティ ポリシーの詳細については、 [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) を参照してください。
 
 ### <a name="who-can-modify-a-security-policy"></a>セキュリティ ポリシーを変更できるのは誰ですか。
 セキュリティ ポリシーを変更するには、セキュリティ管理者であるか、そのサブスクリプションの所有者または共同作成者である必要があります。
 
-セキュリティ ポリシーを構成する方法については、「 [Azure セキュリティ センターでのセキュリティ ポリシーの設定](tutorial-security-policy.md)」を参照してください。
+セキュリティ ポリシーを構成する方法については、 [Azure Security Center でのセキュリティ ポリシーの設定](tutorial-security-policy.md) を参照してください。
 
 ### <a name="what-is-a-security-recommendation"></a>セキュリティに関する推奨事項とは
-Azure セキュリティ センターは、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性が識別されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。 次に例をいくつか示します。
+Azure Security Center は、Azure リソースのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性が識別されると、推奨事項が作成されます。 推奨事項では、必要なコントロールを構成する手順を説明します。 次に例をいくつか示します。
 
 * 悪意のあるソフトウェアを識別して削除するためのマルウェア対策をプロビジョニングする
 * 仮想マシンへのトラフィックを制御するための[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)とルール
@@ -329,7 +329,7 @@ Azure Security Center では、Azure 拡張機能によりインストールさ�
 Security Center は通常、1 時間ごとに新しいデータをスキャンし、それに応じて推奨事項を更新します。 
 
 > [!NOTE]
-> 2017 年 6 月上旬以降、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行います。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
+> Security Center では、データの収集と格納に Microsoft Monitoring Agent を使用しています。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。
 >
 >
 

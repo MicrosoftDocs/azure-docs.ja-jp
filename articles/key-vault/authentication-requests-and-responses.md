@@ -3,18 +3,18 @@ title: 認証、要求、応答
 description: Key Vault を使用するために AD に対する認証を行います
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4160d6ce324cf419cd4b9a61b68bb39b0443321c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b4f198d596ddcb475e123c355c38ada784d21d3
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694732"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884002"
 ---
 # <a name="authentication-requests-and-responses"></a>認証、要求、応答
 
@@ -87,7 +87,7 @@ Azure Key Vault は、JSON 形式の要求と応答をサポートします。 A
 
 ```  
 
-## <a name="authentication"></a>Authentication  
+## <a name="authentication"></a>認証  
  Azure Key Vault に対するすべての要求は、認証を受ける必要があります。 Azure Key Vault は、OAuth2 [[RFC6749](https://tools.ietf.org/html/rfc6749)] を使用して取得できる Azure Active Directory アクセス トークンをサポートしています。 
  
  アプリケーションの登録と、Azure Key Vault を使用するための認証について詳しくは、[Azure AD でのクライアント アプリケーションの登録](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad)に関するページをご覧ください。

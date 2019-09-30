@@ -17,12 +17,12 @@ ms.date: 05/13/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f57f09f146e542768c83fa034f0b4e65bc6b2ae
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ce62a5059304fe83d933a46ae69f4b8e0c276ba7
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68987927"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127033"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
@@ -64,11 +64,11 @@ ms.locfileid: "68987927"
 | リスクのあるユーザー          | 5 分   | 約 15 分  | 2 時間  |
 | リスクの高いサインイン         | 5 分   | 約 15 分  | 2 時間  |
 
-## <a name="risk-events"></a>リスク イベント
+## <a name="risk-detections"></a>リスク検出
 
-Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、**リスク イベント**と呼ばれるレコードに格納されます。
+Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、**リスク検出**と呼ばれるレコードに格納されます。
 
-次の表に、リスク イベントの待機時間情報を一覧表示します。
+次の表に、リスク検出の待機時間情報を一覧表示します。
 
 | レポート | 最小値 | 平均 | 最大値 |
 | :-- | --- | --- | --- |
@@ -84,4 +84,4 @@ Azure AD では、アダプティブ機械学習アルゴリズムとヒュー�
 
 * [Azure AD レポートの概要](overview-reports.md)
 * [Azure AD レポートへのプログラムによるアクセス](concept-reporting-api.md)
-* [Azure Active Directory リスク イベント](concept-risk-events.md)
+* [Azure Active Directory リスク検出](concept-risk-events.md)

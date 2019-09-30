@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 08/12/2019
+ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 11f40d99a36493272cb6cd51e4a339c19cd0358b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d7668f49df1caca6b4261424b0d2c025a640d572
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966731"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258776"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>クイック スタート:.NET 用 Language Understanding (LUIS) 作成クライアント ライブラリ
 
@@ -37,9 +37,9 @@ ms.locfileid: "68966731"
 
 ## <a name="setting-up"></a>設定
 
-### <a name="get-your-language-understanding-luis-authoring-key"></a>Language Understanding (LUIS) 作成キーを取得する
+### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUIS) スターター キーを取得する
 
-[作成キー](luis-how-to-account-settings.md)を取得し、そのキーについて `COGNITIVESERVICE_AUTHORING_KEY` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
+[スターター キー](luis-how-to-azure-subscription.md#starter-key)を取得し、そのキーについて `COGNITIVESERVICE_AUTHORING_KEY` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)します。
 
 ### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
@@ -190,7 +190,7 @@ LUIS アプリのモデルの中で最も重要なオブジェクトが、意図
 
 アプリケーション ディレクトリから、dotnet `run` コマンドを使用してアプリケーションを実行します。
 
-```dotnet
+```console
 dotnet run
 ```
 

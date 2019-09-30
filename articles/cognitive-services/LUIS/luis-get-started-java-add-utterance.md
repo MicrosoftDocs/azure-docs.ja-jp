@@ -1,5 +1,5 @@
 ---
-title: 変更、アプリのトレーニング、Java - LUIS
+title: クイック スタート:変更、アプリのトレーニング、Java - LUIS
 titleSuffix: Azure Cognitive Services
 description: この Java クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: bfe195ecd4dd777d5073c03c2e4fbd4bfcaaaa06
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 934ec14356448fc03d501a407c45086035ab3e04
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560584"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307526"
 ---
 # <a name="quickstart-change-model-using-java"></a>クイック スタート: Java を使ってモデルを変更する 
 

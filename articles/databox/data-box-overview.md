@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 09/17/2019
 ms.author: alkohli
-ms.openlocfilehash: cd2a776988ba27add54c69b0feccbc3fce8337aa
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.openlocfilehash: a3e27cf427de3a33f71d6f4a0af9b1590abeb573
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551522"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066997"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは
 
@@ -111,14 +111,7 @@ Data Box に含まれるコンポーネントを次に示します。
 
 Data Box は、サービスが展開されているリージョン、デバイスが出荷される国/リージョン、データの転送対象となる Azure ストレージ アカウントに基づいてデータを転送できます。 
 
-- **サービスの可用性** - このリリースでは、Data Box サービスは次のリージョンで利用できます。
-    - 米国のすべてのリージョン - 米国中西部、米国西部 2、米国西部、米国中南部、米国中部、米国中北部、米国東部、米国東部 2。
-    - 欧州連合 - 西ヨーロッパ、北ヨーロッパ。
-    - 英国 - 英国南部、英国西部。
-    - フランス - フランス中部、フランス南部。
-    - 日本 - 東日本、西日本
-    - オーストラリア - オーストラリア東部、オーストラリア南東部
-    - カナダ - カナダ東部、カナダ中部
+- **サービスの提供状況**: リージョン別の提供状況については、[リージョン別の利用可能な Azure 製品](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all)に関する記事を参照してください。 Data Box は、Azure Government クラウドにデプロイすることもできます。 詳細については、「[What is Azure Government? (Azure Government とは)](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)」を参照してください。
 
 - **転送先ストレージ アカウント** - データを格納するストレージ アカウントは、サービスが使用可能なすべての Azure リージョンで利用できます。  
 

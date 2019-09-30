@@ -4,7 +4,7 @@ description: リモート デスクトップ ライセンス サーバーが利�
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 ms.service: virtual-machines-windows
 ms.topic: troubleshooting
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 2c5eb25ae536a6cdb0eb12f1233307215fe2d7d1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 154160f9a3fbd485ee6383bf3d5ff1c291520a75
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70080010"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71088514"
 ---
 # <a name="remote-desktop-license-server-isnt-available-when-you-connect-to-an-azure-vm"></a>Azure VM に接続すると、リモート デスクトップ ライセンス サーバーが利用できない
 
@@ -122,7 +122,7 @@ mstsc /v:<Server>[:<Port>] /admin
        telnet <FQDN / IP License Server> 135
        ```
 
-3. 環境にリモート デスクトップ ライセンス サーバーがなく、このサーバーが必要な場合は、[リモート デスクトップ ライセンス役割サービスをインストールする](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11))ことができます。 その後、[RDS ライセンスを構成します](https://blogs.technet.microsoft.com/askperf/2013/09/20/rd-licensing-configuration-on-windows-server-2012/)。
+3. 環境にリモート デスクトップ ライセンス サーバーがなく、このサーバーが必要な場合は、[リモート デスクトップ ライセンス役割サービスをインストールする](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc731765(v=ws.11))ことができます。 その後、[RDS ライセンスを構成します](https://techcommunity.microsoft.com/t5/Ask-The-Performance-Team/RD-Licensing-Configuration-on-Windows-Server-2012/ba-p/375383)。
 
 4. リモート デスクトップ ライセンス サーバーが構成されていて正常な状態の場合、リモート デスクトップ ライセンス サーバーを CAL でアクティブ化するようにします。
 

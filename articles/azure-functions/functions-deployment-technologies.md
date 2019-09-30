@@ -10,16 +10,16 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 7f931a72eab534bc2856e9e545b684d2b8ae7a60
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: a0c34fcc70d92f98a6d72e4cd2fc78d34d863d55
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444039"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650454"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
-各種のテクノロジを使用して、Azure Functions プロジェクト コードを Azure にデプロイすることができます。 この記事では、これらのテクノロジの包括的な一覧を提供し、どのテクノロジをどの種類の関数に対して使用できるかを説明し、各手法を使用するとどのようなことが起こるかについて説明し、各種シナリオで使用する最適な手法についてレコメンデーションを提示します。 Azure Functions へのデプロイをサポートする各種ツールは、それらのコンテキストに基づいて適切なテクノロジとなるように調整されています。
+各種のテクノロジを使用して、Azure Functions プロジェクト コードを Azure にデプロイすることができます。 この記事では、これらのテクノロジの包括的な一覧を提供し、どのテクノロジをどの種類の関数に対して使用できるかを説明し、各手法を使用するとどのようなことが起こるかについて説明し、各種シナリオで使用する最適な手法についてレコメンデーションを提示します。 Azure Functions へのデプロイをサポートする各種ツールは、それらのコンテキストに基づいて適切なテクノロジとなるように調整されています。 一般に、Azure Functions で推奨されるデプロイ テクノロジは zip デプロイです。
 
 ## <a name="deployment-technology-availability"></a>デプロイ テクノロジの利用可否
 
@@ -31,17 +31,17 @@ Azure Functions は、クロス プラットフォームのローカル開発と
 
 各プランの動作は異なります。 各種の Azure Functions に対してすべてのデプロイ テクノロジが使用できるわけではありません。 次の表は、オペレーティング システムとホスティング プランの各組み合わせでサポートされるデプロイ テクノロジを示しています。
 
-| デプロイ テクノロジ | Windows Consumption | Windows Premium (プレビュー) | Windows Dedicated  | Linux 従量課金 (プレビュー) | Linux Dedicated |
-|-----------------------|:-------------------:|:-------------------------:|:-----------------:|:---------------------------:|:---------------:|
-| 外部パッケージ URL<sup>1</sup> |✔|✔|✔|✔|✔|
-| ZIP デプロイ |✔|✔|✔| |✔|
-| Docker コンテナー | | | | |✔|
-| Web デプロイ |✔|✔|✔| | |
-| ソース管理 |✔|✔|✔| |✔|
-| ローカル Git<sup>1</sup> |✔|✔|✔| |✔|
-| クラウドの同期<sup>1</sup> |✔|✔|✔| |✔|
-| FTP<sup>1</sup> |✔|✔|✔| |✔|
-| ポータルでの編集 |✔|✔|✔| |✔<sup>2</sup>|
+| デプロイ テクノロジ | Windows Consumption | Windows Premium (プレビュー) | Windows Dedicated  | Linux Consumption | Linux Premium (プレビュー) | Linux Dedicated |
+|-----------------------|:-------------------:|:-------------------------:|:------------------:|:---------------------------:|:-------------:|:---------------:|
+| 外部パッケージ URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
+| ZIP デプロイ |✔|✔|✔|✔|✔|✔|
+| Docker コンテナー | | | | |✔|✔|
+| Web デプロイ |✔|✔|✔| | | |
+| ソース管理 |✔|✔|✔| |✔|✔|
+| ローカル Git<sup>1</sup> |✔|✔|✔| |✔|✔|
+| クラウドの同期<sup>1</sup> |✔|✔|✔| |✔|✔|
+| FTP<sup>1</sup> |✔|✔|✔| |✔|✔|
+| ポータルでの編集 |✔|✔|✔| |✔<sup>2</sup>|✔<sup>2</sup>|
 
 <sup>1</sup> [トリガーの手動同期](#trigger-syncing)が必要なデプロイ テクノロジ。  
 <sup>2</sup> ポータルでの編集は、Premium プランと専用プランを使用する Linux 上の Functions の HTTP トリガーとタイマー トリガーに対してのみ使用できます。
@@ -58,7 +58,40 @@ Azure Functions でのデプロイの動作を理解するために重要な概�
 * [マスター キー](functions-bindings-http-webhook.md#authorization-keys)を使用して HTTP POST 要求を `https://{functionappname}.azurewebsites.net/admin/host/synctriggers?code=<API_KEY>` に送信する。
 * HTTP POST 要求を `https://management.azure.com/subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP_NAME>/providers/Microsoft.Web/sites/<FUNCTION_APP_NAME>/syncfunctiontriggers?api-version=2016-08-01` に送信する。 プレースホルダーは、ご使用のサブスクリプション ID、リソース グループ名、および関数アプリの名前に置き換えてください。
 
-## <a name="deployment-technology-details"></a>デプロイ テクノロジの詳細 
+### <a name="remote-build"></a>リモート ビルド
+
+Azure Functions では、zip デプロイ後に受け取ったコードのビルドを自動的に実行できます。 これらのビルドの動作は、アプリが Windows と Linux のどちらで実行されているかによって若干異なります。 アプリが[パッケージから実行](run-functions-from-deployment-package.md)モードに設定されている場合、リモート ビルドは実行されません。 リモート ビルドの使用方法については、[「zip デプロイ](#zip-deploy)」を参照してください。
+
+> [!NOTE]
+> リモート ビルドで問題が発生している場合は、この機能が利用可能になった日 (2019 年8月1日) より前にアプリが作成されている可能性があります。 新しい関数アプリを作成してみてください。
+
+#### <a name="remote-build-on-windows"></a>Windows でのリモート ビルド
+
+Windows 上で実行されるすべての関数アプリには、小規模な管理アプリ (SCM (または [Kudu](https://github.com/projectkudu/kudu)) サイト) があります。 このサイトで、Azure Functions のデプロイとビルドのロジックの多くが処理されます。
+
+アプリが Windows にデプロイされると、`dotnet restore` (C#) や `npm install` (JavaScript) などの言語固有のコマンドが実行されます。
+
+#### <a name="remote-build-on-linux-preview"></a>Linux でのリモート ビルド (プレビュー)
+
+Linux でリモート ビルドを有効にするには、次の[アプリケーション設定](functions-how-to-use-azure-function-app-settings.md#settings)を設定する必要があります。
+
+* `ENABLE_ORYX_BUILD=true`
+* `SCM_DO_BUILD_DURING_DEPLOYMENT=true`
+
+Linux 上でリモートでビルドされたアプリは、[デプロイ パッケージから実行されます](run-functions-from-deployment-package.md)。
+
+> [!NOTE]
+> Linux 専用 (App Service) プランでのリモート ビルドは、現在、node.js と Python でのみサポートされています。
+
+##### <a name="consumption-preview-plan"></a>従量課金 (プレビュー) プラン
+
+従量課金プランで実行されている Linux 関数アプリには SCM/Kudu サイトがありません。これにより、デプロイ オプションが制限されます。 ただし、従量課金プランで実行されている Linux 上の関数アプリでは、リモート ビルドがサポートされます。
+
+##### <a name="dedicated-and-premium-preview-plans"></a>専用プランと Premium (プレビュー) プラン
+
+[専用 (App Service) プラン](functions-scale.md#app-service-plan)と [Premium プラン](functions-scale.md#premium-plan)で実行されている Linux 上の関数アプリには、制限された SCM/Kudu サイトがあります。
+
+## <a name="deployment-technology-details"></a>デプロイ テクノロジの詳細
 
 Azure Functions では、次のデプロイ方法が使用できます。
 
@@ -70,17 +103,25 @@ Azure Functions では、次のデプロイ方法が使用できます。
 >
 >Azure Blob Storage を使用する場合は、[Shared Access Signature (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#generate-a-sas-in-storage-explorer) を備えたプライベート コンテナーを使用して、Functions にパッケージへのアクセス権を付与します。 アプリケーションが再起動されるたびに、コンテンツのコピーがフェッチされます。 アプリケーションの有効期間中は、参照が有効である必要があります。
 
->__いつ使用するか:__ 外部パッケージ URL は、従量課金プラン (プレビュー) の Linux で実行される Azure Functions に対してサポートされる唯一のデプロイ方法です。 関数アプリが参照しているパッケージ ファイルを更新する場合、Azure にアプリケーションが変更されたことを通知するために、[トリガーを手動で同期](#trigger-syncing)する必要があります。
+>__いつ使用するか:__ ユーザーがリモート ビルドの発生を特に望まない場合、従量課金プランの Linux 上で実行される Azure Functions でサポートされるデプロイ方法は、外部パッケージ URL のみになります。 関数アプリが参照しているパッケージ ファイルを更新する場合、Azure にアプリケーションが変更されたことを通知するために、[トリガーを手動で同期](#trigger-syncing)する必要があります。
 
 ### <a name="zip-deploy"></a>ZIP デプロイ
 
-ZIP デプロイを使用して、関数アプリが含まれる ZIP ファイルを Azure にプッシュします。 必要に応じて、[Run From Package](run-functions-from-deployment-package.md) モードで起動するようにアプリを設定できます。
+ZIP デプロイを使用して、関数アプリが含まれる ZIP ファイルを Azure にプッシュします。 必要に応じて、[パッケージから実行](run-functions-from-deployment-package.md)を開始するようにアプリを設定するか、[リモート ビルド](#remote-build)を実行するように指定することができます。
 
 >__使用方法:__ 次のお気に入りのクライアント ツールを使用してデプロイします。[VS Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure)、[Visual Studio](functions-develop-vs.md#publish-to-azure)、または [Azure CLI](functions-create-first-azure-function-azure-cli.md#deploy-the-function-app-project-to-azure)。 .zip ファイルを関数アプリに手動でデプロイするには、[.zip ファイルまたは URL からのデプロイ](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url)に関する記事の指示に従います。
->
->ZIP デプロイを使用してデプロイする場合は、[Run From Package](run-functions-from-deployment-package.md) モードで実行されるようにアプリを設定できます。 Run From Package モードを設定するには、`WEBSITE_RUN_FROM_PACKAGE` アプリケーションの設定値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。
 
->__いつ使用するか:__ Zip デプロイは、Premium プランまたは専用プランの Windows および Linux で実行される Functions にお勧めするデプロイ テクノロジです。
+[リモート ビルド](#remote-build)を伴う zip デプロイを実行するには、次の[コア ツール](functions-run-local.md) コマンドを使用します。
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+または、デプロイ時に "azureFunctions.scmDoBuildDuringDeployment" フラグを追加することで、リモート ビルドを実行するように VS Code に指示できます。 VS Code にフラグを追加する方法については、[Azure Functions 拡張機能 Wiki](https://github.com/microsoft/vscode-azurefunctions/wiki) に記載されている手順を参照してください。
+
+>zip デプロイを使用してデプロイする場合は、[パッケージから実行](run-functions-from-deployment-package.md) するようにアプリを設定できます。 パッケージから実行するには、`WEBSITE_RUN_FROM_PACKAGE` アプリケーション設定の値を `1` に設定します。 ZIP デプロイをお勧めします。 これによりアプリケーションの読み込み時間が短縮されます。これは VS Code、Visual Studio、および Azure CLI の既定値になります。 
+
+>__いつ使用するか:__ zip デプロイは、Azure Functions で推奨されるデプロイ テクノロジです。
 
 ### <a name="docker-container"></a>Docker コンテナー
 
@@ -93,7 +134,7 @@ ZIP デプロイを使用して、関数アプリが含まれる ZIP ファイ�
 >
 >カスタム コンテナーを使用して既存のアプリにデプロイするには、[Azure Functions Core Tools](functions-run-local.md) で [`func deploy`](functions-run-local.md#publish) コマンドを使用します。
 
->__いつ使用するか:__ Docker コンテナー オプションは、関数アプリが実行される Linux 環境をより詳細に制御する必要がある場合に使用します。 このデプロイ メカニズムは、App Service プランの Linux で実行されている Functions に対してのみ使用できます。
+>__いつ使用するか:__ Docker コンテナー オプションは、関数アプリが実行される Linux 環境をより詳細に制御する必要がある場合に使用します。 このデプロイ メカニズムは、Linux 上で実行されている Functions に対してのみ使用できます。
 
 ### <a name="web-deploy-msdeploy"></a>Web デプロイ (MSDeploy)
 
@@ -151,7 +192,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 次の表に、ポータルでの編集をサポートしているオペレーティング システムと言語を示します。
 
-| | Windows Consumption | Windows Premium (プレビュー) | Windows Dedicated | Linux 従量課金 (プレビュー) | Linux Premium (プレビュー)| Linux Dedicated |
+| | Windows Consumption | Windows Premium (プレビュー) | Windows Dedicated | Linux Consumption | Linux Premium (プレビュー)| Linux Dedicated |
 |-|:-----------------: |:-------------------------:|:-----------------:|:---------------------------:|:---------------:|:---------------:|
 | C# | | | | | |
 | C# スクリプト |✔|✔|✔| |✔<sup>\*</sup> |✔<sup>\*</sup>|
@@ -166,23 +207,7 @@ FTP を使用して、ファイルを Azure Functions に直接転送できま�
 
 ## <a name="deployment-slots"></a>デプロイ スロット
 
-関数アプリを Azure にデプロイする場合、運用環境に直接デプロイする代わりに、個別のデプロイ スロットにデプロイできます。 デプロイ スロットの詳細については、[Azure App Service スロット](../app-service/deploy-staging-slots.md)に関するページをご覧ください。
-
-### <a name="deployment-slots-levels-of-support"></a>デプロイ スロットのサポートのレベル
-
-デプロイ スロットには、次の 2 つのレベルのサポートがあります。
-
-* **一般公開 (GA)** :完全にサポートされ、運用環境用に承認されています。
-* **プレビュー**:まだサポートされていませんが、今後 GA 状態に達すると想定されています。
-
-| OS/ホスティング プラン | サポートのレベル |
-| --------------- | ------ |
-| Windows Consumption | プレビュー |
-| Windows Premium (プレビュー) | プレビュー |
-| Windows Dedicated | 一般公開 |
-| Linux Consumption | サポートされていません |
-| Linux Premium (プレビュー) | プレビュー |
-| Linux Dedicated | 一般公開 |
+関数アプリを Azure にデプロイする場合、運用環境に直接デプロイする代わりに、個別のデプロイ スロットにデプロイできます。 デプロイ スロットの詳細については、[Azure Functions のデプロイ スロット](../app-service/deploy-staging-slots.md)のドキュメントをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

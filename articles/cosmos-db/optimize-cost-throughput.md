@@ -4,14 +4,14 @@ description: この記事では、Azure Cosmos DB に格納されているデー
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 08/26/2019
 ms.author: rimman
-ms.openlocfilehash: ddbec882675dba4724406ad1ea8079df377c34fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d874f1ba8823ceddbef378decde127cef4ff8885
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967306"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020102"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でプロビジョニング済みのスループット コストを最適化する
 
@@ -29,7 +29,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 プロビジョニング済みスループットの戦略の決定に関するガイドラインを次に示します。
 
-**次の場合は、(コンテナーのセットを含む) Azure Cosmos DB データベースでのスループットのプロビジョニングを検討します**
+**次の場合は、(コンテナーのセットを含む) Azure Cosmos データベースでのスループットのプロビジョニングを検討します**
 
 1. 数十個の Azure Cosmos コンテナーがあり、それらの一部または全部の間でスループットを共有したい場合。 
 
@@ -65,7 +65,7 @@ Azure Cosmos DB では、プロビジョニング済みスループット モデ
 
 ## <a name="optimize-with-rate-limiting-your-requests"></a>要求のレート制限で最適化する
 
-待ち時間が重要ではないワークロードの場合は、プロビジョニングするスループットを少なくし、実際のスループットがプロビジョニング済みスループットを超えたときはアプリケーションでレート制限を処理することができます。 サーバーはいち早く RequestRateTooLarge (HTTP 状態コード 429) で要求を終了させ、要求を再試行するまでにユーザーが待機しなければならない時間 (ミリ秒) を示す `x-ms-retry-after-ms` ヘッダーを返します。 
+待ち時間が重要ではないワークロードの場合は、プロビジョニングするスループットを少なくし、実際のスループットがプロビジョニング済みスループットを超えたときはアプリケーションでレート制限を処理することができます。 サーバーはいち早く `RequestRateTooLarge` (HTTP 状態コード 429) で要求を終了させ、要求を再試行するまでにユーザーが待機しなければならない時間 (ミリ秒) を示す `x-ms-retry-after-ms` ヘッダーを返します。 
 
 ```html
 HTTP Status 429, 
@@ -77,15 +77,13 @@ HTTP Status 429,
 
 ネイティブ SDK (.NET/.NET Core、Java、Node.js、Python) ではこの応答が暗黙的にキャッチされて、サーバーが指定した retry-after ヘッダーを優先して要求が再試行されます。 アカウントに複数のクライアントが同時アクセスしている状況でなければ、次回の再試行は成功します。
 
-累積的に動作する複数のクライアントがあり、要求レートを常に超えている場合は、現在 9 に設定されている既定の再試行回数では十分ではない可能性があります。 このような場合、クライアントではアプリケーションに対して状態コード 429 の `DocumentClientException` がスローされます。 既定の再試行回数は、ConnectionPolicy インスタンスで `RetryOptions` を設定することで変更できます。 既定では、要求レートを超えて要求が続行されている場合に、30 秒の累積待機時間を過ぎると、状態コード 429 を含む DocumentClientException が返されます。 これは、現在の再試行回数が最大再試行回数 (既定値の 9 またはユーザー定義の値) より少ない場合でも発生します。 
+累積的に動作する複数のクライアントがあり、要求レートを常に超えている場合は、現在 9 に設定されている既定の再試行回数では十分ではない可能性があります。 このような場合、クライアントではアプリケーションに対して状態コード 429 の `DocumentClientException` がスローされます。 既定の再試行回数は、ConnectionPolicy インスタンスで `RetryOptions` を設定することで変更できます。 既定では、要求レートを超えて要求が続行されている場合に、30 秒の累積待機時間を過ぎると、状態コード 429 を含む `DocumentClientException` が返されます。 これは、現在の再試行回数が最大再試行回数 (既定値の 9 またはユーザー定義の値) より少ない場合でも発生します。 
 
-[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) は 3 に設定されているので、このケースでは、コレクションの予約済みスループットを超えることによって要求操作がレート制限された場合、要求操作では 3 回再試行してからアプリケーションに例外がスローされます。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) は 60 に設定されているので、このケースでは、最初の要求からの累積再試行待機時間 (秒数) が 60 秒を超えると、例外がスローされます。
+[MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) が 3 に設定されます。そのため、ここでは、コンテナーに予約されているスループットを超過し、要求操作がレート制限される場合、その要求操作は 3 回まで再試行し、成功しなければアプリケーションに例外をスローします。 [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) が 60 に設定されています。そのため、ここでは、最初の要求後、累積再試行時間 (秒) が 60 秒を超過すると、例外がスローされます。
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
-
 connectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 3; 
-
 connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 ```
 

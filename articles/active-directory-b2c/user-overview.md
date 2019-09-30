@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42a38b47f9e49652b5fe80aa5bbd0047dc7d1e74
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ef4bca3a2b08271b3623a346df6613b5ad16995
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511964"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063135"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー アカウントの概要
 
-Azure Active Directory (Azure AD) B2C では、さまざまな種類のアカウントを使用できます。 Azure Active Directory、Azure Active Directory B2B、および Azure Active Directory B2C は、使用できるユーザー アカウントの種類を共有します。
+Azure Active Directory B2C (Azure AD B2C) では、さまざまな種類のアカウントを使用できます。 Azure Active Directory、Azure Active Directory B2B、および Azure Active Directory B2C は、使用できるユーザー アカウントの種類を共有します。
 
 次の種類のアカウントを使用できます。
 
 - **職場アカウント** - 職場アカウントは、テナントのリソースにアクセスでき、管理者ロールを使用してテナントを管理できます。
-- **ゲスト アカウント** - ゲスト アカウントは、Microsoft アカウント、またはアプリケーションにアクセスするかテナントを管理するために使用できる Azure Active Directory ユーザーのみが可能です。 
-- **コンシューマー アカウント** - コンシューマー アカウントは、Azure AD B2C アプリケーションのサインアップ ユーザー フローまたは Azure AD Graph API を使用して作成され、Azure AD B2C に登録されているアプリケーションのユーザーによって使用されます。 
+- **ゲスト アカウント** - ゲスト アカウントは、Microsoft アカウント、またはアプリケーションにアクセスするかテナントを管理するために使用できる Azure Active Directory ユーザーのみが可能です。
+- **コンシューマー アカウント** - コンシューマー アカウントは、Azure AD B2C アプリケーションのサインアップ ユーザー フローまたは Azure AD Graph API を使用して作成され、Azure AD B2C に登録されているアプリケーションのユーザーによって使用されます。
 
 ## <a name="work-account"></a>職場アカウント
 
@@ -35,12 +35,12 @@ Azure Active Directory (Azure AD) B2C では、さまざまな種類のアカウ
 
 - **[名前]** と **[ユーザー名]** - **[名前]** プロパティには、ユーザーの姓名が含まれます。 **[ユーザー名]** は、ユーザーがサインインするために入力する識別子です。 ユーザー名には、完全なドメインが含まれます。 ユーザー名のドメイン名の部分は、既定の初期ドメイン名 *your-domain.onmicrosoft.com*、または検証済みの非フェデレーション [カスタム ドメイン](../active-directory/fundamentals/add-custom-domain.md)名 (*contoso.com* など) のいずれかである必要があります。
 - **プロファイル** - アカウントは、ユーザー データのプロファイルを使用して設定されます。 姓、名、役職、および部署名を入力できます。 プロファイルは、アカウントの作成後に編集できます。
-- **グループ** - グループを使用して管理タスクを実行します。たとえば、複数のユーザーやデバイスにライセンスまたはアクセス許可を一度に割り当てることができます。 新しいアカウントを、テナントの既存の[グループ](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)に配置できます。 
+- **グループ** - グループを使用して管理タスクを実行します。たとえば、複数のユーザーやデバイスにライセンスまたはアクセス許可を一度に割り当てることができます。 新しいアカウントを、テナントの既存の[グループ](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)に配置できます。
 - **ディレクトリ ロール** - ユーザー アカウントが所有する、テナントのリソースへのアクセス レベルを指定する必要があります。 次のアクセス許可レベルを使用できます。
 
     - **ユーザー** - ユーザーは、割り当てられたリソースにアクセスできますが、テナントのリソースの大半を管理できません。
     - **グローバル管理者** - グローバル管理者は、テナントのすべてのリソースに対するフル コントロールの権限を持ちます。
-    - **制限付き管理者**- ユーザーの管理ロールまたはロールを選択します。 選択できるロールの詳細については、「[Azure Active Directory の管理者ロールの割り当て](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。 
+    - **制限付き管理者**- ユーザーの管理ロールまたはロールを選択します。 選択できるロールの詳細については、「[Azure Active Directory の管理者ロールの割り当て](../active-directory/users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
 ### <a name="create-a-work-account"></a>職場アカウントを作成する
 
@@ -58,7 +58,7 @@ Azure Active Directory (Azure AD) B2C では、さまざまな種類のアカウ
 
 ### <a name="reset-a-password-for-a-user"></a>ユーザーのパスワードをリセットする
 
-次の情報を使用して、ユーザーのパスワードをリセットできます。 
+次の情報を使用して、ユーザーのパスワードをリセットできます。
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)

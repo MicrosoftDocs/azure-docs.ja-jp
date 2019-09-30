@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: sedusch
-ms.openlocfilehash: 4e224a1abf72bfa068bebaf971e34c492b15d7c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95cf66b8960b03c8bc055443945d5569450855a2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142991"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101074"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Red Hat Enterprise Linux での SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -64,9 +63,9 @@ ms.locfileid: "65142991"
 * SAP Note [2243692]: Azure 上の Linux で動作する SAP のライセンスに関する情報が記載されています。
 * SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note を参照できます。
-* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関する記事
+* [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
-* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関する記事
+* [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * [Red Hat Gluster Storage 用の製品ドキュメント](https://access.redhat.com/documentation/red_hat_gluster_storage/)
 * [Pacemaker クラスターでの SAP Netweaver](https://access.redhat.com/articles/3150081)
 * 一般的な RHEL ドキュメント
@@ -124,7 +123,7 @@ SAP NetWeaver ASCS、SAP NetWeaver SCS、SAP NetWeaver ERS、SAP HANA データ�
 
 ## <a name="setting-up-glusterfs"></a>GlusterFS の設定
 
-SAP NetWeaver では、転送とプロファイル ディレクトリ用の共有ストレージが必要です。 GlusterFS for SAP NetWeaver を設定する方法については、「[Red Hat Enterprise Linux for SAP NetWeaver における Azure VM での GlusterFS][glusterfs-ha]」 を参照してください。
+SAP NetWeaver では、転送とプロファイル ディレクトリ用の共有ストレージが必要です。 GlusterFS for SAP NetWeaver を設定する方法については、「[Red Hat Enterprise Linux for SAP NetWeaver における Azure VM での GlusterFS][glusterfs-ha]」を参照してください。
 
 ## <a name="setting-up-ascs"></a>(A)SCS のセットアップ
 
@@ -134,7 +133,7 @@ GitHub にある Azure テンプレートを使用して、仮想マシン、可
 
 Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれており、これを新しい仮想マシンのデプロイに使用できます。 GitHub にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイできます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure portal 上で [ASCS/SCS テンプレート][template-multisid-xscs] を開きます  
+1. Azure portal 上で [ASCS/SCS テンプレート][template-multisid-xscs]を開きます  
 1. 次のパラメーターを入力します
    1. Resource Prefix (リソース プレフィックス)  
       使用するプレフィックスを入力します。 この値は、デプロイされるリソースのプレフィックスとして使用されます。
@@ -665,7 +664,7 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 
 ## <a name="install-database"></a>データベースのインストール
 
-この例では、SAP HANA に SAP NetWeaver がインストールされます。 このインストールではサポートされているすべてのデータベースを使用できます。 Azure への SAP HANA のインストール方法の詳細については、「[High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux][sap-hana-ha]」 (Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性) をご覧ください。 サポートされているデータベースの一覧については、[SAP Note 1928533][1928533] をご覧ください。
+この例では、SAP HANA に SAP NetWeaver がインストールされます。 このインストールではサポートされているすべてのデータベースを使用できます。 Azure への SAP HANA のインストール方法の詳細については、「[High availability of SAP HANA on Azure VMs on Red Hat Enterprise Linux][sap-hana-ha]. For a list of supported databases, see [SAP Note 1928533][1928533]」 (Red Hat Enterprise Linux 上の Azure VM での SAP HANA の高可用性) をご覧ください。
 
 1. SAP データベース インスタンスのインストールを実行します
 
@@ -1004,4 +1003,4 @@ Azure Marketplace には Red Hat Enterprise Linux のイメージが含まれて
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。
-* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]」を参照してください。
+* Azure VM 上の SAP HANA の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、[Azure Virtual Machines (VM) 上の SAP HANA の高可用性][sap-hana-ha]に関するページを参照してください。

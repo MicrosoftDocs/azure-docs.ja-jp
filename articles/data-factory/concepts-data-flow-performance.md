@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 05/16/2019
-ms.openlocfilehash: 090c229c5e97ede8eb7a397ce8f4d13d8735a346
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 8eb244a0eff1569ac27feae68104db613373463a
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404610"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992349"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 
@@ -117,6 +117,10 @@ Azure Data Factory の Mapping Data Flow では、大規模なデータ変換の
 * ADF で使用するパーティションの数を制御できます。 ソースとシンクの各変換および個々の変換に対してパーティション分割スキームを設定できます。 小さいファイルの場合は、[単一パーティション] を選択すると、小さいファイルをパーティション分割するように Spark に要求するよりも効果的で速い場合があります。
 * ソース データに関する十分な情報がない場合は、[ラウンド ロビン] パーティション分割を選択して、パーティションの数を設定できます。
 * データを探索して、ハッシュ キーに適した列があることが判明した場合は、ハッシュ パーティション分割のオプションを使用します。
+* データ プレビューおよびパイプライン デバッグでデバッグする場合、ファイルベースのソース データセットの制限とサンプリングのサイズは、読み取られる行数ではなく、返される行数にのみ適用されることに注意してください。 これは、ご自身のデバッグの実行のパフォーマンスに影響を与え、場合によってはフローが失敗する可能性があるため、注意が重要です。
+* デバッグ クラスターは既定では小規模な単一ノードのクラスターであるため、デバッグには小さい一時ファイルを使用するようにしてください。 [Debug Settings]\(デバッグ設定\) にアクセスし、一時ファイルを使用しているお使いのデータの小さなサブセットをポイントします。
+
+![デバッグ設定](media/data-flow/debugsettings3.png "デバッグ設定")
 
 ### <a name="file-naming-options"></a>ファイルの名前付けのオプション
 

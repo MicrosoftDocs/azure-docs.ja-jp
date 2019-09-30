@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 602e4356ccd9eb45855462a7a25e0966dc176b4f
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4a30e496c96fcc90417e58b0f921717985b89693
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899937"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262799"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL のための 3 層 IaaS Web アプリケーション
 
@@ -172,7 +172,7 @@ Storage
 
 **アクティビティ ログ**: [Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)を構成して、サブスクリプションのリソースに対して実行された操作に関する分析情報が得られるようにします。
 
-**診断ログ**: [診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)は、リソースによって出力されるすべてのログです。 これらのログには、Windows イベント システム ログ、BLOB、テーブル、キューのログが含まれることがあります。
+**診断ログ**: [診断ログ](../../azure-monitor/platform/resource-logs-overview.md)は、リソースによって出力されるすべてのログです。 これらのログには、Windows イベント システム ログ、BLOB、テーブル、キューのログが含まれることがあります。
 
 **ファイアウォール ログ**: Application Gateway は、完全な診断ログとアクセス ログを提供します。 WAF が有効になっているアプリケーション ゲートウェイに対してファイアウォールのログを使用できます。
 

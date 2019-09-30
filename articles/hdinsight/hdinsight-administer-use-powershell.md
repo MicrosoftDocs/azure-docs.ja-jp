@@ -1,19 +1,19 @@
 ---
 title: PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する - Azure
 description: Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターに対する管理タスクを実行する方法について説明します。
-ms.reviewer: tyfox
+ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: tyfox
-ms.openlocfilehash: 2035f5c7666d93068fd8007555bfe1aadae58ff1
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 751f064df271aeb0899a00aea8b1ff09e8b8bdf4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67873934"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077045"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-azure-powershell"></a>Azure PowerShell を使用して HDInsight の Apache Hadoop クラスターを管理する
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -89,7 +89,7 @@ HDInsight でサポートされているクラスターの種類ごとに、デ�
 
     Storm Web UI は、HDInsight クラスターで使用できます。
 
-    ![HDInsight Storm の規模のバランス調整](./media/hdinsight-administer-use-powershell/hdinsight.portal.scale.cluster.png)
+    ![HDInsight Storm の規模のバランス調整](./media/hdinsight-administer-use-powershell/portal-scale-cluster.png)
 
     CLI コマンドを使用して Storm トポロジのバランスを再調整する方法を次の例で示します。
 

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c5a08677759f0ed1a39f5507d936c777516b237
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 7d3346c873f88654f75628863a01fda76449ce2d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608101"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259406"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -139,7 +139,7 @@ Azure AD Privileged Identity Management を有効にした後、グローバル�
 
 * 管理者ロールを持つユーザーと、それらのユーザーが管理できるサービスを識別します。
 * Azure AD PIM を使用して、ステージ 1 に示されているロール以外の追加ロールなど、Azure AD への管理者アクセス権を持つ組織内のユーザーを確認します。
-* Azure AD で定義されているロール以外に、Office 365 には、組織内のユーザーに割り当てることができる管理者ロールのセットが付属します。 各管理者ロールは、共通のビジネス機能にマップされ、[Microsoft 365 管理センター](https://admin.microsoft.com)で特定のタスクを行うためのアクセス許可を組織のユーザーに付与します。 Microsoft 365 管理センターを使用して、Azure AD で管理されていないロール経由を含め、Office 365 への管理者アクセス権を持つ組織内のユーザーを確認します。 詳しくは、「[Office 365 の管理者ロールについて」](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」と「[Office 365 のセキュリティのベスト プラクティス](https://support.office.com/article/Security-best-practices-for-Office-365-9295e396-e53d-49b9-ae9b-0b5828cdedc3)」をご覧ください。
+* Azure AD で定義されているロール以外に、Office 365 には、組織内のユーザーに割り当てることができる管理者ロールのセットが付属します。 各管理者ロールは、共通のビジネス機能にマップされ、[Microsoft 365 管理センター](https://admin.microsoft.com)で特定のタスクを行うためのアクセス許可を組織のユーザーに付与します。 Microsoft 365 管理センターを使用して、Azure AD で管理されていないロール経由を含め、Office 365 への管理者アクセス権を持つ組織内のユーザーを確認します。 詳しくは、「[Office 365 の管理者ロールについて」](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」と「[Office 365 のセキュリティのベスト プラクティス](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center)」をご覧ください。
 * Azure、Intune、Dynamics 365 など、組織が利用している他のサービスでインベントリを実行します。
 * 管理者アカウント (ユーザーの日常的なアカウントだけでなく管理目的でも使用されるアカウント) に、仕事用メール アドレスが割り当てられ、Azure MFA に登録されているか MFA をオンプレミスで使用していることを確認します。
 * ユーザーに管理アクセス権を使用するビジネス上の正当な理由を尋ねます。

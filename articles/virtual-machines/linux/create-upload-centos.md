@@ -11,16 +11,15 @@ ms.assetid: 0e518e92-e981-43f4-b12c-9cba1064c4bb
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: 72ed518af579bb6b95d3b13400f2fbf6679cd036
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: cfbd687e59a9a852fe1bf01386dac221f040d0f4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68248188"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083624"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure 用の CentOS ベースの仮想マシンの準備
 
@@ -174,11 +173,14 @@ CentOS ベースの Linux オペレーティング システムを格納した A
 
     または、[LIS ダウンロード ページ](https://go.microsoft.com/fwlink/?linkid=403033)の手動インストール手順に従って、RPM を VM にインストールします。
 
-12. Azure Linux エージェントと依存関係をインストールします。
+12. Azure Linux エージェントと依存関係をインストールします。 waagent サービスを開始して有効にします。
 
     ```bash
     sudo yum install python-pyasn1 WALinuxAgent
+    sudo service waagent start
+    sudo chkconfig waagent on
     ```
+
 
     手順 3. で説明した NetworkManager パッケージおよび NetworkManager-gnome パッケージを削除していない場合、WALinuxAgent パッケージによってこれらのパッケージが削除されます。
 

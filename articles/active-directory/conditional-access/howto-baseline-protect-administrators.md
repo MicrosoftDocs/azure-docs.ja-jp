@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 213540a5b6c77146155365133f2cca08eea25351
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b00b061b1763d4b4e7236d8dc9ac1eedf7f923bc
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608164"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533017"
 ---
 # <a name="baseline-policy-require-mfa-for-admins-preview"></a>ベースライン ポリシー:管理者に MFA を要求する (プレビュー)
 
 特権アカウントにアクセスできるユーザーは、環境に無制限にアクセスできます。 これらのアカウントには権限があるので、特別な注意を払って対処する必要があります。 特権アカウントの保護を向上するための一般的な方法の 1 つは、特権アカウントがサインインに使用されるときに、強力な形式のアカウント検証を必須にすることです。 Azure Active Directory では、多要素認証 (MFA) を必須にすることで、アカウント検証を強力にすることができます。
 
-**管理者の MFA を要求する (プレビュー)**   は、次のいずれかの特権管理者ロールがサインインするたびに MFA を必要とする[ベースライン ポリシー](concept-baseline-protection.md)です。
+**管理者に MFA を要求する (プレビュー)** は、次の特権管理者ロールのいずれかがサインインするたびに MFA を要求する[ベースライン ポリシー](concept-baseline-protection.md)です。
 
 * 全体管理者
 * SharePoint 管理者
@@ -52,11 +52,11 @@ ms.locfileid: "68608164"
 
 このポリシーを有効にして管理者を保護するには:
 
-1.  **Azure portal**  にグローバル管理者、セキュリティ管理者、または条件付きアクセス管理者としてサインインします。
+1. グローバル管理者、セキュリティ管理者、または条件付きアクセス管理者として **Azure portal** にサインインします。
 1. **[Azure Active Directory]**  >  **[条件付きアクセス]** の順に移動します。
 1. ポリシーの一覧で、 **[ベースライン ポリシー: 管理者に MFA を要求する (プレビュー)]** を選択します。
 1. **[ポリシーを有効にする]** を **[ポリシーをすぐに使用する]** に設定します。
-1.  **[保存]** をクリックします。
+1. **[Save]** をクリックします。
 
 > [!WARNING]
 > このポリシーがプレビュー段階であったときは、 **[将来、ポリシーを自動的に有効にする]** というオプションがありました。 ユーザーへの突然の影響を最小限に抑えるために、このオプションは削除しました。 このオプションを使用できたときに選択した場合、現在では **[ポリシーを使用しない]** が自動的に選択されています。 このベースライン ポリシーを使用する場合は、上の手順を参照して有効にしてください。

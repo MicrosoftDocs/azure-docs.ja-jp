@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8aeb32ecddc0ef368b615a201179f17178ececad
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68817230"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70036022"
 ---
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -111,7 +111,7 @@ PerfMon カウンターは、サーバーのプロセッサ、メモリ、各論
 
 Premium Storage で実行されるアプリケーションのパフォーマンスに影響を与える主な要素として、IO 要求の特性、VM サイズ、ディスク サイズ、ディスク数、ディスク キャッシュ、マルチスレッド、キューの深さがあります。 これらの要素の一部は、システムで提供されるノブを使用して制御できます。 ほとんどのアプリケーションでは、IO サイズとキューの深さを直接変更することはできません。 たとえば、SQL Server を使用している場合、IO サイズとキューの深さを選択することはできません。 SQL Server では、最大限のパフォーマンスを得るために、最適な IO サイズとキューの深さの値が選択されます。 パフォーマンスのニーズを満たす適切なリソースをプロビジョニングできるように、この 2 つの要素がアプリケーションのパフォーマンスに及ぼす影響を理解しておくことが重要です。
 
-アプリケーションのパフォーマンスをどの程度最適化する必要があるかを明確にするために、このセクション全体を通じて、作成したアプリケーション要件チェックリストを参照します。 これを基に、このセクションの要素の中で、調整する必要がある要素を特定できるようになります。 アプリケーションのパフォーマンスに対する各要素の影響を監視するには、アプリケーションのセットアップでベンチマーク ツールを実行します。 Windows VM と Linux VM で一般的なベンチマーク ツールを実行する手順については、この記事の最後のセクションである「ベンチマーク」をご覧ください。
+アプリケーションのパフォーマンスをどの程度最適化する必要があるかを明確にするために、このセクション全体を通じて、作成したアプリケーション要件チェックリストを参照します。 これを基に、このセクションの要素の中で、調整する必要がある要素を特定できるようになります。 アプリケーションのパフォーマンスに対する各要素の影響を監視するには、アプリケーションのセットアップでベンチマーク ツールを実行します。 Windows VM と Linux VM で一般的なベンチマーク ツールを実行する手順については、ベンチマークに関する記事をご覧ください。この記事の最後にリンクが貼ってあります。
 
 ### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>IOPS、スループット、待機時間の最適化の概要
 
@@ -166,7 +166,7 @@ IO サイズを変更できるアプリケーションを使用している場�
 > [!NOTE]
 > IOPS とスループットのいずれかを増やすと、もう一方も増加するので、どちらか一方を増やしたときには、ディスクまたは VM のスループットまたは IOPS の上限に達していないことを確認してください。
 
-IO サイズがアプリケーションのパフォーマンスに及ぼす影響を監視するには、VM とディスクでベンチマーク ツールを実行します。 複数のテスト実行を作成し、実行ごとに異なる IO サイズを使用して影響を確認します。 詳細については、この記事の最後のセクションである「ベンチマーク」をご覧ください。
+IO サイズがアプリケーションのパフォーマンスに及ぼす影響を監視するには、VM とディスクでベンチマーク ツールを実行します。 複数のテスト実行を作成し、実行ごとに異なる IO サイズを使用して影響を確認します。 詳細については、ベンチマークに関する記事をご覧ください。この記事の最後にリンクが貼ってあります。
 
 ## <a name="high-scale-vm-sizes"></a>高スケール VM サイズ
 
@@ -387,11 +387,3 @@ Azure Premium Storage では、選択された VM サイズとディスク サ�
 
 ## <a name="next-steps"></a>次の手順
 
-使用できるディスクの種類については、次のページを参照してください。
-
-* [ディスクの種類の選択](../articles/virtual-machines/windows/disks-types.md)  
-
-SQL Server ユーザーは、SQL Server のパフォーマンスのベスト プラクティスに関する次の記事をご覧ください。
-
-* [Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md)
-* [Azure Premium Storage provides highest performance for SQL Server in Azure VM (Azure VM で SQL Server の最高レベルのパフォーマンスを実現する Azure Premium Storage)](https://blogs.technet.com/b/dataplatforminsider/archive/2015/04/23/azure-premium-storage-provides-highest-performance-for-sql-server-in-azure-vm.aspx)

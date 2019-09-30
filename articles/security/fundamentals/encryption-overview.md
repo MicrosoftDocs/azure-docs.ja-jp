@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 62fcc19f3cfe9109097d1f2a70d785060b5bdc53
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727366"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003953"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
@@ -61,7 +61,7 @@ Azure では、サービスが管理するキー、Key Vault でユーザーが�
 
 Windows 仮想マシンと Linux 仮想マシンは [Azure Disk Encryption](/azure/security/azure-security-disk-encryption) を使用して保護できます。この暗号化サービスは、[Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx) テクノロジと Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) を使用してオペレーティング システム ディスクとデータ ディスクの両方をフル ボリューム暗号化で保護します。
 
-暗号化キーとシークレットは、[Azure Key Vault](../../key-vault/key-vault-whatis.md) サブスクリプションで保護されます。 Azure Backup サービスを使うことにより、キー暗号化キー (KEK) 構成を使う暗号化された仮想マシン (VM) をバックアップしたり復元したりできます。
+暗号化キーとシークレットは、[Azure Key Vault](../../key-vault/key-vault-overview.md) サブスクリプションで保護されます。 Azure Backup サービスを使うことにより、キー暗号化キー (KEK) 構成を使う暗号化された仮想マシン (VM) をバックアップしたり復元したりできます。
 
 ### <a name="azure-storage-service-encryption"></a>Azure Storage Service Encryption
 

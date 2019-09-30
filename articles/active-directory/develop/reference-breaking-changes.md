@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38383685f74020f5208d42df4428f896931fbe2a
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6dd50aa00368469a9c5b42c41826da28566268d4
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931785"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125416"
 ---
 # <a name="whats-new-for-authentication"></a>認証の新機能 
 
@@ -41,7 +41,24 @@ ms.locfileid: "68931785"
 
 ## <a name="upcoming-changes"></a>今後の変更
 
-2019 年 8 月: URL 解析規則に従って POST セマンティクスを適用する - 重複するパラメーターによってエラーがトリガーされ、パラメーターをまたがる引用符は無視されなくなり、[BOM](https://www.w3.org/International/questions/qa-byte-order-mark) は無視されます。
+2019 年 9 月:URL 解析規則に従って POST セマンティクスを適用する - 重複するパラメーターによってエラーがトリガーされ、[BOM](https://www.w3.org/International/questions/qa-byte-order-mark) は無視されます。
+
+## <a name="august-2019"></a>2019 年 8 月
+
+### <a name="post-form-semantics-will-be-enforced-more-strictly---spaces-and-quotes-will-be-ignored"></a>POST フォームのセマンティクスがより厳密に適用され、スペースおよび引用符は無視されます
+
+**発効日**:2019 年 9 月 2 日
+
+**影響を受けるエンドポイント**:v1.0 と v2.0 の両方
+
+**影響を受けるプロトコル**:POST が使用されるすべての場所 ([クライアント資格情報](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)、[承認コードの利用](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow)、[ROPC](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth-ropc)、[OBO](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)、および[更新トークンの利用](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow#refresh-the-access-token))
+
+9/2 の週から、POST メソッドを使用する認証要求は、より厳格な HTTP 標準を使用して検証されます。  具体的には、スペースと二重引用符 (") が要求フォームの値から削除されなくなります。 これらの変更によって、既存のクライアントが中断されることはなく、Azure AD に送信された要求は毎回確実に処理されます。 今後 (上記参照)、重複するパラメーターを拒否し、要求内の BOM を無視することをさらに計画しています。 
+
+例:
+
+現在、`?e=    "f"&g=h` は `?e=f&g=h` と同じように解析されるため、`e` == `f` となります。  この変更により、これは `e` == `    "f"` と解析されるようになりました。これは有効な引数である可能性が低く、要求は失敗します。 
+
 
 ## <a name="july-2019"></a>2019 年 7 月
 

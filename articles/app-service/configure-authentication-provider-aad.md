@@ -1,93 +1,106 @@
 ---
 title: Azure Active Directory 認証の構成 - Azure App Service
-description: App Services アプリケーションに Azure Active Directory 認証を構成する方法について説明します。
-author: mattchenderson
+description: App Service アプリに対して Azure Active Directory 認証を構成する方法について説明します。
+author: cephalin
 services: app-service
 documentationcenter: ''
-manager: syntaxc4
+manager: gwallace
 editor: ''
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
-ms.service: app-service-mobile
-ms.workload: mobile
+ms.service: app-service
+ms.workload: web,mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/20/2019
-ms.author: mahender
-ms.custom: seodec18
-ms.openlocfilehash: 41084c3532e29b3a52c121d48226c5a45857d5dc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/03/2019
+ms.author: cephalin
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 8de464a00867dd397f28de1dc35cf264244f6905
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088231"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743252"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>Azure Active Directory サインインを使用するように App Service アプリを構成する
 
-> [!NOTE]
-> 現時点では、Azure App Services および Azure Functions で AAD V2 (MSAL を含む) はサポートされていません。 更新プログラムがないかどうか確認してください。
->
-
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-この記事では、Azure Active Directory を認証プロバイダーとして使用するよう Azure App Services を構成する方法を示します。
+> [!NOTE]
+> 現在は、Azure App Service および Azure Functions では AAD V2 (MSAL を含む) はサポートされていません。
+>
+
+この記事では、Azure Active Directory を認証プロバイダーとして使用するよう Azure App Service を構成する方法を示します。
+
+各 App Service アプリに独自の登録を構成し、独自のアクセス許可と同意が使用されるようにすることをお勧めします。 また、個別のデプロイ スロットに対して個別のアプリ登録を使用することも考慮してください。 このようにすると、アクセス許可が環境間で共有されず、テストしている新しいコードの問題が運用環境に影響を与えません。
 
 ## <a name="express"> </a>簡単設定を構成する
 
 1. [Azure Portal] で App Service アプリに移動します。 左側のナビゲーションで、 **[認証/承認]** を選択します。
 2. **[認証/承認]** が有効になっていない場合は、 **[オン]** を選択します。
 3. **[Azure Active Directory]** を選択し、 **[管理モード]** の **[高速]** を選択します。
-4. **[OK]** を選択して、Azure Active Directory に App Service アプリを登録します。 これで、新しいアプリケーションの登録が作成されます。 代わりに既存のアプリの登録を選択する場合は、 **[既存のアプリを選ぶ]** をクリックし、テナント内で以前に作成したアプリの登録の名前を検索します。
-   アプリの登録をクリックして選択し、 **[OK]** をクリックします。 Azure Active Directory 設定ページで **[OK]** をクリックします。
-   App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。
-5. (省略可能) サイトに対するアクセスを、Azure Active Directory で認証されたユーザーに限定するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。 この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
+4. **[OK]** を選択して、Azure Active Directory に App Service アプリを登録します。 これで、新しいアプリケーションの登録が作成されます。 代わりに既存のアプリの登録を選択する場合は、 **[既存のアプリを選ぶ]** をクリックし、テナント内で以前に作成したアプリの登録の名前を検索します。 アプリの登録をクリックして選択し、 **[OK]** をクリックします。 Azure Active Directory 設定ページで **[OK]** をクリックします。
+App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。
+5. (省略可能) アプリに対するアクセスを、Azure Active Directory で認証されたユーザーに制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。 この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Azure Active Directory にリダイレクトされます。
 
-> [!CAUTION]
-> この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホームページを必要とするアプリには適切でない場合があります。 このようなアプリケーションの場合は、[ここ](overview-authentication-authorization.md#authentication-flow)で説明しているように、アプリが手動で自身のログインを開始する、 **[匿名要求を許可する (操作不要)]** が望ましいと考えられます。
-
+    > [!NOTE]
+    > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホームページを必要とするアプリには適切でない場合があります。 このようなアプリケーションの場合は、[ここ](overview-authentication-authorization.md#authentication-flow)で説明しているように、アプリが手動で自身のログインを開始する、 **[匿名要求を許可する (操作不要)]** が望ましいと考えられます。
 6. **[Save]** をクリックします。
 
 ## <a name="advanced"> </a>詳細設定を構成する
 
-構成設定を手動で指定することもできます。 これは、使用する Azure Active Directory テナントが Azure へのサインインに使用するテナントと異なる場合に推奨されるソリューションです。 構成を完了するには、まず Azure Active Directory で登録を作成し、登録の一部の詳細を App Service に提供する必要があります。
+また、使用する Azure Active Directory テナントが、Azure へのサインインに使用するテナントと異なる場合は、手動で構成設定を提供することもできます。 構成を完了するには、まず Azure Active Directory で登録を作成し、登録の一部の詳細を App Service に提供する必要があります。
 
-### <a name="register"> </a>Azure Active Directory に App Service アプリを登録する
+### <a name="register"> </a>App Service アプリに対するアプリ登録を Azure AD で作成する
 
-1. [Azure portal] にサインインし、ご自身の App Service アプリに移動します。 アプリの **URL** をコピーします。 これを使用して、Azure Active Directory アプリの登録を構成します。
-2. **[Active Directory]** に移動し、 **[アプリの登録]** を選び、上部の **[新しいアプリケーションの登録]** をクリックして新しいアプリの登録を開始します。 
-3. **[作成]** ページで、アプリの登録の **[名前]** を入力し、 **[Web アプリ/API]** の種類を選んで、 **[サインオン URL]** ボックスに手順 1. のアプリケーション URL を貼り付けます。 **[作成]** をクリックします。
-4. 数秒後に、作成した新しいアプリの登録が表示されます。
-5. アプリの登録が追加された後、アプリの登録名をクリックし、上部の **[設定]** をクリックして、 **[プロパティ]** をクリックします。 
-6. **[アプリケーション ID/URI]** ボックスと **[ホーム ページ URL]** ボックスの両方に手順 1 のアプリケーション URL を貼り付け、 **[保存]** をクリックします。
-7. 次に、 **[応答 URL]** をクリックし、 **[応答 URL]** を編集し、(手順 1. の) アプリケーション URL を貼り付けてから、 */.auth/login/aad/callback* を URL の最後に追加します (たとえば、`https://contoso.azurewebsites.net/.auth/login/aad/callback`)。 **[Save]** をクリックします。
+アプリの登録を手動で作成する場合は、後で App Service アプリを構成するときに必要になる 3 つの情報を記録しておきます。クライアント ID、テナント ID、および必要に応じてクライアント シークレットとアプリケーション ID の URI です。
 
-   > [!NOTE]
-   > **[応答 URL]** を追加することによって、複数のドメインに同じアプリ登録を使用できます。 各 App Service インスタンスを独自の登録でモデル化して、独自のアクセス許可と同意が割り当てられるようにしてください。 また、個別のサイト スロットに別のアプリ登録を使用することも考慮してください。 これは、アクセス許可が環境間で共有されないようにすることにより、テストしている新しいコードのバグが運用環境に影響を与えないようにするためです。
-    
-8. この時点で、アプリの**アプリケーション ID** をコピーします。 これは後で使うために保存しておきます。 App Service アプリの構成に必要になります。
-9. **[登録済みのアプリ]** ページを閉じます。 **[アプリの登録]** ページで、上部にある **[エンドポイント]** ボタンをクリックし、**WS-FEDERATION SIGN-ON ENDPOINT** URL を、URL の末尾の `/wsfed` を除いてコピーします。 結果は `https://login.microsoftonline.com/00000000-0000-0000-0000-000000000000` のようになります。 ドメイン名は、ソブリン クラウドによって異なる可能性があります。 これは、後で発行者の URL として使用されます。
+1. [Azure portal] で、App Service アプリに移動し、アプリの **URL** を記録します。 Azure Active Directory アプリの登録を構成するときに、それを使用します。
+1. [Azure portal] で、左側のメニューから **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** を選択します。 
+1. **[アプリケーションの登録]** ページで、アプリの登録の **[名前]** を入力します。
+1. **[リダイレクト URI]** で、 **[Web]** を選択し、App Service アプリの URL を入力して、パス `/.auth/login/aad/callback` を追加します。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。 **[作成]** を選択します。
+1. アプリの登録が作成されたら、後のために **[アプリケーション (クライアント) ID]** と **[ディレクトリ (テナント) ID]** をコピーします。
+1. **[ブランド]** を選択します。 **[ホーム ページ URL]** に App Service アプリの URL を入力し、 **[保存]** を選択します。
+1. **[API の公開]**  >  **[設定]** を選択します。 App Service アプリの URL を貼り付けて、 **[保存]** を選択します。
+
+    > [!NOTE]
+    > この値は、アプリの登録の**アプリケーション ID の URI** です。 たとえばフロントエンド Web アプリがバックエンド API にアクセスできるようにするため、バックエンドでフロントエンドにアクセス権を明示的に付与する必要がある場合は、"*バックエンド*" の App Service アプリ リソースを構成するときに、"*フロントエンド*" の**アプリケーション ID の URI** が必要です。
+1. **[Scope の追加]** を選択します。 **[スコープ名]** に、「*user_impersonation*」と入力します。 "*アプリにアクセスする*" などの同意ページでユーザーに表示する同意スコープの名前と説明をテキスト ボックスに入力します。 終わったら、 **[スコープの追加]** をクリックします。
+1. (省略可能) クライアント シークレットを作成するには、 **[Certificates & secrets]\(証明書とシークレット\)**  >  **[New client secret]\(新しいクライアント シークレット\) > ** **[追加]** を選択します。 ページに表示されるクライアント シークレットの値をコピーします。 別の場所に移動すると、再び表示されることはありません。
+1. (省略可能) 複数の**応答 URL** を追加するには、メニューの **[認証]** を選択します。
 
 ### <a name="secrets"> </a>Azure Active Directory の情報を App Service アプリに追加する
 
-1. [Azure Portal] に戻って、App Service アプリに移動します。 **[認証/承認]** をクリックします。 [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。 **[Azure Active Directory]** をクリックし、[認証プロバイダー] でアプリを構成します。
+1. [Azure Portal] で App Service アプリに移動します。 左側のメニューで、 **[認証/承認]** を選択します。 [認証/承認] 機能が有効になっていない場合は、 **[オン]** を選択します。 
+1. (省略可能) 既定では、App Service 認証によってアプリへの認証されていないアクセスが許可されます。 ユーザー認証を強制するには、 **[要求が認証されない場合に実行するアクション]** を **[Azure Active Directory でのログイン]** に設定します。
+1. [認証プロバイダー] で **[Azure Active Directory]** を選択します。
+1. **[管理モード]** で **[Advanced]\(詳細\)** を選択し、次の表に従って App Service 認証を構成します。
 
-    (省略可能) App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。 **[要求が認証されない場合に実行するアクション]** を、 **[Azure Active Directory でのログイン]** に設定します。 このオプションでは、要求はすべて認証される必要があり、認証されていないすべての要求は、認証のために Azure Active Directory にリダイレクトされます。
-2. Active Directory の認証の構成で、 **[管理モード]** の **[詳細]** をクリックします。 手順 8 のアプリケーション ID を [クライアント ID] ボックスに貼り付け、手順 9 の URL を [発行者の URL] の値に貼り付けます。 次に、 **[OK]** をクリックします
-3. Active Directory 認証構成ページで、 **[保存]** をクリックします。
+    |フィールド|説明|
+    |-|-|
+    |クライアント ID| アプリの登録の**アプリケーション (クライアント) ID** を使用します。 |
+    |Issuer ID (発行者 ID)| `https://login.microsoftonline.com/<tenant-id>` を使用し、 *\<tenant-id>* をアプリの登録の**ディレクトリ (テナント) ID** に置き換えます。 |
+    |クライアント シークレット (省略可能)| アプリの登録で生成したクライアント シークレットを使用します。|
+    |許可されるトークン対象ユーザー| これが "*バックエンド*" アプリで、フロントエンド アプリからの認証トークンを許可する場合は、"*フロントエンド*" の**アプリケーション ID の URI** をここに追加します。 |
+
+    > [!NOTE]
+    > **許可されるトークン対象ユーザー**をどのように構成したかに関係なく、構成された**クライアント ID** は "*常に*"、許可される対象ユーザーであると暗黙的に見なされます。
+1. **[OK]** を選択し、 **[保存]** を選択します。
 
 これで、App Service アプリで認証に Azure Active Directory を使用する準備ができました。
 
 ## <a name="configure-a-native-client-application"></a>ネイティブ クライアント アプリケーションを構成する
-ネイティブ クライアントを登録して、アクセス許可のマッピングを詳細に制御できます。 **Active Directory 認証ライブラリ**などのクライアント ライブラリを使用してサインインを実行する場合は、これが必要です。
+**Active Directory 認証ライブラリ**などのクライアント ライブラリを使用してサインインを実行する場合は、ネイティブ クライアントを登録できます。
 
-1. [Azure Portal] で **[Azure Active Directory]** に移動します。
-2. 左側のナビゲーションで、 **[アプリの登録]** を選択します。 上部にある **[新しいアプリケーションの登録]** をクリックします。
-4. **[作成]** ページで、アプリの登録の **[名前]** を入力します。 **[アプリケーションの種類]** で **[ネイティブ]** を選択します。
-5. **[リダイレクト URI]** に、HTTPS スキームを使用してサイトの */.auth/login/done* エンドポイントを入力します。 これは、 *https://contoso.azurewebsites.net/.auth/login/done* のような値である必要があります。 Windows アプリケーションを作成する場合は、 [パッケージ SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) を URI として使用します。
-5. **Create** をクリックしてください。
-6. アプリの登録が追加されたら、それを選択して開きます。 **[アプリケーション ID]** を検索し、その値をメモします。
-7. **[すべての設定]**  >  **[必要なアクセス許可]**  >  **[追加]**  >  **[API を選択します]** の順にクリックします。
-8. 前に登録した App Service アプリの名前を入力して検索し、それを選択して **[選択]** をクリックします。
-9. **[\<アプリ名> へアクセス]** を選択します。 **[選択]** をクリックします。 次に、 **[Done]** をクリックします。
+1. [Azure portal] で、左側のメニューから **[Azure Active Directory]**  >  **[アプリの登録]**  >  **[新規登録]** を選択します。 
+1. **[アプリケーションの登録]** ページで、アプリの登録の **[名前]** を入力します。
+1. **[リダイレクト URI]** で、 **[パブリック クライアント (モバイルとデスクトップ)]** を選択し、App Service アプリの URL を入力して、パス `/.auth/login/aad/callback` を追加します。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/aad/callback` 」のように入力します。 **[作成]** を選択します。
+
+    > [!NOTE]
+    > Windows アプリケーションの場合は、代わりに[パッケージ SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) を URI として使用します。
+1. アプリの登録が作成されたら、 **[アプリケーション (クライアント) ID]** の値をコピーします。
+1. 左側のメニューから **[API のアクセス許可]**  >  **[アクセス許可の追加]**  >  **[自分の API]** を選択します。
+1. App Service アプリ用に以前に作成したアプリの登録を選択します。 アプリの登録が表示されない場合は、「[App Service アプリに対するアプリ登録を Azure AD で作成する](#register)」で **user_impersonation** スコープを追加したことを確認します。
+1. **user_impersonation** を選択し、 **[アクセス許可の追加]** をクリックします。
 
 これで、App Service アプリにアクセスできるネイティブ クライアント アプリケーションが構成されました。
 

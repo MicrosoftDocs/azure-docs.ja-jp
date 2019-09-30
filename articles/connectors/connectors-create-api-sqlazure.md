@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 998fcba50636cd92b14bdbe1633c2548e84a6bfc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 804a913d17c3151d07a1ecf229e2db148dc45558
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64696413"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70050757"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>SQL Server または Azure SQL Database に接続する - Azure Logic Apps
 
@@ -24,7 +24,7 @@ ms.locfileid: "64696413"
 
 SQL データベースや Dynamics CRM Online などの他のシステム内のイベントによってトリガーされたときに実行されるロジック アプリを作成できます。 ロジック アプリは、データの取得、挿入、削除のほか、SQL クエリやストアド プロシージャを実行することもできます。 たとえば、Dynamics CRM Online の新しいレコードを自動的に確認し、新しいレコード用の項目を SQL データベースに追加した後、電子メール アラートを送信するロジック アプリをビルドできます。
 
-Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。 コネクタ固有の技術情報については、<a href="https://docs.microsoft.com/connectors/sql/" target="blank">SQL Server コネクタ リファレンス</a>に関する記事を参照してください。
+Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。 コネクタ固有の技術情報については、[SQL Server コネクタ リファレンス](https://docs.microsoft.com/connectors/sql/)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -90,7 +90,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    ![[新しいステップ] > [アクションの追加] の選択](./media/connectors-create-api-sqlazure/add-action.png)
    
    既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 
-   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
+   表示されるプラス記号 ( **+** ) を選択してから、 **[アクションの追加]** を選択します。
 
 2. 検索ボックスに、フィルターとして「sql server」と入力します。 アクションの一覧から、使用する SQL アクションを選択します。 
 

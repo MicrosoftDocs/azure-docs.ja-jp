@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/18/2019
+ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: ece5d8f9733dde57c2990bfbb6bb90305d8bc37d
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 1cd5325be7def4bc631d994f8811734e6c3cf545
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977187"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996432"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>Azure リソースのロール定義の概要
 
@@ -88,7 +88,7 @@ JSON 形式の[共同作成者](built-in-roles.md#contributor)ロール定義を
 - BLOB コンテナーの作成、更新、または削除
 - リソース グループとそのすべてのリソースを削除する
 
-管理アクセスはデータに継承されません。 この分離により、ワイルドカード (`*`) を使用したロールはデータに無制限にアクセスできなくなります。 たとえば、ユーザーがサブスクリプションで[閲覧者](built-in-roles.md#reader)ロールを持っている場合、ストレージ アカウントは表示できますが、既定では基になるデータを表示することはできません。
+コンテナーの認証方法が "アクセス キー" ではなく "Azure AD ユーザー アカウント" に設定されている場合、管理アクセスはデータに継承されません。 この分離により、ワイルドカード (`*`) を使用したロールはデータに無制限にアクセスできなくなります。 たとえば、ユーザーがサブスクリプションで[閲覧者](built-in-roles.md#reader)ロールを持っている場合、ストレージ アカウントは表示できますが、既定では基になるデータを表示することはできません。
 
 以前は、ロールベースのアクセス制御はデータ操作には使用されませんでした。 データ操作のアクセス許可はリソース プロバイダーによって異なります。 管理操作に使用する同じロールベースのアクセス制御許可モデルがデータ操作に拡張されました。
 
@@ -165,7 +165,7 @@ Bob のアクセス許可は[ストレージ BLOB データ共同作成者](buil
 | [Azure for .NET](/dotnet/azure/) | 2.8.0 プレビュー以降 |
 | [Azure SDK for Go](/azure/go/azure-sdk-go-install) | 15.0.0 以降 |
 | [Azure for Java](/java/azure/) | 1.9.0 以降 |
-| [Azure for Python](/python/azure) | 0.40.0 以降 |
+| [Azure for Python](/azure/python/) | 0.40.0 以降 |
 | [Azure SDK for Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 以降 |
 
 REST API でデータ操作を確認して使用するには、次のバージョン以降に **api-version** パラメーターを設定する必要があります。
@@ -213,16 +213,18 @@ REST API でデータ操作を確認して使用するには、次のバージ�
 
 ## <a name="assignablescopes"></a>AssignableScopes
 
-`AssignableScopes` プロパティでは、このロール定義を利用可能なスコープ (サブスクリプション、リソース グループ、またはリソース) を指定します。 そのロールを必要とするサブスクリプションやリソース グループのみに割り当てを限定し、それ以外のサブスクリプションやリソース グループについては元のユーザー エクスペリエンスを保ち、不要な混乱を避けることができます。 少なくとも 1 つのサブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
+`AssignableScopes` プロパティでは、このロール定義を利用できるスコープ (管理グループ、サブスクリプション、リソース グループ、またはリソース) を指定します。 ロールを必要とする管理グループ、サブスクリプション、またはリソース グループのみで、その割り当てを利用できるようにすることができます。 少なくとも 1 つの管理グループ、サブスクリプション、リソース グループ、またはリソース ID を使用する必要があります。
 
 組み込みロールでは `AssignableScopes` がルート スコープ (`"/"`) に設定されています。 ルート スコープは、すべてのスコープでそのロールを割り当て可能であることを示します。 有効な AssignableScopes の例を次に示します。
 
-| シナリオ | 例 |
+| 割り当てにロールを使用できる | 例 |
 |----------|---------|
-| 単一のサブスクリプションの割り当てにロールを使用できる | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
-| 2 つのサブスクリプションの割り当てにロールを使用できる | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
-| ネットワーク リソース グループでのみ割り当てにロールを使用できる | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| すべてのスコープの割り当てにロールを使用できる (組み込みロールのみに適用されます) | `"/"` |
+| 1 つのサブスクリプション | `"/subscriptions/{subscriptionId1}"` |
+| 2 つのサブスクリプション | `"/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"` |
+| Network resource group (ネットワーク リソース グループ) | `"/subscriptions/{subscriptionId1}/resourceGroups/Network"` |
+| 1 つの管理グループ | `"/providers/Microsoft.Management/managementGroups/{groupId1}"` |
+| 管理グループとサブスクリプション | `"/providers/Microsoft.Management/managementGroups/{groupId1}", /subscriptions/{subscriptionId1}",` |
+| すべてのスコープ (組み込みロールにのみ適用) | `"/"` |
 
 カスタム ロールの `AssignableScopes` の詳細については、[Azure リソースのカスタム ロール](custom-roles.md)に関する記事を参照してください。
 

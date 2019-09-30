@@ -1,6 +1,6 @@
 ---
 title: MapReduce と HDInsight 上の Apache Hadoop
-description: HDInsight クラスター上の Apache Hadoop で MapReduce ジョブを実行する方法について説明します。
+description: HDInsight クラスターの Apache Hadoop 上で Apache MapReduce ジョブを実行する方法について説明します。
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,49 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 9da6b6ba3ab697887e55f9077b44cf6fa100a981
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c4f975b56d3658731b6dc165e01b54ac09f3b89c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64707953"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076231"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>HDInsight 上の Apache Hadoop で MapReduce を使用する
 
-HDInsight クラスターで MapReduce ジョブを実行する方法を説明します。 
-
-## <a id="whatis"></a>MapReduce とは
-
-Apache Hadoop MapReduce は、膨大なデータを処理するジョブを記述するためのソフトウェア フレームワークです。 入力データは、独立したチャンクに分割されます。 各チャンクは、クラスター内のノード全体で並列に処理されます。 MapReduce ジョブは次の 2 つの関数で構成されます。
-
-* **Mapper**: 入力データを使用して分析し (通常はフィルターと並べ替え操作を使用)、タプル (キーと値のペア) を出力します。
-
-* **Reducer**: Mapper で出力されるタプルを使用して、Mapper データから、より小さい結合結果を作成する要約操作を実行します。
-
-次の図では、基本的なワード カウント MapReduce ジョブの例を示します。
-
-![HDI.WordCountDiagram][image-hdi-wordcountdiagram]
-
-このジョブの出力は、テキストでの各単語の出現回数です。
-
-* まず、Mapper が入力テキストから各行を読み込み、単語に分解して、 単語が出現するたびにキーと値のペア (キーは単語、値は 1) が出力されます。 出力は reducer に送信する前に並べ替えられます。
-* reducer は、各単語の個々のカウントを合計し、単語とその後に続く合計出現回数から成る単一のキーと値のペアを出力します。
-
-さまざまな言語で MapReduce を実装することができます。 Java は最も一般的な実装で、このドキュメントでのデモンストレーションのために使用されます。
-
-## <a name="development-languages"></a>開発言語
-
-Java や Java 仮想マシンに基づく言語またはフレームワークは、MapReduce ジョブとして直接実行できます。 このドキュメントで使用されている例は、Java MapReduce アプリケーションです。 C# や Python などの Java 以外の言語、またはスタンドアロンの実行可能ファイルでは **Hadoop ストリーミング**を使用する必要があります。
-
-Hadoop ストリーミングは、STDIN と STDOUT 上で mapper や reducer と通信します。 mapper と reducer は、STDIN から一度に 1 行ずつデータを読み取り、STDOUT に出力を書き込みます。 mapper と reducer によって読み取りまたは出力が行われる各行は、以下のように、タブ文字で区切られたキーと値のペアの形式である必要があります。
-
-    [key]/t[value]
-
-詳細については、「 [Hadoop ストリーミング](https://hadoop.apache.org/docs/r1.2.1/streaming.html)」を参照してください。
-
-HDInsight での Hadoop ストリーミングの使用例については、以下のドキュメントを参照してください。
-
-* [C# MapReduce ジョブの開発](apache-hadoop-dotnet-csharp-mapreduce-streaming.md)
+HDInsight クラスターで MapReduce ジョブを実行する方法を説明します。
 
 ## <a id="data"></a>サンプル データ
 
@@ -158,7 +125,6 @@ HDInsight でのデータ操作の詳細については、次のドキュメン�
 
 * [HDInsight での Apache Pig の使用][hdinsight-use-pig]
 
-
 [hdinsight-upload-data]: hdinsight-upload-data.md
 [hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
 [hdinsight-develop-mapreduce-jobs]: apache-hadoop-develop-deploy-java-mapreduce-linux.md
@@ -167,5 +133,3 @@ HDInsight でのデータ操作の詳細については、次のドキュメン�
 
 
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-[image-hdi-wordcountdiagram]: ./media/hdinsight-use-mapreduce/HDI.WordCountDiagram.gif

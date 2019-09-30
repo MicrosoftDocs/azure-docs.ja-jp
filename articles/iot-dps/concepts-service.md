@@ -3,17 +3,17 @@ title: Azure IoT Hub Device Provisioning サービスにおけるサービスの
 description: デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のサービス プロビジョニングの概念を説明します。
 author: nberdy
 ms.author: nberdy
-ms.date: 04/04/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 4a4f53f991355e634e8139f9e90bec6c508a527d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51486da6b34c0ff1e9b6d05558c2132a416913e9
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745810"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104357"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Azure IoT Hub Device Provisioning サービスの概念
 
@@ -57,7 +57,7 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 ### <a name="enrollment-group"></a>加入グループ
 
-加入グループは、特定の構成証明メカニズムを共有するデバイスのグループです。 登録グループ内のすべてのデバイスでは、同じルート証明機関 (CA) または中間 CA によって署名された X.509 証明書を提示します。 加入グループでは、X.509 構成証明メカニズムのみを使用できます。 加入グループ名と証明書の名前は、英数字の小文字でなければならず、ハイフンを含めることができます。
+加入グループは、特定の構成証明メカニズムを共有するデバイスのグループです。 登録グループでは、x.509 と対称の両方がサポートされています。 X.509 登録グループ内のすべてのデバイスでは、同じルートまたは中間の証明機関 (CA) によって署名された X.509 証明書を提示します。 対称キー登録グループ内の各デバイスでは、グループ対称キーから派生した SAS トークンを提示します。 加入グループ名と証明書の名前は、英数字の小文字でなければならず、ハイフンを含めることができます。
 
 > [!TIP]
 > 必要な初期構成を共有するデバイスが多数ある場合や、デバイスがすべて同じテナントに属する予定の場合は、加入グループを使用することをお勧めします。

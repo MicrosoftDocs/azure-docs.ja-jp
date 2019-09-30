@@ -11,33 +11,33 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273a6aca2050676650b955ec078b47b2ffcfe319
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 7fcf24256634ef11b575348d9da7d6bbbab8b67c
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333932"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127762"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック
 
 このプレイブックは次の操作で役立ちます。
 
-* リスク イベントと脆弱性をシミュレートし、ID 保護環境にデータを入力する
+* リスク検出と脆弱性をシミュレートし、ID 保護環境にデータを入力する
 * リスクに基づく条件付きアクセス ポリシーを設定し、そのポリシーの影響をテストする
 
-## <a name="simulating-risk-events"></a>リスク イベントのシミュレーション
+## <a name="simulating-risk-detections"></a>リスク検出のシミュレーション
 
-このセクションでは、次の種類のリスク イベントをシミュレートするための手順を提供します。
+このセクションでは、次の種類のリスク検出をシミュレートするための手順を提供します。
 
 * 匿名の IP アドレスからのサインイン (簡単)
 * 未知の場所からのサインイン (普通)
 * 特殊な場所へのあり得ない移動 (困難)
 
-他のリスク イベントは、安全な方法でシミュレートすることはできません。
+他のリスク検出は、安全な方法でシミュレートできません。
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>匿名の IP アドレスからのサインイン
 
-このリスク イベントの詳細については、「[匿名 IP アドレスからのサインイン](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses)」を参照してください。 
+このリスク検出の詳細については、「[匿名 IP アドレスからのサインイン](../reports-monitoring/concept-risk-events.md#sign-ins-from-anonymous-ip-addresses)」を参照してください。 
 
 次の手順を完了するには、以下を使用する必要があります。
 
@@ -53,7 +53,7 @@ ms.locfileid: "68333932"
 
 ### <a name="sign-ins-from-unfamiliar-locations"></a>未知の場所からのサインイン
 
-このリスク イベントの詳細については、「[未知の場所からのサインイン](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations)」を参照してください。 
+このリスク検出の詳細については、「[未知の場所からのサインイン](../reports-monitoring/concept-risk-events.md#sign-in-from-unfamiliar-locations)」を参照してください。 
 
 未知の場所をシミュレートするには、テスト アカウントがサインイン元として以前に使用したことのない場所とデバイスからサインインする必要があります。
 
@@ -76,14 +76,14 @@ ms.locfileid: "68333932"
 
 ### <a name="impossible-travel-to-atypical-location"></a>特殊な場所へのあり得ない移動
 
-このリスク イベントの詳細については、「[特殊な場所へのあり得ない移動](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations)」を参照してください。 
+このリスク検出の詳細については、「[特殊な場所へのあり得ない移動](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations)」を参照してください。 
 
-アルゴリズムでは、機械学習を使用して、既知のデバイスからのあり得ない移動や、ディレクトリ内の他のユーザーによって使用される VPN からのサインインなどの誤検知が除去されるため、あり得ない移動の状態をシミュレートすることは困難です。 さらに、リスク イベントの生成を開始する前に、ユーザーには 14 日間のサインイン履歴と 10 回のログインが必要です。 複雑な機械学習モデルと上記のルールのため、次の手順ではリスク イベントが発生しないこともあります。 このリスク イベントを発行するには、複数の Azure AD アカウントでこの手順を繰り返してください。
+アルゴリズムでは、機械学習を使用して、既知のデバイスからのあり得ない移動や、ディレクトリ内の他のユーザーによって使用される VPN からのサインインなどの誤検知が除去されるため、あり得ない移動の状態をシミュレートすることは困難です。 さらに、このアルゴリズムでは、リスク検出の生成を開始する前に、ユーザーには 14 日間のサインイン履歴と 10 回のログインが必要です。 複雑な機械学習モデルと上記のルールのため、次の手順ではリスク検出が発生しないこともあります。 このリスク検出を発行するには、複数の Azure AD アカウントでこの手順を繰り返してください。
 
 **特殊な場所へのあり得ない移動をシミュレートするには、次の手順を実行します**。
 
 1. 標準的なブラウザーを使用して、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。  
-2. あり得ない移動のリスク イベントを生成するアカウントの資格情報を入力します。
+2. あり得ない移動のリスク検出を生成するアカウントの資格情報を入力します。
 3. ユーザー エージェントを変更します。 ユーザー エージェントの変更は、Internet Explorer の開発者ツールから、あるいは Firefox または Chrome のユーザー エージェント切り替えアドオンを使用して、行うことができます。
 4. IP アドレスを変更します。 IP アドレスの変更は、VPN または Tor アドオンを使用して、または別のデータセンターの Azure で新しいマシンを起動して、行うことができます。
 5. 前と同じ資格情報を使用し、前のサインインから数分以内に、[https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
@@ -118,8 +118,8 @@ ms.locfileid: "68333932"
 
 5. [コントロール] セクションで、必要なアクセスの制御 ([パスワードの変更を必須とする] など) を選択します。
 5. **[ポリシーを適用します]** で **[オフ]** を選択します。
-6. テスト アカウントのユーザーのリスクを評価します。たとえば、リスク イベントのいずれかを数回シミュレートします。
-7. 数分待った後、そのユーザーのユーザー レベルが "中" であることを確認します。 そうでない場合は、そのユーザーに対してリスク イベントをさらにシミュレートします。
+6. テスト アカウントのユーザーのリスクを評価します。たとえば、リスク検出のいずれかを数回シミュレートします。
+7. 数分待った後、そのユーザーのユーザー レベルが "中" であることを確認します。 そうでない場合は、そのユーザーに対するリスク検出をさらにシミュレートします。
 8. **[ポリシーを適用します]** で **[オン]** を選択します。
 9. これで、リスク レベルを上げたユーザーを使用してサインインすることで、ユーザーのリスクに基づく条件付きアクセスをテストできます。
 

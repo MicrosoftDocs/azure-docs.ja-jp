@@ -35,7 +35,7 @@ ms.locfileid: "68607730"
 
 このクイック スタートでは以下が必要です。
 
-* [.NET コア SDK](https://dotnet.microsoft.com/download)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 以降
 * Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 18297410842b432af0093a71406df71f7e03db9d
-ms.sourcegitcommit: 15f7b641a67f3d6cf4fb4b4c11eaee18cf335923
+ms.openlocfilehash: b9b4a33e5aee92a4e8caa7a1128538cb2f1a8a7e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68602056"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933113"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Azure 仮想マシンの正常性を把握する
 
@@ -36,51 +36,54 @@ Azure Monitor for VMs の構成については、[Azure Monitor for VMs の有�
 
 このセクションでは、Azure の Windows および Linux VM を監視するための既定の正常性基準の概要について説明します。 すべての正常性基準は、異常な状態を検出した場合はアラートを送信するように事前に構成されています。
 
-### <a name="windows-vms"></a>Windows VM
+| 監視名 | 頻度 (分) | ルックバック期間 (分) | Operator | Threshold | アラート対象状態 | 重大度 | ワークロード カテゴリ | 
+|--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
+| Logical Disk Online (論理ディスク オンライン) | 5 | 15 | <> | 1 (true) | 重大 | Sev1 | Linux | 
+| Logical Disk Free Space (論理ディスクの空き領域) | 5 | 15 | < | 200 MB (警告)<br> 100 MB (重大) | 警告 | Sev1<br> Sev2 | Linux | 
+| Logical Disk % Free Inodes (論理ディスクの空き inode (%)) | 5 | 15 | < | 5% | 重大 | Sev1 | Linux | 
+| Logical Disk % Free Space (論理ディスクの空き領域 (%)) | 5 | 15 | < | 5% | 重大 | Sev1 | Linux | 
+| Network Adapter Status (ネットワーク アダプターの状態) | 5 | 15 | <> | 1 (true) | 警告 | Sev2 | Linux | 
+| Operating System Available Megabytes Memory (オペレーティング システムの使用可能なメモリ メガバイト数) | 5 | 10 | < | 2.5 MB | 重大 | Sev1 | Linux | 
+| Disk Avg.Disk sec/Read | 5 | 25 | > | 0.05 秒 | 重大 | Sev1 | Linux | 
+| Disk Avg.Disk sec/Transfer | 5 | 25 | > | 0.05 秒 | 重大 | Sev1 | Linux | 
+| Disk Avg.Disk sec/Write | 5 | 25 | > | 0.05 秒 | 重大 | Sev1 | Linux | 
+| ディスクの状態 | 5 | 25 | <> | 1 (true) | 重大 | Sev1 | Linux | 
+| Operating System Total Percent Processor Time (オペレーティング システムの合計プロセッサ時間 (%)) | 5 | 10 | >= | 95% | 重大 | Sev1 | Linux | 
+| Total CPU Utilization Percentage (合計 CPU 使用率の割合) | 5 | 10 | >= | 95% | 重大 | Sev1 | Windows | 
+| File system error or corruption (ファイル システム エラーまたは破損) | 60 | 60 | <> | 4 | 重大 | Sev1 | Windows | 
+| Average Logical Disk Seconds Per Read (論理ディスクの平均読み取り秒数) | 1 | 15 | > | 0.04 秒 | 警告 | Sev2 | Windows | 
+| Average Logical Disk Seconds Per Transfer (論理ディスクの平均転送秒数) | 1 | 15 | > | 0.04 秒 | 警告 | Sev2 | Windows | 
+| Average Logical Disk Seconds Per Write (Logical Disk) (論理ディスクの平均書き込み秒数 (論理ディスク)) | 1 | 15 | > | 0.04 秒 | 警告 | Sev2 | Windows | 
+| Current Disk Queue Length (Logical Disk) (現在のディスク キューの長さ (論理ディスク)) | 5 | 60 | >= | 32 | 警告 | Sev2 | Windows | 
+| Logical Disk Free Space (MB) (論理ディスクの空き領域 (MB)) | 15 | 60 | > | 500 MB (警告)<br> 300 MB (重大) | 重大 | Sev1<br> Sev2 | Windows | 
+| Logical Disk Free Space (%) (論理ディスクの空き領域 (%)) | 15 | 60 | > | 10% (警告)<br> 5% (重大) | 重大 | Sev1<br> Sev2 | Windows |
+| Logical Disk Percent Idle Time (論理ディスク アイドル時間の割合) | 15 | 360 | <= | 20% | 警告 | Sev2 | Windows | 
+| Percent Bandwidth Used Read (使用された帯域幅の割合 (読み取り)) | 5 | 60 | >= | 60% | 警告 | Sev2 | Windows | 
+| Percent Bandwidth Used Total (使用された帯域幅の割合 (合計)) | 5 | 60 | >= | 75% | 警告 | Sev2 | Windows | 
+| Percent Bandwidth Used Write (使用された帯域幅の割合 (書き込み)) | 5 | 60 | >= | 60% | 警告 | Sev2 | Windows | 
+| DHCP Client Service Health (DHCP クライアント サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
+| DNS Client Service Health (DNS クライアント サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
+| Windows Event Log Service Health (Windows イベント ログ サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
+| Windows Firewall Service Health (Windows ファイアウォール サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
+| RPC Service Health (RPC サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
+| Server Service Health (サーバー サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
+| Windows Remote Management Service Health (Windows リモート管理サービスの正常性) | 5 | 12 | <> | 4 (実行中) | 重大 | Sev1 | Windows | 
+| Available Megabytes of Memory (メモリの使用可能なメガバイト数) | 5 | 10 | < | 100 MB | 重大 | Sev1 | Windows | 
+| Free System Page Table Entries (空きシステム ページ テーブル エントリ) | 5 | 10 | <= | 5000 | 重大 | Sev1 | Windows | 
+| Memory Pages Per Second (1 秒あたりのメモリ ページ数) | 5 | 10 | >= | 5,000/秒 | 警告 | Sev1 | Windows | 
+| Percentage of Committed Memory in Use (使用されているコミット済みメモリの割合) | 5 | 10 | > | 80% | 重大 | Sev1 | Windows | 
+| Average Disk Seconds Per Transfer (ディスクの平均転送秒数) | 1 | 15 | > | 0.04 秒 | 警告 | Sev2 | Windows | 
+| Average Disk Seconds Per Write (ディスクの平均書き込み秒数) | 1 | 15 | > | 0.04 秒 | 警告 | Sev2 | Windows | 
+| 現在のディスク キューの長さ | 5 | 60 | >= | 32 | 警告 | Sev2 | Windows | 
+| Disk Percent Idle Time (ディスク アイドル時間の割合) | 5 | 60 | >= | 20% | 警告 | Sev2 | Windows | 
 
-- Available Megabytes of Memory (メモリの使用可能なメガバイト数)
-- Average Disk Seconds Per Write (Logical Disk) (ディスクの平均書き込み秒数 (論理ディスク))
-- Average Disk Seconds Per Write (Disk) (ディスクの平均書き込み秒数 (ディスク))
-- Average Logical Disk Seconds Per Read (論理ディスクの平均読み取り秒数)
-- Average Logical Disk Seconds Per Transfer (論理ディスクの平均転送秒数)
-- Average Disk Seconds Per Read (ディスクの平均読み取り秒数)
-- Average Disk Seconds Per Transfer (ディスクの平均転送秒数)
-- Current Disk Queue Length (Logical Disk) (現在のディスク キューの長さ (論理ディスク))
-- Current Disk Queue Length (Disk) (現在のディスク キューの長さ (ディスク))
-- Disk Percent Idle Time (ディスク アイドル時間の割合)
-- File system error or corruption (ファイル システム エラーまたは破損)
-- Logical Disk Free Space (%) Low (論理ディスクの空き領域 (%) 低)
-- Logical Disk Free Space (MB) Low (論理ディスクの空き領域 (MB) 低)
-- Logical Disk Percent Idle Time (論理ディスク アイドル時間の割合)
-- Memory Pages Per Second (1 秒あたりのメモリ ページ数)
-- Percent Bandwidth Used Read (使用された帯域幅の割合 (読み取り))
-- Percent Bandwidth Used Total (使用された帯域幅の割合 (合計))
-- Percent Bandwidth Used Write (使用された帯域幅の割合 (書き込み))
-- Percentage of Committed Memory in Use (使用されているコミット済みメモリの割合)
-- Disk Percent Idle Time (ディスク アイドル時間の割合)
-- DHCP Client Service Health (DHCP クライアント サービスの正常性)
-- DNS Client Service Health (DNS クライアント サービスの正常性)
-- RPC Service Health (RPC サービスの正常性)
-- Server Service Health (サーバー サービスの正常性)
-- Total CPU Utilization Percentage (合計 CPU 使用率の割合)
-- Windows Event Log Service Health (Windows イベント ログ サービスの正常性)
-- Windows Firewall Service Health (Windows ファイアウォール サービスの正常性)
-- Windows Remote Management Service Health (Windows リモート管理サービスの正常性)
+>[!NOTE]
+>ルックバック期間は、ルックバック時間枠内でメトリック値 (過去 5 分間など) が確認される頻度を表します。  
 
-### <a name="linux-vms"></a>Linux VM
+>[!NOTE]
+>頻度は、1 分ごとなど、条件が満たされたかどうかをメトリック アラートが確認する頻度を表します。  これは、正常性基準が実行されるレートです。ルックバックは、正常性基準が評価される期間です。 たとえば、正常性基準によって <bpt id="p1">**</bpt>CPU 使用率<ept id="p1">**</ept> が 95% を超えるかどうかが 5 分間の頻度で評価される場合に、CPU 使用率が 95% を超える時間が 15 分間 (連続する 3 回の評価サイクル) 続くと、状態の重大度が "重大" に更新されます (まだ更新されていない場合)。
 
-- Disk Avg.Disk sec/Transfer
-- Disk Avg.Disk sec/Read
-- Disk Avg.Disk sec/Write
-- Disk Health (ディスクの正常性)
-- Logical Disk Free Space (論理ディスクの空き領域)
-- Logical Disk % Free Space (論理ディスクの空き領域 (%))
-- Logical Disk % Free Inodes (論理ディスクの空き inode (%))
-- Network Adapter Health (ネットワーク アダプターの正常性)
-- Total Percent Processor Time (合計プロセッサ時間 (%))
-- Operating System Available Megabytes of Memory (オペレーティング システムの使用可能なメモリ メガバイト数)
-
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 サインインするには、[Azure portal](https://portal.azure.com) に移動します。
 
@@ -285,7 +288,7 @@ Azure Monitor for VMs の正常性に含まれているすべてのナレッジ�
 
 Azure Monitor for VMs の正常性は、[Azure アラート](../../azure-monitor/platform/alerts-overview.md)と統合されています。 定義済みの基準に達した場合や、正常な状態から異常な状態への変化が検出された場合にアラートを発生させます。 アラートは、重大度 0 から重大度 4 までの重大度で分類され、重大度 0 が最も高いレベルです。
 
-アラートは、トリガーされたらユーザーに通知するためのアクション グループには関連付けられていません。 サブスクリプション所有者は、「[アラートを構成する](#configure-alerts)」のセクションにある手順に従って通知を構成する必要があります。
+アラートは、トリガーされたらユーザーに通知するためのアクション グループには関連付けられていません。 サブスクリプションのスコープで所有者ロールを持つユーザーは、「[アラートを構成する](#configure-alerts)」のセクションにある手順に従って、通知を構成する必要があります。
 
 重大度で分類された VM 正常性アラートの総数は、 **[アラート]** セクションの **[正常性]** ダッシュボードで表示できます。 アラートの合計数、または重大度レベルに対応する数のいずれかを選択すると、 **[アラート]** ページが開き、選択に一致するすべてのアラートが一覧表示されます。
 
@@ -304,8 +307,8 @@ Azure Monitor for VMs の正常性は、[Azure アラート](../../azure-monitor
 |Subscription |Azure サブスクリプションを選択します。 このビューには、選択したサブスクリプション内のアラートのみが含まれます。 |
 |リソース グループ |1 つのリソース グループを選択します。 このビューには、選択されたリソース グループ内のターゲットを含むアラートのみが含まれます。 |
 |リソースの種類 |1 つ以上のリソースの種類を選択します。 既定では、ターゲットが**仮想マシン**のアラートのみが選択されて、このビューに表示されます。 この列は、リソース グループを指定した後でのみ使用できます。 |
-|Resource |リソースを選択します。 このビューには、そのリソースをターゲットとして含むアラートのみが含まれます。 この列は、リソースの種類が指定された後でのみ使用できます。 |
-|Severity |アラートの重大度を選択するか、または **[すべて]** を選択してすべての重大度のアラートを含めます。 |
+|リソース |リソースを選択します。 このビューには、そのリソースをターゲットとして含むアラートのみが含まれます。 この列は、リソースの種類が指定された後でのみ使用できます。 |
+|重大度 |アラートの重大度を選択するか、または **[すべて]** を選択してすべての重大度のアラートを含めます。 |
 |[Monitor Condition] (監視条件) |アラートをフィルター処理するための監視条件として、アラートが発生したかどうか、または状態がアクティブでなくなった場合はシステムによって解決されたかどうかを選択します。 または、 **[すべて]** を選択してすべての状態のアラートを含めます。 |
 |アラートの状態 |アラートの状態として、 **[新規]** 、 **[確認済み]** 、 **[解決済み]** を選択するか、または **[すべて]** を選択してすべての状態のアラートを含めます。 |
 |サービスの監視 |サービスを選択するか、または **[すべて]** を選択してすべてのサービスを含めます。 この機能では、VM Insights からのアラートのみがサポートされます。|

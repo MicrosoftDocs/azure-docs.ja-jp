@@ -2,20 +2,19 @@
 title: テキスト分割コグニティブ検索スキル - Azure Search
 description: Azure Search のエンリッチメント パイプラインの長さに基づいて、テキストをテキストのチャンクまたはページに分割します。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 03ebf39db264c9d6f78b228f3af4239c6e249b26
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: a6e46970b6c0fc91c464207049d2dedaaee1afdd
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635936"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265681"
 ---
 #   <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
 

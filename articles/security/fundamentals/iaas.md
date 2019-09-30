@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2019
+ms.date: 08/26/2019
 ms.author: barclayn
-ms.openlocfilehash: c04d5fc5b455c798ffc8cb4a88948deaea0cf348
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fc1657be4dbff1acee186e3a85d9d1e772055f73
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927928"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262739"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス
 この記事では、VM とオペレーティング システムのセキュリティに関するベスト プラクティスについて説明します。
@@ -70,7 +70,7 @@ VM 保護の第一歩は、承認されたユーザーのみが新しい VM を�
 組織は、VM へのアクセスと設定を制御することで、VM の総合的なセキュリティを向上させることができます。
 
 ## <a name="use-multiple-vms-for-better-availability"></a>可用性を高めるために複数の VM を使用する
-高可用性を必要とする重要なアプリケーションが仮想マシンで実行されている場合は、複数の VM を使うことを強くお勧めします。 可用性を高めるには、[可用性セット](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を使用します。
+高可用性を必要とする重要なアプリケーションが仮想マシンで実行されている場合は、複数の VM を使うことを強くお勧めします。 可用性を高めるには、[可用性セット](../../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)または可用性[ゾーン](../../availability-zones/az-overview.md)を使用します。
 
 可用性セットは、Azure で使用できる論理グループであり、グループに配置された VM リソースは、Azure データ センター内にデプロイされるときに互いに分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されることが保証されます。 ハードウェアまたは Azure ソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、顧客は引き続きアプリケーション全体を利用できます。 可用性セットは、信頼性の高いクラウド ソリューションを構築する際に不可欠な機能です。
 
@@ -146,7 +146,7 @@ VM のプロセスが必要以上に多くのリソースを消費している�
 
 [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview-metrics) を使用してリソースの正常性を把握することをお勧めします。 Azure Monitor には次の特長があります。
 
-- [Azure 診断ログ ファイル](../../azure-monitor/platform/diagnostic-logs-overview.md):VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定できます。
+- [Azure 診断ログ ファイル](../../azure-monitor/platform/resource-logs-overview.md):VM のリソースを監視し、パフォーマンスと可用性を損なう可能性がある問題を特定できます。
 - [Microsoft Azure Diagnostics 拡張機能](/azure/azure-monitor/platform/diagnostics-extension-overview):Windows VM 監視と診断機能を備えています。 この拡張機能を [Azure Resource Manager テンプレート](/azure/virtual-machines/windows/extensions-diagnostics-template)に含めることによって、これらの機能を有効にすることができます。
 
 VM のパフォーマンスを監視していない組織は、パフォーマンス パターンにおけるある変化が正常であるか異常であるかを判断できません。 消費しているリソースが通常よりも多い VM は、外部リソースからの攻撃を受けているか、その VM で実行されているプロセスが侵害されていることを示唆している可能性があります。
@@ -182,7 +182,7 @@ VM からインターネットへの直接接続を監視して制限します�
 **詳細**: RBAC を使用して、中央のネットワーク グループのみがネットワーク リソースへのアクセス許可を持つようにします。
 
 **ベスト プラクティス**: "あらゆる" 発信元 IP アドレスからアクセス可能な露出した VM を特定して修復する。   
-**詳細**: Azure Security Center を使用します。 Security Center では、ネットワーク セキュリティ グループのいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する 1 つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスに[アクセスを制限](../../security-center/security-center-restrict-access-through-internet-facing-endpoints.md)するよう推奨します。
+**詳細**: Azure Security Center を使用します。 Security Center では、ネットワーク セキュリティ グループのいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する 1 つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。 Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスに[アクセスを制限](../../security-center/security-center-network-recommendations.md)するよう推奨します。
 
 **ベスト プラクティス**: 管理ポートを制限する (RDP、SSH)。   
 **詳細**: [Just-In-Time (JIT) VM アクセス](../../security-center/security-center-just-in-time.md)を使用すると、Azure VM への受信トラフィックをロックダウンすることができるので、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。 JIT が有効になっている場合、Security Center ではネットワーク セキュリティ グループの規則の作成により、Azure VM への受信トラフィックがロックダウンされます。 ユーザーは VM 上の受信トラフィックがロックダウンされるポートを選択します。 これらのポートは、JIT ソリューションによって制御されます。

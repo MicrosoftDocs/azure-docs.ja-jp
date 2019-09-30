@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 2b30ade9971ede6f9544b618504033553392e9bd
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: fc7f2180e4166070fe44863aed2b12135b0db8ee
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "67615432"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097853"
 ---
 # <a name="create-an-https-ingress-controller-and-use-your-own-tls-certificates-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で HTTPS イングレス コントローラーを作成し、独自の TLS 証明書を使用する
 
@@ -133,7 +133,7 @@ helm install azure-samples/aks-helloworld \
 次の例では、アドレス `https://demo.azure.com/` へのトラフィックが `aks-helloworld` という名前のサービスにルーティングされることに注意してください。 アドレス `https://demo.azure.com/hello-world-two` へのトラフィックは、`ingress-demo` サービスにルーティングされます。 この記事では、これらのデモのホスト名を変更する必要はありません。 運用環境で使用する場合は、証明書の要求および生成プロセスの一環として指定した名前を指定します。
 
 > [!TIP]
-> 証明書の要求プロセスの際に指定したホスト名 (CN 名) が、イングレス ルートに定義されているホストに一致しない場合、イングレス コントローラーには *Kubernetes イングレス コントローラーの偽の証明書*が表示されます。 証明書とイングレス ルートのホスト名が一致することを確認します。
+> 証明書の要求プロセスの間に指定されたホスト名 (CN 名) が、イングレス ルートで定義されているホストと一致しない場合、イングレス コントローラーには "*Kubernetes イングレス コントローラーの偽の証明書*" という警告が表示されます。 証明書とイングレス ルートのホスト名が一致することを確認します。
 
 *ｔls* セクションは、ホスト *demo.azure.com* の *aks-ingress-tls* という名前のシークレットを使用することをイングレス ルートに伝えます。 ここでも、運用環境で使用する場合は、独自のホスト アドレスを指定します。
 

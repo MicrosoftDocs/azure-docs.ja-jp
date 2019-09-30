@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: tutorial
-ms.date: 07/29/2019
+ms.topic: conceptual
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 192c5c7a2d4c671aec0dcf72bef78abd1845b1ea
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1bee26dc57fd844703e2c9c97b38b9a433227fbf
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946076"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387953"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Node.js を使用したプログラムによる LUIS アプリの作成
 
@@ -26,11 +26,11 @@ LUIS は、[LUIS](luis-reference-regions.md) Web サイトによって実行さ�
 
 * [LUIS](luis-reference-regions.md) Web サイトにサインインし、[アカウント設定] で[オーサリング キー](luis-concept-keys.md#authoring-key)を見つけます。 このキーを使用して、Authoring API を呼び出します。
 * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-* このチュートリアルでは、架空の会社のユーザー要求のログが含まれた CSV ファイルをまず使用します。 [こちら](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)でダウンロードできます。
+* この記事では、架空の会社のユーザー要求のログが含まれた CSV ファイルをまず使用します。 [こちら](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/build-app-programmatically-csv/IoT.csv)でダウンロードできます。
 * NPM を使用して最新の Node.js をインストールします。 これは、[こちら](https://nodejs.org/en/download/)からダウンロードできます。
 * **[推奨]** IntelliSense およびデバッグ用の Visual Studio Code。[こちら](https://code.visualstudio.com/)から無料でダウンロードできます。
 
-このチュートリアルのコードはすべて、[Azure-Samples Language Understanding GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)で入手できます。 
+この記事のコードはすべて、[Azure-Samples Language Understanding GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/examples/build-app-programmatically-csv)で入手できます。 
 
 ## <a name="map-preexisting-data-to-intents-and-entities"></a>既存のデータを意図とエンティティにマップする
 LUIS を念頭に置いて作成されていないシステムがあっても、ユーザーが実行したいさまざまなことにマップされるテキスト データが含まれていれば、ユーザー入力の既存のカテゴリから LUIS の意図へのマッピングを考えることができます。 ユーザーの発話内の重要な単語やフレーズを特定できる場合、これらの単語はエンティティにマップできます。

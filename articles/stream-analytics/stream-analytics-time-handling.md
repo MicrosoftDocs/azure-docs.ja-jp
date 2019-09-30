@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics での時間の処理について
-description: Azure Stream Analytics での時間の処理について学習する
+description: 時間処理のしくみと、Azure Stream Analytics で時間処理に関する問題を解決する方法について説明します。
 author: jasonwhowell
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/05/2018
-ms.openlocfilehash: 0eb4b77964aa3c07bac2af615a26c3a9199525de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8517d4754d10b61f7ee4c8075830860e1d22864
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64692386"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172993"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Azure Stream Analytics での時間の処理について
 

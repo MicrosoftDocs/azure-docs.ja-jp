@@ -1,49 +1,103 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Blueprints サービスのドキュメント
+### YamlMime:Landing
+title: Azure Blueprints のドキュメント
+summary: Resource Manager テンプレート、ロールベースのアクセス制御、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
 metadata:
-  title: Azure Blueprints のドキュメント - チュートリアル、API リファレンス
-  description: Azure Blueprint は、Azure 環境でアーティファクトを作成、定義、デプロイするために使用する Azure のサービスです。
-  author: DCtheGeek
-  manager: carmonm
+  title: Azure Blueprints のドキュメント
+  description: Resource Manager テンプレート、ロールベースのアクセス制御、ポリシーなどの成果物を単一のブループリント定義にパッケージ化して、デプロイを簡略化しましょう。
   ms.service: blueprints
   ms.topic: landing-page
-  ms.date: 06/14/2019
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: Azure Blueprints は、コンポーザブルな成果物 (リソース、ロールベースのアクセス制御、ポリシーをプロビジョニングするための Azure Resource Manager テンプレートなど) を使用して、繰り返し可能な方法でクラウド環境をデプロイおよび更新する際に役立ちます。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Azure でブループリント定義の作成、割り当て、管理を行う方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: Azure Portal
-              src: ./media/portal.svg
-            text: Azure Portal
-            href: create-blueprint-portal.md
-          - image:
-              alt: Azure PowerShell
-              src: ./media/powershell.svg
-            text: Azure PowerShell
-            href: create-blueprint-powershell.md
-          - image:
-              alt: REST
-              src: ./media/rest.svg
-            text: REST
-            href: create-blueprint-rest-api.md
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: '<p><a href="/powershell/module/az.blueprint/#blueprint">Azure PowerShell</a></p>'
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/blueprints/management">Azure SDK for .NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/blueprints/">API リファレンス</a></p>
+  ms.date: 09/01/2019
+  ms.openlocfilehash: 44d21c07a81dc3fe5912137691b67af1a3e910e2
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70239194"
+landingContent:
+- title: Azure Blueprints について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Blueprint とは
+      url: ./overview.md
+    - text: デプロイの段階
+      url: ./concepts/deployment-stages.md
+    - text: ブループリントのライフサイクル
+      url: ./concepts/lifecycle.md
+  - linkListType: video
+    links:
+    - text: Azure Friday - Azure Blueprints の概要
+      url: https://channel9.msdn.com/Shows/Azure-Friday/An-overview-of-Azure-Blueprints
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 新しいブループリントを作成する (ポータル)
+      url: ./create-blueprint-portal.md
+    - text: 新しいブループリントを作成する (PowerShell)
+      url: ./create-blueprint-powershell.md
+    - text: 新しいブループリントを作成する (REST API)
+      url: ./create-blueprint-rest-api.md
+  - linkListType: tutorial
+    links:
+    - text: ブループリント サンプルを使用する
+      url: ./tutorials/create-from-sample.md
+  - linkListType: deploy
+    links:
+    - text: ブループリント サンプルの一覧
+      url: ./samples/index.md
+- title: ブループリントのカスタマイズ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 動的パラメーター
+      url: ./concepts/parameters.md
+    - text: シーケンス成果物
+      url: ./concepts/sequencing-order.md
+    - text: デプロイ済みリソースのロック
+      url: ./concepts/resource-locking.md
+  - linkListType: tutorial
+    links:
+    - text: 新しいリソースをロックで保護する
+      url: ./tutorials/protect-new-resources.md
+- title: スケーリング対応
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 既存のブループリントを更新する
+      url: ./how-to/update-existing-assignments.md
+    - text: PowerShell を使用した割り当ての管理
+      url: ./how-to/manage-assignments-ps.md
+    - text: PowerShell を使ってインポートとエクスポートを行う
+      url: ./how-to/import-export-ps.md
+    - text: ブループリント演算子を実装する
+      url: ./how-to/configure-for-blueprint-operator.md
+    - text: ブループリントをコードとして管理する
+      url: https://github.com/Azure/azure-blueprints/blob/master/README.md
+- title: 参加する
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure のガバナンスに関する YouTube チャンネル
+      url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+    - text: 製品機能のリクエスト
+      url: https://feedback.azure.com/forums/915958-azure-governance
+    - text: Azure のガバナンスの Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: ブループリントに固有の関数
+      url: ./reference/blueprint-functions.md
+    - text: PowerShell モジュール (PSGallery)
+      url: https://www.powershellgallery.com/packages/Az.Blueprint
+    - text: Azure PowerShell
+      url: /powershell/module/az.blueprint/#blueprint
+    - text: REST API
+      url: /rest/api/blueprints/
+    - text: .NET
+      url: /dotnet/api/overview/azure/blueprints/management

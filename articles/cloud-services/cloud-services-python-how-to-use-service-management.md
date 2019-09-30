@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: 573c6d3ded8fea58e0c9ba1afa7da2d8dd0fce91
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50501413a63921a9a34be1c04ed259990922b686
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525526"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141467"
 ---
 # <a name="use-service-management-from-python"></a>Python からサービス管理を使用する
 このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure Portal][management-portal] で使用できるサービス管理関連の機能の多くへのプログラムによるアクセスをサポートしています。 この機能を使用して、クラウド サービス、デプロイ、データ管理サービス、および仮想マシンの作成、更新、および削除を行うことができます。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
@@ -33,7 +33,7 @@ Service Management API を使用するには、 [Azure アカウントを作成�
 Azure SDK for Python は、REST API である [Service Management API][svc-mgmt-rest-api] をラップします。 すべての API 操作は SSL 経由で実行され、X.509 v3 証明書を使用して相互認証されます。 管理サービスへのアクセスは、Azure で実行されているサービス内から行うことができます。 また、HTTPS 要求の送信と HTTPS 応答の受信の機能を持つ任意のアプリケーションからインターネット経由で直接行うこともできます。
 
 ## <a name="Installation"> </a>インストール
-`azure-servicemanagement-legacy` パッケージには、この記事で説明されているすべての機能が用意されています。このパッケージは pip を使用してインストールできます。 インストールの詳細については (たとえば、Python を初めて使用する場合)、[Python と Azure SDK のインストール](../python-how-to-install.md)に関する記事を参照してください。
+`azure-servicemanagement-legacy` パッケージには、この記事で説明されているすべての機能が用意されています。このパッケージは pip を使用してインストールできます。 インストールの詳細については (たとえば、Python を初めて使用する場合)、[Python と Azure SDK のインストール](/azure/python/python-sdk-azure-install)に関する記事を参照してください。
 
 ## <a name="Connect"> </a>サービス管理への接続
 サービス管理エンドポイントに接続するには、Azure サブスクリプション ID、および有効な管理証明書が必要です。 サブスクリプション ID は [Azure Portal][management-portal] から入手できます。
@@ -54,7 +54,7 @@ Azure SDK for Python は、REST API である [Service Management API][svc-mgmt-
 
 Azure 証明書の詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。 OpenSSL のパラメーターの詳細については、[https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html) のドキュメントを参照してください。
 
-これらのファイルを作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure Portal][management-portal] の **[設定]** タブで、 **[アップロード]** を選択します。 `.pem` ファイルを保存した場所をメモします。
+これらのファイルを作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure portal][management-portal] の **[設定]** タブで、 **[アップロード]** を選択します。 `.pem` ファイルを保存した場所をメモします。
 
 サブスクリプション ID を取得した後、証明書を作成し、`.cer` ファイルを Azure にアップロードして、Azure 管理エンドポイントに接続します。 サブスクリプション ID と `.pem` ファイルのパスを **ServiceManagementService** に渡すことで、接続します。
 
@@ -75,7 +75,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 
 このコマンドにより、`.cer` ファイルが作成され、**個人用**証明書ストアにインストールされます。 詳細については、「[Azure Cloud Services の証明書の概要](cloud-services-certs-create.md)」を参照してください。
 
-証明書を作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure Portal][management-portal] の **[設定]** タブで、 **[アップロード]** を選択します。
+証明書を作成したら、`.cer` ファイルを Azure にアップロードします。 [Azure portal][management-portal] の **[設定]** タブで、 **[アップロード]** を選択します。
 
 サブスクリプション ID を取得した後、証明書を作成し、`.cer` ファイルを Azure にアップロードして、Azure 管理エンドポイントに接続します。 サブスクリプション ID と**個人用**証明書ストア内の証明書の場所を **ServiceManagementService** に渡すことで、接続します (再度、*AzureCertificate* を証明書の名前に置き換えます)。
 
@@ -111,7 +111,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 * 米国中北部
 * 米国中南部
 * 米国西部
-* 米国東部
+* East US
 * 東日本
 * 西日本
 * ブラジル南部
@@ -119,7 +119,7 @@ Azure 証明書の詳細については、「[Azure Cloud Services の証明書�
 * オーストラリア南東部
 
 ## <a name="CreateCloudService"> </a>クラウド サービスの作成
-Azure でアプリケーションを作成して実行する場合、そのコードと構成は、総称して [Azure クラウド サービス][cloud service]と呼ばれます (以前の Azure リリースでは、*ホステッド サービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホステッド サービスを作成できます。 サービスを作成するには、ホステッド サービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
+Azure でアプリケーションを作成して実行する場合、そのコードと構成は、総称して [Azure クラウド サービス][cloud service]と呼ばれます。 (以前の Azure リリースでは、*ホステッド サービス*と呼ばれていました)。**create\_hosted\_service** メソッドを使用して、新しいホステッド サービスを作成できます。 サービスを作成するには、ホステッド サービス名 (Azure 上で一意の名前)、ラベル (Base64 に自動的にエンコードされます)、説明、場所を渡します。
 
     from azure import *
     from azure.servicemanagement import *

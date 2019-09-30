@@ -3,19 +3,20 @@ title: チュートリアル - メールと添付ファイルの処理を自動�
 description: チュートリアル - Azure Logic Apps、Azure Storage、Azure Functions を使ってメールと添付ファイルを処理する自動化されたワークフローを作成する
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
+ms.manager: carmonm
 ms.reviewer: klam, LADocs
-manager: carmonm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: ee232b54bc4d65d6380a6f2a1d1c88ee7dcf53c3
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: e7c27d284ef93d15c5ac9a6228205e79518f2ffa
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67312661"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051777"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>チュートリアル: Azure Logic Apps を使用してメールと添付ファイルの処理を自動化する
 
@@ -61,9 +62,9 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
    | Setting | 値 | 説明 |
    |---------|-------|-------------|
    | **サブスクリプション** | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 |  
-   | **リソース グループ** | LA-Tutorial-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 |
-   | **Storage account name \(ストレージ アカウント名\)** | attachmentstorageacct | ストレージ アカウントの名前 |
-   | **Location** | 米国西部 | ストレージ アカウントに関する情報の保存先となるリージョン |
+   | **リソース グループ** | <*Azure-resource-group*> | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 この例では、"LA-Tutorial-RG" を使用します。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 |
+   | **Storage account name \(ストレージ アカウント名\)** | <*Azure-storage-account-name*> | お使いのストレージ アカウント名。3 から 24 文字で構成する必要があり、小文字と数字のみを含めることができます。 この例では、"attachmentstorageacct" を使用します。 |
+   | **Location** | <*Azure-region*> | ストレージ アカウントに関する情報の保存先となるリージョン。 この例では "米国西部" を使用します。 |
    | **パフォーマンス** | Standard | サポートされるデータの種類とデータの保存メディアは、この設定で指定します。 「[ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts)」を参照してください。 |
    | **アカウントの種類** | 汎用 | [ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts) |
    | **レプリケーション** | ローカル冗長ストレージ (LRS) | データのコピー、保存、管理、同期の方法は、この設定で指定します。 「[ローカル冗長ストレージ (LRS): Azure Storage の低コストのデータ冗長性](../storage/common/storage-redundancy-lrs.md)」を参照してください。 |
@@ -73,7 +74,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    | Setting | 値 | 説明 |
    |---------|-------|-------------|
-   | **安全な転送が必須** | Disabled | 接続先からの要求には、この設定でセキュリティを確保することができます。 [安全な転送の義務付け](../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。 |
+   | **安全な転送が必須** | 無効 | 接続先からの要求には、この設定でセキュリティを確保することができます。 [安全な転送の義務付け](../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。 |
    ||||
 
    ストレージ アカウントは、[Azure PowerShell](../storage/common/storage-quickstart-create-storage-account-powershell.md) または [Azure CLI](../storage/common/storage-quickstart-create-storage-account-cli.md) を使用して作成することもできます。

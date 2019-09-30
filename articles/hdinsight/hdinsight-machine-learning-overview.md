@@ -1,19 +1,19 @@
 ---
 title: 機械学習の概要 - Azure HDInsight
-description: HDInsight の機械学習オプションについて説明します。
+description: Azure HDInsight 内のクラスターのためのビッグ データの機械学習オプションの概要。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: hrasheed
-ms.openlocfilehash: ca69424ecbddc068fdaf8bb5839a647701ee27fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 139d82079b5946b0628760f5b05bb08d208cae6f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686602"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105411"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 
@@ -29,7 +29,7 @@ Apache Spark 用の Microsoft Machine Learning ライブラリは [MMLSpark](htt
 
 [R](https://www.r-project.org/) は現在、世界で最も普及している統計プログラミング言語です。 これは、ユーザー数が 250 万を超え、さらに成長しているコミュニティを抱えるオープンソースのデータ視覚化ツールです。 その増大するユーザー ベースと 8,000 を超える提供パッケージにより、R は、機械学習が必要な多くの企業にとって有望な選択肢です。 大量のデータセットとモデルで使用されるように準備された ML Services を使用して HDInsight クラスターを作成できます。 この機能は、データ サイエンティストや統計学者に、クラスターのセットアップやメンテナンスのオーバーヘッドなしで HDInsight を通してオンデマンドで拡張できる使い慣れた R インターフェイスを提供します。
 
-![R Server での予測のためのトレーニング](./media/hdinsight-machine-learning-overview/r-training.png)
+![R Server での予測のためのトレーニング](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。  また、ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間で R スクリプトを実行するオプションも提供されます。
 
@@ -39,7 +39,7 @@ Spark を使用した HDInsight 上の ML Services により、Spark コンピ�
 
 Azure Machine Learning は、予測分析をモデル化するためのツールだけでなく、予測モデルを、すぐに使用できる Web サービスとしてデプロイするために使用できるフル マネージドのサービスを提供します。 Azure Machine Learning は、予測モデルの作成、テスト、操作可能化、および管理のために使用できる、クラウド内の完全な予測分析ソリューションです。 大規模なアルゴリズム ライブラリの中から選択し、モデルを構築するための Web ベースのスタジオを使用して、ご利用のモデルを簡単に Web サービスとしてデプロイできます。
 
-![Microsoft Azure Machine Learning により高度な分析で Hadoop にアクセスできるようにする](./media/hdinsight-machine-learning-overview/hadoop-azure-ml.png)
+![Microsoft Azure 機械学習の概要](./media/hdinsight-machine-learning-overview/azure-machine-learning.png)
 
 [Hive クエリ](../machine-learning/team-data-science-process/create-features-hive.md)を使用して、HDInsight Hadoop クラスター内のデータの特徴を作成します。 *特徴エンジニアリング*は、学習プロセスを容易にする生データの特徴を作成することによって、学習アルゴリズムの予測能力を向上させようとします。 Azure Machine Learning Studio から HiveQL クエリを実行し、[データのインポート モジュール](../machine-learning/studio/import-data.md)を使用して、Hive で処理され、Blob Storage に格納されているデータにアクセスできます。
 

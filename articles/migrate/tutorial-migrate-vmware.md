@@ -4,15 +4,15 @@ description: Azure Migrate を使用して、オンプレミスの VMware VM の
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 09/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7fba9cbbaa15359e7e4dd95e66645dd5f4022431
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: ec7d10a1d9fec43c149c068fb408211db76d19eb
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640776"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309376"
 ---
 # <a name="migrate-vmware-vms-to-azure-agentless"></a>VMware VM を Azure に移行する (エージェントレス)
 
@@ -126,7 +126,10 @@ Azure での Linux VM の実行については、それらの手順について�
 
 ## <a name="replicate-vms"></a>VM をレプリケートする
 
-検出が完了したら、Azure への VMware VM のレプリケーションを開始できます。
+検出が完了したら、Azure への VMware VM のレプリケーションを開始できます。 
+
+> [!NOTE]
+> 最大 10 台のマシンをまとめてレプリケートできます。 レプリケートするマシンがそれより多い場合は、10 台をひとまとまりとして同時にレプリケートしてください。 エージェントレス移行の場合は、100 台まで同時にレプリケーションを実行できます。
 
 1. Azure Migrate プロジェクトの **[サーバー]** の **[Azure Migrate: Server Migration]** で、 **[レプリケート]** をクリックします。
 

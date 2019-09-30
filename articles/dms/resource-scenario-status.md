@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/13/2019
-ms.openlocfilehash: 44ac290a471fd0099b6589f84fea604249818432
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.date: 09/05/2019
+ms.openlocfilehash: 9ea070ea86a4d0d5e7101e82450235a59c936d2d
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868610"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376401"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Azure Database Migration Service によってサポートされる移行シナリオの状態
 
@@ -46,15 +46,15 @@ Azure Database Migration Service によってサポートされる移行シナ�
 
 | ターゲット  | source | サポート | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | 一般公開 |
+| **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
 |   | Oracle |  |  |
-| **Azure SQL DB MI** | SQL Server | ✔ | 一般公開 |
+| **Azure SQL DB MI** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
 |   | Oracle |  |   |
-| **Azure SQL VM** | SQL Server | ✔ | 一般公開 |
+| **Azure SQL VM** | SQL Server | ✔ | GA |
 |   | Oracle |   |   |
-| **Azure Cosmos DB** | MongoDB | ✔ | 一般公開 |
+| **Azure Cosmos DB** | MongoDB | ✔ | GA |
 | **Azure DB for MySQL** | MySQL |   |   |
 |   | RDS MySQL |   |   |
 | **Azure DB for PostgreSQL** | PostgreSQL |  |
@@ -66,20 +66,20 @@ Azure Database Migration Service によってサポートされる移行シナ�
 
 | ターゲット  | source | サポート | Status |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL DB** | SQL Server | ✔ | 一般公開 |
-|   | RDS SQL | ✔ | 一般公開 |
+| **Azure SQL DB** | SQL Server | ✔ | GA |
+|   | RDS SQL | ✔ | GA |
 |   | Oracle |  |  |
-| **Azure SQL DB MI** | SQL Server | ✔ | 一般公開 |
-|   | RDS SQL | ✔ | 一般公開 |
+| **Azure SQL DB MI** | SQL Server | ✔ | GA |
+|   | RDS SQL | ✔ | GA |
 |   | Oracle | ✔ | プライベート プレビュー |
 | **Azure SQL VM** | SQL Server |   |   |
 |   | Oracle  |  |  |
-| **Azure Cosmos DB** | MongoDB | ✔ | 一般公開 |
-| **Azure DB for MySQL** | MySQL | ✔ | 一般公開 |
-|   | RDS MySQL | ✔ | 一般公開 |
-| **Azure DB for PostgreSQL** | PostgreSQL | ✔ | 一般公開 |
-|   | RDS PostgreSQL | ✔ | 一般公開 |
-|   | Oracle | ✔ | プライベート プレビュー |
+| **Azure Cosmos DB** | MongoDB | ✔ | GA |
+| **Azure DB for MySQL** | MySQL | ✔ | GA |
+|   | RDS MySQL | ✔ | GA |
+| **Azure DB for PostgreSQL** | PostgreSQL | ✔ | GA |
+|   | RDS PostgreSQL | ✔ | GA |
+|   | Oracle | ✔ | パブリック プレビュー |
 
 ## <a name="next-steps"></a>次の手順
 

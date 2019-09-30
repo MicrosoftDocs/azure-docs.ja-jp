@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: 41f8769aea841e05887feb6a44511cbf444a7acf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6a71c83a190bd7e88edd5008edef670b32905add
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66168511"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140799"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>変更追跡情報を使用して Azure SQL Database から Azure Blob Storage にデータを増分読み込みする 
 このチュートリアルでは、ソース Azure SQL データベースから**変更追跡**情報に基づく差分データを Azure Blob Storage に読み込むパイプラインを使用して Azure Data Factory を作成します。  
@@ -149,14 +148,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-Az-ps)に関するページの手順に従って、最新の Azure PowerShell モジュールをインストールしてください。
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. 左側のメニューで、**[リソースの作成]** > **[データ + 分析]** > **[Data Factory]** の順に選択します。 
+1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
-2. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
+2. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFTutorialDataFactory**」と入力します。 
       
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
  
@@ -174,7 +173,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 5. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 6. **[ダッシュボードにピン留めする]** をオンにします。     
 7. **Create** をクリックしてください。      
-8. ダッシュボードに、**[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
+8. ダッシュボードに、 **[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
 9. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
@@ -191,10 +190,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-azure-storage-linked-service"></a>Azure Storage のリンクされたサービスを作成する
 この手順では、Azure ストレージ アカウントをデータ ファクトリにリンクします。
 
-1. **[接続]** をクリックし、**[+ 新規]** をクリックします。
+1. **[接続]** をクリックし、 **[+ 新規]** をクリックします。
 
    ![新しい接続ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-connection-button-storage.png)
-2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure Blob Storage]** を選択し、**[続行]** をクリックします。 
+2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure Blob Storage]** を選択し、 **[続行]** をクリックします。 
 
    ![[Azure Blob Storage] の選択](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-storage.png)
 3. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
@@ -209,8 +208,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 この手順では、Azure SQL データベースをデータ ファクトリにリンクします。
 
-1. **[接続]** をクリックし、**[+ 新規]** をクリックします。
-2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、**[続行]** をクリックします。 
+1. **[接続]** をクリックし、 **[+ 新規]** をクリックします。
+2. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 
 3. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
 
     1. **[名前]** フィールドに「**AzureSqlDatabaseLinkedService**」と入力します。 
@@ -229,10 +228,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-a-dataset-to-represent-source-data"></a>ソース データを表すデータセットを作成する 
 この手順では、ソース データを表すデータセットを作成します。 
 
-1. ツリー ビューで **[+]\(プラス記号\)** をクリックし、**[データセット]** をクリックします。 
+1. ツリー ビューで **[+]\(プラス記号\)** をクリックし、 **[データセット]** をクリックします。 
 
    ![[新しいデータセット] メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-dataset-menu.png)
-2. **[Azure SQL Database]** を選択し、**[完了]** をクリックします。 
+2. **[Azure SQL Database]** を選択し、 **[完了]** をクリックします。 
 
    ![ソース データセットの種類 - Azure SQL Database](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-sql-database.png)
 3. データセットを構成するための新しいタブが表示されます。 ツリー ビューにもデータセットが表示されます。 **[プロパティ]** ウィンドウで、データセットの名前を「**SourceDataset**」に変更します。
@@ -248,10 +247,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-a-dataset-to-represent-data-copied-to-sink-data-store"></a>シンク データ ストアにコピーされるデータを表すデータセットを作成します。 
 この手順では、ソース データ ストアからコピーされたデータを表すデータセットを作成します。 前提条件の 1 つとして adftutorial コンテナーを Azure Blob Storage に作成しました。 このコンテナーが存在しない場合は作成するか、または既存のコンテナーの名前に設定してください。 このチュートリアルでは、`@CONCAT('Incremental-', pipeline().RunId, '.txt')` という式を使って出力ファイル名が動的に生成されます。
 
-1. ツリー ビューで **[+]\(プラス記号\)** をクリックし、**[データセット]** をクリックします。 
+1. ツリー ビューで **[+]\(プラス記号\)** をクリックし、 **[データセット]** をクリックします。 
 
    ![[新しいデータセット] メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-dataset-menu.png)
-2. **[Azure Blob Storage]** を選択し、**[完了]** をクリックします。 
+2. **[Azure Blob Storage]** を選択し、 **[完了]** をクリックします。 
 
    ![シンク データセットの種類 - Azure Blob Storage](./media/tutorial-incremental-copy-change-tracking-feature-portal/source-dataset-type.png)
 3. データセットを構成するための新しいタブが表示されます。 ツリー ビューにもデータセットが表示されます。 **[プロパティ]** ウィンドウで、データセットの名前を「**SinkDataset**」に変更します。
@@ -261,15 +260,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     1. **[リンクされたサービス]** で **[AzureStorageLinkedService]** を選択します。
     2. **filePath** の**フォルダー**部分として「**adftutorial/incchgtracking**」と入力します。
-    3. **filePath** の**ファイル**部分として「**\@CONCAT('Incremental-', pipeline().RunId, '.txt')**」と入力します。  
+    3. **filePath** の**ファイル**部分として「 **\@CONCAT('Incremental-', pipeline().RunId, '.txt')** 」と入力します。  
 
        ![シンク データセット - 接続](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 
 ### <a name="create-a-dataset-to-represent-change-tracking-data"></a>変更追跡データを表すデータセットを作成する 
 この手順では、変更追跡バージョンを格納するためのデータセットを作成します。  前提条件の 1 つとして table_store_ChangeTracking_version テーブルを作成しました。
 
-1. ツリー ビューで **[+]\(プラス記号\)** をクリックし、**[データセット]** をクリックします。 
-2. **[Azure SQL Database]** を選択し、**[完了]** をクリックします。 
+1. ツリー ビューで **[+]\(プラス記号\)** をクリックし、 **[データセット]** をクリックします。 
+2. **[Azure SQL Database]** を選択し、 **[完了]** をクリックします。 
 3. データセットを構成するための新しいタブが表示されます。 ツリー ビューにもデータセットが表示されます。 **[プロパティ]** ウィンドウで、データセットの名前を「**ChangeTrackingDataset**」に変更します。
 4. **[接続]** タブに切り替えて、次の手順を実行します。 
     
@@ -279,7 +278,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-pipeline-for-the-full-copy"></a>完全コピーのパイプラインを作成する
 この手順では、ソース データ ストア (Azure SQL Database) からターゲット データ ストア (Azure Blob Storage) にデータ全体をコピーするコピー アクティビティを含んだパイプラインを作成します。
 
-1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、**[パイプライン]** をクリックします。 
+1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。 
 
     ![新しいパイプライン メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
 2. パイプラインを構成するための新しいタブが表示されます。 ツリー ビューにもパイプラインが表示されます。 **[プロパティ]** ウィンドウで、パイプラインの名前を「**FullCopyPipeline**」に変更します。
@@ -288,37 +287,37 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[アクティビティ]** ツールボックスで **[データ フロー]** を展開し、パイプライン デザイナー画面に **[コピー]** アクティビティをドラッグ アンド ドロップして、名前を「**FullCopyActivity**」に設定します。 
 
     ![完全コピー アクティビティ名](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
-4. **[ソース]** タブに切り替えて、**[Source Dataset]\(ソース データセット\)** フィールドで **[SourceDataset]** を選択します。 
+4. **[ソース]** タブに切り替えて、 **[Source Dataset]\(ソース データセット\)** フィールドで **[SourceDataset]** を選択します。 
 
     ![コピー アクティビティ - ソース](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-source.png)
-5. **[シンク]** タブに切り替えて、**[Sink Dataset]\(シンク データセット\)** フィールドで **[SinkDataset]** を選択します。 
+5. **[シンク]** タブに切り替えて、 **[Sink Dataset]\(シンク データセット\)** フィールドで **[SinkDataset]** を選択します。 
 
     ![コピー アクティビティ - シンク](./media/tutorial-incremental-copy-change-tracking-feature-portal/copy-activity-sink.png)
-6. パイプライン定義を検証するために、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。 
+6. パイプライン定義を検証するために、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。 
 
     ![パイプラインを検証する](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-validate.png)
-7. エンティティ (リンクされたサービス、データセット、およびパイプライン) を発行するには、**[発行]** をクリックします。 発行が成功するまで待機します。 
+7. エンティティ (リンクされたサービス、データセット、およびパイプライン) を発行するには、 **[発行]** をクリックします。 発行が成功するまで待機します。 
 
     ![[発行] ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button.png)
 8. **[正常に発行されました]** というメッセージが表示されるまで待機します。 
 
     ![発行は成功しました](./media/tutorial-incremental-copy-change-tracking-feature-portal/publishing-succeeded.png)
-9. 左側の **[通知の表示]** ボタンをクリックして、通知を確認することもできます。 通知ウィンドウを閉じるには、**[X]** をクリックします。
+9. 左側の **[通知の表示]** ボタンをクリックして、通知を確認することもできます。 通知ウィンドウを閉じるには、 **[X]** をクリックします。
 
     ![通知の表示](./media/tutorial-incremental-copy-change-tracking-feature-portal/show-notifications.png)
 
 
 ### <a name="run-the-full-copy-pipeline"></a>フル コピー パイプラインを実行する
-パイプラインのツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 
+パイプラインのツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。 
 
 ![[Trigger Now]\(今すぐトリガー\) メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu.png)
 
 ### <a name="monitor-the-full-copy-pipeline"></a>フル コピー パイプラインを監視する
 
-1. 左側の **[監視]** タブをクリックします。 一覧にパイプラインの実行とその状態が表示されます。 一覧を更新するには、**[最新の情報に更新]** をクリックします。 [アクション] 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示し、パイプラインを再実行することができます。 
+1. 左側の **[監視]** タブをクリックします。 一覧にパイプラインの実行とその状態が表示されます。 一覧を更新するには、 **[最新の情報に更新]** をクリックします。 [アクション] 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示し、パイプラインを再実行することができます。 
 
     ![パイプライン実行](./media/tutorial-incremental-copy-change-tracking-feature-portal/monitor-full-copy-pipeline-run.png)
-2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、**[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプライン内のアクティビティは 1 つだけであるため、一覧に表示されるエントリは 1 つのみです。 [Pipeline Runs]\(パイプラインの実行\) ビューに戻るには、上部の **[パイプライン]** リンクをクリックします。 
+2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプライン内のアクティビティは 1 つだけであるため、一覧に表示されるエントリは 1 つのみです。 [Pipeline Runs]\(パイプラインの実行\) ビューに戻るには、上部の **[パイプライン]** リンクをクリックします。 
 
     ![アクティビティの実行](./media/tutorial-incremental-copy-change-tracking-feature-portal/activity-runs-full-copy.png)
 
@@ -356,16 +355,16 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 ## <a name="create-a-pipeline-for-the-delta-copy"></a>差分コピーのパイプラインを作成する
 この手順では、次のアクティビティを含んだパイプラインを作成して定期的に実行します。 **ルックアップ アクティビティ**は、Azure SQL Database から新旧の SYS_CHANGE_VERSION を取得してコピー アクティビティに渡します。 **コピー アクティビティ**は、2 つの SYS_CHANGE_VERSION 値の間に存在する挿入/更新/削除されたデータを Azure SQL Database から Azure Blob Storage にコピーします。 **ストアド プロシージャ アクティビティ**は、次回のパイプライン実行に備えて SYS_CHANGE_VERSION の値を更新します。
 
-1. Data Factory の UI で、**[編集]** タブに切り替えます。左ウィンドウで **[+]\(プラス記号\)** をクリックし、**[パイプライン]** をクリックします。 
+1. Data Factory の UI で、 **[編集]** タブに切り替えます。左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。 
 
     ![新しいパイプライン メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. パイプラインを構成するための新しいタブが表示されます。 ツリー ビューにもパイプラインが表示されます。 **[プロパティ]** ウィンドウで、パイプラインの名前を「**IncrementalCopyPipeline**」に変更します。
 
     ![パイプライン名](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
-3. **[アクティビティ]** ツール ボックスの **[General]\(一般\)** を展開し、**[検索]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティの名前を「**LookupLastChangeTrackingVersionActivity**」に設定します。 このアクティビティは、直前のコピー操作で使用された変更追跡バージョンを取得します。この値は、テーブル **table_store_ChangeTracking_version** に格納されています。
+3. **[アクティビティ]** ツール ボックスの **[General]\(一般\)** を展開し、 **[検索]** アクティビティをパイプライン デザイナー画面にドラッグ アンド ドロップします。 アクティビティの名前を「**LookupLastChangeTrackingVersionActivity**」に設定します。 このアクティビティは、直前のコピー操作で使用された変更追跡バージョンを取得します。この値は、テーブル **table_store_ChangeTracking_version** に格納されています。
 
     ![検索アクティビティ - 名前](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-name.png)
-4. **[プロパティ]** ウィンドウで **[設定]** に切り替えて、**[Source Dataset]\(ソース データセット\)** フィールドで **[ChangeTrackingDataset]** を選択します。 
+4. **[プロパティ]** ウィンドウで **[設定]** に切り替えて、 **[Source Dataset]\(ソース データセット\)** フィールドで **[ChangeTrackingDataset]** を選択します。 
 
     ![検索アクティビティ - 設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/first-lookup-activity-settings.png)
 5. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**LookupCurrentChangeTrackingVersionActivity**」に設定します。 このアクティビティは、現在の変更追跡バージョンを取得します。
@@ -396,7 +395,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
        ```
     
       ![コピー アクティビティ - ソースの設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-source-settings.png)
-9. **[シンク]** タブに切り替えて、**[Sink Dataset]\(シンク データセット\)** フィールドで **[SinkDataset]** を選択します。 
+9. **[シンク]** タブに切り替えて、 **[Sink Dataset]\(シンク データセット\)** フィールドで **[SinkDataset]** を選択します。 
 
     ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-sink-settings.png)
 10. 1 つずつ、**両方の検索アクティビティをコピー アクティビティに接続**します。 **[検索]** アクティビティにアタッチされている**緑**のボタンを **[コピー]** アクティビティにドラッグします。 
@@ -405,7 +404,7 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
 11. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**StoredProceduretoUpdateChangeTrackingActivity**」に設定します。 このアクティビティは、**table_store_ChangeTracking_version** テーブル内の変更追跡バージョンを更新します。
 
     ![ストアド プロシージャ アクティビティ - 名前](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-activity-name.png)
-12. *[SQL Account\*]\(SQL アカウント\)* タブに切り替えて、**[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。 
+12. *[SQL Account\*]\(SQL アカウント\)* タブに切り替えて、 **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。 
 
     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-change-tracking-feature-portal/sql-account-tab.png)
 13. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 
@@ -414,16 +413,16 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
     2. **[Import parameter]\(インポート パラメーター\)** を選択します。 
     3. **[ストアド プロシージャのパラメーター]** セクションで、各パラメーターに次の値を指定します。 
 
-        | Name | Type | 値 | 
+        | 名前 | Type | 値 | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
-        | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
+        | TableName | string | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![ストアド プロシージャ アクティビティ - パラメーター](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
 14. **コピー アクティビティをストアド プロシージャ アクティビティに接続します**。 コピー アクティビティにアタッチされている**緑**のボタンをストアド プロシージャ アクティビティにドラッグ アンド ドロップします。 
 
     ![コピー アクティビティとストアド プロシージャ アクティビティを接続する](./media/tutorial-incremental-copy-change-tracking-feature-portal/connect-copy-stored-procedure.png)
-15. ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** ウィンドウを閉じます。 
+15. ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、 **[Pipeline Validation Report]\(パイプライン検証レポート\)** ウィンドウを閉じます。 
 
     ![検証ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/validate-button.png)
 16. **[すべて公開]** ボタンをクリックして、エンティティ (リンクされたサービス、データセット、およびパイプライン) を Data Factory サービスに発行します。 **[発行は成功しました]** というメッセージが表示されるまで待機します。 
@@ -431,16 +430,16 @@ SET [Age] = '10', [name]='update' where [PersonID] = 1
        ![[発行] ボタン](./media/tutorial-incremental-copy-change-tracking-feature-portal/publish-button-2.png)    
 
 ### <a name="run-the-incremental-copy-pipeline"></a>増分コピー パイプラインを実行する
-1. パイプラインのツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 
+1. パイプラインのツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。 
 
     ![[Trigger Now]\(今すぐトリガー\) メニュー](./media/tutorial-incremental-copy-change-tracking-feature-portal/trigger-now-menu-2.png)
 2. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで **[完了]** を選択します。
 
 ### <a name="monitor-the-incremental-copy-pipeline"></a>増分コピー パイプラインを監視する
-1. 左側の **[監視]** タブをクリックします。 一覧にパイプラインの実行とその状態が表示されます。 一覧を更新するには、**[最新の情報に更新]** をクリックします。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示し、パイプラインを再実行することができます。 
+1. 左側の **[監視]** タブをクリックします。 一覧にパイプラインの実行とその状態が表示されます。 一覧を更新するには、 **[最新の情報に更新]** をクリックします。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示し、パイプラインを再実行することができます。 
 
     ![パイプライン実行](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-pipeline-runs.png)
-2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、**[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプライン内のアクティビティは 1 つだけであるため、一覧に表示されるエントリは 1 つのみです。 [Pipeline Runs]\(パイプラインの実行\) ビューに戻るには、上部の **[パイプライン]** リンクをクリックします。 
+2. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、 **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 パイプライン内のアクティビティは 1 つだけであるため、一覧に表示されるエントリは 1 つのみです。 [Pipeline Runs]\(パイプラインの実行\) ビューに戻るには、上部の **[パイプライン]** リンクをクリックします。 
 
     ![アクティビティの実行](./media/tutorial-incremental-copy-change-tracking-feature-portal/inc-copy-activity-runs.png)
 

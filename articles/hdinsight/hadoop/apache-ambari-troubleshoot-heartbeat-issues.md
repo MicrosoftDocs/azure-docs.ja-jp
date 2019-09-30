@@ -1,17 +1,18 @@
 ---
 title: Azure HDInsight での Apache Ambari のハートビートの問題
-description: Azure HDInsight での Apache Ambari のハートビートの問題のさまざまな理由
+description: Azure HDInsight での Apache Ambari のハートビートの問題のさまざまな理由のレビュー
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
-ms.date: 08/02/2019
-ms.openlocfilehash: a74e826e9a4725c9b689dc97101b00615771d4d1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.reviewer: jasonh
+ms.date: 09/11/2019
+ms.openlocfilehash: 9f7d3fb5363a5eb2d79287bc9a9398bfdcbc4aec
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781336"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087825"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Azure HDInsight での Apache Ambari のハートビートの問題
 
@@ -21,7 +22,7 @@ ms.locfileid: "68781336"
 
 ### <a name="issue"></a>問題
 
-Ambari エージェントの CPU 使用率が高くなっています。これにより、一部のノードで Ambari エージェントのハートビートが失われたことを示すアラートが Ambari UI から出されています。
+Ambari エージェントの CPU 使用率が高くなっています。これにより、一部のノードで Ambari エージェントのハートビートが失われたことを示すアラートが Ambari UI から出されています。 ハードビートが失われたというアラートは通常、一時的なものです。 
 
 ### <a name="cause"></a>原因
 
@@ -90,6 +91,6 @@ Ambari エージェントが開始されていません。これにより、一�
 
 * [Azure コミュニティのサポート](https://azure.microsoft.com/support/community/)を通じて Azure エキスパートから回答を得る。
 
-* [@AzureSupport](https://twitter.com/azuresupport) に問い合わせる - Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上する Microsoft Azure の公式アカウント。
+* [@AzureSupport](https://twitter.com/azuresupport) (Azure コミュニティを適切なリソース (回答、サポート、専門家) につなぐことで、カスタマー エクスペリエンスを向上させる Microsoft Azure の公式アカウント) に問い合わせる。
 
 * さらにヘルプが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) からサポート リクエストを送信できます。 メニュー バーから **[サポート]** を選択するか、 **[ヘルプとサポート]** ハブを開いてください。 詳細については、「[Azure サポート要求を作成する方法](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)」をご覧ください。 サブスクリプション管理と課金サポートへのアクセスは、Microsoft Azure サブスクリプションに含まれていますが、テクニカル サポートはいずれかの [Azure のサポート プラン](https://azure.microsoft.com/support/plans/)を通して提供されます。

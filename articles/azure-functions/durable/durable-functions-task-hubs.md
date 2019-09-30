@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 40144fb50a01a64bbd67d541562b4fe0842fbf10
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0a58251530467d788710b0584b15715a207e20f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097796"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734317"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions におけるタスク ハブ (Azure Functions)
 
@@ -101,6 +101,8 @@ ms.locfileid: "70097796"
 
 以下は、アプリ設定として構成されているタスク ハブを操作するために [OrchestrationClientBinding](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) を使用する関数を記述する方法の、プリコンパイル済み C# の場合の例を示しています。
 
+### <a name="c"></a>C#
+
 ```csharp
 [FunctionName("HttpStart")]
 public static async Task<HttpResponseMessage> Run(
@@ -119,8 +121,9 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-また、以下は JavaScript に必要な構成を示しています。 `function.json` ファイルのタスク ハブ プロパティは、アプリ設定を通じて設定されます。
+### <a name="javascript"></a>JavaScript
 
+`function.json` ファイルのタスク ハブ プロパティは、アプリ設定を通じて設定されます。
 ```json
 {
     "name": "input",

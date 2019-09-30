@@ -7,12 +7,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: eb6df3bfda131f00c04499dc80c47482229195a5
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: d601dc1efe8dc3f6f2678f5d4df03f172146cd07
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623916"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900558"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -510,29 +510,29 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
 3. ページの左側で、 **[Oozie]**  >  **[クイック リンク]**  >  **[Oozie Web UI]** の順に選びます。
 
-    ![メニューの画像](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![メニューの画像](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
 4. Oozie Web UI には、実行中のワークフロー ジョブが既定で表示されます。 すべてのワークフロー ジョブを表示するには、 **[All Jobs]\(すべてのジョブ\)** を選びます。
 
-    ![すべてのジョブの表示](./media/hdinsight-use-oozie-linux-mac/ooziejobs.png)
+    ![すべてのジョブの表示](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
 5. ジョブに関する他の情報を表示するには、ジョブを選びます。
 
-    ![[Job Info]](./media/hdinsight-use-oozie-linux-mac/jobinfo.png)
+    ![[Job Info]](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
 6. **[Job Info]\(ジョブの情報\)** タブでは、基本的なジョブ情報とジョブの個々のアクションを確認できます。 上部にあるタブを使って、 **[Job Definition]\(ジョブの定義\)** の表示、 **[Job Configuration]\(ジョブの構成\)** の表示、 **[Job Log]\(ジョブのログ\)** へのアクセス、 **[Job DAG]\(ジョブの DAG\)** でジョブの有向非巡回グラフ (DAG) の表示を行うことができます。
 
    * **[ジョブのログ]** :ジョブのすべてのログを取得するには、 **[Get Logs]\(ログの取得)** ボタンを選びます。ログをフィルター処理するには、 **[Enter Search Filter]\(検索フィルターの入力)** フィールドを使います。
 
-       ![ジョブのログ](./media/hdinsight-use-oozie-linux-mac/joblog.png)
+       ![ジョブのログ](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
    * **[Job DAG]\(ジョブの DAG)** :DAG は、ワークフローで取得されるデータ パスの概要をグラフィックで表したものです。
 
-       ![ジョブの DAG](./media/hdinsight-use-oozie-linux-mac/jobdag.png)
+       ![ジョブの DAG](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. **[Job Info]\(ジョブの情報\)** タブでアクションのいずれかを選択すると、そのアクションの情報が表示されます。 たとえば、**RunHiveScript** アクションを選びます。
 
-    ![アクション情報](./media/hdinsight-use-oozie-linux-mac/action.png)
+    ![アクション情報](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
 8. **コンソールの URL** へのリンクなど、アクションの詳細を確認できます。 このリンクを使うと、ジョブ トラッカーでのジョブの情報が表示されます。
 
@@ -632,18 +632,18 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
 7. Oozie Web UI にアクセスし、 **[Coordinator Jobs]\(コーディネーター ジョブ\)** タブを選ぶと、次の画像のような情報が表示されます。
 
-    ![[Coordinator Jobs]\(コーディネーター ジョブ\) タブ](./media/hdinsight-use-oozie-linux-mac/coordinatorjob.png)
+    ![[Coordinator Jobs]\(コーディネーター ジョブ\) タブ](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
 
     **[Next Materialization (次の実体化)]** エントリは、このジョブが次回実行される日時を示しています。
 
 8. 前のワークフロー ジョブと同様に、Web UI でジョブ エントリを選ぶと、そのジョブの情報が表示されます。
 
-    ![コーディネーター ジョブの情報](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
+    ![コーディネーター ジョブの情報](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
 
     > [!NOTE]  
     > この画像には、正常に実行されたジョブのみが表示されており、スケジュールされたワークフロー内の個々のアクションについては表示されません。 個々のアクションを表示するには、 **[Action]\(アクション\)** エントリの 1 つを選びます。
 
-    ![アクション情報](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
+    ![コーディネーター アクションの情報](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -747,7 +747,7 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Workflow.Diagram.png
+[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 

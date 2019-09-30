@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: 290af605525d552e73c5f3a7a961593689326946
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e9c3556d904dd961a2b8f99f84983c35ccf5c6a
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467682"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772276"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Azure Advisor を使用してリソースのセキュリティを向上させる
 
@@ -38,7 +38,7 @@ Security Center は、Azure リソースのセキュリティを高度に視覚�
 Advisor の推奨事項の詳細については、以下を参照してください。
 * [Advisor 入門](advisor-overview.md)
 * [Advisor の使用を開始する](advisor-get-started.md)
-* [Advisor のコストに関する推奨事項](advisor-performance-recommendations.md)
+* [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor の高可用性に関する推奨事項](advisor-high-availability-recommendations.md)
 

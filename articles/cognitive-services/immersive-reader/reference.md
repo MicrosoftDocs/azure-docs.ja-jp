@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1a616bce8c161825853b1966769d9505595d95de
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 1d9fc20055fe3adb571b5a77330cc6537998cb5f
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688309"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534473"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Immersive Reader SDK リファレンス
 
@@ -35,7 +35,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 #### <a name="parameters"></a>parameters
 
-| 名前 | Type | 説明 |
+| Name | Type | 説明 |
 | ---- | ---- |------------ |
 | `token` | string | Azure AD 認証トークン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |
 | `subdomain` | string | Azure 内のイマーシブ リーダー リソースのカスタム サブドメイン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |
@@ -73,6 +73,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | --------- | ----------- |
 | text/plain | プレーンテキスト。 |
 | application/mathml+xml | Mathematical Markup Language (MathML)。 [詳細情報](https://developer.mozilla.org/en-US/docs/Web/MathML)。
+| application/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word の .docx 形式のドキュメント。
 
 ### <a name="options"></a>オプション
 
@@ -104,7 +105,8 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | ---- | ----------- |
 | BadArgument | 与えられた引数が無効です。詳細は `message` を参照してください。 |
 | タイムアウト | 指定されたタイムアウト時間内にイマーシブ リーダーを読み込めませんでした。 |
-| TokenExpired| 与えられたトークンの期限が切れています。 |
+| TokenExpired | 与えられたトークンの期限が切れています。 |
+| Throttled | 呼び出しレートの制限を超えました。 |
 
 ## <a name="launching-the-immersive-reader"></a>イマーシブ リーダーの起動
 

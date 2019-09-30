@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 9eccb4ca505dac312dd22123a3585863c67f3ad7
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 235b55bcd727e3e3ea947ce086209e0a94f70752
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359863"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076378"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
@@ -63,9 +63,9 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
                            {
                                refresh.Register("TestApp:Settings:BackgroundColor")
                                       .Register("TestApp:Settings:FontColor")
-                                      .Register("TestApp:Settings:Message")
+                                      .Register("TestApp:Settings:Message");
                            });
-                }
+                });
             })
             .UseStartup<Startup>();
     ```
@@ -191,7 +191,7 @@ ASP.NET Core には、さまざまなソースから構成データを読み取�
 
 5. **[Configuration Explorer]\(構成エクスプローラー)** を選択して次のキーの値を更新します。
 
-    | キー | 値 |
+    | Key | 値 |
     |---|---|
     | TestApp:Settings:BackgroundColor | green |
     | TestApp:Settings:FontColor | lightGray |

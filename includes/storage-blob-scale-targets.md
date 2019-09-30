@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 4/20/2019
 ms.author: tamram
 ms.openlocfilehash: aab17966862c57a52f252b3c4e9b757673078b0a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67181387"
 ---
-| Resource | ターゲット        |
+| リソース | ターゲット        |
 |----------|---------------|
 | 単一の BLOB コンテナーの最大サイズ | ストレージ アカウントの最大容量と同じ |
 | ブロック BLOB 内または追加 BLOB 内の最大ブロック数 | 50,000 ブロック |

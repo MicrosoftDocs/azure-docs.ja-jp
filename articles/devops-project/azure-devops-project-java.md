@@ -6,31 +6,30 @@ ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
-manager: douge
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc, seo-java-july2019, seo-java-august2019
+ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: 381af2989a7622501462e574d05b54eea8416518
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: d395855de6bb16841d54821c87a6af6d5d62c11c
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543443"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898050"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>クイック スタート:Azure DevOps Projects を使用して Java アプリ用の CI/CD パイプラインを設定する
 
-Azure DevOps Projects は、Azure リソースを作成して、Azure Pipelines 内に Java アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインを設定する、簡単なエクスペリエンスを提供します。  
+このクイックスタートの記事では、Azure DevOps Projects の簡素化されたエクスペリエンスを使用して、Azure Pipelines 内に Java アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインを設定します。 また、Azure DevOps Projects を使用して、他の Azure リソースを作成することもできます。  
 
 Azure サブスクリプションをお持ちでない場合は、[Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) を通じて無料で取得できます。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
   DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/31/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: def218564511b65809e776f97d0962b72f72adc2
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 17e27fcbd0e31c8602869be3d884888fe4fe7db0
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898135"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095830"
 ---
 # <a name="tutorial-use-health-check-in-azure-deployment-manager-public-preview"></a>チュートリアル:Azure Deployment Manager で正常性チェックを使用する (パブリック プレビュー)
 
@@ -235,8 +235,8 @@ Azure 関数を検証およびテストする:
 
 チュートリアルを簡単にするために、トポロジ テンプレートと成果物を以下の場所で共有し、お客様独自のコピーを準備する必要がないようにします。 お客様独自のものを使用する場合は、「[チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する](./deployment-manager-tutorial.md)」の手順に従います。
 
-* トポロジ テンプレート: \\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json)
-* 成果物ストア: \\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* トポロジ テンプレート: https:\//armtutorials.blob.core.windows.net/admtutorial/ADMTemplates/CreateADMServiceTopology.json
+* 成果物ストア: https:\//armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
 
 トポロジをデプロイするには、 **[試してみる]** を選択し、Cloud Shell を開いて PowerShell スクリプトを貼り付けます。
 
@@ -265,8 +265,8 @@ New-AzResourceGroupDeployment `
 
 チュートリアルを簡単にするために、変更したロールアウト テンプレートを以下の場所で共有し、お客様独自のコピーを準備する必要がないようにします。 お客様独自のものを使用する場合は、「[チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する](./deployment-manager-tutorial.md)」の手順に従います。
 
-* トポロジ テンプレート: \\[https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json](https://armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json)
-* 成果物ストア: \\[https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore](https://armtutorials.blob.core.windows.net/admtutorial/ArtifactStore)
+* トポロジ テンプレート: https:\//armtutorials.blob.core.windows.net/admtutorial/ADMTemplatesHC/CreateADMRollout.json
+* 成果物ストア: https:\//armtutorials.blob.core.windows.net/admtutorial/ArtifactStore
 
 [正常性チェック サービス シミュレーターの作成](#create-a-health-check-service-simulator)に関するページで作成した異常状態 URL を使用します。 **managedIdentityID** については、[ユーザー割り当てマネージド ID の作成](./deployment-manager-tutorial.md#create-the-user-assigned-managed-identity)に関するページを参照してください。
 

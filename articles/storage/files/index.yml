@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Azure Files のドキュメント
+summary: Azure Files はクラウドで、サーバー メッセージ ブロック (SMB) プロトコルを介してアクセスできるフル マネージドのクロスプラットフォーム ファイル共有を提供します。
+metadata:
+  title: Azure Files
+  description: Windows、Linux、および macOS でクラウドまたはオンプレミスのファイル共有をマウントします。 Azure File Sync を使用して Azure ファイル共有を Windows Server でキャッシュし、ローカル アクセスを実現します。
+  services: storage
+  ms.service: storage
+  ms.subservice: files
+  ms.topic: landing-page
+  ms.collection: collection
+  author: roygara
+  ms.author: rogarana
+  ms.date: 08/27/2019
+  ms.openlocfilehash: 21be0cb23dc5673d0a060636da148ee97463ec4b
+  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70241718"
+landingContent:
+- title: Azure Files について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Files 計画ガイド
+      url: storage-files-planning.md
+    - text: Azure File Sync 計画ガイド
+      url: storage-sync-files-planning.md
+    - text: Azure Files とは
+      url: storage-files-introduction.md
+- title: 作業開始
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: ファイル共有の作成と使用 - Windows
+      url: storage-files-quick-create-use-windows.md
+    - text: Premium ファイル共有の作成
+      url: storage-how-to-create-premium-fileshare.md
+    - text: Azure File Sync でのサーバーの管理
+      url: storage-sync-files-server-registration.md
+  - linkListType: tutorial
+    links:
+    - text: Azure File Sync を使用して Windows ファイル サーバーを拡張する
+      url: storage-sync-files-extend-servers.md
+- title: トラブルシューティング
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure Files に関する Windows のトラブルシューティング
+      url: storage-troubleshoot-windows-file-connection-problems.md
+    - text: Azure Files に関する Linux のトラブルシューティング
+      url: storage-troubleshoot-linux-file-connection-problems.md
+    - text: Azure Files に関するパフォーマンスのトラブルシューティング
+      url: storage-troubleshooting-files-performance.md
+    - text: Azure File Sync に関するトラブルシューティング
+      url: storage-sync-files-troubleshoot.md

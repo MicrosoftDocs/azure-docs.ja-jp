@@ -12,18 +12,18 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/03/2019
+ms.date: 08/21/2019
 ms.author: atsenthi
-ms.openlocfilehash: 8512b1c94145d573d96cd3a43190cda5b9cfa222
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: ca7a3cfe62520ed82dcf494a33f3bd188dbebe76
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775309"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279994"
 ---
 # <a name="supported-service-fabric-versions"></a>サポートされている Service Fabric のバージョン
 
-クラスターでは常に、サポートされている Azure Service Fabric のバージョンが実行されている状態にします。 Service Fabric の新しいバージョンのリリースが発表された日から最短で 60 日後には、以前のバージョンのサポートが終了します。 新しいリリースについては、[Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)上でお知らせします。
+クラスターでは常に、サポートされている Azure Service Fabric のバージョンが実行されている状態にします。 Service Fabric の新しいバージョンのリリースが発表された日から最短で 60 日後には、以前のバージョンのサポートが終了します。 新しいリリースについては、[Service Fabric チーム ブログ](https://azure.microsoft.com/updates/?product=service-fabric)上でお知らせします。
 
 サポートされている Service Fabric のバージョンをクラスターにおいて継続して実行する方法の詳細については、次のドキュメントを参照してください。
 
@@ -108,3 +108,4 @@ ms.locfileid: "68775309"
 | 6.5 RTO | 6.5.639.9590 | 6.5.435.1 |
 | 6.5 CU1 | 6.5.641.9590 | 6.5.454.1 |
 | 6.5 CU2 | 6.5.658.9590 | 6.5.460.1 |
+| 6.5 CU3 | 6.5.664.9590 | 6.5.466.1 |

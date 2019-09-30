@@ -7,11 +7,11 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: マルチサービス アプリケーションの作成
-      href: terrafom-quickstart.md
     - name: Terraform のインストールと構成
       href: /azure/virtual-machines/linux/terraform-install-configure
       maintainContext: true
+    - name: マルチサービス アプリケーションの作成
+      href: terrafom-quickstart.md
     - name: Linux VM の作成
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
@@ -67,10 +67,6 @@
   items:
     - name: 構成テンプレート
       href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
-- name: 概念
-  items:
-    - name: Azure Cloud Shell の統合
-      href: terraform-cloud-shell.md
 - name: ハウツー ガイド
   items:
     - name: Azure Storage での状態の格納
@@ -79,7 +75,7 @@
   items:
     - name: Azure モジュールのレジストリ
       href: 'https://registry.terraform.io/modules/Azure'
-    - name: Terraform のリファレンス
+    - name: Terraform Azure プロバイダー
       href: 'https://aka.ms/terraform'
 - name: リソース
   items:

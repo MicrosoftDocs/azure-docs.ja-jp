@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: be5ff2c59878cc966e73d89c18343b0a6ea3d89c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 64a5892226b90019f175308b5984dc0a0108e226
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311632"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162251"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボに VM を追加する
 [最初の VM 作成](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)の作業を行った方は、おそらくプレインストールされている[マーケットプレイス イメージ](devtest-lab-configure-marketplace-images.md)から VM を追加したことと思います。 その後さらに VM をラボに追加する必要が生じた場合は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)または[数式](devtest-lab-manage-formulas.md)) を選択することもできます。 このチュートリアルでは、Azure Portal を使用して、DevTest Labs でラボに VM を追加します。
@@ -107,7 +107,7 @@ VM を作成するときに、既存のアーティファクトを追加でき�
 ## <a name="save-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの保存
 Azure Resource Manager テンプレートでは、反復可能なデプロイを定義する宣言的な方法が提供されます。
 次の手順では、作成される VM の Azure Resource Manager テンプレートを保存する方法について説明します。
-保存した Azure Resource Manager テンプレートで、[Azure PowerShell を使用して新しい VM をデプロイ](../azure-resource-manager/resource-group-overview.md#template-deployment)できます。
+保存した Azure Resource Manager テンプレートで、[Azure PowerShell を使用して新しい VM をデプロイ](../azure-resource-manager/template-deployment-overview.md)できます。
 
 1. **[仮想マシン]** ウィンドウで、 **[Azure Resource Manager テンプレートの表示]** を選択します。
 2. **[Azure Resource Manager テンプレートの表示]** ウィンドウで、テンプレート テキストを選択します。

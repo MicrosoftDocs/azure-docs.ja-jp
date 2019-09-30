@@ -3,9 +3,8 @@ title: セキュリティ ポリシーの操作 | Microsoft Docs
 description: この記事では、Azure Security Center でセキュリティ ポリシーを操作する方法について説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/18/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 4550532d36753d9b8ed472193bc833855ddd34c9
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.date: 07/18/2019
+ms.author: memildin
+ms.openlocfilehash: 11e1c837e416a5d2105f494c43823298edfd4355
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314917"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200498"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -131,7 +130,7 @@ Azure Policy で重要な概念:
 
 - **割り当て**は、特定のスコープ (管理グループ、サブスクリプションなど) にイニシアティブまたはポリシーを適用することです 
 
-Security Center では、そのセキュリティ ポリシーをすべて含んだ組み込みイニシアティブがあります。 Azure リソースに対する Security Center のポリシーを評価するために、評価する管理グループやサブスクリプションで割り当てを作成する必要があります。  
+Security Center では、そのセキュリティ ポリシーをすべて含んだ組み込みイニシアティブがあります。 Azure リソースに対する Security Center のポリシーを評価するために、評価する管理グループやサブスクリプションで割り当てを作成する必要があります。
 
 組み込みイニシアティブでは、既定で Security Center のポリシーがすべて有効になっています。 組み込みイニシアティブから特定のポリシーを無効にできます。たとえば、**Web アプリケーション ファイアウォール**の効果パラメーターを **[無効]** に変更することで、このポリシーを除くすべての Security Center のポリシーを適用できます。 
 

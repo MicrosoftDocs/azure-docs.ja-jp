@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2019
+ms.date: 09/17/2019
 ms.author: magoedte
-ms.openlocfilehash: 039a4db11adf66e0c28826106df5845b42fedef5
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: f3aca6f62ff529dc2ea8356e18a0162e7d9a85d8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688249"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067045"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs の有効化 (プレビュー) の概要
 
@@ -33,7 +33,10 @@ Azure Monitor for VMs を設定する方法は、次のとおりです。
 
 ## <a name="prerequisites"></a>前提条件
 
-始める前に、次のセクションの情報を理解しておいてださい。
+始める前に、次のセクションの情報を理解しておいてださい。 
+
+>[!NOTE]
+>このセクションで説明する次の情報は、[Service Map ソリューション](service-map.md)にも適用できます。  
 
 ### <a name="log-analytics"></a>Log Analytics
 
@@ -42,12 +45,15 @@ Azure Monitor for VMs は、次のリージョンで Log Analytics ワークス�
 - 米国中西部
 - 米国西部 2<sup>1</sup>
 - East US
+- 米国東部 2<sup>1</sup>
 - カナダ中部
 - 英国南部
+- 北ヨーロッパ<sup>1</sup>
 - 西ヨーロッパ
 - 東南アジア
-- オーストラリア東部
-- オーストラリア南東部
+- 東日本<sup>1</sup>
+- オーストラリア東部<sup>1</sup>
+- オーストラリア南東部<sup>1</sup>
 
 <sup>1</sup> このリージョンでは、Azure Monitor for VMs の正常性の機能はサポートされていません。
 
@@ -90,10 +96,10 @@ Azure Policy、Azure PowerShell、または Azure Resource Manager テンプレ�
 |Windows 8 | X | X | |
 |Windows 7 SP1 | X | X | |
 |Red Hat Enterprise Linux (RHEL) 6、7| X | X| X |
-|Ubuntu 14.04、16.04、18.04 | X | X | X |
-|CentOS Linux 6、7 | X | X | X |
+|Ubuntu 18.04、16.04 | X | X | X |
+|CentOS Linux 7、6 | X | X | X |
 |SUSE Linux Enterprise Server (SLES) 12 | X | X | X |
-|Debian 8、9.4 | X<sup>1</sup> | | X |
+|Debian 9.4、8 | X<sup>1</sup> | | X |
 
 <sup>1</sup> Azure Monitor for VMs のパフォーマンス機能は、Azure Monitor からのみ使用できます。 Azure VM の左側のウィンドウから直接使用することはできません。
 
@@ -107,51 +113,60 @@ Azure Policy、Azure PowerShell、または Azure Resource Manager テンプレ�
 > - Physical Address Extension (PAE) や Xen などの非標準のカーネル リリースは、どの Linux ディストリビューションでもサポートされていません。 たとえば、リリースの文字列が *2.6.16.21-0.8-xen* であるシステムはサポートされていません。
 > - カスタム カーネル (標準カーネルの再コンパイルを含む) はサポートされていません。
 > - CentOSPlus カーネルはサポートされています。
+> - Spectre の脆弱性のために、Linux カーネルに修正プログラムを適用する必要があります。 詳細については、Linux ディストリビューション ベンダーに問い合わせてください。
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| 7.4 | 3.10.0-693 |
-| 7.5 | 3.10.0-862 |
 | 7.6 | 3.10.0-957 |
+| 7.5 | 3.10.0-862 |
+| 7.4 | 3.10.0-693 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| 6.9 | 2.6.32-696 |
 | 6.10 | 2.6.32-754 |
+| 6.9 | 2.6.32-696 |
 
 #### <a name="centosplus"></a>CentOSPlus
+
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
-| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
+| 6.10 | 2.6.32-754.3.5<br>2.6.32-696.30.1 |
+| 6.9 | 2.6.32-696.30.1<br>2.6.32-696.18.7 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| Ubuntu 18.04 | カーネル 4.15.\*<br>4.18* |
-| Ubuntu 16.04.3 | カーネル 4.15.* |
-| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
-| 14.04 | 3.13.\*<br>4.4.\* |
+| 18.04 | 5.0 (Azure で調整されたカーネルを含む)<br>4.18 *<br>4.15* |
+| 16.04.3 | 4.15。* |
+| 16.04 | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
-| OS バージョン | カーネル バージョン
+| OS バージョン | カーネル バージョン |
 |:--|:--|
-|12 SP2 | 4.4.* |
+|12 SP4 | 4.12。* (Azure で調整されたカーネルを含む) |
 |12 SP3 | 4.4.* |
-|12 SP4 | 4.4.* |
-|12 SP4 | Azure で調整されたカーネル |
+|12 SP2 | 4.4.* |
+
+#### <a name="debian"></a>Debian 
+
+| OS バージョン | カーネル バージョン |
+|:--|:--|
+| 9 | 4.9 | 
 
 ### <a name="the-microsoft-dependency-agent"></a>Microsoft Dependency Agent
 
 Azure Monitor for VMs のマップ機能では、Microsoft Dependency Agent からデータが取得されます。 Dependency Agent は、Log Analytics への接続に関して Log Analytics エージェントに依存しています。 そのため、お使いのシステムに Log Analytics エージェントをインストールし、Dependency Agent を使用して構成する必要があります。
 
 単一の Azure VM に対して Azure Monitor for VMs を有効にするか、または大規模なデプロイ方法を使用するかにかかわらず、Azure VM Dependency Agent 拡張機能を使用し、エクスペリエンスの一部としてエージェントをインストールします。
+
+>[!NOTE]
+>このセクションで説明する次の情報は、[Service Map ソリューション](service-map.md)にも適用できます。  
 
 ハイブリッド環境では、手動で Dependency Agent をダウンロードしてインストールできます。 VM が Azure の外部でホストされている場合は、自動化されたデプロイ方法を使用してください。
 
@@ -167,8 +182,8 @@ Dependency Agent は、以下の場所からダウンロードできます。
 
 | ファイル | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.8.1 | 622C99924385CBF539988D759BCFDC9146BB157E7D577C997CDD2674E27E08DD |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.8.1 | 3037934A5D3FB7911D5840A9744AE9F980F87F620A7F7B407F05E276FE7AE4A8 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.1 | FCF9C1D9B20AD414051B49EE79144E595CCC411EB6D444D6D5B5A7B1874DCDEC |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
@@ -180,7 +195,7 @@ Log Analytics ワークスペースへのアクセスを制御する方法の詳
 
 この表で説明されているいずれかの方法で、Azure Monitor for VMs を有効にします。
 
-| デプロイの状態 | Method | 説明 |
+| デプロイの状態 | 方法 | 説明 |
 |------------------|--------|-------------|
 | 単一の Azure VM または仮想マシン スケール セット | [VM から有効にする](vminsights-enable-single-vm.md) | 単一の Azure VM を有効にするには、VM または仮想マシン スケール セットから直接 **Insights (プレビュー)** を選択します。 |
 | 複数の Azure VM または仮想マシン スケール セット | [Azure Policy を介して有効にする](vminsights-enable-at-scale-policy.md) | Azure Policy と使用可能なポリシー定義を使用すると、複数の Azure VM を有効にできます。 |
@@ -232,7 +247,7 @@ Azure Monitor for VMs では、使用されているパフォーマンス カウ
 
 Azure Monitor for VMs が有効になっていて、Log Analytics ワークスペースで構成されている場合、管理パックはそのワークスペースに対してレポートを行うすべての Windows コンピューターに転送されます。 Log Analytics ワークスペースと [System Center Operations Manager 管理グループを統合](../../azure-monitor/platform/om-agents.md)している場合は、Service Map 管理パックが、管理グループから、管理グループにレポートを行う Windows コンピューターにデプロイされます。  
 
-この管理パックは、*Microsoft.IntelligencePacks.ApplicationDependencyMonitor* という名前で、 %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\ フォルダーに書き込まれます。 管理パックで使用されるデータ ソースは、%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll です。
+この管理パックは、*Microsoft.IntelligencePacks.ApplicationDependencyMonitor* という名前で、 `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` フォルダーに書き込まれます。 管理パックで使用されるデータ ソースは、`%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll` です。
 
 ## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
 

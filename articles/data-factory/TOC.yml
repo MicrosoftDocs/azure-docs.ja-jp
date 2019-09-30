@@ -147,6 +147,8 @@
           href: concepts-data-flow-overview.md
         - name: デバッグ モード
           href: concepts-data-flow-debug-mode.md
+        - name: JSON の処理
+          href: concepts-data-flow-json.md
         - name: スキーマの誤差
           href: concepts-data-flow-schema-drift.md
         - name: '[検査] ウィンドウ'
@@ -187,19 +189,23 @@
           href: iterative-development-debugging.md
     - name: Connectors
       items:
+        - name: コネクタの概要
+          href: connector-overview.md
         - name: Amazon Marketplace Web Service
           href: connector-amazon-marketplace-web-service.md
         - name: Amazon Redshift
           href: connector-amazon-redshift.md
         - name: Amazon S3
           href: connector-amazon-simple-storage-service.md
+        - name: Avro 形式
+          href: format-avro.md
         - name: Azure Blob Storage
           href: connector-azure-blob-storage.md
         - name: Azure Cosmos DB SQL API
           href: connector-azure-cosmos-db.md
         - name: Azure Cosmos DB の MongoDB 用 API
           href: connector-azure-cosmos-db-mongodb-api.md
-        - name: Azure データ エクスプローラー
+        - name: Azure Data Explorer
           href: connector-azure-data-explorer.md
         - name: Azure Data Lake Storage Gen1
           href: connector-azure-data-lake-store.md
@@ -273,6 +279,8 @@
           href: connector-informix.md
         - name: Jira
           href: connector-jira.md
+        - name: JSON 形式
+          href: format-json.md
         - name: Magento
           href: connector-magento.md
         - name: MariaDB
@@ -306,7 +314,7 @@
           href: connector-oracle-service-cloud.md
         - name: Parquet 形式
           href: format-parquet.md
-        - name: Paypal
+        - name: PayPal
           href: connector-paypal.md
         - name: Phoenix
           href: connector-phoenix.md
@@ -382,40 +390,40 @@
     - name: データを変換する
       href: transform-data.md
       items:
+        - name: Azure 関数アクティビティ
+          href: control-flow-azure-function-activity.md
+        - name: カスタム アクティビティ
+          href: transform-data-using-dotnet-custom-activity.md
+        - name: Databricks Jar アクティビティ
+          href: transform-data-databricks-jar.md
+        - name: Databricks ノートブック アクティビティ
+          href: transform-data-databricks-notebook.md
+        - name: Databricks Python アクティビティ
+          href: transform-data-databricks-python.md
+        - name: Data Lake U-SQL アクティビティ
+          href: transform-data-using-data-lake-analytics.md
         - name: HDInsight Hive アクティビティ
           href: transform-data-using-hadoop-hive.md
-        - name: HDInsight Pig アクティビティ
-          href: transform-data-using-hadoop-pig.md
         - name: HDInsight MapReduce アクティビティ
           href: transform-data-using-hadoop-map-reduce.md
-        - name: HDInsight Streaming アクティビティ
-          href: transform-data-using-hadoop-streaming.md
+        - name: HDInsight Pig アクティビティ
+          href: transform-data-using-hadoop-pig.md
         - name: HDInsight Spark アクティビティ
           href: transform-data-using-spark.md
+        - name: HDInsight Streaming アクティビティ
+          href: transform-data-using-hadoop-streaming.md
         - name: ML バッチ実行アクティビティ
           href: transform-data-using-machine-learning.md
         - name: ML 更新リソース アクティビティ
           href: update-machine-learning-models.md
         - name: ストアド プロシージャ アクティビティ
           href: transform-data-using-stored-procedure.md
-        - name: Data Lake U-SQL アクティビティ
-          href: transform-data-using-data-lake-analytics.md
-        - name: Databricks ノートブック アクティビティ
-          href: transform-data-databricks-notebook.md
-        - name: Databricks Jar アクティビティ
-          href: transform-data-databricks-jar.md
-        - name: Databricks Python アクティビティ
-          href: transform-data-databricks-python.md
-        - name: カスタム アクティビティ
-          href: transform-data-using-dotnet-custom-activity.md
         - name: コンピューティングのリンクされたサービス
           href: compute-linked-services.md
     - name: 制御フロー
       items:
         - name: 変数アクティビティの追加
           href: control-flow-append-variable-activity.md
-        - name: Azure 関数アクティビティ
-          href: control-flow-azure-function-activity.md
         - name: データ フローの実行アクティビティ
           href: control-flow-execute-data-flow-activity.md
         - name: パイプラインの実行アクティビティ
@@ -470,7 +478,7 @@
           href: data-flow-sink.md
         - name: 並べ替え
           href: data-flow-sort.md
-        - name: Source
+        - name: source
           href: data-flow-source.md
         - name: 代理キー
           href: data-flow-surrogate-key.md
@@ -530,6 +538,8 @@
       items:
         - name: SSDT からの Azure での SSIS パッケージの実行
           href: how-to-invoke-ssis-package-ssdt.md
+        - name: Azure 対応の dtexec を使用して SSIS パッケージを実行する
+          href: how-to-invoke-ssis-package-azure-enabled-dtexec.md
         - name: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの実行
@@ -576,6 +586,8 @@
           href: solution-template-bulk-copy-with-control-table.md
         - name: データベースからの差分コピー
           href: solution-template-delta-copy-with-control-table.md
+        - name: Amazon S3 から Azure Storage にデータを移行する
+          href: solution-template-migration-s3-azure.md
         - name: ファイルの移動
           href: solution-template-move-files.md
         - name: Databricks を使用したデータ変換
@@ -584,6 +596,8 @@
       items:
         - name: アクティビティのトラブルシューティング
           href: data-factory-troubleshoot-guide.md
+        - name: コネクタのトラブルシューティング
+          href: connector-troubleshoot-guide.md
         - name: Azure SSIS IR の管理に関するトラブルシューティング
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング
@@ -596,6 +610,20 @@
           href: data-migration-guidance-overview.md
         - name: データを AWS S3 から Azure に移行する
           href: data-migration-guidance-s3-azure-storage.md
+        - name: オンプレミスの Hadoop クラスターから Azure へのデータの移行
+          href: data-migration-guidance-hdfs-azure-storage.md
+        - name: オンプレミスの Netezza サーバーから Azure へのデータの移行
+          href: data-migration-guidance-netezza-azure-sqldw.md
+    - name: マッピング データ フローを使用した変換
+      items:
+        - name: 固定幅のテキスト ファイルを処理する
+          href: how-to-fixed-width.md
+    - name: オンプレミスからの SSIS の移行
+      items:
+        - name: SSIS の移行の概要
+          href: scenario-ssis-migration-overview.md
+        - name: Azure SQL Database マネージド インスタンスへの SSISDB の移行
+          href: scenario-ssis-migration-ssisdb-mi.md
 - name: リファレンス
   items:
     - name: .NET

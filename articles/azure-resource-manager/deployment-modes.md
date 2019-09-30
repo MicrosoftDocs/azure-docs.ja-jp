@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8a53ed1eea66c976c46a21378a9c48a1ad5ce902
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: c82d8b90d9da44ab8f4b8ea0aa0e063ea70350e2
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508206"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258960"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager のデプロイ モード
 
@@ -21,7 +21,7 @@ ms.locfileid: "67508206"
 
 ## <a name="complete-mode"></a>完全モード
 
-完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。 テンプレートに指定されているが、[条件](resource-group-authoring-templates.md#condition)が false と評価されるためにデプロイされないリソースは、削除されません。
+完全モードでは、Resource Manager はリソース グループに存在するがテンプレートに指定されていないリソースを**削除します**。 テンプレートに指定されているが、[条件](conditional-resource-deployment.md)が false と評価されるためにデプロイされないリソースは、削除されません。
 
 [コピー ループ](resource-group-create-multiple.md)では完全モードを使用するように注意してください。 コピー ループを解決した後でテンプレートに指定されていないリソースはすべて削除されます。
 

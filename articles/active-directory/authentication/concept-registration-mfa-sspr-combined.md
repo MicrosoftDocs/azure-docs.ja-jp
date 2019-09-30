@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 08/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc0e80ec7a378d44000565034ce47d95c78b777e
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 65f3490e9cb62aa2d5c18b8fd564796dd6d3946c
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537014"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162417"
 ---
 # <a name="combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録 (プレビュー)
 
@@ -49,7 +49,7 @@ Azure AD の結合されたセキュリティ情報の登録は、Azure US Gover
 | Microsoft Authenticator | はい (最大 5) | いいえ | はい |
 | その他の認証アプリ | はい (最大 5) | いいえ | はい |
 | ハードウェア トークン | いいえ | いいえ | はい |
-| 電話 | はい | はい | はい |
+| Phone | はい | はい | はい |
 | Alternate phone | はい | はい | はい |
 | 会社電話 | いいえ | いいえ | いいえ |
 | Email | はい | はい | はい |
@@ -134,6 +134,8 @@ SSPR ポリシーでユーザーが定期的に自分のセキュリティ情報
 Multi-Factor Authentication に使用できる少なくとも 1 つの方法を以前に設定しているユーザーが [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) に移動します。 ユーザーは、現在の既定の方法を別の既定の方法に変更します。 完了すると、新しい既定の方法が [セキュリティ情報] ページに表示されます。
 
 ## <a name="next-steps"></a>次の手順
+
+[ユーザーに認証方法の再登録を強制する](howto-mfa-userdevicesettings.md#manage-authentication-methods)
 
 [テナントで統合された登録を有効にする](howto-registration-mfa-sspr-combined.md)
 

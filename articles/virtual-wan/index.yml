@@ -1,40 +1,65 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Virtual WAN
+### YamlMime:Landing
+title: Virtual WAN のドキュメント
+summary: Azure 仮想 WAN を構成、作成、管理する方法について説明します。 グローバルなスケールで支社の安全な接続を作成します。
 metadata:
-  document_id: null
-  title: Virtual WAN のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  meta.description: 'Learn how to configure, create, and manage an Azure Virtual WAN. Build secure global scale branch connectivity.'
+  title: Virtual WAN のドキュメント
+  description: Virtual WAN の説明
   services: virtual-wan
-  author: cherylmc
-  manager: jeconnoc
   ms.service: virtual-wan
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/01/2018
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: Azure 仮想 WAN を構成、作成、管理する方法について説明します。 グローバルなスケールで支社の安全な接続を作成します。
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure Virtual WAN を使用して接続を構成、作成、管理する方法を学習します。
-      - type: list
-        style: unordered
-        className: spaced Bullet
-        items:
-          - html: <a href="/azure/virtual-wan/virtual-wan-site-to-site-portal">サイト間接続</a>
-          - html: <a href="/azure/virtual-wan/virtual-wan-point-to-site-portal">ポイント対サイト接続</a>
-          - html: <a href="/azure/virtual-wan/virtual-wan-expressroute-portal">ExpressRoute 接続</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: '<p><a href="/powershell/module/az.network#networking">PowerShell</a></p><p><a href="/cli/azure/ext/virtual-wan">Azure CLI</a></p>'
-          - title: REST
-            html: '<p><a href="https://go.microsoft.com/fwlink/p/?linkid=2005000">REST API リファレンス</a></p>'
+  ms.date: 08/28/2019
+  ms.openlocfilehash: a79f04f343264669bfa4366a140c6fd11b4fc7e5
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70128157"
+landingContent:
+- title: Virtual WAN について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Virtual WAN とは
+      url: virtual-wan-about.md
+  - linkListType: concept
+    links:
+    - text: 場所とパートナーの操作
+      url: virtual-wan-locations-partners.md
+    - text: FAQ
+      url: virtual-wan-faq.md
+- title: 作業開始
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: サイト間接続を作成する
+      url: virtual-wan-site-to-site-portal.md
+    - text: ExpressRoute の関連付けを作成する
+      url: virtual-wan-expressroute-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: 仮想ハブから NVA にトラフィックをルーティングする
+      url: virtual-wan-route-table-portal.md
+  - linkListType: concept
+    links:
+    - text: IPsec 接続の既定のポリシー
+      url: virtual-wan-ipsec.md
+- title: アーキテクチャ
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: グローバル転送ネットワーク アーキテクチャ
+      url: virtual-wan-global-transit-network-architecture.md
+    - text: Office 365 コントロール プレーン
+      url: virtual-wan-office365-overview.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/ext/virtual-wan/network
+    - text: Azure PowerShell
+      url: /powershell/module/az.network#networking
+    - text: REST
+      url: /rest/api/virtualwan

@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0f036462eb9b37b4ec783bcf8957d307cc55f7ac
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698268"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71018508"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
@@ -66,7 +66,7 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [Batch](#batch-limits)
 * [BizTalk Services](#biztalk-services-limits)
 * [Container Instances](#container-instances-limits)
-* [コンテナー レジストリ](#container-registry-limits)
+* [Container Registry](#container-registry-limits)
 * [Content Delivery Network](#content-delivery-network-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
@@ -89,8 +89,9 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Load Balancer](#load-balancer)
-  * [パブリック IP アドレス](#publicip-address)
   * [Network Watcher](#network-watcher-limits)
+  * [パブリック IP アドレス](#publicip-address)
+  * [Private Link](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtual Network](#networking-limits)
 * [Notification Hubs](#notification-hubs-limits)
@@ -168,6 +169,9 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 #### <a name="network-watcher-limits"></a>Network Watcher の制限
 [!INCLUDE [network-watcher-limits](../includes/network-watcher-limits.md)]
+
+#### <a name="private-link-limits"></a>Private Link の制限
+[!INCLUDE [private-link-limits](../includes/private-link-limits.md)]
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager の制限
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]

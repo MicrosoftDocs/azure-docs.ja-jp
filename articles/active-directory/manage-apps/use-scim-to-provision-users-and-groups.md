@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48eb36151948dc6e39edd4ae0fd863c63e83a52b
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b135838558a493cff0e28a8429d31f5a03a69857
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741363"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033471"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management (SCIM) を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -91,10 +91,10 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 1. Azure AD のプロビジョニング サービスを開始するには、 **[保存]** を選択します。
 1. 割り当てられたユーザーとグループのみを同期する (推奨) 場合は、 **[ユーザーとグループ]** タブを選択し、同期するユーザーとグループを割り当てます。
 
-初期同期が開始されたら、左側のパネルにある **[監査ログ]** を選択して進行状況を監視できます。アプリに対して、プロビジョニング サービスによって実行されたすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](check-status-user-account-provisioning.md)」をご覧ください。
+初期サイクルが開始されたら、左側のパネルにある **[監査ログ]** を選択して進行状況を監視できます。これにより、プロビジョニング サービスによって実行されたすべてのアクションがアプリで表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](check-status-user-account-provisioning.md)」をご覧ください。
 
 > [!NOTE]
-> 初期同期は、サービスが実行されている限り約 40 分ごとに行われる以降の同期よりも、実行に時間がかかります。
+> 初期サイクルは、サービスが実行されている限り約 40 分ごとに実行される以降の同期よりも、実行に時間がかかります。
 
 ## <a name="understanding-the-azure-ad-scim-implementation"></a>Azure AD SCIM の実装について
 
@@ -693,7 +693,7 @@ Azure AD からのプロビジョニング要求を受信できる SCIM エン�
 1. Azure AD のプロビジョニング サービスを開始するには、 **[保存]** を選択します。
 1. 割り当てられたユーザーとグループのみを同期する (推奨) 場合は、 **[ユーザーとグループ]** タブを選択し、同期するユーザーとグループを割り当てます。
 
-初期同期が開始されたら、左側のパネルにある **[監査ログ]** を選択して進行状況を監視できます。アプリに対して、プロビジョニング サービスによって実行されたすべてのアクションが表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](check-status-user-account-provisioning.md)」をご覧ください。
+初期サイクルが開始されたら、左側のパネルにある **[監査ログ]** を選択して進行状況を監視できます。これにより、プロビジョニング サービスによって実行されたすべてのアクションがアプリで表示されます。 Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](check-status-user-account-provisioning.md)」をご覧ください。
 
 サンプルを確認する最後の手順として、Windows コンピューターの \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug フォルダーにある TargetFile.csv ファイルを開きます。 プロビジョニング プロセスが完了すると、割り当てられ、プロビジョニングされたすべてのユーザーとグループに関する詳細がこのファイルに表示されます。
 
@@ -834,7 +834,7 @@ SCIM 仕様に準拠する独自の Web サービスを開発するにあたっ�
 
 ### <a name="handling-endpoint-authentication"></a>エンドポイント認証の処理
 
-Azure Active Directory からの要求には、OAuth 2.0 のベアラー トークンが含まれます。   要求を受信するサービスでは、Azure Active Directory の Graph Web サービスにアクセスするために、発行者が本来の Azure Active Directory テナントに対応する Azure Active Directory であることを認証する必要があります。  トークンでは、発行者は、"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ " のような iss 要求によって識別されます。  この例では、要求値のベース アドレスである https://sts.windows.net では発行者である Azure Active Directory を識別し、相対アドレス セグメントである cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 は、トークンの発行対象となった Azure Active Directory テナントの一意識別子になっています。 トークンのオーディエンスは、ギャラリーにおけるアプリのアプリケーション テンプレート ID になります。 すべてのカスタム アプリのアプリケーション テンプレート ID は 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 です。 ギャラリー内の各アプリに使用されるアプリケーション テンプレート ID は一様ではありません。 ギャラリー アプリケーションのアプリケーション テンプレート ID に関する質問は、ProvisioningFeedback@microsoft.com にお問い合わせください。 単一のテナントに登録されている各アプリケーションは、同じ `iss` 要求を SCIM 要求と共に受信する場合があります。
+Azure Active Directory からの要求には、OAuth 2.0 のベアラー トークンが含まれます。   要求を受信するサービスでは、Azure Active Directory の Graph Web サービスにアクセスするために、発行者が本来の Azure Active Directory テナントに対応する Azure Active Directory であることを認証する必要があります。  トークンでは、発行者は、"iss":"https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/ " のような iss 要求によって識別されます。  この例では、要求値のベース アドレスである https://sts.windows.net では発行者である Azure Active Directory を識別し、相対アドレス セグメントである cbb1a5ac-f33b-45fa-9bf5-f37db0fed422 は、トークンの発行対象となった Azure Active Directory テナントの一意識別子になっています。 トークンの対象は、ギャラリー内のアプリのアプリケーション テンプレート ID になります。 すべてのカスタム アプリのアプリケーション テンプレート ID は 8adf8e6e-67b2-4cf2-a259-e3dc5476c621 です。 ギャラリー内の各アプリに使用されるアプリケーション テンプレート ID は一様ではありません。 ギャラリー アプリケーションのアプリケーション テンプレート ID に関する質問は、ProvisioningFeedback@microsoft.com にお問い合わせください。 単一のテナントに登録されている各アプリケーションは、同じ `iss` 要求を SCIM 要求と共に受信する場合があります。
 
 Microsoft が提供する CLI ライブラリを使用して SCIM サービスを作成する場合、開発者は、次の手順に従って、Microsoft.Owin.Security.ActiveDirectory パッケージを使用して、Azure Active Directory からの要求を認証できます。 
 

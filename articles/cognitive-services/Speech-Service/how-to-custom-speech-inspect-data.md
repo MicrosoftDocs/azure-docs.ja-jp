@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: b58f9c17995128091b5c4badd228356dbacc6ae9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0b5f064204c5bca35ccb1a628cb06978180c318c
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562856"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801484"
 ---
 # <a name="inspect-custom-speech-data"></a>Custom Speech データを検査する
 
 > [!NOTE]
 > このページは、「[Prepare test data for Custom Speech (Custom Speech 用のテスト データを準備する)](how-to-custom-speech-test-data.md)」を読んでおり、検査用のデータセットをアップロードしていることを前提としています。
 
-Custom Speech には、オーディオ データを対応する認識結果と比較することによって、モデルの認識品質を視覚的に検査するツールがあります。 Custom Speech ポータルから、アップロードされたオーディオを再生し、提供された認識結果が正しいかどうかを判断できます。 このツールを使用すると、オーディオ データを文字起こしすることなく、Microsoft のベースラインの音声変換モデルまたはトレーニング済みのカスタム モデルの品質をすばやく検査できます。
+Custom Speech には、オーディオ データを対応する認識結果と比較することによって、モデルの認識品質を視覚的に検査するツールがあります。 [Custom Speech ポータル](https://speech.microsoft.com/customspeech)から、アップロードされたオーディオを再生し、提供された認識結果が正しいかどうかを判断できます。 このツールを使用すると、オーディオ データを文字起こしすることなく、Microsoft のベースラインの音声変換モデルまたはトレーニング済みのカスタム モデルの品質をすばやく検査できます。
 
 このドキュメントでは、以前にアップロードしたトレーニング データを使用してモデルの品質を視覚的に検証する方法について説明します。
 
@@ -32,11 +32,12 @@ Custom Speech には、オーディオ データを対応する認識結果と�
 
 テストを作成するには、以下の手順を実行します。
 
-1. **[音声変換]、[Custom Speech]、[Testing]\(テスト\)** の順に移動します。
-2. **[テストの追加]** をクリックします。
-3. **[Inspect quality (Audio-only data)]\(品質の検査 (オーディオのみのデータ)\)** を選択します。 テストの名前と説明を設定し、オーディオ データセットを選択します。
-4. テストするモデルを最大で 2 つ選択します。
-5. **Create** をクリックしてください。
+1. [Custom Speech ポータル](https://speech.microsoft.com/customspeech)にサインインします。
+2. **[音声テキスト変換]、[Custom Speech]、[Testing]\(テスト\)** の順に移動します。
+3. **[テストの追加]** をクリックします。
+4. **[Inspect quality (Audio-only data)]\(品質の検査 (オーディオのみのデータ)\)** を選択します。 テストの名前と説明を設定し、オーディオ データセットを選択します。
+5. テストするモデルを最大で 2 つ選択します。
+6. **Create** をクリックしてください。
 
 テストが正常に作成されたら、モデルを並べて比較できます。
 

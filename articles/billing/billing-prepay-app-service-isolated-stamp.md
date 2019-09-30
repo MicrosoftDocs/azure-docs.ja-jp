@@ -1,23 +1,23 @@
 ---
-title: 予約容量を含む Azure App Service Isolated スタンプ料金の前払い
-description: 予約容量を含む Azure App Service Isolated スタンプ料金を前払いしてコストを削減する方法について説明します。
+title: 予約容量を含む Azure App Service Isolated 印紙税のコストの節約
+description: 予約容量を含む Azure App Service Isolated 印紙税のコストを節約する方法について説明します。
 services: billing
 author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/02/2019
+ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: f122ec2474c09cdd6c9ada4ddc59b1adb44f619f
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 5161f18499c082b7064eec2be612557ba09eec97
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779994"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70806362"
 ---
-# <a name="prepay-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>予約容量を含む Azure App Service Isolated スタンプ料金の前払い
+# <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>予約容量を含む Azure App Service Isolated 印紙税のコストの節約
 
-3 年分のスタンプ使用料を前払いすることで、Azure App Service Isolated スタンプ料金にかかるコストを削減でます。 Isolated スタンプ料金の予約容量を購入するには、スタンプがデプロイされる Azure リージョンと、購入するスタンプ数を選択する必要があります。
+3 年分の印紙使用の予約をコミットすることで、Azure App Service Isolated 印紙税にかかるコストを節約できます。Isolated 印紙料金の予約容量を購入するには、印紙がデプロイされる Azure リージョンと、購入する印紙数を選択する必要があります。
 
 予約を購入すると、予約の属性に一致する Isolated スタンプ料金の使用状況は従量課金制で課金されなくなります。 予約は、予約容量のスコープとリージョンに一致する Isolated スタンプ数に自動的に適用されます。 Isolated スタンプに予約を割り当てる必要はありません。 予約は worker には適用されないので、スタンプに関連する他のすべてのリソースには別途課金されます。
 
@@ -25,7 +25,7 @@ ms.locfileid: "68779994"
 
 ## <a name="determine-the-right-reservation-to-purchase"></a>購入する適切な予約を判断する
 
-予約を購入すると、今後丸 3 年間に予約量を使用する料金を前払いすることになります。 使用状況データを確認し、継続して使用している App Service Isolated スタンプ数と、今後使用する可能性のある数を判断します。
+予約を購入すると、今後 3 年分の予約量の使用に対してコミットすることになります。使用状況データを確認し、継続して使用している App Service Isolated 印紙数と、今後使用する可能性のある数を判断します。
 
 さらに、Isolated スタンプから Linux または Windows の測定がどのように生成されるかについては、必ず理解してください。
 
@@ -39,7 +39,7 @@ ms.locfileid: "68779994"
 
 ## <a name="buy-isolated-stamp-reserved-capacity"></a>Isolated スタンプの予約容量を購入する
 
-Isolated スタンプの予約容量は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) で購入できます。 予約容量を購入するには、少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個人サブスクリプションの所有者ロールが必要です。
+Isolated スタンプの予約容量は [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) で購入できます。 予約の支払いは、[前払いまたは月払い](billing-monthly-payments-reservations.md)で行います。 予約容量を購入するには、少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個人サブスクリプションの所有者ロールが必要です。
 
 - エンタープライズ サブスクリプションの場合、[EA ポータル](https://ea.azure.com/)で **[予約インスタンスを追加します]** を有効にする必要があります。 また、その設定が無効な場合は、EA 管理者である必要があります。
 - クラウド ソリューション プロバイダー (CSP) プログラムの場合、管理者エージェントまたはセールス エージェントのみが SQL Data Warehouse の予約容量を購入できます。
@@ -47,7 +47,7 @@ Isolated スタンプの予約容量は [Azure portal](https://portal.azure.com/
 **購入方法:**
 
 1. [Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) にアクセスします。
-1. サブスクリプションを選択します。 **[サブスクリプション]** リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量の初期コストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P) または CSP サブスクリプション。
+1. サブスクリプションを選択します。 **[サブスクリプション]** リストを使用して、予約容量の支払いに使用するサブスクリプションを選択します。 サブスクリプションの支払方法に対して、予約容量のコストが課金されます。 サブスクリプションの種類は、マイクロソフト エンタープライズ契約 (プラン番号:MS-AZR-0017P または MS-AZR-0148P) または従量課金制 (プラン番号:MS-AZR-0003P または MS-AZR-0023P) または CSP サブスクリプション。
     - エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。
     - 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。
 1. **[スコープ]** を選択してサブスクリプションのスコープを選択します。

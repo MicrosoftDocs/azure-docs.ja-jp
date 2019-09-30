@@ -4,17 +4,17 @@ description: ダウンストリーム デバイスからの情報を処理でき
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/07/2019
+ms.date: 08/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a91860e9ec8d503a01d079925466093d19bbbccf
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: e61ddd6cb51795fad564b6246fb24ea4ce48f028
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698602"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982944"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>透過的なゲートウェイとして機能するように IoT Edge デバイスを構成する
 
@@ -52,8 +52,6 @@ ms.locfileid: "68698602"
 ゲートウェイとして構成する Azure IoT Edge デバイス。 次のいずれかのオペレーティング システム用の IoT Edge のインストール手順を使用します。
   * [Windows](how-to-install-iot-edge-windows.md)
   * [Linux](how-to-install-iot-edge-linux.md)
-
-この記事では、いくつかの時点で*ゲートウェイ ホスト名*を参照します。 ゲートウェイ ホスト名は、IoT Edge ゲートウェイ デバイス上の config.yaml ファイルの **hostname** パラメーターで宣言されます。 これは、この記事で証明書を作成するために使用され、ダウンストリーム デバイスの接続文字列で参照されます。 ゲートウェイ ホスト名は、DNS または host ファイル エントリのどちらかを使用して IP アドレスに解決できる必要があります。
 
 ## <a name="generate-certificates-with-windows"></a>Windows での証明書の生成
 
@@ -142,15 +140,18 @@ Azure IoT Edge の Git リポジトリには、テスト証明書の生成に使
    このスクリプト コマンドで、いくつかの証明書ファイルとキー ファイルが作成されますが、この記事の後の方で、特にそのうちの 1 つを参照します。
    * `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
-2. 次のコマンドを使用して、IoT Edge デバイス CA 証明書と秘密キーを作成します。 ゲートウェイ ホスト名を指定します。これは、ゲートウェイ デバイス上の iotedge\config.yaml ファイルにあります。 ゲートウェイ ホスト名は、証明書の生成中にファイルを指定するために使用されます。 
+2. 次のコマンドを使用して、IoT Edge デバイス CA 証明書と秘密キーを作成します。 CA 証明書の名前を入力します (例: **MyEdgeDeviceCA**)。 この名前は、ファイルに名前を付ける目的で、証明書の生成中に使用されます。 
 
    ```powershell
-   New-CACertsEdgeDevice "<gateway hostname>"
+   New-CACertsEdgeDeviceCA "MyEdgeDeviceCA"
    ```
 
    このスクリプト コマンドで、いくつかの証明書ファイルとキー ファイルが作成されます。この記事の後の方で、そのうちの 2 つを参照します。
-   * `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >**MyEdgeDeviceCA** 以外の名前を指定した場合、このコマンドで作成される証明書とキーに、その名前が反映されます。 
 
 証明書が作成されたので、スキップして「[ゲートウェイに証明書をインストール](#install-certificates-on-the-gateway)」に進んでください。
 
@@ -193,6 +194,8 @@ Azure IoT Edge の Git リポジトリには、テスト証明書の生成に使
 
 1. ルート CA 証明書と 1 つの中間証明書を作成します。 これらの証明書はすべて、 *\<WRKDIR>* に配置されています。
 
+   既にルート証明書と中間証明書をこの作業ディレクトリに作成済みである場合、このスクリプトを再実行することは避けてください。 このスクリプトを再実行すると、既存の証明書が上書きされます。 そのようなことはせずに、次の手順に進みます。 
+
    ```bash
    ./certGen.sh create_root_and_intermediate
    ```
@@ -200,15 +203,18 @@ Azure IoT Edge の Git リポジトリには、テスト証明書の生成に使
    このスクリプトで、いくつかの証明書とキーが作成されます。 1 つをメモしてください。次のセクションでそれを参照します。
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`
 
-2. 次のコマンドを使用して、IoT Edge デバイス CA 証明書と秘密キーを作成します。 ゲートウェイ ホスト名を指定します。これは、ゲートウェイ デバイス上の iotedge/config.yaml ファイルにあります。 ゲートウェイ ホスト名は、証明書の生成中にファイルを指定するために使用されます。 
+2. 次のコマンドを使用して、IoT Edge デバイス CA 証明書と秘密キーを作成します。 CA 証明書の名前を入力します (例: **MyEdgeDeviceCA**)。 この名前は、ファイルに名前を付ける目的で、証明書の生成中に使用されます。 
 
    ```bash
-   ./certGen.sh create_edge_device_certificate "<gateway hostname>"
+   ./certGen.sh create_edge_device_ca_certificate "MyEdgeDeviceCA"
    ```
 
    このスクリプトで、いくつかの証明書とキーが作成されます。 2 つをメモしてください。次のセクションでそれらを参照します。 
-   * `<WRKDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * `<WRKDIR>/private/iot-edge-device-<gateway hostname>.key.pem`
+   * `<WRKDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
+
+   >[!TIP]
+   >**MyEdgeDeviceCA** 以外の名前を指定した場合、このコマンドで作成される証明書とキーに、その名前が反映されます。 
 
 ## <a name="install-certificates-on-the-gateway"></a>ゲートウェイに証明書をインストール
 
@@ -216,8 +222,8 @@ Azure IoT Edge の Git リポジトリには、テスト証明書の生成に使
 
 1. *\<WRKDIR>* から次のファイルをコピーします。 それらを IoT Edge デバイスの任意の場所に保存します。 以降では、IoT Edge デバイスでのコピー先ディレクトリを *\<CERTDIR>* と呼びます。 
 
-   * デバイス CA 証明書 - `<WRKDIR>\certs\iot-edge-device-<gateway hostname>-full-chain.cert.pem`
-   * デバイス CA 秘密キー - `<WRKDIR>\private\iot-edge-device-<gateway hostname>.key.pem`
+   * デバイス CA 証明書 - `<WRKDIR>\certs\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem`
+   * デバイス CA 秘密キー - `<WRKDIR>\private\iot-edge-device-ca-MyEdgeDeviceCA.key.pem`
    * ルート CA - `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`
 
    [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) のようなサービスや、[Secure copy protocol](https://www.ssh.com/ssh/scp/) のような関数を使用して、証明書ファイルを削除することができます。  IoT Edge デバイス自体で証明書を生成した場合は、この手順をスキップして、作業ディレクトリへのパスを使用することができます。
@@ -233,16 +239,16 @@ Azure IoT Edge の Git リポジトリには、テスト証明書の生成に使
 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>\\certs\\iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>\\private\\iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>\\certs\\azure-iot-test-only.root.ca.cert.pem"
       ```
    
    * Linux: 
       ```yaml
       certificates:
-        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-<gateway hostname>-full-chain.cert.pem"
-        device_ca_pk: "<CERTDIR>/private/iot-edge-device-<gateway hostname>.key.pem"
+        device_ca_cert: "<CERTDIR>/certs/iot-edge-device-ca-MyEdgeDeviceCA-full-chain.cert.pem"
+        device_ca_pk: "<CERTDIR>/private/iot-edge-device-ca-MyEdgeDeviceCA.key.pem"
         trusted_ca_certs: "<CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem"
       ```
 

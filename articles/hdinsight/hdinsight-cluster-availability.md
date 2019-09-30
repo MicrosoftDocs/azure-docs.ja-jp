@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 195999ba685828042fc958e8aed7e67bad694657
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 153c28dc8a06968dc9dd3cfda021496672a094d5
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786561"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076547"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>Ambari と Azure Monitor ログを使用してクラスターの可用性を監視する方法
 
@@ -28,29 +28,29 @@ HDInsight クラスターには、一目で理解しやすいヘルス情報と�
 
 以下に示した Azure portal の [HDInsight Overview]\(HDInsight の概要\) ブレードの **[Cluster dashboards]\(クラスター ダッシュボード\)** セクションにある **[Ambari home]\(Ambari ホーム\)** リンクをクリックして、Ambari ダッシュボードにアクセスできます。 または、ブラウザーに [https://\<clustername\>.azurehdinsight.net](https://clustername.azurehdinsight.net/) という URL を入力して、アクセスできます。
 
-![HDInsight リソース ポータルのビュー](media/hdinsight-cluster-availability/portal-overview.png)
+![HDInsight リソース ポータルのビュー](media/hdinsight-cluster-availability/portal-oms-overview1.png)
 
 次に、クラスター ログインのユーザー名とパスワードの入力が求められます。 クラスターを作成した時に選んだ資格情報を入力します。
 
 Ambari ダッシュボードが開かれ、その中にあるウィジェットに、HDInsight クラスターのヘルスについて簡単な概要がわかるいくつかのメトリックが表示されます。 これらのウィジェットには、ライブの DataNodes (ワーカー ノード) および JournalNodes (zookeeper ノード) の数、NameNodes (ヘッド ノード) の稼働時間などのメトリックに加えて、Spark および Hadoop クラスターに対する YARN の ResourceManager の稼働時間など、特定のクラスターの種類に固有のメトリックも表示されます。
 
-![Ambari ダッシュボード](media/hdinsight-cluster-availability/ambari-dashboard.png)
+![Apache Ambari の使用状況に関するダッシュボード表示](media/hdinsight-cluster-availability/apache-ambari-dashboard.png)
 
 ### <a name="hosts--view-individual-node-status"></a>ホスト – 個々のノードの状態を表示する
 
 個々のノードの状態情報を表示することもできます。 **[ホスト]** タブをクリックして、クラスター内のすべてのノードの一覧を表示し、各ノードに関する基本情報を確認します。 各ノード名の左にある緑のチェックは、すべてのコンポーネントがノード上で稼働していることを示します。 ノード上でコンポーネントがダウンしている場合、緑のチェックの代わりに赤いアラートの三角形が表示されます。
 
-![Ambari の [Hosts]\(ホスト\) のビュー](media/hdinsight-cluster-availability/ambari-hosts.png)
+![HDInsight Apache Ambari の [ホスト] のビュー](media/hdinsight-cluster-availability/apache-ambari-hosts1.png)
 
 次に、ノードの**名前**をクリックして、その特定のノードに関するより詳細なホスト メトリックを表示します。 このビューには、個々のコンポーネントごとの状態/可用性が表示されます。
 
-![Ambari の [Hosts]\(ホスト\) にある単一ノードのビュー](media/hdinsight-cluster-availability/ambari-hosts-node.png)
+![Apache Ambari の [ホスト] にある単一ノードのビュー](media/hdinsight-cluster-availability/apache-ambari-hosts-node.png)
 
 ### <a name="ambari-alerts"></a>Ambari のアラート
 
 Ambari では、特定のイベントの通知を提供できる構成可能なアラートもいくつか提供しています。 アラートは、トリガーされると、Ambari の左上隅にあるアラート数を記した赤いバッジに示されます。 このバッジをクリックすると、現在のアラートの一覧が表示されます。
 
-![Ambari のアラート数](media/hdinsight-cluster-availability/ambari-alerts.png)
+![Apache Ambari の現在のアラート数](media/hdinsight-cluster-availability/apache-ambari-alerts.png)
 
 アラートの定義と状態の一覧を表示するには、以下に示した **[アラート]** タブをクリックします。
 
@@ -69,7 +69,7 @@ Ambari では、次に示すように、可用性に関連する多数の定義�
 
 アラートの詳細を表示したり、条件を変更したりするには、アラートの**名前**をクリックします。 例として **DataNode ヘルスの概要**を取り上げます。 アラートの説明と、'警告' または '重大' のアラートをトリガーする固有の条件や条件のチェック間隔を確認できます。 構成を編集するには、[構成] ボックスの右上隅にある **[編集]** ボタンをクリックします。
 
-![Ambari アラートの構成](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
+![Apache Ambari アラートの構成](media/hdinsight-cluster-availability/ambari-alert-configuration.png)
 
 ここでは、説明に加えて、さらに重要な警告または重大アラートのチェック間隔としきい値を編集できます。
 
@@ -98,13 +98,13 @@ Azure Monitor ログでは、HDInsight クラスターなどの複数のリソ�
 
 ポータルの HDInsight クラスター リソースのページから、 **[Operations Management Suite]** ブレードをクリックします。 次に、 **[有効]** をクリックして、ドロップダウンから Log Analytics ワークスペースを選択します。
 
-![[HDInsight Operations Management Suite] ブレード](media/hdinsight-cluster-availability/portal-enable-oms.png)
+![[HDInsight Operations Management Suite] ブレード](media/hdinsight-cluster-availability/hdi-portal-oms-enable.png)
 
 ### <a name="query-metrics-and-logs-tables-in-the-logs-blade"></a>[ログ] ブレードにあるメトリックとログのクエリの表
 
 Azure Monitor ログの統合が有効になったら (これには数分かかる場合があります)、 **[Log Analytics ワークスペース]** リソースに移動して、 **[ログ]** ブレードをクリックします。
 
-![Log Analytics ワークスペースの [ログ] ブレード](media/hdinsight-cluster-availability/portal-logs.png)
+![Log Analytics ワークスペースの [ログ] ブレード](media/hdinsight-cluster-availability/hdinsight-portal-logs.png)
 
 **[ログ]** ブレードには、次のような多数のサンプル クエリが一覧表示されます。
 
@@ -131,7 +131,7 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 
 以下に示すように、 **[ログ]** ブレードから、**利用できないコンピューター**のサンプル クエリにある **[実行]** をクリックして、そのクエリを実行します。
 
-![Log Analytics ワークスペースの [ログ] ブレードの '利用できないコンピューター' のサンプル クエリ](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
+![Log Analytics ワークスペースの [ログ] ブレードの '利用できないコンピューター' のサンプル](media/hdinsight-cluster-availability/portal-unavailable-computers.png)
 
 すべてのノードが利用可能な場合、このクエリでは現在、必ず 0 の結果を返しています。 **[新しいアラート ルール]** をクリックして、このクエリでのアラートの構成を開始します。
 
@@ -141,7 +141,7 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 
 以下に示すように**条件のタイトル**をクリックして、シグナル ロジックの構成を完了します。
 
-![アラート ルールの条件](media/hdinsight-cluster-availability/portal-condition-title.png)
+![ポータル アラートのルール条件の作成](media/hdinsight-cluster-availability/portal-condition-title.png)
 
 これにより、 **[シグナル ロジックの構成]** ブレードが開かれます。
 
@@ -161,7 +161,7 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 
 既存のアクション グループがまだない場合は、 **[アクション グループ]** セクション下にある **[新規作成]** をクリックします。
 
-![アラート ルールの新しいアクション グループ](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
+![アラート ルールの新しいアクション グループの作成](media/hdinsight-cluster-availability/portal-create-new-action-group.png)
 
 これにより、 **[アクション グループの追加]** ブレードが開かれます。 **[アクション グループ名 ]** 、 **[短い名前]** 、 **[サブスクリプション]** 、および **[リソース グループ]** を選択します。 **[アクション]** セクション下で、 **[アクション名]** を選択して、 **[アクションの種類]** として **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** を選択します。
 
@@ -170,27 +170,27 @@ Azure Monitor ログの統合が有効になったら (これには数分かか�
 
 これにより、 **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** ブレードが開かれます。 受信者の **[名前]** を選択し、 **[電子メール]** チェック ボックスを**オン**にして、アラートの送信先になる電子メール アドレスを入力します。 **[Email/SMS/Push/Voice]\(電子メール/SMS/プッシュ/音声\)** ブレードで **[OK]** をクリックしてから、 **[アクション グループの追加]** ブレードでアクション グループの構成を完了します。
 
-![アラート ルールの [アクション グループの追加]](media/hdinsight-cluster-availability/portal-add-action-group.png)
+![アラート ルールのアクション グループの追加](media/hdinsight-cluster-availability/portal-add-action-group.png)
 
 これらのブレードを閉じた後、 **[アクション グループ]** セクション下にアクション グループが一覧表示されていることを確認できます。 最後に、 **[アラート ルール名]** と **[説明]** を入力して、 **[重大度]** を選択し、 **[アラートの詳細]** セクションを完成させます。
 **[アラート ルールの作成]** をクリックして完了します。
 
-![アラート ルールの作成を完了する](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
+![ポータルのアラート ルールの作成の完了](media/hdinsight-cluster-availability/portal-create-alert-rule-finish.png)
 
 > [!TIP]
 > **[重大度]** を指定する機能は、複数のアラートを作成する場合に使用できる優れたツールとなります。 たとえば、単一のヘッド ノードがダウンした場合には [警告 (重大度 1)] を挙げるアラートを 1 つと、両方のヘッド ノードがダウンするという想定外のイベントには [重大 (重大度 0)] を挙げるもう 1 つのアラートを作成することが可能です。
 
 このアラートの条件と一致した場合、アラートが発生し、次のようなアラートの詳細を含む電子メールを受信します。
 
-![Azure Monitor アラートの電子メール](media/hdinsight-cluster-availability/alert-email.png)
+![Azure Monitor アラート メールの例](media/hdinsight-cluster-availability/portal-oms-alert-email.png)
 
 また、**Log Analytics ワークスペース**の **[アラート]** ブレードに移動して、発生したすべてのアラートを重大度別にグループ化して表示することもできます。
 
-![Log Analytics ワークスペースのアラート](media/hdinsight-cluster-availability/portal-alerts.png)
+![Log Analytics ワークスペースのアラート](media/hdinsight-cluster-availability/hdi-portal-oms-alerts.png)
 
 重要度によるグループ (つまり、上記に強調表示されている **[重大度 1]** ) をクリックすると、以下のように発生したその重大度の全アラートに対するレコードが表示されます。
 
-![Log Analytics ワークスペースの [重大度 1] のアラート](media/hdinsight-cluster-availability/portal-alerts-sev-1.png)
+![Log Analytics ワークスペースの [重大度 1] のアラート](media/hdinsight-cluster-availability/portal-oms-alerts-sev1.png)
 
 ## <a name="next-steps"></a>次の手順
 - [HDInsight における Apache Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)

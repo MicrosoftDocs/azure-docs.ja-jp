@@ -1,7 +1,7 @@
 ---
 title: OData 地理空間関数リファレンス - Azure Search
 description: 'Azure Search クエリでの OData 地理空間関数: geo.distance および geo.intersects。'
-ms.date: 06/13/2019
+ms.date: 09/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,18 +19,21 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9585a9a7ea976ed32ccb8eed1e69877339196f87
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 03220786c65ab510a632252b20d593cd96a90494
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647578"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003460"
 ---
 # <a name="odata-geo-spatial-functions-in-azure-search---geodistance-and-geointersects"></a>Azure Search クエリでの OData 地理空間関数 - `geo.distance` および `geo.intersects`
 
 Azure Search では、[OData フィルター式](query-odata-filter-orderby-syntax.md)で `geo.distance` および `geo.intersects` 関数を介した地理空間クエリがサポートされています。 `geo.distance` 関数では、フィルターの一部として渡される 2 つのポイント (1 つはフィールドまたは範囲変数、もう 1 つは定数) の間の距離がキロメートル単位で返されます。 `geo.intersects` 関数からは、指定されたポイントが指定された多角形の内部にある場合、`true` が返されます。ポイントはフィールドまたは範囲変数として、多角形は定数として指定されて、フィルターの一部として渡されます。
 
 また、[ **$orderby** パラメーター](search-query-odata-orderby.md)内で `geo.distance` 関数を使用することで、指定されたポイントからの距離によって検索結果を並べ替えることもできます。 **$orderby** の `geo.distance` の構文は **$filter** の場合と同じになります。 **$orderby** で `geo.distance` を使用するとき、それが適用されるフィールドは `Edm.GeographyPoint` 型にする必要があり、また**並べ替え可能**である必要があります。
+
+> [!NOTE]
+> **$orderby** パラメーターで `geo.distance` を使用する場合、関数に渡すフィールドには 1 つの geo ポイントのみを含める必要があります。 言い換えると、`Collection(Edm.GeographyPoint)` ではなく `Edm.GeographyPoint` 型である必要があります。 Azure Search のコレクション フィールドに対して並べ替えることはできません。
 
 ## <a name="syntax"></a>構文
 

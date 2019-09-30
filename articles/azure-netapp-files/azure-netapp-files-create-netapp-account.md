@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: 25cae58663f6fa7ef27995c10509eb33e49dd4c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522827"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70012585"
 ---
 # <a name="create-a-netapp-account"></a>NetApp アカウントを作成する
 NetApp アカウントを作成することによって、容量プールを設定し、その後、ボリュームを作成することができます。 新しい NetApp アカウントの作成は、[Azure NetApp Files] ブレードを使用して行います。
@@ -48,7 +48,7 @@ NetApp アカウントを作成することによって、容量プールを設�
      既存のサブスクリプションからいずれかのサブスクリプションを選択します。
    * **リソース グループ**   
      既存のリソース グループを使用するか、新しいリソース グループを作成します。
-   * **場所**  
+   * **Location**  
      アカウントとその子リソースを置くリージョンを選択します。  
 
      ![新しい NetApp アカウント](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)

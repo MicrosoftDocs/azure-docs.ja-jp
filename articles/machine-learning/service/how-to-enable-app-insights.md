@@ -1,7 +1,7 @@
 ---
 title: Azure Application Insights を設定して ML モデルを監視する
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service を使ってデプロイされた Web サービスを Azure Application Insights を使用して監視します
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning でデプロイされた Web サービスを Azure Application Insights を使用して監視します
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1c12f55228d77656ef57598da0fb002fdea29bd4
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 785507e9ae12d8da564a223c8cdf544a98b8de61
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871784"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002881"
 ---
 # <a name="monitor-your-azure-machine-learning-models-with-application-insights"></a>Application Insights を使用して Azure Machine Learning のモデルを監視する
 
-この記事では、Azure Machine Learning サービスのために Azure Application Insights を設定する方法について説明します。 Application Insights を使用して、以下を監視できます。
+この記事では、Azure Machine Learning のために Azure Application Insights を設定する方法について説明します。 Application Insights を使用して、以下を監視できます。
 * 要求率、応答時間、および失敗率。
 * 依存率、応答時間、および失敗率。
 * 例外。
@@ -30,7 +30,7 @@ ms.locfileid: "67871784"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning サービス](https://aka.ms/AMLFree)を今日からお試しいただけます。
+* Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 * Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、および Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関する記事を参照してください。
 * Azure Kubernetes Service (AKS) または Azure コンテナー インスタンス (ACI) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
@@ -111,7 +111,7 @@ Azure portal で Application Insights を有効または無効にすることが
  
 
 ## <a name="evaluate-data"></a>データを評価する
-サービスのデータは、Azure Machine Learning サービスと同じリソース グループ内の Application Insights アカウントに保存されます。
+サービスのデータは、Azure Machine Learning と同じリソース グループ内の Application Insights アカウントに保存されます。
 表示するには:
 1. [Azure portal](https://portal.azure.com) で Machine Learning service ワークスペースに移動し、Application Insights のリンクをクリックします。
 
@@ -127,7 +127,7 @@ Azure portal で Application Insights を有効または無効にすることが
    [![カスタム トレース](media/how-to-enable-app-insights/logs.png)](./media/how-to-enable-app-insights/logs.png#lightbox)
 
 Application Insights の使用方法の詳細については、「[Application Insights とは何か?](../../azure-monitor/app/app-insights-overview.md)」を参照してください。
-    
+
 
 ## <a name="example-notebook"></a>ノートブックの例
 

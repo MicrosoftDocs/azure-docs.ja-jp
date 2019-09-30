@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3ff9a694dca0d2a205c27569a7c744f482b662ec
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3e954a6c714e525e5bbefe8f62c798cf8ac9a517
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100655"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036385"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -112,7 +112,7 @@ SQL Server のライセンスに関する完全な情報については、[価�
    - **[可用性セット]** をクリックします。
    - **Create** をクリックしてください。
    - **[可用性セットの作成]** ブレードで、次の値を設定します。
-      - **[名前]** :可用性セットの名前。
+      - **Name**:可用性セットの名前。
       - **サブスクリプション**:Azure サブスクリプション。
       - **[リソース グループ]** :既存のグループを使用する場合は、 **[既存のものを使用]** をクリックし、ドロップダウン リストからグループを選択します。 または、 **[新規作成]** を選択し、グループの名前を入力します。
       - **[場所]** :仮想マシンを作成する予定の場所を設定します。
@@ -267,11 +267,22 @@ PowerShell を使用してクラスターを検証するには、いずれかの
 - フェールオーバー クラスターの名前。
 - フェールオーバー クラスターの IP アドレス。 クラスター ノードと同じ Azure 仮想ネットワークおよびサブネットでは使用されていない IP アドレスを使用することができます。
 
-次の PowerShell を実行すると、フェールオーバー クラスターが作成されます。 ノード名 (仮想マシン名) と、Azure VNET の使用可能な IP アドレスでスクリプトを更新してください。
+#### <a name="windows-server-2008-2016"></a>Windows Server 2008-2016
+
+次の PowerShell は、**Windows Server 2008-2016** 用のフェールオーバー クラスターを作成します。 ノード名 (仮想マシン名) と、Azure VNET の使用可能な IP アドレスでスクリプトを更新してください。
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage
 ```   
+
+#### <a name="windows-server-2019"></a>Windows Server 2019
+
+次の PowerShell は、Windows Server 2019 用のフェールオーバー クラスターを作成します。  詳細については、「[フェールオーバー クラスター: クラスター ネットワーク オブジェクト](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97)」を確認してください。  ノード名 (仮想マシン名) と、Azure VNET の使用可能な IP アドレスでスクリプトを更新してください。
+
+```powershell
+New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
+```
+
 
 ### <a name="create-a-cloud-witness"></a>クラウド監視を作成する
 
@@ -364,7 +375,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. 次の項目を入力して、ロード バランサーを構成します。
 
-   - **[名前]** :ロード バランサーを識別する名前。
+   - **Name**:ロード バランサーを識別する名前。
    - **[タイプ]** :ロード バランサーのタイプとして、パブリックまたはプライベートのどちらかを選ぶことができます。 プライベート ロード バランサーには、同じ VNET 内からアクセスできます。 プライベート ロード バランサーは、ほとんどの Azure アプリケーションで使用できます。 アプリケーションがインターネット経由で直接 SQL Server にアクセスする必要がある場合は、パブリック ロード バランサーを使用します。
    - **[仮想ネットワーク]** : 仮想マシンと同じネットワーク。
    - **サブネット**:仮想マシンと同じサブネット。
@@ -396,7 +407,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. **[Add health probe (正常性プローブの追加)]** ブレードで、<a name="probe"></a>正常性プローブのパラメーターを設定します。
 
-   - **[名前]** :正常性プローブの名前。
+   - **Name**:正常性プローブの名前。
    - **プロトコル**:TCP
    - **ポート**:[こちらの手順](#ports)で正常性プローブ用にファイアウォールで作成したポートに設定します。 この記事の例では、TCP ポート `59999` を使用します。
    - **間隔**: 5 秒
@@ -412,7 +423,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. 次のように負荷分散規則のパラメーターを設定します。
 
-   - **[名前]** :負荷分散規則の名前。
+   - **Name**:負荷分散規則の名前。
    - **[フロントエンド IP アドレス]** : SQL Server FCI クラスターのネットワーク リソースの IP アドレスを使用します。
    - **ポート**:SQL Server FCI の TCP ポートに設定します。 既定のインスタンス ポートは 1433 です。
    - **[バックエンド ポート]** :この値には、 **[フローティング IP (ダイレクト サーバー リターン)]** を有効にしたときの **[ポート]** の値と同じポートを使用します。

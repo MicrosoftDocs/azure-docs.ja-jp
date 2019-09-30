@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 7ec731c6b75ff556c9e00f7041fea32f807fe5f4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892021"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389702"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -42,7 +42,7 @@ VNet を使用して次のことが行えます。
 はい。 プレミスに接続せずに VNet を使用することができます。 たとえば、Microsoft Windows Server Active Directory ドメイン コントローラーと SharePoint ファームを Azure VNet 内のみで実行できます。
 
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>VNet 間または VNet とオンプレミスのデータ センター間で WAN の最適化を実行することはできますか。
-はい。 Azure Marketplace を通じて複数のベンダーから提供されている [WAN 最適化ネットワーク仮想アプライアンス](https://azure.microsoft.com/marketplace/?term=wan+optimization)をデプロイできます。
+はい。 Azure Marketplace を通じて複数のベンダーから提供されている [WAN 最適化ネットワーク仮想アプライアンス](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization)をデプロイできます。
 
 ## <a name="configuration"></a>構成
 
@@ -263,10 +263,10 @@ ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介�
 はい。 サブスクリプションが別の Azure Active Directory テナントに属する場合、(ローカルまたはグローバルのどちらでも) VNet ピアリング を確立できます。 これは、PowerShell または CLI を使用して行うことができます。 portal はまだサポートされていません。
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>VNet ピアリング接続が*開始済み*の状態にあります。接続できないのはなぜですか。
-ピアリング接続が開始済みの状態にある場合、これは、リンクを 1 つだけ作成していることを意味します。 正常な接続を確立するには、双方向のリンクを作成する必要があります。 VNet A から VNet B にピアリングするには、VNetA から VNetB、および VNetB から VNetAへのリンクを作成する必要があります。 両方のリンクを作成すると、状態が*接続済み*に変更されます。
+ピアリング接続が "*開始済み*" の状態にある場合、これは、リンクを 1 つだけ作成していることを意味します。 正常な接続を確立するには、双方向のリンクを作成する必要があります。 VNet A から VNet B にピアリングするには、VNetA から VNetB、および VNetB から VNetAへのリンクを作成する必要があります。 両方のリンクを作成すると、状態が "*接続済み*" に変更されます。
 
 ### <a name="my-vnet-peering-connection-is-in-disconnected-state-why-cant-i-create-a-peering-connection"></a>VNet ピアリング接続が "*切断*" 状態にあります。ピアリング接続を作成できないのはなぜですか。
-VNet ピアリング接続が切断状態にある場合、それは作成されたリンクの 1 つが削除されていることを意味します。 ピアリング接続を再確立するためには、リンクを削除して再作成する必要があります。
+VNet ピアリング接続が "*切断*" 状態にある場合、それは作成されたリンクの 1 つが削除されていることを意味します。 ピアリング接続を再確立するためには、リンクを削除して再作成する必要があります。
 
 ### <a name="can-i-peer-my-vnet-with-a-vnet-in-a-different-subscription"></a>VNet を別のサブスクリプションにある VNet とピアリングできますか。
 はい。 VNet はサブスクリプションやリージョンを越えてピアリングできます。
@@ -280,7 +280,7 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet ピアリングのトラフィックは暗号化されますか。
 いいえ。 ピアリングされた VNet のリソース間のトラフィックはプライベートで分離されています。 マイクロソフトのバックボーンに完全に残ります。
 
-### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>ピアリング接続が切断状態にあるのはなぜですか。
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>ピアリング接続が "*切断*" 状態にあるのはなぜですか。
 1 つの VNet ピアリング リンクが削除されると、VNet ピアリングは*切断*状態になります。 ピアリング接続を再度確立するには、両方のリンクを削除する必要があります。
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>VNetA から VNetB にピアリングし、VNetB から VNetC にピアリングすると、VNetA と VNetC がピアリングされたことになりますか。
@@ -301,7 +301,7 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 仮想ネットワーク TAP のプレビュー版では、フィルター処理機能はサポートされていません。 TAP 構成をネットワーク インターフェイスに追加すると、ネットワーク インターフェイス上のすべてのイングレス トラフィックとエグレス トラフィックのディープ コピーが、TAP のターゲットにストリーミングされます。
 
 ### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>監視対象のネットワーク インターフェイスに、複数の TAP 構成を追加できますか。
-監視対象のネットワーク インターフェイスに追加できる TAP 構成は 1 つだけです。 ユーザーが選択した分析ツールに TAP トラフィックの複数コピーをストリーミングする機能については、個別の[パートナー ソリューション](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)を確認してください。
+監視対象のネットワーク インターフェイスに追加できる TAP 構成は 1 つだけです。 ユーザーが選択した分析ツールに TAP トラフィックの複数コピーをストリーム配信する機能については、個別の[パートナー ソリューション](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)を確認してください。
 
 ### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>同じ仮想ネットワーク TAP リソースで、複数の仮想ネットワーク内の監視対象ネットワーク インターフェイスからのトラフィックを集約できますか。
 はい。 同じ仮想ネットワーク TAP リソースを使用して、同じサブスクリプションまたは異なるサブスクリプションのピアリングされた仮想ネットワーク内の監視対象ネットワーク インターフェイスからのミラー化されたトラフィックを集約できます。 仮想ネットワーク TAP リソースと、ターゲット ロード バランサーまたはターゲット ネットワーク インターフェイスは、同じサブスクリプションに含まれる必要があります。 すべてのサブスクリプションが同じ Azure Active Directory テナントに存在する必要がある。
@@ -326,7 +326,7 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 >[!NOTE]
 > 上で説明されているどちらの操作も、許可される VNet とサブネットに Azure サービスへのアクセスを制限する前に、完了する必要があります。 ネットワーク側で Azure サービスに対してサービス エンドポイントを有効にするだけでは、制限付きアクセスは提供されません。 さらに、Azure サービス側で VNet ACL も設定する必要があります。
 
-一部のサービス (SQL、CosmosDB など) では、**IgnoreMissingVnetServiceEndpoint** フラグを使用して上記の手順に対する例外を設定できます。 フラグを **True** に設定すると、ネットワーク側でサービス エンドポイントを設定する前に、Azure サービスで VNet ACL を設定できます。 Azure サービスでこのフラグが提供されているのは、Azure サービスで特定の IP ファイアウォールが構成されている場合に、ネットワーク側でサービス エンドポイントを有効にすると、パブリック IPv4 アドレスからプライベート アドレスへのソース IP アドレスの変更によって、接続が断たれる可能性があるためです。 ネットワーク側でサービス エンドポイントを設定する前に、Azure サービス側で VNet ACL を設定すると、接続が断たれるのを防ぐことができます。
+一部のサービス (SQL、CosmosDB など) では、**IgnoreMissingVnetServiceEndpoint** フラグを使用して上記の手順に対する例外を設定できます。 フラグを **True** に設定すると、ネットワーク側でサービス エンドポイントを設定する前に、Azure サービス側で VNet ACL を設定できます。 Azure サービスでこのフラグが提供されているのは、Azure サービスで特定の IP ファイアウォールが構成されている場合に、ネットワーク側でサービス エンドポイントを有効にすると、パブリック IPv4 アドレスからプライベート アドレスへのソース IP アドレスの変更によって、接続が断たれる可能性があるためです。 ネットワーク側でサービス エンドポイントを設定する前に、Azure サービス側で VNet ACL を設定すると、接続が断たれるのを防ぐことができます。
 
 ### <a name="do-all-azure-services-reside-in-the-azure-virtual-network-provided-by-the-customer-how-does-vnet-service-endpoint-work-with-azure-services"></a>すべての Azure サービスは、顧客が提供する Azure 仮想ネットワーク内に存在しますか。 VNet サービス エンドポイントは Azure サービスでどのように動作しますか。
 
@@ -336,7 +336,7 @@ VNet サービス エンドポイント機能 (ネットワーク側で VNet サ
 
 ### <a name="how-does-vnet-service-endpoint-provide-security"></a>VNet サービス エンドポイントでは、セキュリティはどのように提供されますか。
 
-VNet サービス エンドポイント機能 (ネットワーク側で VNet サービス エンドポイントを有効にして、Azure サービス側で適切な VNet ACL を設定する) では、Azure サービスへのアクセスが許可された VNet とサブネットに制限されるので、ネットワーク レベルの セキュリティと Azure サービス トラフィックの分離が提供されます。 VNet サービス エンドポイントを使用するすべてのトラフィックは Microsoft のバックボーンを経由するので、パブリック インターネットからのもう 1 つの分離レイヤーが提供されます。 さらに、お客様は、Azure サービス リソースへのパブリック インターネット アクセスを完全に削除し、IP ファイアウォールと VNet ACL の組み合わせを経由する仮想ネットワークからのトラフィックだけを許可できるので、承認されていないアクセスから Azure サービス リソースが保護されます。      
+VNet サービス エンドポイント機能 (ネットワーク側で VNet サービス エンドポイントを有効にして、Azure サービス側で適切な VNet ACL を設定する) では、Azure サービスへのアクセスが許可された VNet とサブネットに制限されるので、ネットワーク レベルのセキュリティと Azure サービス トラフィックの分離が提供されます。 VNet サービス エンドポイントを使用するすべてのトラフィックは Microsoft のバックボーンを経由するので、パブリック インターネットからのもう 1 つの分離レイヤーが提供されます。 さらに、お客様は、Azure サービス リソースへのパブリック インターネット アクセスを完全に削除し、IP ファイアウォールと VNet ACL の組み合わせを経由する仮想ネットワークからのトラフィックだけを許可できるので、承認されていないアクセスから Azure サービス リソースが保護されます。      
 
 ### <a name="what-does-the-vnet-service-endpoint-protect---vnet-resources-or-azure-service"></a>VNet サービス エンドポイントで保護されるのは、VNet リソースですか、Azure サービスですか。
 VNet サービス エンドポイントは、Azure サービス リソースを保護するのに役立ちます。 VNet リソースは、ネットワーク セキュリティ グループ (NSG) によって保護されます。
@@ -352,34 +352,34 @@ VNet サービス エンドポイントは、Azure サービス リソースを�
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>仮想ネットワークと Azure サービス リソースが異なる AD テナントに属している場合、VNet サービス エンドポイントを有効にして、VNet ACL を設定できますか。
 いいえ、VNet サービス エンドポイントと VNet ACL は、AD テナントをまたがってはサポートされません。
 
-### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-express-route-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Azure Virtual Network ゲートウェイ (VPN) または ExpressRoute ゲートウェイを介して接続されているオンプレミス デバイスの IP アドレスでは、VNet サービス エンドポイント経由で Azure PaaS サービスにアクセスできますか。
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Azure Virtual Network ゲートウェイ (VPN) または ExpressRoute ゲートウェイを介して接続されているオンプレミス デバイスの IP アドレスでは、VNet サービス エンドポイント経由で Azure PaaS サービスにアクセスできますか。
 既定では、仮想ネットワークからのアクセスに限定された Azure サービス リソースは、オンプレミスのネットワークからはアクセスできません。 オンプレミスからのトラフィックを許可する場合は、オンプレミスまたは ExpressRoute からのパブリック IP アドレス (通常は NAT) を許可する必要もあります。 これらの IP アドレスは、Azure サービス リソースの IP ファイアウォール構成を通じて追加できます。
 
-### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-with-in-a-virtual-network-or-across-multiple-virtual-networks"></a>VNet サービス エンドポイントの機能を使用して、1 つの仮想ネットワーク内の複数のサブネットまたは複数の仮想ネットワークにまたがるサブネットに Azure サービスを限定できますか。
+### <a name="can-i-use-vnet-service-endpoint-feature-to-secure-azure-service-to-multiple-subnets-within-a-virtual-network-or-across-multiple-virtual-networks"></a>VNet サービス エンドポイントの機能を使用して、1 つの仮想ネットワーク内の複数のサブネットまたは複数の仮想ネットワークにまたがるサブネットに Azure サービスを限定できますか。
 Azure サービスへのアクセスを 1 つの仮想ネットワーク内または複数の仮想ネットワークにまたがる複数のサブネットに限定するには、サブネットごとに個別にネットワーク側でサービス エンドポイントを有効にしてから、Azure サービス側で適切な VNet ACL を設定することによって、Azure サービス リソースへのアクセスをすべてのサブネットに限定します。
  
 ### <a name="how-can-i-filter-outbound-traffic-from-a-virtual-network-to-azure-services-and-still-use-service-endpoints"></a>仮想ネットワークから Azure サービスへの送信トラフィックをフィルター処理しながら、サービス エンドポイントを使用するには、どうすればよいですか。
 仮想ネットワークから Azure サービスへのトラフィックを検査またはフィルター処理する場合は、仮想ネットワーク内にネットワーク仮想アプライアンスをデプロイします。 その後、ネットワーク仮想アプライアンスがデプロイされているサブネットにサービス エンドポイントを適用し、VNet ACL を使用してこのサブネットのみに Azure サービス リソースへのアクセスを限定します。 また、このシナリオは、ネットワーク仮想アプライアンス フィルタリングを使用して、ご利用の仮想ネットワークから Azure サービスへのアクセスを特定の Azure リソースにのみ制限する場合に役立ちます。 詳細については、[ネットワーク仮想アプライアンスを持つエグレス](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/nva-ha)に関するページを参照してください。
 
-### <a name="what-happens-when-you-access-an-azure-service-account-that-has-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>仮想ネットワーク アクセス制御リスト (ACL) が有効になっている Azure サービス アカウントに、VNet の外部からアクセスするとどうなりますか。
+### <a name="what-happens-when-you-access-an-azure-service-account-that-has-a-virtual-network-access-control-list-acl-enabled-from-outside-the-vnet"></a>仮想ネットワーク アクセス制御リスト (ACL) が有効になっている Azure サービス アカウントに、VNet の外部からアクセスするとどうなりますか。
 HTTP 403 または HTTP 404 エラーが返されます。
 
 ### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-service-account-in-another-region"></a>他のリージョンで作成された仮想ネットワークのサブネットは、別のリージョンの Azure サービス アカウントにアクセスできますか。 
 はい、ほとんどの Azure サービスについて、異なるリージョンで作成された仮想ネットワークから、VNet サービス エンドポイント経由で別のリージョンの Azure サービスにアクセスできます。 たとえば、Azure Cosmos DB アカウントが米国西部または米国東部にあり、仮想ネットワークが複数のリージョンにある場合、仮想ネットワークは Azure Cosmos DB にアクセスできます。 ストレージと SQL は例外であり、本質的にリージョン対応なので、仮想ネットワークと Azure サービスの両方が同じリージョンに存在する必要があります。
   
-### <a name="can-an-azure-service-have-both-vnet-acl-and-an-ip-firewall"></a>Azure サービスで VNet ACL と IP ファイアウォールの両方を使用できますか。
+### <a name="can-an-azure-service-have-both-a-vnet-acl-and-an-ip-firewall"></a>Azure サービスで VNet ACL と IP ファイアウォールの両方を使用できますか。
 はい、VNet ACL と IP ファイアウォールは共存できます。 両方の機能が相互に補完して、分離とセキュリティを確実にします。
  
 ### <a name="what-happens-if-you-delete-a-virtual-network-or-subnet-that-has-service-endpoint-turned-on-for-azure-service"></a>Azure サービス用のサービス エンドポイントが有効になっている仮想ネットワークまたはサブネットを削除するとどうなりますか。
 VNet とサブネットの削除は独立した操作であり、サービス エンドポイントが Azure サービスに対して有効になっている場合でもサポートされます。 Azure サービスで VNet ACL が設定されている場合、それらの VNet とサブネットについては、VNet サービス エンドポイントが有効になっている VNet またはサブネットを削除すると、その Azure サービスに関連付けられている VNet ACL 情報が無効になります。
  
-### <a name="what-happens-if-azure-service-account-that-has-vnet-service-endpoint-enabled-is-deleted"></a>VNet サービス エンドポイントが有効になっている Azure サービス アカウントを削除するとどうなりますか。
+### <a name="what-happens-if-an-azure-service-account-that-has-a-vnet-service-endpoint-enabled-is-deleted"></a>VNet サービス エンドポイントが有効になっている Azure サービス アカウントを削除するとどうなりますか。
 Azure サービス アカウントの削除は独立した操作であり、ネットワーク側でサービス エンドポイントが有効になっていて、Azure サービス側で VNet ACL が設定されている場合でもサポートされます。 
 
 ### <a name="what-happens-to-the-source-ip-address-of-a-resource-like-a-vm-in-a-subnet-that-has-vnet-service-endpoint-enabled"></a>VNet サービス エンドポイントが有効になったリソース (サブネット内の VM など) の送信元 IP アドレスはどうなりますか。
 仮想ネットワーク サービス エンドポイントが有効である場合、仮想ネットワークのサブネット内にあるリソースの送信元 IP アドレスは、Azure サービスへのトラフィックで、パブリック IPV4 アドレスから Azure 仮想ネットワークのプライベート IP アドレスに切り替えられます。 Azure サービスで以前にパブリック IPV4 アドレスに対して設定されている特定の IP ファイアウォールが失敗する可能性があることに注意してください。 
 
-### <a name="does-service-endpoint-route-always-take-precedence"></a>サービス エンドポイントのルートは常に優先されますか。
+### <a name="does-the-service-endpoint-route-always-take-precedence"></a>サービス エンドポイントのルートは常に優先されますか。
 サービス エンドポイントでは、BGP ルートより優先されるシステム ルートが追加され、サービス エンドポイントのトラフィックに対して最適なルーティングが提供されます。 サービス エンドポイントでは常に、ユーザーの仮想ネットワークから Microsoft Azure のバックボーン ネットワーク上のサービスへのサービス トラフィックが、直接受け取られます。 Azure でのルートの選択方法の詳細については、「[仮想ネットワーク トラフィックのルーティング](virtual-networks-udr-overview.md)」を参照してください。
  
 ### <a name="how-does-nsg-on-a-subnet-work-with-service-endpoints"></a>サービス エンドポイントではサブネット上の NSG はどのように動作しますか。

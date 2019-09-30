@@ -7,13 +7,13 @@ services: time-series-insights
 ms.service: time-series-insights
 author: kingdomofends
 ms.author: adgera
-ms.date: 08/08/2019
-ms.openlocfilehash: ed5cd9424630a90b989b8a4d76959961f82a53ec
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 09/24/2019
+ms.openlocfilehash: ccfbd16f4db770558f1bc0284860a5f8d9fb8b68
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935248"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266944"
 ---
 > [!IMPORTANT]
 > * 従来の **[Azure Active Director]**  >  **[アプリの登録 (レガシー)]** ブレードは、2019 年 5 月に新しい **[Azure Active Directory]**  >  **[アプリの登録]** ブレードに差し替えられています。

@@ -1,18 +1,18 @@
 ---
 title: Azure Stream Analytics のソリューション パターン
-description: Azure Stream Analytics のソリューション パターンについて説明します。
+description: Azure Stream Analytics のさまざまな一般的なソリューション パターンについて説明します。
 author: zhongc
 ms.author: zhongc
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 5929ff439bc31e16643e5c57868cd6b68f9cd99c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: cbc9ffe9510cf0888e8d8b62ea112b6517117eed
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329571"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173035"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
@@ -159,9 +159,9 @@ Azure Stream Analytics に SLA 保証があっても、また、エンド ツー
 
 受信したすべてのイベントが遅延するという極端なシナリオでは、ジョブに到着遅延時間枠を適用した場合に、[遅延したイベントがすべてドロップされる可能性があります](stream-analytics-time-handling.md)。 最初はイベントのドロップが不可解な動作に見えるかもしれません。しかし、Stream Analytics がリアルタイム処理エンジンであることを踏まえれば、受信するイベントが実時間に近いことは当然のことと言えます。 これらの制約に違反したイベントはドロップする必要があるのです。
 
-### <a name="backfilling-process"></a>バックフィル プロセス
+### <a name="lambda-architectures-or-backfill-process"></a>ラムダ アーキテクチャまたはバックフィル プロセス
 
-さいわい、こうした遅延イベントは、前述のデータ アーカイブ パターンを使用すれば、適切に処理することができます。 アーカイブ ジョブで受信イベントを到着時刻に処理し、Azure BLOB または Azure Data Lake Store には、対応するイベント時刻と共に適切なタイム バケットにイベントをアーカイブするという考え方です。 どれだけ遅れてイベントが到着しようと、決してドロップされることはありません。 いずれは必ず適切なタイム バケットに到着します。 復旧過程で、アーカイブ済みのイベントを再処理し、その結果を任意のストアにバックフィルすることができます。
+さいわい、こうした遅延イベントは、前述のデータ アーカイブ パターンを使用すれば、適切に処理することができます。 アーカイブ ジョブで受信イベントを到着時刻に処理し、Azure BLOB または Azure Data Lake Store には、対応するイベント時刻と共に適切なタイム バケットにイベントをアーカイブするという考え方です。 どれだけ遅れてイベントが到着しようと、決してドロップされることはありません。 いずれは必ず適切なタイム バケットに到着します。 復旧過程で、アーカイブ済みのイベントを再処理し、その結果を任意のストアにバックフィルすることができます。 これは、ラムダ パターンが実装される方法と似ています。
 
 ![ASA のバックフィル](media/stream-analytics-solution-patterns/backfill.png)
 

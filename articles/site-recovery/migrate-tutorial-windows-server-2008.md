@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c449b74a9d6185b0616f62d31926feb6ff218cbb
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: d0d5c482e2faf5e4a2c2918a64bd56e4aa814323
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66400096"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814508"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
 
@@ -28,6 +28,9 @@ ms.locfileid: "66400096"
 > * Azure にフェールオーバーして、移行を完了する
 
 「制限事項と既知の問題」セクションでは、いくつかの制限事項と、Windows Server 2008 マシンを Azure に移行する際に発生する可能性がある既知の問題の回避策を一覧に示しています。 
+
+> [!NOTE]
+> これで、Azure Migrate サービスを使用してオンプレミスから Azure に移行できます。 [詳細情報](../migrate/migrate-services-overview.md)。
 
 
 ## <a name="supported-operating-systems-and-environments"></a>サポートされているオペレーティング システムと環境
@@ -47,7 +50,7 @@ ms.locfileid: "66400096"
 
 開始する前に、[VMware と物理サーバーの移行](vmware-azure-architecture.md)や [Hyper-V 仮想マシンの移行](hyper-v-azure-architecture.md)のための Azure Site Recovery アーキテクチャを確認することをお勧めします。 
 
-Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper-V を移行するには、[オンプレミス マシンを Azure に移行する](migrate-tutorial-on-premises-azure.md)チュートリアルの手順に従います。
+Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper-V 仮想マシンを移行するには、[オンプレミス マシンを Azure に移行する](migrate-tutorial-on-premises-azure.md)チュートリアルの手順に従います。
 
 このチュートリアルの手順以外の部分では、オンプレミス VMware 仮想マシンと Windows Server 2008 または 2008 R2 を実行している物理サーバーを移行する方法を説明しています。
 > [!TIP]

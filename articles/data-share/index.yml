@@ -1,61 +1,61 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Data Share プレビューのドキュメント
+### YamlMime:Landing
+title: Azure Data Share (プレビュー) のドキュメント
+summary: Azure Data Share プレビューは、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。
 metadata:
-  title: Azure Data Share プレビューのドキュメント - チュートリアル、攻略ガイド
-  description: Azure Data Share プレビューは、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。
-  author: joannapea
-  ms.author: joanpo
+  title: Azure Data Share (プレビュー)
+  description: Azure Data Share (プレビュー) は、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。
+  services: data-share
   ms.service: data-share
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/10/2019
-abstract:
-  description: <p>Azure Data Share プレビューは、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。 データ共有の関係を管理、監視、制御する機能を使用して、共有するデータセットの選択、受信者の追加、データ共有の開始を実行します。 </p><p>Microsoft のチュートリアルと攻略ガイドを通じて Azure Data Share の使用方法を学習しましょう。</p>
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/azure-friday.png
-      width: 250
-    title: Azure Friday の Azure Data Share
-    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Share-data-simply-and-securely-using-Azure-Data-Share/player?format=ny'
-    width: 250
-sections:
-  - title: ハウツー ガイド
-    items:
-      - type: paragraph
-        text: 次の攻略ガイドのいずれかを使って、データ共有の監視、データセット マッピングの構成、受信者の追加などの方法を学習します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Azure Data Share の監視
-            href: /azure/data-share/how-to-monitor
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: データセット マッピングの構成
-            href: /azure/data-share/how-to-configure-mapping
-          - image:
-              src: /azure/data-share/media/index/portal.svg
-            text: Azure Data Share のトラブルシューティング
-            href: /azure/data-share/data-share-troubleshoot
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure Data Share を使用してデータの共有を開始する方法を学習します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="share-your-data">Azure Data Share を使用したデータの共有</a>
-          - html: <a href="subscribe-to-data-share">Azure Data Share を使用したデータの受け入れと受信</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: 言語
-            html: <p><a href="/dotnet/api/overview/azure/datashare">.NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/datashare">REST API</a></p>
+  ms.collection: collection
+  author: hrasheed-msft
+  ms.author: hrasheed
+  ms.date: 09/13/2019
+  ms.openlocfilehash: d75af1eea77bea89f3facf782b836a26fcdabdde
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71218011"
+landingContent:
+- title: Azure Data Share について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Data Share とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Data Share の概念
+      url: terminology.md
+    - text: Azure Data Share のロールと要件
+      url: concepts-roles-permissions.md
+- title: データの共有
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Data Share を使用したデータの共有
+      url: share-your-data.md
+    - text: Azure Data Share を使用したデータの受け入れと受信
+      url: subscribe-to-data-share.md
+  - linkListType: how-to-guide
+    links:
+    - text: データセット マッピングの構成
+      url: how-to-configure-mapping.md
+    - text: データセットの追加
+      url: how-to-add-datasets.md
+- title: 監視と管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Data Share の監視
+      url: how-to-monitor.md
+    - text: 一般的な問題のトラブルシューティング
+      url: data-share-troubleshoot.md
+    - text: データセットの追加
+      url: how-to-add-datasets.md
+    - text: 招待の削除
+      url: how-to-delete-invitation.md
+    - text: 共有サブスクリプションの取り消し
+      url: how-to-revoke-share-subscription.md

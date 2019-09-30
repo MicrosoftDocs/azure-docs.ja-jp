@@ -1,85 +1,139 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Database for PostgreSQL のドキュメント
+summary: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいたリレーショナル データベース サービスです。 フル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンス、セキュリティ、高可用性、動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 シングル サーバーと Hyperscale (Citus) クラスター (プレビュー) の 2 つのデプロイ オプションを利用できます。 Hyperscale (Citus) オプションでは、シャーディングを使用して複数のマシンにわたってクエリを水平方向にスケーリングし、スケールとパフォーマンスの向上を必要とするアプリケーションをサポートします。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for PostgreSQL の使用方法を確認してください。
 metadata:
-  document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
-  title: Azure PostgreSQL のドキュメント - チュートリアル、API リファレンス
   description: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいて開発者向けに構築されている、Microsoft クラウドのリレーショナル データベース サービスです。
   author: rachel-msft
   ms.author: raagyema
+  ms.date: 08/30/2019
   ms.service: postgresql
   ms.topic: landing-page
-  ms.date: 04/26/2019
-abstract:
-  description: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいたリレーショナル データベース サービスです。  フル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンス、セキュリティ、高可用性、動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Single Server と Hyperscale (Citus) (プレビュー) の 2 つのデプロイ オプションを使用できます。 Hyperscale (Citus) オプションでは、シャーディングを使用して複数のマシンにわたってクエリを水平方向にスケーリングし、スケールとパフォーマンスの向上を必要とするアプリケーションをサポートします。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for PostgreSQL の使用方法を確認してください。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 次を使用して PostgreSQL データベースを作成する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Single Server (Azure portal)
-            href: /azure/postgresql/quickstart-create-server-database-portal
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/cli.svg'
-            text: Single Server (Azure CLI)
-            href: /azure/postgresql/quickstart-create-server-database-azure-cli
-          - image:
-              src: 'https://docs.microsoft.com/azure/sql-database/media/index/portal.svg'
-            text: Hyperscale (Citus) (Azure portal)
-            href: /azure/postgresql/quickstart-create-hyperscale-portal
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: 'Single Server の場合:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'データベースを設計する&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
-          - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Python と CLI を使用して Web アプリを構築する</a>
-          - html: <a href="/azure/postgresql/tutorial-monitor-and-tune">サービスを監視して調整する</a>
-      - type: paragraph
-        text: 'Hyperscale (Citus) (プレビュー) の場合:'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-multi-tenant">マルチテナント データベースを設計する</a>
-          - html: <a href="/azure/postgresql/tutorial-design-database-hyperscale-realtime">リアルタイム データベースを設計する</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Database for PostgreSQL サーバーの作成
-            href: /learn/modules/create-azure-db-for-postgresql-server/
-            image:
-              src: /learn/achievements/create-azure-db-for-postgresql-server.svg
-              href: /learn/modules/create-azure-db-for-postgresql-server/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure">対話型学習の詳細...</a>
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 一般的なタスクを管理するためのスクリプトを探します。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure CLI</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/cli/azure/postgres">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/postgresql">REST API</a></p>
-          - title: Azure Resource Manager
-            html: <p><a href="/azure/templates/microsoft.dbforpostgresql/allversions">Resource Manager テンプレート</a></p>
+  ms.openlocfilehash: 6d35798d5e87945656acb298ec6fa06518487f3e
+  ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/04/2019
+  ms.locfileid: "70259176"
+landingContent:
+- title: Azure Database for PostgreSQL について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Database for PostgreSQL とは
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: ブログを確認する
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-PostgreSQL/bg-p/ADforPostgreSQL
+- title: シングル サーバーの作成
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal を使用してサーバーを作成する
+      url: quickstart-create-server-database-portal.md
+    - text: Azure CLI を使用してサーバーを作成する
+      url: quickstart-create-server-database-azure-cli.md
+  - linkListType: learn
+    links:
+    - text: 学習モジュール:Azure Database for PostgreSQL サーバーの作成
+      url: /learn/modules/create-azure-db-for-postgresql-server/
+  - linkListType: concept
+    links:
+    - text: 価格レベル
+      url: concepts-pricing-tiers.md
+    - text: 制限
+      url: concepts-limits.md
+    - text: PostgreSQL のバージョン
+      url: concepts-supported-versions.md
+    - text: PostgreSQL の拡張機能 - シングル サーバー
+      url: concepts-extensions.md
+  - linkListType: tutorial
+    links:
+    - text: Azure portal を使用してデータベースを設計する
+      url: tutorial-design-database-using-azure-portal.md
+    - text: Azure CLI を使用してデータベースを設計する
+      url: tutorial-design-database-using-azure-cli.md
+    - text: Python と CLI を使用して Web アプリを構築する
+      url: /azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json
+    - text: サービスを監視して調整する
+      url: tutorial-monitor-and-tune.md
+- title: Hyperscale (Citus) クラスター (プレビュー) の作成
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal 内で Hyperscale (Citus) クラスター (プレビュー) を作成する
+      url: quickstart-create-hyperscale-portal.md
+  - linkListType: tutorial
+    links:
+    - text: マルチテナント データベースを設計する
+      url: tutorial-design-database-hyperscale-multi-tenant.md
+    - text: リアルタイム データベースを設計する
+      url: tutorial-design-database-hyperscale-realtime.md
+  - linkListType: concept
+    links:
+    - text: PostgreSQL の拡張機能 - Hyperscale
+      url: concepts-hyperscale-extensions.md
+    - text: ノードについて
+      url: concepts-hyperscale-nodes.md
+    - text: 分散データについて
+      url: concepts-hyperscale-distributed-data.md
+    - text: パフォーマンス オプションを構成する
+      url: concepts-hyperscale-configuration-options.md
+- title: シングル サーバーへの接続
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ファイアウォールについて
+      url: concepts-firewall-rules.md
+    - text: ファイアウォール規則を作成する
+      url: howto-manage-firewall-using-portal.md
+    - text: SSL の構成
+      url: concepts-ssl-connection-security.md
+  - linkListType: get-started
+    links:
+    - text: Python を使用して接続する
+      url: connect-python.md
+    - text: Node.js を使用して接続する
+      url: connect-nodejs.md
+    - text: Java を使用して接続する
+      url: connect-java.md
+    - text: Ruby を使用して接続する
+      url: connect-ruby.md
+    - text: PHP を使用して接続する
+      url: connect-php.md
+    - text: .Net を使用して接続する
+      url: connect-csharp.md
+    - text: Go を使用して接続する
+      url: connect-go.md
+- title: プログラミング API を使用したコード
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 一般的なタスクのための Azure CLI スクリプト
+      url: /azure/postgresql/sample-scripts-azure-cli
+  - linkListType: reference
+    links:
+    - text: Azure CLI の開発者用リファレンス
+      url: /rest/api/postgresql/
+    - text: REST API の開発者用リファレンス
+      url: /cli/azure/postgres
+    - text: Azure Resource Manager のテンプレート
+      url: /azure/templates/microsoft.dbforpostgresql/allversions
+- title: データのバックアップと移行
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: シングル サーバー内でバックアップと復元を行う
+      url: concepts-backup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure portal を使用してサーバーを復元する
+      url: howto-restore-server-portal.md
+    - text: Azure CLI を使用してサーバーを復元する
+      url: howto-restore-server-cli.md
+    - text: ダンプと復元を使用してデータベースを移行する
+      url: howto-migrate-using-dump-and-restore.md
+    - text: エクスポートとインポートを使用してデータベースを移行する
+      url: howto-migrate-using-export-and-import.md
+    - text: ダウンタイムを最小限に抑えて移行する
+      url: howto-migrate-online.md

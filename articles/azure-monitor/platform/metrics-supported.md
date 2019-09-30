@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 49780ec342ea168d27ab8a029c41a1c18a6ffcc4
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: dbbe5a667b8d467b416e4a4a571d8d3599ec45b6
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019049"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051824"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -330,11 +330,12 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |Percentage CPU|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|ディメンションなし|
 |Network In|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|ディメンションなし|
-|ネットワーク送信|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|ディメンションなし|
+|Network Out|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|ディメンションなし|
 |Disk Read Bytes/Sec|ディスクの読み取り|BytesPerSecond|平均|監視期間中にディスクから読み取られた平均バイト数。|ディメンションなし|
 |Disk Write Bytes/Sec|ディスクの書き込み|BytesPerSecond|平均|監視期間中にディスクに書き込まれた平均バイト数。|ディメンションなし|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|ディメンションなし|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|ディメンションなし|
+|Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|ディメンションなし|
+
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
@@ -342,11 +343,12 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |Percentage CPU|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|RoleInstanceId|
 |Network In|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|RoleInstanceId|
-|ネットワーク送信|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|RoleInstanceId|
+|Network Out|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|RoleInstanceId|
 |Disk Read Bytes/Sec|ディスクの読み取り|BytesPerSecond|平均|監視期間中にディスクから読み取られた平均バイト数。|RoleInstanceId|
 |Disk Write Bytes/Sec|ディスクの書き込み|BytesPerSecond|平均|監視期間中にディスクに書き込まれた平均バイト数。|RoleInstanceId|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|RoleInstanceId|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|RoleInstanceId|
+|Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|RoleInstanceId|
+
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
@@ -373,11 +375,11 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |Percentage CPU|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|ディメンションなし|
 |Network In|課金対象の受信ネットワーク|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信した課金対象のバイト数 (受信トラフィック)|ディメンションなし|
-|ネットワーク送信|課金対象の送信ネットワーク|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信した課金対象のバイト数 (送信トラフィック)|ディメンションなし|
+|Network Out|課金対象の送信ネットワーク|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信した課金対象のバイト数 (送信トラフィック)|ディメンションなし|
 |Disk Read Bytes|ディスク読み取りバイト数|Bytes|合計|監視期間中にディスクから読み取られたバイト数|ディメンションなし|
 |Disk Write Bytes|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれたバイト数|ディメンションなし|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|ディメンションなし|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|ディメンションなし|
+|Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|ディメンションなし|
 |CPU Credits Remaining|未使用の CPU クレジット|Count|平均|バーストに使用できるクレジットの合計|ディメンションなし|
 |CPU Credits Consumed|使用済みの CPU クレジット|Count|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
 |Per Disk Read Bytes/sec|データ ディスク読み取りバイト数/秒 (非推奨)|CountPerSecond|平均|監視期間中に 1 つのディスクから読み取られたバイト数/秒|SlotId|
@@ -417,11 +419,11 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |Percentage CPU|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|VMName|
 |Network In|課金対象の受信ネットワーク|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信した課金対象のバイト数 (受信トラフィック)|VMName|
-|ネットワーク送信|課金対象の送信ネットワーク|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信した課金対象のバイト数 (送信トラフィック)|VMName|
+|Network Out|課金対象の送信ネットワーク|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信した課金対象のバイト数 (送信トラフィック)|VMName|
 |Disk Read Bytes|ディスク読み取りバイト数|Bytes|合計|監視期間中にディスクから読み取られたバイト数|VMName|
 |Disk Write Bytes|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれたバイト数|VMName|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|VMName|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|VMName|
+|Disk Write Operations/Sec|Disk Write Operations/Sec|CountPerSecond|平均|ディスク書き込み IOPS|VMName|
 |未使用の CPU クレジット|未使用の CPU クレジット|Count|平均|バーストに使用できるクレジットの合計|ディメンションなし|
 |CPU Credits Consumed|使用済みの CPU クレジット|Count|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
 |Per Disk Read Bytes/sec|データ ディスク読み取りバイト数/秒 (非推奨)|CountPerSecond|平均|監視期間中に 1 つのディスクから読み取られたバイト数/秒|SlotId|
@@ -598,7 +600,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |connections_failed|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
 |seconds_behind_master|レプリケーションのラグ (秒単位)|Count|平均|レプリケーションのラグ (秒単位)|ディメンションなし|
 |backup_storage_used|使用されたバックアップ ストレージ|Bytes|平均|使用されたバックアップ ストレージ|ディメンションなし|
-|network_bytes_egress|ネットワーク送信|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
+|network_bytes_egress|Network Out|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
 |network_bytes_ingress|Network In|Bytes|合計|アクティブな接続全体のネットワーク受信|ディメンションなし|
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
@@ -618,7 +620,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |connections_failed|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
 |seconds_behind_master|レプリケーションのラグ (秒単位)|Count|平均|レプリケーションのラグ (秒単位)|ディメンションなし|
 |backup_storage_used|使用されたバックアップ ストレージ|Bytes|平均|使用されたバックアップ ストレージ|ディメンションなし|
-|network_bytes_egress|ネットワーク送信|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
+|network_bytes_egress|Network Out|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
 |network_bytes_ingress|Network In|Bytes|合計|アクティブな接続全体のネットワーク受信|ディメンションなし|
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
@@ -637,7 +639,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |active_connections|アクティブな接続|Count|平均|アクティブな接続|ディメンションなし|
 |connections_failed|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
 |backup_storage_used|使用されたバックアップ ストレージ|Bytes|平均|使用されたバックアップ ストレージ|ディメンションなし|
-|network_bytes_egress|ネットワーク送信|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
+|network_bytes_egress|Network Out|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
 |network_bytes_ingress|Network In|Bytes|合計|アクティブな接続全体のネットワーク受信|ディメンションなし|
 |pg_replica_log_delay_in_seconds|Replica Lag (レプリカ ラグ)|Seconds|最大値|レプリカのラグ (秒単位)|ディメンションなし|
 |pg_replica_log_delay_in_bytes|Max Lag Across Replicas (レプリカ間の最大ラグ)|Bytes|最大値|最も遅れているレプリカのラグ (バイト単位)|ディメンションなし|
@@ -652,7 +654,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |storage_percent|ストレージの割合|Percent|平均|ストレージの割合|ディメンションなし|
 |storage_used|使用済みストレージ|Bytes|平均|使用済みストレージ|ディメンションなし|
 |active_connections|アクティブな接続|Count|平均|アクティブな接続|ディメンションなし|
-|network_bytes_egress|ネットワーク送信|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
+|network_bytes_egress|Network Out|Bytes|合計|アクティブな接続全体のネットワーク送信|ディメンションなし|
 |network_bytes_ingress|Network In|Bytes|合計|アクティブな接続全体のネットワーク受信|ディメンションなし|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
@@ -1435,33 +1437,33 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |cpu_percent|CPU の割合|Percent|平均|CPU の割合|ディメンションなし|
 |physical_data_read_percent|データ IO の割合|Percent|平均|データ IO の割合|ディメンションなし|
-|log_write_percent|ログ IO の割合|Percent|平均|ログ IO の割合|ディメンションなし|
-|dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合|ディメンションなし|
-|storage|使用済みのデータ領域|Bytes|最大値|合計データベース サイズ|ディメンションなし|
+|log_write_percent|ログ IO の割合|Percent|平均|ログ IO の割合。 データ ウェアハウスには適用されません。|ディメンションなし|
+|dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合。 DTU ベースのデータベースに適用されます。|ディメンションなし|
+|storage|使用済みのデータ領域|Bytes|最大値|データベースの合計サイズ。 データ ウェアハウスには適用されません。|ディメンションなし|
 |connection_successful|成功した接続|Count|合計|成功した接続|ディメンションなし|
 |connection_failed|失敗した接続|Count|合計|失敗した接続|ディメンションなし|
 |blocked_by_firewall|ファイアウォールによってブロックされる|Count|合計|ファイアウォールによってブロックされる|ディメンションなし|
-|deadlock|デッドロック|Count|合計|デッドロック|ディメンションなし|
-|storage_percent|使用済みのデータ領域の割合|Percent|最大値|データベース サイズの割合|ディメンションなし|
-|xtp_storage_percent|インメモリ OLTP ストレージの割合|Percent|平均|インメモリ OLTP ストレージの割合|ディメンションなし|
-|workers_percent|ワーカーの割合|Percent|平均|ワーカーの割合|ディメンションなし|
-|sessions_percent|セッションの割合|Percent|平均|セッションの割合|ディメンションなし|
-|dtu_limit|DTU の上限|Count|平均|DTU の上限|ディメンションなし|
-|dtu_used|使用された DTU|Count|平均|使用された DTU|ディメンションなし|
-|cpu_limit|CPU 制限|Count|平均|CPU 制限|ディメンションなし|
-|cpu_used|使用された CPU|Count|平均|使用された CPU|ディメンションなし|
-|dwu_limit|DWU 上限|Count|最大値|DWU 上限|ディメンションなし|
-|dwu_consumption_percent|DWU の割合|Percent|最大値|DWU の割合|ディメンションなし|
-|dwu_used|使用済み DWU|Count|最大値|使用済み DWU|ディメンションなし|
+|deadlock|デッドロック|Count|合計|デッドロック。 データ ウェアハウスには適用されません。|ディメンションなし|
+|storage_percent|使用済みのデータ領域の割合|Percent|最大値|データベース サイズの割合。 データ ウェアハウスまたはハイパースケール データベースには適用されません。|ディメンションなし|
+|xtp_storage_percent|インメモリ OLTP ストレージの割合|Percent|平均|インメモリ OLTP ストレージの割合。 データ ウェアハウスには適用されません。|ディメンションなし|
+|workers_percent|ワーカーの割合|Percent|平均|ワーカーの割合。 データ ウェアハウスには適用されません。|ディメンションなし|
+|sessions_percent|セッションの割合|Percent|平均|セッションの割合。 データ ウェアハウスには適用されません。|ディメンションなし|
+|dtu_limit|DTU の上限|Count|平均|DTU の上限。 DTU ベースのデータベースに適用されます。|ディメンションなし|
+|dtu_used|使用された DTU|Count|平均|使用された DTU。 DTU ベースのデータベースに適用されます。|ディメンションなし|
+|cpu_limit|CPU 制限|Count|平均|CPU 制限。 仮想コア ベースのデータベースに適用されます。|ディメンションなし|
+|cpu_used|使用された CPU|Count|平均|使用された CPU。 仮想コア ベースのデータベースに適用されます。|ディメンションなし|
+|dwu_limit|DWU 上限|Count|最大値|DWU 上限。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
+|dwu_consumption_percent|DWU の割合|Percent|最大値|DWU の割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
+|dwu_used|使用済み DWU|Count|最大値|使用された DWU。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
 |dw_cpu_percent|DW ノード レベルの CPU の割合|Percent|平均|DW ノード レベルの CPU の割合|DwLogicalNodeId|
 |dw_physical_data_read_percent|DW ノード レベルのデータ IO の割合|Percent|平均|DW ノード レベルのデータ IO の割合|DwLogicalNodeId|
-    |cache_hit_percent|キャッシュ ヒットの割合|Percent|最大値|キャッシュ ヒットの割合|ディメンションなし|
-|cache_used_percent|使用されたキャッシュの割合|Percent|最大値|使用されたキャッシュの割合|ディメンションなし|
-|local_tempdb_usage_percent|ローカル tempdb の割合|Percent|平均|ローカル tempdb の割合|ディメンションなし|
-|app_cpu_billed|課金されるアプリ CPU|Count|合計|課金されるアプリ CPU|ディメンションなし|
-|app_cpu_percent|アプリ CPU の割合|Percent|平均|アプリ CPU の割合|ディメンションなし|
-|app_memory_percent|アプリのメモリ使用率|Percent|平均|アプリのメモリ使用率|ディメンションなし|
-|allocated_data_storage|割り当て済みのデータ領域|Bytes|平均|割り当て済みのデータ領域|ディメンションなし|
+|cache_hit_percent|キャッシュ ヒットの割合|Percent|最大値|キャッシュ ヒットの割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
+|cache_used_percent|使用されたキャッシュの割合|Percent|最大値|使用されたキャッシュの割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
+|local_tempdb_usage_percent|ローカル tempdb の割合|Percent|平均|ローカル tempdb の割合。 データ ウェアハウスにのみ適用されます。|ディメンションなし|
+|app_cpu_billed|課金されるアプリ CPU|Count|合計|課金されるアプリ CPU。 サーバーレス データベースに適用されます。|ディメンションなし|
+|app_cpu_percent|アプリ CPU の割合|Percent|平均|アプリ CPU の割合。 サーバーレス データベースに適用されます。|ディメンションなし|
+|app_memory_percent|アプリのメモリ使用率|Percent|平均|アプリのメモリ使用率。 サーバーレス データベースに適用されます。|ディメンションなし|
+|allocated_data_storage|割り当て済みのデータ領域|Bytes|平均|割り当て済みのデータ領域。 データ ウェアハウスには適用されません。|ディメンションなし|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -1470,17 +1472,17 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |cpu_percent|CPU の割合|Percent|平均|CPU の割合|ディメンションなし|
 |physical_data_read_percent|データ IO の割合|Percent|平均|データ IO の割合|ディメンションなし|
 |log_write_percent|ログ IO の割合|Percent|平均|ログ IO の割合|ディメンションなし|
-|dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合|ディメンションなし|
+|dtu_consumption_percent|DTU の割合|Percent|平均|DTU の割合。 DTU ベースのエラスティック プールに適用されます。|ディメンションなし|
 |storage_percent|使用済みのデータ領域の割合||Percent|平均|ストレージの割合|ディメンションなし|
 |workers_percent|ワーカーの割合|Percent|平均|ワーカーの割合|ディメンションなし|
 |sessions_percent|セッションの割合|Percent|平均|セッションの割合|ディメンションなし|
-|eDTU_limit|eDTU 制限|Count|平均|eDTU 制限|ディメンションなし|
+|eDTU_limit|eDTU 制限|Count|平均|eDTU 制限。 DTU ベースのエラスティック プールに適用されます。|ディメンションなし|
 |storage_limit|データの最大サイズ|Bytes|平均|ストレージの制限|ディメンションなし|
-|eDTU_used|使用済み eDTU|Count|平均|使用済み eDTU|ディメンションなし|
+|eDTU_used|使用済み eDTU|Count|平均|使用された eDTU。 DTU ベースのエラスティック プールに適用されます。|ディメンションなし|
 |storage_used|使用済みのデータ領域|Bytes|平均|使用済みストレージ|ディメンションなし|
 |xtp_storage_percent|インメモリ OLTP ストレージの割合|Percent|平均|インメモリ OLTP ストレージの割合|ディメンションなし|
-|cpu_limit|CPU 制限|Count|平均|CPU 制限|ディメンションなし|
-|cpu_used|使用された CPU|Count|平均|使用された CPU|ディメンションなし|
+|cpu_limit|CPU 制限|Count|平均|CPU 制限。 仮想コア ベースのエラスティック プールに適用されます。|ディメンションなし|
+|cpu_used|使用された CPU|Count|平均|使用された CPU。 仮想コア ベースのエラスティック プールに適用されます。|ディメンションなし|
 |allocated_data_storage|割り当て済みのデータ領域|Bytes|平均|割り当て済みのデータ領域|ディメンションなし|
 |allocated_data_storage_percent|割り当て済みのデータ領域の割合|Percent|最大値|割り当て済みのデータ領域の割合|ディメンションなし|
 
@@ -1636,13 +1638,13 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |DiskReadOperations|ディスク読み取り操作数|Count|合計|以前のサンプル期間内の IO 読み取り操作数。 これらの操作はサイズが変動する場合があることに注意してください。|ディメンションなし|
 |DiskWriteOperations|Disk Write Operations|Count|合計|以前のサンプル期間内の IO 書き込み操作数。 これらの操作はサイズが変動する場合があることに注意してください。|ディメンションなし|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|以前のサンプル期間内の IO 読み取り操作の平均数。 これらの操作はサイズが変動する場合があることに注意してください。|ディメンションなし|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|以前のサンプル期間内の IO 書き込み操作の平均数。 これらの操作はサイズが変動する場合があることに注意してください。|ディメンションなし|
+|Disk Write Operations/Sec|Disk Write Operations/Sec|CountPerSecond|平均|以前のサンプル期間内の IO 書き込み操作の平均数。 これらの操作はサイズが変動する場合があることに注意してください。|ディメンションなし|
 |DiskReadLatency|ディスク読み取り待機時間|ミリ秒|平均|合計読み取り待機時間。 デバイスとカーネルの読み取り待機時間の合計。|ディメンションなし|
 |DiskWriteLatency|ディスク書き込み待機時間|ミリ秒|平均|合計書き込み待機時間。 デバイスとカーネルの書き込み待機時間の合計。|ディメンションなし|
 |NetworkInBytesPerSecond|受信ネットワークのバイト数/秒|BytesPerSecond|平均|受信トラフィックの平均ネットワーク スループット。|ディメンションなし|
 |NetworkOutBytesPerSecond|送信ネットワークのバイト数/秒|BytesPerSecond|平均|送信トラフィックの平均ネットワーク スループット。|ディメンションなし|
 |Network In|ネットワーク受信|Bytes|合計|受信トラフィックの合計ネットワーク スループット。|ディメンションなし|
-|ネットワーク送信|ネットワーク送信|Bytes|合計|送信トラフィックの合計ネットワーク スループット。|ディメンションなし|
+|Network Out|ネットワーク送信|Bytes|合計|送信トラフィックの合計ネットワーク スループット。|ディメンションなし|
 |MemoryUsed|メモリ使用量|Bytes|平均|VM によって使用されているマシンのメモリの容量。|ディメンションなし|
 |MemoryGranted|許可されているメモリ量|Bytes|平均|ホストによって VM に許可されたメモリの容量。 VMkernel がメモリを必要とした場合、一度アクセスされ、許可されたメモリがスワップ アウトされるか、バルーニングされるまで、メモリはホストに与えられません。|ディメンションなし|
 |MemoryActive|アクティブなメモリ|Bytes|平均|過去の小さな時間枠で VM によって使用されたメモリの容量。 これは、VM が現在必要としているメモリの容量の「真」の数値です。 ゲストのパフォーマンスに影響を与えずに、追加の未使用メモリをスワップ アウトするか、バルーニングできます。|ディメンションなし|

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 09ef80742c931c9b7e8f8c2e2cf0b9e373ad6184
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 3141a32437e56bcefe830bc94109e93208e0258d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69015775"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232162"
 ---
 # <a name="tutorial-configure-ipass-smartconnect-for-automatic-user-provisioning"></a>チュートリアル:iPass SmartConnect を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -57,7 +57,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 Azure AD での自動ユーザー プロビジョニング用に iPass SmartConnect を構成する前に、iPass SmartConnect 管理コンソールから構成情報を取得する必要があります。
 
 1. iPass SmartConnect の SCIM エンドポイントに対して認証を行うために必要なベアラー トークンを取得するには、iPass SmartConnect を初めて設定するときに参照してください。この値はその時にしか提供されないためです。 
-2. ベアラー トークンがない場合は、[iPass SmartConnect のサポートチーム] (mailto:help@ipass.com) に問い合わせて新しいトークンを取得します。
+2. ベアラー トークンがない場合は、[iPass SmartConnect のサポートチーム](mailto:help@ipass.com)に問い合わせて新しいトークンを取得します。
 
 ## <a name="add-ipass-smartconnect-from-the-gallery"></a>ギャラリーから iPass SmartConnect を追加する
 

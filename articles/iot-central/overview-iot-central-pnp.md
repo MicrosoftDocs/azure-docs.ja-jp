@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: af5b16448a39e0106dbc04724607ff603483484c
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: bfdad0d81599035e7d8c270ec4e8ee8d6a45125e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997740"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858927"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Azure IoT Central (プレビュー機能) とは?
 
@@ -62,7 +62,8 @@ Azure IoT Central は、物理的な世界とデジタルの世界とを結ぶ�
 - 配列スキーマの種類はサポートされていない。
 - アプリケーション テンプレートのエクスポートとアプリケーションのコピーはサポートされていない。
 - C デバイス SDK と Node.js のデバイス SDK、サービス SDK のみがサポートされている。
-- 一部のリージョンでしか利用できない。
+- 北ヨーロッパ リージョンと米国中部リージョンでのみ利用できます。
+- デバイス機能モデルには、すべてのインターフェイスが同じファイル内にインラインで定義されている必要があります。
 
 ## <a name="personas"></a>ペルソナ
 
@@ -100,7 +101,7 @@ Azure IoT Central は、物理的な世界とデジタルの世界とを結ぶ�
 ビルダーは、デバイス テンプレートを作成する場合、次に示すいくつかのオプションを利用できます。
 
 - IoT Central でデバイス テンプレートを設計してから、そのデバイス機能モデルをデバイス コードに実装します。
-- [Azure Certified for IoT デバイス カタログ](https://aka.ms/iotdevcat)からデバイス機能モデルをインポートし、次に、IoT Central アプリケーションで必要とされるクラウドのプロパティ、カスタマイズ、ダッシュボードを追加します。
+- [Azure Certified for IoT デバイス カタログ](https://aka.ms/iotdevcat)からデバイス機能モデルをインポートし、次に、IoT Central アプリケーションで必要とされるクラウド プロパティ、カスタマイズ、およびダッシュボードを追加します。
 - Visual Studio Code を使用してデバイス機能モデルを作成します。 モデルからデバイス コードを実装し、デバイスを IoT Central アプリケーションに接続します。 IoT Central によって、リポジトリからデバイス機能モデルが検索され、シンプルなデバイス テンプレートが自動的に作成されます。
 - Visual Studio Code を使用してデバイス機能モデルを作成します。 ご利用のデバイス コードをモデルから実装します。 ご利用の IoT Central アプリケーションにデバイス機能モデルを手動でインポートしてから、IoT Central アプリケーションに必要なクラウドのプロパティ、カスタマイズ、ダッシュボードを追加します。
 

@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 76a4c16afc9edef0a88ac9f2892de9738fd30289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f9fca0a9fefb5959747a4492139ae422a118db02
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66305066"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390175"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid サブスクリプションでのイベントのフィルター処理を理解します
 
@@ -61,23 +61,40 @@ ms.locfileid: "66305066"
 * キー - フィルター処理のために使用するイベント データ内のフィールド。 キーとして数値、ブール値、または文字列を指定できます。
 * 値 - キーと比較する 1 つ以上の値。
 
-高度なフィルターを使用する場合の JSON 構文を次に示します。
+複数の値を使用した単一のフィルターを指定する場合、**OR** 操作が実行されます。そのため、キー フィールドの値はそれらの値のいずれかである必要があります。 たとえば次のようになります。
 
 ```json
-"filter": {
-  "advancedFilters": [
+"advancedFilters": [
     {
-      "operatorType": "NumberGreaterThanOrEquals",
-      "key": "Data.Key1",
-      "value": 5
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/",
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
+    }
+]
+```
+
+複数の異なるフィルターを指定する場合、**AND** 操作が実行されます。そのため、各フィルターの条件が満たされる必要があります。 たとえば次のようになります。 
+
+```json
+"advancedFilters": [
+    {
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/microsoft.devtestlab/"
+        ]
     },
     {
-      "operatorType": "StringContains",
-      "key": "Subject",
-      "values": ["container1", "container2"]
+        "operatorType": "StringContains",
+        "key": "Subject",
+        "values": [
+            "/providers/Microsoft.Compute/virtualMachines/"
+        ]
     }
-  ]
-}
+]
 ```
 
 ### <a name="operator"></a>Operator
@@ -103,11 +120,11 @@ ms.locfileid: "66305066"
 
 すべての文字列比較で、大文字と小文字が区別されます。
 
-### <a name="key"></a>キー
+### <a name="key"></a>Key
 
 Event Grid スキーマ内のイベントの場合、キーには次の値を使用します。
 
-* Id
+* id
 * トピック
 * サブジェクト
 * EventType

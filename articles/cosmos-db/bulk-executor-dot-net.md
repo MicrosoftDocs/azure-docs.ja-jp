@@ -6,19 +6,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 09/01/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: a81b22d8ca538c7dc25a9c6631c2b455d5a6c90e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 26e4c4edbcfc282fffd0d43673d3585cfe973848
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257215"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241278"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
-このチュートリアルでは、Azure Cosmos DB の Bulk Executor .NET ライブラリを使用して、ドキュメントを Azure Cosmos DB コンテナーにインポートし、更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムに生成されたドキュメントを Azure Cosmos DB コンテナーに一括インポートするサンプル .NET アプリケーションを示します。 インポート後、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたデータを一括更新する方法について説明します。 
+このチュートリアルでは、Azure Cosmos DB の Bulk Executor .NET ライブラリを使用して、ドキュメントを Azure Cosmos コンテナーにインポートし、更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムに生成されたドキュメントを Azure Cosmos コンテナーに一括インポートするサンプル .NET アプリケーションを示します。 インポート後、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたデータを一括更新する方法について説明します。 
 
 現在、Bulk Executor ライブラリは、Azure Cosmos DB SQL API および Gremlin API アカウントによってのみサポートされています。 この記事では、SQL API アカウントで Bulk Executor .NET ライブラリを使用する方法について説明します。 Gremlin API での Bulk Executor .NET ライブラリの使用の詳細については、[Azure Cosmos DB Gremlin API での一括操作の実行](bulk-executor-graph-dotnet.md)に関するページを参照してください。 
 
@@ -58,7 +58,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    private static readonly int CollectionThroughput = int.Parse(ConfigurationManager.AppSettings["CollectionThroughput"]);
    ```
 
-   一括インポーターにより、App.config ファイルで指定したデータベース名、コレクション名、およびスループット値を使用して、新しいデータベースとコレクションが作成されます。 
+   一括インポーターでは、App.config ファイルで指定されているデータベース名、コンテナー名、およびスループット値を使用して、新しいデータベースとコンテナーが作成されます。 
 
 3. 次に、DocumentClient オブジェクトが Direct TCP 接続モードで初期化されます。  
 
@@ -171,11 +171,11 @@ Bulk Executor ライブラリを使用する場合は、パフォーマンスを
 
 * パフォーマンスを最大限に高めるには、Cosmos DB アカウントの書き込みリージョンと同じリージョンにある Azure 仮想マシンからアプリケーションを実行します。  
 
-* 特定の Cosmos DB コンテナーに対応する単一の仮想マシン内でアプリケーション全体に対して 1 つの BulkExecutor オブジェクトをインスタンス化することをお勧めします。  
+* 特定の Cosmos コンテナーに対応する単一の仮想マシン内でアプリケーション全体に対して 1 つの BulkExecutor オブジェクトをインスタンス化することをお勧めします。  
 
 * 1 つの一括操作 API 実行でクライアント マシンの CPU とネットワーク IO が大量に消費されます。 これは、内部的に複数のタスクを生成することで、一括操作 API 呼び出しを実行するたびにアプリケーション プロセス内で複数の同時実行タスクが生成されないようにするためです。 単一の仮想マシンで実行される 1 つの一括操作 API 呼び出しでコンテナー全体のスループットを消費できない場合 (コンテナーのスループットが 100 万 RU/秒を超える場合)、別個の仮想マシンを作成して、一括操作 API 呼び出しを同時に実行することをお勧めします。  
 
-* BulkExecutor オブジェクトをインスタンス化して、ターゲット Cosmos DB コンテナーのパーティション マップを取得した後、InitializeAsync() が確実に呼び出されるようにします。  
+* BulkExecutor オブジェクトをインスタンス化して、ターゲット Cosmos コンテナーのパーティション マップを取得した後、InitializeAsync() が確実に呼び出されるようにします。  
 
 * パフォーマンス向上のために、アプリケーションの App.Config で **gcServer** を有効にします。
   ```xml  

@@ -1,5 +1,5 @@
 - name: Data Lake Analytics のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   items:
     - name: Data Lake Analytics とは

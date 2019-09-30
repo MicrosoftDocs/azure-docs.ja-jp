@@ -1,6 +1,6 @@
 ---
 title: Linux VM に Azure Active Directory の資格情報を使用してログインする | Microsoft Docs
-description: この記事では、ユーザー ログインに Azure Active Directory 認証を使用する Linux VM を作成および構成する方法について説明します。
+description: Azure Active Directory 認証を使用してサインインするために、Linux VM を作成して構成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -12,21 +12,26 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/17/2018
+ms.date: 08/29/2019
 ms.author: cynthn
-ms.openlocfilehash: f8f00c49ced4e06eb634cbbfb1b786e6729783d2
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 0e3996c28750639b227475bf4e0196f3a0c3ab0d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67667664"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163216"
 ---
-# <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure の Linux 仮想マシンにログインする
+# <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
 Azure の Linux 仮想マシン (VM) のセキュリティを強化するために、Azure Active Directory (AD) の認証と統合できます。 Linux VM に Azure AD の認証を使用することで、VM へのアクセスを許可/拒否するポリシーを一元管理および施行します。 この記事では、Azure AD 認証を使用して Linux VM を作成し、構成する方法について説明します。
 
-> [!NOTE]
-> この機能はプレビュー段階にあり、運用環境の仮想マシンまたはワークロードでの使用はお勧めしません。 テスト後に破棄する予定のテスト用仮想マシンでこの機能を使用してください。
+
+> [!IMPORTANT]
+> Azure Active Directory 認証は、現在、パブリック プレビューの段階です。
+> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> テスト後に破棄する予定のテスト用仮想マシンでこの機能を使用してください。
+>
+
 
 Azure AD の認証を使用して、Azure Linux VM にログインすると、次のような多くのメリットがあります。
 
@@ -43,7 +48,7 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 
 この機能のプレビュー期間中は、次の Linux ディストリビューションがサポートされます。
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 | --- | --- |
 | CentOS | CentOS 6、CentOS 7 |
 | Debian | Debian 9 |
@@ -60,7 +65,6 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 >[!IMPORTANT]
 > このプレビュー機能を使用するには、サポートされている Linux ディストリビューションおよびサポートされている Azure リージョンのみに展開してください。 この機能は、Azure Government やソブリン クラウドではサポートされていません。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 CLI をローカルにインストールして使用する場合、Azure CLI バージョン 2.0.31 以降を実行していることがこのチュートリアルの要件になります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
@@ -93,7 +97,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-VM に拡張機能がインストールされると、*provisioningState* に *Succeeded* が表示されます。
+VM に拡張機能が正常にインストールされると、*provisioningState* に *Succeeded* が表示されます。
 
 ## <a name="configure-role-assignments-for-the-vm"></a>仮想マシン ロールの割り当てを構成する
 
@@ -132,24 +136,21 @@ Linux 仮想マシンにサインインする特定のユーザーに対して�
 az vm show --resource-group myResourceGroup --name myVM -d --query publicIps -o tsv
 ```
 
-Azure AD 資格情報を使用して Azure Linux 仮想マシンにログインします。 `-l` パラメーターを使用して、独自の Azure AD アカウントのアドレスを指定できます。 アカウントのアドレスは、すべて小文字で入力する必要があります。 前述のコマンドからお使いの VM のパブリック IP アドレスを使用します。
+Azure AD 資格情報を使用して Azure Linux 仮想マシンにログインします。 `-l` パラメーターを使用して、独自の Azure AD アカウントのアドレスを指定できます。 例のアカウントを自分のものに置き換えてください。 アカウントのアドレスは、すべて小文字で入力する必要があります。 サンプルの IP アドレスを、前のコマンドの、ご自分の VM のパブリック IP アドレスに置き換えます。
 
 ```azurecli-interactive
-ssh -l azureuser@contoso.onmicrosoft.com publicIps
+ssh -l azureuser@contoso.onmicrosoft.com 10.11.123.456
 ```
 
-[https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) でワンタイム ユーザー コードを使用して Azure AD にサインインするように求められます。 次の例で示すように、ワンタイム ユーザー コードをコピーし、デバイスのログイン ページに貼り付けます。
+[https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) でワンタイム ユーザー コードを使用して Azure AD にサインインするように求められます。 ワンタイム ユーザー コードをコピーし、デバイスのログイン ページに貼り付けます。
 
-```bash
-~$ ssh -l azureuser@contoso.onmicrosoft.com 13.65.237.247
-To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code FJS3K6X4D to authenticate. Press ENTER when ready.
-```
+メッセージが表示されたら、ログイン ページに Azure AD ログイン資格情報を入力します。 
 
-メッセージが表示されたら、ログイン ページに Azure AD ログイン資格情報を入力します。 認証が完了すると、Web ブラウザーに次のメッセージが表示されます。
+認証が完了すると、Web ブラウザーに `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.` のメッセージが表示されます。
 
-    You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.
+ブラウザー ウィンドウを閉じ、SSH プロンプト ウィンドウに戻り、**Enter** キーを押します。 
 
-ブラウザー ウィンドウを閉じ、SSH プロンプト ウィンドウに戻り、**Enter** キーを押します。 これで、*VM ユーザー*または *VM 管理者*などの、割り当てられたロール権限を持つユーザーとして、Azure Linux 仮想マシンにサインインしました。 ユーザー アカウントに*仮想マシンの管理者ログイン*ロールが割り当てられている場合は `sudo` を使用してルート権限を必要とするコマンドを実行できます。
+これで、*VM ユーザー*または *VM 管理者*などの、割り当てられたロール権限を持つユーザーとして、Azure Linux 仮想マシンにサインインしました。 ご自分のユーザー アカウントに*仮想マシンの管理者ログイン*ロールが割り当てられている場合は、`sudo` を使用してルート権限を必要とするコマンドを実行できます。
 
 ## <a name="sudo-and-aad-login"></a>sudo と AAD ログイン
 

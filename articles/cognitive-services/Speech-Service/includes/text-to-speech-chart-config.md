@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 06/26/2019
+ms.date: 08/22/2019
 ms.author: dapine
-ms.openlocfilehash: e6c7dcd3015b0b8ab5b3c719ebd2397bc814b81a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c87132c3ae41dec82e3493f9a0ee2397455ff881
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67717214"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69971332"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>テキスト読み上げ (サブチャート: charts/textToSpeech)
 
 「アンブレラ」チャートを上書きするには、任意のパラメーターに `textToSpeech.` プレフィックスを追加して限定します。 たとえば、`textToSpeech.numberOfConcurrentRequest` が `numberOfConcurrentRequest` を上書きするように、対応するパラメーターを上書きします。
 
-|パラメーター|説明|既定値|
+|パラメーター|説明|Default|
 | -- | -- | -- |
 | `enabled` | **テキスト読み上げ**サービスが有効かどうか。 | `false` |
 | `numberOfConcurrentRequest` | **テキスト読み上げ**サービスの同時要求数。 このチャートは、この値に基づいて CPU およびメモリ リソースを自動的に計算します。 | `2` |
@@ -37,5 +37,6 @@ ms.locfileid: "67717214"
 | `image.args.apikey` (必須) | 課金情報の追跡に使用されます。 ||
 | `service.type` | **テキスト読み上げ**サービスの Kubernetes サービスの種類。 詳細およびクラウド プロバイダーのサポートの検証については、[Kubernetes サービスの種類の手順](https://kubernetes.io/docs/concepts/services-networking/service/)に関する記事を参照してください。 | `LoadBalancer` |
 | `service.port`|  **テキスト読み上げ**サービスのポート。 | `80` |
+| `service.annotations` | サービスのメタデータに使用される**テキスト読み上げ**の注釈。 注釈は、キーと値のペアになっています。 <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
 | `service.autoScaler.enabled` | [ポッドの水平オートスケーラー](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)が有効かどうか。 `true` の場合、`text-to-speech-autoscaler` が Kubernetes クラスターにデプロイされます。 | `true` |
 | `service.podDisruption.enabled` | [ポッド中断バジェット](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/)が有効かどうか。 `true` の場合、`text-to-speech-poddisruptionbudget` が Kubernetes クラスターにデプロイされます。 | `true` |

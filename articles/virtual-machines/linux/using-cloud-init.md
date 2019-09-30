@@ -3,7 +3,7 @@ title: Azure での Linux 仮想マシンに対する cloud-init のサポート
 description: Microsoft Azure での cloud-init 機能の概要
 services: virtual-machines-linux
 documentationcenter: ''
-author: rickstercdn
+author: danielsollondon
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,36 +13,39 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 11/29/2017
-ms.author: rclaus
-ms.openlocfilehash: 057f7c42c037dac4cb2be686df09287de7113f0d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 08/20/2019
+ms.author: danis
+ms.openlocfilehash: 7e22aaf2ead4dd618c2907f8659455e1862110a5
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695382"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650098"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
-この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セット (VMSS) を構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
+この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セットを構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
 
 ## <a name="cloud-init-overview"></a>cloud-init の概要
 [cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 cloud-init は初回起動プロセスの間に呼び出されるので、構成を適用するために追加の手順や必要なエージェントはありません。  `#cloud-config` ファイルの形式を正しく設定する方法について詳しくは、[cloud-init のドキュメント サイト](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)をご覧ください。  `#cloud-config` ファイルは、base64 でエンコードされたテキスト ファイルです。
 
 cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
- Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージでは、cloud-init のデプロイと構成が VM および VM Scale Sets (VMSS) とシームレスに動作するようになります。 次の表は、現時点において Azure プラットフォームで利用できる cloud-init 対応イメージの概要を示したものです。
+Microsoft は、動作保証済み Linux ディストリビューションのパートナーと協力して、cloud-init 対応のイメージを Azure Marketplace で利用できるようにする作業を行っています。 これらのイメージによって、cloud-init のデプロイと構成が、VM および仮想マシン スケール セット とシームレスに動作するようになります。 次の表は、現時点において Azure プラットフォームで利用できる cloud-init 対応イメージの概要を示したものです。
 
-| Publisher | プラン | SKU | バージョン | cloud-init 対応 |
+| Publisher | プラン | SKU | Version | cloud-init 対応 |
 |:--- |:--- |:--- |:--- |:--- |
 |Canonical |UbuntuServer |18.04-LTS |latest |はい | 
-|Canonical |UbuntuServer |17.10 |latest |はい | 
 |Canonical |UbuntuServer |16.04 LTS |latest |はい | 
 |Canonical |UbuntuServer |14.04.5-LTS |latest |はい |
 |CoreOS |CoreOS |安定版 |latest |はい |
-|OpenLogic |CentOS |7-CI |latest |preview |
-|RedHat |RHEL |7-RAW-CI |latest |preview |
+|OpenLogic 7.6 |CentOS |7-CI |latest |preview |
+|RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |はい |
+|RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
+    
+現時点では、Azure Stack では cloud-init を使用した RHEL 7.x と CentOS 7.x のプロビジョニングはサポートされていません。
 
-現時点では、Azure Stack は cloud-init を使用した RHEL 7.4 および CentOS 7.4 のプロビジョニングをサポートしません。
+* RHEL 7.6 の cloud init パッケージでは、次のパッケージがサポートされています。*18.2-1.el7_6.2* 
+* RHEL 7.7 (プレビュー) の cloud init パッケージでは、次のパッケージがサポートされています。*18.5-3.el7*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init と Linux エージェント (WALA) の相違点
 WALA は、VM のプロビジョニングと構成および Azure 拡張機能の処理に使われる、Azure プラットフォーム固有のエージェントです。 既存の cloud-init のお客様が現在の cloud-init スクリプトを使用できるよう、Linux エージェントではなく cloud-init を使うように VM 構成タスクの拡張を行っています。  Linux システム構成用の cloud-init スリプトが既にある場合、それを有効にするために**追加の設定は必要ありません**。 

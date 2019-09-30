@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: bc341492779e6ed5aef2505a98ad8a116866fe4d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: ae974be462a688d7b740fb9ca28e1186e7512326
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67695274"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273801"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
 Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)に関するページをご覧ください。
 
 ## <a name="download-your-usage-details"></a>使用量の詳細のダウンロード
-最初に、[使用量の詳細をダウンロード](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)します。 次の表は、Azure Resource Manager を使用してデプロイされた Virtual Machines の使用量の定義とサンプル値を示しています。 このドキュメントには、クラシック モデルを使用してデプロイされた VM に関する詳細情報は含まれません。
+最初に、[使用量の詳細をダウンロード](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal)します。 次の表は、Azure Resource Manager を使用してデプロイされた Virtual Machines の使用量の定義とサンプル値を示しています。 このドキュメントには、クラシック モデルを使用してデプロイされた VM に関する詳細情報は含まれません。
 
 
 | フィールド             | 意味                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | サンプル値                                                                                                                                                                                                                                                                                                                                                   |

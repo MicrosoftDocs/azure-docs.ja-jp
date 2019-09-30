@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: ril
 ms.reviewer: juliako
-ms.openlocfilehash: 3f40c69900b0d7f1c3bf446c1153e21dd7fd4d1b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: a8db8de6ef062dcf757f3d264379677d6550ea3a
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014936"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997671"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
 
@@ -40,7 +40,7 @@ Redactor の使用を開始する最も簡単な方法は、GitHub のオープ�
 
 ### <a name="download-and-setup"></a>ダウンロードとセットアップ
 
-1. AMSE ツールを[こちら](https://github.com/Azure/Azure-Media-Services-Explorer)からダウンロードします。
+1. AMS v2 用 AMSE ツールを[こちら](https://aka.ms/amseforv2)からダウンロードします。
 1. サービス キーを使用して、Media Services アカウントにログインします。
 
     アカウント名とキーの情報を取得するには、[Azure Portal](https://portal.azure.com/) に移動して AMS アカウントを選択します。 [設定]、[キー] の順にクリックします。 [キーの管理] ウィンドウに、アカウント名、プライマリ キー、セカンダリ キーが表示されます。 アカウント名とプライマリ キーの値をコピーします。

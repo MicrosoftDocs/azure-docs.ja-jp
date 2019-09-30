@@ -131,8 +131,8 @@
           href: service-fabric-application-and-service-security.md
         - name: Service Fabric クラスターのセキュリティ
           href: service-fabric-cluster-security.md
-        - name: Azure の一般的なセキュリティ属性
-          href: service-fabric-security-attributes.md
+        - name: 組み込みのセキュリティ制御
+          href: service-fabric-security-controls.md
     - name: 用語集
       href: service-fabric-technical-overview.md
     - name: アプリケーションの構築
@@ -619,7 +619,7 @@
       items:
         - name: Azure 上のクラスター
           items:
-            - name: Create
+            - name: 作成
               items:
                 - name: クラスターのデプロイの計画
                   href: service-fabric-cluster-azure-deployment-preparation.md
@@ -675,7 +675,7 @@
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
         - name: スタンドアロンのクラスター
           items:
-            - name: Create
+            - name: 作成
               items:
                 - name: オンプレミスでの作成
                   href: service-fabric-cluster-creation-for-windows-server.md

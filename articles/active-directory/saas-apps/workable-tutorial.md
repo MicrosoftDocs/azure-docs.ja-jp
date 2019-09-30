@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1341f0def306a1167e1e4876365c70901cf89cd2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5fc1f6434bea8f75c7bcc7859c6f90d7abdd031b
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087001"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091032"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workable"></a>チュートリアル:Azure Active Directory と Workable の統合
 
@@ -142,7 +142,7 @@ Workable 内で SSO を有効にするには、専任の Workable アカウン�
 
 3. ログアウト URL
 
-シングル サインオンが有効になると Workable アカウント マネージャーから通知されるので、[Workable の SSO ページ](https://id.workable.com/sso/signin)で Workable アカウント サブドメインを使用してサインインできます。
+シングル サインオンが有効になると Workable アカウント マネージャーから通知されるので、[Workable の SSO ページ](https://help.workable.com/hc/en-us/articles/360000067753-Single-Sign-on-SSO-Overview-Pro)で Workable アカウント サブドメインを使用してサインインできます。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

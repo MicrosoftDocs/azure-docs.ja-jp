@@ -1,6 +1,6 @@
 ---
 title: 機械学習に Visual Studio Code を使用する
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Machine Learning for Visual Studio Code をインストールし、Azure Machine Learning で簡単な実験を作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,24 +10,24 @@ ms.author: ronglu
 author: ronglums
 ms.date: 7/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1d18006e6ec3ff1659f8fb80f8cf6766797d76b
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 0507080a390a4bb9f981b0d911961337e9b2c62a
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114428"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997191"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code の使用を開始する
 
 この記事では、Azure Machine Learning for Visual Studio Code の拡張機能を使用して、機械学習モデルとディープラーニング モデルをトレーニングおよびデプロイする方法について説明します。
 
-[Azure Machine Learning service](overview-what-is-azure-ml.md) は、ローカルとリモートのコンピューティング ターゲットで実行される実験をサポートしています。 どの実験についても、必要な頻度で複数の実行を追跡し、異なる手法やハイパーパラメーターなどを反復して試することができます。 Azure Machine Learning を使用してカスタム メトリックや実験の実行を追跡し、データ サイエンスの再現性と監査機能を実現できます。
+[Azure Machine Learning](overview-what-is-azure-ml.md) では、ローカルとリモートのコンピューティング ターゲットで実行される実験がサポートされます。 どの実験についても、必要な頻度で複数の実行を追跡し、異なる手法やハイパーパラメーターなどを反復して試することができます。 Azure Machine Learning を使用してカスタム メトリックや実験の実行を追跡し、データ サイエンスの再現性と監査機能を実現できます。
 
 テストや運用のニーズに合わせてこれらのモデルをデプロイすることもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
-+ Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) をお試しください。
++ Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
 + Visual Studio Code をインストールする必要があります。 Visual Studio Code は、デスクトップ上で動作する軽量で強力なソース コード エディターです。 Python や他のプログラミング言語のサポートが組み込まれています。 まだ Visual Studio Code をインストールしていない場合は、[こちらの方法](https://code.visualstudio.com/docs/setup/setup-overview)を参照してください。
 
@@ -69,13 +69,13 @@ Azure Machine Learning 拡張機能をインストールするには:
 
    ![インタープリターを選択する](./media/vscode-tools-for-ai/python.png)
 
-1. ウィンドウの右下に、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) が自動的にインストールされていることを示す通知が表示されます。 新しく作成される Python 環境はローカルで非公開であり、Azure Machine Learning service を使用するための Visual Studio Code の前提条件があります。
+1. ウィンドウの右下に、[Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) が自動的にインストールされていることを示す通知が表示されます。 新しく作成される Python 環境はローカルかつ非公開であり、Azure Machine Learning と連携するための Visual Studio Code の前提条件があります。
 
    ![Azure Machine Learning SDK for Python をインストールする](./media/vscode-tools-for-ai/runtimedependencies.png)
 
 ## <a name="get-started-with-azure-machine-learning"></a>Azure Machine Learning の利用を開始
 
-Visual Studio Code で機械学習モデルのトレーニングとデプロイを開始する前に、クラウドに [Azure Machine Learning service ワークスペース](concept-workspace.md)を作成する必要があります。 このワークスペースにはモデルとリソースが含まれます。 
+Visual Studio Code で機械学習モデルのトレーニングとデプロイを開始する前に、クラウドに [Azure Machine Learning ワークスペース](concept-workspace.md)を作成する必要があります。 このワークスペースにはモデルとリソースが含まれます。 
 
 ワークスペースを作成して最初の実験を追加するには:
 
@@ -117,7 +117,7 @@ Azure Machine Learning for Visual Studio Code を使用すると、データを�
 
 1. Visual Studio Code アクティビティ バーで、Azure アイコンを選択します。 Azure Machine Learning のサイドバーが表示されます。
 
-2. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning サービス ワークスペースを展開します。 次の画像の例では、サブスクリプション名は **Free Trial**、ワークスペースは **TeamWorkspace** です。 
+2. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning ワークスペースを展開します。 次の画像の例では、サブスクリプション名は **Free Trial**、ワークスペースは **TeamWorkspace** です。 
 
 3. ワークスペース ノードの下の **[コンピューティング]** ノードを右クリックし、 **[Create Compute]\(コンピューティングの作成)** を選択します。
 
@@ -147,7 +147,7 @@ Azure Machine Learning を使用して実験をローカルで実行するには
 
 1. Visual Studio Code アクティビティ バーで、Azure アイコンを選択します。 Azure Machine Learning のサイドバーが表示されます。
 
-1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning サービス ワークスペースを展開します。 
+1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning ワークスペースを展開します。 
 
 1. ワークスペース ノード以下の **[コンピューティング]** ノードを展開し、使用するコンピューティングの **[Run Config]\(実行構成\)** を右クリックします。 
 
@@ -196,7 +196,7 @@ dependencies:
 
 1. Visual Studio Code アクティビティ バーで、Azure アイコンを選択します。 Azure Machine Learning のサイドバーが表示されます。
 
-1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning サービス ワークスペースを展開します。 
+1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning ワークスペースを展開します。 
 
 1. エディター ウィンドウで、Python スクリプトを右クリックして **[AML:Run as Experiment in Azure]\(AML: Azure で実験として実行\)** を選択します。 
 
@@ -224,7 +224,7 @@ Azure Machine Learning では、機械学習モデルをクラウドとエッジ
 
 1. Visual Studio Code アクティビティ バーで、Azure アイコンを選択します。 Azure Machine Learning のサイドバーが表示されます。
 
-1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning サービス ワークスペースを展開します。
+1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning ワークスペースを展開します。
 
 1. ワークスペース ノードの下の **[モデル]** を右クリックし、 **[Register Model]\(モデルの登録)** を選択します。
 
@@ -247,13 +247,13 @@ Visual Studio Code では、Web サービスを以下にデプロイできます
 + テスト用に Azure Container Instances (ACI)。
 + 運用環境用に Azure Kubernetes Service (AKS)。
 
-ACI コンテナーはその場で作成されるので、テストするために ACI コンテナーを事前に作成する必要はありません。 ただし、AKS クラスターを事前に構成する必要があります。 詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+ACI コンテナーはその場で作成されるので、テストするために ACI コンテナーを事前に作成する必要はありません。 ただし、AKS クラスターを事前に構成する必要があります。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 Web サービスをデプロイするには:
 
 1. Visual Studio Code アクティビティ バーで、Azure アイコンを選択します。 Azure Machine Learning のサイドバーが表示されます。
 
-1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning サービス ワークスペースを展開します。
+1. ツリー ビューで、お使いの Azure サブスクリプションと Azure Machine Learning ワークスペースを展開します。
 
 1. ワークスペース ノードの下の **[モデル]** ノードを展開します。
 

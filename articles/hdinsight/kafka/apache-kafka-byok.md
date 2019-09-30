@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 6108bfd9e39b37507ec7e113bf2c489e890f0ca0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233572"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000102"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む
 
@@ -46,104 +46,105 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
    1. 新しいキー コンテナーを作成するには、[Azure Key Vault](../../key-vault/key-vault-overview.md) クイック スタートに従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md)」をご覧ください。
 
    2. [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI コマンドを使用して、キー コンテナーで [論理的な削除] を有効にします。
-        ```Azure CLI az keyvault update --name <Key Vault Name> --enable-soft-delete
+        ```Azure CLI
+        az keyvault update --name <Key Vault Name> --enable-soft-delete
         ```
 
-   3. Create keys
+   3. キーの作成
 
-        a. To create a new key, select **Generate/Import** from the **Keys** menu under **Settings**.
+        a. 新しいキーを作成するには、 **[設定]** の下にある **[キー]** メニューから **[生成/インポート]** を選択します。
 
-        ![Generate a new key in Azure Key Vault](./media/apache-kafka-byok/kafka-create-new-key.png)
+        ![Azure Key Vault で新しいキーを生成する](./media/apache-kafka-byok/kafka-create-new-key.png "Azure Key Vault で新しいキーを生成する")
 
-        b. Set **Options** to **Generate** and give the key a name.
+        b. **[オプション]** を **[生成]** に設定し、キーの名前を付けます。
 
-        ![Generate a new key in Azure Key Vault](./media/apache-kafka-byok/kafka-create-a-key.png)
+        ![キー名を生成する](./media/apache-kafka-byok/apache-kafka-create-key.png "キー名を生成する")
 
-        c. Select the key you created from the list of keys.
+        c. キーの一覧から作成したキーを選択します。
 
-        ![Azure Key Vault key list](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+        ![Azure Key Vault キーのリスト](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
-        d. When you use your own key for Kafka cluster encryption, you need to provide the key URI. Copy the **Key identifier** and save it somewhere until you're ready to create your cluster.
+        d. Kafka クラスターの暗号化に独自のキーを使用する場合は、キーの URI を指定する必要があります。 **キー識別子**をコピーし、クラスターを作成する準備ができるまでどこかに保存します。
 
-        ![Copy key identifier](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+        ![キー識別子をコピーする](./media/apache-kafka-byok/kafka-get-key-identifier.png)
    
-    4. Add managed identity to the key vault access policy.
+    4. キー コンテナーのアクセス ポリシーにマネージド ID を追加します。
 
-        a. Create a new Azure Key Vault access policy.
+        a. 新しい Azure Key Vault アクセス ポリシーを作成します。
 
-        ![Create new Azure Key Vault access policy](./media/apache-kafka-byok/add-key-vault-access-policy.png)
+        ![新しい Azure Key Vault アクセス ポリシーを作成する](./media/apache-kafka-byok/add-key-vault-access-policy.png)
 
-        b. Under **Select Principal**, choose the user-assigned managed identity you created.
+        b. **[プリンシパルの選択]** の下で、作成したユーザー割り当てマネージド ID を選択します。
 
-        ![Set Select Principal for Azure Key Vault access policy](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
+        ![Azure Key Vault アクセス ポリシーの [プリンシパルの選択] を設定する](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
 
-        c. Set **Key Permissions** to **Get**, **Unwrap Key**, and **Wrap Key**.
+        c. **[キーのアクセス許可]** を **[取得]** 、 **[キーの折り返しを解除]** 、 **[キーを折り返す]** に設定します。
 
-        ![Set Key Permissions for Azure Key Vault access policy](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png)
+        ![Azure Key Vault アクセス ポリシーにキーのアクセス許可を設定する 1](./media/apache-kafka-byok/add-key-vault-access-policy-keys.png "Azure Key Vault アクセス ポリシーにキーのアクセス許可を設定する 1")
 
-        d. Set **Secret Permissions** to **Get**, **Set**, and **Delete**.
+        d. **[シークレットのアクセス許可]** を **[取得]** 、 **[設定]** 、 **[削除]** に設定します。
 
-        ![Set Key Permissions for Azure Key Vault access policy](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png)
+        ![Azure Key Vault アクセス ポリシーにキーのアクセス許可を設定する 2](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png "Azure Key Vault アクセス ポリシーにキーのアクセス許可を設定する 2")
 
-        e. Click on **Save**. 
+        e. **[Save]** をクリックします。 
 
-        ![Save Azure Key Vault access policy](./media/apache-kafka-byok/add-key-vault-access-policy-save.png)
+        ![Azure Key Vault アクセス ポリシーを保存する](./media/apache-kafka-byok/add-key-vault-access-policy-save.png)
 
-## Create HDInsight cluster
+## <a name="create-hdinsight-cluster"></a>HDInsight クラスターの作成
 
-   You're now ready to create a new HDInsight cluster. BYOK can only be applied to new clusters during cluster creation. Encryption can't be removed from BYOK clusters, and BYOK can't be added to existing clusters.
+   これで新しい HDInsight クラスターを作成する準備が整いました。 BYOK は、クラスター作成時、新しいクラスターにのみ適用できます。 BYOK クラスターから暗号化を削除することはできません。既存のクラスターに BYOK を追加することはできません。
 
-   ![Kafka disk encryption in Azure portal](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
+   ![Azure portal の Kafka ディスク暗号化](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
 
-   During cluster creation, provide the full key URL, including the key version. For example, `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. You also need to assign the managed identity to the cluster and provide the key URI.
+   クラスター作成時、キーのバージョンも含む、完全キー URL を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
 
-## Rotating the Encryption key
-   There might be scenarios where you might want to change the encryption keys used by the Kafka cluster after it has been created. This can be easily via the portal. For this operation, the cluster must have access to both the current key and the intended new key, otherwise the rotate key operation will fail.
+## <a name="rotating-the-encryption-key"></a>暗号化キーを入れ替える
+   暗号化キーが作成された後で、Kafka クラスターによって使用される暗号化キーを変更することが必要になる場合があります。 これはポータルを使用して簡単に行うことができます。 この操作を行うには、クラスターが現在のキーと目的の新しいキーの両方にアクセスできる必要があり、そうでないとキーの交換操作は失敗します。
 
-   To rotate the key, you must have the full url of the new key (See Step 3 of [Setup the Key Vault and Keys](#setup-the-key-vault-and-keys)). Once you have that, go to the Kafka cluster properties section in the portal and click on **Change Key** under **Disk Encryption Key URL**. Enter in the new key url and submit to rotate the key.
+   キーを交換するには、新しいキーの完全な URL が必要です (「[Key Vault とキーを設定する](#setup-the-key-vault-and-keys)」の手順 3 を参照してください)。 これを入手したら、ポータルで Kafka クラスターのプロパティ セクションに移動し、 **[ディスクの暗号化キーの URL]** の **[キーの変更]** をクリックします。 新しいキーの URL を入力し、キーの交換を実行します。
 
-   ![Kafka rotate disk encryption key](./media/apache-kafka-byok/kafka-change-key.png)
+   ![Kafka のディスク暗号化キーの交換](./media/apache-kafka-byok/apache-kafka-change-key.png)
 
-## FAQ for BYOK to Apache Kafka
+## <a name="faq-for-byok-to-apache-kafka"></a>Apache Kafka の BYOK についてよくあるご質問
 
-**How does the Kafka cluster access my key vault?**
+**Kafka クラスターはキー コンテナーにどのようにしてアクセスしますか?**
 
-   Associate a managed identity with the HDInsight Kafka cluster during cluster creation. This managed identity can be created before or during cluster creation. You also need to grant the managed identity access to the key vault where the key is stored.
+   クラスター作成時、マネージド ID と HDInsight Kafka クラスターを関連付けます。 このマネージド ID は、クラスターの作成前または作成中に作成できます。 また、キーが格納されているキー コンテナーへのアクセスをマネージド ID に付与する必要があります。
 
-**Is this feature available for all Kafka clusters on HDInsight?**
+**HDInsight では、すべての Kafka クラスターでこの機能を利用できますか?**
 
-   BYOK encryption is only possible for Kafka 1.1 and above clusters.
+   BYOK 暗号化は Kafka 1.1 以上のクラスターで可能です。
 
-**Can I have different keys for different topics/partitions?**
+**異なるトピック/パーティションに対して異なるキーを持つことができますか?**
 
-   No, all managed disks in the cluster are encrypted by the same key.
+   いいえ。クラスター内のマネージド ディスクはすべて同じキーで暗号化されます。
 
-**What happens if the cluster loses access to the key vault or the key?**
-   If the cluster loses access to the key, warnings will be shown in the Apache Ambari portal. In this state, the **Change Key** operation will fail. Once key access is restored, Ambari warnings will go away and operations such as key rotation can be successfully performed.
+**クラスターがキー　コンテナーまたはキーにアクセスできなくなった場合はどうなりますか。**
+クラスターがキーへのアクセスを失うと、Apache Ambari ポータルに警告が表示されます。 この状態では、**キーの変更**操作は失敗します。 キー アクセスが復元されると、Ambari の警告が消え、キーの交換などの操作を正常に実行できます。
 
-   ![Kafka key access Ambari alert](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Kafka キー アクセス Ambari アラート](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
-**How can I recover the cluster if the keys are deleted?**
+**キーを削除した場合、どのようにしてクラスターを復元しますか?**
 
-   Since only “Soft Delete” enabled keys are supported, if the keys are recovered in the key vault, the cluster should regain access to the keys. To recover an Azure Key Vault key, see [Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval) or [az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover).
+   "論理的な削除" 対応のキーのみがサポートされているため、キーがキー コンテナー内で回復された場合、クラスターはキーへ再びアクセスできるようになります。 Azure Key Vault キーを回復するには、「[Undo-AzKeyVaultKeyRemoval](/powershell/module/az.keyvault/Undo-AzKeyVaultKeyRemoval)」または「[az-keyvault-key-recover](/cli/azure/keyvault/key?view=azure-cli-latest#az-keyvault-key-recover)」に関するページを参照してください。
 
-**Can I have producer/consumer applications working with a BYOK cluster and a non-BYOK cluster simultaneously?**
+**BYOK クラスターと非 BYOK クラスターで同時にプロデューサー/コンシューマー アプリケーションを動かすことはできますか?**
 
-   Yes. The use of BYOK is transparent to producer/consumer applications. Encryption happens at the OS layer. No changes need to be made to existing producer/consumer Kafka applications.
+   はい。 BYOK はプロデューサー/コンシューマー アプリケーションで透過的に使用されます。 暗号化は OS 層で行われます。 既存のプロデューサー/コンシューマー Kafka アプリケーションを変更する必要はありません。
 
-**Are OS disks/Resource disks also encrypted?**
+**OS ディスク/リソース ディスクも暗号化されますか?**
 
-   No. OS disks and Resource disks are not encrypted.
+   いいえ。 OS ディスクとリソース ディスクは暗号化されません。
 
-**If a cluster is scaled up, will the new brokers support BYOK seamlessly?**
+**クラスターをスケール アップするとき、新しいブローカーは BYOK をシームレスにサポートしますか?**
 
-   Yes. The cluster needs access to the key in the key vault during scale up. The same key is used to encrypt all managed disks in the cluster.
+   はい。 スケール アップ中、クラスターはキー コンテナー内のキーにアクセスする必要があります。 この同じキーを使用し、クラスター内のすべてのマネージド ディスクが暗号化されます。
 
-**Is BYOK available in my location?**
+**BYOK は私の住んでいる地域で利用できますか?**
 
-   Kafka BYOK is available in all public clouds.
+   Kafka BYOK はあらゆるパブリック クラウドでご利用いただけます。
 
-## Next steps
+## <a name="next-steps"></a>次の手順
 
-* For more information about Azure Key Vault, see [What is Azure Key Vault](../../key-vault/key-vault-whatis.md)?
-* To get started with Azure Key Vault, see [Getting Started with Azure Key Vault](../../key-vault/key-vault-overview.md).
+* Azure Key Vault の詳細については、「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」をご覧ください。
+* Azure Key Vault の概要については、「[Azure Key Vault の概要](../../key-vault/key-vault-overview.md)」を参照してください。

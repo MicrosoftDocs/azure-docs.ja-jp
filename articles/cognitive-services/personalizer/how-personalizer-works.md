@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: c258799b1305c4204d08d66aa36a0be7c71a4944
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7c163dacae24749dbe309bca33bac016a3be7aa5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034374"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002886"
 ---
 # <a name="how-personalizer-works"></a>Personalizer のしくみ
 
@@ -89,31 +89,6 @@ Personalizer は、論文、研究活動、および現在進行中の Microsoft
 * ボットの特徴とトーン: トーンや冗長性、文のスタイルといった特徴をパーソナル化された方法で変更できるボットを考えてみてください。
 * 通知やアラートの内容: ユーザーのエンゲージメントを高めるために、アラートにどのようなテキストを使用するかを決定します。
 * 通知とアラートのタイミング: ユーザーのエンゲージメントを高めるために、通知を送信するタイミングを個人ごとに学習させます。
-
-## <a name="checklist-for-applying-personalizer"></a>Personalizer を適用するためのチェックリスト
-
-Personalizer は、次の状況で適用できます。
-
-* 自分のアプリケーションのビジネスまたは使いやすさに関する目標がある。
-* ユーザーに表示するものに関するコンテキスト上の決定を行うとその目標が整備される部分がアプリケーションにある。
-* 全体的なユーザーの動作および合計報酬スコアから最適な選択肢を学習でき、そうする必要がある。
-* パーソナル化のための機械学習の使用が、[責任ある使用に関するガイドライン](ethics-responsible-use.md)とチームの選択内容に従っている。
-* 決定を、限られた選択肢から最良の選択肢 ([アクション](concepts-features.md#actions-represent-a-list-of-options)) を順位付けすることとして表現できる。
-* ユーザー動作の一部の側面を測定することにより、その選択がどの程度優れているかをビジネス ロジックによって計算し、-1 から 1 までの数値で表現できる。
-* 報酬スコアは、複雑すぎたり外部要因が多すぎたりしない。具体的には、実験時間が十分短くても、実験時間内に報酬スコアを計算できる。
-* 順位のコンテキストを、適切な選択をするのに役立つと思われる少なくとも 5 つの特徴のディクショナリとして表現できる。加えて、これには個人を特定できる情報が含まれない。
-* Personalizer が適切な選択をするのに役立つと思われる少なくとも 5 つの属性または特徴のディクショナリとして、各アクションに関する情報がある。
-* 少なくとも 10 万回の相互作用の履歴を蓄積するのに十分な期間にわたってデータを保持できる。
-
-## <a name="machine-learning-considerations-for-applying-personalizer"></a>Personalizer を適用するための機械学習の考慮事項
-
-Personalizer は、強化学習、つまり与えられたフィードバックによって学習が行われる機械学習へのアプローチに基づいています。 
-
-Personalizer は、次の状況で最もよく学習します。
-* 時間の経過と共に問題に変化が生じる場合 (ニュースや流行の好みなど)、最適なパーソナル化を完全に把握するのに十分なイベントがある。 Personalizer は、実世界の継続的な変化に適応しますが、新しいパターンを見極めるための学習に十分なイベントとデータがないと、最適な結果が得られません。 十分に頻繁に発生するユース ケースを選択する必要があります。 1 日あたり少なくとも 500 回発生するユース ケースを見つけることを検討してください。
-* 学習を容易にするのに十分な特徴がコンテキストとアクションにある。
-* 順位付けするアクションが呼び出しあたり 50 個未満である。
-* データ保持設定により、Personalizer がオフライン評価とポリシーの最適化を実行するのに十分なデータを収集することが許可されている。 これは、通常、少なくとも 50,000 データ ポイントです。
 
 ## <a name="how-to-use-personalizer-in-a-web-application"></a>Web アプリケーションで Personalizer を使用する方法
 

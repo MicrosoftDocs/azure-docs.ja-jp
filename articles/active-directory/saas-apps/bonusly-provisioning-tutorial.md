@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8368fc5369ee6cd93bbf472d4904cd647d66058d
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 692eff26dbbc2289ec589a327dbe58958b414a56
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673033"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70842729"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニングに対応するように Bonusly を構成する
 
@@ -39,7 +39,7 @@ ms.locfileid: "67673033"
 * 管理者アクセス許可がある Bonusly のユーザー アカウント
 
 > [!NOTE]
-> Azure AD プロビジョニング統合は、[Bonusly Rest API](https://bonusly.gelato.io/reference) に依存しています。この API は Bonusly 開発者から入手できます。
+> Azure AD プロビジョニング統合は、[Bonusly Rest API](https://konghq.com/solutions/gateway/) に依存しています。この API は Bonusly 開発者から入手できます。
 
 ## <a name="adding-bonusly-from-the-gallery"></a>ギャラリーからの Bonusly の追加
 

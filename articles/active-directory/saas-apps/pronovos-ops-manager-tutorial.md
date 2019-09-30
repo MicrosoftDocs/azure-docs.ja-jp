@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e22b616e50929d4ac099c3412e89db426b09307
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 95c898dd36387d4474f5129943c6bd76f754ffe2
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489486"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213537"
 ---
 # <a name="tutorial-integrate-pronovos-ops-manager-with-azure-active-directory"></a>チュートリアル:ProNovos Ops Manager と Azure Active Directory の統合
 
@@ -81,7 +81,7 @@ ProNovos Ops Manager に対する Azure AD SSO を構成してテストするに
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1.  **[基本的な SAML 構成]**  セクションでは、アプリケーションは **IDP** Initiated モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]**  ボタンをクリックします。
+1. **[基本的な SAML 構成]** セクションでは、アプリケーションは **IDP** 開始モードで事前に構成されており、必要な URL は既に Azure で事前に設定されています。 構成を保存するには、 **[保存]** ボタンをクリックします。
 
 1. アプリケーションを **SP** 開始モードで構成する場合は、 **[追加の URL を設定します]** をクリックして次の手順を実行します。
 
@@ -131,7 +131,7 @@ ProNovos Ops Manager に対する Azure AD SSO を構成してテストするに
 
 ### <a name="create-pronovos-ops-manager-test-user"></a>ProNovos Ops Manager のテスト ユーザーの作成
 
-このセクションでは、ProNovos Ops Manager で B.Simon というユーザーを作成します。  [ProNovos Ops Manager サポート チーム](mailto:support@pronovos.com)と連携して、ProNovos Ops Manager プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、ProNovos Ops Manager で B.Simon というユーザーを作成します。 [ProNovos Ops Manager サポート チーム](mailto:support@pronovos.com)と協力して、ProNovos Ops Manager プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト 
 

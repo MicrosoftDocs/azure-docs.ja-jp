@@ -7,17 +7,16 @@ author: ggailey777
 manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
 ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: quickstart
 ms.date: 06/25/2019
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fcf9f1d6420dbbde359d386bc3b67a0866aca30d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 52f682f7c7f06056be122b33d27592a55a01be94
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444613"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70744075"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Visual Studio Code を使用した初めての関数の作成
 
@@ -27,7 +26,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ![Visual Studio プロジェクトの Azure Functions コード](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-現在、この拡張機能では、C#、JavaScript、Java 関数がサポートされており、Python のサポートはプレビュー段階です。 この記事と次の記事の手順では、JavaScript と C# の関数のみをサポートしています。 Visual Studio Code を使用して Python 関数を作成および発行する方法については、「[Deploy Python to Azure Functions (Azure Functions に Python をデプロイする)](https://code.visualstudio.com/docs/python/tutorial-azure-functions)」を参照してください。 Visual Studio Code を使用して PowerShell 関数を作成および発行する方法については、「[Azure で初めての PowerShell 関数を作成する](functions-create-first-function-powershell.md)」を参照してください。 
+現在、この拡張機能では、C#、JavaScript、Java、Python の関数がサポートされています。 この記事と次の記事の手順では、JavaScript と C# の関数のみをサポートしています。 Visual Studio Code を使用して Python 関数を作成および発行する方法については、「[Deploy Python to Azure Functions (Azure Functions に Python をデプロイする)](https://code.visualstudio.com/docs/python/tutorial-azure-functions)」を参照してください。 Visual Studio Code を使用して PowerShell 関数を作成および発行する方法については、「[Azure で初めての PowerShell 関数を作成する](functions-create-first-function-powershell.md)」を参照してください。 
 
 この拡張機能は現在プレビュー段階にあります。 詳細については、[Visual Studio Code 用 Azure Functions 拡張機能]のページをご覧ください。
 
@@ -64,11 +63,11 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 ## <a name="run-the-function-in-azure"></a>Azure で関数を実行する
 
-1. **出力**パネルから HTTP トリガーの URL をコピーします。 前と同様に、この URL の末尾にクエリ文字列 `?name=<yourname>` を追加してから、要求を実行します。
+1. **出力**パネルから HTTP トリガーの URL をコピーします。 この URL には、`code` クエリ パラメーターに渡される関数キーが含まれています。 前と同様に、この URL の末尾にクエリ文字列 `?name=<yourname>` を追加してから、要求を実行します。
 
     HTTP によってトリガーされる関数を呼び出す URL は、次の形式である必要があります。
 
-        http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
+        http://<functionappname>.azurewebsites.net/api/<functionname>?code=<function_key>&name=<yourname> 
 
 1. HTTP 要求のこの新しい URL をブラウザーのアドレス バーに貼り付けます。 関数によって返されたリモート GET 要求に対するブラウザーでの応答を次に示します。 
 

@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: df47b4fc5b8048f76f94486e213285896dab9cb9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 042c4fa18ce583f714bbe71f522b1f8f1af3dfdb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874092"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066118"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのアクセス トークンの要求
 
-"*アクセス トークン*" には、Azure Active Directory (Azure AD) B2C で API に付与されているアクセス許可を識別するために使用できる要求が含まれています。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。 アクセス トークンは、Azure AD B2C からの応答で、**access_token** として示されます。
+*アクセス トークン*には、Azure Active Directory B2C (Azure AD B2C) で API に付与されているアクセス許可を識別するために使用できる要求が含まれています。 リソース サーバーを呼び出すときは、HTTP 要求でアクセス トークンを提示する必要があります。 アクセス トークンは、Azure AD B2C からの応答で、**access_token** として示されます。
 
 この記事では、Web アプリケーションと Web API に対してアクセス トークンを要求する方法を示します。 Azure AD B2C でのトークンの詳細については、「[Overview of tokens in Azure Active Directory B2C (Azure Active Directory B2C でのトークンの概要)](active-directory-b2c-reference-tokens.md)」を参照してください。
 

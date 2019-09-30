@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: c351ee8290b60c81add173bb927b0c12e37f5c7c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: a0ca483005cf1f5aaadcd7a6107b092d581d6773
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018140"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067769"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>VMware の評価と移行のサポート マトリックス
 
@@ -35,8 +35,7 @@ ms.locfileid: "70018140"
 **サポート** | **詳細**
 --- | ---
 **Azure のアクセス許可** | Azure Migrate プロジェクトを作成するには、サブスクリプションに共同作成者または所有者アクセス許可が必要です。
-**VMware の制限事項**  | 1 つのプロジェクトで最大 35,000 台の VMware VM を評価できます。 1 つの Azure サブスクリプションで複数のプロジェクトを作成できます。
-**プロジェクトの制限** | 評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
+**VMware の制限事項**  | 1 つのプロジェクトで最大 35,000 台の VMware VM を評価できます。 1 つの Azure サブスクリプションで複数のプロジェクトを作成できます。 評価の上限に達するまでは、1 つのプロジェクトに VMware VM と Hyper-V VM の両方を含めることができます。
 **地理的な場所** | Azure Migrate プロジェクトは、いくつかの地域で作成できます。 プロジェクトを作成できるのはこれらの地域に限られますが、ターゲットの場所がそれ以外であるマシンを評価または移行することは可能です。 プロジェクトの地域は、検出されたメタデータを格納するためにのみ使用されます。
 
 **地理的な場所** | **メタデータ ストレージの場所**
@@ -44,10 +43,13 @@ ms.locfileid: "70018140"
 Azure Government | 米国政府バージニア州
 アジア太平洋 | 東アジアまたは東南アジア
 オーストラリア | オーストラリア東部またはオーストラリア南東部
+ブラジル | ブラジル南部
 カナダ | カナダ中部またはカナダ東部
 ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+フランス | フランス中部
 インド | インド中部またはインド南部
 日本 |  東日本または西日本
+韓国 | 韓国中部または韓国南部
 イギリス | 英国南部または英国西部
 米国 | 米国中部または米国西部 2
 
@@ -70,14 +72,15 @@ Azure Government | 米国政府バージニア州
 
 ## <a name="assessment-appliance-requirements"></a>評価 - アプライアンスの要件
 
-VMware 用 Azure Migrate アプライアンスは、vCenter Server にインポートされた OVA テンプレートを使用してデプロイされます。
+Azure Migrate では、軽量アプライアンスを実行して VMware VM を検出し、VM メタデータとパフォーマンス データを Azure Migrate に送信します。 VMware 用アプライアンスは、vCenter Server にインポートされた OVA テンプレートを使用してデプロイされます。 次の表は、アプライアンスの要件をまとめたものです。
 
 **サポート** | **詳細**
 --- | ---
-**vCenter Server** | 32 GB の RAM、8 つの vCPU、および外部仮想スイッチを備えた VM を割り当てるには、vCenter Server に十分なリソースが必要です。<br/><br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。
-**ESXi** | バージョン 5.5 以降が実行されている ESXi ホストにアプライアンス VM をデプロイする必要があります。
-**Azure Migrate プロジェクト** | 1 つのプロジェクトにアプライアンスを関連付けることができます。
-**vCenter Server** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 10,000 台検出できます。<br/> 1 つのアプライアンスは 1 つの vCenter Server に接続できます。
+**アプライアンスのデプロイ** | アプライアンスは VMware VM としてデプロイします。 32 GB の RAM、8 つの vCPU、約 80 GB のディスク記憶域、外部仮想スイッチを備えた VM を割り当てるには、vCenter Server に十分なリソースが必要です。<br/><br/> アプライアンスは、直接またはプロキシを介してインターネットにアクセスできる必要があります。<br/> バージョン 5.5 以降が実行されている ESXi ホストにアプライアンス VM をデプロイする必要があります。
+**Azure Migrate プロジェクト** | 単一のプロジェクトにアプライアンスを関連付けることができます。 <br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> プロジェクト内で最大 35,000 個の VM を評価できます。
+**検出** | 1 つのアプライアンスで、vCenter Server 上の VMware VM を最大 10,000 台検出できます。<br/> 1 つのアプライアンスは、1 つの vCenter Server に接続できます。
+**評価グループ** | 1 つのグループに最大 35,000 個のマシンを追加できます。
+**評価** | 1 回の評価で最大 35,000 個の VM を評価できます。
 
 
 ## <a name="assessment-url-access-requirements"></a>評価 - URL アクセス要件
@@ -107,6 +110,8 @@ http://aka.ms/latestapplianceservices<br/><br/> https://download.microsoft.com/d
 アプライアンス | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/><br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ```https://<appliance-ip-or-name>:44368``` <br/><br/>ポート 443、5671、5672 で、検出とパフォーマンスのメタデータを Azure Migrate に送信するための送信接続。
 vCenter サーバー | TCP ポート 443 で、アプライアンスが評価用に構成およびパフォーマンスのメタデータを収集できるようにするインバウンド接続。 <br/><br/> 既定では、アプライアンスはポート 443 で vCenter に接続します。 vCenter Server が別のポートでリッスンする場合、検出の設定時にポートを変更できます。
 
+## <a name="migration---limitations"></a>移行 - 制限
+レプリケーションでは、一度に最大 10 個の VM を選択できます。 より多くのマシンを移行する場合は、10 個単位のグループでレプリケートします。 VMware のエージェントレス移行では、最大 100 個のレプリケーションを同時に実行できます。
 
 ## <a name="agentless-migration-vmware-server-requirements"></a>エージェントレス移行 - VMware サーバーの要件
 

@@ -27,7 +27,7 @@
           href: tutorial-create-populate-tsi-environment.md
     - name: Azure Time Series Insights プレビュー
       items:
-        - name: Azure Time Series Insights プレビューのチュートリアル
+        - name: プレビュー環境を設定する
           href: time-series-insights-update-create-environment.md
 - name: 概念
   items:
@@ -59,9 +59,9 @@
           href: time-series-insights-update-storage-ingress.md
         - name: ユース ケース
           href: time-series-insights-update-use-cases.md
-        - name: データ モデリング
+        - name: タイム シリーズ モデル
           href: time-series-insights-update-tsm.md
-        - name: データ照会
+        - name: タイム シリーズ クエリ
           href: time-series-insights-update-tsq.md
         - name: エクスプローラー プレビューでデータを視覚化する
           href: time-series-insights-update-explorer.md
@@ -118,7 +118,7 @@
         - name: Azure Time Series Insights GA
           href: /rest/api/time-series-insights/ga
           items:
-            - name: Query
+            - name: クエリ
               href: /rest/api/time-series-insights/ga-query
               items:
                 - name: API
@@ -142,34 +142,6 @@
       items:
         - name: JavaScript クライアント SDK
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
-- name: 関連項目
-  items:
-    - name: 解決方法
-      items:
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-        - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
-    - name: プラットフォーム サービス
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT プラグ アンド プレイ
-          href: /azure/iot-pnp
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: マップ
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: IoT Edge
-      items:
-        - name: Azure IoT Edge
-          href: /azure/iot-edge
-        - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: リソース
   items:
     - name: 顧客データ要求

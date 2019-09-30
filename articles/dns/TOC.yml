@@ -9,12 +9,22 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: 名前解決 - ポータル
-      href: dns-getstarted-portal.md
-    - name: 名前解決 - PowerShell
-      href: dns-getstarted-powershell.md
-    - name: 名前解決 - CLI
-      href: dns-getstarted-cli.md
+    - name: パブリック DNS
+      items:
+        - name: パブリック ゾーンを作成する - ポータル
+          href: dns-getstarted-portal.md
+        - name: パブリック ゾーンを作成する - PowerShell
+          href: dns-getstarted-powershell.md
+        - name: パブリック ゾーンを作成する - CLI
+          href: dns-getstarted-cli.md
+    - name: プライベート DNS
+      items:
+        - name: プライベート ゾーンを作成する - ポータル
+          href: private-dns-getstarted-portal.md
+        - name: プライベート ゾーンを作成する - CLI
+          href: private-dns-getstarted-cli.md
+        - name: プライベート ゾーンを作成する - PowerShell
+          href: private-dns-getstarted-powershell.md
 - name: チュートリアル
   items:
     - name: パブリック DNS
@@ -29,10 +39,6 @@
           href: tutorial-alias-pip.md
         - name: ゾーン レコードのエイリアス レコード
           href: tutorial-alias-rr.md
-    - name: プライベート DNS
-      items:
-        - name: プライベート DNS ゾーンとレコードを作成する
-          href: private-dns-portal.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -63,12 +69,6 @@
           href: private-dns-scenarios.md
 - name: 方法
   items:
-    - name: プライベート DNS
-      items:
-        - name: プライベート ゾーンの作成 - CLI
-          href: private-dns-getstarted-cli.md
-        - name: プライベート ゾーンの作成 - PowerShell
-          href: private-dns-getstarted-powershell.md
     - name: パブリック DNS
       items:
         - name: 負荷分散された Web アプリのエイリアス レコード

@@ -3,23 +3,20 @@ title: 初めてのデータ ファクトリの作成 (Azure Portal) | Microsoft
 description: このチュートリアルでは、Azure Portal で Data Factory エディターを使用して、サンプルの Azure Data Factory パイプラインを作成します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: ''
-editor: ''
-ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 2a7e2f9e5018bdad2a1ed2c6edcb727a2ffdcddd
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: b60f6adf6c13bc86fb4c4604dda7d4b92963b7ca
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839110"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140564"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル:Azure portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -50,7 +47,7 @@ ms.locfileid: "67839110"
 
 この記事では、Data Factory サービスの概念については説明しません。 サービスの詳細については、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。  
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 1 つの例として、コピー元データ ストアからコピー先データ ストアにデータをコピーするコピー アクティビティがあります。 別の例として、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティが挙げられます。 
 
 データ ファクトリを作成するには、次の手順に従います。

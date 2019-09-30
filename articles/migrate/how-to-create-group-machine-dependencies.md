@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 4130bb746a4faa4907353654d16f7c20c0cc7817
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: c48323bb4c8798a0f36d3fda99a4c659187e0e81
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598948"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906387"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>評価のために依存関係の視覚化を設定する
 
@@ -30,17 +30,17 @@ ms.locfileid: "68598948"
 ## <a name="before-you-start"></a>開始する前に
 
 - Azure Migrate プロジェクトを[作成](how-to-add-tool-first-time.md)していることを確認します。
-- プロジェクトを既に作成している場合は、[Azure Migrate](how-to-assess.md):Server Assessment ツールを追加済みであることを確認してください。
-- マシンが Azure Migrate で検出されていることを確認します。これは、[VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用に Azure Migrate アプライアンスを設定することで実行できます。 アプライアンスは、オンプレミス マシンを検出して、Azure Migrate:Server Assessment にメタデータとパフォーマンス データを送信します。 [詳細情報](migrate-appliance.md)。
+- プロジェクトを既に作成してある場合は、次のツールを[追加済み](how-to-assess.md)であることを確認します。Azure Migrate: Server Assessment ツールを追加済みであることを確認してください。
+- マシンが Azure Migrate で検出されていることを確認します。これは、[VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用に Azure Migrate アプライアンスを設定することで実行できます。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment にメタデータとパフォーマンス データを送信します。 [詳細情報](migrate-appliance.md)。
 
 
 **機能** | **注**
 --- | ---
 可用性 | 依存関係の視覚化は、Azure Government では使用できません。
-サービス マップ | 依存関係の視覚化では、Azure Monitor ログで Service Map ソリューションが使用されます。 [Service Map](../azure-monitor/insights/service-map-configure.md) は、サーバー間の接続を自動的に検出して表示します。
-エージェント | 依存関係の視覚化を使用するには、マップするマシン上にいくつかのエージェントをインストールします。<br/> - [Azure Log Analytics](../azure-monitor/platform/log-analytics-agent.md) エージェント (以前は Microsoft Monitoring Agent (MMA) と呼ばれていました)。<br/> - Service Map の依存関係エージェント。<br/><br/> エージェントのインストールを自動化するには、デプロイ ツール (System Center Configuration Manager など) を使用するか、または Azure Migrate 用のエージェント デプロイ ソリューションを備えたパートナー ツール ([Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) など) を使用します。
-依存関係エージェント | [Windows](../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) および [Linux](../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) での依存関係エージェントのサポートを確認します。<br/><br/> スクリプトを使用した依存関係エージェントのインストールの[詳細情報](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)を確認します。
-Log Analytics エージェント (MMA) | MMA のインストール方法の[詳細情報](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)を確認します。<br/><br/> System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)のガイダンスを参照してください。 ただし、このようなマシンには、依存関係エージェントをインストールする必要がある点に注意してください。<br/><br/> Log Analytics エージェントでサポートされている Linux オペレーティング システムを[確認](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)します。
+サービス マップ | 依存関係の視覚化では、Azure Monitor で Service Map ソリューションが使用されます。 [Service Map](../azure-monitor/insights/service-map.md) は、サーバー間の接続を自動的に検出して表示します。
+エージェント | 依存関係の視覚化を使用するには、マップするマシン上に次のエージェントをインストールします。<br/> - [Log Analytics エージェント](../azure-monitor/platform/log-analytics-agent.md) (以前は Microsoft Monitoring Agent (MMA) と呼ばれていました)。<br/> - [Service Map の Dependency Agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent)。<br/><br/> エージェントのインストールを自動化するには、デプロイ ツール (System Center Configuration Manager など) を使用するか、または Azure Migrate 用のエージェント デプロイ ソリューションを備えたパートナー ツール ([Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) など) を使用します。
+依存関係エージェント | Windows および Linux での [Dependency Agent](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) のサポートを確認します。<br/><br/> スクリプトを使用した依存関係エージェントのインストールの[詳細情報](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples)を確認します。
+Log Analytics エージェント (MMA) | MMA のインストール方法の[詳細情報](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent)を確認します。<br/><br/> System Center Operations Manager 2012 R2 以降によって監視されているマシンの場合、MMA エージェントをインストールする必要はありません。 Service Map は Operations Manager と統合されます。 統合を有効にする方法については、[こちら](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)のガイダンスを参照してください。 ただし、このようなマシンには、Dependency Agent をインストールする必要がある点に注意してください。<br/><br/> Log Analytics エージェントでサポートされている Linux オペレーティング システムを[確認](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems)します。
 評価グループ | 依存関係を視覚化するグループには、10 個を超えるマシンを含めないでください。 マシンが 10 台を超える場合は、小さいグループに分割して依存関係を視覚化してください。
 
 ## <a name="associate-a-log-analytics-workspace"></a>Log Analytics ワークスペースを関連付ける
@@ -50,13 +50,13 @@ Log Analytics エージェント (MMA) | MMA のインストール方法の[詳�
 - ワークスペースのアタッチは、Azure Migrate プロジェクトのサブスクリプションでのみ可能です。
 - 既存のワークスペースをアタッチするか、新しいワークスペースを作成できます。
 - ワークスペースのアタッチは、マシンの依存関係の視覚化を初めて設定したときに行います。
-- ワークスペースをアタッチできるのは、Azure Migrate プロジェクトでマシンが検出された後のみになります。 これは、Azure Migrate アプライアンスを [VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用に設定することで実行できます。 アプライアンスは、オンプレミス マシンを検出して、Azure Migrate:Server Assessment にメタデータとパフォーマンス データを送信します。 [詳細情報](migrate-appliance.md)。
+- ワークスペースをアタッチできるのは、Azure Migrate プロジェクトでマシンが検出された後のみになります。 これは、Azure Migrate アプライアンスを [VMware](how-to-set-up-appliance-vmware.md) または [Hyper-V](how-to-set-up-appliance-hyper-v.md) 用に設定することで実行できます。 アプライアンスでオンプレミスのマシンが検出されて、メタデータとパフォーマンス データが Azure Migrate: Server Assessment にメタデータとパフォーマンス データを送信します。 [詳細情報](migrate-appliance.md)。
 
 次の手順に従ってワークスペースをアタッチします。
 
 1. **Azure Migrate:Server Assessment** で、 **[概要]** をクリックします。 Server Assessment ツールをまだ追加していない場合は、[最初にそれを実行します](how-to-assess.md)。
 2. **[概要]** で下矢印をクリックして、 **[要点]\(Essentials\)** を展開します。
-3. **OMS ワークスペース**で、 **[構成が必要]** をクリックします。
+3. **[OMS ワークスペース]** で、 **[構成が必要]** をクリックします。
 4. **[ワークスペースの構成]** で、新しいワークスペースを作成するか、または既存のものを使用するかを指定します。
 
     ![ワークスペースの追加](./media/how-to-create-group-machine-dependencies/workspace.png)

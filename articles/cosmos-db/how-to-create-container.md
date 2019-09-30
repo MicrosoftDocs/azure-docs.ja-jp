@@ -4,14 +4,14 @@ description: Azure Cosmos DB にコンテナーを作成する方法について
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/01/2019
 ms.author: mjbrown
-ms.openlocfilehash: a88d8f33624278ac6e70b918cec7cef133fe4b34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 876e35e320e37081cf6e6f89fda4f31af8713571
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093472"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240747"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Azure Cosmos コンテナーを作成する
 
@@ -25,15 +25,15 @@ ms.locfileid: "70093472"
 
 1. [新しい Azure Cosmos アカウントを作成する](create-sql-api-dotnet.md#create-account)か、既存のアカウントを選択します。
 
-1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいコレクション]** を選択します。 次に、以下の詳細を指定します。
+1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいコンテナー]** を選択します。 次に、以下の詳細を指定します。
 
    * 新しいデータベースを作成するか、既存のデータベースを使用するかを指定します。
-   * コレクション ID を入力します。
+   * コンテナー ID を入力します。
    * パーティション キーを入力します。
    * プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
-![[データ エクスプローラー] ウィンドウのスクリーンショット ([新しいコレクション] を強調表示したところ)](./media/how-to-create-container/partitioned-collection-create-sql.png)
+![[新しいコンテナー] が強調して示されている [データ エクスプローラー] ウィンドウのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
 ### <a id="portal-mongodb"></a>MongoDB 用 Azure Cosmos DB API
 
@@ -41,15 +41,15 @@ ms.locfileid: "70093472"
 
 1. [新しい Azure Cosmos アカウントを作成する](create-mongodb-dotnet.md#create-a-database-account)か、既存のアカウントを選択します。
 
-1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいコレクション]** を選択します。 次に、以下の詳細を指定します。
+1. **[データ エクスプローラー]** ウィンドウを開いて **[新しいコンテナー]** を選択します。 次に、以下の詳細を指定します。
 
    * 新しいデータベースを作成するか、既存のデータベースを使用するかを指定します。
-   * コレクション ID を入力します。
+   * コンテナー ID を入力します。
    * シャード キーを入力します。
    * プロビジョニングするスループットを入力します (例: 1,000 RU)。
    * **[OK]** を選択します。
 
-![MongoDB 用 Azure Cosmos DB API の [コレクションの追加] ダイアログ ボックスのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![MongoDB 用 Azure Cosmos DB API の [コンテナーの追加] ダイアログ ボックスのスクリーンショット](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Cassandra API
 

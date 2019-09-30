@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: pabouwer
-ms.openlocfilehash: bd660a2b6ffb96478c3170cc7013ff22518b758f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7baa2adbd615a449c73e70e1b96524fc1e18b25d
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702206"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000170"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Istio によりインテリジェントなルーティングとカナリア リリースを使用する
 
-[Istio][istio-github] はオープンソースのサービス メッシュであり、Kubernetes クラスターのマイクロサービスに対して重要な機能のセットが提供されます。 これらの機能には、トラフィック管理、サービスの ID とセキュリティ、ポリシー適用、可観測性などがあります。 Istio について詳しくは、公式ドキュメント「[What is Istio? (Istio とは何か)][istio-docs-concepts]」をご覧ください。
+[Istio][istio-github] はオープンソースのサービス メッシュであり、Kubernetes クラスターのマイクロサービスに対して重要な機能のセットが提供されます。 これらの機能には、トラフィック管理、サービスの ID とセキュリティ、ポリシー適用、可観測性などがあります。 Istio について詳しくは、公式ドキュメント「[Istio とは][istio-docs-concepts]」をご覧ください。
 
 この記事では、Istio のトラフィック管理機能を使用する方法を説明します。 インテリジェントなルーティングとカナリア リリースについて説明するために、サンプルの AKS 投票アプリを使用します。
 
@@ -286,7 +286,7 @@ $INGRESS_IP="20.188.211.19"
   <div id="results"> Cats: 2/6 (33%) | Dogs: 4/6 (67%) </div>
 ```
 
-次に、Istio によって相互 TLS を使用してサービス間の通信がセキュリティ保護されていることを確認しましょう。 これを行うために、`istioctl` クライアント ライブラリの [authn tls-check][istioctl-authn-tls-check] コマンドを、次の書式で使用します。
+次に、Istio によって相互 TLS を使用してサービス間の通信がセキュリティ保護されていることを確認しましょう。 これを行うために、`istioctl` クライアント バイナリの [authn tls-check][istioctl-authn-tls-check] コマンドを、次の書式で使用します。
 
 ```console
 istioctl authn tls-check <pod-name[.namespace]> [<service>]

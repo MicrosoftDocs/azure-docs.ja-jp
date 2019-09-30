@@ -10,233 +10,252 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2017
+ms.date: 09/12/2019
 ms.author: mbullwin
-ms.openlocfilehash: eb936e7ad863fc7816ee8ed3b5dd88a8f25dbef0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f3b093b8d5f772bad759d3384405f4ca9f0cee15
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813966"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933768"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
+
 Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
 
-短い JavaScript コードを追加するだけで、Application Insights をあらゆる Web ページで使用できます。 Web サービスが [Java](java-get-started.md) または [ASP.NET](asp-net.md) の場合、サーバーとクライアントのテレメトリを統合できます。
+短い JavaScript コードを追加するだけで、Application Insights をあらゆる Web ページで使用できます。 Web サービスが [Java](java-get-started.md) または [ASP.NET](asp-net.md) の場合は、サーバー側 SDK をクライアント側 JavaScript SDK と共に使用して、アプリのパフォーマンスを総合的に理解することができます。
 
-![portal.azure.com でアプリのリソースを開き、[ブラウザー] をクリックする](media/javascript/03.png)
+## <a name="adding-the-javascript-sdk"></a>Javascript SDK を追加する
 
-使用を開始するには、 [Microsoft Azure](https://azure.com)のサブスクリプションが必要です。 所属する部署がサブスクリプションを所有している場合、あなたの Microsoft アカウントをサブスクリプションに追加するようその所有者に依頼してください。
+1. まず Application Insights リソースが必要です。 リソースとインストルメンテーション キーがまだない場合は、[新しいリソースの作成手順](create-new-resource.md)に従います。
+2. JavaScript テレメトリの送信先となるリソースからインストルメンテーション キーをコピーします。
+3. 次の 2 つの方法のいずれかを使用して、Application Insights JavaScript SDK を Web ページまたはアプリに追加します。
+    * [NPM セットアップ](#npm-based-setup)
+    * [JavaScript スニペット](#snippet-based-setup)
 
-## <a name="set-up-application-insights-for-your-web-page"></a>Web ページに Application Insights を設定する
-次のように、Web ページにローダー コード スニペットを追加します。
+> [!IMPORTANT]
+> Application Insights JavaScript SDK をアプリケーションに追加するには、次のいずれか 1 つの方法のみを使用してください。 NPM ベースのセットアップを使用する場合は、スニペット ベースのセットアップを使用しないでください。 逆にスニペット ベースのアプローチを使用するシナリオでも同じことが言えます。NPM ベースのセットアップを使用しないでください。 
 
-### <a name="open-or-create-application-insights-resource"></a>Application Insights リソースを開くまたは作成する
-Application Insights リソースは、ページのパフォーマンスと使用状況に関するデータが表示される場所です。 
+### <a name="npm-based-setup"></a>NPM ベースのセットアップ
 
-[Azure Portal](https://portal.azure.com) にサインインします。
+```js
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
-アプリのサーバー側の監視を既に設定している場合は、既にリソースがあります。
+const appInsights = new ApplicationInsights({ config: {
+  instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE'
+  /* ...Other Configuration Options... */
+} });
+appInsights.loadAppInsights();
+```
 
-![[参照]、[開発者向けサービス]、[Application Insights] の順に選択する](media/javascript/01-find.png)
+### <a name="snippet-based-setup"></a>スニペット ベースのセットアップ
 
-リソースがない場合は、次の手順で作成します。
+アプリで NPM が使用されない場合は、各ページの上部にこのスニペットを貼り付けることによって、Application Insights で Web ページを直接インストルメント化できます。 可能であれば、これを `<head>` セクションの最初のスクリプトとして指定すると、すべての依存関係に関する潜在的な問題を監視することができます。
 
-![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](media/javascript/01-create.png)
-
-*質問がございますか?* [リソースの作成に関する詳細はここにあります](create-new-resource.md )のサブスクリプションが必要です。
-
-### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>アプリや Web ページに SDK スクリプトを追加する
-
-```HTML
-<!-- 
-To collect user behavior analytics about your application, 
-insert the following script into each page you want to track.
-Place this code immediately before the closing </head> tag,
-and before any other scripts. Your first data will appear 
-automatically in just a few seconds.
--->
+```html
 <script type="text/javascript">
-    var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
-    {
-      instrumentationKey:"INSTRUMENTATION_KEY"
-    }
-    );window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(e){function n(e){t[e]=function(){var n=arguments;t.queue.push(function(){t[e].apply(t,n)})}}var t={config:e};t.initialize=!0;var i=document,a=window;setTimeout(function(){var n=i.createElement("script");n.src=e.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",i.getElementsByTagName("script")[0].parentNode.appendChild(n)});try{t.cookie=i.cookie}catch(e){}t.queue=[],t.version=2;for(var r=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];r.length;)n("track"+r.pop());n("startTrackPage"),n("stopTrackPage");var s="Track"+r[0];if(n("start"+s),n("stop"+s),n("setAuthenticatedUserContext"),n("clearAuthenticatedUserContext"),n("flush"),!(!0===e.disableExceptionTracking||e.extensionConfig&&e.extensionConfig.ApplicationInsightsAnalytics&&!0===e.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){n("_"+(r="onerror"));var o=a[r];a[r]=function(e,n,i,a,s){var c=o&&o(e,n,i,a,s);return!0!==c&&t["_"+r]({message:e,url:n,lineNumber:i,columnNumber:a,error:s}),c},e.autoExceptionInstrumented=!0}return t}(
+{
+  instrumentationKey:"INSTRUMENTATION_KEY"
+}
+);window[aiName]=aisdk,aisdk.queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
 </script>
 ```
 
-追跡するすべてのページの `</head>` タグの直前にスクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。 例:
+### <a name="sending-telemetry-to-the-azure-portal"></a>テレメトリを Azure portal に送信する
+
+既定では Application Insights JavaScript SDK は、アプリケーションの正常性や基になるユーザー エクスペリエンスを判別するのに役立つ多くのテレメトリ項目を自動収集します。 チェックの内容は次のとおりです
+
+- アプリでの**キャッチされない例外** (以下の情報が含まれる)
+    - スタック トレース
+    - 例外の詳細とエラーに付随するメッセージ
+    - エラーの行番号と列番号
+    - エラーが発生した URL
+- アプリの **XHR** および **Fetch** (フェッチ コレクションは既定では無効) 要求によって実行される**ネットワーク依存関係要求** (以下の情報が含まれる)
+    - 依存関係ソースの URL
+    - 依存関係の要求に使用されたコマンドとメソッド
+    - 要求の期間
+    - 要求の結果コードと成功状態
+    - 要求を行うユーザーの ID (存在する場合)
+    - 要求が行われた相関関係コンテキスト (存在する場合)
+- **ユーザー情報** (場所、ネットワーク、IP など)
+- **デバイス情報** (ブラウザー、OS、バージョン、言語、解像度、モデルなど)
+- **セッション情報**
+
+### <a name="telemetry-initializers"></a>テレメトリ初期化子
+テレメトリ初期化子は、収集されたテレメトリの内容を変更してからユーザーのブラウザーに送信するために使用されます。 また、`false` を返すことで、特定のテレメトリの送信を防ぐためにも使用されます。 複数のテレメトリ初期化子を Application Insights インスタンスに追加することができ、それらは追加した順序で実行されます。
+
+`addTelemetryInitializer` に対する入力引数は、[`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API.md#addTelemetryInitializer) を引数として受け取り、`boolean` または `void` を返すコールバックです。 `false` を返す場合、テレメトリ項目は送信されません。それ以外の場合は次のテレメトリ初期化子 (ある場合) に進むか、テレメトリ コレクション エンドポイントに送信されます。
+
+テレメトリ初期化子の使用例を次に示します。
+```ts
+var telemetryInitializer = (envelope) => {
+  envelope.data.someField = 'This item passed through my telemetry initializer';
+};
+appInsights.addTelemetryInitializer(telemetryInitializer);
+appInsights.trackTrace({message: 'This message will use a telemetry initializer'});
+
+appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this is executed
+appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
+```
+## <a name="configuration"></a>構成
+ほとんどの構成フィールドは、既定値を false にできるように指定されています。 `instrumentationKey`以外のすべてのフィールドは省略可能です。
+
+| 名前 | Default | 説明 |
+|------|---------|-------------|
+| instrumentationKey | null | **必須**<br>Azure portal で入手したインストルメンテーション キー |
+| accountId | null | 省略可能なアカウント ID (アプリによってユーザーがアカウントにグループ化される場合)。 スペース、コンマ、セミコロン、等号、または縦棒は使用できません。 |
+| sessionRenewalMs | 1800000 | この時間 (ミリ秒単位) にわたってユーザーが非アクティブである場合に、セッションがログに記録されます。 既定値は 30 分です。 |
+| sessionExpirationMs | 86400000 | セッションがこの時間 (ミリ秒単位) にわたって継続する場合に、セッションがログに記録されます。 既定値は 24 時間です。 |
+| maxBatchSizeInBytes | 10000 | テレメトリ バッチの最大サイズ。 バッチがこの制限を超えると、すぐに送信され、新しいバッチが開始されます。 |
+| maxBatchInterval | 15000 | 送信前にテレメトリをバッチ処理する時間 (ミリ秒) |
+| disableExceptionTracking | false | true の場合、例外は自動収集されません。 既定値は false です。 |
+| disableTelemetry | false | true の場合、テレメトリは収集または送信されません。 既定値は false です。 |
+| enableDebug | false | true の場合、SDK ログ設定に関わらず、**内部**デバッグ データはログに記録される**代わりに**例外としてスローされます。 既定値は false です。 <br>***注:*** この設定を有効にすると、内部エラーが発生するたびにテレメトリが削除されます。 これは、SDK の構成または使用に関する問題をすばやく特定するのに役立ちます。 デバッグ時にテレメトリが削除されないようにするには、`enableDebug` の代わりに `consoleLoggingLevel` または `telemetryLoggingLevel` の使用を検討してください。 |
+| loggingLevelConsole | 0 | **内部** Application Insights エラーをコンソールに記録します。 <br>0: オフ <br>1:重大なエラーのみ <br>2\.すべて (エラーおよび警告) |
+| loggingLevelTelemetry | 1 | **内部** Application Insights エラーをテレメトリとして送信します。 <br>0: オフ <br>1:重大なエラーのみ <br>2\.すべて (エラーおよび警告) |
+| diagnosticLogInterval | 10000 | 内部ログ キューの (内部) ポーリング間隔 (ミリ秒) |
+| samplingPercentage | 100 | 送信されるイベントの割合。 既定値は 100 で、すべてのイベントが送信されます。 大規模なアプリケーションでデータ上限を維持する場合は、これを設定します。 |
+| autoTrackPageVisitTime | false | true の場合、ページビューに関して、前にインストルメント化されたページのビュー時間が追跡されてテレメトリとして送信されます。また、現在のページビューについて新しいタイマーが開始されます。 既定値は false です。 |
+| disableAjaxTracking | false | true の場合、Ajax 呼び出しは自動収集されません。 既定値は false です。 |
+| disableFetchTracking | true | true の場合、フェッチ要求は自動収集されません。 既定値は true です。 |
+| overridePageViewDuration | false | true の場合、trackPageView の既定の動作が変わり、trackPageView の呼び出し時にページビュー期間の終了を記録します。 false の場合に、trackPageView にカスタム期間が指定されていないと、Navigation Timing API を使用してページ ビューのパフォーマンスが計算されます。 既定値は false です。 |
+| maxAjaxCallsPerView | 500 | 既定値: 500 - ページ ビュー 1 回あたりの AJAX 呼び出し数を監視し制御します。 -1 に設定すると、ページで発行されたすべて (無制限) の AJAX 呼び出しを監視します。 |
+| disableDataLossAnalysis | true | false の場合、まだ送信されていない項目について、内部テレメトリ センダー バッファーがスタートアップ時にチェックされます。 |
+| disableCorrelationHeaders | false | false の場合、SDK によって 2 つのヘッダー (Request-Id と Request-Context) がすべての依存関係要求に追加され、サーバー側の対応する要求と関連付けられます。 既定値は false です。 |
+| correlationHeaderExcludedDomains |  | 特定のドメインの関連付けヘッダーを無効にします。 |
+| correlationHeaderDomains |  | 特定のドメインの関連付けヘッダーを有効にします。 |
+| disableFlushOnBeforeUnload | false | 既定値は false です。 true の場合、onBeforeUnload イベントによってトリガーされても、flush メソッドは呼び出されません。 |
+| enableSessionStorageBuffer | true | 既定値は true です。 true の場合、未送信のすべてのテレメトリを含むバッファーがセッション ストレージに格納されます。 バッファーはページの読み込み時に復元されます。 |
+| isCookieUseDisabled | false | 既定値は false です。 true の場合、SDK によって cookie に対するデータの格納や読み取りは行われません。|
+| cookieDomain | null | カスタム Cookie ドメイン。 これは、サブドメイン間で Application Insights Cookie を共有する場合に便利です。 |
+| isRetryDisabled | false | 既定値は false です。 false の場合、206 (部分的な成功)、408 (タイムアウト)、429 (要求が多すぎる)、500 (内部サーバー エラー)、503 (サービス利用不可)、および 0 (オフライン、検出された場合のみ) で再試行します。 |
+| isStorageUseDisabled | false | true の場合、SDK によってローカルおよびセッション ストレージに対するデータの格納や読み取りは行われません。 既定値は false です。 |
+| isBeaconApiDisabled | true | false の場合、SDK が [Beacon API](https://www.w3.org/TR/beacon) を使用してすべてのテレメトリが送信されます。 |
+| sdkExtension | null | sdk 拡張機能の名前を設定します。 英字のみを使用できます。 拡張機能名はプレフィックスとして ai.internal.sdkVersion タグに付けられます (ext_javascript:2.0.0 など)。 既定値は Null です。 |
+| isBrowserLinkTrackingEnabled | false | 既定値は false です。 true の場合、SDK によってすべての[ブラウザー リンク](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink)要求が追跡されます。 |
+| appId | null | appId は、サーバー側の要求によってクライアント側で発生する AJAX 依存関係の相関関係のために使用されます。 Beacon API が有効になっているとき、これを自動的に使用することはできませんが、構成で手動で設定できます。 既定値は null です。 |
+| enableCorsCorrelation | false | truee の場合、SDK によって 2 つのヘッダー (Request-Id と Request-Context) がすべての CORS 要求に追加され、送信される AJAX 依存関係がサーバー側の対応する要求と関連付けられます。 既定値は false です。 |
+| namePrefix | undefined | localStorage および Cookie 名の接尾語として使用される省略可能な値。
+| enableAutoRouteTracking | false | シングル ページ アプリケーション (SPA) でのルート変更を自動的に追跡します。 true の場合、ルートの変更ごとに Application Insights に新しいページビューが送信されます。 ハッシュ ルート変更 (`example.com/foo#bar`) も新しいページ ビューとして記録されます。
+
+## <a name="single-page-applications"></a>シングル ページ アプリケーション
+
+既定では、この SDK では、シングル ページ アプリケーションで発生する状態ベースのルート変更は処理され**ません**。 シングル ページ アプリケーションの自動ルート変更追跡を有効にするには、`enableAutoRouteTracking: true` をセットアップ構成に追加します。
+
+現在、この SDK で初期化できる個別の [React プラグイン](#react-extensions)が提供されています。 これによって、ルート変更追跡が実現し、[他の React 固有テレメトリ](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)の収集も行われます。
+
+## <a name="react-extensions"></a>React の拡張機能
+
+| Extensions |
+|---------------|
+| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
+| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+
+## <a name="explore-browserclient-side-data"></a>ブラウザー/クライアント側データの参照
+
+ブラウザー/クライアント側データを表示するには、 **[メトリック]** に移動して、興味がある個別のメトリックを追加します。 
+
+![](./media/javascript/page-view-load-time.png)
+
+また、JavaScript SDK のデータもポータルのブラウザー エクスペリエンスを使用して表示できます。
+
+**[ブラウザー]** を選択してから、 **[エラー]** または **[パフォーマンス]** を選択します。
+
+![](./media/javascript/browser.png)
 
-* ASP.NET MVC プロジェクトで、 `View\Shared\_Layout.cshtml`
-* SharePoint サイトのコントロール パネルで、[ [サイト設定 / マスター ページ](sharepoint.md)] を開きます。
+### <a name="performance"></a>パフォーマンス 
 
-このスクリプトには、Application Insights リソースにデータを転送するインストルメンテーション キーが含まれています。 
+![](./media/javascript/performance-operations.png)
 
-([スクリプトの詳細については、こちらを参照してください。](https://apmtips.com/blog/2015/03/18/javascript-snippet-explained/))
+### <a name="dependencies"></a>依存関係
 
-## <a name="detailed-configuration"></a>詳細な構成
-独自に設定できる [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) はいくつか存在しますが、ほとんどの場合、その必要はありません。 たとえば、(トラフィック削減目的で) ページ ビューごとに行われる Ajax 呼び出しの数の報告を無効にすることや、制限することができます。 また、バッチ処理を行わずにテレメトリをパイプラインに迅速に移動するようにデバッグ モードを設定することもできます。
+![](./media/javascript/performance-dependencies.png)
 
-これらのパラメーターを設定するには、コード スニペットから次の行を探し、その後ろにコンマ区切りで項目を追加します。
+### <a name="analytics"></a>Analytics 
 
-    })({
-      instrumentationKey: "..."
-      // Insert here
-    });
+JavaScript SDK によって収集されたテレメトリに対してクエリを実行するには、 **[ログに表示 (Analytics)]** ボタンを選択します。 `client_Type == "Browser"`の `where` ステートメントを追加すると、JavaScript SDK のデータのみが表示され、他の SDK によって収集されるサーバー側のテレメトリがすべて除外されます。
+ 
+```kusto
+// average pageView duration by name
+let timeGrain=5m;
+let dataset=pageViews
+// additional filters can be applied here
+| where timestamp > ago(1d)
+| where client_Type == "Browser" ;
+// calculate average pageView duration for all pageViews
+dataset
+| summarize avg(duration) by bin(timestamp, timeGrain)
+| extend pageView='Overall'
+// render result in a chart
+| render timechart
+```
 
-構成パラメーターの完全な一覧については、[GitHub のページ](https://github.com/microsoft/applicationinsights-js#configuration)を参照してください。 使用可能なパラメーターには、次のものがあります。
+### <a name="source-map-support"></a>ソース マップのサポート
 
-    // Send telemetry immediately without batching.
-    // Remember to remove this when no longer required, as it
-    // can affect browser performance.
-    enableDebug: boolean,
+例外テレメトリのミニファイされたコール スタックは、Azure portal でアンミニファイすることができます。 [例外の詳細] パネルの既存の統合はすべて、新たにアンミニファイされるコール スタックに対して動作します。 アンミニファイするためのソース マップのドラッグ アンド ドロップでは、既存および将来のすべての JS SDK (+Node.JS) がサポートされるため、SDK バージョンをアップグレードする必要はありません。 アンミニファイされたコール スタックを表示するには、次の手順に従います。
+1. Azure portal で例外テレメトリ項目を選択し、[エンド ツー エンド トランザクションの詳細] を表示します。
+2. このコール スタックにどのソース マップが対応しているかを識別します。 ソース マップは、スタック フレームのソース ファイルと同じ名前であることが必要です。接尾辞は `.map` です。
+3. ソース マップを Azure portal のコール スタックにドラッグ アンド ドロップします。![](https://i.imgur.com/Efue9nU.gif)
 
-    // Don't log browser exceptions.
-    disableExceptionTracking: boolean,
+### <a name="application-insights-web-basic"></a>Application Insights Web Basic
 
-    // Set false to enable autocollection of [Fetch requests](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) (disabled by default)
-    disableFetchTracking: boolean, // default is true
-    
-    // Don't log ajax calls.
-    disableAjaxTracking: boolean,
+軽量エクスペリエンスのためには、代わりに Application Insights の基本バージョンをインストールすることもできます。
+```
+npm i --save @microsoft/applicationinsights-web-basic
+```
+このバージョンは最小限の機能を備え、必要に応じて発展させるかどうかはユーザー次第です。 たとえば、自動収集 (キャッチされていない例外、AJAX など) は行われません。 `trackTrace` や `trackException` など特定の種類のテレメトリを送信するための API はこのバージョンには含まれないため、独自にラッパーを用意する必要があります。 使用できる唯一の API は `track` です。 [サンプル](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html)については、こちらを参照してください。
 
-    // Limit number of Ajax calls logged, to reduce traffic.
-    maxAjaxCallsPerView: 10, // default is 500
-    
-    // Time page load up to execution of first trackPageView().
-    overridePageViewDuration: boolean,
+## <a name="examples"></a>例
 
-    // Set dynamically for an authenticated user.
-    accountId: string,
-    
+実行できる例については、[Application Insights Javascript SDK サンプル](https://github.com/topics/applicationinsights-js-demo)を参照してください。
 
-## <a name="run"></a>アプリを実行する
-Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。 **F5** キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
+## <a name="upgrading-from-the-old-version-of-application-insights"></a>以前のバージョンの Application Insights からアップグレードする
 
-Web アプリが Application Insights に送信している利用統計情報を確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで**F12** です)。 データは dc.services.visualstudio.com に送信されます。
+SDK V2 バージョンでの破壊的変更:
+- API 署名の向上のため、trackPageView や trackException など一部の API 呼び出しが更新されています。 IE8 以前のバージョンのブラウザーでの実行はサポートされません。
+- データ スキーマの更新により、テレメトリ エンベロープのフィールド名と構造が変更されています。
+- `context.operation` が `context.telemetryTrace` に移動されました。 一部のフィールドも変更されました (`operation.id` --> `telemetryTrace.traceID`)。
+  - 現在のページビュー ID (SPA アプリなど) を手動で更新する場合、`appInsights.properties.context.telemetryTrace.traceID = Util.newId()` を使用して実行できます。
 
-## <a name="explore-your-browser-performance-data"></a>ブラウザーのパフォーマンス データを調査する
-ユーザーのブラウザーから集計したパフォーマンス データを表示するには、[ブラウザー] ブレードを開きます。
+現在の Application Insights PRODUCTION SDK (1.0.20) を使用しており、新しい SDK がランタイムで動作するかどうかを確認する場合は、現在の SDK 読み込みシナリオに応じて URL を更新します。
 
-![In portal.azure.com, open your app's resource and click Settings, Browser](./media/javascript/03.png)
+- CDN を使用したダウンロードのシナリオ:現在使用しているコード スニペットが次の URL を指すように更新します。
+   ```
+   "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
+   ```
 
-まだデータが表示されませんか? ページの上部にある **[更新]** をクリックします。 まだは何も表示されませんか? [トラブルシューティング](troubleshoot-faq.md)に関するページを参照します。
+- NPM のシナリオ:`downloadAndSetup` を呼び出して、完全な ApplicationInsights スクリプトを CDN からダウンロードし、インストルメンテーション キーを使用して初期化します。
 
-[ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された [メトリックス エクスプローラーのブレード](metrics-explorer.md) です。 時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。 **[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
+   ```ts
+   appInsights.downloadAndSetup({
+     instrumentationKey: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
+     url: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
+     });
+   ```
 
-## <a name="page-load-performance"></a>ページ読み込みのパフォーマンス
-最上部には、ページの読み込み時間をセグメント化したグラフが表示されます。 グラフ全体の高さは、ユーザーのブラウザーでアプリからページを読み込んで表示するのにかかった平均時間を表します。 時間の測定範囲は、ブラウザーが初期 HTTP 要求を送信してから、すべての同時読み込みイベントが処理されるまでとなります (レイアウトと実行中のスクリプトを含む)。 AJAX 呼び出しからの Web パーツ読み込みといった非同期タスクは含まれません。
+内部環境でテストして、監視テレメトリが想定どおりに動作していることを確認します。 すべて動作している場合は、API 署名を SDK V2 バージョンに適切に更新し、実稼働環境にデプロイします。
 
-このグラフでは、ページ読み込み時間の合計が、 [W3C で定義されている標準的なタイミング](https://www.w3.org/TR/navigation-timing/#processing-model)に合わせてセグメント化されています。 
+## <a name="sdk-performanceoverhead"></a>SDK のパフォーマンス/オーバーヘッド
 
-![](./media/javascript/08-client-split.png)
+Application Insights は、ちょうど 25 KB に GZip され、初期化には最長で 15 ミリ秒しかかからないため、Web サイトの読み込み時間にはほとんど影響ありません。 スニペットを使用すると、ライブラリの最小コンポーネントがすばやく読み込まれます。 その間に、スクリプト全体がバックグラウンドでダウンロードされます。
 
-多くの場合、"*ネットワーク接続*" 時間は予想よりも短くなることに注意してください。これは、ブラウザーからサーバーに送信されるすべての要求の平均であるためです。 個別の要求の多くは接続時間が 0 です。サーバーへの接続が既にアクティブになっているためです。
+スクリプトが CDN からダウンロードされている間に、ページのすべての追跡がキューに登録されます。 ダウンロードしたスクリプトの初期化が非同期で完了すると、キューに登録されたすべてのイベントが追跡されます。 この結果、ページのライフ サイクル全体でテレメトリが失われることはありません。 このセットアップ プロセスでは、ユーザーには見えないシームレスな分析システムを使用してページが提供されます。
 
-### <a name="slow-loading"></a>読み込みに時間がかかる
-ページの読み込みに時間がかかる問題は、エンド ユーザーの満足度を下げる大きな要因の 1 つです。 グラフからページの読み込みに時間がかかっていることがわかれば、診断調査を簡単に行うことができます。
+> 概要:
+> - **25 KB**: GZip 圧縮
+> - **15 ms**: 全体の初期化時間
+> - **ゼロ**: ページのライフ サイクルで失われる追跡
 
-このグラフは、対象アプリにおける全ページ読み込みの平均時間を示しています。 問題が特定のページに限定されているかどうかは、ブレードの下の方にある、ページの URL ごとにセグメント化されたグリッドで確認できます。
+## <a name="browser-support"></a>ブラウザーのサポート
 
-![](./media/javascript/09-page-perf.png)
+![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
+--- | --- | --- | --- | --- |
+最新 ✔ | 最新 ✔ | 9+ ✔ | 最新 ✔ | 最新 ✔ |
 
-ページ ビュー カウントと標準偏差に注目してください。 このページ カウントがごく小さければ、この問題はさほど多くのユーザーに影響していません。 標準偏差が大きい (平均値そのものに匹敵するなど) ことは、個々の測定値にばらつきが多いことを示しています。
+## <a name="open-source-sdk"></a>オープンソース SDK
 
-**特定の URL やページ ビューを拡大します。** いずれかのページ名をクリックすると、その URL だけを表示するようにブラウザー グラフがフィルタリングされてブレードが表示されます。そこからさらに、特定のページ ビューの情報だけを表示することもできます。
-
-![](./media/javascript/35.png)
-
-[`...`] をクリックすると、該当するイベントの一連のプロパティがすべて表示されます。また、AJAX 呼び出しや関連するイベントを詳しく調査することもできます。 AJAX 呼び出しが同期処理で実行されている場合、呼び出しに時間がかかると、ページ読み込み時間全体に影響します。 関連するイベントとしては、同じ URL に対するサーバー要求があります (Web サーバーに対して Application Insights を設定した場合)。
-
-**時間経過に伴うページ パフォーマンス。** 特定の時間帯にピークを迎えているかどうかを確認するには、[ブラウザー] ブレードに戻って、[ページ ビューの読み込み時間] グリッドを折れ線グラフに変更します。
-
-![Click the head of the grid and select a new chart type](./media/javascript/10-page-perf-area.png)
-
-**セグメント化の基準となるディメンションの変更。** ページ読み込み速度の低下が、特定のブラウザーやクライアント OS、特定地域のユーザーに集中している可能性があります。 新しいグラフを追加し、 **[グループ化]** で適宜ディメンションを変えながら試してください。
-
-![](./media/javascript/21.png)
-
-## <a name="ajax-performance"></a>AJAX パフォーマンス
-Web ページの AJAX 呼び出しが適切に実行されていることを確認します。 Ajax 呼び出しは、非同期的にページの一部を読み込む目的でよく使用されます。 ページ全体としては即座に読み込まれていても、最初に空の Web パーツが表示され、データが表示されるまでに時間がかかっているようだと、ユーザーはストレスを感じる可能性があります。
-
-Web ページからの AJAX 呼び出しは、[ブラウザー] ブレードに依存関係として表示されます。
-
-ブレードの上部には、集計グラフが表示されます。
-
-![](./media/javascript/31.png)
-
-詳細なグリッドは下の方に表示されます。
-
-![](./media/javascript/33.png)
-
-いずれかの行をクリックすると、詳しい情報が表示されます。
-
-> [!NOTE]
-> ブレードで [ブラウザー] フィルターを削除した場合、サーバーと AJAX の両方の依存関係がこれらのグラフの対象となります。 フィルターを再構成するには [既定値に戻す] をクリックしてください。
-> 
-> 
-
-**AJAX 呼び出しエラーを詳しく調査するには** 、下にスクロールして [Dependency failures (依存関係の障害)] グリッドを表示し、特定の行をクリックしてその内容を表示します。
-
-![](./media/javascript/37.png)
-
-[ `...` ] をクリックすると、AJAX 呼び出しの全テレメトリが表示されます。
-
-### <a name="no-ajax-calls-reported"></a>AJAX 呼び出しが報告されない場合
-AJAX 呼び出しには、Web ページのスクリプトから実行されるすべての HTTP/HTTPS 呼び出しが含まれます。 これらが表示されない場合は、コード スニペットで `disableAjaxTracking` または `maxAjaxCallsPerView` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないことを確認してください。
-
-## <a name="browser-exceptions"></a>ブラウザーの例外
-[ブラウザー] ブレードには、例外の集計グラフが表示されるほか、例外の種類を示すグリッドがブレードの下の方に表示されます。
-
-![](./media/javascript/39.png)
-
-ブラウザーの例外がまったく表示されない場合は、コード スニペットで `disableExceptionTracking` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないかどうかを確認してください。
-
-## <a name="inspect-individual-page-view-events"></a>個別のページ ビュー イベントを調査する
-
-通常、Application Insights がページ ビューの利用統計情報を分析し、お客様に対して表示されるのは、すべてのユーザーに関して平均した累積レポートのみです。 ただし、デバッグのために個別のページ ビュー イベントを調べることもできます。
-
-[診断検索] ブレードで、[フィルター] を [ページ ビュー] に設定します。
-
-![](./media/javascript/12-search-pages.png)
-
-いずれかのイベントをクリックして、詳細を表示します。 詳細ページで、[...] をクリックしてさらに詳しい情報を表示します。
-
-> [!NOTE]
-> [Search](diagnostic-search.md) を使用する場合は、単語全体と一致しなければならないことに注意してください。たとえば、"Abou" や "bout" は "About" と一致しません。
-> 
-> 
-
-強力な [Log Analytics クエリ言語](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-tour)を使って、ページ ビューを検索することもできます。
-
-### <a name="page-view-properties"></a>ページ ビュー プロパティ
-* **ページ ビュー時間** 
-  
-  * 既定では、クライアント要求から完全な読み込みまでの、ページの読み込みにかかる時間です (補助ファイルを含みますが、Ajax 呼び出しなどの非同期タスクは含まれません)。 
-  * [ページ構成](#detailed-configuration)で `overridePageViewDuration` を設定した場合は、クライアント要求から最初に `trackPageView` が実行されるまでの間隔です。 スクリプトの初期化後、trackPageView をその定位置から移動した場合、別の値が反映されます。
-  * `overridePageViewDuration` が設定され、期間引数が `trackPageView()` 呼び出しで指定される場合は、その引数の値が代わりに使用されます。 
-
-## <a name="custom-page-counts"></a>ページ カウントのカスタマイズ
-既定では、ページ カウントは新しいページがクライアント ブラウザーに読み込まれるたびに行われます。  ただし、ページ ビューを別の場合にもカウントできます。 たとえば、ページの内容がタブに表示され、ユーザーがタブを切り替えるときに対象ページをカウントしたい場合があります。 またはページ内の JavaScript コードが、ブラウザーの URL を変更することなく新しいコンテンツを読み込む場合もあります。
-
-次のような JavaScript 呼び出しをクライアント コードの適切な箇所に挿入します。
-
-    appInsights.trackPageView(myPageName);
-
-ページ名には、同じ文字を URL として含めることができますが、"#" または "?" の後の文字はすべて無視されます。
-
-## <a name="usage-tracking"></a>使用状況の追跡
-アプリケーションで、ユーザーが何をするのかを知る必要がありますか。
-
-* [ユーザー動作分析ツールの詳細情報](usage-overview.md)
-* [カスタム イベントとメトリックの API の詳細情報](api-custom-events-metrics.md)。
-
-## <a name="video"></a> ビデオ
-
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
-
-
+Application Insights JavaScript SDK はオープンソースです。ソース コードを表示したり、プロジェクトに参加したりするには、[GitHub の公式リポジトリ](https://github.com/Microsoft/ApplicationInsights-JS)にアクセスしてください。
 
 ## <a name="next"></a> 次のステップ
 * [利用状況を追跡する](usage-overview.md)

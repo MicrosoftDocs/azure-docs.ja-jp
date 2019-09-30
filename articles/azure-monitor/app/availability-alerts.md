@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: cc022f91d4b4fec42929769df8c979320548a1f9
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 1d7527d6f52235c6b95ad2e336ea9f9ba85d6344
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304751"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114390"
 ---
 # <a name="availability-alerts"></a>可用性のアラート
 
@@ -61,18 +61,21 @@ ms.locfileid: "67304751"
 
 ### <a name="alert-on-custom-analytics-queries"></a>カスタム分析クエリに関するアラート
 
-[新しい統合アラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)を使用すると、[カスタム ログ クエリ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log)に関するアラートを生成することができます。 カスタム クエリを使用すると、可用性の問題を示す最も確かなシグナルを取得するのに役立つ任意の条件に基づいてアラートを生成することができます。 また、これは TrackAvailability SDK を使用してカスタムの可用性の結果を送信する場合、特に有効です。 
+[新しい統合アラート](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)を使用すると、[カスタム ログ クエリ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log)に関するアラートを生成することができます。 カスタム クエリを使用すると、可用性の問題を示す最も確かなシグナルを取得するのに役立つ任意の条件に基づいてアラートを生成することができます。 また、これは TrackAvailability SDK を使用してカスタムの可用性の結果を送信する場合にも当てはまります。
 
 > [!Tip]
 > 可用性データに関するメトリックにはカスタムの可用性の結果が含まれます。これは、Microsoft の TrackAvailability SDK を呼び出すことによって送信することができます。 メトリックに関するアラートのサポートを使用することにより、カスタムの可用性の結果に関するアラートを生成することができます。
 >
 
+## <a name="automate-alerts"></a>アラートを自動化する
+
+Azure Resource Manager テンプレートを使用してこのプロセスを自動化する方法については、[Resource Manager テンプレートを使用したメトリック アラートの作成](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-a-availability-test-along-with-availability-test-alert)に関するドキュメントを参照してください。
+
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-専用の[トラブルシューティング](troubleshoot-availability.md)に関する記事をご覧ください。
+専用の[トラブルシューティングに関する記事](troubleshoot-availability.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
 * [複数ステップ Web テスト](availability-multistep.md)
 * [URL ping Web テスト](monitor-web-app-availability.md)
-

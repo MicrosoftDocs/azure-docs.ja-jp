@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: reference
-ms.date: 07/27/2019
-ms.openlocfilehash: 30123e03a686eed8df0595c8562f2f9d9351bbde
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.date: 08/23/2019
+ms.openlocfilehash: 484e2776d96d9beaca703f93b22c51299ccf63a7
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706449"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208402"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure Logic Apps および Microsoft Flow でのワークフロー定義言語の関数リファレンス
 
@@ -23,7 +23,7 @@ ms.locfileid: "68706449"
 > [!NOTE]
 > このリファレンス ページは、Azure Logic Apps と Microsoft Flow の両方に適用されますが、Azure Logic Apps のドキュメントに記載されています。 このページでは特にロジック アプリについて参照されていますが、これらの関数はフローとロジック アプリの両方で動作します。 Microsoft Flow での関数と式について詳しくは、[条件での式の使用](https://docs.microsoft.com/flow/use-expressions-in-conditions)に関する記事をご覧ください。
 
-たとえば、整数や浮動小数点数の合計が必要なときは、[add() 関数](../logic-apps/workflow-definition-language-functions-reference.md#add)などの数学関数を使って値を計算できます。 関数を使用して実行できるタスクの他の例を 2 つ示します。
+たとえば、整数や浮動小数点数の合計が必要なときは、[add() 関数](../logic-apps/workflow-definition-language-functions-reference.md#add)などの数学関数を使って値を計算できます。 関数を使用して実行できるタスクの他の例を示します。
 
 | タスク | 関数の構文 | 結果 |
 | ---- | --------------- | ------ |
@@ -252,6 +252,7 @@ Logic Apps が変換時にコンテンツ タイプを処理する方法の詳�
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 複数の部分を持つアクションの出力の特定の部分に対する本文を返します。 |
 | [outputs](../logic-apps/workflow-definition-language-functions-reference.md#outputs) | 実行時のアクションの出力を返します。 |
 | [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | ワークフローの定義で記述されているパラメーターの値を返します。 |
+| [result](../logic-apps/workflow-definition-language-functions-reference.md#result) | `For_each`、`Until`、`Scope` など、指定されたスコープ付きアクション内のすべてのアクションからの入力と出力を返します。 |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | 実行時に、または他の JSON の名前と値のペアから、トリガーの出力を返します。 [triggerOutputs](#triggerOutputs) および [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) もご覧ください。 |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | 実行時にトリガーの `body` 出力を返します。 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) をご覧ください。 |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | *form-data* または *form-encoded* トリガー出力のキー名と一致する単一の値を返します。 |
@@ -638,7 +639,7 @@ addMinutes('2018-03-15T00:20:00Z', -5)
 
 ### <a name="addproperty"></a>addProperty
 
-JSON オブジェクトにプロパティとその値または名前と値のペアを追加し、更新されたオブジェクトを返します。 実行時にオブジェクトが既に存在する場合、関数はエラーをスローします。
+JSON オブジェクトにプロパティとその値または名前と値のペアを追加し、更新されたオブジェクトを返します。 実行時にプロパティが既に存在する場合、関数は失敗し、エラーをスローします。
 
 ```
 addProperty(<object>, '<property>', <value>)
@@ -656,13 +657,81 @@ addProperty(<object>, '<property>', <value>)
 | <*updated-object*> | Object | 指定したプロパティを含む更新された JSON オブジェクト |
 ||||
 
-*例*
-
-この例は、`accountNumber` プロパティを `customerProfile` オブジェクトに追加します。オブジェクトは、[JSON()](#json) 関数で JSON に変換されます。
-この関数は、[guid()](#guid) 関数によって生成された値を代入し、更新されたオブジェクトを返します。
+既存のプロパティに子プロパティを追加するには、次の構文を使用します。
 
 ```
-addProperty(json('customerProfile'), 'accountNumber', guid())
+addProperty(<object>['<parent-property>'], '<child-property>', <value>)
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | はい | Object | プロパティを追加する JSON オブジェクト |
+| <*parent-property*> | はい | string | 子プロパティを追加する親プロパティの名前 |
+| <*child-property*> | はい | string | 追加する子プロパティの名前 |
+| <*value*> | はい | Any | 指定したプロパティに設定する値 |
+|||||
+
+| 戻り値 | Type | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-object*> | Object | プロパティが設定された更新後の JSON オブジェクト |
+||||
+
+*例 1*
+
+この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトに `middleName` プロパティを追加します。 このオブジェクトには、プロパティ `firstName` と `surName` が既に含まれています。 この関数は、指定された値を新しいプロパティに割り当て、更新されたオブジェクトを返します。
+
+```
+addProperty(json('{ "firstName": "Sophia", "lastName": "Owen" }'), 'middleName', 'Anne')
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+*例 2*
+
+この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトの既存の `customerName` プロパティに `middleName` 子プロパティを追加します。 この関数は、指定された値を新しいプロパティに割り当て、更新されたオブジェクトを返します。
+
+```
+addProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'middleName', 'Anne')
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
 ```
 
 <a name="addSeconds"></a>
@@ -1168,7 +1237,7 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
-| <*destinationTimeZone*> | はい | string | ターゲット タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 |
+| <*destinationTimeZone*> | はい | string | ターゲット タイム ゾーンの名前。 タイム ゾーン名の詳細については、[Microsoft タイム ゾーン インデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)に関するページを参照してください。 |
 | <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
@@ -1210,8 +1279,8 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
-| <*sourceTimeZone*> | はい | string | ソース タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 |
-| <*destinationTimeZone*> | はい | string | ターゲット タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 |
+| <*sourceTimeZone*> | はい | string | ソース タイム ゾーンの名前。 タイム ゾーン名の詳細については、[Microsoft タイム ゾーン インデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)に関するページを参照してください。 |
+| <*destinationTimeZone*> | はい | string | ターゲット タイム ゾーンの名前。 タイム ゾーン名の詳細については、[Microsoft タイム ゾーン インデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)に関するページを参照してください。 |
 | <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
@@ -1253,7 +1322,7 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 | パラメーター | 必須 | Type | 説明 |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | はい | string | タイムスタンプを含む文字列。 |
-| <*sourceTimeZone*> | はい | string | ソース タイム ゾーンの名前。 詳しくは、「[Time Zone IDs](https://docs.microsoft.com/previous-versions/windows/embedded/gg154758(v=winembedded.80))」(タイム ゾーン ID) をご覧ください。 |
+| <*sourceTimeZone*> | はい | string | ソース タイム ゾーンの名前。 タイム ゾーン名の詳細については、[Microsoft タイム ゾーン インデックス値](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values)に関するページを参照してください。 |
 | <*format*> | いいえ | string | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 |||||
 
@@ -3152,7 +3221,7 @@ replace('the old string', 'old', 'new')
 
 ### <a name="removeproperty"></a>removeProperty
 
-オブジェクトからプロパティを削除し、更新されたオブジェクトを返します。
+オブジェクトからプロパティを削除し、更新されたオブジェクトを返します。 削除しようとしたプロパティが存在しない場合、この関数は元のオブジェクトを返します。
 
 ```
 removeProperty(<object>, '<property>')
@@ -3169,20 +3238,208 @@ removeProperty(<object>, '<property>')
 | <*updated-object*> | Object | 指定したプロパティを含まない更新された JSON オブジェクト |
 ||||
 
-*例*
-
-この例は、`"customerProfile"` オブジェクトから `"accountLocation"` プロパティを削除し、[JSON()](#json) 関数で JSON に変換した後、更新されたオブジェクトを返します。
+既存のプロパティから子プロパティを削除するには、次の構文を使用します。
 
 ```
-removeProperty(json('customerProfile'), 'accountLocation')
+removeProperty(<object>['<parent-property>'], '<child-property>')
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | はい | Object | プロパティを削除する JSON オブジェクト |
+| <*parent-property*> | はい | string | 子プロパティを削除する親プロパティの名前 |
+| <*child-property*> | はい | string | 削除する子プロパティの名前 |
+|||||
+
+| 戻り値 | Type | 説明 |
+| ------------ | ---- | ----------- |
+| <*updated-object*> | Object | 子プロパティが削除された、更新済みの JSON オブジェクト |
+||||
+
+*例 1*
+
+この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトから `middleName` プロパティを削除し、更新されたオブジェクトを返します。
+
+```
+removeProperty(json('{ "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" }'), 'middleName')
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "middleName": "Anne",
+   "surName": "Owen"
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+*例 2*
+
+この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトの `customerName` 親プロパティから `middleName` 子プロパティを削除し、更新されたオブジェクトを返します。
+
+```
+removeProperty(json('{ "customerName": { "firstName": "Sophia", "middleName": "Anne", "surName": "Owen" } }')['customerName'], 'middleName')
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "middleName": "Anne",
+      "surName": "Owen"
+   }
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophia",
+      "surName": "Owen"
+   }
+}
+```
+
+<a name="result"></a>
+
+### <a name="result"></a>result
+
+`For_each`、`Until`、`Scope` アクションなど、指定されたスコープ付きアクション内のすべてのアクションからの入力と出力を返します。 この関数は、例外を診断して処理できるように、失敗したアクションの結果を返すため、役立ちます。 詳細については「[エラーのコンテキストと結果を取得する](../logic-apps/logic-apps-exception-handling.md#get-results-from-failures)」をご覧ください。
+
+```
+result('<scopedActionName>')
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*scopedActionName*> | はい | string | すべての内部アクションからの入力と出力を返すスコープ付きアクションの名前。 |
+||||
+
+| 戻り値 | Type | 説明 |
+| ------------ | ---- | ----------- |
+| <*array-object*> | Array オブジェクト | 指定されたスコープ付きアクション内に出現する各アクションからの入力と出力の配列を格納している配列 |
+||||
+
+*例*
+
+この例では、`Compose` アクションで `result()` 関数を使用して、`For_each` ループ内にある HTTP アクションの各繰り返しからの入力と出力を返します。
+
+```json
+{
+   "actions": {
+      "Compose": {
+         "inputs": "@result('For_each')",
+         "runAfter": {
+            "For_each": [
+               "Succeeded"
+            ]
+         },
+         "type": "compose"
+      },
+      "For_each": {
+         "actions": {
+            "HTTP": {
+               "inputs": {
+                  "method": "GET",
+                  "uri": "https://httpstat.us/200"
+               },
+               "runAfter": {},
+               "type": "Http"
+            }
+         },
+         "foreach": "@triggerBody()",
+         "runAfter": {},
+         "type": "Foreach"
+      }
+   }
+}
+```
+
+以下に、返される配列の例を示します。ここで、外側の `outputs` オブジェクトに、`For_each` アクション内にあるアクションの各繰り返しからの入力と出力が格納されています。
+
+```json
+[
+   {
+      "name": "HTTP",
+      "outputs": [
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+               "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "6bad3015-0444-4ccd-a971-cbb0c99a7.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         },
+         {
+            "name": "HTTP",
+            "inputs": {
+               "uri": "https://httpstat.us/200",
+               "method": "GET"
+            },
+            "outputs": {
+            "statusCode": 200,
+               "headers": {
+                   "X-AspNetMvc-Version": "5.1",
+                   "Access-Control-Allow-Origin": "*",
+                   "Cache-Control": "private",
+                   "Date": "Tue, 20 Aug 2019 22:15:37 GMT",
+                   "Set-Cookie": "ARRAffinity=0285cfbea9f2ee7",
+                   "Server": "Microsoft-IIS/10.0",
+                   "X-AspNet-Version": "4.0.30319",
+                   "X-Powered-By": "ASP.NET",
+                   "Content-Length": "0"
+               },
+               "startTime": "2019-08-20T22:15:37.6919631Z",
+               "endTime": "2019-08-20T22:15:37.95762Z",
+               "trackingId": "9987e889-981b-41c5-aa27-f3e0e59bf69.....",
+               "clientTrackingId": "085863526764.....",
+               "code": "OK",
+               "status": "Succeeded"
+            }
+         }
+      ]
+   }
+]
 ```
 
 <a name="setProperty"></a>
 
 ### <a name="setproperty"></a>setProperty
 
-オブジェクトのプロパティの値を設定し、更新されたオブジェクトを返します。
-新しいプロパティを追加するには、この関数または [addProperty()](#addProperty) 関数を使うことができます。
+JSON オブジェクトのプロパティの値を設定し、更新されたオブジェクトを返します。 設定しようとしたプロパティが存在しない場合、そのプロパティがオブジェクトに追加されます。 新しいプロパティを追加するには、[addProperty()](#addProperty) 関数を使用します。
 
 ```
 setProperty(<object>, '<property>', <value>)
@@ -3195,18 +3452,79 @@ setProperty(<object>, '<property>', <value>)
 | <*value*> | はい | Any | 指定したプロパティに設定する値 |
 |||||
 
+子オブジェクト内に子プロパティを設定するには、入れ子になった `setProperty()` 呼び出しを代わりに使用します。 それ以外の場合、関数は子オブジェクトだけを出力として返します。
+
+```
+setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
+```
+
+| パラメーター | 必須 | Type | 説明 |
+| --------- | -------- | ---- | ----------- |
+| <*object*> | はい | Object | プロパティを設定する JSON オブジェクト |
+| <*parent-property*> | はい | string | 子プロパティを設定する親プロパティの名前 |
+| <*child-property*> | はい | string | 設定する子プロパティの名前 |
+| <*value*> | はい | Any | 指定したプロパティに設定する値 |
+|||||
+
 | 戻り値 | Type | 説明 |
 | ------------ | ---- | ----------- |
 | <*updated-object*> | Object | プロパティが設定された更新後の JSON オブジェクト |
 ||||
 
-*例*
+*例 1*
 
-この例は、`"customerProfile"` オブジェクトの `"accountNumber"` プロパティを設定します。オブジェクトは、[JSON()](#json) 関数で JSON に変換されます。
-この関数は、[guid()](#guid) 関数によって生成された値を代入し、更新された JSON オブジェクトを返します。
+この例では [JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトに `surName` プロパティを設定します。 この関数は、指定された値をこのプロパティに割り当て、更新されたオブジェクトを返します。
 
 ```
-setProperty(json('customerProfile'), 'accountNumber', guid())
+setProperty(json('{ "firstName": "Sophia", "surName": "Owen" }'), 'surName', 'Hartnett')
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Owen"
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "firstName": "Sophia",
+   "surName": "Hartnett"
+}
+```
+
+*例 2*
+
+この例では、[JSON()](#json) 関数を使用して文字列から JSON に変換される JSON オブジェクトの `customerName` 親プロパティに `surName` 子プロパティを設定します。 この関数は、指定された値をこのプロパティに割り当て、更新されたオブジェクトを返します。
+
+```
+setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }'), 'customerName', setProperty(json('{ "customerName": { "firstName": "Sophia", "surName": "Owen" } }')['customerName'], 'surName', 'Hartnett'))
+```
+
+現在の JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Owen"
+   }
+}
+```
+
+更新された JSON オブジェクトを次に示します。
+
+```json
+{
+   "customerName": {
+      "firstName": "Sophie",
+      "surName": "Hartnett"
+   }
+}
 ```
 
 <a name="skip"></a>
@@ -4249,7 +4567,7 @@ workflow().run.name
 
 <a name="xml"></a>
 
-### <a name="xml"></a>Xml
+### <a name="xml"></a>xml
 
 JSON オブジェクトを含む文字列の XML バージョンを返します。
 

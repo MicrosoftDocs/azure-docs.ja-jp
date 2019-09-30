@@ -7,15 +7,15 @@ ms.suite: integration
 author: ecfan
 ms.author: estfan
 ms.reviewer: plarsen, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a7079115b381d094cec77f96015342b5bc568c27
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60314228"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051040"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Azure Logic Apps を使用して IBM DB2 リソースを管理する
 
@@ -25,11 +25,11 @@ Azure Logic Apps および IBM DB2 コネクタを使用すると、DB2 デー�
 
 ## <a name="supported-platforms-and-versions"></a>サポートされているプラットフォームとバージョン
 
-DB2 コネクタには、TCP/IP ネットワーク経由でリモート DB2 サーバーと通信する Microsoft クライアントが含まれています。 このコネクタを使用して、Azure 仮想化で実行している IBM Bluemix dashDB または IBM DB2 for Windows などのクラウド データベースにアクセスできます。 また、[オンプレミス データ ゲートウェイをインストールして設定](../logic-apps/logic-apps-gateway-connection.md)すれば、オンプレミス DB2 データベースにもアクセスできます。
+DB2 コネクタには、TCP/IP ネットワーク経由でリモート DB2 サーバーと通信する Microsoft クライアントが含まれています。 このコネクタを使用して、Azure 仮想化で実行されている IBM DB2 for Windows などのクラウド データベースにアクセスできます。 また、[オンプレミス データ ゲートウェイをインストールして設定](../logic-apps/logic-apps-gateway-connection.md)すれば、オンプレミス DB2 データベースにもアクセスできます。
 
-IBM DB2 コネクタでは、次の IBM DB2 のプラットフォームとバージョンに加え、分散型リレーショナル データベース アーキテクチャ (DRDA) SQL アクセス マネージャー (SQLAM) バージョン 10 および 11 に対応している IBM DB2 互換製品 (IBM Bluemix dashDB など) をサポートしています。
+IBM DB2 コネクタでは、次の IBM DB2 のプラットフォームとバージョンに加え、分散型リレーショナル データベース アーキテクチャ (DRDA) SQL アクセス マネージャー (SQLAM) バージョン 10 および 11 に対応している IBM DB2 互換製品をサポートしています。
 
-| プラットフォーム | バージョン | 
+| プラットフォーム | Version | 
 |----------|---------|
 | IBM DB2 for z/OS | 11.1、10.1 |
 | IBM DB2 for i | 7.3、7.2、7.1 |
@@ -52,7 +52,7 @@ IBM DB2 コネクタでサポートされる次のデータベース操作は、
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * IBM DB2 データベース (クラウドベースまたはオンプレミス)
 
@@ -363,11 +363,6 @@ DB2 データベース テーブルから 1 レコードを削除するには、
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
 コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/db2/)を参照してください。
-
-## <a name="get-support"></a>サポートを受ける
-
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

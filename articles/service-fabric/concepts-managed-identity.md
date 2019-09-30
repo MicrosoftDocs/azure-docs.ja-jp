@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: 3e95412675100043eb21f50c8f93aa0ec0b6b7e6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: d63fd3d1b778c691d053f13fbf0fbb2ed5ccb3e3
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68964001"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70968278"
 ---
 # <a name="managed-identity-for-service-fabric-application-preview"></a>Service Fabric アプリケーションのマネージド ID (プレビュー)
 
@@ -64,7 +64,6 @@ Service Fabric のマネージド ID は、Azure にデプロイされた Servic
 
    - アプリケーションに割り当てられている ID を削除または変更する。変更を行う必要がある場合は、別のデプロイを送信して、先に新しい ID 割り当てを追加してから、以前に割り当てた ID を削除してください。 既存のアプリケーションから ID を削除すると、アプリケーションがアップグレード不可能な状態のままになるなど、望ましくない影響が生じる可能性があります。 ID の削除が必要な場合は、アプリケーションごと削除するのが安全です。これによって、アプリケーションに関連付けられているシステム割り当て ID (そのように定義されている場合) が削除され、アプリケーションに割り当てられているユーザー定義 ID との関連付けもすべて削除されることに注意してください。
 
-   - システム割り当て ID とユーザー割り当て ID を同じアプリケーションに混在させることはお勧めしません。
 >
 > [!NOTE]
 >

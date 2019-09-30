@@ -1,27 +1,27 @@
 ---
 title: 例:AdventureWorks の在庫データベースをモデル化する - Azure Search
 description: リレーショナル データをモデル化し、フラット化されたデータ セットに変換して、Azure Search のインデックス作成と全文検索に利用する方法について説明します。
-author: cstone
+author: HeidiSteen
 manager: nitinme
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: chstone
-ms.openlocfilehash: 52ccf3edfca5b3481b038bd5d3449c1dd6354179
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/05/2019
+ms.author: heidist
+ms.openlocfilehash: c25dd34460e7e92bb20913f5b812044623dd38e3
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649915"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274035"
 ---
 # <a name="example-model-the-adventureworks-inventory-database-for-azure-search"></a>例:AdventureWorks の在庫データベースを Azure Search 用にモデル化する
 
-構造化データベースのコンテンツをモデル化して効率的な検索インデックスを作成する作業を簡単に行うことができるのはごくまれです。 スケジューリングと変更管理は別として、ソース行を (そのテーブル結合状態から離れて) 検索しやすいエンティティに非正規化するという課題が存在します。 この記事では、オンラインで入手可能な AdventureWorks サンプル データを使用して、データベースから検索への切り替えにおける一般的なエクスペリエンスを中心に説明します。 
+Azure Search では、フラット化された行セットを[インデックス作成 (データ インジェスト) パイプライン](search-what-is-an-index.md)への入力として受け入れます。 ソース データが SQL Server リレーショナル データベースから生成される場合、この記事では、AdventureWorks サンプル データベースを例として使用して、インデックス作成の前にフラット化された行セットを作成するための 1 つの方法を示します。
 
 ## <a name="about-adventureworks"></a>AdventureWorks について
 
-SQL Server インスタンスがある場合は、AdventureWorks サンプル データベースを使い慣れているかもしれません。 このデータベースに含まれるテーブルには、製品情報を公開する 5 つのテーブルがあります。
+SQL Server インスタンスがある場合は、[AdventureWorks サンプル データベース](https://docs.microsoft.com/sql/samples/adventureworks-install-configure?view=sql-server-2017)を使い慣れているかもしれません。 このデータベースに含まれるテーブルには、製品情報を公開する 5 つのテーブルがあります。
 
 + **ProductModel**: 名前
 + **Product**: 名前、色、コスト、サイズ、重量、イメージ、カテゴリ (各行は特定の ProductModel に結合)
@@ -29,7 +29,7 @@ SQL Server インスタンスがある場合は、AdventureWorks サンプル �
 + **ProductModelProductDescription**: ロケール (各行は ProductModel を特定の言語の特定の ProductDescription に結合)
 + **ProductCategory**: 名前、親カテゴリ
 
-このすべてのデータを、検索インデックスに取り込み可能なフラット化行セットにまとめることが目下のタスクです。 
+このすべてのデータを、検索インデックスに取り込み可能なフラット化された行セットにまとめることがこの例の目標です。 
 
 ## <a name="considering-our-options"></a>オプションの検討
 
@@ -43,7 +43,7 @@ Road-650 モデルには 12 個のオプションがあることに注意して�
 
 ## <a name="use-a-collection-data-type"></a>Collection データ型を使用する
 
-"正しいアプローチ" は、データベース モデルに直接的な並列がない次の検索スキーマ機能を利用することです。**Collection(Edm.String)** 。 Collection データ型は、非常に長い (単一の) 文字列ではなく個々の文字列のリストがある場合に使用されます。 タグまたはキーワードがある場合は、Collection データ型をそのフィールドに使用します。
+"正しいアプローチ" は、データベース モデルに直接的な並列がない次の検索スキーマ機能を利用することです。**Collection(Edm.String)** 。 このコンストラクトは、Azure Search インデックス スキーマに定義されます。 Collection データ型は、非常に長い (単一の) 文字列ではなく個々の文字列の一覧を表示する必要がある場合に使用されます。 タグまたはキーワードがある場合は、Collection データ型をそのフィールドに使用します。
 
 "色"、"サイズ"、および "イメージ" に対して **Collection(Edm.String)** の複数値のインデックス フィールドを定義することで、重複エントリを含むインデックスを汚染せずにファセットとフィルターを行うための補助的な情報が保持されます。 同様に、集計関数を Product の数値フィールドに適用し、すべての製品の **listPrice** ではなく **minListPrice** にインデックスを付けます。
 
@@ -164,5 +164,3 @@ WHERE
 
 > [!div class="nextstepaction"]
 > [例:Azure Search の多層構造ファセットの分類](search-example-adventureworks-multilevel-faceting.md)
-
-

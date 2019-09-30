@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 062ed5e408317e95b36d6d0dfa395311ed4afe7f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261426"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69904412"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>フェールバック用の Linux マスター ターゲット サーバーをインストールする
 仮想マシンを Azure にフェールオーバー後、仮想マシンをオンプレミス サイトにフェールバックできます。 フェールバックするには、Azure からオンプレミス サイトへの仮想マシンを再保護する必要があります。 このプロセスには、トラフィックを受信するオンプレミス マスター ターゲット サーバーが必要です。 
@@ -214,12 +214,11 @@ Linux を使用してこれをダウンロードするには、次のように�
 
 ### <a name="apply-custom-configuration-changes"></a>カスタム構成変更を適用する
 
-カスタム構成変更を適用するには、次の手順を使用します。
-
+カスタム構成変更を適用するには、ルート ユーザーとして次の手順を使用します。
 
 1. 次のコマンドを実行して、バイナリを解凍します。
 
-    `tar -zxvf latestlinuxmobsvc.tar.gz`
+    `tar -xvf latestlinuxmobsvc.tar.gz`
 
     ![実行するコマンドのスクリーンショット](./media/vmware-azure-install-linux-master-target/image16.png)
 

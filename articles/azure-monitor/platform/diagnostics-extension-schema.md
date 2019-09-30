@@ -6,15 +6,15 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 09/20/2018
+ms.date: 09/04/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e8ea8ea749243821e5382fc285e3c38f05d4c6b5
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60527311"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735085"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure Diagnostics 拡張機能の構成スキーマのバージョンと履歴
 このページでは、Microsoft Azure SDK に付属する Azure Diagnostics 拡張機能のスキーマのバージョン一覧を示します。  
@@ -54,13 +54,7 @@ Azure Diagnostics 拡張機能は、Application Insights や Log Analytics が�
  SDK 2.5 (診断バージョン 1.2) 以降、Azure Diagnostics は拡張機能モデルに移行しています。 新しい機能を利用するツールは新しい Azure SDK でのみ使用できましたが、Azure Diagnostics を使用するサービスは、Azure から最新バージョンを直接選択できます。 たとえば、まだ SDK 2.5 を使用しているユーザーは、新しい機能を使用しているかどうかに関係なく、前の表に示されている最新バージョンが読み込むことができます。  
 
 ## <a name="schemas-index"></a>スキーマのインデックス  
-異なるバージョンの Azure Diagnostics は、異なる構成スキーマを使用します。
-
-[診断 1.0 構成スキーマ](diagnostics-extension-schema-1dot0.md)  
-
-[診断 1.2 構成スキーマ](diagnostics-extension-schema-1dot2.md)  
-
-[診断 1.3 およびそれ以降の構成スキーマ](diagnostics-extension-schema-1dot3.md)  
+異なるバージョンの Azure Diagnostics は、異なる構成スキーマを使用します。 スキーマ 1.0 と 1.2 は非推奨になりました。 バージョン 1.3 以降の詳細については、「[Microsoft Azure Diagnostics の 1.3 以降の構成スキーマ](diagnostics-extension-schema-1dot3.md)」を参照してください。  
 
 ## <a name="version-history"></a>バージョン履歴
 

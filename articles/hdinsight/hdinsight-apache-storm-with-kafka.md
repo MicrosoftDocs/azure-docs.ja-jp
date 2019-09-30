@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Apache Storm と Apache Kafka を使用してデータの読み書きを行う - Azure HDInsight'
+title: チュートリアル:Apache Storm と Apache Kafka を使用した読み取りおよび書き込み - Azure HDInsight
 description: HDInsight の Apache Storm と Apache Kafka を使用してストリーミング パイプラインを作成する方法について説明します。 このチュートリアルでは、KafkaBolt コンポーネントと KafkaSpout コンポーネントを使用して Kafka からデータをストリーミングします。
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 181d052501b9c418fad10a2069dde928a7ff9f38
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 0eaa3428234db8a7045728404bcfac5cc732dd9d
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840242"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181160"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -372,7 +372,7 @@ streams:
 | `kafka.broker.hosts` | Kafka ブローカー ホスト (ワーカー ノード)。 |
 | `kafka.topic` | トポロジで使用される Kafka トピック。 |
 | `hdfs.write.dir` | Kafka-reader トポロジによる書き込み先のディレクトリ。 |
-| `hdfs.url` | Storm クラスターで使用されるファイル システム。 Azure ストレージ アカウントの場合、値として `wasb:///` を使用します。 Azure Data Lake Storage Gen2 の場合、値として `abfs:///` を使用します。 Azure Data Lake Storage Gen1 の場合、値として `adl:///` を使用します。 |
+| `hdfs.url` | Storm クラスターで使用されるファイル システム。 Azure ストレージ アカウントの場合、値として `wasb://` を使用します。 Azure Data Lake Storage Gen2 の場合、値として `abfs://` を使用します。 Azure Data Lake Storage Gen1 の場合、値として `adl://` を使用します。 |
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 
@@ -380,7 +380,7 @@ HDInsight の Apache Kafka では、パブリック インターネットを介�
 
 次の図に、Storm と Kafka 間の通信フローを示します。
 
-![Azure 仮想ネットワークにおける Strom クラスターと Kafka クラスターの図](./media/hdinsight-apache-storm-with-kafka/storm-kafka-vnet.png)
+![Azure 仮想ネットワークにおける Strom クラスターと Kafka クラスターの図](./media/hdinsight-apache-storm-with-kafka/apache-storm-kafka-vnet.png)
 
 > [!NOTE]  
 > SSH や [Apache Ambari](https://ambari.apache.org/) など、クラスター上の他のサービスは、インターネット経由でアクセスできます。 HDInsight で使用できるパブリック ポートの詳細については、「[HDInsight で使用されるポートと URI](hdinsight-hadoop-port-settings-for-services.md)」を参照してください。
@@ -388,11 +388,11 @@ HDInsight の Apache Kafka では、パブリック インターネットを介�
 Azure 仮想ネットワークを作成し、その仮想ネットワーク内に Kafka クラスターと Storm クラスターを作成するには、次の手順に従います。
 
 1. 次のボタンを使用して Azure にサインインし、Azure Portal でテンプレートを開きます。
-   
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
-   
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+
     Azure Resource Manager テンプレートは、 **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** にあります。 このテンプレートは次のリソースを作成します。
-    
+
     * Azure リソース グループ
     * Azure Virtual Network
     * Azure ストレージ アカウント
@@ -471,9 +471,9 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
     次のテキストのような値が返されます。
 
-        ```output
-        wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
-        ```
+    ```output
+    wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
+     ```
 
     > [!IMPORTANT]  
     > クラスターに 2 つ以上のブローカー ホストがある場合でも、すべてのホストの完全な一覧をクライアントに提供する必要はありません。 1 つまたは 2 つで十分です。

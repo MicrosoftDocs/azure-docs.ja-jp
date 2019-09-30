@@ -2,20 +2,20 @@
 title: Azure クイック スタート - PowerShell を使用して Key Vault との間でシークレットの設定と取得を行う | Microsoft Docs
 description: ''
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/07/2019
-ms.author: barclayn
-ms.openlocfilehash: 8d6260d462b4c244dfb41630e06710a1ce8baf6c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.date: 09/03/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 5753384d12d31016dff7a33175899835c8bd1fec
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726777"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70259253"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>クイック スタート:PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -100,9 +100,9 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Key Vault を作成してソフトウェア キーを格納しました。 Key Vault の詳細とアプリケーションでの使用方法については、Key Vault と連携する Web アプリのチュートリアルに進んでください。
+このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
-Azure リソースのマネージド ID を使用して、Web アプリケーションから Key Vault のシークレットを読み取る方法を学習するには、
-
-> [!div class="nextstepaction"]
-> [キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](quick-create-net.md)チュートリアルに進んでください。
+- [Azure Key Vault の概要](key-vault-overview.md)を確認する
+- [Azure PowerShell の Key Vault コマンドレット](/powershell/module/az.keyvault/?view=azps-2.6.0#key_vault)のリファレンスを参照する
+- [キー、シークレット、証明書](about-keys-secrets-and-certificates.md)について学習する
+- [Azure Key Vault のベスト プラクティス](key-vault-best-practices.md)を確認する

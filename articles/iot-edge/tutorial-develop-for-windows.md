@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 66fa7c2f61af250e4b63b67f6941bed768bd94c4
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 6cde60ee31b1654d79affd6e9050f426365ba29f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541897"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240969"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-windows-devices"></a>チュートリアル:Windows デバイス用の IoT Edge モジュールを開発する
 
@@ -57,6 +57,7 @@ IoT Edge モジュールを開発する場合は、開発マシンと、モジ�
 
 * 1809 以降の更新プログラムが適用された Windows 10。
 * 開発設定に応じて、独自のコンピューターまたは仮想マシンを使用できます。
+  * 開発用マシンで、入れ子になった仮想化がサポートされていることを確認します。 この機能は、次のセクションでインストールするコンテナー エンジンを実行するために必要です。
 * [Git](https://git-scm.com/) のインストール。 
 
 Window 上の Azure IoT Edge デバイス:
@@ -194,13 +195,13 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 6. $edgeAgent の必要なプロパティの **modules** プロパティを見つけます。 
 
-   ここには 2 つのモジュールがリストされているはずです。 1 つ目は **tempSensor** で、これは既定ですべてのテンプレートに含まれており、モジュールをテストするために使用できるシミュレートされた温度データを提供します。 2 つ目は、このプロジェクトの一部として作成した **IotEdgeModule1** モジュールです。
+   ここには 2 つのモジュールがリストされているはずです。 1 つ目は **SimulatedTemperatureSensor** で、これは既定ですべてのテンプレートに含まれており、モジュールをテストするために使用できるシミュレートされた温度データを提供します。 2 つ目は、このプロジェクトの一部として作成した **IotEdgeModule1** モジュールです。
 
    このモジュールのプロパティでは、デバイスへのデプロイにどのモジュールを含めるかを宣言します。 
 
 7. $edgeHub の必要なプロパティから **routes** プロパティを見つけます。 
 
-   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 routes プロパティの値を確認します。 最初のルートである **IotEdgeModule1ToIoTHub** では、IotEdgeModule1 モジュールの出力キューから送信されるすべてのメッセージを対象にするために、ワイルドカード文字 ( **\*** ) を使用します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 2 つ目のルートである **sensorToIotEdgeModule1** では、tempSensor モジュールから送信されたメッセージを受け取り、それらを IotEdgeModule1 モジュールの *input1* 入力キューにルーティングします。 
+   IoT Edge ハブ モジュールの機能の 1 つは、デプロイ内のすべてのモジュール間でメッセージをルーティングすることです。 routes プロパティの値を確認します。 最初のルートである **IotEdgeModule1ToIoTHub** では、IotEdgeModule1 モジュールの出力キューから送信されるすべてのメッセージを対象にするために、ワイルドカード文字 ( **\*** ) を使用します。 これらのメッセージは、IoT Hub を示す予約名である *$upstream* に入ります。 2 つ目のルートである **sensorToIotEdgeModule1** では、SimulatedTemperatureSensor モジュールから送信されたメッセージを受け取り、それらを IotEdgeModule1 モジュールの *input1* 入力キューにルーティングします。 
 
    ![deployment.template.json でルートを確認する](./media/tutorial-develop-for-windows/deployment-routes.png)
 
@@ -284,14 +285,14 @@ IoT Edge ランタイムでは、コンテナー イメージを IoT Edge デバ
 
 4. Cloud Explorer で IoT Edge デバイスの詳細を展開すると、お使いのデバイス上のモジュールが表示されます。
 
-5. **[最新の情報に更新]** ボタンを使用してデバイス状態を更新し、tempSensor および IotEdgeModule1 モジュールがお使いのデバイスにデプロイされていることを確認します。 
+5. **[最新の情報に更新]** ボタンを使用してデバイス状態を更新し、SimulatedTemperatureSensor および IotEdgeModule1 モジュールがお使いのデバイスにデプロイされていることを確認します。 
 
 
    ![IoT Edge デバイスで実行されているモジュールを表示する](./media/tutorial-develop-for-windows/view-running-modules.png)
 
 ## <a name="view-messages-from-device"></a>デバイスからのメッセージを表示する
 
-IotEdgeModule1 コードは、入力キューを介してメッセージを受け取り、出力キューを介してそれらを渡します。 配置マニフェストは、メッセージを tempSensor から IotEdgeModule1 に渡し、次に IotEdgeModule1 から IoT Hub にメッセージを転送したルートを宣言しました。 Visual Studio 用の Azure IoT Edge ツールを使用すると、個々のデバイスから IoT Hub に到着したメッセージを表示できます。 
+IotEdgeModule1 コードは、入力キューを介してメッセージを受け取り、出力キューを介してそれらを渡します。 配置マニフェストは、メッセージを SimulatedTemperatureSensor から IotEdgeModule1 に渡し、次に IotEdgeModule1 から IoT Hub にメッセージを転送したルートを宣言しました。 Visual Studio 用の Azure IoT Edge ツールを使用すると、個々のデバイスから IoT Hub に到着したメッセージを表示できます。 
 
 1. Visual Studio の Cloud Explorer で、デプロイ先の IoT Edge デバイスの名前を選択します。 
 
@@ -299,7 +300,7 @@ IotEdgeModule1 コードは、入力キューを介してメッセージを受�
 
 3. Visual Studio の **[出力]** セクションを監視して、IoT ハブに到着するメッセージを確認してください。 
 
-   両方のモジュールが開始するまでに数分かかる場合があります。 IoT Edge ランタイムは、新しい配置マニフェストを受け取り、コンテナー ランタイムからモジュール イメージを取得して、それぞれの新しいモジュールを開始する必要があります。 もし 
+   両方のモジュールが開始するまでに数分かかる場合があります。 IoT Edge ランタイムは、新しい配置マニフェストを受け取り、コンテナー ランタイムからモジュール イメージを取得して、それぞれの新しいモジュールを開始する必要があります。 
 
    ![デバイスからクラウドへの着信メッセージを表示する](./media/tutorial-develop-for-windows/view-d2c-messages.png)
 
@@ -315,7 +316,7 @@ IotEdgeModule1 コードは、入力キューを介してメッセージを受�
    iotedge list
    ```
 
-   4 つのモジュール (2 つの IoT Edge ランタイム モジュール、tempSensor、および IotEdgeModule1) が表示されるはずです。 4 つすべてが実行中として一覧に表示されるはずです。
+   4 つのモジュール (2 つの IoT Edge ランタイム モジュール、SimulatedTemperatureSensor、および IotEdgeModule1) が表示されるはずです。 4 つすべてが実行中として一覧に表示されるはずです。
 
 * 次のように、特定のモジュールのログを検査します。
 
@@ -325,7 +326,7 @@ IotEdgeModule1 コードは、入力キューを介してメッセージを受�
 
    IoT Edge モジュールでは大文字と小文字の区別があります。 
 
-   tempSensor と IotEdgeModule1 のログには、処理しているメッセージが表示されるはずです。 edgeAgent モジュールには、他のモジュールを開始する責任があります。そのため、そのログには、配置マニフェストの実装に関する情報が含まれます。 いずれかのモジュールが一覧に表示されていない、または実行されていない場合は、おそらく edgeAgent のログにエラーが書き込まれます。 edgeHub モジュールは、モジュールと IoT Hub 間の通信を担当します。 モジュールは稼働しているが、メッセージが IoT ハブに到着していない場合は、おそらく edgeHub のログにエラーが書き込まれます。 
+   SimulatedTemperatureSensor と IotEdgeModule1 のログには、処理しているメッセージが表示されるはずです。 edgeAgent モジュールには、他のモジュールを開始する責任があります。そのため、そのログには、配置マニフェストの実装に関する情報が含まれます。 いずれかのモジュールが一覧に表示されていない、または実行されていない場合は、おそらく edgeAgent のログにエラーが書き込まれます。 edgeHub モジュールは、モジュールと IoT Hub 間の通信を担当します。 モジュールは稼働しているが、メッセージが IoT ハブに到着していない場合は、おそらく edgeHub のログにエラーが書き込まれます。 
 
 ## <a name="next-steps"></a>次の手順
 

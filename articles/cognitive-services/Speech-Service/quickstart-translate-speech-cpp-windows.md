@@ -1,36 +1,33 @@
 ---
 title: クイック スタート:音声を翻訳する、C++ (Windows) - Speech Service
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、ユーザーの音声をキャプチャし、別の言語に変換してコマンド ラインにテキストを出力する、単純な C++ アプリケーションを作成します。 このガイドは、Windows ユーザー向けに設計されています。
+description: このクイックスタートでは、ユーザーの音声をキャプチャし、別の言語に変換してコマンド ラインにテキストを出力する C++ アプリケーションを作成します。 このガイドは、Windows ユーザー向けに設計されています。
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 379087ca94eee6ce3d45bfd97b4771c5f08d6333
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 6ba4e44efc7ff24aa48f9f16840b2248423f7241
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607705"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382675"
 ---
-# <a name="quickstart-translate-speech-with-the-speech-sdk-for-c"></a>クイック スタート:Speech SDK for C++ を使用して音声を翻訳する
+# <a name="quickstart-translate-speech-in-c-on-windows-by-using-the-speech-sdk"></a>クイック スタート:Windows 上で C++ と Speech SDK を使用して音声を翻訳する
 
-クイック スタートは[音声認識](quickstart-cpp-windows.md)と[テキスト読み上げ](quickstart-text-to-speech-cpp-windows.md)にも使用できます。
+[音声認識](quickstart-cpp-windows.md)と[音声合成](quickstart-text-to-speech-cpp-windows.md)のクイックスタートも利用できます。
 
-このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャし、その音声を翻訳して、翻訳されたテキストをコマンド ラインにリアルタイムで表示する、単純な C++ アプリケーションを作成します。 このアプリケーションは、64 ビット Windows 上で実行するように設計されており、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 以降を使用してビルドされています。
+このクイックスタートでは、コンピューターのマイクからユーザーの音声をキャプチャし、その音声を翻訳して、翻訳されたテキストをコマンド ラインにリアルタイムで表示する C++ アプリケーションを作成します。 このアプリケーションは、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2019 (任意のエディション) を使用して作成します。
 
 音声翻訳が可能な言語の完全な一覧については、[言語サポート](language-support.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートでは以下が必要です。
-
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 以降
-* Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
+このクイック スタートを完了するには、Speech Services サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳しくは、「[Speech Service を無料で試す](get-started.md)」を参照してください。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -38,38 +35,35 @@ ms.locfileid: "68607705"
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
-1. ソース ファイル *helloworld.cpp* を開きます。 最初の include ステートメント (`#include "stdafx.h"` または `#include "pch.h"`) の下にあるすべてのコードを、以下に置き換えます。
+1. ソース ファイル **helloworld.cpp** を開きます。
 
-    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/cpp-windows/helloworld/helloworld.cpp#code)]
+1. すべてのコードを次のスニペットに置き換えます。
+
+   [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/cpp-windows/helloworld/helloworld.cpp?range=2-#code)]
 
 1. 同じファイル内で、文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 
 1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
-1. プロジェクトへの変更内容を保存します。
+1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択します。
 
-## <a name="build-and-run-the-app"></a>アプリのビルドと実行
+## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 
-1. アプリケーションをビルドします。 メニュー バーから、 **[ビルド]**  >  **[ソリューションのビルド]** を選択します。 コードはエラーなくコンパイルされるはずです。
+1. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してアプリケーションをビルドします。 これで、コードは、エラーなしでコンパイルされます。
 
-   ![[ソリューションのビルド] オプションが強調表示された Visual Studio アプリケーションのスクリーン ショット](media/sdk/qs-cpp-windows-06-build.png)
+1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、**helloworld** アプリケーションを起動します。
 
-1. アプリケーションを起動します。 メニュー バーから、 **[デバッグ]**  >  **[デバッグの開始]** を選択するか、**F5** キーを押します。
+1. 英語の語句または文を読み上げます。 その音声が Speech Services に転送され、(このケースではフランス語とドイツ語に) 翻訳されてテキストに文字起こしされます。 そのテキストが Speech Services からアプリケーションに返されて表示されます。
 
-   ![[デバッグの開始] オプションが強調表示された Visual Studio アプリケーションのスクリーン ショット](media/sdk/qs-cpp-windows-07-start-debugging.png)
-
-1. コンソール ウィンドウが表示され、何か言うように求められます。 英語の語句または文を読み上げます。 音声が Speech サービスに送信され、翻訳されてテキストに変換され、同じウィンドウに表示されます。
-
-   ![翻訳が成功した後のコンソール出力のスクリーンショット](media/sdk/qs-translate-cpp-windows-output.png)
+   ![音声翻訳が成功した後のコンソール出力](media/sdk/qs-translate-cpp-windows-output.png)
 
 ## <a name="next-steps"></a>次の手順
 
-オーディオ ファイルから音声を読み取る方法や、翻訳されたテキストを合成音声として出力する方法など、追加のサンプルは GitHub で入手できます。
+オーディオ ファイルから音声を読み取る方法や、翻訳されたテキストを合成音声に変換する方法など、追加のサンプルは GitHub で入手できます。
 
 > [!div class="nextstepaction"]
 > [GitHub で C++ のサンプルを詳しく見てみる](https://aka.ms/csspeech/samples)
 
 ## <a name="see-also"></a>関連項目
 
-- [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
-- [言語モデルをカスタマイズする](how-to-customize-language-model.md)
+- [Custom Speech 用のモデルをトレーニングする](how-to-custom-speech-train-model.md)

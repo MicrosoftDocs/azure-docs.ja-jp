@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6d82b353f8b485b4441853b7ff8e70e7d69f4d6a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 80a38767121f5c54afe51a7d4d788716fe9547e2
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986980"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091359"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する
 
@@ -110,7 +110,7 @@ az iot hub device-identity add-children \
 
 ## <a name="specify-dns-servers"></a>DNS サーバーの指定 
 
-堅牢性を向上させるため、環境内で使用する DNS サーバー アドレスを指定することをお勧めします。 [トラブルシューティングに関する記事の DNS サーバーを設定するための](troubleshoot.md#resolution-7) 2 つのオプションを参照してください。
+堅牢性を向上させるため、環境内で使用する DNS サーバー アドレスを指定することをお勧めします。 DNS サーバーを IoT Edge に設定するには、トラブルシューティングの記事の「[Edge エージェント モジュールで継続的に "空の構成ファイル" が報告され、デバイスでモジュールが開始しない](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device)」を参照してください。
 
 ## <a name="optional-offline-settings"></a>オプションのオフライン設定
 
@@ -174,7 +174,7 @@ IoT Edge ハブ モジュールの環境変数および作成オプションは�
             "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
             "createOptions": {
                 "HostConfig": {
-                    "Binds":["<HostStoragePath>:<ModuleStoragePath"],
+                    "Binds":["<HostStoragePath>:<ModuleStoragePath>"],
                     "PortBindings":{"5671/tcp":[{"HostPort":"5671"}],"8883/tcp":[{"HostPort":"8883"}],"443/tcp":[{"HostPort":"443"}]}}}
         },
         "type": "docker",

@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4e36edf86823453e663ed875c7d5e4ffdc2e524
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: f7639eb2807654aab38a4e849c2e58d77f15bc31
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016424"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036262"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>高可用 Azure Storage アプリケーションを構築するためのゾーン冗長ストレージ (ZRS)
 
@@ -22,11 +22,11 @@ ms.locfileid: "69016424"
 
 ## <a name="support-coverage-and-regional-availability"></a>サポート範囲とリージョンの可用性
 
-現在、ZRS は標準の汎用 v2 のアカウントの種類をサポートしています。 ストレージ アカウントの種類の詳細については、[Azure Storage アカウントの概要](storage-account-overview.md)に関するページを参照してください。
+現在、ZRS は標準の汎用 v2 と FileStorage ストレージのアカウントの種類をサポートしています。 ストレージ アカウントの種類の詳細については、[Azure Storage アカウントの概要](storage-account-overview.md)に関するページを参照してください。
 
 ZRS は、ブロック BLOB、非ディスク ページ BLOB、ファイル、テーブル、およびキューに使用できます。
 
-ZRS は、次のリージョンで一般公開されています。
+汎用 v2 アカウントの場合、ZRS は次のリージョンで一般公開されています。
 
 - 東南アジア
 - 西ヨーロッパ
@@ -38,6 +38,10 @@ ZRS は、次のリージョンで一般公開されています。
 - 米国東部
 - 米国東部 2
 - 米国西部 2
+
+FileStorage アカウントの場合、ZRS は次のリージョンで一般公開されています。
+
+- 西ヨーロッパ
 
 Microsoft は、今後も ZRS が有効な Azure リージョンを増やす予定です。 新しいリージョンの情報については、[Azure サービスの更新情報](https://azure.microsoft.com/updates/)に関するページを定期的に参照してください。
 
@@ -64,6 +68,9 @@ ZRS に移行するとき、主に 2 つの選択肢があります。
 
 - 既存のアカウントから新しい ZRS アカウントにデータを手動でコピーまたは移動する。
 - ライブ マイグレーションを要求する。
+
+> [!IMPORTANT]
+> ライブ マイグレーションは、Premium ファイル共有では現在サポートされていません。 現在サポートされているのは、手動でのデータのコピーまたは移動のみになります。
 
 特定の日付までに移行を完了する必要がある場合は、手動の移行を実行することを検討してください。 手動の移行はライブ マイグレーションよりも高い柔軟性を備えています。 手動の移行では、タイミングを制御できます。
 
@@ -94,7 +101,7 @@ ZRS に移行するとき、主に 2 つの選択肢があります。
 4. **[Problem]\(問題)** セクションで以下の値を指定します。 
     - **[重大度]** :既定値をそのまま使用します。
     - **[問題の種類]** : **[データ移行]** を選択します。
-    - **[カテゴリ]** : **[Migrate to ZRS within a region]\(リージョン内の ZRS への移行\)** を選択します。
+    - **[カテゴリ]** : **[Migrate to ZRS]\(ZRS へ移行\)** を選択します。
     - **[タイトル]** :**ZRS アカウント移行**などのわかりやすいタイトルを入力します。
     - **[詳細]** : **[詳細]** ボックスには、たとえば、\_\_ リージョンで [LRS、GRS] から ZRS に移行するなどの詳細情報を入力します。 
 5. **[次へ]** を選択します。

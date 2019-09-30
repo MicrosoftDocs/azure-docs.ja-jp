@@ -1,119 +1,59 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Linux Virtual Machines
+### YamlMime:Landing
+title: Azure の Linux 仮想マシン
+summary: Azure における Linux 仮想マシンの作成と管理について説明します。
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
-  title: Azure Linux 仮想マシンのドキュメント - チュートリアル、API リファレンス
-  meta.description: Learn how to create a virtual machine using the Linux distribution of your choice. Documentation shows different ways to create VM templates.
-  services: virtual-machines\linux
-  author: georgewallace
-  manager: gwallace
+  title: Azure の Linux 仮想マシン
+  description: Azure における Linux 仮想マシンの作成と管理について説明します。
+  services: virtual-machines-linux
   ms.service: virtual-machines-linux
   ms.topic: landing-page
-  ms.date: 01/23/2017
-  ms.author: gwallace
-abstract:
-  description: Azure Linux 仮想マシンでは、Red Hat、Ubuntu、または好みの Linux ディストリビューションを使用して、セキュリティで保護された高スケールな仮想化インフラストラクチャをオンデマンドで構築できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Linux VM の作成、構成、管理、更新、スケーリングを行う方法を確認してください。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/create-linux-virtual-machine.png'
-      width: 250
-    title: 'Linux 仮想マシンを作成する。 (4:11)'
-    href: 'https://azure.microsoft.com/resources/videos/create-linux-virtual-machine/'
-    width: 250
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Ubuntu を実行している仮想マシン内で NGINX Web サーバーをデプロイする方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg'
-            text: Azure CLI
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg'
-            text: Azure PowerShell
-            href: 'https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json'
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure で Linux VM のデプロイ、管理、スケーリングを行う方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/virtual-machines/linux/tutorial-manage-vm">Linux VM の作成と管理</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-manage-disks">VM ディスクの作成と管理</a></li>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-automate-vm-deployment">VM 構成の自動化</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-custom-images">カスタム VM イメージを作成する</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-availability-sets">高可用性 VM の作成</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-create-vmss">VM スケール セットの作成</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-load-balancer">VM の負荷分散</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-virtual-network">VM と仮想ネットワークの管理</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-backup-vms">VM のバックアップ</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-govern-resources">VM の管理</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">VM の監視と更新</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">VM のセキュリティの管理</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Jenkins、Docker、GitHub を使用した CI/CD インフラストラクチャの作成</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Azure Pipelines を使用した CI/CD</a>
-          - html: <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>、<a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a>、または <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a> を使用した Web サーバー スタックの作成
-          - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">SSL による Web サーバーのセキュリティ保護</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: "\_Azure における Linux 仮想マシンの作成"
-            href: /learn/modules/create-linux-virtual-machine-in-azure/
-            image:
-              src: /learn/achievements/create-linux-virtual-machine-in-azure.svg
-              href: /learn/modules/create-linux-virtual-machine-in-azure/
-          - title: Azure Linux 仮想マシン上で MEAN スタックを使用して Web アプリケーションをビルドして実行する
-            href: /learn/modules/build-a-web-app-with-mean-on-a-linux-vm/
-            image:
-              src: /learn/achievements/build-a-web-app-with-mean-on-a-linux-vm.svg
-              href: /learn/modules/build-a-web-app-with-mean-on-a-linux-vm/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-virtual-machines">対話型学習の詳細...</a>
-  - title: 無料の Pluralsight ビデオ トレーニング
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 管理者
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 初めてのアプリケーションを Azure にデプロイします。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/virtual-machines/virtual-machines-linux-cli-samples">Azure CLI</a>
-          - html: <a href="/azure/virtual-machines/virtual-machines-linux-powershell-samples">Azure PowerShell</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/cli/azure/vm">Azure CLI</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
-          - title: Languages
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/compute">REST API リファレンス</a></p>
+  author: cynthn
+  ms.author: cynthn
+  ms.date: 09/19/2019
+  ms.openlocfilehash: 7f40abe01042c5b55437f57f69a27a69421f5cf8
+  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71168573"
+landingContent:
+- title: 最新の機能
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: 専用ホストのプレビュー
+      url: dedicated-hosts.md
+    - text: 近接通信配置グループのプレビュー
+      url: proximity-placement-groups.md
+    - text: 一時ディスク
+      url: ephemeral-os-disks.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure CLI
+      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-cli
+    - text: Azure ポータル
+      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-powershell
+- title: ステップバイステップ ガイド
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Linux VM を作成および管理する
+      url: /azure/virtual-machines/linux/tutorial-manage-vm
+    - text: VM ディスク
+      url: /azure/virtual-machines/linux/tutorial-manage-disks
+    - text: VM 構成を自動化する
+      url: /azure/virtual-machines/linux/tutorial-automate-vm-deployment
+    - text: カスタム VM イメージを作成する
+      url: /azure/virtual-machines/linux/tutorial-custom-images
+    - text: 仮想ネットワークを使用して VM を管理する
+      url: /azure/virtual-machines/linux/tutorial-virtual-network
+- title: 自習形式トレーニング
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: " Azure における Linux 仮想マシンの作成"
+      url: https://docs.microsoft.com/learn/modules/create-linux-virtual-machine-in-azure/

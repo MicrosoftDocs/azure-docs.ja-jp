@@ -3,7 +3,7 @@ title: Azure NetApp Files のネットワーク計画のガイドライン | Mic
 description: Azure NetApp Files を使用して、有効なネットワークアーキテクチャを設計するために役立つガイドラインについて説明します。
 services: azure-netapp-files
 documentationcenter: ''
-author: b-juche
+author: ram-kakani
 manager: ''
 editor: ''
 ms.assetid: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 087ecee053069a02e4d4dd6f636d05ea15269e2e
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 02852b325a22f274b4aa6e793b03c733c38bb9aa
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383487"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984136"
 ---
 # <a name="guidelines-for-azure-netapp-files-network-planning"></a>Azure NetApp Files のネットワーク計画のガイドライン
 
@@ -36,13 +36,13 @@ Azure NetApp Files ネットワークを計画するときは、いくつかの�
 次の機能は、Azure NetApp Files では現在サポートされていません。 
 
 * 委任されたサブネットに適用されるネットワーク セキュリティ グループ (NSG)
-* Azure NetApp Files サブネットとして次ホップを持つユーザー定義ルート (UDR)
+* Azure NetApp ファイル サブネットとしてのアドレス プレフィックスを持つユーザー定義ルート (UDR)
 * Azure NetApp Files インターフェイス上の (カスタム名前付けポリシーなどの) Azure ポリシー
 * Azure NetApp Files トラフィック用のロード バランサー
 
 Azure NetApp Files には、次のネットワーク制限が適用されます。
 
-* Azure NetApp Files で使用される VNet の IP の数は (ピアリング VNet も含めて) 1,000 を超えることはできません。
+* Azure NetApp Files で使用される VNet の IP の数は (ピアリング VNet も含めて) 1,000 を超えることはできません。 Microsoft では、お客様のスケール ニーズに合わせてこの制限を引き上げることに取り組んでいます。 暫定的にさらに多くの IP が必要な場合は、ユース ケースと必要な制限についてサポート チームにお問い合わせください。
 * 各 Azure Virtual Network (VNet) で、1 つのサブネットだけを Azure NetApp Files に委任できます。
 
 

@@ -10,19 +10,20 @@ ms.topic: conceptual
 author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
-ms.date: 08/12/2019
-ms.openlocfilehash: 07fcd0f1ec33aa9a7520e35eb7e53a76295009ba
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.date: 08/27/2019
+ms.openlocfilehash: 9261bae0d2bee990a5048cb87a863d96e1854d00
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967897"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061928"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL Database と Data Warehouse の Transparent Data Encryption
 
 Transparent Data Encryption (TDE) を使用すると、保存データを暗号化することで、悪意のあるオフライン アクティビティの脅威から Azure SQL Database、Azure SQL Managed Instance、Azure Data Warehouse を保護できます。 データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、アプリケーションに変更を加えずに暗号化を行うことができます。 既定では、新しくデプロイされるすべての Azure SQL データベースで TDE が有効になります。 TDE を使用して、SQL Database の論理 **master** データベースを暗号化することはできません。  **master** データベースには、ユーザー データベースで TDE 操作を実行するために必要なオブジェクトが含まれています。
 
-Azure SQL Managed Instance、Azure SQL Database の古いデータベース、Azure SQL Data Warehouse に対して TDE を手動で有効にする必要があります。  
+Azure SQL Database の古いデータベース、Azure SQL Managed Instance、Azure SQL Data Warehouse に対して TDE を手動で有効にする必要があります。
+復元によって作成された Managed Instance データベースでは、ソース データベースから暗号化の状態が継承されます。
 
 Transparent Data Encryption は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 このデータベース暗号化キーは、Transparent Data Encryption 保護機能によって保護されます。 保護機能は、サービスによって管理された証明書 (サービスによって管理された Transparent Data Encryption) または Azure Key Vault に格納されている非対称キー (Bring Your Own Key) です。 TDE プロテクターは、Azure SQL Database と Data Warehouse の場合はサーバー レベルで、Azure SQL Managed Instance の場合はインスタンス レベルで設定します。 *サーバー*という言葉は、別途明記されていない限り、このドキュメントではサーバーとインスタンスの両方を指します。
 

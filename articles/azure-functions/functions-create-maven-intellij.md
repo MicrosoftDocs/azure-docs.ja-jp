@@ -7,17 +7,17 @@ author: jeffhollan
 manager: jpconnock
 keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーレス アーキテクチャ, Java
 ms.service: azure-functions
-ms.devlang: java
 ms.topic: conceptual
+ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: da93c60b52edf509900adf89fb688a0596d9763b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5aa0763206289305e98960b6e03ad903eb4547ae
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61342228"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70744029"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Java と IntelliJ を使用して初めての Azure 関数を作成する
 
@@ -52,8 +52,8 @@ Java および IntelliJ で関数を開発するには、次のソフトウェ�
 1. **[Add Archetype]** (アーキタイプの追加) ウィンドウで、次のように各フィールドに入力します。
     - _GroupId_: com.microsoft.azure
     - _ArtifactId_: azure-functions-archetype
-    - _バージョン_:[中央リポジトリの最新バージョンを使用します](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
-    ![IntelliJ IDEAでアーキタイプから Maven プロジェクトを作成します](media/functions-create-first-java-intellij/functions-create-intellij.png)  
+    - _バージョン_:最新バージョン **1.22** を[中央リポジトリで使用します](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
+    ![IntelliJ IDEA でアーキタイプから Maven プロジェクトを作成します](media/functions-create-first-java-intellij/functions-create-intellij.png)  
 1. **[OK]** を選択し、 **[次へ]** を選択します。
 1. 現在のプロジェクトの詳細を入力し、 **[完了]** を選択します。
 
@@ -87,13 +87,13 @@ Maven は、_ArtifactId_ 値と同じ名前で新しいフォルダーにプロ�
 1. _[名前]_ および _[設定]_ フィールドに入力し、 **[OK]** を選択して構成を保存します。
 1. セットアップ後、 **[Debug < Remote Configuration Name >]** (<リモート構成名> のデバッグ) を選択するか、キーボードで Shift + F9 キーを押してデバッグを開始します。
 
-   ![IntelliJ での関数のデバッグ](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
+   ![IntelliJ での関数のデバッグ](media/functions-create-first-java-intellij/debug-configuration-intellij.png)
 
 1. 完了したら、デバッガーと実行中のプロセスを停止します。 アクティブにして同時にローカルで実行できる関数ホストは 1 つだけです。
 
 ## <a name="deploy-the-function-to-azure"></a>関数を Azure にデプロイする
 
-1. 関数を Azure にデプロイする前に、[Azure CLI を使用してログイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)する必要があります。
+1. 関数を Azure にデプロイする前に、[Azure CLI を使用してサインイン](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)する必要があります。
 
    ``` azurecli
    az login

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d5aa50aec98b3944aed92b9da49182f0608f34c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: fe7125174129752e6d6dbe0e00d01d4f32755333
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333897"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126108"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Azure Active Directory の Identity Protection (更新版) に関してよく寄せられる質問と既知の問題
 
@@ -34,15 +34,15 @@ Identity Protection (更新版) で**ユーザーのリスクを無視する**�
 
 **[日付を次のように表示]** を切り替えると、 **[リスクの最終更新日時]** 列が非表示になります。 列を再度追加するには、[危険なユーザー] ブレードの上部にある **[列]** をクリックします。
 
-従来の Identity Protection で**すべてのイベントを無視する**と、リスク イベントの状態が **[クローズ (解決済み)]** に設定されます。
+従来の Identity Protection で**すべてのイベントを無視する**と、リスク検出の状態が **[クローズ (解決済み)]** に設定されます。
 
 ## <a name="risky-sign-ins-report-known-issues"></a>"リスクの高いサインイン レポート" の既知の問題
 
-リスク イベントで **[解決]** をクリックすると、状態が **[ユーザーが、リスク ベースのポリシーに要求された MFA に成功しました]** に設定されます。
+リスク検出で **[解決]** を行うと、状態が **[ユーザーが、リスク ベースのポリシーに要求された MFA に成功しました]** に設定されます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-event"></a>リスク イベントごとに独自のリスク レベルを設定できないのはなぜですか?
+### <a name="why-cant-i-set-my-own-risk-levels-for-each-risk-detection"></a>リスク検出ごとに独自のリスク レベルを設定できないのはなぜですか?
 
 Identity Protection のリスク レベルは、検出の精度に基づいており、Microsoft の教師あり機械学習によって強化されています。 管理者は、ユーザー エクスペリエンスをカスタマイズするために、ユーザー リスク ポリシーとサインイン リスク ポリシーに対して特定のユーザーまたはグループを含めたり除外したりすることができます。
 
@@ -68,11 +68,11 @@ IP の地理的位置情報のマッピングについては、業界全体の�
 - さらに、リスク評価における今後の改善のために、Microsoft の機械学習システムに情報が送信されます。
 
     > [!NOTE]
-    > ユーザーが侵害されていないと思われる場合は、サインイン レベルで **[安全であるとの確認済み]** を使用するのではなく、ユーザー レベルで **[ユーザー リスクを無視する]** を使用してください。 ユーザー レベルで **[ユーザー リスクを無視する]** を使用すると、ユーザーリスク、および過去に発生したリスクの高いサインインとリスク イベントがすべて閉じられます。
+    > ユーザーが侵害されていないと思われる場合は、サインイン レベルで **[安全であるとの確認済み]** を使用するのではなく、ユーザー レベルで **[ユーザー リスクを無視する]** を使用してください。 ユーザー レベルで **[ユーザー リスクを無視する]** を使用すると、ユーザーリスク、および過去に発生したリスクの高いサインインとリスク検出がすべて閉じられます。
 
-### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-events-are-shown-in-identity-protection"></a>Identity Protection にリスクの高いサインインやリスク イベントが表示されていなくても、低 (またはそれ以上の) リスク スコアを持つユーザーが表示されるのはなぜですか?
+### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Identity Protection にリスクの高いサインインやリスク検出が表示されていなくても、低 (またはそれ以上の) リスク スコアを持つユーザーが表示されるのはなぜですか?
 
-ユーザー リスクが本質的には累積され、期限切れにならないことを考えると、直近のリスクの高いサインインやリスク イベントが Identity Protection に表示されていない場合でも、ユーザーには低またはそれ以上のユーザー リスクが設定されている可能性があります。 この状況は、リスクの高いサインインとリスク イベントの詳細が保存される期間を超えて、ユーザーに対して単一の悪意のあるアクティビティが行われた場合に発生する可能性があります。 悪意のあるアクターがお客様の環境で ID を侵害した状態で 140 日以上経過してから攻撃を開始することが知られているため、ユーザー リスクが期限切れにならないように設定されています。 お客様はユーザーのリスクのタイムラインを確認して、ユーザーがリスクにさらされている理由を判断できます。これを行うには、次のようにします。 `Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
+ユーザー リスクが本質的には累積され、期限切れにならないことを考えると、直近のリスクの高いサインインやリスク検出が Identity Protection に表示されていない場合でも、ユーザーには低またはそれ以上のユーザー リスクが設定されている可能性があります。 この状況は、リスクの高いサインインとリスク検出の詳細が保存される期間を超えて、ユーザーに対して単一の悪意のあるアクティビティが行われた場合に発生する可能性があります。 悪意のあるアクターがお客様の環境で ID を侵害した状態で 140 日以上経過してから攻撃を開始することが知られているため、ユーザー リスクが期限切れにならないように設定されています。 お客様はユーザーのリスクのタイムラインを確認して、ユーザーがリスクにさらされている理由を判断できます。これを行うには、次のようにします。 `Azure Portal > Azure Active Directory > Risky users’ report > Click on an at-risk user > Details’ drawer > Risk history tab`
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>サインインに関連付けられている検出のリスクが低または中の場合に、サインインの「サインイン リスク (集計)」スコアが「高」になるのはなぜですか?
 

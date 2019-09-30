@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 08/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 59ece9c37a563efba6329a30c06c1b596b1a5d57
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eb7c2cb4a20c89f3a54f23e354d56e5dc3711ef0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67058153"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967097"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure リソースの RBAC のトラブルシューティング
 
@@ -175,13 +175,15 @@ Web アプリと同様、仮想マシン ブレード上の機能にも、仮想
 
 ## <a name="azure-functions-and-write-access"></a>Azure Functions と書き込みアクセス権限
 
-[Azure Functions](../azure-functions/functions-overview.md) の一部の機能では、書き込みアクセスが必要です。 たとえば、ユーザーに閲覧者ロールが割り当てられている場合、そのユーザーは関数アプリ内の関数を表示することができません。 ポータルには **(アクセスなし)** が表示されます。
+[Azure Functions](../azure-functions/functions-overview.md) の一部の機能では、書き込みアクセスが必要です。 たとえば、ユーザーに[閲覧者](built-in-roles.md#reader)ロールが割り当てられている場合、そのユーザーは関数アプリ内の関数を表示することができません。 ポータルには **(アクセスなし)** が表示されます。
 
 ![Function App のアクセスなし](./media/troubleshooting/functionapps-noaccess.png)
 
-閲覧者は、 **[プラットフォーム機能]** タブをクリックし、 **[すべての設定]** をクリックすることで、関数アプリ (Web アプリに類似) に関連する一部の設定を表示できます。ただし、これらの設定を変更することはできません。
+閲覧者は、 **[プラットフォーム機能]** タブをクリックし、 **[すべての設定]** をクリックすることで、関数アプリ (Web アプリに類似) に関連する一部の設定を表示できます。ただし、これらの設定を変更することはできません。 これらの機能にアクセスするには、[共同作成者](built-in-roles.md#contributor)ロールが必要です。
 
 ## <a name="next-steps"></a>次の手順
-* [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
-* [Azure リソースに対する RBAC の変更のアクティビティ ログを表示する](change-history-report.md)
+
+- [ゲスト ユーザーのトラブルシューティング](role-assignments-external-users.md#troubleshoot)
+- [RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する](role-assignments-portal.md)
+- [Azure リソースに対する RBAC の変更のアクティビティ ログを表示する](change-history-report.md)
 

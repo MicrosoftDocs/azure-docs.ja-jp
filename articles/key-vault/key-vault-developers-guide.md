@@ -3,17 +3,17 @@ title: Azure Key Vault 開発者ガイド
 description: 開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。
 services: key-vault
 author: msmbaldwin
-manager: barbkess
+manager: rkarlin
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 72ec3080658b98376952f72f746c1b53fdf7de77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ebf4feb0687d9580bba29cd8213030e542a06da
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64704336"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268841"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -24,31 +24,11 @@ Key Vault を使用すると、アプリケーション内から機密情報に�
 - アプリケーションで署名と暗号化にキーを使用しながら、キー管理をアプリケーションの外部で行うことができます。これにより、ソリューションは地理的に分散したアプリを対象とすることができます。
 - Key Vault の 2016 年 9 月のリリース以降、アプリケーションで Key Vault の証明書を管理できるようになりました。 詳細については、「[About keys, secrets, and certificates (キー、シークレット、証明書について)](/rest/api/keyvault/about-keys--secrets-and-certificates)」を参照してください。
 
-Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](key-vault-whatis.md)」を参照してください。
+Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](key-vault-overview.md)」を参照してください。
 
 ## <a name="public-previews"></a>パブリック プレビュー
 
 Key Vault の新機能のパブリック プレビューは定期的にリリースされます。 ぜひお試しいただき、azurekeyvault@microsoft.com (フィードバック用のメール アドレス) までご意見をお寄せください。
-
-### <a name="storage-account-keys---july-10-2017"></a>ストレージ アカウント キー - 2017 年 7 月 10 日
-
->[!NOTE]
->Azure Key Vault のこのアップデートでは、**ストレージ アカウント キー**機能のみがプレビュー段階です。
-
-このプレビューには、[.NET/C#](/dotnet/api/microsoft.azure.keyvault/)、[REST](/rest/api/keyvault/)、[PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault) の各インターフェイスで使用できる新しいストレージ アカウント キー機能が用意されています。 
-
-新しいストレージ アカウント キー機能について詳しくは、[Azure Key Vault ストレージ アカウント キーの概要](key-vault-ovw-storage-keys.md)に関する記事をご覧ください。
-
-## <a name="videos"></a>ビデオ
-
-このビデオでは、独自の Key Vault を作成して 「Hello Key Vault」 サンプル アプリケーションからそれを使用する方法について説明します。
-
-- [Key Vault 開発者 - クイック スタート ガイド](https://channel9.msdn.com/Blogs/Azure/Azure-Key-Vault-Developer-Quick-Start/player)
-
-このビデオで説明されているリソース:
-
-- [Azure PowerShell](https://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409)
-- [Azure Key Vault のサンプル コード](https://go.microsoft.com/fwlink/?LinkId=521527&clcid=0x409)
 
 ## <a name="creating-and-managing-key-vaults"></a>Key Vaults の作成と管理
 

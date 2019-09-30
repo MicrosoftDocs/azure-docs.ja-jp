@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: 2edd12435643f88a0923abf0927149993d49e424
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567810"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845605"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database での単一データベースとプールされたデータベースの管理
 
@@ -142,7 +142,7 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 
 #### <a name="reserved-ips"></a>予約済み IP
 
-他の選択肢としては、VM に[予約済み IP](../virtual-network/virtual-networks-reserved-public-ip.md) をプロビジョニングし、サーバーのファイアウォール設定でこれらの VM IP アドレスをホワイトリストに登録します。 予約済み IP アドレスを割り当てると、IP アドレスを変更した場合にファイアウォールの規則を更新する手間が省けます。
+他の選択肢としては、VM に[予約済み IP](../virtual-network/virtual-networks-reserved-public-ip.md) をプロビジョニングし、サーバーのファイアウォール設定でこれらの VM IP アドレスを追加します。 予約済み IP アドレスを割り当てると、IP アドレスを変更した場合にファイアウォールの規則を更新する手間が省けます。
 
 ### <a name="what-port-do-i-connect-to-sql-database-on"></a>SQL Database への接続はどのポートで行われますか
 

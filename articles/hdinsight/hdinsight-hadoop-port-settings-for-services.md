@@ -1,6 +1,6 @@
 ---
 title: HDInsight 上の Hadoop サービスで使用されるポート- Azure
-description: HDInsight で実行されている Hadoop サービスで使用されるポートの一覧。
+description: ここでは、Azure HDInsight で実行されている Apache Hadoop サービスによって使用されるポートの一覧を示します
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: 34ab49378f9237a42bed869a6f6d67249b5238f9
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 1fe66c1c171e779f48f4cc7c6767307feaafbd5f
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68464684"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733419"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>HDInsight 上の Apache Hadoop サービスで使用されるポート
 
@@ -54,7 +54,7 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | Spark Thrift サーバー |443 |HTTPS |Spark |Hive クエリを送信するために使用される Spark Thrift サーバー。 [HDInsight での Beeline と Apache Hive の使用](hadoop/apache-hadoop-use-hive-beeline.md)に関する記事をご覧ください |
 | Storm |443 |HTTPS |Storm |Storm Web UI。 「[HDInsight での Apache Storm トポロジのデプロイと管理](storm/apache-storm-deploy-monitor-topology-linux.md)」をご覧ください |
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 
 インターネット上で公開されるすべてのサービスを認証する必要があります。
 

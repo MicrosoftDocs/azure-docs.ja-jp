@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 08/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6aab04826a3c06b595859c0f41f658b6e5d3432
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 141d3062f231e198b3587efcdf4ae6e9a1c97ed6
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562305"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162672"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Cisco Webex Meetings の統合
 
@@ -78,24 +78,24 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
 1. [Azure portal](https://portal.azure.com/) の **Cisco Webex Meetings** アプリケーション統合ページで、 **[管理]** セクションを見つけて、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
-
-   ![基本的な SAML 構成を編集する](common/edit-urls.png)
-
-1. **[基本的な SAML 構成]** セクションで、ダウンロードした**サービス プロバイダー メタデータ ファイル**をアップロードし、次の手順を実行してアプリケーションを  **IDP**  開始モードで構成します。
-
-    >[!Note]
-    >チュートリアルの「**Cisco Webex Meetings の SSO の構成**」セクションで後述するサービス プロバイダー メタデータ ファイルを取得します。 
+1. **[SAML によるシングル サインオンのセットアップ]** ページで、**サービス プロバイダー メタデータ** ファイルを次のようにアップロードして、 **IDP**  開始モードでアプリケーションを構成できます。
 
     a. **[メタデータ ファイルをアップロードします]** をクリックします。
 
     b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、 **[アップロード]** をクリックします。
 
-    c. サービス プロバイダー メタデータ ファイルのアップロードが正常に完了すると、次のように、**識別子**と**応答 URL** の値が **[基本的な SAML 構成]** セクションに自動的に入力されます。
+    c. サービス プロバイダー メタデータ ファイルのアップロードが正常に完了すると、次のように、 **[識別子]** と **[応答 URL]** の値が **[基本的な SAML 構成]** セクションに自動的に入力されます。
 
-5. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
+    >[!Note]
+    >サービス プロバイダー メタデータ ファイルは、「**Cisco Webex Meetings の SSO の構成**」セクションで取得します。これについては、チュートリアルの後の方で説明します。 
+
+1. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。  
+
+    a. **[基本的な SAML 構成]** セクションで、編集 (ペン) アイコンをクリックします。
+
+   ![基本的な SAML 構成を編集する](common/edit-urls.png)
     
-    **[サインオン URL]** ボックスに、`https://<customername>.webex.com` という形式で URL を入力します。
+    b. **[サインオン URL]** ボックスに、` https://<customername>.my.webex.com` という形式で URL を入力します。
 
 5. Cisco Webex Meetings アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
 
@@ -118,7 +118,7 @@ Cisco Webex Meetings に対する Azure AD SSO を構成してテストするに
 
     d. [ソース] として **[属性]** を選択します。
 
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
+    e. **[ソース属性]** の一覧から、その行に表示される属性値をドロップダウン リストから選択します。
 
     f. **[Save]** をクリックします。
 

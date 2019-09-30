@@ -77,7 +77,7 @@ Service Fabric 仮想マシン拡張機能は、Service Fabric を　Azure 仮�
 
 | **Name** | **使用できる値** | ** --- ** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-| 名前 | string | --- | 拡張機能の一意な名前 |
+| name | string | --- | 拡張機能の一意な名前 |
 | type | "ServiceFabricLinuxNode" または "ServiceFabricWindowsNode | --- | OS の Service Fabric が次に対してブートストラップすることを識別します。 |
 | autoUpgradeMinorVersion | true または false | --- | SF ランタイムのマイナー バージョンの自動アップグレードを有効にします。 |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Service Fabric 拡張機能のパブリッシャー名 |

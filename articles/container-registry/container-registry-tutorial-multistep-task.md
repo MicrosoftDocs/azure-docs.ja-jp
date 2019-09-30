@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: c78c2c8279972108aee12b9b386175d0f27b7fee
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 913f535cb7fa07832a272c1cb9d02ab3e885f52c
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310408"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743579"
 ---
 # <a name="tutorial-run-a-multi-step-container-workflow-in-the-cloud-when-you-commit-source-code"></a>チュートリアル:ソース コードをコミットしたらクラウドでマルチステップ コンテナー ワークフローを実行する
 
@@ -87,7 +87,6 @@ az acr task create \
     --registry $ACR_NAME \
     --name example1 \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
-    --branch master \
     --file taskmulti.yaml \
     --git-access-token $GIT_PAT
 ```
@@ -331,8 +330,7 @@ az acr task create \
     --registry $ACR_NAME \
     --name example2 \
     --context https://github.com/$GIT_USER/acr-build-helloworld-node.git \
-    --branch master \
-    --file taskmulti-image.yaml \
+    --file taskmulti-multiregistry.yaml \
     --git-access-token $GIT_PAT \
     --set regDate=mycontainerregistrydate.azurecr.io
 ```
@@ -363,7 +361,7 @@ CLI は、追加したレジストリ ログイン サーバーの名前を返�
 az acr task run --registry $ACR_NAME --name example2
 ```
 
-既定では、`az acr task run` コマンドを実行すると、ログ出力がコンソールにストリーミングされます。 前と同様に、この出力には、それぞれのタスク ステップの実行の進行状況が示されます。 次の出力は、主要な手順を表示するように要約されいます。
+既定では、`az acr task run` コマンドを実行すると、ログ出力がコンソールにストリーミングされます。 前と同様に、この出力には、それぞれのタスク ステップの実行の進行状況が示されます。 次の出力は、主要な手順を表示するように要約されています。
 
 出力:
 

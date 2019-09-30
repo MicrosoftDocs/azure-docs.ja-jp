@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: cfa6a363725c35083b32d6de1dd1371777f91907
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7133e8bc7d04b3653b6b788347b7bc5176087f4c
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66240296"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70883481"
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理
 Azure Mobile Services の最新版は Azure App Service の **Mobile Apps** 機能です。
@@ -28,8 +28,6 @@ Mobile Apps のクライアント/サーバー SDK は Mobile Services のクラ
 つまり、*Mobile Apps* クライアント SDK と共に *Mobile Apps* サーバー SDK を使用する必要があり、*Mobile Services* の場合も同様です。 この契約は、クライアント/サーバー SDK により使用される特殊なヘッダー値 `ZUMO-API-VERSION`により適用されます。
 
 注: 本書で *Mobile Services* に言及するとき、それは必ずしも Mobile Services にホストすることを意味しません。 App Service で実行するモバイル サービスをコード変更なしで移行することが可能になりましたが、サービスでは引き続き *Mobile Services* SDK バージョンが利用されます。
-
-コード変更なしで App Service に移行する方法については、[Mobile Service を Azure App Service に移行する] 方法に関する記事を参照してください。
 
 ## <a name="header-specification"></a>ヘッダーの仕様
 キー `ZUMO-API-VERSION` を HTTP ヘッダーかクエリ文字列に指定できます。 値は「 **x.y.z**」形式のバージョン文字列です。
@@ -52,7 +50,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 ### <a name="MobileAppsClients"></a> Mobile *Apps* クライアント SDK
 バージョン チェックは **Azure Mobile Apps**の次のバージョンのクライアント SDK から導入されました。
 
-| クライアント プラットフォーム | バージョン | バージョンのヘッダー値 |
+| クライアント プラットフォーム | Version | バージョンのヘッダー値 |
 | --- | --- | --- |
 | 管理されたクライアント (Windows、Xamarin) |[2.0.0](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/2.0.0) |2.0.0 |
 | iOS |[3.0.0](https://go.microsoft.com/fwlink/?LinkID=529823) |2.0.0 |

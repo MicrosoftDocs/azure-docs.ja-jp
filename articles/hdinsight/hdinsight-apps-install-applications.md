@@ -1,6 +1,6 @@
 ---
 title: Azure HDInsight にサードパーティ製アプリケーションをインストールする
-description: Azure HDInsight にサード パーティ製 Hadoop アプリケーションをインストールする方法について説明します。
+description: Azure HDInsight にサード パーティ製 Apache Hadoop アプリケーションをインストールする方法について説明します。
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9b96294362400891113812e308ff59bd0e438b90
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 68bbe22a4a6f7697c2bfab291412aae85efc32e9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873364"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916999"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight にサードパーティ製 Apache Hadoop アプリケーションをインストールする
 
@@ -59,7 +59,7 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
     ![HDInsight アプリケーションのポータル メニュー](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 5. メニューで **[+追加]** を選択します。 使用できるアプリケーションの一覧が表示されます。  **[+追加]** が淡色表示されている場合は、このバージョンの HDInsight クラスターに対応するアプリケーションがないことを意味します。
    
-    ![HDInsight アプリケーションの利用可能なアプリケーション](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
+    ![HDInsight アプリケーションの利用可能なアプリケーション](./media/hdinsight-apps-install-applications/hdinsight-apps-list1.png)
 6. いずれかの使用可能なアプリケーションを選択し、指示に従って法律条項を受け入れます。
 
 インストールの状態はポータル通知で確認できます (ポータル上部のベル アイコンを選択)。 アプリケーションのインストール後、[インストール済みアプリ] 一覧にアプリケーションが表示されます。

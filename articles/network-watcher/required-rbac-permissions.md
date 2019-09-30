@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: kumud
-ms.openlocfilehash: 8c8fe6125d9c638fedadc3d299ff0ac0d601fd61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5bd7e30a6a95d60bda4b7c3da44be1b8046bb71f
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685691"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163796"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>Network Watcher 機能を使用するために必要な、Azure ロールベースのアクセス制御のアクセス許可
 
@@ -27,7 +27,7 @@ Azure のロール ベース アクセス制御 (RBAC) を使用すると、割�
 
 ## <a name="network-watcher"></a>Network Watcher
 
-| Action                                                              | Name                                                           |
+| Action                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/read                              | Network Watcher を取得する                                          |
 | Microsoft.Network/networkWatchers/write                             | Network Watcher を作成する                             |
@@ -35,14 +35,14 @@ Azure のロール ベース アクセス制御 (RBAC) を使用すると、割�
 
 ## <a name="nsg-flow-logs"></a>NSG フロー ログ
 
-| Action                                                              | Name                                                           |
+| Action                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/configureFlowLog/action           | フロー ログを構成する                                           |
 | Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | フロー ログのクエリ状態                                    |
 
 ## <a name="connection-troubleshoot"></a>接続のトラブルシューティング
 
-| Action                                                              | Name                                                           |
+| Action                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectivityCheck/action          | 接続のトラブルシューティング テストの開始
 | Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | 接続のトラブルシューティング テストのクエリ結果                |
@@ -50,7 +50,7 @@ Azure のロール ベース アクセス制御 (RBAC) を使用すると、割�
 
 ## <a name="connection-monitor"></a>接続モニター
 
-| Action                                                              | Name                                                           |
+| Action                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/connectionMonitors/start/action   | 接続モニターを起動する                                     |
 | Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | 接続モニターを停止する                                      |
@@ -61,7 +61,7 @@ Azure のロール ベース アクセス制御 (RBAC) を使用すると、割�
 
 ## <a name="packet-capture"></a>パケット キャプチャ
 
-| Action                                                              | Name                                                           |
+| Action                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | パケット キャプチャの状態のクエリを実行する                           |
 | Microsoft.Network/networkWatchers/packetCaptures/stop/action        | パケット キャプチャを停止する                                          |
@@ -71,51 +71,48 @@ Azure のロール ベース アクセス制御 (RBAC) を使用すると、割�
 
 ## <a name="ip-flow-verify"></a>IP フロー検証
 
-| Action                                                              | Name                                                           |
+| Action                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/ipFlowVerify/action               | IP フローを確認する                                              |
 
 ## <a name="next-hop"></a>次のホップ
 
-| Action                                                              | Name                                                           |
+| Action                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/nextHop/action                    | VM から次ホップを取得する                                     |
 
 ## <a name="network-security-group-view"></a>ネットワーク セキュリティ グループ ビュー
 
-| Action                                                              | Name                                                           |
+| Action                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/securityGroupView/action          | セキュリティ グループを表示する                                           |
 
 ## <a name="topology"></a>トポロジ
 
-| Action                                                              | Name                                                           |
+| Action                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/topology/action                   | トポロジを取得する                                                   |
 
 ## <a name="reachability-report"></a>到達可能性レポート
 
-| Action                                                              | Name                                                           |
+| Action                                                              | 説明                                                           |
 | ---------                                                           | -------------                                                  |
 | Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Azure 到達可能性レポートを取得する                               |
+
 
 ## <a name="additional-actions"></a>追加のアクション
 
 Network Watcher 機能には、次のアクションも必要です。
 
-- Microsoft.Authorization/\*/Read
-- Microsoft.Resources/subscriptions/resourceGroups/Read
-- Microsoft.Storage/storageAccounts/Read
-- Microsoft.Storage/storageAccounts/listServiceSas/Action
-- Microsoft.Storage/storageAccounts/listAccountSas/Action
-- Microsoft.Storage/storageAccounts/listKeys/Action
-- Microsoft.Compute/virtualMachines/Read
-- Microsoft.Compute/virtualMachines/Write
-- Microsoft.Compute/virtualMachines/extensions/Read
-- Microsoft.Compute/virtualMachines/extensions/Write
-- Microsoft.Compute/virtualMachineScaleSets/Read
-- Microsoft.Compute/virtualMachineScaleSets/Write
-- Microsoft.Compute/virtualMachineScaleSets/extensions/Read
-- Microsoft.Compute/virtualMachineScaleSets/extensions/Write
-- Microsoft.Insights/alertRules/*
-- Microsoft.Support/*
+| アクション                                                           | 説明                                                    |
+| ---------                                                           | -------------                                                  |
+| Microsoft.Authorization/\*/Read                                     | RBAC ロールの割り当てとポリシー定義のフェッチに使用されます          |
+| Microsoft.Resources/subscriptions/resourceGroups/Read               | サブスクリプションのすべてのリソース グループの列挙に使用されます    |
+| Microsoft.Storage/storageAccounts/Read                              | 指定したストレージ アカウントのプロパティの取得に使用されます   |
+| Microsoft.Storage/storageAccounts/listServiceSas/Action、 </br> Microsoft.Storage/storageAccounts/listAccountSas/Action、 <br> Microsoft.Storage/storageAccounts/listKeys/Action| [ストレージ アカウントへのセキュリティで保護されたアクセス](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)およびストレージ アカウントへの書き込みを有効にした、Shared Access Signature (SAS) のフェッチに使用されます |
+| Microsoft.Compute/virtualMachines/Read、 </br> Microsoft.Compute/virtualMachines/Write| VM へのログイン、パケットの取得、そのストレージ アカウントへのアップロードに使用されます|
+| Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| Network Watcher 拡張機能が存在するかどうかの確認と必要に応じたインストールに使用されます |
+| Microsoft.Compute/virtualMachineScaleSets/Read、 </br> Microsoft.Compute/virtualMachineScaleSets/Write| 仮想マシンのスケール セットへのアクセス、パケットの取得、およびそのストレージ アカウントへのアップロードに使用されます|
+| Microsoft.Compute/virtualMachineScaleSets/extensions/Read、 </br> Microsoft.Compute/virtualMachineScaleSets/extensions/Write| Network Watcher 拡張機能が存在するかどうかの確認と必要に応じたインストールに使用されます |
+| Microsoft.Insights/alertRules/*                                     | メトリック アラートの設定に使用されます                                     |
+| Microsoft.Support/*                                                 | Network Watcher からのサポート チケットの作成および更新に使用されます |

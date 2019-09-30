@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/2/2019
+ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: 444d5ca996c014bdbf2e62cacf2563c7b63372e4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: df2a86dd1292f58511765e842ee97daddcff4e3e
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69015713"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70102934"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>ライブ ストリーミングでの時間指定メタデータのシグナル通知 
 
-最終更新:2019-07-02
+最終更新:2019-08-22
 
 ### <a name="conformance-notation"></a>適合性の表記
 
@@ -74,6 +74,7 @@ ms.locfileid: "69015713"
 | [AMF0]            | ["アクション メッセージ形式 AMF0"](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf) |
 | [DASH-IF-IOP]     | DASH Industry Forum Interop Guidance (DASH 業界フォーラム相互運用性ガイダンス) v 4.2 [https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html](https://dashif-documents.azurewebsites.net/DASH-IF-IOP/master/DASH-IF-IOP.html) |
 | [HLS-TMD]         | HTTP ライブ ストリーミング用の時間指定メタデータ - [https://developer.apple.com/streaming](https://developer.apple.com/streaming) |
+| [CMAF-ID3]         | [Common Media Application Format (CMAF) の時間指定メタデータ](https://aomediacodec.github.io/av1-id3/)
 | [ID3v2]           | ID3 タグ バージョン 2.4.0  [http://id3.org/id3v2.4.0-structure](http://id3.org/id3v2.4.0-structure) |
 | [ISO-14496-12]    | ISO/IEC 14496-12:パート 12 ISO ベースのメディア ファイル形式、第 4 版、2012 年 7 月 15 日  |
 | [MPEGDASH]        | 情報技術 -- HTTP 経由のダイナミック アダプティブ ストリーミング (DASH) -- パート 1:メディア プレゼンテーションの説明とセグメント形式。 2014 年 5 月。 公開済み。 URL: https://www.iso.org/standard/65274.html |
@@ -95,21 +96,146 @@ ms.locfileid: "69015713"
 
 ## <a name="2-timed-metadata-ingest"></a>2.時間指定メタデータの取り込み
 
-## <a name="21-rtmp-ingest"></a>2.1 RTMP 取り込み
+Azure Media Services は、[RTMP] および Smooth Streaming [MS-SSTR-Ingest] プロトコルの両方について、リアルタイムのインバンド メタデータをサポートします。 リアルタイムのメタデータを使用すると、独自の一意のカスタム スキーマ (JSON、バイナリ、XML) と、ブロードキャスト ストリームでの広告シグナリングのための ID3、SCTE-35 などの業界定義形式を使用して、カスタム イベントを定義できます。 
 
-[RTMP] では、[RTMP] ストリーム内に埋め込まれた [AMF0] キュー メッセージとして時間指定メタデータ シグナルを送信できます。 キュー メッセージは、実際のイベントまたは [SCTE-35] 広告スプライス シグナルが発生する必要がある時点よりも前に送信できます。 このシナリオをサポートするために、イベントの実際の時間がキュー メッセージ内で送信されます。 詳しくは、[AMF0] をご覧ください。
+この記事では、Azure Media Services のサポートされている取り込みプロトコルを使用して、カスタムの時間指定メタデータ シグナルを送信する方法の詳細について説明します。 この記事では、HLS、DASH、および Smooth Streaming 用のマニフェストを時間指定メタデータ シグナルで修飾する方法と、HLS の CMAF (MP4 フラグメント) またはトランスポート ストリーム (TS) セグメントを使用してコンテンツが配信されるときに、そのマニフェストをインバンドで伝達する方法について説明します。 
+
+時間指定メタデータの一般的なユース ケース シナリオは次のとおりです。
+
+ - ライブ イベントまたは線形ブロードキャストで広告の中断をトリガーする SCTE-35 広告シグナル
+ - クライアント アプリケーション (ブラウザー、iOS、または Android) でイベントをトリガーできるカスタム ID3 メタデータ
+ - クライアント アプリケーションでイベントをトリガーするカスタム定義の JSON、バイナリ、または XML メタデータ
+ - ライブ エンコーダー、IP カメラ、またはドローンからのテレメトリ
+ - モーション、顔検出など、IP カメラからのイベント
+ - アクション カメラ、ドローン、または移動型デバイスからの地理的位置情報
+ - 曲の歌詞
+ - 線形ライブ フィード上のプログラムの境界
+ - ライブ フィードに表示される画像または拡張メタデータ
+ - スポーツのスコアまたはゲームクロックの情報
+ - ブラウザーで動画と共に表示される対話型広告パッケージ
+ - クイズまたはアンケート
+  
+Azure Media Services Live Events および Packager では、これらの時間指定メタデータ シグナルを受信し、HLS や DASH などの標準ベースのプロトコルを使用してクライアント アプリケーションに到達できるメタデータのストリームに変換できます。
+
+
+## <a name="21-rtmp-timed-metadata"></a>2.1 RTMP 時間指定メタデータ
+
+[RTMP] プロトコルを使用すると、カスタム メタデータや SCTE-35 広告シグナルなどのさまざまなシナリオに対して、時間指定メタデータ シグナルを送信することができます。 
+
+広告シグナル (キュー メッセージ) は、[RTMP] ストリーム内に埋め込まれた [AMF0] キュー メッセージとして送信されます。 キュー メッセージは、実際のイベントまたは [SCTE-35] 広告スプライス シグナルが発生する必要がある時点よりも前に送信できます。 このシナリオをサポートするために、イベントの実際のプレゼンテーションのタイムスタンプはキュー メッセージ内で送信されます。 詳しくは、[AMF0] をご覧ください。
+
+次の [AMF0] コマンドは、RTMP 取り込みの Azure Media Services でサポートされます。
+
+- **onUserDataEvent** - カスタムのメタデータまたは [ID3v2] 時間指定メタデータに使用されます
+- **onAdCue** - 主にライブ ストリームの広告配置機会をシグナリングするために使用されます。 シンプル モードと "SCTE-35" モードという 2 つの形式のキューがサポートされています。 
+- **onCuePoint** - [SCTE35] メッセージをシグナリングするために、特定のオンプレミスのハードウェア エンコーダー (Elemental Live エンコーダーなど) によってサポートされています。 
+  
 
 次の表では、"シンプル" および [SCTE-35] メッセージ モードの両方で Media Services が取り込む AMF メッセージのペイロードの形式について説明します。
 
 [AMF0] メッセージの名前を使って、同じ種類の複数のイベント ストリームを区別できます。  [SCTE-35] メッセージと "シンプル" モードの両方で、AMF メッセージの名前は [Adobe-Primetime] 仕様の要求どおり "onAdCue" でなければなりません。  下の一覧にないフィールドは、取り込み時に Azure Media Services によって無視されることになります。
 
-## <a name="211-rtmp-signal-syntax"></a>2.1.1 RTMP シグナルの構文
+## <a name="211-rtmp-with-custom-metadata-using-onuserdataevent"></a>2.1.1 "onUserDataEvent" を使用するカスタム メタデータによる RTMP
+
+RTMP プロトコルを使用するアップストリーム エンコーダー、IP カメラ、ドローン、またはデバイスからカスタムのメタデータ フィードを提供する場合は、"onUserDataEvent" [AMF0] データ メッセージ コマンドの種類を使用します。
+
+**"onUserDataEvent"** データ メッセージ コマンドは、Media Services によってキャプチャされ、インバンド ファイル形式と HLS、DASH、および Smooth Streaming のマニフェストにパッケージ化される次の定義を持つメッセージ ペイロードを伝達する必要があります。
+時間指定メタデータ メッセージは、0.5 秒 (500 ミリ秒) ごとに 1 回以下の頻度で、またはライブ ストリームに関する安定性の問題が発生している可能性がある場合に送信することをお勧めします。 フレームレベルのメタデータを提供する必要がある場合、各メッセージは複数のフレームからメタデータを集計できます。 マルチビットレート ストリームを送信する場合は、帯域幅を削減し、動画やオーディオの処理による干渉を避けるために、単一ビットレートでのみメタデータを提供することもお勧めします。 
+
+**"onUserDataEvent"** のペイロードは、[MPEGDASH] EventStream XML 形式のメッセージである必要があります。 これにより、HLS または DASH プロトコル経由で配信される CMAF [MPEGCMAF] コンテンツに対して、インバンドの 'emsg' ペイロードで伝達できるカスタムの定義スキーマを簡単に渡すことができます。 各 DASH Event Stream メッセージには、URN メッセージスキーム識別子として機能し、メッセージのペイロードを定義する schemeIdUri が含まれています。 [ID3v2] 用の "https://aomedia.org/emsg/ID3"、[SCTE-35] 用の **urn:scte:scte35:2013:bin** など、一部のスキームは、相互運用性を確保するために業界のコンソーシアムによって標準化されています。 すべてのアプリケーション プロバイダーは、制御する URL (所有ドメイン) を使用して独自のカスタム スキームを定義できます。また、必要に応じてその URL で仕様を提供できます。 プレーヤーが定義済みスキームのハンドラーを持っている場合は、それがペイロードとプロトコルを理解する必要がある唯一のコンポーネントです。
+
+[MPEG-DASH] EventStream XML ペイロードのスキーマが定義されます (DASH ISO-IEC-23009--1-3rd Edition からの抜粋)。 現時点では、"EventStream" ごとに 1 つの "EventType" のみがサポートされていることに注意してください。 **EventStream** に複数のイベントが指定されている場合、最初の **Event** 要素のみが処理されます。
+
+```xml
+  <!-- Event Stream -->
+  <xs:complexType name="EventStreamType">
+    <xs:sequence>
+      <xs:element name="Event" type="EventType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute ref="xlink:href"/>
+    <xs:attribute ref="xlink:actuate" default="onRequest"/>
+    <xs:attribute name="schemeIdUri" type="xs:anyURI" use="required"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="timescale" type="xs:unsignedInt"/>
+  </xs:complexType>
+  <!-- Event  -->
+  <xs:complexType name="EventType">
+    <xs:sequence>
+      <xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="presentationTime" type="xs:unsignedLong" default="0"/>
+    <xs:attribute name="duration" type="xs:unsignedLong"/>
+    <xs:attribute name="id" type="xs:unsignedInt"/>
+    <xs:attribute name="contentEncoding" type="ContentEncodingType"/>
+    <xs:attribute name="messageData" type="xs:string"/>
+    <xs:anyAttribute namespace="##other" processContents="lax"/>
+  </xs:complexType>
+```
+
+
+### <a name="example-xml-event-stream-with-id3-schema-id-and-base64-encoded-data-payload"></a>ID3 スキーマ ID と base64 でエンコードされたデータ ペイロードを使用した XML イベント ストリームの例。  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="https://aomedia.org/emsg/ID3">
+         <Event contentEncoding="Base64">
+          -- base64 encoded ID3v2 full payload here per [CMAF-TMD] --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-base64-encoded-binary-data"></a>カスタム スキーマ ID と base64 でエンコードされたバイナリ データを使用したイベント ストリームの例  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:binary">
+         <Event contentEncoding="Base64">
+          -- base64 encoded custom binary data message --
+         </Event>
+   <EventStream>
+```
+
+### <a name="example-event-stream-with-custom-schema-id-and-custom-json"></a>カスタム スキーマ ID とカスタム JSON を使用したイベント ストリームの例  
+```xml
+   <?xml version="1.0" encoding="UTF-8"?>
+   <EventStream schemeIdUri="urn:example.org:custom:JSON">
+         <Event>
+          [
+            {"key1" : "value1"},
+            {"key2" : "value2"}
+          ]
+         </Event>
+   <EventStream>
+```
+
+### <a name="built-in-supported-scheme-id-uris"></a>組み込みのサポートされているスキーム ID の URI
+| スキーム ID URI                 |  説明                                             |
+|-------------------------------|----------------------------------------------------------|
+| https:\//aomedia.org/emsg/ID3   | [ID3v2] メタデータを CMAF 互換の [MPEGCMAF] フラグメント化 MP4 内の時間指定メタデータとして伝達する方法について説明します。 詳細については、「[Timed Metadata in the Common Media Application Format (CMAF) (Common Media Application Format (CMAF) の時間指定メタデータ)](https://aomediacodec.github.io/av1-id3/)」を参照してください。 |
+
+### <a name="event-processing-and-manifest-signaling"></a>イベント処理とマニフェストのシグナリング
+
+有効な **"onUserDataEvent"** イベントを受信すると、Azure Media Services では EventStreamType ([MPEGDASH] で定義) に一致する有効な XML ペイロードが検索され、XML ペイロードが解析され、それがライブ アーカイブへの保存と Media Services Packager への送信のために [MPEGCMAF] MP4 フラグメント ’emsg’ バージョン 1 ボックスに変換されます。   次のように、Packager ではライブ ストリームの 'emsg' ボックスが検出されます。
+
+- (a) HLS 時間指定メタデータ仕様 [HLS-TMD] に準拠して HLS クライアントに配信するために、TS セグメントに "動的にパッケージ化します"、または
+- (b) HLS または DASH 経由の CMAF フラグメントでの配信のために、それをパススルーします、または 
+- (c) Smooth Streaming [MS-SSTR] 経由で配信するためにスパース トラック シグナルに変換します。
+
+HLS 用のインバンドの 'emsg' 形式の CMAF または TS PES パケットに加え、DASH (MPD) のマニフェストと Smooth Streaming には、インバンド イベント ストリームへの参照が含まれます (Smooth Streaming では、スパース ストリーム トラックとも呼ばれます)。 
+
+個々のイベントまたはそのデータのペイロードは、HLS、DASH、または Smooth マニフェストに直接出力されません。 
+
+### <a name="additional-informational-constraints-and-defaults-for-onuserdataevent-events"></a>onUserDataEvent イベントの追加情報の制約と既定値
+
+- EventStream 要素にタイムスケールが設定されていない場合、既定では RTMP 1 kHz のタイムスケールが使用されます。
+- onUserDataEvent メッセージの配信は、最大で 500 ミリ秒ごとに 1 回に制限されています。イベントをより頻繁に送信すると、ライブ フィードの帯域幅と安定性に影響する可能性があります。
+
+## <a name="212-rtmp-ad-cue-signaling-with-oncuepoint"></a>2.1.2 "onCuePoint" を使用した RTMP 広告キューのシグナル通知
 
 Azure Media Services は、いくつかの [AMF0] メッセージ型をリッスンし、それらに応答することができます。これらのメッセージ型は、リアルタイムで同期される各種メタデータをライブ ストリーム内でシグナル通知するために使用できます。  [Adobe-Primetime] 仕様では、"シンプル" および "SCTE-35" モードと呼ばれる 2 つのキュー タイプを定義しています。 "シンプル" モードの場合、Media Services は、"Simple Mode" シグナル用に定義された下記の表に一致するペイロードを使用して、"onAdCue" という単一の AMF キュー メッセージをサポートします。  
 
 次のセクションでは、RTMP "シンプル" モード ペイロードを示します。これは、HLS、DASH、Microsoft Smooth Streaming のクライアント マニフェストに送られる基本的な "spliceOut" 広告シグナルを通知するために使用できます。 これは、複雑な SCTE-35 ベースの広告シグナル通知のデプロイまたは挿入システムを顧客が有しておらず、基本的なオンプレミス エンコーダーを使用して API 経由でキュー メッセージを送信しているシナリオで非常に役立ちます。 通常、オンプレミス エンコーダーは、このシグナルをトリガーするために REST ベースの API をサポートします。このトリガーには、ビデオに IDR フレームを挿入して新しい GOP を開始することによって、ビデオ ストリームを "スプライス条件" 化する作用もあります。
 
-## <a name="212--simple-mode-ad-signaling-with-rtmp"></a>2.1.2 RTMP を使用したシンプル モードの広告シグナル通知
+## <a name="213--rtmp-ad-cue-signaling-with-oncuepoint---simple-mode"></a>2.1.3 "onCuePoint" での RTMP 広告キュー シグナル通知 - シンプル モード
 
 | フィールド名 | フィールドの型 | 必須 | 説明                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
@@ -121,7 +247,7 @@ Azure Media Services は、いくつかの [AMF0] メッセージ型をリッス
 
 ---
  
-## <a name="213-scte-35-mode-ad-signaling-with-rtmp"></a>2.1.3 RTMP を使用した SCTE-35 モードの広告シグナル通知
+## <a name="214-rtmp-ad-cue-signaling-with-oncuepoint---scte-35-mode"></a>2.1.4 "onCuePoint" での RTMP 広告キュー シグナル通知 - SCTE-35 モード
 
 完全な SCTE-35 ペイロード メッセージを HLS または DASH マニフェストに送信する必要がある、より高度な放送制作ワークフローで作業している場合、[Adobe-Primetime] 仕様の "SCTE-35 モード" を使用するのが最適です。  このモードは、オンプレミス ライブ エンコーダーに直接送信されるインバンド SCTE-35 シグナルをサポートします。その後、このエンコーダーが、[Adobe-Primetime] 仕様で指定された "SCTE-35 モード" を使用してシグナルを RTMP ストリームにエンコードします。 
 
@@ -139,7 +265,7 @@ Azure Media Services は、いくつかの [AMF0] メッセージ型をリッス
 | time       | Number     | 必須 | イベントまたは広告スプライスのプレゼンテーション時間。  プレゼンテーション時間と継続時間は、[ISO-14496-12] Annex I で定義されているように、タイプ 1 または 2 のストリーム アクセス ポイント (SAP) と一致している**必要があります**。HLS エグレスの場合は、プレゼンテーション時間と継続時間はセグメントの境界と一致する**必要があります**。 同じイベント ストリームに含まれる異なるイベント メッセージのプレゼンテーション時間と継続時間は、オーバーラップしてはなりません。 単位は秒の小数部です。
 
 ---
-## <a name="214-elemental-live-oncuepoint-ad-markers-with-rtmp"></a>2.1.4 RTMP を使用した Elemental Live "onCuePoint" 広告マーカー
+## <a name="215-rtmp-ad-signaling-with-oncuepoint-for-elemental-live"></a>2.1.5 Elemental Live 用の "onCuePoint" を使用した RTMP 広告シグナル通知
 
 Elemental Live オンプレミス エンコーダーは、RTMP シグナル内の広告マーカーをサポートします。 Azure Media Services は現在、RTMP に対して "onCuePoint" 広告マーカー タイプのみをサポートしています。  これは、Elemental Media Live エンコーダー設定または API の Adobe RTMP グループ設定で "**ad_markers**" を "onCuePoint" に設定することによって有効化できます。  詳細については、Elemental Live のドキュメントをご覧ください。 RTMP グループでこの機能を有効化すると、SCTE-35 シグナルが Adobe RTMP 出力に渡され、Azure Media Services によって処理されます。
 
@@ -156,7 +282,7 @@ Elemental Live オンプレミス エンコーダーは、RTMP シグナル内�
 
 広告マーカーのこのモードが使用されるとき、HLS マニフェストの出力は Adobe "Simple" モードに似ています。 
 
-### <a name="215-cancellation-and-updates"></a>2.1.5 キャンセルと更新
+### <a name="216-cancellation-and-updates"></a>2.1.6 キャンセルと更新
 
 同じプレゼンテーション時間と ID で複数のメッセージを送信することにより、メッセージをキャンセルまたは更新することができます。 プレゼンテーション時間と ID はイベントを一意に識別し、プレロール制約を満たす特定のプレゼンテーション時間で受信された最後のメッセージが、処理されるメッセージになります。 更新されたイベントは、以前に受信されたメッセージを置き換えます。 プレロール制約は 4 秒です。 プレゼンテーション時間の少なくとも 4 秒前に受信されたメッセージが処理されます。
 
@@ -465,6 +591,13 @@ RTMP の取り込みの場合、AMF メッセージの cue 属性は、[SCTE-35]
 Azure Media Services プラットフォームを使用して実装をテストするときは、エンコード LiveEvent でのテストに進む前に、まずは "パススルー" LiveEvent を使用してテストを開始してください。
 
 ---
+
+## <a name="change-history"></a>変更履歴
+
+| Date     | 変更点                                                                            |
+|----------|------------------------------------------------------------------------------------|
+| 2019/07/02  | SCTE35 のサポートのために RTMP 取り込みを改訂し、Elemental Live 用に RTMP の "onCuePoint" を追加しました | 
+| 2019/08/22 | カスタム メタデータの RTMP に OnUserDataEvent を追加するよう更新されました                         |
 
 ## <a name="next-steps"></a>次の手順
 Media Services のラーニング パスを確認します。

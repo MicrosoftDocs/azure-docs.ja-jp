@@ -1,37 +1,47 @@
 ---
 title: CloudSimple による Azure VMware ソリューションのクイック スタート - サービスの作成
-description: CloudSimple サービスを作成したり、ノードをプロビジョニングしたり、ノードを予約したりする方法について説明します。
+description: CloudSimple サービスの作成方法、ノードの購入方法、ノードの予約法について説明します。
 author: sharaths-cs
 ms.author: dikamath
-ms.date: 04/10/2019
+ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 13b07b3b50bdb03373275ca9594baa6357e9f66f
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b20ff261939dd97a74d27f5ec7f21eae2665f474
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812295"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69574547"
 ---
-# <a name="quickstart---create-service"></a>クイック スタート - サービスの作成
+# <a name="quickstart---create-cloudsimple-service"></a>クイックスタート - CloudSimple サービスを作成する
 
 始めに、Azure ポータルで CloudSimple によって Azure VMware ソリューションを作成します。
 
-## <a name="vmware-solution-by-cloudsimple---service-overview"></a>CloudSimple による VMware ソリューション - サービス概要
-
-Azure VMware Solution by CloudSimple は、CloudSimple サービスを通じて利用できます。  このサービスを作成すると、ノードをプロビジョニングしたり、ノードを予約したり、プライベート クラウドを作成したりできます。  CloudSimple サービスが使用可能な各 Azure 領域に、CloudSimple サービスを追加します。  サービスは、CloudSimple による Azure VMware ソリューションのエッジ ネットワーク を定義します。  このエッジ ネットワークは、VPN、ExpressRoute、およびプライベート クラウドへのインターネット接続性などのサービスに使用されます。
+Azure VMware Solution by CloudSimple は、CloudSimple サービスを通じて利用できます。  このサービスを作成することで、ノードの購入、予約、プライベート クラウドの作成が可能になります。  CloudSimple サービスが使用可能な各 Azure 領域に、CloudSimple サービスを追加します。  このサービスでは、Azure VMware Solution by CloudSimple のエッジ ネットワークが定義されます。  このエッジ ネットワークは、VPN、ExpressRoute、およびプライベート クラウドへのインターネット接続を含むサービスに使用されます。
 
 CloudSimple サービスを追加するには、ゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットはエッジ ネットワークを作成するときに使用し、/28 CIDR ブロックを必要とします。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 これは、オンプレミス ネットワークのアドレス空間や Azure の仮想ネットワーク アドレス空間と重複できません。
-
-## <a name="before-you-begin"></a>開始する前に
-
-ゲートウェイ サブネットに /28 CIDR ブロックを割り当てます。  CloudSimple サービスごとに、その作成先のリージョンに固有のゲートウェイ サブネットが必要となります。 ゲートウェイ サブネットは、エッジ ネットワーク サービスを作成するときに使用され、/28 CIDR ブロックを必要とします。 ゲートウェイ サブネットのアドレス空間は一意である必要があります。 CloudSimple 環境と通信するネットワークと重複しないようにしてください。  CloudSimple と通信するネットワークとしては、オンプレミスのネットワークや Azure Virtual Network があります。 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
+
+## <a name="enable-microsoftvmwarecloudsimple-resource-provider"></a>Microsoft.VMwareCloudSimple リソース プロバイダーを有効にします。
+
+CloudSimple サービスのリソース プロバイダーを有効にするには、次の手順に従います。
+
+1. **[すべてのサービス]** を選択します。
+2. **サブスクリプション**を検索して選択します。
+
+    ![[サブスクリプション] を選択する](media/cloudsimple-service-select-subscriptions.png)
+
+3. CloudSimple サービスを有効にするサブスクリプションを選択します。
+4. サブスクリプションの **[リソース プロバイダー]** をクリックします。
+5. **Microsoft.VMwareCloudSimple** を使用してリソース プロバイダーをフィルタ処理します。
+6. **[Microsoft.VMwareCloudSimple]** リソース プロバイダーを選択し、 **[登録]** をクリックします。
+
+    ![リソース プロバイダーの登録](media/cloudsimple-service-enable-resource-provider.png)
 
 ## <a name="create-the-service"></a>サービスの作成
 
@@ -56,7 +66,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 サービスが作成され、サービスの一覧に追加されます。
 
-## <a name="provision-nodes"></a>ノードをプロビジョニングする
+## <a name="purchase-nodes"></a>ノードの購入
 
 CloudSimple プライベート クラウド環境に従量課金制の容量をセットアップするには、まず、Azure portal 内のノードをプロビジョニングします。
 
@@ -70,7 +80,7 @@ CloudSimple プライベート クラウド環境に従量課金制の容量を�
 
     ![CloudSimple ノードを追加します。](media/create-cloudsimple-node-add.png)
 
-5. CloudSimple ノードをプロビジョニングするサブスクリプションを選択します。
+5. CloudSimple ノードを購入するサブスクリプションを選択します。
 6. ノードのリソース グループを選択します。 リソース グループを新規に追加するには、 **[Create New]** (新規作成) をクリックします。
 7. ノードを識別するためにプレフィックスを入力します。
 8. ノード リソースの場所を選択します。
@@ -84,4 +94,4 @@ CloudSimple プライベート クラウド環境に従量課金制の容量を�
 ## <a name="next-steps"></a>次の手順
 
 * [プライベート クラウドを作成し、環境を構成します。](quickstart-create-private-cloud.md)
-* [CloudSimple サービス](https://docs.azure.cloudsimple.com/cloudsimple-service)について説明します。
+* [CloudSimple サービス](cloudsimple-service.md)について説明します。

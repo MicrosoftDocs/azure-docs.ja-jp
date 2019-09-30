@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: ced0655d2e8ff012b3043dd123a8483674b4c472
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404550"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034126"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -40,7 +40,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 次の図の緑色の線は、仮想ネットワークの DNS サフィックスで終わるリソースの要求です。 青色の線は、オンプレミス ネットワークまたはパブリック インターネットのリソースの要求です。
 
-![このドキュメントで使用される構成で DNS 要求がどのように解決されるかを示す図](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![構成で DNS 要求がどのように解決されるかを示す図](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -67,7 +67,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
   
 2. 左側のメニューから、 **[+ リソースの作成]**  >  **[Compute]**  >  **[Ubuntu Server 18.04 LTS]** に移動します。
 
-    ![Ubuntu 仮想マシンを作成する](./media/connect-on-premises-network/create-ubuntu-vm.png)
+    ![Ubuntu 仮想マシンを作成する](./media/connect-on-premises-network/create-ubuntu-virtual-machine.png)
 
 3. __[基本]__ タブで、次の情報を入力します。  
   
@@ -84,7 +84,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     |[パスワード] または [SSH 公開キー] | 使用可能なフィールドは、 **[認証の種類]** として選択された内容によって決定されます。  適切な値を入力します。|
     |パブリック受信ポート|**[選択したポートを許可する]** を選択します。 次に、 **[受信ポートを選択]** ボックスの一覧から **[SSH (22)]** を選択します。|
 
-    ![仮想マシンの基本構成](./media/connect-on-premises-network/vm-basics.png)
+    ![仮想マシンの基本構成](./media/connect-on-premises-network/virtual-machine-basics.png)
 
     他のエントリは既定値のままにして、 **[ネットワーク]** タブを選択します。
 
@@ -96,7 +96,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     |Subnet | 前に作成した仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択 __しないでください__。|
     |パブリック IP | 自動入力されている値を使用します。  |
 
-    ![仮想ネットワークの設定](./media/connect-on-premises-network/virtual-network-settings.png)
+    ![HDInsight 仮想ネットワークの設定](./media/connect-on-premises-network/virtual-network-settings.png)
 
     他のエントリは既定値のままにして、 **[確認と作成]** を選択します。
 
@@ -109,7 +109,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 2. 後で使用するために **[パブリック IP アドレス/DNS 名ラベル]** と **[プライベート IP アドレス]** の値をメモします。
 
-   ![パブリックおよびプライベート IP アドレス](./media/connect-on-premises-network/vm-ip-addresses.png)
+   ![パブリックおよびプライベート IP アドレス](./media/connect-on-premises-network/virtual-machine-ip-addresses.png)
 
 ### <a name="install-and-configure-bind-dns-software"></a>Bind (DNS ソフトウェア) をインストールして構成する
 

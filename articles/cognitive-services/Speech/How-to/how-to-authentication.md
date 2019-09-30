@@ -3,20 +3,20 @@ title: Bing Speech に対する認証を行う | Microsoft Docs
 titlesuffix: Azure Cognitive Services
 description: Bing Speech API を使用するための認証を要求します
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 11d6256fb63452b849a80abab181876d14b3b6a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d1e708ff29293b87935d0d191ba44ad4a11917a0
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515049"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70965652"
 ---
 # <a name="authenticate-to-the-speech-api"></a>Speech API を認証する
 
@@ -35,7 +35,7 @@ Speech Service を使用するには、まず Cognitive Services (旧 Project Ox
 
 Speech REST API を使用するには、要求ヘッダーの `Ocp-Apim-Subscription-Key` フィールドにサブスクリプション キーを渡す必要があります。
 
-Name| 形式| 説明
+名前| 形式| 説明
 ----|-------|------------
 Ocp-Apim-Subscription-Key | ASCII | YOUR_SUBSCRIPTION_KEY
 

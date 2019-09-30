@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Zoom の統合 | Microsoft Docs
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zoom の統合 | Microsoft Docs
 description: Azure Active Directory と Zoom 間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e36d1bb91e70e21ee1940e189bfedaebafa4412
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 5f9d727154adf0a2099d7a9144c109cef9c91238
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975939"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743967"
 ---
-# <a name="tutorial-integrate-zoom-with-azure-active-directory"></a>チュートリアル:Zoom と Azure Active Directory の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zoom"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zoom の統合
 
 このチュートリアルでは、Zoom と Azure Active Directory (Azure AD) を統合する方法について説明します。 Zoom と Azure AD を統合すると、次のことができます。
 
@@ -44,7 +44,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
-* Zoom では、**SP** によって開始される SSO がサポートされます
+* Zoom では、**SP** Initiated SSO がサポートされます。 
+* Zoom では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)がサポートされます。
 
 ## <a name="adding-zoom-from-the-gallery"></a>ギャラリーからの Zoom の追加
 
@@ -87,52 +88,21 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`<companyname>.zoom.us`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 この値を取得するには、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/en-us)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 この値を取得するには、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-5. Zoom アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**  アイコンをクリックして、 **[ユーザー属性]**  ダイアログを開きます。
-
-    ![image](common/edit-attribute.png)
-
-6. その他に、Zoom アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。  **[ユーザー属性]**   ダイアログの  **[ユーザー要求]**   セクションで、以下の手順を行って、以下の表のように SAML トークン属性を追加します。 
-
-    | EnableAdfsAuthentication | 名前空間  |  ソース属性|
-    | ---------------| --------------- | --------- |
-    | 電子メール アドレス  | User.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
-    | 名  | User.givenname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
-    | 姓  | User.surname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
-    | 電話番号  | user.telephonenumber  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone` |
-    | 部署  | user.department  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department` |
-    | role |    user.assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
-
-    > [!NOTE]
-    > Azure AD で役割を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)をクリックしてください
-
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
-
-    ![image](common/new-save-attribute.png)
-
-    ![image](common/new-attribute-details.png)
-
-    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
-
-    c. [ソース] として **[属性]** を選択します。
-
-    d. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
-
-    e. **[OK]** をクリックします。
-
-    f. **[Save]** をクリックします。
-
-    > [!NOTE]
-    > Zoom では、グループ要求が SAML ペイロードに含まれている必要があります。グループを作成した場合は、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/en-us)にグループ情報を連絡し、Zoom クライアント サポート チーム側でも、そのグループ情報を構成できるようにしてください。 また、Zoom クライアント サポート チーム側で構成を行えるよう、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/en-us)にオブジェクト ID を提供する必要もあります。 [ドキュメント](https://support.zoom.us/hc/en-us/articles/115005887566)に従ってオブジェクト ID を入手してください。
-
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/certificatebase64.png)
 
-6. **[Zoom のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[Zoom のセットアップ]** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
+
+> [!NOTE]
+> Azure AD でロールを構成する方法については、[エンタープライズ アプリケーション用の SAML トークン内に発行されるロール要求を構成する方法](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)に関するページを参照してください。
+
+> [!NOTE]
+> Zoom は、グループ要求が SAML ペイロードに含まれていることを想定している場合があります。 グループを作成した場合は、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/)にグループ情報を連絡し、Zoom クライアント サポート チーム側で、そのグループ情報を構成できるようにしてください。 また、Zoom クライアント サポート チーム側でオブジェクト ID を構成できるよう、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/)にオブジェクト ID を提供する必要もあります。 オブジェクト ID の取得については、[Azure での Zoom の構成](https://support.zoom.us/hc/articles/115005887566)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -203,30 +173,10 @@ Zoom で Azure AD SSO を構成してテストするには、次の構成要素�
 
 ### <a name="create-zoom-test-user"></a>Zoom テスト ユーザーの作成
 
-Azure AD ユーザーが Zoom にサインインできるようにするには、ユーザーを Zoom にプロビジョニングする必要があります。 Zoom の場合、プロビジョニングは手動で行います。
-
-### <a name="to-provision-a-user-account-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
-
-1. **Zoom** 企業サイトに管理者としてサインインします。
-
-2. **[アカウント管理]** タブをクリックし、 **[ユーザー管理]** をクリックします。
-
-3. [ユーザー管理] セクションで、 **[ユーザーの追加]** をクリックします。
-
-    ![ユーザー管理](./media/zoom-tutorial/ic784703.png "ユーザー管理")
-
-4. **[ユーザーの追加]** ページで、次の手順を実行します。
-
-    ![Add users](./media/zoom-tutorial/ic784704.png "Add users")
-
-    a. **[ユーザー タイプ]** として、 **[基本]** を選択します。
-
-    b. **[Emails]\(電子メール\)** ボックスに、プロビジョニングする有効な Azure AD アカウントの電子メール アドレスを入力します。
-
-    c. **[追加]** をクリックします。
+このセクションの目的は、Zoom で B.Simon というユーザーを作成することです。 Zoom では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](https://docs.microsoft.com/azure/active-directory/saas-apps/zoom-provisioning-tutorial)をご覧ください。
 
 > [!NOTE]
-> Zoom から提供されている他の Zoom ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
+> ユーザーを手動で作成する必要がある場合、[Zoom クライアント サポート チーム](https://support.zoom.us/hc/)に問い合わせる必要があります
 
 ## <a name="test-sso"></a>SSO のテスト 
 
@@ -242,3 +192,4 @@ Azure AD ユーザーが Zoom にサインインできるようにするには�
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Azure AD で Zoom を試す](https://aad.portal.azure.com/)

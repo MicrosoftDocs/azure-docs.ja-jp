@@ -3,7 +3,7 @@ title: 'Azure Status Monitor v2 API リファレンス: 状態を取得する | 
 description: Status Monitor v2 API リファレンス。 Get-ApplicationInsightsMonitoringStatus。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: tilee
-ms.openlocfilehash: 50703ede205b42032e9618c1b16b0de2bd7f3a23
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: c3982e7eb78c1113c73a8e7e9d7b00ad403ac486
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424130"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058251"
 ---
 # <a name="status-monitor-v2-api-get-applicationinsightsmonitoringstatus"></a>Status Monitor v2 API:Get-ApplicationInsightsMonitoringStatus
 

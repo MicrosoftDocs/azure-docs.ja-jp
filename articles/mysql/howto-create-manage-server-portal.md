@@ -1,17 +1,17 @@
 ---
 title: Azure Portal を使用した Azure Database for MySQL サーバーの作成と管理
-description: この記事では、Azure Portal を使用して Azure Database for MySQL サーバーをすばやく作成して管理する方法について説明します。
+description: この記事では、Azure portal を使用して Azure Database for MySQL サーバーをすばやく作成して管理する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fdcb302d3a14b02ea86fb92c8dbf822ef3f42177
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459520"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70142301"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL サーバーの作成と管理
 このトピックでは、新しい Azure Database for MySQL サーバーをすばやく作成する方法について説明します。 Azure Portal を使用したサーバーの管理方法に関する情報も含まれています。 サーバーの管理には、サーバーの詳細とデータベースの表示、パスワードのリセット、リソースのスケーリング、サーバーの削除が含まれます。
@@ -41,8 +41,10 @@ ms.locfileid: "61459520"
     | *サーバー管理者ログイン* | myadmin (管理者アカウント名をセットアップ) |
     | *パスワード* | 管理者アカウントのパスワードを設定します |
     | *パスワードの確認* | 管理者アカウントのパスワードを確認 |
-    | *場所* | 東南アジア (北ヨーロッパまたは米国西部を選びます) |
+    | *Location* | 東南アジア (北ヨーロッパまたは米国西部を選びます) |
     | *バージョン* | 5.7 (Azure Database for MySQL サーバーのバージョンを選びます) |
+
+   ![新しいサーバーの作成](./media/howto-create-manage-server-portal/form-field.png)
 
 4. **[価格レベル]** をクリックして、新しいサーバーのサービス レベルとパフォーマンス レベルを指定します。 **[汎用]** タブを選びます。*Gen 5*、*2 仮想コア*、*5 GB*、および *7 日* は、それぞれ **[コンピューティング世代]** 、 **[仮想コア]** 、 **[ストレージ]** 、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、 **[バックアップ冗長オプション]** から **[地理冗長]** を選択します。
 
@@ -53,7 +55,7 @@ ms.locfileid: "61459520"
     > **[ダッシュボードにピン留めする]** チェック ボックスをオンにすると、デプロイを追跡しやすくなります。
 
 ## <a name="update-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの更新
-新しいサーバーをプロビジョニングした後、ユーザーには、管理者パスワードのリセットや、仮想コアまたはストレージの変更によるサーバーのスケールアップやスケールダウンなど、既存サーバーの構成に関するいくつかのオプションがあります。
+新しいサーバーをプロビジョニングした後、ユーザーには、管理者パスワードのリセット、価格レベルの変更、仮想コアまたはストレージの変更によるサーバーのスケールアップやスケールダウンなど、既存サーバーの構成に関するいくつかのオプションがあります。
 
 ### <a name="change-the-administrator-user-password"></a>管理者ユーザー パスワードを変更する
 1. サーバーの **[概要]** から、 **[パスワードのリセット]** をクリックしてパスワード リセット ウィンドウを表示します。
@@ -65,6 +67,17 @@ ms.locfileid: "61459520"
    ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. **[OK]** をクリックして新しいパスワードを保存します。
+
+### <a name="change-the-pricing-tier"></a>価格レベルを変更する
+> [!NOTE]
+> スケーリングがサポートされるのは、General Purpose からメモリ最適化サービス レベル (およびその逆方向) だけです。 サーバーの作成後に Basic 価格レベルに変更したり、Basic 価格レベルから変更したりすることは、Azure Database for MySQL ではサポートされていないことに注意してください。
+> 
+1. **[設定]** の下にある **[価格レベル]** をクリックします。
+2. 変更先の**価格レベル**を選択します。
+
+    ![change-pricing-tier](./media/howto-create-manage-server-portal/change-pricing-tier.png)
+
+4. **[OK]** をクリックして変更を保存します。 
 
 ### <a name="scale-vcores-updown"></a>仮想コアのスケールアップ/スケールダウン
 

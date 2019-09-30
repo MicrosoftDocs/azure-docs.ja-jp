@@ -12,12 +12,12 @@ metadata:
   author: mmacy
   ms.author: marsma
   ms.date: 08/29/2019
-  ms.openlocfilehash: 445e3bf68b3ce75ca2d9e51dc6f69c638f2f6b44
-  ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+  ms.openlocfilehash: cc8626ba09f5646b5784645a9fc0b05eac20d699
+  ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/27/2019
-  ms.locfileid: "70061361"
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71120414"
 landingContent:
 - title: 基本を学ぶ
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
     links:
     - text: Azure AD B2C とは
       url: active-directory-b2c-overview.md
+    - text: 技術と機能の概要
+      url: technical-overview.md
   - linkListType: get-started
     links:
     - text: Azure AD B2C テナントを作成する
@@ -33,10 +35,10 @@ landingContent:
       url: tutorial-register-applications.md
     - text: ユーザー フローを設定する
       url: tutorial-create-user-flows.md
-  - linkListType: learn
+  - linkListType: video
     links:
-    - text: ビデオ:Azure AD B2C での顧客 ID 管理
-      url: https://channel9.msdn.com/Shows/On-NET/Customer-Identity-Management-with-Azure-AD-B2C
+    - text: Azure AD B2C とは (9:35)
+      url: https://www.youtube.com/watch?v=GmBKlXED9Ug
 - title: ASP.NET アプリに ID を追加する
   linkLists:
   - linkListType: quickstart
@@ -105,6 +107,10 @@ landingContent:
       url: customize-ui-overview.md
     - text: Facebook でサインインを有効にする
       url: active-directory-b2c-setup-fb-app.md
+  - linkListType: video
+    links:
+    - text: 基本ポリシーの構成方法 (9:41)
+      url: https://www.youtube.com/watch?v=nWJ3m82536A
 - title: 高度な ID シナリオを構築する
   linkLists:
   - linkListType: concept
@@ -121,3 +127,7 @@ landingContent:
       url: active-directory-b2c-setup-commonaad-custom.md
     - text: REST API を使用して独自のビジネス ロジックを追加する
       url: active-directory-b2c-rest-api-validation-custom.md
+  - linkListType: video
+    links:
+    - text: Azure AD B2C を使用した高度なユース ケース (4:54)
+      url: https://www.youtube.com/watch?v=-ZmPBuMZY-Y

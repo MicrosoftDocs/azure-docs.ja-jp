@@ -10,16 +10,15 @@ ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2019
+ms.date: 08/22/2019
 ms.author: shants
-ms.openlocfilehash: c82bacfdff1c9d939016b48735f7917e7d34b47f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 626af4a056274e11ae15670f2f2e2a979eb94fff
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849678"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70082861"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Linux 仮想マシンに対する計画メンテナンスの通知の処理
 
@@ -27,13 +26,13 @@ Azure は、定期的に更新を行い、仮想マシンのホスト インフ�
 
 - Azure では、再起動を伴わないメンテナンスの場合、インプレース移行を使用して、ホストの更新中に VM を一時的に停止させます。 これらの再起動を伴わないメンテナンス操作は障害ドメインごとに適用され、警告の正常性シグナルを受信した場合、進行が停止します。
 
-- 再起動を伴うメンテナンスの場合は、メンテナンスの予定日時が知らされます。 このような場合は、都合に応じて自分自身でメンテナンスを開始できる時間枠 (通常は 30 日) が与えられます。
+- 再起動を伴うメンテナンスの場合は、メンテナンスの予定日時が知らされます。 このような場合は、都合に応じて自分自身でメンテナンスを開始できる時間枠 (通常は 35 日) が与えられます。
 
 
 再起動が必要な計画メンテナンスは、段階的にスケジュールされます。 各段階のスコープ (リージョン) はそれぞれ異なります。
 
 - 段階はお客様への通知で始まります。 既定では、サブスクリプションの所有者と共同所有者に通知が送信されます。 Azure [アクティビティ ログ アラート](../../azure-monitor/platform/activity-logs-overview.md)を使用して、通知の受信者、および電子メール、SMS、webhook などのメッセージング オプションを通知に追加できます。  
-- 通知の時点で、"*セルフサービス期間*" が使用できるようになります。 この期間中 (通常は 30 日) は、この段階に含まれている仮想マシンを確認し、自身のスケジュールのニーズに従って、プロアクティブにメンテナンスを開始できます。
+- 通知の時点で、"*セルフサービス期間*" が使用できるようになります。 この期間中 (通常は 35 日) は、この段階に含まれている仮想マシンを確認し、自身のスケジュールのニーズに従って、予防的にメンテナンスを開始できます。
 - セルフサービス期間が過ぎると、"*予定メンテナンス期間*" が始まります。 この期間のある時点で、Azure は、仮想マシンに対して必要なメンテナンスをスケジュールし、適用します。 
 
 2 つの期間を用意した目的は、Azure によってメンテナンスが自動的に開始される時期を把握した上で、メンテナンスを開始して仮想マシンを再起動するのに必要な時間を十分に確保できるようにすることにあります。

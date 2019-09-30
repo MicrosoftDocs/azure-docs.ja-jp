@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/20/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 5a3ffcc75ac37dac1284d0ffb5af234fd2f376cd
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: ac4d78147820c2cf56549abbec7e1fbc873ea260
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310464"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146925"
 ---
 # <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>チュートリアル: Geo レプリケートされている Azure コンテナー レジストリから Web アプリをデプロイする
 
@@ -55,7 +55,11 @@ Azure Container Registry では、コンテナー化されたアプリケーシ�
 | **サイト名** | Web アプリのグローバルに一意の名前。 この例では、Web アプリのデプロイ元のレジストリとリージョンを簡単に識別できるように、`<acrName>-westus` という形式を使用します。 |
 | **リソース グループ** | **[既存のものを使用]**  > `myResourceGroup` |
 | **App Service プラン/場所** | **[米国西部]** リージョンに `plan-westus` という名前の新しいプランを作成します。 |
-| **Image** | `acr-helloworld:v1`
+| **Image** | `acr-helloworld:v1` |
+| **オペレーティング システム** | Linux |
+
+> [!NOTE]
+> コンテナー化されたアプリをデプロイするための新しい App Service プランを作成すると、アプリケーションをホストするための既定のプランが自動的に選択されます。 既定のプランは、オペレーティング システムの設定によって異なります。
 
 **[作成]** を選択して、 *[米国西部]* リージョンに Web アプリをプロビジョニングします。
 
@@ -84,7 +88,8 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 | **サイト名** | Web アプリのグローバルに一意の名前。 この例では、Web アプリのデプロイ元のレジストリとリージョンを簡単に識別できるように、`<acrName>-eastus` という形式を使用します。 |
 | **リソース グループ** | **[既存のものを使用]**  > `myResourceGroup` |
 | **App Service プラン/場所** | **[米国東部]** リージョンに `plan-eastus` という名前の新しいプランを作成します。 |
-| **Image** | `acr-helloworld:v1`
+| **Image** | `acr-helloworld:v1` |
+| **オペレーティング システム** | Linux |
 
 **[作成]** を選択して、 *[米国東部]* リージョンに Web アプリをプロビジョニングします。
 

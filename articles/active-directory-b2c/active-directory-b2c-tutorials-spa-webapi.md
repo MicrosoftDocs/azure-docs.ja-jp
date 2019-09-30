@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b53ce30f4c49580bcd8ad3e259adf0300d8bd4a6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 6d354ab25125b0df90ac3d6852d7eafe5d5aba46
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369308"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064690"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリケーションから ASP.NET Core Web API へのアクセスを許可する
 
-このチュートリアルでは、Azure Active Directory (Azure AD) B2C で保護された ASP.NET Core Web API リソースをシングルページ アプリケーションから呼び出す方法について説明します。
+このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) で保護された ASP.NET Core Web API リソースをシングルページ アプリケーションから呼び出す方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "68369308"
 アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 1. アプリケーションの名前を入力します。 たとえば、*webapi1* とします。
@@ -92,7 +92,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 
 ### <a name="configure-the-web-api"></a>Web API を構成する
 
-1. Visual Studio または Visual Studio Code で *B2C-WebApi/**appsettings.json***  ファイルを開きます。
+1. Visual Studio または Visual Studio Code で *B2C-WebApi/ **appsettings.json*** ファイルを開きます。
 1. 実際のテナント名、Web API アプリケーションのアプリケーション ID、サインアップ ポリシーまたはサインイン ポリシーの名前、前に定義したスコープを反映するように `AzureAdB2C` ブロックを変更します。 ブロックは次の例のようになります (`Tenant` と `ClientId` には適切な値が入力されます)。
 
     ```json

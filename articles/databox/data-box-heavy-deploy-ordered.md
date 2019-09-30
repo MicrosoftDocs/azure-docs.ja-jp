@@ -8,12 +8,13 @@ ms.subservice: heavy
 ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
-ms.openlocfilehash: c7fbd37ff8d40f27e0ca18a6f9816d3d96422ab9
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.localizationpriority: high
+ms.openlocfilehash: dce3549bde4c62245e1d2b1f8ac0c88c0b70260c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592408"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70241402"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>チュートリアル:Azure Data Box Heavy を注文する
 
@@ -80,7 +81,7 @@ Azure Data Box Heavy は、迅速かつ簡単な信頼性の高い方法でオ�
 
     |Setting  |値  |
     |---------|---------|
-    |サブスクリプション     | Data Box サービス用の EA、CSP、または Azure スポンサー サブスクリプションを選択します。 <br> サブスクリプションは、課金アカウントにリンクされます。       |
+    |Subscription     | Data Box サービス用の EA、CSP、または Azure スポンサー サブスクリプションを選択します。 <br> サブスクリプションは、課金アカウントにリンクされます。       |
     |転送の種類     | **[Azure へインポート]** を選択します。        |
     |ソースの国     | データが現在存在する国/地域を選択します。         |
     |宛先 Azure リージョン     | データを転送する Azure リージョンを選択します。        |

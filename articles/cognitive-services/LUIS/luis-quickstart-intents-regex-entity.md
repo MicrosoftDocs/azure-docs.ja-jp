@@ -1,5 +1,5 @@
 ---
-title: 正規表現エンティティ - LUIS
+title: チュートリアル:正規表現エンティティ - LUIS
 titleSuffix: Azure Cognitive Services
 description: 正規表現エンティティを使用して一貫した形式のデータを発話から抽出する
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 958d880829e9524389a25f029415786231644c04
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: db60d87b441836f38309166318dd1778ce828483
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563597"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307599"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>チュートリアル:発話から適切な形式のデータを取得する
 このチュートリアルでは、**正規表現**エンティティを使用して、発話から一貫した形式のデータを抽出するアプリを作成します。

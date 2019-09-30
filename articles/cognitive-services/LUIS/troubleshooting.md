@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: b80c32fea0d62bb5800a677ff30cb0787e83afa2
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 3907a244bc2d85e7225f94b15150298fd80a032f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945836"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382336"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding についてよくあるご質問 (FAQ)
 
@@ -78,7 +78,7 @@ LUIS アプリを別の Azure サブスクリプションに譲渡するには�
 
 <a name="luis-collaborating"></a>
 
-## <a name="collaborating"></a>コラボレーション
+## <a name="collaborating-and-contributing"></a>コラボレーションと投稿
 
 ### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Azure Active Directory (Azure AD) またはロールベースのアクセス制御 (RBAC) で、コラボレーターに LUIS へのアクセス権を付与するにはどうすればよいですか?
 
@@ -87,6 +87,31 @@ LUIS アプリを別の Azure サブスクリプションに譲渡するには�
 <a name="luis-endpoint"></a>
 
 ## <a name="endpoint"></a>エンドポイント
+
+### <a name="i-received-an-http-403-error-status-code-how-do-i-fix-it"></a>HTTP 403 エラー状態コードを受け取りました。 どのように修正すればよいですか
+
+価格レベルの 1 秒あたりのトランザクション数または 1 か月あたりのトランザクション数を超えると、403 および 429 のエラー状態コードを取得します。 価格レベルを上げるか、Language Understanding [コンテナー](luis-container-howto.md)を使用してください。
+
+無料の 1000 エンドポイント クエリをすべて使用しているか、価格レベルの 1 か月あたりのトランザクションのクォータを超えた場合は、HTTP 403 エラー状態コードが表示されます。 
+
+このエラーを解決するには、高いレベルに[価格レベルを変更](luis-how-to-azure-subscription.md#change-pricing-tier)するか、[新しいリソースを作成](get-started-portal-deploy-app.md#create-the-endpoint-resource)して[アプリに割り当てる](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal)必要があります。
+
+このエラーの解決方法は次のとおりです。
+
+* [Azure portal](https://portal.azure.com) で、Language Understanding リソースの **[リソース管理] -> [価格レベル]** で、価格レベルをより高い TP レベルに変更します。 リソースが既に Language Understanding アプリに割り当てられている場合、Language Understanding ポータルでは何もする必要はありません。
+*  使用量が最も高い価格レベルを超えた場合は、ロード バランサーを使って Language Understanding リソースをその前に追加します。 これには、Kubernetes または Docker Compose を含む [Language Understanding コンテナー](luis-container-howto.md)が役立ちます。
+
+### <a name="i-received-an-http-429-error-status-code-how-do-i-fix-it"></a>HTTP 429 エラー状態コードを受け取りました。 どのように修正すればよいですか
+
+価格レベルの 1 秒あたりのトランザクション数または 1 か月あたりのトランザクション数を超えると、403 および 429 のエラー状態コードを取得します。 価格レベルを上げるか、Language Understanding [コンテナー](luis-container-howto.md)を使用してください。
+
+この状態コードは、1 秒あたりのトランザクションが価格レベルを超えると返されます。  
+
+解決方法は次のとおりです。
+
+* 最高レベルではない場合は、[価格レベルを上げる](luis-how-to-azure-subscription.md#change-pricing-tier)ことができます。
+* 使用量が最も高い価格レベルを超えた場合は、ロード バランサーを使って Language Understanding リソースをその前に追加します。 これには、Kubernetes または Docker Compose を含む [Language Understanding コンテナー](luis-container-howto.md)が役立ちます。
+* この状態コードが表示された場合は、自分で実装する[再試行ポリシー](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines)を使用してクライアント アプリケーションの要求をゲートすることができます。 
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>エンドポイントのクエリで予期していなかった結果が返されました。 どうすればよいですか。
 
@@ -102,7 +127,7 @@ LUIS アプリを別の Azure サブスクリプションに譲渡するには�
 LUIS は、[カルチャ](luis-language-support.md#tokenization)に基づいて発話を[トークン化](luis-glossary.md#token)します。 元の値とトークン化された値の両方を、[データ抽出](luis-concept-data-extraction.md#tokenized-entity-returned)に使用できます。
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>LUIS エンドポイント キーを作成して割り当てるにはどうすればよいですか?
-Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) レベルの[エンドポイント キーを作成](luis-how-to-azure-subscription.md)します。 **[[Keys and endpoints]\(キーとエンドポイント\)](luis-how-to-azure-subscription.md)** ページで[キーを割り当て](luis-how-to-azure-subscription.md)ます。 このアクションに対応する API はありません。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md#use-endpoint-key-in-query)必要があります。
+Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) レベルの[エンドポイント キーを作成](luis-how-to-azure-subscription.md)します。 **[[Azure リソース]](luis-how-to-azure-subscription.md)** ページで[キーを割り当て](luis-how-to-azure-subscription.md)ます。 このアクションに対応する API はありません。 その後、エンドポイントへの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md)必要があります。
 
 ### <a name="how-do-i-interpret-luis-scores"></a>LUIS のスコアを解釈するにはどうすればよいですか?
 システムは、その値に関係なく、最高のスコアの意図を使用する必要があります。 たとえば、スコアが 0.5 より低くても (50% 未満)、それは必ずしも LUIS の信頼度が低いことを意味するものではありません。 より多くのトレーニング データを提供すると、最も可能性の高い意図の[スコア](luis-concept-prediction-score.md)を上げるのに役立ちます。
@@ -123,10 +148,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>昨日は動いていた LUIS アプリで、今日は 403 エラーが発生します。 アプリは変更していません。 どのように修正すればよいですか
-こちらの[説明](#how-do-i-create-and-assign-a-luis-endpoint-key)に従って LUIS エンドポイント キーを作成し、それをアプリに割り当てます。 その後、エンドポイントへのクライアント アプリケーションの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md#use-endpoint-key-in-query)必要があります。 別のリージョンに新しいリソースを作成した場合、HTTP クライアント要求のリージョンも変更します。
+こちらの[説明](#how-do-i-create-and-assign-a-luis-endpoint-key)に従って LUIS エンドポイント キーを作成し、それをアプリに割り当てます。 その後、エンドポイントへのクライアント アプリケーションの HTTP 要求を変更して、[新しいエンドポイント キーを使用する](luis-concept-keys.md)必要があります。 別のリージョンに新しいリソースを作成した場合、HTTP クライアント要求のリージョンも変更します。
 
 ### <a name="how-do-i-secure-my-luis-endpoint"></a>LUIS エンドポイントをセキュリティで保護するにはどうすればよいですか?
-「[Securing the endpoint](luis-concept-security.md#securing-the-endpoint)」(エンドポイントのセキュリティ保護) をご覧ください。
+「[Securing the endpoint](luis-concept-keys.md#securing-the-endpoint)」(エンドポイントのセキュリティ保護) をご覧ください。
 
 ## <a name="working-within-luis-limits"></a>LUIS 制限内での作業
 
@@ -185,17 +210,15 @@ LUIS の一般公開 (GA) よりも前からアプリが存在していた場合
 
 ### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>どのキーが必要で、それをどこで取得し、それで何を行うかを知るにはどうすればよいですか? 
 
-[オーサリング キー](luis-how-to-account-settings.md)と[エンドポイント予測キー](luis-how-to-azure-subscription.md)の違いの詳細については、「[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-concept-keys.md)」を参照してください。 
+オーサリング キーと予測ランタイム キーの違いの詳細については、[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-concept-keys.md)に関する記事を参照してください。 
 
 ### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>クォータ不足に関するエラーを受信しました。 どのように修正すればよいですか 
 
-詳細については、「[HTTP 状態コード 403 および 429 を解決する](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429)」を参照してください。
+詳細については、HTTP 状態コード [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) および [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) の解決に関する記事を参照してください。
 
 ### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>さらに多くのエンドポイント クエリを処理する必要があります。 どうすればよいですか? 
 
-詳細については、「[HTTP 状態コード 403 および 429 を解決する](luis-how-to-azure-subscription.md#fix-http-status-code-403-and-429)」を参照してください。
-
-
+詳細については、HTTP 状態コード [403](#i-received-an-http-403-error-status-code-how-do-i-fix-it) および [429](#i-received-an-http-429-error-status-code-how-do-i-fix-it) の解決に関する記事を参照してください。
 
 ## <a name="app-management"></a>アプリの管理
 
@@ -242,7 +265,7 @@ Microsoft の取り組みと、Azure サービスでのデータ管理とアク�
 最初に、問題が LUIS に関連するものか、または LUIS ミドルウェアの外で起きているものかを切り分ける必要があります。 
 
 #### <a name="resolve-issue-in-luis"></a>LUIS での問題を解決する
-[LUIS エンドポイント](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)から LUIS に同じ発話を渡します。 エラーが発生する場合は、エラーが返されなくなるまで、LUIS の問題を解決します。 一般的なエラーの理由は、次のとおりです。
+[LUIS エンドポイント](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)から LUIS に同じ発話を渡します。 エラーが発生する場合は、エラーが返されなくなるまで、LUIS の問題を解決します。 一般的なエラーの理由は、次のとおりです。
 
 * `Out of call volume quota. Quota will be replenished in <time>.` - この問題は、オーサリング キーから[エンドポイント キー](luis-how-to-azure-subscription.md)に変更する必要があること、または[サービス レベル](luis-how-to-azure-subscription.md#change-pricing-tier)を変更する必要があることを、示しています。 
 

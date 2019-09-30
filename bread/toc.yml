@@ -114,12 +114,15 @@
     - name: Azure Databricks
       tocHref: /azure/azure-databricks/
       topicHref: /azure/azure-databricks/
-    - name: Azure データ エクスプローラー
+    - name: Azure Data Explorer
       tocHref: /azure/data-explorer/
       topicHref: /azure/data-explorer/
     - name: Azure Digital Twins
       tocHref: /azure/digital-twins/
       topicHref: /azure/digital-twins/
+    - name: Azure HPC Cache
+      tocHref: /azure/hpc-cache/
+      topicHref: /azure/hpc-cache/
     - name: Azure Lighthouse
       tocHref: /azure/lighthouse/
       topicHref: /azure/lighthouse/
@@ -593,6 +596,9 @@
     - name: Power BI ワークスペース コレクション
       tocHref: /azure/power-bi-workspace-collections/
       topicHref: /azure/power-bi-workspace-collections/
+    - name: Private Link
+      tocHref: /azure/private-link/
+      topicHref: /azure/private-link/
     - name: Azure Cache for Redis
       tocHref: /azure/azure-cache-for-redis/
       topicHref: /azure/azure-cache-for-redis/

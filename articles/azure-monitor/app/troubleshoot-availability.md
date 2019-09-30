@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 87bc87d7d105d581f0143e87044fb0337c0fd7f6
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: c3f3d9437a6e796cc91ff1782b3a0774382c5f8b
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304748"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067070"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -101,7 +101,7 @@ Web hook 通知を受信するアプリケーションが利用可能である�
    解決策として、次の 2 つが考えられます。
 
    * [Web テスト エージェントの IP アドレス](../../azure-monitor/app/ip-addresses.md)からの受信要求を許可するようにファイアウォールを構成します。
-   * 内部サーバーを定期的にテストする独自のコードを作成します。 このコードを、バック グラウンド プロセスとして、ファイアウォールの内側のテスト サーバーで実行します。 テスト プロセスは、コア SDK パッケージ内の [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API を使用して、その結果を Application Insights に送信できます。 この方法では、テスト サーバーに Application Insights のインジェスト エンドポイントへの送信アクセスが必要となりますが、受信要求を許可する代替方法と比べて、セキュリティのリスクは大幅に小さくなります。 結果は可用性 Web テストのブレードには表示されませんが、分析、検索、メトリックス エクスプローラーでの可用性の結果として表示されます。
+   * 内部サーバーを定期的にテストする独自のコードを作成します。 このコードを、バック グラウンド プロセスとして、ファイアウォールの内側のテスト サーバーで実行します。 テスト プロセスは、コア SDK パッケージ内の [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API を使用して、その結果を Application Insights に送信できます。 この方法では、テスト サーバーに Application Insights のインジェスト エンドポイントへの送信アクセスが必要となりますが、受信要求を許可する代替方法と比べて、セキュリティのリスクは大幅に小さくなります。 結果は可用性 Web テストブレードに表示されますが、エクスペリエンスはポータルによって作成されたテストに対して使用できるものより少し簡単になります。 カスタム可用性テストは、分析、検索、およびメトリックにも可用性の結果として表示されます。
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>複数ステップの Web テストのアップロードが失敗します。
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor で Log Analytics ワークスペースを管理する | Microsoft Docs
-description: ユーザー、アカウント、ワークスペース、Azure アカウントでのさまざまな管理タスクを使用して、Azure Monitor で Log Analytics ワークスペースを管理できます。
+description: リソース、ワークスペース、またはテーブルレベルのアクセス許可を使用して、Log Analytics ワークスペースに格納されているデータへのアクセスを Azure Monitor で管理できます。 この記事では、方法について詳しく説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 08/26/2019
 ms.author: magoedte
-ms.openlocfilehash: 59e5bbaf8deccdd8218e9c5590266070ed3b5ebb
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 9bf278b76846b98f58126957c589df87524bb8a4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624336"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034709"
 ---
-# <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースを管理する
+# <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
 Azure Monitor の[ログ](data-platform-logs.md) データは、Log Analytics ワークスペースに格納されます。Log Analytics ワークスペースは基本的に、データと構成情報が含まれるコンテナーです。 ログ データへのアクセスを管理するには、ワークスペースに関するさまざまな管理タスクを実行します。
 
@@ -32,7 +32,7 @@ Azure Monitor の[ログ](data-platform-logs.md) データは、Log Analytics �
 
 * Azure RBAC を使用して、ワークスペース内の特定のテーブルのログ データにアクセスする必要があるユーザーにアクセス権を付与する方法。
 
-## <a name="define-access-control-mode"></a>アクセス制御モードの定義
+## <a name="configure-access-control-mode"></a>アクセス制御モードを構成する
 
 Azure portal から、あるいは Azure PowerShell を利用し、ワークスペース上で構成されたアクセス制御モードを表示できます。  この設定は、サポートされている次のいずれかの方法で変更できます。
 
@@ -42,7 +42,7 @@ Azure portal から、あるいは Azure PowerShell を利用し、ワークス�
 
 * Azure Resource Manager テンプレート
 
-### <a name="configure-from-the-azure-portal"></a>Azure portal から構成する
+### <a name="from-the-azure-portal"></a>Azure portal から
 
 現在のワークスペース アクセス制御モードは、 **[Log Analytics ワークスペース]** メニューのワークスペースの **[概要]** ページで確認できます。
 
@@ -55,7 +55,7 @@ Azure portal から、あるいは Azure PowerShell を利用し、ワークス�
 
 ![ワークスペースのアクセス モードの変更](media/manage-access/change-access-control-mode.png)
 
-### <a name="configure-using-powershell"></a>PowerShell を使用した構成
+### <a name="using-powershell"></a>PowerShell の使用
 
 次のコマンドを使用して、サブスクリプション内のすべてのワークスペースのアクセス制御モードを調べます。
 
@@ -99,18 +99,14 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-### <a name="configure-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用した構成
+### <a name="using-a-resource-manager-template"></a>Resource Manager テンプレートの使用
 
 Azure Resource Manager テンプレートでアクセス モードを構成するには、ワークスペースに対する**enableLogAccessUsingOnlyResourcePermissions** 機能フラグを次のいずれかの値に設定します。
 
 * **false**:ワークスペースをワークスペースコンテキストのアクセス許可に設定します。 これはフラグが設定されない場合の既定設定です。
 * **true**:ワークスペースをリソースコンテキストのアクセス許可に設定します。
 
-## <a name="manage-accounts-and-users"></a>アカウントとユーザーの管理
-
-特定のユーザーのワークスペースに適用されるアクセス許可は、ユーザーの[アクセス モード](design-logs-deployment.md#access-mode)とワークスペースの[アクセス制御モード](design-logs-deployment.md#access-control-mode)によって定義されます。 **ワークスペースコンテキスト**では、このモードのクエリは、ワークスペース内のすべてのテーブルのすべてのデータにスコープが設定されているため、アクセス許可のあるワークスペース内のすべてのログを表示できます。 **リソースコンテキスト**では、アクセス権のある Azure portal のリソースから直接検索を実行するときに、特定のリソース、リソース グループ、またはサブスクリプションのワークスペースのログ データを表示できます。 このモードのクエリの範囲は、そのリソースに関連するデータのみです。
-
-### <a name="workspace-permissions"></a>ワークスペースのアクセス許可
+## <a name="manage-access-using-workspace-permissions"></a>ワークスペースのアクセス許可を使用してアクセスを管理する
 
 各ワークスペースには、複数のアカウントを関連付けることができます。また、各アカウントは、複数のワークスペースにアクセスできます。 アクセスは、[Azure のロールベースのアクセス](../../role-based-access-control/role-assignments-portal.md)を使用して管理されます。
 
@@ -130,7 +126,7 @@ Azure Resource Manager テンプレートでアクセス モードを構成す�
 
 ## <a name="manage-access-using-azure-permissions"></a>Azure のアクセス許可を使用してアクセスを管理する
 
-Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権を付与するには、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../role-based-access-control/role-assignments-portal.md)」の手順に従ってください。
+Azure のアクセス許可を使用して Log Analytics ワークスペースへのアクセス権を付与するには、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../role-based-access-control/role-assignments-portal.md)」の手順に従ってください。 カスタム ロールの例については、「[カスタム ロールの例](#custom-role-examples)」を参照してください。
 
 Azure には、Log Analytics ワークスペース用に、次の 2 つの組み込みユーザー ロールがあります。
 
@@ -180,7 +176,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | ストレージ アカウント キーを表示する。 Azure Storage アカウントからログを読み取るように Log Analytics を構成するために必要です |
 | `Microsoft.Insights/alertRules/*` | アラート ルールを追加、更新、および削除する |
 | `Microsoft.Insights/diagnosticSettings/*` | Azure リソースに対する診断設定を追加、更新、および削除する |
-| `Microsoft.OperationalInsights/*` | Log Analytics ワークスペースの構成を追加、更新、および削除する |
+| `Microsoft.OperationalInsights/*` | Log Analytics ワークスペースの構成を追加、更新、および削除する。 ワークスペースの詳細設定を編集するには、ユーザーに `Microsoft.OperationalInsights/workspaces/write` が必要です。 |
 | `Microsoft.OperationsManagement/*` | 管理ソリューションを追加および削除する |
 | `Microsoft.Resources/deployments/*` | デプロイを作成および削除する。 ソリューション、ワークスペース、および Automation アカウントを追加および削除するために必要です |
 | `Microsoft.Resources/subscriptions/resourcegroups/deployments/*` | デプロイを作成および削除する。 ソリューション、ワークスペース、および Automation アカウントを追加および削除するために必要です |
@@ -207,6 +203,39 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 通常、`/read` のアクセス許可は、組み込みの[閲覧者](../../role-based-access-control/built-in-roles.md#reader)ロールまたは[共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールなど、 _\*/read or_ _\*_ アクセス許可を含むロールによって付与されます。 特定の操作を含むカスタム ロールまたは専用の組み込みロールには、このアクセス許可が含まれないことがあります。
 
 さまざまな表に対して異なるアクセス制御を作成する場合は、下記の[テーブルごとのアクセス制御の定義](#table-level-rbac)に関する説明を参照してください。
+
+## <a name="custom-role-examples"></a>カスタム ロールの例
+
+1. ユーザーに対して自身のリソースからログ データへのアクセスを許可するには、以下を実行します。
+
+    * ワークスペースのアクセス制御モードを、**ワークスペースまたはリソースのアクセス許可を使用する**よう構成します。
+
+    * ユーザーに対して、自身のリソースに対する `*/read` または `Microsoft.Insights/logs/*/read` アクセス許可を付与します。 ワークスペースの [Log Analytics Reader](../../role-based-access-control/built-in-roles.md#reader) ロールが既に割り当てられている場合はそれで十分です。
+
+2. ユーザーに対して自身のリソースからログ データへのアクセスを許可し、ログをワークスペースに送信するようそのリソースを構成するには、以下を実行します。
+
+    * ワークスペースのアクセス制御モードを、**ワークスペースまたはリソースのアクセス許可を使用する**よう構成します。
+
+    * ユーザーに対して、ワークスペースに対するアクセス許可 `Microsoft.OperationalInsights/workspaces/read` および `Microsoft.OperationalInsights/workspaces/sharedKeys/action` を付与します。 これらのアクセス許可を持つユーザーはワークスペースレベルのクエリを実行できません。
+
+    * ユーザーに対して、自身のリソースに対するアクセス許可 `Microsoft.Insights/logs/*/read` および `Microsoft.Insights/diagnosticSettings/write` を付与します。 このリソースの [Log Analytics Contributor](../../role-based-access-control/built-in-roles.md#contributor) ロールが既に割り当てられている場合はそれで十分です。
+
+3. ユーザーに対して自身のリソースからログ データへのアクセスを許可し、Azure AD のすべてのサインインを読み取り、更新管理ソリューションのログ データを読み取るには、以下を実行します。
+
+    * ワークスペースのアクセス制御モードを、**ワークスペースまたはリソースのアクセス許可を使用する**よう構成します。
+
+    * ユーザーに対して、ワークスペースに対する以下のアクセス許可を付与します。 
+
+        * `Microsoft.OperationalInsights/workspaces/read` - ユーザーがワークスペースを列挙して Azure portal でワークプレース ブレードを開くことができるようにするために必要です
+        * `Microsoft.OperationalInsights/workspaces/query/read` - クエリを実行できるすべてのユーザーに必要です
+        * `Microsoft.OperationalInsights/workspaces/query/SigninLogs/read` - Azure AD のサインイン ログを読み取ることができるようにします
+        * `Microsoft.OperationalInsights/workspaces/query/Update/read` - 更新管理ソリューションのログを読み取ることができるようにします
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateRunProgress/read` - 更新管理ソリューションのログを読み取ることができるようにします
+        * `Microsoft.OperationalInsights/workspaces/query/UpdateSummary/read` - 更新管理ログを読み取ることができるようにします
+        * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` - 更新管理ソリューションを使用できるようにするために必要です
+        * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` - 更新管理ソリューションを使用できるようにするために必要です
+
+    * ユーザーに対して、自身のリソースに対するアクセス許可 `*/read` または `Microsoft.Insights/logs/*/read` を付与します。 ワークスペースの [Log Analytics Reader](../../role-based-access-control/built-in-roles.md#reader) ロールが割り当てられている場合はそれで十分です。
 
 ## <a name="table-level-rbac"></a>テーブル レベルの RBAC
 

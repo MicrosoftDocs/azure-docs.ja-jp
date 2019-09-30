@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 6ba41132c93ebdb2578bafb100416ca3fe579298
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1f9cb82abd5bc0823f5e7bc23fe437007bccc8e0
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67123279"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873580"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Azure Lab Services でクラスルーム ラボを管理する 
 この記事では、クラスルーム ラボの作成および削除方法について説明します。 また、ラボ アカウントのすべてのクラスルーム ラボを表示する方法についても説明します。 
@@ -97,7 +97,9 @@ ms.locfileid: "67123279"
 | Medium | 4 | 7 GB | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。 | 
 | 中 (入れ子になった仮想化) | 4 | 16 GB | このサイズは、リレーショナル データベース、メモリ内 Caching、および分析に最適です。 また、このサイズは入れ子になった仮想化もサポートしています。 <p>このサイズは、それぞれの学生が複数の VM を必要とするシナリオで使用できます。 教師は、入れ子になった仮想化を使用して、仮想マシン内に、小さいサイズの入れ子になった仮想マシンをいくつか設定することができます。 </p> |
 | Large | 8 | 32 GB | このサイズは、高速の CPU、ローカル ディスクのよりすぐれたパフォーマンス、大規模なデータベース、大きなメモリ キャッシュを必要とするアプリケーションに最適です。 このサイズは、入れ子になった仮想化もサポートします。 |  
-| GPU | 12 | 112 GB | このサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードに最適です。 | 
+| Small GPU (視覚化) | 6 | 56 GB | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 | 
+| Small GPU (Compute) | 6 | 56 GB | このサイズは、人工知能やディープ ラーニング アプリケーションのような、コンピューティング集中型およびネットワーク集中型のアプリケーションに最適です。 | 
+| Medium GPU (視覚化) | 12 | 112 GB | このサイズは、リモートの視覚化、ストリーミング、ゲーム、OpenGL や DirectX などのフレームワークを使用したエンコードに最適です。 | 
 
 ## <a name="view-all-classroom-labs"></a>すべてのクラスルーム ラボを表示する
 1. [Azure Lab Services ポータル](https://labs.azure.com)に移動します。

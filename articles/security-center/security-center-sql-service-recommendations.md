@@ -3,9 +3,8 @@ title: Azure Security Center で Azure データと記憶域サービスを保�
 description: このドキュメントでは、Azure Security Center での推奨事項に従ってデータと Azure SQL サービスを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: bcae6987-05d0-4208-bca8-6a6ce7c9a1e3
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 9e48114d0d4159d40006710f9c8194dea0d775f8
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 80611fe0c37af7dfd27b561186f3e967ad3159b4
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295631"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201043"
 ---
 # <a name="protect-azure-data-and-storage-services-in-azure-security-center"></a>Azure Security Center で Azure データと記憶域サービスを保護する
 このトピックでは、データと記憶域リソースのセキュリティに関する推奨事項を表示および実装する方法を示します。 Azure Security Center は、Azure リソースのセキュリティ状態を分析する際に、セキュリティに関する推奨事項を検出します。
@@ -40,7 +39,7 @@ ms.locfileid: "68295631"
 * 各タブをクリックし、リソースの種類ごとに推奨事項を表示します。
 
     > [!NOTE]
-    > ストレージの暗号化の詳細については、「[Enable encryption for Azure storage account in Azure Security Center (Azure Security Center における Azure ストレージ アカウントの暗号化の有効化)](security-center-enable-encryption-for-storage-account.md)」を参照してください。
+    > ストレージの暗号化の詳細については、「[保存データに対する Azure Storage 暗号化](../storage/common/storage-service-encryption.md)」を参照してください。
 
 
 ## <a name="remediate-a-recommendation-on-a-data-resource"></a>データ リソースの推奨事項を修復する
@@ -77,8 +76,7 @@ ms.locfileid: "68295631"
 ## <a name="see-also"></a>関連項目
 その他の Azure リソースの種類に適用される推奨事項の詳細については、次のトピックをご覧ください。
 
-* [Azure Security Center での仮想マシンの保護](security-center-virtual-machine-recommendations.md)
-* [Azure Security Center でのアプリケーションの保護](security-center-application-recommendations.md)
+* [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 * [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
 
 Security Center の詳細については、次のトピックを参照してください。

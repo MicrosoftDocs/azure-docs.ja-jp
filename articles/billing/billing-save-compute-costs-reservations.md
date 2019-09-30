@@ -5,18 +5,20 @@ author: yashesvi
 manager: yashar
 ms.service: billing
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 2e595fbee90b710ec6b8090a770d93e688a04818
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: bb90a9dec161746356b8c13df448718c53626684
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839981"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70806353"
 ---
 # <a name="what-are-azure-reservations"></a>Azure の予約とは
 
-Azure の予約は、仮想マシン、SQL Database のコンピューティング能力、Azure Cosmos DB のスループット、または他の Azure リソースを 1 年分または 3 年分前払いすることで、コストを削減するのに役立ちます。 前払いすると、使用するリソースの割り引きを受けることができます。 予約すると、コストを大幅に削減でき、仮想マシン、SQL データベースのコンピューティング、Azure Cosmos DB、または他のリソースで、従量課金制の料金を最大 72% 削減できます。 予約は課金割引を提供するもので、リソースの実行時の状態には影響しません。
+Azure の予約は、仮想マシン、SQL Database のコンピューティング能力、Azure Cosmos DB のスループット、または他の Azure リソースを 1 年分または 3 年分コミットすることで、コストを削減するのに役立ちます。 コミットすることで、使用するリソースの割り引きを受けることができます。 予約すると、コストを大幅に削減でき、仮想マシン、SQL データベースのコンピューティング、Azure Cosmos DB、または他のリソースで、従量課金制の料金を最大 72% 削減できます。 予約は課金割引を提供するもので、リソースの実行時の状態には影響しません。
+
+予約の支払いは、前払いとすることも、月払いとすることもできます。 前払いも月払いも予約の総コストは同じであり、月払いを選んだとしても追加料金を支払う必要はありません。 毎月の支払いは、サードパーティ製品ではなく、Azure の予約で利用できます。
 
 予約は [Azure portal](https://ms.portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) で購入できます。
 
@@ -31,12 +33,14 @@ Azure の予約は、仮想マシン、SQL Database のコンピューティン�
 - **予約仮想マシン インスタンス** - 予約の対象は仮想マシンのコンピューティング コストのみです。 その他のソフトウェア、ネットワーク、ストレージの料金は含まれません。
 - **Azure Cosmos DB の予約容量** - 予約は、リソース用にプロビジョニングされたスループットが対象になります。 ストレージとネットワーク料金は対象外です。
 - **SQL Database の予約された仮想コア** - 予約にはコンピューティング コストのみが含まれます。 ライセンスの料金は別途請求されます。
+- **SQL Data Warehouse** - 予約には cDWU の使用が含まれます。 SQL Data Warehouse の使用に関連するストレージまたはネットワークの料金は含まれません。
+- **App Service スタンプ料金** - 予約にはスタンプの使用が含まれます。 worker には適用されないので、スタンプに関連する他のすべてのリソースには別途課金されます。
 
 Windows 仮想マシンと SQL Database については、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)でライセンス コストを賄うことができます。
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>予約を購入する資格があるのはだれですか
 
-プランを購入するには、Enterprise のサブスクリプション所有者ロール (MS-AZR-0017P または MS-AZR-0148P) または従量課金制サブスクリプション (MS-AZR-003P または MS-AZR-0023P) が必要です。 クラウド ソリューション プロバイダーは、Azure portal または [パートナー センター](/partner-center/azure-reservations) を使用して Azure の予約を購入できます。
+プランを購入するには、Enterprise のサブスクリプション所有者ロール (MS-AZR-0017P または MS-AZR-0148P) または従量課金制サブスクリプション (MS-AZR-0003P または MS-AZR-0023P) が必要です。 クラウド ソリューション プロバイダーは、Azure portal または [パートナー センター](/partner-center/azure-reservations) を使用して Azure の予約を購入できます。
 
 Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約インスタンスを追加します]** オプションを無効にして、購入を EA 管理者に限定することができます。 EA 管理者は、予約を購入するために、少なくとも 1 つの EA サブスクリプションのサブスクリプション所有者である必要があります。 このオプションは、さまざまなコスト センター用に予約を購入する集中管理チームを必要とする企業に役立ちます。 購入後、集中管理チームは、予約にコスト センター所有者を追加できます。 これにより、所有者は、そのサブスクリプションに予約のスコープを設定できます。 集中管理チームは、予約が購入されたサブスクリプション所有者のアクセス権を持つ必要はありません。
 
@@ -102,7 +106,7 @@ Enterprise Agreement (EA) のお客様は、EA Portal 内で、 **[予約イン�
 
 ## <a name="how-is-a-reservation-billed"></a>予約はどのように課金されますか
 
-予約は、サブスクリプションに関連付けられている支払い方法に対して課金されます。 エンタープライズ サブスクリプションの場合、予約コストは年額コミットメントの残高から差し引かれます。 年額コミットメントの残高で予約のコストを賄えない場合は、超過分が課金されます。 従量課金制の個人プランのサブスクリプションをご利用の場合、アカウントに登録されているクレジット カードに直接課金されます。 請求書による課金の場合、次回の請求書に料金が表示されます。
+予約は、サブスクリプションに関連付けられている支払い方法に対して課金されます。 エンタープライズ サブスクリプションの場合、予約コストは年額コミットメントの残高から差し引かれます。 年額コミットメントの残高で予約のコストを賄えない場合は、超過分が課金されます。 従量課金制の個人プランのサブスクリプションをご利用の場合、前払い購入では、アカウントに登録されているクレジット カードに直接課金されます。 月支払いの場合は請求書に表示され、クレジット カードに毎月請求されます。 請求書による課金の場合、次回の請求書に料金が表示されます。
 
 ## <a name="how-reservation-discount-is-applied"></a>予約割引の適用方法
 

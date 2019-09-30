@@ -11,133 +11,124 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.topic: quickstart
-ms.date: 09/05/2018
+ms.date: 08/30/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6c32415e750964e94129a4a6f9cf3812fe9117b5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4f479ad60d74f1c7381b5fb776c5508aaa0785f1
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067277"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242256"
 ---
 # <a name="create-an-aspnet-framework-web-app-in-azure"></a>Azure に ASP.NET Framework Web アプリを作成する
 
-[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure App Service に初めての ASP.NET Web アプリをデプロイする方法を示します。 完了すると、デプロイされた Web アプリケーションを含む App Service アプリと App Service プランで構成されるリソース グループが完成します。
+[Azure App Service](overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。
 
-![](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
+このクイック スタートでは、Azure App Service に初めての ASP.NET Web アプリをデプロイする方法を示します。 完了すると、App Service プランが作成されます。 また、App Service アプリが作成され、Web アプリケーションがデプロイされます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、**ASP.NET および Web 開発**のワークロードと共に、<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> をインストールします。
+このチュートリアルを完了するには、**ASP.NET および Web 開発**のワークロードと共に、<a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> をインストールします。
 
-Visual Studio 2017 を既にインストールしている場合:
+Visual Studio 2019 を既にインストールしている場合:
 
-- **[ヘルプ]** 、 **[更新プログラムの確認]** の順にクリックし、Visual Studio に最新の更新プログラムをインストールします。
-- **[ツール]** 、 **[ツールと機能を取得]** の順にクリックし、ワークロードを追加します。
+- **[ヘルプ]**  >  **[更新プログラムの確認]** の順に選択して、Visual Studio に最新の更新プログラムをインストールします。
+- **[ツール]**  >  **[ツールと機能を取得]** の順に選択し、ワークロードを追加します。
 
-## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
+## ASP.NET Web アプリを作成する<a name="create-and-publish-the-web-app"></a>
 
-Visual Studio で、 **[ファイル]、[新規作成]、[プロジェクト]** の順にクリックして、プロジェクトを作成します。 
+次の手順に従って ASP.NET Web アプリを作成します。
 
-**[新しいプロジェクト]** ダイアログで、 **[Visual C#]、[Web]、[ASP.NET Web アプリケーション (.NET Framework)]** の順にクリックします。
+1. Visual Studio を開き、 **[新しいプロジェクトの作成]** を選択します。
 
-アプリケーションに _myFirstAzureWebApp_ という名前を付けて、 **[OK]** をクリックします。
-   
-![New Project dialog box](./media/app-service-web-get-started-dotnet-framework/new-project.png)
+1. **[新しいプロジェクトの作成]** で、C# の **[ASP.NET Web アプリケーション (.NET Framework)]** を選択し、 **[次へ]** を選択します。
 
-任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、 **[MVC]** テンプレートを選択し、認証が **[認証なし]** に設定されていることを確認してください。
-      
-**[OK]** を選択します。
+1. **[新しいプロジェクトの構成]** で、アプリケーションに _myFirstAzureWebApp_ という名前を付け、 **[作成]** を選択します。
 
-![[新しい ASP.NET プロジェクト] ダイアログ ボックス](./media/app-service-web-get-started-dotnet-framework/select-mvc-template.png)
+   ![Web アプリ プロジェクトを構成する](./media/app-service-web-get-started-dotnet-framework/configure-web-app-project-framework.png)
 
-メニューから、 **[デバッグ]、[デバッグなしで開始]** の順にクリックし、ローカルで Web アプリを実行します。
+1. 任意の種類の ASP.NET Web アプリを Azure にデプロイできます。 このクイックスタートでは、 **[MVC]** テンプレートを選択します。 
 
-![アプリをローカルで実行する](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
+1. 認証が **[認証なし]** に設定されていることを確認します **作成** を選択します。
 
-## <a name="launch-the-publish-wizard"></a>発行ウィザードを起動する
+   ![ASP.NET Web アプリケーションを作成する](./media/app-service-web-get-started-dotnet-framework/select-mvc-template-vs2019.png)
 
-**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
+1. Visual Studio のメニューから **[デバッグ]**  >  **[デバッグなしで開始]** の順に選択して、Web アプリをローカルで実行します。
 
-![ソリューション エクスプローラーから発行する](./media/app-service-web-get-started-dotnet-framework/solution-explorer-publish.png)
+   ![アプリをローカルで実行する](./media/app-service-web-get-started-dotnet-framework/local-web-app.png)
 
-発行ウィザードが自動的に起動します。 **[App Service]** 、 **[発行]** の順に選択し、 **[App Service の作成]** ダイアログを開きます。
+## Web アプリを発行する<a name="launch-the-publish-wizard"></a>
 
-![プロジェクトの概要ページから発行する](./media/app-service-web-get-started-dotnet-framework/publish-to-app-service.png)
+1. **ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+1. **App Service** を選択し、 **[発行]** を選択します。
 
-**[App Service の作成]** ダイアログ ボックスで、 **[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既にサインインしている場合は、目的のサブスクリプションを含んだアカウントをドロップダウンから選択します。
+   ![プロジェクトの概要ページから発行する](./media/app-service-web-get-started-dotnet-framework/publish-app-framework-vs2019.png)
 
-> [!NOTE]
-> 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
->
->
-   
-![Azure へのサインイン](./media/app-service-web-get-started-dotnet-framework/sign-in-azure.png)
+1. **App Service の [新規作成]** に表示されるオプションは、既に Azure にサインインしているかどうかや、Visual Studio アカウントが Azure アカウントとリンクされているかどうかによって異なります。 **[アカウントの追加]** または **[サインイン]** を選択して Azure サブスクリプションにサインインします。 既にサインインしている場合は、目的のアカウントを選択します。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+   > [!NOTE]
+   > 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
+   >
+   >
 
-[!INCLUDE [resource group intro text](../../includes/resource-group.md)]
+   ![Azure へのサインイン](./media/app-service-web-get-started-dotnet-framework/sign-in-azure-framework-vs2019.png)
 
-**[リソース グループ]** の横にある **[新規]** をクリックします。
+   [!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-リソース グループに **myResourceGroup** という名前を付けて、 **[OK]** をクリックします。
+1. **[リソース グループ]** で、 **[新規]** を選択します。
 
-## <a name="create-an-app-service-plan"></a>App Service プランを作成する
+1. **[新しいリソース グループ名]** に「*myResourceGroup*」と入力し、 **[OK]** を選択します。
 
-[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
+   [!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-**[ホスティング プラン]** の隣にある **[新規]** を選択します。 
+1. **[ホスティング プラン]** で **[新規]** を選択します。
 
-**[ホスティング プランの構成]** ダイアログ ボックスで、スクリーン ショットの次の表に示した設定を使用します。
+1. **[ホスティング プランの構成]** ダイアログで、次の表の値を入力し、 **[OK]** を選択します。
 
-![Create App Service plan](./media/app-service-web-get-started-dotnet-framework/configure-app-service-plan.png)
+   | Setting | 推奨値 | 説明 |
+   |-|-|-|
+   |App Service プラン| myAppServicePlan | App Service プランの名前です。 |
+   | Location | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
+   | Size | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
 
-| Setting | 推奨値 | 説明 |
-|-|-|-|
-|App Service プラン| myAppServicePlan | App Service プランの名前です。 |
-| Location | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
-| Size | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
+   ![Create App Service plan](./media/app-service-web-get-started-dotnet-framework/app-service-plan-framework-vs2019.png)
 
-**[OK]** を選択します。
+1. **[名前]** に、有効な文字 (`a-z`、`A-Z`、`0-9`、`-`) のみから成る一意のアプリ名を入力します。 自動的に生成される一意の名前をそのまま使用してもかまいません。 Web アプリの URL は `http://<app_name>.azurewebsites.net` です。`<app_name>` には自分のアプリの名前を指定します。
 
-## <a name="create-and-publish-the-web-app"></a>Web アプリを作成して発行する
+   ![アプリ名を構成する](./media/app-service-web-get-started-dotnet-framework/web-app-name-framework-vs2019.png)
 
-**[アプリ名]** に一意のアプリ名 (有効な文字は `a-z`、`0-9`、`-`) を入力するか、自動的に生成された一意の名前をそのまま使用します。 Web アプリの URL は `http://<app_name>.azurewebsites.net` です。`<app_name>` には自分のアプリの名前を指定します。
-
-**[作成]** をクリックして、Azure リソースの作成を開始します。
-
-![アプリ名を構成する](./media/app-service-web-get-started-dotnet-framework/web-app-name.png)
+1. **[作成]** をクリックして、Azure リソースの作成を開始します。
 
 ウィザードの完了後に、Azure に ASP.NET Web アプリを発行してから、既定のブラウザーでアプリを起動します。
 
 ![Azure で発行された ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet-framework/published-azure-web-app.png)
 
-アプリを[作成して発行する手順](#create-and-publish-the-web-app)で指定した名前が、`http://<app_name>.azurewebsites.net` 形式の URL プレフィックスとして使用されます。
+**App Service の [新規作成]** ページで指定したアプリ名が、`http://<app_name>.azurewebsites.net` 形式の URL プレフィックスとして使用されます。
 
-ASP.NET Web アプリを Azure App Services でライブ実行することができました。
+**お疲れさまでした。** ASP.NET Web アプリを Azure App Service でライブ実行することができました。
 
 ## <a name="update-the-app-and-redeploy"></a>アプリを更新して再デプロイする
 
-**ソリューション エクスプローラー**で、_Views\Home\Index.cshtml_ を開きます。
+1. **ソリューション エクスプローラー**で、対象プロジェクトの **[表示]**  >  **[ホーム]**  >  **[Index.cshtml]** を順に開きます。
 
-上部の `<div class="jumbotron">` HTML タグを検索し、要素全体を次のコードに置き換えます。
+1. 上部の `<div class="jumbotron">` HTML タグを検索し、要素全体を次のコードに置き換えます。
 
-```HTML
-<div class="jumbotron">
-    <h1>ASP.NET in Azure!</h1>
-    <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
-</div>
-```
+   ```HTML
+   <div class="jumbotron">
+       <h1>ASP.NET in Azure!</h1>
+       <p class="lead">This is a simple app that we’ve built that demonstrates how to deploy a .NET app to Azure App Service.</p>
+   </div>
+   ```
 
-Azure に再デプロイするには、**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
+1. Azure に再デプロイするには、**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、 **[発行]** を選択します。
 
-発行ページで **[発行]** を選択します。
-![Visual Studio の発行の概要ページ](./media/app-service-web-get-started-dotnet-framework/publish-summary-page.png)
+1. **発行**の概要ページで **[発行]** を選択します。
+
+   ![Visual Studio の発行の概要ページ](./media/app-service-web-get-started-dotnet-framework/publish-summary-page-framework-vs2019.png)
 
 発行が完了すると、Visual Studio で Web アプリの URL のブラウザーが起動されます。
 
@@ -145,17 +136,17 @@ Azure に再デプロイするには、**ソリューション エクスプロ�
 
 ## <a name="manage-the-azure-app"></a>Azure アプリの管理
 
-<a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動して、Web アプリを管理します。
+1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動して、Web アプリを管理します。
 
-左側のメニューで、 **[App Services]** を選択し、お客様の Azure アプリの名前を選択します。
+1. 左側のメニューで、 **[App Services]** を選択し、お客様の Azure アプリの名前を選択します。
 
-![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-dotnet-framework/access-portal.png)
+   ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-get-started-dotnet-framework/access-portal-framework-vs2019.png)
 
-Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。 
+   Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理を行うことができます。
 
-![Azure Portal の App Service ブレード](./media/app-service-web-get-started-dotnet-framework/web-app-blade.png)
+   ![Azure portal の App Service の概要](./media/app-service-web-get-started-dotnet-framework/web-app-general-framework-vs2019.png)
 
-左側のメニューは、アプリを構成するためのさまざまなページを示しています。 
+   左側のメニューは、アプリを構成するためのさまざまなページを示しています。
 
 ## <a name="video"></a>ビデオ
 

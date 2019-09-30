@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6237b8056262abe1f8cea28bebd6b3bad97e0f7e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a4a1099d90b619be383d440067a692c51a2430ac
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967578"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509066"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>定義したスケジュールで ACR タスクを実行する
 
@@ -48,9 +48,9 @@ Azure Cloud Shell または Azure CLI のローカル インストールを使�
 az acr task create \
   --name mytask \
   --registry myregistry \
-  --context /dev/null \
   --cmd hello-world \
-  --schedule "0 21 * * *"
+  --schedule "0 21 * * *" \
+  --context /dev/null
 ```
 
 タイマー トリガーが構成されていることを確認するには、[az acr task show][az-acr-task-show] コマンドを実行します。 既定では、基本イメージ更新トリガーも有効になります。
@@ -176,11 +176,11 @@ Cron 式で使われるタイム ゾーンは、協定世界時 (UTC) です。 
 
 |Type  |例  |トリガーのタイミング  |
 |---------|---------|---------|
-|特定の値 |<nobr>"5 * * * *"</nobr>|毎時、正時から 5 分後|
-|すべての値 (`*`)|<nobr>"* 5 * * *"</nobr>|5:00 UTC からの 1 時間の毎分 (1 日に 60 回 )|
-|範囲 (`-` 演算子)|<nobr>"0 1-3 * * *"</nobr>|1 日 3 回、1:00、2:00、3:00 UTC|
-|値のセット (`,` 演算子)|<nobr>"20,30,40 * * * *"</nobr>|1 時間に 3 回、各時の 20 分、30 分、40 分|
-|間隔値 (`/` 演算子)|<nobr>"*/10 * * * *"</nobr>|1 時間に 6 回、各時の 10 分、20 分など
+|特定の値 |<nobr>`"5 * * * *"`</nobr>|毎時、正時から 5 分後|
+|すべての値 (`*`)|<nobr>`"* 5 * * *"`</nobr>|5:00 UTC からの 1 時間の毎分 (1 日に 60 回 )|
+|範囲 (`-` 演算子)|<nobr>`"0 1-3 * * *"`</nobr>|1 日 3 回、1:00、2:00、3:00 UTC|
+|値のセット (`,` 演算子)|<nobr>`"20,30,40 * * * *"`</nobr>|1 時間に 3 回、各時の 20 分、30 分、40 分|
+|間隔値 (`/` 演算子)|<nobr>`"*/10 * * * *"`</nobr>|1 時間に 6 回、各時の 10 分、20 分など
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
@@ -198,6 +198,8 @@ Cron 式で使われるタイム ゾーンは、協定世界時 (UTC) です。 
 
 
 ## <a name="next-steps"></a>次の手順
+
+スケジュールされたタスクを使用してレジストリ内のリポジトリをクリーンアップする例については、「[Azure コンテナー レジストリからイメージを自動的に消去する](container-registry-auto-purge.md)」を参照してください。
 
 ソース コード コミットまたは基本イメージ更新によってトリガーされるタスクの例については、[ACR タスク チュートリアル シリーズ](container-registry-tutorial-quick-task.md)に関するページをご覧ください。
 

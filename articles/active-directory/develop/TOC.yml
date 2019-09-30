@@ -9,7 +9,7 @@
       href: v2-overview.md
     - name: クイック スタート
       items:
-        - name: 開発環境の設定
+        - name: テナントを設定する
           href: quickstart-create-new-tenant.md
         - name: アプリケーションの構成
           items:
@@ -37,6 +37,8 @@
               href: 'https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs'
             - name: Java
               href: quickstart-v2-java-webapp.md
+            - name: Python
+              href: quickstart-v2-python-webapp.md
         - name: Web API
           items:
             - name: ASP .NET
@@ -47,7 +49,7 @@
           items:
             - name: Android
               href: quickstart-v2-android.md
-            - name: iOS
+            - name: iOS と macOS
               href: quickstart-v2-ios.md
             - name: ユニバーサル Windows プラットフォーム
               href: quickstart-v2-uwp.md
@@ -73,7 +75,7 @@
           items:
             - name: Android
               href: tutorial-v2-android.md
-            - name: iOS
+            - name: iOS と macOS
               href: tutorial-v2-ios.md
             - name: ユニバーサル Windows プラットフォーム
               href: tutorial-v2-windows-uwp.md
@@ -87,6 +89,8 @@
           href: authentication-scenarios.md
         - name: 認証フローとアプリ シナリオ
           href: authentication-flows-app-scenarios.md
+        - name: ID プラットフォームのベスト プラクティス
+          href: identity-platform-integration-checklist.md
         - name: アプリケーションのシナリオ
           items:
             - name: サインイン対象ユーザー
@@ -205,6 +209,8 @@
                       href: msal-net-system-browser-android-considerations.md
                     - name: Xamarin iOS
                       href: msal-net-xamarin-ios-considerations.md
+                    - name: Xamarin iOS および Android アプリケーションでのブローカーの使用
+                      href: msal-net-use-brokers-with-xamarin-apps.md
                     - name: ユニバーサル Windows プラットフォーム
                       href: msal-net-uwp-considerations.md
                 - name: アプリのトークンの取得
@@ -213,18 +219,20 @@
                   href: scenario-mobile-call-api.md
                 - name: 運用環境に移行する
                   href: scenario-mobile-production.md
-            - name: 統合チェックリスト
-              href: identity-platform-integration-checklist.md
         - name: Microsoft Authentication Library (MSAL)
           items:
             - name: 概要
               href: msal-overview.md
-            - name: 移行
+            - name: ADAL からの移行
               items:
                 - name: MSAL.NET への移行
                   href: msal-net-migration.md
                 - name: MSAL.js への移行
                   href: msal-compare-msal-js-and-adal-js.md
+                - name: iOS と macOS での MSAL への移行
+                  href: migrate-objc-adal-msal.md
+                - name: ブローカーを使用して Xamarin アプリを ADAL.NET から MSAL.NET に移行する
+                  href: msal-net-migration-ios-broker.md
             - name: サポートされている認証フロー
               href: msal-authentication-flows.md
             - name: トークンの取得およびキャッシュ
@@ -233,8 +241,6 @@
                   href: msal-acquire-cache-tokens.md
                 - name: v1.0 アプリ用のスコープ
                   href: msal-v1-app-scopes.md
-                - name: トークン キャッシュのシリアル化 (.NET)
-                  href: msal-net-token-cache-serialization.md
             - name: クライアント アプリケーション
               items:
                 - name: クライアント アプリケーション
@@ -251,18 +257,28 @@
               href: msal-handling-exceptions.md
             - name: ログの記録
               href: msal-logging.md
-            - name: シングル サインオン (JS)
-              href: msal-js-sso.md
-            - name: プロンプトの動作 (JS)
-              href: msal-js-prompt-behavior.md
-            - name: ADFS のサポート (.NET)
-              href: msal-net-adfs-support.md
+            - name: シングル サインオン
+              items:
+                - name: MSAL.js でのシングル サインオン
+                  href: msal-js-sso.md
+                - name: iOS と macOS での MSAL によるシングル サインオン
+                  items:
+                    - name: MSAL アプリ間の SSO
+                      href: single-sign-on-macos-ios.md
+                    - name: ADAL アプリと MSAL アプリの間の SSO
+                      href: sso-between-adal-msal-apps-macos-ios.md
+            - name: ADFS による統合
+              items:
+                - name: MSAL.NET での ADFS のサポート
+                  href: msal-net-adfs-support.md
             - name: Azure AD B2C との統合
               items:
                 - name: JavaScript
                   href: msal-b2c-overview.md
                 - name: .NET
                   href: msal-net-aad-b2c-considerations.md
+                - name: iOS と macOS
+                  href: 'config-authority.md#b2c'
             - name: 考慮事項と既知の問題
               items:
                 - name: MSAL.NET
@@ -277,6 +293,10 @@
                       href: msal-js-known-issues-ie-edge-browsers.md
                     - name: 既知の問題 - Safari
                       href: msal-js-known-issues-safari-browser.md
+                - name: iOS と macOS での MSAL
+                  items:
+                    - name: SSL の問題
+                      href: ssl-issues.md
         - name: 認証プロトコル
           items:
             - name: アプリケーションの種類と OAuth2.0
@@ -324,17 +344,19 @@
               href: v2-permissions-and-consent.md
             - name: 同意フレームワーク
               href: consent-framework.md
+            - name: 管理者の同意
+              href: v2-admin-consent.md
             - name: アプリケーションの同意エクスペリエンス
               href: application-consent-experience.md
         - name: 各国のクラウド
           items:
             - name: 概要
               href: authentication-national-cloud.md
-            - name: Authentication
+            - name: 認証
               href: msal-national-cloud.md
     - name: ハウツー ガイド
       items:
-        - name: Authentication
+        - name: 認証
           items:
             - name: ロール要求の構成
               href: active-directory-enterprise-app-role-management.md
@@ -372,6 +394,8 @@
               items:
                 - name: キャッシュからトークンを取得する
                   href: msal-net-acquire-token-silently.md
+                - name: トークン キャッシュのシリアル化
+                  href: msal-net-token-cache-serialization.md
                 - name: トークン キャッシュをクリアする
                   href: msal-net-clear-token-cache.md
                 - name: オプションを使用してパブリック クライアントをインスタンス化する
@@ -388,6 +412,20 @@
                   href: msal-js-avoid-page-reloads.md
                 - name: 認証要求内でカスタムの状態を渡す
                   href: msal-js-pass-custom-state-authentication-request.md
+                - name: プロンプトの動作
+                  href: msal-js-prompt-behavior.md
+            - name: iOS と macOS での MSAL
+              items:
+                - name: iOS 用と macOS 用の Microsoft Authentication Library の違い
+                  href: msal-differences-ios-macos.md
+                - name: キーチェーンの構成
+                  href: howto-v2-keychain-objc.md
+                - name: ブラウザーと WebView のカスタマイズ
+                  href: customize-webviews.md
+                - name: カスタム要求のリクエスト
+                  href: request-custom-claims.md
+                - name: リダイレクト URI の構成
+                  href: redirect-uris-ios.md
         - name: Visual Studio を使用する
           items:
             - name: Active Directory 接続済みサービスの使用
@@ -422,7 +460,7 @@
       href: v1-overview.md
     - name: クイック スタート
       items:
-        - name: 開発環境の設定
+        - name: テナントを設定する
           href: quickstart-create-new-tenant.md
         - name: アプリケーションの構成
           items:
@@ -462,7 +500,7 @@
           items:
             - name: Android
               href: quickstart-v1-android.md
-            - name: iOS
+            - name: iOS と macOS
               href: quickstart-v1-ios.md
             - name: Windows デスクトップ .NET
               href: quickstart-v1-dotnet.md
@@ -494,7 +532,7 @@
               href: native-app.md
             - name: デーモンまたはサーバー アプリケーション
               href: service-to-service.md
-        - name: Authentication
+        - name: 認証
           items:
             - name: 認証の基本
               href: authentication-scenarios.md
@@ -557,7 +595,7 @@
           href: authentication-national-cloud.md
     - name: ハウツー ガイド
       items:
-        - name: Authentication
+        - name: 認証
           items:
             - name: Configure single sign-on
               displayName: SSO

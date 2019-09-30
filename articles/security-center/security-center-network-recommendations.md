@@ -3,9 +3,8 @@ title: Azure Security Center 上のネットワーク リソースの保護 | Mi
 description: このドキュメントでは、Azure Security Center 上の推奨事項に従ってご使用の Azure ネットワーク リソースを保護し、セキュリティ ポリシーを使用してコンプライアンスを順守する方法について説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 3683550045699a24c27a3226fba2e90a671f80e1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: memildin
+ms.openlocfilehash: bf33fe29b18b09bf903e1fc331f1c378eacb3e17
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101021"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201720"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>Azure Security Center 上のネットワーク リソースの保護
 Azure Security Center では、ネットワーク セキュリティのベスト プラクティスに対して Azure リソースのセキュリティ状態が継続的に分析されます。 Security Center によって潜在的なセキュリティの脆弱性が識別されると、リソースを堅牢化および保護するために必要な管理を構成するプロセスを説明する推奨事項が作成されます。
@@ -134,7 +133,7 @@ Security Center Standard レベルがない場合、このセクションでは�
 
 ## <a name="network-recommendations"></a>ネットワークの推奨事項
 
-|推奨事項の名前|説明|Severity|セキュリティ スコア|リソースの種類|
+|推奨事項の名前|説明|重大度|セキュリティ スコア|リソースの種類|
 |----|----|----|----|----|----|
 |サブネット レベルでのネットワーク セキュリティ グループを有効にする必要がある|サブネットにデプロイされたリソースのネットワーク アクセスを制御するネットワーク セキュリティ グループを有効にします。|高/中|30|Subnet|
 |仮想マシンはネットワーク セキュリティ グループに関連付ける必要がある|仮想マシンのネットワーク アクセスを制御するネットワーク セキュリティ グループを有効にします。|高/中|30|仮想マシン|
@@ -143,7 +142,7 @@ Security Center Standard レベルがない場合、このセクションでは�
 |App Services へのアクセスを制限する必要がある|ネットワーク構成を変更することによって App Services へのアクセスを制限し、広すぎる範囲からの受信トラフィックを拒否します。|高|10|App Service|
 |仮想マシンの管理ポートを閉じておく必要がある|管理ポートへのアクセスを制限するために、仮想マシンのネットワーク セキュリティ グループを強化します。|高|10|仮想マシン|
 DDoS Protection Standard を有効にする必要がある|DDoS Protection Standard を有効にすることで、パブリック IP を使用するアプリケーションが含まれる仮想ネットワークを保護します。 DDoS 保護は、ネットワークに対する帯域幅消費型攻撃およびプロトコル攻撃の軽減を有効にします。|高|10|仮想ネットワーク|
-|仮想マシンでの IP 転送を無効にする必要がある|IP 転送を無効にします。 仮想マシンの NIC で IP 転送が有効になっていると、そのマシンは自分以外の宛先へのトラフィックを受信できます。 IP 転送が必要な状況は (VM をネットワーク仮想アプライアンスとして使用する場合などに) 限られているため、ネットワーク セキュリティ チームはこのことを確認する必要があります。|Medium|10|仮想マシン|
+|仮想マシンでの IP 転送を無効にする必要がある|IP 転送を無効にします。 仮想マシンの NIC で IP 転送が有効になっていると、そのマシンはその他の宛先へのトラフィックを受信できます。 IP 転送が必要な状況は (VM をネットワーク仮想アプライアンスとして使用する場合などに) 限られているため、ネットワーク セキュリティ チームはこのことを確認する必要があります。|Medium|10|仮想マシン|
 |Web アプリケーションには HTTPS を介してのみアクセスできるようにする|Web アプリケーションに対して "HTTPS のみ" のアクセスを有効にします。 HTTPS を使用すると、サーバー/サービスの認証が確実に実行され、転送中のデータがネットワーク層の傍受攻撃から保護されるようになります。|Medium|20|Web アプリケーション|
 |仮想マシンで Just-In-Time ネットワーク アクセス制御を適用する必要がある|Just-In-Time (JIT) 仮想マシン (VM) アクセス制御を適用して、選択したポートへのアクセスを完全にロックダウンし、承認されたユーザーが JIT を使用して限られた時間だけそれらのポートを開けるようにします。|高|20|仮想マシン|
 |Function App には HTTPS 経由でのみアクセスできるようにする|関数アプリに対して "HTTPS のみ" のアクセスを有効にします。 HTTPS を使用すると、サーバー/サービスの認証が確実に実行され、転送中のデータがネットワーク層の傍受攻撃から保護されるようになります。|Medium|20|関数アプリ|

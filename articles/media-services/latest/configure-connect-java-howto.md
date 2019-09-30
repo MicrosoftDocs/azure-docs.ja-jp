@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2019
 ms.author: juliako
-ms.openlocfilehash: b7ee54c852ce3332415b69ca6105b472dab0ab8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f89e5cc434403e4edc3501d24ce2e94664d13ae9
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480255"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307842"
 ---
 # <a name="connect-to-media-services-v3-api---java"></a>Media Services v3 API に接続する - Java
 
@@ -41,6 +41,9 @@ ms.locfileid: "66480255"
 
 - [Java in Visual Studio Code](https://code.visualstudio.com/docs/languages/java)
 - [Java Project Management in VS Code](https://code.visualstudio.com/docs/java/java-project)
+
+> [!IMPORTANT]
+> [命名規則](media-services-apis-overview.md#naming-conventions)を確認してください。
 
 ## <a name="create-a-maven-project"></a>Maven プロジェクトを作成する
 

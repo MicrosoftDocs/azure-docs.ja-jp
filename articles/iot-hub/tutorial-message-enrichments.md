@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 2c115bf0ad21e905e998692fbbc175f5aa52b86d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 77d900844705bb86ce4bcfeda31d6ee765cb8d45
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014235"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69534996"
 ---
 # <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>チュートリアル:Azure IoT Hub のメッセージ エンリッチメント (プレビュー) を使用する
 
@@ -69,7 +69,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 次に示したのは、このスクリプトによって作成されるリソースです。 **Enriched** と表示されているリソースは、エンリッチメントが適用されたメッセージ用であることを意味します。 **Original** と表示されているリソースは、エンリッチメントが適用されていないメッセージ用であることを意味します。
 
-| EnableAdfsAuthentication | 値 |
+| Name | 値 |
 |-----|-----|
 | resourceGroup | ContosoResourcesMsgEn |
 | container name | original  |
@@ -84,7 +84,7 @@ IoT ハブ名やストレージ アカウント名など、いくつかのリソ
 
 ```azurecli-interactive
 # This command retrieves the subscription id of the current Azure account.
-# This field is used when setting up the routing rules.
+# This field is used when setting up the routing queries.
 subscriptionID=$(az account show --query id -o tsv)
 
 # Concatenate this number onto the resources that have to be globally unique.
@@ -250,7 +250,7 @@ az iot hub route create \
 
 2. ContosoStorageEndpointEnriched エンドポイントのリストに次の値を追加します。
 
-   | EnableAdfsAuthentication | 値 | エンドポイント (ドロップダウン リスト) |
+   | Name | 値 | エンドポイント (ドロップダウン リスト) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -269,7 +269,7 @@ az iot hub route create \
 
 ## <a name="send-messages-to-the-iot-hub"></a>IoT ハブにメッセージを送信する
 
-エンドポイントに対するメッセージ エンリッチメントの構成が完了したら、シミュレートされたデバイスのアプリケーションを実行して、IoT ハブにメッセージを送信します。 ハブは、次の処理を遂行するルールと共に設定されています。
+エンドポイントに対するメッセージ エンリッチメントの構成が完了したら、シミュレートされたデバイスのアプリケーションを実行して、IoT ハブにメッセージを送信します。 ハブは、次の処理を遂行する設定と共に設定されています。
 
 * ストレージ エンドポイント ContosoStorageEndpointOriginal にルーティングされたメッセージはエンリッチされず、ストレージ コンテナー `original` に格納されます。
 

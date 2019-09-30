@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: diberry
-ms.openlocfilehash: a5c60a4c7d4f1b441ec5e8444b10594a1e67d7db
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932718"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735049"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>ダッシュボードを使用してアプリを改善する方法
 
@@ -80,7 +80,7 @@ ms.locfileid: "68932718"
 
 * さまざまな意図にどのような発話があるかについて、深く理解している
 * ある意図の発話が別の意図とどのように混同される可能性があるかを把握している
-* 相互に混同されることがよくある 2 つの意図を 1 つの意図にまとめて、異なるデータとエンティティを取り出すかどうかを判断できる
+* 相互に混同されることがよくある 2 つの意図を 1 つの意図にまとめるかどうかを判断できる この場合、異なるデータをエンティティと共に取り出す必要があります。
 
 ### <a name="patterns-and-phrase-lists"></a>パターンとフレーズの一覧
 

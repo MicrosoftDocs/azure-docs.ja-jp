@@ -2,25 +2,18 @@
 title: 従来の Azure 仮想ネットワーク VPN ゲートウェイ SKU | Microsoft Docs
 description: 古い仮想ネットワーク ゲートウェイ SKU (Basic、Standard、HighPerformance) を使用する方法。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/10/2019
+ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 00f1677e2691f9be5bb4584b07ca00340a52b1e1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c745258929d495c1e568a156690f569de9f0e36
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056443"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533912"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 
@@ -42,15 +35,9 @@ ms.locfileid: "67056443"
 
 ## <a name="resize"></a>ゲートウェイのサイズを変更する
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 使用しているゲートウェイのサイズを、同じ SKU ファミリ内のゲートウェイ SKU のサイズに変更できます。 たとえば、Standard SKU の場合は、HighPerformance SKU にサイズ変更可能です。 ただし、古い SKU と新しい SKU ファミリとの間で VPN ゲートウェイのサイズを変更することはできません。 たとえば、Standard SKU から VpnGw2 SKU にしたり、Basic SKU から VpnGw1 にしたりすることはできません。
 
-クラシック デプロイ モデルのゲートウェイのサイズを変更するには、次のコマンドを使用します。
-
-```powershell
-Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
-```
+### <a name="resource-manager"></a>リソース マネージャー
 
 Resource Manager デプロイ モデルのゲートウェイのサイズを変更するには、PowerShell で次のコマンドを使用します。
 
@@ -58,7 +45,16 @@ Resource Manager デプロイ モデルのゲートウェイのサイズを変�
 $gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
+
 ゲートウェイのサイズ変更は、Azure Portal でも行うことができます。
+
+### <a name="classicresize"></a>クラシック
+
+クラシック デプロイ モデル用のゲートウェイのサイズを変更するには、サービス管理の PowerShell コマンドレットを使用する必要があります。 次のコマンドを使用します。
+
+```powershell
+Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
+```
 
 ## <a name="change"></a>新しいゲートウェイ SKU に変更する
 

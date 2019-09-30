@@ -195,7 +195,7 @@
           href: howto-data-in-replication.md
         - name: Azure portal を使用した読み取りレプリカの作成
           href: howto-read-replicas-portal.md
-        - name: 読み取りレプリカ Azure CLI の作成
+        - name: 読み取りレプリカ Azure CLI の作成、REST API
           href: howto-read-replicas-cli.md
     - name: トラブルシューティング
       items:
@@ -229,8 +229,8 @@
       href: /rest/api/mysql
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.dbformysql/allversions
-    - name: データイン レプリケーションのストアド プロシージャ
-      href: reference-data-in-stored-procedures.md
+    - name: Azure ストアド プロシージャ
+      href: reference-stored-procedures.md
 - name: リソース
   items:
     - name: デプロイ テンプレート

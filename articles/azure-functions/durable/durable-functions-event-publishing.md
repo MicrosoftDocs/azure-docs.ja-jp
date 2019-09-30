@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: glenga
-ms.openlocfilehash: 837e29731b617fcb8da95b89668403638c4d049a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f3fd59c0d17bd9094f6887aa5ec088f9fdcdd979
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087402"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734448"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Azure Event Grid への Durable Functions の発行 (プレビュー)
 
@@ -125,6 +125,16 @@ Function App を作成します。 イベント グリッド トピックと同�
 
 次のコードを含む関数が作成されます。
 
+#### <a name="precompiled-c"></a>プリコンパイル済み C#
+```csharp
+public static void Run([HttpTrigger] JObject eventGridEvent, ILogger log)
+{
+    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+}
+```
+
+#### <a name="c-script"></a>C# スクリプト
+
 ```csharp
 #r "Newtonsoft.Json"
 using Newtonsoft.Json;
@@ -150,6 +160,8 @@ public static void Run(JObject eventGridEvent, ILogger log)
 ## <a name="create-durable-functions-to-send-the-events"></a>イベントを送信する Durable Functions を作成する
 
 Durable Functions プロジェクトで、ローカル コンピューターでのデバッグを開始します。  次のコードは、Durable Functions のテンプレート コードと同じです。 ローカル コンピューターに `host.json` と `local.settings.json` を既に構成してあります。
+
+### <a name="precompiled-c"></a>プリコンパイル済み C#
 
 ```csharp
 using System.Collections.Generic;
@@ -188,8 +200,8 @@ namespace LifeCycleEventSpike
 
         [FunctionName("Sample_HttpStart")]
         public static async Task<HttpResponseMessage> HttpStart(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
-            [OrchestrationClient]DurableOrchestrationClient starter,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestMessage req,
+            [OrchestrationClient] DurableOrchestrationClient starter,
             ILogger log)
         {
             // Function input comes from the request content.
@@ -252,7 +264,7 @@ Azure Portal で作成した関数からのログをご覧ください。
 * **`id`** :イベント グリッド イベントの一意識別子。
 * **`subject`** :イベントの件名へのパス。 `durable/orchestrator/{orchestrationRuntimeStatus}` `{orchestrationRuntimeStatus}` は`Running`、`Completed`、`Failed`、`Terminated` になります。  
 * **`data`** :Durable Functions 固有のパラメーター。
-  * **`hubName`** :TaskHub](durable-functions-task-hubs.md) の名前。
+  * **`hubName`** :[TaskHub](durable-functions-task-hubs.md) の名前。
   * **`functionName`** :オーケストレーター関数の名前。
   * **`instanceId`** :Durable Functions のインスタンス ID。
   * **`reason`** :追跡イベントに関連付けられている追加のデータ。 詳しくは、「[Durable Functions における診断 (Azure Functions)](durable-functions-diagnostics.md)」をご覧ください

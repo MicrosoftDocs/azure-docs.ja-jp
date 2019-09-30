@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cawa
-ms.openlocfilehash: a08fc7d7822b4aeddafb588fdb73e86559ce2b12
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 84e423ac055c074028df217060a548b932823496
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68849167"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033381"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Azure Monitor でアプリケーション変更分析 (プレビュー) を使用する
 
@@ -87,57 +87,39 @@ Azure Monitor では、現在、変更分析はセルフサービスの**問題�
 
 ### <a name="enable-change-analysis-at-scale"></a>大規模な変更分析を有効にする
 
-サブスクリプションに多数の Web アプリが含まれている場合、Web アプリのレベルでサービスを有効にすることは非効率的です。 この場合は、次の代替手順に従ってください。
+サブスクリプションに多数の Web アプリが含まれている場合、Web アプリのレベルでサービスを有効にすることは非効率的です。 サブスクリプション内のすべての Web アプリを有効にするには、次のスクリプトを実行します。
 
-### <a name="register-the-change-analysis-resource-provider-for-your-subscription"></a>サブスクリプション用の変更分析リソース プロバイダーを登録する
+前提条件:
+* PowerShell Az モジュール。 「[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps?view=azps-2.6.0)」の手順に従います
 
-1. 変更分析機能フラグ (プレビュー) を登録します。 機能フラグはプレビュー段階なので、登録してサブスクリプションに表示されるようにする必要があります。
+次のスクリプトを実行します。
 
-   1. [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) を開きます。
+```PowerShell
+# Log in to your Azure subscription
+Connect-AzAccount
 
-      ![変更の Cloud Shell のスクリーンショット](./media/change-analysis/cloud-shell.png)
+# Get subscription Id
+$SubscriptionId = Read-Host -Prompt 'Input your subscription Id'
 
-   1. シェルの種類を **PowerShell** に変更します。
+# Make Feature Flag visible to the subscription
+Set-AzContext -SubscriptionId $SubscriptionId
 
-      ![変更の Cloud Shell のスクリーンショット](./media/change-analysis/choose-powershell.png)
+# Register resource provider
+Register-AzResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis"
 
-   1. 次の PowerShell コマンドを実行します。
 
-        ``` PowerShell
-        Set-AzContext -Subscription <your_subscription_id> #set script execution context to the subscription you are trying to enable
-        Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.ChangeAnalysis" -ListAvailable #Check for feature flag availability
-        Register-AzureRmProviderFeature -FeatureName PreviewAccess -ProviderNamespace Microsoft.ChangeAnalysis #Register feature flag
-        ```
+# Enable each web app
+$webapp_list = Get-AzWebApp | Where-Object {$_.kind -eq 'app'}
+foreach ($webapp in $webapp_list)
+{
+    $tags = $webapp.Tags
+    $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
+    Set-AzResource -ResourceId $webapp.Id -Tag $tags -Force
+}
 
-1. サブスクリプション用の変更分析リソース プロバイダーを登録します。
+```
 
-   - **[サブスクリプション]** に移動し、変更サービスで有効にするサブスクリプションを選択します。 次にリソース プロバイダーを選択します。
 
-        ![変更分析リソース プロバイダーを登録する方法を示すスクリーンショット](./media/change-analysis/register-rp.png)
-
-       - **[Microsoft.ChangeAnalysis]** を選択します。 次に、ページ上部にある **[登録]** を選択します。
-
-       - リソース プロバイダーを有効にすると、Web アプリに非表示のタグを設定して、デプロイ レベルで変更を検出できます。 非表示のタグを設定するには、「**Unable to fetch Change Analysis information (変更分析の情報をフェッチできない)** 」の手順を実行してください。
-
-   - または、PowerShell スクリプトを使用してリソース プロバイダーを登録することもできます。
-
-        ```PowerShell
-        Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, RegistrationState #Check if RP is ready for registration
-
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.ChangeAnalysis" #Register the Change Analysis RP
-        ```
-
-        PowerShell を使用して Web アプリに非表示のタグを設定するには、次のコマンドを実行します。
-
-        ```powershell
-        $webapp=Get-AzWebApp -Name <name_of_your_webapp>
-        $tags = $webapp.Tags
-        $tags[“hidden-related:diagnostics/changeAnalysisScanEnabled”]=$true
-        Set-AzResource -ResourceId <your_webapp_resourceid> -Tag $tag
-        ```
-
-     > [!NOTE]
-     > 非表示のタグを追加しても、変更が表示されるまでには最大 4 時間かかることがあります。 結果が遅延するのは、変更分析では 4 時間ごとに Web アプリがスキャンされるためです。 4 時間のスケジュールによって、スキャンのパフォーマンスへの影響が抑えられます。
 
 ## <a name="next-steps"></a>次の手順
 

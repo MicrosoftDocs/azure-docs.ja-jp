@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d4b6c8289ae7c22521fc433c928f2b25a56c87ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5946180c161a38a30f44e235ce0b626fd70a5400
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723574"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735137"
 ---
 # <a name="geofencing-geojson-data"></a>GeoJSON データのジオフェンシング
 
@@ -30,15 +30,15 @@ Azure Maps の [GET Geofence](/rest/api/maps/spatial/getgeofence) および [POS
 * `expiredTime` は、ジオフェンシング データの期限切れ日時です。 要求に含まれる `userTime` の値がこの値より後の場合、対応するジオフェンス データは期限切れデータと見なされ、クエリは実行されません。 その場合、このジオフェンス データの geometryId が、ジオフェンス応答内の `expiredGeofenceGeometryId` 配列に格納されます。
 * `validityPeriod` は、ジオフェンスの有効期間のリストです。 要求に含まれる `userTime` の値が有効期間の範囲外の場合、対応するジオフェンス データは無効と見なされ、クエリは実行されません。 このジオフェンス データの geometryId は、ジオフェンス応答内の `invalidPeriodGeofenceGeometryId` 配列に格納されます。 validityPeriod 要素のプロパティを次の表に示します。
 
-| Name | Type | 必須  | 説明 |
+| 名前 | 種類 | 必須  | 説明 |
 | :------------ |:------------: |:---------------:| :-----|
-| startTime | DateTime  | true | 有効期間の開始日時。 |
-| endTime   | DateTime  | true |  有効期間の終了日時。 |
+| startTime | Datetime  | true | 有効期間の開始日時。 |
+| endTime   | Datetime  | true |  有効期間の終了日時。 |
 | recurrenceType | string | false |   期間の繰り返しの種類。 値は、`Daily`、`Weekly`、`Monthly`、`Yearly` のいずれかです。 既定値は `Daily` です。|
 | businessDayOnly | Boolean | false |  データが営業日のみ有効かどうかを示します。 既定値は `false` です。|
 
 
-* すべての座標値は、`WGS84` で定義されているように、[緯度, 経度] として表されます。
+* すべての座標値は、`WGS84` で定義されているように、[経度, 緯度] として表されます。
 * `MultiPoint`、`MultiLineString`、`MultiPolygon`、または `GeometryCollection` を含む各フィーチャーでは、プロパティがすべての要素に適用されます。 次に例を示します。`MultiPoint` 内のすべてのポイントでは、同じ radius を使用して、複数の円ジオフェンスが形成されます。
 * ポイントと円のシナリオでは、「[GeoJSON ジオメトリの拡張](https://docs.microsoft.com/azure/azure-maps/extend-geojson)」で詳しく説明されているプロパティを含む `Point` geometry オブジェクトを使用して、円のジオメトリを表すことができます。      
 

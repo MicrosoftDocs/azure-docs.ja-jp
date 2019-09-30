@@ -7,22 +7,18 @@ manager: cfowler
 editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
-ms.devlang: multiple
 ms.topic: article
-ms.date: 11/20/2018
+ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 8bc30d50772dffddca32d9f6e22c3d7cec566c70
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297146"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70098470"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
-
-> [!NOTE] 
-> App Service on Linux と Web App for Containers のマネージド ID のサポートは、現在プレビューの段階です。
 
 > [!Important] 
 > アプリがサブスクリプションやテナント間で移行された場合、App Service と Azure Functions でのマネージド ID は想定されたとおりに動作しません。 アプリでは、機能を無効にしてから再度有効にすることで、新しい ID を取得する必要があります。 以下の「[ID の削除](#remove)」を参照してください。 また、ダウンストリーム リソースでは、新しい ID を使用するようにアクセス ポリシーを更新する必要があります。
@@ -30,8 +26,8 @@ ms.locfileid: "68297146"
 このトピックでは、App Service と Azure Functions アプリケーションでマネージド ID を作成し、それを使用して他のリソースにアクセスする方法を説明します。 アプリで Azure Active Directory のマネージド ID を使用すると、他の AAD で保護されたリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 AAD のマネージド ID については、「[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 アプリケーションには 2 種類の ID を付与できます。 
-- **システム割り当て ID** はアプリケーションに関連付けられているため、アプリが削除されると削除されます。 アプリは 1 つのシステム割り当て ID しか持つことはできません。 システム割り当て ID のサポートは、Windows アプリで一般公開されています。 
-- **ユーザー割り当て ID** は、アプリに割り当てることができるスタンドアロン Azure リソースです。 アプリは複数のユーザー割り当て ID を持つことができます。 ユーザー割り当て ID のサポートは、すべてのアプリの種類でプレビュー段階です。
+- **システム割り当て ID** はアプリケーションに関連付けられているため、アプリが削除されると削除されます。 アプリは 1 つのシステム割り当て ID しか持つことはできません。
+- **ユーザー割り当て ID** は、アプリに割り当てることができるスタンドアロン Azure リソースです。 アプリは複数のユーザー割り当て ID を持つことができます。
 
 ## <a name="adding-a-system-assigned-identity"></a>システム割り当て ID の追加
 
@@ -158,17 +154,11 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 `<TENANTID>` と `<PRINCIPALID>` は GUID に置き換えられます。 tenantId プロパティは、ID が属している AAD テナントを示します。 principalId は、アプリケーションの新しい ID の一意識別子です。 AAD でのサービス プリンシパルの名前は、App Service または Azure Functions のインスタンスに指定したものと同じです。
 
 
-## <a name="adding-a-user-assigned-identity-preview"></a>ユーザー割り当て ID の追加 (プレビュー)
-
-> [!NOTE] 
-> ユーザー割り当て ID は、現在プレビューの段階です。 ソブリン クラウドはまだサポートされていません。
+## <a name="adding-a-user-assigned-identity"></a>ユーザー割り当て ID の追加
 
 ユーザー割り当て ID を持つアプリを作成するには、ID を作成してから、そのリソース ID をアプリ構成に追加する必要があります。
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
-
-> [!NOTE] 
-> このポータルのエクスペリエンスはデプロイ中であり、まだすべてのリージョンでは利用できない可能性があります。
 
 最初に、ユーザー割り当て ID リソースを作成する必要があります。
 
@@ -180,7 +170,7 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 
 4. **[マネージド ID]** を選択します。
 
-5. **[割り当て済みユーザー (プレビュー)]** タブで **[追加]** をクリックします。
+5. **[ユーザー割り当て済み]** タブで **[追加]** をクリックします。
 
 6. 先ほど作成した ID を検索して選択します。 **[追加]** をクリックします。
 
@@ -314,7 +304,7 @@ Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName
 
 **MSI_ENDPOINT** は、アプリがトークンを要求できるローカル URL です。 リソースのトークンを取得するには、次のパラメーターを指定して、このエンドポイントに HTTP GET 要求を行います。
 
-> |パラメーター名|イン|説明|
+> |パラメーター名|場所|説明|
 > |-----|-----|-----|
 > |resource|Query|トークンを取得する必要のあるリソースの AAD リソース URI。 これは [Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の 1 つか、その他のリソース URI になります。|
 > |api-version|Query|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
@@ -388,6 +378,25 @@ const getToken = function(resource, apiver, cb) {
     rp(options)
         .then(cb);
 }
+```
+
+<a name="token-python"></a>Python の例:
+
+```python
+import os
+import requests
+
+msi_endpoint = os.environ["MSI_ENDPOINT"]
+msi_secret = os.environ["MSI_SECRET"]
+
+def get_bearer_token(resource_uri, token_api_version):
+    token_auth_uri = f"{msi_endpoint}?resource={resource_uri}&api-version={token_api_version}"
+    head_msi = {'Secret':msi_secret}
+
+    resp = requests.get(token_auth_uri, headers=head_msi)
+    access_token = resp.json()['access_token']
+
+    return access_token
 ```
 
 <a name="token-powershell"></a>PowerShell の例:

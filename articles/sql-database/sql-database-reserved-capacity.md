@@ -1,5 +1,5 @@
 ---
-title: 前払いで Azure SQL Database 仮想コアのコストを削減する | Microsoft Docs
+title: Azure SQL Database 仮想コアのコストを削減する | Microsoft Docs
 description: Azure SQL Database の予約容量を購入して計算コストを節約する方法について説明します。
 services: sql-database
 ms.service: sql-database
@@ -10,22 +10,22 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
-ms.date: 08/02/2019
-ms.openlocfilehash: 0139b3471eb9117830180088498eb14efd6ab661
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.date: 08/29/2019
+ms.openlocfilehash: 5ab5481a89f7bb9c74133487b01879b00b7def32
+ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68781316"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70806579"
 ---
-# <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL Database の予約容量を使用した SQL Database 計算リソースの前払い
+# <a name="save-costs-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Azure SQL Database の予約容量を使用して SQL Database コンピューティング リソースのコストを削減する
 
-計算リソースを前払いすることで、従量課金制より Azure SQL Database に関するコストを節約できます。 Azure SQL Database の予約容量を使用すると、SQL Database を 1 年間または 3 年間分を前払いすることで計算コストを大幅に引き下げることができます。 SQL Database の予約容量を購入するには、Azure リージョン、デプロイの種類、パフォーマンス レベル、および期間を指定する必要があります。
+コンピューティング リソースの予約をコミットすることで、Azure SQL Database のコストを従量課金制より節約できます。 Azure SQL Database の予約容量では、SQL Database の 1 年間または 3 年間の使用をコミットすることで、コンピューティング コストを大幅に引き下げることができます。 SQL Database の予約容量を購入するには、Azure リージョン、デプロイの種類、パフォーマンス レベル、および期間を指定する必要があります。
 
 
-特定の SQL Database インスタンス (単一データベース、エラスティック プール、またはマネージド インスタンス) に予約を割り当てる必要はありません。 既に実行している SQL Database インスタンスまたは新しくデプロイされた SQL Database インスタンスには、この特典が自動的に適用されます。 予約を購入すると、計算コストを 1 年間または 3 年間分前払いすることになります。 予約を購入するとすぐに、予約の属性に一致する SQL Database のコンピューティング料金は従量課金制で課金されなくなります。 予約には、SQL データベース インスタンスに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が SQL データベースに適用されます。 予約は自動更新されません。 価格の詳細については、[SQL Database の予約容量オファー](https://azure.microsoft.com/pricing/details/sql-database/managed/)に関するページを参照してください。
+特定の SQL Database インスタンス (単一データベース、エラスティック プール、またはマネージド インスタンス) に予約を割り当てる必要はありません。 既に実行している SQL Database インスタンスまたは新しくデプロイされた SQL Database インスタンスには、この特典が自動的に適用されます。 予約を購入することで、1 年間または 3 年間のコンピューティング コストの使用をコミットしたことになります。 予約を購入するとすぐに、予約の属性に一致する SQL Database のコンピューティング料金は従量課金制で課金されなくなります。 予約には、SQL データベース インスタンスに関連するソフトウェア、ネットワーク、またはストレージの料金は含まれません。 予約期間が満了した時点で、課金特典の有効期限は切れ、従量課金料金が SQL データベースに適用されます。 予約は自動更新されません。 価格の詳細については、[SQL Database の予約容量オファー](https://azure.microsoft.com/pricing/details/sql-database/managed/)に関するページを参照してください。
 
-Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com) で購入できます。 SQL Database の予約容量を購入するには:
+Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com) で購入できます。 予約の支払いは、[前払いまたは月払い](../billing/billing-monthly-payments-reservations.md)で行います。 SQL Database の予約容量を購入するには:
 
 - 少なくとも 1 つのエンタープライズ サブスクリプションまたは従量課金制料金の個々のサブスクリプションで所有者ロールである必要があります。
 - Enterprise サブスクリプションの場合、[EA ポータル](https://ea.azure.com)で **[予約インスタンスを追加します]** を有効にする必要があります。 または、その設定が無効になっている場合は、ユーザーはサブスクリプションの EA 管理者である必要があります。
@@ -65,11 +65,15 @@ Azure SQL Database の予約容量は、[Azure portal](https://portal.azure.com)
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>予約の取り消し、交換、または返金
 
-一定の制限付きで、予約の取り消し、交換、返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)」を参照してください。
+一定の制限付きで、予約の取り消し、交換、または返金を行うことができます。 詳しくは、「[Azure の予約のセルフサービスによる交換と払戻](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)」を参照してください。
 
 ## <a name="vcore-size-flexibility"></a>仮想コアのサイズの柔軟性
 
 同じパフォーマンス レベルとリージョン内であれば、予約容量のベネフィットを失うことなく、仮想コアのサイズを柔軟にスケールアップまたはスケールダウンできます。 また、SQL Database の予約容量では、通常の操作 (同じリージョン内および同じパフォーマンス レベル内) の一部として、予約容量のベネフィットを失うことなく、プールと単一のデータベースの間で、ホット データベースを一時的に柔軟に移動できます。 予約内の未適用バッファーを維持することにより、予算を超えずに、パフォーマンスの急増を効果的に管理できます。
+
+## <a name="limitation"></a>制限事項
+
+DTU ベース (Basic、Standard、または Premium) の SQL データベースを予約することはできません。
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせ
 

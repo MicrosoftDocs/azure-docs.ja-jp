@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 459c11448280b63bafdfd54c13a6cad5983ef1b5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615893"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69969640"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -55,7 +55,7 @@ Azure プラットフォームは、AKS クラスターの仮想ネットワー�
 
 ロード バランサーとサービスの IP アドレスは動的に割り当てることができます。または、使用する既存の静的 IP アドレスを指定できます。 内部と外部の静的 IP アドレスの両方を割り当てることができます。 この既存の静的 IP アドレスは、多くの場合、DNS エントリに関連付けられています。
 
-"*内部*" ロード バランサーと "*外部*" ロード バランサーの両方を作成できます。 内部ロード バランサーにはプライベート IP アドレスのみが割り当てられるため、インターネットからアクセスすることはできません。
+"*内部*" ロード バランサーと "*外部*" ロード バランサーの両方を作成できます。 内部ロード バランサーにはプライベート IP アドレスのみが割り当てられるため、インターネットからそれらにアクセスすることはできません。
 
 ## <a name="azure-virtual-networks"></a>Azure 仮想ネットワーク
 

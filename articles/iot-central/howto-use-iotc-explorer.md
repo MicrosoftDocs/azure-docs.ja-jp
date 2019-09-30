@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4d17f0e5273c7397bd9c6a71d14b7992d8652768
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 38cbe43e9038a47c4e222fd4744f0b844f9ddb4e
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165872"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845691"
 ---
 # <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Azure IoT Central エクスプローラーを使用してデバイスの接続を監視する
 
@@ -91,7 +91,7 @@ iotc-explorer monitor-messages <your-device-id>
 
 次のようにコマンドに `--raw` オプションを追加することにより、よりコンピューターで解釈しやすい形式で出力することもできます。
 
-```
+```cmd/sh
 iotc-explorer monitor-messages --raw
 ```
 

@@ -13,18 +13,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: orspodek
-ms.openlocfilehash: a7ac0bdc2bd5eed802f6959a628dee4c8141dbd1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 5cb08ddafe2075ae27ced6d70894696025df0a86
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720796"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010269"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer をコピー先またはコピー元としてデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、[Azure Data Explorer](../data-explorer/data-explorer-overview.md) との間で双方向にデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
+
+この Azure Data Explorer コネクタは、次のアクティビティでサポートされます。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
 
 Azure Data Explorer には、サポートされているソース データ ストアからデータをコピーすることができます。 また、Azure Data Explorer のデータを、サポートされているシンク データ ストアにコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md)に関する記事の表をご覧ください。
 
@@ -56,7 +61,7 @@ Azure Data Explorer のコネクタでは、サービス プリンシパル認�
     - アプリケーション キー
     - テナント ID
 
-2. Azure Data Explorer でサービス プリンシパルに適切なアクセス許可を付与します。 「[Azure データ エクスプローラーのデータベース アクセス許可を管理する](../data-explorer/manage-database-permissions.md)」と、ロールおよびアクセス許可についての詳細情報やアクセス許可の管理方法についてのチュートリアルを参照してください。 一般的に、次の操作を実行する必要があります。
+2. Azure Data Explorer でサービス プリンシパルに適切なアクセス許可を付与します。 「[Azure Data Explorer のデータベース アクセス許可を管理する](../data-explorer/manage-database-permissions.md)」と、ロールおよびアクセス許可についての詳細情報やアクセス許可の管理方法についてのチュートリアルを参照してください。 一般的に、次の操作を実行する必要があります。
 
     - **ソースとして**、少なくとも**データベース ビューアー** ロールをデータベースに付与します。
     - **シンクとして**、少なくとも**データベースのデータ取り込み**ロールをデータベースに付与します。
@@ -219,6 +224,10 @@ Azure Data Explorer にデータをコピーするには、コピー アクテ�
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

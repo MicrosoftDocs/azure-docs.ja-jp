@@ -1,5 +1,5 @@
 ---
-title: ローカライズ - Azure Active Directory B2C | Microsoft Docs
+title: ローカライズ - Azure Active Directory B2C
 description: Azure Active Directory B2C でカスタム ポリシーの Localization 要素を指定します。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
+ms.date: 08/27/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a02983c5019870e8b17db48184b2f238a82f8a40
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec9b4e7ce761d524d047f4d12cab9e5b782e6032
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510577"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033457"
 ---
 # <a name="localization"></a>ローカライズ
 
@@ -41,13 +41,13 @@ ms.locfileid: "66510577"
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Enabled | いいえ | 指定できる値: `true` または `false`。 |
+| 有効 | いいえ | 指定できる値: `true` または `false`。 |
 
 **Localization** 要素には、次の XML 要素が含まれています。
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| SupportedLanguages | 1:n | サポートされている言語の一覧。 | 
+| SupportedLanguages | 1:n | サポートされている言語の一覧。 |
 | LocalizedResources | 0:n | ローカライズされたリソースの一覧。 |
 
 ## <a name="supportedlanguages"></a>SupportedLanguages
@@ -65,7 +65,7 @@ ms.locfileid: "66510577"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| SupportedLanguage | 1:n | 「RFC 5646 - 言語を識別するタグ」に従って、言語タグに適合する内容を表示します。 | 
+| SupportedLanguage | 1:n | 「RFC 5646 - 言語を識別するタグ」に従って、言語タグに適合する内容を表示します。 |
 
 ## <a name="localizedresources"></a>LocalizedResources
 
@@ -112,6 +112,7 @@ ms.locfileid: "66510577"
 | --------- | -------- | ----------- |
 | Text | はい | このオプションのユーザー インターフェイスでユーザーに表示する必要がある、ユーザーフレンドリーな表示文字列。 |
 | 値 | はい | このオプションの選択に関連付けられている要求の文字列値。 |
+| SelectByDefault | いいえ | このオプションが既定で UI で選択するかどうかを示します。 指定できる値True または False。 |
 
 次の例は、**LocalizedCollections** 要素の使用を示しています。 これには、2 つの**LocalizedCollection** 要素が含まれています。1 つは英語用、もう 1 つはスペイン語用です。 両方とも、英語とスペイン語の項目の一覧を使用して、要求 `Gender` の **Restriction** コレクションを設定します。
 
@@ -131,7 +132,6 @@ ms.locfileid: "66510577"
       <Item Text="Masculino" Value="M" />
     </LocalizedCollection>
 </LocalizedCollections>
-
 ```
 
 ### <a name="localizedstrings"></a>LocalizedStrings
@@ -147,7 +147,7 @@ ms.locfileid: "66510577"
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
 | ElementType | はい | ポリシー内の要求の種類要素またはユーザー インターフェイス要素への参照。 指定できる値: `ClaimType`、`UxElement`、`ErrorMessage`、`Predicate`。 `ClaimType` 値は、StringId で指定された、要求属性のいずれかをローカライズするために使用されます。 `UxElement` 値は、StringId で指定されたユーザー インターフェイス要素のいずれかをローカライズするために使用されます。 `ErrorMessage` 値は、StringId で指定されたシステム エラー メッセージのいずれかをローカライズするために使用されます。 `Predicate` 値は、StringId で指定された、[Predicate](predicates.md) エラー メッセージのいずれかをローカライズするために使用されます。 `InputValidation` 値は、StringId で指定された [PredicateValidation](predicates.md) グループ エラー メッセージのいずれかをローカライズするために使用されます。 |
-| ElementId | はい | **ElementType** が `ClaimType`、`Predicate`、または `InputValidation` に設定されている場合、この要素には ClaimsSchema セクションで定義済みの要求の種類への参照が含まれます。 | 
+| ElementId | はい | **ElementType** が `ClaimType`、`Predicate`、または `InputValidation` に設定されている場合、この要素には ClaimsSchema セクションで定義済みの要求の種類への参照が含まれます。 |
 | StringId | はい | **ElementType** が `ClaimType` に設定されている場合、この要素には要求の種類の属性への参照が含まれます。 指定できる値: `DisplayName`、`AdminHelpText`、または `PatternHelpText`。 `DisplayName` 値は、要求の表示名を設定するために使用されます。 `AdminHelpText` 値は、要求ユーザーのヘルプ テキスト名を設定するために使用されます。 `PatternHelpText` 値は、要求パターンのヘルプ テキストを設定するために使用されます。 **ElementType** が `UxElement` に設定されている場合、この要素にはユーザー インターフェイス要素の属性への参照が含まれます。 **ElementType** が `ErrorMessage` に設定されている場合、この要素はエラー メッセージの識別子を指定します。 `UxElement` 識別子の完全な一覧については、「[ローカライズ文字列 ID](localization-string-ids.md)」を参照してください。|
 
 
@@ -187,7 +187,7 @@ ms.locfileid: "66510577"
 
 <LocalizedString ElementType="InputValidation" ElementId="StrongPassword" StringId="CharacterClasses">The password must have at least 3 of the following:</LocalizedString>
 
-<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>              
+<LocalizedString ElementType="Predicate" ElementId="IsLengthBetween8And64" StringId="HelpText">The password must be between 8 and 64 characters.</LocalizedString>
 ```
 
 ## <a name="set-up-localization"></a>ローカライズを設定する
@@ -207,12 +207,13 @@ ms.locfileid: "66510577"
 </Localization>
 ```
 
-### <a name="provide-language-specific-strings-and-collections"></a>言語固有の文字列とコレクションを指定する 
+### <a name="provide-language-specific-strings-and-collections"></a>言語固有の文字列とコレクションを指定する
 
-**SupportedLanguages** 要素を閉じた後に、**Localization** 要素内に **LocalizedResources** 要素を追加します。 各ページ (コンテンツ定義) とサポートする言語の **LocalizedResources** 要素を追加します。 英語、スペイン語、およびフランス語の統合されたサインアップまたはサインイン ページ、サインアップおよび多要素認証 (MFA) ページをカスタマイズするには、次の **LocalizedResources**  要素を追加します。  
+**SupportedLanguages** 要素を閉じた後に、**Localization** 要素内に **LocalizedResources** 要素を追加します。 各ページ (コンテンツ定義) とサポートする言語の **LocalizedResources** 要素を追加します。 英語、スペイン語、およびフランス語の統合されたサインアップまたはサインイン ページ、サインアップおよび多要素認証 (MFA) ページをカスタマイズするには、次の **LocalizedResources**  要素を追加します。
+
 - 統合されたサインアップまたはサインイン ページ、英語 `<LocalizedResources Id="api.signuporsignin.en">`
 - 統合されたサインアップまたはサインイン ページ、スペイン語 `<LocalizedResources Id="api.signuporsignin.es">`
-- 統合されたサインアップまたはサインイン ページ、フランス語 `<LocalizedResources Id="api.signuporsignin.fr">` 
+- 統合されたサインアップまたはサインイン ページ、フランス語 `<LocalizedResources Id="api.signuporsignin.fr">`
 - サインアップ、英語 `<LocalizedResources Id="api.localaccountsignup.en">`
 - サインアップ、スペイン語 `<LocalizedResources Id="api.localaccountsignup.es">`
 - サインアップ、フランス語 `<LocalizedResources Id="api.localaccountsignup.fr">`
@@ -220,7 +221,7 @@ ms.locfileid: "66510577"
 - MFA、スペイン語 `<LocalizedResources Id="api.phonefactor.es">`
 - MFA、フランス語 `<LocalizedResources Id="api.phonefactor.fr">`
 
-各 **LocalizedResources** 要素には、複数の **LocalizedString** 要素を持つすべての必要な **LocalizedStrings** 要素と、複数の **LocalizedCollection** 要素を持つ **LocalizedCollections** 要素が含まれています。  次の例では、サインアップ ページの英語のローカライズ追加します。 
+各 **LocalizedResources** 要素には、複数の **LocalizedString** 要素を持つすべての必要な **LocalizedStrings** 要素と、複数の **LocalizedCollection** 要素を持つ **LocalizedCollections** 要素が含まれています。  次の例では、サインアップ ページの英語のローカライズ追加します。
 
 注:この例では、`Gender` と `City` の要求の種類を参照しています。 この例を使用するには、これらの要求を定義してください。 詳細については、[ClaimsSchema](claimsschema.md)を参照してください。
 
@@ -276,7 +277,7 @@ ms.locfileid: "66510577"
 </LocalizedResources>
 ```
 
-### <a name="edit-the-contentdefinition-for-the-page"></a>ページの ContentDefinition を編集する 
+### <a name="edit-the-contentdefinition-for-the-page"></a>ページの ContentDefinition を編集する
 
 ローカライズするページごとに、**ContentDefinitio** で検索する言語コードを指定します。
 
@@ -363,7 +364,3 @@ ms.locfileid: "66510577"
   </Localization>
 </BuildingBlocks>
 ```
-
-
-
-

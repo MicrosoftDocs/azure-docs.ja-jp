@@ -3,9 +3,8 @@ title: Azure Security Center を使用して規制に対するコンプライア
 description: チュートリアル:Azure Security Center を使用して規制に対するコンプライアンスを向上させる方法について説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/30/2019
-ms.author: v-mohabe
-ms.openlocfilehash: e1544b0c9bf280c8d097d2fa25f7fc652450b87e
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.author: memildin
+ms.openlocfilehash: 20842997c5df81835024a6f458cd863b4e4d78b0
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65968558"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202427"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>チュートリアル:規制に対するコンプライアンスの向上
 ---
@@ -47,7 +46,7 @@ Security Center では、お客様のリソースの構成を継続的に評価�
 
 >[!NOTE]
 > 現在サポートされている規制標準は Azure CIS、PCI DSS 3.2、ISO 27001、SOC TSP です。 その他の標準は、開発が進むにつれてダッシュボードに追加される予定です。
-1.  Security Center のメイン メニューの **[ポリシーとコンプライアンス]** で、**[規制コンプライアンス]** を選択します。 <br>
+1.  Security Center のメイン メニューの **[ポリシーとコンプライアンス]** で、 **[規制コンプライアンス]** を選択します。 <br>
 画面の上部に、お客様のコンプライアンス状態の概要とサポートされる一連のコンプライアンス規制が記載されたダッシュボードが表示されます。 お客様の全体的なコンプライアンス スコアのほか、それぞれの標準に関連した合否評価の件数を確認できます。
 
     ![コンピューターの説明 (高い信頼度)](./media/security-center-compliance-dashboard/compliance-dashboard.png)
@@ -57,11 +56,11 @@ Security Center では、お客様のリソースの構成を継続的に評価�
 
     ![コンプライアンス タブ](./media/security-center-compliance-dashboard/compliance-pci.png)
 
-3. **[すべて]** タブを選択すると、関連する Security Center の全推奨事項とそれらに関連付けられた標準が表示されます。 このビューは、特定の推奨事項の影響を受けるさまざまな標準をすべて特定する際に役立ちます。 <br> このビューを使用して、解決が必要な推奨事項に優先順位を付けることもできます。 たとえば、**[サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする]** という推奨事項が複数のリソースで不合格になっていて、なおかつ複数の標準に関連付けられていることがわかった場合、その推奨事項の解決は、お客様の全体的なコンプライアンス スコアに大きく影響することになります。
+3. **[すべて]** タブを選択すると、関連する Security Center の全推奨事項とそれらに関連付けられた標準が表示されます。 このビューは、特定の推奨事項の影響を受けるさまざまな標準をすべて特定する際に役立ちます。 <br> このビューを使用して、解決が必要な推奨事項に優先順位を付けることもできます。 たとえば、 **[サブスクリプションで所有者アクセス許可を持つアカウントに対して MFA を有効にする]** という推奨事項が複数のリソースで不合格になっていて、なおかつ複数の標準に関連付けられていることがわかった場合、その推奨事項の解決は、お客様の全体的なコンプライアンス スコアに大きく影響することになります。
 
     ![コンプライアンス スコアの影響](./media/security-center-compliance-dashboard/compliance-all-tabs.png)
 
-1. 特定の標準についての現在のコンプライアンス ステータスを要約した PDF レポートをダウンロードするには、**[レポートのダウンロード]** をクリックします。
+1. 特定の標準についての現在のコンプライアンス ステータスを要約した PDF レポートをダウンロードするには、 **[レポートのダウンロード]** をクリックします。
 
     このレポートは、Security Center の評価データに基づいて、選択した標準のコンプライアンス ステータスの概要を提供し、その特定の標準の制御に従って編成されています。 レポートは直接の利害関係者と共有することができ、内部および外部の監査員に対して証拠を提供するために利用できます。
 
@@ -73,7 +72,7 @@ Security Center では、お客様のリソースの構成を継続的に評価�
 
 1.  ダッシュボードに表示されている評価のうち、不合格になっているものをどれかクリックして、その推奨事項の詳細を表示します。 それぞれの推奨事項には、問題を解決するために従うべき一連の修復手順が含まれています。
 
-2.  特定のリソースを選択すると、そのリソースの情報をさらに詳しく表示して、推奨事項を解決することができます。 <br>たとえば、**Azure CIS 標準**のタブで、**[ストレージ アカウントへの安全な転送を必須にする]** という推奨事項をクリックすることができます。
+2.  特定のリソースを選択すると、そのリソースの情報をさらに詳しく表示して、推奨事項を解決することができます。 <br>たとえば、**Azure CIS 標準**のタブで、 **[ストレージ アカウントへの安全な転送を必須にする]** という推奨事項をクリックすることができます。
 
     ![コンプライアンスに関する推奨事項](./media/security-center-compliance-dashboard/compliance-recommendation.png)
 

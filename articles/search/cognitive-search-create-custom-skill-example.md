@@ -1,20 +1,19 @@
 ---
 title: 例:Bing Entity Search API を使用してカスタム コグニティブ スキルを作成する - Azure Search
 description: Azure Search のコグニティブ検索インデックス作成パイプラインにマッピングされたカスタム スキルで Bing Entity Search サービスを使用する方法を紹介します。
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.openlocfilehash: 58f98f3807955db0b32cbcd1ed0d409814e35a76
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d76a250cc3554b086501899376cb411346a4251c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639902"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266344"
 ---
 # <a name="example-create-a-custom-skill-using-the-bing-entity-search-api"></a>例:Bing Entity Search API を使用してカスタム スキルを作成する
 

@@ -6,21 +6,44 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.localizationpriority: high
+ms.openlocfilehash: 26578e277a9f6747063ee377e72845b599a0301b
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834722"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772747"
 ---
+::: zone target="docs"
+
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Data Box をデプロイする
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="get-started-with-azure-data-box"></a>Azure Data Box を使ってみる 
+
+::: zone-end
+
+::: zone target="docs"
 
 このクイック スタートでは、Azure portal を使用して Azure Data Box をデプロイする方法について説明します。 手順には、ケーブル接続、構成、および Azure にアップロードするためにデータを Data Box にコピーする方法が含まれます。 クイック スタートは、Azure portal およびデバイスのローカル Web UI で行われます。
 
 デプロイと追跡に関する詳しい手順については、「[チュートリアル:Azure Data Box を注文する](data-box-deploy-ordered.md)」を参照してください
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+このガイドでは、Azure portal を使用して Azure Data Box をデプロイする方法について説明します。 手順には、前提条件の確認、デバイスのケーブル接続と接続、Azure にアップロードするデータのデバイスへのコピー作業が含まれます。
+
+::: zone-end
+
+::: zone target="docs"
+ 
 ## <a name="prerequisites"></a>前提条件
 
 作業を開始する前に、次のことを行います。
@@ -41,6 +64,27 @@ ms.locfileid: "57834722"
     - RJ-45 CAT 6 ネットワーク ケーブル 1 本 (MGMT ネットワーク インターフェイスで使用)
     - RJ-45 CAT 6A OR ネットワーク ケーブル 1 本、RJ-45 CAT 6 ネットワーク ケーブル 1 本 (それぞれ 10 Gbps または 1 Gbps として構成されている DATA 3 ネットワーク インターフェイスで使用)
 
+::: zone-end 
+
+::: zone target="chromeless"
+
+## <a name="prerequisites"></a>前提条件
+
+開始する前に次の点を確認します。
+
+1. 「[チュートリアル: Azure Data Box を注文する](data-box-deploy-ordered.md)を完了していること。
+2. Data Box の受け取りが済んでいて、ポータル内での注文の状態が **[配信済み]** であること。 
+3. [Data Box の安全性に関するガイドライン](data-box-safety.md)を確認していること。
+4. 100 TB ストレージ デバイスで使用するためのアース端子付き電源ケーブルを 1 本受け取っていること。
+5. Data Box にコピーしたいデータがあるホスト コンピューターにアクセスできること。 このホスト コンピューターは次の条件を満たしている必要があります。
+    - [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
+    - 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。 
+6. Data Box を設置する平面へのアクセス。 デバイスを標準的なラック棚に横置きまたは縦置きするには、ラックに 7U のスロットが必要です。
+
+::: zone-end
+
+::: zone target="docs"
+
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
@@ -50,11 +94,13 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 この手順には約 5 分かかります。
 
 1. Azure portal で新しい Azure Data Box リソースを作成します。
-2. このサービスが有効になった既存のサブスクリプションを選択し、転送の種類として **[インポート]** を選択します。 **[ソースの国]** にデータが存在する場所を、**[宛先 Azure リージョン]** にデータの転送先を指定します。
+2. このサービスが有効になった既存のサブスクリプションを選択し、転送の種類として **[インポート]** を選択します。 **[ソースの国]** にデータが存在する場所を、 **[宛先 Azure リージョン]** にデータの転送先を指定します。
 3. **[Data Box]** を選択します。 使用可能な最大容量は 80 TB ですが、それを超えるサイズのデータについては複数の注文を作成することができます。
 4. 注文の詳細と発送情報を入力します。 ご利用のリージョンでこのサービスが提供されている場合、通知メール アドレスを指定し、概要を確認したうえで注文を作成します。
 
 注文が作成されると、デバイスの発送準備が行われます。
+
+
 
 ## <a name="cable"></a>ケーブル 
 
@@ -122,9 +168,9 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
 
 この手順を完了するには、2 分から 3 分かかります。
 
-- Data Box の注文は、注文が処理される前であれば、Azure portal からキャンセルできます。 注文が処理された後は、キャンセルできません。 注文は、完了ステージに到達するまで続行されます。 注文をキャンセルするには、**[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。
+- Data Box の注文は、注文が処理される前であれば、Azure portal からキャンセルできます。 注文が処理された後は、キャンセルできません。 注文は、完了ステージに到達するまで続行されます。 注文をキャンセルするには、 **[概要]** に移動し、コマンド バーの **[キャンセル]** をクリックします。
 
-- Azure portal で **完了済み**または**キャンセル済み**の状態になった注文は削除することができます。 注文を削除するには、**[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
+- Azure portal で **完了済み**または**キャンセル済み**の状態になった注文は削除することができます。 注文を削除するには、 **[概要]** に移動し、コマンド バーの **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -132,5 +178,7 @@ Data Box を入手したら、次の手順に従ってデバイスのケーブ�
 
 > [!div class="nextstepaction"]
 > [Azure portal を使用して Data Box を管理する](data-box-portal-admin.md)
+
+::: zone-end
 
 

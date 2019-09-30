@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 08/19/2019
 ms.author: tomfitz
 ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "69626362"
 ---
-| Resource | 既定の制限 | 上限 |
+| リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
 | リソースの種類ごとの、[リソース グループ](../articles/azure-resource-manager/resource-group-overview.md#resource-groups)あたりのリソース数 |800 |リソースの種類によっては、800 の制限を超えることがあります。 「[リソース グループあたり 800 インスタンスに制限されないリソース](../articles/azure-resource-manager/resources-without-rg-limit.md)」を参照してください。 |
 | デプロイ履歴でのリソース グループあたりのデプロイ数 |800<sup>1</sup> |800 |

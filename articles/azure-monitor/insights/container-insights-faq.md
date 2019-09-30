@@ -8,14 +8,14 @@ editor: tysonn
 ms.service: azure-monitor
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 08/02/2019
+ms.date: 08/14/2019
 ms.author: magoedte
-ms.openlocfilehash: 3644b40311c037df800eb89ca26d1285fbf1e082
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: f8d763f8bb228a0d4d83a3776f818d59939b942d
+ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741503"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69559083"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>コンテナーの Azure Monitor についてよく寄せられる質問
 
@@ -33,7 +33,7 @@ Log Analytics ワークスペースで、毎日特定の時間にデータが表
 
 ContainerInventory テーブルには、停止中と実行中両方のコンテナーに関する情報が含まれています。 テーブルの値は、エージェント内のワークフローによって設定されます。このワークフローでは、Docker に対してすべてのコンテナー (実行中と停止) のクエリが実行され、そのデータが Log Analytics ワークスペースに転送されます。
  
-## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>"**サブスクリプション登録がない**" エラーを解決するにはどうすればよいですか
+## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>"*サブスクリプション登録がない*" エラーを解決するにはどうすればよいですか
 
 "**Microsoft.OperationsManagement へのサブスクリプション登録がない**" というエラーが表示される場合は、ワークスペースが定義されているサブスクリプションでリソース プロバイダー **Microsoft.OperationsManagement** を登録することで解決できます。 これを行う方法に関するドキュメントは、[こちら](../../azure-resource-manager/resource-manager-register-provider-errors.md)にあります。
 
@@ -86,6 +86,9 @@ AKS クラスターに対して Azure Monitor for containers を有効にした�
 - *.oms.opinsights.azure.com   443
 - *.blob.core.windows.net      443
 - dc.services.visualstudio.com 443
+- *.microsoftonline.com        443
+- *.monitoring.azure.com       443
+- login.microsoftonline.com    443
 
 ## <a name="next-steps"></a>次の手順
 

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
-ms.openlocfilehash: d61d3d00de5b46f7dad44625509eabe6836ca7cf
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ae1773ec1d470b9cff2efb00c200427b7b4c2fb4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447255"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614823"
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング
 
@@ -44,7 +44,7 @@ SDK は、クエリの実行にさまざまなオプションを提供します�
 | `EnableScanInQuery` | インデックスを作成しないことを選択したが、スキャンを使用してクエリを実行する必要がある場合は、true に設定する必要があります。 要求されたフィルター パスのインデックス作成が無効になっている場合のみ適用されます。 | 
 | `MaxItemCount` | サーバーへのラウンド トリップあたり返される最大項目数。 -1 に設定すると、サーバーが項目数を管理します。 または、この値を下げると、ラウンド トリップあたりの取得項目数を抑えることができます。 
 | `MaxBufferedItemCount` | これはクライアント側のオプションで、複数のパーティションにわたって ORDER BY を実行した場合のメモリ消費量を制限するために使用します。 値を引き上げると、パーティション間の並べ替えを待つ時間を短縮できます。 |
-| `MaxDegreeOfParallelism` | Azure Cosmos DB データベース サービスでクエリを並行実行する間に、クライアント側で実行される同時実行操作数を取得または設定します。 プロパティに正の値を設定すると、同時実行操作の数が設定された値に制限されます。 0 未満に設定すると、同時実行操作の数はシステムによって自動的に設定されます。 |
+| `MaxDegreeOfParallelism` | Azure Cosmos データベース サービスでの並列クエリ実行中にクライアント側で実行される同時実行操作の数を取得または設定します。 プロパティに正の値を設定すると、同時実行操作の数が設定された値に制限されます。 0 未満に設定すると、同時実行操作の数はシステムによって自動的に設定されます。 |
 | `PopulateQueryMetrics` | コンパイル時間、インデックス ループ時間、ドキュメント読み込み時間などのクエリ実行のさまざまな段階でかかっている時間に関する統計詳細をログに記録できます。 クエリ統計からの出力を Azure のサポートと共有して、クエリ パフォーマンスの問題を診断できます。 |
 | `RequestContinuation` | クエリから返された非透過的継続トークンを渡すことによって、クエリの実行を再開できます。 継続トークンには、クエリの実行に必要なすべての状態がカプセル化されています。 |
 | `ResponseContinuationTokenLimitInKb` | サーバーによって返される継続トークンの最大サイズを制限することができます。 アプリケーション ホストで応答ヘッダーのサイズが制限されている場合は、これを設定する必要があります。 これを設定すると、全体的な実行時間と、クエリで使用される RU 数が増加する場合があります。  |

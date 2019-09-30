@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 2ef327721fd42e5274381834721fd987ec7e9d75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c99f815bd58b03dbc43ba742577259be5638fef9
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240520"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035731"
 ---
 # <a name="use-azure-machine-learning-service-in-a-notebook"></a>ノートブックで Azure Machine Learning service を使用する
 
@@ -41,7 +41,7 @@ Azure Notebooks は、[Azure Machine Learning service](/azure/machine-learning/s
 
     - Azure Notebooks には必要な Python パッケージが既に含まれているため、前提条件の手順 2 でコード スニペットを実行するだけで Azure ML SDK のバージョンを確認できます。
 
-1. 構成の完了後、 **[01.getting-started]** を選択し、13 個の異なるサンプル ノートブックが含まれるフォルダーに移動します。このサンプル ノートブックはいずれも、見れば内容がわかるようになっています。
+1. 構成の完了後、 **[01.getting-started]** を選択し、13 個の異なるサンプル ノートブックが含まれるフォルダーを開きます。このサンプル ノートブックはいずれも、見れば内容がわかるようになっています。
 
 ## <a name="next-steps"></a>次の手順
 

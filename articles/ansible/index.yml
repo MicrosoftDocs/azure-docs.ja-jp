@@ -1,64 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 上の Ansible のドキュメント
+summary: Ansible を使用してクラウド プロビジョニング、構成管理、アプリケーションのデプロイを自動化する方法について説明します。
 metadata:
-  title: Azure 上の Ansible のドキュメント - チュートリアル、サンプル、リファレンス、リソース
+  title: Azure 上の Ansible のドキュメント
   description: Ansible を使用してクラウド プロビジョニング、構成管理、アプリケーションのデプロイを自動化する方法について説明します。
-  ms.service: azure
-  keywords: 'Ansible, Azure, DevOps, チュートリアル, サンプル, リファレンス'
-  author: tomarchermsft
-  manager: jeconnoc
-  ms.author: tarcher
+  services: azure
+  ms.service: ansible
   ms.topic: landing-page
-  ms.date: 04/22/2019
-abstract:
-  description: 'クラウド プロビジョニング、構成管理、アプリケーションのデプロイを自動化するには、<a href="https://www.ansible.com">Ansible</a> を使用します。'
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Ansible をインストールし、これを使用して、Azure で Linux 仮想マシンを作成および管理します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/media/index/azure_dev-9.svg
-            text: Ansible のインストール
-            href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-          - image:
-              src: /azure/media/index/VirtualMachine.svg
-            text: Linux VM の構成
-            href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-          - image:
-              src: /azure/media/index/VirtualMachine.svg
-            text: Linux VM の管理
-            href: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Ansible を使用して Azure コンピューティング、ネットワーク、ストレージ インフラストラクチャを作成する方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">仮想ネットワーク、パブリック IP アドレス、仮想ネットワーク インターフェイス カードを含む Linux 仮想マシンを作成します。</a>
-          - html: <a href="./ansible-run-playbook-in-cloudshell">Azure Cloud Shell で Bash を使用して Ansible を実行します。</a>
-          - html: <a href="./ansible-manage-azure-dynamic-inventories">Azure リソースの動的なインベントリを作成して管理します。</a>
-          - html: <a href="./ansible-create-configure-vmss">Azure で仮想マシン スケール セットを作成して管理します。</a>
-          - html: <a href="./ansible-deploy-app-vmss">Azure で仮想マシン スケール セットにアプリケーションをデプロイします。</a>
-          - html: <a href="./ansible-create-configure-aks">Azure Kubernetes Service クラスターを作成して管理します。</a>
-          - html: <a href="./ansible-create-configure-application-gateway">Azure Application Gateway で Web トラフィックを管理します。</a>
-          - html: <a href="./ansible-auto-scale-vmss">Ansible を使用して Azure の仮想マシン スケール セットを自動的にスケーリングします。</a>
-          - html: <a href="./ansible-scale-azure-web-apps">Ansible を使用して Azure App Service Web アプリをスケーリングします。</a>
-          - html: <a href="./ansible-create-configure-route-table">Ansible を使用して Azure ルート テーブルを作成、変更、または削除します。</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: プレイブックの役割
-            html: '<p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>'
-          - title: リリースと機能
-            html: <p><a href="./ansible-matrix.md">モジュールと役割の機能のマトリックス</a></p>
-          - title: ツール
-            html: '<p><a href="https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible">Ansible 用 Visual Studio Code 拡張機能</a></p>'
+  author: TomArcherMsft
+  ms.author: tarcher
+  ms.date: 09/11/2019
+  ms.openlocfilehash: 8a33d1b9661ef84294a35c51ecd42a59dde68f23
+  ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/17/2019
+  ms.locfileid: "71075056"
+landingContent:
+- title: Azure 上の Ansible について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 上の Ansible について
+      url: ansible-overview.md
+  - linkListType: architecture
+    links:
+    - text: Ansible モジュールとバージョンのマトリックス
+      url: ansible-matrix.md
+- title: Ansible のインストールと構成
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Ansible ソリューション テンプレートを CentOS にデプロイする
+      url: ansible-deploy-solution-template.md
+    - text: Ansible を Linux 仮想マシンにインストールする
+      url: /azure/virtual-machines/linux/ansible-install-configure
+    - text: Cloud Shell でプレイブックを実行する
+      url: ansible-run-playbook-in-cloudshell.md
+  - linkListType: tutorial
+    links:
+    - text: 動的インベントリの構成
+      url: ansible-manage-azure-dynamic-inventories.md
+  - linkListType: download
+    links:
+    - text: Ansible 用 Visual Studio Code 拡張機能
+      url: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
+- title: 仮想マシンの管理
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Linux 仮想マシンを構成する
+      url: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+    - text: Linux 仮想マシンを管理する
+      url: /azure/virtual-machines/linux/ansible-manage-linux-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+- title: Virtual Machine Scale Sets の管理
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 仮想マシン スケール セットの構成
+      url: ansible-create-configure-vmss.md
+    - text: 仮想マシン スケール セットへのアプリケーションのデプロイ
+      url: ansible-deploy-app-vmss.md
+    - text: 仮想マシン スケール セットの自動スケール
+      url: ansible-auto-scale-vmss.md
+    - text: カスタム イメージの更新
+      url: ansible-vmss-update-image.md
+- title: 仮想ネットワークを管理する
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ピアリングの構成
+      url: ansible-vnet-peering-configure.md
+    - text: ルート テーブルの構成
+      url: ansible-create-configure-route-table.md
+- title: AKS の管理
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: AKS クラスターの構成
+      url: ansible-create-configure-aks.md
+    - text: Azure CNI ネットワークの構成
+      url: ansible-aks-configure-cni-networking.md
+    - text: kubenet ネットワークの構成
+      url: ansible-aks-configure-kubenet-networking.md
+    - text: AKS クラスターでの RBAC ロールの構成
+      url: ansible-aks-configure-rbac.md

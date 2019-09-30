@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 975289f338e638ed0209d4f6cf2a163ced996e42
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: a852ddc68a6f51e677e5ff2e641ada25f4bf0105
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202940"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101360"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
 [1114181]: https://launchpad.support.sap.com/#/notes/1114181
@@ -110,7 +109,7 @@ Microsoft Azure のアーキテクチャと Microsoft Azure 仮想マシンの�
 
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>RDBMS デプロイ用の VM のストレージ構造
-この章に進むにあたって、[デプロイ ガイド][deployment-guide]の[この章][deployment-guide-3]に記載されている情報を読んで理解しておいてください。 この章を読む前に、別の VM シリーズについて把握し、Standard Storage と Premium Storage の違いについて理解しておく必要があります。 
+この章に進むにあたって、[デプロイ ガイド][deployment-guide]の[こちらの章][deployment-guide-3]に記載されている情報を読んで理解しておいてください。 この章を読む前に、別の VM シリーズについて把握し、Standard Storage と Premium Storage の違いについて理解しておく必要があります。 
 
 Azure VM 用の Azure Storage については、以下を参照してください。
 

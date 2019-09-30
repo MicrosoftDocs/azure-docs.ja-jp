@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 48733a8c2a554fc62c7731b6c0fb4ef5b8d45159
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 5b44bfd94dffa14fcd501f5e0ddea11309adabf6
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450192"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907837"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル:Front Door カスタム ドメインで HTTPS を構成する
 
@@ -81,11 +81,17 @@ Azure Front Door Service で管理された証明書を使用する場合、HTTP
 > [!WARNING]
 > Azure Front Door Service では、現在、Front Door 構成と同じサブスクリプションの Key Vault アカウントのみがサポートされています。 Front Door とは異なるサブスクリプションの Key Vault を選択すると、エラーが発生します。
 
-2. Azure Key Vault 証明書: 証明書が既にある場合は、Azure Key Vault アカウントに直接アップロードできます。または、Azure Key Vault と統合されているパートナー CA の 1 つから、Azure Key Vault を使用して新しい証明書を直接作成できます。
+2. Azure Key Vault 証明書: 証明書が既にある場合は、Azure Key Vault アカウントに直接アップロードできます。または、Azure Key Vault と統合されているパートナー CA の 1 つから、Azure Key Vault を使用して新しい証明書を直接作成できます。 証明書は、**シークレット**ではなく**証明書**オブジェクトとしてアップロードします。
+
+> [!IMPORTANT]
+> パスワード保護**なし**の PFX 形式で証明書をアップロードする必要があります。
 
 #### <a name="register-azure-front-door-service"></a>Azure Front Door Service を登録する
 
 PowerShell を使用して、Azure Active Directory にアプリとして Azure Front Door Service 用のサービス プリンシパルを登録します。
+
+> [!NOTE]
+> このアクションは、テナントごとに **1 回**だけ実行する必要があります。
 
 1. 必要があれば、PowerShell でローカル マシンに [Azure PowerShell](/powershell/azure/install-az-ps) をインストールします。
 
@@ -95,18 +101,19 @@ PowerShell を使用して、Azure Active Directory にアプリとして Azure 
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>キー コンテナーへの Azure Front Door Service のアクセス権を付与する
  
-Azure Key Vault アカウント内の [シークレット] の証明書にアクセスするには、Azure Front Door Service のアクセス許可を付与します。
+Azure Key Vault アカウント内の証明書にアクセスするには、Azure Front Door Service のアクセス許可を付与します。
 
 1. キー コンテナー アカウントで、[設定] で **[アクセス ポリシー]** 、 **[新規追加]** の順に選択して新しいポリシーを作成します。
 
 2. **[プリンシパルの選択]** で、**ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037** を検索し、 **[Microsoft.Azure.Frontdoor]** を選びます。 **[選択]** をクリックします。
 
+3. **[シークレットのアクセス許可]** で **[取得]** を選択して、Front Door に証明書の取得を許可します。
 
-3. **[シークレットのアクセス許可]** で、 **[取得]** を選択して、Front Door でこれらのアクセス許可を実行して証明書を取得し、リストできるようにします。 
+4. **[証明書のアクセス許可]** で **[取得]** を選択して、Front Door に証明書の取得を許可します。
 
-4. **[OK]** を選択します。 
+5. **[OK]** を選択します。 
 
-    これで、Azure Front Door Service でこのキー コンテナーと、このキー コンテナーに格納されている証明書 (シークレット) にアクセスできるようになりました。
+    これで、Azure Front Door Service でこのキー コンテナーと、このキー コンテナーに格納されている証明書にアクセスできるようになりました。
  
 #### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>デプロイする Azure Front Door Service の証明書を選択する
  
@@ -140,7 +147,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* はカスタム ドメイン名で、*Value* は Front Door の既定の .azurefd.net ホスト名です。
 
-| Name            | Type  | 値                 |
+| 名前            | Type  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 

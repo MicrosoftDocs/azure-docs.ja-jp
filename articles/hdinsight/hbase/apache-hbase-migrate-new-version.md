@@ -1,6 +1,6 @@
 ---
 title: HBase クラスターを新しいバージョンに移行する - Azure HDInsight
-description: HBase クラスターを新しいバージョンに移行する方法。
+description: Azure HDInsight で Apache HBase クラスターを新しいバージョンに移行する方法。
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: ashishth
-ms.openlocfilehash: a152b815daeefa4c199af9b159eee8e5783971e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75158fbe5604c6fcf54c2fa08636cb87dfd9da80
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143322"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917432"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase クラスターを新しいバージョンに移行する
 
@@ -180,7 +180,7 @@ Azure HDInsight で Apache HBase クラスターをアップグレードする�
 5. memstore 内の最近のデータが確実にすべてフラッシュされるようにするために、前のスクリプトをもう一度実行します。
 6. 古いクラスター上の [Apache Ambari](https://ambari.apache.org/) (https://OLDCLUSTERNAME.azurehdidnsight.net) にサインインして、HBase サービスを停止します。 サービスを停止することを確認するプロンプトが表示されたら、HBase のメンテナンス モードをオンにするためのチェックボックスをオンにします。 Ambari への接続とその使用方法の詳細については、「[Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
-    ![Ambari で、[Service Actions]\(サービス アクション\) の下の [Services]\(サービス\) > [HBase] > [Stop]\(停止\) をクリックします](./media/apache-hbase-migrate-new-version/stop-hbase-services.png)
+    ![Ambari で、[Service Actions]\(サービス アクション\) の下の [Services]\(サービス\) > [HBase] > [Stop]\(停止\) をクリックします](./media/apache-hbase-migrate-new-version/stop-hbase-services1.png)
 
     ![[Turn On Maintenance Mode for HBase]\(HBase のメンテナンス モードをオンにする\) チェックボックスをオンにし、操作を確定します](./media/apache-hbase-migrate-new-version/turn-on-maintenance-mode.png)
 

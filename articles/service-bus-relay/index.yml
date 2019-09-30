@@ -1,57 +1,65 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Service Bus Relay のドキュメント
+### YamlMime:Landing
+title: Azure Relay のドキュメント
+summary: Azure Relay サービスを使用して、企業ネットワーク内で実行されているサービスをパブリック クラウドに安全に公開する方法について説明します。
 metadata:
-  title: Azure Service Bus Relay のドキュメント
-  meta.description: 'Learn how the Azure Relay service work in a hybrid cloud and on-premises environment, complete with how to, Tutorials, videos, API references, and more.'
+  title: Azure Relay のドキュメント
+  description: Azure Relay サービスを使用して、企業ネットワーク内で実行されているサービスをパブリック クラウドに安全に公開する方法について説明します。
   services: service-bus-relay
-  author: spelluru
-  manager: femila
   ms.service: service-bus-relay
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: 
   ms.topic: landing-page
-  ms.date: 08/21/2018
+  ms.collection: collection
+  author: spelluru
   ms.author: spelluru
-abstract:
-  description: Azure Relay サービスを使用すると、企業のエンタープライズ ネットワークおよびパブリック クラウド内において、オンプレミス環境とクラウド環境の間のハイブリッド アプリケーションを活用できます。その際、ファイアウォール接続を開いたり、企業ネットワークのインフラストラクチャを大幅に変更したりする必要はありません。
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: '<b>ハイブリッド接続:</b>'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-dotnet-get-started">メッセージの送受信 - .NET WebSocket</a>
-          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started">メッセージの送受信 - .NET HTTP</a>
-          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-node-get-started">メッセージの送受信 - Node.js WebSocket</a>
-          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-node-get-started">メッセージの送受信 - Node.js HTTP</a>
-      - type: paragraph
-        text: '<b>Windows Communication Foundation (WCF) Relay:</b>'
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay">オンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する</a>
-          - html: <a href="/azure/service-bus-relay/service-bus-relay-tutorial">オンプレミスの WCF サービスをネットワーク外部の WCF クライアントに公開する</a>
-          - html: <a href="/azure/service-bus-relay/service-bus-relay-rest-tutorial">オンプレミスの WCF サービスをネットワーク外部のアプリケーションに公開する</a>
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: GitHub のサンプル
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections">VNet</a>'
-          - html: '<a href="https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay">Windows Communication Foundation (WCF)</a>'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Languages
-            html: <p><a href="/dotnet/api/microsoft.azure.relay?view=azure-dotnet">.NET Framework</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/servicebus/">REST API リファレンス</a></p>
+  ms.date: 09/06/2019
+  ms.openlocfilehash: f4d186169998aad628dc8efa4781dc55f457edd4
+  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70770429"
+landingContent:
+- title: Azure Relay について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Relay とは
+      url: relay-what-is-it.md
+- title: Hybrid Connections (ハイブリッド接続)
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: WebSocket を使用してメッセージを送受信する - .NET
+      url: relay-hybrid-connections-dotnet-get-started.md
+    - text: HTTP を使用してメッセージを送受信する - .NET
+      url: relay-hybrid-connections-http-requests-dotnet-get-started.md
+    - text: WebSocket を使用してメッセージを送受信する - Node.js
+      url: relay-hybrid-connections-node-get-started.md
+    - text: HTTP を使用してメッセージを送受信する - Node.js
+      url: relay-hybrid-connections-http-requests-node-get-started.md
+  - linkListType: download
+    links:
+    - text: GitHub のサンプル
+      url: https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections
+- title: WCF リレー
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: オンプレミスの WCF サービスをクラウドの Web アプリケーションに公開する
+      url: service-bus-dotnet-hybrid-app-using-service-bus-relay.md
+    - text: オンプレミスの WCF サービスをネットワーク外部の WCF サービスに公開する
+      url: service-bus-relay-tutorial.md
+    - text: オンプレミスの WCF REST サービスをネットワーク外部のクライアントに公開する
+      url: service-bus-relay-rest-tutorial.md
+  - linkListType: download
+    links:
+    - text: GitHub のサンプル
+      url: https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay
+- title: API リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.relay?view=azure-dotnet
+    - text: REST
+      url: /rest/api/relay/

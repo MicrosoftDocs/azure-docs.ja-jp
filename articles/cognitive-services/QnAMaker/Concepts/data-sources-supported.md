@@ -8,18 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/25/2019
+ms.date: 08/16/2019
 ms.author: diberry
-ms.openlocfilehash: 78c75e69be5521660937e34da0d7261dba1de385
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5175dee24542c716b3d087412864ae7e6f056d18
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955548"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615979"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker コンテンツのデータ ソース
 
 QnA Maker は、Web ページ、PDF ファイル、または MS Word doc ファイルとして保存された FAQ、製品マニュアル、ガイドライン、サポート ドキュメント、ポリシーなどの半構造化コンテンツから質問と回答のペアを自動的に抽出します。 また、構造化 QnA コンテンツ ファイルのコンテンツをナレッジ ベースに追加することもできます。 
+
+## <a name="data-types"></a>データの種類
 
 次の表は、QnA Maker でサポートされているコンテンツの種類とファイル形式をまとめたものです。
 
@@ -32,11 +34,21 @@ QnA Maker は、Web ページ、PDF ファイル、または MS Word doc ファ�
 
 ## <a name="data-source-locations"></a>データ ソースの場所
 
-ほとんどのデータ ソースの場所には、認証を必要としないパブリック URL またはファイルを指定する必要があります。 
+データ ソースの場所は、認証を必要としない**パブリック URL またはファイル**です。 
 
-[Sharepoint データ ソースの場所](../How-to/add-sharepoint-datasources.md)には、認証済みのファイルを指定することができます。 Sharepoint リソースは、Web ページではなく、ファイルになっている必要があります。 
+データ ソースに認証が必要な場合、QnA Maker にそのデータを取り込む次の方法を検討してください。
 
-認証済みのファイルまたは URL がある場合、別のオプションとして、認証済みのサイトからローカル コンピューターにファイルをダウンロードしてから、ローカル コンピューターからナレッジ ベースにファイルを追加できます。 
+* [ファイルを手動でダウンロード](#download-file-from-authenticated-data-source-location)し、QnA Maker にインポートする
+* 認証済みの [Sharepoint の場所](#import-file-from-authenticated-sharepoint)のファイルをインポートする 
+
+### <a name="download-file-from-authenticated-data-source-location"></a>認証済みのデータソースの場所からファイルをダウンロードする
+
+認証済みのファイル (認証済み SharePoint の場所上ではない) または URL がある場合、別のオプションとして、認証済みのサイトからローカル コンピューターにファイルをダウンロードしてから、ローカル コンピューターからナレッジ ベースにファイルを追加できます。
+
+### <a name="import-file-from-authenticated-sharepoint"></a>認証済みの Sharepoint からファイルをインポートする 
+
+[Sharepoint データ ソースの場所](../How-to/add-sharepoint-datasources.md)には、認証済みの**ファイル**を指定することができます。 Sharepoint リソースは、Web ページではなく、ファイルになっている必要があります。 URL が **.ASPX** のような Web 拡張子で終わる場合、Sharepoint から QnA Maker にインポートされません。
+
 
 ## <a name="faq-urls"></a>FAQ URL
 
@@ -133,15 +145,27 @@ Answer2
 
 これより後の列は、ソース ファイルに含まれていても無視されます。
 
+### <a name="example-of-structured-excel-file"></a>構造化された Excel ファイルの例
+
 次に示すのは、HTML コンテンツを含む構造化 QnA *.xls* ファイルの例です。
 
  ![構造化 QnA Excel の例 (ナレッジ ベース)](../media/qnamaker-concepts-datasources/structured-qna-xls.png)
+
+### <a name="example-of-alternate-questions-for-single-answer-in-excel-file"></a>Excel ファイルにおける 1 つの回答に対する代替質問の例
+
+以下は構造化されている QnA *.xls* ファイルの例です。1 つの回答に対して代替質問がいくつかあります。
+
+ ![Excel ファイルにおける 1 つの回答に対する代替質問の例](../media/qnamaker-concepts-datasources/xls-alternate-question-example.png)
+
+ファイルがインポートされた後、次に示すように、質問と回答の組み合わせがナレッジ ベースに入ります。
+
+ ![ナレッジ ベースにインポートされた、1 つの質問に対する代替質問のスクリーンショット](../media/qnamaker-concepts-datasources/xls-alternate-question-example-after-import.png)
 
 ## <a name="structured-data-format-through-import"></a>インポートでの構造化データ形式
 
 ナレッジ ベースをインポートすると、既にあるナレッジ ベースの内容が置き換えられます。 インポートでは、データ ソース情報を含んだ .tsv 形式の構造化ファイルが必要となります。 この情報によって、QnA Maker は質問とその回答のペアをグループ化し、その帰属先となるデータ ソースを特定することができます。
 
-| 質問  | Answer  | source| メタデータ (1 つのキー: 1 つの値) |          
+| 質問  | Answer  | Source| メタデータ (1 つのキー: 1 つの値) |          
 |-----------|---------|----|---------------------|
 | 質問 1 | 回答 1 | URL 1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
 | 質問 2 | 回答 2 | 編集|    `Key:Value`       |

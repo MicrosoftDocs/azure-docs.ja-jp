@@ -8,14 +8,14 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: aa208d8d9525ef1ec518c9a03d8d39ce0ca64254
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 151058f23bed674883da57e0b728dc1df4b698d9
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901303"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70846150"
 ---
-# <a name="configure-cloudsimple-private-cloud-as-a-disaster-recovery-target-using-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用して、CloudSimple プライベート クラウドをディザスター リカバリー ターゲットとして構成する
+# <a name="set-up-private-cloud-as-a-disaster-recovery-target-with-vmware-site-recovery-manager"></a>VMware Site Recovery Manager を使用して、プライベート クラウドをディザスター リカバリー ターゲットとして設定する
 
 CloudSimple プライベート クラウドをオンプレミスの VMware ワークロード用のディザスター リカバリー (DR) サイトとして使用できます。
 
@@ -33,6 +33,8 @@ CloudSimple ソリューションでは、次の操作を行う必要があり�
 * プライベート クラウドが保護されたサイトの場合は、独自のライセンスを SRM に提供します。 CloudSimple サイトが復旧サイトとして使用されている場合、追加の SRM ライセンスは必要ありません。
 
 このソリューションでは、vSphere Replication と SRM を完全に制御できます。 使い慣れた UI、API、CLI のインターフェイスにより、既存のスクリプトとツールを使用できるようになります。
+
+![Site Recovery Manager のデプロイ](media/srm-deployment.png)
 
 プライベート クラウドおよびオンプレミス環境と互換性のある任意のバージョンの vRA と SRM を使用できます。 このガイドの例では、vRA 6.5 と SRM 6.5 を使用します。 これらのバージョンは、CloudSimple でサポートされている vSphere 6.5 と互換性があります。
 
@@ -109,9 +111,7 @@ VMware のドキュメントに従って、オンプレミス環境に vSphere R
 
 2. vmware.com の VR ISO の OVF を使用して、オンプレミス環境に vRA をデプロイします。 vRA 6.5 では、[この VMware ブログ](https://blogs.vmware.com/virtualblocks/2017/01/20/vr-65-ovf-choices)に関連情報が記載されています。
 
-3. オンプレミスの vRA を、オンプレミス サイトの vCenter シングル サインオンに登録します。
-   
-vSphere Replication 6.5 での詳細な手順については、[VMware vSphere Replication 6.5 のインストールと構成](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)に関する VMware のドキュメントをご覧ください。
+3. オンプレミスの vRA を、オンプレミス サイトの vCenter シングル サインオンに登録します。 vSphere Replication 6.5 での詳細な手順については、[VMware vSphere Replication 6.5 のインストールと構成](https://docs.vmware.com/en/vSphere-Replication/6.5/vsphere-replication-65-install.pdf)に関する VMware のドキュメントをご覧ください。
 
 ## <a name="install-vsphere-replication-appliance-in-your-private-cloud-environment"></a>プライベート クラウド環境に vSphere Replication アプライアンスをインストールする
 

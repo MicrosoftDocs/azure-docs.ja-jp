@@ -3,9 +3,7 @@ title: Azure での音声、VoIP、および SMS メッセージングのため�
 description: Azure で Twilio API サービスを使用して通話や SMS メッセージの送信を行う方法について学習します。 コード サンプルは Node.js で記述されています。
 services: ''
 documentationcenter: nodejs
-author: devinrader
-manager: wpickett
-editor: ''
+author: georgewallace
 ms.assetid: f558cbbd-13d2-416f-b9b1-33a99c426af9
 ms.service: multiple
 ms.workload: na
@@ -13,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/25/2014
-ms.author: wpickett
-ms.openlocfilehash: d9f419c48f64ba697e031dfc680bc9cb12bba5c4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: gwallace
+ms.openlocfilehash: 164bedffcf9a1aca9f1fa46dea254fb928abcf04
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60422915"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69637265"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Azure での音声、VoIP、および SMS メッセージングのための Twilio の使用
 このガイドでは、Azure で Twilio と node.js によって通信するアプリケーションを構築する方法を示します。
@@ -90,7 +88,7 @@ node.js Web サイトを選択し、[構成] リンクをクリックします�
 }
 ```
 
-このコードは、一般的な [Express Web フレームワーク][express]および EJS テンプレート エンジンと共に、twilio モジュールを依存関係として宣言します。  これで設定はすべて終わりました。コードの記述を始めましょう。
+このコードは、一般的な [Express Web フレームワーク][express]および EJS テンプレート エンジンと共に、Twilio モジュールを依存関係として宣言します。  これで設定はすべて終わりました。コードの記述を始めましょう。
 
 <a id="makecall"/>
 

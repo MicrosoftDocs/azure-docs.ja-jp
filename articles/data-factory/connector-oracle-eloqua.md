@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: b62cbe6be7f48aa05bf3756580df0777aeee8cae
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3c29ec0283caa2b20d7974ed11748080b3dc0339
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726076"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71089980"
 ---
 # <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Oracle Eloqua からデータをコピーする (プレビュー)
 
@@ -27,6 +27,11 @@ ms.locfileid: "68726076"
 > このコネクタは、現在プレビューの段階です。 実際にお試しいただき、フィードバックをお寄せください。 ソリューションでプレビュー版コネクタの依存関係を取得したい場合、[Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
+
+この Oracle Eloqua コネクタは、以下のアクティビティでサポートされています。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
 
 Oracle Eloqua から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -46,7 +51,7 @@ Oracle Eloqua のリンクされたサービスでは、次のプロパティが
 |:--- |:--- |:--- |
 | type | type プロパティは、次のように設定する必要があります:**Eloqua** | はい |
 | endpoint | Eloqua サーバーのエンドポイント。 Eloqua では、複数のデータ センターをサポートしてエンドポイントを特定し、資格情報を使って https://login.eloqua.com にログインしてから、`xxx.xxx.eloqua.com` というパターンのリダイレクトされた URL から**ベース URL** の部分をコピーします。 | はい |
-| userName | `Eloqua\Alice` のような `SiteName\Username`の形式での Eloqua アカウントのサイト名とユーザー名。  | はい |
+| username | `Eloqua\Alice` のような `SiteName\Username`の形式での Eloqua アカウントのサイト名とユーザー名。  | はい |
 | password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ |
@@ -143,6 +148,11 @@ Oracle Eloqua からデータをコピーするは、コピー アクティビ�
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関するページを参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory でサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションをご覧ください。

@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82b8dcfa02d21183a06fa510adb774338e72cb4e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8a1914b7cf79287831e0e94c19c50107c2ac216d
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851725"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390784"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでのカスタム ドメインの使用
 
@@ -40,7 +40,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 カスタム ドメインを構成する前に、次の要件が用意されていることを確認します。 
 - [検証済みのドメインが Azure Active Directory に追加されている](../fundamentals/add-custom-domain.md)。
-- ドメインのカスタム証明書 (PFX ファイル形式) 
+- ドメインのカスタム証明書 (PFX ファイル形式)
 - [アプリケーション プロキシ経由で公開された](application-proxy-add-on-premises-application.md)オンプレミス アプリ。
 
 ### <a name="configure-your-custom-domain"></a>カスタム ドメインの構成
@@ -72,6 +72,8 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 証明書の署名方法に制約はありません。 楕円曲線暗号 (ECC)、サブジェクトの別名 (SAN)、その他の一般的な証明書の種類にすべて対応しています。 
 
 ワイルドカード証明書は、そのワイルドカードが目的の外部 URL と一致する場合に限って使用できます。
+
+証明書には秘密キーが含まれている必要があります。
 
 証明書チェーンがクライアント デバイスにインストールされている場合、独自の公開キー基盤 (PKI) によって発行された証明書を使用できます。 Intune を使用して、これらの証明書をマネージド デバイスにデプロイすることができます。 非マネージド デバイスの場合、これらの証明書を手動でインストールする必要があります。
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: tisande
-ms.openlocfilehash: 4181a44e87d59d35d424a51c8fedc89523223f90
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343169"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003488"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>Azure Cosmos DB の SQL サブクエリの例
 
@@ -368,7 +368,7 @@ SELECT EXISTS (SELECT undefined)
 
 サブクエリは、選択したリスト内の値のリストをオブジェクトに封入します。 選択したリストに値がない場合、サブクエリは 1 つの値 "{}" を返します。 この値は定義されているため、EXISTS は true と評価されます。
 
-### <a name="example-rewriting-arraycontains-and-join-as-exists"></a>例:ARRAY_CONTAINS と JOIN を EXISTS に書き直す
+### <a name="example-rewriting-array_contains-and-join-as-exists"></a>例:ARRAY_CONTAINS と JOIN を EXISTS に書き直す
 
 ARRAY_CONTAINS の一般的なユース ケースでは、配列内の項目の存在によってドキュメントをフィルター処理します。 この場合は、"orange" という名前の項目が tags 配列に含まれているかどうかチェックしています。
 
@@ -519,5 +519,5 @@ JOIN n IN (SELECT VALUE ARRAY(SELECT t FROM t in c.tags WHERE t.name != 'infant 
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [モデル ドキュメント データ](modeling-data.md)

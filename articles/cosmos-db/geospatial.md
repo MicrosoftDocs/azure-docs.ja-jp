@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: sngun
-ms.openlocfilehash: 1654ccabab751896fcbbab09d112080ccc2f67b6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 1b26f78c6d44123ef1baa3c55fd16c3340d59dd4
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467726"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616840"
 ---
 # <a name="use-geospatial-and-geojson-location-data-with-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API アカウントで地理空間データと GeoJSON 位置データを使用する
 
@@ -249,7 +249,7 @@ Azure Cosmos DB は逆クエリの実行もサポートします。つまり、A
 ### <a name="linq-querying-in-the-net-sdk"></a>.NET SDK での LINQ クエリ
 SQL .NET SDK には、LINQ 式の中で使用するための、`Distance()` と `Within()` というスタブ メソッドも用意されています。 これらのメソッド呼び出しは、SQL LINQ プロバイダーによって等価な SQL 組み込み関数呼び出し (それぞれ ST_DISTANCE と ST_WITHIN) に変換されます。 
 
-以下は LINQ クエリの一例で、LINQ を使用して、Azure Cosmos DB コレクションのドキュメントのうち、指定されたポイントから半径 30 km 圏内に "location" 値があるものをすべて検索しています。
+LINQ を使用して、"location" の値が、指定された地点の半径 30 km 以内にある Azure Cosmos コンテナー内のすべてのドキュメントを検索する LINQ クエリの例を次に示します。
 
 **距離検索の LINQ クエリ**
 

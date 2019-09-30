@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: c58a36988e3aee9b122446e3ee3c4878a582b8ad
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: f6f409c42c7ffa5639315e71ff565f9c672e227c
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871024"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70279739"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>商用マーケットプレース トランザクションの機能と考慮事項
 
@@ -75,7 +75,7 @@ SaaS アプリの場合、公開元は Azure インフラストラクチャの�
 
 ### <a name="pay-as-you-go-and-subscription-site-based-pricing"></a>従量課金制とサブスクリプション (サイトベース) の価格
 
-従量課金制とサブスクリプションの価格 従量課金制またはサブスクリプションによるトランザクション オファーを公開する場合、Microsoft は、ソフトウェア ライセンスの購入、返却、およびチャージバックを処理するためのテクノロジとサービスを提供します。 このシナリオでは、公開元はこれらの目的のために Microsoft が代理として機能することを承認します。 公開元は Microsoft がソフトウェア ライセンス トランザクションを促進することを許可する一方、販売者、プロバイダー、ディストリビューター、ライセンサーとして指定された立場を維持します。
+従量課金制またはサブスクリプションによるトランザクション オファーを公開する場合、Microsoft によって、ソフトウェア ライセンスの購入、返却、チャージバックを処理するためのテクノロジとサービスが提供されます。 このシナリオでは、公開元はこれらの目的のために Microsoft が代理として機能することを承認します。 公開元は Microsoft がソフトウェア ライセンス トランザクションを促進することを許可する一方、販売者、プロバイダー、ディストリビューター、ライセンサーとして指定された立場を維持します。
 
 Microsoft は、顧客が公開元のソフトウェアを注文し、ライセンスを取得して使用できるようにします。ただし、その使用には Microsoft の Commercial Marketplace と公開元の使用許諾契約の両方の条件が適用されます。 公開元は、オファリングを作成するときに自身の使用許諾契約を用意するか、または[標準契約](https://docs.microsoft.com/azure/marketplace/standard-contract)を選択する必要があります。
 
@@ -144,7 +144,7 @@ Microsoft は、顧客が公開元のソフトウェアを注文し、ライセ�
 |Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 90% を支払います   |   1 か月あたり $80.00 <br> \* 1 か月あたり $90.00    |
 |Microsoft は、ライセンス コストの 20% を受け取ります <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 10% を受け取ります。  |  1 か月あたり $20.00 <br> \* $10.00     |
 
-* **Marketplace サービス料金の減額:** 自身の Commercial Marketplace で公開する特定の SaaS 製品の場合、Microsoft は、Marketplace サービス料金を 20% から 10% に減額します (Microsoft 発行元契約の説明に従う)。  製品が対象となるには、少なくとも 1 つの製品を、IP 共同販売準備完了または IP 共同販売優先のどちらかとして、マイクロソフトが指定する必要があります。 その月の Marketplace サービス料金の減額を受け取るには、そのカレンダー月の月末までに少なくとも 5 営業日適格性を満たす必要があります。 Marketplace サービス料金の減額は、VM、マネージド アプリ、または Commercial Marketplace から入手できる他の製品には適用されません。  Marketplace サービス料金の減額は、対象となるオファーと、2019 年 5 月 1日から 2020 年 6 月 30日までにマイクロソフトが収集したライセンス料金に利用できます。  その後は、Marketplace サービス料金は通常の金額に戻ります。
+* **Marketplace サービス料金の減額:** 自身の Commercial Marketplace で公開する特定の SaaS 製品の場合、Microsoft は、Marketplace サービス料金を 20% から 10% に減額します (Microsoft 発行元契約の説明に従う)。  製品が対象となるには、少なくとも 1 つの製品を、IP 共同販売準備完了または IP 共同販売優先のどちらかとして、マイクロソフトが指定する必要があります。 その月の Marketplace サービス料金の減額を受け取るには、前のカレンダー月の月末までに少なくとも 5 営業日適格性を満たす必要があります。 Marketplace サービス料金の減額は、VM、マネージド アプリ、または Commercial Marketplace から入手できる他の製品には適用されません。  Marketplace サービス料金の減額は、対象となるオファーと、2019 年 5 月 1日から 2020 年 6 月 30日までにマイクロソフトが収集したライセンス料金に利用できます。  その後は、Marketplace サービス料金は通常の金額に戻ります。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>顧客の請求、支払い、課金、回収
 

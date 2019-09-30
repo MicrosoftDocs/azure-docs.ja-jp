@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: glenga
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 520579334d88bbab8ac28df7e446879aa9736248
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b765e7a03f84211d4a86c4242e9484b3517c95f9
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098201"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933561"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Azure portal を使用して Durable Functions を作成する
 
@@ -139,4 +139,4 @@ JavaScript Durable Functions を作成する場合、[`durable-functions` npm �
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Durable Functions の一般的なパターンについて学習する](durable-functions-concepts.md)
+> [Durable Functions の一般的なパターンについて学習する](durable-functions-overview.md#application-patterns)

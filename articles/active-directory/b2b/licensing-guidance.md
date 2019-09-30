@@ -5,22 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 08/29/2019
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df98966b69250d31f2a741411aea6e5554f9ed6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5968536d0bd0fbe2496fd9bf5fca86c7a1c4053d
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112865"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70162262"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス
 
-Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション機能を使用すると、有料の Azure AD サービスを使用できるように、外部ユーザー (つまり "ゲスト ユーザー") を招待できます。 ユーザーに割り当てる有料の Azure AD ライセンスごとに、外部ユーザー無料利用分に従って最大 5 人までのゲスト ユーザーを招待できます。
+Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション機能を使用すると、有料の Azure AD サービスを使用できるように、外部ユーザー (つまり "ゲスト ユーザー") を招待できます。 一部の機能は無料ですが、有料の Azure AD 機能の場合は、テナント内の従業員または非ゲスト ユーザー用に所有している Azure AD エディション ライセンスごとに最大 5 人のゲスト ユーザーを招待できます。
+
+> [!NOTE]
+> Azure AD の価格と B2B コラボレーション機能の詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
 
 B2B ユーザーのライセンスは、1:5 の割合に基づいて自動的に計算され、報告されます。 現在のところ、B2B ゲスト ユーザー ライセンスをゲスト ユーザーに直接割り当てることはできません。
 
@@ -29,7 +32,7 @@ B2B ユーザーのライセンスは、1:5 の割合に基づいて自動的に
 ## <a name="examples-calculating-guest-user-licenses"></a>次に例を示します。ゲスト ユーザー ライセンスの計算
 Azure AD の有料サービスにアクセスする必要があるゲスト ユーザーの数を判断したら、必要な 1:5 の割合でゲスト ユーザーに対応するのに十分な Azure AD 有料ライセンスを所有していることを確認してください。 次に例をいくつか示します。
 
-- Azure AD のアプリやサービスに 100 人のゲスト ユーザーを招待したいと考えていて、すべてのゲスト ユーザーにアクセス管理とプロビジョニングを割り当てたいと考えています。 また、それらのゲスト ユーザーのうちの 50 人には、MFA と条件付きアクセスも必要にしたいと考えています。 この組み合わせに対応するには、10 個の Azure AD Basic ライセンスと 10 個の Azure AD Premium P1 ライセンスが必要になります。 お客様がゲスト ユーザーに対して Identity Protection の機能を使用する場合は、ゲスト ユーザーに対応するために同じ 1:5 の割合で Azure AD Premium P2 ライセンスが必要になります。
+- お使いの Azure AD のアプリやサービスに 100 人のゲスト ユーザーを招待し、アクセス管理とプロビジョニングを行いたいと考えています。 これらのゲスト ユーザーの内の 50 人には、MFA と条件付きアクセスも必要です。したがって、これらの機能には、10 の Azure AD Premium P1 ライセンスが必要です。 お客様がゲスト ユーザーに対して Identity Protection の機能を使用する場合は、ゲスト ユーザーに対応するために同じ 1:5 の割合で Azure AD Premium P2 ライセンスが必要になります。
 - 全員が MFA を必要とするゲスト ユーザーを 60 人招待したいと考えているため、少なくとも 12 個の Azure AD Premium P1 ライセンスが必要です。 お客様には、Azure AD Premium P1 ライセンスを持つ従業員が 10 人います。これらの従業員は、1:5 のライセンス割合に従い、最大 50 人のゲスト ユーザーを許容できます。 10 人の追加のゲスト ユーザーに対応するには、2 つの追加の Premium P1 ライセンスを購入する必要があります。
 
 ## <a name="next-steps"></a>次の手順

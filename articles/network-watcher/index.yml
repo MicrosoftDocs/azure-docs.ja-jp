@@ -1,82 +1,86 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Network Watcher のドキュメント
+### YamlMime:Landing
+title: Azure Network Watcher のドキュメント
+summary: Azure Network Watcher の使用方法について説明します。 パケット キャプチャや NSG フロー ログなどのツールで Azure Virtual Network に関する分析情報を取得する方法、トラフィックのフィルタリングおよびルーティングで問題を診断する方法、接続を監視する方法を、クイック スタートやチュートリアルなどで紹介します。
 metadata:
-  document_id: null
-  title: Network Watcher のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
-  meta.description: 'Learn how to use Azure Network Watcher. Quickstarts, tutorials, and more, show you how to gain insight into your Azure Virtual Network with tools like packet capture and NSG flows logs, to diagnose problems with traffic filtering and routing, and to monitor connections.'
-  services: network-watcher
-  author: KumudD
-  manager: twolley
-  ms.service: network-watcher
-  ms.tgt_pltfrm: na
-  ms.devlang: na
-  ms.topic: landing-page
-  ms.date: 04/24/2018
-  ms.author: kumud
-abstract:
+  title: Azure Network Watcher のドキュメント
   description: Azure Network Watcher の使用方法について説明します。 パケット キャプチャや NSG フロー ログなどのツールで Azure Virtual Network に関する分析情報を取得する方法、トラフィックのフィルタリングおよびルーティングで問題を診断する方法、接続を監視する方法を、クイック スタートやチュートリアルなどで紹介します。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 仮想マシンとの間で発生するトラフィック フィルタリングに関する問題を診断する方法を説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/portal.svg
-            text: Azure ポータル
-            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem
-          - image:
-              src: ./media/index/powershell.svg
-            text: Azure PowerShell
-            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem-powershell
-          - image:
-              src: ./media/index/cli.svg
-            text: Azure CLI
-            href: /azure/network-watcher/diagnose-vm-network-traffic-filtering-problem-cli
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: 仮想ネットワークで問題を診断する方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/network-watcher/diagnose-vm-network-routing-problem">仮想マシン (VM) のネットワーク ルーティングに関する問題を診断する</a>
-          - html: <a href="/azure/network-watcher/connection-monitor">2 つの VM の間のネットワーク通信を監視する</a>
-          - html: <a href="/azure/network-watcher/diagnose-communication-problem-between-networks">ネットワーク間の通信に関する問題を診断する</a>
-          - html: <a href="/azure/network-watcher/network-watcher-nsg-flow-logging-portal">VM との間のネットワーク トラフィックのログを記録する</a>
-  - title: 無料の Pluralsight ビデオ トレーニング
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure 管理者
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
-          - title: Azure ソリューション アーキテクト
-            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
-          - title: AWS 管理者向け Azure 管理
-            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
-              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: '<p><a href="/powershell/module/az.network/#network_watcher">PowerShell</a></p><p><a href="/cli/azure/network/watcher">Azure CLI</a></p>'
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/virtual-network">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network">Node.js</a></p><p><a href="/python/api/overview/azure/network">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/network-watcher/">REST API リファレンス</a></p>
+  services: network-watcher
+  ms.service: network-watcher
+  ms.topic: landing-page
+  ms.collection: collection
+  author: KumudD
+  ms.author: kumud
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 534da1b945b4a4463406d5b5c6277833fad35984
+  ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/30/2019
+  ms.locfileid: "70195102"
+landingContent:
+- title: Network Watcher について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Network Watcher とは
+      url: network-watcher-monitoring-overview.md
+- title: VM トラフィック フィルターに関する問題を診断する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: IP フロー検証
+      url: network-watcher-ip-flow-verify-overview.md
+  - linkListType: quickstart
+    links:
+    - text: VM トラフィック フィルターに関する問題を診断する
+      url: diagnose-vm-network-traffic-filtering-problem.md
+- title: VM のルーティングに関する問題を診断する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 次ホップを使用して VM のルーティングに関する問題を診断する
+      url: network-watcher-next-hop-overview.md
+  - linkListType: tutorial
+    links:
+    - text: VM のルーティングに関する問題を診断する
+      url: diagnose-vm-network-routing-problem.md
+- title: VM の通信に関する問題を診断する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: VM のアウトバウンド通信に関する問題を診断する
+      url: network-watcher-connectivity-overview.md
+  - linkListType: tutorial
+    links:
+    - text: VM のルーティングに関する問題を診断する
+      url: network-watcher-connectivity-portal.md
+    - text: VM 間の通信を監視する
+      url: connection-monitor.md
+- title: VM ネットワーク トラフィックのログを記録する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: VM ネットワーク トラフィックのログを記録する
+      url: network-watcher-nsg-flow-logging-overview.md
+  - linkListType: tutorial
+    links:
+    - text: VM ネットワーク トラフィックのログを記録する
+      url: network-watcher-nsg-flow-logging-portal.md
+  - linkListType: tutorial
+    links:
+    - text: NSG フロー ログの構成
+      url: network-watcher-nsg-flow-logging-portal.md
+    - text: Traffic Analytics を使用して NSG フロー ログを分析する
+      url: traffic-analytics.md
+    - text: VM ネットワーク トラフィックのログを記録する
+      url: network-watcher-nsg-flow-logging-portal.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.network/#network_watcher
+    - text: Azure CLI
+      url: /cli/azure/network/watcher
+    - text: REST
+      url: /rest/api/network-watcher/

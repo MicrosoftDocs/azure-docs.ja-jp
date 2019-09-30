@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7a2802bd4daa1a009c610688120c9a56583b054f
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 91ff99f674439580d369aad1490ded85d39d377c
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639279"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382891"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Cognitive Services を使用して Language Understanding アプリを構築するためのベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。 
@@ -84,7 +84,7 @@ LUIS の予測データを使用して、意図が重複していないかどう
 
 それらをモデル設計の開始時に追加しても害はありませんが、モデルを発話でテストした後、各機能変更がどのような結果になるかを確認することが容易になります。 
 
-ベスト プラクティスは、[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)の追加されたベネフィットを得られるよう、[エンドポイント](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)を介してテストすることです。 [対話型テスト ウィンドウ](luis-interactive-test.md)も有効なテスト手法になります。 
+ベスト プラクティスは、[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)の追加されたベネフィットを得られるよう、[エンドポイント](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint)を介してテストすることです。 [対話型テスト ウィンドウ](luis-interactive-test.md)も有効なテスト手法になります。 
  
 
 ### <a name="phrase-lists"></a>フレーズ リスト

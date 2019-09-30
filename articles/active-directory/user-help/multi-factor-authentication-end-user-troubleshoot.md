@@ -13,12 +13,12 @@ ms.date: 08/07/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df32ec9c2d181072bb67a8ca0f2cb04560287286
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 178ce07db24976d7df590d353603da67b68122e8
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949759"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616113"
 ---
 # <a name="troubleshoot-common-two-factor-verification-problems"></a>2 要素認証のよくある問題のトラブルシューティング
 
@@ -29,7 +29,7 @@ ms.locfileid: "68949759"
 >[!Important]
 >このコンテンツはユーザーを対象としています。 管理者の方は、Azure Active Directory (Azure AD) 環境の設定と管理方法の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory)」を参照してください。
 >
->また、このコンテンツが対象としているのは、職場または学校アカウント、つまり勤務先から支給されるアカウント (alain@contoso.com など) での使用のみです。 ご自身のために自分で設定するアカウント (danielle@outlook.com など) である個人用 Microsoft アカウントと 2 要素認証に関して問題がある場合は、[Microsoft アカウントの 2 要素認証を有効または無効にする方法](https://support.microsoft.com/en-us/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページを参照してください。
+>また、このコンテンツが対象としているのは、職場または学校アカウント、つまり勤務先から支給されるアカウント (alain@contoso.com など) での使用のみです。 ご自身のために自分で設定するアカウント (danielle@outlook.com など) である個人用 Microsoft アカウントと 2 要素認証に関して問題がある場合は、[Microsoft アカウントの 2 要素認証を有効または無効にする方法](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページを参照してください。
 
 ## <a name="i-forgot-my-mobile-device-at-home"></a>自宅にモバイル デバイスを忘れました
 
@@ -92,7 +92,11 @@ ms.locfileid: "68949759"
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>アプリ パスワードを動作させることができません
 
-2 要素認証がサポートされていない古いバージョンのデスクトップ アプリケーションでは、アプリ パスワードによって通常のパスワードが置き換えられます。 まず、パスワードを正しく入力したことを確認してください。 それでも問題が解決しない場合は、「[2 段階認証のアプリ パスワードを管理する](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-using-the-myapps-portal)」の「**MyApps ポータルを使用してアプリ パスワードを作成および削除する**」の手順に従って、アプリの新しいアプリ パスワードを作成してみてください。
+2 要素認証がサポートされていない古いバージョンのデスクトップ アプリケーションでは、アプリ パスワードによって通常のパスワードが置き換えられます。 まず、パスワードを正しく入力したことを確認してください。 それでも問題が解決しない場合は、「[2 段階認証のアプリ パスワードを管理する](multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)」の「**MyApps ポータルを使用してアプリ パスワードを作成および削除する**」の手順に従って、アプリの新しいアプリ パスワードを作成してみてください。
+
+## <a name="why-cant-i-turn-two-factor-verification-off"></a>2 要素認証を無効にできないのはなぜですか。
+
+職場または学校のアカウント (alain@contoso.com など) で 2 要素認証を使用している場合、追加したこのセキュリティ機能を使用しなければならないと組織が決定している可能性があります。 この機能を使用しなければならないことは組織の決定であるため、個人でこれを無効にすることはできません。 ただし、alain@outlook.com のような個人アカウントで 2 要素認証を使用している場合は、この機能の有効/無効を切り替えることができます。 個人の Microsoft アカウントに対する 2 要素認証を制御する方法については、[Microsoft アカウントの 2 段階認証を有効または無効にする](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off)に関するページをご覧ください。
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>問題に対する回答が見つからなかった場合
 

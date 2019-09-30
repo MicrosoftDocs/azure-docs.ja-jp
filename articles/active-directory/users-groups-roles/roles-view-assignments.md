@@ -8,23 +8,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf45d45481712e30d40bacec9a3c4d80d1ed56b6
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 923c828a3d7e9e10d79fcf079839b84c2f0e0f77
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707432"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772385"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールの割り当てを表示する
 
-この記事では、Azure Active Directory (Azure AD) で割り当てたカスタム ロールを表示する方法について説明します。 Azure Active Directory (Azure AD) では、ロールはディレクトリ レベルで、または単一のアプリケーションのスコープを使用して割り当てることができます。 ディレクトリ スコープでのロールの割り当ては、単一アプリケーション ロールの割り当ての一覧に追加されますが、単一アプリケーション スコープでのロールの割り当ては、ディレクトリ レベルの割り当ての一覧に追加されません。
+この記事では、Azure Active Directory (Azure AD) で割り当てたカスタム ロールを表示する方法について説明します。 Azure Active Directory (Azure AD) では、ロールを組織全体のスコープまたは単一アプリケーションのスコープで割り当てることができます。
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-the-azure-ad-portal"></a>Azure AD ポータルを使って、ディレクトリ スコープでのロールの割り当てを表示する
+- 組織全体のスコープでのロールの割り当ては、単一アプリケーションのロールの割り当ての一覧に追加され、そこで確認することができます。
+- 単一アプリケーションのスコープでのロールの割り当ては、組織全体のスコープでの割り当ての一覧に追加されることはなく、そこで確認することもできません。
+
+## <a name="view-role-assignments-in-the-azure-portal"></a>Azure portal でロールの割り当てを表示する
+
+この手順では、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して  [Azure AD 管理センター](https://aad.portal.azure.com) にサインインします。
 1.  **[Azure Active Directory]** を選択し、 **[ロールと管理者]** を選択します。次に、ロールを選択して開き、そのプロパティを表示します。
@@ -32,9 +37,9 @@ ms.locfileid: "68707432"
 
     ![一覧からロールを開いたときに、ロールの割り当てとアクセス許可を表示する](./media/roles-view-assignments/role-assignments.png)
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-azure-ad-powershell"></a>Azure AD PowerShell を使って、ディレクトリ スコープでロールの割り当てを表示する
+## <a name="view-role-assignments-using-azure-ad-powershell"></a>Azure AD PowerShell を使用してロールの割り当てを表示する
 
-Azure PowerShell を使って、Azure AD 管理者のロールをユーザーに割り当てる方法を自動化することができます。 この記事では、[Azure Active Directory PowerShell バージョン 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) モジュールを使います。
+このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。 この記事では、[Azure Active Directory PowerShell バージョン 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles) モジュールを使います。 PowerShell を使用して単一アプリケーションのスコープを表示するには、[PowerShell を使用したカスタム ロールの割り当て](roles-assign-powershell.md)に関するページのコマンドレットを使用できます。
 
 ### <a name="prepare-powershell"></a>PowerShell を準備する
 
@@ -71,7 +76,9 @@ $role = Get-AzureADDirectoryRole -ObjectId "5b3fe201-fa8b-4144-b6f1-875829ff7543
 Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId | Get-AzureADUser
 ```
 
-## <a name="view-the-assignments-of-a-role-with-directory-scope-using-microsoft-graph-api"></a>Microsoft Graph API を使って、ディレクトリ スコープでロールの割り当てを表示する
+## <a name="view-role-assignments-using-microsoft-graph-api"></a>Microsoft Graph API を使用してロールの割り当てを表示する
+
+このセクションでは、組織全体のスコープを使用してロールの割り当てを表示する方法について説明します。  Graph API を使用して単一アプリケーションのスコープの割り当てを表示するには、[Graph API を使用したカスタム ロールの割り当て](roles-assign-graph.md)に関するページの操作を使用できます。
 
 特定のロールの定義に対するロールの割り当てを取得するための HTTP 要求。
 
@@ -93,18 +100,20 @@ HTTP/1.1 200 OK
 }
 ```
 
-## <a name="view-the-assignments-of-a-role-with-single-application-scope-using-the-azure-ad-portal-preview"></a>Azure AD ポータルを使って、単一アプリケーション スコープでロールの割り当てを表示する (プレビュー)
+## <a name="view-assignments-of-single-application-scope"></a>単一アプリケーションのスコープの割り当てを表示する
+
+このセクションでは、単一アプリケーションのスコープのロールの割り当てを表示する方法について説明します。 現在、この機能はパブリック プレビュー段階にあります。
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して  [Azure AD 管理センター](https://aad.portal.azure.com) にサインインします。
-1. Azure Active Directory を選択し、 **[アプリの登録]** を選択します。次に、そのアプリの登録を選択してそのプロパティを表示します。 Azure AD 組織内のアプリ登録の完全な一覧を表示するには、 **[すべてのアプリケーション]** を選択する必要がある場合があります。
+1. **[アプリの登録]** を選択し、次にそのアプリの登録を選択してそのプロパティを表示します。 Azure AD 組織内のアプリ登録の完全な一覧を表示するには、 **[すべてのアプリケーション]** を選択する必要がある場合があります。
 
     ![[アプリの登録] ページからアプリの登録を作成または編集する](./media/roles-create-custom/appreg-all-apps.png)
 
-1.  **[ロールと管理者]** を選択し、次にロールを選択してそのプロパティを表示します。
+1. アプリの登録で、 **[ロールと管理者]** を選択し、次にロールを選択してそのプロパティを表示します。
 
     ![[アプリの登録] ページから、アプリの登録のロールの割り当てを表示する](./media/roles-view-assignments/appreg-assignments.png)
 
-1. **[割り当て]** を選択して、そのロールの割り当てを表示します。
+1. **[割り当て]** を選択して、そのロールの割り当てを表示します。 アプリの登録内から [割り当て] ビューを開くと、この Azure AD リソースをスコープとした割り当てが表示されます。
 
     ![アプリの登録のプロパティから、アプリの登録のロールの割り当てを表示する](./media/roles-view-assignments/appreg-assignments-2.png)
 

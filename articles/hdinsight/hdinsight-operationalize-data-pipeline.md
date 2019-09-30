@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: 524386c046534b0ef0050e15d326118b84822822
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 122840614aede3ee112f8fd68cf6dabfa91fa225
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718049"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105508"
 ---
 # <a name="operationalize-a-data-analytics-pipeline"></a>データ分析パイプラインを運用化する
 
@@ -33,7 +33,7 @@ ms.locfileid: "64718049"
 
 次の図はこの例のパイプラインを示したものです。
 
-![フライト データ パイプライン](./media/hdinsight-operationalize-data-pipeline/pipeline-overview.png)
+![HDI フライト サンプル データ パイプラインの概要](./media/hdinsight-operationalize-data-pipeline/flight-pipeline-overview.png)
 
 ## <a name="apache-oozie-solution-overview"></a>Apache Oozie ソリューションの概要
 
@@ -43,7 +43,7 @@ Oozie では、パイプラインは "*アクション*"、"*ワークフロー*
 
 次の図では、この例の Oozie パイプラインの概要設計を示します。
 
-![Oozie フライト データ パイプライン](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
+![Oozie フライト サンプル データ パイプライン](./media/hdinsight-operationalize-data-pipeline/pipeline-overview-oozie.png)
 
 ### <a name="provision-azure-resources"></a>Azure リソースをプロビジョニングする
 
@@ -55,23 +55,23 @@ Oozie では、パイプラインは "*アクション*"、"*ワークフロー*
 2. `oozie` リソース グループ内に、Azure SQL Server と Database をプロビジョニングします。 S1 Standard 価格レベルより大きいデータベースは必要ありません。
 3. Azure Portal で新しく展開された SQL Database のウィンドウに移動し、 **[ツール]** を選びます。
 
-    ![[ツール] ボタン](./media/hdinsight-operationalize-data-pipeline/sql-db-tools.png)
+    ![HDInsight SQL DB の [ツール] ボタン アイコン](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-tools-button.png)
 
 4. **[クエリ エディター]** を選びます。
 
-    ![[クエリ エディター] ボタン](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor.png)
+    ![[ツール] の SQL DB [クエリ エディター (プレビュー)]](./media/hdinsight-operationalize-data-pipeline/sql-db-query-editor1.png)
 
 5. **[クエリ エディター]** ウィンドウで、 **[ログイン]** を選びます。
 
-    ![[ログイン] ボタン](./media/hdinsight-operationalize-data-pipeline/sql-db-login1.png)
+    ![クエリ エディターの SQL DB ログイン ウィンドウ](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window1.png)
 
 6. SQL Database の資格情報を入力し、 **[OK]** を選びます。
 
-   ![ログイン フォーム](./media/hdinsight-operationalize-data-pipeline/sql-db-login2.png)
+   ![クエリ エディターの SQL DB ログイン パラメーター](./media/hdinsight-operationalize-data-pipeline/sql-db-login-window2.png)
 
 7. パイプラインの各実行から集計されたデータを格納する `dailyflights` テーブルを作成する次の SQL ステートメントを、クエリ エディターのテキスト領域に入力します。
 
-    ```
+    ```sql
     CREATE TABLE dailyflights
     (
         YEAR INT,
@@ -90,7 +90,7 @@ Oozie では、パイプラインは "*アクション*"、"*ワークフロー*
 
 8. **[実行]** を選んで、SQL ステートメントを実行します。
 
-    ![[実行] ボタン](./media/hdinsight-operationalize-data-pipeline/sql-db-run.png)
+    ![HDInsight SQL DB の [実行] ボタン](./media/hdinsight-operationalize-data-pipeline/hdi-sql-db-run-button.png)
 
 Azure SQL Database の準備ができました。
 
@@ -100,36 +100,36 @@ Azure SQL Database の準備ができました。
 2. **作成** を選択します。
 3. [基本] ウィンドウで、クラスターの一意名を指定し、Azure サブスクリプションを選びます。
 
-    ![HDInsight クラスターの名前とサブスクリプション](./media/hdinsight-operationalize-data-pipeline/hdi-name-sub.png)
+    ![HDInsight クラスターの名前とサブスクリプション](./media/hdinsight-operationalize-data-pipeline/cluster-name-subscription.png)
 
 4. **[クラスターの種類]** ウィンドウで、クラスターの種類として **[Hadoop]** 、オペレーティング システムとして **[Linux]** 、および HDInsight クラスターの最新バージョンを選びます。 **[クラスター レベル]** は **[Standard]** のままにします。
 
-    ![HDInsight クラスターの種類](./media/hdinsight-operationalize-data-pipeline/hdi-cluster-type.png)
+    ![Azure portal のクラスター構成の種類](./media/hdinsight-operationalize-data-pipeline/hdinsight-cluster-type.png)
 
 5. **[選択]** を選んで、クラスター種類の選択を適用します。
 6. ログインのパスワードを指定し、一覧から `oozie` リソース グループを選んで、 **[基本]** ウィンドウの設定を完了し、 **[次へ]** を選びます。
 
-    ![HDInsight の [基本] ウィンドウ](./media/hdinsight-operationalize-data-pipeline/hdi-basics.png)
+    ![Azure portal のクラスター作成の [基本] ウィンドウ](./media/hdinsight-operationalize-data-pipeline/hdinsight-basics-pane.png)
 
 7. **[ストレージ]** ウィンドウで、[プライマリ ストレージの種類] は **[Azure Storage]** のままにし、 **[新規作成]** を選んで新しいアカウントの名前を指定します。
 
-    ![HDInsight のストレージ アカウントの設定](./media/hdinsight-operationalize-data-pipeline/hdi-storage.png)
+    ![HDInsight のストレージ アカウントの設定](./media/hdinsight-operationalize-data-pipeline/storage-account-settings.png)
 
 8. **[メタストアの設定]** の **[Hive 用の SQL データベースを選択する]** で、前に作成したデータベースを選びます。
 
-    ![HDInsight の Hive メタストアの設定](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-hive.png)
+    ![HDInsight の Hive メタストアの設定](./media/hdinsight-operationalize-data-pipeline/hive-metastore-settings.png)
 
 9. **[SQL Database の認証]** を選びます。
 
     ![HDInsight の Hive メタストアの認証](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql.png)
 
-10. SQL Database のユーザー名とパスワードを入力し、 **[選択]** を選びます。 
+10. SQL Database のユーザー名とパスワードを入力し、 **[選択]** を選びます。
 
        ![HDInsight の Hive メタストアの認証ログイン](./media/hdinsight-operationalize-data-pipeline/hdi-authenticate-sql-login.png)
 
-11. **[メタストアの設定]** ウィンドウに戻り、Oozie メタデータ ストア用のデータベースを選んで、前と同様に認証を設定します。 
+11. **[メタストアの設定]** ウィンドウに戻り、Oozie メタデータ ストア用のデータベースを選んで、前と同様に認証を設定します。
 
-       ![HDInsight のメタストアの設定](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
+       ![Azure portal の [メタストアの設定]](./media/hdinsight-operationalize-data-pipeline/hdi-metastore-settings.png)
 
 12. **[次へ]** を選択します。
 13. **[概要]** ウィンドウで、 **[作成]** を選んでクラスターを展開します。
@@ -176,17 +176,18 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 これで、サンプル データを利用できるようになりました。 ただし、パイプラインには処理用に 2 つの Hive テーブルが必要です。1 つは受信データ用 (`rawFlights`) で、もう 1 つは集約済みデータ用 (`flights`) です。 次のようにして、Ambari でこれらのテーブルを作成します。
 
 1. http:\///headnodehost:8080 に移動して Ambari にログインします。
+
 2. サービスの一覧から、 **[Hive]** を選びます。
 
-    ![Ambari での Hive の選択](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
+    ![Hive が選択された Apache Ambari サービスの一覧](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive.png)
 
 3. Hive ビュー 2.0 のラベルの横にある **[ビューに移動]** を選びます。
 
-    ![Ambari での Hive ビューの選択](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
+    ![Ambari Apache Apache Hive の概要の一覧](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-summary.png)
 
-4. `rawFlights` テーブルを作成する次のステートメントを、クエリのテキスト領域に貼り付けます。 `rawFlights` テーブルでは、Azure Storage の `/example/data/flights` フォルダー内の CSV ファイルに対する読み取り時スキーマが提供されています。 
+4. `rawFlights` テーブルを作成する次のステートメントを、クエリのテキスト領域に貼り付けます。 `rawFlights` テーブルでは、Azure Storage の `/example/data/flights` フォルダー内の CSV ファイルに対する読み取り時スキーマが提供されています。
 
-    ```
+    ```sql
     CREATE EXTERNAL TABLE IF NOT EXISTS rawflights (
         YEAR INT,
         MONTH INT,
@@ -211,7 +212,7 @@ Oozie Web コンソールを使ってコーディネーター インスタンス
 
 5. **[実行]** を選んでテーブルを作成します。
 
-    ![Ambari での Hive クエリ](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
+    ![HDI Ambari サービスの Hive クエリ](./media/hdinsight-operationalize-data-pipeline/hdi-ambari-services-hive-query.png)
 
 6. `flights` テーブルを作成するには、クエリのテキスト領域内のテキストを次のステートメントに置き換えます。 `flights` テーブルは Hive のマネージド テーブルであり、読み込まれたデータを年、月、日で分割します。 このテーブルには、フライトごとに 1 行というソース データの最小の細分性で、すべてのフライト履歴データが格納されます。
 
@@ -463,7 +464,7 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
 
 7. Oozie Web コンソールを使って状態を確認します。 Ambari 内から、 **[Oozie]** 、 **[クイック リンク]** 、 **[Oozie Web Console]\(Oozie Web コンソール\)** の順に選びます。 **[Workflow Jobs]\(ワークフロー ジョブ\)** タブで、 **[All Jobs]\(すべてのジョブ\)** を選びます。
 
-    ![Oozie Web コンソールのワークフロー](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
+    ![HDI Oozie Web コンソールのワークフロー](./media/hdinsight-operationalize-data-pipeline/hdi-oozie-web-console-workflows.png)
 
 8. 状態が [SUCCEEDED]\(成功\) の場合、SQL データベース テーブルにクエリを行って、挿入された行を表示します。 Azure Portal で SQL Database のウィンドウに移動し、 **[ツール]** を選んで、 **[クエリ エディター]** を開きます。
 
@@ -475,7 +476,7 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
 
 毎日 (または日付範囲のすべての日に) 実行されるようにこのワークフローをスケジュールするには、コーディネーターを使うことができます。 コーディネーターは XML ファイルによって定義されています (例: `coordinator.xml`)。
 
-```
+```xml
 <coordinator-app name="daily_export" start="2017-01-01T00:00Z" end="2017-01-05T00:00Z" frequency="${coord:days(1)}" timezone="UTC" xmlns="uri:oozie:coordinator:0.4">
     <datasets>
         <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
@@ -554,7 +555,7 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
 
 * ポイント 2: ワークフローの日付範囲内で、`dataset` 要素は特定の日付範囲のデータを HDFS で検索する場所を指定し、データを処理にまだ使用できるかどうかを Oozie が判断する方法を構成します。
 
-    ```
+    ```xml
     <dataset name="ds_input1" frequency="${coord:days(1)}" initial-instance="2016-12-31T00:00Z" timezone="UTC">
         <uri-template>${sourceDataFolder}${YEAR}-${MONTH}-FlightData.csv</uri-template>
         <done-flag></done-flag>
@@ -567,7 +568,7 @@ bash セッションから SCP を使って、Oozie ワークフロー (`workflo
 
 * ポイント 3: `data-in` 要素は、関連付けられているデータセットの `uri-template` の値を置き換えるときに標準時刻として使う特定のタイムスタンプを指定します。
 
-    ```
+    ```xml
     <data-in name="event_input1" dataset="ds_input1">
         <instance>${coord:current(0)}</instance>
     </data-in>

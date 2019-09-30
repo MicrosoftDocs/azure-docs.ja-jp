@@ -6,17 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 3e6bfe4a93ab8c97bcffb84bda08977f8d811fa8
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.localizationpriority: high
+ms.openlocfilehash: 3b27a4788bd144a8d2d423af1fa23ef09c5379f8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592367"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772852"
 ---
+::: zone target = "docs"
+
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box-heavy"></a>チュートリアル:Azure Data Box Heavy に配線して接続する
 
+::: zone-end
+
+::: zone target = "chromeless"
+
+# <a name="get-started-with-azure-data-box-heavy"></a>Azure Data Box Heavy を使ってみる
+
+::: zone-end
+
+::: zone target = "docs"
 
 このチュートリアルでは、Azure Data Box Heavy のケーブル配線、接続、起動の方法について説明します。
 
@@ -25,6 +37,14 @@ ms.locfileid: "67592367"
 > [!div class="checklist"]
 > * Data Box Heavy にケーブルを配線する
 > * Data Box Heavy に接続する
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+このガイドでは、前提条件を確認し、デバイスにケーブルを配線して接続し、データをコピーして Azure にアップロードした後、アップロードしたデータを検証する手順について説明します。
+
+::: zone-end
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,6 +62,8 @@ ms.locfileid: "67592367"
     - [Mellanox MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) ネットワーク インターフェイスと互換性のあるケーブルを選択します。
     - 40 Gbps ケーブルの場合、ケーブルのデバイス側の端は QSFP+ である必要があります。
     - 10 Gbps ケーブルの場合、SFP+ ケーブルが必要です。ケーブルの一端を 10 Gbps スイッチに差し込み、QSFP+ から SFP+ へのアダプター (QSA アダプター) を使用して他端をデバイスに差し込みます。
+
+::: zone target = "docs"
 
 ## <a name="cable-your-device-for-power"></a>デバイスの電源ケーブルを接続する
 
@@ -138,3 +160,5 @@ ms.locfileid: "67592367"
 
 > [!div class="nextstepaction"]
 > [データを Data Box にコピーする](./data-box-heavy-deploy-copy-data.md)
+
+::: zone-end

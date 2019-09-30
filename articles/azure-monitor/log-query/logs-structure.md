@@ -5,14 +5,14 @@ services: log-analytics
 author: bwren
 ms.service: log-analytics
 ms.topic: conceptual
-ms.date: 06/16/2019
+ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 6f5ae426018c9e7fa2ac586a2886c8e5e609069b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b1d22729724c2d1a8e3705e017762dcef588245e
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813851"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034870"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor Logs の構造
 [ログ クエリ](log-query-overview.md)を使用して迅速にデータの分析情報が得られるのは、Azure Monitor の強力な機能です。 効率的で便利なクエリを作成するには、目的のデータがどこにあり、どのように構造化されているかなど、いくつかの基本概念を理解する必要があります。 この記事では、作業を始めるために必要な基本概念を提供します。
@@ -46,7 +46,7 @@ union withsource = table *
 データ ソースが作成するテーブルの詳細については、各データ ソースのドキュメントを参照してください。 例としては、[エージェント データ ソース](../platform/agent-data-sources.md)、[診断ログ](../platform/diagnostic-logs-schema.md)、および[監視ソリューション](../insights/solutions-inventory.md)に関する記事があります。
 
 ### <a name="workspace-permissions"></a>ワークスペースのアクセス許可
-ワークスペース内のデータに対するアクセス付与の詳細については、[ワークスペースのアクセス許可とスコープ](../platform/manage-access.md#manage-accounts-and-users)に関する項目を参照してください。 ワークスペース自体へのアクセスを許可することに加えて、[テーブル レベルの RBAC](../platform/manage-access.md#table-level-rbac) を使用して個々のテーブルへのアクセスを制限できます。
+ワークスペース内のデータへのアクセスを提供するためのアクセス制御戦略と推奨事項については、「[Azure Monitor ログのデプロイの設計](../platform/design-logs-deployment.md)」を参照してください。 ワークスペース自体へのアクセスを許可することに加えて、[テーブル レベルの RBAC](../platform/manage-access.md#table-level-rbac) を使用して個々のテーブルへのアクセスを制限できます。
 
 ## <a name="application-insights-application"></a>Application Insights アプリケーション
 Application Insights でアプリケーションを作成すると、対応するアプリケーションが自動的に Azure Monitor Logs に作成されます。 データを収集するための構成は不要であり、アプリケーションは、ページ ビュー、要求、例外などの監視データを自動的に書き込みます。

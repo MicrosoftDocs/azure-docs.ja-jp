@@ -1,6 +1,6 @@
 ---
 title: Visual Studio で Azure Stream Analytics ジョブを表示する
-description: この記事では、Visual Studio で Azure Stream Analytics ジョブを表示する方法について説明します。
+description: この記事では、Visual Studio で Azure Stream Analytics ジョブを表示して管理する方法について説明します。
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: 1c7133801eb0d95616cacf501162e6cee3da7c80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae532ed19c2273e43aa739e84d5a68cadb717b86
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477910"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173019"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Visual Studio を使用して Azure Stream Analytics ジョブを表示する
 

@@ -3,18 +3,18 @@ title: カスタム ルールと通知を使用して Azure IoT Central を拡�
 description: ソリューション開発者は、デバイスがテレメトリの送信を停止したときに電子メール通知を送信するように IoT Central アプリケーションを構成します。 このソリューションでは、Azure Stream Analytics と Azure Functions を使用します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/14/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5248b9546ffe931b72123778d0d23574e5238405
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d89e8f174c7006c1a0f771dd4dfaa816ded3698c
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66742405"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100985"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-that-send-notifications"></a>通知を送信するカスタム ルールを使用して Azure IoT Central を拡張する
 
@@ -36,7 +36,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="iot-central-application"></a>IoT Central アプリケーション
 
-次の設定で、[[Azure IoT Central - マイ アプリケーション]](https://aka.ms/iotcentral) ページで IoT Central アプリケーションを作成します。
+[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、次の設定を使用して IoT Central アプリケーションを作成します。
 
 | Setting | 値 |
 | ------- | ----- |
@@ -46,11 +46,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | URL | 既定値を受け入れるか、独自の一意の URL プレフィックスを選択します |
 | Directory | Azure Active Directory テナント |
 | Azure サブスクリプション | お使いの Azure サブスクリプション |
-| リージョン | 米国東部 |
+| Region | East US |
 
 この記事の例とスクリーンショットでは、**米国東部**リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
 
-### <a name="resource-group"></a>リソース グループ
+### <a name="resource-group"></a>Resource group
 
 作成するその他のリソースを格納するため、**DetectStoppedDevices** という [リソース グループを Azure portal で作成](https://portal.azure.com/#create/Microsoft.ResourceGroup)します。 Azure リソースは IoT Central アプリケーションと同じ場所に作成してください。
 
@@ -60,11 +60,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 | Setting | 値 |
 | ------- | ----- |
-| Name    | 名前空間名を選択します |
-| 価格レベル | Basic |
-| サブスクリプション | 該当するサブスクリプション |
-| リソース グループ | DetectStoppedDevices |
-| Location | 米国東部 |
+| 名前    | 名前空間名を選択します |
+| Pricing tier | Basic |
+| Subscription | 該当するサブスクリプション |
+| Resource group | DetectStoppedDevices |
+| Location | East US |
 | スループット ユニット | 1 |
 
 ### <a name="stream-analytics-job"></a>Stream Analytics ジョブ
@@ -73,9 +73,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 | Setting | 値 |
 | ------- | ----- |
-| Name    | ジョブ名を選択します |
-| サブスクリプション | 該当するサブスクリプション |
-| リソース グループ | DetectStoppedDevices |
+| 名前    | ジョブ名を選択します |
+| Subscription | 該当するサブスクリプション |
+| Resource group | DetectStoppedDevices |
 | Location | 米国東部 |
 | ホスティング環境 | クラウド |
 | [ストリーミング ユニット] | 3 |
@@ -87,11 +87,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Setting | 値 |
 | ------- | ----- |
 | アプリの名前    | 関数アプリ名を選択します |
-| サブスクリプション | 該当するサブスクリプション |
-| リソース グループ | DetectStoppedDevices |
+| Subscription | 該当するサブスクリプション |
+| Resource group | DetectStoppedDevices |
 | OS | Windows |
 | ホスティング プラン | 従量課金プラン |
-| Location | 米国東部 |
+| Location | East US |
 | ランタイム スタック | .NET |
 | Storage | 新規作成 |
 
@@ -101,11 +101,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 | Setting | 値 |
 | ------- | ----- |
-| Name    | SendGrid アカウント名を選択します |
+| 名前    | SendGrid アカウント名を選択します |
 | パスワード | パスワードを作成します |
-| サブスクリプション | 該当するサブスクリプション |
-| リソース グループ | DetectStoppedDevices |
-| 価格レベル | F1 Free |
+| Subscription | 該当するサブスクリプション |
+| Resource group | DetectStoppedDevices |
+| Pricing tier | F1 Free |
 | 連絡先情報 | 必須情報を入力します |
 
 必要なすべてのリソースを作成すると、次のスクリーンショットのような **DetectStoppedDevices** リソース グループが表示されます。
@@ -243,7 +243,7 @@ test-device-3   2019-05-02T14:24:28.919Z
     | Setting | 値 |
     | ------- | ----- |
     | 入力のエイリアス | centraltelemetry |
-    | サブスクリプション | 該当するサブスクリプション |
+    | Subscription | 該当するサブスクリプション |
     | Event Hub 名前空間 | Event Hub 名前空間 |
     | イベント ハブ名 | 既存のものを使用 - **centralexport** |
 
@@ -253,7 +253,7 @@ test-device-3   2019-05-02T14:24:28.919Z
     | Setting | 値 |
     | ------- | ----- |
     | 出力エイリアス | emailnotification |
-    | サブスクリプション | 該当するサブスクリプション |
+    | Subscription | 該当するサブスクリプション |
     | 関数アプリ | 関数アプリ |
     | Function  | HttpTrigger1 |
 
@@ -305,7 +305,7 @@ test-device-3   2019-05-02T14:24:28.919Z
 
 ## <a name="configure-export-in-iot-central"></a>IoT Central でエクスポートを構成する
 
-Contoso テンプレートから作成した [IoT Central アプリケーション](https://aka.ms/iotcentral)に移動します。 このセクションでは、シミュレートされたデバイスからイベント ハブにテレメトリをストリーム配信するようにアプリケーションを構成します。 エクスポートを構成するには、次の手順に従います。
+[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、Contoso テンプレートから作成した IoT Central アプリケーションに移動します。 このセクションでは、シミュレートされたデバイスからイベント ハブにテレメトリをストリーム配信するようにアプリケーションを構成します。 エクスポートを構成するには、次の手順に従います。
 
 1. **[継続的データ エクスポート]** ページに移動し、 **[+ 新規]** を選択してから、 **[Azure Event Hubs]** を選択します。
 1. 以下の設定を使用してエクスポートを構成してから、 **[保存]** を選択します。
@@ -313,7 +313,7 @@ Contoso テンプレートから作成した [IoT Central アプリケーショ�
     | Setting | 値 |
     | ------- | ----- |
     | 表示名 | Event Hubs へのエクスポート |
-    | Enabled | On |
+    | 有効 | On |
     | Event Hubs 名前空間 | Event Hubs 名前空間の名前 |
     | イベント ハブ | centralexport |
     | 測定 | On |

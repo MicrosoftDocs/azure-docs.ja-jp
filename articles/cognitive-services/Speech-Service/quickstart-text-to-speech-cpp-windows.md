@@ -8,22 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/24/2019
 ms.author: yinhew
-ms.openlocfilehash: fdc5e540dd7e84d47aa139768fbfc2614f38b376
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 686b21d3e02266af77687778c32f0d1ca6d55154
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68607717"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383067"
 ---
 # <a name="quickstart-synthesize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>クイック スタート:Windows 上で C++ と Speech SDK を使用して音声を合成する
 
-クイック スタートは[音声認識](quickstart-cpp-windows.md)と[音声翻訳](quickstart-translate-speech-cpp-windows.md)にも使用できます。
+[音声認識](quickstart-cpp-windows.md)と[音声翻訳](quickstart-translate-speech-cpp-windows.md)のクイックスタートも利用できます。
 
-この記事では、Windows 用の C++ コンソール アプリケーションを作成します。 Cognitive Services [Speech SDK](speech-sdk.md) を使用して、テキスからリアルタイムに音声を合成し、PC のスピーカーで再生します。 このアプリケーションの構築には、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 以降 (任意のエディション) を使用します。
-
-この記事に説明されている機能は、[Speech SDK 1.5.0](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/1.5.0) から利用できます。
+この記事では、Windows 用の C++ コンソール アプリケーションを作成します。 Cognitive Services [Speech SDK](speech-sdk.md) を使用して、テキスからリアルタイムに音声を合成し、PC のスピーカーで再生します。 このアプリケーションは、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2019 (任意のエディション) を使用して作成します。
 
 音声合成が可能な言語と音声の完全な一覧については、[言語サポート](language-support.md#text-to-speech)に関するページを参照してください。
 
@@ -37,7 +35,9 @@ ms.locfileid: "68607717"
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
-1. ソース ファイル *helloworld.cpp* を開きます。 最初の include ステートメント (`#include "stdafx.h"` または `#include "pch.h"`) の下にあるすべてのコードを、以下に置き換えます。
+1. ソース ファイル **helloworld.cpp** を開きます。
+
+1. すべてのコードを次のスニペットに置き換えます。
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/cpp-windows/helloworld/helloworld.cpp#code)]
 
@@ -45,21 +45,17 @@ ms.locfileid: "68607717"
 
 1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
 
-1. プロジェクトへの変更内容を保存します。
+1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択します。
 
-## <a name="build-and-run-the-app"></a>アプリのビルドと実行
+## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 
-1. アプリケーションをビルドします。 メニュー バーから、 **[ビルド]**  >  **[ソリューションのビルド]** を選択します。 コードはエラーなくコンパイルされるはずです。
+1. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してアプリケーションをビルドします。 これで、コードは、エラーなしでコンパイルされます。
 
-   ![[ソリューションのビルド] オプションが強調表示された Visual Studio アプリケーションのスクリーン ショット](media/sdk/qs-cpp-windows-06-build.png)
+1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、**helloworld** アプリケーションを起動します。
 
-1. アプリケーションを起動します。 メニュー バーから、 **[デバッグ]**  >  **[デバッグの開始]** を選択するか、**F5** キーを押します。
+1. 英語の語句または文を入力します。 そのテキストが Speech Services に転送され、そこで合成された音声がアプリケーションに送信されてスピーカーで再生されます。
 
-   ![[デバッグの開始] オプションが強調表示された Visual Studio アプリケーションのスクリーン ショット](media/sdk/qs-cpp-windows-07-start-debugging.png)
-
-1. コンソール ウィンドウが表示され、何かテキストを入力するように求められます。 いくつかの単語または文を入力してください。 入力したテキストが Speech Services に転送されて音声に合成され、スピーカーで再生されます。
-
-   ![合成が成功した後のコンソール出力のスクリーンショット](media/sdk/qs-tts-cpp-windows-console-output.png)
+   ![音声合成が成功した後のコンソール出力](media/sdk/qs-tts-cpp-windows-console-output.png)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -70,5 +66,5 @@ ms.locfileid: "68607717"
 
 ## <a name="see-also"></a>関連項目
 
-- [音声フォントをカスタマイズする](how-to-customize-voice-font.md)
-- [音声サンプルを録音する](record-custom-voice-samples.md)
+- [カスタム音声を作成する](how-to-custom-voice-create-voice.md)
+- [カスタム音声サンプルを録音する](record-custom-voice-samples.md)

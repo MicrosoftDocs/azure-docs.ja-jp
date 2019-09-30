@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be3dbc386b0ac89a85bc1719081df944523c28ce
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66167166"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997830"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>証明書を使用して B2B メッセージをセキュリティで保護する
 
@@ -90,7 +90,7 @@ B2B 機能を備えたロジック アプリで "*プライベート証明書*" 
    |----------|-------|-------------|
    | **Name** | <*証明書名*> | 証明書の名前 (この例では "privateCert") | 
    | **証明書の種類** | プライベート | 証明書の種類 |
-   | **証明書** | <*証明書ファイル名*> | アップロードする証明書ファイルを検索して選択するには、 **[証明書]** ボックスの横にあるフォルダー アイコンを選択します。 | 
+   | **証明書** | <*証明書ファイル名*> | アップロードする証明書ファイルを検索して選択するには、 **[証明書]** ボックスの横にあるフォルダー アイコンを選択します。 秘密キーにキー コンテナーを使用している場合、アップロードされたファイルは公開証明書になります。 | 
    | **リソース グループ** | <*統合アカウントのリソース グループ*> | 統合アカウントのリソース グループ (この例では "MyResourceGroup") | 
    | **Key Vault** | <*キー コンテナー名*> | Azure キー コンテナーの名前 |
    | **キー名** | <*key-name*> | キーの名前 |

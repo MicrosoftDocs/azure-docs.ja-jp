@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: efa8a92ca9861c0280237ba07f4304b5c7dbbb88
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: bd83d915b51ab44d4287987e3da7113722910262
+ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609996"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70020234"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Traffic Analytics のスキーマとデータ集計
 
@@ -32,7 +32,7 @@ Traffic Analytics は、クラウド ネットワークでのユーザーとア�
 
 ### <a name="data-aggregation"></a>データの集計
 
-1. "FlowIntervalStartTime_t" から "FlowIntervalEndTime_t" までの間に NSG で記録されるすべてのフロー ログは、Traffic Analytics によって処理される前に、ストレージ アカウント内で 1 分間おきに BLOB としてキャプチャされます。 
+1. "FlowIntervalStartTime_t" から "FlowIntervalEndTime_t" までの間に NSG で記録されるすべてのフロー ログは、Traffic Analytics によって処理される前に、ストレージ アカウント内で 1 分間おきに BLOB としてキャプチャされます。
 2. Traffic Analytics の既定の処理間隔は 60 分です。 つまり、Traffic Analytics は 60 分ごとに、集計のための BLOB をストレージから取得します。 選択した処理間隔が 10 分の場合、Traffic Analytics は 10 分ごとにストレージ アカウントから BLOB を取得します。
 3. ソース IP、宛先 IP、宛先ポート、NSG 名、NSG ルール、フロー方向、およびトランスポート層プロトコル (TCP または UDP) が同じであるフロー (注:ソース ポートは集計から除外されます) は、Traffic Analytics によって 1 つのフローにまとめられます
 4. この単一レコードは Traffic Analytics によって修飾され (詳しくは下記のセクションを参照)、Log Analytics に取り込まれます。このプロセスには最大で 1 時間かかります。
@@ -85,6 +85,12 @@ https://{saName}@insights-logs-networksecuritygroupflowevent/resoureId=/SUBSCRIP
 ```
 
 ### <a name="fields-used-in-traffic-analytics-schema"></a>Traffic Analytics のスキーマで使用されるフィールド
+  > [!IMPORTANT]
+  > Traffic Analytics のスキーマは、2019 年 8 月 22 日に更新されました。 新しいスキーマでは、送信元 IP と送信先 IP が別々に得られ、FlowDirection フィールドを解析する必要がないため、クエリが簡素化されます。 </br>
+  > FASchemaVersion_s は 1 から 2 に更新されました。 </br>
+  > 非推奨となったフィールド: VMIP_s、Subscription_s、Region_s、NSGRules_s、Subnet_s、VM_s、NIC_s、PublicIPs_s、FlowCount_d </br>
+  > 新しいフィールド: SrcPublicIPs_s、DestPublicIPs_s、NSGRule_s </br>
+  > 非推奨となったフィールドは、2019 年 11 月 22 日までご利用いただけます。
 
 Traffic Analytics は Log Analytics をベースに構築されています。そのため、Traffic Analytics によって修飾されたデータに対してカスタム クエリを実行し、同様にアラートを設定することもできます。
 
@@ -94,7 +100,7 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | Traffic Analytics データのテーブル
 | SubType_s | FlowLog | フロー ログのサブタイプ。 "FlowLog" のみを使用します。SubType_s の他の値は製品の内部動作用です。 |
-| FASchemaVersion_s |   1   | スキーマ バージョン。 NSG フロー ログ バージョンは反映されません |
+| FASchemaVersion_s |   2   | スキーマ バージョン。 NSG フロー ログ バージョンは反映されません |
 | TimeProcessed_t   | 日付と時刻 (UTC)  | Traffic Analytics がストレージ アカウントから未加工のフロー ログを処理した時刻 |
 | FlowIntervalStartTime_t | 日付と時刻 (UTC) |  フロー ログ処理間隔の開始時刻。 これは、フロー間隔の計測が開始される時刻です |
 | FlowIntervalEndTime_t | 日付と時刻 (UTC) | フロー ログ処理間隔の終了時刻 |
@@ -111,7 +117,8 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 | FlowDirection_s | * I = Inbound (受信)<br> * O = Outbound (送信) | NSG を出入りするフローの方向 (フロー ログに基づく) |
 | FlowStatus_s  | * A = NSG ルールで許可されている <br> *  D = NSG ルールで拒否されている  | NSG によって許可/ブロックされたフローの状態 (フロー ログに基づく) |
 | NSGList_s | \<SUBSCRIPTIONID>\/<RESOURCEGROUP_NAME>\/<NSG_NAME> | フローに関連付けられたネットワーク セキュリティ グループ (NSG) |
-| NSGRules_s | \<Index value 0)><NSG_RULENAME>\<Flow Direction>\<Flow Status>\<FlowCount ProcessedByRule> |  このフローを許可または拒否した NSG ルール |
+| NSGRules_s | \<Index value 0)>\|\<NSG_RULENAME>\|\<Flow Direction>\|\<Flow Status>\|\<FlowCount ProcessedByRule> |  このフローを許可または拒否した NSG ルール |
+| NSGRule_s | NSG_RULENAME |  このフローを許可または拒否した NSG ルール |
 | NSGRuleType_s | * User Defined *  Default |   フローによって使用された NSG ルールの種類 |
 | MACAddress_s | MAC アドレス | フローがキャプチャされた NIC の MAC アドレス |
 | Subscription_s | このフィールドには、Azure 仮想ネットワーク/ネットワーク インターフェイス/仮想マシンのサブスクリプションが入力されます | フローの種類が S2S、P2S、AzurePublic、ExternalPublic、MaliciousFlow、および UnknownPrivate の場合 (片側だけが Azure の場合) にのみ適用されます |
@@ -151,6 +158,8 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 | OutboundBytes_d | 送信されたバイト数 (NSG ルールが適用されたネットワーク インターフェイスでキャプチャされたもの) | これは、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ入力されます |
 | CompletedFlows_d  |  | このフィールドには、NSG のフロー ログ スキーマがバージョン 2 の場合にのみ、ゼロ以外の値が入力されます |
 | PublicIPs_s | <PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | バーで区切られたエントリ |
+| SrcPublicIPs_s | <SOURCE_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | バーで区切られたエントリ |
+| DestPublicIPs_s | <DESTINATION_PUBLIC_IP>\|\<FLOW_STARTED_COUNT>\|\<FLOW_ENDED_COUNT>\|\<OUTBOUND_PACKETS>\|\<INBOUND_PACKETS>\|\<OUTBOUND_BYTES>\|\<INBOUND_BYTES> | バーで区切られたエントリ |
 
 ### <a name="notes"></a>メモ
 
@@ -165,7 +174,7 @@ Traffic Analytics は Log Analytics をベースに構築されています。�
 1. MaliciousFlow - 一方の IP アドレスは Azure 仮想ネットワークに属していて、もう一方の IP アドレスは、Azure ではないパブリック IP です。これは、"FlowIntervalStartTime_t" から "FlowIntervalEndTime_t" までの処理間隔用に Traffic Analytics が使用する ASC フィードで、悪意のあるフローとして報告されます。
 1. UnknownPrivate - 一方の IP アドレスは Azure 仮想ネットワークに属していて、もう一方の IP アドレスは、RFC 1918 で定義されたプライベート IP 範囲に属しています。後者は、Traffic Analytics によってお客様所有のサイトまたは Azure 仮想ネットワークにマップできませんでした。
 1. Unknown – フロー内のどちらの IP アドレスも、Azure 内およびオンプレミス (サイト) 上のカスタマ トポロジを使用してマップできません。
-1. 一部のフィールド名は、_s または _d が付加されます。 これらは、送信先と送信元を示すものではありません。
+1. 一部のフィールド名は、\_s または \_d が付加されます。 これらは、送信先と送信元を示すものではなく、それぞれデータ型としての string と decimal を示しています。
 
 ### <a name="next-steps"></a>次の手順
 よく寄せられる質問への回答を確認するには、[トラフィック分析に関する FAQ](traffic-analytics-faq.md) をご覧ください。機能に関する詳細を確認するには、[Traffic Analytics のドキュメント](traffic-analytics.md)をご覧ください

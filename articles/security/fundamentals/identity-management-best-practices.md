@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2019
 ms.author: barclayn
-ms.openlocfilehash: 371c3b9fde17bba33fb6f2526be68fe89aec6b01
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 093c5878cd2f7df63502a7aff686824af3c88078
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934687"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195072"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 この記事では、Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスについて説明します。 このベスト プラクティスは、[Azure AD](../../active-directory/fundamentals/active-directory-whatis.md) に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -93,7 +93,7 @@ Active Directory フェデレーション サービス (AD FS) または他の I
 > 重要なアカウントが存在するディレクトリ、および使用される管理者ワークステーションを新しいクラウド サービスまたは既存のプロセスのどちらで管理するかを、選択する必要があります。 既存の管理および ID プロビジョニング プロセスを使用すると、一部のリスクを軽減できますが、攻撃者がオンプレミスのアカウントを侵害してクラウドにピボットするリスクが発生する可能性もあります。 異なるロールには異なる戦略を使用する場合もあります (たとえば、IT 管理者と部署管理者など)。 2 つのオプションがあります。 1 番目のオプションは、オンプレミスの Active Directory インスタンスと同期されない Azure AD アカウントを作成することです。 管理ワークステーションを Azure AD に参加させると、Microsoft Intune を使用して管理や修正プログラムの適用を行うことができます。 2 番目のオプションは、オンプレミスの Active Directory インスタンスに同期することによって、既存の管理者アカウントを使用することです。 管理とセキュリティに Active Directory ドメインの既存のワークステーションを使用します。
 
 ## <a name="manage-connected-tenants"></a>接続済みテナントを管理する
-セキュリティ組織では、リスクを評価し、組織のポリシーおよび規制の要件に従っているかどうかを判断するための、可視性が必要です。 セキュリティ組織が、運用環境とネットワークに ([Azure ExpressRoute](../../expressroute/expressroute-introduction.md) または[サイト間 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) 介して) 接続されているすべてのサブスクリプションに対する可視化を備えていることを、確認する必要があります。 Azure AD の[グローバル管理者/社内管理者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator)は、自分のアクセス権を[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールに昇格させて、環境に接続されているすべてのサブスクリプションとマネージド グループを見ることができます。
+セキュリティ組織では、リスクを評価し、組織のポリシーおよび規制の要件に従っているかどうかを判断するための、可視性が必要です。 セキュリティ組織が、運用環境とネットワークに ([Azure ExpressRoute](../../expressroute/expressroute-introduction.md) または[サイト間 VPN](../../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md) 介して) 接続されているすべてのサブスクリプションに対する可視化を備えていることを、確認する必要があります。 Azure AD の[グローバル管理者/社内管理者](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator-permissions)は、自分のアクセス権を[ユーザー アクセス管理者](../../role-based-access-control/built-in-roles.md#user-access-administrator)ロールに昇格させて、環境に接続されているすべてのサブスクリプションとマネージド グループを見ることができます。
 
 自分および自分のセキュリティ グループが、環境に接続されたすべてのサブスクリプションまたは管理グループを表示できることを確認するには、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](../../role-based-access-control/elevate-access-global-admin.md)」をご覧ください。 リスクの評価が済んだら、この昇格されたアクセス権を削除する必要があります。
 
@@ -239,7 +239,7 @@ RBAC などの機能を使用したデータ アクセス制御を適用しな�
 **ベスト プラクティス**: 緊急事態が発生した場合の "非常時" プロセスを用意します。
 **詳細**: 「[Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する](/azure/active-directory/users-groups-roles/directory-admin-roles-secure)」の手順に従います。
 
-**ベスト プラクティス**: すべての重要な管理者アカウントには、パスワードなし (推奨) または Multi-Factor Authentication を要求します。
+**ベスト プラクティス**: すべての重要な管理者アカウントには、パスワードレス (推奨) または Multi-Factor Authentication を要求します。
 **詳細**: [Microsoft Authenticator アプリ](/azure/active-directory/authentication/howto-authentication-phone-sign-in)を使用して、パスワードを使用せずに Azure AD アカウントにサインインします。 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) のように、Microsoft Authenticator は、キーベースの認証を使用して、デバイスに関連付けられていて生体認証または PIN を使用するユーザー資格情報を有効にします。
 
 次のような Azure AD 管理者ロールを永続的に割り当てられているすべての個人ユーザーには、サインイン時に Azure Multi-factor Authentication を要求します: グローバル管理者、特権ロール管理者、Exchange Online 管理者、SharePoint Online 管理者。 [管理者アカウントの Multi-Factor Authentication](/azure/active-directory/authentication/howto-mfa-userstates) を有効にし、管理者アカウントのユーザーが登録していることを確認します。

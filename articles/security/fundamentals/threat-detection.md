@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c7a31337888dcdc2a8f8b95c5203cc659882b038
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6278e848a82fb31939117fa9b916a92a2fb74a3e
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68927885"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129281"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
 
@@ -30,13 +30,13 @@ Azure では、アプリのデプロイ要件を満たすセキュリティを�
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) は、[Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) エディションの機能であり、リスク イベントと組織の ID に影響する可能性がある潜在的な脆弱性に関する概要を提供します。 Identity Protection は、[Azure AD 異常アクティビティ レポート](../../active-directory/active-directory-reporting-azure-portal.md)を通じて利用できる、既存の Azure AD 異常検出機能を使用して、リアルタイムの異常を検出できる新しいリスク イベントの種類を紹介します。
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) は、[Azure Active Directory Premium P2](../../active-directory/active-directory-whatis.md) エディションの機能であり、リスク検出と組織の ID に影響する可能性がある潜在的な脆弱性に関する概要を提供します。 Identity Protection では、[Azure AD 異常アクティビティ レポート](../../active-directory/active-directory-reporting-azure-portal.md)を通じて利用できる既存の Azure AD 異常検出機能を使用して、リアルタイムの異常を検出できる新しい種類のリスク検出を導入します。
 
 ![Azure AD Identity Protection の図](./media/threat-detection/azure-threat-detection-fig1.png)
 
-Identity Protection ではアダプティブな機械学習アルゴリズムとヒューリスティックを使用して、ID が侵害されていることを示している可能性のある異常とリスク イベントを検出します。 このデータを使用して、Identity Protection によりレポートとアラートが生成されます。ユーザーはこれらのリスク イベントを調査して、適切な修復または軽減のアクションを実行することができます。
+Identity Protection ではアダプティブな機械学習アルゴリズムとヒューリスティックを使用して、ID が侵害されていることを示している可能性のある異常とリスク検出を検出します。 このデータを使用して、Identity Protection によりレポートとアラートが生成されます。ユーザーはこれらのリスク検出を調査して、適切な修復または軽減のアクションを実行することができます。
 
-Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 リスク イベントを基にして、Identity Protection では各ユーザーのユーザー リスク レベルを計算します。これにより、リスク ベースのポリシーを構成して組織の ID を自動的に保護することができます。
+Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 リスク検出を基にして、Identity Protection では各ユーザーのユーザー リスク レベルを計算します。これにより、リスク ベースのポリシーを構成して組織の ID を自動的に保護することができます。
 
 これらのリスクに基づくポリシーと、Azure Active Directory および [EMS](../../active-directory/active-directory-conditional-access-azure-portal.md) によって提供される他の[条件付きアクセス コントロール](../../active-directory/active-directory-conditional-access-azure-portal.md)により、パスワードのリセットや多要素認証の適用などのアダプティブ修復アクションを自動的にブロックまたは提供できます。
 
@@ -46,14 +46,14 @@ Azure Active Directory Identity Protection は単なる監視とレポート作�
 
 Azure の Identity Protection によってユーザーのアカウントや ID を保護できる方法の例には次のようなものがあります。
 
-[リスク イベントとリスクの高いアカウントの検出](../../active-directory/identity-protection/overview.md)
--   機械学習とヒューリスティック ルールを使用して 6 種類のリスク イベントを検出します。
+[リスク検出とリスクの高いアカウントの検出](../../active-directory/identity-protection/overview.md)
+-   機械学習とヒューリスティック ルールを使用して 6 種類のリスク検出を検出します。
 -   ユーザー リスク レベルを計算します。
 -   脆弱性を目立たせることにより全体的なセキュリティ対策を向上させるためのカスタム推奨事項を提供します。
 
-[リスク イベントの調査](../../active-directory/identity-protection/overview.md)
--   リスク イベントの通知を送信します。
--   関連情報とコンテキスト情報を使用してリスク イベントを調査します。
+[リスク検出の調査](../../active-directory/identity-protection/overview.md)
+-   リスク検出の通知を送信します。
+-   関連情報とコンテキスト情報を使用してリスク検出を調査します。
 -   調査を追跡するための基本的なワークフローを提供します。
 -   パスワード リセットなどの修復アクションへの簡単なアクセスを提供します。
 
@@ -384,6 +384,6 @@ Azure Marketplace で使用可能な Web アプリケーション ファイア�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Security Center の検出機能](../../security-center/security-center-detection-capabilities.md): Azure リソースをターゲットとするアクティブな脅威を特定し、迅速に対応するうえで必要な分析情報を取得するのに役立ちます。
+- [今日の脅威への対応](../../security-center/security-center-alerts-overview.md#respond-threats):Azure リソースをターゲットとするアクティブな脅威を特定し、迅速に対応するうえで必要な分析情報を取得するのに役立ちます。
 
 - [Azure SQL Database の脅威の検出](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/): ご利用のデータベースに対する潜在的な脅威の問題に対処するのに役立ちます。

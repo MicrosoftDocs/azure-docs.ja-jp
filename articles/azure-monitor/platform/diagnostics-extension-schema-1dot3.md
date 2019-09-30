@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: e303fe5ca1869249d57373aab9c60a5f92b7ea9c
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "60238064"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735098"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Microsoft Azure Diagnostics の 1.3 以降の構成スキーマ
 > [!NOTE]
@@ -27,13 +27,11 @@ ms.locfileid: "60238064"
 >
 > このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 
-このページは、バージョン 1.3 以降 (Azure SDK 2.4 以降) に対して有効です。 新しい構成セクションには、追加されたバージョンがコメントで示されています。  
+このページは、バージョン 1.3 以降 (Azure SDK 2.4 以降) に対して有効です。 新しい構成セクションには、追加されたバージョンがコメントで示されています。 スキーマのバージョン 1.0 と 1.2 は、アーカイブされ、使用できなくなりました。 
 
 ここで説明する構成ファイルは、診断モニターの開始時に、診断構成設定を設定するために使用されます。  
 
 この拡張機能は、Application Insights と Log Analytics が含まれる Azure Monitor など、他の Microsoft 診断製品と組み合わせて使用します。
-
-
 
 次の PowerShell コマンドを実行して、パブリック構成ファイルのスキーマ定義をダウンロードします。  
 
@@ -610,7 +608,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  基本的な Azure ログのバッファー構成を定義します。  
 
-|Attribute|Type|説明|  
+|Attribute|種類|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferLogLevelFilter**|**string**|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** で、すべてのログを転送します。 他の有効値は、(情報量が多いものから順に) **Verbose**、**Information**、**Warning**、**Error**、**Critical** となります。|  
@@ -642,11 +640,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  診断データの送信先を定義します。 Application Insights サービスなど。  
 
-|Attribute|Type|説明|  
+|Attribute|種類|説明|  
 |---------------|----------|-----------------|  
 |**name**|string|シンク名を特定する文字列。|  
 
-|要素|Type|説明|  
+|要素|種類|説明|  
 |-------------|----------|-----------------|  
 |**Application Insights**|string|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
 |**Channels**|string|追加フィルタリングごとに 1 つ|  
@@ -658,7 +656,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  シンクを通過するログ データのストリームのフィルターを定義します。  
 
-|要素|Type|説明|  
+|要素|種類|説明|  
 |-------------|----------|-----------------|  
 |**Channel**|string|このページの他の場所の説明を参照してください。|  
 

@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 785e9ec77dea749546e3f1d59007706eac14f2ea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/24/2019
+ms.openlocfilehash: 0803f56312ca9b650987c2203c4271cff21df9f8
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067023"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260361"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>エクスポートとインポートを使用した PostgreSQL データベースの移行
 [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) を使用することで、PostgreSQL データベースをスクリプト ファイルに抽出できます。また、[psql](https://www.postgresql.org/docs/current/static/app-psql.html) を使用することで、そのファイルから対象のデータベースにデータをインポートできます。
@@ -19,12 +19,12 @@ ms.locfileid: "65067023"
 ## <a name="prerequisites"></a>前提条件
 このハウツー ガイドの手順を実行するには、以下が必要です。
 - 内部へのアクセスとデータベース化を許可するファイアウォール規則を備えた [Azure Database for PostgreSQL サーバー](quickstart-create-server-database-portal.md)
-- インストールされた [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) コマンド ライン ユーティリティ
-- インストールされた [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) コマンド ライン ユーティリティ
+- インストールされた [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) コマンド ライン ユーティリティ
+- インストールされた [psql](https://www.postgresql.org/docs/current/static/app-psql.html) コマンド ライン ユーティリティ
 
 次の手順に従って PostgreSQL データベースのエクスポートとインポートを行います。
 
-## <a name="create-a-script-file-using-pgdump-that-contains-the-data-to-be-loaded"></a>pg_dump を使用して読み込むデータが含まれたスクリプト ファイルを作成する
+## <a name="create-a-script-file-using-pg_dump-that-contains-the-data-to-be-loaded"></a>pg_dump を使用して読み込むデータが含まれたスクリプト ファイルを作成する
 オンプレミスまたは VM 内にある既存の PostgreSQL データベースを SQL スクリプト ファイルにエクスポートするには、既存の環境で次のコマンドを実行します。
 ```bash
 pg_dump –-host=<host> --username=<name> --dbname=<database name> --file=<database>.sql

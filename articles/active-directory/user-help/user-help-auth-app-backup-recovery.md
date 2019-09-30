@@ -8,41 +8,41 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/24/2019
+ms.date: 08/22/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba99001159277d9d221910cafa4f5165ae2bd812
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 4b4e45fbe6533832765e90e5cf244f0dcbcf0b72
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880768"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035130"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
 
 **適用対象:**
 
-- iOS デバイス
+- バージョン 5.7.0 以降を実行している iOS デバイス
+
+- バージョン 6.6.0 以降を実行している Android デバイス
 
 Microsoft Authenticator アプリは、アカウント資格情報と、アカウントの順序などの関連アプリ設定をクラウドにバックアップします。 バックアップ後に、アプリを使用して情報を新しいデバイスに復旧することもできます。これにより、ロックアウトやアカウントの再作成の必要性を回避できる可能性があります。
 
+バックアップの保存場所ごとに個人用の Microsoft アカウントが 1 つ必要になりますが、iOS では iCloud アカウントも必要になります。 複数のアカウントをその 1 つの場所に保存しておくことができます。 たとえば、個人用アカウント、職場または学校アカウントのほか、Facebook や Google などの Microsoft 以外の個人用アカウントがある場合があります。
+
 > [!IMPORTANT]
-> バックアップの保存場所ごとに 1 つの個人用 Microsoft アカウントと 1 つの iCloud アカウントが必要です。 ただし、その保存場所内で複数のアカウントをバックアップできます。 たとえば、個人用アカウント、学校のアカウントと、Facebook や Google などのサードパーティのアカウントがある場合があります。
->
-> 個人およびサードパーティのアカウントの資格情報のみが格納されます。これには、本人確認を行うために必要なユーザー名とアカウント確認コードが含まれます。 電子メールやファイルなど、アカウントに関連付けられているその他の情報は格納されません。 アカウントをなんらかの方法で他の製品やサービスに関連付けたり共有したりすることはありません。 最後に、IT 管理者がこれらのアカウントに関する情報を取得することはありません。
+> 保存されるのは、個人およびサードパーティのアカウントの資格情報のみです。これには、本人確認に必要なユーザー名とアカウント確認コードが含まれます。 電子メールやファイルなど、アカウントに関連付けられているその他の情報は格納されません。 アカウントをなんらかの方法で他の製品やサービスに関連付けたり共有したりすることはありません。 最後に、IT 管理者がこれらのアカウントに関する情報を取得することはありません。
 
 ## <a name="back-up-your-account-credentials"></a>アカウントの資格情報のバックアップ
 
-資格情報をバックアップする前に、次の両方が必要です。
+資格情報をバックアップする前に、次のものが必要です。
 
 - 復旧アカウントとして機能する個人用 [Microsoft アカウント](https://account.microsoft.com/account)。
 
-- 実際の保存場所となる [iCloud アカウント](https://www.icloud.com/)。
+- **iOS の場合のみ**、実際の保存場所用の [iCloud アカウント](https://www.icloud.com/)が必要です。
 
-両方のアカウントへのサインインを要求すると、バックアップ情報のセキュリティが向上します。
-
-### <a name="to-turn-on-cloud-backup"></a>クラウド バックアップを有効にするには
+### <a name="to-turn-on-cloud-backup-for-ios-devices"></a>iOS デバイスのクラウド バックアップを有効にするには
 
 - iOS デバイスで、 **[設定]** 、 **[バックアップ]** の順に選択し、 **[iCloud のバックアップ]** を有効にします。
 
@@ -50,13 +50,21 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
     ![iCloud のバックアップ設定の場所を表示している iOS の設定画面](./media/user-help-auth-app-backup-recovery/backup-and-recovery-turn-on.png)
 
+### <a name="to-turn-on-cloud-backup-for-android-devices"></a>Android デバイスのクラウド バックアップを有効にするには
+
+- Android デバイスで、 **[設定]** 、 **[バックアップ]** の順に選択し、 **[Cloud backup]\(クラウド バックアップ\)** を有効にします。
+
+    アカウントの資格情報が自分のクラウド アカウントにバックアップされます。
+
+    ![バックアップ設定の場所を表示している、Android の設定画面](./media/user-help-auth-app-backup-recovery/backup-and-recovery-turn-on-android.png)
+
 ## <a name="recover-your-account-credentials-on-your-new-device"></a>アカウント資格情報を新しいデバイスに復旧する
 
-情報をバックアップしたときに設定したのと同じ Microsoft 復旧アカウントを使用して、アカウント資格情報を iCloud アカウントから復旧できます。
+お使いのアカウントの資格情報は自分のクラウド アカウントから復旧できますが、最初に、復旧するアカウントが Microsoft Authenticator アプリに存在しないことを確認する必要があります。 たとえば、個人用の Microsoft アカウントを復旧する場合は、Authenticator アプリでまだ個人用の Microsoft アカウントが設定されていないことを確認する必要があります。 既存のアカウントを誤って上書きまたは消去しないようにするために、この確認は重要です。
 
 ### <a name="to-recover-your-information"></a>情報を復旧するには
 
-1. iOS デバイスで、Microsoft Authenticator アプリを開き、画面の下部から **[回復の開始]** を選択します。
+1. お使いのモバイル デバイスで、Microsoft Authenticator アプリを開き、画面の下部から **[回復の開始]** を選択します。
 
     ![[回復の開始] をクリックする場所を示している Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-begin-recovery.png)
 
@@ -68,7 +76,7 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
 ## <a name="recover-additional-accounts-requiring-more-verification"></a>さらに検証が必要な追加のアカウントを復旧する
 
-個人用アカウント、職場アカウント、または学校アカウントでプッシュ通知を使用する場合、情報を復旧する前に追加の検証を提供する必要があることを示すアラートが画面に表示されます。 プッシュ通知では、ネットワーク経由で送信されることのない、特定のデバイスに関連付けられた資格情報を使用する必要があるので、デバイスで資格情報を作成する前に本人確認が必要です。
+個人用アカウントや職場または学校アカウントでプッシュ通知を使用する場合、情報を復旧する前に追加認証を提供する必要があることを示すアラートが画面に表示されます。 プッシュ通知では、ネットワーク経由で送信されることのない、特定のデバイスに関連付けられた資格情報を使用する必要があるので、デバイスで資格情報を作成する前に本人確認が必要です。
 
 個人用 Microsoft アカウントの場合、代替電子メールや電話番号と共にパスワードを入力して本人確認することができます。 職場または学校アカウントの場合は、アカウント プロバイダーから提供された QR コードをスキャンする必要があります。
 
@@ -93,27 +101,31 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
     ![QR コードをスキャンできる Microsoft Authenticator アプリ](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
+    >QR コードとその取得方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、[Microsoft Authenticator アプリの概要](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)に関するページまたは [Authenticator アプリを使用するためのセキュリティ情報の設定](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)に関するページを参照してください。
     >
-    >QR コードを取得する方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、「[Microsoft Authenticator アプリの概要](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install)」または「[Authenticator アプリを使用するようにセキュリティ情報を設定する](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)」を参照してください。
+    >初めて Microsoft Authenticator アプリを設定する場合は、アプリによるカメラへのアクセスを許可するか (iOS)、またはアプリによる画像の撮影とビデオの録画を許可するか (Android) を確認するメッセージが表示されることがあります。 認証アプリがカメラにアクセスして、次の手順で QR コードを撮影できるようにするには、 **[許可]** を選択する必要があります。 カメラを許可しない場合でも、認証アプリを設定できますが、手動でコード情報を追加する必要があります。 コードを手動で追加する方法の詳細については、「[アプリにアカウントを手動で追加する](user-help-auth-app-add-account-manual.md)」を参照してください。
 
-## <a name="troubleshooting-backup-and-recovery-problems"></a>バックアップと復旧に関する問題のトラブルシューティング
+## <a name="troubleshoot-backup-and-recovery-problems"></a>バックアップと復旧に関する問題のトラブルシューティング
 
 バックアップを使用できない理由はいくつかあります。
 
-- **オペレーティング システムの変更。** バックアップは、携帯電話のオペレーティング システムによって提供されるクラウド ストレージ オプションに保存されるので、Android と iOS の間を切り替えるとバックアップを使用できません。 このような状況では、アプリ内にアカウントを手動で再作成する必要があります。
+- **オペレーティング システムの変更。** バックアップは、iOS の場合は iCloud、Android の場合は Microsoft のクラウド ストレージ プロバイダーに保存されます。 つまり、Android デバイスと iOS デバイスを切り替えるとバックアップは利用できなくなります。 切り替える場合は、Microsoft Authenticator アプリ内で手動でアカウントを作成し直す必要があります。
 
-- **ネットワークまたはパスワードの問題。** ネットワークに接続し、前回 iPhone で使用したのと同じ AppleId を使用して iCloud アカウントにサインインしていることを確認します。
+- **ネットワークの問題。** ネットワーク関連の問題が発生している場合は、ネットワークに接続していることと自分のアカウントに正しくサインインしていることを確認してください。
+
+- **アカウントの問題。** アカウント関連の問題が発生している場合は、自分のアカウントに正しくサインインしていることを確認してください。 iOS の場合、これは、お使いの iPhone と同じ AppleID アカウントを使用して iCloud にサインインする必要があることを意味します。
 
 - **不注意による削除。** 以前のデバイスから、またはクラウド ストレージ アカウントの管理中にバックアップ アカウントを削除した可能性があります。 このような状況では、アプリ内にアカウントを手動で再作成する必要があります。
 
 - **既存の Microsoft Authenticator アカウント。** Microsoft Authenticator アプリ内にアカウントを既に設定してある場合、アプリではバックアップしたアカウントを復旧できません。 復旧防止により、アカウントの詳細情報が古い情報で上書きされないことが保証されます。 このような状況では、バックアップを復旧する前に Authenticator アプリで設定した既存のアカウントから既存のアカウント情報を削除する必要があります。
 
+- **バックアップが最新ではない。** バックアップ情報が古い場合は、Microsoft の回復アカウントに再度サインインすることで、その情報を更新するように求められることがあります。 回復アカウントとは、バックアップを保存するために最初に使用した個人用の Microsoft アカウントです。 サインインが必要な場合は、メニューまたは操作バーに赤いドットが表示されます。 この赤いドットを選択すると、もう一度サインインして情報を更新するように求められます。
+
 ## <a name="next-steps"></a>次の手順
 
 アカウントの資格情報をバックアップし、新しいデバイスに復旧したので、Microsoft Authenticator アプリを使用した本人確認に進むことができます。 詳細については、[Microsoft Authenticator アプリを使用してアカウントにサインインする方法](user-help-sign-in.md)に関するページを参照してください。
 
-## <a name="related-topics"></a>関連トピック
+## <a name="related-articles"></a>関連記事
 
 - [Microsoft Authenticator アプリとは](user-help-auth-app-overview.md)
 

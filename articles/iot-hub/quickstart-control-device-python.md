@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: fe0c16962eef38ac26490eb7928d1705ef63a217
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6a3be3733c5041576d5db49256056ac4f0c03a7f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68355026"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002998"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>クイック スタート:IoT ハブに接続されたデバイスを制御する (Python)
 
@@ -34,22 +34,6 @@ IoT Hub は、IoT デバイスからクラウドに大量の利用統計情報�
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-
-このクイック スタートで実行する 2 つのサンプル アプリケーションは、Python を使って書かれています。 現在、Python 用の Microsoft Azure IoT SDK は、プラットフォームごとに特定のバージョンの Python のみをサポートしています。 詳細については、[Python SDK Readme](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues) を参照してください。
-
-このクイック スタートでは、Windows の開発用コンピューターを使用することを前提としています。 Windows システムの場合、[Python 3.6.x](https://www.python.org/downloads/release/python-368/) のみがサポートされています。 選択する Python インストーラーは、ご使用のシステムのアーキテクチャによって異なります。 ご使用のシステムの CPU アーキテクチャが 32 ビットである場合は、x86 インストーラーをダウンロードします。64 ビット アーキテクチャの場合は、x86-64 インストーラーをダウンロードします。 さらに、[Visual Studio 2015、2017、および 2019 用の Microsoft Visual C++ 再頒布可能パッケージ](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) が、使用しているアーキテクチャ (x86 または x64) 用にインストールされていることを確認してください。
-
-他のプラットフォームに対応する Python を [Python.org](https://www.python.org/downloads/) からダウンロードできます。
-
-開発コンピューターに現在インストールされている Python のバージョンは、次のいずれかのコマンドを使って確認できます。
-
-```python
-python - -version
-```
-
-```python
-python3 - -version
-```
 
 次のコマンドを実行して、Microsoft Azure IoT Extension for Azure CLI を Cloud Shell インスタンスに追加します。 IoT Hub、IoT Edge、IoT Device Provisioning Service (DPS) 固有のコマンドが Azure CLI に追加されます。
 
@@ -114,7 +98,7 @@ az extension add --name azure-cli-iot-ext
 
 ## <a name="listen-for-direct-method-calls"></a>ダイレクト メソッドの呼び出しをリッスンする
 
-シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイス固有エンドポイントに接続し、シミュレートされた利用統計情報を送信して、ハブからのダイレクト メソッド呼び出しをリッスンします。 このクイック スタートでは、ハブからのダイレクト メソッド呼び出しは、利用統計情報の送信間隔を変更するようデバイスに指示します。 シミュレートされたデバイスは、ダイレクト メソッドを実行した後、ハブに受信確認を返送します。
+シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイス固有エンドポイントに接続し、シミュレートされた利用統計情報を送信して、ハブからのダイレクト メソッド呼び出しをリッスンします。 このクイック スタートでは、ハブからのダイレクト メソッド呼び出しは、利用統計情報の送信間隔を変更するようデバイスに指示します。 シミュレートされたデバイスでは、ダイレクト メソッドを実行した後、ハブに受信確認が返送されます。
 
 1. ローカル ターミナル ウィンドウで、サンプルの Python プロジェクトのルート フォルダーに移動します。 次に、**iot-hub\Quickstarts\simulated-device-2** フォルダーに移動します。
 
@@ -140,7 +124,7 @@ az extension add --name azure-cli-iot-ext
 
 ## <a name="call-the-direct-method"></a>ダイレクト メソッドを呼び出す
 
-バックエンド アプリケーションは、IoT ハブ上のサービス側エンドポイントに接続します。 アプリケーションは、IoT ハブを通してデバイスへのダイレクト メソッド呼び出しを行った後、受信確認をリッスンします。 通常、IoT Hub のバックエンド アプリケーションはクラウドで実行されます。
+バックエンド アプリケーションは、IoT ハブ上のサービス側エンドポイントに接続します。 アプリケーションにより、IoT ハブを通してデバイスへのダイレクト メソッド呼び出しが行われた後、受信確認がリッスンされます。 通常、IoT Hub のバックエンド アプリケーションはクラウドで実行されます。
 
 1. 別のローカル ターミナル ウィンドウで、サンプルの Python プロジェクトのルート フォルダーに移動します。 その後、**iot-hub\Quickstarts\back-end-application** フォルダーに移動します。
 
@@ -160,7 +144,7 @@ az extension add --name azure-cli-iot-ext
     python BackEndApplication.py
     ```
 
-    次のスクリーンショットは、アプリケーションがデバイスに対してダイレクト メソッド呼び出しを行い、受信確認を受け取ったときの出力を示します。
+    次のスクリーンショットは、アプリケーションによりデバイスに対してダイレクト メソッド呼び出しが行われ、受信確認が受診されたときの出力を示します。
 
     ![バックエンド アプリケーションを実行する](./media/quickstart-control-device-python/BackEndApplication.png)
 

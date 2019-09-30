@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98b72d9b5e59155bb7215181fd1ecd336126ee6
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 4001f3c88b676a2786159946a8981823e18ea5f6
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440967"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274410"
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -179,7 +179,7 @@ ms.locfileid: "67440967"
   >
 * **Q:電子メールと SMS のワンタイム パスコードの有効期間はどのくらいですか。**
 
-  > **A:** パスワードのリセットのセッション有効期間は 15 分です。 パスワード リセット操作の開始からパスワードをリセットするまで、ユーザーに 15 分の時間が与えられます。 この期間を経過すると、電子メールと SMS のワンタイム パスコードは無効になります。
+  > **A:** パスワードのリセットのセッション有効期間は 15 分です。 パスワード リセット操作の開始からパスワードをリセットするまで、ユーザーに 15 分の時間が与えられます。 メールと SMS のワンタイム パスコードは、パスワード リセット セッション中に 5 分間有効です。
   >
   >
 * **Q:ユーザーがパスワードをリセットするのをブロックできますか。**

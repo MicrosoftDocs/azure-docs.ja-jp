@@ -1,78 +1,127 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure 上の Resource Manager のドキュメント
+### YamlMime:Landing
+title: Azure Resource Manager のドキュメント
+summary: Resource Manager テンプレートは JavaScript Object Notation (JSON) ファイルであり、プロジェクトのインフラストラクチャと構成が定義されています。
 metadata:
-  title: Azure 上の Resource Manager のドキュメント - チュートリアル、サンプル、リファレンス、リソース
-  description: Resource Manager を使用して、ソリューション リソース (グループなど) をデプロイおよび管理したり、一貫性のある繰り返し可能なリソースのデプロイ用にテンプレートを作成したりする方法について説明します。
+  title: Azure Resource Manager のドキュメント
+  description: Azure Resource Manager テンプレートを開発し、それらを使用して Azure リソースをデプロイする方法について説明します
   services: azure-resource-manager
   ms.service: azure-resource-manager
-  keywords: 'Resource Manager, azure, devops, チュートリアル, サンプル, リファレンス, ドキュメント'
-  author: mumian
-  manager: dougeby
-  ms.author: jgao
+  ms.subservice: na
   ms.topic: landing-page
-  ms.date: 12/10/2018
-abstract:
-  description: Resource Manager を使用して、グループなどのソリューション リソースをデプロイ、監視、管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、リソース グループを設定し、一貫性のある繰り返し可能なデプロイ用にテンプレートを作成する方法を紹介します。
-sections:
-  - title: クイック スタート
-    items:
-      - type: paragraph
-        text: さまざまなツールを使用して、Azure リソースをデプロイするための Azure Resource Manager テンプレートを作成します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure portal を使用してテンプレートを生成する
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Visual Studio Code を使用してテンプレートを作成する
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Visual Studio を使用してテンプレートを作成する
-            href: 'https://docs.microsoft.com/azure/azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy'
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure リソースをデプロイするための Azure Resource Manager テンプレートを作成する方法を説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts">Resource Manager テンプレートの活用リファレンス</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-multiple-instances">Azure リソースの複数のインスタンスを作成</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-templates-with-dependent-resources">リソースのデプロイ順序の設定</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-conditions">使用条件</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-use-key-vault">Azure Key Vault の統合</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-create-linked-templates">リンク済みテンプレートの作成</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions">仮想マシン拡張機能のデプロイ</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-deploy-sql-extensions-bacpac">SQL 拡張機能のデプロイ</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-secure-artifacts">テンプレート成果物のセキュリティ保護</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/deployment-manager-tutorial">安全なデプロイ プラクティスの使用</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot">Troubleshoot template deployments (テンプレート デプロイのトラブルシューティング)</a>'
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 一般的なデプロイ タスク用のサンプル構成テンプレート。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://azure.microsoft.com/resources/templates/">Azure クイックスタート テンプレート</a>'
-          - html: '<a href="https://resources.azure.com/">Azure Resource Explorer (プレビュー)</a>'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: テンプレート
-            html: <p><a href="/azure/templates/">テンプレート リファレンス</a></p><p><a href="/azure/resource-group-template-functions">テンプレート関数</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">UI 定義関数</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">UI 定義要素</a></p>
-          - title: コマンド ライン
-            html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/resources/">REST API</a></p>
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 09/25/2019
+  ms.openlocfilehash: 4981000d942bfa49503a63ce2a82ec994efc3c6e
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71299505"
+landingContent:
+- title: Resource Manager について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Resource Manager とは
+      url: resource-group-overview.md
+    - text: Resource Manager テンプレートとは
+      url: template-deployment-overview.md
+  - linkListType: concept
+    links:
+    - text: ベスト プラクティス
+      url: template-best-practices.md
+    - text: デプロイ モード
+      url: deployment-modes.md
+    - text: リンク済みテンプレート
+      url: resource-group-linked-templates.md
+    - text: サブスクリプション レベルのデプロイ
+      url: deploy-to-subscription.md
+    - text: Deployment Manager
+      url: deployment-manager-overview.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: テンプレートの作成 - ポータル
+      url: resource-manager-quickstart-create-templates-use-the-portal.md
+    - text: テンプレートの作成 - VS Code
+      url: resource-manager-quickstart-create-templates-use-visual-studio-code.md
+    - text: テンプレートの作成 - Visual Studio
+      url: vs-azure-tools-resource-groups-deployment-projects-create-deploy.md
+  - linkListType: tutorial
+    links:
+    - text: 複数のインスタンスのデプロイ
+      url: resource-manager-tutorial-create-multiple-instances.md
+    - text: デプロイ順序の設定
+      url: resource-manager-tutorial-create-templates-with-dependent-resources.md
+    - text: キー コンテナーの統合
+      url: resource-manager-tutorial-use-key-vault.md
+- title: テンプレートの開発
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: VS Code を使用する
+      url: resource-manager-tools-vs-code.md
+    - text: 関数を使用する
+      url: resource-group-template-functions.md
+    - text: パラメーターを定義する
+      url: template-parameters.md
+    - text: 変数の定義
+      url: template-variables.md
+    - text: リソースを定義する
+      url: child-resource-name-type.md
+    - text: 出力を定義する
+      url: template-outputs.md
+  - linkListType: reference
+    links:
+    - text: Azure クイック スタート テンプレート
+      url: /resources/templates/
+- title: テンプレートのデプロイ
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell を使用する方法
+      url: resource-group-template-deploy.md
+    - text: CLI を使用する方法
+      url: resource-group-template-deploy-cli.md
+    - text: ポータルを使用する方法
+      url: resource-group-template-deploy-portal.md
+    - text: REST API を使用する方法
+      url: resource-group-template-deploy-rest.md
+- title: テンプレートの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: テンプレートのエクスポート
+      url: export-template-portal.md
+    - text: CI/CD
+      url: vs-resource-groups-project-devops-pipelines.md
+- title: リソースの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: リソースの移動
+      url: resource-group-move-resources.md
+    - text: リソースへのタグ付け
+      url: resource-group-using-tags.md
+    - text: リソースのロック
+      url: resource-group-lock-resources.md
+- title: 監視とトラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: アクティビティ ログを表示する
+      url: resource-group-audit.md
+    - text: デプロイ操作を表示する
+      url: resource-manager-deployment-operations.md
+    - text: デプロイ エラーのトラブルシューティング
+      url: resource-manager-common-deployment-errors.md
+- title: リファレンス コンテンツの確認
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: リソース プロバイダーと種類
+      url: resource-manager-supported-services.md
+    - text: テンプレート リファレンス
+      url: /azure/templates/

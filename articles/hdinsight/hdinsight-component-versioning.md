@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 06/07/2019
-ms.openlocfilehash: 30eb922e17810ddd53166a702b5fc513684f2140
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 8bcb6caa418f7bd5c5241d06dbda69ccba360f2c
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742372"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984465"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用できる Apache Hadoop コンポーネントおよびバージョンとは
 
@@ -31,12 +31,10 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 
 | コンポーネント | HDInsight 4.0 | HDInsight 3.6 (既定値) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 |
 |---------------------------|---------------|-----------------------------|---------------|---------------|---------------|----------------------|
-| Hortonworks Data Platform | 3.0 | 2.6 | 2.5 | 2.4 | 2.3 | 2.2 |
 | Apache Hadoop と YARN | 3.1.1 | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
 | Apache Tez | 0.9.1 | 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.5.2 |
 | Apache Pig | 0.16.0 | 0.16.0 | 0.16.0 | 0.15.0 | 0.15.0 | 0.14.0 |
-| Apache Hive と HCatalog | - | 1.2.1 | 1.2.1 | 1.2.1 | 1.2.1 | 0.14.0 |
-| Apache Hive | 3.1.0 | 2.1.0 | - | - | - | - |
+| Apache Hive | 3.1.0 | 2.1.0、1.2.1 | - | - | - | - |
 | Apache Tez Hive2 | - | 0.8.4 | - | - | - | - |
 | Apache Ranger | 1.1.0 | 0.7.0 | 0.6.0 | - | - | - |
 | Apache HBase | 2.0.1 | 1.1.2 | 1.1.2 | 1.1.2 | 1.1.1 | 0.98.4 |
@@ -177,60 +175,7 @@ _提供終了日_ とは、その日を過ぎると HDInsight でクラスター
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>クラスターの既定のノード構成と仮想マシン サイズ
 
-次の表に、HDInsight クラスターの既定の仮想マシン (VM) サイズを示します。  このグラフは、HDInsight クラスターをデプロイする PowerShell または Azure CLI スクリプトを作成するときに使用する、VM のサイズを理解する必要があります。
-
-> [!IMPORTANT]  
-> 1 つのクラスターに 32 個を超えるワーカー ノードが必要な場合、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択する必要があります。
-
-* ブラジル南部と西日本を除くすべてのサポートされているリージョン:
-
-|クラスターの種類|Hadoop|hbase|Interactive Query|Storm|Spark|ML Server|Kafka|
-|---|---|---|---|---|---|---|---|
-|ヘッド: 既定の VM サイズ|D12 v2|D12 v2|D13 v2|A3|D12 v2|D12 v2|D3v2|
-|ヘッド: 推奨される VM サイズ|D3 v2|D3 v2|D13|A4 v2|D12 v2|D12 v2|A2M v2|
-||D4 v2|D4 v2|D14|A8 v2|D13 v2|D13 v2|D3 v2|
-||D12 v2|D12 v2|E16 v3|A2m v2|D14 v2|D14 v2|D4 v2|
-||E4 v3|E4 v3|E32 v3|E4 v3|E4 v3|E4 v3|D12 v2|
-|worker: 既定の VM サイズ|D4 v2|D4 v2|D14 v2|D3 v2|D13 v2|D4 v2|4 D12v2 (ブローカーあたり 2 S30 ディスク)|
-|worker: 推奨される VM サイズ|D3 v2|D3 v2|D13|D3 v2|D4 v2|D4 v2|D13 v2|
-||D4 v2|D4 v2|D14|D4 v2|D12 v2|D12 v2|DS12 v2|
-||D12 v2|D12 v2|E16 v3|D12 v2|D13 v2|D13 v2|DS13 v2|
-||E4 v3|E4 v3|E20 v3|E4 v3|D14 v2|D14 v2|E4 v3|
-||||E32 v3||E16 v3|E16 v3|ES4 v3|
-||||E64 v3||E20 v3|E20 v3|E8 v3|
-||||||E32 v3|E32 v3|ES8 v3|
-||||||E64 v3|E64 v3||
-|ZooKeeper: 既定の VM サイズ||A4 v2|A4 v2|A4 v2||A2 v2|D3v2|
-|ZooKeeper: 推奨される VM サイズ||A4 v2||A2 v2|||A2M v2|
-|||A8 v2||A4 v2|||D3 v2|
-|||A2m v2||A8 v2|||E8 v3|
-|ML サービス: 既定の VM サイズ||||||D4 v2||
-|ML サービス: 推奨される VM サイズ||||||D4 v2||
-|||||||D12 v2||
-|||||||D13 v2||
-|||||||D14 v2||
-|||||||E16 v3||
-|||||||E20 v3||
-|||||||E32 v3||
-|||||||E64 v3||
-
-* ブラジル南部と西日本のみ (v2 サイズはありません):
-
-  | クラスターの種類 | Hadoop | hbase | Interactive Query |Storm | Spark | ML サービス |
-  | --- | --- | --- | --- | --- | --- | --- |
-  | ヘッド: 既定の VM サイズ |D12 |D12  | D13 |A3 |D12 |D12 |
-  | ヘッド: 推奨される VM サイズ |D3、<br/> D4、<br/> D12 |D3、<br/> D4、<br/> D12  | D13、<br/> D14 |A3、<br/> A4、<br/> A5 |D12、<br/> D13、<br/> D14 |D12、<br/> D13、<br/> D14 |
-  | worker: 既定の VM サイズ |D4 |D4  |  D14 |D3 |D13 |D4 |
-  | worker: 推奨される VM サイズ |D3、<br/> D4、<br/> D12 |D3、<br/> D4、<br/> D12  | D13、<br/> D14 |D3、<br/> D4、<br/> D12 |D4、<br/> D12、<br/> D13、<br/> D14 | D4、<br/> D12、<br/> D13、<br/> D14 |
-  | ZooKeeper: 既定の VM サイズ | |A4 v2 | A4 v2| A4 v2 | | A2 v2|
-  | ZooKeeper: 推奨される VM サイズ | |A2、<br/> A3、<br/> A4 | |A2、<br/> A3、<br/> A4 | | |
-  | ML サービス: 既定の VM サイズ | | | | | |D4 |
-  | ML サービス: 推奨される VM サイズ | | | | | |D4、<br/> D12、<br/> D13、<br/> D14 |
-
-> [!NOTE]
-> - ヘッドは、Storm クラスター タイプでは *Nimbus* と呼ばれます。
-> - Worker は、Storm クラスター タイプでは *Supervisor* と呼ばれます。
-> - Worker は、HBase クラスター タイプでは *Region* と呼ばれます。
+クラスター用に選択する仮想マシンの SKU の詳細については、[Azure HDInsight のクラスター構成の詳細](hdinsight-supported-node-configuration.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 - [HDInsight で Apache Hadoop、Spark、その他のクラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)

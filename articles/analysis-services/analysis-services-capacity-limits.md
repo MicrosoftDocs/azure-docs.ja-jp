@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 08/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 0ffbffc788baaffd4a0532c3918ed82cc3eaf5c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 40a5b68a12724f2574af19bb10c276c54c5afba0
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61023556"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997602"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Analysis Services のリソースとオブジェクトの制限
 
@@ -21,38 +21,7 @@ ms.locfileid: "61023556"
 
 ## <a name="tier-limits"></a>レベルの制限
 
-### <a name="developer-tier"></a>Developer レベル
-
-このレベルは、評価、開発、およびテスト シナリオで推奨されます。 プランには Standard レベルと同じ機能が含まれますが、処理能力、QPU、およびメモリ サイズが制限されています。 クエリ レプリカのスケール アウトは、このレベルでは利用できません。 このレベルでは、SLA は適用されません。
-
-|プラン  |QPU  |メモリ (GB)  |
-|---------|---------|---------|
-|D1    |    20     |    3     |
-
-
-### <a name="basic-tier"></a>Basic レベル
-
-このレベルは、表形式モデルが小さく、ユーザーのコンカレンシー数が少なく、データの更新要件がシンプルな運用ソリューションで推奨されます。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 パースペクティブ、複数のパーティション、および DirectQuery 表形式モデル機能は、このレベルではサポートされません。  
-
-|プラン  |QPU  |メモリ (GB)  |
-|---------|---------|---------|
-|B1    |    40     |    10     |
-|B2    |    80     |    20     |
-
-### <a name="standard-tier"></a>Standard レベル
-
-このレベルは、ユーザーの柔軟な同時実行が必要で、データ モデルが急速に拡大するミッション クリティカルな運用環境のアプリケーションに適しています。 ほぼリアルタイムでデータ モデルを更新する高度なデータ更新をサポートし、すべての表形式のモデリング機能をサポートします。
-
-|プラン  |QPU  |メモリ (GB)  |
-|---------|---------|---------|
-|S1    |    40     |    10     |
-|S2    |    100     |    25     |
-|S3    |    200     |    50     |
-|S4    |    400     |    100     |
-|S8*    |    320     |    200     |
-|S9*    |    640    |    400     |
-
-\* すべてのリージョンで利用できるわけではありません。  
+Developer、Basic、Standard の各レベルの QPU とメモリの制限については、[「Azure Analysis Services の価格」ページ](https://azure.microsoft.com/pricing/details/analysis-services/)を参照してください。
 
 ## <a name="object-limits"></a>オブジェクト制限
 

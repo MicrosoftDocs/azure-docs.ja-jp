@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/22/2019
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6c8ce090039e3d5cc85c86d920710294de2165f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 176762e0d1c007f924d779a1b77dd52c7ed56e01
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748911"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69981484"
 ---
 # <a name="monitor-workload---azure-portal"></a>ワークロードを監視する - Azure portal
 
@@ -36,7 +36,7 @@ Log Analytics ワークスペースの参照ブレードに移動し、ワーク
 
 ![Analytics ワークスペースを追加する](media/sql-data-warehouse-monitor/add_analytics_workspace_2.png)
 
-ワークスペースの詳細については、次の[ドキュメント](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#create-a-workspace)を参照してください。
+ワークスペースの詳細については、次の[ドキュメント](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace#create-a-workspace)を参照してください。
 
 ## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする 
 

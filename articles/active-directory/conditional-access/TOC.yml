@@ -19,10 +19,10 @@
 - name: 概念
   expanded: false
   items:
-    - name: 条件付きアクセスの導入
-      href: howto-conditional-access-adoption-kit.md
     - name: 一般的な条件付きアクセス ポリシー
       href: concept-conditional-access-policy-common.md
+    - name: 条件付きアクセス ポリシーのコンポーネント
+      href: concept-conditional-access-policies.md
     - name: 条件
       href: conditions.md
     - name: 場所の条件

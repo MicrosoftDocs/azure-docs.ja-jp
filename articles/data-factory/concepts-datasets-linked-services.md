@@ -3,21 +3,20 @@ title: Azure Data Factory でのデータセット | Microsoft Docs
 description: Data factory のデータセットについて説明します。 データセットは、入力/出力データを表します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: 6b74f217d296b5de8886f608b1bc92e908b5d8b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866470"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137310"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -69,7 +68,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 
 プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
-name | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
+名前 | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
 type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
 structure | データセットのスキーマ。 詳細については、「[データセット スキーマ](#dataset-structure-or-schema)」を参照してください。 | いいえ |
 typeProperties | 型のプロパティは型によって異なります (たとえば、Azure Blob、Azure SQL テーブル)。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
@@ -114,7 +113,7 @@ typeProperties | 型のプロパティは型によって異なります (たと�
 
 プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
-name | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
+名前 | データセットの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
 type | データセットの型。 Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、[データセットの型](#dataset-type)を参照してください。 | はい |
 schema | データセットのスキーマ。 詳細は、「[Data Flow の互換性のあるデータセット](#dataset-type)」を参照してください。 | いいえ |
 typeProperties | 型のプロパティは型によって異なります (たとえば、Azure Blob、Azure SQL テーブル)。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#dataset-type)」セクションを参照してください。 | はい |
@@ -147,9 +146,7 @@ typeProperties | 型のプロパティは型によって異なります (たと�
 - linkedServiceName は、型が AzureSqlDatabase であるリンクされたサービスを参照します。これは、次の JSON スニペットで定義されています。
 
 ## <a name="dataset-type"></a>データセットの型
-使用するデータ ストアによって、さまざまなデータセットの種類があります。 Data Factory でサポートされているデータ ストアの一覧については、次の表を参照してください。 データ ストアをクリックすると、そのデータ ストアに対応するリンクされたサービスとデータセットの作成方法を確認できます。
-
-[!INCLUDE [data-factory-v2-supported-data-stores](../../includes/data-factory-v2-supported-data-stores-dataflow.md)]
+使用するデータ ストアによって、さまざまなデータセットの種類があります。 Data Factory によってサポートされているデータ ストアの一覧は、[コネクタの概要](connector-overview.md)に関する記事をご覧ください。 データ ストアをクリックすると、そのデータ ストアに対応するリンクされたサービスとデータセットの作成方法を確認できます。
 
 前のセクションの例では、データセットの型は **AzureSqlTable** に設定されています。 同様に、Azure Blob データセットの場合は、次の JSON に示すように、データセットの型が **AzureBlob** に設定されます。
 
@@ -182,7 +179,7 @@ structure の各列には次のプロパティが含まれます。
 
 プロパティ | 説明 | 必須
 -------- | ----------- | --------
-name | 列の名前です。 | はい
+名前 | 列の名前です。 | はい
 type | 列のデータ型です。 Data Factory は次の中間データ型を許容値としてサポートしています。**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** | いいえ
 culture | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 | いいえ
 format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 日時の書式を設定する方法については、「[カスタム日時書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 | いいえ

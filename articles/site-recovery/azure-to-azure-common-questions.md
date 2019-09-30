@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: d479a568ddeac29be88d0709b7544ba645274afa
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: cd1c6cf0ff5a963720df7420a5d983d24e7b4d3e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875658"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861391"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>一般的な質問:Azure から Azure へのディザスター リカバリー
 
@@ -41,7 +41,15 @@ Site Recovery チームは Azure 容量管理チームと連携し、十分な�
 ## <a name="replication"></a>レプリケーション
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Azure Disk Encryption が有効になっている VM をレプリケートできますか?
-はい、レプリケートできます。 記事「[Azure Disk Encryption (ADE) が有効な仮想マシンを別の Azure リージョンにレプリケートする](azure-to-azure-how-to-enable-replication-ade-vms.md)」をご覧ください。 現在、Azure Site Recovery では、Windows OS を実行していて、Azure Active Directory (Azure AD) アプリでの暗号化が有効にされている Azure VM のみがサポートされています。
+
+はい。Site Recovery では、Azure Disk Encryption (ADE) が有効になっている VM のディザスター リカバリーがサポートされています。 レプリケーションを有効にすると、必要なすべての暗号化キーとシークレットがユーザー コンテキストでソース リージョンからターゲット リージョンにコピーされます。 適切なアクセス許可がない場合は、すぐに使用できるスクリプトをセキュリティ管理者に渡して、キーとシークレットをコピーできます。
+
+- Site Recovery では、Windows を実行している Azure VM で ADE がサポートされています。
+- Site Recovery は、Azure Active Directory (AAD) を使用したスキーマを含む ADE バージョン 0.1 と AAD を使用しないバージョン 1.1 がサポートされています。 [詳細情報](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata)。
+- ADE バージョン 1.1 では、Windows VM でマネージド ディスクを使用する必要があります。
+- 暗号化された VM のレプリケーションの有効化について、[詳細を確認します](azure-to-azure-how-to-enable-replication-ade-vms.md)。
+
+
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>別のサブスクリプションに VM をレプリケートできますか?
 はい、同じ Azure AD テナント内で別のサブスクリプションに Azure VM をレプリケートできます。

@@ -44,6 +44,8 @@
           href: go-tutorial-object-detection.md
 - name: チュートリアル
   items:
+    - name: IoT Visual Alerts アプリ
+      href: iot-visual-alerts-tutorial.md
     - name: モバイル向けのロゴ検出機能
       href: logo-detector-mobile.md
 - name: ハウツー ガイド
@@ -54,6 +56,8 @@
       href: getting-started-improving-your-classifier.md
     - name: 予測 API の使用
       href: use-prediction-api.md
+    - name: 推奨タグを使用する
+      href: suggested-tags.md
     - name: モデルをエクスポートする
       items:
         - name: モバイルへのモデルのエクスポート

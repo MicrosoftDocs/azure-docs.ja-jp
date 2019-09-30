@@ -9,12 +9,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 02/20/2019
-ms.openlocfilehash: 87bd22ec4f2cfae62d1f80284ad8346ca292d016
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 37098411f465c611dc9d2e2443f369e01d6e338c
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567673"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231004"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>チュートリアル:Azure AD サーバー プリンシパル (ログイン) を使用した Azure SQL Database におけるマネージド インスタンスのセキュリティ
 
@@ -55,10 +55,12 @@ ms.locfileid: "68567673"
 
 ## <a name="limiting-access-to-your-managed-instance"></a>マネージド インスタンスへのアクセスの制限
 
-マネージド インスタンスには、プライベート IP アドレスを介してのみアクセスできます。 マネージド インスタンスのネットワーク外からマネージド インスタンスに接続できるサービス エンドポイントはありません。 分離された SQL Server のオンプレミス環境とほぼ同様に、接続を確立するには、アプリケーションまたはユーザーがマネージド インスタンスのネットワーク (VNet) にアクセスする必要があります。 詳細については、[マネージド インスタンスへのアプリケーションの接続](sql-database-managed-instance-connect-app.md)に関する記事を参照してください。
+マネージド インスタンスには、プライベート IP アドレスを介してのみアクセスできます。 分離された SQL Server のオンプレミス環境とほぼ同様に、接続を確立するには、アプリケーションまたはユーザーがマネージド インスタンスのネットワーク (VNet) にアクセスする必要があります。 詳細については、[マネージド インスタンスへのアプリケーションの接続](sql-database-managed-instance-connect-app.md)に関する記事を参照してください。
+
+また、マネージド インスタンスのサービス エンドポイントはパブリック接続に対応しており、Azure SQL Database と同じように、サービス エンドポイントを構成することもできます。 詳細については、「[Azure SQL Database マネージド インスタンスのパブリック エンドポイントの構成](sql-database-managed-instance-public-endpoint-configure.md)」を参照してください。
 
 > [!NOTE] 
-> マネージド インスタンスにはその VNET の内部のみでアクセスできるため、[SQL Database のファイアウォール規則](sql-database-firewall-configure.md)は適用されません。 マネージド インスタンスには、[組み込みのファイアウォール](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)が独自に用意されています。
+> サービス エンドポイントが有効な状態であっても、[SQL Database のファイアウォール規則](sql-database-firewall-configure.md)は適用されません。 マネージド インスタンスには、接続を管理するための[組み込みのファイアウォール](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)が独自に備わっています。
 
 ## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>SSMS を使用してマネージド インスタンス用に Azure AD サーバー プリンシパル (ログイン) を作成する
 

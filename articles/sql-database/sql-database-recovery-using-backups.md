@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 04/30/2019
-ms.openlocfilehash: 55d60ec332515fcfa3deb565a4a770027681537a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/27/2019
+ms.openlocfilehash: 6f1a0485dbae3234d476ba5df62126f05d52f435
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566968"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813349"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL データベースの復旧
 
@@ -127,10 +127,7 @@ geo セカンダリでのポイントインタイム リストアは、現在は
 
 ### <a name="geo-restore-using-the-azure-portal"></a>Azure portal を使用した geo リストア
 
-Azure Portal を使用して、データベースをその [DTU ベースのモデル リテンション期間](sql-database-service-tiers-dtu.md)中または[仮想コアベースのモデル リテンション期間](sql-database-service-tiers-vcore.md)中に geo リストアするには、[SQL データベース] ページを開き、 **[追加]** をクリックします。 **[ソースの選択]** テキスト ボックスで、 **[バックアップ]** を選択します。 任意のリージョン内のサーバー上で復旧を実行するバックアップを指定します。
-
-> [!Note]
-> Azure portal を使用した Geo 復元は、マネージド インスタンスでは利用できません。 代わりに、PowerShell を使用してください。
+Azure portal を使用してデータベースを geo リストアするには、[SQL データベース] ページを開き、 **[追加]** をクリックします。 **[ソースの選択]** テキスト ボックスで、 **[バックアップ]** を選択します。 任意のリージョン内のサーバー上で復旧を実行するバックアップを指定します。 
 
 ## <a name="programmatically-performing-recovery-using-automated-backups"></a>自動バックアップを使用したプログラム実行の復旧
 

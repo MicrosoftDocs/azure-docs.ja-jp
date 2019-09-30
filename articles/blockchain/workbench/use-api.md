@@ -1,25 +1,25 @@
 ---
-title: Azure Blockchain Workbench REST API を使用する
-description: Azure Blockchain Workbench REST API を使用する方法を示すシナリオ
+title: Azure Blockchain Workbench プレビューの REST API を使用する
+description: Azure Blockchain Workbench プレビューのREST API を使用する方法を示すシナリオ
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 7fa72ad62d7d11c795422a203d13a4dd45484c19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 412b78363be70918969734cd8890a8ee940df431
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60896043"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843817"
 ---
-# <a name="using-the-azure-blockchain-workbench-rest-api"></a>Azure Blockchain Workbench REST API を使用する
+# <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Azure Blockchain Workbench プレビューの REST API を使用する
 
-Azure Blockchain Workbench REST API は、開発者やインフォメーション ワーカーが ブロックチェーン アプリケーションに豊富な統合をビルドする方法を提供します。 このドキュメントでは、Workbench REST API のいくつかの主要なメソッドについて説明します。 たとえば、開発者がカスタム ブロックチェーン クライアントを作成したいとします。 このブロックチェーン クライアントでは、サインインしたユーザーが割り当てられたブロックチェーン アプリケーションを表示および操作できます。 ユーザーは、クライアントでコントラクトのインスタンスを表示し、スマート コントラクトでアクションを実行することができます。 クライアントはサインインしたユーザーのコンテキストで Workbench REST API を使用して、次の操作を実行します。
+Azure Blockchain Workbench プレビューの REST API は、開発者やインフォメーション ワーカーが ブロックチェーン アプリケーションに豊富な統合をビルドする方法を提供します。 このドキュメントでは、Workbench REST API のいくつかの主要なメソッドについて説明します。 たとえば、開発者がカスタム ブロックチェーン クライアントを作成したいとします。 このブロックチェーン クライアントでは、サインインしたユーザーが割り当てられたブロックチェーン アプリケーションを表示および操作できます。 ユーザーは、クライアントでコントラクトのインスタンスを表示し、スマート コントラクトでアクションを実行することができます。 クライアントはサインインしたユーザーのコンテキストで Workbench REST API を使用して、次の操作を実行します。
 
 * List applications
 * アプリケーションのワークフローを一覧表示する

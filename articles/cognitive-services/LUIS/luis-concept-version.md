@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 2e13efa70d0344defeb306a92ac405439635e929
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: c519b030aaee58397766ecb8658e7af08b5986e1
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619692"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256874"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>LUIS バージョンを使用する方法とタイミング
 
@@ -48,7 +48,7 @@ LUIS のバージョンは、従来のプログラミングのバージョンと
 
 アプリ レベルやバージョン レベルでバージョンをエクスポートできます。 唯一の違いは、アプリ レベルでエクスポートされるバージョンは現在アクティブなバージョンであるのに対して、バージョン レベルでは、 **[[設定]](luis-how-to-manage-versions.md)** ページで任意のバージョンを選択してエクスポートできます。 
 
-アプリはインポート後に再度トレーニングされるため、エクスポートしたファイルには機械学習された情報が含まれません。 エクスポートしたファイルにはコラボレーターは含まれません。新しいアプリにそのバージョンをインポートした後、コラボレーターを追加し直す必要があります。
+アプリはインポート後に再度トレーニングされるため、エクスポートしたファイルには機械学習された情報が含まれません。 エクスポートされたファイルには、共同作成者の情報が含まれていません。
 
 ## <a name="export-each-version-as-app-backup"></a>各バージョンをアプリのバックアップとしてエクスポートする
 LUIS アプリをバックアップするために、 **[[設定]](luis-how-to-manage-versions.md)** ページで各バージョンをエクスポートします。
@@ -59,8 +59,23 @@ LUIS アプリをバックアップするために、 **[[設定]](luis-how-to-m
 ## <a name="version-availability-at-the-endpoint"></a>エンドポイントでのバージョンの可用性
 トレーニング済みのバージョンは、アプリの[エンドポイント](luis-glossary.md#endpoint)で自動的に利用できるわけではありません。 バージョンをアプリのエンドポイントで利用可能にするには、[公開](luis-how-to-publish-app.md)または再公開する必要があります。 **ステージング**と**運用**に公開できるので、エンドポイントで使用できるアプリのバージョンは最大 2 つです。 エンドポイントで使用できるアプリのバージョンがさらに必要な場合は、バージョンをエクスポートして、新しいアプリに再度インポートします。 新しいアプリには別のアプリ ID が付きます。
 
-## <a name="collaborators"></a>コラボレーター
-所有者とすべての[コラボレーター](luis-how-to-collaborate.md)が、アプリのすべてのバージョンへのフル アクセス権を持ちます。
+## <a name="manage-multiple-versions-inside-the-same-app"></a>同じアプリ内で複数のバージョンを管理する
+まず、各作成者用に、基本バージョンから[複製](luis-how-to-manage-versions.md#clone-a-version)します。 
+
+各作成者は、アプリの自分のバージョンに変更を加えます。 各作成者は自分のモデルに満足したら、新しいバージョンを JSON ファイルにエクスポートします。  
+
+エクスポートされたアプリは JSON 形式のファイルなので、変更点を比較することができます。 ファイルを結合して、新しいバージョンの JSON ファイルを 1 つ作成します。 JSON の **versionId** プロパティを変更して、マージされた新しいバージョンを示します。 このバージョンを元のアプリにインポートします。 
+
+この方法に従うと、アクティブなバージョンが 1 つ、ステージング バージョンが 1 つ、公開済みのバージョンが 1 つ存在することになります。 [対話型のテスト ウィンドウ](luis-interactive-test.md)で、アクティブなバージョンの結果を、発行されたバージョン (ステージングまたは運用) と比較することができます。
+
+## <a name="manage-multiple-versions-as-apps"></a>複数のバージョンをアプリとして管理する
+基本バージョンを[エクスポート](luis-how-to-manage-versions.md#export-version)します。 各作成者がこのバージョンをインポートします。 アプリをインポートするユーザーが、バージョンの所有者です。 アプリの変更が完了したら、バージョンをエクスポートします。 
+
+エクスポートされたアプリは JSON 形式ファイルなので、変更点を基本のエクスポートと比較することができます。 ファイルを結合して、新しいバージョンの JSON ファイルを 1 つ作成します。 JSON の **versionId** プロパティを変更して、マージされた新しいバージョンを示します。 このバージョンを元のアプリにインポートします。
+
+## <a name="contributions-from-collaborators"></a>コラボレーターからの投稿
+
+コラボレーターからの投稿の作成の詳細については、[こちら](luis-how-to-collaborate.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

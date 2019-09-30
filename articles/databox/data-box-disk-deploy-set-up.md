@@ -6,15 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 09/04/2019
 ms.author: alkohli
+ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 49f3f608ff34847905b219047af843db00da78c4
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 91baec55cb976a3bc64ac60b1759c80e64fd18a3
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68480051"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375897"
 ---
 ::: zone target="docs"
 
@@ -29,6 +30,16 @@ ms.locfileid: "68480051"
 > * ディスクに接続してパスキーを取得する
 > * Windows クライアントでディスクのロックを解除する
 > * Linux クライアントでディスクのロックを解除する
+
+::: zone-end
+
+::: zone target="chromeless"
+
+## <a name="unpack-connect-and-unlock-azure-data-box-disk"></a>Azure Data Box Disk の開梱、接続、ロック解除
+
+::: zone-end
+
+::: zone target="docs"
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -282,7 +293,7 @@ ms.locfileid: "68480051"
         ``` 
         .\DataBoxDiskUnlock.exe
         ```
-    -  Azure portal の **[全般] > [デバイスの詳細]** で取得したパスキーを指定します。 ディスクに割り当てられたドライブ文字が表示されます。 
+    -  Azure portal の **[全般] > [デバイスの詳細]** でパスキーを取得し、ここで指定します。 ディスクに割り当てられたドライブ文字が表示されます。 
 4. Linux クライアント上でディスクのロックを解除するには、ターミナルを開きます。 ソフトウェアをダウンロードしたフォルダーに移動します。 以下のコマンドを入力し、これらのファイルを実行できるように、ファイルのアクセス許可を変更します。 
 
     ```
@@ -294,7 +305,7 @@ ms.locfileid: "68480051"
     ```
     sudo ./DataBoxDiskUnlock_Prep.sh
     ```
-    Data Box Disk ロック解除ツールを実行します。 Azure portal で **[全般] > [デバイスの詳細]** に移動して取得したパスキーを指定します。 オプションで、ロックを解除する、BitLocker で暗号化されたボリュームの一覧を単一引用符で囲んで指定します。
+    Data Box Disk ロック解除ツールを実行します。 Azure portal の **[全般] > [デバイスの詳細]** でパスキーを取得し、ここで指定します。 オプションで、ロックを解除する、BitLocker で暗号化されたボリュームの一覧を単一引用符で囲んで指定します。
 
     ```
     sudo ./DataBoxDiskUnlock_x86_64 /PassKey:’<Your passkey from Azure portal>’
@@ -303,7 +314,7 @@ ms.locfileid: "68480051"
 
 ディスクのロックが解除されたら、ディスクの内容を表示することができます。
 
-ディスクの設定とロックの解除の方法の詳細については、「[チュートリアル: Azure Data Box Disk の開梱、接続、ロック解除](data-box-disk-deploy-set-up.md)」をご覧ください。
+ディスクの設定とロック解除の方法の詳細については、[Data Box Disk の設定](data-box-disk-deploy-set-up.md)に関するページに移動してください。
 
 ::: zone-end
 

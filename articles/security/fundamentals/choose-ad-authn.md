@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 22a5a2e157c0b2095673e75e7a3bc9ccb80f8ffd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: ba9cda5aeebaf0764068a463cdb55f3ef5542ea3
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928028"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997816"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する 
 
@@ -66,6 +66,9 @@ Azure AD は、ハイブリッド ID ソリューションに対して次の認�
 次のセクションは、デシジョン ツリーを使用することで組織に適した認証方法を決定するのに役立ちます。 Azure AD ハイブリッド ID ソリューションにクラウド認証とフェデレーション認証のどちらを展開すればよいかを判断できます。
 
 ## <a name="decision-tree"></a>デシジョン ツリー
+
+> [!NOTE]
+> UserPrincipalName が Alternate ID として選択されている場合、PTA は Alternate ID でのみ機能します。 そうして初めて、オンプレミスの UserPrincipalName が AD から AAD に同期されます。 詳細については、「[パススルー認証では、"userPrincipalName" の代わりに "Alternate ID" がユーザー名としてサポートされますか](https://docs.microsoft.com/en-us/azure/active-directory/hybrid/how-to-connect-pta-faq#does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname)」を参照してください。
 
 ![Azure AD での認証のデシジョン ツリー](./media/choose-ad-authn/azure-ad-authn-image1.png)
 

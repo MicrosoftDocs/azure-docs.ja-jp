@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60382291"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135740"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect:設計概念
 このドキュメントの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 このドキュメントでは特定の領域について詳しく説明しますが、これらの概念については、他のドキュメントでも簡単に説明しています。
@@ -95,7 +95,6 @@ Azure AD Connect (バージョン 1.1.524.0 以降) では、ms-DS-ConsistencyGu
   > 新規インストール時に ConsistencyGuid を sourceAnchor として使用することは、新しいバージョンの Azure AD Connect (1.1.524.0 以降) でのみサポートされています。
 
 ### <a name="how-to-enable-the-consistencyguid-feature"></a>ConsistencyGuid 機能を有効にする方法
-現在この機能を有効にできるのは、Azure AD Connect の新規インストール時に限られます。
 
 #### <a name="express-installation"></a>高速インストール
 Azure AD Connect を高速モードでインストールする場合、sourceAnchor 属性として最適な AD 属性が Azure AD Connect ウィザードによって自動的に決定されます。その際、以下のロジックが使用されます。

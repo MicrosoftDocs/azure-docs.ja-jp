@@ -9,12 +9,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 05/02/2019
-ms.openlocfilehash: 6f72daa4a601df0e3592910645c2f9b35ab64431
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0218221426351b0b508021fc74693557f200b4e8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68845819"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309259"
 ---
 # <a name="tutorial-build-a-regression-model-with-automated-machine-learning-and-open-datasets"></a>チュートリアル:自動機械学習とオープン データセットを使って回帰モデルを構築する
 
@@ -723,7 +723,7 @@ green_taxi_df.head(5)
     <tr style="text-align: right;">
       <th></th>
       <th>vendorID</th>
-      <th>Datetime</th>
+      <th>datetime</th>
       <th>passengerCount</th>
       <th>tripDistance</th>
       <th>pickupLongitude</th>
@@ -951,7 +951,7 @@ taxi_holidays_df.head(5)
     <tr style="text-align: right;">
       <th></th>
       <th>vendorID</th>
-      <th>Datetime</th>
+      <th>datetime</th>
       <th>passengerCount</th>
       <th>tripDistance</th>
       <th>pickupLongitude</th>
@@ -1115,7 +1115,7 @@ weather_df.head(10)
       <th>latitude</th>
       <th>precipDepth</th>
       <th>longitude</th>
-      <th>Datetime</th>
+      <th>datetime</th>
       <th>usaf</th>
     </tr>
   </thead>
@@ -1246,7 +1246,7 @@ weather_df.head(10)
 
 ここで、気象データの `datetime`フィールドに対しても `pandas.Series.dt.normalize` を呼び出して、`taxi_holidays_df` の time キーと一致するようにします。 不要な列を削除し、温度が `NaN` であるレコードをフィルターで除外します。
 
-次に、気象値を 1 日ずつ集計できるように気象データをグループ化します。 ディクショナリ `aggregations` を定義して、日次レベルで各フィールドを集計する方法を定義します。 `snowDepth` と `temperature` では平均値、`precipTime` と `precipDepth` では 1 日の最大値を取ります。 `groupby()` 関数を集計と一緒に使用して、データをグループ化します。 データをプレビューして、1 日あたり 1 つのレコードがあることを確認します。
+次に、気象値を 1 日ずつ集計できるように気象データをグループ化します。 `aggregations` という名前のディクショナリを定義して、日次レベルで各フィールドを集計する方法を定義します。 `snowDepth` と `temperature` では平均値、`precipTime` と `precipDepth` では 1 日の最大値を取ります。 `groupby()` 関数を集計と一緒に使用して、データをグループ化します。 データをプレビューして、1 日あたり 1 つのレコードがあることを確認します。
 
 ```python
 weather_df["datetime"] = weather_df["datetime"].dt.normalize()
@@ -1286,7 +1286,7 @@ weather_df_grouped.head(10)
       <th>precipDepth</th>
     </tr>
     <tr>
-      <th>Datetime</th>
+      <th>datetime</th>
       <th></th>
       <th></th>
       <th></th>

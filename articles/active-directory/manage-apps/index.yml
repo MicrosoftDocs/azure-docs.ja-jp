@@ -1,51 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: アプリケーション管理のドキュメント
+summary: Azure Active Directory では、クラウドとオンプレミス アプリケーションに安全かつシームレスなアクセスを提供します。 さらに、パスワードを管理する必要がありません。 エンドユーザーは、1 回サインインするだけで、Office 365 や数千もの他のアプリケーションにアクセスできます。 クイックスタート、チュートリアル、およびガイダンスを使用してアプリケーションを管理、デプロイする方法について説明します。
 metadata:
-  title: Azure AD アプリケーション管理のドキュメント - Azure Active Directory
-  description: Azure Active Directory を使用してアプリケーションを管理してデプロイする方法について説明します。
-  services: active-directory
-  author: barbkess
-  manager: daveba
-  layout: LandingPage
-  ms.assetid: null
-  ms.service: active-directory
-  ms.topic: landing-page
-  ms.date: 09/14/2018
-  ms.author: barbkess
-abstract:
+  title: アプリケーション管理のドキュメント
   description: Azure Active Directory では、クラウドとオンプレミス アプリケーションに安全かつシームレスなアクセスを提供します。 さらに、パスワードを管理する必要がありません。 エンドユーザーは、1 回サインインするだけで、Office 365 や数千もの他のアプリケーションにアクセスできます。 クイックスタート、チュートリアル、およびガイダンスを使用してアプリケーションを管理、デプロイする方法について説明します。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video.png
-      width: 250
-    title: 'Azure AD を使ったアプリケーションへのアクセスのセキュリティ保護 (1:47)'
-    href: 'https://youtu.be/BSUuXXcJKCk/'
-    width: 250
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: ユーザーが Azure Active Directory を通じてアクセスできるよう、アプリケーションを追加する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
-            text: アプリケーションを追加する
-            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
-            text: アプリケーションを表示する
-            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal'
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: アプリケーションでシンプルかつ安全なサインイン プロセスを有効にする方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: '<a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">Saas アプリケーションのチュートリアル</a>'
-          - html: <a href="/azure/active-directory/manage-apps/application-proxy-add-on-premises-application">アプリケーション プロキシを介してオンプレミス アプリを追加する</a>
+  ms.service: active-directory
+  ms.subservice: manage-apps
+  ms.workload: identity
+  ms.topic: landing-page
+  ms.date: 08/16/2019
+  author: msmimart
+  ms.author: mimart
+  manager: celested
+  ms.openlocfilehash: acb99eab233836f46c1e1dfe4c857fb2e80ed3de
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70127542"
+landingContent:
+- title: アプリケーション管理について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: アプリケーション管理とは
+      url: what-is-application-management.md
+- title: クラウド アプリとシングル サインオンの管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: シングル サインオンについて
+      url: what-is-single-sign-on.md
+    - text: エンドユーザー エクスペリエンス
+      url: end-user-experiences.md
+  - linkListType: quickstart
+    links:
+    - text: ギャラリー アプリの追加
+      url: add-application-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: ギャラリー以外のアプリの追加
+      url: add-non-gallery-app.md
+    - text: Configure single sign-on
+      url: configure-single-sign-on-non-gallery-applications.md
+    - text: ユーザーまたはグループをアプリに割り当てる
+      url: assign-user-or-group-access-portal.md
+- title: ユーザーとグループをアプリにプロビジョニングする
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 自動ユーザー プロビジョニングとは
+      url: user-provisioning.md
+  - linkListType: concept
+    links:
+    - text: SCIM を使用してユーザーとグループをプロビジョニングする
+      url: use-scim-to-provision-users-and-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: 自動ユーザー プロビジョニングの構成
+      url: configure-automatic-user-provisioning-portal.md
+    - text: 属性マッピングのカスタマイズ
+      url: customize-application-attributes.md
+    - text: プロビジョニング状態の確認
+      url: application-provisioning-when-will-provisioning-finish-specific-user.md
+  - linkListType: reference
+    links:
+    - text: 属性マッピングの式の書き方
+      url: functions-for-customizing-application-data.md
+- title: アプリケーション プロキシを使用してオンプレミス アプリを発行する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: アプリケーション プロキシとは
+      url: what-is-application-proxy.md
+  - linkListType: concept
+    links:
+    - text: アプリケーション プロキシの計画
+      url: application-proxy-deployment-plan.md
+  - linkListType: tutorial
+    links:
+    - text: オンプレミス アプリの追加
+      url: application-proxy-add-on-premises-application.md
+  - linkListType: how-to-guide
+    links:
+    - text: プロキシ サーバーを使用したコネクタの構成
+      url: application-proxy-configure-connectors-with-proxy-servers.md
+    - text: カスタム ホーム ページの構成
+      url: application-proxy-configure-custom-home-page.md
+  - linkListType: deploy
+    links:
+    - text: アプリケーション プロキシを使用したリモート デスクトップの発行
+      url: application-proxy-integrate-with-remote-desktop-services.md
+    - text: Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化
+      url: application-proxy-integrate-with-sharepoint-server.md

@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 78f608aedd53aa1071eaf88864f5a63f8f9e6072
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fb68b2f78e48dabf5b1377b7c811840a85604f53
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791013"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802430"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 App Service Environment/SQL Database ワークロード ブループリント サンプルをデプロイする
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 最初に、サンプルをスターターとして使用して環境内に新しいブループリントを作成することにより、ブループリント サンプルを実装します。
 
-1. **[すべてのサービス]** を選択し、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** を選択します。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側の **[はじめに]** ページで、 _[ブループリントの作成]_ の下にある **[作成]** ボタンを選択します。
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 環境でのブループリント サンプルのコピーの作成が完了しました。 これは**下書き**モードで作成されており、割り当ておよびデプロイの前に**発行**する必要があります。 ブループリント サンプルのコピーは、お使いの環境や必要性に応じてカスタマイズできますが、それが原因で ISO 27001 標準を満たさなくなる場合もあります。
 
-1. **[すべてのサービス]** を選択し、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** を選択します。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側の **[ブループリントの定義]** ページを選択します。 ブループリント サンプルのコピーを、フィルターを使用して検索し、選択します。
 
@@ -66,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 正常に**発行**されたブループリント サンプルのコピーは、保存先の管理グループ内のサブスクリプションに割り当てることができます。 この手順では、ブループリント サンプルのコピーの各デプロイを一意にするためのパラメーターを指定します。
 
-1. **[すべてのサービス]** を選択し、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** を選択します。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側の **[ブループリントの定義]** ページを選択します。 ブループリント サンプルのコピーを、フィルターを使用して検索し、選択します。
 
@@ -115,35 +115,35 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 |アーティファクト名|アーティファクトの種類|パラメーター名|説明|
 |-|-|-|-|
-|Log Analytics リソース グループ|リソース グループ|Name|**[ロック済み]** - **組織名**と `-workload-log-rg` を連結して、リソース グループを一意にします。|
-|Log Analytics resource group (Log Analytics リソース グループ)|リソース グループ|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
+|Log Analytics リソース グループ|Resource group|名前|**[ロック済み]** - **組織名**と `-workload-log-rg` を連結して、リソース グループを一意にします。|
+|Log Analytics resource group (Log Analytics リソース グループ)|Resource group|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
 |Log Analytics テンプレート|Resource Manager テンプレート|サービス階層|Log Analytics ワークスペースの階層を設定します。 既定値は _[PerNode]_ です。|
 |Log Analytics テンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _[365]_ です。|
 |Log Analytics テンプレート|Resource Manager テンプレート|Location|Log Analytics ワークスペースを作成するために使用されるリージョン。 既定値は_米国西部 2_ です。|
-|Network resource group (ネットワーク リソース グループ)|リソース グループ|Name|**[ロック済み]** - **組織名**と `-workload-net-rg` を連結して、リソース グループを一意にします。|
-|Network resource group (ネットワーク リソース グループ)|リソース グループ|Location|**ロック済み** - ブループリントのパラメーターを使用します。|
+|Network resource group (ネットワーク リソース グループ)|Resource group|名前|**[ロック済み]** - **組織名**と `-workload-net-rg` を連結して、リソース グループを一意にします。|
+|Network resource group (ネットワーク リソース グループ)|Resource group|Location|**ロック済み** - ブループリントのパラメーターを使用します。|
 |ネットワーク セキュリティ グループのテンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _[365]_ です。|
-|仮想ネットワークとルート テーブルのテンプレート|Resource Manager テンプレート|Azure Firewall のプライベート IP|[Azure Firewall](../../../../firewall/overview.md) のプライベート IP を構成します。 _ISO 27001: 共有サービス_ アーティファクトの **[Azure Firewall サブネット アドレス プレフィックス]** パラメーターに定義されている CIDR 表記の一部にする必要があります。 既定値は _10.0.4.4_ です。|
+|仮想ネットワークとルート テーブルのテンプレート|Resource Manager テンプレート|Azure ファイアウォールのプライベート IP|[Azure ファイアウォール](../../../../firewall/overview.md)のプライベート IP を構成します。 _ISO 27001: 共有サービス_ アーティファクトの **[Azure Firewall サブネット アドレス プレフィックス]** パラメーターに定義されている CIDR 表記の一部にする必要があります。 既定値は _10.0.4.4_ です。|
 |仮想ネットワークとルート テーブルのテンプレート|Resource Manager テンプレート|共有サービス サブスクリプション ID|ワークロードと共有サービスの間で VNET ピアリングを有効にするために使用される値。|
 |仮想ネットワークとルート テーブルのテンプレート|Resource Manager テンプレート|仮想ネットワーク アドレス プレフィックス|仮想ネットワークの CIDR 表記。 既定値は _10.1.0.0/16_ です。|
 |仮想ネットワークとルート テーブルのテンプレート|Resource Manager テンプレート|既定のサブネット アドレス プレフィックス|仮想ネットワークの既定のサブネットの CIDR 表記。 既定値は _10.1.0.0/16_ です。|
 |仮想ネットワークとルート テーブルのテンプレート|Resource Manager テンプレート|ADDS IP アドレス|1 番目の ADDS VM の IP アドレス。 この値は、VNET のカスタム DNS として使用されます。|
-|Key Vault リソース グループ|リソース グループ|Name|**[ロック済み]** - **組織名**と `-workload-kv-rg` を連結して、リソース グループを一意にします。|
-|Key Vault リソース グループ|リソース グループ|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
-|キー コンテナー テンプレート|Resource Manager テンプレート|AAD オブジェクト ID|キー コンテナー インスタンスにアクセスする必要があるアカウントの AAD オブジェクト識別子。 既定値はありませんが、空白のままにしておくことはできません。 Azure portal でこの値を検索するには、 _[サービス]_ で [ユーザー] を検索して選択します。 _[名前]_ ボックスを使用してアカウント名をフィルター処理し、そのアカウントを選択します。 _[ユーザー プロファイル]_ ページで、 _[オブジェクト ID]_ の横にある [クリックしてコピー] アイコンを選択します。|
-|キー コンテナー テンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _[365]_ です。|
-|キー コンテナー テンプレート|Resource Manager テンプレート|キー コンテナー SKU|作成されるキー コンテナーの SKU を指定します。 既定値は _Premium_ です。|
-|キー コンテナー テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者ユーザー名|Azure SQL Server へのアクセスに使用するユーザー名。 **Azure SQL Database テンプレート**内の同じプロパティの値に一致する必要があります。 既定値は _sql-admin-user_ です。|
-|Azure SQL Database のリソース グループ|リソース グループ|Name|**ロック済み** - **組織名**と `-workload-azsql-rg` を連結して、リソース グループを一意にします。|
-|Azure SQL Database のリソース グループ|リソース グループ|Location|**ロック済み** - ブループリントのパラメーターを使用します。|
-|Azure SQL Database テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者ユーザー名|Azure SQL Server のユーザー名。 **キー コンテナー テンプレート**内の同じプロパティの値に一致する必要があります。 既定値は _sql-admin-user_ です。|
-|Azure SQL Database テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者パスワード (キー コンテナー リソース ID)|キー コンテナーのリソース ID。 "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" を使用し、`{subscriptionId}` をお使いのサブスクリプション ID、`{orgName}` を **[組織名]** ブループリント パラメーターに置き換えます。|
-|Azure SQL Database テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者パスワード (キー コンテナー シークレット名)|SQL Server 管理者のユーザー名。 **[キー コンテナー テンプレート]** のプロパティ **[Azure SQL Server 管理者ユーザー名]** の値に一致する必要があります。|
+|Key Vault リソース グループ|Resource group|名前|**[ロック済み]** - **組織名**と `-workload-kv-rg` を連結して、リソース グループを一意にします。|
+|Key Vault リソース グループ|Resource group|Location|**[ロック済み]** - ブループリントのパラメーターを使用します。|
+|Key Vault テンプレート|Resource Manager テンプレート|AAD オブジェクト ID|Key Vault インスタンスにアクセスする必要があるアカウントの AAD オブジェクト識別子。 既定値はありませんが、空白のままにしておくことはできません。 Azure portal でこの値を検索するには、 _[サービス]_ で [ユーザー] を検索して選択します。 _[名前]_ ボックスを使用してアカウント名をフィルター処理し、そのアカウントを選択します。 _[ユーザー プロファイル]_ ページで、 _[オブジェクト ID]_ の横にある [クリックしてコピー] アイコンを選択します。|
+|Key Vault テンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _[365]_ です。|
+|Key Vault テンプレート|Resource Manager テンプレート|Key Vault SKU|作成される Key Vault の SKU を指定します。 既定値は _Premium_ です。|
+|Key Vault テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者ユーザー名|Azure SQL Server へのアクセスに使用するユーザー名。 **Azure SQL Database テンプレート**内の同じプロパティの値に一致する必要があります。 既定値は _sql-admin-user_ です。|
+|Azure SQL Database のリソース グループ|Resource group|名前|**ロック済み** - **組織名**と `-workload-azsql-rg` を連結して、リソース グループを一意にします。|
+|Azure SQL Database のリソース グループ|Resource group|Location|**ロック済み** - ブループリントのパラメーターを使用します。|
+|Azure SQL Database テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者ユーザー名|Azure SQL Server のユーザー名。 **Key Vault テンプレート**内の同じプロパティの値に一致する必要があります。 既定値は _sql-admin-user_ です。|
+|Azure SQL Database テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者パスワード (Key Vault リソース ID)|Key Vault のリソース ID。 "/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv" を使用し、`{subscriptionId}` をお使いのサブスクリプション ID、`{orgName}` を **[組織名]** ブループリント パラメーターに置き換えます。|
+|Azure SQL Database テンプレート|Resource Manager テンプレート|Azure SQL Server 管理者パスワード (Key Vault シークレット名)|SQL Server 管理者のユーザー名。 **[Key Vault テンプレート]** のプロパティ **[Azure SQL Server 管理者ユーザー名]** の値に一致する必要があります。|
 |Azure SQL Database テンプレート|Resource Manager テンプレート|ログ保有期間日数|データ保有期間の日数。 既定値は _365_ です。|
 |Azure SQL Database テンプレート|Resource Manager テンプレート|AAD 管理者オブジェクト ID|Active Directory 管理者として割り当てられたユーザーの AAD オブジェクト ID。既定値はありませんが、空白のままにしておくことはできません。 Azure portal でこの値を検索するには、 _[サービス]_ で [ユーザー] を検索して選択します。 _[名前]_ ボックスを使用してアカウント名をフィルター処理し、そのアカウントを選択します。 _[ユーザー プロファイル]_ ページで、 _[オブジェクト ID]_ の横にある [クリックしてコピー] アイコンを選択します。|
 |Azure SQL Database テンプレート|Resource Manager テンプレート|AAD 管理者ログイン|現在、Microsoft アカウント (live.com や outlook.com など) は管理者として設定できません。管理者として設定できるのは、組織内のユーザーとセキュリティ グループだけです。既定値はありませんが、空白のままにしておくことはできません。 Azure portal でこの値を検索するには、 _[サービス]_ で [ユーザー] を検索して選択します。 _[名前]_ ボックスを使用してアカウント名をフィルター処理し、そのアカウントを選択します。 _[ユーザー プロファイル]_ ページで、 _[ユーザー名]_ をコピーします。|
-|App Service Environment リソース グループ|リソース グループ|Name|**ロック済み** - **組織名**と `-workload-ase-rg` を連結して、リソース グループを一意にします。|
-|App Service Environment リソース グループ|リソース グループ|Location|**ロック済み** - ブループリントのパラメーターを使用します。|
+|App Service Environment リソース グループ|Resource group|名前|**ロック済み** - **組織名**と `-workload-ase-rg` を連結して、リソース グループを一意にします。|
+|App Service Environment リソース グループ|Resource group|Location|**ロック済み** - ブループリントのパラメーターを使用します。|
 |App Service Environment テンプレート|Resource Manager テンプレート|ドメイン名|サンプルで作成された Active Directory の名前。 既定値は _contoso.com_ です。|
 |App Service Environment テンプレート|Resource Manager テンプレート|ASE の場所|App Service Environment の場所。 既定値は_米国西部 2_ です。|
 |App Service Environment テンプレート|Resource Manager テンプレート|Application Gateway ログ保有期間日数|データ保有期間の日数。 既定値は _365_ です。|

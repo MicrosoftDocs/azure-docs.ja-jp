@@ -1,7 +1,7 @@
 ---
 title: 時系列予測モデルを自動トレーニングする
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service を使用して、自動化された機械学習で時系列予測回帰モデルをトレーニングする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning を使用して、自動化された機械学習で時系列予測回帰モデルをトレーニングする方法について説明します。
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: 793474495f3ab3ef06a17b48d15c2f91d0677365
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c49d8000888d4094ea1df47920c1927747927f5c
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848158"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035044"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
-この記事では、Azure Machine Learning service で自動化された機械学習を使用して、時系列予測回帰モデルをトレーニングする方法について説明します。 予測モデルの構成は、自動化された機械学習を使用した標準的な回帰モデルの設定に似ていますが、時系列データを操作するために特定の構成オプションと前処理の手順が存在します。 次の例では、以下の方法について説明します。
+この記事では、Azure Machine Learning で自動化された機械学習を使用して、時系列予測回帰モデルをトレーニングする方法について説明します。 予測モデルの構成は、自動化された機械学習を使用した標準的な回帰モデルの設定に似ていますが、時系列データを操作するために特定の構成オプションと前処理の手順が存在します。 次の例では、以下の方法について説明します。
 
 * 時系列モデリング用のデータを準備する
 * [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) オブジェクトで特定の時系列パラメーターを構成する
@@ -37,7 +37,7 @@ ms.locfileid: "68848158"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークスペース。 ワークスペースを作成するには、「[Create an Azure Machine Learning service workspace](how-to-manage-workspace.md)」 (Azure Machine Learning サービス ワークスペースの作成) を参照してください。
+* Azure Machine Learning ワークスペース。 ワークスペースを作成するには、[Azure Machine Learning ワークスペース](how-to-manage-workspace.md)の作成に関するページを参照してください。
 * この記事では、自動化された機械学習実験の設定に基本的に精通していることを前提としています。 [チュートリアル](tutorial-auto-train-models.md)または[ハウツー](how-to-configure-auto-train.md)に従って、自動化された機械学習実験の基本的な設計パターンについて確認してください。
 
 ## <a name="preparing-data"></a>データの準備
@@ -138,8 +138,12 @@ local_run = experiment.submit(automl_config, show_output=True)
 best_run, fitted_model = local_run.get_output()
 ```
 
-> [!NOTE]
-> クロス検証 (CV) 手順の場合、時系列データは、正規 K 分割クロス検証方法の基本的な統計的想定に違反する可能性があるため、自動化された機械学習が、元のローリング検証手順を実装して、時系列データに対しクロス検証分割を作成します。 この手順を使用するには、`AutoMLConfig` オブジェクトで `n_cross_validations` パラメーターを指定します。 検証を迂回して、`X_valid` および `y_valid` パラメーターを使った独自の検証セットを使用できます。
+次のような高度な予測の構成の詳細なコード例については、[エネルギー需要ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb)を参照してください。
+
+* 休日の検出と特性付け
+* ローリング オリジン クロス検証
+* 構成可能なラグ
+* ローリング ウィンドウの集計機能
 
 ### <a name="view-feature-engineering-summary"></a>特徴エンジニアリングの概要を確認する
 
@@ -199,4 +203,4 @@ rmse
 ## <a name="next-steps"></a>次の手順
 
 * [チュートリアル](tutorial-auto-train-models.md)に従って、自動化された機械学習で実験を作成する方法について学習します。
-* [Azure Machine Learning SDK for Python](https://aka.ms/aml-sdk) に関するリファレンス ドキュメントを確認します。
+* [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) に関するリファレンス ドキュメントを確認します。

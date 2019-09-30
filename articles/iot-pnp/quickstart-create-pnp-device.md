@@ -1,5 +1,5 @@
 ---
-title: Azure IoT プラグ アンド プレイ プレビュー デバイスを作成する | Microsoft Docs
+title: IoT プラグ アンド プレイ プレビュー デバイスを作成する | Microsoft Docs
 description: デバイス機能モデルを使用してデバイス コードを作成します。 次に、デバイス コードを実行して、デバイスがご利用の IoT Hub に接続されることを確認します。
 author: miagdp
 ms.author: miag
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 7cfa6e63f74233e9a3fab8f235584fdbe01e67d9
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6e5e08df444f66f2c5500d968c805552d20901c5
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881541"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861196"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成する
 
@@ -28,12 +28,12 @@ ms.locfileid: "69881541"
 * [CMake](https://cmake.org/download/)。
 * [Visual Studio Code](https://code.visualstudio.com/)。
 
-### <a name="install-azure-iot-device-workbench"></a>Azure IoT Device Workbench をインストールする
+### <a name="install-azure-iot-tools"></a>Azure IoT Tools のインストール
 
-VS Code で Azure IoT Device Workbench 拡張機能をインストールするには、次の手順に従ってください。
+[VS Code 用の Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) 拡張機能パックをインストールするには、次の手順に従います。
 
-1. VS Code で **[拡張機能]** タブを選択します。
-1. **Azure IoT Device Workbench** を検索します。
+1. VS Code で、 **[拡張機能]** タブを選択します。
+1. **Azure IoT Tools** を検索します。
 1. **[インストール]** を選択します。
 
 ### <a name="install-the-azure-iot-explorer"></a>Azure IoT Explorer をインストールする
@@ -49,6 +49,9 @@ Microsoft の職場または学校アカウントを使用するか、Microsoft 
 ## <a name="prepare-an-iot-hub"></a>IoT ハブを準備する
 
 また、このクイックスタートを完了するには、ご利用の Azure サブスクリプション内に Azure IoT ハブが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+> [!NOTE]
+> パブリック プレビュー中、IoT プラグ アンド プレイ機能は、**米国中部**、**北ヨーロッパ**、および**東日本**の各リージョンで作成された IoT ハブでのみご利用いただけます。
 
 Azure CLI 用の Microsoft Azure IoT 拡張機能を追加します。
 
@@ -219,7 +222,7 @@ DCM とそれに関連するインターフェイスの用意ができたので�
 
 1. **[コマンド]** ページを選択して、デバイスでサポートされているコマンドをすべて表示します。
 
-1. **点滅**コマンドを展開し、点滅時間間隔を新たに設定します。 **[コマンドの送信]** を選択して、デバイス上でコマンドを呼び出します。
+1. **点滅**コマンドを展開し、新しい点滅時間間隔を設定します。 **[コマンドの送信]** を選択して、デバイス上でコマンドを呼び出します。
 
 1. シミュレートするデバイスにアクセスして、コマンドが想定どおりに実行されたことを確認します。
 

@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: d03c5f66f760a2bea9f99501cec478831a347c5d
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 31243b5e9da55aafbc376fa416c1b00a4499c116
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668691"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242413"
 ---
 # <a name="feature-evaluation"></a>特徴の評価
 
@@ -32,9 +32,9 @@ ms.locfileid: "68668691"
 
 ## <a name="getting-feature-importance-evaluation"></a>フィーチャーの重要度の評価を取得する
 
-フィーチャーの重要度の結果を表示するには、評価を実行する必要があります。 フィーチャーの重要度に関する結果情報には、現在の Personalizer のオンライン モデルが表されます。 この評価では、評価期間の終了日に保存されるモデルのフィーチャーの重要度が分析されます。 
+フィーチャーの重要度の結果を表示するには、評価を実行する必要があります。 この評価では、評価期間中に観測されるフィーチャー名に基づいて、人間が判読できるフィーチャー ラベルが作成されます。
 
-この評価では、評価期間中に観測されるフィーチャー名に基づいて、人間が判読できるフィーチャー ラベルが作成されます。
+フィーチャーの重要度に関する結果情報には、現在の Personalizer のオンライン モデルが表されます。 評価では、評価期間の終了日に、評価中に行われたすべてのトレーニングが完了した後、現在のオンライン学習ポリシーを使用して、保存されたモデルのフィーチャー。 
 
 フィーチャーの重要度の結果には、評価中にテストまたは作成されるその他のポリシーおよびモデルは示されません。  この評価には、評価期間終了後に Personalizer に送信されるフィーチャーは含まれません。
 

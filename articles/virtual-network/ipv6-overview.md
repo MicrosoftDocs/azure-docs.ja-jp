@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 07/15/2019
 ms.author: kumud
-ms.openlocfilehash: 5093b74484cd04a0c0c7afed8e2ebc725af033f5
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 33078439e8f055d746fad9949a9b0d7651e120f7
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249825"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543810"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Azure Virtual Network の IPv6 の概要 (プレビュー)
 
@@ -48,7 +48,9 @@ VNet 向けの IPv6 には、以下の機能が含まれています。
 
 - Azure のお客様は、アプリケーションやお客様のニーズを満たすように IPv6 仮想ネットワーク アドレス空間を定義できます。また、オンプレミス IP 空間にシームレスに統合するように IPv6 仮想ネットワーク アドレス空間を定義することもできます。
 - デュアル スタック (IPv4 および IPv6) 仮想ネットワークとデュアル スタック サブネットにより、アプリケーションは、仮想ネットワークやインターネット内の IPv4 リソースと IPv6 リソースの両方に接続できます。
-- ネットワーク セキュリティ グループに対する IPv6 規則により、リソースを保護できます。
+    > [!IMPORTANT]
+    > IPv6 のサブネットは、正確に /64 のサイズである必要があります。  これにより、一部のルーターが /64 の IPv6 ルートしか受け付けることができないために、サブネットのオンプレミス ネットワークへのルーティングを有効にすることにした場合の互換性が確保されます。  
+- ネットワーク セキュリティ グループに対する IPv6 規則でリソースを保護します。
 - 仮想ネットワーク内の IPv6 トラフィックのルーティングを、ユーザー定義ルートを使用してカスタマイズできます。これは特に、ネットワーク仮想アプライアンスを利用してアプリケーションを拡張しているときに便利です。
 - インターネット クライアントが、最適なプロトコルと、IPv6 (AAAA) レコードに対する Azure DNS サポートを使用して、デュアル スタック アプリケーションにシームレスにアクセスできるようにします。 
 - 回復性があるスケーラブルなアプリケーションを作成するための Standard IPv6 Public Load Balancer のサポート。これには、次のものが含まれます。

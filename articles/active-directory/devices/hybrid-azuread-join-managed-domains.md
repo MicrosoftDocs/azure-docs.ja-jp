@@ -20,7 +20,7 @@ ms.locfileid: "68813095"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル:マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
-組織内のユーザーと同様、デバイスは保護対象となる主要な ID です。 デバイスの ID を使用して、いつでもどこからでもリソースを保護できます。 この目標は、次のいずれかの方法を使用して、Azure Active Directory (Azure AD) にデバイス ID を取り込み、管理することで達成できます。
+組織内のユーザーと同様、デバイスは保護対象となる主要なアイデンティティです。 デバイスの ID を使用して、いつでもどこからでもリソースを保護できます。 この目標は、次のいずれかの方法を使用して、Azure Active Directory (Azure AD) にデバイス ID を取り込み、管理することで達成できます。
 
 - Azure AD 参加
 - ハイブリッド Azure AD 参加

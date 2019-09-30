@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: e57427fbb7e0d3c67fc4fcbab1a50f14ef8c9501
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5cc033787e1045926ff4fece6826e41f430d48fd
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569344"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744464"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Azure SQL Database によるビジネス継続性の概要
 
@@ -140,7 +140,7 @@ geo 冗長ストレージ (既定で有効) で自動バックアップを使用
 復旧にどちらのメカニズムを使ったとしても、ユーザーおよびアプリケーションの動作を元に戻す前に、次の追加タスクを実行する必要があります。
 
 - クライアントとクライアント アプリケーションを、新しいサーバーおよび復元されたサーバーにリダイレクトする
-- ユーザーが接続できるように、適切なサーバー レベルの IP ファイアウォール規則が適用されていることを確認する。または、[データベース レベルのファイアウォール](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal)を使用して、適切な規則を有効にする。
+- ユーザーが接続できるように、適切なサーバー レベルの IP ファイアウォール規則が適用されていることを確認する。または、[データベース レベルのファイアウォール](sql-database-firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules)を使用して、適切な規則を有効にする。
 - 適切なログインとマスター データベース レベルのアクセス許可が適切に指定されていることを確認する (または [包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)を使用する)
 - 必要に応じて、監査を構成する
 - 必要に応じて、アラートを構成する

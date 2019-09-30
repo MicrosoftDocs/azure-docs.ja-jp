@@ -5,17 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 31d8c0fdf1b4df3ee00f3652c933b4b738384bea
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: 5f1b64753d19158b17d4de1b3fbbe50d30ea0254
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068842"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764670"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) のパフォーマンスに関する推奨事項
 
-**適用対象:** Azure Database for PostgreSQL 9.6 および 10 (単一サーバー)
+**適用対象:** Azure Database for PostgreSQL - 単一サーバー バージョン 9.6、10、11
 
 パフォーマンスに関する推奨事項機能では、データベースを分析し、パフォーマンス向上に役立つカスタマイズされた提案が作成されます。 推奨事項を生成するために、分析ではスキーマなどのさまざまなデータベースの特性に注目します。 パフォーマンスに関する推奨事項機能をフル活用するには、サーバー上で[クエリ ストア](concepts-query-store.md)を有効にしてください。 パフォーマンスに関する推奨事項を実装した後は、パフォーマンスをテストし、変更の影響を評価する必要があります。 
 
@@ -47,7 +47,8 @@ Azure portal の PostgreSQL サーバーに関するページで、メニュー 
 ### <a name="drop-index-recommendations"></a>インデックスの削除に関する推奨事項
 足りないインデックスの検出だけでなく、Azure Database for PostgreSQL は既存のインデックスのパフォーマンスを継続的に分析します。 インデックスがほとんど使用されなかったり、冗長であったりした場合、アナライザーによりドロップが推奨されます。
 
-
+## <a name="considerations"></a>考慮事項
+* パフォーマンスの推奨事項は、[読み取りレプリカ](concepts-read-replicas.md)では使用できません。
 ## <a name="next-steps"></a>次の手順
 - Azure Database for PostgreSQL での[監視およびチューニング](concepts-monitoring.md)の詳細を確認する。
 

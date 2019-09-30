@@ -1,6 +1,6 @@
 ---
 title: Spark の設定を構成する - Azure HDInsight
-description: Azure HDInsight クラスター用に Spark を構成する方法。
+description: Azure HDInsight クラスターの Apache Spark 設定を表示および構成する方法
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: eb948aa2b683f426831e1b0d34b44f814eab6b9f
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 48f19e5da8c7703cc597518246c2f62ebce3ae17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441929"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003170"
 ---
 # <a name="configure-apache-spark-settings"></a>Apache Spark の設定を構成する
 
@@ -44,11 +44,11 @@ Apache Spark のシステム構成には 3 つの場所があります。
 特定のバージョンの Spark を選ぶと、クラスターにはその既定の構成設定が含まれます。  カスタム Spark 構成ファイルを使用することで、既定の Spark 構成値を変更できます。  次に例を示します。
 
 ```
-    spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
-    spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
-    spark.hadoop.parquet.block.size 1099511627776
-    spark.sql.files.maxPartitionBytes 1099511627776
-    spark.sql.files.openCostInBytes 1099511627776
+spark.hadoop.io.compression.codecs org.apache.hadoop.io.compress.GzipCodec
+spark.hadoop.mapreduce.input.fileinputformat.split.minsize 1099511627776
+spark.hadoop.parquet.block.size 1099511627776
+spark.sql.files.maxPartitionBytes 1099511627776
+spark.sql.files.openCostInBytes 1099511627776
 ```
 
 上記の例では、5 つの Spark 構成パラメーターのいくつかの既定値がオーバーライドされます。  これらは、圧縮コーデック、Apache Hadoop MapReduce の分割最小サイズと parquet のブロック サイズ、さらには Spar SQL のパーティション サイズと開くファイルのサイズの既定値です。  これらの構成の変更を選んだのは、関連するデータとジョブ (この例では、ゲノム データ) に、これらのカスタム構成設定を使うとパフォーマンスが向上する特定の特性があるためです。
@@ -63,7 +63,7 @@ Apache Ambari Web UI に、主要なクラスター リソースの使用率メ�
 
 Apache Spark の構成値を見るには、 **[Config History]\(構成履歴\)** を選び、 **[Spark2]** を選びます。  **[Configs]\(構成\)** タブを選び、サービス一覧の `Spark` (または、バージョンによっては `Spark2`) を選びます。  クラスターの構成値の一覧が表示されます。
 
-![Spark の構成](./media/apache-spark-settings/spark-config.png)
+![Spark の構成](./media/apache-spark-settings/spark-configurations.png)
 
 個別の Spark 構成値を表示および変更するには、リンク タイトルに "spark" が含まれるリンクを選びます。  Spark の構成は、以下のカテゴリのカスタム構成値と詳細構成値の両方が含まれます。
 
@@ -82,7 +82,7 @@ Apache Spark の構成値を見るには、 **[Config History]\(構成履歴\)**
 
 次の図では、主要な Spark オブジェクトであるドライバー プログラムとそれに関連する Spark コンテキスト、およびクラスター マネージャーとその *n* 個のワーカー ノードが示されています。  各ワーカー ノードには、Executor、キャッシュ、および *n* 個のタスク インスタンスが含まれます。
 
-![クラスター オブジェクト](./media/apache-spark-settings/spark-arch.png)
+![クラスター オブジェクト](./media/apache-spark-settings/hdi-spark-architecture.png)
 
 Spark ジョブはワーカーのリソース (具体的にはメモリ) を使うため、ワーカー ノードの Executor 用に Spark 構成値を調整するのが一般的です。
 
@@ -93,7 +93,7 @@ Spark ジョブはワーカーのリソース (具体的にはメモリ) を使�
 
 Spark Executor で使われるリソースに関するもう 1 つの情報ソースは、Spark アプリケーション UI です。  Spark UI で **[Executors]\(Executor\)** タブを選ぶと、構成の概要ビューと詳細ビューおよび Executor 別の消費リソースが表示されます。  これらのビューは、Spark Executor の既定値の変更を、クラスター全体に対して行うか、または特定のジョブ実行セットについて行うかを判断するときに役立ちます。
 
-![Spark Executor](./media/apache-spark-settings/spark-executors.png)
+![Spark Executor](./media/apache-spark-settings/apache-spark-executors.png)
 
 または、Ambari REST API を使って、プログラムで HDInsight と Spark クラスターの構成設定を確認することもできます。  詳細については、[GitHub の Apache Ambari API リファレンス](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)を参照してください。
 
@@ -105,7 +105,7 @@ Spark のワークロードによっては、既定以外の Spark 構成のほ�
 
 構成値が異なる 2 つのワーカー ノードの例を次に示します。
 
-![2 ノード構成](./media/apache-spark-settings/executor-config.png)
+![2 ノード構成](./media/apache-spark-settings/executor-configuration.png)
 
 次の一覧では、Spark Executor の主要なメモリ パラメーターを示します。
 
@@ -116,7 +116,7 @@ Spark のワークロードによっては、既定以外の Spark 構成のほ�
 
 YARN は、各 Spark ノード上のコンテナーで使われる最大合計メモリを制御します。 次の図では、YARN 構成オブジェクトと Spark オブジェクトの間のノードごとの関係を示します。
 
-![YARN の Spark メモリの管理](./media/apache-spark-settings/yarn-spark-memory.png)
+![YARN の Spark メモリの管理](./media/apache-spark-settings/hdi-yarn-spark-memory.png)
 
 ## <a name="change-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook で実行するアプリケーションのパラメーターを変更する
 
@@ -136,8 +136,8 @@ Jupyter Notebook で実行するアプリケーションについては、`%%con
 以下のコードでは、Jupyter Notebook で実行しているアプリケーションの構成を変更する方法を示します。
 
 ```
-    %%configure
-    {"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
+%%configure
+{"executorMemory": "3072M", "executorCores": 4, "numExecutors":10}
 ```
 
 ## <a name="conclusion"></a>まとめ

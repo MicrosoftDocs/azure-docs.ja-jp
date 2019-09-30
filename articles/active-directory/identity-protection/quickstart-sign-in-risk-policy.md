@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bb1e29735a860f5dc3b6ce8996af9fcd4962871
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: ed5e5e26a27e13ba09ffcc97e0b2b0f1b37bc8bd
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335308"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127693"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>クイック スタート:Azure Active Directory Identity Protection を使用して、セッションのリスクが検出されたときにアクセスをブロックする  
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - **Azure AD Premium P2 エディションへのアクセス** - Azure AD Identity Protection は Azure AD Premium P2 の機能です。 
 - **Identity Protection** - このクイック スタートのシナリオでは Identity Protection を有効にする必要があります。 Identity Protection を有効にする方法がわからない場合は、「[Azure Active Directory Identity Protection の有効化](../identity-protection/enable.md)」を参照してください。
-- **Tor Browser** - [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) は、オンラインでの自身のプライバシー保護に役立つことを目的としています。 Identity Protection は、Tor Browser からのサインインを、中程度のリスク レベルのある**匿名 IP アドレスからのサインイン**として検出します。 詳細については、「[Azure Active Directory リスク イベント](../reports-monitoring/concept-risk-events.md)」を参照してください。  
+- **Tor Browser** - [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) は、オンラインでの自身のプライバシー保護に役立つことを目的としています。 Identity Protection は、Tor Browser からのサインインを、中程度のリスク レベルのある**匿名 IP アドレスからのサインイン**として検出します。 詳細については、「[Azure Active Directory リスク検出](../reports-monitoring/concept-risk-events.md)」を参照してください。  
 - **Alain Charon というテスト アカウント** - テスト アカウントの作成方法がわからない場合は、[新しいユーザーの追加](../fundamentals/add-users-azure-active-directory.md#add-a-new-user)に関するページを参照してください。
 
 ## <a name="test-your-sign-in"></a>サインインをテストする 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-your-conditional-access-policy"></a>条件付きアクセス ポリシーを作成する 
 
-このクイック スタートのシナリオでは、Tor Browser からのサインインを使用して、検出された**匿名 IP アドレスからのサインイン**というリスク イベントを生成します。 このリスク イベントのリスク レベルは中です。 このリスク イベントに応答するには、サインイン リスクの条件を [中] に設定します。 
+このクイックスタートのシナリオでは、Tor Browser からのサインインを使用して、検出された**匿名 IP アドレスからのサインイン**というリスク検出を生成します。 このリスク検出のリスク レベルは中です。 このリスク検出に応答するには、サインイン リスクの条件を [中] に設定します。 
 
 このセクションでは、必要なサインイン リスク条件付きアクセス ポリシーを作成する方法について説明します。 ポリシーに以下の内容を設定します。
 

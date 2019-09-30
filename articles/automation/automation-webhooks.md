@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 03/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e0e0cdfd5bdda125ed38173df56e0fb7a84f71a
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 153e910ea85ae843c6d4db51e709b58e441f6761
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477925"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061439"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始
 
-*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Azure DevOps Services、GitHub、Azure Monitor ログなどの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。  
+*Webhook* を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。 これにより、Azure DevOps Services、GitHub、Azure Monitor ログなどの外部サービス、またはカスタム アプリケーションにおいて、Azure Automation API を使用した完全なソリューションを実装していなくても、Runbook を開始することができます。
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
@@ -32,10 +32,10 @@ ms.locfileid: "67477925"
 
 | プロパティ | Description |
 |:--- |:--- |
-| Name |Webhook に使用する任意の名前を指定できます。これはクライアントには公開されません。 これはユーザーが Azure Automation の Runbook を識別する場合にのみ使用されます。 <br> ベスト プラクティスとして、webhook を使用するクライアントに関連した名前を webhook に付ける必要があります。 |
+| 名前 |Webhook に使用する任意の名前を指定できます。これはクライアントには公開されません。 これはユーザーが Azure Automation の Runbook を識別する場合にのみ使用されます。 <br> ベスト プラクティスとして、webhook を使用するクライアントに関連した名前を webhook に付ける必要があります。 |
 | URL |Webhook の URL は、クライアントが Webhook にリンクされた Runbook を開始するために HTTP POST で呼び出す一意のアドレスです。 これは、Webhook を作成するときに自動的に生成されます。 カスタム URL を指定することはできません。 <br> <br> この URL には、追加の認証なしで、サードパーティ製システムによる Runbook 呼び出しを可能にするためのセキュリティ トークンが含まれています。 その理由で、これはパスワードと同じように扱う必要があります。 セキュリティ上の理由から、Webhook の作成時に Azure ポータルで表示できるのは URL だけです。 将来の使用に備えて、URL を安全な場所にメモしてください。 |
 | 有効期限 |証明書のように、各 Webhook には有効期限があり、それ以降は使用できなくなります。 この有効期限は、切れる前であれば、Webhook の作成後に変更できます。 |
-| Enabled |既定では、Webhook は作成時に有効になります。 Disabled に設定した場合、クライアントはそれを使用できなくなります。 **Enabled** プロパティは、Webhook の作成時、または作成後はいつでも設定できます。 |
+| 有効 |既定では、Webhook は作成時に有効になります。 Disabled に設定した場合、クライアントはそれを使用できなくなります。 **Enabled** プロパティは、Webhook の作成時、または作成後はいつでも設定できます。 |
 
 ### <a name="parameters"></a>parameters
 
@@ -54,6 +54,9 @@ Webhook を使用して Runbook を開始した場合、クライアントは We
 | RequestBody |受信 POST 要求の本文。 文字列、JSON、XML、フォームのエンコード済みデータなどの書式設定が保持されます。 想定されるデータ形式を操作するには、Runbook を記述する必要があります。 |
 
 **$WebhookData** パラメーターのサポートに必要な Webhook の構成はありません。また、これを受け入れるために Runbook は必要ありません。 Runbook がパラメーターを定義していない場合は、クライアントから送信された要求の詳細は無視されます。
+
+> [!NOTE]
+> Webhook を呼び出すときは、呼び出しが失敗した場合に備えて、常にパラメーター値を格納しておく必要があります。 ネットワークの停止や接続の問題が発生した場合は、失敗した Webhook 呼び出しを取得することはできません。
 
 webhook の作成時に $WebhookData の値を指定した場合、クライアントの要求本文にデータが含まれていなくても、クライアントの POST 要求からのデータで webhook が Runbook を開始した時点でその値はオーバーライドされます。 webhook 以外の方法を使用して $WebhookData が含まれる Runbook を開始する場合、Runbook で認識される $Webhookdata の値を指定することができます。 この値は $Webhookdata と同じ[プロパティ](#details-of-a-webhook)を持つオブジェクトにする必要があります。それにより、Runbook は、Webhook によって渡された実際の WebhookData を操作しているかのように適切な処理を実行できます。
 
@@ -171,7 +174,7 @@ if ($WebhookData) {
             {
                 throw "Could not retrieve connection asset: $ConnectionAssetName. Check that this asset exists in the Automation account."
             }
-            Write-Output "Authenticating to Azure with service principal." 
+            Write-Output "Authenticating to Azure with service principal."
             Add-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint | Write-Output
 
         # Start each virtual machine

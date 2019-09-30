@@ -1,25 +1,25 @@
 ---
-title: Azure Blockchain Workbench アーキテクチャ
-description: Azure Blockchain Workbench アーキテクチャとそのコンポーネントの概要。
+title: Azure Blockchain Workbench Preview のアーキテクチャ
+description: Azure Blockchain Workbench Preview アーキテクチャとそのコンポーネントの概要。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/20/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 5333f02edd6a4ff888e28ed36c2b78f75309f4d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d50ee0fa06f34167cd4be9e787f6e351d3ef7e3b
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060914"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845204"
 ---
-# <a name="azure-blockchain-workbench-architecture"></a>Azure Blockchain Workbench アーキテクチャ
+# <a name="azure-blockchain-workbench-preview-architecture"></a>Azure Blockchain Workbench Preview のアーキテクチャ
 
-Azure Blockchain Workbench では、複数の Azure コンポーネントを使用したソリューションを提供することで、ブロックチェーン アプリケーションの開発を簡単にします。 Blockchain Workbench は、Azure Marketplace のソリューション テンプレートを使用してデプロイできます。 このテンプレートを使用すると、ブロックチェーン スタック、クライアント アプリケーションの種類、IoT 統合のサポートなど、デプロイするモジュールやコンポーネントを選択できます。 デプロイが完了すると、Blockchain Workbench によって Web アプリ、iOS アプリ、Android アプリへのアクセスが提供されます。
+Azure Blockchain Workbench Preview では、複数の Azure コンポーネントを使用したソリューションを提供することで、ブロックチェーン アプリケーションの開発を簡単にします。 Blockchain Workbench は、Azure Marketplace のソリューション テンプレートを使用してデプロイできます。 このテンプレートを使用すると、ブロックチェーン スタック、クライアント アプリケーションの種類、IoT 統合のサポートなど、デプロイするモジュールやコンポーネントを選択できます。 デプロイが完了すると、Blockchain Workbench によって Web アプリ、iOS アプリ、Android アプリへのアクセスが提供されます。
 
 ![Blockchain Workbench アーキテクチャ](./media/architecture/architecture.png)
 

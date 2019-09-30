@@ -1,6 +1,6 @@
 ---
 title: Facebook 認証の構成 - Azure App Service
-description: App Services アプリケーションに Facebook 認証を構成する方法について説明します。
+description: App Service アプリに Facebook 認証を構成する方法について説明します。
 services: app-service
 documentationcenter: ''
 author: mattchenderson
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: f4d26572dc21e2c7454fb739cb4b5fb5665bd1db
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 410d769d0d9abe3a0a0f9c45e3cf67bb94ec9f4d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098578"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232066"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>App Service アプリケーションを Facebook ログインを使用するように構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -30,9 +30,9 @@ ms.locfileid: "70098578"
 
 ## <a name="register"> </a>Facebook にアプリケーションを登録する
 1. [Facebook Developers] の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
-3. (オプション) 開発者向けの Facebook アカウントを持っていない場合は、 **[Get Started]\(作業開始\)** をクリックして登録の手順に従います。
+3. (省略可能) 開発者向けの Facebook アカウントを持っていない場合は、 **[Get Started]\(作業開始\)** をクリックして登録の手順に従います。
 4. **[マイアプリ]**  >  **[新しいアプリの追加]** をクリックします。
-5. **[Display Name] (表示名)** に、アプリの一意の名前を入力します。 **連絡先の電子メール**を指定してから、 **[Create App ID] (アプリ ID の作成)** をクリックし、セキュリティ チェックを完了します。 これで、新しい Facebook アプリケーションの開発者向けダッシュボードに移動します。
+5. **[Display Name] (表示名)** に、アプリの一意の名前を入力します。 **連絡先の電子メール**を指定してから、 **[Create App ID] (アプリ ID の作成)** をクリックし、セキュリティ チェックを完了します。 新しい Facebook アプリの開発者向けダッシュボードが開きます。
 6. **[ダッシュ ボード]**  >  **[Facebook ログイン]**  >  **[設定]**  >  **[Web]** をクリックします。
 1. 左側のナビゲーションで、 **[Facebook ログイン]** をクリックして **[設定]** をクリックします。
 1. **[有効な OAuth リダイレクト URI]** に、`https://<app-name>.azurewebsites.net/.auth/login/facebook/callback` と入力し、 *\<app-name>* を Azure App Service アプリの名前に置き換えます。 **[変更を保存]** をクリックします。

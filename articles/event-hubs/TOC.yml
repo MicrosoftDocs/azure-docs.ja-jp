@@ -30,6 +30,18 @@
           href: event-hubs-dotnet-standard-getstarted-send.md
         - name: Java
           href: event-hubs-java-get-started-send.md
+        - name: Python
+          href: event-hubs-python-get-started-send.md
+        - name: Node.js
+          href: event-hubs-node-get-started-send.md
+        - name: Go
+          href: event-hubs-go-get-started-send.md
+        - name: C (送信のみ)
+          href: event-hubs-c-getstarted-send.md
+        - name: Apache Storm (受信のみ)
+          href: event-hubs-storm-getstarted-receive.md
+        - name: .NET Framework
+          href: event-hubs-dotnet-framework-getstarted-send.md
     - name: イベントのキャプチャ
       items:
         - name: Azure portal を使用した Event Hubs Capture の有効化
@@ -79,7 +91,7 @@
               href: authorize-access-azure-active-directory.md
             - name: Shared Access Signature を使用したアクセスを承認する
               href: authorize-access-shared-access-signature.md
-        - name: Authentication
+        - name: 認証
           items:
             - name: Azure Active Directory を使用して認証する
               items:
@@ -89,8 +101,8 @@
                   href: authenticate-application.md
             - name: 共有アクセス署名を使用して認証する
               href: authenticate-shared-access-signature.md
-        - name: セキュリティ属性
-          href: event-hubs-security-attributes.md
+        - name: 組み込みのセキュリティ制御
+          href: event-hubs-security-controls.md
     - name: AMQP 1.0 プロトコル ガイド
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
@@ -102,48 +114,22 @@
           href: event-hubs-get-connection-string.md
         - name: さまざまなプロトコルを使用してアプリケーション間でイベントを交換する
           href: event-hubs-exchange-events-different-protocols.md
-        - name: プログラミング ガイド
+        - name: .NET プログラミング ガイド
           href: event-hubs-programming-guide.md
+        - name: Python を使用したイベントの送信、受信、およびキャプチャ
+          href: event-hubs-python.md
     - name: データを処理する
       items:
         - name: Azure Stream Analytics を使用したデータの処理
           href: process-data-azure-stream-analytics.md
-    - name: クライアント ライブラリの使用
+    - name: Spring Framework との統合
       items:
-        - name: .NET Framework
-          items:
-            - name: .NET Framework を使用したイベントの送受信
-              href: event-hubs-dotnet-framework-getstarted-send.md
-        - name: Java
-          items:
-            - name: Spring Cloud Stream Binder アプリの作成
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
-              maintainContext: true
-            - name: Apache Kafka 用の Spring Boot Starter の使用
-              href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
-              maintainContext: true
-        - name: Python
-          items:
-            - name: Python を使用したイベントの送受信
-              href: event-hubs-python-get-started-send.md
-            - name: Python を使用したイベントの送信、受信、およびキャプチャ
-              href: event-hubs-python.md
-        - name: Node.js
-          items:
-            - name: Node.js を使用したイベントの送受信
-              href: event-hubs-node-get-started-send.md
-        - name: Go
-          items:
-            - name: Go を使用したイベントの送受信
-              href: event-hubs-go-get-started-send.md
-        - name: C (送信のみ)
-          items:
-            - name: C を使用したイベントの送信
-              href: event-hubs-c-getstarted-send.md
-        - name: Apache Storm (受信のみ)
-          items:
-            - name: Apache Storm を使用したイベントの受信
-              href: event-hubs-storm-getstarted-receive.md
+        - name: Spring Cloud Stream Binder アプリの作成
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-azure-event-hub
+          maintainContext: true
+        - name: Apache Kafka 用の Spring Boot Starter の使用
+          href: /java/azure/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub
+          maintainContext: true
     - name: Apache Kafka との統合
       items:
         - name: Apache Kafka 対応イベント ハブの作成

@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/13/2019
+ms.date: 08/28/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: fasttrack-edit
+ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b935f8bb15357e0ca79665b5620be5778ad3c554
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: d89d861b48b0c198b06a45613db668adcf551b39
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69512508"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70074321"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -170,7 +170,7 @@ Azure AD によって発行されるトークンは、RSA 256 などの業界標
 }
 ```
 
-`alg` 要求はトークンへの署名に使用されたアルゴリズムを示し、`kid` 要求はトークンへの署名に使用された特定の公開キーを示します。
+`alg` 要求はトークンへの署名に使用されたアルゴリズムを示し、`kid` 要求はトークンへの検証に使用された特定の公開キーを示します。
 
 いつでも、Azure AD は公開/秘密キー ペアの特定セットのいずれかを使用して、id_token に署名できます。 Azure AD は定期的に使用可能なキー セットをローテーションするので、このキー変更を自動的に処理するようにアプリを作成する必要があります。 Azure AD によって使用される公開キーの更新を確認する適切な頻度は、24 時間間隔です。
 

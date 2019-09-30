@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: f6eaeb7c4a4d28fcf11ec9acda14629a79d00791
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 9aed19c88517868c2e8cb860dc01d01b7a7c3127
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814334"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262074"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor のログ
 
@@ -26,7 +26,7 @@ ms.locfileid: "68814334"
 Azure Monitor のログは、さまざまなソースからのデータについて複雑な分析を実行するときに特に便利です。 この記事では、Azure Monitor でのログの構造と、データを使用してできること、およびログにデータを保存できるさまざまなデータ ソースについて説明します。
 
 > [!NOTE]
-> Azure Monitor のログと Azure 上のログ データのソースを区別することが重要です。 たとえば、Azure のサブスクリプション レベルのイベントは、Azure Monitor のメニューから表示できる[アクティビティ ログ](activity-logs-overview.md)に書き込まれます。 ほとんどのリソースでは、別の場所に転送できる[診断ログ](diagnostic-logs-overview.md)に運用情報が書き込まれます。 Azure Monitor のログは、アクティビティ データと診断ログと共に他の監視データを収集して、リソース全体を深く分析するためのログ データ プラットフォームです。
+> Azure Monitor のログと Azure 上のログ データのソースを区別することが重要です。 たとえば、Azure のサブスクリプション レベルのイベントは、Azure Monitor のメニューから表示できる[アクティビティ ログ](activity-logs-overview.md)に書き込まれます。 ほとんどのリソースでは、別の場所に転送できる[診断ログ](resource-logs-overview.md)に運用情報が書き込まれます。 Azure Monitor のログは、アクティビティ データと診断ログと共に他の監視データを収集して、リソース全体を深く分析するためのログ データ プラットフォームです。
 
 ## <a name="what-are-azure-monitor-logs"></a>Azure Monitor のログとは
 
@@ -85,9 +85,9 @@ Azure Monitor は、Azure 内とオンプレミス リソースからの両方�
 
 | Data | 説明 |
 |:---|:---|
-| リソース診断 | Log Analytics ワークスペースへのメトリックなど、診断データを書き込むための診断設定を構成します。 「[Azure 診断ログの Log Analytics へのストリーミング](diagnostic-logs-stream-log-store.md)」をご覧ください。 |
+| リソース診断 | Log Analytics ワークスペースへのメトリックなど、診断データを書き込むための診断設定を構成します。 「[Azure 診断ログの Log Analytics へのストリーミング](resource-logs-collect-storage.md)」をご覧ください。 |
 | 監視ソリューション | 監視ソリューションにより収集されたデータが Log Analytics ワークスペースに書き込まれます。 ソリューションの一覧については、「[Azure での管理ソリューションのデータ収集の詳細](../insights/solutions-inventory.md)」をご覧ください。 ソリューションのインストールと使用について詳しくは、「[Azure Monitor での監視ソリューション](../insights/solutions.md)」をご覧ください。 |
-| メトリック | ログ データを長期間保持し、[Kusto クエリ言語](/azure/kusto/query/)を使用して他のデータの種類と共に複雑な分析を実行するために、Azure Monitor リソース用のプラットフォーム メトリックを Log Analytics ワークスペースに送信します。 「[Azure 診断ログの Log Analytics へのストリーミング](diagnostic-logs-stream-log-store.md)」をご覧ください。 |
+| メトリック | ログ データを長期間保持し、[Kusto クエリ言語](/azure/kusto/query/)を使用して他のデータの種類と共に複雑な分析を実行するために、Azure Monitor リソース用のプラットフォーム メトリックを Log Analytics ワークスペースに送信します。 「[Azure 診断ログの Log Analytics へのストリーミング](resource-logs-collect-storage.md)」をご覧ください。 |
 | Azure テーブル ストレージ | 一部の Azure リソースによて監視データが書き込まれる Azure Storage からデータを収集します。 「[Log Analytics で IIS 用 Azure Blob Storage とイベント用 Azure Table Storage を使用する](azure-storage-iis-table.md)」をご覧ください。 |
 
 ### <a name="virtual-machines"></a>Virtual Machines

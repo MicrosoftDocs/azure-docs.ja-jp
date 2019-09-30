@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
-ms.openlocfilehash: 2511f2c8fb706e232cde9ee4c02c7f8114bd3a2b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60200701"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860327"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Azure Cloud Shell ウィンドウの使用
 
@@ -48,7 +48,7 @@ Bash 環境と PowerShell 環境をスワップするには、Cloud Shell ツー
 ウィンドウの左上にあるファイルのアップロード/ダウンロード アイコンをクリックし、アップロードまたはダウンロードを選択します。  
 ![ファイルのアップロード/ダウンロード](media/using-the-shell-window/uploaddownload.png)
 * ファイルをアップロードする場合は、ポップアップを使用して、ローカル コンピューター上のファイルを参照し、目的のファイルを選択して、[開く] ボタンをクリックします。  ファイルが `/home/user` ディレクトリにアップロードされます。
-* ファイルをダウンロードする場合は、ポップアップ ウィンドウに完全修飾ファイル パスを入力し、[ダウンロード] ボタンをクリックします。  
+* ファイルをダウンロードする場合は、ポップアップ ウィンドウに完全修飾ファイル パス (つまり、基本的には既定で表示される `/home/user` ディレクトリの下のパス) を入力し、[ダウンロード] ボタンを選択します。  
 > [!NOTE] 
 > Cloud Shell では、ファイルとファイル パスの大文字と小文字が区別されます。 ファイル パスの大文字と小文字の区別をよく確認してください。
 

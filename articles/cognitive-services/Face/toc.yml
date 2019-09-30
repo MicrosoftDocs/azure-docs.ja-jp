@@ -9,12 +9,8 @@
   items:
     - name: クライアント SDK の使用
       items:
-        - name: 画像内の顔を検出する
-          items:
-            - name: 'C#'
-              href: QuickStarts/csharp-detect-sdk.md
-            - name: Python
-              href: Tutorials/FaceAPIinPythonTutorial.md
+        - name: .NET SDK
+          href: Quickstarts/csharp-sdk.md
         - name: Python SDK
           href: QuickStarts/python-sdk.md
     - name: REST API の使用

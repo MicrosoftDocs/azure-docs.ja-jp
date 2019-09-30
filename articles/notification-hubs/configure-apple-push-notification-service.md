@@ -2,20 +2,22 @@
 title: Azure Notification Hubs で Apple Push Notification Service を構成する | Microsoft Docs
 description: Apple Push Notification Service (APNS) の設定で Azure 通知ハブを構成する方法について説明します。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: 9a9db9f05895569b050e56cdeec1ee2ee25af0df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 74e7e3c74934e292b668b8bff594a5efbca19716
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237827"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212547"
 ---
 # <a name="configure-apple-push-notification-service-apns-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal で通知ハブ用に Apple Push Notification Service (APNS) の設定を構成する
 この記事では、Azure portal を使用して Azure 通知ハブ用に Apple Push Notification Service (APNS) の設定を構成する方法について説明します。 

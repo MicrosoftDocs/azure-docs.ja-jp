@@ -5,12 +5,12 @@ ms.subservice: single-database
 ms.topic: include
 ms.date: 07/31/2019
 ms.author: mathoma
-ms.openlocfilehash: d19e21edd31be461ba30e8985e80c4651bbbb02d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d4c426c5fe31f8fc2bfaf4697c05456124cafcb1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69894130"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099154"
 ---
 この手順では、Azure SQL Database の単一データベースを作成します。 
 
@@ -23,7 +23,7 @@ ms.locfileid: "69894130"
 
 Azure portal を使用して、リソース グループと単一データベースを作成します。
 
-1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択してから、検索ボックスに「*Azure SQL*」と入力します。
+1. [Azure portal](https://portal.azure.com) の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択してから、検索ボックスに「*Azure SQL*」と入力します。 (オプション) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
 2. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[データベース]** タイルで **[詳細の表示]** を選択すると、さまざまなデータベースに関する追加情報を表示できます。
 3. **[作成]** を選択します。
 
@@ -43,7 +43,7 @@ Azure portal を使用して、リソース グループと単一データベー
        - **サーバー名**: 一意性を確保するためにいくつかの数字とともに「`mysqlserver`」と入力します。
        - **サーバー管理者ログイン**:「 `azureuser`」と入力します。
        - **Password**:パスワードの要件を満たす複雑なパスワードを入力します。
-       - **[場所]** :ドロップダウンから場所 (`West US 2` など) を選択します。
+       - **[場所]** :ドロップダウンから場所 (`West US` など) を選択します。
 
          ![新しいサーバー](../media/sql-database-get-started-portal/new-server.png)
 
@@ -86,7 +86,7 @@ PowerShell を使用して、リソース グループと単一データベー�
    # Set variables for your server and database
    $subscriptionId = '<SubscriptionID>'
    $resourceGroupName = "myResourceGroup-$(Get-Random)"
-   $location = "West US 2"
+   $location = "West US"
    $adminLogin = "azureuser"
    $password = "PWD27!"+(New-Guid).Guid
    $serverName = "mysqlserver-$(Get-Random)"

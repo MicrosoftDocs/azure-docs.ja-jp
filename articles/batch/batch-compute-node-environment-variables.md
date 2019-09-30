@@ -9,14 +9,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 08/13/2019
+ms.date: 09/12/2019
 ms.author: lahugh
-ms.openlocfilehash: 916dceb7c5e4314df98407b4e8fa4ed75cdb308c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 995dfeaf26180b74f135ed2b74fa40faf3a12c08
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095275"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70958798"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch ランタイム環境変数
 
@@ -48,7 +48,7 @@ Batch での環境変数の使用に関する詳細については、「[タス�
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | タスクが属する Batch アカウントの名前。                  | すべてのタスク。   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | Batch アカウントの URL。 | すべてのタスク。 | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | すべてのアプリ パッケージ環境変数のプレフィックス。 たとえば、アプリケーション "Foo" のバージョン "1" がプールにインストールされる場合、環境変数は AZ_BATCH_APP_PACKAGE_FOO_1 です。 AZ_BATCH_APP_PACKAGE_FOO_1 は、パッケージがダウンロードされた場所 (フォルダー) を示します。 | 関連付けられたアプリ パッケージがある任意のタスク。 ノード自体にアプリケーション パッケージがある場合は、すべてのタスクに対しても使用できます。 | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | すべてのアプリ パッケージ環境変数のプレフィックス。 たとえば、アプリケーション "Foo" のバージョン "1" がプールにインストールされる場合、環境変数は AZ_BATCH_APP_PACKAGE_FOO_1 です。 AZ_BATCH_APP_PACKAGE_FOO_1 は、パッケージがダウンロードされた場所 (フォルダー) を示します。 アプリ パッケージの既定のバージョンを使用する場合は、バージョン番号を指定せずに AZ_BATCH_APP_PACKAGE 環境変数を使用します。 | 関連付けられたアプリ パッケージがある任意のタスク。 ノード自体にアプリケーション パッケージがある場合は、すべてのタスクに対しても使用できます。 | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Batch サービス操作の制限されたセットへのアクセスを許可する認証トークン。 この環境変数は、[タスクが追加される](/rest/api/batchservice/task/add#request-body)ときに、[authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) が設定された場合のみに存在します。 このトークン値は、[BatchClient.Open() .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_) などの Batch API 内で、Batch クライアントを作成するための資格署名として使用されます。 | すべてのタスク。 | OAuth2 アクセス トークン |
 | AZ_BATCH_CERTIFICATES_DIR       | [ タスク作業ディレクトリ内のディレクトリ][files_dirs]、この中に Linux コンピューティング ノードの証明書が格納される。 この環境変数は Windows コンピューティング ノードに適用されません。                                                  | すべてのタスク。   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | [マルチ インスタンス タスク][multi_instance]に割り当てられているノードのリストを形式 `nodeIP,nodeIP` で示します。 | マルチ インスタンスのプライマリおよびサブタスク。 | `10.0.0.4,10.0.0.5` |

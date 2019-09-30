@@ -1,20 +1,19 @@
 ---
 title: ナレッジ ストアでのプロジェクションの操作 (プレビュー) - Azure Search
 description: 検索以外のシナリオで使用するために AI のインデックス作成パイプラインから強化されたデータを保存して整形します
-manager: eladz
+manager: nitinme
 author: vkurpad
 services: search
 ms.service: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: vikurpad
-ms.subservice: cognitive-search
-ms.openlocfilehash: 4fa669eaf96c08d7a2e1e7255ff6b1f6ff7b4f14
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: c5fb547b18bc4014f91341070f49c4af84c01005
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639833"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265181"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-search"></a>ナレッジ ストアでのプロジェクションの操作
 
@@ -66,6 +65,9 @@ Azure Search を使用すると、インデックス作成の一環として AI 
 ### <a name="defining-a-table-projection"></a>テーブル プロジェクションの定義
 
 スキルセットの `knowledgeStore` 要素内にテーブル プロジェクションを定義するときは、まず強化ツリーのノードをテーブル ソースにマップします。 通常、このノードは、テーブルに射影するために必要な特定の形状を生成するスキルの一覧に追加した **Shaper** スキルの出力です。 射影対象として選択したノードは、スライスして、複数のテーブルに射影することができます。 テーブル定義は、射影するテーブルの一覧です。 
+
+#### <a name="projection-slicing"></a>プロジェクションのスライス
+テーブル プロジェクション グループを定義するときに、強化ツリー内の 1 つのノードを複数の関連テーブルにスライスできます。 既存のテーブル プロジェクションの子であるソース パスを含むテーブルを追加すると、子ノードが親ノードからスライスされ、新しい関連テーブルに投影されます。 これにより、すべてのテーブル プロジェクションのソースとして使用できる 1 つのノードを Shaper スキルで定義できます。
 
 各テーブルには 3 つのプロパティが必要です。
 

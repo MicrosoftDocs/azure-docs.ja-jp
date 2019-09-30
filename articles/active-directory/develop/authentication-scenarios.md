@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cedfead26bd2a82792729853a2b8d038278b75f6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 79f462b8903033784f186032c715cc966dfae7b4
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853294"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622703"
 ---
 # <a name="what-is-authentication"></a>認証とは
 
@@ -53,7 +53,7 @@ ID が必要とされる最も基本的なシナリオについて考えてみ�
   * 迅速にアプリを構築し、トークンの取得、トークンの更新、ユーザーへのサインイン、ユーザー情報の表示などの機能を追加するには、このドキュメントの「**クイック スタート**」のセクションを参照してください。
   * アクセス トークンの取得と Microsoft Graph API などの API への呼び出しでの使用、OpenID Connect を使用する従来の Web ブラウザー ベースのアプリでの Microsoft によるサインインの実装など、認証開発者の上位のタスクの詳細なシナリオ ベースの手順を取得するには、このドキュメントの「**チュートリアル**」のセクションを参照してください。
   * コード サンプルをダウンロードするには、[GitHub](https://github.com/Azure-Samples?q=active-directory) にアクセスしてください。
-* 認証プロセスの要求と応答のフローは、使用した認証プロトコル (OAuth 2.0、OpenID Connect、WS-Federation、SAML 2.0 など) によって決まります。 プロトコルに関する詳細については、このドキュメントの **「概念」の「プロトコル」** のセクションを参照してください。
+* 認証プロセスの要求と応答のフローは、使用した認証プロトコル (OAuth 2.0、OpenID Connect、WS-Federation、SAML 2.0 など) によって決まります。 プロトコルの詳細については、このドキュメントの **「概念」の「認証プロトコル」** セクションを参照してください。
 
 上記の例のシナリオでは、次の 2 つの役割に基づいてアプリを分類することができます。
 

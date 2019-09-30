@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 8c4ecc017d058900297f2220173e064700e7051b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 5ad912b1cee5495e18a5eb2da4d981eadd74dd7d
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559457"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066433"
 ---
 # <a name="transcribe-multi-participant-conversations-with-the-speech-sdk"></a>Speech SDK で複数参加者の会話を文字起こしする
 
@@ -25,7 +25,9 @@ Speech SDK の **ConversationTranscriber** API を使用すると、会議や会
 
 * 会話の文字起こしは、Windows、Linux、Android 上で C++、C#、および Java 向けにサポートされています。
 * ROOBO DevKit は、話者識別のために効率的に利用可能な複数マイクの循環配列を提供するため、会話の文字起こしの作成用にサポートされるハードウェア環境です。 [詳細については、Speech Devices SDK に関する記事を参照してください](speech-devices-sdk.md)。
-* Speech SDK による会話の文字起こしのサポートは、16 ビット 16 kHz の PCM 音声の 8 チャネルを使用した、音声のプル モードおよびプッシュ モードでのストリーミングの使用に制限されます。
+* Speech SDK による会話の文字起こしのサポートは、16 ビット 16 kHz の PCM 音声の 8 チャネルを使用した、音声のプル モードおよびプッシュ モードでのストリーミングに制限されます。 現時点では、8 チャネルのオーディオ キャプチャでは、次のキットのみがサポートされています。
+   * [ROOBO Smart Audio Circular 7-Mic DK](https://ddk.roobo.com/)
+   * [Azure Kinect DK](https://azure.microsoft.com/en-in/services/kinect-dk/).
 * 会話の文字起こしは、現時点では "en-US" と "zh-CN" 言語に対応しており、利用できるリージョンは centralus と eastasia です。
 
 ## <a name="prerequisites"></a>前提条件

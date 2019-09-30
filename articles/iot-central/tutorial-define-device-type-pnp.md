@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: a622aa85d1d0a9dcd5d5ad9b2b30e7a3120ea974
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 660b2ead146695657ae13444cb7936eff8224f3a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878633"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099513"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-preview-features"></a>チュートリアル:Azure IoT Central アプリケーションで新しいデバイスの種類を定義する (プレビュー機能)
 
@@ -44,7 +44,7 @@ ms.locfileid: "69878633"
 
 このチュートリアルを完了するには、Azure IoT Central アプリケーションが必要です。 「[Azure IoT Central アプリケーションの作成](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)」クイック スタートを完了している場合は、そのクイック スタートで作成したアプリケーションを再利用できます。 それ以外の場合は、次の手順を実行して、空の Azure IoT Central アプリケーションを作成してください。
 
-1. Azure IoT Central の [[Application Manager]\(アプリケーション マネージャー\)](https://aka.ms/iotcentral) ページに移動します。
+1. [Azure IoT Central のアプリケーション マネージャー](https://aka.ms/iotcentral) Web サイトに移動します。
 
 1. Azure サブスクリプションを持っている場合は、そのサブスクリプションへのアクセス用の資格情報を使用してサインインします。持っていない場合は、Microsoft アカウントを使用してサインインします。
 
@@ -70,7 +70,7 @@ IoT プラグ アンド プレイなどのプレビュー機能を搭載した�
 
     詳細については、[アプリケーションの作成のクイック スタート](quick-deploy-iot-central-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)に関するページをご覧ください。
 
-また、[IoT プラグ アンド プレイ](https://aka.ms/iot-pnp-docs) デバイス機能モデルが記載されている **EnvironmentalSensorInline.capabilitymodel.json** ファイルのローカル コピーが必要です。 [ここ](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)からダウンロードできます。 ページ上で右クリックして、 **[名前を付けて保存]** を選択します。
+また、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md) デバイス機能モデルが記載されている **EnvironmentalSensorInline.capabilitymodel.json** ファイルのローカル コピーが必要です。 [ここ](https://raw.githubusercontent.com/Azure/IoTPlugandPlay/master/samples/EnvironmentalSensorInline.capabilitymodel.json)からダウンロードできます。 ページ上で右クリックして、 **[名前を付けて保存]** を選択します。
 
 ファイルをダウンロードしたら、テキスト エディターで開き、2 つある `<YOUR_COMPANY_NAME_HERE>` を自分の名前で置き換えます。 英数字 (a から z、A から Z、0 から 9) とアンダースコアのみを使用してください。
 
@@ -90,11 +90,11 @@ IoT Central でデバイス機能モデルを作成する場合、選択肢は�
 
 1. 新しいデバイス テンプレートを追加するために、 **[デバイス テンプレート]** ページで **[+ 新規]** を選択します。
 
-1. デバイス機能モデルの一覧で **[カスタム]** を選択します。
+1. テンプレートの一覧から **[カスタム]** を選択します。
 
 1. デバイス テンプレートの名前として、「**Environmental Sensor**」と入力します。
 
-1. **[機能モデルのインポート]** を選択して、JSON ファイルから新しいデバイス機能モデルを作成します。 ローカル コンピューター上にある、**EnvironmentalSensorInline.capabilitymodel.json** ファイルを保存したフォルダーを参照します。 **EnvironmentalSensorInline.capabilitymodel.json** ファイルを選択して、[インポート] を選択します。 環境センサーの機能モデルには、**環境センサー** インターフェイスと**デバイス情報**インターフェイスが含まれています。
+1. **[機能モデルのインポート]** を選択して、JSON ファイルから新しいデバイス機能モデルを作成します。 ローカル コンピューター上にある、**EnvironmentalSensorInline.capabilitymodel.json** ファイルを保存したフォルダーを参照します。 **EnvironmentalSensorInline.capabilitymodel.json** ファイルを選択して、 **[開く]** を選択します。 環境センサーの機能モデルには、**環境センサー** インターフェイスと**デバイス情報**インターフェイスが含まれています。
 
     ![環境センサー デバイスの機能モデル](./media/tutorial-define-device-type-pnp/newdevicecapabilitymodel.png)
 
@@ -147,9 +147,9 @@ IoT Central でデバイス機能モデルを作成する場合、選択肢は�
 
 オペレーターは、デバイス ダッシュボードでグラフやメトリックを利用してデバイスを視覚化できます。 作成者はデバイス ダッシュボードに表示される情報を定義できます。 デバイスに対し、複数のダッシュボードを定義することができます。 環境センサーのテレメトリを視覚化するダッシュボードを作成するために、 **[ビュー]** 、 **[デバイスの視覚化]** の順に選択します。
 
-1. 右側のパネルに、デバイス プロパティ、クラウド プロパティ、テレメトリ、静的オプションの全一覧が表示されます。 これらの項目はいずれもビューにドラッグ アンド ドロップできます。 ビューにプロパティをドラッグします。 タイルは、歯車アイコンを使用して構成できます。
+1. **[プロパティ]** に、すべてのデバイス プロパティ、クラウド プロパティ、テレメトリ、および静的オプションの一覧が表示されます。 これらの項目はいずれもビューにドラッグ アンド ドロップできます。 **[明るさのレベル]** プロパティをビューにドラッグします。 タイルは、歯車アイコンを使用して構成できます。
 
-1. テレメトリをプロットするグラフを追加するために、 **[湿度]** と **[温度]** を選択してから **[結合]** を選択します。 このグラフを円グラフや横棒グラフといった別の形式で表示するには、タイル上部にある **[Change Visualization]\(視覚化の変更\)** ボタンを選択します。
+1. テレメトリをプロットするグラフを追加するために、 **[湿度]** と **[温度]** を選択してから **[結合]** を選択します。 このグラフを円グラフや横棒グラフなどの別の形式で表示するには、タイル上部にある **[ビジュアル化の変更]** ボタンを選択します。
 
 1. **[保存]** を選択してビューを保存します。
 
@@ -161,7 +161,7 @@ IoT Central でデバイス機能モデルを作成する場合、選択肢は�
 
 環境センサーのプロパティを確認および編集するためのビューを作成には:
 
-1. **[デバイスとクラウドのデータの編集]** タイルを選択します。
+1. **[環境センサー]** テンプレートの **[ビュー]** に移動します。 **[デバイスとクラウドのデータの編集]** タイルを選択し、新しいビューを追加します。
 
 1. フォーム名として「**環境センサーのプロパティ**」と入力します。
 
@@ -169,10 +169,9 @@ IoT Central でデバイス機能モデルを作成する場合、選択肢は�
 
 1. **[Brightness Level]\(輝度\)** と **[デバイスの状態]** の各デバイス プロパティを選択します。 次に、 **[セクションの追加]** を選択します。 セクションのタイトルを編集して、**センサーのプロパティ**に変更します。 **[適用]** を選択します。
 
-1. **[バッテリー残量]** 、 **[デバイス モデル]** 、 **[ファームウェア バージョン]** 、 **[製造元]** 、 **[シリアル番号]** の各デバイス プロパティを選択します。 次に、 **[セクションの追加]** を選択します。 セクションのタイトルを編集して、**デバイスのプロパティ**に変更します。 **[適用]** を選択します。
+1. **[デバイス モデル]** 、 **[ソフトウェア バージョン]** 、 **[製造元]** 、および **[プロセッサの製造元]** の各デバイス プロパティを選択します。 次に、 **[セクションの追加]** を選択します。 セクションのタイトルを編集して、**デバイスのプロパティ**に変更します。 **[適用]** を選択します。
 
 1. **[保存]** を選択してビューを保存します。
-
 
 ## <a name="publish-device-template"></a>デバイス テンプレートの公開
 

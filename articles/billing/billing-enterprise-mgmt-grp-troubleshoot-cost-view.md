@@ -12,10 +12,10 @@ ms.date: 07/01/2019
 ms.author: banders
 ms.custom: seodec18
 ms.openlocfilehash: 83f7f424b265582a3830c02973cbbb9962ddfbfb
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67491272"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>エンタープライズ コスト表示のトラブルシューティング
@@ -24,13 +24,13 @@ ms.locfileid: "67491272"
 
 ## <a name="enable-access-to-costs"></a>コストへのアクセスを有効にする
 
-コストの情報を探しているときに、未承認のメッセージまたは "*登録ではコストのビューが無効になっています*" というメッセージが表示されますか。 コストの情報を探しているときに、
+コストの情報を探しているときに、未承認のメッセージまたは *''登録ではコストのビューが無効になっています''* というメッセージが表示されますか。 コストの情報を探しているときに、
 ![サブスクリプションの [現在のコスト] フィールドに "未承認" が表示されているスクリーンショット。](media/billing-enterprise-mgmt-groups/unauthorized.png)
 
 それには、次のいずれかの理由が考えられます。
 
 1. エンタープライズ パートナーを通して Azure を購入し、そのパートナーがまだ料金を公開していない。 パートナーに問い合わせて[エンタープライズ ポータル](https://ea.azure.com)で料金設定を更新してもらってください。
-2. EA の直接のお客様でない場合は、次の可能性が考えられます。
+2. EA の直接のお客様である場合は、次の可能性が考えられます。
     * お客様はアカウント所有者であり、登録管理者が **AO ビュー料金**設定を無効にした。  
     * お客様は部門管理者であり、登録管理者が **DA ビュー料金**設定を無効にした。
     * 登録管理者に問い合わせて、アクセスできるように設定してもらってください。 登録管理者は[エンタープライズ ポータル](https://ea.azure.com/manage/enrollment)で設定を更新できます。

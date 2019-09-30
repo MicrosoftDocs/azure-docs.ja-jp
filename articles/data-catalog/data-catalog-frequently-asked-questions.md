@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 754e967a1be0b00f7ce7448744ec90690fd9f0c3
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2e286854b9a38c1189ff85307f3e29454be46fb9
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736425"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70898729"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。
@@ -52,6 +52,15 @@ Standard Edition の Data Catalog は、最大 100,000 の登録済みのデー�
 
 ## <a name="how-do-i-request-support-for-another-data-source"></a>別のデータ ソースのサポートを要求するにはどうすればよいですか?
 機能要求やその他のフィードバックを送信するには、[Azure フィードバック フォーラムの Data Catalog](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources) を利用してください。
+
+## <a name="why-do-i-get-an-error-catalog-already-exists-when-i-try-to-create-a-new-catalog"></a>新しいカタログを作成しようとすると、エラー "*カタログは既に存在します*" が表示されるのはなぜですか?
+
+Power BI Pro ライセンス付きの Office 365 E5 を購入すると、Microsoft によってサブスクリプションのリージョンに既定のカタログが自動的に作成されます。 このカタログは、無料の SKU を使用します。 Office 365/Power BI ユーザー ライセンスは、Office 365 管理ページで管理されています。 
+
+ただし、この種類のデータ カタログは**管理者オプション**を備えていないため、 **Azure portal** に表示されません。 この種類のデータ カタログは削除できません。 同様に、データ カタログの名前変更も、別のリージョンへの移動もできません。 
+
+Power BI Pro ライセンスが自動的に割り当てられているユーザー アカウントは、Power BI Pro ライセンス付きの Office 365 E5 にサインアップしたときに、使用許諾契約書によりデータ カタログのアクセス権を付与されます。 この種類のユーザーには、データ カタログ資産へのフル アクセス権 (管理特権なし) があります。 この種類のユーザーは、Azure Data Catalog の **カタログ ユーザー**役割には "*含まれません*"。
+
 
 ## <a name="how-do-i-get-started-with-data-catalog"></a>Data Catalog の使用を開始するにはどうすればよいですか?
 使用を開始する最適な方法は、「[Data Catalog の概要](data-catalog-get-started.md)」の手順に従うことです。 この記事は、サービスの機能を網羅した概要です。

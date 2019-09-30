@@ -6,12 +6,12 @@ ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: joanpo
-ms.openlocfilehash: 01025acfa2fd939db8134a1e61c7902034a1d2c3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424220"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844692"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Azure Data Share プレビューの概念 
 
@@ -53,7 +53,9 @@ Azure Data Share プレビューでは、データ共有に関連するいくつ
 
 データ プロバイダーは、データ共有に複数の受信者を招待できます。 これは、データ共有に受信者を追加することで行います。 データ共有を作成した後に招待を追加することもできます。 
 
-データ プロバイダーは、招待を送信した後に削除することもできます。 データ プロバイダーが既に承諾された招待を削除しても、データ コンシューマーの共有サブスクリプションはアクティブなままになることに注意してください。 データ プロバイダーがまだ承諾されていない招待を削除すると、データ コンシューマーがそれを承諾することはできなくなります。 
+データ プロバイダーは、送信された後に承諾されなかった招待を削除できます。 データ プロバイダーがまだ承諾されていない招待を削除すると、データ コンシューマーがそれを承諾することはできなくなります。 
+
+招待は、1 日に最大 5 回、再送信できます。 
 
 ## <a name="recipient"></a>Recipient
 

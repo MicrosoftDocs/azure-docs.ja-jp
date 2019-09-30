@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: bc6d9e7214d2b7cd009e7562357bed420e49f185
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: e9b688d54049c21da3276a20e27dcc9ad3d4ceca
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325105"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231479"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SharePoint アプリケーションのディザスター リカバリーを設定する
 
@@ -56,7 +56,7 @@ SharePoint は階層型トポロジーとサーバー ロールを使用して 1
 
 ## <a name="site-recovery-support"></a>Site Recovery のサポート
 
-この記事の作成には、VMware 仮想マシンと Windows Server 2012 R2 Enterprise を使用しました。 SharePoint 2013 Enterprise Edition および SQL Server 2014 Enterprise Edition も使用しています。 Site Recovery レプリケーションはアプリケーションに依存しません。このため、ここで紹介している推奨事項は次のシナリオにも適用できます。
+Site Recovery はアプリケーションに依存しないため、サポートされるマシン上で実行されているすべてのバージョンの SharePoint で機能します。 この記事の作成には、VMware 仮想マシンと Windows Server 2012 R2 Enterprise を使用しました。 SharePoint 2013 Enterprise Edition および SQL Server 2014 Enterprise Edition も使用しています。
 
 ### <a name="source-and-target"></a>ソースとターゲット
 
@@ -67,13 +67,6 @@ SharePoint は階層型トポロジーとサーバー ロールを使用して 1
 **物理サーバー** | はい | はい
 **Azure** | NA | はい
 
-### <a name="sharepoint-versions"></a>SharePoint のバージョン
-次の SharePoint Server のバージョンがサポートされています。
-
-* SharePoint Server 2013 Standard
-* SharePoint Server 2013 Enterprise
-* SharePoint Server 2016 Standard
-* SharePoint Server 2016 Enterprise
 
 ### <a name="things-to-keep-in-mind"></a>留意事項
 

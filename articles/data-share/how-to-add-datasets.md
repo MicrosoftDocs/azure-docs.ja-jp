@@ -5,13 +5,13 @@ author: madams0013
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: t-maadam
-ms.openlocfilehash: 01197d91277c59b58c5ab841dfc2abfb78be71de
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.author: jasonh
+ms.openlocfilehash: 75ac837491927881fd8b7547b0f49a069c3f2d47
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67877409"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257209"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share-preview"></a>Azure Data Share プレビューで既存の共有にデータセットを追加する方法
 

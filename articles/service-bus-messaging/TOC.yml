@@ -108,8 +108,8 @@
                   href: service-bus-managed-service-identity.md
                 - name: アプリケーションからの認証
                   href: authenticate-application.md
-        - name: Azure の一般的なセキュリティ属性
-          href: service-bus-messaging-security-attributes.md
+        - name: 組み込みのセキュリティ制御
+          href: service-bus-messaging-security-controls.md
 - name: ハウツー ガイド
   items:
     - name: 名前空間の作成

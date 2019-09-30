@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 130186af13b9207326cd52b46b880c1f13a16100
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 3633ffb09d71bd166cb7366f860662d9b91c7f07
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848088"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063393"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C 内にユーザー フローを作成する
 
-お使いのアプリケーションに、ユーザーによるサインアップ、サインイン、プロファイル管理を可能にする[ユーザー フロー](active-directory-b2c-reference-policies.md)を設定できます。 Azure Active Directory (Azure AD) B2C テナント内にさまざまな種類のユーザー フローを複数作成し、それらを必要に応じてアプリケーションで使用できます。 ユーザー フローは、アプリケーション間で再利用することができます。
+お使いのアプリケーションに、ユーザーによるサインアップ、サインイン、プロファイル管理を可能にする[ユーザー フロー](active-directory-b2c-reference-policies.md)を設定できます。 Azure Active Directory B2C (Azure AD B2C) テナント内にさまざまな種類のユーザー フローを複数作成し、それらを必要に応じてアプリケーションで使用できます。 ユーザー フローは、アプリケーション間で再利用することができます。
 
 この記事では、次のことについて説明します。
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 サインアップとサインイン ユーザー フローは、サインアップ エクスペリエンスとサインイン エクスペリエンスの両方を 1 つの構成で処理します。 アプリケーションのユーザーは、状況に応じて正しいパスに誘導されます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+1. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 
     ![ディレクトリとサブスクリプションのフィルターで B2C テナントが選択された状態](./media/tutorial-create-user-flows/switch-directories.PNG)
 

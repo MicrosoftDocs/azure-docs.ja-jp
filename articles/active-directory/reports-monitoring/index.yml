@@ -1,48 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Active Directory のレポートと監視
+### YamlMime:Landing
+title: Azure Active Directory のレポートと監視のドキュメント
+summary: Azure AD でレポートを使用する方法について説明します。
 metadata:
-  document_id: null
-  title: Azure Active Directory レポートと監視のドキュメント - チュートリアル、クイック スタート、概念 | Microsoft Docs
-  description: Azure Active Directory レポートと監視ソリューションを構成してテストする方法について説明します
+  title: Azure Active Directory のレポートと監視のドキュメント
+  description: Azure AD でレポートと監視を使用する方法について説明します。
   services: active-directory
-  ms.subservice: report-monitor
-  author: priyamohanram
-  manager: daveba
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: devices
   ms.topic: landing-page
-  ms.date: 08/14/2018
-  ms.author: priyamo
-abstract:
-  description: このドキュメントでは、ご利用の環境におけるセキュリティ・監査レポートの見方と、使用状況を把握するために長期間に渡ってそれらをモニタリングする方法について説明します。 Azure Active Directory (Azure AD) レポートを使用すると、環境におけるセキュリティや使用パターンに関する分析情報を得ることができます。 たとえば、次の質問への回答を導き出すことができます。<ul><li>アプリケーションまたはサービスをユーザーはどのように活用しているか</li><li>環境の正常性に影響する潜在的リスクは何か</li><li>ユーザーの作業を妨げている問題をトラブルシューティングする方法</li>
-sections:
-  - title: 5 分間のクイックスタート
-    items:
-      - type: paragraph
-        text: アクティビティ レポートをダウンロードして、ログを Azure ストレージ アカウントにルーティングする方法について説明します
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-sign-in-report">サインイン レポートのダウンロード</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-audit-report">監査レポートのダウンロード</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-install-power-bi-content-pack">レポート用に Power BI コンテンツ パックをインストールする</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account">ストレージ アカウントへのログのルーティング</a>
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: レポートにアクセスして、アクティビティ ログを任意の監視システムにストリーミングする方法について説明します
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates">証明書を使用してプログラムでレポート API にアクセスする</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub">アクティビティ ログをイベント ハブにストリーミングする</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes">サインイン エラー コード</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema">Azure Monitor での Azure AD 監査ログのスキーマ</a>
-          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema">Azure Monitor での Azure AD サインインのスキーマ</a>
+  author: MarkusVi
+  ms.author: markvi
+  ms.date: 08/29/2019
+  ms.collection: M365-identity-device-management
+  ms.openlocfilehash: 2b29aaf88f0a7659fd3ceb58ddf3b762ee7646d3
+  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70162503"
+landingContent:
+- title: Azure Active Directory のレポートと監視について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Active Directory 監視とは
+      url: overview-monitoring.md
+  - linkListType: concept
+    links:
+    - text: 監査ログ
+      url: concept-audit-logs.md
+    - text: サインイン ログ
+      url: concept-sign-ins.md
+    - text: リスクの高いサインイン ログ
+      url: concept-risky-sign-ins.md
+    - text: リスクのフラグ付きユーザー ログ
+      url: concept-user-at-risk.md
+    - text: プロビジョニング ログ
+      url: concept-provisioning-logs.md
+- title: Azure AD でのレポートの使用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: アクティビティ レポートの検出
+      url: howto-find-activity-reports.md
+    - text: リスクのフラグ付きユーザーの修復
+      url: howto-remediate-users-flagged-for-risk.md
+    - text: Azure AD ブックの使用
+      url: howto-use-azure-monitor-workbooks.md
+- title: Azure AD での監視の使用
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Monitor ログでのアクティビティ ログの分析
+      url: howto-analyze-activity-logs-log-analytics.md
+    - text: Azure AD 用のログ分析ビューのインストールと使用
+      url: howto-install-use-log-analytics-views.md

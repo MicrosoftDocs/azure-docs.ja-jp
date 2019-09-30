@@ -5,6 +5,7 @@ description: Azure でのパブリック IP アドレスとプライベート IP
 services: virtual-network
 documentationcenter: na
 author: genlin
+manager: dcscontentpm
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 9e7a5772dd1e10abf43eddf0548833d625ecfb24
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 207e728d25df9192f8a600b13d86330af8311700
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60742123"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058922"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure における IP アドレスの種類と割り当て方法 (クラシック)
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
@@ -87,7 +88,7 @@ Azure [Application Gateway](../application-gateway/application-gateway-introduct
 ### <a name="at-a-glance"></a>概略
 次の表は、各リソースの種類と、可能な割り当て方法 (動的または静的) および複数のパブリック IP アドレスの割り当てが可能かどうかを示しています。
 
-| Resource | 動的 | 静的 | 複数の IP アドレス |
+| リソース | 動的 | 静的 | 複数の IP アドレス |
 | --- | --- | --- | --- |
 | クラウド サービス |はい |はい |はい |
 | IaaS VM または PaaS ロール インスタンス |はい |いいえ |いいえ |
@@ -137,7 +138,7 @@ VM を作成すると、そのプライベート IP アドレスへのホスト�
 ### <a name="at-a-glance"></a>概略
 次の表は、各リソースの種類と、可能な割り当て方法 (動的または静的) および複数のプライベート IP アドレスの割り当てが可能かどうかを示しています。
 
-| Resource | 動的 | 静的 | 複数の IP アドレス |
+| リソース | 動的 | 静的 | 複数の IP アドレス |
 | --- | --- | --- | --- |
 | VM (*スタンドアロン* クラウド サービスまたは VNet 内) |はい |はい |はい |
 | PaaS ロール インスタンス (*スタンドアロン* クラウド サービスまたは VNet 内) |はい |いいえ |いいえ |
@@ -162,7 +163,7 @@ Azure における [ネットワークの制限](../azure-subscription-service-l
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>リソース マネージャーとクラシック デプロイの相違点
 リソース マネージャーの IP アドレス指定機能とクラシック デプロイ モデルとの比較を次に示します。
 
-|  | Resource | クラシック | リソース マネージャー |
+|  | リソース | クラシック | リソース マネージャー |
 | --- | --- | --- | --- |
 | **パブリック IP アドレス** |***VM*** |ILPIP と呼ばれる (動的のみ) |パブリック IP と呼ばれる (動的または静的) |
 |  ||IaaS VM や PaaS ロール インスタンスに割り当てられる |VM の NIC に関連付けられる |

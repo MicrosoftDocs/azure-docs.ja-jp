@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.reviewer: mbullwin
-ms.date: 08/13/2019
+ms.date: 09/17/2019
 ms.author: dalek
-ms.openlocfilehash: abf23eda2474ecbcfcaf0dadb26327225213a9a6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 62f2ea36468e30b20ef08bde21bfde961faae8f9
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989225"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067010"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Application Insights の使用量とコストを管理する
 
@@ -65,34 +65,47 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 ![左側のメニューで [課金] を選択します](./media/pricing/02-billing.png)
 
-## <a name="data-rate"></a>データ速度
-送信するデータの量は次の 3 つの方法で制限されます。
+## <a name="managing-your-data-volume"></a>データ ボリュームの管理 
 
-* **サンプリング**:サンプリングを使用すると、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。 サンプリングは、送信するデータの量を調整するために使用できる主要なツールです。 [サンプリング機能の詳細については、こちらを参照してください](../../azure-monitor/app/sampling.md)。 
-* **日次上限**:Azure portal で Application Insights リソースを作成する場合、日次上限は 100 GB/日に設定されます。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。 日次上限の既定値は、テストを容易にするために設定されます。 アプリを実稼働環境にデプロイする前に、ユーザーが日次上限を上げることになります。 
-
-    高トラフィック アプリケーション用に最大値の引き上げを要求する場合を除き、最大の上限は 1,000 GB/日です。 
-
-    日次上限を設定する場合はご注意ください。 意図は、"*日次上限に達しない*" ようにすることです。 日次上限に達した場合、その日の残りの時間についてデータが失われ、アプリケーションを監視することはできません。 日次上限を変更するには、 **[日次ボリューム上限]** オプションを使用します。 このオプションには、 **[使用量と推定コスト]** ウィンドウでアクセスできます (これについてはこの記事で後ほど詳しく説明します)。
-    Application Insights には使用できなかったクレジットがある一部のサブスクリプションの種類の制限を除去しました。 これまでは、サブスクリプションに使用制限がある場合は、[日次上限] ダイアログに、使用制限を解除して日次上限を 32.3 MB/日から引き上げる方法が表示されました。
-* **スロットル**:スロットルにより、データ速度は、インストルメンテーション キーごとに 1 分間で平均して 1 秒あたり 32,000 イベントに制限されます。
-
-*アプリがスロットル レートを超えるとどうなりますか。*
-
-* アプリから送信されるデータ量は分単位で評価されます。 1 分間で平均して 1 秒あたりのレートを超える場合、一部の要求がサーバーから拒否されます。 SDK はデータをバッファー処理し、その再送信を試みます。 急激な増加を数分間に分散させます。 アプリが常にスロットル レートを超えてデータを送信した場合、一部のデータが破棄されます (ASP.NET、Java、JavaScript SDK はこの方法でデータの再送信を試みますが、その他の SDK は調整されたデータを単に破棄します)。スロットルが発生した場合、この状況が発生したことを通知する警告が表示されます。
-
-*アプリがどれだけのデータを送信しているかを知る方法はありますか。*
-
-次のオプションのいずれかを使用して、アプリで送信されるデータの量を表示できます。
+アプリから送信されるデータの量を把握するには、次の操作を行います。
 
 * **[使用量と推定コスト]** ウィンドウに移動し、毎日のデータ ボリュームのグラフを確認します。 
 * メトリックス エクスプローラーで、新しいグラフを追加します。 グラフ メトリックについては、 **[データ ポイントの量]** を選択します。 **[グループ化]** を有効にし、 **[データの種類]** を選択してグループ化します。
+* `systemEvents` データ型を使用します。 たとえば、過去 1 日に取り込まれたデータ ボリュームを表示するためのクエリは、次のようになります。
 
-## <a name="reduce-your-data-rate"></a>データ速度を低下させる
+```kusto
+systemEvents 
+| where timestamp >= ago(1d)
+| where type == "Billing" 
+| extend BillingTelemetryType = tostring(dimensions["BillingTelemetryType"])
+| extend BillingTelemetrySizeInBytes = todouble(measurements["BillingTelemetrySize"])
+| summarize sum(BillingTelemetrySizeInBytes)
+```
+
+このクエリは、データ ボリュームに対するアラートを設定するために、[Azure ログ アラート](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-unified-log)で使用できます。 
+
+送信するデータの量は、次の 3 つの方法で管理できます。
+
+* **サンプリング**:サンプリングを使用すると、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。 サンプリングは、送信するデータの量を調整するために使用できる主要なツールです。 [サンプリング機能の詳細については、こちらを参照してください](../../azure-monitor/app/sampling.md)。
+ 
+* **日次上限**:Azure portal で Application Insights リソースを作成する場合、日次上限は 100 GB/日に設定されます。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。 日次上限の既定値は、テストを容易にするために設定されます。 アプリを実稼働環境にデプロイする前に、ユーザーが日次上限を上げることになります。 
+
+    高トラフィック アプリケーション用に最大値の引き上げを要求する場合を除き、最大の上限は 1,000 GB/日です。 
+    
+    日次上限に関する警告メールは、Application Insights リソースの次のロールのメンバーであるアカウントに送信されます: "ServiceAdmin"、"AccountAdmin"、"CoAdmin"、"Owner"。
+
+    日次上限を設定する場合はご注意ください。 意図は、"*日次上限に達しない*" ようにすることです。 日次上限に達した場合、その日の残りの時間についてデータが失われ、アプリケーションを監視することはできません。 日次上限を変更するには、 **[日次ボリューム上限]** オプションを使用します。 このオプションには、 **[使用量と推定コスト]** ウィンドウでアクセスできます (これについてはこの記事で後ほど詳しく説明します)。
+    
+    Application Insights には使用できなかったクレジットがある一部のサブスクリプションの種類の制限を除去しました。 これまでは、サブスクリプションに使用制限がある場合は、[日次上限] ダイアログに、使用制限を解除して日次上限を 32.3 MB/日から引き上げる方法が表示されました。
+    
+* **スロットル**:スロットルにより、データ速度は、インストルメンテーション キーごとに 1 分間で平均して 1 秒あたり 32,000 イベントに制限されます。 アプリから送信されるデータ量は分単位で評価されます。 1 分間で平均して 1 秒あたりのレートを超える場合、一部の要求がサーバーから拒否されます。 SDK はデータをバッファー処理し、その再送信を試みます。 急激な増加を数分間に分散させます。 アプリが常にスロットル レートを超えてデータを送信した場合、一部のデータが破棄されます (ASP.NET、Java、JavaScript SDK はこの方法でデータの再送信を試みますが、その他の SDK は調整されたデータを単に破棄します)。スロットルが発生した場合、この状況が発生したことを通知する警告が表示されます。
+
+## <a name="reduce-your-data-volume"></a>データ ボリュームの削減
+
 データ ボリュームを減らすために、以下のことを実行できます。
 
 * [サンプリング](../../azure-monitor/app/sampling.md)の使用。 このテクノロジは、メトリックがゆがめずにデータ速度を低下させます。 Search では、関連項目間を移動する機能は失われません。 サーバー アプリケーションでは、サンプリングは自動的に動作します。
-* [報告できる AJAX 呼び出しの数を制限する](../../azure-monitor/app/javascript.md#detailed-configuration) か、AJAX レポートを無効にします。
+* [報告できる AJAX 呼び出しの数を制限する](../../azure-monitor/app/javascript.md#configuration) か、AJAX レポートを無効にします。
 * [ApplicationInsights.config を編集](../../azure-monitor/app/configuration-with-applicationinsights-config.md)し、不要なコレクション モジュールを無効にします。 たとえば、パフォーマンス カウンターや依存関係のデータが重要ではないと判断した場合などに検討します。
 * 異なるインストルメンテーション キー間でテレメトリを分割します。 
 * 事前集計メトリック。 TrackMetric への呼び出しをアプリに配置した場合、平均計算と測定のバッチの標準偏差を受け入れるオーバーロードを使用して、トラフィックを減らすことができます。 または、[事前集計パッケージ](https://www.myget.org/gallery/applicationinsights-sdk-labs)を使用することもできます。
@@ -103,9 +116,11 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 日次ボリューム上限を使用する代わりに、[サンプリング](../../azure-monitor/app/sampling.md)を使用して、データ ボリュームを目的のレベルに調整してください。 その後、アプリケーションが予期せず大量のテレメトリの送信を開始した場合に、"最後の手段" としてのみ日次上限を使用します。
 
-日次上限を変更するには、Application Insights リソースの **[構成]** セクションで、 **[使用量と推定コスト]** ウィンドウから **[日次上限]** を選択します。
+日次上限を変更するには、Application Insights リソースの **[構成]** セクションで、 **[使用量と推定コスト]** ページから **[日次上限]** を選択します。
 
 ![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-003.png)
+
+[日次上限を変更するために Azure Resource Manager で変更する](../../azure-monitor/app/powershell.md)プロパティは `dailyQuota` です。  Azure Resource Manager を使用して、`dailyQuotaResetTime` と日次上限の `warningThreshold` を設定することもできます。 
 
 ## <a name="sampling"></a>サンプリング
 [サンプリング](../../azure-monitor/app/sampling.md)は、テレメトリがアプリに送信される速度を低下させる一方で、診断検索中に関連イベントを見つける機能を保持する方法です。 適切なイベント カウントも保持されます。
@@ -135,11 +150,16 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更
 
-現在、Application Insights では、限られた数の Application Insights のお客様に対して、可変の保持期間のプレビューを提供しています。 このプレビュー プログラムへの参加方法については、[こちら](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)を参照してください。
+> [!NOTE]
+> 考えられる問題への対処が行われる間、この機能は一時的に削除されています。  2019 年 10 月の第 1 週までには元に戻します。
 
-Application Insights リソースの既定の保持期間は 90 日です。 Application Insights リソースごとに異なる保持期間を選択できます。 使用可能な保持期間の完全なセットは、30 日、60 日、120 日、180 日、270 日、365 日、550 日、または 730 日です。 
+Application Insights リソースの既定の保持期間は 90 日です。 Application Insights リソースごとに異なる保持期間を選択できます。 使用可能な保持期間の完全なセットは、30 日、60 日、90 日、120 日、180 日、270 日、365 日、550 日、または 730 日です。 
 
-長期の保持期間に対する課金が有効になっている場合、90 日を超えて保持されているデータには、Azure Log Analytics のデータ保持期間に対して現在請求されているのと同じ料金で課金されます。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。  [この提案に投票する](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ことによって、可変の保持期間の進捗に関する最新情報を把握してください。 
+保持期間を変更するには、ご利用の Application Insights リソースから **[使用量と推定コスト]** ページに移動し、 **[データ保持期間]** オプションを選択します。
+
+![テレメトリの日次ボリューム上限の調整](./media/pricing/pricing-005.png)
+
+長期の保持期間に対する課金が有効になっている場合、90 日を超えて保持されているデータには、Azure Log Analytics のデータ保持期間に対して現在請求されているのと同じ料金で課金されます。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。 [この提案に投票する](https://feedback.azure.com/forums/357324-azure-monitor-application-insights/suggestions/17454031)ことによって、可変の保持期間の進捗に関する最新情報を把握してください。 
 
 ## <a name="limits-summary"></a>制限の概要
 

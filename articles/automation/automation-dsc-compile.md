@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5d72b474e5f5e62ded6423fcc756e1cd51b905f4
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 10ddb7272de164e6f92022a6f512df31753f7e31
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850658"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265123"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration での DSC 構成のコンパイル
 
@@ -259,7 +259,7 @@ Windows PowerShell でコンパイルする場合には、構成コンテンツ�
 > [!NOTE]
 > ノード構成ファイルを Azure Automation にインポートするには、ファイル サイズを 1 MB 以下にする必要があります。
 
-ノード構成に署名する方法の詳細については、「[Improvements in WMF 5.1 - How to sign configuration and module](/powershell/wmf/5.1/dsc-improvements#dsc-module-and-configuration-signing-validations)」(WMF 5.1 の機能強化 - 構成とモジュールに署名する方法) を参照してください。
+ノード構成に署名する方法の詳細については、「[Improvements in WMF 5.1 - How to sign configuration and module](/powershell/scripting/wmf/whats-new/dsc-improvements#dsc-module-and-configuration-signing-validations)」(WMF 5.1 の機能強化 - 構成とモジュールに署名する方法) を参照してください。
 
 ### <a name="compiling-a-configuration-in-windows-powershell"></a>Windows PowerShell での構成のコンパイル
 

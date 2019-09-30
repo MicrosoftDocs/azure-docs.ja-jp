@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: f981c14e26c51c427dab6b418cab8df46b1bb026
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: c3d5bb58989fe87ddf9a185dbae926a71edf1590
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302257"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061561"
 ---
 # <a name="understand-how-the-migration-tool-works"></a>移行ツールの動作の理解
 
@@ -36,7 +36,7 @@ ms.locfileid: "68302257"
 - 一部の Cosmos DB メトリックに対するクラシック アラート ルール。 この記事の後半で[詳細](#cosmos-db-metrics)をご確認ください。
 - すべてのクラシック仮想マシンおよびクラウド サービス メトリックに対するクラシック アラート ルール (Microsoft.ClassicCompute/virtualMachines および Microsoft.ClassicCompute/domainNames/slots/roles)。 この記事の後半で[詳細](#classic-compute-metrics)をご確認ください。
 
-お使いのサブスクリプションにこれらのクラシック ルールが含まれている場合、そのルールは手動で移行する必要があります。 自動移行を提供することができないため、これらの種類の既存のクラシック メトリック アラートは 2020年 6 月まで動作し続ける予定です。 この拡張機能により、新しいアラートに移行する時間が確保されます。 ただし、2019 年 8 月を過ぎると、新しいクラシック アラートを作成することはできません。
+お使いのサブスクリプションにこれらのクラシック ルールが含まれている場合、そのルールは手動で移行する必要があります。 自動移行を提供することができないため、これらの種類の既存のクラシック メトリック アラートは 2020年 6 月まで動作し続ける予定です。 この拡張機能により、新しいアラートに移行する時間が確保されます。 2020 年 6 月までは、上記の例外に関する新しいクラシック アラートを引き続き作成することもできます。 ただし、他のすべてについては、2019 年 8 月を過ぎると新しいクラシック アラートを作成することはできません。
 
 > [!NOTE]
 > 上に一覧で示した例外のほかに、クラシック アラート ルールが有効でない場合、つまり[非推奨のメトリック](#classic-alert-rules-on-deprecated-metrics)や削除済みのリソースに対するルールである場合、それらは自主的移行時に移行されません。 そのような無効なクラシック アラート ルールは、自動移行が行われるときにすべて削除されます。
@@ -260,9 +260,16 @@ Cosmos DB の場合、同等のメトリックは以下に示すようになっ�
 
 サブスクリプション内のクラシック アラートに対する最近のいくつかの変更が原因で、サブスクリプションを移行できません。 これは一時的な問題です。 移行の状態が **[Ready for migration]\(移行準備完了\)** に戻ったら、移行を再開できます。
 
-### <a name="policy-or-scope-lock-preventing-us-from-migrating-your-rules"></a>ポリシーまたはスコープ ロックによりルールを移行できません
+### <a name="scope-lock-preventing-us-from-migrating-your-rules"></a>スコープ ロックによりルールを移行できない
 
-移行の一環として、新しいメトリック アラートと新しいアクション グループが作成され、クラシック アラート ルールが削除されますが、 ポリシーまたはスコープ ロックがあるため、リソースを作成できません。 ポリシーまたはスコープ ロックによって、一部またはすべてのルールを移行できませんでした。 この問題を解決するには、スコープ ロックまたはポリシーを一時的に削除して、移行を再度トリガーします。
+移行の一環として、新しいメトリック アラートと新しいアクション グループが作成され、クラシック アラート ルールが削除されますが、 スコープ ロックによって、リソースの作成または削除が妨げられる可能性があります。 スコープ ロックによっては、一部またはすべてのルールを移行できない可能性があります。 この問題は、[移行ツール](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)に関するページに一覧表示されている、サブスクリプション、リソース グループ、またはリソースのスコープ ロックを削除し、移行を再度トリガーすることで解決できます。 スコープ ロックを無効にすることはできません。また、移行プロセスの間は削除する必要があります。 [スコープ ロックの管理の詳細はこちら](../../azure-resource-manager/resource-group-lock-resources.md#portal)。
+
+### <a name="policy-with-deny-effect-preventing-us-from-migrating-your-rules"></a>"Deny" 効果が使用されたポリシーによってルールの移行が妨げられる
+
+移行の一環として、新しいメトリック アラートと新しいアクション グループが作成され、クラシック アラート ルールが削除されますが、 ポリシーによって、リソースの作成が妨げられる可能性があります。 ポリシーによっては、一部またはすべてのルールを移行できない可能性があります。 プロセスをブロックしているポリシーは、[移行ツール](https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/MigrationBladeViewModel)に関するページに一覧表示されます。 この問題は、次のいずれかの方法で解決できます。
+
+- 移行プロセスの間に、ポリシー割り当てからサブスクリプションまたはリソース グループを除外する。 [ポリシーの除外スコープの管理の詳細はこちら](../../governance/policy/tutorials/create-and-manage.md#exempt-a-non-compliant-or-denied-resource-using-exclusion)。
+- 効果を削除するか、"audit" または "append" に変更する (これにより、たとえば、タグの欠落に関連する問題を解決できます)。 [ポリシーの効果の詳細はこちら](../../governance/policy/concepts/definition-structure.md#policy-rule)。
 
 ## <a name="next-steps"></a>次の手順
 

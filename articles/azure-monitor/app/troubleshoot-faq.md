@@ -71,13 +71,13 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 
   * ApplicationInsights.config
   * ai.js
-* Installs these NuGet packages:
+* これらの NuGet パッケージをインストールします。
 
   * *Application Insights API* - コア API
   * *Application Insights API for Web Applications* - サーバーからテレメトリを送信するために使用されます
   * *Application Insights API for JavaScript Applications* - クライアントからテレメトリを送信するために使用されます
 
-    The packages include these assemblies:
+    パッケージには、これらのアセンブリが含まれます。
   * Microsoft.ApplicationInsights
   * Microsoft.ApplicationInsights.Platform
 * 次の項目を挿入します。

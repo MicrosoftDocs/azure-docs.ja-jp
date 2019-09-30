@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 09/24/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0334f9fd2d749b88580ff3857d705de2ae961902
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5a734963ced9daefda2b7b6f4a52fd9ef437eddc
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181029"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269276"
 ---
 仮想ネットワーク ゲートウェイは、"ゲートウェイ サブネット" と呼ばれる特定のサブネットを使用します。 ゲートウェイ サブネットは、仮想ネットワークの構成時に指定した仮想ネットワーク IP アドレス範囲に含まれます。 そこには、仮想ネットワーク ゲートウェイのリソースやサービスによって使用される IP アドレスが含まれます。 ゲートウェイのリソースを Azure でデプロイするためには、サブネットに "GatewaySubnet" という名前を付ける必要があります。 異なるサブネットを指定してゲートウェイのリソースをデプロイすることはできません。 "GatewaySubnet" という名前のサブネットが存在しない場合、VPN ゲートウェイを作成するときにエラーが発生します。
 

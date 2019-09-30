@@ -1,25 +1,25 @@
 ---
-title: Azure Blockchain Workbench でのブロックチェーン アプリケーションのバージョン管理
-description: Azure Blockchain Workbench でのアプリケーション バージョンの使用方法。
+title: Azure Blockchain Workbench プレビューでのブロックチェーン アプリケーションのバージョン管理
+description: Azure Blockchain Workbench プレビューでのアプリケーション バージョンの使用方法。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 63f18e3ee316b9791bb62bfcd20c07a30cbebb5e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33ecb6dea48117edd876b90eda54768785f25c20
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60896864"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70843882"
 ---
-# <a name="azure-blockchain-workbench-application-versioning"></a>Azure Blockchain Workbench アプリケーションのバージョン管理
+# <a name="azure-blockchain-workbench-preview-application-versioning"></a>Azure Blockchain Workbench プレビューでのアプリケーションのバージョン管理
 
-Azure Blockchain Workbench アプリの複数のバージョンを作成して使用できます。 同じアプリケーションの複数のバージョンをアップロードすると、バージョン履歴が利用可能になり、ユーザーは使用するバージョンを選択できます。
+Azure Blockchain Workbench プレビュー アプリの複数のバージョンを作成して使用できます。 同じアプリケーションの複数のバージョンをアップロードすると、バージョン履歴が利用可能になり、ユーザーは使用するバージョンを選択できます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

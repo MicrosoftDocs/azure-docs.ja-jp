@@ -1,91 +1,126 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: QnA Maker のドキュメント
+summary: QnA Maker サービスと、このサービスのナレッジ ベースでの質問と回答の確認方法について説明します。
 metadata:
-  title: QnA Maker のドキュメント - Microsoft Cognitive Services | Microsoft Docs
-  description: QnA Maker サービスと、このサービスのナレッジ ベースでの質問と回答の確認方法について説明します。
-  services: cognitive-services
-  author: diberry
-  manager: nitinme
+  ms.topic: landing-page
+  ms.date: 09/18/2019
+  ms.author: nitinme
+  author: nitinme
   ms.service: cognitive-services
   ms.subservice: qna-maker
-  ms.topic: landing-page
-  ms.date: 12/18/2018
-  ms.author: diberry
-abstract:
-  description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジ ベースにある Q&A から回答となる可能性が最も高いものが提示されます。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/qnamaker-landing-page-video.png
-      width: 250
-    title: 'QnA Maker を使用して数分でボットを作成する (8:54)'
-    href: 'https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/qnamaker/overview/overview
-            html: <p>QnA Maker について説明します。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: QnA Maker とは
-          - href: /azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base
-            html: <p>ナレッジ ベースを作成、トレーニング、および公開する方法を説明します。</p>
-            image:
-              src: ../media/index/i_tasks.svg
-            title: ナレッジ ベースの作成、トレーニングおよび公開
-          - href: /azure/cognitive-services/qnamaker/concepts/data-sources-supported
-            html: <p>ナレッジ ベースを公開する方法を説明します。</p>
-            image:
-              src: ../media/index/i_tasks.svg
-            title: データ ソースについて
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 質問と回答のコンテンツのためのナレッジ ベースを作成しましょう。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_Csharp.svg
-            text: 'C&#35;'
-            href: Quickstarts/create-new-kb-csharp
-          - image:
-              src: media/index/Go-Logo_Blue.svg
-            text: Go
-            href: Quickstarts/create-new-kb-go
-          - image:
-              src: media/index/logo_java.svg
-            text: Java
-            href: Quickstarts/create-new-kb-java
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            href: Quickstarts/create-new-kb-nodejs
-          - image:
-              src: media/index/logo_python.svg
-            text: Python
-            href: Quickstarts/create-new-kb-python
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: QnA Maker を使用してアプリケーションを開発する方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-publish-query-in-portal">ナレッジ ベースを作成して質問に回答する</a></li>
-          - html: <a href="/azure/cognitive-services/qnamaker/tutorials/create-qna-bot">QnA Maker ボットを作成する</a></li>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092179">QnA Maker API</a></p>'
+  services: cognitive-services
+  title: QnA Maker のドキュメント
+  description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジにある Q&A から回答となる可能性が最も高いものが提示されます。
+  ms.openlocfilehash: 8e47211194be3653c3d0ba060b573bad446162ba
+  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71155086"
+landingContent:
+- title: QnA Maker について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: QnA Maker とは
+      url: overview/overview.md
+    - text: QnA Maker ポータル
+      url: https://www.qnamaker.ai
+  - linkListType: concept
+    links:
+    - text: 開発ライフサイクル
+      url: concepts/development-lifecycle-knowledge-base.md
+    - text: データ ソース
+      url: concepts/data-sources-supported.md
+  - linkListType: video
+    links:
+    - text: 数分でボットを作成する
+      url: https://channel9.msdn.com/Shows/AI-Show/Build-a-Bot-in-Minutes-with-QnA-Maker
+- title: ナレッジ ベースを作成し、編集する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ナレッジ ベースとは
+      url: concepts/knowledge-base.md
+  - linkListType: get-started
+    links:
+    - text: クイック スタート:新しいナレッジ ベースの作成
+      url: how-to/create-knowledge-base.md
+    - text: クイック スタート:質問と回答を追加する
+      url: quickstarts/add-question-metadata-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
+      url: how-to/multiturn-conversation.md
+    - text: おしゃべりを追加する
+      url: how-to/chit-chat-knowledge-base.md
+    - text: セキュリティで保護された SharePoint データ ソースを追加する
+      url: how-to/add-sharepoint-datasources.md
+- title: ナレッジ ベースから回答を取得する
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: クイック スタート:Postman の使用
+      url: quickstarts/get-answer-from-kb-using-postman.md
+    - text: クイック スタート:cURL の使用
+      url: quickstarts/get-answer-from-kb-using-curl.md
+    - text: クイック スタート:REST と C# の使用
+      url: quickstarts/get-answer-from-knowledge-base-csharp.md
+    - text: クイック スタート:NuGet と C# の使用
+      url: quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base
+  - linkListType: how-to-guide
+    links:
+    - text: メタデータを使用して回答を取得する
+      url: how-to/metadata-generateanswer-usage.md
+- title: テストして公開する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ナレッジ ベースを対話形式でテストする
+      url: how-to/test-knowledge-base.md
+    - text: ナレッジ ベースの公開
+      url: quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base
+- title: ナレッジ ベースを改善する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: アクティブ ラーニングを使用してナレッジ ベースを改善する
+      url: how-to/improve-knowledge-base.md
+    - text: ナレッジ ベースに関する分析の取得
+      url: how-to/get-analytics-knowledge-base.md
+- title: QnA Maker ボット
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 'ポータル: QnA ボットの作成'
+      url: tutorials/create-qna-bot.md
+    - text: .Net:QnA Maker と Language Understanding でボットを作成する
+      url: tutorials/integrate-qnamaker-luis.md
+    - text: その他のボットのサンプル
+      url: https://github.com/Microsoft/BotBuilder-Samples/blob/master/README.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: ナレッジ ベースの制限
+      url: limits.md
+    - text: API の作成
+      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase
+    - text: 回答の生成 API
+      url: https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime
+    - text: .Net SDK のリファレンス ドキュメント
+      url: https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker?view=azure-dotnet
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.6.0#cognitive_services
+    - text: Azure コマンド ライン インターフェイス (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: トラブルシューティング
+      url: troubleshooting.md
+    - text: Stack Overflow で質問する
+      url: https://stackoverflow.com/questions/tagged/QnAMaker
+    - text: UserVoice によるサービスへの影響
+      url: https://cognitive.uservoice.com/forums/578689-qna-maker-api

@@ -3,20 +3,20 @@ title: オーディオ ストリームをチャンク転送する方法 | Micros
 titlesuffix: Azure Cognitive Services
 description: チャンク転送を使用してオーディオ ストリームを Bing Speech サービスに送信する方法
 services: cognitive-services
-author: zhouwangzw
-manager: wolfma
+author: nitinme
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
-ms.author: zhouwang
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d9796cf60e2695c21d781131c935d24891401efa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 60428a7a5e28b7c9d6cd76f31374f24df48423a6
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60515002"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966501"
 ---
 # <a name="chunked-transfer-encoding"></a>チャンク転送エンコーディング
 

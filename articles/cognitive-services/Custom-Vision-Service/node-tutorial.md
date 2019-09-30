@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 2fd9ccff68eb368107a299af02a54ae6fc6cc0e2
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: edb9e50cceed95d8ca77567e7c1228704b5f177d
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946142"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982363"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-nodejs-sdk"></a>クイック スタート:Custom Vision Node.js SDK を使用して画像分類プロジェクトを作成する
 
@@ -45,7 +45,7 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 
-新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。
+新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 ご利用のサブスクリプション キーを適切な定義に挿入し、sampleDataRoot パスの値を、実際の画像フォルダーのパスに設定します。 エンドポイントの値が、[Customvision.ai](https://www.customvision.ai/) で作成したトレーニングと予測のエンドポイントと一致していることを確認します。
 
 ```javascript
 const util = require('util');

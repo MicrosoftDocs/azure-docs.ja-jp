@@ -1,6 +1,6 @@
 ---
 title: Chainer を使用したディープ ラーニング ニューラル ネットワークのトレーニング
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の Chainer 推定クラスを使用して、PyTorch トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。  このサンプル スクリプトでは、numpy 上で実行される Chainer Python ライブラリを使用して、ディープ ラーニング ニューラル ネットワークを構築するために手書きの数字の画像を分類します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: bc14ba2bcaa80236717c062abd1dc8a63b58305c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 79c0cadc1b266a6d160cd36fc21dcaf36637a2b1
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966828"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076420"
 ---
-# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して Chainer モデルを大規模にトレーニングし、登録する
+# <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して大規模な Chainer モデルをトレーニングし、登録する
 
 この記事では、Azure Machine Learning の [Chainer 推定](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)クラスを使用して、[Chainer](https://chainer.org/) トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。 この記事のトレーニング スクリプトの例では、人気の [MNIST データセット](http://yann.lecun.com/exdb/mnist/)を使用し、[numpy](https://www.numpy.org/) を基盤に Chainer Python ライブラリを使用して構築されたディープ ニューラル ネットワーク (DNN) を使用して手書きの数字を分類します。
 
@@ -25,7 +25,7 @@ Chainer のディープ ラーニング モデルを一からトレーニング�
 
 [ディープ ラーニングと機械学習の比較](concept-deep-learning-vs-machine-learning.md)の詳細を確認してください。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -60,7 +60,7 @@ print("SDK version:", azureml.core.VERSION)
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
 
-[Azure Machine Learning service ワークスペース](concept-workspace.md)は、本サービスの最上位レベルのリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
+[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
 
 [前提条件のセクション](#prerequisites)で作成した `config.json` ファイルを読み取ることによって、ワークスペース オブジェクトを作成します。
 
@@ -84,7 +84,7 @@ os.makedirs(project_folder, exist_ok=True)
 
 Azure ML の追跡およびメトリック機能を利用するには、トレーニング スクリプト内に少量の Azure ML コードを追加します。  トレーニング スクリプト **chainer_mnist.py** には、スクリプト内の `Run` オブジェクトを使用して Azure ML 実行に一部のメトリックをログ記録する方法があります。
 
-指定されたトレーニング スクリプトでは、Chainer の `datasets.mnist.get_mnist` 関数のサンプル データを使用します。  独自のデータについては、[データセットやスクリプトのアップロード](how-to-train-keras.md#upload-dataset-and-scripts)などの手順を使用して、トレーニング中にデータを使用できるようにすることが必要になる場合があります。
+指定されたトレーニング スクリプトでは、Chainer の `datasets.mnist.get_mnist` 関数のサンプル データを使用します。  独自のデータについては、[データセットやスクリプトのアップロード](how-to-train-keras.md)などの手順を使用して、トレーニング中にデータを使用できるようにすることが必要になる場合があります。
 
 トレーニング スクリプト **chainer_mnist.py** をプロジェクト ディレクトリにコピーします。
 
@@ -209,7 +209,7 @@ for f in run.get_file_names():
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Machine Learning service 上で Chainer を使用して、ディープ ラーニング ニューラル ネットワークをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、[モデル デプロイ](how-to-deploy-and-where.md)の記事に進んでください。
+この記事では、Azure Machine Learning 上で Chainer を使用して、ディープ ラーニング ニューラル ネットワークをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、[モデル デプロイ](how-to-deploy-and-where.md)の記事に進んでください。
 
 * [ハイパーパラメーターを調整する](how-to-tune-hyperparameters.md)
 

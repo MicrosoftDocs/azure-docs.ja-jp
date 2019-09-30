@@ -1,18 +1,18 @@
 ---
-title: Azure Site Recovery における VMware から Azure へのディザスター リカバリー アーキテクチャ | Microsoft Docs
+title: Azure Site Recovery における VMware から Azure へのディザスター リカバリー アーキテクチャ
 description: この記事では、Azure Site Recovery を使ってオンプレミスの VMware VM から Azure へのディザスター リカバリーを設定するときに使われるコンポーネントとアーキテクチャの概要を説明します
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: f1fdbd143093beb9736e86b24b76843ad82b89f2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c21b8d7a4a2723ddf10c4ac88f8b1ce4a5d6b47
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66418375"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70814589"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware から Azure へのディザスター リカバリー アーキテクチャ
 

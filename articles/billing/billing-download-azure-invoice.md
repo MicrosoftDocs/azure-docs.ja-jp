@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: banders
 ms.openlocfilehash: 4dc5f88f7a5994e5bcd50d71c86bf1ba35b10734
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68321767"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の表示とダウンロード

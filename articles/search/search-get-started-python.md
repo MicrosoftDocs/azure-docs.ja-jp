@@ -1,7 +1,7 @@
 ---
-title: 'Python のクイック スタート: REST API を使用してインデックスの作成、読み込み、クエリの実行を行う - Azure Search'
+title: クイック スタート:REST API シリーズを使用して Python で検索インデックスを作成する - Azure Search
 description: Python、Jupyter Notebook、Azure Search REST API を使用して、インデックスを作成し、データを読み込み、クエリを実行する方法について説明します。
-ms.date: 07/11/2019
+ms.date: 09/10/2019
 author: heidisteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.openlocfilehash: 308e296ba5306949e87e68f14c8c219b85825af4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 273cd690c56ef01b4fd38398aaef85570dd758a2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656788"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881558"
 ---
 # <a name="quickstart-create-an-azure-search-index-in-python-using-jupyter-notebooks"></a>クイック スタート:Jupyter Notebook を使用して Python で Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -71,6 +71,8 @@ REST 呼び出しには、要求ごとにサービス URL とアクセス キー
    headers = {'Content-Type': 'application/json',
            'api-key': '<YOUR-ADMIN-API-KEY>' }
    ```
+
+   ConnectionError `"Failed to establish a new connection"` が表示された場合は、api-key がプライマリまたはセカンダリの管理者キーであること、および先頭と末尾のすべての文字 (`?` および`/`) が配置されていることを確認します。
 
 1. 3 番目のセルで、要求を作成します。 この GET 要求では、ご利用の検索サービスのインデックス コレクションがターゲットとされ、既存のインデックスの name プロパティが選択されます。
 

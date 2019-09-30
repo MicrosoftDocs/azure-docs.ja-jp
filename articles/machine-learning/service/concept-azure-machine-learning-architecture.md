@@ -1,7 +1,7 @@
 ---
 title: アーキテクチャと主要な概念
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service を構成するアーキテクチャ、用語、概念、およびワークフローについて説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning を構成するアーキテクチャ、用語、概念、ワークフローについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,18 +10,18 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 07/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: ea5e476680b07a6a7ba2b57e94f1f0b99cc10987
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 91c747b8b4ca58e7714dc101777bad51f9f0286f
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990099"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035587"
 ---
-# <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure Machine Learning service のしくみ:アーキテクチャと概念
+# <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Azure Machine Learning のしくみ:アーキテクチャと概念
 
-Azure Machine Learning service のアーキテクチャ、概念、ワークフローについて説明します。 サービスの主要なコンポーネントと、サービスを使用する場合の一般的なワークフローを、以下の図に示します。
+Azure Machine Learning のアーキテクチャ、概念、ワークフローについて説明します。 サービスの主要なコンポーネントと、サービスを使用する場合の一般的なワークフローを、以下の図に示します。
 
-![Azure Machine Learning service のアーキテクチャとワークフロー](./media/concept-azure-machine-learning-architecture/workflow.png)
+![Azure Machine Learning のアーキテクチャとワークフロー](./media/concept-azure-machine-learning-architecture/workflow.png)
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -47,10 +47,10 @@ Azure Machine Learning 用のこれらのツールを使用します。
 +  [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用して、Python 環境でサービスを操作します。
 + [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli) を使用して、機械学習アクティビティを自動化します。
 + [Azure Machine Learning VS Code 拡張機能](how-to-vscode-tools.md)を使用して、Visual Studio Code でコードを書き込みます
-+ [Azure Machine Learning service 用のビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md) を使用して、コードを記述せずにワークフローの手順を行います。
++ [Azure Machine Learning 用のビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md) を使用して、コードを記述せずにワークフローの手順を行います。
 
 > [!NOTE]
-> この記事では、Azure Machine Learning service で使用される用語と概念を定義しますが、Azure プラットフォームに関する用語と概念は定義しません。 Azure プラットフォームの用語について詳しくは、[Microsoft Azure 用語集](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)に関するページを参照してください。
+> この記事では、Azure Machine Learning で使用される用語と概念を定義しますが、Azure プラットフォームに関する用語と概念は定義しません。 Azure プラットフォームの用語について詳しくは、[Microsoft Azure 用語集](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology)に関するページを参照してください。
 
 ## <a name="glossary"></a>用語集
 
@@ -75,7 +75,7 @@ Azure Machine Learning 用のこれらのツールを使用します。
 
 ### <a name="workspaces"></a>Workspaces
 
-[ワークスペース](concept-workspace.md)は、Azure Machine Learning service の最上位のリソースです。 Azure Machine Learning service を使用するときに作成する、すべての成果物を操作するための一元的な場所が提供されます。 他のユーザーとワークスペースを共有できます。 ワークスペースの詳細については、「[Azure Machine Learning ワークスペースとは](concept-workspace.md)」をご覧ください。
+[ワークスペース](concept-workspace.md)は、Azure Machine Learning の最上位のリソースです。 Azure Machine Learning を使用するときに作成する、すべての成果物を操作するための一元的な場所が提供されます。 他のユーザーとワークスペースを共有できます。 ワークスペースの詳細については、「[Azure Machine Learning ワークスペースとは](concept-workspace.md)」をご覧ください。
 
 ### <a name="experiments"></a>実験
 
@@ -87,13 +87,13 @@ Azure Machine Learning 用のこれらのツールを使用します。
 
 簡単に言うと、モデルとは入力を受け取って出力を生成するひとまとまりのコードです。 機械学習モデルの作成には、アルゴリズムの選択、アルゴリズムへのデータの提供、およびハイパーパラメーターのチューニングが含まれます。 トレーニングはトレーニング済みモデルを生成する反復的なプロセスであり、トレーニング プロセス中にモデルが学習した内容がカプセル化されています。
 
-モデルは、Azure Machine Learning での実行によって生成されます。 Azure Machine Learning の外部でトレーニングされるモデルを使用することもできます。 Azure Machine Learning service ワークスペースにモデルを登録することができます。
+モデルは、Azure Machine Learning での実行によって生成されます。 Azure Machine Learning の外部でトレーニングされるモデルを使用することもできます。 Azure Machine Learning ワークスペースにモデルを登録することができます。
 
-Azure Machine Learning service はフレームワークに依存しません。 モデルを作成するときは、Scikit-learn、XGBoost、PyTorch、TensorFlow、Chainer などの任意の人気のある機械学習フレームワークを使用できます。
+Azure Machine Learning は、フレームワークに依存しません。 モデルを作成するときは、Scikit-learn、XGBoost、PyTorch、TensorFlow、Chainer などの任意の人気のある機械学習フレームワークを使用できます。
 
-Scikit-learn と Estimator を使用したモデルのトレーニングの例については、「[チュートリアル: Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。
+Scikit-learn と Estimator を使用したモデルのトレーニングの例については、「[チュートリアル: Azure Machine Learning でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」を参照してください。
 
-**モデル レジストリ**により、Azure Machine Learning service ワークスペース内のすべてのモデルが追跡されます。
+**モデル レジストリ**により、Azure Machine Learning ワークスペース内のすべてのモデルが追跡されます。
 
 モデルは、名前とバージョンによって識別されます。 既存のモデルと同じ名前でモデルを登録するたびに、レジストリではそれが新しいバージョンと見なされます。 バージョンはインクリメントされ、新しいモデルは同じ名前で登録されます。
 
@@ -124,16 +124,16 @@ PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning に�
 
 * [Estimator を使用して ML モデルをトレーニングする](how-to-train-ml-models.md)。
 * [Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする](how-to-train-pytorch.md)。
-* [Azure Machine Learning service を使用して TensorFlow モデルを大規模にトレーニングおよび登録する](how-to-train-tensorflow.md)。
-* [Azure Machine Learning service を使用して Chainer モデルを大規模にトレーニングし、登録する](how-to-train-chainer.md)。
+* [Azure Machine Learning を使用して TensorFlow モデルを大規模にトレーニングおよび登録する](how-to-train-tensorflow.md)。
+* [Azure Machine Learning を使用して大規模な Chainer モデルをトレーニングし、登録する](how-to-train-chainer.md)。
 
 ### <a name="datasets-and-datastores"></a>データセットとデータストア
 
-**Azure Machine Learning Datasets (プレビュー)** によって、データへのアクセスと操作がより容易になります。 データセットは、モデルのトレーニングやパイプラインの作成など、さまざまなシナリオでデータを管理します。 Azure Machine Learning SDK を使用すると、基礎となるストレージへのアクセス、データの探索と準備、異なるデータセット定義のライフ サイクルの管理、トレーニングと運用環境で使用されるデータセット間の比較が可能になります。
+**Azure Machine Learning Datasets (プレビュー)** によって、データへのアクセスと操作がより容易になります。 データセットは、モデルのトレーニングやパイプラインの作成など、さまざまなシナリオでデータを管理します。 Azure Machine Learning SDK を使用すると、基礎となるストレージへのアクセス、データの探索、異なるデータセット定義のライフ サイクルの管理が可能になります。
 
 データセットには、`from_delimited_files()` や `to_pandas_dataframe()` を使用するなど、一般的な形式のデータを操作するメソッドが用意されています。
 
-詳細については、[Azure Machine Learning Datasets の作成と登録](how-to-create-register-datasets.md)に関するページを参照してください。  データセットのその他の使用例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/work-with-data/datasets)を参照してください。
+詳細については、[Azure Machine Learning Datasets の作成と登録](how-to-create-register-datasets.md)に関するページを参照してください。  データセットのその他の使用例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets)を参照してください。
 
 **データストア**は、Azure ストレージ アカウントに対するストレージの抽象化です。 データストアでは、バックエンド ストレージとして Azure BLOB コンテナーまたは Azure ファイル共有を使用できます。 各ワークスペースには既定のデータストアがあり、ユーザーは追加のデータストアを登録できます。 データストアのファイルを格納および取得するには、Python SDK API または Azure Machine Learning CLI を使用します。
 
@@ -147,11 +147,11 @@ PyTorch、TensorFlow、Chainer タスクの場合、Azure Machine Learning に�
 
 モデルをトレーニングするには、トレーニング スクリプトおよび関連ファイルが格納されているディレクトリを指定します。 実験名も指定します。これは、トレーニング中に収集される情報を格納するために使用されます。 トレーニング中に、ディレクトリ全体がトレーニング環境 (コンピューティング先) にコピーされて、実行構成で指定されるスクリプトが開始されます。 ディレクトリのスナップショットも、ワークスペース内の実験の下に格納されます。
 
-例については、「[チュートリアル:Azure Machine Learning service で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)。
+例については、「[チュートリアル:Azure Machine Learning でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」を参照してください。
 
 ### <a name="runs"></a>実行
 
-実行は、次の情報を含むレコードです。
+実行とは、トレーニング スクリプトの 1 回の実行です。 Azure Machine Learning は、すべての実行を記録して、次の情報を保存します。
 
 * 実行に関するメタデータ (タイムスタンプ、期間など)
 * スクリプトによって記録されるメトリック
@@ -193,7 +193,7 @@ Azure Machine Learning では、次の 2 種類のイメージを作成できま
 * **FPGA イメージ**:Azure のフィールド プログラマブル ゲート アレイにデプロイするときに使用されます。
 * **Docker イメージ**:FPGA 以外のコンピューティング先にデプロイするときに使用されます。 例として、Azure Container Instances や Azure Kubernetes Service があります。
 
-Azure Machine Learning service は基本イメージを提供し、それが既定で使用されます。 独自のカスタム イメージを指定することもできます。
+Azure Machine Learning は基本イメージを提供し、それが既定で使用されます。 独自のカスタム イメージを指定することもできます。
 
 ### <a name="image-registry"></a>イメージ レジストリ
 
@@ -239,8 +239,8 @@ Azure IoT Edge ではモジュールが実行されるのを保証し、モジ�
 
 ### <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service の利用を開始する場合は、以下を参照してください。
+Azure Machine Learning の利用を開始するには、以下を参照してください。
 
-* [Azure Machine Learning service とは](overview-what-is-azure-ml.md)
-* [Azure Machine Learning service のワークスペースを作成する](how-to-manage-workspace.md)
+* [Azure Machine Learning とは](overview-what-is-azure-ml.md)
+* [Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)
 * [チュートリアル (パート 1): モデルをトレーニングする](tutorial-train-models-with-aml.md)

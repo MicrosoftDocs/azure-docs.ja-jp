@@ -9,17 +9,16 @@ ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3f80f3c6be747cf84aa9d8b2c386c0568a7511ad
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9b7c63639eea7176af36593983b08ad0c5213613
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069389"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073231"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
@@ -27,7 +26,7 @@ ms.locfileid: "67069389"
 
  Azure [App Service Environment][Intro] は、Azure 仮想ネットワーク (VNet) 内のサブネットへの Azure App Service のデプロイです。 App Service Environment (ASE) のデプロイの種類には、次の 2 つがあります。
 
-- **外部 ASE**:ASE でホストされたアプリをインターネット アクセス可能な IP アドレスで公開します。 詳細については、[外部 ASE の作成][MakeExternalASE]に関するページを参照してください。
+- **外部 ASE**:ASE でホストされたアプリをインターネット アクセス可能な IP アドレスで公開します。 詳細については、「[外部 App Service Environment の作成][MakeExternalASE]」を参照してください。
 - **ILB ASE**:ASE でホストされたアプリを VNet 内部の IP アドレスで公開します。 内部エンドポイントは内部ロード バランサー (ILB) であるため、ILB ASE と呼ばれています。 詳細については、[ILB ASE の作成と使用][MakeILBASE]に関するページを参照してください。
 
 ASE、外部、および ILB のすべてに、受信管理トラフィックに使用され、ASE からインターネットに電話をかけるときの送信元アドレスとして使用されるパブリック VIP があります。 インターネットにアクセスする ASE からの呼び出しは、ASE に割り当てられた VIP を経由して VNet から出ます。 この VIP のパブリック IP は、インターネットにアクセスする ASE からのすべての呼び出しのための送信元 IP になります。 ASE 内のアプリが VNet 内のリソースまたは VPN 全体にわたるリソースへの呼び出しを行う場合、ソース IP は、その ASE によって使用されるサブネット内の IP のいずれかです。 ASE は VNet 内にあるため、追加の構成をしなくても、VNet 内のリソースにもアクセスできます。 VNet がオンプレミスのネットワークに接続されている場合、追加の構成なしで ASE 内のアプリもそこにあるリソースにアクセスできます。
@@ -68,7 +67,7 @@ ASE を動作させるためだけに、ASE では次のポートが開いてい
 
 ポート スキャンで、開いていると表示される可能性があるポートが他に 2 つあります。7654 と 1221 です。 それらは、IP アドレスのみで応答します。 必要に応じてそれらをブロックすることもできます。 
 
-受信管理トラフィックでは、システムの監視に加え、ASE のコマンドと制御が提供されます。 このトラフィックのソース アドレスは、[ASE 管理アドレス][ASEManagement]に関するドキュメントにリストされています。 ネットワーク セキュリティ構成では、ポート 454 および 455 上の ASE 管理アドレスからのアクセスを許可する必要があります。 これらのアドレスからのアクセスをブロックすると、ASE が正常でなくなり、中断されます。 ポート 454 と 455 に入ってくる TCP トラフィックは同じ VIP から出ていく必要があります。そうしないと、非対称ルーティングの問題が発生します。 
+受信管理トラフィックでは、システムの監視に加え、ASE のコマンドと制御が提供されます。 このトラフィックのソース アドレスは、「[ASE 管理アドレス][ASEManagement]」のドキュメントに記載されています。 ネットワーク セキュリティ構成では、ポート 454 および 455 上の ASE 管理アドレスからのアクセスを許可する必要があります。 これらのアドレスからのアクセスをブロックすると、ASE が正常でなくなり、中断されます。 ポート 454 と 455 に入ってくる TCP トラフィックは同じ VIP から出ていく必要があります。そうしないと、非対称ルーティングの問題が発生します。 
 
 ASE サブネット内には、内部コンポーネントの通信に使用されるポートが多数あり、それらのポートは変更可能です。 そのためには、ASE サブネットのすべてのポートに、ASE サブネットからアクセスできる必要があります。 
 
@@ -125,7 +124,7 @@ ASE の機能的な依存関係に加えて、ポータルのエクスペリエ�
 
 ILB ASE を使用する場合、SCM サイトは VNet の外部からアクセスできません。 一部の機能は、アプリの SCM サイトへのアクセスが必要なため、アプリ ポータルからは機能しません。 ポータルを使用するのではなく、SCM サイトに直接接続できます。 
 
-ILB ASE がドメイン名 *contoso.appserviceenvironnment.net* であり、アプリ名が *testapp* である場合、そのアプリには *testapp.contoso.appserviceenvironment.net* で到達します。 それで移動する SCM サイトには *testapp.scm.contoso.appserviceenvironment.net* で到達します。
+ILB ASE がドメイン名 *contoso.appserviceenvironment.net* であり、アプリ名が *testapp* である場合、そのアプリには *testapp.contoso.appserviceenvironment.net* で到達します。 それで移動する SCM サイトには *testapp.scm.contoso.appserviceenvironment.net* で到達します。
 
 ## <a name="ase-ip-addresses"></a>ASE IP アドレス ##
 
@@ -151,7 +150,7 @@ ASE で認識されている必要のある IP アドレスがいくつかあり
 
 ## <a name="network-security-groups"></a>ネットワーク セキュリティ グループ ##
 
-[ネットワーク セキュリティ グループ][NSGs]は、VNet 内のネットワーク アクセスを制御する機能を提供します。 ポータルを使用する場合は、すべてを拒否するための暗黙的な拒否規則が、最も低い優先順位に存在します。 自分で構築したものは許可規則になります。
+[ネットワーク セキュリティ グループ][NSGs]では、VNet 内のネットワーク アクセスを制御する機能が提供されます。 ポータルを使用する場合は、すべてを拒否するための暗黙的な拒否規則が、最も低い優先順位に存在します。 自分で構築したものは許可規則になります。
 
 ASE では、ASE 自体をホストするために使用する VM にアクセスすることはできません。 これらは、Microsoft によって管理されるサブスクリプションに含まれています。 ASE 上のアプリへのアクセスを制限する場合は、ASE サブネット上で NSG を設定します。 そのときは、ASE の依存関係に十分注意してください。 いずれかの依存関係をブロックすると、ASE は動作を停止します。
 

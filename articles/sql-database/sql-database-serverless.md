@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: oslake
+author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 07/05/2019
-ms.openlocfilehash: 3b9a9f4ac1cf0722ab7d3838f0b0c4c12b47dc74
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 09/06/2019
+ms.openlocfilehash: e6c815b317e60d7a65a2f26249782451bc917097
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566800"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993467"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database サーバーレス (プレビュー)
 
@@ -115,7 +115,8 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
 - geo レプリケーション (アクティブ geo レプリケーションと自動フェールオーバー グループ)
 - 長期的なバックアップ保有期間 (LTR)。
-- SQL データ同期で使用される同期データベース。
+- SQL データ同期で使用される同期データベース。同期データベースとは異なり、ハブ データベースとメンバー データベースでは自動一時停止がサポートされています。
+- エラスティック ジョブで使用されるジョブ データベース。
 
 データベースをオンラインにする必要がある一部のサービス更新プログラムのデプロイ中は、自動一時停止は一時的に回避されます。  このような場合、サービス更新プログラムが完了すると、自動一時停止は再び許可されます。
 
@@ -131,12 +132,12 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 |監査|監査レコードの表示。<br>監査ポリシーの更新または表示。|
 |データ マスク|データ マスク ルールの追加、変更、削除、表示|
 |透過的なデータ暗号化|透過的データ暗号化の状態またはステータスの表示|
-|クエリ (パフォーマンス) データ ストア|クエリ ストアの設定の変更または表示、自動チューニング|
+|クエリ (パフォーマンス) データ ストア|クエリ ストアの設定の変更または表示|
 |自動調整|自動インデックス作成などの自動調整の推奨事項の適用と検証|
 |データベースのコピー|コピーとしてのデータベースの作成。<br>BACPAC ファイルへのエクスポート。|
 |SQL データ同期|構成可能なスケジュールまたは手動で実行される、ハブとメンバー データベースの間の同期|
 |特定のデータベース メタデータの変更|新しいデータベース タグの追加。<br>最大仮想コア数、最小仮想コア数、または自動一時停止遅延の変更。|
-|SQL Server Management Studio (SSMS)|SSMS バージョン 18 を使用し、サーバーでデータベースの新しいクエリ ウィンドウを開くと、同じサーバーで自動一時停止されていたデータベースが再開します。 この動作は、IntelliSense をオフにした SSMS バージョン 17.9.1 を使用している場合は発生しません。|
+|SQL Server Management Studio (SSMS)|18.1 以前の SSMS バージョンを使用し、サーバーでデータベースの新しいクエリ ウィンドウを開くと、同じサーバーで自動一時停止されていたデータベースが再開します。 この動作は、18.1 以降の SSMS バージョンを使用している場合は発生しません。|
 
 データベースをオンラインにする必要がある一部のサービス更新プログラムのデプロイ中にも、自動再開がトリガーされます。
 
@@ -162,7 +163,7 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 
 2. 必要に応じて、最小仮想コア数と自動一時停止遅延を指定して、既定値を変更します。 これらのパラメーターに対して使用可能な値を次の表に示します。
 
-   |パラメーター|値の選択肢|Default value|
+   |パラメーター|値の選択肢|既定値|
    |---|---|---|---|
    |最小仮想コア|最大仮想コア数を超えない {0.5、1、2、4} のいずれか|0.5 仮想コア|
    |自動一時停止遅延|最小:60 分 (1 時間)<br>最大値:10080 分 (7 日)<br>増分: 約 60 分<br>自動一時停止の無効化: -1|約 60 分|
@@ -200,7 +201,7 @@ New-AzSqlDatabase `
 次の例では、プロビジョニングされたコンピューティング レベルからサーバーレス コンピューティング レベルにデータベースを移動します。 この例では、最小仮想コア数、最大仮想コア数、および自動一時停止遅延を明示的に指定します。
 
 ```powershell
-Set-AzSqlDatabase
+Set-AzSqlDatabase `
   -ResourceGroupName $resourceGroupName `
   -ServerName $serverName `
   -DatabaseName $databaseName `
@@ -281,7 +282,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>リソース制限
 
-リソースの制限については、[サーバーレス コンピューティング レベル](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier)に関する記事をご覧ください
+リソースの制限については、[サーバーレス コンピューティング レベル](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)に関する記事をご覧ください。
 
 ## <a name="billing"></a>課金
 
@@ -291,7 +292,7 @@ Get-AzSqlDatabase `
 - **請求される金額**: 仮想コア単位価格 * (最小仮想コア数、使用された仮想コア数、最小メモリ GB * 1/3、使用されたメモリ GB * 1/3) のうち最大の値 
 - **請求頻度**: 1 秒あたり
 
-1 秒あたり、仮想コアあたりのコストの仮想コア単位価格。 特定のリージョンの特定の単位価格については、[Azure SQL Database の価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/single/)をご覧ください。
+仮想コア単位価格は、1 秒あたり、仮想コアあたりのコストです。 特定のリージョンの特定の単位価格については、[Azure SQL Database の価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/single/)をご覧ください。
 
 請求されるコンピューティングの金額は、次のメトリックで示されます。
 
@@ -324,4 +325,4 @@ Get-AzSqlDatabase `
 ## <a name="next-steps"></a>次の手順
 
 - 使用を開始するには、「[クイック スタート: Azure portal を使用して Azure SQL Database で単一データベースを作成する](sql-database-single-database-get-started.md)」をご覧ください。
-- リソースの制限については、[サーバーレス コンピューティング レベルのリソース制限](sql-database-vCore-resource-limits-single-databases.md#serverless-compute-tier)に関する記事をご覧ください。
+- リソースの制限については、[サーバーレス コンピューティング レベルのリソース制限](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)に関する記事をご覧ください。

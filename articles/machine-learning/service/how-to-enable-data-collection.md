@@ -1,6 +1,6 @@
 ---
 title: 実稼働環境のモデルでデータを収集する
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Blob ストレージで Azure Machine Learning の入力モデル データを収集する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: marthalc
 author: marthalc
 ms.date: 07/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 81ffe8618e07f2e49e4439ea57e254e5d37974f9
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: d836b600a39b73f60c0847c5a9642f396fb70d17
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227946"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002859"
 ---
 # <a name="collect-data-for-models-in-production"></a>実稼働環境でモデルのデータを収集する
 
-この記事では、Azure Kubernetes Cluster (AKS) にデプロイした Azure Machine Learning サービスの入力モデル データを収集し、Azure Blob ストレージに格納する方法について説明します。 
+この記事では、Azure Kubernetes Cluster (AKS) にデプロイした Azure Machine Learning から入力モデル データを収集し、Azure Blob ストレージに格納する方法について説明します。 
 
 この方法を習得すると、収集したデータで次のことができるようになります。
 * 実稼働データがモデルに追加されたときの[データの変動を監視する](how-to-monitor-data-drift.md)
@@ -50,9 +50,9 @@ ms.locfileid: "68227946"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-- Azure Machine Learning service ワークスペース、スクリプトを保存するローカル ディレクトリ、Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
+- Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境の構成方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
 
 - Azure Kubernetes Service (AKS) にデプロイするトレーニング済みの機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
 
@@ -61,7 +61,7 @@ ms.locfileid: "68227946"
 - [環境を設定](how-to-configure-environment.md)し、[Monitoring SDK](https://aka.ms/aml-monitoring-sdk) をインストールします。
 
 ## <a name="enable-data-collection"></a>データ収集を有効にする
-モデルのデプロイに使用されているツールが Azure Machine Learning Service かどうかにかかわらず、データ収集を有効にすることができます。 
+モデルのデプロイに使用されているツールが Azure Machine Learning かどうかに関係なく、データ収集を有効にすることができます。 
 
 有効にするには、次の手順を実行します。
 
@@ -144,6 +144,8 @@ ms.locfileid: "68227946"
 
   1. **[更新]** をクリックして変更を適用します。
 
+  これらの設定には、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) でアクセスすることもできます。
+
 + オプション 2 - Python を使用してデータ収集を無効にする:
 
   ```python 
@@ -172,7 +174,7 @@ BLOB のデータにすばやくアクセスするには:
 
 ### <a name="analyzing-model-data-through-power-bi"></a>Power BI でのモデル データの分析
 
-1. [Power BI Desktop](https://www.powerbi.com) をダウンロードして開きます
+1. [Power BI Desktop](https://www.powerbi.com) をダウンロードして開きます。
 
 1. **[データを取得]** を選択し、[**Azure Blob Storage**](https://docs.microsoft.com/power-bi/desktop-data-sources) をクリックします。
 

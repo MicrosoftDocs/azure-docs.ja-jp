@@ -2,18 +2,18 @@
 title: 'C# のチュートリアル: 複数のデータ ソースにインデックスを付ける - Azure Search'
 description: 複数のデータ ソースから 1 つの Azure Search インデックスにデータをインポートする方法を学習します。
 author: RobDixon22
-manager: HeidiSteen
+manager: nitinme
 services: search
 ms.service: search
 ms.topic: tutorial
 ms.date: 06/21/2019
 ms.author: heidist
-ms.openlocfilehash: 2776bcd095c570be500fa6ddb2675820b2259716
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: d55a586d3dfb22b5dad377ff656b8d6a6c940bdb
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840676"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241834"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-search-index"></a>C# のチュートリアル: 複数のデータ ソースのデータを 1 つの Azure Search インデックスに結合する
 
@@ -70,7 +70,7 @@ Azure Search では、複数のデータ ソースから 1 つの結合検索イ
 
 1. [Azure portal にサインイン](https://portal.azure.com)し、Azure Cosmos DB アカウントの [概要] ページに移動します。
 
-1. メニュー バーから、[コンテナーの追加] をクリックします。 "新しいデータベースの作成" を指定し、**hotel-rooms-db** という名前を使用します。 コレクション名には「**hotel-rooms**」と入力し、パーティション キーには「 **/HotelId**」と入力します。 **[OK]** をクリックしてデータベースとコンテナーを作成します。
+1. メニュー バーから、[コンテナーの追加] をクリックします。 "新しいデータベースの作成" を指定し、**hotel-rooms-db** という名前を使用します。 コレクション名には「**hotels**」と入力し、パーティション キーには「 **/HotelId**」と入力します。 **[OK]** をクリックしてデータベースとコンテナーを作成します。
 
    ![Azure Cosmos DB コンテナーを追加する](media/tutorial-multiple-data-sources/cosmos-add-container.png "Azure Cosmos DB コンテナーを追加する")
 

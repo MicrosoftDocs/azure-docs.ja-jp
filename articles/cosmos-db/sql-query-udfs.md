@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: e168e450230720f4ad78516e6edcdc3aa08ba3e1
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: b67202da7293ef55cfe3390ca676f7944da80fba
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343219"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614335"
 ---
 # <a name="user-defined-functions-udfs-in-azure-cosmos-db"></a>Azure Cosmos DB でのユーザー定義関数 (UDF)
 
@@ -19,7 +19,7 @@ SQL API ではユーザー定義関数 (UDF) のサポートを提供してい�
 
 API によって、UDF を使用して、SQL 構文が拡張され、カスタムのアプリケーション ロジックがサポートされます。 SQL API を使用して、UDF を登録し、それらを SQL クエリで参照できます。 実際 UDF は、クエリから呼び出せるよう精巧に設計されています。 当然の帰結として、UDF は、ストアド プロシージャやトリガーなどのその他の JavaScript の型のようなコンテキスト オブジェクトにアクセスできません。 クエリは読み取り専用で、プライマリ レプリカでもセカンダリ レプリカでも実行することができます。 UDF は、その他の JavaScript の型とは異なり、セカンダリ レプリカで実行されるように設計されています。
 
-次の例では、Cosmos DB データベースの項目コンテナーに UDF を登録しています。 例では `REGEX_MATCH` という名前の UDF を作成しています。 これは 2 つの JSON 文字列値 `input` と `pattern` を受け取り、JavaScript の `string.match()` 関数を使用して、1 つ目の文字列値が、2 つ目の文字列値で指定されたパターンに一致するかどうかをチェックします。
+次の例では、Cosmos データベースの項目コンテナーで UDF を登録します。 例では `REGEX_MATCH` という名前の UDF を作成しています。 これは 2 つの JSON 文字列値 `input` と `pattern` を受け取り、JavaScript の `string.match()` 関数を使用して、1 つ目の文字列値が、2 つ目の文字列値で指定されたパターンに一致するかどうかをチェックします。
 
 ## <a name="examples"></a>例
 

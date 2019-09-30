@@ -23,7 +23,7 @@
   items:
     - name: 認証方法
       href: concept-authentication-methods.md
-    - name: パスワードなしの認証
+    - name: パスワードレスの認証
       href: concept-authentication-passwordless.md
     - name: セキュリティ情報の登録
       href: concept-registration-mfa-sspr-combined.md
@@ -129,11 +129,11 @@
               href: howto-password-ban-bad-on-premises-agent-versions.md
     - name: Azure AD スマート ロックアウト
       href: howto-password-smart-lockout.md
-    - name: パスワードなし
+    - name: パスワードレス
       items:
-        - name: パスワードなしのセキュリティ キー
+        - name: パスワードレスのセキュリティ キー
           href: howto-authentication-passwordless-security-key.md
-        - name: パスワードなしの電話によるサインイン
+        - name: パスワードレスの電話によるサインイン
           href: howto-authentication-passwordless-phone.md
         - name: Windows Hello for Business
           href: 'https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification'

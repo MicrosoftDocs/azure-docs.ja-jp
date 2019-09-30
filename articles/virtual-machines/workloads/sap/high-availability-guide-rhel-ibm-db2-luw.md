@@ -9,18 +9,17 @@ editor: ''
 tags: azure-resource-manager
 keywords: SAP
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/10/2019
 ms.author: juergent
-ms.openlocfilehash: c649b93284a48df705d389f4de728d83f793af04
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5487b90172788c08a4383a32462ea5a85c1763ee
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036647"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099677"
 ---
 [1928533]: https://launchpad.support.sap.com/#/notes/1928533
 [2015553]: https://launchpad.support.sap.com/#/notes/2015553
@@ -517,11 +516,15 @@ Db2 HADR 構成を作成する前にインストールを行った場合は、�
 J2EE Config ツールを使用して JDBC URL を確認または更新します。 J2EE Config ツールはグラフィカル ツールであるため、X サーバーがインストールされている必要があります。
  
 1. J2EE インスタンスのプライマリ アプリケーション サーバーにサインインし、以下を実行します。
-     <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
+    
+    <pre><code>sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh</code></pre>  
+    
 1. 左側のフレームで、**セキュリティ ストア**を選択します。
-1. 右側のフレームで、キー jdbc/pool/\<SAPSID>/url を選択します。
+1. 右側のフレームで、キー `jdbc/pool/\<SAPSID>/url` を選択します。
 1. JDBC URL のホスト名を仮想ホスト名に変更します。
-     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
+    
+    <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
+    
 1. **[追加]** を選択します。
 1. 変更を保存するには、左上のディスク アイコンを選択します。
 1. 構成ツールを閉じます。

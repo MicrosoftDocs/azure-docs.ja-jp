@@ -1,6 +1,6 @@
 ---
 title: チュートリアル:ビジュアル インターフェイスで自動車価格を予測する
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: ドラッグ アンド ドロップ ビジュアル インターフェイスを使用して、機械学習モデルのトレーニング、スコア付け、およびデプロイを行う方法を学習します。 このチュートリアルは、線形回帰を使用した自動車価格の予測に関する 2 部構成のシリーズのパート 1 です。
 author: peterclu
 ms.author: peterlu
@@ -9,16 +9,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 08/16/2019
-ms.openlocfilehash: a2134853c48ca09faa150f038be2d9327af75eee
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 11c65c217ef6c150c47f387f7f80070488a8df89
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891636"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996770"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-visual-interface"></a>チュートリアル:ビジュアル インターフェイスで自動車価格を予測する
 
-この 2 部構成のチュートリアルでは、Azure Machine Learning service のビジュアル インターフェイスを使用して、自動車の価格を予測する予測分析ソリューションを開発およびデプロイする方法について説明します。 
+この 2 部構成のチュートリアルでは、Azure Machine Learning のビジュアル インターフェイスを使用して、自動車の価格を予測する予測分析ソリューションを開発およびデプロイする方法について説明します。 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2X1GY]
 
@@ -41,11 +41,11 @@ ms.locfileid: "69891636"
 
 ## <a name="create-a-new-experiment"></a>新しい実験を作成する
 
-ビジュアル インターフェイス実験を作成するには、まず、Azure Machine Learnings service ワークスペースが必要です。 このセクションでは、これらのリソースを作成する方法について説明します。
+ビジュアル インターフェイス実験を作成するには、まず、Azure Machine Learning service ワークスペースが必要です。 このセクションでは、これらのリソースを作成する方法について説明します。
 
 ### <a name="create-a-new-workspace"></a>新しいワークスペースを作成する
 
-Azure Machine Learning service ワークスペースがある場合は、次のセクションに進みます。
+Azure Machine Learning ワークスペースがある場合は、次のセクションに進みます。
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be77ae932ec72239bea04fce298d7f1b84e5e4d8
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60759342"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70240647"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure データ エクスプローラーでのデータ インジェスト
 
@@ -113,13 +113,13 @@ Kusto では、データの取り込みとクエリに使用できるクライ�
 * 待機時間の要件? 
 * 既存のマネージド インジェスト パイプラインの 1 つを使用できるか? 
 
-Event Hub などのメッセージング サービスに基づく既存のインフラストラクチャがある組織では、おそらく、コネクタを使用するのが最適なソリューションです。 キューによるインジェストは、大量のデータに適しています。
+Event Hub や IoT Hub などのメッセージング サービスに基づく既存のインフラストラクチャがある組織では、おそらく、コネクタを使用するのが最適なソリューションです。 キューによるインジェストは、大量のデータに適しています。
 
 ## <a name="supported-data-formats"></a>サポートされるデータ形式
 
 クエリからの取り込み以外のすべてのインジェスト方法では、Azure Data Explorer が解析できるようにデータを書式設定します。 以下のデータ形式がサポートされます。
 
-* CSV、TSV、PSV、SCSV、SOH
+* CSV、TSV、TSVE、PSV、SCSV、SOH
 * JSON (行区切り、複数行)、Avro
 * ZIP、GZIP 
 

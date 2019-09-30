@@ -8,16 +8,16 @@ ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cd085164fc9804e0c1c822df1c72d3ef94093a07
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: cbc6932c3bbe11f0c4def17097c1791cbb1687bf
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672797"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69515893"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Azure Automation でモジュールを管理する
 
-Azure Automation では、PowerShell ベースの Runbook で使用するために Automation アカウントに PowerShell モジュールをインポートする機能が用意されています。 これらのモジュールは、PowerShell ギャラリーから作成したカスタム モジュールの場合も、Azure 用の AzureRM および Az モジュールの場合もあります。 Automation アカウントを作成するときに一部のモジュールが既定でインポートされます。
+Azure Automation では、PowerShell ベースの Runbook で使用するために Automation アカウントに PowerShell モジュールをインポートする機能が用意されています。 これらのモジュールは、PowerShell ギャラリーから作成したカスタム モジュールの場合も、Azure 用の AzureRM および Az モジュールの場合もあります。 Automation アカウントを作成すると、一部のモジュールが既定でインポートされます。
 
 ## <a name="import-modules"></a>モジュールをインポートする
 
@@ -46,7 +46,7 @@ PowerShell ギャラリーからモジュールをインポートするには、
 
 ![PowerShell ギャラリーのインポート モジュール](../media/modules/powershell-gallery.png)
 
-Automation アカウントから直接、PowerShell ギャラリーからモジュールをインポートすることもできます。 Automation アカウントで、 **[共有リソース]** の下で **[モジュール]** を選択します。 [モジュール] ページで、 **[ギャラリーの参照]** をクリックします。 これにより、 **[ギャラリーの参照]** ページが開きます。 このページを使用して、PowerShell ギャラリーでモジュールを検索できます。 インポートするモジュールを選択し、 **[インポート]** をクリックします。 **[インポート]** ページで **[OK]** をクリックしてインポート プロセスを開始します。
+Automation アカウントから直接、PowerShell ギャラリーからモジュールをインポートすることもできます。 Automation アカウントで、 **[共有リソース]** の下で **[モジュール]** を選択します。 モジュールのページで **[ギャラリーの参照]** をクリックし、PowerShell ギャラリーでモジュールを検索します。 インポートするモジュールを選択し、 **[インポート]** をクリックします。 **[インポート]** ページで **[OK]** をクリックしてインポート プロセスを開始します。
 
 ![Azure portal からの PowerShell ギャラリーのインポート](../media/modules/gallery-azure-portal.png)
 
@@ -56,7 +56,7 @@ Automation アカウントから直接、PowerShell ギャラリーからモジ�
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure portal で、Automation アカウントに移動し、 **[共有リソース]** の下で **[モジュール]** を選択します。 削除するモジュールを選択します。 **[モジュール]** ページで、 **[削除]** をクリックします。 このモジュールが[既定のモジュール](#default-modules)の 1 つの場合、そのモジュールは Automation アカウントが作成されたときに存在したバージョンにロールバックされます。
+Azure portal で、Automation アカウントに移動し、 **[共有リソース]** の下で **[モジュール]** を選択します。 削除するモジュールを選択します。 **[モジュール]** ページで、 **[削除]** をクリックします。 このモジュールが[既定のモジュール](#default-modules)のうちの 1 つである場合、そのモジュールは Automation アカウントが作成されたときに存在していたバージョンにロールバックされます。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -68,7 +68,7 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 ## <a name="internal-cmdlets"></a>内部コマンドレット
 
-以下に、すべての Automation アカウントにインポートされる内部 `Orchestrator.AssetManagement.Cmdlets` モジュール内のコマンドレットの一覧を示します。 これらのコマンドレットは、Runbook および DSC 構成でアクセスでき、Automation アカウント内のアセットを操作できるようにします。 さらに、内部コマンドレットは、暗号化された **[変数]** 値、 **[資格情報]** 、および暗号化された **[接続]** フィールドからシークレットを取得できるようにします。 Azure PowerShell コマンドレットはこれらのシークレットを取得できません。 これらのコマンドレットでは、使用するときに、暗黙的に Azure に接続する必要はありません。 これは、Azure に対する認証に使用する必要がある実行アカウントなど、接続しているシナリオに役立ちます。
+以下に、すべての Automation アカウントにインポートされる内部 `Orchestrator.AssetManagement.Cmdlets` モジュール内のコマンドレットの一覧を示します。 これらのコマンドレットは、Runbook および DSC 構成でアクセスでき、Automation アカウント内のアセットを操作できるようにします。 さらに、内部コマンドレットは、暗号化された **[変数]** 値、 **[資格情報]** 、および暗号化された **[接続]** フィールドからシークレットを取得できるようにします。 Azure PowerShell コマンドレットはこれらのシークレットを取得できません。 これらのコマンドレットでは、それを使用するとき (実行アカウントを使用して Azure に対して認証するときなど) に Azure に暗黙的に接続する必要はありません。
 
 |名前|説明|
 |---|---|
@@ -82,11 +82,11 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 
 ## <a name="add-a-connection-type-to-your-module"></a>接続の種類をモジュールに追加する
 
-省略可能なファイルをモジュールに追加することにより、Automation アカウントで使用するカスタムの[接続の種類](../automation-connections.md)を提供できます。 このファイルは、Automation アカウント内のモジュールのコマンドレットで使用する Azure Automation の接続の種類を指定するメタデータ ファイルです。 これを実現するには、まず、PowerShell モジュールを作成する方法を知る必要があります。 モジュールの作成の詳細については、[PowerShell スクリプト モジュールを記述する方法](/powershell/developer/module/how-to-write-a-powershell-script-module)に関するページを参照してください。
+省略可能なファイルをモジュールに追加することにより、Automation アカウントで使用するカスタムの[接続の種類](../automation-connections.md)を提供できます。 このファイルは、Automation アカウント内のモジュールのコマンドレットで使用する Azure Automation の接続の種類を指定するメタデータ ファイルです。 これを実現するには、まず PowerShell モジュールを作成する方法を知る必要があります。 モジュールの作成の詳細については、[PowerShell スクリプト モジュールを記述する方法](/powershell/developer/module/how-to-write-a-powershell-script-module)に関するページを参照してください。
 
 ![Azure portal でカスタム接続を使用する](../media/modules/connection-create-new.png)
 
-Azure Automation の接続の種類を追加するには、接続の種類のプロパティを指定する `<ModuleName>-Automation.json` という名前のファイルがモジュールに含まれている必要があります。 これは json ファイルで、圧縮された .zip ファイルのモジュール フォルダー内に配置されています。 このファイルには、モジュールが示すシステムまたはサービスに接続するために必要な接続のフィールドが含まれています。 この構成により、最終的に Azure Automation の接続の種類が作成されます。 このファイルを使用すると、モジュールの接続の種類について、フィールド名、種類、フィールドを暗号化するか省略可能にするかを指定できます。 次の例は、ユーザー名とパスワードのプロパティを定義する JSON ファイル形式のテンプレートです。
+Azure Automation の接続の種類を追加するには、接続の種類のプロパティを指定する `<ModuleName>-Automation.json` という名前のファイルがモジュールに含まれている必要があります。 この json ファイルは、圧縮された .zip ファイルのモジュール フォルダー内に配置されています。 このファイルには、モジュールが示すシステムまたはサービスに接続するために必要な接続のフィールドが含まれています。 この構成により、最終的に Azure Automation の接続の種類が作成されます。 このファイルを使用すると、モジュールの接続の種類について、フィールド名、種類、フィールドを暗号化するか省略可能にするかを指定できます。 次の例は、ユーザー名とパスワードのプロパティを定義する JSON ファイル形式のテンプレートです。
 
 ```json
 {
@@ -114,6 +114,17 @@ Azure Automation の接続の種類を追加するには、接続の種類のプ
 PowerShell モジュールを Azure Automation にインポートして、そのコマンドレットを Runbook 内で使用できるようにすることや、その DSC リソースを DSC 構成内で使用できるようにすることができます。 Azure Automation は、バックグラウンドでこれらのモジュールを格納し、Runbook ジョブと DSC コンパイル ジョブの実行時に Azure Automation のサンドボックスに読み込みます。そこで、Runbook が実行され、DSC 構成がコンパイルされます。 また、モジュール内のすべての DSC リソースは、Automation DSC プル サーバーに自動的に配置されます。 DSC 構成を適用するとき、これらをマシンでプルすることができます。
 
 Azure Automation で使用するための PowerShell モジュールを作成するときには、次の点を考慮することをお勧めします。
+
+* .zip パッケージ内にバージョン フォルダーを含めないでください。  この問題は Runbook にはあまり関係ありませんが、State Configuration サービスでは問題が発生します。  Azure Automation は、モジュールが DSC によって管理されているノードに配布されるとバージョン フォルダーを自動的に作成し、バージョン フォルダーが存在する場合は、最終的に 2 つのインスタンスが生成されます。  DSC モジュールのフォルダー構造の例:
+
+```powershell
+myModule
+  - DSCResources
+    - myResourceFolder
+      myResourceModule.psm1
+      myResourceSchema.mof
+  myModuleManifest.psd1
+```
 
 * モジュール内のすべてのコマンドレットの概要、説明、ヘルプ URI を含める。 PowerShell では、コマンドレットのヘルプ情報を定義できます。定義すると、ユーザーは **Get-Help** コマンドレットを使用して、そのコマンドレットの使用方法に関するヘルプ情報を確認できます。 次の例では、.psm1 モジュール ファイルで概要およびヘルプ URI を定義する方法を示します。
 
@@ -159,7 +170,7 @@ Azure Automation で使用するための PowerShell モジュールを作成す
 
   ![統合モジュールのヘルプ](../media/modules/module-activity-description.png)
 
-* モジュールが外部サービスに接続する場合、[接続の種類](#add-a-connection-type-to-your-module)を含む必要があります。 モジュール内の各コマンドレットが接続オブジェクト (その接続の種類のインスタンス) をパラメーターとして受け取ることができるようにする。 これにより、ユーザーは、コマンドレットを呼び出すたびに、接続資産のパラメーターをコマンドレットの対応するパラメーターにマッピングできます。 上記の Runbook 例に基づいて、これは ContosoConnection と呼ばれる Contoso 接続資産例を使用して、Contoso リソースにアクセスし、外部サービスからのデータを返します。
+* モジュールが外部サービスに接続する場合、[接続の種類](#add-a-connection-type-to-your-module)を含む必要があります。 モジュール内の各コマンドレットが接続オブジェクト (その接続の種類のインスタンス) をパラメーターとして受け取ることができるようにする。 ユーザーは、コマンドレットを呼び出すたびに、接続資産のパラメーターをそのコマンドレットの対応するパラメーターにマップします。 上記の Runbook 例に基づいて、これは ContosoConnection と呼ばれる Contoso 接続資産例を使用して、Contoso リソースにアクセスし、外部サービスからのデータを返します。
 
   次の例では、フィールドが `PSCredential` オブジェクトの UserName および Password のプロパティにマップされ、続いてコマンドレットに渡されます。
 
@@ -184,7 +195,7 @@ Azure Automation で使用するための PowerShell モジュールを作成す
 
 * モジュール内のすべてのコマンドレットの出力の種類を定義します。 コマンドレットの出力の種類を定義すると、設計時の IntelliSense で、作成時に使用するコマンドレットの出力のプロパティを確認できます。 これは、Automation Runbook のグラフィカル作成時に特に役に立ちます。グラフィカル作成時にユーザーがモジュールを簡単に利用できるようにするには、設計時の情報が重要です。
 
-  これは、`[OutputType([<MyOutputType>])]` を追加することよって実現できます。ここで MyOutputType は有効な型です。 OutputType の詳細については、[関数 OutputTypeAttribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute)に関するページを参照してください。 次のコードは、`OutputType` をコマンドレットに追加する例です。
+`[OutputType([<MyOutputType>])]` を追加します。ここで、MyOutputType は有効な型です。 OutputType の詳細については、[関数 OutputTypeAttribute](/powershell/module/microsoft.powershell.core/about/about_functions_outputtypeattribute)に関するページを参照してください。 次のコードは、`OutputType` をコマンドレットに追加する例です。
 
   ```powershell
   function Get-ContosoUser {

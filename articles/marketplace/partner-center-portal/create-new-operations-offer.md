@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 84738d9de880e09177ebb5c060fbd7bbd4613006
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 08/26/2019
+ms.openlocfilehash: e711e94a4ac8098137456c2ae5bf018107687354
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69037259"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70033212"
 ---
 # <a name="create-a-new-dynamics-365-for-operations-offer"></a>新しい Dynamics 365 for Operations オファーを作成する
 
@@ -82,27 +82,11 @@ Dynamics 365 for Operations オファーの作成を開始するには、確実�
 
 ## <a name="connect-lead-management"></a>リード管理の接続
 
-顧客関係管理 (CRM) システムを接続して、顧客と直接接続します。 これを行うと、顧客が関心を持ったり、製品をデプロイしたりするときに、顧客の連絡先情報が受け取れます。
+[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
 
-CRM システムを接続するには、 **[接続]** を選択します。
+詳しくは、[リード管理の概要](./commercial-marketplace-get-customer-leads.md)に関する記事をご覧ください。
 
-### <a name="choose-a-lead-destination"></a>リードの宛先を選択する
-
-**[接続]** を選択すると、ドロップダウン メニューが表示されます。ここで、CRM システムを選択し、接続の詳細を指定できます。
-
-パートナー センターでは、リード管理について以下の CRM システムをサポートしています。 セットアップ手順を確認するには、リンクを選択してください。
-
-- [Azure テーブル](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) - ストレージ アカウントの接続文字列を入力します。 
-- [Dynamics 365 for Customer Engagement (旧称 Dynamics CRM Online)](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) – Dynamics 365 インスタンスの URL と認証モード (Office 365 または Azure Active Directory) を入力します。
-- [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) - HTTPS エンドポイントの URL を入力します。 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) - サーバー ID、Munchkin アカウント ID、フォーム ID を入力します。
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) - 組織 ID を入力します。
-
-#### <a name="additional-lead-management-resources"></a>リード管理に関するその他のリソース
-
-- [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
-- [1 ページにまとめたリード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
+次のセクションに進む前に、必ず**保存**してください。
 
 ## <a name="properties"></a>properties
 
@@ -143,7 +127,7 @@ CRM システムを接続するには、 **[接続]** を選択します。
 > [!NOTE]
 > オファー登録情報のコンテンツ (説明、ドキュメント、スクリーンショット、使用条件など) は、オファーの説明が "このアプリケーションは、[英語以外の言語] でのみ利用可能です。" という文言で始まっていれば英語である必要はありません。 また、オファー登録情報のコンテンツで使用されている言語以外の言語でコンテンツを提供するための*役に立つリンクの URL* を提供することもできます。
 
-### <a name="name"></a>EnableAdfsAuthentication
+### <a name="name"></a>名前
 
 ここで入力する名前は、オファー登録情報のタイトルとして顧客に表示されます。 このフィールドには、オファーの作成時に **[オファーの別名]** に入力したテキストが事前に設定されていますが、この値は変更できます。 この名前は商標の場合もあります (商標または著作権マークを含めることもできます)。 名前は 50 文字以下にする必要があります。絵文字を含めることはできません。
 
@@ -298,7 +282,7 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 - **インスタンス URL** (必須): 顧客が体験版を開始する URL。 通常、インストールされたサンプル データを使用してアプリを実行する Dynamics 365 インスタンスの URL です (例: https://testdrive.crm.dynamics.com) 。
 
-- **Instance Web API URL (インスタンスの Web API URL)** (必須): 自分の Microsoft 365 アカウントにログインして、 **[設定]** 、 **[カスタマイズ]** 、 **[開発者リソース]** 、 **[インスタンスの Web API] ([サービスのルート URL])** に移動することによって、自分の Dynamics 365 インスタンスの Web API URL を取得し、そこにある URL (例: https://testdrive.crm.dynamics.com/api/data/v9.0) をコピーします。
+- **Instance Web API URL (インスタンスの Web API URL)** (必須): 自分の Microsoft 365 アカウントにログインして、 **[設定]** \&gt;、 **[カスタマイズ]** 、 **[開発者リソース]** \&gt;、 **[インスタンスの Web API] ([サービスのルート URL])** に移動することによって、自分の Dynamics 365 インスタンスの Web API URL を取得し、そこにある URL (例: https://testdrive.crm.dynamics.com/api/data/v9.0) をコピーします。
 
 - **ロール名** (必須): Dynamics 365 のカスタム体験版で自分が定義したセキュリティ ロールの名前を入力します。 これは、体験版の使用中にユーザーに割り当てられます (例: test-drive-role)。
 
@@ -355,11 +339,11 @@ Microsoft は、この種類の体験版を使用してサービスのプロビ�
 
 ## <a name="supplemental-content"></a>補足コンテンツ
 
-このページでは、オファーに関する追加の必須情報を入力できます。
+このページでは、オファーの検証に役立つ、オファーに関する追加情報を提供できます。 この情報は顧客に表示されることも、マーケットプレースに公開されることもありません。
 
-### <a name="validation-assets"></a>検証資産
+### <a name="validation-assets"></a>検証アセット
 
-このセクションでは、カスタマイズ分析レポート (CAR) をアップロードする必要があります。 このレポートは、事前に定義された一連のベスト プラクティス ルールに基づいて、カスタマイズおよび拡張モデルを分析することによって生成されます。
+このセクションでは、[カスタマイズ分析レポート (CAR)](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/dev-tools/customization-analysis-report) をアップロードする必要があります。 このレポートは、事前に定義された一連のベスト プラクティス ルールに基づいて、カスタマイズおよび拡張モデルを分析することによって生成されます。
 
 このファイルは .xls または .xlsx 形式である必要があります。 複数のレポートがある場合は、すべてのレポートを含む .zip ファイルをアップロードできます。
 

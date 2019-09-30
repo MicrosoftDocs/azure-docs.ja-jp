@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martinco
-ms.openlocfilehash: 80c1ffd27b0668f19fd87e7eda62e578c861ba64
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fb17d1b95d74a67f220651cf198f367bdd31f19f
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934616"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129312"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -130,7 +130,7 @@ Azure Active Directory には、検出と対応に時間差が生じないよう
 
 ### <a name="implement-user-risk-security-policy-using-azure-ad-identity-protection"></a>Azure AD Identity Protection を使用してユーザーのリスク セキュリティ ポリシーを実装する
 
-ユーザー リスクは、ユーザーの ID がセキュリティ侵害された確率を示すもので、ユーザーの ID に関連付けられている[ユーザー リスク イベント](../../active-directory/identity-protection/overview.md)に基づいて計算されます。 ユーザー リスク ポリシーは、特定のユーザーまたはグループに関してリスク レベルを評価する条件付きアクセスポリシーです。 低、中、高のリスクレベルに基づいて、アクセスをブロックしたり、多要素認証を使用して安全なパスワードへの変更を要求したりするよう、ポリシーを構成できます。 Microsoft は、リスクの高いユーザーについて、安全なパスワードへの変更を要求することをお勧めします。
+ユーザー リスクは、ユーザーの ID がセキュリティ侵害された確率を示すもので、ユーザーの ID に関連付けられている[ユーザー リスク検出](../../active-directory/identity-protection/overview.md)に基づいて計算されます。 ユーザー リスク ポリシーは、特定のユーザーまたはグループに関してリスク レベルを評価する条件付きアクセスポリシーです。 低、中、高のリスクレベルに基づいて、アクセスをブロックしたり、多要素認証を使用して安全なパスワードへの変更を要求したりするよう、ポリシーを構成できます。 Microsoft は、リスクの高いユーザーについて、安全なパスワードへの変更を要求することをお勧めします。
 
 ![リスクのフラグ付きユーザー](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
@@ -156,7 +156,7 @@ Microsoft Azure のサービスや機能が提供する構成可能なセキュ�
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>Azure AD Identity Protection イベントを監視する
 
-[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) は、通知、監視、およびレポートのツールであり、組織の ID に影響する潜在的な脆弱性を検出するために使用できます。 感染しているデバイス、匿名の IP アドレス、疑わしいアクティビティに関連した IP アドレス、および不明な場所からのサインイン、漏洩した資格情報、あり得ない移動など、リスク イベントを検出します。 通知アラートを有効にすると、危険な状態のユーザーのメールや週間ダイジェスト メールが届きます。
+[Azure AD Identity Protection](../../active-directory/identity-protection/overview.md) は、通知、監視、およびレポートのツールであり、組織の ID に影響する潜在的な脆弱性を検出するために使用できます。 感染しているデバイス、匿名の IP アドレス、疑わしいアクティビティに関連した IP アドレス、および不明な場所からのサインイン、漏洩した資格情報、あり得ない移動など、リスク検出を検出します。 通知アラートを有効にすると、危険な状態のユーザーのメールや週間ダイジェスト メールが届きます。
 
 Azure AD Identity Protection で提供される 2 つの重要なレポートを、毎日監視する必要があります。
 1. リスクの高いサインイン レポートでは、調査する必要があるユーザー サインイン アクティビティが明らかになります。正当な所有者がサインインを実行していない可能性があります。

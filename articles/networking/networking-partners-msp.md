@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: b869841818e49ced0c2ef1f3d06b44871da504ac
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 8d71863406eb6e8b032a78f65ab5be97cca91bd7
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542584"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212893"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ネットワーク MSP パートナーについて
 
@@ -30,7 +30,7 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 
 [ANS Group UK](https://www.ans.co.uk/)
 
-[Aryaka Networks](https://www.aryaka.com/)
+[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)
 
 [BT](https://www.globalservices.bt.com/en/aboutus/news-press/bt-named-one-of-the-first-global-managed-service-providers-for-a-new-microsoft-azure-networking-virtual-wan-services/)
 
@@ -38,19 +38,23 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 
 [Equinix](https://www.equinix.com/)
 
-[InterCloud](https://www.intercloud.com/)
+[InterCloud](https://www.intercloud.com/partners/cloud-service-providers/get-azure-expressroute)
 
-[IIJ](https://www.iij.ad.jp/en/)
+[IIJ](https://www.iij.ad.jp/biz/cloudex/)
+
+[Interxion](https://www.interxion.com/products/interconnection/cloud-connect/)
 
 [ixreach](https://www.ixreach.com/)
 
-[Megaport](https://www.megaport.com/)
+[Megaport](https://www.megaport.com/services/microsoft-expressroute/)
 
 [Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)
 
-[Tata Communications](https://www.tatacommunications.com/)
+[Orixcom]( https://www.orixcom.com/cloud-solutions/)
 
-[Vandis](https://www.vandis.com/)
+[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)
+
+[Vandis](https://www.vandis.com/services/azure-migration/)
 
 ## <a name="expressroute"></a>ExpressRoute パートナー
 

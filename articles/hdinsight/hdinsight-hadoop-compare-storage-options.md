@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: b0d963e212e66bf96ec42ec2a5c0fd5005f7a889
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d036e56a4ccf826ccd19fb7424b7b76568839b23
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165891"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104534"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -28,13 +28,13 @@ HDInsight クラスターを作成する際、次のいくつかの異なる Azu
 
 | ストレージ サービス | アカウントの種類 | 名前空間の種類 | サポートされているサービス | サポートされているパフォーマンス レベル | サポートされているアクセス層 | HDInsight のバージョン | クラスターの種類 |
 |---|---|---|---|---|---|---|---|
-|Azure Data Lake Storage Gen2| 汎用 v2 | 階層構造 (ファイルシステム) | Blob | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
-|Azure Storage| 汎用 v2 | Object | Blob | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
-|Azure Storage| 汎用 v1 | Object | Blob | Standard | 該当なし | All | All |
+|Azure Data Lake Storage Gen2| 汎用 v2 | 階層構造 (ファイルシステム) | BLOB | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
+|Azure Storage| 汎用 v2 | Object | BLOB | Standard | ホット、クール、アーカイブ | 3.6 以降 | All |
+|Azure Storage| 汎用 v1 | Object | BLOB | Standard | 該当なし | All | All |
 |Azure Storage| Blob Storage** | Object | ブロック BLOB | Standard | ホット、クール、アーカイブ | All | All |
 |Azure Data Lake Storage Gen1| 該当なし | 階層構造 (ファイルシステム) | 該当なし | 該当なし | 該当なし | 3.6 のみ | HBase を除くすべて |
 
-\* * HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみが型 BlobStorage になることができます。
+** HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみに BlobStorage 型を使用できます。ページ BLOB は、サポートされるストレージ オプションではありません。
 
 ストレージ アカウントの種類について詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 
@@ -53,7 +53,7 @@ Azure Storage アクセス層の詳細については、「[Azure Blob Storage:P
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen1 | はい |
 | 3.6 | Data Lake Storage Gen1 | General Purpose V1、General Purpose V2、 BlobStorage (ブロック Blob) | はい |
 | 3.6 | Data Lake Storage Gen1 | Data Lake Storage Gen2 | いいえ |
-| 4.0 | Data Lake Storage Gen1 | 任意 | いいえ |
+| 4.0 | Data Lake Storage Gen1 | Any | いいえ |
 
 *=すべてがクラスター アクセスに同じマネージド ID を使用するように構成されている限り、これは 1 つ以上の Data Lake Storage Gen2 アカウントの可能性があります。
 
@@ -129,7 +129,7 @@ Microsoft では、既定のクラスター ストレージとビジネス デ�
 
 次の図は、Azure Storage のHDInsight アーキテクチャを示しています。
 
-![Hadoop クラスターが HDFS API を使用して、BLOB ストレージの構造化データおよび非構造化データへのアクセスと保存を実行する方法を示す図](./media/hdinsight-hadoop-compare-storage-options/HDI.WASB.Arch.png "HDInsight ストレージのアーキテクチャ")
+![HDInsight のストレージ アーキテクチャ](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight のストレージ アーキテクチャ")
 
 HDInsight では、それぞれのコンピューティング ノードにローカルに割り当てられている分散ファイル システムにアクセスします。 このファイル システムには、完全修飾 URI を使用してアクセスできます。次に例を示します。
 
@@ -217,7 +217,7 @@ Data Lake Storage Gen1 では、Azure Active Directory を使用して認証を�
 
 | **機能** | **説明** |
 | --- | --- |
-| Authentication |Data Lake Storage Gen1 では、Azure Active Directory (Azure AD) と統合することで、Data Lake Storage Gen1 に格納されたすべてのデータの ID およびアクセスの管理を行います。 この統合により、Data Lake Storage Gen1 では、Azure AD のすべての機能の利点が得られます。 これらの機能には、多要素認証、条件付きアクセス、ロール ベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知などが含まれます。 Data Lake Storage Gen1 では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルがサポートされます。 「[Azure Data Lake Storage Gen1 での Azure Active Directory を使用した認証](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)」を参照してください。|
+| 認証 |Data Lake Storage Gen1 では、Azure Active Directory (Azure AD) と統合することで、Data Lake Storage Gen1 に格納されたすべてのデータの ID およびアクセスの管理を行います。 この統合により、Data Lake Storage Gen1 では、Azure AD のすべての機能の利点が得られます。 これらの機能には、多要素認証、条件付きアクセス、ロール ベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知などが含まれます。 Data Lake Storage Gen1 では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルがサポートされます。 「[Azure Data Lake Storage Gen1 での Azure Active Directory を使用した認証](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)」を参照してください。|
 | アクセス制御 |Data Lake Storage Gen1 では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御が提供されます。 ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Storage Gen1 のコンテキストにおける ACL のしくみの詳細については、「[Data Lake Storage Gen1 でのアクセス制御](../data-lake-store/data-lake-store-access-control.md)」を参照してください。 |
 | 暗号化 |Data Lake Storage Gen1 では、アカウントに格納されているデータを暗号化することもできます。 暗号化設定は、Data Lake Storage Gen1 アカウントの作成時に指定します。 データを暗号化するかどうかを選択できます。 詳細については、[Data Lake Storage Gen1 での暗号化](../data-lake-store/data-lake-store-encryption.md)に関するページを参照してください。 暗号化関連の構成を提供する方法については、「[Azure Portal で Azure Data Lake Storage Gen1 の使用を開始する](../data-lake-store/data-lake-store-get-started-portal.md)」を参照してください。 |
 

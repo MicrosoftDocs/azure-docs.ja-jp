@@ -1,5 +1,5 @@
 ---
-title: Azure IoT プラグ アンド プレイ プレビュー デバイスを IoT Central に接続する |Microsoft Docs
+title: IoT プラグ アンド プレイ プレビュー デバイスを Azure IoT Central に接続する |Microsoft Docs
 description: デバイス機能モデルを使用してデバイス コードを作成します。 次に、デバイス コードを実行して、デバイスがご利用の IoT Central アプリケーションに接続されることを確認し、自動生成されたビューを使用します。
 author: dominicbetts
 ms.author: dobett
@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 152e373f3a340a8abe3d8bc54d6515296d95efba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2f1ee5caf89af718d91abeac01730700c131ab41
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69881691"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048967"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成し、ご利用の IoT Central アプリケーションに接続する
 
 [!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
-_デバイス機能モデル_ (DCM) には、[IoT プラグ アンド プレイ](https://aka.ms/iot-pnp-docs) デバイスの機能が記述されています。 IoT Central では、デバイスが初めて接続されるときに、DCM の使用によりデバイスのテンプレートとデバイス用の視覚化を作成することができます。 このクイックスタートでは、次の方法について説明します。
+_デバイス機能モデル_ (DCM) には、[IoT プラグ アンド プレイ](../iot-pnp/overview-iot-plug-and-play.md) デバイスの機能が記述されています。 IoT Central では、デバイスが初めて接続されるときに、DCM の使用によりデバイスのテンプレートとデバイス用の視覚化を作成することができます。 このクイックスタートでは、次の方法について説明します。
 
 * Visual Studio Code を使用して、DCM を使用する IoT プラグ アンド プレイ デバイスを作成する。
 * デバイス コードを Windows で実行して、ご利用の IoT Central アプリケーションに接続することを確認する。
@@ -46,7 +46,7 @@ _デバイス機能モデル_ (DCM) には、[IoT プラグ アンド プレイ]
 
 VS Code で Azure IoT Device Workbench 拡張機能をインストールするには、次の手順に従ってください。
 
-1. VS Code で **[拡張機能]** タブを選択します。
+1. VS Code で、 **[拡張機能]** タブを選択します。
 1. **Azure IoT Device Workbench** を検索します。
 1. **[インストール]** を選択します。
 

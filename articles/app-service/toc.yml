@@ -77,8 +77,8 @@
           href: overview-authentication-authorization.md
         - name: OS とランタイムの修正プログラムの適用
           href: overview-patch-os-runtime.md
-        - name: セキュリティ属性
-          href: app-service-security-attributes.md
+        - name: 組み込みのセキュリティ制御
+          href: app-service-security-controls.md
         - name: セキュリティの概要
           href: overview-security.md
     - name: ネットワーク機能

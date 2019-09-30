@@ -9,19 +9,18 @@ editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-windows
-ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: cb9df71859947f868b858cbed0d6f75b91956a94
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: e65e9670facdfcbf9d1aac04fa25ee53996a9c4b
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67708122"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100308"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>チュートリアル:Azure Security Center を使用して Windows 仮想マシンを監視する
 
@@ -73,7 +72,7 @@ Security Center によるデータの収集と推奨事項の提示の対象と�
 
 ## <a name="view-vm-configuration-health"></a>VM の構成の正常性を表示する
 
-データ収集を有効にしてセキュリティ ポリシーを設定すると、Security Center によるアラートの生成と推奨事項の提示が開始されます。 VM をデプロイすると、データ収集エージェントがインストールされます。 その後、その新しい VM のデータが Security Center に収集されていきます。 VM の構成の正常性の詳細については、[Security Center での VM の保護](../../security-center/security-center-virtual-machine-recommendations.md)に関するページを参照してください。 
+データ収集を有効にしてセキュリティ ポリシーを設定すると、Security Center によるアラートの生成と推奨事項の提示が開始されます。 VM をデプロイすると、データ収集エージェントがインストールされます。 その後、その新しい VM のデータが Security Center に収集されていきます。 VM の構成の正常性の詳細については、[Security Center での VM の保護](../../security-center/security-center-virtual-machine-protection.md)に関するページを参照してください。 
 
 データが収集されると、各 VM のリソースの正常性および関連する Azure リソースの正常性が収集されます。 その情報が見やすいグラフの形で表示されます。 
 
@@ -105,7 +104,7 @@ Security Center による構成データの収集が開始されると、設定�
 
 ## <a name="view-detected-threats"></a>検出された脅威を表示する
 
-Security Center には、リソースの構成に関する推奨事項を提示するだけでなく、脅威の検出に関するアラートを表示する機能が備わっています。 このセキュリティ アラート機能は、各 VM、Azure のネットワーク ログ、および接続されているパートナー ソリューションから収集されるデータを集計し、Azure リソースに対するセキュリティ面の脅威を検出するものです。 Security Center の脅威検出機能の詳細については、「[Azure Security Center の検出機能](../../security-center/security-center-detection-capabilities.md)」を参照してください。
+Security Center には、リソースの構成に関する推奨事項を提示するだけでなく、脅威の検出に関するアラートを表示する機能が備わっています。 このセキュリティ アラート機能は、各 VM、Azure のネットワーク ログ、および接続されているパートナー ソリューションから収集されるデータを集計し、Azure リソースに対するセキュリティ面の脅威を検出するものです。 Security Center の脅威検出機能の詳細については、「[Security Center での脅威の検出方法](../../security-center/security-center-alerts-overview.md#detect-threats)」を参照してください。
 
 セキュリティ アラート機能を使用するには、Security Center の価格レベルを *Free* から *Standard* に変更する必要があります。 この価格レベルに引き上げるときは、**無料試用版**をご利用いただけます。 
 

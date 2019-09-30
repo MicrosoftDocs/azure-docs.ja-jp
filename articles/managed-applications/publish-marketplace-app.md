@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/17/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0e2e161c22ee87d11156c4818bd689c316799e87
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: 372c65f1ac9a08d066f26e637f3af86807b35f11
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305607"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182815"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace の Azure マネージド アプリケーション
 
@@ -177,5 +177,6 @@ Hero ロゴ アイコンに関するガイドラインに従ってください�
 
 ## <a name="next-steps"></a>次の手順
 
+* **[発行]** をクリックした後のことについては、「[Azure アプリケーション オファーを公開する](../marketplace/cloud-partner-portal/azure-applications/cpp-publish-offer.md)」を参照してください。
 * マネージド アプリケーションの概要については、[マネージド アプリケーションの概要](overview.md)に関するページをご覧ください。
 * サービス カタログ マネージド アプリケーションの発行については、「[サービス カタログ マネージド アプリケーションの作成と発行](publish-service-catalog-app.md)」を参照してください。

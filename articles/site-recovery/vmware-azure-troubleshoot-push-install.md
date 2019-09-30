@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 02/27/2019
-ms.openlocfilehash: 58c09c71aad2b6244f6e2f3d144c033665932f50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/11/2019
+ms.openlocfilehash: 4aa18379962c289f5094795988a247f4c7e35df2
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925576"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910650"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
 
@@ -240,6 +240,8 @@ VSS のインストールは、モビリティ エージェントのインスト
 このエラーは、Azure Site Recovery VSS プロバイダー サービスのデータベースが[ロックされている](https://msdn.microsoft.com/library/ms833798.aspx)場合に発生します。次のコマンド ラインを実行し、ソース マシンに VSS を手動でインストールしてみてください
 
 `C:\Program Files (x86)\Microsoft Azure Site Recovery\agent>"C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\InMageVSSProvider_Install.cmd"`
+
+エラーが発生した場合は、ウイルス対策プログラムやその他のサービスが "開始中" 状態でスタックしていないかどうかを確認します。 データベース サービスのロックが保持されている可能性があります。 VSS プロバイダーのインストールでエラーが発生する原因になります。 "開始中" 状態のサービスが存在しないことを確認したうえで、上記の操作を再試行してください。
 
 ### <a name="vss-exit-code-806"></a>VSS 終了コード 806
 

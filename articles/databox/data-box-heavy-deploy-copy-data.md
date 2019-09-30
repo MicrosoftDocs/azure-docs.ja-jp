@@ -6,16 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 08/29/2019
 ms.author: alkohli
-ms.openlocfilehash: 1c45e06159e4c2850efa2d3ab3290647961fb7e1
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.localizationpriority: high
+ms.openlocfilehash: 475e628901a96334976dbdbbaa8b362197ec3bc3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592428"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914051"
 ---
+::: zone target = "docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-heavy-via-smb"></a>チュートリアル:SMB 経由で Azure Data Box Heavy にデータをコピーする
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+# <a name="copy-data-to-azure-data-box-heavy"></a>Azure Data Box Heavy にデータをコピーする
+
+::: zone-end
+
+::: zone target = "docs"
 
 このチュートリアルでは、ローカル Web UI を使用してホスト コンピューターに接続し、そこからデータをコピーする方法について説明します。
 
@@ -25,6 +38,17 @@ ms.locfileid: "67592428"
 > * Data Box Heavy に接続する
 > * データを Data Box Heavy にコピーする
 
+::: zone-end
+
+::: zone target = "chromeless"
+
+ソース サーバーから、SMB、NFS、REST、データ コピー サービスを介して Data Box に、またはマネージド ディスクに、データをコピーできます。
+
+いずれの場合も、共有およびフォルダー名、およびデータ サイズが、[Azure Storage と Data Box Heavy サービスの制限](data-box-heavy-limits.md)に関するページに記載されているガイドラインに従っていることを確認します。
+
+::: zone-end
+
+::: zone target = "docs"
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,6 +59,7 @@ ms.locfileid: "67592428"
 3. Data Box Heavy にコピーするデータが格納されているホスト コンピューターがあること。 このホスト コンピューターは次の条件を満たしている必要があります。
     - [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
     - 高速ネットワークに接続していること。 最速のコピー速度を得るため、2 つの 40 GbE 接続 (ノードごとに 1 つずつ) を並列で利用できます。 40 GbE 接続を使用できない場合は、少なくとも 2 つの 10 GbE 接続 (ノードごとに 1 つずつ) を使用することをお勧めします。
+   
 
 ## <a name="connect-to-data-box-heavy-shares"></a>Data Box Heavy 共有に接続する
 
@@ -256,4 +281,60 @@ SMB 共有に接続した後、データのコピーを開始します。
 
 > [!div class="nextstepaction"]
 > [Azure Data Box Heavy を Microsoft に発送する](./data-box-heavy-deploy-picked-up.md)
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+### <a name="copy-data-via-smb"></a>SMB 経由でデータをコピーする
+
+1. Windows ホストを使用している場合は、次のコマンドを使用して、SMB 共有に接続します。
+
+    `\\<IP address of your device>\ShareName`
+
+2. 共有アクセス資格情報を取得するには、Data Box のローカル Web UI にある **[接続とコピー]** ページに移動します。
+
+3. Robocopy などの SMB 互換ファイル コピー ツールを使用して、データを共有にコピーします。
+
+具体的な手順については、「[チュートリアル: Azure Data Box に SMB 経由でデータをコピーする](data-box-heavy-deploy-copy-data.md)」を参照してください。
+
+### <a name="copy-data-via-nfs"></a>NFS 経由でデータをコピーする
+
+1. NFS ホストを使用している場合は、次のコマンドを使用して NFS 共有をマウントします。
+
+    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
+
+2. 共有アクセス資格情報を取得するには、Data Box Heavy のローカル Web UI にある **[接続とコピー] ページ**に移動します。
+3. `cp` または `rsync` コマンドを使用してデータをコピーします。 
+4. これらの手順を繰り返して、Data Box Heavy の 2 番目のノードに接続し、データをコピーします。
+
+具体的な手順については、「[チュートリアル: Azure Data Box に NFS 経由でデータをコピーする](data-box-heavy-deploy-copy-data-via-nfs.md)」を参照してください。
+
+### <a name="copy-data-via-rest"></a>REST 経由でデータをコピーする
+
+1. REST API シリーズ経由で Data Box BLOB ストレージを使用してデータをコピーするには、*http* または *https* 経由で接続できます。
+2. データを Data Box BLOB ストレージにコピーするには、AzCopy を使用できます。
+3. これらの手順を繰り返して、Data Box Heavy の 2 番目のノードに接続し、データをコピーします。
+
+具体的な手順については、「[チュートリアル: REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする](data-box-heavy-deploy-copy-data-via-rest.md)」を参照してください。
+
+### <a name="copy-data-via-data-copy-service"></a>データ コピー サービス経由でデータをコピーする
+
+1. データ コピー サービスを使用してデータをコピーするには、ジョブを作成する必要があります。 お客様の Data Box Heavy のローカル Web UI で、 **[管理]、[データのコピー] > [作成]** の順に移動します。
+2. パラメーターを入力し、ジョブを作成します。
+3. これらの手順を繰り返して、Data Box Heavy の 2 番目のノードに接続し、データをコピーします。
+
+具体的な手順については、「[チュートリアル: データ コピー サービスを使用してデータを Azure Data Box Heavy にコピーする](data-box-heavy-deploy-copy-data-via-copy-service.md)」を参照してください。
+
+### <a name="copy-data-to-managed-disks"></a>マネージド ディスクにデータをコピーする
+
+1. Data Box Heavy デバイスを注文する場合、保存先としてマネージド ディスクを選択しておく必要があります。
+2. SMB または NFS 共有経由で Data Box Heavy に接続できます。
+3. その後、SMB または NFS ツール経由でデータをコピーできます。
+4. これらの手順を繰り返して、Data Box Heavy の 2 番目のノードに接続し、データをコピーします。
+
+具体的な手順については、「[チュートリアル: Data Box Heavy を使用して Azure のマネージド ディスクとしてデータをインポートする](data-box-heavy-deploy-copy-data-from-vhds.md)」を参照してください。
+
+::: zone-end
+
 

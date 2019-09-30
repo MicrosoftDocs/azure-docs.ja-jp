@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 1cc2849ffe55fff737993140a1d0f18182820eff
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e7c63d3b52a57a952c311937036f0f7da15ebefc
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68498578"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299601"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Azure Kubernetes サービス (AKS) で Azure CNI ネットワークを構成する
 
@@ -55,7 +55,7 @@ AKS クラスターの IP アドレス計画は、仮想ネットワーク、ノ
 | Subnet | クラスターにプロビジョニングされている可能性のあるノード、ポッド、すべての Kubernetes、および Azure のリソースを収容するのに十分な大きさである必要があります。 たとえば、内部に Azure Load Balancer をデプロイする場合は、そのフロントエンド IP は、パブリック IP ではなく、クラスター サブネットから割り当てられています。 アップグレード操作や今後のスケーリングのニーズも、サブネットのサイズで考慮される必要があります。<p />アップグレード操作用の追加のノードを含む*最小の*サブネットのサイズの計算には、`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)` を使用します。<p/>たとえば、50 のノードから構成されるクラスターは、`(51) + (51  * 30 (default)) = 1,581` (/21 以上) です。<p/>たとえば、追加でノードを 10 増やす用意がされている 50 のノードのクラスターは、`(61) + (61 * 30 (default)) = 1,891` (/21 以上) です。<p>クラスターを作成するときにノードごとの最大ポッド数を指定しないと、ノードごとの最大ポッド数は *30* に設定されます。 必要な最小 IP アドレス数はその値に基づきます。 別の最大値に基づいて最小 IP アドレス要件を計算する場合、[how to configure the maximum number of pods per node (ノードごとの最大ポッド数の構成方法)](#configure-maximum---new-clusters) を参照して、クラスターをデプロイするときにこの値を設定します。 |
 | Kubernetes サービスのアドレス範囲 | この範囲は、この仮想ネットワーク上のネットワーク要素、またはこの仮想ネットワークに接続されているネットワーク要素では使用しないでください。 サービスのアドレスの CIDR は、/12 より小さくする必要があります。 |
 | Kubernetes DNS サービスの IP アドレス | クラスター サービス検索 (kube-dns) で使用される、Kubernetes サービスのアドレス範囲内の IP アドレス。 アドレス範囲内の最初の IP アドレス (.1 など) は使用しないでください。 サブネット範囲の最初のアドレスは、*kubernetes.default.svc.cluster.local* アドレスに使用されます。 |
-| Docker ブリッジ アドレス | ノード上の Docker ブリッジの IP アドレスとして使用される IP アドレス(CIDR 表記)。 この CIDR は、ノード上のコンテナーの数に関連付けられます。 既定値は 172.17.0.1/16 です。 |
+| Docker ブリッジ アドレス | Docker ブリッジのネットワーク アドレスは、すべての Docker インストールに存在する既定の *docker0* ブリッジのネットワーク アドレスを表します。 *docker0* ブリッジは AKS クラスターまたはポッド自体では使用されませんが、AKS クラスター内の *docker ビルド*などのシナリオを引き続きサポートするには、このアドレスを設定する必要があります。 Docker ブリッジのネットワーク アドレスの CIDR を選択する必要があります。そうしないと、他の CIDR と競合する可能性のあるサブネットが Docker によって自動的に選択されます。 ネットワーク上の残りの CIDR と競合しないアドレス空間を選択する必要があります。これには、クラスターのサービス CIDR とポッド CIDR が含まれます。 既定値は 172.17.0.1/16 です。 |
 
 ## <a name="maximum-pods-per-node"></a>ノードごとの最大ポッド数
 
@@ -118,7 +118,7 @@ Azure CLI を使って AKS クラスターを作成するときも、Azure CNI �
 $ az network vnet subnet list \
     --resource-group myVnet \
     --vnet-name myVnet \
-    --query [].id --output tsv
+    --query "[0].id" --output tsv
 
 /subscriptions/<guid>/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
 ```

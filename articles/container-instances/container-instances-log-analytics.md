@@ -6,22 +6,25 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: overview
-ms.date: 07/09/2019
+ms.date: 09/02/2019
 ms.author: danlep
-ms.openlocfilehash: 4099bc0b15f02faade02f47aeb00fb7c4b4a3332
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 1c4846414036e86d460d9abe0bd93e785e710395
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325881"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258466"
 ---
 # <a name="container-instance-logging-with-azure-monitor-logs"></a>Azure Monitor ログによるコンテナー インスタンスのログ記録
 
-Log Analytics ワークスペースは、Azure リソースだけでなくオンプレミスのリソースや他のクラウドのリソースからのログ データも格納して照会できる一元的な場所を提供します。 Azure Container Instances には、Azure Monitor ログにデータを送信するための組み込みサポートが含まれています。
+Log Analytics ワークスペースは、Azure リソースだけでなくオンプレミスのリソースや他のクラウドのリソースからのログ データも格納して照会できる一元的な場所を提供します。 Azure Container Instances には、ログとイベント データを Azure Monitor ログに送信するための組み込みサポートが含まれています。
 
-コンテナー インスタンス データを Azure Monitor ログに送信するには、コンテナー グループを作成するときに Log Analytics ワークスペース ID とワークスペース キーを指定する必要があります。 以下のセクションでは、ログ記録が有効なコンテナー グループの作成と、ログに対するクエリの実行について説明します。
+コンテナー グループのログとイベント データを Azure Monitor ログに送信するには、コンテナー グループを作成するときに Log Analytics ワークスペース ID とワークスペース キーを指定する必要があります。 以下のセクションでは、ログ記録が有効なコンテナー グループの作成と、ログに対するクエリの実行について説明します。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+> [!NOTE]
+> 現在は、Linux コンテナー インスタンスから Log Analytics にイベント データのみを送信できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -99,30 +102,43 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 コマンドを発行した直後に、Azure から展開の詳細を含む応答を受け取るはずです。
 
-## <a name="view-logs-in-azure-monitor-logs"></a>Azure Monitor ログのログを表示する
+## <a name="view-logs"></a>ログを表示する。
 
-コンテナー グループを展開した後、最初のログ エントリが Azure portal に表示されるまでに数分 (最大 10 分) かかることがあります。 コンテナー グループのログを表示するには、次の手順を実行します。
+コンテナー グループを展開した後、最初のログ エントリが Azure portal に表示されるまでに数分 (最大 10 分) かかることがあります。 `ContainerInstanceLog_CL` テーブル内のコンテナー グループのログを表示するには、次の手順を実行します。
 
 1. Azure portal で Log Analytics ワークスペースに移動します
 1. **[全般]** で **[ログ]** を選択します  
-1. クエリ `search *` を入力します
+1. クエリ `ContainerInstanceLog_CL | limit 50` を入力します
 1. **[実行]** を選択します
 
-`search *` クエリによっていくつかの結果が表示されます。 最初に結果が何も表示されない場合は、数分待ってから、 **[実行]** ボタンを選択してクエリをもう一度実行します。 既定では、ログ エントリは**テーブル**形式で表示されます。 その後、行を展開して個々のログ エントリの内容を表示できます。
+クエリによっていくつかの結果が表示されます。 最初に結果が何も表示されない場合は、数分待ってから、 **[実行]** ボタンを選択してクエリをもう一度実行します。 既定では、ログ エントリは**テーブル**形式で表示されます。 その後、行を展開して個々のログ エントリの内容を表示できます。
 
 ![Azure portal のログ検索の結果][log-search-01]
+
+## <a name="view-events"></a>イベントの表示
+
+コンテナー インスタンスのイベントは、Azure portal で確認することもできます。 イベントには、インスタンスが作成された時刻やインスタンスが開始された時刻が含まれています。 `ContainerEvent_CL` テーブル内のイベント データを表示するには、次の手順に従います。
+
+1. Azure portal で Log Analytics ワークスペースに移動します
+1. **[全般]** で **[ログ]** を選択します  
+1. クエリ `ContainerEvent_CL | limit 50` を入力します
+1. **[実行]** を選択します
+
+クエリによっていくつかの結果が表示されます。 最初に結果が何も表示されない場合は、数分待ってから、 **[実行]** ボタンを選択してクエリをもう一度実行します。 既定では、エントリが**テーブル**形式で表示されます。 その後、行を展開して個々のエントリの内容を表示できます。
+
+![Azure portal でのイベント検索の結果][log-search-02]
 
 ## <a name="query-container-logs"></a>コンテナー ログのクエリを実行する
 
 Azure Monitor ログには、何千行にもなる可能性があるログ出力から情報を抽出ための広範な[クエリ言語][query_lang]が含まれます。
 
-Azure Container Instances のログ エージェントは、Log Analytics ワークスペースの `ContainerInstanceLog_CL` テーブルにエントリを送信します。 クエリの基本構造では、ソース テーブル (`ContainerInstanceLog_CL`) の後に、一連の演算子をパイプ文字 (`|`) で区切って記述します。 複数の演算子を連結して結果を絞り込み、高度な機能を実行できます。
+クエリの基本構造では、ソース テーブル (この記事では `ContainerInstanceLog_CL` または `ContainerEvent_CL`) の後に、一連の演算子をパイプ文字 (`|`) で区切って記述します。 複数の演算子を連結して結果を絞り込み、高度な機能を実行できます。
 
-クエリ結果の例を見るには、次のクエリをクエリ テキスト ボックス ([レガシ言語コンバーターを表示します] の下) に貼り付けてから、 **[実行]** ボタンを選択してクエリを実行します。 このクエリは、"Message" フィールドに "warn" という単語が含まれるすべてのログ エントリを表示します。
+クエリ結果の例を見るには、クエリ テキスト ボックスに次のクエリを貼り付けてから、 **[実行]** ボタンを選択してクエリを実行します。 このクエリは、"Message" フィールドに "warn" という単語が含まれるすべてのログ エントリを表示します。
 
 ```query
 ContainerInstanceLog_CL
-| where Message contains("warn")
+| where Message contains "warn"
 ```
 
 さらに複雑なクエリもサポートされています。 たとえば、次のクエリでは、過去 1 時間以内に生成された "mycontainergroup001" コンテナー グループのログ エントリのみが表示されます。
@@ -151,6 +167,7 @@ Azure Monitor ログでのログのクエリとアラートの構成について
 
 <!-- IMAGES -->
 [log-search-01]: ./media/container-instances-log-analytics/portal-query-01.png
+[log-search-02]: ./media/container-instances-log-analytics/portal-query-02.png
 
 <!-- LINKS - External -->
 [fluentd]: https://hub.docker.com/r/fluent/fluentd/

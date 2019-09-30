@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/27/2019
 ms.author: anantr
 ms.subservice: alerts
-ms.openlocfilehash: 13cb3880662e1665b03dd63f009645acbe97fc75
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f431e5e5f4537d1a5f889457eb81b881e47ee178
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66734884"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091785"
 ---
 # <a name="how-to-integrate-the-common-alert-schema-with-logic-apps"></a>共通アラート スキーマを Logic Apps と統合する方法
 
@@ -21,7 +21,7 @@ ms.locfileid: "66734884"
 
 ## <a name="overview"></a>概要
 
-[共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)では、さまざまな種類のアラート全体に標準化された拡張可能な JSON スキーマが提供されます。 共通アラート スキーマは、Webhook、Runbook、およびロジック アプリを通じたプログラムを使用した活用に最適です。 この記事では、1 つのロジック アプリを作成して、すべてのアラートを処理する方法について説明します。 同じ原則を、他のプログラムによる方法にも適用できます。 この記事で説明されているロジック アプリでは、['必須' フィールド](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema-definitions#essentials-fields)用に明確に定義された変数が作成されます。また、[アラートの種類](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)に固有のロジックの操作方法についても説明します。
+[共通アラート スキーマ](https://aka.ms/commonAlertSchemaDocs)では、さまざまな種類のアラート全体に標準化された拡張可能な JSON スキーマが提供されます。 共通アラート スキーマは、Webhook、Runbook、およびロジック アプリを通じたプログラムを使用した活用に最適です。 この記事では、1 つのロジック アプリを作成して、すべてのアラートを処理する方法について説明します。 同じ原則を、他のプログラムによる方法にも適用できます。 この記事で説明されているロジック アプリでは、['必須' フィールド](alerts-common-schema-definitions.md#essentials)用に明確に定義された変数が作成されます。また、[アラートの種類](alerts-common-schema-definitions.md#alert-context)に固有のロジックの操作方法についても説明します。
 
 
 ## <a name="prerequisites"></a>前提条件 
@@ -125,7 +125,7 @@ ms.locfileid: "66734884"
 
     ![ロジック アプリの式](media/alerts-common-schema-integrations/logic-app-expressions.png "ロジック アプリの式")
     
-     ['monitoringService' フィールド](/azure/azure-monitor/platform/alerts-common-schema-definitions#alert-context-fields)では、条件付きロジックの作成の基になるアラートの種類を一意に識別できます。
+     ['monitoringService' フィールド](alerts-common-schema-definitions.md#alert-context)では、条件付きロジックの作成の基になるアラートの種類を一意に識別できます。
 
     
     たとえば、以下のスニペットでは、アラートが Application Insights ベースのログ アラートであるかどうかがチェックされ、そうである場合、検索結果が出力されます。 それ以外の場合、'NA' が出力されます。

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/04/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 946a9bd7595692dddd157d01945fd15bdf1ab965
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 332ec3930a7654fd5aecf1fc71ccb55c16df127f
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66493753"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105120"
 ---
 # <a name="assign-access-to-cost-management-data"></a>Cost Management のデータへのアクセス許可を割り当てる
 
@@ -41,8 +41,8 @@ Azure EA サブスクリプションのコスト データを表示するには�
 | 部署 | [https://ea.azure.com](https://ea.azure.com/) | 部門管理者 | **DA ビューの請求額**の有効化 | 部署にリンクされている、登録アカウントに属しているすべてのサブスクリプション |
 | 登録アカウント<sup>2</sup> | [https://ea.azure.com](https://ea.azure.com/) | アカウント所有者 | **AO ビューの請求額**の有効化 | 登録アカウントのすべてのサブスクリプション |
 | 管理グループ | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | 管理グループ下のすべてのサブスクリプション |
-| サブスクリプション | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | サブスクリプションに含まれているすべてのリソース/リソース グループ |
-| リソース グループ | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | リソース グループに含まれるすべてのリソース |
+| Subscription | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | サブスクリプションに含まれているすべてのリソース/リソース グループ |
+| Resource group | [https://portal.azure.com](https://portal.azure.com/) | Cost Management 閲覧者 (または閲覧者) | **AO ビューの請求額**の有効化 | リソース グループに含まれるすべてのリソース |
 
 <sup>1</sup> 請求先アカウントも、"マイクロソフト エンタープライズ契約" または "登録" と呼ばれます。
 
@@ -62,7 +62,7 @@ EA ポータルで **[DA ビューの請求額]** が無効になっている場
 
 - Azure アカウント
 - 管理グループ
-- リソース グループ
+- Resource group
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>EA ポータルでのコストへのアクセスを有効にする
 
@@ -129,7 +129,7 @@ EA ポータルで **[DA ビューの請求額]** が無効になっている場
 
 ## <a name="assign-management-group-scope-access"></a>管理グループのスコープへのアクセス許可を割り当てる
 
-管理グループのスコープにアクセスするには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 管理グループへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、管理グループに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、Azure EA アカウントの場合は、EA ポータルで **[AO ビューの請求額]** の設定も有効にしておく必要があります。
+管理グループのスコープを表示するアクセスには、少なくとも Cost Management 閲覧者 (または閲覧者) のアクセス許可が必要です。 管理グループへのアクセス許可は、Azure portal で構成できます。 他のユーザーのアクセスを許可するには、管理グループに対して少なくともユーザー アクセス管理者 (または所有者) のアクセス許可を持っている必要があります。 さらに、Azure EA アカウントの場合は、EA ポータルで **[AO ビューの請求額]** の設定も有効にしておく必要があります。
 
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 2. サイド バーで **[すべてのサービス]** を選択し、 _管理グループ_ を検索して、 **[管理グループ]** を選択します。

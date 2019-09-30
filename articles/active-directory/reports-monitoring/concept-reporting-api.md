@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c30669c8f5aeefc14db42a32d87f333419758327
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 28c64653ee0f9135e6da4c3768b89f9a0b25b2ef
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989874"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127352"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API の概要
 
@@ -49,7 +49,7 @@ Azure AD レポートに Microsoft Graph API を使用すると、一連の REST
 
 監査ログ用の Microsoft Graph API エンドポイントは `https://graph.microsoft.com/beta/auditLogs/directoryAudits` であり、サインイン用の Microsoft Graph API エンドポイントは `https://graph.microsoft.com/beta/auditLogs/signIns` です。 詳細については、[監査 API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit)と[サインイン API リファレンス](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signIn)のページを参照してください。
 
-また、[Identity Protection リスク イベント API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用すると、Microsoft Graph を使ってプログラムからセキュリティの検出にアクセスすることもできます。 詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](../identity-protection/graph-get-started.md)」を参照してください。 
+また、[Identity Protection リスク検出 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用すると、Microsoft Graph を使ってプログラムからセキュリティの検出にアクセスすることもできます。 詳細については、「[Azure Active Directory Identity Protection と Microsoft Graph の基本](../identity-protection/graph-get-started.md)」を参照してください。 
 
 > [!NOTE]
 >  **https:\/\/graph.windows.net\/\<tenant-name\>\/reports\/** エンドポイントは非推奨です。 上記で説明した新しい API エンドポイントを使用して、プログラムからアクティビティおよびセキュリティ レポートにアクセスします。

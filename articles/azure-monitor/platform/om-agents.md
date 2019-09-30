@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 2ea17a4363218351eb6e5ba0678435f3707e4ab9
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 4b426fbc1d1b3eeed2321f86bb51c9c5d705adb4
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663731"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035615"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Operations Manager を Azure Monitor に接続する
 
@@ -47,8 +47,8 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 * Azure Monitor では、System Center Operations Manager 2016 以降、Operations Manager 2012 SP1 UR6 以降、Operations Manager 2012 R2 UR2 以降のみがサポートされています。 プロキシ サポートは、Operations Manager 2012 SP1 UR7 と Operations Manager 2012 R2 UR3 に追加されています。
 * System Center Operations Manager 2016 と US Government クラウドの統合には、Update Rollup 2 以降に含まれる更新された Advisor 管理パックが必要です。 System Center Operations Manager 2012 R2 には、Update Rollup 3 以降に含まれる更新された Advisor 管理パックが必要です。
 * すべての Operations Manager エージェントが最小サポート要件を満たす必要があります。 エージェントに最小限の更新プログラムが適用されていることを確認してください。そうしないと、Windows エージェントの通信が失敗し、Operations Manager イベント ログにエラーが生成される可能性があります。
-* Log Analytics ワークスペース。 詳しくは、[Log Analytics ワークスペースの概要](../../azure-monitor/platform/manage-access.md?toc=/azure/azure-monitor/toc.json)に関する記事をご覧ください。   
-* [Log Analytics Contributor ロール](../../azure-monitor/platform/manage-access.md#manage-accounts-and-users)のメンバーであるアカウントを使用して Azure の認証を受けます。
+* Log Analytics ワークスペース。 詳しくは、[Log Analytics ワークスペースの概要](design-logs-deployment.md)に関する記事をご覧ください。 
+* [Log Analytics Contributor ロール](manage-access.md#manage-access-using-azure-permissions)のメンバーであるアカウントを使用して Azure の認証を受けます。
 
 * サポートされているリージョン - Log Analytics ワークスペースに接続するために、System Center Operations Manager では次の Azure リージョンのみがサポートされています。
     - 米国中西部
@@ -65,12 +65,12 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 >[!NOTE]
 >Azure API の最近の変更により、初めて管理グループと Azure Monitor 間の統合を構成する場合、正常に構成できなくなります。 管理グループを既にサービスに統合しているお客様は、既存の接続を再構成する必要がない限り、影響を受けることはありません。  
 >Operations Manager の次のバージョン用に新しい管理パックがリリースされました。
->  
->* System Center Operations Manager 1801 の場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=57173)から管理パックをダウンロードします  
->* System Center 2016 - Operations Manager の場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=57172)から管理パックをダウンロードします  
->* System Center Operations Manager 2012 R2 の場合は、[こちら](https://www.microsoft.com/download/details.aspx?id=57171)から管理パックをダウンロードします  
->
->この管理パックの更新プログラムは、System Center Operations Manager 1807 には適用されません。これはバージョン 1801 からの更新プログラムのリリースであり、この製品の完全なビルドではありません。   
+> - System Center Operations Manager 2019 の場合、Operations Manager ビルドで管理パックが提供されます。
+>- Operations Manager 1801 管理パックは Operations Manager 1807 にも適用できます。
+>- System Center Operations Manager 1801 の管理パックは[こちら](https://www.microsoft.com/download/details.aspx?id=57173)からダウンロードできます。
+>- System Center 2016 - Operations Manager の管理パックは[こちら](https://www.microsoft.com/download/details.aspx?id=57172)からダウンロードできます。  
+>- System Center Operations Manager 2012 R2 の管理パックは[こちら](https://www.microsoft.com/download/details.aspx?id=57171)からダウンロードできます。  
+
 
 ### <a name="network"></a>ネットワーク
 

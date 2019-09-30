@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: d366f363b7bd1d5306d598c9b38258eb78076b7c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 125f1bc14a376523a22984e9d8efa7848408bf7a
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472051"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035217"
 ---
 # <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Application Insights で .NET/.NET Core のトレース ログを調べる
 
-ASP.NET/ASP.NET Core アプリケーションの診断トレース ログを ILogger、NLog、log4Net、または System.Diagnostics.Trace から [Azure Application Insights][start] に送信します。 その後、探索して検索できます。 これらのログはアプリケーションからの他のログ ファイルと結合されます。したがって、各ユーザー要求に関連付けられているトレースを特定し、それらを他のイベントや例外レポートに関連付けることができます。
+ASP.NET または ASP.NET Core アプリケーションの診断トレース ログを ILogger、NLog、log4Net、または System.Diagnostics.Trace から [Azure Application Insights][start] に送信します。 その後、探索して検索できます。 これらのログはアプリケーションからの他のログ ファイルと結合されます。したがって、各ユーザー要求に関連付けられているトレースを特定し、それらを他のイベントや例外レポートに関連付けることができます。
 
 > [!NOTE]
 > ログ キャプチャ モジュールは必要ですか。 これは、サード パーティ製のロガーの場合に便利なアダプターです。 しかし、NLog、log4Net、または System.Diagnostics.Trace をまだ使用していない場合は、単に [**Application Insights TrackTrace()** ](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) を直接呼び出すことを検討してください。
@@ -31,15 +31,15 @@ ASP.NET/ASP.NET Core アプリケーションの診断トレース ログを ILo
 プロジェクトで選択したログ記録フレームワークをインストールします。これにより、app.config または web.config にエントリが追加されます。
 
 ```XML
-    <configuration>
-      <system.diagnostics>
-    <trace autoflush="true" indentsize="0">
+ <configuration>
+  <system.diagnostics>
+    <trace>
       <listeners>
         <add name="myAppInsightsListener" type="Microsoft.ApplicationInsights.TraceListener.ApplicationInsightsTraceListener, Microsoft.ApplicationInsights.TraceListener" />
       </listeners>
     </trace>
   </system.diagnostics>
-   </configuration>
+</configuration>
 ```
 
 ## <a name="configure-application-insights-to-collect-logs"></a>ログを収集するよう Application Insights を構成する
@@ -154,12 +154,12 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
                    SeverityLevel.Warning,
                    new Dictionary<string,string> { {"database", db.ID} });
 
-特定のデータベースに関連する特定の重大度レベルのすべてのメッセージを、[[検索]][diagnostic] で簡単にフィルター処理できます。
+これにより、特定のデータベースに関連する、特定の重大度レベルのメッセージすべてを、[[検索]][diagnostic] で簡単に抽出できます。
 
 ## <a name="explore-your-logs"></a>ログを調査する
 アプリをデバッグ モードで実行するか、ライブでデプロイします。
 
-[Application Insights ポータル][portal]内のアプリの概要ウィンドウで、[[検索]][diagnostic] を選択します。
+[Application Insights ポータル][portal]にあるアプリの概要ウィンドウで、[[検索]][diagnostic] を選択します。
 
 たとえば、次の操作ができます。
 
@@ -199,10 +199,10 @@ Application Insights をインストールしないでログ アダプターの 
 
 ## <a name="add"></a>次のステップ
 
-* [ASP.NET ][exceptions]のエラーと例外を診断する
+* [ASP.NET のエラーと例外を診断する][exceptions]
 * [検索についてさらに学習する][diagnostic]
 * [可用性と応答性のテストを設定する][availability]
-* [Troubleshooting][qna]
+* [トラブルシューティング][qna]
 
 <!--Link references-->
 

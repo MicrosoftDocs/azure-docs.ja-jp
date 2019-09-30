@@ -1,6 +1,6 @@
 ---
-title: Video Indexer のシーン、ショット、キーフレーム - Azure
-titlesuffix: Azure Media Services
+title: Video Indexer のシーン、ショット、キーフレーム
+titleSuffix: Azure Media Services
 description: このトピックでは、Video Indexer サービスのシーン、ショット、キーフレームの概要を説明します。
 services: media-services
 author: Juliako
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: cdabc1b6bfed519098f656710ef49a946e676cf2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815657"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860233"
 ---
 # <a name="scenes-shots-and-keyframes"></a>シーン、ショット、キーフレーム
 
@@ -39,6 +39,30 @@ Video Indexer では、連続するフレームの配色での突然の遷移と
 ショットを最適に表すフレームを選択します。 キーフレームは、審美的プロパティ (たとえば、コントラストや安定性) に基づいてビデオ全体から選択された代表的なフレームです。 Video Indexer では、キーフレームのサムネイルを抽出できる顧客に基づいて、ショットのメタデータの一部としてキーフレーム ID のリストが取得されます。 
 
 キーフレームは、出力 JSON のショットと関連付けられます。 
+
+## <a name="editorial-shot-type-detection"></a>編集ショット タイプの検出
+
+Insights JSON 内の個々のショットに関連付けられたショット タイプは、その編集タイプを表します。 これらのショット タイプ特性は、ビデオを編集してクリップやトレーラーを作成したり、芸術的な目的で特定のスタイルのキーフレームを検索したりするときに便利な場合があります。 各ショットの最初のキーフレームの分析に基づいて、さまざまなタイプが決定されます。 ショットは最初のキーフレームに表示される顔のスケール、サイズ、位置によって識別されます。 
+
+ショットのサイズとスケールは、カメラとフレームに表示される顔との距離に基づいて決定されます。 これらのプロパティを使用して、Video Indexer は次のショット タイプを検出します。
+
+* ワイド: 人物の全身が表示されます。
+* ミディアム: 人物の上半身と顔が表示されます。
+* クローズアップ: 人物の顔が主に表示されます。
+* エクストリーム クローズアップ: 人物の顔が画面いっぱいに表示されます。 
+
+ショット タイプは、フレームの中心を基準としたときの対象の人物の位置によって決定することもできます。 このプロパティは、Video Indexer で次のショット タイプを定義します。
+
+* 左フェース: 人物がフレームの左側に表示されます。
+* 中央フェース: 人物がフレームの中央領域に表示されます。
+* 右フェース: 人物がフレームの右側に表示されます。
+* 屋外: 人物が屋外の背景で表示されます。
+* 室内: 人物が屋内の背景で表示されます。
+
+追加の特性:
+
+* 2 ショット: 2 人の人物の中間サイズの顔を示します。
+* 複数の顔: 人物が 3 人以上。
 
 ## <a name="next-steps"></a>次の手順
 

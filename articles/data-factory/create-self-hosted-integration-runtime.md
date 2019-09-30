@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 2c90dcf1672a3d3505aaa19aec953ad97f5289bb
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: be59f5fd34c52397b54146a8aeaf51f4d594452f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446214"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383347"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)に関するページを参照してください。
@@ -80,6 +80,9 @@ ms.locfileid: "67446214"
 - ホスト コンピューターが休止状態の場合、自己ホスト型統合ランタイムはデータ要求に応答しません。 セルフホステッド統合ランタイムをインストールする前に、コンピューターに適切な電源プランを構成します。 コンピューターが休止状態に入るよう構成されている場合、自己ホスト型統合ランタイムのインストール時にメッセージが出力されます。
 - 自己ホスト型統合ランタイムを正常にインストールして構成するには、コンピューターの管理者である必要があります。
 - コピー アクティビティは特定の頻度で実行されます。 コンピューター上のリソース使用率 (CPU、メモリ) では、ピーク時とアイドル時で同じパターンに従います。 リソース使用率はまた、移動されるデータの量に大きく依存します。 複数のコピー ジョブが進行中のときには、ピーク時にリソース使用率が上昇します。
+- Parquet、ORC、または Avro 形式でデータを抽出すると、タスクが失敗することがあります。 ファイルの作成は、セルフホステッド統合マシン上で実行されます。これが想定どおりに機能するには、次の前提条件を満たす必要があります (「[Azure Data Factory での Parquet 形式](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime)」を参照してください)。
+    - [Visual C++ 2010 再領布](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe)パッケージ (x64)
+    - [Adopt OpenJDK](https://adoptopenjdk.net/) などの JRE プロバイダーが提供する Java Runtime (JRE) バージョン 8。`JAVA_HOME` 環境変数を必ず設定してください。
 
 ## <a name="installation-best-practices"></a>インストールのベスト プラクティス
 セルフホステッド統合ランタイムは、MSI セットアップ パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードしてインストールすることができます。 詳細な手順については、[オンプレミスとクラウドの間でのデータ移動](tutorial-hybrid-copy-powershell.md)に関する記事を参照してください。

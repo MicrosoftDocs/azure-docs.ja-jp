@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 01/17/2019
 author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
-manager: craigg
-ms.openlocfilehash: c090d9a864bfb5218836627a5579cd3089387af8
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+manager: jroth
+ms.topic: conceptual
+ms.date: 08/14/2019
+ms.openlocfilehash: e522cba88eaf9cb63ef7ef2f20e3b72691261073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013883"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002399"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)
 

@@ -3,18 +3,18 @@ title: クイック スタート - Node Web アプリを使用して Azure Key V
 description: このクイック スタートでは、Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行います。
 services: key-vault
 author: msmbaldwin
-manager: sumedhb
+manager: rkarlin
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/05/2018
-ms.author: barclayn
+ms.date: 09/03/2010
+ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 5ca6289b1af02a54d8c66d5a9835e24f61c58559
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934453"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003506"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>クイック スタート:Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う 
 
@@ -27,7 +27,7 @@ ms.locfileid: "68934453"
 * Web アプリの[マネージド ID](../active-directory/managed-service-identity/overview.md) を有効にする
 * Web アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
 
-先に進む前に、[Key Vault の基本的な概念](key-vault-whatis.md#basic-concepts)について理解しておいてください。
+先に進む前に、[Key Vault の基本的な概念](basic-concepts.md)について理解しておいてください。
 
 > [!NOTE]
 > Key Vault は、プログラムでシークレットを格納できる中央リポジトリです。 しかしこれを実行するには、アプリケーションとユーザーが最初に Key Vault に対する認証を行う (シークレットを提示する) 必要があります。 セキュリティのベスト プラクティスに従うために、最初のシークレットのローテーションが定期的に行われる必要があります。 
@@ -196,5 +196,9 @@ git push azure master
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Azure SDK for Node](https://docs.microsoft.com/javascript/api/overview/azure/key-vault)
+このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
+
+- [Azure Key Vault の概要](key-vault-overview.md)を確認する
+- 「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照する
+- [キー、シークレット、証明書](about-keys-secrets-and-certificates.md)について学習する
+- [Azure Key Vault のベスト プラクティス](key-vault-best-practices.md)を確認する

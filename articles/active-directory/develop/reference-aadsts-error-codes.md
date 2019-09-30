@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
-ms.reviewer: hirsin, justhu
+ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d6ed5c80d5c3241a9a328a2427ed8b920790635
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67482483"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193171"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>認証と承認エラー コード
 
@@ -31,7 +31,12 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 > [!NOTE]
 > この情報は暫定的なもので、変更されることがあります。 ご質問がありますか。またはお探しの情報が見つかりませんでしたか。 GitHub のイシューを作成するか、「[開発者向けのサポート オプションとヘルプ オプション](active-directory-develop-help-support.md)」で、ヘルプやサポートを受けるためのその他の方法を参照してください。
 >
-> このドキュメントは、開発者と管理者向けのガイダンスとして提供されています。クライアント自体では決して使用しないでください。 エラー コードは予告なく変更される可能性があります。これは、より詳しいエラー メッセージを提供してアプリケーションを構築中の開発者に役立てていただくためです。 テキストやエラー コード番号に依存するアプリケーションは、時間の経過に伴い正常に機能しなくなります。  
+> このドキュメントは、開発者と管理者向けのガイダンスとして提供されています。クライアント自体では決して使用しないでください。 エラー コードは予告なく変更される可能性があります。これは、より詳しいエラー メッセージを提供してアプリケーションを構築中の開発者に役立てていただくためです。 テキストやエラー コード番号に依存するアプリケーションは、時間の経過に伴い正常に機能しなくなります。
+
+## <a name="lookup-current-error-code-information"></a>現在のエラー コード情報の参照
+エラー コードとメッセージは変更される可能性があります。  最新の情報については、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) ページを参照して、AADSTS のエラーの説明、修正、およびいくつかの推奨される回避策を確認してください。  
+
+返されたエラー コードの数値部分を検索します。  たとえば、"AADSTS16000" というエラー コードを受け取った場合は、[https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) で "16000" を検索します。  次のように URL にエラー コード番号を追加して、特定のエラーに直接リンクすることもできます。[https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000)
 
 ## <a name="aadsts-error-codes"></a>AADSTS エラー コード
 
@@ -194,6 +199,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS90019 | MissingTenantRealm - Azure AD で要求からテナント識別子を特定できませんでした。 |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat - プリンシパル名の形式が無効、または予期される形式 `name[/host][@realm]` を満たしていません。 プリンシパル名は必須です。ホストと領域は省略可能で、null に設定できます。 |
 | AADSTS90023 | InvalidRequest - 認証サービス要求が有効ではありません。 |
+| AADSTS9002313 | InvalidRequest - 要求の形式が正しくないか、無効です。 - この問題の原因は、特定のエンドポイントへの要求に何か問題があったことです。 この問題を解決するには、発生したエラーの fiddler トレースを取得し、要求が実際に適切に書式設定されているかどうかを確認します。 |
 | AADSTS90024 | RequestBudgetExceededError - 一時的なエラーが発生しました。 やり直してください。 |
 | AADSTS90033 | MsodsServiceUnavailable - Microsoft Online Directory Service (MSODS) が使用できません。 |
 | AADSTS90036 | MsodsServiceUnretryableFailure - MSODS によってホストされる WCF サービスから再試行できない予期しないエラーが発生しました。 エラーの詳細を取得するには、[サポート チケットを開いてください](../fundamentals/active-directory-troubleshooting-support-howto.md)。 |
@@ -265,6 +271,7 @@ Azure Active Directory (Azure AD) セキュリティ トークン サービス (
 | AADSTS700023 | InvalidResourcelessScope - アクセス トークンを要求するときに、入力パラメーターのスコープに指定された値が無効です。 |
 | AADSTS1000000 | UserNotBoundError - Bind API では Azure AD ユーザーも外部 IDP による認証が必要ですが、まだ行われていません。 |
 | AADSTS1000002 | BindCompleteInterruptError - バインドは正常に完了しましたが、ユーザーに通知する必要があります。 |
+| AADSTS7000112 | UnauthorizedClientApplicationDisabled - アプリケーションが無効です。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: 2047f11272c6154d4443e889eff24401c2f73afa
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6e9ac50f38b2cf7bc3531e58e87ff2a8768c0a45
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067694"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69650482"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 
@@ -36,7 +36,7 @@ Azure Functions を使用すると、関数アプリ内で `FUNCTIONS_EXTENSION_
 
 ## <a name="view-and-update-the-current-runtime-version"></a>現在のランタイム バージョンの表示と更新
 
-関数アプリによって使用されるランタイム バージョンを変更できます。 破壊的変更の可能性があるため、ランタイム バージョンの変更は、関数アプリで関数を作成する前にのみ行うようにする必要があります。 ランタイム バージョンは `FUNCTIONS_EXTENSION_VERSION` の設定によって決定されますが、この変更はその設定の直接の変更によってではなく、Azure Portal で行う必要があります。 これは、ポータルが変更を検証し、必要に応じてその他の関連する変更を行うためです。
+関数アプリによって使用されるランタイム バージョンを変更できます。 破壊的変更の可能性があるため、ランタイム バージョンの変更は、関数アプリで関数を作成する前にのみ実行できます。 ランタイム バージョンは `FUNCTIONS_EXTENSION_VERSION` の設定によって決定されますが、この変更はその設定の直接の変更によってではなく、Azure Portal で行う必要があります。 これは、ポータルが変更を検証し、必要に応じてその他の関連する変更を行うためです。
 
 ### <a name="from-the-azure-portal"></a>Azure portal から
 

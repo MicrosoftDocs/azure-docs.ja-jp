@@ -1,240 +1,286 @@
 ---
-title: Azure Active Directory Domain Services:Ubuntu VM をマネージド ドメインに参加させる | Microsoft Docs
-description: Ubuntu Linux 仮想マシンを Azure AD Domain Services に参加させる
+title: Ubuntu VM を Azure AD Domain Services に参加させる | Microsoft Docs
+description: Ubuntu Linux 仮想マシンを構成して Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 804438c4-51a1-497d-8ccc-5be775980203
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 09/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 78afec75269876c309b2c324d8a5973fd5ebf9a8
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: e92327323f632f6b922e3eb948df75bb3666e2a9
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68773032"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075374"
 ---
-# <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Azure 内の Ubuntu 仮想マシンをマネージド ドメインに参加させる
-この記事では、Ubuntu Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
+# <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-ad-domain-services-managed-domain"></a>Ubuntu Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+ユーザーが 1 セットの資格情報を使用して Azure の仮想マシン (VM) にサインインできるようにするには、Azure Active Directory Domain Services (AD DS) のマネージド ドメインに VM を参加させます。 VM を Azure AD DS のマネージド ドメインに参加させると、ドメインのユーザー アカウントと資格情報を使用して、サーバーにサインインして管理することができます。 Azure AD DS マネージド ドメインのグループ メンバーシップも適用され、VM 上のファイルまたはサービスへのアクセスを制御できるようになります。
 
-## <a name="before-you-begin"></a>開始する前に
-この記事に記載されているタスクを実行するには、次が必要です。  
-1. 有効な **Azure サブスクリプション**。
-2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
-3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](create-instance.md)に記載されているすべてのタスクを実行してください。
-4. マネージド ドメインの IP アドレスを、必ず仮想ネットワークの DNS サーバーとして構成します。 詳しくは、[Azure 仮想ネットワークの DNS 設定を更新する方法](active-directory-ds-getting-started-dns.md)に関するページをご覧ください。
-5. [Azure AD Domain Services のマネージド ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
+この記事では、Ubuntu Linux VM を Azure AD DS のマネージド ドメインに参加させる方法について説明します。
 
+## <a name="prerequisites"></a>前提条件
 
-## <a name="provision-an-ubuntu-linux-virtual-machine"></a>Ubuntu Linux 仮想マシンをプロビジョニングする
-次のいずれかの方法を使用して、Azure で Ubuntu Linux 仮想マシンをプロビジョニングします。
+このチュートリアルを完了するには、以下のリソースと特権が必要です。
+
+* 有効な Azure サブスクリプション
+    * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+* ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
+    * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
+* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
+    * 必要であれば、1 つ目のチュートリアルで [Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]します。
+* Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
+
+## <a name="create-and-connect-to-an-ubuntu-linux-vm"></a>Ubuntu Linux VM を作成してそれに接続する
+
+Azure に Ubuntu Linux VM が既にある場合は、SSH を使用してそれに接続した後、次の手順に進んで [VM の構成を開始](#configure-the-hosts-file)します。
+
+Ubuntu Linux VM を作成する必要がある場合、またはこの記事で使用するためのテスト VM を作成する場合は、次のいずれかの方法を使用できます。
+
 * [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
-> [!IMPORTANT]
-> * **Azure AD Domain Services を有効にしたのと同じ仮想ネットワーク**に、仮想マシンをデプロイします。
-> * Azure AD Domain Services を有効にしたサブネットとは**異なるサブネット**を選択します。
->
+VM を作成するときは、VM が Azure AD DS マネージド ドメインと通信できるように、仮想ネットワークの設定に注意してください。
 
+* Azure AD Domain Services を有効にしたのと同じ仮想ネットワーク、またはピアリングされた仮想ネットワークに、VM をデプロイします。
+* Azure AD Domain Services インスタンスとは別のサブネットに VM をデプロイします。
 
-## <a name="connect-remotely-to-the-ubuntu-linux-virtual-machine"></a>Ubuntu Linux 仮想マシンにリモートで接続する
-Ubuntu 仮想マシンが Azure でプロビジョニングされました。 次は、VM のプロビジョニング中に作成したローカル管理者アカウントを使用して、仮想マシンにリモートで接続します。
+VM をデプロイした後、SSH を使用して VM に接続する手順に従います。
 
-[Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事の手順に従ってください。
+## <a name="configure-the-hosts-file"></a>hosts ファイルを構成する
 
-
-## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Linux 仮想マシン上の hosts ファイルを構成する
-SSH ターミナルで /etc/hosts ファイルを編集し、ご自分のマシンの IP アドレスとホスト名を更新します。
+マネージド ドメインに対して VM ホスト名が正しく構成されていることを確認するには、 */etc/hosts* ファイルを編集して、ホスト名を設定します。
 
 ```console
 sudo vi /etc/hosts
 ```
 
-hosts ファイルに、次の値を入力します。
+*hosts* ファイルで、*localhost* アドレスを更新します。 次の例では
+
+* *contoso.com* は、Azure AD DS マネージド ドメインの DNS ドメイン名です。
+* *ubuntu* は、マネージド ドメインに参加させる Ubuntu VM のホスト名です。
+
+これらの名前を実際の値に更新します。
 
 ```console
-127.0.0.1 contoso-ubuntu.contoso100.com contoso-ubuntu
+127.0.0.1 ubuntu.contoso.com ubuntu
 ```
 
-ここで、"contoso100.com" は、マネージド ドメインの DNS ドメイン名です。 "contoso-ubuntu" は、マネージド ドメインに参加させる Ubuntu 仮想マシンのホスト名です。
+終わったら、エディターの `:wq` コマンドを使用して、*hosts* ファイルを保存して終了します。
 
+## <a name="install-required-packages"></a>必要なパッケージをインストールする
 
-## <a name="install-required-packages-on-the-linux-virtual-machine"></a>Linux 仮想マシンに必要なパッケージのインストール
-次は、仮想マシンでのドメイン参加に必要なパッケージをインストールします。 次の手順に従います。
+VM を Azure AD DS マネージド ドメインに参加させるには、VM にいくつかの追加パッケージが必要です。 これらのパッケージをインストールして構成するには、`apt-get` を使用してドメイン参加ツールを更新およびインストールします
 
-1.  SSH ターミナルで、次のコマンドを入力して、リポジトリからパッケージ一覧をダウンロードします。 このコマンドはパッケージ一覧を更新して、最新バージョンのパッケージとその依存関係についての情報を取得します。
-
-    ```console
-    sudo apt-get update
-    ```
-
-2. 次のコマンドを入力して、必要なパッケージをインストールします。
-
-    ```console
-      sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli
-    ```
-
-3. Kerberos のインストール中に、ピンク色の画面が表示されます。 "krb5-user" パッケージのインストールで、領域名 (すべて大文字) の入力を求めるメッセージが表示されます。 インストールによって、/etc/krb5.conf に [realm] セクションと [domain_realm] セクションが書き込まれます。
-
-    > [!TIP]
-    > マネージド ドメインの名前が contoso100.com の場合は、領域として「CONTOSO100.COM」を入力します。 領域名は大文字で指定する必要があることを忘れないでください。
-
-
-## <a name="configure-the-ntp-network-time-protocol-settings-on-the-linux-virtual-machine"></a>Linux 仮想マシンで NTP (ネットワーク タイム プロトコル) 設定を構成する
-Ubuntu VM の日付と時刻は、マネージド ドメインと同期させる必要があります。 /etc/ntp.conf ファイルに、マネージド ドメインの NTP ホスト名を追加します。
+Kerberos のインストールの間に、*krb5-user* パッケージでは、領域名をすべて大文字で入力するように求められます。 たとえば、Azure AD DS マネージド ドメインの名前が *contoso.com* の場合、領域としては「*CONTOSO.COM*」と入力します。 インストールによって、`[realm]` セクションと `[domain_realm]` セクションが */etc/krb5.conf* 構成ファイルに書き込まれます。 領域はすべて大文字で指定します。
 
 ```console
-sudo vi /etc/ntp.conf
+sudo apt-get update
+sudo apt-get install krb5-user samba sssd sssd-tools libnss-sss libpam-sss ntp ntpdate realmd adcli
 ```
 
-ntp.conf ファイルに次の値を入力し、ファイルを保存します。
+## <a name="configure-network-time-protocol-ntp"></a>ネットワーク タイム プロトコル (NTP) を構成する
 
-```console
-server contoso100.com
+ドメインの通信が正常に機能するためには、Ubuntu VM の日付と時刻が、Azure AD DS マネージド ドメインと同期している必要があります。 Azure AD DS マネージド ドメインの NTP ホスト名を、 */etc/ntp.conf* ファイルに追加します。
+
+1. エディターで *ntp.conf* ファイルを開きます。
+
+    ```console
+    sudo vi /etc/ntp.conf
+    ```
+
+1. *ntp.conf* ファイルに、Azure AD DS マネージド ドメインの DNS 名を追加する行を作成します。 次の例では、*contoso.com* のエントリが追加されています。 独自の DNS 名を使用してください。
+
+    ```console
+    server contoso.com
+    ```
+
+    終わったら、エディターの `:wq` コマンドを使用して、*ntp.conf* ファイルを保存して終了します。
+
+1. VM が Azure AD DS マネージド ドメインと同期されるようにするには、次の手順を実行する必要があります。
+
+    * NTP サーバーを停止します
+    * マネージド ドメインから日付と時刻を更新します
+    * NTP サービスを開始します
+
+    次のコマンドを実行して、これらの手順を完了します。 `ntpdate` コマンドでは、独自の DNS 名を使用してください。
+
+    ```console
+    sudo systemctl stop ntp
+    sudo ntpdate contoso.com
+    sudo systemctl start ntp
+    ```
+
+## <a name="join-vm-to-the-managed-domain"></a>VM をマネージド ドメインに参加させる
+
+必要なパッケージが VM にインストールされ、NTP が構成されたので、VM を Azure AD DS マネージド ドメインに参加させます。
+
+1. `realm discover` コマンドを使用して、Azure AD DS マネージド ドメインを検出します。 次の例では、領域 *CONTOSO.COM* を検出しています。 独自の Azure AD DS マネージド ドメイン名を、すべて大文字で指定します。
+
+    ```console
+    sudo realm discover CONTOSO.COM
+    ```
+
+   `realm discover` コマンドで Azure AD DS マネージド ドメインが見つからない場合は、次のトラブルシューティング手順を確認してください。
+
+    * ドメインに VM からアクセスできることを確認します。 `ping contoso.com` を試し、肯定応答が返されるかどうかを確認します。
+    * VM が、Azure AD DS マネージド ドメインを利用可能な仮想ネットワークと同じ仮想ネットワーク、またはそれとピアリングされた仮想ネットワークに、デプロイされていることを確認します。
+    * 仮想ネットワークに対する DNS サーバーの設定が、Azure AD DS マネージド ドメインのドメイン コントローラーを指すように更新されていることを確認します。
+
+1. 次に、`kinit` コマンドを使用して Kerberos を初期化します。 *AAD DC Administrators* グループに属しているユーザーを指定します。 必要に応じて、[Azure AD のグループにユーザー アカウントを追加します](../active-directory/fundamentals/active-directory-groups-members-azure-portal.md)。
+
+    やはり、Azure AD DS マネージド ドメインの名前をすべて大文字で入力する必要があります。 次の例では、`contosoadmin@contoso.com` という名前のアカウントを使用して Kerberos を初期化しています。 *AAD DC Administrators* グループのメンバーである独自のユーザー アカウントを入力してください。
+
+    ```console
+    kinit contosoadmin@CONTOSO.COM
+    ```
+
+1. 最後に、`realm join` コマンドを使用して、マシンを Azure AD DS マネージド ドメインに参加させます。 前の `kinit` コマンドで指定した *AAD DC Administrators* グループのメンバーと同じユーザー アカウントを使用します (`contosoadmin@CONTOSO.COM` など)。
+
+    ```console
+    sudo realm join --verbose CONTOSO.COM -U 'contosoadmin@CONTOSO.COM' --install=/
+    ```
+
+VM を Azure AD DS マネージド ドメインに参加させるにはしばらくかかります。 次の出力例では、VM が Azure AD DS マネージド ドメインに正常に参加したことが示されています。
+
+```output
+Successfully enrolled machine in realm
 ```
 
-ここで、"contoso100.com" は、マネージド ドメインの DNS ドメイン名です。
+VM のドメイン参加プロセスを正常に完了できない場合は、VM のネットワーク セキュリティ グループで、Azure AD DS マネージド ドメインの仮想ネットワーク サブネットに対する TCP + UDP ポート 464 での送信 Kerberos トラフィックが許可されていることを確認します。
 
-次は、Ubuntu VM の日付と時刻を NTP サーバーと同期させてから、NTP サービスを開始します。
+## <a name="update-the-sssd-configuration"></a>SSSD の構成を更新する
 
-```console
-sudo systemctl stop ntp
-sudo ntpdate contoso100.com
-sudo systemctl start ntp
-```
+前のステップでインストールされたパッケージの 1 つは、システム セキュリティ サービス デーモン (SSSD) に対するものでした。 ユーザーがドメインの資格情報を使用して VM にサインインしようとすると、SSSD によって要求が認証プロバイダーに中継されます。 このシナリオでは、要求の認証を行うために SSSD によって Azure AD DS が使用されます。
 
+1. エディターで *sssd.conf* ファイルを開きます。
 
-## <a name="join-the-linux-virtual-machine-to-the-managed-domain"></a>Linux 仮想マシンのマネージド ドメインへの参加
-Linux 仮想マシンに必要なパッケージがインストールされたら、続いて仮想マシンをマネージド ドメインに参加させます。
-
-1. AAD ドメイン サービスのマネージド ドメインを探します。 SSH ターミナルで、次のコマンドを入力します。
-
-    ```console
-    sudo realm discover CONTOSO100.COM
-    ```
-
-   > [!NOTE]
-   > **トラブルシューティング:** *realm discover* でマネージド ドメインが見つからない場合:
-   >   * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。
-   >   * 仮想マシンが、マネージド ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。
-   >   * マネージド ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。
-
-2. Kerberos を初期化します。 SSH ターミナルで、次のコマンドを入力します。
-
-    > [!TIP]
-    > * ”AAD DC 管理者” グループに所属するユーザーを指定します。
-    > * kinit のエラーを防ぐため、ドメイン名は必ず大文字で指定します。
-    >
-
-    ```console
-    kinit bob@CONTOSO100.COM
-    ```
-
-3. コンピューターをドメインに参加させます。 SSH ターミナルで、次のコマンドを入力します。
-
-    > [!TIP]
-    > 前の手順で指定したユーザー アカウントを使用します ("kinit")。
-    >
-    > VM がドメインに参加できない場合は、VM のネットワーク セキュリティ グループで、Azure AD DS マネージド ドメインの仮想ネットワーク サブネットに対して、TCP + UDP ポート 464 の送信 Kerberos トラフィックが許可されていることを確認します。
-
-    ```console
-    sudo realm join --verbose CONTOSO100.COM -U 'bob@CONTOSO100.COM' --install=/
-    ```
-
-コンピューターのマネージド ドメインへの参加が完了すると、「Successfully enrolled machine in realm (コンピューターは領域に正常に登録されました)」という旨のメッセージが表示されます。
-
-
-## <a name="update-the-sssd-configuration-and-restart-the-service"></a>SSSD 構成を更新してサービスを再起動する
-1. SSH ターミナルで、次のコマンドを入力します。 sssd.conf ファイルを開いて、次の変更を加えます。
-    
     ```console
     sudo vi /etc/sssd/sssd.conf
     ```
 
-2. **use_fully_qualified_names = True** という行をコメント アウトし、ファイルを保存します。
-    
+1. 次のように、*use_fully_qualified_names* という行をコメントアウトします。
+
     ```console
     # use_fully_qualified_names = True
     ```
 
-3. SSSD サービスを再起動します。
-    
+    終わったら、エディターの `:wq` コマンドを使用して、*sssd.conf* ファイルを保存して終了します。
+
+1. 変更を適用するには、SSSD サービスを再起動します。
+
     ```console
     sudo service sssd restart
     ```
 
+## <a name="configure-user-account-and-group-settings"></a>ユーザー アカウントとグループの設定を構成する
 
-## <a name="configure-automatic-home-directory-creation"></a>自動ホーム ディレクトリ作成を構成する
-ユーザーにログインした後にホーム ディレクトリの自動作成を有効にするには、PuTTY ターミナルで次のコマンドを入力します。
+VM を Azure AD DS マネージド ドメインに参加させ、認証用に構成したので、いくつかのユーザー構成オプションを完了する必要があります。 これらの構成の変更には、パスワードベースの認証の許可と、ドメイン ユーザーが初めてサインインしたときのローカル VM へのホーム ディレクトリの自動作成が含まれます。
 
-```console
-sudo vi /etc/pam.d/common-session
-```
+### <a name="allow-password-authentication-for-ssh"></a>SSH のパスワード認証を許可する
 
-このファイルで、"session optional pam_sss.so" という行の下に次の行を追加し、保存します。
+既定では、ユーザーは SSH 公開キーベースの認証を使用することによってのみ、VM にサインインできます。 パスワードベースの認証は失敗します。 VM を Azure AD DS マネージド ドメインに参加させるときは、これらのドメイン アカウントでパスワードベースの認証を使用する必要があります。 次のようにして、パスワードベースの認証を許可するように SSH の構成を更新します。
 
-```console
-session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
-```
+1. エディターで *sshd_conf* ファイルを開きます。
 
-
-## <a name="verify-domain-join"></a>ドメイン参加の確認
-マシンがマネージド ドメインに正常に参加したかどうかを確認してみましょう。 別の SSH 接続を使用して、ドメインに参加した Ubuntu VM に接続します。 ドメイン ユーザー アカウントを使用して、そのユーザー アカウントが正しく解決されているかどうかを確認します。
-
-1. SSH ターミナルで次のコマンドを入力し、SSH を使用して、ドメインに参加した Ubuntu 仮想マシンに接続します。 マネージド ドメインに属するドメイン アカウントを使用します (例: ここでは 'bob@CONTOSO100.COM')。
-    
     ```console
-    ssh -l bob@CONTOSO100.COM contoso-ubuntu.contoso100.com
+    sudo vi /etc/ssh/sshd_config
     ```
 
-2. SSH ターミナルで次のコマンドを入力し、ホーム ディレクトリが正しく初期化されているかどうかを確認します。
-    
+1. *PasswordAuthentication* の行を *yes* に更新します。
+
     ```console
-    pwd
+    PasswordAuthentication yes
     ```
 
-3. SSH ターミナルで次のコマンドを入力し、グループ メンバーシップが正しく解決されているかどうかを確認します。
-    
+    終わったら、エディターの `:wq` コマンドを使用して、*sshd_conf* ファイルを保存して終了します。
+
+1. 変更を適用し、ユーザーがパスワードを使用してサインインできるようにするには、SSH サービスを再起動します。
+
     ```console
-    id
+    sudo systemctl restart ssh
     ```
 
+### <a name="configure-automatic-home-directory-creation"></a>自動ホーム ディレクトリ作成を構成する
 
-## <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>"AAD DC Administrators" グループに sudo 特権を付与する
-"AAD DC Administrators" グループのメンバーに Ubuntu VM での管理特権を付与できます。 sudo ファイルは、/etc/sudoers にあります。 sudoers に追加された AD グループのメンバーは、sudo を実行できます。
+ユーザーが初めてサインインしたときにホーム ディレクトリが自動的に作成されるようにするには、次の手順を実行します。
 
-1. SSH ターミナルに、スーパーユーザー特権でログインしていることを確認します。 VM の作成中に指定した、ローカル管理者アカウントを使用することができます。 次のコマンドを実行します。
-    
+1. エディターで */etc/pam.d/common-session* ファイルを開きます。
+
     ```console
-    sudo vi /etc/sudoers
+    sudo vi /etc/pam.d/common-session
     ```
 
-2. /etc/sudoers ファイルに次のエントリを追加し、保存します。
-    
+1. このファイルの行 `session optional pam_sss.so` の下に、次の行を追加します。
+
+    ```console
+    session required pam_mkhomedir.so skel=/etc/skel/ umask=0077
+    ```
+
+    終わったら、エディターの `:wq` コマンドを使用して、*common-session* ファイルを保存して終了します。
+
+### <a name="grant-the-aad-dc-administrators-group-sudo-privileges"></a>"AAD DC Administrators" グループに sudo 特権を付与する
+
+*AAD DC Administrators* グループのメンバーに Ubuntu VM での管理特権を付与するには、 */etc/sudoers* にエントリを追加します。 追加した後、*AAD DC Administrators* グループのメンバーは、Ubuntu VM で `sudo` コマンドを使用できるようになります。
+
+1. *sudoers* ファイルを編集用に開きます。
+
+    ```console
+    sudo visudo
+    ```
+
+1. */etc/sudoers* ファイルの最後に、次のエントリを追加します。
+
     ```console
     # Add 'AAD DC Administrators' group members as admins.
     %AAD\ DC\ Administrators ALL=(ALL) NOPASSWD:ALL
     ```
 
-3. これで、"AAD DC Administrators" グループのメンバーとしてログインできるようになりました。VM での管理特権が必要となります。
+    終わったら、`Ctrl-X` コマンドを使用してエディターを保存して終了します。
 
+## <a name="sign-in-to-the-vm-using-a-domain-account"></a>ドメイン アカウントを使用して VM にサインインする
 
-## <a name="troubleshooting-domain-join"></a>ドメイン参加のトラブルシューティング
-「 [Troubleshooting domain join (ドメイン参加のトラブルシューティング)](join-windows-vm.md#troubleshoot-joining-a-domain) 」を参照してください。
+VM が Azure AD DS マネージド ドメインに正常に参加したことを確認するには、ドメイン ユーザー アカウントを使用して新しい SSH 接続を開始します。 ホーム ディレクトリが作成されていること、およびドメインのグループ メンバーシップが適用されていることを確認します。
 
+1. コンソールから新しい SSH 接続を作成します。 `ssh -l` コマンドを使用して、マネージド ドメインに属しているドメイン アカウントを使用し (`contosoadmin@contoso.com` など)、VM のアドレス (*ubuntu.contoso.com* など) を入力します。 Azure Cloud Shell を使用する場合は、内部 DNS 名ではなく、VM のパブリック IP アドレスを使用します。
 
-## <a name="related-content"></a>関連コンテンツ
-* [Azure AD ドメイン サービス - 作業開始ガイド](create-instance.md)
-* [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+    ```console
+    ssh -l contosoadmin@CONTOSO.com ubuntu.contoso.com
+    ```
+
+1. VM に正常に接続したら、ホーム ディレクトリが正しく初期化されていることを確認します。
+
+    ```console
+    pwd
+    ```
+
+    ユーザー アカウントと一致する独自のディレクトリの */home* ディレクトリにいる必要があります。
+
+1. 次に、グループ メンバーシップが正しく解決されていることを確認します。
+
+    ```console
+    id
+    ```
+
+    Azure AD DS マネージド ドメインからのグループ メンバーシップが表示される必要があります。
+
+1. *AAD DC Administrators* グループのメンバーとして VM にサインインした場合は、`sudo` コマンドを正しく使用できることを確認します。
+
+    ```console
+    sudo apt-get update
+    ```
+
+## <a name="next-steps"></a>次の手順
+
+Azure AD DS マネージド ドメインへの VM の接続、またはドメイン アカウントでのサインインに関して問題がある場合は、「[ドメイン参加の問題のトラブルシューティング](join-windows-vm.md#troubleshoot-domain-join-issues)」を参照してください。
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md

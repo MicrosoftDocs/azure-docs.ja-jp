@@ -1,21 +1,21 @@
 ---
-title: Azure Blockchain Workbench でのアプリケーションの使用
-description: Azure Blockchain Workbench でのアプリケーション コントラクトの使用方法に関するチュートリアル。
+title: Azure Blockchain Workbench プレビューでのアプリケーションの使用
+description: Azure Blockchain Workbench プレビューでのアプリケーション コントラクトの使用方法に関するチュートリアル。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 04/15/2019
+ms.date: 09/05/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: e1ba09c4fbba6492e2d5f870a6c31a3d5a6d8956
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578852"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845146"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>チュートリアル:Azure Blockchain Workbench でのアプリケーションの使用
 
@@ -46,7 +46,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
 
 1. Blockchain Workbench のアプリケーション セクションで、作成するコントラクトを含んだアプリケーション タイルを選択します。 アクティブなコントラクトの一覧が表示されます。
 
-2. 新しい契約を作成するには、**[新しいコントラクト]** を選択します。
+2. 新しい契約を作成するには、 **[新しいコントラクト]** を選択します。
 
     ![[新しいコントラクト] ボタン](./media/use/contract-list.png)
 
@@ -74,7 +74,7 @@ Blockchain Workbench のメンバーとしてサインインする必要があ�
     | Action | 直近のアクションに関する詳細です |
     | アクティビティ | コントラクトのトランザクション履歴です |
     
-3. **[アクション]** セクションで、**[アクションの実行]** を選択します。
+3. **[アクション]** セクションで、 **[アクションの実行]** を選択します。
 
 4. コントラクトの現在の状態に関する詳細がウィンに表示されます。 ドロップダウン リストから、実行するアクションを選択します。 
 

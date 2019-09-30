@@ -5,14 +5,14 @@ author: shizn
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: 87a0847f5d42e014f3b2691c96446892176b481b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e05ba421a4535e6e424e65a1f2271d19f9d9abf4
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60399558"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70048706"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイス管理に Cloud Explorer for Visual Studio を使用する
 
@@ -31,64 +31,81 @@ ms.locfileid: "60399558"
 
 これらのオプションの相違点の詳細な説明と使用するためのガイダンスについては、「[device-to-cloud 通信に関するガイダンス](iot-hub-devguide-d2c-guidance.md)」と「[cloud-to-device 通信に関するガイダンス](iot-hub-devguide-c2d-guidance.md)」を参照してください。
 
-デバイス ツインは、デバイスの状態に関する情報 (メタデータ、構成、状態) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 デバイス ツインの詳細については、「[デバイス ツインの使用](iot-hub-node-node-twin-getstarted.md)」を参照してください。
+デバイス ツインは、デバイスに関する情報 (メタデータ、構成、状態など) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。 デバイス ツインの詳細については、「[デバイス ツインの使用](iot-hub-node-node-twin-getstarted.md)」を参照してください。
 
 ## <a name="what-you-learn"></a>学習内容
 
-開発マシン上で Cloud Explorer for Visual Studio をさまざまな管理オプションで使用する方法を説明します。
+この記事では、開発コンピューター上で Cloud Explorer for Visual Studio をさまざまな管理オプションで使用する方法を説明します。
 
 ## <a name="what-you-do"></a>作業内容
 
-Cloud Explorer for Visual Studio をさまざまな管理オプションで実行します。
+この記事では、Cloud Explorer for Visual Studio をさまざまな管理オプションで実行します。
 
 ## <a name="what-you-need"></a>必要なもの
 
+次の前提条件を満たす必要があります。
+
 - 有効な Azure サブスクリプション
+
 - サブスクリプションの Azure IoT Hub。
-- Microsoft Visual Studio 2017 Update 8 以降
-- Visual Studio インストーラーの Cloud Explorer コンポーネント (Azure ワークロードで既定で選択済み)
+
+- Microsoft Visual Studio 2017 Update 9 以降。 この記事では、[Visual Studio 2017 または Visual Studio 2019](https://www.visualstudio.com/vs/) を使用します。
+
+- Visual Studio インストーラーの Cloud Explorer コンポーネント (Azure ワークロードで既定で選択済み)。
 
 ## <a name="update-cloud-explorer-to-latest-version"></a>Cloud Explorer を最新バージョンに更新する
 
-Visual Studio インストーラーの Cloud Explorer コンポーネントは、デバイスからクラウドへのメッセージおよびクラウドからデバイスへのメッセージの監視のみサポートします。 管理オプションにアクセスするには、最新バージョンの [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) をダウンロードしてインストールする必要があります。
+Visual Studio 2017 用の Visual Studio インストーラーの Cloud Explorer コンポーネントでは、device-to-cloud メッセージと cloud-to-device メッセージの監視のみがサポートされます。 Visual Studio 2017 を使用するには、最新の [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.CloudExplorerForVS) をダウンロードしてインストールします。
 
-## <a name="sign-in-to-access-your-iot-hub"></a>サインインして IoT Hub にアクセスする
+## <a name="sign-in-to-access-your-hub"></a>サインインしてハブにアクセスする
 
-1. Visual Studio の **Cloud Explorer** ウィンドウで、アカウント管理アイコンをクリックします。 Cloud Explorer ウィンドウは、**ビュー** >  **[Cloud Explorer]** メニューから開くことができます。
+1. Visual Studio で、 **[表示]**  >  **[Cloud Explorer]** の順に選択して Cloud Explorer を開きます。
 
-    ![アカウント管理をクリックする](media/iot-hub-visual-studio-cloud-device-messaging/click-account-management.png)
+1. [アカウント管理] アイコンを選択して、サブスクリプションを表示します。
 
-1. Cloud Explorer の **アカウントの管理** をクリックします。
-1. 新しいウィンドウで **アカウントの追加...** をクリックして Azure に初めてサインインします。
-1. サインインした後、Azure サブスクリプションの一覧が表示されます。 表示する Azure サブスクリプションを選択し、**適用** をクリックします。
-1. **自分のサブスクリプション** >  **[IoT Hubs]**  > **自分の IoT Hub** の順に展開すると、IoT Hub ノードの下にデバイスの一覧が表示されます。 管理オプションにアクセスする 1 つのデバイスを右クリックします。
+    ![[アカウント管理] アイコン](media/iot-hub-visual-studio-cloud-device-messaging/account-management-icon.png)
 
-    ![管理オプション](media/iot-hub-device-management-visual-studio/management-options.png)
+1. Azure にサインインしている場合は、お使いのアカウントが表示されます。 初めて Azure にサインインするには、 **[アカウントの追加]** を選択します。
+
+1. 使用する Azure サブスクリプションを選択し、 **[適用]** を選択します。
+
+1. サブスクリプションを展開した後、 **[IoT ハブ]** を展開します。  各ハブで、そのハブのデバイスを確認できます。 管理オプションにアクセスする 1 つのデバイスを右クリックします。
+
+    ![管理オプション](media/iot-hub-device-management-visual-studio/management-options-vs2019.png)
 
 ## <a name="direct-methods"></a>ダイレクト メソッド
 
+ダイレクト メソッドを使用するには、次の手順を実行します。
+
 1. デバイスを右クリックし、 **[Invoke Device Direct Method]\(デバイス ダイレクト メソッドの呼び出し)** を選択します。
-1. 入力ボックスにメソッド名とペイロードを入力します。
-1. 結果が **[IoT Hub]** 出力ペインに表示されます。
 
-## <a name="read-device-twin"></a>デバイス ツインの読み取り
+1. **[Invoke Direct Method]\(ダイレクト メソッドの呼び出し\)** にメソッド名とペイロードを入力し、 **[OK]** を選択します。
 
-1. デバイスを右クリックし、 **[デバイス ツインの編集]** を選択します。
-1. **azure-iot-device-twin.json** ファイルが開き、デバイス ツインの内容が表示されます。
+    **[出力]** に結果が表示されます。
 
 ## <a name="update-device-twin"></a>デバイス ツインの更新
 
+デバイス ツインを編集するには、次の手順を実行します。
+
+1. デバイスを右クリックし、 **[デバイス ツインの編集]** を選択します。
+
+   **azure-iot-device-twin.json** ファイルが開き、デバイス ツインの内容が表示されます。
+
 1. **azure-iot-device-twin.json** ファイルの **tags** または **properties.desired** フィールドを一部編集します。
+
 1. **Ctrl+S** キーを押してデバイス ツインを更新します。
-1. 結果が **[IoT Hub]** 出力ペインに表示されます。
+
+   **[出力]** に結果が表示されます。
 
 ## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
 
 IoT Hub からデバイスにメッセージを送信するには、次の手順に従います。
 
 1. デバイスを右クリックして、 **[Send C2D Message]\(C2D メッセージを送信する\)** を選択します。
-1. 入力ボックスにメッセージを入力します。
-1. 結果が **[IoT Hub]** 出力ペインに表示されます。
+
+1. **[Send C2D message]\(C2D メッセージを送信する\)** にメッセージを入力し、 **[OK]** を選択します。
+
+   **[出力]** に結果が表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

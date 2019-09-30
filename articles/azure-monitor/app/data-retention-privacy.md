@@ -10,18 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/09/2019
+ms.date: 08/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 38723a5dd306c2a4b594d95e5cc660d117966bc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df441a55ef4a9a40fe4defcabca5f667eeddbf29
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65518837"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70207296"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
-アプリに [Azure Application Insights][start] SDK をインストールすると、アプリに関するテレメトリがクラウドに送信されます。 当然ながら、担当開発者は、送信されるデータ、データに対して発生すること、それを制御する方法について知りたいと考えます。 特に、機密データの送信、その保存先、安全性が重要です。 
+ご利用のアプリに [Azure Application Insights][start] SDK をインストールすると、アプリに関するテレメトリがクラウドに送信されます。 当然ながら、担当開発者は、送信されるデータ、データに対して発生すること、それを制御する方法について知りたいと考えます。 特に、機密データの送信、その保存先、安全性が重要です。 
 
 まず、手短に言えば次のようになります。
 
@@ -33,7 +33,7 @@ ms.locfileid: "65518837"
 この記事の残りの部分では、以上の答えについてもっと詳しく説明します。 設計は自己完結型であり、直近のチームに入っていない同僚にも見せることができます。
 
 ## <a name="what-is-application-insights"></a>Application Insights とは何か?
-[Azure Application Insights][start] はライブ アプリケーションのパフォーマンスと使いやすさを改善する Microsoft 提供サービスです。 テスト中と公開後またはデプロイ後の両方で、実行中のアプリケーションを常時監視します。 Application Insights が作成するグラフや表を見ると、たとえば、1 日の中でユーザー数が最も多い時間帯、アプリの反応性、アプリが依存している外部サービスのサービス性能などがわかります。 クラッシュ、エラー、パフォーマンス問題が発生した場合、製品利用統計情報データを詳しく調査し、原因を診断できます。 アプリの可用性やパフォーマンスに変化があった場合、サービスからメールが届きます。
+[Azure Application Insights][start] は、ライブ アプリケーションのパフォーマンスと使いやすさの改善に役立つ、Microsoft が提供するサービスです。 テスト中と公開後またはデプロイ後の両方で、実行中のアプリケーションを常時監視します。 Application Insights が作成するグラフや表を見ると、たとえば、1 日の中でユーザー数が最も多い時間帯、アプリの反応性、アプリが依存している外部サービスのサービス性能などがわかります。 クラッシュ、エラー、パフォーマンス問題が発生した場合、製品利用統計情報データを詳しく調査し、原因を診断できます。 アプリの可用性やパフォーマンスに変化があった場合、サービスからメールが届きます。
 
 この機能を入手するには、アプリケーションに Application Insights SDK をインストールします。インストールすることでそのコードの一部になります。 アプリの実行中、SDK はその操作を監視し、製品利用統計情報を Application Insights サービスに送信します。 これは [Microsoft Azure](https://azure.com) がホストするクラウド サービスです。 (ただし、Application Insights は、Azure にホストされているアプリケーションだけでなく、あらゆるアプリケーションで動作します。)
 
@@ -83,12 +83,11 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 [製品利用統計情報プロセッサ プラグイン](../../azure-monitor/app/api-filtering-sampling.md)を記述することで可能です。
 
 ## <a name="how-long-is-the-data-kept"></a>データはどれだけの期間保持されますか。
-生データ ポイント (つまり、Analytics でクエリを実行したり Search で調べることができる項目) は、最大 90 日間保持されます。 それ以上長くデータを保持する必要がある場合は、 [連続エクスポート](../../azure-monitor/app/export-telemetry.md) を使用してストレージ アカウントにコピーすることができます。
+生データ ポイント (つまり、Analytics でクエリを実行したり Search で調べることができる項目) は、最大 730 日間保持されます。 30、60、90、120、180、270、365、550 または 730 日間の[リテンション期間を選択](https://docs.microsoft.com/azure/azure-monitor/app/pricing#change-the-data-retention-period)できます。 730 日以上データを保持する必要がある場合は、[連続エクスポート](../../azure-monitor/app/export-telemetry.md)を使用して、データ インジェスト中にストレージ アカウントにコピーすることができます。 
+
+90 日より長く保持されるデータには、追加料金が発生します。 Application Insights の価格の詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。
 
 集計されたデータ (つまり、メトリックス エクスプローラーに表示されるカウント、平均、その他の統計データ) は、1 分の詳細度であれば 90 日の期間にわたって保持されます。
-
-> [!NOTE]
-> Application Insights の変数保持は、現在プレビュー段階です。 [こちら](https://feedback.azure.com/forums/357324-application-insights/suggestions/17454031)をご覧ください。 
 
 [デバッグ スナップショット](../../azure-monitor/app/snapshot-debugger.md)は 15 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
 
@@ -101,7 +100,7 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 Microsoft は、お客様にサービスを提供する目的でのみデータを使用します。
 
 ## <a name="where-is-the-data-held"></a>データが保持されている場所はどこですか。
-* 米国、ヨーロッパ、または東南アジアです。 新しい Application Insights リソースを作成するときに場所を選択できます。 
+* 新しい Application Insights リソースを作成するときに場所を選択できます。 リージョンごとの Application Insights の可用性の詳細については、[こちら](https://azure.microsoft.com/global-infrastructure/services/?products=all)を参照してください。
 
 #### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>それは、アプリを米国、ヨーロッパ、または東南アジアでホストする必要があるという意味ですか。
 * いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
@@ -167,7 +166,7 @@ Web ページのコード内にインストルメンテーション キーがあ
 
 既定では、`ServerTelemetryChannel` は、現在のユーザーのローカル アプリ データ フォルダー `%localAppData%\Microsoft\ApplicationInsights` または一時フォルダー `%TMP%` を使用します。 (ここにある[実装](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/91e9c91fcea979b1eec4e31ba8e0fc683bf86802/src/ServerTelemetryChannel/Implementation/ApplicationFolderProvider.cs#L54-L84)を参照してください。)Linux 環境では、ストレージ フォルダーが指定されていない限り、ローカル ストレージは無効になります。
 
-次のコード スニペットは、 `Startup.cs`  クラスの `ConfigureServices()`  メソッドで `ServerTelemetryChannel.StorageFolder` を設定する方法を示しています。
+次のコード スニペットは、`Startup.cs` クラスの `ConfigureServices()` メソッドで `ServerTelemetryChannel.StorageFolder` を設定する方法を示しています。
 
 ```csharp
 services.AddSingleton(typeof(ITelemetryChannel), new ServerTelemetryChannel () {StorageFolder = "/tmp/myfolder"});
@@ -234,7 +233,7 @@ openssl s_client -connect bing.com:443 -tls1_2
 ただし、アプリケーションでそのような機能を実装することはできます。 すべての SDK には、テレメトリの収集を無効にする API 設定が含まれています。 
 
 ## <a name="data-sent-by-application-insights"></a>Application Insights によって送信されるデータ
-SDK はプラットフォームごとに異なり、インストールできるコンポーネントは複数あります ([Application Insights の概要][start]に関するページをご覧ください)。各コンポーネントは、それぞれ異なるデータを送信します。
+SDK はプラットフォームごとに異なり、インストールできるコンポーネントは複数あります (「[Application Insights - 概要][start]」をご覧ください。)各コンポーネントは、それぞれ異なるデータを送信します。
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>さまざまなシナリオで送信されるデータのクラス
 
@@ -276,10 +275,10 @@ SDK はプラットフォームごとに異なり、インストールできる�
 | 可用性 |Web テストの応答コード、各テスト ステップの期間、テスト名、タイムスタンプ、成功、応答時間、テストの場所 |
 | SDK diagnostics |トレース メッセージまたは例外 |
 
-[ApplicationInsights.config を編集して、データの一部を無効化][config]できます
+[ApplicationInsights.config を編集して、データの一部をオフにする][config]ことができます
 
 > [!NOTE]
-> クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../../azure-monitor/platform/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスを格納する必要がある場合は、[テレメトリ初期化子](./../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer)で行うことができます。
+> クライアント IP は地理的な場所の推論に使用されますが、既定では、IP データは格納されなくなっており、関連するフィールドにはすべてゼロが書き込まれます。 個人データの処理について詳しく理解するには、こちらの[記事](../../azure-monitor/platform/personal-data-mgmt.md#application-data)をお勧めします。 IP アドレスのデータを格納する必要がある場合は、[IP アドレスの収集に関する記事](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)のオプションについての説明をご覧ください。
 
 ## <a name="credits"></a>謝辞
 この製品には、MaxMind によって作成された GeoLite2 データが含まれています。MaxMind は [https://www.maxmind.com](https://www.maxmind.com) から入手できます。
@@ -298,4 +297,3 @@ SDK はプラットフォームごとに異なり、インストールできる�
 [pricing]: https://azure.microsoft.com/pricing/details/application-insights/
 [redfield]: ../../azure-monitor/app/monitor-performance-live-website-now.md
 [start]: ../../azure-monitor/app/app-insights-overview.md
-

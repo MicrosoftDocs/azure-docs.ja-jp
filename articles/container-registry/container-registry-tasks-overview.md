@@ -6,14 +6,14 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 09/05/2019
 ms.author: danlep
-ms.openlocfilehash: 65debc8c65752150651d00d84eeff469cefbc268
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c62987031a73aa4840c1d036689a3c52fb4dc4a0
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68311881"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914662"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -21,14 +21,22 @@ ms.locfileid: "68311881"
 
 ## <a name="what-is-acr-tasks"></a>ACR タスクとは
 
-**ACR タスク**は、Azure Container Registry 内の一連の機能です。 Linux、Windows、および ARM 用のクラウドベースのコンテナー イメージのビルド機能があり、Docker コンテナーの [OS およびフレームワークのパッチ適用](#automate-os-and-framework-patching)を自動化できます。 ACR タスクでは、オンデマンドのコンテナー イメージのビルドによって "内部ループ" 型の開発サイクルをクラウドに拡張するだけでなく、ソース コードのコミット時またはコンテナーの基本イメージが更新されたときのビルドの自動化を実現できます。 基本イメージの更新のトリガーを使用して、OS とアプリケーション フレームワークの修正プログラム適用のワークフローを自動化することができ、不変のコンテナーの原則に従いながら、セキュリティで保護された環境を維持できます。
+**ACR タスク**は、Azure Container Registry 内の一連の機能です。 Linux、Windows、ARM などの[プラットフォーム](#image-platforms)用のクラウドベースのコンテナー イメージのビルド機能があり、Docker コンテナーの [OS とフレームワークのパッチ適用](#automate-os-and-framework-patching)を自動化できます。 ACR タスクでは、オンデマンドのコンテナー イメージのビルドによって "内部ループ" 型の開発サイクルをクラウドに拡張するだけでなく、ソース コードの更新、コンテナーの基本イメージの更新、またはタイマーによってトリガーされるビルドの自動化を有効にすることもできます。 たとえば、基本イメージの更新のトリガーを使用することで、OS とアプリケーション フレームワークの修正プログラム適用のワークフローを自動化したり、不変のコンテナーの原則に従いながら、セキュリティで保護された環境を維持したりできます。
 
-以下の 4 つの方法で ACR タスクを使用し、コンテナー イメージのビルドとテストを行います。
+## <a name="task-scenarios"></a>一般的なシナリオ
 
-* [クイック タスク](#quick-task):ローカル Docker エンジンをインストールすることなく、Azure でコンテナー イメージをオンデマンドでビルドし、プッシュします。 クラウドでの `docker build` や `docker push` を思い浮かべてください。 ローカルのソース コードまたは Git リポジトリからビルドします。
-* [ソース コードのコミット時のビルド](#automatic-build-on-source-code-commit):コードが Git リポジトリにコミットされたときにコンテナー イメージのビルドを自動的にトリガーします。
-* [基本イメージ更新時のビルド](#automate-os-and-framework-patching):基本イメージが更新されたときにコンテナー イメージのビルドをトリガーします。
-* [複数ステップのタスク](#multi-step-tasks): コマンドとしてイメージをビルドしてコンテナーを実行し、イメージをレジストリにプッシュするマルチ ステップ タスクを定義します。 ACR タスクのこの機能は、オンデマンドでのタスクの実行、並列でのイメージのビルド、テスト、およびプッシュの操作をサポートしています。
+ACR タスクでは、コンテナー イメージやその他の成果物をビルドし、保守管理するためのシナリオをいくつかサポートしています。 詳細については、この記事の次のセクションを参照してください。
+
+* **[クイック タスク](#quick-task)** - ローカル Docker エンジンをインストールすることなく、Azure で 1 つのコンテナー イメージをオンデマンドでビルドし、コンテナー レジストリにプッシュします。 クラウドでの `docker build` や `docker push` を思い浮かべてください。
+* **自動的にトリガーされたタスク** - イメージをビルドする目的で 1 つまたは複数の*トリガー*を有効にします。
+  * **[ソース コードの更新でトリガー](#trigger-task-on-source-code-update)** 
+  * **[基本イメージの更新でトリガー](#automate-os-and-framework-patching)** 
+  * **[スケジュールに従ってトリガー](#schedule-a-task)** 
+* **[マルチ ステップ タスク](#multi-step-tasks)** - 複数のステップから成る複数コンテナー ベースのワークフローを持つ、ACR タスクの単一イメージのビルドおよびプッシュ機能を拡張します。 
+
+各 ACR タスクには、[ソース コード コンテキスト](#context-locations)が関連付けられます - コンテナー イメージまたはその他の成果物のビルドに使用される一連のソース ファイルの場所。 見本のコンテキストには、Git リポジトリまたはローカル ファイルシステムが含まれます。
+
+タスクでは、[Run 変数](container-registry-tasks-reference-yaml.md#run-variables)を活用することもできます。そのため、タスクの定義を再利用したり、イメージや成果物のタグを標準化したりできます。
 
 ## <a name="quick-task"></a>クイック タスク
 
@@ -36,30 +44,29 @@ ms.locfileid: "68311881"
 
 ACR タスクの[クイック タスク](container-registry-tutorial-quick-task.md)機能は、コードの 1 行目をコミットする前でさえ、コンテナー イメージのビルドを Azure にオフロードすることで、統合された開発環境を提供できます。 クイック タスクを使用すると、コードをコミットする前に、自動化されたビルド定義を検証し、潜在的な問題を知ることができます。
 
-よく知られている `docker build` 形式を使用して、Azure CLI の [az acr build][az-acr-build] コマンドは*コンテキスト* (ビルド対象の一連のファイル) を取得して ACR タスクに送信し、既定では、完了時にビルド済みのイメージをそのレジストリにプッシュします。
+よく知られている `docker build` 形式を使用して、Azure CLI の [az acr build][az-acr-build] コマンドは[コンテキスト](#context-locations) (ビルド対象の一連のファイル) を取得して ACR タスクに送信し、既定では、完了時にビルド済みのイメージをそのレジストリにプッシュします。
 
 概要については、Azure Container Registry での[コンテナー イメージのビルドと実行](container-registry-quickstart-task-cli.md)のクイック スタートを参照してください。  
-
-次の表は、ACR タスクでサポートされているコンテキストの場所の例を示しています。
-
-| コンテキストの場所 | 説明 | 例 |
-| ---------------- | ----------- | ------- |
-| ローカル ファイルシステム | ローカル ファイル システム上のディレクトリ内のファイル。 | `/home/user/projects/myapp` |
-| GitHub master ブランチ | GitHub リポジトリの master (またはその他の既定の) ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub ブランチ | GitHub リポジトリの特定のブランチ。| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub のサブフォルダー | GitHub リポジトリのサブフォルダー内のファイル 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
 
 ACR タスクは、コンテナー ライフサイクル プリミティブとして設計されています。 たとえば、ACR タスクを CI/CD ソリューションに統合します。 [az login][az-login] を[サービス プリンシパル][az-login-service-principal]で実行することにより、CI/CD ソリューションは [az acr build][az-acr-build] コマンドを発行してイメージ ビルドを開始できます。
 
 クイック タスクを使用する方法については、[Azure Container Registry タスクを使用してクラウドでコンテナー イメージをビルドする](container-registry-tutorial-quick-task.md)ことに関する ACR タスクの最初のチュートリアルを参照してください。
 
-## <a name="automatic-build-on-source-code-commit"></a>ソース コードのコミット時の自動ビルド
+> [!TIP]
+> Dockerfile を使用せずにソース コードから直接、イメージをビルドしてプッシュする場合、[az acr pack build][az-acr-pack-build] コマンド (プレビュー) が Azure Container Registry に用意されています。 このツールでは、[Cloud Native Buildpacks](https://buildpacks.io/) を使用し、アプリケーション ソース コードからイメージをビルドし、プッシュします。
 
-ACR タスクを使用して、コードが Git リポジトリにコミットされたときにコンテナー イメージのビルドを自動的にトリガーします。 Azure CLI コマンド [az acr task][az-acr-task] を使用して構成できるビルド タスクにより、Git リポジトリと、必要に応じて分岐および Dockerfile を指定できます。 チームがコードをリポジトリにコミットすると、ACR タスクで作成された webhook が、リポジトリで定義されているコンテナー イメージのビルドをトリガーします。
+## <a name="trigger-task-on-source-code-update"></a>ソース コードの更新でタスクをトリガーする
 
-> [!IMPORTANT]
-> 以前、プレビュー期間中に `az acr build-task` コマンドを使用してタスクを作成した場合、それらのタスクは [az acr task][az-acr-task] コマンドを使用して再作成する必要があります。
+GitHub の Git リポジトリまたは Azure DevOps にコードがコミットされたとき、あるいは、プル要求が行われたか更新されたとき、コンテナー イメージのビルドまたは複数手順のタスクをトリガーします。 たとえば、Azure CLI コマンドの [az acr task create][az-acr-task-create] でビルド タスクを構成し、その際、Git リポジトリと任意で分岐と Dockerfile を指定します。 チームがリポジトリのコードを更新すると、ACR タスクで作成された Webhook が、リポジトリで定義されているコンテナー イメージのビルドをトリガーします。 
+
+ACR タスクでは、Git リポジトリをタスクのコンテキストとして設定すると、次のトリガーがサポートされます。
+
+| トリガー | 既定で有効 |
+| ------- | ------------------ |
+| コミット | はい |
+| プル要求 | いいえ |
+
+トリガーを構成するには、個人用アクセス トークン (PAT) をタスクに与え、GitHub または Azure DevOps リポジトリで Webhook を設定します。
 
 ソース コードのコミット時にビルドをトリガーする方法については、[Azure Container Registry タスクを使用してコンテナー イメージのビルドを自動化する](container-registry-tutorial-build-task.md)ことに関する ACR タスクの 2 つ目のチュートリアルを参照してください。
 
@@ -73,14 +80,26 @@ ACR タスクがコンテナー ビルド ワークフローを真に強化す�
 
 ACR タスクはコンテナー イメージをビルドするときに基本イメージの依存関係を動的に検出するため、アプリケーション イメージの基本イメージが更新されるとそれを検出することができます。 事前に構成された 1 つの[ビルド タスク](container-registry-tutorial-base-image-update.md#create-a-task)により、ACR タスクは**すべてのアプリケーション イメージを自動的にリビルド**します。 ACR タスクはこの自動検出とリビルドによって、更新された基本イメージを参照しているすべてのアプリケーション イメージを手動で追跡し、更新するために通常は必要となる時間と労力を削減しています。
 
-OS とフレームワークの修正プログラムの適用については、[Azure Container Registry タスクを使用して基本イメージ更新時のイメージ ビルドを自動化する](container-registry-tutorial-base-image-update.md)ことに関する ACR タスクの 3 つ目のチュートリアルを参照してください。
+Dockerfile からイメージをビルドする場合、ACR タスクでは、基本イメージが次のいずれかの場所にある場合に基本イメージの更新が追跡されます。
+
+* タスクが実行されるのと同じ Azure コンテナー レジストリ
+* 同じリージョン内の別の Azure コンテナー レジストリ 
+* Docker Hub 内のパブリック リポジトリ
+* Microsoft Container Registry 内のパブリック リポジトリ
 
 > [!NOTE]
-> 現在、基本イメージの更新では、基本イメージとアプリケーション イメージの両方が同じ Azure コンテナー レジストリにある場合、または基本イメージがパブリック環境の Docker Hub リポジトリまたは Microsoft Container Registry リポジトリにある場合にのみ、ビルドがトリガーされます。
+> * 基本イメージ更新トリガーは、ACR タスクでは、既定で有効になっています。 
+> * 現在のところ、ACR タスクでは、アプリケーション (*実行時*) イメージの基本イメージの更新のみが追跡されます。 ACR タスクでは、マルチステージ Dockerfiles で使用される中間 (*ビルド時*) イメージの基本イメージの更新は追跡されません。 
+
+OS とフレームワークの修正プログラムの適用については、[Azure Container Registry タスクを使用して基本イメージ更新時のイメージ ビルドを自動化する](container-registry-tutorial-base-image-update.md)ことに関する ACR タスクの 3 つ目のチュートリアルを参照してください。
+
+## <a name="schedule-a-task"></a>タスクのスケジュール設定
+
+任意で、タスクの作成時または更新時に 1 つまたは複数の "*タイマー トリガー*" を設定し、タスクをスケジュール設定します。 タスクのスケジュール設定は、決まったスケジュールでコンテナー ワークロードを実行する場合やレジストリに定期的にプッシュされるイメージで保守管理操作やテストを実行する場合に役立ちます。 詳細については、「[定義したスケジュールで ACR タスクを実行する](container-registry-tasks-scheduled.md)」を参照してください。
 
 ## <a name="multi-step-tasks"></a>複数ステップのタスク
 
-複数ステップのタスクでは、クラウドでのコンテナー イメージのビルド、テスト、および修正プログラムの適用のために、ステップベースでタスクの定義と実行を行うことができます。 タスクのステップでは、コンテナー イメージのビルド操作とプッシュ操作を個々に定義します。 各ステップで実行環境としてコンテナーを使用するように、1 つまたは複数のコンテナーの実行を定義することもできます。
+複数ステップのタスクでは、クラウドでのコンテナー イメージのビルド、テスト、および修正プログラムの適用のために、ステップベースでタスクの定義と実行を行うことができます。 [YAML ファイル](container-registry-tasks-reference-yaml.md)に定義されているタスク手順では、コンテナー イメージまたはその他の成果物に対する個別のビルド/プッシュ操作が指定されます。 各ステップで実行環境としてコンテナーを使用するように、1 つまたは複数のコンテナーの実行を定義することもできます。
 
 たとえば、以下を自動化するマルチ ステップ タスクを作成できます。
 
@@ -95,11 +114,32 @@ OS とフレームワークの修正プログラムの適用については、[A
 
 マルチ ステップ タスクについては、[ACR タスクでビルド、テスト、および修正プログラムの適用を行うマルチ ステップ タスクを実行する](container-registry-tasks-multi-step.md)ことに関するページを参照してください。
 
+## <a name="context-locations"></a>コンテキストの場所
+
+次の表は、ACR タスクでサポートされているコンテキストの場所の例を示しています。
+
+| コンテキストの場所 | 説明 | 例 |
+| ---------------- | ----------- | ------- |
+| ローカル ファイルシステム | ローカル ファイル システム上のディレクトリ内のファイル。 | `/home/user/projects/myapp` |
+| GitHub master ブランチ | GitHub リポジトリの master (またはその他の既定の) ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub ブランチ | GitHub リポジトリの特定のブランチ。| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub のサブフォルダー | GitHub リポジトリのサブフォルダー内のファイル 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
+
+## <a name="image-platforms"></a>イメージのプラットフォーム
+
+既定では、ACR タスクによって Linux OS と amd64 アーキテクチャ用のイメージが構築されます。 他のアーキテクチャ用の Windows イメージまたは Linux イメージを構築するための `--platform` タグを指定します。 OS と、必要に応じて OS/アーキテクチャ形式 (`--platform Linux/arm` など) でサポートされているアーキテクチャを指定します。 ARM アーキテクチャの場合は、必要に応じて、次のように OS/アーキテクチャ/バリアント形式でバリアントを指定します (例: `--platform Linux/arm64/v8`)。
+
+| OS | アーキテクチャ|
+| --- | ------- | 
+| Linux | amd64<br/>arm<br/>arm64<br/>386 |
+| Windows | amd64 |
+
 ## <a name="view-task-logs"></a>タスク ログを表示する
 
-それぞれのタスク実行で、タスク ステップが正常に実行されたかどうかを判別するために検査できるログ出力が生成されます。 [az acr build](/cli/azure/acr#az-acr-build)、[az acr run](/cli/azure/acr#az-acr-run)、または [az acr task run](/cli/azure/acr/task#az-acr-task-run) コマンドを実行してタスクをトリガーすると、そのタスク実行のログ出力がコンソールにストリーミングされ、さらに、後で取得するために格納されます。 タスク実行のログは Azure portal で表示するか、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) コマンドを使用します。
+それぞれのタスク実行で、タスク ステップが正常に実行されたかどうかを判別するために検査できるログ出力が生成されます。 [az acr build](/cli/azure/acr#az-acr-build)、[az acr run](/cli/azure/acr#az-acr-run)、または [az acr task run](/cli/azure/acr/task#az-acr-task-run) コマンドを実行してタスクをトリガーすると、そのタスク実行のログ出力がコンソールにストリーミングされ、さらに、後で取得するために格納されます。 ソース コードのコミットや基本イメージの更新などによってタスクが自動的にトリガーされる場合、タスク ログは格納されるだけです。 タスク実行のログは Azure portal で表示するか、[az acr task logs](/cli/azure/acr/task#az-acr-task-logs) コマンドを使用します。
 
-2019 の 7 月以降レジストリ内のタスク実行のデータとログは、既定で 30 日間保持された後、自動的に消去されます。 タスク実行のデータをアーカイブする場合は、[az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run) コマンドを使用してアーカイブを有効にしてください。 次の例は、レジストリ *myregistry* 内のタスク実行 *cf11* のアーカイブを有効にします。
+既定では、レジストリ内のタスク実行のデータとログは、30 日間保持された後、自動的に消去されます。 タスク実行のデータをアーカイブする場合は、[az acr task update-run](/cli/azure/acr/task#az-acr-task-update-run) コマンドを使用してアーカイブを有効にしてください。 次の例は、レジストリ *myregistry* 内のタスク実行 *cf11* のアーカイブを有効にします。
 
 ```azurecli
 az acr task update-run --registry myregistry --run-id cf11 --no-archive false
@@ -107,9 +147,9 @@ az acr task update-run --registry myregistry --run-id cf11 --no-archive false
 
 ## <a name="next-steps"></a>次の手順
 
-クラウドでコンテナー イメージをビルドすることで OS とフレームワークの修正プログラム適用を自動化する準備ができたら、[ACR タスクに関する 3 部構成のチュートリアル シリーズ](container-registry-tutorial-quick-task.md)を参照してください。
+クラウドでコンテナー イメージのビルドと保守管理を自動化する準備ができたら、[ACR タスクのチュートリアル シリーズ](container-registry-tutorial-quick-task.md)をご覧ください。
 
-Azure コンテナー レジストリを使用するには、必要に応じて [Visual Studio Code 用の Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)と [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能をインストールします。 Azure コンテナー レジストリとの間でイメージをプルおよびプッシュしたり、ACR タスクを実行したりします。すべて Visual Studio Code 内で実行します。
+Azure コンテナー レジストリを操作するには、必要に応じて [Visual Studio Code 用の Docker 拡張機能](https://code.visualstudio.com/docs/azure/docker)と [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能をインストールします。 Azure コンテナー レジストリとの間でイメージをプルおよびプッシュしたり、ACR タスクを実行したりします。すべて Visual Studio Code 内で実行します。
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/
@@ -122,7 +162,9 @@ Azure コンテナー レジストリを使用するには、必要に応じて 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-task]: /cli/azure/acr
+[az-acr-pack-build]: /cli/azure/acr/pack#az-acr-pack-build
+[az-acr-task]: /cli/azure/acr/task
+[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
 [az-login]: /cli/azure/reference-index#az-login
 [az-login-service-principal]: /cli/azure/authenticate-azure-cli
 

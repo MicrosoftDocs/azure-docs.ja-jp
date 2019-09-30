@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b14d6f70f4c4163f16c8275f4e071da6a9e0bc78
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 3513dc0a1928168d6313e9d49a8f3d5d27aca781
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019815"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066346"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -43,13 +43,27 @@ ms.locfileid: "70019815"
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションでは、**Device Explorer** ページを使用して **Windows 10 IoT Core** デバイス テンプレートから実デバイスを追加します。 デバイス接続の詳細 ( **[スコープ ID]** 、 **[デバイス ID]** 、 **[主キー]** ) をメモします。 詳細については、「[接続情報の取得](howto-generate-connection-string.md#get-connection-information)」を参照してください。
+Azure IoT Central アプリケーションでは、**Device Explorer** ページを使用して **Windows 10 IoT Core** デバイス テンプレートから実デバイスを追加します。 デバイス接続の詳細 ( **[スコープ ID]** 、 **[デバイス ID]** 、 **[主キー]** ) をメモします。
 
 ## <a name="prepare-the-device"></a>デバイスの準備
 
 デバイスを IoT Central に接続するには、接続文字列が必要です。
 
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
+1. `dps-keygen` コマンドライン ユーティリティを使用して接続文字列を生成します。
+
+    [キー ジェネレーター ユーティリティ](https://github.com/Azure/dps-keygen)をインストールするには、次のコマンドを実行します。
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+
+1. 接続文字列を生成するには、先ほど書き留めておいた接続の詳細を使用して、次のコマンドを実行します。
+
+    ```cmd/sh
+    dps-keygen -di:<Device ID> -dk:<Primary or Secondary Key> -si:<Scope ID>
+    ```
+
+1. `dps-keygen` 出力からの接続文字列をデバイス コードで使用するためにコピーします。
 
 デバイスコードで接続文字列にアクセスするには、Windows 10 IoT Core デバイスの `C:\Data\Users\DefaultAccount\Documents\` フォルダーにある **connection.string.iothub** という名前のファイルに保存します。
 
@@ -106,7 +120,7 @@ Azure IoT Central アプリケーションでは、**Device Explorer** ページ
 
 ### <a name="properties"></a>properties
 
-| Type            | Display name | フィールド名 | データ型 |
+| 種類            | Display name | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | Text            | Location     | location   | 該当なし       |

@@ -5,6 +5,8 @@
     - name: Azure AD B2C について
       expanded: true
       href: active-directory-b2c-overview.md
+    - name: 技術と機能の概要
+      href: technical-overview.md
 - name: クイック スタート
   expanded: true
   items:
@@ -309,7 +311,7 @@
           href: b2clogin.md
         - name: Web API を b2clogin.com に移行する
           href: multiple-token-endpoints.md
-          displayName: 'migrate, b2clogin, owin, jwt'
+          displayName: 'migrate, b2clogin, owin'
     - name: Automation
       items:
         - name: 使用状況レポートのエクスポート
@@ -318,6 +320,9 @@
           href: active-directory-b2c-devquickstarts-graph-dotnet.md
     - name: 監査ログ
       href: active-directory-b2c-reference-audit-logs.md
+    - name: API Management API のセキュリティ保護
+      href: secure-api-management.md
+      displayName: 'apim, api management, migrate, b2clogin.com'
     - name: コンプライアンス
       items:
         - name: ユーザー アクセス

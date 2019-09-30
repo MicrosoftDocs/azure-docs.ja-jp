@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: mbullwin
-ms.openlocfilehash: 7e0143a25c0bb25b936d072cc2652e8b38a0be66
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: a48c2fdcce5126747f00cd3b901839864d438346
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302710"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058273"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
-この記事では、[ASP.NET Core](https://docs.microsoft.com/aspnet/core) アプリケーションで Application Insights を有効にする方法について説明します。 この記事の手順を完了すると、Application Insights で、ASP.NET Core アプリケーションから要求、依存関係、例外、パフォーマンス カウンター、ハートビート、ログが収集されます。 
+この記事では、[ASP.NET Core](https://docs.microsoft.com/aspnet/core) アプリケーションで Application Insights を有効にする方法について説明します。 この記事の手順を完了すると、Application Insights で、ASP.NET Core アプリケーションから要求、依存関係、例外、パフォーマンス カウンター、ハートビート、ログが収集されます。
 
 ここで使用する例は、`netcoreapp2.2` を対象とする [MVC アプリケーション](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app)です。 これらの手順は、すべての ASP.NET Core アプリケーションに適用できます。
 
@@ -34,6 +34,9 @@ ms.locfileid: "68302710"
 * **Web サーバー**: IIS (インターネット インフォメーション サーバー)、Kestrel。 
 * **ホスティング プラットフォーム**: Azure App Service、Azure VM、Docker、Azure Kubernetes Service (AKS) などの Web Apps 機能。
 * **IDE**: Visual Studio、VS Code、コマンド ライン。
+
+> [!NOTE]
+> Application Insights と共に ASP.NET Core 3.0-preview を使用している場合は、[2.8.0-beta2](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0-beta2) バージョン以降を使用してください。 これは、ASP.NET Core 3.0 で適切に動作することがわかっている唯一のバージョンです。 また、Visual Studio ベースのオンボードは、ASP.NET Core 3.0 アプリではまだサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -137,11 +140,42 @@ ms.locfileid: "68302710"
 
 ASP.NET Core での[パフォーマンス カウンター](https://azure.microsoft.com/documentation/articles/app-insights-web-monitor-performance/)のサポートは制限されています。
 
-   * SDK バージョン 2.4.1 以降では、アプリケーションが Web Apps (Windows) で実行されている場合、パフォーマンス カウンターが収集されます。
-   * SDK バージョン 2.7.0-beta3 以降では、アプリケーションが Windows で実行されていて、`NETSTANDARD2.0` 以降を対象とする場合、パフォーマンス カウンターが収集されます。
-   * .NET Framework を対象とするアプリケーションの場合、すべてのバージョンの SDK でパフォーマンス カウンターがサポートされます。
- 
-この記事は、Linux でパフォーマンス カウンター サポートが追加されるときに更新されます。
+* SDK バージョン 2.4.1 以降では、アプリケーションが Azure Web Apps (Windows) で実行されている場合、パフォーマンス カウンターが収集されます。
+* SDK バージョン 2.7.1 以降では、アプリケーションが Windows で実行されていて、`NETSTANDARD2.0` 以降を対象とする場合、パフォーマンス カウンターが収集されます。
+* .NET Framework を対象とするアプリケーションの場合、すべてのバージョンの SDK でパフォーマンス カウンターがサポートされます。
+* SDK バージョン 2.8.0-beta3 以降では、Linux の CPU/メモリ カウンターがポートされます。 Linux では、その他のカウンターはサポートされません。 Linux (およびその他の非 Windows 環境) でシステム カウンターを取得するには、[EventCounter](#eventcounter) を使用することをお勧めします。
+
+### <a name="eventcounter"></a>EventCounter
+
+[EventCounter](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) は、.NET/.NET Core でカウンターを発行および使用するためのクロスプラットフォーム方式です。 この機能は以前存在しましたが、これらのカウンターを発行する組み込みプロバイダーはありませんでした。 .NET Core 3.0 以降では、CLR カウンター、ASP.NET Core カウンターなど、いくつかのカウンターが追加の設定なしで発行されます。
+
+SDK バージョン 2.8.0-beta3 以降では、EventCounter の収集がサポートされています。 既定では、SDK は次のカウンターを収集します。これらのカウンターは、メトリックス エクスプローラー内で、または PerformanceCounter テーブルの下のクエリを使用して、クエリを実行できます。 カウンターの名前の形式は、"カテゴリ|カウンター" になります。
+
+|Category | カウンター|
+|---------------|-------|
+|System.Runtime | cpu-usage |
+|System.Runtime | working-set |
+|System.Runtime | gc-heap-size |
+|System.Runtime | gen-0-gc-count |
+|System.Runtime | gen-1-gc-count |
+|System.Runtime | gen-2-gc-count |
+|System.Runtime | time-in-gc |
+|System.Runtime | gen-0-size |
+|System.Runtime | gen-1-size |
+|System.Runtime | gen-2-size |
+|System.Runtime | loh-size |
+|System.Runtime | alloc-rate |
+|System.Runtime | assembly-count |
+|System.Runtime | exception-count |
+|System.Runtime | threadpool-thread-count |
+|System.Runtime | monitor-lock-contention-count |
+|System.Runtime | threadpool-queue-length |
+|System.Runtime | threadpool-completed-items-count |
+|System.Runtime | active-timer-count |
+|Microsoft.AspNetCore.Hosting | requests-per-second |
+|Microsoft.AspNetCore.Hosting | total-requests |
+|Microsoft.AspNetCore.Hosting | current-requests |
+|Microsoft.AspNetCore.Hosting | failed-requests |
 
 ### <a name="ilogger-logs"></a>ILogger ログ
 
@@ -197,7 +231,17 @@ Application Insights SDK for ASP.NET Core をカスタマイズして、既定�
     }
 ```
 
-詳細については、[`ApplicationInsightsServiceOptions` での構成可能な設定](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsServiceOptions.cs)を参照してください。
+`ApplicationInsightsServiceOptions` の設定の完全な一覧
+
+|Setting | 説明 | Default
+|---------------|-------|-------
+|EnableQuickPulseMetricStream | LiveMetrics 機能を有効または無効にします | true
+|EnableAdaptiveSampling | アダプティブ サンプリングを有効または無効にします | true
+|EnableHeartbeat | ハートビート機能を有効または無効にします。この機能は、"HeartBeatState" という名前のカスタム メトリックを、.NET バージョン、Azure 環境情報 (該当する場合) などのランタイムに関する情報と共に定期的に (既定は 15 分) 送信します。 | true
+|AddAutoCollectedMetricExtractor | AutoCollectedMetrics エクストラクターを有効または無効にします。これは、サンプリングが行われる前に要求/依存関係に関する事前に集計されたメトリックを送信する TelemetryProcessor です。 | true
+|RequestCollectionOptions.TrackExceptions | 要求収集モジュールによる未処理の例外の追跡についてのレポートを有効または無効にします。 | NETSTANDARD 2.0 では false (例外は ApplicationInsightsLoggerProvider で追跡されるため) で、それ以外の場合は true です。
+
+最新の一覧については、[`ApplicationInsightsServiceOptions` の構成可能な設定](https://github.com/microsoft/ApplicationInsights-aspnetcore/blob/develop/src/Microsoft.ApplicationInsights.AspNetCore/Extensions/ApplicationInsightsServiceOptions.cs)を参照してください。
 
 ### <a name="sampling"></a>サンプリング
 
@@ -259,16 +303,17 @@ Application Insights SDK for ASP.NET Core では、固定レートとアダプ�
 
 ### <a name="configuring-or-removing-default-telemetrymodules"></a>既定の TelemetryModules の構成または削除
 
-Application Insights では、追加構成を必要とせずに特定のワークロードに関する[有用な情報を自動的に収集する](https://docs.microsoft.com/azure/azure-monitor/app/auto-collect-dependencies)ために、テレメトリ モジュールが使われます。
+Application Insights では、テレメトリ モジュールを使用して、ユーザーが手動で追跡することなく特定のワークロードに関する有用なテレメトリが自動収集されます。
 
 次の自動収集モジュールが既定で有効になります。 これらのモジュールでは、自動的にテレメトリが収集されます。 それらを無効にするか構成して、既定の動作を変更できます。
 
-* `RequestTrackingTelemetryModule`
-* `DependencyTrackingTelemetryModule`
-* `PerformanceCollectorModule`
-* `QuickPulseTelemetryModule`
-* `AppServicesHeartbeatTelemetryModule`
-* `AzureInstanceMetadataTelemetryModule`
+* `RequestTrackingTelemetryModule` - 受信 Web 要求から RequestTelemetry を収集します。
+* `DependencyTrackingTelemetryModule` - 送信 http 呼び出しと sql 呼び出しから DependencyTelemetry を収集します。
+* `PerformanceCollectorModule` - Windows PerformanceCounters を収集します。
+* `QuickPulseTelemetryModule` - Live Metrics ポータルで表示するテレメトリを収集します。
+* `AppServicesHeartbeatTelemetryModule` - アプリケーションがホストされる Azure App Service 環境について、(カスタム メトリックとして送信される) ハート ビートを収集します。
+* `AzureInstanceMetadataTelemetryModule` - アプリケーションがホストされる Azure VM 環境について、(カスタム メトリックとして送信される) ハート ビートを収集します。
+* `EventCounterCollectionModule` - [EventCounter](#eventcounter) を収集します。 このモジュールは新機能であり、SDK バージョン 2.8.0-beta3 以降で使用できます。
 
 既定の `TelemetryModule` を構成するには、下の画像のように、拡張メソッド `ConfigureTelemetryModule<T>` を `IServiceCollection` で使用します。
 
@@ -286,6 +331,15 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
                         {
                             module.EnableW3CHeadersInjection = true;
                         });
+
+        // The following removes all default counters from EventCounterCollectionModule, and adds a single one.
+        services.ConfigureTelemetryModule<EventCounterCollectionModule>(
+                            (module, o) =>
+                            {
+                                module.Counters.Clear();
+                                module.Counters.Add(new EventCounterCollectionRequest("System.Runtime", "gen-0-size"));
+                            }
+                        );
 
         // The following removes PerformanceCollectorModule to disable perf-counter collection.
         // Similarly, any other default modules can be removed.
@@ -331,6 +385,8 @@ using Microsoft.ApplicationInsights.Channel;
     }
 ```
 
+上記は、自動収集モジュールによってテレメトリが収集されないようにするものではないことに注意してください。 上記の方法では、Application Insights へのテレメトリの送信のみが無効になります。 特定の自動収集モジュールが必要ない場合は、[テレメトリ モジュールを削除する](#configuring-or-removing-default-telemetrymodules)ことをお勧めします。
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>自動的に収集されないテレメトリを追跡するにはどうすればよいですか?
@@ -366,6 +422,8 @@ Application Insights でのカスタム データ レポートについては、
 
 はい、このメソッドで Application Insights を有効にできます。 この手法は、Visual Studio のオンボードと、Web Apps 拡張機能で使用されます。 ただし、一部の構成を制御するためのオーバーロードが提供されるため、`services.AddApplicationInsightsTelemetry()` を使うことをお勧めします。 どちらのメソッドも内部的には同じことが行われるので、カスタム構成を適用する必要がない場合は、どちらのメソッドを呼び出してもかまいません。
 
+ASP.NET Core 3.0 では、`IWebHostBuilder` が `IHostBuilder` に置き換えられました。混乱を避けるために、Application Insights バージョン 2.8.0-beta3 以降では UseApplicationInsights() メソッドを廃止としてマークしており、次のメジャー バージョンで削除される予定です。
+
 ### <a name="im-deploying-my-aspnet-core-application-to-web-apps-should-i-still-enable-the-application-insights-extension-from-web-apps"></a>ASP.NET Core アプリケーションを Web Apps にデプロイしています。 Application Insights 拡張を Web アプリから有効にできますか?
 
 この記事に示されているように、SDK がビルド時にインストールされる場合は、App Service ポータルから [Application Insights の拡張機能](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps)を有効にする必要はありません。 拡張機能はインストールされていても、既に SDK がアプリケーションに追加されていることが検出されると、バックオフします。 拡張機能から Application Insights を有効にする場合、SDK をインストールして更新する必要はありません。 ただし、この記事の手順に従って Application Insights を有効にする場合は、次のような理由で柔軟性が増します。
@@ -375,6 +433,7 @@ Application Insights でのカスタム データ レポートについては、
        * 自己完結型やフレームワーク依存型など、すべての発行モード。
        * 完全 .NET Framework を含む、すべてのターゲット フレームワーク。
        * Web Apps、VM、Linux、コンテナー、Azure Kubernetes Service、Azure 以外のホスティングなど、すべてのホスティング オプション。
+       * プレビュー バージョンを含むすべての .NET Core バージョン。
    * Visual Studio からデバッグしているとき、テレメトリをローカル環境で見ることができます。
    * `TrackXXX()` API を使って、追加のカスタム テレメトリを追跡できます。
    * 構成を完全に制御できます。

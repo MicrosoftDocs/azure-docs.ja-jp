@@ -9,17 +9,16 @@ ms.assetid: 384cf393-5c63-4ffb-9eb2-bfd990bc7af1
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 36324ccd9b6e9470c93949efed6c29a9b8d3ab61
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: e80c0e4e57f8af067c17d0dcfefd26ce7ce8255f
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389286"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069462"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
 
@@ -46,7 +45,7 @@ Azure 仮想ネットワークでは、最長プレフィックス一致 (LPM) �
 
 Azure Virtual Network が ExpressRoute を使って構成されていても ASE からのトラフィックが直接インターネットに向かえるようにするには、次の作業を行ってください。
 
-* 0.0.0.0/0 をアドバタイズするように ExpressRoute を構成します。 これにより、すべての送信トラフィックが既定でオンプレミスにルーティングされます。
+* 0\.0.0.0/0 をアドバタイズするように ExpressRoute を構成します。 これにより、すべての送信トラフィックが既定でオンプレミスにルーティングされます。
 * アドレス プレフィックスが 0.0.0.0/0 で、次ホップの種類がインターネットであるような UDR を作成し、それを ASE のサブネットに適用します。
 
 これらの 2 つの変更を行った場合、App Service Environment サブネットから発信されたインターネット宛てのトラフィックは ExpressRoute 接続を強制的に経由しません。

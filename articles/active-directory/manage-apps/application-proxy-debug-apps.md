@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: d0a12bde119e9dae3f950603fac4bce060bb5f91
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 06b8edcb0f912bfd35137e197253b20b9459448f
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66145956"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057741"
 ---
 # <a name="debug-application-proxy-application-issues"></a>アプリケーション プロキシ アプリケーションの問題をデバッグする 
 
@@ -42,7 +42,7 @@ ms.locfileid: "66145956"
 |  | Action | 説明 | 
 |---------|---------|---------|
 |1 | ブラウザーを開き、アプリにアクセスして、資格情報を入力する | ご自分の資格情報を使用してアプリへのサインインを試し、任意のユーザーに関連するエラー ([この企業アプリケーションにアクセスできない](application-proxy-sign-in-bad-gateway-timeout-error.md)など) を確認します。 |
-|2 | アプリへのユーザーの割り当てを確認する | ユーザー アカウントに、企業ネットワーク内からアプリにアクセスするためのアクセス許可があることを確認してから、「[アプリケーションをテストする](application-proxy-add-on-premises-application.md#test-the-application)」の手順に従って、アプリへのサインインをテストします。 サインインに関する問題が解決しない場合は、[サインイン エラーのトラブルシューティング方法](https://docs.microsoft.com/azure/active-directory/reports-monitoring/howto-troubleshoot-sign-in-errors)に関するページを参照してください。  |
+|2 | アプリへのユーザーの割り当てを確認する | ユーザー アカウントに、企業ネットワーク内からアプリにアクセスするためのアクセス許可があることを確認してから、「[アプリケーションをテストする](application-proxy-add-on-premises-application.md#test-the-application)」の手順に従って、アプリへのサインインをテストします。 サインインに関する問題が解決しない場合は、[サインイン エラーのトラブルシューティング方法](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)に関するページを参照してください。  |
 |3 | ブラウザーを開き、アプリへのアクセスを試みる | エラーがすぐに表示される場合は、アプリケーション プロキシが正しく構成されていることを確認します。 特定のエラー メッセージンに関する詳細は、「[アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)」を参照してください。  |
 |4 | カスタム ドメインのセットアップを確認するか、エラーをトラブルシューティングする | ページに何も表示されない場合は、[カスタム ドメインの使用](application-proxy-configure-custom-domain.md)を確認して、カスタム ドメインが正しく構成されていることを確認します。<br></br>ページで読み込みが行われず、エラー メッセージが表示される場合は、「[アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)」を参照して、エラーのトラブルシューティングを行います。 <br></br>エラー メッセージが表示されるまでに 20 秒以上かかる場合は、接続に問題がある可能性があります。 「[アプリケーション プロキシ コネクタのデバッグ](application-proxy-debug-connectors.md)」のトラブルシューティング記事に移動します。  |
 |5 | 問題が解決しない場合は、コネクタのデバッグに移動する | プロキシとコネクタ間またはコネクタとバックエンド間に接続の問題がある可能性があります。 「[アプリケーション プロキシ コネクタのデバッグ](application-proxy-debug-connectors.md)」のトラブルシューティング記事に移動します。 |

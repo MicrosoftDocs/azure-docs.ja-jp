@@ -5,15 +5,15 @@ services: container-registry
 author: stevelas
 manager: gwallace
 ms.service: container-registry
-ms.topic: overview
+ms.topic: article
 ms.date: 08/16/2019
 ms.author: stevelas
-ms.openlocfilehash: 73d497b4784a91974fab8a94c6f9fe595770ea45
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: c0de5f958c6dcbf935de4eec9557cf64620abbcf
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69574388"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208003"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Azure Container Registry の geo レプリケーション
 
@@ -64,7 +64,7 @@ Azure Container Registry の geo レプリケーション機能を使用する�
 
 ## <a name="configure-geo-replication"></a>geo レプリケーションの構成
 
-geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して、geo レプリケーションを管理することもできます。
+geo レプリケーションは、マップ上でリージョンをクリックして簡単に構成できます。 Azure CLI の [az acr replication](/cli/azure/acr/replication) コマンドなどのツールを使用して geo レプリケーションを管理することや、[Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)を使用して geo レプリケーションが有効なレジストリをデプロイすることもできます。
 
 geo レプリケーションは、[Premium レジストリ](container-registry-skus.md)限定の機能です。 レジストリがまだ Premium でない場合は、[Azure Portal](https://portal.azure.com) で Basic および Standard から Premium に変更できます。
 
@@ -99,6 +99,17 @@ ACR は、構成済みのレプリカ間でイメージの同期を開始しま�
 * イメージまたはタグの更新を最も近いリージョンにプッシュした後、Azure Container Registry がマニフェストとレイヤーを、選択された残りのリージョンにレプリケートするまでに、少し時間がかかります。 大きいイメージは、小さいイメージよりもレプリケートに時間がかかります。 イメージとタグは、最終的な整合性モデルを使用して、レプリケーションのリージョン間で同期されます。
 * geo レプリケーションされたレジストリへのプッシュ更新に依存するワークフローを管理するには、プッシュ イベントに応答するように [Webhook](container-registry-webhook.md) を構成することをお勧めします。 geo レプリケーションされたレジストリ内にリージョンの Webhook を設定して、geo レプリケーションされたすべてのリージョンにわたってプッシュ イベントが完了したときにそれを追跡できます。
 
+## <a name="delete-a-replica"></a>レプリカの削除
+
+レジストリのレプリカを構成した後に、それが不要になった場合はいつでも削除できます。 Azure portal またはその他のツール (Azure CLI の[az acr replication delete](/cli/azure/acr/replication#az-acr-replication-delete) コマンドなど) を使用してレプリカを削除します。
+
+Azure portal でレプリカを削除するには、次の手順に従います。
+
+1. Azure Container Registry に移動し、 **[レプリケーション]** を選択します。
+1. レプリカの名前を選択し、 **[削除]** を選択します。 レプリカを削除することを確認します。
+
+> [!NOTE]
+> レジストリの "*ホーム リージョン*" (レジストリを作成した場所) でレジストリのレプリカを削除することはできません。 ホーム レプリカは、レジストリ自体の削除によってのみ削除できます。
 
 ## <a name="geo-replication-pricing"></a>geo レプリケーションの価格
 

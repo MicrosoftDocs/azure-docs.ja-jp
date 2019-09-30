@@ -35,8 +35,6 @@
   items:
     - name: デバイスの接続
       items:
-        - name: デバイス接続文字列の生成
-          href: howto-generate-connection-string.md
         - name: Node.js (汎用) アプリケーションを準備して接続する
           href: howto-connect-nodejs.md
         - name: MXChip IoT DevKit を準備して接続する

@@ -1,18 +1,18 @@
 ---
-title: Node.js Web アプリを作成する
-description: Azure App Service への Node.js のデプロイ
-author: KarlErickson
-ms.author: karler
-ms.date: 07/18/2019
+title: Node.js Web アプリを作成する - Azure App Service
+description: Azure App Service に Node.js アプリをデプロイする方法
+author: msangapu
+ms.author: msangapu
+ms.date: 08/12/2019
 ms.topic: quickstart
 ms.service: app-service
 ms.devlang: javascript
-ms.openlocfilehash: ced2977509f16f8dab2abe5546e19b7e05fb2a3d
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 8d679a95cc89c2ae7774b7f7b51b9d0aadd89d12
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68975769"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390972"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Azure で Node.js アプリを作成する
 

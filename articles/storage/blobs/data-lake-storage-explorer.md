@@ -1,6 +1,6 @@
 ---
 title: Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 のデータを管理する
-description: このクイック スタートでは、Azure Storage Explorer を使用して、Azure Data Lake Storage Gen2 アカウントでファイル システムだけでなく、ディレクトリとファイルを作成する方法について説明します。 次に、ローカル コンピューターにファイルをダウンロードする方法と、ディレクトリ内のすべてのファイルを表示する方法について説明します。
+description: このクイック スタートでは、Azure Storage Explorer を使用して、Azure Data Lake Storage Gen2 アカウントでコンテナーだけでなく、ディレクトリとファイルを作成する方法について学習します。 次に、ローカル コンピューターにファイルをダウンロードする方法と、ディレクトリ内のすべてのファイルを表示する方法について説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3450de26c12d91f4be00fe39bd5703564c786190
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95d7a58c8188e8c6633f6be50af608aed437edff
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855608"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69991420"
 ---
 # <a name="use-azure-storage-explorer-to-manage-data-in-an-azure-data-lake-storage-gen2-account"></a>Azure Storage Explorer を使用して Azure Data Lake Storage Gen2 アカウントのデータを管理する
 
@@ -41,13 +41,13 @@ ms.locfileid: "68855608"
 
 ![[Microsoft Azure Storage Explorer - 接続] ウィンドウ](media/storage-quickstart-blobs-storage-explorer/mainpage.png)
 
-## <a name="create-a-file-system"></a>ファイル システムを作成する
+## <a name="create-a-container"></a>コンテナーを作成する
 
 BLOB は常にディレクトリにアップロードされます。 これにより、フォルダー内でコンピューター上のファイルを整理するように、BLOB のグループを整理できます。
 
-ディレクトリを作成するには、前の手順で作成したストレージ アカウントを展開します。 **[BLOB コンテナー]** を選択し、 **[BLOB コンテナーの作成]** を右クリックして選択します。 ファイル システムの名前を入力します。 完了したら、**Enter** キーを押してファイル システムを作成します。 BLOB ディレクトリは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
+ディレクトリを作成するには、前の手順で作成したストレージ アカウントを展開します。 **[BLOB コンテナー]** を選択し、 **[BLOB コンテナーの作成]** を右クリックして選択します。 コンテナーの名前を入力します。 完了したら、**Enter** キーを押してコンテナーを作成します。 BLOB ディレクトリは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
 
-![Microsoft Azure Storage Explorer - ファイル システムの作成](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
+![Microsoft Azure Storage Explorer - コンテナーの作成](media/storage-quickstart-blobs-storage-explorer/creating-a-filesystem.png)
 
 ## <a name="upload-blobs-to-the-directory"></a>BLOB をディレクトリにアップロードする
 

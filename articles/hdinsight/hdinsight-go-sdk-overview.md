@@ -1,18 +1,19 @@
 ---
 title: Azure HDInsight SDK for Go
-description: Azure HDInsight SDK for Go のリファレンス
+description: Azure HDInsight SDK for Go および Apache Hadoop クラスターを使用するための参考資料
 author: tylerfox
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/8/2019
 ms.author: tyfox
+ms.reviewer: jasonh
 ms.custom: seodec18
-ms.openlocfilehash: 299e99d291e593ec01d2951c62541a7666565528
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 60ac0509aed1fc83bc7f660783d4bdbd6cb7d976
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977062"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077128"
 ---
 # <a name="hdinsight-sdk-for-go-preview"></a>HDInsight SDK for Go (プレビュー)
 
@@ -31,7 +32,7 @@ HDInsight SDK for Go に用意されているクラスと関数を使用して H
 
 GOPATH の場所から `go get github.com/Azure/azure-sdk-for-go/tree/master/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight` を実行します。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 SDK は最初に Azure サブスクリプションで認証する必要があります。  以下の例に従って、サービス プリンシパルを作成し、これを使用して認証します。 その後、`ClustersClient` のインスタンスが生成されます。これには、管理操作の実行に使用できる関数が多数含まれています (以下のセクションで説明します)。
 

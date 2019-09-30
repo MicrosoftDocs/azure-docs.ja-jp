@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: fd3ec276fdc95ad326d14a5b21e8ab793b154080
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875779"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099616"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
 
@@ -49,7 +49,7 @@ ms.locfileid: "69875779"
 
 このチュートリアルを完了するには、Azure IoT Central アプリケーションが必要です。 「[Azure IoT Central アプリケーションの作成](quick-deploy-iot-central.md)」クイック スタートを完了している場合は、そのクイック スタートで作成したアプリケーションを再利用できます。 それ以外の場合は、次の手順を実行して、空の Azure IoT Central アプリケーションを作成してください。
 
-1. Azure IoT Central の [[Application Manager]\(アプリケーション マネージャー\)](https://aka.ms/iotcentral) ページに移動します。
+1. [Azure IoT Central のアプリケーション マネージャー](https://aka.ms/iotcentral) Web サイトに移動します。
 
 2. Azure サブスクリプションへのアクセスに使用するメール アドレスとパスワードを入力します。
 
@@ -57,7 +57,7 @@ ms.locfileid: "69875779"
 
 3. 新しい Azure IoT Central アプリケーションの作成を開始するには、 **[New Application]\(新しいアプリケーション\)** を選択します。
 
-    ![Azure IoT Central の [Application Manager]\(アプリケーション マネージャー\) ページ](./media/tutorial-define-device-type/iotcentralhome.png)
+    ![Azure IoT Central アプリケーション マネージャーのページ](./media/tutorial-define-device-type/iotcentralhome.png)
 
 4. 新しい Azure IoT Central アプリケーションを作成するには:
     
@@ -138,7 +138,7 @@ ms.locfileid: "69875779"
      | フィールド名           | 温度   |
      | Units                | F             |
      | Min                  | 60            |
-     | max                  | 110           |
+     | Max                  | 110           |
      | 小数点以下の桁数       | 0             |
 
      テレメトリの表示色を選択することもできます。 テレメトリの定義を保存するために、 **[保存]** を選択します。

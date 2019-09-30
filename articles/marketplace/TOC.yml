@@ -60,6 +60,8 @@
         - name: Marketplace のベネフィット
           href: ./gtm-your-marketplace-benefits.md
           items:
+            - name: 共同販売パートナー エンゲージメント
+              href: ./marketplace-co-sell.md
             - name: 推奨されるソリューション
               href: ./preferred-solutions.md
             - name: 統合されたソリューション
@@ -490,6 +492,13 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
         - name: オファーの体験版を設定する
           href: ./partner-center-portal/test-drive.md
+        - name: 共同販売オプション
+          href: ./partner-center-portal/commercial-marketplace-co-sell.md
+          items:
+            - name: 国とリージョン コード
+              href: ./partner-center-portal/commercial-marketplace-co-sell-countries.md
+            - name: 状態コード
+              href: ./partner-center-portal/commercial-marketplace-co-sell-states.md
     - name: 発行状態
       href: ./partner-center-portal/publishing-status.md
     - name: 既存のオファーを更新する

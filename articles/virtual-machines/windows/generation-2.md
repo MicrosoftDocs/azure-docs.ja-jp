@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/23/2019
+ms.date: 09/10/2019
 ms.author: lahugh
-ms.openlocfilehash: fd794662ef41112cb04bdfde087253c8abdb6983
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5e342418dc6cc9ed0a3bbbfaad42801d5ffe9e9d
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079378"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900255"
 ---
 # <a name="support-for-generation-2-vms-preview-on-azure"></a>Azure での第 2 世代 VM (プレビュー) のサポート
 
@@ -38,14 +38,18 @@ ms.locfileid: "70079378"
 第 1 世代 VM は、Azure のすべての VM サイズでサポートされています。 Azure では現在、次の選択された VM シリーズに対して第 2 世代のプレビュー サポートが提供されています。
 
 * [B シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
+* [DC シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
 * [Dsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv2-series)および [Dsv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dsv3-series-1)
 * [Esv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#esv3-series)
 * [Fsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-compute#fsv2-series-1)
 * [GS シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#gs-series)
+* [HB シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hb-series)
+* [HC シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#hc-series)
 * [Ls シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series)と [Lsv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-storage#lsv2-series)
 * [Mv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)
 * [NCv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv2-series)と [NCv3 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#ncv3-series)
 * [ND シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nd-series)
+* [NVv2 シリーズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu#nvv3-series--1)
 
 ## <a name="generation-2-vm-images-in-azure-marketplace"></a>Azure Marketplace の第 2 世代 VM のイメージ
 
@@ -55,6 +59,8 @@ ms.locfileid: "70079378"
 * Windows Server 2016 Datacenter
 * Windows Server 2012 R2 Datacenter
 * Windows Server 2012 Datacenter
+* SUSE Linux Enterprise Server 15 SP1
+* SUSE Linux Enterprise Server 12 SP4
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>オンプレミスと Azure 第 2 世代 VM の比較
 
@@ -121,6 +127,21 @@ Azure portal または Azure CLI では、UEFI ブートをサポートする Ma
 
 * **第 1 世代 VM と第 2 世代 VM の価格に違いはありますか?**  
    いいえ。
+
+* **オンプレミスに第 2 世代の VM の .vhd ファイルがあります。この .vhd ファイルを使用して、Azure に第 2 世代の VM を作成できますか?**
+  はい。ご自身の第 2 世代の .vhd ファイルを Azure に取り込み、それを使用して第 2 世代の VM を作成できます。 それには、次の手順を実行してください。
+    1. ご自身の VM を作成するのと同じリージョンのストレージ アカウントに .vhd をアップロードします。
+    1. .vhd ファイルからマネージド ディスクを作成します。 HyperV Generation プロパティを V2 に設定します。 HyperV Generation プロパティは、マネージド ディスクの作成時に、次の PowerShell コマンドによって設定されます。
+
+        ```powershell
+        $sourceUri = 'https://xyzstorage.blob.core.windows.net/vhd/abcd.vhd'. #<Provide location to your uploaded .vhd file>
+        $osDiskName = 'gen2Diskfrmgenvhd'  #<Provide a name for your disk>
+        $diskconfig = New-AzDiskConfig -Location '<location>' -DiskSizeGB 127 -AccountType Standard_LRS -OsType Windows -HyperVGeneration "V2" -SourceUri $sourceUri -CreateOption 'Import'
+        New-AzDisk -DiskName $osDiskName -ResourceGroupName '<Your Resource Group>' -Disk $diskconfig
+        ```
+
+    1. ディスクが使用可能になったら、このディスクを接続して VM を作成します。 作成される VM は第 2 世代 VM です。
+    第 2 世代の VM の作成時には、必要に応じてこの VM のイメージを汎用化できます。 汎用化したイメージは、作成する複数の VM で使用できます。
 
 * **OS ディスク サイズを増やすにはどうすればよいですか?**  
   第 2 世代 VM の新規のものとして、2 TB を超える OS ディスクがあります。 既定では、第 2 世代 VM の OS ディスクは 2 TB 未満です。 ディスク サイズは、4 TB の推奨される最大サイズまで増やすことができます。 OS ディスク サイズを増やすには、Azure CLI または Azure portal を使用します。 プログラムでディスクを拡張する方法については、[ディスクのサイズ変更](expand-os-disk.md)に関するページを参照してください。

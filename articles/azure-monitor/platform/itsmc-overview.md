@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: f2574cc64e157ff0f8a6cb875a832db88cf13dd6
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 31d9307d23d308192b362d9570911c86a7dd8372
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479815"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051838"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -35,11 +35,12 @@ ITSMC は、次の ITSM ツールとの接続をサポートしています。
 -   Provance
 -   Cherwell
 
-ITSMC を使用すると、次のことができます
+ITSMC を使用すると、次のことができます。
 
 -  Azure アラート (メトリック アラート、アクティビティ ログ アラート、および Log Analytics アラート) に基づいて、ITSM ツールで作業項目を作成する。
 -  オプションで、ITSM ツールのインシデントと変更要求データを Azure Log Analytics ワークスペースに同期する。
 
+詳細については、[法的条項とプライバシー ポリシー](https://go.microsoft.com/fwLink/?LinkID=522330&clcid=0x9)を参照してください。
 
 ITSM Connector の使用を開始するには、次の手順を使用します。
 
@@ -103,7 +104,7 @@ ITSM ツールの準備が完了したら、次の手順に従って接続を作
 4. [ITSM 製品/サービスとの ITSMC 接続の構成](../../azure-monitor/platform/itsmc-connections.md)に関する記事の説明に従って、接続の設定を指定します。
 
    > [!NOTE]
-   > 
+   >
    > 既定では、ITSMC は、接続の構成データを 24 時間に 1 回更新します。 編集内容やテンプレートの更新を反映するために接続データをすぐに更新するには、接続のブレードに表示される **[同期]** ボタンをクリックします。
 
    ![接続の更新](media/itsmc-overview/itsmc-connections-refresh.png)
@@ -141,7 +142,7 @@ ITSM 接続を作成したら、**アクション グループ**の **ITSM ア�
 Azure のアラート ルールを作成/編集する場合は、ITSM アクションを含むアクション グループを使用します。 アラートがトリガーされると、ITSM ツールで作業項目が作成/更新されます。
 
 > [!NOTE]
-> 
+>
 > ITSM アクションの価格については、アクション グループの[価格ページ](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。
 
 
@@ -174,7 +175,7 @@ Service Map ソリューションを使用する場合は、ITSM ソリューシ
 ITSMC によって収集されるデータの例を以下に示します。
 
 > [!NOTE]
-> 
+>
 > Log Analytics にインポートされる作業項目の種類によっては、**ServiceDesk_CL** には以下のフィールドが含まれます。
 
 **作業項目:** **インシデント**  
@@ -184,10 +185,10 @@ ServiceDeskWorkItemType_s="Incident"
 
 - サービス デスク接続名
 - サービス デスク ID
-- 状態
+- State
 - 緊急度
 - 影響
-- 優先順位
+- Priority
 - エスカレーション
 - 作成者
 - 解決者
@@ -222,7 +223,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - エスカレーション
 - 競合状態
 - 緊急度
-- 優先順位
+- Priority
 - リスク
 - 影響
 - 割当先
@@ -242,10 +243,10 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics のフィールド | ServiceNow のフィールド |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | 状態 |
+| IncidentState_s | State |
 | Urgency_s |緊急度 |
 | Impact_s |影響|
-| Priority_s | 優先順位 |
+| Priority_s | Priority |
 | CreatedBy_s | 開始者 |
 | ResolvedBy_s | 解決者|
 | ClosedBy_s  | 終了者 |
@@ -270,9 +271,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  簡単な説明 |
 | Type_s|  Type |
 | Category_s|  Category |
-| CRState_s|  状態|
+| CRState_s|  State|
 | Urgency_s|  緊急度 |
-| Priority_s| 優先順位|
+| Priority_s| Priority|
 | Risk_s| リスク|
 | Impact_s| 影響|
 | RequestedDate_t  | Requested by date\(要求日\) |

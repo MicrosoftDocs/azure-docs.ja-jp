@@ -10,20 +10,20 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a13d4b0b44c51f78a068b1619fe083a08756af6b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511604"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064396"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C カスタム ポリシーでの要求リゾルバーについて
 
-Azure Active Directory (Azure AD) B2C [カスタム ポリシー](active-directory-b2c-overview-custom.md)での要求リゾルバーは、ポリシー名、要求の相関 ID、ユーザー インターフェイス言語など、承認要求に関するコンテキスト情報を提供します。
+Azure Active Directory B2C (Azure AD B2C) [カスタム ポリシー](active-directory-b2c-overview-custom.md)での要求リゾルバーは、ポリシー名、要求の相関 ID、ユーザー インターフェイス言語など、承認要求に関するコンテキスト情報を提供します。
 
-入力要求または出力要求で要求リゾルバーを使用するには、[ClaimsSchema](claimsschema.md) 要素の下で文字列 **ClaimType** を定義した後、入力または出力の要求要素で **DefaultValue** を要求リゾルバーに設定します。 Azure AD B2C によって要求リゾルバーの値が読み取られて、技術プロファイルで使用されます。 
+入力要求または出力要求で要求リゾルバーを使用するには、[ClaimsSchema](claimsschema.md) 要素の下で文字列 **ClaimType** を定義した後、入力または出力の要求要素で **DefaultValue** を要求リゾルバーに設定します。 Azure AD B2C によって要求リゾルバーの値が読み取られて、技術プロファイルで使用されます。
 
-次の例では、`correlationId` という名前の要求の種類が、`string` の **DataType** で定義されています。  
+次の例では、`correlationId` という名前の要求の種類が、`string` の **DataType** で定義されています。
 
 ```XML
 <ClaimType Id="correlationId">
@@ -107,7 +107,7 @@ OIDC 要求または OAuth2 要求の一部に含まれているすべてのパ�
 
 ### <a name="restful-technical-profile"></a>RESTful 技術プロファイル
 
-[RESTful](restful-technical-profile.md) 技術プロファイルでは、ユーザーの言語、ポリシー名、スコープ、クライアント ID を送信したいことがあります これらの要求に基づいて、REST API はカスタム ビジネス ロジックを実行し、必要な場合は、ローカライズされたエラー メッセージを発生させることができます。 
+[RESTful](restful-technical-profile.md) 技術プロファイルでは、ユーザーの言語、ポリシー名、スコープ、クライアント ID を送信したいことがあります これらの要求に基づいて、REST API はカスタム ビジネス ロジックを実行し、必要な場合は、ローカライズされたエラー メッセージを発生させることができます。
 
 RESTful 技術プロファイルの例を次に示します。
 

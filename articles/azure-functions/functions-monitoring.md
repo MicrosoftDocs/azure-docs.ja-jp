@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 7220c72625697490d9c42dab7e18ca4bf64d3f43
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8092108ef13f4b86f20cf5a8a0b41b49d75aa626
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085626"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098682"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -610,7 +610,7 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 関数実行によって生成されているログ ファイルのストリームを表示する方法は 2 つあります。
 
-* **組み込みのログ ストリーミング**: App Service プラットフォームでは、アプリケーション ログ ファイルのストリームを表示できます。 これは、[ローカル開発](functions-develop-local.md)中に関数をデバッグするときや、ポータル内の **[テスト]** タブを使用するときに見られる出力と同等です。 すべてのログベース情報が表示されます。 詳細については、[Azure App Service の Web アプリの診断ログの有効化](../app-service/troubleshoot-diagnostic-logs.md#streamlogs)に関するページをご覧ください。 このストリーミング方法でサポートされるインスタンスは 1 つだけです。従量課金プランの Linux 上で実行されているアプリでは、この方法を使用できません。
+* **組み込みのログ ストリーミング**: App Service プラットフォームでは、アプリケーション ログ ファイルのストリームを表示できます。 これは、[ローカル開発](functions-develop-local.md)中に関数をデバッグするときや、ポータル内の **[テスト]** タブを使用するときに見られる出力と同等です。 すべてのログベース情報が表示されます。 詳しくは、[ログのストリーミング](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)に関する記事をご覧ください。 このストリーミング方法でサポートされるインスタンスは 1 つだけです。従量課金プランの Linux 上で実行されているアプリでは、この方法を使用できません。
 
 * **Live Metrics Stream**: 関数アプリが [Application Insights に接続されている](#enable-application-insights-integration)場合、[Live Metrics Stream](../azure-monitor/app/live-stream.md) を使用して Azure portal 内でログ データやその他のメトリックをほぼリアルタイムで表示できます。 この方法は、複数のインスタンス上または従量課金プランの Linux 上で実行されている関数を監視する場合に使用します。 このメソッドでは、[サンプリングされたデータ](#configure-sampling)が使用されます。
 

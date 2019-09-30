@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 93b3c7671a5beb4b3a451fe0efd13b9f48e00436
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6e0c1419e5656f184d27dce8d185a86bea71d173
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941818"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70389947"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Azure DevTest Labs での共有イメージ ギャラリーの構成
 DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows/shared-image-galleries.md)機能がサポートされるようになりました。 ラボ ユーザーは、ラボ リソースの作成中に共有の場所からイメージにアクセスできます。 また、カスタム マネージド VM イメージに関連する構造および組織を構築できます。 共有イメージ ギャラリー機能では、次がサポートされています。
@@ -32,6 +32,9 @@ DevTest Labs で[共有イメージ ギャラリー](../virtual-machines/windows
 詳細については、[共有イメージ ギャラリーのドキュメント](../virtual-machines/windows/shared-image-galleries.md)を参照してください。 
  
 メンテナンスが必要なマネージド イメージや社内全体で利用可能にしたいマネージド イメージが多数ある場合は、イメージを簡単に更新して共有できるリポジトリとして、共有イメージ ギャラリーを使用できます。 ラボ所有者は、既存の共有イメージ ギャラリーをラボにアタッチできます。 このギャラリーがアタッチされると、ラボ ユーザーはこれらの最新のイメージからマシンを作成できます。 この機能の主な利点は、DevTest Labs で共有イメージのメリットをラボ間、サブスクリプション間、リージョン間で利用できることです。 
+
+> [!NOTE]
+> Shared Image Gallery サービスに関連するコストについては、[Shared Image Gallery の料金](../virtual-machines/windows/shared-image-galleries.md#billing)に関するページを参照してください。
 
 ## <a name="considerations"></a>考慮事項
 - ラボにアタッチできる共有イメージ ギャラリーは一度に 1 つだけです。 別のギャラリーをアタッチする場合は、既存のものをデタッチして別のものをアタッチする必要があります。 

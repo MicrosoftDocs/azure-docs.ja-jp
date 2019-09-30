@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 5ec766cea2135f7c00df032ad0df4ada033d6293
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 629a7c98a7b46b470470445cc56a6f53d9e4f4b4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461984"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077209"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 
@@ -91,7 +91,7 @@ SELECT * FROM StudentsOneLine
 
 **SELECT** ステートメントの出力を次に示します。
 
-![JSON ドキュメントのフラット化](./media/using-json-in-hive/flatten.png)
+![HDInsight の JSON ドキュメントのフラット化](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
 ## <a name="analyze-json-documents-in-hive"></a>Hive での JSON ドキュメントの分析
 Hive は、JSON ドキュメントに対してクエリを実行するための次の 3 つの異なるメカニズムを提供します。あるいは、独自に記述することもできます。
@@ -101,7 +101,7 @@ Hive は、JSON ドキュメントに対してクエリを実行するための�
 * カスタムのシリアライザー/デシリアライザー (SerDe) を使用します。
 * Python またはその他の言語を使用して独自の UDF を作成します。 Hive で独自の Python コードを実行する方法の詳細については、[Apache Hive および Apache Pig での Python UDF の使用][hdinsight-python]に関するページを参照してください。
 
-### <a name="use-the-getjsonobject-udf"></a>get_json_object UDF を使用する
+### <a name="use-the-get_json_object-udf"></a>get_json_object UDF を使用する
 Hive には、ランタイム処理中に JSON クエリを実行できる [get_json_object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) という組み込み UDF があります。 このメソッドでは 2 つの引数 (テーブル名とメソッド名) を取り、解析が必要なフラット化された JSON ドキュメントと JSON フィールドが含まれます。 この UDF の動作を確認する例を見てみましょう。
 
 次のクエリは各学生の姓と名を返します。
@@ -115,7 +115,7 @@ FROM StudentsOneLine;
 
 このクエリをコンソール ウィンドウで実行したときの出力を次に示します。
 
-![get_json_object UDF](./media/using-json-in-hive/getjsonobject.png)
+![Apache Hive の JSON オブジェクト UDF の取得](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 get_json_object UDF には次の制限があります。
 
@@ -124,7 +124,7 @@ get_json_object UDF には次の制限があります。
 
 このため、Hive Wiki では json_tuple の使用が推奨されています。  
 
-### <a name="use-the-jsontuple-udf"></a>json_tuple UDF を使用する
+### <a name="use-the-json_tuple-udf"></a>json_tuple UDF を使用する
 Hive に備えられたもう 1 つの UDF は [json_tuple](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-json_tuple) と呼ばれ、[get_ json _object](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-get_json_object) よりもパフォーマンスが優れています。 このメソッドは、一連のキーと、JSON 文字列を取り、1 つの関数を使用して値のタプルを返します。 次のクエリでは、JSON ドキュメントから、学生 ID とグレードが返されます。
 
 ```sql
@@ -136,7 +136,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 Hive コンソールにおけるこのスクリプトの出力:
 
-![json_tuple UDF](./media/using-json-in-hive/jsontuple.png)
+![Apache Hive の JSON クエリ結果](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
 json_tuple UDF では、Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文を使用します。これによって、json\_tuple は元のテーブルの各行に UDT 関数を適用して、仮想テーブルを作成することができます。 複雑な JSON では **LATERAL VIEW** が繰り返し使用されるため、処理が難しくなります。 また、**JSON_TUPLE** では入れ子になった JSON を処理できません。
 

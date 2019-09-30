@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/21/2019
+ms.date: 09/06/2019
 ms.author: helohr
-ms.openlocfilehash: cd80ed3c3db2453a333c87ed706dd358ba248b47
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 66441e852ebe0a391a5807b90eeadae230130815
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516187"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70734465"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop プレビューでテナントを作成する
 
@@ -49,7 +49,7 @@ Windows Virtual Desktop サービスにアクセス許可を付与すると、Az
    >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
    >```
 
-2. グローバル管理者アカウントを使用して Windows Virtual Desktop の同意ページにサインインします。 たとえば、Contoso 組織に属しているとしたら、アカウントは admin@contoso.com や admin@contoso.onmicrosoft.com になるでしょう。  
+2. グローバル管理者アカウントを使用して Windows Virtual Desktop の同意ページにサインインします。 たとえば、Contoso 組織に属しているとしたら、アカウントは admin@contoso.com や admin@contoso.onmicrosoft.com になるでしょう。
 3. **[Accept]\(承認\)** を選択します。
 4. Azure AD が同意を記録できるように 1 分間待ちます。
 5. ブラウザーを開き、[Windows Virtual Desktop クライアント アプリ](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)に対する管理者の同意フローを開始します。
@@ -78,6 +78,7 @@ TenantCreator アプリケーション ロールを割り当てるには:
    !["Windows Virtual Desktop" エンタープライズ アプリケーションを管理するために割り当てられたユーザーとグループのスクリーンショット。 このスクリーンショットには、"既定のアクセス" の割り当てのみが示されています。](media/tenant-default-access.png)
 5. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ブレードで **[ユーザーとグループ]** を選択します。
 6. 自分の Windows Virtual Desktop テナントを作成するユーザー アカウントを検索します。 わかりやすいように、これはグローバル管理者アカウントにできます。
+   - Microsoft の ID プロバイダー (contosoadmin@live.com、contosoadmin@outlook.com など) を使用している場合、Windows Virtual Desktop にサインインできない場合があります。 代わりにドメイン固有のアカウントを使用することをお勧めします (admin@contoso.com、admin@contoso.onmicrosoft.com など)。
 
    !["TenantCreator" として追加するユーザーを選択しているスクリーンショット。](media/tenant-assign-user.png)
 

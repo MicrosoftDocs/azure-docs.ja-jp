@@ -1,5 +1,5 @@
 ---
-title: Service Fabric Azure Files ボリューム ドライバー (プレビュー) | Microsoft Docs
+title: Service Fabric Azure Files ボリューム ドライバー (GA) | Microsoft Docs
 description: Service Fabric は、Azure Files を使用したコンテナーからのボリュームのバックアップをサポートしています。 これは現在プレビューの段階です。
 services: service-fabric
 author: athinanthny
@@ -9,18 +9,20 @@ ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
 ms.author: atsenthi
-ms.openlocfilehash: eb45dda9886450d217355d876ae35af954d99845
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 70784e2c8c91d39c34ba503cc3ebfcf3469939d9
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955590"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013494"
 ---
 # <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files ボリューム ドライバー
-Azure Files ボリューム プラグインは、Docker コンテナーに [Azure Files](/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)です。 この Docker ボリューム プラグインは、Service Fabric クラスターにデプロイ可能な Service Fabric アプリケーションとしてパッケージ化されています。 その目的は、クラスターにデプロイされている他の Service Fabric コンテナー アプリケーション用に Azure Files ベースのボリュームを提供することです。
+Azure Files ボリューム プラグイン (Docker コンテナーに [Azure Files](/azure/storage/files/storage-files-introduction) ベースのボリュームを提供する [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)) が、**GA (一般提供)** になりました。
+
+この Docker ボリューム プラグインは、Service Fabric クラスターにデプロイ可能な Service Fabric アプリケーションとしてパッケージ化されています。 その目的は、クラスターにデプロイされている他の Service Fabric コンテナー アプリケーション用に Azure Files ベースのボリュームを提供することです。
 
 > [!NOTE]
-> バージョン 6.5.516.9494 の Azure Files ボリューム プラグインは、このドキュメントで使用可能なプレビュー リリースです。 プレビュー リリースとして、運用環境での使用はサポートされて**いません**。
+> Azure Files ボリューム プラグインのバージョン 6.5.661.9590 は GA (一般提供) リリースです。 
 >
 
 ## <a name="prerequisites"></a>前提条件
@@ -119,11 +121,11 @@ Linux 用の Azure Resource Manager デプロイ コマンドは次のとおり�
 4. **ListenPort** アプリケーション パラメーター値に注意して、アプリケーションを作成します。 この値は、Azure Files ボリューム プラグインが、Docker デーモンからの要求をリッスンするポートです。 アプリケーションに提供されるポートは、ClusterManifest 内の VolumePluginPorts と一致していて、クラスターまたはご自分のアプリケーションで使用する他のどのポートとも競合していないことを確認する必要があります。
 
     ```powershell
-    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.516.9494  -ApplicationParameter @{ListenPort='19100'}
+    New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590   -ApplicationParameter @{ListenPort='19100'}
     ```
 
     ```bash
-    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.516.9494 --parameter '{"ListenPort":"19100"}'
+    sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort":"19100"}'
     ```
 
 > [!NOTE]
@@ -136,11 +138,11 @@ Linux 用の Azure Resource Manager デプロイ コマンドは次のとおり�
  Azure Files ボリューム プラグイン アプリケーションの既定のサービス インスタンス数は、-1 です。これは、クラスター内の各ノードにデプロイされたサービスのインスタンスがあることを意味します。 ただし、ローカル開発クラスターに Azure Files ボリューム プラグイン アプリケーションをデプロイする場合は、サービス インスタンス数を 1 と指定する必要があります。 これは、**InstanceCount** アプリケーション パラメーターを使用して実行できます。 したがって、ローカル開発クラスターに Azure Files ボリューム プラグイン アプリケーションを作成するコマンドは、次のようになります。
 
 ```powershell
-New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.516.9494 -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
+New-ServiceFabricApplication -ApplicationName fabric:/AzureFilesVolumePluginApp -ApplicationTypeName AzureFilesVolumePluginType -ApplicationTypeVersion 6.5.661.9590  -ApplicationParameter @{ListenPort='19100';InstanceCount='1'}
 ```
 
 ```bash
-sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.516.9494 --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
+sfctl application create --app-name fabric:/AzureFilesVolumePluginApp --app-type AzureFilesVolumePluginType --app-version 6.5.661.9590  --parameter '{"ListenPort": "19100","InstanceCount": "1"}'
 ```
 
 ## <a name="configure-your-applications-to-use-the-volume"></a>ボリュームを使用するようにアプリケーションを構成する

@@ -8,14 +8,14 @@ ms.assetid: 0e3b103c-6e2a-4634-9e8c-8b85cf5e9c84
 ms.service: application-insights
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/11/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3a504fe4475cee8e2949ee121c632b792f349758
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 49534cbce7bb0bbf540416785e31b451509d5bf6
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68694283"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70916162"
 ---
 # <a name="geolocation-and-ip-address-handling"></a>位置情報と IP アドレスの処理
 
@@ -36,10 +36,9 @@ IP アドレスは、テレメトリ データの一部として Application Ins
 
 既定の動作では個人データの収集が最小限に抑えられますが、IP アドレス データの収集と格納は引き続き柔軟に行うことができます。 IP アドレスなどの個人データを格納することを選択する前に、これが、適用される可能性があるコンプライアンス要件と地方条例に違反しないことを確認することを強くお勧めします。 Application Insights での個人データ処理の詳細については、[個人データのガイダンス](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt)に関するページをご覧ください。
 
-## <a name="storing-partial-ip-address-data"></a>部分的な IP アドレスデータの格納
+## <a name="storing-ip-address-data"></a>IP アドレス データの格納
 
-一部の IP の収集と格納を有効にするには、Application Insights コンポーネントの `DisableIpMasking` プロパティを `true` に設定する必要があります。 このプロパティは、Azure Resource Manager テンプレートを使用するか、REST API を呼び出すことによって設定できます。 IP アドレスは、最後のオクテットがゼロに設定されて記録されます。
-
+IP の収集と格納を有効にするには、Application Insights コンポーネントの `DisableIpMasking` プロパティを `true` に設定する必要があります。 このプロパティは、Azure Resource Manager テンプレートを使用するか、REST API を呼び出すことによって設定できます。 
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 
@@ -92,7 +91,7 @@ IP アドレスは、テレメトリ データの一部として Application Ins
 
     この場合、新しいものは購入されません。既存の Application Insights リソースの構成を更新するだけです。
 
-6. デプロイが完了すると、新しいテレメトリ データは、最初の 3 つのオクテットに IP が取り込まれ、最後のオクテットがゼロに設定されて記録されます。
+6. デプロイが完了すると、新しいテレメトリ データが記録されます。
 
     テンプレートをもう一度選択して編集すると、既定のテンプレートのみが表示され、新しく追加されたプロパティとそれに関連付けられた値は表示されません。 IP アドレス データが表示されず、`"DisableIpMasking": true` が設定されていることを確認する必要がある場合。 次の PowerShell を実行します (`Fabrikam-dev` は、適切なリソースとリソース グループの名前に置き換えてください)。
     
@@ -128,7 +127,7 @@ Content-Length: 54
 
 ## <a name="telemetry-initializer"></a>テレメトリ初期化子
 
-最初の 3 つのオクテットだけでなく IP アドレス全体を記録する必要がある場合は、[テレメトリ初期化子](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer)を使用して、マスクされないカスタム フィールドに IP アドレスをコピーできます。
+IP アドレスのすべてまたは一部を記録するために `DisableIpMasking` よりも柔軟な代替方法が必要な場合は、[テレメトリ初期化子](https://docs.microsoft.com/azure/azure-monitor/app/api-filtering-sampling#add-properties-itelemetryinitializer)を使用して、IP のすべてまたは一部をカスタム フィールドにコピーすることができます。 
 
 ### <a name="aspnet--aspnet-core"></a>ASP.NET または ASP.NET Core
 

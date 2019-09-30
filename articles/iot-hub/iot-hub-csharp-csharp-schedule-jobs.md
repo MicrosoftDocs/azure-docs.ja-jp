@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/16/2019
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 3594828ff3a79242e1cfd4663c415d8de502a329
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: db4824203f63fa2fe0d4256a475d18a501b17e0e
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872762"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147732"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>ジョブのスケジュールとブロードキャスト (.NET)
 
@@ -22,7 +22,9 @@ ms.locfileid: "69872762"
 Azure IoT Hub を使用して、数百万のデバイスを更新するジョブのスケジュールと追跡を行います。 ジョブを使用して、次の操作を行います。
 
 * 必要なプロパティを更新する
+
 * タグを更新する
+
 * ダイレクト メソッドを呼び出す
 
 ジョブはこれらのアクションの 1 つをラップし、デバイス ツイン クエリで定義されるデバイスのセットに対して実行状況を追跡します。 たとえば、バックエンド アプリは、ジョブを使用して 10,000 台のデバイスでダイレクト メソッドを呼び出し、デバイスを再起動できます。 デバイス ツイン クエリでデバイスのセットを指定し、ジョブが将来実行されるようにスケジュールを設定します。 各デバイスが再起動のダイレクト メソッドを受信し、実行するたびに、ジョブは進行状況を追跡します。
@@ -43,15 +45,13 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 このチュートリアルの最後には、次の 2 つの .NET (C#) コンソール アプリが完成します。
 
-**SimulateDeviceMethods** は IoT ハブに接続し、**LockDoor** ダイレクト メソッドを実装します。
+* **SimulateDeviceMethods**。 このアプリは IoT ハブに接続し、**LockDoor** ダイレクト メソッドを実装します。
 
-**ScheduleJob** はジョブを使用して **LockDoor** ダイレクト メソッドを呼び出し、複数のデバイスでデバイス ツインの必要なプロパティを更新します。
+* **ScheduleJob**。 このアプリはジョブを使用して **LockDoor** ダイレクト メソッドを呼び出し、複数のデバイスでデバイス ツインの必要なプロパティを更新します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次のものが必要です。
-
-* 見ることができます。 このチュートリアルでは、Visual Studio 2017 を使用します。
+* 見ることができます。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) を数分で作成することができます。
 
@@ -67,17 +67,21 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 このセクションでは、ソリューション バックエンドによって呼び出されたダイレクト メソッドに応答する .NET コンソール アプリを作成します。
 
-1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを新規または既存のソリューションに追加します。 プロジェクトに **SimulateDeviceMethods** という名前を付けます。
+1. Visual Studio で、 **[新しいプロジェクトの作成]** を選択し、 **[コンソール アプリ (.NET Framework)]** プロジェクト テンプレートを選択します。 **[次へ]** をクリックして続行します。
 
-    ![New Visual C# Windows Classic device app](./media/iot-hub-csharp-csharp-schedule-jobs/create-device-app.png)
+1. **[新しいプロジェクトの構成]** で、プロジェクトに *SimulateDeviceMethods* という名前を付け、 **[作成]** を選択します。
 
-2. ソリューション エクスプローラーで **[SimulateDeviceMethods]** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+    ![SimulateDeviceMethods プロジェクトの構成](./media/iot-hub-csharp-csharp-schedule-jobs/configure-device-app.png)
 
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索します。 **[インストール]** を選択して、**Microsoft.Azure.Devices.Client** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet パッケージへの参照とその依存関係が追加されます。
+1. ソリューション エクスプローラーで **[SimulateDeviceMethods]** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+
+1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索して選択します。 **[インストール]** を選択します。
 
     ![NuGet Package Manager window Client app](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 
-4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+    この手順により、ダウンロードとインストールが実行され、[Azure IoT device SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Client/) NuGet パッケージへの参照とその依存関係が追加されます。
+
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
@@ -85,14 +89,14 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     using Newtonsoft.Json;
     ```
 
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで記したデバイス接続文字列に置き換えてください。
+1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションで記したデバイス接続文字列に置き換えてください。
 
     ```csharp
     static string DeviceConnectionString = "<yourDeviceConnectionString>";
     static DeviceClient Client = null;
     ```
 
-6. デバイスにダイレクト メソッドを実装するために以下を追加します。
+1. 次のコードを追加して、デバイスにダイレクト メソッドを実装します。
 
     ```csharp
     static Task<MethodResponse> LockDoor(MethodRequest methodRequest, object userContext)
@@ -106,7 +110,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-7. デバイスにデバイス ツイン リスナーを実装するには、以下を追加します。
+1. 次のメソッドを追加して、デバイスにデバイス ツイン リスナーを実装します。
 
     ```csharp
     private static async Task OnDesiredPropertyChanged(TwinCollection desiredProperties, 
@@ -117,7 +121,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-8. 最後に、IoT ハブへの接続を開いてメソッド リスナーを初期化する次のコードを **Main** メソッドに追加します。
+1. 最後に、IoT ハブへの接続を開いてメソッド リスナーを初期化する次のコードを **Main** メソッドに追加します。
 
     ```csharp
     try
@@ -144,10 +148,10 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-9. 作業内容を保存し、ソリューションを構築します。
+1. 作業内容を保存し、ソリューションを構築します。
 
 > [!NOTE]
-> わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)に関する記事で推奨されているように、再試行ポリシー (接続の再試行など) を実装することをお勧めします。
+> わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードには、「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)」で推奨されているように、再試行ポリシー (接続の再試行など) を実装する必要があります。
 >
 
 ## <a name="get-the-iot-hub-connection-string"></a>IoT ハブ接続文字列を取得する
@@ -160,31 +164,33 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 このセクションでは、ジョブを使用して **LockDoor** ダイレクト メソッドを呼び出し、複数のデバイスに必要なプロパティの更新を送信する .NET コンソール アプリ (C# を使用) を作成します。
 
-1. Visual Studio で、 **[コンソール アプリケーション]** プロジェクト テンプレートを使用し、Visual C# Windows クラシック デスクトップ プロジェクトを現在のソリューションに追加します。 プロジェクトの名前として「**ScheduleJob**」と入力します。
+1. Visual Studio で、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。 **[新しいプロジェクトの作成]** で、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 
-    ![New Visual C# Windows Classic Desktop project](./media/iot-hub-csharp-csharp-schedule-jobs/createnetapp.png)
+1. **[新しいプロジェクトの構成]** で、プロジェクトに *ScheduleJob* という名前を付けます。 **[ソリューション]** で、 **[ソリューションに追加]** を選択し、 **[作成]** を選択します。
 
-2. ソリューション エクスプローラーで **[ScheduleJob]** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+    ![ScheduleJob プロジェクトに名前を付けて構成する](./media/iot-hub-csharp-csharp-schedule-jobs/config-schedule-job-app.png)
 
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices** を検索します。 **[インストール]** を選択して **Microsoft.Azure.Devices** パッケージをインストールし、使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
+1. ソリューション エクスプローラーで **[ScheduleJob]** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
 
-    ![NuGet Package Manager window](./media/iot-hub-csharp-csharp-schedule-jobs/servicesdknuget.png)
+1. **[NuGet パッケージ マネージャー]** で **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索して選択してから、 **[インストール]** を選択します。
 
-4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+   この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices/) NuGet パッケージへの参照とその依存関係が追加されます。
+
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
     using Microsoft.Azure.Devices;
     using Microsoft.Azure.Devices.Shared;
     ```
 
-5. 既定のステートメント内に存在しない場合は、次の `using` ステートメントを追加します。
+1. 既定のステートメント内に存在しない場合は、次の `using` ステートメントを追加します。
 
     ```csharp
     using System.Threading;
     using System.Threading.Tasks;
     ```
 
-6. **Program** クラスに次のフィールドを追加します。 プレースホルダーを前述の「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーした IoT Hub 接続文字列とデバイスの名前に置き換えます。
+1. **Program** クラスに次のフィールドを追加します。 プレースホルダーを前述の「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーした IoT Hub 接続文字列とデバイスの名前に置き換えます。
 
     ```csharp
     static JobClient jobClient;
@@ -192,7 +198,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     static string deviceId = "<yourDeviceId>";
     ```
 
-7. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
     ```csharp
     public static async Task MonitorJob(string jobId)
@@ -208,7 +214,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-8. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
     ```csharp
     public static async Task StartMethodJob(string jobId)
@@ -227,7 +233,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-9. 別のメソッドを **Program** クラスに追加します。
+1. 別のメソッドを **Program** クラスに追加します。
 
     ```csharp
     public static async Task StartTwinUpdateJob(string jobId)
@@ -255,7 +261,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     > クエリ構文の詳細については、[IoT Hub クエリ言語](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language)に関するページを参照してください。
     >
 
-10. 最後に、**Main** メソッドに次の行を追加します。
+1. 最後に、**Main** メソッドに次の行を追加します。
 
     ```csharp
     Console.WriteLine("Press ENTER to start running jobs.");
@@ -278,24 +284,28 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     Console.ReadLine();
     ```
 
-11. 作業内容を保存し、ソリューションを構築します。
+1. 作業内容を保存し、ソリューションを構築します。
 
 ## <a name="run-the-apps"></a>アプリの実行
 
 これで、アプリを実行する準備が整いました。
 
-1. Visual Studio のソリューション エクスプローラーで対象のソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。 次に、 **[マルチ スタートアップ プロジェクト]** を選択します。 **SimulateDeviceMethods** が一覧の先頭にあり、その後に **ScheduleJob** があることを確認します。 両方のアクションを **[開始]** に設定し、 **[OK]** を選択します。
+1. Visual Studio ソリューション エクスプローラーでソリューションを右クリックし、 **[スタートアップ プロジェクトの設定]** を選択します。
 
-2. **[開始]** をクリックするか、 **[デバッグ]** メニューに移動し、 **[デバッグの開始]** を選択して、プロジェクトを実行します。
+1. **[共通プロパティ]**  >  **[スタートアップ プロジェクト]** の順に選択し、 **[マルチ スタートアップ プロジェクト]** を選択します。
 
-3. デバイスとバックエンド アプリの両方からの出力が表示されます。
+1. `SimulateDeviceMethods` が一覧の一番上にあり、その後に `ScheduleJob` があることを確認します。 両方のアクションを **[開始]** に設定し、 **[OK]** を選択します。
 
-    ![アプリを実行して、ジョブをスケジュールします。](./media/iot-hub-csharp-csharp-schedule-jobs/schedulejobs.png)
+1. **[開始]** をクリックしてプロジェクトを実行するか、 **[デバッグ]** メニューに移動し、 **[デバッグの開始]** をクリックします。
+
+   デバイスとバックエンド アプリの両方からの出力が表示されます。
+
+    ![アプリを実行して、ジョブをスケジュールします。](./media/iot-hub-csharp-csharp-schedule-jobs/schedule-jobs-console-results.png)
 
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、ジョブを使用して、デバイスへのダイレクト メソッドと、デバイス ツインのプロパティの更新をスケジュールしました。
 
-ファームウェアのリモートでのワイヤレス更新など、IoT Hub とデバイス管理パターンの作業を続けるには、[ファームウェア更新の実行方法に関するチュートリアル](tutorial-firmware-update.md)を参照してください。
+* ファームウェアのリモートでのワイヤレス更新など、IoT Hub とデバイス管理パターンの作業を続けるには、[ファームウェア更新の実行方法に関するチュートリアル](tutorial-firmware-update.md)を参照してください。
 
-Azure IoT Edge を使用したエッジ デバイスへの AI のデプロイについては、[IoT Edge の使用](../iot-edge/tutorial-simulate-device-linux.md)に関するページを参照してください。
+* Azure IoT Edge を使用したエッジ デバイスへの AI のデプロイについては、[IoT Edge の使用](../iot-edge/tutorial-simulate-device-linux.md)に関するページを参照してください。

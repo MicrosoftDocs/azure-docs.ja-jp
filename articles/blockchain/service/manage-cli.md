@@ -10,16 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: seal
 manager: femila
-ms.openlocfilehash: d078ca181b2eed4b80d4f12f1c03b42f4e242194
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4dd58f2542674633f2d5e2a1724adc7934d7f030
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154451"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307041"
 ---
-# <a name="manage-azure-blockchain-service-with-azure-cli"></a>Azure CLI で Azure Blockchain Service を管理する
+# <a name="manage-azure-blockchain-service-using-azure-cli"></a>Azure CLI を使用して Azure Blockchain Service を管理する
 
-Azure portal だけでなく、Azure CLI を使用しても、Azure Blockchain Service 用のブロックチェーン メンバーとトランザクション ノードをすばやく作成して管理することができます。
+Azure portal だけでなく、Azure CLI を使用しても、Azure Blockchain Service 用のブロックチェーン メンバーとトランザクション ノードを管理することができます。
 
 最新の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) がインストールされていること、および `az login` で Azure アカウントにログインしていることを確認します。
 
@@ -59,7 +59,6 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 | **resource-group** | Azure Blockchain Service リソースが作成されるリソース グループ名。 |
 | **name** | Azure Blockchain Service のメンバーを示す名前。 |
 | **password** | メンバー アカウントのパスワード。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、12 文字から 72 文字までの長さで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。 |
-
 
 ## <a name="create-transaction-node"></a>トランザクション ノードを作成する
 
@@ -187,7 +186,7 @@ az role assignment create --role <role> --assignee <assignee> --scope /subscript
 |---------|-------------|
 | **role** | Azure AD ロールの名前。 |
 | **assignee** | Azure AD ユーザーの ID。 たとえば、`user@contoso.com` のように指定します。 |
-| **scope** | ロール割り当てのスコープ。 トランザクション ノードのいずれかのブロックチェーン メンバーにすることができます。 |
+| **scope** | ロール割り当てのスコープ。 ブロックチェーン メンバーまたはトランザクション ノードのいずれかにすることができます。 |
 
 **例:**
 
@@ -220,7 +219,7 @@ az role assignment create --role <role> --assignee-object-id <assignee_object_id
 |---------|-------------|
 | **role** | Azure AD ロールの名前。 |
 | **assignee-object-id** | Azure AD グループ ID またはアプリケーション ID。 |
-| **scope** | ロール割り当てのスコープ。 トランザクション ノードのいずれかのブロックチェーン メンバーにすることができます。 |
+| **scope** | ロール割り当てのスコープ。 ブロックチェーン メンバーまたはトランザクション ノードのいずれかにすることができます。 |
 
 **例:**
 
@@ -243,7 +242,7 @@ az role assignment delete --role <myRole> --assignee <assignee> --scope /subscri
 |---------|-------------|
 | **role** | Azure AD ロールの名前。 |
 | **assignee** | Azure AD ユーザーの ID。 たとえば、`user@contoso.com` のように指定します。 |
-| **scope** | ロール割り当てのスコープ。 トランザクション ノードのいずれかのブロックチェーン メンバーにすることができます。 |
+| **scope** | ロール割り当てのスコープ。 ブロックチェーン メンバーまたはトランザクション ノードのいずれかにすることができます。 |
 
 ## <a name="next-steps"></a>次の手順
 

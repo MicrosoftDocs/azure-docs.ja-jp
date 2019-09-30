@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: azure-blockchain
 ms.reviewer: jackyhsu
 manager: femila
-ms.openlocfilehash: 0716a9326a54ae31d4f355fe5f4c88488339b390
-ms.sourcegitcommit: 4b9c06dad94dfb3a103feb2ee0da5a6202c910cc
+ms.openlocfilehash: a26899e291c4f44d3c9d91032b2ee191ba03133a
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/02/2019
-ms.locfileid: "65029980"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931772"
 ---
 # <a name="quickstart-use-geth-to-connect-to-a-transaction-node"></a>クイック スタート:Geth を使用してトランザクション ノードに接続する
 
@@ -26,7 +26,7 @@ Geth は、Azure Blockchain Service トランザクション ノード上の Get
 ## <a name="prerequisites"></a>前提条件
 
 * [Geth](https://github.com/ethereum/go-ethereum/wiki/geth) をインストールする
-* [Azure Blockchain メンバーを作成する](create-member.md)
+* 「[Quickstart: Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)に関するページと、「[クイック スタート: Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する](create-member-cli.md)」を完了していること
 
 ## <a name="get-the-geth-connection-string"></a>Geth の接続文字列を取得する
 
@@ -67,7 +67,7 @@ Geth の接続文字列は、Azure portal で確認できます。
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、Geth クライアントを使用して Azure Blockchain Service トランザクション ノード上の Geth インスタンスにアタッチしました。 次のチュートリアルで、Truffle を使用したトランザクションのデプロイと送信を試してください。
+このクイックスタートでは、Geth クライアントを使用して Azure Blockchain Service トランザクション ノード上の Geth インスタンスにアタッチしました。 次のチュートリアルで、Ethereum および Truffle 用の Azure Blockchain Development Kit を使用して、トランザクションを介したスマート コントラクト関数の作成、ビルド、デプロイ、実行を試してみます。
 
 > [!div class="nextstepaction"]
-> [トランザクションを送信する](send-transaction.md)
+> [Visual Studio Code を使用してスマート コントラクトを作成、ビルド、デプロイする](send-transaction.md)

@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae638f8cbef29c5d167a3ab59188169cbd934ef
-ms.sourcegitcommit: 6e6813f8e5fa1f6f4661a640a49dc4c864f8a6cb
+ms.openlocfilehash: 0bdf04014d7b0382913c0a4094f7474686658441
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67150224"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086699"
 ---
 # <a name="web-app-that-signs-in-users---app-registration"></a>ユーザーをサインインさせる Web アプリ - アプリの登録
 

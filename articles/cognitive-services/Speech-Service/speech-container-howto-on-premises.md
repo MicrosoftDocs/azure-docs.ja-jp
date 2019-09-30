@@ -1,5 +1,5 @@
 ---
-title: Kubernetes と Helm での使用 - Speech Service
+title: Kubernetes と Helm と共に Speech Service コンテナーを使用する
 titleSuffix: Azure Cognitive Services
 description: Kubernetes と Helm を使って音声テキスト変換とテキスト読み上げのコンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。
 services: cognitive-services
@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 7/16/2019
+ms.date: 8/26/2019
 ms.author: dapine
-ms.openlocfilehash: 06f2db708385c4c3fbf8d005b701b633ac52776a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 3c8ffcdb08fc99f5d815639e14fb4456fbd035e8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559145"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70066504"
 ---
-# <a name="use-with-kubernetes-and-helm"></a>Kubernetes と Helm での使用
+# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Kubernetes と Helm と共に Speech Service コンテナーを使用する
 
 オンプレミスの音声コンテナーを管理するための 1 つの方法は、Kubernetes と Helm を使用することです。 Kubernetes と Helm を使って音声テキスト変換とテキスト読み上げのコンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。 最後に、展開されたサービスをテストする方法と、さまざまな構成オプションについて調べます。 Kubernetes オーケストレーションを使用せずに Docker コンテナーを実行する方法の詳細については、「[Speech Service コンテナーをインストールして実行する](speech-container-howto.md)」を参照してください。
 
@@ -95,7 +95,7 @@ Microsoft によって提供されているすべてのパブリックに使用�
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-次に、Helm チャートの値を構成します。 次の YAML をコピーし、`config-values.yaml` という名前のファイルに貼り付けます。 **Cognitive Services Speech On-Premises Helm Chart** のカスタマイズについて詳しくは、「[Helm チャートをカスタマイズする](#customize-helm-charts)」をご覧ください。 `billing` と `apikey` の値は、実際の値に置き換えます。
+次に、Helm チャートの値を構成します。 次の YAML をコピーし、`config-values.yaml` という名前のファイルに貼り付けます。 **Cognitive Services Speech On-Premises Helm Chart** のカスタマイズについて詳しくは、「[Helm チャートをカスタマイズする](#customize-helm-charts)」をご覧ください。 `# {ENDPOINT_URI}` と `# {API_KEY}` のコメントを独自の値に置き換えます。
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -113,8 +113,8 @@ speechToText:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 
 # text-to-speech configurations
 textToSpeech:
@@ -129,8 +129,8 @@ textToSpeech:
       - containerpreview # Or an existing secret
     args:
       eula: accept
-      billing: # < Your billing URL >
-      apikey: # < Your API Key >
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
 ```
 
 > [!IMPORTANT]
@@ -150,7 +150,7 @@ textToSpeech:
 
 ```console
 helm install microsoft/cognitive-services-speech-onpremise \
-    --version 0.1.0 \
+    --version 0.1.1 \
     --values <config-values.yaml> \
     --name onprem-speech
 ```

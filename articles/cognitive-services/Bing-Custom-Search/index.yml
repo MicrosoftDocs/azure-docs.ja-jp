@@ -6,14 +6,14 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Bing Custom Search ポータルと Bing Custom Search API を使用してカスタム検索エクスペリエンスを作成する方法について説明します
   services: cognitive-services
-  author: v-deken
+  author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: bing-custom-search
   ms.topic: landing-page
   ms.date: 07/25/2019
-  ms.author: v-deken
+  ms.author: aahill
 abstract:
   description: 関心のあるトピックの検索インスタンスを作成するには、Bing Custom Search API を使用します。 検索対象となるドメインや Web ページを指定し、検索ランキングを調整して、検索エクスペリエンスを十分にカスタマイズします。
 sections:

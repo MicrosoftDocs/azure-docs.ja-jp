@@ -1,5 +1,5 @@
 ---
-title: REST API 要求交換を Azure Active Directory B2C ユーザー体験に統合する | Microsoft Docs
+title: REST API 要求交換を Azure Active Directory B2C ユーザー体験に統合する
 description: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合します。
 services: active-directory-b2c
 author: mmacy
@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/30/2017
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ed26c4d90738e10f3eb5a9a486cd2734090abd0e
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 49cd049c56e0c1d80318f9323aefe2d128774f3f
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227249"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69645118"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 
@@ -24,6 +24,7 @@ ms.locfileid: "68227249"
 Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework を使用すると、ユーザー体験における RESTful API と統合することができます。 このチュートリアルでは、Azure AD B2C と .NET Framework RESTful サービス (Web API) がどのようなやり取りをするかを学習します。
 
 ## <a name="introduction"></a>はじめに
+
 Azure AD B2C を使用すると、自分の RESTful サービスを呼び出すことで、独自のビジネス ロジックをユーザー体験に追加できます。 Identity Experience Framework は、*入力要求*コレクションでデータを RESTful サービスに送信し、*出力要求*コレクションで RESTful から返されたデータを受信します。 RESTful サービスの統合により、次の操作を実行できます。
 
 * **ユーザー入力データの検証:** このアクションは、不適切なデータが Azure AD に保持されるのを防ぎます。 ユーザーが入力した値が有効でない場合、ユーザーに入力を指示するエラー メッセージがご利用の RESTful サービスによって返されます。 たとえば、ユーザーによって入力されたメール アドレスが顧客データベースに存在するかどうかを確認できます。
@@ -34,59 +35,60 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 次の方法で、RESTful サービスとの統合を設計できます。
 
 * **検証技術プロファイル:** RESTful サービスへの呼び出しは、指定した技術プロファイルの検証技術プロファイル内で発生します。 検証技術プロファイルは、ユーザー体験を進める前に、ユーザーが入力したデータを検証します。 検証技術プロファイルでは、次を行うことができます。
-   * 入力要求を送信する。
-   * 入力要求を検証し、カスタム エラー メッセージをスローする。
-   * 出力要求を返送する。
+  * 入力要求を送信する。
+  * 入力要求を検証し、カスタム エラー メッセージをスローする。
+  * 出力要求を返送する。
 
 * **要求の交換**:この設計は検証技術プロファイルに似ていますが、オーケストレーション手順で発生します。 この定義は次に制限されます。
-   * 入力要求を送信する。
-   * 出力要求を返送する。
+  * 入力要求を送信する。
+  * 出力要求を返送する。
 
 ## <a name="restful-walkthrough"></a>RESTful のチュートリアル
+
 このチュートリアルでは、ユーザー入力を検証し、ユーザーのロイヤルティ番号を提供する .NET Framework Web API を開発します。 たとえば、アプリケーションでは、ロイヤルティ番号に基づいて、*プラチナ会員のメリット*へのアクセス権を付与できます。
 
 概要:
-* RESTful サービスを開発する (.NET Framework Web API)。
-* ユーザー体験で RESTful サービスを使用する。
-* 入力要求を送信し、コード内でそれらを読み取る。
-* ユーザーの名を検証する。
-* ロイヤルティ番号を返送する。
-* JSON Web トークン (JWT) にロイヤルティ番号を追加する。
+
+* RESTful サービスを開発する (.NET Framework Web API)
+* ユーザー体験で RESTful サービスを使用する
+* 入力要求を送信し、コード内でそれらを読み取る
+* ユーザーの名を検証する
+* ロイヤルティ番号を返送する
+* JSON Web トークン (JWT) にロイヤルティ番号を追加する
 
 ## <a name="prerequisites"></a>前提条件
+
 [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関する記事の手順を完了します。
 
 ## <a name="step-1-create-an-aspnet-web-api"></a>手順 1:ASP.NET Web API を作成する
 
 1. Visual Studio で、 **[ファイル]**  >  **[新規作成]**  >  **[プロジェクト]** の順に選択して、プロジェクトを作成します。
-
-2. **[新しいプロジェクト]** ウィンドウで、 **[Visual C#]**  >  **[Web]**  >  **[ASP.NET Web アプリケーション (.NET Framework)]** の順に選択します。
-
-3. **[名前]** ボックスに、アプリケーションの名前 (*Contoso.AADB2C.API* など) を入力して、 **[OK]** を選択します。
+1. **[新しいプロジェクト]** ウィンドウで、 **[Visual C#]**  >  **[Web]**  >  **[ASP.NET Web アプリケーション (.NET Framework)]** の順に選択します。
+1. **[名前]** ボックスに、アプリケーションの名前 (*Contoso.AADB2C.API* など) を入力して、 **[OK]** を選択します。
 
     ![Visual Studio で新しい Visual Studio プロジェクトを作成する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-create-project.png)
 
-4. **[新しい ASP.NET Web アプリケーション]** ウィンドウで、 **[Web API]** または **[Azure API App]** テンプレートを選択します。
+1. **[新しい ASP.NET Web アプリケーション]** ウィンドウで、 **[Web API]** または **[Azure API App]** テンプレートを選択します。
 
     ![Visual Studio で Web API テンプレートを選択する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-select-web-api.png)
 
-5. 認証が **[認証なし]** に設定されていることを確認します。
-
-6. **[OK]** を選択してプロジェクトを作成します。
+1. 認証が **[認証なし]** に設定されていることを確認します。
+1. **[OK]** を選択してプロジェクトを作成します。
 
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>手順 2:REST API エンドポイントを準備する
 
 ### <a name="step-21-add-data-models"></a>手順 2.1:データ モデルを追加する
+
 モデルは、RESTful サービスの入力要求と出力要求のデータを表します。 入力要求モデルを JSON 文字列から C# オブジェクト (使用しているモデル) に逆シリアル化することで、ご利用のコードによって入力データが読み取られます。 ASP.NET Web API では、出力要求モデルが JSON に自動的に逆シリアル化された後、シリアル化されたデータが、HTTP 応答メッセージの本文に書き込まれます。
 
 次の手順を実行して、入力要求を表すモデルを作成します。
 
 1. ソリューション エクスプローラーが開いていない場合は、 **[表示]**  >  **[ソリューション エクスプローラー]** を選択します。
-2. ソリューション エクスプローラーで、**Models** フォルダーを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。
+1. ソリューション エクスプローラーで、**Models** フォルダーを右クリックし、 **[追加]** 、 **[クラス]** の順に選択します。
 
     ![Visual Studio で選択されたクラスの追加メニュー項目](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
-3. クラス `InputClaimsModel` に名前を付けて、次のプロパティを `InputClaimsModel` クラスに追加します。
+1. クラス `InputClaimsModel` に名前を付けて、次のプロパティを `InputClaimsModel` クラスに追加します。
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -100,7 +102,7 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
     }
     ```
 
-4. 新しいモデル `OutputClaimsModel` を作成し、次のプロパティを `OutputClaimsModel` クラスに追加します。
+1. 新しいモデル `OutputClaimsModel` を作成し、次のプロパティを `OutputClaimsModel` クラスに追加します。
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -112,7 +114,7 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
     }
     ```
 
-5. 入力の検証エラー メッセージをスローするために使用する、もう 1 つのモデル `B2CResponseContent` を作成します。 次のプロパティを `B2CResponseContent` クラスに追加し、欠落している参照に入力して、ファイルを保存します。
+1. 入力の検証エラー メッセージをスローするために使用する、もう 1 つのモデル `B2CResponseContent` を作成します。 次のプロパティを `B2CResponseContent` クラスに追加し、欠落している参照に入力して、ファイルを保存します。
 
     ```csharp
     namespace Contoso.AADB2C.API.Models
@@ -134,23 +136,24 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
     ```
 
 ### <a name="step-22-add-a-controller"></a>手順 2.2:コントローラーを追加する
+
 Web API では、_コントローラー_ は、HTTP 要求を処理するオブジェクトです。 コントローラーは、出力要求を返すか、名前が有効でない場合は HTTP 競合のエラー メッセージをスローします。
 
 1. ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、 **[追加]** 、 **[コントローラー]** の順に選択します。
 
     ![Visual Studio で新しいコントローラーを追加する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
-2. **[スキャフォールディングを追加]** ウィンドウで **[Web API コントローラー - 空]** を選択し、 **[追加]** を選択します。
+1. **[スキャフォールディングを追加]** ウィンドウで **[Web API コントローラー - 空]** を選択し、 **[追加]** を選択します。
 
     ![Visual Studio で [Web API 2 コントローラー - 空] を選択する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
-3. **[コントローラーの追加]** ウィンドウで、コントローラーに **IdentityController** という名前を付けて、 **[追加]** を選択します。
+1. **[コントローラーの追加]** ウィンドウで、コントローラーに **IdentityController** という名前を付けて、 **[追加]** を選択します。
 
     ![Visual Studio でコントローラー名を入力する](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-3.png)
 
     *IdentityController.cs* という名前のファイルが *[コントローラー]* フォルダーに作成されます。
 
-4. *IdentityController.cs* ファイルがまだ開いていない場合は、それをダブルクリックして、ファイル内のコードを次のコードに置き換えます。
+1. *IdentityController.cs* ファイルがまだ開いていない場合は、それをダブルクリックして、ファイル内のコードを次のコードに置き換えます。
 
     ```csharp
     using Contoso.AADB2C.API.Models;
@@ -204,29 +207,31 @@ Web API では、_コントローラー_ は、HTTP 要求を処理するオブ�
     ```
 
 ## <a name="step-3-publish-the-project-to-azure"></a>手順 3:Azure にプロジェクトを発行する
+
 1. ソリューション エクスプローラーで **Contoso.AADB2C.API** プロジェクトを右クリックしてから、 **[発行]** を選択します。
 
     ![Visual Studio での Microsoft Azure App Service への発行](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-1.png)
 
-2. **[発行]** ウィンドウで、 **[Microsoft Azure App Service]** を選択し、 **[発行]** を選択します。
+1. **[発行]** ウィンドウで、 **[Microsoft Azure App Service]** を選択し、 **[発行]** を選択します。
 
     ![Visual Studio での新しい Microsoft Azure App Service の作成](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-2.png)
 
     **[App Service の作成]** ウィンドウが開きます。 このウィンドウでは、Azure で ASP.NET Web アプリを実行するために必要なすべての Azure リソースを作成します。
 
-    > [!NOTE]
-    >発行方法の詳細については、「[Azure に ASP.NET Web アプリを作成する](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet)」を参照してください。
+    > [!TIP]
+    > 発行方法の詳細については、「[Azure に ASP.NET Web アプリを作成する](../app-service/app-service-web-get-started-dotnet-framework.md)」を参照してください。
 
-3. **[Web アプリ名]** ボックスに、一意のアプリ名 (有効な文字は a-z、0-9、およびハイフン (-)) を入力します。 Web アプリの URL は http://<app_name>.azurewebsites.NET です。*app_name* は、Web アプリの名前です。 自動的に生成される名前をそのまま使用してもかまいません。この名前は一意になっています。
+1. **[Web アプリ名]** ボックスに、一意のアプリ名 (有効な文字は a-z、0-9、およびハイフン (-)) を入力します。 Web アプリの URL は http://<app_name>.azurewebsites.NET です。*app_name* は、Web アプリの名前です。 自動的に生成される名前をそのまま使用してもかまいません。この名前は一意になっています。
 
     ![App Service プロパティの構成](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-publish-to-azure-3.png)
 
-4. Azure リソースの作成を開始するには、 **[作成]** を選択します。
+1. Azure リソースの作成を開始するには、 **[作成]** を選択します。
     ASP.NET Web アプリが作成されると、ウィザードはそれを Azure に発行してから、既定のブラウザーでアプリを起動します。
 
-6. Web アプリの URL をコピーします。
+1. Web アプリの URL をコピーします。
 
 ## <a name="step-4-add-the-new-loyaltynumber-claim-to-the-schema-of-your-trustframeworkextensionsxml-file"></a>手順 4:新しい要求 `loyaltyNumber` を TrustFrameworkExtensions.xml ファイルのスキーマに追加する
+
 要求 `loyaltyNumber` は、スキーマではまだ定義されていません。 要素 `<BuildingBlocks>` 内に定義を追加します。これは *TrustFrameworkExtensions.xml* ファイルの先頭で見つけることができます。
 
 ```xml
@@ -242,6 +247,7 @@ Web API では、_コントローラー_ は、HTTP 要求を処理するオブ�
 ```
 
 ## <a name="step-5-add-a-claims-provider"></a>手順 5:クレーム プロバイダーを追加する
+
 クレーム プロバイダーには必ず、1 つ以上の技術プロファイルが必要で、そのプロファイルによって、クレーム プロバイダーとの通信に必要なエンドポイントとプロトコルが決まります。
 
 クレーム プロバイダーが、複数の技術プロファイルを持つことができる理由はさまざまです。 たとえば、クレーム プロバイダーが複数のプロトコルをサポートしていたり、エンドポイントがさまざまな機能を持てたり、リリースにさまざまな保証レベルの要求を含めることができる、などの理由で、技術プロファイルが複数定義される可能性があります。 あるユーザー体験で機密性の高い要求をリリースできても、別のユーザー体験ではリリースできないこともあります。
@@ -269,8 +275,10 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
       <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
         <Item Key="ServiceUrl">https://your-app-name.azurewebsites.NET/api/identity/signup</Item>
-        <Item Key="AuthenticationType">None</Item>
         <Item Key="SendClaimsIn">Body</Item>
+        <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+        <Item Key="AuthenticationType">None</Item>
+        <!-- REMOVE the following line in production environments -->
         <Item Key="AllowInsecureAuthInProduction">true</Item>
       </Metadata>
       <InputClaims>
@@ -297,7 +305,10 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 </ClaimsProvider>
 ```
 
+`AuthenticationType` と `AllowInsecureAuthInProduction` の上のコメントに、運用環境に移行するときに行う必要がある変更が指定されています。 実稼働用の RESTful API をセキュリティで保護する方法については、「[基本認証を使用した RESTful API のセキュリティ保護](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)」と「[証明書認証を使用した RESTful API のセキュリティ保護](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)」を参照してください。
+
 ## <a name="step-6-add-the-loyaltynumber-claim-to-your-relying-party-policy-file-so-the-claim-is-sent-to-your-application"></a>手順 6:要求 `loyaltyNumber` がアプリケーションに送信されるように、その要求を証明書利用者ポリシー ファイル に追加する
+
 *SignUpOrSignIn.xml* 証明書利用者 (RP) ファイルを編集し、TechnicalProfile Id="PolicyProfile" 要素を修正して次を追加します。`<OutputClaim ClaimTypeReferenceId="loyaltyNumber" />`
 
 新しい要求を追加した後の証明書利用者コードは次のようになります。
@@ -327,19 +338,20 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 
 1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキスト](active-directory-b2c-navigate-to-b2c-context.md)に切り替えてから、 **[Azure AD B2C]** を開きます。
 
-2. **[Identity Experience Framework]** を選択します。
+1. **[Identity Experience Framework]** を選択します。
 
-3. **[All Policies]\(すべてのポリシー\)** を開きます。
+1. **[All Policies]\(すべてのポリシー\)** を開きます。
 
-4. **[ポリシーのアップロード]** を選択します。
+1. **[ポリシーのアップロード]** を選択します。
 
-5. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
+1. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
 
-6. TrustFrameworkExtensions.xml ファイルをアップロードし、検証に合格することを確認します。
+1. TrustFrameworkExtensions.xml ファイルをアップロードし、検証に合格することを確認します。
 
-7. SignUpOrSignIn.xml ファイルを使用して前の手順を繰り返します。
+1. SignUpOrSignIn.xml ファイルを使用して前の手順を繰り返します。
 
 ## <a name="step-8-test-the-custom-policy-by-using-run-now"></a>ステップ 8:[今すぐ実行] を使用してカスタム ポリシーをテストする
+
 1. **[Azure AD B2C の設定]** を選択してから、 **[Identity Experience Framework]** に移動します。
 
     > [!NOTE]
@@ -357,7 +369,7 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 4. **[名]** ボックスに ("Test" 以外の) 名前を入力します。
     Azure AD B2C でユーザーがサインアップされ、アプリケーションに loyaltyNumber が送信されます。 この JWT の番号に注意してください。
 
-```
+```JSON
 {
   "typ": "JWT",
   "alg": "RS256",
@@ -379,9 +391,16 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 ```
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>完全なポリシー ファイルとコードをダウンロードする (省略可能)
+
 * [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)が提供されています。
+
 * 完全なコードは、[参照用の Visual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)からダウンロードできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
+
+次のタスクは、基本認証またはクライアント証明書認証を使用して RESTful API をセキュリティで保護することです。 API をセキュリティで保護する方法については、次の記事を参照してください。
+
 * [基本認証 (ユーザー名とパスワード) を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 * [クライアント証明書を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+
+RESTful 技術プロファイルで使用できるすべての要素の詳細については、「[リファレンス: RESTful 技術プロファイル](restful-technical-profile.md)」を参照してください。

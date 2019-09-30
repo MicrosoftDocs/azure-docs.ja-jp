@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
-ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a48f1b6e4410820d40ba6563d431c690ab791ff0
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60831257"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097238"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Application Gateway での WebSocket のサポートの概要
 
@@ -28,7 +28,7 @@ Application Gateway では、あらゆる規模のゲートウェイで WebSocke
 
 WebSocket の接続を確立するために、特定の HTTP ベースのハンドシェイクがクライアントとサーバーの間で交換されます。 成功すると、アプリケーション レイヤー プロトコルは、以前に確立された TCP 接続を使用して、HTTP から WebSockets に "アップグレード" されます。 これが発生すると、HTTP は完全に無関係になります。WebSocket 接続が閉じられるまで、両方のエンドポイントによって WebSocket プロトコルを使用してデータが送受信されます。 
 
-![addcert](./media/application-gateway-websocket/websocket.png)
+![WebSocket](./media/application-gateway-websocket/websocket.png)
 
 ### <a name="listener-configuration-element"></a>リスナーの構成要素
 
@@ -68,7 +68,7 @@ WebSocket の接続を確立するために、特定の HTTP ベースのハン�
 
 ## <a name="backendaddresspool-backendhttpsetting-and-routing-rule-configuration"></a>BackendAddressPool、BackendHttpSetting、およびルーティング規則の構成
 
-WebSocket が有効なサーバーにバックエンド プールを定義するには、BackendAddressPool を使用します。 backendHttpSetting は、バックエンド ポート 80 および 443 を使用して定義されます。 Cookie ベースのアフィニティのプロパティと requestTimeouts は、WebSocket のトラフィックには関係ありません。 適切なリスナーを対応するバックエンド アドレス プールに結び付けるには、引き続きルーティング規則の "Basic" を使用する必要があります。 
+WebSocket が有効なサーバーにバックエンド プールを定義するには、BackendAddressPool を使用します。 backendHttpSetting は、バックエンド ポート 80 および 443 を使用して定義されます。 HTTP 設定の要求タイムアウト値は、WebSocket セッションにも適用されます。 ルーティング規則を変更する必要はありません。それは、適切なリスナーを対応するバックエンド アドレス プールに関連付けるために使用されます。 
 
 ```json
 "requestRoutingRules": [{

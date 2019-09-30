@@ -10,14 +10,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 08/22/2019
 ms.author: bwren
-ms.openlocfilehash: 80c4fa5fad574f1d6efe476df90a8396fa5cb4f3
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e8fd49781301406e0c35e1de57cea3040167c6c3
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205632"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70915862"
 ---
 # <a name="oms-portal-moving-to-azure"></a>OMS ポータルの Azure への移行
 
@@ -50,7 +50,7 @@ OMS ポータルが非推奨となるのに伴い、次の変更が発表され�
 Azure portal への切り替え方法については、「[OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問](oms-portal-faq.md)」を参照してください。 
 
 ## <a name="user-access-and-role-migration"></a>ユーザー アクセスとロールの移行
-Azure portal のアクセス管理は、OMS ポータルのアクセス管理よりも機能が豊富で強力です。 Log Analytics でのアクセス管理の詳細については、「[ワークスペースを管理する](manage-access.md#manage-accounts-and-users)」を参照してください。
+Azure portal のアクセス管理は、OMS ポータルのアクセス管理よりも機能が豊富で強力です。 Log Analytics でのアクセス管理の詳細については、「[Azure Monitor ログ ワークスペースの設計](design-logs-deployment.md)」を参照してください。
 
 > [!NOTE]
 > この記事の旧版では、アクセス許可は自動的に OMS ポータルから Azure portal に変換されると記載されていました。 この自動変換は現在では予定されていないため、手動で変換を実行する必要があります。

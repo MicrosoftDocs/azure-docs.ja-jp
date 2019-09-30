@@ -1,9 +1,9 @@
-- name: Azure Machine Learning service のドキュメント
-  href: index.yml
+- name: Azure Machine Learning のドキュメント
+  href: ../index.yml
 - name: 概要
   expanded: true
   items:
-    - name: Azure Machine Learning サービスの概要
+    - name: Azure Machine Learning とは
       displayName: 'AML, services, overview, introduction'
       href: overview-what-is-azure-ml.md
     - name: アーキテクチャと用語
@@ -26,20 +26,25 @@
               href: tutorial-train-models-with-aml.md
             - name: 2. モデルをデプロイする
               href: tutorial-deploy-models-with-aml.md
-        - name: 回帰 (ニューヨーク市のタクシー データ)
+        - name: 自動 ML による回帰 (NYC タクシー データ)
           items:
             - name: ML モデルを自動トレーニングする
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
+        - name: Machine Learning パイプライン (上級)
+          items:
+            - name: 分類モデルのバッチ スコアリング
+              displayName: pipelines
+              href: tutorial-pipeline-batch-scoring-classification.md
     - name: ビジュアル インターフェイス
       items:
-        - name: 回帰モデルをトレーニングする
+        - name: 1. 回帰モデルをトレーニングする
           displayName: studio
           href: ui-tutorial-automobile-price-train-score.md
-        - name: 回帰モデルをデプロイする
+        - name: 2. 回帰モデルをデプロイする
           displayName: studio
           href: ui-tutorial-automobile-price-deploy.md
-    - name: 自動化された機械学習
+    - name: 自動 ML (インターフェイス)
       items:
         - name: 分類 (銀行データ)
           displayName: 'automl, automated, auto ml, portal, ui'
@@ -49,33 +54,10 @@
     - name: Notebooks
       displayName: 'example, examples, server, jupyter, azure notebooks, python, notebook, github'
       href: samples-notebooks.md
-    - name: ビジュアル インターフェイスの実験
-      items:
-        - name: 価格を予測する
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-basic.md
-        - name: 価格を予測する (詳細設定)
-          displayName: 'regression, studio'
-          href: ui-sample-regression-predict-automobile-price-compare-algorithms.md
-        - name: 信用リスクの予測
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-basic.md
-        - name: 信用リスクを予測する (詳細設定)
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-credit-risk-cost-sensitive.md
-        - name: 顧客離れを予測する
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-churn.md
-        - name: フライトの遅延を予測する
-          displayName: 'classification, studio'
-          href: ui-sample-classification-predict-flight-delay.md
     - name: Azure Open Datasets
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: 概念
   items:
-    - name: ディープ ラーニング
-      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
-      href: concept-deep-learning-vs-machine-learning.md
     - name: ワークスペース
       href: concept-workspace.md
     - name: コンピューティング ターゲット
@@ -111,22 +93,27 @@
           href: how-to-secure-web-service.md
         - name: ストレージ アクセス キーの再生成
           href: how-to-change-storage-access-key.md
+    - name: ディープ ラーニング
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
 - name: ハウツー ガイド
   items:
-    - name: ワークスペースを管理する
+    - name: ワークスペースの作成と管理
       items:
-        - name: ワークスペースにポータルを使用する
+        - name: Azure Portal の使用
           href: how-to-manage-workspace.md
-        - name: Resource Manager テンプレートを使用する
+        - name: Azure CLI の使用
+          href: how-to-manage-workspace-cli.md
+        - name: Resource Manager テンプレートの使用
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: "開発環境をセットアップする\_"
+    - name: 環境をセットアップする
       items:
-        - name: 開発環境を構成する
+        - name: 開発環境をセットアップする
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: ソフトウェア環境を管理する
-          displayName: 'pip, Conda'
+        - name: ソフトウェア環境をセットアップする
+          displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
         - name: ログの有効化
           displayName: 'troubleshoot, log, files, tracing'
@@ -145,34 +132,49 @@
         - name: データセットを追加および登録する
           displayName: 'data, dataset'
           href: how-to-create-register-datasets.md
-        - name: azureml.dataprep で準備する
-          items:
-            - name: データを読み込む
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-load-data.md
-            - name: データを変換する
-              displayName: 'data, etl, dataprep, data prep'
-              href: how-to-transform-data.md
-            - name: データを書き込む
-              displayName: 'data, etl, data prep, dataprep'
-              href: how-to-write-data.md
+        - name: データセットを使用したトレーニング
+          displayName: 'data, dataset'
+          href: how-to-train-with-datasets.md
     - name: モデルをトレーニングする
       items:
         - name: トレーニング環境をセットアップする
           displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
           href: how-to-set-up-training-targets.md
-        - name: トレーニングでの推定器の作成
-          href: how-to-train-ml-models.md
-        - name: Scikit-learn の使用
-          href: how-to-train-scikit-learn.md
-        - name: Tensorflow の使用
-          href: how-to-train-tensorflow.md
-        - name: Keras の使用
-          href: how-to-train-keras.md
-        - name: PyTorch の使用
-          href: how-to-train-pytorch.md
-        - name: Chainer の使用
-          href: how-to-train-chainer.md
+        - name: Estimator を使用してトレーニングする
+          items:
+            - name: トレーニングでの推定器の作成
+              href: how-to-train-ml-models.md
+            - name: Scikit-learn の使用
+              href: how-to-train-scikit-learn.md
+            - name: Tensorflow の使用
+              href: how-to-train-tensorflow.md
+            - name: Keras の使用
+              href: how-to-train-keras.md
+            - name: PyTorch の使用
+              href: how-to-train-pytorch.md
+            - name: Chainer の使用
+              href: how-to-train-chainer.md
+        - name: ビジュアル インターフェイスの使用
+          displayName: sample visual interface experiments
+          items:
+            - name: 価格を予測する
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-basic.md
+            - name: 価格を予測する (詳細設定)
+              displayName: 'regression, studio'
+              href: how-to-ui-sample-regression-predict-automobile-price-compare-algorithms.md
+            - name: 信用リスクの予測
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-basic.md
+            - name: 信用リスクを予測する (詳細設定)
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+            - name: 顧客離れを予測する
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-churn.md
+            - name: フライトの遅延を予測する
+              displayName: 'classification, studio'
+              href: how-to-ui-sample-classification-predict-flight-delay.md
         - name: ハイパーパラメーターを調整する
           displayName: parameter
           href: how-to-tune-hyperparameters.md
@@ -198,7 +200,7 @@
         - name: 自動化された ML を使用する (Python)
           displayName: SDK automl
           href: how-to-configure-auto-train.md
-        - name: 自動化された ML を使用する (Azure portal)
+        - name: 自動化された ML を使用する (ワークスペース ランディング ページ)
           href: how-to-create-portal-experiments.md
         - name: リモート コンピューティング ターゲットを使用する
           displayName: automl automated auto ml
@@ -301,12 +303,18 @@
               href: ../algorithm-module-reference/edit-metadata.md
             - name: 見つからないデータのクリーンアップ
               href: ../algorithm-module-reference/clean-missing-data.md
+            - name: 特徴ハッシュ
+              href: ../algorithm-module-reference/feature-hashing.md
+            - name: テキストからの N-gram 特徴抽出
+              href: ../algorithm-module-reference/extract-n-gram-features-from-text.md
             - name: 列の追加
               href: ../algorithm-module-reference/add-columns.md
             - name: 行の追加
               href: ../algorithm-module-reference/add-rows.md
             - name: 重複する行の削除
               href: ../algorithm-module-reference/remove-duplicate-rows.md
+            - name: Preprocess Text (テキストの前処理)
+              href: ../algorithm-module-reference/preprocess-text.md
             - name: データの結合
               href: ../algorithm-module-reference/join-data.md
             - name: データの分割
@@ -347,6 +355,8 @@
               href: ../algorithm-module-reference/multiclass-neural-network.md
             - name: 多クラス デシジョン フォレスト
               href: ../algorithm-module-reference/multiclass-decision-forest.md
+            - name: 多クラスの増幅デシジョン ツリー
+              href: ../algorithm-module-reference/multiclass-boosted-decision-tree.md
             - name: 2 クラス平均化パーセプトロン
               href: ../algorithm-module-reference/two-class-averaged-perceptron.md
             - name: 2 クラス デシジョン フォレスト

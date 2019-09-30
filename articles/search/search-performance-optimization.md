@@ -2,7 +2,7 @@
 title: パフォーマンスの最適化のためのデプロイ戦略とベスト プラクティス - Azure Search
 description: Azure Search のパフォーマンスを調整し、最適なスケールを構成するためのベスト プラクティスについて説明します。
 author: LiamCavanagh
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: rest-api
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: a4578e26df5a6c29e80a0bbd2e0a30725e3733ee
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 97628535deb79733e9d286977534a6ea97ba60e6
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68370645"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70182292"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Azure Search でのパフォーマンスの最適化のためのデプロイ戦略とベスト プラクティス
 

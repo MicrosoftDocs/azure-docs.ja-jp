@@ -3,18 +3,18 @@ title: カスタム分析を使用して Azure IoT Central を拡張する |Micr
 description: ソリューション開発者は、カスタムの分析と視覚化を実行するために IoT Central アプリケーションを構成します。 このソリューションでは、Azure Databricks を使用します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 05/21/2019
+ms.date: 08/23/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e039e2b8d9c183b5bfee1bee47e4addc4c873bf7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1649d1ad50a62374cb5a1d9491c594e1b485ec1
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66743344"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100972"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics"></a>カスタム分析を使用して Azure IoT Central を拡張する
 
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ### <a name="iot-central-application"></a>IoT Central アプリケーション
 
-次の設定で、[[Azure IoT Central - マイ アプリケーション]](https://aka.ms/iotcentral) ページで IoT Central アプリケーションを作成します。
+[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、次の設定を使用して IoT Central アプリケーションを作成します。
 
 | Setting | 値 |
 | ------- | ----- |
@@ -45,11 +45,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | URL | 既定値を受け入れるか、独自の一意の URL プレフィックスを選択します |
 | Directory | Azure Active Directory テナント |
 | Azure サブスクリプション | お使いの Azure サブスクリプション |
-| リージョン | 米国東部 |
+| Region | East US |
 
 この記事の例とスクリーンショットでは、**米国東部**リージョンを使用します。 近くの場所を選択して、必ずすべてのリソースを同じリージョン内に作成してください。
 
-### <a name="resource-group"></a>リソース グループ
+### <a name="resource-group"></a>Resource group
 
 作成するその他のリソースを格納するため、**IoTCentralAnalysis** という [リソース グループを Azure portal で作成](https://portal.azure.com/#create/Microsoft.ResourceGroup)します。 Azure リソースは IoT Central アプリケーションと同じ場所に作成してください。
 
@@ -59,11 +59,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 | Setting | 値 |
 | ------- | ----- |
-| Name    | 名前空間名を選択します |
-| 価格レベル | Basic |
-| サブスクリプション | 該当するサブスクリプション |
-| リソース グループ | IoTCentralAnalysis |
-| Location | 米国東部 |
+| 名前    | 名前空間名を選択します |
+| Pricing tier | Basic |
+| Subscription | 該当するサブスクリプション |
+| Resource group | IoTCentralAnalysis |
+| Location | East US |
 | スループット ユニット | 1 |
 
 ### <a name="azure-databricks-workspace"></a>Azure Databricks ワークスペース
@@ -73,9 +73,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Setting | 値 |
 | ------- | ----- |
 | ワークスペース名    | ワークスペース名を選択します |
-| サブスクリプション | 該当するサブスクリプション |
-| リソース グループ | IoTCentralAnalysis |
-| Location | 米国東部 |
+| Subscription | 該当するサブスクリプション |
+| Resource group | IoTCentralAnalysis |
+| Location | East US |
 | 価格レベル | Standard |
 
 必要なリソースを作成すると、次のスクリーンショットのような **IoTCentralAnalysis** リソース グループが表示されます。
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-export-in-iot-central"></a>IoT Central でエクスポートを構成する
 
-Contoso テンプレートから作成した [IoT Central アプリケーション](https://aka.ms/iotcentral)に移動します。 このセクションでは、シミュレートされたデバイスからイベント ハブにテレメトリをストリーム配信するようにアプリケーションを構成します。 エクスポートを構成するには、次の手順に従います。
+[Azure IoT Central アプリケーション マネージャー](https://aka.ms/iotcentral) Web サイト上で、Contoso テンプレートから作成した IoT Central アプリケーションに移動します。 このセクションでは、シミュレートされたデバイスからイベント ハブにテレメトリをストリーム配信するようにアプリケーションを構成します。 エクスポートを構成するには、次の手順に従います。
 
 1. **[継続的データ エクスポート]** ページに移動し、 **[+ 新規]** を選択してから、 **[Azure Event Hubs]** を選択します。
 1. 以下の設定を使用してエクスポートを構成してから、 **[保存]** を選択します。
@@ -107,7 +107,7 @@ Contoso テンプレートから作成した [IoT Central アプリケーショ�
     | Setting | 値 |
     | ------- | ----- |
     | 表示名 | Event Hubs へのエクスポート |
-    | Enabled | On |
+    | 有効 | On |
     | Event Hubs 名前空間 | Event Hubs 名前空間の名前 |
     | イベント ハブ | centralexport |
     | 測定 | On |

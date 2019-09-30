@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83319118c778d89749b1eb5d5fd792a5200c19c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6824eae4d5fed2eceaf85b9a674f980815afb260
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60836036"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101386"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Azure VM 上の SAP MaxDB、liveCache、Content Server のデプロイ
 
@@ -428,7 +427,7 @@ SAP が現在サポートしているのは次のものです。
 
 最新バージョンの SAP コンテンツ サーバーと最新のバージョンの **Microsoft IIS** を使用することを強くお勧めします。 
 
-SAP コンテンツ サーバーと Microsoft IIS の最新バージョンを [SAP 製品の可用性マトリックス (PAM)][sap-pam] でご確認ください。
+サポートされている最新バージョンの SAP コンテンツ サーバーと Microsoft IIS は、[SAP 製品の可用性マトリックス (PAM)][sap-pam] でご確認ください。
 
 ### <a name="supported-microsoft-windows-and-azure-vm-types-for-sap-content-server"></a>SAP コンテンツ サーバー向けにサポートされている Microsoft Windows のバージョンと Azure VM タイプ
 Azure での SAP コンテンツ サーバー向けにサポートされている Microsoft Windows のバージョンについては、こちらをご覧ください。

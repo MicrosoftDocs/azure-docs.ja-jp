@@ -1,6 +1,6 @@
 ---
 title: カスタムの MapReduce プログラムの実行 - Azure HDInsight
-description: HDInsight でカスタムの MapReduce プログラムを実行するタイミングと方法。
+description: Azure HDInsight クラスター上でカスタムの Apache MapReduce プログラムを実行するタイミングと方法。
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: 5ed82fc21aedc9af394922059859f81cfba1867e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 305eefbaa674e414ab8134986e6cd526abe8208e
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713087"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70810743"
 ---
 # <a name="run-custom-mapreduce-programs"></a>カスタムの MapReduce プログラムを呼び出す
 

@@ -7,12 +7,12 @@ services: monitoring
 ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 1151eb8659c60cd71430c3dd971e73ec03a5545f
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538119"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383156"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -61,8 +61,8 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
     ![[アクティビティ ログ アラートの追加] ダイアログ ボックス](media/alerts-activity-log-service-notifications/activity-log-alert-new-ux.png)
 
-> [!NOTE]
-> このサブスクリプションは、アクティビティ ログ アラートの保存に使用されます。 アラート リソースはこのサブスクリプションにデプロイされ、アクティビティ ログのイベントを監視します。
+    > [!NOTE]
+    > このサブスクリプションは、アクティビティ ログ アラートの保存に使用されます。 アラート リソースはこのサブスクリプションにデプロイされ、アクティビティ ログのイベントを監視します。
 
 1. アラートを受け取りたい**イベントの種類**を選択します。*サービスの問題*、*計画済みメンテナンス*、および*正常性の勧告*のいずれかです 
 
@@ -91,11 +91,10 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 >[!NOTE]
 >上記の手順で定義されたアクション グループは、今後すべてのアラート定義で既存のアクション グループとして再利用できます。
 >
->
 
 ## <a name="alert-with-existing-action-group-using-azure-portal"></a>Azure portal を使用する既存のアクション グループでのアラート
 
-1. 前のセクションの手順 1. から 6. に従って、サービス正常性通知を作成します。 
+1. 前のセクションの手順 1 から 6 に従って、サービス正常性通知を作成します。 
 
 1. **[Define action group]\(アクション グループの定義\)** で、 **[アクション グループの選択]** ボタンをクリックします。 適切なアクション グループを選択します。
 

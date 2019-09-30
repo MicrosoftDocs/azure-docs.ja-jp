@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: 8c142b4c1663a7ccd462836e9aac4ee80accaae4
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 65c59ba299490ee2bbef849b6f7354abc05ad885
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67874829"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003356"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-net-app-to-store-secrets-in-azure-key-vault"></a>チュートリアル:Linux VM と .NET アプリを使用してシークレットを Azure Key Vault に格納する
 
@@ -30,7 +30,7 @@ Azure Key Vault は、お使いのアプリケーション、サービス、IT �
 > * コンソール アプリケーションが Key Vault のデータを読み取るために必要なアクセス許可を付与する
 > * Key Vault からシークレットを取得する
 
-先に進む前に、[Key Vault の基本概念](key-vault-whatis.md#basic-concepts)について確認してください。
+先に進む前に、[Key Vault の基本概念](basic-concepts.md)について確認してください。
 
 ## <a name="prerequisites"></a>前提条件
 

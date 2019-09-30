@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 08/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 022b16669791b9b9cce066b3dd17c70b33569cc0
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 78b04a06b71590a79180d1ae367e7d059e1b84a3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955233"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70195228"
 ---
 # <a name="what-is-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースとは
 
@@ -44,6 +44,8 @@ QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペ�
 
 ![ユーザー クエリのランク付けプロセス](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
 
+### <a name="ranker-process"></a>ランカー プロセス
+
 このプロセスについて次の表で説明します。
 
 |手順|目的|
@@ -59,6 +61,70 @@ QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペ�
 
 使用される特徴は、単語レベルのセマンティクス、コーパスの用語レベルの重要性、2 つのテキスト文字列間の類似性と関連性を判別するディープ ラーニング済みのセマンティック モデルなどですが、これらに限定されません。
 
+## <a name="http-request-and-response-with-endpoint"></a>エンドポイントの HTTP 要求/応答
+ナレッジ ベースを公開すると、アプリケーション (通常はチャット ボット) に統合できる REST ベースの HTTP **エンドポイント**がサービスによって作成されます。 
+
+### <a name="the-user-query-request-to-generate-an-answer"></a>回答を生成するユーザー クエリ要求
+
+**ユーザー クリエ**は、エンド ユーザーが `How do I add a collaborator to my app?` など、ナレッジ ベースにたずねる質問です。 クエリは多くの場合、自然言語形式か、質問を表すいくつかのキーワードで行われます。たとえば、`help with collaborators` のようになります。 クエリはクライアント アプリケーションの HTTP **要求**からナレッジに送信されます。
+
+```json
+{
+    "question": "qna maker and luis",
+    "top": 6,
+    "isTest": true,
+    "scoreThreshold": 20,
+    "strictFilters": [
+    {
+        "name": "category",
+        "value": "api"
+    }],
+    "userId": "sd53lsY="
+}
+```
+
+[scoreThreshold](./confidence-score.md#choose-a-score-threshold)、[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)、[strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags) などのプロパティを設定することで応答を制御します。
+
+[会話コンテキスト](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context)を[マルチターン機能](../how-to/multiturn-conversation.md)と共に使用し、正しい最終的な回答が見つかるよう、会話を続けて質問と回答を練り上げます。
+
+### <a name="the-response-from-a-call-to-generate-answer"></a>回答を生成する呼び出しからの応答
+
+HTTP **応答**は、特定のユーザー クエリの最適な一致に基づいて、ナレッジ ベースから取得された回答です。 応答には回答と予測スコアが含まれます。 複数の上位回答を求めた場合、`top` プロパティによって、複数の上位回答が得られ、それぞれにスコアが付きます。 
+
+```json
+{
+    "answers": [
+        {
+            "questions": [
+                "What is the closing time?"
+            ],
+            "answer": "10.30 PM",
+            "score": 100,
+            "id": 1,
+            "source": "Editorial",
+            "metadata": [
+                {
+                    "name": "restaurant",
+                    "value": "paradise"
+                },
+                {
+                    "name": "location",
+                    "value": "secunderabad"
+                }
+            ]
+        }
+    ]
+}
+```
+
+### <a name="test-and-production-knowledge-base"></a>テストと運用環境のナレッジ ベース
+ナレッジ ベースは質問と回答のリポジトリであり、その作成、管理、および使用は QnA Maker を通して行われます。 各 QnA Maker レベルで、複数のナレッジ ベースを使用できます。
+
+ナレッジ ベースには、テストと公開という 2 つの状態があります。 
+
+**テスト ナレッジ ベース**は、応答の精度と完全性の編集、保存、テストが実行されるバージョンです。 テスト ナレッジベースに加えられた変更は、アプリケーション/チャット ボットのエンド ユーザーには影響しません。 テスト ナレッジ ベースは HTTP 要求では `test` になります。 
+
+**公開ナレッジ ベース**は、チャット ボット/アプリケーションで使用されるバージョンです。 ナレッジ ベースを公開するアクションは、テスト ナレッジ ベースの内容を、ナレッジ ベースの公開バージョン内に配置します。 公開ナレッジ ベースは、アプリケーションがエンドポイントを介して使用するバージョンであるため、その内容が正確であり、十分にテストされていることを保証する必要があります。 公開ナレッジ ベースは HTTP 要求では `prod` になります。 
 
 ## <a name="next-steps"></a>次の手順
 
@@ -68,3 +134,11 @@ QnA Maker のナレッジ ベースは、一連の質問と回答 (QnA) のペ�
 ## <a name="see-also"></a>関連項目
 
 [QnA Maker の概要](../Overview/overview.md)
+
+次を使用してナレッジ ベースを作成し、編集します。 
+* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamaker/knowledgebase)
+* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
+
+次を使用して回答を生成します。 
+* [REST API](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
+* [.NET SDK](https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

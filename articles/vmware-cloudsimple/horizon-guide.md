@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8b4c1c60bcab770c5345645ffda3ac3558aa32cc
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8e5aeb63c54bd9ad71d5eb179fb93972468af4c0
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901291"
+ms.locfileid: "69972763"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>CloudSimple プライベート クラウド サイトを使用し、VMware Horizon を使用して仮想デスクトップ インフラストラクチャをホストする
 
@@ -74,6 +74,7 @@ CloudSimple ソリューションでは、次の操作を行う必要があり�
 * プライベート クラウド用にインストールされた AD/DHCP/DNS。
 
 #### <a name="cloudsimple-portal-create-a-dedicated-vlansubnet-for-desktop-pools"></a>CloudSimple ポータル:デスクトップ プール用の専用 VLAN/サブネットを作成する
+
 Horizon デスクトップ プール用の VLAN を作成し、それをサブネット CIDR に割り当てます。 手順については、[VLAN/サブネットの作成と管理](create-vlan-subnet.md)に関する記事をご覧ください。 これは、すべてのデスクトップ仮想マシンが実行されるネットワークです。
 
 標準的なセキュリティのベスト プラクティスに従って、Horizon のデプロイをセキュリティで保護します。

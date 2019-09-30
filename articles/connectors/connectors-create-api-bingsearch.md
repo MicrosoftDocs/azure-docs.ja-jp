@@ -6,16 +6,17 @@ ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
+manager: carmonm
 ms.reviewer: klam, LADocs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: 7146e59eabf9e30fa263f957f1c546414ad0fe26
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61004ed75a1935ada21b5c620a909fb5289aebb8
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952605"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70051004"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>Bing Search と Azure Logic Apps を使用してニュースを検索する
 
@@ -23,8 +24,8 @@ ms.locfileid: "60952605"
 
 たとえば、検索条件に基づいてニュース項目を検索し、その項目が Twitter のフィードにツイートとして投稿されるように指定できます。
 
-Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
-コネクタ固有の技術情報については、<a href="https://docs.microsoft.com/connectors/bingsearch/" target="blank">Bing Search コネクタ リファレンス</a>に関する記事を参照してください。
+Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[クイック スタートの初めてのロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
+コネクタ固有の技術情報については、[Bing Search コネクタ リファレンス](https://docs.microsoft.com/connectors/bingsearch/)に関する記事を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,7 +90,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
    ![アクションを追加する](./media/connectors-create-api-bing-search/add-action.png)
 
    既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 
-   表示されるプラス記号 ( **+** ) を選択し、 **[アクションの追加]** を選択します。
+   表示されるプラス記号 ( **+** ) を選択してから、 **[アクションの追加]** を選択します。
 
 3. 検索ボックスに、フィルターとして「Bing search」と入力します。
 アクションの一覧から、目的のアクションを選択します。
@@ -131,7 +132,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
       ![フィールドを選択する](./media/connectors-create-api-bing-search/expression-select-field.png)
 
-   4. 完了したら、 **[OK]** を選びます。
+   4. 終了したら、 **[OK]** を選択します。
 
       **[検索クエリ]** ボックスに、次の形式で式が表示されます。
 
@@ -162,16 +163,11 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
    ![接続を作成する](./media/connectors-create-api-bing-search/bing-search-create-connection.png)
 
-2. 操作が完了したら、 **[作成]** を選択します。
+2. 完了したら **[作成]** を選択します。
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
 コネクタの Open API (以前の Swagger) ファイルによって記述される、トリガー、アクション、制限などの技術的詳細については、[コネクタのリファレンス ページ](/connectors/bingsearch/)を参照してください。
-
-## <a name="get-support"></a>サポートを受ける
-
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

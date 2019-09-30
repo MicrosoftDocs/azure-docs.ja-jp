@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3b93b0cd5053db7d8a2b6aebd30d32f542670d90
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5cb5ce82dcd5a1c22dd05c7bd6cc9485f413752e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098117"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933773"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions でのカスタムオーケストレーションの状態 (Azure Functions)
 
@@ -344,4 +344,4 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure のDurable Functions での HTTP API](durable-functions-http-api.md)
+> [持続的タイマーについて学習する](durable-functions-timers.md)

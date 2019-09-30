@@ -8,12 +8,12 @@ ms.custom: tutorial-develop, mvc
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 9c6bd2040cb90f7a837efdf11d33a6e6999bc944
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 7e57abcc3df17dadd2e607895a8de011761ed68c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65965497"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932792"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-sql-api"></a>チュートリアル:SQL API を使って Azure Cosmos DB に対するクエリを実行する
 
@@ -61,7 +61,7 @@ Azure Cosmos DB [SQL API](documentdb-introduction.md) では SQL を使用した
 クエリを実行するには、Azure Portal のデータ エクスプローラーを使用するか、[REST API および SDK](sql-api-sdk-dotnet.md) で行います。既存のサンプル データ セットに対してクエリを実行する [Query Playground](https://www.documentdb.com/sql/demo) を使用することもできます。
 
 SQL クエリについて詳しくは、次を参照してください。
-* [SQL クエリと SQL 構文](how-to-sql-query.md)
+* [SQL クエリと SQL 構文](sql-query-getting-started.md)
 
 ## <a name="prerequisites"></a>前提条件
 

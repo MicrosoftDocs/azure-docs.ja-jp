@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/08/2019
 ms.author: areddish
-ms.openlocfilehash: 7f43507566109a52b914f27e37e5392345ec2eaf
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 6e3bf7b4fb60d81ff8883c2592de3739572bf2fa
+ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946163"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69997792"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-nodejs-sdk"></a>クイック スタート:Custom Vision Node.js SDK を使用して物体検出プロジェクトを作成する
 
@@ -26,20 +26,19 @@ ms.locfileid: "68946163"
 - [Node.js 8](https://www.nodejs.org/en/download/) 以降がインストールされている。
 - [npm](https://www.npmjs.com/) がインストールされている。
 
+[!INCLUDE [get-keys](includes/get-keys.md)]
+
+[!INCLUDE [node-get-images](includes/node-get-images.md)]
+
+
 ## <a name="install-the-custom-vision-sdk"></a>Custom Vision SDK をインストールする
 
-Custom Vision Service SDK for Node.js をインストールするには、次のコマンドを実行します。
+プロジェクトに Custom Vision Service SDK for Node.js をインストールするには、次のコマンドを実行します。
 
 ```shell
 npm install @azure/cognitiveservices-customvision-training
 npm install @azure/cognitiveservices-customvision-prediction
 ```
-
-[Node.js サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)と共に画像をダウンロードできます。
-
-[!INCLUDE [get-keys](includes/get-keys.md)]
-
-[!INCLUDE [node-get-images](includes/node-get-images.md)]
 
 ## <a name="add-the-code"></a>コードの追加
 
@@ -47,9 +46,10 @@ npm install @azure/cognitiveservices-customvision-prediction
 
 ### <a name="create-the-custom-vision-service-project"></a>Custom Vision Service プロジェクトを作成する
 
-新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 該当する各定義にサブスクリプション キーを挿入します。 物体検出と画像分類のプロジェクト作成の違いは **create_project** 呼び出しに指定されるドメインであることにご注目ください。
+新しい Custom Vision Service プロジェクトを作成するための次のコードをスクリプトに追加します。 ご利用のサブスクリプション キーを適切な定義に挿入し、sampleDataRoot パスの値を、実際の画像フォルダーのパスに設定します。 エンドポイントの値が、[Customvision.ai](https://www.customvision.ai/) で作成したトレーニングと予測のエンドポイントと一致していることを確認します。 物体検出と画像分類のプロジェクト作成の違いは **create_project** 呼び出しに指定されるドメインであることにご注目ください。
 
 ```javascript
+const fs = require('fs');
 const util = require('util');
 const TrainingApi = require("@azure/cognitiveservices-customvision-training");
 const PredictionApi = require("@azure/cognitiveservices-customvision-prediction");

@@ -1,78 +1,78 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Form Recognizer のドキュメント
+summary: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出するコグニティブ サービスです。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習では、手作業によるデータのラベル付けまたは集中的なコーディングとメンテナンスを行うことなく、モデルはフィールドとエントリ間のレイアウトと関係を理解できます。
 metadata:
-  title: API ドキュメント - Form Recognizer
-  titleSuffix: Azure Cognitive Services
-  description: Form Recognizer を使用して、フォーム ドキュメントからキーと値のデータをインテリジェントに抽出する方法について説明します。
-  services: cognitive-services
-  author: PatrickFarley
-  manager: nitinme
-  ms.service: cognitive-services
-  ms.subservice: forms-recognizer
-  ms.topic: landing-page
-  ms.date: 04/16/2019
-  ms.author: pafarley
-ms.custom: seodec18
-abstract:
+  title: Form Recognizer のドキュメント
   description: Azure Form Recognizer は、機械学習テクノロジを使用して、フォーム ドキュメントからキーと値のペアおよびテーブル データを識別して抽出するコグニティブ サービスです。 Form Recognizer は、元のファイル内の関係を含む構造化データを出力します。 教師なし学習では、手作業によるデータのラベル付けまたは集中的なコーディングとメンテナンスを行うことなく、モデルはフィールドとエントリ間のレイアウトと関係を理解できます。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ../media/index/form-recognizer-landing-page-video.png
-      width: 250
-    title: 'Form Recognizer による AI を活用したプロセスの自動化 (2:15)'
-    href: 'https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer'
-    width: 250
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/form-recognizer/overview
-            html: <p>Form Recognizer について学習します。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Form Recognizer とは
-          - href: /azure/cognitive-services/form-recognizer/form-recognizer-container-howto
-            html: <p>Form Recognizer コンテナーを使用してフォームとテーブルのデータを解析する方法を学習します。</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: コンテナーのインストールと実行
-          - href: /azure/cognitive-services/form-recognizer/build-training-data-set
-            html: <p>カスタム モデルをトレーニングするために最適化されたデータ セットの作成。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: トレーニング データ セットの作成
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 以下を使用して、Form Recognizer モデルをトレーニングし、フォームからデータを抽出します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/logos/logo-curl.svg
-            text: cURL
-            href: quickstarts/curl-train-extract.md
-          - image:
-              src: ./media/logos/logo-python.svg
-            text: Python
-            href: quickstarts/python-train-extract.md
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: API
-            html: '<p><a href="https://aka.ms/form-recognizer/api">Form Recognizer API</a></p>'
-          - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview">.NET</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'
+  services: cognitive-services
+  ms.service: cognitive-services
+  ms.subservice: form-recognizer
+  ms.topic: landing-page
+  author: PatrickFarley
+  ms.author: pafarley
+  ms.date: 09/05/2019
+  ms.openlocfilehash: 0c450a79c0dbdd19732488af927c3c29df263a23
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70931821"
+landingContent:
+- title: Form Recognizer について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Form Recognizer とは
+      url: overview.md
+  - linkListType: video
+    links:
+    - text: Form Recognizer による AI を活用したプロセスの自動化
+      url: https://channel9.msdn.com/Shows/AI-Show/Learn-about-AI-powered-robotic-process-automation-with-Form-Recognizer
+- title: カスタム モデルをトレーニングしてデータを抽出する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET SDK の使用
+      url: quickstarts/dotnet-sdk.md
+    - text: REST API の使用する (Python)
+      url: quickstarts/python-train-extract.md
+    - text: REST API の使用する (cURL)
+      url: quickstarts/curl-train-extract.md
+- title: 配信確認メッセージからデータを抽出する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: .NET SDK の使用
+      url: quickstarts/dotnet-sdk.md
+- title: トレーニング データ セットの作成
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: トレーニング データ セットの作成
+      url: build-training-data-set.md
+- title: コンテナーの使用
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: コンテナーのインストールと実行
+      url: form-recognizer-container-howto.md
+  - linkListType: how-to-guide
+    links:
+    - text: コンテナーを構成する
+      url: form-recognizer-container-configuration.md
+  - linkListType: deploy
+    links:
+    - text: Container Instances の使用
+      url: deploy-form-recognizer-on-container-instances.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Form Recognizer API
+      url: https://aka.ms/form-recognizer/api
+    - text: .NET SDK
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure コマンド ライン インターフェイス (CLI)
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list

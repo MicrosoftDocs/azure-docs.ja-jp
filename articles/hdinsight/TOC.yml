@@ -1,18 +1,851 @@
-- name: HDInsight のドキュメント
-  href: index.yml
-- name: Apache Hadoop
-  href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
+- name: HDInsight サービス
+  expanded: true
+  items:
+    - name: 概要
+      items:
+        - name: Azure HDInsight とは
+          href: ./hdinsight-overview.md
+    - name: チュートリアル
+      items:
+        - name: HDInsight クラスターの作成
+          href: ./hdinsight-hadoop-provision-linux-clusters.md
+        - name: HDInsight クラスターの管理 - ポータル
+          href: ./hdinsight-administer-use-portal-linux.md
+        - name: HDInsight クラスターの管理 - CLI
+          href: ./hdinsight-administer-use-command-line.md
+        - name: HDInsight クラスターの管理 - .NET SDK
+          href: ./hdinsight-administer-use-dotnet-sdk.md
+        - name: HDInsight クラスターの管理 - PowerShell
+          href: ./hdinsight-administer-use-powershell.md
+    - name: サンプル
+      items:
+        - name: Azure CLI のサンプル
+          href: ./azure-cli-samples.md
+        - name: .NET のサンプル
+          href: ./hdinsight-sdk-dotnet-samples.md
+        - name: Java のサンプル
+          href: ./hdinsight-sdk-java-samples.md
+        - name: Python のサンプル
+          href: ./hdinsight-sdk-python-samples.md
+        - name: Azure サンプル ブラウザー
+          href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
+    - name: 概念
+      items:
+        - name: HDInsight の Apache Hadoop コンポーネント
+          href: ./hdinsight-component-versioning.md
+        - name: HDInsight の Machine Learning
+          href: ./hdinsight-machine-learning-overview.md
+        - name: HDInsight での大規模なストリーミング
+          href: ./hdinsight-streaming-at-scale-overview.md
+        - name: HDInsight の Apache Hadoop アーキテクチャ
+          href: ./hdinsight-hadoop-architecture.md
+        - name: クラスターの容量計画
+          href: ./hdinsight-capacity-planning.md
+        - name: 高可用性と信頼性
+          href: ./hdinsight-high-availability-linux.md
+        - name: ストレージ オプションの比較
+          href: ./hdinsight-hadoop-compare-storage-options.md
+        - name: マネージド ID とは
+          href: ./hdinsight-managed-identities.md
+    - name: 方法
+      items:
+        - name: クラスターの作成
+          items:
+            - name: ポータルでクラスターを作成する
+              href: ./hdinsight-hadoop-create-linux-clusters-portal.md
+            - name: テンプレートを使用してクラスターを作成する
+              href: ./hdinsight-hadoop-create-linux-clusters-arm-templates.md
+            - name: コマンド ラインを使用してクラスターを作成する
+              href: ./hdinsight-hadoop-create-linux-clusters-azure-cli.md
+            - name: PowerShell を使用してクラスターを作成する
+              href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md
+            - name: REST API を使用してクラスターを作成する
+              href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
+            - name: .NET を使用してクラスターを作成する
+              href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
+        - name: クラスター ストレージの使用
+          items:
+            - name: Azure Storage を使用する
+              href: hdinsight-hadoop-use-blob-storage.md
+            - name: Azure Data Lake Storage Gen2 の使用
+              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+            - name: Azure Data Lake Storage Gen1 の使用
+              href: hdinsight-hadoop-use-data-lake-store.md
+        - name: クラスターを拡張する
+          items:
+            - name: HDInsight アプリをインストールする
+              href: hdinsight-apps-install-applications.md
+            - name: ブートストラップを使用してクラスターをカスタマイズする
+              href: hdinsight-hadoop-customize-cluster-bootstrap.md
+            - name: スクリプト アクションを使用したクラスターのカスタマイズ
+              href: hdinsight-hadoop-customize-cluster-linux.md
+            - name: スクリプト アクションを開発する
+              href: hdinsight-hadoop-script-actions-linux.md
+            - name: Apache Hive ライブラリを追加する
+              href: hdinsight-hadoop-add-hive-libraries.md
+            - name: Apache Giraph を使用する
+              href: hdinsight-hadoop-giraph-install-linux.md
+            - name: Hue を使用する
+              href: hdinsight-hadoop-hue-linux.md
+            - name: HDInsight アプリケーションの構築
+              items:
+                - name: カスタム アプリをインストールする
+                  href: hdinsight-apps-install-custom-applications.md
+                - name: REST を使用してアプリをインストールする
+                  href: 'https://msdn.microsoft.com/library/mt706515.aspx'
+                - name: HDInsight アプリを Azure Marketplace に発行する
+                  href: hdinsight-apps-publish-applications.md
+        - name: セキュリティ保護
+          items:
+            - name: HDInsight で SSH を使用する
+              href: hdinsight-hadoop-linux-use-ssh-unix.md
+            - name: SSH トンネリングを使用する
+              href: hdinsight-linux-ambari-ssh-tunnel.md
+            - name: データ アクセスを制限する
+              href: hdinsight-storage-sharedaccesssignature-permissions.md
+            - name: Apache Ambari ビューに対してユーザーを承認する
+              href: hdinsight-authorize-users-to-ambari.md
+        - name: 移行
+          items:
+            - name: 動機と利点
+              href: ./hadoop/apache-hadoop-on-premises-migration-motivation.md
+            - name: ベスト プラクティス - アーキテクチャ
+              href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-architecture.md
+            - name: ベスト プラクティス - インフラストラクチャ
+              href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-infrastructure.md
+            - name: ベスト プラクティス - ストレージ
+              href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-storage.md
+            - name: ベスト プラクティス - データ移行
+              href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-data-migration.md
+            - name: ベスト プラクティス - セキュリティと DevOps
+              href: ./hadoop/apache-hadoop-on-premises-migration-best-practices-security-devops.md
+        - name: 管理
+          items:
+            - name: Apache Ambari Web UI を使用したクラスターの管理
+              href: ./hdinsight-hadoop-manage-ambari.md
+            - name: Apache Ambari Web UI を使用したクラスターの最適化
+              href: ./hdinsight-changing-configs-via-ambari.md
+            - name: Apache Ambari REST API の使用
+              href: ./hdinsight-hadoop-manage-ambari-rest-api.md
+            - name: クラスターの削除
+              href: ./hdinsight-delete-cluster.md
+            - name: 手動によるクラスターのスケーリング
+              href: ./hdinsight-scaling-best-practices.md
+            - name: クラスターの自動スケーリング
+              href: ./hdinsight-autoscale-clusters.md
+            - name: 外部のメタデータ ストアを使用する
+              href: ./hdinsight-use-external-metadata-stores.md
+            - name: HDInsight クラスターのログを管理する
+              href: ./hdinsight-log-management.md
+            - name: ストレージ アカウントを追加する
+              href: ./hdinsight-hadoop-add-storage.md
+            - name: Apache Hadoop ジョブのデータのアップロード
+              href: ./hdinsight-upload-data.md
+            - name: 複数の HDInsight クラスターと Data Lake Storage
+              href: ./hdinsight-multiple-clusters-data-lake-store.md
+            - name: .NET を Linux に移行する
+              href: ./hdinsight-hadoop-migrate-dotnet-to-linux.md
+            - name: Apache Sqoop を使用したデータのインポートとエクスポート
+              items:
+                - name: 概要 - Apache Sqoop の使用
+                  href: ./hadoop/hdinsight-use-sqoop.md
+                - name: SSH を使用した接続
+                  href: ./hadoop/apache-hadoop-use-sqoop-mac-linux.md
+                - name: cURL を使用して実行する
+                  href: ./hadoop/apache-hadoop-use-sqoop-curl.md
+                - name: .NET 用 SDK を使用して実行する
+                  href: ./hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md
+                - name: Azure PowerShell を使用して実行する
+                  href: ./hadoop/apache-hadoop-use-sqoop-powershell.md
+            - name: データ分析パイプラインを運用化する
+              href: ./hdinsight-operationalize-data-pipeline.md
+            - name: ワークフローに Apache Oozie を使用する
+              href: ./hdinsight-use-oozie-linux-mac.md
+            - name: クラスターとサービスのポートと URI
+              href: ./hdinsight-hadoop-port-settings-for-services.md
+            - name: Resource Manager 開発ツールに移行する
+              href: ./hdinsight-hadoop-development-using-azure-resource-manager.md
+            - name: HDInsight クラスターを新しいバージョンにアップグレードする
+              href: ./hdinsight-upgrade-cluster.md
+            - name: HDInsight クラスター用の OS の修正プログラム
+              href: ./hdinsight-os-patching.md
+        - name: HDInsight ツールの使用
+          items:
+            - name: Tools for Visual Studio
+              href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
+            - name: Spark & Hive Tools for VSCode
+              href: ./hdinsight-for-vscode.md
+            - name: Hortonworks Sandbox と IntelliJ 用 HDInsight ツール
+              href: ./hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md
+            - name: Data Lake Tools と Hortonworks サンドボックス
+              href: ./hdinsight-hadoop-emulator-visual-studio.md
+        - name: 監視
+          items:
+            - name: Azure Monitor ログの使用
+              href: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+            - name: Azure Monitor ログでのクエリの使用
+              href: ./hdinsight-hadoop-oms-log-analytics-use-queries.md
+            - name: クラスター パフォーマンスの監視
+              href: ./hdinsight-key-scenarios-to-monitor.md
+            - name: Ambari と Azure Monitor のログを使用してクラスターの可用性を監視する
+              href: ./hdinsight-cluster-availability.md
+    - name: リファレンス
+      items:
+        - name: Azure PowerShell
+          href: /powershell/module/az.hdinsight
+        - name: .NET 用 SDK
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet'
+        - name: Python 用 SDK
+          href: 'https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python'
+        - name: Java 用 SDK
+          href: 'https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable'
+        - name: Go 用 SDK
+          href: ./hdinsight-go-sdk-overview.md
+        - name: .NET (Apache HBase)
+          href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
+        - name: REST API
+          href: /rest/api/hdinsight/
+        - name: REST API (Apache Spark)
+          href: /rest/api/hdinsightspark/
+        - name: Resource Manager テンプレート
+          href: /azure/templates/microsoft.hdinsight/allversions
+    - name: リソース
+      items:
+        - name: リリース
+          items:
+            - name: HDInsight 4.0 の新機能
+              href: ./hdinsight-version-release.md
+            - name: HDInsight 4.0 の完全なリリース ノート
+              href: ./hdinsight-release-notes.md
+            - name: HDInsight 3.6 の完全なリリース ノート
+              href: ./hdinsight-release-notes-archive.md
+        - name: よく寄せられる質問 (FAQ)
+          href: ./hdinsight-faq.md
+        - name: クラスター構成できめ細かなロールベースのアクセスに移行する
+          href: ./hdinsight-migrate-granular-access-cluster-configurations.md
+        - name: Linux での HDInsight の使用方法
+          href: ./hdinsight-hadoop-linux-information.md
+        - name: Apache Hadoop のメモリとパフォーマンス
+          href: ./hdinsight-hadoop-stack-trace-error-messages.md
+        - name: Linux での Apache Hadoop YARN アプリケーション ログへのアクセス
+          href: ./hdinsight-hadoop-access-yarn-app-logs-linux.md
+        - name: Apache Hadoop サービスのヒープ ダンプの有効化
+          href: ./hdinsight-hadoop-collect-debug-heap-dump-linux.md
+        - name: WebHCat エラーの説明と解決策
+          href: ./hdinsight-hadoop-templeton-webhcat-debug-errors.md
+        - name: Azure のロードマップ
+          href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+        - name: フォーラムで質問する
+          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=hdinsight'
+        - name: ラーニング パス
+          href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
+        - name: ビッグ データに関する Microsoft プロフェッショナル プログラム
+          href: 'https://academy.microsoft.com/en-us/professional-program/tracks/big-data/'
+        - name: 料金計算ツール
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: HDInsight 用の Windows ツール
+          href: ./hdinsight-hadoop-windows-tools.md
 - name: Apache Spark
-  href: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
-- name: Apache HBase
-  href: ./hbase/query-hbase-with-hbase-shell.md
-- name: Interactive Query
-  href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
+  items:
+    - name: 概要
+      items:
+        - name: HDInsight での Apache Spark とは
+          href: ./spark/apache-spark-overview.md
+    - name: クイック スタート
+      items:
+        - name: Apache Spark クラスターの作成 - ポータル
+          href: ./spark/apache-spark-jupyter-spark-sql-use-portal.md
+        - name: Apache Spark クラスターの作成 - PowerShell
+          href: ./spark/apache-spark-jupyter-spark-sql-use-powershell.md
+        - name: Apache Spark クラスターの作成 - Azure CLI
+          href: ./spark/apache-spark-create-cluster-cli.md
+        - name: Apache Spark クラスターの作成 - テンプレート
+          href: ./spark/apache-spark-jupyter-spark-sql.md
+    - name: チュートリアル
+      items:
+        - name: Apache Spark クラスターに対するクエリの実行
+          href: ./spark/apache-spark-load-data-run-query.md
+        - name: IntelliJ での失敗した Spark ジョブのデバッグ (プレビュー)
+          href: ./spark/apache-spark-intellij-tool-failure-debug.md
+        - name: BI ツールを使用したデータの分析
+          href: ./spark/apache-spark-use-bi-tools.md
+        - name: ストリーミング ジョブの実行
+          href: ./spark/apache-spark-eventhub-streaming.md
+        - name: 機械学習アプリの作成
+          href: ./spark/apache-spark-ipython-notebook-machine-learning.md
+        - name: IntelliJ での Apache Spark アプリの作成
+          href: ./spark/apache-spark-create-standalone-application.md
+    - name: 概念
+      items:
+        - name: HDInsight 上の Spark のベスト プラクティス
+          href: ./spark/spark-best-practices.md
+        - name: Apache Spark の設定を構成する
+          href: ./spark/apache-spark-settings.md
+        - name: Apache Spark ジョブを最適化する
+          href: ./spark/apache-spark-perf.md
+    - name: 方法
+      items:
+        - name: ツールの使用
+          items:
+            - name: IntelliJ 用ツール
+              href: ./spark/apache-spark-intellij-tool-plugin.md
+            - name: Eclipse 用ツール
+              href: ./spark/apache-spark-eclipse-tool-plugin.md
+            - name: VSCode 用 PySpark
+              href: ./set-up-pyspark-interactive-environment.md
+        - name: 開発
+          items:
+            - name: 対話型の Apache Spark シェルを使用する
+              href: ./spark/apache-spark-shell.md
+            - name: Apache Livy を使用したリモート ジョブ
+              href: ./spark/apache-spark-livy-rest-interface.md
+            - name: VPN を介して IntelliJ を使用してリモートで Apache Spark ジョブをデバッグする
+              href: ./spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md
+            - name: Apache Spark ストリーミング
+              items:
+                - name: ストリーミングの概要
+                  href: ./spark/apache-spark-streaming-overview.md
+                - name: 構造化ストリーミングの概要
+                  href: ./spark/apache-spark-structured-streaming-overview.md
+                - name: Apache Hadoop YARN で高可用性 Apache Spark ストリーミング ジョブを作成する
+                  href: ./spark/apache-spark-streaming-high-availability.md
+                - name: イベント処理を 1 回だけ伴う Apache Spark ストリーミング ジョブを作成する
+                  href: ./spark/apache-spark-streaming-exactly-once.md
+            - name: Apache Spark と Machine Learning
+              items:
+                - name: 食品検査の結果を予測する
+                  href: ./spark/apache-spark-machine-learning-mllib-ipython.md
+                - name: Web サイトのログを分析する
+                  href: ./spark/apache-spark-custom-library-website-log-analysis.md
+                - name: ディープ ラーニングに Caffe を使用する
+                  href: ./spark/apache-spark-deep-learning-caffe.md
+                - name: Microsoft Cognitive Toolkit を使用する
+                  href: ./spark/apache-spark-microsoft-cognitive-toolkit.md
+                - name: Apache Spark 機械学習パイプラインを作成する
+                  href: ./spark/apache-spark-creating-ml-pipelines.md
+            - name: ビッグ データの分析
+              items:
+                - name: Apache Spark を使用した Apache HBase データの読み取り/書き込み
+                  href: ./hdinsight-using-spark-query-hbase.md
+                - name: Application Insights Telemetry ログを分析する
+                  href: ./spark/apache-spark-analyze-application-insight-logs.md
+        - name: 管理
+          items:
+            - name: クラスター リソースの管理
+              href: ./spark/apache-spark-resource-manager.md
+            - name: 拡張された History Server を使用して Apache Spark アプリケーションを管理する
+              href: ./spark/apache-azure-spark-history-server.md
+            - name: IO キャッシュによるキャッシュを有効にする
+              href: ./spark/apache-spark-improve-performance-iocache.md
+            - name: Apache Spark での Notebook の使用
+              items:
+                - name: ローカルの Jupyter Notebook を使用する
+                  href: ./spark/apache-spark-jupyter-notebook-install-locally.md
+                - name: Jupyter Notebook カーネル
+                  href: ./spark/apache-spark-jupyter-notebook-kernels.md
+                - name: cell magic を使用して Jupyter で外部のパッケージを使用する
+                  href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
+                - name: スクリプト アクションを使用して Jupyter で外部のパッケージを使用する
+                  href: ./spark/apache-spark-python-package-installation.md
+                - name: Apache Zeppelin Notebook を使用する
+                  href: ./spark/apache-spark-zeppelin-notebook.md
+            - name: 他の Azure サービスの使用
+              items:
+                - name: Data Lake Storage の使用
+                  href: ./spark/apache-spark-use-with-data-lake-store.md
+                - name: Azure SQL データベースに接続する
+                  href: ./spark/apache-spark-connect-to-sql-database.md
+                - name: Apache Spark と Cosmos DB を使用してラムダ アーキテクチャを実装する
+                  href: ../cosmos-db/lambda-architecture.md
+                - name: AutoML を使用して Azure ML ワークロードを実行する
+                  href: ./spark/apache-spark-run-machine-learning-automl.md
+        - name: トラブルシューティング
+          items:
+            - name: OutOfMemoryError 例外
+              href: ./spark/apache-spark-troubleshoot-outofmemory.md
+            - name: Apache Spark ジョブが失敗する - NoClassDefFoundError
+              href: ./spark/apache-spark-troubleshoot-job-fails-noclassdeffounderror.md
+            - name: Apache Spark ジョブが失敗する - InvalidClassException
+              href: ./spark/apache-spark-troubleshoot-job-fails-invalidclassexception.md
+            - name: Apache Spark ジョブが遅い - listStatus
+              href: ./spark/apache-spark-troubleshoot-job-slowness-liststatus.md
+            - name: Apache Spark ジョブが遅い - ストレージ コンテナー
+              href: ./spark/apache-spark-troubleshoot-job-slowness-container.md
+            - name: IllegalArgumentException 例外
+              href: ./spark/apache-spark-troubleshoot-illegalargumentexception.md
+            - name: Apache Spark Streaming アプリケーションが停止する
+              href: ./spark/apache-spark-troubleshoot-application-stops.md
+            - name: RpcTimeoutException 例外
+              href: ./spark/apache-spark-troubleshoot-rpctimeoutexception.md
+            - name: クロス オリジン API がブロックされています
+              href: ./spark/apache-spark-troubleshoot-blocking-cross-origin.md
+            - name: Kryo によるシリアル化に失敗しました
+              href: ./spark/apache-spark-troubleshoot-sparkexception-kryo-serialization-failed.md
+            - name: Apache Spark のイベント ログ - RequestBodyTooLarge
+              href: ./spark/apache-spark-troubleshoot-event-log-requestbodytoolarge.md
+            - name: Apache Spark ジョブのデバッグ
+              href: ./spark/apache-spark-job-debugging.md
+            - name: IntelliJ を使用した Apache Spark ジョブのデバッグ
+              href: ./spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md
+            - name: Apache Spark のトラブルシューティング
+              href: ./spark/apache-troubleshoot-spark.md
+            - name: 既知の問題
+              href: ./spark/apache-spark-known-issues.md
+- name: Apache Hadoop
+  items:
+    - name: 概要
+      items:
+        - name: HDInsight の Apache Hadoop とは
+          href: ./hadoop/apache-hadoop-introduction.md
+    - name: クイック スタート
+      items:
+        - name: Apache Hadoop クラスターの作成 - ポータル
+          href: ./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md
+        - name: Apache Hadoop クラスターの作成 - テンプレート
+          displayName: 'resource manager template, arm template, resource manager group'
+          href: ./hadoop/apache-hadoop-linux-tutorial-get-started.md
+    - name: チュートリアル
+      items:
+        - name: オンデマンド クラスターの作成
+          href: ./hdinsight-hadoop-create-linux-clusters-adf.md
+        - name: Apache Hadoop ジョブを送信する
+          href: ./hadoop/submit-apache-hadoop-jobs-programmatically.md
+    - name: 方法
+      items:
+        - name: ツールの使用
+          items:
+            - name: Apache Hadoop サンドボックスの使用
+              href: ./hadoop/apache-hadoop-emulator-get-started.md
+        - name: 開発
+          items:
+            - name: Apache Hadoop と MapReduce を使用する
+              items:
+                - name: MapReduce の概要
+                  href: ./hadoop/hdinsight-use-mapreduce.md
+                - name: SSH の使用
+                  href: ./hadoop/apache-hadoop-use-mapreduce-ssh.md
+                - name: cURL の使用
+                  href: ./hadoop/apache-hadoop-use-mapreduce-curl.md
+                - name: Azure PowerShell の使用
+                  href: ./hadoop/apache-hadoop-use-mapreduce-powershell.md
+                - name: .NET 用 SDK の使用
+                  href: ./hadoop/apache-hadoop-use-mapreduce-dotnet-sdk.md
+                - name: MapReduce サンプルの実行
+                  href: ./hadoop/apache-hadoop-run-samples-linux.md
+                - name: カスタムの Apache Hadoop MapReduce プログラムを実行する
+                  href: ./hadoop/apache-hadoop-run-custom-programs.md
+                - name: 'C# ストリーミング MapReduce プログラムを開発する'
+                  href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
+                - name: Java MapReduce プログラムを開発する
+                  href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
+            - name: 抽出、変換、読み込み (ETL) ツールとして Apache Hive を使用する
+              href: ./hadoop/apache-hadoop-using-apache-hive-as-an-etl-tool.md
+            - name: 大規模な抽出、変換、読み込み
+              href: ./hadoop/apache-hadoop-etl-at-scale.md
+            - name: 非対話型認証 .NET HDInsight アプリケーションを作成する
+              href: ./hdinsight-create-non-interactive-authentication-dotnet-applications.md
+            - name: ビッグ データの分析
+              items:
+                - name: Power Query を使用して分析する
+                  href: ./hadoop/apache-hadoop-connect-excel-power-query.md
+                - name: Power BI を対話型クエリに接続する
+                  href: ./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+                - name: Power BI を Apache Hadoop に接続する
+                  href: ./hadoop/apache-hadoop-connect-hive-power-bi.md
+                - name: Excel を Apache Hadoop に接続する
+                  href: ./hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md
+                - name: Apache Hive JDBC ドライバーを使用して接続する
+                  href: ./hadoop/apache-hadoop-connect-hive-jdbc-driver.md
+                - name: 格納されたツイートを分析する
+                  href: ./hdinsight-analyze-twitter-data-linux.md
+                - name: Apache Mahout で推奨事項を生成する
+                  href: ./hadoop/apache-hadoop-mahout-linux-mac.md
+                - name: HDInsight の高度な分析
+                  href: ./hadoop/apache-hadoop-deep-dive-advanced-analytics.md
+        - name: 管理
+          items:
+            - name: 空のエッジ ノードを使用する
+              href: ./hdinsight-apps-use-edge-node.md
+        - name: トラブルシューティング
+          items:
+            - name: 一般的な問題
+              href: ./hdinsight-troubleshoot-guide.md
+            - name: クラスターの作成エラー
+              href: ./hadoop/hdinsight-troubleshoot-cluster-creation-fails.md
+            - name: ディスク領域の不足
+              href: ./hadoop/hdinsight-troubleshoot-out-disk-space.md
+            - name: ソフトのロックアップ - CPU
+              href: ./hadoop/hdinsight-troubleshoot-soft-lockup-cpu.md
+            - name: InvalidNetworkConfigurationErrorCode - クラスターの作成が失敗する
+              href: ./hadoop/troubleshoot-invalidnetworkconfigurationerrorcode-cluster-creation-fails.md
+            - name: InvalidNetworkSecurityGroupSecurityRules - クラスターの作成が失敗する
+              href: ./hadoop/hdinsight-troubleshoot-invalidnetworksecuritygroupsecurityrules-cluster-creation-fails.md
+            - name: HDInsight クラスターにログインできない
+              href: ./hadoop/hdinsight-troubleshoot-unable-log-in-cluster.md
+            - name: ノードを HDInsight クラスターに追加できない
+              href: ./hadoop/hdinsight-troubleshoot-unable-add-nodes.md
+            - name: サービス プリンシパルの証明書の変換
+              href: ./hadoop/hdinsight-troubleshoot-converting-service-principal-certificate.md
+            - name: ローカルの HDFS がセーフ モードでスタックする
+              href: ./hadoop/hdinsight-hdfs-troubleshoot-safe-mode.md
+            - name: Apache Ambari のハートビートの問題
+              href: ./hadoop/apache-ambari-troubleshoot-heartbeat-issues.md
+            - name: Apache Ambari UI の 502 エラー
+              href: ./hadoop/apache-ambari-troubleshoot-fivezerotwo-error.md
+            - name: Apache Ambari でダウンしたホストとサービスが表示される
+              href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
+            - name: 処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
+              href: ./hdinsight-troubleshoot-failed-cluster.md
+            - name: Apache Hadoop HDFS のトラブルシューティング
+              href: ./hdinsight-troubleshoot-hdfs.md
+            - name: Apache Hadoop YARN のトラブルシューティング
+              href: ./hdinsight-troubleshoot-yarn.md
+            - name: Apache Hadoop のログを分析する
+              href: ./hadoop/apache-hadoop-debug-jobs.md
+            - name: Data Lake Store ファイルのトラブルシューティング
+              href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
 - name: Apache Kafka
-  href: ./kafka/apache-kafka-get-started.md
-- name: Apache Storm
-  href: ./storm/apache-storm-quickstart.md
+  items:
+    - name: 概要
+      items:
+        - name: HDInsight での Apache Kafka とは
+          href: ./kafka/apache-kafka-introduction.md
+    - name: クイック スタート
+      items:
+        - name: Apache Kafka クラスターの作成 - ポータル
+          href: ./kafka/apache-kafka-get-started.md
+        - name: Apache Kafka クラスターの作成 - PowerShell
+          href: ./kafka/apache-kafka-quickstart-powershell.md
+        - name: Apache Kafka クラスターの作成 - テンプレート
+          displayName: 'resource manager template, arm template, resource manager group'
+          href: ./kafka/apache-kafka-quickstart-resource-manager-template.md
+    - name: チュートリアル
+      items:
+        - name: Apache Kafka Producer API と Consumer API を使用する
+          href: ./kafka/apache-kafka-producer-consumer-api.md
+        - name: Apache Kafka Streams API を使用してアプリを開発する
+          href: ./kafka/apache-kafka-streams-api.md
+        - name: Apache Spark 構造化ストリーミングを使用する
+          href: ./hdinsight-apache-kafka-spark-structured-streaming.md
+    - name: 概念
+      items:
+        - name: ストレージとスケーラビリティ
+          href: ./kafka/apache-kafka-scalability.md
+        - name: データの高可用性
+          href: ./kafka/apache-kafka-high-availability.md
+        - name: パフォーマンスのチューニング
+          href: ./kafka/apache-kafka-performance-tuning.md
+        - name: Kafka に関する FAQ
+          href: ./kafka/kafka-faq.md
+    - name: 方法
+      items:
+        - name: 開発
+          items:
+            - name: トピックの自動作成を有効にする
+              href: ./kafka/apache-kafka-auto-create-topics.md
+            - name: IoT Hub と共に Apache Kafka を使用する
+              href: ./kafka/apache-kafka-connector-iot-hub.md
+            - name: ストリーミング パイプラインを作成する
+              items:
+                - name: Apache Spark、Apache Kafka、Azure Cosmos DB
+                  href: ./apache-kafka-spark-structured-streaming-cosmosdb.md
+                - name: Apache Kafka、Apache Spark (DStream)
+                  href: ./hdinsight-apache-spark-with-kafka.md
+                - name: Azure Container Service で Apache Kafka を使用する
+                  href: ./kafka/apache-kafka-azure-container-services.md
+        - name: 管理
+          items:
+            - name: 仮想ネットワークで Apache Kafka を使用する
+              href: ./kafka/apache-kafka-connect-vpn-gateway.md
+            - name: Apache Kafka データをレプリケートする
+              href: ./kafka/apache-kafka-mirroring.md
+            - name: Apache Kafka ログを分析する
+              href: ./kafka/apache-kafka-log-analytics-operations-management.md
+            - name: Bring Your Own Key
+              href: ./kafka/apache-kafka-byok.md
+            - name: SSL 暗号化および認証
+              href: ./kafka/apache-kafka-ssl-encryption-authentication.md
+        - name: トラブルシューティング
+          items:
+            - name: 障害ドメインの不足
+              href: ./kafka/kafka-troubleshoot-insufficient-domains.md
+- name: Apache HBase
+  items:
+    - name: 概要
+      items:
+        - name: HDInsight の Apache HBase とは
+          href: ./hbase/apache-hbase-overview.md
+    - name: クイック スタート
+      items:
+        - name: Apache HBase のクエリ - Apache Phoenix
+          href: ./hbase/apache-hbase-phoenix-squirrel-linux.md
+        - name: Apache HBase のクエリ - HBase シェル
+          href: ./hbase/query-hbase-with-hbase-shell.md
+    - name: チュートリアル
+      items:
+        - name: HDInsight での Apache HBase の使用
+          href: ./hbase/apache-hbase-tutorial-get-started-linux.md
+    - name: 方法
+      items:
+        - name: 開発
+          items:
+            - name: .NET 用 Apache HBase SDK の使用
+              href: ./hbase/apache-hbase-rest-sdk.md
+            - name: Java アプリケーションの開発
+              href: ./hbase/apache-hbase-build-java-maven-linux.md
+            - name: HDInsight の Apache Phoenix
+              href: ./hdinsight-phoenix-in-hdinsight.md
+            - name: Apache Phoenix Query Server REST SDK の使用
+              href: ./hbase/apache-hbase-using-phoenix-query-server-rest-sdk.md
+            - name: psql を使用した Apache Phoenix へのデータの一括読み込み
+              href: ./hbase/apache-hbase-phoenix-psql.md
+        - name: 管理
+          items:
+            - name: 高速書き込み
+              href: ./hbase/apache-hbase-accelerated-writes.md
+            - name: Azure VNet での Apache HBase クラスターのレプリケーション
+              href: ./hbase/apache-hbase-replication.md
+            - name: Apache HBase と Apache Phoenix 向けのバックアップとレプリケーションの設定
+              href: ./hbase/apache-hbase-backup-replication.md
+            - name: Apache HBase クラスターの新しいバージョンへの移行
+              href: ./hbase/apache-hbase-migrate-new-version.md
+            - name: Apache Phoenix のパフォーマンスに関するベスト プラクティス
+              href: ./hbase/apache-hbase-phoenix-performance.md
+            - name: Azure VNet での Apache HBase クラスターの作成
+              href: ./hbase/apache-hbase-provision-vnet.md
+        - name: トラブルシューティング
+          items:
+            - name: Apache HBase のパフォーマンスに関する問題のトラブルシューティング
+              href: ./hbase/troubleshoot-hbase-performance-issues.md
+            - name: hbase hbck によって不一致が返される
+              href: ./hbase/hbase-troubleshoot-hbase-hbck-inconsistencies.md
+            - name: 接続リセット後のストレージ例外
+              href: ./hbase/hbase-troubleshoot-storage-exception-reset.md
+            - name: Apache Phoenix のビューにデータがない
+              href: ./hbase/hbase-troubleshoot-phoenix-no-data.md
+            - name: BindException - 使用中のアドレス
+              href: ./hbase/hbase-troubleshoot-bindexception-address-use.md
+            - name: Apache HBase を起動できない
+              href: ./hbase/hbase-troubleshoot-start-fails.md
+            - name: リージョン サーバーに関する問題
+              href: ./hbase/hbase-troubleshoot-unassigned-regions.md
+            - name: Apache Phoenix の接続に関する問題
+              href: ./hbase/hbase-troubleshoot-phoenix-connectivity.md
+            - name: Apache HBase REST が応答しない
+              href: ./hbase/hbase-troubleshoot-rest-not-spending.md
+            - name: リージョン サーバー上の固定 CPU
+              href: ./hbase/hbase-troubleshoot-pegged-cpu-region-server.md
+            - name: '"hbase hbck" コマンドの使用時のタイムアウト'
+              href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
+            - name: Apache HBase のトラブルシューティング
+              href: ./hbase/apache-troubleshoot-hbase.md
+- name: Interactive Query
+  items:
+    - name: 概要
+      items:
+        - name: HDInsight での対話型クエリとは
+          href: ./interactive-query/apache-interactive-query-get-started.md
+    - name: クイック スタート
+      items:
+        - name: Apache Hive クエリの実行 - Apache Zeppelin
+          href: ./interactive-query/hdinsight-connect-hive-zeppelin.md
+    - name: チュートリアル
+      items:
+        - name: 対話型クエリを使用したデータの分析
+          href: ./interactive-query/interactive-query-tutorial-analyze-flight-data.md
+    - name: 方法
+      items:
+        - name: 開発
+          items:
+            - name: JSON ドキュメントを処理および分析する
+              href: ./hadoop/using-json-in-hive.md
+            - name: 'C# ユーザー定義関数を使用する'
+              href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
+            - name: Apache Hive と Apache Pig で Python を使用する
+              href: ./hadoop/python-udf-hdinsight.md
+            - name: Apache Hive と Apache Spark
+              href: ./interactive-query/apache-hive-warehouse-connector.md
+            - name: Apache Hive と Hadoop
+              href: ./hadoop/hdinsight-use-hive.md
+            - name: Apache Hive ビューを使用する
+              href: ./hadoop/apache-hadoop-use-hive-ambari-view.md
+            - name: Apache Hive Beeline を使用する
+              href: ./hadoop/apache-hadoop-use-hive-beeline.md
+            - name: Grafana を使用する
+              href: ./interactive-query/hdinsight-grafana.md
+            - name: REST API を使用する
+              href: ./hadoop/apache-hadoop-use-hive-curl.md
+            - name: Azure PowerShell の使用
+              href: ./hadoop/apache-hadoop-use-hive-powershell.md
+            - name: .NET 用 SDK の使用
+              href: ./hadoop/apache-hadoop-use-hive-dotnet-sdk.md
+            - name: HDInsight tools for Visual Studio を使用する
+              href: ./hadoop/apache-hadoop-use-hive-visual-studio.md
+            - name: Apache Hive で Java UDF を使用する
+              href: ./hadoop/apache-hadoop-hive-java-udf.md
+            - name: PowerShell と ODBC を使用して Hive に対してクエリを実行する
+              href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
+        - name: 管理
+          items:
+            - name: Hive ワークロードを HDInsight 4.0 に移行する
+              href: ./interactive-query/apache-hive-migrate-workloads.md
+            - name: Apache Hive クエリの最適化
+              href: ./hdinsight-hadoop-optimize-hive-query.md
+        - name: トラブルシューティング
+          items:
+            - name: Apache Hive の設定によるメモリ不足エラーの解決
+              href: ./hdinsight-hadoop-hive-out-of-memory-error-oom.md
+            - name: Apache Tez アプリケーションがハングする
+              href: ./interactive-query/interactive-query-troubleshoot-tez-hangs.md
+            - name: Apache Hive LLAP クエリのパフォーマンス
+              href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
+            - name: レジューサーの速度が遅い
+              href: ./interactive-query/interactive-query-troubleshoot-slow-reducer.md
+            - name: Apache Hive ビューのタイム アウト
+              href: ./interactive-query/interactive-query-troubleshoot-view-time-out.md
+            - name: テーブル作成中のアクセス許可エラー
+              href: ./interactive-query/interactive-query-troubleshoot-permission-error-create-table.md
+            - name: GC オーバーヘッド制限を超過
+              href: ./interactive-query/interactive-query-troubleshoot-outofmemory-overhead-exceeded.md
+            - name: Apache Ambari Tez ビューの読み込みに時間がかかる
+              href: ./interactive-query/interactive-query-troubleshoot-tez-view-slow.md
+            - name: Apache Hive ビューに表示されないエラー メッセージ
+              href: ./interactive-query/interactive-query-troubleshoot-error-message-hive-view.md
+            - name: Apache Hive ビューにアクセスできない
+              href: ./interactive-query/interactive-query-troubleshoot-inaccessible-hive-view.md
+            - name: ZooKeeperHiveClientException - HiveServer2 構成
+              href: ./interactive-query/interactive-query-troubleshoot-zookeeperhiveclientexception-hiveserver-configs.md
+            - name: Apache HIVE のトラブルシューティング
+              href: ./hdinsight-troubleshoot-hive.md
 - name: ML サービス
-  href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
+  items:
+    - name: 概要
+      items:
+        - name: HDInsight での ML Services とは
+          href: ./r-server/r-server-overview.md
+    - name: クイック スタート
+      items:
+        - name: サンプル ジョブ - RStudio Server
+          href: ./r-server/machine-learning-services-quickstart-job-rstudio.md
+        - name: サンプル ジョブ - R コンソール
+          href: ./r-server/machine-learning-services-quickstart-job-rconsole.md
+    - name: チュートリアル
+      items:
+        - name: HDInsight の Spark コンピューティング コンテキストでの R
+          href: ./r-server/ml-services-tutorial-spark-compute.md
+        - name: R Tools for Visual Studio の使用
+          href: ./r-server/r-server-submit-jobs-r-tools-vs.md
+    - name: 方法
+      items:
+        - name: 開発
+          items:
+            - name: 計算コンテキスト
+              href: ./r-server/r-server-compute-contexts.md
+            - name: ScaleR と SparkR
+              href: ./hdinsight-hadoop-r-scaler-sparkr.md
+        - name: 管理
+          items:
+            - name: ML サービス クラスターの管理
+              href: ./r-server/r-server-hdinsight-manage.md
+            - name: ML サービス クラスターの運用化
+              href: ./r-server/r-server-operationalize.md
+            - name: ストレージ オプション
+              href: ./r-server/r-server-storage.md
+- name: Apache Storm
+  items:
+    - name: 概要
+      items:
+        - name: HDInsight での Apache Storm とは
+          href: ./storm/apache-storm-overview.md
+    - name: クイック スタート
+      items:
+        - name: HDInsight での Apache Storm トポロジの作成
+          href: ./storm/apache-storm-quickstart.md
+    - name: チュートリアル
+      items:
+        - name: Apache Storm を使用してストレージに書き込む
+          href: ./storm/apache-storm-write-data-lake-store.md
+    - name: 方法
+      items:
+        - name: 開発
+          items:
+            - name: トポロジ
+              items:
+                - name: Java を使用してトポロジを開発する
+                  href: ./storm/apache-storm-develop-java-topology.md
+                - name: Python を使用してトポロジを開発する
+                  href: ./storm/apache-storm-develop-python-topology.md
+                - name: 'C# を使用してトポロジを開発する'
+                  href: ./storm/apache-storm-develop-csharp-visual-studio-topology.md
+                - name: SCP.NET プログラミング ガイド
+                  href: ./storm/apache-storm-scp-programming-guide.md
+                - name: Apache Storm の例
+                  href: ./storm/apache-storm-example-topology.md
+            - name: ストリーミング パイプライン
+              items:
+                - name: Apache Kafka と Apache Storm (Java)
+                  href: ./hdinsight-apache-storm-with-kafka.md
+                - name: イベント ハブ、Storage、Data Lake Storage (Java)
+                  href: 'https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/'
+                - name: 'Event Hubs と Apache Storm (C# および Java)'
+                  href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
+        - name: 管理
+          items:
+            - name: トポロジの監視
+              href: ./storm/apache-storm-deploy-monitor-topology-linux.md
+        - name: トラブルシューティング
+          items:
+            - name: Apache STORM のトラブルシューティング
+              href: ./storm/apache-troubleshoot-storm.md
 - name: エンタープライズ対応
-  href: ./domain-joined/apache-domain-joined-run-hbase.md
+  items:
+    - name: 概要
+      items:
+        - name: HDInsight のエンタープライズ セキュリティとは
+          href: ./domain-joined/hdinsight-security-overview.md
+    - name: チュートリアル
+      items:
+        - name: ファイアウォールを使用したアウトバウンド トラフィックの制限
+          href: ./hdinsight-restrict-outbound-traffic.md
+        - name: Apache HBase RBAC と Apache Ranger の併用
+          href: ./domain-joined/apache-domain-joined-run-hbase.md
+        - name: Apache Hive RBAC と Apache Ranger の併用
+          href: ./domain-joined/apache-domain-joined-run-hive.md
+        - name: Apache Kafka RBAC と Apache Ranger の併用
+          href: ./domain-joined/apache-domain-joined-run-kafka.md
+        - name: ESP クラスターで Apache Oozie を使用する
+          href: ./domain-joined/hdinsight-use-oozie-domain-joined-clusters.md
+    - name: 概念
+      items:
+        - name: ESP クラスターの計画
+          href: ./domain-joined/apache-domain-joined-architecture.md
+        - name: HDInsight 仮想ネットワーク アーキテクチャ
+          href: ./hdinsight-virtual-network-architecture.md
+        - name: HDInsight 用の VNET の計画
+          href: ./hdinsight-plan-virtual-network-deployment.md
+        - name: NSG と UDR に必要な IP アドレス
+          href: ./hdinsight-management-ip-addresses.md
+    - name: 方法
+      items:
+        - name: ESP クラスターの作成およびオンプレミスとの同期
+          href: ./domain-joined/apache-domain-joined-create-configure-enterprise-security-cluster.md
+        - name: HDInsight 用の VNET の作成
+          href: ./hdinsight-create-virtual-network.md
+        - name: HDInsight とオンプレミス ネットワークの接続
+          href: ./connect-on-premises-network.md
+        - name: HDInsight でのエンタープライズ セキュリティの構成
+          href: ./domain-joined/apache-domain-joined-configure.md
+        - name: Azure AD DS による ESP クラスターの構成
+          href: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
+        - name: HDInsight クラスターへの Azure AD ユーザーの同期
+          href: ./hdinsight-sync-aad-users-to-cluster.md
+        - name: エンタープライズ セキュリティでのクラスターの管理
+          href: ./domain-joined/apache-domain-joined-manage.md
+        - name: データのセキュリティ保護
+          href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
+        - name: トラブルシューティング
+          items:
+            - name: ESP 認証の問題
+              href: ./domain-joined/domain-joined-authentication-issues.md
+            - name: ESP を使用して Zeppelin にサインインできない
+              href: ./domain-joined/domain-joined-zeppelin-signin.md

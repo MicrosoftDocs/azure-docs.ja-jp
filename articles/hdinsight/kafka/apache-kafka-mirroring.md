@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: bdc393d041bd40fd27493ccc8f3c4f39adfa35b2
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657128"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960244"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
@@ -84,7 +84,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
     1. **[追加]** をクリックします。
     1. **[ピアリングの追加]** 画面で、次のスクリーンショットに示すように詳細を入力します。
 
-        ![vnet ピアリングの追加](./media/apache-kafka-mirroring/add-vnet-peering.png)
+        ![vnet ピアリングの追加](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. IP アドバタイズを構成します。
     1. `https://PRIMARYCLUSTERNAME.azurehdinsight.net` からプライマリ クラスターの Ambari ダッシュボードに移動します。

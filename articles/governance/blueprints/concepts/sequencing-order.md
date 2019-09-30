@@ -1,19 +1,18 @@
 ---
 title: デプロイ シーケンス順序について
-description: ブループリント定義が経過するライフサイクルと各ステージの詳細について説明します。
+description: ブループリント定義のライフサイクルの順番と各ステージの詳細について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/25/2019
+ms.date: 08/22/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: b05a7ce260e8cc1da4ac8a0c186694ae097a3b1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05cc12f5416cbbbff470b40c870f41647ef37cd5
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64721297"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231928"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Azure ブループリントでのデプロイ シーケンスについて
 
@@ -51,6 +50,10 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
 
 この順序は、JSON 内で `dependsOn` プロパティを定義することで実現します。 このプロパティは、リソース グループ用のブループリント定義、および成果物オブジェクトによってサポートされています。 `dependsOn` は、特定の成果物が作成される前に作成する必要がある成果物の名前で構成される文字列配列です。
 
+> [!NOTE]
+> ブループリント オブジェクトが作成されるとき、各成果物のリソースは、[PowerShell](/powershell/module/az.blueprint/new-azblueprintartifact) を使用している場合は、ファイル名から名前を取得し、[REST API](/rest/api/blueprints/artifacts/createorupdate) を使用している場合は、URL エンドポイントから取得します。
+> 成果物内の _resourceGroup_ の参照は、ブループリント定義内のそれと一致している必要があります。
+
 ### <a name="example---ordered-resource-group"></a>例 - 順序指定されたリソース グループ
 
 このブループリント定義の例には、`dependsOn` の値を宣言することでカスタムのシーケンス順序を定義されたリソース グループと、標準のリソース グループの両方が含まれています。 この場合、**assignPolicyTags** という名前の成果物が、**ordered-rg** リソース グループの前に処理されます。
@@ -77,9 +80,7 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
         },
         "targetScope": "subscription"
     },
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint",
-    "type": "Microsoft.Blueprint/blueprints",
-    "name": "mySequencedBlueprint"
+    "type": "Microsoft.Blueprint/blueprints"
 }
 ```
 
@@ -98,15 +99,13 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
         ]
     },
     "kind": "policyAssignment",
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/assignPolicyTags",
-    "type": "Microsoft.Blueprint/artifacts",
-    "name": "assignPolicyTags"
+    "type": "Microsoft.Blueprint/artifacts"
 }
 ```
 
 ### <a name="example---subscription-level-template-artifact-depending-on-a-resource-group"></a>例 - リソース グループに依存するサブスクリプション レベルのテンプレート成果物
 
-この例は、サブスクリプション レベルでデプロイされた Resource Manager テンプレートを対象とし、リソース グループに依存します。 既定の順序付けでは、サブスクリプション レベルの成果物は、任意のリソース グループとそのリソース グループの子成果物の前に作成されます。 リソース グループは、次のようにブループリント定義で定義されます。
+この例は、サブスクリプション レベルでデプロイされた Resource Manager テンプレートを対象とし、リソース グループに依存します。 サブスクリプション レベルの成果物は、既定の順序では、どのリソース グループおよびそのリソース グループの子成果物より前に作成されます。 リソース グループは、次のようにブループリント定義で定義されます。
 
 ```json
 "resourceGroups": {
@@ -134,9 +133,7 @@ JSON の例では、次の変数を独自の値で置き換える必要があり
         "description": ""
     },
     "kind": "template",
-    "id": "/providers/Microsoft.Management/managementGroups/{YourMG}/providers/Microsoft.Blueprint/blueprints/mySequencedBlueprint/artifacts/subtemplateWaitForRG",
-    "type": "Microsoft.Blueprint/blueprints/artifacts",
-    "name": "subtemplateWaitForRG"
+    "type": "Microsoft.Blueprint/blueprints/artifacts"
 }
 ```
 

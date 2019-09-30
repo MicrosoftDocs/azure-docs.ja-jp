@@ -22,6 +22,8 @@
       href: view-recommendations.md
     - name: アクセス許可とブロックされるアクション
       href: permissions.md
+    - name: 推奨事項のアラートの構成
+      href: advisor-alerts.md
 - name: リファレンス
   items:
     - name: Security Center

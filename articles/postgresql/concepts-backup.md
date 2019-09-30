@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: 08a061a76f1532441817e61d423533bcc0850227
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: bf2e289ad12f459c37a93ad3936c30339ecf663d
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068846"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907537"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) でのバックアップと復元
 
@@ -62,7 +62,7 @@ Azure Database for PostgreSQL で復元を実行すると、元のサーバー�
 
 ### <a name="geo-restore"></a>geo リストア
 
-geo 冗長バックアップ用にサーバーを構成した場合は、サービスを使用できる別の Azure リージョンにサーバーを復元できます。 geo リストアは、サーバーがホストされているリージョンでのインシデントが原因でサーバーが利用できない場合の既定の復旧オプションです。 リージョン内の大規模なインシデントにより、データベース アプリケーションが使用できなくなった場合、geo 冗長バックアップから他の任意のリージョン内のサーバーに、サーバーを復元できます。 バックアップが取得される時刻と、別のリージョンにそのバックアップがレプリケートされる時刻には時間差があります。 この時間差は最大 1 時間なので、障害が発生した場合、最大 1 時間分のデータが損失する可能性があります。
+geo 冗長バックアップ用にサーバーを構成した場合は、サービスを使用できる別の Azure リージョンにサーバーを復元できます。 リージョン内の大規模なインシデントにより、データベース アプリケーションが使用できなくなった場合、geo 冗長バックアップから他の任意のリージョン内のサーバーに、サーバーを復元できます。 バックアップが取得される時刻と、別のリージョンにそのバックアップがレプリケートされる時刻には時間差があります。 この時間差は最大 1 時間なので、障害が発生した場合、最大 1 時間分のデータが損失する可能性があります。
 
 geo リストア中に変更できるサーバー構成は、コンピューティング世代、仮想コア、バックアップの保有期間、バックアップ冗長オプションなどです。 価格レベル (Basic、汎用、またはメモリ最適化) とストレージのサイズはいずれも変更できません。
 
@@ -77,6 +77,6 @@ geo リストア中に変更できるサーバー構成は、コンピューテ�
 
 ## <a name="next-steps"></a>次の手順
 
+-  [Azure portal](howto-restore-server-portal.md) を使用して復元する方法について学習します。
+-  [Azure CLI](howto-restore-server-cli.md) を使用して復元する方法について学習します。
 - ビジネス継続性の詳細については、 [ビジネス継続性の概要](concepts-business-continuity.md)に関するページをご覧ください。
-- Azure Portal を使用して特定の時点に復元する方法については、 [Azure Portal を使用したデータベースのポイントインタイム リストア](howto-restore-server-portal.md)に関するページをご覧ください。
-- Azure CLI を使用して特定の時点に復元する方法については、 [CLI を使用したデータベースのポイントインタイム リストア](howto-restore-server-cli.md)に関するページをご覧ください。

@@ -125,6 +125,14 @@
               href: map-events.md
             - name: アプリをアクセス可能にする
               href: map-accessibility.md
+        - name: 描画ツール
+          items:
+            - name: 描画ツール バーの追加
+              href: map-add-drawing-toolbar.md
+            - name: 描画オプションの設定
+              href: set-drawing-options.md
+            - name: シェイプ データの取得
+              href: map-get-shape-data.md
         - name: サービス モジュール
           items:
             - name: サービス モジュールの使用
@@ -198,7 +206,7 @@
 - name: リソース
   items:
     - name: Azure Maps の使用条件
-      href: 'https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31'
+      href: 'https://azure.microsoft.com/support/legal/'
     - name: Azure Maps の価格
       href: 'https://azure.microsoft.com/pricing/details/azure-maps'
     - name: 料金計算ツール
@@ -209,6 +217,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps のビデオ
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Azure Maps のケース スタディ
+      href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps の用語集
       href: glossary.md
     - name: サービスの更新情報

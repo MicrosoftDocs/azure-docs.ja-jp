@@ -1,18 +1,18 @@
 ---
 title: パートナー センターでの商用マーケットプレース向け分析
 description: 分析レポートにアクセスして、売上を監視し、パフォーマンスを評価し、マーケットプレースのオファーを最適化する方法について説明します。
-author: mattwojo
+author: chjenk
 manager: evansma
 ms.author: shthota
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 05/31/2019
-ms.openlocfilehash: e467def33eb2980e58611d50c314a1206877e3b0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.date: 09/09/2019
+ms.openlocfilehash: 87ecf534fa7d4f3609882f5f18b314c246e388bd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67619682"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71036641"
 ---
 # <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>パートナー センターでの商用マーケットプレース向け分析
 
@@ -56,11 +56,11 @@ Microsoft Partner Center の分析レポートにアクセスして、売上を�
 
 ### <a name="customers-by-geography"></a>地域別顧客数
 
-**[Customers by geography]\(地域別顧客数\)** ヒートマップでは、顧客数が世界地図上に表示されます。 
+**[Customers by geography]\(地域別顧客数\)** ヒートマップでは、顧客数が世界地図上に表示されます。
 
-- マップを動かして正確な場所を見ることができます。 
-- 特定の場所にズーム インできます。 
-- ヒートマップには、特定の場所の顧客数 (または[注文数](#orders-by-geography)) の詳細を表示するための補助グリッドがあります。 
+- マップを動かして正確な場所を見ることができます。
+- 特定の場所にズーム インできます。
+- ヒートマップには、特定の場所の顧客数 (または[注文数](#orders-by-geography)) の詳細を表示するための補助グリッドがあります。
 - グリッドで国を検索して選択すると、マップ内の場所にズームできます。 地図内の **[ホーム]** ボタンを押すと元のビューに戻ります。
 - **新規**顧客が、選択した日付範囲内の月内に初めて、オファーの 1 つを購入しました。
 

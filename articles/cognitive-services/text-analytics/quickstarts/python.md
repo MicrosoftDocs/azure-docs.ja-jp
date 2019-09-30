@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 07/28/2019
+ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 3ef7f65bbb27992278eb467f840c1443ac0db0b8
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e763c1a5bebddcb76647b4ecff02506fc41f6a47
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725897"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387390"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>クイック スタート:Python REST API を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
@@ -49,11 +49,20 @@ import requests
 from pprint import pprint
 ```
 
-サブスクリプション キーと、Text Analytics REST API のエンドポイントのための変数を作成します。 エンドポイントのリージョンが、サインアップしたときに使用したリージョン (`westcentralus` など) に対応していることを確認します。 試用版のキーを使用している場合は、何も変更する必要はありません。
+リソースの Azure エンドポイントとサブスクリプション キー用の変数を作成します。 これらの値は、環境変数 TEXT_ANALYTICS_SUBSCRIPTION_KEY および TEXT_ANALYTICS_ENDPOINT から取得します。 アプリケーションの編集開始後にこれらの環境変数を作成した場合は、その変数へのアクセスに使用しているエディター、IDE、またはシェルを閉じて、もう一度開く必要があります。
     
 ```python
-subscription_key = "<ADD YOUR KEY HERE>"
-text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/"
+import os
+
+key_var_name = 'TEXT_ANALYTICS_SUBSCRIPTION_KEY'
+if not key_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
+subscription_key = os.environ[key_var_name]
+
+endpoint_var_name = 'TEXT_ANALYTICS_ENDPOINT'
+if not endpoint_var_name in os.environ:
+    raise Exception('Please set/export the environment variable: {}'.format(endpoint_var_name))
+endpoint = os.environ[endpoint_var_name]
 ```
 
 以降のセクションでは、API の各機能を呼び出す方法について説明します。
@@ -62,10 +71,10 @@ text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/tex
 
 ## <a name="detect-languages"></a>言語を検出する
 
-Text Analytics ベース エンドポイントに `languages` を追加して、言語検出 URL を形成します。 次に例を示します。`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+Text Analytics ベース エンドポイントに `/text/analytics/v2.1/languages` を追加して、言語検出 URL を形成します。 次に例を示します。`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
-language_api_url = text_analytics_base_url + "languages"
+language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
 API に対するペイロードは、`id` 属性と `text` 属性を含むタプルである `documents` の一覧で構成されます。 `text` 属性には、分析対象のテキストが格納され、`id` には任意の値を指定できます。 
@@ -131,10 +140,10 @@ pprint(languages)
 
 ## <a name="analyze-sentiment"></a>センチメントを分析する
 
-一連のドキュメントのセンチメント (正または負の範囲) を検出するには、Text Analytics ベース エンドポイントに `sentiment` を追加して言語検出 URL を形成します。 次に例を示します。`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+一連のドキュメントのセンチメント (正または負の範囲) を検出するには、Text Analytics ベース エンドポイントに `/text/analytics/v2.1/sentiment` を追加して言語検出 URL を形成します。 次に例を示します。`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`
     
 ```python
-sentiment_url = text_analytics_base_url + "sentiment"
+sentiment_url = endpoint + "/text/analytics/v2.1/sentiment"
 ```
 
 言語検出の例に示すように、サービスには、ドキュメントの一覧で構成された `documents` キーを使用してディクショナリを作成します。 各ドキュメントは、`id`、分析対象の `text`、およびテキストの `language` で構成されるタプルです。 
@@ -193,10 +202,10 @@ pprint(sentiments)
 
 ## <a name="extract-key-phrases"></a>キー フレーズを抽出する
  
-一連のドキュメントからキー フレーズを抽出するには、Text Analytics ベース エンドポイントに `keyPhrases` を追加して言語検出 URL を形成します。 次に例を示します。`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+一連のドキュメントからキー フレーズを抽出するには、Text Analytics ベース エンドポイントに `/text/analytics/v2.1/keyPhrases` を追加して言語検出 URL を形成します。 次に例を示します。`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`
     
 ```python
-keyphrase_url = text_analytics_base_url + "keyPhrases"
+keyphrase_url = endpoint + "/text/analytics/v2.1/keyphrases"
 ```
 
 このドキュメントのコレクションは、感情分析の例で使用したものと同じです。
@@ -269,10 +278,10 @@ pprint(key_phrases)
 
 ## <a name="identify-entities"></a>エンティティの識別
 
-テキスト ドキュメント内の既知のエンティティ (人、場所、物) を特定するには、Text Analytics ベース エンドポイントに `entities` を追加して言語検出 URL を形成します。 次に例を示します。`https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
+テキスト ドキュメント内の既知のエンティティ (人、場所、物) を特定するには、Text Analytics ベース エンドポイントに `/text/analytics/v2.1/entities` を追加して言語検出 URL を形成します。 次に例を示します。`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
     
 ```python
-entities_url = text_analytics_base_url + "entities"
+entities_url = endpoint + "/text/analytics/v2.1/entities"
 ```
 
 前の例と同様に、ドキュメントのコレクションを作成します。 

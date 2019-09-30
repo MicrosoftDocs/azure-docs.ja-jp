@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: ellacroi
-ms.openlocfilehash: b8d0759d96b0b2566934f117f5dea32ec4ad015c
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 209905eaf90e006ded232be73ab2a3a428568eda
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68000019"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309015"
 ---
 # <a name="marketplace-faqs"></a>Marketplace に関する FAQ
 
@@ -263,7 +263,7 @@ Azure Marketplace は、商用の IT ソフトウェアおよびサービスに�
 
 **Azure Marketplace でアプリケーションを発行した方がよいのはなぜですか? それにはどのようなメリットがありますか?**
 
-Azure Marketplace は、マイクロソフト パートナーが Azure のお客様に製品やサービスをアピールして販売するための市場を提供します。 発行元は、140 のグローバル市場、300,000 を超えるマイクロソフト パートナー、および Azure のエンタープライズ顧客のネットワークに直ちにアクセスできます。  このマーケットプレースには Fortune 500 企業の 90% 超、および世界有数の開発者の多くが含まれています。 Azure Marketplace の新しいパートナーには、Azure のマーケットプレースでのそのオファーの認知度を向上させるのに役立つ、一連の[無料の Go-To-Market 特典](gtm-your-marketplace-benefits.md#go-to-market-gtm-benefits-in-the-marketplace)が自動的に提供されます。
+Azure Marketplace は、マイクロソフト パートナーが Azure のお客様に製品やサービスをアピールして販売するための市場を提供します。 発行元は、140 のグローバル市場、300,000 を超えるマイクロソフト パートナー、および Azure のエンタープライズ顧客のネットワークに直ちにアクセスできます。  このマーケットプレースには Fortune 500 企業の 90% 超、および世界有数の開発者の多くが含まれています。 Azure Marketplace の新しいパートナーには、Azure のマーケットプレースでのそのオファーの認知度を向上させるのに役立つ、一連の[無料の Go-To-Market 特典](gtm-your-marketplace-benefits.md#list-trial-and-consulting-benefits)が自動的に提供されます。
 
 **Azure Marketplace と AppSource の間の差別化要因は何ですか?**
 

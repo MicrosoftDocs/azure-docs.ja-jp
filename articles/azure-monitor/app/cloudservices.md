@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.workload: tbd
 ms.date: 09/05/2018
 ms.author: mbullwin
-ms.openlocfilehash: 64995ad0560efd06bfa0084c948527e8a01e1890
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 9325d2dd6c897f4c8dacb3dcf3a382f9f0e856a8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67443329"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933008"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure クラウド サービス向けの Application Insights
 [Application Insights][start] では、Application Insights SDK からのデータとお客様のクラウド サービスからの [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)データを組み合わせることで、[Azure クラウド サービス アプリ](https://azure.microsoft.com/services/cloud-services/)の可用性、パフォーマンス、障害、使用状況を監視できます。 アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
@@ -84,8 +84,9 @@ Application Insights を使ってクラウド サービスを監視する最も�
 
     ![[Application Insights] ウィンドウ](./media/cloudservices/01-new.png)
 
-1. **[アプリケーションの種類]** ドロップダウン リストで **[ASP.NET Web アプリケーション]** を選択します。  
-    各リソースは、インストルメンテーション キーによって識別されます。 このキーは、SDK を手動で構成したい場合や SDK の構成を確認したい場合に後で必要になる可能性があります。
+1. **[アプリケーションの種類]** ドロップダウン リストで **[ASP.NET Web アプリケーション]** を選択します。
+
+各リソースは、インストルメンテーション キーによって識別されます。 このキーは、SDK を手動で構成したい場合や SDK の構成を確認したい場合に後で必要になる可能性があります。
 
 
 ## <a name="set-up-azure-diagnostics-for-each-role"></a>Set up Azure Diagnostics for each role (各ロール用の Azure 診断を設定する)
@@ -133,8 +134,9 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
     * [worker ロール](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
     * [Web ページの場合](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
-1. *ApplicationInsights.config* ファイルが常に出力ディレクトリにコピーされるように設定します。  
-    *.config* ファイルのメッセージによって、インストルメンテーション キーをそこに配置するよう求められます。 ただし、クラウド アプリでは、それは *.cscfg* ファイルから設定することをお勧めします。 この方法により、ポータルでロールが正しく識別されます。
+1. *ApplicationInsights.config* ファイルが常に出力ディレクトリにコピーされるように設定します。
+
+   *.config* ファイルのメッセージによって、インストルメンテーション キーをそこに配置するよう求められます。 ただし、クラウド アプリでは、それは *.cscfg* ファイルから設定することをお勧めします。 この方法により、ポータルでロールが正しく識別されます。
 
 ## <a name="set-up-status-monitor-to-collect-full-sql-queries-optional"></a>完全な SQL クエリを収集するように Status Monitor を設定する (省略可能)
 
@@ -171,16 +173,19 @@ Visual Studio で、Application Insights SDK を各クラウド アプリ プロ
 
 1. お客様のアプリを実行し、Azure にサインインします。 
 
-1. お客様が作成した Application Insights リソースを開きます。  
-    個別のデータ ポイントは [[検索]](../../azure-monitor/app/diagnostic-search.md) に表示され、集計されたデータは [[メトリック エクスプローラー]](../../azure-monitor/app/metrics-explorer.md) に表示されます。 
+1. お客様が作成した Application Insights リソースを開きます。
+
+   個別のデータ ポイントは [[検索]][diagnostic] に表示され、集計されたデータは [[メトリック エクスプローラー]](../../azure-monitor/app/metrics-explorer.md) に表示されます。
 
 1. さらにテレメトリを追加し (以下のセクションを参照)、お客様のアプリを発行して、ライブの診断と使用状況のフィードバックを取得します。 
 
 データがない場合、以下の手順を実行します。
+
 1. 個別のイベントを表示するには、[[検索]][diagnostic] タイルを開きます。
 1. アプリで、テレメトリがいくつか生成されるようにさまざまなページを開きます。
 1. 数秒待ってから **[最新の情報に更新]** をクリックします。  
-    詳細については、「 [トラブルシューティング][qna]」を参照してください。
+
+詳細については、「 [トラブルシューティング][qna]」を参照してください。
 
 ## <a name="view-azure-diagnostics-events"></a>Azure 診断イベントを表示する
 Application Insights の [Azure 診断](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)情報は、以下の場所にあります。

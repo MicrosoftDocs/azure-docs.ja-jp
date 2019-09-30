@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d9c546064589e82cfef367978ebea98c2c202307
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e38f118e10c9d0e2347edb7cbaa5d7b68a0e63f2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087303"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933410"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions での外部イベントの処理 (Azure Functions)
 
@@ -201,10 +201,7 @@ module.exports = async function(context, instanceId) {
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [永続的オーケストレーションを設定する方法を確認する](durable-functions-eternal-orchestrations.md)
-
-> [!div class="nextstepaction"]
-> [外部イベントを待つサンプルを実行する](durable-functions-phone-verification.md)
+> [エラー処理の実装方法を学習する](durable-functions-error-handling.md)
 
 > [!div class="nextstepaction"]
 > [人による操作を待つサンプルを実行する](durable-functions-phone-verification.md)

@@ -4,14 +4,14 @@ description: Azure Resource Manager を使用して、リソースを新しい�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 01ec8facf2771de9ec01b9470521340a59ee4d0d
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67721388"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70035545"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>リソースを新しいリソース グループまたはサブスクリプションに移動する
 
@@ -32,9 +32,9 @@ ms.locfileid: "67721388"
    * [App Services の移動ガイダンス](./move-limitations/app-service-move-limitations.md)
    * [Azure DevOps Services の移動ガイダンス](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)
    * [クラシック デプロイ モデルの移動ガイダンス](./move-limitations/classic-model-move-limitations.md) - Classic Compute、Classic Storage、Classic Virtual Networks、Cloud Services
+   * [ネットワークの移動ガイダンス](./move-limitations/networking-move-limitations.md)
    * [Recovery Services の移動ガイダンス](../backup/backup-azure-move-recovery-services-vault.md?toc=/azure/azure-resource-manager/toc.json)
    * [仮想マシンの移動ガイダンス](./move-limitations/virtual-machines-move-limitations.md)
-   * [仮想ネットワークの移動ガイダンス](./move-limitations/virtual-network-move-limitations.md)
 
 1. 移動元と移動先のサブスクリプションがアクティブである必要があります。 無効になっているアカウントを有効にするときに問題がある場合は、[Azure サポート リクエストを作成します](../azure-supportability/how-to-create-azure-support-request.md)。 問題の種類として **[サブスクリプション管理]** を選択します。
 
@@ -93,6 +93,24 @@ ms.locfileid: "67721388"
    * ターゲット リソース グループの **Microsoft.Resources/subscriptions/resourceGroups/write**。
 
 1. リソースを移動する前に、リソースの移動先となるサブスクリプションのサブスクリプション クォータをチェックします。 リソースを移動することでサブスクリプションが制限を上回る場合、クォータの引き上げを要求できるかどうかを確認する必要があります。 制限の一覧と引き上げを要求する方法については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
+
+1. **サブスクリプション間で移動を行う場合は、リソースとその依存リソースを同じリソース グループ内に配置し、それらを一緒に移動する必要があります。** たとえば、マネージド ディスクを備えた VM では、マネージド ディスクを他の依存リソースと共に、VM と一緒に移動する必要があります。
+
+   リソースを新しいサブスクリプションに移動する場合は、そのリソースに依存リソースがあるかどうか、およびそれらが同じリソース グループ内に置かれているかどうかを確認します。 それらのリソースが同じリソース グループ内にない場合は、同じリソース グループに統合することができるかどうかを確認します。 その場合は、リソース グループ間の移動操作を使用して、該当するすべてのリソースを同じリソース グループに配置します。
+
+   詳細については、「[サブスクリプション間での移動のシナリオ](#scenario-for-move-across-subscriptions)」を参照してください。
+
+## <a name="scenario-for-move-across-subscriptions"></a>サブスクリプション間での移動のシナリオ
+
+サブスクリプション間でリソースを移動するには、次の 3 つの手順を行います。
+
+![サブスクリプション間の移動のシナリオ](./media/resource-group-move-resources/cross-subscription-move-scenario.png)
+
+説明のため、依存リソースを 1 つだけ取り上げます。
+
+* 手順 1:依存リソースが別々のリソース グループに分散されている場合は、まずそれらを 1 つのリソース グループに移動します。
+* 手順 2:リソースと依存リソースを、ソース サブスクリプションからターゲット サブスクリプションにまとめて移動します。
+* 手順 3:必要に応じて、依存リソースをターゲット サブスクリプション内の別々のリソース グループに再配布します。 
 
 ## <a name="validate-move"></a>移動の検証
 

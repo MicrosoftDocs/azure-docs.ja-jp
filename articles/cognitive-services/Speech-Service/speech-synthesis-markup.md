@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 89b8b5f8c574de033fabf6861e24fc7d2b31e171
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855097"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624255"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML)
 
@@ -31,6 +31,10 @@ SSML の Speech Services の実装は、World Wide Web コンソーシアムの[
 音声は、標準音声およびニューラル音声から選択できますが、製品やブランドに固有のカスタム音声を独自に作成することもできます。 標準音声は、45 を超える言語およびロケールで 75 種類以上が用意されています。ニューラル音声は、4 つの言語およびロケールで 5 種類が用意されています。 サポートされている言語、ロケール、および音声 (ニューラルと標準) の完全な一覧については、[言語のサポート](language-support.md)に関するページを参照してください。
 
 標準音声、ニューラル音声、およびカスタム音声の詳細については、[テキスト読み上げの概要](text-to-speech.md)に関するページを参照してください。
+
+## <a name="special-characters"></a>特殊文字
+
+SSML を使用してテキスト音声を合成音声に変換するときには、XML の場合と同様に、引用符、アポストロフィ、角かっこなどの特殊文字をエスケープする必要があることに注意してください。 詳細については、「[Extensible Markup Language (XML) 1.0: Appendix D](https://www.w3.org/TR/xml/#sec-entexpand)」 (拡張マークアップ言語 (XML) 1.0: 付録 D) を参照してください。
 
 ## <a name="supported-ssml-elements"></a>サポートされている SSML 要素
 
@@ -142,6 +146,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 |-------|------|-------------|
 | `en-US-JessaNeural` | type=`cheerful` | ポジティブで幸せな感情を示します |
 | | type=`empathy` | 思いやりと理解を示します |
+| | type=`chat` | カジュアルで緩やかな語調で話します |
 | `zh-CN-XiaoxiaoNeural` | type=`newscast` | ニュース放送に似たフォーマルなトーンを示します |
 | | type=`sentiment` | 感動的なメッセージやストーリーを伝えます |
 

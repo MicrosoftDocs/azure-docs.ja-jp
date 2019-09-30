@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 08/13/2019
 ms.author: bwren
-ms.openlocfilehash: d50b3ab68b406db47a4cc8fec081b2fc076071d1
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 3818547eee05a1d6f8cf84ccb0f5f4ecb44a9ab3
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741660"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061620"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -83,45 +83,46 @@ Office 365 サブスクリプションから:
 
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にログインします。
 1. **[Azure Active Directory]** を選択し、 **[アプリの登録]** を選択します。
-1. **[新しいアプリケーションの登録]** をクリックします。
+1. **[新規登録]** をクリックします。
 
     ![アプリの登録の追加](media/solution-office-365/add-app-registration.png)
-1. アプリケーションの **[名前]** を入力し、 **[サインオン URL]** をクリックします。  名前は、わかりやすいである必要があります。  URL には `http://localhost` を使用し、 **[アプリケーションの種類]** として _[Web アプリ/API]_ を選択します。
+1. アプリケーションの**名前**を入力します。 **[サポートされているアカウントの種類]** で、 **[任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント)]** を選択します。
     
     ![アプリケーションの作成](media/solution-office-365/create-application.png)
-1. **[作成]** をクリックしてアプリケーションの情報を検証します。
+1. **[登録]** をクリックし、アプリケーションの情報を検証します。
 
     ![登録済みのアプリ](media/solution-office-365/registered-app.png)
 
 ### <a name="configure-application-for-office-365"></a>Office 365 のアプリケーションを構成する
 
-1. **[設定]** をクリックし、 **[設定]** メニューを開きます。
-1. **[プロパティ]** を選択します。 **[マルチテナント]** を _[はい]_ に変更します。
+1. **[認証]** を選択し、 **[サポートされているアカウントの種類]** の下で **[任意の組織ディレクトリ内のアカウント (任意の Azure AD ディレクトリ - マルチテナント)]** が選択されていることを確認します。
 
     ![マルチテナントの設定](media/solution-office-365/settings-multitenant.png)
 
-1. **[設定]** メニューで、 **[必要なアクセス許可]** を選択し、 **[追加]** をクリックします。
-1. **[API を選択します]** をクリックして **[Office 365 Management API]** をクリックします。 **[Office 365 Management API]** をクリックします。 **[選択]** をクリックします。
+1. **[API のアクセス許可]** 、 **[アクセス許可の追加]** の順に選択します。
+1. **[Office 365 Management API]** をクリックします。 
 
     ![API の選択](media/solution-office-365/select-api.png)
 
-1. **[アクセス許可を選択]** で **[アプリケーションのアクセス許可]** と **[デリゲートされたアクセス許可]** の両方の以下のオプションを選択します。
+1. **[アプリケーションに必要なアクセス許可の種類]** の下で、 **[アプリケーションのアクセス許可]** と **[委任されたアクセス許可]** の両方に対して次のオプションを選択します。
    - 組織の Service Health 情報の読み取り
    - 組織のアクティビティ データの読み取り
    - 組織の活動レポートの読み取り
 
-     ![API の選択](media/solution-office-365/select-permissions.png)
+     ![API の選択](media/solution-office-365/select-permissions-01.png)![API の選択](media/solution-office-365/select-permissions-02.png)
 
-1. **[選択]** 、 **[完了]** の順にクリックします。
-1. **[アクセス許可の付与]** をクリックし、確認を求められたら **[はい]** をクリックします。
+1. **[アクセス許可の追加]** をクリックします。
+1. **[管理者の同意の付与]** をクリックし、確認を求められたら **[はい]** をクリックします。
 
-    ![アクセス許可を付与する](media/solution-office-365/grant-permissions.png)
 
-### <a name="add-a-key-for-the-application"></a>アプリケーションのキーを追加する
+### <a name="add-a-secret-for-the-application"></a>アプリケーションのシークレットを追加する
 
-1. **[設定]** メニューで、 **[キー]** を選択します。
+1. **[Certificates & secrets]\(証明書とシークレット\)** を選択し、 **[New client secret]\(新しいクライアント シークレット\)** を選択します。
+
+    ![構成する](media/solution-office-365/secret.png)
+ 
 1. 新しいキーの **[説明]** と **[期間]** に入力します。
-1. **[保存]** をクリックし、生成された **[値]** をコピーします。
+1. **[追加]** をクリックし、生成された**値**をコピーします。
 
     ![構成する](media/solution-office-365/keys.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD ロールベースのアクセス制御にカスタム ロール定義を作成する - Azure Active Directory | Microsoft Docs
-description: Azure Active Directory リソースにリソース スコープを使用してカスタム Azure AD ロールを作成します。
+title: Azure AD ロール ベースのアクセス制御にカスタム ロールを作成して割り当てる - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory リソースにリソース スコープを使用してカスタム Azure AD ロールを作成し、割り当てます。
 services: active-directory
 author: curtand
 manager: mtillman
@@ -8,25 +8,25 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 09/04/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1166839608c709db9aa052d6d0db5221fa15354
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f008cdf80e15e2737fea19f72ec6703932cf301f
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68880747"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382816"
 ---
-# <a name="create-a-custom-role-and-assign-at-resource-scope-in-azure-active-directory"></a>カスタム ロールを作成し、Azure Active Directory のリソース スコープに割り当てます。
+# <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールを作成して割り当てる
 
-この記事では、Azure Active Directory (Azure AD) で新しいカスタム ロールを作成する方法について説明します。 カスタム ロールは、Azure AD [概要] ページの [[ロールと管理者]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) タブで作成できます。 ロールを割り当てることができるのは、ディレクトリ レベルのスコープまたはアプリ登録リソースのスコープだけです。
+この記事では、Azure Active Directory (Azure AD) で新しいカスタム ロールを作成する方法について説明します。 カスタム ロールの基本については、[カスタム ロールの概要](roles-custom-overview.md)を参照してください。 ロールを割り当てることができるのは、ディレクトリ レベルのスコープまたはアプリ登録リソースのスコープだけです。
 
-詳しくは、カスタム ロールの基本事項について[カスタム ロールの概要](roles-custom-overview.md)に関するページをご覧ください。
+カスタム ロールは、Azure AD [概要] ページの [[ロールと管理者]](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) タブで作成できます。
 
-## <a name="using-the-azure-ad-portal"></a>Azure AD ポータルを使用する
+## <a name="create-a-role-in-the-azure-portal"></a>Azure portal でロールを作成する
 
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>新しいカスタム ロールを作成してアプリ登録を管理するためのアクセス権を付与する
 
@@ -49,22 +49,7 @@ ms.locfileid: "68880747"
 
 カスタム ロールが、割り当て可能なロールの一覧に表示されます。
 
-## <a name="assign-a-role-scoped-to-a-resource"></a>ロールをスコープ指定してリソースに割り当てる
-
-組み込みのロールと同様に、カスタム ロールを組織全体のスコープで割り当てて、すべてのアプリ登録に対するアクセス権を付与することができます。 ただし、カスタム ロールはリソース スコープで割り当てることもできます。 これにより、2 つ目のカスタムロールを作成せずに、1 つのアプリの資格情報と基本プロパティを更新できるアクセス許可を割り当て先に付与できます。
-
-1. まだサインインしていない場合は、Azure AD 組織のアプリケーション開発者のアクセス許可を使用して  [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-1. **[アプリの登録]** を選択します。
-1. 付与しようとするアクセス権によって管理されるアプリ登録を選択します。 Azure AD 組織内のアプリ登録の完全な一覧を表示するには、 **[すべてのアプリケーション]** を選択する必要がある場合があります。
-
-    ![ロールの割り当てのリソース スコープとしてアプリ登録を選択する](./media/roles-create-custom/appreg-all-apps.png)
-
-1. [アプリの登録] で、 **[ロールと管理者]** を選択します。 まだ 1 つも作成していない場合は、[前の手順](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)の指示を参照してください。
-
-1. ロールを選択して、 **[割り当て]** ページを開きます。
-1. **[割り当ての追加]** を選択してユーザーを追加します。 このユーザーには、選択したアプリ登録以外のアプリ登録に対するアクセス許可は付与されません。
-
-## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Azure AD PowerShell を使用してカスタム ロールを作成する
+## <a name="create-a-role-using-powershell"></a>PowerShell を使用してロールを作成する
 
 ### <a name="prepare-powershell"></a>PowerShell を準備する
 
@@ -125,7 +110,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-## <a name="create-a-custom-role-using-microsoft-graph-api"></a>Microsoft Graph API を使用してカスタム ロールを作成する
+## <a name="create-a-role-with-graph-api"></a>Graph API を使用してロールを作成する
 
 1. ロール定義を作成します。
 
@@ -175,6 +160,21 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
        "resourceScope":"/<GUID OF APPLICATION REGISTRATION>"
    }
     ```
+
+## <a name="assign-a-custom-role-scoped-to-a-resource"></a>カスタム ロールをスコープ指定してリソースに割り当てる
+
+組み込みロールと同様に、既定では、組織内のすべてのアプリ登録にアクセス許可を付与するために、カスタム ロールは既定の組織全体のスコープで割り当てられます。 しかし、組み込みロールとは異なり、カスタム ロールは 1 つの Azure AD リソースのスコープで割り当てることもできます。 これにより、2 つ目のカスタム ロールを作成せずに、1 つのアプリの資格情報と基本プロパティを更新できるアクセス許可をユーザーに付与できます。
+
+1. Azure AD 組織のアプリケーション開発者のアクセス許可を使用して  [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. **[アプリの登録]** を選択します。
+1. 付与しようとするアクセス権によって管理されるアプリ登録を選択します。 Azure AD 組織内のアプリ登録の完全な一覧を表示するには、 **[すべてのアプリケーション]** を選択する必要がある場合があります。
+
+    ![ロールの割り当てのリソース スコープとしてアプリ登録を選択する](./media/roles-create-custom/appreg-all-apps.png)
+
+1. [アプリの登録] で、 **[ロールと管理者]** を選択します。 まだ 1 つも作成していない場合は、[前の手順](#create-a-new-custom-role-to-grant-access-to-manage-app-registrations)の指示を参照してください。
+
+1. ロールを選択して、 **[割り当て]** ページを開きます。
+1. **[割り当ての追加]** を選択してユーザーを追加します。 このユーザーには、選択したアプリ登録に対してのみアクセス許可が付与されます。
 
 ## <a name="next-steps"></a>次の手順
 

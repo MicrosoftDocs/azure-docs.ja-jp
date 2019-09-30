@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: c84d457c51f71bdf315bbbcec674ff1186dd905f
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: d914c020553bace7ea5ab8898ac4093fea30e6c9
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249010"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307006"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>VPN Gateway からの診断ログ イベントにアラートを設定する
 
@@ -70,12 +70,17 @@ Azure では、次のログを使用できます。
 
    ![カスタム ログ検索のための選択](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert8.png  "選択")
 
-10. **[検索クエリ]** ボックスに次のクエリを入力します。 必要に応じて、<> 内の値を置き換えます。
+10. **[検索クエリ]** ボックスに次のクエリを入力します。 必要に応じて、<> 内の値と TimeGenerated の値を置き換えます。
 
     ```
-    AzureDiagnostics |
-      where Category  == "TunnelDiagnosticLog" and ResourceId == toupper("<RESOURCEID OF GATEWAY>") and TimeGenerated > ago(5m) and
-      remoteIP_s == "<REMOTE IP OF TUNNEL>" and status_s == "Disconnected"
+    AzureDiagnostics
+    | where Category == "TunnelDiagnosticLog"
+    | where _ResourceId == tolower("<RESOURCEID OF GATEWAY>")
+    | where TimeGenerated > ago(5m) 
+    | where remoteIP_s == "<REMOTE IP OF TUNNEL>"
+    | where status_s == "Disconnected"
+    | project TimeGenerated, OperationName, instance_s, Resource, ResourceGroup, _ResourceId 
+    | sort by TimeGenerated asc
     ```
 
     しきい値を 0 に設定し、 **[完了]** を選択します。

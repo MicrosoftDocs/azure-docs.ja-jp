@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/18/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 11eae0e3bae501cdf39d7fe1d5d39524c1f83e6c
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: c5399f46106d94d593a15530ee0c223a3f5f3eaf
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035997"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802051"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>チュートリアル:リンクされた Azure Resource Manager テンプレートの作成
 
@@ -287,7 +287,7 @@ echo "Linked template URI with SAS token: $templateURI"
 
 ストレージ アカウントが、リンクされたテンプレートで定義されているので、`Microsoft.Compute/virtualMachines` リソースの次の 2 つの要素を更新する必要があります。
 
-* `dependOn` 要素を再構成します。 ストレージ アカウントの定義が、リンクされたテンプレートに移動されます。
+* `dependsOn` 要素を再構成します。 ストレージ アカウントの定義が、リンクされたテンプレートに移動されます。
 * `properties/diagnosticsProfile/bootDiagnostics/storageUri` 要素を再構成します。 「[リンクされたテンプレートを作成する](#create-the-linked-template)」で、出力値を追加しました。
 
     ```json

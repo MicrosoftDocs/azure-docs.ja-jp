@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database Gen2 から Gen3 へのゲートウェイ移行に関するお知らせ | Microsoft Docs
+title: Azure SQL Database のゲートウェイ トラフィックの移行に関するお知らせ | Microsoft Docs
 description: Azure SQL Database ゲートウェイの IP アドレスの移行についてユーザーにお知らせする記事です
 services: sql-database
 ms.service: sql-database
@@ -10,23 +10,23 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 85691464684ff327c01a85bf357514f447564dd7
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568121"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305995"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 
-Azure インフラストラクチャの機能強化に伴い、Microsoft は可能な限り最高のカスタマー エクスペリエンスを提供するためにハードウェアを定期的に更新しています。 これから数か月間で、新しいハードウェア世代に基づいて構築されたゲートウェイを追加し、一部のリージョンでは以前のハードウェアに基づいて構築されたゲートウェイの使用を停止する予定です。  
+Azure インフラストラクチャの機能強化に伴い、Microsoft は可能な限り最高のカスタマー エクスペリエンスを提供するためにハードウェアを定期的に更新しています。 これから数か月間で、より新しいハードウェア世代で構築されたゲートウェイを追加して、それらにトラフィックを移行し、一部のリージョンでは以前のハードウェアで構築されたゲートウェイの使用を最終的に停止する予定です。  
 
 各リージョンで使用できるゲートウェイが変更される場合は、事前にメールと Azure portal でお客様にお知らせします。 最新の情報は、「[Azure SQL Database ゲートウェイ IP アドレス](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses)」の表に保持される予定です。
 
 ## <a name="impact-of-this-change"></a>この変更の影響
 
-ゲートウェイの使用停止の第 1 ラウンドは、2019 年 9 月 1 日に次のリージョンで予定されています。
-
+より新しいゲートウェイへの最初のトラフィックの移行は、次のリージョンで **2019 年 10 月 14 日**に予定されています。
+- ブラジル南部
 - 米国西部
 - 西ヨーロッパ
 - East US
@@ -40,12 +40,14 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 - 米国東部 2
 - 東アジア
 
-使用が停止された IP アドレスではトラフィックの受け入れが停止され、新しい接続の試行はすべてそのリージョンのいずれかのゲートウェイにルーティングされます。
+トラフィックの移行により、ご利用の SQL Database に対して DNS で解決されるパブリック IP アドレスが変更されます。
+次の場合、影響を受けます。
+- オンプレミスのファイアウォールで特定のゲートウェイに対して IP アドレスをハードコーディングしている
+- サービス エンドポイントとして Microsoft.SQL を使用しているサブネットがあるが、ゲートウェイ IP アドレスと通信できない
 
-この変更による影響が見られない場所:
-
-- 接続ポリシーとしてリダイレクトを使用しているお客様には影響がありません。
-- Azure の内部から SQL Database へのサービス タグを使用した接続も影響を受けません。
+次の場合、影響を受けません。
+- 接続ポリシーとしてのリダイレクトがある
+- Azure の内部から SQL Database へのサービス タグを使用した接続がある
 - サポートされているバージョンの SQL Server 用 JDBC ドライバーを使用して行われる接続は影響を受けません。 サポートされている JDBC のバージョンについては、「[Microsoft SQL Server 用 JDBC Driver のダウンロード](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server)」を参照してください。
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>影響を受ける場合の対処方法

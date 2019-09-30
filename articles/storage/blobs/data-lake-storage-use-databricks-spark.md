@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a283f6cbcf4dc345a8c55192507c461f33244d6
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
+ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855439"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69992261"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 のデータにアクセスする
 
@@ -77,7 +77,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     |**サブスクリプション**     | ドロップダウンから Azure サブスクリプションを選択します。        |
     |**リソース グループ**     | 新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。 |
     |**Location**     | **[米国西部 2]** を選択します。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。       |
-    |**価格レベル**     |  **[Standard]** を選択します。     |
+    |**Pricing Tier**     |  **[Standard]** を選択します。     |
 
     ![Azure Databricks ワークスペースを作成する](./media/data-lake-storage-use-databricks-spark/create-databricks-workspace.png "Azure Databricks サービスを作成する")
 
@@ -124,18 +124,18 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
 2. *.csv* アカウントからデータをコピーするには、次のコマンドを入力します。
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<container-name>/folder1/On_Time.csv
    ```
 
    * プレースホルダー `<csv-folder-path>` の値は、 *.csv* ファイルへのパスに置き換えます。
 
    * `<storage-account-name>` プレースホルダーの値は、実際のストレージ アカウントの名前に置き換えます。
 
-   * `<file-system-name>` プレースホルダーを、ファイル システムに付ける任意の名前に置き換えます。
+   * `<container-name>` プレースホルダーを、ご自身のコンテナーに付ける名前に置き換えます。
 
-## <a name="create-a-file-system-and-mount-it"></a>ファイル システムを作成してマウントする
+## <a name="create-a-container-and-mount-it"></a>コンテナーを作成してマウントする
 
-このセクションでは、ストレージ アカウントにファイル システムとフォルダーを作成します。
+このセクションでは、ストレージ アカウントにコンテナーとフォルダーを作成します。
 
 1. [Azure portal](https://portal.azure.com) で、作成した Azure Databricks サービスに移動し、 **[Launch Workspace]\(ワークスペースの起動\)** を選択します。
 
@@ -158,12 +158,12 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
            "fs.azure.createRemoteFileSystemDuringInitialization": "true"}
 
     dbutils.fs.mount(
-    source = "abfss://<file-system-name>@<storage-account-name>.dfs.core.windows.net/folder1",
+    source = "abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/folder1",
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
 
-18. このコード ブロックでは、`appId`、`password`、`tenant`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `file-system-name` プレースホルダーの値は、前の手順で ADLS ファイル システムに付けた名前に置き換えます。
+18. このコード ブロックでは、`appId`、`password`、`tenant`、および `storage-account-name` のプレースホルダー値を、このチュートリアルの前提条件の実行中に収集した値で置き換えます。 `container-name` プレースホルダーの値は、前の手順でコンテナーに付けた名前に置き換えます。
 
 これらの値で、説明したプレース ホルダーを置き換えます。
 
@@ -173,7 +173,7 @@ AzCopy を使用して *.csv* ファイルから Data Lake Storage Gen2 アカ�
 
    * `storage-account-name` は、Azure Data Lake Storage Gen2 ストレージ アカウントの名前です。
 
-   * `file-system-name` プレースホルダーを、ファイル システムに付ける任意の名前に置き換えます。
+   * `container-name` プレースホルダーを、ご自身のコンテナーに付ける名前に置き換えます。
 
    > [!NOTE]
    > 運用設定では、パスワードを Azure Databricks に格納することを検討してください。 次に、パスワードではなくルック アップ キーをコード ブロックに追加します。 このクイック スタートの完了後、Azure Databricks Web サイトの記事「[Azure Data Lake Storage Gen2](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html)」で、このアプローチの例を参照してください。

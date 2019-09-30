@@ -3,18 +3,18 @@ title: Azure Compute - Linux Diagnostic Extension |Microsoft ドキュメント
 description: Azure Linux Diagnostic Extension (LAD) を構成して、Azure で実行中の Linux VM からメトリックとログ イベントを収集する方法。
 services: virtual-machines-linux
 author: abhijeetgaiha
-manager: sankalpsoni
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: 0627361fdd4f94a329b08b184dbd542e1927af39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1da5d8aba92ac5cca5f7cdc281e169ce284b202d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871922"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169177"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -59,10 +59,10 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 
 ### <a name="sample-installation"></a>サンプル インストール
 
-最初の 3 行に適切なパラメーターを入力し、このスクリプトを root として実行します。
+実行前に、最初のセクションに変数の正しい値を入力します。
 
 ```bash
-# Set your Azure VM diagnostic parameters correctly below
+# Set your Azure VM diagnostic variables correctly below
 my_resource_group=<your_azure_resource_group_name_containing_your_azure_linux_vm>
 my_linux_vm=<your_azure_linux_vm_name>
 my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnostic_data>
@@ -127,7 +127,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 }
 ```
 
-EnableAdfsAuthentication | 値
+名前 | 値
 ---- | -----
 storageAccountName | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。
 storageAccountEndPoint | (省略可能) ストレージ アカウントが存在するクラウドを識別するエンドポイント。 この設定がない場合、LAD の既定値は Azure パブリック クラウド `https://core.windows.net` になります。 Azure Germany、Azure Government、Azure China でストレージ アカウントを使用するには、この値を適切に設定します。
@@ -135,9 +135,7 @@ storageAccountSasToken | BLOB および Table service (`ss='bt'`) の[アカウ�
 mdsdHttpProxy | (省略可能) 指定されたストレージ アカウントとエンドポイントに拡張機能が接続するために必要な HTTP プロキシ情報。
 sinksConfig | (省略可能) メトリックとイベントの配信が可能な代替宛先の詳細。 拡張機能でサポートされている各データ シンクの詳細については、以降のセクションで説明します。
 
-
-> [!NOTE]
-> Azure 展開テンプレートを使用して拡張機能を展開する場合は、事前にストレージ アカウントと SAS トークンを作成し、テンプレートに渡す必要があります。 VM、ストレージ アカウントの展開と拡張機能の構成を、1 つのテンプレート内で行うことはできません。 現時点では、テンプレート内での SAS トークンの作成はサポートされていません。
+Resource Manager テンプレート内の SAS トークンを取得するには、 **listAccountSas** 関数を使用します。 テンプレートの例については、[List 関数の例](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example)を参照してください。
 
 必要な SAS トークンを Azure ポータルで簡単に構築できます。
 

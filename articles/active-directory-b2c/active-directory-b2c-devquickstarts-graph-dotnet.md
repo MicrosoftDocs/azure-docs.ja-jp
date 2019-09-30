@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 88b1d05a47f4a8267ab936a922ac190a925bd5ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7fcbbbfcc2192160ca852538c015a365518e448
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510180"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065956"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C:Azure AD Graph API を使用する
 
 >[!NOTE]
 > Azure AD B2C ディレクトリのユーザーを管理するには、[Azure AD Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) を使用する必要があります。 これは、Microsoft Graph API とは異なります。 [こちら](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)をご覧ください。
 
-Azure Active Directory (Azure AD) B2C テナントは非常に大規模になる傾向があります。 これは、多くの一般的なテナント管理タスクをプログラムで実行する必要があることを意味します。 主な例にはユーザーの管理があります。 たとえば、既存のユーザー ストアを B2C テナントに移行することがあります。 その場合、自分のページでユーザー登録をホストし、バックグラウンドで Azure AD B2C ディレクトリのユーザー アカウントを作成することがあります。 この種のタスクでは、ユーザー アカウントの作成、読み取り、更新、削除を実行する機能が必要です。 Azure AD Graph API を使用してこれらの操作を実行できます。
+Azure Active Directory B2C (Azure AD B2C) テナントは非常に大規模になる傾向があります。 これは、多くの一般的なテナント管理タスクをプログラムで実行する必要があることを意味します。 主な例にはユーザーの管理があります。 たとえば、既存のユーザー ストアを B2C テナントに移行することがあります。 その場合、自分のページでユーザー登録をホストし、バックグラウンドで Azure AD B2C ディレクトリのユーザー アカウントを作成することがあります。 この種のタスクでは、ユーザー アカウントの作成、読み取り、更新、削除を実行する機能が必要です。 Azure AD Graph API を使用してこれらの操作を実行できます。
 
 B2C テナントでは、主に 2 つのモードで Graph API と通信します。
 
@@ -42,13 +42,15 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ページの右上隅のアカウント名を選択して、Azure AD B2C テナントを選択します。
-3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、 **[アプリの登録]** 、 **[追加]** の順にクリックします。
-4. 画面の指示に従い、新しいアプリケーションを作成します。 
-    1. アプリケーション タイプとして **[Web App / API]** (Web アプリ/API) を選択します。    
-    2. これはこの例に関係がないので、**任意のサインオン URL** (例: `https://B2CGraphAPI`) を指定します。  
+3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、 **[アプリの登録]** 、 **[新規登録]** の順にクリックします。
+4. 画面の指示に従い、新しいアプリケーションを作成します。
+    1. 適切な名前を追加します
+    2. **[Accounts in this Organizational directory only]\(この組織ディレクトリ内のアカウントのみ\)** を選択します
+    3. アプリケーションの種類として **[Web]** を選択し、この例では関係がないので、**任意のサインオン URL** (例: `https://B2CGraphAPI`) を指定します。
+    4. [登録] をクリックします。
 5. この時点でアプリケーションの一覧に表示されたアプリケーションをクリックして、**アプリケーション ID** (クライアント ID とも呼ばれます) を取得します。 後のセクションで必要になるため、この ID をコピーします。
-6. [設定] メニューで **[キー]** をクリックします。
-7. **[パスワード]** セクションにキーの説明を入力し、期間を選択して、 **[保存]** をクリックします。 後のセクションで使用するために、キーの値 (クライアント シークレットとも呼ばれます) をコピーします。
+6. [設定] メニューで、 **[証明書とシークレット]** をクリックします。
+7. **[クライアント シークレット]** セクションで **[新しいクライアント シークレット]** をクリックし、シークレットの説明を入力して、期間を選択します。その後、 **[追加]** をクリックします。 後のセクションで使用するために、シークレットの値 (クライアント シークレットとも呼ばれます) をコピーします。
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>アプリケーション用に作成、読み取り、および更新アクセス許可を構成する
 ここでは、ユーザーの作成、読み取り、更新、および削除に必要なすべてのアクセス許可を取得するようにアプリケーションを構成する必要があります。
@@ -63,8 +65,8 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 
 > [!NOTE]
 > アクセス許可を付与する処理は、完了するまでに数分間かかることがあります。
-> 
-> 
+>
+>
 
 ## <a name="configure-delete-or-update-password-permissions-for-your-application"></a>アプリケーションに対するパスワードの削除または更新のアクセス許可を構成する
 現在、 *[ディレクトリ データの読み取りと書き込み]* アクセス許可には、ユーザーを削除したり、ユーザー パスワードを更新したりする権限は含まれて**いません**。 アプリケーションにユーザーを削除したり、パスワードを更新したりする権限を付与する場合は、PowerShell に関連した次の追加の手順を実行する必要があります。そうでない場合は、次のセクションにスキップできます。
@@ -130,8 +132,8 @@ Graph API に要求するには、認証のためのアクセス トークンが
 
 > [!NOTE]
 > このコード サンプルでは、Graph API と通信するために ADAL v2 を使用しています。  Azure AD Graph API で使用できるアクセス トークンを取得するためには、ADAL v2 または v3 を使用する必要があります。
-> 
-> 
+>
+>
 
 `B2CGraphClient` を実行すると、`B2CGraphClient` クラスのインスタンスが作成されます。 このクラスのコンストラクターは、ADAL の認証のスキャフォールディングを設定します。
 
@@ -258,8 +260,8 @@ POST 要求が `B2CGraphClient.SendGraphPostRequest(...)`内でどのように�
 
 > [!NOTE]
 > 既存のユーザー ストアから移行するアカウントのパスワード強度が [Azure AD B2C によって適用された強力なパスワード強度](/previous-versions/azure/jj943764(v=azure.100))より低い場合は、`passwordPolicies` プロパティの `DisableStrongPassword` 値を使用して強力なパスワード要件を無効にすることができます。 たとえば、前述したユーザーの作成要求を、 `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`のように変更できます。
-> 
-> 
+>
+>
 
 ### <a name="update-consumer-user-accounts"></a>コンシューマー ユーザー アカウントを更新する
 ユーザー オブジェクトの更新プロセスはユーザー オブジェクトの作成プロセスと同じです。 ただし、HTTP `PATCH` メソッドが使用されます。

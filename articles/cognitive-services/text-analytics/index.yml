@@ -1,89 +1,149 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Text Analytics API のドキュメント
+summary: Text Analytics API は、未加工のテキストに対して高度な自然言語処理を実行できるクラウドベースのサービスであり、主要な機能として感情分析、キー フレーズ抽出、名前付きエンティティの認識、言語検出の 4 つを備えています。
 metadata:
   title: Text Analytics API のドキュメント - チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
-  description: Text Analytics API は、未加工のテキストに対して高度な自然言語処理を実行できるクラウドベースのサービスであり、主要な機能として感情分析、キー フレーズ抽出、名前付きエンティティの認識、言語検出の 4 つを備えています。
+  titleSuffix: Azure Cognitive Services
   services: cognitive-services
-  author: nitinme
+  description: Text Analytics API は、未加工のテキストに対して高度な自然言語処理を実行できるクラウドベースのサービスであり、主要な機能として感情分析、キー フレーズ抽出、名前付きエンティティの認識、言語検出の 4 つを備えています。 Microsoft が提供するクイックスタート、チュートリアル、サンプルを使用して、コンテンツを分析するさまざまな方法をご確認ください。
+  author: aahill
   manager: nitinme
   layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: text-analytics
   ms.topic: landing-page
   ms.date: 07/29/2019
-  ms.author: nitinme
-abstract:
-  description: Text Analytics API は、未加工のテキストに対して高度な自然言語処理を実行できるクラウドベースのサービスであり、主要な機能として感情分析、キー フレーズ抽出、名前付きエンティティの認識、言語検出の 4 つを備えています。 Microsoft が提供するクイックスタート、チュートリアル、サンプルを使用して、コンテンツを分析するさまざまな方法をご確認ください。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/text-analytics/overview
-            html: <p>Text Analytics API について説明します。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Text Analytics とは
-          - href: /azure/cognitive-services/cognitive-services-apis-create-account
-            html: <p>Text Analytics API へのサインアップ方法について説明します。</p>
-            image:
-              src: ../media/index/i_get-started.svg
-            title: Text Analytics API へのサインアップ
-          - href: /azure/cognitive-services/text-analytics/whats-new
-            html: <p>Text Analytics API の開発に関する最新情報をお届けします。</p>
-            image:
-              src: ../media/index/i_tasks.svg
-            title: Text Analytics API の新機能
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 言語の検出、センチメントの分析、キー フレーズの抽出、エンティティの認識によって Text Analytics API を使ってみましょう。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/logo_csharp.svg
-            text: 'C&#35;'
-            href: quickstarts/csharp
-          - image:
-              src: media/index/logo_java.svg
-            text: Java
-            href: quickstarts/java
-          - image:
-              src: media/index/logo_nodejs.svg
-            text: Node.js
-            href: quickstarts/nodejs-sdk
-          - image:
-              src: media/index/logo_python.svg
-            text: Python
-            href: quickstarts/python-sdk
-          - image:
-              src: media/index/logo_go.svg
-            text: Go
-            href: quickstarts/go-sdk
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Text Analytics API を使用してアプリケーションを開発する方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">Text Analytics と Power BI</a>
-          - html: '<a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">Text Analytics と PowerApps</a>'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7">API リファレンス</a></p>'
-          - title: SDK
-            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable>Java</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics">Go</a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'
+  ms.author: aahi
+  ms.openlocfilehash: 3a95cedb76c25b8e22e0d93c60221015e5836506
+  ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71300471"
+landingContent:
+- title: Text Analytics API について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Text Analytics API とは
+      url: overview.md
+    - text: ユーザー シナリオの例
+      url: text-analytics-user-scenarios.md
+  - linkListType: video
+    links:
+    - text: Cognitive Services を使用したテキストの理解
+      url: https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player
+  - linkListType: whats-new
+    links:
+    - text: 新機能
+      url: whats-new.md
+- title: センチメント分析
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# の使用
+      url: quickstarts/csharp.md#sentiment-analysis
+    - text: Python の使用
+      url: quickstarts/python-sdk.md#sentiment-analysis
+    - text: Node.js の使用
+      url: quickstarts/nodejs-sdk.md#sentiment-analysis
+    - text: Go の使用
+      url: quickstarts/go-sdk.md#sentiment-analysis
+    - text: Ruby の使用
+      url: quickstarts/ruby-sdk.md#sentiment-analysis
+  - linkListType: tutorial
+    links:
+    - text: Power BI を統合して顧客のセンチメントを分析する
+      url: tutorials/tutorial-power-bi-key-phrases.md
+    - text: Flask によるテキストの翻訳、センチメントの分析、音声の合成
+      url: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fbread%2Ftoc.json
+  - linkListType: how-to-guide
+    links:
+    - text: センチメント分析
+      url: how-tos/text-analytics-how-to-sentiment-analysis.md
+- title: 言語検出
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# の使用
+      url: quickstarts/csharp.md#language-detection
+    - text: Python の使用
+      url: quickstarts/python-sdk.md#language-detection
+    - text: Node.js の使用
+      url: quickstarts/nodejs-sdk.md#language-detection
+    - text: Go の使用
+      url: quickstarts/go-sdk.md#language-detection
+    - text: Ruby の使用
+      url: quickstarts/ruby-sdk.md#language-detection
+  - linkListType: how-to-guide
+    links:
+    - text: 言語検出
+      url: how-tos/text-analytics-how-to-language-detection.md
+- title: キー フレーズの抽出
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# の使用
+      url: quickstarts/csharp.md#key-phrase-extraction
+    - text: Python の使用
+      url: quickstarts/python-sdk.md#key-phrase-extraction
+    - text: Node.js の使用
+      url: quickstarts/nodejs-sdk.md#key-phrase-extraction
+    - text: Go の使用
+      url: quickstarts/go-sdk.md#key-phrase-extraction
+    - text: Ruby の使用
+      url: quickstarts/ruby-sdk.md#key-phrase-extraction
+  - linkListType: how-to-guide
+    links:
+    - text: キーワード抽出
+      url: how-tos/text-analytics-how-to-keyword-extraction.md
+- title: エンティティの認識
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# の使用
+      url: quickstarts/csharp.md#entity-recognition
+    - text: Python の使用
+      url: quickstarts/python-sdk.md#entity-recognition
+    - text: Node.js の使用
+      url: quickstarts/nodejs-sdk.md#entity-recognition
+    - text: Go の使用
+      url: quickstarts/go-sdk.md#entity-recognition
+    - text: Ruby の使用
+      url: quickstarts/ruby-sdk.md#entity-recognition
+  - linkListType: how-to-guide
+    links:
+    - text: エンティティの認識
+      url: how-tos/text-analytics-how-to-entity-linking.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7
+    - text: .NET クライアント ライブラリ
+      url: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet
+    - text: Python クライアント ライブラリ
+      url: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python
+    - text: Node.js クライアント ライブラリ
+      url: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest
+    - text: Java クライアント ライブラリ
+      url: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable
+    - text: Go クライアント ライブラリ
+      url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services"
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
+- title: Docker コンテナーを使用する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Text Analytics コンテナーをインストールして実行する
+      url: how-tos/text-analytics-how-to-install-containers.md
+    - text: Text Analytics コンテナーを構成する
+      url: text-analytics-resource-container-config.md
+    - text: コンテナー インスタンスを Azure にデプロイする
+      url: how-tos/text-analytics-how-to-use-container-instances.md
+    - text: コンテナーを Azure Kubernetes Service (AKS) にデプロイする
+      url: how-tos/text-analytics-how-to-use-kubernetes-service.md

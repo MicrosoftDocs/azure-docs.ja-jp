@@ -1,25 +1,25 @@
 ---
-title: Video Indexer とは
-titlesuffix: Azure Media Services
-description: このトピックでは、Video Indexer サービスの概要を説明します。
+title: Azure Media Services Video Indexer とは
+titleSuffix: Azure Media Services
+description: このトピックでは、Azure Media Services Video Indexer サービスの概要を説明します。
 services: media-services
 author: Juliako
 manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 09/06/2019
 ms.author: juliako
-ms.openlocfilehash: b0d0df5d113b1d75602022085b8bb17133f07333
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e3f60b5fb0693e40c9db040f7b14f487fce8f68e
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422970"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860244"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 
-Azure Video Indexer は、Azure Media Analytics、Azure Search、Cognitive Services (Face API、Microsoft Translator、Computer Vision API、Custom Speech Service など) を基盤として構築されたクラウド アプリケーションです。 以下で説明する Video Indexer のビデオとオーディオのモデルを使用して、ビデオから分析情報を抽出することができます。
+Azure Media Services Video Indexer は、Azure Media Analytics、Azure Search、Cognitive Services (Face API、Microsoft Translator、Computer Vision API、Custom Speech Service など) を基盤として構築されたクラウド アプリケーションです。 以下で説明する Video Indexer のビデオとオーディオのモデルを使用して、ビデオから分析情報を抽出することができます。
   
 ## <a name="video-insights"></a>ビデオの分析情報
 
@@ -35,10 +35,13 @@ Azure Video Indexer は、Azure Media Analytics、Azure Search、Cognitive Servi
 - **黒フレームの検出**:ビデオに表示された黒フレームを識別します。
 - **キーフレームの抽出**:ビデオ内の安定したキーフレームを検出します。
 - **ローリング クレジット**: テレビ番組や映画の終わりにあるローリング クレジットの始まりと終わりを識別します。
+- **アニメーション キャラクターの検出** (プレビュー): [Cognitive Services の Custom Vision](https://azure.microsoft.com/services/cognitive-services/custom-vision-service/) との統合によって、アニメ化されたコンテンツのキャラクターの検出、グループ化、および認識を行います。 詳細については、「[アニメーション キャラクターの検出](animated-characters-recognition.md)」を参照してください。
+- **編集ショット タイプの検出**: タイプに基づくショットのタグ付け (ワイド ショット、ミディアム ショット、クローズアップ、エクストリーム クローズアップ、2 ショット、複数の人物、屋外、室内など)。 詳細については、「[編集ショット タイプの検出](scenes-shots-keyframes.md#editorial-shot-type-detection)」を参照してください。
 
 ## <a name="audio-insights"></a>オーディオの分析情報
 
 - **自動言語検出**:主な音声言語を自動的に識別します。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (簡体字)、日本語、ロシア語、ポルトガル語 (ブラジル) などの言語がサポートされています。 言語を確実に識別できない場合、Video Indexer では音声言語が英語と想定されます。 詳細については、[言語識別モデル](language-identification-model.md)に関する記事を参照してください。
+- **複数言語の音声識別と文字起こし** (プレビュー):音声から異なるセグメントにある音声言語を自動的に識別し、メディア ファイルの各セグメントを文字起こしするために送信し、文字起こしを結合して元の 1 つの統合された文字起こしを作成します。 詳細については、「[複数言語のコンテンツを自動的に識別および文字起こしする](multi-language-identification-transcription.md)」を参照してください。
 - **音声の文字起こし**:12 の言語で音声をテキストに変換します。拡張機能を使用できます。 英語、スペイン語、フランス語、ドイツ語、イタリア語、中国語 (簡体字)、日本語、アラビア語、ロシア語、ポルトガル語 (ブラジル)、ヒンディー語、韓国語などの言語がサポートされています。
 - **字幕**:VTT、TML、SRT という 3 つの形式で字幕を作成します。
 - **2 チャネル処理**:自動検出、トランスクリプトの分離、1 つのタイムラインへの結合を行います。
@@ -56,7 +59,7 @@ Azure Video Indexer は、Azure Media Analytics、Azure Search、Cognitive Servi
 1 つのチャンネルでインデックスを付けるときは、これらのモデルの部分的な結果を利用できます
 
 - **キーワードの抽出**:音声と視覚テキストからキーワードを抽出します。
-- **ブランドの抽出**:音声と視覚テキストからブランドを抽出します。
+- **名前付きエンティティの抽出**:自然言語処理 (NLP) を使用して、音声および視覚テキストからブランド、場所、および人物を抽出します。
 - **トピックの推論**:トランスクリプトから主なトピックを推論します。 第 1 レベルの IPTC 分類が含まれています。
 - **成果物**:各モデルについて、"次のレベルの詳細情報" 成果物の豊富なセットを抽出します。
 - **センチメント分析**:音声と視覚テキストから、ポジティブ、ネガティブ、ニュートラルのセンチメントを識別します。

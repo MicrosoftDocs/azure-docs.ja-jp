@@ -4,22 +4,21 @@ description: Azure Virtual Machines および仮想マシン スケール セッ
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
-manager: gwallace
+manager: borisb
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0eda9fe0e16a945dcb9f9a1b686afcd2aebe6306
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f6e08f113e29b44e4ec94d14624d62c1c3d48d45
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854379"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124464"
 ---
 # <a name="azure-serial-console-for-linux"></a>Linux 用 Azure シリアル コンソール
 
@@ -50,34 +49,6 @@ Windows 用シリアル コンソールのドキュメントについては、[W
 - VM または仮想マシン スケール セット インスタンスは、`ttys0` でシリアル出力用に構成されている必要があります。 これが Azure イメージの既定値ですが、カスタム イメージではこれを再確認してください。 詳細は[以下](#custom-linux-images)のとおりです。
 
 
-## <a name="get-started-with-the-serial-console"></a>シリアル コンソールの概要
-VM および仮想マシン スケール セット用のシリアル コンソールには、Azure portal を使用してのみアクセスできます。
-
-### <a name="serial-console-for-virtual-machines"></a>仮想マシン用のシリアル コンソール
-VM 用のシリアル コンソールには、Azure portal で **[サポート + トラブルシューティング]** セクション内の **[シリアル コンソール]** をクリックするだけでアクセスできます。
-  1. [Azure Portal](https://portal.azure.com)を開きます。
-
-  1. **[すべてのリソース]** に移動し、仮想マシンを選択します。 VM の概要ページが開きます。
-
-  1. 下へスクロールして **[サポート + トラブルシューティング]** セクションを表示し、 **[シリアル コンソール]** を選択します。 シリアル コンソールで新しいウィンドウが開き、接続が開始されます。
-
-     ![Linux シリアル コンソール ウィンドウ](./media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
-
-### <a name="serial-console-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用のシリアル コンソール
-シリアル コンソールは、仮想マシン スケール セットのインスタンスごとに使用できます。 **[シリアル コンソール]** ボタンが表示されるようにするには、仮想マシン スケール セットの個々のインスタンスに移動する必要があります。 仮想マシン スケール セットでブート診断が有効になっていない場合は、ブート診断を有効にするように仮想マシン スケール セット モデルを更新したことを確認してから、シリアル コンソールにアクセスするためにすべてのインスタンスを新しいモデルにアップグレードします。
-  1. [Azure Portal](https://portal.azure.com)を開きます。
-
-  1. **[すべてのリソース]** に移動し、仮想マシン スケール セットを選択します。 仮想マシン スケール セットの概要ページが開きます。
-
-  1. **[インスタンス]** に移動します
-
-  1. 仮想マシン スケール セット インスタンスを選択します
-
-  1. **[サポート + トラブルシューティング]** セクションから、 **[シリアル コンソール]** を選択します。 シリアル コンソールで新しいウィンドウが開き、接続が開始されます。
-
-     ![Linux 仮想マシン スケール セットのシリアル コンソール](./media/virtual-machines-serial-console/vmss-start-console.gif)
-
-
 > [!NOTE]
 > シリアル コンソールを使うには、パスワードが構成されたローカル ユーザーが必要です。 SSH 公開キーだけが構成された VM または仮想マシン スケール セットは、シリアル コンソールにサインインできません。 パスワードを持つローカル ユーザーを作成するには、[VM アクセス拡張機能](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension)に関する記事を参照して (Azure portal で **[パスワードのリセット]** を選択して表示することができます)、パスワードを持つローカル ユーザーを作成します。
 > また、アカウントの管理者パスワードを [GRUB を使用してシングル ユーザー モードで起動](./serial-console-grub-single-user-mode.md)してリセットすることもできます。
@@ -98,7 +69,7 @@ SUSE        | Azure で利用できる新しい SLES イメージは、シリア
 Oracle Linux        | シリアル コンソール アクセスが既定で有効になっています。
 
 ### <a name="custom-linux-images"></a>カスタム Linux イメージ
-カスタム Linux VM イメージのシリアル コンソールを有効にするには、 */etc/inittab* ファイルでコンソール アクセスを有効にして、`ttyS0` でターミナルを実行します。 (例: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`)。
+カスタム Linux VM イメージのシリアル コンソールを有効にするには、 */etc/inittab* ファイルでコンソール アクセスを有効にして、`ttyS0` でターミナルを実行します。 (例: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`)。 また、ttyS0 上で getty の生成が必要になる場合もあります。 これは `systemctl start serial-getty@ttyS0.service` を使用して行えます。
 
 さらに、ttys0 をシリアル出力の宛先として追加することができます。 シリアル コンソールと連動するようにカスタム イメージを構成する方法の詳細については、「[Azure 上での Linux VHD の作成とアップロード](https://aka.ms/createuploadvhd#general-linux-system-requirements)」で一般的なシステム要件を参照してください。
 
@@ -115,47 +86,8 @@ SSH 構成の問題 | シリアル コンソールにアクセスし、設定を
 ブートローダーの操作 | シリアル コンソール ブレードから VM を再起動して、Linux VM 上の GRUB にアクセスします。 詳細および distro 固有の情報については、「[シリアル コンソールを使用して GRUB とシングル ユーザー モードにアクセスする](serial-console-grub-single-user-mode.md)」をご覧ください。
 
 ## <a name="disable-the-serial-console"></a>シリアル コンソールを無効にする
-既定では、すべてのサブスクリプションは、シリアル コンソールのアクセスが有効になっています。 サブスクリプション レベルまたは VM/仮想マシン スケール セット レベルのいずれかで、シリアル コンソールを無効にすることができます。 シリアル コンソールが機能するには、VM 上でブート診断を有効にする必要があります。
 
-### <a name="vmvirtual-machine-scale-set-level-disable"></a>VM/仮想マシン スケール セット レベルの無効化
-シリアル コンソールは、ブート診断設定を無効にすることによって、特定の VM または仮想マシン スケール セットに対して無効にできます。 VM または仮想マシン スケール セット用のシリアル コンソールを無効にするには、Azure portal からブート診断を無効にします。 仮想マシン スケール セットでシリアル コンソールを使用している場合は、仮想マシン スケール セット インスタンスを最新モデルにアップグレードしたことを確認してください。
-
-> [!NOTE]
-> あるサブスクリプションに対してシリアル コンソールを有効または無効にするには、そのサブスクリプションの書き込み権限が必要です。 これらの権限には、管理者ロールまたは所有者ロールが含まれます。 カスタム ロールにも、書き込み権限が与えることができます。
-
-### <a name="subscription-level-disable"></a>サブスクリプション レベルの無効化
-サブスクリプション全体のシリアル コンソールは、[Disable Console REST API 呼び出し](/rest/api/serialconsole/console/disableconsole)で無効にできます。 このアクションには、サブスクリプションに対する共同作成者レベル以上のアクセス権が必要です。 API ドキュメントのページで使用できる**使ってみる**機能を利用して、サブスクリプションのシリアル コンソールを有効または無効にすることができます。 **subscriptionId** のサブスクリプション ID を入力し、**default** に **default** と入力して、 **[実行]** を選択します。 Azure CLI コマンドはまだ利用できません。
-
-サブスクリプションのシリアル コンソールを再度有効にするには、[Enable Console REST API 呼び出し](/rest/api/serialconsole/console/enableconsole)を使用します。
-
-![REST API Try It](./media/virtual-machines-serial-console/virtual-machine-serial-console-rest-api-try-it.png)
-
-または、Cloud Shell で以下の一連の bash コマンドを使用して、サブスクリプションのシリアル コンソールの無効化と有効化、および無効化状態の表示ができます。
-
-* サブスクリプションのシリアル コンソールの無効化状態を取得するには、以下を実行します。
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s | jq .properties
-    ```
-* サブスクリプションのシリアル コンソールを無効にするには、以下を実行します。
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/disableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
-* サブスクリプションのシリアル コンソールを有効にするには、以下を実行します。
-    ```azurecli-interactive
-    $ export ACCESSTOKEN=($(az account get-access-token --output=json | jq .accessToken | tr -d '"'))
-
-    $ export SUBSCRIPTION_ID=$(az account show --output=json | jq .id -r)
-
-    $ curl -X POST "https://management.azure.com/subscriptions/$SUBSCRIPTION_ID/providers/Microsoft.SerialConsole/consoleServices/default/enableConsole?api-version=2018-05-01" -H "Authorization: Bearer $ACCESSTOKEN" -H "Content-Type: application/json" -H "Accept: application/json" -s -H "Content-Length: 0"
-    ```
+既定では、すべてのサブスクリプションは、シリアル コンソールのアクセスが有効になっています。 サブスクリプション レベルまたは VM/仮想マシン スケール セット レベルのいずれかで、シリアル コンソールを無効にすることができます。 詳細な手順については、「[Azure シリアル コンソールの有効化と無効化](./serial-console-enable-disable.md)」を参照してください。
 
 ## <a name="serial-console-security"></a>シリアル コンソールのセキュリティ
 
@@ -185,18 +117,6 @@ Azure portal からシリアル コンソール インターフェイスでナ�
 
 ### <a name="use-serial-console-with-a-screen-reader"></a>スクリーン リーダーでシリアル コンソールを使用する
 シリアル コンソールには、スクリーン リーダーのサポートが組み込まれています。 スクリーン リーダーを有効にしてナビゲートすると、現在選択されているボタンの代替テキストをスクリーン リーダーで読み上げることができます。
-
-## <a name="errors"></a>Errors
-ほとんどのエラーは一時的なものであるため、多くの場合、接続の再試行によって解決できます。 次の表にエラーと対応策を示します。 これらのエラーと軽減策は、VM と仮想マシン スケール セット インスタンスの両方に適用されます。
-
-Error                            |   対応策
-:---------------------------------|:--------------------------------------------|
-Unable to retrieve boot diagnostics settings for *&lt;VMNAME&gt;* . (VMNAME のブート診断設定を取得できません。) To use the serial console, ensure that boot diagnostics is enabled for this VM. (シリアル コンソールを使用するには、この VM のブート診断が有効になっていることを確認してください。) | VM の[ブート診断](boot-diagnostics.md)が有効になっていることを確認します。
-The VM is in a stopped deallocated state. (VM は停止済み (割り当て解除) 状態です。) Start the VM and retry the serial console connection. (VM を起動し、シリアル コンソール接続を再試行してください。) | シリアル コンソールにアクセスするには、VM が起動済み状態である必要があります。
-You do not have the required permissions to use this VM with the serial console. (シリアル コンソールでこの VM を使用するために必要なアクセス許可がありません。) Ensure you have at least Virtual Machine Contributor role permissions. (少なくとも仮想マシン共同作成者ロールのアクセス許可があることを確認してください。)| シリアル コンソールにアクセスするには、特定のアクセス許可が必要です。 詳細については、「[前提条件](#prerequisites)」を参照してください。
-Unable to determine the resource group for the boot diagnostics storage account *&lt;STORAGEACCOUNTNAME&gt;* . (ブート診断ストレージ アカウント STORAGEACCOUNTNAME のリソース グループを特定できません。) Verify that boot diagnostics is enabled for this VM and you have access to this storage account. (この VM のブート診断が有効になっており、このストレージ アカウントにアクセスできることを確認してください。) | シリアル コンソールにアクセスするには、特定のアクセス許可が必要です。 詳細については、「[前提条件](#prerequisites)」を参照してください。
-Web ソケットが閉じているか、開けませんでした。 | 場合によっては、`*.console.azure.com` をホワイトリストに登録する必要があります。 より詳しいものの時間もかかるアプローチとしては、[Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)をホワイトリストに追加するというものがありますが、この IP 範囲はかなり規則的に変化します。
-この VM のブート診断ストレージ アカウントにアクセスする際に、"許可されていません" という応答が発生しました。 | ブート診断にアカウントのファイアウォールがないことを確認してください。 シリアル コンソールが機能するには、アクセス可能なブート診断ストレージ アカウントが必要です。
 
 ## <a name="known-issues"></a>既知の問題
 Microsoft は、シリアル コンソールには問題がいくつかあることを認識しています。 そのような問題と軽減手順を以下に示します。 これらの問題と軽減策は、VM と仮想マシン スケール セット インスタンスの両方に適用されます。
@@ -242,7 +162,7 @@ A. シリアル コンソールのアクセスに関して、おそらく、イ�
 
 **Q.シリアル コンソールは仮想マシン スケール セットに利用できますか。**
 
-A. はい。 「[仮想マシン スケール セット用のシリアル コンソール](#serial-console-for-virtual-machine-scale-sets)」を参照してください
+A. はい。 「[仮想マシン スケール セット用のシリアル コンソール](serial-console-overview.md#serial-console-for-virtual-machine-scale-sets)」を参照してください
 
 **Q.SSH キー認証のみを使用して VM または仮想マシン スケール セットを設定しましたが、シリアル コンソールを使用して VM/仮想マシン スケール セット インスタンスに接続できますか。**
 

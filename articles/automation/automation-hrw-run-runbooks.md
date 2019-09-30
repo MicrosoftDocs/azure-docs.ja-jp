@@ -9,18 +9,20 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6f41263bfb930d3aab41fd8ace86cd6afb0ace26
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850585"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240320"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
 Azure Automation で実行される Runbook と、Hybrid Runbook Worker で実行される Runbook の構造に違いはありません。 それぞれで使用する Runbook は大きく異なる可能性があります。 この違いは、通常、Hybrid Runbook Worker をターゲットとする Runbook が、ローカル コンピューター自体のリソースを管理するか、またはデプロイ先のローカル環境のリソースに対して管理を行うことが原因です。 Azure Automation の Runbook は、通常、Azure クラウド内のリソースを管理します。
 
-Hybrid Runbook Worker で実行する Runbook を作成するときは、ハイブリッド worker をホストしているマシンで Runbook を編集し、テストする必要があります。 ホスト マシンには、ローカル リソースの管理とアクセスのために必要となる、すべての PowerShell モジュールとネットワーク アクセスがあります。 ハイブリッド worker マシンで Runbook をテストすると、ハイブリッド worker で実行するために使用できる Azure Automation 環境に Runbook をアップロードできるようになります。 ジョブが Windows ではローカル システム アカウントで実行され、Linux では特殊なユーザー アカウント `nxautomation` で実行されることを理解しておくことが重要です。 この動作により、Hybrid Runbook Worker 用の Runbook を作成するときに微妙な違いが生じる可能性があります。 Runbook を作成するときは、これらの変更を見直す必要があります。
+Hybrid Runbook Worker で実行する Runbook を作成するときは、ハイブリッド worker をホストしているマシンで Runbook を編集し、テストする必要があります。 ホスト マシンには、ローカル リソースの管理とアクセスのために必要となる、すべての PowerShell モジュールとネットワーク アクセスがあります。 ハイブリッド worker マシンで Runbook をテストすると、ハイブリッド worker で実行するために使用できる Azure Automation 環境に Runbook をアップロードできるようになります。 ジョブが Windows ではローカル システム アカウントで実行され、Linux では特殊なユーザー アカウント `nxautomation` で実行されることを理解しておくことが重要です。 Linux では、これは、ご利用のモジュールを格納する場所に `nxautomation` アカウントがアクセスできるようにする必要があることを意味します。 [Install-Module](/powershell/module/powershellget/install-module) コマンドレットを使用するときに、`-Scope` パラメーターに **AllUsers** を指定して、`naxautomation` アカウントが確実にアクセス権を持つようにします。
+
+Linux での PowerShell に関する詳細については、「[Windows 以外のプラットフォームでの PowerShell に関する既知の問題](https://docs.microsoft.com/powershell/scripting/whats-new/known-issues-ps6?view=powershell-6#known-issues-for-powershell-on-non-windows-platforms)」を参照してください。
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の開始
 
@@ -39,8 +41,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Runbook のアクセス許可
 
-Hybrid Runbook Worker で実行されている Runbook は Azure 以外のリソースにアクセスするため、Azure のリソースへの認証に Runbook で通常使用される方法と同じものを使用することはできません。 Runbook では、ローカル リソースに対する独自の認証を提供するか、または [Azure リソースのマネージド ID ](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
-)を使用して認証を構成することができます。 また、すべての Runbook にユーザー コンテキストを提供する RunAs アカウントを指定することもできます。
+Hybrid Runbook Worker で実行されている Runbook は Azure 以外のリソースにアクセスするため、Azure のリソースへの認証に Runbook で通常使用される方法と同じものを使用することはできません。 Runbook では、ローカル リソースに対する独自の認証を提供するか、または [Azure リソースのマネージド ID ](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)を使用して認証を構成することができます。 また、すべての Runbook にユーザー コンテキストを提供する RunAs アカウントを指定することもできます。
 
 ### <a name="runbook-authentication"></a>Runbook の認証
 
@@ -59,7 +60,7 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 
 ### <a name="runas-account"></a>RunAs アカウント
 
-既定で、Hybrid Runbook Worker は Windows のローカル システムおよび Linux の特殊なユーザー アカウント `nxautomation` を使用して Runbook を実行します。 Runbook でローカル リソースへの独自の認証機能を用意するのではなく、ハイブリッド worker グループの **RunAs** アカウントを指定することができます。 ローカル リソースに対するアクセス権を持つ [資格情報資産](automation-credentials.md) を指定すると、グループ内の Hybrid Runbook Worker で Runbook を実行するときに、その資格情報ですべての Runbook が実行されます。
+既定で、Hybrid Runbook Worker は Windows のローカル システムおよび Linux の特殊なユーザー アカウント `nxautomation` を使用して Runbook を実行します。 Runbook でローカル リソースへの独自の認証機能を用意するのではなく、ハイブリッド worker グループの **RunAs** アカウントを指定することができます。 グループ内の Hybrid Runbook Worker で実行するとき、証明書ストアやこれらの資格情報で実行されるすべての Runbook を含む、ローカル リソースに対するアクセス権を持つ[資格情報資産](automation-credentials.md)を指定します。
 
 資格情報のユーザー名は、次の形式にする必要があります。
 

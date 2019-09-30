@@ -97,7 +97,7 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 データ オブジェクトのプロパティの詳細については、イベント ソースを参照してください。
 
 * [Azure サブスクリプション (管理操作)](event-schema-subscriptions.md)
-* [コンテナー レジストリ](event-schema-container-registry.md)
+* [Container Registry](event-schema-container-registry.md)
 * [Blob Storage](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)

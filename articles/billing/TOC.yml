@@ -71,6 +71,8 @@
               href: billing-prepay-app-service-isolated-stamp.md
             - name: Azure ソフトウェア プラン
               href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+            - name: 月額払いで予約を購入する
+              href: billing-monthly-payments-reservations.md
             - name: 予約の更新
               href: billing-reservation-renew.md
         - name: 割り引きの適用方法
@@ -119,10 +121,12 @@
           href: billing-understand-free-service-meter-mapping.md
     - name: プロファイルを編集する
       href: billing-how-to-change-azure-account-profile.md
+    - name: オープン バンキングと強力なカスタマー認証
+      href: billing-open-banking-strong-customer-authentication.md
+    - name: 過去の延滞残高を決済する
+      href: billing-azure-subscription-past-due-balance.md
     - name: 課金情報へのアクセスを許可する
       href: billing-manage-access.md
-    - name: Azure における EA のロール
-      href: billing-understand-ea-roles.md
     - name: Azure における Microsoft 顧客契約の役割
       href: billing-understand-mca-roles.md
     - name: パートナー ID をリンクする
@@ -133,8 +137,26 @@
       href: billing-mca-section-invoice.md
     - name: Microsoft 顧客契約における EA タスク
       href: billing-mca-enterprise-operations.md
-    - name: 過去の延滞残高を決済する
-      href: billing-azure-subscription-past-due-balance.md
+    - name: EA の管理
+      items:
+        - name: Azure EA ポータルの概要
+          href: billing-ea-portal-get-started.md
+        - name: Azure における EA のロール
+          href: billing-understand-ea-roles.md
+        - name: Azure EA ポータルの管理
+          href: billing-ea-portal-administration.md
+        - name: Azure EA 契約と修正
+          href: billing-ea-portal-agreements.md
+        - name: エンタープライズ加入契約請求書
+          href: billing-ea-portal-enrollment-invoices.md
+        - name: Azure Enterprise REST API シリーズ
+          href: billing-ea-portal-rest-apis.md
+        - name: Azure EA VM 予約インスタンス
+          href: billing-ea-portal-vm-reservations.md
+        - name: Azure EA ポータルのアクセスのトラブルシューティング
+          href: billing-ea-portal-troubleshoot.md
+        - name: Microsoft 顧客契約における EA タスク
+          href: billing-mca-enterprise-operations.md
     - name: Microsoft 顧客契約の請求先アカウントの設定
       href: billing-mca-setup-account.md
     - name: Office 365 アカウントでサインアップする

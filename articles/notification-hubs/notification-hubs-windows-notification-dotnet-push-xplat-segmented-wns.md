@@ -3,9 +3,9 @@ title: 特定のデバイスに通知を送信する (ユニバーサル Windows
 description: Azure Notification Hubs と登録内のタグを使用して、ユニバーサル Windows プラットフォーム アプリにニュース速報を送信します。
 services: notification-hubs
 documentationcenter: windows
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 994d2eed-f62e-433c-bf65-4afebf1c0561
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
-ms.author: jowargo
-ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/22/2019
+ms.openlocfilehash: efe668e42e04942cc0d9fc99670057ab5bdd302a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402458"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212132"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>チュートリアル:ユニバーサル Windows プラットフォーム アプリケーションを実行している特定の Windows デバイスにプッシュ通知を送信する
 
@@ -47,7 +49,7 @@ ms.locfileid: "58402458"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する][get-started]」を完了してください。  
+「[チュートリアル: Azure Notification Hubs を使用してユニバーサル Windows プラットフォーム アプリに通知を送信する][get-started]」を完了してください。  
 
 ## <a name="add-category-selection-to-the-app"></a>アプリケーションにカテゴリ選択を追加する
 
@@ -227,7 +229,7 @@ ms.locfileid: "58402458"
 
     ![ニュース速報アプリ](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
 
-2. 1 つ以上のカテゴリ切り替えボタンを有効にし、**[購読]** をクリックします。
+2. 1 つ以上のカテゴリ切り替えボタンを有効にし、 **[購読]** をクリックします。
 
     アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。 登録されたカテゴリが返され、ダイアログ ボックスに表示されます。
 

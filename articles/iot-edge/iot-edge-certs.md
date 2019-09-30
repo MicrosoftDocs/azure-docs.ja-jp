@@ -8,12 +8,12 @@ ms.date: 09/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 91cde6965f3635d6d2acfaf581f570779020f8ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0aa70e591c7aac977fe13ed638f8ee56b88e4bd1
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60445303"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982908"
 ---
 # <a name="azure-iot-edge-certificate-usage-detail"></a>Azure IoT Edge 証明書の使用方法の詳細
 
@@ -93,14 +93,14 @@ New-CACertsCertChain rsa
 同様に、次のコマンドは、"デバイス CA 証明書" を生成します。
 
 ```bash
-./certGen.sh create_edge_device_certificate "<gateway device name>"
+./certGen.sh create_edge_device_ca_certificate "<gateway device name>"
 ```
 
 ```Powershell
-New-CACertsEdgeDevice "<gateway device name>"
+New-CACertsEdgeDeviceCA "<gateway device name>"
 ```
 
-* これらのスクリプトに渡される **\<ゲートウェイ デバイス名\>** は、config.yaml の "hostname" パラメーターと同じにしては**いけません**。 ユーザーが両方の場所で同じ名前を使用して IoT Edge を設定した場合に名前の競合を避けるため、スクリプトは **\<ゲートウェイ デバイス名\>** に ".ca" という文字列を追加することで問題を回避します。 ただし、ベスト プラクティスは、同じ名前の使用を避けることです。
+* これらのスクリプトに渡される **\<ゲートウェイ デバイス名\>** は、config.yaml の "hostname" パラメーターと同じにしてはいけません。 ユーザーが両方の場所で同じ名前を使用して IoT Edge を設定した場合に名前の競合を避けるため、スクリプトは **\<ゲートウェイ デバイス名\>** に ".ca" という文字列を追加することで問題を回避します。 ただし、ベスト プラクティスは、同じ名前の使用を避けることです。
 
 >[!Tip]
 > IoT Edge 経由で IoT デバイス SDK を使用するデバイス IoT の "リーフ" デバイスとアプリケーションに接続するには、デバイスの接続文字列の末尾にオプションの GatewayHostName パラメーターを追加する必要があります。 Edge Hub サーバー証明書が生成されるときは、config.yaml からの小文字バージョンのホスト名に基づくため、名前が一致して TLS 証明書の検証を通過するように、GatewayHostName パラメーターを小文字で入力する必要があります。

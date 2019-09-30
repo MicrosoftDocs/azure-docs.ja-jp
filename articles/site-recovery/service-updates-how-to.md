@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: e06cd77a1d46208fe0f7aa166be3ccd3b9b7dbb4
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828596"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910473"
 ---
 # <a name="service-updates-in-site-recovery"></a>Site Recovery のサービスの更新プログラム
 
@@ -103,8 +103,7 @@ Site Recovery では、期限切れの (または、有効期限が近づいて�
 
 1. 現在のバージョンと[サポートに関する声明](#support-statement-for-azure-site-recovery)に基づき、[この手順](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server)に従って、まずオンプレミスの構成サーバーに更新プログラムをインストールします。 
 2. スケールアウト プロセス サーバーがある場合は、[この手順](vmware-azure-manage-process-server.md#upgrade-a-process-server)を実行します。
-3. 保護されている各マシン上のモビリティ エージェントを更新するには、 **[保護されているアイテム]**  >  **[レプリケートされたアイテム]** を開きます。
-4. VM を選択し、各 VM のページの下部に表示される **[エージェントの更新]** ボタンを選択します。 これで、保護されているすべての VM 上のモビリティ サービス エージェントが更新されます。
+3. 保護されている各マシン上のモビリティ エージェントを更新するには、[こちら](vmware-physical-manage-mobility-service.md#update-mobility-service-from-azure-portal)の記事を参照してください。
 
 ### <a name="reboot-after-mobility-service-upgrade"></a>モビリティ サービスのアップグレード後に再起動する
 

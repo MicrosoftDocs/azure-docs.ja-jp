@@ -1,25 +1,27 @@
 ---
-title: Azure Blockchain Workbench の概要
-description: Azure Blockchain Workbench とその機能の概要。
+title: Azure Blockchain Workbench プレビューの概要
+description: Azure Blockchain Workbench プレビューとその機能の概要。
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/20/2019
+ms.date: 09/05/2019
 ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 16e2497f4e26d16c008161477fd7d573e59e84db
-ms.sourcegitcommit: 24fd3f9de6c73b01b0cee3bcd587c267898cbbee
+ms.openlocfilehash: 097185502321c8810214ed737047bdf596d18bdb
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65955208"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844106"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Azure Blockchain Workbench とは
 
-Azure Blockchain Workbench は、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有できるよう設計された、Azure サービスと機能のコレクションです。 Azure Blockchain Workbench は、ブロックチェーン アプリケーションを構築し、開発者がビジネス ロジックやスマート コントラクトの作成に集中できるようにするための、インフラストラクチャ スキャフォールディングを提供します。 また、Azure のサービスや機能を統合することでブロックチェーン アプリケーションの作成を容易にし、共通の開発タスクを自動化しやすくします。
+Azure Blockchain Workbench プレビューは、ブロックチェーン アプリケーションを作成してデプロイし、ビジネス プロセスやデータを他の組織と効果的に共有できるよう設計された、Azure サービスと機能のコレクションです。 Azure Blockchain Workbench は、ブロックチェーン アプリケーションを構築し、開発者がビジネス ロジックやスマート コントラクトの作成に集中できるようにするための、インフラストラクチャ スキャフォールディングを提供します。 また、Azure のサービスや機能を統合することでブロックチェーン アプリケーションの作成を容易にし、共通の開発タスクを自動化しやすくします。
+
+[!INCLUDE [Preview note](./includes/preview.md)]
 
 ## <a name="create-blockchain-applications"></a>ブロックチェーン アプリケーションの作成
 

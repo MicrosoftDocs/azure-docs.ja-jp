@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c718794528989fbc46b404617f16d3a91ade6011
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 155f392410c5722a28ba09acafc1480e72586773
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877305"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70100902"
 ---
 # <a name="create-a-new-device-template-version"></a>デバイス テンプレートの新しいバージョンを作成する
 
@@ -50,7 +50,7 @@ Azure IoT Central を使用すると、IoT アプリケーションを迅速に�
 
 バージョン変更があった場合、ルールやデバイスのダッシュボードにはどのような影響があるでしょうか。
 
-**ルール**には、プロパティに依存する条件が含まれる場合があります。 このようなプロパティを 1 つ以上削除した場合、これらのルールは新しいデバイス テンプレートのバージョンでは壊れる可能性があります。 これらの特定のルールに移動し、条件を更新してルールを修正できます。 以前のバージョンのルールは、影響を受けることなく機能します。
+以前のバージョンのデバイス テンプレートの**規則**は、変更されずに引き続き動作します。 規則は、新しいデバイス テンプレート バージョンに自動的には移行されません。 新しいテンプレート バージョンでは、通常どおり規則を作成できます。 詳細については、「[Azure IoT Central アプリケーションでテレメトリ ルールを作成して通知を設定する](howto-create-telemetry-rules.md)」のハウツー記事を参照してください。
 
 **デバイスのダッシュボード**には、いくつかの種類のタイルが含まれる場合があります。 このタイルの一部に、設定やプロパティが含まれる可能性があります。 タイルで使用されているプロパティや設定が削除されると、タイルは完全に、または部分的に破壊されます。 タイルに移動し、タイルを削除するかタイルの内容を更新することで、問題を修正できます。
 

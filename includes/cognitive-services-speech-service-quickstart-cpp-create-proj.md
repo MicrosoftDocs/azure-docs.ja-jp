@@ -2,50 +2,79 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 2/20/2019
+ms.date: 08/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 27fcf32a9a268488da318567d3edc55d23bd8967
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 99a7dec6936b86af4ab9b80d266cd886dae66d12
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66482337"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381825"
 ---
-1. Visual Studio 2019 を起動します。
+C++ デスクトップ開発用の Visual Studio プロジェクトを作成するためには、Visual Studio 開発オプションの設定、プロジェクトの作成、ターゲット アーキテクチャの選択、Speech SDK のインストールが必要となります。 
 
-1. **[Desktop development with C++]\(C++ によるデスクトップ開発)** ワークロードを使用できることを確認します。 Visual Studio のメニュー バーから **[ツール]**  >  **[Get Tools and Features]\(ツールと機能の入手)** を選択し、Visual Studio インストーラーを開きます。 このワークロードが既に有効になっている場合は、次のステップまでスキップします。
+### <a name="set-up-visual-studio-development-options"></a>Visual Studio の開発オプションを設定する
 
-    ![Visual Studio の [ワークロード] タブのスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
+最初に、C++ デスクトップ開発向けに Visual Studio を正しく設定します。
 
-    それ以外の場合、 **[Desktop development with C++]\(C++ によるデスクトップ開発)** の横にあるチェック ボックスをオンにします。
+1. Visual Studio 2019 を開いて**スタート** ウィンドウを表示します。
 
-1. **[NuGet パッケージ マネージャー]** コンポーネントを使用できることを確認します。 まだ有効になっていない場合は、Visual Studio インストーラーのダイアログ ボックスの **[個別のコンポーネント]** タブに切り替えて、 **[NuGet パッケージ マネージャー]** をクリックします。
+   ![スタート ウィンドウ - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-start-window.png) 
 
-      ![Visual Studio の [個別のコンポーネント] タブのスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-nuget-package-manager.png)
+1. **[コードなしで続行]** を選択して Visual Studio IDE に移動します。
 
-1. C++ ワークロードまたは NuGet のいずれかを有効にする必要がある場合は (ダイアログ ボックスの右下隅で) **[変更]** を選択します。 新しい機能のインストールにはしばらく時間がかかります。 両方の機能が既に有効になっている場合は、そうせずにダイアログ ボックスを閉じます。
+1. Visual Studio のメニュー バーから、 **[ツール]**  >  **[ツールと機能を取得]** の順に選択して Visual Studio インストーラーを開き、 **[変更中]** ダイアログ ボックスを表示します。
 
-1. 新しい Visual C++ Windows デスクトップ Windows コンソール アプリケーションを作成します。 最初に、メニューから **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** を選択します。 **[新しいプロジェクト]** ダイアログ ボックスの左側のウィンドウで、 **[インストール済み]**  >  **[Visual C++]**  >  **[Windows デスクトップ]** を展開します。 次に、 **[Windows Console Application]\(Windows コンソール アプリケーション)** を選択します。 プロジェクト名として「*helloworld*」と入力します。
+   ![[ワークロード] タブ、[変更中] ダイアログ ボックス、Visual Studio インストーラー](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-workload.png)
 
-    ![[新しいプロジェクト] ダイアログ ボックスのスクリーンショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
+1. **[ワークロード]** タブの **[Windows]** で、 **[C++ によるデスクトップ開発]** ワークロードを見つけます。 そのワークロードの横のチェック ボックスがまだオンになっていない場合はオンにしてください。
 
-1. 64 ビットの Windows を実行している場合は、Visual Studio ツールバーのドロップダウン メニューを使用して、ビルド プラットフォームを `x64` に切り替えてもかまいません (64 ビット バージョンの Windows では 32 ビット アプリケーションを実行できるため、これは要件ではありません)。
+1. **[個別のコンポーネント]** タブで、 **[NuGet パッケージ マネージャー]** チェック ボックスを見つけます。 チェック ボックスがまだオンになっていない場合はオンにしてください。
 
-    ![x64 オプションが強調表示されている Visual Studio ツールバーのスクリーン ショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-02-switch-to-x64.png)
+1. 隅にある **[閉じる]** ボタンまたは **[変更]** ボタンを選択します (インストールする機能を選択したかどうかによってボタン名は異なります)。 **[変更]** を選択した場合は、インストールが開始されます。インストールにはしばらく時間がかかることがあります。
 
-1. ソリューション エクスプローラーで、ソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択します。
+1. Visual Studio インストーラーを閉じます。
 
-    ![[ソリューションの NuGet パッケージの管理] オプションが強調表示されたソリューション エクスプローラーのスクリーン ショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
+### <a name="create-the-project-and-select-the-target-architecture"></a>プロジェクトを作成してターゲット アーキテクチャを選択する
 
-1. 右上隅の **[パッケージ ソース]** フィールドで、 **[nuget.org]** を選択します。`Microsoft.CognitiveServices.Speech` パッケージを検索して、**helloworld** プロジェクトにインストールします。
+次に、プロジェクトを作成します。
 
-    ![ソリューションのパッケージの管理ダイアログ ボックスのスクリーン ショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
+1. Visual Studio メニュー バーで、 **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択して **[新しいプロジェクトの作成]** ウィンドウを表示します。
 
-    > [!NOTE]
-    > Cognitive Services Speech SDK の現在のバージョンは `1.5.0` です。
+   ![新しいプロジェクトの作成 (C++) - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-01-new-console-app.png)
 
-1. 表示されるライセンスに同意し、NuGet パッケージのインストールを開始します。
+1. **[コンソール アプリ]** を見つけて選択します。 このプロジェクト タイプの (C# や Visual Basic ではなく) C++ バージョンを選択してください。
 
-    ![[ライセンスへの同意] ダイアログ ボックスのスクリーン ショット](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-05-nuget-license.png)
+1. **[次へ]** を選択して、 **[新しいプロジェクトの構成]** 画面を表示します。
 
-パッケージがインストールされると、パッケージ マネージャー コンソールに確認メッセージが表示されます。
+   ![新しいプロジェクトの構成 (C++) - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-cpp-configure-your-new-project.png)
+
+1. **[プロジェクト名]** に「`helloworld`」と入力します。
+
+1. **[場所]** で、ご自分のプロジェクトの保存先フォルダーに移動して選択するか、フォルダーを作成します。
+
+次に、ターゲット プラットフォーム アーキテクチャを選択します。 Visual Studio ツール バーの **[ソリューション プラットフォーム]** ドロップダウン ボックスを見つけます。 (表示されない場合は、 **[表示]**  >  **[ツール バー]**  >  **[標準]** の順に選択すると、 **[ソリューション プラットフォーム]** を含んだツール バーが表示されます。)64 ビット Windows を実行している場合は、ドロップダウン ボックスで **[x64]** を選択します。 64 ビット Windows でも 32 ビット アプリケーションを実行できるため、必要に応じて **[x86]** を選択してもかまいません。
+
+### <a name="install-the-speech-sdk"></a>Speech SDK のインストール
+
+最後に、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)をインストールし、自分のプロジェクト内の Speech SDK を参照します。
+
+1. **ソリューション エクスプローラー**でソリューションを右クリックし、 **[ソリューションの NuGet パッケージの管理]** を選択して **[NuGet - ソリューション]** ウィンドウに移動します。
+
+1. **[参照]** を選択します。
+
+   ![NuGet - [ソリューション] タブ、Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-03-manage-nuget-packages.png)
+
+1. **[パッケージ ソース]** で **[nuget.org]** を選択します。
+
+1. **[検索]** ボックスに「`Microsoft.CognitiveServices.Speech`」と入力し、このパッケージが検索結果に表示されたらそれを選択します。
+
+   ![Microsoft.CognitiveServices.Speech C++ パッケージのインストール - Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-04-nuget-install-1.0.0.png)
+
+1. 検索結果の横のパッケージ状態ウィンドウで、自分の **helloworld** プロジェクトを選択します。
+
+1. **[インストール]** を選択します。
+
+1. **[変更のプレビュー]** ダイアログ ボックスで **[OK]** を選択します。
+
+1. **[ライセンスへの同意]** ダイアログ ボックスでライセンスを確認し、 **[同意する]** を選択します。 パッケージのインストールが開始されます。インストールが完了すると、"`Successfully installed 'Microsoft.CognitiveServices.Speech 1.6.0' to helloworld`" と同様のメッセージが **[出力]** ウィンドウに表示されます。 

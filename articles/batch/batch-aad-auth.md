@@ -9,18 +9,17 @@ editor: ''
 tags: ''
 ms.assetid: ''
 ms.service: batch
-ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/18/2018
+ms.date: 08/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 64921a2ab69306df0b7c3d968055e698dd6995e7
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 4ec85078e6664a43dd31cd04c132d87681bda225
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323938"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70095620"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -81,11 +80,10 @@ Azure AD にアプリケーションを登録する詳細については、「[A
 テナント ID は、アプリケーションに認証サービスを提供する Azure AD テナントを識別します。 テナント ID を取得するには、次の手順に従います。
 
 1. Azure Portal で、使用している Active Directory を選択します。
-2. **[プロパティ]** をクリックします。
-3. **ディレクトリ ID** 用に提供されている GUID 値をコピーします。 この値は、テナント ID とも呼ばれます。
+1. **[プロパティ]** を選択します。
+1. **ディレクトリ ID** 用に提供されている GUID 値をコピーします。 この値は、テナント ID とも呼ばれます。
 
 ![ディレクトリ ID をコピーする](./media/batch-aad-auth/aad-directory-id.png)
-
 
 ## <a name="use-integrated-authentication"></a>統合認証を使用する
 
@@ -93,58 +91,56 @@ Azure AD にアプリケーションを登録する詳細については、「[A
 
 アプリケーションを登録したら、Azure portal で次の手順に従って、Batch サービスへのアクセス権をアプリケーションに付与します。
 
-1. Azure Portal の左側のナビゲーション ウィンドウで、 **[すべてのサービス]** を選択します。 **[アプリの登録]** をクリックします。
-2. アプリケーション登録の一覧で、アプリケーションの名前を検索します。
+1. Azure Portal の左側のナビゲーション ウィンドウで、 **[すべてのサービス]** を選択します。 **[アプリの登録]** を選択します。
+1. アプリケーション登録の一覧で、アプリケーションの名前を検索します。
 
     ![アプリケーションの名前を検索する](./media/batch-aad-auth/search-app-registration.png)
 
-3. アプリケーションをクリックし、 **[設定]** をクリックします。 **[API アクセス]** セクションで、 **[必要なアクセス許可]** を選択します。
-4. **[必要なアクセス許可]** ブレードで、 **[追加]** ボタンをクリックします。
-5. **[API の選択]** で、Batch API を検索します。 API が見つかるまで、次の各文字列を検索します。
-    1. **MicrosoftAzureBatch**。
-    2. **Microsoft Azure Batch**。 新しい Azure AD テナントでは、この名前が使用される場合があります。
-    3. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。 
-6. Batch API を見つけたら、それを選択して **[選択]** をクリックします。
-7. **[アクセス許可の選択]** で、 **[Access Azure Batch Service]\(Azure Batch サービスへのアクセス)** の横のチェック ボックスをオンにし、 **[選択]** をクリックします。
-8. **[Done]** をクリックします。
+1. アプリケーションを選択して **[API のアクセス許可]** を選択します。
+1. **[API のアクセス許可]** セクションで、 **[アクセス許可の追加]** を選択します。
+1. **[API の選択]** で、Batch API を検索します。 API が見つかるまで、次の各文字列を検索します。
+    1. **Microsoft Azure Batch**
+    1. **ddbf3205-c6bd-46ae-8127-60eb93363864** は Batch API の ID です。
+1. Batch API が見つかったら、それを選択して **[選択]** を選択します。
+1. **[アクセス許可の選択]** で、 **[Access Azure Batch Service] (Azure Batch サービスへのアクセス)** の横にあるチェック ボックスをオンにして **[アクセス許可を追加する]** を選択します。
 
-これで、 **[必要なアクセス許可]** ウィンドウに、ADAL と Batch サービス API の両方へのアクセスが Azure AD アプリケーションに許可されたことが示されます。 Azure AD を使用したアプリの初回登録時に、ADAL へのアクセス許可が自動的に付与されます。
+これで、 **[API のアクセス許可]** セクションに、Azure AD アプリケーションに Microsoft Graph と Batch サービス API の両方へのアクセス権があることが示されます。 アプリを Azure AD に最初に登録する際に、Microsoft Graph へのアクセス許可が自動的に付与されます。
 
 ![API のアクセス許可を付与する](./media/batch-aad-auth/required-permissions-data-plane.png)
 
-## <a name="use-a-service-principal"></a>サービス プリンシパルを使用する 
+## <a name="use-a-service-principal"></a>サービス プリンシパルを使用する
 
 無人で実行するアプリケーションを認証するには、サービス プリンシパルを使用します。 アプリケーションの登録後、Azure Portal で次の手順に従って、サービス プリンシパルを構成します。
 
-1. アプリケーションの秘密キーを要求します。
-2. アプリケーションに RBAC のロールを割り当てます。
+1. アプリケーションのシークレットを要求します。
+1. アプリケーションにロールベースのアクセス制御 (RBAC) を割り当てます。
 
-### <a name="request-a-secret-key-for-your-application"></a>アプリケーションの秘密キーを要求する
+### <a name="request-a-secret-for-your-application"></a>アプリケーションのシークレットを要求する
 
-サービス プリンシパルでアプリケーションを認証すると、Azure AD にアプリケーション ID と秘密キーの両方が送信されます。 コードから使用するために、秘密キーを作成およびコピーする必要があります。
+アプリケーションは、サービス プリンシパルで認証する場合、Azure AD にアプリケーション ID とシークレットの両方を送信します。 コードから使用するために、秘密キーを作成およびコピーする必要があります。
 
 Azure Portal で次の手順に従います。
 
-1. Azure Portal の左側のナビゲーション ウィンドウで、 **[すべてのサービス]** を選択します。 **[アプリの登録]** をクリックします。
-2. アプリの登録の一覧から、アプリケーションの名前を検索します。
-3. アプリケーションをクリックし、 **[設定]** をクリックします。 **[API アクセス]** セクションで、 **[キー]** を選択します。
-4. キーを作成するために、キーの説明を入力します。 次に、キーの有効期間を 1 年または 2 年から選択します。 
-5. **[保存]** ボタンをクリックしてキーを作成および表示します。 キーの値を安全な場所にコピーしてください。ブレードを離れた後は再度アクセスすることはできません。 
+1. Azure Portal の左側のナビゲーション ウィンドウで、 **[すべてのサービス]** を選択します。 **[アプリの登録]** を選択します。
+1. アプリ登録の一覧から、アプリケーションを選択します。
+1. アプリケーションを選択してから、 **[証明書とシークレット]** を選択します。 **[クライアント シークレット]** セクションで、 **[新しいクライアント シークレット]** を選択します。
+1. シークレットを作成するには、シークレットの説明を入力します。 次に、シークレットの有効期限を 1 年、2 年、有効期限なしのいずれかから選択します。
+1. **[追加]** を選択して、シークレットを作成および表示します。 このページを離れると再びアクセスすることができなくなるため、シークレット値を安全な場所にコピーします。
 
     ![秘密キーを作成する](./media/batch-aad-auth/secret-key.png)
 
-### <a name="assign-an-rbac-role-to-your-application"></a>アプリケーションに RBAC ロールを割り当てる
+### <a name="assign-rbac-to-your-application"></a>アプリケーションに RBAC を割り当てる
 
-サービス プリンシパルを使用して認証するには、アプリケーションに RBAC ロールを割り当てる必要があります。 次の手順に従います。
+サービス プリンシパルで認証するには、アプリケーションに RBAC を割り当てる必要があります。 次の手順に従います。
 
 1. Azure Portal ポータルで、アプリケーションで使用する Batch アカウントに移動します。
-2. Batch アカウントの **[設定]** ブレードで、 **[Access Control (IAM)]** を選択します。
-3. **[ロールの割り当て]** タブをクリックします。
-4. **[ロールの割り当ての追加]** ボタンをクリックします。 
-5. **[ロール]** ドロップダウン リストで、アプリケーションに _[共同作成者]_ または _[リーダー]_ のいずれかのロールを選択します。 これらのロールの詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。  
-6. **[選択]** フィールドに、アプリケーションの名前を入力します。 リストからアプリケーションを選択し、 **[保存]** をクリックします。
+1. Batch アカウントの **[設定]** セクションで、 **[アクセス制御 (IAM)]** を選択します。
+1. **[ロールの割り当て]** タブを選択します。
+1. **[ロールの割り当ての追加]** を選択します。
+1. **[ロール]** ドロップダウン リストで、アプリケーションに *[共同作成者]* または *[リーダー]* のいずれかのロールを選択します。 これらのロールの詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](../role-based-access-control/overview.md)」を参照してください。  
+1. **[選択]** フィールドに、アプリケーションの名前を入力します。 一覧からアプリケーションを選択してから、 **[保存]** を選択します。
 
-この時点で、RBAC ロールが割り当てられたアプリケーションがアクセス制御の設定に表示されている必要があります。 
+この時点で、RBAC ロールが割り当てられたアプリケーションがアクセス制御の設定に表示されている必要があります。
 
 ![アプリケーションに RBAC ロールを割り当てる](./media/batch-aad-auth/app-rbac-role.png)
 
@@ -153,11 +149,10 @@ Azure Portal で次の手順に従います。
 テナント ID は、アプリケーションに認証サービスを提供する Azure AD テナントを識別します。 テナント ID を取得するには、次の手順に従います。
 
 1. Azure Portal で、使用している Active Directory を選択します。
-2. **[プロパティ]** をクリックします。
-3. **ディレクトリ ID** 用に提供されている GUID 値をコピーします。 この値は、テナント ID とも呼ばれます。
+1. **[プロパティ]** を選択します。
+1. **ディレクトリ ID** 用に提供されている GUID 値をコピーします。 この値は、テナント ID とも呼ばれます。
 
 ![ディレクトリ ID をコピーする](./media/batch-aad-auth/aad-directory-id.png)
-
 
 ## <a name="code-examples"></a>コード例
 
@@ -311,10 +306,10 @@ public static async Task PerformBatchOperations()
     }
 }
 ```
+
 ### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>コード例:Azure AD サービス プリンシパルを Batch Python で使用する
 
 Batch Python からサービス プリンシパルで認証するには、[azure-batch](https://pypi.org/project/azure-batch/) モジュールと [azure-common](https://pypi.org/project/azure-common/) モジュールをインストールして参照します。
-
 
 ```python
 from azure.batch import BatchServiceClient
@@ -373,13 +368,13 @@ credentials = ServicePrincipalCredentials(
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure AD の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)」を参照してください。 ADAL の使用方法の詳細な例については、[Azure のコード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory) ライブラリを参照してください。
+- Azure AD の詳細については、「[Azure Active Directory のドキュメント](https://docs.microsoft.com/azure/active-directory/)」を参照してください。 ADAL の使用方法の詳細な例については、[Azure のコード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory) ライブラリを参照してください。
 
-* サービス プリンシパルの詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。 Azure Portal を使用してサービス プリンシパルを作成するには、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」を参照してください。 PowerShell または Azure CLI を使用してサービス プリンシパルを作成することもできます。
+- サービス プリンシパルの詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。 Azure Portal を使用してサービス プリンシパルを作成するには、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)」を参照してください。 PowerShell または Azure CLI を使用してサービス プリンシパルを作成することもできます。
 
-* Azure AD を使用して Batch 管理アプリケーションを認証するには、「[Batch 管理ソリューションの認証に Active Directory を使用する](batch-aad-auth-management.md)」を参照してください。
+- Azure AD を使用して Batch 管理アプリケーションを認証するには、「[Batch 管理ソリューションの認証に Active Directory を使用する](batch-aad-auth-management.md)」を参照してください。
 
-* Azure AD トークンを使用して認証される Batch クライアントを作成する方法を示す Python の例については、サンプルの「[Python スクリプトを使用して Azure Batch のカスタム イメージをデプロイする](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md)」を参照してください。
+- Azure AD トークンを使用して認証される Batch クライアントを作成する方法を示す Python の例については、サンプルの「[Python スクリプトを使用して Azure Batch のカスタム イメージをデプロイする](https://github.com/azurebigcompute/recipes/blob/master/Azure%20Batch/CustomImages/CustomImagePython.md)」を参照してください。
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Azure Active Directory とは"
 [aad_adal]: ../active-directory/active-directory-authentication-libraries.md

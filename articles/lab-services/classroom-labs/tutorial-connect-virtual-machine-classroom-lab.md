@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 08/19/2019
+ms.date: 09/19/2019
 ms.author: spelluru
-ms.openlocfilehash: 769cb2c6a3ae0e5b94ffd65425634ac9dd0221d0
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: cf1bd223c852db930835ea1b56a93a381e8312c5
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640076"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161419"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>チュートリアル:Azure Lab Services でクラスルーム ラボにアクセスする
 このチュートリアルでは、学生がクラスルーム ラボ内の仮想マシン (VM) にアクセスします。 
@@ -33,10 +33,13 @@ ms.locfileid: "69640076"
 
 ## <a name="register-to-the-lab"></a>ラボに登録する
 
-1. 教師から受け取った  **登録 URL** に移動します。 登録完了後は、登録 URL を使用する必要はありません。 代わりに [https://labs.azure.com](https://labs.azure.com) という URL を使用します。 Internet Explorer 11 はまだサポートされていません。 
+1. 教師から受け取った**登録 URL** に移動します。 登録完了後は、登録 URL を使用する必要はありません。 代わりに [https://labs.azure.com](https://labs.azure.com) という URL を使用します。 Internet Explorer 11 はまだサポートされていません。 
 1. 学校アカウントを使ってサービスにサインインし、登録を完了します。 
-2. 登録した後、アクセスできるラボの仮想マシンが表示されることを確認します。 
-3. 仮想マシンの準備が完了するまで待ちます。 VM タイルで次のフィールドを確認します。
+
+    > [!NOTE]
+    > Azure Lab Services を使用するためには Microsoft アカウントが必要です。 Yahoo アカウントや Google アカウントなど、Microsoft 以外のアカウントを使用してポータルへのサインインを試みる場合は、Microsoft 以外のアカウントにリンクする Microsoft アカウントの作成手順に従ってください。 そのうえで、登録プロセスの実施手順に従います。 
+1. 登録した後、アクセスできるラボの仮想マシンが表示されることを確認します。 
+1. 仮想マシンの準備が完了するまで待ちます。 VM タイルで次のフィールドを確認します。
     1. タイルの上部に、**ラボの名前**が表示されます。
     1. その右側には、VM の**オペレーティング システム (OS)** を表すアイコンが表示されます。 この例では Windows OS です。 
     1. タイルの進行状況バーは、ユーザーに割り当てられた[ クォータ時間](how-to-configure-student-usage.md#set-quotas-for-users)数に対して費やされた時間数を示しています。 この時間は、ラボに対してスケジュールされている時間のほかに、追加で割り当てられた時間です。 
@@ -61,8 +64,8 @@ ms.locfileid: "69640076"
 
     ![VM への接続](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. 次のいずれかの手順を実行します。 
-    1. **Windows** 仮想マシンの場合は、**RDP** ファイルをハード ディスクに保存します。 仮想マシンに接続するための RDP ファイルを開きます。 教師から提供された **ユーザー名** と **パスワード** を使用してマシンにサインインします。 
-    3. **Linux** 仮想マシンの場合は、**SSH** または **RDP** を使用して接続できます (有効な場合)。 詳細については、[Linux マシンのリモート デスクトップ接続の有効化 ](how-to-enable-remote-desktop-linux.md) に関するページを参照してください。 
+    1. **Windows** 仮想マシンの場合は、**RDP** ファイルをハード ディスクに保存します。 仮想マシンに接続するための RDP ファイルを開きます。 教師から提供された**ユーザー名**と**パスワード**を使用してマシンにサインインします。 
+    3. **Linux** 仮想マシンの場合は、**SSH** または **RDP** を使用して接続できます (有効な場合)。 詳細については、[Linux マシンのリモート デスクトップ接続の有効化](how-to-enable-remote-desktop-linux.md)に関するページを参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 このチュートリアルでは、教師から入手した登録リンクを使って、クラスルーム ラボにアクセスしました。
@@ -70,4 +73,4 @@ ms.locfileid: "69640076"
 ラボの所有者として、ラボに登録されているユーザーを確認し、VM の使用状況を追跡します。 次のチュートリアルに進み、ラボの使用を追跡する方法を確認してください。
 
 > [!div class="nextstepaction"]
-> [ ラボの使用状況を追跡する ](tutorial-track-usage.md) 
+> [ラボの使用状況を追跡する](tutorial-track-usage.md) 

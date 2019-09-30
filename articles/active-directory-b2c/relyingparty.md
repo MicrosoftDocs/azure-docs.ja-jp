@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: bf8d4889c277d59d0c42894281a89345fbf90a84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: b1bfa945843d185a46f1f1d79fd4dab0e991c769
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716692"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063805"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-**RelyingParty** 要素は、現在の要求を Azure Active Directory (Azure AD) B2C に対して適用するユーザー体験を指定します。 また、証明書利用者 (RP) アプリケーションが発行されたトークンの一部として必要とするクレームの一覧を指定します。 Web、モバイル、デスクトップ アプリケーションなどの RP アプリケーションは RP ポリシー ファイルを呼び出します。 RP ポリシー ファイルは、サインイン、パスワードのリセット、プロファイルの編集などの特定のタスクを実行します。 複数のアプリケーションが同じ RP ポリシーを使用でき、1 つのアプリケーションが複数のポリシーを使用できます。 すべての RP アプリケーションがクレームで同じトークンを受信し、ユーザーが同じユーザー体験を受けます。
+**RelyingParty** 要素は、現在の要求を Azure Active Directory B2C (Azure AD B2C) に対して適用するユーザー体験を指定します。 また、証明書利用者 (RP) アプリケーションが発行されたトークンの一部として必要とするクレームの一覧を指定します。 Web、モバイル、デスクトップ アプリケーションなどの RP アプリケーションは RP ポリシー ファイルを呼び出します。 RP ポリシー ファイルは、サインイン、パスワードのリセット、プロファイルの編集などの特定のタスクを実行します。 複数のアプリケーションが同じ RP ポリシーを使用でき、1 つのアプリケーションが複数のポリシーを使用できます。 すべての RP アプリケーションがクレームで同じトークンを受信し、ユーザーが同じユーザー体験を受けます。
 
 次の例は、*B2C_1A_signup_signin* ポリシー ファイル内の **RelyingParty**要素を示しています。
 

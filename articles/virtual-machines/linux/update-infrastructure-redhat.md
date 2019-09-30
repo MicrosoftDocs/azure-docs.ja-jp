@@ -3,23 +3,22 @@ title: Red Hat Update Infrastructure | Microsoft Docs
 description: Microsoft Azure のオンデマンド Red Hat Enterprise Linux インスタンス用の Red Hat Update Infrastructure について説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: BorisB2015
-manager: gwallace
+author: asinn826
+manager: BorisB2015
 editor: ''
 ms.assetid: f495f1b4-ae24-46b9-8d26-c617ce3daf3a
 ms.service: virtual-machines-linux
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 6/6/2019
 ms.author: borisb
-ms.openlocfilehash: efc76616151776bc2f766f92ff9503413c6037d0
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 6b332af53f421230b3fb5401e525bd77c5e87ed9
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774284"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70081389"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -31,22 +30,52 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 すべてのバージョンの RHEL に対する Red Hat のサポート ポリシーに関する情報は、「[Red Hat Enterprise Linux Life Cycle \(Red Hat Enterprise Linux のライフ サイクル\)](https://access.redhat.com/support/policy/updates/errata)」ページに記載されています。
 
 ## <a name="important-information-about-azure-rhui"></a>Azure RHUI に関する重要な情報
+
 * Azure RHUI は、Azure で作成されるすべての RHEL PAYG VM をサポートする更新インフラストラクチャです。 これは、お使いの PAYG RHEL VM を Subscription Manager や Satellite、またはその他の更新ソースに登録することを妨げるものではありませんが、PAYG VM でそれを行うと、間接的に二重請求が発生します。 詳しくは、以下の点を参照してください。
 * Azure でホストされている RHUI へのアクセスは、RHEL PAYG イメージの料金に含まれています。 Azure でホストされている RHUI から PAYG RHEL VM の登録を解除した場合は、仮想マシンが Bring-Your-Own-License (BYOL: ライセンス持ち込み) タイプの VM に変換されません。 そのため、別の更新ソースに同じ VM を登録した場合は、_間接_料金が二重に発生する可能性があります。 1 つ目は Azure RHEL ソフトウェア料金に対するものです。 2 つ目は、以前に購入した Red Hat のサブスクリプションに対するものです。 Azure でホストされている RHUI 以外の更新インフラストラクチャを常に使用する必要がある場合は、[RHEL BYOS イメージ](https://aka.ms/rhel-byos)を使用するための登録を検討してください。
-* RHUI の既定の動作では、`sudo yum update` を実行したときに RHEL VM は最新のマイナー バージョンにアップグレードされます。
-
-    たとえば、RHEL 7.4 PAYG イメージから VM をプロビジョニングして `sudo yum update` を実行した場合は、RHEL 7.6 VM (RHEL7 ファミリ内の最新のマイナー バージョン) にアップグレードされます。
-
-    この動作を回避するには、[拡張更新サポート チャネル](#rhel-eus-and-version-locking-rhel-vms)に切り替えるか、[Azure 用の Red Hat ベースの仮想マシンの作成とアップロード](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事の説明に従って、独自のイメージを作成することができます。 独自のイメージを構築する場合は、それを別の更新インフラストラクチャ ([直接 Red Hat のコンテンツ配信サーバー](https://access.redhat.com/solutions/253273)または [Red Hat Satellite サーバー](https://access.redhat.com/products/red-hat-satellite)) に接続する必要があります。
-
-
 
 * Azure での RHEL SAP PAYG イメージ (RHEL for SAP、RHEL for SAP HANA、および RHEL for SAP Business Applications) は、SAP 認定に必要な特定の RHEL マイナー バージョンのままになっている専用の RHUI チャネルに接続されます。
 
-* Azure でホストされている RHUI へのアクセスは、[データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)内の VM に限定されます。 すべての VM トラフィックをオンプレミスのネットワーク インフラストラクチャ経由でプロキシ処理している場合は、RHEL PAYG VM 用のユーザー定義のルートを設定して Azure RHUI にアクセスしなければならない場合があります。
+* Azure でホストされている RHUI へのアクセスは、[データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)内の VM に限定されます。 すべての VM トラフィックをオンプレミスのネットワーク インフラストラクチャ経由でプロキシ処理している場合は、RHEL PAYG VM 用のユーザー定義のルートを設定して Azure RHUI にアクセスしなければならない場合があります。 その場合は、_すべての_ RHUI IP アドレスについてユーザー定義のルートを追加する必要があります。
+
+## <a name="image-update-behavior"></a>イメージ更新の動作
+
+2019 年 4 月の時点で、Azure には、既定で Extended Update Support (EUS) リポジトリに接続されている RHEL イメージと、既定で通常の (EUS 以外の) リポジトリに接続されている RHEL イメージが用意されています。 RHEL EUS に関する詳細情報は、Red Hat の[バージョン ライフサイクルのドキュメント](https://access.redhat.com/support/policy/updates/errata)および [EUS のドキュメント](https://access.redhat.com/articles/rhel-eus)で入手できます。 リポジトリごとに別のイメージが接続されているため、`sudo yum update` の既定の動作は、どちらの RHEL イメージからプロビジョニングしたかによって異なります。
+
+完全なイメージの一覧を取得するには、Azure CLI を使用して `az vm image list --publisher redhat --all` を実行します。
+
+### <a name="images-connected-to-non-eus-repositories"></a>EUS 以外のリポジトリに接続されているイメージ
+
+EUS 以外のリポジトリに接続されている RHEL イメージから VM をプロビジョニングした場合は、`sudo yum update` を実行すると、最新の RHEL マイナー バージョンにアップグレードされます。 たとえば、RHEL 7.4 PAYG イメージから VM をプロビジョニングして `sudo yum update` を実行した場合は、RHEL 7.7 VM (RHEL7 ファミリ内の最新のマイナー バージョン) にアップグレードされます。
+
+EUS 以外のリポジトリに接続されているイメージでは、SKU にマイナー バージョン番号は含まれません。 この SKU は、URN (イメージのフルネーム) 内の 3 番目の要素です。 たとえば、次のイメージはすべて EUS 以外のリポジトリに接続されています。
+
+```text
+RedHat:RHEL:7-LVM:7.4.2018010506
+RedHat:RHEL:7-LVM:7.5.2018081518
+RedHat:RHEL:7-LVM:7.6.2019062414
+RedHat:RHEL:7-RAW:7.4.2018010506
+RedHat:RHEL:7-RAW:7.5.2018081518
+RedHat:RHEL:7-RAW:7.6.2019062120
+```
+
+SKU が 7-LVM と 7-RAW のどちらかであることに注意してください。 マイナー バージョンは、これらのイメージのバージョン (URN 内の 4 番目の要素) で示されます。
+
+### <a name="images-connected-to-eus-repositories"></a>EUS リポジトリに接続されているイメージ
+
+EUS リポジトリに接続されている RHEL イメージから VM をプロビジョニングした場合は、`sudo yum update` を実行しても、最新の RHEL マイナー バージョンにはアップグレードされません。 これは、EUS リポジトリに接続されているイメージも、その特定のマイナー バージョンにバージョン ロックされるためです。
+
+EUS リポジトリに接続されているイメージでは、SKU にマイナー バージョン番号が含まれます。 たとえば、次のイメージはすべて EUS リポジトリに接続されています。
+
+```text
+RedHat:RHEL:7.4:7.4.2019062107
+RedHat:RHEL:7.5:7.5.2019062018
+RedHat:RHEL:7.6:7.6.2019062116
+```
 
 ## <a name="rhel-eus-and-version-locking-rhel-vms"></a>RHEL EUS およびバージョン固定の RHEL VM
-一部の顧客は、RHEL VM を特定の RHEL マイナー リリースに固定したいと考える可能性があります。 リポジトリを Extended Update Support リポジトリを指すように更新することによって、RHEL VM を特定のマイナー バージョンに固定できます。 また、EUS バージョン ロック操作を取り消すこともできます。
+
+顧客によっては、VM をプロビジョニングした後、その RHEL VM を特定の RHEL マイナー リリースにロックしたいと考える場合があります。 リポジトリを Extended Update Support リポジトリを指すように更新することによって、RHEL VM を特定のマイナー バージョンに固定できます。 また、EUS バージョン ロック操作を取り消すこともできます。
 
 >[!NOTE]
 > EUS は、RHEL Extras ではサポートされていません。 つまり、通常 RHEL Extras チャネルから利用できるパッケージをインストールする場合、EUS を使用している間はそれを実行できないことになります。 Red Hat Extras の成果物ライフサイクルの詳細については、[こちら](https://access.redhat.com/support/policy/updates/extras/)をご覧ください。
@@ -55,12 +84,13 @@ Azure での RHEL イメージに関する追加情報 (公開および保持ポ
 * RHEL 7.4 EUS サポートは、2019 年 8 月 31 日に終了します
 * RHEL 7.5 EUS サポートは、2020 年 4 月 30 日に終了します
 * RHEL 7.6 EUS サポートは、2020 年 10 月 31 日に終了します
+* RHEL 7.7 EUS サポートは、2021 年 8 月 30 日に終了します
 
 ### <a name="switch-a-rhel-vm-to-eus-version-lock-to-a-specific-minor-version"></a>RHEL VM を EUS に切り替える (特定のマイナー バージョンにバージョン ロックする)
 RHEL VM を特定のマイナー リリースに固定するには、次の手順を使用します (ルートとして実行)。
 
 >[!NOTE]
-> このことは、EUS が利用できるバージョンの RHEL にのみ当てはまります。 この記事の作成時点で、これに該当するのは RHEL 7.2-7.6 です。 詳しくは、[Red Hat Enterprise Linux のライフ サイクル](https://access.redhat.com/support/policy/updates/errata)に関するページをご覧ください。
+> このことは、EUS が利用できるバージョンの RHEL にのみ当てはまります。 この記事の作成時点で、これには RHEL 7.2-7.7 が含まれます。 詳しくは、[Red Hat Enterprise Linux のライフ サイクル](https://access.redhat.com/support/policy/updates/errata)に関するページをご覧ください。
 
 1. EUS 以外のリポジトリを無効にします。
     ```bash

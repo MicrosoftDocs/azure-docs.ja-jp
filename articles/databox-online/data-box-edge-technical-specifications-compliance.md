@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 09/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 52fb32a8b34c62fe94ab35e2c051d996ab8bef10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1199748782c40b2527a8778417588891b84f9fc
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60755136"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910137"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge の技術仕様
 
@@ -36,14 +36,14 @@ The following table lists the typical power consumption data (actual values may 
 
 ## <a name="storage-specifications"></a>Storage の仕様
 
-Data Box Edge デバイスは 2.5” NVMe SSD を 10 個備えており、各 SSD の容量は 1.6 TB です。 この SSD のうち、2 つがオペレーティング システム ディスクで、残りの 8 つがデータ ディスクです。 デバイスで利用できる容量の合計は約 12.5 TB となります。 次の表は、デバイスのストレージ容量の詳細です。
+Data Box Edge デバイスは 2.5 インチ NVMe SSD を 9 個備えており、各 SSD の容量は 1.6 TB です。 この SSD のうち、1 つがオペレーティング システム ディスクで、残りの 8 つがデータ ディスクです。 デバイスで利用できる容量の合計は約 12.5 TB となります。 次の表は、デバイスのストレージ容量の詳細です。
 
 |     仕様                          |     値             |
 |--------------------------------------------|-----------------------|
 |    ソリッド ステート ドライブ (SSD) の数     |    8                  |
 |    単一の SSD 容量                     |    1.6 TB             |
 |    合計容量                          |    12.8 TB            |
-|    合計の使用可能な容量*                  |    12\.5 TB 以下            |
+|    合計の使用可能な容量*                  |    12.5 TB 以下            |
 
 **容量の一部は内部仕様のために予約されています。*
 

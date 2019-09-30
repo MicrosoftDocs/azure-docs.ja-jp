@@ -8,19 +8,19 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.custom: seo-java-august2019
-ms.openlocfilehash: 955ce9724d576e56766ab3d87a374a65e4ca5c0e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: c4e4a984adc0ec6af99667ff36c009ca730acf48
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967122"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172795"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>チュートリアル: Jenkins の継続的インテグレーションおよびデプロイを使用して GitHub から Azure App Service にデプロイする
 
 このチュートリアルでは、Jenkins で継続的インテグレーション (CI) と継続的デプロイ (CD) を設定して、GitHub から [Azure App Service on Linux](/azure/app-service/containers/app-service-linux-intro) にサンプル Java Web アプリをデプロイします。 GitHub にコミットをプッシュしてアプリを更新すると、Jenkins によって自動的にお客様のアプリがビルドされ、Azure App Service に再発行されます。 このチュートリアルのサンプル アプリは、[Spring Boot](https://projects.spring.io/spring-boot/) フレームワークを使用して開発されました。 
 
-![概要](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
+![GitHub から Azure App Service へのデプロイの概要](media/tutorial-jenkins-deploy-web-app-azure-app-service/azure-continuous-integration-deployment-overview.png)
 
 このチュートリアルでは、以下のタスクを完了します。
 
@@ -97,19 +97,19 @@ Jenkins によって GitHub が監視され、お客様の GitHub フォーク�
 
 1. **[Manage Jenkins]\(Jenkins の管理\)** ページで **[Configure System]\(システムの構成\)** を選択します。 
 
-   ![システムの構成](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
+   ![Jenkins でシステムを構成する](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-jenkins-configure-system.png)
 
 1. **[GitHub]** セクションで、お客様の GitHub サーバーの詳細を指定します。 **[Add GitHub Server]\(GitHub サーバーの追加\)** リストで、 **[GitHub Server]\(GitHub サーバー\)** を選択します。 
 
-   ![GitHub サーバーの追加](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
+   ![Jenkins で GitHub サーバーを追加する](media/tutorial-jenkins-deploy-web-app-azure-app-service/add-GitHub-server.png)
 
 1. **[Manage hooks]\(フックの管理\)** プロパティが選択されていない場合は、このプロパティを選択します。 他の設定を指定できるよう、 **[Advanced]\(詳細\)** を選択します。 
 
-   ![[Advanced]\(詳細\) の選択による追加設定の表示](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
+   ![GitHub Server の詳細な Jenkins 設定を指定する](media/tutorial-jenkins-deploy-web-app-azure-app-service/advanced-GitHub-settings.png)
 
 1. **[Manage additional GitHub actions]\(GitHub の追加アクションの管理\)** リストで、 **[Convert login and password to token]\(ログインとパスワードをトークンに変換する\)** を選択します。
 
-   ![[Manage additional GitHub actions]\(GitHub の追加アクションの管理\) の選択](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
+   ![GitHub のログインとパスワードをトークンに変換する](media/tutorial-jenkins-deploy-web-app-azure-app-service/manage-additional-actions.png)
 
 1. **[From login and password]\(ログインとパスワードから\)** を選択します。これで、お客様の GitHub ユーザー名とパスワードを入力できます。 完了したら、 **[Create token credentials]\(トークン資格情報の作成\)** を選択します。これにより、[GitHub 個人用アクセス トークン (PAT)](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/) が作成されます。   
 
@@ -181,11 +181,11 @@ Jenkins で、お客様のアプリをビルドしてデプロイするための
 
 1. お客様の Jenkins ホーム ページに戻って、 **[New item]\(新しい項目\)** を選択します。 
 
-   ![[New Item (新しい項目)] を選択する](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
+   ![Jenkins パイプラインを作成する](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-new-item.png)
 
 1. お客様のパイプライン ジョブに名前 ("My-Java-Web-App" など) を付けて、 **[Pipeline]\(パイプライン\)** を選択します。 下部にある **[OK]** を選択します。  
 
-   ![[Pipeline]\(パイプライン\) の選択](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
+   ![Jenkins パイプライン ジョブに名前を付ける](media/tutorial-jenkins-deploy-web-app-azure-app-service/jenkins-select-pipeline.png)
 
 1. お客様のサービス プリンシパルを使用して Jenkins を設定します。これにより、ご自分の資格情報を使用せずに Jenkins による Azure へのデプロイが可能になります。
 
@@ -199,7 +199,7 @@ Jenkins で、お客様のアプリをビルドしてデプロイするための
       WEB_APP=yourWebAppName
       ```
 
-      ![[Prepare an environment for the run]\(実行用の環境を準備\) の選択と環境変数の設定](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-run.png)
+      ![実行用の環境を準備して環境変数を設定する](media/tutorial-jenkins-deploy-web-app-azure-app-service/prepare-environment-for-jenkins-run.png)
 
 1. 終了したら、 **[保存]** を選択します。
 
@@ -254,7 +254,7 @@ Jenkins で、お客様のアプリをビルドしてデプロイするための
 
 1. Jenkins で、先ほど作成したお客様のパイプライン ジョブを選択します。 
 
-   ![お客様の Web アプリに使用するパイプライン ジョブの選択](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
+   ![Web アプリに使用する Jenkins パイプライン ジョブを選択する](media/tutorial-jenkins-deploy-web-app-azure-app-service/select-pipeline-job.png)
 
 1. 左側のメニューで **[Configure]\(構成\)** を選択します。
 
@@ -272,7 +272,7 @@ Jenkins で、お客様のアプリをビルドしてデプロイするための
 
    完成したら、お客様のパイプライン定義は次の例のようになります。 
 
-   ![スクリプトでのパイプラインの設定](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
+   ![Jenkins パイプラインにスクリプトのパスを設定する](media/tutorial-jenkins-deploy-web-app-azure-app-service/set-up-jenkins-github.png)
 
 1. 終了したら、 **[保存]** を選択します。
 

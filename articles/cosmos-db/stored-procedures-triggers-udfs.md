@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 1c2bf53a610c566ac58df588f6d96389f2206563
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 700cd6c0c75b25d56e812a394d6bdd193e4fb57c
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717549"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69614061"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>ストアド プロシージャ、トリガー、およびユーザー定義関数
 
@@ -79,11 +79,11 @@ Azure Cosmos DB では 2 種類のトリガーがサポートされます。
 
 ### <a name="pre-triggers"></a>プリトリガー
 
-Azure Cosmos DB には、Azure Cosmos DB 項目で操作を実行することによって呼び出されるトリガーが用意されています。 たとえば、項目を作成するときにプリトリガーを指定できます。 この場合、プリトリガーは、項目が作成される前に実行されます。 プリトリガーは入力パラメーターを持つことができません。 必要に応じて、要求オブジェクトを使用して、元の要求からのドキュメント本文を更新できます。 トリガーが登録されたら、ユーザーは実行できる操作を指定できます。 トリガーが `TriggerOperation.Create` によって作成される場合、置換操作でのこのトリガーの使用は許可されません。 例については、「[トリガーを書き込む方法](how-to-write-stored-procedures-triggers-udfs.md#triggers)」の記事を参照してください。
+Azure Cosmos DB には、Azure Cosmos 項目に対して操作を実行することによって起動できるトリガーが用意されています。 たとえば、項目を作成するときにプリトリガーを指定できます。 この場合、プリトリガーは、項目が作成される前に実行されます。 プリトリガーは入力パラメーターを持つことができません。 必要に応じて、要求オブジェクトを使用して、元の要求からのドキュメント本文を更新できます。 トリガーが登録されたら、ユーザーは実行できる操作を指定できます。 トリガーが `TriggerOperation.Create` によって作成される場合、置換操作でのこのトリガーの使用は許可されません。 例については、「[トリガーを書き込む方法](how-to-write-stored-procedures-triggers-udfs.md#triggers)」の記事を参照してください。
 
 ### <a name="post-triggers"></a>ポストトリガー
 
-プリトリガーと同様に、ポストトリガーは、Azure Cosmos DB 項目の操作に関連付けられ、入力パラメーターを必要としません。 ポストトリガーは、操作が完了した *後に* 実行され、クライアントに送信される応答メッセージにアクセスします。 例については、「[トリガーを書き込む方法](how-to-write-stored-procedures-triggers-udfs.md#triggers)」の記事を参照してください。
+プリトリガーと同様に、ポストトリガーも Azure Cosmos 項目に対する操作に関連付けられており、入力パラメーターは必要ありません。 ポストトリガーは、操作が完了した *後に* 実行され、クライアントに送信される応答メッセージにアクセスします。 例については、「[トリガーを書き込む方法](how-to-write-stored-procedures-triggers-udfs.md#triggers)」の記事を参照してください。
 
 > [!NOTE]
 > 登録されたトリガーは、対応する操作 (作成/削除/置換/更新) が発生しても自動的には実行されません。 これらの操作を実行するときに明示的に呼び出す必要があります。 詳細については、[トリガーの実行方法](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)に関する記事を参照してください。

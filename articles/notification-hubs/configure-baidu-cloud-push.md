@@ -2,23 +2,28 @@
 title: Azure Notification Hubs で Baidu クラウド プッシュを構成する | Microsoft Docs
 description: Azure 通知ハブ用に Baidu の設定を構成する方法について説明します。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: 9942b1d4d8b5d538f5150a36e596753282039be7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 759e35ba353f470ea3abc5f5d4182fa2b2ea0e73
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60234256"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212522"
 ---
-# <a name="configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal で通知ハブ用に Baidu クラウド プッシュの設定を構成する
-この記事では、Azure portal を使用して Azure 通知ハブ用に Baidu クラウド プッシュの設定を構成する方法について説明します。 
+# <a name="deprecated-configure-baidu-cloud-push-settings-for-a-notification-hub-in-the-azure-portal"></a>非推奨:Azure portal で通知ハブ用に Baidu クラウド プッシュの設定を構成する
+
+この記事では、Azure portal を使用して Azure 通知ハブ用に Baidu クラウド プッシュの設定を構成する方法について説明します。
+
+> [!IMPORTANT]
+> このチュートリアルは非推奨です。 
 
 ## <a name="prerequisites"></a>前提条件
 通知ハブを作成していない場合は、ここで作成します。 詳細については、「[Azure portal 内で Azure 通知ハブを作成する](create-notification-hub-portal.md)」を参照してください。 

@@ -4,15 +4,16 @@ description: このクイックス タートでは、Azure portal を使って A
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 06/12/2019
-ms.openlocfilehash: 9fa6ad3c52e9b01fe9a62a2de52f62b1b1a95aa8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: e0a2eecaa4b2f03fa12353854e75b9fda097675d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779521"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960317"
 ---
 # <a name="quickstart-create-apache-kafka-cluster-in-azure-hdinsight-using-azure-portal"></a>クイック スタート:Azure portal を使用して Azure HDInsight 内に Apache Kafka クラスターを作成する
 
@@ -38,7 +39,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
 2. 左側のメニューから、 **[+ リソースの作成]**  >  **[Analytics]**  >  **[HDInsight]** に移動します。
    
-    ![HDInsight クラスターの作成](./media/apache-kafka-get-started/create-hdinsight.png)
+    ![HDInsight クラスターの作成](./media/apache-kafka-get-started/create-hdinsight-cluster.png)
 
 3. **[基本]** から次の情報を入力するか、選択します。
 
@@ -49,7 +50,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
     
    __[クラスターの種類]__ を選択して **[クラスターの構成]** を表示します。
    
-   ![HDInsight 基本構成の Apache Kafka クラスター](./media/apache-kafka-get-started/custom-basics-kafka.png)
+   ![HDInsight 基本構成の Apache Kafka クラスター](./media/apache-kafka-get-started/custom-basics-kafka1.png)
 
 4. __[クラスターの構成]__ から、次の値を選択します。
 
@@ -60,7 +61,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
     **[選択]** を選択してクラスターの種類の設定を保存し、 __[基本]__ に戻ります。
 
-    ![クラスターの種類の選択](./media/apache-kafka-get-started/kafka-cluster-type.png)
+    ![クラスターの種類の選択](./media/apache-kafka-get-started/apache-kafka-cluster-type.png)
 
 5. __[基本]__ から次の情報を入力するか、選択します。
 
@@ -98,7 +99,7 @@ HDInsight クラスターで Apache Kafka を作成するには、次の手順�
 
     **ワーカー ノードごとのディスクの数**は、HDInsight における Apache Kafka のスケーラビリティを構成する項目です。 HDInsight 上の Apache Kafka は、クラスターの仮想マシンのローカル ディスクを使って、データを保存します。 Apache Kafka は I/O が多いため、[Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) を使ってノードごとに高いスループットと多くの記憶域を提供します。 マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 ディスクの種類は、ワーカー ノード (Apache Kafka ブローカー) によって使われる VM のサイズによって異なります。 DS および GS シリーズの VM では、Premium ディスクが自動的に使われます。 他の種類の VM はすべて Standard を使います。
 
-   ![Apache Kafka のクラスター サイズの設定](./media/apache-kafka-get-started/kafka-cluster-size.png)
+   ![Apache Kafka のクラスター サイズの設定](./media/apache-kafka-get-started/apace-kafka-cluster-size.png)
 
 10. __[詳細設定]__ で __[次へ]__ を選択し、既存の設定で続行します。
 

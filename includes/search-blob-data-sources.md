@@ -4,18 +4,21 @@ ms.service: search
 ms.topic: include
 ms.date: 05/02/2019
 ms.author: magottei
-ms.openlocfilehash: 1a375c438682c7afba2c65c049810d7d7234c808
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8fbdbf96106cdf2bd2990042c30d346dc830d398
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181588"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208288"
 ---
 * PDF
-* Microsoft Office 形式: DOCX/DOC、XLSX/XLS、PPTX/PPT、MSG (Outlook 電子メール)  
+* Microsoft Office 形式: DOCX/DOC/DOCM、XLSX/XLS/XLSM、PPTX/PPT/PPTM、MSG (Outlook 電子メール)、XML (2003 と 2006 両方の WORD XML)
+* オープン ドキュメント形式:ODT、ODS、ODP  
 * HTML
 * XML
 * ZIP
+* GZ
+* EPUB
 * EML
 * RTF
 * プレーンテキスト ファイル (「[プレーン テキストのインデックス作成](../articles/search/search-howto-indexing-azure-blob-storage.md#IndexingPlainText)」も参照)

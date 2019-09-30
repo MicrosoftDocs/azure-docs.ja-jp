@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: tisande
-ms.openlocfilehash: e4e26b658bd29e4589be40e4d29935059836c909
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343278"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999908"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Azure Cosmos DB SQL クエリの実行
 
 HTTP/HTTPS 要求機能を持つ任意の言語で Cosmos DB REST API を呼び出すことができます。 さらに、.NET、Node.js、JavaScript、Python プログラミング言語用のプログラミング ライブラリも Cosmos DB に用意されています。 REST API とライブラリはすべて SQL 経由のクエリをサポートしており、NET SDK は [LINQ クエリ](sql-query-linq-to-sql.md)もサポートしています。
 
-以下の例では、クエリを作成して Cosmos DB データベース アカウントに送信する方法について説明します。
+次の例では、クエリを作成し、それを Cosmos データベース アカウントに対して送信する方法を示します。
 
 ## <a id="REST-API"></a>REST API
 
@@ -245,7 +245,7 @@ Cosmos DB は、HTTP を介したオープンな RESTful プログラミング �
 
 開発者は、`IDocumentQueryable` を作成することでページ設定を明示的に制御できます。これには `IQueryable` オブジェクトを使用し、次に `ResponseContinuationToken` の値を読み取り、これらを `RequestContinuationToken` として `FeedOptions` 内で渡します。 `EnableScanInQuery` を設定して、構成されたインデックス作成ポリシーでクエリがサポートされない場合に、スキャンを有効にすることができます。 パーティション分割コンテナーの場合は、`PartitionKey` を使用すると 1 つのパーティションに対してクエリを実行できますが、Azure Cosmos DB ではクエリ テキストからこれを自動的に抽出できます。 `EnableCrossPartitionQuery` を使用して、複数のパーティションに対してクエリを実行できます。
 
-クエリを含む他の .NET サンプルについては、GitHub の [Azure Cosmos DB .NET サンプル](https://github.com/Azure/azure-cosmosdb-dotnet)を参照してください。
+クエリを含む他の .NET サンプルについては、GitHub の [Azure Cosmos DB .NET サンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)を参照してください。
 
 ## <a id="JavaScript-server-side-API"></a>JavaScript のサーバー側 API
 
@@ -288,5 +288,5 @@ Azure Cosmos DB が提供するプログラミング モデルでは、ストア
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Cosmos DB の概要](introduction.md)
-- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Azure Cosmos DB の一貫性レベル](consistency-levels.md)

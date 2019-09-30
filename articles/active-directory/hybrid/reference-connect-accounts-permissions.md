@@ -17,12 +17,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 466b1aadb84bc92981b9adf1b1affa69f5f2ec25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
+ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919166"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70186301"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
@@ -47,6 +47,11 @@ Azure AD Connect を実行するためのこれら 3 つのアカウントに加
 - **Azure AD 全体管理者アカウント**:  Azure AD コネクタ アカウントを作成したり、Azure AD を構成したりする目的で使用します。
 
 - **SQL SA アカウント (任意)** :     通常版の SQL Server を使用して ADSync データベースを作成する目的で使用します。  この SQL Server は、Azure AD Connect のインストール環境に対してローカルでもリモートでもかまいません。  このアカウントは、エンタープライズ管理者と同じアカウントにすることもできます。  現在では、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできるようになっています。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](how-to-connect-install-sql-delegation.md)」を参照してください。
+
+> [!NOTE]
+> ESAE 管理フォレスト ("Red Forest" とも呼ばれます) からの Azure AD Connect で使用される管理アカウントの管理がサポートされています。
+> 専用管理フォレストを使用すると、組織は、運用環境よりもセキュリティ制御が強化された環境で、管理アカウント、ワークステーション、およびグループをホストできます。
+> 専用管理フォレストの詳細については、[ESAE 管理フォレスト設計のアプローチ](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)に関する記事を参照してください
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect のインストール
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。

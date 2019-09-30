@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 9b0a6393d2372c831fdc964dee18acbccfd39a77
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46cac6720bbef133d6b3f7a269cf97a81cddd0c5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61332049"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70062120"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Studio 3T を使用して Cosmos アカウントに接続する
 
@@ -22,6 +22,9 @@ Azure Cosmos DB の MongoDB 用 API を使用して Cosmos アカウントに接
 
 * [Studio 3T](https://studio3t.com/) をダウンロードしてインストールする
 * Cosmos DB [接続文字列](connect-mongodb-account.md)情報を取得する
+
+> [!NOTE]
+> 現時点では、MongoDB 用の Cosmos DB の API では、Robo 3T v1.2 以前がサポートされています。 
 
 ## <a name="create-the-connection-in-studio-3t"></a>Studio 3T で接続を作成する
 Studio 3T 接続マネージャーに Cosmos アカウントを追加するには、次の手順を行います。

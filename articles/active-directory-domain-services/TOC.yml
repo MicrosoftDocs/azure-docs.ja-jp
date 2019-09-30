@@ -21,7 +21,7 @@
       href: tutorial-configure-password-hash-sync.md
 - name: サンプル
   items:
-    - name: Azure PowerShell を使用して Azure AD DS インスタンスを作成する
+    - name: Azure PowerShell を使用したマネージド ドメインの作成
       href: powershell-create-instance.md
 - name: 概念
   items:
@@ -89,28 +89,28 @@
       items:
         - name: Azure AD アプリケーション プロキシをデプロイする
           href: deploy-azure-app-proxy.md
-        - name: SharePoint Server のプロファイルの同期のサポートを構成する
+        - name: SharePoint Server のプロファイルの同期を有効にする
           href: deploy-sp-profile-sync.md
     - name: トラブルシューティング
       items:
         - name: 一般的なエラー
           href: troubleshoot.md
-        - name: 共通アラート
-          items:
-            - name: 共通アラート
-              href: troubleshoot-alerts.md
-            - name: 壊れたネットワーク構成の修正
-              href: alert-nsg.md
-            - name: 不足しているサービス プリンシパルの復元
-              href: alert-service-principal.md
-            - name: Secure LDAP アラート
-              href: alert-ldaps.md
         - name: 一致しないテナントのエラー
           href: mismatched-tenant-error.md
         - name: 中断されたドメイン
           href: suspension.md
         - name: セキュリティで保護された LDAP
           href: tshoot-ldaps.md
+        - name: 既知の問題
+          items:
+            - name: 共通アラート
+              href: troubleshoot-alerts.md
+            - name: ネットワーク アラート
+              href: alert-nsg.md
+            - name: サービス プリンシパルのアラート
+              href: alert-service-principal.md
+            - name: Secure LDAP アラート
+              href: alert-ldaps.md
 - name: リソース
   items:
     - name: FAQ

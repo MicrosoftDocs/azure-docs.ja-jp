@@ -13,6 +13,8 @@
       href: create-member-cli.md
     - name: トランザクション ノードに接続する
       items:
+        - name: VS コードを使用する
+          href: connect-vscode.md
         - name: MetaMask を使用する
           href: connect-metamask.md
         - name: Geth を使用する

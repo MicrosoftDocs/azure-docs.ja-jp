@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2e32fb57a5ee34da8c342649cc1740d111723ec
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: d5372ac8b31db91aaac018b203ee8868fa313fd8
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662901"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772982"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
@@ -169,30 +169,29 @@ Azure にアラートを拡張すると、アクションを Azure のアクシ�
 
 次の表では、アラート アクション リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| Type | はい | アクションの種類。  これは、アラート アクションの**アラート**です。 |
-| Name | はい | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
-| description | いいえ | アラートに関する省略可能な説明です。 |
-| Severity | はい | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **critical**<br>**warning**<br>**informational**
-
+| `type` | はい | アクションの種類。  これは、アラート アクションの**アラート**です。 |
+| `name` | はい | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
+| `description` | いいえ | アラートに関する省略可能な説明です。 |
+| `severity` | はい | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **critical**<br>**warning**<br>**informational**
 
 #### <a name="threshold"></a>Threshold
 このセクションは必須です。 アラートのしきい値のプロパティを定義します。
 
-| 要素名 | 必須 | description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| Operator | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
-| Value | はい | 結果を比較する値です。 |
+| `Operator` | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
+| `Value` | はい | 結果を比較する値です。 |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 このセクションは省略可能です。 メトリック測定アラートの場合に指定します。
 
-| 要素名 | 必須 | description |
+| 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| TriggerCondition | はい | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
-| Operator | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
-| Value | はい | アラートをトリガーするために必要な、条件が満たされた回数です。 |
+| `TriggerCondition` | はい | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
+| `Operator` | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
+| `Value` | はい | アラートをトリガーするために必要な、条件が満たされた回数です。 |
 
 
 #### <a name="throttling"></a>Throttling

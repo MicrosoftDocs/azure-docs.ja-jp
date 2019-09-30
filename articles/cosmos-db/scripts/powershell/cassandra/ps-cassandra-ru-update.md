@@ -3,15 +3,16 @@ title: Azure PowerShell スクリプト - Cassandra API 向けの Azure Cosmos D
 description: Azure PowerShell スクリプト - Cassandra API 向けの Azure Cosmos DB 更新プログラムの毎秒 RU
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 9df7884d56acf47d3bb7bdcf7679631713cf2725
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 7109c393aa37faf1eaddb37cb2861030ef2900e7
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602519"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178989"
 ---
 # <a name="update-rus-for-a-keyspace-or-table-for-azure-cosmos-db---cassandra-api"></a>Azure Cosmos DB のキースペースまたはテーブル向けの更新プログラムの毎秒 RU - Cassandra API
 

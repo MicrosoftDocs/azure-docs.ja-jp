@@ -1,21 +1,21 @@
 ---
-title: Azure クイック スタート - Azure CLI を使用して Key Vault との間でシークレットの設定と取得を行う | Microsoft Docs
+title: クイック スタート:Azure Key Vault との間でシークレットの設定と取得を行う
 description: Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う方法を紹介したクイック スタート
 services: key-vault
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: quickstart
-ms.custom: mvc
-ms.date: 01/08/2019
-ms.author: barclayn
-ms.openlocfilehash: e9537c158afad2877bb2df2650500ab218de676f
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.custom: mvc, seo-javascript-september2019
+ms.date: 09/03/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 70c450304c13a5c4b453226140ae699e0cabda19
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66726757"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744767"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -33,7 +33,7 @@ CLI を使用して Azure にサインインするには、次のように入力
 az login
 ```
 
-CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」を参照してください
+CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してサインインする](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」を参照してください
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -93,7 +93,9 @@ az group delete --name ContosoResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault の詳細とアプリケーションでの使用方法については、Key Vault と連携する Web アプリのチュートリアルに進んでください。
+このクイックスタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
 
-> [!div class="nextstepaction"]
-> Azure リソースのマネージド ID を使用する Web アプリケーションから、Key Vault のシークレットを読み取る方法を学習するには、[キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](quick-create-net.md)チュートリアルに進んでください
+- [Azure Key Vault の概要](key-vault-overview.md)を確認する
+- [Azure CLI az keyvault コマンド](/cli/azure/keyvault?view=azure-cli-latest)のリファレンスを参照する
+- [キー、シークレット、証明書](about-keys-secrets-and-certificates.md)について学習する
+- [Azure Key Vault のベスト プラクティス](key-vault-best-practices.md)を確認する

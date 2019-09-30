@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19e088eee878695d24678d1df17b2848a4be1e01
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2782781fdfd560c0c8f322e362fcf74c796664bd
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097537"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933050"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
@@ -36,7 +36,7 @@ Azure Functions を使用して、サーバーレス ソリューションを構
 
 ### <a name="cross-function-communication"></a>関数間の通信
 
-[Durable Functions](durable/durable-functions-concepts.md) と [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、状態遷移と複数の関数間での通信を管理するように構築されています。
+[Durable Functions](durable/durable-functions-overview.md) と [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、状態遷移と複数の関数間での通信を管理するように構築されています。
 
 複数の関数と統合する際に Durable Functions も Logic Apps も使用しない場合、ベスト プラクティスとして、関数間通信にストレージ キューを使用するのが一般的です。  その主な理由は、ストレージ キューの方が安価であり、プロビジョニングがはるかに容易なためです。 
 

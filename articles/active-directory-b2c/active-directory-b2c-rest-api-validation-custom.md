@@ -1,27 +1,27 @@
 ---
-title: Azure Active Directory B2C での検証としての REST API 要求の交換 | Microsoft Docs
-description: Azure Active Directory B2C のカスタム ポリシーに関するトピック。
+title: Azure Active Directory B2C での検証としての REST API 要求の交換
+description: RESTful サービスと対話する Azure AD B2C ユーザー体験を作成するためのチュートリアル。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/24/2017
+ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0779e4a93230a90b8eee76f1898154c1a5b82661
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45fad1fab419c448febb3f3b760996fba278e154
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508724"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69644970"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>チュートリアル:ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-ID 開発者は、Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework (IEF) を使用して、RESTful API との対話をユーザー体験に統合できます。  
+ID 開発者は、Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework (IEF) を使用して、RESTful API との対話をユーザー体験に統合できます。
 
 このチュートリアルの最後では、RESTful サービスと対話する Azure AD B2C ユーザー体験を作成することができます。
 
@@ -91,8 +91,10 @@ IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 
             <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
             <Metadata>
                 <Item Key="ServiceUrl">https://wingtipb2cfuncs.azurewebsites.net/api/CheckPlayerTagWebHook?code=L/05YRSpojU0nECzM4Tp3LjBiA2ZGh3kTwwp1OVV7m0SelnvlRVLCg==</Item>
-                <Item Key="AuthenticationType">None</Item>
                 <Item Key="SendClaimsIn">Body</Item>
+                <!-- Set AuthenticationType to Basic or ClientCertificate in production environments -->
+                <Item Key="AuthenticationType">None</Item>
+                <!-- REMOVE the following line in production environments -->
                 <Item Key="AllowInsecureAuthInProduction">true</Item>
             </Metadata>
             <InputClaims>
@@ -110,6 +112,8 @@ IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 
 ```
 
 `InputClaims` 要素は、IEF から REST サービスに送信される要求を定義します。 この例では、要求 `givenName` の内容が `playerTag` として REST サービスに送信されます。 この例では、IEF は、要求が戻ることを期待していません。 代わりに、REST サービスからの応答のために待機し、受信したステータス コードに基づいて動作します。
+
+`AuthenticationType` と `AllowInsecureAuthInProduction` の上のコメントに、運用環境に移行するときに行う必要がある変更が指定されています。 実稼働用の RESTful API をセキュリティで保護する方法については、「[基本認証を使用した RESTful API のセキュリティ保護](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)」と「[証明書認証を使用した RESTful API のセキュリティ保護](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)」を参照してください。
 
 ## <a name="step-3-include-the-restful-service-claims-exchange-in-self-asserted-technical-profile-where-you-want-to-validate-the-user-input"></a>手順 3:ユーザー入力を検証するセルフアサート技術プロファイルに RESTful サービス要求交換を含める
 
@@ -132,3 +136,10 @@ IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 
 [プロファイルの編集とユーザー登録を変更してユーザーから追加情報を収集する](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 
 [チュートリアル:REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-step-custom.md)
+
+[リファレンス: RESTful 技術プロファイル](restful-technical-profile.md)
+
+API をセキュリティで保護する方法については、次の記事を参照してください。
+
+* [基本認証 (ユーザー名とパスワード) を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+* [クライアント証明書を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

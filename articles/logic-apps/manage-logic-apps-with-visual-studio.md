@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: 694ff490d7623b2dff26a61ccae8106a276b84af
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: dd6cd16302c69266a954816868c04c8507762717
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447898"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70801265"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -85,7 +85,7 @@ Visual Studio では、Azure サブスクリプションに関連付けられて
 
 ## <a name="open-in-visual-studio"></a>Visual Studio で開く
 
-Visual Studio では、Azure Portal から直接デプロイされているか、Visual Studio から Azure Resource Manager プロジェクトとしてデプロイされている作成済みのロジック アプリを開くことができます。
+Visual Studio では、Azure portal から直接デプロイされているか、Visual Studio から Azure リソース グループ プロジェクトとしてデプロイされている作成済みのロジック アプリを開くことができます。
 
 1. Cloud Explorer を開いて、ロジック アプリを検索します。 
 
@@ -99,13 +99,13 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
    ![Azure Portal から展開済みのロジック アプリを開く](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
    Logic Apps デザイナーでロジック アプリを開いた後、デザイナーの下端で **[コード ビュー]** を選んで、基になっているロジック アプリの定義構造を確認することができます。 
-   ロジック アプリの配置テンプレートを作成する場合は、そのロジック アプリの [Azure Resource Manager テンプレートをダウンロードする方法](#download-logic-app)を学習してください。 詳しくは、[Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md#template-deployment)に関するページをご覧ください。
+   ロジック アプリの配置テンプレートを作成する場合は、そのロジック アプリの [Azure Resource Manager テンプレートをダウンロードする方法](#download-logic-app)を学習してください。 詳しくは、[Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)に関するページをご覧ください。
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Azure からのダウンロード
 
-[Azure Portal](https://portal.azure.com) からロジック アプリをダウンロードし、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートとして保存することができます。 その後、Visual Studio でそのテンプレートをローカルに編集し、さまざまな展開環境用にロジック アプリをカスタマイズできます。 ロジック アプリをダウンロードすると、[Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md#template-deployment)内のその定義は自動的に "*パラメーター化*" され、JavaScript Object Notation (JSON) も使用されます。
+[Azure Portal](https://portal.azure.com) からロジック アプリをダウンロードし、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートとして保存することができます。 その後、Visual Studio でそのテンプレートをローカルに編集し、さまざまな展開環境用にロジック アプリをカスタマイズできます。 ロジック アプリをダウンロードすると、[Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)内のその定義は自動的に "*パラメーター化*" され、JavaScript Object Notation (JSON) も使用されます。
 
 1. Visual Studio で Cloud Explorer を開き、Azure からダウンロードするロジック アプリを検索して選びます。
 
@@ -123,7 +123,34 @@ Visual Studio では、Azure Portal から直接デプロイされているか�
 
 4. 場所の指定を求められたら、その場所を参照し、ロジック アプリの定義の Resource Manager テンプレートを JSON (.json) ファイル形式で保存します。 
 
-ロジック アプリの定義は、Resource Manager テンプレートの `resources` サブセクションにあります。 Visual Studio でロジック アプリの定義と Resource Manager テンプレートを編集できるようになります。 また、テンプレートを Azure Resource Manager プロジェクトとして Visual Studio ソリューションに追加することもできます。 詳しくは、[Resource Manager projects for logic apps in Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md) (Visual Studio でのロジック アプリ用の Resource Manager プロジェクト) に関するページをご覧ください。 
+ロジック アプリの定義は、Resource Manager テンプレートの `resources` サブセクションにあります。 Visual Studio でロジック アプリの定義と Resource Manager テンプレートを編集できるようになります。 また、このテンプレートを [Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)として Visual Studio ソリューションに追加することもできます。 [Visual Studio でのロジック アプリ用の Azure リソース グループ プロジェクト](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)について確認してください。 
+
+<a name="link-integration-account"></a>
+
+## <a name="link-to-integration-account"></a>統合アカウントへのリンク
+
+企業間 (B2B) エンタープライズ統合シナリオ向けのロジック アプリを構築するには、お使いのロジック アプリを、そのロジック アプリと同じリージョンにある以前作成した[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)にリンクさせます。 統合アカウントには取引先、契約、スキーマ、マップなどの B2B 成果物が含まれているため、これを使用すると、お使いのロジック アプリでは XML 検証やフラット ファイルのエンコードとデコードに B2B コネクタを使用できます。 [このリンクは Azure portal を使用して作成](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account)できますが、[前提条件](#requirements)を満たした後には Visual Studio を使用することもできます。また、ロジック アプリは [Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)内に JSON (.json) ファイルとして存在することになります。 [Visual Studio でのロジック アプリ用の Azure リソース グループ プロジェクト](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#create-resource-group-project)について確認してください。
+
+1. Visual Studio で、お使いのロジック アプリを含む Azure リソース グループ プロジェクトを開きます。
+
+1. ソリューション エクスプローラーで **<ロジック アプリ名>.json** ファイルのショートカット メニューを開き、 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します。 (Ctrl + L キー)。
+
+   ![ロジック アプリ デザイナーでロジック アプリの .json ファイルを開く](./media/manage-logic-apps-with-visual-studio/open-logic-app-designer.png)
+
+   > [!TIP]
+   > このコマンドが Visual Studio 2019 にない場合は、Visual Studio の最新の更新プログラムが適用されていることを確認してください。
+
+1. ロジック アプリ デザイナーにフォーカスがあることを確認するには、デザイナーのタブまたはサーフェスを選択して、[プロパティ] ウィンドウにお使いのロジック アプリの **[統合アカウント]** プロパティが表示されるようにします。
+
+   ![[プロパティ] ウィンドウに [統合アカウント] プロパティが表示される](./media/manage-logic-apps-with-visual-studio/open-logic-app-properties.png)
+
+1. **[統合アカウント]** ボックスの一覧を開き、次のように、ロジック アプリにリンクする統合アカウントを選択します。
+
+   ![[統合アカウント] プロパティの一覧を開く](./media/manage-logic-apps-with-visual-studio/select-integration-account.png)
+
+1. 完了したら、忘れずにその Visual Studio ソリューションを保存します。
+
+Visual Studio で **[統合アカウント]** プロパティを設定し、そのロジック アプリを Azure Resource Manager テンプレートとして保存すると、そのテンプレートには、選択した統合アカウントのパラメーター宣言も含まれます。 テンプレート パラメーターとロジック アプリの詳細については、[ロジック アプリのデプロイの自動化の概要](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)に関するページを参照してください。
 
 <a name="refresh"></a>
 

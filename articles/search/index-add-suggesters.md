@@ -7,7 +7,7 @@ ms.service: search
 ms.topic: conceptual
 author: Brjohnstmsft
 ms.author: brjohnst
-ms.manager: cgronlun
+manager: nitinme
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: eb6667a1429382ed566826de64ad7ffbe83183cf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73cfdb6a4185689a6485f55a4f6bdd1e7e3b14be
+ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65521884"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69648853"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>Azure Search で先行入力のために suggester をインデックスに追加する
 
@@ -106,6 +106,13 @@ suggester を定義するプロパティは次のとおりです。
 |`name`        |suggester の名前。 [Suggestions REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) または [Autocomplete REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) を呼び出すときに、suggester の名前を使用します。|
 |`searchMode`  |候補語句の検索に使用する戦略。 現在サポートされている唯一のモードは `analyzingInfixMatching` です。文の先頭または中間にあるフレーズの柔軟なマッチングを実行します。|
 |`sourceFields`|検索候補の内容のソースである 1 つまたは複数のフィールドのリスト。 `Edm.String` 型および `Collection(Edm.String)` 型のフィールドだけを、検索候補のソースにできます。 カスタム言語アナライザーが設定されていないフィールドのみを使用できます。<p/>検索バーまたはドロップダウン リストのどちらに入力される文字列でも、想定される適切な応答に利用するフィールドのみを指定します。<p/>ホテル名には有効桁数があるため、適切な選択肢です。 説明やコメントなどの詳細なフィールドは、文字数が多くなりすぎます。 同様に、カテゴリやタグなどの反復的なフィールドでは、効果が低くなります。 例には、複数のフィールドを含めることができることを例示するために、ひとまず、"カテゴリ" を組み入れています。 |
+
+#### <a name="analysis-of-sourcefields-in-a-suggester"></a>suggester での SourceFields の分析
+
+Azure Search では、個別の用語でクエリを実行できるようにフィールドの内容が分析されます。 suggester では、完全な用語に加えて、インデックスを作成するためのプレフィックスが必要です。このため、ソース フィールドに対して追加の分析が必要です。 カスタム アナライザーの構成では、さまざまなトークナイザーとフィルターを組み合わせることができるため、多くの場合、提案で必要なプレフィックスを生成することができません。 このため、**Azure Search では、カスタム アナライザーを持つフィールドが suggester に含まれないようにします**。
+
+> [!NOTE] 
+>  上記の制限を回避するために推奨される方法は、同じコンテンツに対して 2 つの個別のフィールドを使用することです。 これにより、片方のフィールドに suggester を含め、他方をカスタム アナライザー構成で設定できます。
 
 ## <a name="when-to-create-a-suggester"></a>suggester を作成するタイミング
 

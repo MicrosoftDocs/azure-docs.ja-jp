@@ -1,81 +1,67 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Ink Recognizer のドキュメント
+### YamlMime:Landing
+title: Ink Recognizer API のドキュメント
+summary: Ink Recognizer API を使用してデジタル インク認識をアプリとサービスに取り入れる方法について説明します。 この API は、機械学習を使用して、任意のコンテキストで手書きの図形を認識するクラウドベースのサービスです。
 metadata:
-  title: Ink Recognizer のドキュメント - クイック スタート、チュートリアル、API リファレンス - Azure Cognitive Services | Microsoft Docs
-  description: Translator Text を使用してテキストを複数の言語で翻訳する方法について説明します。
+  title: Ink Recognizer API - チュートリアル、クイックスタート、API リファレンス
+  titleSuffix: Azure Cognitive Services
+  description: デジタル インキングとは、手書きや図面などの入力のデジタル表現を可能にするテクノロジを指します。 デバイスが多彩なデジタル インキング エクスペリエンスを可能にし続けるのに伴い、人工知能および機械学習によって、任意のコンテキストでの書かれたシェイプおよびテキストの認識が可能になりました。 Ink Recognizer API はクラウドベースのサービスであり、インク ストロークを送信して、それらに関する詳細な情報を取得できます。
   services: cognitive-services
-  author: erhopf
+  author: aahill
   manager: nitinme
+  layout: LandingPage
   ms.service: cognitive-services
   ms.subservice: ink-recognizer
   ms.topic: landing-page
-  ms.date: 05/02/2019
-  ms.author: erhopf
-abstract:
-  description: デジタル インキングとは、手書きや図面などの入力のデジタル表現を可能にするテクノロジを指します。 デバイスが多彩なデジタル インキング エクスペリエンスを可能にし続けるのに伴い、人工知能および機械学習によって、任意のコンテキストでの書かれたシェイプおよびテキストの認識が可能になりました。 Ink Recognizer API はクラウドベースのサービスであり、インク ストロークを送信して、それらに関する詳細な情報を取得できます。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/ink-recognizer/overview
-            html: <p>Ink Recognizer の概要およびそれをご自分の製品に統合する方法について学習します</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Ink Recognizer API とは
-          - href: concepts/send-ink-data.md
-            html: <p>API を使用するときの推奨される呼び出しパターンについて学習します</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: インク データを Ink Recognizer API に送信する
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Ink Recognizer API を使い始めます。
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/logo-csharp.svg
-            title: 'C#'
-          - image:
-              src: media/index/logo-java.svg
-            title: Java
-          - image:
-              src: media/index/logo-js.svg
-            title: JavaScript
-        rows:
-          - title: デジタル インク ストロークを認識する
-            values:
-              - href: quickstarts/csharp.md
-              - href: quickstarts/java.md
-              - href: quickstarts/javascript.md
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 以下のサンプル プログラムを使用すると、Ink Recognizer API をご自分のアプリケーションに統合する方法がわかります。
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089803">C# およびユニバーサル Windows プラットフォーム (UWP)</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089804">C# および Windows Presentation Foundation (WPF)</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089908">JavaScript Web ブラウザー アプリ</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089906">Java および Android モバイル アプリ</a>'
-      - type: paragraph
-        text: '<a href="https://go.microsoft.com/fwlink/?linkid=2089805">Swift および iOS モバイル アプリ</a>'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2089907"> REST API リファレンス </a></p>'
-          - title: PowerShell
-            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>'
+  ms.date: 09/23/2019
+  ms.author: aahi
+  ms.openlocfilehash: 985cdb6492445c89462e79cc2931d28bc34abb58
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71219517"
+landingContent:
+- title: Ink Recognizer API について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Ink Recognizer API とは
+      url: overview.md
+- title: デジタル インク ストロークを認識する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: C# の使用
+      url: quickstarts/csharp.md
+    - text: Java の使用
+      url: quickstarts/java.md
+    - text: JavaScript の使用
+      url: quickstarts/javascript.md
+  - linkListType: concept
+    links:
+    - text: インク ストローク データを API に送信する
+      url: concepts/send-ink-data.md
+- title: リファレンス
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://go.microsoft.com/fwlink/?linkid=2089907
+    - text: Azure PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+- title: サンプル
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: C# およびユニバーサル Windows プラットフォーム (UWP)
+      url: https://go.microsoft.com/fwlink/?linkid=2089803
+    - text: C# および Windows Presentation Foundation (WPF)
+      url: https://go.microsoft.com/fwlink/?linkid=2089804
+    - text: JavaScript Web ブラウザー アプリ
+      url: https://go.microsoft.com/fwlink/?linkid=2089908
+    - text: Java および Android モバイル アプリ
+      url: https://go.microsoft.com/fwlink/?linkid=2089906
+    - text: Swift および iOS モバイル アプリ
+      url: https://go.microsoft.com/fwlink/?linkid=2089805

@@ -46,7 +46,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 * [GitHub](https://github.com/) で作成されたアカウント
 * [Git](https://git-scm.com/)
-* [.NET コア SDK](https://www.microsoft.com/net/download/windows)
+* [.NET Core SDK](https://www.microsoft.com/net/download/windows)
 * [構成済みの Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
 * GitHub リポジトリの [AzureSignalR-sample](https://github.com/aspnet/AzureSignalR-samples) をダウンロードまたは複製する
 

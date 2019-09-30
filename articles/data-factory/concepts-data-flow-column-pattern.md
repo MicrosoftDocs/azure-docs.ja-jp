@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 41037e0687274d123bea742cee5cf2887548aa0f
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 4df831c1329ab13f19e6ecf979e404d4a90e5f72
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775209"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219767"
 ---
 # <a name="mapping-data-flows-column-patterns"></a>マッピング データ フローの列パターンの
 
@@ -57,5 +57,5 @@ Azure Data Factory のデータ フロー変換によっては、"列パター�
 * `position` は、データ フロー内の列の序数位置です
 
 ## <a name="next-steps"></a>次の手順
-* ADF Mapping Data Flow の[式言語](http://aka.ms/dataflowexpressions)に関する記事で、データ変換の詳細を確認します。
+* ADF Mapping Data Flow の[式言語](https://aka.ms/dataflowexpressions)に関する記事で、データ変換の詳細を確認します。
 * [シンク変換](data-flow-sink.md)と[選択変換](data-flow-select.md)の列パターンをルール ベースのマッピングで使用します

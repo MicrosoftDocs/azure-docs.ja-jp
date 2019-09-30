@@ -2,20 +2,19 @@
 title: 言語検出コグニティブ検索スキル - Azure Search
 description: 非構造化テキストを評価し、各レコードに対し、Azure Search のエンリッチメント パイプラインの分析の強度を示すスコアと共に言語識別子を返します。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: 14163b959a6e91406133ca2f5a125c7e2df967ad
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: fe21477865b5bbad65f5e4639e8df253f12dc1b6
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635808"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265417"
 ---
 #   <a name="language-detection-cognitive-skill"></a>言語検出コグニティブ スキル
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen1 で Apache Spark を使用してデータを分析する
-description: Spark ジョブを実行して、Azure Data Lake Storage Gen1 に格納されているデータを分析します
+description: Apache Spark ジョブを実行して、Azure Data Lake Storage Gen1 に格納されているデータを分析する
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 5a98cb2356c25329e091514dd1d6181dfc2690be
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b8e830cb187b375e17b3dc33c582126adfa32f3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448655"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002484"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>HDInsight Spark クラスターを使用して Data Lake Storage Gen1 内のデータを分析する
 
@@ -25,7 +25,6 @@ ms.locfileid: "67448655"
 
 * Data Lake Storage Gen1 をストレージとして使用する Azure HDInsight Spark クラスター。 [HDInsight のクラスターを設定する](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」をご覧ください。
 
-    
 ## <a name="prepare-the-data"></a>データを準備する
 
 > [!NOTE]  
@@ -120,7 +119,7 @@ Data Lake Storage を追加ストレージとして使用し、Azure Storage Blo
 
      他の視覚化でも結果を表示できます。 たとえば、ある出力の領域グラフは次のようになります。
 
-     ![クエリ結果の領域グラフ](./media/apache-spark-use-with-data-lake-store/jupyter-area-output.png "クエリ結果の領域グラフ")
+     ![クエリ結果の領域グラフ](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "クエリ結果の領域グラフ")
 
 8. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 

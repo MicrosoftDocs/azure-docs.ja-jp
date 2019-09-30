@@ -3,191 +3,80 @@ title: .NET を使用した Azure Storage サンプル | Microsoft Docs
 description: Azure Storage のサンプル コードとアプリケーションを表示、ダウンロード、実行します。 .NET のストレージ クライアント ライブラリを使用して、BLOB、キュー、テーブル、ファイルのサンプルの概要について説明します。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/03/2019
+ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: cec6b0498adf55428fade7ae00db6550496a20bd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 57249bd2fa4d3c8aefe19a85ec9a2b6b584b00d2
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721849"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743949"
 ---
 # <a name="azure-storage-samples-using-net"></a>.NET を使用した Azure Storage サンプル
 
-## <a name="net-sample-index"></a>.NET サンプルのインデックス
-
 次の表は、各サンプルで扱っているサンプル リポジトリとシナリオの概要を示したものです。 リンクをクリックすると、対応するサンプル コードが GitHub で表示されます。
 
-<table style="font-size:90%"><thead><tr><th style="font-size:110%">エンドポイント</th><th style="font-size:110%">シナリオ</th><th style="font-size:110%">サンプル コード</th></tr></thead><tbody> 
-<tr> 
-<td rowspan="16"><b>BLOB</b></td>
-<td>Append Blob</td> 
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144">BLOB の概要</a></td> 
-</tr> 
-<tr> 
-<td>ブロック BLOB</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage のフォト ギャラリーの Web アプリケーション</a></td>
-</tr> 
-<tr> 
-<td>クライアント側の暗号化</td>
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/BlobGettingStarted/Program.cs">BLOB 暗号化サンプル</a></td>
-</tr> 
-<tr> 
-<td>BLOB のコピー</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">BLOB の概要</a></td>
-</tr> 
-<tr> 
-<td>コンテナーの作成</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage のフォト ギャラリーの Web アプリケーション</a></td>
-</tr> 
-<tr> 
-<td>Delete Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage のフォト ギャラリーの Web アプリケーション</a></td>
-</tr> 
-<tr> 
-<td>Delete Container</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">BLOB の概要</a></td>
-</tr> 
-<tr> 
-<td>BLOB のメタデータ/プロパティ/統計</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">BLOB の概要</a></td>
-</tr> 
-<tr> 
-<td>コンテナーの ACL/メタデータ/プロパティ</td>
-<td><a href="https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs">Azure Blob Storage のフォト ギャラリーの Web アプリケーション</a></td>
-</tr> 
-<tr> 
-<td>ページ範囲の取得</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">BLOB の概要</a></td>
-</tr> 
-<tr> 
-<td>BLOB/コンテナーのリース</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">BLOB の概要</a></td>
-</tr> 
-<tr> 
-<td>BLOB/コンテナーのリスト</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">BLOB の概要</a></td>
-</tr> 
-<tr> 
-<td>ページ BLOB</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs">BLOB の概要</a></td>
-</tr>
-<tr> 
-<td>SAS</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">BLOB の概要</a></td>
-</tr>   
-<tr> 
-<td>サービスのプロパティ</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs">BLOB の概要</a></td>
-</tr>           
-<tr> 
-<td>Snapshot Blob</td>
-<td><a href="https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs">Azure 仮想マシン ディスクを増分スナップショットでバックアップする</a></td>
-</tr> 
-<tr> 
-<td rowspan="9"><b>ファイル</b></td>
-<td>共有/ディレクトリ/ファイルの作成</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Azure Storage .NET File Storage のサンプル</a></td> 
-</tr>
-<tr> 
-<td>共有/ディレクトリ/ファイルの削除</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/master/FileStorage/GettingStarted.cs">.Net での Azure File サービスの概要</a></td> 
-</tr> 
-<tr> 
-<td>ディレクトリのプロパティ/メタデータ</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Azure Storage .NET File Storage のサンプル</a></td> 
-</tr> 
-<tr> 
-<td>ファイルのダウンロード</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Azure Storage .NET File Storage のサンプル</a></td> 
-</tr> 
-<tr> 
-<td>ファイルのプロパティ/メタデータ/メトリック</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Azure Storage .NET File Storage のサンプル</a></td> 
-</tr> 
-<tr> 
-<td>ファイル サービスのプロパティ</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Azure Storage .NET File Storage のサンプル</a></td> 
-</tr> 
-<tr> 
-<td>ディレクトリとファイルのリスト</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs">Azure Storage .NET File Storage のサンプル</a></td> 
-</tr>
-<tr> 
-<td>共有のリスト</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Azure Storage .NET File Storage のサンプル</a></td> 
-</tr>
-<tr> 
-<td>共有のプロパティ/メタデータ/統計</td> 
-<td><a href="https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs">Azure Storage .NET File Storage のサンプル</a></td> 
-</tr>
-<tr> 
-<td rowspan="8"><b>キュー</b></td>
-<td>メッセージの追加</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">.Net での Azure Queue サービスの概要</a></td> 
-</tr> 
-<tr> 
-<td>クライアント側の暗号化</td> 
-<td><a href="https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs">Azure Storage .NET Queue のクライアント側の暗号化</a></td> 
-</tr> 
-<tr> 
-<td>キューの作成</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">.Net での Azure Queue サービスの概要</a></td> 
-</tr> 
-<tr> 
-<td>メッセージ/キューの削除</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">.Net での Azure Queue サービスの概要</a></td> 
-</tr> 
-<tr> 
-<td>メッセージのピーク</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">.Net での Azure Queue サービスの概要</a></td> 
-</tr> 
-<tr> 
-<td>キューの ACL/メタデータ/統計</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs">.Net での Azure Queue サービスの概要</a></td> 
-</tr> 
-<tr> 
-<td>キュー サービスのプロパティ</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs">.Net での Azure Queue サービスの概要</a></td> 
-</tr> 
-<tr> 
-<td>更新メッセージ</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">.Net での Azure Queue サービスの概要</a></td> 
-</tr> 
-<tr> 
-<td rowspan="7"><b>テーブル</b></td>
-<td>テーブルの作成</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション</a></td> 
-</tr> 
-<tr> 
-<td>エンティティ/テーブルの削除</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">.Net での Azure Table Storage の概要</a></td> 
-</tr> 
-<tr> 
-<td>エンティティの挿入/マージ/置換</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション</a></td> 
-</tr> 
-<tr> 
-<td>エンティティのクエリ</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">.Net での Azure Table Storage の概要</a></td> 
-</tr> 
-<tr> 
-<td>テーブルの照会</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs">.Net での Azure Table Storage の概要</a></td> 
-</tr> 
-<tr> 
-<td>テーブルの ACL/プロパティ</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs">.Net での Azure Table Storage の概要</a></td> 
-</tr> 
-<tr> 
-<td>エンティティの更新</td> 
-<td><a href="https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262">Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション</a></td> 
-</tr> 
-</tbody> 
-</table>
-<br/>
+## <a name="blob-samples"></a>BLOB のサンプル
+
+| **シナリオ** | **サンプル コード** |
+|--------------|-----------------|
+| Append Blob | [BLOB の概要](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
+| ブロック BLOB | [Azure Blob Storage のフォト ギャラリーの Web アプリケーション](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
+| クライアント側の暗号化 | [BLOB 暗号化サンプル](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/BlobGettingStarted/Program.cs) |
+| BLOB のコピー | [BLOB の概要](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| コンテナーの作成 | [Azure Blob Storage のフォト ギャラリーの Web アプリケーション](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
+| Delete Blob | [Azure Blob Storage のフォト ギャラリーの Web アプリケーション](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
+| Delete Container | [BLOB の概要](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| BLOB のメタデータ/プロパティ/統計 | [BLOB の概要](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| コンテナーの ACL/メタデータ/プロパティ | [Azure Blob Storage のフォト ギャラリーの Web アプリケーション](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
+| ページ範囲の取得 | [BLOB の概要](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| BLOB/コンテナーのリース | [BLOB の概要](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| BLOB/コンテナーのリスト | [BLOB の概要](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
+| ページ BLOB | [BLOB の概要](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
+| SAS | [BLOB の概要](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| サービスのプロパティ | [BLOB の概要](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| Snapshot Blob | [Azure 仮想マシン ディスクを増分スナップショットでバックアップする](https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs) |
+
+## <a name="file-samples"></a>ファイルのサンプル
+
+| **シナリオ** | **サンプル コード** |
+|--------------|-----------------|
+| 共有/ディレクトリ/ファイルの作成 | [Azure Storage .NET File Storage のサンプル](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
+| 共有/ディレクトリ/ファイルの削除 | [.Net での Azure File サービスの概要](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/master/FileStorage/GettingStarted.cs) |
+| ディレクトリのプロパティ/メタデータ | [Azure Storage .NET File Storage のサンプル](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+| ファイルのダウンロード | [Azure Storage .NET File Storage のサンプル](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
+| ファイルのプロパティ/メタデータ/メトリック | [Azure Storage .NET File Storage のサンプル](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+| ファイル サービスのプロパティ | [Azure Storage .NET File Storage のサンプル](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+| ディレクトリとファイルのリスト | [Azure Storage .NET File Storage のサンプル](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
+| 共有のリスト | [Azure Storage .NET File Storage のサンプル](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+| 共有のプロパティ/メタデータ/統計 | [Azure Storage .NET File Storage のサンプル](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
+
+## <a name="queue-samples"></a>キューのサンプル
+
+| **シナリオ** | **サンプル コード** |
+|--------------|-----------------|
+| メッセージの追加 | [.Net での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+| クライアント側の暗号化 | [Azure Storage .NET Queue のクライアント側の暗号化](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs) |
+| キューの作成 | [.Net での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+| メッセージ/キューの削除 | [.Net での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+| メッセージのピーク | [.Net での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+| キューの ACL/メタデータ/統計 | [.Net での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs) |
+| キュー サービスのプロパティ | [.Net での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs) |
+| 更新メッセージ | [.Net での Azure Queue サービスの概要](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
+
+## <a name="table-samples"></a>テーブルのサンプル
+
+| **シナリオ** | **サンプル コード** |
+|--------------|-----------------|
+| テーブルの作成 | [Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
+| エンティティ/テーブルの削除 | [.Net での Azure Table Storage の概要](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
+| エンティティの挿入/マージ/置換 | [Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
+| エンティティのクエリ | [.Net での Azure Table Storage の概要](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
+| テーブルの照会 | [.Net での Azure Table Storage の概要](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
+| テーブルの ACL/プロパティ | [.Net での Azure Table Storage の概要](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/AdvancedSamples.cs) |
+| エンティティの更新 | [Azure Storage でのコンカレンシー制御の管理 - サンプル アプリケーション](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
 
 ## <a name="azure-code-samples-library"></a>Azure のコード サンプル ライブラリ
 
@@ -209,4 +98,5 @@ Azure Storage ライブラリのインストール方法と概要については
 他の言語のサンプルについては、以下のページをご覧ください。
 
 * Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
+* Python: [Python を使用した Azure Storage サンプル](storage-samples-python.md)
 * その他すべての言語: [Azure Storage のサンプル](../storage-samples.md)

@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 584b9fdde33d14650c36c44b9b457a25f8a1d6f9
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 7dd57e41144ec33aec6eb716716d0794d92071f5
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900134"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013086"
 ---
 # <a name="create-a-new-saas-offer"></a>新しい SaaS オファーを作成する
 
@@ -79,25 +79,29 @@ Microsoft を通じた販売では、顧客による発見率と購入率が高�
 - Azure Marketplace と統合するために [SaaS Fulfillment API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) シリーズがオファーで使用されている必要があります。
 - 広範な要件については、「[SaaS アプリケーションのオファー発行ガイド](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide)」をご覧ください。
 
-#### <a name="saas-on-azure-billing-infrastructure-costs"></a>Azure での SaaS のインフラストラクチャ コストの課金
-SaaS オファーが Azure でホストされている場合、公開元は Azure インフラストラクチャの使用料金とソフトウェアのライセンス料金を 1 つのコスト項目として処理する必要があります。 このコストは定額の月額料金として顧客に提示されます。 Azure インフラストラクチャの使用量は、お客様 (パートナー) が直接管理し、お客様に直接課金されます。 実際のインフラストラクチャの使用料金は、顧客には提示されません。 公開元は、Azure インフラストラクチャの使用料金をソフトウェア ライセンス料金にバンドルするように選択することが一般的です。 
+#### <a name="saas-pricing-and-billing-options"></a>SaaS の価格と課金のオプション
+SaaS ソリューションが公開元の Azure サブスクリプションで実行されている場合、お客様が支払うライセンス料金には、ソフトウェアがデプロイされるインフラストラクチャのコストが含まれます。 Azure インフラストラクチャの使用量は、お客様 (パートナー) が直接管理し、お客様に直接課金されます。 実際のインフラストラクチャの使用料金は、顧客には提示されません。 公開元は、Azure インフラストラクチャの使用料をソフトウェア ライセンス料金にバンドルする必要があります。 
 
-ソフトウェア ライセンス料金は、従量制でも消費量ベースでもなく、毎月発生するサイトベースの定額サブスクリプション料金として提示されます。
+SaaS オファーでは、定額料金、ユーザー単位、または従量制課金サービスを使用する従量課金に基づいた月次または年次請求がサポートされます。 Microsoft の商用マーケットプレースは代理店モデルで運営されます。そのため、公開元で価格が設定され、Microsoft からお客様に請求され、公開元に収益が支払われると同時に、代理店手数料が減額されます。
+
+次の表は、代理店モデルについて説明するために、コストと支払いの内訳例を示しています。
 
 |**ライセンス コスト**|**1 か月あたり $100**|
 |:---|:---|
 |Azure 使用コスト (D1/1 コア)|顧客ではなく公開元に直接課金されます|
 |顧客は Microsoft から請求されます|1 か月あたり $100.00 (公開元は、ライセンス料金の中で、発生したパススルー インフラストラクチャ コストを考慮する必要があります)|
 
-- このシナリオでは、Microsoft はソフトウェア ライセンスに $100.00 を課金し、公開元に $80.00 を支払います。
+|**Microsoft が請求**|**1 か月あたり $100**|
+|:---|:---|
+|Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います <br>**対象となる SaaS アプリの場合、Microsoft がライセンス コストの 90% を支払います*|1 か月あたり $80.00 <br>*$* 1 か月あたり $90.00*|
+
+- この例では、Microsoft はソフトウェア ライセンスについてお客様に $100.00 を請求し、公開元に $80.00 を支払います。
 - **Marketplace サービス手数料の減額**の対象となっているパートナーには、2019 年 5 月から 2020 年 6 月まで、SaaS オファーに対するトランザクション料金の減額が表示されます。 このシナリオでは、Microsoft はソフトウェア ライセンスに $100.00 を課金し、公開元に $90.00 を支払います。
 
 > [!NOTE]
 > **Marketplace サービス料金の減額**: Microsoft の商業マーケットプレースでお客様が公開する特定の SaaS オファーについて、Microsoft は、Marketplace サービス料金を 20% (Microsoft 公開元契約の説明に従う) から 10% に減額します。 お客様のオファーが対象となるには、少なくとも 1 つのオファーが、IP 共同販売準備完了または IP 共同販売優先のどちらかとして、Microsoft によって指定されている必要があります。  この Marketplace サービス料金の減額をある月に受け取るには、各カレンダー月の月末までに少なくとも 5 営業日、適格性を満たす必要があります。  Marketplace サービス料金の減額は、VM、マネージド アプリ、または Microsoft の商業マーケットプレースを通じて公開された他の製品には適用されません。  Marketplace サービス料金の減額は、2019 年 5 月 1 日から 2020 年 6 月 30日までに Microsoft によって収集されるライセンス料金について、対象となるオファーでのみ利用できます。  その後は、Marketplace サービス料金は通常の金額に戻ります。 
 
-|**Microsoft が請求**|**1 か月あたり $100**|
-|:---|:---|
-|Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います <br>**対象となる SaaS アプリの場合、Microsoft がライセンス コストの 90% を支払います*|1 か月あたり $80.00 <br>*$* 1 か月あたり $90.00*|
+
 
 
 #### <a name="csp-program-opt-in"></a>CSP プログラムのオプトイン
@@ -153,9 +157,23 @@ SaaS オファーが Azure でホストされている場合、公開元は Azur
 
 ## <a name="connect-lead-management"></a>リード管理の接続
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+マーケットプレースでオファーをリスト登録して顧客関係管理 (CRM) システムに接続することで、顧客と直接つながります。これにより、顧客がお客様の製品に興味を示した直後、またはそれをデプロイした直後に、顧客の連絡先情報を受け取ることができます。
 
-詳しくは、[リード管理の概要](./commercial-marketplace-get-customer-leads.md)に関する記事をご覧ください。
+- **リードのターゲットの選択** (ドロップダウン メニュー): Microsoft に顧客リードを送信してもらいたい CRM システムに接続の詳細を入力します。 
+
+パートナー センターでは、リード管理について以下の CRM システムをサポートしています。 セットアップ手順を確認するには、リンクを選択してください。
+
+- Azure BLOB - 連絡先のメール アドレス、コンテナー名、ストレージ アカウントの接続文字列を入力します。 
+- [Azure テーブル](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) - 連絡先のメール アドレスとストレージ アカウントの接続文字列を入力します。 
+- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) -連絡先のメール アドレス、URL、および認証モード (Office 365 または Azure Active Directory) を入力します。
+- [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) - 連絡先のメール アドレスと HTTPS エンドポイントの URL を入力します。 
+- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) - 連絡先のメール アドレス、フォーム ID、Munchkin アカウント ID、サーバー ID を入力します。
+- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -連絡先のメール アドレスと組織 ID を入力します。 
+
+#### <a name="additional-lead-management-resources"></a>リード管理に関するその他のリソース
+- [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
+- [一般的なリード構成エラー](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [1 ページにまとめたリード管理の概要](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf)
 
 次のセクションに進む前に、必ず**保存**してください。
 

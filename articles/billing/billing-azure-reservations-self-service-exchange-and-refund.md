@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 5e38684500520d4565835456b94200aea399c938
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814100"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "69543008"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Azure の予約のセルフサービスによる交換と払戻
 
@@ -60,11 +60,6 @@ Azure の予約は、変化するニーズを満たすために柔軟性を提�
 
 Azure には、キャンセル、交換、払戻に関して次のポリシーがあります。
 
-**キャンセル ポリシー**
-
-- 予約をキャンセルする場合は、12% の中途解約料が発生する可能性があります。
-- キャンセルに対しては、日割り計算によって算出された金額から 12% の中途解約料を差し引いた金額が払い戻されます。 キャンセルするには、Azure portal の予約に移動し、 **[払い戻し]** を選択します。
-
 **交換ポリシー**
 
 - 既存の複数の予約を返金して、同じ種類の新しい予約を購入できます。 別の種類の予約と交換することはできません。 たとえば、VM の予約を返金して、SQL の予約を購入することはできません。
@@ -77,10 +72,12 @@ Azure には、キャンセル、交換、払戻に関して次のポリシー�
 - 交換に対するペナルティや年間制限はありません。
 
 **払戻ポリシー**
+- 予約をキャンセルする場合は、12% の中途解約料が発生する可能性があります。
+- キャンセルに対しては、日割り計算によって算出された金額から 12% の中途解約料を差し引いた金額が払い戻されます。 キャンセルするには、Azure portal の予約に移動し、 **[払い戻し]** を選択します。
 - 12 か月間のローリング ウィンドウ内に合計払戻金額が 50,000 米国ドルを超えることはできません。
 - 払い戻し額は、購入価格または予約の現在の価格のいずれかの最低価格に基づいて計算されます。
 - 払戻を処理できるのは、予約の所有者のみです。 [予約を管理できるユーザーを追加または変更する](billing-manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation)方法を参照してください。
-- Microsoft は返金に対して 12% のペナルティを課す権利を留保します。ただし、現在、このペナルティは課金されていません。
+- Microsoft は、すべての返品に対して 12% のペナルティを請求する権利を留保します。 ペナルティは現在請求されていませんが、将来、請求されます。
 
 ## <a name="exchange-non-premium-storage-for-premium-storage"></a>Premium Storage 以外のストレージを Premium Storage と交換する
 

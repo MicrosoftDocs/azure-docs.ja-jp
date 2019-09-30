@@ -10,12 +10,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/25/2019
-ms.openlocfilehash: f4d2afd65ec06c331498ce974e933fe08c8e67dd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 432580017cec548b7ecd7cf766aa8f5cdb2253cc
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935186"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113596"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>データベース ジョブを使用して管理タスクを自動化する
 
@@ -43,7 +43,7 @@ Azure SQL Database では、T-SQL クエリを実行してメンテナンス タ
 
 Azure SQL Database では、次のジョブ スケジュール テクノロジが利用できます。
 
-- **SQL エージェント ジョブ**: 従来から使われている実績のある SQL Server ジョブ スケジューリング コンポーネントです。Managed Instance で利用できます。 SQL エージェント ジョブは、単一のデータベースでは利用できません。
+- **SQL エージェント ジョブ**: 従来から使われている実績のある SQL Server ジョブ スケジューリング コンポーネントです。Managed Instance で利用できます。 SQL エージェント ジョブは、Azure SQL の単一のデータベースでは利用できません。
 - **Elastic Database ジョブ (プレビュー)** : 1 つまたは多数の Azure SQL データベース上でカスタム ジョブを実行するジョブ スケジューリング サービスです。
 
 SQL エージェント (オンプレミスでも SQL Database Managed Instance の一部としても利用可能) と Database Elastic ジョブ エージェント (Azure SQL データベース内の単一のデータベースと SQL Data Warehouse 内のデータベースで利用可能) の間には、いくつかの点で違いがあります。

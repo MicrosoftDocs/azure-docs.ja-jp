@@ -1,19 +1,19 @@
 ---
 title: Azure Active Directory ユーザーをクラスターに同期する - Azure HDInsight
-description: Azure Active Directory の認証されたユーザーをクラスターに同期します。
+description: Azure Active Directory の認証されたユーザーを HDInsight クラスターに同期します。
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
-ms.reviewer: mamccrea
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2be67c604bebbe9b4c4356e241d1480ca0778d4a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9767bccc754d5ccf8c0e7cbb66c8e9c3d5eaf7d0
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688544"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105364"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Azure Active Directory ユーザーを HDInsight クラスターに同期する
 
@@ -31,11 +31,11 @@ ms.locfileid: "64688544"
 
 2. 左側のメニューから **[すべてのユーザー]** を選択してから、 **[New user] (新しいユーザー)** を選択します。
 
-    ![[すべてのユーザー] ペイン](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
+    ![Azure portal のすべてのユーザーとグループ](./media/hdinsight-sync-aad-users-to-cluster/users-and-groups-new.png)
 
 3. 新しいユーザーのフォームを完了します。 クラスター ベースのアクセス許可を割り当てるために作成したグループを選択します。 この例では、新しいユーザーを割り当てることのできる "HiveUsers" という名前のグループを作成します。 ESP クラスターを作成するための[手順の例](hdinsight-domain-joined-configure.md)には、`HiveUsers` と `AAD DC Administrators` という 2 つのグループの追加が含まれています。
 
-    ![[New user] (新しいユーザー) ペイン](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
+    ![Azure portal ユーザー ウィンドウのグループの選択](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-new-user-form.png)
 
 4. **作成** を選択します。
 
@@ -47,7 +47,7 @@ ms.locfileid: "64688544"
 
 1. [SSH でクラスターに接続します](hdinsight-hadoop-linux-use-ssh-unix.md)。 Azure Portal のクラスターの概要ペインから、 **[Secure Shell (SSH)]** ボタンを選択します。
 
-    ![[Secure Shell (SSH)]](./media/hdinsight-sync-aad-users-to-cluster/ssh.png)
+    ![HDInsight Secure Shell (SSH) アイコン](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
 
 2. 表示されている `ssh` コマンドをコピーし、それを SSH クライアントに貼り付けます。 メッセージが表示されたら、SSH ユーザーのパスワードを入力します。
 
@@ -131,15 +131,15 @@ ms.locfileid: "64688544"
 
 1. Ambari ダッシュボードから、 **[管理者]** メニューの下にある **[Ambari の管理]** を選択します。
 
-    ![Ambari の管理](./media/hdinsight-sync-aad-users-to-cluster/manage-ambari.png)
+    ![Apache Ambari ダッシュボードの Ambari の管理](./media/hdinsight-sync-aad-users-to-cluster/manage-apache-ambari.png)
 
 2. ページの左側の **[User + Group Management] (ユーザーとグループの管理)** メニュー グループの下にある **[ユーザー]** を選択します。
 
-    ![[ユーザー] メニュー項目](./media/hdinsight-sync-aad-users-to-cluster/users-link.png)
+    ![HDInsight の [ユーザーとグループ] メニュー](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-menu-item.png)
 
 3. 新しいユーザーが [ユーザー] テーブル内に表示されます。 [種類] は `Local` ではなく、`LDAP` に設定されています。
 
-    ![[ユーザー] ページ](./media/hdinsight-sync-aad-users-to-cluster/users.png)
+    ![HDInsight aad ユーザー ページの概要](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-users-page.png)
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>新しいユーザーとして Ambari にログインする
 

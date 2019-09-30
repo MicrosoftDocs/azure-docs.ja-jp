@@ -3,7 +3,7 @@ title: ゾーン Windows VM の作成 - Azure PowerShell | Microsoft Docs
 description: Azure PowerShell を使用して可用性ゾーン内に Windows 仮想マシンを作成する
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/27/2018
-ms.author: danlep
+ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 2720573c4935f69d210106b99aa0c0495beff310
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8e850de9314ba2de678ebe1aa25b4ffc251bf59f
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70079751"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173843"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-powershell"></a>PowerShell を使用して可用性ゾーン内に Windows 仮想マシンを作成する
 

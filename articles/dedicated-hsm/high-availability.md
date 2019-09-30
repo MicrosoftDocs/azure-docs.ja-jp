@@ -2,8 +2,8 @@
 title: 高可用性 - Azure の専用 HSM | Microsoft Docs
 description: Azure の専用 HSM の高可用性の例と基本的な考慮事項
 services: dedicated-hsm
-author: barclayn
-manager: barbkess
+author: msmbaldwin
+manager: rkarlin
 ms.custom: mvc, seodec18
 ms.service: key-vault
 ms.workload: identity
@@ -11,13 +11,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: barclayn
-ms.openlocfilehash: 784a6821502a0e02a74d619047604ffe47df7e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: mbaldwin
+ms.openlocfilehash: 536ef62acad900090924598edfa45450b2a8c951
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60914179"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70882255"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure Dedicated HSM の高可用性
 
@@ -25,7 +25,7 @@ Azure Dedicated HSM は、Microsoft の高可用データセンターによっ�
 
 ## <a name="high-availability-example"></a>高可用性の例
 
-ソフトウェア レベルで高可用性を実現するための HSM デバイスの構成方法については、「Gemalto Luna Network HSM Administration Guide」(Gemalto Luna Network HSM 管理ガイド) を参照してください。 このドキュメントは、[Gemalto カスタマー サポート ポータル](https://supportportal.gemalto.com/csm/)で入手できます。
+ソフトウェア レベルで高可用性を実現するための HSM デバイスの構成方法については、「Gemalto Luna Network HSM Administration Guide」(Gemalto Luna Network HSM 管理ガイド) を参照してください。 このドキュメントは、[Gemalto HSM](https://safenet.gemalto.com/data-encryption/hardware-security-modules-hsms/safenet-network-hsm/) ページから入手できます。
 
 次の図は、高可用アーキテクチャを示しています。 リージョン内の複数のデバイスと、別のリージョン内のペアリングされた複数のデバイスを使用しています。 このアーキテクチャは、4 つ以上の HSM デバイスと仮想ネットワーク コンポーネントを使用しています。
 

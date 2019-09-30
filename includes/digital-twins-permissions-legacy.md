@@ -5,15 +5,15 @@ services: digital-twins
 author: alinamstanciu
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
+ms.date: 08/16/2019
 ms.author: alinast
 ms.custom: include file
-ms.openlocfilehash: 9f4bf6fb92b590e274e8880b5f900e5469f85727
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: ef6b395aeff18a63f52f58e2477679b48a19b002
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012190"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624737"
 ---
 1. [Azure portal](https://portal.azure.com) で、左側のウィンドウの **[Azure Active Directory]** を開き、 **[プロパティ]** ウィンドウを開きます。 **ディレクトリ ID** を一時ファイルにコピーします。 この値は、次のセクションでサンプル アプリケーションを構成する際に使用します。
 
@@ -41,7 +41,7 @@ ms.locfileid: "69012190"
 
    e. **[API アクセスの追加]** ウィンドウで、 **[完了]** を選択します。
 
-   f. **[必要なアクセス許可]** ウィンドウで、 **[アクセス許可の付与]** ボタンを選択し、表示される確認メッセージに同意します。 この API のアクセス許可が与えられていない場合は、管理者に問い合わせてください。
+   f. **[必要なアクセス許可]** ウィンドウで、 **[アクセス許可の付与]** ボタンを選択し、表示される確認メッセージを受け入れます。 この API のアクセス許可が与えられていない場合は、管理者に問い合わせてください。
 
       ![[必要なアクセス許可] ウィンドウ](./media/digital-twins-permissions-legacy/aad-app-req-permissions.png)
 

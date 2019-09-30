@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: a3d697fcc6ef991bec80df02addcac5d4243005a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 81bde54c65cf3ed25da634c38b7b99e72a187e00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876492"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002459"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 移行ランディング ゾーン ブループリント サンプルの概要
 
@@ -29,7 +29,7 @@ CAF 移行ランディング ゾーン ブループリント サンプルは、�
 
 この環境は、セキュリティで保護され、完全に監視されたエンタープライズ対応のガバナンスを提供するために使用される複数の Azure サービスで構成されます。 この環境は、以下で構成されます。
 
-- [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) インスタンス。共有サービス環境にデプロイされた証明書、キー、シークレット用に使用されるシークレットをホストします。
+- [Azure Key Vault](../../../../key-vault/key-vault-overview.md) インスタンス。共有サービス環境にデプロイされた証明書、キー、シークレット用に使用されるシークレットをホストします。
 - [Log Analytics](../../../../azure-monitor/overview.md)。移行の開始以降、すべてのアクションとサービス ログが中心的な場所に確保されるようにデプロイされます。
 - [Azure Security Center](../../../../security-center/security-center-intro.md) (標準バージョン)。移行されたワークロードを脅威から保護します。
 - [Azure Virtual Network](../../../../virtual-network/virtual-networks-overview.md)。仮想マシン用の分離されたネットワークとサブネットを提供します。

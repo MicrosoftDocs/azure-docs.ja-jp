@@ -1,132 +1,127 @@
 ---
-title: Azure Active Directory Domain Services:グループ ポリシーを管理する | Microsoft Docs
-description: Azure Active Directory Domain Services のマネージド ドメインのグループ ポリシーを管理します
-services: active-directory-ds
-documentationcenter: ''
+title: Azure AD Domain Services でのグループ ポリシーの作成と管理 | Microsoft Docs
+description: Azure Active Directory Domain Services のマネージド ドメインで組み込みのグループ ポリシー オブジェクト (GPO) を編集し、独自のカスタム ポリシーを作成する方法について説明します。
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 08/05/2019
 ms.author: iainfou
-ms.openlocfilehash: c7b32885fdb3cf4f3e584c916d6b234fff54bfc4
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 5c6d7b3403209710c9086b90abcb0e2ce61a0e8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234043"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69612738"
 ---
-# <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインのグループ ポリシーの管理
-Azure Active Directory Domain Services には、"AADDC Users" コンテナーと "AADDC Computers" コンテナー用の組み込みのグループ ポリシー オブジェクト (GPO) が含まれています。 これらの組み込みの GPO を、マネージド ドメインのグループ ポリシーを構成するようにカスタマイズできます。 さらに、"AAD DC Administrators" グループのメンバーは、マネージド ドメイン内に、独自のカスタム OU を作成できます。 カスタム GPO を作成してカスタム OU にリンクすることもできます。 "AAD DC Administrators" グループに属するユーザーには、マネージド ドメインのグループ ポリシー管理者権限が付与されます。
+# <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでグループ ポリシーを管理する
+
+Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジェクトとコンピューター オブジェクトの設定は、多くの場合、グループ ポリシー オブジェクト (GPO) を使用して管理されます。 Azure AD DS には、*AADDC Users* コンテナーと *AADDC Computers* コンテナー用の組み込みの GPO が用意されています。 これらの組み込みの GPO をカスタマイズして、環境のニーズに合わせてグループ ポリシーを構成できます。 *Azure AD DC 管理者*グループのメンバーは、Azure AD DS ドメイン内でグループ ポリシー管理特権を持っています。また、カスタムの GPO と組織単位 (OU) を作成することもできます。 グループ ポリシーとそのしくみの詳細については、「[グループ ポリシーの概要][group-policy-overview]」を参照してください。
+
+この記事では、グループ ポリシーの管理ツールをインストールし、組み込みの GPO を編集して、カスタム GPO を作成する方法について説明します。
 
 [!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
-この記事に記載されているタスクを実行するには、次が必要です。
 
-1. 有効な **Azure サブスクリプション**。
-2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
-3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](create-instance.md)に記載されているすべてのタスクを実行してください。
-4. Azure AD Domain Services のマネージド ドメインの管理に使用する、 **ドメインに参加している仮想マシン** 。 そのような仮想マシンがない場合は、「[Windows Server 仮想マシンのマネージド ドメインへの参加](active-directory-ds-admin-guide-join-windows-vm.md)」で概要が示されているすべてのタスクに従います。
-5. マネージド ドメインのグループ ポリシーを管理するには、ディレクトリに **"AAD DC Administrators' group" グループに属するユーザー アカウント** の資格情報が必要です。
+この記事を完了するには、以下のリソースと特権が必要です。
 
-<br>
+* 有効な Azure サブスクリプション
+    * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+* ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
+    * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
+* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
+    * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
+* Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
+    * 必要に応じて、[Windows Server VM を作成してマネージド ドメインに参加させる][create-join-windows-vm]チュートリアルを完了します。
+* Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
 
-## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-group-policy-for-the-managed-domain"></a>タスク 1 - ドメインに参加している仮想マシンをプロビジョニングして、マネージド ドメインのグループ ポリシーをリモートで管理する
-Azure AD Domain Services のマネージド ドメインは、Active Directory 管理センター (ADAC) や AD PowerShell などの使い慣れた Active Directory 管理ツールでリモート管理することができます。 同様に、マネージド ドメインのグループ ポリシーは、グループ ポリシー管理ツールを使用してリモートで管理できます。
+## <a name="install-group-policy-management-tools"></a>グループ ポリシーの管理ツールをインストールする
 
-Azure AD ディレクトリの管理者には、マネージド ドメイン上のドメイン コントローラーにリモート デスクトップで接続する権限はありません。 "AAD DC Administrators" グループのメンバーは、マネージド ドメインのグループ ポリシーをリモートで管理できます。 マネージド ドメインに参加している Windows サーバー/クライアント コンピューターでグループ ポリシー ツールを使用できます。 グループ ポリシー ツールは、マネージド ドメインに参加している Windows Server とクライアント コンピューターに、グループ ポリシー管理オプション機能の一部としてインストールできます。
+グループ ポリシー オブジェクト (GPO) を作成して構成するには、グループ ポリシーの管理ツールをインストールする必要があります。 これらのツールは、Windows Server の機能としてインストールできます。 Windows クライアントに管理ツールをインストールする方法の詳細については、[リモート サーバー管理ツール (RSAT)][install-rsat] のインストールに関するページを参照してください。
 
-最初のタスクでは、マネージド ドメインに参加している Windows Server 仮想マシンをプロビジョニングします。 手順については、「[Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)」を参照してください。
+1. 管理 VM にサインインします。 Azure portal を使用した接続方法については、「[Windows Server VM に接続する][connect-windows-server-vm]」を参照してください。
+1. VM にサインインすると、既定で**サーバー マネージャー**が表示されるはずです。 そうならない場合は、 **[スタート]** メニューの **[サーバー マネージャー]** を選択します。
+1. **[サーバー マネージャー]** ウィンドウの *[ダッシュボード]* ウィンドウで **[役割と機能の追加]** を選択します。
+1. *[役割と機能の追加]* ウィザードの **[開始する前に]** ページで **[次へ]** を選択します。
+1. *[インストールの種類]* で、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** を選択します。
+1. **[サーバーの選択]** ページで、サーバー プールから現在の VM (例: *myvm.contoso.com*) を選択し、 **[次へ]** を選択します。
+1. **[サーバーの役割]** ページで、 **[次へ]** をクリックします。
+1. **[機能]** ページで、 **[グループ ポリシー管理]** 機能を選択します。
 
-## <a name="task-2---install-group-policy-tools-on-the-virtual-machine"></a>タスク 2 - 仮想マシンにグループ ポリシー ツールをインストールする
-ドメインに参加している仮想マシンにグループ ポリシー管理ツールをインストールするには、次の手順を実行します。
+    ![[機能] ページから "グループ ポリシーの管理" をインストールする](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
 
-1. Azure Portal に移動します。 左側のパネルの **[すべてのリソース]** をクリックします。 タスク 1 で作成した仮想マシンを見つけてクリックします。
-2. [概要] タブの **[接続]** ボタンをクリックします。リモート デスクトップ プロトコル (.rdp) ファイルが作成されてダウンロードされます。
+1. **[確認]** ページで **[インストール]** を選択します。 グループ ポリシーの管理ツールのインストールには、1、2 分かかることがあります。
+1. 機能のインストールが完了したら、 **[閉じる]** を選択して **[役割と機能の追加]** ウィザードを終了します。
 
-    ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、 **[接続]** をクリックします。 ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。 たとえば、ここでは 'bob@domainservicespreview.onmicrosoft.com' を使用します。 サインイン処理中に証明書の警告が表示される場合があります。 [はい] または [続行] をクリックして接続処理を続行します。
-4. スタート画面で、 **[サーバー マネージャー]** を開きます。 [サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
+## <a name="open-the-group-policy-management-console-and-edit-an-object"></a>グループ ポリシー管理コンソールを開いてオブジェクトを編集する
 
-    ![仮想マシンでのサーバー マネージャーの起動](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-5. **[役割と機能の追加]** ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
-
-    ![ページを開始する前に](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
-6. **[インストールの種類]** ページで、 **[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** をクリックします。
-
-    ![インストールの種類のページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-7. **[サーバーの選択]** ページで、サーバー プールから現在の仮想マシンを選択して **[次へ]** をクリックします。
-
-    ![サーバー選択ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. **[サーバーの役割]** ページで、 **[次へ]** をクリックします。 サーバーに役割をインストールしないため、このページはスキップします。
-9. **[機能]** ページで、 **[グループ ポリシー管理]** 機能を選択します。
-
-    ![機能ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management.png)
-10. **[確認]** ページで、 **[インストール]** をクリックして仮想マシンに グループ ポリシー管理機能をインストールします。 機能のインストールが正常に完了したら、 **[閉じる]** をクリックして **[役割と機能の追加]** ウィザードを終了します。
-
-    ![確認ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-gp-management-confirmation.png)
-
-## <a name="task-3---launch-the-group-policy-management-console-to-administer-group-policy"></a>タスク 3 - グループ ポリシー管理コンソールを起動してグループ ポリシーを管理する
-ドメインに参加している仮想マシンでグループ ポリシー管理コンソールを使用して、マネージド ドメインのグループ ポリシーを管理できます。
+既定のグループ ポリシー オブジェクト (GPO) は、Azure AD DS マネージド ドメイン内のユーザーおよびコンピューター用に存在します。 前のセクションでインストールしたグループ ポリシーの管理機能を使用して、既存の GPO を表示および編集します。 次のセクションでは、カスタム GPO を作成します。
 
 > [!NOTE]
-> マネージド ドメインのグループ ポリシーを管理するには、"AAD DC Administrators" グループのメンバーである必要があります。
->
->
+> Azure AD DS マネージド ドメインでグループ ポリシーを管理するには、*AAD DC 管理者*グループのメンバーであるユーザー アカウントにサインインする必要があります。
 
-1. スタート画面で **[管理ツール]** をクリックします。 仮想マシンにインストールされた **グループ ポリシー管理**コンソールが表示されます。
+1. スタート画面で **[管理ツール]** を選択します。 使用できる管理ツールの一覧が表示されます。これには、前のセクションでインストールした**グループ ポリシーの管理**が含まれます。
+1. グループ ポリシー管理コンソール (GPMC) を開くには、 **[グループ ポリシーの管理]** を選択します。
 
-    ![グループ ポリシー管理の起動](./media/active-directory-domain-services-admin-guide/gp-management-installed.png)
-2. **[グループ ポリシー管理]** をクリックして、グループ ポリシー管理コンソールを起動します。
+    ![グループ ポリシー管理コンソールが開き、グループ ポリシー オブジェクトを編集できる状態になります](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
-    ![グループ ポリシー コンソール](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
+Azure AD DS マネージド ドメインには、*AADDC Computers* コンテナー用と *AADDC Users* コンテナー用の 2 つの組み込みのグループ ポリシー オブジェクト (GPO) があります。 これらの GPO をカスタマイズして、Azure AD DS マネージド ドメイン内で必要に応じてグループ ポリシーを構成することができます。
 
-## <a name="task-4---customize-built-in-group-policy-objects"></a>タスク 4 - 組み込みのグループ ポリシー オブジェクトをカスタマイズする
-マネージド ドメインには、"AADDC Computers" コンテナーと "AADDC Users" コンテナーという 2 つの組み込みのグループ ポリシー オブジェクト (GPO) があります。 これらの GPO をカスタマイズして、マネージド ドメインのグループ ポリシーを構成できます。
+1. **グループ ポリシー管理**コンソールで、 **[フォレスト: contoso.com]** ノードを展開します。 次に、 **[ドメイン]** ノードを展開します。
 
-1. **グループ ポリシー管理**コンソールで、 **[フォレスト: contoso100.com]** ノードと **[ドメイン]** ノードをクリックして展開し、マネージド ドメインのグループ ポリシーを表示します。
+    *AADDC Computers* と *AADDC Users* には、2 つの組み込みのコンテナーがあります。 これらの各コンテナーには、既定の GPO が適用されています。
 
-    ![組み込みの GPO](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
-2. これらの組み込みの GPO を、マネージド ドメインのグループ ポリシーを構成するようにカスタマイズできます。 組み込みの GPO をカスタマイズするには、GPO を右クリックし、 **[編集...]** をクリックします。 グループ ポリシー構成エディター ツールで GPO をカスタマイズできます。
+    ![既定の "AADDC Computers" と "AADDC Users" コンテナーに適用される組み込みの GPO](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 
-    ![組み込みの GPO の編集](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
-3. これで、**グループ ポリシー管理エディター** コンソールを使用して、組み込みの GPO を編集できます。 たとえば、次のスクリーン ショットは、組み込みの "AADDC Computers" GPO をカスタマイズする方法を示しています。
+1. これらの組み込みの GPO は、Azure AD DS マネージド ドメイン上で特定のグループ ポリシーを構成するようにカスタマイズできます。 *AADDC Computers GPO* など、いずれかの GPO を右クリックし、 **[編集]** を選択します。
 
-    ![GPO のカスタマイズ](./media/active-directory-domain-services-admin-guide/gp-editor.png)
+    ![組み込みの GPO のいずれかを "編集" するオプションを選択する](./media/active-directory-domain-services-admin-guide/edit-builtin-gpo.png)
 
-## <a name="task-5---create-a-custom-group-policy-object-gpo"></a>タスク 5 - カスタム グループ ポリシー オブジェクト (GPO) を作成する
-独自のカスタム グループ ポリシー オブジェクトを作成またはインポートできます。 また、マネージド ドメインで作成したカスタム OU にカスタム GPO をリンクすることもできます。 カスタム組織単位の作成方法の詳細については、[マネージド ドメインでのカスタム OU の作成](create-ou.md)に関する記事をご覧ください。
+1. グループ ポリシー管理エディター ツールが開き、 *[アカウント ポリシー]* などの GPO をカスタマイズできるようになります。
 
-> [!NOTE]
-> マネージド ドメインのグループ ポリシーを管理するには、"AAD DC Administrators" グループのメンバーである必要があります。
->
->
+    ![必要に応じて設定を構成する GPO をカスタマイズする](./media/active-directory-domain-services-admin-guide/gp-editor.png)
 
-1. **グループ ポリシー管理**コンソールで、カスタム組織単位 (OU) をクリックして選択します。 OU を右クリックし、 **[このドメインに GPO を作成し、このコンテナーにリンクする...]** をクリックします。
+    完了したら、 **[ファイル] > [保存]** を選択してポリシーを保存します。 コンピューターの既定では、90 分ごとにグループ ポリシーが更新され、加えた変更が適用されます。
 
-    ![カスタム GPO の作成](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
-2. 新しい GPO の名前を指定し、 **[OK]** をクリックします。
+## <a name="create-a-custom-group-policy-object"></a>カスタム グループ ポリシー オブジェクトを作成する
 
-    ![GPO の名前の指定](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
-3. 新しい GPO が作成され、カスタム OU にリンクされます。 GPO を右クリックし、メニューの **[編集...]** をクリックします。
+同様のポリシー設定をグループ化するには、多くの場合、必要なすべての設定を 1 つの既定の GPO で適用するのではなく、追加の GPO を作成します。 Azure AD DS を使用すると、カスタム グループ ポリシー オブジェクトを作成またはインポートしてカスタム OU にリンクすることができます。 まずカスタム OU を作成する必要がある場合は、[Azure AD DS マネージド ドメインでのカスタム OU の作成](create-ou.md)に関する記事を参照してください。
 
-    ![新しく作成された GPO](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
-4. **グループ ポリシー管理エディター**を使用して、新しく作成された GPO をカスタマイズできます。
+1. **グループ ポリシー管理コンソール**で、*MyCustomOU* などのカスタム組織単位 (OU) を選択します。 OU を右クリックし、 **[このドメインに GPO を作成し、このコンテナーにリンクする]** を選択します。
 
-    ![新しい GPO のカスタマイズ](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
+    ![グループ ポリシー管理コンソールでカスタム GPO を作成する](./media/active-directory-domain-services-admin-guide/gp-create-gpo.png)
 
+1. 新しい GPO の名前 (「*My custom GPO*」など) を指定し、 **[OK]** を選択します。 必要に応じて、既存の GPO と一連のポリシー オプションに基づいてこのカスタム GPO を作成することもできます。
 
-[グループ ポリシー管理コンソール](https://technet.microsoft.com/library/cc753298.aspx)の使用方法の詳細については、Technet を参照してください。
+    ![新しいカスタム GPO の名前を指定します](./media/active-directory-domain-services-admin-guide/gp-specify-gpo-name.png)
 
-## <a name="related-content"></a>関連コンテンツ
-* [Azure AD ドメイン サービス - 作業開始ガイド](create-instance.md)
-* [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
-* [Azure AD Domain Services ドメインを管理する](manage-domain.md)
-* [グループ ポリシー管理コンソール](https://technet.microsoft.com/library/cc753298.aspx)
+1. カスタム GPO が作成され、カスタム OU にリンクされます。 ポリシー設定を構成するには、カスタム GPO を右クリックし、 **[編集]** を選択します。
+
+    ![カスタム GPO を "編集" するオプションを選択する](./media/active-directory-domain-services-admin-guide/gp-gpo-created.png)
+
+1. **グループ ポリシー管理エディター**が開き、GPO をカスタマイズできるようになります。
+
+    ![必要に応じて設定を構成する GPO をカスタマイズする](./media/active-directory-domain-services-admin-guide/gp-customize-gpo.png)
+
+    完了したら、 **[ファイル] > [保存]** を選択してポリシーを保存します。 コンピューターの既定では、90 分ごとにグループ ポリシーが更新され、加えた変更が適用されます。
+
+## <a name="next-steps"></a>次の手順
+
+グループ ポリシー管理コンソールを使用して構成できる使用可能なグループ ポリシー設定の詳細については、[グループ ポリシーの基本設定項目の使用][group-policy-console]に関する記事を参照してください。
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[create-join-windows-vm]: join-windows-vm.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+[connect-windows-server-vm]: join-windows-vm.md#connect-to-the-windows-server-vm
+
+<!-- EXTERNAL LINKS -->
+[group-policy-overview]: /previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831791(v=ws.11)
+[install-rsat]: /windows-server/remote/remote-server-administration-tools#BKMK_Thresh
+[group-policy-console]: /previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789194(v=ws.11)

@@ -3,20 +3,22 @@ title: Azure Notification Hubs のサンプル
 description: 使用可能な Azure Notification Hubs SDK の一覧
 services: notification-hubs
 documentationcenter: ''
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
-ms.author: jowargo
 ms.date: 03/28/2019
-ms.openlocfilehash: 1d035513418147b8fae1d8e2f217d20d19f02f2e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/28/2019
+ms.openlocfilehash: 5c7c2b073d0684d908b677d3dda1586f6baa8f61
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60559927"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213312"
 ---
 # <a name="azure-notification-hubs-samples"></a>Azure Notification Hubs のサンプル
 この記事には、Azure Notification Hubs の主要な機能を示すサンプルへのリンクが記載されています。

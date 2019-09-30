@@ -9,15 +9,15 @@ ms.date: 05/22/2019
 ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 3f94481e6a8550479788d92c744327e1dc3b58c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "66376936"
 ---
 次の制限は、Azure Event Grid システムのトピックとカスタム トピックに適用されます。イベント ドメインには適用*されません*。
 
-| Resource | 制限 |
+| リソース | 制限 |
 | --- | --- |
 | Azure サブスクリプションあたりのカスタム トピック数 | 100 |
 | トピックあたりのイベント サブスクリプション数 | 500 |
@@ -27,7 +27,7 @@ ms.locfileid: "66376936"
 
 次の制限は、イベント ドメインにのみ適用されます。
 
-| Resource | 制限 |
+| リソース | 制限 |
 | --- | --- |
 | イベント ドメインあたりのトピック数 | パブリック プレビュー時に 1,000 件 |
 | ドメイン内のトピックあたりのイベント サブスクリプション数 | パブリック プレビュー時に 50 件 |

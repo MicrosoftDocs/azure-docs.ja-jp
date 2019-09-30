@@ -8,12 +8,12 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 088591d30d768193fe74150cc33727fe47081624
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 98ade4e5c8a14c2d4f5c2a22c2c973fac844861f
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876525"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802543"
 ---
 # <a name="deploy-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルをデプロイする
 
@@ -28,9 +28,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-blueprint-from-sample"></a>サンプルからブループリントを作成する
 
-最初に、ブループリント サンプルを実装するために、サンプルを使用して環境内に新しいブループリントを作成します。
+最初に、サンプルをスターターとして使用して環境内に新しいブループリントを作成することにより、ブループリント サンプルを実装します。
 
-1. **[すべてのサービス]** を選択し、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** を選択します。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側の **[はじめに]** ページで、 _[ブループリントの作成]_ の下にある **[作成]** ボタンを選択します。
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 環境でのブループリント サンプルのコピーの作成が完了しました。 これは**下書き**モードで作成されており、割り当ておよびデプロイの前に**発行**する必要があります。 ブループリント サンプルのコピーは、お使いの環境や必要性に応じてカスタマイズできますが、それが原因で CAF 基盤ブループリントの条件を満たさなくなる場合もあります。
 
-1. **[すべてのサービス]** を選択し、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** を選択します。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側の **[ブループリントの定義]** ページを選択します。 ブループリント サンプルのコピーを、フィルターを使用して検索し、選択します。
 
@@ -59,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 正常に**発行**されたブループリント サンプルのコピーは、保存先の管理グループ内のサブスクリプションに割り当てることができます。 この手順では、ブループリント サンプルのコピーの各デプロイを一意にするためのパラメーターを指定します。
 
-1. **[すべてのサービス]** を選択し、左側のウィンドウで **[ポリシー]** を検索して選択します。 **[ポリシー]** ページで **[ブループリント]** を選択します。
+1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[ブループリント]** を探して選択します。
 
 1. 左側の **[ブループリントの定義]** ページを選択します。 ブループリント サンプルのコピーを、フィルターを使用して検索し、選択します。
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    - マネージド ID
 
-     既定の "_システム割り当て_" マネージド ID オプションまたは "_ユーザー割り当て_" ID オプションを選択します。
+     既定の_システム割り当て_マネージド ID オプションまたは_ユーザー割り当て_ ID オプションを選択します。
 
    - ブループリントのパラメーター
 
@@ -113,7 +113,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 |Resource Types that you do not want to allow in your environment (自分の環境で許可しないリソースの種類)|ポリシー割り当て|Policy _Allowed-Resource-Types|自分の環境でどのリソースの種類を許可するか|
 |Deploy Key Vault (Key Vault のデプロイ)|Resource Manager テンプレート|KV-AccessPolicy|**ロック済み** - Key Vault でアクセス許可を付与する Azure AD グループまたはユーザー <Object ID>|
 |Deploy Log Analytics (Log Analytics のデプロイ)|Resource Manager テンプレート|LogAnalytics_DataRetention|**ロック済み** - 日数データは Log Analytics に保持されます|
-|Deploy Log Analytics (Log Analytics のデプロイ)|Resource Manager テンプレート|LogAnalytics_Location|**ロック済み** - ワークスペースの確立時に使用されるリージョン|
+|Log Analytics のデプロイ|Resource Manager テンプレート|LogAnalytics_Location|**ロック済み** - ワークスペースの確立時に使用されるリージョン|
 
 ## <a name="next-steps"></a>次の手順
 

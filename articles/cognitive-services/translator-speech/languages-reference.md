@@ -3,20 +3,20 @@ title: Translator Speech API 言語メソッド
 titleSuffix: Azure Cognitive Services
 description: Translator Speech API 言語メソッドを使用します。
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 05/18/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4abe6330d0359f7d7c922facecaaf1a8b1fc7174
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 46ac3928238382f56db5a799226bd3d9243b7ca2
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446952"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966409"
 ---
 # <a name="translator-speech-api-languages"></a>Translator Speech API: Languages
 
@@ -132,7 +132,7 @@ Langagues { speech (object, optional), text (object, optional), tts (object, opt
 
 ### <a name="headers"></a>headers
 
-|ヘッダー|説明|Type|
+|ヘッダー|説明|種類|
 :--|:--|:--|
 X-RequestId|要求を識別するためにサーバーによって生成され、トラブルシューティングのために使用される値。|文字列|
 

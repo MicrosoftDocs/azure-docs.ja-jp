@@ -10,22 +10,22 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 169ec7a8ef407af3f754046aa8e3b06793a7e962
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aeed84f19da3843d043eafef9d7444661901c53e
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027653"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147139"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Azure Blockchain Service での制限事項
 
 Azure Blockchain Service のサービスと機能には、メンバーが持つことのできるノードの数、コンソーシアムの制限、ストレージの量などの制限事項があります。
 
-## <a name="pricing-tier"></a>価格レベル
+## <a name="pricing-tier"></a>Pricing tier
 
 トランザクションと検証ノードの数の上限は、Azure Blockchain Service を Basic または Standard のどちらの価格レベルでプロビジョニングするかによって異なります。
 
-| 価格レベル | トランザクション ノードの最大数 | 検証ノードの最大数 |
+| Pricing tier | トランザクション ノードの最大数 | 検証ノードの最大数 |
 |:---|:---:|:---:|
 | Basic | 10 | 1 |
 | Standard | 10 | 2 |
@@ -34,7 +34,7 @@ Azure Blockchain Service のサービスと機能には、メンバーが持つ�
 
 ## <a name="storage-capacity"></a>ストレージの容量
 
-台帳データおよびログ用にノードごとに使用できるストレージの最大量は、1 テラバイトです。
+台帳データおよびログ用にノードごとに使用できるストレージの最大量は、1.8 テラバイトです。
 
 台帳およびログのストレージ サイズを減らすことはできません。
 

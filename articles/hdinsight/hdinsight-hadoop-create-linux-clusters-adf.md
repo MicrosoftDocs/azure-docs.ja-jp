@@ -1,18 +1,18 @@
 ---
-title: 'チュートリアル: Data Factory を使用して Azure HDInsight でオンデマンドの Apache Hadoop クラスターを作成する '
+title: チュートリアル:Azure HDInsight でのオンデマンド Apache Hadoop クラスター - Data Factory
 description: チュートリアル - Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する方法について説明します。
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: 7af70de91a7f7696be3b003fec11390d6db9ba60
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0b3062e14873ec971163c125fccd6852d8662663
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854982"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098718"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -189,7 +189,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     |プロパティ  |値  |
     |---------|---------|
-    |EnableAdfsAuthentication | データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
+    |名前 | データ ファクトリの名前を入力します。 この名前はグローバルに一意である必要があります。|
     |Subscription | Azure サブスクリプションを選択します。 |
     |Resource group | **[既存のものを使用]** を選択し、PowerShell スクリプトを使用して作成したリソース グループを選択します。 |
     |Version | **V2**のままにします。 |
@@ -203,7 +203,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 6. **[作成と監視]** を選択して、Azure Data Factory の作成および監視ポータルを起動します。
 
-    ![Azure Data Factory の概要](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory の概要")
+    ![Azure Data Factory ポータルの概要](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory の概要")
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
@@ -230,7 +230,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     |プロパティ |値 |
     |---|---|
-    |EnableAdfsAuthentication |「 `HDIStorageLinkedService` 」を入力します。|
+    |名前 |「 `HDIStorageLinkedService` 」を入力します。|
     |Azure サブスクリプション |ドロップダウン リストからサブスクリプションを選択します。|
     |ストレージ アカウント名 |PowerShell スクリプトの一部として作成した Azure Storage アカウントを選択します。|
 
@@ -252,8 +252,8 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
     | プロパティ | 値 |
     | --- | --- |
-    | EnableAdfsAuthentication | 「 `HDInsightLinkedService` 」を入力します。|
-    | Type | **[On-demand HDInsight]\(オンデマンド HDInsight\)** を選択します。 |
+    | 名前 | 「 `HDInsightLinkedService` 」を入力します。|
+    | 種類 | **[On-demand HDInsight]\(オンデマンド HDInsight\)** を選択します。 |
     | Azure Storage のリンクされたサービス | [`HDIStorageLinkedService`] を選択します。 |
     | クラスターの種類 | **[hadoop]** を選択します。 |
     | Time to Live | HDInsight クラスターを使用できるようにしておく期間を指定します。この期間を過ぎると、クラスターは自動的に削除されます。|
@@ -352,7 +352,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 1. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、既定のストレージ アカウントとデータ ファクトリが表示されます。
 1. **[リソース グループの削除]** を選択します。 この操作を実行すると、ストレージ アカウントと、そのストレージ アカウントに格納されているデータが削除されます。
 
-    ![リソース グループを削除する](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "リソース グループを削除する")
+    ![Azure portal でリソース グループを削除する](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "リソース グループを削除する")
 
 1. リソース グループ名を入力して削除を確認し、 **[削除]** をクリックします。
 

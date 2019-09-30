@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 390c961eaa692e6ca5bf26e2954c0764207fc210
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2d56b1f800c71a5bbef7ffb1155d05e096113e2c
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853672"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162429"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -125,7 +125,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 | Android                | Microsoft Edge、Intune Managed Browser、Chrome  |
 | Windows Phone          | Microsoft Edge、Internet Explorer               |
 | Windows Server 2019    | Microsoft Edge、Internet Explorer、Chrome       |
-| Windows Server 2016    | Microsoft Edge、Internet Explorer               |
+| Windows Server 2016    | Internet Explorer |
 | Windows Server 2012 R2 | Internet Explorer                       |
 | Windows Server 2008 R2 | Internet Explorer                       |
 | macOS                  | Chrome、Safari                                  |
@@ -145,7 +145,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
 | Name | 1 |
-| Type | REG_SZ (文字列) |
+| 種類 | REG_SZ (文字列) |
 | Data | ppnbnpeolgkicgegkbkbjmhlideopiji;https\://clients2.google.com/service/update2/crx |
 
 **Windows 8.1 および 7** で Chrome をサポートするには、次のレジストリ キーを作成してください。
@@ -154,7 +154,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 | --- | --- |
 | Path | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
 | Name | 1 |
-| Type | REG_SZ (文字列) |
+| 種類 | REG_SZ (文字列) |
 | Data | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 
 これらのブラウザーはデバイス認証をサポートしており、デバイスを識別してポリシーで検証することができます。 ブラウザーがプライベート モードで実行している場合、デバイス チェックは失敗します。
@@ -246,7 +246,6 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 この設定は、以下のクライアント アプリに適用されます。
 
 - Microsoft Cortana
-- Microsoft Edge
 - Microsoft OneDrive
 - Microsoft Outlook
 - Microsoft Planner

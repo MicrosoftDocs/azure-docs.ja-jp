@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2019
 ms.author: magoedte
-ms.openlocfilehash: 1f06345995e30f4d7f165230f4292c560c89e2e8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 98bf38a6c293f6d339413b5395bb32d74bcb30c0
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68489762"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905713"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
+
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
 
 この記事では、オンボードと、Service Map の使い方を詳しく説明します。 このソリューションの前提条件の構成の詳細については、[Azure Monitor for VMs の有効化の概要](vminsights-enable-overview.md#prerequisites)に関するページをご覧ください。 要約すると、以下が必要です。
@@ -554,16 +555,57 @@ let remoteMachines = remote | summarize by RemoteMachine;
 
 データの収集と使用の詳細については、「[Microsoft オンライン サービスのプライバシーに関する声明](https://go.microsoft.com/fwlink/?LinkId=512132)」を参照してください。
 
-
 ## <a name="next-steps"></a>次の手順
 
 Log Analytics の[ログ検索](../../azure-monitor/log-query/log-query-overview.md)の詳細を確認して、Service Map によって収集されたデータを取得します。
 
-
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-[サービス マップの構成に関するドキュメントの「トラブルシューティング」]( service-map-configure.md#troubleshooting)をご覧ください。
+Service Map のインストールまたは実行で問題が発生した場合は、こちらのセクションを参照してください。 それでも問題が解決しない場合は、Microsoft サポートにお問い合わせください。
 
+### <a name="dependency-agent-installation-problems"></a>Dependency Agent のインストールに関する問題
+
+#### <a name="installer-prompts-for-a-reboot"></a>インストーラーが再起動を要求する
+*通常*、Dependency Agent のインストールまたは削除時に再起動が要求されることはありません。 ただし、まれに、インストールを続行するために Windows Server が再起動を要求することがあります。 これは、依存関係 (通常は Microsoft Visual C++ 再頒布可能ライブラリ) のあるファイルがロックされているため、再起動が要求される場合に生じます。
+
+#### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--code_number-appears"></a>"Dependency Agent をインストールできません: Visual Studio ランタイム ライブラリが (code = [code_number]) をインストールできませんでした" というメッセージが表示される
+
+Microsoft Dependency Agent は、Microsoft Visual Studio ランタイム ライブラリ上にビルドされます。 ライブラリのインストール中に問題が発生した場合は、メッセージが表示されます。 
+
+ランタイム ライブラリのインストーラーは、%LOCALAPPDATA%\temp フォルダー内にログを作成します。 このファイルは `dd_vcredist_arch_yyyymmddhhmmss.log` で、*arch* は `x86` または `amd64` に、*yyyymmddhhmmss* はログが作成された日時 (24 時間形式) になります。 このログでは、インストールをブロックしている問題の詳細が示されます。
+
+最初に[最新のランタイム ライブラリ](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)をインストールしておくことをお勧めします。
+
+次の表に、コード番号と推奨される解決策を示します。
+
+| コード | 説明 | 解決策 |
+|:--|:--|:--|
+| 0x17 | ライブラリのインストーラーは、まだインストールされていない Windows Update を要求しています。 | 最新のライブラリ インストーラー ログを確認してください。<br><br>`Windows8.1-KB2999226-x64.msu` への参照の後に `Error 0x80240017: Failed to execute MSU package,` という行が続いている場合、KB2999226 をインストールするための前提条件が揃っていません。 [Windows での汎用の C ランタイム](https://support.microsoft.com/kb/2999226)に関する記事の前提条件セクションに記載の手順に従ってください。 前提条件をインストールするためには、Windows Update の実行と再起動が複数回必要になることがあります。<br><br>Microsoft Dependency Agent インストーラーをもう一度実行します。 |
+
+### <a name="post-installation-issues"></a>インストール後の問題
+
+#### <a name="server-doesnt-appear-in-service-map"></a>サーバーが Service Map に表示されない
+
+Dependency Agent のインストールに成功しても、Service Map ソリューションにはご利用のマシンが表示されません。
+* Dependency Agent は正しくインストールされているのでしょうか? これについては、サービスがインストールされているか、実行中かを確認することで検証できます。<br><br>
+**Windows**:**Microsoft Dependency Agent** というサービスを探します。
+**Linux**:**microsoft-dependency-agent** という実行中のプロセスを探します。
+
+* [Log Analytics Free レベル](https://azure.microsoft.com/pricing/details/monitor/)ですか? Free プランでは、一意の Service Map マシンを最大 5 台まで使用できます。 それ以降のマシンは、前の 5 台でデータを送信していない場合でも、サービス マップに表示されません。
+
+* ご利用のサーバーからログとパフォーマンス データが Azure Monitor ログに送信されていますか? Azure Monitor\Logs に移動し、お使いのコンピューターに対して次のクエリを実行します。 
+
+    ```kusto
+    Usage | where Computer == "admdemo-appsvr" | summarize sum(Quantity), any(QuantityUnit) by DataType
+    ```
+
+結果としてさまざまなイベントを取得しましたか? そのデータは最近のものですか? そうである場合は、Log Analytics エージェントは正しく動作しており、ワークスペースと通信しています。 そうでない場合は、ご利用のマシン上でエージェントを確認してください。([Windows 用 Log Analytics エージェントのトラブルシューティング](../platform/agent-windows-troubleshoot.md) または [Linux 用 Log Analytics エージェントのトラブルシューティング](../platform/agent-linux-troubleshoot.md)に関するページを参照)。
+
+#### <a name="server-appears-in-service-map-but-has-no-processes"></a>Service Map にサーバーは表示されるがプロセスが表示されない
+
+Service Map にマシンは表示されるがプロセスまたは接続データは表示されないという場合は、Dependency Agent がインストールされて実行されているがカーネル ドライバーが読み込まれなかったということを意味しています。 
+
+`C:\Program Files\Microsoft Dependency Agent\logs\wrapper.log file` (Windows) または `/var/opt/microsoft/dependency-agent/log/service.log file` (Linux) を確認します。 ファイルの最後の行に、カーネルがロードされなかった原因が示されています。 たとえば、カーネルを更新した場合にそのカーネルが Linux でサポートされないことがあります。
 
 ## <a name="feedback"></a>フィードバック
 

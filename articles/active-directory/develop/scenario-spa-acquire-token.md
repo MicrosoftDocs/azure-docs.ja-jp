@@ -3,7 +3,7 @@ title: シングルページ アプリケーション (API を呼び出すトー
 description: シングルページ アプリケーション (API を呼び出すトークンを取得する) を構築する方法を説明します
 services: active-directory
 documentationcenter: dev-center-name
-author: navyasric
+author: negoe
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
-ms.author: nacanuma
+ms.date: 08/20/2019
+ms.author: negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4c842db8a0874d3619e0dc59b90aa12226cb984
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2f49a6093194ef76a895f2a54f8a78a55da73e7e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65138817"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70135708"
 ---
 # <a name="single-page-application---acquire-a-token-to-call-an-api"></a>シングルページ アプリケーション - API を呼び出すトークンを取得する
 
@@ -72,7 +72,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 ### <a name="angular"></a>Angular
 
-MSAL Angular ラッパーを使用すると、自動的にアクセス トークンをサイレントに取得して API への HTTP 要求にそれを添付する HTTP インターセプター `MsalInterceptor` を容易に追加できます。
+MSAL Angular ラッパーを使用すると、自動的にアクセス トークンをサイレントに取得して API への HTTP 要求にそれを添付する HTTP インターセプターを容易に追加できます。
 
 トークンの自動取得の際に MsalInterceptor から要求される `protectedResourceMap` 構成オプション内に API のスコープを指定することができます。
 
@@ -116,7 +116,7 @@ ngOnDestroy() {
 
 ### <a name="javascript"></a>JavaScript
 
-パターンは前述したとおりですが、トークンを対話形式で取得するリダイレクト メソッドを使用して示しています。 前述のようにリダイレクト コールバックを登録する必要があるので注意してください。
+パターンは前述したとおりですが、トークンを対話形式で取得するリダイレクト メソッドを使用して示しています。 前述のようにリダイレクト コールバックを登録する必要があります。
 
 ```javascript
 function authCallback(error, response) {
@@ -141,6 +141,37 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
     }
 });
 ```
+
+## <a name="request-for-optional-claims"></a>省略可能な要求を要請する
+アプリで省略可能な要求を要請し、アプリケーションのトークンに含める追加の要求を指定できます。 id_token で省略可能な要求を要請する目的で、文字列化された要求オブジェクトを AuthenticationParameters.ts クラスの claimsRequest フィールドに送信できます。
+
+次の目的で省略可能な要求を使用できます。
+
+- アプリケーションのトークンに省略可能な要求を含める。
+- Azure AD からトークンで返される特定の要求の動作を変更する。
+- アプリケーションのカスタムの要求を追加してアクセスする。
+
+
+### <a name="javascript"></a>JavaScript
+```javascript
+"optionalClaims":  
+   {
+      "idToken": [
+            {
+                  "name": "auth_time", 
+                  "essential": true
+             }
+      ],
+
+var request = {
+    scopes: ["user.read"],
+    claimsRequest: JSON.stringify(claims)
+};
+
+myMSALObj.acquireTokenPopup(request);
+```
+オプションの要求の詳細については、[省略可能な要求](active-directory-optional-claims.md)に関するページをご覧ください。
+
 
 ### <a name="angular"></a>Angular
 

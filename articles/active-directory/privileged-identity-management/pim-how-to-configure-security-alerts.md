@@ -3,7 +3,7 @@ title: PIM で Azure AD ロールに対するセキュリティ アラートを�
 description: Azure AD Privileged Identity Management (PIM) で Azure AD ロールに対するセキュリティ アラートを構成する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6875ab8f184c67b02c91d1a8e312959f3ba9553b
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3984d3276590357866c824d01ea8c51cf5b28fd7
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476415"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804389"
 ---
 # <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>PIM で Azure AD ロールに対するセキュリティ アラートを構成する
 

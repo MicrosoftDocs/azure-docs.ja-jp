@@ -4,7 +4,7 @@ description: ARM で Azure CLI を使用した仮想ネットワークの作成�
 services: virtual-network
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: azure-service-management
 ms.assetid: 604d128b-88e1-42aa-87ec-49b2f6a54526
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 7fc4572113ff2157a37e3db96879eaa7987948fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c73a0057a95d88737e82b01e3cacb3814798e1f
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60597044"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056643"
 ---
 # <a name="create-a-virtual-network-classic-by-using-the-azure-cli"></a>Azure CLI を使用した仮想ネットワーク (従来型) の作成
 [!INCLUDE [virtual-networks-create-vnet-selectors-classic-include](../../includes/virtual-networks-create-vnet-selectors-classic-include.md)]

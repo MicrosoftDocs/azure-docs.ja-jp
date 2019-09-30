@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/10/2019
+ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d93a20494886bb7d563439e2699f60bedb646dcd
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032543"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241709"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理とは (プレビュー)
 
@@ -139,6 +139,18 @@ Azure AD セキュリティ グループまたは Office 365 グループに依�
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
 Azure Government、Azure Germany、Azure China 21Vianet などの特殊なクラウドは現在、このプレビューではご利用いただけません。
+
+### <a name="which-users-must-have-licenses"></a>ライセンスが必要なユーザー
+
+テナントには、アクティブなメンバー ユーザーと同数以上の Azure AD Premium P2 ライセンスが必要です。 エンタイトルメント管理のアクティブなメンバー ユーザーには次のユーザーが含まれます。
+
+- アクセス パッケージの要求を開始または承認するユーザー。
+- アクセス パッケージが割り当てられているユーザー。 
+- アクセス パッケージを管理するユーザー。
+
+メンバー ユーザーのライセンスの一部として、複数のゲスト ユーザーにエンタイトルメント管理との対話を許可することもできます。 含めることができるゲスト ユーザーの数を計算する方法について詳しくは、「[Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス](../b2b/licensing-guidance.md)」をご覧ください。
+
+ユーザーにライセンスを割り当てる方法については、「[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

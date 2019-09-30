@@ -1,190 +1,204 @@
 ---
-title: クイック スタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う - Azure Key Vault | Microsoft Docs
-description: このクイック スタートでは、.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行います。
-services: key-vault
+title: クイックスタート -  .NET 用 Azure Key Vault クライアント ライブラリ
+description: Azure SDK クライアント ライブラリのクイックスタートを作成するための形式とコンテンツの基準を示します。
 author: msmbaldwin
-manager: sumedhb
+ms.author: mbaldwin
+ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 01/02/2019
-ms.author: barclayn
-ms.custom: mvc
-ms.openlocfilehash: 9ddb1db9b39ac942a3476f50aad39c98198b2a18
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d24323996e222caf6456372cbc65681d2055c3db
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68958605"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996638"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>クイック スタート:.NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
+# <a name="quickstart-azure-key-vault-client-library-for-net"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ
 
-このクイック スタートでは、Azure Web アプリケーションから、Azure リソースのマネージド ID を使用して Azure Key Vault から情報を読み取る手順を学習します。 Key Vault の使用は、情報のセキュリティ維持につながります。 学習内容は次のとおりです。
+.NET 用 Azure Key Vault クライアント ライブラリを使ってみます。 以下の手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。
 
-* Key Vault を作成します。
-* キー コンテナーにシークレットを格納する。
-* キー コンテナーからシークレットを取得する。
-* Azure AD Web アプリケーションを作成する。
-* Web アプリの[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする。
-* Web アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
+Azure Key Vault は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットをセキュリティで保護するために役立ちます。 .NET 用 Key Vault クライアント ライブラリは、次の目的で使用します。
 
-先に進む前に、[Key Vault の基本概念](key-vault-whatis.md#basic-concepts)を確認してください。
+- キーとパスワードのセキュリティと制御を強化する。
+- 暗号化キーの作成とインポートを数分で実行する。
+- クラウド スケールおよびグローバルな冗長性により待ち時間を短縮する。
+- SSL または TLS 証明書のタスクを簡略化および自動化する。
+- FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
 
->[!NOTE]
->Key Vault は、プログラムでシークレットを格納できる中央リポジトリです。 しかしこれを実行するには、アプリケーションとユーザーが最初に Key Vault に対する認証を行う (シークレットを提示する) 必要があります。 セキュリティのベスト プラクティスに従うために、最初のシークレットのローテーションが定期的に行われる必要があります。 
->
->[Azure リソースのマネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を使用すると、Azure で実行されるアプリケーションには、Azure が自動的に管理する ID が付与されます。 これにより、*シークレット導入問題*が解決されます。ユーザーとアプリケーションはベスト プラクティスに従うことができ、最初のシークレットのローテーションについて心配する必要がありません
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[API リファレンスのドキュメント](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Windows の場合:
-  * [Visual Studio 2019](https://www.microsoft.com/net/download/windows) と次のワークロード:
-    * ASP.NET および Web の開発
-    * .NET Core クロスプラットフォームの開発
-  * [.NET Core 2.1 SDK 以降](https://www.microsoft.com/net/download/windows)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+* [.Net Core 2.1 SDK 以降](https://dotnet.microsoft.com/download/dotnet-core/2.1)。
+* [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) または [Azure PowerShell](/powershell/azure/overview)。
 
-* Mac の場合:
-  * [Visual Studio for Mac の新機能](https://visualstudio.microsoft.com/vs/mac/)に関するページを参照してください。
+このクイックスタートでは、`dotnet`、[Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)、Windows のコマンドを Windows ターミナル ([PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6)、[Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)、[Azure Cloud Shell](https://shell.azure.com/) など) で実行していることを前提としています。
 
-* すべてのプラットフォーム:
-  * Git ([ダウンロード](https://git-scm.com/downloads))。
-  * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-  * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) バージョン 2.0.4 以降。 これは、Windows、Mac、Linux に対応しています。
+## <a name="setting-up"></a>設定
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+### <a name="create-new-net-console-app"></a>新しい .NET コンソール アプリを作成する
 
-Azure CLI を使用して Azure にログインするには、次のように入力します。
+好みのエディターまたは IDE で、新しい .NET Core アプリケーションを作成します。
+
+コンソール ウィンドウで、`dotnet new` コマンドを使用し、`akv-dotnet` という名前で新しいコンソール アプリを作成します。
+
+
+```console
+dotnet new console -n akvdotnet
+```
+
+新しく作成されたアプリ フォルダーにディレクトリを変更します。 次を使用してアプリケーションをビルドできます。
+
+```console
+dotnet build
+```
+
+ビルドの出力に警告やエラーが含まれないようにする必要があります。
+
+```console
+Build succeeded.
+ 0 Warning(s)
+ 0 Error(s)
+```
+
+### <a name="install-the-package"></a>パッケージをインストールする
+
+コンソール ウィンドウから、.NET 用 Azure Key Vault クライアント ライブラリをインストールします。
+
+```console
+dotnet add package Microsoft.Azure.KeyVault
+```
+
+このクイックスタートでは、次のパッケージもインストールする必要があります。
+
+```console
+dotnet add package System.Threading.Tasks
+dotnet add package Microsoft.IdentityModel.Clients.ActiveDirectory
+dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
+```
+
+### <a name="create-a-resource-group-and-key-vault"></a>リソース グループとキー コンテナーを作成する
+
+このクイックスタートでは、あらかじめ作成しておいた Azure キー コンテナーを使用します。 キー コンテナーは、[Azure CLI のクイックスタート](quick-create-cli.md)、[Azure PowerShell のクイックスタート](quick-create-powershell.md)、または [Azure portal のクイックスタート](quick-create-portal.md)の手順に従って作成できます。 または、以下の Azure CLI コマンドを実行するだけでもかまいません。
+
+> [!Important]
+> 各キー コンテナーには一意の名前が必要です。 次の例では、*myKV* という名前のキー コンテナーを作成しますが、ご自身で別の名前を付けて、その名前をこのクイックスタート全体で使用する必要があります。
 
 ```azurecli
-az login
+az group create --name "myResourceGroup" -l "EastUS"
+
+az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-[az group create](/cli/azure/group#az-group-create) コマンドを使ってリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
-
-リソース グループ名を選択し、プレース ホルダーを入力します。
-次の例では、米国東部リージョンにリソース グループを作成します。
+クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、「[.NET を使用した Azure Key Vault に対するサービス間認証](service-to-service-authentication.md)」を参照してください。 ただし、わかりやすくするために、このクイックスタートでは .NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルを使用する必要があります。
+Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用してサービス プリンシパルを作成します。
 
 ```azurecli
-# To list locations: az account list-locations --output table
-az group create --name "<YourResourceGroupName>" --location "East US"
+az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-作成したリソース グループは、この記事の全体を通して使用します。
+この操作では、一連のキーと値のペアが返されます。 
 
-## <a name="create-a-key-vault"></a>Key Vault を作成します
+```console
+{
+  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
+  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
+  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
+  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
+```
 
-次に、前の手順で作成したリソース グループにキー コンテナーを作成します。 次の情報を指定します。
+clientId および clientSecret を書き留めておきます。これらは、下記の手順「[キー コンテナーに対する認証](#authenticate-to-your-key-vault)」で使用します。
 
-* キー コンテナー名:名前の文字数は 3 から 24 文字です。使用できる文字は 0-9、a-z、A-Z、およびハイフン (-) のみです。
-* リソース グループ名。
-* 場所:**米国東部**。
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>サービス プリンシパルにキー コンテナーへのアクセス権を付与する
+
+[az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドに clientId を渡すことでご利用のサービス プリンシパルにアクセス許可を付与するアクセス ポリシーをご利用のキー コンテナー用に作成します。 キーとシークレットの両方に対する get、list、set の各アクセス許可をサービス プリンシパルに付与します。
 
 ```azurecli
-az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-この時点で、使用している Azure アカウントのみが、この新しいコンテナーで任意の操作を実行することが許可されます。
+## <a name="object-model"></a>オブジェクト モデル
 
-## <a name="add-a-secret-to-the-key-vault"></a>キー コンテナーにシークレットを追加する
+.NET 用 Azure Key Vault クライアント ライブラリを使用すると、キーおよび関連するアセット (証明書、シークレットなど) を管理できます。 以下のコード サンプルでは、シークレットの設定やシークレットの取得に関する方法を紹介しています。
 
-シークレットのしくみをよく理解できるように、シークレットを追加します。 SQL 接続文字列やその他の情報を機密として保持する必要があるのに、アプリケーションで使用可能になるように保管している場合があります。
+コンソール アプリ全体は https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet から入手できます。
 
-次のコマンドを入力して、**AppSecret** というキー コンテナーにシークレットを作成します。 このシークレットには、値 **MySecret** が格納されます。
+## <a name="code-examples"></a>コード例
+
+### <a name="add-directives"></a>ディレクティブの追加
+
+コードの先頭に次のディレクティブを追加します。
+
+[!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=directives)]
+
+### <a name="authenticate-to-your-key-vault"></a>キー コンテナーに対する認証
+
+この .NET クイックスタートでは、環境変数を使用して、コードに記述すべきでない資格情報を格納します。 
+
+アプリを作成して実行する前に、`setx` コマンドを使用して、`akvClientId`、`akvClientSecret`、`akvTenantId`、`akvSubscriptionId` の各環境変数を、先ほど書き留めた値に設定します。
+
+```console
+setx akvClientId <your-clientID>
+
+setx akvClientSecret <your-clientSecret>
+````
+
+`setx` を呼び出すたびに、"成功: 指定した値は保存されました。" という応答が返されます。
+
+これらの環境変数をコード内の文字列に代入した後、それらを [KeyVaultClient クラス](/dotnet/api/microsoft.azure.keyvault.keyvaultclient)に渡してアプリケーションを認証します。
+
+[!code-csharp[Authentication](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=authentication)]
+
+### <a name="save-a-secret"></a>シークレットを保存する
+
+アプリケーションが認証されたら、[SetSecretAsync メソッド](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync)を使用して、キー コンテナーにシークレットを設定できます。これには、キー コンテナーの URL (`https://<your-unique-keyvault-name>.vault.azure.net/secrets/` 形式) が必要です。 また、シークレットの名前も必要です。ここでは "mySecret" という名前を使用します。  再利用のために、これらの文字列を変数に代入してもかまいません。
+
+[!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
+
+シークレットが設定されたことは、[az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) コマンドを使用して確認できます。
 
 ```azurecli
-az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-シークレットに格納されている値をプレーンテキストとして表示するには:
+### <a name="retrieve-a-secret"></a>シークレットを取得する
 
-```azurecli
-az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
-```
+先ほど設定した値は、[GetSecretAsync メソッド](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)を使用して取得できます。
 
-このコマンドは、URI を含むシークレットの情報を表示します。 これらの手順を完了すると、キー コンテナーのシークレットへの URI がわかります。 この情報をメモしてください。 後の手順で必要になります。
+[!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=getsecret)]
 
-## <a name="clone-the-repo"></a>リポジトリを複製する
-
-リポジトリを複製して、ソースを編集できるローカル コピーを作成します。 次のコマンドを実行します。
-
-```
-git clone https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart.git
-```
-
-## <a name="open-and-edit-the-solution"></a>ソリューションを開いて編集する
-
-program.cs ファイルを編集し、特定のキー コンテナー名でサンプルを実行します。
-
-1. フォルダー key-vault-dotnet-core-quickstart を参照します。
-2. Visual Studio 2019 で、key-vault-dotnet-core-quickstart.sln ファイルを開きます。
-3. Program.cs ファイルを開き、プレースホルダー *YourKeyVaultName* を先ほど作成したキー コンテナーの名前に更新します。
-
-このソリューションでは、[AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) ライブラリと [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet ライブラリが使用されます。
-
-## <a name="run-the-app"></a>アプリの実行
-
-Visual Studio 2019 のメイン メニューで、 **[デバッグ]**  >  **[デバッグなしで開始]** と選択します。 ブラウザーが表示されたら、 **[バージョン情報]** ページに移動します。 **AppSecret** の値が表示されます。
-
-## <a name="publish-the-web-application-to-azure"></a>Azure に Web アプリケーションを発行する
-
-このアプリを Azure に発行し、Web アプリとしてライブであることと、シークレット値を取得することを確認します。
-
-1. Visual Studio で、**key-vault-dotnet-core-quickstart** プロジェクトを選択します。
-2. **[発行]**  >  **[開始]** の順に選択します。
-3. 新しい **App Service** を作成し、 **[発行]** を選択します。
-4. アプリ名を **keyvaultdotnetcorequickstart** に変更します。
-5. **作成** を選択します。
-
->[!VIDEO https://sec.ch9.ms/ch9/e93d/a6ac417f-2e63-4125-a37a-8f34bf0fe93d/KeyVault_high.mp4]
-
-## <a name="enable-a-managed-identity-for-the-web-app"></a>Web アプリのマネージド ID を有効にする
-
-Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
-
-Azure CLI で assign-identity コマンドを実行して、このアプリケーションの ID を作成します。
-
-   ```azurecli
-   az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group "<YourResourceGroupName>"
-   ```
-
->[!NOTE]
->この手順のコマンドは、ポータルに移動して、Web アプリケーション プロパティの **[Identity / System assigned]\(ID/システム割り当て済み\)** を **[オン]** に切り替えることと同等です。
-
-## <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>アプリケーションにアクセス許可を割り当ててキー コンテナーからシークレットを読み取る
-
-アプリケーションを Azure に発行するときの出力をメモします。 次の形式にする必要があります。
-        
-        {
-          "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "type": "SystemAssigned"
-        }
-        
-次に、キー コンテナーの名前と **PrincipalId** の値を使用してこのコマンドを実行します。
-
-```azurecli
-
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get list
-
-```
-
-これで、アプリケーションを実行すると、取得されたシークレットの値が表示されます。 上記のコマンドでは、アプリ サービスの ID に、キー コンテナーに対する **get** および **list** 操作を行うアクセス許可を付与しています。
+これで、シークレットが `keyvaultSecret.Value;` として保存されました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-リソース グループと仮想マシン、関連するすべてのリソースは、不要になったら削除してください。 そのためには、キー コンテナーのリソース グループを選択し、 **[削除]** を選択します。
 
-キー コンテナーは、[az keyvault delete](https://docs.microsoft.com/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete) コマンドを使用して削除します。
+不要になったら、Azure CLI または Azure PowerShell を使用して、キー コンテナーとそれに対応するリソース グループを削除できます。
 
 ```azurecli
-az keyvault delete --name
-                   [--resource-group]
-                   [--subscription]
+az group delete -g "myResourceGroup" -l "EastUS" 
+```
+
+```azurepowershell
+Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Key Vault についての詳細情報](key-vault-whatis.md)
+このクイックスタートでは、キー コンテナーを作成し、シークレットを格納して、そのシークレットを取得しました。 [コンソール アプリ全体は GitHub](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet) で確認してください。
+
+Key Vault およびアプリケーションとの統合方法の詳細については、引き続き以下の記事を参照してください。
+
+- [.NET を使用した Azure Key Vault に対するサービス間認証](service-to-service-authentication.md)を実装する
+- [Azure Key Vault の概要](key-vault-overview.md)を確認する
+- 「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照する
+- [キー、シークレット、証明書](about-keys-secrets-and-certificates.md)について学習する
+- [Azure Key Vault のベスト プラクティス](key-vault-best-practices.md)を確認する

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 3812cf55a26a12ef110b8acf14edd0e8bfd36851
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c262d3841acd3497667c00a9deee04b304ddae76
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66236531"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984805"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>HDInsight Spark クラスターを使用して Azure SQL データベースのデータを読み書きする
 
@@ -95,7 +95,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL データベース
    
     次のような出力が表示されます。
 
-    ![Notebook の名前を指定](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "Notebook の名前を指定")
+    ![スキーマ出力](./media/apache-spark-connect-to-sql-database/read-from-sql-schema-output.png "スキーマの出力")
 
 1. 上位 10 行の取得のような操作も実行できます。
 
@@ -148,11 +148,11 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL データベース
 
     a. SSMS を開始し、次のスクリーンショットに示すように、接続の詳細を指定して Azure SQL データベースに接続します。
 
-    ![SSMS を使って SQL Database に接続する](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "SSMS を使って SQL Database に接続する")
+    ![SSMS1 を使って SQL Database に接続する](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms.png "SSMS1 を使って SQL Database に接続する")
 
     b. オブジェクト エクスプローラーで Azure SQL データベースを展開し、[テーブル] ノードを展開して、**dbo.hvactable** を表示します。
 
-    ![SSMS を使って SQL Database に接続する](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "SSMS を使って SQL Database に接続する")
+    ![SSMS2 を使って SQL Database に接続する](./media/apache-spark-connect-to-sql-database/connect-to-sql-db-ssms-locate-table.png "SSMS2 を使って SQL Database に接続する")
 
 1. SSMS でクエリを実行して、テーブルの列を表示します。
 
@@ -182,7 +182,7 @@ Azure HDInsight の Apache Spark クラスターを Azure SQL データベース
 
 1. 出力に、**HVAC.csv** のスキーマが表示されます。 **hvactable** にも同じスキーマがあります。 出力にテーブルの列が一覧表示されます。
 
-    ![テーブルのスキーマ](./media/apache-spark-connect-to-sql-database/schema-of-table.png "テーブルのスキーマ")
+    ![テーブルのスキーマ](./media/apache-spark-connect-to-sql-database/hdinsight-schema-table.png "テーブルのスキーマ")
 
 1. 最後に、次のスニペットを使って、HVAC.csv からデータを読み取り、Azure SQL データベースの **hvactable** にストリーミングします。 コード セルにスニペットを貼り付け、プレースホルダーの値をお使いの Azure SQL データベースの値に置き換えてから、**Shift + Enter** キーを押して実行します。
 

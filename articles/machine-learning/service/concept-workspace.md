@@ -1,7 +1,7 @@
 ---
 title: ワークスペースとは
-titleSuffix: Azure Machine Learning service
-description: ワークスペースは、Azure Machine Learning service の最上位のリソースです。 スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴も保持されています。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します
+titleSuffix: Azure Machine Learning
+description: ワークスペースは、Azure Machine Learning の最上位のリソースです。 スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴も保持されています。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: cb1fd8e98a5eba350774ff6ccb8f86dcd3e4d734
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 677a52572658f80d9cde4de28dd02d6e957407d2
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68856210"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71269207"
 ---
-# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースとは
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
-ワークスペースは、Azure Machine Learning service の最上位のリソースで、Azure Machine Learning service を使用するときに作成するすべての成果物を操作するための一元的な場所を提供します。  ワークスペースには、スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴が保持されます。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します。  
+ワークスペースは、Azure Machine Learning の最上位のリソースで、Azure Machine Learning を使用するときに作成するすべての成果物を操作するための一元的な場所を提供します。  ワークスペースには、スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴が保持されます。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します。  
 
 必要なモデルを作成したら、ワークスペースに登録します。 次に、登録済みモデルとスコアリング スクリプトを使用して、Azure Container Instances、Azure Kubernetes Service、または Field-Programmable Gate Array (FPGA) に REST ベースの HTTP エンドポイントとしてデプロイします。 モジュールとして Azure IoT Edge デバイスにモデルをデプロイすることもできます。
 
@@ -36,7 +36,7 @@ ms.locfileid: "68856210"
 + ワークスペースを作成すると、[関連するリソース](#resources)も自動的に作成されます。
 + [実験](concept-azure-machine-learning-architecture.md#experiments)は、ご自身のモデルの構築に使用するトレーニング実行です。  以下を使用して、実験を作成および実行できます
     + [Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。
-    + Azure portal の[自動化された機械学習の実験 (プレビュー)](how-to-create-portal-experiments.md) セクション。
+    + Azure portal またはワークスペースのランディング ページ (プレビュー) の、[自動化された機械学習の実験 (プレビュー)](how-to-create-portal-experiments.md) セクション。
     + [ビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md)。
 + [パイプライン](concept-azure-machine-learning-architecture.md#ml-pipelines)は、お使いのモデルをトレーニングおよび再トレーニングするための再利用可能なワークフローです。
 + [データセット](concept-azure-machine-learning-architecture.md#datasets-and-datastores)は、モデルのトレーニングとパイプラインの作成に使用するデータの管理に役立ちます。
@@ -49,6 +49,7 @@ ms.locfileid: "68856210"
 
 + Web 上:
     + [Azure Portal](https://portal.azure.com)
+    + [ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com)
     + [ビジュアル インターフェイス (プレビュー)](ui-concept-visual-interface.md)
 + Python では Azure Machine Learning [SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) を使用
 + コマンド ラインでは Azure Machine Learning [CLI 拡張機能](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)を使用
@@ -86,7 +87,7 @@ ms.locfileid: "68856210"
 * ポイント アンド クリック形式のインターフェイスで各手順の作業を行う場合は、[Azure portal](how-to-manage-workspace.md) を使用します。
 * Python スクリプトまたは Jupiter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) を使用します。
 * 会社のセキュリティ標準に沿って作成を自動化またはカスタマイズするには、[Azure Resource Manager テンプレート](how-to-create-workspace-template.md)または [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用します。
-* Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning)を使用します。
+* Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code)を使用します。
 
 ## <a name="resources"></a> 関連するリソース
 
@@ -102,9 +103,9 @@ ms.locfileid: "68856210"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service の利用を開始する場合は、以下を参照してください。
+Azure Machine Learning の利用を開始するには、以下を参照してください。
 
-+ [Azure Machine Learning service の概要](overview-what-is-azure-ml.md)
++ [Azure Machine Learning の概要](overview-what-is-azure-ml.md)
 + [ワークスペースを作成する](how-to-manage-workspace.md)
 + [ワークスペースを管理する](how-to-manage-workspace.md)
 + [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)

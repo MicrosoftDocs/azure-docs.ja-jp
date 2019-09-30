@@ -6,26 +6,29 @@ manager: nitinme
 description: すべての Cognitive Services のコンテナーのパラメーター
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 7/24/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 636a41fde345a08db1549e53626522962f9cf74f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 06f68d28d06dec7c9e738ad8cb50ca337fa840be
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488751"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102000"
 ---
 ## <a name="gathering-required-parameters"></a>必須パラメーターの収集
 
-すべての Cognitive Services のコンテナーに対して必須である、3 つの主要なパラメーターがあります。 エンドユーザー使用許諾契約書 (**EULA**) は、`accept` の値と共に存在する必要があります。 さらに、エンドポイント URL と API キーの両方が必要です。
+すべての Cognitive Services のコンテナーに対して必須である、3 つの主要なパラメーターがあります。 エンドユーザー使用許諾契約書 (EULA) は、`accept` の値と共に提示される必要があります。 さらに、エンドポイント URL と API キーの両方が必要です。
 
-### <a name="endpoint-uri-endpoint_uri"></a>エンドポイント URL `{Endpoint_URI}`
+> [!NOTE]
+> これら 3 つの必須パラメーターに対する唯一の例外は、コンテナーが "オフライン" コンテナーと見なされる場合です。 オフライン コンテナーでは使用状況の報告が行われず、従量制課金ではなく、別の課金方法に従います。
+
+### <a name="endpoint-uri-endpoint_uri"></a>エンドポイント URL `{ENDPOINT_URI}`
 
 **エンドポイント** URI の値は、Azure portal で、対応する Cognitive Service リソースの *[概要]* ページで入手できます。 *[概要]* ページに移動してエンドポイントの上にマウス ポインターを移動すると、`Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> アイコンが表示されます。 必要に応じてコピーして使用します。
 
 ![後で使用するためにエンドポイント URI を収集する](../media/overview-endpoint-uri.png)
 
-### <a name="keys-api_key"></a>キー `{API_Key}`
+### <a name="keys-api_key"></a>キー `{API_KEY}`
 
 このキーはコンテナーを起動するために使用され、Azure portal で、対応する Cognitive Service リソースの [キー] ページで入手できます。 *[キー]* ページに移動し、`Copy to clipboard` <span class="docon docon-edit-copy x-hidden-focus"></span> アイコンをクリックします。
 

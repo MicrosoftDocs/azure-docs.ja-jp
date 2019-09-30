@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d4f19c16149dbed34c16d021ff7100cace9a06a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 57b441803a066b794d17b46afec4d930b94ebdea
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879142"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125129"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>動作のしくみ: Azure Multi-Factor Authentication
 
@@ -43,7 +43,7 @@ Multi-Factor Authentication は以下のサービスに付属します。
 * **Azure Active Directory 全体管理者** - Azure Multi-Factor Authentication の一部の機能を集めたものであり、全体管理者アカウントを保護するための手段として利用されます。
 
 > [!NOTE]
-> 2018 年 9 月 1 日以降、新しいお客様は、スタンドアロン オファーとして Azure Multi-Factor Authentication を購入できなくなります。 多要素認証は、今後も Azure AD Premium ライセンスで利用できます。
+> 2018 年 9 月 1 日以降、新しいお客様は、スタンドアロン オファーとして Azure Multi-Factor Authentication を購入できなくなります。 多要素認証認証は、今後も Azure AD Premium ライセンスで利用できます。
 
 ## <a name="supportability"></a>サポート
 
@@ -52,7 +52,7 @@ Multi-Factor Authentication は以下のサービスに付属します。
 * 認証方法にアクセスできないか、認証方法が正しく動作せず、ユーザーがサインインできない状況に対応できるよう、サポート スタッフをトレーニングしてください。
    * サポート スタッフは Azure MFA Service の条件付きアクセス ポリシーを利用することで、MFA を要求するポリシーから除外されるグループにユーザーを追加できます。
 * 2 段階認証の要求を最小限に抑える方法として、条件付きアクセスのネームド ロケーションを使用することを検討します。 この機能を使用して、管理者は、新しいユーザーのオンボードで使用されるセキュリティで保護された信頼できるネットワークの場所 (ネットワーク セグメントなど) からサインインしているユーザーの 2 段階認証をバイパスすることができます。
-* [Azure AD Identity Protection](../active-directory-identityprotection.md) をデプロイし、リスク イベントに基づいて 2 段階検証をトリガーします。
+* [Azure AD Identity Protection](../active-directory-identityprotection.md) をデプロイし、リスク検出に基づいて 2 段階検証をトリガーします。
 
 ## <a name="next-steps"></a>次の手順
 

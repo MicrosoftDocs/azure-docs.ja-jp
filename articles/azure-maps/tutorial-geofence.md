@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a020ef91e52a5d801557399df827d3641bfb974e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085322"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934187"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Azure Maps を使用してジオフェンスを設定する
 
@@ -36,7 +36,7 @@ Event Grid の詳細については、[Azure Event Grid](https://docs.microsoft.
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps アカウントを作成する 
 
-このチュートリアルの手順を実行する前に、[アカウントとキーの管理](how-to-manage-account-keys.md)に関するページを参照して、S1 価格レベルのアカウント サブスクリプションを作成、管理する必要があります。
+このチュートリアルの手順を完了するには、[アカウントの管理](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account)に関するページの手順に従って、S1 価格レベルで Azure Maps アカウントのサブスクリプションを作成します。さらに、[主キーの取得](./tutorial-search-location.md#getkey)に関するページの手順に従って、お使いのアカウントのプライマリ サブスクリプション キーを取得します。
 
 ## <a name="upload-geofences"></a>ジオフェンスのアップロード
 
@@ -56,7 +56,7 @@ Azure Maps の Data Upload API を使用して建設現場のジオフェンス�
     
     URL パス内の GEOJSON パラメーターは、アップロードするデータの形式を表します。
 
-3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key の値は、実際の Azure Maps のサブスクリプション キーに置き換えてください。
+3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key の値は、実際の Azure Maps のプライマリ サブスクリプション キーに置き換えてください。
    
     ![Postman のキーと値のペアから成るパラメーター](./media/tutorial-geofence/postman-key-vals.png)
 

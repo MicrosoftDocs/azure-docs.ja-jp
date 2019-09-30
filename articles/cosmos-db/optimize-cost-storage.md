@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: rimman
-ms.openlocfilehash: 71f1f8896126728277ba6f0bf2c0ded1b2a608b7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2955df266bcf164ce4a155acc5209679eff0ce8a
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967246"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615011"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Azure Cosmos DB でのストレージ コストを最適化する
 
-Azure Cosmos DB では、無制限のストレージとスループットを提供します。 Azure Cosmos コンテナーまたはデータベース上でプロビジョニング/構成する必要のあるスループットとは異なり、ストレージは使用料に基づいて課金されます。 使用する論理ストレージに対してのみ課金され、ストレージを事前に予約する必要はありません。 ストレージは、Azure Cosmos DB コンテナーに対して追加または削除したデータに基づいて、自動的にスケール アップ/ダウンします。
+Azure Cosmos DB では、無制限のストレージとスループットを提供します。 Azure Cosmos コンテナーまたはデータベース上でプロビジョニング/構成する必要のあるスループットとは異なり、ストレージは使用料に基づいて課金されます。 使用する論理ストレージに対してのみ課金され、ストレージを事前に予約する必要はありません。 ストレージは、Azure Cosmos コンテナーに対して追加または削除したデータに基づいて、自動的にスケール アップ/ダウンします。
 
 ## <a name="storage-cost"></a>Storage コスト
 

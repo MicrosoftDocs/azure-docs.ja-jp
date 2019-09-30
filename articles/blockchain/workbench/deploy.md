@@ -1,27 +1,29 @@
 ---
-title: Azure Blockchain Workbench を展開する
-description: Azure Blockchain Workbench を展開する方法
+title: Azure Blockchain Workbench Preview のデプロイ
+description: Azure Blockchain Workbench Preview のデプロイ方法
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/06/2019
+ms.date: 09/05/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 4fffc54428b152a060594a5c107d3ac08457aaaa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ea18c784c6b5cf61013c131360d20349e67b1e5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65154658"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845284"
 ---
-# <a name="deploy-azure-blockchain-workbench"></a>Azure Blockchain Workbench を展開する
+# <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Blockchain Workbench Preview のデプロイ
 
-Azure Blockchain Workbench は、Azure Marketplace のソリューション テンプレートを使って展開されます。 テンプレートを使うと、ブロックチェーン アプリケーションの作成に必要なコンポーネントを簡単に展開できます。 展開が済むと、Blockchain Workbench を使ってクライアント アプリにアクセスし、ユーザーとブロックチェーン アプリケーションを作成および管理できます。
+Azure Blockchain Workbench Preview は、Azure Marketplace のソリューション テンプレートを使って展開されます。 テンプレートを使うと、ブロックチェーン アプリケーションの作成に必要なコンポーネントを簡単に展開できます。 展開が済むと、Blockchain Workbench を使ってクライアント アプリにアクセスし、ユーザーとブロックチェーン アプリケーションを作成および管理できます。
 
 Blockchain Workbench のコンポーネントについて詳しくは、「[Azure Blockchain Workbench アーキテクチャ](architecture.md)」をご覧ください。
+
+[!INCLUDE [Preview note](./includes/preview.md)]
 
 ## <a name="prepare-for-deployment"></a>デプロイの準備をする
 
@@ -36,7 +38,7 @@ Blockchain Workbench を使用すると、ブロックチェーン台帳を、�
 * Azure Storage アカウント (Standard LRS)
 * 仮想マシン スケール セット (容量 1)
 * Virtual Network リソース グループ (ロード バランサー、ネットワーク セキュリティ グループ、パブリック IP アドレス、仮想ネットワークを含む)
-* 省略可能:Azure Blockchain Service (Basic B0 の既定値)
+* Azure Blockchain Service。 以前の Blockchain Workbench デプロイを使用している場合、Azure Blockchain Workbench を再デプロイし、Azure Blockchain Service を使用することを検討してください。
 
 次に **myblockchain** リソース グループ内に作成されるデプロイの例を次に示します。
 
@@ -79,7 +81,7 @@ Azure Blockchain Workbench では、Azure AD 構成とアプリケーション�
     | SSH | **ssh-rsa** で始まる単一行形式の RSA 公開キー、または複数行の PEM 形式を使います。 SSH キーは、Linux と OS X では `ssh-keygen` を使って、Windows では PuTTYGen を使って、生成できます。 SSH キーについて詳しくは、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」をご覧ください。 |
     | Database and Blockchain password (データベースとブロックチェーンのパスワード) | 展開の一部として作成されるデータベースにアクセスするために使うパスワードを指定します。 このパスワードは、次の 4 つの要件のうちの 3 つを満たし、長さを 12 文字から 72 文字までで指定する必要があります。1 つの小文字、1 つの大文字、1 つの数字、番号記号 (#)、パーセント (%)、コンマ (,)、アスタリスク (*)、逆引用符 (\`)、二重引用符 (")、単一引用符 (')、ダッシュ (-)、セミコロン (;) 以外の 1 つの特殊文字。 |
     | Deployment region (展開するリージョン) | Blockchain Workbench リソースを展開する場所を指定します。 最善の可用性を得るには、 **[場所]** 設定と一致させる必要があります。 |
-    | サブスクリプション | 展開に使う Azure サブスクリプションを指定します。 |
+    | Subscription | 展開に使う Azure サブスクリプションを指定します。 |
     | リソース グループ | **[新規作成]** を選び、一意のリソース グループ名を指定して、新しいリソース グループを作成します。 |
     | Location | フレームワークを展開するリージョンを指定します。 |
 
@@ -200,7 +202,7 @@ Blockchain Workbench の展開には、Azure AD アプリケーションの登�
 
     |Setting  | 値  |
     |---------|---------|
-    |Name | `Blockchain API` |
+    |名前 | `Blockchain API` |
     |アプリケーションの種類 |Web アプリ/API|
     |[サインオン URL] | `https://blockchainapi` |
 
@@ -316,7 +318,7 @@ Azure Blockchain Workbench をデプロイした後は、デプロイした Bloc
 1. Azure Portal で、左側のナビゲーション ウィンドウの **[リソース グループ]** に移動し、削除するリソース グループを選択します。 
 2. **[リソース グループの削除]** を選択します。 リソース グループ名を入力して削除を確認し、 **[削除]** を選択します。
 
-    ![Delete resource group](media/deploy/delete-resource-group.png)
+    ![リソース グループの削除](media/deploy/delete-resource-group.png)
 
 ## <a name="next-steps"></a>次の手順
 

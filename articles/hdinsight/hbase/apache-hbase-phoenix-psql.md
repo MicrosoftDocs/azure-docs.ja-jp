@@ -1,6 +1,6 @@
 ---
 title: psql を使用した Apache Phoenix への一括読み込み - Azure HDInsight
-description: psql ツールを使用して Phoenix テーブルに一括読み込みデータを読み込みます。
+description: psql ツールを使用して Azure HDInsight の Apache Phoenix テーブルに一括読み込みデータを読み込みます。
 author: ashishthaps
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: fe6705dc3dedd521357f924dd433c7eacf88ba84
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43465a1c31b953620c45dfe759de7b6e1b4dc3c9
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64718629"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70917265"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>psql を使用した Apache Phoenix へのデータの一括読み込み
 
@@ -29,7 +29,7 @@ MapReduce では複数のスレッドが使用されるので、MapReduce によ
 
 データの読み込みを開始する場合は、Phoenix が有効になっていて、クエリのタイムアウト設定が正しいことを事前に確認します。  HDInsight クラスターの [Apache Ambari](https://ambari.apache.org/) ダッシュ ボードにアクセスし、[HBase] を選択し、[構成] タブを選択します。下にスクロールし、次のように Apache Phoenix が `enabled` に設定されていることを確認します。
 
-![Apache Phoenix HDInsight クラスターの設定](./media/apache-hbase-phoenix-psql/ambari-phoenix.png)
+![Apache Phoenix HDInsight クラスターの設定](./media/apache-hbase-phoenix-psql/apache-ambari-phoenix.png)
 
 ### <a name="use-psql-to-bulk-load-tables"></a>`psql` を使用してテーブルの一括読み込みを行う
 

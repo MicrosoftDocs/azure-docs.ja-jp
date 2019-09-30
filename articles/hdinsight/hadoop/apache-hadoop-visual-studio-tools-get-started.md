@@ -1,5 +1,5 @@
 ---
-title: Data Lake Tools for Visual Studio を使用した Apache Hadoop への接続 - Azure HDInsight
+title: Apache Hadoop と Data Lake Tools for Visual Studio - Azure HDInsight
 description: Data Lake Tools for Visual Studio をインストールし、それを使用して Azure HDInsight 上の ApacheHadoop クラスターに接続し、Hive クエリを実行する方法について説明します。
 keywords: Hadoop ツール, Hive クエリ, Visual Studio, Visual Studio Hadoop
 services: hdinsight
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 485f3a4b6a5fde532229873fe1f3feaa30ece523
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 44a076ee6979e207ac3992f76d3b89cc188d53b8
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450199"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076288"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Apache Hive クエリを実行する
 
@@ -46,7 +46,7 @@ Data Lake Tools for Visual Studio を使用して、Azure Data Lake Analytics �
 
   既存のインストールの場合は、メニュー バーから **[ツール]**  >  **[ツールと機能を取得...]** に移動し、Visual Studio インストーラーを開きます。  その後、少なくとも **Azure 開発**または**データの保存と処理**のワークロードを選択してください。
 
-  ![Visual Studio インストーラーのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/vs2017_installation.png)
+  ![Visual Studio インストーラーのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/vs-2017-installation.png)
 
 * Visual Studio 2013 および 2015  
   [Data Lake Tools をダウンロードします](https://www.microsoft.com/download/details.aspx?id=49504)。 お使いの Visual Studio バージョンに対応する Data Lake Tools のバージョンを選択します。  
@@ -83,7 +83,7 @@ Azure サブスクリプションに接続するには:
 
 4. サーバー エクスプローラーで、既存の HDInsight クラスターの一覧が表示されます。 クラスターが 1 つもない場合は、Azure ポータル、Azure PowerShell、または HDInsight SDK を使用して作成できます。 詳細については、[HDInsight クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
-   ![サーバー エクスプローラーの Data Lake Tools for Visual Studio クラスター一覧のスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "サーバー エクスプローラーの Data Lake Tools for Visual Studio クラスター一覧")
+   ![サーバー エクスプローラーの Data Lake Tools for Visual Studio クラスター一覧](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-server-explorer.png "サーバー エクスプローラーの Data Lake Tools for Visual Studio クラスター一覧")
 
 5. HDInsight クラスターを展開します。 **Hive データベース**、既定のストレージ アカウント、リンクされたストレージ アカウント、および **Hadoop サービス ログ**が表示されます。 さらに、エンティティを展開できます。
 
@@ -113,11 +113,11 @@ Visual Studio から質問をしたりフィードバックを提供したりす
 ## <a name="explore-linked-resources"></a>リンクされたリソースを調べる
 サーバー エクスプローラーで、既定のストレージ アカウント、すべてのリンクされたストレージ アカウントを確認できます。 既定のストレージ アカウントを展開すると、そのストレージ アカウントのコンテナーを表示できます。 既定のストレージ アカウントと既定のコンテナーがマークされます。 コンテナーのコンテンツを表示するには、コンテナーを右クリックします。
 
-![サーバー エクスプローラーの Data Lake Tools for Visual Studio クラスターのリンクされたリソース一覧のスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png "リンクされたリソース一覧")
+![サーバー エクスプローラーの Data Lake Tools for Visual Studio クラスターのリンクされたリソース](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-linked-resources.png "リンクされたリソース一覧")
 
 コンテナーを開くと、次のボタンを使用して、BLOB をアップロード、削除、およびダウンロードすることができます。
 
-![サーバー エクスプローラーでの Data Lake Tools for Visual Studio の BLOB 操作のスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png "サーバー エクスプローラーでの BLOB のアップロード、削除、およびダウンロード")
+![サーバー エクスプローラーでの Data Lake Tools for Visual Studio の BLOB 操作](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-blob-operations.png "サーバー エクスプローラーでの BLOB のアップロード、削除、およびダウンロード")
 
 ## <a name="run-interactive-apache-hive-queries"></a>対話型 Apache Hive クエリを実行する
 [Apache Hive](https://hive.apache.org) は、Hadoop に組み込まれているデータ ウェアハウス インフラストラクチャです。 Hive は、データの概要、クエリ、および分析に使用されます。 Data Lake Tools for Visual Studio を使用して、Visual Studio から Hive クエリを実行できます。 Hive の詳細については、[HDInsight での Apache Hive の使用](hdinsight-use-hive.md)に関するページを参照してください。
@@ -195,13 +195,13 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
 
       **[対話型]** が選択されていることを確認してから、 **[実行]** を選択します。
 
-      ![クエリと実行のスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/execute.png)  
+      ![クエリと実行のスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-execute.png)  
 
     * **Batch**  
 
       **[バッチ]** が選択されていることを確認してから、 **[送信]** を選択します。  高度な送信オプションを選択した場合は、スクリプトの **[ジョブ名]** 、 **[引数]** 、 **[追加の構成]** 、 **[状態ディレクトリ]** を構成します。
 
-      ![クエリとバッチのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/batch.png)  
+      ![Visual Studio のクエリ オプションとバッチ オプション](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-query-batch.png)  
 
       ![HDInsight Hadoop の Hive クエリのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-submit-jobs-advanced.png "クエリの送信")
 
@@ -224,7 +224,7 @@ Hive ソリューションを作成して実行するには:
 
 ジョブの概要は、**バッチ** モードと**対話**モードとで若干異なります。
 
-![ジョブの概要](./media/apache-hadoop-visual-studio-tools-get-started/jobSummary.png "Hive ジョブの概要")
+![Apache Hive ジョブ概要タブの表示](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-summary.png "Hive ジョブ概要")
 
 **[更新]** ボタンを使用して、ジョブのステータスが **[完了]** に変更されるまで、ステータスを更新します。  
 
@@ -232,7 +232,7 @@ Hive ソリューションを作成して実行するには:
 
 * **対話**モードのジョブ詳細については、 **[出力]** タブおよび **[HiveServer 2 出力]** タブを参照してください。
 
-  ![ジョブの詳細](./media/apache-hadoop-visual-studio-tools-get-started/tabs.png "Hive ジョブの詳細")
+  ![Visual Studio Apache Hive ジョブの詳細](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-job-details.png "Hive ジョブの詳細")
 
 ### <a name="view-job-graph"></a>ジョブ グラフの表示
 
@@ -242,14 +242,13 @@ Hive ソリューションを作成して実行するには:
 
 Tez アプリケーションが起動されていない場合は、実行エンジンとして Tez を指定してもジョブ グラフが表示されないことがあります。  これは、ジョブに DML ステートメントが含まれていないか、または DML ステートメントが Tez アプリケーションを起動せずに戻ることがあるために発生する可能性があります。 たとえば、`SELECT * FROM table1`は Tez アプリケーションを起動しません。
 
-![ジョブ グラフ](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png "Hive ジョブの概要")
-
+![Visual Studio Apache Hive ジョブのグラフ](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-fast-path-hive-execution.png "Hive ジョブの概要")
 
 ### <a name="task-execution-detail"></a>タスク実行の詳細
 
 ジョブ グラフから **[タスク実行の詳細]** を選択して、構造化および視覚化された Hive ジョブの情報を取得できます。 ジョブの詳細を取得することもできます。 パフォーマンスの問題が発生した場合に、このビューを使用して、問題の詳細を取得できます。 たとえば、各タスクの動作の情報と、各タスクの詳細情報 (データの読み取り/書き込み、開始時刻/終了時刻のスケジュールなど) を取得できます。 これらの情報を使用して、視覚化された情報に基づくジョブの構成やシステム アーキテクチャを調整します。
 
-![Data Lake Visual Studio Tools のタスク実行ビュー ウィンドウのスクリーンショット](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png "タスク実行ビュー")
+![Data Lake Visual Studio Tools のタスク実行ビュー ウィンドウ](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-task-execution-view.png "タスク実行ビュー")
 
 
 ### <a name="view-hive-jobs"></a>Hive ジョブの表示

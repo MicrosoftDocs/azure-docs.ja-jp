@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: a535510ce56147f708f1cd8219cf898e6e0df36b
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 42819749b019b4b1db77942e22e09ea31a137fe7
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67483790"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813860"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm 用 Apache Storm トポロジとコンポーネントの例
 
@@ -31,7 +31,6 @@ HDInsight 上の [Apache Storm](https://storm.apache.org/) で使用するため
 | [HDInsight 上の Apache Storm を使用した Azure Event Hubs から Apache HBase への抽出、変換、読み込み (ETL)][b4b68194] |Event Hubs、HBase |C# |
 | [HDInsight 上の Apache Storm から Azure サービスを使用するためのテンプレート C# Storm トポロジ プロジェクト][ce0c02a2] |Event Hubs、Cosmos DB、SQL Database、HBase、SignalR |C#、Java |
 | [HDInsight 上の Apache Storm を使用して Azure Event Hubs から読み取るためのスケーラビリティ ベンチマーク][d6c540e3] |メッセージ スループット、Event Hubs、SQL Database |C#、Java |
-| [HDInsight 上の Apache Storm で Python を使用する](apache-storm-develop-python-topology.md) |Flux トポロジを使用する Python コンポーネント |Python |
 | [HDInsight 上の Apache Storm で Apache Kafka を使用する](../hdinsight-apache-storm-with-kafka.md) | Apache Storm を使用した Apache Kafka の読み取りと書き込み | Java |
 
 > [!WARNING]  
@@ -39,7 +38,11 @@ HDInsight 上の [Apache Storm](https://storm.apache.org/) で使用するため
 >
 > Linux は、バージョン 3.4 以降の HDInsight で使用できる唯一のオペレーティング システムです。
 
-### <a name="next-steps"></a>次の手順
+## <a name="python-only"></a>Python のみ
+
+Flux トポロジを使用した Python コンポーネントの例については、「[HDInsight での Python を使用した Apache Storm トポロジの開発](apache-storm-develop-python-topology.md)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
 
 * [Azure HDInsight で Apache Storm トポロジを作成、監視する](./apache-storm-quickstart.md)
 * [HDInsight 上の Apache Storm で Apache Storm トポロジをデプロイおよび管理する方法について][6eb0d3b8]

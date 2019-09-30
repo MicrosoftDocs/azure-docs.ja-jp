@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af98633e1dfdbe6392199ade282a918c6134a033
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: c0b1471abd7e057af919ed274547daf94d356c2b
+ms.sourcegitcommit: ac29357a47cc05afdf0f84834de5277598f4d87c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347406"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70213610"
 ---
 # <a name="tutorial-integrate-the-cloud-security-fabric-with-azure-active-directory"></a>チュートリアル:The Cloud Security Fabric と Azure Active Directory の統合
 
@@ -104,7 +104,7 @@ The Cloud Security Fabric に対する Azure AD SSO を構成してテストす�
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-5. **[署名]**   オプションを要件に応じて変更するには、 **[編集]**   をクリックして  **[SAML 署名証明書]**   ダイアログを開きます。
+5. **[署名]** オプションを要件に応じて変更するには、 **[編集]** ボタンをクリックして **[SAML 署名証明書]** ダイアログを開きます。
 
     ![SAML 応答](./media/ciscocloudlock-tutorial/saml.png)
 
@@ -153,7 +153,7 @@ The Cloud Security Fabric に対する Azure AD SSO を構成してテストす�
 
 ### <a name="create-the-cloud-security-fabric-test-user"></a>The Cloud Security Fabric テスト ユーザーの作成
 
-このセクションでは、The Cloud Security Fabric で B.Simon というユーザーを作成します。  [The Cloud Security Fabric サポート チーム](mailto:support@cloudlock.com)と協力して、The Cloud Security Fabric プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、The Cloud Security Fabric で B.Simon というユーザーを作成します。 [The Cloud Security Fabric サポート チーム](mailto:support@cloudlock.com)と協力して、The Cloud Security Fabric プラットフォームでユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-sso"></a>SSO のテスト 
 

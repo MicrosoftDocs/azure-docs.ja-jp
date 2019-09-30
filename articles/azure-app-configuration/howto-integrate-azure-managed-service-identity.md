@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3977991386dbcd07e92f21d1ac541f486b4f7f0a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4318c4b4d8f1b1f0974d0fae0a2ae5bd6e94b593
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393646"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076530"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Azure マネージド ID と統合する
 
@@ -49,11 +49,13 @@ Azure App Configuration とその .NET Core、.NET、Java Spring のクライア
 
 ポータルでマネージド ID を設定するには、最初に通常の方法でアプリケーションを作成した後、機能を有効にします。
 
-1. 通常どおりに [Azure portal](https://portal.azure.com) でアプリを作成します。 ポータルでそのアプリに移動します。
+1. 通常どおりに、[Azure portal](https://portal.azure.com) で App Services インスタンスを作成します。 ポータルでそのアプリに移動します。
 
 2. 左側のウィンドウで **[設定]** グループまで下へスクロールして、 **[ID]** を選択します。
 
 3. **[システム割り当て済み]** タブで、 **[状態]** を **[オン]** に切り替えて、 **[保存]** を選択します。
+
+4. システムで割り当てられたマネージド ID を有効にするように求められたら、 **[はい]** を指定します。
 
     ![App Service でのマネージド ID の設定](./media/set-managed-identity-app-service.png)
 
@@ -75,7 +77,9 @@ Azure App Configuration とその .NET Core、.NET、Java Spring のクライア
 
 ## <a name="use-a-managed-identity"></a>マネージド ID の使用
 
-1. *appsettings.json* を開き、以下のスクリプトを追加します。 *\<service_endpoint>* を、角かっこも含めて、アプリ構成ストアへの URL に置き換えます。
+1. Azure portal の構成画面に移動して、ご利用のアプリ構成ストアへの URL を見つけてから、 **[アクセス キー]** タブをクリックします。
+
+2. *appsettings.json* を開き、以下のスクリプトを追加します。 *\<service_endpoint>* を、角かっこも含めて、ご利用のアプリ構成ストアへの URL に置き換えます。 
 
     ```json
     "AppConfig": {
@@ -83,7 +87,7 @@ Azure App Configuration とその .NET Core、.NET、Java Spring のクライア
     }
     ```
 
-2. *Program.cs* を開き、`config.AddAzureAppConfiguration()` メソッドを置換して `CreateWebHostBuilder` メソッドを更新します。
+3. *Program.cs* を開き、`config.AddAzureAppConfiguration()` メソッドを置換して `CreateWebHostBuilder` メソッドを更新します。
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -110,6 +114,13 @@ Kudu ビルド サーバーを使用したアプリへのローカル Git のデ
 [!INCLUDE [Configure a deployment user](../../includes/configure-deployment-user-no-h.md)]
 
 ### <a name="enable-local-git-with-kudu"></a>Kudu を使用するローカル Git を有効にする
+ご自分のアプリ用にローカル GIT リポジトリをまだ用意していない場合は、アプリのプロジェクト ディレクトリから次のコマンドを実行して、リポジトリを初期化する必要があります。
+
+```cmd
+git init
+git add .
+git commit -m "Initial version"
+```
 
 Kudu ビルド サーバーを使用したアプリへのローカル Git のデプロイを有効にするには、Cloud Shell で [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) を実行します。
 

@@ -40,7 +40,7 @@ Azure SQL データベース。 以下のいずれかのクイック スター�
   > [!IMPORTANT]
   > この記事のスクリプトは、Adventure Works データベースを使用するように記述されています。 マネージド インスタンスの場合は、Adventure Works データベースをインスタンス データベースにインポートするか、Wide World Importers データベースを使用するようにこの記事のスクリプトを修正する必要があります。
 
-## <a name="install-the-latest-ssms"></a>最新の SSMS をインストールします。
+## <a name="install-the-latest-ssms"></a>最新の SSMS をインストールする
 
 開始する前に、最新の [SSMS][ssms-install-latest-84g] がインストールされていることを確認します。
 
@@ -62,11 +62,11 @@ SMSS で、Azure SQL Database サーバーに接続します。
 > Azure SQL Database サーバーは、ポート 1433 でリッスンします。 企業のファイアウォールの外側から SQL Database サーバーに接続するには、そのファイアウォールでこのポートが開かれている必要があります。
 >
 
-1. SSMS を開きます。 **[サーバーへの接続]** ダイアログ ボックスが表示されます。
+1. SSMS を開きます。 **[サーバーに接続]** ダイアログ ボックスが表示されます。
 
 2. 次の情報を入力します。
 
-   | Setting      | 推奨値    | 説明 |
+   | 設定      | 推奨値    | 説明 |
    | ------------ | ------------------ | ----------- |
    | **サーバーの種類** | データベース エンジン | 必須値。 |
    | **サーバー名** | 完全修飾サーバー名 | 例: **mynewserver20170313.database.windows.net** |
@@ -75,9 +75,9 @@ SMSS で、Azure SQL Database サーバーに接続します。
    | **パスワード** | サーバー管理者アカウントのパスワード | サーバーを作成するために使用するサーバー管理者アカウントのパスワード。 |
    ||||
 
-   ![[サーバーへの接続]](./media/sql-database-connect-query-ssms/connect.png)  
+   ![[サーバーに接続]](./media/sql-database-connect-query-ssms/connect.png)  
 
-3. **[サーバーへの接続]** ダイアログ ボックスの **[オプション]** を選択します。 **[データベースへの接続]** ドロップダウン メニューで、**mySampleDatabase** を選択します。
+3. **[サーバーに接続]** ダイアログ ボックスの **[オプション]** を選択します。 **[データベースへの接続]** ドロップダウン メニューで、**mySampleDatabase** を選択します。
 
    ![サーバー上のデータベースに接続](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
@@ -102,7 +102,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-3. ツールバーで、 **[実行する]** を選択して、`Product` および `ProductCategory` テーブルからデータを取得します。
+3. ツールバーで、 **[実行]** を選択して、`Product` および `ProductCategory` テーブルからデータを取得します。
 
     ![Product と ProductCategory のテーブルからデータを取得するためのクエリ](./media/sql-database-connect-query-ssms/query2.png)
 
@@ -131,7 +131,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
            ,GETDATE() );
    ```
 
-2. **[実行する]** を選択して、新しい行を `Product` テーブルに挿入します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
+2. **[実行]** を選択して、新しい行を `Product` テーブルに挿入します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
 
 ## <a name="view-the-result"></a>結果を表示する
 
@@ -142,7 +142,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
    WHERE Name='myNewProduct'
    ```
 
-2. **[Execute (実行)]** を選択します。 次の結果が表示されます。
+2. **[実行]** を選択します。 次の結果が表示されます。
 
    ![Product テーブルに対するクエリの結果](./media/sql-database-connect-query-ssms/result.png)
 
@@ -158,7 +158,7 @@ SMSS で、Azure SQL Database サーバーに接続します。
    WHERE Name = 'myNewProduct';
    ```
 
-2. **[実行する]** を選択して、`Product` テーブルの指定した行を更新します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
+2. **[実行]** を選択して、`Product` テーブルの指定した行を更新します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
 
 ## <a name="delete-data"></a>データの削除
 
@@ -171,19 +171,19 @@ SMSS で、Azure SQL Database サーバーに接続します。
    WHERE Name = 'myNewProduct';
    ```
 
-2. **[実行する]** を選択して、`Product` テーブルの指定した行を削除します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
+2. **[実行]** を選択して、`Product` テーブルの指定した行を削除します。 **メッセージ** ペインに、 **(1 行処理されました)** と表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
 - SSMS については、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) のページを参照してください。
 - Azure Portal を使用して接続とクエリを実行するには、[Azure Portal の SQL クエリ エディターを使用した接続とクエリ実行](sql-database-connect-query-portal.md)に関するページをご覧ください。
-- Visual Studio Code を使用して接続とデータの照会を行うには、[Visual Studio Code を使った接続とデータの照会](sql-database-connect-query-vscode.md)に関するページを参照してください。
-- .NET を使用して接続とデータの照会を行うには、[.NET を使った接続とデータの照会](sql-database-connect-query-dotnet.md)に関するページを参照してください。
-- PHP を使用して接続とデータの照会を行うには、[PHP を使った接続とデータの照会](sql-database-connect-query-php.md)に関するページを参照してください。
-- Node.js を使用して接続とデータの照会を行うには、[Node.js を使った接続とデータの照会](sql-database-connect-query-nodejs.md)に関するページを参照してください。
-- Java を使用して接続とデータの照会を行うには、[Java を使った接続とデータの照会](sql-database-connect-query-java.md)に関するページを参照してください。
-- Python を使用して接続とデータの照会を行うには、[Python を使った接続とデータの照会](sql-database-connect-query-python.md)に関するページを参照してください。
-- Ruby を使用して接続とデータの照会を行うには、[Ruby を使った接続とデータの照会](sql-database-connect-query-ruby.md)に関するページを参照してください。
+- Visual Studio Code を使用して接続とクエリを実行するには、[Visual Studio Code を使用した接続とクエリ実行](sql-database-connect-query-vscode.md)に関するページを参照してください。
+- .NET を使用して接続とクエリを実行するには、[.NET を使用した接続とクエリ実行](sql-database-connect-query-dotnet.md)に関するページを参照してください。
+- PHP を使用して接続とクエリを実行するには、[PHP を使用した接続とクエリ実行](sql-database-connect-query-php.md)に関するページを参照してください。
+- Node.js を使用して接続とクエリを実行するには、[Node.js を使用した接続とクエリ実行](sql-database-connect-query-nodejs.md)に関するページを参照してください。
+- Java を使用して接続とクエリを実行するには、[Java を使用した接続とクエリ実行](sql-database-connect-query-java.md)に関するページを参照してください。
+- Python を使用して接続とクエリを実行するには、[Python を使用した接続とクエリ実行](sql-database-connect-query-python.md)に関するページを参照してください。
+- Ruby を使用して接続とクエリを実行するには、[Ruby を使用した接続とクエリ実行](sql-database-connect-query-ruby.md)に関するページを参照してください。
 
 <!-- Article link references. -->
 

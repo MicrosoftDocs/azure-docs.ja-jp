@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 61cdcb98fc5c0947a25954161676c55ebf902688
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c6cf30a8d4f750aa8e1c2b7531c4a604642e88b4
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720725"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71092021"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Jira からデータをコピーする (プレビュー)
 
@@ -27,6 +27,11 @@ ms.locfileid: "68720725"
 > このコネクタは、現在プレビューの段階です。 実際にお試しいただき、フィードバックをお寄せください。 ソリューションでプレビュー版コネクタの依存関係を取得したい場合、[Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
+
+この Jira コネクタは、次のアクティビティでサポートされます。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
 
 Jira から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -47,7 +52,7 @@ Jira のリンクされたサービスでは、次のプロパティがサポー
 | type | type プロパティは、次のように設定する必要があります。**Jira** | はい |
 | host | Jira サービスの IP アドレスまたはホスト名。 (たとえば、jira.example.com)  | はい |
 | port | Jira サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は、HTTPS 経由で接続する場合は 443、HTTP 経由で接続する場合は 8080 です。  | いいえ |
-| userName | Jira サービスへのアクセスに使用するユーザー名。  | はい |
+| username | Jira サービスへのアクセスに使用するユーザー名。  | はい |
 | password | username フィールドに指定したユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ |
@@ -145,6 +150,10 @@ Jira からデータをコピーするは、コピー アクティビティの�
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。

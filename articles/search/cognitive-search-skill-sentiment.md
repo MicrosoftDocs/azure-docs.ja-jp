@@ -2,20 +2,19 @@
 title: センチメント コグニティブ検索スキル - Azure Search
 description: Azure Search のエンリッチメント パイプラインのテキストから正と負のセンチメント スコアを抽出します。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: df5e33cfc19d4e91fdf4eddc50b25a2b380f0dc4
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 8610506b7d62542e9eb801b06dd49a5e130fa7fa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638939"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265735"
 ---
 #   <a name="sentiment-cognitive-skill"></a>センチメント コグニティブ スキル
 

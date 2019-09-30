@@ -2,23 +2,20 @@
 title: Data Factory の関数およびシステム変数 | Microsoft Docs
 description: Azure Data Factory の関数およびシステム変数の一覧を提供する
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-services: data-factory
-ms.assetid: b6b3c2ae-b0e8-4e28-90d8-daf20421660d
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 243923fba5b81ef68d6e4e560182d228e3b8ad1a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60486517"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70139759"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]
@@ -82,7 +79,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 | --- | --- | --- | --- |
 | Time |AddHours(X,Y) |X:DateTime <br/><br/>Y: int |指定した時刻 X に Y 時間を追加します。 <br/><br/>例: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Time |AddMinutes(X,Y) |X:DateTime <br/><br/>Y: int |X に Y 分を追加します。<br/><br/>例: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |
-| Time |StartOfHour(X) |X:DateTime |X の時間コンポーネントで表される時間の開始時刻を取得します。 <br/><br/>例: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
+| Time |StartOfHour(X) |X:Datetime |X の時間コンポーネントで表される時間の開始時刻を取得します。 <br/><br/>例: `StartOfHour of 9/15/2013 05: 10:23 PM is 9/15/2013 05: 00:00 PM` |
 | Date |AddDays(X,Y) |X:DateTime<br/><br/>Y: int |X に Y 日を追加します。 <br/><br/>例:9/15/2013 12:00:00 PM + 2 days = 9/17/2013 12:00:00 PM<br/><br/>Y を負数に指定して、日数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 2 days = 9/13/2013 12:00:00 PM`. |
 | Date |AddMonths(X,Y) |X:DateTime<br/><br/>Y: int |X に Y か月を追加します。<br/><br/>`Example: 9/15/2013 12:00:00 PM + 1 month = 10/15/2013 12:00:00 PM`<br/><br/>Y を負数に指定して、月数を減算することもできます。<br/><br/>例: `9/15/2013 12:00:00 PM - 1 month = 8/15/2013 12:00:00 PM`.|
 | Date |AddQuarters(X,Y) |X:DateTime <br/><br/>Y: int |X に Y * 3 か月を追加します。<br/><br/>例: `9/15/2013 12:00:00 PM + 1 quarter = 12/15/2013 12:00:00 PM` |

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7acfa31434534eb3618b8a279ea6cff543fae076
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: 9ed7d812a9c1cba356277a4454234531ce8d41ef
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949774"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616145"
 ---
 # <a name="manage-your-two-factor-verification-method-settings"></a>2 要素認証方法の設定を管理する
 
@@ -135,6 +135,10 @@ Microsoft Authenticator アプリからアカウントを削除することが�
 
 ## <a name="next-steps"></a>次の手順
 
-- [2 要素認証で問題が発生した場合](multi-factor-authentication-end-user-troubleshoot.md)のトラブルシューティングのヒントとヘルプを習得します。
+2 要素認証を追加または更新したら、アプリ パスワードを管理したり、サインインしたり、2 要素認証関連の一般的な問題でサポートを受けたりできます。
 
 - 2 要素認証がサポートされていないアプリについて、[2 要素認証のアプリ パスワードを管理](multi-factor-authentication-end-user-app-passwords.md)します。
+
+- [2 要素認証を使用してサインインする](multi-factor-authentication-end-user-signin.md)
+
+- [2 要素認証のサポートを受ける](multi-factor-authentication-end-user-troubleshoot.md)

@@ -12,19 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 719939b393b01938a4d4faa41a5dca163b2a8949
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 81b1f06238b8205e72fd989bb581fba39423f7c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834704"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193233"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する
+
+> [!NOTE]
+>  呼び出す予定のリソースをサーバーに対して指定しないと、サーバーではそのリソースの条件付きアクセス ポリシーがトリガーされません。 このため、MFA をトリガーするには、URL にリソースを含める必要があります。 
+>
 
 Azure Active Directory (Azure AD) が OAuth 2.0 を使用することにより、ユーザーは Azure AD テナントの Web アプリケーションと Web API へのアクセスを承認することができます。 本ガイドでは、[オープンソース ライブラリ](active-directory-authentication-libraries.md)を利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
 
@@ -175,7 +179,7 @@ Web API リソースから `invalid_token` エラー コードが返された場
 
 | パラメーター | 説明 |
 | --- | --- |
-| access_token |署名された JSON Web トークン (JWT) としての要求された[アクセス トークン](access-tokens.md)です。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。 |
+| access_token |要求されたアクセス トークン。  これは不透明な文字列であり、リソースが受け取ることになっているものによって異なります。クライアントが確認するためのものではありません。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。 |
 | token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750))](https://www.rfc-editor.org/rfc/rfc6750.txt)」をご覧ください。 |
 | expires_in |アクセス トークンの有効期間 (秒)。 |
 | expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
@@ -346,3 +350,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | correlation_id |コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
 エラー コードとクライアントに推奨される対処法については、「[トークン エンドポイント エラーのエラー コード](#error-codes-for-token-endpoint-errors)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+Azure AD v1.0 エンドポイントの詳細と、Web アプリケーションと Web API に認証と承認を追加する方法については、[サンプル アプリケーション](sample-v1-code.md)に関するページをご覧ください。

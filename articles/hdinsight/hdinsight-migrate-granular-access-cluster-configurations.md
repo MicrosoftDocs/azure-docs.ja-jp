@@ -1,28 +1,28 @@
 ---
-title: クラスター構成できめ細かなロールベースのアクセスに移行する - Azure HDInsight
+title: 詳細なロール ベースのアクセスに移行する - Azure HDInsight クラスター構成
 description: HDInsight クラスター構成の詳細なロールベースのアクセスを移行の一環として求める変更について説明します。
 author: tylerfox
 ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.openlocfilehash: a77310d0e45f095260d77ead0cfe14a3ce0ebd8e
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 08/22/2019
+ms.openlocfilehash: 9eb77b3e4066712aecebee4660d50baf45957cb8
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69623840"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70733231"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>クラスター構成できめ細かなロールベースのアクセスに移行する
 
-機密情報を取得するための、よりきめ細かいロールベースのアクセスのサポートに対して、いくつかの重要な変更が導入されています。 影響を受ける**エンティティまたはシナリオ**の中のいずれかを使用している場合は、これらの変更の一環として、何らかの[アクションが必要になる場合があります](#am-i-affected-by-these-changes)。
+機密情報を取得するための、よりきめ細かいロールベースのアクセスのサポートに対して、いくつかの重要な変更が導入されています。 [影響を受けるエンティティまたはシナリオ](#am-i-affected-by-these-changes)のいずれかを使用している場合は、これらの変更の一環として、**2019 年 9 月 3 日までに**何らかのアクションが必要になる場合があります。
 
 ## <a name="what-is-changing"></a>何が変わるのですか?
 
 以前は、所有者、共同作成者、または閲覧者の [RBAC ロール](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)を保有するクラスター ユーザーが HDInsight API を介してシークレットを取得できました。これは、`*/read` アクセス許可を持っていればだれでも利用できたためです。 シークレットは、ユーザーのロールよりもさらに高度なアクセス権を取得するために使用できる値として定義されます。 これらには、クラスター ゲートウェイ HTTP 資格情報、ストレージ アカウント キー、およびデータベースの資格情報などの値が含まれます。
 
-今後、これらのシークレットにアクセスするには `Microsoft.HDInsight/clusters/configurations/action` アクセス許可が必要になります。つまり、閲覧者ロールを持つユーザーからはアクセスできなくなります。 このアクセス許可を持つロールは、共同作成者、所有者、新しい HDInsight クラスター オペレーター ロールです (以下で詳しく説明します)。
+2019 年 9 月 3 日以降、これらのシークレットにアクセスするには `Microsoft.HDInsight/clusters/configurations/action` アクセス許可が必要になります。つまり、閲覧者ロールを持つユーザーからはアクセスできなくなります。 このアクセス許可を持つロールは、共同作成者、所有者、新しい HDInsight クラスター オペレーター ロールです (以下で詳しく説明します)。
 
 また、共同作成者または所有者の管理アクセス許可を付与されなくても、シークレットを取得することができる新しい [HDInsight クラスター オペレーター](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) ロールも導入されます。 まとめると次のようになります。
 
@@ -59,13 +59,13 @@ HDInsight クラスター オペレーター ロールの割り当てを特定�
 
 - [**GET /configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (機密情報が削除される)
     - 以前は、個々の構成の種類 (機密情報を含む) を取得するために使用されていました。
-    - この API 呼び出しからは、シークレットを省略した状態で個々の構成の種類が返されるようになります。 シークレットを含むすべての構成を取得するには、新しい POST/configurations 呼び出しを使用します。 ゲートウェイ設定だけを取得するには、新しい POST/getGatewaySettings 呼び出しを使用します。
+    - 2019 年 9 月 3 日以降、この API 呼び出しからは、シークレットを省略した状態で個々の構成の種類が返されるようになります。 シークレットを含むすべての構成を取得するには、新しい POST/configurations 呼び出しを使用します。 ゲートウェイ設定だけを取得するには、新しい POST/getGatewaySettings 呼び出しを使用します。
 - [**GET /configurations**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-configuration) (非推奨)
     - 以前は、すべての構成 (機密情報を含む) を取得するために使用されていました。
-    - この API 呼び出しはサポートされなくなります。 今後すべての構成を取得するには、新しい POST /configurations 呼び出しを使用します。 機密性の高いパラメーターを省略した状態で構成を取得するには、GET /configurations/{configurationName} 呼び出しを使用します。
+    - 2019 年 9 月 3 日以降、この API 呼び出しは非推奨となり、サポートされなくなります。 今後すべての構成を取得するには、新しい POST /configurations 呼び出しを使用します。 機密性の高いパラメーターを省略した状態で構成を取得するには、GET /configurations/{configurationName} 呼び出しを使用します。
 - [**POST /configurations/{configurationName}** ](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings) (非推奨)
     - 以前はゲートウェイの資格情報を更新するために使用されていました。
-    - この API 呼び出しは非推奨となり、サポートされなくなります。 代わりに、新しい POST/updateGatewaySettings を使用してください。
+    - 2019 年 9 月 3 日以降、この API 呼び出しは非推奨となり、サポートされなくなります。 代わりに、新しい POST/updateGatewaySettings を使用してください。
 
 次の代わりとなる API が追加されました。</span>
 
@@ -201,7 +201,7 @@ Azure portal を使用して、HDInsight クラスター オペレーター ロ�
 
 ### <a name="what-will-happen-if-i-take-no-action"></a>操作を行わない場合、どうなりますか?
 
-`GET /configurations` と `POST /configurations/gateway` の呼び出しによって、情報が返されなくなります。また、`GET /configurations/{configurationName}` 呼び出しでは、ストレージ アカウント キーやクラスター パスワードなどの機密性の高いパラメーターは返されなくなります。 これは、対応する SDK メソッドと PowerShell コマンドレットにも当てはまります。
+2019 年 9 月 3 日以降、`GET /configurations` と `POST /configurations/gateway` の呼び出しによって、情報が返されなくなります。また、`GET /configurations/{configurationName}` 呼び出しでは、ストレージ アカウント キーやクラスター パスワードなどの機密性の高いパラメーターは返されなくなります。 これは、対応する SDK メソッドと PowerShell コマンドレットにも当てはまります。
 
 上記の Visual Studio、VSCode、IntelliJ または Eclipse 用のいずれかのツールで以前のバージョンを使用している場合は、更新するまで機能しなくなります。
 

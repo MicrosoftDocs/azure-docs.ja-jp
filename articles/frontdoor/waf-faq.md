@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 06/10/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: c993e465bc439ff52cba3241dbff64b7655d1f12
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: f7d205920704ce8aedf3b2e3c07bd429b3c64964
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849171"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375347"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Azure Web アプリケーション ファイアウォールに関してよく寄せられる質問
 
@@ -53,12 +53,6 @@ WAF のポリシーをグローバルにデプロイするには、通常約 5 �
 
 WAF は、Front Door Service と統合されると、グローバルなリソースになります。 同じ構成がすべての Front Door の場所に適用されます。
  
-## <a name="how-do-i-limit-access-to-my-back-end-to-be-from-front-door-only"></a>バックエンドへのアクセスを Front Door からのみに制限するにはどうすればよいですか?
-
-Front Door の送信 IP アドレス範囲のみを許可し、インターネットからの直接アクセスを拒否するように、バックエンドで IP アクセス制御リストを構成できます。 仮想ネットワークで使用するためのサービス タグがサポートされています。 さらに、X-Forwarded-Host HTTP ヘッダー フィールドが Web アプリケーションに対して有効であることを確認できます。
-
-
-
 
 ## <a name="which-azure-waf-options-should-i-choose"></a>どの Azure WAF オプションを選択すればよいですか?
 
@@ -72,6 +66,9 @@ Azure に WAF ポリシーを適用する場合、2 つの選択肢がありま�
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>DDoS 保護は Front Door と統合されていますか? 
 
 Azure のネットワーク エッジにグローバルに分散された Azure Front Door は、大量の攻撃を受け止めて地理的に隔離することができます。 既知のシグネチャを持つ http(s) 攻撃を自動的にブロックおよびレート制限するためのカスタム WAF ポリシーを作成できます。 さらに、バックエンドがデプロイされている VNet で DDoS Protection Standard を有効にすることができます。 Azure DDoS Protection Standard をご利用のお客様は、コスト保護、SLA 保証、攻撃の際に DDoS Rapid Response Team の専門家に相談してすぐに支援を受けるなど、追加の利点を得ることができます。 
+
+DDoS 攻撃対象領域を減らすために、運用環境でバックエンドをロックダウンすることをお勧めします。 「[バックエンドへのアクセスを Azure Front Door のみにロックダウンするにはどうしたらよいですか?](https://docs.microsoft.com/en-us/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door)」を参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 

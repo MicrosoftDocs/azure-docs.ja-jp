@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure App Configuration (プレビュー) のドキュメント
 metadata:
   title: Azure App Configuration のドキュメント - チュートリアル、API リファレンス
-  description: Azure App Configuration は、開発者が自分のアプリケーション、機能設定、機能を単純かつ安全に一元化するのに役立つマネージド サービスです。
+  description: Azure App Configuration は、開発者が自分のアプリケーションおよび機能設定を単純かつ安全に一元化するのに役立つマネージド サービスです。
   author: yegu-ms
   manager: maiye
   ms.author: yegu
@@ -58,7 +58,7 @@ sections:
               - href: null
               - href: null
               - href: null
-              - href: null
+              - href: /azure/azure-app-configuration/quickstart-feature-flag-spring-boot
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph

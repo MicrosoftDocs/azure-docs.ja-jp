@@ -3,24 +3,24 @@ title: 共通インターフェイス - IoT プラグ アンド プレイ プレ
 description: IoT プラグ アンド プレイ開発者向けの共通インターフェイスの説明
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 07/16/2019
+ms.date: 09/08/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 848210509bf9ab0ffec35004cbb07e39d6de1bc0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2eae778230fa5fce1be095106a02b2b643ff436e
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878939"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935320"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT プラグ アンド プレイ プレビュー共通インターフェイス
 
-すべての IoT プラグ アンド プレイ デバイスは、いくつかの共通インターフェイスを実装することが想定されています。 共通インターフェイスは、一貫性のある機能を提供するため、IoT ソリューションに役立ちます。 [認定資格](tutorial-build-device-certification.md)では、デバイスがいくつかの共通インターフェイスを実装することが要求されます。 共通インターフェイスの定義は、グローバル モデル リポジトリから取得できます。
+すべての IoT プラグ アンド プレイ デバイスは、いくつかの共通インターフェイスを実装することが想定されています。 共通インターフェイスは、一貫性のある機能を提供するため、IoT ソリューションに役立ちます。 [認定資格](tutorial-build-device-certification.md)では、デバイスがいくつかの共通インターフェイスを実装することが要求されます。 共通インターフェイスの定義は、パブリック モデル リポジトリから取得できます。
 
 ## <a name="summary-of-common-interfaces"></a>共通インターフェイスの概要
 
-| Name | id | 説明 | Azure IoT SDK によって実装される | 機能モデルで宣言する必要がある |
+| 名前 | id | 説明 | Azure IoT SDK によって実装される | 機能モデルで宣言する必要がある |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | モデル情報 | urn:azureiot:ModelDiscovery:ModelInformation:1 | デバイスが機能モデル ID とインターフェイスを宣言するため。 すべての IoT プラグ アンド プレイ デバイスに必要です。 | はい | いいえ |
 | デジタル ツイン クライアント SDK 情報 | urn:azureiot:Client:SDKInformation:1 | デバイスを Azure に接続するためのクライアント SDK。 [認定資格](tutorial-build-device-certification.md)のために必要です | はい | いいえ |
@@ -35,23 +35,23 @@ ms.locfileid: "69878939"
 
 ### <a name="cli"></a>CLI
 
-Azure CLI 用の Azure IoT 拡張機能を使用して、グローバル モデル リポジトリから共通インターフェイスを取得できます。
+Azure CLI 用の Azure IoT 拡張機能を使用して、パブリック モデル リポジトリから共通インターフェイスを取得できます。
 
 ```cmd/sh
-az iot pnp interface show --interface {InterfaceID} --login {ModelRepoConnectionString}
+az iot pnp interface show --interface {InterfaceID}
 ```
 
 ```cmd/sh
-az iot pnp model show --interface {InterfaceID} --login {ModelRepoConnectionString}
+az iot pnp capability-model show --model {ModelID}
 ```
 
 ### <a name="vs-code"></a>VS Code
 
 1. **Ctrl + Shift + P** キーを押してコマンド パレットを開きます。
 
-1. 「**プラグ アンド プレイ**」と入力して、 **[IoT Plug and Play: Open Model Repository]\(IoT プラグ アンド プレイ: モデル リポジトリを開く\)** コマンドを選択します。 **[Global Model Repository]\(グローバル モデル リポジトリ\)** を選択します。 グローバル モデル リポジトリが VS Code で開かれます。
+1. 「**プラグ アンド プレイ**」と入力して、 **[IoT Plug and Play: Open Model Repository]\(IoT プラグ アンド プレイ: モデル リポジトリを開く\)** コマンドを選択します。 **[Public repository]\(パブリック リポジトリ\)** を選択します。 パブリック モデル リポジトリが VS Code で開かれます。
 
-1. グローバル モデル リポジトリで、検索フィールドにインターフェイス名を入力します。
+1. パブリック モデル リポジトリで、検索フィールドにインターフェイス名を入力します。
 
 1. インターフェイスのローカル コピーを作成するために、検索結果でそれを選択し、 **[ダウンロード]** を選択します。
 

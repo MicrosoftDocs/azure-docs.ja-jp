@@ -12,12 +12,12 @@ metadata:
   author: rolyon
   ms.author: rolyon
   ms.date: 08/26/2019
-  ms.openlocfilehash: cd4628ef5e7d56f03590899fe514141d415c8f01
-  ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+  ms.openlocfilehash: e947b1ab685bcc1da5d3895e49c07d1ff56c0937
+  ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/27/2019
-  ms.locfileid: "70052013"
+  ms.lasthandoff: 09/13/2019
+  ms.locfileid: "70968310"
 landingContent:
 - title: Azure リソースの RBAC について
   linkLists:
@@ -53,6 +53,8 @@ landingContent:
     links:
     - text: ポータル
       url: role-assignments-portal.md
+    - text: ポータル - ゲスト ユーザー
+      url: role-assignments-external-users.md
     - text: PowerShell
       url: role-assignments-powershell.md
     - text: Azure CLI

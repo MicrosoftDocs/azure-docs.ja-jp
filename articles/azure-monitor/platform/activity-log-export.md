@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: d34040722ac8793fd4bbb02f2d3fa59247f8267c
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 9b4e7ce714d0a1f65e0a35b9c493e99200c668c6
+ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639630"
+ms.lasthandoff: 08/26/2019
+ms.locfileid: "70034860"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 Azure portal でアクティビティ ログを表示したり、これを Azure Monitor によって収集された他のデータで分析できる Log Analytics ワークスペースにコピーしたりするだけでなく、ログ プロファイルを作成してアクティビティ ログを Azure ストレージ アカウントにアーカイブしたり、これをイベント ハブにストリーミングしたりすることができます。
@@ -55,7 +55,7 @@ ms.locfileid: "69639630"
 
 **エクスポートするリージョン (場所)。** アクティビティ ログのイベントの多くはグローバル イベントなので、すべての場所を含める必要があります。
 
-**アクティビティ ログをストレージ アカウントに保持する期間。** リテンション期間が 0 日の場合、ログは永続的に保持されます。 または、1 日から 2147483647 日の間の任意の日数を値として指定できます。
+**アクティビティ ログをストレージ アカウントに保持する期間。** リテンション期間が 0 日の場合、ログは永続的に保持されます。 または、1 日から 365 日の間の任意の日数を値として指定できます。
 
 リテンション ポリシーが設定されていても、ストレージ アカウントへのログの保存は無効になっている場合、保持ポリシーへの影響はありません。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。
 
@@ -117,7 +117,7 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
     | StorageAccountId |いいえ |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
     | serviceBusRuleId |いいえ |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 文字列の形式は `{service bus resource ID}/authorizationrules/{key name}` になります。 |
     | Location |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-    | RetentionInDays |はい |ストレージ アカウントにイベントを保持する日数 (1 から 2147483647 の範囲)。 値が 0 の場合、ログは無期限に保存されます。 |
+    | RetentionInDays |はい |ストレージ アカウントにイベントを保持する日数 (1 から 365 の範囲)。 値が 0 の場合、ログは無期限に保存されます。 |
     | Category |いいえ |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、_Write_、_Delete_、_Action_ です。 |
 
 ### <a name="example-script"></a>サンプル スクリプト

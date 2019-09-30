@@ -1,5 +1,5 @@
 ---
-title: Application Insights、Node.js - LUIS
+title: チュートリアル:Application Insights、Node.js - LUIS
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ボットおよび Language Understanding の情報を Application Insights テレメトリ データ ストレージに追加します。
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/16/2019
+ms.date: 09/05/2019
 ms.author: diberry
-ms.openlocfilehash: 72ce681b6b0e4109151b987a5f8cc4bc050aafa0
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f488cfaf1e55edd8ae0d2bfd177553deb2677f8b
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563286"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70387905"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>Node.js でボットから Application Insights に LUIS の結果を追加する
+# <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-nodejs"></a>チュートリアル:Node.js でボットから Application Insights に LUIS の結果を追加する
 このチュートリアルでは、ボットおよび Language Understanding の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 そのデータを用意したら、Kusto 言語または Power BI でそれのクエリを実行し、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートすることができます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
 
 このチュートリアルでは、以下の内容を学習します。

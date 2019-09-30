@@ -3,16 +3,16 @@ title: Azure Blueprint の概要
 description: Azure Blueprints サービスによって Azure 環境でのアーティファクトの作成、定義、デプロイがどのように実現されるかについて理解します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/08/2019
+ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: be7e3043172f988a429bbf02dec08bfbbc1a70b7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848432"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146097"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure Blueprints サービスの概要
 
@@ -106,21 +106,30 @@ Resource Manager テンプレートとブループリントのどちらかを選
 > [!NOTE]
 > サブスクリプションにブループリント割り当てが作成されると、ブループリント割り当てと割り当て解除のアクセス許可がサブスクリプションのスコープに対して付与されるか、サブスクリプション スコープに継承されます。
 
-**所有者**ロールには、上記のアクセス許可のすべてが含まれています。 **共同作成者**ロールにはブループリントの作成と削除を実行するアクセス許可がありますが、ブループリントの割り当てを実行するアクセス許可はありません。 これらの組み込みロールが自分のセキュリティ ニーズに適合しない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成することを検討してください。
+以下の組み込みロールを使用できます。
+
+|RBAC ロール | 説明 |
+|-|-|
+|[Owner](../../role-based-access-control/built-in-roles.md#owner) | 他のアクセス許可に加えて、すべての Azure Blueprint 関連のアクセス許可が含まれます。 |
+|[Contributor](../../role-based-access-control/built-in-roles.md#contributor) | 他のアクセス許可に加えて、ブループリント定義を作成および削除できますが、ブループリントの割り当てのアクセス許可は持っていません。 |
+|[ブループリント共同作成者](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | ブループリントの定義を管理できますが、それらを割り当てることはできません。 |
+|[ブループリント オペレーター](../../role-based-access-control/built-in-roles.md#blueprint-operator) | 既存の発行済みのブループリントを割り当てることはできますが、新しいブループリント定義は作成できません。 ブループリントの割り当ては、ユーザーによって割り当てられたマネージド ID を使用して割り当てが行われた場合にのみ機能します。 |
+
+これらの組み込みロールが自分のセキュリティ ニーズに適合しない場合は、[カスタム ロール](../../role-based-access-control/custom-roles.md)を作成することを検討してください。
 
 > [!NOTE]
 > システム割り当てのマネージド ID を使用している場合、Azure Blueprints のサービス プリンシパルがデプロイを有効にするには、割り当てられたサブスクリプションに対して**所有者**ロールが必要です。 ポータルを使用する場合、デプロイに対するこのロールの付与と取り消しは自動的に行われます。 REST API を使用する場合はこのロールを手動で付与する必要がありますが、取り消しはデプロイ完了後に自動的に行われます。 ユーザー割り当てのマネージド ID を使用している場合、ブループリントの割り当てを作成するユーザーにのみ**所有者**アクセス許可が必要です。
 
 ## <a name="naming-limits"></a>名前付けの制限
 
-特定のフィールドに存在する制限事項の一覧を次に示します。
+特定のフィールドでは、次の制限があります。
 
 |Object|フィールド|使用できる文字|最大 Length|
 |-|-|-|-|
-|ブループリント|EnableAdfsAuthentication|英字、数字、ハイフン、およびピリオド|48|
+|ブループリント|名前|英字、数字、ハイフン、およびピリオド|48|
 |ブループリント|Version|英字、数字、ハイフン、およびピリオド|20|
-|ブループリント割り当て|EnableAdfsAuthentication|英字、数字、ハイフン、およびピリオド|90|
-|ブループリント アーティファクト|EnableAdfsAuthentication|英字、数字、ハイフン、およびピリオド|48|
+|ブループリント割り当て|名前|英字、数字、ハイフン、およびピリオド|90|
+|ブループリント アーティファクト|名前|英字、数字、ハイフン、およびピリオド|48|
 
 ## <a name="video-overview"></a>ビデオの概要
 

@@ -1,68 +1,75 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Privileged Identity Management のドキュメント
+summary: Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、継続的な管理者アクセスを特権ロールに限定できるほか、アクセス許可を持つユーザーを検出したり、特権アクセスの状況を確認したりできます。
 metadata:
-  document_id: null
-  title: Azure AD Privileged Identity Management (PIM) のドキュメント | Microsoft Docs
+  title: Privileged Identity Management のドキュメント
   description: 継続的な管理者アクセスを特権ロールに限定したり、アクセス許可を持つユーザーを検出したり、特権アクセスの状況を確認したりできる Azure Active Directory (Azure AD) Privileged Identity Management (PIM) について説明します。
   services: active-directory
-  author: rolyon
-  manager: mtillman
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: pim
   ms.topic: landing-page
-  ms.date: 09/04/2018
-  ms.author: rolyon
-abstract:
-  description: Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、継続的な管理者アクセスを特権ロールに限定できるほか、アクセス許可を持つユーザーを検出したり、特権アクセスの状況を確認したりできます。
-  aside:
-    image:
-      alt: null
-      height: 112
-      src: media/index/video-thumb-pim.png
-      width: 200
-    title: 'お客様の領域でキーを保護する (42:45)'
-    href: 'https://www.youtube.com/embed/w7wTpZYJJeQ'
-    width: 200
-sections:
-  - title: 適格でアクティブなロールのユーザー向けのハウツー ガイド
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/Azure Active Directory_COLOR.svg
-            title: Azure AD ロール
-          - image:
-              src: media/index/Cubes.svg
-            title: Azure リソース
-        rows:
-          - title: ロールをアクティブ化する
-            values:
-              - href: /azure/active-directory/privileged-identity-management/pim-how-to-activate-role
-              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-activate-your-roles
-  - title: 管理者向けのハウツー ガイド
-    items:
-      - type: table
-        style: dataMatrix
-        columns:
-          - image:
-              src: media/index/Azure Active Directory_COLOR.svg
-            title: Azure AD ロール
-          - image:
-              src: media/index/Cubes.svg
-            title: Azure リソース
-        rows:
-          - title: ロールを割り当てる
-            values:
-              - href: /azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user
-              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-assign-roles
-          - title: 要求の承認
-            values:
-              - href: /azure/active-directory/privileged-identity-management/azure-ad-pim-approval-workflow
-              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-approval-workflow
-          - title: ロール設定を構成する
-            values:
-              - href: /azure/active-directory/privileged-identity-management/pim-how-to-change-default-settings
-              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-configure-role-settings
+  ms.collection: 
+  author: curtand
+  ms.author: curtand
+  ms.date: 08/28/2019
+  ms.openlocfilehash: b1782c41bce2de6a9da0858519dfeb87f6597df8
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70127417"
+landingContent:
+- title: Privileged Identity Management について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure AD PIM とは
+      url: pim-configure.md
+  - linkListType: concept
+    links:
+    - text: ライセンスの要件
+      url: subscription-requirements.md
+  - linkListType: video
+    links:
+    - text: お客様の領域でキーを保護する
+      url: https://www.youtube.com/embed/w7wTpZYJJeQ
+- title: 作業開始
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PIM をデプロイする
+      url: pim-deployment-plan.md
+    - text: PIM の使用を開始する
+      url: pim-getting-started.md
+- title: ロールをアクティブにする (適格でアクティブなロールのユーザー)
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD ロールをアクティブ化する
+      url: pim-how-to-activate-role.md
+    - text: 自分の Azure リソース ロールをアクティブにする
+      url: pim-resource-roles-activate-your-roles.md
+- title: ロールを割り当てる
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD ロールを割り当てる
+      url: pim-how-to-add-role-to-user.md
+    - text: Azure リソース ロールを割り当てる
+      url: pim-resource-roles-assign-roles.md
+- title: 要求の承認
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD ロールの要求を承認する
+      url: azure-ad-pim-approval-workflow.md
+    - text: Azure リソース ロールの要求を承認する
+      url: pim-resource-roles-approval-workflow.md
+- title: ロール設定を構成する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD ロールの設定を構成する
+      url: pim-how-to-change-default-settings.md
+    - text: Azure リソース ロールの設定を構成する
+      url: pim-resource-roles-configure-role-settings.md

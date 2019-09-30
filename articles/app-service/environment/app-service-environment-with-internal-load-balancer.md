@@ -10,17 +10,16 @@ ms.assetid: ad9a1e00-d5e5-413e-be47-e21e5b285dbf
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 88f100bc780d8df0202cfcce9b390085a71fc905
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65d62df954dbbfbdd221adb33eccd82f73588fae
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62130604"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069896"
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service 環境での内部ロード バランサーの使用
 
@@ -28,7 +27,7 @@ ms.locfileid: "62130604"
 > この記事は、App Service Environment v1 に関するものです。 より強力なインフラストラクチャ上で実行できる、使いやすい新しいバージョンの App Service Environment があります。 新しいバージョンの詳細については、「[App Service Environment の概要](intro.md)」を参照してください。
 >
 
-App Service Environment (ASE) 機能は Azure App Service の Premium サービス オプションであり、マルチテナント スタンプでは使用できない高度な構成機能を提供します。 ASE 機能は、基本的に Azure App Service を顧客の Azure Virtual Network (VNet) にデプロイします。 App Service 環境が提供される機能の詳細については、[App Service 環境の概要][WhatisASE]に関するページを参照してください。 VNet での稼働の利点についての詳細は、「[Azure 仮想ネットワークに関する FAQ][virtualnetwork]」を参照してください。 
+App Service Environment (ASE) 機能は Azure App Service の Premium サービス オプションであり、マルチテナント スタンプでは使用できない高度な構成機能を提供します。 ASE 機能は、基本的に Azure App Service を顧客の Azure Virtual Network (VNet) にデプロイします。 App Service 環境によって提供される機能の詳細については、[App Service 環境の概要][WhatisASE]に関するページを参照してください。 VNet での稼働の利点については、「[Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)][virtualnetwork]」を参照してください。 
 
 ## <a name="overview"></a>概要
 ASE は、インターネットにアクセスできるエンドポイント、または VNet の IP アドレスを使用して展開できます。 IP アドレスを VNet アドレスに設定するには、内部ロード バランサー (ILB) を含む ASE を展開する必要があります。 ILB を含むように ASE を構成する場合は、次の項目を指定します。
@@ -51,7 +50,7 @@ ILB ASE を使用する際に実行できないことがいくつかあります
 * ポータルからのアプリの証明書の購入と使用。 もちろん、証明機関から証明書を直接取得してアプリでご利用いただけます。ただし、Azure Portal は使用できません。
 
 ## <a name="creating-an-ilb-ase"></a>ILB ASE の作成
-ILB ASE の作成は、ASE を作成する通常の方法と特に変わりません。 ASE 作成の詳細については、「[App Service Environment の作成方法][HowtoCreateASE]」を参照してください。 ILB ASE を作成するプロセスは、ASE 作成時に VNet を作成する場合も、既存の VNet を選択する場合も同じです。 ILB ASE を作成する方法は次のとおりです。 
+ILB ASE の作成は、ASE を作成する通常の方法と特に変わりません。 ASE 作成の詳細については、「[App Service 環境の作成方法][HowtoCreateASE]」を参照してください。 ILB ASE を作成するプロセスは、ASE 作成時に VNet を作成する場合も、既存の VNet を選択する場合も同じです。 ILB ASE を作成する方法は次のとおりです。 
 
 1. Azure Portal で、 **[リソースの作成] -> [Web + モバイル] -> [App Service Environment]** の順に選択します。
 2. サブスクリプションを選択します。
@@ -119,7 +118,7 @@ NSG を構成するには、Azure が ASE を管理するために使用する I
 ![][5]
 
 #### <a name="general-ilb-ase-management"></a>ILB ASE の一般的な管理
-ILB ASE の管理は、通常の ASE の管理方法とほぼ同じです。 ホストする ASP インスタンス数を増やすには、ワーカー プールをスケールアップします。また、処理する HTTP/HTTPS トラフィックの量を増やすには、フロントエンド サーバーをスケールアップします。 ASE の構成を管理するための一般的な情報については、「[App Service Environment の構成][ASEConfig]」を参照してください。 
+ILB ASE の管理は、通常の ASE の管理方法とほぼ同じです。 ホストする ASP インスタンス数を増やすには、ワーカー プールをスケールアップします。また、処理する HTTP/HTTPS トラフィックの量を増やすには、フロントエンド サーバーをスケールアップします。 ASE の構成を管理するための一般的な情報については、「[App Service 環境の構成][ASEConfig]」を参照してください。 
 
 追加の管理項目は、証明書の管理と DNS の管理です。 ILB ASE の作成後にHTTPS で使用する証明書を取得してアップロードし、期限が切れる前に置き換える必要があります。 Azure は基本のドメインを所有しているため、外部 VIP を含む ASE の証明書を提供できます。 ILB ASE で使用されるサブドメインは何でもよいため、HTTPS 用に独自の証明書を提供する必要があります。 
 

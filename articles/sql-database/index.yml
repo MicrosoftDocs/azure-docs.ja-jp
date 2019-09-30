@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: null
   ms.topic: overview
-  ms.date: 03/04/2019
+  ms.date: 09/09/2019
   ms.author: sstein
 abstract:
   description: Azure SQL Database は、Microsoft SQL Server データベース エンジンの安定した最新バージョンに基づく、汎用のサービスとしてのリレーショナル データベース (DBaaS) です。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたクラウド データベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。
@@ -27,7 +27,10 @@ abstract:
     href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
     width: 250
 sections:
-  - items:
+  - title: 概念
+    items:
+      - type: paragraph
+        text: サービスとしてのプラットフォーム データベースがもたらす主な価値と、最適な価格/パフォーマンス構成を得るために利用できる購入モデルやサービス レベルについて説明します。
       - type: list
         style: cards
         className: cardsM
@@ -37,17 +40,41 @@ sections:
             html: <p>安定した最新バージョンの SQL Server データベース エンジンとパッチ適用済み OS で常に実行される、可用性が 99.99% の PaaS データベース。</p>
             image:
               src: media/index/i_managed.svg
-            title: フル マネージド
+            title: 概要
           - href: /azure/sql-database/sql-database-service-tiers
             html: <p>月額 5 米国ドルの手頃なデータベースから強力な 80 コア データベースまでの柔軟なサービス プランによって、価格/パフォーマンスの比率をニーズに合わせて調整することができます。</p>
             image:
               src: media/index/i_perftier.svg
-            title: 価格/サービス プラン
+            title: 価格モデル
+          - href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
+            html: <p>ニーズに最も合った、あるいはオンプレミス環境で使用するインフラストラクチャに最適なサービス レベルおよびクラウド アーキテクチャを選択します。</p>
+            image:
+              src: media/index/gear.svg
+            title: サービス階層
           - href: /azure/sql-database/sql-database-scalability-index
             html: <p>ニーズに応じて簡単にデータベースをスケールアップ、スケールアウト、シャード化して、アプリケーションのパフォーマンスを向上させます。</p>
             image:
               src: media/index/i_scale.svg
             title: スケーラビリティ
+          - href: /azure/sql-database/sql-database-paas
+            html: <p>組み込みの高可用性、自動バックアップ、geo レプリケーションによって、メンテナンス操作やインフラストラクチャ障害、ハードウェア障害でビジネスが中断されることがなくなります。</p>
+            image:
+              src: media/index/i_intelligence.svg
+            title: サービスとしてのプラットフォーム
+          - href: /azure/sql-database/sql-database-security-index
+            html: <p>Azure AD 認証、仮想ネットワーク、ファイアウォール、Always Encrypted 接続でデータベースをセキュリティ保護します。 組み込みのセキュリティで脅威と脆弱性を特定します。</p>
+            image:
+              src: media/index/i_security.svg
+            title: 高度なセキュリティ
+  - title: デプロイ モデル
+    items:
+      - type: paragraph
+        text: ニーズに合ったデプロイ モデルを選択します。新しい最新のクラウド アプリケーションには、単一データベースが最適な選択であり、エラスティック プールは多数のデータベースをホストするための最適な場所です。また、マネージド インスタンスにより、SQL Server との高い互換性が提供され、クラウドへの移行が容易になります。
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
           - href: /azure/sql-database/sql-database-single-index
             html: <p>SQL Database サーバーで管理されている単一データベースを、予測可能なパフォーマンスの単一データベースを必要とする SaaS アプリケーションやマイクロサービスに使用します。</p>
             image:
@@ -63,25 +90,15 @@ sections:
             image:
               src: media/index/i_mi.svg
             title: マネージド インスタンス
-          - href: /azure/sql-database/sql-database-paas
-            html: <p>組み込みの高可用性、自動バックアップ、geo レプリケーションによって、メンテナンス操作やインフラストラクチャ障害、ハードウェア障害でビジネスが中断されることがなくなります。</p>
+          - href: /azure/sql-database/sql-database-instance-pools
+            html: <p>マネージド インスタンス プールは、リソースを共有して迅速にスケーリングするマネージド インスタンスを複数デプロイするためのシンプルでコスト効率の高いソリューションとして使用します。</p>
             image:
-              src: media/index/gear.svg
-            title: サービスとしてのプラットフォーム
-          - href: /azure/sql-database/sql-database-security-index
-            html: <p>Azure AD 認証、仮想ネットワーク、ファイアウォール、Always Encrypted 接続でデータベースをセキュリティ保護できます。 組み込みのセキュリティで脅威と脆弱性を特定します。</p>
-            image:
-              src: media/index/i_security.svg
-            title: 高度なセキュリティ
-          - href: /azure/sql-database/sql-database-monitoring-tuning-index
-            html: <p>組み込みの監視とインテリジェントなチューニングによって、データベースの運用コストと管理コストが大幅に削減され、アプリケーションのパフォーマンスが最大化されます。</p>
-            image:
-              src: media/index/i_intelligence.svg
-            title: 監視とチューニング
+              src: media/index/i-instancepools.svg
+            title: インスタンス プール
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: Azure SQL Database により、Azure portal、Azure CLI、Azure PowerShell を使用して基本的な管理タスクを簡単に実行することができます。 次のクイック スタート サンプルを使用して基本的な管理タスクを実行する方法を学習します。
+        text: Azure SQL Database により、Azure portal、Azure CLI、Azure PowerShell を使用して基本的な管理タスクを簡単に実行できます。 次のクイック スタート サンプルを使用して基本的な管理タスクを実行する方法を学習します。
       - type: table
         style: dataMatrix
         columns:
@@ -116,18 +133,27 @@ sections:
               - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
               - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
               - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
-  - title: ステップバイステップのチュートリアル
+          - title: インスタンス プールを作成する
+            values:
+              - href: null
+              - href: null
+              - href: '/azure/sql-database/sql-database-instance-pools-how-to#create-an-instance-pool'
+              - href: null
+  - title: ステップバイステップのチュートリアルと学習教材
     items:
       - type: paragraph
         text: SQL Database を使用してデータベースを作成、管理、移行する方法について説明します
       - type: list
         style: ordered
         items:
+          - html: <a href="/azure/sql-database/sql-database-paas-vs-sql-server-iaas">VM 上の SQL Server (IaaS) または Azure SQL Database (PaaS) のどちらがワークロードに最適な選択</a>であるかを判断する方法を確認する。
+          - html: <a href="/azure/sql-database/sql-database-features">Azure SQL Database でサポートされている機能と動作の違い</a>について確認する。
           - html: クイック スタート ガイドを使用して、<a href="/azure/sql-database/sql-database-single-database-quickstart-guide">単一データベース</a>と<a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">マネージド インスタンス</a>の使用を開始する。
           - html: <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> または <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> を使用して新しい単一データベースのスキーマを作成および設計する
-          - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">ネイティブな SQL Server バックアップ ファイル</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a>、または <a href="/azure/sql-database/sql-database-import">BACPAC ファイルのインポート</a>を使用して、既存のデータベースを Azure に移行する
+          - html: <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">ネイティブな SQL Server バックアップ ファイル</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Database Migration Assistant</a>、または <a href="/azure/sql-database/sql-database-import">BACPAC ファイルのインポート</a>を使用して、既存のデータベースを Azure に移行する。
           - html: <a href="/azure/sql-database/sql-database-security-tutorial">SQL Database をセキュリティ保護する</a>
-          - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geo 分散型データベース</a>を使用してデータをグローバルに分散する
+          - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">geo 分散型データベース</a>を使用してデータをグローバルに分散する。
+          - html: <a href="/azure/sql-database/sql-database-release-notes">Azure SQL Database の新機能</a>を確認する。
   - title: Microsoft Learn でスキルを身に付ける
     items:
       - type: list

@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 390e49a09136c21f3fd2f6555c0d56fde6e3b267
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388134"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70164766"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>クラウドの一貫性のための Azure Resource Manager テンプレートを開発する
 
@@ -47,7 +47,7 @@ Microsoft は、次のように、インテリジェントでエンタープラ�
 * 使用するテンプレート パラメーターが対象のクラウドで動作することを確認します。
 * リソース固有のプロパティが対象のクラウドで使用できることを確認します。
 
-Azure Resource Manger テンプレートの概要については、「[テンプレートのデプロイ](resource-group-overview.md#template-deployment)」をご覧ください。
+Azure Resource Manger テンプレートの概要については、「[テンプレートのデプロイ](template-deployment-overview.md)」をご覧ください。
 
 ## <a name="ensure-template-functions-work"></a>テンプレート関数を確実に動作させる
 
@@ -154,7 +154,7 @@ Azure Resource Manager は、実行時にメイン テンプレートを評価�
 
 この方法を使用することにより、`_artifactsLocation` パラメーターの既定値が使用されます。 リンクされたテンプレートを別の場所から取得する必要がある場合は、展開時にパラメーター入力を使用して、既定値をオーバーライドできます。テンプレート自体を変更する必要はありません。
 
-### <a name="use-artifactslocation-instead-of-hardcoding-links"></a>リンクをハードコーディングするのではなく _artifactsLocation を使用する
+### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>リンクをハードコーディングするのではなく _artifactsLocation を使用する
 
 入れ子になったテンプレートに使われるだけでなく、`_artifactsLocation` パラメーターの URL は、展開テンプレートの関連するすべての成果物のベースとしても使われます。 一部の VM 拡張機能には、テンプレートの外部に格納されているスクリプトへのリンクが含まれます。 これらの拡張機能では、リンクをハードコーディングしないようにする必要があります。 たとえば、カスタム スクリプトと PowerShell DSC 拡張機能では、次に示すように、GitHub 上の外部スクリプトにリンクすることがあります。 
 

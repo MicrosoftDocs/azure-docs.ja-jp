@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 6882476cabc3dc3a737f31eeeb4ccd92e5ea6ee0
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d415f303976ae454cb99f07e8d6e15e338e24d7d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69872754"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231457"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Azure から Azure へのディザスター リカバリー アーキテクチャ
 
@@ -66,7 +66,7 @@ Azure VM レプリケーションを有効にするときに、既定で Site Re
 **ポリシーの設定** | **詳細** | **既定値**
 --- | --- | ---
 **復旧ポイントの保持期間** | Site Recovery で復旧ポイントを保持する長さを指定します | 24 時間
-**アプリ整合性スナップショットの頻度** | Site Recovery でアプリ整合性スナップショットを取得する頻度。 | 60 分ごと。
+**アプリ整合性スナップショットの頻度** | Site Recovery でアプリ整合性スナップショットを取得する頻度。 | 4 時間ごと
 
 ### <a name="managing-replication-policies"></a>レプリケーション ポリシーの管理
 

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 09/05/2019
 ms.author: raynew
-ms.openlocfilehash: 5d746385a034fdf742b8958b3d1fe51ea2a3c5cf
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972175"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383208"
 ---
 # <a name="monitor-the-process-server"></a>プロセス サーバーを監視する
 
@@ -57,10 +57,12 @@ ms.locfileid: "69972175"
 ![警告][yellow] | 過去 15 分間の CPU 使用率が 80% を超えています。
 ![警告][yellow] | 過去 15 分間のメモリ使用率が 80% を超えています。
 ![警告][yellow] | 過去 15 分間のキャッシュ フォルダーの空き領域が 30% 未満です。
+![警告][yellow] | 保留または送信データを 5 分ごとに監視している Site Recovery によって、プロセス サーバー キャッシュ内のデータを 30 分以内に Azure にアップロードできないと推定された。
 ![警告][yellow] | プロセス サーバーのサービスが過去 15 分間実行されていません。
 ![重大][red] | 過去 15 分間の CPU 使用率が 95% を超えています。
 ![重大][red] | 過去 15 分間のメモリ使用率が 95% を超えています。
 ![重大][red] | 過去 15 分間のキャッシュ フォルダーの空き領域が 25% 未満です。
+![重大][red] | 保留または送信データを 5 分ごとに監視している Site Recovery によって、プロセス サーバー キャッシュ内のデータを 45 分以内に Azure にアップロードできないと推定された。
 ![重大][red] | プロセス サーバーからのハートビートが 15 分間ありません。
 
 ![テーブル キー](./media/vmware-physical-azure-monitor-process-server/table-key.png)

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 4c2058072df4fcb068257c3e265dfe365c6d7e65
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 4d76578de0c80570e67db03046c42985500ddcdb
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69033149"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914729"
 ---
 # <a name="preview---create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>プレビュー - 可用性ゾーンを使用する Azure Kubernetes Service (AKS) クラスターを作成する
 
@@ -34,7 +34,7 @@ Azure CLI バージョン 2.0.66 以降がインストールされて構成さ�
 
 ### <a name="install-aks-preview-cli-extension"></a>aks-preview CLI 拡張機能をインストールする
 
-可用性ゾーンを使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.1 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
+可用性ゾーンを使用する AKS クラスターを作成するには、*aks-preview* CLI 拡張機能バージョン 0.4.12 以降が必要です。 [az extension add][az-extension-add] コマンドを使用して *aks-preview* Azure CLI 拡張機能をインストールし、[az extension update][az-extension-update] コマンドを使用して使用可能な更新プログラムがあるかどうかを確認します。
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -44,25 +44,21 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-feature-flags-for-your-subscription"></a>サブスクリプションの機能フラグを登録する
+### <a name="register-the-availabilityzonepreview-feature-flag-for-your-subscription"></a>サブスクリプションの AvailabilityZonePreview 機能フラグを登録する
 
-可用性ゾーンを使用する AKS クラスターを作成するには、最初にご使用のサブスクリプションで機能フラグをいくつか有効にします。 クラスターは、仮想マシン スケール セットを使用して、Kubernetes ノードのデプロイおよび構成を管理します。 ネットワーク コンポーネントがクラスターにトラフィックをルーティングするための回復性を提供するために、Azure Load Balancer の *Standard* SKU も必要です。 次の例に示されているように、[az feature register][az-feature-register] コマンドを使用して *AvailabilityZonePreview*、*AKSAzureStandardLoadBalancer*、および *VMSSPreview* 機能フラグを登録します。
+可用性ゾーンを使用する AKS クラスターを作成するには、最初にご使用のサブスクリプションで *AvailabilityZonePreview* 機能フラグを有効にします。 次の例に示すように [az feature register][az-feature-register] コマンドを使用して、*AvailabilityZonePreview* 機能フラグを登録します。
 
 > [!CAUTION]
 > サブスクリプションで機能を登録する場合、現時点ではその機能を登録解除することはできません。 一部のプレビュー機能を有効にした後、すべての AKS クラスターに対して既定値が使用され、サブスクリプション内に作成されます。 運用サブスクリプションではプレビュー機能を有効にしないでください。 プレビュー機能をテストし、フィードバックを集めるには、別のサブスクリプションを使用してください。
 
 ```azurecli-interactive
 az feature register --name AvailabilityZonePreview --namespace Microsoft.ContainerService
-az feature register --name AKSAzureStandardLoadBalancer --namespace Microsoft.ContainerService
-az feature register --name VMSSPreview --namespace Microsoft.ContainerService
 ```
 
 状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AvailabilityZonePreview')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSAzureStandardLoadBalancer')].{Name:name,State:properties.state}"
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
 ```
 
 準備ができたら、[az provider register][az-provider-register] コマンドを使用して、*Microsoft.ContainerService* リソース プロバイダーの登録を更新します。
@@ -90,7 +86,7 @@ az provider register --namespace Microsoft.ContainerService
 * 可用性ゾーンが有効になっているクラスターでは、複数のゾーンへの分散のために Azure Standard Load Balancer を使用する必要があります。
 * Standard Load Balancer をデプロイするために、Kubernetes バージョン 1.13.5 以降を使用する必要があります。
 
-可用性ゾーンを使用する AKS クラスターでは、Azure Load Balancer *Standard* SKU を使用する必要があります。 Azure Load Balancer の既定の *Basic* SKU は、複数の可用性ゾーンへの分散をサポートしていません。 Standard Load Balancer の詳細と制限事項については、[Azure Load Balancer Standard SKU プレビューの制限事項][standard-lb-limitations]に関する記事をご覧ください。
+可用性ゾーンを使用する AKS クラスターでは、Azure Load Balancer *Standard* SKU を使用する必要があります。 Azure Load Balancer の既定の *Basic* SKU は、複数の可用性ゾーンへの分散をサポートしていません。 Standard Load Balancer の詳細と制限事項については、[Azure Load Balancer Standard SKU の制限事項][standard-lb-limitations]に関する記事をご覧ください。
 
 ### <a name="azure-disks-limitations"></a>Azure ディスクの制限事項
 
@@ -125,7 +121,7 @@ az aks create \
     --resource-group myResourceGroup \
     --name myAKSCluster \
     --generate-ssh-keys \
-    --enable-vmss \
+    --vm-set-type VirtualMachineScaleSets \
     --load-balancer-sku standard \
     --node-count 3 \
     --node-zones 1 2 3

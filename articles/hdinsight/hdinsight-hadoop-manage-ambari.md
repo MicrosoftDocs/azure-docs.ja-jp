@@ -2,18 +2,18 @@
 title: Ambari Web UI を使用して Azure HDInsight を監視および管理する
 description: Ambari を使用して Linux ベースの HDInsight クラスターを監視および管理する方法を説明します。 このドキュメントでは、HDInsight クラスターに含まれている Ambari Web UI を使用する方法について説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.author: hrasheed
-ms.openlocfilehash: d0641a1c058db59acd5e9a64b10bb57b334f82bd
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 2f46f90edcdd1c4cdf7583c7e628aee205b312e1
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442067"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098652"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -47,7 +47,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ページが開くと、上部にバーがあります。 このバーには、次の情報とコントロールが含まれています。
 
-![ambari ナビゲーション](./media/hdinsight-hadoop-manage-ambari/ambari-nav.png)
+![Apache Ambari ダッシュボードの概要](./media/hdinsight-hadoop-manage-ambari/apache-ambari-dashboard.png)
 
 |Item |説明 |
 |---|---|
@@ -76,15 +76,15 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 アラートはいくつかの既定のグループにまとめられます。このグループは、 **[Alerts]** ページで表示できます。
 
-![alerts ページ](./media/hdinsight-hadoop-manage-ambari/alerts.png)
+![Apache Ambari アラート ページの概要](./media/hdinsight-hadoop-manage-ambari/hdinsight-alerts-page.png)
 
 グループを管理するには、 **[Actions]** メニューを使用して、 **[Manage Alert Groups]** を選択します。
 
-![manage alert groups ダイアログ](./media/hdinsight-hadoop-manage-ambari/manage-alerts.png)
+![Apache Ambari の警告グループの管理](./media/hdinsight-hadoop-manage-ambari/ambari-manage-alerts.png)
 
 **[Actions]** メニューで、 __[Manage Alert Notifications ]__ を選択して、アラート方法を管理したり、アラート通知を作成したりすることもできます。 現在の通知が表示されます。 ここから通知を作成することもできます。 特定のアラート/重要度の組み合わせが発生したとき、通知は **EMAIL** または **SNMP** で送信されます。 たとえば、 **[YARN Default]** グループのいずれかのアラートが **[Critical]** に設定されたときに電子メール メッセージを送信できます。
 
-![Create alert ダイアログ](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
+![Apache Ambari のアラート通知の作成](./media/hdinsight-hadoop-manage-ambari/create-alert-notification.png)
 
 最後に、 __[Actions]__ メニューの __[Manage Alert Settings]__ を選択すると、通知の送信前にアラートが発生する回数を設定できます。 この設定は、一時的なエラーの通知を防ぐために使用できます。
 
@@ -92,28 +92,28 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 ダッシュボードの **[Metrics]** タブには、クラスターのステータスを一目で簡単に確認できる一連のウィジェットが用意されています。 **[CPU Usage]** などのいくつかのウィジェットをクリックすると、追加の情報が表示されます。
 
-![metrics のダッシュボード](./media/hdinsight-hadoop-manage-ambari/metrics.png)
+![Apache Ambari のダッシュボードとメトリック](./media/hdinsight-hadoop-manage-ambari/hdi-metrics-dashboard.png)
 
 **[Heatmaps]** タブには、緑から赤までの色分けによるメトリックが表示されます。
 
-![heatmaps のダッシュボード](./media/hdinsight-hadoop-manage-ambari/heatmap.png)
+![Apache Ambari のダッシュボードとヒートマップ](./media/hdinsight-hadoop-manage-ambari/hdi-heatmap-dashboard.png)
 
 クラスター内のノードの詳細については、 **[Hosts]** を選択します。 次に、関心のある特定のノードを選択します。
 
-![ホストの詳細](./media/hdinsight-hadoop-manage-ambari/host-details.png)
+![Apache Ambari のホスト概要の詳細](./media/hdinsight-hadoop-manage-ambari/ambari-host-details1.png)
 
 ### <a name="services"></a>サービス
 
 ダッシュボードの **[Services]** サイド バーでは、クラスターで実行中のサービスのステータスを視覚的に簡単に確認できます。 ステータスまたは実行する必要があるアクションを示すために、さまざまなアイコンが使用されます。 たとえば、サービスをリサイクルする必要がある場合は、黄色のリサイクル記号が表示されます。
 
-![サービスのサイド バー](./media/hdinsight-hadoop-manage-ambari/service-bar.png)
+![Apache Ambari のサービス サイド バー](./media/hdinsight-hadoop-manage-ambari/apache-ambari-service-bar.png)
 
 > [!NOTE]  
 > 表示されるサービスは、HDInsight クラスターの種類とバージョンによって異なります。 ここに表示されるサービスは、お使いのクラスターに表示されるサービスとは異なる場合があります。
 
 サービスを選択すると、サービスの詳細が表示されます。
 
-![サービスの概要情報](./media/hdinsight-hadoop-manage-ambari/service-details.png)
+![Apache Ambari のサービス概要情報](./media/hdinsight-hadoop-manage-ambari/ambari-service-details.png)
 
 #### <a name="quick-links"></a>クイック リンク:
 
@@ -142,7 +142,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 **[Hosts]** ページには、クラスター内のすべてのホストが一覧表示されます。 ホストを管理するには、次の手順に従います。
 
-![hosts ページ](./media/hdinsight-hadoop-manage-ambari/hosts.png)
+![Apache Ambari のホスト ページ概要](./media/hdinsight-hadoop-manage-ambari/hdinsight-hosts-page.png)
 
 > [!NOTE]  
 > ホストの追加、使用停止、および再任命は HDInsight クラスターでは使用しないことをお勧めします。
@@ -168,7 +168,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 **[Dashboard]** または **[Services]** ページでサービスの一覧の下部にある **[Actions]** ボタンを使用して、すべてのサービスを停止し、開始します。
 
-![[Service Actions]](./media/hdinsight-hadoop-manage-ambari/service-actions.png)
+![Apache Ambari のサービス アクション一覧](./media/hdinsight-hadoop-manage-ambari/ambari-service-actions.png)
 
 > [!WARNING]  
 > このメニューには **[サービスの追加]** が表示されますが、これを使用してサービスを HDInsight クラスターに追加しないでください。 新しいサービスは、クラスターのプロビジョニング中にスクリプト アクションを使用して追加する必要があります。 スクリプト アクションの使用の詳細については、「 [Script Action を使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
@@ -179,7 +179,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 2. **[Summary]** タブの上部で **[Service Actions]** ボタンを使用して実行する操作を選択します。 これにより、すべてのノードでサービスが再起動されます。
 
-    ![service action](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
+    ![Apache Ambari の個別サービス アクション](./media/hdinsight-hadoop-manage-ambari/individual-service-actions.png)
 
    > [!NOTE]  
    > クラスターの実行中にサービスを再起動すると、アラートが生成される場合があります。 アラートを回避するには、 **[Service Actions]** ボタンを使用して、再起動を実行する前に、サービスの **[Maintenance mode]** を有効にします。
@@ -195,7 +195,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 2. **[Configs]** タブをクリックします。現在の構成が表示されます。 以前の構成の一覧も表示されます。
 
-    ![構成](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
+    ![Apache Ambari のサービス構成](./media/hdinsight-hadoop-manage-ambari/ambari-service-configs.png)
 
 3. 表示されたフィールドを使用して構成を変更し、 **[Save]** を選択します。 または、以前の構成を選択し、 **[Make current]** を選択して以前の設定にロールバックします。
 

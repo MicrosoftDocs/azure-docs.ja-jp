@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 6e0192029decef95dcaecc0c60dce5fd5b6f99ff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e9ecc34566e6e534b7489c934c0d5fa3b34e219b
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66479902"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104492"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
@@ -29,9 +29,9 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
 
 | Storage アカウントの種類 | サポートされているサービス | サポートされているパフォーマンス レベル | サポートされているアクセス層 |
 |----------------------|--------------------|-----------------------------|------------------------|
-| StorageV2 (汎用 v2)  | Blob     | Standard                    | ホット、クール、アーカイブ\*   |
-| Storage (汎用 V1)   | Blob     | Standard                    | 該当なし                    |
-| BlobStorage                    | Blob     | Standard                    | ホット、クール、アーカイブ\*   |
+| StorageV2 (汎用 v2)  | BLOB     | Standard                    | ホット、クール、アーカイブ\*   |
+| Storage (汎用 V1)   | BLOB     | Standard                    | 該当なし                    |
+| BlobStorage                    | BLOB     | Standard                    | ホット、クール、アーカイブ\*   |
 
 ビジネス データの格納には、既定の BLOB コンテナーを使用しないことをお勧めします。 ストレージ コストを削減するために、既定の BLOB コンテナーの使用後、コンテナーを毎回削除することをお勧めします。 既定のコンテナーには、アプリケーション ログとシステム ログが格納されます。 コンテナーを削除する前に、ログを取り出してください。
 
@@ -45,7 +45,7 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
 ## <a name="hdinsight-storage-architecture"></a>HDInsight のストレージ アーキテクチャ
 次の図は、Azure Storage を使う HDInsight のストレージ アーキテクチャを示しています。
 
-![Hadoop クラスターは、HDFS API を使用して、BLOB ストレージの構造化データおよび非構造化データへのアクセスと保存を実行します。](./media/hdinsight-hadoop-use-blob-storage/HDI.WASB.Arch.png "HDInsight のストレージ アーキテクチャ")
+![Hadoop クラスターでは、HDFS API を使用してデータへのアクセスが行われ、BLOB ストレージに保存されます](./media/hdinsight-hadoop-use-blob-storage/storage-architecture.png "HDInsight のストレージ アーキテクチャ")
 
 HDInsight では、それぞれのコンピューティング ノードにローカルに割り当てられている分散ファイル システムにアクセスします。 このファイル システムには、完全修飾 URI を使用してアクセスできます。次に例を示します。
 
@@ -73,6 +73,7 @@ Apache Hive、MapReduce、Apache Hadoop ストリーミング、Apache Pig な�
 BLOB は、構造化データと非構造化データに使用できます。 BLOB コンテナーには、"キーと値のペア" としてデータが格納されます。ディレクトリ階層はありません。 ただし、キー名でスラッシュ (/) を使用すれば、ファイルがディレクトリ階層に保存されているように見せかけることができます。 たとえば、BLOB のキー名を「 *input/log1.txt*」とします。 この場合、*input* ディレクトリは実際に存在しませんが、キー名でスラッシュが使用されているのでファイル パスのように見えます。
 
 ## <a id="benefits"></a>Azure Storage の利点
+
 コンピューティング クラスターとストレージ リソースを同じ場所で併置しないとなるとパフォーマンスの低下が懸念されますが、これは、Azure リージョン内のストレージ アカウント リソースの近くにコンピューティング クラスターを作成することで軽減されます。高速ネットワークが整備されているので、コンピューティング ノードは Azure Storage 内のデータに効率的にアクセスできます。
 
 HDFS ではなく、Azure Storage にデータを格納することにはいくつかの利点があります。
@@ -93,6 +94,7 @@ MapReduce の一部のジョブやパッケージでは中間結果が生成さ�
 > ほとんどの HDFS コマンド (`ls`、`copyFromLocal`、`mkdir` など) は通常と同じように機能します。 ただし、`fschk` や `dfsadmin` など、HDFS ネイティブ実装 (DFS) に固有のコマンドについては、Azure Storage 上で実行した場合に動作が異なります。
 
 ## <a name="address-files-in-azure-storage"></a>Azure Storage 内のファイルの指定
+
 HDInsight から Azure Storage 内のファイルにアクセスするための URI スキームは次のとおりです。
 
 ```config
@@ -125,6 +127,7 @@ example/jars/hadoop-mapreduce-examples.jar
 > HDInsight の外部から BLOB を操作する場合、ほとんどのユーティリティで WASB 形式が認識されず、代わりに `example/jars/hadoop-mapreduce-examples.jar` などの基本的なパス形式が要求されます。
 
 ##  <a name="blob-containers"></a>BLOB コンテナー
+
 BLOB を使用するには、まず、[Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)を作成します。 その一環として、ストレージ アカウントを作成する Azure リージョンを指定します。 クラスターとストレージ アカウントは、同じリージョンに置く必要があります。 Hive メタストア SQL Server データベースと Apache Oozie メタストア SQL Server データベースも、同じリージョンに配置する必要があります。
 
 作成される各 BLOB は、どこにあるとしても、Azure ストレージ アカウント内のコンテナーに属します。 このコンテナーは、HDInsight の外部で作成された既存の BLOB ストレージ コンテナーか、HDInsight クラスター用に作成されたコンテナーであってもかまいません。

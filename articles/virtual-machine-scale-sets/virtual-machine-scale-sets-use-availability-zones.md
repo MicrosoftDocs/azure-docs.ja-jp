@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a31ed174c7a5986594f7c07b7ce00b1649413c8
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60803274"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69907979"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する
 
@@ -34,11 +34,11 @@ API バージョン *2017-12-01* では、1 つ以上のゾーンにスケール
 
 最大拡散では、VM が拡散される障害ドメインの数に関係なく、スケール セット VM インスタンス ビューおよびインスタンス メタデータには、既定の 1 つのドメインだけが表示されることに注意してください。 各ゾーン内の拡散は暗黙で行われます。
 
-最大拡散を使うには、*platformFaultDomainCount* を *1* に設定します。 5 障害ドメインの固定拡散を使うには、*platformFaultDomainCount* を *5* に設定します。 API バージョン *2017-12-01* では、単一ゾーンおよびクロスゾーンのスケール セットに対する *platformFaultDomainCount* の既定値は *1* です。 現在、リージョン スケール セットでは 5 障害ドメインの固定拡散のみがサポートされています。
+最大拡散を使うには、*platformFaultDomainCount* を *1* に設定します。 5 障害ドメインの固定拡散を使うには、*platformFaultDomainCount* を *5* に設定します。 API バージョン *2017-12-01* では、単一ゾーンおよびクロスゾーンのスケール セットに対する *platformFaultDomainCount* の既定値は *1* です。 現在、リージョン (非ゾーン) スケール セットでは 5 障害ドメインの固定拡散のみがサポートされています。
 
 ### <a name="placement-groups"></a>配置グループ
 
-スケール セットを展開するときは、可用性ゾーンごとに 1 つの[配置グループ](./virtual-machine-scale-sets-placement-groups.md)、またはゾーンごとに複数の配置グループのどちらかを選んで展開することもできます リージョン スケール セットでの選択肢は、リージョンに 1 つの配置グループ、またはリージョンに複数の配置グループです。 ほとんどのワークロードでは、より大きいスケールに対応できるので、複数の配置グループをお勧めします。 API バージョン *2017-12-01* でのスケール セットの既定値は、単一ゾーンとクロスゾーンのスケール セットについては複数の配置グループですが、リージョン スケール セットについては単一の配置グループです。
+スケール セットを展開するときは、可用性ゾーンごとに 1 つの[配置グループ](./virtual-machine-scale-sets-placement-groups.md)、またはゾーンごとに複数の配置グループのどちらかを選んで展開することもできます リージョン (非ゾーン) スケール セットでの選択肢は、リージョンに 1 つの配置グループ、またはリージョンに複数の配置グループです。 ほとんどのワークロードでは、より大きいスケールに対応できるので、複数の配置グループをお勧めします。 API バージョン *2017-12-01* でのスケール セットの既定値は、単一ゾーンとクロスゾーンのスケール セットについては複数の配置グループですが、リージョン (非ゾーン) スケール セットについては単一の配置グループです。
 
 > [!NOTE]
 > 最大拡散を使う場合は、複数の配置グループを使う必要があります。

@@ -3,21 +3,20 @@ title: Azure Data Factory の式と関数 | Microsoft Docs
 description: この記事では、Data Factory エンティティの作成で使用できる式と関数に関する情報を提供します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-ms.openlocfilehash: d48d9e89085e08ac4da9db15458e3a3aa8152bb5
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: c500c4b2d35a449a9f9c0f693a02c008ea6e3c5e
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67541217"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141687"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -152,13 +151,13 @@ ms.locfileid: "67541217"
 |関数名|説明|  
 |-------------------|-----------------|  
 |concat|任意の数の文字列を結合します。 たとえば、パラメーター 1 が `foo,` である場合、次の式は `somevalue-foo-somevalue` を返します: `concat('somevalue-',pipeline().parameters.parameter1,'-somevalue')`<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **[名前]** :String *n*<br /><br /> **説明**:必須。 1 つの文字列に結合する文字列です。|  
-|substring|文字列から文字のサブセットを返します。 たとえば、次の式<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> は次を返します。<br /><br /> `foo`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 部分文字列を取得する文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **[名前]** :Start index<br /><br /> **説明**:必須。 パラメーター 1 で取得する部分文字列の開始位置のインデックスです。<br /><br /> **パラメーター番号**: 3<br /><br /> **[名前]** :Length<br /><br /> **説明**:必須。 部分文字列の長さです。|  
+|substring|文字列から文字のサブセットを返します。 たとえば、次の式<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> は次を返します。<br /><br /> `foo`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 部分文字列を取得する文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **[名前]** :Start index<br /><br /> **説明**:必須。 パラメーター 1 で取得する部分文字列の開始位置のインデックスです。 開始インデックスは 0 から始まります。 <br /><br /> **パラメーター番号**: 3<br /><br /> **[名前]** :Length<br /><br /> **説明**:必須。 部分文字列の長さです。|  
 |replace|文字列を指定された文字列に置き換えます。 たとえば、式<br /><br /> `replace('the old string', 'old', 'new')`<br /><br /> は次を返します。<br /><br /> `the new string`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: string<br /><br /> **説明**:必須。  パラメーター 1 の中にパラメーター 2 が見つかった場合、パラメーター 2 が検索された文字列であり、パラメーター 3 で更新されます。<br /><br /> **パラメーター番号**: 2<br /><br /> **[名前]** :Old string<br /><br /> **説明**:必須。 パラメーター 1 の中に一致が見つかったときに、パラメーター 3 に置き換える文字列<br /><br /> **パラメーター番号**: 3<br /><br /> **[名前]** :New string<br /><br /> **説明**:必須。 パラメーター 1 でパラメーター 2 と一致する文字列が見つかった場合、この文字列に置き換えます。|  
 |guid| グローバルに一意の文字列 (GUID とも呼ばれます) を生成します。 たとえば、次の出力が生成されることがあります: `c2ecc88d-88c8-4096-912c-d6f2e2b138ce`<br /><br /> `guid()`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :形式<br /><br /> **説明**:省略可能。 [この GUID の値の書式設定方法](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx)を示す単一の書式設定指定子です。 指定できる書式設定パラメーターは、"N"、"D"、"B"、"P"、"X" です。 指定しないと、"D" が使われます。|  
 |toLower|文字列を小文字に変換します。 たとえば、次は `two by two is four` を返します: `toLower('Two by Two is Four')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 小文字に変換する文字列です。 文字列内の文字に小文字の対応する文字がない場合、その文字は返される文字列に変更されずに含まれます。|  
 |toUpper|文字列を大文字に変換します。 たとえば、次の式は `TWO BY TWO IS FOUR` を返します: `toUpper('Two by Two is Four')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 大文字に変換する文字列です。 文字列内の文字に大文字の対応する文字がない場合、その文字は返される文字列に変更されずに含まれます。|  
-|indexof|文字列内で値のインデックスを探します。大文字と小文字は区別されません。 たとえば、次の式は `7` を返します: `indexof('hello, world.', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 インデックスを探す値です。|  
-|lastindexof|文字列内で値の最後のインデックスを探します。大文字と小文字は区別されません。 たとえば、次の式は `3` を返します: `lastindexof('foofoo', 'foo')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 インデックスを探す値です。|  
+|indexof|文字列内で値のインデックスを探します。大文字と小文字は区別されません。 インデックスは 0 から始まります。 たとえば、次の式は `7` を返します: `indexof('hello, world.', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 インデックスを探す値です。|  
+|lastindexof|文字列内で値の最後のインデックスを探します。大文字と小文字は区別されません。 インデックスは 0 から始まります。 たとえば、次の式は `3` を返します: `lastindexof('foofoo', 'foo')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 インデックスを探す値です。|  
 |startswith|文字列が値で始まっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `startswith('hello, world', 'hello')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 文字列が始まっている可能性のある値です。|  
 |endswith|文字列が値で終わっているかどうかを調べます。大文字と小文字は区別されません。 たとえば、次の式は `true` を返します: `endswith('hello, world', 'world')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 値を含む可能性のある文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 文字列が終わっている可能性のある値です。|  
 |split|区切り記号を使って文字列を分割します。 たとえば、次の式は `["a", "b", "c"]` を返します: `split('a;b;c',';')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 分割する文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **[名前]** :string<br /><br /> **説明**:必須。 区切り記号です。|  
@@ -231,8 +230,8 @@ ms.locfileid: "67541217"
 |uriComponent|値の URI でエンコードされた表現を返します。 たとえば、次の式は `You+Are%3ACool%2FAwesome: uriComponent('You Are:Cool/Awesome ')` を返します<br /><br /> パラメーターの詳細: 番号: 1、名前: String、説明: 必須。 URI でエンコードする文字列です。|  
 |uriComponentToBinary|URI でエンコードされた文字列のバイナリ表現を返します。 たとえば、次の式は `You Are:Cool/Awesome` のバイナリ表現を返します: `uriComponentToBinary('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :string<br /><br />**説明**:必須。 URI でエンコードされた文字列です。|  
 |uriComponentToString|URI でエンコードされた文字列の文字列表現を返します。 たとえば、次の式は `You Are:Cool/Awesome` を返します: `uriComponentToString('You+Are%3ACool%2FAwesome')`<br /><br /> **パラメーター番号**: 1<br /><br />**[名前]** :string<br /><br />**説明**:必須。 URI でエンコードされた文字列です。|  
-|Xml|値の xml 表現を返します。 たとえば、次の式は `'\<name>Alan\</name>'` によって表される xml コンテンツを返します: `xml('\<name>Alan\</name>')` xml 関数は、JSON オブジェクトの入力もサポートします。 たとえば、パラメーター `{ "abc": "xyz" }` は xml コンテンツ `\<abc>xyz\</abc>` に変換されます<br /><br /> **パラメーター番号**: 1<br /><br />**[名前]** :値<br /><br />**説明**:必須。 XML に変換する値です。|  
-|xpath|xpath 式が評価された値の xpath 式に一致する xml ノードの配列を返します。<br /><br />  **例 1**<br /><br /> パラメーター 'p1' の値が次の XML の文字列表現であるとします。<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1.コード `xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> は次を返します<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> これに対して<br /><br /> 2.コード `xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> は次を返します<br /><br /> `13`<br /><br /> <br /><br /> **例 2**<br /><br /> 次のような XML コンテンツがあるものとします。<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.コード `@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> or<br /><br /> 2.コード `@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> は、次の値は返します。<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> and<br /><br /> 手順 3.コード `@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> は、次の値は返します。<br /><br /> ``bar``<br /><br /> **パラメーター番号**: 1<br /><br />**[名前]** :Xml<br /><br />**説明**:必須。 XPath 式を評価する XML です。<br /><br /> **パラメーター番号**: 2<br /><br />**[名前]** :XPath<br /><br />**説明**:必須。 評価する XPath 式です。|  
+|xml|値の xml 表現を返します。 たとえば、次の式は `'\<name>Alan\</name>'` によって表される xml コンテンツを返します: `xml('\<name>Alan\</name>')` xml 関数は、JSON オブジェクトの入力もサポートします。 たとえば、パラメーター `{ "abc": "xyz" }` は xml コンテンツ `\<abc>xyz\</abc>` に変換されます<br /><br /> **パラメーター番号**: 1<br /><br />**[名前]** :値<br /><br />**説明**:必須。 XML に変換する値です。|  
+|xpath|xpath 式が評価された値の xpath 式に一致する xml ノードの配列を返します。<br /><br />  **例 1**<br /><br /> パラメーター 'p1' の値が次の XML の文字列表現であるとします。<br /><br /> `<?xml version="1.0"?> <lab>   <robot>     <parts>5</parts>     <name>R1</name>   </robot>   <robot>     <parts>8</parts>     <name>R2</name>   </robot> </lab>`<br /><br /> 1.コード `xpath(xml(pipeline().parameters.p1), '/lab/robot/name')`<br /><br /> は次を返します<br /><br /> `[ <name>R1</name>, <name>R2</name> ]`<br /><br /> これに対して<br /><br /> 2.コード `xpath(xml(pipeline().parameters.p1, ' sum(/lab/robot/parts)')`<br /><br /> は次を返します<br /><br /> `13`<br /><br /> <br /><br /> **例 2**<br /><br /> 次のような XML コンテンツがあるものとします。<br /><br /> `<?xml version="1.0"?> <File xmlns="http://foo.com">   <Location>bar</Location> </File>`<br /><br /> 1.コード `@xpath(xml(body('Http')), '/*[name()=\"File\"]/*[name()=\"Location\"]')`<br /><br /> or<br /><br /> 2.コード `@xpath(xml(body('Http')), '/*[local-name()=\"File\" and namespace-uri()=\"http://foo.com\"]/*[local-name()=\"Location\" and namespace-uri()=\"\"]')`<br /><br /> は、次の値は返します。<br /><br /> `<Location xmlns="http://foo.com">bar</Location>`<br /><br /> and<br /><br /> 手順 3.コード `@xpath(xml(body('Http')), 'string(/*[name()=\"File\"]/*[name()=\"Location\"])')`<br /><br /> は、次の値は返します。<br /><br /> ``bar``<br /><br /> **パラメーター番号**: 1<br /><br />**[名前]** :xml<br /><br />**説明**:必須。 XPath 式を評価する XML です。<br /><br /> **パラメーター番号**: 2<br /><br />**[名前]** :XPath<br /><br />**説明**:必須。 評価する XPath 式です。|  
 |array|パラメーターを配列に変換します。  たとえば、次の式は `["abc"]` を返します: `array('abc')`<br /><br /> **パラメーター番号**: 1<br /><br /> **[名前]** :値<br /><br /> **説明**:必須。 配列に変換する値です。|
 |createArray|パラメーターから配列を作成します。  たとえば、次の式は `["a", "c"]` を返します: `createArray('a', 'c')`<br /><br /> **パラメーター番号**: 1 ... n<br /><br /> **[名前]** :Any n<br /><br /> **説明**:必須。 配列に結合する値です。|
 

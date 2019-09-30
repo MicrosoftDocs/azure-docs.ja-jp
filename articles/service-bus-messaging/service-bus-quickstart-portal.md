@@ -3,18 +3,17 @@ title: クイック スタート - Azure portal を使用して Service Bus キ�
 description: このクイック スタートでは、Azure portal を使用して Service Bus キューを作成する方法について説明します。 その後、サンプル クライアント アプリケーションを使用してキューとの間でメッセージを送受信します。
 services: service-bus-messaging
 author: spelluru
-manager: timlt
 ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/10/2019
+ms.date: 09/03/2019
 ms.author: spelluru
-ms.openlocfilehash: 315f8d30b7c7559947c599edd0e18eaa5a99ac22
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: dc9b8260a8ddde6633bc9215d9efff7aaaa71ad3
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67513627"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70242388"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>クイック スタート:Azure portal を使用して Service Bus キューを作成する
 このクイックスタートでは、Service Bus キューとの間でメッセージを送受信し、[Azure portal][Azure portal] を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。
@@ -34,6 +33,18 @@ ms.locfileid: "67513627"
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
 ## <a name="send-and-receive-messages"></a>メッセージを送受信する
+
+> [!NOTE]
+> このセクションで使用されているメッセージ送受信サンプルは、.NET のサンプルです。 他のプログラミング言語を使用してメッセージを送受信するサンプルについては、「[Service Bus サンプル](service-bus-samples.md)」を参照してください。 
+> 
+> 各種のプログラミング言語を使用してメッセージを送受信する具体的な手順については、次のクイック スタートを参照してください。
+> - [.NET](service-bus-dotnet-get-started-with-queues.md)
+> - [Java](service-bus-java-how-to-use-queues.md)
+> - [Node.js で azure/service-bus パッケージを使用する](service-bus-nodejs-how-to-use-queues-new-package.md)
+> - [Node.js で azure-sb パッケージを使用する](service-bus-nodejs-how-to-use-queues.md)
+> - [PHP](service-bus-php-how-to-use-queues.md)
+> - [Python](service-bus-python-how-to-use-queues.md)
+> - [Ruby](service-bus-ruby-how-to-use-queues.md)
 
 名前空間とキューがプロビジョニングされ、必要な資格情報を持っている場合、メッセージを送受信できる状態です。 [こちらの GitHub サンプル フォルダー](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)でコードを調べることができます。
 

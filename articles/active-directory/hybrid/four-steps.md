@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0630e62a08314612cb08b5cb26b5a1563de4f40b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 36433aef75d38418cb74fcd195dc1e9e902f24a8
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779694"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124919"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>Azure Active Directory を使って強固な ID 基盤を構築するための 4 つのステップ
 
@@ -75,7 +75,7 @@ Azure AD アプリケーション プロキシには、次のような利点が�
 * VPN や従来のリバース プロキシ ソリューションなどの境界ネットワーク内にコンポーネントがない
 * 受信接続は不要
 * クラウドとオンプレミスのデバイス、リソース、アプリ全体でのシングル サインオン (SSO)
-* 場所や時間を問わず生産性を維持できるようにするための、エンド ユーザーへの権限付与
+* 場所や時間を問わず、エンド ユーザーが生産性を高められるようにする
 
 ### <a name="discover-shadow-it-with-microsoft-cloud-app-security"></a>Microsoft Cloud App Security を使ってシャドウ IT を検出する
 
@@ -83,7 +83,7 @@ Azure AD アプリケーション プロキシには、次のような利点が�
 
 [Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/what-is-cloud-app-security) (MCAS) は、ユーザーが SSO や条件付きアクセスなどの機能の恩恵を受けられるように、IT が承認してエンタープライズ アプリケーション ギャラリーに追加できる、ユーザーに人気のある便利なアプリを特定するのに役立ちます。
 
-*"**Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます。"* --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
+*" **Cloud App Security** を使用すると、従業員が、Accenture を保護するのに役立つ基本的なセキュリティ ポリシーをサポートする方法でクラウドと SaaS のアプリケーションを正しく使用していることを確認できます"*。 --- [Accenture 社、情報セキュリティ部門マネージング ディレクター、John Blasi 氏](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 
 シャドウ IT を検出することに加え、MCAS は、アプリのリスク レベルを判別し、会社のデータへの未承認アクセス、データ漏洩の可能性、およびアプリケーションに固有のその他のセキュリティ リスクを防止することもできます。
 
@@ -141,7 +141,7 @@ Azure の[セルフサービスによるパスワードのリセット](https://
 
 Azure では、ユーザーが MFA および SSPR に登録していることをお客様およびその組織で確認するために使用できるレポートを提供しています。 登録していないユーザーには、そのプロセスについて教える必要がある場合があります。
 
-MFA の[サインイン レポート](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting)には、MFA の使用状況に関する情報が含まれており、組織で MFA がどのように機能しているかに関する分析情報を得ることができます。 Azure AD のサインイン アクティビティ (および監査とリスク イベント) へのアクセス権を持つことは、トラブルシューティング、使用状況の分析、およびフォレンジクスの調査を行うために不可欠です。
+MFA の[サインイン レポート](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-reporting)には、MFA の使用状況に関する情報が含まれており、組織で MFA がどのように機能しているかに関する分析情報を得ることができます。 Azure AD のサインイン アクティビティ (および監査とリスク検出) へのアクセス権を持つことは、トラブルシューティング、使用状況の分析、およびフォレンジクスの調査を行うために不可欠です。
 
 同様に、[セルフサービスによるパスワード管理レポート](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-reporting)を使用して、誰が SSPR に登録しているか (またはしていないか) を特定できます。
 

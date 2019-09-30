@@ -23,7 +23,7 @@ Azure SignalR サービスは、ブロードキャストなどのサーバーと
 
 このクイック スタートは、macOS、Windows、または Linux で実行できます。
 
-* [.NET コア SDK](https://www.microsoft.com/net/download/core)
+* [.NET Core SDK](https://www.microsoft.com/net/download/core)
 * 任意のテキスト エディターまたはコード エディター。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]

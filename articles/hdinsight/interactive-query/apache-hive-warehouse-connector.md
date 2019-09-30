@@ -7,12 +7,12 @@ ms.author: nakhanha
 ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: bf9bb7adfa25ea16498a32b57d4927de7e81c007
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 068dc76112db39ad8db118062656013e20cfc2ab
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826920"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70811664"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -51,7 +51,7 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 
         ![Spark2 Ambari の構成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
-    1. `spark.hadoop.hive.llap.daemon.service.hosts` を、**Advanced hive-interactive-env** のプロパティ **LLAP app name** と同じ値に設定します。 たとえば、`llap0` のように指定します。
+    1. `spark.hadoop.hive.llap.daemon.service.hosts` を、** Advanced hive-interactive-site** の **hive.llap.daemon.service.hosts** プロパティと同じ値に設定します。 たとえば、`@llap0` のように指定します。
 
     1. `spark.sql.hive.hiveserver2.jdbc.url` を JDBC 接続文字列に設定します。これにより、対話型クエリ クラスター上の Hiveserver2 に接続されます。 クラスターの接続文字列は、次の URI のようになります。 `CLUSTERNAME` は自分の Spark クラスターの名前であり、`user` および `password` パラメーターは自分のクラスターに対して適切な値に設定されます。
 
@@ -229,10 +229,10 @@ Hive Warehouse Connector を使用すると、Spark ストリーミングを使�
 1. 列の最後の 4 文字だけが表示される列マスク ポリシーを適用します。  
     1. `https://CLUSTERNAME.azurehdinsight.net/ranger/` で Ranger 管理 UI に移動します。
     1. **[Hive]** の下にある自分のクラスターの Hive サービスをクリックします。
-        ![Ranger ポリシーを適用する前のデモ テーブル](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
-    1. **[Masking]\(マスク\)** タブ、 **[Add New Policy]\(新しいポリシーの追加\)** の順にクリックします。![ポリシーの一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+        ![Ranger サービス マネージャー](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
+    1. **[Masking]\(マスク\)** タブ、 **[Add New Policy]\(新しいポリシーの追加\)** の順にクリックします。![Hive ポリシーの一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
     1. 目的のポリシー名を入力します。 次のように選択します。データベース: **default**、Hive テーブル: **demo**、Hive 列: **name**、ユーザー: **rsadmin2**、アクセスの種類: **select**、 **[Select Masking Option]\(マスク オプションの選択\)** メニュー: **Partial mask: show last 4**。 **[追加]** をクリックします。
-                ![ポリシー一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
+                ![ポリシーの作成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. テーブルの内容をもう一度表示します。 Ranger ポリシーの適用後は、列の最後の 4 文字だけを確認できます。
 
     ![Ranger ポリシーを適用した後のデモ テーブル](./media/apache-hive-warehouse-connector/hive-warehouse-connector-table-after-ranger-policy.png)

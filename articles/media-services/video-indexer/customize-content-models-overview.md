@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services Video Indexer でのコンテンツ モデルのカスタマイズ
-titlesuffix: Azure Media Services
+titleSuffix: Azure Media Services
 description: この記事では、各種カスタマイズのメリットを説明する概念記事へのリンクを示します。 この記事では、各モデルのカスタマイズを実装する方法を示す攻略ガイドへのリンクも記載します。
 services: media-services
 author: anikaz
@@ -10,19 +10,23 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
-ms.openlocfilehash: 8499e816f60b9d6605bdbdc392f6d2b3e134b863
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 9abf9b791cc986bcce49bbd0cf8136a573a149a3
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68878815"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70860206"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Video Indexer でのコンテンツ モデルのカスタマイズ
 
 Video Indexer を使用すると、モデルの一部をカスタマイズして、特定のユース ケースに適応させることができます。 これらのモデルには、[ブランド](customize-brands-model-overview.md)、[言語](customize-language-model-overview.md)、および[人物](customize-person-model-overview.md)などがあります。 これらのモデルは、Video Indexer の Web サイトまたは API を使用して簡単にカスタマイズできます。
 
-この記事では、各種カスタマイズのメリットを説明する概念記事へのリンクを示します。 この記事では、各モデルのカスタマイズを実装する方法を示す攻略ガイドへのリンクも記載します。
- 
+この記事では、各種カスタマイズのメリットを説明する記事へのリンクを示します。 この記事では、各モデルのカスタマイズを実装する方法を示す攻略ガイドへのリンクも記載します。
+
+## <a name="animated-characters"></a>アニメーション化された文字
+
+* [アニメーション化された文字の検出](animated-characters-recognition.md)
+
 ## <a name="brands-model"></a>ブランド モデル
 
 * [ブランド モデルのカスタマイズの概要](customize-brands-model-overview.md)

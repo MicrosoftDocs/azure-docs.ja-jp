@@ -1,5 +1,5 @@
 - name: Azure Cognitive Services のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   expanded: true
   items:
@@ -15,6 +15,8 @@
   items:
     - name: コンテナー サポート
       href: cognitive-services-container-support.md
+    - name: コンテナーに関する FAQ
+      href: ./containers/container-faq.md
     - name: コンテナーのレシピ
       items:
         - name: コンテナーの再利用
@@ -39,7 +41,7 @@
       href: cognitive-services-apis-create-account.md
     - name: Azure CLI を使用して新しいリソースを作成する
       href: cognitive-services-apis-create-account-cli.md
-    - name: Authentication
+    - name: 認証
       href: authentication.md
     - name: 診断ログの記録
       href: diagnostic-logging.md

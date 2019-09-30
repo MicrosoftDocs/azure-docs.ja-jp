@@ -4,18 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 14c8bf746df5a9423c6c29306addb7a7be2251b4
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: ad5c51b3d373947e8a09762b0cb27afff990e6da
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968033"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69906546"
 ---
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [Prerequisites](prerequisites-java.md)]
 
-* [JDK 7 以降](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle](https://gradle.org/install/)
-* Translator Text の Azure サブスクリプション キー
+[!INCLUDE [Set up and use environment variables](setup-env-variables.md)]
 
 ## <a name="initialize-a-project-with-gradle"></a>Gradle を使用してプロジェクトを初期化する
 
@@ -90,11 +88,12 @@ public class Transliterate {
 }
 ```
 
-次の行を `Transliterate` クラスに追加します。 `url` には、`api-version` と共に別途 2 つのパラメーターが追加されていることがわかります。 これらのパラメーターを使用して、入力言語を設定し、表記変換のスクリプトを設定しています。 このサンプルでは、日本語 (`jpan`) とラテン語 (`latn`) に設定しています。 サブスクリプション キーの値は、確実に更新してください。
+次の行を `Transliterate` クラスに追加します。 まず、サブスクリプション キーとエンドポイントが環境変数から読み取られます。 `url` には、`api-version` と共に別途 2 つのパラメーターが追加されていることがわかります。 これらのパラメーターを使用して、入力言語を設定し、表記変換のスクリプトを設定しています。 このサンプルでは、日本語 (`jpan`) とラテン語 (`latn`) に設定しています。 
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
-String url = "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScript=latn";
+private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
+private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
+String url = endpoint + "/transliterate?api-version=3.0&language=ja&fromScript=jpan&toScript=latn";
 ```
 Cognitive Services のマルチサービス サブスクリプションを使用している場合は、要求のパラメーターに `Ocp-Apim-Subscription-Region` も含める必要があります。 [マルチサービス サブスクリプションを使用した認証の詳細を参照してください](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)。
 

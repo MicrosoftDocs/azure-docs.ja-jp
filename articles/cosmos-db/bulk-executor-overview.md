@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 1716bd64286f1882b9fc224712d227967d78058a
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 8d2cb30e0f18485d500344e571b3ac5f2cde008f
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68637779"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615709"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB Bulk Executor ライブラリの概要
  
@@ -36,7 +36,7 @@ Bulk Executor ライブラリは、このような大きなスループットと
  
 * スケールアウト アーキテクチャを使用することで、1 時間以内に 1 テラバイトを超えるデータを一括インポートできます。  
 
-* Azure Cosmos DB コンテナー内の既存のデータを、パッチとして一括更新できます。 
+* Azure Cosmos コンテナー内の既存のデータを、パッチとして一括更新できます。 
  
 ## <a name="how-does-the-bulk-executor-operate"></a>Bulk Executor の動作方法 
 

@@ -9,17 +9,16 @@ ms.assetid: 6eb7d43d-e820-4a47-818c-80ff7d3b6f8e
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: bdf722ffa7a7c499ff256392886e0f229f27c7a5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf66a9e9aeee859953b4e1e2021a385491c6298e
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66137090"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70069660"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 
@@ -29,7 +28,7 @@ ms.locfileid: "66137090"
 
 Azure App Service Environment (ASE) は、インターネットでアクセス可能なエンドポイントまたは Azure Virtual Network (VNet) の内部アドレスのエンドポイントを使用して作成できます。 内部エンドポイントを使用して作成すると、内部ロード バランサー (ILB) と呼ばれる Azure コンポーネントによってそのエンドポイントが提供されます。 内部 IP アドレスの ASE は、ILB ASE と呼ばれます。 パブリック エンドポイントを持つ ASE は、外部 ASE と呼ばれます。 
 
-ASE は、Azure Portal または Azure Resource Manager テンプレートを使用して作成できます。 この記事では、Resource Manager テンプレートを使用して外部 ASE または ILB ASE を作成するために必要な手順と構文について説明します。 Azure Portal で ASE を作成する方法については、[外部 ASE の作成][MakeExternalASE]に関するページ、または [ILB ASE の作成][MakeILBASE]に関するページをご覧ください。
+ASE は、Azure Portal または Azure Resource Manager テンプレートを使用して作成できます。 この記事では、Resource Manager テンプレートを使用して外部 ASE または ILB ASE を作成するために必要な手順と構文について説明します。 Azure portal で ASE を作成する方法については、[外部 ASE の作成][MakeExternalASE]に関するページ、または [ILB ASE の作成][MakeILBASE]に関するページをご覧ください。
 
 Azure Portal で ASE を作成するときに、同時に VNet を作成するか、既存の VNet にデプロイするかを選択できます。 テンプレートから ASE を作成するときは、以下が必要です。 
 
@@ -163,7 +162,7 @@ App Service Environment には、ASEv1 と ASEv2 の 2 つのバージョンが�
 
 ASEv1 では、すべてのリソースを手動で管理します。 これには、フロントエンド、worker、IP ベースの SSL に使用する IP アドレスが含まれます。 App Service プランをスケールアウトするには、そのプランをホストする worker プールを先にスケールアウトしておく必要があります。
 
-ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 では、割り当てられた vCPU ごとに料金を支払います。 これには、フロントエンドまたはどのワークロードもホストしていない worker に使用される vCPU が含まれます。 ASEv1 では、ASE の既定の最大スケール サイズは合計で 55 ホストです。 これにはワーカーとフロントエンドが含まれます。 ASEv1 の利点の 1 つは、従来の仮想ネットワークと Resource Manager 仮想ネットワークにデプロイできることです。 ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]に関するページをご覧ください。
+ASEv1 では、ASEv2 とは異なる価格モデルを使用します。 ASEv1 では、割り当てられた vCPU ごとに料金を支払います。 これには、フロントエンドまたはどのワークロードもホストしていない worker に使用される vCPU が含まれます。 ASEv1 では、ASE の既定の最大スケール サイズは合計で 55 ホストです。 これにはワーカーとフロントエンドが含まれます。 ASEv1 の利点の 1 つは、従来の仮想ネットワークと Resource Manager 仮想ネットワークにデプロイできることです。 ASEv1 について詳しくは、[App Service Environment v1 の概要][ASEv1Intro]に関するページを参照してください。
 
 Resource Manager テンプレートを使用して ASEv1 を作成するには、[Resource Manager テンプレートを使用した ILB ASE v1 の作成][ILBASEv1Template]に関するページをご覧ください。
 

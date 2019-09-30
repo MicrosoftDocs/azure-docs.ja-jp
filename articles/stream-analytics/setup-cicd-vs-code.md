@@ -1,5 +1,5 @@
 ---
-title: Azure Stream Analytics CI/CD npm パッケージで継続的に統合および開発する
+title: Azure Stream Analytics CI/CD npm パッケージを使用する
 description: この記事では、Azure Stream Analytics CI/CD npm パッケージを使って継続的インテグレーションとデプロイのプロセスを設定する方法を説明します。
 services: stream-analytics
 author: su-jie
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: fa5a57afa379c6bbe027be80f400fc176800d289
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: df9afaaeeb7e41c111fe6bd053047095a9cb9349
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158502"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70173342"
 ---
-# <a name="continuously-integrate-and-develop-with-stream-analytics-cicd-npm-package"></a>Stream Analytics CI/CD npm パッケージで継続的に統合および開発する
+# <a name="use-the-stream-analytics-cicd-npm-package"></a>Stream Analytics CI/CD npm パッケージを使用する
 この記事では、Azure Stream Analytics CI/CD npm パッケージを使って継続的インテグレーションとデプロイのプロセスを設定する方法を説明します。
 
 ## <a name="build-the-vs-code-project"></a>VS コード プロジェクトをビルドする

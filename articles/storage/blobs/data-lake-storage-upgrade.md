@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 850d580d4eb1ca41932a28005d3375ced709db60
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 4c01cd36d489d8e7128bed645c8cb1127c6c0c25
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016389"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130401"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする
 
@@ -235,7 +235,7 @@ Data Lake Storage Gen1 では特定の情報とデータが他のサービスに
 
 * ACL がコピーされないツールを使用する場合、または ACL をコピーしたくない場合は、移行先の適切な最上位レベルで ACL を手動で設定する必要があります。 それを行うには Storage Explorer を使用できます。 コピーするファイルとフォルダーが継承するように、それらの ACL が既定の ACL であることを確認します。
 
-* Data Lake Storage Gen1 では、ACL を設定できる最高レベルはアカウントのルートです。 ただし、Data Lake Storage Gen2 では、ACL を設定できる最高レベルは、アカウント全体ではなく、ファイル システムのルート フォルダーです。 そのため、既定の ACL をアカウント レベルで設定する場合は、Data Lake Storage Gen2 アカウントのすべてのファイル システムにそれを複製する必要があります。
+* Data Lake Storage Gen1 では、ACL を設定できる最高レベルはアカウントのルートです。 一方、Data Lake Storage Gen2 では、ACL を設定できる最高レベルは、アカウント全体ではなく、コンテナーのルート フォルダーです。 そのため、既定の ACL をアカウント レベルで設定する場合は、Data Lake Storage Gen2 アカウントのすべてのファイル システムにそれを複製する必要があります。
 
 * 2 つのストレージ システム間では、ファイルの名前付けの制約が異なります。 Data Lake Storage Gen1 の方が制約が厳しいため、Data Lake Storage Gen2 から Data Lake Storage Gen1 にコピーするときに特にこれらの相違が関連します。
 
@@ -249,7 +249,7 @@ Data Lake Storage Gen1 または Data Lake Storage Gen2 でアプリケーショ
 
 Data Lake Storage Gen1 の詳細な URI 形式は[こちら](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store)でせつめいされていますが、大まかには *adl://mydatalakestore.azuredatalakestore.net/\<ファイル パス\>* です。
 
-Data Lake Storage Gen2 のファイルにアクセスするための URI 形式については[こちら](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)で詳しく説明されていますが、大まかには `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>` です。
+Data Lake Storage Gen2 のファイルにアクセスするための URI 形式については[こちら](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)で詳しく説明されていますが、大まかには `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>` です。
 
 既存のアプリケーションを調べて、Data Lake Storage Gen2 の URI を指すように URI が適切に変更されていることを確認する必要があります。 また、適切な資格情報を追加する必要があります。 最後に、元のアプリケーションの使用を終了して新しいアプリケーションに置き換える方法は、全体的なアップグレード戦略と密接に整合している必要があります。
 

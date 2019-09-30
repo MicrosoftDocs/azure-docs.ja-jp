@@ -4,14 +4,14 @@ description: Azure Cosmos DB のインデックス作成のしくみを説明し
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/22/2019
+ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: c8e21ea89f3e23709d636ab8af4716bff76d7217
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 4d961f8635a52a09011543b793ce8a87eaa4ea9e
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479285"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70914192"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB のインデックス作成 - 概要
 
@@ -25,6 +25,7 @@ Azure Cosmos DB はスキーマ非依存のデータベースであり、スキ�
 
 たとえば、次の項目を検討してみましょう。
 
+```json
     {
         "locations": [
             { "country": "Germany", "city": "Berlin" },
@@ -36,6 +37,7 @@ Azure Cosmos DB はスキーマ非依存のデータベースであり、スキ�
             { "city": "Athens" }
         ]
     }
+```
 
 これは次のツリーで表現されます。
 
@@ -70,13 +72,13 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 
     ```sql
    SELECT * FROM container c WHERE c.property = 'value'
-    ```
+   ```
 
 - 範囲クエリ:
 
    ```sql
    SELECT * FROM container c WHERE c.property > 'value'
-   ``` 
+   ```
   (`>`、`<`、`>=`、`<=`、`!=` に適しています)
 
 - `ORDER BY` クエリ:
@@ -107,15 +109,27 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
    SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })
    ```
 
-空間インデックスは、正しい形式の [GeoJSON](geospatial.md) オブジェクトに対して使用できます。 現在、Point、LineString、Polygon がサポートされています
+空間インデックスは、正しい形式の [GeoJSON](geospatial.md) オブジェクトに対して使用できます。 現在、Points、LineStrings、Polygons、MultiPolygons がサポートされています。
 
 **複合**のインデックスの種類は、次のために使用されます。
 
-- 複数のプロパティに対する `ORDER BY` クエリ: 
+- 複数のプロパティに対する `ORDER BY` クエリ:
 
-   ```sql
-   SELECT * FROM container c ORDER BY c.firstName, c.lastName
-   ```
+```sql
+ SELECT * FROM container c ORDER BY c.property1, c.property2
+```
+
+- フィルターと `ORDER BY` を使用するクエリ。 これらのクエリは、フィルター プロパティが `ORDER BY` 句に追加された場合に、複合インデックスを利用できます。
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' ORDER BY c.property1, c.property2
+```
+
+- 少なくとも 1 つのプロパティが等値フィルターである 2 つ以上のプロパティに対するフィルターを使用するクエリ
+
+```sql
+ SELECT * FROM container c WHERE c.property1 = 'value' AND c.property2 > 'value'
+```
 
 ## <a name="querying-with-indexes"></a>インデックスを使用してクエリを実行する
 
@@ -126,7 +140,7 @@ Azure Cosmos DB が項目をツリーに変換する理由は、そのような�
 ![ツリー内の特定のパスとの照合](./media/index-overview/matching-path.png)
 
 > [!NOTE]
-> 1 つのプロパティで並べ替える `ORDER BY` 句には*常に*範囲インデックスが必要であり、その句が参照するパスにこのインデックスが存在しない場合は失敗します。 同様に、複数 `ORDER BY` クエリには*常に*複合インデックスが必要です。
+> 1 つのプロパティで並べ替える `ORDER BY` 句には*常に*範囲インデックスが必要であり、その句が参照するパスにこのインデックスが存在しない場合は失敗します。 同様に、複数のプロパティで並べ替える `ORDER BY` クエリには、*常に*複合インデックスが必要です。
 
 ## <a name="next-steps"></a>次の手順
 

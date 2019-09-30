@@ -103,6 +103,8 @@
           href: sizes-hpc.md
         - name: 旧世代
           href: sizes-previous-gen.md
+        - name: Isolated のサイズ
+          href: isolation.md
         - name: Azure コンピューティング ユニット (ACU)
           href: acu.md
         - name: vCPU のクォータ
@@ -135,8 +137,10 @@
       href: ../../virtual-machine-scale-sets/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: インフラストラクチャの自動化
       href: infrastructure-automation.md
-    - name: セキュリティとポリシー
-      href: security-policy.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティとポリシー
+          href: security-policy.md
     - name: 状態とライフサイクル
       href: states-lifecycle.md
     - name: 監視
@@ -145,8 +149,8 @@
       href: backup-recovery.md
     - name: インフラストラクチャのガイドライン
       href: infrastructure-example.md
-    - name: セキュリティ属性
-      href: virtual-machines-linux-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: virtual-machines-linux-security-controls.md
 - name: ハウツー ガイド
   items:
     - name: VM の作成
@@ -168,6 +172,8 @@
               href: dedicated-hosts-portal.md
     - name: VM のセキュリティ保護
       items:
+        - name: Recommendations
+          href: security-recommendations.md
         - name: ジャストインタイム アクセス
           href: ../../security-center/security-center-just-in-time.md
         - name: 暗号化
@@ -262,6 +268,14 @@
           href: instance-metadata-service.md
         - name: REST による使用状況メトリックの取得
           href: metrics-vm-usage-rest.md
+    - name: VM を監視する
+      items:
+        - name: VM に対する Azure Monitor
+          href: ../../azure-monitor/insights/vminsights-overview.md
+        - name: メトリック アラートの作成
+          href: ../../azure-monitor/platform/alerts-metric.md
+        - name: ログ アラートを作成する
+          href: ../../azure-monitor/platform/alerts-log.md
     - name: コストを管理する
       items:
         - name: VM の前払い - Azure の予約
@@ -458,10 +472,16 @@
         - name: テンプレートによるディスクのデプロイ
           displayName: 'Azure Resource Manager, ARM'
           href: using-managed-disks-template-deployments.md
+        - name: ディスクに VHD をアップロードする - CLI
+          href: disks-upload-vhd-to-managed-disk-cli.md
         - name: ディスクのサイズの変更
           href: expand-disks.md
+        - name: Storage Explorer を使用してディスクを管理する
+          href: disks-use-storage-explorer-managed-disks.md
         - name: ディスクのスナップショットの作成
           href: snapshot-copy-managed-disk.md
+        - name: 増分スナップショットの作成
+          href: disks-incremental-snapshots.md
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
         - name: 移行と変換

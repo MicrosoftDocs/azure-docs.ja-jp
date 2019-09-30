@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 86fa7f62230c0ae0530b67ff2384942c876083d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686131"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390127"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
 
@@ -48,8 +48,10 @@ namespaceManager.CreateSubscription(srcSubscription));
 Alice が休暇中の場合、ERP トピックではなく、個人用のキューがいっぱいになります。 このシナリオでは、1 人の営業担当者がメッセージをまったく受信しないため、すべての ERP トピックがクォータに達しません。
 
 > [!NOTE]
-> 自動転送がセットアップされると、宛先での AutoDeleteOnIdle の値は自動的にデータ型の最大値に設定されます。
-> これは、常に宛先がメッセージの転送先となるようにします。
+> 自動転送が設定されると、**転送元と転送先、両方**の AutoDeleteOnIdle の値は自動的にデータ型の最大値に設定されます。
+> 
+>   - 転送元側では、自動転送は受信操作として行われます。 このため、自動転送設定がある転送元は、実際には "アイドル" になることがありません。
+>   - 転送先側では、これは常に宛先がメッセージの転送先となるように実行されます。
 
 ## <a name="autoforwarding-considerations"></a>自動転送に関する考慮事項
 
@@ -72,7 +74,7 @@ Service Bus では、メッセージの転送ごとに 1 操作を請求しま�
 Service Bus のパフォーマンスの向上について詳しくは、以下をご覧ください。 
 
 * [Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)
-* [パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]
+* [パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]。
 
 [QueueDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.forwardto#Microsoft_ServiceBus_Messaging_QueueDescription_ForwardTo
 [SubscriptionDescription.ForwardTo]: /dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.forwardto#Microsoft_ServiceBus_Messaging_SubscriptionDescription_ForwardTo

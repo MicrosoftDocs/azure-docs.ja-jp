@@ -23,7 +23,7 @@ ms.locfileid: "66255965"
 リリース ノートと SDK の更新手順の詳細を以下に示します。
 
 * [ASP.NET Web サーバー SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
-* [.NET コア SDK](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+* [.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
 * [.NET のログ記録アダプター](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/releases)
 * [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
 * [Java](https://github.com/Microsoft/ApplicationInsights-Java)

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/04/2019
 ms.author: raynew
-ms.openlocfilehash: c31a9fde50de8190cdd7bc19600344a8e58cf60b
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e2faa47a58283623747ae569de22e1c57df1a51f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827325"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231132"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 
@@ -72,6 +72,9 @@ NIC 書き込みのスループット (MB/秒) | net.transmitted.average  |VM �
 
 ## <a name="collected-metadata-vmware"></a>収集対象のメタデータ - VMware
 
+> [!NOTE]
+> Azure Migrate アプライアンスによって検出されたメタデータは、アプリケーションを Azure に移行し、Azure 適合性分析、アプリケーション依存関係分析、およびコスト計画を実行するときに、アプリケーションを適切なサイズにするのに役立ちます。 Microsoft では、ライセンスのコンプライアンス監査に関してこのデータを使用しません。
+
 アプライアンスが収集して Azure に送信する VMware VM のメタデータの全一覧を次に示します。
 
 **データ** | **カウンター**
@@ -109,7 +112,7 @@ IPv6 アドレス | vm.Guest.Net
 読み取りのスループット (MB/秒) | net.received.average
 書き込みのスループット (MB/秒) | net.transmitted.average
 **インベントリ パスの詳細** | 
-EnableAdfsAuthentication | container.GetType().Name
+名前 | container.GetType().Name
 子オブジェクトの型 | container.ChildType
 参照の詳細 | container.MoRef
 親の詳細 | Container.Parent
@@ -122,6 +125,9 @@ EnableAdfsAuthentication | container.GetType().Name
 
 
 ## <a name="collected-performance-data-hyper-v"></a>収集対象のパフォーマンス データ - Hyper-V
+
+> [!NOTE]
+> Azure Migrate アプライアンスによって検出されたメタデータは、アプリケーションを Azure に移行し、Azure 適合性分析、アプリケーション依存関係分析、およびコスト計画を実行するときに、アプリケーションを適切なサイズにするのに役立ちます。 Microsoft では、ライセンスのコンプライアンス監査に関してこのデータを使用しません。
 
 アプライアンスが収集して Azure に送信する VMware VM のパフォーマンス データを次に示します。
 

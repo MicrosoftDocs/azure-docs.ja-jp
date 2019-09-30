@@ -7,10 +7,6 @@
       items:
         - name: Linux コンテナー内の Web アプリ
           href: secure-web-app.md
-    - name: 業界準拠のソリューション
-      items:
-        - name: ペイメント カード業界
-          href: secure-pci-web-app.md
 - name: 概念
   expanded: true
   items:

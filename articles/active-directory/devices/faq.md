@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57bc2ca38b5166cfba39fb20254e169ce016ea12
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 0a6b1782b9822877850f7c223dd80eed008ef706
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68706314"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193194"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -281,12 +281,19 @@ Hybrid Azure AD Join は、Azure AD 登録済み状態よりも優先されま�
 
 ## <a name="azure-ad-register-faq"></a>Azure AD の登録の FAQ
 
-### <a name="q-how-do-i-remove-an-azure-ad-registered-device-locally-on-the-device"></a>Q:デバイス上の Azure AD 登録済みデバイスをローカルで削除するにはどうすればよいですか?
+### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>Q:デバイスの Azure AD 登録済み状態をローカルで削除するにはどうすればよいですか?
 
 **A:** 
 - Windows 10 Azure AD 登録済みデバイスの場合、 **[設定]**  >  **[アカウント]**  >  **[職場または学校にアクセスする]** に移動します。 アカウントを選択し、 **[切断]** を選択します。 デバイスの登録は、Windows 10 のユーザー プロファイルごとに行います。
 - iOS および Android の場合は、Microsoft Authenticator アプリケーションの **[設定]**  >  **[デバイスの登録]** で、 **[デバイスの登録を解除する]** を選択します。
 - macOS の場合は、Microsoft Intune ポータル サイト アプリケーションを使用すると、管理対象からデバイスを登録解除して、登録を削除することができます。 
+
+---
+### <a name="q-how-can-i-block-users-from-adding-additional-work-accounts-azure-ad-registered-on-my-corporate-windows-10-devices"></a>Q:ユーザーが会社の Windows 10 デバイスに職場アカウント (Azure AD 登録済み) を追加できないようにするにはどうすればよいですか?
+
+**A:** 次のレジストリを有効にすると、会社のドメインに参加済み、Azure AD 参加済み、またはハイブリッド Azure AD 参加済みの Windows 10 デバイスに、ユーザーが職場アカウントを追加できなくなります。 このポリシーを使用すると、ドメイン参加済みマシンを誤って同じユーザー アカウントで Azure AD に登録するのを防ぐこともできます。 
+
+`HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001`
 
 ---
 ### <a name="q-can-i-register-android-or-ios-byod-devices"></a>Q:Android デバイスや iOS BYOD デバイスを登録できますか?

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 2a540606a6f9cfa790a2244628e7f0b7bef35986
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 4356d9e1cd3d6f1a924603f7405d612814d35859
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639264"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70256924"
 ---
 # <a name="authoring-cycle-for-your-luis-app"></a>LUIS アプリの作成サイクル
 LUIS は、モデル変更、発話の例、公開、エンドポイント クエリからのデータ収集という反復サイクルの中で最も適切に学習します。 
@@ -38,12 +38,12 @@ LUIS には、意図内の発話例が必要です。 これらの例には、�
 ## <a name="train-and-publish-the-app"></a>アプリをトレーニングして公開する
 必要なエンティティがラベル付けされている 15 から 30 のさまざまな発話を意図ごとに用意したら、[トレーニング](luis-how-to-train.md)して[公開](luis-how-to-publish-app.md)する必要があります。 公開成功の通知から、リンクを使用してエンドポイントを取得します。 必ずアプリを作成して、必要な[エンドポイント領域](luis-reference-regions.md)で利用できるように公開します。 
 
-## <a name="https-endpoint-testing"></a>HTTPS エンドポイントのテスト
-LUIS アプリは HTTPS エンドポイントからテストできます。 エンドポイントからテストすると、LUIS では、信頼度が低い発話を[確認](luis-how-to-review-endpoint-utterances.md)用に選択できます。  
+## <a name="https-prediction-endpoint-testing"></a>HTTPS 予測エンドポイントのテスト
+HTTPS 予測エンドポイントから LUIS アプリをテストできます。 予測エンドポイントからテストすると、LUIS では、信頼度が低い発話を[確認](luis-how-to-review-endpoint-utterances.md)用に選択できます。  
 
 ## <a name="recycle"></a>リサイクル
 
-作成サイクルが完了したら、もう一度開始できます。 LUIS によって信頼度が低いとマークされた[エンドポイントの発話の見直し](luis-how-to-review-endpoint-utterances.md)から開始します。 意図とエンティティの両方について、これらの発話をチェックします。 発話を確認したら、確認リストが空になります。  
+作成サイクルが完了したら、もう一度開始できます。 LUIS によって信頼度が低いとマークされた[予測エンドポイントの発話の確認](luis-how-to-review-endpoint-utterances.md)から開始します。 意図とエンティティの両方について、これらの発話をチェックします。 発話を確認したら、確認リストが空になります。  
 
 現在のバージョンを新しいバージョンに[複製](luis-concept-version.md#clone-a-version)し、新しいバージョンで作成の変更を開始することを検討してください。 
 
@@ -53,4 +53,4 @@ LUIS アプリは HTTPS エンドポイントからテストできます。 エ�
 
 ## <a name="next-steps"></a>次の手順
 
-[コラボレーション](luis-concept-collaborator.md)の概念を学習します。
+[コラボレーション](luis-concept-keys.md)の概念を学習します。

@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 07/22/2019
-ms.openlocfilehash: cfab883f9b9b063bd51b9fdb7306d45371449180
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 079f87dec67f98d502d135fc012b5523211d5957
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68406101"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70381804"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>クイック スタート:Azure Data Explorer クラスターとデータベースを作成する
 
@@ -29,7 +29,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 
@@ -55,9 +55,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Resource group | 該当するリソース グループ | 既存のリソース グループを使用するか、新しいリソース グループを作成します。 |
     | クラスター名 | 一意のクラスター名 | クラスターを識別する一意の名前を選択します。 指定したクラスター名に、ドメイン名 *[region].kusto.windows.net* が付加されます。 名前に使用できるのは、小文字と数字だけです。 4 文字以上 22 文字以内にする必要があります。
     | リージョン | *米国西部*または*米国西部 2* | このクイックスタートでは、*米国西部*または*米国西部 2* (可用性ゾーンを使用している場合) を選択します。 運用システムでは、ニーズに最も適したリージョンを選択します。
-    | 可用性ゾーン | *1*、*2*、および/または *3* | ゾーン冗長がサポートされているリージョンの場合は、インスタンスを配置するゾーンを選択します (省略可能)。 クラスター ノードは、既定で同じデータ センターに作成されます。 同じリージョン内のさまざまな可用性ゾーンにクラスター インスタンスを配置するには、[Azure Availability Zones](/azure/availability-zones/az-overview) を使用します。 複数の可用性ゾーンを選択することで、単一障害点を排除し、高可用性を確保することができます。 
+    | 可用性ゾーン | *1*、*2*、および/または *3* | 同じリージョン内のさまざまな可用性ゾーンにクラスター インスタンスを配置します (省略可)。 [Azure Availability Zones](/azure/availability-zones/az-overview) は、同じ Azure リージョン内の一意の物理的な場所です。 部分的なリージョンの障害から Azure Data Explorer クラスターとデータを保護します。 クラスター ノードは、既定で同じデータ センターに作成されます。 複数の可用性ゾーンを選択することで、単一障害点を排除し、高可用性を確保することができます。 可用性ゾーンへのデプロイは、クラスターの作成時にのみ可能であり、後から変更することはできません。
     | Compute specification (コンピューティングの仕様) | *D13_v2* | このクイック スタートでは最低価格の仕様を選択します。 実稼働環境システムでは、ニーズに最も適した仕様を選択します。
-    | | |
+    | | | |
 
 1. **[確認と作成]** を選択してクラスターの詳細を確認し、 **[作成]** を選択してクラスターをプロビジョニングします。 通常、プロビジョニングには約 10 分かかります。
 

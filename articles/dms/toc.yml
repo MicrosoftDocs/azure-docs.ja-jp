@@ -47,6 +47,7 @@
     - name: SSIS パッケージを Azure SQL Database マネージド インスタンスに移行する
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: リソース
+  expanded: true
   items:
     - name: データベース移行シナリオの状態
       href: resource-scenario-status.md

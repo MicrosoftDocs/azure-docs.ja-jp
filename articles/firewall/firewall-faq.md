@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 6/21/2019
+ms.date: 09/17/2019
 ms.author: victorh
-ms.openlocfilehash: 933b4167f25db5a01cf1160f5e781a1fe31afc6b
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 4b258df1711aa51ed4edee6ecd209fa39c7fde27
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304596"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018847"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall に関する FAQ
 
@@ -129,11 +129,9 @@ Azure Firewall サービスの制限については、「[Azure サブスクリ�
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>サポートされているネットワーク仮想アプライアンスに、トンネリング/チェーンが強制されますか。
 
-既定では強制トンネル処理はサポートされていませんが、サポートの支援により有効にすることができます。
+強制トンネリングは現在サポートされていません。 Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。
 
-Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。 既定では、Azure Firewall はオンプレミス ネットワークへの強制トンネリングをサポートしません。
-
-ただし、オンプレミス ネットワークへの強制トンネリングが必要な構成の場合、Microsoft は状況に応じてサポートします。 サポートにお問い合わせいただければ、お客様の状況を確認させていただきます。 受け付けると、Microsoft ではサブスクリプションを許可し、必要なファイアウォールのインターネット接続が確保されていることを確認します。
+使用する構成でオンプレミスのネットワークへの強制的なトンネリングが必要であり、インターネット上のアクセス先のターゲット IP プレフィックスを決定できる場合は、AzureFirewallSubnet 上のユーザー定義のルートを介して、次のホップとしてオンプレミスのネットワークに対してこれらの範囲を構成することができます。 または、BGP を使用してこれらのルートを定義することもできます。
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>ファイアウォール リソース グループの制限はありますか。
 
@@ -150,3 +148,18 @@ Azure Firewall には、インターネットへの直接接続が必要です�
 ## <a name="what-does-provisioning-state-failed-mean"></a>"*プロビジョニング状態: 失敗*" はどのような意味ですか。
 
 構成の変更が適用されるたびに、Azure Firewall は、その基になるすべてのバックエンド インスタンスを更新しようとします。 まれに、これらのバックエンド インスタンスの 1 つが新しい構成での更新に失敗し、更新プロセスが停止して、失敗したプロビジョニングの状態になることがあります。 Azure Firewall はまだ操作可能ですが、適用された構成は矛盾した状態になっている可能性があります。この場合、一部のインスタンスは以前の構成であり、他のインスタンスはルール セットが更新されています。 このような場合は、操作が成功してファイアウォールが "*成功*" プロビジョニング状態になるまで、もう一度構成を更新してみてください。
+
+### <a name="how-does-azure-firewall-handle-planned-maintenance-and-unplanned-failures"></a>Azure Firewall は計画メンテナンスや予期しない障害にどのように対処しますか。
+Azure Firewall は、アクティブ/アクティブ構成の複数のバックエンドノードで構成されます。  計画メンテナンスの場合は、ノードを適切に更新するための接続のドレイン ロジックがあります。  更新は、中断のリスクをさらに制限するために、Azure リージョンごとに営業時間外に予定されます。  予期しない問題の場合は、新しいノードをインスタンス化して、障害が発生したノードを置き換えます。  新しいノードへの接続は、通常、障害発生時から 10 秒以内に再確立されます。
+
+## <a name="is-there-a-character-limit-for-a-firewall-name"></a>ファイアウォール名に文字制限はありますか。
+
+はい。 ファイアウォール名には 50 文字の制限があります。
+
+## <a name="why-does-azure-firewall-need-a-26-subnet-size"></a>Azure Firewall に /26 サブネット サイズが必要なのはなぜですか。
+
+Azure Firewall では、スケールの際により多くの仮想マシン インスタンスをプロビジョニングする必要があります。 /26 アドレス空間を使用すると、スケールに対応できる十分な数の IP アドレスをファイアウォールに使用できるようになります。
+
+## <a name="does-the-firewall-subnet-size-need-to-change-as-the-service-scales"></a>サービスのスケールに応じてファイアウォール サブネットのサイズを変更する必要はありますか。
+
+いいえ。 Azure Firewall には、/26 よりも大きなサブネットは必要ありません。

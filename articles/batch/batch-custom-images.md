@@ -6,14 +6,14 @@ author: laurenhughes
 manager: gwallace
 ms.service: batch
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 08/28/2019
 ms.author: lahugh
-ms.openlocfilehash: 00da17512cbc2e713955ea83c7d9fa7517958169
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 3c2213c25a8fdc6d6545711bd2af9b94662ee609
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036699"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141819"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-pool"></a>Shared Image Gallery を使用してプールを作成する
 
@@ -23,7 +23,7 @@ ms.locfileid: "69036699"
 
 カスタム イメージのために Shared Image Gallery を使用すると、データ ディスクの種類に加えて、オペレーティング システムの種類と構成を制御できます。 共有イメージには、Batch プール ノードがプロビジョニングされると、そのすべてのノードですぐに使用可能になるアプリケーションと参照データを含めることができます。
 
-お使いの環境に必要な複数のイメージ バージョンも保持できます。 イメージ バージョンを使用して VM を作成する場合、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。 
+お使いの環境に必要な複数のイメージ バージョンも保持できます。 イメージ バージョンを使用して VM を作成する場合、イメージ バージョンは VM 用の新しいディスクを作成するために使用されます。
 
 共有イメージを使用すると、Batch ワークロードを実行できるように、プールのコンピューティング ノードを準備する時間を短縮できます。 プロビジョニング後、Azure Marketplace イメージを使用して各コンピューティング ノードにソフトウェアをインストールすることは可能ですが、通常は共有イメージを使用する方が効率的です。 また、共有イメージに複数のレプリカを指定できるため、多数の VM がある (VM が 600 個より多い) プールを作成するときに、プールの作成にかかる時間を節約できます。
 
@@ -91,6 +91,19 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     ...
 }
 ```
+
+## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Azure portal を使用して共有イメージからプールを作成する
+
+次の手順を使用し、Azure portal で共有イメージからプールを作成します。
+
+1. [Azure Portal](https://portal.azure.com)を開きます。
+1. **Batch アカウント**に進み、自分のアカウントを選択します。
+1. **[プール]** を選択し、次に **[追加]** を選択し、新しいプールを作成します。
+1. **[イメージの種類]** セクションで **[Shared Image Gallery]** を選択します。
+1. 残りのセクションにはマネージド イメージに関する情報を入力します。
+1. **[OK]** を選択します。
+
+![ポータルを使用して共有イメージからプールを作成します。](media/batch-custom-images/create-custom-pool.png)
 
 ## <a name="considerations-for-large-pools"></a>サイズの大きなプールに関する考慮事項
 

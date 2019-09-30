@@ -6,53 +6,50 @@ ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 176e3b02cbda7577e306d86363cfe5b41335fb6e
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: ae821f07034b038f49a400de8c00e4ace6787192
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799181"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172877"
 ---
-# <a name="authoring-a-restful-endpoint-for-custom-providers"></a>カスタム プロバイダー用の RESTful エンドポイントを作成する
+# <a name="author-a-restful-endpoint-for-custom-providers"></a>カスタム プロバイダー用の RESTful エンドポイントを作成する
 
-カスタム プロバイダーを使うと、Azure 上でワークフローをカスタマイズできます。 カスタム プロバイダーは、Azure と`endpoint`の間のコントラクトです。 このチュートリアルでは、カスタム プロバイダーの RESTful `endpoint`を作成する手順について説明します。 Azure カスタム プロバイダーについてよくご存じでない場合は、[カスタム リソース プロバイダーの概要](./custom-providers-overview.md)に関するページをご覧ください。
-
-このチュートリアルは、次のステップに分かれています。
-
-- カスタム アクションとカスタム リソースを使用する
-- ストレージ内のカスタム リソースをパーティション分割する方法
-- カスタム プロバイダーの RESTful メソッドをサポートする
-- RESTful の操作を統合する
-
-このチュートリアルは、次のチュートリアルが基になっています。
-
-- [Azure カスタム プロバイダー用に Azure Functions を設定する](./tutorial-custom-providers-function-setup.md)
+カスタム プロバイダーは、Azure とエンドポイントの間のコントラクトです。 カスタム プロバイダーを使うと、Azure 上のワークフローをカスタマイズできます。 このチュートリアルでは、カスタム プロバイダーの RESTful エンドポイントを作成する方法について説明します。 Azure カスタム プロバイダーについてなじみがない場合は、[カスタム リソースプロバイダーの概要](./custom-providers-overview.md)に関するページを参照してください。
 
 > [!NOTE]
-> このチュートリアルは、前のチュートリアルが基になっています。 チュートリアルの一部のステップは、Azure 関数がカスタム プロバイダーを使うように設定されている場合にのみ機能します。
+> このチュートリアルは、「[Azure カスタム プロバイダー用に Azure Functions を設定する](./tutorial-custom-providers-function-setup.md)」のチュートリアルに基づいて作成されています。 このチュートリアルの手順の一部は、Azure 関数アプリがカスタム プロバイダーと連携するよう設定されている場合にのみ機能します。
 
-## <a name="working-with-custom-actions-and-custom-resources"></a>カスタム アクションとカスタム リソースを使用する
+## <a name="work-with-custom-actions-and-custom-resources"></a>カスタム アクションとカスタム リソースを使用する
 
-このチュートリアルでは、カスタム プロバイダーに対する RESTful エンドポイントとして動作するように関数を更新します。 Azure のリソースとアクションは、RESTful の基本的な仕様に従ってモデル化されています。PUT - 新しいリソースを作成します。GET (インスタンス) - 既存のリソースを取得します。DELETE - 既存のリソースを削除します。POST - アクションをトリガーします。GET (コレクション) - すべての既存リソースの一覧を取得します。 このチュートリアルではストレージとして Azure Table を使いますが、任意のデータベースまたはストレージ サービスを使用できます。
+このチュートリアルでは、カスタム プロバイダーの RESTful エンドポイントとして動作するように関数アプリを更新します。 Azure のリソースとアクションは、次の RESTful の基本的な仕様に従ってモデル化されています。
 
-## <a name="how-to-partition-custom-resources-in-storage"></a>ストレージ内のカスタム リソースをパーティション分割する方法
+- **PUT**: 新しいリソースを作成
+- **GET (インスタンス)** : 既存のリソースを取得する
+- **DELETE**: 既存のリソースを削除する
+- **POST**: アクションをトリガーする
+- **GET (コレクション)** : 既存のリソースをすべてリストする
 
-RESTful サービスを作成するので、作成したリソースをストレージに格納する必要があります。 Azure Table Storage では、データのパーティションと行キーを生成する必要があります。 カスタム プロバイダーでは、データをカスタム プロバイダーにパーティション分割する必要があります。 受信要求がカスタム プロバイダーに送信されると、カスタム プロバイダーによって`endpoint`への送信要求に `x-ms-customproviders-requestpath` ヘッダーが追加されます。
+ このチュートリアルでは、Azure Table Storage を使用します。 ただし、任意のデータベースまたはストレージ サービスも利用できます。
 
-カスタム リソースに対する `x-ms-customproviders-requestpath` ヘッダーのサンプル:
+## <a name="partition-custom-resources-in-storage"></a>カスタム リソースをパーティション分割してストレージに格納する
+
+RESTful サービスを作成しているため、作成されたリソースを格納する必要があります。 Azure Table Storage では、データのパーティションと行キーを生成する必要があります。 カスタム プロバイダーでは、データをカスタム プロバイダーにパーティション分割する必要があります。 受信要求がカスタム プロバイダーに送信されると、カスタム プロバイダーによってエンドポイントへの送信要求に `x-ms-customproviders-requestpath` ヘッダーが追加されます。
+
+次の例では、カスタム リソースの `x-ms-customproviders-requestpath` ヘッダーを示します。
 
 ```
 X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{myResourceType}/{myResourceName}
 ```
 
-上記のサンプルの `x-ms-customproviders-requestpath` ヘッダーに基づいて、ストレージの partitionKey と rowKey を次のように作成できます。
+この例の `x-ms-customproviders-requestpath` ヘッダーに基づいて、次の表に示すように、ストレージの *partitionKey* パラメーターと *rowKey* パラメーターを作成できます。
 
 パラメーター | Template | 説明
----|---
-partitionKey | '{subscriptionId}:{resourceGroupName}:{resourceProviderName}' | partitionKey は、データをパーティション分割する方法です。 ほとんどの場合は、カスタム プロバイダーのインスタンスによってデータをパーティション分割する必要があります。
-rowKey | '{myResourceType}:{myResourceName}' | rowKey は、データの個別の識別子です。 ほとんどの場合、これはリソースの名前です。
+---|---|---
+*partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | *partitionKey* パラメーターは、データをどのようにパーティション分割するかを指定します。 通常、データは、カスタム プロバイダーのインスタンスごとにパーティション分割されます。
+*rowKey* | `{myResourceType}:{myResourceName}` | *rowKey* パラメーターは、データに個々の識別子を指定します。 通常、識別子はリソースの名前です。
 
-さらに、カスタム リソースをモデル化するための新しいクラスを作成する必要もあります。 このチュートリアルでは、`CustomResource` クラスを関数に追加します。これは、入力された任意のデータを受け付けるジェネリック クラスです。
+さらに、カスタム リソースをモデル化するための新しいクラスを作成する必要もあります。 このチュートリアルでは、関数アプリに次の **CustomResource** クラスを追加します。
 
 ```csharp
 // Custom Resource Table Entity
@@ -61,26 +58,27 @@ public class CustomResource : TableEntity
     public string Data { get; set; }
 }
 ```
-
-これにより `TableEntity` に基づく基本クラスが作成されて、データの格納に使用されます。 `CustomResource` クラスは、`TableEntity` から 2 つのプロパティ partitionKey と rowKey を継承します。
+**CustomResource** は、入力データを受け取るシンプルなジェネリック クラスです。 そのベースは **TableEntity** で、データの格納に使用されます。 **CustomResource** クラスは、**TableEntity** から 2 つのプロパティ **partitionKey** と **rowKey** を継承します。
 
 ## <a name="support-custom-provider-restful-methods"></a>カスタム プロバイダーの RESTful メソッドをサポートする
 
 > [!NOTE]
-> チュートリアルからコードを直接コピーしていない場合、応答の内容は有効な JSON であり、`Content-Type` ヘッダーは `application/json` に設定されます。
+> このチュートリアルからコードを直接コピーしていない場合、応答の内容は、`Content-Type` ヘッダーを `application/json` に設定する有効な JSON であることが必要です。
 
-データのパーティション分割を設定したので、基本的な CRUD をスキャフォールディングし、カスタム リソースとカスタム アクションに対するメソッドをトリガーしてみましょう。 カスタム プロバイダーはプロキシとして動作するため、要求と応答を RESTful `endpoint`でモデル化して処理する必要があります。 基本的な RESTful 操作を処理するには、次のスニペットのようにします。
+データのパーティション分割を設定したので、基本的な CRUD を作成し、カスタム リソースとカスタム アクションに対するメソッドをトリガーします。 カスタム プロバイダーはプロキシとして機能するため、RESTful エンドポイントは、要求と応答をモデル化して処理する必要があります。 以下のコード スニペットでは、基本的な RESTful 操作の処理方法を示しています。
 
-### <a name="trigger-custom-action"></a>カスタム アクションをトリガーする
+### <a name="trigger-a-custom-action"></a>カスタム アクションのトリガー
 
-カスタム プロバイダーの場合、カスタム アクションは `POST` 要求によってトリガーされます。 カスタム アクションでは、必要に応じて、入力パラメーターのセットが含まれる要求本文を受け付けることができます。 その後、アクションでは、アクションの結果を示す応答と、成功したか失敗したかを、返す必要があります。 このチュートリアルでは、`TriggerCustomAction` メソッドを関数に追加します。
+カスタム プロバイダーでは、カスタム アクションが POST 要求を通じてトリガーされます。 カスタム アクションでは、必要に応じて、入力パラメーターのセットが含まれる要求本文を受け付けることができます。 その後、このアクションは、アクションの結果を伝える応答と共に、成功したか失敗したかを返します。
+
+次の **TriggerCustomAction** メソッドを関数アプリに追加します。
 
 ```csharp
 /// <summary>
-/// Triggers a custom action with some side effect.
+/// Triggers a custom action with some side effects.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <returns>The http response result of the custom action.</returns>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <returns>The HTTP response result of the custom action.</returns>
 public static async Task<HttpResponseMessage> TriggerCustomAction(HttpRequestMessage requestMessage)
 {
     var myCustomActionRequest = await requestMessage.Content.ReadAsStringAsync();
@@ -93,22 +91,24 @@ public static async Task<HttpResponseMessage> TriggerCustomAction(HttpRequestMes
 }
 ```
 
-`TriggerCustomAction` メソッドは、受信した要求を受け取って、応答と成功状態コードを単にエコーバックします。 
+**TriggerCustomAction** メソッドは、受信した要求を受け取って、状態コードと共に応答をエコーバックするだけです。
 
-### <a name="create-custom-resource"></a>カスタム リソースを作成する
+### <a name="create-a-custom-resource"></a>カスタム リソースの作成
 
-カスタム プロバイダーの場合、カスタム リソースは `PUT` 要求によって作成されます。 カスタム プロバイダーでは、カスタム リソースのプロパティのセットが含まれる JSON 要求の本文が受け付けられます。 Azure では、リソースは RESTful のモデルに従います。 リソースの作成に使われたのと同じ要求 URL で、リソースの取得と削除も行うことができます。 このチュートリアルでは、新しいリソースを作成するために `CreateCustomResource` メソッドを追加します。
+カスタム プロバイダーでは、カスタム リソースが PUT 要求を通じて作成されます。 カスタム プロバイダーは、カスタム リソースの一連のプロパティを含んだ JSON 要求本文を受け取ります。 Azure のリソースは RESTful のモデルに従います。 リソースの作成、取得、削除には、同じ要求 URL を使用できます。
+
+新しいリソースを作成するには、次の **CreateCustomResource** メソッドを追加します。
 
 ```csharp
 /// <summary>
 /// Creates a custom resource and saves it to table storage.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="azureResourceId">The parsed Azure resource Id.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="azureResourceId">The parsed Azure resource ID.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
-/// <returns>The http response containing the created custom resource.</returns>
+/// <returns>The HTTP response containing the created custom resource.</returns>
 public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, ResourceId azureResourceId, string partitionKey, string rowKey)
 {
     // Adds the Azure top-level properties.
@@ -133,29 +133,31 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 }
 ```
 
-`CreateCustomResource` メソッドでは、Azure 固有のフィールド `id`、`name`、`type` を含むように、受信した要求を更新します。 これらは、Azure 全体のサービスによって使われる最上位レベルのプロパティです。 これらにより、カスタム プロバイダーでは、Azure Policy、Azure Resource Manager テンプレート、Azure アクティビティ ログなどの他のサービスと統合できるようになります。
+**CreateCustomResource** メソッドは、受信要求を更新して、Azure 固有のフィールドである **id**、**name**、**type** を追加します。 これらのフィールドは、Azure 全体のサービスによって使われる最上位レベルのプロパティです。 カスタム プロバイダーは、これらを通じて、Azure Policy、Azure Resource Manager テンプレート、Azure アクティビティ ログなど、他のサービスと相互運用できるようになります。
 
-プロパティ | サンプル | 説明
+プロパティ | 例 | 説明
 ---|---|---
-名前 | '{myCustomResourceName}' | カスタム リソースの名前。
-type | 'Microsoft.CustomProviders/resourceProviders/{resourceTypeName}' | リソースの種類の名前空間。
-id | '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName}' | リソース ID。
+**name** | {myCustomResourceName} | カスタム リソースの名前
+**type** | Microsoft.CustomProviders/resourceProviders/{resourceTypeName} | リソースの種類の名前空間
+**id** | /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/<br>providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/<br>{resourceTypeName}/{myCustomResourceName} | リソース ID
 
-プロパティを追加するだけでなく、Azure Table Storage へのドキュメントの保存も行います。 
+プロパティを追加するだけでなく、Azure Table Storage へのドキュメントの保存も行いました。
 
-### <a name="retrieve-custom-resource"></a>カスタム リソースを取得する
+### <a name="retrieve-a-custom-resource"></a>カスタム リソースの取得
 
-カスタム プロバイダーの場合、カスタム リソースは `GET` 要求によって取得されます。 カスタム プロバイダーでは、JSON 要求の本文は受け入れられ "*ません*"。 `GET` 要求の場合、**エンドポイント**では、`x-ms-customproviders-requestpath` ヘッダーを使って作成済みのリソースを返す必要があります。 このチュートリアルでは、既存のリソースを取得するために `RetrieveCustomResource` メソッドを追加します。
+カスタム プロバイダーでは、カスタム リソースが GET 要求を通じて取得されます。 カスタム プロバイダーは、JSON 要求本文を受け取り "*ません*"。 GET 要求に対し、エンドポイントが `x-ms-customproviders-requestpath` ヘッダーを使って、作成済みのリソースを返します。
+
+既存のリソースを取得するには、次の **RetrieveCustomResource** メソッドを追加します。
 
 ```csharp
 /// <summary>
 /// Retrieves a custom resource.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
-/// <returns>The http response containing the existing custom resource.</returns>
+/// <returns>The HTTP response containing the existing custom resource.</returns>
 public static async Task<HttpResponseMessage> RetrieveCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string rowKey)
 {
     // Attempt to retrieve the Existing Stored Value
@@ -172,21 +174,23 @@ public static async Task<HttpResponseMessage> RetrieveCustomResource(HttpRequest
 }
 ```
 
-Azure では、リソースは RESTful のモデルに従う必要があります。 `GET` 要求を実行する場合、リソースを作成した要求 URL で、リソースの取得も行う必要があります。
+Azure では、リソースは RESTful のモデルに従います。 GET 要求を実行する場合、リソースを作成する要求 URL でもリソースが返されます。
 
-### <a name="remove-custom-resource"></a>カスタム リソースを削除する
+### <a name="remove-a-custom-resource"></a>カスタム リソースの削除
 
-カスタム プロバイダーの場合、カスタム リソースは `DELETE` 要求によって削除されます。 カスタム プロバイダーでは、JSON 要求の本文は受け入れられ "*ません*"。 `DELETE` 要求の場合、**エンドポイント**では、`x-ms-customproviders-requestpath` ヘッダーを使って作成済みのリソースを削除する必要があります。 このチュートリアルでは、既存のリソースを削除するために `RemoveCustomResource` メソッドを追加します。
+カスタム プロバイダーでは、カスタム リソースが DELETE 要求を通じて削除されます。 カスタム プロバイダーは、JSON 要求本文を受け取り "*ません*"。 DELETE 要求に対し、エンドポイントが `x-ms-customproviders-requestpath` ヘッダーを使って、作成済みのリソースを削除します。
+
+既存のリソースを削除するには、次の **RemoveCustomResource** メソッドを追加します。
 
 ```csharp
 /// <summary>
 /// Removes an existing custom resource.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure storage account table.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="rowKey">The row key for storage. This is '{resourceType}:{customResourceName}'.</param>
-/// <returns>The http response containing the result of the delete.</returns>
+/// <returns>The HTTP response containing the result of the deletion.</returns>
 public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string rowKey)
 {
     // Attempt to retrieve the Existing Stored Value
@@ -203,21 +207,23 @@ public static async Task<HttpResponseMessage> RemoveCustomResource(HttpRequestMe
 }
 ```
 
-Azure では、リソースは RESTful のモデルに従う必要があります。 `DELETE` 要求を実行する場合、リソースを作成した要求 URL で、リソースの削除も行う必要があります。
+Azure では、リソースは RESTful のモデルに従います。 DELETE 要求を実行する場合、リソースを作成する要求 URL でもリソースが削除されます。
 
 ### <a name="list-all-custom-resources"></a>すべてのカスタム リソースの一覧を取得する
 
-カスタム プロバイダーの場合、既存のカスタム リソースの一覧はコレクション `GET` 要求で列挙できます。 カスタム プロバイダーでは、JSON 要求の本文は受け入れられ "*ません*"。 コレクション `GET` 要求の場合、`endpoint`では、`x-ms-customproviders-requestpath` ヘッダーを使って作成済みのリソースを列挙する必要があります。 このチュートリアルでは、既存のリソースを列挙するために `EnumerateAllCustomResources` メソッドを追加します。
+カスタム プロバイダーでは、既存のカスタム リソースの一覧をコレクションの GET 要求を使用して列挙できます。 カスタム プロバイダーは、JSON 要求本文を受け取り "*ません*"。 GET 要求のコレクションでは、エンドポイントが `x-ms-customproviders-requestpath` ヘッダーを使って、作成済みのリソースを列挙する必要があります。
+
+既存のリソースを列挙するには、次の **EnumerateAllCustomResources** メソッドを追加します。
 
 ```csharp
 /// <summary>
 /// Enumerates all the stored custom resources for a given type.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <param name="partitionKey">The partition key for storage. This is the custom provider id.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <param name="partitionKey">The partition key for storage. This is the custom provider ID.</param>
 /// <param name="resourceType">The resource type of the enumeration.</param>
-/// <returns>The http response containing a list of resources stored under 'value'.</returns>
+/// <returns>The HTTP response containing a list of resources stored under 'value'.</returns>
 public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRequestMessage requestMessage, CloudTable tableStorage, string partitionKey, string resourceType)
 {
     // Generate upper bound of the query.
@@ -244,22 +250,22 @@ public static async Task<HttpResponseMessage> EnumerateAllCustomResources(HttpRe
 ```
 
 > [!NOTE]
-> 行キーの GreaterThan および LessThan は、文字列に対するクエリ "startswith" を実行するための Azure Table の構文です。 
+> RowKey QueryComparisons.GreaterThan と QueryComparisons.LessThan は、文字列の "startswith" クエリを実行するための Azure Table Storage の構文です。
 
-既存のすべてのリソースの一覧を取得するため、カスタム プロバイダーのパーティションに確実にリソースが存在する Azure Table クエリを生成します。 クエリでは、行キーが同じ `{myResourceType}` で始まっていることをチェックします。
+既存のリソースすべてを一覧表示するには、カスタム プロバイダーのパーティションにリソースが存在することを保証する Azure Table Storage クエリを生成します。 その後、このクエリは、行キーが同じ `{myResourceType}` 値で始まっていることをチェックします。
 
 ## <a name="integrate-restful-operations"></a>RESTful の操作を統合する
 
-すべての RESTful メソッドを関数に追加した後は、関数を呼び出して異なる REST 要求を処理するように、メインの `Run` メソッドを更新できます。
+すべての RESTful メソッドを関数アプリに追加した後は、関数を呼び出して各種の REST 要求を処理するメインの **Run** メソッドを更新します。
 
 ```csharp
 /// <summary>
-/// Entry point for the Azure Function webhook and acts as the service behind a custom provider.
+/// Entry point for the Azure function app webhook that acts as the service behind a custom provider.
 /// </summary>
-/// <param name="requestMessage">The http request message.</param>
+/// <param name="requestMessage">The HTTP request message.</param>
 /// <param name="log">The logger.</param>
-/// <param name="tableStorage">The Azure Storage Account table.</param>
-/// <returns>The http response for the custom Azure API.</returns>
+/// <param name="tableStorage">The Azure Table storage account.</param>
+/// <returns>The HTTP response for the custom Azure API.</returns>
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log, CloudTable tableStorage)
 {
     // Get the unique Azure request path from request headers.
@@ -288,7 +294,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
 
     switch (req.Method)
     {
-        // Action request for an custom action.
+        // Action request for a custom action.
         case HttpMethod m when m == HttpMethod.Post && !isResourceRequest:
             return await TriggerCustomAction(
                 requestMessage: req);
@@ -331,11 +337,13 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogge
             return req.CreateResponse(HttpStatusCode.BadRequest);
     }
 }
-``` 
+```
 
-更新された `Run` メソッドには、Azure Table Storage に対して追加された `tableStorage` 入力バインドが含まれるようになります。 メソッドの最初の部分では、`x-ms-customproviders-requestpath` ヘッダーを読み取り、`Microsoft.Azure.Management.ResourceManager.Fluent` ライブラリを使って値をリソース ID として解析します。 `x-ms-customproviders-requestpath` ヘッダーはカスタム プロバイダーによって送信され、ヘッダーでは受信した要求のパスが指定されています。 解析されたリソース ID を使って、カスタム リソースを参照または格納するための、データに対する partitionKey と rowKey を生成できます。
+更新された **Run** メソッドには、Azure Table Storage のために追加した *tableStorage* 入力バインドが含まれます。 メソッドの最初の部分では、`x-ms-customproviders-requestpath` ヘッダーを読み取り、`Microsoft.Azure.Management.ResourceManager.Fluent` ライブラリを使って値をリソース ID として解析します。 `x-ms-customproviders-requestpath` ヘッダーはカスタム プロバイダーによって送信され、受信した要求のパスを指定します。
 
-メソッドとクラスの追加に加えて、関数の using メソッドを更新する必要があります。 ファイルの先頭に以下を追加します。
+解析されたリソース ID を使って、カスタム リソースを参照または格納するための、データに対する **partitionKey** 値と **rowKey** 値を生成できます。
+
+メソッドとクラスを追加したら、関数アプリの **using** メソッドを更新する必要があります。 C# ファイルの先頭に次のコードを追加します。
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -359,10 +367,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-このチュートリアルでの作業が途中でわからなくなった場合は、完成したコード サンプルを「[Custom provider C# RESTful endpoint reference (カスタム プロバイダーの C# RESTful エンドポイント リファレンス)](./reference-custom-providers-csharp-endpoint.md)」で確認できます。 関数が完成したら、後のチュートリアルで使うので、関数をトリガーするために使用できる関数の URL を保存します。
+このチュートリアルでの作業が途中でわからなくなった場合は、完成したコード サンプルを「[カスタム プロバイダーの C# RESTful エンドポイント リファレンス](./reference-custom-providers-csharp-endpoint.md)」で確認できます。 関数アプリが完成したら、その URL を保存してください。 後続のチュートリアルでこの関数アプリをトリガーする際に使用できます。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure のカスタム プロバイダーの`endpoint`を使用するための RESTful エンドポイントを作成しました。 次の記事に進んで、カスタム プロバイダーの作成方法を学習してください。
-
-- [チュートリアル:カスタム プロバイダーを作成する](./tutorial-custom-providers-create.md)
+この記事では、Azure のカスタム プロバイダーのエンドポイントで動作する RESTful エンドポイントを作成しました。 カスタム プロバイダーの作成方法については、[カスタム プロバイダーの作成に関するチュートリアル](./tutorial-custom-providers-create.md)記事を参照してください。

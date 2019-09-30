@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/07/2019
 ms.author: diberry
-ms.openlocfilehash: f5756c479d47e905e0110c9919cf4b5be4e75099
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: f8149372e0a96cda81ef38558ee0bcf87eb53bb3
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932129"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70258762"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-python"></a>クイック スタート:Python 用 Language Understanding (LUIS) 作成クライアント ライブラリ
 
@@ -37,9 +37,9 @@ Python 用 Language Understanding (LUIS) 作成クライアント ライブラ�
 
 ## <a name="setting-up"></a>設定
 
-### <a name="get-your-language-understanding-luis-authoring-key"></a>Language Understanding (LUIS) 作成キーを取得する
+### <a name="get-your-language-understanding-luis-starter-key"></a>Language Understanding (LUIS) スターター キーを取得する
 
-[作成キー](luis-how-to-account-settings.md)を取得し、そのキーについて `LUIS_AUTHORING_KEY` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、キーのリージョンの環境変数 (`LUIS_REGION`) を作成します。
+[スターター キー](luis-how-to-azure-subscription.md#starter-key)を取得し、そのキーについて `LUIS_AUTHORING_KEY` という名前の[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、キーのリージョンの環境変数 (`LUIS_REGION`) を作成します。
 
 ### <a name="install-the-python-library-for-luis"></a>LUIS 用 Python ライブラリをインストールする
 

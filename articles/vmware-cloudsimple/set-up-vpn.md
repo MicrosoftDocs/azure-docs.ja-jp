@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: df13a6638c5ed72532b020ef7074123a2159b1c4
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d000d8390375466232c7daac2a4a056ef424be79
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69536111"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972379"
 ---
 # <a name="configure-a-vpn-connection-to-your-cloudsimple-private-cloud"></a>CloudSimple プライベート クラウドへの VPN 接続を構成する
 
@@ -21,7 +21,7 @@ VPN ゲートウェイを使用すると、オンプレミス ネットワーク
 
 ## <a name="vpn-gateway-types"></a>VPN ゲートウェイの種類
 
-* **ポイント対サイト** VPN 接続は、お使いのコンピューターから自分のプライベート クラウドに接続する最も簡単な方法です。 プライベート クラウドにリモートで接続するには、ポイント対サイト VPN 接続を使用します。
+* **ポイント対サイト VPN** 接続は、お使いのコンピューターから自分のプライベート クラウドに接続する最も簡単な方法です。 プライベート クラウドにリモートで接続するには、ポイント対サイト VPN 接続を使用します。
 * **サイト対サイト VPN** 接続を使用すると、オンプレミスのサービスにアクセスするようにプライベート クラウドのワークロードを設定できます。 プライベート クラウドの vCenter に対して認証を行うための ID ソースとして、オンプレミスの Active Directory を使用することもできます。  現時点では、**ポリシーベースの VPN** の種類がサポートされています。
 
 リージョンでは、1 つのサイト対サイト VPN ゲートウェイと 1 つのポイント対サイト VPN ゲートウェイを作成できます。

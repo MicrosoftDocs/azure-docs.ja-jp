@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 04/29/2019
+ms.date: 08/28/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f09a8c2f8caae3cbb182cf2dc4621deb95f7e5c
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: a17b64cbfffbe9cabd909bccb16d55c07bba8bb0
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499656"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241451"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>Azure AD Identity Governance とは
 
@@ -70,6 +70,18 @@ Identity Governance により、組織は、*生産性* (従業員が組織に�
 
 Azure AD Privileged Identity Management (PIM) により、Azure AD、Azure、およびその他の Microsoft オンライン サービスの全体で、リソースに対するアクセス権のセキュリティ保護に合わせた管理を追加することができます。  多要素認証と条件付きアクセスに加え、ジャストイン タイム アクセスと、Azure AD PIM によって提供されるロール変更の通知機能は、会社のリソース (ディレクトリ、Office 365、および Azure リソース ロール) のセキュリティ保護に役立つガバナンス コントロールの包括的なセットを提供します。 他の形式のアクセスと同様、組織では、アクセス レビューを使用して、管理者ロールに属するすべてのユーザーの定期的なアクセス再認定を構成することができます。
 
+## <a name="least-privileged-roles"></a>最小特権ロール
+
+Identity Governance で管理タスクを実行するには、最小特権ロールを使用するのがベスト プラクティスです。 必要に応じて Azure AD PIM を使用してロールをアクティブ化し、これらのタスクを実行することをお勧めします。 Identity Governance の機能を構成するための最小特権ディレクトリ ロールを次に示します。 
+
+| 機能 | 最小特権ロール |
+| ------- | --------------------- |
+| エンタイトルメント管理 | ユーザー管理者 (グローバル管理者が必要な、カタログへの SharePoint Online サイトの追加を除きます) |
+| 使用条件 | セキュリティ管理者または条件付きアクセス管理者 |
+| アクセス レビュー | ユーザー管理者 (特権ロール管理者が必要な、Azure ロールまたは Azure AD ロールのアクセス レビューを除きます) |
+|Privileged Identity Management | 特権ロール管理者 |
+
+
 ## <a name="getting-started"></a>使用の開始
 
 すべての顧客にとって完璧なソリューションや推奨事項はありませんが、次の構成は、従業員の安全性と生産性を高めるために従うことを Microsoft が推奨する、ベースライン ポリシーに関する手引きです。
@@ -80,6 +92,8 @@ Azure AD Privileged Identity Management (PIM) により、Azure AD、Azure、お
 また、エンタイトルメント管理やアクセス レビューの使用を開始したり、利用規約を確認したりするために、Azure portal の **Identity Governance**の [Getting started]\(作業の開始\) タブを確認することもできます。
 
 ![Identity Governance の作業の開始](./media/identity-governance-overview/getting-started.png)
+
+Identity Governance 機能についてフィードバックがありましたら、Azure portal から **[Got feedback?]\(フィードバックがありますか\)** をクリックしてお寄せください。 お客様からのフィードバックは、チームにて定期的に検討しております。
 
 ## <a name="next-steps"></a>次の手順
 

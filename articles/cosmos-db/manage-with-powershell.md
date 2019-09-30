@@ -7,12 +7,12 @@ ms.topic: sample
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: e8f943ebaa5dfc06e0bfb04dc1097d6794ec6d05
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 5b041fecfaa5a84ed5a04a3a8c53de10b9efd65b
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616827"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155366"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>PowerShell を使用して Azure Cosmos DB SQL API リソースを管理する
 
@@ -43,6 +43,7 @@ Azure Cosmos DB のクロスプラットフォーム管理には、[Azure CLI](m
 * [Azure Cosmos アカウントのキーを再生成する](#regenerate-keys)
 * [Azure Cosmos アカウントの接続文字列を一覧表示する](#list-connection-strings)
 * [Azure Cosmos アカウントのフェールオーバーの優先順位を変更する](#modify-failover-priority)
+* [Azure Cosmos アカウントの手動フェールオーバーをトリガーする](#trigger-manual-failover)
 
 ### <a id="create-account"></a> Azure Cosmos アカウントを作成する
 
@@ -121,7 +122,9 @@ Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 * マルチマスターを有効にする
 
 > [!NOTE]
-> このコマンドでは、リージョンの追加および削除が可能ですが、`failoverPriority=0` でフェールオーバー優先度を変更したりリージョンを変更したりすることはできません。 フェールオーバー優先度を変更するには、[Azure Cosmos アカウントのフェールオーバー優先度の変更](#modify-failover-priority)を参照してください。
+> Azure Cosmos アカウントに対し、リージョン (`locations`) の追加 (または削除) と他のプロパティの変更を同時に行うことはできません。 リージョンの変更は、アカウント リソースに対する他のあらゆる変更とは別の操作として実行する必要があります。
+> [!NOTE]
+> このコマンドでは、リージョンの追加および削除が可能ですが、フェールオーバー優先度を変更したり手動フェールオーバーをトリガーしたりすることはできません。 「[フェールオーバー優先度を変更する](#modify-failover-priority)」と「[手動フェールオーバーをトリガーする](#trigger-manual-failover)」を参照してください。
 
 ```azurepowershell-interactive
 # Get an Azure Cosmos Account (assume it has two regions currently West US 2 and East US 2) and add a third region
@@ -238,7 +241,38 @@ Select-Object $keys
 
 ### <a id="modify-failover-priority"></a> フェールオーバー優先度を変更する
 
-複数リージョンのデータベース アカウントでは、プライマリ書き込みレプリカでリージョン間フェールオーバーを行う必要があるときに、Cosmos アカウントでセカンダリ読み取りレプリカを昇格させる順序を変更できます。 `failoverPriority=0` の変更は、ディザスター リカバリーの訓練を開始し、ディザスター リカバリー計画をテストする際にも使用できます。
+自動フェールオーバーを使用して構成されたアカウントでは、プライマリが利用不可になった場合に、Cosmos がどのような順序でセカンダリ レプリカをプライマリに昇格するかを変更することができます。
+
+以下の例では、現在のフェールオーバー優先度が `West US 2 = 0`、`East US 2 = 1`、`South Central US = 2` であることを想定しています。
+
+> [!CAUTION]
+> `failoverPriority=0` に対する `locationName` を変更すると、Azure Cosmos アカウントの手動フェールオーバーがトリガーされます。 他の優先度を変更しても、フェールオーバーはトリガーされません。
+
+```azurepowershell-interactive
+# Change the failover priority for an Azure Cosmos Account
+# Assume existing priority is "West US 2" = 0, "East US 2" = 1, "South Central US" = 2
+
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+
+$failoverRegions = @(
+    @{ "locationName"="West US 2"; "failoverPriority"=0 },
+    @{ "locationName"="South Central US"; "failoverPriority"=1 },
+    @{ "locationName"="East US 2"; "failoverPriority"=2 }
+)
+
+$failoverPolicies = @{
+    "failoverPolicies"= $failoverRegions
+}
+
+Invoke-AzResourceAction -Action failoverPriorityChange `
+    -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" `
+    -ResourceGroupName $resourceGroupName -Name $accountName -Parameters $failoverPolicies
+```
+
+### <a id="trigger-manual-failover"></a> 手動フェールオーバーをトリガーする
+
+手動フェールオーバーを使用して構成されたアカウントでは、`failoverPriority=0` に変更することでフェールオーバーを実行し、任意のセカンダリ レプリカをプライマリに昇格することができます。 この操作は、ディザスター リカバリーの訓練を開始し、ディザスター リカバリー計画をテストする際に使用できます。
 
 以下の例では、アカウントの現在のフェールオーバー優先度が `West US 2 = 0` および `East US 2 = 1` であるものとして、リージョンを反転させます。
 
@@ -247,14 +281,15 @@ Select-Object $keys
 
 ```azurepowershell-interactive
 # Change the failover priority for an Azure Cosmos Account
-# Assume existing priority is "West US 2" = 0 and "East US 2" = 1
+# Assume existing priority is "West US 2" = 0, "East US 2" = 1, "South Central US" = 2
 
 $resourceGroupName = "myResourceGroup"
 $accountName = "mycosmosaccount"
 
 $failoverRegions = @(
-    @{ "locationName"="East US 2"; "failoverPriority"=0 },
-    @{ "locationName"="West US 2"; "failoverPriority"=1 }
+    @{ "locationName"="South Central US"; "failoverPriority"=0 },
+    @{ "locationName"="East US 2"; "failoverPriority"=1 },
+    @{ "locationName"="West US 2"; "failoverPriority"=2 }
 )
 
 $failoverPolicies = @{

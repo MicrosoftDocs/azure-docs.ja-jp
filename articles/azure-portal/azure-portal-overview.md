@@ -9,12 +9,12 @@ ms.date: 05/24/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: de04b461d8e2d2dce9a88052a86fbe5d163fafec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e176a8b16129cd35fc011e14fcb36038f7c0144
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66244197"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000335"
 ---
 # <a name="azure-portal-overview"></a>Azure Portal の概要
 
@@ -46,7 +46,7 @@ Azure portal のサイド バーとページ ヘッダーは、常に存在す�
 
 ![全画面表示のポータル ビューと重要な UI 要素を示すスクリーンショット](./media/azure-portal-overview/azure-portal-fullscreen-map.png)
 
-|キー|説明
+|Key|説明
 |:---:|---|
 |1|ページ ヘッダー。 グローバル要素が含まれ、すべてのポータル ページの上部に表示されます。|
 |2| グローバル検索。 この検索バーを使用して、指定したリソース、サービス、またはドキュメントをすばやく検索します。|
@@ -69,6 +69,12 @@ Azure portal のサイド バーとページ ヘッダーは、常に存在す�
 > [!TIP]
 > リソース、サービス、またはドキュメントを検索する最も簡単な方法は、グローバル ヘッダーの*検索*を使用することです。 前のページに戻るには、階層リンクを使用します。
 >
+Azure portal でグローバル検索を使用する方法のデモについては、こちらのビデオをご覧ください。
+
+
+> [!VIDEO https://www.youtube.com/embed/nZ7WwTZcQbo]
+
+[Azure portal でグローバル検索を使用する方法](https://www.youtube.com/watch?v=nZ7WwTZcQbo)
 
 ## <a name="next-steps"></a>次の手順
 

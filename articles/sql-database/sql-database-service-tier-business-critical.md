@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 12/04/2018
-ms.openlocfilehash: 48cde2f96083779bdeb13ba5f39b68c18b395045
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 9e398fd7d370d30fac87035b27a218834b4fab22
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515366"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899715"
 ---
 # <a name="business-critical-tier---azure-sql-database"></a>Business Critical レベル - Azure SQL Database
 
@@ -45,6 +45,17 @@ SQL データベース エンジン プロセスと基礎となる mdf/ldf フ�
 ## <a name="when-to-choose-this-service-tier"></a>このサービス レベルを選択する場合
 
 Business Critical サービス レベルの対象となるアプリケーションは、基盤となる SSD ストレージからの応答の待機時間が短い (平均 1 - 2 ミリ秒)、基盤となるインフラストラクチャに障害が発生した場合に迅速に復旧するという要件があるか、レポート、分析、および読み取り専用のクエリをプライマリ データベースの無料で読み取り可能なセカンダリ レプリカにオフロードする必要があります。
+
+General Purpose レベルではなく、Business Critical サービス レベルを選択すべき主な理由は、次のとおりです。
+-   IO に低待機時間が必要。ストレージ レイヤーから迅速な応答が必要なワークロード (平均 1 - 2 ミリ秒) では、Business Critical レベルを使用する必要があります。 
+-   アプリケーションとデータベース間に頻繁に通信がある。 アプリケーション レイヤーのキャッシュまたは[要求のバッチ処理](sql-database-use-batching-to-improve-performance.md)を利用できない、迅速に処理する必要のある SQL クエリを多数送信する必要のあるアプリケーションには、Business Critical レベルが必要です。
+-   挿入、更新および削除操作などの多数の更新により、メモリ内のデータ ページが変更された場合 (ダーティ ページ)、これらは、`CHECKPOINT` 操作でデータ ファイルに保存される必要があります。 ダーティ ページが多いことにより、データベース エンジンのプロセスがクラッシュしたり、データベースがフェールオーバーする場合、General Purpose レベルの復旧に時間がかかる場合があります。 メモリ内で変更が多く発生するワークロードでは、Business Critical レベルを使用します。 
+-   データが変更する長期実行されるトランザクション。 長期開かれているトランザクションでは、ログ サイズと[仮想ログ ファイル (VLF)](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide#physical_arch) 数が増加する可能性があるログ ファイルの切り捨てが行われません。 VLF が多数ある場合、フェイルオーバー後のデータベースの復旧が遅くなる場合があります。
+-   無料の読み取り専用のセカンダリ レプリカにリダイレクトされる可能性のあるレポートと分析クエリを使用したワークロード。
+- 障害からのより高い回復性とより早い復旧。 システムで障害が発生した場合、プライマリ インスタンス上のデータベースは無効になり、セカンダリ レプリカの 1 つが、クエリを処理できる新しい読み取り/書き込みプライマリ データベースに直ちになります。 データベース エンジンは、ログ ファイルを分析し、トランザクションを再実行し、メモリ バッファーのすべてのデータを読み込む必要はありません。
+- データの破損の高度な保護。Business Critical レベルでは、ビジネス継続性のためにデータベース レプリカがバックグラウンドで活用されます。また、サービスでは、SQL Server データベースの[ミラーリングおよび可用性グループ](https://docs.microsoft.com/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring)で使用されるものと同じテクノロジであるページの自動修復が活用されます。 データの整合性の問題が原因で、レプリカがページを読み取ることができない場合、読み取り不可能なページは、データの損失や顧客のダウンタイムなしで、別のレプリカから新しいコピーが取得され、置き換えられます。 この機能は、データベースに geo セカンダリ レプリカがある場合、General Purpose レベルに適用されます。
+- 高可用性。Multi-AZ 構成の Business Critical レベルでは、General Purpose レベルの 99.99% と比較して、99.995% の高可用性が保証されます。
+- 高速 geo リカバリー。geo レプリケーションが構成された Business Critical レベルには、展開されている時間、5 秒の回復ポイントの目標 (RPO) と 30 秒の回復時刻の目標 (RTO) が 100% 保証されています。
 
 ## <a name="next-steps"></a>次の手順
 

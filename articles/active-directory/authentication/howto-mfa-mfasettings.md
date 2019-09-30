@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12fd08fa301cb22857470e3c81d7f4f7c1f04de9
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68948886"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075495"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -274,7 +274,7 @@ Azure AD は、オンプレミスの Windows Server Active Directory ドメイ�
 既定では、ユーザーはアプリ パスワードを作成できません。 アプリ パスワード機能を有効にする必要があります。 ユーザーがアプリ パスワードを作成できるようにするには、次の手順を使用します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で、 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのユーザー]** を選択します。
+2. 左側の **[Azure Active Directory]**  >  **[ユーザー]** を選択します。
 3. **[Multi-Factor Authentication]** を選択します。
 4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
 5. **[サービス設定]** ページで、 **[ブラウザーではないアプリケーションへのサインイン用にアプリケーション パスワードの作成を許可する]** オプションを選択します。
@@ -314,7 +314,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 ### <a name="enable-named-locations-by-using-conditional-access"></a>条件付きアクセスを使用したネームド ロケーションの有効化
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で、 **[Azure Active Directory]**  >  **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
+2. 左側で、 **[Azure Active Directory]**  >  **[セキュリティ]**  >  **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
 3. **[新しい場所]** を選択します。
 4. 場所の名前を入力します。
 5. **[信頼できる場所としてマークする]** を選択します。
@@ -324,7 +324,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>条件付きアクセスを使用した信頼できる IP 機能の有効化
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で、 **[Azure Active Directory]**  >  **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
+2. 左側で、 **[Azure Active Directory]**  >  **[セキュリティ]**  >   **[条件付きアクセス]**  >  **[ネームド ロケーション]** を選択します。
 3. **[MFA の信頼できる IP の構成]** を選択します。
 4. **[サービス設定]** ページの **[信頼できる IP]** で、次の 2 つのオプションのいずれかを選択します。
 
@@ -364,7 +364,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 
 ユーザーは、自分のアカウントを Azure Multi-Factor Authentication 用に登録するときに、有効になっているオプションから使用する検証方法を選択します。 登録プロセスのガイダンスについては、「[アカウントへの 2 段階認証の設定](../user-help/multi-factor-authentication-end-user-first-time.md)」を参照してください。
 
-| Method | 説明 |
+| 方法 | 説明 |
 |:--- |:--- |
 | 電話の呼び出し |自動音声通話を行います。 ユーザーは、呼び出しに応答し、電話のキーパッドの # を押して認証を行います。 電話番号は、オンプレミスの Active Directory には同期されません。 |
 | 電話へのテキスト メッセージ |確認コードを含むテキスト メッセージを送信します。 ユーザーは、この確認コードをサインイン インターフェイスに入力するように求められます。 このプロセスを一方向の SMS といいます。 双方向の SMS は、ユーザーが特定のコードを返信する必要があることを意味します。 双方向の SMS は非推奨となり、2018 年 11 月 14 日以降はサポートされなくなります。 双方向 SMS 用に構成されているユーザーは、その時点で _電話の呼び出し_ 認証に自動的に切り替わります。|
@@ -374,7 +374,7 @@ Azure Multi-Factor Authentication の _信頼できる IP_ 機能は、マネー
 ### <a name="enable-and-disable-verification-methods"></a>検証方法を有効または無効にする
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で、 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのユーザー]** を選択します。
+2. 左側の **[Azure Active Directory]**  >  **[ユーザー]** を選択します。
 3. **[Multi-Factor Authentication]** を選択します。
 4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
 5. **[サービスの設定]** ページの **[検証オプション]** で、ユーザーに提供する方法を選択/選択解除します。
@@ -404,11 +404,13 @@ Multi-Factor Authentication の記憶機能では、ブラウザーでユーザ�
 >
 >ユーザーが AD FS の **[サインインしたままにする]** を選択し、さらに Multi-Factor Authentication に対してデバイスを信頼済みとしてマークした場合、**Multi-Factor Authentication を記憶する** 日数が過ぎるとユーザーは自動的に確認されません。 Azure AD は新たに 2 段階認証を行うよう要求しますが、AD FS は、2 段階認証を再実行するのではなく、元の Multi-Factor Authentication 要求と日付を含むトークンを返します。 **その結果、Azure AD と AD FS との間で本人確認がループ状態に陥ります。**
 >
+>**Multi-Factor Authentication の記憶**機能は、B2B ユーザーとは互換性がなく、招待されたテナントにサインインしても B2B ユーザーには表示されません。
+>
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication の記憶を有効にする
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側で、 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのユーザー]** を選択します。
+2. 左側の **[Azure Active Directory]**  >  **[ユーザー]** を選択します。
 3. **[Multi-Factor Authentication]** を選択します。
 4. [Multi-Factor Authentication] の下で **[サービス設定]** を選択します。
 5. **[サービス設定]** ページの **[manage remember multi-factor authentication]\(Multi-Factor Authentication の記憶の管理\)** で、 **[信頼済みデバイスでユーザーが多要素認証を記憶できるようにする]** オプションを選択します。

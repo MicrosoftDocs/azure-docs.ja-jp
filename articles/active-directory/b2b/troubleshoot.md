@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4185d29ff1770ed9549b4b63a2e5da579bcf054f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f91ddee8668316df69c98ed14fbcabcb06b6da82
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767151"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983390"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Azure Active Directory B2B コラボレーションのトラブルシューティング
 
@@ -35,7 +35,7 @@ SharePoint Online (SPO) のユーザー選択ウィンドウで既存のゲス�
 
 ## <a name="invitations-have-been-disabled-for-directory"></a>ディレクトリに対して招待が無効になっています
 
-ユーザーを招待するアクセス許可がないことを通知された場合は、自分のユーザー アカウントが外部ユーザーの招待を承認されていることを確認します。
+ユーザーを招待するアクセス許可がないことを通知された場合は、[Azure Active Directory] > [ユーザー設定] > [外部ユーザー] > [Manage external collaboration settings]\(外部コラボレーションの設定の管理\) の順に選択して、自分のユーザー アカウントが外部ユーザーの招待を承認されていることを確認します。
 
 ![[外部ユーザー] 設定を示すスクリーンショット](media/troubleshoot/external-user-settings.png)
 

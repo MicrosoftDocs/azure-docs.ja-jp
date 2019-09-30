@@ -6,16 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 05/14/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 6b2a0655173405008e0bccf3e31a8db391da6127
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.localizationpriority: high
+ms.openlocfilehash: d86da3013a3cb4573556bc14ea1e6a0fbab72623
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66496283"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70240391"
 ---
+::: zone target="docs"
+
 # <a name="tutorial-copy-data-to-azure-data-box-via-smb"></a>チュートリアル:Azure Data Box に SMB 経由でデータをコピーする
+
+::: zone-end
+
+::: zone target="chromeless"
+
+# <a name="copy-data-to-azure-data-box"></a>Azure Data Box にデータをコピーする
+
+::: zone-end
+
+::: zone target="docs"
 
 このチュートリアルでは、ローカル Web UI を使用してホスト コンピューターに接続し、そこからデータをコピーする方法について説明します。
 
@@ -208,7 +221,62 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
     
    ![ダッシュボードで空き領域と使用済み領域を確認する](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
+::: zone-end
 
+::: zone target="chromeless"
+
+ソース サーバーから、SMB、NFS、REST、データ コピー サービスを介して Data Box に、またはマネージド ディスクに、データをコピーできます。
+
+いずれの場合も、共有およびフォルダー名、およびデータ サイズが、[Azure Storage と Data Box サービスの制限](data-box-limits.md)に関するページに記載されているガイドラインに従っていることを確認します。
+
+## <a name="copy-data-via-smb"></a>SMB 経由でデータをコピーする
+
+1. Windows ホストを使用している場合は、次のコマンドを使用して、SMB 共有に接続します。
+
+    `\\<IP address of your device>\ShareName`
+
+2. 共有アクセス資格情報を取得するには、Data Box のローカル Web UI にある **[接続とコピー]** ページに移動します。
+3. Robocopy などの SMB 互換ファイル コピー ツールを使用して、データを共有にコピーします。 
+
+具体的な手順については、「[チュートリアル: Azure Data Box に SMB 経由でデータをコピーする](data-box-deploy-copy-data.md)」を参照してください。
+
+## <a name="copy-data-via-nfs"></a>NFS 経由でデータをコピーする
+
+1. NFS ホストを使用している場合は、次のコマンドを使用して、Data Box に NFS 共有をマウントします。
+
+    `sudo mount <Data Box device IP>:/<NFS share on Data Box device> <Path to the folder on local Linux computer>`
+
+2. 共有アクセス資格情報を取得するには、Data Box のローカル Web UI にある **[接続とコピー]** ページに移動します。
+3. `cp` または `rsync` コマンドを使用してデータをコピーします。
+
+具体的な手順については、「[チュートリアル: Azure Data Box に NFS 経由でデータをコピーする](data-box-deploy-copy-data-via-nfs.md)」を参照してください。
+
+## <a name="copy-data-via-rest"></a>REST 経由でデータをコピーする
+
+1. REST API シリーズ経由で Data Box BLOB ストレージを使用してデータをコピーするには、*http* または *https* 経由で接続できます。
+2. データを Data Box BLOB ストレージにコピーするには、AzCopy を使用できます。
+
+具体的な手順については、「[チュートリアル: REST API 経由で Azure Data Box BLOB ストレージにデータをコピーする](data-box-deploy-copy-data-via-nfs.md)」を参照してください。
+
+## <a name="copy-data-via-data-copy-service"></a>データ コピー サービス経由でデータをコピーする
+
+1. データ コピー サービスを使用してデータをコピーするには、ジョブを作成する必要があります。 お客様の Data Box のローカル Web UI で、 **[管理]、[データのコピー] > [作成]** の順に移動します。 
+2. パラメーターを入力し、ジョブを作成します。
+
+具体的な手順については、「[チュートリアル: データ コピー サービスを使用してデータを Azure Data Box にコピーする](data-box-deploy-copy-data-via-copy-service.md)」を参照してください。
+
+## <a name="copy-data-to-managed-disks"></a>マネージド ディスクにデータをコピーする
+
+1. Data Box デバイスを注文する場合、保存先としてマネージド ディスクを選択しておく必要があります。
+2. SMB または NFS 共有経由で Data Box に接続できます。
+3. その後、SMB または NFS ツール経由でデータをコピーできます。
+
+具体的な手順については、「[チュートリアル: Data Box を使用して Azure のマネージド ディスクとしてデータをインポートする](data-box-deploy-copy-data-from-vhds.md)」を参照してください。
+
+::: zone-end
+
+
+::: zone target="docs"
 
 ## <a name="next-steps"></a>次の手順
 
@@ -224,4 +292,6 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 
 > [!div class="nextstepaction"]
 > [Azure Data Box を Microsoft に発送する](./data-box-deploy-picked-up.md)
+
+::: zone-end
 

@@ -16,12 +16,12 @@ ms.date: 08/02/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48d2ef0de9ae59e63cd9957200c46c788e2d785f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e9277e35fceb382fbccd009e5bbfe63ce57b8361
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60387310"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305172"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>ハイブリッド ID で必要なポートとプロトコル
 次のドキュメントは、ハイブリッド ID ソリューションを実装するために必要なポートとプロトコルに関するテクニカル リファレンスです。 次の図を使用して、対応する表を参照してください。
@@ -40,6 +40,8 @@ ms.locfileid: "60387310"
 | SMB | 445 (TCP/UDP) |AD フォレストにコンピューター アカウントを作成するためにシームレス SSO によって使用されます。 |
 | LDAP/SSL |636 (TCP/UDP) |AD からのデータのインポートに使用されます。 データ転送は署名されて暗号化されます。 SSL を使用する場合にのみ使用されます。 |
 | RPC |49152- 65535 (ランダム ハイ RPC ポート)(TCP/UDP) |Azure AD Connect を AD フォレストにバインドするときの初期構成中と、パスワードの同期中に使用されます。 詳細については、[KB929851](https://support.microsoft.com/kb/929851)、[KB832017](https://support.microsoft.com/kb/832017)、[KB224196](https://support.microsoft.com/kb/224196) を参照してください。 |
+|WinRM  | 5985 (TCP/UDP) |Azure AD Connect ウィザードで gMSA を使用して AD FS をインストールする場合にのみ使用します|
+|AD DS Web サービス | 9389 (TCP/UDP) |Azure AD Connect ウィザードで gMSA を使用して AD FS をインストールする場合にのみ使用します |
 
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>表 2 - Azure AD Connect と Azure AD
 この表は、Azure AD Connect サーバーと Azure AD 間の通信に必要なポートとプロトコルについて説明しています。
@@ -102,8 +104,10 @@ ms.locfileid: "60387310"
 
 | Protocol | Port | 説明 |
 | --- | --- | --- |
-| HTTPS |443 (TCP/UDP) |送信 |
-| Azure Service Bus |5671 (TCP/UDP) |送信 |
+| HTTPS |443(TCP) |送信 |
+| Azure Service Bus |5671 (TCP) |送信 |
+
+Azure Service Bus ポート 5671 は最新バージョンのエージェントでは必要なくなりました。 Azure AD Connect Health エージェントの最新バージョンで必要なのは、ポート 443 のみです。
 
 ### <a name="7b---endpoints-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>7b - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のエンドポイント
 エンドポイントの一覧については、 [Azure AD Connect Health エージェントの「必要条件」セクション](how-to-connect-health-agent-install.md#requirements)を参照してください。

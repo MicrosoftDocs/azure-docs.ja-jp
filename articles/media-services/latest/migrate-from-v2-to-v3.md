@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: b85b06552dcd0fc419302882f05814adbd454f46
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 901542e2a69d2c7880825d76c1d69d3795713ed2
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542562"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231177"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行のガイダンス
 
@@ -60,7 +60,7 @@ ms.locfileid: "67542562"
 * v3 で作成されたアセットの場合、Media Services は [Azure Storage サーバー側のストレージ暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)のみをサポートします。
     * V3 API は、[ストレージ暗号化](../previous/media-services-rest-storage-encryption.md) (AES 256) が Media Services によって提供された v2 API で作成されたアセットと一緒に使用できます。
     * v3 API を使用して従来の AES 256 [ストレージ暗号化](../previous/media-services-rest-storage-encryption.md)で新しいアセットを作成することはできません。
-* v3 のアセットのプロパティは v2 と異なります。[プロパティのマッピング](assets-concept.md#map-v3-asset-properties-to-v2)に関するページを参照してください。
+* v3 の[アセット](assets-concept.md)のプロパティは v2 と異なります。[プロパティのマッピング](assets-concept.md#map-v3-asset-properties-to-v2)に関するページを参照してください。
 * v3 SDK が Storage SDK から分離されたため、使用する Storage SDK のバージョンをより詳細に制御し、バージョン管理の問題を回避できるようになりました。 
 * v3 API では、エンコード ビット レートはすべてビット/秒単位です。 これは v2 Media Encoder Standard のプリセットとは異なります。 たとえば、v2 のビットレートは 128 (kbps) と指定されていますが、v3 では 128,000 (ビット/秒) です。 
 * v3 にはエンティティ AssetFiles、AccessPolicies、IngestManifests が存在しません。
@@ -74,6 +74,9 @@ ms.locfileid: "67542562"
     * ライブ出力によって Program が置き換えられました。
 * ライブ出力は作成すると開始され、削除されると停止します。 v2 API ではプログラムの動作方法が異なり、作成後に起動される必要がありました。
 *  ジョブに関する情報を取得するには、ジョブが作成された Transform の名前を知っている必要があります。 
+
+> [!NOTE]
+> [Media Services v3 リソース](media-services-apis-overview.md#naming-conventions)に適用される名前付け規則をご確認ください。 [BLOB の名前付け](assets-concept.md#naming-blobs)についてもご確認ください。
 
 ## <a name="feature-gaps-with-respect-to-v2-apis"></a>v2 API に関する機能のギャップ
 

@@ -4,6 +4,8 @@
   items:
     - name: Azure Resource Manager とは
       href: resource-group-overview.md
+    - name: テンプレートの概要
+      href: template-deployment-overview.md
 - name: クイック スタート
   expanded: true
   items:
@@ -58,9 +60,6 @@
       href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=azure-resource-manager'
 - name: 概念
   items:
-    - name: テンプレート ファイルの構造
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: resource-group-authoring-templates.md
     - name: テンプレートのベスト プラクティス
       href: template-best-practices.md
     - name: クラウドの一貫性を実現するテンプレート
@@ -77,30 +76,44 @@
           href: deployment-manager-health-check.md
     - name: Resource Manager デプロイとクラシック デプロイ
       href: resource-manager-deployment-model.md
-    - name: Azure の一般的なセキュリティ属性
-      href: azure-resource-manager-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: azure-resource-manager-security-controls.md
 - name: 方法
   items:
     - name: テンプレートの作成
       items:
-        - name: テンプレートの作成
-          href: how-to-create-template.md
-        - name: 子リソースの名前と種類
-          href: child-resource-name-type.md
-        - name: サブスクリプションでリソース グループとリソースを作成する
-          displayName: subscription level deployment
-          href: deploy-to-subscription.md
-        - name: リソースの依存関係を定義する
-          href: resource-group-define-dependencies.md
+        - name: VS Code を使用する
+          href: resource-manager-tools-vs-code.md
+        - name: テンプレート式を記述する
+          href: template-expressions.md
+        - name: parameters
+          href: template-parameters.md
+        - name: 変数
+          href: template-variables.md
+        - name: ユーザー定義関数
+          href: template-user-defined-functions.md
+        - name: リソース
+          items:
+            - name: 子リソースの名前と種類
+              href: child-resource-name-type.md
+            - name: 条件付きデプロイ
+              href: conditional-resource-deployment.md
+            - name: リソースの依存関係を設定する
+              href: resource-group-define-dependencies.md
+            - name: リソースの場所を設定する
+              href: resource-location.md
+            - name: テンプレートの拡張機能を使用する
+              href: resource-manager-use-extensions.md
+        - name: 出力
+          href: template-outputs.md
         - name: テンプレートをモジュール化する
           displayName: 'linked templates, nested templates'
           href: resource-group-linked-templates.md
         - name: 複数のインスタンスの作成
           href: resource-group-create-multiple.md
-        - name: テンプレートの拡張機能を使用する
-          href: resource-manager-use-extensions.md
-        - name: リソースの更新
-          href: /azure/architecture/building-blocks/extending-templates/update-resource
+        - name: サブスクリプションでリソース グループとリソースを作成する
+          displayName: subscription level deployment
+          href: deploy-to-subscription.md
     - name: テンプレートのデプロイ
       items:
         - name: デプロイ - ポータル
@@ -240,6 +253,9 @@
       href: resource-manager-async-operations.md
 - name: リファレンス
   items:
+    - name: テンプレート ファイルの構造
+      displayName: 'parameters,variables,resources,outputs,condition'
+      href: resource-group-authoring-templates.md
     - name: テンプレート リファレンス
       href: /azure/templates/
     - name: テンプレート関数

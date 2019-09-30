@@ -3,21 +3,20 @@ title: Azure Data Factory パイプラインでの分岐 |Microsoft Docs
 description: アクティビティの分岐と連鎖によって Azure Data Factory 内のデータのフローを制御する方法を説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: douglasl
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
-ms.author: shlo
-ms.openlocfilehash: 9a03094683a973db16aa949f0610bc7f9914be45
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 264d8e049cc7b714e00aaa77441cdc81a1e0a0c9
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649222"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140747"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 
@@ -65,14 +64,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケーションを作成します。
 
 1. **Visual Studio** を起動します。
-2. **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。 .NET バージョン 4.5.2 以降が必要です。
-3. 右側にあるプロジェクトの種類の一覧で、**[Visual C#]** -> **[コンソール アプリ (.NET Framework)]** の順に選択します。
+2. **[ファイル]** をクリックし、 **[新規作成]** をポイントして、 **[プロジェクト]** をクリックします。 .NET バージョン 4.5.2 以降が必要です。
+3. 右側にあるプロジェクトの種類の一覧で、 **[Visual C#]**  ->  **[コンソール アプリ (.NET Framework)]** の順に選択します。
 4. [名前] には「**ADFv2BranchTutorial**」と入力します。
 5. **[OK]** をクリックしてプロジェクトを作成します。
 
 ## <a name="install-nuget-packages"></a>NuGet パッケージのインストール
 
-1. **[ツール]** -> **[NuGet パッケージ マネージャー]** -> **[パッケージ マネージャー コンソール]** の順にクリックします。
+1. **[ツール]**  ->  **[NuGet パッケージ マネージャー]**  ->  **[パッケージ マネージャー コンソール]** の順にクリックします。
 2. **パッケージ マネージャー コンソール**で、次のコマンドを実行してパッケージをインストールします。 詳細については、[Microsoft.Azure.Management.DataFactory nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)を参照してください。
 
     ```powershell
@@ -96,7 +95,7 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. 次の静的変数を **Program クラス**に追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+2. 次の静的変数を **Program クラス**に追加します。 プレースホルダーは実際の値に置き換えてください。 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。(「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」)。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
     ```csharp
         // Set variables
@@ -140,7 +139,7 @@ Visual Studio 2015/2017 を使用して、C# .NET コンソール アプリケ�
     var client = new DataFactoryManagementClient(cred) { SubscriptionId = subscriptionId };
     ```
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 Program.cs ファイルで "CreateOrUpdateDataFactory" 関数を作成します。
 

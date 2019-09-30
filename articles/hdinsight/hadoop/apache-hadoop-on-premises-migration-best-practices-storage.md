@@ -1,21 +1,21 @@
 ---
-title: オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
+title: オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージ
 description: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行することについてのストレージのベスト プラクティスについて説明します。
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
+ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0acd4c2793c7c13fb687f591d01e6d8753f71bdc
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64691519"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181146"
 ---
-# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - ストレージのベスト プラクティス
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行
 
 この記事では、Azure HDInsight システムのデータ ストレージのための推奨事項について説明します。 これは、オンプレミスの Apache Hadoop システムを Azure HDInsight に移行する際に役立つベスト プラクティスを紹介するシリーズの一部です。
 
@@ -110,7 +110,7 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 次の形式の 1 つを使用して、ADLS Gen2 に格納されているデータにアクセスできます。
 - `abfs:///`:クラスターの既定の Data Lake Storage にアクセスします。
-- `abfs[s]://file_system@account_name.dfs.core.windows.net`:既定以外の Data Lake Storage を使用して通信するときに使用します。
+- `abfs://file_system@account_name.dfs.core.windows.net`:既定以外の Data Lake Storage を使用して通信するときに使用します。
 
 詳細については、次の記事を参照してください。
 

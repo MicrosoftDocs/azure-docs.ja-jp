@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel プレビューでプレイブックを実行する | Microsoft Docs
+title: Azure Sentinel でプレイブックを実行する | Microsoft Docs
 description: この記事では、Azure Sentinel でプレイブックを実行する方法について説明します。
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/25/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: cd3288e308308729cf9b97e3c699d489857840a8
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 7ab4c4ba4553e7e5f15e563c67c845758a53766f
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780375"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71229507"
 ---
-# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>チュートリアル:Azure Sentinel プレビューで脅威への自動対応を設定する
+# <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel"></a>チュートリアル:Azure Sentinel で脅威への自動対応を設定する
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 このチュートリアルは、Azure Sentinel でセキュリティ プレイブックを使用して、Azure Sentinel によって検出されたセキュリティ関連の問題 (脅威) への自動対応を設定するのに役立ちます。
 
@@ -78,7 +76,9 @@ Azure Sentinel に新しいセキュリティ プレイブックを作成する�
 
 6. ロジック アプリ デザイナーが開き、そこでテンプレートを新規作成するか、編集することができます。 [Logic Apps](../logic-apps/logic-apps-create-logic-apps-from-templates.md) でプレイブックを作成する方法の詳細をご確認ください。
 
-7. 空のプレイブックを作成する場合は、 **[すべてのコネクタとトリガーを検索する]** フィールドに「*Azure Sentinel*」と入力し、 **[When a response to an Azure Sentinel alert is triggered]\(Azure Sentinel 通知への応答がトリガーされるとき\)** を選択します。 <br>新しいプレイブックが作成されると、 **[プレイブック]** 一覧に表示されます。 表示されない場合は、 **[更新]** をクリックしてください。 
+7. 空のプレイブックを作成する場合は、 **[すべてのコネクタとトリガーを検索する]** フィールドに「*Azure Sentinel*」と入力し、 **[When a response to an Azure Sentinel alert is triggered]\(Azure Sentinel 通知への応答がトリガーされるとき\)** を選択します。 <br>新しいプレイブックが作成されると、 **[プレイブック]** 一覧に表示されます。 表示されない場合は、 **[更新]** をクリックしてください。
+
+1. **エンティティの取得**用の関数を使用して、アカウント、IP アドレス、ホストなど、**Entities** 一覧内から関連するエンティティを取得できます。 これにより、特定のエンティティに対してアクションを実行できるようになります。
 
 7. これで、プレイブックをトリガーしたときの動作を定義できます。 アクション、論理条件、スイッチ ケースの条件、またはループを追加できます。
 
@@ -105,8 +105,6 @@ SIEM や SOC チームには、定期的にセキュリティ アラートが殺
 対応を自動化するには:
 
 1. 対応を自動化するアラートを選択します。
-1. Azure Sentinel ワークスペースのナビゲーション メニューから、 **[分析]** を選択します。
-1. 自動化するアラートを選択します。 
 1. **[アラート ルールの編集]** ページの **[Real-time automation]\(リアルタイム オートメーション\)** で、このアラート ルールが一致したときに実行する**トリガー対象のプレイブック**を選択します。
 1. **[保存]** を選択します。
 

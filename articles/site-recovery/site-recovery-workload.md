@@ -5,14 +5,14 @@ author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 09/03/2019
 ms.author: raynew
-ms.openlocfilehash: 6a0e07f338da039be1660e59510b24bcd44eed0c
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: f3ff6e5e05cab9aab5257d810c6785e7691bae45
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491753"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232193"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 
@@ -41,7 +41,7 @@ Site Recovery は、アプリケーション レベルの保護と復旧に次�
 * 豊富な自動化ライブラリに、運用環境ですぐに使えるアプリケーション固有のスクリプトが用意されています。これらのスクリプトをダウンロードして、復旧計画に統合することができます。
 
 ## <a name="workload-summary"></a>ワークロードの概要
-Site Recovery は、サポート対象のマシンで実行されているすべてのアプリをレプリケートできます。 また、Microsoft では、製品チームと連携して、アプリに特化したテストを追加で実施しました。
+Site Recovery は、サポート対象のマシンで実行されているすべてのアプリをレプリケートできます。 また、Microsoft では、製品チームと連携して、表に記載されているアプリのテストを追加で実施しました。
 
 | **ワークロード** |**Azure VM を Azure にレプリケートする** |**Hyper-V VM をセカンダリ サイトにレプリケート** | **Hyper-V VM を Azure にレプリケート** | **VMware VM をセカンダリ サイトにレプリケート** | **VMware VM を Azure にレプリケート** |
 | --- | --- | --- | --- | --- |---|

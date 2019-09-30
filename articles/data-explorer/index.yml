@@ -1,30 +1,30 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure データ エクスプローラーのドキュメント
+title: Azure Data Explorerのドキュメント
 metadata:
   title: Azure Data Explorer のドキュメント - クイック スタート、チュートリアル、言語、API リファレンス
-  description: Azure データ エクスプローラーは、アドホック ビッグ データ クエリに最適化されたログ分析クラウド プラットフォームです。
+  description: Azure Data Explorerは、アドホック ビッグ データ クエリに最適化されたログ分析クラウド プラットフォームです。
   author: orspod
   ms.author: orspodek
   ms.service: data-explorer
   ms.topic: landing-page
   ms.date: 03/24/2019
 abstract:
-  description: <p>Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使うと、多種多様なデータを収集、格納、分析することによって、製品の改良、カスタマー エクスペリエンスの強化、デバイスの監視、操作の向上を実現できます。</p><p>Microsoft が提供するクイック スタート、チュートリアル、リファレンス コンテンツを利用して、Azure データ エクスプローラーの使用方法を学習してください。</p>
+  description: <p>Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使うと、多種多様なデータを収集、格納、分析することによって、製品の改良、カスタマー エクスペリエンスの強化、デバイスの監視、操作の向上を実現できます。</p><p>Microsoft が提供するクイック スタート、チュートリアル、リファレンス コンテンツを利用して、Azure Data Explorerの使用方法を学習してください。</p>
   aside:
     image:
       alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: 'Azure データ エクスプローラーとは (19:47)'
+    title: 'Azure Data Explorerとは (19:47)'
     href: 'https://youtu.be/D_AJk2lAepw'
     width: 250
 sections:
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
-        text: Azure データ エクスプローラーをプロビジョニングして使用する方法を学習します。
+        text: Azure Data Explorerをプロビジョニングして使用する方法を学習します。
       - type: list
         style: icon48
         items:
@@ -55,14 +55,14 @@ sections:
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/data-explorer/visualize-power-bi">Power BI で Azure データ エクスプローラーからデータを視覚化する</a>
+          - html: <a href="/azure/data-explorer/visualize-power-bi">Power BI で Azure Data Explorerからデータを視覚化する</a>
   - title: 無料の Pluralsight ビデオ トレーニング
     items:
       - type: list
         style: cards
         className: cardsFTitle
         items:
-          - title: Azure データ エクスプローラーのクエリ言語
+          - title: Azure Data Exlorerのクエリ言語
             href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
             image:
               src: /azure/data-explorer/media/index/logo-pluralsight.svg

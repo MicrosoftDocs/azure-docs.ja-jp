@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99a542d3208d5871d88c966fffc65cf16e0fbeee
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 8b89cab41061376fc1d8b4cbffc8fe87b9677688
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335399"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70125674"
 ---
 # <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
 
@@ -45,10 +45,10 @@ Azure Active Directory Identity Protection は単なる監視とレポート作�
 - サイン インのリスク レベルを計算します
 - ユーザーのリスク レベルを計算します
 
-**リスク イベントの調査:**
+**リスク検出の調査:**
 
-- リスク イベントの通知を送信します
-- 関連情報とコンテキスト情報を使用してリスク イベントを調査します
+- リスク検出の通知を送信します
+- 関連情報とコンテキスト情報を使用してリスク検出を調査します
 - 調査を追跡するための基本的なワークフローを提供します
 - パスワード リセットなどの修復アクションへの簡単なアクセスを提供します
 
@@ -76,10 +76,10 @@ Identity Protection 実装の管理アクティビティの負荷を分散する
 
 Azure Active Directory Identity Protection は、構成を分析し、ユーザーの ID に影響する可能性がある脆弱性を検出します。 詳細については、「[Azure Active Directory Identity Protection で検出される脆弱性](vulnerabilities.md)」を参照してください。
 
-### <a name="risk-events"></a>リスク イベント
+### <a name="risk-detections"></a>リスク検出
 
-Azure Active Directory は、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザーの ID に関連する疑わしいアクションを検出します。 疑わしいアクションが検出されると、アクションごとにレコードが作成されます。 こうしたレコードは、リスク イベントとも呼ばれます。  
-詳細については、「[Azure Active Directory risk events (Azure Active Directory リスク イベント)](../active-directory-identity-protection-risk-events.md)」を参照してください。
+Azure Active Directory は、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザーの ID に関連する疑わしいアクションを検出します。 疑わしいアクションが検出されると、アクションごとにレコードが作成されます。 これらのレコードは、リスク検出とも呼ばれます。  
+詳細については、「[Azure Active Directory のリスク検出](../active-directory-identity-protection-risk-events.md)」を参照してください。
 
 ## <a name="investigation"></a>調査
 
@@ -89,10 +89,10 @@ Identity Protection を使用するときは、通常、Identity Protection ダ�
 
 ダッシュボードからは次のものにアクセスできます。
 
-- **リスクのフラグ付きユーザー**、**リスク イベント**、**脆弱性**などのレポート
+- **リスクのフラグ付きユーザー**、**リスク検出**、**脆弱性**などのレポート
 - **セキュリティ ポリシー**、**通知**、**多要素認証の登録**の構成などの設定
 
-通常、これが調査の起点になります。調査は、修復または軽減の手順が必要であるかどうかを決定し、ID が侵害を受けているかどうか、およびどのように侵害されたかを理解し、侵害された ID がどのように使用されたかを理解するために、アクティビティ、ログ、およびリスク イベントに関連するその他の関連情報を確認するプロセスです。
+通常、これが調査の起点になります。調査は、修復または軽減の手順が必要かどうかと、ID がどのように侵害されたかを判断し、侵害された ID がどのように使用されたかを理解するために、アクティビティ、ログ、およびリスク検出に関連するその他の情報を確認するプロセスです。
 
 調査アクティビティを、Azure Active Directory Protection が電子メールごとに送信する [通知](notifications.md) と関連付けることができます。
 

@@ -1,18 +1,19 @@
 ---
-title: イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成 - Azure HDInsight
-description: ただ 1 回だけイベントを処理するように Spark Streaming を設定する方法。
+title: イベント処理を 1 回のみ伴う Spark Streaming ジョブ - Azure HDInsight
+description: ただ 1 回だけイベントを処理するように Apache Spark Streaming を設定する方法。
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 388723624fde73899809b95ff8ae4ee23cf49a9d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 908c49a46fe7993bc20bcb63a3c15758e2de5343
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705107"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091020"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回だけ伴う Apache Spark Streaming ジョブを作成します
 

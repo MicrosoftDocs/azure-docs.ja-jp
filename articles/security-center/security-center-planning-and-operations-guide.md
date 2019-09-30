@@ -2,31 +2,25 @@
 title: Security Center 計画および運用ガイド | Microsoft Docs
 description: このドキュメントを利用して、Azure Security Center と日常的な運用に関する考慮事項の採用前に計画を立てることができます。
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: f984e4a2-ac97-40bf-b281-2f7f473494c4
+author: memildin
+manager: rkarlin
 ms.service: security-center
 ms.topic: conceptual
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 04/11/2019
-ms.author: v-mohabe
-ms.openlocfilehash: ca96ba4c6b0de8ad39866a0783e7091fb4755164
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.date: 09/10/2019
+ms.author: memildin
+ms.openlocfilehash: b731c5fe6b6c7055b7397386b1e9fd4bed47db8a
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706246"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910588"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure Security Center 計画および運用ガイド
-このガイドは、所属組織が Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
+このガイドは、Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
 
 
 ## <a name="planning-guide"></a>計画ガイド
-このガイドでは、組織のセキュリティ要件とクラウド管理モデルに応じて Security Center の利用を最適化できる、一連の手順とタスクについて説明します。 Security Center を最大限に活用するには、安全な開発と運用、監視、ガバナンス、インシデント対応のニーズを満たすために、組織内のさまざまな個人やチームがこのサービスをどのように使用するのかを把握することが重要です。 Security Center の使用を計画するうえで考慮が必要となる主な領域は次のとおりです。
+このガイドでは、組織のセキュリティ要件とクラウド管理モデルに応じて Security Center の利用を最適化するために実行できるタスクについて説明します。 Security Center を最大限に活用するには、安全な開発と運用、監視、ガバナンス、インシデント対応のニーズを満たすために、組織内のさまざまな個人やチームがこのサービスをどのように使用するのかを把握することが重要です。 Security Center の使用を計画するうえで考慮が必要となる主な領域は次のとおりです。
 
 * セキュリティ ロールとアクセス制御
 * セキュリティ ポリシーと推奨事項
@@ -81,7 +75,7 @@ Security Center では[ロールベースのアクセス制御 (RBAC)](../role-b
 - **セキュリティ閲覧者**: このロールに属しているユーザーは、Security Center の構成 (推奨事項、アラート、ポリシー、正常性を含む) のみを閲覧できますが、変更を加えることはできません。
 - **セキュリティ管理者**: セキュリティ閲覧者と同じですが、セキュリティ ポリシーの更新と、推奨事項とアラートの解除を実行することもできます。
 
-上記で説明した Security Center のロールには、ストレージ、Web とモバイル、モノのインターネットなどの Azure の他のサービス領域へのアクセス権はありません。  
+上記で説明した Security Center のロールには、ストレージ、Web とモバイル、モノのインターネットなどの Azure の他のサービス領域へのアクセス権はありません。
 
 前の図で説明した人物の例では、次の RBAC が必要になります。
 
@@ -197,9 +191,9 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 1. 仮想マシンで、 **[防止]** セクションの **[コンピューティング]** をクリックします。 データの有効化に関する問題または関連する推奨事項があれば、 **[概要]** タブの **[監視の推奨事項]** セクションに表示されます。
 2. **[推奨事項]** を表示し、新しいリソースに関してセキュリティ上のリスクが特定されているかどうか、あればどのようなリスクかを確認します。
 3. 環境に新しい VM が追加されると、通常は、最初にオペレーティング システムのみがインストールされます。 リソースの所有者は、ある時点で、これらの VM で使用されるアプリをデプロイする必要が生じることがあります。  理想としては、このワークロードの最終的な目的を理解している必要があります。 たとえば、アプリケーション サーバーかもしれません。 新しいこのワークロードの目的に基づき、適切な**セキュリティ ポリシー**を有効にできます。これは、このワークフローの 3 番目の手順です。
-4. Azure 環境に新しいリソースを追加すると、 **[セキュリティ アラート]** タイルに新しいアラートが表示される可能性があります。 このタイルに新しいアラートがあるかどうかを絶えず確認し、Security Center の推奨事項に従って対処してください。
+4. Azure 環境に新しいリソースを追加すると、 **[セキュリティ アラート]** タイルに新しいアラートが表示される場合があります。 このタイルで新しいアラートを探し、推奨事項に従います。
 
-既存のリソースの状態を定期的に監視し、セキュリティ リスクの原因となった構成の変更、推奨されたベースラインからのズレ、およびセキュリティ アラートを特定する必要もあります。 出発点となるのは、Security Center のダッシュボードです。 ここで、主に 3 つの領域を定期的に確認します。
+また、セキュリティ上のリスクが生じる可能性がある構成の変更、推奨されるベースラインからの逸脱、およびセキュリティ アラートがないか、既存のリソースを定期的に監視する必要があります。 出発点となるのは、Security Center のダッシュボードです。 ここで、主に 3 つの領域を定期的に確認します。
 
 ![Operations](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
@@ -211,11 +205,11 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 セキュリティ操作の一環として、VM へのアクセスを制限する予防措置を採用したり、VM 上で実行されているアプリケーションを制御したりする必要もあります。 Azure VM への受信トラフィックをロックダウンすることで、攻撃にさらされることを減らすと同時に、必要に応じて簡単に VM に接続できるようになります。 VM へのアクセスのセキュリティを強化するには、[Just in Time VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) アクセス機能を使用します。
 
-[アダプティブ アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)を使用すると、Azure 内の VM 上でどのアプリケーションを実行できるかを制御するのに役立ちます。これには、さまざまな利点がありますが、たとえば、マルウェアに対する VM のセキュリティ強化に役立ちます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様がホワイトリスト登録に関する規則を適用するのを支援します。
+[適応型アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)を使用して、Azure に配置された VM で実行できるアプリケーションを制限することができます。 いくつかの利点のうち、これは特にマルウェアから VM を強化することに役立ちます。 機械学習を使用すると、Security Center ではホワイトリスト登録に関する規則の作成を支援するため、VM で実行されているプロセスが分析されます。
 
 
 ## <a name="incident-response"></a>インシデント対応
-脅威が発生すると、Security Center によって検出され、アラートが生成されます。 組織は新しいセキュリティ アラートの有無を監視し、必要に応じて、詳しい調査や攻撃の修復のための対策を講じる必要があります。 Security Center の検出機能に関する詳細については、「 [Azure Security Center の検出機能](security-center-detection-capabilities.md)」を参照してください。
+脅威が発生すると、Security Center によって検出され、アラートが生成されます。 組織は新しいセキュリティ アラートの有無を監視し、必要に応じて、詳しい調査や攻撃の修復のための対策を講じる必要があります。 Security Center の脅威検出のしくみの詳細については、[Azure Security Center の脅威の検出と応答の方法](security-center-alerts-overview.md#detect-threats)に関する記事を参照してください。
 
 この記事は実際のインシデント対応プランの作成支援を目的としていないため、インシデント対応の段階のベースとして、クラウド ライフサイクルにおける Microsoft Azure のセキュリティ レスポンスを使用します。 段階は次の図のとおりです。
 
@@ -243,10 +237,10 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 侵害されたシステムを特定したら、以前に作成したセキュリティ [プレイブック](https://docs.microsoft.com/azure/security-center/security-center-playbooks)を実行できます。 セキュリティ プレイブックとは、選択したアラートから特定のプレイブックがトリガーされると Security Center から実行できるプロシージャの集合です。
 
-ビデオ「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response (Azure Security Center と Microsoft Operations Management Suite をインシデント対応に活用する方法)](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」では、上記の各段階における Security Center の使用方法を理解するのに役立つデモを、いくつかご覧いただけます。
+ビデオ「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」 (Azure Security Center と Microsoft Operations Management Suite をインシデント対応に活用する方法) では、上記の各段階における Security Center の使用方法を理解するのに役立つデモを、いくつかご覧いただけます。
 
 > [!NOTE]
-> インシデント対応に役立つ Security Center 機能を使用する方法の詳細については、「 [Azure Security Center を活用したインシデント対応](security-center-incident-response.md) 」を参照してください。
+> インシデント対応プロセス中に役立つ Security Center 機能の使用方法の詳細については、[Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md)に関するページを参照してください。
 >
 >
 

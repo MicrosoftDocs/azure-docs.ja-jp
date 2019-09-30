@@ -1,27 +1,27 @@
 ---
 title: クイック スタート:音声を翻訳する、C# (UWP) - Speech Service
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、ユーザーの音声をキャプチャし、別の言語に変換してコマンド ラインにテキストを出力する、単純なユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成します。 このガイドは、Windows ユーザー向けに設計されています。
+description: このクイックスタートでは、ユーザーの音声をキャプチャし、別の言語に変換してコマンド ラインにテキストを出力するユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成します。 このガイドは、Windows ユーザー向けに設計されています。
 services: cognitive-services
 author: lisaweixu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 07/23/2019
+ms.date: 08/19/2019
 ms.author: erhopf
 ms.topic: quickstart
-ms.openlocfilehash: 813edbea0548a5cac9532750a450de08bd238028
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: e513cbbc615965ef196a830351aab8ac241c3f20
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640022"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70382647"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-c-uwp"></a>クイック スタート:Speech SDK for C# (UWP) を使用して音声を翻訳する
 
-[音声変換](quickstart-csharp-uwp.md)、[テキスト読み上げ](quickstart-text-to-speech-csharp-uwp.md)、[音声優先仮想アシスタント](quickstart-virtual-assistant-csharp-uwp.md)のクイックスタートも利用できます。
+[音声認識](quickstart-csharp-uwp.md)、[音声合成](quickstart-text-to-speech-csharp-uwp.md)、[音声優先仮想アシスタント](quickstart-virtual-assistant-csharp-uwp.md)のクイックスタートも利用できます。
 
-このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャし、その音声を翻訳して、翻訳されたテキストをコマンド ラインにリアルタイムで表示する、単純なユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成します。 このアプリケーションは、64 ビット Windows 上で実行するように設計されており、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2017 以降を使用してビルドされています。
+このクイックスタートでは、コンピューターのマイクからユーザーの音声をキャプチャし、その音声を翻訳して、翻訳されたテキストをコマンド ラインにリアルタイムで表示するユニバーサル Windows プラットフォーム (UWP) アプリケーションを作成します。 このアプリケーションは、64 ビット Windows 上で実行するように設計されており、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)と Microsoft Visual Studio 2019 を使用して作成されています。
 
 音声翻訳が可能な言語の完全な一覧については、[言語サポート](language-support.md)に関するページを参照してください。
 
@@ -32,7 +32,7 @@ ms.locfileid: "68640022"
 
 このクイック スタートでは以下が必要です。
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 以降
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。
 * Speech Service 用の Azure サブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
@@ -41,37 +41,43 @@ ms.locfileid: "68640022"
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
-1. アプリケーションのユーザー インターフェイスを定義するには、XAML を使用します。 ソリューション エクスプローラーで `MainPage.xaml` を開きます。 デザイナーの XAML ビューで、次の XAML スニペットを `<Grid>` と `</Grid>` の間に挿入します。
+今度は、アプリケーションのユーザー インターフェイスを定義する XAML コードを追加し、C# のコードビハインド実装を追加します。
 
-    [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
+1. **ソリューション エクスプローラー**で、`MainPage.xaml` を開きます。
 
-1. コードビハインド ソース ファイル `MainPage.xaml.cs` を開きます (`MainPage.xaml` の下にグループ化されているものを見つけます)。 その中のすべてのコードを次の内容に置き換えます。
+1. デザイナーの XAML ビューで、次の XAML スニペットを **Grid** タグに挿入します (`<Grid>` と `</Grid>` の間)。
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
+   [!code-xml[UI elements](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml#StackPanel)]
 
-1. このファイル内の `SpeechTranslationFromMicrophone_ButtonClicked` ハンドラーで、文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
+1. **ソリューション エクスプローラー**で、コードビハインドのソース ファイル `MainPage.xaml.cs` を開きます (`MainPage.xaml` にグループ化されています)。
 
-1. `SpeechTranslationFromMicrophone_ButtonClicked` ハンドラーで、文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md)に置き換えます (たとえば、無料試用版サブスクリプションでは `westus`)。
+1. その中のすべてのコードを次のスニペットに置き換えます。
 
-1. プロジェクトのすべての変更を保存します。
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/speech-translation/csharp-uwp/helloworld/MainPage.xaml.cs#code)]
 
-## <a name="build-and-run-the-app"></a>アプリのビルドと実行
+1. このファイルの `SpeechTranslationFromMicrophone_ButtonClicked` ハンドラーから `YourSubscriptionKey` という文字列を見つけて、ご利用のサブスクリプション キーに置き換えます。
 
-1. アプリケーションをビルドします。 メニュー バーから、 **[ビルド]**  >  **[ソリューションのビルド]** を選択します。 これで、コードは、エラーなしでコンパイルされます。
+1. `SpeechTranslationFromMicrophone_ButtonClicked` ハンドラーから `YourServiceRegion` という文字列を見つけて、ご利用のサブスクリプションに関連付けられている[リージョン](regions.md)に置き換えます。 たとえば、無料試用版サブスクリプションの場合は `westus` を使用します。
 
-    ![[ソリューションのビルド] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-uwp-08-build.png "成功したビルド")
+1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択して変更内容を保存します。
 
-1. アプリケーションを起動します。 メニュー バーから、 **[デバッグ]**  >  **[デバッグの開始]** を選択するか、**F5** キーを押します。
+## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 
-    ![[デバッグの開始] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-uwp-09-start-debugging.png "アプリのデバッグの開始")
+アプリケーションをビルドしてテストする準備が整いました。
 
-1. ウィンドウがポップアップ表示されます。 **[Enable Microphone]** を選択して、ポップアップ表示されるアクセス許可要求を確認します。
+1. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してアプリケーションをビルドします。 これで、コードは、エラーなしでコンパイルされます。
 
-    ![アクセス許可要求のスクリーンショット](media/sdk/qs-csharp-uwp-10-access-prompt.png "アプリのデバッグの開始")
+1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、アプリケーションを起動します。 **[helloworld]** ウィンドウが表示されます。
 
-1. **[Speech recognition with microphone input]** を選択し、デバイスのマイクに向かって英語のフレーズを話します。 音声が Speech サービスに送信されてテキストに変換され、ウィンドウに表示されます。
+   ![サンプル UWP 翻訳アプリケーション (C#) - クイックスタート](media/sdk/qs-translate-speech-uwp-helloworld-window.png)
 
-    ![音声認識ユーザー インターフェイスのスクリーンショット](media/sdk/qs-translate-csharp-uwp-ui-result.png)
+1. **[Enable Microphone]** を選択し、アクセス許可要求がポップアップ表示されたら、 **[はい]** を選択します。
+
+   ![マイクへのアクセス許可要求](media/sdk/qs-csharp-uwp-10-access-prompt.png)
+
+1. **[Translate speech from the microphone input]** を選択し、デバイスのマイクに向かって英語のフレーズや文章を話します。 その音声が Speech Services に転送されて別の言語 (このケースではドイツ語) のテキストに翻訳されます。 翻訳済みのテキストが Speech Services からアプリケーションに返されてウィンドウに表示されます。
+
+   ![音声翻訳ユーザー インターフェイス](media/sdk/qs-translate-csharp-uwp-ui-result.png)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -80,5 +86,4 @@ ms.locfileid: "68640022"
 
 ## <a name="see-also"></a>関連項目
 
-- [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
-- [言語モデルをカスタマイズする](how-to-customize-language-model.md)
+- [Custom Speech 用のモデルをトレーニングする](how-to-custom-speech-train-model.md)

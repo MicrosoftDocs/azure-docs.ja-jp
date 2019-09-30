@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: derek1ee, LADocs
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: 0bfa98396ee3afb80b486a5a17959664dfbe603c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b51215e0cf48df2d3cd9df85a3d4c5641a17215
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602122"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390801"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Azure Logic Apps 内でインライン コードを使用してコード スニペットを追加および実行する
 
@@ -23,10 +23,11 @@ ms.locfileid: "65602122"
 * JavaScript 内で実行する。 追加の言語がまもなく提供される。
 * 実行の完了に要する時間が 5 秒以内。
 * 処理するデータのサイズが最大 50 MB。
+* [**変数**アクション](../logic-apps/logic-apps-create-variables-store-values.md)の操作は必要なし (未サポート)。
 * 使用する Node.js のバージョンが 8.11.1 である。 詳細については、「[標準ビルトイン オブジェクト](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects)」を参照してください。 
 
   > [!NOTE]
-  > require() 関数は、JavaScript を実行する**インライン コード** アクションではサポートされていません。
+  > `require()` 関数は、JavaScript を実行する**インライン コード** アクションではサポートされていません。
 
 このアクションでは、コード スニペットが実行され、そのスニペットから **[結果]** という名前のトークンとして出力が返されます。このトークンは、ロジック アプリ内の後続のアクションで使用できます。 コードの関数を作成する別のシナリオでは、ロジック アプリ内で [Azure 関数の作成および呼び出し](../logic-apps/logic-apps-azure-functions.md)を試みてください。
 
@@ -43,6 +44,9 @@ ms.locfileid: "65602122"
    このトピックのサンプルのロジック アプリでは、次の Office 365 Outlook トリガーが使用されます。 **[When a new email arrives (新しい電子メールが届いたとき)]**
 
 * ロジック アプリにリンクされた[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)。
+
+  > [!NOTE]
+  > ユース ケースまたはシナリオに適した統合アカウントを使用していることを確認します。 たとえば、[Free レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)の統合アカウントは、運用環境のシナリオではなく探索的なシナリオとワークロードのみを対象としており、用途とスループットが制限されており、サービス レベル アグリーメント (SLA) ではサポートされていません。 他のレベルではコストが発生しますが、SLA のサポートが含まれ、スループットが向上し、上限も高くなります。 統合アカウントの[レベル](../logic-apps/logic-apps-pricing.md#integration-accounts)、[価格](https://azure.microsoft.com/pricing/details/logic-apps/)、および[制限](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)の詳細を確認してください。
 
 ## <a name="add-inline-code"></a>インライン コードを追加する
 
@@ -127,7 +131,7 @@ ms.locfileid: "65602122"
 
 これらのサブプロパティの詳細を次の表に示します。
 
-| プロパティ | Type | 説明 |
+| プロパティ | 種類 | 説明 |
 |----------|------|-------|
 | `actions` | オブジェクト コレクション | コード スニペットを実行する前に実行したアクションの結果オブジェクトです。 各オブジェクトには、*key-value* ペアが含まれています。ここで、key はアクション名、value は `@actions('<action-name>')` を含む [actions() 関数](../logic-apps/workflow-definition-language-functions-reference.md#actions)の呼び出しに相当します。 アクションの名前で使用されるアクション名は、基盤となるワークフロー定義で使用されるアクション名と同じです。アクション名内のスペース (" ") がアンダー スコア (_) で置き換えられています。 このオブジェクトにより、現在実行されているワークフロー インスタンスからアクション プロパティの値にアクセスできます。 |
 | `trigger` | Object | トリガーの結果オブジェクトで、 [trigger() 関数](../logic-apps/workflow-definition-language-functions-reference.md#trigger)の呼び出しと同じです。 このオブジェクトにより、現在実行されているワークフロー インスタンスからトリガー プロパティの値にアクセスできます。 |

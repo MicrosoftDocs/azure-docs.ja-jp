@@ -8,13 +8,13 @@ author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 9cce809401a26eb2b45b11303afcd4818a1f950b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 9437f43a12204c9a08e1c0da11fc737e8c026c80
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009955"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173398"
 ---
 # <a name="tutorial-create-a-spoke-virtual-network-with-terraform-in-azure"></a>チュートリアル:Azure で Terraform を使用してスポーク仮想ネットワークを作成する
 
@@ -66,7 +66,7 @@ ms.locfileid: "58009955"
 
 1. 以下のコードをエディターに貼り付けます。
 
-    ```JSON
+    ```hcl
     locals {
       spoke1-location       = "CentralUS"
       spoke1-resource-group = "spoke1-vnet-rg"
@@ -188,7 +188,7 @@ ms.locfileid: "58009955"
     
 1. 以下のコードをエディターに貼り付けます。
     
-    ```JSON
+    ```hcl
     locals {
       spoke2-location       = "CentralUS"
       spoke2-resource-group = "spoke2-vnet-rg"

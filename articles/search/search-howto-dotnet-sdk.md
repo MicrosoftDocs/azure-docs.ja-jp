@@ -2,19 +2,19 @@
 title: .NET アプリケーションから Azure Search を使用する方法 - Azure Search
 description: C# と .NET SDK使用して、.NET アプリケーションで Azure Search を使用する方法について説明します。 コード ベースのタスクには、サービスへの接続、コンテンツのインデックス作成、およびインデックスの照会が含まれます。
 author: brjohnstmsft
-manager: jlembicz
+manager: nitinme
 services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: brjohnst
-ms.openlocfilehash: 9f0af40d442747181636b50612f7d2162ead6a86
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 3f167ee082b751f6bd686c0543db6a262615e486
+ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450013"
+ms.lasthandoff: 09/01/2019
+ms.locfileid: "70208247"
 ---
 # <a name="how-to-use-azure-search-from-a-net-application"></a>.NET アプリケーションから Azure Search を使用する方法
 
@@ -579,7 +579,7 @@ SDK では、ドキュメントのシリアル化と逆シリアル化に JSON.N
 * コードのプロパティ名とインデックスのフィールド名をマップする。
 * ドキュメント フィールドへのプロパティのマッピングに使用できるカスタム属性を作成する。
 
-Azure Search .NET SDK のユニット テストにカスタム シリアル化を実装する例については、GitHub を参照してください。 手始めとしては、[このフォルダー](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Search/Search.Tests/Tests/Models)が適しています。 カスタム シリアル化のテストに使用されるクラスが含まれます。
+Azure Search .NET SDK のユニット テストにカスタム シリアル化を実装する例については、GitHub を参照してください。 手始めとしては、[このフォルダー](https://github.com/Azure/azure-sdk-for-net/tree/4f6f4e4c90200c1b0621c4cead302a91e89f2aba/sdk/search/Microsoft.Azure.Search/tests/Tests/Models)が適しています。 カスタム シリアル化のテストに使用されるクラスが含まれます。
 
 ### <a name="searching-for-documents-in-the-index"></a>インデックス内のドキュメントの検索
 サンプル アプリケーションの最後の手順として、インデックス内のいくつかのドキュメントを検索します。

@@ -15,16 +15,16 @@ ms.date: 07/23/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3bdf9210eb88b2057cf861b208f19d3e6f562e9a
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 8ebf524d932322fa08729f229a451afe656900d5
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414796"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061403"
 ---
 # <a name="mobile-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すモバイル アプリ - コード構成
 
-アプリケーションを作成した後に、アプリケーション登録時に取得したアプリケーションのパラメーターからコードを構成する方法について説明します。 モバイル アプリケーションには、その構築に使用されるフレームワークへの適合に関係する複雑な仕様もあります。
+アプリケーションを作成した後、アプリ登録パラメーターを使用してコードを構成する方法を確認します。 モバイル アプリケーションには、その構築に使用されるフレームワークへの適合に関係する複雑な仕様もあります。
 
 ## <a name="msal-libraries-supporting-mobile-apps"></a>モバイル アプリをサポートする MSAL ライブラリ
 
@@ -38,7 +38,7 @@ ms.locfileid: "68414796"
 
 ## <a name="configuring-the-application"></a>アプリケーションの構成
 
-モバイル アプリケーションでは MSAL の `PublicClientApplication` クラスが使用されます。 これをインスタンス化する方法を次に示します。
+モバイル アプリケーションでは `PublicClientApplication` クラスが使用されます。 これをインスタンス化する方法を次に示します。
 
 ### <a name="android"></a>Android
 
@@ -68,7 +68,7 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 
 #### <a name="instantiating-the-application"></a>アプリケーションをインスタンス化する
 
-Xamarin または UWP で最も簡単にアプリケーションをインスタンス化する方法は次のとおりです。この中の `ClientId` は、登録されたアプリケーションの GUID です。
+Xamarin または UWP で最も簡単にアプリケーションをインスタンス化する方法は次のとおりです。ここでの `ClientId` は、登録されたアプリの GUID です。
 
 ```CSharp
 var app = PublicClientApplicationBuilder.Create(clientId)
@@ -128,7 +128,7 @@ Xamarin Android には次の仕様があります。
 
 #### <a name="uwp-specific-considerations"></a>UWP 固有の考慮事項
 
-UWP では企業ネットワークを使用できます。 UWP の仕様については、「[MSAL.NET でのユニバーサル Windows プラットフォームに固有の考慮事項](msal-net-uwp-considerations.md)」を参照してください。
+UWP では企業ネットワークを使用できます。 UWP での MSAL ライブラリの使用に関する追加情報については、「[MSAL.NET でのユニバーサル Windows プラットフォームに固有の考慮事項](msal-net-uwp-considerations.md)」を参照してください。
 
 ## <a name="configuring-the-application-to-use-the-broker"></a>ブローカーを使用する場合のアプリケーションの構成
 
@@ -186,7 +186,7 @@ public override bool OpenUrl(UIApplication app, NSUrl url,
 
 #### <a name="step-3-set-a-uiviewcontroller"></a>手順 3:UIViewController() を設定する
 
-通常 Xamarin.iOS ではオブジェクト ウィンドウを設定する必要はありませんが、ここではブローカーからの応答を送受信するために行います。 引き続き `AppDelegate.cs` で、ViewController を設定します。
+Xamarin.iOS では、通常はオブジェクト ウィンドウを設定する必要はありませんが、ここではブローカーからの応答を送受信するために行います。 引き続き `AppDelegate.cs` で、ViewController を設定します。
 
 次の手順でオブジェクト ウィンドウを設定します。
 

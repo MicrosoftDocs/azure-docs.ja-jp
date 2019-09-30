@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 395bb01247efde82dbb39733c1915bc989b1729d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68402769"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960425"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Apache Kafka に接続する
 
@@ -252,7 +252,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 3. Kafka 構成を表示するには、上部中央の __[Configs (構成)]__ を選択します。
 
-    ![Kafka の構成リンク](./media/apache-kafka-connect-vpn-gateway/select-kafka-config.png)
+    ![Kafka の構成リンク](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
@@ -274,7 +274,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 8. 構成を保存するには、 __[Save (保存)]__ ボタンを使用します。 変更を説明するテキスト メッセージを入力します。 変更が保存されたら、 __[OK]__ を保存します。
 
-    ![構成を保存するボタン](./media/apache-kafka-connect-vpn-gateway/save-button.png)
+    ![構成を保存するボタン](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. Kafka の再起動時にエラーが発生しないようにするため、 __[Service Actions (サービス アクション)__ ] ボタンを使用して __[Turn On Maintenance Mode (メンテナンス モードの有効化)]__ を選択します。 [OK] を選択して、この操作を完了します。
 
@@ -282,7 +282,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 10. Kafka を再起動するには、 __[Restart (再起動)]__ ボタンをクリックし、 __[Restart All Affected (影響を受けるものをすべて再起動)]__ を選択します。 再起動を確認し、操作が完了したら __[OK]__ ボタンを使用します。
 
-    ![[Restart All Affected (影響を受けるものをすべて再起動)] が強調表示されている [Restart (再起動)] ボタン](./media/apache-kafka-connect-vpn-gateway/restart-button.png)
+    ![[Restart All Affected (影響を受けるものをすべて再起動)] が強調表示されている [Restart (再起動)] ボタン](./media/apache-kafka-connect-vpn-gateway/restart-required-button.png)
 
 11. メンテナンス モードを無効にするには、 __[Service Actions (サービス アクション)]__ ボタンをクリックし、 __[Turn Off Maintenance Mode (メンテナンス モードの無効化)]__ を選択します。 **[OK]** を選択して、この操作を完了します。
 

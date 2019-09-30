@@ -17,12 +17,12 @@
           href: quickstarts/get-started-unity-android.md
         - name: iOS
           href: quickstarts/get-started-unity-ios.md
-    - name: iOS アプリの作成
-      href: quickstarts/get-started-ios.md
-    - name: Android アプリの作成
-      href: quickstarts/get-started-android.md
     - name: HoloLens アプリの作成
       href: quickstarts/get-started-hololens.md
+    - name: Android アプリの作成
+      href: quickstarts/get-started-android.md
+    - name: iOS アプリの作成
+      href: quickstarts/get-started-ios.md
     - name: Xamarin アプリの作成
       items:
         - name: Android
@@ -62,7 +62,7 @@
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: 概念
   items:
-    - name: Authentication
+    - name: 認証
       href: concepts/authentication.md
     - name: アンカーのリレーションシップ
       href: concepts/anchor-relationships-way-finding.md
@@ -84,6 +84,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: リソース
   items:
+    - name: Azure Mixed Reality Resource Management REST API
+      href: 'https://docs.microsoft.com/en-us/rest/api/mixedreality/'
     - name: FAQ
       href: spatial-anchor-faq.md
     - name: 製品フィードバックの提供

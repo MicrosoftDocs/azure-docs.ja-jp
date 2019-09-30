@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 90190f426419e65bd580b9004ae76a2c6b0c12e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7c147d99eaabee70316521d1f2bdc41933162ab1
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463152"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69542612"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Azure Portal での Media Encoder Standard を使用した資産のエンコード
 
@@ -28,7 +28,7 @@ ms.locfileid: "61463152"
 > 
 > 
 
-Azure Media Services の代表的な用途の 1 つが、クライアントに対するアダプティブ ビットレート ストリーミング配信です。 Media Services は、Apple HTTP ライブ ストリーミング (HLS)、Microsoft Smooth Streaming、および Dynamic Adaptive Streaming over HTTP (DASH、MPEG-DASH とも呼ばれます) のアダプティブ ビットレート ストリーミング テクノロジをサポートしています。 アダプティブ ビットレート ストリーミング用にビデオを準備するには、最初にソース ビデオをマルチビットレートのファイルとしてエンコードします。 ビデオをエンコードするには、Azure Media Encoder Standard を使用できます。  
+Azure Media Services の代表的な用途の 1 つが、クライアントに対するアダプティブ ビットレート ストリーミング配信です。 Media Services は、Apple HTTP ライブ ストリーミング (HLS)、Microsoft Smooth Streaming、および Dynamic Adaptive Streaming over HTTP (DASH、MPEG-DASH とも呼ばれます) のアダプティブ ビットレート ストリーミング テクノロジをサポートしています。 アダプティブ ビットレート ストリーミング用にビデオを準備するには、最初にソース ビデオをマルチビットレートのファイルとしてエンコードします。 Media Encoder Standard を使用してビデオをエンコードできます。  
 
 Media Services では、ダイナミック パッケージが使用できます。 ダイナミック パッケージを使用すると、HLS、Smooth Streaming、および MPEG-DASH で、マルチビットレート MP4 を配信できます。これらのストリーミング形式でパッケージを再作成する必要はありません。 ダイナミック パッケージを使用すると、単一のストレージ形式のファイルに対して保存と支払を行うことができます。 Media Services は、クライアントの要求に応じて適切な応答を作成して返します。
 

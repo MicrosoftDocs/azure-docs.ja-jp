@@ -24,7 +24,7 @@
     - name: Ruby アプリの作成
       href: quickstart-ruby.md
     - name: カスタム コンテナーの実行
-      href: quickstart-docker-go.md
+      href: quickstart-docker.md
     - name: 複数コンテナー アプリの作成
       href: quickstart-multi-container.md
 - name: チュートリアル
@@ -204,7 +204,7 @@
     - name: クックブック
       items:
         - name: 参照アーキテクチャ
-          href: /azure/architecture/reference-architectures/app-service-web-app/
+          href: /azure/architecture/reference-architectures/app-service-web-app/basic-web-app
         - name: デプロイ スクリプト
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: トラブルシューティング

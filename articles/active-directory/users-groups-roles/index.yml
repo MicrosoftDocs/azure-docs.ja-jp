@@ -1,46 +1,83 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Enterprise ユーザー管理のドキュメント - Azure Active Directory
+summary: グループや管理者ロールの割り当てなどの Azure AD ユーザー管理サービスは、優先順位の高いタスクを迅速に完了する役に立ちます。 ライセンスの割り当て、グループまたはユーザーへのアプリケーション アクセスの割り当て、アクセス許可の委任を行って、ID 管理タスクを分散させます。
 metadata:
-  document_id: null
   title: Azure Active Directory のユーザー、グループ、ロール、ライセンスに関するドキュメント
-  description: ユーザー、グループ、ロール、ライセンスを使用して、テナントの Azure クラウド サービスへの認証を管理する方法について説明します。
+  description: ユーザー、グループ、ロール、ライセンスを使用して、組織の Azure クラウド サービスへの認証を管理する方法について説明します。
   services: active-directory
-  ms.subservice: users-groups-roles
-  author: curtand
-  manager: mtillman
   ms.service: active-directory
+  ms.subservice: users-groups-roles
+  manager: mtillman
   ms.topic: landing-page
-  ms.date: 01/31/2019
+  ms.date: 08/28/2019
+  author: curtand
   ms.author: curtand
-abstract:
-  description: グループや管理者ロールの割り当てなどの Azure AD ユーザー管理ツールは、優先順位の高いタスクをより迅速に完了して成長に対応する役に立ちます。 ライセンスまたは SaaS アプリへのアクセスを個人ではなくグループに割り当てることができるほか、アクセス許可を委任して Azure AD ID 管理のオーバーヘッドを分散することができます。
-sections:
-  - title: 5 分間のクイックスタート
-    items:
-      - type: paragraph
-        text: Azure Active Directory の管理ツールを使用する方法について説明します
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Azure AD へのユーザーの追加</a>
-          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">ユーザーへのライセンスの割り当て</a>
-          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Azure AD Premium へのサインアップ</a>
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-expiration">ユーザーが作成したグループの有効期限の設定</a>
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-quickstart-naming-policy">ユーザーが作成したグループの名前付けポリシーの設定</a>
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure Active Directory でグループを動的に設定する方法について説明します
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/users-groups-roles/groups-dynamic-tutorial">動的に設定されるグループの作成</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: リファレンスのリンク
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0">Azure AD PowerShell コマンドレット</a></p>'
+  ms.openlocfilehash: 4689a573bf8d58aa9734af97ea66f78ab4e5707a
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70126940"
+landingContent:
+- title: ユーザー、グループ、ロール、ライセンスについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 大規模組織のユーザー、グループ、ライセンス、ロール
+      url: directory-overview-user-model.md
+    - text: カスタム ロールの概要
+      url: roles-custom-overview.md
+  - linkListType: concept
+    links:
+    - text: 管理の委任
+      url: roles-concept-delegation.md
+    - text: Azure RBAC ロールと Azure AD 管理者ロールの比較
+      url: https://docs.microsoft.com/en-us/azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ユーザーの追加
+      url: https://review.docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - text: グループの有効期限ポリシーの設定
+      url: groups-quickstart-expiration.md
+    - text: ユーザーへのライセンスの割り当て
+      url: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+- title: Azure AD 管理者ロールを割り当てる
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell を使用してロールを割り当てる
+      url: roles-assign-powershell.md
+    - text: Graph API を使用してロールを割り当てる
+      url: roles-assign-graph.md
+    - text: タスク別にロールを委任する
+      url: roles-delegate-by-task.md
+    - text: アプリケーション管理を委任する
+      url: roles-delegate-app-roles.md
+- title: ライセンスを割り当てる
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ユーザーのグループにライセンスを付与する
+      url: licensing-groups-assign.md
+    - text: PowerShell でのライセンス付与の例
+      url: licensing-ps-examples.md
+- title: グループの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 動的グループの作成
+      url: groups-create-rule.md
+    - text: PowerShell でのグループ設定
+      url: groups-settings-v2-cmdlets.md
+    - text: グループの名前付けポリシーの設定
+      url: groups-naming-policy.md
+- title: ドメインの追加
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: カスタム ドメイン名を追加する
+      url: https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - text: カスタム ドメイン名の管理
+      url: domains-manage.md

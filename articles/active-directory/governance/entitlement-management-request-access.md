@@ -16,12 +16,12 @@ ms.date: 04/19/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64a81a871d811c68f5e92822ca88446966be4d5c
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b5be74b0734a27b02030e2c6995b43ef0c02162
+ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678096"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69562132"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD のエンタイトルメント管理 (プレビュー) でアクセス パッケージへのアクセスを要求する
 
@@ -29,6 +29,10 @@ ms.locfileid: "68678096"
 > Azure Active Directory (Azure AD) のエンタイトルメント管理は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
+Azure AD のエンタイトルメント管理では、アクセス パッケージにより、そのアクセス パッケージの有効期間中のアクセスを自動的に管理するリソースとポリシーの 1 回限りのセットアップが可能になります。 
+
+アクセス パッケージ マネージャーは、アクセス パッケージにアクセスするにはユーザーの承認を必要とするポリシーを構成できます。 アクセス パッケージへのアクセスが必要なユーザーは、アクセスを取得するための要求を送信できます。 この記事では、アクセス要求を送信する方法について説明します。
 
 ## <a name="sign-in-to-the-my-access-portal"></a>マイ アクセス ポータルにサインインする
 

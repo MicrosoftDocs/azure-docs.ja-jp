@@ -1,5 +1,5 @@
 ---
-title: 変更、アプリのトレーニング、Go - LUIS
+title: クイック スタート:変更、アプリのトレーニング、Go - LUIS
 titleSuffix: Azure Cognitive Services
 description: この Go 言語クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 author: diberry
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/29/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: 690ea26cb5c6effda71ec1d8236c6dabd02f02ee
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 84704e000688c6681773b14542d80a1046228c3f
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560552"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307621"
 ---
 # <a name="quickstart-change-model-using-go"></a>クイック スタート: Go を使ってモデルを変更する
 

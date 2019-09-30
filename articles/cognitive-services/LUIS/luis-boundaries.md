@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 09/09/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 3fd593ff199ff87b1c69e1097852a81a21adc1dd
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: afa6c5e40918906eb9fe0e40ed633715e3f2741d
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883954"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844803"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS モデルとキーの境界
 LUIS には、複数の境界領域があります。 1 つは[モデル境界](#model-boundaries)で、これにより LUIS で意図、エンティティ、および機能が制御されます。 2 つ目の領域は、キーの種類に基づく[クォータ制限](#key-limits)です。 3 つ目の境界領域は、LUIS Web サイトを制御するための[キーボードの組み合わせ](#keyboard-controls)です。 4 つ目の領域は、LUIS オーサリング Web サイトと LUIS [エンドポイント](luis-glossary.md#endpoint) API の間の[世界リージョン マッピング](luis-reference-regions.md)です。 
@@ -29,6 +29,7 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 |領域|制限|
 |--|:--|
 | [アプリ名][luis-get-started-create-app] | \* 既定の最大文字数 |
+| [アプリケーション]| Azure オーサリング リソースごとに 500 アプリケーション |
 | [バッチ テスト][batch-testing]| 10 データセット、データセットあたり 1000 発話|
 | 明示的なリスト | アプリケーションあたり 50|
 | 外部エンティティ | 無制限 |
@@ -44,7 +45,7 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 | [ロール](luis-concept-roles.md)|アプリケーションあたり 300 の役割。 エンティティあたりの 10 の役割|
 | [発話][utterances] | 500 文字|
 | [発話][utterances] | アプリケーションあたり 15,000 - 意図あたりの発話の数に制限はありません|
-| [バージョン](luis-concept-version.md)| 制限なし |
+| [バージョン](luis-concept-version.md)| アプリケーションごとに 100 バージョン |
 | [バージョン名][luis-how-to-manage-versions] | 10 文字。英数字とピリオド (.) に限定 |
 
 \* 既定の最大文字数: 50 文字。 
@@ -64,19 +65,24 @@ LUIS には、複数の境界領域があります。 1 つは[モデル境界](
 
 Language Understand には、作成用に 1 つの種類と、予測エンドポイントに対するクエリの実行用に 1 つの種類という、個別のキーがあります。 キーの種類の違いの詳細については、「[LUIS のオーサリング キーとクエリ予測エンドポイント キー](luis-concept-keys.md)」を参照してください。
 
-## <a name="key-limits"></a>キーの制限
+<a name="key-limits"></a>
 
-オーサリング キーでは、オーサリングとエンドポイントで制限が異なります。 LUIS サービス エンドポイント キーは、エンドポイント クエリに対してのみ有効です。
+## <a name="resource-key-limits"></a>リソースキーの制限
 
+リソース キーでは、オーサリングとエンドポイントで制限が異なります。 LUIS 予測クエリ エンドポイント キーは、エンドポイント クエリに対してのみ有効です。 
 
-|キー|Authoring|エンドポイント|目的|
+* Azure オーサリング リソースごとに 500 アプリケーション 
+
+|Key|Authoring|エンドポイント|目的|
 |--|--|--|--|
-|Language Understanding オーサリング/スターター|100 万/月、5/秒|1,000/月、5/秒|ご自身の LUIS アプリの作成|
-|Language Understanding [サブスクリプション][pricing] - F0 - Free レベル |無効|10,000/月、5/秒|ご自身の LUIS エンドポイントへのクエリの実行|
-|Language Understanding [サブスクリプション][pricing] - S0 - Basic レベル|無効|50/秒|ご自身の LUIS エンドポイントへのクエリの実行|
-|Cognitive Service [サブスクリプション][pricing] - S0 - Standard レベル|無効|50/秒|ご自身の LUIS エンドポイントへのクエリの実行|
-|[感情分析の統合](luis-how-to-publish-app.md#enable-sentiment-analysis)|無効|課金なし|キー フレーズ データの抽出など、センチメント情報の追加 |
-|[音声統合](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|無効|5\.50 米国ドル/1,000 エンドポイント要求|音声発話をテキスト発話に変換して、LUIS 結果を返す|
+|スターター|100 万/月、5/秒|1,000/月、5/秒|ご自身の LUIS アプリの作成|
+|F0 - Free レベル |100 万/月、5/秒|10,000/月、5/秒|ご自身の LUIS エンドポイントへのクエリの実行|
+|S0 - Basic レベル|-|50/秒|ご自身の LUIS エンドポイントへのクエリの実行|
+|S0 - Standard レベル|-|50/秒|ご自身の LUIS エンドポイントへのクエリの実行|
+|[感情分析の統合](luis-how-to-publish-app.md#enable-sentiment-analysis)|-|-|キー フレーズ データ抽出を含むセンチメント情報は、他の Azure リソースを必要とせずに追加できます。 |
+|[音声統合](../speech-service/how-to-recognize-intents-from-speech-csharp.md)|-|単位原価あたり 1,000 エンドポイント要求|音声発話をテキスト発話に変換して、LUIS 結果を返す|
+
+価格に関して詳しくは、[こちら][pricing]をご覧ください。
 
 ## <a name="keyboard-controls"></a>キーボード コントロール
 

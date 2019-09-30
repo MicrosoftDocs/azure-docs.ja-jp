@@ -4,9 +4,9 @@ description: このトピックでは、Azure Notification Hubs でスケジュ�
 services: notification-hubs
 documentationcenter: .net
 keywords: プッシュ通知,プッシュ通知,プッシュ通知のスケジュール設定
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: 6b718c75-75dd-4c99-aee3-db1288235c1a
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: 94af0dede158c091ae64ae317db3c3153063ce79
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: ef5eedaa903480ae670f9bc48d0af89744a99d22
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68347347"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213006"
 ---
 # <a name="how-to-send-scheduled-notifications"></a>方法:スケジュール設定された通知を送信する
 

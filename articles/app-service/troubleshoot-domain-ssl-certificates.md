@@ -4,23 +4,22 @@ description: Azure App Serviceでのドメインと SSL 証明書に関する問
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 0b6bdc884107a522c81d100c0a05018cbc9d0a70
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: a6c3b8485a3243d7c89ab409a2fb83b1b045c9ba
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718272"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121993"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Azure App Serviceでのドメインと SSL 証明書に関する問題のトラブルシューティング
 
@@ -191,7 +190,7 @@ Azure Portal から [Azure App Service 証明書](./web-sites-purchase-ssl-web-s
 App Service 証明書が更新されましたが、その App Service 証明書を使用するアプリが、まだ古い証明書を使用しています。 また、HTTPS プロトコルが必要であるという警告が表示されます。
 
 #### <a name="cause"></a>原因 
-Azure App Service は 8 時間ごとにバックグラウンド ジョブを実行し、変更があった場合は証明書リソースを同期します。 証明書の交換や更新を行うときには、アプリケーションが今までどおり古い証明書を取得していて、新しく更新された証明書を取得していないことがあります。 証明書リソースを同期するジョブがまだ実行されていないことが理由です。 
+証明書は 48 時間以内に App Service によって自動的に同期されます。 証明書の交換や更新を行うときには、アプリケーションが今までどおり古い証明書を取得していて、新しく更新された証明書を取得していないことがあります。 証明書リソースを同期するジョブがまだ実行されていないことが理由です。 [同期] をクリックします。同期操作によって、アプリにダウンタイムを発生させることなく、App Service 内の証明書に対するホスト名のバインドが自動的に更新されます。
  
 #### <a name="solution"></a>解決策
 

@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 02/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: ca636079439f811a887d16b627473e7d73930799
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227165"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065707"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
-Azure Active Directory (Azure AD) B2C は、企業-消費者間の ID 管理サービスです。 このサービスを使用すると、ユーザーが Web、デスクトップ、モバイル、またはシングルページ アプリケーションと安全に対話する方法を、カスタマイズしたり制御したりできます。 Azure AD B2C を使用して、ユーザーは、サインアップ、サインイン、パスワードのリセット、およびプロファイルの編集を行うことができます。 Azure AD B2C では、OpenID Connect プロトコルと OAuth 2.0 プロトコルの一形式が実装されます。 これらのプロトコルの実装で重要な点は、リソースへのセキュリティ保護されたアクセスを提供できるようにする、セキュリティ トークンとそのクレームです。
+Azure Active Directory B2C (Azure AD B2C) は、企業-消費者間の ID 管理サービスです。 このサービスを使用すると、ユーザーが Web、デスクトップ、モバイル、またはシングルページ アプリケーションと安全に対話する方法を、カスタマイズしたり制御したりできます。 Azure AD B2C を使用して、ユーザーは、サインアップ、サインイン、パスワードのリセット、およびプロファイルの編集を行うことができます。 Azure AD B2C では、OpenID Connect プロトコルと OAuth 2.0 プロトコルの一形式が実装されます。 これらのプロトコルの実装で重要な点は、リソースへのセキュリティ保護されたアクセスを提供できるようにする、セキュリティ トークンとそのクレームです。
 
 "*ユーザー体験*" は、Azure AD B2C とやり取りするユーザーとアプリケーションの動作を制御するポリシーが指定されている要求です。 Azure AD B2C では、ユーザー体験を定義するために 2 つのパスを使用できます。
 

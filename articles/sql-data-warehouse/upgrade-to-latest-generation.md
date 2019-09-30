@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: a8bd260db7a141ce845ce7fb5b7e10f642907b82
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2864e3d29a0beccd2ef52732a85ea1495e1efab8
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310325"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575291"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>SQL Data Warehouse をアップグレードしてパフォーマンスを最適化する
 
@@ -185,7 +185,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. 復元ポイントを作成する対象の SQL データ ウェアハウスに移動します。
+2. 復元ポイントを作成する対象の SQL Data Warehouse に移動します。
 
 3. [概要] セクションの上部にある **[+ 新しい復元ポイント]** を選択します。
 
@@ -198,7 +198,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Azure portal を使用してアクティブまたは一時停止中のデータベースを復元する
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. 復元元の SQL データ ウェアハウスに移動します。
+2. 復元元の SQL Data Warehouse に移動します。
 3. [概要] セクションの上部にある **[復元]** を選択します。
 
     ![ 復元の概要](./media/sql-data-warehouse-restore-database-portal/restoring_0.png)

@@ -30,6 +30,17 @@
     - name: Index
       displayName: 'list, examples'
       href: ./samples/index.md
+    - name: カナダ連邦の PBMM
+      items:
+        - name: 概要
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/index.md
+        - name: コントロール マッピング
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/control-mapping.md
+        - name: デプロイ手順
+          displayName: 'standards, canada, federal, pbmm'
+          href: ./samples/canada-federal-pbmm/deploy.md
     - name: CIS Microsoft Azure Foundations Benchmark
       items:
         - name: 概要
@@ -99,6 +110,17 @@
         - name: デプロイ手順
           displayName: 'standards, Payment Card Industry Data Security Standard'
           href: ./samples/pci-dss-3.2.1/deploy.md
+    - name: SWIFT CSP v2020
+      items:
+        - name: 概要
+          displayName: 'standards, SWIFT CSP-CSCF v2020'
+          href: ./samples/swift-2020/index.md
+        - name: コントロール マッピング
+          displayName: 'standards, SWIFT CSP-CSCF v2020'
+          href: ./samples/swift-2020/control-mapping.md
+        - name: デプロイ手順
+          displayName: 'standards, SWIFT CSP-CSCF v2020'
+          href: ./samples/swift-2020/deploy.md
     - name: UK OFFICIAL および UK NHS
       items:
         - name: 概要
@@ -148,9 +170,15 @@
     - name: PowerShell を使用した割り当ての管理
       displayName: 'create, update, remove'
       href: ./how-to/manage-assignments-ps.md
+    - name: PowerShell を使ってインポートとエクスポートを行う
+      displayName: 'import, export, folders'
+      href: ./how-to/import-export-ps.md
     - name: ポータルからの既存の割り当ての更新
       displayName: 'lock, errors'
       href: ./how-to/update-existing-assignments.md
+    - name: ブループリント オペレーター用の環境を構成する
+      displayName: 'rbac, user-assigned, managed, identity, management group'
+      href: ./how-to/configure-for-blueprint-operator.md
     - name: ブループリントをコードとして管理する (コミュニティ)
       href: 'https://github.com/Azure/azure-blueprints/blob/master/README.md'
 - name: トラブルシューティング

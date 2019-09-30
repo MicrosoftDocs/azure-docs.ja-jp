@@ -4,23 +4,22 @@ description: Azure App Service の Web Apps 機能の構成および管理の問
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: ibiza
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 6f86a8465bcbd3d88ffb7909cac53c3fd38c3af6
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: 68d0f693d0cc7d8db8e6f697ff8907400a7aca50
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489432"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121330"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -72,7 +71,7 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
     * Value = *目的のタイム ゾーン*
 3. **[保存]** を選択します。
 
-指定可能な値については、[既定のタイム ゾーン](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)の記事の**タイムゾーン**の列を参照してください。
+Windows で実行される App Service の場合、指定可能な値については、[既定のタイム ゾーン](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)の記事の**タイムゾーン**の列を参照してください。 Linux で実行される App Service の場合、タイム ゾーン値として [TZ データベース名](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)を設定します。 TZ データベース名の例を挙げると、America/Adak のようになります。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な Web ジョブがときどき失敗する理由はなんですか?
 
@@ -97,7 +96,7 @@ Azure アプリ Web サイトへの着信呼び出し用 IP アドレスを専�
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>他の場所でホストされている web サイトなど、Azure の外部で使用できるように App Service 証明書をエクスポートできますか? 
 
-App Service 証明書は、Azure リソースと見なされます。 Azure サービスの外部で使用することは意図されていません。 Azure の外部で使用するようにエクスポートすることはできません。 詳細については、「[App Service 証明書とカスタム ドメインの FAQ](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)」を参照してください。
+はい。Azure の外部で使用する目的でエクスポートできます。 詳細については、「[App Service 証明書とカスタム ドメインの FAQ](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)」を参照してください。
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>その他の Azure クラウド サービスで使用できるように App Service 証明書をエクスポートできますか?
 
@@ -154,7 +153,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>URL 書き換え規則を追加する方法を教えてください。
 
-URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot**　フォルダーに作成します。 詳細については、「[Azure App Services:URL 書き換えについて](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)」を参照してください。
+URL 書き換え規則を追加するには、関連する構成エントリを含む web.config ファイルを **wwwroot**　フォルダーに作成します。 詳細については、「[Azure App Services: URL 書き換えについて](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/)」を参照してください。
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>App Service への受信トラフィックを制御するにはどうすればいいですか?
 
@@ -251,7 +250,7 @@ Web ジョブのスケジュールの詳細については、「[Create a schedu
 
 ## <a name="how-do-i-perform-penetration-testing-for-my-app-service-app"></a>App Service アプリの侵入テストを実行する方法は?
 
-侵入テストを実行するには、[要求を送信](https://portal.msrc.microsoft.com/en-us/engage/pentest)します。
+侵入テストを実行するには、[要求を送信](https://portal.msrc.microsoft.com/engage/pentest)します。
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Traffic Manager を使用する App Service Web アプリのカスタム ドメイン名を構成するにはどうすればいいですか?
 

@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304ba16985d5abfc4d385b3f1150cfa544c20b2a
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c8e73bd3639adcc43dd191ff2eacaf7335f08d72
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335503"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126594"
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection の有効化
 
 Azure Active Directory Identity Protection は、Azure Active Directory (Azure AD) の機能です。 Azure AD Identity Protection を使用すると、次のことを実行できます。
 
-- 機械学習アルゴリズムを使用して検出されたフラグ付きユーザーとリスク イベントの統合ビューを表示する
+- 機械学習アルゴリズムを使用して検出されたフラグ付きユーザーとリスク検出の統合ビューを表示する
 - リスク ベースの条件付きアクセス ポリシーを設定してユーザーを自動的に保護する
 - 脆弱性に基づいて行動することで、セキュリティに対する姿勢を強化する 
 

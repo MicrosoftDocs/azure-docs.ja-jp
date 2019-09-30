@@ -10,16 +10,15 @@ ms.assetid: a195675b-f7d0-4fc9-90bf-860e6f17ccf7
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8b250c45716146c505a803046b18bf5d05cf116
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837233"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073768"
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
 
@@ -27,7 +26,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 * [静的なページの内容とページ レイアウト要素を編集する][modify-content-layout]
 * [開発者ポータル全体のページ要素で使用されるスタイルを更新する][customize-styles]
-* [ポータルで生成されるページに使用するテンプレートを変更する][ portal-templates] (このガイドで説明します)
+* [ポータルで生成されるページに使用するテンプレートを変更する][portal-templates] (このガイドで説明します)
 
 テンプレートは、システムで生成された開発者ポータル ページのコンテンツ (API ドキュメント、製品、ユーザー認証など) をカスタマイズするために使用します。 [DotLiquid](http://dotliquidmarkup.org/) 構文と、用意されているローカライズされた文字列リソース、アイコン、およびページ コントロールのセットを使用して、表示されるページの内容を自由に構成できます。
 

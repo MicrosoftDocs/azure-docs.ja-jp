@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3f6d15e67122afcbea3cc294c803a302e961bdbd
-ms.sourcegitcommit: 57a7d4f67635212f5bf0c56e58fd87c8ec366f2c
+ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
+ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68372555"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70061391"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
@@ -58,14 +58,11 @@ Windows を実行しているノードの場合は、次のバージョンがサ
 - Windows 8.1
 - Windows 7
 
+[Microsoft Hyper-V Server](/windows-server/virtualization/hyper-v/hyper-v-server-2016) のスタンドアロン製品 SKU は Desired State Configuration の実装を含んでいないため、PowerShell DSC や Azure Automation State Configuration では管理できません。
+
 Linux を実行しているノードの場合は、次のディストリビューション/バージョンがサポートされます。
 
-DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) Linux ディストリビューションがすべてサポートされます。
-
-ディストリビューション | Version
--|-
-Debian  | すべてのバージョン
-Ubuntu  | 18.04
+DSC Linux 拡張機能では、「[サポートされている Linux ディストリビューション](https://github.com/Azure/azure-linux-extensions/tree/master/DSC#4-supported-linux-distributions)」に一覧表示されている Linux ディストリビューションがすべてサポートされます。
 
 ### <a name="dsc-requirements"></a>DSC 要件
 
@@ -124,15 +121,6 @@ Linux ノードでは、DSC エージェントがプロキシをサポートし�
 >更新されたファイルが毎週投稿されます。 このファイルには、現在デプロイされている範囲と、次に予定されている IP 範囲の変更が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。
 >
 > 新しい XML ファイルを毎週ダウンロードすることをお勧めします。 その後、Azure で実行されているサービスを正しく識別するようにサイトを更新します。 Azure ExpressRoute ユーザーは、このファイルが、毎月第 1 週に Azure 領域の Border Gateway Protocol (BGP) アドバタイズを更新するために使用されることに注意してください。
-
-## <a name="introduction-video"></a>紹介ビデオ
-
-読むより見る方がよければ、 Azure Automation State Configuration が初めて発表された 2015 年 5 月に公開された次のビデオをご覧ください。
-
-> [!NOTE]
-> このビデオで解説されている概念とライフ サイクルは正しいものですが、このビデオが作成されてから Azure Automation State Configuration はかなり進歩しています。 Azure Automation DSC は一般公開され、Azure ポータルでさまざまな UI を使用できるようになり、多数の機能がサポートされています。
-
-> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
 ## <a name="next-steps"></a>次の手順
 

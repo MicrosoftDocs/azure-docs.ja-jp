@@ -9,13 +9,13 @@ ms.date: 10/11/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: a2729af6a689daa551fc01f585324d53a8770a9b
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67181538"
 ---
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | :--- |
 | サブスクリプションあたりの最大クラスター数 | 100 |
 | クラスターあたりの最大ノード数 | 100 |

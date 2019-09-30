@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 8b4764d855663325b2445f7b588b795c15f4edde
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596322"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933881"
 ---
 # <a name="tutorial-configure-security-agents"></a>チュートリアル:セキュリティ エージェントを構成する
 
@@ -87,28 +87,28 @@ Azure Security Center for IoT セキュリティ エージェントは、**azure
 
 1. IoT Hub で、変更するデバイスを見つけて選択します。
 
-2. デバイスをクリックし、次に **[azureiotsecurity]** をクリックします。
+1. デバイスをクリックし、次に **[azureiotsecurity]** をクリックします。
 
-3. **[モジュール ID ツイン]** をクリックします。
+1. **[モジュール ID ツイン]** をクリックします。
 
-4. セキュリティ モジュールで変更するプロパティを編集します。
+1. セキュリティ モジュールで変更するプロパティを編集します。
    
    たとえば、接続イベントを優先度が高いイベントとして構成し、7 分おきに優先度が高いイベントを収集するには、次の構成を使用します。
    
-   ```json
+    ```json
     "desired": {
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
-        "highPriorityMessageFrequency": {
-          "value" : "PT7M"
-        },    
-        "eventPriorityConnectionCreate": {
-          "value" : "High" 
+        "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration": {
+            "highPriorityMessageFrequency": {
+                "value": "PT7M"
+            },
+            "eventPriorityConnectionCreate": {
+                "value": "High"
+            }
         }
-      } 
-    }, 
+    }
     ```
 
-5. **[Save]** をクリックします。
+1. **[Save]** をクリックします。
 
 ### <a name="using-a-default-value"></a>既定値の使用
 

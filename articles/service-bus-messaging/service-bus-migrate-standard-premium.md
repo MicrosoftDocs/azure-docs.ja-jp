@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 57ab281e8d07537c22bd3cf60306dfb1c7e81541
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f7cbee13416c090e59c82c928946b512af1c620b
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67566075"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69611911"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>既存の Azure Service Bus Standard 名前空間を Premium レベルに移行する
 以前は、Azure Service Bus では Standard レベルでのみ名前空間が提供されていました。 名前空間は、低スループット環境と開発者環境用に最適化されたマルチテナントの設定です。 Premium レベルでは、名前空間ごとに専用のリソースが提供され、予測可能な待機時間と固定価格でのスループット向上が実現します。 Premium レベルは、追加のエンタープライズ機能が必要な高スループット環境および実稼働環境向けに最適化されています。
@@ -115,7 +115,8 @@ Azure portal を使用した移行の論理フローは、コマンドを使用�
    1. 同期が完了したら、ページ下部にある **[次へ]** を選択します。
 
 1. 概要ページで変更を確認します。 **[移行の完了]** を選択して名前空間を切り替え、移行を完了します。
-    ![名前空間を切り替える - スイッチ メニュー][] 移行が完了すると、確認ページが表示されます。
+    ![名前空間を切り替える - スイッチ メニュー][]  
+    移行が完了すると、確認ページが表示されます。
     ![名前空間を切り替える - 成功][]
 
 ## <a name="caveats"></a>注意事項

@@ -7,13 +7,13 @@ metadata:
   meta.description: Learn how to develop secure apps on Azure.
   services: security
   author: TerryLanfear
-  manager: barbkess
+  manager: rkarlin
   ms.service: security
   ms.subservice: develop
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/11/2019
+  ms.date: 09/14/2019
   ms.author: terrylan
 abstract:
   description: Microsoft のサンプル アプリ、ベスト プラクティス、ガイダンスを使用して、セキュリティで保護されたアプリケーションを Azure で開発してデプロイする方法について説明します。
@@ -27,12 +27,12 @@ sections:
           - href: /azure/security/develop/secure-dev-overview
             html: <p>Azure でのセキュリティで保護された Web アプリケーションの開発</p>
             image:
-              src: /media/common/i_get-started.svg
+              src: 'https://docs.microsoft.com/media/common/i_get-started.svg'
             title: 作業開始
           - href: 'https://docs.microsoft.com/learn/modules/top-5-security-items-to-consider'
             html: <p>Web アプリのセキュリティ項目の上位 5 つ</p>
             image:
-              src: /media/common/i_learn-about.svg
+              src: 'https://docs.microsoft.com/media/common/i_learn-about.svg'
             title: Microsoft Learn でスキルを身に付ける
   - title: 安全なサンプル アプリ
     items:

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2019
 ms.author: mlottner
-ms.openlocfilehash: a8f751d0a40a8d8e1555549c200a9a7ca8ef0661
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b8100fc78eced9aa26fe185a8d68244d8f665ff2
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600334"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933898"
 ---
 # <a name="security-agent-event-aggregation"></a>セキュリティ エージェントのイベント集計
 
@@ -59,6 +59,7 @@ Azure Security Center for IoT セキュリティ エージェントは、ロー�
 
 各イベントの集計の開始時刻、終了時刻、およびヒット カウントは、Log Analytics 内のイベント **ExtraDetails** フィールドに記録されて調査時に使用されます。 
 
+各集計イベントは、収集されたアラートの 24 時間分を表します。 各イベントの左上にある [イベント オプション] メニューを使用すると、集計された個々のイベントを**無視**できます。    
 
 ## <a name="event-aggregation-twin-configuration"></a>イベント集計のツイン構成
 **azureiotsecurity** モジュールのモジュール ツイン ID の [エージェント構成オブジェクト](how-to-agent-configuration.md)内で Azure Security Center for IoT イベント集計の構成を変更します。
@@ -95,4 +96,4 @@ Azure Security Center for IoT のデプロイの概要について引き続き�
 - [セキュリティ エージェント](how-to-deploy-agent.md)を選択してデプロイする
 - Azure Security Center for IoT [サービスの前提条件](service-prerequisites.md)を確認する
 - [IoT Hub で Azure Security Center for IoT サービスを有効にする](quickstart-onboard-iot-hub.md)方法について学習する
-- [Azure Security Center for IoT についてよく寄せられる質問](resources-frequently-asked-questions.md)から、サービスについて確認する
+- [Azure Security Center for IoT に関してよく寄せられる質問](resources-frequently-asked-questions.md)から、サービスについて確認する

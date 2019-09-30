@@ -4,15 +4,15 @@ description: Azure の委任されたリソース管理に顧客をオンボー�
 author: JnHs
 ms.author: jenhayes
 ms.service: lighthouse
-ms.date: 07/11/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: d1876977d819b50569b6f07242af91fb1d6832ee
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 402f82059f939de204e489bb36c2c2b82f816a19
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934312"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105273"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Azure の委任されたリソース管理に顧客をオンボードする
 
@@ -20,7 +20,7 @@ ms.locfileid: "68934312"
 
 このプロセスは、複数の顧客のリソースを管理している場合に繰り返すことができます。 その後、許可されているユーザーが自分のテナントにサインインすると、そのユーザーは、個々の顧客テナントにサインインしなくても管理操作を実行することが顧客のテナント スコープ全体で承認されます。
 
-オンボードされたサブスクリプションに自分の Microsoft Partner Network (MPN) ID を関連付けると、顧客エンゲージメント全体での影響を追跡できます。 詳細については、「[Azure アカウントにパートナー ID をリンクする](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)」を参照してください。
+オンボードされたサブスクリプションに自分の Microsoft Partner Network (MPN) ID を関連付けると、顧客エンゲージメント全体における自分の影響を追跡し、評価が得られます。 詳しくは、「[Azure アカウントにパートナー ID をリンクする](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started)」をご覧ください。 サービス プロバイダー テナントでこの関連付けを実行する必要があることに注意してください。
 
 > [!NOTE]
 > 顧客は、Azure Marketplace に公開されたマネージド サービスのオファー (パブリックまたはプライベート) を購入すると自動的にオンボードされます。 詳細については、「[Azure Marketplace にマネージド サービス オファーを公開する](publish-managed-services-offers.md)」を参照してください。 また、ここで説明されているオンボード プロセスは、Azure Marketplace に公開されているオファーでも使用できます。
@@ -61,63 +61,8 @@ az account set --subscription <subscriptionId/name>
 az account show
 ```
 
-
-## <a name="ensure-the-customers-subscription-is-registered-for-onboarding"></a>顧客のサブスクリプションがオンボード用に登録されていることを確認する
-
-各サブスクリプションには、**Microsoft.ManagedServices** リソースプロバイダーを手動で登録することで、オンボードを承認する必要があります。 顧客は、「[Azure リソースプロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」で説明されている手順に従って、サブスクリプションを登録できます。
-
-顧客は、次のいずれかの方法で、サブスクリプションをオンボードする準備が完了していることを確認できます。
-
-### <a name="azure-portal"></a>Azure ポータル
-
-1. Azure portal で、サブスクリプションを選択します。
-1. **[リソース プロバイダー]** を選択します。
-1. **Microsoft.ManagedServices** が **[登録済み]** と表示されることを確認します。
-
-### <a name="powershell"></a>PowerShell
-
-```azurepowershell-interactive
-# Log in first with Connect-AzAccount if you're not using Cloud Shell
-
-Set-AzContext -Subscription <subscriptionId>
-Get-AzResourceProvider -ProviderNameSpace 'Microsoft.ManagedServices'
-```
-
-これにより、次のような結果が返されます。
-
-```output
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationDefinitions}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {registrationAssignments}
-Locations         : {}
-
-ProviderNamespace : Microsoft.ManagedServices
-RegistrationState : Registered
-ResourceTypes     : {operations}
-Locations         : {}
-```
-
-### <a name="azure-cli"></a>Azure CLI
-
-```azurecli-interactive
-# Log in first with az login if you're not using Cloud Shell
-
-az account set –subscription <subscriptionId>
-az provider show --namespace "Microsoft.ManagedServices" --output table
-```
-
-これにより、次のような結果が返されます。
-
-```output
-Namespace                  RegistrationState
--------------------------  -------------------
-Microsoft.ManagedServices  Registered
-```
+> [!NOTE]
+> ここで説明するプロセスを使用してサブスクリプション (またはサブスクリプション内の 1 つまたは複数のリソース グループ) をオンボードすると、そのサブスクリプションに対して **Microsoft.ManagedServices** リソースプロバイダーが登録されます。
 
 ## <a name="define-roles-and-permissions"></a>ロールとアクセス許可を定義する
 
@@ -129,8 +74,6 @@ Microsoft.ManagedServices  Registered
 > ロールの割り当てでは、ロールベースのアクセス制御 (RBAC) の[組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)を使用する必要があります。 現在、組み込みロールはすべて、Azure の委任されたリソース管理でサポートされています。ただし、所有者と [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) アクセス許可を持つ組み込みロールは除きます。 ユーザーアクセス管理者の組み込みロールは、以下で説明するように、限定的な用途でサポートされています。 また、カスタムロールと[従来のサブスクリプション管理者ロール](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators)はサポートされていません。
 
 承認を定義するために、アクセスを許可する各ユーザー、ユーザー グループ、またはサービス プリンシパルの ID 値を知っておく必要があります。 また、割り当てる各組み込みロールのロール定義 ID も必要になります。 それらがまだない場合は、次のいずれかの方法で取得できます。
-
-
 
 ### <a name="powershell"></a>PowerShell
 

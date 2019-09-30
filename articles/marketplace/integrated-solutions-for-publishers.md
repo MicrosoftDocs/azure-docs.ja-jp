@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 08/15/2019
 ms.author: v-qiwe
-ms.openlocfilehash: 63f9112696156f2192669913bb15a82b9a7eede7
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 13a7769e310bcd0cb28eddbf9dded3fe1d62eec7
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656962"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993680"
 ---
 # <a name="publishing-integrated-solutions"></a>統合ソリューションの公開
 
@@ -88,6 +88,10 @@ ms.locfileid: "69656962"
 
 ## <a name="going-to-market-with-your-integrated-solution"></a>統合ソリューションで市場に参入する 
 
-ソリューションが Azure Marketplace または AppSource に表示されるようになったら、マーケティング活動を通じて認知度と需要の創出を促進することができます。 [プロジェクト計画とタイムライン](https://aka.ms/AA5qiuc)に関するページに記載されている活動を確認します。これには、パートナーが自分のチーム内で促進できる活動と、互いに促進できる活動が含まれます。 次に、マーケットプレースでの公開を行ったパートナーに提供される [Go-to-Market ベネフィット](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#how-to-access-microsoft-resources)にアクセスします。 すべての統合ソリューション オファーは、試用版レベルのベネフィットの対象となります。
+ソリューションが Azure Marketplace または AppSource に表示されるようになったら、マーケティング活動を通じて認知度と需要の創出を促進することができます。 [プロジェクト計画とタイムライン](https://aka.ms/AA5qiuc)に関するページに記載されている活動を確認します。これには、パートナーが自分のチーム内で促進できる活動と、互いに促進できる活動が含まれます。 次に、マーケットプレースでの公開を行ったパートナーに提供される [Go-to-Market ベネフィット](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits)にアクセスします。 すべての統合ソリューション オファーは、試用版レベルのベネフィットの対象となります。
+
+## <a name="next-steps"></a>次の手順
+
+Marketplace での統合ソリューションの購入については、[統合ソリューション](https://docs.microsoft.com/azure/marketplace/integrated-solutions)に関する記事を参照してください。
 
 ---

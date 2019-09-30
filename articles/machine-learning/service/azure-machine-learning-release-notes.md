@@ -1,27 +1,240 @@
 ---
 title: このリリースの新機能
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service と Machine Learning および Data Prep Python SDK の最新情報について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning および Machine Learning SDK と Data Prep Python SDK の最新の更新プログラムについて説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 07/25/2019
+ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec913133ef97a632b12db2859bd4ac32df70a1c5
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5191f8b565762e9377f3718cc147c96e491f5a0d
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828617"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067727"
 ---
-# <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning service のリリース ノート
+# <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
-この記事では、Azure Machine Learning service の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://aka.ms/aml-sdk) のリファレンス ページを参照してください。
+この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) のリファレンス ページを参照してください。 
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2019-09-16"></a>2019-09-16
+
+### <a name="azure-machine-learning-sdk-for-python-v1062"></a>Azure Machine Learning SDK for Python v1.0.62
+
++ **新機能**
+  + TabularDataset に時系列特性が導入されました。 この特性により、ある期間のすべてのデータまたは最新のデータを取得するなど、TabularDataset のデータに対するタイムスタンプのフィルター処理が容易になります。 TabularDataset のこの時系列特性の詳細については、 https://aka.ms/azureml-data のドキュメントまたは https://aka.ms/azureml-tsd-notebook のノートブックの例を参照してください。 
+  + TabularDataset と FileDataset でのトレーニングが有効になりました。 https://aka.ms/dataset-tutorial のノートブックの例を参照してください。 
+  
+  + **azureml-train-core**
+    + PyTorch 推定での Nccl と Gloo のサポートが追加されました
+  
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + AutoML の設定 "lag_length" および LaggingTransformer が非推奨になりました。
+    + データフロー形式で指定されている場合の入力データの正しい検証を修正しました
+    + グラフ json を生成して成果物にアップロードするように fit_pipeline.py を変更しました。 
+    + Cytoscape を使用して userrun の下にグラフを表示しました。
+  + **azureml-core**
+    + ADB コードでの例外処理を再検討し、新しいエラー処理に従って変更しました。
+    + Notebook VM の自動 MSI 認証を追加しました。
+    + 再試行失敗のために破損したモデルまたは空のモデルがアップロードされるバグを修正しました。
+    + `DataReference` モードが変更されたときに (`as_upload`、`as_download`、`as_mount` を呼び出したときなど) `DataReference` の名前が変更されるバグを修正しました。
+    + `FileDataset.mount` および `FileDataset.download` に対する `mount_point` と `target_path` を省略可能にしました
+    + 細かいタイムスタンプ列が割り当てられずに時刻のシリアル関連 API が呼び出された場合や、割り当てられたタイムスタンプ列が削除された場合、タイムスタンプ列が見つからないという例外がスローされます。
+    + Date 型列には時刻のシリアル列が割り当てられている必要があり、そうでないと例外が予想されます
+    + 時刻のシリアル列割り当て API "with_timestamp_columns" は、細かい/粗いタイムスタンプ列名として None 値を受け取ることができ、これにより以前に割り当てられたタイムスタンプ列がクリアされます。
+    + 粗い粒度または細かい粒度のタイムスタンプ列が削除されると例外がスローされ、ユーザーに対して、削除リストのタイムスタンプ列を除外するか、None 値を指定して with_time_stamp を呼び出すことによりタイムスタンプを解放した後で、削除できることが示されます
+    + 粗い粒度または細かい粒度のタイムスタンプ列が保持列リストに含まれていないと例外がスローされ、ユーザーに対して、保持列リストにタイムスタンプ列を含めるか、None 値を指定して with_time_stamp を呼び出すことによりタイムスタンプを解放した後で、保持できることが示されます。
+    + 登録済みモデルのサイズのログ記録を追加しました。
+  + **azureml-explain-model**
+    + "packaging" Python パッケージがインストールされていない場合にコンソールに出力される警告を修正しました: "Using older than supported version of lightgbm, please upgrade to version greater than 2.2.1" (サポートされているバージョンより古い lightgbm を使用しています。2.2.1 より後のバージョンにアップグレードしてください)
+    + 多くの機能でグローバルな説明に対するシャーディングに関するダウンロード モデルの説明を修正しました
+    + 出力の説明で初期化の例がない mimic explainer を修正しました
+    + 2 つの異なる種類のモデルを使用する説明クライアントでアップロードするときの設定プロパティの不変エラーを修正しました
+    + 1 つのスコアリング Explainer でエンジニアリングされた値と生の値の両方を返すことができるように、スコアリング Explainer .explain() に get_raw パラメーターを追加しました。
+  + **azureml-train-automl**
+    + AutoML 説明 SDK からの説明をサポートするために、AutoML からのパブリック API が導入されました - AutoML の特徴付け SDK と説明 SDK を分離することによる、AutoML の説明をサポートする新しい方法 - AutoML モデルに対して AzureML 説明 SDK からの生の説明のサポートを統合しました。
+    + リモート トレーニング環境からの azureml-defaults の削除。
+    + 既定のキャッ シュストアの場所を、FileCacheStore ベースの場所から、AzureDatabricks コード パス上の AutoML に対する AzureFileCacheStore の場所に変更しました。
+    + データフロー形式で指定されている場合の入力データの正しい検証を修正しました
+  + **azureml-train-core**
+    + source_directory_data_store の非推奨が元に戻されました。
+    + AzureML でインストールされるパッケージのバージョンをオーバーライドする機能が追加されました。 
+    + Estimator の `environment_definition` パラメーターに dockerfile のサポートが追加されました。
+    + Estimator での分散トレーニング パラメーターが簡略化されました。
+         ```py 
+        from azureml.train.dnn import TensorFlow, Mpi, ParameterServer 
+        ```
+
+## <a name="2019-09-09"></a>2019-09-09
+
+### <a name="new-web-experience-preview-for-azure-machine-learning-workspaces"></a>Azure Machine Learning ワークスペースの新しい Web エクスペリエンス (プレビュー) 
+データ サイエンティストやデータ エンジニアは、新しい Web エクスペリエンスで、データの準備および視覚化から、モデルのトレーニングおよびデプロイまでの機械学習のエンドツーエンドのライフサイクルを 1 つの場所で完了できます。 
+
+![Azure Machine Learning ワークスペースの UI (プレビュー)](./media/azure-machine-learning-release-notes/new-ui-for-workspaces.jpg)
+
+**主な機能:**
+
+新しい Azure Machine Learning インターフェイスでは、次のことができるようになりました。
++ ご自分のノートブックまたはリンクを Jupyter 外で管理する
++ [自動 ML の実験を実行する](tutorial-first-experiment-automated-ml.md)
++ [ローカル ファイル、データストアおよび Web ファイルからデータセットを作成する](how-to-create-register-datasets.md)
++ モデル作成のためにデータセットを調査および準備する
++ ご自身のモデルのデータ誤差を監視する 
++ ダッシュボードに最近使用したリソースを表示する
+
+このリリースの時点では、次のブラウザーがサポートされています: Chrome、Firefox、Safari、Microsoft Edge プレビュー。
+
+**既知の問題:**
+
+1. 展開中に "Something went wrong! Error loading chunk files" (問題が発生しました。チャンク ファイルの読み込み中にエラーが発生しました) と表示される場合、お使いのブラウザーを更新します。  
+
+1. Notebooks と Files でファイルを削除または名前変更できない。 パブリック プレビュー中に、Notebook VM の Jupyter UI またはターミナルを使用して、ファイルの更新操作を実行できます。 これはマウントされたネットワーク ファイル システムであるため、Notebook VM に対して行ったすべての変更は、直ちに Notebook Workspace に反映されます。 
+
+1. Notebook VM に SSH 接続するには:
+   1. VM のセットアップ時に作成された SSH キーを検索します。 または、Azure ML Azure portal でそのキーを探します。[コンピューティング] タブを開き、一覧から Notebook VM を検索し、そのプロパティを開いて、そのダイアログからキーをコピーします。
+   1. それらの公開および秘密 SSH キーをご自分のローカル コンピューターにインポートします。
+   1. それらを Notebook VM への SSH 接続に使用します。 
+
+## <a name="2019-09-03"></a>2019-09-03
+### <a name="azure-machine-learning-sdk-for-python-v1060"></a>Azure Machine Learning SDK for Python v1.0.60
+
++ **新機能**
+  + データストアまたはパブリック URL 内の 1 つまたは複数のファイルを参照する FileDataset が導入されました。 ファイルの形式は任意です。 FileDataset では、ファイルをダウンロードしたり、コンピューターにマウントしたりできます。 FileDataset の詳細については、 https://aka.ms/file-dataset を参照してください。
+  + PythonScript Step、Adla Step、Databricks Step、DataTransferStep、AzureBatch Step にパイプライン YAML サポートを追加しました
+
++ **バグの修正と機能強化**
+  + **azureml-automl-core**
+    + AutoArima は、プレビュー専用のサジェスト可能パイプラインになりました。
+    + 予測のエラー報告を改善しました。
+    + 予測タスクの汎用ではなくカスタムの例外を使用してログ記録を改善しました。
+    + イテレーションの合計数よりも少なくなるように、max_concurrent_iterations のチェックを削除しました。
+    + AutoML モデルで AutoMLExceptions が返されるようになりました
+    + このリリースでは、自動化された機械学習のローカル実行の実行パフォーマンスが向上しています。
+  + **azureml-core**
+    + 登録名でキーが指定された `TabularDataset` と `FileDataset` のオブジェクトのディクショナリを返す Dataset.get_all(workspace) が導入されました。 
+    
+    ```py 
+    workspace = Workspace.from_config() 
+    all_datasets = Dataset.get_all(workspace) 
+    mydata = all_datasets['my-data'] 
+    ```
+    
+    + `Dataset.Tabular.from_delimited_files` と `Dataset.Tabular.from_parquet.files` の引数として `parition_format` が導入されました。 各データ パスのパーティション情報は、指定された形式に基づいて列に抽出されます。 '{column_name}' では文字列の列、'{column_name:yyyy/MM/dd/HH/mm/ss}' では datetime の列が作成されます。ここで、'yyyy'、'MM'、'dd'、'HH'、'mm'、'ss' は datetime 型の年、月、日、時間、分、秒の抽出に使用されます。 partition_format は、最初のパーティション キーの位置から始まり、ファイル パスの末尾までになります。 たとえば、パーティションが国と時間のパス '../USA/2019/01/01/data.csv' の場合、partition_format='/{Country}/{PartitionDate:yyyy/MM/dd}/data.csv' では値が 'USA' の文字列の列 'Country' と、値が '2019-01-01' の datetime 列 'PartitionDate' が作成されます。
+    + `to_csv_files` と `to_parquet_files` のメソッドが `TabularDataset` に追加されました。 これらのメソッドにより、指定された形式のファイルにデータが変換され、`TabularDataset` と `FileDataset` の間の変換が可能になります。
+    + Model.package() によって生成された Dockerfile を保存するときに、基本イメージ レジストリに自動的にログインします。
+    + 'gpu_support' は、不要になり、AzureML により、nvidia docker 拡張機能が利用可能になったときに自動的に検出して使用されるようになりました。 将来のリリースでは削除される予定です。
+    + PipelineDrafts を作成、更新、および使用するためのサポートが追加されました。
+    + このリリースでは、自動化された機械学習のローカル実行の実行パフォーマンスが向上しています。
+    + ユーザーは、実行履歴のメトリックを名前でクエリできます。
+    + 予測タスクの汎用ではなくカスタムの例外を使用してログ記録を改善しました。
+  + **azureml-explain-model**
+    + feature_maps パラメーターが新しい MimicWrapper に追加され、ユーザーが未加工の機能の説明を取得できるようになりました。
+    + 説明のアップロードでは、データセットのアップロードが既定でオフになり、upload_datasets=True を指定して再度有効にすることができます
+    + "Is_law" フィルター処理パラメーターが説明リストとダウンロード機能に追加されました。
+    + グローバルとローカルの両方の説明オブジェクトに `get_raw_explanation(feature_maps)` メソッドが追加されます。
+    + サポートされているバージョンを下回る場合に警告を出力するバージョン チェックが lightgbm に追加されました
+    + 説明をバッチ処理するときのメモリ使用量が最適化されました
+    + AutoML モデルで AutoMLExceptions が返されるようになりました
+  + **azureml-pipeline-core**
+    + PipelineDrafts を作成、更新、および使用するためのサポートが追加されました。変更可能なパイプライン定義を維持し、対話形式で実行するために使用できます
+  + **azureml-train-automl**
+    + GPU 対応 PyTorch v1.1.0、CUDA Toolkit 9.0、リモートの Python ランタイム環境で BERT/XLNet を有効にするために必要な pytorch-transformer の特定のバージョンをインストールするための機能が作成されました。
+  + **azureml-train-core**
+    + 一部のハイパーパラメーター空間定義エラーの初期エラーが、サーバー側ではなく SDK で直接発生します。
+
+### <a name="azure-machine-learning-data-prep-sdk-v1114"></a>Azure Machine Learning Data Prep SDK v1.1.14
++ **バグの修正と機能強化**
+  + 未加工のパスと資格情報を使用した ADLS/ADLSGen2 への書き込みが有効になりました。
+  + `include_path=True` が `read_parquet` で使用できなかった原因となったバグを修正しました。
+  + "無効なプロパティ値: hostsecret" の例外が原因で発生した `to_pandas_dataframe()` エラーを修正しました。
+  + Spark モードで DBFS のファイルを読み取ることができなかったバグを修正しました。
+  
+## <a name="2019-08-19"></a>2019-08-19
+
+### <a name="azure-machine-learning-sdk-for-python-v1057"></a>Azure Machine Learning SDK for Python v1.0.57
++ **新機能**
+  + `TabularDataset` を AutomatedML で使用できるようにしました。 `TabularDataset` の詳細については、 https://aka.ms/azureml/howto/createdatasets にアクセスしてください。
+  
++ **バグの修正と機能強化**
+  + **automl-client-core-nativeclient**
+    + トレーニングおよび検証ラベル (y と y_valid) が NumPy 配列ではなく、Pandas データフレームの形式で提供されるときに発生するエラーを修正しました。
+    + `RawDataContext` の作成にデータと `AutoMLBaseSettings` オブジェクトのみを必要とするようにインターフェイスを更新しました。
+    +  AutoML ユーザーが予測時に十分な長さではないトレーニング シリーズをドロップできるようにしました。 - AutoML ユーザーが予測時にトレーニング セットに存在しないテスト セットからグレインをドロップできるようにしました。
+  + **azure-cli-ml**
+    + Microsoft が生成した証明書と顧客証明書の両方について、AKS クラスターにデプロイされたスコアリング エンドポイントの SSL 証明書を更新できるようになりました。
+  + **azureml-automl-core**
+    + ラベルのない行が正常に削除されなかった AutoML の問題を修正しました。
+    + AutoML のエラー ログ記録を改良し、常にエラー メッセージ全文がログ ファイルに書き込まれるようになりました。
+    + AutoML のパッケージのピン留めを更新し、`azureml-defaults`、`azureml-explain-model`、および `azureml-dataprep` が追加されました。 AutoML で、パッケージの不一致に関する警告は表示されなくなりました (`azureml-train-automl` パッケージを除く)。
+    + cv の分割によるサイズの不一致が原因でビンの計算が失敗する、時系列の問題を修正しました。
+    + 種類がクロス検証のトレーニングに対してアンサンブル イテレーションを実行するときに、データセット全体でトレーニングされたモデルのダウンロードに問題が発生した場合、モデルの重みと投票アンサンブルに取り込まれていたモデルとの間に矛盾がありました。
+    + トレーニングおよび検証ラベル (y と y_valid) が NumPy 配列ではなく、Pandas データフレームの形式で提供されるときに発生するエラーを修正しました。
+    + 入力テーブルのブール値の列が None になったときの予測タスクの問題を修正しました。
+    + AutoML ユーザーが予測時に十分な長さではないトレーニング シリーズをドロップできるようにしました。 - AutoML ユーザーが予測時にトレーニング セットに存在しないテスト セットからグレインをドロップできるようにしました。
+  + **azureml-core**
+    + Blob_cache_timeout パラメーターの順序付けに関する問題を修正しました。
+    + 外部例外 fit 型 および transform 型をシステム エラーに追加しました。
+    + リモート実行のための Key Vault シークレットのサポートが追加されました。 ご自身のワークスペースに関連付けられている keyvault のシークレットを追加、取得、一覧表示するための azureml.core.keyvault.Keyvault クラスを追加しました。 サポートされている操作は次のとおりです。
+      + azureml.core.workspace.Workspace.get_default_keyvault()
+      + azureml.core.keyvault.Keyvault.set_secret(name, value)
+      + azureml.core.keyvault.Keyvault.set_secrets(secrets_dict)
+      + azureml.core.keyvault.Keyvault.get_secret(name)
+      + azureml.core.keyvault.Keyvault.get_secrets(secrets_list)
+      + azureml.core.keyvault.Keyvault.list_secrets()
+    + リモート実行中に既定のキー コンテナーやシークレットを取得する、次のメソッドを追加しました。
+      + azureml.core.workspace.Workspace.get_default_keyvault()
+      + azureml.core.run.Run.get_secret(name)
+      + azureml.core.run.Run.get_secrets(secrets_list)
+    + submit-hyperdrive CLI コマンドを送信するオーバーライド パラメーターをさらに追加しました。
+    + API 呼び出しの信頼性を向上させ、再試行を一般的な要求のライブラリ例外に拡大します。
+    + 送信済みの実行からの実行を送信するためのサポートを追加します。
+    + 最初のトークンの有効期限が切れた後にファイルがアップロードされない原因となった FileWatcher の期限が切れる SAS トークンの問題を修正しました。
+    + データセット Python SDK への HTTP csv/tsv ファイルのインポートがサポートされるようになりました。
+    + Workspace.setup() メソッドを非推奨にしました。 ユーザーに表示される警告メッセージとして、代わりに create() または get()/from_config() の使用が推奨されるようになりました。
+    + Environment.add_private_pip_wheel() を追加しました。これにより、カスタマイズしたプライベート Python パッケージ (.whl) をワークスペースにアップロードし、それらを安全に利用して環境をビルド/具体化できるようにしました。
+    + Microsoft が生成した証明書と顧客証明書の両方について、AKS クラスターにデプロイされたスコアリング エンドポイントの SSL 証明書を更新できるようになりました。
+  + **azureml-explain-model**
+    + アップロードの説明にモデル ID を追加するためのパラメーターを追加しました。
+    + メモリとアップロードの説明に `is_raw` のタグを追加しました。
+    + PyTorch のサポートと azureml-explain-model パッケージに対するテストを追加しました。
+  + **azureml-opendatasets**
+    + 自動テスト環境の検出とログ記録をサポートします。
+    + 米国の人口を郡および ZIP コード別に取得するクラスを追加しました。
+  + **azureml-pipeline-core**
+    + 入力ポートと出力ポートの定義にラベル プロパティが追加されました。
+  + **azureml-telemetry**
+    + 不適切なテレメトリ構成を修正しました。
+  + **azureml-train-automl**
+    + セットアップ失敗時に、セットアップ実行に対して [エラー] フィールドにログが記録されず、そのため親の実行の [エラー] に格納されなかったバグを修正しました。
+    + ラベルのない行が正常に削除されなかった AutoML の問題を修正しました。
+    + AutoML ユーザーが予測時に十分な長さではないトレーニング シリーズをドロップできるようにしました。
+    + AutoML ユーザーが予測時にトレーニング セットに存在しないテスト セットからグレインをドロップできるようにしました。
+    + AutoMLStep で、新しい構成パラメーターの変更や追加に関する問題を回避するために、AutoML の構成がバックエンドにパススルーされるようになりました。
+    + AutoML データ ガードレールがパブリック プレビューになりました。 トレーニング後にデータ ガードレール レポート (分類/回帰タスク用) が表示され、ユーザーがそれに SDK API を使用してアクセスすることもできます。
+  + **azureml-train-core**
+    + PyTorch エスティメーターに torch 1.2 のサポートが追加されました。
+  + **azureml-widgets**
+    + 分類トレーニングのために混同行列グラフを改良しました。
+
+### <a name="azure-machine-learning-data-prep-sdk-v1112"></a>Azure Machine Learning Data Prep SDK v1.1.12
++ **新機能**
+  + 文字列のリストを入力として `read_*` メソッドに渡すことができるようになりました。
+
++ **バグの修正と機能強化**
+  + `read_parquet` を Spark で 実行するときのパフォーマンスが大幅に向上しています。
+  + あいまいな日付形式の列が 1 つ存在することで `column_type_builder` が失敗する問題を修正しました。
+
+### <a name="azure-portal"></a>Azure ポータル
++ **プレビュー機能**
+  + ログと出力ファイルのストリーミングが、[実行の詳細] ページで使用できるようになりました。 プレビューの切り替えが有効になっている場合、ファイルによってリアルタイムで更新がストリーミングされます。
+  + ワークスペース レベルでクォータを設定する機能がプレビューでリリースされます。 AmlCompute クォータはサブスクリプション レベルで割り当てられますが、ワークスペース間でそのクォータを配分し、公平な共有とガバナンスのために割り当てることができるようになりました。 ワークスペースの左側のナビゲーション バーにある **[Usages+Quotas]\(使用量 + クォータ\)** ブレードをクリックして、 **[Configure Quotas]\(クォータの構成\)** タブを選択します。これはワークスペースをまたぐ操作であるため、ワークスペース レベルでクォータを設定できるようにするには、サブスクリプション管理者である必要があることに注意してください。
 
 ## <a name="2019-08-05"></a>2019-08-05
 
@@ -129,7 +342,7 @@ ms.locfileid: "68828617"
     + 登録後にモデルの説明を更新できるようになりました
     + バグの修正:モデルとイメージの削除の際、アップストリームの依存関係が原因で削除が失敗した場合に、それらに依存しているアップストリーム オブジェクトの取得に関する詳細情報が提供されるようになりました。
     + 一部の環境でワークスペースの作成時に発生する、デプロイの空白の期間が出力されたバグを修正しました。
-    + ワークスペースの作成エラーの例外が改善されました。 ユーザーに対して "Unable to create workspace. Unable to find..." (ワークスペースを作成できません。... を検索できません) というメッセージは表示されず、実際の作成エラーが代わりに表示されます。
+    + ワークスペースの作成エラーの例外が改善されました。 ユーザーに対して "Unable to create workspace. Unable to find..." (ワークスペースを作成できません... を検索できません) というメッセージは表示されず、実際の作成エラーが代わりに表示されます。
     + AKS Web サービスのトークン認証のサポートが追加されました。 
     + `Webservice` オブジェクトに `get_token()` メソッドを追加します。
     + 機械学習データセットを管理するための CLI サポートを追加しました。
@@ -140,7 +353,7 @@ ms.locfileid: "68828617"
   + **azureml-explain-model**
     + azureml-contrib-explain-model パッケージの生の特徴の重要度のための LIME Explainer の変換引数を修正しました
     + LimeExplainer の scipy sparse のサポートを追加します
-    + SHAP Explainer ラッパーと、線形モデルを説明するための Tabular Explainer へのもう 1 つのレベルを追加しました
+    + 線形モデルを説明する Shape Linear Explainer ラッパーと、別のレベルの Tabular Explainer を追加しました
     + 説明モデル ライブラリの Mimic Explainer で、スパース データ入力で include_local = False の場合のエラーを修正しました
     + automl 出力に予期される値を追加します
     + 生の特徴の重要度を取得するために変換引数が指定された場合の、permutation feature importance を修正しました
@@ -277,7 +490,7 @@ ms.locfileid: "68828617"
 + **バグの修正と機能強化**
   + azureml-core から paramiko の依存関係が削除されました。 従来のコンピューティング先のアタッチ方法に対する非推奨の警告が追加されました。
   + run.create_children のパフォーマンスが向上しました
-  + バイナリ分類器を使う Mimic Explainer で、教師の確率が SHAP 値のスケーリングに使われるときの、確率の順序が修正されました。
+  + バイナリ分類器を使う Mimic Explainer で、教師の確率が SHAPE 値のスケーリングに使われるときの、確率の順序が修正されました。
   + 自動化された機械学習に対するエラー処理とメッセージが改善されました。 
   + 自動化された機械学習のイテレーションのタイムアウトの問題が修正されました。
   + 自動化された機械学習に対する時系列変換のパフォーマンスが向上しました。
@@ -393,7 +606,7 @@ Azure portal で、次のことが可能になりました。
 + 実行レポートと実行詳細ページでのライブ グラフとメトリックの更新
 + 実行詳細ページでのログ、出力、スナップショットのファイル ビューアーの更新。
 + 新しくなった、または改善された [実験] タブのレポート作成エクスペリエンス。 
-+ Azure Machine Learning service ワークスペースの [概要] ページから config.json ファイルをダウンロードする機能の追加。
++ Azure Machine Learning ワークスペースの [概要] ページから config.json ファイルをダウンロードする機能の追加。
 + Azure Databricks ワークスペースからの Machine Learning service ワークスペース作成のサポート 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -412,7 +625,7 @@ Notebook VM は Jupyter ノートブック向けのセキュリティで保護�
 + 最新バージョンの Azure Machine Learning SDK と関連パッケージが含まれる、[構成済みのノートブック VM の迅速な起動](tutorial-1st-experiment-sdk-setup.md) 。
 + アクセスは、HTTPS、Azure Active Directory の認証と認可など、実績のあるテクノロジによってセキュリティ保護されます。
 + Azure Machine Learning ワークスペースの BLOB ストレージ アカウント内にある、ノートブックとコードの信頼性の高いクラウド ストレージ。 作業内容を失わずに、ノートブックの VM を安全に削除できます。
-+ Azure Machine Learning service の機能を使用して探索と実験を行うためにプレインストールされたサンプル ノートブック。
++ Azure Machine Learning の機能を使用して探索と実験を行うためにプレインストールされたサンプル ノートブック。
 + Azure VM、すべての種類の VM、すべてのパッケージ、すべてのドライバーの完全なカスタマイズ機能。 
 
 ## <a name="2019-04-26"></a>2019-04-26
@@ -709,7 +922,7 @@ Azure Machine Learning SDK for Python v1.0.30 がリリースされました。
 
 ## <a name="2018-12-04-general-availability"></a>2018-12-04: 一般公開
 
-Azure Machine Learning service の一般提供が開始されました。
+Azure Machine Learning の一般提供が開始されました。
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning コンピューティング
 このリリースでは、[Azure Machine Learning コンピューティング](how-to-set-up-training-targets.md#amlcompute)を通じて、新しいマネージド コンピューティング エクスペリエンスを発表します。 このコンピューティング ターゲットは、Azure Machine Learning の Azure Batch AI コンピューティングの後継となります。 
@@ -821,7 +1034,7 @@ Data Prep SDK の詳細については、[リファレンス ドキュメント]
 ## <a name="2018-11-05"></a>2018-11-05
 
 ### <a name="azure-portal"></a>Azure ポータル 
-Azure Machine Learning サービスの Azure portal では、次の更新が加えられました。
+Azure Machine Learning の Azure portal では、次の更新が加えられました。
   * パブリッシュされたパイプライン用の新しい **[パイプライン]** タブ。
   * 既存の HDInsight クラスターをコンピューティング ターゲットとしてアタッチする操作が新たにサポートされました。
 
@@ -934,4 +1147,4 @@ Azure Machine Learning が更新されてリリースされました。このリ
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure Machine Learning service](../service/overview-what-is-azure-ml.md) の概要をご覧ください。
+[Azure Machine Learning](../service/overview-what-is-azure-ml.md) の概要をご覧ください。

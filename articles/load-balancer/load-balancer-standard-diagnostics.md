@@ -1,7 +1,7 @@
 ---
-title: Azure Standard Load Balancer の診断
+title: メトリック、アラート、およびリソース正常性を使用した Azure Standard Load Balancer の診断
 titlesuffix: Azure Load Balancer
-description: Azure Standard Load Balancer による診断で利用できるメトリックと正常性情報を使用します。
+description: ご利用の Azure Standard Load Balancer を診断するために取得可能なメトリック、アラート、およびリソース正常性情報を使用します。
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -11,21 +11,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/11/2019
+ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: e0329f5f975b67460796bf7dd9429752549a3483
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b241f753c0de6e14282c679c5aec3c32be68e348
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274475"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69516257"
 ---
-# <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Standard Load Balancer のメトリックと正常性の診断
+# <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>メトリック、アラート、およびリソース正常性を使用した Standard Load Balancer の診断
 
-Azure Standard Load Balancer は、リソースに次の診断機能を提供しています。
-* **多次元メトリック**:パブリックと内部両方のロード バランサー構成用に、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) によって新しい多次元診断機能が提供されています。 ロード バランサー リソースの監視、管理、トラブルシューティングを行うことができます。
+Azure Standard Load Balancer では、次の診断機能が公開されています。
 
-* **リソース正常性**:Azure portal の [ロード バランサー] ページおよび ([監視] の) [リソース正常性] ページに、Standard Load Balancer のパブリック ロード バランサー構成の [リソース正常性] セクションが表示されます。
+* **多次元メトリックおよびアラート**: Standard Load Balancer 構成用に、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) を介して新しい多次元診断機能が提供されています。 ご利用の Standard Load Balancer リソースの監視、管理、トラブルシューティングを行うことができます。
+
+* **[リソース正常性]** :Azure portal の [ロード バランサー] ページと ([監視] の) [リソース正常性] ページに、Standard Load Balancer に対する [リソース正常性] セクションが表示されます。 
 
 この記事では、これらの機能の概要、および Standard Load Balancer でこれらの機能を使う方法について説明します。
 
@@ -172,9 +173,6 @@ VIP 可用性メトリックと正常性プローブ メトリックを 1 つの
 
 Standard Load Balancer リソースの正常性状態は、 **[Monitor]\(監視\) > [サービスの正常性]** の既存の **[リソース正常性]** によって表示されます。
 
->[!NOTE]
->Load Balancer のリソース正常性状態は、現在、Standard Load Balancer のパブリック構成に対してのみ使用できます。 内部ロード バランサー リソースまたは Load Balancer リソースの Basic SKU については、リソース正常性は表示されません。
-
 パブリック Standard Load Balancer リソースの正常性を表示するには:
 1. **[Monitor]\(監視\)**  >  **[サービス正常性]** の順に選択します。
 
@@ -198,13 +196,9 @@ Standard Load Balancer リソースの正常性状態は、 **[Monitor]\(監視\
 
 | リソースの正常性状態 | 説明 |
 | --- | --- |
-| 使用可能 | パブリック Standard Load Balancer リソースは正常であり、使用可能です。 |
-| 使用不可 | パブリック Standard Load Balancer リソースは正常ではありません。 **[Azure Monitor]**  >  **[メトリック]** の順に選択して、正常性を診断します<br>("*使用不可*" 状態は、リソースがパブリック Standard Load Balancer に接続されていないことを意味している可能性もあります)。 |
-| Unknown | パブリック Standard Load Balancer のリソース正常性状態はまだ更新されていません<br>("*不明*" 状態は、リソースがパブリック Standard Load Balancer に接続されていないことを意味している可能性もあります)。  |
-
-## <a name="limitations"></a>制限事項 
-
-- データ パスの可用性 (VIP 可用性) は、内部ロード バランサーのフロントエンドには使用できません。
+| 使用可能 | ご利用の Standard Load Balancer リソースは正常であり、使用可能です。 |
+| 使用不可 | ご利用の Standard Load Balancer リソースは正常ではありません。 **[Azure Monitor]**  >  **[メトリック]** の順に選択して、正常性を診断します<br>("*使用不可*" 状態は、ご利用の Standard Load Balancer にリソースが接続されていないことを意味している可能性もあります)。 |
+| Unknown | ご利用の Standard Load Balancer リソースの正常性状態はまだ更新されていません。<br>("*不明*" 状態は、ご利用の Standard Load Balancer にリソースが接続されていないことを意味している可能性もあります)。  |
 
 ## <a name="next-steps"></a>次の手順
 
@@ -212,5 +206,3 @@ Standard Load Balancer リソースの正常性状態は、 **[Monitor]\(監視\
 - [ロード バランサーの送信接続](https://aka.ms/lboutbound)の詳細を確認します。
 - [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) について学習する。
 - [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) および [REST API を使用してメトリックを取得する方法](/rest/api/monitor/metrics/list)を学習する。
-
-

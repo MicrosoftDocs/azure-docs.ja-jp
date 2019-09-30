@@ -10,22 +10,22 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 10d76bc1dd52f04cceb9f0952a755c55d90c6896
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9bb654f37ecc4fda46171e859adac0236b51e4b2
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562797"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70881483"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 
-Custom Voice は、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。 以下のリンクに従って、カスタム テキスト読み上げエクスペリエンスの作成を開始しましょう。
+[Custom Voice](https://aka.ms/customvoice) は、ブランド用に認識性の高い固有の音声を作成できる、一連のオンライン ツールです。 作業を始めるにあたって必要なのは、少数のオーディオ ファイルと関連する文字起こしだけです。 以下のリンクに従って、カスタム テキスト読み上げエクスペリエンスの作成を開始しましょう。
 
 ## <a name="whats-in-custom-voice"></a>Custom Voice の内容
 
 Custom Voice を開始する前に、Azure アカウントと Speech Services サブスクリプションが必要になります。 アカウントを作成したら、データの準備、モデルのトレーニングおよびテスト、音声品質の評価、そしてカスタム音声モデルのデプロイを行えます。
 
-下の図では、Custom Voice ポータルを使用してカスタム音声モデルを作成する手順を示しています。 リンクを使用して、詳細を確認してください。
+下の図では、[Custom Voice ポータル](https://aka.ms/customvoice)を使用してカスタム音声モデルを作成する手順を示しています。 リンクを使用して、詳細を確認してください。
 
 ![Custom Voice のアーキテクチャ図](media/custom-voice/custom-voice-diagram.png)
 

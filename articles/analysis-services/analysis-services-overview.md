@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 07/01/2019
+ms.date: 08/27/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 260d2774eecb42d0234c33e40b4f10680a4fbfbd
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 1f3552fe574291bf696e3b4418924c7e005d713e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932232"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259551"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -53,7 +53,7 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 |プラン  |QPU  |メモリ (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
-|B2    |    80     |    20     |
+|B2    |    80     |    16     |
 
 ### <a name="standard-tier"></a>Standard レベル
 
@@ -67,6 +67,8 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 |S4    |    400     |    100     |
 |S8*    |    320     |    200     |
 |S9*    |    640    |    400     |
+|S8v2*    |    640     |    200     |
+|S9v2*    |    1280    |    400     |
 
 \* すべてのリージョンで利用できるわけではありません。  
 
@@ -82,34 +84,35 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |East US     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
 |米国東部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
-|米国東部 2     |     S8、S9   |    1    |
+|米国東部 2     |     S8、S9、S8v2、S9v2   |    1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
 |米国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
-|米国西部     |    S8、S9   |    2  |
+|米国西部     |    S8、S9、S8v2、S9v2   |    2  |
 |米国西部 2    |    B1、B2、S0、S1、S2、S4、D1    |    3   |
-|米国西部 2    |    S8、S9  |    1     |
+|米国西部 2    |    S8、S9、S8v2、S9v2  |    1     |
 
 ### <a name="europe"></a>ヨーロッパ
 
 |リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |北ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1      |    7     |
+|北ヨーロッパ     |    S8v2、S9v2      |    3     |
 |英国南部     |    B1、B2、S0、S1、S2、S4、D1      |     1    |
 |西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1   |    7    |
-|西ヨーロッパ    |   S8、S9  |  1  |
+|西ヨーロッパ    |   S8、S9、S8v2、S9v2  |  1  |
 
 ### <a name="asia-pacific"></a>アジア太平洋 
 
 |リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |オーストラリア東部     |    B1、B2、S0、S1、S2、S4     |    3     |
-|オーストラリア東部     |    S8、S9    |    1     |
+|オーストラリア東部     |    S8、S9、S8v2、S9v2    |    1     |
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東日本     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
-|東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |   1      |
+|東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、S8v2、S9v2、D1     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 
 ## <a name="scale-to-your-needs"></a>ニーズに合わせてスケール可能
@@ -159,7 +162,7 @@ Azure Analysis Services は、機微なデータを複数のレベルのセキ�
 
 Azure Analysis Services ファイアウォールは、ルールに指定されている IP アドレス以外のすべてのクライアント接続をブロックします。 既定では、新しいサーバーに対してファイアウォールによる保護は有効になっていません。 ファイアウォール保護を有効にし、規則をサーバー プロビジョニング スクリプトの一部として構成するか、サーバーの作成直後にポータルで構成することをお勧めします。 許可する IP アドレスを個々のクライアント IP または範囲で指定してルールを構成してください。 Power BI (サービス) 接続を許可またはブロックすることもできます。 ファイアウォールとルールは、ポータルまたは PowerShell を使用して構成します。 詳細については、[サーバー ファイアウォールの構成](analysis-services-qs-firewall.md)に関するページをご覧ください。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 
 ユーザー認証は、[Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) によって処理されます。 ログインするとき、ユーザーは、データベースへのロール ベースのアクセスに基づく組織のアカウント ID を使用します。 ユーザー ID は、サーバーが存在しているサブスクリプションの既定の Azure Active Directory のメンバーである必要があります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 
@@ -222,7 +225,7 @@ Power BI、Excel、Reporting Services、サードパーティ製ツールなど�
 
 ## <a name="monitoring-and-diagnostics"></a>監視と診断
 
-Azure Analysis Services は、Azure メトリックと統合され、豊富なリソース固有のメトリックを提供します。これらは、サーバーのパフォーマンスと正常性を監視するために役立ちます。 詳細については、[サーバー メトリックの監視](analysis-services-monitor.md)に関する記事をご覧ください。 メトリックは、[Azure リソース診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)に記録されます。 監視を行ってログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートします。 詳細については、「[診断ログのセットアップ](analysis-services-logging.md)」を参照してください。
+Azure Analysis Services は、Azure メトリックと統合され、豊富なリソース固有のメトリックを提供します。これらは、サーバーのパフォーマンスと正常性を監視するために役立ちます。 詳細については、[サーバー メトリックの監視](analysis-services-monitor.md)に関する記事をご覧ください。 メトリックは、[Azure リソース診断ログ](../azure-monitor/platform/resource-logs-overview.md)に記録されます。 監視を行ってログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/) ([Azure](https://www.microsoft.com/cloud-platform/operations-management-suite) のサービス) にエクスポートします。 詳細については、「[診断ログのセットアップ](analysis-services-logging.md)」を参照してください。
 
 Azure Analysis Services は、[動的管理ビュー (DMV)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) の使用もサポートします。 SQL 構文に基づいて、DMV は、メタデータとサーバー インスタンスに関する監視情報を返すスキーマ行セットとインターフェイスします。
 
@@ -246,7 +249,7 @@ Azure Analysis Services のドキュメントでは、[GitHub Issues](https://do
 
 ## <a name="blogs"></a>ブログ
 
-内容は急速に変化しています。 [Analysis Services チーム ブログ](https://blogs.msdn.microsoft.com/analysisservices/)と [Azure ブログ](https://azure.microsoft.com/blog/)で最新情報を入手できます。
+内容は急速に変化しています。 [Power BI ブログ](https://powerbi.microsoft.com/blog/category/analysis-services/)と [Azure ブログ](https://azure.microsoft.com/blog/)で最新情報を入手できます。
 
 ## <a name="community"></a>コミュニティ
 

@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 568b00007f2c95a5a63c236863f0c599c6b6f86f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 604b859bc144331550db9b71e6b216e35fd2d88a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66161740"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140606"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
@@ -66,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **Azure PowerShell**。 「[Azure PowerShell のインストールおよび構成](/powershell/azure/install-Az-ps)」に記載されている手順に従います。
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>SQL データベースにデータ ソース テーブルを作成する
-1. SQL Server Management Studio を開きます。 **サーバー エクスプローラー**で目的のデータベースを右クリックし、**[新しいクエリ]** を選択します。
+1. SQL Server Management Studio を開きます。 **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 2. SQL データベースに対して次の SQL コマンドを実行し、`data_source_table` という名前のテーブルをデータ ソース ストアとして作成します。 
     
@@ -146,7 +145,7 @@ WHERE [TableName] = @TableName
 END
 ```
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 1. 後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 次のコマンド テキストを PowerShell にコピーし、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前を二重引用符で囲んで指定してコマンドを実行します。 例: `"adfrg"`。 
    
      ```powershell
@@ -190,14 +189,14 @@ END
     ```
 
 * Data Factory インスタンスを作成するには、Azure へのサインインに使用するユーザー アカウントが、共同作成者または所有者ロールのメンバーであるか、Azure サブスクリプションの管理者である必要があります。
-* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Storage、SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
+* 現在 Data Factory が利用できる Azure リージョンの一覧については、次のページで目的のリージョンを選択し、 **[分析]** を展開して **[Data Factory]** を探してください。[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/) データ ファクトリで使用するデータ ストア (Storage、SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 データ ストアおよびコンピューティング サービスをデータ ファクトリにリンクするには、リンクされたサービスをデータ ファクトリに作成します。 このセクションでは、ストレージ アカウントと SQL データベースに対するリンクされたサービスを作成します。 
 
 ### <a name="create-a-storage-linked-service"></a>ストレージのリンクされたサービスを作成するには
-1. 次の内容を記述した AzureStorageLinkedService.json という名前の JSON ファイルを C:\ADF フォルダーに作成します  (ADF フォルダーが存在しない場合は作成してください)。`<accountName>` と `<accountKey>` を、使用するストレージ アカウントの名前とキーに置き換えてからファイルを保存してください。
+1. 次の内容を記述した AzureStorageLinkedService.json という名前の JSON ファイルを C:\ADF フォルダーに作成します (ADF フォルダーが存在しない場合は作成してください)。`<accountName>` と `<accountKey>` を、使用するストレージ アカウントの名前とキーに置き換えてからファイルを保存してください。
 
     ```json
     {
@@ -231,7 +230,7 @@ END
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>SQL Database のリンクされたサービスを作成する
-1. 次の内容を記述した AzureSQLDatabaseLinkedService.json という名前の JSON ファイルを C:\ADF フォルダーに作成します  (ADF フォルダーが存在しない場合は作成してください)。&lt;server&gt;、&lt;database&gt;、&lt;user id&gt;、&lt;password&gt; を実際のサーバーの名前、データベース、ユーザー ID、パスワードに置き換えてからファイルを保存してください。 
+1. 次の内容を記述した AzureSQLDatabaseLinkedService.json という名前の JSON ファイルを C:\ADF フォルダーに作成します (ADF フォルダーが存在しない場合は作成してください)。&lt;server&gt;、&lt;database&gt;、&lt;user id&gt;、&lt;password&gt; を実際のサーバーの名前、データベース、ユーザー ID、パスワードに置き換えてからファイルを保存してください。 
 
     ```json
     {
@@ -524,7 +523,7 @@ END
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ``` 
-2. **Get-AzDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 *RunStartedAfter* パラメーターと *RunStartedBefore* パラメーターのプレースホルダーを、適切な時刻に置き換えてください。 このチュートリアルでは、*-RunStartedAfter "2017/09/14"* と *-RunStartedBefore "2017/09/15"* を使用します。
+2. **Get-AzDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 *RunStartedAfter* パラメーターと *RunStartedBefore* パラメーターのプレースホルダーを、適切な時刻に置き換えてください。 このチュートリアルでは、 *-RunStartedAfter "2017/09/14"* と *-RunStartedBefore "2017/09/15"* を使用します。
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"
@@ -644,7 +643,7 @@ END
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
     ```
-3. **Get-AzDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 *RunStartedAfter* パラメーターと *RunStartedBefore* パラメーターのプレースホルダーを、適切な時刻に置き換えてください。 このチュートリアルでは、*-RunStartedAfter "2017/09/14"* と *-RunStartedBefore "2017/09/15"* を使用します。
+3. **Get-AzDataFactoryV2ActivityRun** コマンドレットを実行し、すべてのアクティビティが正常に実行されている状態になるまでパイプラインの状態をチェックします。 *RunStartedAfter* パラメーターと *RunStartedBefore* パラメーターのプレースホルダーを、適切な時刻に置き換えてください。 このチュートリアルでは、 *-RunStartedAfter "2017/09/14"* と *-RunStartedBefore "2017/09/15"* を使用します。
 
     ```powershell
     Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $RunId -RunStartedAfter "<start time>" -RunStartedBefore "<end time>"

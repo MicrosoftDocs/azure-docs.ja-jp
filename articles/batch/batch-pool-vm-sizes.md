@@ -11,15 +11,15 @@ ms.service: batch
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 09/12/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f894a7438c56c3830eb62c516447195f10fc3b76
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e3d96ad7783c43dba6b69f6b11acccf790d0d6c9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094668"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983751"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Azure Batch プールのコンピューティング ノード用の VM サイズを選択する
 
@@ -45,16 +45,18 @@ VM サイズを選択する際には次のような例外と制限事項があ�
 | Av2 シリーズ | すべてのサイズ | Any |
 | B シリーズ | なし | 使用できません。 |
 | DC シリーズ | なし | 使用できません。 |
-| Dv2/DSv2 シリーズ | すべてのサイズ | Any |
+| Dv2、DSv2 シリーズ | すべてのサイズ | Any |
 | Dv3/DSv3 シリーズ | すべてのサイズ | Any |
-| [メモリ最適化済みのサイズ](../virtual-machines/linux/sizes-memory.md) | なし | 使用できません。 |
+| Ev3、Esv3 シリーズ | すべてのサイズ | Any |
 | Fsv2 シリーズ | すべてのサイズ | Any |
 | H シリーズ | すべてのサイズ | Any |
 | HB シリーズ<sup>2</sup> | すべてのサイズ | Any |
 | HC シリーズ<sup>2</sup> | すべてのサイズ | Any |
 | Ls シリーズ | すべてのサイズ | Any |
 | Lsv2 シリーズ | なし | 使用できません。 |
-| M シリーズ | Standard_M64ms (低優先度のみ)、Standard_M128s (低優先度のみ) | Any |  
+| M シリーズ | Standard_M64ms (低優先度のみ)、Standard_M128s (低優先度のみ) | Any |
+| Mv2 シリーズ | なし | 使用できません。 |
+| NC シリーズ | すべてのサイズ | Any |
 | NCv2 シリーズ<sup>2</sup> | すべてのサイズ | Any |
 | NCv3 シリーズ<sup>2</sup> | すべてのサイズ | Any |
 | ND シリーズ<sup>2</sup> | すべてのサイズ | Any |

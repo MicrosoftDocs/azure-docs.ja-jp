@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: e2e730c623b6ee802938b930c4874f6c4920cc64
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: fbda2f645308e30a6f408335b7a1b37095522921
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934397"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003314"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>チュートリアル:.NET で Windows 仮想マシンを使用して Azure Key Vault を使用する
 
@@ -33,7 +33,7 @@ Azure Key Vault は、API キーや、アプリケーション、サービス、
 > * 仮想マシンに対して[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする。
 > * VM ID にアクセス許可を割り当てます。
 
-始める前に、[Key Vault の基本的な概念](key-vault-whatis.md#basic-concepts)を確認してください。 
+始める前に、[Key Vault の基本的な概念](basic-concepts.md)を確認してください。 
 
 Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -47,7 +47,7 @@ Windows、Mac、Linux:
 
 Azure Key Vault では資格情報が安全に格納されます。そのため資格情報はコードに表示されません。 ただし、キーを取得するためには Azure Key Vault に対して認証を行う必要があります。 Key Vault に対して認証を行うには、資格情報が必要となります。 これは従来からあるブートストラップ問題のジレンマです。 マネージド サービス ID (MSI) は、このプロセスを簡素化する "_ブートストラップ ID_" を提供することによって、この問題を解決します。
 
-Azure サービス (Azure Virtual Machines、Azure App Service、Azure Functions など) に対して MSI を有効にすると、Azure によって[サービス プリンシパル](key-vault-whatis.md#basic-concepts)が作成されます。 MSI によってこれが Azure Active Directory (Azure AD) 内でサービスのインスタンスに対して行われ、サービス プリンシパルの資格情報がそのインスタンスに挿入されます。 
+Azure サービス (Azure Virtual Machines、Azure App Service、Azure Functions など) に対して MSI を有効にすると、Azure によって[サービス プリンシパル](basic-concepts.md)が作成されます。 MSI によってこれが Azure Active Directory (Azure AD) 内でサービスのインスタンスに対して行われ、サービス プリンシパルの資格情報がそのインスタンスに挿入されます。 
 
 ![MSI](media/MSI.png)
 

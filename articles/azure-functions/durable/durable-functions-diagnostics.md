@@ -2,19 +2,19 @@
 title: Durable Functions における診断 - Azure
 description: Azure Functions の Durable Functions 拡張機能に関する問題を診断する方法について説明します。
 services: functions
-author: ggailey777
+author: cgillum
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 2cc60ee2c73aa6858f68d6b13a895a0188bb5735
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d2badee3eaa5a9af48e89adc1b59beacc1571792
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098130"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933517"
 ---
 # <a name="diagnostics-in-durable-functions-in-azure"></a>Azure での Durable Functions における診断
 
@@ -32,7 +32,7 @@ Azure Functions の診断と監視には、[Application Insights](../../azure-mo
 
 * **hubName**: オーケストレーションが実行されているタスク ハブの名前。
 * **appName**: Function App の名前。 これは、複数の関数アプリで同じ Application Insights インスタンスを共有しているときなどに使用できます。
-* **slotName**: 現在の関数アプリが実行されている[デプロイ スロット](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/)。 デプロイ スロットを利用してオーケストレーションのバージョン管理を行う際に使用できます。
+* **slotName**: 現在の関数アプリが実行されている[デプロイ スロット](../functions-deployment-slots.md)。 デプロイ スロットを利用してオーケストレーションのバージョン管理を行う際に使用できます。
 * **functionName**: オーケストレーターまたはアクティビティ関数の名前。
 * **functionType**: 関数の種類 (**オーケストレーター**や**アクティビティ**など)。
 * **instanceId**: オーケストレーション インスタンスの一意の ID。
@@ -158,9 +158,26 @@ traces
 
 オーケストレーター関数から直接ログを書き込む際には、常にオーケストレーターの再生動作を考慮することが大切です。 たとえば次のオーケストレーター関数について考えてみます。
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>プリコンパイル済み C#
 
-```cs
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
+### <a name="c-script"></a>C# スクリプト
+
+```csharp
 public static async Task Run(
     DurableOrchestrationContext context,
     ILogger log)
@@ -211,6 +228,23 @@ Done!
 
 再生以外の実行だけをログに記録する場合は、`IsReplaying` が `false` である場合にのみログを記録する条件式を記述してください。 先ほどの例に再生の条件判定を加えます。
 
+#### <a name="precompiled-c"></a>プリコンパイル済み C#
+
+```csharp
+public static async Task Run(
+    [OrchestrationTrigger] DurableOrchestrationContext context,
+    ILogger log)
+{
+    if (!context.IsReplaying) log.LogInformation("Calling F1.");
+    await context.CallActivityAsync("F1");
+    if (!context.IsReplaying) log.LogInformation("Calling F2.");
+    await context.CallActivityAsync("F2");
+    if (!context.IsReplaying) log.LogInformation("Calling F3");
+    await context.CallActivityAsync("F3");
+    log.LogInformation("Done!");
+}
+```
+
 #### <a name="c"></a>C#
 
 ```cs
@@ -257,7 +291,7 @@ Done!
 
 オーケストレーションのカスタム状態を使用すると、オーケストレーター関数のカスタム状態値を設定できます。 この状態は、HTTP status query API または `DurableOrchestrationClient.GetStatusAsync` API によって提供されます。 オーケストレーションのカスタム状態により、オーケストレーター関数のより充実した監視が可能になります。 たとえば、オーケストレーター関数コードに `DurableOrchestrationContext.SetCustomStatus` 呼び出しを含めて、実行時間の長い操作の進行状況を更新できます。 クライアント (Web ページや他の外部システムなど) は、HTTP status query API に定期的に照会して豊富な進行状況情報を取得できます。 `DurableOrchestrationContext.SetCustomStatus` を使用したサンプルを次に示します。
 
-### <a name="c"></a>C#
+### <a name="precompiled-c"></a>プリコンパイル済み C#
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext context)
@@ -315,12 +349,13 @@ GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 Azure Functions ではデバッグ関数コードが直接サポートされており、それと同じ機能が Durable Functions でも利用できます。Azure 内で実行するか、ローカルで実行するかは関係ありません。 ただしデバッグの際は、いくつかの動作に注意してください。
 
-* **再生**: オーケストレーター関数は、新しい入力が受信されると定期的に再生されます。 つまり、オーケストレーター関数の実行が "*論理上*" は 1 回でも、複数回、同じブレークポイントに到達する可能性があります。特に、関数コードの最初の方にブレークポイントが設定されていると、その傾向が強くなります。
-* **待機**: `await` に到達した場合は常に、Durable Task Framework ディスパッチャーに制御が戻されます。 特定の `await` に到達したのが初めてである場合、関連するタスクは "*決して*" 再開されません。 タスクが再開されない以上、await を "*ステップ オーバー*" (Visual Studio では F10) することは実質的に不可能です。 ステップ オーバーが機能するのは、タスクが再生されているときだけです。
-* **メッセージングのタイムアウト**: Durable Functions は、オーケストレーター関数とアクティビティ関数の両方の実行を開始するために内部的にキュー メッセージを使用します。 マルチ VM 環境では、長時間デバッグにブレークインすると、別の VM によってメッセージが取り出され、二重実行となる可能性があります。 この動作は、キューによってトリガーされる通常の関数でも起こりますが、あえてこのコンテキストで指摘したのは、キューが実装の要となる動作であるためです。
+* **再生**: オーケストレーター関数は、新しい入力を受信すると、定期的に[再生](durable-functions-orchestrations.md#reliability)されます。 つまり、オーケストレーター関数の実行が "*論理上*" は 1 回でも、複数回、同じブレークポイントに到達する可能性があります。特に、関数コードの最初の方にブレークポイントが設定されていると、その傾向が強くなります。
+* **待機**: オーケストレーター関数内で `await` に到達した場合は常に、Durable Task Framework ディスパッチャーに制御が戻されます。 特定の `await` に到達したのが初めてである場合、関連するタスクは "*決して*" 再開されません。 タスクが再開されない以上、await を "*ステップ オーバー*" (Visual Studio では F10) することは実質的に不可能です。 ステップ オーバーが機能するのは、タスクが再生されているときだけです。
+* **メッセージングのタイムアウト**: Durable Functions は、オーケストレーター関数、アクティビティ関数、およびエンティティ関数の実行を開始するために、内部的にキュー メッセージを使用します。 マルチ VM 環境では、長時間デバッグにブレークインすると、別の VM によってメッセージが取り出され、二重実行となる可能性があります。 この動作は、キューによってトリガーされる通常の関数でも起こりますが、あえてこのコンテキストで指摘したのは、キューが実装の要となる動作であるためです。
+* **停止と開始**: Durable Functions のメッセージは、デバッグ セッション間で保持されます。 持続的関数の実行中にデバッグを停止し、ローカル ホスト プロセスを終了すると、その関数は今後のデバッグ セッションで自動的に再実行される可能性があります。 これは、予期されていない場合、混乱を招くことがあります。 この動作を回避する 1 つの方法は、デバッグ セッション間に[内部ストレージ キュー](durable-functions-perf-and-scale.md#internal-queue-triggers)のすべてのメッセージを消去することです。
 
 > [!TIP]
-> ブレークポイントを設定するとき、再生以外の実行でのみ停止させる必要がある場合は、`IsReplaying` が `false` の場合にのみ停止させる条件付きブレークポイントを設定できます。
+> オーケストレーター関数にブレークポイントを設定するとき、再生以外の実行でのみ停止させる必要がある場合は、`IsReplaying` が `false` の場合にのみ停止させる条件付きブレークポイントを設定できます。
 
 ## <a name="storage"></a>Storage
 
@@ -336,4 +371,4 @@ Azure Functions ではデバッグ関数コードが直接サポートされて�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [持続的タイマーの使用方法](durable-functions-timers.md)
+> [Azure Functions での監視の詳細を学習する](../functions-monitoring.md)

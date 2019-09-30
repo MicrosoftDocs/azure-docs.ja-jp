@@ -21,6 +21,8 @@
       href: quickstart-js-vscode.md
 - name: チュートリアル
   items:
+    - name: 関数チェーン
+      href: durable-functions-sequence.md
     - name: ファンイン/ファンアウト
       href: durable-functions-cloud-backup.md
     - name: モニター
@@ -37,46 +39,56 @@
       href: ../functions-cli-samples.md
 - name: 概念
   items:
-    - name: パターンと概念
-      href: durable-functions-concepts.md
-    - name: 関数の種類と機能
+    - name: 関数の種類
       href: durable-functions-types-features-overview.md
-    - name: バインド
-      href: durable-functions-bindings.md
+    - name: オーケストレーション
+      href: durable-functions-orchestrations.md
+    - name: オーケストレーター コードの制約
+      href: durable-functions-code-constraints.md
+    - name: サブオーケストレーション
+      href: durable-functions-sub-orchestrations.md
+    - name: カスタム オーケストレーションの状態
+      href: durable-functions-custom-orchestration-status.md
     - name: タイマー
       href: durable-functions-timers.md
     - name: 外部イベント
       href: durable-functions-external-events.md
-    - name: サブオーケストレーション
-      href: durable-functions-sub-orchestrations.md
+    - name: エラー処理
+      href: durable-functions-error-handling.md
+    - name: 永続的オーケストレーション
+      href: durable-functions-eternal-orchestrations.md
+    - name: シングルトン オーケストレーション
+      href: durable-functions-singletons.md
+    - name: HTTP 機能
+      href: durable-functions-http-features.md
+    - name: ステートフル エンティティ
+      href: durable-functions-entities.md
     - name: タスク ハブ
       href: durable-functions-task-hubs.md
-    - name: 信頼性の高い実行
-      href: durable-functions-checkpointing-and-replay.md
+    - name: インスタンス管理
+      href: durable-functions-instance-management.md
     - name: バージョン管理
       href: durable-functions-versioning.md
+    - name: パフォーマンスとスケール
+      href: durable-functions-perf-and-scale.md
+    - name: 高可用性
+      href: durable-functions-disaster-recovery-geo-distribution.md
+- name: リファレンス
+  items:
+    - name: host.json 設定
+      href: 'durable-functions-bindings.md#host-json'
+    - name: バインド
+      href: durable-functions-bindings.md
+    - name: HTTP API
+      href: durable-functions-http-api.md
 - name: ハウツー ガイド
   items:
-    - name: 計画と設計
-      items:
-        - name: 関数チェーン
-          href: durable-functions-sequence.md
-        - name: 永続的オーケストレーション
-          href: durable-functions-eternal-orchestrations.md
-        - name: シングルトン オーケストレーション
-          href: durable-functions-singletons.md
-        - name: パフォーマンスとスケール
-          href: durable-functions-perf-and-scale.md
-        - name: 高可用性
-          href: durable-functions-disaster-recovery-geo-distribution.md
     - name: 開発
       items:
         - name: Azure Portal での作成
           href: durable-functions-create-portal.md
         - name: 接続の管理
           href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: エラー処理
-          href: durable-functions-error-handling.md
         - name: 単体テスト
           href: durable-functions-unit-testing.md
         - name: Web ジョブとしての作成
@@ -89,24 +101,14 @@
           href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
         - name: パッケージから実行
           href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: 管理
-      items:
-        - name: インスタンス管理
-          href: durable-functions-instance-management.md
     - name: 監視
-      items:
-        - name: 関数の監視
-          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-        - name: カスタム オーケストレーションの状態
-          href: durable-functions-custom-orchestration-status.md
-    - name: トラブルシューティング
       items:
         - name: 診断
           href: durable-functions-diagnostics.md
-- name: リファレンス
-  items:
-    - name: HTTP API
-      href: durable-functions-http-api.md
+        - name: 監視
+          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: 価格
+          href: durable-functions-billing.md
 - name: リソース
   items:
     - name: Microsoft Learn でスキルを身に付ける

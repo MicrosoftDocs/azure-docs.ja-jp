@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 47be738a4e5dcec144d482c28e39cbe950bba3e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f0935ccc4c4274bfab0c589ef158d4ea0bef455c
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60748936"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575328"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのコンピューティングの管理
 Azure SQL Data Warehouse でコンピューティング リソースを管理する方法について説明します。 また、データ ウェアハウスを一時停止してコストを削減したり、データ ウェアハウスをパフォーマンス需要に応じてスケーリングしたりする方法についても説明します。 
@@ -40,7 +40,7 @@ SQL Data Warehouse のアーキテクチャではストレージとコンピュ�
 | 400  | 4                  | 15                           |
 | 500  | 5                  | 12                           |
 | 600  | 6                  | 10                           |
-| 1,000 | 10                 | 6                            |
+| 1000 | 10                 | 6                            |
 | 1200 | 12                 | 5                            |
 | 1500 | 15                 | 4                            |
 | 2000 | 20                 | 3                            |
@@ -115,4 +115,4 @@ SQL Data Warehouse を一時停止またはスケールすると、要求の一�
 
 
 ## <a name="next-steps"></a>次の手順
-コンピューティング リソースの管理のもう一つの側面は、個々のクエリに対して異なるコンピューティング リソースを割り当てることです。 詳細については、[「ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。
+[コンピューティングの管理](manage-compute-with-azure-functions.md)については、ハウツー ガイドを参照してください。コンピューティング リソースの管理の別の側面として、個々のクエリへの異なるコンピューティング リソースの割り当てがあります。 詳細については、[「ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。

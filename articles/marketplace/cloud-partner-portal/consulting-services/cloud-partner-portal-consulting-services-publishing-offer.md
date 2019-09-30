@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pabutler
-ms.openlocfilehash: a033ad80b59dc29b6d08624dee400d496eb28005
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c75664e558602429250420f1896b75a74546e67
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942845"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145455"
 ---
 # <a name="azure-and-dynamics-365-consulting-service-offer"></a>Azure と Dynamics 365 のコンサルティング サービス プラン
 
@@ -33,6 +33,7 @@ Microsoft のいずれかのマーケットプレースに発行することに�
 
 - 「[コンサルティング サービスの前提条件](./cpp-consulting-service-prerequisites.md)」には、コンサルティング サービス オファーを発行するための要件が記載されています。
  
+    - Microsoft Azure
     - Dynamics 365 for Customer Engagement 
     - Dynamics 365 for Finance & Operations 
     - Dynamics 365 Business Central 

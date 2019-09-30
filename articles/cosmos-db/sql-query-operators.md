@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: eecc1522f8c260286c7dd7fc4c2e58d5d8caa8fb
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 899355ad7331a3df8cd5d647a573dc15e3a0bb14
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343259"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003387"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Azure Cosmos DB の演算子
 
@@ -97,6 +97,6 @@ ms.locfileid: "67343259"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [キーワード](sql-query-keywords.md)
 - [SELECT 句](sql-query-select.md)

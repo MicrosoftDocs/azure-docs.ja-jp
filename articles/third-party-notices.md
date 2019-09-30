@@ -1,13 +1,16 @@
 ---
+title: 法的通知
+author: SyntaxC4
+ms.author: cfowler
 ms.service: azure
 ms.topic: conceptual
 ms.date: 03/08/2019
-ms.openlocfilehash: 2b1fc99fe179187c6431d9a999628db76885e553
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 14f78c9c7e5f43fb28557933b9a89cfb5c2cb5db
+ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60884276"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69543884"
 ---
 # <a name="legal-notices"></a>法的通知
 

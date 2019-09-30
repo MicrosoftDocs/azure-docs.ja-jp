@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cc4ff5fb528760be8c910f3da7d5691a6aae0d8
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: c75ec0ec212c99e474d13892178acbdc14e5f386
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67387069"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075286"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Azure AD の条件付きアクセスの導入
 
 モバイルを重視したクラウド中心の世界では、ユーザーはどこからでも、さまざまな種類のデバイスやアプリを使用して組織のリソースにアクセスできます。 その結果、だれがリソースにアクセスできるかに重点を置くだけでは十分ではなくなっています。 だれがアクセスできるかを制御したり、ユーザーがどこにいるか、どのデバイスが使用されているか、などを識別したりできます。
 
-この制御を提供するために、**Azure Active Directory (AD) の条件付きアクセス**では、アプリケーションにアクセスするためユーザーがに満たす必要がある、多要素認証 (MFA) などの条件を指定できます。 条件付きアクセス ポリシーを使用して、承認されたユーザー (クラウド アプリへのアクセスを許可されているユーザー) が特定の条件下でクラウド アプリにアクセスできる方法を制御します。 詳細については、[Azure Active Directory の条件付きアクセス](overview.md#conditional-access-policies)に関するページを参照してください。
+この制御を提供するために、**Azure Active Directory (AD) の条件付きアクセス**では、アプリケーションにアクセスするためユーザーがに満たす必要がある、多要素認証 (MFA) などの条件を指定できます。 条件付きアクセス ポリシーを使用して、承認されたユーザー (クラウド アプリへのアクセスを許可されているユーザー) が特定の条件下でクラウド アプリにアクセスできる方法を制御します。 詳細については、[Azure Active Directory の条件付きアクセス](overview.md)に関するページを参照してください。
 
 ## <a name="key-benefits"></a>主な利点
 

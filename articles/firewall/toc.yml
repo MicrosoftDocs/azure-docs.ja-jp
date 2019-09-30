@@ -10,7 +10,7 @@
     - name: デプロイと構成
       href: tutorial-firewall-deploy-portal.md
     - name: ハイブリッド ネットワークでのデプロイ
-      href: tutorial-hybrid-ps.md
+      href: tutorial-hybrid-portal.md
     - name: DNAT で受信トラフィックをフィルター処理する
       href: tutorial-firewall-dnat.md
     - name: 診断ログの監視
@@ -39,6 +39,8 @@
   items:
     - name: Azure PowerShell を使用したデプロイ
       href: deploy-ps.md
+    - name: ハイブリッド ネットワークでのデプロイ - PowerShell
+      href: tutorial-hybrid-ps.md
     - name: Azure CLI を使用したデプロイ
       href: deploy-cli.md
     - name: テンプレートを使用したデプロイ

@@ -100,6 +100,8 @@
       href: acs-aks-migration.md
     - name: サポートされている Kubernetes バージョン
       href: supported-kubernetes-versions.md
+    - name: ホスト OS でのセキュリティ強化
+      href: security-hardened-vm-host-image.md
 - name: ハウツー ガイド
   items:
     - name: クラスターの操作
@@ -116,7 +118,7 @@
         - name: AKS クラスターの削除
           href: '/cli/azure/aks#az-aks-delete'
           maintainContext: true
-        - name: AKS クラスターを備えた ACR の作成 (プレビュー)
+        - name: ACR と AKS クラスターの統合
           href: cluster-container-registry-integration.md
         - name: 仮想ノードの作成
           items:
@@ -149,6 +151,8 @@
           href: azure-files-volume.md
         - name: NFS サーバー - 静的
           href: azure-nfs-volume.md
+        - name: Azure NetApp Files
+          href: azure-netapp-files.md
     - name: ネットワークを構成する
       items:
         - name: 既存の仮想ネットワークの作成または使用
@@ -159,7 +163,7 @@
               href: configure-azure-cni.md
         - name: 内部ロード バランサーを作成します。
           href: internal-lb.md
-        - name: Standard Load Balancer (プレビュー) の使用
+        - name: Standard Load Balancer の使用
           href: load-balancer-standard.md
         - name: 静的 IP アドレスの使用
           href: static-ip.md
@@ -199,7 +203,7 @@
           href: ../governance/policy/concepts/rego-for-aks.md?toc=/azure/aks/toc.json
         - name: クラスターのサービス プリンシパルの資格情報の更新
           href: update-credentials.md
-        - name: クラスターのエグレス トラフィックの制限および制御 (プレビュー)
+        - name: クラスターのエグレス トラフィックの制限および制御
           href: limit-egress-traffic.md
         - name: Azure Active Directory の統合の有効化
           items:
@@ -306,6 +310,10 @@
               href: istio-install.md
             - name: インテリジェントなルーティングとカナリア リリース
               href: istio-scenario-routing.md
+        - name: Hashicorp Consul Connect の使用
+          items:
+            - name: インストールと構成
+              href: consul-install.md
         - name: Azure Database for PostgreSQL の使用
           href: ../postgresql/concepts-aks.md
           maintainContext: true

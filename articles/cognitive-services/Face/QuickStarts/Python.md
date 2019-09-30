@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 09/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 8e45c8924bbc5cf50877e6c7656dacd7971f59b2
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a00ec77148433d64f2980b1bb47d753d70a5ec20
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606799"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70859021"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>クイック スタート:Face REST API と Python を使用して画像から顔を検出する
 
@@ -43,7 +43,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. テキスト エディターに次のコードをコピーします。
 1. 必要に応じて、コードに次の変更を加えます。
     1. `subscription_key` 値を、サブスクリプション キーに置き換えます。
-    1. 必要に応じて、`face_api_url` 値を、サブスクリプション キーを取得した Azure リージョンの Face API リソースのエンドポイント URL に置き換えます。
+    1. `face_api_url` の値を編集して、お使いの Face API リソースのエンドポイント URL を含めます。
     1. 必要に応じて、`image_url` 値を、分析したい別の画像の URL に置き換えます。
 1. `.py` 拡張子のファイルとして、コードを保存します。 たとえば、「 `detect-face.py` 」のように入力します。
 1. コマンド プロンプト ウィンドウを開きます。
@@ -53,10 +53,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 import requests
 import json
 
+# set to your own subscription key value
 subscription_key = None
 assert subscription_key
 
-face_api_url = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect'
+# replace <My Endpoint String> with the string from your endpoint URL
+face_api_url = 'https://<My Endpoint String>.com/face/v1.0/detect'
 
 image_url = 'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg'
 

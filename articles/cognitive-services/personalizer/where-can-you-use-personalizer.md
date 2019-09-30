@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/13/2019
 ms.author: diberry
-ms.openlocfilehash: 465fba3a466aceaf9ef7b71e4b1957bfdbcad766
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: 87065709b16a5a0c7076584e8fc33c3830319e4f
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663651"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999642"
 ---
 # <a name="where-can-you-use-personalizer"></a>Personalizer を使用できる状況
 

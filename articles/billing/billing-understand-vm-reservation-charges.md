@@ -11,10 +11,10 @@ ms.workload: na
 ms.date: 07/11/2019
 ms.author: banders
 ms.openlocfilehash: 191160035f516d818d5537c5c47f9604998c46f7
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67849988"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure の予約割引が仮想マシンに適用されるしくみ

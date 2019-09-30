@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 21e2d3f75028d239175effa7a3608cc18ccfc95c
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 5d0c43fbcc1c59c3281f412aad96a3942a5c79b1
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67305302"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "70392914"
 ---
 **データの収集量と保持期間** 
 
@@ -28,7 +28,7 @@ ms.locfileid: "67305302"
 
 **サブスクリプションあたりのワークスペースの数。**
 
-| 価格レベル    | ワークスペースの制限 | 説明
+| Pricing tier    | ワークスペースの制限 | 説明
 |:---|:---|:---|
 | Free レベル  | 10 | この制限を増やすことはできません。 |
 | その他のすべてのレベル | 制限なし | リソース グループ内のリソースの数とサブスクリプションあたりのリソース グループの数によって制限されます。 |
@@ -51,8 +51,7 @@ ms.locfileid: "67305302"
 
 | Category | 制限 | 説明 |
 |:---|:---|:---|
-| 非集計データの場合に返されるレコードの最大数 | 5,000 | |
-| 集計データの場合のレコードの最大数 | 500,000 | 集計データは、`summarize` コマンドを含む検索です。 |
+| 1 つのクエリで返されるレコードの最大数 | 500,000 | |
 | 返されるデータの最大サイズ | 64,000,000 バイト (~61 MiB)| |
 | クエリの最大実行時間 | 10 分 | 詳細については、[タイムアウト](https://dev.loganalytics.io/documentation/Using-the-API/Timeouts)に関するページをご覧ください。  |
 | 最大要求レート | AAD ユーザーまたはクライアントの IP アドレスごとに、30 秒あたり 200 件の要求 | 詳細については、[レート制限](https://dev.loganalytics.io/documentation/Using-the-API/Limits)に関するページをご覧ください。 |
@@ -63,7 +62,7 @@ ms.locfileid: "67305302"
 |:---|:---|:---|
 | テーブルの最大列数         | 500 | |
 | 列名の最大文字数 | 500 | |
-| 容量の上限に達しているリージョン | 米国中西部 | このリージョンは一時的な容量の上限に達しているため、現在新しいワークスペースを作成できません。 この制限は、2019 年 9 月末までに対処される予定です。 |
+| 容量の上限に達しているリージョン | 米国中西部 | このリージョンは一時的な容量の上限に達しているため、現在新しいワークスペースを作成できません。 この制限は、2019 年 10 月末までに対処される予定です。 |
 | データのエクスポート | 現在、利用できません | データの集計とエクスポートには Azure Function または Logic App を使用してください。 | 
 
 >[!NOTE]

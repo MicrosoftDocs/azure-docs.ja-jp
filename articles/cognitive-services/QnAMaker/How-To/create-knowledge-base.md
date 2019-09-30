@@ -1,5 +1,5 @@
 ---
-title: ナレッジ ベースの作成 - QnA Maker
+title: クイック スタート:ナレッジ ベースの作成 - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker API サービス ポータルを使用して、おしゃべり機能を備えるナレッジ ベースを作成します。 これにより、アプリが魅力的になります。 上位の事前設定済みのおしゃべりのセットをボットのおしゃべりの開始点として KB に追加すると、最初から作成するよりもコストと時間を節約することができます。
 services: cognitive-services
@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: conceptual
-ms.date: 05/10/2019
+ms.topic: quickstart
+ms.date: 09/04/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: b2cacc8cc6d7c22a93f46007e8150a4e55dc7650
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 798bbb725d4764c5ec7a1d69770e9508af0fdf5a
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967710"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70376205"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>クイック スタート:QnA Maker API サービス ポータルを使用してナレッジ ベースを作成する
 
@@ -45,24 +45,21 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![データ ソースの設定](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - サービスに**名前**を付けます。 重複した名前と特殊文字がサポートされています。
-    - 抽出するデータの URL を追加します。 サポートされているソースの種類については[こちら](../Concepts/data-sources-supported.md)をご覧ください。
-    - 抽出するデータのファイルをアップロードします。 追加できるドキュメントの数については、[価格情報](https://aka.ms/qnamaker-pricing)をご覧ください。
-    - QnA を手動で追加する場合、上の図に示した**手順 4** は省略できます。
+1. サービスには `my first kb` などの**名前**を付けます。 重複した名前と特殊文字がサポートされています。
 
-1. **おしゃべり**を KB に追加します。 いずれかのパーソナリティを選択して、おしゃべりのサポートをボットに追加します。 
+1. QnA Maker のトラブルシューティング ページを URL `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting` として追加し、`+ Add URL` を選択します。 サポートされているソースの種類については[こちら](../Concepts/data-sources-supported.md)をご覧ください。 このクイックスタートでは、抽出するデータの**ファイルをアップロードしないでください**。 追加できるドキュメントの数については、[価格情報](https://aka.ms/qnamaker-pricing)をご覧ください。
 
-    ![おしゃべりを KB に追加する](../media/qnamaker-how-to-create-kb/create-kb-chit-chat.png)
+1. " **_プロ_" のおしゃべり**を KB に追加します。 
 
 1. **[Create your KB]\(KB の作成\)** を選択します。
 
     ![KB の作成](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-1. データが抽出されるまで数分かかります。
+1. データが抽出されるまでに数分かかることがあります。
 
     ![抽出](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-1. ナレッジ ベースが正常に作成されると、**ナレッジ ベース** ページにリダイレクトされます。
+1. ナレッジ ベースが正常に作成されると、 **[ナレッジ ベース]** ページにリダイレクトされます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -70,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-コスト削減対策として、QnA Maker 用に作成する Azure リソースのすべてではなく、一部を[共有](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker)することができます。
+コスト削減対策として、QnA Maker 用に作成する Azure リソースのすべてではなく、一部を[共有](set-up-qnamaker-service-azure.md#share-existing-services-with-qna-maker)することができます。
 
 > [!div class="nextstepaction"]
-> [Add chit-chat personal](./chit-chat-knowledge-base.md)\(おしゃべり個人の追加\)
+> [メタデータによる質問の追加](../quickstarts/add-question-metadata-portal.md)

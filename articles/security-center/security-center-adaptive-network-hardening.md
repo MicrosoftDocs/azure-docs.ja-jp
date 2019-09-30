@@ -3,9 +3,8 @@ title: Azure Security Center でのアダプティブ ネットワークのセ�
 description: " Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を有効にする方法を説明します。 "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: 09d62d23-ab32-41f0-a5cf-8d80578181dd
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 2f82f3fe6f5cb6808ba606125ee0869475a60274
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 7de0d7bacdf2194b3e1a303842c56a6a017d8d62
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295885"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202768"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能
 Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。

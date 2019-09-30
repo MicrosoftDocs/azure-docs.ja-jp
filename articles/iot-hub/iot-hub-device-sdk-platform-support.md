@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: robinsh
-ms.openlocfilehash: 1fbaa54be4419d493d5179a6d6d0884393c8138a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 9a64c6e476910ab4fe983fa949680f05fdded3ae
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967323"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70161855"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Azure IoT SDK プラットフォームのサポート
 
@@ -71,10 +71,10 @@ Microsoft はさまざまなオペレーティング システム/プラット�
 
 ### <a name="nodejs-sdk"></a>Node.js SDK
 
-| OS                                           | Arch | Node バージョン |
-|----------------------------------------------|------|--------------|
-| Ubuntu 16.04 LTS (Node 6 Docker イメージを使用) | X64  | Node 6       |
-| Windows Server 2016                          | X64  | Node 6       |
+| OS                                           | Arch | Node バージョン    |
+|----------------------------------------------|------|-----------------|
+| Ubuntu 16.04 LTS (Node 6 Docker イメージを使用) | X64  | LTS と最新 |
+| Windows Server 2016                          | X64  | LTS と最新 |
 
 ### <a name="java-sdk"></a>Java SDK
 

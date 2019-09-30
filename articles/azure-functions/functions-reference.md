@@ -1,23 +1,20 @@
 ---
 title: Azure Functions の開発に関するガイダンス | Microsoft Docs
 description: プログラミング言語とバインドを問わず、Azure での関数開発に必要な Azure Functions の概念とテクニックについて説明します。
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 keywords: 開発者向けガイド, Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: reference
+ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 2715aeae5d10241703fa876557d1edcea1723874
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
+ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874954"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69982632"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインドに固有の詳細を学習する前に、それらすべてに適用されるこの概要をお読みください。
@@ -44,7 +41,7 @@ function.json ファイルには、関数のトリガー、バインド、その
 }
 ```
 
-その他の例については、[Function.json の wiki ページ](https://github.com/Azure/azure-functions-host/wiki/function.json)を参照してください。
+詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md)」をご覧ください。
 
 `bindings` プロパティで、トリガーとバインドの両方を構成します。 各バインドは、いくつかの一般的な設定と、バインドの特定の種類に固有の設定を共有します。 すべてのバインドには次の設定が必要です。
 
@@ -55,7 +52,7 @@ function.json ファイルには、関数のトリガー、バインド、その
 | `name` |string |関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
 
 ## <a name="function-app"></a>関数アプリ
-関数アプリからは、関数が実行される、Azure における実行コンテキストが提供されます。 関数アプリは、まとめて管理、デプロイ、およびスケールされる 1 つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、継続的なデプロイ、およびランタイムのバージョンを共有します。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 
+関数アプリからは、関数が実行される、Azure における実行コンテキストが提供されます。 そのため、これが関数のデプロイと管理の単位となります。 関数アプリは、まとめて管理、デプロイ、およびスケールされる 1 つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、デプロイ方法、およびランタイム バージョンを共有します。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 詳しくは、[関数アプリの管理方法](functions-how-to-use-azure-function-app-settings.md)に関する記事をご覧ください。 
 
 > [!NOTE]
 > 関数アプリ内のすべての関数は、同じ言語で作成する必要があります。 Azure Functions ランタイムの[以前のバージョン](functions-versions.md)では、これは必須ではありませんでした。

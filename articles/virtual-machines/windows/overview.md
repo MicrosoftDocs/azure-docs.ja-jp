@@ -52,12 +52,12 @@ Azure でアプリケーション インフラストラクチャを構築する�
 
 Azure を使用してオペレーティング システム ディスクを作成する場合、コンピューター名と仮想マシン名は同じになります。 以前構成されたオペレーティング システムが含まれる[独自のイメージをアップロードして使用](upload-generalized-managed.md)し、それを基に仮想マシンを作成する場合は、別の名前にすることができます。 独自のイメージ ファイルをアップロードするときは、オペレーティング システムのコンピューター名と仮想マシン名を同じにすることをお勧めします。
 
-### <a name="locations"></a>Locations
+### <a name="locations"></a>場所
 Azure で作成されるすべてのリソースは、世界各地の複数の[地理的リージョン](https://azure.microsoft.com/regions/)に分散されます。 通常、このリージョンは VM の作成時には**場所**と呼ばれます。 VM の場合、この場所によって仮想ハード ディスクの格納場所を指定します。
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 
-| Method | 説明 |
+| 方法 | 説明 |
 | --- | --- |
 | Azure ポータル |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzLocation](https://docs.microsoft.com/powershell/module/az.resources/get-azlocation) コマンドを使用します。 |
@@ -79,7 +79,7 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 
 次の表に、イメージに関する情報を見つける方法をいくつか示します。
 
-| Method | 説明 |
+| 方法 | 説明 |
 | --- | --- |
 | Azure ポータル |値は、使用するイメージを選択する際に自動的に指定されます。 |
 | Azure PowerShell |[Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) -Location *location*<BR>[Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) -Location *location* -Publisher *publisherName*<BR>[Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) -Location *location* -Publisher *publisherName* -Offer *offerName* |
@@ -114,7 +114,7 @@ VM を作成する際、いくつかの選択肢があります。 どの選択�
 
 次の表は、VM の作成を開始するうえでの情報を提供します。
 
-| Method | 記事 |
+| 方法 | 記事 |
 | --- | --- |
 | Azure ポータル |[ポータルを使用して Windows を実行する仮想マシンを作成する](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | テンプレート |[リソース マネージャー テンプレートで Windows 仮想マシンを作成する](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
@@ -131,7 +131,7 @@ VM は、ブラウザーベースのポータル、スクリプトがサポー�
 ### <a name="get-information-about-a-vm"></a>VM に関する情報の取得
 次の表に、VM に関する情報の取得方法の一部を示します。
 
-| Method | 説明 |
+| 方法 | 説明 |
 | --- | --- |
 | Azure ポータル |ハブ メニューの **[仮想マシン]** をクリックし、一覧から VM を選択します。 その VM のブレードで、概要情報を確認したり、値の設定やメトリックの監視を実行したりできます。 |
 | Azure PowerShell |PowerShell を使用して VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 |

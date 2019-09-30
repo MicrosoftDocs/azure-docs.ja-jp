@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 240b2110db66af0982e4e1bf95d3715cbe733a60
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816517"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996614"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Azure Files のパフォーマンスに関する問題のトラブルシューティング
 
@@ -85,6 +85,7 @@ Premium 共有の既定のクォータは 100 GiB であり、これは 100 ベ�
 
 - より大きなコアの VM を取得すればスループットの向上に役立つ可能性があります。
 - 複数の VM からクライアント アプリケーションを実行すると、スループットが向上します。
+
 - 可能な場合は、REST API を使用します。
 
 ## <a name="throughput-on-linux-clients-is-significantly-lower-when-compared-to-windows-clients"></a>Linux クライアントでのスループットは、Windows クライアントと比較すると大幅に低下します。
@@ -95,8 +96,9 @@ Premium 共有の既定のクォータは 100 GiB であり、これは 100 ベ�
 
 ### <a name="workaround"></a>対処法
 
-- 複数の VM 間で負荷を分散します
+- 複数の VM 間で負荷を分散します。
 - 同じ VM 上で、**nosharesock** オプションで複数のマウント ポイントを使用し、これらのマウント ポイント間で負荷を分散します。
+- Linux では、すべての fsync 呼び出しで SMB フラッシュが強制されないようにするために、**nostrictsync** オプションでのマウントを試してみてください。 Azure Files の場合、このオプションはデータの一貫性に干渉することはありませんが、ディレクトリの一覧に古いファイルのメタデータが表示される可能性があります (**ls -l** コマンド)。 ファイルのメタデータのクエリを直接実行する (**stat** コマンド) と、最新のファイルのメタデータが返されます。
 
 ## <a name="high-latencies-for-metadata-heavy-workloads-involving-extensive-openclose-operations"></a>多大な開く/閉じる操作に関連するメタデータの過大なワークロードの長い待機時間。
 

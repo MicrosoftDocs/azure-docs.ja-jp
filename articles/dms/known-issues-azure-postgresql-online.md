@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/06/2019
-ms.openlocfilehash: 0b1632ab943026578eb753014575ab53d151c33f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855011"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743553"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
 
@@ -88,6 +88,8 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
 - **制限事項**:テーブルに主キーがない場合、継続的同期は失敗します。
 
     **対処法**: 移行を続行するには、テーブルの主キーを一時的に設定します。 データの移行が完了した後は、主キーを削除できます。
+
+- **制限事項**:JSONB データ型は移行の対象としてサポートされません。
 
 ## <a name="lob-limitations"></a>LOB に関する制限事項
 

@@ -11,19 +11,19 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2019
+ms.date: 08/23/2019
 ms.author: bwren
-ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f6b9c21a3d65e75abe11e705eba058b1d1fb17ff
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61461938"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70012732"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor で Log Analytics ワークスペースにカスタム フィールドを作成する
 
 > [!NOTE]
-> この記事では、Log Analytics ワークスペースでテキスト データの収集時に解析する方法について説明します。 [Azure Monitor でのテキスト データの解析](../log-query/parse-text.md)に関するページで説明されているように、収集後にクエリ内のテキスト データを解析することには利点があります。
+> この記事では、Log Analytics ワークスペースでテキスト データの収集時に解析する方法について説明します。 「[Azure Monitor ログのテキスト データの解析](../log-query/parse-text.md)」で説明されているガイダンスに従って、収集後に、クエリ フィルターのテキスト データを解析することをお勧めします。 カスタム フィールドを使用するよりもすぐれた点がいくつかあります。
 
 Azure Monitor の**カスタム フィールド**機能を使用すると、独自の検索可能なフィールドを追加して、ご自身の Log Analytics ワークスペースの既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
 

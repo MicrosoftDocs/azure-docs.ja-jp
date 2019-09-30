@@ -1,4 +1,4 @@
-- name: Azure Sentinel プレビューのドキュメント
+- name: Azure Sentinel のドキュメント
   href: index.yml
 - name: 概要
   href: overview.md
@@ -11,12 +11,22 @@
       href: quickstart-get-visibility.md
 - name: チュートリアル
   items:
-    - name: 不審な脅威を検出する
-      href: tutorial-detect-threats.md
+    - name: 組み込みの分析を使用して脅威を検出する
+      href: tutorial-detect-threats-built-in.md
+    - name: カスタム ルールを作成して脅威を検出する
+      href: tutorial-detect-threats-custom.md
+    - name: データを監視する
+      href: tutorial-monitor-your-data.md
     - name: インシデントの調査
       href: tutorial-investigate-cases.md
     - name: 脅威に対応する
       href: tutorial-respond-threats-playbook.md
+- name: 概念
+  items:
+    - name: ロールを使用したアクセス許可の割り当て
+      href: roles.md
+    - name: 高度なマルチステージ攻撃の検出
+      href: fusion.md
 - name: ハウツー ガイド
   items:
     - name: データ ソースの接続
@@ -74,6 +84,10 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack VM の接続
           href: connect-azure-stack.md
+    - name: 複数のテナント (MSSP)
+      href: multiple-tenants-service-providers.md
+    - name: アラートからのインシデントの作成
+      href: create-incidents-from-alerts.md
     - name: 検出
       href: hunting.md
       items:
@@ -81,8 +95,8 @@
           href: notebooks.md
         - name: ブックマークを使用した検出
           href: bookmarks.md
-    - name: Fusion の有効化
-      href: connect-fusion.md
+    - name: Azure Sentinel の削除
+      href: offboard.md
 - name: リソース
   items:
     - name: 有用なリソース

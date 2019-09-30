@@ -1,68 +1,58 @@
 ---
-title: Azure カスタム プロバイダー用に Azure Functions を設定する
-description: このチュートリアルでは、Azure 関数を作成し、Azure カスタム プロバイダーで動作するように設定する方法を説明します
+title: Azure カスタム プロバイダー用の Azure Functions を設定する
+description: このチュートリアルでは、Azure 関数アプリを作成して、Azure カスタム プロバイダーと連携するように設定する方法を説明します
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: d7e4de43659db88bfd9aad40cc3b9f1753189bba
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 6b5ab6948d382a9925c9ced91e04f360ecf51a0e
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799121"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173015"
 ---
-# <a name="setup-azure-functions-for-azure-custom-providers"></a>Azure カスタム プロバイダー用に Azure Functions を設定する
+# <a name="set-up-azure-functions-for-azure-custom-providers"></a>Azure カスタム プロバイダー用の Azure Functions を設定する
 
-カスタム プロバイダーを使うと、Azure 上でワークフローをカスタマイズできます。 カスタム プロバイダーは、Azure と`endpoint`の間のコントラクトです。 このチュートリアルでは、カスタム プロバイダーの`endpoint`として動作するように Azure 関数を設定するプロセスについて説明します。
+カスタム プロバイダーは、Azure とエンドポイントの間のコントラクトです。 カスタム プロバイダーを使うと、Azure 内のワークフローに変更を加えることができます。 このチュートリアルでは、カスタム プロバイダーのエンドポイントとして機能するように Azure 関数アプリを設定する方法について説明します。
 
-このチュートリアルは、次のステップに分かれています。
-
-- Azure 関数を作成する
-- Azure Table バインドをインストールする
-- RESTful HTTP メソッドを更新する
-- Azure Resource Manager NuGet パッケージを追加する
-
-このチュートリアルは、次のチュートリアルが基になっています。
-
-- [Azure portal で初めての Azure 関数を作成する](../azure-functions/functions-create-first-azure-function.md)
-
-## <a name="creating-the-azure-function"></a>Azure 関数を作成する
+## <a name="create-the-azure-function-app"></a>Azure 関数アプリを作成する
 
 > [!NOTE]
-> このチュートリアルでは Azure 関数を使って簡単なサービス エンドポイントを作成しますが、カスタム プロバイダーでは任意のパブリックにアクセス可能な`endpoint`を使うことができます。 Azure Logic Apps、Azure API Management、Azure Web Apps などは、優れた代替手段です。
+> このチュートリアルでは、Azure 関数アプリを使用するシンプルなサービス エンドポイントを作成します。 ただしカスタム プロバイダーは、パブリックにアクセスできる任意のエンドポイントを使用できます。 その代替候補としては、Azure Logic Apps や Azure API Management、Azure App Service の Web Apps 機能などが挙げられます。
 
-このチュートリアルを始めるには、[、Azure portal で初めての Azure 関数を作成する](../azure-functions/functions-create-first-azure-function.md)チュートリアルを先に行う必要があります。 そのチュートリアルでは、Azure portal で変更可能な .NET Core の Webhook 関数を作成します。
+このチュートリアルを始めるには、まず、[Azure portal で初めての Azure 関数アプリを作成する](../azure-functions/functions-create-first-azure-function.md)チュートリアルを先に行う必要があります。 そのチュートリアルでは、Azure portal で変更可能な .NET Core の Webhook 関数を作成します。 このチュートリアルの土台にもなっているチュートリアルです。
 
-## <a name="install-azure-table-bindings"></a>Azure Table バインドをインストールする
+## <a name="install-azure-table-storage-bindings"></a>Azure Table Storage のバインディングをインストールする
 
-このセクションでは、Azure Table Storage バインドをインストールする手順を説明します。
+Azure Table Storage のバインディングをインストールするには、次の手順に従います。
 
-1. HttpTrigger の [`Integrate`] タブに移動します。
-2. [`+ New Input`] をクリックします。
-3. [`Azure Table Storage`] を選択します。
-4. まだインストールされていない場合は、`Microsoft.Azure.WebJobs.Extensions.Storage` をインストールします。
-5. [`Table parameter name`] を「tableStorage」に、[`Table name`] を「myCustomResources」に更新します。
-6. 更新した入力パラメーターを保存します。
+1. HttpTrigger の **[統合]** タブに移動します。
+1. **[+ 新しい入力]** を選択します。
+1. **[Azure Table Storage]** を選択します。
+1. Microsoft.Azure.WebJobs.Extensions.Storage 拡張機能をまだインストールしていない場合はインストールします。
+1. **[テーブル パラメーター名]** ボックスに「**tableStorage**」と入力します。
+1. **[テーブル名]** ボックスに「**myCustomResources**」と入力します。
+1. **[保存]** を選択して、更新した入力パラメーターを保存します。
 
-![カスタム プロバイダーの概要](./media/create-custom-providers/azure-functions-table-bindings.png)
+![テーブル バインディングを示すカスタム プロバイダーの概要](./media/create-custom-providers/azure-functions-table-bindings.png)
 
 ## <a name="update-restful-http-methods"></a>RESTful HTTP メソッドを更新する
 
-このセクションでは、カスタム プロバイダーの RESTful 要求メソッドを含むように Azure 関数を設定する手順について説明します。
+カスタム プロバイダーの RESTful 要求メソッドを含むように Azure 関数を設定するには、次の手順に従います。
 
-1. HttpTrigger の [`Integrate`] タブに移動します。
-2. [`Selected HTTP methods`] を次のように更新します: GET、POST、DELETE、PUT。
+1. HttpTrigger の **[統合]** タブに移動します。
+1. **[選択した HTTP メソッド]** で、 **[GET]** 、 **[POST]** 、 **[DELETE]** 、 **[PUT]** を選択します。
 
-![カスタム プロバイダーの概要](./media/create-custom-providers/azure-functions-http-methods.png)
+![HTTP メソッドを示すカスタム プロバイダーの概要](./media/create-custom-providers/azure-functions-http-methods.png)
 
-## <a name="modifying-the-csproj"></a>csproj を変更する
+## <a name="add-azure-resource-manager-nuget-packages"></a>Azure Resource Manager NuGet パッケージを追加する
 
 > [!NOTE]
-> csproj がディレクトリにない場合は、手動で追加できます。または、`Microsoft.Azure.WebJobs.Extensions.Storage` 拡張機能が関数にインストールされると、表示されるようになります。
+> C# プロジェクト ファイルがプロジェクト ディレクトリに欠落している場合は、手動で追加できます。 または、Microsoft.Azure.WebJobs.Extensions.Storage 拡張機能が関数アプリにインストールされると表示されるようになります。
 
-次に、カスタム プロバイダーからの着信要求を解析しやすくする便利な NuGet ライブラリを含むように、csproj ファイルを更新します。 [ポータルからの拡張機能の追加](../azure-functions/install-update-binding-extensions-manual.md)に関する記事の手順に従い、次のパッケージ参照を含むように csproj を更新します。
+次に、有用な NuGet ライブラリをインクルードするように C# プロジェクト ファイルを更新します。 これらのライブラリによって、カスタム プロバイダーからの受信要求が解析しやすくなります。 [ポータルからの拡張機能の追加](../azure-functions/install-update-binding-extensions-manual.md)に関する記事の手順に従い、次のパッケージ参照をインクルードするように C# プロジェクト ファイルを更新します。
 
 ```xml
 <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="3.0.4" />
@@ -70,7 +60,7 @@ ms.locfileid: "67799121"
 <PackageReference Include="Microsoft.Azure.WebJobs.Script.ExtensionsMetadataGenerator" Version="1.1.*" />
 ```
 
-csproj ファイルのサンプル:
+次の XML 要素は C# プロジェクト ファイルの例です。
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -88,6 +78,7 @@ csproj ファイルのサンプル:
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure カスタム プロバイダーの`endpoint`として機能するように Azure 関数を設定しました。 次の記事に進み、RESTful カスタム プロバイダーの`endpoint`を作成する方法について学習してください。
+このチュートリアルでは、Azure カスタム プロバイダーのエンドポイントとして機能するように Azure 関数アプリを設定しました。
 
-- [チュートリアル:RESTful カスタム プロバイダーのエンドポイントを作成する](./tutorial-custom-providers-function-authoring.md)
+RESTful カスタム プロバイダー エンドポイントを作成する方法については、[RESTful カスタム プロバイダーのエンドポイントを作成するチュートリアル](./tutorial-custom-providers-function-authoring.md)を参照してください。
+

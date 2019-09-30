@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: d1681aee9dc11f0dbd3133bced0b919a8c1623b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: edb6a84762ce65e65ff33492f3a7bcebbce60777
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60310918"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390373"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Azure 上での Service Fabric クラスターの概要
 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM をクラスター ノードといいます。 クラスターは多数のノードにスケールできます。 新しいノードがクラスターに追加されると、Service Fabric は、増加したノード数全体で、サービスのパーティションのレプリカとインスタンスのバランスを再調整します。 アプリケーション全体のパフォーマンスが向上し、メモリへのアクセスの競合が減少します。 クラスター内のノードが効率的に使用されていない場合、クラスター内のノードの数を削減できます。 Service Fabric は、各ノードのハードウェアを効率的に利用できるように、減らされたノード数全体で、再度パーティションのレプリカとインスタンスのバランスを再調整します。
@@ -103,12 +103,17 @@ Azure Service Fabric クラスターはお客様が所有するリソースで�
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 クラスターは、次のオペレーティング システムが実行されている仮想マシン上に作成できます。
 
-* Windows Server 2012 R2
-* Windows Server 2016 
-* Windows Server 1709
-* Windows Server 1803
-* Linux Ubuntu 16.04
-* Red Hat Enterprise Linux 7.4 (プレビュー サポート)
+| オペレーティング システム | サポートされる最も古い Service Fabric のバージョン |
+| --- | --- |
+| Windows Server 2012 R2 | すべてのバージョン |
+| Windows Server 2016 | すべてのバージョン |
+| Windows Server 1709 | 6.0 |
+| Windows Server 1803 | 6.4. |
+| Windows Server 1809 | 6.4.654.9590 |
+| Windows Server 2019 | 6.4.654.9590 |
+| Linux Ubuntu 16.04 | 6.0 |
+
+詳細については、[Azure でサポートされているクラスター バージョン](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-operating-systems)に関するページを参照してください
 
 > [!NOTE]
 > Windows Server 1709 で Service Fabric をデプロイする場合、(1) これは Long Term Servicing Branch ではないため、今後、バージョンの移動が必要になる可能性があります。また、(2) コンテナーをデプロイする場合、Windows Server 2016 で構築されたコンテナーは Windows Server 1709 で動作しません。その逆も同様です (デプロイするにはリビルドが必要です)。

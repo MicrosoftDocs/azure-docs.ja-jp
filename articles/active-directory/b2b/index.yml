@@ -1,55 +1,87 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Active Directory B2B のドキュメント
+summary: Azure AD の企業間 (B2B) コラボレーションを使用して、独自の社内データに対するコントロールを維持した状態で、会社のアプリケーションとサービスをゲスト ユーザーや任意の組織の外部パートナーと安全に共有する方法について説明します。
 metadata:
-  document_id: null
-  title: Azure Active Directory B2B のドキュメント - Azure Active Directory | Microsoft Docs
-  description: B2B ゲスト ユーザーのアクセス権を使った外部パートナーとの共有およびコラボレーションの方法に関するチュートリアル、クイック スタート、ハウツーをご利用ください。
-  services: active-directory
-  ms.subservice: authentication
-  author: msmimart
-  manager: celestedg
+  title: アプリケーション管理のドキュメント
+  description: Azure AD の企業間 (B2B) コラボレーションを使用して、独自の社内データに対するコントロールを維持した状態で、会社のアプリケーションとサービスをゲスト ユーザーや任意の組織の外部パートナーと安全に共有する方法について説明します。
   ms.service: active-directory
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: manage-apps
+  ms.workload: identity
   ms.topic: landing-page
-  ms.date: 09/10/2018
+  ms.date: 08/27/2019
+  author: msmimart
   ms.author: mimart
-abstract:
-  description: Azure AD の企業間 (B2B) コラボレーションを使用して、独自の社内データに対するコントロールを維持した状態で、会社のアプリケーションとサービスをゲスト ユーザーや任意の組織の外部パートナーと安全に共有する方法について説明します。  主要な特長は以下のとおりです。<ul><li>シンプルな招待と利用のプロセスを通じて、ゲスト ユーザーは、管理者がアクセスを許可するリソースで共同作業を開始できます。</li><li>ゲスト ユーザーや外部のパートナーは Azure AD、ソーシャル電子メール アカウント、または任意の ID プロバイダーを通じて独自の ID を管理します。</li><li>多要素認証などの Azure AD 機能により、会社のリソースを保護することができます。</li><li>API を使用して、セルフサービス サインアップ ポータルなどを通じて、エクスペリエンスをカスタマイズすることができます。</li></ul>以下のリソースは、すぐに作業を開始するうえで役に立ちます。
-  aside:
-    image:
-      alt: '"Azure AD B2B の説明" というタイトルのビデオのサムネイル画像'
-      height: 110
-      src: ./media/index/video.png
-      width: 246
-    title: Azure AD B2B の説明
-    href: 'https://www.youtube.com/watch?v=AhwrweCBdsc'
-    width: 246
-sections:
-  - title: 5 分間のクイックスタート
-    items:
-      - type: paragraph
-        text: ゲスト ユーザーを招待して、B2B コラボレーションの使用を開始する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              alt: null
-              src: ./media/index/i_security-management.png
-            text: Azure portal でゲスト ユーザーを追加する
-            href: b2b-quickstart-add-guest-users-portal.md
-          - image:
-              alt: null
-              src: ./media/index/i_security-management.png
-            text: PowerShell を使用してゲスト ユーザーを追加する
-            href: b2b-quickstart-invite-powershell.md
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: B2B コラボレーションの設定と、会社のリソースのセキュリティ保護について詳しく説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">PowerShell を使用して B2B ゲスト ユーザーを一括招待する</a>
-          - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">多要素認証を B2B ゲスト ユーザーに適用する</a>
+  manager: celested
+  ms.openlocfilehash: a1822b3bd6ec7950bc3c0ab9304ea2f60a7127e4
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70125172"
+landingContent:
+- title: Azure B2B コラボレーション
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: B2B ゲスト ユーザー アクセスとは
+      url: what-is-b2b.md
+- title: B2B ゲスト ユーザーの招待
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: B2B ゲスト ユーザーが招待に応じる方法
+      url: redemption-experience.md
+  - linkListType: quickstart
+    links:
+    - text: ゲスト ユーザーをディレクトリに追加する
+      url: b2b-quickstart-add-guest-users-portal.md
+    - text: PowerShell を使用してゲスト ユーザーを追加する
+      url: b2b-quickstart-invite-powershell.md
+  - linkListType: how-to-guide
+    links:
+    - text: 管理者がゲストを招待する方法
+      url: add-users-administrator.md
+    - text: ユーザーがゲストを招待する方法
+      url: add-users-information-worker.md
+- title: B2B コラボレーションのカスタマイズ
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: B2B コラボレーションの有効化
+      url: delegate-invitations.md
+  - linkListType: deploy
+    links:
+    - text: 直接フェデレーションの設定 (プレビュー)
+      url: direct-federation.md
+    - text: Google フェデレーションの設定
+      url: google-federation.md
+    - text: ワンタイム パスコード認証の設定 (プレビュー)
+      url: one-time-passcode.md
+  - linkListType: tutorial
+    links:
+    - text: 多要素認証を適用する
+      url: b2b-tutorial-require-mfa.md
+  - linkListType: reference
+    links:
+    - text: B2B コラボレーション コードと PowerShell サンプル
+      url: code-samples.md
+- title: ゲスト ユーザーの管理
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: B2B ゲスト ユーザーについて
+      url: user-properties.md
+    - text: 動的グループと B2B ゲスト
+      url: use-dynamic-groups.md
+  - linkListType: how-to-guide
+    links:
+    - text: B2B ゲスト ユーザーの監査とレポート
+      url: auditing-and-reporting.md
+    - text: B2B ゲストに対するアクセス許可の付与
+      url: add-guest-to-role.md
+    - text: 組織の許可またはブロック
+      url: allow-deny-list.md
+  - linkListType: deploy
+    links:
+    - text: B2B コラボレーション用の SaaS アプリの構成
+      url: configure-saas-apps.md

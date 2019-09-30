@@ -2,24 +2,18 @@
 title: Azure Security Center 内で監視される Azure ポリシーの定義 | Microsoft Docs
 description: Azure Security Center 内で監視される Azure ポリシーの定義。
 services: security-center
-documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
-ms.assetid: c89cb1aa-74e8-4ed1-980a-02a7a25c1a2f
+author: memildin
+manager: rkarlin
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 8/22/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 56e6285501529f26e3622e2f773dbd373c169c10
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.author: memildin
+ms.openlocfilehash: 892b33f52788bd37d430f221f14ba4c98f764cfb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69990498"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201667"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>Security Center により監視される Azure セキュリティ ポリシー
 この記事では、Azure Security Center で監視できる Azure ポリシーの定義の一覧を示します。 セキュリティ ポリシーの詳細については、「[セキュリティ ポリシーの操作](tutorial-security-policy.md)」を参照してください。
@@ -50,7 +44,7 @@ Security Center によって監視される組み込みのポリシーの詳細�
 |Azure Data Lake Store で診断ログを有効にする必要がある|ログの有効化状況を監査し、ログを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡が作成されます。|
 |Data Lake Analytics で診断ログを有効にする必要がある|ログの有効化状況を監査し、ログを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡が作成されます。|
 |ストレージ アカウントを新しい AzureRM リソースに移行する必要がある|Azure Resource Manager をストレージ アカウントに使用して、セキュリティの拡張機能を提供します。 チェックの内容は次のとおりです <br>- アクセス制御の強化 (RBAC)<br>- 監査の改善<br>- Azure Resource Manager ベースのデプロイとガバナンス<br>- マネージド ID へのアクセス<br>- シークレット用の Azure Key Vault へのアクセス<br>- Azure AD に基づく認証<br>- セキュリティ管理を容易にするタグとリソース グループのサポート|
-|仮想マシンを新しい AzureRM リソースに移行する必要がある|Azure Resource Manager を仮想マシンに使用して、セキュリティの拡張機能を提供します。  チェックの内容は次のとおりです <br>- アクセス制御の強化 (RBAC)<br>- 監査の改善<br>- Azure Resource Manager ベースのデプロイとガバナンス<br>- マネージド ID へのアクセス<br>- シークレット用の Azure Key Vault へのアクセス<br>- Azure AD に基づく認証<br>- セキュリティ管理を容易にするタグとリソース グループのサポート|
+|仮想マシンを新しい AzureRM リソースに移行する必要がある|Azure Resource Manager を仮想マシンに使用して、セキュリティの拡張機能を提供します。 チェックの内容は次のとおりです <br>- アクセス制御の強化 (RBAC)<br>- 監査の改善<br>- Azure Resource Manager ベースのデプロイとガバナンス<br>- マネージド ID へのアクセス<br>- シークレット用の Azure Key Vault へのアクセス<br>- Azure AD に基づく認証<br>- セキュリティ管理を容易にするタグとリソース グループのサポート|
 |Batch アカウントにおけるメトリック アラート ルールを構成する必要がある|必須メトリックを有効にするための Azure Batch アカウントにおけるメトリック アラート ルールの構成を監査します。|
 |Batch アカウントで診断ログを有効にする必要がある|ログの有効化状況を監査し、ログを最大 1 年間保持します。 これにより、セキュリティ インシデントが発生した場合やネットワークが侵害された場合に、調査目的でアクティビティ証跡が作成されます。|
 |Automation アカウント変数に対して暗号化を有効にする必要がある|機密データを格納するときには、Azure Automation アカウント変数資産の暗号化を有効にすることが重要です。|

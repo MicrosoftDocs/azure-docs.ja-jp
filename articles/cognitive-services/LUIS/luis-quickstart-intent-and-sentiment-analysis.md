@@ -1,5 +1,5 @@
 ---
-title: 感情分析 - LUIS
+title: チュートリアル:感情分析 - LUIS
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ポジティブ、ネガティブ、およびニュートラルな感情を発話から取得する方法を示すアプリを作成します。 感情は発話全体から決定されます。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/03/2019
+ms.date: 09/03/2019
 ms.author: diberry
-ms.openlocfilehash: ad1dba3c35c0f1fa5640e484319b584731843dd8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ed403e3d761b32c6837eb8e72edef3f3e6380217
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563586"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307570"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>チュートリアル:発話の感情を取得する
 

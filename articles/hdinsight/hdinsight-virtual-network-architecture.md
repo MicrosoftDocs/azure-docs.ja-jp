@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 41420497bffd0abdc598e4c86b2dbda1466b2ce1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 340974201d62f97669db442f4a95439a6ac90a5e
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66252846"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70960619"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 仮想ネットワーク アーキテクチャ
 
@@ -22,7 +22,7 @@ ms.locfileid: "66252846"
 
 Azure HDInsight クラスターには、さまざまな種類の仮想マシン、つまりノードがあります。 それぞれのノードの種類が、システムの運用において役割を果たしています。 次の表は、これらのノードの種類とクラスターでのそれぞれの役割をまとめたものです。
 
-| Type | 説明 |
+| 種類 | 説明 |
 | --- | --- |
 | ヘッド ノード |  Apache Storm を除くすべてのクラスターの種類で、ヘッド ノードは、分散アプリケーションの実行を管理するプロセスをホストします。 ヘッド ノードはまた、SSH 接続して、複数のクラスター リソースで実行するように調整されるアプリケーションを実行できるノードでもあります。 ヘッド ノードの数は、すべてのクラスターの種類で 2 台に固定されています。 |
 | ZooKeeper ノード | Zookeeper は、データ処理を実行しているノード間でタスクを調整します。 また、ヘッド ノードのリーダー選定を行って、どのノードが特定のマスター サービスを実行しているかを追跡します。 ZooKeeper ノードの数は、3 台に固定されています。 |
@@ -36,7 +36,7 @@ Azure HDInsight クラスターには、さまざまな種類の仮想マシン�
 
 次の図は、Azure での HDInsight ノードとネットワーク リソースの配置を示しています。
 
-![Azure のカスタム VNET に作成された HDInsight のエンティティの図](./media/hdinsight-virtual-network-architecture/vnet-diagram.png)
+![Azure のカスタム VNET に作成された HDInsight のエンティティの図](./media/hdinsight-virtual-network-architecture/hdinsight-vnet-diagram.png)
 
 HDInsight が Azure Virtual Network にデプロイされるときに存在する既定のリソースには、前の表で述べたクラスター ノードの種類、および仮想ネットワークと外部のネットワークとの間の通信をサポートするネットワーク デバイスが含まれます。
 

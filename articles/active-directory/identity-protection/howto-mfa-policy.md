@@ -11,12 +11,12 @@ manager: daveba
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27ff7512bb3f9422ed4c8edd7ab50fce23f0ed07
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 939f08fd16cf27e641cf6436a00396ad2db8e6c3
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499560"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70126383"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>方法:Azure Multi-Factor Authentication 登録ポリシーを構成する
 
@@ -31,7 +31,7 @@ Azure Multi-Factor Authentication は、ユーザー名とパスワードに加�
 次のような理由から、ユーザーのサインインに対して Azure Multi-Factor Authentication を要求することをお勧めします。
 
 - 簡単な検証オプションで強力な認証が提供されます。
-- ID 保護におけるリスク イベントからの組織の保護と復旧の準備において重要な役割を果たします。
+- ID 保護におけるリスク検出からの組織の保護と復旧の準備において重要な役割を果たします。
 
 MFA の詳細については、[Azure Multi-Factor Authentication とは何か](../authentication/howto-mfa-getstarted.md)に関する記事を参照してください。
 

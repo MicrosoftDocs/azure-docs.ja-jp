@@ -8,12 +8,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: heidist
-ms.openlocfilehash: 9ddc7ad8882b30a17be5820116da72c5ab32fad9
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 308eb90e7ae244442a603491044e90dc3b8d052a
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640621"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141144"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、**Standard**、または**ストレージ最適化**の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -124,6 +124,15 @@ ms.locfileid: "69640621"
 <sup>4</sup> スキルセットあたり最大 30 スキル。
 
 <sup>5</sup> コグニティブ検索ワークロードと Azure BLOB のインデックス作成の画像の分析の実行時間は、通常のテキストのインデックス作成よりも短くなります。 イメージの分析および自然言語処理は、コンピューティングを集中的に使用し、使用可能な処理能力を大量に消費します。 実行時間が短縮され、キュー内の他のジョブに実行の機会が与えられます。  
+
+## <a name="synonym-limits"></a>シノニムの制限
+
+シノニム マップの最大許容数は、価格レベルによって異なります。 各規則には最大 20 個の拡張を設定できます。ここでの拡張とは同義語です。 たとえば、"cat" の場合、"kitty"、"feline"、および "felis" (ネコ属) との関連は、3 つの拡張としてカウントされます。
+
+| Resource | 無料 | Basic | S1 | S2 | S3 | S3-HD |L1 | L2 |
+| -------- | -----|------ |----|----|----|-------|---|----|
+| シノニムマップの最大数 |3 |3|5 |10 |20 |20 | 10 | 10 |
+| マップごとの規則の最大数 |5000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
 
 ## <a name="queries-per-second-qps"></a>秒間クエリ (QPS)
 

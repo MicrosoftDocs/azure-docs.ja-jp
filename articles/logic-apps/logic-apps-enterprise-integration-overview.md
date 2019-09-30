@@ -1,74 +1,63 @@
 ---
-title: B2B エンタープライズ統合の概要 - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps と Enterprise Integration Pack を使用したエンタープライズ統合ソリューションの自動化された B2B ワークフローの構築
+title: B2B エンタープライズ統合 - Azure Logic Apps
+description: Azure Logic Apps と Enterprise Integration Pack を使用したエンタープライズ統合の自動化された B2B ワークフローの構築について説明します。
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
-ms.topic: article
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
+ms.topic: overview
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
-ms.date: 09/08/2016
-ms.openlocfilehash: 8c0e47f5bed0799b8536cecb38a85ed76185d0cd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/01/2019
+ms.openlocfilehash: 54d665d6a4fd9aa0216d9eccf821f5af539a3636
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845843"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087583"
 ---
-# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>概要:Azure Logic Apps での Enterprise Integration Pack を使用した B2B エンタープライズ統合シナリオ
+# <a name="b2b-enterprise-integration-solutions-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure Logic Apps と Enterprise Integration Pack を使用した B2B エンタープライズ統合ソリューション
 
-Azure Logic Apps での企業間 (B2B) のワークフローとシームレスな通信を実現するために、Microsoft のクラウド ベースのソリューションである Enterprise Integration Pack を使用して、エンタープライズ統合シナリオを有効にすることができます。 組織は、異なるプロトコルと形式を使用している組織ともメッセージを電子的に交換することができます。 Enterprise Integration Pack により、メッセージの形式が組織のシステムで解釈して処理できる形式に変換されます。 メッセージの交換には、[AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、[EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) などの業界標準のプロトコルを使用できます。 暗号化とデジタル署名を使用して、メッセージをセキュリティで保護することもできます。
+組織の間に企業間 (B2B) ソリューションとシームレスな通信を実現するために、[Azure Logic Apps](../logic-apps/logic-apps-overview.md) で Enterprise Integration Pack (EIP) を使用して、自動化されたスケーラブルなエンタープライズ統合ワークフローを構築することができます。 組織どうしは、異なるプロトコルと形式を使用していても、メッセージを電子的に交換することができます。 異なる形式は、EIP によって、組織のシステムで処理できる、[AS2](../logic-apps/logic-apps-enterprise-integration-as2.md)、[X12](logic-apps-enterprise-integration-x12.md)、[EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) などの業界標準プロトコルをサポートする形式に変換されます。 暗号化とデジタル署名を使用して、メッセージをセキュリティで保護することもできます。 EIP では、これらの[エンタープライズ統合コネクタ](../connectors/apis-list.md#integration-account-connectors)と次の業界標準がサポートされています。
 
-BizTalk Server または Microsoft Azure BizTalk Services を使い慣れている方は、ほとんどの概念が類似しているため、Enterprise Integration の機能を使いやすいと感じるものと思われます。 主な違いの 1 つは、B2B 通信で使用されるアーティファクトの保管と管理を簡単にするために、Enterprise Integration では統合アカウントを使用する点です。 
+* 電子データ交換 (EDI)
+* Enterprise Application Integration (EAI)
 
-Enterprise Integration Pack のアーキテクチャは、"統合アカウント" をベースにしています。 統合アカウントは、スキーマ、パートナー、証明書、マップ、契約などのアーティファクトをすべて格納するクラウド ベースのコンテナーです。 これらのアーティファクトを使用して、B2B アプリケーションを設計、デプロイ、管理できるほか、ロジック アプリの B2B ワークフローを構築することもできます。 ただし、アーティファクトを使用する前に、統合アカウントとロジック アプリの関連付けを行っておく必要があります。 その後、ロジック アプリから統合アカウントのアーティファクトにアクセスできるようになります。
+Microsoft BizTalk Server または Azure BizTalk Services を使い慣れている場合、EIP は同様の概念に従っており、機能を簡単に使用できます。 ただし、1 つの大きな違いとして、EIP はアーキテクチャ上、B2B 通信で使用されるアーティファクトの格納と管理を簡単にするために、"統合アカウント" に基づいています。 これらのアカウントは、パートナー、契約、スキーマ、マップ、証明書などのアーティファクトをすべて格納するクラウド ベースのコンテナーです。 
 
-## <a name="why-should-you-use-enterprise-integration"></a>Enterprise Integration を使用する理由
+## <a name="why-use-the-enterprise-integration-pack"></a>Enterprise Integration Pack を使用する理由
 
-* Enterprise Integration を使用すれば、対象のアーティファクトをすべて 1 か所 (統合アカウント) に格納できます。
-* Azure Logic Apps エンジンとそのコネクタすべてを利用することで、B2B ワークフローを構築し、サード パーティの SaaS アプリケーション、オンプレミスのアプリケーション、カスタム アプリケーションと統合できます。
+* EIP を使用すれば、対象のアーティファクトをすべて 1 か所 (統合アカウント) に格納できます。
+
+* Azure Logic Apps とコネクタを使用することで、B2B ワークフローを構築し、サード パーティの SaaS (サービスとしてのソフトウェア) アプリ、オンプレミスのアプリ、カスタム アプリと統合できます。
+
 * Azure Functions を使用して、ロジック アプリのカスタム コードを作成できます。
 
-## <a name="how-to-get-started-with-enterprise-integration"></a>Enterprise Integration の使用を開始する方法
+## <a name="how-do-i-get-started"></a>開始するには?
 
-**Azure Portal** のロジック アプリ デザイナーを利用して、Enterprise Integration Pack を使用した B2B アプリを構築、管理できます。 ロジック アプリの管理に [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) を使用することもできます。
+EIP を使用した B2B ロジック アプリ ワークフローの構築を開始する前に、次の項目が必要です。
 
-Azure Portal でアプリを作成する前に必要な手順の概要は、次のとおりです。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-![概要のイメージ](media/logic-apps-enterprise-integration-overview/overview-0.png)  
+* 使用するアーティファクトを含む[統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)
 
-## <a name="what-are-some-common-scenarios"></a>いくつかの一般的なシナリオ
+* マップとスキーマを作成するには、[Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas) と Visual Studio 2015 を使用できます。
 
-Enterprise Integration では、次の業界標準がサポートされています。
+統合アカウントを作成し、アーティファクトを追加したら、Azure portal でロジック アプリを作成することにより、これらのアーティファクトを使用して B2B ワークフローの構築を開始できます。 ロジック アプリを初めて使用する場合は、[基本的なロジック アプリを作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)してみてください。 ただし、これらのアーティファクトを使用するには、統合アカウントとロジック アプリの関連付けを行っておく必要があります。 その後、ロジック アプリから統合アカウントにアクセスできます。 また、Visual Studio または [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) を使用して、ロジック アプリを作成、管理、デプロイすることもできます。
 
-* EDI - Electronic Data Interchange (電子データ交換)
-* EAI - Enterprise Application Integration (エンタープライズ アプリケーション統合)
+B2B ロジック アプリの構築を開始する手順の概要を次に示します。
 
-## <a name="heres-what-you-need-to-get-started"></a>使用を開始するために必要なもの
+![B2B ロジック アプリを作成するための前提条件](./media/logic-apps-enterprise-integration-overview/overview.png)  
 
-* 統合アカウントが付属した Azure サブスクリプション
-* マップとスキーマを作成するための Visual Studio 2015
-* [Microsoft Azure Logic Apps Enterprise Integration Tools for Visual Studio 2015 2.0](https://aka.ms/vsmapsandschemas)  
+## <a name="try-now"></a>今すぐ試す
 
-## <a name="try-it-now"></a>今すぐ試す
+[AS2 メッセージの送受信を行う完全に動作するサンプル ロジック アプリをデプロイする](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)
 
-Azure Logic Apps の B2B 機能を使用する、[完全に動作する AS2 送信および受信ロジック アプリのサンプルをデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-as2-send-receive)します。
+## <a name="next-steps"></a>次の手順
 
-## <a name="learn-more"></a>詳細情報
-* [契約](../logic-apps/logic-apps-enterprise-integration-agreements.md "エンタープライズ統合契約についての詳細情報")
-* [企業間 (B2B) シナリオ](../logic-apps/logic-apps-enterprise-integration-b2b.md "B2B 機能を使用したロジック アプリの作成方法についての詳細情報")  
-* [証明書](logic-apps-enterprise-integration-certificates.md "Enterprise Integration の証明書についての詳細情報")
-* [フラット ファイル エンコード/デコード](logic-apps-enterprise-integration-flatfile.md "フラット ファイル コンテンツをエンコードおよびデコードする方法についての詳細情報")  
-* [統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md "統合アカウントについての詳細情報")
-* [マップ](../logic-apps/logic-apps-enterprise-integration-maps.md "Enterprise Integration のマップについての詳細情報")
-* [パートナー](logic-apps-enterprise-integration-partners.md "Enterprise Integration のパートナーについての詳細情報")
-* [スキーマ](logic-apps-enterprise-integration-schemas.md "Enterprise Integration のスキーマについての詳細情報")
-* [XML メッセージの検証](logic-apps-enterprise-integration-xml.md "ロジック アプリを使用した XML メッセージの検証方法についての詳細情報")
-* [XML 変換](logic-apps-enterprise-integration-transform.md "Enterprise Integration のマップについての詳細情報")
-* [エンタープライズ統合コネクタ](../connectors/apis-list.md "Enterprise Integration Pack コネクタについての詳細情報")
-* [統合アカウント メタデータ](../logic-apps/logic-apps-enterprise-integration-metadata.md "統合アカウントのメタデータについての詳細情報")
-* [B2B メッセージを監視する](logic-apps-monitor-b2b-message.md "B2B メッセージの監視方法についての詳細情報")
-* [Azure Monitor ログで B2B メッセージを追跡する](logic-apps-track-b2b-messages-omsportal.md " Azure Monitor ログでの B2B メッセージの追跡についての詳細情報")
-
+* [取引先を作成する](logic-apps-enterprise-integration-partners.md)
+* [契約を作成する](../logic-apps/logic-apps-enterprise-integration-agreements.md)
+* [スキーマを追加する](logic-apps-enterprise-integration-schemas.md)
+* [マップを追加する](../logic-apps/logic-apps-enterprise-integration-maps.md)
+* [BizTalk Services から移行する](../logic-apps/logic-apps-move-from-mabs.md)

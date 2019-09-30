@@ -1,57 +1,83 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Blockchain Service のドキュメント
+summary: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントでは、Azure Blockchain Service を使用して Azure でブロックチェーン アプリケーションを作成、開発、管理する方法を紹介します。
 metadata:
   title: Azure Blockchain Service のドキュメント - チュートリアル、API リファレンス
   description: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントでは、Azure Blockchain Service を使用して Azure でブロックチェーン アプリケーションを作成、開発、管理する方法を紹介します。
   services: azure-blockchain
-  author: patricka
-  manager: femila
   ms.service: azure-blockchain
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 03/13/2019
+  author: PatAltimore
   ms.author: patricka
-abstract:
-  description: ブロックチェーン アプリケーションの作成方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントでは、Azure Blockchain Service を使用して Azure でブロックチェーン アプリケーションを作成、開発、使用する方法を紹介します。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Azure でコンソーシアム メンバーを作成して接続する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/index/deploy.svg
-            text: コンソーシアム メンバーを作成する
-            href: /azure/blockchain/service/create-member
-          - image:
-              src: ./media/index/multi-connect.svg
-            text: MetaMask を使用して接続する
-            href: /azure/blockchain/service/connect-metamask
-          - image:
-              src: ./media/index/cligeneric.svg
-            text: geth を使用して接続する
-            href: /azure/blockchain/service/connect-geth
-          - image:
-              src: ./media/index/code-blocks.svg
-            text: Truffle を使用して接続する
-            href: /azure/blockchain/service/connect-truffle
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure でブロックチェーン アプリケーションを作成、構成、開発する方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/blockchain/service/send-transaction">Azure Blockchain Service のメンバーを作成して、トランザクションを送信する</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/blockchain">REST API</a></p>'
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 58aba8438b49b034fc78a8814869e819804cff1c
+  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/12/2019
+  ms.locfileid: "70932805"
+landingContent:
+- title: Azure Blockchain Service について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Blockchain Service とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: プライベート コンソーシアム ブロックチェーン ネットワーク
+      url: consortium.md
+    - text: データ アクセスとセキュリティ
+      url: data-security.md
+    - text: 開発ツール
+      url: develop.md
+- title: 作業開始
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: ブロックチェーンのメンバーを作成する - ポータル
+      url: create-member.md
+    - text: ブロックチェーンのメンバーを作成する - CLI
+      url: create-member-cli.md
+  - linkListType: quickstart
+    links:
+    - text: Visual Studio Code を使用してコンソーシアム ネットワークに接続する
+      url: connect-vscode.md
+    - text: MetaMask を使用してスマート コントラクトを接続し、Remix を使用してデプロイする
+      url: connect-metamask.md
+    - text: Geth を使用してトランザクション ノードに接続する
+      url: connect-geth.md
+    - text: Truffle を使用してトランザクション ノードに接続する
+      url: connect-truffle.md
+  - linkListType: tutorial
+    links:
+    - text: Visual Studio Code を使用してスマート コントラクトを作成、ビルド、デプロイする
+      url: send-transaction.md
+  - linkListType: video
+    links:
+    - text: ネットワークをデプロイおよび構成する
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+    - text: VS Code を使用してスマート コントラクトを作成およびテストする
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+    - text: データを台帳に送信する
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-III-Send-data-to-the-ledger
+    - text: イベントと台帳データを公開する
+      url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-IV-Publish-events-and-ledger-data
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ブロックチェーンのメンバーを管理する - CLI
+      url: manage-cli.md
+    - text: コンソーシアムのメンバーを管理する - PowerShell
+      url: manage-consortium-powershell.md
+    - text: トランザクション ノードを構成する
+      url: configure-transaction-nodes.md
+    - text: Active Directory によるアクセスを構成する
+      url: configure-aad.md
+- title: API
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/blockchain

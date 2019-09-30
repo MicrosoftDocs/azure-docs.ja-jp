@@ -1,47 +1,57 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Firewall のドキュメント
+summary: クラウドベースのネットワーク セキュリティ サービスである Azure Firewall をデプロイする方法について説明します。
 metadata:
-  title: Azure Firewall のドキュメント - チュートリアル、API リファレンス
-  meta.description: 'Learn how to create Azure Firewalls. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
+  title: Azure Firewall のドキュメント
+  description: クラウドベースのネットワーク セキュリティ サービスである Azure Firewall をデプロイする方法について説明します。
   services: firewall
-  author: vhorne
   ms.service: firewall
   ms.topic: landing-page
-  ms.date: 9/24/2018
+  author: vhorne
   ms.author: victorh
-abstract:
-  description: クラウドベースのネットワーク セキュリティ サービスである Azure Firewall をデプロイする方法について説明します。 チュートリアル、API リファレンス、その他のドキュメントでは、アプリケーションレベルのポリシーとネットワークレベルのポリシーを設定して、Azure 仮想ネットワーク リソースを保護する方法を確認できます。
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure Firewall をデプロイする方法について説明します
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/firewall/tutorial-firewall-deploy-portal">Azure portal を使用して Azure Firewall をデプロイして構成する</a>
-          - html: <a href="/azure/firewall/tutorial-hybrid-ps">ハイブリッド ネットワークでのデプロイ</a>
-          - html: <a href="/azure/firewall/tutorial-firewall-dnat">DNAT で受信トラフィックをフィルター処理する</a>
-          - html: <a href="/azure/firewall/tutorial-diagnostics">Azure Firewall のログを監視する</a>
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 一般的なタスクのサンプル スクリプトです。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/firewall/sample-powershell">Azure PowerShell</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/powershell/module/az.network/new-azfirewall">Azure PowerShell</a></p><p><a href="/cli/azure/ext/azure-firewall/network/firewall">Azure CLI</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-          - title: REST
-            html: '<p><a href="https://docs.microsoft.com/rest/api/firewall/">Compute REST API リファレンス</a></p>'
+  ms.date: 08/30/2019
+  ms.openlocfilehash: aba20908401cba2c1b740570f62593b5afb92dc5
+  ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/29/2019
+  ms.locfileid: "70147310"
+landingContent:
+- title: Azure Firewall について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Firewall とは
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Firewall ルール処理ロジック
+      url: rule-processing.md
+    - text: よく寄せられる質問
+      url: firewall-faq.md
+- title: Azure ファイアウォールのデプロイ
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Portal を使用したデプロイ
+      url: tutorial-firewall-deploy-portal.md
+    - text: ハイブリッド ネットワークでのデプロイ
+      url: tutorial-hybrid-portal.md
+    - text: 受信トラフィックのフィルター処理
+      url: tutorial-firewall-dnat.md
+- title: Load Balancer との統合
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Firewall と Azure Standard Load Balancer を統合する
+      url: integrate-lb.md
+- title: Azure Firewall の監視
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Azure Firewall のログとメトリック
+      url: logs-and-metrics.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Firewall のログとメトリックを監視する
+      url: tutorial-diagnostics.md

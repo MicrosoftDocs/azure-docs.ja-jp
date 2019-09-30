@@ -8,14 +8,14 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 4d20256381eab155d4b7532591cea85e43080ec0
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 818285e089ab01c2c603f2b0181fbd6d9179eba1
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019797"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873454"
 ---
-# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>CSP として、顧客に代わって Azure IoT Central アプリケーションを作成して管理する 
+# <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>CSP として、顧客に代わって Azure IoT Central アプリケーションを作成して管理する
 
 Microsoft クラウド ソリューション プロバイダー (CSP) プログラムは、Microsoft リセラー プログラムです。 これは、すべての Microsoft Commercial Online Services を再販売するためのワンストップ プログラムをチャネル パートナーに提供することを目的としています。 詳しくは、「[Cloud Solution Provider プログラムの詳細](https://partner.microsoft.com/cloud-solution-provider)」をご覧ください。
 
@@ -69,13 +69,16 @@ Azure サブスクリプションがない場合は、Microsoft パートナー 
 
 詳細については、[Azure サブスクリプション](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#understanding-accounts-subscriptions-and-billing) に関するページを参照してください。
 
-## <a name="region"></a>Region
+## <a name="region"></a>リージョン
 
-Azure IoT Central アプリケーションを作成するリージョンを選択します。 通常、最適なパフォーマンスを得るには、デバイスに物理的に最も近いリージョンを選択する必要があります。
+Azure IoT Central アプリケーションを作成するリージョンまたは[地理的な場所](https://azure.microsoft.com/global-infrastructure/geographies/)を選択します。 通常、最適なパフォーマンスを得るには、デバイスに物理的に最も近いリージョンを選択する必要があります。
 
-詳細については、[Azure リージョン](https://docs.microsoft.com/azure/guides/developer/azure-developer-guide#azure-regions)に関するページを参照してください。
+> [!NOTE]
+> 現在、**プレビュー アプリケーション** テンプレートは、**北ヨーロッパ**と**米国中部**のリージョンでのみ利用できます。
 
-Azure IoT Central を使用できるリージョンは、[[リージョン別の利用可能な製品]](https://azure.microsoft.com/regions/services/) ページで確認できます。
+詳細については、「[Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)」と「[Azure の地域](https://azure.microsoft.com/global-infrastructure/geographies/)」を参照してください。
+
+Azure IoT Central を使用できるリージョンは、[[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=iot-central) ページで確認できます。
 
 > [!Note]
 > いったんリージョンを選択すると、後でアプリケーションを別のリージョンに移動することはできません。

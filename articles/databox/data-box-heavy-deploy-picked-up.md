@@ -6,17 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 84db33e4c7ac612353c590ac9d2904ac3bc48d38
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.localizationpriority: high
+ms.openlocfilehash: e438fb38afb649f6f4c7f595059ef64800977242
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67592386"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70240345"
 ---
+::: zone target = "docs"
+
 # <a name="tutorial-return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>チュートリアル:Azure Data Box Heavy の返送と Azure へのデータ アップロードの確認
 
+::: zone-end
+
+::: zone target = "chromeless"
+
+# <a name="return-azure-data-box-heavy-and-verify-data-upload-to-azure"></a>Azure Data Box Heavy の返送と Azure へのデータ アップロードの確認
+
+::: zone-end
+
+::: zone target = "docs"
 
 このチュートリアルでは、Azure Data Box Heavy を返送し、Azure にアップロードされたデータを確認する方法について説明します。
 
@@ -36,9 +48,25 @@ ms.locfileid: "67592386"
 - [Azure Data Box の設定に関するAzure Data Box にデータをコピーして確認する](data-box-heavy-deploy-copy-data.md)」を完了していることを確認してください。
 - コピージョブが完了していること。 コピージョブが進行中の場合、発送準備を行うことはできません。
 
+
 ## <a name="prepare-to-ship"></a>発送の準備をする
 
 [!INCLUDE [data-box-heavy-prepare-to-ship](../../includes/data-box-heavy-prepare-to-ship.md)]
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+## <a name="prepare-to-ship"></a>発送の準備をする
+
+発送を準備する前に、コピー ジョブが完了していることを確認します。
+
+1. ローカル Web UI の [出荷準備] ページに移動し、出荷準備を開始します。
+2. ローカル Web UI からデバイスをオフにします。 ケーブルをデバイスから取り外します。
+
+これでデバイスを返送する準備ができました。
+
+::: zone-end
 
 ## <a name="ship-data-box-heavy-back"></a>Data Box Heavy の返送
 
@@ -50,6 +78,8 @@ ms.locfileid: "67592386"
     3. 返送ラベルは、必ず外箱の目立つ位置に貼付してください。
     4. 以前の出荷の古い配送先住所ラベルは必ずデバイスから取り除いてください。
 3. 運送業者によって Data Box Heavy が集荷され、スキャンされると、ポータルの注文状態は **[集荷されました]** に更新されます。 追跡 ID も表示されます。
+
+::: zone target = "docs"
 
 ## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
 
@@ -79,10 +109,25 @@ Microsoft がディスクを受け取ってスキャンすると、注文の状�
         ![リソース グループに接続されているマネージド ディスク](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
 
     - VHDX または動的/差分 VHD をコピーした場合、VHDX/VHD はページ BLOB としてステージング ストレージ アカウントにアップロードされますが、VHD からマネージド ディスクへの変換は失敗します。 ステージング環境の **[ストレージ アカウント] > [BLOB]** に移動し、適切なコンテナー (Standard SSD、Standard HDD、または Premium SSD) を選択します。 VHD は、ステージング ストレージ アカウントにページ BLOB としてアップロードされます。
+    
+::: zone-end
+
+::: zone target = "chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
+
+Data Box Heavy デバイスが Azure データセンターのネットワークに接続されると、Azure へのデータのアップロードが自動的に開始されます。 Data Box サービスから、データのコピーが完了したことが Azure portal 経由で通知されます。
+
+- 失敗していないかエラー ログで確認し、適切な措置を講じます。
+- コピー元からデータを削除する前に、データがストレージ アカウントに存在することを確認します。
+
+::: zone-end
 
 ## <a name="erasure-of-data-from-data-box-heavy"></a>Data Box Heavy からデータを消去する
  
 Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。 消去が完了した後、[注文履歴をダウンロード](data-box-portal-admin.md#download-order-history)できます。
+
+::: zone target = "docs"
 
 ## <a name="next-steps"></a>次の手順
 
@@ -99,5 +144,7 @@ Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 
 
 > [!div class="nextstepaction"]
 > [ローカル Web UI を使用して Azure Data Box を管理する](./data-box-local-web-ui-admin.md)
+
+::: zone-end
 
 

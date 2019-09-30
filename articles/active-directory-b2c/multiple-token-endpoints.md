@@ -1,6 +1,6 @@
 ---
-title: OWIN ベースの Web アプリケーションで複数のトークン発行者をサポートする - Azure Active Directory B2C
-description: .NET Web アプリケーションで複数のドメインによって発行されたトークンをサポートできるようにする方法について説明します。
+title: OWIN ベースの Web API を b2clogin.com に移行する - Azure Active Directory B2C
+description: アプリケーションを b2clogin.com に移行するときに、複数のトークン発行者によって発行されたトークンを .NET Web API でサポートできるようにする方法について学習します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,21 +10,23 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 31ab19b8b3adbef1f0ea573af13b98750d278db8
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: a8a6b4f90fe3f1e60341cc59e7d81870c82e843b
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716717"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69533764"
 ---
-# <a name="support-multiple-token-issuers-in-an-owin-based-web-application"></a>OWIN ベースの Web アプリケーションで複数のトークン発行者をサポートする
+# <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWIN ベースの Web API を b2clogin.com に移行する
 
-この記事では、[Open Web Interface for .NET (OWIN)](http://owin.org/) が実装されている Web アプリと API で複数のトークン発行者のサポートを有効にする方法について説明します。 複数のトークン エンドポイントのサポートは、Azure Active Directory (Azure AD) B2C アプリケーションを *login.microsoftonline.com* から *b2clogin.com* に移行する場合に便利です。
+この記事では、[Open Web Interface for .NET (OWIN)](http://owin.org/) が実装されている Web API で複数のトークン発行者のサポートを有効にする方法について説明します。 複数のトークン エンドポイントのサポートは、Azure Active Directory B2C (Azure AD B2C) API とそのアプリケーションを *login.microsoftonline.com* から *b2clogin.com* に移行する場合に便利です。
 
-以下のセクションでは、[Microsoft OWIN][katana] ミドルウェア コンポーネント (Katana) を使用する Web アプリケーションおよび対応する Web API で複数の発行者を有効にする方法の例について説明します。 コード例は Microsoft OWIN ミドルウェアに固有のものですが、一般的な手法は他の OWIN ライブラリにも適用できます。
+b2clogin.com と login.microsoftonline.com の両方によって発行されたトークンを受け入れるように API にサポートを追加することにより、Web アプリケーションを段階的に移行してから、login.microsoftonline.com で発行されたトークンのサポートを API から削除することができます。
+
+以下のセクションでは、[Microsoft OWIN][katana] ミドルウェア コンポーネント (Katana) を使用する Web API で複数の発行者を有効にする方法の例について示します。 コード例は Microsoft OWIN ミドルウェアに固有のものですが、一般的な手法は他の OWIN ライブラリにも適用できます。
 
 > [!NOTE]
-> この記事は、`login.microsoftonline.com` を参照するアプリケーションを現在デプロイしていて、推奨される `b2clogin.com` エンドポイントへの移行を希望している Azure AD B2C のお客様を対象としています。 新しいアプリケーションを設定する場合は、指示に従って [b2clogin.com](b2clogin.md) を使用してください。
+> この記事は、`login.microsoftonline.com` を参照する API とアプリケーションを現在デプロイしていて、推奨される `b2clogin.com` エンドポイントへの移行を希望している Azure AD B2C のお客様を対象としています。 新しいアプリケーションを設定する場合は、指示に従って [b2clogin.com](b2clogin.md) を使用してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,7 +36,7 @@ ms.locfileid: "68716717"
 
 ## <a name="get-token-issuer-endpoints"></a>トークン発行者のエンドポイントを取得する
 
-最初に、アプリケーションでサポートする各発行者に対するトークン発行者エンドポイントの URI を取得する必要があります。 Azure AD B2C テナントによってサポートされている *b2clogin.com* エンドポイントと *login.microsoftonline.com* エンドポイントを取得するには、Azure portal で次の手順を使用します。
+まず、API でサポートする各発行者に対するトークン発行者エンドポイントの URI を取得する必要があります。 Azure AD B2C テナントによってサポートされている *b2clogin.com* エンドポイントと *login.microsoftonline.com* エンドポイントを取得するには、Azure portal で次の手順を使用します。
 
 まず、既存のユーザー フローのいずれかを選択します。
 
@@ -85,7 +87,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 このセクションでは、コードを更新し、両方のトークン発行者エンドポイントが有効であることを指定します。
 
 1. Visual Studio で **B2C-WebAPI-DotNet.sln** ソリューションを開きます
-1. **TaskService** プロジェクトの *TaskService\\App_Start\\**Startup.Auth.cs*** ファイルをエディターで開きます。
+1. **TaskService** プロジェクトの *TaskService\\App_Start\\ **Startup.Auth.cs*** ファイルをエディターで開きます。
 1. 次の `using` ディレクティブをファイルの先頭に追加します。
 
     `using System.Collections.Generic;`

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a063891339a46366490447b7c7a7a1a14fd81be6
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 316a523a6216354ae5b6166be55e183a4e050766
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828791"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70305067"
 ---
 # <a name="enable-passwordless-security-key-sign-in-for-azure-ad-preview"></a>Azure AD へのパスワードなしのセキュリティ キー サインインを有効にする (プレビュー)
 
@@ -54,7 +54,7 @@ ms.locfileid: "68828791"
    1. 名前:Windows サインインのセキュリティ キー
    1. 説明:Windows サインイン時に使用される FIDO セキュリティ キーを有効にします
    1. プラットフォーム:Windows 10 以降
-   1. プラットフォームの種類:カスタム
+   1. プロファイルの種類:カスタム
    1. カスタム OMA-URI の設定:
       1. 名前:Turn on FIDO Security Keys for Windows Sign-In
       1. OMA-URI: ./Device/Vendor/MSFT/PassportForWork/SecurityKey/UseSecurityKeyForSignin

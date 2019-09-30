@@ -8,14 +8,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
-ms.date: 04/11/2018
+ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: e7863e4a0f4cab6f6328de19d1611710f9188de3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: e7346fa0f9cc977755c441077a50707dd207019f
+ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838762"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69638307"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
 
@@ -94,10 +94,7 @@ microSD カードに Raspbian イメージをインストールするための�
 
 1. Raspbian をダウンロードします。
 
-   a. [Raspbian Stretch をダウンロードします](https://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (.zip ファイル)。
-
-   > [!WARNING]
-   > `raspbian-2017-07-5` zip イメージをダウンロードするには、上のリンクを使用してください。 最新バージョンの Raspbian イメージには Wiring-Pi ノードに関する既知の問題がいくつかあるため、次の手順でエラーが発生するおそれがあります。
+   a. [Raspbian Buster with desktop](https://www.raspberrypi.org/downloads/raspbian/) (.zip ファイル)。
 
    b. コンピューター上のフォルダーに Raspbian イメージを抽出します。
 
@@ -195,10 +192,10 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    node -v
    ```
 
-   バージョンが 10.x より前であるか、Node.js が Pi にない場合は、最新バージョンをインストールします。
+   バージョンが 11.x より前であるか、Node.js が Pi にない場合は、最新バージョンをインストールします。
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 

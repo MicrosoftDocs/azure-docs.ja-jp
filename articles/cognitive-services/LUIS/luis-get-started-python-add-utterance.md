@@ -1,5 +1,5 @@
 ---
-title: 変更、アプリのトレーニング、Python - LUIS
+title: クイック スタート:変更、アプリのトレーニング、Python - LUIS
 titleSuffix: Azure Cognitive Services
 description: この Python クイック スタートでは、Home Automation アプリに発話の例を追加してアプリをトレーニングします。
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/29/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 96f4d251b0ccc76ef33c86f6661cc9b94098a967
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 32c87c0ec78c57aee83b15f13a4d5240eedc1239
+ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560540"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70375396"
 ---
 # <a name="quickstart-change-model-using-python"></a>クイック スタート: Python を使ってモデルを変更する
 

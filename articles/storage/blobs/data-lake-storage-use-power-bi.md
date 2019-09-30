@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: normesta
 ms.reviewer: bensack
-ms.openlocfilehash: cb82d47be11570baf7865468c804162a20a7685f
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d76ea317271ae0e8eb0d54fcfee5dc005d836fc1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855479"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984953"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen2-by-using-power-bi"></a>Power BI を使用して Azure Data Lake Storage Gen2 のデータを分析する
 
@@ -28,7 +28,7 @@ ms.locfileid: "68855479"
 > * 階層型名前空間があるストレージ アカウント。 作成するには、[こちら](data-lake-storage-quickstart-create-account.md)の手順に従います。
 > この記事では、`myadlsg2` という名前のアカウントが作成されていることを前提としています。
 > * お使いのストレージ アカウントに配置されている `Drivers.txt` という名前のサンプル データ ファイル。
-> このサンプルを [Azure Data Lake Git リポジトリ](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceDataDrivers.txt)からダウンロードした後、お使いのストレージ アカウントにそのファイルをアップロードできます。
+> このサンプルを [Azure Data Lake Git リポジトリ](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)からダウンロードした後、お使いのストレージ アカウントにそのファイルをアップロードできます。
 > * **Power BI Desktop**。 これは [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45331) からダウンロードできます。 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Power BI Desktop でレポートを作成する
@@ -39,7 +39,7 @@ ms.locfileid: "68855479"
 
     ![[データの取得] ページ](media/data-lake-storage-use-power-bi/get-data-page.png)
 
-4. **[Azure Data Lake Storage Gen2]** ダイアログ ボックスで、ファイル システムのエンドポイント形式を使用して、お使いの Azure Data Lake Storage Gen2 アカウント、ファイル システム、またはサブフォルダーの URL を指定できます。 Data Lake Storage Gen2 の URL のパターンは `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` です。その後、 **[OK]** をクリックします。
+4. **[Azure Data Lake Storage Gen2]** ダイアログ ボックスで、コンテナーのエンドポイント形式を使用して、ご利用の Azure Data Lake Storage Gen2 アカウント、ファイル システム、またはサブフォルダーの URL を指定できます。 Data Lake Storage Gen2 の URL のパターンは `https://<accountname>.dfs.core.windows.net/<filesystemname>/<subfolder>` です。その後、 **[OK]** をクリックします。
 
     ![URL](media/data-lake-storage-use-power-bi/adls-url.png)
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 8/14/2019
 ms.author: borisb
-ms.openlocfilehash: e18f1db80b8fcb2c8846ce0c7294e1766cfa1ca3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c11ce31913baa8c638e94bdf92ef622cd8899e03
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091379"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764300"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure の Red Hat Enterprise Linux イメージ
 この記事では、名前付けと保有期間に関するポリシーと、Azure Marketplace 内で利用可能な Red Hat Enterprise Linux (RHEL) イメージについて説明します。
@@ -114,18 +114,19 @@ RHEL 8.0      |該当なし                            | Red Hat から使用可
 
 プラン| SKU | パーティション分割 | プロビジョニング | メモ
 :----|:----|:-------------|:-------------|:-----
-RHEL          | 7-RAW    | RAW    | Linux エージェント | RHEL 7 イメージ ファミリ。 <br> 既定では EUS リポジトリに接続されていません。
-|             | 7-LVM    | LVM    | Linux エージェント | RHEL 7 イメージ ファミリ。 <br> 既定では EUS リポジトリに接続されていません。
-|             | 7-RAW-CI | RAW-CI | cloud-init  | RHEL 7 イメージ ファミリ。 <br> 既定では EUS リポジトリに接続されていません。
-|             | 6.7      | RAW    | Linux エージェント | RHEL 6.7 イメージ (古い名前付け規則)
-|             | 6.8      | RAW    | Linux エージェント | RHEL 6.8 については上記と同じ
-|             | 6.9      | RAW    | Linux エージェント | RHEL 6.9 については上記と同じ
-|             | 6.10     | RAW    | Linux エージェント | RHEL 6.10 については上記と同じ
-|             | 7.2      | RAW    | Linux エージェント | RHEL 7.2 については上記と同じ
-|             | 7.3      | RAW    | Linux エージェント | RHEL 7.3 については上記と同じ
-|             | 7.4      | RAW    | Linux エージェント | RHEL 7.4 については上記と同じ。 <br> 2019 年 4 月現在、既定で EUS リポジトリに接続されています
-|             | 7.5      | RAW    | Linux エージェント | RHEL 7.5 については上記と同じ。 <br> 2019 年 6 月現在、既定で EUS リポジトリに接続されています
-|             | 7.6      | RAW    | Linux エージェント | RHEL 7.6 については上記と同じ。 <br> 2019 年 5 月現在、既定で EUS リポジトリに接続されています
+RHEL          | 7-RAW    | RAW    | Linux エージェント | RHEL 7.x イメージ ファミリ。 <br> 既定では EUS リポジトリに接続されていません。
+|             | 7-LVM    | LVM    | Linux エージェント | RHEL 7.x イメージ ファミリ。 <br> 既定では EUS リポジトリに接続されていません。
+|             | 7-RAW-CI | RAW-CI | cloud-init  | RHEL 7.x イメージ ファミリ。 <br> 既定では EUS リポジトリに接続されていません。
+|             | 6.7      | RAW    | Linux エージェント |
+|             | 6.8      | RAW    | Linux エージェント |
+|             | 6.9      | RAW    | Linux エージェント |
+|             | 6.10     | RAW    | Linux エージェント |
+|             | 7.2      | RAW    | Linux エージェント |
+|             | 7.3      | RAW    | Linux エージェント |
+|             | 7.4      | RAW    | Linux エージェント | 2019 年 4 月現在、既定で EUS リポジトリに接続されています。
+|             | 7.5      | RAW    | Linux エージェント | 2019 年 6 月現在、既定で EUS リポジトリに接続されています。
+|             | 7.6      | RAW    | Linux エージェント | 2019 年 5 月現在、既定で EUS リポジトリに接続されています。
+|             | 7.7      | LVM    | Linux エージェント | 既定では EUS リポジトリに接続されています。
 RHEL-SAP      | 7.4      | LVM    | Linux エージェント | RHEL 7.4 for SAP HANA および Business Apps
 |             | 7.5      | LVM    | Linux エージェント | RHEL 7.5 for SAP HANA および Business Apps
 RHEL-SAP-HANA | 6.7      | RAW    | Linux エージェント | RHEL 6.7 for SAP HANA
@@ -133,12 +134,12 @@ RHEL-SAP-HANA | 6.7      | RAW    | Linux エージェント | RHEL 6.7 for SAP 
 |             | 7.3      | LVM    | Linux エージェント | RHEL 7.3 for SAP HANA
 RHEL-SAP-APPS | 6.8      | RAW    | Linux エージェント | RHEL 6.8 for SAP Business Applications
 |             | 7.3      | LVM    | Linux エージェント | RHEL 7.3 for SAP Business Applications
-RHEL-HA       | 7.4      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.4
-|             | 7.5      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.5
-|             | 7.6      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.6
-RHEL-SAP-HA   | 7.4      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.4 for SAP
-|             | 7.5      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.5 for SAP
-|             | 7.6      | RAW    | Linux エージェント | HA アドオンが追加された RHEL 7.6 for SAP
+RHEL-HA       | 7.4      | LVM    | Linux エージェント | HA アドオンが追加された RHEL 7.4
+|             | 7.5      | LVM    | Linux エージェント | HA アドオンが追加された RHEL 7.5
+|             | 7.6      | LVM    | Linux エージェント | HA アドオンが追加された RHEL 7.6
+RHEL-SAP-HA   | 7.4      | LVM    | Linux エージェント | HA アドオンが追加された RHEL 7.4 for SAP
+|             | 7.5      | LVM    | Linux エージェント | HA アドオンが追加された RHEL 7.5 for SAP
+|             | 7.6      | LVM    | Linux エージェント | HA アドオンが追加された RHEL 7.6 for SAP
 
 ### <a name="old-naming-convention"></a>以前の名前付け規則
 RHEL 7 イメージ ファミリと RHEL 6 イメージ ファミリでは、前述の名前付け規則の変更が行われるまで、SKU の特定のバージョンが使用されていました。

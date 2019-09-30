@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7033c7bd3e783157280709b2c7e889473166ac84
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879225"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70743241"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Azure AD のパスワード リセットのセルフサービスをデプロイする
 
 Azure Active Directory の機能であるパスワード リセットのセルフサービス (SSPR) を使用すると、従業員は自分のパスワードをリセットすることができ、IT スタッフに連絡する必要はありません。 サービスを使用する前に、従業員はパスワード リセットのセルフサービスに登録するか、登録してもらう必要があります。 登録時に、従業員は組織で有効になっている 1 つまたは複数の認証方法を選択します。
 
-SSPR を使用すると、従業員は場所や時間に関係なく、迅速にブロックを解除して作業を続けることができます。 ユーザーが自分でブロックを解除できるようにすることで、組織としては、生産に寄与しない時間と、パスワード関連で最も一般的な問題の高いサポート コストを、削減できます。
+SSPR を使用すると、従業員は場所や時間に関係なく、迅速にブロックを解除して作業を続けることができます。 ユーザーが自分自身のブロックを解除できるようにすることで、組織としては、パスワード関連のほとんどの一般的な問題に対する非生産的な時間と高いサポートコストを削減できます。
 
 SSPR と共に別のアプリケーションまたはサービスを組織にデプロイすることで、ユーザーがすばやく登録できるようにします。 このアクションでは、大量のサインインが生成され、登録が促進されます。
 

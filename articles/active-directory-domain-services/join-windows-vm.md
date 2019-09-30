@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: iainfou
-ms.openlocfilehash: c3c3252ec2fd850a763bbbf089d470df5173843f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3fd2a50946f0857d527c34b62687b2dbdd71298e
+ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612411"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70172041"
 ---
 # <a name="tutorial-join-a-windows-server-virtual-machine-to-a-managed-domain"></a>チュートリアル:Windows Server 仮想マシンのマネージド ドメインへの参加
 
@@ -34,8 +34,8 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
 このチュートリアルを完了するには、以下のリソースが必要です。
 
 * 有効な Azure サブスクリプション
-    * Azure サブスクリプションを持っていない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)します。
-* サブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリに同期されていること)。
+    * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+* ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services マネージド ドメイン。
     * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成][create-azure-ad-ds-instance]してください。
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     |----------------------|-------------------|
     | Resource group       | リソース グループを選択または作成します (*myResourceGroup* など) |
     | 仮想マシン名 | VM の名前を入力します (*myVM* など) |
-    | リージョン               | VM を作成するリージョンを選択します ("*米国東部*" など) |
+    | Region               | VM を作成するリージョンを選択します ("*米国東部*" など) |
     | ユーザー名             | VM 上に作成するローカル管理者アカウントのユーザー名を入力します (*azureuser* など) |
     | パスワード             | VM 上に作成するローカル管理者の安全なパスワードを入力し、確認します。 ドメイン ユーザー アカウントの資格情報は指定しないでください。 |
 
@@ -153,15 +153,23 @@ VM を作成し、RDP 接続を確立したので、Windows Server 仮想マシ�
 1. Azure AD DS マネージド ドメインに参加するプロセスを完了するには、VM を再起動します。
 
 > [!TIP]
-> PowerShell の [Add-Computer][add-computer] コマンドレットを使用して、VM をドメインに参加させることもできます。 次の例では、*CONTOSO* ドメインに参加した後、VM を再起動しています。 要求されたら、*Azure AD DC administrators* グループに属しているユーザーの資格情報を入力します。
+> PowerShell の [Add-Computer][add-computer] コマンドレットを使用して、VM をドメインに参加させることができます。 次の例では、*CONTOSO* ドメインに参加した後、VM を再起動しています。 要求されたら、*Azure AD DC administrators* グループに属しているユーザーの資格情報を入力します。
 >
 > `Add-Computer -DomainName CONTOSO -Restart`
+>
+> VM に接続したり手動で接続を構成したりすることなく VM をドメインに参加させるには、[Set-AzVmAdDomainExtension][set-azvmaddomainextension] Azure PowerShell コマンドレットの使用方法についても調べることができます。
 
 Windows Server VM が再起動すると、Azure AD DS マネージド ドメインで適用されているすべてのポリシーが、VM にプッシュされます。 また、適切なドメイン資格情報を使用して Windows Server VM にサインインすることもできます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 次のチュートリアルでは、この Windows Server VM を使用して、Azure AD DS マネージド ドメインを管理できる管理ツールをインストールします。 このチュートリアル シリーズを続けない場合は、次のクリーンアップ手順を確認して、[RDP を無効にする](#disable-rdp)か、[VM を削除](#delete-the-vm)します。 そうでない場合は、[次のチュートリアルを続けます](#next-steps)。
+
+### <a name="un-join-the-vm-from-azure-ad-ds-managed-domain"></a>Azure AD DS マネージド ドメインへの VM の参加を解除する
+
+Azure AD DS マネージド ドメインから VM を削除するには、もう一度、[VM をドメインに参加させる](#join-the-vm-to-the-azure-ad-ds-managed-domain)ための手順を実行します。 このとき、Azure AD DS マネージド ドメインに参加させる代わりに、ワークグループ (既定の "*ワークグループ*" など) に参加させることを選択します。 VM が再起動すると、コンピューター オブジェクトが Azure AD DS マネージド ドメインから削除されます。
+
+ドメインへの参加を解除せずに [VM を削除](#delete-the-vm)すると、孤立したコンピューター オブジェクトが Azure AD DS に残されます。
 
 ### <a name="disable-rdp"></a>RDP を無効にする
 
@@ -206,7 +214,7 @@ Windows Server VM が再起動すると、Azure AD DS マネージド ドメイ�
 * 指定したユーザー アカウントが *AAD DC Administrators* グループに属していることを確認します。
 * UPN 形式を使用して資格情報を指定します (例: `contosoadmin@contoso.onmicrosoft.com`)。 たくさんのユーザーがテナントで同じ UPN プレフィックスを使用している場合、または UPN プレフィックスが最大文字数を超えている場合は、アカウントの *SAMAccountName* が自動生成される可能性があります。 そのような場合、アカウントの *SAMAccountName* 形式が、想定されている形式やオンプレミス ドメインで使用されている形式と異なる可能性があります。
 * マネージド ドメインとの[パスワード同期を有効にしている][password-sync]ことを確認します。 この構成手順を行わないと、サインインの試行を正しく認証するために必要なパスワード ハッシュが、Azure AD DS マネージド ドメインに存在しません。
-* パスワード同期が完了するまで待ちます。 ユーザー アカウントのパスワードを変更すると、ドメインへの参加にパスワードを使用できるようになるまでに 15 から 20 分かかることがあります。
+* パスワード同期が完了するまで待ちます。 ユーザー アカウントのパスワードが変更されると、Azure AD からの自動バックグラウンド同期によって、Azure AD DS 内のパスワードが更新されます。 ドメインへの参加にパスワードを使用できるようになるまでに、しばらく時間がかかります。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -231,3 +239,4 @@ Azure AD DS マネージド ドメインを管理するには、Active Directory
 [add-computer]: /powershell/module/microsoft.powershell.management/add-computer
 [jit-access]: ../security-center/security-center-just-in-time.md
 [azure-bastion]: ../bastion/bastion-create-host-portal.md
+[set-azvmaddomainextension]: /powershell/module/az.compute/set-azvmaddomainextension

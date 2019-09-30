@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 219cdeea228ae3e334213a0f0654f904592cb09e
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6801f2b3bca1fbfa221ec2eba07f51b76712b4ff
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448737"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813973"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する
 
@@ -92,7 +92,7 @@ HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/
 
 6. **棒グラフ** アイコンを選択し、表示を変更します。  **棒グラフ**を選択した後に表示される **[設定]** で、 **[キー]** と **[値]** を選択できます。  次のスクリーンショットでは出力を示します。
 
-    ![Notebook を使用して Spark SQL ステートメントを実行する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Notebook を使用して Spark SQL ステートメントを実行する")
+    ![Notebook を使用して Spark SQL ステートメントを実行する1](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-1.png "Notebook を使用して Spark SQL ステートメントを実行する1")
 
 7. クエリの変数を使用して Spark SQL ステートメントを実行することもできます。 次のスニペットでは、クエリで変数 `Temp` と照会できる値を定義する方法を示します。 初めてクエリを実行すると、変数に指定した値がドロップダウンに自動的に設定されます。
 
@@ -110,7 +110,7 @@ HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/
 
      次のスクリーンショットでは出力を示します。
 
-     ![Notebook を使用して Spark SQL ステートメントを実行する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Notebook を使用して Spark SQL ステートメントを実行する")
+     ![Notebook を使用して Spark SQL ステートメントを実行する2](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-spark-query-2.png "Notebook を使用して Spark SQL ステートメントを実行する2")
 
 9. Livy インタープリターを再起動して、アプリケーションを終了します。 再起動するには、右上隅のログインしている [ユーザー名] を選択してインタープリターの [設定] を開き、 **[インタープリター]** を選択します。  
 
@@ -131,11 +131,11 @@ HDInsight 上の Apache Spark クラスターに標準では搭載されてい�
 
 2. **livy** までスクロールし、 **[編集]** を選択します。
 
-    ![インタープリターの設定を変更する](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "インタープリターの設定を変更する")
+    ![インタープリターの設定を変更する1](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-1.png "インタープリターの設定を変更する1")
 
 3. `livy.spark.jars.packages` という新しいキーを追加し、`group:id:version` 形式で値を設定します。 したがって、[spark-csv](https://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) パッケージを使用する場合は、キーの値を `com.databricks:spark-csv_2.10:1.4.0` に設定する必要があります。
 
-    ![インタープリターの設定を変更する](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "インタープリターの設定を変更する")
+    ![インタープリターの設定を変更する2](./media/apache-spark-zeppelin-notebook/zeppelin-use-external-package-2.png "インタープリターの設定を変更する2")
 
     **[保存]** を選択し、Livy インタープリターを再起動します。
 

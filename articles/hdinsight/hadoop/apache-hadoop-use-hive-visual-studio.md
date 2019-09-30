@@ -1,5 +1,5 @@
 ---
-title: Apache Hive と Data Lake (Apache Hadoop) tools for Visual Studio - Azure HDInsight
+title: Apache Hive と Data Lake Tools for Visual Studio - Azure HDInsight
 description: Data Lake Tools for Visual Studio を使って Azure HDInsight 上の Apache Hadoop で Apache Hive クエリを実行する方法について説明します。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7480dafe435e555bfba81ebd9242bb5724c0bf3f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e5e3854f0b132ede38e182f99435a569c04d49e
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65861593"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076280"
 ---
 # <a name="run-apache-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して Apache Hive クエリを実行する
 
@@ -53,13 +53,13 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
     SELECT * FROM hivesampletable;
     ```
 
-5. **[Execute (実行)]** を選択します。 実行モードは既定で **[対話型]** であることに注意してください。
+5. **[実行]** を選択します。 実行モードは既定で **[対話型]** であることに注意してください。
 
     ![Interactive Hive クエリ実行のスクリーンショット](./media/apache-hadoop-use-hive-visual-studio/vs-execute-hive-query.png)
 
 6. 同じクエリを **[バッチ]** モードで実行するには、ドロップダウン リストを **[対話型]** から **[バッチ]** に切り替えます。 実行ボタンが **[実行]** から **[送信]** に変わることに注意してください。
 
-    ![Hive クエリの送信のスクリーンショット](./media/apache-hadoop-use-hive-visual-studio/vs-batch-query.png)
+    ![Hive クエリの送信のスクリーンショット](./media/apache-hadoop-use-hive-visual-studio/visual-studio-batch-query.png)
 
     Hive エディターは IntelliSense をサポートしています。 Data Lake Tools for Visual Studio では、Hive スクリプトの編集時にリモート メタデータの読み込みをサポートします。 たとえば、`SELECT * FROM` と入力すると、IntelliSense によってテーブル名の候補が一覧表示されます。 テーブル名を指定すると、Intellisense によって列名が一覧表示されます。 このツールは、Hive の DML ステートメント、サブクエリ、および組み込みの UDF の大半をサポートします。 IntelliSense は、HDInsight のツール バーで選択されているクラスターのメタデータのみを推奨します。
 
@@ -71,7 +71,7 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
 
    [Submit (Advanced)]\(送信 (詳細設定)\) オプションを選択した場合は、スクリプトの **[ジョブ名]** 、 **[引数]** 、 **[追加の構成]** 、 **[状態ディレクトリ]** を構成します。
 
-    ![HDInsight Hadoop の Hive クエリのスクリーンショット](./media/apache-hadoop-use-hive-visual-studio/hdinsight.visual.studio.tools.submit.jobs.advanced.png "クエリの送信")
+    ![HDInsight Hadoop の Hive クエリのスクリーンショット](./media/apache-hadoop-use-hive-visual-studio/vs-tools-submit-jobs-advanced.png "クエリの送信")
 
 ### <a name="hive-application"></a>Hive アプリケーション
 
@@ -115,11 +115,11 @@ Hive クエリを作成して実行するためのオプションは 2 つあり
 
 6. ツール バーで、このクエリに使用する **HDInsight クラスター**を選択します。 **[送信]** を選択して、ステートメントを Hive ジョブとして実行します。
 
-   ![[送信] バー](./media/apache-hadoop-use-hive-visual-studio/toolbar.png)
+   ![Azure HDInsight ツール バーの送信](./media/apache-hadoop-use-hive-visual-studio/hdinsight-toolbar-submit.png)
 
 7. **[Hive ジョブの概要]** に実行しているジョブに関する情報が表示されます。 **[更新]** リンクを使用して、 **[ジョブのステータス]** が **[完了]** に変更されるまで、ジョブの情報を更新します。
 
-   ![完了したジョブが表示されたジョブの概要](./media/apache-hadoop-use-hive-visual-studio/jobsummary.png)
+   ![完了したジョブが表示されたジョブの概要](./media/apache-hadoop-use-hive-visual-studio/hdinsight-job-summary.png)
 
 8. **[ジョブ出力]** リンクを使用して、このジョブの出力を表示します。 このクエリによって返された値である `[ERROR] 3` が表示されます。
 

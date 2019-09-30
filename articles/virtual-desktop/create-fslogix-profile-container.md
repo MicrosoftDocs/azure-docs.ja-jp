@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.author: helohr
-ms.openlocfilehash: 05289b8e3aa0e083dd948a2d43f3af92418bc5d2
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: dd3b68d600edcbbae73fff542e677d3ebc6b16ee
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051992"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390817"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Azure NetApp Files を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する
 
@@ -195,11 +195,11 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 4. 次のコマンドレットを実行して、リモート デスクトップ グループにユーザーを割り当てます。
 
    ```powershell
-   $tenant = "<your-wvd-tenant>"
-   $pool1 = "<wvd-pool>"
-   $appgroup = "Desktop Application Group"
-   $user1 = "<user-principal>"
-   Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
+   $wvdTenant = "<your-wvd-tenant>"
+   $hostPool = "<wvd-pool>"
+   $appGroup = "Desktop Application Group"
+   $user = "<user-principal>"
+   Add-RdsAppGroupUser $wvdTenant $hostPool $appGroup $user
    ```
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Azure NetApp File 共有にユーザーがアクセスできることを確認する
@@ -218,7 +218,7 @@ FSLogix プロファイル コンテナーは、使いやすい Azure のネイ�
 
 6. ホスト プールに属している任意の VM にリモート デスクトップを使用して直接接続し、**エクスプローラー**を開きます。 次に、**マウント パス** (次の例では、マウント パスは \\\\anf-SMB-3863.gt1107.onmicrosoft.com\\anf-VOL) に移動します。
 
-   このフォルダー内に、次の例のようなプロファイル VHD があれば成功です。
+   このフォルダー内に、次の例のようなプロファイル VHD (または VHDX) があるはずです。
 
    ![マウント パスにあるフォルダーの内容のスクリーンショット。 内部には "Profile_ssbb" という名前の VHD ファイルが 1 つ存在しています。](media/mount-path-folder.png)
 

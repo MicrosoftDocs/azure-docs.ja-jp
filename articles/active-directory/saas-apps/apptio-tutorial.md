@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Active Directory と Apptio の統合 | Microsoft Docs
+title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Apptio の統合 | Microsoft Docs
 description: Azure Active Directory と Apptio の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/08/2019
+ms.date: 08/29/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c07a978004ee8d2e25772f0d393529cbb509380a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a421afc736399472a513dfc145321ba33ef6fdca
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967224"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129722"
 ---
-# <a name="tutorial-integrate-apptio-with-azure-active-directory"></a>チュートリアル:Apptio と Azure Active Directory の統合
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-apptio"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Apptio の統合
 
 このチュートリアルでは、Apptio と Azure Active Directory (Azure AD) を統合する方法について説明します。 Apptio と Azure AD を統合すると、次のことができます。
 
@@ -46,6 +46,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Apptio では、**IDP** Initiated SSO がサポートされます
 
+> [!NOTE]
+> このアプリケーションの識別子は固定文字列値であるため、1 つのテナントで構成できるインスタンスは 1 つだけです。
+
 ## <a name="adding-apptio-from-the-gallery"></a>ギャラリーからの Apptio の追加
 
 Azure AD への Apptio の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Apptio を追加する必要があります。
@@ -57,7 +60,6 @@ Azure AD への Apptio の統合を構成するには、ギャラリーから管
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに、「**Apptio**」と入力します。
 1. 結果のパネルから **[Apptio]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-apptio"></a>Apptio の Azure AD シングル サインオンの構成とテスト
 
 **B. Simon** というテスト ユーザーを使用して、Apptio に対する Azure AD SSO を構成してテストします。 SSO を機能させるために、Azure AD ユーザーと Apptio の関連ユーザーとの間にリンク関係を確立する必要があります。
@@ -67,9 +69,9 @@ Apptio に対する Azure AD SSO を構成してテストするには、次の�
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
     1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
     1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
-2. **[Apptio の SSO の構成](#configure-apptio-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+1. **[Apptio の SSO の構成](#configure-apptio-sso)** - アプリケーション側でシングル サインオン設定を構成します。
     1. **[Apptio のテスト ユーザーの作成](#create-apptio-test-user)** - Apptio で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
-3. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
@@ -77,46 +79,21 @@ Apptio に対する Azure AD SSO を構成してテストするには、次の�
 
 1. [Azure portal](https://portal.azure.com/) の **Apptio** アプリケーション統合ページで、 **[管理]** セクションを探して、 **[シングル サインオン]** を選択します。
 1. **[シングル サインオン方式の選択]** ページで、 **[SAML]** を選択します。
-1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集/ペン アイコンをクリックして設定を編集します。
+1. **[SAML でシングル サインオンをセットアップします]** ページで、 **[基本的な SAML 構成]** の編集 (ペン) アイコンをクリックして設定を編集します。
 
    ![基本的な SAML 構成を編集する](common/edit-urls.png)
 
-1. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    **[識別子]** ボックスに、値として `urn:federation:apptio` を入力します。
+    **[識別子]** テキスト ボックスに、`urn:federation:apptio` という URL を入力します。
 
-5. Apptio アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。  **[編集]**   アイコンをクリックして、[ユーザー属性] ダイアログを開きます。
+1. ロール要求はあらかじめ構成されているため、自分で構成する必要はありませんが、それらを Azure AD に作成する必要があります。こちらの[記事](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)に従ってください。
 
-    ![image](common/edit-attribute.png)
-
-    > [!NOTE]
-    > Azure AD で**役割**を構成する方法については、[ここ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management)をクリックしてください
-
-6. その他に、Apptio アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 [ユーザー属性] ダイアログの [ユーザー要求] セクションで、以下の手順を実行して、以下の表のように SAML トークン属性を追加します。 
-
-    | EnableAdfsAuthentication |  ソース属性|
-    | -------------- | -------------------- |
-    | fullname       | user.displayname |
-    | mail           | User.mail |
-    | role           | user.assignedrole |
-
-    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
-
-    b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
-
-    c. **[名前空間]** は空白のままにします。
-
-    d. [ソース] として **[属性]** を選択します。
-
-    e. **[ソース属性]** の一覧から、その行に表示される属性値を入力します。
-
-    f. **[Save]** をクリックします。
-
-4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/metadataxml.png)
 
-6. **[Set up Apptio]\(Apptio の設定\)** セクションで、要件に基づいて適切な URL をコピーします。
+1. **[Set up Apptio]\(Apptio の設定\)** セクションで、要件に基づいて適切な URL をコピーします。
 
     ![構成 URL のコピー](common/copy-configuration-urls.png)
 
@@ -127,10 +104,10 @@ Apptio に対する Azure AD SSO を構成してテストするには、次の�
 1. Azure portal の左側のウィンドウから、 **[Azure Active Directory]** 、 **[ユーザー]** 、 **[すべてのユーザー]** の順に選択します。
 1. 画面の上部にある **[新しいユーザー]** を選択します。
 1. **[ユーザー]** プロパティで、以下の手順を実行します。
-    1. **[名前]** フィールドに「`B.Simon`」と入力します。  
-    1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
-    1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
-    1. **Create** をクリックしてください。
+   1. **[名前]** フィールドに「`B.Simon`」と入力します。  
+   1. **[ユーザー名]** フィールドに「username@companydomain.extension」と入力します。 たとえば、「 `B.Simon@contoso.com` 」のように入力します。
+   1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
+   1. **Create** をクリックしてください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -140,7 +117,7 @@ Apptio に対する Azure AD SSO を構成してテストするには、次の�
 1. アプリケーションの一覧で、 **[Apptio]** を選択します。
 1. アプリの概要ページで、 **[管理]** セクションを見つけて、 **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
+   ![[ユーザーとグループ] リンク](common/users-groups-blade.png)
 
 1. **[ユーザーの追加]** を選択し、 **[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
@@ -172,3 +149,4 @@ Apptio に対する Azure AD SSO を構成してテストするには、次の�
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
+- [Azure AD で Apptio を試す](https://aad.portal.azure.com/)

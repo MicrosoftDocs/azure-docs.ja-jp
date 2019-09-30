@@ -3,21 +3,20 @@ title: Azure Data Factory のリンクされたサービス |Microsoft Docs
 description: Data Factory にリンクされたサービスについて説明します。 リンクされたサービスは、計算/データ ストアをデータ ファクトリにリンクします。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.reviewer: craigg
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.author: shlo
-ms.openlocfilehash: ba2041495e1e3c63ee322a0b748753ad6cb68914
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 80e9cee0d973dc8575e9645c537b6b69fbeef700
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64871128"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70137117"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Azure Data Factory のリンクされたサービス
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -64,7 +63,7 @@ Data Factory のリンクされたサービスは、次のように JSON 形式�
 
 プロパティ | 説明 | 必須 |
 -------- | ----------- | -------- |
-name | リンクされたサービスの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
+名前 | リンクされたサービスの名前。 [Azure Data Factory - 名前付け規則](naming-rules.md)を参照してください。 |  はい |
 type | リンクされたサービスの種類 例: AzureStorage (データ ストア) または AzureBatch (コンピューティング)。 typeProperties の説明を参照してください。 | はい |
 typeProperties | 型のプロパティは、データ ストアまたはコンピューティングごとに異なります。 <br/><br/> サポートされているデータ ストア型と型のプロパティについては、この記事の「[データセットの型](concepts-datasets-linked-services.md#dataset-type)」の表を参照してください。 データ ストアに固有の型のプロパティについては、データ ストア コネクタに関する記事に移動してください。 <br/><br/> サポートされているコンピューティング型とその型のプロパティについては、[コンピューティングのリンクされたサービス](compute-linked-services.md)に関する記事を参照してください。 | はい |
 connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | いいえ
@@ -92,10 +91,11 @@ connectVia | データ ストアに接続するために使用される[統合�
 ```
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
+
 リンクされたサービスは、以下のツールや SDK のいずれかを使用して作成できます。[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager テンプレート、Azure portal
 
 ## <a name="data-store-linked-services"></a>データ ストアのリンクされたサービス
-データ ストアへの接続は、[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)で見つけることができます。 さまざまなストアに必要な特定の接続プロパティの一覧を参照してください。
+Data Factory によってサポートされているデータ ストアの一覧は、[コネクタの概要](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事をご覧ください。 サポートされている接続プロパティを確認するには、データ ストアをクリックしてください。
 
 ## <a name="compute-linked-services"></a>コンピューティングのリンクされたサービス
 データ ファクトリから接続できるさまざまなコンピューティング環境とさまざまな構成の詳細については、[サポートされるコンピューティング環境](compute-linked-services.md)を参照してください。

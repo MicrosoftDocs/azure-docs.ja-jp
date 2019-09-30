@@ -7,13 +7,12 @@ ms.date: 03/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: c2bf19a2599d59b9ff2b3d189b26134f1528a878
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 1ac0e70700b4b093fad09b4d10c6bdcf2e06adac
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448571"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231531"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -42,7 +41,7 @@ Azure Resource Manager を通したリソースの作成または更新の要求
 
 現在のところ、**EnforceRegoPolicy** 効果の評価順序はありません。
 
-## <a name="disabled"></a>Disabled
+## <a name="disabled"></a>無効
 
 この効果は、状況をテストする場合や、効果がポリシー定義によってパラメーター化されている場合に役立ちます。 この柔軟性により、ポリシーのすべての割り当てを無効にするのではなく、単一の割り当てを無効にすることができます。
 

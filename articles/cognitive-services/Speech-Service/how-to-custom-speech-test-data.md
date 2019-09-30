@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: fad0fada4d9dd888b0b2a37b59e4eac1e016aec4
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: b18e1b755b4e1339bf00380d8228fc28e355d3e1
+ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663594"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70802518"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Custom Speech 用のテスト データを準備する
 
@@ -35,7 +35,7 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 
 ## <a name="upload-data"></a>データのアップロード
 
-データをアップロードする準備ができたら、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
+データをアップロードする準備ができたら、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)に移動します。次に、 **[データのアップロード]** をクリックしてウィザードを起動し、最初のデータセットを作成します。 データのアップロードが許可される前に、データセットにより音声データ型を選択するように求められます。
 
 ![Speech ポータルからオーディオを選択する](./media/custom-speech/custom-speech-select-audio.png)
 
@@ -96,7 +96,7 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 
 文字起こしに対しては、システムによって処理できるように、テキストの正規化が行われます。 ただし、Custom Speech Service にデータをアップロードする "_前_" に、ユーザーが行う必要があるいくつかの重要な正規化があります。 文字起こしを準備する際に使用する適切な言語については、「[How to create a human-labeled transcription](how-to-custom-speech-human-labeled-transcriptions.md)」(人間とラベル付けされた文字起こしの作成方法) を参照してください。
 
-オーディオ ファイルと対応する文字起こしを収集したら、Custom Speech ポータルにアップロードする前に、それらを 1 つの .zip ファイルにパッケージ化する必要があります。 これは、3 つのオーディオ ファイルと人間とラベル付けされた文字起こしファイルが含まれたデータセットの例です。
+オーディオ ファイルと、対応する文字起こしを収集したら、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)にアップロードする前に、それらを 1 つの .ZIP ファイルにパッケージ化する必要があります。 これは、3 つのオーディオ ファイルと人間とラベル付けされた文字起こしファイルが含まれたデータセットの例です。
 
 ![Speech ポータルからオーディオを選択する](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
@@ -109,7 +109,7 @@ Microsoft 音声認識の精度をテストしているか、または独自の�
 | 発話または文 (およびその両方) | 文章のコンテキスト内で製品名や業界固有のボキャブラリを認識するときの精度を向上させることができます。 |
 | 発音 | 一般的でない用語、略語、またはその他の発音が定義されていない単語の発音を向上させることができます。 |
 
-発話は、1 つまたは複数のテキスト ファイルとして提供できます。 テキスト データが読み上げられる内容に近ければ近いほど、精度が向上する可能性は大きくなります。 発音は、1 つのテキスト ファイルとして指定する必要があります。 すべてを 1 つの ZIP ファイルとしてパッケージ化して、Custom Speech ポータルにアップロードできます。
+発話は、1 つまたは複数のテキスト ファイルとして提供できます。 テキスト データが読み上げられる内容に近ければ近いほど、精度が向上する可能性は大きくなります。 発音は、1 つのテキスト ファイルとして指定する必要があります。 すべてを 1 つの ZIP ファイルとしてパッケージ化して、[Custom Speech ポータル](https://speech.microsoft.com/customspeech)にアップロードできます。
 
 ### <a name="guidelines-to-create-an-utterances-file"></a>発話ファイルを作成するためのガイドライン
 

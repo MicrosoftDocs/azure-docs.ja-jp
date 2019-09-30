@@ -1,5 +1,5 @@
 ---
-title: OpenID Connect での Web サインイン - Azure Active Directory B2C | Microsoft Docs
+title: OpenID Connect による Web サインイン - Azure Active Directory B2C
 description: Azure Active Directory B2C の OpenID Connect 認証プロトコルを使用して Web アプリケーションを構築します。
 services: active-directory-b2c
 author: mmacy
@@ -7,16 +7,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0e60bedcf1324b443d9b9cd34e8dc695fdb0b372
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 35abb84f92ed9a7295c45afc69b673a3be46be15
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931753"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69874125"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Azure Active Directory B2C での OpenID Connect による Web サインイン
 
@@ -32,11 +32,10 @@ Azure AD B2C は、単純な認証と権限付与以上のことができるよ�
 
 ご利用の Web アプリケーションでユーザーを認証し、ユーザー フローを実行する必要があるときは、ユーザーを `/authorize` エンドポイントにリダイレクトさせることができます。 ユーザーはユーザー フローに応じてアクションを実行します。
 
-この要求では、クライアントによって、ユーザーから取得する必要があるアクセス許可が `scope` パラメーターで示され、実行するユーザー フローが `p` パラメーターで示されます。 次のセクションでは、それぞれ異なるユーザー フローを使用する 3 つの例が (読みやすいように改行して) 示されています。 各要求の動作を感覚的に理解するために、要求をブラウザーに貼り付け、実行してみてください。 実際のテナントがあり、既にユーザー フローを作成済みである場合は、`fabrikamb2c` を実際のテナントの名前に置き換えてください。 `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` を置き換える必要もあります。 このクライアント ID を、作成したアプリケーションの登録のアプリ ID に置き換えます。 また、ポリシー名 `b2c_1_sign_in` をテナント内のポリシー名に変更します。 
+この要求では、クライアントによって、ユーザーから取得する必要があるアクセス許可が `scope` パラメーターで示され、実行するユーザー フローが指定されます。 各要求の動作を感覚的に理解するために、要求をブラウザーに貼り付け、実行してみてください。 `{tenant}` をテナントの名前に置き換えます。 `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` を、テナントに登録済みのアプリケーションのアプリ ID に置き換えます。 また、ポリシー名 (`{policy}`) を、テナント内のポリシー名に変更します (例: `b2c_1_sign_in`)。
 
-#### <a name="use-a-sign-in-user-flow"></a>サインイン ユーザー フローを使用する
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
+```HTTP
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/authorize?
 client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &response_type=code+id_token
 &redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
@@ -44,40 +43,14 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &scope=openid%20offline_access
 &state=arbitrary_data_you_can_receive_in_the_response
 &nonce=12345
-&p=b2c_1_sign_in
-```
-
-#### <a name="use-a-sign-up-user-flow"></a>サインアップ ユーザー フローを使用する
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=code+id_token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=form_post
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_sign_up
-```
-
-#### <a name="use-an-edit-profile-user-flow"></a>プロファイル編集ユーザー フローを使用する
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/authorize?
-client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
-&response_type=code+id_token
-&redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
-&response_mode=form_post
-&scope=openid%20offline_access
-&state=arbitrary_data_you_can_receive_in_the_response
-&nonce=12345
-&p=b2c_1_edit_profile
 ```
 
 | パラメーター | 必須 | 説明 |
 | --------- | -------- | ----------- |
+| {tenant} | はい | Azure AD B2C テナントの名前。 |
+| {policy} | はい | 実行するユーザーフロー。 Azure AD B2C テナントに作成したユーザー フローの名前を指定します。 例: `b2c_1_sign_in`、`b2c_1_sign_up`、または`b2c_1_edit_profile`。 |
 | client_id | はい | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。 |
 | nonce | はい | 要求に追加する (アプリケーションによって生成された) 値。この値が、最終的な ID トークンに要求として追加されます。 アプリケーションでこの値を確認することにより、トークン再生攻撃を緩和することができます。 この値は通常、要求の送信元を識別するために使用できるランダム化された一意の文字列です。 |
-| p | はい | 実行されるユーザー フローです。 Azure AD B2C テナントに作成されたユーザー フローの名前です。 ユーザー フロー名は `b2c\_1\_` で始める必要があります。 |
 | response_type | はい | OpenID Connect の ID トークンが含まれている必要があります。 Web アプリケーションが Web API を呼び出すためのトークンも必要とする場合は、`code+id_token` を使用します。 |
 | scope | はい | スコープのスペース区切りリスト。 `openid` スコープは、ユーザーをサインインさせ、ID トークンの形式でユーザーに関するデータを取得するためのアクセス許可を示します。 Web アプリケーションの場合、`offline_access` スコープは任意です。 これは、リソースへのアクセス期間を延長するには、アプリケーションで "*更新トークン*" が必要であることを示します。 |
 | prompt | いいえ | 必要とされている、ユーザーとの対話の種類。 現時点で有効な値は `login` だけです。これはユーザーに、その要求に関する資格情報を強制的に入力させます。 |
@@ -91,7 +64,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 
 `response_mode=fragment` を使用した場合の正常な応答は次のようになります。
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
@@ -106,7 +79,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 
 アプリケーションでエラーを適切に処理できるように、`redirect_uri` パラメーターにはエラー応答も送信されます。
 
-```
+```HTTP
 GET https://aadb2cplayground.azurewebsites.net/#
 error=access_denied
 &error_description=the+user+canceled+the+authentication
@@ -121,15 +94,19 @@ error=access_denied
 
 ## <a name="validate-the-id-token"></a>ID トークンの検証
 
-ユーザーを認証するには、ID トークンを受信するだけでは不十分です。 ID トークンの署名を検証し、アプリケーションの要件ごとにトークン内の要求を確認します。 Azure AD B2C は、[JSON Web トークン (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。 優先言語にもよりますが、JWT を検証するためのさまざまなオープンソース ライブラリを入手できます。 独自の検証ロジックを実装するより、オープンソース ライブラリを試してみることをお勧めします。 
+ユーザーを認証するには、ID トークンを受信するだけでは不十分です。 ID トークンの署名を検証し、アプリケーションの要件ごとにトークン内の要求を確認します。 Azure AD B2C は、[JSON Web トークン (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。 優先言語にもよりますが、JWT を検証するためのさまざまなオープンソース ライブラリを入手できます。 独自の検証ロジックを実装するより、オープンソース ライブラリを試してみることをお勧めします。
 
 Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあって、アプリケーションは、このエンドポイントを使用することで、Azure AD B2C に関する情報を実行時に取得することができます。 この情報には、エンドポイント、トークンの内容、トークンの署名キーが含まれます。 ご利用の B2C テナントにはユーザー フロー別の JSON メタデータ ドキュメントがあります。 たとえば、`fabrikamb2c.onmicrosoft.com` 内の `b2c_1_sign_in` ユーザー フローのメタデータ ドキュメントは次の場所にあります。
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in`
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/v2.0/.well-known/openid-configuration
+```
 
 この構成ドキュメントのプロパティの 1 つに `jwks_uri` があります。同じユーザー フローに対するこの値は次のようになります。
 
-`https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in`
+```HTTP
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_sign_in/discovery/v2.0/keys
+```
 
 ID トークンの署名でどのユーザー フローが使用されたか (また、メタデータをどこから取得するか) を判定するには、2 つの選択肢があります。 1 つめは、ユーザー フロー名が ID トークン内の `acr` 要求に含まれています。 もう 1 つの選択肢では、要求を発行するときに `state` パラメーターの値に含まれているユーザー フローをエンコードして、それをデコードして使用されたユーザー フローを判断します。 どちらの方法も有効です。
 
@@ -155,13 +132,13 @@ ID トークンを検証した後、ユーザーとのセッションを開始�
 
 Web アプリケーションがユーザー フローの実行にのみ必要な場合は、次のいくつかのセクションを省略できます。 これらのセクションは、Web API への認証された呼び出しを行う必要があり、かつそれ自体も Azure AD B2C によって保護されている Web アプリケーションにのみ適用できます。
 
-トークン用に (`response_type=code+id_token` を使用して) 取得した承認コードは、`POST` 要求を `/token` エンドポイントに送信することによって目的のリソースに利用できます。 Azure AD B2C では、対応するスコープを要求の中で指定することによって、普通に[他の API のアクセス トークンを要求](active-directory-b2c-access-tokens.md#request-a-token)できます。
+トークン用に (`response_type=code+id_token` を使用して) 取得した承認コードは、`POST` 要求を `/token` エンドポイントに送信することによって目的のリソースに利用できます。 Azure AD B2C では、対応するスコープを要求の中で指定することによって、いつものように[他の API のアクセス トークンを要求](active-directory-b2c-access-tokens.md#request-a-token)できます。
 
 さらに、要求スコープとしてアプリのクライアント ID を使用するという慣例によって、アプリ独自のバックエンド Web API 用アクセス トークンを要求することもできます (その場合、そのクライアント ID を "audience" として持つアクセス トークンが得られます)。
 
-```
-POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
-Host: https://fabrikamb2c.b2clogin.com
+```HTTP
+POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
+Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
@@ -169,17 +146,18 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 | パラメーター | 必須 | 説明 |
 | --------- | -------- | ----------- |
+| {tenant} | はい | Azure AD B2C テナントの名前。 |
+| {policy} | はい | 認証コードの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 このパラメーターを POST 本文ではなく、クエリ文字列に追加します。 |
 | client_id | はい | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。 |
 | client_secret | はい | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 このアプリケーション シークレットは、重要なセキュリティ アーティファクトです。 サーバーに安全に保管する必要があります。 このクライアント シークレットは、定期的に変更します。 |
 | code | はい | ユーザー フローの開始時に取得した承認コード。 |
 | grant_type | はい | 許可の種類。承認コード フローでは `authorization_code` を指定する必要があります。 |
-| p | はい | 認証コードの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 このパラメーターを POST 本文ではなく、クエリ文字列に追加します。 |
 | redirect_uri | はい | 承認コードを受信したアプリケーションの `redirect_uri` パラメーター。 |
 | scope | いいえ | スコープのスペース区切りリスト。 `openid` スコープは、ユーザーをサインインさせ、ユーザーに関するデータを id_token パラメーターの形式で取得するためのアクセス許可を示します。 これを使用すると、クライアントと同じアプリケーション ID で表される、アプリケーションの独自のバックエンド Web API にトークンを送信できます。 `offline_access` スコープは、リソースへのアクセス期間を延長するには、アプリケーションで更新トークンが必要であることを示します。 |
 
 正常なトークン応答は次のようになります。
 
-```
+```JSON
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -189,6 +167,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
+
 | パラメーター | 説明 |
 | --------- | ----------- |
 | not_before | トークンが有効と見なされる時間 (エポック時間)。 |
@@ -200,7 +179,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 エラー応答は次のようになります。
 
-```
+```JSON
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -216,9 +195,9 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 これでアクセス トークンを正常に取得できたので、そのトークンを `Authorization` ヘッダー内に含めることによって、それをバックエンド Web API への要求で使用できます。
 
-```
+```HTTP
 GET /tasks
-Host: https://mytaskwebapi.com
+Host: mytaskwebapi.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 ```
 
@@ -226,9 +205,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ID トークンは、短時間で期限が切れます。 引き続きリソースにアクセスできるようにするには、期限が切れた後、トークンを更新します。 トークンを更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。 今回は、`code` パラメーターの代わりに `refresh_token` パラメーターを指定します。
 
-```
-POST fabrikamb2c.onmicrosoft.com/oauth2/v2.0/token?p=b2c_1_sign_in HTTP/1.1
-Host: https://fabrikamb2c.b2clogin.com
+```HTTP
+POST {tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/token HTTP/1.1
+Host: {tenant}.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
@@ -236,17 +215,18 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 | パラメーター | 必須 | 説明 |
 | --------- | -------- | ----------- |
+| {tenant} | はい | Azure AD B2C テナントの名前。 |
+| {policy} | はい | 元の更新トークンの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 このパラメーターを POST 本文ではなく、クエリ文字列に追加します。 |
 | client_id | はい | [Azure portal](https://portal.azure.com/) によってアプリケーションに割り当てられたアプリケーション ID。 |
 | client_secret | はい | [Azure portal](https://portal.azure.com/) で生成されたアプリケーション シークレット。 このアプリケーション シークレットは、重要なセキュリティ アーティファクトです。 サーバーに安全に保管する必要があります。 このクライアント シークレットは、定期的に変更します。 |
 | grant_type | はい | 付与の種類。承認コード フローのこのパートでは、更新トークンである必要があります。 |
 | refresh_token | はい | フローの第 2 のパートで取得された元の更新トークン。 更新トークンを受信するには、承認要求とトークン要求の両方でスコープ `offline_access` を使用する必要があります。 |
-| p | はい | 元の更新トークンの取得に使用されたユーザー フロー。 この要求に別のユーザー フローを使用することはできません。 このパラメーターを POST 本文ではなく、クエリ文字列に追加します。 |
 | redirect_uri | いいえ | 承認コードを受信したアプリケーションの `redirect_uri` パラメーター。 |
 | scope | いいえ | スコープのスペース区切りリスト。 `openid` スコープは、ユーザーをサインインさせ、ID トークンの形式でユーザーに関するデータを取得するためのアクセス許可を示します。 これを使用すると、クライアントと同じアプリケーション ID で表される、アプリケーションの独自のバックエンド Web API にトークンを送信できます。 `offline_access` スコープは、リソースへのアクセス期間を延長するには、アプリケーションで更新トークンが必要であることを示します。 |
 
 正常なトークン応答は次のようになります。
 
-```
+```JSON
 {
     "not_before": "1442340812",
     "token_type": "Bearer",
@@ -256,6 +236,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
+
 | パラメーター | 説明 |
 | --------- | ----------- |
 | not_before | トークンが有効と見なされる時間 (エポック時間)。 |
@@ -267,7 +248,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 エラー応答は次のようになります。
 
-```
+```JSON
 {
     "error": "access_denied",
     "error_description": "The user revoked access to the app.",
@@ -283,18 +264,24 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 
 ユーザーをアプリケーションからサインアウトさせるときは、アプリケーションの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトさせるには、ユーザーを Azure AD B2C にリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリケーションに対して再認証できることがあります。
 
-前述した OpenID Connect メタデータ ドキュメントに示されている `end_session` エンドポイントにユーザーをリダイレクトしてください。
+ユーザーをサインアウトするには、前述した OpenID Connect メタデータ ドキュメントに示されている `end_session` エンドポイントにユーザーをリダイレクトします。
 
-```
-GET https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
-p=b2c_1_sign_in
-&post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
+```HTTP
+GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
 | パラメーター | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| p | はい | ご利用のアプリケーションからユーザーをサインアウトさせるために使用するユーザー フロー。 |
-| post_logout_redirect_uri | いいえ | サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C では、ユーザーに対して一般的なメッセージが表示されます。 |
+| {tenant} | はい | Azure AD B2C テナントの名前。 |
+| {policy} | はい | ご利用のアプリケーションからユーザーをサインアウトさせるために使用するユーザー フロー。 |
+| id_token_hint| いいえ | エンド ユーザーのクライアントとの現在の認証済みセッションに関するヒントとしてログアウトエンド ポイントに渡される発行済みの ID トークン。 `id_token_hint` によって、`post_logout_redirect_uri` が Azure AD B2C アプリケーション設定に登録済みの応答 URL であることが確認されます。 |
+| post_logout_redirect_uri | いいえ | サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C では、ユーザーに対して一般的なメッセージが表示されます。 `id_token_hint` を指定しない限り、この URL を Azure AD B2C アプリケーション設定に応答 URL として登録することはできません。 |
+| state | いいえ | 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 アプリケーションでは、要求と応答の `state` 値が同一であることを検証する必要があります。 |
+
+### <a name="secure-your-logout-redirect"></a>ログアウトのリダイレクトをセキュリティで保護する
+
+ログアウト後、ユーザーは、アプリケーションに対して指定されている応答 URL に関係なく、`post_logout_redirect_uri` パラメーターに指定された URI にリダイレクトされます。 ただし、有効な `id_token_hint` が渡された場合、Azure AD B2C では、リダイレクトの実行前に、`post_logout_redirect_uri` の値がいずれかのアプリケーションの構成済みのリダイレクト URL と一致するかどうかが検証されます。 一致する応答 URL がアプリケーションで構成されていない場合は、エラー メッセージが表示され、ユーザーはリダイレクトされません。
+
+### <a name="external-identity-provider-sign-out"></a>外部 ID プロバイダーのサインアウト
 
 ユーザーを `end_session` エンドポイントにリダイレクトすると、Azure AD B2C でユーザーのシングル サインオン状態が一部消去されますが、ユーザーがソーシャル ID プロバイダー (IDP) セッションからサインアウトされるわけではありません。 ユーザーがその後のサインインで同じ IDP を選択した場合は、資格情報を入力しなくても再認証されます。 ユーザーがアプリケーションからサインアウトしようとする場合、そのユーザーは必ずしも自分の Facebook アカウントからサインアウトしようとしているとは限りません。 ただし、ローカル アカウントを使用している場合、ユーザーのセッションは正常に終了します。
-

@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 356412bfca19e72d09338faf8c8bcac5ec8f273a
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 13f1746b710acd24316de3d294c1822ba108a378
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988286"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70127390"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Azure Portal でアクティビティ レポートを見つける
 
@@ -112,12 +112,12 @@ ms.locfileid: "68988286"
 
 ### <a name="anomalous-activity-reports"></a>異常アクティビティ レポート
 
-異常アクティビティ レポートは、Azure AD で検出および報告されるセキュリティ関連のリスク イベントに関する情報を提供します。
+異常アクティビティ レポートは、Azure AD で検出および報告されるセキュリティ関連のリスク検出に関する情報を提供します。
 
-次の表は、Azure AD 異常アクティビティ セキュリティ レポートと、各レポートに対応する Azure Portal のリスク イベントの種類を示しています。 詳細については、「[Azure Active Directory リスク イベント](concept-risk-events.md)」を参照してください。  
+次の表は、Azure AD 異常アクティビティ セキュリティ レポートと、各レポートに対応する Azure portal のリスク検出の種類を示しています。 詳細については、「[Azure Active Directory リスク検出](concept-risk-events.md)」を参照してください。  
 
 
-| Azure AD 異常アクティビティ レポート |  Identity Protection のリスク イベントの種類|
+| Azure AD 異常アクティビティ レポート |  Identity Protection のリスク検出の種類|
 | :--- | :--- |
 | 資格情報が漏洩したユーザー | 漏洩した資格情報 |
 | 不規則なサインイン アクティビティ | 特殊な場所へのあり得ない移動 |
@@ -126,15 +126,15 @@ ms.locfileid: "68988286"
 | 不審なアクティビティのある IP アドレスからのサインイン | 不審なアクティビティのある IP アドレスからのサインイン |
 | - | 未知の場所からのサインイン |
 
-次の Azure AD 異常アクティビティ セキュリティ レポートは、Azure Portal ではリスク イベントに含まれません。
+次の Azure AD 異常アクティビティ セキュリティ レポートは、Azure portal ではリスク検出に含まれません。
 
 * 複数のエラー後のサインイン
 * 複数の地域からのサインイン
 
 
-### <a name="detected-risk-events"></a>検出されたリスク イベント
+### <a name="detected-risk-detections"></a>検出されたリスク検出
 
-[Azure portal](https://portal.azure.com) では、 **[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、検出されたリスク イベントに関するレポートにアクセスできます。 検出されたリスク イベントは、次のレポートで追跡されます。   
+[Azure portal](https://portal.azure.com) では、 **[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、検出されたリスク検出に関するレポートにアクセスできます。 検出されたリスク検出は、次のレポートで追跡されます。   
 
 - [危険な状態のユーザー](concept-user-at-risk.md)
 - [リスクの高いサインイン](concept-risky-sign-ins.md)

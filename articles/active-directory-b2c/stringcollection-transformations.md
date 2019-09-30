@@ -10,22 +10,22 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 98453daeb34d093b49cdcc636f68c3d7ae017126
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9add75b8922fe958fc348fb2a6dd48a7b300eade
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66512434"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063312"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 要求変換
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory (Azure AD) B2C の Identity Experience Framework スキーマの文字列コレクション要求変換の使用例を示します。 詳細については、「[ClaimsTransformations](claimstransformations.md)」を参照してください。
+この記事では、Azure Active Directory B2C (Azure AD B2C) の Identity Experience Framework スキーマの文字列コレクション要求変換の使用例を示します。 詳細については、「[ClaimsTransformations](claimstransformations.md)」を参照してください。
 
 ## <a name="additemtostringcollection"></a>AddItemToStringCollection
 
-新しい stringCollection 要求に文字列要求を追加します。 
+新しい stringCollection 要求に文字列要求を追加します。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
@@ -33,7 +33,7 @@ ms.locfileid: "66512434"
 | InputClaim | collection | stringCollection | （省略可能）これを指定すると、要求変換によってこのコレクションから項目がコピーされ、出力コレクション要求の最後に項目が追加されます。 |
 | OutputClaim | collection | stringCollection | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 |
 
-この要求変換を使用して、新しい stringCollection または既存の stringCollection に文字列を追加します。 通常、これは **AAD-UserWriteUsingAlternativeSecurityId** 技術プロファイルで使用されます。 新しいソーシャル アカウントが作成される前に、**CreateOtherMailsFromEmail** 要求変換によって ClaimType が読み取られ、**otherMails** ClaimType に値が追加されます。 
+この要求変換を使用して、新しい stringCollection または既存の stringCollection に文字列を追加します。 通常、これは **AAD-UserWriteUsingAlternativeSecurityId** 技術プロファイルで使用されます。 新しいソーシャル アカウントが作成される前に、**CreateOtherMailsFromEmail** 要求変換によって ClaimType が読み取られ、**otherMails** ClaimType に値が追加されます。
 
 次の要求変換によって、**email** ClaimType が **otherMails** ClaimType に追加されます。
 
@@ -54,12 +54,12 @@ ms.locfileid: "66512434"
 - 入力要求:
   - **collection**: ["someone@outlook.com"]
   - **item**: "admin@contoso.com"
-- 出力要求: 
+- 出力要求:
   - **collection**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="addparametertostringcollection"></a>AddParameterToStringCollection
 
-新しい stringCollection 要求に文字列パラメーターを追加します。 
+新しい stringCollection 要求に文字列パラメーターを追加します。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
@@ -67,7 +67,7 @@ ms.locfileid: "66512434"
 | InputParameter | item | string | 出力要求に追加される値。 |
 | OutputClaim | collection | stringCollection | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 |
 
-この要求変換を使用して、新しい stringCollection または既存の stringCollection に文字列値を追加します。 次の例では、定数の電子メール アドレス (admin@contoso.com) を **otherMails** 要求に追加します。 
+この要求変換を使用して、新しい stringCollection または既存の stringCollection に文字列値を追加します。 次の例では、定数の電子メール アドレス (admin@contoso.com) を **otherMails** 要求に追加します。
 
 ```XML
 <ClaimsTransformation Id="SetCompanyEmail" TransformationMethod="AddParameterToStringCollection">
@@ -87,21 +87,21 @@ ms.locfileid: "66512434"
 
 - 入力要求:
   - **collection**: ["someone@outlook.com"]
-- 入力パラメーター 
+- 入力パラメーター
   - **item**: "admin@contoso.com"
 - 出力要求:
   - **collection**: ["someone@outlook.com", "admin@contoso.com"]
 
 ## <a name="getsingleitemfromstringcollection"></a>GetSingleItemFromStringCollection
 
-指定された文字列コレクションから最初の項目を取得します。 
+指定された文字列コレクションから最初の項目を取得します。
 
 | Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | collection | stringCollection | 項目を取得する要求変換で使用される ClaimTypes。 |
 | OutputClaim | extractedItem | string | この ClaimsTransformation が呼び出された後に生成される ClaimTypes。 コレクション内の最初の項目 |
 
-次の例では、**otherMails** 要求が読み取られ、最初の項目が **email** 要求に返されます。 
+次の例では、**otherMails** 要求が読み取られ、最初の項目が **email** 要求に返されます。
 
 ```XML
 <ClaimsTransformation Id="CreateEmailFromOtherMails" TransformationMethod="GetSingleItemFromStringCollection">
@@ -118,6 +118,6 @@ ms.locfileid: "66512434"
 
 - 入力要求:
   - **collection**: ["someone@outlook.com", "someone@contoso.com"]
-- 出力要求: 
+- 出力要求:
   - **extractedItem**: "someone@outlook.com"
 

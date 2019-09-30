@@ -10,16 +10,15 @@ ms.assetid: 2fa193cd-ea71-4b33-a5ca-1f55e5351e23
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f4140754afa8de994b227dc187cd73c9ccfa86f9
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 677e38f69729bba8caf1ec3f88b2e0a1a4f8c7e8
+ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67666023"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70073663"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -38,7 +37,6 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 * [追加するポリシーがポリシー エディターで利用できないのはなぜですか。](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
 * [1 つの API で複数の環境をセットアップするにはどうすればよいですか。](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [API Management で SOAP を使用することはできますか。](#can-i-use-soap-with-api-management)
-* [API Management ゲートウェイ IP アドレスは一定ですか。それをファイアウォール ルールで使用できますか。](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
 * [AD FS セキュリティを使用して OAuth 2.0 承認サーバーを構成できますか。](#can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security)
 * [複数の地理的な場所へのデプロイでは、API Management はどのようなルーティング方法を使用しますか。](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [Azure Resource Manager テンプレートを使用して API Management サービス インスタンスを作成することはできますか。](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
@@ -65,7 +63,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 
 * HTTP 基本認証を使用します。 詳細については、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」を参照してください。
 * 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、SSL 相互認証を使用します。
-* バックエンド サービスで IP ホワイトリストを使用します。 従量課金レベルを除く API Management のすべてのレベルで、ゲートウェイの IP アドレスは一定のままですが、いくつか[注意事項](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)があります。 この IP アドレスを許可するようにホワイトリストを設定できます。 API Management インスタンスの IP アドレスは、Azure Portal のダッシュボードで取得できます。
+* バックエンド サービスで IP ホワイトリストを使用します。 従量課金レベルを除く API Management のすべてのレベルで、ゲートウェイの IP アドレスは一定のままであり、[IP ドキュメントに関する記事](api-management-howto-ip-addresses.md)に説明されているいくつかの注意事項があります。
 * API Management インスタンスを Azure Virtual Network に接続します。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>新しいインスタンスに API Management サービス インスタンスをコピーするにはどうすればよいですか。
@@ -107,19 +105,6 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 
 ### <a name="can-i-use-soap-with-api-management"></a>API Management で SOAP を使用することはできますか。
 [SOAP パススルー](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/)がサポートされるようになりました。 管理者が SOAP サービスの WSDL をインポートすると、Azure API Management によって SOAP フロント エンドが作成されます。 開発者ポータル ドキュメント、テスト コンソール、ポリシーと分析を、SOAP サービスで利用できます。
-
-### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>API Management ゲートウェイ IP アドレスは一定ですか。 それをファイアウォール ルールで使用できますか。
-API Management のすべてのレベルでは、API Management テナントのパブリック IP アドレス (VIP) は、テナントの有効期間中、静的です。ただし、いくつかの例外があります。 IP アドレスは次の状況では変化します。
-
-* サービスが削除された後、再作成された。
-* サービスのサブスクリプションが (未払いなどの理由により) [中断](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)または[警告あり](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)となり、その後復元された。
-* Azure Virtual Network を追加または削除した (Virtual Network は Developer および Premium レベルでのみ使用できます)。
-
-複数のリージョンにデプロイしている場合、リージョンが廃止された後で再開されると、リージョンのアドレスが変わります (複数リージョンのデプロイは Premium レベルでのみ使用できます)。
-
-複数リージョンのデプロイ用に構成された Premium レベルのテナントには、リージョンごとに 1 つのパブリック IP アドレスが割り当てられます。
-
-IP アドレス (複数リージョンのデプロイの場合は複数個) は Azure Portal のテナント ページで取得できます。
 
 ### <a name="can-i-configure-an-oauth-20-authorization-server-with-ad-fs-security"></a>AD FS セキュリティを使用して OAuth 2.0 承認サーバーを構成できますか。
 Active Directory フェデレーション サービス (AD FS) セキュリティを使用して OAuth 2.0 承認サーバーを構成する方法の詳細については、「[Using ADFS in API Management (API Management での AD FS の使用)](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/)」を参照してください。

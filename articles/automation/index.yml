@@ -1,61 +1,95 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Automation のユーザー ドキュメント
+### YamlMime:Landing
+title: Azure Automation のドキュメント
 metadata:
-  document_id: null
-  title: Azure Automation のドキュメント - チュートリアル、API リファレンス
-  description: Azure Automation を使用する方法について説明します
+  document_id: 
+  title: Azure Automation のドキュメント
+  description: Automation を使用してハイブリッド環境全体で操作タスクの構成と自動化を行う方法について説明します。
   services: automation
-  author: georgewallace
+  author: bobbytreed
   manager: carmonm
   ms.service: automation
   ms.tgt_pltfrm: na
   ms.topic: landing-page
-  ms.date: 12/13/2017
-  ms.author: gwallace
-abstract:
-  description: Automation を使用してハイブリッド環境全体で操作タスクの構成と自動化を行う方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、プロセスの自動化、更新管理の実行、望ましい状態の構成の実現、変更の追跡、インベントリの収集を行う方法を紹介します。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Automation を使用して Azure とハイブリッド環境の自動化と構成を行う方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/automation/media/index/automation.svg
-            text: Automation アカウントを作成する
-            href: /azure/automation/automation-quickstart-create-account
-          - image:
-              src: /azure/automation/media/index/runbook.svg
-            text: Runbook を作成する
-            href: /azure/automation/automation-quickstart-create-runbook
-          - image:
-              src: /azure/automation/media/index/dscconfig.svg
-            text: DSC 構成を作成する
-            href: /azure/automation/automation-quickstart-dsc-configuration
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure とハイブリッド環境の統合、デプロイ、管理を行う方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/automation/automation-watchers-tutorial">監視タスクの構成</a>
-          - html: <a href="/azure/automation/automation-tutorial-update-management">VM の更新プログラムの管理</a>
-          - html: <a href="/azure/automation/automation-onboard-solutions">大規模なオンボード</a>
-          - html: <a href="/azure/automation/automation-tutorial-installed-software">VM にインストールされているソフトウェアの特定</a>
-          - html: <a href="/azure/automation/automation-tutorial-troubleshoot-changes">VM に対する変更のトラブルシューティング</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/powershell/module/azurerm.automation">PowerShell</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/microsoft.azure.management.automation">.NET</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/automation">Automation REST API</a></p>
+  ms.date: 09/06/2019
+  ms.author: robreed
+  ms.openlocfilehash: 3242e2c699e0f99164d6c5ecd2cf61441648b8e8
+  ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70743731"
+landingContent:
+- title: Azure オートメーションの使用
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Automation とは
+      url: automation-intro.md
+  - linkListType: get-started
+    links:
+    - text: Automation アカウントを作成する
+      url: automation-quickstart-create-account.md
+  - linkListType: quickstart
+    links:
+    - text: Runbook を作成する
+      url: automation-quickstart-create-runbook.md
+- title: VM の更新プログラムを管理する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Update Management の概要
+      url: automation-update-management.md
+  - linkListType: get-started
+    links:
+    - text: 複数の VM の更新プログラム管理
+      url: manage-update-multi.md
+  - linkListType: deploy
+    links:
+    - text: Azure VM での更新、インベントリ、変更の追跡
+      url: automation-onboard-solutions.md
+- title: Desired State Configuration を使用して VM を構成する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 状態の構成の概要
+      url: automation-dsc-overview.md
+  - linkListType: concept
+    links:
+    - text: PowerShell DSC
+      url: /powershell/dsc/overview/overview
+  - linkListType: quickstart
+    links:
+    - text: グループ ポリシーから DSC 構成を作成する
+      url: /powershell/dsc/quickstarts/gpo-quickstart
+  - linkListType: tutorial
+    links:
+    - text: State Configuration を使用してサーバーの構成と誤差の管理を行う
+      url: tutorial-configure-servers-desired-state.md
+- title: ハイブリッド環境を使用する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Hybrid Runbook Worker の概要
+      url: automation-hybrid-runbook-worker.md
+  - linkListType: deploy
+    links:
+    - text: Windows Hybrid Runbook Worker のデプロイ
+      url: automation-windows-hrw-install.md
+    - text: Linux Hybrid Runbook Worker のデプロイ
+      url: automation-linux-hrw-install.md
+    - text: Hybrid Runbook Worker での Runbook を開始する
+      url: automation-hrw-run-runbooks.md
+- title: サービス間の自動化
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: SendGrid を使用して Runbook からメールを送信する
+      url: automation-send-email.md
+  - linkListType: get-started
+    links:
+    - text: Azure アラートから Runbook を開始する
+      url: automation-create-alert-triggered-runbook.md
+  - linkListType: deploy
+    links:
+    - text: Automation PowerShell Runbook に Resource Manager テンプレートをデプロイする
+      url: automation-deploy-template-runbook.md

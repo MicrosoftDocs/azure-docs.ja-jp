@@ -3,20 +3,20 @@ title: Translator Speech サービスとは
 titleSuffix: Azure Cognitive Services
 description: Translator Speech サービス API を使用して、アプリケーションに音声間の翻訳や音声テキスト変換を追加します。
 services: cognitive-services
-author: swmachan
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
-ms.author: swmachan
+ms.author: nitinme
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ed425cd6545d85cdf3b2f76038b381a0f09045f9
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eaa6e9a7e8e7edd4241594ad7c2188c3fb50295e
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67449655"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70966449"
 ---
 # <a name="what-is-translator-speech-api"></a>Translator Speech API とは
 

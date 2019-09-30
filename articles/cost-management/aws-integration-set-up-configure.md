@@ -5,21 +5,21 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 05/21/2019
+ms.date: 08/15/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 951178a82e0975f5f2af71bd48cf0f931246ae37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9664beca514abcbad4eca7c8f9dc1b494018802e
+ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002122"
+ms.lasthandoff: 08/16/2019
+ms.locfileid: "69535191"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS のコストと使用状況レポートの統合を設定して構成する
 
-Amazon Web サービス (AWS) のコストと使用状況レポート (CUR) の統合では、Azure Cost Management で AWS 支出を監視して制御することができます。 統合により、Azure portal の単一の場所で、Azure と AWS の両方での支出を監視して制御できるようになります。 この記事では、統合を設定し、Azure Cost Management 機能を使用して、コストを分析し、予算を確認できるように構成する方法を説明します。
+Amazon Web サービス (AWS) のコストと使用状況レポート (CUR) の統合では、Azure Cost Management で AWS 支出を監視して制御します。 統合により、Azure portal の単一の場所で、Azure と AWS の両方での支出を監視して制御します。 この記事では、統合を設定し、Azure Cost Management 機能を使用して、コストを分析し、予算を確認するために構成する方法を説明します。
 
 Cost Management では、レポート定義を取得し、レポートの GZIP CSV ファイルをダウンロードするために AWS アクセス資格情報を使用して、S3 バケットに格納されている AWS のコストと使用状況レポートを処理します。
 
@@ -33,18 +33,18 @@ AWS の Billing and Cost Management コンソールの **[Cost & Usage Reports]\
 2. ナビゲーション ウィンドウで、で、 **[Cost & Usage Reports]\(コストと使用状況レポート\)** を選択します。
 3. **[レポートの作成]** を選択します。
 4. **[レポート名]** には、レポートの名前を入力します。
-5. **[Additional report details]\(追加のレポート詳細\)** では、各リソースの ID をレポートに含めるために、 **[Include Resource IDs]\(リソース ID を含める\)** を選択します。
-6. **[Data refresh settings]\(データ更新設定\)** では、お客様の請求確定後に AWS が返金、クレジット、またはサポート料金をお客様のアカウントに適用した場合に、AWS のコストと使用状況レポートを更新するかどうかを選択します。 レポートが更新されると、新しいレポートが Amazon S3 にアップロードされます。 この設定はオンのままにすることをお勧めします。
+5. **[Additional report details]** の下で **[Include resource IDs]** を選択します。
+6. **[Data refresh settings]\(データ更新設定\)** では、お客様の請求確定後に AWS が返金、クレジット、またはサポート料金をお客様のアカウントに適用した場合に、AWS のコストと使用状況レポートを更新するかどうかを選択します。 レポートが更新されると、新しいレポートが Amazon S3 にアップロードされます。 この設定は選択されたままにしておくことをお勧めします。
 7. **[次へ]** を選択します。
 8. **[S3 bucket]\(S3 バケット\)** には、 **[構成]** を選択します。
-9. [Configure S3 Bucket]\(S3 バケットの構成\) ダイアログ ボックスで、次のいずれかを実行します。
+9. [Configure S3 Bucket] ダイアログ ボックスで、次のいずれかの操作を実行します。
     1. ドロップダウン リストから既存のバケットを選択して **[次へ]** を選択します。
     2. バケット名と、新しいバケットを作成するリージョンを入力して **[次へ]** を選択します。
-10. [I have confirmed that this policy is correct]\(このポリシーが正しいことを確認しました\) を選択して、[保存] を選択します。
+10. **[I have confirmed that this policy is correct]** を選択してから、 **[Save]** をクリックします。
 11. (省略可能) [Report path prefix]\(レポート パス プレフィックス\) では、レポートの名前の先頭に追加するレポート パス プレフィックスを入力します。
-プレフィックスを指定しない場合、既定のプレフィックスは、手順 4 で指定したレポートの名前とレポートの日付範囲であり、形式は `/report-name/date-range/` です。
+プレフィックスを指定しない場合、既定のプレフィックスはレポートに指定した名前になります。 日付範囲は `/report-name/date-range/` の形式です。
 12. **[時間単位]** では、 **[毎時間]** を選択します。
-13. **[Report versioning]\(レポートのバージョン管理\)** では、レポートのバージョンごとに前のバージョンを上書きするか、それとも前のバージョンに加えて配信するかを選択します。
+13. **[Report versioning]** では、レポートの各バージョンで前のバージョンを上書きするか、新しいレポートを追加するかを選択します。
 14. **[Enable data integration for]\(データ統合の有効化対象\)** は、選択の必要はありません。
 15. **[圧縮]** では、 **[GZIP]** を選択します。
 16. **[次へ]** を選択します。
@@ -109,7 +109,7 @@ AWS 組織へのアクセス許可を追加します。
 2. **[アクセス レベル]**  >  **[List]\(一覧表示\)**  > **ListAccounts** の順に選択します。 このアクションでは、アカウントの名前を取得します。
 3. **[ポリシーの確認]** に、新しいポリシーの名前を入力します。 正しい情報を入力したことを確認してから、 **[ポリシーの作成]** を選択します。
 4. 前のタブに戻り、ブラウザーの Web ページを更新します。 検索バーで、新しいポリシーを検索します。
-5. **[Next:Review]\(次へ:確認\)** を選択します。
+5. **次へ:確認\)** をクリックします。
 6. 新しいロールの名前を入力します。 正しい情報を入力したことを確認してから、 **[ロールの作成]** を選択します。
 
     ロールの作成時に前の手順で使用されたロール ARN と外部 ID をメモしておいてください。 これらは後で Azure Cost Management コネクタを設定するときに使用します。
@@ -189,7 +189,7 @@ AWS コネクタを作成し、AWS コストの監視を開始するには、次
 
 ## <a name="set-up-azure-management-groups"></a>Azure 管理グループを設定する
 
-クロスクラウド プロバイダーの情報を表示する単一の場所を作成するには、Azure サブスクリプションと AWS のリンクされたアカウントを同じ管理グループに配置する必要があります。 管理グループを使用して Azure 環境をまだ構成していない場合は、「[管理グループの初期セットアップ](../governance/management-groups/index.md#initial-setup-of-management-groups)」を参照してください。
+クラウド間のプロバイダーの情報を表示する単一の場所を作成するには、Azure サブスクリプションと AWS のリンクされたアカウントを同じ管理グループに配置します。 Azure 環境を管理グループでまだ構成していない場合は、「[管理グループの初期セットアップ](../governance/management-groups/index.md#initial-setup-of-management-groups)」を参照してください。
 
 コストを分ける場合は、AWS のリンクされたアカウントのみを保持する管理グループを作成できます。
 

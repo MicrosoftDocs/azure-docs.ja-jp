@@ -3,15 +3,15 @@ title: Azure Resource Manager テンプレートの関数 - デプロイ | Micro
 description: Azure Resource Manager テンプレートで、デプロイ情報を取得するために使用する関数について説明します。
 author: tfitzmac
 ms.service: azure-resource-manager
-ms.topic: reference
-ms.date: 01/03/2019
+ms.topic: conceptual
+ms.date: 09/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9cf81058d79d474a4d61195850636e428a1dbd0d
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206465"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983989"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのデプロイ関数 
 
@@ -24,8 +24,6 @@ ms.locfileid: "67206465"
 リソース、リソース グループ、サブスクリプションから値を取得する方法については、「 [リソース関数](resource-group-template-functions-resource.md)」を参照してください。
 
 <a id="deployment" />
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="deployment"></a>deployment
 `deployment()`
@@ -136,18 +134,6 @@ deployment() を使い、親テンプレートの URI に基づいて、別の�
 }
 ```
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/deployment.json
-```
-
 デプロイ関数を使用するサブスクリプションレベルのテンプレートについては、[サブスクリプション デプロイ関数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)に関するページを参照してください。 これは `az deployment create` コマンドまたは `New-AzDeployment` コマンドのいずれかでデプロイされます。
 
 <a id="parameters" />
@@ -159,7 +145,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |はい |string |返されるパラメーターの名前。 |
 
@@ -246,7 +232,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | stringOutput | string | option 1 |
 | intOutput | int | 1 |
@@ -254,17 +240,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 | arrayOutput | Array | [1, 2, 3] |
 | crossOutput | string | option 1 |
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/parameters.json
-```
+パラメーターの使用方法の詳細については、「[Azure Resource Manager テンプレートのパラメーター](template-parameters.md)」を参照してください。
 
 <a id="variables" />
 
@@ -275,7 +251,7 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | variableName |はい |string |返す変数の名前。 |
 
@@ -349,24 +325,14 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | exampleOutput1 | string | myVariable |
 | exampleOutput2 | Array | [1, 2, 3, 4] |
 | exampleOutput3 | string | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```azurecli-interactive
-az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
-
-PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
-
-```powershell
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/variables.json
-```
+変数の使用方法の詳細については、「[Azure Resource Manager テンプレートの変数](template-variables.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * Azure Resource Manager テンプレートのセクションの説明については、[Azure Resource Manager テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。

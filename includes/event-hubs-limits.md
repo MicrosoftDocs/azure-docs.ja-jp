@@ -9,10 +9,10 @@ ms.date: 05/22/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: c163e3cce862640d43f8696dca4eeef29f2ae12a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "68912420"
 ---
 次の表に、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) に固有のクォータと制限を示します。 Event Hubs の価格については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
@@ -48,10 +48,10 @@ Event Hubs Dedicated オファリングは固定の月額料金で課金され�
 | 帯域幅 |  20 CU |
 | 名前空間 | CU あたり 50 |
 | Event Hubs |  名前空間あたり 1,000 |
-| イングレス イベント | あり |
+| イングレス イベント | Included |
 | メッセージ サイズ | 100 万バイト |
 | パーティション | CU あたり 2,000 |
 | コンシューマー グループ | CU あたりの制限なし、イベント ハブあたり 1,000 |
 | 仲介型接続 | 100,000 (付属) |
 | メッセージのリテンション期間 | 最大 7 日間 (90日間に近日対応予定)、CU ごとに 10 TB を含む |
-| キャプチャ | あり |
+| キャプチャ | Included |

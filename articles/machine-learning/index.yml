@@ -1,92 +1,103 @@
-### YamlMime:YamlDocument
-abstract:
-  description: 次の Azure Machine Learning 製品を使用して、インテリジェントなアルゴリズムをアプリや Web サイトに組み込む方法を学習します。  チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
-documentType: LandingData
-metadata:
-  author: j-martens
-  description: 自然なコミュニケーション手段を通してユーザーのニーズを見たり、聞いたり、話したり、理解したりするようにインテリジェントなアルゴリズムをアプリ、Web サイト、ボットに組み込む方法を学習します。 チュートリアル、クイック スタート、API リファレンス、例では、その方法を紹介しています。
-  ms.author: jmartens
-  ms.subservice: core
-  ms.date: 8/14/2019
-  ms.devlang: na
-  ms.service: machine-learning
-  ms.tgt_pltfrm: na
-  ms.topic: landing-page
-  services: machine-learning
-  title: Azure Machine Learning のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-sections:
-  - items:
-      - className: cardsM
-        columns: 2
-        items:
-          - href: /azure/machine-learning/service/overview-what-is-azure-ml
-            html: <p>このサービスでは、データ サイエンティストが、Azure のさまざまなデータ サービスやコンピューティング サービスで CLI および Python ツールとライブラリを使用して、<br/> AI ソリューションを開発し、管理できます。 詳細をご覧ください。</p>
-            image:
-              src: /azure/machine-learning/media/index/i_machine-learning.svg
-            title: Azure Machine Learning サービス
-        style: cards
-        type: list
-  - items:
-      - text: Azure Machine Learning service を設定して使用を開始します。
-        type: paragraph
-      - text: ML モデルをトレーニング、デプロイ、管理するために、使いやすいコード不要のインターフェイス、Azure portal を使用します。
-        type: paragraph
-      - items:
-          - html: <a href="service/ui-tutorial-automobile-price-train-score">ビジュアル インターフェイスのドラッグ アンド ドロップ UI で最初の実験をトレーニングする</a>
-          - html: <a href="service/tutorial-first-experiment-automated-ml">自動化された機械学習を使用して最初の分類モデルのトレーニングとデプロイを行う</a>
-        style: unordered
-        type: list
-      - text: ML モデルをトレーニング、デプロイ、管理するために、スクリプトおよびノートブックで Python SDK を使用します。
-        type: paragraph
-      - items:
-          - html: <a href="service/tutorial-1st-experiment-sdk-setup">環境を設定して、最初の ML 実験をトレーニングする</a>
-          - html: <a href="service/tutorial-train-models-with-aml">画像分類モデルをトレーニングしてデプロイする</a>
-          - html: <a href="service/tutorial-data-prep">データを準備し、自動化された ML を使用してタクシー料金を予測する</a>
-        style: unordered
-        type: list
-      - text: 自分のモデルを使用します。
-        type: paragraph
-      - items:
-          - html: <a href="service/how-to-consume-web-service">要求 - 応答モデルの使用</a>
-          - html: <a href="service/how-to-run-batch-predictions">ML パイプラインを使用したバッチ予測</a>
-        style: unordered
-        type: list
-    title: ステップバイステップのチュートリアル
-  - items:
-      - className: cardsM
-        columns: 2
-        items:
-          - href: /azure/cognitive-services/
-            html: <p>アプリ、Web サイト、ボットにインテリジェントなアルゴリズムを提供する API。</p>
-            image:
-              src: /azure/machine-learning/media/index/cognitive-services.png
-            title: Cognitive Services
-          - href: /azure/machine-learning/studio/
-            html: "<p>R または Python を使用してデータについて予測分析ソリューションを構築、テスト、デプロイするするためのドラッグ アンド ドロップ コラボレーション ツール。\_</p>"
-            image:
-              src: /azure/machine-learning/media/index/machine-learning-studio.svg
-            title: Azure Machine Learning Studio
-          - href: /sql/advanced-analytics/r/r-services
-            html: <p>R と Python の両方をサポートするデータベース内分析。</p>
-            image:
-              src: /azure/machine-learning/media/index/logo_sql.png
-            title: SQL Server Machine Learning サービス
-          - href: /machine-learning-server/
-            html: <p>Windows、Linux、HDInsight Spark、Hadoop クラスターで R および Python のデプロイをサポートする、柔軟性のあるエンタープライズ向け機械学習プラットフォーム。</p>
-            image:
-              src: /azure/machine-learning/media/index/ml-server.png
-            title: Microsoft Machine Learning Server
-          - href: /azure/machine-learning/team-data-science-process
-            html: <p>チームが予測分析ソリューションやインテリジェント アプリケーションを効率的に実現するのに役立つ、コラボレーションに対応したデータ サイエンス手法。</p>
-            image:
-              src: /azure/machine-learning/media/index/tdsp.png
-            title: Team Data Science Process
-          - href: /azure/machine-learning/data-science-virtual-machine/
-            html: <p>データ サイエンス (DSVM) 仮想マシンとディープ ラーニング (DLVM) 仮想マシンを使用して、ソフトウェアをインストールまたは構成せずに実験を行います。 一般的なデータ分析ツール、機械学習ツール、AI ツールがプレインストールされています。</p>
-            image:
-              src: /azure/machine-learning/media/index/virtualmachine.svg
-            title: データ サイエンス仮想マシン
-        style: cards
-        type: list
-    title: その他の Microsoft 機械学習テクノロジ
+### YamlMime:Landing
 title: Azure Machine Learning のドキュメント
+summary: Azure Machine Learning には、機械学習モデルと大規模なパイプラインのトレーニングとデプロイを迅速に行える Web インターフェイスと SDK が用意されています。 PyTorch、TensorFlow、scikit-learn など、オープンソースの Python フレームワークと共にこれらの機能を使用します。
+metadata:
+  title: Machine Learning のドキュメント - Azure
+  description: Azure Machine Learning には、機械学習モデルと大規模なパイプラインのトレーニングとデプロイを迅速に行える Web インターフェイスと SDK が用意されています。 PyTorch、TensorFlow、scikit-learn など、オープンソースの Python フレームワークと共にこれらの機能を使用します。
+  services: machine-learning
+  ms.service: machine-learning
+  ms.subservice: core
+  ms.topic: landing-page
+  ms.collection: collection
+  author: j-martens
+  ms.author: jmartens
+  ms.date: 09/03/2019
+  ms.openlocfilehash: 589e97442412d30d844111cd9a3e332d70d705b6
+  ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/19/2019
+  ms.locfileid: "71130378"
+landingContent:
+- title: Azure ML を使ってみる
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Python ノートブックで実験する
+      url: service/tutorial-1st-experiment-sdk-setup.md
+    - text: ドラッグ アンド ドロップを使用して実験する
+      url: service/ui-tutorial-automobile-price-train-score.md
+    - text: 初めての実験を自動化する
+      url: service/tutorial-first-experiment-automated-ml.md
+  - linkListType: overview
+    links:
+    - text: Azure ML とは
+      url: service/overview-what-is-azure-ml.md
+    - text: アーキテクチャと概念
+      url: service/concept-azure-machine-learning-architecture.md
+  - linkListType: how-to-guide
+    links:
+    - text: 環境をセットアップする
+      url: service/how-to-configure-environment.md
+    - text: トレーニング コンピューティング ターゲットを設定する
+      url: service/how-to-set-up-training-targets.md
+- title: '実験: Python SDK'
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 初めての ML 実験を作成する
+      url: service/tutorial-1st-experiment-sdk-setup.md
+    - text: 画像を分類する
+      url: service/tutorial-train-models-with-aml.md
+    - text: 自動の ML を使用してタクシー料金を予測する
+      url: service/tutorial-auto-train-models.md
+    - text: バッチ スコアリングにパイプラインを使用する
+      url: service/tutorial-pipeline-batch-scoring-classification.md
+  - linkListType: how-to-guide
+    links:
+    - text: Scikit-learn を使ってトレーニングする
+      url: service/how-to-train-scikit-learn.md
+    - text: TensorFlow を使ってトレーニングする
+      url: service/how-to-train-tensorflow.md
+    - text: PyTorch を使ってトレーニングする
+      url: service/how-to-train-pytorch.md
+    - text: Keras を使ってトレーニングする
+      url: service/how-to-train-keras.md
+- title: '実験: ビジュアル インターフェイス'
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 自動化された ML を使用してサブスクリプションを予測する
+      url: service/tutorial-first-experiment-automated-ml.md
+    - text: 線形回帰を使用して価格を予測する
+      url: service/ui-tutorial-automobile-price-train-score.md
+  - linkListType: how-to-guide
+    links:
+    - text: 信用リスクの予測
+      url: service/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive.md
+    - text: 遅延を予測する
+      url: service/how-to-ui-sample-classification-predict-flight-delay.md
+    - text: 顧客離れを予測する
+      url: service/how-to-ui-sample-classification-predict-churn.md
+- title: モデルの展開と管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: MLOps とは
+      url: service/concept-model-management-and-deployment.md
+    - text: デプロイの方法と場所
+      url: service/how-to-deploy-and-where.md
+    - text: リアルタイムの予測
+      url: service/how-to-consume-web-service.md
+    - text: バッチ予測
+      url: service/how-to-run-batch-predictions.md
+- title: リファレンス ドキュメントの確認
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure ML Python SDK
+      url: https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py
+    - text: Azure ML CLI
+      url: https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml?view=azure-cli-latest
+    - text: ビジュアル インターフェイスのアルゴリズムとモジュール
+      url: algorithm-module-reference/module-reference.md

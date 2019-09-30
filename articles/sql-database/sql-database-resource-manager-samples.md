@@ -11,18 +11,18 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 02/04/2019
-ms.openlocfilehash: 81f3e4beb29f21f1b752a876827e9b35856c713a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c501bed9220c08013d44836066e46df92cf69eaa
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566888"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037446"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL Database 用 Azure Resource Manager テンプレート
 
 Azure Resource Manager テンプレートを使用すると、インフラストラクチャをコードとして定義し、ソリューションを Azure クラウドにデプロイできます。
 
-## <a name="single-database--elastic-pool"></a>単一データベースとエラスティック プール
+## <a name="single-database--elastic-pooltabsingle-database"></a>[単一データベースとエラスティック プール](#tab/single-database)
 
 次の表は、Azure SQL Database 用の Azure Resource Manager テンプレートのリンク一覧です。
 
@@ -41,7 +41,7 @@ Azure Resource Manager テンプレートを使用すると、インフラスト
 | [HDInsight クラスターと SQL データベース](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | このテンプレートを使用すると、HDInsight クラスター、SQL Database サーバー、SQL データベース、および 2 つのテーブルを作成できます。 このテンプレートは、[HDInsight の Hadoop での Sqoop の使用](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop)に関する記事で使用されています。 |
 | [スケジュールに従って SQL ストアド プロシージャを実行する Azure ロジック アプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | このテンプレートを使用すると、スケジュールに従って SQL ストアド プロシージャを実行するロジック アプリを作成できます。 プロシージャの引数は、テンプレートの body セクションに配置できます。|
 
-## <a name="managed-instance"></a>マネージド インスタンス
+## <a name="managed-instancetabmanaged-instance"></a>[Managed Instance](#tab/managed-instance)
 
 次の表は、Azure SQL Database - マネージド インスタンス用の Azure Resource Manager テンプレートのリンク一覧です。
 
@@ -51,3 +51,5 @@ Azure Resource Manager テンプレートを使用すると、インフラスト
 | [マネージド インスタンスのネットワーク環境](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | このデプロイでは、2 つのサブネットを持つ構成済み Azure 仮想ネットワークが作成されます。1 つのサブネットはマネージド インスタンス専用で、もう 1 つには他のリソース (VM、App Service 環境など) を配置できます。 このテンプレートでは、マネージド インスタンスをデプロイすることができる、適切に構成されたネットワーク環境が作成されます。 |
 | [マネージド インスタンスと P2S 接続](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | このデプロイでは、`ManagedInstance` と `GatewaySubnet` という 2 つのサブネットを持つ Azure 仮想ネットワークが作成されます。 マネージド インスタンスは、ManagedInstance サブネットにデプロイされます。 仮想ネットワーク ゲートウェイは `GatewaySubnet` サブネットに作成され、ポイント対サイト VPN 接続用に構成されます。 |
 | [マネージド インスタンスと仮想マシン](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | このデプロイでは、`ManagedInstance` と `Management` という 2 つのサブネットを持つ Azure 仮想ネットワークが作成されます。 マネージド インスタンスは、`ManagedInstance` サブネットにデプロイされます。 最新バージョンの SQL Server Management Studio (SSMS) を持つ仮想マシンは、`Management` サブネットにデプロイされます。 |
+
+---

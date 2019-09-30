@@ -1,35 +1,51 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Bastion のドキュメント
+### YamlMime:Landing
+title: Azure Bastion のドキュメント (プレビュー)
+summary: Azure Bastion を使用して仮想マシンに接続する方法について説明します。 Azure portal 内で直接 SSL 経由でのご自分の仮想マシンへのセキュリティで保護されたシームレスな RDP または SSH 接続を構成します。 Azure Bastion 経由で接続する場合、ご自分の仮想マシンにパブリック IP アドレスは必要ありません。
 metadata:
-  document_id: null
-  title: Bastion
-  meta.description: Learn how to use Azure Bastion
-  author: cherylmc
-  ms.service: Bastion
+  title: Azure Bastion のドキュメント (プレビュー)
+  description: Azure Bastion を使用して仮想マシンに接続する方法について説明します。 Azure portal 内で直接 SSL 経由でのご自分の仮想マシンへのセキュリティで保護されたシームレスな RDP または SSH 接続を構成します。
+  services: bastion
+  ms.service: bastion
   ms.topic: landing-page
-  ms.date: 07/02/2019
+  author: cherylmc
   ms.author: cherylmc
-abstract:
-  description: Azure Bastion を使用して仮想マシンに接続する方法について説明します。 Azure portal 内で直接 SSL 経由でのご自分の仮想マシンへのセキュリティで保護されたシームレスな RDP または SSH 接続を構成します。 Azure Bastion 経由で接続する場合、ご自分の仮想マシンにパブリック IP アドレスは必要ありません。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: 'https://go.microsoft.com/fwlink/?linkid=2095604'
-      width: 250
-    title: 'Azure Bastion の操作 (1:03)'
-    href: 'https://go.microsoft.com/fwlink/?linkid=2095517'
-    width: 250
-sections:
-  - title: Azure Bastion の作成および管理 (プレビュー)
-    items:
-      - type: paragraph
-        text: Azure Bastion ホストを構成してから、仮想マシンに接続する方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/bastion/bastion-create-host-portal">Azure Bastion ホストを作成および変更する</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-rdp">Windows 仮想マシンに接続する</a>
-          - html: <a href="/azure/bastion/bastion-connect-vm-ssh">Linux 仮想マシンに接続する</a>
-          - html: <a href="/azure/bastion/bastion-faq">Azure Bastion に関する FAQ を読む</a>
+  ms.date: 08/29/2019
+  ms.openlocfilehash: 6854e6ec4bd36ea38fa0e1f9cd46f95e11144be6
+  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/28/2019
+  ms.locfileid: "70128125"
+landingContent:
+- title: Azure Bastion (プレビュー) について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Bastion とは
+      url: bastion-overview.md
+  - linkListType: concept
+    links:
+    - text: Azure Bastion に関する FAQ
+      url: bastion-faq.md
+- title: 作業開始
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Bastion ホストの作成
+      url: bastion-create-host-portal.md
+    - text: 仮想マシンへの接続 (Linux)
+      url: bastion-connect-vm-ssh.md
+    - text: 仮想マシンへの接続 (Windows)
+      url: bastion-connect-vm-rdp.md
+  - linkListType: video
+    links:
+    - text: Azure Bastion の操作
+      url: https://go.microsoft.com/fwlink/?linkid=2095517
+- title: 仮想マシン セッションの操作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: コピーと貼り付け
+      url: bastion-vm-copy-paste.md
+    - text: 全画面表示
+      url: bastion-vm-full-screen.md

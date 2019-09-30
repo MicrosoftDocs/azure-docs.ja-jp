@@ -6,23 +6,22 @@ ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
-manager: douge
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 82310857276c53c85af033ae32a3aeef4f33c8da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7c097c2a7247c9cad6cdce8a89059ee8d90d159e
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109377"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899593"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Azure DevOps Projects を使用して PHP 用の CI/CD パイプラインを作成する
 
@@ -30,7 +29,7 @@ Azure DevOps Projects は、Azure リソースを作成して、Azure Pipelines 
 
 Azure サブスクリプションをお持ちでない場合は、[Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) を通じて無料で取得できます。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
  DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが作成されます。 無料の新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 
@@ -38,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 
 1. 左のウィンドウで **[リソースの作成]** アイコンを選択し、**DevOps Projects** を検索します。  
 
-3. **作成**を選択します。
+3. **作成** を選択します。
 
     ![継続的デリバリーの構成の開始](_img/azure-devops-project-php/fullbrowser.png)
 
@@ -47,10 +46,10 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 1. PHP サンプル アプリケーションを選択します。  
         PHP のサンプルでは、複数のアプリケーション フレームワークのうちのいずれかを選択できます。既定のサンプル フレームワークは Laravel です。 
         
-2. 既定の設定のままにして、**[次へ]** を選択します。  
+2. 既定の設定のままにして、 **[次へ]** を選択します。  
 
 1. Web App for Containers が既定のデプロイ ターゲットです。  
-    前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。  既定のサービスのままにして、**[次へ]** を選択します。
+    前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。  既定のサービスのままにして、 **[次へ]** を選択します。
  
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps と Azure サブスクリプションを構成する 
 
@@ -58,7 +57,7 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 
     a. Azure DevOps のプロジェクトの名前を選択します。 
     
-    b. Azure サブスクリプションと場所を選択し、アプリケーションの名前を入力して、**[完了]** を選択します。   
+    b. Azure サブスクリプションと場所を選択し、アプリケーションの名前を入力して、 **[完了]** を選択します。   
         数分後、DevOps Projects ダッシュボードが Azure portal に表示されます。 サンプル アプリケーションが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが Azure にデプロイされます。 このダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリケーションが可視化されます。  
         
 2. **[参照]** を選択すると、実行中のアプリケーションが表示されます。
@@ -103,9 +102,9 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 
 1. ビルド パイプラインの上部で、ビルド パイプラインの名前を選択します。
 
-1. ビルド パイプラインの名前をよりわかりやすい名前に変更し、**[保存してキューに登録]** を選択して、**[保存]** を選択します。
+1. ビルド パイプラインの名前をよりわかりやすい名前に変更し、 **[保存してキューに登録]** を選択して、 **[保存]** を選択します。
 
-1. ご自身のビルド パイプラインの名前の下で、**[履歴]** を選択します。   
+1. ご自身のビルド パイプラインの名前の下で、 **[履歴]** を選択します。   
     **[履歴]** ウィンドウには、ビルドに対する最近の変更の監査証跡が表示されます。 ビルド パイプラインに対するすべての変更が Azure Pipelines によって追跡されるため、各バージョンを比較できます。
 
 1. **[トリガー]** を選択します。  
@@ -114,13 +113,13 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 1. **[保持]** を選択します。   
     シナリオに基づいて、特定の数のビルドを保持または削除するポリシーを指定できます。
 
-1. **[ビルドとリリース]** を選択し、**[リリース]** を選択します。  
+1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。  
      DevOps Projects により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
 
-1. リリース パイプラインの横にある省略記号 (...) を選択し、**[編集]** を選択します。  
+1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。  
     リリース パイプラインには、リリース プロセスを定義するパイプラインが含まれています。 
 
-12. **[成果物]** で、**[ドロップ]** を選択します。  
+12. **[成果物]** で、 **[ドロップ]** を選択します。  
     前の手順で調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
 1. **[ドロップ]** アイコンの横にある **[継続的配置トリガー]** を選択します。   
@@ -131,7 +130,7 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 
 1. 右側で **[リリースの表示]** を選択して、リリースの履歴を表示します。
 
-1. いずれかのリリースの横にある省略記号 (...) を選択し、**[開く]** を選択します。  
+1. いずれかのリリースの横にある省略記号 (...) を選択し、 **[開く]** を選択します。  
         リリース概要、関連付けられた作業項目、テストなど、このビューから表示されるいくつかのメニューがあります。
 
 1. **[コミット]** を選択します。  

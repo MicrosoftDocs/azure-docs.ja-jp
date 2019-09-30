@@ -238,9 +238,7 @@
 - name: 参照アーキテクチャ
   items:
     - name: 概要
-      href: iot-accelerators-architecture-overview.md
-    - name: ダウンロード
-      href: 'https://aka.ms/iotrefarchitecture'
+      href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/iot/'
     - name: パートナー実装
       items:
         - name: Intel コネクテッド ロジスティクス プラットフォーム

@@ -42,8 +42,8 @@
           href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
         - name: データ プレーンの分析
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: セキュリティ属性
-      href: vpn-gateway-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: vpn-gateway-security-controls.md
 - name: ハウツー ガイド
   items:
     - name: VPN ゲートウェイを作成して管理する
@@ -138,10 +138,10 @@
               href: vpn-gateway-howto-openvpn.md
             - name: OpenVPN クライアントを構成する
               href: vpn-gateway-howto-openvpn-clients.md
-        - name: P2S 用公開 CA ゲートウェイ証明書への移行
-          href: vpn-gateway-point-to-site-gateway-public-ca.md
         - name: Always On VPN デバイス トンネルの構成
           href: vpn-gateway-howto-always-on-device-tunnel.md
+        - name: カスタム ルートを P2S クライアントにアドバタイズする
+          href: vpn-gateway-p2s-advertise-custom-routes.md
     - name: Azure Availability Zones でのゾーン冗長 VNet ゲートウェイの作成
       href: create-zone-redundant-vnet-gateway.md
     - name: 接続に対する IPsec/IKE ポリシーの構成

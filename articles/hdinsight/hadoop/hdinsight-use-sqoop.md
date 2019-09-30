@@ -7,14 +7,15 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.openlocfilehash: 6764d8d812789c9f54fa59e10b2a3e416e583a9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2a153b1eef974c8c73df49a6eed53ef5dbf2353
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62129401"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076212"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Apache Sqoop の使用
+
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
 HDInsight 内で Apache Sqoop を使用して、HDInsight クラスターと Azure SQL データベース間でデータのインポートとエクスポートを実行する方法について説明します。
@@ -72,14 +73,14 @@ HDInsight クラスターにはサンプル データがいくつか付属して
 
 1. 次の画像を選択して、Azure portal で Resource Manager テンプレートを開きます。
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-sql-database%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-use-sqoop/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
 
 2. 次のプロパティを入力します。
 
     |フィールド |値 |
     |---|---|
-    |サブスクリプション |ドロップダウン リストから Azure サブスクリプションを選択します。|
-    |リソース グループ |ドロップダウン リストからリソース グループを選択するか、新しいリソース グループを作成します。|
+    |Subscription |ドロップダウン リストから Azure サブスクリプションを選択します。|
+    |Resource group |ドロップダウン リストからリソース グループを選択するか、新しいリソース グループを作成します。|
     |Location |ドロップダウン リストからリージョンを選択します。|
     |クラスター名 |Hadoop クラスターの名前を入力します。 小文字のみを使用します。|
     |[Cluster Login User Name]\(クラスター ログイン ユーザー名\) |事前に設定されている値 `admin` のままにします。|

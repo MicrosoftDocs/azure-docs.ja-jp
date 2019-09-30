@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 40caea40637c57aedb6315ff6fc032898ff07af7
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 20ca823f60ced4260c2e61ca15ae04e158b7d952
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467944"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69615681"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB の変更フィード - 概要
 
-Azure Cosmos DB の変更フィードのサポートは、Azure Cosmos DB コンテナーの変更をリッスンすることで機能します。 変更されたドキュメントは、変更された順に並べ替えられた一覧に出力されます。 変更は保持され、非同期的に増分処理できます。また、出力を 1 つ以上のコンシューマーに分散させて並列処理することもできます。 
+Azure Cosmos DB の変更フィードのサポートは、Azure Cosmos コンテナーの変更をリッスンすることで機能します。 変更されたドキュメントは、変更された順に並べ替えられた一覧に出力されます。 変更は保持され、非同期的に増分処理できます。また、出力を 1 つ以上のコンシューマーに分散させて並列処理することもできます。 
 
 Azure Cosmos DB は、IoT、ゲーム、小売、操作ログといったアプリケーションに最適です。 このようなアプリケーションの一般的な設計パターンは、データの変更を使用して、追加のアクションをトリガーする方法です。 以下が追加のアクションの例となります。
 
@@ -56,7 +56,7 @@ Azure Cosmos DB の変更フィードにより、次の図のようにこれら�
 
 ある項目の TTL (Time to Live) プロパティが -1 に設定されている場合、変更フィードは永久に持続します。 データが削除されなければ、変更フィード内に保持されます。  
 
-### <a name="change-feed-and-etag-lsn-or-ts"></a>変更フィードと _etag、_lsn、_ts
+### <a name="change-feed-and-_etag-_lsn-or-_ts"></a>変更フィードと _etag、_lsn、_ts
 
 _etag は内部形式であり、いつでも変更され得るため、これに依存することはできません。 _ts は、変更または作成のタイムスタンプです。 _ts は時系列比較に利用できます。 _lsn は変更フィードに対してのみ追加されるバッチ ID であり、トランザクション ID を表します。 多数の項目に同じ _lsn が付くことがあります。 FeedResponse の ETag は、項目にある _etag とは異なります。 _etag は内部識別子であり、コンカレンシー制御に使用され、項目のバージョンを伝えますが、ETag はフィードのシーケンス処理に使用されます。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/25/2019
 ms.author: emalani
 ms.openlocfilehash: f1777fcb5a4e7899da982bd9d1d35905cb408ad2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 08/15/2019
 ms.locfileid: "67446296"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Xamarin Forms アプリに認証を追加する
@@ -57,8 +57,7 @@ ms.locfileid: "67446296"
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>ポータブル クラス ライブラリに認証を追加する
-Mobile Apps では、[LoginAsync][3] extension method on the [MobileServiceClient][4] to sign in a user with App Service authentication. This sample
-uses a server-managed authentication flow that displays the provider's sign-in interface in the app. For more information, see [Server-managed authentication][5] が使用されます。 運用アプリのユーザー エクスペリエンスを向上させるためには、代わりに[クライアント側管理認証][6]を使用することを検討してください。
+Mobile Apps は、[MobileServiceClient][4] の [LoginAsync][3] 拡張メソッドを使用して App Service 認証でユーザーをサインインさせます。 このサンプルでは、アプリにプロバイダーのサインイン インターフェイスが表示される、サーバー側管理認証フローを使用します。 詳細については、「 [サーバー側管理認証][5]」を参照してください。 運用アプリでユーザー エクスペリエンスを向上させるには、代わりに[クライアントによって管理された認証][6]を使用することを検討してください。
 
 Xamarin Forms プロジェクトで認証するには、アプリのポータブル クラス ライブラリに **IAuthenticate** インターフェイスを定義します。 次に、ポータブル クラス ライブラリで定義されているユーザー インターフェイスに **[サインイン]** ボタンを追加します。このボタンは、認証を開始するためにクリックします。 認証が成功すると、モバイル アプリ バックエンドからデータが読み込まれます。
 

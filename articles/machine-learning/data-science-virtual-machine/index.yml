@@ -1,55 +1,60 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure データ サイエンス仮想マシンのドキュメント
+### YamlMime:Landing
+title: Azure Data Science Virtual Machine のドキュメント
+summary: Azure Data Science Virtual Machine (DSVM) は仮想マシン イメージであり、データ サイエンスおよび機械学習のツールを備えています。 この VM を使用して、高度な分析用のインテリジェントなアプリケーションを構築できます。
 metadata:
-  title: データ サイエンス仮想マシンのドキュメント - Azure
-  description: データ サイエンス用に構築された Azure クラウド内の実験環境、Data Science Virtual Machine を使用する方法について説明します。 高度な分析を行うためのインテリジェントなアプリケーションの構築をすぐに始められるよう、よく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されています。
-  services: machine-learning
-  author: vijetajo
+  title: Data Science Virtual Machine のドキュメント - Azure
+  description: Azure Data Science Virtual Machine (DSVM) は仮想マシン イメージであり、データ サイエンスおよび機械学習のツールを備えています。
   ms.service: machine-learning
   ms.subservice: data-science-vm
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 08/19/2019
-  ms.author: vijetaj
-abstract:
-  description: Azure Data Science Virtual Machine (DSVM) はカスタマイズされた VM イメージであり、データ サイエンスおよび機械学習のツールを備えています。 この VM を使用して、インテリジェントで高度な分析アプリケーションを構築できます。 <a href="overview.md">詳細情報</a>
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Windows または Linux ベースのデータ サイエンス VM を設定する方法を学習します。
-      - type: paragraph
-        text: <b>Windows DSVM</b>
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="provision-vm">Windows DSVM を設定する</a>
-          - html: <a href="vm-do-ten-things">Windows DSVM を使用する</a>
-      - type: paragraph
-        text: <b>Linux DSVM (Ubuntu | CentOS)</b>
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="linux-dsvm-intro">Linux CentOS DSVM を設定する</a>
-          - html: <a href="dsvm-ubuntu-intro">Linux Ubuntu DSVM を設定する</a>
-          - html: <a href="linux-dsvm-walkthrough">Linux DSVM を使用する</a>
-  - title: その他の Azure Machine Learning テクノロジ
-    items:
-      - type: paragraph
-        text: Azure Machine Learning で利用できるその他のテクノロジは次のとおりです。
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Machine Learning サービス
-            href: /azure/machine-learning/service/
-            image:
-              src: media/index/i_machine-learning.svg
-              href: /azure/machine-learning/service/
-          - title: Azure Machine Learning Studio
-            href: /azure/machine-learning/studio/
-            image:
-              src: media/index/machine-learning-studio.svg
-              href: /azure/machine-learning/studio/
+  ms.collection: collection
+  author: gvashishtha
+  ms.author: gopalv
+  ms.date: 09/13/2019
+  ms.openlocfilehash: 3fdd30274796072fcca6a5cfe41651334cf62aee
+  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71170711"
+landingContent:
+- title: DSVM を使ってみる
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: DSVM とは
+      url: overview.md
+    - text: Geo AI DSVM とは
+      url: geo-ai-dsvm-overview.md
+  - linkListType: get-started
+    links:
+    - text: Windows DSVM の作成
+      url: provision-vm.md
+    - text: Ubuntu DSVM の作成
+      url: dsvm-ubuntu-intro.md
+    - text: CentOS DSVM の作成
+      url: linux-dsvm-intro.md
+    - text: Geo AI DSVM の作成
+      url: provision-geo-ai-dsvm.md
+- title: DSVM の管理
+  linkLists:
+  - linkListType: architecture
+    links:
+    - text: Enterprise のセキュリティとガイダンス
+      url: dsvm-enterprise-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: 自動スケーリングされた DSVM プールを作成する
+      url: dsvm-pools.md
+    - text: Active Directory と連係する。
+      url: dsvm-common-identity.md
+    - text: リソースのアクセス資格情報のセキュリティ保護
+      url: dsvm-secure-access-keys.md
+- title: その他の Azure Machine Learning テクノロジ
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Azure Machine Learning サービス
+      url: /azure/machine-learning/
+    - text: Microsoft の ML 製品の比較
+      url: https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/studio/context/ml-context

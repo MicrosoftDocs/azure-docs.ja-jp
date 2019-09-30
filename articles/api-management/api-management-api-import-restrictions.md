@@ -10,16 +10,15 @@ ms.assetid: 7a5a63f0-3e72-49d3-a28c-1bb23ab495e2
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: af550d3cdf359fc79b3cc2c799e531e5ec491c4e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: d1c80e2ab9ae6a893b1adea6bd68e9b585288d8b
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613630"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71074954"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 
@@ -39,6 +38,7 @@ Open API ドキュメントのインポートでエラーが発生した場合�
 -   カスタム拡張子は、インポート時に無視され、エクスポートでは保存されず、保持もされません。
 -   **再帰** - API Management では、再帰的に定義される定義はサポートされていません (たとえば、それ自体を参照するスキーマ)。
 -   ソース ファイルの URL (使用できる場合) が、相対的なサーバーの URL に適用されます。
+-   セキュリティ定義は無視されます。
 
 ### <a name="open-api-v2"> </a>OpenAPI バージョン 2
 
@@ -49,9 +49,6 @@ Open API ドキュメントのインポートでエラーが発生した場合�
 -   多数の**サーバー**が指定された場合、API Management では、最初の HTTPS URL の選択が試行されます。 HTTPS URL がない場合は、最初の HTTP URL が使用されます。 HTTP URL がない場合、サーバーの URL は空になります。
 -   **Examples** はサポートされていませんが、**example** はサポートされています。
 -   **Multipart/form-data** はサポートされていません。
-
-> [!IMPORTANT]
-> OpenAPI のインポートに関する重要な情報とヒントについては、この[ドキュメント](https://blogs.msdn.microsoft.com/apimanagement/2018/04/11/important-changes-to-openapi-import-and-export/)を参照してください。
 
 ## <a name="wsdl"> </a>WSDL
 

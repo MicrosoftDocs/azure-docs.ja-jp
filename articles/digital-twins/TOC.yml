@@ -19,7 +19,7 @@
           href: tutorial-facilities-udf.md
         - name: Logic Apps を使用した通知
           href: tutorial-facilities-events.md
-        - name: TSI によるイベントの視覚化
+        - name: Time Series Insights を使用したイベントの視覚化
           href: tutorial-facilities-analyze.md
 - name: 概念
   items:
@@ -73,32 +73,6 @@
   items:
     - name: ユーザー定義関数クライアント ライブラリ
       href: reference-user-defined-functions-client-library.md
-- name: 関連項目
-  items:
-    - name: 解決方法
-      items:
-        - name: IoT ソリューション アクセラレータ
-          href: /azure/iot-accelerators
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: プラットフォーム サービス
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: IoT Hub Device Provisioning Service
-          href: /azure/iot-dps
-        - name: IoT サービスの SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: マップ
-          href: /azure/azure-maps
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: IoT デバイス SDK
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: リソース
   items:
     - name: 'C# 用 Azure Digital Twins サンプル (.NET)'

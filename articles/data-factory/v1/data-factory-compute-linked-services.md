@@ -3,22 +3,20 @@ title: Azure Data Factory でサポートされるコンピューティング環
 description: Azure Data Factory パイプライン (Azure HDInsight など) でデータの変換または処理に使うことができるコンピューティング環境について説明します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 6877a7e8-1a58-4cfb-bbd3-252ac72e4145
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 12d12e96616d94360e5d193cf2b778a9ae389062
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565720"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140243"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 > [!NOTE]
@@ -120,7 +118,7 @@ Data Factory では、データを処理するための Windows ベースまた�
 >
 > 
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 | プロパティ                     | 説明                              | 必須 |
 | ---------------------------- | ---------------------------------------- | -------- |
 | type                         | type プロパティを **HDInsightOnDemand** に設定します。 | はい      |
@@ -256,7 +254,7 @@ HDInsight のリンクされたサービスを作成し、独自の HDInsight �
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | type プロパティを **HDInsight** に設定します。 | はい      |
@@ -304,7 +302,7 @@ Batch サービスを初めて利用する場合:
 "batchUri": "https://eastus.batch.azure.com",
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 | プロパティ          | 説明                              | 必須 |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | type プロパティを **AzureBatch** に設定します。 | はい      |
@@ -331,7 +329,7 @@ Machine Learning のリンクされたサービスを作成して、Machine Lear
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 | プロパティ   | 説明                              | 必須 |
 | ---------- | ---------------------------------------- | -------- |
 | Type       | type プロパティを **AzureML** に設定します。 | はい      |

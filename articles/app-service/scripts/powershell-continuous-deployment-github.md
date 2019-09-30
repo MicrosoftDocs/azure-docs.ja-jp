@@ -10,27 +10,25 @@ tags: azure-service-management
 ms.assetid: 42f901f8-02f7-4869-b22d-d99ef59f874c
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: na
 ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: d60fc1afbd129471ba56dddb6e2d5beba5ca2330
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc8be33ede80070b8e9928e01d07b6066f1c887c
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66136491"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70113572"
 ---
 # <a name="create-a-web-app-with-continuous-deployment-from-github"></a>GitHub からの継続的なデプロイで Web アプリを作成する
 
-このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、GitHub リポジトリからの継続的デプロイを設定します。 継続的なデプロイを使用しない GitHub でのデプロイについては、「[Web アプリを作成して GitHub からコードをデプロイする](powershell-deploy-github.md)」を参照してください。
+このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、GitHub リポジトリからの[継続的デプロイ](../deploy-continuous-deployment.md)を設定します。 継続的なデプロイを使用しない GitHub でのデプロイについては、「[Web アプリを作成して GitHub からコードをデプロイする](powershell-deploy-github.md)」を参照してください。
 
 必要に応じて、[Azure PowerShell ガイド](/powershell/azure/overview)の手順に従って Azure PowerShell をインストールし、`Connect-AzAccount` を実行して、Azure との接続を作成します。 また、次のことを確認します。
 
-- Azure との接続が、`az login` コマンドを使用して作成されている。
-- アプリケーション コードが、自分が所有するパブリックまたはプライベートの GitHub リポジトリ内にある。
-- [GitHub アカウントでアクセス トークンを作成](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)している。
+- アプリケーション コードが、自分が所有するパブリックまたはプライベートの GitHub リポジトリ内にある。 自動ビルドを取得するには、「[リポジトリを準備する](../deploy-continuous-deployment.md#prepare-your-repository)」の表に従ってリポジトリを構築します。
+- [GitHub アカウントで個人用アクセス トークンを作成](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line)している。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

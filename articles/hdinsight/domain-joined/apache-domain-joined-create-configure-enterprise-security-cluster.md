@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.openlocfilehash: 8da50757182609402ecb035b6f3e92959758ef46
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 482e3e534486a226783e2377c10b074a087e67ed
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68442302"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037311"
 ---
 # <a name="create-and-configure-enterprise-security-package-clusters-in-azure-hdinsight"></a>Azure HDInsight で Enterprise セキュリティ パッケージ クラスターを作成および構成する
 
@@ -25,7 +25,7 @@ Azure HDInsight の Enterprise セキュリティ パッケージを使用する
 
 このプロセスをお客様の環境で使用する前に、Active Directory とドメイン ネーム サービス (DNS) を設定してください。 また、Azure Active Directory を有効にして、オンプレミス ユーザー アカウントを Azure Active Directory と同期してください。
 
-![アーキテクチャ ダイアグラム](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image002.png)
+![Azure Active Directory のアーキテクチャ図](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0002.png)
 
 ## <a name="create-on-premises-environment"></a>オンプレミス環境を作成する
 
@@ -71,23 +71,23 @@ Azure HDInsight の Enterprise セキュリティ パッケージを使用する
 
     1. **[Active Directory ユーザーとコンピューター]** 画面で、 **[アクション]**  >  **[新規]**  >  **[ユーザー]** をクリックします。
 
-        ![新しい Active Directory ユーザーを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-user.png)
+        ![新しい Active Directory ユーザーを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-user.png)
 
     1. **[新しいオブジェクト - ユーザー]** 画面で、 **[ユーザー ログオン名]** に「`HDIUser`」と入力し、 **[次へ]** をクリックします。
 
-        ![最初の管理者ユーザーを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image020.png)
+        ![最初の管理者ユーザー オブジェクトを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0020.png)
 
     1. 表示されるポップアップで、新しいアカウントに必要なパスワードを入力します。 **[パスワードを無期限にする]** というチェックボックスをオンにします。 **[OK]** をクリックします。
     1. **[完了]** をクリックして新しいアカウントを作成します。
     1. 別のユーザー `HDIAdmin` を作成します。
 
-        ![2 つ目の管理者ユーザーを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image024.png)
+        ![2 つ目の管理者ユーザー オブジェクトを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0024.png)
 
 1. **[Active Directory ユーザーとコンピューター]** 画面で、 **[アクション]**  >  **[新規]**  >  **[グループ]** をクリックします。 新しいグループとして `HDIUserGroup` を作成します。
 
-    ![新しい Active Directory グループを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-group.png)
+    ![新しい Active Directory グループを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-active-directory-group.png)
 
-    ![新しい group2 を作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image028.png)
+    ![オブジェクト グループの新規作成ダイアログ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0028.png)
 
 1. 前の手順で作成した **HDIUser** をメンバーとして **HDIUserGroup** に追加します。
 
@@ -96,7 +96,7 @@ Azure HDInsight の Enterprise セキュリティ パッケージを使用する
     1. **[選択するオブジェクト名を入力してください]** というラベルのボックスに「`HDIUser`」と入力し、 **[OK]** をクリックします。
     1. もう 1 つのアカウント `HDIAdmin` について前の手順を繰り返します。
 
-        ![グループにメンバーを追加する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/active-directory-add-users-to-group.png)
+        ![グループ HDIUserGroup にメンバー HDIUser を追加する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/active-directory-add-users-to-group.png)
 
 これで、HDInsight クラスターにアクセスするための 2 人のユーザーと 1 つのユーザー グループと共に、Active Directory 環境が作成されました。
 
@@ -116,7 +116,7 @@ Azure HDInsight の Enterprise セキュリティ パッケージを使用する
 
 ![新しい Azure Active Directory を作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-new-directory.png)
 
-![新しいカスタム ドメインを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-custom-domain.png)
+![Azure AD、新しいカスタム ドメインを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/create-custom-domain.png)
 
 ## <a name="configure-your-azure-ad-tenant"></a>Azure AD テナントを構成する
 
@@ -133,11 +133,11 @@ Azure HDInsight の Enterprise セキュリティ パッケージを使用する
 
     1. **[グループ]** セクションをクリックし、 **[AAD DC Administrators]** を検索し、 **[選択]** をクリックします。
 
-        ![グループ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image038.png)
+        ![Azure Active Directory グループ ダイアログ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0038.png)
 
     1. **[ディレクトリ ロール]** セクションをクリックし、右側の **[グローバル管理者]** を選択します。 **[OK]** をクリックします。
 
-        ![ディレクトリ ロール](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image040.png)
+        ![Azure Active Directory ロール ダイアログ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0040.png)
 
     1. ユーザーのパスワードを入力します。 **Create** をクリックしてください。
 
@@ -150,27 +150,33 @@ Azure HDInsight の Enterprise セキュリティ パッケージを使用する
 1. [Azure AD Connect のダウンロード](https://www.microsoft.com/download/details.aspx?id=47594)。
 
 1. Microsoft Azure Active Directory Connect をドメイン コントローラーにインストールします。
+
     1. 前の手順でダウンロードした実行可能ファイルを開き、ライセンス条項に同意します。 **[続行]** をクリックします。
 
-        ![Azure AD Connect](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image052.png)
+        ![Azure AD Connect へようこそダイアログ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0052.png)
 
     1. **[簡単設定を使う]** をクリックしてインストールを完了します。
 
-        ![簡単設定を使う](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image054.png)
+        ![Azure AD Connect の簡単設定](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0054.png)
 
 ### <a name="configure-sync-with-on-premises-domain-controller"></a>オンプレミス ドメイン コントローラーとの同期を構成する
 
 1. **[Azure AD に接続]** 画面で、Azure AD のグローバル管理者のユーザー名とパスワードを入力します。  **[次へ]** をクリックします。 これは、AD テナントを構成するときに作成したユーザー名 `fabrikamazureadmin@hdifabrikam.com` です。
-    ![Connect to Azure AD](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image058.png)
+
+    ![Azure Active Directory に接続する ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0058.png)
+
 1. **[Active Directory ドメイン サービスへの接続]** 画面で、エンタープライズ管理者アカウントのユーザー名とパスワードを入力します。  **[次へ]** をクリックします。 これは、以前に作成したユーザー名 `HDIFabrikam\HDIFabrikamAdmin` とそれに対応するパスワードです。
 
-   ![Active Directory ドメイン サービスへの接続](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image060.png)
+   ![Active Directory ドメイン サービスへの接続](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0060.png)
 1. **[Azure AD サインインの構成]** ページで、 **[次へ]** をクリックします。
-    ![Azure AD サインインの構成](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image062.png)
+    ![Azure AD サインインの構成](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0062.png)
+
 1. [構成の準備完了] 画面で、 **[インストール]** をクリックします。
-    ![インストール](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image064.png)
+
+    ![Azure AD Connect の構成準備完了ダイアログ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0064.png)
+
 1. **[構成が完了しました]** 画面が表示されたら、 **[終了]** をクリックします。
-    ![構成が完了しました](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image078.png)
+    ![Azure AD 構成完了](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0078.png)
 
 1. 同期が完了したら、IAAS Active Directory に作成したユーザーが Azure Active Directory と同期されているかどうかを確認します。
     1. Azure ポータルにサインインします。
@@ -188,7 +194,7 @@ Azure Active Directory Domain Services (Azure AD-DS) の構成に使用される
 1. **[場所]** で **[米国中部]** を選択します。
 1. **Create** をクリックしてください。
 
-![ユーザー割り当てマネージド ID を作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image082.png)
+![ユーザー割り当てマネージド ID を新規作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0082.png)
 
 ### <a name="enable-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を有効にする
 
@@ -213,23 +219,23 @@ Azure Active Directory Domain Services (Azure AD-DS) の構成に使用される
     1. サブスクリプションを選択します。
     1. リソース グループ **[HDIFabrikam-CentralUS]** と **[場所]** の **[米国中部]** を指定します。
 
-        ![azure ad ds の基本の詳細](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image084.png)
+        ![Azure AD Domain Services の基本情報](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0084.png)
 
 1. **[ネットワーク]** 画面が完了したら、前の PowerShell スクリプトで作成したネットワーク (**HDIFabrikam-VNET**) とサブネット (**AADDS-subnet**) を選択します。 または **[新規作成]** オプションを使用して、すぐに仮想ネットワークを作成することもできます。
 
-    ![ネットワークを選択する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image086.png)
+    ![Azure AD Domain Services で仮想ネットワークを作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0086.png)
 
 1. **[管理者グループ]** 画面に、このグループを管理するために **AAD DC Administrators** という名前のグループが既に作成されているという通知が表示されます。 必要に応じて、このグループのメンバーシップを変更できますが、この記事の手順には必要ありません。 Click **OK**.
 
-    ![管理者グループを表示する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image088.png)
+    ![Azure AD 管理者グループを表示する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0088.png)
 
 1. **[同期]** 画面で、 **[すべて]** を選択して完全な同期を有効にして **[OK]** をクリックします。
 
-    ![同期を有効にする](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image090.png)
+    ![Azure AD Domain Services 同期を有効にする](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0090.png)
 
 1. **[概要]** 画面で、Azure AD-DS の詳細を確認し、 **[OK]** をクリックします。
 
-    ![詳細を確認する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image092.png)
+    ![Azure AD Domain Services 有効化の概要](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0092.png)
 
 1. Azure AD-DS を有効にした後、ローカルのドメイン ネーム サービス (DNS) サーバーが AD Virtual Machines (VM) で実行されます。
 
@@ -239,7 +245,7 @@ Azure Active Directory Domain Services (Azure AD-DS) の構成に使用される
 
 1. カスタム DNS サーバーの IP アドレスを見つけます。 **HDIFabrikam.com** の AD-DS リソースをクリックし、 **[管理]**   の  **[プロパティ]** をクリックして、 **[仮想ネットワーク上の IP アドレス]** に表示される IP アドレスを確認します。
 
-    ![Azure AD-DS のカスタム DNS IP アドレスを見つける](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image096.png)
+    ![Azure AD-DS のカスタム DNS IP アドレスを見つける](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0096.png)
 
 1. **HDIFabrikam-AADDSVNET** をカスタム IP の `10.0.0.4` と `10.0.0.5` に構成します。
 
@@ -248,7 +254,7 @@ Azure Active Directory Domain Services (Azure AD-DS) の構成に使用される
 
 1. このシナリオでは、Azure AD-DS は IP アドレス 10.0.0.4 と 10.0.0.5 を使用するように構成されており、下の図に示すように AADDS VNet 上で同じ IP アドレスを設定しています。
 
-    ![カスタム DNS サーバーを表示する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image098.png)
+    ![カスタム DNS サーバーの表示ダイアログ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0098.png)
 
 ## <a name="securing-ldap-traffic"></a>LDAP トラフィックをセキュリティで保護する
 
@@ -276,13 +282,13 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 1. ローカル コンピューターの証明書を管理する証明書スナップインを追加します。
 1.  **[証明書 (ローカル コンピューター)]** 、 **[個人用]** 、 **[証明書]** の順に展開します。 個人用ストアに新しい証明書が表示されます。 この証明書は完全修飾ホスト名に対して発行されます。
 
-    ![証明書の作成を確認する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image102.png)
+    ![ローカル証明書の作成を確認する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0102.png)
 
 1. 右側のウィンドウで、前の手順で作成した証明書を右クリックし、 **[すべてのタスク]** をポイントして  **[エクスポート]** をクリックします。
 
 1.  **[秘密キーのエクスポート]**   ページで  **[はい、秘密キーをエクスポートします]** をクリックします。 秘密キーは、暗号化されたメッセージをキーのインポート先コンピューターから読み取るために必要です。
 
-    ![秘密キーをエクスポートする](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image103.png)
+    ![証明書ウィザード、秘密キーのエクスポート ページ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0103.png)
 
 1.  **[エクスポート ファイル形式]**   ページで、既定設定をそのままにしてから、 **[次へ]** をクリックします。 
 1.  **[パスワード]**   ページで、秘密キーのパスワードを入力し、 **[暗号化]** に **[TripleDES-SHA1]** を選択して、 **[次へ]** をクリックします。
@@ -295,7 +301,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     1. コンピューターにエクスポートした .pfx 証明書ファイルを参照します。
     1. 証明書のパスワードを入力します。
 
-    ![Secure LDAP を有効にする](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image113.png)
+    ![Azure AD-DS、Secure LDAP を有効にする](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0113.png)
 
 1. Secure LDAP を有効にしたので、ポート 636 を有効にして到達可能であることを確認します。
     1. **HDIFabrikam-CentralUS** リソース グループのネットワーク セキュリティ グループ **AADDS-HDIFabrikam.com-NSG** をクリックします。
@@ -313,11 +319,11 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
         | 優先度 | \<指定する数字\> |
         | Name | Port_LDAP_636 |
 
-    ![受信セキュリティ規則](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
+    ![受信セキュリティ規則の追加ダイアログ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/add-inbound-security-rule.png)
 
 1. `HDIFabrikamManagedIdentity` はユーザー割り当てマネージド ID です。HDInsight ドメイン サービス共同作成者ロールにマネージド ID を割り当てると、この ID がドメイン サービス操作の読み取り、作成、変更、および削除できるようになります。
 
-    ![ユーザー割り当てマネージド ID を作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image117.png)
+    ![ユーザー割り当てマネージド ID を作成する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0117.png)
 
 ## <a name="creating-enterprise-security-package-enabled-hdinsight-cluster"></a>Enterprise セキュリティ パッケージ対応の HDInsight クラスターを作成する
 
@@ -347,7 +353,7 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
     1. **[カスタム]** を選択し、「`10.0.0.4`」と「`10.0.0.5`」を入力します。
     1. **[Save]** をクリックします。
 
-        ![カスタム DNS 設定を保存する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image123.png)
+        ![仮想ネットワークのカスタム DNS 設定を保存する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0123.png)
 
 1. ESP 対応の新しい HDInsight Spark クラスターを作成します。
     1. **[カスタム (サイズ、設定、アプリ)]** をクリックします。
@@ -359,24 +365,24 @@ New-SelfSignedCertificate -Subject hdifabrikam.com `
 
         1. **[クラスター アクセス グループ]** をクリックし、 **[HDIUserGroup]** を選択します。 以降、このグループに追加したすべてのユーザーは HDInsight クラスターにアクセスできるようになります。
 
-            ![クラスター アクセス グループを選択する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image129.jpg)
+            ![クラスター アクセス グループ HDIUserGroup を選択する](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0129.jpg)
 
     1. クラスター構成の他の手順を完了し、 **[クラスターの概要]** で詳細を確認します。 **Create** をクリックしてください。
 
 1. 管理者ユーザー名 `hdiadmin@hdifabrikam.com` とパスワードを使用して、`https://CLUSTERNAME.azurehdinsight.net` に新しく作成されたクラスターの Ambari UI にサインインします。
 
-    ![Ambari にサインインする](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image135.jpg)
+    ![Apache Ambari UI サインイン ウィンドウ](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0135.jpg)
 
 1. クラスターのダッシュボードから **[ロール]** をクリックします。
 1. **[ロール]** ページで、グループ **hdiusergroup** を入力して、 **[Assign roles to these]\(これらにロールを割り当てる\)** で **[Cluster Administrator]\(クラスター管理者\)** ロールに割り当てます。
 
-    ![クラスター管理者ロールを hdiusergroup に割り当てる](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image137.jpg)
+    ![クラスター管理者ロールを hdiusergroup に割り当てる](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0137.jpg)
 
-1. SSH クライアントを開き、オンプレミスの Active Directory に以前に作成した **hdiuser** を使用してクラスターにログインします。
+1. SSH クライアントを開き、オンプレミスの Active Directory に以前に作成した **hdiuser** を使用してクラスターにサインインします。
 
-    ![SSH を使用してクラスターにログインする](./media/apache-domain-joined-create-configure-enterprise-security-cluster/image139.jpg)
+    ![SSH クライアントでクラスターにサインインする](./media/apache-domain-joined-create-configure-enterprise-security-cluster/hdinsight-image-0139.jpg)
 
-このアカウントを使用してログインできる場合は、オンプレミスのアクティブ ディレクトリと同期するように ESP クラスターを正しく構成しています。
+このアカウントを使用してサインインできる場合は、オンプレミスのアクティブ ディレクトリと同期するように ESP クラスターを正しく構成しています。
 
 ## <a name="next-steps"></a>次の手順
 

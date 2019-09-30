@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにディザスター リカバリーする場合のサポート マトリックス | Microsoft Docs
+title: Azure Site Recovery を使用して VMM クラウド内の Hyper-V VM をセカンダリ サイトにディザスター リカバリーする場合のサポート マトリックス
 description: Azure Site Recovery を使用した、セカンダリ サイトへの VMM クラウド内の Hyper-V VM のレプリケーションのサポートについてまとめます。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: e8b8f9856fe7e0fa591ceb42aab97e92642b6098
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66399364"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813620"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Hyper-V VM のセカンダリ サイトへのディザスター リカバリーのサポート マトリックス
 

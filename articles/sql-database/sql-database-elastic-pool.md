@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
-ms.date: 02/28/2019
-ms.openlocfilehash: 31fb6eaefe557c1f135b4558b873454d4a3a01d8
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 08/06/2019
+ms.openlocfilehash: 0b0a6bec7916c056c187ed9e588dd3ac8fea8d84
+ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568630"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69876401"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL データベースの管理およびスケーリング
 
@@ -155,8 +155,14 @@ Single Database のコンピューティング サイズを使用した場合と
 
 Azure Portal でエラスティック プールを作成できる方法には次の 2 つがあります。
 
-1. エラスティック プールは、**Marketplace** で "**SQL エラスティック プール**" を検索するか、[SQL エラスティック プール] 参照ブレードの **[+追加]** をクリックする方法で作成できます。 このプールのプロビジョニング ワークフローでは、新しいサーバーまたは既存のサーバーを指定できます。
-2. または、既存の SQL Server に移動して **[プールの作成]** をクリックし、サーバーに直接プールを作成することで、エラスティック プールを作成できます。 ここでの唯一の違いは、プールのプロビジョニング ワークフローの最中にサーバーを指定する手順をスキップすることです。
+1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 [Azure SQL] が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「*Azure SQL*」と入力します。
+2. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[データベース]** タイルで **[詳細の表示]** を選択して、さまざまなエラスティック プールに関する追加情報を表示できます。
+3. **[データベース]** タイルで、 **[リソースの種類]** ドロップダウンから **[エラスティック プール]** を選択した後、 **[作成]** を選択します。
+
+   ![エラスティック プールの作成](./media/sql-database-elastic-pool/create-elastic-pool.png)
+
+
+1. または、既存の Azure SQL Server に移動し、 **[+ 新しいプール]** をクリックすることで、サーバー内にエラスティック プールを直接作成できます。
 
 > [!NOTE]
 > サーバーに複数のプールを作成することはできますが、同じプールに異なるサーバーからデータベースを追加することはできません。
@@ -210,9 +216,9 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
   Umbraco は、Azure SQL Database とエラスティック プールを使用して、クラウド上の数千のテナント向けに迅速にサービスをプロビジョニングしてスケーリングしています。
 
-- [Daxko/CSI](https://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+- [Daxko/CSI](https://customers.microsoft.com/story/726277-csi-daxko-partner-professional-service-azure)    
 
-  Daxko/CSI は、Azure SQL Database とエラスティック プールを使用して、開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化しています。
+   Daxko/CSI は、Azure SQL Database とエラスティック プールを使用して、開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化しています。   
 
 ## <a name="next-steps"></a>次の手順
 

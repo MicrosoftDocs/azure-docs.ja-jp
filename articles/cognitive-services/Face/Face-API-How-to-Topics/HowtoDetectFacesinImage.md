@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 36cd9b560bd149fd837db09cba33ce6bb2199a20
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 07089def3290d6d64919ad2551de7584646cc681
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827726"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70306627"
 ---
 # <a name="get-face-detection-data"></a>顔検出データの取得
 
@@ -29,7 +29,7 @@ ms.locfileid: "68827726"
 
 ## <a name="setup"></a>セットアップ
 
-このガイドでは、Face サブスクリプション キーとエンドポイント URL を使用して、`faceClient` という名前の [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) オブジェクトを既に作成していることを前提としています。 ここから、[DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) (このガイドで使用) または [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) のいずれかを呼び出すことによって、顔検出機能を使用することができます。 この機能を設定する方法については、[顔検出のクイックスタート (C# 用)](../quickstarts/csharp-detect-sdk.md) をご覧ください。
+このガイドでは、Face サブスクリプション キーとエンドポイント URL を使用して、`faceClient` という名前の [FaceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceclient?view=azure-dotnet) オブジェクトを既に作成していることを前提としています。 ここから、[DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) (このガイドで使用) または [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) のいずれかを呼び出すことによって、顔検出機能を使用することができます。 この機能を設定する方法については、クイックスタートのいずれかに従ってください。
 
 このガイドでは、Detect 呼び出しの仕様、たとえば、渡すことができる引数や返されたデータで実行できることを中心に説明を進めます。 必要な機能だけを照会することをお勧めします。 操作が増えると、完了までの時間が長くなります。
 

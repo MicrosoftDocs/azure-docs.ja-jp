@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cc0d6b07e1e61baa28ceb8e7198ef15f0f831fb7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bccaf45cf617bd31a584b6c73f3dd08877bc8587
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078670"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266071"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Azure 仮想マシンの SAP HANA の高可用性
 
@@ -58,10 +58,11 @@ Azure での VM デプロイについて理解することも必要ですが、A
 
 Azure では、ネットワーク、ストレージ、VM などのコンポーネントごとに異なる可用性 SLA を備えています。 すべての SLA がドキュメントに記載されています。 詳細については、[Microsoft Azure サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)に関するページをご覧ください。 
 
-「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/)」では、2 つの異なる構成に対する、次の 2 つの異なる SLA について説明しています。
+「[Virtual Machines の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/)」では、3 つの異なる構成に対する、次の 3 つの異なる SLA について説明しています。
 
-- OS ディスクとすべてのデータ ディスクに対して [Azure Premium SSD](../../windows/disks-types.md) を使用する単一の VM。 このオプションは、月次で 99.9% の稼働時間を提供します。
+- OS ディスクとすべてのデータ ディスクに対して [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) を使用する単一の VM。 このオプションは、月次で 99.9% の稼働時間を提供します。
 - [Azure 可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)で編成されている複数 (2 台以上) の VM。 このオプションは、月次で 99.95% の稼働時間を提供します。
+- [可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview)で編成されている複数 (2 台以上) の VM。 このオプションは、月次で 99.99% の稼働時間を提供します。
 
 Azure コンポーネントで提供可能な SLA に対する可用性の要件を評価してください。 その後、SAP HANA のシナリオを選択して、必要な可用性レベルを実現してください。
 

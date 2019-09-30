@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 8d8b6fffe197d4180b091518dcd1615d0e0b9d19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 65cc2d9ac2b96822f2c1b740f3180ba1d9eaf98c
+ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65412846"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70390000"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Azure Lab Services で共有イメージ ギャラリーを使用する
 この記事では、教師およびラボ管理者が、他のユーザーが再利用できるようテンプレート仮想マシン イメージを保存する方法を示します。 これらのイメージは、Azure [共有イメージ ギャラリー](../../virtual-machines/windows/shared-image-galleries.md)に保存されます。 最初の手順として、ラボ管理者は、ラボ アカウントに既存の共有イメージ ギャラリーをアタッチします。 共有イメージ ギャラリーがアタッチされたら、ラボ アカウントで作成されたラボは、共有イメージ ギャラリーにイメージを保存できます。 その他の教師は、共有イメージ ギャラリーからこのイメージを選択して、そのクラスのテンプレートを作成できます。 
@@ -29,10 +29,22 @@ ms.locfileid: "65412846"
 
 
 ## <a name="save-an-image-to-the-shared-image-gallery"></a>共有イメージ ギャラリーに既存のイメージを保存する
-共有イメージ ギャラリーがアタッチされたら、教師は、他の教員が再利用できるよう共有イメージ ギャラリーにテンプレート イメージを保存またはアップロードできます。 共有イメージ ギャラリーにイメージをアップロードする手順については、[共有イメージ ギャラリーの概要](../../virtual-machines/windows/shared-images.md)に関するページを参照してください。 
+共有イメージ ギャラリーがアタッチされたら、ラボ アカウントの管理者または教師は、他の教師が再利用できるよう共有イメージ ギャラリーにイメージを保存できます。 
 
-> [!NOTE]
-> 現在、クラスルーム ラボのユーザー インターフェイス (UI) には、ラボ イメージを共有イメージ ギャラリーに保存する機能がありません。 
+1. ラボのホーム ページで、 **[テンプレート]** セクションのタイル上の **[Save image]\(イメージの保存\)** を選択します。
+
+    ![[Save image]\(イメージの保存\) ボタン](../media/how-to-use-shared-image-gallery/save-image-button.png)
+2.  **[Save virtual machine image]\(仮想マシン イメージの保存\)** ウィンドウで、イメージの名前を入力し、 **[保存]** を選択します。 
+
+    ![[Save virtual machine image]\(仮想マシン イメージの保存\) ウィンドウ](../media/how-to-use-shared-image-gallery/save-virtual-machine-image.png)
+3. ラボ タイルで状態をチェックします。 
+
+    ![イメージの保存操作の状態](../media/how-to-use-shared-image-gallery/save-image-status.png)
+4. 操作が成功したことを確認します。
+
+    ![イメージの保存操作が成功](../media/how-to-use-shared-image-gallery/save-image-successful.png)
+
+ラボのコンテキスト外で共有イメージ ギャラリーにイメージをアップロードすることもできます。 詳細については、[共有イメージ ギャラリーの概要](../../virtual-machines/windows/shared-images.md)に関するページを参照してください。 
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>共有イメージ ギャラリーのイメージを使用する
 教師や教授は、新しいラボの作成時に、テンプレートの共有イメージ ギャラリーにあるカスタム イメージを選択できます。

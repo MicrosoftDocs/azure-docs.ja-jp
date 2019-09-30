@@ -124,13 +124,13 @@
     - name: アプリの計画
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
-    - name: アプリの作成
+    - name: 作成キーとランタイム キー
+      displayName: 'shared, transfer, ownership, author, access, import'
+      href: luis-concept-keys.md
+    - name: アプリのモデルの作成
       items:
         - name: 作成サイクル
           href: luis-concept-app-iteration.md
-        - name: コラボレーション
-          displayName: 'shared, transfer, ownership, author, access, import'
-          href: luis-concept-collaborator.md
         - name: バージョン管理
           href: luis-concept-version.md
           displayName: import
@@ -141,10 +141,10 @@
         - name: エンティティ
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: エンティティのロール
+          href: luis-concept-roles.md
         - name: 発話
           href: luis-concept-utterance.md
-        - name: ロール
-          href: luis-concept-roles.md
         - name: 事前構築済みのモデル
           href: luis-concept-prebuilt-model.md
     - name: アプリのパフォーマンス向上
@@ -180,13 +180,6 @@
         - name: 設計戦略
           href: luis-concept-enterprise.md
           displayName: import
-    - name: セキュリティ
-      items:
-        - name: アプリのアクセス
-          displayName: 'public, public app, AAD, compliance, ISO, certification, trust center, import'
-          href: luis-concept-security.md
-        - name: オーサリング キーとエンドポイント キー
-          href: luis-concept-keys.md
 - name: ハウツー ガイド
   items:
     - name: 新しいアプリの開始
@@ -248,18 +241,22 @@
       href: luis-how-to-publish-app.md
     - name: アプリの管理
       items:
-        - name: LUIS アプリでのサブスクリプション キーの使用
-          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription'
+        - name: 作成キーとランタイム キー
+          displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
-        - name: バージョンの管理
-          href: luis-how-to-manage-versions.md
-          diplayName: 'import, export, container'
-        - name: 作成者とコラボレーターの管理
+        - name: 作成キーに移行する
+          items:
+            - name: 概要
+              href: luis-migration-authoring.md
+            - name: 移行方法
+              href: luis-migration-authoring-steps.md
+        - name: 作成者とコラボレーター
           displayName: 'access, transfer, AAD, tenant, Azure AD, consent, RBAC, admin, role-based access control, ownership, import'
           href: luis-how-to-collaborate.md
-        - name: オーサリング キーの管理
-          href: luis-how-to-account-settings.md
-        - name: Traffic Manager を使用してキーをまたぐ形でエンドポイント クォータを拡張する
+        - name: バージョンの利用
+          href: luis-how-to-manage-versions.md
+          diplayName: 'import, export, container'
+        - name: Traffic Manager の利用
           href: luis-traffic-manager.md
     - name: API の移行
       items:
@@ -340,6 +337,9 @@
           href: reference-entity-regular-expression.md
         - name: シンプル エンティティ
           href: reference-entity-simple.md
+    - name: 開発者リソース
+      href: developer-reference-resource.md
+      displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
     - name: Azure CLI
       href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
     - name: Azure RM PowerShell
@@ -447,3 +447,5 @@
       href: 'https://blog.botframework.com/category/luis/'
     - name: ナレッジ ベース
       href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'
+- name: LUIS ポータル
+  href: 'https://www.luis.ai'

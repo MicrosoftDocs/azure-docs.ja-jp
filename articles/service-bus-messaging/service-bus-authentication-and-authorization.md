@@ -4,7 +4,6 @@ description: Shared Access Signature (SAS) 認証を使用して、アプリケ�
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: 18bad0ed-1cee-4a5c-a377-facc4785c8c9
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 08/22/2019
 ms.author: aschhab
-ms.openlocfilehash: 7c5a45504b7c44d97ff2250663ef9c47ef6e3595
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7234e33c04e742c77630f8d87481c7831fb00bf2
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60714508"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70013242"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
 
@@ -30,8 +29,19 @@ SAS トークンは、Service Bus クライアントから直接生成するか�
 > [!IMPORTANT]
 > Azure Active Directory Access Control (Access Control Service または ACS とも呼ばれます) を Service Bus と一緒に使用している場合、この方法のサポートは制限されるようになったため、SAS を使用するようにアプリケーションを移行することをお勧めします。 詳細については、[こちらのブログ記事と](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)と[こちらの記事](service-bus-migrate-acs-sas.md)を参照してください。
 
-## <a name="shared-access-signature-authentication"></a>Shared Access Signature 認証
+## <a name="azure-active-directory"></a>Azure Active Directory
+Azure Active Directory (Azure AD) の Service Bus リソースの統合により、ロールベースのアクセス制御 (RBAC) を使用して、クライアントのリソースへのアクセスをきめ細かく制御することができます。 ロールベースのアクセス制御 (RBAC) を使用して、セキュリティ プリンシパル (ユーザー、グループ、またはアプリケーションのサービス プリンシパルである可能性があります) にアクセス許可を付与できます。 セキュリティ プリンシパルは、Azure AD によって認証されて、OAuth 2.0 トークンを返します。 トークンは、Service Bus リソース (キュー、トピックなど) へのアクセス要求を承認するために使用できます。
 
+Azure AD を使用した認証の詳細については、次の記事を参照してください。
+
+- [マネージド ID による認証](service-bus-managed-service-identity.md)
+- [アプリケーションからの認証](authenticate-application.md)
+
+> [!IMPORTANT]
+> Azure AD によって返された OAuth 2.0 トークンを使用するユーザーまたはアプリケーションの承認では、Shared Access Signatures (SAS) よりも優れたセキュリティが提供され、使いやすくなります。 Azure AD を使用すれば、コードにトークンを格納する必要がなく、潜在的なセキュリティ脆弱性のリスクはありません。 可能な場合は、Azure Service Bus アプリケーションで Azure AD を使用することをお勧めします。 
+
+
+## <a name="shared-access-signature"></a>共有アクセス署名
 [SAS 認証](service-bus-sas.md)により、特定の権限で Service Bus リソースにアクセスできるようになります。 Service Bus の SAS 認証には、Service Bus リソースに対する関連した権限を使用した暗号化キーの構成が伴います。 これにより、クライアントは SAS トークンを提示してリソースへのアクセス権を取得できます。このトークンは、アクセスされるリソース URI と、構成されたキーで署名された有効期限から成ります。
 
 SAS のキーは Service Bus 名前空間で構成できます。 このキーは、その名前空間内のすべてのメッセージング エンティティに適用されます。 Service Bus のキューとトピックでキーを構成することもできます。 SAS は [Azure リレー](../service-bus-relay/relay-authentication-and-authorization.md)でもサポートされます。

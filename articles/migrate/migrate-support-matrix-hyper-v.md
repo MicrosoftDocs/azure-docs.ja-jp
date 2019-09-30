@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 00f222472a9b41c7f95ae90bdca57f13175b2b5d
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 0d0329be0b7f864edbfc3c2aabc08f1742359670
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952137"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066772"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V の評価と移行のサポート マトリックス
 
@@ -27,9 +27,9 @@ ms.locfileid: "68952137"
 **Deployment** | **詳細***
 --- | ---
 **オンプレミスの Hyper-V VM を評価する** | 最初の評価を[設定](tutorial-prepare-hyper-v.md)します。<br/><br/> 大規模な評価を[実行](scale-hyper-v-assessment.md)します。
-**Hyper-V VM を Azure に移行する** | Azure への移行を[試します](tutorial-migrate-hyper-v.md)。 
+**Hyper-V VM を Azure に移行する** | Azure への移行を[試します](tutorial-migrate-hyper-v.md)。
 
-Azure Migrate のサーバー移行では、System Center Virtual Machine Manager (VMM) を使って管理している Hyper-V サーバーの移行をサポートしていません。 
+Azure Migrate のサーバー移行では、System Center Virtual Machine Manager (VMM) を使って管理している Hyper-V サーバーの移行をサポートしていません。
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate プロジェクト
 
@@ -44,10 +44,13 @@ Hyper-V VM | 1 つのプロジェクトで最大 35,000 の Hyper-V VM を評価
   Azure Government | 米国政府バージニア州
   アジア太平洋 | 東アジアまたは東南アジア
   オーストラリア | オーストラリア東部またはオーストラリア南東部
+  ブラジル | ブラジル南部
   カナダ | カナダ中部またはカナダ東部
   ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+  フランス | フランス中部
   インド | インド中部またはインド南部
   日本 |  東日本または西日本
+  韓国 | 韓国中部または韓国南部
   イギリス | 英国南部または英国西部
   米国 | 米国中部または米国西部 2
 
@@ -82,8 +85,13 @@ Azure Migrate では評価のために軽量アプライアンスを実行して
 
 | **サポート**                | **詳細**               
 | :-------------------       | :------------------- |
-| **Azure Migrate プロジェクト**  |  単一のプロジェクトにアプライアンスを関連付けることができます。<br/> 単一のアプライアンスで最大 5,000 個の Hyper-V VM を検出できます。
-| **Hyper-V**    |  アプライアンスを Hyper-V VM としてデプロイします。<br/> 提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/> VM ホストで Windows Server 2012 R2 以降が実行されている必要があります。<br/> アプライアンス VM に 16 GB の RAM、8 つの vCPU、および 1 つの外部スイッチを割り当てるのに十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
+| **アプライアンスのデプロイ**   |  アプライアンスを Hyper-V VM としてデプロイします。<br/> Azure Migrate によって提供されるアプライアンス VM は、Hyper-V VM バージョン 5.0 です。<br/> Hyper-V ホストで Windows Server 2012 R2 以降が実行されている必要があります。<br/> ホストには、アプライアンス VM に 16 GB の RAM、8 つの vCPU、約 80 GB のストレージ スペース、1 つの外部スイッチを割り当てることができる十分な領域が必要です。<br/> アプライアンスには、静的または動的 IP アドレス、およびインターネット アクセスが必要です。
+| **Azure Migrate プロジェクト**  |  単一のプロジェクトにアプライアンスを関連付けることができます。<br/> 任意の数のアプライアンスを 1 つのプロジェクトに関連付けることができます。<br/> プロジェクト内で最大 35,000 個の VM を評価できます。
+| **Hyper-V ホスト**          | アプライアンスは、最大 300 個の Hyper-V ホストに接続できます。
+| **検出**              | 1 つのアプライアンスで最大 5,000 個の VM を検出できます。
+| **評価グループ**       | 1 つのグループに最大 35,000 個のマシンを追加できます。
+| **評価**             | 1 回の評価で最大 35,000 個の VM を評価できます。
+
 
 
 ## <a name="assessment-appliance-url-access"></a>評価 - アプライアンスの URL アクセス
@@ -116,6 +124,9 @@ https://download.microsoft.com/download/* | Microsoft ダウンロード サイ�
 --- | ---
 **アプライアンス** | TCP ポート 3389 で、アプライアンスへのリモート デスクトップ接続を許可するための受信接続。<br/> ポート 44368 で、次の URL を使用してアプライアンス管理アプリにリモートでアクセスするためのインバウンド接続: ``` https://<appliance-ip-or-name>:44368 ```<br/> ポート 443、5671、5672 で検出とパフォーマンスのメタデータを Azure Migrate に送信するためのアウトバウンド接続。
 **Hyper-V ホスト/クラスター** | Common Information Model (CIM) セッションを使用し、WinRM ポート 5985 (HTTP) と 5986 (HTTPS) で、Hyper-V VM の構成とパフォーマンスのメタデータをプルするための受信接続。
+
+## <a name="migration-limitations"></a>移行 - 制限
+レプリケーションでは、一度に最大 10 個の VM を選択できます。 より多くのマシンを移行する場合は、10 個単位のグループでレプリケートします。
 
 ## <a name="migration-hyper-v-host-requirements"></a>移行 - Hyper-V ホストの要件
 

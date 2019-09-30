@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ab7231c214060d17927e2509bee1687e2c9c87a3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 82a796a3252a4de6eacabcad45c61c864e963fe0
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66507577"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066165"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C:カスタム プロファイル編集ポリシーでカスタム属性を使用する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-この記事では、Azure Active Directory (Azure AD) B2C ディレクトリにカスタム属性を作成します。 この新しい属性は、プロファイル編集ユーザー体験でのカスタム要求として使用します。
+この記事では、Azure Active Directory B2C (Azure AD B2C) ディレクトリにカスタム属性を作成します。 この新しい属性は、プロファイル編集ユーザー体験でのカスタム要求として使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +43,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 拡張プロパティは、テナント内の登録されたアプリケーションのコンテキストにのみ存在します。 そのアプリケーションのオブジェクト ID は、それを使用する **TechnicalProfile** に含まれている必要があります。
 
 >[!NOTE]
->Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という名前の Web アプリが含まれています。 このアプリケーションは、主に、Azure Portal で作成されたカスタム要求用の B2C 組み込みポリシーによって使用されます。 このアプリケーションを使用して拡張プロパティを B2C カスタム ポリシーに登録することは、上級ユーザーのみにお勧めします。  
+>Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という名前の Web アプリが含まれています。 このアプリケーションは、主に、Azure Portal で作成されたカスタム要求用の B2C 組み込みポリシーによって使用されます。 このアプリケーションを使用して拡張プロパティを B2C カスタム ポリシーに登録することは、上級ユーザーのみにお勧めします。
 手順については、この記事の「**次のステップ**」のセクションをご覧ください。
 
 ## <a name="create-a-new-application-to-store-the-extension-properties"></a>拡張プロパティを格納するための新しいアプリケーションを作成する
@@ -69,7 +69,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 「[Azure Active Directory B2C: カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」の手順に従った場合は、**TrustFrameworkBase.xml**、**TrustFrameworkExtensions.xml**、**SignUpOrSignin.xml**、**ProfileEdit.xml**、**PasswordReset.xml** という名前の[サンプル ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)をダウンロードして変更しました。 この手順では、これらのファイルにさらに変更を加えます。
 
-* 次の例のように、**TrustFrameworkBase.xml** ファイルを開いて `Metadata` セクションを追加します。 `ApplicationObjectId` の値には以前に記録したオブジェクト ID、`ClientId` の値には以前に記録したアプリケーション ID を挿入します。 
+* 次の例のように、**TrustFrameworkBase.xml** ファイルを開いて `Metadata` セクションを追加します。 `ApplicationObjectId` の値には以前に記録したオブジェクト ID、`ClientId` の値には以前に記録したアプリケーション ID を挿入します。
 
     ```xml
     <ClaimsProviders>
@@ -103,7 +103,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 1. **ProfileEdit.xml** ファイルを開きます。
 2. カスタム要求 `loyaltyId` を追加します。 カスタム要求は、`<RelyingParty>` 要素に含めることで、アプリケーション用のトークンに含まれます。
-    
+
     ```xml
     <RelyingParty>
       <DefaultUserJourney ReferenceId="ProfileEdit" />
@@ -268,10 +268,10 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 2. 組み込みポリシーとカスタム ポリシー間で同じ拡張属性を使用します。 ポータルのエクスペリエンスを使用して拡張属性 (カスタム属性とも呼ばれます) を追加すると、これらの属性が、すべての B2C テナントに存在する **b2c-extensions-app** を使用して登録されます。 カスタム ポリシーで拡張属性を使用するには、次の手順を行います。
 
-   a. portal.azure.com の B2C テナント内で、 **[Azure Active Directory]** に移動し、 **[アプリの登録]** を選択します。  
-   b. 自分の **b2c-extensions-app** を検索して選択します。  
-   c. **Essentials** で、**アプリケーション ID** と**オブジェクト ID** を入力します。  
-   d. これらを、以下のように **AAD-Common** TechnicalProfile メタデータに含めます。  
+   a. portal.azure.com の B2C テナント内で、 **[Azure Active Directory]** に移動し、 **[アプリの登録]** を選択します。
+   b. 自分の **b2c-extensions-app** を検索して選択します。
+   c. **Essentials** で、**アプリケーション ID** と**オブジェクト ID** を入力します。
+   d. これらを、以下のように **AAD-Common** TechnicalProfile メタデータに含めます。
 
    ```xml
       <ClaimsProviders>
@@ -299,6 +299,6 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 拡張プロパティの詳細については、記事「[ディレクトリ スキーマ拡張機能 | Graph API の概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
 
 > [!NOTE]
-> * **TechnicalProfile** は、エンドポイントの名前、メタデータ、およびプロトコルを定義する要素の種類 (または関数) です。 **TechnicalProfile** には、Identity Experience Framework によって実行される要求の交換が詳細に示されています。 この関数がオーケストレーションの手順または別の **TechnicalProfile** から呼び出されると、**InputClaims** と **OutputClaims** が呼び出し元によってパラメーターとして指定されます。  
-> * Graph API の拡張属性には、`extension_ApplicationObjectID_attributename` という規則を使って名前が付けられます。  
+> * **TechnicalProfile** は、エンドポイントの名前、メタデータ、およびプロトコルを定義する要素の種類 (または関数) です。 **TechnicalProfile** には、Identity Experience Framework によって実行される要求の交換が詳細に示されています。 この関数がオーケストレーションの手順または別の **TechnicalProfile** から呼び出されると、**InputClaims** と **OutputClaims** が呼び出し元によってパラメーターとして指定されます。
+> * Graph API の拡張属性には、`extension_ApplicationObjectID_attributename` という規則を使って名前が付けられます。
 > * カスタム ポリシーでは、拡張属性を **extension_attributename** として参照します。 この参照では、XML での **ApplicationObjectId** が省略されます。

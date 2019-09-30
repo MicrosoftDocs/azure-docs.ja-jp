@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/19/2019
+ms.date: 08/26/2019
 ms.author: juliako
-ms.openlocfilehash: a951ebd46335ad4639b8499283ddd30f13edd64e
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c81c2de180a2c5734f3896d4b6843f2ccccdf45f
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605647"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70231198"
 ---
 # <a name="live-events-and-live-outputs"></a>ライブ イベントとライブ出力
 
@@ -35,7 +35,7 @@ Azure Media Services では、Azure クラウドで顧客にライブ イベン�
 
 [ライブ イベント](https://docs.microsoft.com/rest/api/media/liveevents)には、パススルーとライブ エンコードの 2 種類があります。 これらの種類は、[LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype) を使用して作成中に設定されます。
 
-* **LiveEventEncodingType.None** - オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、それ以上処理されずにライブ イベントを通過します。 
+* **LiveEventEncodingType.None** - オンプレミス ライブ エンコーダーは、マルチ ビットレート ストリームを送信します。 取り込まれたストリームは、追加の処理なしでライブ イベントを通過します。 
 * **LiveEventEncodingType.Standard** - オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 投稿フィードの解像度が 720p 以上である場合、**Default720p** プリセットは 6 つの解像度とビットレートのペアのセットをエンコードします。
 * **LiveEventEncodingType.Premium1080p** - オンプレミス ライブ エンコーダーは、ライブ イベントにシングル ビットレート ストリームを送信し、Media Services がマルチ ビットレート ストリームを作成します。 Default1080p プリセットは、解像度とビットレートのペアの出力セットを指定します。 
 
@@ -155,18 +155,9 @@ Media Services によるライブ エンコードを使用する場合は、オ�
 
 ストリームがライブ イベントに流れ始めると、[資産](https://docs.microsoft.com/rest/api/media/assets)、[ライブ出力](https://docs.microsoft.com/rest/api/media/liveoutputs)、[ストリーミング ロケーター](https://docs.microsoft.com/rest/api/media/streaminglocators)を作成することにより、ストリーミング イベントを開始できます。 ライブ出力により、ストリームがアーカイブされ、[ストリーミング エンドポイント](https://docs.microsoft.com/rest/api/media/streamingendpoints)を介して視聴者がストリームを使用できるようになります。  
 
-> [!NOTE]
-> ライブ出力は作成すると開始され、削除されると停止します。 ライブ出力を削除しても、基になる資産と資産のコンテンツは削除されません。 
+ライブ出力の詳細については、「[クラウド DVRの使用](live-event-cloud-dvr.md)」を参照してください。
 
-**ライブ イベント**とその**ライブ出力**との関係は、従来のテレビの放送と似ており、チャンネル (ライブ イベント) はビデオの連続したストリームを表し、録画 (ライブ出力) は特定の時間セグメント (たとえば、午後 6 時 30 分から午後 7 時 00 分までの夕方のニュース) を対象としています。 テレビはデジタル ビデオ レコーダー (DVR) を使用して録画することができます。それと同様のライブ イベントの機能は **archiveWindowLength** プロパティを介して管理されます。 これは、ISO-8601 形式で表した期間 (PTHH:MM:SS など) であり、DVR の容量を指定し、最短で 3 分から最長で 25 時間まで設定できます。
-
-ライブ出力オブジェクトは、ライブ ストリームをキャッチして Media Services アカウントの資産に記録するテープ レコーダーのようなものです。 記録されたコンテンツは、アカウントに接続されている Azure Storage アカウントに保持され、資産リソースによって定義されたコンテナーに保持されます。 また、ライブ出力を使用すると、アーカイブの記録に残すストリームの量 (たとえば、クラウド DVR の容量) や視聴者がライブ ストリームの視聴を開始することができるかどうかなど、送信ライブ ストリームのいくつかのプロパティを制御することもできます。 ディスク上のアーカイブは、ライブ出力の archiveWindowLength プロパティで指定されているコンテンツ量のみを保持する循環アーカイブ "ウィンドウ" です。 このウィンドウの範囲外のコンテンツは、ストレージ コンテナーから自動的に破棄され、復旧できません。 1 つのライブ イベントに、アーカイブの長さと設定の異なる複数のライブ出力 (最大 3 つ) を作成できます。  
-
-**ストリーミング ロケーター**を使用してライブ出力の**資産**を発行した場合、ライブ イベント (DVR ウィンドウの長さまで) は、ストリーミング ロケーターの有効期限まで、または削除するまで、どちらか早い方のタイミングまで引き続き表示できます。
-
-詳細については、「[クラウド DVR の使用](live-event-cloud-dvr.md)」を参照してください。
-
-## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの提供、最新情報の入手
+## <a name="ask-questions-give-feedback-get-updates"></a>質問、フィードバックの送信、最新情報の入手
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
 

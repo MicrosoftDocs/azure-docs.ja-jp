@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 19654a4902ae64e5de63ffc93a8d143cc518e254
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68697746"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845350"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>例:Text Analytics でセンチメントを検出する
 
@@ -80,7 +80,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 
 + POST 要求を作成します。 この要求の API ドキュメントを確認するには、[感情分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) に関するページを参照してください。
 
-+ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、感情分析用の HTTP エンドポイントを設定します。 これには、`/sentiment` リソースが含まれている必要があります: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`。
++ Azure 上の Text Analytics リソースまたはインスタンス化された [Text Analytics コンテナー](text-analytics-how-to-install-containers.md)を使用して、感情分析用の HTTP エンドポイントを設定します。 URL に `/text/analytics/v2.1/sentiment` を含める必要があります (例: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/sentiment`)。
 
 + Text Analytics 操作用の[アクセス キー](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource)が含まれるように要求ヘッダーを設定します。
 
@@ -139,8 +139,8 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 > [!NOTE]
 > * 感情分析 v3 の要求の形式と[データ制限](../overview.md#data-limits)は、以前のバージョンと同じです。
 > * 現時点では、感情分析 v3 は、次のようになっています。
->    * 現在、英語のみがサポートされています。
->    * `Central US`、`Central Canada`、および `East Asia` の各リージョンで使用できます。
+>    * サポートされる言語は現在、英語、簡易字中国語、日本語です。
+>    * `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`、`West US 2` の各リージョンで利用できます。
 
 |機能 |説明  |
 |---------|---------|

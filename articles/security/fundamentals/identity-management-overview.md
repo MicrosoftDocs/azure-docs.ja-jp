@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/19/2018
 ms.author: terrylan
 Customer intent: As an IT Pro or decision maker I am trying to learn about identity management capabilities in Azure
-ms.openlocfilehash: 1081fa8c9c7cc64418515aabbb755ecf056196ca
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 021767aa20dc35459c68fead674ff00510af2538
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68826294"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129361"
 ---
 # <a name="azure-identity-management-security-overview"></a>Azure ID 管理のセキュリティの概要
 
@@ -160,7 +160,7 @@ Azure AD Privileged Identity Management を使用することで、次のこと�
 
 ## <a name="identity-protection"></a>Identity Protection
 
-Azure AD Identity Protection は、リスク イベントや組織の ID に影響する潜在的な脆弱性に関する統合ビューを提供するセキュリティ サービスです。 Identity Protection は、Azure AD 異常アクティビティ レポートで使用可能な既存の Azure AD の異常検出機能を活用します。 Identity Protection には、リアルタイムで異常を検出できる新しいリスク イベントの種類も導入されています。
+Azure AD Identity Protection は、リスク検出や組織の ID に影響する潜在的な脆弱性に関する統合ビューを提供するセキュリティ サービスです。 Identity Protection は、Azure AD 異常アクティビティ レポートで使用可能な既存の Azure AD の異常検出機能を活用します。 Identity Protection には、リアルタイムで異常を検出できる新しいリスク検出の種類も導入されています。
 
 詳細情報:
 

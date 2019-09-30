@@ -3,22 +3,20 @@ title: Azure Data Factory でのデータセットの作成 | Microsoft Docs
 description: Azure Data Factory でデータセットを作成する方法について説明し、offset、anchorDateTime などのプロパティを使用する例を紹介します。
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
-manager: craigg
-ms.assetid: 0614cd24-2ff0-49d3-9301-06052fd4f92a
+author: djpmsft
+ms.author: daperlov
+manager: jroth
+ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: shlo
-robots: noindex
-ms.openlocfilehash: f88d83a851ad878ac9ee9b0195816d2ca35e4c13
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: af5de469b4c4ca57979b80e691e9a5d12b573bec
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67839373"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140134"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -79,7 +77,7 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 
 次の表では、上記の JSON のプロパティについて説明します。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | 名前 |データセットの名前。 名前付け規則については、「 [Azure Data Factory - 名前付け規則](data-factory-naming-rules.md) 」を参照してください。 |はい |NA |
 | type |データセットの型。 Data Factory でサポートされている型のいずれかを指定します (たとえば、AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、「[データセットの型](#Type)」セクションを参照してください。 |はい |NA |
@@ -233,7 +231,7 @@ structure の各列には次のプロパティが含まれます。
 
 次の表では、availability セクションで使用できるプロパティについて説明します。
 
-| プロパティ | 説明 | 必須 | 既定値 |
+| プロパティ | 説明 | 必須 | Default |
 | --- | --- | --- | --- |
 | frequency |データセット スライス生成の時間単位を指定します。<br/><br/><b>サポートされる frequency</b>: Minute、Hour、Day、Week、Month |はい |NA |
 | interval |頻度の乗数を指定します。<br/><br/>"frequency x interval" で、スライスが生成される頻度が決まります。 たとえば、データセットを時間単位でスライスする必要がある場合は、<b>frequency</b> を <b>Hour</b> に設定し、<b>interval</b> を <b>1</b> に設定します。<br/><br/>注: **frequency** に **Minute** を指定する場合は、interval を 15 以上に設定してください。 |はい |NA |
@@ -280,7 +278,7 @@ structure の各列には次のプロパティが含まれます。
 データセット定義の **policy** セクションでは、データセット スライスで満たさなければならない基準または条件を定義します。
 
 ### <a name="validation-policies"></a>検証ポリシー
-| ポリシー名 | 説明 | 適用先 | 必須 | 既定値 |
+| ポリシー名 | 説明 | 適用先 | 必須 | Default |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |**Azure Blob Storage** のデータが最小サイズ要件 (MB 単位) を満たしていることを検証します。 |Azure BLOB ストレージ |いいえ |NA |
 | minimumRows |**Azure SQL データベース**または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL データベース</li><li>Azure テーブル</li></ul> |いいえ |NA |

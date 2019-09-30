@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 4b4f3877b56752756050de0af226571ac2a93293
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64030cac73b6fbd750b2ed681d85642cc6ad1146
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60750823"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308876"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Python Machine Learning スクリプトの実行
 
@@ -25,7 +25,7 @@ Python は、多くのデータ サイエンティストにとって貴重なツ
 
 ## <a name="using-the-execute-python-script-module"></a>Python スクリプトの実行モジュールの使用
 
-Studio での Python の主要なインターフェイスは、[Python スクリプトの実行][execute-python-script]モジュールを経由します。 これは、[R スクリプトの実行][execute-r-script]モジュールと同様に、最大 3 つの入力を受け取り、最大 2 つの出力を生成します。 Python コードは、`azureml_main` という特別に指定されたエントリポイント関数によってパラメーター ボックスに入力されます。
+Studio での Python に対する主要なインターフェイスは、[Python スクリプトの実行][execute-python-script]モジュールを経由します。 [R スクリプトの実行][execute-r-script]モジュールと同様に、最大 3 つの入力が受け付けられて、最大 2 つの出力が生成されます。 Python コードは、`azureml_main` という特別に指定されたエントリポイント関数によってパラメーター ボックスに入力されます。
 
 ![Python スクリプトの実行モジュール](./media/execute-python-scripts/execute-machine-learning-python-scripts-module.png)
 
@@ -67,7 +67,7 @@ Studio データセットは Panda DataFrames と同じではありません。 
 
 ## <a id="import-modules"></a>既存の Python スクリプト モジュールをインポートする
 
-Python の実行に使用されるバックエンドは、広く使用されている科学的な Python ディストリビューションである [Anaconda](https://store.continuum.io/cshop/anaconda/) に基づいています。 データ中心のワークロードで最もよく使用される Python パッケージが 200 個近く付属しています。 Studio は、外部ライブラリのインストールと管理のための Pip や Conda などのパッケージ管理システムの使用を、現時点ではサポートしていません。  追加のライブラリを組み込む必要がある場合は、ガイドとして次のシナリオを使用してください。
+Python の実行に使用されるバックエンドは、広く使用されている科学的な Python ディストリビューションである [Anaconda](https://www.anaconda.com/distribution/) に基づいています。 データ中心のワークロードで最もよく使用される Python パッケージが 200 個近く付属しています。 Studio は、外部ライブラリのインストールと管理のための Pip や Conda などのパッケージ管理システムの使用を、現時点ではサポートしていません。  追加のライブラリを組み込む必要がある場合は、ガイドとして次のシナリオを使用してください。
 
 一般的な使用例は、既存の Python スクリプトを Studio の実験に組み込むことです。 [Python スクリプトの実行][execute-python-script]モジュールは、3 番目の入力ポートでの Python モジュールを含む zip ファイルを受け取ります。 このファイルは実行時に実行フレームワークによって解凍され、その内容が Python インタープリターのライブラリ パスに追加されます。 `azureml_main` エントリ ポイント関数がこれらのモジュールを直接インポートできます。 
 
@@ -124,7 +124,7 @@ block_blob_service = BlockBlobService(account_name='account_name', account_key='
 
 ## <a id="visualizations"></a>視覚化の操作
 
-MatplotLib を使用して作成されたプロットは、[Python スクリプトの実行][execute-python-script]によって返すことができます。 ただし、R を使用している場合、プロットは自動的にリダイレクトされません。このため、ユーザーはすべてのプロットを PNG ファイルに明示的に保存する必要があります。
+MatplotLib を使用して作成されたプロットは、[Python スクリプトの実行][execute-python-script]によって返されます。 ただし、R を使用している場合、プロットは自動的にリダイレクトされません。このため、ユーザーはすべてのプロットを PNG ファイルに明示的に保存する必要があります。
 
 MatplotLib からイメージを生成するには、次の手順を実行する必要があります。
 
@@ -161,7 +161,7 @@ Studio にインストールされた Anaconda 環境には、NumPy、SciPy、Sc
 
 ## <a name="limitations"></a>制限事項
 
-[Python スクリプトの実行][execute-python-script]モジュールには、現在次のような制限があります。
+[Python スクリプトの実行][execute-python-script]モジュールには、現在、次のような制限があります。
 
 ### <a name="sandboxed-execution"></a>セキュリティで保護された実行
 
@@ -173,7 +173,7 @@ Python モジュールは、現在、Intellisense やデバッグなどの IDE �
 
 ### <a name="single-data-frame-output"></a>1 つのデータ フレームの出力
 
-Python のエントリ ポイントは、1 つのデータ フレームのみを出力として返すことができます。 現時点では、Studio ランタイムに直接戻されたトレーニング済みのモデルなどの任意の Python オブジェクトを返すことはできません。 同じ制限がある [R スクリプトの実行][execute-r-script]と同様に、多くの場合、バイト配列にオブジェクトを変換し、データ フレーム内のその部分を返すことができます。
+Python のエントリ ポイントは、1 つのデータ フレームのみを出力として返すことができます。 現時点では、Studio ランタイムに直接戻されたトレーニング済みのモデルなどの任意の Python オブジェクトを返すことはできません。 同じ制限がある [R スクリプトの実行][execute-r-script]と同様に、多くの場合、バイト配列にオブジェクトを変換され、データ フレーム内のその部分を返されます。
 
 ### <a name="inability-to-customize-python-installation"></a>Python のインストールをカスタマイズできない
 

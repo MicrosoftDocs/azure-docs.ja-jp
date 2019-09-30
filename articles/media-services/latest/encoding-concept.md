@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 06/08/2019
+ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: b0a71e8b3ffff822521a23aafd6764bcce9bd4d4
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e1fc58db8f933ae122801f492fbbafdb905c7dda
+ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303929"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70910402"
 ---
 # <a name="encoding-with-media-services"></a>Media Services でのエンコード
 
@@ -25,12 +25,12 @@ Media Services では、エンコードという用語は、デジタル ビデ�
 
 通常、ビデオは[プログレッシブ ダウンロード](https://en.wikipedia.org/wiki/Progressive_download)または[アダプティブ ビットレート ストリーミング](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)を介してデバイスとアプリケーションに配信されます。 
 
-* プログレッシブ ダウンロードによって配信する場合、Azure Media Services を使用してデジタル メディア ファイル (中間ファイル) を [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) ファイルに変換できます。MP4 には、[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) コーデックでエンコードされているビデオと、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) コーデックでエンコードされているオーディオが含まれています。 この MP4 ファイルは、ご使用のストレージ アカウントの資産に書き込まれます。 Azure Storage API または SDK ([Storage REST API](../../storage/common/storage-rest-api-auth.md)、[JAVA SDK](../../storage/blobs/storage-quickstart-blobs-java-v10.md)、[.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md) など) を使用して、ファイルを直接ダウンロードできます。 ストレージで特定のコンテナー名を使用して出力資産を作成した場合は、その場所を使用してください。 それ以外の場合は、Media Services を使用して、[資産コンテナーの URL を一覧表示](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)できます。 
+* プログレッシブ ダウンロードによって配信する場合、Azure Media Services を使用してデジタル メディア ファイル (中間ファイル) を [MP4](https://en.wikipedia.org/wiki/MPEG-4_Part_14) ファイルに変換できます。MP4 には、[H.264](https://en.wikipedia.org/wiki/H.264/MPEG-4_AVC) コーデックでエンコードされているビデオと、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) コーデックでエンコードされているオーディオが含まれています。 この MP4 ファイルは、ご使用のストレージ アカウントの資産に書き込まれます。 Azure Storage API または SDK ([Storage REST API](../../storage/common/storage-rest-api-auth.md)、[.NET SDK](../../storage/blobs/storage-quickstart-blobs-dotnet.md) など) を使用して、ファイルを直接ダウンロードできます。 ストレージで特定のコンテナー名を使用して出力資産を作成した場合は、その場所を使用してください。 それ以外の場合は、Media Services を使用して、[資産コンテナーの URL を一覧表示](https://docs.microsoft.com/rest/api/media/assets/listcontainersas)できます。 
 * アダプティブ ビットレート ストリーミングによって配信するコンテンツを準備するには、中間ファイルを複数のビット レート (高から低) でエンコードする必要があります。 品質を適切に推移させるために、ビットレートが低くなるにつれて、ビデオの解像度も低下させます。 これにより、解像度とビットレートの表である、いわゆるエンコード ラダーが生成されます ([自動生成されたアダプティブ ビットレート ラダー](autogen-bitrate-ladder.md)に関するページを参照)。 Media Services を使用して中間ファイルを複数のビットレートでエンコードすることができます。これを行うと、一連の MP4 ファイルと関連するストリーミング構成ファイルがストレージ アカウントの資産に書き込まれます。 次に、Media Services の[ダイナミック パッケージ](dynamic-packaging-overview.md)機能を使用して、[MPEG DASH](https://en.wikipedia.org/wiki/Dynamic_Adaptive_Streaming_over_HTTP) や [HLS](https://en.wikipedia.org/wiki/HTTP_Live_Streaming) などのストリーミング プロトコルを介して動画を配信します。 そのためには、[ストリーミング ロケーター](streaming-locators-concept.md)を作成し、サポートされているプロトコルに対応するストリーミング URL を構築します。次に、これらは機能に基づいてデバイスやアプリケーションに渡すことができます。
 
 次の図は、ダイナミック パッケージを使用した、オンデマンド エンコードのワークフローを示しています。
 
-![ダイナミック パッケージ](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![ダイナミック パッケージ](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 このトピックでは、Media Services v3 でコンテンツをエンコードする方法について説明します。
 

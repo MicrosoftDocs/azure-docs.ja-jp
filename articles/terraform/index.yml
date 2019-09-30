@@ -1,63 +1,85 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure 上の Terraform のドキュメント
+summary: Terraform を使用して、Azure 上の仮想マシンやその他のインフラストラクチャを確実にプロビジョニングする方法について説明します。
 metadata:
   title: Azure 上の Terraform のドキュメント - チュートリアル、サンプル、リファレンス、リソース
   description: Terraform を使用して、Azure 上の仮想マシンやその他のインフラストラクチャを確実にプロビジョニングする方法について説明します。
-  services: terraform
-  ms.service: azure
-  keywords: 'Terraform, Azure, DevOps, チュートリアル, サンプル, リファレンス'
-  author: tomarchermsft
-  manager: jeconnoc
-  ms.author: tarcher
+  services: azure
+  ms.service: terraform
   ms.topic: landing-page
-  ms.date: 08/31/2018
-abstract:
-  description: Terraform を使用して、Azure 上で確実にインフラストラクチャのバージョン管理と作成を行います。 Microsoft が提供するクイックスタートとチュートリアルを使用して、リソースの作成、Azure Terraform モジュールの使用、インフラストラクチャの管理をコードで行う方法を学びます。
-sections:
-  - title: クイック スタート
-    items:
-      - type: paragraph
-        text: Azure に Linux VM を作成するには、Terraform を構成して使用します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/azure_dev-9.svg'
-            text: Terraform のインストールと構成
-            href: 'https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure'
-          - image:
-              src: 'https://docs.microsoft.com/azure/media/index/VirtualMachine.svg'
-            text: Linux VM の作成
-            href: 'https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm'
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Terraform を使用してコードから Azure コンピューティングとネットワーク インフラストラクチャを作成する方法を確認してください。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-tf-and-aks">AKS を使用して Kubernetes クラスターを作成する</a>
-          - html: <a href="/azure/terraform/terraform-create-k8s-cluster-with-aks-applicationgateway-ingress">AKS を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する</a>
-          - html: <a href="/azure/terraform/terraform-vm-msi">Azure Marketplace イメージを使用して、MSI 認証が有効な Terraform VM を作成する</a>。
-          - html: <a href="/azure/terraform/terraform-create-vm-cluster-module">Azure Terraform モジュールを使用して負荷分散 VM クラスターを作成する</a>
-          - html: <a href="/azure/terraform/terraform-create-vm-cluster-with-infrastructure">Azure Cloud Shell に負荷分散 VM クラスターを作成する</a>
-          - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">ネットワークとストレージで VM スケール セットを構成する</a>
-          - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl">Packer カスタム イメージから VM スケール セットをプロビジョニングする</a>
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 一般的なデプロイ タスク用のサンプル構成テンプレート。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">GitHub</a>'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Azure Terraform モジュール
-            html: '<p><a href="https://registry.terraform.io/modules/Azure/database/azurerm">Azure RM for Database</a></p><p><a href="https://registry.terraform.io/modules/Azure/loadbalancer">Azure RM for Load Balancer</a></p><p><a href="https://registry.terraform.io/modules/Azure/computegroup">Azure RM Compute Group</a></p><p><a href="https://registry.terraform.io/modules/Azure/network">Azure RM Network</a></p><p><a href="https://registry.terraform.io/modules/Azure/compute">Azure RM Compute</a></p>'
+  author: TomArcherMsft
+  ms.author: tarcher
+  ms.date: 09/20/2019
+  ms.openlocfilehash: 35391f886d473b91ab99d27bff64d64903ba0545
+  ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/20/2019
+  ms.locfileid: "71173539"
+landingContent:
+- title: Azure での Terraform について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure での Terraform について
+      url: terraform-overview.md
+  - linkListType: architecture
+    links:
+    - text: Terraform Azure プロバイダー
+      url: https://aka.ms/terraform
+- title: Terraform のインストールと構成
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Terraform のインストールと構成
+      url: /azure/virtual-machines/linux/terraform-install-configure?/azure/terraform/toc.json&bc=/azure/bread/toc.json
+    - text: Azure 用の Terraform 構成の作成
+      url: terrafom-quickstart.md
+    - text: Terraform Visual Studio Code 拡張機能のインストール
+      url: terraform-vscode-extension.md
+    - text: Yeoman を使用して Terraform ベース テンプレートを作成する
+      url: terraform-vscode-module-generator.md
+    - text: Terratest を使用した Terraform モジュールのテスト
+      url: terratest-in-terraform-modules.md
+- title: AKS の管理
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: AKS を使用して Kubernetes クラスターを作成する
+      url: terraform-create-k8s-cluster-with-tf-and-aks.md
+    - text: Application Gateway を使用して Kubernetes クラスターを作成する
+      url: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
+- title: インフラストラクチャを管理する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Linux VM の作成
+      url: /azure/virtual-machines/linux/terraform-create-complete-vm?/azure/terraform/toc.json&bc=/azure/bread/toc.json
+  - linkListType: tutorial
+    links:
+    - text: MSI が有効な Terraform VM の作成
+      url: terraform-vm-msi.md
+    - text: Terraform モジュールを使用した VM クラスターの作成
+      url: terraform-create-vm-cluster-module.md
+    - text: Terraform と HCL を使用して VM クラスターを作成する
+      url: terraform-create-vm-cluster-with-infrastructure.md
+    - text: インフラストラクチャを使用した VM スケール セットのプロビジョニング
+      url: terraform-create-vm-scaleset-network-disks-hcl.md
+    - text: Packer カスタム イメージからの VM スケール セットのプロビジョニング
+      url: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+- title: ネットワークの管理
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 1. ハブとスポークのトポロジの作成
+      url: terraform-hub-spoke-introduction.md
+    - text: 2. オンプレミス仮想ネットワークの作成
+      url: terraform-hub-spoke-on-prem.md
+    - text: 3. ハブ仮想ネットワークの作成
+      url: terraform-hub-spoke-hub-network.md
+    - text: 4. ハブ仮想ネットワーク アプライアンスの作成
+      url: terraform-hub-spoke-hub-nva.md
+    - text: 5. スポーク ネットワークの作成
+      url: terraform-hub-spoke-spoke-network.md
+    - text: 6. ネットワーク トポロジの接続の検証
+      url: terraform-hub-spoke-validation.md

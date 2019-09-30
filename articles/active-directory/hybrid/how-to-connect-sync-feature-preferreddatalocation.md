@@ -16,12 +16,12 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff74db14a1621cdcea1b1ae082d351ce6a3a52f6
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 50cb5a76c6b19668fc23147244d65a0d996ebf90
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227403"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033729"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect (同期): Office 365 リソースの優先されるデータの場所の構成
 このトピックの目的は、Azure Active Directory (Azure AD) Connect 同期で、優先されるデータの場所の属性を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 ("*リージョン*" と *geo* という用語は、同じ意味で使用されています。)
@@ -32,7 +32,7 @@ ms.locfileid: "68227403"
 **preferredDataLocation** 属性を設定することで、ユーザーの geo を定義できます。 ユーザーの Office 365 リソース (メールボックスや OneDrive など) をユーザーと同じ geo に配置しながら、組織全体で 1 つのテナントを維持できます。
 
 > [!IMPORTANT]
-> Multi-Geo は現在、500 以上の Office 365 サービス サブスクリプションを使用しているお客様が利用できます。 詳細については、Microsoft 担当者にお問い合わせください。
+> Multi-Geo は現在、有効なマイクロソフト エンタープライズ契約と 500 以上の Office 365 サービス サブスクリプションを保有しているお客様が利用できます。 詳細については、Microsoft 担当者にお問い合わせください。
 >
 >
 
@@ -172,7 +172,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
 
-    この送信方向の同期規則がどの Azure AD オブジェクトに適用されるかは、スコープ フィルターによって決まります。 この例で使用しているスコープ フィルターは、"Out to AD – User Identity" OOB (out-of-box) 同期規則と同じものです。 こうすることで、オンプレミスの Active Directory から同期されていない**ユーザー** オブジェクトに、この同期規則が適用されるのを回避します。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
+    この送信方向の同期規則がどの Azure AD オブジェクトに適用されるかは、スコープ フィルターによって決まります。 この例で使用しているスコープ フィルターは、"Out to Azure AD - User Identity" OOB (out-of-box) 同期規則と同じものです。 こうすることで、オンプレミスの Active Directory から同期されていない**ユーザー** オブジェクトに、この同期規則が適用されるのを回避します。 スコープ フィルターは、実際の Azure AD Connect のデプロイに応じて調整が必要となる場合があります。
 
 6. **[変換]** タブに移動し、次の変換規則を実装します。
 

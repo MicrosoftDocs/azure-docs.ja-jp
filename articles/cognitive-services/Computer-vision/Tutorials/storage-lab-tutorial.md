@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 04/17/2019
+ms.date: 09/04/2019
 ms.author: pafarley
-ms.openlocfilehash: 00cca0cbf500ea4e884a9f9334896a18fe7b0978
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7caf4493db32201a8e83ffb3722c80c5e9b41a8f
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597857"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057738"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>チュートリアル:Computer Vision を使用して Azure Storage に画像メタデータを生成する
 
@@ -42,11 +42,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 お客様の Azure アカウント用に Computer Vision リソースを作成する必要があります。このリソースによって、Azure の Computer Vision サービスへのアクセスが管理されます。 
 
-1. [Azure Cognitive Services リソースを作成する](../../cognitive-services-apis-create-account.md#single-service-resource)の指示に従って、Computer Vision リソースを作成します。
+1. [Azure Cognitive Services リソースを作成する](../../cognitive-services-apis-create-account.md)の指示に従って、Computer Vision リソースを作成します。
 
 1. 次に、お客様のリソース グループのメニューに移動し、お客様が先ほど作成した Computer Vision API サブスクリプションをクリックします。 **[エンドポイント]** の下の URL を、一瞬で簡単に取得できる場所にコピーします。 次に、 **[アクセス キーを表示]** をクリックします。
 
     ![エンドポイントの URL とアクセス キーのリンクを強調した Azure portal ページ](../Images/copy-vision-endpoint.png)
+    
+    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
+
 
 1. 次のウィンドウで、 **[キー 1]** の値をクリップボードにコピーします。
 

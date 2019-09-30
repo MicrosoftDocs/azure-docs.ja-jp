@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 4864e2c040ad6771ad187269de43d5978fc6324f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 8a06573e6bcb2d5a6c6c97ad19e168f9c71aaa13
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876054"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308218"
 ---
 # <a name="publishing-guide-by-offer-type"></a>プランの種類別の公開ガイド
 
@@ -34,7 +34,7 @@ ms.locfileid: "67876054"
 | **オファリング タイプ**    | **説明**  |
 | :------------------- | :-------------------|
 | [**Virtual Machines**](https://docs.microsoft.com/azure/marketplace/marketplace-virtual-machines) | 顧客に関連付けられているサブスクリプションに仮想アプライアンスをデプロイするときは、オファーの種類として仮想マシンを使用します。 |
-| [**ソリューション テンプレート**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | デプロイと構成に関して、単純な VM を超える追加のオートメーションが必要となるソリューションの場合、オファーの種類としてソリューション テンプレートを使用してください。 |
+| [**ソリューション テンプレート**](https://docs.microsoft.com/azure/marketplace/marketplace-solution-templates) | デプロイと構成に関して、シンプルな VM 以外の追加のオートメーションが必要となるソリューションの場合、プランの種類としてソリューション テンプレート (Azure アプリケーションとも呼ばれる) を使用します。 ソリューション テンプレートでは、VM を含むがそれに限定されない、さまざまな種類の Azure リソースを使用できます。  |
 | [**マネージド アプリケーション**](https://docs.microsoft.com/azure/marketplace/marketplace-managed-apps) | 次の条件が必須であるときは、オファーの種類として Azure アプリ (マネージド アプリ) を使用します。 <br> <ul> <li> VM または完全な IaaS ベースのソリューションを使用して、サブスクリプション ベースのソリューションを顧客向けにデプロイする。 </li> <li>貴社または貴社の顧客の要件として、ソリューションをパートナーが管理しなければならない。 </li> <ul> |
 | [**SaaS アプリケーション**](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide) | SaaS ベースの技術的ソリューションをサブスクリプションとして顧客が購入できるようにするには、オファーの種類として SaaS アプリを使用します。 |
 | [**コンテナー オファー**](https://docs.microsoft.com/azure/marketplace/marketplace-containers) | 対象となるソリューションが、Kubernetes ベースの Azure コンテナー サービスとしてプロビジョニングされる Docker コンテナー イメージであるときは、オファーの種類としてコンテナーを使用します。 |

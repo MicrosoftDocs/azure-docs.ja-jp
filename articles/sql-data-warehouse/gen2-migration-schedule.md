@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 07/22/2019
-ms.openlocfilehash: cd55e078e14ec34006df05096f161e7bdef39a03
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: ac478a7b75bbac0c5e7f59cbe565ec2bbcd643ce
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827225"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70900316"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Gen2 へのデータ ウェアハウスのアップグレード
 
@@ -63,7 +63,7 @@ Microsoft では、データ ウェアハウス運営するための初期段階
 | アラブ首長国連邦北部 |2019 年 7 月 20 日 |完了 |
 | 英国南部 |使用可能 |進行中 |
 | 英国西部 |使用可能 |進行中 |
-| 米国中西部 |2019 年 9 月 1 日 |2019 年 10 月 1 日|
+| 米国中西部 |2019 年 11 月 1 日 |2019 年 12 月 1 日|
 | 西ヨーロッパ |使用可能 |完了 |
 | 米国西部 |使用可能 |完了 |
 | 米国西部 2 |使用可能 |完了 |

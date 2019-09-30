@@ -3,9 +3,9 @@ title: Azure Notification Hubs を使用して特定の Android アプリケー�
 description: Azure Notification Hubs を使用して特定のユーザーにプッシュ通知を送信する方法について説明します。
 documentationcenter: android
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.assetid: ae0e17a8-9d2b-496e-afd2-baa151370c25
 ms.service: notification-hubs
 ms.workload: mobile
@@ -13,14 +13,16 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 05/01/2019
-ms.author: jowargo
-ms.openlocfilehash: 67df6c84c5a88a3ffc82948898e356e0a913ba27
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.date: 09/11/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 09/11/2019
+ms.openlocfilehash: ff9666384d1747e311d3ab1c1dfc384baceba93a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227782"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71213367"
 ---
 # <a name="tutorial-push-notification-to-specific-android-application-users-by-using-azure-notification-hubs"></a>チュートリアル:Azure Notification Hubs を使用して特定の Android アプリケーション ユーザーにプッシュ通知を送信する
 
@@ -470,7 +472,14 @@ ms.locfileid: "68227782"
     ```java
     useLibrary 'org.apache.http.legacy'
     ```
-13. プロジェクトをビルドします。
+13. API レベル 28 (Android 9.0) 以降をターゲットとするアプリの場合は、`AndroidManifest.xml` の `<application>` 要素内に次の宣言を追加します。
+
+    ```xml
+    <uses-library
+        android:name="org.apache.http.legacy"
+        android:required="false" />
+    ```
+14. プロジェクトをビルドします。
 
 ## <a name="test-the-app"></a>アプリケーションをテストする
 

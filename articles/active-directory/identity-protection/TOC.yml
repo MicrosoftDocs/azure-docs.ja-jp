@@ -32,11 +32,11 @@
           href: howto-sign-in-risk-policy.md
         - name: ユーザー リスク ポリシーを構成する
           href: howto-user-risk-policy.md
-        - name: アクティブなリスク イベントを閉じる
+        - name: アクティブなリスク検出をクローズする
           href: howto-close-active-risk-events.md
         - name: ユーザーのブロックを解除する
           href: howto-unblock-user.md
-        - name: リスク イベントをシミュレートする
+        - name: リスク検出をシミュレートする
           href: playbook.md
         - name: FAQ
           href: faqs.md
@@ -46,9 +46,9 @@
           href: overview-v2.md
         - name: セキュリティの概要
           href: security-overview.md
-        - name: 危険なユーザーとサインインの調査
-          href: howto-investigate-risky-users-signins.md
-        - name: リスク イベントに関するフィードバックの提供
+        - name: リスクの調査
+          href: howto-investigate-risk.md
+        - name: リスク検出に関するフィードバックの提供
           href: howto-provide-risk-event-feedback.md
         - name: リスク ポリシーの構成
           href: howto-configure-risk-policies.md
@@ -58,7 +58,7 @@
   items:
     - name: Microsoft Graph API を使用する
       href: graph-get-started.md
-    - name: リスク イベント
+    - name: リスク検出
       href: risk-events-reference.md
     - name: 用語集
       href: glossary.md

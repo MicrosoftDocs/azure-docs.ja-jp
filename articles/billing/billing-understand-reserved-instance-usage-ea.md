@@ -12,10 +12,10 @@ ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
 ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68598101"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Enterprise Agreement の予約のコストと使用状況を取得する
@@ -41,7 +41,7 @@ Enterprise Agreement のお客様は、Azure portal と REST API で予約のコ
 
 2 つのデータ セットの比較:
 
-| データ | 実際のコストのデータ セット | 分散コストのデータ セット |
+| Data | 実際のコストのデータ セット | 分散コストのデータ セット |
 | --- | --- | --- |
 | 予約購入 | このビューで使用できます。<br><br>  このデータを取得するには、ChargeType = &quot;Purchase&quot; でフィルター処理します。 <br><br> 料金がどの予約に対するものかを把握するには、ReservationID または ReservationName を参照します。  | このビューには適用されません。 <br><br> 購入コストが償却データでは提供されません。 |
 | EffectivePrice | 値は、予約割引を受ける使用状況に対してはゼロです。 | 値は、予約割引がある使用状況に対する予約の 1 時間あたりの比例配分コストです。 |

@@ -17,12 +17,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 906f2fc8cdac31922e6e93526f65577fe76c4b9c
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 054033c0fc9f1138ef9ecf7eaceca626f6f53423
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532373"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70872850"
 ---
 # <a name="xamarin-ios-specific-considerations-with-msalnet"></a>MSAL.NET を使用する Xamarin iOS に固有の考慮事項
 Xamarin iOS には、MSAL.NET を使用する場合に考慮する必要がある考慮事項がいくつかあります。
@@ -104,13 +104,23 @@ MSAL 2.x から、複数のアプリケーション間でトークン キャッ�
 
 前に説明したように、`WithIosKeychainSecurityGroup()` API を使用するときは常に、MSAL によって $(AppIdentifierPrefix) が追加されていました。 これは、同じパブリッシャー製のアプリケーションのみがキーチェーン アクセスを共有できることを保証するために AppIdentifierPrefix または "チーム ID" が使用されるからです。
 
-#### <a name="note-keychainsecuritygroup-property-deprecated"></a>注:KeychainSecurityGroup プロパティは非推奨
+> [!NOTE]
+> **`KeychainSecurityGroup` プロパティは非推奨となっています。**
+> 
+> 以前は、MSAL 2.x から、開発者は `KeychainSecurityGroup` プロパティを使用するときに TeamId プレフィックスを使用することを余儀なくされていました。
+>
+>  MSAL 2.7.x からは、新しい `iOSKeychainSecurityGroup` プロパティを使用するとき、MSAL が実行時に TeamId プレフィックスを解決します。 このプロパティを使用するときは、値に TeamId プレフィックスを含めないでください。
+>  以前の `KeychainSecurityGroup` プロパティは古くなっているため、新しい `iOSKeychainSecurityGroup` プロパティを使用します。これを使用すると TeamId を指定する必要がありません。
 
-以前は、MSAL 2.x から、開発者は `KeychainSecurityGroup` プロパティを使用するときに TeamId プレフィックスを使用することを余儀なくされていました。
+### <a name="use-microsoft-authenticator"></a>Microsoft Authenticator を使用する
 
-MSAL 2.7.x からは、新しい `iOSKeychainSecurityGroup` プロパティを使用するとき、MSAL が実行時に TeamId プレフィックスを解決します。 このプロパティを使用するときは、値に TeamId プレフィックスを含めないでください。
+アプリケーションで Microsoft Authenticator (ブローカー) を使用すると、以下を有効にすることができます。
 
-以前の `KeychainSecurityGroup` プロパティは古くなっているため、新しい `iOSKeychainSecurityGroup` プロパティを使用します。これを使用すると開発者は TeamId を指定する必要がありません。
+- シングル サインオン (SSO)。 ユーザーがアプリケーションごとにサインインする必要がなくなります。
+- デバイスの識別。 ワークプレースにデバイスが参加したときに作成されたデバイス証明書にアクセスすることで行います。 テナント管理者がデバイスに関連する条件付きアクセスを有効にすると、アプリケーションの準備が整います。
+- アプリケーション ID の検証。 アプリケーションはブローカーを呼び出してリダイレクト URL を渡し、それがブローカーによって検証されます。
+
+ブローカーを有効にする方法の詳細については、「[Xamarin iOS および Android アプリケーションで Microsoft Authenticator または Microsoft Intune ポータル サイトを使用する](msal-net-use-brokers-with-xamarin-apps.md)」を参照してください。
 
 ### <a name="sample-illustrating-xamarin-ios-specific-properties"></a>Xamarin iOS 固有のプロパティを示すサンプル
 

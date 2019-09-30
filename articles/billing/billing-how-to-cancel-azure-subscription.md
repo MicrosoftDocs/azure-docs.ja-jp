@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: banders
 ms.openlocfilehash: 7756174f01e3fede17bec3e2ac185e89caddc097
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "68666443"
 ---
 # <a name="cancel-your-azure-subscription"></a>Azure サブスクリプションの取り消し

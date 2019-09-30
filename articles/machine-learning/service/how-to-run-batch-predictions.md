@@ -1,7 +1,7 @@
 ---
 title: パイプラインを使用して大規模なデータに対してバッチ予測を実行する
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service を使用して大量のデータで非同期にバッチ予測を行う方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning を使用して大量のデータで非同期にバッチ予測を行う方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: 97b66bff0e6413b7774a054a01a0dc73649c9cce
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3997f327bd6512eeee2cb5e7a0af802f12d1727a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963015"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034312"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインを使用して大規模なデータ セットに対してバッチ予測を実行する
 
-この記事では、ML パイプラインと Azure Machine Learning service を使用して、大量のデータに対して予測を非同期的に行う方法を学習します。
+この記事では、ML パイプラインと Azure Machine Learning を使用して、大量のデータに対して予測を非同期的に行う方法について説明します。
 
 バッチ予測 (または、バッチ スコアリング) では、非同期アプリケーションの比類のないスループットで、コスト効率のよい推論が提供されます。 テラバイト規模の運用データで推論を実行するように、バッチ予測パイプラインをスケーリングできます。 バッチ予測は、大規模なデータ コレクションに対する高スループットのファイア アンド フォーゲット予測に対して最適化されています。
 
@@ -30,7 +30,7 @@ ms.locfileid: "68963015"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
 - Azure Machine Learning SDK をインストールするための開発環境を構成します。 詳しくは、「[Azure Machine Learning のための開発環境を構成する](how-to-configure-environment.md)」をご覧ください。
 
@@ -114,7 +114,7 @@ output_dir = PipelineData(name="scores",
 
 ### <a name="set-up-compute-target"></a>コンピューティング ターゲットを設定する
 
-Azure Machine Learning での "*コンピューティング*" (または "*コンピューティング先*") とは、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。 たとえば、`Azure Machine Learning compute` を作成できます。
+Azure Machine Learning での "*コンピューティング*" (または "*コンピューティング先*") とは、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。 たとえば、[AmlCompute](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) クラスを使用して、Azure Machine Learning コンピューティングを作成できます。
 
 ```python
 from azureml.core.compute import AmlCompute

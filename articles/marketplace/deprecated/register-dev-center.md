@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6ba008ffdf0fe00d6720b0968dc42bfcfc651c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0dd53689f7528e73845ab47a9791f062e0f2cb0c
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66259359"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962782"
 ---
 # <a name="register-in-dev-center"></a>デベロッパー センターに登録する  
 個人用アカウントにサインインしていないことを確認するには、新しい Internet Explorer InPrivate または Chrome Incognito のブラウズ セッションを開きます。  
@@ -144,7 +144,7 @@ ms.locfileid: "66259359"
   > デベロッパー センター アカウントは、登録リストの種類について Microsoft が発行元に代わって顧客に請求できるようにするために必要です。 デベロッパー センター アカウントの登録により、Microsoft は貴社の法律、税務および銀行に関する情報を検証することができます。 詳しくは、[こちら](https://docs.microsoft.com/azure/marketplace/become-publisher)をクリックしてください。
 
 * **デベロッパー センターの登録を開始するにはどうすればよいですか?**
-  > 重複を避けるために、貴社がまだデベロッパー センター アカウントを登録していないことをご確認ください。 開発者アカウントに関連付ける Microsoft アカウントを使用してサインインする必要があります。 Microsoft アカウントをまだお持ちでない場合は、[こちら](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1)で新しいアカウントを作成できます。 (例: contoso_marketplace@live.com) サインインして登録するには、 https://dev.windows.com/en-us/registration?accountProgram=Azure にアクセスします
+  > 重複を避けるために、貴社がまだデベロッパー センター アカウントを登録していないことをご確認ください。 開発者アカウントに関連付ける Microsoft アカウントを使用してサインインする必要があります。 Microsoft アカウントをまだお持ちでない場合は、[こちら](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1)で新しいアカウントを作成できます。 (例: contoso_marketplace@live.com) サインインして登録するには、 https://dev.windows.com/registration?accountProgram=Azure にアクセスします
   > <br>登録プロセスについて詳しくは、[こちら](https://docs.microsoft.com/azure/marketplace/register-dev-center)をクリックしてください。</br>
 
 * **"個人" と "会社" のどちらのアカウントの種類を選択する必要がありますか?**

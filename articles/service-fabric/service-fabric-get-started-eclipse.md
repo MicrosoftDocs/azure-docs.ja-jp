@@ -115,11 +115,11 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
 
 ローカル クラスターを使用する Eclipse でアプリケーションをデバッグする方法については、[Eclipse での Java サービスのデバッグ](./service-fabric-debugging-your-application-java.md)に関する記事を参照してください。
 
-**[Publish Application]\(アプリケーションの発行)\** コマンドを使用してローカル クラスターにアプリケーションをデプロイすることもできます。
+**[Publish Application]\(アプリケーションの発行)** コマンドを使用してローカル クラスターにアプリケーションをデプロイすることもできます。
 
 1. Service Fabric アプリケーションを右クリックして、 **[Service Fabric]** を選択します。
-2. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)\** をクリックします。
-3. **[Publish Application]\(アプリケーションの発行)\** ウィンドウで、ターゲット プロファイルとして **PublishProfiles/Local.json** を選択し、 **[発行]** をクリックします。
+2. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)** をクリックします。
+3. **[Publish Application]\(アプリケーションの発行)** ウィンドウで、ターゲット プロファイルとして **PublishProfiles/Local.json** を選択し、 **[発行]** をクリックします。
 
     ![ローカルの [発行] ダイアログ](./media/service-fabric-get-started-eclipse/localjson.png)
 
@@ -157,8 +157,8 @@ Service Fabric アプリケーションを構築したら、以下の手順に�
      ```
 
 2. Service Fabric アプリケーションを右クリックして、 **[Service Fabric]** を選択します。
-3. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)\** をクリックします。
-3. **[Publish Application]\(アプリケーションの発行)\** ウィンドウで、ターゲット プロファイルとして **PublishProfiles/Cloud.json** を選択し、 **[発行]** をクリックします。
+3. コンテキスト メニューから **[Publish Application...]\(アプリケーションの発行)** をクリックします。
+3. **[Publish Application]\(アプリケーションの発行)** ウィンドウで、ターゲット プロファイルとして **PublishProfiles/Cloud.json** を選択し、 **[発行]** をクリックします。
 
     ![クラウドの [発行] ダイアログ](./media/service-fabric-get-started-eclipse/cloudjson.png)
 

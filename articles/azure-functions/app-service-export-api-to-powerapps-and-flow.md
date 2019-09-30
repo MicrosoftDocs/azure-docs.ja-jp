@@ -6,23 +6,25 @@ author: ggailey777
 manager: jeconnoc
 ms.assetid: ''
 ms.service: app-service
-ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: 9f4bbf91b09abeb917fd9f49482881e33bf788ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2ed154d15176ed6706a69f0a6be4c60159d478c2
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60499571"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70087688"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
 [PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) は、ユーザーのデータに接続して異なるプラットフォーム間で動作するカスタム ビジネス アプリを作成して使うためのサービスです。 [Microsoft Flow](https://flow.microsoft.com/guided-learning/learning-introducing-flow/) は、ユーザーが好むアプリとサービスの間でワークフローとビジネス プロセスを簡単に自動化できるようにします。 PowerApps と Microsoft Flow のどちらにも、Office 365、Dynamics 365、Salesforce などのデータ ソースへのさまざまな組み込みコネクタが付属しています。 状況によっては、アプリとフローのビルダーから、組織でビルドされたデータソースと API に接続したい場合もあります。
 
 同様に、組織内での API の利用範囲を広げるには、アプリとフローのビルダーで API を使用できるようにする必要があります。 このトピックでは、[Azure Functions](../azure-functions/functions-overview.md) または [Azure App Service](../app-service/overview.md) を使って構築した API をエクスポートする方法を示します。 エクスポートされた API は、PowerApps や Microsoft Flow で組み込みのコネクタのように使用される*カスタム コネクタ*になります。
+
+> [!IMPORTANT]
+> この記事に示されている API 定義機能は、[Azure Functions ランタイムのバージョン 1.x](functions-versions.md#creating-1x-apps) と App Services アプリでのみサポートされます。 Functions のバージョン 2.x は、OpenAPI 定義を作成して維持するために API Management と統合されます。 詳細については、[Azure API Management を使用した関数の OpenAPI 定義の作成](functions-openapi-definition.md)に関するページを参照してください。 
 
 ## <a name="create-and-export-an-api-definition"></a>API 定義を作成してエクスポートする
 API をエクスポートする前に、OpenAPI 定義 (以前は [Swagger](https://swagger.io/) ファイルと呼ばれていたもの) を使用して API を記述する必要があります 。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。 PowerApps と Microsoft Flow では、任意の OpenAPI 2.0 定義に対応するカスタム コネクタを作成できます。 Azure Functions と Azure App Service には、OpenAPI 定義を作成、ホスト、管理するためのサポートが組み込まれています。 詳細については、[Azure App Service での CORS を使用した RESTful API のホスト](../app-service/app-service-web-tutorial-rest-api.md)に関する記事をご覧ください。
@@ -75,8 +77,6 @@ API 定義をエクスポートするには、次の手順を実行します。
     ![PowerApps および Microsoft Flow への簡易エクスポート](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
 3. Click **OK**. カスタム コネクタがビルドされ、指定した環境に追加されました。
-
-Azure Functions を使って**簡易**モードを使用する例については、「[PowerApps から関数を呼び出す](functions-powerapps-scenario.md)」と「[Microsoft Flow から関数を呼び出す](functions-flow-scenario.md)」をご覧ください。
 
 <a name="manual"></a>
 ## <a name="use-manual-export"></a>手動エクスポートを使用する

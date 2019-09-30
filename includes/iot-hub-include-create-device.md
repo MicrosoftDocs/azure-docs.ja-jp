@@ -8,31 +8,30 @@ ms.topic: include
 ms.date: 11/06/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d70544866b9e321d98acd3978da145276e036025
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7b022f71e197c5695876f2049ee376c3616afc6d
+ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181274"
+ms.lasthandoff: 08/27/2019
+ms.locfileid: "70049062"
 ---
 <!-- put the ## header in the file that includes this file -->
 
-このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成します。 IoT hub に接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳しくは、[IoT Hub 開発者ガイド](../articles/iot-hub/iot-hub-devguide-identity-registry.md)の "ID レジストリ" に関するセクションをご覧ください 
+このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成します。 ハブに接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド](../articles/iot-hub/iot-hub-devguide-identity-registry.md#identity-registry-operations)を参照してください。
 
-1. IoT ハブのナビゲーション メニューの **[IoT デバイス]** を開き、 **[追加]** を選択して IoT ハブに新しいデバイスを登録します。
+1. IoT ハブのナビゲーション メニューの **[IoT デバイス]** を開き、 **[新規]** を選択して IoT ハブにデバイスを追加します。
 
-    ![ポータルでデバイス ID を作成する](./media/iot-hub-include-create-device/create-identity-portal.png)
+    ![ポータルでデバイス ID を作成する](./media/iot-hub-include-create-device/create-identity-portal-vs2019.png)
 
-1. 新しいデバイスの名前 (**myDeviceId** など) を入力し、 **[保存]** を選択します。 この操作で、IoT ハブの新しいデバイス ID が作成されます。
+1. **[デバイスの作成]** で、新しいデバイスの名前 (**myDeviceId** など) を入力し、 **[保存]** を選択します。 この操作で、IoT ハブのデバイス ID が作成されます。
 
-   ![新しいデバイスを追加する](./media/iot-hub-include-create-device/create-a-device.png)
+   ![新しいデバイスを追加する](./media/iot-hub-include-create-device/create-a-device-vs2019.png)
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
+1. デバイスが作成された後、 **[IoT デバイス]** ウィンドウの一覧からデバイスを開きます。 後で使用するために**プライマリ接続文字列**をコピーします。
 
-1. デバイスが作成された後、 **[IoT デバイス]** ウィンドウの一覧からデバイスを開きます。 後で使用するために **[接続文字列 --- 主キー]** をコピーします。
-
-    ![デバイスの接続文字列](./media/iot-hub-include-create-device/device-details.png)
+    ![デバイスの接続文字列](./media/iot-hub-include-create-device/device-details-vs2019.png)
 
 > [!NOTE]
 > IoT Hub の ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID のみが格納されます。 セキュリティ資格情報として使用するキーとデバイス ID、そして個々のデバイスについてアクセスを無効にすることのできる有効/無効フラグが格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 詳細については、[IoT Hub 開発者ガイド](../articles/iot-hub/iot-hub-devguide-identity-registry.md)をご覧ください。

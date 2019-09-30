@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 618f118ceedb7d55caefc5e2bebceb08c1d732ac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018182"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70773171"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -57,7 +57,7 @@ IoT Hub のエンドポイントにアクセスするには、適切なアクセ
 > [!NOTE]
 > 詳細については、[権限](#iot-hub-permissions)に関する項目をご覧ください。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 Azure IoT Hub では、共有アクセス ポリシーと ID レジストリのセキュリティ資格情報に対してトークンを確認することにより、エンドポイントへのアクセスを許可します。
 
@@ -363,7 +363,7 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 ### <a name="register-an-x509-certificate-for-a-device"></a>デバイスの X.509 証明書を登録する
 
-[C# 用 Azure IoT サービス SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service) (バージョン 1.0.8 以上) では、認証に X.509 証明書を使用するデバイスの登録がサポートされています。 デバイスのインポート/エクスポートなどの他の API でも X.509 証明書がサポートされます。
+[C# 用 Azure IoT サービス SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (バージョン 1.0.8 以上) では、認証に X.509 証明書を使用するデバイスの登録がサポートされています。 デバイスのインポート/エクスポートなどの他の API でも X.509 証明書がサポートされます。
 
 CLI 拡張コマンド [az iot hub device-identity](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) を使って、デバイスの X.509 証明書を構成することもできます。
 
@@ -390,7 +390,7 @@ await registryManager.AddDeviceAsync(device);
 
 ### <a name="use-an-x509-certificate-during-run-time-operations"></a>ランタイム操作中に X.509 証明書を使用する
 
-[.NET 用 Azure IoT device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device) (バージョン 1.0.11+) では、X.509 証明書の使用がサポートされています。
+[.NET 用 Azure IoT device SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device) (バージョン 1.0.11+) では、X.509 証明書の使用がサポートされています。
 
 ### <a name="c-support"></a>C\# のサポート
 

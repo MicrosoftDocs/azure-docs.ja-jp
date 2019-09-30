@@ -8,18 +8,18 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d6b6dd333d04457a68c3f2452d3cc538a32b61f6
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: ff135473443589650d90bfb7f3e5aa248f72e821
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230254"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70861277"
 ---
 # <a name="tutorial-configure-a-cluster-in-azure-hdinsight-using-ansible"></a>チュートリアル:Ansible を使用して Azure HDInsight でクラスターを構成する
 
 [!INCLUDE [ansible-28-note.md](../../includes/ansible-28-note.md)]
 
-[Azure HDInsight](/azure/hdinsight/) はデータを処理するための Hadoop ベースの分析サービスです。 HDInsight は、ビッグ データ (構造化または非構造化のいずれも) を操作するために使用される ETL (抽出、変換、読み込み) ツールです。 HDInsight では、それぞれの種類で異なるコンポーネント セットがサポートされている複数の[クラスターの種類](/azure/hdinsight/hadoop/apache-hadoop-introduction#cluster-types-in-hdinsight)がサポートされています。 
+[Azure HDInsight](/azure/hdinsight/) はデータを処理するための Hadoop ベースの分析サービスです。 HDInsight は、ビッグ データ (構造化または非構造化のいずれも) を操作するために使用される ETL (抽出、変換、読み込み) ツールです。 HDInsight では、それぞれの種類で異なるコンポーネント セットがサポートされている複数の[クラスターの種類](/azure/hdinsight/hadoop/apache-hadoop-introduction)がサポートされています。 
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 

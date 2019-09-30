@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ece7f93b5397db16e03c1eab1d2dc1e568113d9
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 74f81cb1f9b62755d2dd2707518b828466e9ed1b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879258"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71097567"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>オンプレミスの Azure AD パスワード保護 - よく寄せられる質問
 
@@ -78,6 +78,13 @@ FRS (DFSR に対する先行テクノロジ) には、多くの既知の問題�
 
 [FRS の終了が近づいています](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
+ご利用のドメインでまだ DFSR を使用していない場合、Azure AD パスワード保護をインストールする前に DFSR 使用にドメインを移行する必要があります。 詳細については、次のリンクを参照してください。
+
+[SYSVOL レプリケーション移行ガイド: FRS レプリケーションから DFS レプリケーションに移行する](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+> [!WARNING]
+> Azure AD パスワード保護 DC エージェント ソフトウェアは、現在、sysvol レプリケーションにまだ FRS を使用しているドメインのドメイン コントローラーにインストールされますが、この環境ではソフトウェアは正しく機能しません。 その他のマイナスの副作用としては、個々のファイルを複製できない、sysvol 復元処理が成功したように見えたが、一部のファイルの複製に失敗しており、何のエラーも表示されない、などがあります。 できるだけ早く、DFSR の使用にドメインを移行してください。DFSR 持ち前の長所があるだけでなく、Azure AD パスワード保護デプロイのブロックを解除します。 今後のバージョンでは、ドメインで依然として FRS を使用している場合、このソフトウェアは自動的に無効になります。
+
 **Q:機能には、ドメイン sysvol 共有にどのくらいのディスク領域が必要ですか?**
 
 正確な領域の使用量は、Microsoft グローバル禁止リストとテナントごとのカスタム リストで禁止されているトークンの数と長さ、および暗号化オーバーヘッドなどの要素に依存するため、さまざまに異なります。 これらのリストの内容は、将来拡大する可能性があります。 このことを念頭に、妥当な予想として、機能には、ドメイン sysvol 共有に最低 5 メガバイトの領域が必要になります。
@@ -129,6 +136,10 @@ Azure AD パスワード保護 DC エージェント サービスは、既存の
 **Q:ポリシーが監査モードになるよう構成した場合でも Azure AD が依然として脆弱なパスワードを拒否しているのはなぜですか?**
 
 監査モードがサポートされるのは、オンプレミスの Active Directory 環境でのみです。 Azure AD は、パスワードを評価する際、暗黙的に常に "強制" モードになります。
+
+**Q:パスワードが Azure AD パスワード保護によって拒否された場合、ユーザーには従来の Windows エラー メッセージが表示されます。このエラー メッセージをカスタマイズして、実際に発生したことをユーザーに知らせることはできますか?**
+
+いいえ。 ドメイン コントローラーによってパスワードが拒否されたときにユーザーに表示されるエラー メッセージは、ドメイン コントローラーではなく、クライアント コンピューターによって制御されています。 この動作は、パスワードが既定の Active Directory パスワード ポリシーによって拒否されたか、または Azure AD パスワード保護などのパスワード フィルター ベースのソリューションによって拒否されたかにかかわらず、発生します。
 
 ## <a name="additional-content"></a>追加コンテンツ
 

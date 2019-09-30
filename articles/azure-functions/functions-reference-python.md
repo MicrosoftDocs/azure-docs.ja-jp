@@ -13,32 +13,22 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: ec42693fe42f35d728a4a5018776867f07403f81
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226866"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70844687"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
-この記事では、Python を使用した Azure Functions の開発について紹介します。 以下の内容は、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。
+この記事では、Python を使用した Azure Functions の開発について紹介します。 以下の内容は、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 
 
-[!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
+Python でのスタンドアロンの関数のサンプル プロジェクトについては、[Python 関数のサンプル](/samples/browse/?products=azure-functions&languages=python)を参照してください。 
 
 ## <a name="programming-model"></a>プログラミング モデル
 
-Azure 関数は、入力を処理して出力を生成する Python スクリプト内でステートレスなメソッドである必要があります。 既定で、ランタイムでは、このメソッドは `main()` と呼ばれるグローバル メソッドとして `__init__.py` ファイル内に実装されると想定されます。
-
-*function.json* ファイル内で `scriptFile` プロパティと `entryPoint` プロパティを指定すれば、既定の構成を変更することができます。 たとえば、以下の _function.json_ では、ご利用の Azure 関数のエントリ ポイントとして、_main.py_ ファイル内の `customentry()` メソッドを使用するようにランタイムに指示が出されます。
-
-```json
-{
-  "scriptFile": "main.py",
-  "entryPoint": "customentry",
-  ...
-}
-```
+Azure Functions では、関数は入力を処理して出力を生成する Python スクリプト内のステートレスなメソッドであることが求められます。 既定で、ランタイムでは、このメソッドは `main()` と呼ばれるグローバル メソッドとして `__init__.py` ファイル内に実装されると想定されます。 また、[代替エントリ ポイントを指定する](#alternate-entry-point)こともできます。
 
 トリガーとバインディングからのデータをメソッド属性を介して関数にバインドするには、*function.json* ファイル内で定義されている `name` プロパティを使用します。 たとえば、次の _function.json_ には、`req` という名前の HTTP 要求によってトリガーされるシンプルな関数が記述されています。
 
@@ -68,7 +58,7 @@ def main(req):
     return f'Hello, {user}!'
 ```
 
-必要に応じて、コード エディターによって提供される IntelliSense 機能とオートコンプリート機能を利用するには、Python の型の注釈を使用して、関数内で属性の型と戻り値の型を宣言することもできます。 
+Python の型の注釈を使用することで、関数内に属性の種類および戻り値の型を明示的に宣言することもできます。 これは、多くの Python コード エディターによって提供される IntelliSense およびオートコンプリート機能を使用するのに役立ちます。
 
 ```python
 import azure.functions
@@ -81,15 +71,30 @@ def main(req: azure.functions.HttpRequest) -> str:
 
 [azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python) パッケージに含まれる Python の注釈を使用すると、入力と出力がご利用のメソッドにバインドされます。
 
+## <a name="alternate-entry-point"></a>代替エントリ ポイント
+
+*function.json* ファイル内で `scriptFile` プロパティと `entryPoint` プロパティをオプションで指定することによって、関数の既定の動作を変更できます。 たとえば、以下の _function.json_ では、ご利用の Azure 関数のエントリ ポイントとして、_main.py_ ファイル内の `customentry()` メソッドを使用するようにランタイムに指示が出されます。
+
+```json
+{
+  "scriptFile": "main.py",
+  "entryPoint": "customentry",
+  "bindings": [
+      ...
+  ]
+}
+```
+
 ## <a name="folder-structure"></a>フォルダー構造
 
-Python 関数プロジェクトのフォルダー構造は、次のようになります。
+Python 関数プロジェクトのフォルダー構造は、次の例のようになります。
 
 ```
  FunctionApp
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
+ | | - example.py
  | - MySecondFunction
  | | - __init__.py
  | | - function.json
@@ -106,6 +111,12 @@ Python 関数プロジェクトのフォルダー構造は、次のようにな�
 
 ```
 from __app__.SharedCode import myFirstHelperFunction
+```
+
+関数に対してローカルになるモジュールを参照するには、次のような相対インポート構文を使用できます。
+
+```
+from . import example
 ```
 
 関数プロジェクトを Azure 内のご利用の関数アプリにデプロイする場合は、フォルダー自体ではなく、パッケージに *FunctionApp* フォルダーの内容全体を含める必要があります。
@@ -227,14 +238,50 @@ def main(req):
 
 他にもログ記録メソッドが用意されています。これにより、さまざまなトレース レベルでコンソールへの書き込みが可能になります。
 
-| Method                 | 説明                                |
+| 方法                 | 説明                                |
 | ---------------------- | ------------------------------------------ |
-| logging.**critical(_message_)**   | ルート ロガー上に CRITICAL レベルのメッセージを書き込みます。  |
-| logging.**error(_message_)**   | ルート ロガー上に ERROR レベルのメッセージを書き込みます。    |
-| logging.**warning(_message_)**    | ルート ロガー上に WARNING レベルのメッセージを書き込みます。  |
-| logging.**info(_message_)**    | ルート ロガー上に INFO レベルのメッセージを書き込みます。  |
-| logging.**debug(_message_)** | ルート ロガー上に DEBUG レベルのメッセージを書き込みます。  |
+| **`critical(_message_)`**   | ルート ロガー上に CRITICAL レベルのメッセージを書き込みます。  |
+| **`error(_message_)`**   | ルート ロガー上に ERROR レベルのメッセージを書き込みます。    |
+| **`warning(_message_)`**    | ルート ロガー上に WARNING レベルのメッセージを書き込みます。  |
+| **`info(_message_)`**    | ルート ロガー上に INFO レベルのメッセージを書き込みます。  |
+| **`debug(_message_)`** | ルート ロガー上に DEBUG レベルのメッセージを書き込みます。  |
 
+ログ記録の詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
+
+## <a name="http-trigger-and-bindings"></a>HTTP トリガーとバインディング
+
+HTTP トリガーは function.jon ファイルで定義されています。 バインディングの `name` は、関数の名前付きパラメーターと一致している必要があります。 前の例では、バインド名 `req` が使用されています。 このパラメーターは [HttpRequest] オブジェクトであり、[HttpResponse] オブジェクトが返されます。
+
+[HttpRequest] オブジェクトからは、要求ヘッダー、クエリ パラメーター、ルート パラメーター、およびメッセージ本文を取得できます。 
+
+次の例は、[Python 用の HTTP トリガー テンプレート](https://github.com/Azure/azure-functions-templates/tree/dev/Functions.Templates/Templates/HttpTrigger-Python)からのものです。 
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+    headers = {"my-http-header": "some-value"}
+
+    name = req.params.get('name')
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+            
+    if name:
+        return func.HttpResponse(f"Hello {name}!", headers=headers)
+    else:
+        return func.HttpResponse(
+             "Please pass a name on the query string or in the request body",
+             headers=headers, status_code=400
+        )
+```
+
+この関数では、`name` クエリ パラメーターの値は [HttpRequest] オブジェクトの `params` パラメーターから取得されます。 JSON でエンコードされたメッセージ本文は `get_json` メソッドを使用して読み取られます。 
+
+同様に、返される [HttpResponse] オブジェクトに応答メッセージの `status_code` および `headers` を設定できます。
+                                                              
 ## <a name="async"></a>非同期
 
 `async def` ステートメントを使って非同期のコルーチンとして Azure 関数を記述することをお勧めします。
@@ -247,7 +294,7 @@ async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-main() 関数が同期 (`async` 修飾子が付いていない) の場合、関数は `asyncio` スレッド プール内で自動的に実行されます。
+main() 関数が同期 (修飾子が付いていない) の場合、関数は `asyncio` スレッド プール内で自動的に実行されます。
 
 ```python
 # Would be run in an asyncio thread-pool
@@ -299,6 +346,26 @@ def main(req):
     # ... use CACHED_DATA in code
 ```
 
+## <a name="environment-variables"></a>環境変数
+
+Functions では、サービス接続文字列などの[アプリケーション設定](functions-app-settings.md)は、実行中に環境変数として公開されます。 これらの設定にアクセスするには、`import os` を宣言してから `setting = os.environ["setting-name"]` を使用します。
+
+次の設定では、`myAppSetting` という名前のキーの[アプリケーション設定](functions-how-to-use-azure-function-app-settings.md#settings)が取得されます。
+
+```python
+import logging
+import os
+import azure.functions as func
+
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Get the setting named 'myAppSetting'
+    my_app_setting_value = os.environ["myAppSetting"]
+    logging.info(f'My app setting value:{my_app_setting_value}')
+```
+
+ローカル開発の場合、アプリケーション設定は [local.settings.json ファイルに保持されます](functions-run-local.md#local-settings-file)。  
+
 ## <a name="python-version-and-package-management"></a>Python のバージョンとパッケージの管理
 
 現在、Azure Functions では、Python 3.6.x (公式な CPython 配布) のみがサポートされています。
@@ -317,14 +384,24 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Azure への発行
 
-発行の準備ができたら、依存関係がすべて、プロジェクト ディレクトリのルートにある *requirements.txt* ファイル内にリストされていることを確認します。 使用しているパッケージにおいてコンパイラが必要とされるが、PyPI からの manylinux 対応のホイールのインストールがサポートされていない場合、Azure への発行は失敗し、次のエラーが返されます。 
+発行の準備ができたら、依存関係がすべて、プロジェクト ディレクトリのルートにある *requirements.txt* ファイル内にリストされていることを確認します。 Azure Functions では、これらの依存関係を[リモート ビルド](functions-deployment-technologies.md#remote-build)できます。
+
+発行から除外されたプロジェクト ファイルとフォルダー (仮想環境フォルダーなど) は、.funcignore ファイルに一覧表示されます。  
+
+Azure にデプロイし、リモート ビルドを実行するには、次のコマンドを使用します。
+
+```bash
+func azure functionapp publish <app name> --build remote
+```
+
+リモート ビルドを使用しておらず、使用しているパッケージにおいてコンパイラが必要とされるが、PyPI からの manylinux 対応のホイールのインストールがサポートされていない場合、ローカルでビルドしない Azure への発行は失敗し、次のエラーが返されます。
 
 ```
 There was an error restoring dependencies.ERROR: cannot install <package name - version> dependency: binary dependencies without wheels are not supported.  
 The terminal process terminated with exit code: 1
 ```
 
-必要なバイナリを自動的にビルドして構成するには、[Azure Functions Core Tools](functions-run-local.md#v2) (func) を使用することにより、ご利用のローカル マシン上に [Docker をインストール](https://docs.docker.com/install/)し、次のコマンドを実行して発行します。 `<app name>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。 
+必要なバイナリをローカルでビルドして構成するには、[Azure Functions Core Tools](functions-run-local.md#v2) (func) を使用することにより、ご利用のローカル マシン上に [Docker をインストール](https://docs.docker.com/install/)し、次のコマンドを実行して発行します。 `<app name>` を、Azure 内のご自分の関数アプリの名前に置き換えることを忘れないでください。 
 
 ```bash
 func azure functionapp publish <app name> --build-native-deps
@@ -332,7 +409,7 @@ func azure functionapp publish <app name> --build-native-deps
 
 Core Tools では、ご利用のローカル マシン上で [mcr.microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) イメージをコンテナーとして実行するためにバックグラウンドで Docker が使用されます。 この環境を使用する場合、必要なモジュールがソース配布からビルドおよびインストールされてから、Azure への最終的なデプロイに備えてそれらがパッケージ化されます。
 
-継続的デリバリー (CD) システムを使って依存関係のビルドと発行を行うには、[Azure DevOps パイプラインを使用](functions-how-to-azure-devops.md)します。 
+継続的デリバリー (CD) システムを使って依存関係のビルドと発行を行うには、[Azure パイプラインを使用](functions-how-to-azure-devops.md)します。 
 
 ## <a name="unit-testing"></a>単体テスト
 
@@ -456,6 +533,39 @@ class TestFunction(unittest.TestCase):
 
 既知の問題と機能に関する要望はすべて、[GitHub issues](https://github.com/Azure/azure-functions-python-worker/issues) リストを使用して追跡されます。 問題が発生してその問題が GitHub で見つからない場合は、新しい Issue を開き、その問題の詳細な説明を記載してお知らせください。
 
+### <a name="cross-origin-resource-sharing"></a>クロス オリジン リソース共有
+
+Azure Functions では、クロス オリジン リソース共有 (CORS) がサポートされています。 CORS は[ポータル内で](functions-how-to-use-azure-function-app-settings.md#cors)、[Azure CLI](/cli/azure/functionapp/cors) によって構成されます。 CORS の許可配信元一覧は、関数アプリ レベルで適用されます。 CORS を有効にすると、応答に `Access-Control-Allow-Origin` ヘッダーが含まれます。 詳細については、「 [クロス オリジン リソース共有](functions-how-to-use-azure-function-app-settings.md#cors)」を参照してください。
+
+許可配信元一覧は、Python 関数アプリでは[現在サポートされていません](https://github.com/Azure/azure-functions-python-worker/issues/444)。 この制限のため、次の例に示すように、HTTP 関数で `Access-Control-Allow-Origin` ヘッダーを明示的に設定する必要があります。
+
+```python
+def main(req: func.HttpRequest) -> func.HttpResponse:
+
+    # Define the allow origin headers.
+    headers = {"Access-Control-Allow-Origin": "https://contoso.com"}
+
+    # Set the headers in the response.
+    return func.HttpResponse(
+            f"Allowed origin '{headers}'.",
+            headers=headers, status_code=200
+    )
+``` 
+
+OPTIONS HTTP メソッドをサポートするように、function.json も更新してください。
+
+```json
+    ...
+      "methods": [
+        "get",
+        "post",
+        "options"
+      ]
+    ...
+```
+
+このメソッドは、許可配信元一覧をネゴシエートするために Chrome ブラウザーによって使用されます。 
+
 ## <a name="next-steps"></a>次の手順
 
 詳細については、次のリソースを参照してください。
@@ -467,3 +577,7 @@ class TestFunction(unittest.TestCase):
 * [HTTP と Webhook のバインド](functions-bindings-http-webhook.md)
 * [Queue Storage のバインド](functions-bindings-storage-queue.md)
 * [タイマー トリガー](functions-bindings-timer.md)
+
+
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python

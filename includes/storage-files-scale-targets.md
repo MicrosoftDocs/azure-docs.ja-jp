@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
 ms.openlocfilehash: 9f259c3e403e933c847ac56000b1db2cd594caf5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67449939"
 ---
-| Resource | Standard ファイル共有 | Premium ファイル共有 |
+| リソース | Standard ファイル共有 | Premium ファイル共有 |
 |----------|---------------|------------------------------------------|
 | ファイル共有の最小サイズ | 最小サイズなし。従量課金制 | 100 GiB、プロビジョニング済み |
 | ファイル共有の最大サイズ | 5 TiB (GA)、100 TiB (プレビュー) | 100 TiB |

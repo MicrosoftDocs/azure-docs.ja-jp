@@ -7,20 +7,20 @@ ms.date: 07/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 131d6865c47a32bbefbfbd397a5f0f88dedc9c35
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543514"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194625"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>ゲスト構成ポリシーを作成する方法
 
-ゲスト構成では [Desired State Configuration](/powershell/dsc) (DSC) リソース モジュールを使って、Azure 仮想マシンの監査用の構成を作成します。 DSC 構成では、仮想マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **audit** がトリガーされて、仮想マシンは**非準拠**と見なされます。
+ゲスト構成では [Desired State Configuration](/powershell/dsc) (DSC) リソース モジュールを使って、Azure マシンの監査用の構成を作成します。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは**非準拠**と見なされます。
 
-[Azure Policy のゲスト構成](/azure/governance/policy/concepts/guest-configuration)は、仮想マシン内の設定を監査するためにのみ使用できます。 仮想マシン内の設定の修復はまだ利用できません。
+[Azure Policy のゲスト構成](/azure/governance/policy/concepts/guest-configuration)は、マシン内の設定を監査するためにのみ使用できます。 マシン内の設定の修復はまだ利用できません。
 
-Azure 仮想マシンの状態を検証するための独自の構成を作成するには、次のアクションを使用します。
+Azure マシンの状態を検証するための独自の構成を作成するには、次のアクションを使用します。
 
 > [!IMPORTANT]
 > ゲスト構成でのカスタム ポリシーは、プレビュー機能です。
@@ -133,18 +133,18 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 - **パス**:出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
 - **ChefProfilePath**: InSpec プロファイルへの完全なパス。 このパラメーターは、Linux を監査するコンテンツを作成する場合にのみサポートされます。
 
-完成したパッケージは、管理対象の仮想マシンからアクセスできる場所に保存されている必要があります。 たとえば、GitHub リポジトリ、Azure リポジトリ、Azure Storage などです。 パッケージを公開したくない場合は、URL に [SAS トークン](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)を含めることができます。 また、仮想マシンの[サービス エンドポイント](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)をプライベート ネットワークに実装することもできますが、この構成はパッケージへのアクセスにのみ適用され、サービスとの通信には適用されません。
+完成したパッケージは、管理対象の仮想マシンからアクセスできる場所に保存されている必要があります。 たとえば、GitHub リポジトリ、Azure リポジトリ、Azure Storage などです。 パッケージを公開したくない場合は、URL に [SAS トークン](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md)を含めることができます。 また、マシンの[サービス エンドポイント](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network)をプライベート ネットワークに実装することもできますが、この構成はパッケージへのアクセスにのみ適用され、サービスとの通信には適用されません。
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>ゲスト構成パッケージでのシークレットの使用
 
 Azure Policy のゲスト構成で、実行時に使われるシークレットを管理する最適な方法は、Azure Key Vault に保存することです。 この設計は、カスタム DSC リソース内に実装されます。
 
-最初に、Azure でユーザー割り当てマネージド ID を作成します。 その ID は、Key Vault に格納されているシークレットにアクセスするために、仮想マシンによって使われます。 詳しい手順については、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」をご覧ください。
+最初に、Azure でユーザー割り当てマネージド ID を作成します。 その ID は、Key Vault に格納されているシークレットにアクセスするために、マシンによって使われます。 詳しい手順については、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」をご覧ください。
 
 次に、Key Vault のインスタンスを作成します。 詳しい手順については、[PowerShell を使用してシークレットの設定と取得を行う](../../../key-vault/quick-create-powershell.md)に関する記事をご覧ください。
-インスタンスにアクセス許可を割り当てて、Key Vault に格納されているシークレットにユーザー割り当て ID でアクセスできるようにします。 詳しい手順については、[.NET を使用してシークレットの設定と取得を行う](../../../key-vault/quick-create-net.md#assign-permissions-to-your-application-to-read-secrets-from-key-vault)に関する記事をご覧ください。
+インスタンスにアクセス許可を割り当てて、Key Vault に格納されているシークレットにユーザー割り当て ID でアクセスできるようにします。 詳しい手順については、[.NET を使用してシークレットの設定と取得を行う](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)に関する記事をご覧ください。
 
-次に、ユーザー割り当て ID を仮想マシンに割り当てます。 詳しい手順については、[PowerShell を使用して Azure VM 上の Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)に関する記事をご覧ください。
+次に、ユーザー割り当て ID をマシンに割り当てます。 詳しい手順については、[PowerShell を使用して Azure VM 上の Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)に関する記事をご覧ください。
 大規模な場合は、Azure Resource Manager を使って Azure Policy でこの ID を割り当てます。 詳しい手順については、[テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)に関する記事をご覧ください。
 
 最後に、カスタム リソース内で、上で生成されたクライアント ID を使って、コンピューターから利用可能なトークンを使って Key Vault にアクセスします。 `client_id` と Key Vault インスタンスへの URL は、[プロパティ](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema)としてリソースに渡すことができるため、複数の環境の場合、または値を変更する必要がある場合でも、リソースを更新する必要はありません。
@@ -165,7 +165,7 @@ $credential = New-Object System.Management.Automation.PSCredential('secret',$val
 
 ## <a name="test-a-guest-configuration-package"></a>ゲスト構成パッケージをテストする
 
-構成パッケージを作成したら、Azure に発行する前に、ワークステーションまたは CI/CD 環境からパッケージの機能をテストすることができます。 GuestConfiguration モジュールに含まれる `Test-GuestConfigurationPackage` コマンドレットでは、Azure 仮想マシンで使われるのと同じエージェントが開発環境に読み込まれます。 このソリューションを使って、有料のテスト/QA/運用環境にリリースする前に、ローカル環境で統合テストを実行できます。
+構成パッケージを作成したら、Azure に発行する前に、ワークステーションまたは CI/CD 環境からパッケージの機能をテストすることができます。 GuestConfiguration モジュールに含まれる `Test-GuestConfigurationPackage` コマンドレットでは、Azure マシンで使われるのと同じエージェントが開発環境に読み込まれます。 このソリューションを使って、有料のテスト/QA/運用環境にリリースする前に、ローカル環境で統合テストを実行できます。
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
@@ -187,7 +187,7 @@ New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConf
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Azure Policy 定義とイニシアティブ デプロイ ファイルを作成する
 
-ゲスト構成のカスタム ポリシー パッケージを作成し、仮想マシンからアクセス可能な場所にアップロードした後、Azure Policy のゲスト構成ポリシー定義を作成します。 `New-GuestConfigurationPolicy` コマンドレットにパブリックにアクセス可能なゲスト構成カスタム ポリシー パッケージを渡すと、**auditIfNotExists** および **deployIfNotExists** ポリシー定義が作成されます。 両方のポリシー定義を含むポリシー イニシアティブ定義も作成されます。
+ゲスト構成のカスタム ポリシー パッケージを作成し、マシンからアクセス可能な場所にアップロードした後、Azure Policy のゲスト構成ポリシー定義を作成します。 `New-GuestConfigurationPolicy` コマンドレットにパブリックにアクセス可能なゲスト構成カスタム ポリシー パッケージを渡すと、**auditIfNotExists** および **deployIfNotExists** ポリシー定義が作成されます。 両方のポリシー定義を含むポリシー イニシアティブ定義も作成されます。
 
 次の例では、Windows 用のゲスト構成カスタム ポリシー パッケージから指定したパスにポリシーとイニシアティブ定義を作成し、名前、説明、およびバージョンを設定します。
 
@@ -220,7 +220,7 @@ New-GuestConfigurationPolicy
 
 コマンドレットの出力では、イニシアティブの表示名とポリシー ファイルのパスが含まれるオブジェクトが返されます。
 
-このコマンドを使ってカスタム ポリシー プロジェクトをスキャフォールディングする場合は、これらのファイルを変更できます。 たとえば、特定のタグが仮想マシンに存在するかどうかを評価するように "If" セクションを変更します。 ポリシーの作成の詳細については、「[ポリシーをプログラムで作成してコンプライアンス データを表示する](./programmatically-create.md)」を参照してください。
+このコマンドを使ってカスタム ポリシー プロジェクトをスキャフォールディングする場合は、これらのファイルを変更できます。 たとえば、特定のタグがマシンに存在するかどうかを評価するように "If" セクションを変更します。 ポリシーの作成の詳細については、「[ポリシーをプログラムで作成してコンプライアンス データを表示する](./programmatically-create.md)」を参照してください。
 
 ### <a name="using-parameters-in-custom-guest-configuration-policies"></a>カスタム ゲスト構成ポリシーでのパラメーターの使用
 
@@ -318,11 +318,11 @@ Azure で作成されるポリシー定義とイニシアティブ定義に関�
 
 カスタム コンテンツ パッケージを使ってカスタム Azure Policy を発行した後、新しいリリースを発行する場合に更新する必要があるフィールドが 2 つあります。
 
-- **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。  これにより、新しいポリシー ファイルのゲスト構成割り当てのバージョンが更新され、パッケージが更新されたことを拡張機能で認識できるようになります。
-- **contentHash**: これは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。  `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。  これは、発行する `.zip` ファイルに対して適切なものである必要があります。  ユーザーがポータルからポリシー定義を手動で変更した場合など、`contentUri` プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
+- **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。  このプロパティにより、新しいポリシー ファイルのゲスト構成割り当てのバージョンが更新され、パッケージが更新されたことを拡張機能で認識できるようになります。
+- **contentHash**: このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。  `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。  このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。  ユーザーがポータルからポリシー定義を手動で変更した場合など、`contentUri` プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
 
 更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。
-このようにすると、すべてのプロパティが正しく更新されることが保証されます。
+このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows グループ ポリシー コンテンツから Azure Policy ゲスト構成への変換
 
@@ -337,7 +337,7 @@ DSC コミュニティでは、エクスポートしたグループ ポリシー
 既定では、ゲスト構成カスタム ポリシーは SHA256 ハッシュを使って、発行されてから監査対象のサーバーによって読み込まれるまでに、ポリシー パッケージが変更されていないことが検証されます。
 必要に応じて、お客様は証明書を使ってパッケージに署名し、署名されたコンテンツのみを許可するようにゲスト構成拡張機能を強制することもできます。
 
-このシナリオを有効にするには、2 つのステップを実行する必要があります。 コマンドレットを実行してコンテンツ パッケージに署名し、コードが署名されていることを要求する必要があるように仮想マシンにタグを追加します。
+このシナリオを有効にするには、2 つのステップを実行する必要があります。 コマンドレットを実行してコンテンツ パッケージに署名し、コードが署名されていることを要求する必要があるようにマシンにタグを追加します。
 
 署名検証機能を使用するには、`Protect-GuestConfigurationPackage` コマンドレットを実行して、発行前にパッケージに署名します。 このコマンドレットには "コード署名" 証明書が必要です。
 
@@ -353,20 +353,27 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 - **PrivateGpgKeyPath**: プライベート GPG キーのパス。 このパラメーターは、Linux 用のコンテンツに署名する場合にのみサポートされます。
 - **PublicGpgKeyPath**: パブリック GPG キーのパス。 このパラメーターは、Linux 用のコンテンツに署名する場合にのみサポートされます。
 
-GuestConfiguration エージェントにより、Windows マシンの場合は "信頼されたルート証明機関" に、Linux マシンの場合はパス `/usr/local/share/ca-certificates/extra` に、証明書の公開キーが存在していることが求められます。 署名されたコンテンツをノードで検証するには、カスタム ポリシーを適用する前に、仮想マシンに証明書の公開キーをインストールします。 このプロセスは、VM 内で任意の方法を使うか、Azure Policy を使って、行うことができます。 テンプレートの例は、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)で提供されています。
+GuestConfiguration エージェントにより、Windows マシンの場合は "信頼されたルート証明機関" に、Linux マシンの場合はパス `/usr/local/share/ca-certificates/extra` に、証明書の公開キーが存在していることが求められます。 署名されたコンテンツをノードで検証するには、カスタム ポリシーを適用する前に、マシンに証明書の公開キーをインストールします。 このプロセスは、VM 内で任意の方法を使うか、Azure Policy を使って、行うことができます。 テンプレートの例は、[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)で提供されています。
 Key Vault のアクセス ポリシーでは、デプロイ中にコンピューティング リソース プロバイダーが証明書にアクセスできるようにする必要があります。 詳しい手順については、[Azure Resource Manager の仮想マシンの Key Vault を設定する](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)に関する記事をご覧ください。
 
-署名証明書から公開キーをエクスポートして仮想マシンにインポートする例を次に示します。
+署名証明書から公開キーをエクスポートしてマシンにインポートする例を次に示します。
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert3") } | Select-Object -First 1
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-Linux 仮想マシンで使用する GPG キーの作成については、GitHub の[新しい GPG キーの生成](https://help.github.com/en/articles/generating-a-new-gpg-key)に関する記事に優れたリファレンスが提供されています。
+Linux マシンで使用する GPG キーの作成については、GitHub の[新しい GPG キーの生成](https://help.github.com/en/articles/generating-a-new-gpg-key)に関する記事に優れたリファレンスが提供されています。
 
 コンテンツを発行した後、コード署名が必要なすべての仮想マシンに、名前が `GuestConfigPolicyCertificateValidation` で値が `enabled` のタグを追加します。 このタグは、Azure Policy を使って大規模に配信できます。 「[サンプル - タグとその既定値の適用](../samples/apply-tag-default-value.md)」をご覧ください。
 このタグを配置すると、`New-GuestConfigurationPolicy` コマンドレットを使って生成されるポリシー定義では、ゲスト構成拡張による要件が有効になります。
+
+## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>[プレビュー] ゲスト構成ポリシー割り当てのトラブルシューティング
+
+Azure Policy ゲスト構成割り当てのトラブルシューティングに役立つツールをプレビューで利用できます。
+このツールはプレビュー段階であり、[Guest Configuration Troubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) というモジュール名で PowerShell ギャラリーに公開されています。
+
+このツールのコマンドレットの詳細については、PowerShell の Get-Help コマンドを使用して、組み込みのガイダンスを参照してください。  ツールは頻繁に更新されるため、この方法が最新の情報を取得するための最適な方法です。
 
 ## <a name="next-steps"></a>次の手順
 

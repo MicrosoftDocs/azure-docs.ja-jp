@@ -1,21 +1,21 @@
 ---
 title: クラスター パフォーマンスの監視 - Azure HDInsight
-description: HDInsight クラスターの容量とパフォーマンスを監視する方法。
+description: Azure HDInsight で Apache Hadoop クラスターの正常性とパフォーマンスを監視する方法。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 3fcd1e54a8993b2693b169a2c8b4c6e9bca57119
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a7544ef9fe5724d1f6c11918411a76461d908e5
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66393411"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104401"
 ---
-# <a name="monitor-cluster-performance"></a>クラスター パフォーマンスの監視
+# <a name="monitor-cluster-performance-in-azure-hdinsight"></a>Azure HDInsight でクラスター パフォーマンスを監視する
 
 HDInsight クラスターの正常性とパフォーマンスを監視することは、最適なパフォーマンスとリソースの使用率を維持するために重要です。 監視は、クラスター構成エラーとユーザー コードの問題を検出し、対応するために役立つ場合もあります。
 
@@ -27,7 +27,7 @@ Hadoop クラスターでは、クラスターの負荷がすべてのノード�
 
 クラスターのノードとその負荷の概要を把握するには、[Ambari Web UI](hdinsight-hadoop-manage-ambari.md) にサインインし、 **[Hosts]** タブを選択します。ホストの一覧が完全修飾ドメイン名で表示されます。 各ホストの動作状態は、色付きの正常性インジケーターで示されます。
 
-| 色 | 説明 |
+| Color | 説明 |
 | --- | --- |
 | 赤 | ホスト上の少なくとも 1 つのマスター コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
 | オレンジ | ホスト上の少なくとも 1 つのセカンダリ コンポーネントがダウンしています。 カーソルを移動すると、ツールヒントに影響を受けるコンポーネントの一覧が表示されます。 |
@@ -36,11 +36,11 @@ Hadoop クラスターでは、クラスターの負荷がすべてのノード�
 
 各ホストのコア数と RAM 合計の列と、ディスク使用量と負荷の平均の列も表示されます。
 
-![[Hosts]\(ホスト\) タブ](./media/hdinsight-key-scenarios-to-monitor/hosts-tab.png)
+![Apache Ambari の [ホスト] タブの概要](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-hosts-tab.png)
 
 そのホストで実行されているコンポーネントとそのメトリックの詳細を確認するには、いずれかのホスト名を選択します。 メトリックは、CPU 使用量、負荷、ディスク使用率、メモリ使用量、ネットワーク使用量、およびプロセス数の選択可能なタイムラインとして表示されます。
 
-![ホストの詳細](./media/hdinsight-key-scenarios-to-monitor/host-details.png)
+![Apache Ambari ホストの詳細の概要](./media/hdinsight-key-scenarios-to-monitor/apache-ambari-host-details.png)
 
 アラートの設定とメトリックの表示の詳細については、「[Apache Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」を参照してください。
 
@@ -56,7 +56,7 @@ ResourceManager は*純粋なスケジューラ*であり、すべての競合�
 
 YARN を使用すると、これらのキューにリソースを割り当てることができます。また、使用できるすべてのリソースが割り当てられているかどうかがわかります。 キューに関する情報を確認するには、Ambari Web UI にサインインし、上部のメニューから **[YARN Queue Manager]** を選択します。
 
-![[YARN Queue Manager]\(YARN キュー マネージャー\)](./media/hdinsight-key-scenarios-to-monitor/yarn-queue-manager.png)
+![Apache Ambari YARN Queue Manager](./media/hdinsight-key-scenarios-to-monitor/apache-yarn-queue-manager.png)
 
 [YARN Queue Manager]\(YARN キュー マネージャー\) ページの左側にはキュー一覧と、それぞれに割り当てられている容量の割合が表示されます。
 
@@ -64,11 +64,11 @@ YARN を使用すると、これらのキューにリソースを割り当てる
 
 キューの詳細を確認するには、Ambari ダッシュボードの左側の一覧から **[YARN]** を選択します。 **[Quick Links]** ドロップダウン メニューで、アクティブ ノードの下にある **[Resource Manager UI]** を選択します。
 
-![Resource Manager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
+![Resource Manager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu-link.png)
 
 ResourceManager UI の左側のメニューから **[Scheduler]** を選択します。 *[Application Queues]\(アプリケーション キュー\)* の下にキューの一覧が表示されます この一覧では、各キューに使用される容量、キュー間のジョブの分散状況、ジョブのリソースに制約があるかどうかを確認できます。
 
-![Resource Manager UI メニュー リンク](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui.png)
+![Apache HAdoop Resource Manager の UI メニュー](./media/hdinsight-key-scenarios-to-monitor/resource-manager-ui-menu.png)
 
 ## <a name="storage-throttling"></a>ストレージの調整
 

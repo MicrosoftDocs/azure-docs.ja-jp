@@ -3,7 +3,7 @@ title: PIM の使用を開始する - Azure Active Directory | Microsoft Docs
 description: Azure portal で Azure AD Privileged Identity Management (PIM) を有効にして使用を開始する方法を説明します。
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: curtand
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,15 +11,15 @@ ms.subservice: pim
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/09/2019
-ms.author: rolyon
+ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 408991ffc3922986234f7d40e1cd589b1d126ba1
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 018cc54a770a0d18fa9af3d93fec2f5f720ce17b
+ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476483"
+ms.lasthandoff: 09/08/2019
+ms.locfileid: "70804519"
 ---
 # <a name="start-using-pim"></a>PIM の使用を開始する
 

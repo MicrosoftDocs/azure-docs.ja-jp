@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: cephalin
-ms.openlocfilehash: 67b9c0ba2566206b0e70db51844b21e5d5d3c261
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: ddeb46a2c7bc7f24f55c22f446926529cee7b598
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181752"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059732"
 ---
 ドメイン名のレコードが反映されると、カスタム ドメイン名を使用して対象の Azure App Services の Web アプリにアクセスできることをブラウザーで確認できます。
 
@@ -30,7 +30,7 @@ ms.locfileid: "67181752"
    
     ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
 3. **[カスタム ドメイン]** ブレードで **[ホスト名の追加]** をクリックします。
-4. **[Hostname (ホスト名)]** ボックスに、この Web アプリに関連付ける Traffic Manager ドメイン名を入力します。
+4. **[Hostname]\(ホスト名\)** テキスト ボックスを使用して、この Web アプリに関連付けるカスタム ドメイン名を入力します。
    
     ![](./media/custom-dns-web-site/dncmntask-cname-8.png)
 5. **[Validate (検証)]** をクリックしてドメイン名の構成を保存します。

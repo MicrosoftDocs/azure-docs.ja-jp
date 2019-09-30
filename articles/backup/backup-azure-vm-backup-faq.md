@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 078c8763a08df339b9291807102e2d187d2a882f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: e1cfb9bf0e8b17df67b2f7060f665d169a71c8d6
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827574"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098378"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -120,6 +120,16 @@ PowerShell でこれを行う方法の詳細については、[こちら](backup
 
 ### <a name="how-do-we-get-faster-restore-performances"></a>復元のパフォーマンスを高めるには、どうすればよいですか。
 [インスタント リストア](backup-instant-restore-capability.md)機能は、迅速なバックアップと、スナップショットからの即時のリストアに役立ちます。
+
+### <a name="what-happens-when-we-change-the-key-vault-settings-for-the-encrypted-vm"></a>暗号化された VM のキー コンテナーの設定を変更するとどうなりますか。
+
+暗号化された VM の KeyVault 設定を変更した後も、バックアップは新しい詳細情報のセットで引き続き動作します。ただし、変更前の復旧ポイントからの復元後は、KeyVault 内のシークレットを復元してから VM を作成する必要があります。 詳細については、この[記事](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)を参照してください
+
+シークレットまたはキーのロールオーバーなどの操作では、この手順は必要ありません。復元後も同じ KeyVault を使用できます。
+
+### <a name="can-i-access-the-vm-once-restored-due-to-an-vm-having-broken-relationship-with-domain-controller"></a>VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできますか。
+
+はい、VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできます。 詳細については、この[記事](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)を参照してください
 
 ## <a name="manage-vm-backups"></a>VM バックアップの管理
 

@@ -6,14 +6,14 @@ author: alinamstanciu
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/16/2019
+ms.date: 09/17/2019
 ms.author: alinast
-ms.openlocfilehash: a107f7dba7f28b41303727ad37b7c50f2e215c4f
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 1ab3f30f035f8099ab50f827e559e56b31d7f1f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622943"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219745"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>チュートリアル:Azure Digital Twins プレビューをデプロイし、空間グラフを構成する
 
@@ -43,15 +43,11 @@ Azure Digital Twins サービスを使用して、建物内の物理的なエリ
 
 - [Visual Studio Code](https://code.visualstudio.com/)。サンプル コードを確認するために使用します。 
 
-<a id="deploy"></a>
-
 ## <a name="deploy-digital-twins"></a>Digital Twins をデプロイする
 
 このセクションの手順を使用して、Azure Digital Twins サービスの新しいインスタンスを作成します。 作成できるインスタンスは、サブスクリプションごとに 1 つだけです。 実行中のインスタンスが既にある場合は、スキップして次のセクションに進んでください。 
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
-
-<a id="permissions"></a>
 
 ## <a name="grant-permissions-to-your-app"></a>アプリにアクセス許可を付与する
 
@@ -76,7 +72,7 @@ Digital Twins では、[Azure Active Directory](../active-directory/fundamentals
 
 Visual Studio Code で、展開されたサンプル フォルダー内の **digital-twins-samples-csharp\digital-twins-samples.code-workspace** ファイルを開きます。 ここには次の 2 つのプロジェクトが含まれています。
 
-* プロビジョニング サンプル **occupancy-quickstart** を使用すると、[空間インテリジェンス グラフ](concepts-objectmodel-spatialgraph.md#graph)を構成およびプロビジョニングできます。 このグラフは、物理空間とそこに含まれるリソースのデジタル化画像です。 これには、スマート ビルのためのオブジェクトを定義する[オブジェクト モデル](concepts-objectmodel-spatialgraph.md#model)が使用されています。 Digital Twins オブジェクトと REST API の完全な一覧については、[この REST API ドキュメント](https://docs.westcentralus.azuresmartspaces.net/management/swagger)または[お客様のインスタンス](#deploy)用に作成された Management API URL を参照してください。
+* プロビジョニング サンプル **occupancy-quickstart** を使用すると、[空間インテリジェンス グラフ](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)を構成およびプロビジョニングできます。 このグラフは、物理空間とそこに含まれるリソースのデジタル化画像です。 これには、スマート ビルのためのオブジェクトを定義する[オブジェクト モデル](concepts-objectmodel-spatialgraph.md#digital-twins-object-models)が使用されています。 Digital Twins オブジェクトと REST API の完全な一覧については、[この REST API ドキュメント](https://docs.westcentralus.azuresmartspaces.net/management/swagger)または[お客様のインスタンス](#deploy-digital-twins)用に作成された Management API URL を参照してください。
 
    サンプルを確認し、サンプルと Digital Twins インスタンスの通信のしくみを見るには、**src\actions** フォルダーから開始できます。 このフォルダー内のファイルによって、これらのチュートリアルで使用するコマンドが実装されます。
     - **provisionSample.cs** ファイルでは、空間グラフのプロビジョニング方法が示されます。
@@ -84,7 +80,7 @@ Visual Studio Code で、展開されたサンプル フォルダー内の **dig
     - **getAvailableAndFreshSpaces.cs** ファイルでは、ユーザー定義関数と呼ばれるカスタム関数の結果が取得されます。
     - **createEndpoints.cs** ファイルでは、他のサービスと対話するためのエンドポイントが作成されます。
 
-* **device-connectivity** シミュレーション サンプルを使用すると、センサー データがシミュレートされ、お客様の Digital Twins インスタンス用にプロビジョニングされた IoT ハブにそのデータが送信されます。 このサンプルは、[空間グラフをプロビジョニングした後の次のチュートリアル](tutorial-facilities-udf.md#simulate)で使用します。 このサンプルを構成するために使用されるセンサーとデバイスの識別子は、グラフのプロビジョニングに使用するものと同じである必要があります。
+* **device-connectivity** シミュレーション サンプルを使用すると、センサー データがシミュレートされ、お客様の Digital Twins インスタンス用にプロビジョニングされた IoT ハブにそのデータが送信されます。 このサンプルは、[空間グラフをプロビジョニングした後の次のチュートリアル](tutorial-facilities-udf.md#simulate-sensor-data)で使用します。 このサンプルを構成するために使用されるセンサーとデバイスの識別子は、グラフのプロビジョニングに使用するものと同じである必要があります。
 
 ### <a name="configure-the-provisioning-sample"></a>プロビジョニング サンプルの構成
 
@@ -101,17 +97,15 @@ Visual Studio Code で、展開されたサンプル フォルダー内の **dig
     ```
 
 1. Visual Studio Code で **occupancy-quickstart** プロジェクトの [appSettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/appSettings.json) ファイルを開きます。 次の値を更新します。
-   * **ClientId**: Azure AD アプリ登録のアプリケーション ID を入力します。 この ID は、[アプリのアクセス許可の設定](#permissions)に関するセクションでメモしたものです。
-   * **Tenant**: [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)のディレクトリ ID を入力します。 この ID も、[アプリのアクセス許可の設定](#permissions)に関するセクションでメモしたものです。
-   * **BaseUrl**: Digital Twins インスタンスの URL を入力します。 この URL を取得するには、URL `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/` 内のプレースホルダーをお客様のインスタンスの値に置き換えます。 また、[デプロイに関するセクション](#deploy)に示されている Management API URL を変更することによってもこの URL を取得できます。 **swagger/** は **api/v1.0/** に置き換えてください。
+   * **ClientId**: Azure AD アプリ登録のアプリケーション ID を入力します。 この ID は、[アプリのアクセス許可の設定](#grant-permissions-to-your-app)に関するセクションでメモしたものです。
+   * **Tenant**: [Azure AD テナント](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant)のディレクトリ ID を入力します。 この ID も、[アプリのアクセス許可の設定](#grant-permissions-to-your-app)に関するセクションでメモしたものです。
+   * **BaseUrl**: Digital Twins インスタンスの URL を入力します。 この URL を取得するには、URL `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/` 内のプレースホルダーをお客様のインスタンスの値に置き換えます。 また、[デプロイに関するセクション](#deploy-digital-twins)に示されている Management API URL を変更することによってもこの URL を取得できます。 **swagger/** は **api/v1.0/** に置き換えてください。
 
 1. サンプルを使用して確認できる Digital Twins の機能の一覧を表示します。 次のコマンドを実行します。
 
     ```cmd/sh
     dotnet run
     ```
-
-<a id="provision-spaces"></a>
 
 ## <a name="understand-the-provisioning-process"></a>プロビジョニング プロセスを理解する
 

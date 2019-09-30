@@ -8,19 +8,18 @@ manager: craigg
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 99c4f0f99af61196cf1a12f2f68a7d10d8b2e6c7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 855bd64bc8beb86a1bc62c65f71254f43c7a722a
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477163"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101980"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 
@@ -58,7 +57,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 ### <a id="payasyougo"></a> 従量課金制
 次の表に示したのは、従量課金制で提供されている SQL Server イメージの一覧です。
 
-| バージョン | オペレーティング システム | エディション |
+| Version | オペレーティング システム | エディション |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2StandardWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP2WebWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2ExpressWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.FreeLicenseSQLServer2016SP2DeveloperWindowsServer2016) |
@@ -76,14 +75,14 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 
 ライセンス持ち込みには、既存の従量課金制の SQL VM を変換する方法と、 **{BYOL}** というプレフィックスでイメージをデプロイする方法とがあります。 従量制課金と BYOL との間でライセンス モデルを切り替える方法の詳細については、[SQL VM のライセンス モデルを変更する方法](virtual-machines-windows-sql-ahb.md)に関するページを参照してください。 
 
-| バージョン | オペレーティング システム | エディション |
+| Version | オペレーティング システム | エディション |
 | --- | --- | --- |
 | **SQL Server 2017** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016) |
 | **SQL Server 2016 SP2** |Windows Server 2016 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2EnterpriseWindowsServer2016)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2016SP2StandardWindowsServer2016) |
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2014SP2StandardWindowsServer2012R2) |
 | **SQL Server 2012 SP4** |Windows Server 2012 R2 |[Enterprise BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4EnterpriseWindowsServer2012R2)、[Standard BYOL](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2012SP4StandardWindowsServer2012R2) |
 
-Azure portal で利用できない SQL Server の古いイメージを、PowerShell を使用してデプロイすることはできますか。 Powershell を使用して、使用可能なすべてのイメージを表示するには、次のコマンドを使用します。
+Azure portal で利用できない SQL Server の古いイメージを、PowerShell を使用してデプロイできます。 Powershell を使用して、使用可能なすべてのイメージを表示するには、次のコマンドを使用します。
 
   ```powershell
   Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
@@ -97,6 +96,30 @@ PowerShell を使用して SQL Server VM をデプロイする方法の詳細に
 
 ### <a name="migrate-your-data"></a>データの移行
 既存のデータベースがある場合は、新たにプロビジョニングした SQL VM にそれを移動することがあります。 移行オプションの一覧とガイダンスについては、 [Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)に関するページを参照してください。
+
+## <a name="create-and-manage-azure-sql-resources-with-the-azure-portal"></a>Azure portal で Azure SQL リソースを作成して管理する
+
+Azure portal には、SQL 仮想マシンを含む[すべての Azure SQL リソース](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql)を管理できる単一ページが用意されています。
+
+**[Azure SQL resources]\(Azure SQL リソース\)** ページにアクセスするには、Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「*Azure SQL*」と入力します。
+
+> [!NOTE]
+> **Azure SQL** には、すべての SQL データベース、エラスティック プール、データベース サーバー、SQL マネージド インスタンス、および SQL 仮想マシンにすばやく簡単にアクセスできる方法が用意されています。 Azure SQL はサービスでもリソースでもありません。 
+
+既存のリソースを管理するには、一覧から目的の項目を選択します。 新しい Azure SQL リソースを作成するには、 **[+ 追加]** を選択します。 
+
+![ポータルの Azure SQL のページ](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+
+**[+ 追加]** を選択した後、任意のタイルで **[詳細の表示]** を選択して、さまざまなオプションに関する追加情報を表示します。
+
+![データベース タイルの詳細](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
+
+詳細については、次のリンクを参照してください。
+
+- [単一データベースを作成する](../../../sql-database/sql-database-single-database-get-started.md)
+- [エラスティック プールの作成](../../../sql-database/sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)
+- [マネージド インスタンスを作成する](../../../sql-database/sql-database-managed-instance-get-started.md)
+- [SQL 仮想マシンを作成する](quickstart-sql-vm-create-portal.md)
 
 ## <a id="lifecycle"></a>SQL VM イメージの更新ポリシー
 Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](virtual-machines-windows-sql-server-iaas-faq.md#images) に関するページの「**イメージ**」セクションを参照してください。

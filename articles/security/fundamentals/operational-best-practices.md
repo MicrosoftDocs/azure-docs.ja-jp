@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 97f061d94209d84b70626f8735d08f89870e7319
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828718"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70129330"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -218,7 +218,7 @@ Azure Policy の採用後に従うセキュリティのベストプラクティ�
 **詳細**: Azure [ポリシーの説明](../../governance/policy/concepts/definition-structure.md#display-name-and-description)内または Azure ポリシー [イニシアティブ](../../governance/policy/concepts/definition-structure.md#initiatives)の説明内に組織のポリシーへの参照を追加することにより、組織のドキュメント内または Azure ポリシー自体にマッピングをドキュメント化します。
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Azure AD のリスク レポートの監視
-ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業ではありません。 Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、[リスク イベント](../../active-directory/reports-monitoring/concept-risk-events.md)と呼ばれるレコードに格納されます。 リスク イベントは、Azure AD のセキュリティ レポートに記録されます。 詳細については、[危険な状態のユーザー セキュリティ レポート](../../active-directory/reports-monitoring/concept-user-at-risk.md)に関する記事、および[リスクの高いサインイン セキュリティ レポート](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)に関する記事をご覧ください。
+ほとんどのセキュリティ侵害は、攻撃者がユーザーの ID を盗むことにより環境にアクセスできるようになると発生します。 侵害された ID を検出するのは簡単な作業ではありません。 Azure AD では、アダプティブ機械学習アルゴリズムとヒューリスティックを使用して、ユーザー アカウントに関連する疑わしいアクションを検出します。 検出された疑わしいアクションはそれぞれ、[リスク検出](../../active-directory/reports-monitoring/concept-risk-events.md)と呼ばれるレコードに格納されます。 リスク検出は、Azure AD のセキュリティ レポートに記録されます。 詳細については、[危険な状態のユーザー セキュリティ レポート](../../active-directory/reports-monitoring/concept-user-at-risk.md)に関する記事、および[リスクの高いサインイン セキュリティ レポート](../../active-directory/reports-monitoring/concept-risky-sign-ins.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 Azure を使用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスの詳細については、「[Azure セキュリティのベスト プラクティスとパターン](best-practices-and-patterns.md)」を参照してください。

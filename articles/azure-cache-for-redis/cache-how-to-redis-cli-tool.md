@@ -81,7 +81,7 @@ redis-cli.exe -p 6380 -a YourAccessKey
 
 ![stunnel と redis-cli](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
-**安全度の低い**非 SSL ポート経由でテスト用キャッシュを使用する場合は､`redis-cli.exe` を実行して､*ホスト名*と*ぽーと*､*アクセス キー* (プライマリかセカンダリ) を指定することでテスト用キャッシュに接続できます｡
+**安全度の低い**非 SSL ポート経由でテスト用キャッシュを使用する場合は､`redis-cli.exe` を実行して､*ホスト名*と*ポート*､*アクセス キー* (プライマリかセカンダリ) を指定することでテスト用キャッシュに接続できます｡
 
 ```
 redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey

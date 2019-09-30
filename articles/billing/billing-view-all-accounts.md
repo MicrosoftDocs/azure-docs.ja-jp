@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
 ms.openlocfilehash: 36430e9b0a4554761d53b537d3c32fa57068eabb
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
+ms.lasthandoff: 09/11/2019
 ms.locfileid: "67490213"
 ---
 # <a name="view-billing-accounts-in-azure-portal"></a>Azure portal での課金アカウントの表示  
@@ -43,7 +43,7 @@ Azure を使用するためにサインアップすると、課金アカウン�
 |Scope (スコープ)  |定義  |
 |---------|---------|
 |請求先アカウント     | 1 つまたは複数の Azure サブスクリプションの 1 人の所有者 (アカウント管理者) を表します。 アカウント管理者には、サブスクリプションの作成、請求書の表示、サブスクリプションの課金の変更など、さまざまな課金タスクを実行する権限があります。  |
-|サブスクリプション     |  Azure リソースのグループを表します。 請求書はこのスコープで生成されます。 請求書の支払いに使用される独自の支払方法があります。|
+|Subscription     |  Azure リソースのグループを表します。 請求書はこのスコープで生成されます。 請求書の支払いに使用される独自の支払方法があります。|
 
 
 ### <a name="enterprise-agreement"></a>Enterprise Agreement

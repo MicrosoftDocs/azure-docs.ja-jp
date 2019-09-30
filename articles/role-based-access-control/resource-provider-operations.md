@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/08/2019
+ms.date: 08/27/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2d3a303cb00bab6f67abbc6354ca785880759e4d
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: dce9308230c2a82c66b1d8689123d9d34fc6e408
+ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945531"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70114685"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
@@ -643,16 +643,27 @@ ms.locfileid: "68945531"
 > | --- | --- | --- |
 > | Action | Microsoft.Billing/billingAccounts/agreements/read |  |
 > | Action | Microsoft.Billing/billingAccounts/billingPermissions/read |  |
+> | Action | Microsoft.Billing/billingAccounts/billingProfiles/billingPermissions/read |  |
+> | Action | Microsoft.Billing/billingAccounts/billingProfiles/customers/read |  |
 > | Action | Microsoft.Billing/billingAccounts/billingProfiles/invoices/pricesheet/download/action |  |
+> | Action | Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections/billingPermissions/read |  |
 > | Action | Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections/read |  |
+> | Action | Microsoft.Billing/billingAccounts/billingProfiles/invoiceSections/write |  |
 > | Action | Microsoft.Billing/billingAccounts/billingProfiles/pricesheet/download/action |  |
 > | Action | Microsoft.Billing/billingAccounts/billingProfiles/read |  |
+> | Action | Microsoft.Billing/billingAccounts/billingProfiles/write |  |
+> | Action | Microsoft.Billing/billingAccounts/customers/billingPermissions/read |  |
 > | Action | Microsoft.Billing/billingAccounts/customers/read |  |
 > | Action | Microsoft.Billing/billingAccounts/departments/read |  |
+> | Action | Microsoft.Billing/billingAccounts/enrollmentAccounts/billingPermissions/read |  |
 > | Action | Microsoft.Billing/billingAccounts/enrollmentAccounts/read |  |
+> | Action | Microsoft.Billing/billingAccounts/enrollmentDepartments/billingPermissions/read |  |
 > | Action | Microsoft.Billing/billingAccounts/products/read |  |
 > | Action | Microsoft.Billing/billingAccounts/read |  |
+> | Action | Microsoft.Billing/billingAccounts/write |  |
 > | Action | Microsoft.Billing/departments/read |  |
+> | Action | Microsoft.Billing/register/action |  |
+> | Action | Microsoft.Billing/validateAddress/write |  |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 
@@ -1126,6 +1137,7 @@ ms.locfileid: "68945531"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | DataAction | Microsoft.CognitiveServices/accounts/Autosuggest/search/action | この操作は、特定のクエリまたは部分クエリの候補を提供します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/analyze/action | この操作では､画像の内容に基づいて、さまざまな視覚的特徴のセットを抽出できます。  |
 > | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/areaofinterest/action | この操作は、画像の最も重要な部分を囲む境界ボックスを返します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/describe/action | この操作は、完全な文を使用して、人間が判読できる言語でイメージ全体の説明を生成します。<br> 説明はコンテンツ タグのコレクションに基づいていますが、コンテンツ タグもこの操作によって返されます。<br>各画像に対して複数の説明が生成されることがあります。<br> 説明はその信頼度スコアの順に並んでいます。<br>すべての説明は英語です。 |
@@ -1138,6 +1150,7 @@ ms.locfileid: "68945531"
 > | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/tag/action | この操作は、指定された画像のコンテンツに関連する単語すなわちタグのリストを生成します。<br>Computer Vision API は、画像内で検出された物体、生物、景色、または動作に基づくタグを返すことができます。<br>カテゴリとは異なり、タグは階層的分類システムで整理されていませんが、画像のコンテンツに対応しています。<br>タグにあいまいさを回避するためのヒントが含まれたり、タグによってコンテキストが提供されたりすることがあります。たとえば、"cello" (チェロ) というタグに "musical instrument" (楽器) というヒントが付く場合があります。<br>すべてのタグは英語です。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/textoperations/read | このインターフェイスは、テキスト認識操作結果を取得するために使用されます。 このインターフェイスの URL は、テキスト認識インターフェイスの <b>Operation-Location</b> フィールドから取得する必要があります。 |
 > | Action | Microsoft.CognitiveServices/accounts/delete | API アカウントを削除します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/EntitySearch/search/action | 特定のクエリのエンティティを取得し、結果を格納します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/detect/action | 画像内の人間の顔を検出して、顔を示す四角形を返します。必要に応じて、FaceId、ランドマーク、および属性も返します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/delete | 指定された顔リストを削除します。 顔リスト内の関連する顔画像も削除されます。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/delete | 指定された faceListId と persisitedFaceId に基づいて顔リストから顔を削除します。 関連する顔画像も削除されます。 |
@@ -1180,22 +1193,37 @@ ms.locfileid: "68945531"
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/training/read | 人物グループのトレーニング状態が完了か実行中かをチェックします。 PersonGroup トレーニングは、トリガーされる非同期操作です。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | 指定された personGroupId、name、およびユーザー提供の userData を使用して新しい人物グループを作成します。 既存の人物グループの name と userData を更新します。 プロパティが要求本文にない場合、プロパティは変更されません。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/Face/verify/action | 2 つの顔が同一人物に属しているか 1 つの顔が 1 人の人物に属しているかを確認します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/ImageSearch/details/action | 画像を含む Web ページなど、画像に関する分析情報を返します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/ImageSearch/search/action | 特定のクエリに関連する画像を取得します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/ImageSearch/trending/action | 現在の注目の画像を取得します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/ImmersiveReader/getcontentmodelforreader/action | イマーシブ リーダー セッションを作成します |
+> | DataAction | Microsoft.CognitiveServices/accounts/InkRecognizer/recognize/action | ストローク データのセットによってコンテンツを分析し、認識されたテキストを含む認識されたエンティティのリストを生成します。 |
 > | Action | Microsoft.CognitiveServices/accounts/listKeys/action | キーを一覧表示します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/LUIS/predict/action | 指定されたクエリについて公開されたエンドポイント予測を取得します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/NewsSearch/categorysearch/action | 指定されたカテゴリのニュースを返します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/NewsSearch/search/action | 特定のクエリに関連するニュース記事を取得します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/NewsSearch/trendingtopics/action | Bing によって識別される注目のトピックを取得します。 これらは、Bing ホーム ページの下部にあるバナーに表示されるのと同じトピックです。 |
 > | Action | Microsoft.CognitiveServices/accounts/read | API アカウントを読み取ります。 |
 > | Action | Microsoft.CognitiveServices/accounts/regenerateKey/action | キーを再生成します。 |
 > | Action | Microsoft.CognitiveServices/accounts/skus/read | 既存のリソースの使用可能な SKU を読み取ります。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/SpellCheck/spellcheck/action | GET または POST を使用してスペル チェック クエリの結果を取得します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/entities/action | この API は、指定されたドキュメント内の既知のエンティティと一般的な名前付きエンティティ (\"Person\"、\"Location\"、\"Organization\" など) を返します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/keyphrases/action | API は、入力テキストの要点を示す文字列のリストを返します。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/languages/action | この API は、検出した言語と 0 から 1 までの数値スコアを返します。 1 に近いスコアは、100% の確実性で正しい言語が特定されたことを示します。 合計で 120 種類の言語がサポートされています。 |
 > | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/sentiment/action | この API は 0 から 1 までの数値スコアを返します。<br>1 に近いスコアは正のセンチメントを表し、0 に近いスコアは負のセンチメントを表します。<br>スコア 0.5 はセンチメント不足を示します (例:<br>factoid ステートメントなど)。 |
 > | Action | Microsoft.CognitiveServices/accounts/usages/read | 既存のリソースのクォータ使用率を取得します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/VideoSearch/details/action | 関連動画など、動画に関する分析情報を取得します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/VideoSearch/search/action | 特定のクエリに関連する動画を取得します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/VideoSearch/trending/action | 現在急上昇中の動画を取得します。 |
+> | DataAction | Microsoft.CognitiveServices/accounts/VisualSearch/search/action | 指定された画像に関連するタグの一覧を返します |
+> | DataAction | Microsoft.CognitiveServices/accounts/WebSearch/search/action | 特定のクエリの Web、画像、ニュース、および動画の結果を取得します。 |
 > | Action | Microsoft.CognitiveServices/accounts/write | API アカウントを書き込みます。 |
 > | Action | Microsoft.CognitiveServices/checkDomainAvailability/action | サブスクリプションで使用可能な SKU を読み取ります。 |
 > | Action | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | サブスクリプションで使用可能な SKU を読み取ります。 |
+> | Action | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | サブスクリプションで使用可能な SKU を読み取ります。 |
 > | Action | Microsoft.CognitiveServices/locations/deleteVirtualNetworkOrSubnets/action | VirtualNetworks または Subnets の削除に関する Microsoft.Network からの通知。 |
 > | Action | Microsoft.CognitiveServices/Operations/read | 使用可能なすべての操作を一覧表示します。 |
+> | Action | Microsoft.CognitiveServices/register/action | Cognitive Services にサブスクリプションを登録します。 |
 > | Action | Microsoft.CognitiveServices/register/action | Cognitive Services にサブスクリプションを登録します。 |
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
@@ -1392,8 +1420,11 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.ContainerInstance/locations/cachedImages/read | リージョン内のサブスクリプションに対してキャッシュされたイメージを取得します。 |
 > | Action | Microsoft.ContainerInstance/locations/capabilities/read | リージョンの機能を取得します。 |
 > | Action | Microsoft.ContainerInstance/locations/deleteVirtualNetworkOrSubnets/action | 仮想ネットワークまたはサブネットを削除していることを Microsoft.ContainerInstance に通知します。 |
+> | Action | Microsoft.ContainerInstance/locations/operations/read | Azure コンテナー インスタンス サービスの操作を一覧表示します。 |
 > | Action | Microsoft.ContainerInstance/locations/usages/read | 特定のリージョンの使用状況を取得します。 |
+> | Action | Microsoft.ContainerInstance/operations/read | Azure コンテナー インスタンス サービスの操作を一覧表示します。 |
 > | Action | Microsoft.ContainerInstance/register/action | コンテナー インスタンス リソース プロバイダーのサブスクリプションを登録し、コンテナー グループの作成を有効にします。 |
+> | Action | Microsoft.ContainerInstance/serviceassociationlinks/delete | サブネット上の Azure コンテナー インスタンス リソースプロバイダーによって作成されたサービス関連付けリンクを削除します。 |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
@@ -1556,7 +1587,7 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.DataBox/locations/regionConfiguration/action | このメソッドでは、リージョンの構成が返されます。 |
 > | Action | Microsoft.DataBox/locations/validateAddress/action | 配送先住所を検証し、存在する場合には別の住所を指定します。 |
 > | Action | Microsoft.DataBox/locations/validateInputs/action | このメソッドでは、すべての種類の検証が行われます。 |
-> | Action | Microsoft.DataBox/providers/operations/read | 操作を一覧表示または取得します |
+> | Action | Microsoft.DataBox/operations/read | 操作を一覧表示または取得します |
 > | Action | Microsoft.DataBox/register/action | プロバイダー Microsoft.Databox を登録します |
 > | Action | Microsoft.DataBox/subscriptions/resourceGroups/moveResources/action |  |
 > | Action | Microsoft.DataBox/subscriptions/resourceGroups/validateMoveResources/action |  |
@@ -2067,8 +2098,19 @@ ms.locfileid: "68945531"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.Devices/Account/diagnosticSettings/read | リソースの診断設定を取得します。 |
+> | Action | Microsoft.Devices/Account/diagnosticSettings/write | リソースの診断設定を作成または更新します。 |
+> | Action | Microsoft.Devices/Account/logDefinitions/read | IotHub サービスで使用可能なログ定義を取得します。 |
+> | Action | Microsoft.Devices/Account/metricDefinitions/read | IotHub サービスの利用可能なメトリックを取得します。 |
+> | Action | Microsoft.Devices/checkNameAvailability/Action | IotHub 名を使用できるかどうかを確認します。 |
 > | Action | Microsoft.Devices/checkNameAvailability/Action | IotHub 名を使用できるかどうかを確認します。 |
 > | Action | Microsoft.Devices/checkProvisioningServiceNameAvailability/Action | プロビジョニング サービス名を使用できるかどうかを確認します。 |
+> | Action | Microsoft.Devices/checkProvisioningServiceNameAvailability/Action | プロビジョニング サービス名を使用できるかどうかを確認します。 |
+> | Action | Microsoft.Devices/digitalTwins/Delete | 既存の Digital Twins アカウントとそのすべての子を削除します |
+> | Action | Microsoft.Devices/digitalTwins/operationresults/Read | Digital Twins アカウントに対する操作の状態を取得します |
+> | Action | Microsoft.Devices/digitalTwins/Read | サブスクリプションに関連付けられている Digital Twins アカウントの一覧を取得します |
+> | Action | Microsoft.Devices/digitalTwins/skus/Read | Digital Twins アカウントの有効な SKU の一覧を取得します |
+> | Action | Microsoft.Devices/digitalTwins/Write | 新しい Digital Twins アカウントを作成します |
 > | Action | Microsoft.Devices/ElasticPools/diagnosticSettings/read | リソースの診断設定を取得します。 |
 > | Action | Microsoft.Devices/ElasticPools/diagnosticSettings/write | リソースの診断設定を作成または更新します。 |
 > | Action | Microsoft.Devices/elasticPools/iotHubTenants/certificates/Delete | 証明書を削除します。 |
@@ -2807,6 +2849,7 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Insights/Logs/SQLQueryPerformance/Read | SQLQueryPerformance テーブルからデータを読み取ります。 |
 > | Action | Microsoft.Insights/Logs/Syslog/Read | Syslog テーブルからデータを読み取ります。 |
 > | Action | Microsoft.Insights/Logs/SysmonEvent/Read | SysmonEvent テーブルからデータを読み取ります。 |
+> | Action | Microsoft.Insights/Logs/Tables.Custom/Read | カスタム ログからデータを読み取っています。 |
 > | Action | Microsoft.Insights/Logs/UAApp/Read | UAApp テーブルからデータを読み取ります。 |
 > | Action | Microsoft.Insights/Logs/UAComputer/Read | UAComputer テーブルからデータを読み取ります。 |
 > | Action | Microsoft.Insights/Logs/UAComputerRank/Read | UAComputerRank テーブルからデータを読み取ります。 |
@@ -2864,6 +2907,9 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Insights/Webtests/Metrics/Read | Web テストのメトリックを読み取ります。 |
 > | Action | Microsoft.Insights/Webtests/Read | Web テストの構成を読み取ります。 |
 > | Action | Microsoft.Insights/Webtests/Write | Web テストの構成を書き込みます。 |
+> | Action | Microsoft.Insights/Workbooks/Delete | ブックを削除します |
+> | Action | Microsoft.Insights/Workbooks/Read | ブックを読み取ります |
+> | Action | Microsoft.Insights/Workbooks/Write | ブックを作成または更新します |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
@@ -2979,9 +3025,6 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.LabServices/labAccounts/galleryImages/read | ギャラリー イメージを読み取ります。 |
 > | Action | Microsoft.LabServices/labAccounts/galleryImages/write | ギャラリー イメージを追加または変更します。 |
 > | Action | Microsoft.LabServices/labAccounts/GetRegionalAvailability/action | ラボ アカウントの下で構成されたサイズ カテゴリ別のリージョン別の提供状況を取得します。 |
-> | Action | Microsoft.LabServices/labAccounts/idleShutdowns/delete | アイドル シャットダウンを削除します。 |
-> | Action | Microsoft.LabServices/labAccounts/idleShutdowns/read | アイドル シャットダウンを読み取ります。 |
-> | Action | Microsoft.LabServices/labAccounts/idleShutdowns/write | アイドル シャットダウンを追加または変更します。 |
 > | Action | Microsoft.LabServices/labAccounts/labs/AddUsers/action | ラボへのユーザーの追加 |
 > | Action | Microsoft.LabServices/labAccounts/labs/delete | ラボを削除します。 |
 > | Action | Microsoft.LabServices/labAccounts/labs/environmentSettings/delete | 環境の設定を削除します。 |
@@ -3405,9 +3448,9 @@ ms.locfileid: "68945531"
 > | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | 空間アンカーを削除します。 |
 > | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | 近くにある空間アンカーを検出します。 |
 > | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | 空間アンカーのプロパティを取得します。 |
-> | Action | Microsoft.MixedReality/SpatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/read | Microsoft.MixedReality/SpatialAnchorsAccounts の診断設定を取得します。 |
-> | Action | Microsoft.MixedReality/SpatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | Microsoft.MixedReality/SpatialAnchorsAccounts の診断設定を作成または更新します。 |
-> | Action | Microsoft.MixedReality/SpatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions/read | Microsoft.MixedReality/SpatialAnchorsAccounts の使用可能なメトリックを取得します。 |
+> | Action | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/read | Microsoft.MixedReality/spatialAnchorsAccounts の診断設定を取得します |
+> | Action | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | Microsoft.MixedReality/spatialAnchorsAccounts の診断設定を作成または更新します |
+> | Action | Microsoft.MixedReality/spatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions/read | Microsoft.MixedReality/spatialAnchorsAccounts の使用可能なメトリックを取得します |
 > | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | 空間アンカーを探します。 |
 > | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Azure Spatial Anchors サービスの品質を改善するために診断データを送信します。 |
 > | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/write | 空間アンカーのプロパティを更新します。 |
@@ -3705,6 +3748,7 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Network/p2sVpnGateways/delete | P2SVpnGateway を削除します。 |
 > | Action | Microsoft.Network/p2sVpnGateways/generatevpnprofile/action | P2SVpnGateway の VPN プロファイルを生成します |
 > | Action | Microsoft.Network/p2sVpnGateways/getp2svpnconnectionhealth/action | P2SVpnGateway の P2S Vpn 接続の状態を取得します |
+> | Action | Microsoft.Network/p2sVpnGateways/getp2svpnconnectionhealthdetailed/action | P2SVpnGateway の詳細な P2S Vpn 接続の正常性を取得します |
 > | Action | Microsoft.Network/p2sVpnGateways/read | P2SVpnGateway を取得します。 |
 > | Action | Microsoft.Network/p2sVpnGateways/write | P2SVpnGateway を設定します。 |
 > | Action | Microsoft.Network/privateDnsOperationResults/read | プライベート DNS 操作の結果を取得します |
@@ -3740,6 +3784,8 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Network/privateDnsZones/virtualNetworkLinks/read | 仮想ネットワークのプロパティへのプライベート DNS ゾーンのリンクを JSON 形式で取得します。 |
 > | Action | Microsoft.Network/privateDnsZones/virtualNetworkLinks/write | 仮想ネットワークへのプライベート DNS ゾーンのリンクを作成または更新します。 |
 > | Action | Microsoft.Network/privateDnsZones/write | リソース グループ内のプライベート DNS ゾーンを作成または更新します。 このコマンドを使用して、ゾーン内の仮想ネットワーク リンクまたはレコード セットを作成または更新することはできません。 |
+> | Action | Microsoft.Network/privateEndpointRedirectMaps/read | プライベート エンドポイントの RedirectMap を取得します |
+> | Action | Microsoft.Network/privateEndpointRedirectMaps/write | 新しいプライベート エンドポイントの RedirectMap を作成するか、既存のプライベート エンドポイントの RedirectMap を更新します |
 > | Action | Microsoft.Network/privateEndpoints/delete | プライベート エンドポイント リソースを削除します。 |
 > | Action | Microsoft.Network/privateEndpoints/read | プライベート エンドポイント リソースを取得します |
 > | Action | Microsoft.Network/privateEndpoints/write | 新しいプライベート エンドポイントを作成するか、または既存のプライベート エンドポイントを更新します。 |
@@ -3806,6 +3852,9 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Network/virtualHubs/hubVirtualNetworkConnections/read | HubVirtualNetworkConnection を取得します。 |
 > | Action | Microsoft.Network/virtualHubs/hubVirtualNetworkConnections/write | HubVirtualNetworkConnection を作成または更新します。 |
 > | Action | Microsoft.Network/virtualHubs/read | 仮想ハブを取得します。 |
+> | Action | Microsoft.Network/virtualHubs/routeTables/delete | VirtualHubRouteTableV2 を削除します |
+> | Action | Microsoft.Network/virtualHubs/routeTables/read | VirtualHubRouteTableV2 を取得します |
+> | Action | Microsoft.Network/virtualHubs/routeTables/write | VirtualHubRouteTableV2 を作成または更新します |
 > | Action | Microsoft.Network/virtualHubs/write | 仮想ハブを作成または更新します。 |
 > | Action | microsoft.network/virtualnetworkgateways/connections/read | VirtualNetworkGatewayConnection を取得します。 |
 > | Action | Microsoft.Network/virtualNetworkGateways/delete | virtualNetworkGateway を削除します。 |
@@ -3835,6 +3884,7 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | ストレージ アカウントや SQL Database などのリソースをサブネットに結合します。 警告不可能です。 |
 > | Action | Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action | 必要なネットワーク ポリシーを適用してサブネットを準備します。 |
 > | Action | Microsoft.Network/virtualNetworks/subnets/read | 仮想ネットワーク サブネットの定義を取得します。 |
+> | Action | Microsoft.Network/virtualNetworks/subnets/unprepareNetworkPolicies/action | 適用されたネットワーク ポリシーを削除してサブネットの準備を解除します |
 > | Action | Microsoft.Network/virtualNetworks/subnets/virtualMachines/read | 仮想ネットワーク サブネットのすべての仮想マシンへの参照を取得します。 |
 > | Action | Microsoft.Network/virtualNetworks/subnets/write | 仮想ネットワーク サブネットを作成するか、既存の仮想ネットワーク サブネットを更新します。 |
 > | Action | Microsoft.Network/virtualNetworks/usages/read | 仮想ネットワークの各サブネットの IP の使用状況を取得します。 |
@@ -3847,14 +3897,20 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Network/virtualNetworkTaps/join/action | 仮想ネットワーク タップに参加します。 警告不可能です。 |
 > | Action | Microsoft.Network/virtualNetworkTaps/read | 仮想ネットワーク タップを取得します。 |
 > | Action | Microsoft.Network/virtualNetworkTaps/write | 仮想ネットワーク タップを作成または更新します。 |
+> | Action | Microsoft.Network/virtualRouters/delete | VirtualRouter を削除します |
+> | Action | Microsoft.Network/virtualRouters/join/action | VirtualRouter に参加します。 警告不可能です。 |
+> | Action | Microsoft.Network/virtualRouters/read | VirtualRouter を取得します |
+> | Action | Microsoft.Network/virtualRouters/virtualRouterPeerings/delete | VirtualRouterPeering を削除します |
+> | Action | Microsoft.Network/virtualRouters/virtualRouterPeerings/read | VirtualRouterPeering を取得します |
+> | Action | Microsoft.Network/virtualRouters/virtualRouterPeerings/write | VirtualRouterPeering を作成するか、既存の VirtualRouterPeering を更新します |
+> | Action | Microsoft.Network/virtualRouters/write | VirtualRouter を作成するか、既存の VirtualRouter を更新します |
 > | Action | Microsoft.Network/virtualWans/delete | 仮想 WAN を削除します。 |
-> | Action | Microsoft.network/virtualWans/p2sVpnServerConfigurations/delete | 仮想 WAN の P2SVpnServerConfiguration を削除します |
-> | Action | Microsoft.Network/virtualWans/p2sVpnServerConfigurations/read | 仮想 WAN の P2SVpnServerConfiguration を取得します |
-> | Action | Microsoft.network/virtualWans/p2sVpnServerConfigurations/write | 仮想 WAN P2SVpnServerConfiguration を作成するか、または既存の仮想 WAN P2SVpnServerConfiguration を更新します |
+> | Action | Microsoft.Network/virtualwans/generateVpnProfile/action | VirtualWanVpnServerConfiguration VpnProfile を生成します |
 > | Action | Microsoft.Network/virtualWans/read | 仮想 WAN を取得します。 |
 > | Action | Microsoft.Network/virtualwans/supportedSecurityProviders/read | サポートされている VirtualWan セキュリティ プロバイダーを取得します。 |
 > | Action | Microsoft.Network/virtualWans/virtualHubs/read | 仮想 WAN を参照するすべての仮想ハブを取得します。 |
 > | Action | Microsoft.Network/virtualwans/vpnconfiguration/action | VPN 構成を取得します。 |
+> | Action | Microsoft.Network/virtualwans/vpnServerConfigurations/action | VirtualWanVpnServerConfigurations を取得します |
 > | Action | Microsoft.Network/virtualWans/vpnSites/read | 仮想 WAN を参照するすべての VPN サイトを取得します。 |
 > | Action | Microsoft.Network/virtualWans/write | 仮想 WAN ハブを作成または更新します。 |
 > | Action | Microsoft.Network/vpnGateways/delete | VpnGateway を削除します。 |
@@ -3866,6 +3922,9 @@ ms.locfileid: "68945531"
 > | Action | microsoft.network/vpnGateways/vpnConnections/vpnLinkConnections/read | VPN リンク接続を取得します |
 > | Action | microsoft.network/vpnGateways/vpnConnections/write | VpnConnection を設定します。 |
 > | Action | Microsoft.Network/vpnGateways/write | VpnGateway を設定します。 |
+> | Action | Microsoft.Network/vpnServerConfigurations/delete | VpnServerConfiguration を削除します |
+> | Action | Microsoft.Network/vpnServerConfigurations/read | VpnServerConfiguration を取得します |
+> | Action | Microsoft.Network/vpnServerConfigurations/write | VpnServerConfiguration を作成または更新します |
 > | Action | Microsoft.Network/vpnsites/delete | VPN サイト リソースを削除します。 |
 > | Action | Microsoft.Network/vpnsites/read | VPN サイト リソースを取得します。 |
 > | Action | microsoft.network/vpnSites/vpnSiteLinks/read | VPN サイト リンクを取得します |
@@ -3998,9 +4057,13 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.OperationalInsights/workspaces/query/ADSecurityAssessmentRecommendation/read | ADSecurityAssessmentRecommendation テーブルからデータを読み取ります。 |
 > | Action | Microsoft.OperationalInsights/workspaces/query/Alert/read | Alert テーブルからデータを読み取ります。 |
 > | Action | Microsoft.OperationalInsights/workspaces/query/AlertHistory/read | AlertHistory テーブルからデータを読み取ります。 |
+> | Action | Microsoft.OperationalInsights/workspaces/query/AmlComputeClusterEvent/read | AmlComputeClusterEvent テーブルからデータを読み取ります |
+> | Action | Microsoft.OperationalInsights/workspaces/query/AmlComputeClusterNodeEvent/read | AmlComputeClusterNodeEvent テーブルからデータを読み取ります |
+> | Action | Microsoft.OperationalInsights/workspaces/query/AmlComputeJobEvent/read | AmlComputeJobEvent テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/ApiManagementGatewayLogs/read | ApiManagementGatewayLogs テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/AppCenterError/read | AppCenterError テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | ApplicationInsights テーブルからデータを読み取ります。 |
+> | Action | Microsoft.OperationalInsights/workspaces/query/AppPlatformLogsforSpring/read | AppPlatformLogsforSpring テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/AuditLogs/read | AuditLogs テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/AutoscaleEvaluationsLog/read | AutoscaleEvaluationsLog テーブルからデータを読み取ります。 |
 > | Action | Microsoft.OperationalInsights/workspaces/query/AutoscaleScaleActionsLog/read | AutoscaleScaleActionsLog テーブルからデータを読み取ります。 |
@@ -4008,6 +4071,9 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.OperationalInsights/workspaces/query/AzureActivity/read | AzureActivity テーブルからデータを読み取ります。 |
 > | Action | Microsoft.OperationalInsights/workspaces/query/AzureAssessmentRecommendation/read | AzureAssessmentRecommendation テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/AzureMetrics/read | AzureMetrics テーブルからデータを読み取ります。 |
+> | Action | Microsoft.OperationalInsights/workspaces/query/BaiClusterEvent/read | BaiClusterEvent テーブルからデータを読み取ります |
+> | Action | Microsoft.OperationalInsights/workspaces/query/BaiClusterNodeEvent/read | BaiClusterNodeEvent テーブルからデータを読み取ります |
+> | Action | Microsoft.OperationalInsights/workspaces/query/BaiJobEvent/read | BaiJobEvent テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/BlockchainApplicationLog/read | BlockchainApplicationLog テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/BlockchainProxyLog/read | BlockchainProxyLog テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/BoundPort/read | BoundPort テーブルからデータを読み取ります。 |
@@ -4026,6 +4092,7 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.OperationalInsights/workspaces/query/DatabricksAccounts/read | DatabricksAccounts テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/DatabricksClusters/read | DatabricksClusters テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/DatabricksDBFS/read | DatabricksDBFS テーブルからデータを読み取ります |
+> | Action | Microsoft.OperationalInsights/workspaces/query/DatabricksInstancePools/read | DatabricksInstancePools テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/DatabricksJobs/read | DatabricksJobs テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/DatabricksNotebook/read | DatabricksNotebook テーブルからデータを読み取ります |
 > | Action | Microsoft.OperationalInsights/workspaces/query/DatabricksSecrets/read | DatabricksSecrets テーブルからデータを読み取ります |
@@ -4302,63 +4369,63 @@ ms.locfileid: "68945531"
 > | --- | --- | --- |
 > | Action | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
 > | Action | Microsoft.RecoveryServices/locations/allocateStamp/action | AllocateStamp は、サービスによって使用される内部操作です。 |
-> | Action | microsoft.recoveryservices/Locations/backupPreValidateProtection/action |  |
-> | Action | microsoft.recoveryservices/Locations/backupProtectedItem/write | バックアップ保護項目を作成します。 |
-> | Action | microsoft.recoveryservices/Locations/backupProtectedItems/read | すべての保護された項目の一覧を返します。 |
-> | Action | microsoft.recoveryservices/Locations/backupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
-> | Action | microsoft.recoveryservices/Locations/backupValidateFeatures/action | 機能を検証します。 |
+> | Action | Microsoft.RecoveryServices/Locations/backupPreValidateProtection/action |  |
+> | Action | Microsoft.RecoveryServices/Locations/backupProtectedItem/write | バックアップ保護項目を作成します。 |
+> | Action | Microsoft.RecoveryServices/Locations/backupProtectedItems/read | すべての保護された項目の一覧を返します。 |
+> | Action | Microsoft.RecoveryServices/Locations/backupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
+> | Action | Microsoft.RecoveryServices/Locations/backupValidateFeatures/action | 機能を検証します。 |
 > | Action | Microsoft.RecoveryServices/locations/checkNameAvailability/action | リソース名の可用性がリソース名を使用できるかどうかを確認するための API であることを確認します |
 > | Action | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
 > | Action | Microsoft.RecoveryServices/operations/read | リソース プロバイダーの操作の一覧を返します。 |
 > | Action | Microsoft.RecoveryServices/register/action | 指定されたリソース プロバイダーにサブスクリプションを登録します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupconfig/read | Recovery Services コンテナーの構成を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupconfig/write | Recovery Services コンテナーの構成を更新します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupEngines/read | コンテナーに登録されているすべてのバックアップ管理サーバーを返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/delete | バックアップ保護の意図を削除します |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/read | バックアップ保護の意図を取得します |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/backupProtectionIntent/write | バックアップの保護インテントを作成します |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/operationResults/read | 操作の状態を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/operationsStatus/read | 操作の状態を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectableContainers/read | すべての保護可能なコンテナーを取得します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/delete | 登録済みコンテナーを削除します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/inquire/action | コンテナー内のワークロードを照会します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/items/read | コンテナー内のすべての項目を取得します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/operationResults/read | 保護コンテナーに対して実行された操作の結果を取得します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/operationsStatus/read | 保護コンテナーに対して実行された操作の状態を取得します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 保護された項目のバックアップを実行します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | 保護された項目を削除します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 保護された項目に対して実行された操作の結果を取得します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 保護された項目に対して実行された操作の状態を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 保護された項目のオブジェクトの詳細を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 保護された項目のインスタント項目回復をプロビジョニングします。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 保護された項目の復旧ポイントを取得します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 保護された項目の復旧ポイントを復元します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 保護された項目のインスタント項目回復を取り消します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/protectedItems/write | バックアップ保護項目を作成します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/read | すべての登録済みコンテナーを返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/protectionContainers/write | 登録済みコンテナーを作成します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupJobs/cancel/action | ジョブを取り消します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupJobs/operationsStatus/read | ジョブ操作の状態を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
-> | Action | microsoft.recoveryservices/Vaults/backupOperationResults/read | Recovery Services コンテナーに対するバックアップ操作の結果を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupOperations/read | Recovery Services コンテナーに対するバックアップ操作の状態を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupPolicies/delete | 保護ポリシーを削除します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupPolicies/operations/read | ポリシー操作の状態を取得します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupPolicies/write | 保護ポリシーを作成します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupProtectableItems/read | すべての保護可能な項目の一覧を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupProtectedItems/read | すべての保護された項目の一覧を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupProtectionContainers/read | サブスクリプションに属するすべてのコンテナーを返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
-> | Action | microsoft.recoveryservices/Vaults/backupSecurityPIN/action | Recovery Services コンテナーのセキュリティ PIN 情報を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupstorageconfig/read | Recovery Services コンテナーのストレージ構成を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupstorageconfig/write | Recovery Services コンテナーのストレージ構成を更新します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupUsageSummaries/read | Recovery Services の保護された項目と保護されたサーバーの概要を返します。 |
-> | Action | microsoft.recoveryservices/Vaults/backupValidateOperation/action | 保護された項目に対する操作を検証します |
+> | Action | Microsoft.RecoveryServices/Vaults/backupconfig/read | Recovery Services コンテナーの構成を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupconfig/write | Recovery Services コンテナーの構成を更新します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupEngines/read | コンテナーに登録されているすべてのバックアップ管理サーバーを返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/delete | バックアップ保護の意図を削除します |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | バックアップ保護の意図を取得します |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | バックアップの保護インテントを作成します |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 操作の状態を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/operationsStatus/read | 操作の状態を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | すべての保護可能なコンテナーを取得します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/delete | 登録済みコンテナーを削除します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | コンテナー内のワークロードを照会します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | コンテナー内のすべての項目を取得します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 保護コンテナーに対して実行された操作の結果を取得します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationsStatus/read | 保護コンテナーに対して実行された操作の状態を取得します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 保護された項目のバックアップを実行します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/delete | 保護された項目を削除します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 保護された項目に対して実行された操作の結果を取得します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 保護された項目に対して実行された操作の状態を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 保護された項目のオブジェクトの詳細を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | 保護された項目のインスタント項目回復をプロビジョニングします。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 保護された項目の復旧ポイントを取得します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | 保護された項目の復旧ポイントを復元します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 保護された項目のインスタント項目回復を取り消します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | バックアップ保護項目を作成します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | すべての登録済みコンテナーを返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | 登録済みコンテナーを作成します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | ジョブを取り消します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupJobs/operationsStatus/read | ジョブ操作の状態を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Recovery Services コンテナーに対するバックアップ操作の結果を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupOperations/read | Recovery Services コンテナーに対するバックアップ操作の状態を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/delete | 保護ポリシーを削除します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | ポリシー操作の状態を取得します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupPolicies/write | 保護ポリシーを作成します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | すべての保護可能な項目の一覧を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | すべての保護された項目の一覧を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | サブスクリプションに属するすべてのコンテナーを返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
+> | Action | Microsoft.RecoveryServices/Vaults/backupSecurityPIN/action | Recovery Services コンテナーのセキュリティ PIN 情報を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | Recovery Services コンテナーのストレージ構成を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupstorageconfig/write | Recovery Services コンテナーのストレージ構成を更新します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Recovery Services の保護された項目と保護されたサーバーの概要を返します。 |
+> | Action | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 保護された項目に対する操作を検証します |
 > | Action | Microsoft.RecoveryServices/Vaults/certificates/write | "リソース証明書を更新" 操作では、リソース/コンテナー資格情報証明書を更新します。 |
 > | Action | Microsoft.RecoveryServices/Vaults/delete | "コンテナーの削除" 操作では、指定された "コンテナー" 型の Azure リソースを削除します。 |
 > | Action | Microsoft.RecoveryServices/Vaults/extendedInformation/delete | "拡張情報の取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトの拡張情報を取得します。 |
@@ -4482,8 +4549,8 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.RecoveryServices/vaults/replicationVaultSettings/read | サポート対象のオペレーティング システムを読み取ります  |
 > | Action | Microsoft.RecoveryServices/vaults/replicationVaultSettings/write | を作成または更新します  |
 > | Action | Microsoft.RecoveryServices/vaults/replicationvCenters/read | vCenter を読み取ります |
-> | Action | microsoft.recoveryservices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Action | Microsoft.RecoveryServices/vaults/usages/read | コンテナーの使用状況を読み取ります |
+> | Action | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Action | Microsoft.RecoveryServices/Vaults/vaultTokens/read | "コンテナー トークン" 操作を使用すると、コンテナー レベルのバックエンド操作のコンテナー トークンを取得できます。 |
 > | Action | Microsoft.RecoveryServices/Vaults/write | "コンテナーの作成" 操作では、"コンテナー" 型の Azure リソースを作成します。 |
 
@@ -4566,11 +4633,14 @@ ms.locfileid: "68945531"
 > [!div class="mx-tdCol2BreakAll"]
 > | アクションの種類 | Operation | 説明 |
 > | --- | --- | --- |
+> | Action | Microsoft.Resources/calculateTemplateHash/action | 指定されたテンプレートのハッシュを計算します。 |
 > | Action | Microsoft.Resources/checkPolicyCompliance/action | 指定されたリソースのコンプライアンス状態をリソース ポリシーと照合します。 |
 > | Action | Microsoft.Resources/checkResourceName/action | リソース名の妥当性を確認します。 |
 > | Action | Microsoft.Resources/deployments/cancel/action | デプロイを取り消します。 |
 > | Action | Microsoft.Resources/deployments/delete | デプロイを削除します。 |
+> | Action | Microsoft.Resources/deployments/exportTemplate/action | デプロイのテンプレートをエクスポートします |
 > | Action | Microsoft.Resources/deployments/operations/read | デプロイ操作を取得または一覧表示します。 |
+> | Action | Microsoft.Resources/deployments/operationstatuses/read | デプロイ操作の状態を取得または一覧表示します。 |
 > | Action | Microsoft.Resources/deployments/read | デプロイを取得または一覧表示します。 |
 > | Action | Microsoft.Resources/deployments/validate/action | デプロイを検証します。 |
 > | Action | Microsoft.Resources/deployments/whatIf/action | テンプレートのデプロイの変更を予測します。 |
@@ -4975,6 +5045,7 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Sql/managedInstances/databases/write | 新しいデータベースを作成するか、既存のデータベースを更新します。 |
 > | Action | Microsoft.Sql/managedInstances/delete | 既存のマネージド インスタンスを削除します。 |
 > | Action | Microsoft.Sql/managedInstances/encryptionProtector/read | サーバー暗号化の保護機能の一覧を返すか、指定されたサーバー暗号化の保護機能のプロパティを取得します。 |
+> | Action | Microsoft.Sql/managedInstances/encryptionProtector/revalidate/action | 指定されたサーバー暗号化の保護機能のプロパティを更新します。 |
 > | Action | Microsoft.Sql/managedInstances/encryptionProtector/write | 指定されたサーバー暗号化の保護機能のプロパティを更新します。 |
 > | Action | Microsoft.Sql/managedInstances/keys/delete | 既存の Azure SQL Managed Instance キーを削除します。 |
 > | Action | Microsoft.Sql/managedInstances/keys/read | マネージド インスタンス キーの一覧を返すか、指定されたマネージド インスタンス キーのプロパティを取得します。 |
@@ -5171,6 +5242,7 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Sql/servers/elasticPools/skus/read | エラスティック プールの使用可能な SKU のコレクションを取得します。 |
 > | Action | Microsoft.Sql/servers/elasticPools/write | 新しいエラスティック プールを作成するか、既存のエラスティック プールのプロパティを変更します。 |
 > | Action | Microsoft.Sql/servers/encryptionProtector/read | サーバー暗号化の保護機能の一覧を返すか、指定されたサーバー暗号化の保護機能のプロパティを取得します。 |
+> | Action | Microsoft.Sql/servers/encryptionProtector/revalidate/action | 指定されたサーバー暗号化の保護機能のプロパティを更新します。 |
 > | Action | Microsoft.Sql/servers/encryptionProtector/write | 指定されたサーバー暗号化の保護機能のプロパティを更新します。 |
 > | Action | Microsoft.Sql/servers/extendedAuditingSettings/read | 指定されたサーバーで構成されている拡張サーバー BLOB 監査ポリシーの詳細を取得します。 |
 > | Action | Microsoft.Sql/servers/extendedAuditingSettings/write | 指定されたサーバーの拡張サーバー BLOB 監査を変更します。 |
@@ -5272,12 +5344,14 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Storage/storageAccounts/blobServices/read | Blob service のプロパティまたは統計情報を返します。 |
 > | Action | Microsoft.Storage/storageAccounts/blobServices/write | Blob service のプロパティの設定の結果を返します。 |
 > | Action | Microsoft.Storage/storageAccounts/delete | 既存のストレージ アカウントを削除します。 |
+> | Action | Microsoft.Storage/storageAccounts/encryptionScopes/read |  |
+> | Action | Microsoft.Storage/storageAccounts/encryptionScopes/write |  |
 > | Action | Microsoft.Storage/storageAccounts/failover/action | 可用性に問題が生じる場合、お客様がフェールオーバーを制御できます |
-> | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actassuperuser/action |  |
+> | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/actassuperuser/action | "ファイルを取得" 管理特権 |
 > | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/delete | ファイル/フォルダーの削除の結果を返します |
 > | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/modifypermissions/action | ファイル/フォルダーに対するアクセス許可の変更の結果を返します |
-> | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | ファイル/フォルダーまたはファイル/フォルダーの一覧を返します。 |
-> | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | ファイルの書き込みまたはフォルダーの作成の結果を返します。 |
+> | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/read | ファイルまたはフォルダー、またはファイルまたはフォルダーの一覧を返します |
+> | DataAction | Microsoft.Storage/storageAccounts/fileServices/fileshares/files/write | ファイルの書き込みまたはフォルダーの作成の結果を返します |
 > | Action | Microsoft.Storage/storageAccounts/fileServices/read |  |
 > | Action | Microsoft.Storage/storageAccounts/fileServices/read | ファイル サービスのプロパティを取得します |
 > | Action | Microsoft.Storage/storageAccounts/fileServices/shares/delete |  |
@@ -5292,6 +5366,7 @@ ms.locfileid: "68945531"
 > | Action | Microsoft.Storage/storageAccounts/managementPolicies/read | ストレージ管理アカウントのポリシーを取得します |
 > | Action | Microsoft.Storage/storageAccounts/managementPolicies/write | ストレージ アカウントの管理ポリシーを配置します |
 > | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/delete | プライベート エンドポイント接続プロキシを削除します |
+> | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/read | プライベート エンドポイント接続プロキシを取得します |
 > | Action | Microsoft.Storage/storageAccounts/privateEndpointConnectionProxies/write | プライベート エンドポイント接続プロキシを設定します |
 > | Action | Microsoft.Storage/storageAccounts/privateEndpointConnections/delete | プライベート エンドポイント接続を削除します |
 > | Action | Microsoft.Storage/storageAccounts/privateEndpointConnections/read | プライベート エンドポイント接続を取得します |

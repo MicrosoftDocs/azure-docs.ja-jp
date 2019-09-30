@@ -1,7 +1,7 @@
 ---
 title: Jupyter ノートブックの例
-titleSuffix: Azure Machine Learning service
-description: サンプルの Jupyter Notebook を検索して使用し、Azure Machine Learning service Python SDK を探索します。
+titleSuffix: Azure Machine Learning
+description: サンプルの Jupyter Notebook を検索して使用し、Azure Machine Learning Python SDK を探索します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ea124ecf6786142ac1703dab1e267b225751079
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035936"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997057"
 ---
-# <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning service を探索する
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning を探索する
 
 [サンプルの Azure Machine Learning Notebooks のリポジトリ](https://github.com/azure/machinelearningnotebooks)には、最新の Azure Machine Learning Python SDK のサンプルが含まれています。 これらの Juypter Notebook は、SDK の探索を支援し、独自の機械学習プロジェクトのモデルとして機能するように設計されています。
 
@@ -27,7 +27,6 @@ ms.locfileid: "70035936"
 - [Azure Machine Learning Notebook VM](#notebookvm)
 - [独自の Notebook サーバーを使用する](#byo)
 - [データ サイエンス仮想マシン](#dsvm)
-- [Azure Notebooks](#aznb)
 
 > [!NOTE]
 > リポジトリを複製すると、**tutorials** フォルダー内にチュートリアル ノートブック、**how-to-use-azureml** フォルダー内に機能固有のノートブックがあることがわかります。
@@ -54,16 +53,9 @@ ms.locfileid: "70035936"
 
 [!INCLUDE [aml-dsvm-server](../../../includes/aml-dsvm-server.md)]
 
-<a name="aznb"></a>
-## <a name="get-samples-on-azure-notebooks"></a>Azure Notebooks 上でサンプルを入手する
-
-[Azure Notebooks](https://notebooks.azure.com/) で、SDK と Notebook サーバーがユーザーのためにインストールされて構成されます。 Azure Notebooks は、ユーザーが探索できる、フル マネージド型で軽量の Notebook 環境を提供します。
-
-Azure Notebooks のサンプル リポジトリにアクセスするには、[Azure portal](https://portal.azure.com) から Azure Machine Learning ワークスペースに移動します。 **[概要]** セクションから、 **[Azure Notebooks で開始する]** を選択します。
-
 ## <a name="next-steps"></a>次の手順
 
-[サンプル ノートブック](https://aka.ms/aml-notebooks)を探索して、Azure Machine Learning service で実行できることを把握します。または、次のチュートリアルをお試しください。
+[サンプル ノートブック](https://aka.ms/aml-notebooks)を探索して、Azure Machine Learning で実行できることを把握します。または、次のチュートリアルをお試しください。
 
 - [MNIST を使用した画像分類モデルのトレーニングとデプロイ](tutorial-train-models-with-aml.md)
 

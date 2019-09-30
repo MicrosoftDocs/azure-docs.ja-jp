@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 7ea6e6be0597a114b02fad8c41e37d21ce1f6028
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5d54e4c6744675da0dea5b095590b71df6d2641
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942967"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962872"
 ---
 # <a name="azure-application-marketplace-tab"></a>Azure アプリケーションの [Marketplace] タブ
 
@@ -32,7 +32,7 @@ ms.locfileid: "64942967"
 | **[Summary]\(概要\)\***      | プランの短い要約。 最大長は 100 文字です。           |
 | **[Long Summary]\(長い概要\)\*** | オファーの長めの要約 (まとめと同じでもかまいません)。 最大長は 256 文字です。           |
 | **説明\***  | プランの説明。 最大長は 3000 文字です。 単純な HTML 書式設定を使用可能 (&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt;、ヘッダー タグなど)。  |
-| **[Marketing Identifier]\(マーケティング識別子\)\*** | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。 サービスに短くてわかりやすいマーケティング識別子を選択します。 これはこのオファーの URL で使用されます。 たとえば、発行元 ID が "contoso" で、マーケティング識別子が "sampleApp" の場合、Azure Marketplace では、オファーの URL は https://azuremarketplace.microsoft.com/en-us/marketplace/apps/contoso.sampleApp になります。  
+| **[Marketing Identifier]\(マーケティング識別子\)\*** | このプランに関連付ける一意の URL。通常、組織およびソリューションの名前が含まれ、最大長は 50 文字です。 サービスに短くてわかりやすいマーケティング識別子を選択します。 これはこのオファーの URL で使用されます。 たとえば、発行元 ID が "contoso" で、マーケティング識別子が "sampleApp" の場合、Azure Marketplace では、オファーの URL は https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp になります。  
 | **[Preview Subscription IDs]\(プレビュー サブスクリプション ID\)\*** | プレビューアーのサブスクリプション識別子を追加します (1 - 100 個)。 ホワイトリストに登録されたこれらのサブスクリプションには、オファーの発行後、運用が開始される前にオファーにアクセスする許可が与えられます。          |
 | **役に立つリンク**    | 必要に応じて、サポート、ドキュメント、フォーラムなど、オファーの利用者向けにさまざまリソースのリンクを提供できます。少なくとも 1 つのリンクをドキュメントに追加することをお勧めします。            |
 | **[推奨されるカテゴリ (最大 5 個)]\*** | 1 個から 5 個のカテゴリを選択してください。 選択したカテゴリは、Azure Marketplace と Azure portal で利用可能な製品カテゴリにオファーをマッピングするために使用されます。 閲覧ページと製品の詳細ページに表示されます。 |

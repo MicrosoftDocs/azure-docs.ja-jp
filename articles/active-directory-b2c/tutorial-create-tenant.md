@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ce389d1f434fb0eb37413873b02e3ddfff8f7fba
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 57aed26fe2f2f03dca347836f21d1cad14a07642
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849390"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063349"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
-アプリケーションが Azure Active Directory (Azure AD) B2C と対話できるようにするには、管理しているテナントに登録する必要があります。
+アプリケーションが Azure Active Directory B2C (Azure AD B2C) とやりとりできるようにするには、管理しているテナントに登録する必要があります。
 
 この記事では、次のことについて説明します。
 
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを作成する
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ご利用のサブスクリプションが含まれるディレクトリを必ず使用してください。 上部メニューで **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** フィルターをクリックし、ご利用のサブスクリプションが含まれるディレクトリを選択します。 このディレクトリは、Azure AD B2C テナントを含むディレクトリと異なります。
+2. ご利用のサブスクリプションが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のサブスクリプションが含まれるディレクトリを選択します。 このディレクトリは、Azure AD B2C テナントを含むディレクトリと異なります。
 
     ![ディレクトリとサブスクリプションのフィルターでサブスクリプション テナントが選択された状態](./media/tutorial-create-tenant/switch-directory-subscription.PNG)
 
@@ -51,9 +51,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     作成したテナントを選択し、ご利用のサブスクリプションを選択します。
 
     リソース グループには **[新規作成]** を選択します。 テナントを含むリソース グループの名前を入力し、場所を選択してから、 **[作成]** をクリックします。
-1. 新しいテナントを使い始めるには､上部メニューの **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** をクリックし、自分の Azure AD B2C テナントを含むディレクトリを選択することによって､自分の Azure AD B2C テナントを含む適切なディレクトリを使用していることを確認します｡
+1. 新しいテナントを使い始めるには、上部メニューの **[ディレクトリ + サブスクリプション]** を選択し、自分の Azure AD B2C テナントを含むディレクトリを選択することによって､自分の Azure AD B2C テナントを含む適切なディレクトリを使用していることを確認します。
 
-    新しい Azure B2C テナントが最初からリストに表示されない場合、ブラウザー ウィンドウを更新し、上部メニューでもう一度 **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** を選択します。
+    新しい Azure B2C テナントが最初からリストに表示されない場合、ブラウザー ウィンドウを更新し、上部メニューでもう一度 **[ディレクトリ + サブスクリプション]** を選択します。
 
     ![ディレクトリとサブスクリプションのフィルターで B2C テナントが選択された状態](./media/tutorial-create-tenant/switch-directories.PNG)
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: e532fb7180af8a21de6ae9a2e4d798abd9e93e7b
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 3b17cbc7710647b1e1875025a1db1849034ec1dc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343250"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002085"
 ---
 # <a name="aliasing-in-azure-cosmos-db"></a>Azure Cosmos DB でのエイリアス化
 
@@ -45,6 +45,6 @@ ms.locfileid: "67343250"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmosdb-dotnet)
+- [Azure Cosmos DB .NET のサンプル](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [SELECT 句](sql-query-select.md)
 - [FROM 句](sql-query-from.md)

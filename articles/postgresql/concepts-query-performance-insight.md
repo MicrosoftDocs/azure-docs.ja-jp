@@ -5,17 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: d45b79e2ca3b3d478102bebdcff3c8892bef2cb5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 08/21/2019
+ms.openlocfilehash: 748c6f08da535013724f68b8be424e50a2d49dfd
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067556"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70764431"
 ---
 # <a name="query-performance-insight"></a>Query Performance Insight 
 
-**適用対象:** Azure Database for PostgreSQL 9.6 および 10 (単一サーバー)
+**適用対象:** Azure Database for PostgreSQL - 単一サーバー バージョン 9.6、10、11
 
 Query Performance Insight では、実行時間が最長のクエリ、クエリの経時変化､影響を受けている待機状態を素早く特定することができます。
 
@@ -41,6 +41,9 @@ Azure Database for PostgreSQL サーバーのポータル ページのメニュ�
 **Wait Statistics** タブを選択し、サーバー内の待機時間に関して、対応する視覚化を表示します。
 
 ![Query Performance Insight の待機時間の統計](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+
+## <a name="considerations"></a>考慮事項
+* Query Performance Insight は、[読み取りレプリカ](concepts-read-replicas.md)では使用できません。
 
 ## <a name="next-steps"></a>次の手順
 - Azure Database for PostgreSQL での[監視およびチューニング](concepts-monitoring.md)の詳細を確認する。

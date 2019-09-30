@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 08/09/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: c8fc8e7d5888f9a0b080c0ca1d24e53068b543be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c9e24924472e0bb8dbd0e529b739263469b631fb
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095171"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090745"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
@@ -89,7 +89,7 @@ Docker を実行している VM から、Batch と互換性のある Linux デ�
 
 ## <a name="container-configuration-for-batch-pool"></a>Batch プール用のコンテナー構成
 
-Batch プールでコンテナー ワークロードを実行するには、プールの [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) オブジェクトに [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) 設定を指定する必要があります。 (この記事では、Batch .NET API 参照へのリンクを提供しています。 対応する設定は、[Batch Python](/python/api/azure.batch) API にあります。)
+Batch プールでコンテナー ワークロードを実行するには、プールの [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) オブジェクトに [ContainerConfiguration](/dotnet/api/microsoft.azure.batch.containerconfiguration) 設定を指定する必要があります。 (この記事では、Batch .NET API 参照へのリンクを提供しています。 対応する設定は、[Batch Python](/python/api/overview/azure/batch) API にあります。)
 
 次の例のように、プリフェッチされたコンテナー イメージを使用して、または使用しないでコンテナー対応プールを作成できます。 プル (プリフェッチ) プロセスにより、インターネット上の別のコンテナー レジストリまたは Docker Hub のいずれかから、コンテナー イメージを事前に読み込むことができます。 最も高いパフォーマンスを得るには、Batch アカウントと同じリージョンにある [Azure コンテナー レジストリ](../container-registry/container-registry-intro.md)を使用します。
 

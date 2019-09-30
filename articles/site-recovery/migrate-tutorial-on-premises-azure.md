@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: df4f89bd1b2e3c0423f5d758cfa637e4da9e04d0
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: 7534313a5862ececf4757be807e59b6df39f6430
+ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66396537"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70873362"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
@@ -46,7 +46,7 @@ ms.locfileid: "66396537"
 2. オンプレミスの [VMware](vmware-azure-tutorial-prepare-on-premises.md) または [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) サーバーを準備する。 物理マシンを移行する場合は、何も準備する必要はありません。 [サポート マトリックス](vmware-physical-azure-support-matrix.md)を確認するだけでかまいません。
 
 
-## <a name="select-a-replication-goal"></a>レプリケーションの目標を選ぶ
+## <a name="select-a-protection-goal"></a>保護の目標を選択する
 
 レプリケートの対象とレプリケート先を選択します。
 1. **[Recovery Services コンテナー]** > [コンテナー] の順にクリックします。

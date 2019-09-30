@@ -1,58 +1,121 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Database for MariaDB のドキュメント
+summary: Azure Database for MariaDB は、オープンソースの MariaDB サーバー エンジンに基づいたリレーショナル データベース サービスです。  フルフル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for MariaDB では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MariaDB の使用方法を確認してください。
 metadata:
-  title: Azure MariaDB のドキュメント - チュートリアル、API リファレンス
   description: Azure Database for MariaDB は、オープンソースの MariaDB データベース エンジンに基づいて開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。
   author: ajlam
   ms.author: andrela
+  ms.date: 09/05/2019
   ms.service: mariadb
   ms.topic: landing-page
-  ms.date: 03/25/2019
-abstract:
-  description: Azure Database for MariaDB は、オープンソースの MariaDB サーバー エンジンに基づいたリレーショナル データベース サービスです。  フルフル マネージドのサービスとしてのデータベースであり、予測可能なパフォーマンスと動的なスケーラビリティを実現しながら、ミッションクリティカルなワークロードを処理できます。 Azure Database for MariaDB では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for MariaDB の使用方法を確認してください。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 次を使用して Azure 上に MariaDB データベースを作成する方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/virtual-machines/linux/media/index/portal.svg
-            text: Azure Portal
-            href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-portal
-          - image:
-              src: /azure/virtual-machines/linux/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/mariadb/quickstart-create-mariadb-server-database-using-azure-cli
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: データベースの設計とアプリの開発を行う方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: 'データベースを設計する&#58; <a href="/azure/mariadb/tutorial-design-database-using-portal">Azure Portal</a> | <a href="/azure/mariadb/tutorial-design-database-cli">Azure CLI</a>'
-  - title: サンプル
-    items:
-      - type: paragraph
-        text: 一般的なタスクを管理するためのスクリプトを探します。
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/mariadb/sample-scripts-azure-cli">Azure CLI</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/cli/azure/mariadb">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/mariadb/">REST API</a></p>
-          - title: Azure Resource Manager
-            html: <p><a href="/azure/templates/microsoft.dbformariadb/allversions">Resource Manager テンプレート</a></p>
+  ms.openlocfilehash: bd4bb93a43bd493069ed03f6197595fe782d605a
+  ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/06/2019
+  ms.locfileid: "70735372"
+landingContent:
+- title: Azure Database for MariaDB について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Database for MariaDB とは
+      url: overview.md
+  - linkListType: whats-new
+    links:
+    - text: ブログを確認する
+      url: https://techcommunity.microsoft.com/t5/Azure-Database-for-MariaDB/bg-p/ADforMariaDB
+- title: サーバーの作成
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal を使用してサーバーを作成する
+      url: quickstart-create-mariadb-server-database-using-azure-portal.md
+    - text: Azure CLI を使用してサーバーを作成する
+      url: quickstart-create-mariadb-server-database-using-azure-cli.md
+  - linkListType: concept
+    links:
+    - text: 価格レベルについて
+      url: concepts-pricing-tiers.md
+    - text: 制限を理解する
+      url: concepts-limits.md
+    - text: サポートされている MariaDB のバージョンについて
+      url: concepts-supported-versions.md
+    - text: サーバー パラメーターの構成
+      url: howto-server-parameters.md
+    - text: 高可用性を計画する
+      url: concepts-high-availability.md
+  - linkListType: tutorial
+    links:
+    - text: Azure portal を使用してデータベースを設計する
+      url: tutorial-design-database-using-portal.md
+    - text: Azure CLI を使用してデータベースを設計する
+      url: tutorial-design-database-cli.md
+- title: データをバックアップおよび復元する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: バックアップおよび復元
+      url: concepts-backup.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure portal を使用してサーバーを復元する
+      url: howto-restore-server-portal.md
+    - text: Azure CLI を使用してサーバーを復元する
+      url: howto-restore-server-cli.md
+- title: Azure Database for MariaDB に接続する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ファイアウォールについて
+      url: concepts-firewall-rules.md
+    - text: SSL について
+      url: concepts-ssl-connection-security.md
+    - text: 仮想ネットワークについて
+      url: concepts-data-access-security-vnet.md
+  - linkListType: how-to-guide
+    links:
+    - text: ファイアウォール規則を作成する
+      url: howto-manage-firewall-portal.md
+    - text: SSL 接続を構成する
+      url: howto-configure-ssl.md
+    - text: ユーザーの作成
+      url: howto-create-users.md
+    - text: 仮想ネットワークを管理する
+      url: howto-manage-vnet-portal.md
+    - text: 接続の問題のトラブルシューティング
+      url: howto-troubleshoot-common-connection-issues.md
+  - linkListType: get-started
+    links:
+    - text: MySQL Workbench を使用して接続する
+      url: connect-workbench.md
+    - text: Connection strings
+      url: howto-connection-string.md
+- title: データをレプリケートする
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: データイン レプリケーションについて
+      url: concepts-data-in-replication.md
+    - text: 読み取りレプリカについて
+      url: concepts-read-replicas.md
+  - linkListType: how-to-guide
+    links:
+    - text: データイン レプリケーションの構成
+      url: howto-data-in-replication.md
+    - text: Azure portal を使用して読み取りレプリカを作成する
+      url: howto-read-replicas-portal.md
+- title: プログラミング API を使用したコード
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: 一般的なタスクのための Azure CLI スクリプト
+      url: /azure/mariadb/sample-scripts-azure-cli/
+  - linkListType: reference
+    links:
+    - text: Azure CLI の開発者用リファレンス
+      url: /rest/api/mariadb/
+    - text: REST API の開発者用リファレンス
+      url: /cli/azure/mariadb
+    - text: Azure Resource Manager のテンプレート
+      url: /azure/templates/microsoft.dbformariadb/allversions

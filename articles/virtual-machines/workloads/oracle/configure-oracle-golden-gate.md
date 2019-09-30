@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 40eaabb149e2e897ecd4e1109e0db7c42b990925
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 31137bba8c9b6b88c6a8b9569c02ae887e73e8d0
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101545"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70309598"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して Azure Marketplace ギャラリー イメージから Oracle 12c データベースをデプロイする方法について説明します。 
 
-このドキュメントでは、Azure VM で Oracle Golden Gate を作成、インストール、および構成する方法を、順を追って説明します。
+このドキュメントでは、Azure VM で Oracle Golden Gate を作成、インストール、および構成する方法を、順を追って説明します。 このチュートリアルでは、1 つのリージョンの可用性セットに 2 つの仮想マシンを設定します。 同じチュートリアルを使用して、1 つの Azure リージョン内の異なる複数の Availability Zones の VM、または 2 つの異なるリージョン内の VM セットアップに、OracleGolden Gate をセットアップすることもできます。
 
 開始する前に、Azure CLI がインストールされていることを確認してください。 詳細については、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
 

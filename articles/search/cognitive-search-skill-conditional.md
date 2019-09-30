@@ -2,20 +2,19 @@
 title: 条件付きコグニティブ検索スキル (Azure Search) | Microsoft Docs
 description: 条件付きスキルを使用すると、フィルター処理、既定値の作成、値のマージを行うことができます。
 services: search
-manager: pablocas
+manager: nitinme
 author: luiscabrer
 ms.service: search
-ms.subservice: cognitive-search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: luisca
-ms.openlocfilehash: 21a36988b31571f2110fe4fd2802aa5d84ee0216
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ea6113b96e2acf70a877e170651be3daa578e518
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69635924"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265814"
 ---
 #   <a name="conditional-skill"></a>条件付きスキル
 

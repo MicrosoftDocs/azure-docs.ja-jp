@@ -27,6 +27,8 @@
       items:
         - name: 概要
           href: customize-content-models-overview.md
+        - name: アニメーション化された文字
+          href: animated-characters-recognition.md
         - name: ブランド
           href: customize-brands-model-overview.md
         - name: 言語
@@ -45,8 +47,10 @@
       href: video-indexer-output-json-v2.md
     - name: ビデオ内の正確な場面の検出
       href: video-indexer-search.md
-    - name: シーン、ショット、キーフレーム
+    - name: シーン、ショット、キーフレームの検出
       href: scenes-shots-keyframes.md
+    - name: 複数言語のコンテンツの識別と文字起こし
+      href: multi-language-identification-transcription.md
     - name: Video Indexer の分析情報の表示と編集
       href: video-indexer-view-edit.md
     - name: エディターを使用したプロジェクトの作成
@@ -57,6 +61,8 @@
       href: video-indexer-disaster-recovery.md
     - name: コンテンツ モデルのカスタマイズ
       items:
+        - name: アニメーション化された文字
+          href: animated-characters-recognition.md
         - name: Person
           items:
             - name: Video Indexer Web サイトの使用

@@ -22,6 +22,11 @@
       href: how-to/move-account.md
     - name: Automation サービスのオンボードを自動化する
       href: /azure/architecture/cloud-adoption/operations/azure-server-management/onboarding-automation
+    - name: Log Analytics ワークスペースのマッピングがサポートされるリージョン
+      href: how-to/region-mappings.md
+    - name: Azure Automation データを管理する
+      href: automation-managing-data.md
+      displayName: backup
 - name: プロセスの自動化
   items:
     - name: Hybrid Runbook Worker の概要
@@ -39,16 +44,10 @@
       items:
         - name: Runbook を作成する
           href: automation-quickstart-create-runbook.md
-    - name: オンボード
-      items:
-        - name: 複数の VM のポータルからのオンボード
-          href: automation-onboard-solutions-from-browse.md
-        - name: Azure VM からのオンボード
-          href: automation-onboard-solutions-from-vm.md
-        - name: Automation アカウントからのオンボード
-          href: automation-onboard-solutions-from-automation-account.md
     - name: ハウツー ガイド
       items:
+        - name: 勤務時間外の VM の起動/停止
+          href: automation-solution-vm-management.md
         - name: Runbook を管理する
           href: manage-runbooks.md
         - name: Runbook を作成する
@@ -86,8 +85,6 @@
               href: automation-child-runbooks.md
             - name: Azure Automation Runbook に JSON オブジェクトを渡す
               href: automation-pass-json-string.md
-            - name: 勤務時間外の VM の起動/停止
-              href: automation-solution-vm-management.md
         - name: Runbook を監視する
           items:
             - name: Runbook の出力
@@ -98,15 +95,6 @@
               displayName: 'fair share, activity log'
             - name: グラフィック Runbook でのエラー処理
               href: automation-runbook-graphical-error-handling.md
-            - name: ソース管理の統合
-              href: source-control-integration.md
-              displayName: 'github, vsts, azure devops, personal access token'
-            - name: ソース管理の統合 - レガシ
-              href: automation-source-control-integration-legacy.md
-              displayname: github
-            - name: Azure Automation データを管理する
-              href: automation-managing-data.md
-              displayName: backup
         - name: Hybrid Runbook Worker
           items:
             - name: Windows Hybrid Runbook Worker のデプロイ
@@ -120,6 +108,19 @@
             - name: 監視タスクによる更新されたファイルの追跡
               href: automation-watchers-tutorial.md
               displayName: 'hybrid runbook worker, hybrid worker, trigger'
+        - name: ソース管理の統合
+          items:
+            - name: ソース管理の統合
+              href: source-control-integration.md
+              displayName: 'github, vsts, azure devops, personal access token'
+            - name: ソース管理の統合 - レガシ
+              href: automation-source-control-integration-legacy.md
+              displayname: github
+            - name: GitHub Enterprise によるソース管理の統合
+              href: automation-scenario-source-control-integration-with-github-ent.md
+              displayName: 'CI, runbooks'
+            - name: Azure DevOps によるソース管理の統合
+              href: automation-scenario-source-control-integration-with-VSTS.md
     - name: トラブルシューティング
       items:
         - name: Hybrid Runbook Worker のトラブルシューティング
@@ -235,7 +236,7 @@
         - name: Getting Started (概要)
           href: automation-dsc-getting-started.md
           displayName: DSC
-        - name: Linux 構成の管理
+        - name: マシンの構成の管理
           href: automation-quickstart-dsc-configuration.md
           displayName: 'DSC, state configuration, config, node configuration, node'
     - name: オンボード
@@ -297,7 +298,7 @@
       href: automation-connections.md
     - name: 資格情報
       href: automation-credentials.md
-    - name: 統合モジュール
+    - name: モジュール
       href: automation-integration-modules.md
     - name: スケジュール
       href: automation-schedules.md
@@ -321,11 +322,6 @@
       displayName: 'Monitor, Azure Monitor'
     - name: Amazon Web Service VM を作成する
       href: automation-scenario-aws-deployment.md
-    - name: GitHub Enterprise によるソース管理の統合
-      href: automation-scenario-source-control-integration-with-github-ent.md
-      displayName: 'CI, runbooks'
-    - name: Azure DevOps によるソース管理の統合
-      href: automation-scenario-source-control-integration-with-VSTS.md
       displayName: 'VSTS, CI, runbooks'
     - name: Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
       href: automation-deploy-template-runbook.md
@@ -348,14 +344,10 @@
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.automation
-    - name: Azure PowerShell (クラシック)
-      href: /powershell/module/azure/?view=azuresmps-3.7.0
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.automation
     - name: REST
       href: /rest/api/automation
-    - name: REST (クラシック)
-      href: 'https://msdn.microsoft.com/library/azure/mt163781'
 - name: リソース
   items:
     - name: Automation の紹介ビデオ

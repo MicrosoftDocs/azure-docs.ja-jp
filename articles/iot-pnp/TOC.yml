@@ -37,10 +37,12 @@
       href: concepts-limits-quotas.md
 - name: ハウツー ガイド
   items:
-    - name: IoT Device Workbench を使用する
-      href: howto-use-iot-device-workbench.md
+    - name: Visual Studio と Visual Studio Code を使用して開発する
+      href: howto-develop-with-vs-vscode.md
     - name: IoT エクスプローラーをインストールする
       href: howto-install-iot-explorer.md
+    - name: Azure CLI 拡張機能をインストールする
+      href: howto-install-pnp-cli.md
     - name: IoT ポータルにオンボードする
       href: howto-onboard-portal.md
     - name: モデルを管理する

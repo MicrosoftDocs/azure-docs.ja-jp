@@ -7,13 +7,12 @@ ms.date: 01/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
-ms.custom: seodec18
-ms.openlocfilehash: a8221de15dfa48b4eebcf0fe0df29ea0c3a1868e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 7c47b233e508c22ef7b380acfb7720ad763d8de3
+ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854964"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70241105"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
@@ -22,8 +21,6 @@ Azure Resource Graph を使用する最初の手順では、Azure PowerShell の
 このプロセスの最後では、選択した Azure PowerShell のインストールにモジュールを追加して、最初の Resource Graph クエリを実行しています。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
-
-[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="add-the-resource-graph-module"></a>Resource Graph モジュールを追加する
 
@@ -48,7 +45,7 @@ PowerShell の Resource Graph モジュールは、**Az.ResourceGraph** です�
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. モジュールがインポートされていて、適切なバージョン (0.7.3) であることを確認します。
+1. モジュールがインポートされていて、最新のバージョン (0.7.5) であることを確認します。
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module

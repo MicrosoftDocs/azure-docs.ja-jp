@@ -4,16 +4,16 @@ description: Azure Time Series Insights 環境のデータを照会してレン�
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/29/2019
+ms.date: 08/29/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4d9af918c222107cfca5863309efb391b8e6d2e0
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 031e8074585426584d7ef63a103c9c2b4d90e6c3
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68720864"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70194225"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>チュートリアル:Azure Time Series Insights シングルページ Web アプリの作成
 
@@ -127,6 +127,10 @@ Time Series Insights サンプル SPA は、このチュートリアルで使用
 
       [![Visual Studio - 発行プロファイル ウィンドウ](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-target.png#lightbox)
 
+   1. 新しい Azure App Service インスタンスを発行するのか、既存のインスタンスを使用するのかを選択します。
+
+      [![Azure App Service インスタンスを選択する](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png)](media/tutorial-create-tsi-sample-spa/vs-publish-select-target.png#lightbox)
+
    1. アプリケーションの発行に使用するサブスクリプションを選択します。 **[TsiSpaApp]** プロジェクトを選択します。 **[OK]** をクリックします。
 
       [![Visual Studio - 発行プロファイルのアプリ サービス ウィンドウ](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png)](media/tutorial-create-tsi-sample-spa/vs-publish-profile-app-service.png#lightbox)
@@ -137,12 +141,16 @@ Time Series Insights サンプル SPA は、このチュートリアルで使用
 
    1. Visual Studio の **[出力]** ウィンドウに成功した発行のログが表示されます。 配置が完了すると、Visual Studio によってブラウザー タブで Web アプリケーションが開かれ、サインインを求められます。 サインインが成功すると、Time Series Insights コントロールにデータが表示されます。
 
+   1. Web アプリに移動し、ログインすると、レンダリングされた Time Series Insights のビジュアル データが表示されます。
+
+      [![ホストされた Web アプリを確認する](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png)](media/tutorial-create-tsi-sample-spa/vs-publish-hosted-app.png#lightbox)
+
 ## <a name="troubleshoot"></a>トラブルシューティング  
 
 エラー コード/状態 | 説明
 ---------------------| -----------
-"*AADSTS50011: アプリケーションの応答アドレスが登録されていません。* " | Azure AD 登録に **[応答 URL]** プロパティがありません。 Azure AD アプリケーション登録の **[設定]**  >  **[応答 URL]** に移動します。 **Azure AD を使用するためにアプリケーションを登録した**ときに、**手順 2.** または[手順 4.](#register-with-azure-ad) で指定するためのオプションがあった **[リダイレクト URI]** が存在することを確認します。
-"*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: '\<Application ID GUID>'. (要求で指定されている応答 URL が、アプリケーションに関して構成されている応答 URL と一致しません: "<アプリケーション ID GUID>")* " | 「[Web アプリケーションのビルドと発行](#build-and-publish)」の**手順 6.b** で指定された `postLogoutRedirectUri` が、Azure AD アプリケーション登録の **[設定]**  >  **[応答 URL]** で指定されている値に一致する必要があります。 |
+"*AADSTS50011: アプリケーションの応答アドレスが登録されていません。* " | Azure AD 登録に **[リダイレクト URI]** プロパティがありません。 Azure AD アプリケーション登録の **[認証]**  >  **[リダイレクト URI]** に移動します。 **Azure AD を使用するためにアプリケーションを登録した**ときに、**手順 2.** または[手順 4.](#register-with-azure-ad) で指定するためのオプションがあった **[リダイレクト URI]** が存在することを確認します。
+"*AADSTS50011: The reply url specified in the request does not match the reply urls configured for the application: '\<Application ID GUID>'. (要求で指定されている応答 URL が、アプリケーションに関して構成されている応答 URL と一致しません: "<アプリケーション ID GUID>")* " | [Web アプリケーションのビルドと発行](#build-and-publish)に関するセクションの**手順 6.b** で指定された `postLogoutRedirectUri` が、Azure AD アプリケーション登録の **[認証]**  >  **[リダイレクト URI]** で指定されている値に一致する必要があります。 |
 Web アプリケーションによって読み込みが行われますが、背景が白く、スタイルが適用されていないテキストのみのサインイン ページが表示されます。 | 「[Web アプリケーションのビルドと発行](#build-and-publish)」の**手順 6.** で説明されているパスが正しいことを確認します。 Web アプリケーションが .css ファイルを検出できない場合、スタイルがページに正しく適用されません。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

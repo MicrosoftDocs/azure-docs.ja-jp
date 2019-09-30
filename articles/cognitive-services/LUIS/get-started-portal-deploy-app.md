@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/07/2019
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 5c310c1943eaf23423be873c6172e27c621fe109
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
+ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564069"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70257073"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
 
@@ -59,11 +59,11 @@ LUIS 向けの新しいリソースを作成するたびに、LUIS アプリに�
 
 1. [LUIS ポータル](https://www.luis.ai)にサインインし、アプリの一覧から **myEnglishApp** アプリを選択します。
 
-1. 右上のメニューの **[管理]** を選択し、 **[Keys and endpoints]\(キーとエンドポイント\)** を選択します。
+1. 右上のメニューの **[管理]** を選択し、 **[Azure リソース]** を選択します。
 
-1. LUIS を追加するには、 **[Assign Resource +]\(リソースの割り当て +)** を選択します。
+1. LUIS を追加するには、 **[Add prediction resource]\(予測リソースの追加)** を選択します。
 
-   [![ご自分のアプリにリソースを割り当てる](./media/get-started-portal-deploy-app/assign-resource-button.png)](./media/get-started-portal-deploy-app/assign-resource-button.png#lightbox)
+    <!-- TBD: get screenshot-->
 
 1. ご自分のテナント、サブスクリプション、リソースの名前を選択します。 **[Assign resource]\(リソースの割り当て)** を選択します。
 

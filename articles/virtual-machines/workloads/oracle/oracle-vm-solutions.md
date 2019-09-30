@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2019
 ms.author: rogirdh
 ms.custom: seodec18
-ms.openlocfilehash: 3d3805fe5a574d3e6ecd9a6fa8f95dd28f308d25
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4480819a08ef9a7a4ad7257f75a94c5d10a3d312
+ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101403"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70858562"
 ---
 # <a name="oracle-vm-images-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle VM イメージとそのデプロイ
 
@@ -58,11 +58,8 @@ Oracle-WebLogic-Server  Oracle       Oracle-WebLogic-Server  Oracle:Oracle-WebLo
 
 ユーザーは、Azure で一から作成したカスタム イメージに基づくソリューションにするか、オンプレミス環境からカスタム イメージをアップロードするかを選択することもできます。
 
-## <a name="support-for-jd-edwards"></a>JD Edwards のサポート
-JD Edwards EnterpriseOne バージョン 9.2、以降は、Oracle のサポート情報 [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4) に従って、固有の `Minimum Technical Requirements` (MTR) を満たす**すべてのパブリック クラウド ソリューション**でサポートされています。  OS およびソフトウェア アプリケーションの互換性の MTR 仕様に準拠したカスタム イメージを作成する必要があります。 
-
 ## <a name="oracle-database-vm-images"></a>Oracle データベースの VM イメージ
-Oracle では、Oracle Linux に基づく仮想マシン イメージで、Azure における Oracle DB 12.1 Standard Edition および Enterprise Edition の実行をサポートしています。  Azure で Oracle DB の実稼働ワークロードのパフォーマンスを最大にするには、VM イメージを必ず適切にサイズ変更し、Premium Storage でサポートされている Managed Disks を使用してください。 Oracle の発行済み VM イメージを使用して Azure で Oracle DB を迅速に立ち上げて実行する方法については、[Oracle DB のクイック スタート チュートリアルを試してください](oracle-database-quick-create.md)。
+Oracle では、Oracle Linux に基づく仮想マシン イメージで、Azure における Oracle DB 12.1 以上の Standard Edition および Enterprise Edition の実行をサポートしています。  Azure で Oracle DB の実稼働ワークロードのパフォーマンスを最大にするには、VM イメージを必ず適切にサイズ変更し、Premium SSD または Ultra SSD Managed Disks を使用してください。 Oracle の発行済み VM イメージを使用して Azure で Oracle DB を迅速に立ち上げて実行する方法については、[Oracle DB のクイック スタート チュートリアルを試してください](oracle-database-quick-create.md)。
 
 ### <a name="attached-disk-configuration-options"></a>接続ディスクの設定オプション
 
@@ -80,6 +77,13 @@ Azure NetApp Files は、クラウド内のデータベースなどの高パフ�
 これらの機能は、Azure NetApp Files が Azure データ センター環境内で (Azure ネイティブなサービスとして) 実行されている NetApp® ONTAP® オール フラッシュ システムに基づいているために可能になります。 その結果、他の Azure ストレージ オプションと同様にプロビジョニングしたり、消費したりできる理想的なデータベース ストレージ テクノロジが提供されます。 Azure NetApp Files の NFS ボリュームをデプロイし、それにアクセスする方法の詳細については、[Azure NetApp Files のドキュメント](https://docs.microsoft.com/azure/azure-netapp-files/)を参照してください。 Azure NetApp Files 上で Oracle データベースを動作させるためのベスト プラクティスの推奨事項については、[Azure NetApp Files を使用した Oracle on Azure デプロイのベスト プラクティス ガイド](https://www.netapp.com/us/media/tr-4780.pdf)に関するページを参照してください。
 
 
+## <a name="licensing-oracle-database--software-on-azure"></a>Azure での Oracle Database およびソフトウェアのライセンス契約
+Microsoft Azure は、Oracle Database を実行するための承認されたクラウド環境です。 Oracle Core Factor テーブルは、クラウドで Oracle Database をライセンス契約する場合には適用されません。 代わりに、Enterprise Edition のデータベースでハイパースレッディング テクノロジが有効になっている VM を使用するときは、(ポリシー ドキュメントに記載されているように) ハイパースレッディングが有効になっている場合は、1 つの Oracle プロセッサ ライセンスと同等の 2 つの vCPU をカウントします。 ポリシーの詳細については、[こちら](http://www.oracle.com/us/corporate/pricing/cloud-licensing-070579.pdf)をご覧ください。
+一般に、Oracle Database には、より高いメモリと IO が必要です。 このため、これらのワークロードには、[メモリ最適化済み VM](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/sizes-memory) を使用することをお勧めします。 ワークロードをさらに最適化するには、高メモリ、ストレージ、I/O 帯域幅を必要とするが、コア数が多いとは限らない Oracle DB のワークロードに[制約付きコア vCPU](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/constrained-vcpu) を使用することをお勧めします。
+
+Oracle ソフトウェアとワークロードをオンプレミスから Microsoft Azure に移行する場合、Oracle から、「[Oracle on Azure FAQ](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)」 (Azure での Oracle に関する FAQ) に記載されているライセンス モビリティが提供されています
+
+
 ## <a name="oracle-real-application-cluster-oracle-rac"></a>Oracle Real Application Cluster (Oracle RAC)
 Oracle RAC では、オンプレミスのマルチノード クラスター構成の単一ノードで発生する障害を軽減するように設計されています。 このクラスターは、超大規模パブリック クラウド環境にネイティブではない、2 つのオンプレミスのテクノロジに依存しています。それがネットワーク マルチキャストと共有ディスクです。 お使いのデータベース ソリューションの Azure で Oracle RAC が必要な場合は、サード パーティのソフトウェアを使用してこれらのテクノロジを有効にする必要があります。 Oracle RAC の詳細については、[FlashGrid SkyCluster に関するページ](https://www.flashgrid.io/oracle-rac-in-azure/)を参照してください。
 
@@ -95,6 +99,11 @@ Oracle Data Guard では、1 つの仮想マシンにプライマリ データ�
 [Azure での Oracle GoldenGate の実装](configure-oracle-golden-gate.md)に関するチュートリアルでは、Azure での基本的なセットアップ手順を説明しています。
 
 Azure で高可用性と災害復旧ソリューションを設計することに加えて、データベースを復元するためのバックアップ戦略を立てる必要があります。 [Oracle Database のバックアップと復旧](oracle-backup-recovery.md)に関するチュートリアルでは、一貫性のあるバックアップを確立するための基本的な手順を説明しています。
+
+
+## <a name="support-for-jd-edwards"></a>JD Edwards のサポート
+JD Edwards EnterpriseOne バージョン 9.2、以降は、Oracle のサポート情報 [Doc ID 2178595.1](https://support.oracle.com/epmos/faces/DocumentDisplay?_afrLoop=573435677515785&id=2178595.1&_afrWindowMode=0&_adf.ctrl-state=o852dw7d_4) に従って、固有の `Minimum Technical Requirements` (MTR) を満たす**すべてのパブリック クラウド ソリューション**でサポートされています。  OS およびソフトウェア アプリケーションの互換性の MTR 仕様に準拠したカスタム イメージを作成する必要があります。 
+
 
 ## <a name="oracle-weblogic-server-virtual-machine-images"></a>Oracle WebLogic Server 仮想マシン イメージ
 

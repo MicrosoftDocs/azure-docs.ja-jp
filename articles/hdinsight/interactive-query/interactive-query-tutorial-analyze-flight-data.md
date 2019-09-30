@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure HDInsight で対話型クエを使用して抽出、変換、読み込み (ETL) 操作を実行する
+title: チュートリアル:Azure HDInsight で対話型クエリを使用して ETL 操作を実行する
 description: チュートリアル - 生の CSV データセットからデータを抽出し、HDInsight で対話型クエリを使用してデータを変換した後、変換済みデータを Apache Sqoop を使用して Azure SQL データベースに読み込む方法について説明します。
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/02/2019
 ms.author: hrasheed
 ms.custom: hdinsightactive,mvc
-ms.openlocfilehash: fbab8502c088c2ae7a4b8e87285d7e4cac1de4c0
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 9ff215bb687ea2b6aa32ecb01dba7a61385b15a4
+ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807401"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70735828"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で対話型クエリを使用してデータの抽出、変換、読み込みを行う
 

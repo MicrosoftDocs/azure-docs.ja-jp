@@ -1,20 +1,19 @@
 ---
 title: Azure IaaS VM のセカンダリ Azure リージョンへのディザスター リカバリーの設定
 description: このクイック スタートでは、Azure Site Recovery サービスを使用した Azure リージョン間での Azure IaaS VM のディザスター リカバリーに必要な手順を紹介します。
-services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 05/30/2019
+ms.date: 08/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 46376091649a2c2b1498fd13e8775fb161de32c1
-ms.sourcegitcommit: d89032fee8571a683d6584ea87997519f6b5abeb
+ms.openlocfilehash: d23d16d1315eeaf224a5291641ab088212fcdc77
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66399540"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70146956"
 ---
 # <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Azure VM のセカンダリ Azure リージョンへのディザスター リカバリーの設定        
 
@@ -29,7 +28,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal (https://portal.azure.com) にログインします。
+Azure Portal (https://portal.azure.com ) にログインします。
 
 ## <a name="enable-replication-for-the-azure-vm"></a>Azure VM のレプリケーションの有効化
 

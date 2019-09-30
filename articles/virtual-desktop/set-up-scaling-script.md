@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: d7b91e3e74c65919a3afe80addfbd0fadd23b03c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 7babfca617ab42da615518726d1b1d4cafe112b5
+ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931801"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70163231"
 ---
 # <a name="automatically-scale-session-hosts"></a>セッション ホストを自動的にスケーリングする
 

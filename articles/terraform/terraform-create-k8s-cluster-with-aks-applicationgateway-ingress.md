@@ -8,13 +8,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 1/10/2019
-ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 0373b254a900fd34232bb6863c93802fa7b51aab
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994351"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169952"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Azure Kubernetes Service と Terraform を使用して Application Gateway のイングレス コントローラーを備えた Kubernetes クラスターを作成する
 [Azure Kubernetes Service (AKS)](/azure/aks/) では、ホストされている Kubernetes 環境を管理します。 AKS では、コンテナー オーケストレーションの専門知識がなくても、コンテナー化されたアプリケーションを迅速かつ簡単にデプロイして管理できます。 また、アプリケーションをオフラインにすることなく、要求に応じてリソースをプロビジョニング、アップグレード、スケーリングすることにより、実行中の操作およびメンテナンスの負担もなくなります。
@@ -38,7 +38,7 @@ ms.locfileid: "57994351"
 - **Azure サービス プリンシパル**:「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest)」の「**サービス プリンシパルを作成する**」セクションの指示に従ってください。 appId、displayName、および password の値を書き留めます。
   - 次のコマンドを実行して、サービス プリンシパルのオブジェクト ID をメモします
 
-    ```bash
+    ```azurecli
     az ad sp list --display-name <displayName>
     ```
 
@@ -82,7 +82,7 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
 
 1. 以下のコードをエディターに貼り付けます。
 
-    ```JSON
+    ```hcl
     provider "azurerm" {
         version = "~>1.18"
     }
@@ -99,17 +99,21 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
     ```bash
     :wq
     ```
-   ## <a name="define-input-variables"></a>入力変数を定義する
-   このデプロイに必要なすべての変数の一覧を示した Terraform 構成ファイルを作成します。
+
+## <a name="define-input-variables"></a>入力変数を定義する
+このデプロイに必要なすべての変数をリストした Terraform 構成ファイルを作成します。
+
 1. Cloud Shell で、`variables.tf` という名前のファイルを作成します。
+
     ```bash
     vi variables.tf
     ```
+
 1. I キーを選択し、挿入モードに入ります。
 
-2. 以下のコードをエディターに貼り付けます。
+1. 以下のコードをエディターに貼り付けます。
     
-    ```JSON
+    ```hcl
     variable "resource_group_name" {
       description = "Name of the resource group already created."
     }
@@ -254,9 +258,9 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
 
 1. 以下のコード ブロックをエディターに貼り付けます。
 
-    a. 計算された変数を再利用するための locals ブロックを作成します
+    a. 計算された変数を再利用するための locals ブロックを作成します。
 
-    ```JSON
+    ```hcl
     # # Locals block for hardcoded names. 
     locals {
         backend_address_pool_name      = "${azurerm_virtual_network.test.name}-beap"
@@ -268,8 +272,10 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
         app_gateway_subnet_name = "appgwsubnet"
     }
     ```
-    b. リソース グループのデータ ソース、新しいユーザー ID を作成します
-    ```JSON
+
+    b. リソース グループのデータ ソース、新しいユーザー ID を作成します。
+
+    ```hcl
     data "azurerm_resource_group" "rg" {
       name = "${var.resource_group_name}"
     }
@@ -284,8 +290,10 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
       tags = "${var.tags}"
     }
     ```
-    c. 基本となるネットワーク リソースを作成します
-   ```JSON
+
+    c. 基本となるネットワーク リソースを作成します。
+
+    ```hcl
     resource "azurerm_virtual_network" "test" {
       name                = "${var.virtual_network_name}"
       location            = "${data.azurerm_resource_group.rg.location}"
@@ -328,8 +336,10 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
       tags = "${var.tags}"
     }
     ```
-    d. Application Gateway のリソースを作成します
-    ```JSON
+
+    d. Application Gateway のリソースを作成します。
+
+    ```hcl
     resource "azurerm_application_gateway" "network" {
       name                = "${var.app_gateway_name}"
       resource_group_name = "${data.azurerm_resource_group.rg.name}"
@@ -393,8 +403,10 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
       depends_on = ["azurerm_virtual_network.test", "azurerm_public_ip.test"]
     }
     ```
-    e. ロールの割り当ての作成
-    ```JSON
+
+    e. ロールの割り当てを作成します。
+
+    ```hcl
     resource "azurerm_role_assignment" "ra1" {
       scope                = "${data.azurerm_subnet.kubesubnet.id}"
       role_definition_name = "Network Contributor"
@@ -424,8 +436,10 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
       depends_on           = ["azurerm_user_assigned_identity.testIdentity", "azurerm_application_gateway.network"]
     }
     ```
-    f. Kubernetes クラスターを作成する
-    ```JSON
+
+    f. Kubernetes クラスターを作成します。
+
+    ```hcl
     resource "azurerm_kubernetes_cluster" "k8s" {
       name       = "${var.aks_name}"
       location   = "${data.azurerm_resource_group.rg.location}"
@@ -502,7 +516,7 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
 
 1. 以下のコードをエディターに貼り付けます。
 
-    ```JSON
+    ```hcl
     output "client_key" {
         value = "${azurerm_kubernetes_cluster.k8s.kube_config.0.client_key}"
     }
@@ -559,7 +573,7 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
 
 1. Cloud Shell で、Azure ストレージ アカウントにコンテナーを作成します (&lt;YourAzureStorageAccountName> および &lt;YourAzureStorageAccountAccessKey> プレースホルダーをご使用の Azure ストレージ アカウントの適切な値で置き換えます)。
 
-    ```bash
+    ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
@@ -586,7 +600,7 @@ Terraform は `terraform.tfstate` ファイルを介して状態をローカル�
 
 1. 以前に作成した次の変数をエディターに貼り付けます。
 
-    ```JSON
+    ```hcl
       resource_group_name = <Name of the Resource Group already created>
 
       location = <Location of the Resource Group>

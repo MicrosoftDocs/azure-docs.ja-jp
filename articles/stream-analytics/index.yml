@@ -1,73 +1,215 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Stream Analytics のドキュメント
+### YamlMime:Landing
+title: Azure Stream Analytics のドキュメント
+summary: Azure Stream Analytics は、アラートとアクションをトリガーするために使用できるデータの高速移動ストリームを分析および処理するための、フル マネージド リアルタイム分析サービスです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Stream Analytics の使用方法を確認してください。
 metadata:
-  title: Azure Stream Analytics のドキュメント - チュートリアル、API リファレンス
-  meta.description: 'Learn how to run IoT analytics in the cloud with fully-managed event processing. Analyze data in real time from applications, sensors, devices, and more.'
-  services: stream-analytics
-  author: mamccrea
-  ms.author: mamccrea
+  title: Azure Stream Analytics のドキュメント
+  description: Azure Stream Analytics は、アラートとアクションをトリガーするために使用できるデータの高速移動ストリームを分析および処理するための、フル マネージド リアルタイム分析サービスです。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Stream Analytics の使用方法を確認してください。
+  services: service
   ms.service: stream-analytics
   ms.topic: landing-page
-  ms.date: 06/21/2019
-abstract:
-  description: Stream Analytics はフルマネージドの PaaS サービスで、IoT のデバイス、アプリケーション、クリックストリームなどのデータの迅速な移動ストリームをリアルタイムで分析、処理し、必要に応じてアラートやアクションをトリガーするのに役立ちます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Stream Analytics の使用方法を確認してください。
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: ./media/index/streaming-analytics-thumbnail.png
-      width: 250
-    title: 'クラウドからインテリジェント エッジへ - Azure Stream Analytics を使用してリアルタイムでの意思決定を促進する。 (1:02:11)'
-    href: 'https://azure.microsoft.com/resources/videos/build-2019-from-cloud-to-the-intelligent-edge-drive-real-time-decisions-with-azure-stream-analytics/'
-    width: 250
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 初めての Azure Stream Analytics ジョブをデプロイする方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/stream-analytics.svg
-            text: Azure ポータル
-            href: 'https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: PowerShell
-            href: 'https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-powershell'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Visual Studio
-            href: 'https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs'
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Visual Studio Code
-            href: 'https://docs.microsoft.com/azure/stream-analytics/quick-create-vs-code'
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure Stream Analytics ジョブをデプロイ、管理、監視する方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="stream-analytics-manage-job">Stream Analytics ジョブを作成し、通話データを分析して結果を Power BI ダッシュボードで視覚化する</a>
-          - html: <a href="stream-analytics-with-azure-functions">Azure Stream Analytics ジョブから Azure Functions を実行する</a>
-          - html: <a href="stream-analytics-javascript-user-defined-functions">Azure Stream Analytics ジョブで JavaScript ユーザー定義関数を実行する</a>
-          - html: <a href="stream-analytics-tools-visual-studio-cicd-vsts">Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする</a>
-          - html: '<a href="stream-analytics-edge-csharp-udf">Azure Stream Analytics Edge ジョブの C# ユーザー定義関数を記述する (プレビュー)</a>'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: プレビュー
-            html: '<p><a href="stream-analytics-previews#public-previews">パブリック プレビュー</a></p><p><a href="stream-analytics-previews#other-previews">プライベート プレビュー</a></p>'
-          - title: コマンド ライン
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.streamanalytics/#stream_analytics">Azure PowerShell</a></p>'
-          - title: Languages
-            html: '<p><a href="/dotnet/api/microsoft.azure.management.streamanalytics?view=azuremgmtstreamanalytics-1.8.3">.NET</a></p><p><a href="https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference">Stream Analytics クエリ言語</a></p>'
-          - title: REST
-            html: <p><a href="/rest/api/streamanalytics">REST API リファレンス</a></p>
+  author: mamccrea
+  ms.author: mamccrea
+  ms.date: 09/16/2019
+  ms.openlocfilehash: a4573c9f6938db56eba80da084004a620a54e9e4
+  ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/16/2019
+  ms.locfileid: "71018873"
+landingContent:
+- title: Azure Stream Analytics について
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure portal を使用してジョブを作成する
+      url: stream-analytics-quick-create-portal.md
+  - linkListType: overview
+    links:
+    - text: Azure Stream Analytics とは
+      url: stream-analytics-introduction.md
+    - text: Azure Stream Analytics のソリューション パターン
+      url: stream-analytics-solution-patterns.md
+  - linkListType: whats-new
+    links:
+    - text: Stream Analytics の互換性レベル
+      url: stream-analytics-compatibility-level.md
+    - text: Stream Analytics のプレビュー機能
+      url: stream-analytics-previews.md
+  - linkListType: concept
+    links:
+    - text: ストリーミング分析テクノロジの選択
+      url: streaming-technologies.md
+    - text: ジョブの開発ツールを選択する
+      url: feature-comparison.md
+- title: ジョブをデータ ソースに接続する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 入力の種類について理解する
+      url: stream-analytics-add-inputs.md
+  - linkListType: concept
+    links:
+    - text: 入力データをストリーム配信する
+      url: stream-analytics-define-inputs.md
+    - text: 検索のために参照データを結合する
+      url: stream-analytics-use-reference-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: SQL Database の参照データを使用する
+      url: sql-reference-data.md
+    - text: 入力接続のトラブルシューティング
+      url: stream-analytics-troubleshoot-input.md
+    - text: Event Hubs イベントの Apache Kafka を処理する
+      url: ../event-hubs/event-hubs-kafka-stream-analytics.md
+    - text: Azure Event Hubs のデータを処理する
+      url: ../event-hubs/process-data-azure-stream-analytics.md
+- title: 出力シンクにデータを送信する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 出力の種類について理解する
+      url: stream-analytics-define-outputs.md
+  - linkListType: concept
+    links:
+    - text: Cosmos DB に出力する
+      url: stream-analytics-documentdb-output.md
+    - text: Azure SQL Database に出力する
+      url: stream-analytics-sql-output-perf.md
+    - text: カスタム BLOB 出力のパーティション分割
+      url: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - text: 出力エラー処理のポリシー
+      url: stream-analytics-output-error-policy.md
+  - linkListType: how-to-guide
+    links:
+    - text: 出力接続のトラブルシューティング
+      url: stream-analytics-troubleshoot-output.md
+- title: ジョブの監視とトラブルシューティング
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 監視の概要
+      url: stream-analytics-monitoring.md
+    - text: Azure PowerShell でジョブを監視する
+      url: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+    - text: Azure .NET SDK を使用してジョブ モニターを作成する
+      url: stream-analytics-monitor-jobs.md
+    - text: Visual Studio のジョブの監視と管理
+      url: stream-analytics-monitor-jobs-use-vs.md
+    - text: 診断ツールを使用したトラブルシューティング
+      url: stream-analytics-job-diagnostic-logs.md
+    - text: ジョブ ダイアグラムを使用してデバッグする
+      url: stream-analytics-job-diagram-with-metrics.md
+    - text: データ エラーのトラブルシューティング
+      url: data-errors.md
+- title: テンポラルの概念を確認する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 一般的なクエリのパターン
+      url: stream-analytics-stream-analytics-query-patterns.md
+    - text: Stream Analytics での時間の処理について
+      url: stream-analytics-time-handling.md
+    - text: 内部チェックポイントと再生
+      url: stream-analytics-concepts-checkpoint-replay.md
+- title: Stream Analytics クエリを使用してデータを変換する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: ウィンドウ関数の概要
+      url: stream-analytics-window-functions.md
+    - text: 地理空間関数の概要
+      url: stream-analytics-geospatial-functions.md
+    - text: JSON および AVRO データを解析する
+      url: stream-analytics-parsing-json.md
+  - linkListType: how-to-guide
+    links:
+    - text: クエリ ロジックのトラブルシューティング
+      url: stream-analytics-troubleshoot-query.md
+    - text: JavaScript ユーザー定義集計を記述する
+      url: stream-analytics-javascript-user-defined-aggregates.md
+    - text: IoT Edge ジョブ用の .NET ユーザー定義関数を開発する
+      url: stream-analytics-edge-csharp-udf-methods.md
+  - linkListType: tutorial
+    links:
+    - text: JavaScript ユーザー定義関数を実行する
+      url: stream-analytics-javascript-user-defined-functions.md
+    - text: Stream Analytics Edge ジョブの C# ユーザー定義関数を実行する
+      url: stream-analytics-edge-csharp-udf.md
+- title: 機械学習を使用して分析する
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 機械学習を使って異常を検出する
+      url: stream-analytics-machine-learning-anomaly-detection.md
+    - text: Azure Machine Learning Studio で感情分析を実行する
+      url: stream-analytics-machine-learning-integration-tutorial.md
+    - text: Machine Learning Studio 関数を使用してジョブをスケーリングする
+      url: stream-analytics-scale-with-machine-learning-functions.md
+- title: 開発者ツールを使用したジョブの作成と管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Visual Studio Code でジョブを探す
+      url: vscode-local-run.md
+    - text: Visual Studio Code のサンプルデータを使用してクエリをテストする
+      url: vscode-local-run.md
+    - text: Visual Studio 向けツールをインストールする
+      url: stream-analytics-tools-for-visual-studio-install.md
+    - text: Visual Studio のサンプルデータを使用してクエリをテストする
+      url: stream-analytics-vs-tools-local-run.md
+    - text: Visual Studio のライブ データを使用してクエリをテストする
+      url: stream-analytics-live-data-local-testing.md
+    - text: Visual Studio でのジョブの表示
+      url: stream-analytics-tools-for-visual-studio-edge-jobs.md
+    - text: Visual Studio で IoT Edge ジョブを開発する
+      url: stream-analytics-tools-for-visual-studio-edge-jobs.md
+- title: Stream Analytics のチュートリアルとソリューションを試す
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ジョブの作成と管理
+      url: stream-analytics-manage-job.md
+    - text: Azure 関数をトリガーする
+      url: stream-analytics-with-azure-functions.md
+  - linkListType: how-to-guide
+    links:
+    - text: ジオフェンシングと地理空間集計を使用してソリューションをビルドする
+      url: geospatial-scenarios.md
+    - text: IoT Edge でのジョブの実行
+      url: stream-analytics-edge.md
+    - text: 感情分析ソリューションを構築する
+      url: stream-analytics-twitter-sentiment-analysis-trends.md
+    - text: リアルタイムでの不正検出
+      url: stream-analytics-real-time-fraud-detection.md
+    - text: IoT ソリューションを構築する
+      url: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+    - text: 高頻度取引のシミュレーション
+      url: stream-analytics-high-frequency-trading.md
+    - text: 調整可能なルールしきい値ベースのアラート
+      url: stream-analytics-threshold-based-rules.md
+- title: Stream Analytics ジョブをデプロイする
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Azure Pipelines を使用して CI/CD によるジョブをデプロイする
+      url: stream-analytics-tools-visual-studio-cicd-vsts.md
+  - linkListType: how-to-guide
+    links:
+    - text: Visual Studio Code を使用して CI/CD パイプラインを設定する
+      url: setup-cicd-vs-code.md
+    - text: Visual Studio を使用して CI/CD パイプラインを設定する
+      url: stream-analytics-tools-for-visual-studio-cicd.md
+    - text: REST API を使用して IoT Edge ジョブの CI/CD を設定する
+      url: stream-analytics-cicd-api.md
+- title: Stream Analytics ジョブをスケーリングする
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: ストリーミング ユニットを利用したスケーリング
+      url: stream-analytics-streaming-unit-consumption.md
+    - text: クエリ並列処理を使用したスケーリング
+      url: stream-analytics-parallelization.md
+    - text: スループット向上のためにジョブをスケーリングする
+      url: stream-analytics-scale-jobs.md
+    - text: 再分割によって処理を最適化する
+      url: repartition.md

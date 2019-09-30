@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ed57a9fa3b041961ce220e8f10d9aed5e7bef60e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7b3ce6a4e72b90c6fd642b92d4a92eb02f4c92c
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511921"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063193"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のユーザー フロー バージョン
 
 >[!IMPORTANT]
 > この記事に記載されているすべてのユーザー フローは、**推奨**と指定されていない限り、パブリック プレビューと見なされます。 運用アプリケーションには、推奨されるユーザー フローのみを使用してください。
 
-Azure Active Directory (Azure AD) B2C のユーザー フローは、ユーザー ID エクスペリエンスを完全に記述する共通の[ポリシー](active-directory-b2c-reference-policies.md)を設定するために役立ちます。 このようなエクスペリエンスには、サインアップ、サインイン、パスワード リセット、プロファイル編集が含まれます。 Azure AD B2C では、推奨されるユーザー フローとプレビュー ユーザー フローの両方のコレクションから選択できます。 
+Azure Active Directory B2C (Azure AD B2C) のユーザー フローは、ユーザー ID エクスペリエンスを完全に記述する共通の[ポリシー](active-directory-b2c-reference-policies.md)を設定するために役立ちます。 このようなエクスペリエンスには、サインアップ、サインイン、パスワード リセット、プロファイル編集が含まれます。 Azure AD B2C では、推奨されるユーザー フローとプレビュー ユーザー フローの両方のコレクションから選択できます。
 
 新しいユーザー フローが新しいバージョンとして追加されます。 ユーザー フローが安定してから使用することをお勧めします。 ユーザー フローは、完全にテストされた場合に**推奨**とマークされます。 ユーザー フローは、推奨とマークされるまでプレビューで検討されます。 運用アプリケーションには推奨されるユーザー フローを使用してください。ただし、新しい機能を使用できるようになったときにテストする場合は、他のバージョンから選択します。 以前のバージョンの推奨されるユーザー フローは使用しないでください。
 

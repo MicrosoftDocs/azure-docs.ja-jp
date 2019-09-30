@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 8a3a325cbfced13b6e2ac4cb842b5d5f4f764750
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2aae0ce7bbf5c8804dcaab90fcb60a66dfe59cf0
+ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567463"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70744417"
 ---
 # <a name="quickstart-restore-a-database-to-a-managed-instance"></a>クイック スタート:データベースをマネージド インスタンスに復元する
 
@@ -37,6 +37,7 @@ ms.locfileid: "68567463"
 - SSMS を使用してマネージド インスタンスに接続する必要があります。 接続方法については、次のクイック スタートを参照してください。
   - [Connect to an Azure SQL Database Managed Instance from an Azure VM (Azure VM から Azure SQL Database Managed Instance に接続する)](sql-database-managed-instance-configure-vm.md)
   - [オンプレミスから Azure SQL Database Managed Instance へのポイント対サイト接続を構成する](sql-database-managed-instance-configure-p2s.md)。
+- `rw` アクセス許可を持つ **SAS 資格情報**で保護された**パブリック IP** 上の Azure Blob Storage アカウント (例: Standard_LRS V2) が必要です。 Azure Blob Storage サービス エンドポイントと[ファイアウォールで保護された Blob Storage のプライベート IP](https://docs.microsoft.com/azure/storage/common/storage-network-security) は、現在サポートされていません。
 
 > [!NOTE]
 > Azure Blob Storage と [Shared Access Signature (SAS) キー](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)を使用した SQL Server データベースのバックアップと復元の詳細については、[SQL Server Backup to URL](sql-database-managed-instance-get-started-restore.md) に関するページを参照してください。

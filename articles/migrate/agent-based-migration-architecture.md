@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: raynew
-ms.openlocfilehash: 21c779587842c976ba93d7fa592a91ee714bc55c
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f5ad3aa0fc51f47942750d3745ffef1d6e4a087d
+ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810022"
+ms.lasthandoff: 09/03/2019
+ms.locfileid: "70232582"
 ---
 # <a name="agent-based-migration-architecture"></a>エージェントベースの移行アーキテクチャ
 
@@ -78,7 +78,7 @@ Azure Migrate Server Migration は、オンプレミスとパブリック クラ
 **デバイス** | **Connection**
 --- | --- 
 VM | VM で実行されるモビリティ サービスは、レプリケーション管理のために、受信ポート HTTPS 443 でオンプレミスのレプリケーション アプライアンスと通信します。<br/><br/> VM は、受信ポート HTTPS 9443 でプロセス サーバー (既定ではレプリケーション アプライアンスで実行) にレプリケーション データを送信します。 このポートは変更可能です。
-レプリケーション アプライアンス | レプリケーション アプライアンスは、送信ポート HTTPS 443 を通じて Azure によるレプリケーションを調整します。
+レプリケーション アプライアンス | レプリケーション アプライアンスは、アウトバウンド ポート HTTPS 443 経由で Azure によるレプリケーションを調整します。
 プロセス サーバー | プロセス サーバーは、レプリケーション データを受信し、データを最適化して暗号化し、送信ポート 443 経由で Azure ストレージに送信します。
 
 
@@ -115,22 +115,16 @@ VMware VM をレプリケートする場合、VMware 用の [Site Recovery Deplo
 
 ## <a name="control-upload-throughput"></a>クラウド アップロードのスループット
 
-各 Hyper-V ホスト上の Azure にデータをアップロードするために使用される帯域幅を制限できます。 ご注意ください。 設定した値が小さすぎると、レプリケーションに悪影響を及ぼし、移行が遅れます。
 
+ Azure にレプリケートされる VMware トラフィックは、特定のプロセス サーバーを経由します。 プロセス サーバーとして実行されているマシンで帯域幅を調整することにより、アップロードのスループットを制限できます。 次のレジストリ キーを使用して、帯域幅に影響を与えることができます。
 
-1. Hyper-V ホストまたはクラスター ノードにサインインします。
-2. **C:\Program Files\Microsoft Azure Recovery Services Agent\bin\wabadmin.msc** を実行して、Windows Azure Backup MMC スナップインを開きます。
-3. スナップインで **[プロパティの変更]** を選択します。
-4. **[調整]** で **[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** を選択します。 勤務時間用と勤務時間外用の制限値を設定します。 有効な範囲は、512 Kbps から 1,023 Mbps です。
-I
+- HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM レジストリ値では、ディスクのデータ転送 (初期レプリケーションまたは差分レプリケーション) に使用されるスレッドの数を指定します。 値を大きくすると、レプリケーションに使用されるネットワーク帯域幅が増加します。 既定値は 4 です。 最大値は 32 です。 トラフィックを監視して値を最適化できます。
+- さらに、プロセス サーバー コンピューターの帯域幅を次のようにして調整できます。
 
-### <a name="influence-upload-efficiency"></a>アップロード効率への影響
+    1. プロセス サーバー コンピューターで、Azure Backup MMC スナップインを開きます。 デスクトップまたはフォルダー C:\Program Files\Microsoft Azure Recovery Services Agent\bin に、ショートカットがあります。 
+    2. スナップインで **[プロパティの変更]** を選択します。
+    3. **[調整]** で **[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** を選択します。 勤務時間用と勤務時間外用の制限値を設定します。 有効な範囲は、512 Kbps から 1,023 Mbps です。
 
-レプリケーション用の予備帯域幅があり、アップロードを増やす場合、次のように、アップロード タスクに割り当てられるスレッドの数を増やすことができます。
-
-1. Regedit でレジストリを開きます。
-2. キー HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM に移動します。
-3. レプリケートする VM ごとに、データ アップロードに使用されるスレッド数の値を増やします。 既定値は 4 で、最大値は 32 です。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/16/2019
+ms.date: 09/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 98172c2c487488a72bbfdd3a8205ac7d8668db60
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 1c2525b352c25f470814ce909a8d10ff821d9e32
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035742"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70961616"
 ---
 キーと証明書を生成します。
 
@@ -22,7 +22,7 @@ ms.locfileid: "69035742"
   ipsec pki --self --in caKey.pem --dn "CN=VPN CA" --ca --outform pem > caCert.pem
   ```
 
-CA 証明書 を base64 形式で印刷します。 これは Azure でサポートされている形式です。 P2S 構成の一環として、後にこれを Azure にアップロードすることになります。
+CA 証明書 を base64 形式で印刷します。 これは Azure でサポートされている形式です。 この証明書は、[P2S 構成手順](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md)の一部として Azure にアップロードします。
 
   ```
   openssl x509 -in caCert.pem -outform der | base64 -w0 ; echo

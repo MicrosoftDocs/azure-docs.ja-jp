@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein
-ms.date: 07/29/2019
-ms.openlocfilehash: f9c2ed77075affdfdf464dbf8a468629fc2e610d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/09/2019
+ms.openlocfilehash: 831ebbd3f85ffa9b78ac3e97a6ec68a8c41bceb5
+ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640045"
+ms.lasthandoff: 09/10/2019
+ms.locfileid: "70845299"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal-powershell-and-azure-cli"></a>クイック スタート:Azure portal、PowerShell、Azure CLI を使用して Azure SQL Database で単一データベースを作成します
 
@@ -30,8 +30,8 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 単一データベースは、プロビジョニング済みコンピューティング レベルでも、サーバーレス コンピューティング レベル (プレビュー) でも作成できます。
 
-- プロビジョニング済みコンピューティング レベルの単一データベースには、定義された量の事前割り当てコンピューティング リソースと、2 つの[購入モデル](sql-database-purchase-models.md)のうちの 1 つを使用した一連のメモリおよびストレージ リソースがあります。
-- サーバーレス コンピューティング レベルの単一データベースには、自動スケーリングされる一定範囲のコンピューティング リソースと、コアあたりで指定された量のメモリ、および指定された量のストレージ リソースがあり、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)だけで使用できます。
+- プロビジョニング済みコンピューティング レベルの単一データベースには、2 つの[購入モデル](sql-database-purchase-models.md)のうちの 1 つを使用して、一定量のコンピューティング リソース (CPU およびメモリを含む) が事前に割り当てられています。
+- サーバーレス コンピューティング レベルの単一データベースは、自動スケーリングされる一定範囲のコンピューティング リソース (CPU およびメモリを含む) を備え、[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)のみで使用できます。
 
 単一データベースを作成するときは、それを管理するための [SQL Database サーバー](sql-database-servers.md)も定義し、指定したリージョンの [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内にそれを配置します。
 

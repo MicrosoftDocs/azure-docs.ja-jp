@@ -10,12 +10,12 @@ ms.subservice: ink-recognizer
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: erhopf
-ms.openlocfilehash: a5fe77ace5f745911bb9085dd6996a8d21fe265f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0ad961495d44f13522a3c02224a5612aaedaf076
+ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879033"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70274488"
 ---
 # <a name="send-ink-data-to-the-ink-recognizer-api"></a>インク データを Ink Recognizer API に送信する 
 
@@ -82,7 +82,7 @@ Ink Recognizer REST API は、アプリケーションに応じてさまざま�
 
 ## <a name="integrate-the-ink-recognizer-api-with-windows-ink"></a>Ink Recognizer API と Windows Ink を統合する
 
-[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) は、さまざまなデバイスでデジタル インキング エクスペリエンスを可能にするツールとテクノロジを提供します。 Windows Ink プラットフォームと Ink Recognition API を組み合わせて、デジタル インク ストロークを表示および解釈するアプリケーションを作成できます。
+[Windows Ink](https://docs.microsoft.com/windows/uwp/design/input/pen-and-stylus-interactions) は、さまざまなデバイスでデジタル インキング エクスペリエンスを可能にするツールとテクノロジを提供します。 Windows Ink プラットフォームと Ink Recognizer API を組み合わせて、デジタル インク ストロークを表示および解釈するアプリケーションを作成できます。
 
 ## <a name="next-steps"></a>次の手順
 

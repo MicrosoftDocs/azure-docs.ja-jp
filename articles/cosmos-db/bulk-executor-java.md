@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f8cb7458deddc95f33fa5e4582ffa7c25c3c64e6
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: ef006e94ee22886f1129c7c9ca31e20503312fe3
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619816"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616930"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
-このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos DB コンテナーに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
+このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos コンテナーに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
 
 現在、Bulk Executor ライブラリは、Azure Cosmos DB SQL API および Gremlin API アカウントによってのみサポートされています。 この記事では、SQL API アカウントで Bulk Executor Java ライブラリを使用する方法について説明します。 Gremlin API での Bulk Executor .NET ライブラリの使用の詳細については、[Azure Cosmos DB Gremlin API での一括操作の実行](bulk-executor-graph-dotnet.md)に関するページを参照してください。
 
@@ -88,7 +88,7 @@ ms.locfileid: "68619816"
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
    ```
 
-4. Azure Cosmos DB コンテナーに一括インポートするランダムなドキュメントを生成する importAll API を呼び出します。 CmdLineConfiguration.java ファイルで、コマンド ライン構成を構成できます。
+4. Azure Cosmos コンテナーに一括インポートするランダムなドキュメントを生成する importAll API を呼び出します。 CmdLineConfiguration.java ファイルで、コマンド ライン構成を構成できます。
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
@@ -155,7 +155,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
     }).collect(Collectors.toCollection(() -> updateItems));
    ```
 
-2. Azure Cosmos DB コンテナーに一括インポートするランダムなドキュメントを生成する updateAll API を呼び出します。 CmdLineConfiguration.java ファイルで渡されるコマンド ライン構成を構成できます。
+2. Azure Cosmos コンテナーに一括インポートするランダムなドキュメントを生成する updateAll API を呼び出します。 CmdLineConfiguration.java ファイルで渡されるコマンド ライン構成を構成できます。
 
    ```java
    BulkUpdateResponse bulkUpdateResponse = bulkExecutor.updateAll(updateItems, null)
@@ -206,7 +206,7 @@ Bulk Executor ライブラリを使用する場合は、パフォーマンスを
    * 多数のドキュメントを処理するときのメモリの問題を回避するため、JVM のヒープ サイズを十分に大きい値に設定します。 推奨されるヒープ サイズ: max(3GB, 3 * sizeof(1 回のバッチで一括インポート API に渡されるすべてのドキュメント))。  
    * 前処理にかかる時間があるため、多数のドキュメントで一括操作を実行すると、スループットが高くなります。 そのため、10,000, 000 個のドキュメントをインポートする場合、100,000 ドキュメントずつ 100 回の一括インポートを実行するより、1,000,000 ドキュメントずつ 10 回の一括インポートを実行する方が効率的です。  
 
-* 特定の Azure Cosmos DB コンテナーに対応する単一の仮想マシン内でアプリケーション全体に対して 1 つの DocumentBulkExecutor オブジェクトをインスタンス化することをお勧めします。  
+* 特定の Azure Cosmos コンテナーに対応する単一の仮想マシン内でアプリケーション全体に対して 1 つの DocumentBulkExecutor オブジェクトをインスタンス化することをお勧めします。  
 
 * 1 つの一括操作 API 実行でクライアント マシンの CPU とネットワーク IO が大量に消費されます。 これは、内部的に複数のタスクを生成することで、一括操作 API 呼び出しを実行するたびにアプリケーション プロセス内で複数の同時実行タスクが生成されないようにするためです。 単一の仮想マシンで実行される 1 つの一括操作 API 呼び出しでコンテナー全体のスループットを消費できない場合 (コンテナーのスループットが 100 万 RU/秒を超える場合)、別個の仮想マシンを作成して、一括操作 API 呼び出しを同時に実行することをお勧めします。
 

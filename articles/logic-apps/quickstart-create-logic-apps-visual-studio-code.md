@@ -1,27 +1,29 @@
 ---
-title: Visual Studio Code を使用した自動ワークフローの作成と管理 - Azure Logic Apps | Microsoft Docs
+title: Visual Studio Code を使用した自動ワークフローの作成と管理 - Azure Logic Apps
 description: Visual Studio Code (VS Code) での JSON を使用したロジック アプリの作成および管理のクイック スタート
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 ms.workload: azure-vs
 author: ecfan
 ms.author: estfan
-ms.topic: article
+ms.manager: carmonm
 ms.reviewer: klam, deli, LADocs
-ms.suite: integration
+ms.topic: quickstart
+ms.custom: mvc
 ms.date: 10/05/2018
-ms.openlocfilehash: 0fec590523fa130af2e5670a92914c056df289d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b9f9a402ecde09dd00c2b070f784858a141e556b
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60512246"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70308997"
 ---
 # <a name="quickstart-create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>クイック スタート:自動化されたロジック アプリ ワークフローの作成と管理 - Visual Studio Code
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio Code を使用して、ロジック アプリを作成し、管理できます。ロジック アプリを使用すると、組織や企業間でアプリ、データ、システム、サービスを統合するためのタスク、ワークフロー、プロセスを自動化できます。 この記事では、コード ベースのエクスペリエンスで JavaScript Object Notation (JSON) のワークフロー定義スキーマを使用することによって、ロジック アプリのワークフロー定義を作成および編集する方法について説明します。 クラウドの <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> に既にデプロイされている既存のロジック アプリを使用することもできます。 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と Visual Studio Code を使用して、ロジック アプリを作成し、管理できます。ロジック アプリを使用すると、組織や企業間でアプリ、データ、システム、サービスを統合するためのタスク、ワークフロー、プロセスを自動化できます。 この記事では、コード ベースのエクスペリエンスで JavaScript Object Notation (JSON) のワークフロー定義スキーマを使用することによって、ロジック アプリのワークフロー定義を作成および編集する方法について説明します。 Azure に既にデプロイされている既存のロジック アプリを使用することもできます。 
 
-これらのタスクは <a href="https://portal.azure.com" target="_blank">Azure portal</a> と Visual Studio でも実行できますが、既にロジック アプリ定義を使い慣れていて、コードで直接作業する場合は、Visual Studio Code の方が迅速に作業を開始できます。 たとえば、既に作成されているロジック アプリを無効化、有効化、削除、更新することができます。 また、Visual Studio Code が実行されている開発プラットフォーム (Linux、Windows、Mac など) からロジック アプリと統合アカウントを操作することもできます。
+これらのタスクは Azure portal (https://portal.azure.com) と Visual Studio でも実行できますが、既にロジック アプリ定義を使い慣れていて、コードで直接作業する場合は、Visual Studio Code の方が迅速に作業を開始できます。 たとえば、既に作成されているロジック アプリを無効化、有効化、削除、更新することができます。 また、Visual Studio Code が実行されている開発プラットフォーム (Linux、Windows、Mac など) からロジック アプリと統合アカウントを操作することもできます。
 
 この記事では、基本的な概念に重点を置いた、[Azure portal でのロジック アプリの作成に関するクイック スタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)と同じロジック アプリを作成できます。 Visual Studio Code では、ロジック アプリは次の例のようになります。
 
@@ -29,7 +31,7 @@ ms.locfileid: "60512246"
 
 作業を開始するには、以下が必要です。
 
-* Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * [ロジック アプリのワークフロー定義](../logic-apps/logic-apps-workflow-definition-language.md)とその構造についての基礎知識 (JavaScript Object Notation (JSON) を使用) 
 
@@ -39,7 +41,7 @@ ms.locfileid: "60512246"
 
 * まだお持ちでない場合は、以下のツールをダウンロードしてインストールしてください。 
 
-  * <a href="https://code.visualstudio.com/" target="_blank">Visual Studio Code バージョン 1.25.1 以降</a> (無料)
+  * [Visual Studio Code バージョン 1.25.1 以降](https://code.visualstudio.com/) (無料)
 
   * Azure Logic Apps 用 Visual Studio Code 拡張機能
 
@@ -52,7 +54,7 @@ ms.locfileid: "60512246"
 
     ![インストールされた拡張機能](./media/create-logic-apps-visual-studio-code/installed-extension.png)
 
-    詳細については、「<a href="https://code.visualstudio.com/docs/editor/extension-gallery" target="_blank">Extension Marketplace (拡張機能 Marketplace)</a>」をご覧ください。 [GitHub の Visual Studio Code 用 Azure Logic Apps 拡張機能](https://github.com/Microsoft/vscode-azurelogicapps)を参照して、この拡張機能のオープン ソース バージョンを表示し、コントリビューションを送信することもできます。 
+    詳細については、「[Extension Marketplace (拡張機能 Marketplace)](https://code.visualstudio.com/docs/editor/extension-gallery)」をご覧ください。 [GitHub の Visual Studio Code 用 Azure Logic Apps 拡張機能](https://github.com/Microsoft/vscode-azurelogicapps)を参照して、この拡張機能のオープン ソース バージョンを表示し、コントリビューションを送信することもできます。 
 
 <a name="sign-in-azure"></a>
 
@@ -220,8 +222,7 @@ Azure に既にデプロイされている既存のロジック アプリを操�
 
    ![編集内容をアップロードする](./media/create-logic-apps-visual-studio-code/upload-logic-app-changes.png)
 
-## <a name="get-support"></a>サポートを受ける
+## <a name="next-steps"></a>次の手順
 
-* 質問がある場合は、<a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">Azure Logic Apps フォーラム</a>にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、<a href="https://aka.ms/logicapps-wish" target="_blank">Logic Apps のユーザー フィードバック サイト</a>にアクセスしてください。
-
+> [!div class="nextstepaction"]
+> * [Visual Studio でロジック アプリを作成する](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)

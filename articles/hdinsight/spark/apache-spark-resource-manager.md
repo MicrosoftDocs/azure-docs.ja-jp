@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: dfd926f3e091f4516685fd73f3a6b87949330afb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ac0109ff8c5dd7f6013acefbe5ee08a13494cb77
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706355"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71001756"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターのリソースの管理 
 
@@ -51,17 +51,19 @@ Spark History Server Web UI は次のようになります。
 ![HDInsight Spark History Server](./media/apache-spark-resource-manager/hdinsight-spark-history-server.png)
 
 ## <a name="open-the-yarn-ui"></a>Yarn UI を開く
+
 Spark クラスターで現在実行されているアプリケーションを監視するには、YARN UI を使用することができます。
 
 1. [Azure Portal](https://portal.azure.com/) で Spark クラスターを開きます。 詳細については、「[クラスターの一覧と表示](../hdinsight-administer-use-portal-linux.md#showClusters)」を参照してください。
 2. **クイック リンク**で **[クラスター ダッシュボード]** をクリックし、 **[YARN]** をクリックします。
 
-    ![Launch YARN UI](./media/apache-spark-resource-manager/launch-yarn-ui.png)
+    ![Launch YARN UI](./media/apache-spark-resource-manager/hdi-launch-apache-yarn.png)
 
    > [!TIP]  
    > Ambari UI から YARN UI を起動してもかまいません。 Ambari UI を起動するには、 **[クラスター ダッシュボード]** をクリックし、 **[HDInsight クラスター ダッシュボード]** をクリックします。 Ambari UI から **[YARN]** 、 **[クイック リンク]** の順にクリックし、アクティブな Resource Manager をクリックして、 **[Resource Manager UI]** をクリックします。
 
 ## <a name="optimize-clusters-for-spark-applications"></a>Spark アプリケーション用にクラスターを最適化する
+
 アプリケーションの要件に応じて Spark を構成するための主要なパラメーターは、`spark.executor.instances`、`spark.executor.cores`、`spark.executor.memory` の 3 つです。 Executor は、Spark アプリケーション用に起動されるプロセスです。 ワーカー ノードで動作し、アプリケーションのタスクを実行する役割を担います。 それぞれのクラスターで使用される Executor の既定の数とサイズは、ワーカー ノードの数とワーカー ノードのサイズに基づいて計算され、 この情報はクラスターのヘッド ノード上の `spark-defaults.conf` に保存されます。
 
 3 つの構成パラメーターは、クラスター レベルで (クラスター上で動作するすべてのアプリケーションに対して) 構成できるほか、個々のアプリケーションに対して指定することもできます。
@@ -69,13 +71,14 @@ Spark クラスターで現在実行されているアプリケーションを�
 ### <a name="change-the-parameters-using-ambari-ui"></a>Ambari UI を使用したパラメーターの変更
 1. Ambari UI から **[Spark]** 、 **[Configs (構成)]** の順にクリックし、 **[Custom spark-defaults]** を展開します。
 
-    ![Set parameters using Ambari](./media/apache-spark-resource-manager/set-parameters-using-ambari.png)
+    ![Ambari カスタムを使用してパラメーターを設定する](./media/apache-spark-resource-manager/set-parameters-using-ambari.png "Ambari カスタムを使用してパラメーターを設定する")
 2. 一連の既定値は、クラスター上で 4 つの Spark アプリケーションを同時実行することを想定して決められています。 次のスクリーンショットに示すように、これらの値をユーザー インターフェイスから変更できます。
 
-    ![Set parameters using Ambari](./media/apache-spark-resource-manager/set-executor-parameters.png)
+    ![Ambari を使用してパラメーターを設定する](./media/apache-spark-resource-manager/set-executor-parameters.png "Ambari を使用してパラメーターを設定する")
+
 3. **[保存]** をクリックして構成の変更を保存します。 変更に関係したサービスをすべて再開するよう求めるメッセージがページの上部に表示されます。 **[Restart (再開)]** をクリックします。
 
-    ![Restart services](./media/apache-spark-resource-manager/restart-services.png)
+    ![Restart services](./media/apache-spark-resource-manager/apache-ambari-restart-services.png)
 
 ### <a name="change-the-parameters-for-an-application-running-in-jupyter-notebook"></a>Jupyter Notebook で実行するアプリケーションのパラメーター変更
 Jupyter Notebook で実行しているアプリケーションについては、 `%%configure` マジックを使用して構成に変更を加えることができます。 そのような変更は、できればアプリケーションの冒頭で、1 つ目のコード セルを実行する前に記述してください。 これを行うと、Livy セッションの作成時に、確実に構成が適用されます。 アプリケーションの終盤で構成の変更が生じた場合は、 `-f` パラメーターを使用する必要があります。 ただしその場合、アプリケーションのすべての進捗が失われます。
@@ -104,10 +107,10 @@ Spark Thrift サーバーでは、Spark の Dynamic Executor Allocation が使�
 
 * `spark.dynamicAllocation.minExecutors`、`spark.dynamicAllocation.maxExecutors`、`spark.executor.memory` の各パラメーターを更新するには、**Advanced spark-thrift-sparkconf** カテゴリを展開します。
 
-    ![Configure Spark thrift server](./media/apache-spark-resource-manager/spark-thrift-server-1.png)    
+    ![Spark Thrift サーバーの構成](./media/apache-spark-resource-manager/spark-thrift-server-1.png "Spark Thrift サーバーの構成")
 * `spark.executor.cores` パラメーターを更新するには、**Custom spark-thrift-sparkconf** カテゴリを展開します。
 
-    ![Configure Spark thrift server](./media/apache-spark-resource-manager/spark-thrift-server-2.png)
+    ![Spark Thrift サーバーのパラメーターの構成](./media/apache-spark-resource-manager/spark-thrift-server-2.png "Spark Thrift サーバーのパラメーターの構成")
 
 ### <a name="change-the-driver-memory-of-the-spark-thrift-server"></a>Spark Thrift サーバーのドライバーのメモリを変更する
 ヘッド ノードの RAM の合計サイズが 14 GB を超える場合、Spark Thrift サーバーのドライバーのメモリはヘッド ノードの RAM サイズの 25% に構成されます。 ドライバーのメモリ構成は、次のスクリーンショットのように Ambari UI を使用して変更できます。
@@ -122,33 +125,33 @@ Spark の動的割り当てにより、Thrift サーバーから利用できる�
 1. Ambari UI の左ペインで **[Spark]** をクリックします。
 2. 次のページで、 **[Spark Thrift Servers]** をクリックします。
 
-    ![Restart thrift server](./media/apache-spark-resource-manager/restart-thrift-server-1.png)
+    ![Thrift サーバーの再起動1](./media/apache-spark-resource-manager/restart-thrift-server-1.png "Thrift サーバーの再起動1")
 3. Spark Thrift サーバーが実行されている 2 つのヘッド ノードが表示されます。 いずれかのヘッド ノードをクリックしてください。
 
-    ![Restart thrift server](./media/apache-spark-resource-manager/restart-thrift-server-2.png)
+    ![Thrift サーバーの再起動2](./media/apache-spark-resource-manager/restart-thrift-server-2.png "Thrift サーバーの再起動2")
 4. そのヘッド ノードで実行されているすべてのサービスが次のページに一覧表示されます。 一覧内の Spark Thrift サーバーの横にあるドロップダウン ボタンをクリックし、 **[Stop (停止)]** をクリックします。
 
-    ![Restart thrift server](./media/apache-spark-resource-manager/restart-thrift-server-3.png)
+    ![Thrift サーバーの再起動3](./media/apache-spark-resource-manager/restart-thrift-server-3.png "Thrift サーバーの再起動3")
 5. もう一方のヘッド ノードについても同じ手順を繰り返します。
 
 ## <a name="restart-the-jupyter-service"></a>Jupyter サービスを再起動する
 この記事の最初で示したように、Ambari Web UI を起動します。 左側のナビゲーション ウィンドウで、 **[Jupyter]** 、 **[Service Actions]** 、 **[Restart All]** の順にクリックします。 これで、すべてのヘッドノードで Jupyter サービスが開始されます。
 
-![Jupyter の再起動](./media/apache-spark-resource-manager/restart-jupyter.png "Jupyter の再起動")
+![Jupyter の再起動](./media/apache-spark-resource-manager/apache-ambari-restart-jupyter.png "Jupyter の再起動")
 
 ## <a name="monitor-resources"></a>リソースの監視
 この記事の最初で示したように、Yarn Web UI を起動します。 画面上部の [Cluster Metrics] テーブルで、 **[Memory Used]** と **[Memory Total]** の列の値を確認します。 2 つの値が近い場合は、次のアプリケーションを開始するためのリソースが十分でない可能性があります。 **[VCores Used]** と **[VCores Total]** の列でも同じことが言えます。 また、メイン ビューに、 **[ACCEPTED]** の状態のまま、 **[RUNNING]** にも **[FAILED]** の状態にも移行していないアプリケーションがある場合も、開始するためのリソースが十分でないことを示している可能性があります。
 
-![リソースの制限](./media/apache-spark-resource-manager/resource-limit.png "リソースの制限")
+![リソースの制限](./media/apache-spark-resource-manager/apache-ambari-resource-limit.png "リソースの制限")
 
 ## <a name="kill-running-applications"></a>実行中のアプリケーションを強制終了する
 1. Yarn UI の左側のパネルで **[Running]** をクリックします。 実行中のアプリケーションの一覧から、強制終了するアプリケーションを決定し、 **[ID]** をクリックします。
 
-    ![App1 の強制終了](./media/apache-spark-resource-manager/kill-app1.png "App1 の強制終了")
+    ![App1 の強制終了](./media/apache-spark-resource-manager/apache-ambari-kill-app1.png "App1 の強制終了")
 
 2. 右上隅の **[Kill Application]** をクリックして、 **[OK]** をクリックします。
 
-    ![App2 の強制終了](./media/apache-spark-resource-manager/kill-app2.png "App2 の強制終了")
+    ![App2 の強制終了](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "App2 の強制終了")
 
 ## <a name="see-also"></a>関連項目
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)

@@ -1,28 +1,27 @@
 ---
-title: 'クイック スタート: Azure DevOps Projects を使用して Ruby on Rails 用の CI/CD パイプラインを作成する'
+title: クイック スタート:Azure DevOps Projects を使用して Ruby on Rails 用の CI/CD パイプラインを作成する
 description: Azure DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、Azure サービス上で Ruby の Web アプリを起動することができます。
 ms.prod: devops
 ms.technology: devops-cicd
 services: vsts
 documentationcenter: vs-devops-build
 author: mlearned
-manager: douge
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.workload: web
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4cf3feeb92f04b4e97cbdc83c539c206790a78c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 5cb47cdd76d1de284c4dc6dbdfbfedd0095653ab
+ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264524"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70899565"
 ---
 # <a name="create-a-cicd-pipeline-for-ruby-on-rails-by-using-azure-devops-projects"></a>Azure DevOps Projects を使用して Ruby on Rails 用の CI/CD パイプラインを作成する
 
@@ -30,15 +29,15 @@ Azure DevOps Projects を使用して、Ruby on Rails アプリ用に継続的�
 
 Azure サブスクリプションをお持ちでない場合は、[Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) を通じて無料で取得できます。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 Azure DevOps Projects によって、Azure Repos に CI/CD パイプラインが作成されます。 新しい Azure DevOps 組織を作成するか、既存の組織を使用できます。 DevOps Projects では、選択した Azure サブスクリプションに Azure リソースも作成されます。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. 左側のウィンドウで、**[リソースの作成]** を選びます。
+1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
 
-1. 検索ボックスに「**DevOps Projects**」と入力し、**[作成]** を選択します。
+1. 検索ボックスに「**DevOps Projects**」と入力し、 **[作成]** を選択します。
 
     ![DevOps Projects ダッシュボード](_img/azure-devops-project-github/fullbrowser.png)
 
@@ -46,12 +45,12 @@ Azure DevOps Projects によって、Azure Repos に CI/CD パイプラインが
 
 1. **Ruby** サンプル アプリを選択します。
 
-1. **Ruby on Rails** アプリケーション フレームワークを選択します。 終了したら、**[次へ]** を選択します。
+1. **Ruby on Rails** アプリケーション フレームワークを選択します。 終了したら、 **[次へ]** を選択します。
 
 1. **Web App on Linux** が既定の展開先です。  
     必要に応じて、**Web App for Containers** を選択できます。 前に選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。 
     
-1. 目的のサービスを選択し、**[次へ]** を選択します。
+1. 目的のサービスを選択し、 **[次へ]** を選択します。
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps と Azure サブスクリプションを構成する 
 
@@ -59,7 +58,7 @@ Azure DevOps Projects によって、Azure Repos に CI/CD パイプラインが
 
 1. Azure DevOps プロジェクトの名前を入力します。 
 
-1. Azure サブスクリプションと場所を選択し、アプリの名前を入力して、**[完了]** を選択します。  
+1. Azure サブスクリプションと場所を選択し、アプリの名前を入力して、 **[完了]** を選択します。  
     数分後、DevOps Projects ダッシュボードが Azure portal に表示されます。 サンプル アプリが Azure DevOps 組織内のリポジトリに設定され、ビルドが実行され、アプリが Azure にデプロイされます。 
     
     ダッシュボードでは、コード リポジトリ、CI/CD パイプライン、および Azure のアプリが可視化されます。 右側の **[参照]** を選択すると、実行中のアプリが表示されます。
@@ -76,7 +75,7 @@ Azure DevOps Projects によって、Azure Pipelines または GitHub に Git �
 1. リポジトリのクローン URL を表示するには、右上の **[複製]** を選択します。  
     お気に入りの IDE で Git リポジトリを複製できます。 次のいくつかの手順では、Web ブラウザーを使用してマスター ブランチに直接コード変更を行い、コミットできます。
 
-1. 左側で *app/views/pages/home.html.erb* ファイルに移動し、**[編集]** を選択します。
+1. 左側で *app/views/pages/home.html.erb* ファイルに移動し、 **[編集]** を選択します。
 
 1. ファイルを変更します。 たとえば、いずれかの div タグ内のテキストを変更します。
 
@@ -104,9 +103,9 @@ Azure DevOps Projects によって、Azure DevOps 組織内に完全な CI/CD �
 
 1. ビルド パイプラインの上部で、ビルド パイプラインの名前を選択します。
 
-1. ビルド パイプラインの名前をよりわかりやすい名前に変更し、**[保存してキューに登録]** を選択して、**[保存]** を選択します。
+1. ビルド パイプラインの名前をよりわかりやすい名前に変更し、 **[保存してキューに登録]** を選択して、 **[保存]** を選択します。
 
-1. ご自身のビルド パイプラインの名前の下で、**[履歴]** を選択します。  
+1. ご自身のビルド パイプラインの名前の下で、 **[履歴]** を選択します。  
     このウィンドウには、ビルドに対する最近の変更の監査証跡が表示されます。 ビルド パイプラインに対するすべての変更が Azure DevOps によって追跡されるため、各バージョンを比較できます。
 
 1. **[トリガー]** を選択します。  
@@ -115,13 +114,13 @@ Azure DevOps Projects によって、Azure DevOps 組織内に完全な CI/CD �
 1. **[保持]** を選択します。  
     シナリオに基づいて、特定の数のビルドを保持または削除するポリシーを指定できます。
 
-1. **[ビルドとリリース]** を選択し、**[リリース]** を選択します。  
+1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。  
     DevOps Projects により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
 
-1. リリース パイプラインの横にある省略記号 (...) を選択し、**[編集]** を選択します。  
+1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。  
     リリース パイプラインには、リリース プロセスを定義する*パイプライン*が含まれています。
 
-1. **[成果物]** で、**[ドロップ]** を選択します。  
+1. **[成果物]** で、 **[ドロップ]** を選択します。  
     前に調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
 1. **[ドロップ]** アイコンの右側にある **[継続的配置トリガー]** を選択します。  
@@ -132,7 +131,7 @@ Azure DevOps Projects によって、Azure DevOps 組織内に完全な CI/CD �
 
 1. 右側で **[リリースの表示]** を選択して、リリースの履歴を表示します。
 
-1. リリースの横にある省略記号 (...) を選択し、**[開く]** を選択します。  
+1. リリースの横にある省略記号 (...) を選択し、 **[開く]** を選択します。  
     リリース概要、関連付けられた作業項目、テストなど、いくつかのメニューを調べることができます。
 
 1. **[コミット]** を選択します。  

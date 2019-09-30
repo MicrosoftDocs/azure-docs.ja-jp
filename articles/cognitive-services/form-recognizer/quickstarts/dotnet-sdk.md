@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 07/12/2019
 ms.author: pafarley
-ms.openlocfilehash: f6cb364c231c2415bf49a24e6e9406a14640b892
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: ce1cdadcdc69fb5539394aa9bf402aa9463311e9
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600118"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057660"
 ---
 # <a name="quickstart-form-recognizer-client-library-for-net"></a>クイック スタート:.NET 用 Form Recognizer クライアント ライブラリ
 
@@ -22,9 +22,11 @@ ms.locfileid: "68600118"
 
 .NET 用 Form Recognizer クライアント ライブラリは、次の目的で使用することができます。
 
-* カスタム Form Recognizer モデルをトレーニングする
-* カスタム モデルを使用してフォームを分析する
-* カスタム モデルのリストを取得する
+* [カスタム Form Recognizer モデルをトレーニングする](#train-a-custom-model)
+* [抽出されたキーの一覧を取得する](#get-a-list-of-extracted-keys)
+* [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
+* [カスタム モデルのリストを取得する](#get-a-list-of-custom-models)
+* [カスタム モデルを削除する](#delete-a-custom-model)
 
 [リファレンス ドキュメント](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/formrecognizer?view=azure-dotnet-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.FormRecognizer) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.FormRecognizer/)
 
@@ -68,14 +70,7 @@ Build succeeded.
 
 プロジェクト ディレクトリから、好みのエディターまたは IDE で _Program.cs_ ファイルを開きます。 次の `using` ステートメントを追加します。
 
-```csharp
-using Microsoft.Azure.CognitiveServices.FormRecognizer;
-using Microsoft.Azure.CognitiveServices.FormRecognizer.Models;
-
-using System;
-using System.IO;
-using System.Threading.Tasks;
-```
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_using)]
 
 次に、アプリケーションの **Main** メソッドに次のコードを追加します。 この非同期タスクは後で定義します。
 
@@ -115,25 +110,27 @@ Form Recognizer SDK の主な機能は、次のクラスによって処理され
 
 * [クライアントを認証する](#authenticate-the-client)
 * [カスタム Form Recognizer モデルをトレーニングする](#train-a-custom-model)
+* [抽出されたキーの一覧を取得する](#get-a-list-of-extracted-keys)
 * [カスタム モデルを使用してフォームを分析する](#analyze-forms-with-a-custom-model)
 * [カスタム モデルのリストを取得する](#get-a-list-of-custom-models)
+* [カスタム モデルを削除する](#delete-a-custom-model)
 
-### <a name="define-variables"></a>変数の定義
+## <a name="define-variables"></a>変数の定義
 
 メソッドを定義する前に、次の変数定義を **Program** クラスの先頭に追加します。 一部の変数は自分で設定する必要があります。 
 
 * サービスのエンドポイント値は、Azure portal の **[概要]** セクションで確認できます。 
-* トレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります。`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
+* トレーニング データの SAS URL を取得するには、Microsoft Azure Storage Explorer を開き、ご利用のコンテナーを右クリックし、 **[Shared Access Signature の取得]** を選択します。 アクセス許可の **[読み取り]** と **[表示]** がオンになっていることを確認し、 **[作成]** をクリックします。 次に、その値を **URL** セクションにコピーします。 それは次の書式になります`https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_variables)]
 
-### <a name="authenticate-the-client"></a>クライアントを認証する
+## <a name="authenticate-the-client"></a>クライアントを認証する
 
 `Main` メソッドの下に、`Main` で参照されているタスクを定義します。 ここでは、上で定義したサブスクリプション変数を使用してクライアント オブジェクトを認証します。 他のメソッドは後で定義します。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_maintask)]
 
-### <a name="train-a-custom-model"></a>カスタム モデルをトレーニングする
+## <a name="train-a-custom-model"></a>カスタム モデルをトレーニングする
 
 次のメソッドは、Form Recognizer クライアント オブジェクトを使用して、Azure BLOB コンテナーに格納されているドキュメントの新しい認識モデルをトレーニングします。 このメソッドは、ヘルパー メソッドを使用して、([ModelResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelresult?view=azure-dotnet-preview) オブジェクトによって表される) 新しくトレーニングされたモデルに関する情報を表示し、そのモデル ID を返します。
 
@@ -143,9 +140,18 @@ Form Recognizer SDK の主な機能は、次のクラスによって処理され
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displaymodel)]
 
-### <a name="analyze-forms-with-a-custom-model"></a>カスタム モデルを使用してフォームを分析する
+## <a name="get-a-list-of-extracted-keys"></a>抽出されたキーの一覧を取得する
+
+トレーニングが完了すると、カスタム モデルでトレーニング ドキュメントから抽出したキーのリストが保持されます。 将来のフォーム ドキュメントにはこれらのキーが含まれることを予定しており、分析操作で対応する値が抽出されます。 抽出されたキーの一覧を取得してコンソールに出力するには、次のメソッドを使用します。 これは、トレーニング プロセスが有効であったことを確認するための優れた方法です。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getkeys)]
+
+## <a name="analyze-forms-with-a-custom-model"></a>カスタム モデルを使用してフォームを分析する
 
 このメソッドは、Form Recognizer クライアントとモデル ID を使用して PDF フォーム ドキュメントを分析し、キーと値のデータを抽出します。 このメソッドは、ヘルパー メソッドを使用して、([AnalyzeResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.analyzeresult?view=azure-dotnet-preview) オブジェクトによって表される) 結果を表示します。
+
+> [!NOTE]
+> 次のメソッドでは、PDF フォームが分析されます。 JPEG 形式および PNG 形式を分析する類似のメソッドについては、[GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/FormRecognizer) で完全なサンプル コードを参照してください。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_analyzepdf)]
 
@@ -153,11 +159,17 @@ Form Recognizer SDK の主な機能は、次のクラスによって処理され
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_displayanalyze)]
 
-### <a name="get-a-list-of-custom-models"></a>カスタム モデルのリストを取得する
+## <a name="get-a-list-of-custom-models"></a>カスタム モデルのリストを取得する
 
 自分のアカウントに属するすべてのトレーニング済みモデルのリストを返すことができ、それらがいつ作成されたかに関する情報を取得できます。 モデルのリストは、[ModelsResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.formrecognizer.models.modelsresult?view=azure-dotnet-preview) オブジェクトによって表されます。
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_getmodellist)]
+
+## <a name="delete-a-custom-model"></a>カスタム モデルを削除する
+
+アカウントからカスタム モデルを削除する場合は、次のメソッドを使用します。
+
+[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/FormRecognizer/Program.cs?name=snippet_deletemodel)]
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
@@ -173,6 +185,8 @@ Cognitive Services サブスクリプションをクリーンアップして削�
 
 * [ポータル](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
+また、アカウントから削除するカスタム モデルをトレーニングした場合は、「[カスタム モデルを削除する](#delete-a-custom-model)」のメソッドを実行します。
 
 ## <a name="next-steps"></a>次の手順
 

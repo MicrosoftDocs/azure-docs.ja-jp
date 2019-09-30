@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: a5842d590a4597253bac39c0b7a6f62e6acad908
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ac257d4eb9fb9e26739f1a63049751f9298efb5
+ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243528"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69616785"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
 
@@ -42,7 +42,7 @@ Azure Cosmos DB のパフォーマンスを向上させるためのクライア�
 **手順 2:** App.config の EndpointUrl、AuthorizationKey、CollectionThroughput、DocumentTemplate (任意) の設定を変更します。
 
 > [!NOTE]
-> 高スループットでコレクションをプロビジョニングすることになるため、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)でコレクションあたりのコストを見積もってください。 Azure Cosmos DB では、ストレージとスループットが別々に時間単位で課金されます。 テスト後に Azure Cosmos DB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
+> 高スループットでコレクションをプロビジョニングすることになるため、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)でコレクションあたりのコストを見積もってください。 Azure Cosmos DB では、ストレージとスループットが別々に時間単位で課金されます。 テスト後に削除するか、Azure Cosmos コンテナーのスループットを下げると、コストを節約できます。
 > 
 > 
 

@@ -9,12 +9,12 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 6b6e442ff3333a7fd085f8e452ae056e7daaba8c
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.openlocfilehash: 1bf46240303d1f31cd09c1a2723e18d27d3ef789
+ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565516"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70124684"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
 
@@ -168,31 +168,31 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
 2. Azure PowerShell を開き、AzCopy がインストールされているフォルダーに移動します。
 3. 次のコマンドを使用して、"Source" から "Destination" に VHD ファイルをコピーします。
 
-    ```azcopy
-    AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
-    ```
+   ```azcopy
+   AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
+   ```
 
     例:
 
     ```azcopy
     AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /Pattern:abc.vhd
-        ```
+    ```
+ 
+   次に AzCopy コマンドで使用するパラメーターを示します。
 
-    Here are descriptions of the parameters used in the AzCopy command:
+   * **/Source:** _&lt;source&gt;:_ VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
+   * **/SourceKey:** _&lt;source-account-key&gt;:_ コピー元ストレージ アカウントのストレージ アカウント キー。
+   * **/Dest:** _&lt;destination&gt;:_ VHD のコピー先のストレージ コンテナー URL。
+   * **/DestKey:** _&lt;dest-account-key&gt;:_ コピー先ストレージ アカウントのストレージ アカウント キー。
+   * **/Pattern:** _&lt;file-name&gt;:_ コピーする VHD のファイル名を指定します。
 
-   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
-   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
-   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
-   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
-   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
+AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
-For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
-
-##### Option 2: Copy a VHD with PowerShell (Synchronized copy)
+##### <a name="option-2-copy-a-vhd-with-powershell-synchronized-copy"></a>オプション 2:PowerShell を使って VHD をコピーする (同期コピー)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-You can also copy the VHD file using the PowerShell cmdlet Start-AzStorageBlobCopy. Use the following command on Azure PowerShell to copy VHD. Replace the values in <> with corresponding values from your source and destination storage account. To use this command, you must have a container called vhds in your destination storage account. If the container doesn't exist, create one before running the command.
+Start-AzStorageBlobCopy という PowerShell コマンドレットを使用して、VHD ファイルをコピーすることもできます。 VHD をコピーするには、Azure PowerShell で次のコマンドを使用します。 <> 内の値を、対応するコピー元とコピー先のストレージ アカウントの値に置き換えます。 このコマンドを使用するには、vhds と呼ばれるコンテナーがコピー先ストレージ アカウントに用意されている必要があります。 このコンテナーが存在しない場合は、コマンドを実行する前に作成してください。
 
 ```powershell
 $sourceBlobUri = <source-vhd-uri>
@@ -265,65 +265,65 @@ AzCopy を使うと、インターネット経由で VHD を簡単にアップ�
 2. Azure PowerShell を開き、AzCopy がインストールされているフォルダーに移動します。
 3. 次のコマンドを使用して、"Source" から "Destination" に VHD ファイルをコピーします。
 
-    ```azcopy
-    AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
-    ```
+   ```azcopy
+      AzCopy /Source: <source> /SourceKey: <source-account-key> /Dest: <destination> /DestKey: <dest-account-key> /BlobType:page /Pattern: <file-name>
+   ```
 
-    例:
+   例:
 
-    ```azcopy
-    AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
-        ```
+   ```azcopy
+      AzCopy /Source:https://sourceaccount.blob.core.windows.net/mycontainer1 /SourceKey:key1 /Dest:https://destaccount.blob.core.windows.net/mycontainer2 /DestKey:key2 /BlobType:page /Pattern:abc.vhd
+   ```
 
-    Here are descriptions of the parameters used in the AzCopy command:
+   次に AzCopy コマンドで使用するパラメーターを示します。
 
-   * **/Source: _&lt;source&gt;:_** Location of the folder or storage container URL that contains the VHD.
-   * **/SourceKey: _&lt;source-account-key&gt;:_** Storage account key of the source storage account.
-   * **/Dest: _&lt;destination&gt;:_** Storage container URL to copy the VHD to.
-   * **/DestKey: _&lt;dest-account-key&gt;:_** Storage account key of the destination storage account.
-   * **/BlobType: page:** Specifies that the destination is a page blob.
-   * **/Pattern: _&lt;file-name&gt;:_** Specify the file name of the VHD to copy.
+   * **/Source:** _&lt;source&gt;:_ VHD が格納されているフォルダーの場所またはストレージ コンテナー URL。
+   * **/SourceKey:** _&lt;source-account-key&gt;:_ コピー元ストレージ アカウントのストレージ アカウント キー。
+   * **/Dest:** _&lt;destination&gt;:_ VHD のコピー先のストレージ コンテナー URL。
+   * **/DestKey:** _&lt;dest-account-key&gt;:_ コピー先ストレージ アカウントのストレージ アカウント キー。
+   * **/BlobType: page:** コピー先がページ BLOB であることを指定します。
+   * **/Pattern:** _&lt;file-name&gt;:_ コピーする VHD のファイル名を指定します。
 
-For details on using AzCopy tool, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
+AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
-##### Other options for uploading a VHD
-You can also upload a VHD to your storage account using one of the following means:
+##### <a name="other-options-for-uploading-a-vhd"></a>VHD をアップロードするためのその他のオプション
+また、次のいずれかの方法を使用して、VHD をストレージ アカウントにアップロードすることもできます。
 
 * [Azure Storage Copy Blob API](https://msdn.microsoft.com/library/azure/dd894037.aspx)
-* [Azure Storage Explorer Uploading Blobs](https://azurestorageexplorer.codeplex.com/)
-* [Storage Import/Export Service REST API Reference](https://msdn.microsoft.com/library/dn529096.aspx)
+* [Azure ストレージ エクスプローラーでの BLOB のアップロード](https://azurestorageexplorer.codeplex.com/)
+* [Storage Import/Export Service REST API リファレンス](https://msdn.microsoft.com/library/dn529096.aspx)
 
 > [!NOTE]
-> We recommend using Import/Export Service if estimated uploading time is longer than 7 days. You can use [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) to estimate the time from data size and transfer unit.
+> 推定アップロード時間が 7 日より長い場合は、Import/Export サービスを使うことをお勧めします。 [DataTransferSpeedCalculator](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/blob/master/DataTransferSpeedCalculator.html) を使うと、データ サイズと転送単位から時間を推定できます。
 >
-> Import/Export can be used to copy to a standard storage account. You will need to copy from standard storage to premium storage account using a tool like AzCopy.
+> Import/Export は、Standard Storage アカウントへのコピーに使うことができます。 Standard Storage アカウントから Premium Storage アカウントにコピーするには、AzCopy などのツールを使用する必要があります。
 >
 >
 
-## <a name="create-azure-virtual-machine-using-premium-storage"></a>Create Azure VMs using Premium Storage
-After the VHD is uploaded or copied to the desired storage account, follow the instructions in this section to register the VHD as an OS image, or OS disk depending on your scenario and then create a VM instance from it. The data disk VHD can be attached to the VM once it is created.
-A sample migration script is provided at the end of this section. This simple script does not match all scenarios. You may need to update the script to match with your specific scenario. To see if this script applies to your scenario, see below [A Sample Migration Script](#a-sample-migration-script).
+## <a name="create-azure-virtual-machine-using-premium-storage"></a>Premium Storage を使って Azure VM を作成する
+目的のストレージ アカウントに VHD がアップロードまたはコピーされたら、このセクションの手順に従って、シナリオに応じて VHD を OS イメージまたは OS ディスクとして登録し、その VHD から VM インスタンスを作成します。 作成後に、データ ディスク VHD を VM に接続できます。
+移行スクリプトの例は、このセクションの最後にあります。 この簡単なスクリプトは、すべてのシナリオには対応しません。 特定のシナリオに対応するように、スクリプトの更新が必要になる場合があります。 このスクリプトが実際のシナリオに適用できるかどうかを確認するには、「[サンプル移行スクリプト](#a-sample-migration-script)」をご覧ください。
 
-### Checklist
-1. Wait until all the VHD disks copying is complete.
-2. Make sure Premium Storage is available in the region you are migrating to.
-3. Decide the new VM series you will be using. It should be a Premium Storage capable, and the size should be depending on the availability in the region and based on your needs.
-4. Decide the exact VM size you will use. VM size needs to be large enough to support the number of data disks you have. E.g. if you have 4 data disks, the VM must have 2 or more cores. Also, consider processing power, memory and network bandwidth needs.
-5. Create a Premium Storage account in the target region. This is the account you will use for the new VM.
-6. Have the current VM details handy, including the list of disks and corresponding VHD blobs.
+### <a name="checklist"></a>チェック リスト
+1. すべての VHD ディスクのコピーが完了するまで待ちます。
+2. 移行先のリージョンで Premium Storage が利用可能であることを確認します。
+3. 使用する新しい VM シリーズを決定します。 Premium Storage に対応している必要があり、サイズはリージョンでの可用性やニーズに応じたものにする必要があります。
+4. 使用する正確な VM サイズを決定します。 VM サイズは、所有するデータ ディスクの数がサポートされるように十分な大きさにする必要があります。 例: データ ディスクが 4 つある場合、VM には 2 つ以上のコアが必要です。 さらに、処理能力、メモリ、ネットワーク帯域幅のニーズについても検討します。
+5. 移行先のリージョンで Premium Storage アカウントを作成します。 これが新しい VM に使用するアカウントです。
+6. 現在の VM の詳細 (ディスクの一覧や対応する VHD BLOB など) を手元に用意します。
 
-Prepare your application for downtime. To do a clean migration, you have to stop all the processing in the current system. Only then you can get it to consistent state which you can migrate to the new platform. Downtime duration will depend on the amount of data in the disks to migrate.
+ダウンタイムに備えてアプリケーションを準備します。 移行を問題なく実行するには、現在のシステムですべての処理を停止する必要があります。 そうすることで初めて、新しいプラットフォームに移行できる安定した状態になります。 ダウンタイム時間は、移行するディスクのデータ量によって異なります。
 
 > [!NOTE]
-> If you are creating an Azure Resource Manager VM from a specialized VHD Disk, please refer to [this template](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd) for deploying Resource Manager VM using existing disk.
+> 特殊化された VHD ディスクから Azure Resource Manager VM を作成する場合は、[このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd)で、既存のディスクを使った Resource Manager VM のデプロイを参照してください。
 >
 >
 
-### Register your VHD
-To create a VM from OS VHD or to attach a data disk to a new VM, you must first register them. Follow steps below depending on your VHD's scenario.
+### <a name="register-your-vhd"></a>VHD を登録する
+OS VHD から VM を作成するか、新しい VM にデータ ディスクを接続するには、最初に VHD を登録する必要があります。 VHD のシナリオに応じて次の手順に従います。
 
-#### Generalized Operating System VHD to create multiple Azure VM instances
-After generalized OS image VHD is uploaded to the storage account, register it as an **Azure VM Image** so that you can create one or more VM instances from it. Use the following PowerShell cmdlets to register your VHD as an Azure VM OS image. Provide the complete container URL where VHD was copied to.
+#### <a name="generalized-operating-system-vhd-to-create-multiple-azure-vm-instances"></a>複数の Azure VM インスタンスを作成するために一般化されたオペレーティング システム VHD
+一般化された OS イメージ VHD をストレージ アカウントにアップロードした後、そのVHD を **Azure VM イメージ**として登録すると、そこから 1 つ以上の VM インスタンスを作成できます。 次の PowerShell コマンドレットを使用して、VHD を Azure VM OS イメージとして登録します。 VHD のコピー先の完全なコンテナー URL を入力します。
 
 ```powershell
 Add-AzureVMImage -ImageName "OSImageName" -MediaLocation "https://storageaccount.blob.core.windows.net/vhdcontainer/osimage.vhd" -OS Windows

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fc70d140479be100e6aa52cf8105d3e466342cd7
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 74b502a37081c729c5e33a0db7dc7f26cb44774b
+ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302658"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69972280"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>既存のプロジェクトに OPC Twin をデプロイする
 
@@ -142,4 +142,4 @@ Web サイトの名前が既に使用されている可能性があります。 
 ここでは、OPC Twin を既存のプロジェクトにデプロイする方法を学習しました。次に以下の記事を読むことをお勧めします。
 
 > [!div class="nextstepaction"]
-> [OPC クライアントと OPC PLC の通信をセキュリティで保護する](howto-opc-vault-deploy-existing-client-plc-communication.md)
+> [OPC UA クライアントと OPC UA PLC の通信をセキュリティで保護する](howto-opc-vault-secure.md)

@@ -6,15 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: heavy
 ms.topic: quickstart
-ms.date: 06/04/2019
+ms.date: 09/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 3467b25c085fb86d4aed3918d5446d118f76ffb8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.localizationpriority: high
+ms.openlocfilehash: b2ebb4c5a0df360cede084a90ebe5da041a08aa0
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67446735"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70241376"
 ---
+::: zone target = "docs"
+
 # <a name="quickstart-deploy-azure-data-box-heavy-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して Azure Data Box Heavy をデプロイする
 
 このクイック スタートでは、Azure portal を使用して Azure Data Box Heavy をデプロイする方法について説明します。 手順には、ケーブル接続の方法、構成方法、Azure にアップロードするためにデータを Data Box Heavy にコピーする方法が含まれます。 クイック スタートは、Azure portal およびデバイスのローカル Web UI で行われます。
@@ -55,6 +58,7 @@ ms.locfileid: "67446735"
     - 10 Gbps ケーブルの場合、SFP+ ケーブルが必要です。ケーブルの一端を 10 G スイッチに差し込み、QSFP+ から SFP+ へのアダプター (QSA アダプター) を使用して他端をデバイスに差し込みます。
 - 電源ケーブルがデバイス背面のトレイに収納されていること。
 
+
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
@@ -69,6 +73,16 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 4. 注文の詳細と発送情報を入力します。 ご利用のリージョンでこのサービスが提供されている場合、通知メール アドレスを指定し、概要を確認したうえで注文を作成します。
 
 注文が作成されると、デバイスの発送準備が行われます。
+
+::: zone-end
+
+::: zone target = "chromeless"
+
+# <a name="cable-and-connect-to-your-device"></a>ケーブルを配線してデバイスに接続する
+
+前提条件を確認したら、デバイスにケーブルを配線してデバイスに接続します。
+
+::: zone-end
 
 ## <a name="cable-for-power"></a>電源にケーブル接続する
 
@@ -105,6 +119,9 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
 この手順の所要時間は 15 分から 20 分程度です。
 
 最初のノードのときに使用した手順に従って、デバイスの 2 番目のノードをケーブル接続して構成します。  
+
+
+::: zone target = "docs"
 
 ## <a name="copy-data"></a>データをコピーする
 
@@ -157,3 +174,5 @@ Data Box Heavy を入手したら、次の手順に従ってデバイスのケ�
 
 > [!div class="nextstepaction"]
 > [Azure portal を使用して Data Box Heavy を管理する](data-box-portal-admin.md)
+
+::: zone-end

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 6aa729e4f32769ec50632bea582c8b69c7c0ce91
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: bcaf2918c92ec7b8223d394290a1d7c624fc451c
+ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641544"
+ms.lasthandoff: 08/15/2019
+ms.locfileid: "69509236"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Azure マネージド ID を使用した、ACR タスクでの外部認証 
 
@@ -101,13 +101,13 @@ steps:
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>オプション 1:ユーザー割り当て ID を使用してタスクを作成する
 
-このセクションの手順では、タスクを作成してユーザー割り当て ID を有効にします。 システム割り当て ID を有効にしたい場合は、「[オプション 2: システム割り当て ID を使用してタスクを作成する](#option-2-create-task-with-system-assigned-identity)」を参照してください。 
+このセクションの手順では、タスクを作成してユーザー割り当て ID を有効にします。 システム割り当て ID を有効にする場合は、「[オプション 2: システム割り当て ID を使用してタスクを作成する](#option-2-create-task-with-system-assigned-identity)」を参照してください。 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>タスクを作成する
 
-以下の [az acr task create][az-acr-task-create] コマンドを実行して、*dockerhubtask* タスクを作成します。 このタスクのコンテキストはローカル システムで、このコマンドは作業ディレクトリの `dockerhubtask.yaml` ファイルを参照します。 ユーザー割り当て ID のリソース ID を `--assign-identity` パラメーターで渡します。 
+以下の [az acr task create][az-acr-task-create] コマンドを実行して、*dockerhubtask* タスクを作成します。 このタスクはソース コードのコンテキストなしで実行され、このコマンドは作業ディレクトリ内のファイル `dockerhubtask.yaml` を参照します。 ユーザー割り当て ID のリソース ID を `--assign-identity` パラメーターで渡します。 
 
 ```azurecli
 az acr task create \
@@ -122,11 +122,11 @@ az acr task create \
 
 ## <a name="option-2-create-task-with-system-assigned-identity"></a>オプション 2:システム割り当て ID を使用してタスクを作成する
 
-このセクションの手順では、タスクを作成してシステム割り当て ID を有効にします。 ユーザー割り当て ID を有効にしたい場合は、「[オプション 1: ユーザー割り当て ID を使用してタスクを作成する](#option-1-create-task-with-user-assigned-identity)」を参照してください。 
+このセクションの手順では、タスクを作成してシステム割り当て ID を有効にします。 ユーザー割り当て ID を有効にする場合は、「[オプション 1: ユーザー割り当て ID を使用してタスクを作成する](#option-1-create-task-with-user-assigned-identity)」を参照してください。 
 
 ### <a name="create-task"></a>タスクを作成する
 
-以下の [az acr task create][az-acr-task-create] コマンドを実行して、*dockerhubtask* タスクを作成します。 このタスクのコンテキストはローカル システムで、このコマンドは作業ディレクトリの `dockerhubtask.yaml` ファイルを参照します。  `--assign-identity` パラメーターを値なしで指定すると、システム割り当て ID がタスクで有効になります。  
+以下の [az acr task create][az-acr-task-create] コマンドを実行して、*dockerhubtask* タスクを作成します。 このタスクはソース コードのコンテキストなしで実行され、このコマンドは作業ディレクトリ内のファイル `dockerhubtask.yaml` を参照します。 `--assign-identity` パラメーターを値なしで指定すると、システム割り当て ID がタスクで有効になります。  
 
 ```azurecli
 az acr task create \

@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 92d8c6fb1bfa1689475774bbc4f62cd9ab38268f
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d06cf74b2a29af3fea2c24facac2899d09a0a84f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321843"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090782"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>チュートリアル:Python API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -123,7 +123,7 @@ Elapsed time: 00:09:14.3418742
 
 ### <a name="authenticate-blob-and-batch-clients"></a>BLOB クライアントと Batch クライアントの認証
 
-ストレージ アカウントを操作するには、アプリで [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) パッケージを使用して [BlockBlobService](/python/api/azure.storage.blob.blockblobservice.blockblobservice) オブジェクトを作成します。
+ストレージ アカウントを操作するには、アプリで [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) パッケージを使用して [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice) オブジェクトを作成します。
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -144,7 +144,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="upload-input-files"></a>入力ファイルのアップロード
 
-アプリは、`blob_client` 参照を使用して、入力 MP4 ファイル用のストレージ コンテナーとタスク出力用のコンテナーを作成します。 次に、`upload_file_to_container` 関数を呼び出し、ローカルの `InputFiles` ディレクトリ内の MP4 ファイルをコンテナーにアップロードします。 ストレージ内のファイルは、Batch の [ResourceFile](/python/api/azure.batch.models.resourcefile) オブジェクトとして定義されており、Batch が後でコンピューティング ノードにダウンロードできます。
+アプリは、`blob_client` 参照を使用して、入力 MP4 ファイル用のストレージ コンテナーとタスク出力用のコンテナーを作成します。 次に、`upload_file_to_container` 関数を呼び出し、ローカルの `InputFiles` ディレクトリ内の MP4 ファイルをコンテナーにアップロードします。 ストレージ内のファイルは、Batch の [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile) オブジェクトとして定義されており、Batch が後でコンピューティング ノードにダウンロードできます。
 
 ```python
 blob_client.create_container(input_container_name, fail_on_exist=False)
@@ -165,13 +165,13 @@ input_files = [
 
 ### <a name="create-a-pool-of-compute-nodes"></a>コンピューティング ノードのプールの作成
 
-次に、`create_pool` が呼び出されて、コンピューティング ノードのプールが Batch アカウントに作成されます。 この定義済みの関数は、Batch の [PoolAddParameter](/python/api/azure.batch.models.pooladdparameter) クラスを使用して、ノードの数、VM のサイズ、プールの構成を設定します。 ここでは、[VirtualMachineConfiguration](/python/api/azure.batch.models.virtualmachineconfiguration) オブジェクトで [ImageReference](/python/api/azure.batch.models.imagereference) に、Azure Marketplace で公開されている Ubuntu Server 18.04 LTS イメージを指定します。 Batch は、Azure Marketplace のさまざまな VM イメージだけでなく、カスタム VM イメージもサポートしています。
+次に、`create_pool` が呼び出されて、コンピューティング ノードのプールが Batch アカウントに作成されます。 この定義済みの関数は、Batch の [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) クラスを使用して、ノードの数、VM のサイズ、プールの構成を設定します。 ここでは、[VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) オブジェクトで [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) に、Azure Marketplace で公開されている Ubuntu Server 18.04 LTS イメージを指定します。 Batch は、Azure Marketplace のさまざまな VM イメージだけでなく、カスタム VM イメージもサポートしています。
 
 ノードの数と VM のサイズは、定義済みの定数を使用して設定されます。 Batch では専用ノードと[低優先度ノード](batch-low-pri-vms.md)がサポートされているため、ご利用のプールではそのいずれかまたは両方を使用できます。 専用ノードは、プール用に予約されています。 低優先度ノードは、Azure の VM の余剰容量から割引価格で提供されます。 低優先度ノードは、Azure に十分な容量がない場合に使用できなくなります。 このサンプルは、既定で、サイズ *Standard_A1_v2* の低優先度ノードが 5 つだけ含まれているプールを作成します。 
 
-このプールの構成には、物理ノードのプロパティだけでなく、[StartTask](/python/api/azure.batch.models.starttask) オブジェクトも含まれています。 各ノードがプールに参加するときと、ノードの再起動のたびに、各ノードで StartTask が実行されます。 この例では、StartTask は Bash シェル コマンドを実行して、ffmpeg パッケージと依存関係をノードにインストールします。
+このプールの構成には、物理ノードのプロパティだけでなく、[StartTask](/python/api/azure-batch/azure.batch.models.starttask) オブジェクトも含まれています。 各ノードがプールに参加するときと、ノードの再起動のたびに、各ノードで StartTask が実行されます。 この例では、StartTask は Bash シェル コマンドを実行して、ffmpeg パッケージと依存関係をノードにインストールします。
 
-[pool.add](/python/api/azure.batch.operations.pooloperations) メソッドは、プールを Batch サービスを送信します。
+[pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) メソッドは、プールを Batch サービスを送信します。
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -201,7 +201,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>ジョブを作成する
 
-Batch ジョブでは、タスクの実行対象となるプールと、作業の優先順位やスケジュールなどのオプションの設定を指定します。 このサンプルでは、`create_job` の呼び出しを使用してジョブを作成します。 この定義済みの関数は、[JobAddParameter](/python/api/azure.batch.models.jobaddparameter) クラスを使用して、プールにジョブを作成します。 [job.add](/python/api/azure.batch.operations.joboperations) メソッドは、プールを Batch サービスに送信します。 最初、ジョブにはタスクがありません。
+Batch ジョブでは、タスクの実行対象となるプールと、作業の優先順位やスケジュールなどのオプションの設定を指定します。 このサンプルでは、`create_job` の呼び出しを使用してジョブを作成します。 この定義済みの関数は、[JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) クラスを使用して、プールにジョブを作成します。 [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) メソッドは、プールを Batch サービスに送信します。 最初、ジョブにはタスクがありません。
 
 ```python
 job = batch.models.JobAddParameter(
@@ -213,11 +213,11 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>タスクの作成
 
-アプリは、`add_tasks` の呼び出しを使用してジョブにタスクを作成します。 この定義済みの関数は、[TaskAddParameter](/python/api/azure.batch.models.taskaddparameter) クラスを使用して、タスク オブジェクトの一覧を作成します。 各タスクは、ffmpeg を実行して、`command_line` パラメーターを使用して入力の `resource_files` オブジェクトを処理します。 ffmpeg は、以前にプールが作成されたときに各ノードにインストールされています。 ここでは、コマンド ラインで ffmpeg を実行して、各入力 MP4 (ビデオ) ファイルを MP3 (オーディオ) ファイルに変換します。
+アプリは、`add_tasks` の呼び出しを使用してジョブにタスクを作成します。 この定義済みの関数は、[TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) クラスを使用して、タスク オブジェクトの一覧を作成します。 各タスクは、ffmpeg を実行して、`command_line` パラメーターを使用して入力の `resource_files` オブジェクトを処理します。 ffmpeg は、以前にプールが作成されたときに各ノードにインストールされています。 ここでは、コマンド ラインで ffmpeg を実行して、各入力 MP4 (ビデオ) ファイルを MP3 (オーディオ) ファイルに変換します。
 
-このサンプルでは、コマンド ラインの実行後に MP3 ファイルの [OutputFile](/python/api/azure.batch.models.outputfile) オブジェクトを作成します。 各タスクの出力ファイル (この場合は 1 つ) は、タスクの `output_files` プロパティを使用して、リンクされているストレージ アカウントのコンテナーにアップロードされます。
+このサンプルでは、コマンド ラインの実行後に MP3 ファイルの [OutputFile](/python/api/azure-batch/azure.batch.models.outputfile) オブジェクトを作成します。 各タスクの出力ファイル (この場合は 1 つ) は、タスクの `output_files` プロパティを使用して、リンクされているストレージ アカウントのコンテナーにアップロードされます。
 
-その後、アプリは、[task.add_collection](/python/api/azure.batch.operations.taskoperations) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
+その後、アプリは、[task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
 
 ```python
 tasks = list()
@@ -247,7 +247,7 @@ batch_service_client.task.add_collection(job_id, tasks)
 
 タスクは、ジョブに追加されると、関連付けられたプール内のコンピューティング ノードで実行するために、Batch によって自動的にキューに登録され、スケジュールが設定されます。 指定した設定に基づいて、Batch は、タスクのキューへの登録、スケジュール設定、再試行など、タスク管理作業すべてを処理します。 
 
-タスクの実行を監視する方法は多数ありますが、 この例の `wait_for_tasks_to_complete` 関数は、[TaskState](/python/api/azure.batch.models.taskstate) オブジェクトを使用して、制限時間内で特定の状態 (この場合は完了した状態) についてタスクを監視します。
+タスクの実行を監視する方法は多数ありますが、 この例の `wait_for_tasks_to_complete` 関数は、[TaskState](/python/api/azure-batch/azure.batch.models.taskstate) オブジェクトを使用して、制限時間内で特定の状態 (この場合は完了した状態) についてタスクを監視します。
 
 ```python
 while datetime.datetime.now() < timeout_expiration:
@@ -267,7 +267,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-タスクの実行後、自動的に、作成された入力用ストレージ コンテナーが削除され、Batch プールとジョブを削除するためのオプションが表示されます。 BatchClient の [JobOperations](/python/api/azure.batch.operations.joboperations) クラスと [PoolOperations](/python/api/azure.batch.operations.pooloperations) クラスの両方に削除メソッドがあります。このメソッドは、削除を確定すると呼び出されます。 ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは課金対象です。 そのため、必要な場合にのみプールを割り当てることをお勧めします。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 ただし、入力ファイルと出力ファイルはストレージ アカウントに残ります。
+タスクの実行後、自動的に、作成された入力用ストレージ コンテナーが削除され、Batch プールとジョブを削除するためのオプションが表示されます。 BatchClient の [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) クラスと [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) クラスの両方に削除メソッドがあります。このメソッドは、削除を確定すると呼び出されます。 ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは課金対象です。 そのため、必要な場合にのみプールを割り当てることをお勧めします。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 ただし、入力ファイルと出力ファイルはストレージ アカウントに残ります。
 
 リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure Portal でこれを行うには、Batch アカウントのリソース グループを選択し、 **[リソース グループの削除]** をクリックしてください。
 

@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e6ac72a91ae14b6f9c513c84da6f1f06508caef
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: ab5ba4fde7469854954ed19d2e643f2b8a23f34f
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67482219"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70193261"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft ID プラットフォームと暗黙的な許可のフロー
 
@@ -130,7 +130,7 @@ error=access_denied
 | `error` |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | `error_description` |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
-## <a name="validate-the-idtoken"></a>id_token を検証する
+## <a name="validate-the-id_token"></a>id_token を検証する
 
 id_token を受信するだけでは、ユーザーを認証するために十分ではありません。id_token の署名を検証し、トークン内の要求をアプリの要件に基づいて確認することも必要です。 Microsoft ID プラットフォーム エンドポイントは、[JSON Web トークン (JWT)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号化を使用してトークンに署名し、それらが有効であることを確認します。
 
@@ -213,16 +213,6 @@ error=user_authentication_required
 | `error_description` |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 Iframe 要求でこのエラーを受信した場合、ユーザーは対話形式でもう一度サインインして新しいトークンを取得する必要があります。 この場合は、アプリケーションに適した任意の方法で処理できます。
-
-## <a name="validating-access-tokens"></a>アクセス トークンの検証
-
-access_token を受け取ったら、トークンの署名と以下の要求を確認してください。 シナリオに応じてその他の要求も検証することができます。
-
-* **受信者**要求。トークンがそのアプリに与えられるものであることを確認します。
-* **発行者**要求。トークンが Microsoft ID プラットフォーム エンドポイントによってそのアプリに発行されたことを確認します。
-* **期間の開始時刻**要求と**期限切れ日時**要求。トークンが期限切れでないことを検証します。
-
-アクセス トークンに含まれている要求の詳細については、[アクセス トークン リファレンス](access-tokens.md)を参照してください
 
 ## <a name="refreshing-tokens"></a>トークンを更新する
 

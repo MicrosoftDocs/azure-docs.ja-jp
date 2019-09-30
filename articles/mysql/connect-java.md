@@ -1,6 +1,6 @@
 ---
 title: Java を使用して Azure Database for MySQL に接続する
-description: このクイック スタートでは、Azure Database for MySQL データベースに接続してデータを照会するために使用できる、Java コード サンプルを紹介します。
+description: このクイックスタートでは、Azure Database for MySQL データベースに接続してデータを照会するために使用できる、Java コード サンプルを紹介します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
@@ -8,21 +8,21 @@ ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019
 ms.topic: quickstart
 ms.devlang: java
 ms.date: 08/08/2019
-ms.openlocfilehash: b1771d7940a12d0cc818c223c28dcad87acd8a0c
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 9df95a754d4bd423ddd7f57c634b86bd33e906ca
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624721"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155530"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Azure Database for MySQL で Java を使用してデータに接続してクエリを実行する
 
-このクイック スタートでは、Java アプリケーションを使用して Azure Database for MySQL および JDBC ドライバー [MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Java を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、Java アプリケーションを使用して Azure Database for MySQL および JDBC ドライバー [MariaDB Connector/J](https://mariadb.com/kb/en/library/mariadb-connector-j/) に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Java を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
-1. このクイック スタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
-   - [Azure Portal を使用した Azure Database for MySQL サーバーの作成 ](./quickstart-create-mysql-server-database-using-azure-portal.md)
-   - [Azure CLI を使用した Azure Database for MySQL サーバーの作成 ](./quickstart-create-mysql-server-database-using-azure-cli.md)
+1. このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
+   - [Azure Portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)
+   - [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 2. アプリケーションが正常に接続できるよう、ファイアウォールが開き、SSL 設定が調整された状態で Azure Database for MySQL 接続のセキュリティが構成されていることを確認する。
 
@@ -37,7 +37,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 2. Azure portal の左側のメニューにある **[すべてのリソース]** を選択し、作成したサーバー (例: **mydemoserver**) を検索します。
 3. サーバー名を選択します。
 4. サーバーの **[概要]** パネルから、 **[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。 パスワードを忘れた場合も、このパネルからパスワードをリセットすることができます。
- ![Azure Database for MySQL サーバー名 ](./media/connect-java/1_server-overview-name-login.png)
+ ![Azure Database for MySQL サーバー名](./media/connect-java/azure-database-mysql-server-name.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
 接続し、**INSERT** SQL ステートメントが含まれた関数を使用してデータを読み込むには、次のコードを使用します。 [getConnection()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#using-drivermanager) メソッドは MySQL への接続に使用されます。 [createStatement()](https://mariadb.com/kb/en/library/about-mariadb-connector-j/#creating-a-table-on-a-mariadb-or-mysql-server) メソッドと execute() メソッドは、テーブルの削除と作成に使用されます。 prepareStatement オブジェクトは、パラメーター値をバインドする setString() および setInt() と共に、挿入コマンドの作成に使用されます。 executeUpdate() メソッドは、パラメーターの各セットに対してコマンドを実行して、値を挿入します。 
@@ -394,4 +394,4 @@ public class DeleteTable {
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [ ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行 ](concepts-migrate-dump-restore.md)
+> [ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行](concepts-migrate-dump-restore.md)

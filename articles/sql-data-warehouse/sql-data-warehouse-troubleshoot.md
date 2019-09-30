@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 7/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 04d63b2c1583228a274c0ba21c87df08886f5cdb
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a6a6fdf6e63bf8c063f8dd6f23ae380e9ce7b98d
+ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619065"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69575518"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のトラブルシューティング
 この記事では、一般的なトラブルシューティングの質問を示します。
@@ -34,7 +34,7 @@ ms.locfileid: "68619065"
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Visual Studio オブジェクト エクスプローラーに AAD ユーザーが表示されない           | これは既知の問題です。  回避策として、ユーザーを [sys.database_principals][sys.database_principals] で表示してください。  SQL Data Warehouse での Azure Active Directory の使用方法の詳細については、 [Azure SQL Data Warehouse への認証][Authentication to Azure SQL Data Warehouse] に関するページを参照してください。 |
 | 手動でのスクリプト作成、スクリプト作成ウィザードの使用、または SSMS を介した接続が、遅かったり、応答しなかったり、エラーが発生したりする | ユーザーがマスター データベース内に作成されているかどうかを確認してください。 スクリプト作成オプションでも、エンジンのエディションが "Microsoft Azure SQL Data Warehouse Edition" と設定され、エンジンの種類が "Microsoft Azure SQL Database" であるかどうかを確認してください。 |
-| SSMS でスクリプト生成に失敗する                               | [Generate script for dependent objects]\(依存オブジェクトのスクリプトを生成する\) オプションが [True] に設定されている場合、SQL データ ウェアハウスのスクリプト生成が失敗します。 回避策として、ユーザーは手動で [ツール]、[オプション]、[SQL Server オブジェクト エクスプローラー] の順に選択し、[Generate script for dependent objects]\(依存オブジェクトのスクリプトを生成する\) オプションを [false] に設定する必要があります。 |
+| SSMS でスクリプト生成に失敗する                               | [依存オブジェクトのスクリプトを生成] オプションが [True] に設定されている場合、SQL データ ウェアハウスのスクリプト生成が失敗します。 回避策として、ユーザーは手動で [ツール]、[オプション]、[SQL Server オブジェクト エクスプローラー] の順に選択し、[Generate script for dependent objects]\(依存オブジェクトのスクリプトを生成する\) オプションを [false] に設定する必要があります。 |
 
 ## <a name="performance"></a>パフォーマンス
 | 問題                                                        | 解決策                                                   |

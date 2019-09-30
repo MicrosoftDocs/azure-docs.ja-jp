@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:Azure HDInsight の Spark コンピューティング コンテキストで R を使用する
 description: チュートリアル - Azure HDInsight Machine Learning service クラスター上で R と Spark の使用を開始します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: f072b6905881da7b7854b0e51d690dbbd40dffb5
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 73ca0d089ab758fb13e69d341337139d79194cc5
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227437"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121933"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight の Spark コンピューティング コンテキストで R を使用する
 
@@ -59,9 +59,9 @@ https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
 1. 右側のウィンドウで **[環境]** タブを選択します。変数は **[値]** の下に表示されます。
 
-    ![RStudio](./media/ml-services-tutorial-spark-compute/rstudio.png)
+    ![HDInsight R Studio の Web コンソール](./media/ml-services-tutorial-spark-compute/hdinsight-rstudio-image.png)
 
-1.  ローカル ディレクトリを作成し、サンプル データをダウンロードします。 RStudio に次のコードを入力します。
+1. ローカル ディレクトリを作成し、サンプル データをダウンロードします。 RStudio に次のコードを入力します。
 
     ```R
     # Create local directory

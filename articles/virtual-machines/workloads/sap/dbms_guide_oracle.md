@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5182b621779cf31f3c7da99674ab24fe6efe702d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b912743c758f33173b568944341fab4e815300ed
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835262"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70099980"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS のデプロイ
 
@@ -457,7 +456,7 @@ Oracle Linux UEK カーネルでは、[Azure Premium SSD](https://docs.microsoft
 
 Azure ページ BLOB ストレージまたは Managed Disks に基づくディスクを使用している場合、「[SAP ワークロードのための Azure Virtual Machines DBMS のデプロイに関する考慮事項](dbms_guide_general.md)」に記載されているステートメントは、Oracle Database でのデプロイにも適用されます。
 
- Azure ディスクに対する IOPS スループットにはクォータが存在します。 この概念については、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」を参照してください。正確なクォータは使用される VM タイプによって異なります。 VM タイプとそのクォータの一覧については、「[Azure の Windows 仮想マシンのサイズ][virtual-machines-sizes-linux]」をご覧ください。
+ Azure ディスクに対する IOPS スループットにはクォータが存在します。 この概念については、「[SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項](dbms_guide_general.md)」を参照してください。正確なクォータは使用される VM タイプによって異なります。 VM タイプとそのクォータの一覧については、「[Azure の Linux 仮想マシンのサイズ][virtual-machines-sizes-linux]」をご覧ください。
 
 サポートされている Azure VM のタイプを識別するには、SAP Note [1928533] をご覧ください。
 

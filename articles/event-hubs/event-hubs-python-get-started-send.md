@@ -7,14 +7,14 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 09/16/2019
 ms.author: shvija
-ms.openlocfilehash: 9018df73c85486f5ffc9b16c1dbb70d4d99fcc65
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5162c6359c4b6e6bdd53d2778ca247704e2f16be
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360188"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059142"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Python を使用して Event Hubs との間でイベントを送受信する
 
@@ -43,6 +43,9 @@ pip install azure-eventhub
 
 ## <a name="send-events"></a>送信イベント
 
+> [!NOTE]
+> このセクションのコードは、Event Hubs SDK の現在の安定バージョン (1.3.1) を対象としています。 プレビュー バージョンの SDK を使用するサンプル コードについては、[このページ](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhubs/examples)を参照してください。
+
 ### <a name="create-a-python-script-to-send-events"></a>イベントを送信する Python スクリプトの作成
 
 次に、イベント ハブにイベントを送信する Python アプリケーションを作成します。
@@ -66,11 +69,11 @@ logger = logging.getLogger("azure")
 # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
 # "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
 # For example:
-ADDRESS = "amqps://mynamespace.servicebus.windows.net/myeventhub"
+ADDRESS = "amqps://<EVENTHUBS NAMESPACE NAME>.servicebus.windows.net/<EVENTHUB NAME>"
 
 # SAS policy and key are not required if they are encoded in the URL
 USER = "RootManageSharedAccessKey"
-KEY = "namespaceSASKey"
+KEY = "<SHARED ACCESS KEY FOR THE EVENT HUBS NAMESPACE>"
 
 try:
     if not ADDRESS:
@@ -84,7 +87,8 @@ try:
         start_time = time.time()
         for i in range(100):
             print("Sending message: {}".format(i))
-            sender.send(EventData(str(i)))
+            message = "Message {}".format(i)
+            sender.send(EventData(message))
     except:
         raise
     finally:
@@ -130,11 +134,12 @@ logger = logging.getLogger("azure")
 # "amqps://<URL-encoded-SAS-policy>:<URL-encoded-SAS-key>@<mynamespace>.servicebus.windows.net/myeventhub"
 # "amqps://<mynamespace>.servicebus.windows.net/myeventhub"
 # For example:
-ADDRESS = "amqps://mynamespace.servicebus.windows.net/myeventhub"
+ADDRESS = "amqps://<EVENTHUBS NAMESPACE NAME>.servicebus.windows.net/<EVENTHUB NAME>"
 
 # SAS policy and key are not required if they are encoded in the URL
 USER = "RootManageSharedAccessKey"
-KEY = "namespaceSASKey"
+KEY = "<SHARED ACCESS KEY FOR THE EVENT HUBS NAMESPACE>"
+
 CONSUMER_GROUP = "$default"
 OFFSET = Offset("-1")
 PARTITION = "0"
@@ -149,9 +154,7 @@ try:
     client.run()
     start_time = time.time()
     for event_data in receiver.receive(timeout=100):
-        last_offset = event_data.offset
-        last_sn = event_data.sequence_number
-        print("Received: {}, {}".format(last_offset, last_sn))
+        print("Received: {}".format(event_data.body_as_str(encoding='UTF-8')))
         total += 1
 
     end_time = time.time()

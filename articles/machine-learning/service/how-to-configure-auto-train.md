@@ -1,6 +1,6 @@
 ---
 title: 自動 ML の実験を作成する
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 自動機械学習は、アルゴリズムを自動的に選択して、デプロイできる状態のモデルを生成します。 自動機械学習の実験の構成に使用できるオプションについて説明します。
 author: nacharya1
 ms.author: nilesha
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6e29e0f89d9270a143d48cf6e85b479813e19d9d
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 2ef501af63628b47bc52d416930c90057569b5de
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013645"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035021"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -34,7 +34,7 @@ ms.locfileid: "69013645"
 * モデル メトリックを探索する
 * モデルを登録して展開する
 
-コードを書かずに実験を作成する場合は、「[Create your automated machine learning experiments in the Azure portal](how-to-create-portal-experiments.md)」(Azure portal で自動機械学習の実験を作成する) を参照してください。
+コードを書かずに実験を作成する場合は、[Azure portal で自動機械学習の実験を作成する](how-to-create-portal-experiments.md)こともできます。
 
 ## <a name="select-your-experiment-type"></a>実験の種類を選択する
 
@@ -206,6 +206,8 @@ Azure Databricks でのノートブックの例については、[GitHub サイ�
 
 ### <a name="primary-metric"></a>主要メトリック
 上記の例で示されているように、主要メトリックでは、最適化のためのモデル トレーニング時に使用されるメトリックを決定します。 選択できる主要メトリックは、選択したタスクの種類によって決定されます。 使用できるメトリックの一覧を次に示します。
+
+それらの具体的な定義については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」を参照してください。
 
 |分類 | 回帰 | 時系列予測
 |-- |-- |--
@@ -551,13 +553,13 @@ LogisticRegression
     print(per_class_summary)
     ```
 
-Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 run オブジェクトを使用して URL を表示します。
+run オブジェクトを使用して特徴の重要度を確認するための URL を表示します。
 
 ```
 automl_run.get_portal_url()
 ```
 
-Azure portal のワークスペースで、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの `RunDetails` [Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用する場合も表示されます。 グラフの詳細については、「[Understand automated machine learning results](how-to-understand-automated-ml.md)」 (自動機械学習の結果について) を参照してください。
+Azure portal のワークスペースで、または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) で、特徴の重要度のグラフを視覚化できます。 このグラフは、ノートブックの `RunDetails` [Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用する場合も表示されます。 グラフの詳細については、「[Understand automated machine learning results](how-to-understand-automated-ml.md)」 (自動機械学習の結果について) を参照してください。
 
 ```Python
 from azureml.widgets import RunDetails

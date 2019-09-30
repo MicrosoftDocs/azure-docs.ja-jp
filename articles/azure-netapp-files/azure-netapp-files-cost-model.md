@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 563416418b3f387f103fddc88b3ba9ad4c93fdd4
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69030796"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995108"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Azure NetApp Files のコスト モデル 
 
@@ -73,7 +73,7 @@ Azure NetApp Files は、プロビジョニングされたストレージ容量�
     * ボリューム 1 ～ 8 には、それぞれ 60 TiB のクォータが割り当てられます。  合計使用容量は 480 TiB です。  
         各ボリュームには、スループットが 3.75 GiB/秒 (60 TiB * 64 MiB/秒) の QoS 制限があります。  
     * ボリューム 9 には 20 TiB のクォータが割り当てられます。  
-        ボリューム 9 には、スループットが 1.25 GiB/秒 (60 TiB * 64 MiB/秒) の QoS 制限があります。
+        ボリューム 9 には、スループットが 1.25 GiB/秒 (20 TiB * 64 MiB/秒) の QoS 制限があります。
 * ボリューム 9 は超過のシナリオです。 実際の消費量は 25 TiB です。  
     * 1 時間の猶予期間の後、容量プールは 505 TiB にサイズ変更されます。  
         ボリューム 1 ～ 8 の 8 * 60 TiB のクォータに、ボリューム 9 の実際の消費量 25 TiB を足したものが合計使用容量です。

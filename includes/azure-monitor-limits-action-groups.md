@@ -9,13 +9,13 @@ ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
 ms.openlocfilehash: 2922a1fb92f3df07429d3463b8bf639f336776af
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
+ms.lasthandoff: 09/18/2019
 ms.locfileid: "67305301"
 ---
-| Resource | 既定の制限 | 上限 |
+| リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
 | Azure アプリのプッシュ | アクション グループあたり 10 個のアプリ アクション。 | サポートに問い合わせます。 |
 | Email | アクション グループの 1,000 個のメール アクション。<br>1 時間で 100 件以下の電子メール。<br>[レート制限情報](../articles/azure-monitor/platform/alerts-rate-limiting.md) もご覧ください。 | サポートに問い合わせます。 |

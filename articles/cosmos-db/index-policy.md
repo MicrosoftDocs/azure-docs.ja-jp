@@ -4,14 +4,14 @@ description: Azure Cosmos DB でのインデックス作成の自動化とパフ
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 01e3e1f1c9bffee0604de1260e8e466f5b1d229d
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467868"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000320"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
@@ -26,9 +26,13 @@ Azure Cosmos DB では、すべてのコンテナーに、コンテナーの項�
 
 Azure Cosmos DB では 2 つのインデックス作成モードがサポートされます。
 
-- **同期**: コンテナーのインデックス作成ポリシーが [同期] に設定されている場合、項目を作成、更新、または削除したときにインデックスが同期的に更新されます。 つまり、読み取りクエリの一貫性は、[アカウント用に構成された整合性](consistency-levels.md)になります。
+- **同期**: 項目を作成、更新、削除すると、それに同期してインデックスが更新されます。 つまり、読み取りクエリの一貫性は、[アカウント用に構成された整合性](consistency-levels.md)になります。
+- **なし**:コンテナーでインデックス作成が無効になっています。 これは、コンテナーがセカンダリ インデックスを必要としない純粋なキー値ストアとして使用される場合に一般的に使用されます。 一括操作のパフォーマンスを改善する目的で使用することもできます。 一括操作が完了したら、インデックス モードを Consistent に設定し、完了まで [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) を利用して監視できます。
 
-- **なし**:コンテナーのインデックス作成ポリシーが [なし] に設定されている場合、そのコンテナーのインデックス作成は実質的に無効になります。 これは、コンテナーがセカンダリ インデックスを必要としない純粋なキー値ストアとして使用される場合に一般的に使用されます。 それは、一括挿入操作を高速化するためにも役立ちます。
+> [!NOTE]
+> Cosmos DB はインデックス モード Lazy にも対応しています。 Lazy 方式のインデックスではインデックス更新の優先順位が低く、エンジンが他に何も作業をしていないときに実行されます。 結果的に、クエリの結果に**一貫性がなくなったり、不完全になったり**します。 また、一括操作で "なし" の代わりに Lazy インデックスを使用した場合、インデックス モードを変更するたびにインデックスが破棄されたり、再作成されたりするため、何の利点も与えられません。 このような理由から、お客様にはこれを使用しないことをお勧めしています。 一括操作のパフォーマンスを上げるには、インデックス モードをなしに設定し、Consistent モードに戻り、完了するまでコンテナーの `IndexTransformationProgress` プロパティを監視します。
+
+既定では、インデックス作成ポリシーは `automatic` に設定されます。 これはインデックス作成ポリシーの `automatic` プロパティを `true` に設定することで行います。 このプロパティを `true` に設定すると、Azure Cosmos DB で、ドキュメントが書き込まれたときに自動的にインデックスを作成できます。
 
 ## <a name="including-and-excluding-property-paths"></a>プロパティ パスを含めるか除外する
 
@@ -40,6 +44,7 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 
 同じ例をもう一度使用します。
 
+```
     {
         "locations": [
             { "country": "Germany", "city": "Berlin" },
@@ -51,21 +56,17 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
             { "city": "Athens" }
         ]
     }
+```
 
 - `headquarters` の `employees` パスは `/headquarters/employees/?`
+
 - `locations` の `country` パスは `/locations/[]/country/?`
+
 - `headquarters` の下にあるもののパスは `/headquarters/*`
 
-インデックス作成ポリシーにパスが明示的に含まれている場合は、そのパスに適用するインデックスの種類と、インデックスの種類ごとにそのインデックスを適用するデータ型も定義する必要があります。
+たとえば、`/headquarters/employees/?` パスを含めることができます。 このパスにより employees プロパティのインデックスが確実に作成されますが、このプロパティ内で入れ子になっている追加の JSON のインデックスは作成されません。
 
-| インデックスの種類 | 可能なターゲット データ型 |
-| --- | --- |
-| Range | 文字列または数値 |
-| Spatial | Point、LineString、または Polygon |
-
-たとえば、`/headquarters/employees/?` パスを含め、そのパスの `String` 値と `Number` 値の両方に `Range` インデックスを適用するように指定できます。
-
-### <a name="includeexclude-strategy"></a>包含/除外戦略
+## <a name="includeexclude-strategy"></a>包含/除外戦略
 
 すべてのインデックス作成ポリシーには、含まれるパスまたは除外されるパスのいずれかとしてルート パス `/*` を指定する必要があります。
 
@@ -76,41 +77,165 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 
 - システム プロパティ "etag" は、インデックス作成の対象となるパスに etag が追加されていない限り、既定でインデックス作成から除外されます。
 
-インデックス作成ポリシーの例については、[こちらのセクション](how-to-manage-indexing-policy.md#indexing-policy-examples)を参照してください。
+パスを含めたり除外したりするときに、次の属性が見つかる場合があります。
+
+- `kind` には、`range` または `hash` のいずれかを指定できます。 範囲インデックス機能ではハッシュ インデックスのすべての機能が提供されるため、範囲インデックスを使用することをお勧めします。
+
+- `precision` は、含まれるパスのインデックス レベルで定義された数値です。 値 `-1` は、最大有効桁数を示します。 この値は常に `-1` に設定することをお勧めします。
+
+- `dataType` には、`String` または `Number` のいずれかを指定できます。 これは、インデックスが作成される JSON プロパティの種類を示します。
+
+指定しない場合、これらのプロパティには次の既定値が設定されます。
+
+| **プロパティ名**     | **既定値** |
+| ----------------------- | -------------------------------- |
+| `kind`   | `range` |
+| `precision`   | `-1`  |
+| `dataType`    | `String` と `Number` |
+
+パスを含めたり除外したりするためのインデックス作成ポリシーの例については、[こちらのセクション](how-to-manage-indexing-policy.md#indexing-policy-examples)を参照してください。
+
+## <a name="spatial-indexes"></a>空間インデックス
+
+インデックス作成ポリシーで空間パスを定義する場合は、そのパスに適用するインデックスの ```type``` を定義する必要があります。 空間インデックスには、次のような種類があります。
+
+* Point
+
+* Polygon
+
+* MultiPolygon
+
+* LineString
+
+既定では、Azure Cosmos DB では空間インデックスは作成されません。 空間 SQL 組み込み関数を使用する場合は、必要なプロパティに対して空間インデックスを作成する必要があります。 空間インデックスを追加するためのインデックス作成ポリシーの例については、[このセクション](geospatial.md)を参照してください。
 
 ## <a name="composite-indexes"></a>複合インデックス
 
-2 つ以上のプロパティについて `ORDER BY` を実行するクエリには複合インデックスが必要です。 現在、複合インデックスは複数 `ORDER BY` クエリでのみ利用されます。 既定では、複合インデックスは定義されないため、必要に応じて[複合インデックスを追加する](how-to-manage-indexing-policy.md#composite-indexing-policy-examples)必要があります。
+2 つ以上のプロパティを使用する `ORDER BY` 句が含まれるクエリには、複合インデックスが必要です。 また、複合インデックスを定義して、多くの等値クエリと範囲クエリのパフォーマンスを向上させることもできます。 既定では、複合インデックスは定義されないため、必要に応じて[複合インデックスを追加する](how-to-manage-indexing-policy.md#composite-indexing-policy-examples)必要があります。
 
 複合インデックスを定義する場合は、次のものを指定します。
 
 - 2 つ以上のプロパティ パス。 プロパティ パスが定義されるシーケンスが重要です。
+
 - 順序 (昇順または降順)。
 
-複合インデックスを使用する場合は、次の考慮事項を使用します。
+> [!NOTE]
+> 複合インデックスを追加するときは、他の種類のインデックスと同様に、インデックスが更新されているためクエリから矛盾した結果が返されることががあります。
 
-- 複合インデックスのパスが ORDER BY 句の中のプロパティのシーケンスに一致しない場合、その複合インデックスはクエリをサポートできません
+### <a name="order-by-queries-on-multiple-properties"></a>複数のプロパティに対する ORDER BY クエリ:
 
-- 複合インデックスのパスの順序 (昇順または降順) も ORDER BY 句の中の順序に一致する必要があります。
+2 つ以上のプロパティを使用する `ORDER BY` 句が含まれるクエリに複合インデックスを使用する場合は、次の考慮事項を確認します。
 
-- 複合インデックスはまた、すべてのパスで反対の順序を持つ ORDER BY 句もサポートします。
+- 複合インデックスのパスが `ORDER BY` 句の中のプロパティのシーケンスに一致しない場合、その複合インデックスはクエリをサポートできません。
 
-複合インデックスがプロパティ a、b、および c に対して定義されている次の例を考えてみます。
+- 複合インデックスのパスの順序 (昇順または降順) は、`ORDER BY` 句の中の `order` とも一致する必要があります。
 
-| **複合インデックス**     | **サンプルの `ORDER BY` クエリ**      | **インデックスでサポートされるか?** |
+- 複合インデックスはまた、すべてのパスで反対の順序を持つ `ORDER BY` 句もサポートします。
+
+複合インデックスがプロパティ name、age、および _ts に対して定義されている次の例を考えてみます。
+
+| **複合インデックス**     | **サンプルの `ORDER BY` クエリ**      | **複合インデックスでサポートされているか** |
 | ----------------------- | -------------------------------- | -------------- |
-| ```(a asc, b asc)```         | ```ORDER BY  a asc, b asc```        | ```Yes```            |
-| ```(a asc, b asc)```          | ```ORDER BY  b asc, a asc```        | ```No```             |
-| ```(a asc, b asc)```          | ```ORDER BY  a desc, b desc```      | ```Yes```            |
-| ```(a asc, b asc)```          | ```ORDER BY  a asc, b desc```       | ```No```             |
-| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc, c asc``` | ```Yes```            |
-| ```(a asc, b asc, c asc)``` | ```ORDER BY  a asc, b asc```        | ```No```            |
+| ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.name ASC, c.age asc``` | ```Yes```            |
+| ```(name ASC, age ASC)```   | ```SELECT * FROM c ORDER BY c.age ASC, c.name asc```   | ```No```             |
+| ```(name ASC, age ASC)```    | ```SELECT * FROM c ORDER BY c.name DESC, c.age DESC``` | ```Yes```            |
+| ```(name ASC, age ASC)```     | ```SELECT * FROM c ORDER BY c.name ASC, c.age DESC``` | ```No```             |
+| ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c ORDER BY c.name ASC, c.age ASC, timestamp ASC``` | ```Yes```            |
+| ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c ORDER BY c.name ASC, c.age ASC``` | ```No```            |
 
 すべての必要な `ORDER BY` クエリに対応できるように、インデックス作成ポリシーをカスタマイズする必要があります。
 
+### <a name="queries-with-filters-on-multiple-properties"></a>複数のプロパティに対するフィルターを含むクエリ
+
+クエリに 2 つ以上のプロパティに対するフィルターが含まれている場合は、これらのプロパティの複合インデックスを作成すると便利な場合があります。
+
+たとえば、2 つのプロパティに対する等値フィルターが含まれている次のクエリについて考えてみます。
+
+```sql
+SELECT * FROM c WHERE c.name = "John" AND c.age = 18
+```
+
+このクエリは、(name ASC, age ASC) の複合インデックスを利用できる場合、時間が短縮され、RU の消費が少なくなり、より効率的に実行できます。
+
+範囲フィルターが含まれるクエリを複合インデックスを使用して最適化することもできます。 ただし、クエリに含めることができる範囲フィルターは 1 つのみです。 範囲フィルターは、`>`、`<`、`<=`、`>=`、`!=` です。 範囲フィルターは、複合インデックス内で最後に定義する必要があります。
+
+等値フィルターと範囲フィルターの両方が含まれる次のクエリについて考えてみます。
+
+```sql
+SELECT * FROM c WHERE c.name = "John" AND c.age > 18
+```
+
+このクエリは、(name ASC, age ASC) の複合インデックスを使用すると、より効率的に実行できます。 ただし、等値フィルターは複合インデックス内で最初に定義する必要があるため、クエリでは (age ASC, name ASC) の複合インデックスが使用されません。
+
+複数のプロパティに対するフィルターが含まれるクエリ用に複合インデックスを作成する場合は、次の考慮事項を確認します。
+
+- クエリのフィルター内のプロパティは、複合インデックス内のプロパティと一致している必要があります。 複合インデックスにプロパティが含まれていても、クエリにフィルターとして含まれていない場合、このクエリでは複合インデックスは使用されません。
+- 複合インデックスで定義されていない追加のプロパティがフィルターに含まれているクエリの場合は、複合インデックスと範囲インデックスの組み合わせを使用してクエリが評価されます。 この場合、範囲インデックスのみ使用する場合よりも、必要な RU が少なくなります。
+- プロパティに範囲フィルター (`>`、`<`、`<=`、`>=`、または `!=`) が含まれている場合、このプロパティは複合インデックス内で最後に定義する必要があります。 クエリに複数の範囲フィルターが含まれている場合、複合インデックスは使用されません。
+- 複数のフィルターが含まれるクエリを最適化するために複合インデックスを作成する場合、複合インデックスの `ORDER` は結果に影響しません。 このプロパティは省略可能です。
+- 複数のプロパティに対するフィルターが含まれるクエリに対して複合インデックスを定義しなかった場合でも、クエリは成功します。 しかし、複合インデックスを使用すると、クエリの RU コストを削減できます。
+
+複合インデックスがプロパティ name、age、および timestamp に対して定義されている次の例を考えてみます。
+
+| **複合インデックス**     | **サンプル クエリ**      | **複合インデックスでサポートされているか** |
+| ----------------------- | -------------------------------- | -------------- |
+| ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18``` | ```Yes```            |
+| ```(name ASC, age ASC)```   | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18```   | ```Yes```             |
+| ```(name DESC, age ASC)```    | ```SELECT * FROM c WHERE c.name = "John" AND c.age > 18``` | ```Yes```            |
+| ```(name ASC, age ASC)```     | ```SELECT * FROM c WHERE c.name != "John" AND c.age > 18``` | ```No```             |
+| ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age = 18 AND c.timestamp > 123049923``` | ```Yes```            |
+| ```(name ASC, age ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.name = "John" AND c.age < 18 AND c.timestamp = 123049923``` | ```No```            |
+
+### <a name="queries-with-a-filter-as-well-as-an-order-by-clause"></a>フィルターおよび ORDER BY 句が含まれるクエリ
+
+クエリで 1 つ以上のプロパティがフィルター処理され、ORDER BY 句に異なるプロパティが含まれている場合は、フィルター内のプロパティを `ORDER BY` 句に追加すると便利な場合があります。
+
+たとえば、フィルター内のプロパティを ORDER BY 句に追加すると、複合インデックスを利用するために次のクエリを書き直すことができます。
+
+範囲インデックスを使用するクエリ:
+
+```sql
+SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp
+```
+
+複合インデックスを使用するクエリ:
+
+```sql
+SELECT * FROM c WHERE c.name = "John" ORDER BY c.name, c.timestamp
+```
+
+複数の等値フィルターが含まれるクエリに対して、同じパターンおよびクエリの最適化を一般化できます。
+
+範囲インデックスを使用するクエリ:
+
+```sql
+SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.timestamp
+```
+
+複合インデックスを使用するクエリ:
+
+```sql
+SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
+```
+
+フィルターと `ORDER BY` 句が含まれるクエリを最適化するために複合インデックスを作成する場合は、次の考慮事項を確認します。
+
+* クエリでプロパティをフィルター処理する場合は、最初に `ORDER BY` 句に含める必要があります。
+* 1 つのプロパティに対するフィルターと、異なるプロパティを使用する別の `ORDER BY` 句が含まれるクエリに対して複合インデックスを定義しなかった場合でも、クエリは成功します。 しかし、複合インデックスを使用すると、特に `ORDER BY` 句内のプロパティのカーディナリティが高い場合、クエリの RU コストを削減できます。
+* 複合インデックスを、複数のプロパティが含まれる `ORDER BY` クエリ、および複数のプロパティに対するフィルターが含まれるクエリに対して作成する際の考慮事項もすべて、適用されます。
+
+
+| **複合インデックス**                      | **サンプルの `ORDER BY` クエリ**                                  | **複合インデックスでサポートされているか** |
+| ---------------------------------------- | ------------------------------------------------------------ | --------------------------------- |
+| ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.name ASC, c.timestamp ASC``` | `Yes` |
+| ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC, c.name ASC``` | `No`  |
+| ```(name ASC, timestamp ASC)```          | ```SELECT * FROM c WHERE c.name = "John" ORDER BY c.timestamp ASC``` | ```No```   |
+| ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.age ASC, c.name ASC,c.timestamp ASC``` | `Yes` |
+| ```(age ASC, name ASC, timestamp ASC)``` | ```SELECT * FROM c WHERE c.age = 18 and c.name = "John" ORDER BY c.timestamp ASC``` | `No` |
+
 ## <a name="modifying-the-indexing-policy"></a>インデックス作成ポリシーの変更
 
-コンテナーのインデックス作成ポリシーは、[Azure portal またはサポートされている SDK のいずれかを使用して](how-to-manage-indexing-policy.md)いつでも更新できます。 インデックス作成ポリシーを更新すると、古いインデックスから新しいインデックスへの変換がトリガーされ、オンラインでその場で実行されます (そのため、この操作中に記憶域が追加で消費されることはありません)。 古いポリシーのインデックスは新しいポリシーに効率的に変換され、コンテナー上での書き込み可用性やプロビジョニングされたスループットが影響を受けることはありません。 インデックス変換は非同期操作であり、完了までにかかる時間は、プロビジョニングされたスループット、項目の数、およびそれらのサイズによって決まります。 
+コンテナーのインデックス作成ポリシーは、[Azure portal またはサポートされている SDK のいずれかを使用して](how-to-manage-indexing-policy.md)いつでも更新できます。 インデックス作成ポリシーを更新すると、古いインデックスから新しいインデックスへの変換がトリガーされ、オンラインでその場で実行されます (そのため、この操作中に記憶域が追加で消費されることはありません)。 古いポリシーのインデックスは新しいポリシーに効率的に変換され、コンテナー上での書き込み可用性やプロビジョニングされたスループットが影響を受けることはありません。 インデックス変換は非同期操作であり、完了までにかかる時間は、プロビジョニングされたスループット、項目の数、およびそれらのサイズによって決まります。
 
 > [!NOTE]
 > インデックスの再作成の進行中は、一致するすべての結果がクエリで返らない場合があり、その際にエラーが返されることはありません。 つまり、クエリの結果は、インデックス変換が完了するまでは一貫性がない可能性があります。 [いずれかの SDK を使用して](how-to-manage-indexing-policy.md)、インデックス変換の進行状況を追跡できます。
@@ -129,14 +254,6 @@ Azure Cosmos DB では 2 つのインデックス作成モードがサポート�
 - インデックス作成モードが [同期] に設定されている
 - パスが含まれていない
 - 唯一の除外パスとして `/*` が指定されている
-
-## <a name="obsolete-attributes"></a>古い属性
-
-インデックス作成ポリシーの操作時に、現在は古くなっている次の属性が見つかることがあります。
-
-- `automatic` は、インデックス作成ポリシーのルートで定義されたブール値です。 それは現在は無視され、使用しているツールで要求したときに `true` に設定できます。
-- `precision` は、含まれるパスのインデックス レベルで定義された数値です。 それは現在は無視され、使用しているツールで要求したときに `-1` に設定できます。
-- `hash` は、インデックスの種類であり、現在は Range に置き換わっています。
 
 ## <a name="next-steps"></a>次の手順
 

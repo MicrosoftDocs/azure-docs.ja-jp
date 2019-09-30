@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
-ms.openlocfilehash: e85f9a90af778a7e68bf761d8d2159e808cf122d
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 829054064a21b2fb8da2bd975501bfcd0840e7eb
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639218"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69624568"
 ---
 # <a name="phrase-list-features-in-your-luis-app"></a>LUIS アプリのフレーズ リストのフィーチャー
 
@@ -69,7 +69,7 @@ ms.locfileid: "68639218"
 
 ### <a name="non-interchangeable-lists"></a>交換不可能なリスト
 
-交換不可能なフレーズ リストは、LUIS に対する検出を増大させるシグナルです。 このフレーズ リストは、他の単語より重要な単語またはフレーズを示します。 これは、意図とエンティティの両方の検出を特定するのに役立ちます。 たとえば、グローバルな (つまり、複数の文化にまたがるが、依然として 1 つの言語内にある) 旅行などの主題の領域があります。 アプリにとって重要であるが、同義ではない単語やフレーズが存在します。 
+交換不可能なフレーズ リストは、LUIS に対する検出を増大させるシグナルです。 フレーズ リストは、他の単語より重要な単語やフレーズを示します。 これは、意図とエンティティの両方の検出を特定するのに役立ちます。 たとえば、グローバルな (つまり、複数の文化にまたがるが、依然として 1 つの言語内にある) 旅行などの主題の領域があります。 アプリにとって重要であるが、同義ではない単語やフレーズが存在します。 
 
 別の例として、珍しい単語、独自の単語、および外来語には、交換不可能なフレーズ リストを使用します。 LUIS は、珍しい単語や独自の単語のほか (アプリの文化の外部にある) 外来語を認識できない可能性があります。 交換不可能な設定は、一連の珍しい単語によって LUIS が認識することを学習すべきクラスが形成されるが、それらはシノニムでも、互いに交換可能でもないことを示します。
 

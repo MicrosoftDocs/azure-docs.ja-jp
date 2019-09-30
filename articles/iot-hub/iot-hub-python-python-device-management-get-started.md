@@ -6,14 +6,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 52651ca592c4da9883768cd87e090985e17be47b
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: eb5085db10c5763a4173f460eabde6afcccd5aff
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780915"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000435"
 ---
 # <a name="get-started-with-device-management-python"></a>デバイス管理の開始 (Python)
 
@@ -35,7 +35,7 @@ ms.locfileid: "68780915"
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
-前提条件のインストール手順は次のとおりです。
+## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 
@@ -57,100 +57,89 @@ ms.locfileid: "68780915"
 
 * 報告されるプロパティを使用して、デバイス ツイン クエリで、デバイスとデバイスの最後の再起動時間を識別できるようにします。
 
-1. テキスト エディターを使用して、**dmpatterns_getstarted_device.py** ファイルを作成します。
+1. コマンド プロンプトで次のコマンドを実行して **azure-iot-device** パッケージをインストールします。
 
-2. **dmpatterns_getstarted_device.py** ファイルの先頭に、次の `import` ステートメントを追加します。
-
-    ```python
-    import random
-    import time, datetime
-    import sys
-
-    import iothub_client
-    from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError, DeviceMethodReturnValue
+    ```cmd/sh
+    pip install azure-iot-device
     ```
 
-3. **CONNECTION_STRING** 変数やクライアント初期化などの変数を追加します。  接続文字列を、デバイスの接続文字列に置き換えます。  
+   > [!NOTE]
+   > azure-iothub-service-client 用の pip パッケージは、Windows OS でのみ利用できます。 Linux/Mac OS については、[Python 用の開発環境の準備](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に関する記事で、Linux と Mac OS の各セクションを参照してください。
+   >
+
+2. テキスト エディターを使用して、**dmpatterns_getstarted_device.py** というファイルを作業ディレクトリに作成します。
+
+3. **dmpatterns_getstarted_device.py** ファイルの先頭に、次の `import` ステートメントを追加します。
+
+    ```python
+    import threading
+    import time
+    import datetime
+    from azure.iot.device import IoTHubDeviceClient, MethodResponse
+    ```
+
+4. **CONNECTION_STRING** 変数を追加します。 `{deviceConnectionString}` プレースホルダーの値をデバイスの接続文字列に置き換えます。 この接続文字列は、先ほど「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」でコピーしたものです。  
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
-    PROTOCOL = IoTHubTransportProvider.MQTT
-
-    CLIENT = IoTHubClient(CONNECTION_STRING, PROTOCOL)
-
-    WAIT_COUNT = 5
-
-    SEND_REPORTED_STATE_CONTEXT = 0
-    METHOD_CONTEXT = 0
-
-    SEND_REPORTED_STATE_CALLBACKS = 0
-    METHOD_CALLBACKS = 0
     ```
 
-4. デバイスにダイレクト メソッドを実装する次の関数コールバックを追加します。
+5. デバイスにダイレクト メソッドを実装する次の関数コールバックを追加します。
 
     ```python
-    def send_reported_state_callback(status_code, user_context):
-        global SEND_REPORTED_STATE_CALLBACKS
+    def reboot_listener(client):
+        while True:
+            # Receive the direct method request
+            method_request = client.receive_method_request("rebootDevice")  # blocking call
 
-        print ( "Device twins updated." )
-
-    def device_method_callback(method_name, payload, user_context):
-        global METHOD_CALLBACKS
-
-        if method_name == "rebootDevice":
-            print ( "Rebooting device..." )
+            # Act on the method by rebooting the device...
+            print( "Rebooting device" )
             time.sleep(20)
+            print( "Device rebooted")
 
-            print ( "Device rebooted." )
-
+            # ...and patching the reported properties
             current_time = str(datetime.datetime.now())
-            reported_state = "{\"rebootTime\":\"" + current_time + "\"}"
-            CLIENT.send_reported_state(reported_state, len(reported_state), send_reported_state_callback, SEND_REPORTED_STATE_CONTEXT)
+            reported_props = {"rebootTime": current_time}
+            client.patch_twin_reported_properties(reported_props)
+            print( "Device twins updated with latest rebootTime")
 
-            print ( "Updating device twins: rebootTime" )
-
-        device_method_return_value = DeviceMethodReturnValue()
-        device_method_return_value.response = "{ \"Response\": \"This is the response from the device\" }"
-        device_method_return_value.status = 200
-
-        return device_method_return_value
+            # Send a method response indicating the method request was resolved
+            resp_status = 200
+            resp_payload = {"Response": "This is the response from the device"}
+            method_response = MethodResponse(method_request.request_id, resp_status, resp_payload)
+            client.send_method_response(method_response)
     ```
 
-5. ダイレクト メソッド リスナーを起動し、待機します。
+6. ダイレクト メソッド リスナーを起動し、待機します。
 
     ```python
     def iothub_client_init():
-        if CLIENT.protocol == IoTHubTransportProvider.MQTT or client.protocol == IoTHubTransportProvider.MQTT_WS:
-            CLIENT.set_device_method_callback(device_method_callback, METHOD_CONTEXT)
+        client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
+        return client
 
     def iothub_client_sample_run():
         try:
-            iothub_client_init()
+            client = iothub_client_init()
+
+            # Start a thread listening for "rebootDevice" direct method invocations
+            reboot_listener_thread = threading.Thread(target=reboot_listener, args=(client,))
+            reboot_listener_thread.daemon = True
+            reboot_listener_thread.start()
 
             while True:
-                print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
+                time.sleep(1000)
 
-                status_counter = 0
-                while status_counter <= WAIT_COUNT:
-                    time.sleep(10)
-                    status_counter += 1
-
-        except IoTHubError as iothub_error:
-            print ( "Unexpected error %s from IoTHub" % iothub_error )
-            return
         except KeyboardInterrupt:
-            print ( "IoTHubClient sample stopped" )
+            print ( "IoTHubDeviceClient sample stopped" )
 
     if __name__ == '__main__':
         print ( "Starting the IoT Hub Python sample..." )
-        print ( "    Protocol %s" % PROTOCOL )
-        print ( "    Connection string=%s" % CONNECTION_STRING )
+        print ( "IoTHubDeviceClient waiting for commands, press Ctrl-C to exit" )
 
         iothub_client_sample_run()
     ```
 
-6. **dmpatterns_getstarted_device.py** ファイルを保存して閉じます。
+7. **dmpatterns_getstarted_device.py** ファイルを保存して閉じます。
 
 > [!NOTE]
 > わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、「[一時的な障害の処理](/azure/architecture/best-practices/transient-faults)」の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
@@ -165,9 +154,19 @@ ms.locfileid: "68780915"
 
 このセクションでは、ダイレクト メソッドを使用してデバイスでのリモート再起動を開始する Python コンソール アプリケーションを作成します。 このアプリは、デバイス ツイン クエリを使用して、そのデバイスの前回の再起動時刻を検出します。
 
-1. テキスト エディターを使用して、**dmpatterns_getstarted_service.py** ファイルを作成します。
+1. コマンド プロンプトで次のコマンドを実行して **azure-iot-service-client** パッケージをインストールします。
 
-2. **dmpatterns_getstarted_service.py** ファイルの先頭に、次の `import` ステートメントを追加します。
+    ```cmd/sh
+    pip install azure-iothub-service-client
+    ```
+
+   > [!NOTE]
+   > azure-iothub-service-client と azure-iothub-device-client の pip パッケージは、現在 Windows OS でのみ利用できます。 Linux/Mac OS については、[Python 用の開発環境の準備](https://github.com/Azure/azure-iot-sdk-python/blob/master/doc/python-devbox-setup.md)に関する記事で、Linux と Mac OS の各セクションを参照してください。
+   >
+
+2. テキスト エディターを使用して、**dmpatterns_getstarted_service.py** というファイルを作業ディレクトリに作成します。
+
+3. **dmpatterns_getstarted_service.py** ファイルの先頭に、次の `import` ステートメントを追加します。
 
     ```python
     import sys, time
@@ -176,7 +175,7 @@ ms.locfileid: "68780915"
     from iothub_service_client import IoTHubDeviceMethod, IoTHubError, IoTHubDeviceTwin
     ```
 
-3. 次の変数宣言を追加します。 _IoTHubConnectionString_ と _deviceId_ のプレース ホルダーについてのみ、値を置き換えてください。
+4. 次の変数宣言を追加します。 `{IoTHubConnectionString}` プレースホルダーの値を、先ほど「[IoT ハブ接続文字列を取得する](#get-the-iot-hub-connection-string)」でコピーしておいた IoT ハブ接続文字列に置き換えます。 `{deviceId}` プレースホルダーの値を、「[IoT ハブに新しいデバイスを登録する](#register-a-new-device-in-the-iot-hub)」で登録したデバイス ID に置き換えます。
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
@@ -188,7 +187,7 @@ ms.locfileid: "68780915"
     WAIT_COUNT = 10
     ```
 
-4. 次の関数を追加して、ターゲット デバイスを再起動するためのデバイス メソッドを起動した後、デバイス ツインを照会し、前回の再起動時刻を取得します。
+5. 次の関数を追加して、ターゲット デバイスを再起動するためのデバイス メソッドを起動した後、デバイス ツインを照会し、前回の再起動時刻を取得します。
 
     ```python
     def iothub_devicemethod_sample_run():
@@ -239,7 +238,7 @@ ms.locfileid: "68780915"
         iothub_devicemethod_sample_run()
     ```
 
-5. **dmpatterns_getstarted_service.py** ファイルを保存して閉じます。
+6. **dmpatterns_getstarted_service.py** ファイルを保存して閉じます。
 
 ## <a name="run-the-apps"></a>アプリの実行
 
@@ -247,16 +246,24 @@ ms.locfileid: "68780915"
 
 1. コマンド プロンプトで、次のコマンドを実行して再起動のダイレクト メソッドのリッスンを開始します。
 
-    ```
+    ```cmd/sh
     python dmpatterns_getstarted_device.py
     ```
 
 2. 別のコマンド プロンプトで、次のコマンドを実行してデバイス ツインのリモート再起動とクエリをトリガーして最後の再起動時刻を検索します。
 
-    ```
+    ```cmd/sh
     python dmpatterns_getstarted_service.py
     ```
 
 3. ダイレクト メソッドに対するデバイスの応答がコンソールに表示されます。
+
+   再起動ダイレクト メソッドに対するデバイスの応答を次に示します。
+
+   ![シミュレートされたデバイス アプリの出力](./media/iot-hub-python-python-device-management-get-started/device.png)
+
+   再起動ダイレクト メソッドを呼び出してデバイス ツインの状態をポーリングするサービスを次に示します。
+
+   ![再起動サービスの出力のトリガー](./media/iot-hub-python-python-device-management-get-started/service.png)
 
 [!INCLUDE [iot-hub-dm-followup](../../includes/iot-hub-dm-followup.md)]

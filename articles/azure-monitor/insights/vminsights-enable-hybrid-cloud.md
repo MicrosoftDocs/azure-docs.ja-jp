@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/12/2019
 ms.author: magoedte
-ms.openlocfilehash: e8241069a8671919b70dfbe44fe28c99a05358c5
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: b06fe477f551977b1357f3b1b185cb340a948052
+ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489730"
+ms.lasthandoff: 08/22/2019
+ms.locfileid: "69905495"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>ハイブリッド環境での Azure Monitor for VMs (プレビュー) の有効化
 
@@ -42,6 +42,9 @@ ms.locfileid: "68489730"
 3. パフォーマンス カウンターの収集を有効にします。
 
 4. Azure Monitor for VMs をデプロイします。
+
+>[!NOTE]
+>この記事で説明する Dependency Agent のデプロイに関する情報は、[Service Map ソリューション](service-map.md)にも適用できます。  
 
 ## <a name="install-the-dependency-agent-on-windows"></a>Windows に Dependency Agent をインストールする
 

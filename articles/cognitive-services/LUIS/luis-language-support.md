@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: f46757b97fb2dd38be36459e5aafb70f5b5a3bf6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
+ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932706"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70307429"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -38,6 +38,7 @@ LUIS が理解する発話の言語を次に示します。
 | フランス語 (フランス) |`fr-FR` |-| ✔ |✔ |✔|
 | フランス語 (カナダ) |`fr-CA` |-|   -   |-|✔|
 | ドイツ語 |`de-DE` |-| ✔ |✔ |✔|
+| ヒンディー語 | `hi-IN`|-|-|-|-|
 | イタリア語 |`it-IT` |-| ✔ |✔|✔|
 | *[日本語](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|キー フレーズのみ|
 | 韓国語 |`ko-KR` |-|   -   |-|キー フレーズのみ|
@@ -88,6 +89,7 @@ Speech ディクテーション モードの言語については、Speech の�
 |フランス語 (fr-FR)|✔||||
 |フランス語 (fr-CA)|✔||||
 |ドイツ語|||✔|✔|
+| ヒンディー語 |✔|-|-|-|-|
 |イタリア語|✔||||
 |日本語||||✔|
 |韓国語||✔||✔|

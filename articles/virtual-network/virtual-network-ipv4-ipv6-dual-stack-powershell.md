@@ -1,5 +1,5 @@
 ---
-title: Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell
+title: Basic Load Balancer を使用する IPv6 デュアル スタック アプリケーションを Azure 上にデプロイする - PowerShell
 titlesuffix: Azure Virtual Network
 description: この記事では、Azure Powershell を使用して Azure 仮想ネットワーク内に IPv6 デュアル スタック アプリケーションをデプロイする方法を説明します。
 services: virtual-network
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: b9a6b0ee6796acc2b9adc88480f6933af413e4e6
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 0ce051892cde9cb50b43a6d4f66ed3d461e71285
+ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68260845"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "70011427"
 ---
-# <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Azure で IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell (プレビュー)
+# <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>Basic Load Balancer を使用する IPv6 デュアル スタック アプリケーションをデプロイする - PowerShell (プレビュー)
 
-この記事では、Azure でデュアル スタック (IPv4 と IPv6) アプリケーションをデプロイする方法を示します。これには、デュアル スタック仮想ネットワークとサブネット、デュアル (IPv4 と IPv6) フロントエンド構成を持つロード バランサー、デュアル IP 構成、ネットワーク セキュリティ グループ、およびパブリック IP を使用する NIC を持つ VM が含まれます。
+この記事では、Basic Load Balancer を使用するデュアル スタック (IPv4 と IPv6) アプリケーションを、Azure CLI を使用してデプロイする方法を示します。これには、デュアル スタック仮想ネットワークとサブネット、デュアル (IPv4 と IPv6) フロントエンド構成の Basic Load Balancer、デュアル IP 構成を持つ NIC、ネットワーク セキュリティ グループ、およびパブリック IP を使用する VM が含まれています。
+
+Standard Load Balancer を使用するデュアル スタック (IPV4 と IPv6) アプリケーションをデプロイするには、[Azure PowerShell による Standard Load Balancer を使用する IPv6 デュアル スタック アプリケーションのデプロイ](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)に関する記事を参照してください。
 
 > [!Important]
 > 現在、Azure Virtual Network の IPv6 サポートは、パブリック プレビュー段階です。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。

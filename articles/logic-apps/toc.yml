@@ -15,11 +15,11 @@
       href: quickstart-create-logic-apps-visual-studio-code.md
 - name: チュートリアル
   items:
-    - name: トラフィックの定期的なチェック
+    - name: スケジュールベースのワークフローの作成
       href: tutorial-build-schedule-recurring-logic-app-workflow.md
-    - name: メーリング リスト要求の管理
+    - name: 承認ベースのワークフローを作成する
       href: tutorial-process-mailing-list-subscriptions-workflow.md
-    - name: 電子メールの添付ファイルの処理
+    - name: Azure Storage と Azure Functions ワークフローを作成する
       href: tutorial-process-email-attachments-workflow.md
 - name: サンプル
   items:
@@ -31,7 +31,7 @@
   items:
     - name: Logic Apps のコネクタ
       href: ../connectors/apis-list.md
-    - name: 自動化された定期的なワークフローのスケジュール
+    - name: 定期的なワークフローをスケジュール設定する
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Azure でのサーバーレス
       href: logic-apps-serverless-overview.md
@@ -105,12 +105,18 @@
           href: logic-apps-diagnosing-failures.md
     - name: B2B シナリオの開発
       items:
-        - name: 統合アカウントの作成
+        - name: 統合アカウントを作成する
           href: logic-apps-enterprise-integration-create-integration-account.md
         - name: 取引先
           href: logic-apps-enterprise-integration-partners.md
         - name: アグリーメント
           href: logic-apps-enterprise-integration-agreements.md
+        - name: XML 検証用のスキーマ
+          href: logic-apps-enterprise-integration-schemas.md
+        - name: XML 変換用のマップ
+          href: logic-apps-enterprise-integration-maps.md
+        - name: 証明書
+          href: logic-apps-enterprise-integration-certificates.md
         - name: アーティファクト メタデータ
           href: logic-apps-enterprise-integration-metadata.md
         - name: B2B メッセージの受信
@@ -141,20 +147,14 @@
           href: logic-apps-scenario-edi-send-batch-messages.md
         - name: フラット ファイルの処理
           href: logic-apps-enterprise-integration-flatfile.md
+        - name: XML の変換
+          href: logic-apps-enterprise-integration-transform.md
         - name: XML の処理
           href: logic-apps-enterprise-integration-xml.md
         - name: XML の検証
           href: logic-apps-enterprise-integration-xml-validation.md
-        - name: XML 検証用のスキーマの追加
-          href: logic-apps-enterprise-integration-schemas.md
-        - name: XML の変換
-          href: logic-apps-enterprise-integration-transform.md
-        - name: XML 変換用のマップの追加
-          href: logic-apps-enterprise-integration-maps.md
         - name: JSON の変換
           href: logic-apps-enterprise-integration-liquid-transform.md
-        - name: セキュリティ証明書の追加
-          href: logic-apps-enterprise-integration-certificates.md
         - name: B2B エラーのトラブルシューティング
           href: logic-apps-enterprise-integration-b2b-list-errors-solutions.md
         - name: ディザスター リカバリー プランの構築
@@ -263,8 +263,6 @@
           href: ../connectors/connectors-create-api-salesforce.md
         - name: SAP (新規)
           href: logic-apps-using-sap-connector.md
-        - name: SAP
-          href: logic-apps-using-sap-connector-old.md
         - name: SendGrid
           href: ../connectors/connectors-create-api-sendgrid.md
         - name: SFTP

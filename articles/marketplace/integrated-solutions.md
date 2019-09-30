@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
-ms.openlocfilehash: 363cd9319db0477e9b5ba2d2dd03a7e995a26fef
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: b6015ce2d52c140a966636b887d021e76e92990d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515609"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70993635"
 ---
 # <a name="integrated-solutions-in-azure-marketplace-and-appsource"></a>Azure Marketplace と AppSource の統合ソリューション
 
@@ -40,5 +40,7 @@ ms.locfileid: "66515609"
 * [Windows Server End-of-Support](https://azuremarketplace.microsoft.com/marketplace/consulting-services/new-signature.eos_appfactory)
 
 また、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/consulting-services) の「コンサルティング サービス」セクションも参照してください。
+
+詳細については、「[統合ソリューションの公開](https://docs.microsoft.com/azure/marketplace/integrated-solutions-for-publishers)」を参照してください。
 
 ---

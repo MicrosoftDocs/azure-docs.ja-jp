@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d01e8ce894bfb1ece3555eddc714d2d3a80e44b5
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 414dc4e69fda8ccd79b5a48b19bccee35bd11a45
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164846"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063700"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>カスタム ポリシーを使用して Azure Active Directory B2C でリソース所有者パスワード資格情報フローを構成する
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Active Directory (Azure AD) B2C では、リソース所有者パスワード資格情報 (ROPC) フローが OAuth の標準的な認証フローです。 このフローでは、アプリケーション (証明書利用者とも呼ばれます) によって有効な資格情報がトークンと交換されます。 資格情報には、ユーザー ID とパスワードが含まれます。 返されるトークンは、ID トークン、アクセス トークン、および更新トークンです。
+Azure Active Directory B2C (Azure AD B2C) では、リソース所有者パスワード資格情報 (ROPC) フローが OAuth の標準的な認証フローです。 このフローでは、アプリケーション (証明書利用者とも呼ばれます) によって有効な資格情報がトークンと交換されます。 資格情報には、ユーザー ID とパスワードが含まれます。 返されるトークンは、ID トークン、アクセス トークン、および更新トークンです。
 
 ROPC フローでは次のオプションがサポートされています。
 
@@ -42,7 +42,7 @@ ROPC フローでは次のオプションがサポートされています。
 ## <a name="register-an-application"></a>アプリケーションを登録する
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[アプリケーション]** を選択し、 **[追加]** を選択します。
 5. *ROPC_Auth_app* などのアプリケーションの名前を入力します。
@@ -88,7 +88,7 @@ ROPC フローでは次のオプションがサポートされています。
           <OutputClaim ClaimTypeReferenceId="sub" TransformationClaimType="createdClaim" />
         </OutputClaims>
       </ClaimsTransformation>
-    
+
       <ClaimsTransformation Id="AssertRefreshTokenIssuedLaterThanValidFromDate" TransformationMethod="AssertDateTimeIsGreaterThan">
         <InputClaims>
           <InputClaim ClaimTypeReferenceId="refreshTokenIssuedOnDateTime" TransformationClaimType="leftOperand" />
@@ -140,7 +140,7 @@ ROPC フローでは次のオプションがサポートされています。
     </TechnicalProfile>
     ```
 
-    **client_id** の **DefaultValue** を、前提条件のチュートリアルで作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。 **resource_id** の **DefaultValue** も、前提条件のチュートリアルで作成した IdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。  
+    **client_id** の **DefaultValue** を、前提条件のチュートリアルで作成した ProxyIdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。 **resource_id** の **DefaultValue** も、前提条件のチュートリアルで作成した IdentityExperienceFramework アプリケーションのアプリケーション ID に置き換えます。
 
 5. 次の **ClaimsProvider** 要素とその技術プロファイルを、**ClaimsProviders** 要素に追加します。
 
@@ -245,7 +245,7 @@ ROPC フローでは次のオプションがサポートされています。
 2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値に変更します。 ポリシー ID がポリシーの名前になります。 たとえば、**B2C_1A_ROPC_Auth** などとします。
 3. **DefaultUserJourney** の **ReferenceId** 属性の値を `ResourceOwnerPasswordCredentials` に変更します。
 4. **OutputClaims** 要素を、次の要求だけを含むように変更します。
-    
+
     ```XML
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
@@ -267,7 +267,7 @@ ROPC フローでは次のオプションがサポートされています。
 - `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
 - `B2C_1A_ROPC_Auth` は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 
-| キー | 値 |
+| Key | 値 |
 | --- | ----- |
 | username | `user-account` |
 | password | `password1` |
@@ -312,7 +312,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 - `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
 - `B2C_1A_ROPC_Auth` は実際のリソース所有者のパスワード資格情報ポリシーのフル ネームに置き換えます。
 
-| キー | 値 |
+| Key | 値 |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: d294ceaaf77175a3010131b18864b71c7b26b88b
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: ef0237b38c8f640c0fc4b1b1788215c8804a5cd4
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360819"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70141893"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Python で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -39,7 +39,7 @@ ms.locfileid: "68360819"
 
     > [!NOTE]
     > このクイック スタートでは、**Python** を使用して **トピック**とその中に含まれる**サブスクリプション**を作成します。 
-3. [Azure Python パッケージ][Azure Python package]をインストールします。 「[Python インストール ガイド](../python-how-to-install.md)」を参照してください。
+3. [Azure Python パッケージ][Azure Python package]をインストールします。 「[Python インストール ガイド](/azure/python/python-sdk-azure-install)」を参照してください。
 
 ## <a name="create-a-topic"></a>トピックを作成する
 

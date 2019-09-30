@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 28dba8af059e24040abb254dd4ecd8e336d8221d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 2ba93ad347783d467d467b72cfa49ffccf309fa0
+ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594291"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70147350"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 
@@ -72,17 +72,20 @@ Azure リソースの新しいメトリックは、以下のように使用で�
 > [!IMPORTANT]
 > Microsoft Azure Monitor では、クラシック アラート ルールを新しいプラットフォームに[自主的に移行するためのツール](alerts-using-migration-tool.md)を段階的に展開してきました。 そして、2019 年 9 月から、まだ存在していて、かつ移行することができる従来のアラート ルールすべてに対して、それが強制的に実行されます。 お客様は、従来のアラート ルールの移行後、従来のアラート ルールのペイロードを使用するオートメーションが、[Application Insights でのメトリックとアラートの統合](#unified-metrics-and-alerts-in-application-insights)または[他の Azure リソースでのメトリックとアラートの統合](#unified-metrics-and-alerts-for-other-azure-resources)からの新しいペイロードの処理に合わせて改変されたことを確認する必要があります。 詳細については、[クラシック アラート ルールの移行に向けての準備](alerts-prepare-migration.md)に関するページを参照してください。
 
-お客様の意思で Azure portal の[アラート (クラシック) セクション](../../azure-monitor/platform/alerts-classic.overview.md) から新しい Azure アラートに移行できるツールがロールアウトされています。 アラート (クラシック) 内に構成済みで新しい Azure Monitor に移行されるすべてのルールは無料のままであり、課金対象になりません。 移行後のクラシック アラート ルールでは、電子メール、Webhook、または LogicApp による通知のプッシュにも料金はかかりません。 ただし、新しい種類の通知またはアクション (SMS、音声通話、ITSM 統合など) の使用では、その使用が、移行後のアラートに追加されたか新しいアラートに追加されたかに応じて課金対象になります。 詳細については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
+この記事は継続的に更新されて、新しい Azure の監視とアラートに関するリンクと詳細に加え、ユーザーが新しい Azure Monitor プラットフォームを導入するために役立つツールの提供状況が紹介される予定です。
 
-さらに、[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)として、以下が課金対象になります。
+## <a name="pricing-for-migrated-alert-rules"></a>移行済みのアラート ルールの価格
+
+Azure Monitor の[クラシック アラート](../../azure-monitor/platform/alerts-classic.overview.md)を新しいアラート エクスペリエンスに移行するのに役立つ移行ツールのロール アウトが進んでいます。 移行済みのアラート ルールとそれに対応する移行済みのアクション グループ (電子メール、Webhook、または LogicApp) は無料のままです。 クラシック アラートが持っていた、しきい値、集計の種類、集計の粒度を編集する機能などは、移行済みのアラート ルールでも引き続き無料で利用できます。 ただし、移行済みのアラート ルールを、新しいアラート プラットフォームの機能、通知、またはアクションの種類を使用するように編集した場合は、該当する料金が適用されます。 アラート ルールと通知の価格の詳細については、[「Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」を参照してください。
+
+アラート ルールに対して料金が発生する可能性があるケースの例を次に示します。
 
 - 新しい Azure Monitor プラットフォーム上で、無料ユニットを超えて作成されたすべての新しい (移行ではない) アラート ルール
 - Azure Monitor に含まれる無料ユニットを超えて取り込まれて保持されるすべてのデータ
 - Application Insights によって実行されるすべてのマルチテスト Web テスト
 - Azure Monitor に含まれる無料ユニットを超えて格納されるすべてのカスタム メトリック
-
-この記事は継続的に更新されて、新しい Azure の監視とアラートに関するリンクと詳細に加え、ユーザーが新しい Azure Monitor プラットフォームを導入するために役立つツールの提供状況が紹介される予定です。
-
+- 頻度、複数のリソース/ディメンション、[動的しきい値](alerts-dynamic-thresholds.md)、リソース/シグナルの変更などの新しいメトリック アラート機能を使用するように編集された移行済みのアラート ルール。
+- 新しい通知、または SMS、音声通話、ITSM 統合などのアクションの種類を使用するように編集された移行済みのアクション グループ。
 
 ## <a name="next-steps"></a>次の手順
 

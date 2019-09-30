@@ -11,16 +11,15 @@ ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 08/21/2019
 ms.author: cynthn
-ms.openlocfilehash: 5639571739f3eb6263f62444e7ab02186e2ca945
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: ed79df03a42c1558b975cd1c21c79716d50d4616
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742579"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70083499"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
@@ -58,9 +57,9 @@ VHD をイメージとして使用して他の VM を作成するには、次の
 VHD を既存の VM の新しいインスタンス用のディスクまたはデータ ディスクとして使用するには、次の手順を実行します。
 
 1.  [Azure Portal](https://portal.azure.com/) にサインインします。
-2.  ハブ メニューで **[Virtual Machines]** をクリックします。
+2.  左側のメニューで **[Virtual Machines]** を選択します。
 3.  一覧から VM を選択します。
-4.  VM のブレードで、 **[停止]** をクリックします。
+4.  VM のページで、 **[停止]** を選択します。
 
     ![VM の停止](./media/download-vhd/export-stop.png)
 
@@ -68,21 +67,21 @@ VHD を既存の VM の新しいインスタンス用のディスクまたはデ
 
 VHD ファイルをダウンロードするには、[Shared Access Signature (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) URL を生成する必要があります。 URL が生成されると、その URL に有効期限が割り当てられます。
 
-1.  VM のブレードのメニューで、 **[ディスク]** をクリックします。
-2.  VM のオペレーティング システム ディスクを選択し、 **[Disk Export]** (ディスク エクスポート) をクリックします。
-3.  **[URL の生成]** をクリックします。
+1.  VM に対するページのメニューで、 **[ディスク]** を選択します。
+2.  VM 用のオペレーティング システム ディスクを選択して、 **[ディスクのエクスポート]** を選択します。
+3.  **[URL の生成]** を選択します。
 
     ![URL の生成](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>VHD のダウンロード
 
-1.  生成された URL の下にある [VHD ファイルのダウンロード] をクリックします。
-
+1.  生成された URL の下にある **[VHD ファイルのダウンロード]** を選択します。
+**
     ![VHD のダウンロード](./media/download-vhd/export-download.png)
 
-2.  ブラウザーで **[保存]** をクリックしないと、ダウンロードが開始されない場合があります。 VHD ファイルの既定の名前は *abcd* です。
+2.  ブラウザーで **[保存]** を選択しないと、ダウンロードが開始されない場合があります。 VHD ファイルの既定の名前は *abcd* です。
 
-    ![ブラウザーの [保存] のクリック](./media/download-vhd/export-save.png)
+    ![ブラウザーの [保存] の選択](./media/download-vhd/export-save.png)
 
 ## <a name="next-steps"></a>次の手順
 

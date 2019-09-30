@@ -1,31 +1,29 @@
 ---
-title: Azure Functions を使用してサーバーレス API を作成する | Microsoft Docs
-description: Azure Functions を使用してサーバーレス API を作成する方法
-services: functions
+title: Azure Functions で HTTP エンドポイントをカスタマイズする
+description: Azure Functions で HTTP トリガー エンドポイントをカスタマイズする方法について説明します。
 author: mattchenderson
-manager: jeconnoc
+manager: gwallace
 ms.service: azure-functions
-ms.devlang: multiple
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: f6a678e03818f1e1f2182b3b0dfab221d415dc72
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: f7729f5acb8b7b95004265f6802ba2feb1bc3cd7
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698248"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70096758"
 ---
-# <a name="create-a-serverless-api-using-azure-functions"></a>Azure Functions を使用したサーバーレス API の作成
+# <a name="customize-an-http-endpoint-in-azure-functions"></a>Azure Functions で HTTP エンドポイントをカスタマイズする
 
-このチュートリアルでは、Azure Functions を使用して高度にスケーラブルな API を作成する方法について説明します。 Azure Functions には、組み込みの HTTP トリガーとバインドのコレクションが含まれており、作成者は Node.JS、C# などのさまざまな言語で簡単にエンドポイントを作成できます。 このチュートリアルでは、HTTP トリガーをカスタマイズして API の設計で特定の操作を処理します。 また、Azure Functions Proxies と統合してモック API をセットアップすることで、お使いの API を拡張する準備を行います。 これらの処理はすべて Functions のサーバーレス コンピューティング環境上で行われるため、リソースのスケーリングを考慮する必要はなく、API のロジックに集中できます。
+この記事では、Azure Functions を使用して高度にスケーラブルな API を作成する方法について説明します。 Azure Functions には、組み込みの HTTP トリガーとバインドのコレクションが含まれており、作成者は Node.JS、C# などのさまざまな言語で簡単にエンドポイントを作成できます。 この記事では、HTTP トリガーをカスタマイズして API の設計で特定の操作を処理します。 また、Azure Functions Proxies と統合してモック API をセットアップすることで、お使いの API を拡張する準備を行います。 これらの処理はすべて Functions のサーバーレス コンピューティング環境上で行われるため、リソースのスケーリングを考慮する必要はなく、API のロジックに集中できます。
 
 ## <a name="prerequisites"></a>前提条件 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-ここで作成する関数は、このチュートリアルの残りの箇所で使用します。
+ここで作成する関数は、この記事の残りの箇所で使用します。
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -35,7 +33,7 @@ Azure Portal を開きます。 これを行うには、Azure アカウントで
 
 既定では、HTTP によってトリガーされる関数は任意の HTTP メソッドを受け入れるように構成されます。 また、フォームの既定の URL は次のとおりです: `http://<yourapp>.azurewebsites.net/api/<funcname>?code=<functionkey>`。 クイックスタートの手順に従っている場合、`<funcname>` にはおそらく "HttpTriggerJS1" のように表示されています。 このセクションでは、`/api/hello` ルートに対する GET 要求にのみ応答するように関数を変更します。 
 
-1. Azure Portal で関数に移動します。 左側のナビゲーションで、**[統合]** を選択します。
+1. Azure Portal で関数に移動します。 左側のナビゲーションで、 **[統合]** を選択します。
 
     ![HTTP 関数のカスタマイズ](./media/functions-create-serverless-api/customizing-http.png)
 
@@ -86,7 +84,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 「[Function App を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function#create-a-function-app)」の手順を繰り返し、プロキシを作成する新しい Function App を作成します。 この新しいアプリの URL は、API のフロントエンドとして機能し、以前編集した Function App はバックエンドとして機能します。
 
 1. ポータルで新しいフロントエンドの Function App に移動します。
-1. **[プラットフォーム機能]**、**[アプリケーションの設定]** の順に選択します。
+1. **[プラットフォーム機能]** 、 **[アプリケーションの設定]** の順に選択します。
 1. 下にスクロールして、キーと値のペアが格納されている **[アプリケーションの設定]** に移動し、キー "HELLO_HOST" を使用して新しい設定を作成します。 バックエンドの Function App のホストに `<YourBackendApp>.azurewebsites.net` などの値を設定します。 これは以前 HTTP 関数をテストするときにコピーした URL の一部です。 後で構成の際にこの設定を参照します。
 
     > [!NOTE] 
@@ -103,7 +101,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 
     | フィールド | 値の例 | 説明 |
     |---|---|---|
-    | Name | HelloProxy | 管理にのみ使用するフレンドリ名です |
+    | 名前 | HelloProxy | 管理にのみ使用するフレンドリ名です |
     | [ルート テンプレート] | /api/remotehello | このプロキシの呼び出しに使用するルートを決定します |
     | [バックエンド URL] | https://%HELLO_HOST%/api/hello | 要求の送信先となるエンドポイントを指定します |
     
@@ -120,7 +118,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 
 次に、プロキシを使用してソリューションのモック API を作成します。 これにより、バックエンドを完全に実装する必要なく、クライアント開発を進めることができます。 開発の後行程で、このロジックをサポートしプロキシをリダイレクトする新しい Function App を作成できます。
 
-このモック API を作成するには、新しいプロキシを作成します (今回は [App Service Editor](https://github.com/projectkudu/kudu/wiki/App-Service-Editor) を使用します)。 作成を開始するには、Azure Portal で Function App に移動します。 **[プラットフォーム機能]** を選択し、**[開発ツール]** で **[App Service Editor]** を見つけます。 これをクリックすると、新しいタブで App Service Editor が開きます。
+このモック API を作成するには、新しいプロキシを作成します (今回は [App Service Editor](https://github.com/projectkudu/kudu/wiki/App-Service-Editor) を使用します)。 作成を開始するには、Azure Portal で Function App に移動します。 **[プラットフォーム機能]** を選択し、 **[開発ツール]** で **[App Service Editor]** を見つけます。 これをクリックすると、新しいタブで App Service Editor が開きます。
 
 左側のナビゲーションで、`proxies.json` を選択します。 これは、すべてのプロキシの構成が格納されるファイルです。 [Functions のデプロイ方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)で記載されている方法のいずれかを使用する場合、このファイルはソース管理で保持することになります。 このファイルの詳細については、[Proxies の詳細な構成](https://docs.microsoft.com/azure/azure-functions/functions-proxies#advanced-configuration)に関するページをご覧ください。
 
@@ -182,7 +180,7 @@ backendUri プロパティを変更することなく、"GetUserByName" とい�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure Functions の API を作成しカスタマイズする方法について説明します。 また、モックなどの複数の API をまとめて 1 つの API サーフェスにする方法についても説明します。 これらの手法を使用することで、Azure Functions のサーバーレス コンピューティング モデルで API を実行しながら、複雑な API も構築できます。
+この記事では、Azure Functions の API を作成しカスタマイズする方法について説明します。 また、モックなどの複数の API をまとめて 1 つの API サーフェスにする方法についても説明します。 これらの手法を使用することで、Azure Functions のサーバーレス コンピューティング モデルで API を実行しながら、複雑な API も構築できます。
 
 次のリファレンスは、API の開発をさらに進める際に役立ちます。
 

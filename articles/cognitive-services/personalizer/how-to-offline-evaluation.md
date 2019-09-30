@@ -8,17 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/10/2019
 ms.author: diberry
-ms.openlocfilehash: f14403422e2c783d75634bb929d8c2130bd505b6
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: a157b36ad2b4f5a7f2e50a9609d8acd621efd5a8
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663873"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70884501"
 ---
-# <a name="how-to-analyze-your-learning-loop-with-an-offline-evaluation"></a>オフライン評価で学習ループを分析する方法
-
+# <a name="analyze-your-learning-loop-with-an-offline-evaluation"></a>オフライン評価で学習ループを分析する
 
 オフライン評価を完了し、その結果を理解する方法について説明します。
 
@@ -29,37 +28,42 @@ ms.locfileid: "68663873"
 
 ## <a name="prerequisites"></a>前提条件
 
-1. Personalizer ループが構成されている必要があります。
-1. 意味のある評価結果を得るには、Personalizer ループのログに少なくとも 50,000 のイベントが含まれている必要があります。
-
-必要に応じて、同じ評価で比較およびテストできる以前にエクスポートした_学習ポリシー_ ファイルを使用することもできます。
+* 構成済みの Personalizer ループ
+* Personalizer ループには、代表的な量のデータが含まれている必要があります。意味のある評価結果を得るには、おおよそ、50,000 個以上のイベントをログに記録することをお勧めします。 必要に応じて、同じ評価で比較およびテストできる以前にエクスポートした_学習ポリシー_ ファイルを使用することもできます。
 
 ## <a name="steps-to-start-a-new-offline-evaluation"></a>新しいオフライン評価を開始する手順
 
-1. Azure portal で目的のパーソナル化ループ リソースを見つけます。
-1. [評価] セクションに移動します。
-1. [New Evaluation] (新しい評価) をクリックします。
-1. オフライン評価の開始日と終了日を選択します。 これらは過去の日付であり、評価で使用するデータの範囲を指定します。 このデータは、[[Data Retention]\(データ保有期間\)](how-to-settings.md) 設定で指定したとおりにログに存在する必要があります。
-1. 必要に応じて、独自の学習ポリシーをアップロードできます。 
-1. この期間に観察されたユーザーの動作に基づいて、最適化された学習ポリシーを Personalizer で作成するかどうかを指定します。
-1. 評価を開始します。
+1. [Azure portal](https://azure.microsoft.com/free/) で、Personalization リソースを見つけます。
+1. Azure portal で、 **[評価]** セクションに移動し、 **[評価の作成]** を選択します。
+    ![Azure portal で、**[評価]** セクションに移動し、**[評価の作成]** を選択します。](./media/offline-evaluation/create-new-offline-evaluation.png)
+1. 次の設定を選択します。
+
+    * 評価名
+    * 開始日と終了日 - これらは過去の日付であり、評価で使用するデータの範囲を指定します。 このデータは、[[Data Retention]\(データ保有期間\)](how-to-settings.md) 設定で指定したとおりにログに存在する必要があります。
+    * **[はい]** に設定された [最適化の検出]
+
+    ![オフライン評価設定を選択する](./media/offline-evaluation/create-an-evaluation-form.png)
+
+1. **[Ok]** を選択して評価を開始します。 
 
 ## <a name="results"></a>結果
 
 処理するデータの量、比較する学習ポリシーの数、および最適化が要求されたかどうかによっては、評価の実行に時間がかかる場合があります。
 
-完了すると、次の結果が表示されます。
+完了したら、評価のリストから評価を選択できます。 
 
-1. 次の項目を含む学習ポリシーの比較:
-    * **オンライン ポリシー**:Personalizer で使用されている現在の学習ポリシー
-    * **ベースライン**:アプリケーションの既定値 (Rank 呼び出しで送信される最初のアクションによって決定される)
-    * **ランダム ポリシー**:指定されたアクションからランダムに選択したアクションを常に返す仮想的な優先度付け動作。
-    * **カスタム ポリシー**:評価の開始時にアップロードされる追加の学習ポリシー。
-    * **最適化されたポリシー**:最適化されたポリシーを検出するオプションを指定して評価を開始した場合は、それも比較され、ダウンロードしたりオンライン学習ポリシーにしたりして、現在のポリシーを置き換えることができます。
+学習ポリシーの比較には、以下が含まれます。
 
-1. アクションおよびコンテキストに対する[特徴](concepts-features.md)の有効性。
+* **オンライン ポリシー**:Personalizer で使用されている現在の学習ポリシー
+* **ベースライン**:アプリケーションの既定値 (Rank 呼び出しで送信される最初のアクションによって決定される)
+* **ランダム ポリシー**:指定されたアクションからランダムに選択したアクションを常に返す仮想的な優先度付け動作。
+* **カスタム ポリシー**:評価の開始時にアップロードされる追加の学習ポリシー。
+* **最適化されたポリシー**:最適化されたポリシーを検出するオプションを指定して評価を開始した場合は、それも比較され、ダウンロードしたりオンライン学習ポリシーにしたりして、現在のポリシーを置き換えることができます。
 
+![オフライン評価設定の結果グラフ](./media/offline-evaluation/evaluation-results.png)
 
-## <a name="more-information"></a>詳細情報
+アクションおよびコンテキストに対する[特徴](concepts-features.md)の有効性。
+
+## <a name="next-steps"></a>次の手順
 
 * [オフライン評価の仕組み](concepts-offline-evaluation.md)を確認してください。

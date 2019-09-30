@@ -18,7 +18,7 @@
       href: quickstart-load-balancer-standard-public-cli.md
     - name: Standard Load Balancer を作成する - Azure PowerShell
       href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Standard Load Balancer を作成する - Azure Resource Manager テンプレート
+    - name: Standard Load Balancer を作成する - テンプレート
       displayName: ARM
       href: quickstart-load-balancer-standard-public-template.md
 - name: チュートリアル
@@ -61,8 +61,8 @@
       href: load-balancer-standard-availability-zones.md
     - name: Standard Load Balancer のメトリックと診断
       href: load-balancer-standard-diagnostics.md
-    - name: セキュリティ属性
-      href: load-balancer-security-attributes.md
+    - name: 組み込みのセキュリティ制御
+      href: load-balancer-security-controls.md
 - name: 方法
   items:
     - name: ゾーン冗長パブリック Standard Load Balancer を作成する
@@ -84,7 +84,11 @@
     - name: ゾーン内で VM の負荷分散を行う (CLI)
       href: load-balancer-standard-public-zonal-cli.md
     - name: 送信の規則を構成する
-      href: configure-load-balancer-outbound-cli.md
+      items:
+        - name: アウトバウンド規則を構成する - CLI
+          href: configure-load-balancer-outbound-cli.md
+        - name: アウトバウンド規則を構成する - PowerShell
+          href: configure-load-balancer-outbound-powershell.md
     - name: REST API を使用して Azure Load Balancer を作成する
       href: create-load-balancer-rest-api.md
     - name: Basic Load Balancer を作成する (テンプレート)
@@ -123,6 +127,16 @@
       href: load-balancer-query-metrics-rest-api.md
     - name: 内部ロード バランサー用の高可用性ポートを構成する
       href: load-balancer-configure-ha-ports.md
+    - name: リージョン間で移動する
+      items:
+        - name: 外部ロード バランサー - ポータル
+          href: move-across-regions-external-load-balancer-portal.md
+        - name: 外部ロード バランサー - PowerShell
+          href: move-across-regions-external-load-balancer-powershell.md
+        - name: 内部ロード バランサー - ポータル
+          href: move-across-regions-internal-load-balancer-portal.md
+        - name: 内部ロード バランサー - PowerShell
+          href: move-across-regions-internal-load-balancer-powershell.md
     - name: トラブルシューティング
       items:
         - name: Azure Load Balancer のトラブルシューティング

@@ -1,61 +1,123 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Personalizer のドキュメント
+summary: Personalizer を使用すると、アプリケーションでユーザーのリアルタイムの行動から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようになるしくみを学習します。
 metadata:
-  document_id: null
-  title: Personalizer - チュートリアル、クイックスタート、API リファレンス
-  description: アプリケーションで Personalizer サービスを使用して、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにする方法を学習します。
+  ms.topic: landing-page
+  ms.date: 09/10/2019
+  ms.author: nitinme
   author: nitinme
-  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: personalizer
-  ms.topic: landing-page
-  ms.date: 05/07/2019
-  ms.author: nitinme
-abstract:
+  services: cognitive-services
+  title: Personalizer のドキュメント
+  titleSuffix: Azure Cognitive Services
   description: Azure Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。
-sections:
-  - items:
-      - type: list
-        style: cards
-        className: cardsM
-        columns: 3
-        items:
-          - href: /azure/cognitive-services/personalizer/what-is-personalizer
-            html: <p>Personalizer の機能と使用方法を理解します。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: Personalizer とは
-          - href: /azure/cognitive-services/personalizer/how-personalizer-works
-            html: <p>Personalizer のフィードバック ループが Rank API と Reward API でどのように動作するのかを学習します。</p>
-            image:
-              src: ../media/index/i_overview.svg
-            title: Personalizer のしくみ
-          - href: /azure/cognitive-services/personalizer/ethics-responsible-use
-            html: <p>会社やサービスが信頼されるようにパーソナル化を実装します。</p>
-            image:
-              src: ../media/index/i_guidelines.svg
-            title: 倫理と責任
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: ''
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ../media/index/logo_Csharp.svg
-            href: csharp-quickstart-commandline-feedback-loop.md
-            text: 'C#'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: REST API
-            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=2092082"> Personalizer API</a></p>'
-          - title: PowerShell
-            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
-          - title: CLI
-            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az-cognitiveservices-list">Azure CLI</a></p>'
+  ms.openlocfilehash: fd1b4a7c093beeb8d33579accee9178744b6fe50
+  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/11/2019
+  ms.locfileid: "70882906"
+landingContent:
+- title: Personalizer について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Personalizer とは
+      url: what-is-personalizer.md
+  - linkListType: concept
+    links:
+    - text: Personalizer のしくみ
+      url: how-personalizer-works.md
+    - text: Personalizer を使用できる状況
+      url: where-can-you-use-personalizer.md
+    - text: 倫理と責任ある使用
+      url: ethics-responsible-use.md
+- title: Personalizer ループの作成と使用
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: カスタマイズする機能とアクションの選択
+      url: concepts-features.md
+    - text: 報酬の計算方法
+      url: concept-rewards.md
+  - linkListType: how-to-guide
+    links:
+    - text: Personalizer の作成および構成方法
+      url: how-to-settings.md
+  - linkListType: quickstart
+    links:
+    - text: .Net の使用
+      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: Python の使用
+      url: python-quickstart-commandline-feedback-loop.md
+    - text: Node.js
+      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+- title: Personalizer を使用した開発
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: .Net を使用した Personalizer ループの開発
+      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: NuGet パッケージ
+      url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
+    - text: NuGet のリファレンス ドキュメント
+      url: https://docs.microsoft.com/en-us/dotnet/api/microsoft.azure.cognitiveservices.personalizer?view=azure-dotnet-preview&viewFallbackFrom=azure-dotnet
+  - linkListType: get-started
+    links:
+    - text: Node.js を使用した Personalizer ループの開発
+      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+    - text: NPM パッケージ
+      url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
+  - linkListType: get-started
+    links:
+    - text: Python を使用した Personalizer ループの開発
+      url: python-quickstart-commandline-feedback-loop.md
+    - text: Pypi パッケージ
+      url: https://pypi.org/project/azure-cognitiveservices-personalizer/
+  - linkListType: get-started
+    links:
+    - text: コード サンプル
+      url: https://github.com/Azure-Samples/cognitive-services-personalizer-samples
+    - text: REST API
+      url: https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank
+- title: 強化学習について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: 強化学習とは
+      url: concepts-reinforcement-learning.md
+  - linkListType: concept
+    links:
+    - text: 探索
+      url: concepts-exploration.md
+    - text: 特徴、アクション、コンテキスト
+      url: concepts-features.md
+    - text: アクティブ ラーニング
+      url: concept-active-learning.md
+    - text: 報酬
+      url: concept-rewards.md
+- title: サービスの評価と改善
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: オフライン評価を使用したループの改善
+      url: concepts-offline-evaluation.md
+    - text: アクティブ ラーニング
+      url: concept-active-learning.md
+    - text: スケーラビリティとパフォーマンス
+      url: concepts-scalability-performance.md
+  - linkListType: how-to-guide
+    links:
+    - text: オフライン評価で成功を分析する
+      url: how-to-offline-evaluation.md
+- title: ヘルプとフィードバック
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: トラブルシューティング
+      url: troubleshooting.md
+    - text: Stack Overflow で質問する
+      url: https://stackoverflow.com/questions/tagged/personalizer
+    - text: UserVoice によるサービスへの影響
+      url: https://cognitive.uservoice.com/forums/921562-personalizer

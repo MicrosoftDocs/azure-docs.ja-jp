@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 08/5/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 3b583fa7d9c7bab89accabf68034df407cb89a9c
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2fc9e91a34975642a666aa794694cfcc3321c93f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839941"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962542"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>クイック スタート:.NET 用 Personalize クライアント ライブラリ
 
@@ -47,6 +47,8 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 
 * `PERSONALIZER_RESOURCE_KEY` (リソース キー)。
 * `PERSONALIZER_RESOURCE_ENDPOINT` (リソース エンドポイント)。
+
+Azure portal では、キーとエンドポイントのどちらの値も **[クイック スタート]** ページで取得できます。
 
 ### <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
 
@@ -244,7 +246,7 @@ static void Main(string[] args)
 
 アプリケーション ディレクトリから、dotnet `run` コマンドを使用してアプリケーションを実行します。
 
-```dotnet
+```console
 dotnet run
 ```
 

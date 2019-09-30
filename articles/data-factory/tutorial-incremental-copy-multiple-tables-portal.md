@@ -8,16 +8,15 @@ manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: d46c460f7158635e520b47517fb3aab005af94a2
+ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59566007"
+ms.lasthandoff: 08/29/2019
+ms.locfileid: "70140750"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
@@ -73,7 +72,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. SQL Server Management Studio を開き、オンプレミスの SQL Server データベースに接続します。
 
-1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、**[新しいクエリ]** を選択します。
+1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 1. データベースに対して次の SQL コマンドを実行し、`customer_table` および `project_table` という名前のテーブルを作成します。
 
@@ -112,7 +111,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="create-destination-tables-in-your-azure-sql-database"></a>Azure SQL データベースにターゲット テーブルを作成する
 1. SQL Server Management Studio を開き、Azure SQL データベースに接続します。
 
-1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、**[新しいクエリ]** を選択します。
+1. **サーバー エクスプローラー**で目的のデータベースを右クリックし、 **[新しいクエリ]** を選択します。
 
 1. SQL データベースに対して次の SQL コマンドを実行し、`customer_table` と `project_table` という名前のテーブルを作成します。  
     
@@ -228,13 +227,13 @@ END
 
 ```
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
-1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
+1. 左側のメニューで **[新規]** をクリックし、 **[データ + 分析]** 、 **[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
-1. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFMultiIncCopyTutorialDF**」と入力します。 
+1. **[新しいデータ ファクトリ]** ページで、 **[名前]** に「**ADFMultiIncCopyTutorialDF**」と入力します。 
       
      ![[新しいデータ ファクトリ] ページ](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory.png)
  
@@ -252,42 +251,42 @@ END
 1. データ ファクトリの **場所** を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリで使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
 1. **[ダッシュボードにピン留めする]** をオンにします。     
 1. **Create** をクリックしてください。      
-1. ダッシュボードに、**[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
+1. ダッシュボードに、 **[Deploying data factory]\(データ ファクトリをデプロイしています\)** というステータスを示したタイルが表示されます。 
 
     ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/tutorial-incremental-copy-multiple-tables-portal/deploying-data-factory.png)
 1. 作成が完了すると、図に示されているような **[Data Factory]** ページが表示されます。
    
    ![データ ファクトリのホーム ページ](./media/tutorial-incremental-copy-multiple-tables-portal/data-factory-home-page.png)
 1. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
-1. Azure Data Factory UI の開始ページで **[Create pipeline]\(パイプラインの作成\)** タイルをクリックするか、**[編集]** タブに切り替えます。 
+1. Azure Data Factory UI の開始ページで **[Create pipeline]\(パイプラインの作成\)** タイルをクリックするか、 **[編集]** タブに切り替えます。 
 
    ![開始ページ](./media/tutorial-incremental-copy-multiple-tables-portal/get-started-page.png)
 
 ## <a name="create-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成する
 プライベート ネットワーク (オンプレミス) のデータ ストアから Azure データ ストアにデータを移動するときに、セルフホステッド統合ランタイム (IR) をオンプレミス環境にインストールします。 セルフホステッド IR を使用すると、プライベート ネットワークと Azure との間でデータを移動できます。 
 
-1. 左ウィンドウの下部にある **[接続]** をクリックし、**[接続]** ウィンドウの **[Integration Runtimes]\(統合ランタイム\)** に切り替えます。 
+1. 左ウィンドウの下部にある **[接続]** をクリックし、 **[接続]** ウィンドウの **[Integration Runtimes]\(統合ランタイム\)** に切り替えます。 
 
    ![[接続] タブ](./media/tutorial-incremental-copy-multiple-tables-portal/connections-tab.png)
-1. **[Integration Runtimes]\(統合ランタイム\)** タブで、**[+ 新規]** をクリックします。 
+1. **[Integration Runtimes]\(統合ランタイム\)** タブで、 **[+ 新規]** をクリックします。 
 
    ![新規統合ランタイム - ボタン](./media/tutorial-incremental-copy-multiple-tables-portal/new-integration-runtime-button.png)
-1. **[Integration Runtime Setup]\(統合ランタイムの設定\)** ウィンドウで、**[Perform data movement and dispatch activities to external computes]\(データの移動を実行し、アクティビティを外部コンピューティングにディスパッチする\)** を選択し、**[次へ]** をクリックします。 
+1. **[Integration Runtime Setup]\(統合ランタイムの設定\)** ウィンドウで、 **[Perform data movement and dispatch activities to external computes]\(データの移動を実行し、アクティビティを外部コンピューティングにディスパッチする\)** を選択し、 **[次へ]** をクリックします。 
 
    ![統合ランタイムの種類を選択する](./media/tutorial-incremental-copy-multiple-tables-portal/select-integration-runtime-type.png)
-1. **[プライベート ネットワーク]** を選択し、**[次へ]** をクリックします。 
+1. **[プライベート ネットワーク]** を選択し、 **[次へ]** をクリックします。 
 
    ![[プライベート ネットワーク] の選択](./media/tutorial-incremental-copy-multiple-tables-portal/select-private-network.png)
-1. **[名前]** に「**MySelfHostedIR**」と入力し、**[次へ]** をクリックします。 
+1. **[名前]** に「**MySelfHostedIR**」と入力し、 **[次へ]** をクリックします。 
 
    ![セルフホステッド IR 名](./media/tutorial-incremental-copy-multiple-tables-portal/self-hosted-ir-name.png)
 1. **[Option 1: Express setup]\(オプション 1: 高速セットアップ\)** セクションの **[Click here to launch the express setup for this computer]\(このコンピューターで高速セットアップを起動するにはここをクリック\)** をクリックします。 
 
    ![高速セットアップのリンクのクリック](./media/tutorial-incremental-copy-multiple-tables-portal/click-express-setup.png)
-1. **[Integration Runtime (セルフホステッド) 高速セットアップ]** ウィンドウで、**[閉じる]** をクリックします。 
+1. **[Integration Runtime (セルフホステッド) 高速セットアップ]** ウィンドウで、 **[閉じる]** をクリックします。 
 
    ![統合ランタイムのセットアップ - 成功](./media/tutorial-incremental-copy-multiple-tables-portal/integration-runtime-setup-successful.png)
-1. Web ブラウザーの **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ウィンドウで、**[完了]** をクリックします。 
+1. Web ブラウザーの **[Integration Runtime Setup]\(統合ランタイムのセットアップ\)** ウィンドウで、 **[完了]** をクリックします。 
 
    ![統合ランタイムのセットアップ - 完了](./media/tutorial-incremental-copy-multiple-tables-portal/click-finish-integration-runtime-setup.png)
 1. 統合ランタイムの一覧に **MySelfHostedIR** が含まれていることを確認します。
@@ -300,10 +299,10 @@ END
 ### <a name="create-the-sql-server-linked-service"></a>SQL Server のリンクされたサービスを作成する
 この手順では、オンプレミス SQL Server データベースをデータ ファクトリにリンクします。
 
-1. **[接続]** ウィンドウで、**[Integration Runtimes]\(統合ランタイム\)** タブから **[リンクされたサービス]** タブに切り替え、**[+ 新規]** をクリックします。
+1. **[接続]** ウィンドウで、 **[Integration Runtimes]\(統合ランタイム\)** タブから **[リンクされたサービス]** タブに切り替え、 **[+ 新規]** をクリックします。
 
     ![新しいリンクされたサービスのボタン](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
-1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[SQL Server]** を選択し、**[続行]** をクリックします。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[SQL Server]** を選択し、 **[続行]** をクリックします。 
 
     ![SQL Server の選択](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server.png)
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
@@ -315,18 +314,18 @@ END
     1. **[認証の種類]** で、データベースへの接続に使用する**認証の種類**を選択します。 
     1. **[ユーザー名]** に、SQL Server データベースにアクセスできるユーザーの名前を入力します。 ユーザー アカウントまたはサーバー名にスラッシュ文字 (`\`) を使用する必要がある場合は、エスケープ文字 (`\`) を使用します。 例: `mydomain\\myuser`。
     1. **[パスワード]** に、ユーザーの**パスワード**を入力します。 
-    1. Data Factory が SQL Server データベースに接続できるかどうかをテストするために、**[Test connection]\(テスト接続\)** をクリックします。 エラーがあれば修正して、正常に接続できるようにします。 
-    1. リンクされたサービスを保存するために、**[保存]** をクリックします。
+    1. Data Factory が SQL Server データベースに接続できるかどうかをテストするために、 **[Test connection]\(テスト接続\)** をクリックします。 エラーがあれば修正して、正常に接続できるようにします。 
+    1. リンクされたサービスを保存するために、 **[保存]** をクリックします。
 
         ![SQL Server のリンクされたサービス - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/sql-server-linked-service-settings.png)
 
 ### <a name="create-the-azure-sql-database-linked-service"></a>Azure SQL Database のリンクされたサービスを作成する
 最後の手順では、ソース SQL Server データベースをデータ ファクトリに接続するためのリンクされたサービスを作成します。 この手順では、ターゲット/シンク Azure SQL データベースをデータ ファクトリにリンクします。 
 
-1. **[接続]** ウィンドウで、**[Integration Runtimes]\(統合ランタイム\)** タブから **[リンクされたサービス]** タブに切り替え、**[+ 新規]** をクリックします。
+1. **[接続]** ウィンドウで、 **[Integration Runtimes]\(統合ランタイム\)** タブから **[リンクされたサービス]** タブに切り替え、 **[+ 新規]** をクリックします。
 
     ![新しいリンクされたサービスのボタン](./media/tutorial-incremental-copy-multiple-tables-portal/new-sql-server-linked-service-button.png)
-1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、**[続行]** をクリックします。 
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで **[Azure SQL Database]** を選択し、 **[続行]** をクリックします。 
 1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。
 
     1. **[名前]** に「**AzureSqlDatabaseLinkedService**」と入力します。 
@@ -334,8 +333,8 @@ END
     1. **[データベース名]** で、前提条件の一部として customer_table と project_table を作成した Azure SQL データベースを選択します。 
     1. **[ユーザー名]** に、Azure SQL データベースにアクセスできるユーザーの名前を入力します。 
     1. **[パスワード]** に、ユーザーの**パスワード**を入力します。 
-    1. Data Factory が SQL Server データベースに接続できるかどうかをテストするために、**[Test connection]\(テスト接続\)** をクリックします。 エラーがあれば修正して、正常に接続できるようにします。 
-    1. リンクされたサービスを保存するために、**[保存]** をクリックします。
+    1. Data Factory が SQL Server データベースに接続できるかどうかをテストするために、 **[Test connection]\(テスト接続\)** をクリックします。 エラーがあれば修正して、正常に接続できるようにします。 
+    1. リンクされたサービスを保存するために、 **[保存]** をクリックします。
 
         ![Azure SQL のリンクされたサービス - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/azure-sql-linked-service-settings.png)
 1. 2 つのリンクされたサービスが一覧に表示されていることを確認します。 
@@ -347,37 +346,37 @@ END
 
 ### <a name="create-a-source-dataset"></a>ソース データセットを作成する
 
-1. 左ウィンドウで **[+] (プラス記号)** をクリックし、**[データセット]** をクリックします。
+1. 左ウィンドウで **[+] (プラス記号)** をクリックし、 **[データセット]** をクリックします。
 
    ![[新しいデータセット] メニュー](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
-1. **[新しいデータセット]** ウィンドウで、**[SQL Server]** を選択し、**[完了]** をクリックします。 
+1. **[新しいデータセット]** ウィンドウで、 **[SQL Server]** を選択し、 **[完了]** をクリックします。 
 
    ![SQL Server の選択](./media/tutorial-incremental-copy-multiple-tables-portal/select-sql-server-for-dataset.png)
-1. データセットを設定するために、Web ブラウザーで新しいタブが開かれます。 さらに、ツリービューにデータセットが表示されます。 下部にあるプロパティ ウィンドウの **[全般]** タブで、**[名前]** に「**SourceDataset**」と入力します。 
+1. データセットを設定するために、Web ブラウザーで新しいタブが開かれます。 さらに、ツリービューにデータセットが表示されます。 下部にあるプロパティ ウィンドウの **[全般]** タブで、 **[名前]** に「**SourceDataset**」と入力します。 
 
    ![ソース データセット - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-general.png)
-1. プロパティ ウィンドウの **[接続]** タブに切り替えて、**[リンクされたサービス]** で **[SqlServerLinkedService]** を選択します。 ここではテーブルを選択しません。 このパイプライン内のコピー アクティビティは、テーブル全体を読み込むことはせずに、SQL クエリを使用してデータを読み込みます。
+1. プロパティ ウィンドウの **[接続]** タブに切り替えて、 **[リンクされたサービス]** で **[SqlServerLinkedService]** を選択します。 ここではテーブルを選択しません。 このパイプライン内のコピー アクティビティは、テーブル全体を読み込むことはせずに、SQL クエリを使用してデータを読み込みます。
 
    ![ソース データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/source-dataset-connection.png)
 
 
 ### <a name="create-a-sink-dataset"></a>シンク データセットを作成する
-1. 左ウィンドウで **[+] (プラス記号)** をクリックし、**[データセット]** をクリックします。
+1. 左ウィンドウで **[+] (プラス記号)** をクリックし、 **[データセット]** をクリックします。
 
    ![[新しいデータセット] メニュー](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
-1. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、**[完了]** をクリックします。 
+1. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、 **[完了]** をクリックします。 
 
    ![Azure SQL Database の選択](./media/tutorial-incremental-copy-multiple-tables-portal/select-azure-sql-database.png)
-1. データセットを設定するために、Web ブラウザーで新しいタブが開かれます。 さらに、ツリービューにデータセットが表示されます。 下部にあるプロパティ ウィンドウの **[全般]** タブで、**[名前]** に「**SinkDataset**」と入力します。
+1. データセットを設定するために、Web ブラウザーで新しいタブが開かれます。 さらに、ツリービューにデータセットが表示されます。 下部にあるプロパティ ウィンドウの **[全般]** タブで、 **[名前]** に「**SinkDataset**」と入力します。
 
    ![シンク データセット - 全般](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-general.png)
 1. プロパティ ウィンドウの **[ソース]** タブに切り替え、以下の手順を実行します。 
 
-    1. **[Create/update parameters]\(パラメーターの作成/更新\)** セクションで、**[新規]** をクリックします。 
-    1. **[名前]** に「**SinkTableName**」と入力し、**[type]\(型\)** として **[文字列]** を指定します。 このデータセットは、**SinkTableName** をパラメーターとして受け取ります。 SinkTableName パラメーターは、実行時にパイプラインによって動的に設定されます。 パイプライン内の ForEach アクティビティは、一連のテーブル名を反復処理しながら、各イテレーションの中でこのデータセットにテーブル名を渡します。
+    1. **[Create/update parameters]\(パラメーターの作成/更新\)** セクションで、 **[新規]** をクリックします。 
+    1. **[名前]** に「**SinkTableName**」と入力し、 **[type]\(型\)** として **[文字列]** を指定します。 このデータセットは、**SinkTableName** をパラメーターとして受け取ります。 SinkTableName パラメーターは、実行時にパイプラインによって動的に設定されます。 パイプライン内の ForEach アクティビティは、一連のテーブル名を反復処理しながら、各イテレーションの中でこのデータセットにテーブル名を渡します。
    
        ![シンク データセット - プロパティ](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
-1. プロパティ ウィンドウの **[接続]** タブに切り替えて、**[リンクされたサービス]** で **[AzureSqlLinkedService]** を選択します。 **[テーブル]** プロパティで、**[動的なコンテンツの追加]** をクリックします。 
+1. プロパティ ウィンドウの **[接続]** タブに切り替えて、 **[リンクされたサービス]** で **[AzureSqlLinkedService]** を選択します。 **[テーブル]** プロパティで、 **[動的なコンテンツの追加]** をクリックします。 
 
    ![シンク データセット - 接続](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
     
@@ -394,13 +393,13 @@ END
 ### <a name="create-a-dataset-for-a-watermark"></a>基準値用のデータセットを作成する
 この手順では、高基準値を格納するためのデータセットを作成します。 
 
-1. 左ウィンドウで **[+] (プラス記号)** をクリックし、**[データセット]** をクリックします。
+1. 左ウィンドウで **[+] (プラス記号)** をクリックし、 **[データセット]** をクリックします。
 
    ![[新しいデータセット] メニュー](./media/tutorial-incremental-copy-multiple-tables-portal/new-dataset-menu.png)
-1. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、**[完了]** をクリックします。 
+1. **[新しいデータセット]** ウィンドウで **[Azure SQL Database]** を選択し、 **[完了]** をクリックします。 
 
    ![Azure SQL Database の選択](./media/tutorial-incremental-copy-multiple-tables-portal/select-azure-sql-database.png)
-1. 下部にあるプロパティ ウィンドウの **[全般]** タブで、**[名前]** に「**WatermarkDataset**」と入力します。
+1. 下部にあるプロパティ ウィンドウの **[全般]** タブで、 **[名前]** に「**WatermarkDataset**」と入力します。
 1. **[接続]** タブに切り替えて、次の手順を実行します。 
 
     1. **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
@@ -421,10 +420,10 @@ END
 
 ### <a name="create-the-pipeline"></a>パイプラインを作成する
 
-1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、**[パイプライン]** をクリックします。
+1. 左ウィンドウで **[+]\(プラス記号\)** をクリックし、 **[パイプライン]** をクリックします。
 
     ![新しいパイプライン - メニュー](./media/tutorial-incremental-copy-multiple-tables-portal/new-pipeline-menu.png)
-1. **プロパティ** ウィンドウの **[全般]** タブで、**[名前]** に「**IncrementalCopyPipeline**」と入力します。 
+1. **プロパティ** ウィンドウの **[全般]** タブで、 **[名前]** に「**IncrementalCopyPipeline**」と入力します。 
 
     ![パイプライン名](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-name.png)
 1. **プロパティ** ウィンドウで、以下の手順を実行します。 
@@ -437,13 +436,13 @@ END
 1. **[アクティビティ]** ツール ボックスで **[Iteration & Conditionals]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **プロパティ** ウィンドウの **[全般]** タブで、「**IterateSQLTables**」と入力します。 
 
     ![ForEach アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
-1. **プロパティ** ウィンドウで **[設定]** タブに切り替え、**[項目]** に「`@pipeline().parameters.tableList`」と入力します。 ForEach アクティビティは、一連のテーブルを反復処理しながら、増分コピー操作を実行します。 
+1. **プロパティ** ウィンドウで **[設定]** タブに切り替え、 **[項目]** に「`@pipeline().parameters.tableList`」と入力します。 ForEach アクティビティは、一連のテーブルを反復処理しながら、増分コピー操作を実行します。 
 
     ![ForEach アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-settings.png)
 1. パイプラインの **ForEach** アクティビティが選択されていない場合はこれを選択します。 **[編集] (鉛筆アイコン)** ボタンをクリックします。
 
     ![ForEach アクティビティ - 編集](./media/tutorial-incremental-copy-multiple-tables-portal/edit-foreach.png)
-1. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップし、**[名前]** に「**LookupOldWaterMarkActivity**」を入力します。
+1. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップし、 **[名前]** に「**LookupOldWaterMarkActivity**」を入力します。
 
     ![最初の検索アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-name.png)
 1. **プロパティ** ウィンドウで **[設定]** タブに切り替え、以下の手順を実行します。 
@@ -457,7 +456,7 @@ END
         ```
 
         ![最初の検索アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-settings.png)
-1. **[アクティビティ]** ツールボックスから**検索**アクティビティをドラッグアンドドロップし、**[名前]** に「**LookupNewWaterMarkActivity**」と入力します。
+1. **[アクティビティ]** ツールボックスから**検索**アクティビティをドラッグアンドドロップし、 **[名前]** に「**LookupNewWaterMarkActivity**」と入力します。
         
     ![2 つ目の検索アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-name.png)
 1. **[設定]** タブに切り替えます。
@@ -471,7 +470,7 @@ END
         ```
     
         ![2 つ目の検索アクティビティ - 設定](./media/tutorial-incremental-copy-multiple-tables-portal/second-lookup-settings.png)
-1. **[アクティビティ]** ツールボックスから**コピー** アクティビティをドラッグアンドドロップし、**[名前]** に「**IncrementalCopyActivity**」と入力します。 
+1. **[アクティビティ]** ツールボックスから**コピー** アクティビティをドラッグアンドドロップし、 **[名前]** に「**IncrementalCopyActivity**」と入力します。 
 
     ![コピー アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-name.png)
 1. 1 つずつ、**検索**アクティビティを**コピー** アクティビティに接続します。 接続するには、**検索**アクティビティの横の**緑**のボックスをドラッグして**コピー** アクティビティにドロップします。 コピー アクティビティの境界線の色が**青**に変わったら、マウス ボタンを離します。
@@ -488,12 +487,12 @@ END
         ```
 
         ![コピー アクティビティ - ソースの設定](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
-1. **[シンク]** タブに切り替えて、**[Sink Dataset]\(シンク データセット\)** で **[SinkDataset]** を選択します。 
+1. **[シンク]** タブに切り替えて、 **[Sink Dataset]\(シンク データセット\)** で **[SinkDataset]** を選択します。 
         
     ![コピー アクティビティ - シンクの設定](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
 1. 次の手順を実行します。
 
-    1. **[データセット]** プロパティで、**[SinkTableName]** パラメーターに「`@{item().TABLE_NAME}`」と入力します。
+    1. **[データセット]** プロパティで、 **[SinkTableName]** パラメーターに「`@{item().TABLE_NAME}`」と入力します。
     1. **[ストアド プロシージャ名]** プロパティに「`@{item().StoredProcedureNameForMergeOperation}`」と入力します。
     1. **[テーブルの種類]** プロパティに「`@{item().TableType}`」と入力します。
 
@@ -502,10 +501,10 @@ END
 1. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **コピー** アクティビティを**ストアド プロシージャ** アクティビティに接続します。 
 
     ![コピー アクティビティ - パラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/connect-copy-to-sproc.png)
-1. パイプラインの **ストアド プロシージャ** アクティビティを選択します。**プロパティ** ウィンドウの **[全般]** タブで、**[名前]** に「**StoredProceduretoWriteWatermarkActivity**」と入力します。 
+1. パイプラインの **ストアド プロシージャ** アクティビティを選択します。**プロパティ** ウィンドウの **[全般]** タブで、 **[名前]** に「**StoredProceduretoWriteWatermarkActivity**」と入力します。 
 
     ![ストアド プロシージャ アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-name.png)
-1. **[SQL アカウント]** タブに切り替えて、**[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
+1. **[SQL アカウント]** タブに切り替えて、 **[リンクされたサービス]** で **[AzureSqlDatabaseLinkedService]** を選択します。
 
     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 1. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。
@@ -514,26 +513,26 @@ END
     1. **[Import parameter]\(インポート パラメーター\)** を選択します。 
     1. 各パラメーターの値を次のように指定します。 
 
-        | Name | Type | 値 | 
+        | 名前 | Type | 値 | 
         | ---- | ---- | ----- |
         | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | string | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![ストアド プロシージャ アクティビティ - ストアド プロシージャの設定](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. 左側のウィンドウで **[発行]** をクリックします。 これにより、作成されたエンティティが Data Factory サービスに発行されます。 
 
     ![[発行] ボタン](./media/tutorial-incremental-copy-multiple-tables-portal/publish-button.png)
-1. **[正常に発行されました]** というメッセージが表示されるまで待機します。 通知を表示するには、**[通知の表示]** リンクをクリックします。 **[X]** をクリックして通知ウィンドウを閉じます。
+1. **[正常に発行されました]** というメッセージが表示されるまで待機します。 通知を表示するには、 **[通知の表示]** リンクをクリックします。 **[X]** をクリックして通知ウィンドウを閉じます。
 
     ![通知の表示](./media/tutorial-incremental-copy-multiple-tables-portal/notifications.png)
 
  
 ## <a name="run-the-pipeline"></a>パイプラインを実行する
 
-1. パイプラインのツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。     
+1. パイプラインのツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。     
 
     ![[Trigger Now]\(今すぐトリガー\)](./media/tutorial-incremental-copy-multiple-tables-portal/trigger-now.png)
-1. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで、**[tableList]** パラメーターに次の値を入力し、**[完了]** をクリックします。 
+1. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで、 **[tableList]** パラメーターに次の値を入力し、 **[完了]** をクリックします。 
 
     ```
     [
@@ -556,7 +555,7 @@ END
 
 ## <a name="monitor-the-pipeline"></a>パイプラインの監視
 
-1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 一覧を更新するには、**[最新の情報に更新]** ボタンをクリックします。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示したり、パイプラインを再実行したりできます。 
+1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 一覧を更新するには、 **[最新の情報に更新]** ボタンをクリックします。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示したり、パイプラインを再実行したりできます。 
 
     ![パイプライン実行](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
 1. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 選択したパイプラインの実行に関連付けられているすべてのアクティビティの実行が表示されます。 
@@ -634,10 +633,10 @@ VALUES
 
 ## <a name="rerun-the-pipeline"></a>パイプラインを再実行する
 1. Web ブラウザー ウィンドウで、左側の **[編集]** タブに切り替えます。 
-1. パイプラインのツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。   
+1. パイプラインのツール バーの **[トリガー]** をクリックし、 **[Trigger Now]\(今すぐトリガー\)** をクリックします。   
 
     ![[Trigger Now]\(今すぐトリガー\)](./media/tutorial-incremental-copy-multiple-tables-portal/trigger-now.png)
-1. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで、**[tableList]** パラメーターに次の値を入力し、**[完了]** をクリックします。 
+1. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで、 **[tableList]** パラメーターに次の値を入力し、 **[完了]** をクリックします。 
 
     ```
     [
@@ -658,7 +657,7 @@ VALUES
 
 ## <a name="monitor-the-pipeline-again"></a>パイプラインを再度監視する
 
-1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 一覧を更新するには、**[最新の情報に更新]** ボタンをクリックします。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示したり、パイプラインを再実行したりできます。 
+1. 左側で **[監視]** タブに切り替えます。 **手動トリガー**によってトリガーされたパイプラインの実行を確認できます。 一覧を更新するには、 **[最新の情報に更新]** ボタンをクリックします。 **[アクション]** 列のリンクを使用すると、パイプラインの実行に関連付けられているアクティビティの実行を表示したり、パイプラインを再実行したりできます。 
 
     ![パイプライン実行](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-runs.png)
 1. **[アクション]** 列の **[View Activity Runs]\(アクティビティの実行の表示\)** リンクをクリックします。 選択したパイプラインの実行に関連付けられているすべてのアクティビティの実行が表示されます。 

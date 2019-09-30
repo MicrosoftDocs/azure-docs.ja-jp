@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
-ms.date: 04/29/2019
+ms.date: 09/09/2019
 ms.author: raynew
-ms.openlocfilehash: 6e31308800f72d60381f1e4ecd540482ba263851
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 812cd0293f9627b7438e9870d8985e71dae1d147
+ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969372"
+ms.lasthandoff: 09/09/2019
+ms.locfileid: "70813415"
 ---
 # <a name="troubleshoot-the-process-server"></a>プロセス サーバーのトラブルシューティング
 
@@ -168,7 +168,7 @@ telnet が成功してもプロセス サーバーに到達できないことが
 
   1. プロセス サーバー上で、タスク マネージャーを開きます (Ctrl + Shift + Esc キーを押します)。
   2. **[パフォーマンス]** タブ > **[リソース モニターを開く]** の順に選択します。
-  3. **[リソース モニター]** ページで **[ネットワーク]** タブを選択します。 **[Processes with Network Activity]\(ネットワーク活動を伴うプロセス\)** の下で、cbengine.exe により大量の vNotolume データがアクティブに送信されているかどうかを確認します。
+  3. **[リソース モニター]** ページで **[ネットワーク]** タブを選択します。 **[ネットワーク活動のプロセス]** で、cbengine.exe により大量のデータがアクティブに送信されているかどうかを確認します。
 
        ![ネットワーク活動を処理中のボリューム](./media/vmware-physical-azure-troubleshoot-process-server/cbengine.png)
 

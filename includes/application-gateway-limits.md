@@ -4,14 +4,14 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: 9a8d925e5d72500817028b913a80255a4339255c
-ms.sourcegitcommit: 22c97298aa0e8bd848ff949f2886c8ad538c1473
+ms.openlocfilehash: cd0ec07ebfffc839fedcdc76c9aff8e86556a7de
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67148438"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "70130098"
 ---
-| Resource | 既定/上限 | Note |
+| リソース | 既定/上限 | Note |
 | --- | --- | --- |
 | Azure Application Gateway |サブスクリプションあたり 1,000 | |
 | フロントエンド IP 構成 |2 |パブリック 1、プライベート 1 |
@@ -37,6 +37,7 @@ ms.locfileid: "67148438"
 | 最大ファイル アップロード サイズ (標準) |2 GB | |
 | 最大ファイル アップロード サイズ (WAF) |中規模の WAF ゲートウェイ - 100 MB<br>大規模の WAF ゲートウェイ - 500 MB| |
 | WAF の本文サイズの制限 (ファイルがない場合)|128 KB||
-|WAF カスタム規則の最大数|100||
+| WAF カスタム規則の最大数|100||
+| WAF 除外の最大数|100||
 
 <sup>1</sup> WAF 対応 SKU の場合は、最適なパフォーマンスを確保するためにリソース数を 40 に制限することをお勧めします。

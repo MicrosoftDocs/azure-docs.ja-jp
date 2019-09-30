@@ -8,16 +8,17 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 07/19/2019
 ms.author: bwren
-ms.openlocfilehash: cf2aee475f5d3933421de45fa5b2ade687bed62f
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 950768326228960192f48d99e5c5fa849b2c2bda
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348089"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076820"
 ---
 # <a name="get-started-with-log-analytics-in-azure-monitor"></a>Azure Monitor で Log Analytics の使用を開始する
 
-[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+> [!NOTE]
+> 少なくとも 1 つの仮想マシンからデータを収集する場合は、独自の環境でこの演習を行うことができます。 それ以外の場合は、サンプル データが多数含まれている Microsoft の[デモ環境](https://portal.loganalytics.io/demo)を使用してください。
 
 このチュートリアルでは、Azure portal で Log Analytics を使用して Azure Monitor ログ クエリを記述する方法について説明します。 以下の方法について説明します。
 
@@ -162,7 +163,7 @@ x 軸や y 軸などのビューのさまざまなプロパティ、またはグ
 ![スマート診断](media/get-started-portal/smart-diagnostics.png)
 
 ## <a name="pin-to-dashboard"></a>[ダッシュボードにピン留めする]
-いずれかの共有ダッシュボードにダイアグラムまたはテーブルをピン留めするには、ピン アイコンをクリックします。
+いずれかの共有ダッシュボードにダイアグラムまたはテーブルをピン留めするには、ピン アイコンをクリックします。 なお、このアイコンは、次のスクリーンショットとは異なり、Log Analytics ウィンドウの一番上に移動されています。
 
 ![[ダッシュボードにピン留めする]](media/get-started-portal/pin-dashboard.png)
 

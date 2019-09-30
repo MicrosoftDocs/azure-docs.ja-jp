@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: chadam
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c5f7e45a1e1daa5d8504db2506a79e88c28bcc1
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1b5aedd5c9bde7689df14c7efdf8d58692680c13
+ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989595"
+ms.lasthandoff: 09/05/2019
+ms.locfileid: "70383170"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>サインイン アクティビティ レポートのエラー コード 
 
@@ -153,6 +153,8 @@ ms.locfileid: "68989595"
 |70018|ユーザーがデバイス コード フローに誤ったユーザー コードを入力したため、確認コードが無効です。 認証は承認されていません。|
 |70019|確認コードの有効期限が切れました。 ユーザーにサインインを再試行させてください。|
 |70037|正しくないチャレンジ応答が提供されました。 リモート認証セッションが拒否されました。|
+|70043|Azure 条件付きアクセスのセッション管理により、セッションの有効期限が強制的に切れます|
+|70044|Azure 条件付きアクセスのセッション管理により、セッションの有効期限が強制的に切れます|
 |75001|SAML メッセージ バインド中にエラーが発生しました。|
 |75003|アプリケーションが、サポートされていないバインドに関連するエラーを返しました (SAML プロトコルの応答は、HTTP POST 以外のバインド経由では送信できません)。 アプリケーションの所有者に問い合わせください。|
 |75005|Azure AD は、シングル サインオン用のアプリケーションによって送信された SAML 要求をサポートしていません。 アプリケーションの所有者に問い合わせください。|

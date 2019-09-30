@@ -1,18 +1,18 @@
 ---
-title: Microsoft Azure Recovery Services (MARS) エージェントのサポート マトリックス - Azure Backup
+title: Microsoft Azure Recovery Services (MARS) エージェントのサポート マトリックス
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターをバックアップする場合の Azure Backup のサポートを要約しています。
 author: dcurwin
 ms.service: backup
-ms.date: 02/17/2019
+ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 8c983772f58c1ea01db175b47225ccfafa515b96
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 1559bb096baaa8f19718bf0c3bcd6b2dc767235b
+ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951976"
+ms.lasthandoff: 09/02/2019
+ms.locfileid: "70210132"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 
@@ -72,20 +72,22 @@ Network throttling | Windows Server 2008 R2、Windows Server 2008 SP2、また�
 
 MARS エージェントを使用すると、オンプレミスのコンピューターや Azure VM で実行されている一部のオペレーティング システム上の Azure に直接バックアップできます。 これらのオペレーティング システムは 64 ビットであり、かつ最新の Service Pack および更新プログラムが実行されている必要があります。 次の表は、これらのオペレーティング システムをまとめたものです。
 
-**オペレーティング システム** | **ファイル/フォルダー** | **システム状態** 
---- | --- | --- 
-Windows 10 (Enterprise、Pro、Home) | はい | いいえ
-Windows 8.1 (Enterprise、Pro)| はい |いいえ
-Windows 8 (Enterprise、Pro) | はい | いいえ
-Windows 7 (Ultimate、Enterprise、Pro、Home Premium/Basic、Starter) | はい | いいえ
-Windows Server 2016 (Standard、Datacenter、Essentials) | はい | はい
-Windows Server 2012 R2 (Standard、Datacenter、Foundation、Essentials) | はい | はい
-Windows Server 2012 (Standard、Datacenter、Foundation) | はい | はい
-Windows Server 2008 R2 (Standard、Enterprise、Datacenter、Foundation) | はい | はい
-Windows Server 2008 SP2 (Standard、Datacenter、Foundation) | はい | いいえ
-Windows Storage Server 2016/2012 R2/2012 (Standard、Workgroup) | はい | いいえ
+**オペレーティング システム** | **ファイル/フォルダー** | **システム状態** | **ソフトウェア/モジュールの要件**
+--- | --- | --- | ---
+Windows 10 (Enterprise、Pro、Home) | はい | いいえ |  ソフトウェア/モジュールの要件に対応するサーバーのバージョンをご確認ください
+Windows 8.1 (Enterprise、Pro)| はい |いいえ | ソフトウェア/モジュールの要件に対応するサーバーのバージョンをご確認ください
+Windows 8 (Enterprise、Pro) | はい | いいえ | ソフトウェア/モジュールの要件に対応するサーバーのバージョンをご確認ください
+Windows 7 (Ultimate、Enterprise、Pro、Home Premium/Basic、Starter) | はい | いいえ | ソフトウェア/モジュールの要件に対応するサーバーのバージョンをご確認ください
+Windows Server 2016 (Standard、Datacenter、Essentials) | はい | はい | - .NET 4.5 <br> - Windows PowerShell <br> - 互換性のある最新の Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0
+Windows Server 2012 R2 (Standard、Datacenter、Foundation、Essentials) | はい | はい | - .NET 4.5 <br> - Windows PowerShell <br> - 互換性のある最新の Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0
+Windows Server 2012 (Standard、Datacenter、Foundation) | はい | はい |- .NET 4.5 <br> - Windows PowerShell <br> - 互換性のある最新の Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0 <br> - 展開イメージのサービスと管理 (DISM.exe)
+Windows Server 2008 R2 (Standard、Enterprise、Datacenter、Foundation) | はい | はい | - .NET 3.5、.Net 4.5 <br> - Windows PowerShell <br> - 互換性のある Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0 <br> - 展開イメージのサービスと管理 (DISM.exe)
+Windows Server 2008 SP2 (Standard、Datacenter、Foundation) | はい | いいえ | - .NET 3.5、.Net 4.5 <br> - Windows PowerShell <br> - 互換性のある Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0 <br> - 展開イメージのサービスと管理 (DISM.exe) <br> - Virtual Server 2005 base +  KB KB948515
+Windows Storage Server 2016/2012 R2/2012 (Standard、Workgroup) | はい | いいえ | - .NET 4.5 <br> - Windows PowerShell <br> - 互換性のある最新の Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0
+Windows Server 2019 (Standard、Datacenter、Essentials) | はい | はい | - .NET 4.5 <br> - Windows PowerShell <br> - 互換性のある最新の Microsoft VC++ 再頒布可能パッケージ <br> - Microsoft 管理コンソール (MMC) 3.0
 
 詳細については、「[サポートされている MABS および DPM オペレーティング システム](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems)」を参照してください。
+
 
 ## <a name="backup-limits"></a>Backup の制限
 

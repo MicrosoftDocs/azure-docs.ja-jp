@@ -1,5 +1,5 @@
 ---
-title: Application Insights、C# - LUIS
+title: チュートリアル:Application Insights、C# - LUIS
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、ボットおよび Language Understanding の情報を Application Insights テレメトリ データ ストレージに追加します。
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 06/16/2019
+ms.date: 09/06/2019
 ms.author: diberry
-ms.openlocfilehash: bc8cf9973ed6889b0820e5ada5565d0541532fa3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 51860efdcc440d6b8a4ea57777ad31fa718657b5
+ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560063"
+ms.lasthandoff: 09/06/2019
+ms.locfileid: "70772819"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-bot-in-c"></a>C# でボットから Application Insights に LUIS の結果を追加する
+# <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>チュートリアル:C# でボットから Application Insights に LUIS の結果を追加する
 
 このチュートリアルでは、ボットおよび Language Understanding の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 そのデータを用意したら、Kusto 言語または Power BI でそれのクエリを実行し、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートすることができます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
 
@@ -160,7 +160,7 @@ Application Insights にデータを追加するには、インストルメン�
 1. Visual Studio でボットをビルドし、実行します。 
 1. ボット エミュレーターを起動し、ボットを開きます。 この[手順](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot)については、前のチュートリアルを参照してください。
 
-1. ボットに質問します。 この[手順](luis-csharp-tutorial-bf-v4.md#ask-bot-a-question-for-the-book-flight-intent)については、前のチュートリアルを参照してください。
+1. ボットに質問します。 この[手順](luis-csharp-tutorial-bf-v4.md##use-the-bot-emulator-to-test-the-bot)については、前のチュートリアルを参照してください。
 
 ## <a name="view-luis-entries-in-application-insights"></a>Application Insights の LUIS エントリの表示
 

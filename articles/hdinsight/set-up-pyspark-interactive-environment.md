@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight Tools - Visual Studio Code 用の PySpark 対話型環境を設定する
+title: Azure HDInsight Tools - Visual Studio Code 用の PySpark 対話型環境
 description: Azure HDInsight Tools for Visual Studio Code を使用して、クエリとスクリプトを作成および送信する方法について説明します。
 keywords: VScode,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,インタラクティブ Hive,インタラクティブ クエリ
 ms.service: hdinsight
@@ -8,12 +8,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 0e993577bda59ae4fda51d17dc175ec0b0fcd4f5
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.openlocfilehash: d220d81b8dc57541113f7ef1e477bb77d394e206
+ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137137"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70879293"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>Visual Studio Code 用の PySpark 対話型環境を設定する
 
@@ -24,13 +24,13 @@ ms.locfileid: "67137137"
 1. [Python](https://www.python.org/downloads/) と [pip](https://pip.pypa.io/en/stable/installing/) をインストールします。
    
    + [https://www.python.org/downloads/](https://www.python.org/downloads/) から Python をインストールします。
-   + [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) から pip をインストールします。 (Python インストールからインストールされていない場合)
+   + pip を [https://pip.pypa.io/en/stable/installing](https://pip.pypa.io/en/stable/installing/) からインストールします (Python インストールからインストールされてない場合)。
    + 次のコマンドを使用して、Python と pip が正常にインストールされていることを確認します。 (省略可能)
  
         ![Python と pip のバージョン](./media/set-up-pyspark-interactive-environment/check-python-pip-version.png)
 
      > [!NOTE]
-     > Python は、MacOS の既定のバージョンを使用する代わりに、手動でインストールすることをお勧めします。
+     > Python は、macOS の既定のバージョンを使用する代わりに、手動でインストールすることをお勧めします。
 
 
 2. 以下のコマンドを実行して、**virtualenv** をインストールします。
@@ -39,19 +39,21 @@ ms.locfileid: "67137137"
    pip install virtualenv
    ```
 
-3. Linux の場合のみ、エラー メッセージが発生した場合は、次のコマンドを実行して、必要なパッケージをインストールします。
-   
-    ![Python と pip のバージョン](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
-       
-   ```
-   sudo apt-get install libkrb5-dev 
-   ```
+## <a name="other-packages"></a>その他のパッケージ
 
-   ```
-   sudo apt-get install python-dev
-   ```
+エラー メッセージが表示される場合は、以下のコマンドを実行して、必要なパッケージをインストールします。
 
-4. VSCode を再起動して、**HDInsight: PySpark Interactive を実行しているスクリプト エディターに戻ります。**
+   ![libkrb5 パッケージ](./media/set-up-pyspark-interactive-environment/install-libkrb5-package.png)
+
+```
+sudo apt-get install libkrb5-dev
+```
+
+```
+sudo apt-get install python-dev
+```
+
+VSCode を再起動して、**HDInsight: PySpark Interactive を実行しているスクリプト エディターに戻ります。**
 
 ## <a name="next-steps"></a>次の手順
 

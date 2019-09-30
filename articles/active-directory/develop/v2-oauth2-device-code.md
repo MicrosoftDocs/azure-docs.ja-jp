@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 08/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 274c4e89ff3f996cc71cdacdfb7b5b72e813ae4b
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: fdd99899494e9f7b3c0caa4e83f18803b969db1e
+ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297656"
+ms.lasthandoff: 08/30/2019
+ms.locfileid: "70192719"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 デバイス コード フロー
 
@@ -35,7 +35,7 @@ Microsoft ID プラットフォームでは、ユーザーがスマート TV、I
 >
 > Azure AD テナントに招待された個人アカウントはデバイス フロー付与を使用できますが、テナントのコン テキストに限定されます。
 >
-> 追加の注意として、`verification_uri_complete` 応答フィールドは現時点では含まれておらず、サポートされていません。  
+> 追加の注意として、`verification_uri_complete` 応答フィールドは現時点では含まれておらず、サポートされていません。  このことに触れる理由は、標準を読んだ場合、デバイス コード フロー標準のオプションの部分として `verification_uri_complete` が示されているためです。
 
 > [!NOTE]
 > Microsoft ID プラットフォームのエンドポイントでは、すべての Azure Active Directory シナリオや機能がサポートされているわけではありません。 Microsoft ID プラットフォームのエンドポイントを使用する必要があるかどうかを判断するには、[Microsoft ID プラットフォームの制限事項](active-directory-v2-limitations.md)に関する記事を参照してください。

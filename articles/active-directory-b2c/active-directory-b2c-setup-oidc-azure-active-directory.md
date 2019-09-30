@@ -7,20 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 58c6d1b032f5b492c5641ff51da80426124069b1
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 477b4e51c49a558aed0e5623a3821fa9b8d9eabd
+ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716774"
+ms.lasthandoff: 08/19/2019
+ms.locfileid: "69622358"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で特定の Azure Active Directory 組織用のサインインを設定する
-
->[!NOTE]
-> この機能はパブリック プレビュー段階にあります。 運用環境で、この機能を使用しないでください。
 
 Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directory-b2c-reference-oauth-code.md)として Azure AD を使用するには、それを表すアプリケーションを作成する必要があります。 この記事では、Azure AD B2C のユーザー フローを使用して、特定の Azure AD 組織のユーザーがサインインできるようにする方法について説明します。
 
@@ -29,7 +26,7 @@ Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directo
 特定の Azure AD 組織のユーザーのサインインを有効にするには、組織の Azure AD テナント内でアプリケーションを登録する必要があります。このテナントは、お使いの Azure AD B2C テナントと同じではありません。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ご自分の Azure AD テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用の Azure AD テナントが含まれるディレクトリを選択します。 これは、Azure AD B2C テナントと同じテナントではありません。
+2. ご自分の Azure AD テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション] フィルター**を選択し、ご利用の Azure AD テナントが含まれるディレクトリを選択します。 これは、Azure AD B2C テナントと同じテナントではありません。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 4. **[新規登録]** を選択します。
 5. アプリケーションの名前を入力します。 たとえば、「 `Azure AD B2C App` 」のように入力します。
@@ -50,27 +47,28 @@ Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directo
 
 ## <a name="configure-azure-ad-as-an-identity-provider"></a>Azure AD を ID プロバイダーとして構成する
 
-1. Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**を選択し、ご利用の Azure AD B2C テナントが含まれるディレクトリを選択します。
-2. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-3. **[ID プロバイダー]** 、 **[追加]** の順に選択します。
-4. **[名前]** を入力します。 たとえば、「 `Contoso Azure AD`」のように入力します。
-5. **[ID プロバイダーの種類]** を選択し、 **[OpenID Connect (プレビュー)]** を選択して、 **[OK]** をクリックします。
-6. **[この ID プロバイダーをセットアップします]** を選択します
-7. **Metadata url** には、次の URL を入力します。`your-AD-tenant-domain` は、Azure AD テナントのドメイン名で置き換えます。 例: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`
+1. Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
+1. **[ID プロバイダー]** を選択してから、 **[新しい OpenID Connect プロバイダー ]** を選択します。
+1. **[名前]** を入力します。 たとえば､「*Contoso Azure AD*」と入力します。
+1. **[メタデータ URL]** には、次の URL を入力します。`your-AD-tenant-domain` は、利用する Azure AD テナントのドメイン名に置き換えます。
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
     ```
 
-8. **[クライアント ID]** には、先ほどメモしたアプリケーション ID を入力し、 **[クライアント シークレット]** には、先ほどメモしたクライアント シークレットを入力します。
-9. 必要に応じて、**Domain_hint** に値を入力します。 たとえば、「 `ContosoAD` 」のように入力します。 この値は､要求で *domain_hint* を使用するこの ID プロバイダーを参照するときに使用します｡
-10. Click **OK**.
-11. **[この ID プロバイダーの要求をマップする]** を選択し、次の要求を設定します。
+    たとえば、「 `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration` 」のように入力します。
 
-    - **User ID** には `oid` を入力します｡
-    - **Display Name** には `name` を入力します｡
-    - **Given name** には `given_name` を入力します｡
-    - **Surname** には `family_name` を入力します｡
-    - **Email** には `unique_name` を入力します｡
+1. **[クライアント ID]** には、前に記録したアプリケーション ID を入力します。
+1. **[クライアント シークレット]** には、前に記録したクライアント シークレットを入力します。
+1. **[スコープ]** 、 **[応答の種類]** 、および **[応答モード]** の既定値はそのままにします。
+1. (省略可能) **Domain_hint** に値を入力します。 たとえば、「*ContosoAD*」とします。 この値は､要求で *domain_hint* を使用するこの ID プロバイダーを参照するときに使用します｡
+1. **[ID プロバイダー要求のマッピング]** で、次の要求マッピング値を入力します。
 
-12. **[OK]** をクリックし、 **[作成]** をクリックして構成を保存します。
+    * **[ユーザー ID]** : *oid*
+    * **[表示名]** : *name*
+    * **[名]** : *given_name*
+    * **[姓]** : *family_name*
+    * **[電子メール]** : *unique_name*
+
+1. **[保存]** を選択します。

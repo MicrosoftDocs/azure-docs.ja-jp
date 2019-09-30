@@ -9,19 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
-ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/1/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f50f013020c704ddc294a59f8c6c5dac24bbd5a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51e97089b1de88ccf9f45b1a0f429abc0cfac9f3
+ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60835279"
+ms.lasthandoff: 08/28/2019
+ms.locfileid: "70101320"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
 
@@ -393,7 +392,7 @@ SAP システムをホストする Azure Virtual Machine が AD や DNS に接�
 > 
 > 
 
-DNS 名について詳しくは、[こちら][virtual-machines-azurerm-versus-azuresm]をご覧ください。
+DNS 名の詳細については、[こちら][virtual-machines-azurerm-versus-azuresm]を参照してください。
 
 SAP プロファイル パラメーター icm/host_name_full を Azure VM のリンクの DNS 名に設定すると、リンクは次のようになる場合があります。
 
@@ -504,7 +503,7 @@ SAPInst/SWPM システムをインストールするために使用するバー�
 
 この構成によって、tempdb はシステム ドライブが提供するよりも多くの領域を使用できます。 参照用に、オンプレミスで実行している既存のシステムで tempdb デバイスのサイズを確認できます。 また、このような構成により tempdb に対する IOPS 値をシステム ドライブでは設定できない値に設定できます。 オンプレミスで実行されているシステムを、tempdb に対する I/O ワークロードの監視に使用できます。
 
-VM の /mnt または /mnt/resource に SAP ASE ディレクトリを配置しないでください。 SAP ASE の場合、tempdb に保管されているオブジェクトが一時的なものであっても、この推奨事項は tempdb にも当てはまります。 /mnt または /mnt/resource は、永続的ではない、既定の Azure VM の一時領域です。 Azure VM の一時領域について詳しくは、[こちらの記事][virtual-machines-linux-how-to-attach-disk]に記載されています。
+VM の /mnt または /mnt/resource に SAP ASE ディレクトリを配置しないでください。 SAP ASE の場合、tempdb に保管されているオブジェクトが一時的なものであっても、この推奨事項は tempdb にも当てはまります。 /mnt または /mnt/resource は、永続的ではない、既定の Azure VM の一時領域です。 Azure VM の一時領域の詳細については、[こちらの記事][virtual-machines-linux-how-to-attach-disk]を参照してください。
 
 データとトランザクション ログ ファイルの展開についての声明と提案は、「[SAP ワークロードのための Azure Virtual Machines DBMS のデプロイに関する考慮事項](dbms_guide_general.md)」に記載されています。 Linux ベースの場合、十分な IOPS、スループット、およびボリュームを提供するストライプ セットを構築するために LVM または MDADM を使用して展開することをお勧めします。 
 
@@ -546,7 +545,7 @@ SAP システムをホストする Azure Virtual Machine が AD や DNS に接�
 > 
 > 
 
-DNS 名について詳しくは、[こちら][virtual-machines-azurerm-versus-azuresm]をご覧ください。
+DNS 名の詳細については、[こちら][virtual-machines-azurerm-versus-azuresm]を参照してください。
 
 SAP プロファイル パラメーター icm/host_name_full を Azure VM のリンクの DNS 名に設定すると、リンクは次のようになる場合があります。
 

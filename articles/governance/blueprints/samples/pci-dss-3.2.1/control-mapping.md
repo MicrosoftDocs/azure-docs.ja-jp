@@ -8,18 +8,21 @@ ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 1e85cb5c06f36e0f8c105ece2c012cfe7cb77bf4
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 2ec299a79f852c553763439290b014a91d3a9414
+ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226023"
+ms.lasthandoff: 09/11/2019
+ms.locfileid: "70918602"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 ブループリント サンプルのコントロール マッピング
 
 以下の記事は、Azure Blueprints PCI-DSS v3.2.1 のブループリント サンプルが PCI-DSS v3.2.1 のコントロールにどのようにマップされているかを説明したものです。 そのコントロールについて詳しくは、[PCI-DSS v3.2.1](https://www.pcisecuritystandards.org/documents/PCI_DSS_v3-2-1.pdf) に関するページをご覧ください。
 
 以下のマッピングは、**PCI-DSS v3.2.1: 2018** コントロールに対するものです。 右側のナビゲーションを使用すると、特定のコントロール マッピングに直接ジャンプできます。 マップ コントロールの多くは、[Azure Policy](../../../policy/overview.md) イニシアチブを使用して実装されますす。 イニシアチブの詳細を確認するには、Azure portal で **[ポリシー]** を開き、 **[定義]** ページを選択します。 次に、 **[\[プレビュー\] PCI v3.2.1:2018 コントロールを監査し、特定の VM 拡張機能をデプロイして監査要件をサポートする]** 組み込みポリシー イニシアティブを見つけて選択します。
+
+> [!IMPORTANT]
+> 以下の各コントロールは、1 つまたは複数の [Azure Policy](../../../policy/overview.md) 定義に関連付けられています。 これらのポリシーは、コントロールに対する[コンプライアンスを評価](../../../policy/how-to/get-compliance-data.md)するのに役立つ場合があります。しかし、多くの場合、コントロールと 1 つまたは複数のポリシーとの間に 1:1 または完全な一致はありません。 そのため、Azure Policy での**準拠**は、ポリシー自体のみを指しています。これによって、コントロールのすべての要件に完全に準拠していることが保証されるわけではありません。 また、コンプライアンス標準には、現時点でどの Azure Policy 定義にもアドレス指定されていないコントロールが含まれます。 したがって、Azure Policy でのコンプライアンスは、全体のコンプライアンス状態の部分的ビューでしかありません。 このコンプライアンス ブループリント サンプルのコントロールと Azure Policy 定義の間の関連付けは、時間の経過と共に変わる可能性があります。 変更履歴を表示するには、[GitHub のコミット履歴](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/pci-dss-3.2.1/control-mapping.md)を参照してください。
 
 ## <a name="132-and-134-boundary-protection"></a>1.3.2 および 1.3.4 境界保護
 
@@ -35,7 +38,7 @@ ms.locfileid: "68226023"
 - Function App には HTTPS 経由でのみアクセスできるようにする
 - Web アプリケーションには HTTPS を介してのみアクセスできるようにする
 - API アプリには HTTPS を介してのみアクセスできるようにする
-- 暗号化されていない SQL データベースの Azure Security Center での監視
+- SQL データベースで Transparent Data Encryption を有効にする必要がある
 - 仮想マシンでディスク暗号化を適用する必要がある
 - Automation アカウント変数は、暗号化する必要がある
 - Redis Cache に対してセキュリティで保護された接続のみを有効にする必要がある
@@ -98,8 +101,8 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 
 このブループリントでは、最低限の強度や他のパスワード要件が適用されていない Windows VM を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、強力なパスワードの適用を支援します。 パスワード強度のポリシーに違反している VM を把握できるようになるので、適切な是正措置を実施し、すべての VM ユーザー アカウントに対して、パスワード ポリシーへの準拠を徹底させることができます。
 
-- \[プレビュー\]:パスワードの有効期間が最大の 70 日になっていない Windows VM を監査する
-- \[プレビュー\]:パスワードの有効期間が最大の 70 日になっていない Windows VM を監査する要件をデプロイする
+- \[プレビュー\]:パスワードの有効期間が 70 日になっていない Windows VM を監査する
+- \[プレビュー\]:パスワードの有効期間が 70 日になっていない Windows VM を監査する要件をデプロイする
 - \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する
 - \[プレビュー\]:パスワードの最小文字数が 14 文字に制限されていない Windows VM を監査する要件をデプロイする
 - \[プレビュー\]:以前の 24 個のパスワードの再利用が許可されている Windows VM を監査する
@@ -110,7 +113,7 @@ Azure では、Azure のリソースにアクセスするユーザーを効果�
 このブループリントでは、Azure リソースのログ設定を監査する [Azure Policy](../../../policy/overview.md) 定義を割り当てることで、システム イベントのログ記録の徹底を支援します。
 診断ログは、Azure リソース内で実行された操作の分析情報を提供します。 Azure のログでは、リソース全体にまたがるイベントの時間相関レコードを作成するために、同期された内部時計が使用されます。
 
-- 未監査の SQL サーバーを Azure Security Center で監視する
+- SQL Server の高度なデータ セキュリティ設定で監査を有効にする必要がある
 - 診断設定の監査
 - SQL サーバー レベルの監査設定の監査
 - SQL Server での監査のデプロイ
