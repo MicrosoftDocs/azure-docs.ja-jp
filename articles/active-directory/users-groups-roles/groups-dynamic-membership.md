@@ -342,7 +342,7 @@ device.objectid -ne null
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-カスタム拡張機能プロパティはオンプレミス Windows Server AD または接続されている SaaS アプリケーションから同期され、形式は `user.extension_[GUID]__[Attribute]` になります。
+カスタム拡張機能プロパティはオンプレミス Windows Server AD または接続されている SaaS アプリケーションから同期され、形式は `user.extension_[GUID]_[Attribute]` になります。
 
 * [GUID] は Azure AD でプロパティを作成したアプリケーションの Azure AD における一意の識別子です
 * [Attribute] は作成されたプロパティの名前です
@@ -350,7 +350,7 @@ device.objectid -ne null
 カスタム拡張機能プロパティを使用するルールの例を次に示します。
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
+user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
 カスタム プロパティ名は、Graph Explorer を使用してユーザーのプロパティを問い合わせ、プロパティ名を探すことで見つけられます。 また、動的ユーザー グループのルール ビルダーにある **[カスタム拡張機能のプロパティを取得します]** リンクを選択し、一意のアプリ ID を入力すると、ユーザーの動的メンバーシップ ルールの作成時に使用するカスタム拡張機能プロパティの完全な一覧が表示されるようになりました。 この一覧を最新の情報に更新して、そのアプリの新しいカスタム拡張機能プロパティを取得することもできます。
