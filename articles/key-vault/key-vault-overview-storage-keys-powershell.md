@@ -6,47 +6,63 @@ ms.service: key-vault
 author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
-ms.date: 03/01/2019
-ms.openlocfilehash: 7968c045a59e86ecb89c0cc797936210b9cfb07d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/10/2019
+ms.openlocfilehash: 225d9b715c56e4813a8e26d881c876e7bd498155
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883288"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204223"
 ---
-# <a name="azure-key-vault-managed-storage-account---powershell"></a>Azure Key Vault のマネージド ストレージ アカウント - PowerShell
+# <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Key Vault と Azure PowerShell を使用してストレージ アカウント キーを管理する
 
-> [!NOTE]
-> [現在、Azure ストレージと Azure Active Directory (Azure AD) の統合はプレビュー段階です](../storage/common/storage-auth-aad.md)。 認証と承認には、Azure Key Vault と同様に、Azure ストレージへの OAuth2 トークンベースのアクセスを提供する Azure AD を使用することをお勧めします。 こうすることで以下の操作が可能になります。
-> - ストレージ アカウントの資格情報ではなく、アプリケーションまたはユーザーの ID を使用してクライアント アプリケーションを認証する。 
-> - Azure 上で実行する場合に [Azure AD マネージド ID](/azure/active-directory/managed-identities-azure-resources/) を使用する。 マネージド ID を使用すると、クライアント認証を併用し、アプリケーションに資格情報を保存する必要がなくなります。
-> - 承認の管理にロール ベースのアクセス制御 (RBAC) を使用する (これも Key Vault でサポートされています)。
-> - 現時点では、テーブルにアクセスする場合、ストレージ アカウントへの AAD アクセスは機能しません。
+Azure ストレージ アカウントでは、アカウント名とキーで構成された資格情報が使用されます。 キーは自動生成され、暗号キーではなくパスワードとして機能します。 Key Vault は、ストレージ アカウント キーを [Key Vault のシークレット](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)として格納して管理します。 
+
+Key Vault マネージド ストレージ アカウント キー機能を使用して、Azure ストレージ アカウントのキーを一覧表示し (同期)、定期的にキーを再生成 (ローテーション) できます。 ストレージ アカウントと従来のストレージ アカウントの両方のキーを管理できます。
+
+マネージド ストレージ アカウント キー機能を使用する場合は、次の点を考慮してください。
+
+- キーの値は、呼び出し元への応答で返されることはありません。
+- ストレージ アカウント キーの管理は Key Vault のみが行う必要があります。 キーを自分で管理したり、Key Vault のプロセスに干渉したりしないでください。
+- ストレージ アカウント キーの管理は、1 つの Key Vault オブジェクトのみが行う必要があります。 複数のオブジェクトからのキー管理を許可しないでください。
+- ユーザー プリンシパルを使用してストレージ アカウントを管理するように Key Vault に要求することはできますが、サービス プリンシパルを使用してそれを行うことはできません。
+- キーの再生成は、Key Vault のみを使用して行います。 ストレージ アカウント キーを手動で再生成しないでください。
+
+Azure Storage と Azure Active Directory (Azure AD) の統合 (Microsoft のクラウドベースの ID およびアクセス管理サービス) を使用することをお勧めします。 Azure AD 統合は [Azure BLOB およびキュー](../storage/common/storage-auth-aad.md)で利用できます。また、Azure Key Vault と同様に、Azure Storage へのトークンベースの OAuth2 アクセスが提供されます。
+
+Azure AD では、ストレージ アカウントの資格情報ではなく、アプリケーションまたはユーザーの ID を使用してクライアント アプリケーションを認証することができます。 Azure で実行するときは、[Azure AD マネージド ID](/azure/active-directory/managed-identities-azure-resources/) を使用できます。 マネージド ID を使用すると、クライアント認証やアプリケーションでの資格情報の保存が不要になります。
+
+Azure AD は、Key Vault でもサポートされているロール ベースのアクセス制御 (RBAC) を使用して承認を管理します。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure ストレージ アカウント](/azure/storage/storage-create-storage-account)は、アカウント名とキーで構成される資格情報を使用します。 キーは自動生成され、暗号キーではなく "パスワード" として機能します。 Key Vault は、このようなストレージ アカウント キーを [Key Vault のシークレット](/azure/key-vault/about-keys-secrets-and-certificates#key-vault-secrets)として保存することで管理できます。 
+## <a name="service-principal-application-id"></a>サービス プリンシパルのアプリケーション ID
 
-## <a name="overview"></a>概要
+Azure AD テナントは、登録されている各アプリケーションに[サービス プリンシパル](/azure/active-directory/develop/developer-glossary#service-principal-object)を提供します。 サービス プリンシパルはアプリケーション ID として機能し、RBAC を介した他の Azure リソースへのアクセスに対する承認のセットアップ時に使用されます。
 
-Key Vault のマネージド ストレージ アカウント機能では、次のように一部の管理機能が自動的に実行されます。
+Key Vault は、すべての Azure AD テナントに事前登録されている Microsoft アプリケーションです。 Key Vault は、各 Azure クラウド内に同じアプリケーション ID で登録されています。
 
-- Azure ストレージ アカウントを使用してキーを一覧表示 (同期) する。
-- 定期的にキーを再生成 (ローテーション) する。
-- ストレージ アカウントと従来のストレージ アカウントの両方のキーを管理します。
-- キーの値は、呼び出し元に応答で返されることはありません。
+| テナント | クラウド | アプリケーション ID |
+| --- | --- | --- |
+| Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
+| Azure AD | Azure Public | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| その他  | Any | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
-マネージド ストレージ アカウント キー機能を使用する場合:
+## <a name="prerequisites"></a>前提条件
 
-- **ストレージ アカウント キーの管理は Key Vault にのみ許可します。** Key Vault のプロセスと干渉するため、自身で管理しないでください。
-- **複数の Key Vault オブジェクトによってストレージ アカウント キーを管理しないでください**。
-- **ストレージ アカウント キーを手動で再生成しないでください**。 Key Vault を介して再生成することをお勧めします。
+このガイドを完了するには、まず次の手順を実行する必要があります。
 
-次の例は、ストレージ アカウント キーの管理を Key Vault に許可する方法を示しています。
+- [Azure PowerShell モジュールをインストールします](/powershell/azure/install-az-ps?view=azps-2.6.0)。
+- [Key Vault を作成します](quick-create-powershell.md)
+- [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)を作成します。 ストレージ アカウント名には小文字と数字のみを使用する必要があります。 名前の長さは 3 文字から 24 文字でなければなりません。
+      
 
-## <a name="connect-to-your-azure-account"></a>Azure アカウントに接続する
+## <a name="manage-storage-account-keys"></a>ストレージ アカウント キーを管理する
+
+### <a name="connect-to-your-azure-account"></a>Azure アカウントに接続する
 
 [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) コマンドレットを使用して PowerShell セッションを認証します。 
+
 ```azurepowershell-interactive
 Connect-AzAccount
 ```
@@ -56,31 +72,33 @@ Connect-AzAccount
 Set-AzContext -SubscriptionId <subscriptionId>
 ```
 
-## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Key Vault にストレージ アカウントへのアクセスを承認する
+### <a name="set-variables"></a>変数の設定
 
-> [!IMPORTANT]
-> Azure AD テナントからは、登録された各アプリケーションに **[サービス プリンシパル](/azure/active-directory/develop/developer-glossary#service-principal-object)** が提供されます。これはアプリケーションの ID として機能します。 このサービス プリンシパルのアプリケーション ID は、ロールベースのアクセス制御 (RBAC) を介して、他の Azure リソースにアクセスするための承認を与えるときに使用されます。 Key Vault は Microsoft アプリケーションなので、各 Azure クラウド内のすべての Azure AD テナントでは、次のように同じアプリケーション ID で事前登録されています。
-> - Azure Government の場合、Azure AD テナントにはアプリケーション ID `7e7c393b-45d0-48b1-a35e-2905ddf8183c` が使用される可能性があります。
-> - Azure パブリック クラウドとその他すべてのクラウドの場合、Azure AD テナントにはアプリケーション ID `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` が使用されます。
+まず、次の手順で、PowerShell コマンドレットによって使用される変数を設定します。 プレースホルダー <YourResourceGroupName>、<YourStorageAccountName>、および <YourKeyVaultName> を更新し、`cfa8b339-82a2-471a-a3c9-0fc0be7a4093` に $keyVaultSpAppId を設定します (上記の「[サービス プリンシパルのアプリケーション ID](#service-principal-application-id)」で指定)。
 
-Key Vault からストレージ アカウント キーにアクセスして管理できるようにするには、ストレージ アカウントへのアクセスを承認する必要があります。 Key Vault アプリケーションでは、ストレージ アカウントのキーを "*一覧表示*" し "*再生成*" するアクセス許可が必要です。 このようなアクセス許可は、組み込みの RBAC ロールである[ストレージ アカウント キー オペレーター サービス ロール](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)で有効になります。 
-
-次の手順に従って、このロールを Key Vault サービス プリンシパルに割り当て、範囲をそのストレージ アカウントに限定します。 スクリプトを実行する前に、必ず `$resourceGroupName`、`$storageAccountName`、`$storageAccountKey`、および `$keyVaultName` の変数を更新してください。
+Azure ストレージ アカウントのユーザー ID とコンテキストを取得するために、Azure PowerShell の [Get-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) および [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) コマンドレットも使用します。
 
 ```azurepowershell-interactive
-# TODO: Update with the resource group where your storage account resides, your storage account name, the name of your active storage account key, and your Key Vault instance name
-$resourceGroupName = "rgContoso"
-$storageAccountName = "sacontoso"
+$resourceGroupName = <YourResourceGroupName>
+$storageAccountName = <YourStorageAccountName>
+$keyVaultName = <YourKeyVaultName>
+$keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
 $storageAccountKey = "key1"
-$keyVaultName = "kvContoso"
-$keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093" # See "IMPORTANT" block above for information on Key Vault Application IDs
 
-# Get your User Id for later commands
+# Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+```
 
+### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault にストレージ アカウントへのアクセス権を付与する
+
+Key Vault からストレージ アカウント キーにアクセスして管理できるようにするには、ストレージ アカウントへのアクセスを承認する必要があります。 Key Vault アプリケーションでは、ストレージ アカウントのキーを "*一覧表示*" し "*再生成*" するアクセス許可が必要です。 このようなアクセス許可は、組み込みの RBAC ロールである[ストレージ アカウント キー オペレーター サービス ロール](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role)で有効になります。 
+
+Azure PowerShell の [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment?view=azps-2.6.0) コマンドレットを使用して、このロールを Key Vault サービス プリンシパルに割り当て、範囲をそのストレージ アカウントに限定します。
+
+```azurepowershell-interactive
 # Assign RBAC role "Storage Account Key Operator Service Role" to Key Vault, limiting the access scope to your storage account. For a classic storage account, use "Classic Storage Account Key Operator Service Role." 
 New-AzRoleAssignment -ApplicationId $keyVaultSpAppId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storageAccount.Id
 ```
@@ -101,12 +119,9 @@ CanDelegate        : False
 
 Key Vault が既にストレージ アカウントのロールに追加されている場合は、 *"ロールの割り当ては既に存在します"* " というエラーが発生する場合があります。 Azure portal でストレージ アカウントの [アクセス制御 (IAM)] ページを使用して、ロールの割り当てを確認することもできます。  
 
-## <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>マネージド ストレージ アカウントにユーザー アカウントのアクセス許可を与える
+### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>マネージド ストレージ アカウントにユーザー アカウントのアクセス許可を与える
 
->[!TIP] 
-> Azure AD からアプリケーションの ID に対して**サービス プリンシパル**が提供される場合と同様に、ユーザーの ID には**ユーザー プリンシパル**が提供されます。 ユーザー プリンシパルには、Key Vault のアクセス ポリシーのアクセス許可を使用して、Key Vault にアクセスする承認を与えることができます。
-
-同じ PowerShell セッションを使用して、マネージド ストレージ アカウントの Key Vault アクセス ポリシーを更新します。 この手順では、ストレージ アカウントのアクセス許可をユーザー アカウントに適用し、マネージド ストレージ アカウントの機能にアクセスできるようにします。 
+Azure PowerShell の [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-2.6.0) コマンドレットを使用して、Key Vault アクセス ポリシーを更新し、ストレージ アカウントのアクセス許可をユーザー アカウントに付与します。
 
 ```azurepowershell-interactive
 # Give your user principal access to all storage account permissions, on your Key Vault instance
@@ -116,12 +131,13 @@ Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -UserPrincipalName $userId -
 
 ストレージ アカウントのアクセス許可は、Azure portal のストレージ アカウントの [アクセス ポリシー] ページで使用できないことに注意してください。
 
-## <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Key Vault インスタンスにマネージド ストレージ アカウントを追加する
+### <a name="add-a-managed-storage-account-to-your-key-vault-instance"></a>Key Vault インスタンスにマネージド ストレージ アカウントを追加する
 
-同じ PowerShell セッションを使用して、Key Vault インスタンスにマネージド ストレージ アカウントを作成します。 `-DisableAutoRegenerateKey` スイッチには、ストレージ アカウント キーを再生成しないことを指定します。
+Azure PowerShell の [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) コマンドレットを使用して、Key Vault インスタンスにマネージド ストレージ アカウントを作成します。 `-DisableAutoRegenerateKey` スイッチには、ストレージ アカウント キーを再生成しないことを指定します。
 
 ```azurepowershell-interactive
 # Add your storage account to your Key Vault's managed storage accounts
+
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -DisableAutoRegenerateKey
 ```
 
@@ -143,10 +159,11 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>キーの再生成を有効にする
 
-Key Vault でストレージ アカウント キーを定期的に再生成する場合は、再生成期間を設定できます。 次の例では、3 日間の再生成期間を設定します。 この日数の後、Key Vault は "key2" を再生成し、アクティブ キーを "key2" から "key1" に切り替えます。
+Key Vault でストレージ アカウント キーを定期的に再生成する場合は、Azure PowerShell の [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) コマンドレットを使用して、再生成期間を設定できます。 この例では、3 日間の再生成期間を設定します。 この日数の後、Key Vault は "key2" を再生成し、アクティブ キーを "key2" から "key1" に切り替えます。
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
+
 Add-AzKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storageAccountName -AccountResourceId $storageAccount.Id -ActiveKeyName $storageAccountKey -RegenerationPeriod $regenPeriod
 ```
 
@@ -165,6 +182,85 @@ Created             : 11/19/2018 11:54:47 PM
 Updated             : 11/19/2018 11:54:47 PM
 Tags                : 
 ```
+
+## <a name="shared-access-signature-tokens"></a>Shared Access Signature トークン
+
+Shared Access Signature トークンを生成するように Key Vault に指示することもできます。 Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。 アカウント キーを共有することなく、ストレージ アカウント内のリソースへのアクセス権をクライアントに付与できます。 Shared Access Signature により、アカウント キーを侵害されることなくストレージ リソースを安全に共有することができます。
+
+このセクションのコマンドは、次の操作を実行します。
+
+- アカウントの Shared Access Signature 定義を設定します。 
+- BLOB、ファイル、テーブル、およびキューの各サービスに対してアカウントの Shared Access Signature トークンを作成します。 サービス、コンテナー、およびオブジェクトのリソースの種類に対してトークンが作成されます。 トークンは、すべてのアクセス許可を持ち、https で、指定した開始日と終了日を使用して作成されます。
+- Key Vault マネージド ストレージの Shared Access Signature 定義をコンテナーに設定します。 この定義には、作成された Sared Access Signature トークンのテンプレート URI があります。 この定義は、Shared Access Signature の種類 `account` を持っており、N 日間有効です。
+- Shared Access Signature がキー コンテナーにシークレットとして保存されていることを確認します。
+- 
+### <a name="set-variables"></a>変数の設定
+
+まず、次の手順で、PowerShell コマンドレットによって使用される変数を設定します。 プレースホルダー <YourStorageAccountName> および <YourKeyVaultName> を更新してください。
+
+Azure ストレージ アカウントのコンテキストを取得するために、Azure PowerShell の [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) コマンドレットも使用します。
+
+```azurepowershell-interactive
+$storageAccountName = <YourStorageAccountName>
+$keyVaultName = <YourKeyVaultName>
+
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+```
+
+### <a name="create-a-shared-access-signature-token"></a>Shared Access Signature トークンの作成
+
+Azure PowerShell の [New-AzStorageAccountSASToken](/powershell/module/az.storage/new-azstorageaccountsastoken?view=azps-2.6.0) コマンドレットを使用して、Shared Access Signatur 定義を作成します。
+ 
+```azurepowershell-interactive
+$start = [System.DateTime]::Now.AddDays(-1)
+$end = [System.DateTime]::Now.AddMonths(1)
+
+$sasToken = New-AzStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $storageContext
+```
+$SasToken の値は、次のようになります。
+
+```console
+?sv=2018-11-09&sig=5GWqHFkEOtM7W9alOgoXSCOJO%2B55qJr4J7tHQjCId9S%3D&spr=https&st=2019-09-18T18%3A25%3A00Z&se=2019-10-19T18%3A25%3A00Z&srt=sco&ss=bfqt&sp=racupwdl
+```
+
+### <a name="generate-a-shared-access-signature-definition"></a>Shared Access Signature 定義の生成
+
+Azure PowerShell の [Set-AzKeyVaultManagedStorageSasDefinition](/powershell/module/az.keyvault/set-azkeyvaultmanagedstoragesasdefinition?view=azps-2.6.0) コマンドレットを使用して、Shared Access Signature 定義を作成します。  `-Name` パラメーターには任意の名前を指定できます。
+
+```azurepowershell-interactive
+Set-AzKeyVaultManagedStorageSasDefinition -AccountName $storageAccountName -VaultName $keyVaultName -Name <YourSASDefinitionName> -TemplateUri $sasToken -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
+```
+
+### <a name="verify-the-shared-access-signature-definition"></a>Shared Access Signature 定義の検証
+
+Shared Access Signature 定義がキー コンテナーに格納されていることを確認するには、Azure PowerShell の [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret?view=azps-2.6.0) コマンドレットを使用します。
+
+最初に、キー コンテナーで Shared Access Signature 定義を見つけます。
+
+```azurepowershell-interactive
+Get-AzKeyVaultSecret -vault-name <YourKeyVaultName>
+```
+
+SAS 定義に対応するシークレットには、次のプロパティがあります。
+
+```console
+Vault Name   : <YourKeyVaultName>
+Name         : <SecretName>
+...
+Content Type : application/vnd.ms-sastoken-storage
+Tags         :
+```
+
+ここで、[Get-AzKeyVaultSecret](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show)コマンドレットと、シークレットの `Name` プロパティを使用して、そのシークレットの内容を表示できます。
+
+```azurepowershell-interactive
+$secret = Get-AzKeyVaultSecret -VaultName <YourKeyVaultName> -Name <SecretName>
+
+Write-Host $secret.SecretValueText
+```
+
+このコマンドの出力で SAS 定義文字列が表示されます。
+
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 10/08/2019
 ms.author: anzaman
-ms.openlocfilehash: 486a910226db5dc7b36aaf873e7bb8115eb78805
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cb5969ccb4ee9780b597326a3811395c3b7d9971
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60653525"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168473"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>ポイント対サイト VPN ルーティングについて
 
@@ -30,7 +30,7 @@ ms.locfileid: "60653525"
 
 ## <a name="isolatedvnet"></a>分離された 1 つの VNet
 
-この例のポイント対サイト VPN ゲートウェイ接続は、他の仮想ネットワークに接続もピアリングもされていない VNet (VNet1) に関するものです。 この例では、SSTP または IKEv2 を使用しているクライアントが VNet1 にアクセスできます。
+この例のポイント対サイト VPN ゲートウェイ接続は、他の仮想ネットワークに接続もピアリングもされていない VNet (VNet1) に関するものです。 この例では、クライアントから VNet1 にアクセスできます。
 
 ![分離された VNet ルーティング](./media/vpn-gateway-about-point-to-site-routing/1.jpg "分離された VNet ルーティング")
 

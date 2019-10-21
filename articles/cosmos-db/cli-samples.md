@@ -1,41 +1,30 @@
 ---
-title: Azure Cosmos DB の Azure CLI サンプル
-description: Azure CLI サンプル - Azure Cosmos DB のアカウント、データベース、コンテナー、リージョン、およびファイアウォールを作成し、管理します。
+title: Azure Cosmos DB SQL (Core) API 用の Azure CLI サンプル
+description: Azure Cosmos DB SQL (Core) API 用の Azure CLI サンプル
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 10/26/2018
+ms.date: 9/25/2019
 ms.author: mjbrown
-ms.reviewer: sngun
-ms.openlocfilehash: d7ce5e2c12feeee770de8acfd5df81d340e0a7d0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: defeacc3f0bc4cd9d77e538f8ceac5ca09a4068a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615565"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272367"
 ---
-# <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure Cosmos DB の Azure CLI サンプル
+# <a name="azure-cli-samples-for-azure-cosmos-db-sql-core-api"></a>Azure Cosmos DB SQL (Core) API 用の Azure CLI サンプル
 
-次の表には、Azure Cosmos DB の Azure CLI スクリプトのサンプルへのリンクが含まれています。 Azure Cosmos DB CLI のすべてのコマンドのリファレンス ページは、[Azure CLI リファレンス](/cli/azure/cosmosdb)で確認できます。
+次の表には、Azure Cosmos DB SQL (Core) API 用の Azure CLI サンプル スクリプトへのリンクが含まれています。 Azure Cosmos DB CLI のすべてのコマンドのリファレンス ページは、[Azure CLI リファレンス](/cli/azure/cosmosdb)で確認できます。 他の Azure Cosmos DB API 用の Azure CLI サンプルについては、[Cassandra API](cli-samples-cassandra.md)、[MongoDB API](cli-samples-mongodb.md)、[Gremlin API](cli-samples-gremlin.md)、[Table API](cli-samples-table.md) を参照してください。 Azure Cosmos DB CLI のすべてのサンプル スクリプトについては、[Azure Cosmos DB CLI GitHub リポジトリ](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb)をご覧ください。
 
 | |  |
 |---|---|
-|**Azure Cosmos DB のアカウント、データベース、およびコンテナーの作成**||
-| [SQL API を使用して Azure Cosmos DB アカウントを作成する](scripts/create-database-account-collections-cli.md?toc=%2fcli%2fazure%2ftoc.json)| Azure Cosmos DB の単一のアカウント、データベース、およびコンテナーを作成します。 |
-| [Cosmos DB の MongoDB 用 API を使用して Azure Cosmos DB アカウントを作成する](scripts/create-mongodb-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Cosmos DB の単一のアカウント、データベース、およびコレクションを作成します。 |
-| [Gremlin API を使用して Azure Cosmos DB アカウントを作成する](scripts/create-gremlin-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Cosmos DB の単一のアカウント、データベース、およびグラフを作成します。 |
-| [Cassandra API を使用して Azure Cosmos DB アカウントを作成する](scripts/create-cassandra-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Cosmos DB の単一のアカウントとデータベースを作成します。 |
-| [Table API を使用して Azure Cosmos DB アカウントを作成する](scripts/create-table-database-account-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Cosmos DB の単一のアカウント、データベース、およびテーブルを作成します。 |
-|**Azure Cosmos DB のスケーリング**||
-| [コンテナーのスループットのスケーリング](scripts/scale-collection-throughput-cli.md?toc=%2fcli%2fazure%2ftoc.json) | コンテナーのプロビジョニング済みスループットを変更します。|
-| [複数リージョンへの Azure Cosmos データベース アカウントのレプリケートと、フェールオーバーの優先順位の構成](scripts/scale-multiregion-cli.md?toc=%2fcli%2fazure%2ftoc.json)|指定したフェールオーバー優先順位で、複数リージョンにグローバルにアカウント データをレプリケートします。|
-|**Azure Cosmos DB のセキュリティ保護**||
-| [アカウント キーの取得](scripts/secure-get-account-key-cli.md?toc=%2fcli%2fazure%2ftoc.json) | アカウントのプライマリおよびセカンダリのマスター書き込みキーと、プライマリおよびセカンダリの読み取り専用キーを取得します。|
-| [Azure Cosmos DB の MongoDB 用 API を使用して構成された Cosmos アカウントの接続文字列を取得する](scripts/secure-mongo-connection-string-cli.md?toc=%2fcli%2fazure%2ftoc.json) | MongoDB アプリを Azure Cosmos DB アカウントに接続する接続文字列を取得します。|
-| [アカウント キーの再生成](scripts/secure-regenerate-key-cli.md?toc=%2fcli%2fazure%2ftoc.json)|アカウントのキーを再生成します。|
-| [ファイアウォールの作成](scripts/create-firewall-cli.md?toc=%2fcli%2fazure%2ftoc.json)| 承認した一連のマシンやクラウド サービスからアカウントへのアクセスを制限するインバウンド IP アクセス制御ポリシーを作成します。|
-|**高可用性、ディザスター リカバリー、バックアップと復元**||
-| [フェールオーバー ポリシーの構成](scripts/ha-failover-policy-cli.md?toc=%2fcli%2fazure%2ftoc.json)|アカウントのレプリケート先の各リージョンのフェールオーバー優先順位を設定します。|
-|**Azure Cosmos DB とリソースの接続**||
-| [Web アプリと Azure Cosmos DB の接続](../app-service/scripts/cli-connect-to-documentdb.md?toc=%2fcli%2fazure%2ftoc.json)|Azure Cosmos データベースと Azure Web アプリを作成し、接続します。|
+| [Azure Cosmos アカウント、データベース、およびコンテナーを作成する](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| SQL (Core) API 用の Azure Cosmos DB アカウント、データベース、およびコンテナーを作成します。 |
+| [スループットを変更する](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | データベースとコンテナーの RU/秒を更新します。|
+| [リージョンを追加またはフェールオーバーする](scripts/cli/common/regions.md?toc=%2fcli%2fazure%2ftoc.json) | リージョンの追加、フェールオーバー優先度の変更、手動フェールオーバーのトリガーを行います。|
+| [アカウント キーと接続文字列](scripts/cli/common/keys.md?toc=%2fcli%2fazure%2ftoc.json) | アカウント キーと読み取り専用キーの表示、キーの再生成、および接続文字列の表示を行います。|
+| [IP ファイアウォールを使用したセキュリティ保護](scripts/cli/common/ipfirewall.md?toc=%2fcli%2fazure%2ftoc.json)| IP ファイアウォールが構成された Cosmos アカウントを作成します。|
+| [サービス エンドポイントを使用して新しいアカウントをセキュリティ保護する](scripts/cli/common/service-endpoints.md?toc=%2fcli%2fazure%2ftoc.json)| Cosmos アカウントを作成し、サービス エンドポイントを使用してセキュリティ保護します。|
+| [サービス エンドポイントを使用して既存のアカウントをセキュリティ保護する](scripts/cli/common/service-endpoints-ignore-missing-vnet.md?toc=%2fcli%2fazure%2ftoc.json)| サブネットが最終的に構成されるときに、サービス エンドポイントを使用してセキュリティ保護されるように Cosmos アカウントを更新します。|
 |||

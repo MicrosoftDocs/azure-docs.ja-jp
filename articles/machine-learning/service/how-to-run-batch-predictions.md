@@ -1,7 +1,7 @@
 ---
 title: パイプラインを使用して大規模なデータに対してバッチ予測を実行する
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service を使用して大量のデータで非同期にバッチ予測を行う方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning を使用して大量のデータで非同期にバッチ予測を行う方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.reviewer: jmartens, garye
 ms.author: jordane
 author: jpe316
 ms.date: 07/12/2019
-ms.openlocfilehash: b0d8eef025efb6398f1d7c734ca558540b157fef
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 910974eac6a67c9c9fe68c502f2876ef68bb94eb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128264"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028525"
 ---
 # <a name="run-batch-predictions-on-large-data-sets-with-azure-machine-learning-pipelines"></a>Azure Machine Learning パイプラインを使用して大規模なデータ セットに対してバッチ予測を実行する
 
-この記事では、ML パイプラインと Azure Machine Learning service を使用して、大量のデータに対して予測を非同期的に行う方法を学習します。
+この記事では、ML パイプラインと Azure Machine Learning を使用して、大量のデータに対して予測を非同期的に行う方法について説明します。
 
 バッチ予測 (または、バッチ スコアリング) では、非同期アプリケーションの比類のないスループットで、コスト効率のよい推論が提供されます。 テラバイト規模の運用データで推論を実行するように、バッチ予測パイプラインをスケーリングできます。 バッチ予測は、大規模なデータ コレクションに対する高スループットのファイア アンド フォーゲット予測に対して最適化されています。
 
@@ -30,7 +30,7 @@ ms.locfileid: "70128264"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) をお試しください。
+- Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
 - Azure Machine Learning SDK をインストールするための開発環境を構成します。 詳しくは、「[Azure Machine Learning のための開発環境を構成する](how-to-configure-environment.md)」をご覧ください。
 
@@ -193,7 +193,7 @@ model = Model.register(
 >[!Warning]
 >次のコードは、[サンプルのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/pipeline-batch-scoring.ipynb)で使用される [batch_score.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/pipeline-batch-scoring/batch_scoring.py) に含まれる内容のサンプルに過ぎません。 ご自身のシナリオに合わせて、独自のスコアリング スクリプトを作成する必要があります。
 
-`batch_score.py` スクリプトでは、入力イメージが *dataset_path* で、事前トレーニング済みモデルが *model_dir* でそれぞれ受け取られて、*results-label.txt* が *output_dir* に出力されます。
+`batch_score.py` スクリプトでは、*dataset_path* の入力イメージ、*model_dir* の事前トレーニング済みモデルを取得し、*results-label.txt* を *output_dir* に出力します。
 
 ```python
 # Snippets from a sample scoring script

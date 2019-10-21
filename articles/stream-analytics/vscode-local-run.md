@@ -6,12 +6,12 @@ author: su-jie
 ms.author: sujie
 ms.date: 05/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: f477a0f99c3eaa82568d8188bfaae03818fb72dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 751cdf50fccc654dfab06b4d18428531312d08e6
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65828085"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673039"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio-code"></a>Visual Studio Code で Stream Analytics クエリをローカルでテストする
 
@@ -19,6 +19,10 @@ Visual Studio Code の Azure Stream Analytics ツールを使用して、Stream 
 
 この[クイックスタート](quick-create-vs-code.md)を使用して、Visual Studio Code を使用して Stream Analytics ジョブを作成する方法を学習します。
 
+## <a name="prerequisites"></a>前提条件
+* [.NET Core SDK](https://dotnet.microsoft.com/download) のインストール。
+* Visual Studio Code を再起動します。
+ 
 ## <a name="run-queries-locally"></a>ローカルでのクエリの実行
 
 Visual Studio Code の Azure Stream Analytics 拡張機能を使用して、Stream Analytics ジョブをサンプル データを使ってローカルでテストすることができます。

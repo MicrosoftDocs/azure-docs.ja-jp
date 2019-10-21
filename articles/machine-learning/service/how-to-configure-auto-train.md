@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ef501af63628b47bc52d416930c90057569b5de
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 5a0f2922763f8fccb9f3eec8bab4d6eddee7e446
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035021"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350593"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Python で自動 ML の実験を構成する
 
@@ -69,7 +69,9 @@ automl_config = AutoMLConfig(task="classification")
 ```
 
 ## <a name="data-source-and-format"></a>データ ソースと形式
+
 自動機械学習では、ローカル デスクトップ上またはクラウド (Azure Blob Storage など) に存在するデータがサポートされます。 データは、scikit-learn でサポートされているデータ形式に読み込むことができます。 次のものにデータを読み込めます。
+
 * Numpy 配列 X (特徴) と y (ターゲット変数、ラベルとも呼ばれます)
 * Pandas データフレーム
 
@@ -93,55 +95,25 @@ automl_config = AutoMLConfig(task="classification")
     ```python
     import pandas as pd
     from sklearn.model_selection import train_test_split
+
     df = pd.read_csv("https://automldemods.blob.core.windows.net/datasets/PlayaEvents2016,_1.6MB,_3.4k-rows.cleaned.2.tsv", delimiter="\t", quotechar='"')
-    # get integer labels
-    y = df["Label"]
-    df = df.drop(["Label"], axis=1)
-    df_train, _, y_train, _ = train_test_split(df, y, test_size=0.1, random_state=42)
+    y_df = df["Label"]
+    x_df = df.drop(["Label"], axis=1)
+    x_train, x_test, y_train, y_test = train_test_split(x_df, y_df, test_size=0.1, random_state=42)
     ```
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>リモート コンピューティング上で実行している実験にデータをフェッチする
 
-リモート実行の場合は、リモート コンピューティングからデータにアクセスできるようにする必要があります。 これは、データをデータストアにアップロードして行うことができます。
+リモート実行の場合、トレーニング データにリモート コンピューティングからアクセスできる必要があります。 SDK のクラス [`Datasets`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py) では、次の機能を公開しています。
 
-以下は `datastore` の使用例です。
+* 静的ファイルまたは URL ソースからワークスペースにデータを簡単に転送する
+* クラウド コンピューティング リソースでの実行時にデータをトレーニング スクリプトで使用できるようにする
 
-```python
-    import pandas as pd
-    from sklearn import datasets
-
-    data_train = datasets.load_digits()
-
-    pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
-    pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
-
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
-```
-
-### <a name="define-dprep-references"></a>dprep 参照を定義する
-
-X と y を dprep 参照として定義します。これは、自動機械学習の以下のような `AutoMLConfig` オブジェクトに渡されます。
-
-```python
-
-    X = dprep.auto_read_file(path=ds.path('digitsdata/X_train.csv'))
-    y = dprep.auto_read_file(path=ds.path('digitsdata/y_train.csv'))
-
-
-    automl_config = AutoMLConfig(task = 'classification',
-                                 debug_log = 'automl_errors.log',
-                                 path = project_folder,
-                                 run_configuration=conda_run_config,
-                                 X = X,
-                                 y = y,
-                                 **automl_settings
-                                )
-```
+`Dataset` クラスを使用してコンピューティング ターゲットにデータをマウントする例については、[方法](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target)の記事を参照してください。
 
 ## <a name="train-and-validation-data"></a>データをトレーニングして検証する
 
-`AutoMLConfig` メソッドでは、個別のトレーニングと検証セットを直接指定できます。
+`AutoMLConfig` コンストラクターでは、個別のトレーニングおよび検証セットを直接指定できます。
 
 ### <a name="k-folds-cross-validation"></a>K フォールド クロス検証
 
@@ -202,12 +174,10 @@ Azure Databricks でのノートブックの例については、[GitHub サイ�
         n_cross_validations=5)
     ```
 
-3 つの異なる `task` パラメーター値では、適用するアルゴリズムのリストを決定します。  使用可能なアルゴリズムを包含または除外してさらにイテレーションを変更するには、`whitelist` または `blacklist` パラメーターを使用します。 サポートされるモデルの一覧は、[SupportedAlgorithms クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)で見つけることができます。
+3 つの異なる `task` パラメーター値 (3 つ目の task-type は `forecasting` であり、`regression` タスクと同じアルゴリズム プールを使用します) によって、適用するモデルの一覧が決まります。 使用可能なモデルを包含または除外してさらにイテレーションを変更するには、`whitelist` または `blacklist` パラメーターを使用します。 サポートされているモデルの一覧については、「[SupportedModels クラス](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedmodels?view=azure-ml-py)」を参照してください。
 
 ### <a name="primary-metric"></a>主要メトリック
-上記の例で示されているように、主要メトリックでは、最適化のためのモデル トレーニング時に使用されるメトリックを決定します。 選択できる主要メトリックは、選択したタスクの種類によって決定されます。 使用できるメトリックの一覧を次に示します。
-
-それらの具体的な定義については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」を参照してください。
+主要メトリックによって、モデルのトレーニング中に最適化のために使用されるメトリックが決まります。 選択できるメトリックは、選択したタスクの種類によって決まります。次の表に、各タスクの種類に有効な主要メトリックを示します。
 
 |分類 | 回帰 | 時系列予測
 |-- |-- |--
@@ -217,9 +187,11 @@ Azure Databricks でのノートブックの例については、[GitHub サイ�
 |norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
 |precision_score_weighted |
 
+それらの具体的な定義については、「[自動化機械学習の結果の概要](how-to-understand-automated-ml.md)」を参照してください。
+
 ### <a name="data-preprocessing--featurization"></a>データの前処理と特徴付け
 
-自動化されたすべての機械学習実験において、アルゴリズムが十分に実行されるよう、データは[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、および変換などの前処理と特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#preprocess)にあります。
+すべての自動機械学習実験では、さまざまなスケールの特徴を検知できる*特定の*アルゴリズムをサポートできるように、データが[自動的にスケーリングおよび正規化](concept-automated-ml.md#preprocess)されます。  ただし、不足値の代入、エンコード、および変換などの前処理と特徴付けも追加で有効にできます。 含まれる特徴付けに関する詳細は[こちら](how-to-create-portal-experiments.md#preprocess)にあります。
 
 この特徴付けを有効にするには、[`AutoMLConfig` クラス](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)に `"preprocess": True` を指定します。
 
@@ -227,12 +199,13 @@ Azure Databricks でのノートブックの例については、[GitHub サイ�
 > 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
 
 ### <a name="time-series-forecasting"></a>時系列予測
-時系列予測タスクの種類には、定義する追加のパラメータがあります。
-1. time_column_name - 日付/時系列を含むトレーニング データの列の名前を定義する必須パラメーターです。
-1. max_horizon - トレーニング データの周期性に基づいて予測する時間の長さを定義します。 たとえば、1 日の時間グレインのトレーニング データがある場合は、モデルをトレーニングする日数を定義します。
-1. grain_column_names - トレーニング データに個々の時系列データを含む列の名前を定義します。 たとえば、店舗ごとに特定のブランドの売上を予測している場合は、店舗とブランドの列をグレインの列として定義します。
+時系列 `forecasting` タスクでは、構成オブジェクトに追加のパラメーターが必要です。
 
-以下で使用されているこれらの設定の例を参照してください。ノートブックの例は[ここ](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)で入手可能です。
+1. `time_column_name`:有効な時系列を含むトレーニング データ内の列の名前を定義する必須のパラメーターです。
+1. `max_horizon`:トレーニング データの周期性に基づいて予測する時間の長さを定義します。 たとえば、1 日の時間グレインのトレーニング データがある場合は、モデルをトレーニングする日数を定義します。
+1. `grain_column_names`:トレーニング データ内の個々の時系列データを含む列の名前を定義します。 たとえば、店舗ごとに特定のブランドの売上を予測している場合は、店舗とブランドの列をグレインの列として定義します。 グレインやグループごとに個別の時系列と予測が作成されます。 
+
+以下で使用されている設定の例については、[サンプル ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)のページを参照してください。
 
 ```python
 # Setting Store and Brand as grains for training.
@@ -341,11 +314,11 @@ run = experiment.submit(automl_config, show_output=True)
 >`show_output` を `True` に設定すると、コンソールに出力が表示されます。
 
 ### <a name="exit-criteria"></a>終了基準
-実験を完了するために定義できるオプションがいくつかあります。
-1. 基準なし - 終了パラメータを定義しない場合、実験は、主なメトリックでそれ以上の進歩が見られなくなるまで続けられます。
-1. イテレーションの数 - 実行する実験のイテレーションの数を定義します。 オプションで iteration_timeout_minutes を追加して、イテレーションあたりの制限時間を分単位で定義できます。
-1. しばらくして終了 - 設定で experiment_timeout_minutes を使用すると、実験を継続して実行する時間を分単位で定義できます。
-1. スコアに達した後に終了 - experiment_exit_score を使用すると、主なメトリックに基づくスコアに達した後に実験を完了するよう選択できます。
+実験を終了するために定義できるオプションがいくつかあります。
+1. 基準なし:終了パラメーターを定義しない場合、実験は、主なメトリックでそれ以上の進歩が見られなくなるまで続けられます。
+1. イテレーションの数:実行する実験のイテレーションの数を定義します。 必要に応じて `iteration_timeout_minutes` を追加して、イテレーションごとに時間制限を分単位で定義できます。
+1. 一定の時間が経過したら終了する:設定で `experiment_timeout_minutes` を使用すると、実験の実行を継続する時間 (分) を定義できます。
+1. スコアに達した後に終了する:`experiment_exit_score` を使用すると、主要メトリックのスコアに達した後に実験が完了します。
 
 ### <a name="explore-model-metrics"></a>モデル メトリックを探索する
 
@@ -355,7 +328,7 @@ run = experiment.submit(automl_config, show_output=True)
 
 自動化された ML を使用して生成されたモデルには、次の手順が含まれます。
 + 自動化された特徴エンジニアリング: (preprocess=True の場合)
-+ ハイパーパラメーター値を使用したスケーリングまたは正規化、およびアルゴリズム
++ ハイパーパラメーター値を使用したスケーリング/正規化とアルゴリズム
 
 透過的に処理して、自動化された ML の fitted_model 出力からこの情報を取得します。
 
@@ -437,7 +410,7 @@ preprocess=True の場合に実行される前処理および[自動化された
    |EngineeringFeatureCount|自動化された特徴エンジニアリングの変換によって生成された特徴の数。|
    |変換|エンジニアリングされた特徴を生成するために入力特徴に適用される変換の一覧。|
 
-### <a name="scalingnormalization-and-algorithm-with-hypermeter-values"></a>ハイパーパラメーター値を使用したスケーリング/正規化:
+### <a name="scalingnormalization-and-algorithm-with-hyperparameter-values"></a>ハイパーパラメーター値を使用したスケーリング/正規化とアルゴリズム:
 
 パイプラインのスケーリング/正規化およびアルゴリズム/ハイパーパラメーター値を理解するには、fitted_model.steps を使用します。 [スケーリング/正規化の詳細については、こちらを参照してください](concept-automated-ml.md#preprocess)。 出力例を次に示します。
 

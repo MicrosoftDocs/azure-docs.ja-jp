@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82bb5f153a2c70d3b26f295925f8e48693bc49b9
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60337563"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146866"
 ---
 # <a name="create-php-web-and-worker-roles"></a>PHP Web ロールと worker ロールの作成
 
@@ -32,7 +32,7 @@ Azure には、アプリケーションの実行用として、Azure App Service
 
 ## <a name="download-the-azure-sdk-for-php"></a>Azure SDK for PHP をダウンロードする
 
-[Azure SDK for PHP](php-download-sdk.md) は、いくつかのコンポーネントで構成されています。 この記事では、これらのうちの 2 つである Azure PowerShell と Azure エミュレーターを使用します。 これら 2 つのコンポーネントは、Microsoft Web Platform Installer を使用してインストールできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
+[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) は、いくつかのコンポーネントで構成されています。 この記事では、これらのうちの 2 つである Azure PowerShell と Azure エミュレーターを使用します。 これら 2 つのコンポーネントは、Microsoft Web Platform Installer を使用してインストールできます。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 
 ## <a name="create-a-cloud-services-project"></a>Cloud Services プロジェクトを作成する
 

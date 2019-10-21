@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 42129870c6ab2bb5e58bdf9aaa323a3d64b479f8
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 12ddbe9f43baf68f6c11c9b720a0f684316af46a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69644916"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065313"
 ---
 # <a name="add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で REST API 要求の交換をカスタム ポリシーに追加する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C で RESTful API との対話を[カスタム ポリシー](active-directory-b2c-overview-custom.md)に追加できます。 この記事では、RESTful サービスと対話する Azure AD B2C ユーザー体験を作成する方法について説明します。
+Azure Active Directory B2C (Azure AD B2C) で RESTful API との対話を[カスタム ポリシー](active-directory-b2c-overview-custom.md)に追加できます。 この記事では、RESTful サービスと対話する Azure AD B2C ユーザー体験を作成する方法について説明します。
 
 対話には REST API 要求と Azure AD B2C の間の情報の要求の交換が含まれています。 要求の交換の特性を次に示します。
 

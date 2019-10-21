@@ -1,7 +1,7 @@
 ---
-title: チュートリアル:最初の ML モデルをトレーニングする
-titleSuffix: Azure Machine Learning service
-description: このチュートリアルでは、Azure Machine Learning service の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。
+title: チュートリアル:Python で最初の Azure ML モデルをトレーニングする
+titleSuffix: Azure Machine Learning
+description: このチュートリアルでは、Azure Machine Learning の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/03/2019
-ms.openlocfilehash: 989775916454b6710aef6c2c5be6792920622dab
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: c78a45cedbeb5cfa0f0cc7c5c976fceb36f1da2a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241289"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173300"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>チュートリアル:最初の ML モデルをトレーニングする
 
-このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 前のチュートリアルでは、[ワークスペースを作成し、開発環境を選択](tutorial-1st-experiment-sdk-setup.md)しました。 このチュートリアルでは、Azure Machine Learning service の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。 このチュートリアルを完了すると、より複雑な実験およびワークフローの開発にスケールアップするための、SDK の実用的な知識が得られます。
+このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 2 です**。 前のチュートリアルでは、[ワークスペースを作成し、開発環境を選択](tutorial-1st-experiment-sdk-setup.md)しました。 このチュートリアルでは、Azure Machine Learning の基本的な設計パターンを学習し、糖尿病データ セットに基づいて単純な scikit-learn モデルをトレーニングします。 このチュートリアルを完了すると、より複雑な実験およびワークフローの開発にスケールアップするための、SDK の実用的な知識が得られます。
 
 このチュートリアルでは、以下のタスクについて学習します。
 
@@ -35,21 +35,15 @@ ms.locfileid: "70241289"
 
 チュートリアルのこのパートでは、パート 1 の最後で開いたサンプル Jupyter ノートブック `tutorials/tutorial-1st-experiment-sdk-train.ipynb` のコードを実行します。 この記事では、ノートブック内の同じコードについて説明します。
 
-## <a name="launch-jupyter-web-interface"></a>Jupyter の Web インターフェイスを起動する
+## <a name="open-the-notebook"></a>ノートブックを開く
 
-1. Azure portal のワークスペース ページで、左側の **[ノートブック VM]** を選択します。
+1. [ワークスペース ランディング ページ](https://ml.azure.com/)にサインインします。
 
-1. このチュートリアルのパート 1 で作成した VM の **[URI]** 列で **[Jupyter]** を選択します。
+1. [パート 1](tutorial-1st-experiment-sdk-setup.md#open) に示すように、フォルダー内の **tutorial-1st-experiment-sdk-train.ipynb** を開きます。
 
-    ![Jupyter ノートブック サーバーを開始する](./media/tutorial-1st-experiment-sdk-setup/start-server.png)
 
-   リンクから、ノートブック サーバーが起動され、新しいブラウザー タブで Jupyter ノートブックの Web ページが開かれます。このリンクは、VM を作成するユーザーに対してのみ動作します。 ワークスペースの各ユーザーは、独自の VM を作成する必要があります。
-
-1. Jupyter ノートブックの Web ページで、最上位のフォルダー名を選択します。最上位のフォルダー名はユーザー名です。  
-
-   このフォルダーは、ノートブック VM 自体にではなく、ワークスペースの[ストレージ アカウント](concept-workspace.md#resources)に存在します。  ノートブック VM を削除しても、それまでの作業はすべて維持されます。  後で新しいノートブック VM を作成すると、この同じフォルダーが読み込まれます。 他のユーザーとワークスペースを共有すると、互いのフォルダーが表示されます。
-
-1. `samples-*` サブディレクトリを開き、同じ名前の `.yml` ファイル**ではなく**、Jupyter Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` を開きます。 
+> [!Warning]
+> Jupyter インターフェイスで "*新しい*" ノートブックを作成**しないでください**。 ノートブック `tutorials/tutorial-1st-experiment-sdk-train.ipynb` には、このチュートリアルに必要な**すべてのコードとデータ**が含まれています。
 
 ## <a name="connect-workspace-and-create-experiment"></a>ワークスペースを接続し、実験を作成する
 
@@ -57,7 +51,7 @@ ms.locfileid: "70241289"
 > 以降この記事には、ノートブックと同じ内容が記載されています。  
 >
 > コードを実行しながら読み進めたい方は、ここで Jupyter Notebook に切り替えてください。 
-> ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、トップ メニューから **[セル] > [すべて実行]** の順に選択してノートブック全体を実行します。
+> ノートブックで単一のコード セルを実行するには、そのコード セルをクリックして **Shift + Enter** キーを押します。 または、上部のツール バーから **[すべて実行]** を選択して、ノートブック全体を実行します。
 
 `Workspace` クラスをインポートし、`from_config().` 関数を使用して `config.json` ファイルから自分のサブスクリプション情報を読み込みます。これにより、既定で現在のディレクトリ内の JSON ファイルが検索されますが、`from_config(path="your/file/path")` を使用して、path パラメーターを指定してファイルを指すこともできます。 クラウド ノートブック サーバーでは、ファイルは自動的にルート ディレクトリに配置されます。
 
@@ -197,7 +191,7 @@ best_run.download_file(name="model_alpha_0.1.pkl")
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-Azure Machine Learning service の他のチュートリアルを実行する予定の場合、このセクションは完了しないでください。
+Azure Machine Learning の他のチュートリアルを実行する予定の場合、このセクションを実行しないでください。
 
 ### <a name="stop-the-notebook-vm"></a>ノートブック VM を停止する
 

@@ -6,7 +6,7 @@
       href: relay-what-is-it.md
 - name: チュートリアル
   items:
-    - name: ハイブリッド接続と
+    - name: ハイブリッド接続
       items:
         - name: メッセージの送受信 - .NET WebSocket
           href: relay-hybrid-connections-dotnet-get-started.md
@@ -26,18 +26,20 @@
           href: service-bus-relay-rest-tutorial.md
 - name: サンプル
   items:
-    - name: ハイブリッド接続と
+    - name: ハイブリッド接続
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections'
     - name: WCF リレー
       href: 'https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay'
 - name: 概念
   items:
-    - name: 認証と権限承認
-      href: relay-authentication-and-authorization.md
+    - name: セキュリティ
+      items:
+        - name: 認証と権限承認
+          href: relay-authentication-and-authorization.md
+        - name: 組み込みのセキュリティ制御
+          href: service-bus-relay-security-controls.md
     - name: ハイブリッド接続のプロトコル
       href: relay-hybrid-connections-protocol.md
-    - name: 組み込みのセキュリティ制御
-      href: service-bus-relay-security-controls.md
 - name: 方法
   items:
     - name: 計画と設計

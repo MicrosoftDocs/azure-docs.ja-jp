@@ -80,6 +80,8 @@
         - name: コンピューティング ノードへのアクセスを構成する
           href: pool-endpoint-configuration.md
         - name: Shared Image Gallery を使用してプールを作成する
+          href: batch-sig-images.md
+        - name: マネージド イメージ リソースを使用してプールを作成する
           href: batch-custom-images.md
         - name: 仮想ネットワーク内にプールを作成する
           href: batch-virtual-network.md

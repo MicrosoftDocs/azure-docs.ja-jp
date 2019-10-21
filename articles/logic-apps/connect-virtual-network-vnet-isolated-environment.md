@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 4865a2b3b02a1e7a6db19418122b66aeb79dd332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 15e1f1c4c8757ca55ec27659a4ca11b1729aebc2
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099473"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71701941"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を使用して Azure Logic Apps から Azure Virtual Network に接続する
 
@@ -44,36 +44,42 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークがない場合は、[Azure 仮想ネットワークの作成](../virtual-network/quick-create-portal.md)方法について学んでください。
+* [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)。 仮想ネットワークがない場合は、[Azure 仮想ネットワークの作成](../virtual-network/quick-create-portal.md)方法について学んでください。 
 
-  * 仮想ネットワークには、ISE 内にリソースを作成およびデプロイするため、"*空の*" サブネットが 4 つ必要です。 このようなサブネットは、事前に作成するか、同時にサブネットを作成できる ISE を作成するまで待つことができます。 [サブネット要件](#create-subnet)の詳細を参照してください。
-  
-    > [!NOTE]
-    > Microsoft クラウド サービスにプライベート接続を提供する [ExpressRoute](../expressroute/expressroute-introduction.md) を使用する場合、次のルートを持つ[ルート テーブルを作成](../virtual-network/manage-route-table.md)して、ISE によって使用される各サブネットにそのテーブルをリンクします。
-    > 
-    > **名前**: <*route-name*><br>
-    > **アドレス プレフィックス**:0.0.0.0/0<br>
-    > **次ホップ**:インターネット
+  * 仮想ネットワークには、ISE 内にリソースを作成およびデプロイするため、*空の*サブネットが 4 つ必要です。 このようなサブネットは、事前に作成するか、同時にサブネットを作成できる ISE を作成するまで待つことができます。 [サブネット要件](#create-subnet)の詳細を参照してください。
+
+  * サブネット名の最初の文字はアルファベット文字かアンダースコアにする必要があります。`<`、`>`、`%`、`&`、`\\`、`?`、`/` はいずれも使用できません。 
 
   * 仮想ネットワークで[これらのポートが利用可能になっており](#ports)、ISE が正常に動作し、アクセス可能な状態であることを確認します。
 
-* Azure 仮想ネットワークでカスタム DNS サーバーを使用する場合は、ISE を仮想ネットワークにデプロイする前に、[次の手順に従ってそのようなサーバーを設定します](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 そうしないと、DNS サーバーを変更するたびに、ISE の再起動が必要になります (これは、ISE パブリック プレビューで利用できる機能です)。
+  * Microsoft クラウド サービスにプライベート接続を提供する [ExpressRoute](../expressroute/expressroute-introduction.md) を使用する場合、次のルートを持つ[ルート テーブルを作成](../virtual-network/manage-route-table.md)し、ISE によって使用される各サブネットにそのテーブルをリンクします。
+
+    **名前**: <*route-name*><br>
+    **アドレス プレフィックス**:0.0.0.0/0<br>
+    **次ホップ**:インターネット
+
+* Azure 仮想ネットワークでカスタム DNS サーバーを使用する場合は、ISE を仮想ネットワークにデプロイする前に、[次の手順に従ってそのようなサーバーを設定します](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)。 そうでなければ、DNS サーバーを変更するたびに ISE も再起動する必要があります。
+
+  > [!IMPORTANT]
+  > ISE を作成した後で DNS サーバーの設定を変更する場合、ISE を必ず再起動してください。 DNS サーバー設定の管理方法に関する詳細については、「[仮想ネットワークの作成、変更、削除](../virtual-network/manage-virtual-network.md#change-dns-servers)」を参照してください。
 
 <a name="ports"></a>
 
 ## <a name="check-network-ports"></a>ネットワーク ポートを確認する
 
-既存の仮想ネットワークで ISE を使用した場合、一般的な設定の問題はブロックされたポートが 1 つ以上あることです。 ISE と宛先システムとの間の接続を作成するために使用するコネクターにも独自のポート要件がある可能性があります。 たとえば、FTP コネクタを使用して FTP システムと通信する場合、その FTP システム上で使用するポート (コマンド送信用のポート 21 など) を使用できることを確認します。
-
-新しい仮想ネットワークとサブネットを制約なしで作成した場合、サブネット間のトラフィックを制御できるように、仮想ネットワーク内に[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md) を設定する必要はありません。 既存の仮想ネットワークの場合は、"*必要に応じて*"、[サブネット間のネットワーク トラフィックをフィルター処理](../virtual-network/tutorial-filter-network-traffic.md)して NSG を設定できます。 このルートを選択する場合は、次の表で説明するように、NSG を持つ仮想ネットワーク上で ISE によって特定のポートが開かれることを確認してください。 仮想ネットワークに既存の NSG またはファイアウォールがある場合は、それらによってこれらのポートが開かれることを確認してください。 そうすると、ISE はアクセス可能状態のままとなり、ISE へのアクセスを失わないように正しく機能することができます。 そうしないと、いずれかの必要なポートが使用できなった場合、ISE は機能を停止します。
+Azure 仮想ネットワークで ISE を使用した場合、一般的な設定の問題はブロックされたポートが 1 つ以上あることです。 ISE と宛先システムとの間の接続を作成するために使用するコネクターにも独自のポート要件がある可能性があります。 たとえば、FTP コネクタを使用して FTP システムと通信する場合、お使いの FTP システム上で使用するポート (コマンド送信用のポート 21 など) を使用できることを確認します。 ISE がアクセス可能であり、正常に動作することを確認するには、次の表で指定されているポートを開きます。 そうしないと、いずれかの必要なポートが使用できなった場合、ISE は機能を停止します。
 
 > [!IMPORTANT]
-> サブネット内の内部通信の場合、それらのサブネット内のすべてのポートを開いておくことが ISE では必要になります。
+> ソース ポートは一時的なものです。そのため、すべての規則に対して `*` に設定してください。
+> サブネット内の内部通信の場合、それらのサブネット内のすべてのポートを開いておくことがお使いの ISE では必要になります。
+
+* 新しい仮想ネットワークとサブネットを制約なしで作成した場合、サブネット間のトラフィックを制御する目的で仮想ネットワーク内に[ネットワーク セキュリティ グループ (NSG)](../virtual-network/security-overview.md#network-security-groups) を設定する必要はありません。
+
+* 既存の仮想ネットワークでは、*必要に応じて*、[サブネット間のネットワーク トラフィックをフィルター処理](../virtual-network/tutorial-filter-network-traffic.md)して NSG を設定できます。 このルートを選択した場合、NSG を設定する仮想ネットワークで、下の表で指定されているポートを開きます。 [NSG セキュリティ規則](../virtual-network/security-overview.md#security-rules)を使用する場合、TCP プロトコルと UDP プロトコルの両方が必要です。
+
+* 仮想ネットワークに以前から NSG またはファイアウォールが存在している場合、下の表で指定されているポートを開きます。 [NSG セキュリティ規則](../virtual-network/security-overview.md#security-rules)を使用する場合、TCP プロトコルと UDP プロトコルの両方が必要です。
 
 次の表は、ISE で使用される仮想ネットワーク内のポートと、それらのポートが使用される場所を説明したものです。 [Resource Manager のサービス タグ](../virtual-network/security-overview.md#service-tags)は、IP アドレス プレフィックスのグループを表し、セキュリティ規則を作成する際の複雑さを最小限に抑えるために役立ちます。
-
-> [!NOTE]
-> ソース ポートは一時的なものなので、すべての規則に対して `*` に設定します。
 
 | 目的 | Direction | ターゲット ポート | 発信元サービス タグ | 宛先サービス タグ | メモ |
 |---------|-----------|-------------------|--------------------|-------------------------|-------|
@@ -134,9 +140,13 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 
    **サブネットを作成する**
 
-   環境内にリソースを作成およびデプロイする場合、どのサービスにも委任されていない*空の*サブネットが 4 つ ISE に必要です。 環境の作成後に、これらのサブネット アドレスを変更することは*できません*。 各サブネットは、次の基準を満たしている必要があります。
-
-   * 名前の先頭がアルファベット文字かアンダースコアで、名前に `<`、`>`、`%`、`&`、`\\`、`?`、`/` の文字が含まれていない。
+   環境内にリソースを作成およびデプロイする場合、どのサービスにも委任されていない*空の*サブネットが 4 つ ISE に必要です。 環境の作成後に、これらのサブネット アドレスを変更することは*できません*。
+   
+   > [!IMPORTANT]
+   > 
+   > サブネット名の最初の文字はアルファベット文字かアンダースコアにする必要があります (数字は禁止)。`<`、`>`、`%`、`&`、`\\`、`?`、`/` は使用できません。
+   
+   また、各サブネットは、次の要件を満たしている必要があります。
 
    * [Classless Inter-Domain Routing (CIDR) 形式](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)とクラス B アドレス空間を使用する。
 
@@ -150,7 +160,7 @@ ISE では、実行継続時間、ストレージのリテンション期間、�
 
      アドレス計算の詳細については、「[IPv4 CIDR blocks (IPv4 CIDR ブロック)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks)」を参照してください。
 
-   * [ExpressRoute](../expressroute/expressroute-introduction.md) を使用する場合、次のルートを持つ[ルート テーブルを作成](../virtual-network/manage-route-table.md)して、ISE によって使用される各サブネットにそのテーブルをリンクします。
+   * [ExpressRoute](../expressroute/expressroute-introduction.md) を使用する場合、次のルートを持つ[ルート テーブルを作成](../virtual-network/manage-route-table.md)し、ISE によって使用される各サブネットにそのテーブルをリンクする必要があります。
 
      **名前**: <*route-name*><br>
      **アドレス プレフィックス**:0.0.0.0/0<br>

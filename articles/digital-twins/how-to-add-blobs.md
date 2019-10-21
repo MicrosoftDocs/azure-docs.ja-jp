@@ -1,20 +1,20 @@
 ---
-title: Azure Digital Twins 内のオブジェクトに BLOB を追加する方法 | Microsoft Docs
+title: オブジェクトに BLOB を追加する方法 - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins 内のオブジェクトに BLOB を追加する方法について説明します。
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.author: v-adgera
+ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 61c09435606612377781fb382d2d31144e96b07b
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 3a278501f1110da0ab332d0e1acf170892be26ee
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965908"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949133"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Azure Digital Twins 内のオブジェクトに BLOB を追加する
 
@@ -51,7 +51,7 @@ JSON BLOB のメタデータは、次のモデルに準拠しています。
   }
 ```
 
-| Attribute | Type | 説明 |
+| Attribute | 種類 | 説明 |
 | --- | --- | --- |
 | **parentId** | string | BLOB を (スペース、デバイス、またはユーザー) と関連付ける親エンティティ |
 | **name** |string | BLOB のわかりやすい名前 |
@@ -69,8 +69,6 @@ Swagger のドキュメントでは、これらのモデル スキーマが詳�
 [!INCLUDE [Digital Twins Swagger](../../includes/digital-twins-swagger.md)]
 
 参照ドキュメントの使用については、[Swagger の使用方法](./how-to-use-swagger.md)に関する記事をご覧ください。
-
-<div id="blobModel"></div>
 
 ### <a name="blobs-response-data"></a>BLOB の応答データ
 
@@ -108,7 +106,7 @@ Swagger のドキュメントでは、これらのモデル スキーマが詳�
 }
 ```
 
-| Attribute | Type | 説明 |
+| Attribute | 種類 | 説明 |
 | --- | --- | --- |
 | **id** | string | BLOB の一意識別子 |
 | **name** |string | BLOB のわかりやすい名前 |
@@ -186,12 +184,11 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 [![デバイスの BLOB](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
 
 ```bash
-curl
- -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs"
- -H "Authorization: Bearer YOUR_TOKEN"
- -H "Accept: application/json"
- -H "Content-Type: multipart/form-data"
- -F "meta={\"ParentId\":\"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob\",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\":\"A well chosen description\",\"Sharing\":\"None\"};type=application/json"
+curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
+ -H "Authorization: Bearer YOUR_TOKEN" \
+ -H "Accept: application/json" \
+ -H "Content-Type: multipart/form-data" \
+ -F "meta={\"ParentId\":\"YOUR_SPACE_ID\",\"Name\":\"My CURL Blob\",\"Type\":\"Map\",\"SubType\":\"GenericMap\",\"Description\":\"A well chosen description\",\"Sharing\":\"None\"};type=application/json" \
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 
@@ -223,7 +220,7 @@ YOUR_MANAGEMENT_API_URL/devices/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 目的の BLOB ID |
 
-要求が成功すると、[前述](#blobModel)のように JSON オブジェクトが返されます。
+要求が成功すると、[前述](#blobs-response-data)のように JSON オブジェクトが返されます。
 
 ### <a name="spaces"></a>スペース
 
@@ -241,7 +238,7 @@ YOUR_MANAGEMENT_API_URL/spaces/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 目的の BLOB ID |
 
-要求が成功すると、[前述](#blobModel)のように JSON オブジェクトが返されます。
+要求が成功すると、[前述](#blobs-response-data)のように JSON オブジェクトが返されます。
 
 同じエンドポイントに対して PATCH 要求を実行すると、メタデータの説明が更新され、BLOB のバージョンが作成されます。 HTTP 要求は、必要なメタデータ、およびマルチパート フォーム データと共に PATCH メソッドを使って実行されます。
 
@@ -261,7 +258,7 @@ YOUR_MANAGEMENT_API_URL/users/blobs/YOUR_BLOB_ID
 | --- | --- |
 | *YOUR_BLOB_ID* | 目的の BLOB ID |
 
-要求が成功すると、[前述](#blobModel)のように JSON オブジェクトが返されます。
+要求が成功すると、[前述](#blobs-response-data)のように JSON オブジェクトが返されます。
 
 ## <a name="common-errors"></a>一般的なエラー
 

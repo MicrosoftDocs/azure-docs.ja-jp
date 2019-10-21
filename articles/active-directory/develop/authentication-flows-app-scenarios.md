@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/25/2019
+ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb2e3e45da0a072eadb0eac9f8a0266f9e14cda2
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5330111e5ae56471d26ebc39dca1a036246945e1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031962"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348591"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>認証フローとアプリケーションのシナリオ
 
@@ -169,33 +169,97 @@ MSAL の ConfidentialClientApplication の[クライアント資格情報](https
 
 トークンの取得に関連するシナリオは、「[Microsoft ID プラットフォームのプロトコル](active-directory-v2-protocols.md)」で詳しく説明されている OAuth 2.0 認証フローにもマップされます。
 
-|シナリオ | 詳細なシナリオのチュートリアル | OAuth 2.0 フロー/許可 | 対象ユーザー |
-|--|--|--|--|
-| [![シングル ページ アプリ](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | [シングルページ アプリ](scenario-spa-overview.md) | [暗黙的](v2-oauth2-implicit-grant-flow.md) | 職場または学校アカウントと個人用アカウント、B2C
-| [![ユーザーをサインインさせる Web アプリ](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | [ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md) | [承認コード](v2-oauth2-auth-code-flow.md) | 職場または学校アカウントと個人用アカウント、B2C |
-| [![Web API を呼び出す Web アプリ](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | [Web API を呼び出す Web アプリ](scenario-web-app-call-api-overview.md) | [承認コード](v2-oauth2-auth-code-flow.md) | 職場または学校アカウントと個人用アカウント、B2C |
-| [![Web API を呼び出すデスクトップ アプリ](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) | [Web API を呼び出すデスクトップ アプリ](scenario-desktop-overview.md)| 対話型 (PKCE を使用した[承認コード](v2-oauth2-auth-code-flow.md)) | 職場または学校アカウントと個人用アカウント、B2C |
-| | | 統合 Windows | 職場または学校アカウント |
-| | | [リソース所有者のパスワード](v2-oauth-ropc.md)  | 職場または学校アカウント、B2C |
-| ![デバイス コード フロー](media/scenarios/device-code-flow-app.svg)| [Web API を呼び出すデスクトップ アプリ](scenario-desktop-overview.md) | [デバイス コード](v2-oauth2-device-code.md)  | 職場または学校アカウント* |
-| [![Web API を呼び出すモバイル アプリ](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | [Web API を呼び出すモバイル アプリ](scenario-mobile-overview.md) | 対話型 (PKCE を使用した[承認コード](v2-oauth2-auth-code-flow.md))  |   職場または学校アカウントと個人用アカウント、B2C
-| | | リソース所有者のパスワード  | 職場または学校アカウント、B2C |
-| [![デーモン アプリ](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | [デーモン アプリ](scenario-daemon-overview.md) | [クライアントの資格情報](v2-oauth2-client-creds-grant-flow.md)  |   AAD 組織のみでのアプリ専用アクセス許可 (ユーザーなし)
-| [![Web API を呼び出す Web API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | [Web API を呼び出す Web API](scenario-web-api-call-api-overview.md)| [代理](v2-oauth2-on-behalf-of-flow.md) | 職場または学校アカウントと個人用アカウント |
+<table>
+ <thead>
+  <tr><th>シナリオ</th> <th>詳細なシナリオのチュートリアル</th> <th>OAuth 2.0 フロー/許可</th> <th>対象ユーザー</th></tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td><a href="scenario-spa-overview.md"><img alt="Single Page App" src="media/scenarios/spa-app.svg"></a></td>
+   <td><a href="scenario-spa-overview.md">シングルページ アプリ</a></td>
+   <td><a href="v2-oauth2-implicit-grant-flow.md">暗黙的</a></td>
+   <td>職場または学校アカウントと個人用アカウント、B2C</td>
+ </tr>
+
+  <tr>
+   <td><a href="scenario-web-app-sign-user-overview.md"><img alt="Web App that signs in users" src="media/scenarios/scenario-webapp-signs-in-users.svg"></a></td>
+   <td><a href="scenario-web-app-sign-user-overview.md">ユーザーをサインインさせる Web アプリ</a></td>
+   <td><a href="v2-oauth2-auth-code-flow.md">承認コード</a></td>
+   <td>職場または学校アカウントと個人用アカウント、B2C</td>
+ </tr>
+
+  <tr>
+   <td><a href="scenario-web-app-call-api-overview.md"><img alt="Web App that signs in users" src="media/scenarios/web-app.svg"></a></td>
+   <td><a href="scenario-web-app-call-api-overview.md">Web API を呼び出す Web アプリ</a></td>
+   <td><a href="v2-oauth2-auth-code-flow.md">承認コード</a></td>
+   <td>職場または学校アカウントと個人用アカウント、B2C</td>
+ </tr>
+
+  <tr>
+   <td rowspan="3"><a href="scenario-desktop-overview.md"><img alt=Desktop app that calls web APIs" src="media/scenarios/desktop-app.svg"></a></td>
+   <td rowspan="4"><a href="scenario-desktop-overview.md">Web API を呼び出すデスクトップ アプリ</a></td>
+   <td>対話型 (PKCE を使用した<a href="v2-oauth2-auth-code-flow.md">承認コード</a>)</td>
+   <td>職場または学校アカウントと個人用アカウント、B2C</td>
+ </tr>
+
+  <tr>
+   <td>統合 Windows 認証</td>
+   <td>職場または学校アカウント</td>
+ </tr>
+
+  <tr>
+   <td><a href="v2-oauth-ropc.md">リソース所有者のパスワード</a></td>
+   <td>職場または学校アカウント、B2C</td>
+ </tr>
+
+  <tr>
+   <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
+   <td><a href="v2-oauth2-device-code.md">デバイス コード</a></td>
+   <td>職場または学校アカウント*</td>
+ </tr>
+
+ <tr>
+   <td rowspan="2"><a href="scenario-mobile-overview.md"><img alt="Mobile app that calls web APIs" src="media/scenarios/mobile-app.svg"></a></td>
+   <td rowspan="2"><a href="scenario-mobile-overview.md">Web API を呼び出すモバイル アプリ</a></td>
+   <td>対話型 (PKCE を使用した<a href="v2-oauth2-auth-code-flow.md">承認コード</a>)</td>
+   <td>職場または学校アカウントと個人用アカウント、B2C</td>
+ </tr>
+
+  <tr>
+   <td><a href="v2-oauth-ropc.md">リソース所有者のパスワード</a></td>
+   <td>職場または学校アカウント、B2C</td>
+ </tr>
+
+  <tr>
+   <td><a href="scenario-daemon-overview.md"><img alt="Daemon app that calls Web APIs" src="media/scenarios/daemon-app.svg"></a></td>
+   <td><a href=scenario-daemon-overview.md">Web API を呼び出すデーモン アプリ</a></td>
+   <td><a href="v2-oauth2-client-creds-grant-flow.md">クライアントの資格情報</a></td>
+   <td>AAD 組織のみでのアプリ専用アクセス許可 (ユーザーなし)</td>
+ </tr>
+
+  <tr>
+   <td><a href=scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
+   <td><a href=scenario-web-api-call-api-overview.md">Web API を呼び出す Web API</a></td>
+   <td><a href="v2-oauth2-on-behalf-of-flow.md">代理</a></td>
+   <td>職場または学校アカウントと個人用アカウント</td>
+ </tr>
+
+ </tbody>
+</table>
 
 ## <a name="scenarios-and-supported-platforms-and-languages"></a>シナリオとサポートされているプラットフォームと言語
 
-すべてのアプリケーションの種類をすべてのプラットフォームで使用できるわけではありません。 また、さまざまな言語を使用してアプリケーションをビルドすることもできます。 Microsoft 認証ライブラリは、さまざまな**プラットフォーム** (JavaScript、.NET Framework、.NET Core、Windows 10/UWP、Xamarin.iOS、Xamarin.Android、ネイティブ iOS、ネイティブ Android、Java、Python) をサポートしています。
+すべてのアプリケーションの種類をすべてのプラットフォームで使用できるわけではありません。 また、さまざまな言語を使用してアプリケーションをビルドすることもできます。 Microsoft 認証ライブラリは、さまざまな**プラットフォーム** (JavaScript、.NET Framework、.NET Core、Windows 10/UWP、Xamarin.iOS、Xamarin.Android、ネイティブ iOS、Mac OS、ネイティブ Android、Java、Python) をサポートしています。 次の表の Windows に関して、.NET Core と書かれているシナリオはすべて .NET Framework でも対応可能です (表のスペースの関係で省略しています)。
 
 |シナリオ  | Windows | Linux | Mac | iOS | Android
 |--|--|--|--|--|--|--|
-| [シングルページ アプリ](scenario-spa-overview.md) <br/>[![シングル ページ アプリ](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/logo_js.png) MSAL.js
-| [ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md) <br/>[![ユーザーをサインインさせる Web アプリ](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET](media/sample-v2-code/logo_NET.png)</br> ASP.NET ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core
-| [Web API を呼び出す Web アプリ](scenario-web-app-call-api-overview.md) <br/> [![Web API を呼び出す Web アプリ](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET](media/sample-v2-code/logo_NET.png) </br> ASP.NET + MSAL.NET </br> ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/logo_NETcore.png)ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) Flask + MSAL Python
-| [Web API を呼び出すデスクトップ アプリ](scenario-desktop-overview.md) <br/> [![Web API](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) ![デバイス コード フローを呼び出すデスクトップ アプリ](media/scenarios/device-code-flow-app.svg) | ![MSAL.NET](media/sample-v2-code/logo_NET.png)  MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
-| [Web API を呼び出すモバイル アプリ](scenario-mobile-overview.md) <br/> [![Web API を呼び出すモバイル アプリ](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/logo_xamarin.png) MSAL.NET | | | ![iOS / Objective C または Swift](media/sample-v2-code/logo_iOS.png) MSAL.iOS | ![Android](media/sample-v2-code/logo_Android.png) MSAL.Android
-| [デーモン アプリ](scenario-daemon-overview.md) <br/> [![デーモン アプリ](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
-| [Web API を呼び出す Web API](scenario-web-api-call-api-overview.md) <br/> [![Web API を呼び出す Web API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![.NET](media/sample-v2-code/logo_NET.png) MSAL.NET ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python| ![.NET Core](media/sample-v2-code/logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/logo_java.png) msal4j ![MSAL Python](media/sample-v2-code/logo_python.png) MSAL Python
+| [シングルページ アプリ](scenario-spa-overview.md) <br/>[![シングル ページ アプリ](media/scenarios/spa-app.svg)](scenario-spa-overview.md) | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png) MSAL.js | ![MSAL.js](media/sample-v2-code/small_logo_js.png)<br/>MSAL.js
+| [ユーザーをサインインさせる Web アプリ](scenario-web-app-sign-user-overview.md) <br/>[![ユーザーをサインインさせる Web アプリ](media/scenarios/scenario-webapp-signs-in-users.svg)](scenario-web-app-sign-user-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core
+| [Web API を呼び出す Web アプリ](scenario-web-app-call-api-overview.md) <br/> <br/>[![Web API を呼び出す Web アプリ](media/scenarios/web-app.svg)](scenario-web-app-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png) <br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python| ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>Flask + MSAL Python
+| [Web API を呼び出すデスクトップ アプリ](scenario-desktop-overview.md) <br/> <br/>[![Web API](media/scenarios/desktop-app.svg)](scenario-desktop-overview.md) ![デバイス コード フローを呼び出すデスクトップ アプリ](media/scenarios/device-code-flow-app.svg) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/> ![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python <br/> MSAL.objc |
+| [Web API を呼び出すモバイル アプリ](scenario-mobile-overview.md) <br/> [![Web API を呼び出すモバイル アプリ](media/scenarios/mobile-app.svg)](scenario-mobile-overview.md) | ![UWP](media/sample-v2-code/small_logo_windows.png) MSAL.NET ![Xamarin](media/sample-v2-code/small_logo_xamarin.png) MSAL.NET | | | ![iOS / Objective C または Swift](media/sample-v2-code/small_logo_iOS.png) MSAL.objc | ![Android](media/sample-v2-code/small_logo_Android.png) MSAL.Android
+| [デーモン アプリ](scenario-daemon-overview.md) <br/> [![デーモン アプリ](media/scenarios/daemon-app.svg)](scenario-daemon-overview.md) | ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png) MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
+| [Web API を呼び出す Web API](scenario-web-api-call-api-overview.md) <br/><br/> [![Web API を呼び出す Web API](media/scenarios/web-api.svg)](scenario-web-api-call-api-overview.md) | ![ASP.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python| ![.NET Core](media/sample-v2-code/small_logo_NETcore.png)<br/>ASP.NET Core + MSAL.NET ![MSAL Java](media/sample-v2-code/small_logo_java.png)<br/>msal4j<br/>![MSAL Python](media/sample-v2-code/small_logo_python.png)<br/>MSAL Python
 
 [OS/言語別で Microsoft がサポートするライブラリ](reference-v2-libraries.md#microsoft-supported-libraries-by-os--language)に関するセクションも参照してください
 

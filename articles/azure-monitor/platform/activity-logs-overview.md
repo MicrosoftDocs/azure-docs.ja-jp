@@ -5,15 +5,15 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/19/2019
+ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: fa1737a8627fe9561a2a84e7f0ef69aefb6deb14
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: ee3a1fef379e2950172dddc389b30e0a363127ae
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170631"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262123"
 ---
 # <a name="overview-of-azure-activity-log"></a>Azure アクティビティ ログの概要
 
@@ -23,10 +23,10 @@ ms.locfileid: "70170631"
 
 アクティビティ ログには、読み取り (GET) 操作や、クラシック/RDFE モデルを使用しているリソースに対する操作は含まれません。
 
-## <a name="comparison-to-diagnostic-logs"></a>診断ログと比較する
-各 Azure サブスクリプションに 1 つのアクティビティ ログがあります。 これは、外部から行われるリソースの操作に関するデータを提供します ("コントロール プレーン")。 [診断ログ](diagnostic-logs-overview.md)は、リソースによって出力され、そのリソースの操作に関する情報を提供します ("データ プレーン")。 各リソースの診断設定を有効にする必要があります。
+## <a name="comparison-to-resource-logs"></a>リソース ログとの比較
+各 Azure サブスクリプションに 1 つのアクティビティ ログがあります。 これは、外部から行われるリソースの操作に関するデータを提供します ("コントロール プレーン")。 [リソース ログ](resource-logs-overview.md)は、リソースによって出力され、そのリソースの操作に関する情報を提供します ("データ プレーン")。 リソース ログを収集するには、各リソースの診断設定を作成する必要があります。
 
-![アクティビティ ログと診断ログの比較](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![アクティビティ ログとリソース ログの比較](media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 
 > [!NOTE]

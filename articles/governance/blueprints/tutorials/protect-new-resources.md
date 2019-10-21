@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 274c437acd8df50d631727fc352c4b9ebecead18
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: a82b24f89cea580a1c79a1dec60996629b7b14f3
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66479977"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978141"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>チュートリアル:Azure Blueprints のリソース ロックを使用して新しいリソースを保護する
 
@@ -149,7 +148,7 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
 
    - **Managed Identity**
 
-     既定のオプション **[システム割り当て済み]** を使用します。 詳細については、[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
+     既定のオプションである **[システム割り当て済み]** を使用します。 詳細については、[マネージド ID](../../../active-directory/managed-identities-azure-resources/overview.md) に関するページを参照してください。
 
    - **成果物のパラメーター**
 
@@ -157,8 +156,8 @@ Azure Blueprints の[リソース ロック](../concepts/resource-locking.md)を
 
      |アーティファクト名|アーティファクトの種類|パラメーター名|値|説明|
      |-|-|-|-|-|
-     |RGtoLock リソース グループ|リソース グループ|Name|TestingBPLocks|ブループリントのロックを適用する新しいリソース グループの名前を定義します。|
-     |RGtoLock リソース グループ|リソース グループ|Location|米国西部 2|ブループリントのロックを適用する新しいリソース グループの場所を定義します。|
+     |RGtoLock リソース グループ|Resource group|名前|TestingBPLocks|ブループリントのロックを適用する新しいリソース グループの名前を定義します。|
+     |RGtoLock リソース グループ|Resource group|Location|米国西部 2|ブループリントのロックを適用する新しいリソース グループの場所を定義します。|
      |StorageAccount|Resource Manager テンプレート|storageAccountType (StorageAccount)|Standard_GRS|ストレージの SKU。 既定値は "_Standard_LRS_" です。|
 
 1. すべてのパラメーターを入力したら、ページの下部にある **[割り当て]** を選択します。

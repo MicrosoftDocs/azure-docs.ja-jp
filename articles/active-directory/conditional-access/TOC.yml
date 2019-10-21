@@ -21,6 +21,8 @@
   items:
     - name: 一般的な条件付きアクセス ポリシー
       href: concept-conditional-access-policy-common.md
+    - name: セキュリティの既定値
+      href: concept-conditional-access-security-defaults.md
     - name: 条件付きアクセス ポリシーのコンポーネント
       href: concept-conditional-access-policies.md
     - name: 条件
@@ -76,16 +78,6 @@
       href: howto-conditional-access-session-lifetime.md
     - name: クラシック ポリシーを移行する
       href: policy-migration.md
-    - name: ベースライン ポリシー
-      items:
-        - name: Require MFA for admins \(管理者に MFA を要求する\)
-          href: howto-baseline-protect-administrators.md
-        - name: エンドユーザーの保護
-          href: howto-baseline-protect-end-users.md
-        - name: レガシ認証をブロックする
-          href: howto-baseline-protect-legacy-auth.md
-        - name: サービス管理のために MFA を要求する
-          href: howto-baseline-protect-azure.md
     - name: 条件付きアクセスの導入
       href: howto-conditional-access-adoption-kit.md
     - name: トラブルシューティング

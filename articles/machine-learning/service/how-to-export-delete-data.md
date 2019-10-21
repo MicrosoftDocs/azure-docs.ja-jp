@@ -1,6 +1,6 @@
 ---
 title: ワークスペース データのエクスポートまたは削除
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure portal、CLI、SDK、および認証済み REST API を使用してワークスペースをエクスポートまたは削除する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: ph-com
 ms.author: pahusban
 ms.date: 05/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3b55282adf56bedb0724eca578b8eaea00c26074
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 18e2ab18dac214e73eaf6ad7dfcb9dbbab0b5cf5
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65023972"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002838"
 ---
 # <a name="export-or-delete-your-machine-learning-service-workspace-data"></a>Machine Learning service のワークスペース データをエクスポートまたは削除する 
 
@@ -27,9 +27,9 @@ Azure Machine Learning では、認証済み REST API を使用してワーク�
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="control-your-workspace-data"></a>ワークスペース データを制御する
-Azure Machine Learning Services によって格納された製品内データは、Azure portal、CLI、SDK、および認証済み REST API を使用してエクスポートおよび削除することができます。 テレメトリ データには、Azure Privacy Portal を介してアクセスできます。 
+Azure Machine Learning によって格納された製品内データは、Azure portal、CLI、SDK、および認証済み REST API を使用してエクスポートおよび削除することができます。 テレメトリ データには、Azure Privacy Portal を介してアクセスできます。 
 
-Azure Machine Learning Services では、個人データは、実行履歴ドキュメント内のユーザー情報と、ユーザーのサービスとの対話のテレメトリ レコードで構成されます。
+Azure Machine Learning では、個人データは、実行履歴ドキュメント内のユーザー情報と、ユーザーのサービスとの対話のテレメトリ レコードで構成されます。
 
 ## <a name="delete-workspace-data-with-the-rest-api"></a>REST API を使用してワークスペース データを削除する 
 

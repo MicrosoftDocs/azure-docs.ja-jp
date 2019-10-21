@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e7b69e57d4e01c292a2c6d032ba995d1936b88dc
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5b71146f0c2aff51a0c2498705b047e9fa4632c8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142899"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178132"
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 
@@ -44,11 +44,14 @@ Azure Migrate は、依存関係の視覚化のために [Azure Monitor ログ](
     ![ワークスペースの追加](./media/how-to-create-group-machine-dependencies/workspace.png)
 
 - ワークスペースを関連付けるときに、新しいワークスペースを作成するか、既存のワークスペースをアタッチするかを選択できます。
-  - 新しいワークスペースを作成する場合は、ワークスペースの名前を指定する必要があります。 移行プロジェクトと同様の [Azure 地理的環境](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンでワークスペースが作成されます。
+  - 新しいワークスペースを作成する場合は、ワークスペースの名前を指定する必要があります。 ワークスペースを作成する[リージョン](https://azure.microsoft.com/global-infrastructure/regions/)を選択できます。
   - 既存のワークスペースをアタッチするときは、移行プロジェクトと同じサブスクリプション内の使用可能なすべてのワークスペースから選択できます。 表示されるのは、[Service Map がサポートされている](../azure-monitor/insights/vminsights-enable-overview.md#prerequisites)リージョンで作成されたワークスペースのみであることに注意してください。 ワークスペースをアタッチできるようにするには、ワークスペースへの "読み取り" アクセスがあることを確認してください。
 
   > [!NOTE]
   > いったんワークスペースをプロジェクトにアタッチすると、後で変更できません。
+
+  > [!NOTE]
+  > 現在、Azure Migrate では、Log Analytics ワークスペースの作成または関連付けは、米国東部、東南アジア、西ヨーロッパの各リージョンでサポートされています。 ワークスペースが未サポート リージョン内の Azure Migrate の外で作成されている場合、現在のところ、Azure Migrate プロジェクトに関連付けることはできません。 
 
 - Azure portal で検索に使用できるキー**移行プロジェクト**と値**プロジェクト名**に関連付けられているワークスペースがタグ付けされます。
 - プロジェクトに関連付けられているワークスペースに移動するためには、プロジェクト**概要**ページの **Essentials** セクションに遷移し、ワークスペースをアクセスできます。

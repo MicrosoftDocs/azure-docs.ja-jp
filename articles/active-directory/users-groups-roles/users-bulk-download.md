@@ -13,20 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38cc8fd4e063896bbd8843a54f0a01058462c618
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c59a0b40065be1554e79186227cd2e90d68e7222
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901299"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174207"
 ---
 # <a name="download-a-list-of-users-preview-in-azure-active-directory-portal"></a>Azure Active Directory ポータルでユーザーの一覧をダウンロードする (プレビュー)
 
 Azure Active Directory (Azure AD) では、ユーザーの一括インポート (作成) 操作がサポートされています。
-
-## <a name="bulk-download-service-limits"></a>一括ダウンロード サービスの制限
-
-ユーザー一覧の作成の一括操作は、それぞれ最大 1 時間かかる場合があります。 これにより、最小で 50 万ユーザーを一括作成およびダウンロードできます。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -45,6 +41,10 @@ Azure AD 管理センターからユーザー一覧をダウンロードする�
 **[一括操作の結果 (プレビュー)]** ページでは、保留中のご自分の一括要求の状態を確認できます。
 
    ![[一括操作の結果] ページでアップロードの状態を確認する](./media/users-bulk-download/bulk-center.png)
+
+## <a name="bulk-download-service-limits"></a>一括ダウンロード サービスの制限
+
+ユーザー一覧の作成の一括操作は、それぞれ最大 1 時間かかる場合があります。 これにより、最小で 50 万ユーザーを一括作成およびダウンロードできます。
 
 ## <a name="next-steps"></a>次の手順
 

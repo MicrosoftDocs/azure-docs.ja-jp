@@ -1,38 +1,41 @@
 ---
 title: Speech SDK を使用してコーデック圧縮オーディオをストリーミングする - Speech Service
 titleSuffix: Azure Cognitive Services
-description: Speech SDK を使用して圧縮オーディオを Azure Speech サービスにストリーミングする方法について説明します。 Linux 用の C++、C#、および Java で使用可能です。
+description: Speech SDK を使用して圧縮オーディオを Azure Speech サービスにストリーミングする方法について説明します。 Linux の場合は C++、C#、Java で、Android の場合は Java で、iOS の場合は Objective-C で使用できます。
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: b29b42dea9522526d49c1bda017a522855946def
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 8f2896a6289ecaf4046d705da106636258cdadc5
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559546"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802240"
 ---
 # <a name="using-codec-compressed-audio-input-with-the-speech-sdk"></a>Speech SDK でコーデック圧縮オーディオを使用する
 
 Speech SDK の**圧縮オーディオ入力ストリーム** API では、PullStream または PushStream を使用して、圧縮オーディオを Speech サービスにストリーミングできます。
 
 > [!IMPORTANT]
-> 圧縮オーディオのストリーミングは、Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9) 用の C++、 C#、および Java でのみサポートされます。
-> Speech SDK バージョン 1.4.0 以降が必要です。
+> 現在、圧縮入力オーディオのストリーミングは、Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9) では C++、C#、Java でサポートされています。 また、[Android プラットフォームでは Java](how-to-use-codec-compressed-audio-input-streams-android.md)、[iOS プラットフォームでは Objective-C](how-to-use-codec-compressed-audio-input-streams-ios.md) でもサポートされています。
+> Speech SDK バージョン 1.7.0 以降が必要です。
 
 wav/PCM については、メインライン音声のドキュメントを参照してください。  wav/PCM 以外では、次のコーデック圧縮入力形式がサポートされています。
 
 - MP3
 - OPUS/OGG
+- FLAC
+- wav コンテナー内の ALAW
+- wav コンテナー内の MULAW
 
-## <a name="prerequisites-to-using-codec-compressed-audio-input"></a>コーデック圧縮オーディオ入力を使用するための前提条件
+## <a name="prerequisites"></a>前提条件
 
-Linux 用の Speech SDK で圧縮オーディオ入力を使用するには、これらの依存関係ファイルをインストールします。
+圧縮オーディオの処理は、[GStreamer](https://gstreamer.freedesktop.org) を使用して実装されます。 ライセンスの理由から、Speech SDK では Gstreamer バイナリはコンパイルおよびリンクされません。 そのため、圧縮入力オーディオを使用するには、アプリケーション開発者は 18.04、16.04、Debian 9 に次のものをインストールする必要があります。
 
 ```sh
 sudo apt install libgstreamer1.0-0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly

@@ -8,53 +8,37 @@
       href: durable/durable-functions-overview.md
     - name: サーバーレス サービスの比較
       href: functions-compare-logic-apps-ms-flow-webjobs.md
+    - name: ホスティング プランのオプション
+      href: functions-scale.md
 - name: クイック スタート
   expanded: true
   items:
-    - name: 関数の作成 - Visual Studio Code
-      href: functions-create-first-function-vs-code.md
-    - name: 関数の作成 - Visual Studio
+    - name: '関数の作成 - C#'
       href: functions-create-your-first-function-visual-studio.md
-    - name: 関数の作成 - Java/Maven
+    - name: 関数の作成 - Java
       href: functions-create-first-java-maven.md
-    - name: 関数の作成 - Python
-      href: functions-create-first-function-python.md
+    - name: 関数の作成 - JavaScript
+      href: functions-create-first-function-vs-code.md
     - name: 関数の作成 - PowerShell
       href: functions-create-first-function-powershell.md
-    - name: 関数の作成 - Azure CLI
-      href: functions-create-first-azure-function-azure-cli.md
-    - name: 関数の作成 - ポータル
-      href: functions-create-first-azure-function.md
-    - name: 関数の作成 - Linux
-      href: functions-create-first-azure-function-azure-cli-linux.md
-    - name: トリガー
+    - name: 関数の作成 - Python
+      href: functions-create-first-function-python.md
+    - name: サービスへの接続
       items:
-        - name: Azure Cosmos DB
-          href: functions-create-cosmos-db-triggered-function.md
-        - name: BLOB ストレージ
-          href: functions-create-storage-blob-triggered-function.md
-        - name: ストレージ
-          href: functions-create-storage-queue-triggered-function.md
-        - name: Timer
-          href: functions-create-scheduled-function.md
-    - name: 統合
-      items:
-        - name: Azure Cosmos DB
-          href: functions-integrate-store-unstructured-data-cosmosdb.md
+        - name: 'ストレージ - C#'
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: ストレージ - Java
+          href: functions-add-output-binding-storage-queue-java.md
+        - name: ストレージ - JavaScript
+          href: functions-add-output-binding-storage-queue-vs-code.md
         - name: ストレージ - Python
           href: functions-add-output-binding-storage-queue-python.md
-        - name: ストレージ - ポータル
-          href: functions-integrate-storage-queue-output-binding.md
-        - name: ストレージ - Visual Studio Code
-          href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: ストレージ - Visual Studio
-          href: functions-add-output-binding-storage-queue-vs.md
 - name: チュートリアル
   items:
     - name: Functions と Logic Apps
       href: functions-twitter-email.md
     - name: VS Code での Python 関数の開発
-      href: tutorial-vs-code-serverless-python.md
+      href: /azure/python/tutorial-vs-code-serverless-python-01
     - name: サーバーレス API のための OpenAPI 定義
       href: functions-openapi-definition.md
     - name: 仮想ネットワークへの接続
@@ -77,10 +61,12 @@
       items:
         - name: 'C#'
           href: /samples/browse/?products=azure-functions&languages=csharp
-        - name: JavaScript
-          href: /samples/browse/?products=azure-functions&languages=javascript
         - name: Java
           href: /samples/browse/?products=azure-functions&languages=java
+        - name: JavaScript
+          href: /samples/browse/?products=azure-functions&languages=javascript
+        - name: PowerShell
+          href: /samples/browse/?products=azure-functions&languages=azurepowershell
         - name: Python
           href: /samples/browse/?products=azure-functions&languages=python
         - name: TypeScript
@@ -92,14 +78,14 @@
     - name: バージョン 1.x と 2.x の比較
       href: functions-versions.md
       displayName: 'migrate, migration'
-    - name: スケールとホスティング
-      href: functions-scale.md
     - name: Premium プラン
       href: functions-premium-plan.md
     - name: デプロイメント
       href: functions-deployment-technologies.md
     - name: イベントとメッセージング
       items:
+        - name: 信頼できるイベント処理
+          href: functions-reliable-event-processing.md
         - name: 同一入力のための設計
           href: functions-idempotent.md
     - name: トリガーとバインド
@@ -138,8 +124,11 @@
           href: 'functions-reference-node.md#typescript'
     - name: 診断
       href: ../app-service/overview-diagnostics.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: 従量課金プランのコスト
+      href: functions-consumption-costs.md
     - name: パフォーマンスに関する考慮事項
       href: functions-best-practices.md
+      displayName: best practice
     - name: 関数プロキシ
       href: functions-proxies.md
     - name: ネットワーク オプション
@@ -154,36 +143,75 @@
       items:
         - name: 開発者ガイド
           href: functions-reference.md
-        - name: 関数のテスト
-          href: functions-test-a-function.md
-        - name: ローカルでの開発とデバッグ
-          href: functions-develop-local.md
-        - name: Visual Studio Code での開発
-          href: functions-develop-vs-code.md
-        - name: Visual Studio 開発
-          href: functions-develop-vs.md
-        - name: コア ツールの開発
-          href: functions-run-local.md
-        - name: IntelliJ IDEA での開発
-          href: functions-create-maven-intellij.md
-        - name: Eclipse 開発
-          href: functions-create-maven-eclipse.md
-        - name: Linux の関数アプリを作成する
-          href: create-function-app-linux-app-service-plan.md
-        - name: ローカルの PowerShell 関数をデバッグする
-          href: functions-debug-powershell-local.md
+        - name: ローカル開発
+          items:
+            - name: ローカルでの開発とデバッグ
+              href: functions-develop-local.md
+            - name: Visual Studio Code での開発
+              href: functions-develop-vs-code.md
+            - name: Visual Studio 開発
+              href: functions-develop-vs.md
+            - name: コア ツールの開発
+              href: functions-run-local.md
+        - name: 関数の作成
+          items:
+            - name: HTTP トリガー
+              items:
+                - name: Azure ポータル
+                  href: functions-create-first-azure-function.md
+                - name: コマンド ライン
+                  href: functions-create-first-azure-function-azure-cli.md
+                - name: Visual Studio
+                  href: create-visual-studio.md
+                - name: Visual Studio Code
+                  href: create-visual-studio-code.md
+                - name: Eclipse を使用した Java
+                  href: functions-create-maven-eclipse.md
+                - name: IntelliJ IDEA を使用した Java
+                  href: functions-create-maven-intellij.md
+                - name: Linux App Service プラン
+                  href: create-function-app-linux-app-service-plan.md
+                - name: Linux 従量課金プラン
+                  href: functions-create-first-azure-function-azure-cli-linux.md
+                - name: Microsoft Azure for Students Starter
+                  href: functions-create-student-starter.md
+            - name: Azure Cosmos DB のトリガー
+              href: functions-create-cosmos-db-triggered-function.md
+            - name: Blob Storage のトリガー
+              href: functions-create-storage-blob-triggered-function.md
+            - name: Queue ストレージ トリガー
+              href: functions-create-storage-queue-triggered-function.md
+            - name: タイマー トリガー
+              href: functions-create-scheduled-function.md
+        - name: バインドの追加
+          items:
+            - name: Azure Cosmos DB - ポータル
+              href: functions-integrate-store-unstructured-data-cosmosdb.md
+            - name: ストレージ - Python
+              href: add-output-binding-storage-queue-python.md
+            - name: ストレージ - ポータル
+              href: functions-integrate-storage-queue-output-binding.md
+            - name: ストレージ - Visual Studio Code
+              href: add-output-binding-storage-queue-vs-code.md
+            - name: ストレージ - Visual Studio
+              href: add-output-binding-storage-queue-vs.md
+        - name: デバッグおよびテスト
+          items:
+            - name: テスト関数
+              href: functions-test-a-function.md
+            - name: ローカルの PowerShell 関数をデバッグする
+              href: functions-debug-powershell-local.md
+            - name: イベント グリッド トリガーをローカルにデバッグ
+              href: functions-debug-event-grid-trigger-local.md
         - name: 依存関係の挿入
           href: functions-dotnet-dependency-injection.md
         - name: 接続の管理
           href: manage-connections.md
+          displayName: best practice
         - name: エラー処理
           href: functions-bindings-error-pages.md
         - name: HTTP によってトリガーされない関数を手動で実行する
           href: functions-manually-run-non-http.md
-        - name: イベント グリッド トリガーをローカルにデバッグ
-          href: functions-debug-event-grid-trigger-local.md
-        - name: Microsoft Azure for Students Starter
-          href: functions-create-student-starter.md
     - name: デプロイ
       items:
         - name: 継続的なデプロイ
@@ -192,6 +220,8 @@
           href: functions-deployment-slots.md
         - name: Azure Pipelines を使用してビルドおよびデプロイする
           href: functions-how-to-azure-devops.md
+        - name: GitHub アクションを使用して構築およびデプロイする
+          href: functions-how-to-github-actions.md
         - name: ZIP 展開
           href: deployment-zip-push.md
         - name: パッケージから実行
@@ -241,8 +271,22 @@
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: キー コンテナーからのシークレットの参照
           href: ../app-service/app-service-key-vault-references.md?toc=%2fazure%2fazure-functions%2ftoc.json
+        - name: geo ディザスター リカバリー
+          href: functions-geo-disaster-recovery.md
     - name: 統合
       items:
+        - name: バインドの追加
+          items:
+            - name: Azure Cosmos DB - ポータル
+              href: functions-integrate-store-unstructured-data-cosmosdb.md
+            - name: ストレージ - Python
+              href: functions-add-output-binding-storage-queue-python.md
+            - name: ストレージ - ポータル
+              href: functions-integrate-storage-queue-output-binding.md
+            - name: ストレージ - Visual Studio Code
+              href: functions-add-output-binding-storage-queue-vs-code.md
+            - name: ストレージ - Visual Studio
+              href: functions-add-output-binding-storage-queue-vs.md
         - name: SQL Database への接続
           href: functions-scenario-database-table-cleanup.md
         - name: 仮想ネットワークへの接続

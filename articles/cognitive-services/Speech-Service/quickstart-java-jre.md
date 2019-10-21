@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:音声を認識する、Java (Windows、Linux) - Speech Service
+title: クイック スタート:音声を認識する、Java (Windows、Linux、macOS) - Speech Service
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャしてテキストに文字起こしする単純な Java アプリケーションの作成について説明します。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: 498e41b08133113be9789ef49291b8e2bb0f3705
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9438cd1345d324b068db8837216afb39241cb2a2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554102"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802486"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を認識する
 
-クイック スタートは[音声から音声への翻訳](quickstart-translate-speech-java-jre.md)と[音声優先仮想アシスタント](quickstart-virtual-assistant-java-jre.md)にも使用できます。
+[音声から音声への翻訳](quickstart-translate-speech-java-jre.md)、[音声優先仮想アシスタント](quickstart-virtual-assistant-java-jre.md)、および[音声合成](quickstart-text-to-speech-java-jre.md)のクイックスタートも利用できます。
 
 必要に応じて、別のプログラミング言語や環境を選択します。<br/>
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
@@ -95,6 +95,7 @@ F11 キーを押すか、 **[Run]**  >  **[Debug]** の順に選択します。
 
 ## <a name="see-also"></a>関連項目
 
-- [クイック スタート:音声を翻訳する、Java (Windows、Linux)](quickstart-translate-speech-java-jre.md)
+- [クイック スタート:音声を翻訳する、Java (Windows、Linux、macOS)](quickstart-translate-speech-java-jre.md)
+- [クイック スタート:音声を合成する、Java (Windows、Linux、macOS)](quickstart-text-to-speech-java-jre.md)
 - [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
 - [言語モデルをカスタマイズする](how-to-customize-language-model.md)

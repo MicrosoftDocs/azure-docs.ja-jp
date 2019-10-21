@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 2fc9e91a34975642a666aa794694cfcc3321c93f
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 174f0f3d8984e102e098b4c981d3784f50c7d7c6
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962542"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345223"
 ---
 # <a name="quickstart-personalize-client-library-for-net"></a>クイック スタート:.NET 用 Personalize クライアント ライブラリ
 
@@ -33,9 +33,17 @@ Personalizer サービスを使用するこの C# クイック スタートで�
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
 
-## <a name="setting-up"></a>設定
+## <a name="using-this-quickstart"></a>このクイックスタートの使用法
 
-### <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
+このクイックスタートを使用するには、次のようないくつかの手順があります。
+
+* Azure portal で、Personalizer リソースを作成する
+* Azure portal の Personalizer リソースの **[設定]** ページで、モデルの更新頻度を変更する
+* コード エディターで、コード ファイルを作成し、コード ファイルを編集する
+* コマンド ラインまたはターミナルで、コマンド ラインから SDK をインストールする
+* コマンド ラインまたはターミナルで、コード ファイルを実行する
+
+## <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
 
 Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 さらに、以下を実行できます。
 
@@ -50,15 +58,15 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 
 Azure portal では、キーとエンドポイントのどちらの値も **[クイック スタート]** ページで取得できます。
 
-### <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
+## <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
 
-Azure portal の Personalizer リソースで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
+Azure portal の Personalizer リソースの **[設定]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
 
 ![モデルの更新頻度を変更する](./media/settings/configure-model-update-frequency-settings.png)
 
 Personalizer ループを初めてインスタンス化したときには、トレーニング元となる Reward API 呼び出しがないため、モデルは存在しません。 Rank 呼び出しは、各項目に対して等しい確率を返します。 それでも、アプリケーションは、RewardActionId の出力を使用して、常にコンテンツをランク付けする必要があります。
 
-### <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
+## <a name="create-a-new-c-application"></a>新しい C# アプリケーションを作成する
 
 好みのエディターまたは IDE で、新しい .NET Core アプリケーションを作成します。 
 
@@ -84,7 +92,7 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-sdk"></a>SDK のインストール
+## <a name="install-the-sdk"></a>SDK のインストール
 
 次のコマンドを使用して、アプリケーション ディレクトリ内に .NET 用 Personalizer クライアント ライブラリをインストールします。
 
@@ -225,6 +233,12 @@ static void Main(string[] args)
     } while (runLoop);
 }
 ```
+
+コード ファイルを実行する前に、[コンテンツの選択肢](#get-content-choices-represented-as-actions)を取得する次のメソッドを追加します。
+
+* GetUsersTimeOfDay
+* GetUsersTastePreference
+* GetKey
 
 ## <a name="request-a-rank"></a>ランクを要求する
 

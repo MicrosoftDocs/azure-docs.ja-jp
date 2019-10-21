@@ -2,18 +2,19 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: digital-twins
-author: kingdomofends
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
-ms.author: v-adgera
+ms.date: 09/30/2019
 ms.custom: include file
-ms.openlocfilehash: 10161d6b1d944857aa45d5152c77e107a208d98d
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: e1512db9bea2aa3eb1a56045a97b3402ac62d84e
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012187"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949026"
 ---
 次の表では、Azure Digital Twins で使用可能なロールを説明しています。
 

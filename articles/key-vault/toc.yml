@@ -42,10 +42,12 @@
               href: tutorial-python-windows-virtual-machine.md
     - name: ストレージ アカウント キー
       items:
-        - name: Azure CLI を使用したマネージド ストレージ アカウント キー
+        - name: Azure CLI を使用したストレージ アカウント キーの管理
           href: key-vault-ovw-storage-keys.md
-        - name: PowerShell を使用したマネージド ストレージ アカウント キー
+        - name: PowerShell を使用したストレージ アカウント キーの管理
           href: key-vault-overview-storage-keys-powershell.md
+        - name: コードでの Shared Access Signature トークンの取得
+          href: storage-keys-sas-tokens-code.md
     - name: Azure コンテナー
       href: ../container-instances/container-instances-managed-identity.md
     - name: Azure Resource Manager テンプレート
@@ -64,12 +66,12 @@
       items:
         - name: セキュリティの概要
           href: overview-security.md
-        - name: 組み込みのセキュリティ制御
-          href: key-vault-security-controls.md
         - name: セキュリティ ワールド
           href: key-vault-ovw-security-worlds.md
         - name: キー コンテナーのセキュリティ保護
           href: key-vault-secure-your-key-vault.md
+        - name: 組み込みのセキュリティ制御
+          href: key-vault-security-controls.md
     - name: 論理的な削除
       href: key-vault-ovw-soft-delete.md
     - name: Throttling
@@ -96,8 +98,12 @@
       items:
         - name: Recommendations
           href: security-recommendations.md
-    - name: App Service のマネージド ID を使用する
-      href: managed-identity.md
+    - name: 認証
+      items:
+        - name: App Service のマネージド ID を使用する
+          href: managed-identity.md
+        - name: アクセス制御ポリシーを使用する
+          href: key-vault-group-permissions-for-apps.md
     - name: Azure Key Vault のログ記録
       href: key-vault-logging.md
     - name: ファイアウォールの内側にアクセスする
@@ -112,8 +118,6 @@
       href: key-vault-soft-delete-cli.md
     - name: Azure PowerShell で Key Vault の論理的な削除を使用する
       href: key-vault-soft-delete-powershell.md
-    - name: グループを使用してアクセスを許可する
-      href: key-vault-group-permissions-for-apps.md
     - name: ファイアウォールと仮想ネットワークの構成
       href: key-vault-network-security.md
     - name: Java 開発

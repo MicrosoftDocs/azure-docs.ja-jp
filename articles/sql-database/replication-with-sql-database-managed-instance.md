@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 ms.date: 02/07/2019
-ms.openlocfilehash: 3b76dc546b46718378d9b22ad80e17849eaf532d
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b940be1d1b68e4e2a41e3f8353cb54fdb51bb886
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68884073"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338734"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Azure SQL Database マネージド インスタンス データベースにレプリケーションを構成する
 
@@ -41,7 +41,7 @@ ms.locfileid: "68884073"
 - パブリッシャー マネージド インスタンスがディストリビューターおよびサブスクライバーと同じ仮想ネットワーク上にあるか、[vNet ピアリング](../virtual-network/tutorial-connect-virtual-networks-powershell.md)が 3 つのエンティティすべての仮想ネットワーク間に確立されている。 
 - 接続では、レプリケーション参加者間で SQL 認証を使用します。
 - レプリケーション作業ディレクトリの Azure ストレージ アカウント共有。
-- Azure ファイル共有にアクセスするために、マネージド インスタンスの NSG のセキュリティ規則でポート 445 (TCP 送信) を開く必要があります。 
+- Azure ファイル共有にアクセスするために、マネージド インスタンスの NSG のセキュリティ規則でポート 445 (TCP 送信) を開く必要があります。  "Azure Storage \<ストレージ アカウント名> への接続に失敗しました。OS エラー 53" というエラーが発生した場合は、適切な SQL Managed Instance サブネットの NSG にアウトバウンド規則を追加する必要があります。
 
 
  > [!NOTE]

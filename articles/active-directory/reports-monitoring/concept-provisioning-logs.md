@@ -17,12 +17,12 @@ ms.date: 07/29/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74b2d80d21822758991ad8b3bc1d3bb44e2257f4
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 3d48aa3ead28ab0b0a22478a0c4183995483058a
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129515"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983494"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Azure Active Directory ポータルのプロビジョニング レポート (プレビュー)
 
@@ -85,7 +85,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 詳細な情報を取得するには、リスト ビューで項目を選択します。
 
-![詳細情報](./media/concept-provisioning-logs/detailed-information.png "詳細情報")
+![詳細情報](./media/concept-provisioning-logs/steps.png "フィルター")
 
 
 ## <a name="filter-provisioning-activities"></a>プロビジョニング アクティビティのフィルター処理
@@ -117,7 +117,7 @@ Azure Active Directory (Azure AD) のレポート アーキテクチャは、次
 
 **[アクション]** フィルターでは、次のものをフィルター処理できます。
 
-- Create 
+- 作成 
 - アップデート
 - 削除
 - Disable

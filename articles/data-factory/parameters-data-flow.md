@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 998f8080509e7ba18ea1a759dff2ed8b8742c910
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 733d3f9c4079193107f22178bdbde3a3ecf0e7ca
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68253101"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028214"
 ---
 # <a name="mapping-data-flow-parameters"></a>Mapping Data Flow のパラメーター
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Azure Data Factory の Mapping Data Flow では、パラメーターの使用をサポートします。 ご利用のデータ フローの定義内でパラメーターを定義できます。その後、これは自分の式全体で使用することができます。 パラメーター値は、データ フローの実行アクティブティ経由でパイプラインを呼び出すことにより設定できます。 データ フロー アクティビティの式で値を設定するには、次の 3 つのオプションがあります。
 

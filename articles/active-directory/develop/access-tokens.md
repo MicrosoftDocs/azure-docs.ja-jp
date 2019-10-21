@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d89d861b48b0c198b06a45613db668adcf551b39
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 780ec85438990959b7b0ac686e05ad5db3f9eedf
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074321"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291082"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft ID プラットフォーム アクセス トークン
 
@@ -114,6 +114,11 @@ JWT は次の 3 つの部分に分かれています。
 | `uti` | 不透明な文字列 | Azure がトークンの再検証に使用する内部要求。 リソースでこの要求を使用しないでください。 |
 | `rh` | 不透明な文字列 | Azure がトークンの再検証に使用する内部要求。 リソースでこの要求を使用しないでください。 |
 | `ver` | 文字列、`1.0` または `2.0` | アクセス トークンのバージョンを示します。 |
+
+
+> [!グループの超過要求] トークンのサイズが HTTP ヘッダー サイズの上限を超えないよう、Azure AD では、グループ要求に含まれるオブジェクト ID の数が制限されます。 超過制限 (SAML トークンの場合は 150、JWT トークンの場合は 200) を超えるグループのメンバーにユーザーがなっている場合、Azure AD は、グループ要求をトークンに出力しません。 代わりに、Graph API に照会してユーザーのグループ メンバーシップを取得するようアプリケーションに指示する超過要求がトークンに追加されます。
+> { ... "_claim_names": { "groups": "src1" }, { "_claim_sources": { "src1": { "endpoint":"[Graph Url to get this user's group membership from]" } }    
+    ... } 超過のシナリオは、[App Creation Scripts](https://github.com/Azure-Samples/active-directory-dotnet-webapp-groupclaims/blob/master/AppCreationScripts/) フォルダーにある `BulkCreateGroups.ps1` を使用してテストできます。
 
 #### <a name="v10-basic-claims"></a>v1.0 の基本要求
 

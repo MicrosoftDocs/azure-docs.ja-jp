@@ -4,16 +4,16 @@ description: この記事では、Azure EA Portal で管理者が行う一般的
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 7b594cef2fefa164ef900cbfd65fcf95d5d47b94
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 21e9d4af783ed5d9eb3ace1c8b5189163b89f8b0
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901136"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035209"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 
@@ -31,7 +31,7 @@ ms.locfileid: "70901136"
 
 Azure EA 管理者は、部署を作成した後、部署管理者を追加し、それぞれを部署に関連付けることができます。 部署管理者は、新しいアカウントを作成できます。 Azure EA サブスクリプションを作成するには、新しいアカウントが必要です。
 
-部署を追加する方法の詳細については、「Create an Azure EA department (Azure EA 部署を作成する)」を参照してください。
+部門管理者を追加する方法の詳細については、[Azure EA 部門管理者の作成](billing-ea-portal-get-started.md#add-a-department-admin)に関するセクションを参照してください。
 
 ## <a name="enterprise-user-roles"></a>エンタープライズ ユーザー ロール
 
@@ -87,10 +87,11 @@ Azure アカウントの詳細については、「Add an account (アカウン�
 - 元の登録と対象の登録の両方で、EA 管理者からの承認が必要です
   - 場合によっては、Microsoft が元の登録の EA 管理者に追加の承認を要求することがあります
 - アカウントの転送要件が満たさない場合は、登録の転送を検討してください。
-- アカウントの転送では、すべての EA 部署管理者を含め、すべてのサービス、サブスクリプション、アカウント、部署、登録の構造全体が転送されます。
-- アカウントの転送によって、元の登録の状態が "_転送済み_" に設定されます。 転送済みアカウントは、過去の使用状況レポートを作成する目的にのみ使用できます。
-- 転送済み状態の登録には、ロールやサブスクリプションを追加することはできません。 この状態では、登録に対して使用量を追加することができません。
-- 元の契約に残っている年額コミットメント残高は、将来の期間を含めて失われます。
+- アカウントの移行では、特定のアカウントに関連したすべてのサービスとサブスクリプションが移行されます。
+- 移行の完了後、移行元の登録では、移行されたアカウントが非アクティブとして表示されます。
+- アカウントの移行は、移行先の登録の開始日内であれば任意の日付までさかのぼることができます。
+- アカウントが示す終了日は、移行元の登録における移行の実施日に対応し、移行先の登録では開始日として表示されます。
+- 移行の実施日前にアカウントに関して生じた使用量についてはすべて、移行元の登録下に残されます。
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>エンタープライズ登録を新しいエンタープライズ登録に転送する
@@ -124,14 +125,14 @@ Azure アカウントの詳細については、「Add an account (アカウン�
 
 登録の転送を要求する場合は、次の情報を指定します。
 
-- 元の登録については、転送元の登録番号とアカウント
-- 対象の登録については、転送先の登録番号
+- 元の登録については、転送元の登録番号とアカウント。
+- 対象の登録については、転送先の登録番号。
 - 登録の転送の有効日には、対象の登録の開始日以降の日付を指定できます。 選択した日付は、既に発行されている超過分の請求書の使用量に影響を与えません。
 
 登録の転送前に注意するべきその他の点は、次のとおりです。
 
-- 元の登録と対象の登録の両方で、EA 管理者からの承認が必要です
-  - 場合によっては、Microsoft が元の登録の EA 管理者に追加の承認を要求することがあります
+- 元の登録と対象の登録の両方で、EA 管理者からの承認が必要です。
+  - 場合によっては、Microsoft が元の登録の EA 管理者に追加の承認を要求することがあります。
 - 登録の転送要件が満たさない場合は、アカウントの転送を検討してください。
 - 指定したアカウントのみが転送されます。 すべてのアカウントの転送を要求することができます。
 - 元の登録の状態は、アクティブまたは延長として保持されます。 有効期限が切れるまでは、この登録を使用し続けることができます。
@@ -208,7 +209,7 @@ Azure EA 登録を終了する場合は、次のことができます。
 6. 必要に応じて連絡先を追加し、 **[追加]** をクリックします。
 7. **[Save]** をクリックします。
 
-![連絡先を追加する[連絡先の追加] を示す例 ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
+![[連絡先の追加] ボックスを示す例 ](./media/billing-ea-portal-administration/create-ea-manage-partner-notification.png)
 
 ## <a name="azure-sponsorship-offer"></a>Azure スポンサー プラン
 Azure スポンサー プランは、Microsoft Azure の限定スポンサー アカウントです。 Microsoft が選択した一部のお客様のみに送られる招待メールを通じて利用可能になります。 Microsoft Azure スポンサー プランの対象となるお客様には、ご使用のアカウント ID に電子メールの招待状が送信されます。

@@ -2,18 +2,18 @@
 title: 'チュートリアル: Apache Kafka での Apache Spark 構造化ストリーミング - Azure HDInsight'
 description: Apache Spark ストリーミングを使用して、Apache Kafka 内外でデータを取得する方法について説明します。 このチュートリアルでは、Jupyter Notebook を使用して HDInsight の Spark からデータをストリーミングします。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
-ms.date: 05/22/2019
-ms.author: hrasheed
-ms.openlocfilehash: 32e47f688150333ac78091589d8a252641d4c7d6
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/08/2019
+ms.openlocfilehash: db2174451f01ef38dc69e4e14561175203e075c3
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076995"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72264261"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>チュートリアル:HDInsight で Apache Kafka による Apache Spark 構造化ストリーミングを使用する
 
@@ -41,8 +41,8 @@ Spark 構造化ストリーミングは、Spark SQL を基盤とするストリ�
 
 > [!IMPORTANT]  
 > このドキュメントの手順には、HDInsight の Spark クラスターと HDInsight の Kafka クラスターの両方を含む Azure リソース グループが必要です。 これらのクラスターは両方とも、Spark クラスターが Kafka クラスターと直接通信できるように、Azure Virtual Network 内に配置します。
-> 
-> 利便性のために、このドキュメントは、必要なすべての Azure リソースを作成できるテンプレートにリンクしています。 
+>
+> 利便性のために、このドキュメントは、必要なすべての Azure リソースを作成できるテンプレートにリンクしています。
 >
 > 仮想ネットワークでの HDInsight の使用方法の詳細については、[HDInsight 用の仮想ネットワークの計画](hdinsight-plan-virtual-network-deployment.md)に関するドキュメントを参照してください。
 
@@ -94,7 +94,7 @@ kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip")
 | `write` | `writeStream` |
 | `save` | `start` |
 
-ストリーミング操作では、30,000 ミリ秒後にストリーミングを停止する、`awaitTermination(30000)` も使用されています。 
+ストリーミング操作では、30,000 ミリ秒後にストリーミングを停止する、`awaitTermination(30000)` も使用されています。
 
 Kafka で構造化ストリーミングを使用するには、プロジェクトに `org.apache.spark : spark-sql-kafka-0-10_2.11` パッケージの依存関係が必要です。 このパッケージのバージョンは、HDInsight の Spark のバージョンと一致する必要があります。 Spark 2.2.0 (HDInsight 3.6 で使用可能) の場合、さまざまなプロジェクトの種類の依存関係情報を [https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar](https://search.maven.org/#artifactdetails%7Corg.apache.spark%7Cspark-sql-kafka-0-10_2.11%7C2.2.0%7Cjar) で確認できます。
 
@@ -112,7 +112,7 @@ Kafka で構造化ストリーミングを使用するには、プロジェク�
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 
-HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka ブローカーへのアクセスは提供されていません。 Kafka を使用するものは、すべて同じ Azure 仮想ネットワークに属している必要があります。 このチュートリアルでは、Kafka クラスターと Spark クラスターの両方を同じ Azure 仮想ネットワーク内に配置します。 
+HDInsight の Apache Kafka では、パブリック インターネットを介した Kafka ブローカーへのアクセスは提供されていません。 Kafka を使用するものは、すべて同じ Azure 仮想ネットワークに属している必要があります。 このチュートリアルでは、Kafka クラスターと Spark クラスターの両方を同じ Azure 仮想ネットワーク内に配置します。
 
 次の図に、Spark と Kafka の間の通信フローを示します。
 
@@ -151,12 +151,12 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     | [クラスター ログイン パスワード] | クラスターの管理者ユーザー パスワード。 |
     | [SSH ユーザー名] | クラスター用に作成する SSH ユーザー。 |
     | [SSH パスワード] | SSH ユーザーのパスワード。 |
-   
+
     ![カスタマイズされたテンプレートのスクリーンショット](./media/hdinsight-apache-kafka-spark-structured-streaming/spark-kafka-template.png)
 
 3. **使用条件**を読み、 **[上記の使用条件に同意する]** をオンにします。
 
-4. 最後に、 **[ダッシュボードにピン留めする]** をオンにし、 **[購入]** をクリックします。 
+4. **[購入]** を選択します。
 
 > [!NOTE]  
 > クラスターの作成には最大で 20 分かかります。
@@ -184,14 +184,17 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
 
 3. **[New]\(新規\)、[Spark]** の順に選択して、ノートブックを作成します。
 
-4. 次の情報を Notebook セルに入力して、Notebook で使用されるパッケージを読み込みます。 **Ctrl + Enter** キーを使用してコマンドを実行します。
+4. Spark ストリーミングには、マイクロバッチ処理があります。つまり、データをバッチとして受信し、データのバッチに対して Executor が実行されます。 Executor のアイドル タイムアウトがバッチの処理にかかる時間よりも少ない場合、Executor は常に追加され、削除されます。 Executor のアイドル タイムアウトがバッチ期間より長い場合、Executor は削除されません。 そのため、**ストリーミング アプリケーションを実行する場合は、spark.dynamicAllocation.enabled を false に設定して、動的割り当てを無効にすることをお勧めします。**
 
-    ```
+    次の情報を Notebook セルに入力して、Notebook で使用されるパッケージを読み込みます。 **Ctrl + Enter** キーを使用してコマンドを実行します。
+
+    ```configuration
     %%configure -f
     {
         "conf": {
             "spark.jars.packages": "org.apache.spark:spark-sql-kafka-0-10_2.11:2.2.0",
-            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11"
+            "spark.jars.excludes": "org.scala-lang:scala-reflect,org.apache.spark:spark-tags_2.11",
+            "spark.dynamicAllocation.enabled": false
         }
     }
     ```
@@ -213,10 +216,10 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     // Load the data from the New York City Taxi data REST API for 2016 Green Taxi Trip Data
     val url="https://data.cityofnewyork.us/resource/pqfs-mqru.json"
     val result = scala.io.Source.fromURL(url).mkString
-    
+
     // Create a dataframe from the JSON data
     val taxiDF = spark.read.json(Seq(result).toDS)
-    
+
     // Display the dataframe containing trip data
     taxiDF.show()
     ```
@@ -227,7 +230,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     // The Kafka broker hosts and topic used to write to Kafka
     val kafkaBrokers="YOUR_KAFKA_BROKER_HOSTS"
     val kafkaTopic="tripdata"
-    
+
     println("Finished setting Kafka broker and topic configuration.")
     ```
 
@@ -247,7 +250,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     import org.apache.spark.sql._
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
-    
+
     // Define a schema for the data
     val schema = (new StructType).add("dropoff_latitude", StringType).add("dropoff_longitude", StringType).add("extra", StringType).add("fare_amount", StringType).add("improvement_surcharge", StringType).add("lpep_dropoff_datetime", StringType).add("lpep_pickup_datetime", StringType).add("mta_tax", StringType).add("passenger_count", StringType).add("payment_type", StringType).add("pickup_latitude", StringType).add("pickup_longitude", StringType).add("ratecodeid", StringType).add("store_and_fwd_flag", StringType).add("tip_amount", StringType).add("tolls_amount", StringType).add("total_amount", StringType).add("trip_distance", StringType).add("trip_type", StringType).add("vendorid", StringType)
     // Reproduced here for readability
@@ -272,7 +275,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     //   .add("trip_distance", StringType)
     //   .add("trip_type", StringType)
     //   .add("vendorid", StringType)
-    
+
     println("Schema declared")
     ```
 
@@ -281,10 +284,10 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     ```scala
     // Read a batch from Kafka
     val kafkaDF = spark.read.format("kafka").option("kafka.bootstrap.servers", kafkaBrokers).option("subscribe", kafkaTopic).option("startingOffsets", "earliest").load()
-    
+
     // Select data and write to file
     val query = kafkaDF.select(from_json(col("value").cast("string"), schema) as "trip").write.format("parquet").option("path","/example/batchtripdata").option("checkpointLocation", "/batchcheckpoint").save()
-    
+
     println("Wrote data to file")
     ```
 
@@ -300,7 +303,7 @@ Azure 仮想ネットワークを作成し、その仮想ネットワーク内�
     ```scala
     // Stream from Kafka
     val kafkaStreamDF = spark.readStream.format("kafka").option("kafka.bootstrap.servers", kafkaBrokers).option("subscribe", kafkaTopic).option("startingOffsets", "earliest").load()
-    
+
     // Select data from the stream and write to file
     kafkaStreamDF.select(from_json(col("value").cast("string"), schema) as "trip").writeStream.format("parquet").option("path","/example/streamingtripdata").option("checkpointLocation", "/streamcheckpoint").start.awaitTermination(30000)
     println("Wrote data to file")
@@ -325,7 +328,7 @@ Azure Portal を使用してリソース グループを削除するには:
 
 > [!WARNING]  
 > HDInsight クラスターの課金は、クラスターが作成されると開始し、クラスターが削除されると停止します。 課金は分単位なので、クラスターを使わなくなったら必ず削除してください。
-> 
+>
 > HDInsight クラスター上の Kafka を削除すると、Kafka に格納されているすべてのデータが削除されます。
 
 ## <a name="next-steps"></a>次の手順

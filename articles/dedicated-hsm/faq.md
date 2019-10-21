@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 5/8/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b79ed7ea3113f097f767ad7ff8bdc47b4e4916eb
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 338977c236ebb8f1b800eb6c28747a010e708300
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883569"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244205"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 
@@ -58,9 +58,9 @@ Microsoft によってプロビジョニングされると、Gemalto から HSM 
 
 Microsoft は、専用 HSM サービス経由で Gemalto SafeNet Luna Network HSM のみを提供しており、ユーザーが提供するデバイスをホストすることはできません。
 
-### <a name="q-does-azure-dedicated-hsm-support-payment-pinetf-features"></a>Q:Azure Dedicated HSM は、支払い (PIN/ETF) 機能をサポートしますか。
+### <a name="q-does-azure-dedicated-hsm-support-payment-pineft-features"></a>Q:Azure Dedicated HSM は、支払い (PIN/EFT) 機能をサポートしますか。
 
-Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) デバイスを使用します。 これらのデバイスは、支払い HSM 固有の機能 (PIN や ETF など) または認定をサポートしていません。 Azure Dedicated HSM サービスでの支払い HSM の将来のサポートを希望する場合は、Microsoft アカウント担当者までその旨をお知らせください。
+Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) デバイスを使用します。 これらのデバイスは、支払い HSM 固有の機能 (PIN や EFT など) または認定をサポートしていません。 Azure Dedicated HSM サービスでの支払い HSM の将来のサポートを希望する場合は、Microsoft アカウント担当者までその旨をお知らせください。
 
 ### <a name="q-which-azure-regions-is-dedicated-hsm-available-in"></a>Q:どの Azure リージョンで Dedicated HSM を使用できますか。
 
@@ -97,7 +97,7 @@ Azure 専用 HSM サービスは、SafeNet Luna Network HSM 7 (モデル A790) �
 
 ### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>Q: 専用 HSM 内に格納されたキーを使用して、他の Azure サービスで使用されるデータを暗号化できますか。
 
-いいえ。 Azure 専用 HSM は、お使いの仮想ネットワーク内からのみアクセス可能です。
+No. Azure 専用 HSM は、お使いの仮想ネットワーク内からのみアクセス可能です。
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>Q: 既存のオンプレミスの HSM から専用 HSM にキーをインポートできますか。
 
@@ -143,7 +143,7 @@ Azure 専用 HSM は、移行のシナリオに最適です。 つまり、既�
 
 ### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>Q: 専用 HSM は、Office 365 カスタマー キー、Azure Information Protection、Azure Data Lake Store、Disk Encryption、Azure Storage 暗号化、Azure SQL TDE で使用できますか。
 
-いいえ。 専用 HSM は、お客様のプライベート IP アドレス空間に直接プロビジョニングされるため、他の Azure または Microsoft サービスからアクセスすることはできません。
+No. 専用 HSM は、お客様のプライベート IP アドレス空間に直接プロビジョニングされるため、他の Azure または Microsoft サービスからアクセスすることはできません。
 
 ## <a name="administration-access-and-control"></a>管理、アクセス、および制御
 
@@ -161,7 +161,7 @@ HSM デバイスには、既定の管理者ユーザーと通常の既定のパ�
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Q:Microsoft または Microsoft の担当者は、ユーザーの専用 HSM 内のキーにアクセスできますか。
 
-いいえ。 お客様に割り当てられている専用 HSM に格納されたキーに対しては、Microsoft はアクセス権を保持しません。
+No. お客様に割り当てられている専用 HSM に格納されたキーに対しては、Microsoft はアクセス権を保持しません。
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>Q: 自分に割り当てられた HSM 上のソフトウェア/ファームウェアをアップグレードできますか。
 
@@ -195,7 +195,7 @@ HSM およびパーティションの管理には、Gemalto のHSM クライア�
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Q:オンプレミス ネットワークから Azure 専用 HSM を使った高可用性グループに、Luna 5/6 HSM を追加することはできますか。
 
-いいえ。
+No.
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>Q: 1 つの単一アプリケーションから同じ高可用性構成にいくつの HSM を追加できますか。
 

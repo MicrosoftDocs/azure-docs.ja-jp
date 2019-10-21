@@ -5,40 +5,43 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: df9cfb0c0e36f54c8b1fbee4def552c78e9d42c1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.openlocfilehash: 9862866d5cddb227d9417ac15db6b8ea851507e6
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61269168"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030297"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Mapping Data Flow の式ビルダー
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 Azure Data Factory の Mapping Data Flow には、データ変換の式を入力できる式ボックスが表示されます。 このボックス内で、データ フローからの列、フィールド、変数、パラメーター、関数を使用します。 式を作成するには、式ビルダーを使用します。式ビルダーは、変換内の式テキスト ボックスをクリックすると起動します。 変換の列を選択したときに、[計算列] のオプションが表示されることもあります。 このオプションをクリックすると、起動した式ビルダーも表示されます。
 
-![式ビルダー](media/data-flow/expression.png "式ビルダー")
+![式ビルダー](media/data-flow/xpb1.png "式ビルダー")
 
 式ビルダー ツールでは、テキスト エディター オプションが既定で設定されています。 オートコンプリート機能では、Azure Data Factory のデータ フロー全体からオブジェクト モデルが読み取られ、そのモデルが構文チェックされ、強調表示されます。
 
 ![式ビルダーのオートコンプリート](media/data-flow/expb1.png "式ビルダーのオートコンプリート")
 
-## <a name="currently-working-on-field"></a>[Currently Working on]\(現在作業中\) フィールド
+## <a name="build-schemas-in-output-schema-pane"></a>[Output Schema]\(出力スキーマ\) ウィンドウにスキーマを作成する
 
-![式ビルダー](media/data-flow/exp3.png "現在作業中")
+![複合列の追加](media/data-flow/complexcolumn.png "列の追加")
 
-式ビルダー UI の左上には、[Currently Working On]\(現在作業中\) というフィールドと、現在作業中のフィールドの名前が表示されます。 UI で作成した式は、その現在作業中のフィールドに適用されます。 別のフィールドを変換する場合は、現在の作業を保存した後、このドロップダウンを使用して別のフィールドを選択し、他のフィールドの式を作成します。
+左側の [Output Schema]\(出力スキーマ\) ウィンドウに、変更中の列とスキーマに追加している列が表示されます。 ここでは、単純なデータ構造と複雑なデータ構造を対話形式で作成できます。 [列の追加] を使用してフィールドを追加し、[Add subcolumn]\(サブ列の追加\) を使用して階層を構築します。
+
+![サブ列の追加](media/data-flow/addsubcolumn.png "サブ列の追加")
 
 ## <a name="data-preview-in-debug-mode"></a>デバッグ モードでのデータのプレビュー
 
 ![式ビルダー](media/data-flow/exp4b.png "式データのプレビュー")
 
-式を処理しているときに、Azure Data Factory のデータ フロー デザイン サーフェイスから、必要に応じてデバッグ モードをオンにできます。これにより、作業しながら、作成中の式のデータの結果をプレビューできます。 式に対して、リアルタイムのライブ デバッグが可能です。
+データ フロー式を処理しているときに、Azure Data Factory のデータ フロー デザイン サーフェイスからデバッグ モードをオンにします。これにより、作業しながら、作成中の式のデータの結果をプレビューできます。 式に対して、リアルタイムのライブ デバッグが可能です。
 
 ![デバッグ モード](media/data-flow/debugbutton.png "[Debug]\(デバッグ\) ボタン")
 
+[更新] ボタンをクリックして、式の結果をソースのライブ サンプルに対してリアルタイムで更新します。
 
 ![式ビルダー](media/data-flow/exp5.png "式データのプレビュー")
 

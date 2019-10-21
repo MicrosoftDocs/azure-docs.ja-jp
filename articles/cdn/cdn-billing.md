@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 09/13/2019
 ms.author: magattus
-ms.openlocfilehash: 2fd3d2f8fbc98d8c7b19cbcc365748cc088d76fd
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 8704d715a20b94dc170f232b07a0acd54bb1e6f1
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594092"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996810"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN での課金について
 
@@ -57,9 +57,12 @@ Azure CDN の使用により、オブジェクトの配信元として使用さ�
 
 - 使用された実際の GB:ソース オブジェクトの実際のストレージ。
 
+- トランザクション:キャッシュに入力するための必要に応じて。
+
 - GB 単位の転送:CDN キャッシュに入力するために転送されたデータの量。
 
-- トランザクション:キャッシュに入力するための必要に応じて。
+> [!NOTE]
+> 2019 年 10 月以降、Microsoft の Azure CDN を使用している場合、Azure でホストされている配信元から CDN Pop へのデータ転送のコストは無料です。 Verizon から Azure CDN および Akamai から Azure CDN には、以下で説明する料金が適用されます。
 
 Azure Storage の課金の詳細については、「[Azure Storage の課金について - 帯域幅、トランザクション、容量](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/07/08/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity/)」を参照してください。
 
@@ -83,6 +86,36 @@ CDN POP は、キャッシュへの入力を行う必要があるたびに、キ
 - オブジェクトを読み込む必要があるノードの数:ノードが配信元からオブジェクトを読み込むたびに、課金対象トランザクションが発生します。 その結果、(より多くのノードからアクセスされる) グローバルなコンテンツは、より多くの課金対象トランザクションになります。
 
 - TTL の影響:オブジェクトの TTL が長いと、配信元からフェッチする必要がある頻度は低くなります。 これは、ブラウザーなどのクライアントは、オブジェクトをより長時間キャッシュできることも意味し、CDN に対するトランザクションを減らすことができます。
+
+## <a name="which-origin-services-are-eligible-for-free-data-transfer-with-azure-cdn-from-microsoft"></a>Microsoft の Azure CDN を使用した無料のデータ転送の対象となるのは、どの配信元サービスですか。 
+CDN の配信元として次のいずれかの Azure サービスを使用した場合、配信元から CDN Pop へのデータ転送は課金されません。 
+
+- Azure Storage
+- Azure Media Services
+- Azure Virtual Machines
+- Virtual Network
+- Load Balancer
+- Application Gateway
+- Azure DNS
+- ExpressRoute
+- VPN Gateway
+- Traffic Manager
+- Network Watcher
+- Azure Firewall
+- Azure Front Door Service
+- Azure Bastion
+- Azure App Service
+- Azure Functions
+- Azure Data Factory
+- Azure API Management
+- Azure Batch 
+- Azure Data Explorer
+- HDInsight
+- Azure Cosmos DB
+- Azure Data Lake Store
+- Azure Machine Learning サービス 
+- Azure SQL データベース
+- Azure Cache for Redis
 
 ## <a name="how-do-i-manage-my-costs-most-effectively"></a>最も効果的にコストを管理する方法を教えてください。
 コンテンツにはできるだけ長い TTL を設定します。 

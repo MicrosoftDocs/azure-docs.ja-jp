@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a4c28f5892e8e885004c7fcc721b873a96c52ac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 635d04e049b66452fa000048082aced9aa62c20a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67104497"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241375"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>チュートリアル: Azure Active Directory と CS Stars の統合
 
@@ -110,7 +110,7 @@ CS Stars で Azure AD シングル サインオンを構成するには、次の
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<subdomain>.csstars.com/enterprise/`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[CS Stars クライアント サポート チーム](https://www.marshclearsight.com/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[CS Stars クライアント サポート チーム](http://www.riskonnectclearsight.com/support/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 4. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[ダウンロード]** をクリックして、要件のとおりに指定したオプションから**フェデレーション メタデータ XML** をダウンロードして、お使いのコンピューターに保存します。
 
@@ -128,7 +128,7 @@ CS Stars で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="configure-cs-stars-single-sign-on"></a>CS Stars のシングル サインオンの構成
 
-**CS Stars** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [CS Stars サポート チーム](https://www.marshclearsight.com/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**CS Stars** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [CS Stars サポート チーム](http://www.riskonnectclearsight.com/support/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
@@ -183,7 +183,7 @@ CS Stars で Azure AD シングル サインオンを構成するには、次の
 
 ### <a name="create-cs-stars-test-user"></a>CS Stars テスト ユーザーの作成
 
-このセクションでは、CS Stars で Britta Simon というユーザーを作成します。  [CS Stars サポート チーム](https://www.marshclearsight.com/support/)と連携して CS Stars プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、CS Stars で Britta Simon というユーザーを作成します。  [CS Stars サポート チーム](http://www.riskonnectclearsight.com/support/)と連携して CS Stars プラットフォームでユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト 
 

@@ -3,15 +3,16 @@ title: Azure PowerShell スクリプト - Azure Cosmos DB Table API の RU/秒�
 description: Azure PowerShell スクリプト - Azure Cosmos DB Table API の RU/秒を更新する
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 2c4aab4fa6d4ddf1a99ae86f4fc10c5e84757d30
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: c9a210636dc277eec106248b13ea42ec58bf15b5
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603789"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178677"
 ---
 # <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB - Table API のテーブルの RU/秒を更新する
 

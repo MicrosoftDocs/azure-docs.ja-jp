@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 548f37d6a0d4390fb98ceaee7b59314400debb38
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2847a25411ed0125f4af0a84f30cd3d9d630eb84
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986561"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299622"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -102,9 +102,7 @@ Resource Manager モデルでは、Azure Active Directory を使用して、リ�
 * [Azure Storage Resource Provider REST API リファレンス](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   この API リファレンスでは、ストレージ アカウントをプログラムで管理するときに使用できる API について説明します。
-* [サブスクリプションにアクセスするための Resource Manager 認証 API の使用](../../azure-resource-manager/resource-manager-api-authentication.md)
 
-  この記事では、 Resource Manager API を使用して認証する方法について説明しています。
 * [Role-Based Access Control for Microsoft Azure from Ignite (Ignite での Microsoft Azure 向けロールベースのアクセス制御の説明)](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
 
   これは、2015 MS Ignite カンファレンスで行われたチャンネル 9 のビデオのリンクです。 このセッションでは、Azure のアクセス制御とレポート機能について話し、Azure Active Directory を使用して Azure サブスクリプションに対するアクセスをセキュリティで保護する場合のベスト プラクティスを探っています。
@@ -239,7 +237,7 @@ Shared Access Signature と Stored Access Policy の詳しい使用方法と例�
   * [Constructing a service SAS (サービス SAS の構築)](https://msdn.microsoft.com/library/dn140255.aspx)
   * [Constructing an account SAS (アカウント SAS の構築)](https://msdn.microsoft.com/library/mt584140.aspx)
 
-* Authentication
+* 認証
 
   * [Azure Storage サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Shared Access Signature の概要チュートリアル

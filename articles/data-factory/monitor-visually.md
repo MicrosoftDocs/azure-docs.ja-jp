@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 99ae0139d7b12c0bfb87030d2b749b12834a4f96
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f7c27bde3806684045bc43f8ff99eefb14c8d04a
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141098"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029145"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure Data Factory を視覚的に監視する
 Azure Data Factory は、クラウドベースのデータ統合サービスです。 これを使用して、データ移動とデータ変換を調整し、自動化するためのデータ主導型ワークフローをクラウド内に作成できます。 Azure Data Factory を使用して、以下を実行できます。
@@ -161,7 +161,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="alerts"></a>アラート
 
-Data Factory で、サポートされるメトリックに対してアラートを生成できます。 Data Factory の監視ページで **[監視]**  >  **[Alerts & Metrics]\(アラートとメトリック\)**   の順に選択して開始します。
+Data Factory で、サポートされるメトリックに対してアラートを生成できます。 Data Factory の監視ページで **[監視]**  >  **[Alerts & Metrics]\(アラートとメトリック\)** の順に選択して開始します。
 
 ![Data Factory の監視ページ](media/monitor-visually/alerts01.png)
 
@@ -171,7 +171,7 @@ Data Factory で、サポートされるメトリックに対してアラート�
 
 ### <a name="create-alerts"></a>アラートを作成する
 
-1.  **[新しいアラート ルール]**   を選択して新しいアラートを作成します。
+1.  **[新しいアラート ルール]** を選択して新しいアラートを作成します。
 
     ![[新しいアラート ルール] ボタン](media/monitor-visually/alerts02.png)
 

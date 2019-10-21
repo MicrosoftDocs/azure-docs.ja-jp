@@ -3,9 +3,8 @@ title: Azure Security Center でレコメンデーションを修復する | Mic
 description: このドキュメントでは、Azure リソースを保護してセキュリティ ポリシーを順守し続けるために、Azure Security Center でレコメンデーションを修復する方法について説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 8be947cc-cc86-421d-87a6-b1e23077fd50
 ms.service: security-center
 ms.devlang: na
@@ -13,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2019
-ms.author: v-mohabe
-ms.openlocfilehash: a32e344ffe33f411bae85763ae3b919040c1109b
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.author: memildin
+ms.openlocfilehash: 9bd1586193d2e36c370217e37b77409298821a67
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575567"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71201002"
 ---
-# <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center のセキュリティ レコメンデーション
+# <a name="remediate-recommendations-in-azure-security-center"></a>Azure Security Center の修復レコメンデーション
 
 レコメンデーションは、リソースのセキュリティを強化する方法を提案します。  レコメンデーションに記載されている修復手順に従って、レコメンデーションを実装します。 
 

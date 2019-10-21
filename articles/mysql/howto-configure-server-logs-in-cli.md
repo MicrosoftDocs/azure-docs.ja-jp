@@ -7,12 +7,12 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: e6d25a4d8b470580626cab4a84f9d912a3f79f75
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 0ab4162d11642ec7df53040bd744711002227497
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612652"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030624"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Azure CLI を使用して低速クエリ ログを構成してアクセスする
 Azure CLI (Azure のコマンドライン ユーティリティ) を使用して Azure Database for MySQL の低速クエリ ログをダウンロードできます。
@@ -25,7 +25,7 @@ Azure CLI (Azure のコマンドライン ユーティリティ) を使用して
 ## <a name="configure-logging"></a>ログの構成
 以下の手順に従って、MySQL 低速クエリ ログにアクセスするサーバーを構成できます。
 1. **slow\_query\_log** パラメーターをオンに設定して低速クエリ ログ記録を有効にします。
-2. **long\_query\_time** や **log\_slow\_admin\_statements** などのパラメーターを調整します。
+2. **long\_query\_time** や **log\_slow\_admin\_statements** などのパラメーターを調整します。
 
 これらのパラメーターの値を Azure CLI で設定する方法については、[サーバーのパラメーターを構成する方法](howto-configure-server-parameters-using-cli.md)に関する記事をご覧ください。
 

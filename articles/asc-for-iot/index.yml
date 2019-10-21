@@ -1,75 +1,105 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Security Center for IoT のドキュメント
+summary: Azure Security Center for IoT は、包括的な IoT デバイス脅威保護を提供する Azure ベースのクラウド セキュリティ サービスです。
 metadata:
-  title: Azure Security Center for IoT のドキュメント - チュートリアル、クイックスタート | Microsoft Doc
-  meta.description: Azure Security Center for IoT unifies your device security management and enables advanced threat detection and security posture management across your IoT solution.
-  services: asc-for-iot
-  author: mlottner
-  manager: rkarlin
+  title: Azure Security Center for IoT のドキュメント
+  description: Azure Security Center for IoT は、包括的な IoT デバイス脅威保護を提供する Azure ベースのクラウド セキュリティ サービスです。
+  services: service
   ms.service: asc-for-iot
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/23/19
-  ms.author: rkarlin
-abstract:
-  description: "Azure Security Center for IoT を使用して、既存のサイバーセキュリティ ビューをご使用の IoT ソリューション全体に拡張しましょう。 Azure に関連するすべてのリソースのセキュリティを完全に概観できるようになります。 迅速なデプロイ オプションがあり、IoT Hub モジュール ツインとの完全な統合が行われるため、幅広いカスタム オプションを利用し、現在のデバイス管理ツールと容易に統合できます。\_"
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Azure Security Center for IoT に対するご使用の IoT Hub の有効化、セキュリティ エージェントのインストール、潜在的な脅威の視覚化を行う方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/deploy.svg
-            text: Azure Security Center for IoT を有効にする
-            href: /azure/asc-for-iot/quickstart-onboard-iot-hub
-          - image:
-              src: media/index/get-started.svg
-            text: IoT 向け Azure Security の概要
-            href: /azure/asc-for-iot/getting-started
-  - title: ハウツー ガイド
-    items:
-      - type: paragraph
-        text: セキュリティ ポリシーを定義する方法、悪意のあるアクティビティからデバイスを保護する方法、セキュリティのアラートおよびインシデントに対応する方法について説明します。
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/asc-for-iot/how-to-investigate-device">Azure Security Center for IoT を使用した脅威の検出</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure のセキュリティの概要
-            href: 'https://docs.microsoft.com/learn/azure'
-            image:
-              src: media/index/tutorial.svg
-              href: 'https://docs.microsoft.com/learn/azure'
-  - title: Azure Security Center for IoT のビデオ
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Microsoft Azure Security Center for IoT - 概要
-            href: 'https://youtu.be/pq5uSp9u_x0'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_video.svg'
-              href: 'https://youtu.be/pq5uSp9u_x0'
-          - title: Microsoft Azure Security Center for IoT - ソリューション
-            href: 'https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek'
-            image:
-              src: 'https://docs.microsoft.com/media/common/i_video.svg'
-              href: 'https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek'
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://azure.microsoft.com/updates/?product=iotsecurity">サービスの更新情報</a>'
+  ms.collection: M365-security-compliance
+  author: mlottner
+  ms.author: mlottner
+  ms.date: 09/23/2019
+  ms.openlocfilehash: 5eb0d39d1dbe748b34dd8f5a72ae7796125eae44
+  ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71348533"
+landingContent:
+- title: Azure Security Center for IoT について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Security Center for IoT とは
+      url: overview.md
+    - text: ソリューションの計画
+      url: service-prerequisites.md
+  - linkListType: architecture
+    links:
+    - text: Azure Security Center for IoT のアーキテクチャの理解
+      url: architecture.md
+    - text: Azure Security Center for IoT エージェント
+      url: security-agent-architecture.md
+    - text: Edge のセキュリティ モジュール
+      url: security-edge-architecture.md
+- title: Azure Security Center for IoT を IoT Hub にオンボードする
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Azure Security Center for IoT の使用を開始する
+      url: getting-started.md
+    - text: IoT Hub
+      url: iot-hub-integration.md
+    - text: セキュリティ エージェント
+      url: security-agents.md
+- title: ソリューションを構成する
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: IoT Hub 内で Azure Security Center for IoT を有効にする
+      url: quickstart-onboard-iot-hub.md
+    - text: ソリューションを構成する
+      url: quickstart-configure-your-solution.md
+    - text: Azure Security Center for IoT モジュール ツインを作成する
+      url: quickstart-create-security-twin.md
+    - text: カスタムのセキュリティのアラートを作成する
+      url: quickstart-create-custom-alerts.md
+- title: ソリューションをカスタマイズする
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: エージェントを選択する
+      url: how-to-deploy-agent.md
+    - text: Windows 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
+      url: how-to-deploy-windows-cs.md
+    - text: Linux 用の Azure Security Center for IoT の C# ベースのセキュリティ エージェントをデプロイする
+      url: how-to-deploy-linux-cs.md
+    - text: Linux 用の Azure Security Center for IoT の C ベースのセキュリティ エージェントをデプロイする
+      url: how-to-deploy-linux-c.md
+    - text: Edge のセキュリティ モジュールをデプロイする
+      url: how-to-deploy-edge.md
+    - text: セキュリティ エージェントを構成する
+      url: how-to-agent-configuration.md
+    - text: 独自のセキュリティ メッセージを送信する
+      url: how-to-send-security-messages.md
+    - text: 未加工のセキュリティ データにアクセスする
+      url: how-to-security-data-access.md
+    - text: デバイスを調査する
+      url: how-to-investigate-device.md
+- title: セキュリティ エージェントのトラブルシューティングを行う
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: セキュリティ エージェントのトラブルシューティング ガイド (Linux)
+      url: troubleshoot-agent.md
+    - text: LocalConfiguration.json ファイルについて - C エージェント
+      url: azure-iot-security-local-configuration-c.md
+    - text: ローカル構成ファイルについて - C# エージェント
+      url: azure-iot-security-local-configuration-csharp.md
+- title: Azure Security Center for IoT ソリューションのリソース
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Azure Security Center for IoT とは
+      url: https://youtu.be/pq5uSp9u_x0
+    - text: Azure Security Center for IoT の概要
+      url: https://www.youtube.com/watch?time_continue=5&v=YOqkahQsKek
+  - linkListType: reference
+    links:
+    - text: よく寄せられる質問
+      url: resources-frequently-asked-questions.md
+    - text: 価格と関連コスト
+      url: concept-pricing.md

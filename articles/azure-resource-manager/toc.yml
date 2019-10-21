@@ -7,7 +7,6 @@
     - name: テンプレートの概要
       href: template-deployment-overview.md
 - name: クイック スタート
-  expanded: true
   items:
     - name: テンプレートの作成 - ポータル
       href: resource-manager-quickstart-create-templates-use-the-portal.md
@@ -19,39 +18,65 @@
       href: resource-manager-quickstart-create-templates-use-intellij.md
 - name: チュートリアル
   items:
-    - name: テンプレート リファレンスの利用
-      href: resource-manager-tutorial-create-encrypted-storage-accounts.md
-    - name: 複数のインスタンスの作成
-      displayName: 'iteration,copy'
-      href: resource-manager-tutorial-create-multiple-instances.md
-    - name: リソースのデプロイ順序の設定
-      displayName: 'dependent resources, dependency'
-      href: resource-manager-tutorial-create-templates-with-dependent-resources.md
-    - name: 使用条件
-      href: resource-manager-tutorial-use-conditions.md
-    - name: Key Vault の統合
-      displayName: secrets
-      href: resource-manager-tutorial-use-key-vault.md
-    - name: リンク済みテンプレートの作成
-      href: resource-manager-tutorial-create-linked-templates.md
-    - name: VM 拡張機能のデプロイ
-      displayName: virtual machine extensions
-      href: resource-manager-tutorial-deploy-vm-extensions.md
-    - name: SQL 拡張機能のデプロイ
-      href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
-    - name: アーティファクトのセキュリティ保護
-      href: resource-manager-tutorial-secure-artifacts.md
-    - name: Azure Pipelines を使用した継続的インテグレーション
-      displayName: DevOps
-      href: resource-manager-tutorial-use-azure-pipelines.md
-    - name: 安全なデプロイ プラクティスの使用
-      displayName: adm
-      href: deployment-manager-tutorial.md
-    - name: Deployment Manager の正常性チェックの使用
-      displayName: adm
-      href: deployment-manager-tutorial-health-check.md
-    - name: テンプレートのデプロイに関するトラブルシューティング
-      href: resource-manager-tutorial-troubleshoot.md
+    - name: 初級
+      items:
+        - name: 1 - 最初のテンプレートを作成する
+          href: template-tutorial-create-first-template.md
+        - name: 2 - リソースを追加する
+          href: template-tutorial-add-resource.md
+        - name: 3 - パラメーターを追加する
+          href: template-tutorial-add-parameters.md
+        - name: 4 - テンプレート関数を追加する
+          href: template-tutorial-add-functions.md
+        - name: 5 - 変数を追加する
+          href: template-tutorial-add-variables.md
+        - name: 6 - 出力を追加する
+          href: template-tutorial-add-outputs.md
+        - name: 7 - エクスポートしたテンプレートを使用する
+          href: template-tutorial-export-template.md
+        - name: 8 - クイックスタート テンプレートを使用する
+          href: template-tutorial-quickstart-template.md
+        - name: 9 - タグを追加する
+          href: template-tutorial-add-tags.md
+        - name: 10 - パラメーター ファイルを使用する
+          href: template-tutorial-use-parameter-file.md
+    - name: 詳細
+      items:
+        - name: テンプレート リファレンスの利用
+          href: resource-manager-tutorial-create-encrypted-storage-accounts.md
+        - name: 複数のインスタンスの作成
+          displayName: 'iteration,copy'
+          href: resource-manager-tutorial-create-multiple-instances.md
+        - name: リソースのデプロイ順序の設定
+          displayName: 'dependent resources, dependency'
+          href: resource-manager-tutorial-create-templates-with-dependent-resources.md
+        - name: 使用条件
+          href: resource-manager-tutorial-use-conditions.md
+        - name: Key Vault の統合
+          displayName: secrets
+          href: resource-manager-tutorial-use-key-vault.md
+        - name: リンク済みテンプレートの作成
+          href: resource-manager-tutorial-create-linked-templates.md
+        - name: VM 拡張機能のデプロイ
+          displayName: virtual machine extensions
+          href: resource-manager-tutorial-deploy-vm-extensions.md
+        - name: SQL 拡張機能のデプロイ
+          href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
+        - name: アーティファクトのセキュリティ保護
+          href: resource-manager-tutorial-secure-artifacts.md
+        - name: Azure Pipelines を使用した継続的インテグレーション
+          displayName: DevOps
+          href: resource-manager-tutorial-use-azure-pipelines.md
+        - name: 安全なデプロイ プラクティスの使用
+          displayName: adm
+          href: deployment-manager-tutorial.md
+        - name: Deployment Manager の正常性チェックの使用
+          displayName: adm
+          href: deployment-manager-tutorial-health-check.md
+        - name: VS デプロイ スクリプトを Az Powershell に更新する
+          href: vs-azure-tools-update-deploy-script-to-az-powershell.md
+        - name: テンプレートのデプロイに関するトラブルシューティング
+          href: resource-manager-tutorial-troubleshoot.md
 - name: サンプル
   items:
     - name: Resource Manager テンプレート
@@ -76,8 +101,8 @@
           href: deployment-manager-health-check.md
     - name: Resource Manager デプロイとクラシック デプロイ
       href: resource-manager-deployment-model.md
-    - name: 組み込みのセキュリティ制御
-      href: azure-resource-manager-security-controls.md
+    - name: Azure の一般的なセキュリティ属性
+      href: azure-resource-manager-security-attributes.md
 - name: 方法
   items:
     - name: テンプレートの作成
@@ -111,8 +136,7 @@
           href: resource-group-linked-templates.md
         - name: 複数のインスタンスの作成
           href: resource-group-create-multiple.md
-        - name: サブスクリプションでリソース グループとリソースを作成する
-          displayName: subscription level deployment
+        - name: サブスクリプション レベルのリソース
           href: deploy-to-subscription.md
     - name: テンプレートのデプロイ
       items:
@@ -120,14 +144,17 @@
           displayName: deployment
           href: resource-group-template-deploy-portal.md
         - name: デプロイ - CLI
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-cli.md
         - name: デプロイ - PowerShell
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy.md
         - name: デプロイ - REST API
-          displayName: 'deployment,rollback on error,redeploy'
+          displayName: deployment
           href: resource-group-template-deploy-rest.md
+        - name: エラー発生時の再デプロイ
+          displayName: rollback
+          href: rollback-on-error.md
         - name: SAS トークンによるテンプレートのセキュリティ保護
           href: secure-template-with-sas-token.md
         - name: 複数のリソース グループまたはサブスクリプションへのデプロイ
@@ -143,6 +170,7 @@
       items:
         - name: パイプラインを使用した VS プロジェクト
           href: vs-resource-groups-project-devops-pipelines.md
+          displayName: DevOps
     - name: テンプレートをエクスポートする
       href: export-template-portal.md
     - name: Move
@@ -203,7 +231,7 @@
           href: resource-group-lock-resources.md
         - name: サブスクリプションにアクセスするための認証 API
           href: resource-manager-api-authentication.md
-        - name: EA サブスクリプションを作成する
+        - name: 追加のサブスクリプションを作成する
           href: programmatically-create-subscription.md
         - name: EA サブスクリプションを作成するためのアクセスを許可する
           href: grant-access-to-create-subscription.md

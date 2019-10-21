@@ -1,38 +1,36 @@
 ---
-title: Azure CLI を使用して Azure DNS プライベート ゾーンを作成する
-description: この手順では、Azure DNS でプライベート DNS ゾーンとレコードを作成してテストします。 これは、Azure CLI を使用して最初のプライベート DNS ゾーンとレコードを作成して管理するためのステップバイステップ ガイドです。
+title: クイックスタート - Azure CLI を使用して Azure プライベート DNS ゾーンを作成する
+description: このクイックスタートでは、Azure DNS でプライベート DNS ゾーンとレコードを作成してテストします。 これは、Azure CLI を使用して最初のプライベート DNS ゾーンとレコードを作成して管理するためのステップバイステップ ガイドです。
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: article
-ms.date: 6/13/2019
+ms.topic: quickstart
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: d882a9c40efc5e9bcb1a5e1c02f1ac73970d57db
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6f5f2263736e1317ca40e6c27a909be2aa106270
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076420"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960442"
 ---
-# <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS プライベート ゾーンを作成する
+# <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して Azure プライベート DNS ゾーンを作成する
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+このクイックスタートでは、Azure CLI を使用して最初のプライベート DNS ゾーンとレコードを作成する手順について説明します。
 
-この手順では、Azure CLI を使用して最初のプライベート DNS ゾーンとレコードを作成する手順について説明します。
+DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 仮想ネットワークにプライベート DNS ゾーンを発行するには、そのゾーン内のレコードを解決することが認められた仮想ネットワークの一覧を指定します。  これらを "*リンクされている*" 仮想ネットワーク と呼びます。 また、自動登録を有効にすると、仮想マシンの作成または削除、あるいはその IP アドレスの変更を行うたびに、Azure DNS でそのゾーン レコードも更新されます。
 
-DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 仮想ネットワークにプライベート DNS ゾーンを発行するには、そのゾーン内のレコードを解決することが認められた仮想ネットワークの一覧を指定します。  これらを "*リンクされている*" 仮想ネットワーク と呼びます。 また、自動登録を有効にすると、仮想マシンの作成または削除、あるいはその IP アドレスの変更のたびに Azure DNS がそのゾーン レコードを更新します。
-
-この手順では、次の操作方法を学習します。
+このクイックスタートでは、次の方法について説明します。
 
 > [!div class="checklist"]
-> * DNS プライベート ゾーンの作成
+> * プライベート DNS ゾーンの作成
 > * テスト用仮想マシンの作成
 > * 追加の DNS レコードの作成
 > * プライベート ゾーンのテスト
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-好みに応じて、[Azure PowerShell](private-dns-getstarted-powershell.md) を使ってこの手順を実行することもできます。
+好みに応じて、[Azure PowerShell](private-dns-getstarted-powershell.md) を使用してこのクイックスタートを実行することもできます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -44,7 +42,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 az group create --name MyAzureResourceGroup --location "East US"
 ```
 
-## <a name="create-a-dns-private-zone"></a>DNS プライベート ゾーンの作成
+## <a name="create-a-private-dns-zone"></a>プライベート DNS ゾーンの作成
 
 次の例では、**myAzureVNet** という名前の仮想ネットワークを作成します。 次に、**private.contoso.com** という名前の DNS ゾーンを **MyAzureResourceGroup** リソース グループに作成し、その DNS ゾーンを **MyAzureVnet** 仮想ネットワークにリンクし、自動登録を有効にします。
 
@@ -206,7 +204,7 @@ MyVM02 についても同じ手順を繰り返します。
 
 ## <a name="delete-all-resources"></a>すべてのリソースの削除
 
-この手順で作成したリソースが不要になったときに削除するには、**MyAzureResourceGroup** リソース グループを削除します。
+このクイックスタートで作成したリソースが不要になったときに削除するには、**MyAzureResourceGroup** リソース グループを削除します。
 
 ```azurecli
 az group delete --name MyAzureResourceGroup
@@ -214,8 +212,6 @@ az group delete --name MyAzureResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-この手順では、プライベート DNS ゾーンをデプロイし、DNS レコードを作成し、ゾーンのテストを行いました。
-次は、プライベート DNS ゾーンについてさらに詳しく学習します。
-
 > [!div class="nextstepaction"]
-> [プライベート ドメインに Azure DNS を使用する](private-dns-overview.md)
+> [Azure DNS Private Zones のシナリオ](private-dns-scenarios.md)
+

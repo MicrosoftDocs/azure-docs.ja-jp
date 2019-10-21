@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 602623d48457498963cb5928081d24c1d1132ad4
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: e98c004b802711c83558bf4d7ec86c418679836b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935244"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981144"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Azure Time Series Insights API の認証と承認
 
@@ -100,6 +100,50 @@ Azure Active Directory のアプリ登録フローには、主に 3 つの手順
     ```
 
 1. トークンは、アプリケーションが Time Series Insights API を呼び出すときに、`Authorization` ヘッダーで渡すことができます。
+
+## <a name="common-headers-and-parameters"></a>一般的なヘッダーとパラメーター
+
+このセクションでは、Time Series Insights GA や Preview API に対するクエリの作成に使用される、一般的な HTTP 要求ヘッダーとパラメーターについて説明します。 API 固有の要件は、[Time Series Insights REST API リファレンス ドキュメント](https://docs.microsoft.com/rest/api/time-series-insights/)に詳しく記載されています。
+
+### <a name="authentication"></a>認証
+
+[Time Series Insights REST APIs](https://docs.microsoft.com/rest/api/time-series-insights/) に対して認証されたクエリを実行するには、任意の REST クライアント (Postman、JavaScript、C#) を使用して、有効な OAuth 2.0 ベアラー トークンを [Authorization ヘッダー](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate)内で渡す必要があります。 
+
+> [!IMPORTANT]
+> そのトークンは、まさしくその `https://api.timeseries.azure.com/` リソース (トークンの "audience" とも呼ばれます) に向けて発行される必要があります。
+> * したがって、[Postman](https://www.getpostman.com/) **AuthURL** は次に準拠します。`https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/authorize?resource=https://api.timeseries.azure.com/`
+
+> [!TIP]
+> チャートやグラフと共に [JavaScript クライアント SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) を使用して、プログラムによって Time Series Insights API で認証を行う方法を確認するには、Azure Time Series Insights の[クライアント SDK のサンプルの視覚化](https://tsiclientsample.azurewebsites.net/)に関する記事を参照してください。
+
+### <a name="http-headers"></a>HTTP ヘッダー
+
+必須の要求ヘッダー:
+
+- 認証と承認に向けた `Authorization`、有効な OAuth 2.0 ベアラートークンを Authorization ヘッダー内で渡す必要があります。 そのトークンは、まさしくその `https://api.timeseries.azure.com/` リソース (トークンの "audience" とも呼ばれます) に向けて発行される必要があります。
+
+省略可能な要求ヘッダー:
+
+- `Content-type` - `application/json` のみがサポートされています。
+- `x-ms-client-request-id` - クライアント要求 ID。 サービスでは、この値が記録されます。 これにより、サービスでは、サービス間の操作を追跡できるようになります。
+- `x-ms-client-session-id` - クライアント セッション ID。 サービスでは、この値が記録されます。 これにより、サービスでは、サービス間の関連する操作のグループを追跡できるようになります。
+- `x-ms-client-application-name` -この要求を生成したアプリケーションの名前。 サービスでは、この値が記録されます。
+
+応答ヘッダー:
+
+- `Content-type` - `application/json` のみがサポートされています。
+- `x-ms-request-id` -サーバーによって生成された要求 ID。 要求の調査についての Microsoft への問い合わせに使用できます。
+
+### <a name="http-parameters"></a>HTTP パラメーター
+
+必須の URL クエリ文字列パラメーター:
+
+- `api-version=2016-12-12`
+- `api-version=2018-11-01-preview`
+
+省略可能な URL クエリ文字列パラメーター:
+
+- `timeout=<timeout>` –要求実行に対するサーバー側のタイムアウト。 [環境イベントの取得](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-events-api) API と[環境集計の取得](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api#get-environment-aggregates-api) API にのみ適用できます。 タイムアウト値は、`"PT20S"` など、ISO 8601 の期間の形式で指定され、その範囲は `1-30 s` である必要があります。 既定値は `30 s` です。
 
 ## <a name="next-steps"></a>次の手順
 

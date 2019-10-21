@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d15d76f4c16fa89b41ebfc10c9617c4709203d38
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d41cd23d551e4834bf6b94f513e36ff46c1cd45
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65544723"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373656"
 ---
 # <a name="web-apps"></a>Web Apps
 
@@ -57,4 +57,4 @@ Azure AD によって発行されたトークンの有効期間が終了する�
 ## <a name="next-steps"></a>次の手順
 
 * その他の[アプリケーションの種類とシナリオ](app-types.md)について学習する
-* Azure AD [認証の基本](authentication-scenarios.md)について学習する
+* Azure AD [認証の基本](v1-authentication-scenarios.md)について学習する

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 66394600963cf154b3cb1fe661968f4ded2ec225
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0607c2b848a486e24654081bd7937cb734394e58
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992261"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331838"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>チュートリアル:Spark を使用して Azure Databricks で Data Lake Storage Gen2 のデータにアクセスする
 
@@ -97,15 +97,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
     ![Azure で Databricks Spark クラスターを作成する](./media/data-lake-storage-use-databricks-spark/create-databricks-spark-cluster.png "Azure で Databricks Spark クラスターを作成する")
 
-4. 次のフィールドに値を入力し、他のフィールドの既定値はそのまま使用します。
+    次のフィールドに値を入力し、他のフィールドの既定値はそのまま使用します。
 
-    * クラスターの名前を入力します。
+    - クラスターの名前を入力します。
+     
+    - **[Terminate after 120 minutes of inactivity]** \(アクティビティが 120 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
-    * この記事では、**5.1** ランタイムを使用してクラスターを作成します。
-
-    * **[Terminate after \_\_ minutes of inactivity]\(アクティビティが \_\_ 分ない場合は終了する\)** チェック ボックスを必ずオンにします。 クラスターが使われていない場合は、クラスターを終了するまでの時間 (分単位) を指定します。
-
-    * **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
+4. **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
 ## <a name="ingest-data"></a>データの取り込み
 

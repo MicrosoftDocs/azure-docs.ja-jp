@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1c203bb39a90fdb1c77c3a2c844318a748df7c63
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: f5b8623c835b4188d098ab2acf842abef30138e9
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559213"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71800051"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-in-java-on-android-by-using-the-speech-sdk"></a>クイック スタート:Speech SDK を使用して Android 上で Java を使用して音声優先仮想アシスタントを作成する
 
-[音声テキスト変換](quickstart-java-android.md)についてのクイック スタートもご利用いただけます。
+[音声変換](quickstart-java-android.md)と[テキスト読み上げ](quickstart-text-to-speech-java-android.md)のクイックスタートも使用できます。
 
 この記事では、[Speech SDK](speech-sdk.md) を使用して Java for Android で音声優先仮想アシスタントを構築します。 このアプリケーションは、[Direct Line Speech チャネル](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)で既に作成および構成されたボットに接続します。 その後、ボットに音声要求を送信し、音声に対応した応答アクティビティを提供します。
 

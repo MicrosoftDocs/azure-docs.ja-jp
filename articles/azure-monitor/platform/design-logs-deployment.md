@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2019
+ms.date: 09/20/2019
 ms.author: magoedte
-ms.openlocfilehash: 5d6e68b4b17c31056ed1f96a779823fc856962fb
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 24eb8440ed4746b51b92ce371b5d58b8d55de9a3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034742"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177608"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Azure Monitor ログのデプロイの設計
 
@@ -32,9 +32,11 @@ Log Analytics ワークスペースには次の情報が示されます。
 
 * データ ストレージの地理的な場所。
 * 推奨される設計戦略のいずれかに従ってさまざまなユーザーにアクセス権を付与することによるデータの分離。
-* [価格レベル](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[リテンション期間](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)、[データ キャッピング](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)などの設定の構成のスコープ。
+* [価格レベル](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[リテンション期間](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)、[データ キャッピング](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#manage-your-maximum-daily-data-volume)などの設定の構成のスコープ。
 
 この記事では、設計と移行に関する考慮事項の詳しい概要、アクセス制御の概要、および IT 組織に推奨される設計の実装について説明します。
+
+
 
 ## <a name="important-considerations-for-an-access-control-strategy"></a>アクセス制御戦略に関する重要な考慮事項
 
@@ -129,6 +131,19 @@ Azure Monitor では、ログ検索の実行コンテキストに応じて適切
     > ワークスペースへのリソース アクセス許可のみを持つユーザーは、ワークスペース アクセス モードが **[リソースまたはワークスペースのアクセス許可を使用]** に設定されていることを前提として、リソース コンテキスト モードを使用してワークスペースにアクセスすることのみできます。
 
 ポータル、PowerShell、または Resource Manager テンプレートを使用してアクセス制御モードを変更する方法については、「[アクセス制御モードを構成する](manage-access.md#configure-access-control-mode)」を参照してください。
+
+## <a name="ingestion-volume-rate-limit"></a>取り込みボリュームと取り込み率の制限
+
+Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 インジェスト率の既定のしきい値は、ワークスペースあたり **500 MB/分**に設定されています。 1 つのワークスペースに高い比率でデータを送信すると、一部のデータが削除され、しきい値を超え続けている間、6 時間ごとにワークスペースの*操作*テーブルにイベントが送信されます。 インジェスト ボリュームがインジェスト率の制限を超えている場合、または間もなくそれに達すると予測される場合は、サポート リクエストを開いて、ワークスペースの増加を要求できます。
+ 
+ワークスペース内でのそのようなイベントの通知を受け取るには、ゼロより大きな結果数のアラート ロジック ベースを使った次のクエリを使用して、[ログ アラート ルール](alerts-log.md)を作成します。
+
+``` Kusto
+Operation
+|where OperationCategory == "Ingestion"
+|where Detail startswith "The rate of data crossed the threshold"
+``` 
+
 
 ## <a name="recommendations"></a>Recommendations
 

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: juliako
-ms.openlocfilehash: 831ba217e99d1610383320ddf5706c6acfcdf48a
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: cd1dc7b55060e8262b300022f5ffd1b4da5f7922
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67848904"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350351"
 ---
 # <a name="streaming-endpoints"></a>ストリーミング エンドポイント 
 
@@ -31,9 +31,14 @@ Media Services アカウントを作成すると、**既定**のストリーミ�
 
 ## <a name="naming-convention"></a>命名規則
 
-既定のエンドポイントの場合: `{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+ストリーミング URL のホスト名の形式は `{servicename}-{accountname}-{regionname}.streaming.media.azure.net` です。ここで、`servicename` はストリーミング エンドポイントの名前またはライブ イベントの名前になります。 
 
-追加エンドポイントの場合: `{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+既定のストリーミング エンドポイントを使用する場合、`servicename` が省略され、URL は `{accountname}-{regionname}.streaming.azure.net` になります。 
+
+### <a name="limitations"></a>制限事項
+
+* ストリーミング エンドポイント名の最大値は 24 文字です。
+* 名前は、次の [regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference) パターン `^[a-zA-Z0-9]+(-*[a-zA-Z0-9])*$` に従う必要があります。
 
 ## <a name="types"></a>型  
 
@@ -41,7 +46,7 @@ Media Services アカウントを作成すると、**既定**のストリーミ�
 
 次の表で、型について説明します。  
 
-|Type|スケール ユニット|説明|
+|種類|スケール ユニット|説明|
 |--------|--------|--------|  
 |**Standard**|0|既定のストリーミング エンドポイントは **Standard** 型ですが、`scaleUnits` を調整することで Premium 型に変更できます。|
 |**Premium**|>0|**Premium** ストリーミング エンドポイントは専用のスケーラブルな帯域幅の容量を提供するため、高度なワークロードに適しています。 **Premium** 型には、`scaleUnits` (ストリーミング ユニット) を調整することで移行します。 `scaleUnits` は 200 Mbps 単位で購入できる専用の送信容量を提供します。 **Premium** 型を使用するときは、有効になっている各ユニットがアプリケーションに追加の帯域幅容量を提供します。 |

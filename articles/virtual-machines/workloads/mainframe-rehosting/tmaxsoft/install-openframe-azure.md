@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: b69ded2591478a477cd142decb39218841c9ac62
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ad6e52c421d9cfec4640d3a330b5507d6ed3e9b
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410122"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72436053"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>Azure 上に TmaxSoft OpenFrame をインストールする
 
@@ -1474,7 +1474,7 @@ OFManager では、Web 環境での OpenFrame の運用と管理の機能が提�
 
 ## <a name="next-steps"></a>次の手順
 
-メインフレームの移行を検討している場合は、当社の拡大しているパートナー エコシステムを使用すると役に立ちます。 パートナー ソリューションの選択に関する詳細なガイダンスについては、「[Platform Modernization Alliance (プラットフォーム最新化アライアンス)](https://www.platformmodernization.org/pages/mainframe.aspx)」を参照してください。
+メインフレームの移行を検討している場合は、当社の拡大しているパートナー エコシステムを使用すると役に立ちます。 パートナー ソリューションの選択に関する詳細なガイダンスについては、「[Platform Modernization Alliance (プラットフォーム最新化アライアンス)](https://datamigration.microsoft.com/)」を参照してください。
 
 -   [Azure を使ってみる](https://docs.microsoft.com/azure/)
 -   [Host Integration Server (HIS) のドキュメント](https://docs.microsoft.com/host-integration-server/)

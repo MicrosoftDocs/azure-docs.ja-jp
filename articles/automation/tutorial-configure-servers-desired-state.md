@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 0d877dafc4ab4f8ec4edb0a94450fa9c5dfcd0bb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b44bcf7edeaad07fbe0b3093ba3c7100cb0c24c4
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850245"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432068"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>目的の状態にサーバーを構成して誤差を管理する
 
@@ -34,7 +34,7 @@ Azure Automation State Configuration を使うと、サーバーの構成を指�
 - Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。
 - Windows Server 2008 R2 以降を実行している Azure Resource Manager VM (クラシックではない)。 VM の作成手順については、「 [Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 - Azure PowerShell モジュール バージョン 3.6 以降。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/azurerm/install-azurerm-ps)に関するページを参照してください。
-- Desired State Configuration (DSC) に関する知識。 DSC については、「[Windows PowerShell Desired State Configuration の概要](https://docs.microsoft.com/powershell/dsc/overview)」をご覧ください。
+- Desired State Configuration (DSC) に関する知識。 DSC については、「[Windows PowerShell Desired State Configuration の概要](/powershell/scripting/dsc/overview/overview)」をご覧ください。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -48,7 +48,7 @@ Connect-AzureRmAccount
 
 このチュートリアルでは、IIS を VM に確実にインストールする簡単な DSC 構成を使います。
 
-構成の構成については、「[DSC 構成](/powershell/dsc/configurations)」をご覧ください。
+構成の構成については、「[DSC 構成](/powershell/scripting/dsc/configurations/configurations)」をご覧ください。
 
 テキスト エディターで次のように入力し、`TestConfig.ps1` としてローカルに保存します。
 
@@ -77,7 +77,7 @@ configuration TestConfig {
 
 ノードに DSC 構成を割り当てるには、先に DSC 構成をノードの構成としてコンパイルする必要があります。
 
-構成のコンパイルについては、「[DSC 構成](/powershell/dsc/configurations)」をご覧ください。
+構成のコンパイルについては、「[DSC 構成](/powershell/scripting/dsc/configurations/configurations)」をご覧ください。
 
 `Start-AzureRmAutomationDscCompilationJob` コマンドレットを呼び出して、`TestConfig` の構成をノード構成にコンパイルします。
 
@@ -116,7 +116,7 @@ Register-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -Automati
 
 管理対象ノードの構成プロパティの設定について詳しくは、「[Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode)」をご覧ください。
 
-DSC 構成の設定について詳しくは、「[ローカル構成マネージャーの構成](/powershell/dsc/metaconfig)」をご覧ください。
+DSC 構成の設定について詳しくは、「[ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaConfig)」をご覧ください。
 
 ## <a name="assign-a-node-configuration-to-a-managed-node"></a>ノードの構成を管理対象ノードに割り当てる
 
@@ -132,7 +132,7 @@ Set-AzureRmAutomationDscNode -ResourceGroupName 'MyResourceGroup' -AutomationAcc
 
 このコマンドレットは、`TestConfig.WebServer` という名前のノード構成を、登録済みの DSC ノード `DscVm` に割り当てます。
 既定では、DSC ノードはノード構成に準拠していることを 30 分ごとにチェックされます。
-準拠チェック間隔を変更する方法については、「[ローカル構成マネージャーの構成](/PowerShell/DSC/metaConfig)」をご覧ください。
+準拠チェック間隔を変更する方法については、「[ローカル構成マネージャーの構成](/powershell/scripting/dsc/managing-nodes/metaConfig)」をご覧ください。
 
 ## <a name="working-with-partial-configurations"></a>部分構成の操作
 

@@ -9,12 +9,12 @@ manager: rkarlin
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: c8608a980c405f1f9fdd5aa274a9a21d801a59ed
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 00753d885985e2734f0d87fdad9f219f44277d5a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886185"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828347"
 ---
 # <a name="security-controls-for-linux-virtual-machines"></a>Linux Virtual Machines のセキュリティ コントロール
 
@@ -35,7 +35,7 @@ ms.locfileid: "70886185"
 
 | セキュリティ コントロール | はい/いいえ | メモ|
 |---|---|--|
-| Azure 監視サポート (Log analytics や App Insights など)| はい | 「[Azure で Linux 仮想マシンの監視と更新を行う](/azure/virtual-machines/linux/tutorial-monitoring)」および「[Azure で Windows 仮想マシンの監視と更新を行う](/azure/virtual-machines/windows/tutorial-monitoring)」を参照してください。 |
+| Azure 監視サポート (Log analytics や App Insights など)| はい | [Azure での Linux 仮想マシンの監視と更新](/azure/virtual-machines/linux/tutorial-monitoring)に関する記事を参照してください。 |
 | コントロールと管理プレーンのログ記録と監査| はい |  |
 | データ プレーンのログ記録と監査 | いいえ |  |
 
@@ -50,7 +50,7 @@ ms.locfileid: "70886185"
 
 | セキュリティ コントロール | はい/いいえ | メモ |
 |---|---|--|
-| 保存時のサーバー側の暗号化:Microsoft のマネージド キー | はい | 「[Azure で Linux 仮想マシンを暗号化する方法](/azure/virtual-machines/linux/encrypt-disks)」および「[Windows VM の仮想ディスクを暗号化する](/azure/virtual-machines/windows/encrypt-disks)」を参照してください。 |
+| 保存時のサーバー側の暗号化: Microsoft のマネージド キー | はい | 「[Linux VM に対する Azure Disk Encryption](disk-encryption-overview.md)」を参照してください。 |
 | 転送中の暗号化 (ExpressRoute 暗号化、VNet 内の暗号化、および VNet 間暗号化など)| はい | Azure Virtual Machines では、[ExpressRoute](/azure/expressroute) と VNet の暗号化がサポートされています。 「[VM での転送中の暗号化](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)」を参照してください。 |
 | 保存時のサーバー側の暗号化: カスタマー マネージド キー (BYOK) | はい | カスタマー マネージド キーは、サポートされている Azure の暗号化シナリオです。「[Azure の暗号化の概要](/azure/security/security-azure-encryption-overview#in-transit-encryption-in-vms)」を参照してください。|
 | 列レベルの暗号化 (Azure Data Services)| 該当なし | |
@@ -64,4 +64,4 @@ ms.locfileid: "70886185"
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure サービス全体の組み込みセキュリティ コントロール](../../security/fundamentals/security-controls.md)について説明します。
+- [Azure サービス全体の組み込みセキュリティ コントロール](../../security/fundamentals/security-controls.md)について学習します。

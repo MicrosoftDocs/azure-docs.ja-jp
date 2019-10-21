@@ -1,0 +1,39 @@
+### YamlMime:Landing
+title: Azure 管理グループのドキュメント
+summary: Azure 管理グループはリソースとサブスクリプションの整理に役立ちます。
+metadata:
+  title: Azure 管理グループのドキュメント
+  description: Azure 管理グループはリソースとサブスクリプションの整理に役立ちます。
+  ms.service: governance
+  ms.topic: landing-page
+  ms.collection: collection
+  author: DCtheGeek
+  ms.author: dacoulte
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 9d91baaec7f1bd0e365f86ea07174d6f9e32725c
+  ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71341047"
+landingContent:
+- title: Azure のガバナンスについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure の管理サービスの概要
+      url: ../azure-management.md
+- title: Azure 管理グループについて
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure 管理グループ
+      url: ./overview.md
+- title: リソースの整理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 管理グループの作成
+      url: ./create.md
+    - text: リソースの管理
+      url: ./manage.md

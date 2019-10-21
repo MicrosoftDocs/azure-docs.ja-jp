@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f3d683ffb91639db64000efa2d9791d13d84b79b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ad58adb85077a27bce65595738ffdbd92bace9bd
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195683"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802446"
 ---
 # <a name="samples-on-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine 上のサンプル
 
@@ -23,8 +23,12 @@ Azure Data Science Virtual Machines (DSVM) には、サンプル コードの包
 > [!NOTE]
 > データ サイエンス仮想マシン上で Jupyter ノートブックを実行する方法の詳細については、「[Jupyter にアクセスする](#access-jupyter)」のセクションを参照してください。
 
+## <a name="prerequisites"></a>前提条件
+
+これらのサンプルを実行するには、Data Science Virtual Machine をプロビジョニングしておく必要があります。 [Windows](./provision-vm.md) および [Ubuntu](./dsvm-ubuntu-intro.md) のクイックスタートを参照してください。
+
 ## <a name="available-samples"></a>使用可能なサンプル
-| サンプル カテゴリ | 説明 | Locations |
+| サンプル カテゴリ | 説明 | 場所 |
 | ------------- | ------------- | ------------- |
 | R 言語  | サンプルは、Azure ベースのクラウド データ ストアに接続する方法や、オープンソースの R と Microsoft Machine Learning Server を比較する方法などのシナリオを示しています。 また、Microsoft Machine Learning Server と SQL Server 上でモデルを運用化する方法についても説明しています。 <br/> [R 言語](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | Python 言語  | サンプルでは、Azure ベースのクラウド データ ストアに接続する方法や、Azure Machine Learning を操作する方法などのシナリオについて説明します。  <br/> [Python 言語](#python-language) | <br/>`~notebooks` <br/><br/>|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: ab5fba6bbbf6ade83c7699edec937ba02b222939
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237653"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258383"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>ストレージ アカウントにアーカイブされている Azure Monitor 診断ログの形式変更のための準備
 
@@ -29,11 +29,11 @@ Azure Monitor で、Azure ストレージ アカウント、Event Hubs 名前空
 * 2018 年 11 月 1 日木曜日の深夜 12 時 00 分 (UTC) より、BLOB 形式は [JSON Lines](http://jsonlines.org/) に変更されます。 つまり、各レコードは改行で区切られるようになり、外部のレコード配列や JSON レコード間のコンマはなくなります。
 * すべてのサブスクリプションのすべての診断設定の BLOB 形式が一度に変更されます。 11 月 1 日に出力される最初の PT1H.json ファイルでは、この新しい形式が使用されます。 BLOB およびコンテナーの名前は変わりません。
 * 今から 11 月 1 日までの間に診断設定が行われた場合、11 月 1 日までは現在の形式で引き続きデータが出力されます。
-* この変更はすべてのパブリック クラウド リージョンで一度に行われます。 Azure 中国、Azure ドイツ、Azure Government クラウドではまだこの変更は行われません。
+* この変更はすべてのパブリック クラウド リージョンで一度に行われます。 21Vianet が運営する Microsoft Azure、Azure Germany、および Azure Government のクラウドではまだこの変更は行われません。
 * この変更は次のデータの種類に影響します。
-  * [Azure リソース診断ログ](./../../azure-monitor/platform/archive-diagnostic-logs.md) ([このリソースの一覧を参照してください](./../../azure-monitor/platform/diagnostic-logs-schema.md))
-  * [診断設定でエクスポートされる Azure リソース メトリック](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)
-  * [ログ プロファイルでエクスポートされる Azure アクティビティ ログ データ](./../../azure-monitor/platform/archive-activity-log.md)
+  * [Azure リソース診断ログ](archive-diagnostic-logs.md) ([このリソースの一覧を参照してください](diagnostic-logs-schema.md))
+  * [診断設定でエクスポートされる Azure リソース メトリック](diagnostic-settings.md)
+  * [ログ プロファイルでエクスポートされる Azure アクティビティ ログ データ](archive-activity-log.md)
 * この変更は以下のものには影響しません。
   * ネットワーク フロー ログ
   * Azure Monitor を通じてまだ使用可能になっていない Azure サービス ログ (Azure App Service の診断ログ、ストレージ分析ログなど)

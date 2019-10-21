@@ -6,20 +6,23 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 09/30/2019
 ms.author: danlep
-ms.openlocfilehash: 7a313353ee1c7afae10fd7af84570565037e40ab
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 1ef6d5366e5db07a7f03bac251c24b1ff76a13e9
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310642"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949515"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Azure コンテナー レジストリのコンテナー イメージをロックする
 
 Azure コンテナー レジストリでは、イメージ バージョンまたはリポジトリをロックして、削除や更新ができないようにすることができます。 イメージまたはリポジトリをロックするには、Azure CLI コマンド [az acr repository update][az-acr-repository-update] を使用して、その属性を更新します。 
 
 この記事では、Azure CLI を Azure Cloud Shell またはローカルで実行する必要があります (バージョン 2.0.55 以降を推奨)。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
+
+> [!IMPORTANT]
+> この記事は、Azure portal の **[設定] > [ロック]** 、または Azure CLI で `az lock` コマンドを使用するレジストリ全体のロックには適用されません。 レジストリ リソースをロックしても、レポジトリ内のデータの作成、更新、または削除は実行できます。 レジストリのロックは、レプリケーションの追加や削除、あるいはレジストリ自体の削除などの管理操作にのみ影響します。 詳細については、「[リソースのロックによる予期せぬ変更の防止](../azure-resource-manager/resource-group-lock-resources.md)」を参照してください。
 
 ## <a name="scenarios"></a>シナリオ
 

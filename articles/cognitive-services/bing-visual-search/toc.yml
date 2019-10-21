@@ -33,6 +33,8 @@
           href: visual-search-sdk-node.md
         - name: Python の使用
           href: visual-search-sdk-python.md
+        - name: Java の使用
+          href: visual-search-sdk-java.md
 - name: チュートリアル
   items:
     - name: 画像のアップロード

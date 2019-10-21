@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: cbb86dd4b24cb325b8ea6708ebc2ffc89a697757
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 402bf198981641db74a86bbc420fab83124f0b47
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553394"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802031"
 ---
 # <a name="quickstart-translate-speech-with-the-speech-sdk-for-java"></a>クイック スタート:Speech SDK for Java を使用して音声を翻訳する
 
-クイック スタートは[音声変換](quickstart-java-jre.md)と[音声優先仮想アシスタント](quickstart-virtual-assistant-java-jre.md)にも使用できます。
+[音声変換](quickstart-java-jre.md)、[テキスト読み上げ](quickstart-text-to-speech-java-jre.md)、[音声優先仮想アシスタント](quickstart-virtual-assistant-java-jre.md)のクイックスタートも利用できます。
 
 このクイック スタートでは、コンピューターのマイクからユーザーの音声をキャプチャし、その音声を翻訳して、翻訳されたテキストをコマンド ラインにリアルタイムで表示する、単純な Java アプリケーションを作成します。 このアプリケーションは、64 ビット Windows または 64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9)、または macOS 10.13 以降で動作するように設計されています。 Speech SDK Maven パッケージと Eclipse Java IDE で構築されます。
 

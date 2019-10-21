@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: e1279261de8e26b9e11f55100ce01277650e251b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b233c5dd639bb6652f201727748a081f6a8a4c64
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67615752"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950328"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の独自の IP アドレス範囲で kubenet ネットワークを使用する
 
@@ -38,9 +38,9 @@ Azure CLI バージョン 2.0.65 以降がインストールされて構成さ�
 
 ![AKS クラスターでの kubenet ネットワーク モデル](media/use-kubenet/kubenet-overview.png)
 
-Azure でサポートされる UDR のルート数は最大 400 なので、AKS クラスターに 400 個より多くのノードを作成することはできません。 [仮想ノード][virtual-nodes]やネットワーク ポリシーなどの AKS の機能は、*kubenet* ではサポートされていません。
+Azure でサポートされる UDR のルート数は最大 400 なので、AKS クラスターに 400 個より多くのノードを作成することはできません。 AKS [仮想ノード][virtual-nodes]や Azure ネットワーク ポリシーは、*kubenet* ではサポートされていません。  Kubernet でサポートされている [Calico ネットワーク ポリシー][calico-network-policies]をご利用ください。
 
-*Azure CNI* では、各ポッドは IP サブネット内の IP アドレスを受け取り、他のポッドやサービスと直接通信できます。 クラスターは、ユーザーが指定する IP アドレスの範囲まで拡大できます。 ただし、IP アドレスの範囲を事前に計画する必要があり、すべての IP アドレスは、ノードでサポートできるポッドの最大数に基づいて AKS ノードによって消費されます。 *Azure CNI* では、[仮想ノード][virtual-nodes]やネットワーク ポリシーなどの高度なネットワーク機能とシナリオがサポートされます。
+*Azure CNI* では、各ポッドは IP サブネット内の IP アドレスを受け取り、他のポッドやサービスと直接通信できます。 クラスターは、ユーザーが指定する IP アドレスの範囲まで拡大できます。 ただし、IP アドレスの範囲を事前に計画する必要があり、すべての IP アドレスは、ノードでサポートできるポッドの最大数に基づいて AKS ノードによって消費されます。 *Azure CNI* では、[仮想ノード][virtual-nodes]やネットワーク ポリシー (Azure または Calico) などの高度なネットワーク機能とシナリオがサポートされます。
 
 ### <a name="ip-address-availability-and-exhaustion"></a>IP アドレスの使用可能性と不足
 
@@ -72,19 +72,16 @@ Azure でサポートされる UDR のルート数は最大 400 なので、AKS 
 
 - IP アドレス空間が限られている。
 - ポッドのほとんどの通信がクラスター内で行われる。
-- 仮想ノードやネットワーク ポリシーなどの高度な機能を使用する必要がない。
+- 仮想ノードや Azure ネットワーク ポリシーなどの高度な AKS 機能を使用する必要がない。  [Calico ネットワーク ポリシー][calico-network-policies] を使用している。
 
 *Azure CNI* を使用する場合:
 
 - 使用可能な IP アドレス空間が十分にある。
 - ポッドの通信のほとんどが、クラスターの外部にあるリソースに対するものである。
 - UDR を管理したくない。
-- 仮想ノードやネットワーク ポリシーなどの高度な機能を使用する必要がある。
+- 仮想ノードや Azure ネットワーク ポリシーなどの高度な AKS 機能を使用する必要がある。  [Calico ネットワーク ポリシー][calico-network-policies] を使用している。
 
 どのネットワーク モデルを使用するかの決定に役立つ詳細については、[ネットワーク モデルとそのサポート範囲の比較][network-comparisons]に関するページを参照してください。
-
-> [!NOTE]
-> Kuberouter により、kubenet の使用時にネットワーク ポリシーを有効にして AKS クラスターにデーモンセットとしてインストールできます。 Kube ルーターはまだベータ版であり、プロジェクトに対する Microsoft のサポートは提供されていないことに注意してください。
 
 ## <a name="create-a-virtual-network-and-subnet"></a>仮想ネットワークとサブネットの作成
 
@@ -172,6 +169,24 @@ az aks create \
     --client-secret <password>
 ```
 
+> [!Note]
+> AKS クラスターに [Calico ネットワーク ポリシー][calico-network-policies]を含めるには、次のコマンドを使用します。
+
+```azurecli-interactive
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --node-count 3 \
+    --network-plugin kubenet --network-policy calico \
+    --service-cidr 10.0.0.0/16 \
+    --dns-service-ip 10.0.0.10 \
+    --pod-cidr 10.244.0.0/16 \
+    --docker-bridge-address 172.17.0.1/16 \
+    --vnet-subnet-id $SUBNET_ID \
+    --service-principal <appId> \
+    --client-secret <password>
+```
+
 AKS クラスターを作成すると、ネットワーク セキュリティ グループとルート テーブルが作成されます。 これらのネットワーク リソースは、AKS コントロール プレーンによって管理されます。 ネットワーク セキュリティ グループは、ノードの仮想 NIC と自動的に関連付けられます。 ルート テーブルは、仮想ネットワーク サブネットと自動的に関連付けられます。 サービスを作成して公開すると、ネットワーク セキュリティ グループ規則とルート テーブルが自動的に更新されます。
 
 ## <a name="next-steps"></a>次の手順
@@ -182,6 +197,7 @@ AKS クラスターを作成すると、ネットワーク セキュリティ �
 [dev-spaces]: https://docs.microsoft.com/azure/dev-spaces/
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[Calico-network-policies]: https://docs.projectcalico.org/v3.9/security/calico-network-policy
 
 <!-- LINKS - Internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

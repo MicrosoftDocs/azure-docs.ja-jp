@@ -2,17 +2,16 @@
 title: サンプル - マネージド ディスクを使用していない VM の監査
 description: この JSON サンプルの定義では、マネージド ディスクを使用しない仮想マシンが作成されたときに監査が行われます。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 8f1823ecfad7b78dc6360ffdfb517b0dbe858b53
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 20552ef0a56a0fc7136efa80561812ee4b5dad9b
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271443"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980562"
 ---
 # <a name="sample---audit-when-vm-does-not-use-managed-disk"></a>サンプル - VM がマネージド ディスクを使っていない場合の監査
 

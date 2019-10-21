@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f883741577de22f66cd7a9bfaf733aa3c59b879b
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: c91de3de743d168bea207f27fb162486ea625a63
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707472"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026285"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>クイック スタート:無制限のアプリの登録を作成するアクセス許可を付与する
 
@@ -33,7 +33,7 @@ Azure AD カスタム ロールの作成と割り当てに必要な最小限の�
 ## <a name="create-a-new-custom-role-using-the-azure-ad-portal"></a>Azure AD ポータルを使用して新しいカスタム ロールを作成する
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して、 [Azure AD 管理センター](https://aad.portal.azure.com) にサインインします。
-1.  **[Azure Active Directory]** を選択します。その後、 **[ロールと管理者]** を選択し、 **[新しいカスタム ロール]** を選択します。
+1. **[Azure Active Directory]** を選択し、 **[ロールと管理者]** を選択してから、 **[新しいカスタム ロール]** を選択します。
 
     ![[ロールと管理者] ページでロールを作成または編集する](./media/roles-create-custom/new-custom-role.png)
 
@@ -50,7 +50,7 @@ Azure AD カスタム ロールの作成と割り当てに必要な最小限の�
 ### <a name="assign-the-role-to-a-user-using-the-azure-ad-portal"></a>Azure AD ポータルを使用してユーザーにロールを割り当てる
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して、 [Azure AD 管理センター](https://aad.portal.azure.com) にサインインします。
-1.  **[Azure Active Directory]** を選択し、 **[ロールと管理者]** を選択します。
+1. **[Azure Active Directory]** を選択し、次に **[ロールと管理者]** を選択します。
 1. [アプリケーション登録作成者] ロールを選択し、 **[割り当ての追加]** を選択します。
 1. 目的のユーザーを選択し、 **[選択]** をクリックして、ユーザーをロールに追加します。
 
@@ -64,7 +64,7 @@ Azure AD カスタム ロールの作成と割り当てに必要な最小限の�
 アプリケーションの登録を作成する権限を付与するために使用できるアクセス許可は 2 つあり、それぞれ動作が異なります。
 
 - microsoft.directory/applications/createAsOwner:このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者として追加され、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になります。
-- microsoft.directory/applicationPolicies/create:このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者としては追加されず、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になりません。 作成者がディレクトリ レベルのクォータに達するまでアプリの登録の作成を防ぐものは何もないため、このアクセス許可は慎重に使用してください。 両方のアクセス許可が割り当てられている場合は、このアクセス許可が優先されます。
+- microsoft.directory/applicationPolicies/create:このアクセス許可を割り当てると、作成者は、作成されたアプリの登録の最初の所有者としては追加されず、作成されたアプリの登録は、その作成者の 250 という作成オブジェクト クォータのカウント対象になりません。 担当者がディレクトリ レベルのクォータに達するまでアプリの登録を作成できないようにするものはないため、このアクセス許可は慎重に使用してください。 両方のアクセス許可が割り当てられている場合は、このアクセス許可が優先されます。
 
 ## <a name="create-a-custom-role-using-azure-ad-powershell"></a>Azure AD PowerShell を使用してカスタム ロールを作成する
 

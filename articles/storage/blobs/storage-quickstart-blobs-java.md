@@ -1,33 +1,37 @@
 ---
-title: Java v7 用のクライアント ライブラリを使用して Azure Storage 内に BLOB を作成する方法 | Microsoft Docs
-description: オブジェクト (BLOB) ストレージ内にストレージ アカウントとコンテナーを作成します。 その後、Java v7 用の Azure Storage クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
+title: クイック スタート:Java SDK v8 用 Azure Blob Storage クライアント ライブラリ
+description: オブジェクト (BLOB) ストレージ内にストレージ アカウントとコンテナーを作成します。 その後、Java SDK v8 用の Azure Storage クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/04/2019
+ms.date: 10/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 0aa3af754082d91c4a5994e42146d1f1f475f64d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: c88202c41a7ee6b6d215bd185aeca580bcc88eef
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390329"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030469"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Java v7 用のクライアント ライブラリを使用して BLOB をアップロード、ダウンロード、および一覧表示する方法
+# <a name="quickstart-azure-blob-storage-client-library-for-java-sdk-v8"></a>クイック スタート:Java SDK v8 用 Azure Blob Storage クライアント ライブラリ
 
-この攻略ガイドでは、Java v7 用のクライアント ライブラリを使用して、Azure Blob Storage に対して、コンテナー内のブロック BLOB をアップロード、ダウンロード、および一覧表示する方法について説明します。
+Java 用 Azure Blob Storage クライアント ライブラリを使用してみましょう。 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 手順に従ってパッケージをインストールし、基本タスクのコード例を試してみましょう。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
+
+Java 用 Azure Blob Storage クライアント ライブラリを使用すると、以下のことができます。
+
+* コンテナーを作成する
+* コンテナーに対するアクセス許可を設定する
+* Azure Storage 内に BLOB を作成する
+* ローカル コンピューターに BLOB をダウンロードする
+* コンテナー内のすべての BLOB を一覧表示する
+* コンテナーを削除する
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-また、[Azure portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM) で Azure ストレージ アカウントを作成します。 アカウントの作成については、「[ストレージ アカウントの作成](../common/storage-quickstart-create-account.md)」を参照してください。
-
-次の前提条件を満たしていることを確認します。
-
-* Maven が統合された IDE をインストールする。
-
+* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/)
+* Azure Storage アカウント - [ストレージ アカウントを作成する](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Maven が統合された IDE。
 * または、Maven をインストールして、コマンド ラインから使用するように構成する。
 
 このガイドでは、"Eclipse IDE for Java Developers" 構成の [Eclipse](https://www.eclipse.org/downloads/) を使用します。
@@ -205,6 +209,5 @@ sourceFile.deleteOnExit();
 この記事では、Java を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Java の使用方法の詳細については、GitHub のソース コード リポジトリを参照してください。
 
 > [!div class="nextstepaction"]
-> [Java 用の Microsoft Azure Storage SDK v10](https://github.com/azure/azure-storage-java) 
-> [Java API リファレンス](https://docs.microsoft.com/java/azure/)
-> [Java のコード サンプル](../common/storage-samples-java.md)
+> [Java API リファレンス](https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy)
+> [Java 用のコード サンプル](../common/storage-samples-java.md)

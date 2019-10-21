@@ -15,15 +15,20 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5372385bd4de0f5592a7fff3e4a78fbb5e1648dc
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119526"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388774"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
+
+> [!NOTE]
+> Visual Studio App Center は、モバイル アプリ開発の中心となるエンドツーエンドの統合サービスをサポートしています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。
+>
+> モバイル アプリケーションにクラウド サービスを統合することを検討している場合は、今すぐ [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) にサインアップしてください。
 
 このトピックでは、Azure App Service Mobile Apps の主要なシナリオで .NET バックエンド サーバー SDK を使用する方法について説明します。 Azure Mobile Apps SDK を使用すると、ASP.NET アプリケーションからモバイル クライアントを操作することができます。
 
@@ -41,7 +46,7 @@ ms.locfileid: "62119526"
 既存のプロジェクトにモバイル機能を追加する場合は、「 [SDK をダウンロードして初期化する](#install-sdk) 」セクションを参照してください。
 
 ### <a name="create-a-net-backend-using-the-azure-portal"></a>Azure ポータルで .NET バックエンドを作成する
-App Service モバイル バックエンドを作成するには、[クイック スタート チュートリアル][3]または次の手順に従います。
+App Service モバイル バックエンドを作成するには、[クイックスタート チュートリアル][3]または次の手順に従います。
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service-classic](../../includes/app-service-mobile-dotnet-backend-create-new-service-classic.md)]
 
@@ -426,7 +431,7 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
     // Send a template notification to the user ID.
     await hub.SendTemplateNotificationAsync(notification, userTag);
 
-認証されたクライアントからプッシュ通知を登録する場合は、登録を試みる前に、認証が完了していることを確認します。 詳細については、「App Service Mobile Apps completed quickstart sample for .NET backend」 (.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル) の「[Push to users (ユーザーへのプッシュ)][6]」をご覧ください。
+認証されたクライアントからプッシュ通知を登録する場合は、登録を試みる前に、認証が完了していることを確認します。 詳細については、「.NET バックエンド向けの App Service Mobile Apps の完成したクイックスタート サンプル」の「[ユーザーへのプッシュ][6]」をご覧ください。
 
 ## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>方法:.NET サーバー SDK のデバッグとトラブルシューティングを実行する
 Azure App Service には、ASP.NET アプリケーションのデバッグとトラブルシューティングの方法が複数用意されています。
@@ -440,7 +445,7 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
 
 診断を有効にしてログに書き込むには、次の手順を実行します。
 
-1. 「 [診断を有効にする方法](../app-service/troubleshoot-diagnostic-logs.md#enablediag)」の手順に従います。
+1. 「[アプリケーションのログ記録を有効にする (Windows)](../app-service/troubleshoot-diagnostic-logs.md#enable-application-logging-windows)」の手順に従います。
 2. 次の using ステートメントをコード ファイルに追加します。
 
         using System.Web.Http.Tracing;
@@ -449,7 +454,7 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
 4. サーバー プロジェクトを再発行し、モバイル アプリ バックエンドにアクセスして、ログ記録付きでコード パスを実行します。
-5. 「[ログをダウンロードする方法](../app-service/troubleshoot-diagnostic-logs.md#download)」で説明されているように、ログをダウンロードして評価します。
+5. 「[ログ ファイルにアクセスする](../app-service/troubleshoot-diagnostic-logs.md#access-log-files)」で説明されているように、ログをダウンロードして評価します。
 
 ### <a name="local-debug"></a>認証に関するローカル デバッグ
 クラウドに発行する前に変更をテストするために、ローカルでアプリケーションを実行できます。 ほとんどの Azure Mobile Apps バックエンドでは、Visual Studio で *F5* キーを押します。 ただし、認証を使用している場合は追加の考慮事項がいくつかあります。

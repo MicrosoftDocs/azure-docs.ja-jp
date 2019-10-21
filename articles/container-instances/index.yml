@@ -1,69 +1,80 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Container Instances のドキュメント
+summary: サーバーレスなマネージド Azure 環境内で Docker コンテナーをオンデマンドで実行します。 Azure Container Instances は、オーケストレーションすることなく分離コンテナー内で運用できる、あらゆるシナリオ向けのソリューションです。 イベントドリブンなアプリケーションを実行し、コンテナー開発パイプラインから迅速にデプロイして、データ処理およびビルド ジョブを実行します。
 metadata:
-  title: Azure Container Instances のドキュメント - チュートリアル | Microsoft Docs
-  description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。
-  services: container-instances
-  author: georgewallace
-  manager: gwallace
+  title: Azure Container Instances のドキュメント - サーバーレス コンテナー、オンデマンド
+  description: サーバーレスなマネージド Azure 環境内で Docker コンテナーを実行します。
+  services: 
   ms.service: container-instances
   ms.topic: landing-page
-  ms.date: 07/26/2017
-  ms.author: gwallace
-abstract:
-  description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、コンテナー インスタンスを作成および管理する方法を確認してください。<p>完全なコンテナー オーケストレーション ソリューションが必要な場合は、<a href="/azure/aks/">Azure Kubernetes Service (AKS) の ドキュメント</a>を参照してください。</p>
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: Azure Container Instances でコンテナー イメージをデプロイする方法を学習します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure CLI
-            href: /azure/container-instances/container-instances-quickstart
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure Portal
-            href: /azure/container-instances/container-instances-quickstart-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-instances/container-instances-quickstart-powershell
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: コードをコンテナー イメージにパッケージ化し、Azure Container Instances で実行する方法を学習します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">コンテナー イメージにアプリケーションをパッケージ化する</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Azure Container Registry を作成し、コンテナー イメージをアップロードする</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">Azure Container Instances にコンテナー イメージをデプロイする</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Container Instances での Docker コンテナーの実行
-            href: /learn/modules/run-docker-with-azure-container-instances/
-            image:
-              src: /learn/achievements/run-docker-with-azure-container-instances.svg
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-instances">対話型学習の詳細...</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/cli/azure/container">Azure CLI</a></p><p><a href="/powershell/module/az.containerinstance">PowerShell</a></p>
-          - title: Languages
-            html: <p><a href="/dotnet/api/overview/azure/containerinstance">.NET</a></p><p><a href="/python/api/overview/azure/containerinstance">Python</a></p><p><a href="/java/api/overview/azure/containerinstance">Java</a></p><p><a href="/javascript/api/overview/azure/containerinstances">Node.JS</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/container-instances">REST API リファレンスに関するページ</a></p><p><a href="/azure/templates/microsoft.containerinstance/containergroups">Resource Manager テンプレート</a></p>
+  ms.collection: collection
+  author: dlepow
+  ms.author: danlep
+  ms.date: 09/25/2019
+  ms.openlocfilehash: a031f70cfaad9369f79a0e18f3527250eb82bfeb
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71326950"
+landingContent:
+- title: Azure Container Instances について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Container Instances とは
+      url: container-instances-overview.md
+    - text: コンテナー グループ
+      url: container-instances-container-groups.md
+    - text: FAQ
+      url: container-instances-faq.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: コンテナー インスタンスのデプロイ - CLI
+      url: container-instances-quickstart.md
+    - text: コンテナー インスタンスのデプロイ - ポータル
+      url: container-instances-quickstart-portal.md
+  - linkListType: learn
+    links:
+    - text: Azure Container Instances での Docker コンテナーの実行
+      url: /learn/modules/run-docker-with-azure-container-instances/
+- title: 複数コンテナー グループの作成
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: コンテナー グループのデプロイ - YAML
+      url: container-instances-multi-container-yaml.md
+    - text: コンテナー グループのデプロイ - テンプレート
+      url: container-instances-multi-container-group.md
+- title: デプロイメント シナリオ
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 仮想ネットワークに接続する
+      url: container-instances-vnet.md
+    - text: 再起動ポリシーの構成
+      url: container-instances-restart-policy.md
+    - text: 環境変数の設定
+      url: container-instances-environment-variables.md
+- title: コンテナー アプリの管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: コンテナーの停止と開始
+      url: container-instances-stop-start.md
+    - text: 実行中のコンテナーの更新
+      url: container-instances-update.md
+    - text: コンテナー間でのデータ共有
+      url: container-instances-volume-emptydir.md
+- title: Azure との統合
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Container Registry からのイメージのデプロイ
+      url: container-instances-using-azure-container-registry.md
+    - text: マネージド ID の使用
+      url: container-instances-managed-identity.md
+    - text: Azure ファイル共有をマウントする
+      url: container-instances-volume-azure-files.md

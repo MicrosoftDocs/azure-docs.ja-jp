@@ -15,24 +15,18 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4b48e035476e5381104b442f87dcac03ac11778
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: df8b03d513e2d78083031fbc9a3f6dbc1b7d15d9
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499670"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958566"
 ---
 # <a name="review-access-for-yourself-to-groups-or-applications-in-azure-ad-access-reviews"></a>Azure AD アクセス レビューでグループまたはアプリケーションに対する自分のアクセスをレビューする
 
 企業で Azure AD アクセス レビューという機能を使用して、Azure AD およびその他の Microsoft Online Services 内のグループまたはアプリケーションへのアクセスを管理する方法が、Azure Active Directory (Azure AD) により簡素化されます。
 
 この記事では、グループまたはアプリケーションに対する自分のアクセスをレビューする方法を説明します。
-
-## <a name="prerequisites"></a>前提条件
-
-- Azure AD Premium P2
-
-詳細については、[ライセンスが必要なユーザー](access-reviews-overview.md#which-users-must-have-licenses)に関する記事をご覧ください。
 
 ## <a name="open-the-access-review"></a>アクセス レビューを開く
 

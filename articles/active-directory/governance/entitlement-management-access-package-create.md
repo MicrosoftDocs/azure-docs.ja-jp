@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/23/2019
+ms.date: 09/24/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f033cf57c5a285e94372728677c91e021065fa9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: a99aa766ed4e6cacbe22933db226b2037d3e736d
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68678186"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170014"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) で新しいアクセス パッケージを作成する
 
@@ -44,7 +44,7 @@ ms.locfileid: "68678186"
 
 ## <a name="start-new-access-package"></a>新しいアクセス パッケージを開始する
 
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、またはカタログ所有者
+**事前に必要なロール:** 全体管理者、ユーザー管理者、またはカタログ所有者
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
@@ -79,7 +79,7 @@ ms.locfileid: "68678186"
 
 **[リソース ロール]** タブでは、アクセス パッケージに含めるリソースを選択します。  アクセス パッケージを要求して受け取るユーザーは、そのアクセス パッケージ内のすべてのリソース ロールを受け取ります。
 
-1. 追加するリソースの種類をクリックします ( **[グループ]** 、 **[アプリケーション]** 、または **[SharePoint サイト]** )。
+1. 追加するリソースの種類をクリックします ( **[Groups and Teams]\(Groups と Teams\)** 、 **[アプリケーション]** 、または **[SharePoint サイト]** )。
 
 1. 表示される選択ウィンドウで、一覧から 1 つまたは複数のリソースを選択します。
 
@@ -126,5 +126,3 @@ ms.locfileid: "68678186"
 ## <a name="next-steps"></a>次の手順
 
 - [既存のアクセス パッケージの編集および管理](entitlement-management-access-package-edit.md)
-- [カタログ所有者またはアクセス パッケージ マネージャーを追加する](entitlement-management-delegate.md#add-a-catalog-owner-or-an-access-package-manager)
-- [カタログを作成および管理する](entitlement-management-catalog-create.md)

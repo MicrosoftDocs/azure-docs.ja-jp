@@ -8,20 +8,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: e4168b2aec73efcaa282398cbe145df49a117da0
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810763"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066932"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
-抽出、変換、および読み込み (ETL) は、データがさまざまなソースから取得され、標準の場所に収集され、クリーニングと処理が行われ、最終的にクエリが可能なデータ ストアに読み込まれるプロセスです。 従来の ETL プロセスは、データをインポートし、所定の場所でクリーニングした後、リレーショナル データ エンジンに格納します。 HDInsight 上では、さまざまな Apache Hadoop エコシステム コンポーネントで、大規模な ETL の実行がサポートされます。 
+抽出、変換、および読み込み (ETL) は、データがさまざまなソースから取得され、標準の場所に収集され、クリーニングと処理が行われ、最終的にクエリが可能なデータ ストアに読み込まれるプロセスです。 従来の ETL プロセスは、データをインポートし、所定の場所でクリーニングした後、リレーショナル データ エンジンに格納します。 HDInsight 上では、さまざまな Apache Hadoop エコシステム コンポーネントで、大規模な ETL の実行がサポートされます。
 
 ETL プロセスでの HDInsight の使用は、次のパイプラインにまとめることができます。
 
-![HDInsight ETL の概要](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
+![大規模な HDInsight ETL の概要](./media/apache-hadoop-etl-at-scale/hdinsight-etl-at-scale-overview.png)
 
 次のセクションで、ETL の各フェーズとその関連コンポーネントについて説明します。
 
@@ -35,11 +35,11 @@ ETL プロセスでの HDInsight の使用は、次のパイプラインにま�
 
 Apache Oozie は、Hadoop ジョブを管理するワークフロー調整システムです。 Oozie は HDInsight クラスター内で実行され、Hadoop スタックと統合されます。 Oozie は、Apache Hadoop MapReduce、Apache Pig、Apache Hive、および Apache Sqoop の Hadoop ジョブをサポートします。 Oozie は、Java プログラムやシェル スクリプトのような、システム特有のジョブのスケジュールを設定するのに使用することもできます。
 
-詳細については、[HDInsight で Apache Oozie と Apache Hadoop を使用してワークフローを定義して実行する方法](../hdinsight-use-oozie-linux-mac.md)に関するページを参照してください。Oozie を使用してエンド ツー エンドのパイプラインを動作させる方法について、さらに詳しい情報については、[データ パイプラインの運用化](../hdinsight-operationalize-data-pipeline.md)に関するページを参照してください。 
+詳細については、[HDInsight で Apache Oozie と Apache Hadoop を使用してワークフローを定義して実行する方法](../hdinsight-use-oozie-linux-mac.md)に関するページを参照してください。Oozie を使用してエンド ツー エンドのパイプラインを動作させる方法について、さらに詳しい情報については、[データ パイプラインの運用化](../hdinsight-operationalize-data-pipeline.md)に関するページを参照してください。
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory では、オーケストレーション機能をサービスとしてのプラットフォームの形で提供します。 クラウドベースのデータ統合サービスを通じて、データの移動と変換を制御して自動化するデータ主導型のワークフローをクラウドに作成することができます。 
+Azure Data Factory では、オーケストレーション機能をサービスとしてのプラットフォームの形で提供します。 クラウドベースのデータ統合サービスを通じて、データの移動と変換を制御して自動化するデータ主導型のワークフローをクラウドに作成することができます。
 
 Azure Data Factory を使用して、以下を実行できます。
 

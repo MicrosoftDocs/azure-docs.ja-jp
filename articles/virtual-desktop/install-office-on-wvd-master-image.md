@@ -1,18 +1,18 @@
 ---
 title: マスター VHD イメージに Office をインストールする - Azure
-description: Azure への Windows Virtual Desktop プレビューのマスター イメージに Office をインストールし、カスタマイズする方法。
+description: Windows Virtual Desktop マスター イメージに Office をインストールして、Azure 向けにカスタマイズする方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
-ms.openlocfilehash: 79fe541d1bb3bea8447cf095673111362cec74d2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 378be7ebc1cc04433d42b6a05d7eafc73a515568
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816428"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679516"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>マスター VHD イメージに Office をインストールする
 
@@ -23,7 +23,7 @@ ms.locfileid: "68816428"
 この記事では、Azure と Hyper-V マネージャーのどちらでプロビジョニングされているかにかかわらず、VM に対して昇格されたアクセス権があることも前提としています。 そうでない場合は、「[Azure のすべてのサブスクリプションと管理グループを管理する目的でアクセス権限を昇格させる](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin)」を参照してください。
 
 >[!NOTE]
->これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop プレビュー固有の構成に対するものです。
+>これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop 固有の構成に対するものです。
 
 ## <a name="install-office-in-shared-computer-activation-mode"></a>共有コンピューターのアクティブ化モードで Office をインストールする
 
@@ -45,7 +45,7 @@ Office 展開ツールには、構成 XML ファイルが必要です。 次の�
 - 共有コンピューターのライセンス認証を有効にします。
 
 >[!NOTE]
->Visio のステンシル検索機能は、プレビューの構成中は Windows Virtual Desktop で動作しません。
+>Visio のステンシル検索機能が Windows Virtual Desktop で期待どおりに動作しないことがあります。
 
 このサンプル構成 XML では、以下の操作は行われません。
 

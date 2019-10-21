@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Azure Data Lake Storage Gen2 イベントを使用して Databricks Delta テーブルを更新する |Microsoft Docs
+title: チュートリアル:Azure Databricks Delta テーブルを更新する Data Lake キャプチャ パターンを実装する | Microsoft Docs
 description: このチュートリアルでは、Event Grid サブスクリプション、Azure 関数、および Azure Databricks ジョブを使用して、Azure DataLake Storage Gen2 に格納されているテーブルにデータの行を挿入する方法について説明します。
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 03a07e70c967f92fe5dcc7c951aeea299b050405
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904655"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326987"
 ---
-# <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>チュートリアル:Azure Data Lake Storage Gen2 イベントを使用して Databricks Delta テーブルを更新する
+# <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>チュートリアル:Databricks Delta テーブルを更新する Data Lake キャプチャ パターンを実装する
 
 このチュートリアルでは、階層型名前空間を持つストレージ アカウント内でイベントを処理する方法について説明します。
 

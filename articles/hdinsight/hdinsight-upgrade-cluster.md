@@ -1,30 +1,31 @@
 ---
 title: HDInsight クラスターを新しいバージョンにアップグレードする - Azure
 description: Azure HDInsight クラスターを新しいバージョンにアップグレードするためのガイドラインを説明します。
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: a62da0d27d21589f7b75a89cc184ce9f456f1fed
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 808e592a01bca2066b7d3d37a5fdfa697d739d4b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960694"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122444"
 ---
 # <a name="upgrade-hdinsight-cluster-to-a-newer-version"></a>HDInsight クラスターを新しいバージョンにアップグレードする
+
 最新の HDInsight 機能を利用するために、HDInsight クラスターを最新バージョンにアップグレードすることをお勧めします。 HDInsight クラスターのバージョンをアップグレードするには、下のガイドラインに従います。
 
 > [!NOTE]  
 > HDInsight のサポートされているバージョンについては、[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md#supported-hdinsight-versions)に関するページを参照してください。
 
 ## <a name="upgrade-tasks"></a>アップグレード タスク
-HDInsight クラスターをアップグレードするワークフローは次のとおりです。
 
-![アップグレード ワークフロー図](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
+HDInsight クラスターをアップグレードするワークフローは次のとおりです。
+![HDInsight アップグレード ワークフローの図](./media/hdinsight-upgrade-cluster/upgrade-workflow-diagram.png)
 
 1. このドキュメントの各セクションを読んで、HDInsight クラスターに移行するときに必要になる場合がある変更について理解します。
 2. テスト/品質保証環境として、クラスターを作成します。 クラスターの作成の詳細については、「[HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
@@ -40,7 +41,7 @@ HDInsight クラスターをアップグレードするワークフローは次�
 5.  新しいクラスターを使用して、ジョブを開始または処理を続行します。
 
 ## <a name="next-steps"></a>次の手順
+
 * [Linux ベースの HDInsight クラスターを作成する方法を確認する](hdinsight-hadoop-provision-linux-clusters.md)
 * [SSH を使用して HDInsight に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Apache Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
-

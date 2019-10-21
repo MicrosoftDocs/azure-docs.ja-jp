@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: cebf5e80ea59a29efed984097a4157f5238fad5c
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e3e65a6deadfbcad563a6b64c0a9f48182cdd571
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744975"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686464"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と Azure SQL Data Warehouse の IP ファイアウォール規則
 
@@ -38,7 +38,7 @@ ms.locfileid: "70744975"
 
 ### <a name="server-level-ip-firewall-rules"></a>サーバーレベルの IP ファイアウォール規則
 
-  これらの規則により、クライアントは、Azure SQL サーバー全体、つまり、同じ SQL Database サーバー内のすべてのデータベースにアクセスできるようになります。 規則は、*master* データベースに保存されます。
+  これらの規則により、クライアントは、Azure SQL サーバー全体、つまり、同じ SQL Database サーバー内のすべてのデータベースにアクセスできるようになります。 規則は、*master* データベースに保存されます。 Azure SQL Server に対し、最大 128 個のサーバー レベルの IP ファイアウォール規則を作成できます。
   
   サーバー レベルの IP ファイアウォール規則を構成するには、Azure portal、PowerShell、または Transact-SQL ステートメントを使用します。
   - ポータルまたは PowerShell を使用するには、サブスクリプション所有者またはサブスクリプション共同作成者である必要があります。
@@ -231,7 +231,7 @@ SQL Database サービスに期待どおりにアクセスできない場合は�
 
 - **ローカル ファイアウォールの構成:**
 
-  SQL Database にアクセスする前に、TCP ポート 1433 に対し、コンピューターでファイアウォール例外を作成することが必要な場合があります。 Azure クラウド境界内で接続を行うには、追加のポートを開かなければならない場合があります。 詳細については、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)に関する記事の SQL Database の外部と内部に関するセクションを参照してください。
+  SQL Database にアクセスする前に、TCP ポート 1433 に対し、コンピューターでファイアウォール例外を作成することが必要な場合があります。 Azure クラウド境界内で接続を行うには、追加のポートを開かなければならない場合があります。 詳細については、SQL Database の外部と内部に関するセクションを、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)に関する記事で参照してください。
 
 - **ネットワーク アドレス変換:**
 
@@ -260,7 +260,7 @@ SQL Database サービスに期待どおりにアクセスできない場合は�
 - 企業ネットワーク環境で、Azure データセンターで使用されるコンピューティング IP アドレス範囲 (SQL 範囲を含む) からの受信通信が許可されていることを確認します。 これらの IP アドレスを許可リストに追加することが必要な場合があります。 [Microsoft Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)を参照してください。  
 - サーバー レベルの IP ファイアウォール規則の作成に関するクイックスタートについては、[Azure SQL データベースの作成](sql-database-single-database-get-started.md)に関するページを参照してください。
 - オープンソースまたはサードパーティ製のアプリケーションから Azure SQL データベースに接続する方法のヘルプについては、[SQL Database のクライアント クイックスタート コード サンプル](https://msdn.microsoft.com/library/azure/ee336282.aspx)に関するページを参照してください。
-- 開くことが必要な可能性のある、その他のポートの詳細については、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)に関する記事の SQL Database の外部と内部に関するセクションを参照してください。
+- 他に開くことが必要な可能性のあるポートについては、SQL Database の外部と内部に関するセクションを、[ADO.NET 4.5 と SQL Database における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)に関する記事で参照してください
 - Azure SQL Database のセキュリティの概要については、[データベースの保護](sql-database-security-overview.md)に関する記事を参照してください。
 
 <!--Image references-->

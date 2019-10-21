@@ -1,6 +1,6 @@
 ---
 title: デプロイされた Web サービスを使用するクライアントを作成する
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Machine Learning モデルでモデルがデプロイされたときに生成された Web サービスを使用する方法について説明します。 REST API を公開する Web サービス。 任意のプログラミング言語を使用して、この API 用のクライアントを作成します。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5f57be9a1fc5d260ce580b969c8f92c87aea17a8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: fda6c72504a75d600931185e224bb46db03e23ed
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279131"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374292"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Web サービスとしてデプロイされた Azure Machine Learning モデルを使用する
 
@@ -43,18 +43,15 @@ Web サービスは、Azure Container Instances、Azure Kubernetes Service、FPG
 * `auth_enabled` - キー認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `token_auth_enabled` - トークン認証が有効になっている場合は `True`、それ以外の場合は `False` です。
 * `scoring_uri` - REST API のアドレス。
-* `swagger_uri` - OpenAPI 仕様のアドレス。 この URI は、スキーマの自動生成を有効にした場合に使用できます。 詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md#schema)」を参照してください。
+* `swagger_uri` - OpenAPI 仕様のアドレス。 この URI は、スキーマの自動生成を有効にした場合に使用できます。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md#schema)」を参照してください。
 
 デプロイされた Web サービスについてこの情報を取得する場合、次の 3 つの方法があります。
 
 * モデルをデプロイするときに、サービスに関する情報と共に `Webservice` オブジェクトが返されます。
 
     ```python
-    service = Webservice.deploy_from_model(name='myservice',
-                                           deployment_config=myconfig,
-                                           models=[model],
-                                           image_config=image_config,
-                                           workspace=ws)
+    service = Model.deploy(ws, "myservice", [model], inference_config, deployment_config)
+    service.wait_for_deployment(show_output = True)
     print(service.scoring_uri)
     print(service.swagger_uri)
     ```

@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
-ms.openlocfilehash: f98df297eceb0a85a214bc046d33bd4c08d20030
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6996a5965454dfd5997f0c0404e0c348c68b626f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884797"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177462"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -28,7 +28,7 @@ Azure Key Vault に対する認証を行うには、Azure Active Directory (Azur
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) または [Visual Studio 2017 v15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/).
 
-- Visual Studio 用の[アプリ認証拡張機能](https://go.microsoft.com/fwlink/?linkid=862354)。Visual Studio 2017 Update 5 用の個別の拡張機能として入手可能であり、Update 6 以降の製品にはバンドルされています。 Update 6 以降では、Visual Studio インストーラー内から [Azure Development tools]\(Azure 開発ツール\) を選択して、アプリ認証拡張機能のインストールを確認できます。
+- Visual Studio 用のアプリ認証拡張機能。Visual Studio 2017 Update 5 用の個別の拡張機能として入手可能であり、Update 6 以降の製品にはバンドルされています。 Update 6 以降では、Visual Studio インストーラー内から [Azure Development tools]\(Azure 開発ツール\) を選択して、アプリ認証拡張機能のインストールを確認できます。
 
 ## <a name="using-the-library"></a>ライブラリの使用
 
@@ -87,7 +87,7 @@ Azure CLI を使用するには:
 
 1. Azure portal にサインインします。*az login* で Azure にサインインします。
 
-1. 「*az account get-access-token*」と入力して、アクセスを確認します。 エラーが発生した場合は、適切なバージョンの Azure CLI が正しくインストールされていることを確認してください。
+1. 「*az account get-access-token --resource https://vault.azure.net* 」と入力して、アクセスを確認します。 エラーが発生した場合は、適切なバージョンの Azure CLI が正しくインストールされていることを確認してください。
 
    Azure CLI が既定のディレクトリにインストールされていない場合は、`AzureServiceTokenProvider` で Azure CLI のパスが見つけられないことを報告するエラーが発生することがあります。 **AzureCLIPath** 環境変数を使用して、Azure CLI のインストール フォルダーを定義してください。 `AzureServiceTokenProvider` は、必要な場合に、**AzureCLIPath** 環境変数に指定されたディレクトリを **Path** 環境変数に追加します。
 
@@ -171,7 +171,11 @@ Azure App Service 上またはマネージド ID が有効な Azure VM 上でコ
 
 ### <a name="use-a-shared-secret-credential-to-sign-into-azure-ad"></a>共有シークレット資格情報を使用して Azure AD にサインインする
 
-1. [az ad sp create-for-rbac --password](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) を使用してパスワード付きのサービス プリンシパル証明書を作成します。
+1. Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを --sdk-auth パラメーターと共に使用して、パスワードでサービス プリンシパル証明書を作成します。
+
+    ```azurecli
+    az ad sp create-for-rbac --sdk-auth
+    ```
 
 1. **AzureServicesAuthConnectionString** という名前の環境変数を次の値に設定します。
 

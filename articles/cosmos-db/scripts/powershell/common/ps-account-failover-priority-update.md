@@ -1,19 +1,19 @@
 ---
-title: Azure PowerShell スクリプト - Azure Cosmos アカウントのフェールオーバー優先度を変更する
-description: Azure PowerShell サンプル スクリプト - Azure Cosmos アカウントのフェールオーバー優先度を変更する
+title: Azure PowerShell スクリプト - Azure Cosmos アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりする
+description: Azure PowerShell スクリプト サンプル - Azure Cosmos アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりします
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 0aea4e8e01b5f65be0d0ca4bb08082e058cba311
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: e4406124a7ea4eac213d830d0e5960e76fb6d364
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603976"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155400"
 ---
-# <a name="change-failover-priority-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントのフェールオーバー優先度を変更する
+# <a name="change-failover-priority-or-trigger-failover-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントのフェールオーバー優先度を変更したりフェールオーバーをトリガーしたりする
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,12 @@ ms.locfileid: "67603976"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account")]
+> [!NOTE]
+> 手動フェールオーバーは、`failoverPriority=0` のリージョンを変更した場合にトリガーされ、また、手動フェールオーバー用に構成されたアカウントに対してのみ実行できます。 それ以外は、どのリージョンを変更しても、Cosmos アカウントのフェールオーバー優先度が変更されるだけです。
+> [!NOTE]
+> このサンプルでは、SQL (Core) API アカウントの使用方法を紹介しています。 このサンプルを他の API で使用する場合は、関連するプロパティをコピーし、お使いの API 固有のスクリプトに適用してください。
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-failover-priority-update.ps1 "Update failover priority for an Azure Cosmos account or trigger a manual failover")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

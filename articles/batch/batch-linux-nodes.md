@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc1e80433a09d8a56f2900ab6b24dd3804db56ac
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 18df43ebf3a20547917ddd372d922741b4cee849
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086770"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350114"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Batch プールでの Linux コンピューティング ノードのプロビジョニング
 
@@ -38,7 +38,8 @@ Batch でコンピューティング ノードのプールを作成する場合�
 **仮想マシン構成** では、Linux と Windows の両方のコンピューティング ノード イメージが提供されます。 使用可能なコンピューティング ノード サイズについては、「[Azure の仮想マシンのサイズ](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(Linux) および「[Azure の仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Windows) を参照してください。 仮想マシンの構成ノードを含むプールを作成する場合は、ノードのサイズ、仮想マシン イメージの参照、およびノードにインストールする Batch ノード エージェント SKU を指定する必要があります。
 
 ### <a name="virtual-machine-image-reference"></a>仮想マシン イメージの参照
-Batch サービスでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使って、仮想マシン構成にコンピューティング ノードを提供します。 [Azure Marketplace][vm_marketplace] でイメージを指定できます。または、事前に準備したカスタム イメージを指定できます。 カスタム イメージの詳細については、[カスタム イメージを使用したプールの作成](batch-custom-images.md)に関するページを参照してください。
+
+Batch サービスでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使って、仮想マシン構成にコンピューティング ノードを提供します。 [Azure Marketplace][vm_marketplace] でイメージを指定できます。または、事前に準備したカスタム イメージを指定できます。 カスタム イメージの詳細については、「[Shared Image Gallery を使用してプールを作成する](batch-sig-images.md)」を参照してください。
 
 仮想マシン イメージの参照を構成する場合は、仮想マシン イメージのプロパティを指定します。 仮想マシン イメージの参照を作成する際は、次のプロパティが必要です。
 

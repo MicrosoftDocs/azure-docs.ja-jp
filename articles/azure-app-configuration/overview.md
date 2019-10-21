@@ -1,5 +1,5 @@
 ---
-title: Azure App Configuration とは  | Microsoft Docs
+title: Azure App Configuration とは | Microsoft Docs
 description: Azure App Configuration サービスの概要。
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 985845197f8a1ece76fe0a620f05194109f51bd6
-ms.sourcegitcommit: 6f043a4da4454d5cb673377bb6c4ddd0ed30672d
+ms.openlocfilehash: 1db46e8562006e1b60e4f51ca88220aeca5fb2a8
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65408677"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687038"
 ---
-# <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは 
+# <a name="what-is-azure-app-configuration"></a>Azure App Configuration とは
 
 Azure App Configuration は、アプリケーション設定と機能フラグを一元的に管理するためのサービスを提供します。 近年のプログラム、特にクラウドで実行されるプログラムは、その性質上、分散されたコンポーネントが多数存在するのが一般的です。 これらのコンポーネント全体に構成設定を分散させることは、トラブルシューティングすることの難しいエラーがアプリケーションのデプロイ中に発生する原因となります。 App Configuration を使用すると、アプリケーションのすべての設定を 1 か所に格納して、そのアクセスをセキュリティで保護することができます。
 
@@ -75,3 +75,4 @@ App Configuration は、アプリケーションのシークレットを格納�
 * [Azure 関数のクイック スタート](./quickstart-azure-function-csharp.md)
 * [Java Spring のクイック スタート](./quickstart-java-spring-app.md)
 * [ASP.NET Core の機能フラグのクイック スタート](./quickstart-feature-flag-aspnet-core.md)
+* [Spring Boot の機能フラグのクイックスタート](./quickstart-feature-flag-spring-boot.md)

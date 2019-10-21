@@ -1,17 +1,17 @@
 ---
-title: Advanced Threat Protection - Azure Database for PostgreSQL - Single Server
-description: Advanced Threat Protection は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
+title: Advanced Threat Protection のコンセプト - Azure Database for PostgreSQL - Single Server
+description: データベースへの潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出する Advanced Threat Protection について説明します。
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 81f42183276f95ddfb24fbdc388fef59acbe680e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 61c0e666458018d4e03d5560e417d28d0efadb27
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073536"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950072"
 ---
 # <a name="advanced-threat-protection-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server での Advanced Threat Protection
 

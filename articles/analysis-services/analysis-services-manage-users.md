@@ -2,18 +2,17 @@
 title: Azure Analysis Services での認証とユーザーのアクセス許可 | Microsoft Docs
 description: Azure Analysis Services での認証とユーザーのアクセス許可について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7673b115a3ad2e6ca7aec34b1cfabfb38d2a16f4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dc66b34492b34a6e0f239d19ee10fbd79b683a14
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859211"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294928"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 
@@ -23,7 +22,7 @@ Azure Analysis Services では、[Azure AD B2B コラボレーション](../acti
 
 ![Azure Analysis Services 認証のアーキテクチャ](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 すべてのクライアント アプリケーションとツールは、Analysis Services [クライアント ライブラリ](analysis-services-data-providers.md) (AMO、MSOLAP、ADOMD) の 1 つ以上を使ってサーバーに接続します。 
 

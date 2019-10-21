@@ -1,22 +1,22 @@
 ---
-title: Windows Virtual Desktop プレビューのセッション ホストの自動スケール - Azure
-description: Windows Virtual Desktop プレビューのセッション ホストの自動スケール スクリプトを設定する方法について説明します。
+title: Windows Virtual Desktop のセッション ホストの自動スケール - Azure
+description: Windows Virtual Desktop のセッション ホストの自動スケール スクリプトを設定する方法について説明します。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 7babfca617ab42da615518726d1b1d4cafe112b5
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 932fbe6814df8ec324dd3360bcacfcbcf1c19b62
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163231"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842769"
 ---
-# <a name="automatically-scale-session-hosts"></a>セッション ホストを自動的にスケーリングする
+# <a name="scale-session-hosts-dynamically"></a>セッション ホストを動的にスケーリングする
 
-Azure に多くの Windows Virtual Desktop プレビューをデプロイする場合、仮想マシンのコストは、Windows Virtual Desktop 展開の合計コストの大部分を占めます。 コストを削減するには、ピーク使用時間外にセッション ホスト仮想マシン (VM) をシャットダウンしてセッションの割り当てを解除し、ピーク使用時間中に再起動することをお勧めします。
+Azure に多くの Windows Virtual Desktop をデプロイする場合、仮想マシンのコストは、Windows Virtual Desktop 展開の合計コストの大部分を占めます。 コストを削減するには、ピーク使用時間外にセッション ホスト仮想マシン (VM) をシャットダウンしてセッションの割り当てを解除し、ピーク使用時間中に再起動することをお勧めします。
 
 この記事では、単純なスケーリング スクリプトを使用して、Windows Virtual Desktop 環境内のセッション ホスト仮想マシンを自動的にスケーリングします。 スケーリング スクリプトのしくみについて詳しくは、「[スケーリング スクリプトのしくみ](#how-the-scaling-script-works)」のセクションをご覧ください。
 

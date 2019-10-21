@@ -6,14 +6,14 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: e482bf99013b9bec9dfbf64c4e8ad5a8a43ff540
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 15f527dfe517dcb3329b8b61243d7c5054eedb56
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296304"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959698"
 ---
-# <a name="single-and-multi-resource-export-to-template-in-azure-portal"></a>Azure portal のテンプレートへの単一および複数リソースのエクスポート
+# <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Azure portal のテンプレートへの単一および複数リソースのエクスポート
 
 Azure Resource Manager テンプレートの作成に役立てるために、既存のリソースからテンプレートをエクスポートできます。 エクスポートされたテンプレートを使用すると、リソースをデプロイする JSON の構文とプロパティを理解できます。 今後のデプロイを自動化するには、まずエクスポートされたテンプレートから始めて、シナリオに合わせて変更します。
 

@@ -1,20 +1,20 @@
 ---
-title: マネージド ID を使用して認証する - Azure Logic Apps | Microsoft Docs
+title: マネージド ID を使用した認証 - Azure Logic Apps
 description: サインインなしで認証するために、マネージド ID (以前はマネージド サービス ID (MSI) と呼ばれていました) を作成できます。そうすることで、ロジック アプリは資格情報やシークレットなしで他の Azure Active Directory (Azure AD) テナント内のリソースにアクセスできます
-author: kevinlam1
-ms.author: klam
-ms.reviewer: estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
-ms.openlocfilehash: b157db5032bd62ab443209f201b4ceded6e44cb5
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: d6cf19a07829afea924d3d799b1309cfc5f6329f
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385557"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959968"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して認証し、リソースにアクセスする
 
@@ -23,11 +23,11 @@ ms.locfileid: "68385557"
 > [!NOTE]
 > ロジック アプリでは、マネージド ID をサポートするコネクタでのみマネージド ID を使用できます。 現時点では、HTTP コネクタのみがマネージド ID をサポートしています。
 >
-> 現在、システム割り当てのマネージド ID は、各 Azure サブスクリプションで最大 10 個までのロジック アプリ ワークフローに割り当てることができます。
+> 現在、システム割り当てのマネージド ID は、各 Azure サブスクリプションで最大 100 個までのロジック アプリ ワークフローに割り当てることができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。サブスクリプションをお持ちでない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure サブスクリプション。サブスクリプションをお持ちでない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * システム割り当てのマネージド ID を使用するロジック アプリ。 ロジック アプリをお持ちでない場合は、[初めてのロジック アプリ ワークフローを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
@@ -49,9 +49,9 @@ Azure portal から、ロジック アプリ用のシステム割り当てのマ
 
 1. [Azure Portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-1. ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。 
+1. ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。
 
-1. **[システム割り当て済み]**  >  **[状態]** で、 **[オン]** を選択します。 次に、 **[保存]**  >  **[はい]** を選択します。
+1. **[システム割り当て済み]**  >  **[状態]** で **[オン]** を選択します。 次に、 **[保存]**  >  **[はい]** を選択します。
 
    ![マネージド ID 設定をオンにする](./media/create-managed-service-identity/turn-on-managed-service-identity.png)
 
@@ -59,10 +59,10 @@ Azure portal から、ロジック アプリ用のシステム割り当てのマ
 
    ![オブジェクト ID の GUID](./media/create-managed-service-identity/object-id.png)
 
-   | プロパティ | 値 | 説明 | 
-   |----------|-------|-------------| 
-   | **オブジェクト ID** | <*identity-resource-ID*> | Azure AD テナント内のロジック アプリのシステム割り当てのマネージド ID を表すグローバル一意識別子 (GUID) | 
-   ||| 
+   | プロパティ | 値 | 説明 |
+   |----------|-------|-------------|
+   | **オブジェクト ID** | <*identity-resource-ID*> | Azure AD テナント内のロジック アプリのシステム割り当てのマネージド ID を表すグローバル一意識別子 (GUID) |
+   ||||
 
 <a name="template"></a>
 
@@ -111,11 +111,11 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 }
 ```
 
-| プロパティ | 値 | 説明 | 
+| プロパティ | 値 | 説明 |
 |----------|-------|-------------|
-| **principalId** | <*principal-ID*> | Azure AD テナント内のロジック アプリを表し、"オブジェクト ID" や `objectID` として表示されることもあるグローバル一意識別子 (GUID) | 
-| **tenantId** | <*Azure-AD-tenant-ID*> | ロジック アプリが現在メンバーとなっている Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは、ロジック アプリ インスタンスと同じ名前を持ちます。 | 
-||| 
+| **principalId** | <*principal-ID*> | Azure AD テナント内のロジック アプリを表し、"オブジェクト ID" や `objectID` として表示されることもあるグローバル一意識別子 (GUID) |
+| **tenantId** | <*Azure-AD-tenant-ID*> | ロジック アプリが現在メンバーとなっている Azure AD テナントを表すグローバル一意識別子 (GUID)。 Azure AD テナント内では、サービス プリンシパルは、ロジック アプリ インスタンスと同じ名前を持ちます。 |
+||||
 
 <a name="access-other-resources"></a>
 
@@ -130,13 +130,13 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
 ロジック アプリのシステム割り当てマネージド ID に別の Azure リソースへのアクセスを付与するには、以下の手順に従います。
 
-1. Azure portal で、マネージド ID にアクセスを割り当てる Azure リソースに移動します。 
+1. Azure portal で、マネージド ID にアクセスを割り当てる Azure リソースに移動します。
 
 1. リソースのメニューから **[アクセス制御 (IAM)]** を選択します。 ツール バーで、 **[追加]**  >  **[ロールの割り当ての追加]** の順に選択します。
 
    ![ロールの割り当ての追加](./media/create-managed-service-identity/add-permissions-logic-app.png)
 
-1. **[ロールの割り当ての追加]** で、その ID の**ロール**を選択します。 
+1. **[ロールの割り当ての追加]** で、その ID の**ロール**を選択します。
 
 1. **[アクセスの割り当て先]** プロパティで、まだ選択されていなければ、 **[Azure AD のユーザー、グループ、サービス プリンシパル]** を選択します。
 
@@ -154,9 +154,7 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
 
 1. 呼び出すリソースの要求**メソッド**と **URI** の場所など、そのアクションに必要な詳細を提供します。
 
-   たとえば、[Azure AD をサポートする次の Azure サービスのいずれかで](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) Azure Active Directory (Azure AD) 認証を使用しているとします。 
-   **[URI]** ボックスに、その Azure サービスのエンドポイント URL を入力します。 
-   つまり、Azure Resource Manager を使用している場合、 **[URI]** プロパティにこの値を入力します。
+   たとえば、[Azure AD をサポートする次の Azure サービスのいずれかで](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) Azure Active Directory (Azure AD) 認証を使用しているとします。 **[URI]** ボックスに、その Azure サービスのエンドポイント URL を入力します。 つまり、Azure Resource Manager を使用している場合、 **[URI]** プロパティにこの値を入力します。
 
    `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version=2016-06-01`
 
@@ -170,7 +168,7 @@ Azure でロジック アプリを作成すると、そのロジック アプリ
    > 
    > **[対象ユーザー]** プロパティで、リソース ID 値は、必須の末尾のスラッシュも含めて Azure AD で予想される値に正確に一致している必要があります。 
    > これらのリソース ID 値は、この [Azure AD をサポートする Azure サービスについて説明する表](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)で確認できます。 
-   > たとえば、Azure Resoruce Manager のリソース ID を使用している場合、URI の末尾にスラッシュがあることを確認します。
+   > たとえば、Azure Resource Manager のリソース ID を使用している場合、URI の末尾にスラッシュがあることを確認します。
 
 1. ご希望の方法でロジック アプリのビルドを続行します。
 
@@ -188,7 +186,7 @@ Azure portal から、ロジック アプリ用のシステム割り当てのマ
 
 1. [Azure Portal](https://portal.azure.com) のロジック アプリ デザイナーでロジック アプリを開きます。
 
-1. ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。 
+1. ロジック アプリのメニューの **[設定]** で、 **[ID]** を選択します。
 
 1. **[システム割り当て済み]**  >  **[状態]** で、 **[オフ]** を選択します。 次に、 **[保存]**  >  **[はい]** を選択します。
 
@@ -204,7 +202,6 @@ Azure Resource Manager デプロイ テンプレートを使用してロジッ�
 }
 ```
 
-## <a name="get-support"></a>サポートを受ける
+## <a name="next-steps"></a>次の手順
 
-* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
+* [Azure Logic Apps におけるアクセスとデータのセキュリティ保護](../logic-apps/logic-apps-securing-a-logic-app.md)

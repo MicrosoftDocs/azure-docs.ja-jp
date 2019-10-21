@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 2f1ee5caf89af718d91abeac01730700c131ab41
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: bc7858aeceea7cbd35bc2d834ddfb4fb5d656321
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70048967"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174829"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>クイック スタート:デバイス機能モデルを使用して IoT プラグ アンド プレイ デバイスを作成し、ご利用の IoT Central アプリケーションに接続する
 
@@ -42,12 +42,12 @@ _デバイス機能モデル_ (DCM) には、[IoT プラグ アンド プレイ]
     npm i -g dps-keygen
     ```
 
-### <a name="install-azure-iot-device-workbench"></a>Azure IoT Device Workbench をインストールする
+### <a name="install-azure-iot-tools"></a>Azure IoT Tools のインストール
 
-VS Code で Azure IoT Device Workbench 拡張機能をインストールするには、次の手順に従ってください。
+VS Code で Azure IoT Tools 拡張機能パックをインストールするには、次の手順に従います。
 
 1. VS Code で、 **[拡張機能]** タブを選択します。
-1. **Azure IoT Device Workbench** を検索します。
+1. **Azure IoT Tools** を検索します。
 1. **[インストール]** を選択します。
 
 ## <a name="prepare-the-development-environment"></a>開発環境の準備

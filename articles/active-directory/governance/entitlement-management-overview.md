@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c99ee1987b592a2e8314d529b118fb26945271e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 07a51b9f21d32fb3efdfef7c7f74cb3a1088115a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241709"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827150"
 ---
 # <a name="what-is-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理とは (プレビュー)
 
@@ -122,8 +122,8 @@ Azure AD セキュリティ グループまたは Office 365 グループに依�
 | 用語または概念 | 説明 |
 | --- | --- |
 | エンタイトルメント管理 | アクセス パッケージの割り当て、取り消し、管理を行うサービス。 |
-| アクセス パッケージ | ユーザーが要求できるリソースのアクセス許可とポリシーのコレクション。 アクセス パッケージは常にカタログに含まれています。 |
-| アクセス要求 | アクセス パッケージへのアクセス要求。 要求は通常、ワークフローを通過します。 |
+| アクセス パッケージ | チームまたはプロジェクトが必要とし、ポリシーに準拠しているリソースのバンドル。 アクセス パッケージは常にカタログに含まれています。 |
+| アクセス要求 | アクセス パッケージのリソースへのアクセス要求。 要求は通常、ワークフローを通過します。 |
 | policy | ユーザーがアクセスする方法、承認担当者、ユーザーがアクセスできる期間など、アクセスのライフサイクルを定義する一連の規則。 ポリシーの例には、従業員アクセスや外部アクセスがあります。 |
 | catalog | 関連リソースとアクセス パッケージのコンテナー。 |
 | 一般カタログ | 常に使用できる組み込みのカタログ。 一般カタログにリソースを追加するには、特定のアクセス許可が必要です。 |

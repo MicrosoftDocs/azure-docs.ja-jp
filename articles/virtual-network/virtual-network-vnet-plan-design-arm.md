@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 0a80630ffa363d2b633667d8104cc0326c4afa2e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: 17db8dbcba8dd0181be9ca7289ea1b85079ff9a1
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66478594"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168504"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 
@@ -27,7 +27,7 @@ ms.locfileid: "66478594"
 
 ## <a name="naming"></a>名前を付ける
 
-Azure のすべてのリソースには名前があります。 名前はスコープ内で一意でなければならず、スコープはリソースの種類によって異なる場合があります。 たとえば、仮想ネットワークの名前は、[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内では一意である必要がありますが、[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)内または Azure [リージョン](https://azure.microsoft.com/regions/#services)内では重複していてもかまいません。 リソースの名前を付けるときに一貫して使用できる名前付け規則を定義することは、複数のネットワーク リソースの管理が長期間に及ぶときは有効なことです。 推奨事項については、「[名前付け規則](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#networking)」を参照してください。
+Azure のすべてのリソースには名前があります。 名前はスコープ内で一意でなければならず、スコープはリソースの種類によって異なる場合があります。 たとえば、仮想ネットワークの名前は、[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)内では一意である必要がありますが、[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)内または Azure [リージョン](https://azure.microsoft.com/regions/#services)内では重複していてもかまいません。 リソースの名前を付けるときに一貫して使用できる名前付け規則を定義することは、複数のネットワーク リソースの管理が長期間に及ぶときは有効なことです。 推奨事項については、「[名前付け規則](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#virtual-networking)」を参照してください。
 
 ## <a name="regions"></a>リージョン
 

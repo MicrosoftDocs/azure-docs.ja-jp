@@ -123,6 +123,8 @@
               href: automation-scenario-source-control-integration-with-VSTS.md
     - name: トラブルシューティング
       items:
+        - name: Microsoft Azure Automation のケースを開くときに収集するデータ
+          href: troubleshoot/collect-data-microsoft-azure-automation-case.md
         - name: Hybrid Runbook Worker のトラブルシューティング
           href: troubleshoot/hybrid-runbook-worker.md
           displayName: 'troubleshoot, HRW, hybrid worker'
@@ -146,6 +148,8 @@
           href: automation-onboard-solutions-from-automation-account.md
     - name: ハウツー ガイド
       items:
+        - name: ご使用の Azure Virtual Machines の更新プログラムとパッチの管理
+          href: automation-tutorial-update-management.md
         - name: 複数の VM の更新プログラム管理
           href: manage-update-multi.md
         - name: 事前スクリプトと事後スクリプト
@@ -155,6 +159,14 @@
         - name: SCCM と Update Management の統合
           href: oms-solution-updatemgmt-sccmintegration.md
           displayName: Configuration Manager
+        - name: Update Management 用に Windows Update を構成する
+          href: automation-configure-windows-update.md
+        - name: Update Management を利用して動的グループを使用する
+          href: automation-update-management-groups.md
+        - name: Update Management ログにクエリを実行する
+          href: automation-update-management-query-logs.md
+        - name: 更新の評価を表示する
+          href: automation-view-update-assessments.md
     - name: トラブルシューティング
       items:
         - name: オンボード
@@ -298,14 +310,18 @@
       href: automation-connections.md
     - name: 資格情報
       href: automation-credentials.md
-    - name: モジュール
-      href: automation-integration-modules.md
+    - name: PowerShell モジュール
+      items:
+        - name: モジュール
+          href: automation-integration-modules.md
+        - name: Azure Automation での Az モジュールの使用
+          href: az-modules.md
+        - name: Azure PowerShell モジュールの更新
+          href: automation-update-azure-modules.md
     - name: スケジュール
       href: automation-schedules.md
     - name: 変数
       href: automation-variables.md
-    - name: Azure PowerShell モジュールの更新
-      href: automation-update-azure-modules.md
     - name: Python 2 パッケージの管理
       href: python-packages.md
     - name: 共有リソースのトラブルシューティング

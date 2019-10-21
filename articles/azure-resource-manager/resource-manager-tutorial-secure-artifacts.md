@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/25/2019
+ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bf004f07558ae1f252a6bd26b4fd59ea9e4eea6e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bcf64d98f53d85937ee7960ec3938280814267d8
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069265"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170190"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>チュートリアル: Azure Resource Manager テンプレートのデプロイ時に成果物をセキュリティで保護する
 
@@ -64,7 +64,7 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 
 ### <a name="download-the-bacpac-file"></a>BACPAC ファイルをダウンロードする
 
-[BACPAC ファイル](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/SQLDatabaseExtension.bacpac)をダウンロードし、お使いのローカル コンピューターに同じ名前 (**SQLDatabaseExtension.bacpac**) で保存します。
+[BACPAC ファイル](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac)をダウンロードし、お使いのローカル コンピューターに同じ名前 (**SQLDatabaseExtension.bacpac**) で保存します。
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -134,13 +134,13 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 
 ## <a name="open-an-existing-template"></a>既存のテンプレートを開く
 
-このセッションでは、「[チュートリアル: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)」で作成したテンプレートを変更し、SAS トークンを使用して BACPAC ファイルを呼び出します。  SQL 拡張機能チュートリアルで開発されたテンプレートは、[https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json](https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json) で共有されます。
+このセッションでは、「[チュートリアル: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)」で作成したテンプレートを変更し、SAS トークンを使用して BACPAC ファイルを呼び出します。  SQL 拡張機能チュートリアルで開発されたテンプレートは、[GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json) で共有されています。
 
 1. Visual Studio Code から、 **[ファイル]** > **[ファイルを開く]** を選択します。
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
-    https://armtutorials.blob.core.windows.net/sqlextensionbacpac/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
     ```
 3. **[開く]** を選択して、ファイルを開きます。
 

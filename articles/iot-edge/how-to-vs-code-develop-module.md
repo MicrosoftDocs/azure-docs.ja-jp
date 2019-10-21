@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b451e501b216b02ecb052ee159d0e26343af7901
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e5bfd2fc127774b9630e87ab4f51241e82ed7c87
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910241"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999065"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge のモジュールを開発およびデバッグする
 
@@ -61,7 +61,7 @@ Windows、macOS、または Linux を実行しているコンピューターま�
     > [!TIP]
     > プロトタイプおよびテスト目的で、クラウド レジストリの代わりに Docker のローカル レジストリを使用できます。
 
-C でモジュールを開発している場合を除き、IoT Edge ソリューションをデバッグ、実行、テストするようにローカルの開発環境を設定するには、Python ベースの [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/) も必要になります。 まだ行っていない場合は、[Python (2.7/3.6) と Pip](https://www.python.org/) をインストールした後、ターミナルで次のコマンドを実行して **iotedgehubdev** をインストールしてください。
+C でモジュールを開発している場合を除き、IoT Edge ソリューションをデバッグ、実行、テストするようにローカルの開発環境を設定するには、Python ベースの [Azure IoT EdgeHub Dev Tool](https://pypi.org/project/iotedgehubdev/) も必要になります。 まだ行っていない場合は、[Python (2.7 および 3.6 以降) と Pip](https://www.python.org/) をインストールした後、ターミナルで次のコマンドを実行して **iotedgehubdev** をインストールしてください。
 
    ```cmd
    pip install --upgrade iotedgehubdev
@@ -269,22 +269,22 @@ C#、Node.js、または Java で開発している場合、モジュールで�
       ptvsd.break_into_debugger()
       ```
 
-     たとえば、`receive_message_callback` メソッドをデバッグする場合は、以下に示すようなコード行を挿入します。
+     たとえば、`receive_message_listener` 関数をデバッグする場合は、以下に示すようなコード行を挿入します。
 
       ```python
-      def receive_message_callback(message, hubManager):
+      def receive_message_listener(client):
           ptvsd.break_into_debugger()
-          global RECEIVE_CALLBACKS
-          message_buffer = message.get_bytearray()
-          size = len(message_buffer)
-          print ( "    Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode ('utf-8'), size) )
-          map_properties = message.properties()
-          key_value_pair = map_properties.get_internals()
-          print ( "    Properties: %s" % key_value_pair )
-          RECEIVE_CALLBACKS += 1
-          print ( "    Total calls received: %d" % RECEIVE_CALLBACKS )
-          hubManager.forward_event_to_output("output1", message, 0)
-          return IoTHubMessageDispositionResult.ACCEPTED
+          global RECEIVED_MESSAGES
+          while True:
+              message = client.receive_message_on_input("input1")   # blocking call
+              RECEIVED_MESSAGES += 1
+              print("Message received on input1")
+              print( "    Data: <<{}>>".format(message.data) )
+              print( "    Properties: {}".format(message.custom_properties))
+              print( "    Total calls received: {}".format(RECEIVED_MESSAGES))
+              print("Forwarding message to output1")
+              client.send_message_to_output(message, "output1")
+              print("Message successfully forwarded")
       ```
 
 1. Visual Studio Code のコマンド パレットで:

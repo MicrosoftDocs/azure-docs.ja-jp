@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel プレビューをオンボードする | Microsoft Docs
+title: Azure Sentinel のオンボード | Microsoft Docs
 description: Azure Sentinel でデータを収集する方法をご確認ください。
 services: sentinel
 documentationcenter: na
@@ -13,37 +13,36 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: b609dc70c45941ec1132c7cdf614cf9bec8119ff
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019020"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316811"
 ---
-# <a name="on-board-azure-sentinel-preview"></a>Azure Sentinel プレビューをオンボードする
+# <a name="on-board-azure-sentinel"></a>Azure Sentinel をオンボードする
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 このクイック スタートでは、Azure Sentinel をオンボードする方法を説明します。 
 
 Azure Sentinel をオンボードするには、まず Azure Sentinel を有効にしてから、データ ソースを接続する必要があります。 Azure Sentinel には、Microsoft Threat Protection ソリューションや Microsoft 365 ソース (Office 365、Azure AD、Azure ATP、Microsoft Cloud App Security) など、すぐに使用できるリアルタイム統合を提供する Microsoft ソリューション用コネクタが多数付属しています。 さらに、Microsoft 以外のソリューション用のより広範なセキュリティ エコシステムへの組み込みコネクタがあります。 一般的なイベント形式 (Syslog や REST-API) を使用して、データ ソースを Azure Sentinel に接続することもできます。  
 
-データ ソースを接続した後、優れた設計のダッシュボードのギャラリーから選択し、データに基づいて分析情報を表示することができます。 これらのダッシュボードは、お客様のニーズに合わせて簡単にカスタマイズすることができます。
+データ ソースを接続した後、優れた設計のブックのギャラリーから選択し、データに基づいて分析情報を表示できます。 これらのブックは、ニーズに合わせて簡単にカスタマイズできます。
 
 
 ## <a name="global-prerequisites"></a>グローバルな前提条件
 
 - アクティブな Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-- Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-create-workspace.md)方法をご確認ください
+- Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)を確認してください。 Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](../azure-monitor/platform/design-logs-deployment.md)」を参照してください。
 
 -  Azure Sentinel を有効にするには、Azure Sentinel ワークスペースが存在するサブスクリプションへの共同作成者のアクセス許可が必要です。 
-- Azure Sentinel を使用するには、ワークスペースが属しているリソース グループに対する共同作成者または閲覧者のいずれかのアクセス許可が必要です
-- 特定のデータ ソースに接続するには、追加のアクセス許可が必要になる可能性があります
+- Azure Sentinel を使用するには、ワークスペースが属しているリソース グループに対する共同作成者または閲覧者のいずれかのアクセス許可が必要です。
+- 特定のデータ ソースに接続するには、追加のアクセス許可が必要になる場合があります。
+- Azure Sentinel は有料サービスです。 価格情報については、[Azure Sentinel の概要](https://go.microsoft.com/fwlink/?linkid=2104058)に関するページをご覧ください。
  
 ## Azure Sentinel を有効にする <a name="enable"></a>
 
@@ -59,8 +58,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 
    >[!NOTE] 
    > - Azure Security Center で作成した既定のワークスペースが一覧に表示されない場合、そこに Azure Sentinel をインストールすることはできません。
-   > - Azure Sentinel は、次のいずれかのリージョンにデプロイされているワークスペースで実行できます。オーストラリア東部、オーストラリア南東部、カナダ中部、インド中部、米国東部、米国東部 2 EUAP (カナリア)、東日本、東南アジア、英国南部、西ヨーロッパ、米国西部 2、米国中西部、フランス中部、韓国中部、北ヨーロッパ、米国東部 2、東アジア、米国西部、米国中部、米国中南部。
-
+   > - Azure Sentinel は、中国、ドイツ、および Azure Government の各リージョンを除く、[Log Analytics の一般公開リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=monitor)のワークスペースで実行できます。 Azure Sentinel によって生成されるデータ (これらのワークスペースをソースとする顧客データを含む可能性がある、インシデント、ブックマーク、アラート ルールなど) は、西ヨーロッパ (ヨーロッパにあるワークスペースの場合) または米国東部 (すべての米国ベースのワークスペースおよびヨーロッパを除くその他のリージョンの場合) で保存されます。
 
 6. **[Add Azure Sentinel]** (Azure Sentinel の追加) をクリックします。
   
@@ -72,7 +70,7 @@ Azure Sentinel でサービスとアプリへの接続を確立するには、�
 1. **[データ収集]** をクリックします。
 2. 接続できるデータ ソースごとにタイルがあります。<br>
 たとえば、 **[Azure Active Directory]** をクリックします。 このデータ ソースを接続する場合は、Azure AD から Azure Sentinel にすべてのログをストリーミングします。 サインイン ログや監査ログなど、取得するログの種類を選択できます。 <br>
-Azure Sentinel の下部には、各コネクタにインストールする必要のあるダッシュボードに関する推奨事項が示されているため、データ全体の興味深い分析をすぐに得ることができます。 <br> インストール手順を実行するか、[関連する接続のガイドを参照](connect-data-sources.md)して詳細をご確認ください。 データ コネクタについては、「[Microsoft サービスの接続](connect-data-sources.md)」をご覧ください。
+Azure Sentinel の下部には、各コネクタにインストールする必要のあるブックに関する推奨事項が示されているため、データ全体の興味深い分析をすぐに得ることができます。 <br> インストール手順を実行するか、[関連する接続のガイドを参照](connect-data-sources.md)して詳細をご確認ください。 データ コネクタについては、「[Microsoft サービスの接続](connect-data-sources.md)」をご覧ください。
 
 データ ソースが接続されると、データは Azure Sentinel にストリーミングされ、操作を開始できます。 [組み込みのダッシュボード](quickstart-get-visibility.md)でログを表示し、Log Analytics でクエリをビルドして[データを調査](tutorial-investigate-cases.md)できます。
 
@@ -81,5 +79,5 @@ Azure Sentinel の下部には、各コネクタにインストールする必�
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、データ ソースを Azure Sentinel に接続する方法を説明しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 - [一般的なエラー形式のアプライアンス](connect-common-event-format.md)から Azure Sentinel にデータをストリーミングする。

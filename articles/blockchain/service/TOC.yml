@@ -47,6 +47,8 @@
       href: manage-cli.md
     - name: PowerShell を使用してコンソーシアムを管理する
       href: manage-consortium-powershell.md
+    - name: Logic Apps を使用する
+      href: ethereum-logic-app.md
 - name: リソース
   items:
     - name: Blockchain REST API

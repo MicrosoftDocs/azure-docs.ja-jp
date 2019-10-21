@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d0fd26da81c4f59f16b5f0364cf165ec36a6ea39
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 2daae1637c568b72d548330abbcb73da21b12683
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516331"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176849"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 この記事では、データの処理または変換に利用できるさまざまなコンピューティング環境について説明します。 これらのコンピューティング環境を Azure Data Factory にリンクする「リンクされたサービス」の構成時に Data Factory でサポートされるさまざまな構成 (オンデマンドと Bring Your Own の比較) に関する詳細も提供します。
@@ -382,7 +382,7 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 ### <a name="properties"></a>properties
 | プロパティ               | 説明                              | 必須                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Type                   | type プロパティは次の値に設定されます。**AzureML**。 | はい                                      |
+| 種類                   | type プロパティは次の値に設定されます。**AzureML**。 | はい                                      |
 | mlEndpoint             | バッチ スコアリング URL です。                   | はい                                      |
 | apiKey                 | 公開されたワークスペース モデルの API です。     | はい                                      |
 | updateResourceEndpoint | トレーニング済みモデル ファイルを使用した予測 Web サービスの更新に使用される Azure ML Web サービス エンドポイントの更新リソース URL です | いいえ                                       |
@@ -438,7 +438,9 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 
 
 ## <a name="azure-databricks-linked-service"></a>Azure Databricks のリンクされたサービス
-**Azure Databricks のリンクされたサービス**を作成して、Databricks ワークロード (ノートブック) の実行に使用する Databricks ワークスペースを登録できます。
+**Azure Databricks のリンクされたサービス**を作成して、Databricks ワークロード (ノートブック、jar、phthon) の実行に使用する Databricks ワークスペースを登録できます。 
+> [!IMPORTANT]
+> Databricks のリンクされたサービスでは、[インスタンス プール](https://aka.ms/instance-pools)がサポートされています。 
 
 ### <a name="example---using-new-job-cluster-in-databricks"></a>例 - Databricks で新しいジョブ クラスターの使用
 
@@ -490,6 +492,7 @@ Azure Machine Learning の「リンクされたサービス」を作成し、Mac
 | domain               | Databricks ワークスペースのリージョンに基づき Azure リージョンを指定します。 例: https://eastus.azuredatabricks.net | はい                                 |
 | accessToken          | Data Factory の Azure Databricks の認証にはアクセス トークンが必要です。 アクセス トークンは、Databricks ワークスペースから生成する必要があります。 アクセス トークンを見つける詳細な手順については、[こちら](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token)を参照してください。  | はい                                       |
 | existingClusterId    | このすべてのジョブを実行する既存のクラスターのクラスター ID。 これは作成済みの対話型クラスターでなければなりません。 応答が停止した場合は、クラスターの手動再起動が必要になることがあります。 Databricks では、信頼性を高めるために新しいクラスターでジョブを実行することをお勧めします。 対話型クラスターのクラスター ID は Databricks ワークスペース -> クラスター -> 対話型クラスター名 -> 構成 -> タグで見つけることができます。 [詳細](https://docs.databricks.com/user-guide/clusters/tags.html) | いいえ 
+| instancePoolId    | Databricks ワークスペース内の既存のプールのインスタンス プール ID。  | いいえ  |
 | newClusterVersion    | クラスターの Spark バージョン。 Databricks にジョブ クラスターを作成します。 | いいえ  |
 | newClusterNumOfWorker| このクラスターに属する worker ノードの数。 1 つのクラスターには 1 つの Spark ドライバーと num_workers Executor、全体では num_workers + 1 Spark ノードになります。 文字列は Int32 で設定されます。たとえば、“1” は、numOfWorker が 1 であること、“1:10” は、最小が 1 で最大が 10 の auto-scale を意味します。  | いいえ                |
 | newClusterNodeType   | このフィールドは、単一の値を通じて使用されるリソースをこのクラスターのそれぞれの Spark ノードにエンコードします。 たとえば、Spark ノードはメモリまたはコンピューティング集約型ワークロード用にプロビジョニングされ、最適化されます。このフィールドは、新しいクラスターに必要です                | いいえ               |

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9bb654f37ecc4fda46171e859adac0236b51e4b2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 636c397001a3130c60fc2bf498339ad058aca374
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881483"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959407"
 ---
 # <a name="get-started-with-custom-voice"></a>Custom Voice の概要
 
@@ -59,6 +59,6 @@ Azure アカウントと Speech Services サブスクリプションを作成し
 
 ## <a name="next-steps"></a>次の手順
 
-- [Custom Voice のデータを用意する](how-to-custom-voice.md)
+- [Custom Voice のデータを用意する](how-to-custom-voice-prepare-data.md)
 - [カスタム音声を作成する](how-to-custom-voice-create-voice.md)
 - [ガイド: 音声サンプルを録音する](record-custom-voice-samples.md)

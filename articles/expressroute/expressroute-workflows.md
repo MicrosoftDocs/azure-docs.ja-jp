@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 09/18/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 3ffcc5ac2193e607573ceb93717258f5349d1f15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e0f4d356bb6addf735bf148a80e6be3ca550c8f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883185"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123375"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>回線のプロビジョニングと回線の状態の ExpressRoute ワークフロー
 このページでは、サービス プロビジョニングと上位のルーティング構成ワークフローについて段階的に説明します。
@@ -29,7 +29,7 @@ ms.locfileid: "60883185"
    
    * Azure プライベート ピアリングを有効にする - 仮想ネットワーク内にデプロイされている VM / クラウドに接続するには、このピアリングを有効にします。
 
-   * Microsoft ピアリングを有効にする - Office 365 と Dynamics 365 サービスにアクセスするにはこれを有効にします。 さらに、すべての Azure PaaS サービスは、Microsoft ピアリング経由でアクセスできます。
+   * Microsoft ピアリングを有効にする - Office 365 サービスにアクセスするにはこれを有効にします。 さらに、すべての Azure PaaS サービスは、Microsoft ピアリング経由でアクセスできます。
      
      > [!IMPORTANT]
      > Microsoft に接続するには、インターネットに使用しているプロキシ/エッジとは別のプロキシ/エッジを使用する必要があります。 ExpressRoute とインターネットの両方に同じエッジを使用すると、ルーティングが非同期になり、ネットワークの接続が停止します。

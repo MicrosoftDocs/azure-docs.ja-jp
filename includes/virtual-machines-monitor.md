@@ -2,16 +2,18 @@
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/27/2019
+ms.date: 09/30/2019
 ms.author: cynthn
-ms.openlocfilehash: ac400c86af8236ff5d67b8b6fbf99f6f4b1d36c9
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 93a2554b5d3cc24e1b5fc1e3d0f18ed1bfe0579c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181148"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71692039"
 ---
-診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/azure-monitor/overview.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/azure-monitor/app/app-insights-overview.md) や [Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md) など、より高度な監視方法を使用することもできます。
+Azure でホストされている VM が大幅に増加すると、サポートするアプリケーションやインフラストラクチャサービスに影響を与えるパフォーマンスと正常性の問題を特定することが重要になります。 基本的な監視は、CPU 使用率、ディスク使用率、メモリ使用率、およびホスト ハイパーバイザーによって収集されたネットワーク トラフィックのメトリックの種類ごとに、Azure によって既定で提供されます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使用して追加のメトリックとログ データを収集し、ゲスト オペレーティング システムから VM の診断を構成することができます。
+
+VM 内で実行されているゲスト オペレーティング システム、.NET ベースまたは Java web アプリケーション コンポーネントのパフォーマンスと正常性の問題を検出して診断するために、Azure Monitor では、Azure Monitor for VMs や Application Insights などの包括的な機能を備えた一元的な監視が提供されます。
 
 ## <a name="diagnostics-and-metrics"></a>診断とメトリック 
 
@@ -27,11 +29,11 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 
 - **ゲスト OS の診断データの収集を有効にする。** VM を作成するときに、設定画面でゲスト OS の診断を有効にすることができます。 診断データの収集を有効にすると、[Linux 用 IaaSDiagnostics 拡張機能](../articles/virtual-machines/linux/diagnostic-extension.md)または [Windows 用 IaaSDiagnostics 拡張機能](../articles/virtual-machines/windows/ps-extensions-diagnostics.md)が VM に追加され、ディスク、CPU、メモリに関して追加のデータを収集できるようになります。
 
-    収集された診断データを利用して、VM の自動スケールを構成できます。 データを保存するためのログを構成し、パフォーマンスの異常を知らせるアラートを設定することもできます。
+    収集された診断データを利用して、VM の自動スケールを構成できます。 データを保存するための [Azure Monitor ログ](../articles/azure-monitor/platform/data-platform-logs.md)を構成し、パフォーマンスの異常を知らせるアラートを設定することもできます。
 
 ## <a name="alerts"></a>アラート
 
-特定のパフォーマンス メトリックに基づいて[アラート](../articles/azure-monitor/platform/alerts-overview.md)を作成できます。 たとえば平均 CPU 使用率が特定のしきい値を超えたときや、空きディスク領域が特定の容量を下回ったときなどに、それらの問題に関するアラートを受け取ることができます。 アラートの構成は、[Azure Portal](../articles/azure-monitor/platform/alerts-classic-portal.md)、[Azure PowerShell](../articles/azure-monitor/platform/alerts-classic-portal.md#with-powershell)、[Azure CLI](../articles/azure-monitor/platform/alerts-classic-portal.md#with-azure-cli) のいずれかで行うことができます。
+特定のパフォーマンス メトリックに基づいて[アラート](../articles/azure-monitor/platform/alerts-overview.md)を作成できます。 たとえば平均 CPU 使用率が特定のしきい値を超えたときや、空きディスク領域が特定の容量を下回ったときなどに、それらの問題に関するアラートを受け取ることができます。 アラートの構成は、[Azure portal](../articles/azure-monitor/platform/alerts-metric.md#create-with-azure-portal)、[Azure Resource Manager テンプレート](../articles/azure-monitor/platform/alerts-metric-create-templates.md)、[Azure CLI](../articles/azure-monitor/platform/alerts-metric.md#with-azure-cli) のいずれかで行うことができます。
 
 ## <a name="azure-service-health"></a>Azure Service Health
 
@@ -48,30 +50,28 @@ Azure Portal、Azure CLI、Azure PowerShell、アプリケーション プログ
 たとえば、アクティビティ ログでは次のことを実行できます。
 
 - [アクティビティ ログ イベントに対するアラートを設定する](../articles/azure-monitor/platform/activity-logs-overview.md)。
-- サード パーティーのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[アクティビティ ログを Event Hubs にストリーミングする](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md)。
-- [PowerBI コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)を使用して、アクティビティ ログを PowerBI で分析する。
+- サードパーティのサービスや Power BI などのカスタム分析ソリューションで取り込むために、アクティビティ ログを[イベント ハブにストリーム配信](../articles/azure-monitor/platform/activity-logs-stream-event-hubs.md)する。
+- [Power BI コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)を使用して Power BI で分析する。
 - アーカイブや手動での検査に使用するためにアクティビティ ログを[ストレージ アカウントに保存](../articles/azure-monitor/platform/archive-activity-log.md)する。 ログ プロファイルを使用して、リテンション期間 (日数) を指定できます。
 
 アクティビティ ログ データには、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/)、[Azure CLI](https://docs.microsoft.com/cli/azure/monitor)、[Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) のいずれかを使ってアクセスすることもできます
 
-[Azure 診断ログ](../articles/azure-monitor/platform/diagnostic-logs-overview.md)は、VM から出力されるログです。その操作に関する豊富なデータが提供されます。 診断ログは、VM 内で実行された操作についての洞察が得られるという点でアクティビティ ログとは異なります。
+[Azure リソース ログ](../articles/azure-monitor/platform/resource-logs-overview.md)は、VM から出力されるログです。その操作に関する豊富なデータが提供されます。 リソース ログは、VM 内で実行された操作についての分析情報が得られるという点でアクティビティ ログとは異なります。
 
 たとえば、診断ログでは次のことを実行できます。
 
 - 監査や手動での検査に使用するために診断ログを[ストレージ アカウント](../articles/azure-monitor/platform/archive-diagnostic-logs.md)に保存する。 リソース診断設定を使用して、リテンション期間 (日数) を指定できます。
-- サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを Event Hubs にストリーミング](../articles/azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)する。
+- サードパーティのサービスや Power BI などのカスタム分析ソリューションで取り込むために、[Event Hubs にストリーム配信](../articles/azure-monitor/platform/resource-logs-stream-event-hubs.md)する。
 - これを [Log Analytics](../articles/log-analytics/log-analytics-azure-storage.md) で分析する。
 
 ## <a name="advanced-monitoring"></a>高度な監視
 
-- [Azure Monitor](../articles/azure-monitor/overview.md) は、クラウド環境とオンプレミス環境を監視して可用性とパフォーマンスを維持するサービスです。 クラウドおよびオンプレミス環境のテレメトリを収集、分析し、対応する包括的なソリューションを提供します。 このツールは、ご利用のアプリケーションがどのように実行されているかを把握するのに役立ちます。さらに、このツールにより、そのアプリケーションに影響している問題点およびアプリケーションが依存しているリソースを事前に明らかにしておくことができます。 [Linux VM](../articles/virtual-machines/linux/extensions-oms.md) または [Windows VM](../articles/virtual-machines/windows/extensions-oms.md) に拡張機能をインストールできます。この拡張機能によって、ログ データの収集と Log Analytics ワークスペースへの保存を行う Log Analytics エージェントがインストールされます。
+Azure VM と仮想マシン スケール セットでサポートされているアプリケーションまたはサービスを表示するには、VM で実行されているゲスト OS またはワークロードの問題を識別して、アプリケーションの可用性やパフォーマンスに影響があるかどうか、またはアプリケーションの問題であるかどうかを把握し、[Azure Monitor for VMs](../articles/azure-monitor/insights/vminsights-overview.md) と [Application Insights](../articles/azure-monitor/app/app-insights-overview.md) の両方を有効にします。
 
-    Windows VM および Linux VM の場合、ログを収集するための推奨される方法は、Log Analytics エージェントをインストールすることです。 VM に Log Analytics エージェントをインストールする方法としては、[Log Analytics VM 拡張機能](../articles/log-analytics/log-analytics-azure-vm-extension.md)を使用するのが最も簡単です。 この拡張機能を使用すると、インストール プロセスが簡略化され、指定した Log Analytics ワークスペースにデータを送信するようにエージェントが自動的に構成されます。 また、エージェントは自動的にアップグレードされるため、最新の機能と修正プログラムを利用できます。
-
-- [Network Watcher](../articles/network-watcher/network-watcher-monitoring-overview.md) を使用すると、VM とその関連リソースをそれらが属しているネットワークの観点から監視することができます。 Network Watcher Agent 拡張機能は、[Linux VM](../articles/virtual-machines/linux/extensions-nwa.md) または [Windows VM](../articles/virtual-machines/windows/extensions-nwa.md) にインストールできます。
-
-- [Azure Monitor for VMs](../articles/azure-monitor/insights/vminsights-overview.md) では、Azure 仮想マシン (VM) の大規模な監視が行われます。それを行うために、さまざまなプロセスや、その他のリソースおよび外部プロセスに対する相互接続された依存関係など、Windows および Linux VM のパフォーマンスと正常性が分析されます。 
+Azure Monitor for VMs では、お使いの Azure 仮想マシン (VM) の大規模な監視が行われます。それを行うために、さまざまなプロセスや、検出したその他のリソースおよび外部プロセスに対する相互接続された依存関係など、Windows および Linux VM のパフォーマンスと正常性が分析されます。 これには、問題を調査し、VM の容量を評価する際に役立つ、いくつかの傾向パフォーマンス グラフが含まれています。 依存関係マップには、監視対象のマシン、監視対象外のマシン、プロセスとこれらのマシン間の失敗したネットワーク接続とアクティブなネットワーク接続が表示され、標準ネットワーク接続メトリックでの傾向グラフが表示されます。 Application Insights と組み合わせることで、アプリケーションを監視し、HTTP 要求や例外などのテレメトリをキャプチャできるため、VM とアプリケーションの間の問題を相互に関連付けることができます。 Azure Monitor for VMs によって収集された監視データから検出された重要な条件についてアラートを生成するには [Azure Monitor アラート](../articles/azure-monitor/platform/alerts-overview.md)を構成します。
 
 ## <a name="next-steps"></a>次の手順
+
 - 「[Azure PowerShell を使用した Windows 仮想マシンの監視](../articles/virtual-machines/windows/tutorial-monitoring.md)」または [Azure CLI を使用した Linux 仮想マシンの監視](../articles/virtual-machines/linux/tutorial-monitoring.md)に関するページの手順を参照します。
+
 - [監視と診断](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)に関するベスト プラクティスについて詳しい情報を入手します。

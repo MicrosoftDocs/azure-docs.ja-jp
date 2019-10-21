@@ -1,29 +1,32 @@
 ---
-title: Azure Digital Twins API の認証の理解 | Microsoft Docs
-description: Azure Digital Twins を使用して API を接続および認証する
-author: lyrana
-manager: alinast
+title: Azure Digital Twins を使用した API の認証について理解する | Microsoft Docs
+description: Azure Digital Twins ツインを使用して API に接続し、認証を行う方法について説明します。
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: lyhughes
-ms.openlocfilehash: c0b4b6a13143f613bec64c8507f1726e2450be44
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 09/30/2019
+ms.openlocfilehash: c75db8d1885c8680dd316952a5f67e11dc26edb1
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815556"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949794"
 ---
-# <a name="connect-and-authenticate-to-apis"></a>API に接続および認証する
+# <a name="connect-to-and-authenticate-with-apis"></a>API に接続して認証を行う
 
 Azure Digital Twins は、Azure Active Directory (Azure AD) を使用してユーザーを認証し、アプリケーションを保護します。 Azure AD では、さまざまな最新アーキテクチャ用の認証がサポートされます。 すべての認証は、業界標準のプロトコルである OAuth 2.0 または OpenID Connect に基づいています。 また、開発者は Azure AD を使用して、シングル テナントと基幹業務 (LOB) アプリケーションを構築することができます。 また開発者は、Azure AD を使用してマルチ テナント アプリケーションを開発することもできます。
 
-Azure AD の概要については、[基礎ページ](https://docs.microsoft.com/azure/active-directory/fundamentals/index)にアクセスしてステップ バイ ステップ ガイド、概念、およびクイック スタートを確認してください。
+Azure AD の概要については、[基礎ページ](https://docs.microsoft.com/azure/active-directory/fundamentals/)にアクセスしてステップ バイ ステップ ガイド、概念、およびクイック スタートを確認してください。
 
-アプリケーションまたはサービスを Azure AD と統合するには、まず開発者がアプリケーションを Azure AD に登録しておく必要があります。 詳しい手順とスクリーンショットについては、[こちらのクイック スタート](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)をご覧ください。
+> [!TIP]
+> [チュートリアル](tutorial-facilities-setup.md)に従って、Azure Digital Twins サンプル アプリをセットアップして実行します。
 
-Azure AD でサポートされる [5 つの主要なアプリケーション シナリオ](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types)は、次のとおりです。
+アプリケーションまたはサービスを Azure AD と統合するには、まず開発者がアプリケーションを Azure AD に登録しておく必要があります。 詳しい手順とスクリーンショットについては、[こちらのクイック スタート](../active-directory/develop/quickstart-register-app.md)をご覧ください。
+
+Azure AD でサポートされる [5 つの主要なアプリケーション シナリオ](../active-directory/develop/v2-app-types.md)は、次のとおりです。
 
 * シングルページ アプリケーション (SPA): ユーザーは、Azure AD によって保護されたシングルページ アプリケーションにサインインする必要があります。
 * Web ブラウザー対 Web アプリケーション: ユーザーは、Azure AD によって保護された Web アプリケーションにサインインする必要があります。
@@ -31,7 +34,10 @@ Azure AD でサポートされる [5 つの主要なアプリケーション シ
 * Web アプリケーション対 Web API: Web アプリケーションは、Azure AD によって保護された Web API からリソースを取得する必要があります。
 * デーモンまたはサーバー アプリケーション対 Web API: Web UI を備えていないデーモン アプリケーションまたはサーバー アプリケーションは、Azure AD によって保護された Web API からリソースを取得する必要があります。
 
-Microsoft Azure 認証ライブラリでは、さまざまな方法で Active Directory トークンを取得できます。 ライブラリとコード サンプルについて詳しくは、[こちらの記事](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki)をご覧ください。
+> [!IMPORTANT]
+> Azure Digital Twins では、次の両方の認証ライブラリがサポートされています。
+> * より新しい [Microsoft 認証ライブラリ (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview)
+> * [Azure Active Directory 認証ライブラリ (ADAL)](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)
 
 ## <a name="call-digital-twins-from-a-middle-tier-web-api"></a>中間層 Web API から Digital Twins を呼び出す
 

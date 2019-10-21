@@ -2,17 +2,16 @@
 title: サンプル - 許可されているロード バランサーの SKU
 description: このサンプル ポリシー定義は、承認された SKU をロード バランサーで使用することを要求します。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 0c808dda6873921693621cf14aa7933007fad620
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 1436432cde8d2d33a393ad017423abea48f787b2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59282765"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980649"
 ---
 # <a name="sample---allowed-load-balancer-skus"></a>サンプル - 許可されているロード バランサーの SKU
 

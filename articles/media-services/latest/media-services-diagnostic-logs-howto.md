@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 233b043ffdc295fe94ed2e3ba837d4229848df22
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795838"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261115"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services 診断ログの監視
 
@@ -177,8 +177,8 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
 ## <a name="see-also"></a>関連項目
 
 * [Azure Monitor のメトリック](../../azure-monitor/platform/data-platform.md)
-* [Azure Monitor 診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)
-* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [Azure Monitor 診断ログ](../../azure-monitor/platform/resource-logs-overview.md)
+* [Azure リソースからログ データを収集して使用する方法](../../azure-monitor/platform/resource-logs-overview.md)
 
 ## <a name="next-steps"></a>次の手順
 

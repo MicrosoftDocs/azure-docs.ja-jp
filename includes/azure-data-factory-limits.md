@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 5/30/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: c92bb8b2adb3e91e691e9fd1c17a7ee43e84fd11
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 6dc846ab6af0ed4d6d48c6f6db0abbce06427c36
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "68362560"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035885"
 ---
 Azure Data Factory は、お客様のサブスクリプションが互いのワークロードから保護されるように、次の既定の制限が設定されているマルチテナント サービスです。 サブスクリプションの上限まで制限を引き上げるには、サポートにお問い合わせください。
 
@@ -44,6 +44,10 @@ Azure Data Factory は、お客様のサブスクリプションが互いのワ�
 | API 呼び出しの読み取り | 12,500/時<br/><br/> この制限は、Azure Data Factory ではなく、Azure Resource Manager によって課せられます。 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 1 分あたりの監視クエリ | 1,000 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 | 1 分あたりのエンティティ CRUD 操作 | 50 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| データ フロー デバッグ セッションの最大時間 | 8 時間 | 8 時間 |
+| ファクトリごとのデータ フロー同時実行数 | 50 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
+| ファクトリごと、かつユーザーごとのデータ フロー デバッグ セッションの同時実行数 | 3 | 3 |
+| Data Flow の Azure IR の TTL 制限 | 4 時間 | [サポートにお問い合わせください](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)。 |
 
 <sup>1</sup> データ統合単位 (DIU) は、クラウド間のコピー操作で使用されます。詳細については、[データ統合単位 (バージョン 2)](../articles/data-factory/copy-activity-performance.md#data-integration-units) に関するページを参照してください。 課金については、「[Azure Data Factory の価格](https://azure.microsoft.com/pricing/details/data-factory/)」をご覧ください。
 

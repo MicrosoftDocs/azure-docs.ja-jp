@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 08/29/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: bd630fec16ddfb269ead5f1f62af882f52501a86
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390460"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350187"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -149,9 +149,9 @@ Batch プールを作成するときは、Azure 仮想マシン構成と、プ�
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>仮想マシン プールのカスタム イメージ
 
-カスタム イメージを使用するには、イメージを一般化して使用できるように準備する必要があります。 Azure VM からカスタムの Linux イメージを準備する方法の詳細については、「[仮想マシンまたは VHD のイメージを作成する方法](../virtual-machines/linux/capture-image.md)」を参照してください。 Azure VM からカスタム Windows イメージを準備する方法については、「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」を参照してください。 
+カスタム イメージを使用してプールを作成する方法については、「[Shared Image Gallery を使用してカスタム プールを作成する](batch-sig-images.md)」を参照してください。
 
-詳しい要件と手順については、[カスタム イメージを使用した仮想マシンのプールの作成](batch-custom-images.md)に関するページを参照してください。
+または、[マネージド イメージ](batch-custom-images.md) リソースを使用して、仮想マシンのカスタム プールを作成することもできます。 Azure VM からカスタムの Linux イメージを準備する方法の詳細については、「[仮想マシンまたは VHD のイメージを作成する方法](../virtual-machines/linux/capture-image.md)」を参照してください。 Azure VM からカスタム Windows イメージを準備する方法については、「[Azure で一般化された VM の管理対象イメージを作成する](../virtual-machines/windows/capture-image-resource.md)」を参照してください。
 
 #### <a name="container-support-in-virtual-machine-pools"></a>仮想マシンのプールでのコンテナーのサポート
 

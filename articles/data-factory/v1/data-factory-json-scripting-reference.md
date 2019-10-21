@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 69218cedcd5d775fe6e499086663aa124f6bfe25
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 520bce39841f1008a0e47af1089db7fdce5ccae8
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736001"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255323"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -1480,7 +1480,7 @@ Azure Table Storage からデータをコピーする場合は、コピー ア�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| azureTableSourceQuery |カスタム クエリを使用してデータを読み取ります。 |Azure テーブルのクエリ文字列。 次のセクションの例を参照してください。 |いいえ。 azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。 azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。 |
+| azureTableSourceQuery |カスタム クエリを使用してデータを読み取ります。 |Azure テーブルのクエリ文字列。 次のセクションの例を参照してください。 |No. azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。 azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。 |
 | azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。 |TRUE<br/>FALSE |いいえ |
 
 #### <a name="example"></a>例
@@ -2976,7 +2976,7 @@ Cassandra からデータをコピーする場合は、コピー アクティビ
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | query |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたはCQL クエリ。 「 [CQL reference (CQL リファレンス)](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」をご覧ください。 <br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す **keyspace name.table name** を指定します。 |いいえ (データセットの tableName と keyspace が定義されていない場合)。 |
-| consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 |ONE、TWO、THREE、QUORUM、ALL、 LOCAL_QUORUM、EACH_QUORUM、 LOCAL_ONE。 詳細については、「 [Configuring data consistency (データ整合性の構成)](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。 |いいえ。 既定値は ONE です。 |
+| consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 |ONE、TWO、THREE、QUORUM、ALL、 LOCAL_QUORUM、EACH_QUORUM、 LOCAL_ONE。 詳細については、「 [Configuring data consistency (データ整合性の構成)](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。 |No. 既定値は ONE です。 |
 
 #### <a name="example"></a>例
 
@@ -3867,10 +3867,10 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 | host | SFTP サーバーの名前または IP アドレス。 |はい |
 | port |SFTP サーバーがリッスンしているポート。 既定値は21 |いいえ |
 | authenticationType |認証の種類を指定します。 使用できる値は以下の通りです。**Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「基本認証を使用する」セクションと「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」セクションをそれぞれ参照してください。 |はい |
-| skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。 | いいえ。 既定値: false |
+| skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。 | No. 既定値: false |
 | hostKeyFingerprint | ホスト キーの指紋を指定します。 | はい (`skipHostKeyValidation` が false に設定されている場合)。  |
 | gatewayName |オンプレミスの SFTP サーバーに接続するための Data Management Gateway の名前。 | はい (オンプレミスの SFTP サーバーからデータをコピーする場合)。 |
-| encryptedCredential | SFTP サーバーにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで、基本認証 (ユーザー名とパスワード) または SshPublicKey 認証 (ユーザー名と秘密キーのパスまたはコンテンツ) を指定すると自動生成されます。 | いいえ。 オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
+| encryptedCredential | SFTP サーバーにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで、基本認証 (ユーザー名とパスワード) または SshPublicKey 認証 (ユーザー名と秘密キーのパスまたはコンテンツ) を指定すると自動生成されます。 | No. オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
 
 #### <a name="example-using-basic-authentication"></a>例:基本認証を使用する
 
@@ -4075,7 +4075,7 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 | authenticationType | 認証の種類を指定します。 使用できる値は、以下のとおりです。**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate**。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | はい |
 | enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 | いいえ。既定値は true です。 |
 | gatewayName | オンプレミスの HTTP ソースに接続するための Data Management Gateway の名前。 | はい (オンプレミスの HTTP ソースからデータをコピーする場合)。 |
-| encryptedCredential | HTTP エンドポイントにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで認証情報を構成すると自動生成されます。 | いいえ。 オンプレミスの HTTP サーバーからデータをコピーする場合にのみ適用します。 |
+| encryptedCredential | HTTP エンドポイントにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで認証情報を構成すると自動生成されます。 | No. オンプレミスの HTTP サーバーからデータをコピーする場合にのみ適用します。 |
 
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>例:基本、ダイジェスト、または Windows 認証の使用
 `authenticationType` を `Basic`、`Digest`、または `Windows` として設定し、上で紹介した HTTP コネクタの一般的なプロパティのほかに、次のプロパティを指定します。
@@ -4160,7 +4160,7 @@ HTTP データセットを定義するには、データセットの **type** �
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | relativeUrl | データを含むリソースへの相対 URL。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 <br><br> 動的 URL を構築するには、[データ ファクトリ関数とシステム変数](data-factory-functions-variables.md)を利用できます。たとえば、`"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"` となります。 | いいえ |
-| requestMethod | Http メソッド。 使用できる値は、**GET** または **POST** です。 | いいえ。 既定値は `GET` です。 |
+| requestMethod | Http メソッド。 使用できる値は、**GET** または **POST** です。 | No. 既定値は `GET` です。 |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ |
 | requestBody | HTTP 要求の本文。 | いいえ |
 | format | **HTTP エンドポイントからデータをそのまま取得する**だけで、解析しない場合は、この形式の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合にサポートされる形式の種類は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 |いいえ |
@@ -4215,7 +4215,7 @@ HTTP ソースからデータをコピーする場合は、コピー アクテ�
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 | いいえ。 既定値:00:01:40 |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 | No. 既定値:00:01:40 |
 
 
 #### <a name="example"></a>例
@@ -4744,7 +4744,7 @@ Web データセットを定義するには、データセットの **type** を
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type |データセットの型。 **データセット** |はい |
-| path |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
+| path |テーブルを含むリソースの相対 URL。 |No. パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
 | index |リソースのテーブルのインデックス。 HTML ページでテーブルのインデックスを取得する手順については、「HTML ページのテーブルのインデックスを取得する」セクションを参照してください。 |はい |
 
 #### <a name="example"></a>例
@@ -4826,7 +4826,7 @@ Web テーブルからデータをコピーする場合は、コピー アクテ
 | [Azure Batch](#azure-batch) |[.NET カスタム アクティビティ](#net-custom-activity) |
 | [Azure Machine Learning](#azure-machine-learning) | [Machine Learning バッチ実行アクティビティ](#machine-learning-batch-execution-activity)、[Machine Learning 更新リソース アクティビティ](#machine-learning-update-resource-activity) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics) |[Data Lake Analytics U-SQL](#data-lake-analytics-u-sql-activity) |
-| [Azure SQL Database](#azure-sql-database)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse)、[SQL Server](#sql-server-1) |[ストアド プロシージャ](#stored-procedure-activity) |
+| [Azure SQL Database](#azure-sql-database)、[Azure SQL Data Warehouse](#azure-sql-data-warehouse)、[SQL Server](#sql-server-stored-procedure) |[ストアド プロシージャ](#stored-procedure-activity) |
 
 ## <a name="on-demand-azure-hdinsight-cluster"></a>オンデマンド Azure HDInsight クラスター
 Azure Data Factory サービスは、データを処理するための Windows/Linux ベースのオンデマンド HDInsight クラスターを自動的に作成します。 このクラスターはクラスターに関連付けられているストレージ アカウント (JSON の linkedServiceName プロパティ) と同じリージョンで作成されます。 このリンクされたサービスでは、変換アクティビティとして、[.NET カスタム アクティビティ](#net-custom-activity)、[Hive アクティビティ](#hdinsight-hive-activity)、[Pig アクティビティ](#hdinsight-pig-activity)、[MapReduce アクティビティ](#hdinsight-mapreduce-activity)、Hadoop ストリーミング アクティビティ、[Spark アクティビティ](#hdinsight-spark-activity)を実行することができます。
@@ -4996,7 +4996,8 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 }
 ```
 
-## <a name="sql-server"></a>SQL Server
+## <a name="sql-server-stored-procedure"></a>SQL Server ストアド プロシージャ ア
+
 SQL Server のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](data-factory-stored-proc-activity.md) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。
 
 ### <a name="linked-service"></a>リンクされたサービス

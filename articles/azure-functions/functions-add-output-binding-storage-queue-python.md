@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: python
 manager: jeconnoc
-ms.openlocfilehash: 9fdbf3466256c5e24de17541770fa2095fcf38a4
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 92ee9b0a8a0906bca31d7dcb1730c3464d0d6cbc
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171077"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839194"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Python 関数に Azure Storage キュー バインドを追加する
 
@@ -30,20 +30,11 @@ Azure Functions を使用すると、独自の統合コードを記述しなく�
 
 この記事の作業を始める前に、[Python クイック スタートのパート 1](functions-create-first-function-python.md) の手順を完了しておきます。
 
+[!INCLUDE [functions-cloud-shell-note](../../includes/functions-cloud-shell-note.md)]
+
 ## <a name="download-the-function-app-settings"></a>関数アプリの設定をダウンロードする
 
-前のクイックスタートの記事では、必要なストレージ アカウントと共に Azure で関数アプリを作成しました。 このアカウントの接続文字列は、Azure のアプリ設定に安全に格納されています。 この記事では、同じアカウントのストレージ キューにメッセージを書き込みます。 関数をローカルで実行しているときにストレージ アカウントに接続するには、アプリ設定を local.settings.json ファイルにダウンロードする必要があります。 次の Azure Functions Core Tools コマンドを実行して、設定を local.settings.json にダウンロードし、`<APP_NAME>` を前の記事の関数アプリの名前に置き換えます。
-
-```bash
-func azure functionapp fetch-app-settings <APP_NAME>
-```
-
-場合によっては Azure アカウントにサインインする必要があります。
-
-> [!IMPORTANT]  
-> local.settings.json ファイルは、機密情報が含まれているため、決して公開されず、ソース管理から除外される必要があります。
-
-ストレージ アカウントの接続文字列である、値 `AzureWebJobsStorage` が必要になります。 この接続を使用して、出力バインドが期待どおりに動作することを確認します。
+[!INCLUDE [functions-app-settings-download-local-cli](../../includes/functions-app-settings-download-local-cli.md)]
 
 ## <a name="enable-extension-bundles"></a>拡張バンドルを有効にする
 
@@ -53,80 +44,13 @@ func azure functionapp fetch-app-settings <APP_NAME>
 
 ## <a name="add-an-output-binding"></a>出力バインディングを追加する
 
-Functions では、各種のバインドで、`direction`、`type`、および固有の `name` を function.json ファイル内で定義する必要があります。 バインドの種類によっては、追加のプロパティが必要になることもあります。 [キュー出力構成](functions-bindings-storage-queue.md#output---configuration)では、Azure Storage キュー バインドに必要なフィールドについて説明されています。
+Functions では、各種のバインドで、`direction`、`type`、および固有の `name` が function.json ファイル内で定義される必要があります。 これらの属性を定義する方法は、関数アプリの言語によって異なります。
 
-バインドを作成するには、バインド構成オブジェクトを function.json ファイルに追加します。 HttpTrigger フォルダー内の function.json ファイルを編集して、以下のプロパティを持つオブジェクトを `bindings` 配列に追加します。
-
-| プロパティ | 値 | 説明 |
-| -------- | ----- | ----------- |
-| **`name`** | `msg` | コードで参照されているバインド パラメーターを識別する名前。 |
-| **`type`** | `queue` | バインドは Azure Storage キュー バインドです。 |
-| **`direction`** | `out` | バインドは出力バインドです。 |
-| **`queueName`** | `outqueue` | バインドが書き込むキューの名前。 `queueName` が存在しない場合は、バインドによって最初に使用されるときに作成されます。 |
-| **`connection`** | `AzureWebJobsStorage` | ストレージ アカウントの接続文字列を含むアプリ設定の名前。 `AzureWebJobsStorage` 設定には、関数アプリで作成したストレージ アカウントの接続文字列が含まれています。 |
-
-function.json ファイルは、次の例のようになっているはずです。
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    },
-  {
-      "type": "queue",
-      "direction": "out",
-      "name": "msg",
-      "queueName": "outqueue",
-      "connection": "AzureWebJobsStorage"
-    }
-  ]
-}
-```
+[!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
 ## <a name="add-code-that-uses-the-output-binding"></a>出力バインディングを使用するコードを追加する
 
-`name` の構成後、これを関数シグネチャのメソッド属性として使用して、バインドにアクセスできるようになります。 次の例では、`msg` は [`azure.functions.InputStream class`](/python/api/azure-functions/azure.functions.httprequest) のインスタンスです。
-
-```python
-import logging
-
-import azure.functions as func
-
-
-def main(req: func.HttpRequest, msg: func.Out[func.QueueMessage]) -> str:
-
-    name = req.params.get('name')
-    if not name:
-        try:
-            req_body = req.get_json()
-        except ValueError:
-            pass
-        else:
-            name = req_body.get('name')
-
-    if name:
-        msg.set(name)
-        return func.HttpResponse(f"Hello {name}!")
-    else:
-        return func.HttpResponse(
-            "Please pass a name on the query string or in the request body",
-            status_code=400
-        )
-```
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
 
 出力バインドを使用すると、認証、キュー参照の取得、またはデータの書き込みに、Azure Storage SDK のコードを使用する必要がなくなります。 Functions ランタイムおよびキューの出力バインドが、ユーザーに代わってこれらのタスクを処理します。
 
@@ -149,34 +73,11 @@ func host start
 
 ### <a name="set-the-storage-account-connection"></a>ストレージ アカウントの接続を設定する
 
-local.settings.json ファイルを開き、ストレージ アカウントの接続文字列である `AzureWebJobsStorage` の値をコピーします。 次の Bash コマンドを使用して、`AZURE_STORAGE_CONNECTION_STRING` 環境変数に接続文字列を設定します。
-
-```azurecli-interactive
-export AZURE_STORAGE_CONNECTION_STRING=<STORAGE_CONNECTION_STRING>
-```
-
-`AZURE_STORAGE_CONNECTION_STRING` 環境変数に接続文字列を設定すると、毎回認証情報を指定しなくても、ストレージ アカウントにアクセスできます。
+[!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
 ### <a name="query-the-storage-queue"></a>ストレージ キューに対するクエリを実行する
 
-次の例のように、[`az storage queue list`](/cli/azure/storage/queue#az-storage-queue-list) コマンドを使用して、アカウントのストレージ キューを表示できます。
-
-```azurecli-interactive
-az storage queue list --output tsv
-```
-
-このコマンドの出力には、`outqueue` という名前のキューが含まれています。これは、関数の実行時に作成されたキューです。
-
-次に、[`az storage message peek`](/cli/azure/storage/message#az-storage-message-peek) コマンドを使用して、このキュー内のメッセージを表示します (以下の例を参照)。
-
-```azurecli-interactive
-echo `echo $(az storage message peek --queue-name outqueue -o tsv --query '[].{Message:content}') | base64 --decode`
-```
-
-返される文字列は、関数をテストするために送信したメッセージと同じものであるはずです。
-
-> [!NOTE]  
-> 前の例では、返される文字列を base64 からデコードしています。 これは、Queue ストレージ バインドが [base64 文字列](functions-bindings-storage-queue.md#encoding)として Azure Storage との間で書き込みおよび読み取りを行うためです。
+[!INCLUDE [functions-query-storage-cli](../../includes/functions-query-storage-cli.md)]
 
 ここで、更新された関数アプリを Azure に再発行します。
 

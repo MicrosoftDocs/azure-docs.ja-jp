@@ -1,7 +1,7 @@
 ---
-title: FASTQ ファイルの入力を使用してワークフローを送信する - Microsoft Genomics
-titleSuffix: Azure
-description: この記事では、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
+title: FASTQ ファイルの入力を使用したワークフローの送信
+titleSuffix: Microsoft Genomics
+description: この記事では、入力ファイルが一組の FASTQ ファイルである場合に、Microsoft Genomics サービスにワークフローを送信する方法を示します。
 services: genomics
 author: grhuynh
 manager: cgronlun
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: 2662a8f52c58a39916e5789fa9ed7fadd91216c0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3806b165e5abb661e53c6a315650d025fd42e17f
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60333674"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248559"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>Microsoft Genomics で FASTQ ファイルの入力を使用してワークフローを送信する
 

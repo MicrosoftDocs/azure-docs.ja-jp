@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services のライブ イベントとクラウド DVR | Microsoft Docs
+title: Azure Media Services のタイムシフトとライブツー VOD (ビデオ オン デマンド) を使用する | Microsoft Docs
 description: この記事では、ライブ出力の概要とクラウド DVR の使用方法について説明します。
 services: media-services
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
-ms.openlocfilehash: a10c76dd7fb4ef1e9a45666ff3a3ca0d937d2c94
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ffcd279830cb49b64ddbb58a888ad7d653918b1b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231231"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338836"
 ---
-# <a name="using-a-cloud-digital-video-recorder-dvr"></a>クラウドにおけるデジタル ビデオ レコーダー (DVR) の使用
+# <a name="using-time-shifting-and-live-to-vod-video-on-demand"></a>タイムシフトとライブツー VOD (ビデオ オン デマンド) を使用する
 
 Azure Media Services の[ライブ出力](https://docs.microsoft.com/rest/api/media/liveoutputs)オブジェクトは、ライブ ストリームをキャッチして Media Services アカウントのアセットに記録するデジタル ビデオ レコーダーのようなものです。 記録されたコンテンツは、[アセット](https://docs.microsoft.com/rest/api/media/assets) リソースによって定義されたコンテナーに保持されます (コンテナーはアカウントに接続されている Azure Storage アカウントにあります)。 また、ライブ出力を使用すると、アーカイブの記録に残すストリームの量 (たとえば、クラウド DVR の容量) や視聴者がライブ ストリームの視聴を開始することができるかどうかなど、送信ライブ ストリームのいくつかのプロパティを制御することもできます。 ディスク上のアーカイブは、ライブ出力の **archiveWindowLength** プロパティで指定されているコンテンツ量のみを保持する循環アーカイブ "期間" です。 このウィンドウの範囲外のコンテンツは、ストレージ コンテナーから自動的に破棄され、復旧できません。 archiveWindowLength 値は、ISO-8601 形式で表した期間 (PTHH:MM:SS など) であり、DVR の容量を指定し、最短で 3 分から最長で 25 時間まで設定できます。
 

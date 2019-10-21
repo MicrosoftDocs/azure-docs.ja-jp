@@ -8,24 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/26/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 95b4978b66accce0182e58493cb9d600dbe5e35f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 51d21dca1d8a5223e67cb7ea8489800989cff55c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277481"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026018"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker のトラブルシューティング
 
 QnA Maker サービスについてきわめて多く寄せられる質問を精選した一覧です。サービスの採用にかかる期間を短縮し、成果を上げるためにお役立てください。
 
+<a name="how-to-get-the-qnamaker-service-hostname"></a>
 
-## <a name="how-to-get-the-qnamaker-service-hostname"></a>QnA Maker サービスのホスト名を取得する方法
+## <a name="how-to-get-the-qnamaker-service-endpoint"></a>QnA Maker サービス エンドポイントを取得する方法
 
-QnA Maker サービスのホスト名は、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 ホスト名は、 https:// *{ホスト名}* .azurewebsites.net という形式の URL です。
+QnA Maker サービス エンドポイントは、デバッグ目的で QnA Maker サポートや UserVoice に問い合わせる場合に役立ちます。 エンドポイントは、次の形式の URL です: https://your-resource-name.azurewebsites.net 。
     
 1. [Azure portal](https://portal.azure.com) で QnA Maker サービス (リソース グループ) に移動します。
 
@@ -35,9 +36,9 @@ QnA Maker サービスのホスト名は、デバッグ目的で QnA Maker サ�
 
      ![QnAMaker の App Service を選択する](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-appservice.png)
 
-1. ホスト名 URL は [概要] セクションで確認できます。
+1. エンドポイントの URL は [概要] セクションで確認できます。
 
-    ![QnA Maker のホスト名](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
+    ![QnA Maker のエンドポイント](./media/qnamaker-how-to-troubleshoot/qnamaker-azure-gethostname.png)
     
 
 ## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>QnA Maker ポータルでヘルプ ボットを使用する
@@ -49,6 +50,8 @@ QnA Maker では、QnA Maker ポータルで役に立つ**ヘルプ** ボット�
 ## <a name="manage-the-knowledge-base"></a>ナレッジ ベースの管理
 
 ### <a name="i-accidentally-deleted-a-part-of-my-qna-maker-what-should-i-do"></a>自分の QnA Maker の一部を誤って削除しました。どうしたらいいでしょうか。 
+
+Search や Web App など、QnA Maker リソースと一緒に作成される Azure サービスは削除しないでください。 QnA Maker が正常に機能するために必要であり、削除すると QnA Maker が正しく動作しなくなります。
 
 質問と回答のペア、ファイル、URL、カスタムの質問と回答、ナレッジ ベース、Azure リソースを含め、削除はすべて永続的です。 ナレッジ ベースの一部を削除する前に、 **[設定]** ページから確実にナレッジ ベースをエクスポートしてください。 
 
@@ -96,7 +99,7 @@ QnA Maker は、有効な FAQ URL であっても、一部の Q&A (QnA) コン�
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>ナレッジ ベースに対して行った更新が発行時に反映されません。 なぜでしょうか?
 
-編集内容を公開するには、テーブルの更新、テスト、設定のいずれであってもすべて保存する必要があります。 編集操作後は、必ず  **[Save and train]** \(保存してトレーニング\) ボタンをクリックしてください。
+編集内容を公開するには、テーブルの更新、テスト、設定のいずれであってもすべて保存する必要があります。 編集操作後は、必ず **[Save and train]\(保存してトレーニング\)** ボタンをクリックしてください。
 
 ### <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>ナレッジ ベースは、リッチ データやマルチメディアに対応していますか?
 
@@ -171,7 +174,7 @@ Azure Bot Service でボットを作成するには、[こちら](./Tutorials/cr
 次のナレッジ ベースに関する情報が必要です。
 
 * ナレッジ ベース ID。
-* ナレッジ ベースの公開されたエンドポイント ホスト名 - 公開後に **[設定]** ページで見つかります。
+* ナレッジ ベースの公開されたエンドポイント カスタム サブドメイン名 (`host` と呼ばれます)。公開後に **[設定]** ページで見つかります。
 * ナレッジ ベースの公開されたエンドポイント キー - 公開後に **[設定]** ページで見つかります。 
 
 この情報を使用して、Azure portal でご利用のボットのアプリ サービスにアクセスします。 **[設定] -> [構成] -> [アプリケーション設定]** で、これらの値を変更します。  

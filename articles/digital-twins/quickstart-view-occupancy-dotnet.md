@@ -1,6 +1,7 @@
 ---
 title: 空き部屋を探す - Azure Digital Twins | Microsoft Docs
 description: このクイック スタートでは、2 つの .NET Core サンプル アプリケーションを実行して、Azure Digital Twins の空間にシミュレートされたモーションと二酸化炭素のテレメトリを送信します。 目標は、クラウドで計算処理した後に、管理 API から空気の良い空き部屋を探すことです。
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
@@ -8,20 +9,19 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 08/16/2019
-ms.author: alinast
-ms.openlocfilehash: 40a98f915bc11ad17eae27596519cc78539fb2bb
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.date: 10/03/2019
+ms.openlocfilehash: 3c9a806b936b9f167d1700c95b1e769926abb17b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640302"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958904"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>クイック スタート: Azure Digital Twins を使用して空き部屋を探す
 
 Azure Digital Twins サービスを使用すると、物理環境のデジタル イメージを再作成できます。 その後、環境内のイベントによって通知を受け取り、それらのイベントへの応答をカスタマイズすることができます。
 
-このクイック スタートでは、[1 組の .NET サンプル ](https://github.com/Azure-Samples/digital-twins-samples-csharp) を使用して、架空のオフィス ビルをデジタル化します。 それによって、そのビルの空き部屋を探す方法を示します。 Digital Twins を使用すると、多くのセンサーを環境に関連付けることができます。 また、シミュレートされた二酸化炭素センサーを利用して、空き部屋の空気の質が最適かどうかを調べることもできます。 サンプル アプリケーションの 1 つでは、このシナリオの視覚化に役立つランダムなセンサー データを生成します。
+このクイック スタートでは、[1 組の .NET サンプル](https://github.com/Azure-Samples/digital-twins-samples-csharp)を使用して、架空のオフィス ビルをデジタル化します。 それによって、そのビルの空き部屋を探す方法を示します。 Digital Twins を使用すると、多くのセンサーを環境に関連付けることができます。 また、シミュレートされた二酸化炭素センサーを利用して、空き部屋の空気の質が最適かどうかを調べることもできます。 サンプル アプリケーションの 1 つでは、このシナリオの視覚化に役立つランダムなセンサー データを生成します。
 
 クイック スタートのセットアップについては、次のビデオで要約しています。
 
@@ -29,15 +29,15 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
 
 ## <a name="prerequisites"></a>前提条件
 
-1. Azure アカウントをお持ちでない場合は、開始する前に [ 無料アカウント ](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+1. Azure アカウントをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-1. このクイック スタートで実行する 2 つのコンソール アプリケーションは、C# を使って記述されています。 開発用マシンに [.NET Core SDK バージョン 2.1.403 以降 ](https://www.microsoft.com/net/download) をインストールしてください。 .NET Core SDK がインストールされている場合は、開発用マシン上の C# の現在のバージョンを確認してください。 コマンド プロンプトで、`dotnet --version` を実行します。
+1. このクイック スタートで実行する 2 つのコンソール アプリケーションは、C# を使って記述されています。 開発用マシンに [.NET Core SDK バージョン 2.1.403 以降](https://www.microsoft.com/net/download)をインストールしてください。 .NET Core SDK がインストールされている場合は、開発用マシン上の C# の現在のバージョンを確認してください。 コマンド プロンプトで、`dotnet --version` を実行します。
 
-1. [ サンプル C# プロジェクト ](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip) をダウンロードします。 digital-twins-samples-csharp-master.zip アーカイブを展開します。
+1. [サンプル C# プロジェクト](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip)をダウンロードします。 digital-twins-samples-csharp-master.zip アーカイブを展開します。
 
 ## <a name="create-a-digital-twins-instance"></a>Digital Twins インスタンスの作成
 
-このセクションの手順に従って、[ ポータル ](https://portal.azure.com) で Digital Twins の新しいインスタンスを作成します。
+このセクションの手順に従って、[ポータル](https://portal.azure.com)で Digital Twins の新しいインスタンスを作成します。
 
 [!INCLUDE [create-digital-twins-portal](../../includes/digital-twins-create-portal.md)]
 
@@ -74,7 +74,7 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
 1. `dotnet run ProvisionSample` を実行します。
 
     >[!NOTE]
-    >Device Login Azure CLI ツールを使用して、ユーザーを Azure AD に対して認証します。 [Microsoft のログイン ](https://microsoft.com/devicelogin) ページを使用して認証するには、ユーザーが特定のコードを入力する必要があります。 コードを入力した後、手順に従って認証します。 ユーザーは、ツールの実行中に認証する必要があります。
+    >Device Login Azure CLI ツールを使用して、ユーザーを Azure AD に対して認証します。 [Microsoft のログイン](https://microsoft.com/devicelogin) ページを使用して認証するには、ユーザーが特定のコードを入力する必要があります。 コードを入力した後、手順に従って認証します。 ユーザーは、ツールの実行中に認証する必要があります。
 
     >[!TIP]
     > この手順の実行時に、`EXIT: Unexpected error: The input is not a valid Base-64 string ...` というエラー メッセージが表示される場合は、変数が正しくコピーされていることを確認してください。
@@ -88,7 +88,7 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
     [![接続文字列をコピーする](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
 
     >[!TIP]
-    > [Azure Digital Twins グラフ ビューアー ](https://github.com/Azure/azure-digital-twins-graph-viewer) を使って、空間グラフを表示および変更できます。
+    > [Azure Digital Twins グラフ ビューアー](https://github.com/Azure/azure-digital-twins-graph-viewer)を使って、空間グラフを表示および変更できます。
 
 ## <a name="send-sensor-data"></a>センサー データの送信
 
@@ -133,7 +133,7 @@ Azure Digital Twins サービスを使用すると、物理環境のデジタル
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Name | 置換後の文字列 |
+| 名前 | 置換後の文字列 |
 | --- | --- |
 | YOUR_INSTANCE_NAME | お客様の Digital Twins インスタンスの名前 |
 | YOUR_LOCATION | インスタンスをホストするサーバーのリージョン |
@@ -160,4 +160,4 @@ https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 このクイック スタートでは、簡単なシナリオを使用して、作業環境の良い部屋を探す方法について説明しました。 このシナリオの詳細な分析については、次のチュートリアルを参照してください。
 
 >[!div class="nextstepaction"]
->[ チュートリアル: Azure Digital Twins をデプロイし、空間グラフを構成する ](tutorial-facilities-setup.md)
+>[チュートリアル: Azure Digital Twins をデプロイし、空間グラフを構成する](tutorial-facilities-setup.md)

@@ -3,9 +3,8 @@ title: Azure Security Center での ID とアクセスの監視 | Microsoft Docs
 description: Azure Security Center の ID とアクセス機能を使用して、ユーザーのアクセス アクティビティと ID 関連の問題を監視する方法を説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
@@ -13,19 +12,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
-ms.author: v-mohabe
-ms.openlocfilehash: 1ef4d8e76b54b995a09decdfaf9974f0929c8ed9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.author: memildin
+ms.openlocfilehash: 8b069bedd3c36f27828e54a1110443ae6dfcdf3f
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905339"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268858"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Azure Security Center での ID とアクセスの監視 (プレビュー)
 この記事は、Azure Security Center を使用してユーザーの ID とアクセス アクティビティを監視する際に役立ちます。
-
-> [!NOTE]
-> [*クラシック* ID とアクセスの表示] リンクは、2019 年 7 月 31 日をもって廃止されます。 代わりのサービスについては、[ここ](security-center-features-retirement-july2019.md#menu_classicidentity)をクリックしてください。
 
 > [!NOTE]
 > ID とアクセスの監視はプレビュー段階であり、Security Center の Standard レベルでのみ利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
@@ -81,7 +77,7 @@ ID とアクセスの推奨事項の詳細な一覧については、「[推奨�
 ### <a name="subscriptions-section"></a>[サブスクリプション] セクション
 **[サブスクリプション]** には、サブスクリプションの一覧が表示されます。 最初の列には、サブスクリプションが一覧表示されます。 2 列目には、各サブスクリプションの推奨事項の合計数が表示されます。 3 列目には、問題の重大度が表示されます。
 
-![サブスクリプションのタブ][4]
+![[サブスクリプション] タブ][4]
 
 1. サブスクリプションを選択します。 3 つのタブがある概要ビューが開きます。
 
@@ -126,13 +122,13 @@ ID とアクセスの推奨事項の詳細な一覧については、「[推奨�
 > MFA を必要とするが、除外が設定された条件付きアクセス ポリシーを作成している場合、そのポリシーは一部のユーザーを MFA なしで Azure にサインインできるようにするため、Security Center MFA の推奨事項の評価では非準拠と見なされます。
 
 ## <a name="next-steps"></a>次の手順
-その他の Azure リソースの種類に適用される推奨事項の詳細については、次をご覧ください。
+その他の Azure リソースの種類に適用される推奨事項の詳細については、次の記事をご覧ください。
 
 - [Azure Security Center でのマシンとアプリケーションの保護](security-center-virtual-machine-protection.md)
 - [Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)
 - [Azure Security Center での Azure SQL サービスとデータの保護](security-center-sql-service-recommendations.md)
 
-セキュリティ センターの詳細については、次を参照してください。
+Security Center の詳細については、次の記事を参照してください。
 * [Azure Security Center でのセキュリティ アラートの管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts)。 Security Center でアラートを管理し、セキュリティ インシデントに対応する方法を説明します。
 * [Azure Security Center のセキュリティ アラートの概要](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)。 さまざまな種類のセキュリティ アラートについて説明します。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)。 Security Center の使用に関してよく寄せられる質問とその回答を紹介しています。

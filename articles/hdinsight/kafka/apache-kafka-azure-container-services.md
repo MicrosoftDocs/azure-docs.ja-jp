@@ -1,19 +1,19 @@
 ---
 title: Azure Kubernetes Service で HDInsight 上の Kafka を使用する
 description: Azure Kubernetes Service (AKS) でホストされているコンテナー イメージから、HDInsight 上の Kafka を使用する方法について説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: e87ac268ab5448f38470f46bd6b0c7f2cdd204ce
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 31eefbad8e8d7cb626d87d53690388d09b85257e
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960573"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122652"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Azure Kubernetes Service で HDInsight 上の Apache Kafka を使用する
 
@@ -43,10 +43,9 @@ Azure Kubernetes Service (AKS) で HDInsight クラスター上の [Apache Kafka
 
 HDInsight と AKS はいずれも、コンピューティング リソースのコンテナーとして Azure Virtual Network を使用します。 HDInsight と AKS 間の通信を有効にするには、それらのネットワーク間の通信を有効にする必要があります。 このドキュメントの手順では、これらのネットワークに仮想ネットワーク ピアリングを使用します。 なお、その他の接続 (VPN など) を使用することもできます。 ピアリングの詳細については、「[仮想ネットワーク ピアリング](../../virtual-network/virtual-network-peering-overview.md)」ドキュメントを参照してください。
 
-
 次の図は、このドキュメントで使用されるネットワーク トポロジを示したものです。
 
-![仮想ネットワーク内の HDInsight、別の仮想ネットワーク内の AKS、およびピアリングを使用して接続されたネットワーク](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
+![仮想ネットワーク内の HDInsight、別の仮想ネットワーク内の AKS、ピアリングを使用](./media/apache-kafka-azure-container-services/kafka-aks-architecture.png)
 
 > [!IMPORTANT]  
 > ピアリングされたネットワーク間では名前解決が有効化されていないので、IP アドレス指定が使用されます。 既定では、Kafka on HDInsight はクライアント接続時に IP アドレスではなく、ホスト名を返すように構成されています。 このドキュメントの手順では、Kafka に変更を加えて、IP アドバタイズが使用されるようにします。
@@ -113,7 +112,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 3. Kafka 構成を表示するには、上部中央の __[Configs (構成)]__ を選択します。
 
-    ![Kafka の構成リンク](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
+    ![Apache Ambari サービスの構成](./media/apache-kafka-azure-container-services/select-kafka-config1.png)
 
 4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
@@ -135,7 +134,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 8. 構成を保存するには、 __[Save (保存)]__ ボタンを使用します。 変更を説明するテキスト メッセージを入力します。 変更が保存されたら、 __[OK]__ を保存します。
 
-    ![構成を保存するボタン](./media/apache-kafka-azure-container-services/save-configuration-button.png)
+    ![Apache Ambari の保存の構成](./media/apache-kafka-azure-container-services/save-configuration-button.png)
 
 9. Kafka の再起動時にエラーが発生しないようにするため、 __[Service Actions (サービス アクション)__ ] ボタンを使用して __[Turn On Maintenance Mode (メンテナンス モードの有効化)]__ を選択します。 [OK] を選択して、この操作を完了します。
 
@@ -192,6 +191,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
     ```bash
     docker push <acrLoginServer>/kafka-aks-test:v1
     ```
+
     この操作は、完了するまでに数分かかります。
 
 8. Kubernetes マニフェスト ファイル (`kafka-aks-test.yaml`) を編集し、`microsoft` を、手順 4 で取得した ACR loginServer 名に置き換えます。
@@ -212,7 +212,7 @@ Kafka HDInsight クラスターを作成する際には、先ほど HDInsight �
 
 11. Web ブラウザーを開き、サービスの外部 IP アドレスを入力します。 次の画像のようなページが表示されます。
 
-    ![Web ページの画像](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
+    ![Apache Kafka テスト Web ページの画像](./media/apache-kafka-azure-container-services/test-web-page-image1.png)
 
 12. フィールドにテキストを入力し、 __[送信]__ ボタンを選択します。 データが Kafka に送信されます。 その後、アプリケーション内の Kafka コンシューマーによりメッセージが読み取られ、 __[Messages from Kafka]__ セクションに追加されます。
 

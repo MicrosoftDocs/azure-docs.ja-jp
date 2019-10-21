@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 05/23/2019
 ms.author: helohr
-ms.openlocfilehash: de849701365438b21244d1e46ae657495d16c307
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: b6a78fbf2fcb12962b42537965deea6c7912315d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816404"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676546"
 ---
 # <a name="diagnose-graphics-performance-issues-in-remote-desktop"></a>リモート デスクトップでグラフィックスのパフォーマンスの問題を診断する
 
@@ -101,6 +101,6 @@ RDP は 33 ミリ秒の [Average Encoding Time]\(平均エンコード時間\) �
 
 ## <a name="next-steps"></a>次の手順
 
-- GPU が最適化された Azure 仮想マシンを作成するには、「[Windows Virtual Desktop プレビュー用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)」を参照してください。
+- GPU が最適化された Azure 仮想マシンを作成するには、「[Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する](https://docs.microsoft.com/azure/virtual-desktop/configure-vm-gpu)」を参照してください。
 - トラブルシューティングとエスカレーション トラックの概要については、「[トラブルシューティングの概要、フィードバック、サポート](https://docs.microsoft.com/azure/virtual-desktop/troubleshoot-set-up-overview)」を参照してください。
-- プレビュー サービスの詳細については、「[Windows Virtual Desktop プレビュー環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)」を参照してください。
+- サービスの詳細については、[Windows Desktop の環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)に関する記事を参照してください。

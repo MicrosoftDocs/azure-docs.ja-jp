@@ -11,24 +11,52 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: aea1434acdbfd97bcc9096dddd497ef031a74b94
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: e3ab825fbf5b5dba74b67eaa894a38c74ed0b62a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170563"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299391"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
 Azure Functions ランタイムは、[Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/) をサポートします。 このガイドには、Java で Azure 関数を記述する複雑な作業についての情報が含まれます。
 
-Java 関数は、注釈 `@FunctionName` で装飾された `public` メソッドです。 このメソッドは、Java 関数のエントリを定義し、特定のパッケージ内で一意である必要があります。 
+他の言語と同様、関数アプリにも、1 つまたは複数の関数を使用することができます。 Java 関数は、注釈 `@FunctionName` で装飾された `public` メソッドです。 このメソッドは、Java 関数のエントリを定義し、特定のパッケージ内で一意である必要があります。 Java で作成された 1 つの関数アプリに、`@FunctionName` で注釈付けされたパブリック メソッドを複数持つクラスが複数存在することもあります。
 
 この記事では、「[Azure Functions の開発者向けガイド](functions-reference.md)」を既に読んでいることを前提としています。 さらに、[Visual Studio Code](functions-create-first-function-vs-code.md) または [Maven](functions-create-first-java-maven.md) を使用して、最初の関数を作成する Functions のクイック スタートも終えている必要があります。
 
 ## <a name="programming-model"></a>プログラミング モデル 
 
 [トリガーとバインド](functions-triggers-bindings.md)の概念は、Azure Functions の基盤です。 トリガーによって、コードの実行が開始します。 バインドでは、データを関数に渡し、関数からデータを返す方法が提供されます。カスタム データ アクセス コードを記述する必要はありません。
+
+## <a name="project-scaffolding"></a>プロジェクトのスキャフォールディング
+
+Java ベースの Azure Function プロジェクトをスキャフォールディングする最も簡単な方法は、`Apache Maven` アーキタイプを使用することです。 Visual Studio Code や Azure Toolkits for Eclipse、Azure Toolkits for IntelliJ には、プロジェクト生成ウィザードもあります。
+
+Maven には現在、2 つの Azure Functions アーキタイプが存在します。
+
+### <a name="java-archetype"></a>Java アーキタイプ
+
+このアーキタイプは、次の groupId および artifactId の下で発行されます ([com.microsoft.azure:azure-functions-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-archetype/))。
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-archetype 
+```
+
+### <a name="kotlin-archetype-preview"></a>Kotlin アーキタイプ (プレビュー)
+
+このアーキタイプは、次の groupId および artifactId の下で発行されます ([com.microsoft.azure:azure-functions-kotlin-archetype](https://search.maven.org/artifact/com.microsoft.azure/azure-functions-kotlin-archetype/))。
+
+```
+mvn archetype:generate \
+    -DarchetypeGroupId=com.microsoft.azure \
+    -DarchetypeArtifactId=azure-functions-kotlin-archetype
+```
+
+これらのアーキタイプのソース コードは、[Azure Maven アーキタイプ GitHub リポジトリ](https://github.com/microsoft/azure-maven-archetypes)でご覧いただけます。
 
 ## <a name="folder-structure"></a>フォルダー構造
 
@@ -55,6 +83,8 @@ FunctionsProject
  | | | | - lib
  | - pom.xml
 ```
+
+_* Kotlin プロジェクトは、あくまで Maven であるため、見た目はよく似ています_
 
 共有 [host.json](functions-host-json.md) ファイルを使用して関数アプリを構成できます。 各関数には、独自のコード ファイル (.java) とバインディング構成ファイル (function.json) があります。
 

@@ -1,22 +1,22 @@
 ---
 title: マスター VHD イメージを準備してカスタマイズする - Azure
-description: Windows Virtual Desktop プレビューのマスター イメージを準備、カスタマイズし、Azure にアップロードする方法。
+description: Windows Virtual Desktop のマスター イメージを準備、カスタマイズし、Azure にアップロードする方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: 8127c0a42ec42a661af31cc489964cc40cb4937d
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 57070b297446badb92ae1df4c435dd54cfe26823
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981070"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710194"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>マスター VHD イメージを準備してカスタマイズする
 
-この記事では、仮想マシン (VM) を作成してそこにソフトウェアをインストールする方法など、マスター仮想ハード ディスク (VHD) イメージを準備して Azure にアップロードする方法を説明します。 これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop プレビュー固有の構成に対するものです。
+この記事では、仮想マシン (VM) を作成してそこにソフトウェアをインストールする方法など、マスター仮想ハード ディスク (VHD) イメージを準備して Azure にアップロードする方法を説明します。 これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop 固有の構成に対するものです。
 
 ## <a name="create-a-vm"></a>VM の作成
 
@@ -204,7 +204,7 @@ reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\rdp-s
 
 このセクションは、マスター イメージがローカルで作成された場合にのみ適用されます。
 
-次の手順では、マスター イメージを Azure ストレージ アカウントにアップロードする方法を説明します。 Azure ストレージ アカウントがまだない場合は、[こちらの記事](https://code.visualstudio.com/tutorials/static-website/create-storage)の指示に従って作成します。
+次の手順では、マスター イメージを Azure ストレージ アカウントにアップロードする方法を説明します。 Azure ストレージ アカウントがまだない場合は、[こちらの記事](/azure/javascript/tutorial-vscode-static-website-node-03)の指示に従って作成します。
 
 1. まだ行っていない場合は、VM イメージ (VHD) を固定に変換します。 イメージを固定に変換しない場合は、イメージを正常に作成できません。
 

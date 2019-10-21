@@ -5,16 +5,16 @@ services: time-series-insights
 author: ashannon7
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 10/02/2019
 ms.author: dpalled
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 4c81daa1f55167fa868c69f3bff388dbaa4887cd
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: a6f2b2875ea58ff89d59f577f7cb27d97e07b28e
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725736"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981234"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル:Azure Time Series Insights 環境を作成する
 
@@ -196,4 +196,4 @@ Azure portal の左側のメニューで、次のようにします。
 独自の Time Series Insights 環境を作成する方法を確認したので、Time Series Insights 環境のデータを使用する Web アプリケーションを構築する方法について確認します。
 
 > [!div class="nextstepaction"]
-> [Azure Time Series Insights のシングルページ Web アプリを作成する](tutorial-create-tsi-sample-spa.md)
+> [ホストされているクライアント SDK のビジュアル化の例](https://tsiclientsample.azurewebsites.net/)

@@ -16,6 +16,17 @@ metadata:
 abstract:
   description: Spatial Anchors は、クロスプラットフォーム対応の開発者向けサービスです。このサービスを使用すると、複数のデバイス間で時間の経過に伴ってその位置情報を保持するオブジェクトを使用して複合現実エクスペリエンスを作成できます。
 sections:
+  - title: 概念
+    items:
+      - type: paragraph
+        text: Azure Spatial Anchors での作業を開始するうえで役に立つ主要な概念について説明します。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/spatial-anchors/concepts/authentication">認証。</a>
+          - html: <a href="/azure/spatial-anchors/concepts/anchor-relationships-way-finding">アンカーのリレーションシップとウェイファインディング。</a>
+          - html: <a href="/azure/spatial-anchors/concepts/guidelines-effective-anchor-experiences">エクスペリエンスのガイドライン。</a>
+          - html: <a href="/azure/spatial-anchors/concepts/logging-diagnostics">ログ記録と診断。</a>
   - title: 5 分間のクイック スタート
     items:
       - type: paragraph
@@ -24,35 +35,35 @@ sections:
         style: icon48
         items:
           - image:
-              src: /media/logos/logo_android.svg
-              alt: null
-            text: Android
-            href: quickstarts/get-started-android.md
-          - image:
               src: /media/logos/logo_Windows.svg
               alt: null
-            text: HoloLens
-            href: quickstarts/get-started-hololens.md
-          - image:
-              src: /media/logos/logo_ios.svg
-              alt: null
-            text: iOS
-            href: quickstarts/get-started-ios.md
+            text: Unity HoloLens
+            href: quickstarts/get-started-unity-hololens.md
           - image:
               src: /media/logos/logo_android.svg
               alt: null
             text: Unity Android
             href: quickstarts/get-started-unity-android.md
           - image:
-              src: /media/logos/logo_Windows.svg
-              alt: null
-            text: Unity HoloLens
-            href: quickstarts/get-started-unity-hololens.md
-          - image:
               src: /media/logos/logo_ios.svg
               alt: null
             text: Unity iOS
             href: quickstarts/get-started-unity-ios.md
+          - image:
+              src: /media/logos/logo_Windows.svg
+              alt: null
+            text: HoloLens
+            href: quickstarts/get-started-hololens.md
+          - image:
+              src: /media/logos/logo_android.svg
+              alt: null
+            text: Android
+            href: quickstarts/get-started-android.md
+          - image:
+              src: /media/logos/logo_ios.svg
+              alt: null
+            text: iOS
+            href: quickstarts/get-started-ios.md
           - image:
               src: /media/logos/logo_xamarin.svg
               alt: null
@@ -72,3 +83,5 @@ sections:
         items:
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">Unity で共有する</a>。
           - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">Azure Cosmos DB を使用して Unity で共有する</a>。
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-unity-hololens-app">新しい Unity HoloLens アプリを開始する。</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-new-android-app">新しい Android アプリを開始する。</a>

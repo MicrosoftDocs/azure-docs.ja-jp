@@ -1,0 +1,16 @@
+- name: Azure 管理グループのドキュメント
+  href: ./index.yml
+- name: 概要
+  expanded: true
+  items:
+    - name: Azure の管理
+      href: ../azure-management.md
+    - name: 管理グループ
+      href: ./overview.md
+- name: ハウツー ガイド
+  expanded: true
+  items:
+    - name: 管理グループの作成
+      href: ./create.md
+    - name: リソースの管理
+      href: ./manage.md

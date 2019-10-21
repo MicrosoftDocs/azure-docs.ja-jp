@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: mobile
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 09/16/2019
 ms.author: mbullwin
-ms.openlocfilehash: 778a95db8ce462d06e2464db56b542f8113a4960
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 94e994a3dc1cd9d5d5d0b7acb5aed4783d881915
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875372"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802304"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights:よく寄せられる質問
 
@@ -59,7 +59,7 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 
 [価格プランを参照してください](https://azure.microsoft.com/pricing/details/application-insights/)。
 
-## <a name="how-much-is-it-costing"></a>どれくらいのコストが発生していますか?
+## <a name="how-much-does-it-cost"></a>コストはどれくらいですか。
 
 * Application Insights リソースで **[使用量と推定コスト] ページ**を開きます。 最近の利用状況のグラフが表示されます。 必要に応じて、データ量の上限を設定できます。
 * [Azure の [課金] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)を開き、リソース全体での請求額を確認します。
@@ -139,6 +139,8 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 
 * ブラウザー テレメトリ:送信者の IP アドレスを収集します。
 * サーバー テレメトリ:Application Insights モジュールでクライアントの IP アドレスが収集されます。 `X-Forwarded-For` が設定されている場合は収集されません。
+* Application Insights で IP アドレスと geo ロケーション データが収集される方法の詳細については、こちらの[記事](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection)を参照してください。
+
 
 別のヘッダーから IP アドレスを取得するように `ClientIpHeaderTelemetryInitializer` を構成できます。 たとえば一部のシステムでは、プロキシ、ロード バランサー、または CDN によって IP アドレスが `X-Originating-IP` に移動されます。 [詳細情報](https://apmtips.com/blog/2016/07/05/client-ip-address/)。
 

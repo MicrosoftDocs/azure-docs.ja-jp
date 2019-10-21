@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 2e578c6bfdfb25eaba3d0c692ff33aa5b0572669
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: a2064e0012abea237c1b4c0c6f7e35119c1aeff5
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305995"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686803"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database トラフィックの新しいゲートウェイへの移行
 
@@ -52,7 +52,7 @@ Azure インフラストラクチャの機能強化に伴い、Microsoft は可�
 
 ## <a name="what-to-do-you-do-if-youre-affected"></a>影響を受ける場合の対処方法
 
-リージョンの TCP ポート 1433 上のすべての [Azure SQL Database ゲートウェイ IP アドレス](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses)、およびファイアウォール デバイス内のポート範囲 11000-11999 の IP アドレスへの送信トラフィックを許可することをお勧めします。 ポート範囲の詳細については、「[接続ポリシー](sql-database-connectivity-architecture.md#connection-policy)」を参照してください。
+リージョンの TCP ポート 1433 上のすべての [Azure SQL Database ゲートウェイ IP アドレス](sql-database-connectivity-architecture.md#azure-sql-database-gateway-ip-addresses)、およびポート範囲 11000-11999 の IP アドレスへの送信トラフィックを許可することをお勧めします。 この推奨事項は、オンプレミスから接続しているクライアントと、サービス エンドポイント経由で接続しているクライアントに適用されます。 ポート範囲の詳細については、「[接続ポリシー](sql-database-connectivity-architecture.md#connection-policy)」を参照してください。
 
 バージョン 4.0 より前の Microsoft JDBC ドライバーを使用しているアプリケーションからの接続は、証明書の検証に失敗する可能性があります。 以前のバージョンの Microsoft JDBC は、証明書のサブジェクト フィールドにある共通名 (CN) に依存しています。 軽減策は、hostNameInCertificate プロパティを *.database.windows.net に設定することです。 hostNameInCertificate プロパティの設定方法については、「[SSL 暗号化を使用した接続](/sql/connect/jdbc/connecting-with-ssl-encryption)」を参照してください。
 

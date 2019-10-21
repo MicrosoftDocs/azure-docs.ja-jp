@@ -10,12 +10,12 @@ ms.reviewer: divswa, klam, LADocs
 ms.topic: article
 ms.date: 06/18/2019
 tags: connectors
-ms.openlocfilehash: 7479be6a14c7d1ace5d60defad0eda51d2aa814b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 33c6007ebc429bb0d95d702ae9b90f9ac411a88c
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67296564"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695201"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SSH と Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -33,7 +33,7 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
 
 ## <a name="limits"></a>制限
 
-* 既定では、SFTP-SSH アクションは、*1 GB 以下* (ただし一度に *15 MB* のチャンク内でのみ) のファイルも読み書きできます。 15 MB より大きいファイルを処理するために、SFTP-SSH アクションは、15 MB のファイルしか処理できないファイルのコピー アクション以外では[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)をサポートしています。 **ファイルのコンテンツの取得**アクションでは、暗黙的にメッセージ チャンクが使用されます。 
+* 既定では、SFTP-SSH アクションは、*1 GB 以下* (ただし一度に *15 MB* のチャンク内でのみ) のファイルも読み書きできます。 15 MB より大きいファイルを処理するために、SFTP-SSH アクションは、15 MB のファイルしか処理できないファイルのコピー アクション以外では[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)をサポートしています。 **ファイルのコンテンツの取得**アクションでは、暗黙的にメッセージ チャンクが使用されます。
 
 * SFTP-SSH トリガーではチャンクはサポートされていません。 ファイルのコンテンツを要求する場合、トリガーは 15 MB 以下のファイルのみを選択します。 15 MB より大きいファイルを取得するには、代わりに次のパターンに従います。
 
@@ -48,14 +48,6 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
 以下に、SFTP-SSH コネクタと SFTP-SSH コネクタのその他の主な違いを、SFTP コネクタは以下の機能を備えているという形で示します。
 
 * .NET をサポートするオープン ソース Secure Shell (SSH) ライブラリである [SSH.NET ライブラリ](https://github.com/sshnet/SSH.NET)を使用します。
-
-  > [!NOTE]
-  >
-  > SFTP-SSH コネクタは、以下に示す秘密キー、形式、アルゴリズム、およびフィンガープリント*のみ*をサポートしています。
-  >
-  > * **秘密キーの形式**: OpenSSH 形式と ssh.com 形式の両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
-  > * **暗号化アルゴリズム**: DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC、AES-256-CBC
-  > * **フィンガープリント**: MD5
 
 * 既定では、SFTP-SSH アクションは、*1 GB 以下* (ただし一度に *15 MB* のチャンク内でのみ) のファイルも読み書きできます。 15 MB を超えるファイルを処理するためにはSFTP-SSH アクションでは[メッセージ チャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用できます。 ただし、ファイルのコピー アクションはメッセージ チャンクをサポートしていないために、15 MB のファイルしかサポートしていません。 SFTP-SSH トリガーではチャンクはサポートされていません。
 
@@ -75,13 +67,14 @@ SFTP-SSH コネクタと SFTP コネクタの違いについては、このト�
   >
   > SFTP-SSH コネクタは、以下に示す秘密キー形式、アルゴリズム、およびフィンガープリント*のみ*をサポートしています。
   >
-  > * **秘密キーの形式**: OpenSSH 形式と ssh.com 形式の両方の RSA (Rivest Shamir Adleman) キーと DSA (Digital Signature Algorithm) キー
+  > * **秘密キーの形式**: OpenSSH 形式と ssh.com 形式の両方の RSA (Rivest Shamir Adleman) キーと DSA (デジタル署名アルゴリズム) キー。 秘密キーが PuTTY (.ppk) ファイル形式の場合は、まず、[キーを OpenSSH (.pem) ファイル形式に変換します](#convert-to-openssh)。
+  >
   > * **暗号化アルゴリズム**: DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC、AES-256-CBC
+  >
   > * **フィンガープリント**: MD5
   >
-  > ロジック アプリを作成している場合は、必要な SFTP-SSH トリガーまたはアクションを追加した後、SFTP サーバーの接続情報を指定する必要があります。 
-  > SSH 秘密キーを使おうとしている場合は、SSH 秘密キー ファイルからキーを***コピー***し、そのキーを接続の詳細に***貼り付ける***ようにしてください。***キーは手動で入力または編集しないでください***。そのようにすると、接続が失敗することがあります。 
-  > 詳細については、この記事で後述する手順を参照してください。
+  > ご利用のロジック アプリに必要な SFTP-SSH トリガーまたはアクションを追加した後、SFTP サーバーの接続情報を指定する必要があります。 この接続に SSH 秘密キーを指定する場合、***キーを手動で入力したり編集したりしないでください***。これにより、接続が失敗する可能性があります。 代わりに、必ず、ご利用の SSH 秘密キー ファイルから***キーをコピー***し、そのキーを接続の詳細に***貼り付け***てください。 
+  > 詳細については、この記事の後の「[SSH で SFTP に接続する](#connect)」セクションを参照してください。
 
 * [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
@@ -98,6 +91,44 @@ SFTP-SSH は、SFTP ファイル システムをポーリングし、前回の�
 |||
 
 トリガーによって新しいファイルが検出されると、トリガーはその新しいファイルが完了していて、すべて書き込まれていることを確認します。 たとえば、トリガーがファイル サーバーを確認している際に、ファイルの進行状態が変化する場合があります。 部分的に書き込まれたファイルが返されることなないように、トリガーは最新の変更を含むファイルのタイムスタンプをメモしますが、すぐにそのファイルを返すことはありません。 トリガーは、もう一度サーバーをポーリングしてファイルを返します。 場合によっては、この動作によって、最大でトリガーのポーリング間隔が 2 倍となる遅延が生じる場合があります。
+
+<a name="convert-to-openssh"></a>
+
+## <a name="convert-putty-based-key-to-openssh"></a>PuTTY ベースのキーを OpenSSH に変換する
+
+ご利用の秘密キーが .ppk (PuTTY 秘密キー) ファイル名拡張子する PuTTY 形式の場合、まずキーを .pem (Privacy Enhanced Mail) ファイル名拡張子を使用する OpenSSH 形式に変換します。
+
+### <a name="unix-based-os"></a>Unix ベースの OS
+
+1. PuTTY ツールがご利用のシステムにまだインストールされていない場合は、今すぐ次のような操作を行います。
+
+   `sudo apt-get install -y putty`
+
+1. このコマンドを実行します。これにより、SFTP-SSH コネクタで使用できるファイルが作成されます。
+
+   `puttygen <path-to-private-key-file-in-PuTTY-format> -O private-openssh -o <path-to-private-key-file-in-OpenSSH-format>`
+
+   例:
+
+   `puttygen /tmp/sftp/my-private-key-putty.ppk -O private-openssh -o /tmp/sftp/my-private-key-openssh.pem`
+
+### <a name="windows-os"></a>Windows OS
+
+1. まだ行っていない場合は、[最新の PuTTY Generator (puttygen.exe) ツールをダウンロードし](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)、ツールを起動します。
+
+1. この画面で **[Load]/[読み込む/]** を選択します。
+
+   ![[Load]\[読み込む\] を選択](./media/connectors-sftp-ssh/puttygen-load.png)
+
+1. PuTTY 形式で秘密キー ファイルを参照し、 **[Open]\(開く\)** を選択します。
+
+1. **[Conversions]\(変換\)** メニューで、 **[Export OpenSSH key]\(OpenSSH キーのエクスポート\)** を選択します。
+
+   ![[Export OpenSSH key]\(OpenSSH キーのエクスポート\) を選択](./media/connectors-sftp-ssh/export-openssh-key.png)
+
+1. `.pem` のファイル名拡張子で秘密キー ファイルを保存します。
+
+<a name="connect"></a>
 
 ## <a name="connect-to-sftp-with-ssh"></a>SSH で SFTP に接続する
 
@@ -117,8 +148,7 @@ SFTP-SSH は、SFTP ファイル システムをポーリングし、前回の�
 
    > [!IMPORTANT]
    >
-   > **SSH 秘密キー** プロパティに SSH 秘密キーを入力する場合は、次の追加の手順に従ってください。これは、このプロパティの完全で正しい値を確実に指定する助けになります。 
-   > 無効なキーを指定すると、接続が失敗します。
+   > **SSH 秘密キー** プロパティに SSH 秘密キーを入力する場合は、次の追加の手順に従ってください。これは、このプロパティの完全で正しい値を確実に指定する助けになります。 無効なキーを指定すると、接続が失敗します。
 
    任意のテキスト エディターを使用できますが、次に例として、Notepad.exe を使用してキーを正しくコピーして貼り付ける方法を示す手順の例を示します。
 

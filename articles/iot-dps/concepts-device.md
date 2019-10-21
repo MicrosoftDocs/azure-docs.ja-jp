@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 2904da863707c5f653d774b0a480cc48c95c8d1c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8ea1be02dee0e0ef00010e8ac7a4dfb75eadbe96
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60745980"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173383"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub デバイス プロビジョニング サービスのデバイスの概念
 
@@ -44,7 +44,7 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 ## <a name="registration-id"></a>登録 ID
 
-登録 ID は、デバイス プロビジョニング サービスでデバイスを一意に識別するために使用されます。 デバイス ID は、プロビジョニング サービスの[ ID スコープ](#id-scope)内で一意である必要があります。 各デバイスに登録 ID が必要です。 登録 ID には、英数字、小文字と、必要に応じてハイフンを含めます。
+登録 ID は、デバイス プロビジョニング サービスでデバイスを一意に識別するために使用されます。 登録 ID は、プロビジョニング サービスの [ID スコープ](#id-scope)内で一意である必要があります。 各デバイスに登録 ID が必要です。 登録 ID には、英数字、小文字と、必要に応じてハイフンを含めます。
 
 * TPM の場合、登録 ID は TPM 自身によって提供されます。
 * X.509 ベースの構成証明の場合、登録 ID は、証明書のサブジェクト名として提供されます。

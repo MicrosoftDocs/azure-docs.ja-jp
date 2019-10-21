@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8eedea2e867dd2a5e2d9cf7e92f47c007bc48af1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 61c75c011ce25c3c7238ec75cf5ed579e677531f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67707085"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091371"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -212,12 +212,14 @@ edgeAgent ログの例:
 2017-11-28 18:46:49 [INF] - Edge agent attempting to connect to IoT Hub via AMQP over WebSocket... 
 ```
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 ホスト ネットワーク上のネットワーク構成では、IoT Edge エージェントはネットワークに到達できません。 エージェントは、最初に AMQP (ポート 5671) で接続を試みます。 接続が失敗した場合は、WebSocket (ポート 443) が試されます。
 
 IoT Edge ランタイムは、各モジュールが通信するネットワークをセットアップします。 Linux では、このネットワークはブリッジ ネットワークです。 Windows では、NAT を使います。 この問題は、NAT ネットワークを使う Windows コンテナーを使っている Windows デバイスで、より多く見られます。 
 
-### <a name="resolution"></a>解決策
+**解決策**
+
 このブリッジ/NAT ネットワークに割り当てられている IP アドレスにインターネットへのルートが存在することを確認します。 ホストでの VPN 構成が IoT Edge ネットワークをオーバーライドしている場合があります。 
 
 ## <a name="iot-edge-hub-fails-to-start"></a>IoT Edge ハブが起動に失敗する
@@ -231,19 +233,23 @@ One or more errors occurred.
 Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allocated\"}\n) 
 ```
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 ホスト コンピューター上の他のプロセスが、ポート 443 にバインドしています。 IoT Edge ハブでは、ゲートウェイ シナリオ内で使うためにポート 5671 と 443 をマップします。 別のプロセスがこのポートを既にバインドしている場合、このポート マッピングは失敗します。 
 
-### <a name="resolution"></a>解決策
+**解決策**
+
 ポート 443 を使っているプロセスを探して停止します。 通常、このプロセスは Web サーバーです。
 
 ## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>IoT Edge エージェントがモジュールのイメージにアクセスできない (403)
 コンテナーの実行が失敗し、edgeAgent ログに 403 エラーが表示されます。 
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 IoT Edge エージェントには、モジュールのイメージにアクセスするためのアクセス許可がありません。 
 
-### <a name="resolution"></a>解決策
+**解決策**
+
 配置マニフェストで、レジストリの資格情報が正しく指定されていることを確認します。
 
 ## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>IoT Edge セキュリティ デーモンが無効なホスト名で失敗する
@@ -254,10 +260,12 @@ IoT Edge エージェントには、モジュールのイメージにアクセ�
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
 ```
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 IoT Edge ランタイムは、64 文字未満のホスト名のみをサポートできます。 通常、物理マシンに長いホスト名は付いていませんが、これは仮想マシンではより一般的な問題です。 特に、Azure でホストされる Windows 仮想マシンのために自動生成されるホスト名は長くなる傾向があります。 
 
-### <a name="resolution"></a>解決策
+**解決策**
+
 このエラーが発生したときは、仮想マシンの DNS 名を構成し、setup コマンドでその DNS 名をホスト名として設定することで、エラーを解決できます。
 
 1. Azure Portal で、目的の仮想マシンの概要ページに移動します。 
@@ -284,10 +292,12 @@ IoT Edge ランタイムは、64 文字未満のホスト名のみをサポー�
 ## <a name="stability-issues-on-resource-constrained-devices"></a>リソースに制約があるデバイスでの安定性の問題 
 Raspberry Pi のようなリソースに制約があるデバイスを、特にゲートウェイとして使用した場合、安定性の問題が発生する可能性があります。 症状には、Edge ハブ モジュールのメモリ不足例外、ダウンストリームのデバイスの構成不能、数時間後のデバイスによるテレメトリ メッセージの送信停止が含まれます。
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 IoT Edge ハブは IoT Edge ランタイムの一部であり、既定でパフォーマンスに対して最適化され、メモリの大部分を割り当てようとします。 この最適化は、制約のある Edge デバイスには適していないため、安定性の問題が発生する可能性があります。
 
-### <a name="resolution"></a>解決策
+**解決策**
+
 IoT Edge ハブに対して、環境変数 **OptimizeForPerformance** を **false** に設定します。 この作業を実行する 2 つの方法があります。
 
 UI で: 
@@ -316,10 +326,12 @@ UI で:
 ## <a name="cant-get-the-iot-edge-daemon-logs-on-windows"></a>Windows で IoT Edge デーモン ログを取得できません
 Windows で `Get-WinEvent` の使用時に EventLogException が表示された場合、レジストリ エントリを確認してください。
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 `Get-WinEvent` PowerShell コマンドは、存在しているレジストリ エントリを利用して、特定の `ProviderName` でログを見つけます。
 
-### <a name="resolution"></a>解決策
+**解決策**
+
 IoT Edge デーモンにレジストリ エントリを設定します。 次の内容の **iotedge.reg** ファイルを作成し、ダブルクリックするか `reg import iotedge.reg` コマンドを使用して Windows レジストリにインポートします。
 
 ```
@@ -339,10 +351,12 @@ Windows Registry Editor Version 5.00
 Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
 ```
 
-### <a name="root-cause"></a>根本原因
+**根本原因**
+
 IoT Edge デーモンでは、セキュリティ上の理由から、edgeHub に接続するすべてのモジュールのプロセス識別が強制されます。 モジュールによって送信されているすべてのメッセージが、モジュールのメイン プロセス ID から来ていることが確認されます。 モジュールによって、最初に確立されたのと異なるプロセス ID からメッセージが送信されている場合、そのメッセージは 404 エラー メッセージで拒否されます。
 
-### <a name="resolution"></a>解決策
+**解決策**
+
 バージョン 1.0.7 時点では、モジュールのすべてのプロセスが接続を承認されています。 1\.0.7 へのアップグレードが不可能な場合は、次の手順を完了します。 詳しくは、[1.0.7 リリース 変更ログ](https://github.com/Azure/iotedge/blob/master/CHANGELOG.md#iotedged-1)のページをご覧ください。
 
 カスタム IoT Edge モジュールによる edgeHub へのメッセージの送信で、常に同じプロセス ID が使用されるようにします。 たとえば、Docker ファイル内で、`CMD` コマンドではなく `ENTRYPOINT` を使用するようにします。`ENTRYPOINT` では単一のプロセス ID が使用されるのに対して、`CMD` ではモジュールに 1 つのプロセス ID が使用され、メイン プログラムを実行している bash コマンドには別のプロセス ID が使用されるためです。
@@ -363,10 +377,12 @@ IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュ�
 
 デバイスで、デプロイにおいて定義されているモジュールの開始に問題があります。 edgeAgent のみが実行されますが、継続的に "空の構成ファイル..." が報告されます。
 
-### <a name="potential-root-cause"></a>可能性のある根本原因
+**根本原因**
+
 既定では、IoT Edge は独自の分離されたコンテナー ネットワークでモジュールを開始します。 デバイスに、このプライベート ネットワーク内での DNS 名の解決に関する問題がある可能性があります。
 
-### <a name="resolution"></a>解決策
+**解決策**
+
 
 **オプション 1:コンテナー エンジンの設定で DNS サーバーを設定します**
 

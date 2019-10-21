@@ -3,23 +3,25 @@ title: Notification Hubs のセキュリティ
 description: このトピックでは、Azure Notification Hubs のセキュリティについて説明します。
 services: notification-hubs
 documentationcenter: .net
-author: jwargo
-manager: patniko
-editor: spelluru
-ms.assetid: 6506177c-e25c-4af7-8508-a3ddca9dc07c
+author: sethmanheim
+manager: femila
+editor: jwargo
+ms.assetid: ''
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/31/2019
-ms.author: jowargo
-ms.openlocfilehash: 73a6d0eaab286dec9d02bb55eb75f0781bcffcc4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.date: 09/23/2019
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 09/23/2019
+ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69891585"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273632"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs のセキュリティ
 
@@ -27,13 +29,18 @@ ms.locfileid: "69891585"
 
 このトピックでは、Azure Notification Hubs のセキュリティ モデルについて説明します。
 
-## <a name="shared-access-signature-security-sas"></a>Shared Access Signature セキュリティ (SAS)
+## <a name="shared-access-signature-security"></a>Shared Access Signature セキュリティ
 
-Notification Hubs は、SAS (Shared Access Signature) と呼ばれるエンティティ レベルのセキュリティ方式を実装しています。 各規則には、名前、キーの値 (共有シークレット)、および「[セキュリティ要求](#security-claims)」で説明されている権限のセットが含まれます。 通知ハブを作成すると、2 つの規則が自動的に作成されます。1 つは **Listen** 権限を持ち (クライアント アプリが使用するもの)、もう 1 つは**すべて**の権限を持ちます (アプリ バックエンドが使用するもの)。
+Notification Hubs では、*Shared Access Signature* (SAS) と呼ばれるエンティティ レベルのセキュリティ方式が実装されています。 各規則には、名前、キーの値 (共有シークレット)、および権限のセット (「[セキュリティ要求](#security-claims)」で後述) が含まれます。 
+
+ハブを作成すると、2 つの規則が自動的に作成されます。1 つには **Listen** 権限が含まれ (クライアント アプリによって使用されます)、もう 1 つには**すべて**の権限が含まれます (アプリのバックエンドによって使用されます)。
+
+- **DefaultListenSharedAccessSignature**: **Listen** アクセス許可のみを付与します。
+- **DefaultFullSharedAccessSignature**: **Listen**、**Manage**、および **Send** の各アクセス許可を付与します。 このポリシーは、アプリのバックエンドでのみ使用してください。 クライアント アプリケーションでは、これを使用せずに、**Listen** アクセス権のみを持つポリシーを使用してください。 新しい SAS トークンを使用して新しいカスタム アクセス ポリシーを作成するには、この記事で後述する「[アクセス ポリシー用の SAS トークン](#sas-tokens-for-access-policies)」を参照してください。
 
 クライアント アプリから登録管理を実行するとき、通知で送信される情報が機密性のものではない場合の (たとえば、最新の気象情報)、Notification Hub への一般的なアクセス方法は、クライアント アプリには Listen のみのアクセス規則のキー値を渡し、アプリ バックエンドにはフル アクセス規則のキー値を渡すというものです。
 
-アプリでは、Windows ストア クライアント アプリにキー値を埋め込むことはできません。代わりに、起動時にクライアント アプリがアプリのバックエンドから取得するようにします。
+アプリに、Windows ストア クライアント アプリのキー値を埋め込まないでください。代わりに、クライアント アプリの起動時にアプリのバックエンドからそれを取得するようにしてください。
 
 **Listen** アクセスによるキーでは、クライアント アプリを任意のタグに登録できます。 アプリにおいて特定のタグへの登録を特定のクライアントに制限しなければならない場合は (たとえば、タグがユーザー ID を表す場合)、アプリ バックエンドが登録を実行する必要があります。 詳しくは、「[登録管理](notification-hubs-push-notification-registration-management.md)」をご覧ください。 この方法ではクライアント アプリは Notification Hubs に直接アクセスしないことに注意してください。
 
@@ -44,10 +51,34 @@ Notification Hubs は、SAS (Shared Access Signature) と呼ばれるエンテ�
 | 要求   | 説明                                          | 許可される操作 |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Listen  | 単一の登録の作成/更新、読み取り、削除を行います | 登録を作成/更新する<br><br>登録を読み取る<br><br>ハンドルのすべての登録を読み取る<br><br>登録を削除する |
-| Send    | Notification Hubs にメッセージを送信します                | メッセージを送信する |
-| 管理  | Notification Hubs に対する CRUD (PNS 資格情報およびセキュリティ キーの更新を含む) およびタグに基づく登録の読み取りを行います |Notification Hubs を作成/更新/読み取り/削除する<br><br>タグで登録を読み取る |
+| Send    | 通知ハブにメッセージを送信する                | メッセージを送信する |
+| 管理  | Notification Hubs に対する CRUD (PNS 資格情報およびセキュリティ キーの更新を含む) およびタグに基づく登録の読み取りを行います |ハブの作成/更新/読み取り/削除を行う<br><br>タグで登録を読み取る |
 
-Notification Hubs では、通知ハブに直接構成された共有キーを使用して生成された署名トークンを受け付けます。
+Notification Hubs では、ハブに直接構成された共有キーを使用して生成された SAS トークンが受け入れられます。
 
-複数の名前空間に通知を送信することはできません。 名前空間は通知ハブの論理コンテナーであり、通知の送信に関係しません。
-名前空間レベルのアクセス ポリシー (資格情報) を名前空間レベルの操作で使用できます。これには、通知ハブの一覧表示、通知ハブの作成または削除などが含まれます。通知を送信できるのは、ハブレベルのアクセス ポリシーを使用する場合のみです。
+複数の名前空間に通知を送信することはできません。 名前空間は Notification Hubs の論理コンテナーであり、通知の送信には関係しません。
+
+名前空間レベルの操作 (例: ハブの一覧表示、ハブの作成または削除、その他) では、名前空間レベルのアクセス ポリシー (資格情報) を使用します。ハブレベルのアクセス ポリシーを使用する場合のみ、通知を送信できます。
+
+### <a name="sas-tokens-for-access-policies"></a>アクセス ポリシー用の SAS トークン
+
+新しいセキュリティ要求を作成するか、既存の SAS キーを表示するには、次の手順を実行します。
+
+1. Azure ポータルにサインインします。
+2. **[すべてのリソース]** を選択します。
+3. 要求を作成する、または SAS キーを表示する通知ハブの名前を選択します。
+4. 左側のメニューで、 **[アクセス ポリシー]** を選択します。
+5. 新しいセキュリティ要求を作成するには、 **[新しいポリシー]** を選択します。 ポリシーに名前を付け、付与するアクセス許可を選択します。 **[OK]** をクリックします。
+6. [アクセス ポリシー] ウィンドウに、(新しい SAS キーを含む) 完全な接続文字列が表示されます。 後で使用するために、この文字列をクリップボードにコピーできます。
+
+特定のポリシーから SAS キーを抽出するには、目的の SAS キーが含まれているポリシーの横にある **[コピー]** ボタンを選択します。 この値を一時的な場所に貼り付けてから、接続文字列の SAS キー部分をコピーします。 この例では、**mytestnamespace1** という名前の Notification Hubs 名前空間と、**policy2** という名前のポリシーが使用されます。 SAS キーは、文字列の末尾付近にある値であり、**SharedAccessKey** によって指定されます。
+
+```shell
+Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=policy2;SharedAccessKey=<SAS key value here>
+```
+
+![SAS キーを取得する](media/notification-hubs-push-notification-security/access1.png)
+
+## <a name="next-steps"></a>次の手順
+
+- [Notification Hubs の概要](notification-hubs-push-notification-overview.md)

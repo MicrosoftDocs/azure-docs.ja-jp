@@ -1,7 +1,7 @@
 ---
 title: 既存のモデルを使用してデプロイする
-titleSuffix: Azure Machine Learning service
-description: サービスの外部でトレーニングされたモデルと共に Azure Machine Learning service を使用する方法について説明します。 Azure Machine Learning service の外部で作成されたモデルを登録してから、それらを Web サービスまたは Azure IoT Edge モジュールとしてデプロイできます。
+titleSuffix: Azure Machine Learning
+description: サービスの外部でトレーニングされたモデルと共に Azure Machine Learning を使用する方法について説明します。 Azure Machine Learning の外部で作成されたモデルを登録してから、それらを Web サービスまたは Azure IoT Edge モジュールとしてデプロイできます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,32 +10,32 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 06/19/2019
-ms.openlocfilehash: f30ac3d5e20b3f797e083972ac179fd29f6b1475
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: a864ec8c9bbdf90f04c98c8d9656c863fb32b653
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182545"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162472"
 ---
-# <a name="use-an-existing-model-with-azure-machine-learning-service"></a>Azure Machine Learning service で既存のモデルを使用する
+# <a name="use-an-existing-model-with-azure-machine-learning"></a>Azure Machine Learning で既存のモデルを使用する
 
-Azure Machine Learning service で既存の機械学習モデルを使用する方法について説明します。
+Azure Machine Learning で既存の機械学習モデルを使用する方法について説明します。
 
-Azure Machine Learning service の外部でトレーニングされた機械学習モデルがある場合でも、そのサービスを使用してモデルを Web サービスまたは IoT Edge デバイスとしてデプロイできます。 
+Azure Machine Learning の外部でトレーニングされた機械学習モデルがある場合でも、そのサービスを使用してモデルを Web サービスまたは IoT Edge デバイスとしてデプロイできます。 
 
 > [!TIP]
-> この記事では、既存モデルの登録とデプロイに関する基本情報を提供します。 デプロイされると、Azure Machine Learning service によってモデルを監視できます。 また、デプロイに送信された入力データを保存し、データ ドリフト分析やモデルの新しいバージョンのトレーニングに使用できます。
+> この記事では、既存モデルの登録とデプロイに関する基本情報を提供します。 デプロイされると、Azure Machine Learning によってご利用のモデルを監視できます。 また、デプロイに送信された入力データを保存し、データ ドリフト分析やモデルの新しいバージョンのトレーニングに使用できます。
 >
 > ここで使用されている概念と用語の詳細については、[機械学習モデルの管理、デプロイ、および監視](concept-model-management-and-deployment.md)に関するページを参照してください。
 >
-> 展開プロセスの一般的な情報については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+> デプロイ プロセスの一般的な情報については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure Machine Learning ワークスペース。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)」を参照してください。
 
     > [!TIP]
-    > この記事の Python の例では、`ws` 変数がお使いの Azure Machine Learning service のワークスペースに設定されていることを前提としています。
+    > この記事の Python の例では、`ws` 変数がご利用の Azure Machine Learning のワークスペースに設定されていることを前提としています。
     >
     > CLI の例では、`myworkspace` と `myresourcegroup` のプレースホルダーを使用しています。 これらは、ワークスペースと、それを含むリソース グループの名前に置き換えてください。
 
@@ -46,7 +46,7 @@ Azure Machine Learning service の外部でトレーニングされた機械学�
 * トレーニング済みのモデル。 モデルは、開発環境上の 1 つ以上のファイルに保存する必要があります。
 
     > [!NOTE]
-    > Azure Machine Learning service の外部でトレーニングされたモデルの登録例を示すために、この記事のサンプル コード スニペットでは、Paolo Ripamonti の Twitter センチメント分析プロジェクトで作成されたモデル [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) を使用します。
+    > Azure Machine Learning の外部でトレーニングされたモデルの登録例を示すために、この記事のサンプル コード スニペットでは、Paolo Ripamonti の Twitter センチメント分析プロジェクトで作成されたモデル [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) を使用します。
 
 ## <a name="register-the-models"></a>モデルを登録する
 
@@ -58,7 +58,7 @@ from azureml.core.model import Model
 #      only some of the files from the directory
 model = Model.register(model_path = "./models",
                        model_name = "sentiment",
-                       description = "Sentiment analysis model trained outside Azure Machine Learning service",
+                       description = "Sentiment analysis model trained outside Azure Machine Learning",
                        workspace = ws)
 ```
 
@@ -79,7 +79,7 @@ az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 推論構成には、デプロイされたモデルの実行に使用される環境を定義します。 推論構成からは、デプロイ時にモデルの実行に使用される次のエンティティが参照されます。
 
 * エントリ スクリプト。 このファイル (`score.py` という名前) では、デプロイされたサービスの開始時にモデルが読み込まれます。 また、データを受信し、それをモデルに渡してから応答を返す処理も担当します。
-* Azure Machine Learning service [環境](how-to-use-environments.md)。 環境には、モデルとエントリ スクリプトの実行に必要なソフトウェアの依存関係を定義します。
+* Azure Machine Learning [環境](how-to-use-environments.md)。 環境には、モデルとエントリ スクリプトの実行に必要なソフトウェアの依存関係を定義します。
 
 次の例で、SDK を使用して環境を作成し、推論構成でそれを使用する方法を示します。
 
@@ -135,7 +135,7 @@ dependencies:
     - keras
 ```
 
-推論構成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ### <a name="entry-script"></a>エントリ スクリプト。
 
@@ -147,13 +147,13 @@ dependencies:
 次の Python コードはエントリ スクリプトの例です (`score.py`)。
 
 ```python
+import os
 import pickle
 import json
 import time
 from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 from gensim.models.word2vec import Word2Vec
-from azureml.core.model import Model
 
 # SENTIMENT
 POSITIVE = "POSITIVE"
@@ -169,8 +169,8 @@ def init():
     global encoder
     global w2v_model
 
-    # Get the path where the model(s) registered as the name 'sentiment' can be found.
-    model_path = Model.get_model_path('sentiment')
+    # Get the path where the deployed model can be found.
+    model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), './models')
     # load models
     model = load_model(model_path + '/model.h5')
     w2v_model = Word2Vec.load(model_path + '/model.w2v')
@@ -220,7 +220,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-エントリ スクリプトの詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="define-deployment"></a>デプロイを定義する
 

@@ -6,13 +6,13 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: overview
-ms.date: 07/22/2019
-ms.openlocfilehash: 4619545ab1fed5f55504e80eede0d1cf240eea87
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.date: 09/23/2019
+ms.openlocfilehash: e1863cc54759f6cc2266073629093d4923260525
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68488685"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240401"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Azure HDInsight のエンタープライズ セキュリティの概要
 
@@ -32,7 +32,7 @@ HDInsight の境界セキュリティは、[仮想ネットワーク](../hdinsig
 
 VNET にデプロイされるすべてのクラスターには、クラスター ゲートウェイへのプライベート HTTP アクセスのために、VNET 内のプライベート IP に解決されるプライベート エンドポイントもあります。
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 
 HDInsight の [Enterprise セキュリティ パッケージ](apache-domain-joined-architecture.md) は、Active Directory ベースの認証、マルチ ユーザー サポート、およびロールベースのアクセス制御を提供します。 Active Directory 統合は、[Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md) を使用して実現されます。 これらの機能を使用して、マネージド Active Directory ドメインに参加している HDInsight クラスターを作成できます。 その後、認証してクラスターにサインインできる企業の従業員の一覧を構成できるようになります。
 
@@ -52,7 +52,7 @@ Hadoop 管理者は、Apache Ranger のプラグインを使用して、ロー�
 
 管理者は HDInsight クラスター リソースとデータへのすべてのアクセスを表示し、レポートを作成できます。 また、管理者は Apache Ranger のサポートされているエンドポイントで作成されたアクセス制御ポリシーのすべての変更を表示し、レポートを作成することもできます。 
 
-Apache Ranger および Ambari 監査ログと ssh アクセス ログにアクセスするには、[Azure Monitor を有効](../hdinsight-hadoop-oms-log-analytics-tutorial.md)にし、関連する監査レコードを表示します。
+Apache Ranger および Ambari 監査ログと ssh アクセス ログにアクセスするには、[Azure Monitor を有効](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing)にし、監査レコードを提供するテーブルを表示します。
 
 ### <a name="encryption"></a>暗号化
 
@@ -73,6 +73,7 @@ HDInsight クラスターのデータ ストア (Azure BLOB ストレージお�
 | データ アクセス セキュリティ | Azure Data Lake Storage Gen1 および Gen2 対象の[アクセス制御リスト ACL](../../storage/blobs/data-lake-storage-access-control.md) を構成する  | 顧客 |
 |  | ストレージ アカウントで [[安全な転送が必須]](../../storage/common/storage-require-secure-transfer.md) プロパティを有効にします。 | 顧客 |
 |  | [Azure Storage ファイアウォール](../../storage/common/storage-network-security.md)および仮想ネットワークを構成する | 顧客 |
+|  | Cosmos DB と [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) 用に [Azure 仮想ネットワーク サービス エンドポイント](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)を構成する | 顧客 |
 |  | 転送中のデータに対して [TLS 暗号化](../../storage/common/storage-security-tls.md)が有効になっていることを確認する。 | 顧客 |
 |  | Azure Storage 暗号化用に[顧客管理のキー](../../storage/common/storage-encryption-keys-portal.md)を構成する | 顧客 |
 | アプリケーションとミドルウェアのセキュリティ | AAD-DS と統合して[認証を構成する](apache-domain-joined-configure-using-azure-adds.md) | 顧客 |

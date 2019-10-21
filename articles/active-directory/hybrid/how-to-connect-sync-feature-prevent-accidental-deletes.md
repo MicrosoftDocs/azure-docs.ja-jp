@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03c09a751119c1d6effa5795f2dbf7da422b7806
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 48f3109b4c87e25444629ca25411894eab8a9d56
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135793"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827141"
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect 同期: 誤って削除されないように保護する
 このトピックでは、Azure AD Connect の "誤って削除されないように保護する" 機能について説明します。
@@ -60,6 +60,7 @@ Azure AD にエクスポートするようにステージングされた削除�
 
 [!NOTE] すべての削除が望ましいかどうかわからず、安全な道を選択することがあります。 PowerShell コマンドレットの `Enable-ADSyncExportDeletionThreshold` を使用すると、望ましくない削除を許可する可能性があるしきい値を無効にするのではなく、新しいしきい値を設定できます。 
 
+## <a name="if-all-deletes-are-desired"></a>すべて削除したい場合
 すべての削除が望まれる場合、次のように操作します。
 
 1. 現在の削除のしきい値を取得するには、PowerShell コマンドレット `Get-ADSyncExportDeletionThreshold` を実行します。 Azure AD グローバル管理者のアカウントとパスワードを入力します。 既定値は 500 です。

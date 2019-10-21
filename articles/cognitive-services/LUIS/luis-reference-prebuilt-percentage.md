@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 06dada1633fcb90153358e0f1d048c5fa618db0b
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 0005d679819f7516e1ded6294030cd42813e085f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933443"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677529"
 ---
 # <a name="percentage-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの percentage 作成済みエンティティ
 パーセンテージの値は、分数 `3 1/2` またはパーセンテージ `2%` として出現する可能性があります。 このエンティティは既にトレーニングされているので、パーセンテージを含む発話の例をアプリケーション意図に追加する必要はありません。 percentage エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 
@@ -26,7 +26,7 @@ percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 
 ## <a name="resolution-for-prebuilt-percentage-entity"></a>作成済み percentage エンティティの解決
 
-### <a name="api-version-2x"></a>API バージョン 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 次の例では、**builtin.percentage** エンティティの解決を示します。
 
@@ -57,7 +57,7 @@ percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 }
 ```
 
-### <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
@@ -115,6 +115,10 @@ percentage は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>次の手順
+
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 [ordinal](luis-reference-prebuilt-ordinal.md)、[number](luis-reference-prebuilt-number.md)、[temperature](luis-reference-prebuilt-temperature.md) エンティティについて学習します。 

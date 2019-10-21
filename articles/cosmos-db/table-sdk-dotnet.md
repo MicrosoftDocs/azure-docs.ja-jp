@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: aa9752cdc2148036b3edff8a6002dc81ebff6312
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 5e98c40384207c77b4ea7e9557a7d1ebebd95e47
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036299"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71058581"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API:ダウンロードおよびリリース ノート
 
@@ -38,6 +38,10 @@ ms.locfileid: "69036299"
 >
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+
+* バグの修正
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 
@@ -85,6 +89,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.1.2](#2.1.2) |2019 年 9 月 16 日| |
 | [2.1.0](#2.1.0) |2019 年 1 月 22 日|2020 年 4 月 1 日 |
 | [2.0.0](#2.0.0) |2018 年 9 月 26 日|2020 年 3 月 1 日 |
 | [1.1.3](#1.1.3) |2018 年 7 月 17 日|2019 年 12 月 1 日 |

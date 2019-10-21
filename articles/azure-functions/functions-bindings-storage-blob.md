@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 84e4cc69d173fd37ecd15f537feadf19c275ef34
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b565a48b56162d19a07f0f54bfe780b7dda04b96
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086214"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177392"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -74,15 +74,7 @@ Event Grid 以外の BLOB を処理するための別の方法として、Queue 
 
 ## <a name="trigger---example"></a>トリガー - 例
 
-言語固有の例をご覧ください。
-
-* [C#](#trigger---c-example)
-* [C# スクリプト (.csx)](#trigger---c-script-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>トリガー - C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次の例は、`samples-workitems` コンテナーで BLOB が追加または更新されたときにログを書き込む [C# 関数](functions-dotnet-class-library.md)を示しています。
 
@@ -98,9 +90,9 @@ BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、
 
 `BlobTrigger` 属性について詳しくは、[トリガー - 属性](#trigger---attributes) に関する記事をご覧ください。
 
-### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
-次の例は、*function.json* ファイルの BLOB トリガー バインドと、バインドを使用する [Python コード](functions-reference-python.md)を示しています。 関数は、`samples-workitems` [コンテナー](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)で BLOB が追加または更新されたときにログを書き込みます。
+次の例は、*function.json* ファイルの BLOB トリガー バインドと、そのバインドを使用するコードを示しています。 関数は、`samples-workitems` [コンテナー](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)で BLOB が追加または更新されたときにログを書き込みます。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -145,7 +137,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 }
 ```
 
-### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 次の例は、*function.json* ファイルの BLOB トリガー バインドと、バインドを使用する [JavaScript](functions-reference-node.md) コードを示しています。 関数は、`samples-workitems` コンテナーで BLOB が追加または更新されたときにログを書き込みます。
 
@@ -179,7 +171,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="trigger---python-example"></a>トリガー - Python の例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 次の例は、*function.json* ファイルの BLOB トリガー バインドと、バインドを使用する [Python コード](functions-reference-python.md)を示しています。 関数は、`samples-workitems` [コンテナー](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)で BLOB が追加または更新されたときにログを書き込みます。
 
@@ -216,7 +208,7 @@ def main(myblob: func.InputStream):
     logging.info('Python Blob trigger function processed %s', myblob.name)
 ```
 
-### <a name="trigger---java-example"></a>トリガー - Java の例
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 次の例は、*function.json* ファイルの BLOB トリガー バインドと、バインドを使用する [Java コード](functions-reference-java.md)を示しています。 関数は、`myblob` コンテナーで BLOB が追加または更新されたときにログを書き込みます。
 
@@ -253,8 +245,11 @@ public void run(
 }
 ```
 
+---
 
 ## <a name="trigger---attributes"></a>トリガー - 属性
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)で、次の属性を使用して BLOB トリガーを構成します。
 
@@ -284,7 +279,7 @@ public void run(
   }
    ```
 
-  完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
+  完全な例については、「[トリガー - 例](#trigger---example)」を参照してください。
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -310,6 +305,24 @@ public void run(
 * クラスに適用される `StorageAccount` 属性。
 * 関数アプリの既定のストレージ アカウント ("AzureWebJobsStorage" アプリ設定)。
 
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`@BlobTrigger` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 詳細については、「[トリガー - 例](#trigger---example)」を参照してください。
+
+---
+
 ## <a name="trigger---configuration"></a>トリガー - 構成
 
 次の表は、*function.json* ファイルと `BlobTrigger` 属性で設定したバインド構成のプロパティを説明しています。
@@ -326,25 +339,27 @@ public void run(
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 
-C# と C# スクリプトでは、トリガーする BLOB に次のパラメーター型を使用できます。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `Stream`
-* `TextReader`
-* `string`
-* `Byte[]`
-* JSON としてシリアル化可能な POCO
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-<sup>1</sup> *function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
-Storage SDK タイプの 1 つにバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-trigger.md)]
 
-`string`、`Byte[]`、または POCO へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で後述する「[コンカレンシーとメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-JavaScript では、`context.bindings.<name from function.json>` を使用して入力 BLOB データにアクセスします。
+`context.bindings.<name from function.json>` を使用して BLOB データにアクセスします。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[トリガー - 例](#trigger---example)」を参照してください。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`@BlobTrigger` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 詳細については、「[トリガー - 例](#trigger---example)」を参照してください。
+
+---
 
 ## <a name="trigger---blob-name-patterns"></a>トリガー - BLOB 名のパターン
 
@@ -357,6 +372,7 @@ JavaScript では、`context.bindings.<name from function.json>` を使用して
 ```json
 "path": "input/{blobname}.{blobextension}",
 ```
+
 BLOB の名前が *original-Blob1.txt* の場合、関数コード内の `blobname` 変数と `blobextension` 変数の値は *original-Blob1* と *txt* です。
 
 ### <a name="filter-on-blob-name"></a>BLOB 名のフィルター
@@ -389,23 +405,15 @@ BLOB の名前が *{20140101}-soundfile.mp3* の場合、関数コード内の `
 
 ## <a name="trigger---metadata"></a>トリガー - メタデータ
 
-BLOB トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらの値は、[CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.cloudblob?view=azure-dotnet) 型と同じセマンティクスを持ちます。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-|プロパティ  |Type  |説明  |
-|---------|---------|---------|
-|`BlobTrigger`|`string`|トリガーする BLOB のパス。|
-|`Uri`|`System.Uri`|プライマリ ロケーションの BLOB URI。|
-|`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobproperties)|Blob のシステム プロパティ。 |
-|`Metadata` |`IDictionary<string,string>`|BLOB のユーザー定義メタデータ。|
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
 
-たとえば、次の C# スクリプトと JavaScript の例では、トリガーする BLOBへのパスがログに記録されます (コンテナーを含む)。
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
-```csharp
-public static void Run(string myBlob, string blobTrigger, ILogger log)
-{
-    log.LogInformation($"Full blob path: {blobTrigger}");
-} 
-```
+[!INCLUDE [functions-bindings-blob-storage-trigger](../../includes/functions-bindings-blob-storage-metadata.md)]
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 module.exports = function (context, myBlob) {
@@ -413,6 +421,16 @@ module.exports = function (context, myBlob) {
     context.done();
 };
 ```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+メタデータは、Python では使用できません。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+メタデータは、Java では使用できません。
+
+---
 
 ## <a name="trigger---blob-receipts"></a>トリガー - BLOB の配信確認メッセージ
 
@@ -464,15 +482,7 @@ Blob Storage 入力バインディングを使用して BLOB を読み取りま�
 
 ## <a name="input---example"></a>入力 - 例
 
-言語固有の例をご覧ください。
-
-* [C#](#input---c-example)
-* [C# スクリプト (.csx)](#input---c-script-example)
-* [Java](#input---java-examples)
-* [JavaScript](#input---javascript-example)
-* [Python](#input---python-example)
-
-### <a name="input---c-example"></a>入力 - C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次の例は、キュー トリガーと入力 BLOB バインディングを使用する [C# 関数](functions-dotnet-class-library.md)です。 キュー メッセージには BLOB の名前が含まれ、関数は BLOB のサイズをログに記録します。
 
@@ -487,7 +497,7 @@ public static void Run(
 }
 ```
 
-### <a name="input---c-script-example"></a>入力 - C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -536,7 +546,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="input---javascript-example"></a>入力 - JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -585,7 +595,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="input---python-example"></a>入力 - Python の例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
@@ -637,16 +647,16 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
     return inputblob
 ```
 
-### <a name="input---java-examples"></a>入力 - Java の例
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 このセクションには、次の例が含まれています。
 
-* [HTTP トリガー、クエリ文字列から BLOB を検索する](#http-trigger-look-up-blob-name-from-query-string-java)
-* [キュー トリガー、キュー メッセージから BLOB 名前を受け取る](#queue-trigger-receive-blob-name-from-queue-message-java)
+* [HTTP トリガー、クエリ文字列から BLOB を検索する](#http-trigger-look-up-blob-name-from-query-string)
+* [キュー トリガー、キュー メッセージから BLOB 名前を受け取る](#queue-trigger-receive-blob-name-from-queue-message)
 
-#### <a name="http-trigger-look-up-blob-name-from-query-string-java"></a>HTTP トリガー、クエリ文字列から BLOB 名を検索する (Java)
+#### <a name="http-trigger-look-up-blob-name-from-query-string"></a>HTTP トリガー、クエリ文字列から BLOB を検索する
 
- 次の例では、Java 関数が ```HttpTrigger``` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むパラメーターを受け取ります。 ```BlobInput``` 注釈によってファイルが読み取られ、その内容が ```byte[]``` として関数に渡されます。
+ 次の例では、Java 関数が `HttpTrigger` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むパラメーターを受け取ります。 `BlobInput` 注釈によってファイルが読み取られ、その内容が `byte[]` として関数に渡されます。
 
 ```java
   @FunctionName("getBlobSizeHttp")
@@ -669,9 +679,9 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
   }
 ```
 
-#### <a name="queue-trigger-receive-blob-name-from-queue-message-java"></a>キュー トリガー、キュー メッセージから BLOB 名前を受け取る (Java)
+#### <a name="queue-trigger-receive-blob-name-from-queue-message"></a>キュー トリガー、キュー メッセージから BLOB 名前を受け取る
 
- 次の例では、Java 関数が ```QueueTrigger``` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むメッセージを受け取ります。 ```BlobInput``` 注釈によってファイルが読み取られ、その内容が ```byte[]``` として関数に渡されます。
+ 次の例では、Java 関数が `QueueTrigger` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むメッセージを受け取ります。 `BlobInput` 注釈によってファイルが読み取られ、その内容が `byte[]` として関数に渡されます。
 
 ```java
   @FunctionName("getBlobSize")
@@ -693,7 +703,11 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream) -> func.Input
 
 [Java 関数ランタイム ライブラリ](/java/api/overview/azure/functions/runtime)で、その値が BLOB に由来するパラメーター上で `@BlobInput` 注釈を使用します。  この注釈は、Java のネイティブ型、POJO、または `Optional<T>` を使用した null 許容値で使用できます。
 
+---
+
 ## <a name="input---attributes"></a>入力 - 属性
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs)を使用します。
 
@@ -726,6 +740,24 @@ public static void Run(
 
 `StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[トリガー - 属性](#trigger---attributes)をご覧ください。
 
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`@BlobInput` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 この属性と共にバイト配列を使用する場合は、`dataType` を `binary` に設定します。 詳細については、「[入力 - 例](#input---example)」を参照してください。
+
+---
+
 ## <a name="input---configuration"></a>入力 - 構成
 
 次の表は、*function.json* ファイルと `Blob` 属性で設定したバインド構成のプロパティを説明しています。
@@ -743,26 +775,27 @@ public static void Run(
 
 ## <a name="input---usage"></a>入力 - 使用方法
 
-C# とC# スクリプトでは、BLOB 入力バインドに次のパラメーター型を使用できます。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `Stream`
-* `TextReader`
-* `string`
-* `Byte[]`
-* `CloudBlobContainer`
-* `CloudBlobDirectory`
-* `ICloudBlob`<sup>1</sup>
-* `CloudBlockBlob`<sup>1</sup>
-* `CloudPageBlob`<sup>1</sup>
-* `CloudAppendBlob`<sup>1</sup>
+[!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-<sup>1</sup> *function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
-Storage SDK タイプの 1 つにバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
+[!INCLUDE [functions-bindings-blob-storage-input-usage.md](../../includes/functions-bindings-blob-storage-input-usage.md)]
 
-`string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[コンカレンシーとメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-JavaScript では、`context.bindings.<name from function.json>` を使用して BLOB データにアクセスします。
+`context.bindings.<name from function.json>` を使用して BLOB データにアクセスします。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+[InputStream](https://docs.microsoft.com/python/api/azure-functions/azure.functions.inputstream?view=azure-python) に型指定したパラメーターを使用して BLOB データにアクセスします。 詳細については、「[入力 - 例](#input---example)」を参照してください。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`@BlobInput` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 この属性と共にバイト配列を使用する場合は、`dataType` を `binary` に設定します。 詳細については、「[入力 - 例](#input---example)」を参照してください。
+
+---
 
 ## <a name="output"></a>Output
 
@@ -770,15 +803,7 @@ Blob Storage 出力バインディングを使用して BLOB を書き込みま�
 
 ## <a name="output---example"></a>出力 - 例
 
-言語固有の例をご覧ください。
-
-* [C#](#output---c-example)
-* [C# スクリプト (.csx)](#output---c-script-example)
-* [Java](#output---java-examples)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>出力 - C# の例
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 次の例は、1 つの BLOB トリガーと 2 つの出力 BLOB バインディングを使用する[C# 関数](functions-dotnet-class-library.md)です。 関数は、*sample-images* コンテナーのイメージ BLOB の作成によってトリガーされます。 イメージ BLOB の小規模および中規模サイズのコピーを作成します。
 
@@ -828,7 +853,7 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 };
 ```
 
-### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
 <!--Same example for input and output. -->
 
@@ -877,7 +902,7 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-### <a name="output---javascript-example"></a>出力 - JavaScript の例
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 <!--Same example for input and output. -->
 
@@ -926,7 +951,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---python-example"></a>出力 - Python の例
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 <!--Same example for input and output. -->
 
@@ -979,7 +1004,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
     outputblob.set(inputblob)
 ```
 
-### <a name="output---java-examples"></a>出力 - Java の例
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 このセクションには、次の例が含まれています。
 
@@ -988,7 +1013,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
 
 #### <a name="http-trigger-using-outputbinding-java"></a>HTTP トリガー、OutputBinding を使用する (Java)
 
- 次の例では、Java 関数が ```HttpTrigger``` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むパラメーターを受け取ります。 ```BlobInput``` 注釈によってファイルが読み取られ、その内容が ```byte[]``` として関数に渡されます。 ```BlobOutput``` 注釈が ```OutputBinding outputItem``` にバインドされます。OutputBinding が関数によって使用され、構成済みのストレージ コンテナーに入力 BLOB の内容が書き込まれます。
+ 次の例では、Java 関数が `HttpTrigger` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むパラメーターを受け取ります。 `BlobInput` 注釈によってファイルが読み取られ、その内容が `byte[]` として関数に渡されます。 `BlobOutput` 注釈が `OutputBinding outputItem` にバインドされます。OutputBinding が関数によって使用され、構成済みのストレージ コンテナーに入力 BLOB の内容が書き込まれます。
 
 ```java
   @FunctionName("copyBlobHttp")
@@ -1020,7 +1045,7 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
 
 #### <a name="queue-trigger-using-function-return-value-java"></a>キュー トリガー、関数戻り値を使用する (Java)
 
- 次の例では、Java 関数が ```QueueTrigger``` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むメッセージを受け取ります。 ```BlobInput``` 注釈によってファイルが読み取られ、その内容が ```byte[]``` として関数に渡されます。 ```BlobOutput``` 注釈が関数戻り値にバインドされます。この関数戻り値がランタイムによって使用され、構成済みのストレージ コンテナーに入力 BLOB の内容が書き込まれます。
+ 次の例では、Java 関数が `QueueTrigger` 注釈を利用し、BLOB ストレージ コンテナーのファイル名を含むメッセージを受け取ります。 `BlobInput` 注釈によってファイルが読み取られ、その内容が `byte[]` として関数に渡されます。 `BlobOutput` 注釈が関数戻り値にバインドされます。この関数戻り値がランタイムによって使用され、構成済みのストレージ コンテナーに入力 BLOB の内容が書き込まれます。
 
 ```java
   @FunctionName("copyBlobQueueTrigger")
@@ -1046,7 +1071,11 @@ def main(queuemsg: func.QueueMessage, inputblob: func.InputStream,
 
  [Java 関数ランタイム ライブラリ ](/java/api/overview/azure/functions/runtime) で、その値が Blob Storage のオブジェクトに書き込まれる関数のパラメーター上で `@BlobOutput` 注釈を使用します。  パラメーターの型は `OutputBinding<T>` にする必要があります。T は POJO の Java の任意のネイティブ型です。
 
+---
+
 ## <a name="output---attributes"></a>出力 - 属性
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs)を使用します。
 
@@ -1074,7 +1103,25 @@ public static void Run(
 }
 ```
 
-完全な例については、「[出力 - C# の例](#output---c-example)」を参照してください。
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
+
+属性は、C# スクリプトではサポートされていません。
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+属性は、JavaScript ではサポートされていません。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+属性は、Python ではサポートされていません。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`@BlobOutput` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 この属性と共にバイト配列を使用する場合は、`dataType` を `binary` に設定します。 詳細については、「[出力 - 例](#output---example)」を参照してください。
+
+---
+
+完全な例については、「[出力 - 例](#output---example)」を参照してください。
 
 `StorageAccount` 属性を使用して、クラス、メソッド、またはパラメーターのレベルでストレージ アカウントを指定できます。 詳細については、[トリガー - 属性](#trigger---attributes)をご覧ください。
 
@@ -1095,32 +1142,32 @@ public static void Run(
 
 ## <a name="output---usage"></a>出力 - 使用方法
 
-C# と C# スクリプトでは、次の型にバインドして、BLOB を書き込むことができます。
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-* `TextWriter`
-* `out string`
-* `out Byte[]`
-* `CloudBlobStream`
-* `Stream`
-* `CloudBlobContainer`<sup>1</sup>
-* `CloudBlobDirectory`
-* `ICloudBlob`<sup>2</sup>
-* `CloudBlockBlob`<sup>2</sup>
-* `CloudPageBlob`<sup>2</sup>
-* `CloudAppendBlob`<sup>2</sup>
+[!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-<sup>1</sup> *function.json* には "in" バインド `direction`、C# クラス ライブラリには `FileAccess.Read` が必要です。 ただし、コンテナーへの BLOB のアップロードなどの書き込み操作をおこなうためにランタイムが提供するコンテナー オブジェクトを使うことができます。
+# <a name="c-scripttabcsharp-script"></a>[C# スクリプト](#tab/csharp-script)
 
-<sup>2</sup> *function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
+[!INCLUDE [functions-bindings-blob-storage-output-usage.md](../../includes/functions-bindings-blob-storage-output-usage.md)]
 
-Storage SDK タイプの 1 つにバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
-
-非同期関数では、`out` パラメーターの代わりに戻り値または `IAsyncCollector` を使用します。
-
-`string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[コンカレンシーとメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
-
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 JavaScript では、`context.bindings.<name from function.json>` を使用して BLOB データにアクセスします。
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+関数のパラメーターを次の型で宣言し、BLOB ストレージに書き込むことができます。
+
+* `func.Out(str)` は文字列
+* `func.Out(func.InputStream)` はストリーム
+
+詳細については、「[出力 - 例](#output---example)」を参照してください。
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+`@BlobOutput` 属性を使用すると、関数をトリガーした BLOB にアクセスできます。 この属性と共にバイト配列を使用する場合は、`dataType` を `binary` に設定します。 詳細については、「[出力 - 例](#output---example)」を参照してください。
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>例外とリターン コード
 

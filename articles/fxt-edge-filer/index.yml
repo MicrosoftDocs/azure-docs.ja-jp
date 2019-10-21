@@ -8,7 +8,7 @@ metadata:
   ms.service: fxt-edge-filer
   ms.topic: landing-page
   ms.date: 07/10/2019
-  ms.author: v-erkell
+  ms.author: rohogue
 abstract:
   description: Azure FXT Edge Filer ハイブリッド ストレージ キャッシュは、ファイルベースの読み取り集中型ハイ パフォーマンス コンピューティング (HPC) ワークフローにおけるデータ アクセスを高速化する、ハードウェアおよびソフトウェア ハイブリッド システムです。 3 つ以上の Azure FXT Edge Filer デバイスからなるクラスターでは、オンプレミス NAS システム (NetApp または Dell EMC Isilon)、クラウド ストレージ、または複合型のソリューションのストレージ パフォーマンスを加速させることができます。
 sections:

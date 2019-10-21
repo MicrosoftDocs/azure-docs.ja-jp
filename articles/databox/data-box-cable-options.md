@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 10/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 4759676eff03606998759a586f758b7a26ead23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 661cec672aa02f62b479b7f5831adfdaff9e6b21
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077549"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316551"
 ---
 # <a name="cabling-options-for-your-azure-data-box"></a>Azure Data Box の配線方法
 
@@ -74,7 +74,7 @@ Data Box に 2 つのポート (管理トラフィック用に MGMT ポート、
 
 次の手順に従ってケーブルを配線します。
 
-1. RJ45 イーサネット ケーブルを使用して、構成のために MGMT ポートとサーバーを直接接続します。
+1. RJ45 イーサネット ケーブルを使用して、構成用の MGMT ポートに別のコンピューターを直接接続します。
 2. 使用するポートが DATA 3 であれば RJ45 ケーブル、DATA 1 または DATA 2 であれば SFP+ ケーブルを使って、サーバーに接続します。 良好なパフォーマンスを得るには、10-GbE の DATA 1 ポートまたは DATA 2 ポートの使用をお勧めします。 データが格納されているサーバーとデータ ポートは、10-GbE スイッチを介して接続します。
 3. デバイスに接続するために使用するノート PC のイーサネット アダプターを、次のとおり構成します。
 

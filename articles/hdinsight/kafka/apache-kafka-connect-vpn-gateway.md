@@ -1,19 +1,19 @@
 ---
 title: 仮想ネットワークを使用して Kafka へ接続する - Azure HDInsight
 description: Azure Virtual Network 経由で HDInsight 上の Kafka へ直接接続する方法について説明します。 VPN ゲートウェイを使用して開発環境のクライアントから、または VPN ゲートウェイ デバイスを使用してオンプレミス ネットワークから Kafka へ接続する方法について説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: ab5f8c35334b6b6c56b0ebe8714d04ad5c7c8084
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 66bb054ab75c5a4e387995bc64dbc026c073413f
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960425"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122620"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Apache Kafka に接続する
 
@@ -252,7 +252,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 3. Kafka 構成を表示するには、上部中央の __[Configs (構成)]__ を選択します。
 
-    ![Kafka の構成リンク](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
+    ![Apache Ambari サービスの構成](./media/apache-kafka-connect-vpn-gateway/select-kafka-config1.png)
 
 4. __kafka-env__ 構成を検索するには、右上の __[Filter (フィルター)]__ フィールドに「`kafka-env`」と入力します。
 
@@ -274,7 +274,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 8. 構成を保存するには、 __[Save (保存)]__ ボタンを使用します。 変更を説明するテキスト メッセージを入力します。 変更が保存されたら、 __[OK]__ を保存します。
 
-    ![構成を保存するボタン](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
+    ![Apache Ambari の保存の構成](./media/apache-kafka-connect-vpn-gateway/save-configuration-button.png)
 
 9. Kafka の再起動時にエラーが発生しないようにするため、 __[Service Actions (サービス アクション)__ ] ボタンを使用して __[Turn On Maintenance Mode (メンテナンス モードの有効化)]__ を選択します。 [OK] を選択して、この操作を完了します。
 

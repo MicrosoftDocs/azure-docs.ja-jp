@@ -131,6 +131,8 @@
       href: howto-password-smart-lockout.md
     - name: パスワードレス
       items:
+        - name: パスワードレスのデプロイ
+          href: howto-authentication-passwordless-deployment.md
         - name: パスワードレスのセキュリティ キー
           href: howto-authentication-passwordless-security-key.md
         - name: パスワードレスの電話によるサインイン

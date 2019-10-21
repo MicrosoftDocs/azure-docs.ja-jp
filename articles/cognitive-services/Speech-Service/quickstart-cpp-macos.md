@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: d7d35c251848af5cfd5852080d01831085401227
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 12abb7fb6d5e93e226ae539f8161566e3c30bd65
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68554127"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803329"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-macos-by-using-the-speech-sdk"></a>クイック スタート:macOS で C++ と Speech SDK を使用して音声を認識する
 
@@ -30,8 +30,6 @@ ms.locfileid: "68554127"
 ## <a name="install-speech-sdk"></a>Speech SDK をインストールする
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
-
-Cognitive Services Speech SDK の現在のバージョンは `1.6.0` です。
 
 macOS 用の Speech SDK は、zip 圧縮されたフレームワーク バンドルとして https://aka.ms/csspeech/macosbinary からダウンロードできます。
 

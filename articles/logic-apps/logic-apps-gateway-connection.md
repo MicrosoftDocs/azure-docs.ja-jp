@@ -8,17 +8,19 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
-ms.date: 07/01/2019
-ms.openlocfilehash: 65c1d427939dc39aebece24b923bc4ebfbf136bb
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/01/2019
+ms.openlocfilehash: d397adfb6ed2d3aef93bd40d14eb0ad199cdb90c
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861022"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309349"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Azure Logic Apps からオンプレミスのデータ ソースに接続する
 
-ロジック アプリからオンプレミスのデータ ソースにアクセスするには、Azure Portal でオンプレミス データ ゲートウェイ リソースを作成します。 その後、ロジック アプリは[オンプレミス コネクタ](../logic-apps/logic-apps-gateway-install.md#supported-connections)を使用できます。 この記事では、[ゲートウェイをダウンロードしてローカル コンピューターにインストール](../logic-apps/logic-apps-gateway-install.md)した "*後で*" Azure ゲートウェイ リソースを作成する方法を示します。 ゲートウェイの動作の詳細については、「[ゲートウェイの動作](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。
+ロジック アプリからオンプレミスのデータ ソースにアクセスするには、Azure Portal でオンプレミス データ ゲートウェイ リソースを作成します。 その後、ロジック アプリは[オンプレミス コネクタ](../connectors/apis-list.md#on-premises-connectors)を使用できます。 Azure Logic Apps では、ゲートウェイ経由での挿入や更新などの書き込み操作がサポートされています。 ただし、これらの操作には、[ペイロードのサイズに制限](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations)があります。
+
+この記事では、[ゲートウェイをダウンロードしてローカル コンピューターにインストール](../logic-apps/logic-apps-gateway-install.md)した*後で* Azure ゲートウェイ リソースを作成する方法を示します。 ゲートウェイの詳細については、「[ゲートウェイのしくみ](../logic-apps/logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。 
 
 > [!TIP]
 > Azure 仮想ネットワークに接続するには、代わりに[*統合サービス環境*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成することことを考慮してください。 
@@ -29,6 +31,27 @@ ms.locfileid: "70861022"
 * [Microsoft Flow オンプレミス データ ゲートウェイ](https://flow.microsoft.com/documentation/gateway-manage/)
 * [Microsoft PowerApps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
 * [Azure Analysis Services オンプレミス データ ゲートウェイ](../analysis-services/analysis-services-gateway.md)
+
+<a name="supported-connections"></a>
+
+## <a name="supported-data-sources"></a>サポートされるデータ ソース
+
+Azure Logic Apps については、オンプレミス データ ゲートウェイでは、以下のデータ ソース向けの[オンプレミス コネクタ](../connectors/apis-list.md#on-premises-connectors)がサポートされています。
+
+* BizTalk Server 2016
+* ファイル システム
+* IBM DB2  
+* IBM Informix
+* IBM MQ
+* MySQL
+* Oracle Database
+* PostgreSQL
+* SAP
+* SharePoint Server
+* SQL Server
+* Teradata
+
+ゲートウェイ自体では追加のコストは発生しませんが、これらのコネクタや Azure Logic Apps のその他の操作に [Logic Apps の価格モデル](../logic-apps/logic-apps-pricing.md)が適用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -135,6 +158,13 @@ Azure サブスクリプションに関連付けられているすべての API 
 <a name="faq"></a>
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+**Q**: Azure でゲートウェイ リソースを作成するときにゲートウェイ インストールが表示されないはなぜですか? <br/>
+**A**: この問題は、次の理由で発生することがあります。
+
+* ゲートウェイ インストールが登録済みで、Azure の別のゲートウェイ リソースによって既に要求されている。 ゲートウェイ インストールは、そのゲートウェイ リソースが作成された後、インスタンスの一覧に表示されません。 Azure portal でゲートウェイの登録を確認するには、"*すべて*" の Azure サブスクリプションについて、種類が**オンプレミス データ ゲートウェイ**であるすべての Azure リソースを確認します。
+
+* ゲートウェイをインストールしたユーザーの Azure AD ID が、Azure portal にサインインしたユーザーのものと異なる。 ゲートウェイをインストールしたのと同じ ID でサインインしていることを確認してください。
 
 [!INCLUDE [existing-gateway-location-changed](../../includes/logic-apps-existing-gateway-location-changed.md)]
 

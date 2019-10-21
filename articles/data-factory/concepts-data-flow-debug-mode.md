@@ -7,16 +7,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 7d1023f6c46c15b6f982193350923f5c91cdc4b9
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 925e52f9f62860d8cd0951b9e72af09cbb7800fc
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801714"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027805"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow のデバッグ モード
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ## <a name="overview"></a>概要
 
@@ -24,7 +24,7 @@ Azure Data Factory Mapping Data Flow のデバッグ モードを使用すると
 
 ![デバッグ スライダー](media/data-flow/debugbutton.png "デバッグ スライダー")
 
-スライダーを有効にすると、使用する統合ランタイム構成を選択するように求めるメッセージが表示されます。 AutoResolveIntegrationRuntime を選択した場合は、60 分の Time to Live が設定された一般的なコンピューティングの 8 個のコアを持つクラスターがスピンアップされます。 データ フロー統合ランタイムの詳細については、[データ フローのパフォーマンス](concepts-data-flow-performance.md#increase-size-of-your-compute-engine-in-azure-integration-runtime)に関するページを参照してください。
+スライダーを有効にすると、使用する統合ランタイム構成を選択するように求めるメッセージが表示されます。 AutoResolveIntegrationRuntime を選択した場合は、60 分の Time to Live が設定された一般的なコンピューティングの 8 個のコアを持つクラスターがスピンアップされます。 データ フロー統合ランタイムの詳細については、[データ フローのパフォーマンス](concepts-data-flow-performance.md#increasing-compute-size-in-azure-integration-runtime)に関するページを参照してください。
 
 ![デバッグ IR の選択](media/data-flow/debugbutton2.png "デバッグ IR の選択")
 

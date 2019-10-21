@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning service とは
-description: Azure Machine Learning service の概要。これは、高度な分析アプリケーションの開発、実験、デプロイをクラウド規模で行うプロフェッショナルなデータ サイエンティスト向けの統合されたエンドツーエンドのデータ サイエンス ソリューションです。
+title: Azure Machine Learning とは
+description: Azure Machine Learning の概要。これは、高度な分析アプリケーションの開発、実験、デプロイをクラウド規模で行うプロフェッショナルなデータ サイエンティスト向けの統合されたエンドツーエンドのデータ サイエンス ソリューションです。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ author: j-martens
 ms.author: jmartens
 ms.date: 08/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 99514002f0a259b7e981c2db498e72865d4f1bd4
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 0a70b1c9d3ac888f0f77cf0f6e9ca37bc6cd4324
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858655"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999934"
 ---
-# <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
+# <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
-Azure Machine Learning service とは、機械学習モデルのトレーニング、デプロイ、自動化、管理を行うためのクラウド サービスであり、これらの操作のすべてをクラウドによって提供される幅広い規模で行うことができます。
+Azure Machine Learning とは、機械学習モデルのトレーニング、デプロイ、自動化、管理を行うためのクラウド サービスであり、これらの操作のすべてをクラウドによって提供される幅広い規模で行うことができます。
 
 ## <a name="what-is-machine-learning"></a>機械学習とは
 
@@ -26,9 +26,9 @@ Azure Machine Learning service とは、機械学習モデルのトレーニン�
 
 機械学習からの予想や予測によってアプリやデバイスの機能性を高めることができます。 たとえばオンライン ショッピングでは、利用者が欲しいと考えそうな他の商品を、過去の購入履歴に基づいてお勧めするのに機械学習が役立っています。 また、クレジット カードの読み取り時に、機械学習では、トランザクションをトランザクションのデータベースと比較することで不正の検出を支援します。 また、ロボット掃除機が部屋を掃除するとき、機械学習は、作業が行われているかどうかを判断するのを支援します。
 
-## <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
+## <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
-Azure Machine Learning service には、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、および追跡に使用できるクラウドベースの環境が用意されています。 ローカル コンピューターでトレーニングを開始し、その後、クラウドにスケールアウトします。 このサービスは、PyTorch、TensorFlow、scikit-learn などのオープンソース テクノロジを完全にサポートしており、古典的な ml からディープ ラーニング、教師あり学習および教師なし学習まで、あらゆる種類の機械学習に使用できます。
+Azure Machine Learning には、機械学習モデルのデータの準備、トレーニング、テスト、デプロイ、管理、追跡に使用できるクラウドベースの環境が用意されています。 ローカル コンピューターでトレーニングを開始し、その後、クラウドにスケールアウトします。 このサービスは、PyTorch、TensorFlow、scikit-learn などのオープンソース テクノロジを完全にサポートしており、古典的な ml からディープ ラーニング、教師あり学習および教師なし学習まで、あらゆる種類の機械学習に使用できます。
 
 データの調査と準備、モデルのトレーニングとテストを行い、以下のような豊富なツールを使用してそれらをデプロイします。
 + モジュールをドラッグ アンド ドロップして実験を構築し、その後でモデルをデプロイできる[ビジュアル インターフェイス](ui-tutorial-automobile-price-train-score.md)
@@ -38,9 +38,9 @@ Azure Machine Learning service には、機械学習モデルのデータの準�
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
-## <a name="what-can-i-do-with-azure-machine-learning-service"></a>Azure Machine Learning サービスでできること
+## <a name="what-can-i-do-with-azure-machine-learning"></a>Azure Machine Learning でできること
 
-<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine Learning Python SDK</a> とオープンソースの Python パッケージを使用するか、[ビジュアル インターフェイス (プレビュー)](ui-tutorial-automobile-price-train-score.md) を使用すると、Azure Machine Learning service ワークスペースで、きわめて正確な機械学習およびディープ ラーニング モデルを自分で構築し、トレーニングすることができます。
+<a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Azure Machine Learning Python SDK</a> とオープンソースの Python パッケージを使用するか、[ビジュアル インターフェイス (プレビュー)](ui-tutorial-automobile-price-train-score.md) を使用すると、Azure Machine Learning ワークスペースで、きわめて正確な機械学習およびディープ ラーニング モデルを自分で構築し、トレーニングすることができます。
 
 オープンソースの Python パッケージで使用できる多くの機械学習コンポーネントの中から、いずれかを選択できます。たとえば、<a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>、<a href="https://www.tensorflow.org" target="_blank">Tensorflow</a>、<a href="https://pytorch.org" target="_blank">PyTorch</a>、<a href="https://mxnet.io" target="_blank">MXNet</a> などがあります。
 
@@ -58,7 +58,7 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 
 + 使いやすいインターフェイスで[自動化された ML 実験](tutorial-first-experiment-automated-ml.md)を作成する。
 + [ビジュアル インターフェイスでのドラッグ アンド ドロップの実験](ui-tutorial-automobile-price-train-score.md)。
-  ![Azure Machine Learning service 用のビジュアル インターフェイス](media/overview-what-is-azure-ml/visual-interface.png)
+  ![Azure Machine Learning 用のビジュアル インターフェイス](media/overview-what-is-azure-ml/visual-interface.png)
 
 
 
@@ -77,17 +77,17 @@ SDK を使用して、[モデルのトレーニングと調整を自動化](tuto
 * ステップごとに異なるコンピューティング リソースを使用する
 * バッチ スコアリング タスクを実行する
 
-Azure Machine Learning service の基本的な使い方については、「[次の手順](#next-steps)」を参照してください。
+Azure Machine Learning の基本的な使い方については、「[次の手順](#next-steps)」を参照してください。
 
-## <a name="how-does-azure-machine-learning-service-differ-from-studio"></a>Azure Machine Learning service と Studio の違い
+## <a name="how-does-azure-machine-learning-differ-from-studio"></a>Azure Machine Learning と Studio の違い
 
 [Machine Learning Studio](../studio/what-is-ml-studio.md) は、共同作業に対応するドラッグ アンド ドロップ式の視覚的なワークスペースです。コードを記述することなく機械学習ソリューションを構築、テスト、およびデプロイすることができます。 事前に構築および構成された機械学習アルゴリズムとデータ処理モジュールが、専用コンピューティング プラットフォームと共に使用されます。
 
-Azure Machine Learning service には、機械学習モデルのデータ準備、トレーニング、デプロイを迅速に行うための SDK とビジュアル インターフェイス (プレビュー) の**両方**が用意されています。 このビジュアル インターフェイス (プレビュー) では、Studio のドラッグ アンド ドロップに似た操作が可能です。 ただし、Studio の専用コンピューティング プラットフォームとは異なり、ビジュアル インターフェイスではユーザー独自のコンピューティング リソースが使用され、Azure Machine Learning service に完全に統合されています。
+Azure Machine Learning には、機械学習モデルのデータ準備、トレーニング、デプロイを迅速に行うための SDK とビジュアル インターフェイス (プレビュー) の**両方**が用意されています。 このビジュアル インターフェイス (プレビュー) では、Studio のドラッグ アンド ドロップに似た操作が可能です。 ただし、Studio の専用コンピューティング プラットフォームとは異なり、ビジュアル インターフェイスではユーザー独自のコンピューティング リソースが使用され、Azure Machine Learning に完全に統合されています。
 
 以下で簡単に比較します。
 
-|| Machine Learning Studio | Azure Machine Learning service:<br/>ビジュアル インターフェイス|
+|| Machine Learning Studio | Azure Machine Learning:<br/>ビジュアル インターフェイス|
 |---| --- | --- |
 || 一般提供 (GA) | プレビュー段階|
 |インターフェイスのモジュール| 多数 | 人気のあるモジュールの初期セット|
@@ -98,11 +98,11 @@ Azure Machine Learning service には、機械学習モデルのデータ準備�
 ビジュアル インターフェイス (プレビュー) をお試しください ([チュートリアル: ビジュアル インターフェイスで自動車価格を予測する](ui-tutorial-automobile-price-train-score.md)」を参照してください。
 
 > [!NOTE]
-> Studio で作成したモデルを Azure Machine Learning service でデプロイおよび管理することはできません。 ただし、ビジュアル インターフェイスで作成およびデプロイしたモデルは、Azure Machine Learning service ワークスペースから管理できます。
+> Studio で作成したモデルを Azure Machine Learning でデプロイおよび管理することはできません。 ただし、ビジュアル インターフェイスで作成およびデプロイしたモデルは、Azure Machine Learning ワークスペースから管理できます。
 
 ## <a name="free-trial"></a>無料試用版
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 Azure サービスを使用するクレジットを取得できます。 このクレジットを使い切った後に、アカウントを保持して、[無料の Azure サービス](https://azure.microsoft.com/free/)を使用できます。 明示的に設定を変更して課金を了承しない限り、クレジット カードに課金されることはありません。 または、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)こともできます。これにより、有料の Azure のサービスを使用できるクレジットが毎月与えられます。
 
@@ -112,11 +112,11 @@ Azure サービスを使用するクレジットを取得できます。 この�
 
 - 詳細なチュートリアルに従ってください。
   + [ワークスペースを作成して初めての ML モデルをトレーニングする](tutorial-1st-experiment-sdk-setup.md)
-  + [Azure Machine Learning service でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
+  + [Azure Machine Learning でイメージ分類モデルをトレーニングする](tutorial-train-models-with-aml.md)
 
 
 - 機械学習シナリオを構築、最適化、および管理する[機械学習パイプライン](/azure/machine-learning/service/concept-ml-pipelines)について学習します。
 
-- [Azure Machine Learning サービスのアーキテクチャと概念](concept-azure-machine-learning-architecture.md)に関する詳細な記事を読みます。
+- [Azure Machine Learning のアーキテクチャと概念](concept-azure-machine-learning-architecture.md)に関する詳細な記事を読みます。
 
 - [Microsoft が提供する他の機械学習製品](/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)を参照して、さらに情報を入手します。

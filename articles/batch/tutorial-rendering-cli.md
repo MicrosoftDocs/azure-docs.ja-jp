@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/11/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 0c87a6968e5c6fd0e587c240b0a5df0a73f9909b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321653"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272332"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル:Azure Batch を使用したシーンのレンダリング 
 
@@ -168,20 +168,20 @@ az storage container create \
     --name job-myrenderjob
 ```
 
-コンテナーに出力ファイルを書き込むために、Batch は Shared Access Signature (SAS) トークンを使用する必要があります。 [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) コマンドを使用してトークンを作成します。 この例では、このアカウントの BLOB コンテナーに書き込むトークンを作成します。このトークンの有効期限は 2018 年 11 月 15 日に切れます。
+コンテナーに出力ファイルを書き込むために、Batch は Shared Access Signature (SAS) トークンを使用する必要があります。 [az storage account generate-sas](/cli/azure/storage/account#az-storage-account-generate-sas) コマンドを使用してトークンを作成します。 この例では、アカウントの BLOB コンテナーに書き込むトークンを作成します。このトークンの有効期限は 2020 年 11 月 15 日です。
 
 ```azurecli-interactive
 az storage account generate-sas \
     --permissions w \
     --resource-types co \
     --services b \
-    --expiry 2019-11-15
+    --expiry 2020-11-15
 ```
 
 このコマンドによって返されたトークンを書き留めておきます。これは次のようになります。 このトークンは、後の手順で使用します。
 
 ```
-se=2018-11-15&sp=rw&sv=2017-04-17&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+se=2020-11-15&sp=rw&sv=2019-09-24&ss=b&srt=co&sig=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## <a name="render-a-single-frame-scene"></a>単一フレーム シーンのレンダリング
@@ -217,7 +217,7 @@ JSON ファイルの `blobSource` 要素と `containerURL` 要素を、ストレ
   "commandLine": "cmd /c \"%3DSMAX_2018%3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 MotionBlur-DragonFlying.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "httpUrl": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
         "filePath": "MotionBlur-DragonFlying.max"
     }
   ],

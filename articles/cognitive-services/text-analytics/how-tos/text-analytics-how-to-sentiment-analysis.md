@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 07/30/2019
+ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: 60ae2136c3fa934c178de95f51d490e570f45faa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ea145239d38a4030423a4517fe02c62b8eefa08a
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845350"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71211771"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>例:Text Analytics でセンチメントを検出する
 
@@ -139,7 +139,7 @@ JSON ドキュメントは、次の形式である必要があります: ID、�
 > [!NOTE]
 > * 感情分析 v3 の要求の形式と[データ制限](../overview.md#data-limits)は、以前のバージョンと同じです。
 > * 現時点では、感情分析 v3 は、次のようになっています。
->    * サポートされる言語は現在、英語、簡易字中国語、日本語です。
+>    * 現在、英語、フランス語、イタリア語、日本語、簡体中国語、および繁体中国語の各言語をサポートしています。
 >    * `Australia East`、`Central Canada`、`Central US`、`East Asia`、`East US`、`East US 2`、`North Europe`、`Southeast Asia`、`South Central US`、`UK South`、`West Europe`、`West US 2` の各リージョンで利用できます。
 
 |機能 |説明  |

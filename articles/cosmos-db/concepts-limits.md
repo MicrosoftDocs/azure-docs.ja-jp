@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: d3d09d466e05c97de215542c66987aa6b723afce
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 8e22bf53a81d94c5204a76c58b43fed63e32b136
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827992"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803397"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB サービスのクォータ
 
@@ -21,7 +21,7 @@ ms.locfileid: "68827992"
 
 サブスクリプションで Azure Cosmos アカウントを作成したら、[データベース、コンテナー、および項目を作成](databases-containers-items.md)することによってアカウント内のデータを管理できます。 スループットは、[要求ユニット (RU/秒 または RU)](request-units.md) の単位で、コンテナー レベルまたはデータベース レベルでプロビジョニングできます。 次の表は、コンテナー/データベースあたりのストレージとスループットの制限の一覧を示しています。
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | コンテナーあたりの最大 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます |
 | データベースあたりの最大 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 既定では 1,000,000。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます |
@@ -30,9 +30,10 @@ ms.locfileid: "68827992"
 | 個別の (論理) パーティション キーの最大数 | 無制限 |
 | コンテナーあたりの最大ストレージ | 無制限 |
 | データベースあたりの最大ストレージ | 無制限 |
+| アカウントあたりの添付ファイルの最大サイズ (添付ファイル機能は推薦されていません) | 2 GB | 
 
 > [!NOTE]
-> ストレージまたはスループットのより高い制限が必要なパーティション キーを含むワークロードを管理するためのベスト プラクティスについては、[ホット パーティション キーの設計](synthetic-partition-keys.md)に関するページを参照してください。
+> ストレージまたはスループットにより高い制限が必要なパーティション キーを持つワークロードを管理するためのベスト プラクティスについては、「[合成パーティション キーの作成](synthetic-partition-keys.md)」を参照してください。
 >
 
 Cosmos コンテナー (または共有スループット データベース) には、400 RU の最小スループットが必要です。 コンテナーが大きくなるにつれ、サポートされる最小スループットは次の要因にも依存するようになります。
@@ -48,7 +49,7 @@ Cosmos コンテナー (または共有スループット データベース) �
 
 要約すると、最小プロビジョニング済み RU の制限を次に示します。 
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | コンテナーあたりの最小 RU ([専用スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 400 |
 | データベースあたりの最小 RU ([共有スループット プロビジョニング モード](databases-containers-items.md#azure-cosmos-containers)) | 400 |
@@ -60,7 +61,7 @@ Cosmos DB は、SDK またはポータルを経由した、コンテナーまた
 
 Azure portal、Azure PowerShell、Azure CLI、および Azure Resource Manager テンプレートを使用して、[Azure Cosmos アカウントをプロビジョニングおよび管理](how-to-manage-database-account.md)できます。 次の表は、サブスクリプション、アカウント、および操作の数あたりの制限の一覧を示しています。
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | サブスクリプションあたりの最大データベース アカウント | 既定では 50。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます|
 | リージョン内フェールオーバーの最大数 | 既定では 1 回/時間。 これは、[Azure サポート チケットを提出する](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ことによって増やすことができます|
@@ -72,7 +73,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 
 ## <a name="per-account-limits"></a>アカウントあたりの制限
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | データベースの最大数 | 無制限 |
 | データベース (またはアカウント) あたりのコンテナーの最大数 | 無制限 |
@@ -82,7 +83,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 
 どの API を使用するかに応じて、Azure Cosmos コンテナーは、コレクション、テーブル、グラフのいずれかを表すことができます。 コンテナーは、[一意キー制約](unique-keys.md)、[ストアド プロシージャ、トリガー、UDF](stored-procedures-triggers-udfs.md)、および[インデックス作成ポリシー](how-to-manage-indexing-policy.md)の構成をサポートしています。 次の表は、コンテナー内の構成に固有の制限の一覧を示しています。 
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | データベースまたはコンテナー名の最大長 | 255 |
 | コンテナーあたりの最大ストアド プロシージャ | 100 <sup>*</sup>|
@@ -97,7 +98,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 
 どの API を使用するかに応じて、Azure Cosmos 項目は、コレクション内のドキュメント、テーブル内の行、グラフ内のノードまたはエッジのいずれかを表すことができます。 次の表は、Cosmos DB での項目あたりの制限を示しています。 
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | 項目の最大サイズ | 2 MB (JSON 表現の UTF-8 の長さ) |
 | パーティション キー値の最大長 | 2048 バイト |
@@ -115,7 +116,7 @@ Cosmos DB は、データのバックアップを一定の間隔で自動的に�
 
 Cosmos DB は、コンテナー、項目、データベースなどのリソースに対して [CRUD とクエリ操作](https://docs.microsoft.com/rest/api/cosmos-db/)をサポートしています。  
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | 1 つの操作 (ストアド プロシージャの実行や 1 回のクエリ ページ取得など) の最大実行時間| 5 秒 |
 | 最大要求サイズ (ストアド プロシージャ、CRUD)| 2 MB |
@@ -125,7 +126,7 @@ Cosmos DB は、コンテナー、項目、データベースなどのリソー�
 
 Cosmos DB は HMAC を承認のために使用します。 コンテナー、パーティション キー、項目などのリソースへのきめ細かなアクセス制御のために、マスター キーまたは[リソース トークン](secure-access-to-data.md)のどちらかを使用できます。 次の表は、Cosmos DB での承認トークンの制限の一覧を示しています。
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | マスター トークンの最大有効期限 | 15 分  |
 | リソース トークンの最小有効期限 | 10 分  |
@@ -138,7 +139,7 @@ Cosmos DB は、書き込み中のトリガーの実行をサポートしてい�
 
 Cosmos DB は、[SQL](how-to-sql-query.md) を使用した項目のクエリをサポートしています。 次の表では、クエリ ステートメントでの制限 (句の数やクエリの長さなどの単位) について説明します。
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | SQL クエリの最大長| 256 KB <sup>*</sup>|
 | クエリあたりの最大 JOIN| 5 <sup>*</sup>|
@@ -156,7 +157,7 @@ Cosmos DB は、MongoDB に対して記述されたアプリケーションの�
 
 次の表は、MongoDB 機能のサポートに固有の制限の一覧を示しています。 SQL (コア) API に関して説明されているその他のサービス制限も MongoDB API に適用されます。
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | MongoDB クエリの最大メモリ サイズ | 40 MB |
 | MongoDB 操作の最大実行時間| 30 秒 |
@@ -165,7 +166,7 @@ Cosmos DB は、MongoDB に対して記述されたアプリケーションの�
 
 次の表は、[Azure Cosmos DB 無料試用版](https://azure.microsoft.com/try/cosmosdb/)の制限の一覧を示しています。
 
-| Resource | 既定の制限 |
+| リソース | 既定の制限 |
 | --- | --- |
 | 試用版の期間 | 30 日 (何回でも更新できます) |
 | サブスクリプションあたりの最大コンテナー (SQL、Gremlin、Table API) | 1 |

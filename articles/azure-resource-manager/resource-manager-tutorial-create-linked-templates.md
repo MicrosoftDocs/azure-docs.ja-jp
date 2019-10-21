@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 03/18/2019
+ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c5399f46106d94d593a15530ee0c223a3f5f3eaf
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 869e59aea9b78c44b1a920e58ecefab5e0ca4920
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802051"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169407"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>チュートリアル:リンクされた Azure Resource Manager テンプレートの作成
 
@@ -166,7 +166,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 ## <a name="upload-the-linked-template"></a>リンクされたテンプレートをアップロードする
 
-メイン テンプレートとリンクされたテンプレートには、デプロイを実行する場所からアクセス可能にする必要があります。 このチュートリアルでは、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)」で使用されたものと同じテンプレートです。 メイン テンプレート (azuredeploy.json) は、シェルにアップロードされます。 リンクされたテンプレート (linkedTemplate.json) は、別の場所で安全に共有する必要があります。 次の PowerShell スクリプトでは、Azure Storage アカウントが作成され、ストレージ アカウントにテンプレートがアップロードされ、テンプレート ファイルへの制限付きアクセスを付与する目的で SAS トークンが生成されます。 チュートリアルを簡単にするために、スクリプトによって、リンクされたテンプレートが完全な形で共有の場所からダウンロードされます。 自分で作成したリンク済みテンプレートを使用する場合、[Cloud Shell](https://shell.azure.com) を使用してリンク済みテンプレートをアップロードし、独自のリンク済みテンプレートを使用するようにスクリプトを変更します。
+メイン テンプレートとリンクされたテンプレートには、デプロイを実行する場所からアクセス可能にする必要があります。 このチュートリアルでは、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)」で使用されたものと同じテンプレートです。 メイン テンプレート (azuredeploy.json) は、シェルにアップロードされます。 リンクされたテンプレート (linkedTemplate.json) は、別の場所で安全に共有する必要があります。 次の PowerShell スクリプトでは、Azure Storage アカウントが作成され、ストレージ アカウントにテンプレートがアップロードされ、テンプレート ファイルへの制限付きアクセスを付与する目的で SAS トークンが生成されます。 チュートリアルを簡単にするために、スクリプトによって、リンクされたテンプレートが完全な形で Github リポジトリからダウンロードされます。 自分で作成したリンク済みテンプレートを使用する場合、[Cloud Shell](https://shell.azure.com) を使用してリンク済みテンプレートをアップロードし、独自のリンク済みテンプレートを使用するようにスクリプトを変更します。
 
 > [!NOTE]
 > スクリプトによって、8 時間以内に使用するように SAS トークンに制限が与えられます。 このチュートリアルを完了するためにもっと時間が必要な場合、有効期限を延ばしてください。
@@ -179,7 +179,7 @@ $resourceGroupName = $projectNamePrefix + "rg"
 $storageAccountName = $projectNamePrefix + "store"
 $containerName = "linkedtemplates" # The name of the Blob container to be created.
 
-$linkedTemplateURL = "https://armtutorials.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json" # A completed linked template used in this tutorial.
+$linkedTemplateURL = "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-linked-templates/linkedStorageAccount.json" # A completed linked template used in this tutorial.
 $fileName = "linkedStorageAccount.json" # A file name used for downloading and uploading the linked template.
 
 # Download the tutorial linked template
@@ -259,7 +259,7 @@ echo "Linked template URI with SAS token: $templateURI"
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri":"https://armtutorials.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json"
+              "uri":"https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-linked-templates/linkedStorageAccount.json"
           },
           "parameters": {
               "storageAccountName":{"value": "[variables('storageAccountName')]"},

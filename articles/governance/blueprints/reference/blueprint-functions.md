@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/15/2019
 ms.topic: reference
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: dcf073c58a723b8dbd835ac331c0ce9d16187445
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a3021e79ddfb808db64896d79bb163d42236b295
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232856"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978395"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Azure Blueprints で使用する関数
 
@@ -35,7 +34,7 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | artifactName |はい |string |ブループリント アーティファクトの名前。 |
 
@@ -107,7 +106,7 @@ Azure Blueprints では、ブループリントの定義をより動的にする
 
 _myTemplateArtifact_ サンプルからデータを取得する例を次にいくつか示します。
 
-| 式 | Type | 値 |
+| 式 | 種類 | 値 |
 |:---|:---|:---|
 |`[artifacts("myTemplateArtifact").outputs.myArray]` | Array | \["first", "second"\] |
 |`[artifacts("myTemplateArtifact").outputs.myArray[0]]` | string | "first" |
@@ -124,7 +123,7 @@ _myTemplateArtifact_ サンプルからデータを取得する例を次にい�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | string1 |はい |string |連結の最初の値。 |
 | 残りの引数 |いいえ |string |連結する順番での追加の値 |
@@ -149,7 +148,7 @@ Azure Blueprint 関数は、文字列でのみ動作する点が、Azure Resourc
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | parameterName |はい |string |返されるパラメーターの名前。 |
 
@@ -270,7 +269,7 @@ Azure Blueprint 関数は、Azure Resource Manager テンプレート関数と�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | placeholderName |はい |string |取得するリソース グループ アーティファクトのプレースホルダーの名前。 |
 

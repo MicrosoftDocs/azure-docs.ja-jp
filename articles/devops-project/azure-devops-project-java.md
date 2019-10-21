@@ -16,12 +16,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 monikerRange: vsts
-ms.openlocfilehash: d395855de6bb16841d54821c87a6af6d5d62c11c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 49514022dc00afcd07002c7a3278c18a606e5ad5
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898050"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203745"
 ---
 # <a name="quickstart-set-up-a-cicd-pipeline-for-a-java-app-with-azure-devops-projects"></a>クイック スタート:Azure DevOps Projects を使用して Java アプリ用の CI/CD パイプラインを設定する
 
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、[Visual Studio
 
 2. **作成** を選択します。
 
-    ![継続的デリバリーの構成の開始](_img/azure-devops-project-java/fullbrowser.png)
+    ![DevOps Projects で Azure リソースを作成する](_img/azure-devops-project-java/continuous-delivery-configuration-full-browser.png)
 
 ## <a name="select-a-sample-application-and-azure-service"></a>サンプル アプリケーションと Azure サービスを選択する
 
@@ -62,7 +62,7 @@ Java のサンプルでは、複数のアプリケーション フレームワ�
 
 2. **[参照]** を選択すると、実行中のアプリケーションが表示されます。
 
-    ![ダッシュボード ビュー](_img/azure-devops-project-java/dashboardnopreview.png) 
+    ![Azure portal でアプリケーション ダッシュボードを表示する](_img/azure-devops-project-java/azure-devops-application-dashboard.png) 
     
    DevOps Projects によって、CI ビルドおよびリリース トリガーが自動的に構成されました。  Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、Java アプリに対してチームで共同作業を行う準備ができました。
 

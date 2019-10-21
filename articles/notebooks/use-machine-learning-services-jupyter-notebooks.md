@@ -4,21 +4,20 @@ description: Azure Notebooks で使用できる Azure Machine Learning Services 
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 0dc4fc31-ae1c-422c-ac34-7b025e6651b4
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: c99f815bd58b03dbc43ba742577259be5638fef9
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f591758fa6e51c420a090aa62d5160320fe15fe8
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035731"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973029"
 ---
 # <a name="use-azure-machine-learning-service-in-a-notebook"></a>ノートブックで Azure Machine Learning service を使用する
 

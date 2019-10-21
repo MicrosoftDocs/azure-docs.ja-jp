@@ -1,18 +1,17 @@
 ---
-title: サンプル - ISO 27001 ブループリント - 概要
-description: ISO 27001 ブループリント サンプルの概要。
+title: ISO 27001 ブループリント サンプル - 概要
+description: ISO 27001 ブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定の ISO 27001 コントロールを評価するのに役立ちます。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 07/22/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 59db15439f2391796f54cc8edd5dbf8e554e6379
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: ccfd782d375de9d3a39cac20b1e48e16cc40d2f7
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232737"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297393"
 ---
 # <a name="overview-of-the-iso-27001-blueprint-sample"></a>ISO 27001 ブループリント サンプルの概要
 

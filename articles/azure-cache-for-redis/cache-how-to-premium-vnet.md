@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: 4f97f6925c482cb282324dcc1c97bbfe2a701643
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ec21c26c705dab94b15c1f76be5e62207b9f206f
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67074207"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815665"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -118,12 +118,16 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 | 10221-10231 |送信 |TCP |Redis の内部通信 | (Redis サブネット) | (Redis サブネット) |
 | 20226 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 | 13000-13999 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
-| 15000-15999 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
+| 15000-15999 |送信 |TCP |Redis および geo レプリケーションの内部通信 | (Redis サブネット) |(Redis サブネット) (geo レプリカ ピア サブネット) |
 | 6379-6380 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
 <sup>1</sup> Microsoft が所有するこれらの IP アドレスは、Azure DNS を提供するホスト VM をアドレス指定するために使用されます。
 
 <sup>3</sup> カスタム DNS サーバーのないサブネット、またはカスタム DNS を無視する新しい redis キャッシュには必要ありません。
+
+#### <a name="geo-replication-peer-port-requirements"></a>geo レプリケーション ピア ポートの要件
+
+Azure Virtual Network 内のキャッシュ間で geo レプリケーションを使用している場合、推奨される構成は、両方のキャッシュに対する受信および送信方向両方において、サブネット全体に対してポート 15000-15999 のブロックを解除することです。これにより、サブネット内のすべてのレプリカ コンポーネントが将来の geo フェールオーバーが発生した場合でも相互に直接通信できるようになります。
 
 #### <a name="inbound-port-requirements"></a>受信ポートの要件
 
@@ -136,7 +140,7 @@ Azure Cache for Redis が VNet でホストされている場合は、次の表�
 | 8500 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
 | 10221-10231 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット)、Azure Load Balancer |
 | 13000-13999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
-| 15000-15999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
+| 15000-15999 |受信 |TCP |Redis クラスター、Azure 負荷分散、geo レプリケーションへのクライアント通信 | (Redis サブネット) |Virtual Network、Azure Load Balancer、(geo レプリカ ピア サブネット) |
 | 16001 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
 | 20226 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 

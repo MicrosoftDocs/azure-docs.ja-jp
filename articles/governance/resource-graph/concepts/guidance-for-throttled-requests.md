@@ -3,16 +3,15 @@ title: スロットルされた要求に関するガイダンス
 description: Azure Resource Graph への要求のスロットルを回避するための適切なクエリの作成について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 06/19/2019
+ms.date: 10/18/2019
 ms.topic: conceptual
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: c644d230846d9c644c3845348431eef36c8279c8
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 1bbfd2a64de0b42da19d0a978874d564f1755c59
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276564"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387625"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Azure Resource Graph のスロットルされた要求に関するガイダンス
 
@@ -56,7 +55,7 @@ Azure Resource Graph では、タイム ウィンドウに基づいて各ユー�
   {
       var userQueryRequest = new QueryRequest(
           subscriptions: new[] { subscriptionId },
-          query: "project name, type");
+          query: "Resoures | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -79,7 +78,7 @@ Azure Resource Graph では、タイム ウィンドウに基づいて各ユー�
       var currSubscriptionBatch = subscriptionIds.Skip(i * batchSize).Take(batchSize).ToList();
       var userQueryRequest = new QueryRequest(
           subscriptions: currSubscriptionBatch,
-          query: "project name, type");
+          query: "Resources | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -103,7 +102,7 @@ Azure Resource Graph では、タイム ウィンドウに基づいて各ユー�
           resourceIds.Skip(i * batchSize).Take(batchSize).Select(id => string.Format("'{0}'", id)));
       var userQueryRequest = new QueryRequest(
           subscriptions: subscriptionList,
-          query: $"where id in~ ({resourceIds}) | project name, type");
+          query: $"Resources | where id in~ ({resourceIds}) | project name, type");
 
       var azureOperationResponse = await this.resourceGraphClient
           .ResourcesWithHttpMessagesAsync(userQueryRequest, header)
@@ -197,7 +196,7 @@ Azure Resource Graph では、単一のクエリ応答で最大 1,000 のエン�
   var results = new List<object>();
   var queryRequest = new QueryRequest(
       subscriptions: new[] { mySubscriptionId },
-      query: "project id, name, type | top 5000");
+      query: "Resources | project id, name, type | top 5000");
   var azureOperationResponse = await this.resourceGraphClient
       .ResourcesWithHttpMessagesAsync(queryRequest, header)
       .ConfigureAwait(false);
@@ -219,11 +218,11 @@ Azure Resource Graph では、単一のクエリ応答で最大 1,000 のエン�
   Azure CLI または Azure PowerShell の使用では、Azure Resource Graph に対するクエリは、自動的に最大 5,000 のエントリをフェッチするように改ページ調整されます。 クエリの結果では、すべての改ページ調整された呼び出しが結合されたエントリの一覧が返されます。 この場合、クエリの結果に含まれるエントリ数によっては、単一の改ページ調整されたクエリで、複数のクエリのクォータが消費される可能性があります。 たとえば、次の例では、クエリの 1 回の実行で、最大 5 のクエリのクォータが消費される可能性があります。
 
   ```azurecli-interactive
-  az graph query -q 'project id, name, type' -top 5000
+  az graph query -q 'Resources | project id, name, type' -top 5000
   ```
 
   ```azurepowershell-interactive
-  Search-AzGraph -Query 'project id, name, type' -Top 5000
+  Search-AzGraph -Query 'Resources | project id, name, type' -Top 5000
   ```
 
 ## <a name="still-get-throttled"></a>スロットルが解消されない場合

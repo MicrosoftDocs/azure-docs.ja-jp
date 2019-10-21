@@ -3,16 +3,15 @@ title: 効果のしくみを理解する
 description: Azure Policy の定義には、コンプライアンスが管理および報告される方法を決定するさまざまな効果があります。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/29/2019
+ms.date: 09/17/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 1ac0e70700b4b093fad09b4d10c6bdcf2e06adac
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 991cfb54dc511c284c5f5d0cf1807d5dd42b34ea
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231531"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978071"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy の効果について
 
@@ -27,13 +26,14 @@ Azure Policy 内の各ポリシー定義には単一の効果があります。 
 - [DeployIfNotExists](#deployifnotexists)
 - [Disabled](#disabled)
 - [EnforceRegoPolicy](#enforceregopolicy) (プレビュー)
+- [Modify](#modify)
 
 ## <a name="order-of-evaluation"></a>評価の順序
 
 Azure Resource Manager を通したリソースの作成または更新の要求は、まず Azure Policy によって評価されます。 Azure Policy では、リソースに適用されるすべての割り当ての一覧が作成された後、各定義に対してリソースが評価されます。 Azure Policy では、適切なリソース プロバイダーに要求が渡される前に、さまざまな効果が処理されます。 それによって、リソースが意図された Azure Policy のガバナンス コントロールを満たさない場合に、リソース プロバイダーによって不要な処理が行われるのを防止します。
 
 - **Disabled** は、ポリシー規則を評価する必要があるかどうかを判断するために、最初に確認されます。
-- 次に、**Append** が評価されます。 Append によって要求が変更される可能性があるため、Append で加えられた変更によって、Audit または Deny の効果がトリガーされるのが止められる場合があります。
+- **Append** と **Modify** は、その後で評価されます。 これらいずれかによって要求が変更される可能性があるため、その変更によって、Audit または Deny の効果がトリガーされるのが止められる場合があります。
 - 次に、**Deny** が評価されます。 Audit の前に Deny を評価することによって、不要なリソースの二重のログ記録が回避されます。
 - 次に、要求がリソース プロバイダーに移動する前に **Audit** が評価されます。
 
@@ -47,7 +47,10 @@ Azure Resource Manager を通したリソースの作成または更新の要求
 
 ## <a name="append"></a>Append
 
-Append は、作成中または更新中に要求されたリソースにフィールドを追加するために使用します。 一般的な例として、costCenter などのリソースへのタグの追加や、ストレージ リソースに対して許可される IP の指定があります。
+Append は、作成中または更新中に要求されたリソースにフィールドを追加するために使用します。 一般的な例としては、ストレージ リソースに対して許可される IP の指定が挙げられます。
+
+> [!IMPORTANT]
+> Append は、タグ以外のプロパティで使用することを目的としています。 Append では、作成要求または更新要求時にリソースにタグを追加することができますが、タグに対しては [Modify](#modify) 効果を使用することをお勧めします。
 
 ### <a name="append-evaluation"></a>Append の評価
 
@@ -61,36 +64,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 
 ### <a name="append-examples"></a>Append の例
 
-例 1:1 つのタグを追加する単一の **field/value** のペア。
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-        "field": "tags.myTag",
-        "value": "myTagValue"
-    }]
-}
-```
-
-例 2:タグのセットを追加する 2 つの **field/value** のペア。
-
-```json
-"then": {
-    "effect": "append",
-    "details": [{
-            "field": "tags.myTag",
-            "value": "myTagValue"
-        },
-        {
-            "field": "tags.myOtherTag",
-            "value": "myOtherTagValue"
-        }
-    ]
-}
-```
-
-例 3:非 **[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **[\*]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
+例 1:非 **[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 非 **[\*]** 別名が配列の場合、この効果により、**value** が配列全体として追加されます。 配列が既に存在する場合は、競合から拒否イベントが発生します。
 
 ```json
 "then": {
@@ -105,7 +79,7 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
 }
 ```
 
-例 4: **[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 **[\*]** 別名を使用することで、この効果により、**value** が事前に存在している可能性のある配列に追加されます。 配列はまだが存在しない場合は作成されます。
+例 2: **[\*]** [別名](definition-structure.md#aliases)と配列 **value** を使用してストレージ アカウントに IP 規則を設定する単一の **field/value** のペア。 **[\*]** 別名を使用することで、この効果により、**value** が事前に存在している可能性のある配列に追加されます。 配列まだ存在しない場合は、配列が作成されます。
 
 ```json
 "then": {
@@ -117,6 +91,122 @@ Append 効果には必須の **details** 配列が 1 つだけあります。 **
             "action": "Allow"
         }
     }]
+}
+```
+
+## <a name="modify"></a>[変更]
+
+Modify は、作成時または更新時にリソースのタグを追加、更新、または削除するために使用されます。 一般的な例としては、コスト センターなどのリソースでタグを更新することが挙げられます。 Modify ポリシーでは、常に `mode` が _Indexed_ に設定されている必要があります。 準拠していない既存のリソースは、[修復タスク](../how-to/remediate-resources.md)で修復できます。
+1 つの Modify 規則には、任意の数の操作を含めることができます。
+
+> [!IMPORTANT]
+> Modify は現在、タグでのみ使用されます。 タグを管理している場合は、Append ではなく Modify を使用することをお勧めします。Modify では、追加の操作タイプが使用でき、既存のリソースを修復する機能が提供されます。 ただし、マネージド ID を作成できない場合は、Append を追加することをお勧めします。
+
+### <a name="modify-evaluation"></a>Modify の評価
+
+リソースを作成中または更新中に、リソース プロバイダーによって要求が処理される前に Modify による評価が行われます。 Modify では、ポリシー規則の **if** 条件が満たされた場合、リソースのフィールドが追加または更新されます。
+
+Modify 効果を使用するポリシー定義が評価サイクルの一部として実行される場合、既存のリソースに対する変更は行われません。 代わりに、**if** 条件を満たすリソースが非準拠とマークされます。
+
+### <a name="modify-properties"></a>Modify のプロパティ
+
+Modify 効果の **details** プロパティには、修復に必要なアクセス許可を定義するすべてのサブプロパティと、タグ値の追加、更新、または削除に使用する **operations** が含まれます。
+
+- **roleDefinitionIds** [必須]
+  - このプロパティには、サブスクリプションでアクセス可能なロールベースのアクセス制御ロール ID と一致する文字列の配列を含める必要があります。 詳細については、[修復 - ポリシー定義を構成する](../how-to/remediate-resources.md#configure-policy-definition)を参照してください。
+  - 定義されたロールには、[Contributor](../../../role-based-access-control/built-in-roles.md#contributor) ロールに与えられているすべての操作が含まれている必要があります。
+- **operations** [必須]
+  - 一致するリソースで完了されるすべてのタグ操作の配列です。
+  - プロパティ:
+    - **operation** [必須]
+      - 一致するリソースに対して実行するアクションを定義します。 オプションは、_addOrReplace_、_Add_、_Remove_ です。 _Add_ は、[Append](#append) 効果に似た動作をします。
+    - **field** [必須]
+      - 追加、置換、または削除するタグです。 タグ名は、他の [fields](./definition-structure.md#fields) と同じ名前付け規則に従う必要があります。
+    - **value** (オプション)
+      - タグに設定する値です。
+      - このプロパティは、**operation** が _addOrReplace_ または _Add_ の場合に必要です。
+
+### <a name="modify-operations"></a>Modify の操作
+
+**operations** プロパティ配列を使用すると、1 つのポリシー定義から複数のタグを異なる方法で変更できます。 各操作は **operation**、**field**、および **value** の各プロパティで構成されます。 operation では、修復タスクがタグに対して行う処理を決定し、field では、どのタグを変更するかを決定し、value では、そのタグの新しい設定を定義します。 下記の例では、以下のタグ変更が実行されます。
+
+- `environment` タグを "Test" に設定する (異なる値で既に存在している場合でも)。
+- タグ `TempResource` を削除する。
+- `Dept` タグを、ポリシーの割り当てで構成されたポリシー パラメーター _DeptName_ に設定する。
+
+```json
+"details": {
+    ...
+    "operations": [
+        {
+            "operation": "addOrReplace",
+            "field": "tags['environment']",
+            "value": "Test"
+        },
+        {
+            "operation": "Remove",
+            "field": "tags['TempResource']",
+        },
+        {
+            "operation": "addOrReplace",
+            "field": "tags['Dept']",
+            "field": "[parameters('DeptName')]"
+        }
+    ]
+}
+```
+
+**operation** プロパティには、次のオプションが用意されています。
+
+|Operation |説明 |
+|-|-|
+|addOrReplace |定義済みのタグと値をリソースに追加します (タグに別の値が既に存在する場合でも)。 |
+|Add |定義済みのタグと値をリソースに追加します。 |
+|Remove |定義済みのタグをリソースから削除します。 |
+
+### <a name="modify-examples"></a>Modify の例
+
+例 1:`environment` タグを追加し、既存の `environment` タグを "Test" に置き換えます。
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "Test"
+            }
+        ]
+    }
+}
+```
+
+例 2:`env` タグを削除し、`environment` タグを追加するか、既存の `environment` タグをパラメーター化された値に置き換えます。
+
+```json
+"then": {
+    "effect": "modify",
+    "details": {
+        "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+        ],
+        "operations": [
+            {
+                "operation": "Remove",
+                "field": "tags['env']"
+            },
+            {
+                "operation": "addOrReplace",
+                "field": "tags['environment']",
+                "value": "[parameters('tagValue')]"
+            }
+        ]
+    }
 }
 ```
 
@@ -234,7 +324,7 @@ AuditIfNotExists 効果の **details** プロパティは、照合する関連�
 
 ## <a name="deployifnotexists"></a>DeployIfNotExists
 
-AuditIfNotExists と同様に、DeployIfNotExists は条件が満たされたときにテンプレートのデプロイを実行します。
+AuditIfNotExists と同様に、DeployIfNotExists ポリシー定義は条件が満たされたときにテンプレートのデプロイを実行します。
 
 > [!NOTE]
 > **deployIfNotExists** で [入れ子になったテンプレート](../../../azure-resource-manager/resource-group-linked-templates.md#nested-template)がサポートされていますが、[リンク済みテンプレート](../../../azure-resource-manager/resource-group-linked-templates.md)は現在サポートされていません。

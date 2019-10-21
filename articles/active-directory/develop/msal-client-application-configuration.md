@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 09/27/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fedca8dfb60d976723508bb89cab7d5b6dda1b9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 6cd90ef858fbcd2cfa418a2d7e58975cfa959705
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532921"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71678095"
 ---
 # <a name="application-configuration-options"></a>アプリケーション構成オプション
 
@@ -36,6 +36,7 @@ ms.locfileid: "69532921"
 - [ログ オプション](#logging) (ログ レベル、個人データの制御、およびライブラリを使用するコンポーネントの名前など)。
 
 ## <a name="authority"></a>Authority
+
 機関は、MSAL がトークンを要求できるディレクトリを示す URL です。 一般的な機関を次に示します。
 
 - https\://login.microsoftonline.com/\<テナント\>/。&lt;テナント&gt;は、Azure Active Directory (Azure AD) テナントのテナント ID か、この Azure AD テナントに関連付けられたドメインです。 特定の組織のユーザーをサインインする場合にのみ使用されます。
@@ -61,6 +62,7 @@ Azure AD クラウド機関には、2 つの部分があります。
 ![機関 URL の構成方法](media/msal-client-application-configuration/authority.png)
 
 ## <a name="cloud-instance"></a>クラウド インスタンス
+
 "*インスタンス*" を使用して、アプリでサインインするユーザーが Azure パブリック クラウドのユーザーであるか各国のクラウドのユーザーであるかを指定します。 コードで MSAL を使用すると、列挙型を使用するか、[各国のクラウド インスタンス](authentication-national-cloud.md#azure-ad-authentication-endpoints)に `Instance` メンバーとして URL を渡すことで (URL がわかっている場合)、Azure クラウド インスタンスを設定できます。
 
 `Instance` と `AzureCloudInstance` の両方が指定された場合、MSAL.NET では明示的な例外がスローされます。
@@ -74,6 +76,7 @@ Azure AD クラウド機関には、2 つの部分があります。
 - ISV の方であれば、ユーザーに、すべての組織または一部の組織で職場および学校アカウントを使用してサインインしてもらうケースが考えられます (マルチテナント アプリ)。 ただし、ユーザーに個人用 Microsoft アカウントでサインインしてもらうこともあります。
 
 ### <a name="how-to-specify-the-audience-in-your-codeconfiguration"></a>コード/構成で対象ユーザーを指定する方法
+
 コードで MSAL を使用する場合は、次のいずれかの値を使用して対象ユーザーを指定します。
 - Azure AD 機関の対象ユーザーの列挙
 - テナント ID (次のいずれか)
@@ -89,6 +92,7 @@ Azure AD 機関の対象ユーザーとテナント ID の両方を指定した�
 対象ユーザーを指定しない場合、アプリの対象ユーザーは Azure AD および個人用 Microsoft アカウントになります (つまり、`common` を指定した場合と同様の動作になります)。
 
 ### <a name="effective-audience"></a>有効な対象ユーザー
+
 アプリケーションで有効な対象ユーザーは、アプリに設定した対象ユーザーとアプリの登録で指定された対象ユーザーの最小値 (共通集合がある場合) になります。 実際に、[アプリの登録](https://aka.ms/appregistrations)エクスペリエンスでは、アプリの対象ユーザー (サポートされるアカウントの種類) を指定できます。 詳細については、「[クイック スタート: Microsoft ID プラットフォームにアプリケーションを登録する](quickstart-register-app.md)」を参照してください。
 
 現時点では、個人用 Microsoft アカウントのみを持つユーザーのサインインをアプリで実行する唯一の方法は、次の両方の設定を構成することです。
@@ -96,12 +100,15 @@ Azure AD 機関の対象ユーザーとテナント ID の両方を指定した�
 - コードまたは構成で、対象ユーザーを `AadAuthorityAudience.PersonalMicrosoftAccount` (または `TenantID` = "consumers") に設定する。
 
 ## <a name="client-id"></a>クライアント ID
+
 クライアント ID は、アプリの登録時に Azure AD によってアプリに割り当てられた一意のアプリケーション (クライアント) ID です。
 
 ## <a name="redirect-uri"></a>リダイレクト URI
+
 リダイレクト URI は、ID プロバイダーがセキュリティ トークンを送り返す URI です。
 
 ### <a name="redirect-uri-for-public-client-apps"></a>パブリック クライアント アプリ用のリダイレクト URI
+
 MSAL を使用してパブリック クライアント アプリを開発している場合:
 - デスクトップまたは UWP アプリケーションで `.WithDefaultRedirectUri()` を使用することがあります (MSAL.NET 4.1 以上)。 このメソッドは、パブリック クライアント アプリケーションのリダイレクト URI プロパティを、パブリック クライアント アプリケーションの既定の推奨リダイレクト URI に設定します。 
 
@@ -122,20 +129,24 @@ MSAL を使用してパブリック クライアント アプリを開発して�
 - `RedirectUriOnAndroid` = "msauth-5a434691-ccb2-4fd1-b97b-b64bcfbc03fc://com.microsoft.identity.client.sample";
 - `RedirectUriOnIos` = $"msauth.{Bundle.ID}://auth";
 
-詳細については、[Android と iOS 用のドキュメント](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)を参照してください。
+iOS の詳細については、「[Microsoft Authenticator を使用する iOS アプリケーションを ADAL.NET から MSAL.NET に移行する](msal-net-migration-ios-broker.md)」と「[Leveraging the broker on iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)」 (iOS でブローカーを利用する) を参照してください。
+Android の詳細については、「[Android での仲介型認証](brokered-auth.md)」を参照してください。
 
 ### <a name="redirect-uri-for-confidential-client-apps"></a>機密性の高いクライアント アプリ用のリダイレクト URI
+
 Web アプリの場合、リダイレクト URI (または応答 URI) は、Azure AD がアプリケーションにトークンを戻すために使用する URI です。 機密性の高いアプリが Web アプリと Web API のどちらかである場合は、その URL を使用できます。 リダイレクト URI は、アプリの登録で登録する必要があります。 この登録は、最初にローカルでテストを行ったアプリをデプロイするときに特に重要です。 アプリケーション登録ポータルで、デプロイ対象のアプリの応答 URL を追加する必要があります。
 
 デーモン アプリの場合は、リダイレクト URI を指定する必要はありません。
 
 ## <a name="client-secret"></a>クライアント シークレット
+
 このオプションでは、機密性の高いクライアント アプリ用のクライアント シークレットを指定します。 このシークレット (アプリ パスワード) は、アプリケーション登録ポータルによって提供されるか、PowerShell AzureAD、PowerShell AzureRM、Azure CLI のいずれかを使用したアプリの登録時に Azure AD に対して提供されます。
 
 ## <a name="logging"></a>ログの記録
+
 その他の構成オプションを使用して、ログ記録とトラブルシューティングを有効にすることができます。 これらの使用方法の詳細については、「[ログの記録](msal-logging.md)」の記事を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-[MSAL.NET を使用したクライアント アプリケーションのインスタンス化](msal-net-initializing-client-applications.md)について確認します。
 
+[MSAL.NET を使用したクライアント アプリケーションのインスタンス化](msal-net-initializing-client-applications.md)について確認します。
 [MSAL.js を使用したクライアント アプリケーションのインスタンス化](msal-js-initializing-client-applications.md)について確認します。

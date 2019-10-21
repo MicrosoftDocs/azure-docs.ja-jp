@@ -1,19 +1,19 @@
 ---
 title: Apache Kafka のスケーラビリティの向上 - Azure HDInsight
 description: スケーラビリティが向上するように Azure HDInsight 上の Apache Kafka クラスター用のマネージド ディスクを構成する方法を説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: a3c4f78e9d3b46b66cb2a893c4eed39f865172dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef32a5d3a1439cded6cd092f076e7b26c178cb7a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64711730"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122105"
 ---
 # <a name="configure-storage-and-scalability-for-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka 用に記憶域とスケーラビリティを構成する
 
@@ -23,7 +23,7 @@ HDInsight 上の Kafka は、HDInsight クラスターの仮想マシンのロ�
 
 次の図は、マネージド ディスクを使う前と使った後の HDInsight 上の Kafka を比較したものです。
 
-![HDInsight 上の Kafka で、VM ごとに単一の VHD を使った場合と、VM ごとに複数のマネージド ディスクを使った場合の比較](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
+![Kafka とマネージド ディスクのアーキテクチャ](./media/apache-kafka-scalability/kafka-with-managed-disks-architecture.png)
 
 ## <a name="configure-managed-disks-azure-portal"></a>マネージド ディスクを構成する:Azure ポータル
 
@@ -34,7 +34,7 @@ HDInsight 上の Kafka は、HDInsight クラスターの仮想マシンのロ�
     > [!NOTE]  
     > マネージド ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 Premium ディスクは、DS および GS シリーズの VM で使われます。 他の種類の VM はすべて Standard を使います。
 
-    ![ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] セクションの画像](./media/apache-kafka-scalability/set-managed-disks-portal.png)
+    ![ワーカー ノードごとのディスク数が強調表示されている [クラスター サイズ] セクション](./media/apache-kafka-scalability/set-managed-disks-portal.png)
 
 ## <a name="configure-managed-disks-resource-manager-template"></a>マネージド ディスクを構成する:Resource Manager テンプレート
 

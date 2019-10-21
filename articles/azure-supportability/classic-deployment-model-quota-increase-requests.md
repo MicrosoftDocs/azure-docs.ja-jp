@@ -5,20 +5,26 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 06/20/2019
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 70ad44eade871d52591014ee24e645b95c52f1e5
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: d803cc0dfa4a266f79b522207a8cf0f70e06cf3d
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234864"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248717"
 ---
 # <a name="classic-deployment-model"></a>クラシック デプロイ モデル
 
-クラシック デプロイ モデルとは、Azure の古い世代のデプロイ モードであり、仮想マシンと仮想マシン スケール セットに対してグローバルな vCPU クォータ制限が適用されます。 クラシック デプロイ モデルはもう推奨されていません。現在は Resource Manager モデルに置き換えられています。 この 2 つのデプロイ モデルと Resource Manager の利点の詳細については、Resource Manager デプロイ モデルのページを参照してください。 新しいサブスクリプションが作成されると、vCPU の既定のクォータが割り当てられます。 新しい VM をクラシック デプロイ モデルを使用してデプロイする場合は、常にすべてのリージョンでの新しい vCPU と既存の vCPU の使用量の合計が、クラシック デプロイ モデルで承認されている vCPU のクォータを超えないようにする必要があります。 [Azure サブスクリプションのクォータとサービスの制限に関するページ](https://aka.ms/quotalimits)で詳細を確認してください。
+クラシック デプロイ モデルは、旧世代の Azure デプロイ モデルです。 ここでは、仮想マシンと仮想マシン スケール セットにグローバル vCPU クォータ制限が適用されます。 クラシック デプロイ モデルはもう推奨されていません。現在は Resource Manager モデルに置き換えられています。 
 
-ポータルの [ヘルプとサポート] ブレードまたは [Usages + Quota]\(使用量とクォータ\) ブレードから、クラシック デプロイ モデルに対する vCPU の制限を引き上げることを要求できます。
+この 2 つのデプロイ モデルと Resource Manager を使用する利点の詳細については、[Resource Manager デプロイとクラシック デプロイ](../azure-resource-manager/resource-manager-deployment-model.md)に関するページを参照してください。
+ 
+新しいサブスクリプションが作成されると、vCPU の既定のクォータが割り当てられます。 新しい VM をクラシック デプロイ モデルを使用してデプロイする場合は、常にすべてのリージョン間で新しい vCPU と既存の vCPU の使用量の合計が、クラシック デプロイ モデルで承認されている vCPU のクォータを超えないようにする必要があります。
+ 
+クォータの詳細については、[Azure サブスクリプションとサービスの制限](https://aka.ms/quotalimits)に関するページを参照してください。
+
+ポータルの [ヘルプとサポート] ブレードまたは [Usages + Quota]\(使用量とクォータ\) ブレードから、クラシック デプロイ モデルに対する vCPU のクォータ制限を引き上げることを要求できます。
 
 ## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>**[ヘルプとサポート]** ブレードを使用してサブスクリプション レベルで VM シリーズあたりの vCPU クォータの増加を要求する
 

@@ -15,8 +15,6 @@
       href: quickstart-download-audit-report.md
     - name: ネームド ロケーションの構成
       href: quickstart-configure-named-locations.md
-    - name: Power BI コンテンツ パックのインストール
-      href: quickstart-install-power-bi-content-pack.md
     - name: ストレージ アカウントへのログのルーティング
       href: quickstart-azure-monitor-route-logs-to-storage-account.md
 - name: チュートリアル
@@ -58,8 +56,6 @@
           href: howto-troubleshoot-sign-in-errors.md
         - name: リスクのフラグ付きユーザーの修復
           href: howto-remediate-users-flagged-for-risk.md
-        - name: Azure AD レポート用の Power BI コンテンツ パックを使用する
-          href: howto-power-bi-content-pack.md
         - name: レポート API の構成の前提条件
           href: howto-configure-prerequisites-for-reporting-api.md
         - name: Azure AD ブックの使用方法
@@ -86,8 +82,6 @@
           href: troubleshoot-missing-data-download.md
         - name: レポート用の Graph API にアクセスできない
           href: troubleshoot-graph-api.md
-        - name: Power BI コンテンツ パックでのエラー
-          href: troubleshoot-content-pack.md
 - name: リファレンス
   expanded: true
   items:

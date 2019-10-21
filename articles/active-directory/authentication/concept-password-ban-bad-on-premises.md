@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 644054960e12979c231bbf50a5979bc12d343f89
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 013a14505f7ac1382bce369e161fdae834f605fc
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64694764"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200217"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Windows Server Active Directory に Azure AD パスワード保護を適用する
 
-Azure AD パスワード保護は、組織のパスワード ポリシーを強化する機能です。 オンプレミス デプロイのパスワード保護では、グローバル禁止パスワード リストと Azure AD に格納されているカスタムの禁止パスワード リストの両方を使用します。 これは、クラウドベース Azure AD と同じチェックをオンプレミスで実行します。
+Azure AD パスワード保護は、組織のパスワード ポリシーを強化する機能です。 オンプレミス デプロイのパスワード保護では、グローバル禁止パスワード リストと Azure AD に格納されているカスタムの禁止パスワード リストの両方を使用します。 これは、クラウドベース Azure AD と同じチェックをオンプレミスで実行します。 これらのチェックは、パスワードの変更時とパスワードのリセット時に実行されます。
 
 ## <a name="design-principles"></a>設計原則
 

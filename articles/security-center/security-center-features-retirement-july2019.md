@@ -8,25 +8,24 @@ ms.service: security-center
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b4367bacf13e121220f12b6587c5ad60ad59d031
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: c4fe185f5d203b1b0eba306c80cded14ad82bc98
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910569"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72438635"
 ---
+# <a name="retirement-of-security-center-features-july-2019"></a>Security Center の機能の廃止 (2019 年 7 月)
+
 > [!NOTE]
 > このドキュメントでは、2019 年 7 月 31 日に Azure Security Center から廃止された機能を一覧に示して詳しく説明します。
 >
 >
 
-
-# <a name="retirement-of-security-center-features-july-2019"></a>Security Center の機能の廃止 (2019 年 7 月)
-
 マイクロソフトでは、2019 年 7 月まで 6 か月にわたって、Azure Security Center に対していくつかの[強化策](https://azure.microsoft.com/updates/?product=security-center)を実施しました。
 これらの機能強化に伴い、2019 年 7 月 31 日をもって、いくつの冗長な機能と関連する API を Security Center から削除しました。
 
-これらの廃止される機能のほとんどは、Azure Security Center または Azure Log Analytics の新しい機能で置き換えることができます。 その他の機能は、[Azure Sentinel (プレビュー)](https://azure.microsoft.com/services/azure-sentinel/) を使用して実装できます。
+これらの廃止された機能のほとんどは、Azure Security Center または Azure Log Analytics の他の機能で置き換えることができます。 その他の機能は、[Azure Sentinel (プレビュー)](https://azure.microsoft.com/services/azure-sentinel/) を使用して実装できます。
 
 廃止された Security Center の機能は次のとおりです。
 
@@ -104,11 +103,11 @@ Security Center は、セキュリティの脅威を識別するために役立�
 
 ![[セキュリティ アラート マップ] - ボタン][10]
 
-**[セキュリティ イベント マップに移動]** ボタンを選択すると、脅威インテリジェンス ダッシュボードが開きます。 脅威インテリジェンスのダッシュボードは廃止されました。
+**[セキュリティ イベント マップに移動]** ボタンを選択すると、(廃止された) 脅威インテリジェンス ダッシュボードが開きました。
 
 ![[脅威インテリジェンス] ダッシュボード][11]
 
-ワークスペースを選択してその脅威インテリジェンス ダッシュボードを表示すると、Log Analytics のセキュリティ アラート マップ (プレビュー) 画面が開きます。 この画面は廃止されました。
+ワークスペースを選択してその脅威インテリジェンス ダッシュボードを表示すると、Log Analytics の (廃止された) セキュリティ アラート マップ (プレビュー) 画面が開きました。
 
 ![Log Analytics にある [セキュリティ アラート マップ]][12]
 
@@ -170,7 +169,7 @@ Security Center を使用すると、[Azure で統合されたセキュリティ
 
 Azure Security Center は、OS を強化するための [150 を超える推奨の規則](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)のセットを適用して、セキュリティ構成を監視します。 これらの規則は、ファイアウォール、監査、パスワード ポリシーなどに関するものです。 脆弱な構成を持つマシンが見つかった場合、Security Center はセキュリティ推奨事項を生成します。 お客様は、[[セキュリティ構成の編集] 画面](https://docs.microsoft.com/azure/security-center/security-center-customize-os-security-config)を利用して、Security Center にある既定の OS セキュリティ構成をカスタマイズできます。
 
-このプレビュー機能は廃止されました。 廃止日以降にセキュリティ構成を既定値にリセットするには、API または Powershell から[次の手順](https://aka.ms/ascresetsecurityconfigurations)を使用して実行できます
+このプレビュー機能は廃止されました。 廃止日以降にセキュリティ構成を既定値にリセットするには、API または Powershell から[次の手順](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20samples/Reset%20security%20configurations%20customization)を使用して実行できます
 
 ![セキュリティ構成の編集][17]
 

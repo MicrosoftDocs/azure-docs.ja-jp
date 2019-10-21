@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/25/2019
-ms.openlocfilehash: 31882b878f76060bdbf70a308673fc80d60c8440
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 0eaa3428234db8a7045728404bcfac5cc732dd9d
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075878"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181160"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>チュートリアル: HDInsight 上の Apache Kafka で Apache Storm を使用する
 
@@ -372,7 +372,7 @@ streams:
 | `kafka.broker.hosts` | Kafka ブローカー ホスト (ワーカー ノード)。 |
 | `kafka.topic` | トポロジで使用される Kafka トピック。 |
 | `hdfs.write.dir` | Kafka-reader トポロジによる書き込み先のディレクトリ。 |
-| `hdfs.url` | Storm クラスターで使用されるファイル システム。 Azure ストレージ アカウントの場合、値として `wasb:///` を使用します。 Azure Data Lake Storage Gen2 の場合、値として `abfs:///` を使用します。 Azure Data Lake Storage Gen1 の場合、値として `adl:///` を使用します。 |
+| `hdfs.url` | Storm クラスターで使用されるファイル システム。 Azure ストレージ アカウントの場合、値として `wasb://` を使用します。 Azure Data Lake Storage Gen2 の場合、値として `abfs://` を使用します。 Azure Data Lake Storage Gen1 の場合、値として `adl://` を使用します。 |
 
 ## <a name="create-the-clusters"></a>クラスターの作成
 

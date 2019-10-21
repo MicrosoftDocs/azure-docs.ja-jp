@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: f2868610bf9215b1414ea3ba342e3064b9c54f63
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: cb97cc5b0004442e00b970202dd01f76aa971a2a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933501"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677573"
 ---
 # <a name="number-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの number 作成済みエンティティ
 情報の定量化、表現、説明に数値を使用する方法はたくさんあります。 この記事では、可能な例の一部についてのみ説明します。 LUIS はユーザーの発話のバリエーションを解釈し、一貫性のある数値を返します。 このエンティティは既にトレーニングされているので、数値を含む発話の例をアプリケーション意図に追加する必要はありません。 
@@ -43,7 +43,7 @@ LUIS が返す JSON 応答の `resolution` フィールドには、 **`builtin.n
 ## <a name="resolution-for-prebuilt-number"></a>作成済みの number の解決
 
 
-### <a name="api-version-2x"></a>API バージョン 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 次の例では、"two dozen" (2 ダース) という発話に対する解決である 24 という値を含む LUIS からの JSON 応答を示します。
 
@@ -83,7 +83,7 @@ LUIS が返す JSON 応答の `resolution` フィールドには、 **`builtin.n
 }
 ```
 
-### <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
@@ -141,6 +141,10 @@ LUIS が返す JSON 応答の `resolution` フィールドには、 **`builtin.n
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>次の手順
+
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 [currency](luis-reference-prebuilt-currency.md)、[ordinal](luis-reference-prebuilt-ordinal.md)、[percentage](luis-reference-prebuilt-percentage.md) について学習します。 

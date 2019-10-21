@@ -2,18 +2,17 @@
 title: クイック スタート - Azure での Analysis Services サーバーのファイアウォールの構成 | Microsoft Docs
 description: Azure で Analysis Services サーバー インスタンスのファイアウォールを構成する方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
 ms.date: 07/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 52ccaa17b9994751bb9dfd54848e20aef90146c3
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: c3c8de80f90fe203029b38171502e3d4a9b9dd46
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69905879"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298532"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>クイック スタート: サーバーのファイアウォールの構成 - ポータル
 
@@ -25,7 +24,7 @@ ms.locfileid: "69905879"
 - クライアント コンピューターの 1 つまたは複数の IP アドレス範囲 (必要な場合)。
 - Power BI Premium からインポートするシナリオは現在サポートされていないことに注意してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします 
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする 
 
 [ポータルにサインイン](https://portal.azure.com)します。
 

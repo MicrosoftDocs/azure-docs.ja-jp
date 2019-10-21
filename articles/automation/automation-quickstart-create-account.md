@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.subservice: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 89f32499d02978294398aae7be21f63b5d6aa028
-ms.sourcegitcommit: 2028fc790f1d265dc96cf12d1ee9f1437955ad87
+ms.openlocfilehash: 80a175aad3c692a5dfd04c7399211c58134c5164
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64919825"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937159"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
 
@@ -24,22 +24,22 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
- https://portal.azure.com で Azure にサインインします
+[https://portal.azure.com](https://portal.azure.com ) で Azure にサインインします
 
 ## <a name="create-automation-account"></a>Automation アカウントを作成する
 
 1. Azure の左上にある **[リソースの作成]** ボタンをクリックします。
 
-1. **[管理ツール]**、**[Automation]** の順に選択します。
+1. **[IT & Management Tools]\(IT & 管理ツール\)** 、 **[Automation]** の順に選択します。
 
-1. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択し、Azure に対する認証が簡単になるアーティファクトが自動的に有効になるようにします。 Automation アカウントの作成時には、選択後に名前を変更できないことに注意してください。 "*Automation アカウント名は、リージョンおよびリソース グループごとに一意です。削除された Automation アカウントの名前はすぐには使用できない場合があります。*" 1 つの Automation アカウントで、特定のテナントのすべてのリージョンおよびサブスクリプションにわたってリソースを管理できます。 完了したら、**[作成]** をクリックして、Automation アカウントの展開を開始します。
+1. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択し、Azure に対する認証が簡単になるアーティファクトが自動的に有効になるようにします。 Automation アカウントの作成時には、選択後に名前を変更できないことに注意してください。 "*Automation アカウント名は、リージョンおよびリソース グループごとに一意です。削除された Automation アカウントの名前はすぐには使用できない場合があります。* " 1 つの Automation アカウントで、特定のテナントのすべてのリージョンおよびサブスクリプションにわたってリソースを管理できます。 完了したら、 **[作成]** をクリックして、Automation アカウントの展開を開始します。
 
     ![このページに Automation アカウントに関する情報を入力します](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
     > Automation アカウントをデプロイできる場所の最新の一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all)」を参照してください。
 
-1. デプロイが完了したら、**[すべてのサービス]** をクリックし、**[Automation アカウント]** を選択し、作成した Automation アカウントを選択します。
+1. デプロイが完了したら、 **[すべてのサービス]** をクリックし、 **[Automation アカウント]** を選択し、作成した Automation アカウントを選択します。
 
     ![Automation アカウントの概要](./media/automation-quickstart-create-account/automation-account-overview.png)
 
@@ -55,11 +55,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Runbook の概要](./media/automation-quickstart-create-account/automation-tutorial-script-runbook-overview.png)
 
-1. **[開始]** をクリックし、**[Runbook の開始]** ページで **[OK]** をクリックして Runbook を開始します。
+1. **[開始]** をクリックし、 **[Runbook の開始]** ページで **[OK]** をクリックして Runbook を開始します。
 
     ![Runbook ジョブ ページ](./media/automation-quickstart-create-account/automation-tutorial-script-job.png)
 
-1. **[ジョブの状態]** が "**実行中**" に変わったら、**[出力]** または **[すべてのログ]** をクリックして Runbook ジョブの出力を確認します。 このチュートリアル Runbook では、Azure リソースの一覧が出力されます。
+1. **[ジョブの状態]** が "**実行中**" に変わったら、 **[出力]** または **[すべてのログ]** をクリックして Runbook ジョブの出力を確認します。 このチュートリアル Runbook では、Azure リソースの一覧が出力されます。
 
 ## <a name="next-steps"></a>次の手順
 

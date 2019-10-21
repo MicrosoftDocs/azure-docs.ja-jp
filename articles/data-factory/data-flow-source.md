@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 16bc4c2651d5571bce823aa9c69f823d7fede8af
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: c3c24e9dc674ac29c8ca4d0d445cc3f572cda71e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801614"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029217"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Mapping Data Flow のソース変換 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ソース変換は、データ フローのデータ ソースを構成します。 データ フローを設計する際、最初の手順では、常にソース変換を構成します。 ソースを追加するには、データ フローのキャンバスにある **[Add Source]\(ソースの追加\)** ボックスをクリックします。
 
@@ -167,7 +167,7 @@ SQL Database ソースのデータをパーティション分割する必要は�
 
 クエリに基づいて接続をパーティション分割することを選択できます。 WHERE 述語の内容を入力します。 たとえば、「year > 1980」と入力します。
 
-Mapping Data Flow 内での最適化の詳細については、[[最適化] タブ](concepts-data-flow-optimize-tab.md)に関するページを参照してください。
+Mapping Data Flow 内での最適化の詳細については、[[最適化] タブ](concepts-data-flow-overview.md#optimize)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

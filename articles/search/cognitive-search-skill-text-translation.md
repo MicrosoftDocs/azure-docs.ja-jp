@@ -8,14 +8,13 @@ ms.service: search
 ms.workload: search
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: cmacdo
-ms.subservice: cognitive-search
-ms.openlocfilehash: 407fd246313e582a3d28a6cbb474edefecd7f0af
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.author: chalton
+ms.openlocfilehash: ddfb35cbfcfbc262f3eff0de67f5cedfc31ea27e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183317"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265706"
 ---
 #   <a name="text-translation-cognitive-skill"></a>テキスト翻訳コグニティブ スキル
 

@@ -6,15 +6,15 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: e16cac281b77f3ca93d9ef358ae806203bc8b663
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1412f7d822d83a8712d27dd4e86311567d6ac714
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348509"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029301"
 ---
 # <a name="azure-data-factory-pivot-transformation"></a>Azure Data Factory のピボット変換
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ADF Data Flow のピボットを集計として使用します。この場合、1 つまたは複数のグループ化された列が、個々の列に変換された個別の行の値を持ちます。 基本的には、行の値を新しい列にピボット (データをメタデータに変換) することができます。
 
@@ -55,6 +55,12 @@ ADF Data Flow のピボットを集計として使用します。この場合、
 ## <a name="pivot-metadata"></a>ピボットのメタデータ
 
 ピボット変換では、受信データに基づいて動的に変化する新しい列名が生成されます。 ピボット キーによって、新しい列名のそれぞれに値が生成されます。 個々の値を指定せず、ピボット キーの一意の値ごとに動的な列名を作成する場合は、UI の [Inspect]\(検査\) にメタデータが表示されず、シンク変換に列は反映されません。 ピボット キーに値を設定すると、ADF が新しい列名を特定できるようになり、その列名を検査とシンクのマッピングで使用できます。
+
+### <a name="generate-a-new-model-from-dynamic-columns"></a>動的な列からの新しいモデルの生成
+
+ピボットでは、行の値に基づいて動的に新しい列名が生成されます。 データ フローで後から参照できるように、それらの新しい列をメタデータに変換できます。 これを行うには、[データのプレビュー] タブをクリックします。ピボット変換によって生成されたすべての新しい列が表示され、テーブル ヘッダーに "誤差" アイコンが表示されます。 [Map drifted]\(誤差のマップ\) ボタンをクリックすると、それらの新しい列がメタデータに変換され、データ フローのモデルの一部になります。
+
+![ピボット列](media/data-flow/newpivot1.png "[Map drifted]\(誤差のマップ\) ピボット列")
 
 ### <a name="landing-new-columns-in-sink"></a>シンクでの新しい列の取得
 

@@ -8,12 +8,12 @@ services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: yahajiza
-ms.openlocfilehash: ec36bef9c2b65a5c88a52621bbf3a1db708c235c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879215"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932867"
 ---
 # <a name="manage-models-in-the-repository"></a>リポジトリ内のモデルを管理する
 
@@ -41,13 +41,13 @@ IoT プラグ アンド プレイ プレビューのモデル リポジトリに
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI には、IoT プラグ アンド プレイのパブリック リポジトリと会社リポジトリ内のデバイス機能のモデルとインターフェイスを管理するためのコマンドが用意されています。
+Azure CLI には、IoT プラグ アンド プレイのパブリック リポジトリと会社リポジトリ内のデバイス機能のモデルとインターフェイスを管理するためのコマンドが用意されています。 詳細については、「[Azure CLI 用 Azure IoT 拡張機能のインストールおよび使用のハウツー ガイド](./howto-install-pnp-cli.md)」を参照してください。
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
 Visual Studio Code で **[Model Repository]** \(モデル リポジトリ\) ビューを開くには、次のようにします。
 
-1. Visual Studio Code を開き、**Ctrl + Shift + P** キーを押し、**IoT Plug and Play:Open Model Repository**\(IoT プラグ アンド プレイ: モデル リポジトリを開く\) と入力して選択します。
+1. Visual Studio Code を開き、**Ctrl + Shift + P** キーを押し、「**IoT Plug and Play:Open Model Repository**」(IoT プラグ アンド プレイ: モデル リポジトリを開く) と入力して選択します。
 
 1. **[Open Public Model Repository]** \(パブリック モデル リポジトリを開く\) または **[Open Organizational Model Repository]** \(組織のモデル リポジトリを開く\) を選択できます。 会社のモデル リポジトリの場合、モデル リポジトリの接続文字列を入力する必要があります。 この接続文字列は、[Azure Certified for IoT ポータル](https://preview.catalog.azureiotsolutions.com)の **[Company repository]** \(会社リポジトリ\) の **[Connection strings]** \(接続文字列\) タブで確認できます。
 
@@ -55,7 +55,7 @@ Visual Studio Code で **[Model Repository]** \(モデル リポジトリ\) ビ�
 
     このビューを使用して、デバイス機能のモデルとインターフェイスを追加、ダウンロード、削除します。 フィルターを使用して、一覧内の特定の項目を検索することができます。
 
-1. 会社のモデル リポジトリとパブリック モデル リポジトリを切り替えるには、**Ctrl + Shift + P** キーを押し、**IoT Plug and Play:Sign out Model Repository**\(IoT プラグ アンド プレイ: モデル リポジトリからサインアウトする\) と入力して選択します。 その後、**IoT Plug and Play:Open Model Repository**\(IoT プラグ アンド プレイ: モデル リポジトリを開く\) コマンドを再度使用します。
+1. 会社のモデル リポジトリとパブリック モデル リポジトリを切り替えるには、**Ctrl + Shift + P** キーを押し、「**IoT Plug and Play:Sign out Model Repository**」(IoT プラグ アンド プレイ: モデル リポジトリからサインアウトする) と入力して選択します。 次に、 **[IoT Plug and Play:Open Model Repository]\(IoT プラグ アンド プレイ: モデル リポジトリを開く\)** コマンドをもう一度使用します。
 
 > [!NOTE]
 > VS Code では、パブリック モデル リポジトリは読み取り専用です。 Microsoft パートナーは、[Azure Certified for IoT ポータル](https://preview.catalog.azureiotsolutions.com)でパブリック リポジトリを更新できます。

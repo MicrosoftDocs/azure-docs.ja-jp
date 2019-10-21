@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: magoedte
-ms.openlocfilehash: cf06004c70609dbea59a47b207e3568299260a82
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: cbb471d337bd386b6c5f2c7a960565ef29855c9c
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594441"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338235"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Azure Policy を使用して Azure Monitor for VMs (プレビュー) を有効にする
 
@@ -76,13 +76,13 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 - スコープにイニシアチブを割り当てる: 管理グループ、サブスクリプション、またはリソース グループ。
 - コンプライアンスの結果をレビューおよび修復する。
 
-続ける前に、Azure Policy の割り当ての詳細について、[Azure Policy の概要](../../governance/policy/overview.md#policy-assignment)および[管理グループの概要](../../governance/management-groups/index.md)に関する記事をご覧ください。
+続ける前に、Azure Policy の割り当ての詳細について、[Azure Policy の概要](../../governance/policy/overview.md#policy-assignment)および[管理グループの概要](../../governance/management-groups/overview.md)に関する記事をご覧ください。
 
 ### <a name="policies-for-azure-vms"></a>Azure VM のポリシー
 
 次の表は、Azure VM のポリシー定義の一覧を示しています。
 
-|名前 |説明 |Type |
+|名前 |説明 |種類 |
 |-----|------------|-----|
 |\[プレビュー\]:Azure Monitor for VMs の有効化 |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) 内の仮想マシン に対して Azure Monitor を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 |イニシアティブ |
 |\[プレビュー\]:依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |
@@ -96,7 +96,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 次の表は、Azure 仮想マシン スケール セットのポリシー定義の一覧を示しています。
 
-|名前 |説明 |Type |
+|名前 |説明 |種類 |
 |-----|------------|-----|
 |\[プレビュー\]:仮想マシン スケール セットに対して Azure Monitor を有効にする |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) 内の仮想マシン スケール セットに対して Azure Monitor を有効にします。 Log Analytics ワークスペースをパラメーターとして受け取ります。 注:スケール セットのアップグレード ポリシーが [手動] に設定されている場合は、そのセット内のすべての VM でアップグレードを呼び出して、それらの VM に拡張機能を適用します。 CLI では、これは az vmss update-instances です。 |イニシアティブ |
 |\[プレビュー\]:仮想マシン スケール セットにおける依存関係エージェントのデプロイの監査 - 一覧にない VM イメージ (OS) |VM イメージ (OS) が一覧で定義されておらず、このエージェントがインストールされていない場合は、仮想マシン スケール セットを非準拠として報告します。 |ポリシー |
@@ -108,7 +108,7 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 ここではスタンドアロン ポリシー (イニシアティブには含まれません) について説明します。
 
-|名前 |説明 |Type |
+|名前 |説明 |種類 |
 |-----|------------|-----|
 |\[プレビュー\]:VM の Log Analytics ワークスペースの監査 - 不一致の報告 |ポリシーまたはイニシアチブの割り当てで指定された Log Analytics ワークスペースに VM がロギングされていない場合は、それらの VM を非準拠として報告します。 |ポリシー |
 
@@ -210,5 +210,5 @@ Azure PowerShell または Azure Resource Manager テンプレートを使用し
 
 - 正常性機能の使用方法については、[Azure Monitor for VMs の正常性の表示](vminsights-health.md)に関する記事をご覧ください。 
 - 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。 
-- VM のパフォーマンスでのボトルネックや全体的な使用状況を確認するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事をご覧ください。 
+- VM のパフォーマンスでのボトルネックや全体的な使用率を識別するには、[Azure VM のパフォーマンスの表示](vminsights-performance.md)に関する記事をご覧ください。 
 - 検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs のマップの表示](vminsights-maps.md)に関する記事をご覧くださいい。

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 15724adfc6eb875f3d2d5b6d3ecbbb54135a7265
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 90ccc89f80da7c2abce324c077f0fb1a436b8d44
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671430"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72171019"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Azure の仮想マシンでインフラストラクチャ自動化ツールを使用する
 Azure の仮想マシン (VM) を一貫した方法で大規模に作成および管理するには、一般的に、何らかの形で自動化することが必要です。 Azure インフラストラクチャのデプロイと管理のライフサイクル全体を自動化できるツールやソリューションはたくさんあります。 この記事では、Azure で使用できるインフラストラクチャ自動化ツールの一部を紹介します。 これらのツールは、一般的に、次のいずれかのアプローチに適しています。
@@ -64,15 +64,15 @@ Microsoft は、動作保証済み Linux ディストリビューションのパ
 
 
 ## <a name="powershell-dsc"></a>PowerShell DSC
-[PowerShell Desired State Configuration (DSC)](https://msdn.microsoft.com/powershell/dsc/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC は、[Open Management Infrastructure (OMI) サーバー](https://collaboration.opengroup.org/omi/)を介して Linux で使用することもできます。
+[PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) は、ターゲット マシンの構成を定義するための管理プラットフォームです。 DSC は、[Open Management Infrastructure (OMI) サーバー](https://collaboration.opengroup.org/omi/)を介して Linux で使用することもできます。
 
 DSC 構成では、マシンにインストールするものと、ホストを構成する方法を定義します。 Local Configuration Manager (LCM) エンジンは、プッシュされた構成に基づいて要求されたアクションを処理する各ターゲット ノードで実行されます。 プル サーバーは、中央ホストで実行され、DSC 構成と関連リソースを格納する Web サービスです。 プル サーバーは、各ターゲット ホスト上の LCM エンジンと通信して、必要な構成を提供し、コンプライアンスについて報告します。
 
 以下の項目について説明します。
 
 - [基本的な DSC 構成を作成する](https://msdn.microsoft.com/powershell/dsc/quickstarts/website-quickstart)。
-- [DSC プル サーバーを構成する](https://msdn.microsoft.com/powershell/dsc/pullserver)。
-- [Linux 用の DSC を使用する](https://msdn.microsoft.com/powershell/dsc/lnxgettingstarted)。
+- [DSC プル サーバーを構成する](/powershell/scripting/dsc/pull-server/pullserver)。
+- [Linux 用の DSC を使用する](/powershell/scripting/dsc/getting-started/lnxgettingstarted)。
 
 
 ## <a name="azure-custom-script-extension"></a>Azure カスタム スクリプト拡張機能

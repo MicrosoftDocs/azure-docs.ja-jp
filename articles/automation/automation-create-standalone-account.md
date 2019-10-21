@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32fafaeb6332ca0e76dbc8d72f11872a82ca1cbe
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 1cdea358daa3bd0f9e738a0454613ea774a0e6dc
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779150"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146644"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
 
@@ -28,7 +28,6 @@ Azure Portal で Automation アカウントを作成すると、次のアカウ�
   * Azure Active Directory (Azure AD) にサービス プリンシパルを作成します。
   * 証明書を作成します。
   * Runbook を使用して Azure Resource Manager リソースを管理する、共同作成者のロールベースのアクセス制御 (RBAC) を割り当てます。
-* **クラシック実行アカウント**。 このアカウントは、管理証明書をアップロードします。 この証明書は、Runbook を使用してクラシック リソースを管理します。
 
 これらのアカウントが作成されると、オートメーションのニーズを満たす Runbook の作成とデプロイをすばやく開始することができます。
 
@@ -89,7 +88,7 @@ Azure Portal で Azure Automation アカウントを作成するには、以下�
 
 Automation アカウントが正常に作成されると、いくつかのリソースが自動的に作成されます。 これらの作成後、Runbook を保持しない場合は安全に削除できます。 実行アカウントを使用して、Runbook でアカウントに対する認証を行うことができます。別の実行アカウントを作成する場合や実行アカウントを必要としない場合を除き、実行アカウントは残しておく必要があります。 実行アカウントのリソースを次の表に示します。
 
-| Resource | 説明 |
+| リソース | 説明 |
 | --- | --- |
 | AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法を示す、サンプルのグラフィカルな Runbook。 この Runbook は、すべての Resource Manager リソースを取得します。 |
 | AzureAutomationTutorialScript Runbook |実行アカウントを使用した認証の方法を示す、サンプルの PowerShell Runbook。 この Runbook は、すべての Resource Manager リソースを取得します。 |
@@ -97,14 +96,13 @@ Automation アカウントが正常に作成されると、いくつかのリソ
 | AzureRunAsCertificate |Automation アカウントの作成時に自動的に作成される証明書資産、または既存のアカウント用に PowerShell スクリプトを使用して作成される証明書資産。 この証明書は、Runbook から Azure Resource Manager リソースを管理できるよう、Azure に対する認証を行います。 この証明書には、1 年の有効期間があります。 |
 | AzureRunAsConnection |Automation アカウントの作成時に自動的に作成される接続資産、または既存のアカウント用に PowerShell スクリプトを使用して作成される接続資産。 |
 
-クラシック実行アカウントのリソースを次の表に示します。
+## <a name="classic-run-as-accounts"></a>クラシック実行アカウント
 
-| Resource | 説明 |
-| --- | --- |
-| AzureClassicAutomationTutorial Runbook |サンプルのグラフィカル Runbook。 Runbook は、クラシック実行アカウント (証明書) を使用して、サブスクリプション内のすべてのクラシック VM を取得します。 その後、VM の名前と状態が表示されます。 |
-| AzureClassicAutomationTutorial Script Runbook |サンプルの PowerShell Runbook。 Runbook は、クラシック実行アカウント (証明書) を使用して、サブスクリプション内のすべてのクラシック VM を取得します。 その後、VM の名前と状態が表示されます。 |
-| AzureClassicRunAsCertificate |自動的に作成される証明書資産。 この証明書は、Runbook から Azure クラシック リソースを管理できるように、Azure に対する認証を行います。 この証明書には、1 年の有効期間があります。 |
-| AzureClassicRunAsConnection |自動的に作成される接続資産。 この資産は、Runbook から Azure クラシック リソースを管理できるように、Azure に対する認証を行います。 |
+Azure Automation アカウントを作成するとき、クラシック実行アカウントは既定では作成されなくなりました。 クラシック実行アカウントがまだ必要な場合は、次の手順を実行してください。
+
+1. **[Automation アカウント]** ページで、 **[アカウントの設定]** の **[実行アカウント]** を選択します。
+2. **[Azure クラシック実行アカウント]** を選択します。
+3. **[作成]** をクリックして、クラシック実行アカウントの作成に進みます。
 
 ## <a name="next-steps"></a>次の手順
 

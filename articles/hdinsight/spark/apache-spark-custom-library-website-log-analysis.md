@@ -2,18 +2,18 @@
 title: Spark で Python ライブラリを使用して Web サイト ログを分析する - Azure
 description: この Notebook では、Azure HDInsight の Spark でカスタム ライブラリを使用してログ データを分析する方法を示します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.author: hrasheed
-ms.openlocfilehash: 5492f4865e464cf8bedaee6e9b0ab25532e21459
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 6d23e8cfa8d20169d2b63723138b60dafb1069de
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448754"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146993"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>HDInsight 上の Apache Spark クラスターでカスタム Python ライブラリを使用して Web サイト ログを分析する
 
@@ -21,8 +21,6 @@ ms.locfileid: "67448754"
 
 > [!TIP]  
 > この記事はまた、HDInsight で作成する Spark (Linux) クラスター上の Jupyter Notebook としても使用できます。 Notebook エクスペリエンスにより、Notebook 自体から Python のスニペットを実行することができます。 Notebook から記事を実行するには、Spark クラスターを作成し、Jupyter Notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`) を起動し、**PySpark** フォルダーにある **Analyze logs with Spark using a custom library.ipynb (カスタム library.ipynb を使用した Spark でのログの分析)** Notebook を実行します。
->
->
 
 **前提条件:**
 
@@ -37,18 +35,19 @@ ms.locfileid: "67448754"
 
 データが Apache Hive テーブルとして保存されたら、次のセクションでは、Power BI や Tableau などの BI ツールを使用してその Hive テーブルに接続します。
 
-1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]**  >  **[HDInsight クラスター]** でクラスターに移動することもできます。   
+1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]**  >  **[HDInsight クラスター]** でクラスターに移動することもできます。
+
 2. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、 **[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
    > [!NOTE]
    > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   >
-   >
+
 3. 新しい Notebook を作成します。 **[新規]** をクリックし、 **[PySpark]** をクリックします。
 
-    ![新しい Jupyter Notebook の作成](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook の作成")
+    ![新しい Apache Jupyter Notebook の作成](./media/apache-spark-custom-library-website-log-analysis/hdinsight-create-jupyter-notebook.png "新しい Jupyter Notebook の作成")
+
 4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
 
     ![Notebook の名前を指定](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "Notebook の名前を指定")
@@ -57,13 +56,11 @@ ms.locfileid: "67448754"
         from pyspark.sql import Row
         from pyspark.sql.types import *
 
-
-1. クラスターにあらかじめ用意されているサンプル ログ データを使用して、RDD を作成します。 クラスターに関連付けられている既定のストレージ アカウント内のデータ ( **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**) にアクセスすることができます。
+6. クラスターにあらかじめ用意されているサンプル ログ データを使用して、RDD を作成します。 クラスターに関連付けられている既定のストレージ アカウント内のデータ ( **\HdiSamples\HdiSamples\WebsiteLogSampleData\SampleLog\909f2b.log**) にアクセスすることができます。
 
         logs = sc.textFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/909f2b.log')
 
-
-1. 前の手順が正常に完了したことを確認するために、サンプル ログ セットを取得します。
+7. 前の手順が正常に完了したことを確認するために、サンプル ログ セットを取得します。
 
         logs.take(5)
 
@@ -80,12 +77,12 @@ ms.locfileid: "67448754"
          u'2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step4.png X-ARR-LOG-ID=4bea5b3d-8ac9-46c9-9b8c-ec3e9500cbea 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 72177 871 47']
 
 ## <a name="analyze-log-data-using-a-custom-python-library"></a>カスタム Python ライブラリを使用してログ データを分析する
+
 1. 上の出力の最初の数行にはヘッダー情報が含まれており、残りの各行は、そのヘッダーで説明されているスキーマと一致します。 このようなログの解析は、複雑である場合があります。 そこで、このようなログの解析を簡単にするために、カスタム Python ライブラリ (**iislogparser.py**) を使用します。 既定では、このライブラリは、HDInsight の Spark クラスターの **/HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py**に含まれます。
 
     しかし、このライブラリは `PYTHONPATH` に含まれていないため、`import iislogparser` のような import ステートメントで使用することはできません。 このライブラリを使用するには、すべてのワーカー ノードに配布する必要があります。 次のスニペットを実行します。
 
         sc.addPyFile('wasb:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
-
 
 1. `iislogparser` には `parse_log_line` 関数があり、この関数はログ行がヘッダー行である場合は `None` を返し、ログ行に到達すると `LogLine` クラスのインスタンスを返します。 次のように `LogLine` クラスを使用して、RDD からログ行だけを抽出します。
 
@@ -93,7 +90,8 @@ ms.locfileid: "67448754"
             import iislogparser
             return iislogparser.parse_log_line(l)
         logLines = logs.map(parse_line).filter(lambda p: p is not None).cache()
-2. 手順が正常に完了したことを確認するために、いくつかの抽出されたログ行を取得します。
+
+1. 手順が正常に完了したことを確認するために、いくつかの抽出されたログ行を取得します。
 
        logLines.take(2)
 
@@ -105,7 +103,8 @@ ms.locfileid: "67448754"
 
        [2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step2.png X-ARR-LOG-ID=2ec4b8ad-3cf0-4442-93ab-837317ece6a1 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 53175 871 46,
         2014-01-01 02:01:09 SAMPLEWEBSITE GET /blogposts/mvc4/step3.png X-ARR-LOG-ID=9eace870-2f49-4efd-b204-0d170da46b4a 80 - 1.54.23.196 Mozilla/5.0+(Windows+NT+6.3;+WOW64)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/31.0.1650.63+Safari/537.36 - http://weblogs.asp.net/sample/archive/2007/12/09/asp-net-mvc-framework-part-4-handling-form-edit-and-post-scenarios.aspx www.sample.com 200 0 0 51237 871 32]
-3. `LogLine` クラスには、いくつかの便利なメソッドもあります。たとえば、`is_error()` は、ログ エントリにエラー コードが含まれているかどうかを返します。 これを使用して、抽出したログ行内のエラー数を計算し、別のファイルにすべてのエラーを記録します。
+
+1. `LogLine` クラスには、いくつかの便利なメソッドもあります。たとえば、`is_error()` は、ログ エントリにエラー コードが含まれているかどうかを返します。 これを使用して、抽出したログ行内のエラー数を計算し、別のファイルにすべてのエラーを記録します。
 
        errors = logLines.filter(lambda p: p.is_error())
        numLines = logLines.count()
@@ -120,7 +119,7 @@ ms.locfileid: "67448754"
        # -----------------
 
        There are 30 errors and 646 log entries
-4. **Matplotlib** を使用して、データを視覚化することもできます。 たとえば、要求の実行が長時間になる原因を特定するために、平均して最も処理時間がかかっているファイルを見つけたい場合があります。
+1. **Matplotlib** を使用して、データを視覚化することもできます。 たとえば、要求の実行が長時間になる原因を特定するために、平均して最も処理時間がかかっているファイルを見つけたい場合があります。
    次のスニペットでは、要求を処理するために最も時間がかかっている上位 25 件のリソースを取得します。
 
        def avgTimeTakenByKey(rdd):
@@ -162,7 +161,8 @@ ms.locfileid: "67448754"
         (u'/blogposts/sqlvideos/sqlvideos.jpg', 102.0),
         (u'/blogposts/mvcrouting/step21.jpg', 101.0),
         (u'/blogposts/mvc4/step1.png', 98.0)]
-5. また、この情報をプロットの形式で表示することもできます。 プロットを作成する最初の手順として、まず、一時テーブル **AverageTime**を作成します。 テーブル グループは、特定の時間に異常な遅延の急増があったかどうかがわかるように、ログを時間でグループ化します。
+
+1. また、この情報をプロットの形式で表示することもできます。 プロットを作成する最初の手順として、まず、一時テーブル **AverageTime**を作成します。 テーブル グループは、特定の時間に異常な遅延の急増があったかどうかがわかるように、ログを時間でグループ化します。
 
        avgTimeTakenByMinute = avgTimeTakenByKey(logLines.map(lambda p: (p.datetime.minute, p))).sortByKey()
        schema = StructType([StructField('Minutes', IntegerType(), True),
@@ -170,7 +170,8 @@ ms.locfileid: "67448754"
 
        avgTimeTakenByMinuteDF = sqlContext.createDataFrame(avgTimeTakenByMinute, schema)
        avgTimeTakenByMinuteDF.registerTempTable('AverageTime')
-6. 次に、以下の SQL クエリを実行して、 **AverageTime** テーブル内のすべてのレコードを取得できます。
+
+1. 次に、以下の SQL クエリを実行して、 **AverageTime** テーブル内のすべてのレコードを取得できます。
 
        %%sql -o averagetime
        SELECT * FROM AverageTime
@@ -179,10 +180,11 @@ ms.locfileid: "67448754"
 
    出力は次のように表示されます。
 
-   ![SQL クエリ出力](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL クエリ出力")
+   ![hdinsight jupyter sql クエリ出力](./media/apache-spark-custom-library-website-log-analysis/hdinsight-jupyter-sql-qyery-output.png "SQL クエリ出力")
 
    `%%sql` マジックについて詳しくは、「[%%sql マジックでサポートされるパラメーター](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic)」をご覧ください。
-7. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成できます。 プロットはローカルに保持された **averagetime** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。 これにより、コードは Jupyter サーバーでローカルに実行されます。
+
+1. データの視覚効果の構築に使用するライブラリ、Matplotlib を使用して、プロットを作成できます。 プロットはローカルに保持された **averagetime** データフレームから作成する必要があるため、コード スニペットは `%%local` マジックで始める必要があります。 これにより、コードは Jupyter サーバーでローカルに実行されます。
 
        %%local
        %matplotlib inline
@@ -194,8 +196,9 @@ ms.locfileid: "67448754"
 
    出力は次のように表示されます。
 
-   ![Matplotlib の出力](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib の出力")
-8. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
+   ![apache spark web ログ分析プロット](./media/apache-spark-custom-library-website-log-analysis/hdinsight-apache-spark-web-log-analysis-plot.png "Matplotlib 出力")
+
+1. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 
 ## <a name="seealso"></a>関連項目
 * [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)

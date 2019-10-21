@@ -4,7 +4,7 @@ description: この記事では、Microsoft Azure Cloud Services の接続とネ
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: eef99c7d7a108618b570988dd5d7ec9c2fdb8db4
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68941749"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154868"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題:よく寄せられる質問 (FAQ)
 
@@ -103,7 +103,7 @@ IIS の URL の書き換えモジュールを使って、クラウド サービ�
 - [既存のクラウド サービスの IP アドレスを予約する](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
 - [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
-お使いのロールに複数のインスタンスがある場合、クラウド サービスに RIP を関連付けることでダウンタイムが発生することはありません。また、お使いの Azure データセンターの IP 範囲をホワイトリストに登録することができます。[Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=41653)で、Azure IP 範囲の一覧を入手できます。
+お使いのロールに複数のインスタンスがある場合、クラウド サービスに RIP を関連付けることでダウンタイムが発生することはありません。 また、お使いの Azure データセンターの IP 範囲を許可リストに登録することができます。 [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=41653)で、Azure IP 範囲の一覧を入手できます。
 
 このファイルには、Azure データセンターで使用される IP アドレス範囲 (計算、SQL、およびストレージの範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 このファイルに現れる新しい範囲は、少なくとも 1 週間はデータセンターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 Azure ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに気付くかもしれません。
 

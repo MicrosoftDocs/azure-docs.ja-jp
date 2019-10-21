@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 04/22/2018
 ms.author: yegu
-ms.openlocfilehash: a93d21b07dc486f743694ee99f60018ed4ef517c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3babb213f633586786c0015c27fae50e44369df
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943869"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815656"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Azure Cache for Redis の ASP.NET 出力キャッシュ プロバイダー
 
@@ -59,7 +59,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 
 属性の構成には、Microsoft Azure ポータルのキャッシュ ブレードの値を使用してください。その他の値は適宜構成します。 キャッシュのプロパティにアクセスする方法については、「[Configure Azure Cache for Redis settings (Azure Cache for Redis の設定を構成する)](cache-configure.md#configure-azure-cache-for-redis-settings)」を参照してください。
 
-| Attribute | Type | 既定値 | 説明 |
+| Attribute | 種類 | Default | 説明 |
 | --------- | ---- | ------- | ----------- |
 | *host* | string | "localhost" | Redis サーバーの IP アドレスまたはホスト名 |
 | *port* | 正の整数 | 6379 (非 SSL)<br/>6380 (SSL) | Redis サーバー ポート |
@@ -171,7 +171,7 @@ namespace MyCompany.Redis
 
         public object Deserialize(byte[] data)
         {
-            if (data == null)6t6
+            if (data == null)
             {
                 return null;
             }

@@ -1,7 +1,7 @@
 ---
 title: Python 開発環境をセットアップする
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で作業する場合の、開発環境を構成する方法について説明します。 この記事では、Conda 環境の使用方法、構成ファイルの作成方法、独自のクラウドベースのノートブック サーバー、Jupyter Notebook、Azure Databricks、IDE、コード エディター、および Data Science Virtual Machine の構成方法を説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で作業する場合の、開発環境を構成する方法について説明します。 この記事では、Conda 環境の使用方法、構成ファイルの作成方法、独自のクラウドベースのノートブック サーバー、Jupyter Notebook、Azure Databricks、IDE、コード エディター、および Data Science Virtual Machine の構成方法を説明します。
 services: machine-learning
 author: rastala
 ms.author: roastala
@@ -11,16 +11,16 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 39daff8be5ac072479463dc10c9041cda6b7b628
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: b4d7a21e8d9b660463f508513c158032be81a35c
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860575"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686980"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Azure Machine Learning のための開発環境を構成する
 
-この記事では、Azure Machine Learning service を操作する開発環境を構成する方法について説明します。 Azure Machine Learning service は、プラットフォームに依存しません。 開発環境のハード要件は Python 3 だけです。 Anaconda や Virtualenv などの分離環境もお勧めします。
+この記事では、Azure Machine Learning を操作する開発環境を構成する方法について説明します。 Azure Machine Learning は、プラットフォームに依存しません。 開発環境のハード要件は Python 3 だけです。 Anaconda や Virtualenv などの分離環境もお勧めします。
 
 次の表では、この記事で説明されている各開発環境と、その長所および短所を示します。
 
@@ -36,11 +36,11 @@ ms.locfileid: "70860575"
 
 * [Jupyter Notebook](#jupyter):Jupyter Notebook を既に使用している場合、SDK にはインストールする必要のある追加機能がいくつかあります。
 
-* [Visual Studio Code](#vscode):Visual Studio Code を使用する場合は、いくつかの有用な拡張機能をインストールできます。
+* [Visual Studio Code](#vscode):Visual Studio Code を使用する場合、[Azure Machine Learning 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)には、Python の幅広い言語サポートに加えて、Azure Machine Learning サービスを使いやすく、生産性を高めるための機能が含まれています。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Machine Learning ワークスペース。 ワークスペースを作成するには、「[Create an Azure Machine Learning service workspace](how-to-manage-workspace.md)」 (Azure Machine Learning サービス ワークスペースの作成) を参照してください。 独自の[クラウドベースのノートブック サーバー](#notebookvm)、[DSVM](#dsvm)、または [Azure Databricks](#aml-databricks) を使い始めるために必要なものは、ワークスペースだけです。
+Azure Machine Learning ワークスペース。 ワークスペースを作成するには、[Azure Machine Learning ワークスペース](how-to-manage-workspace.md)の作成に関するページを参照してください。 独自の[クラウドベースのノートブック サーバー](#notebookvm)、[DSVM](#dsvm)、または [Azure Databricks](#aml-databricks) を使い始めるために必要なものは、ワークスペースだけです。
 
 [ローカル コンピューター](#local)、[Jupyter Notebook サーバー](#jupyter)、または [Visual Studio Code](#vscode) 用の SDK 環境をインストールするには、以下も必要です。
 
@@ -70,13 +70,13 @@ Azure Machine Learning ワークスペース。 ワークスペースを作成�
   + 複数のディープ ラーニング フレームワーク
 
 
-  コードを書く場合、VM にはチュートリアルやサンプルが含まれているため、Azure Machine Learning service を使用する方法について調べて学習することができます。 サンプル ノートブックはワークスペースの Azure Blob Storage アカウントに保存されており、VM 間で共有することができます。 実行されると、データ ストアと、ワークスペースのコンピューティング リソースにもアクセスできます。
+  コードを書く場合、VM にはチュートリアルやサンプルが含まれているため、Azure Machine Learning を使用する方法について調べて学習することができます。 サンプル ノートブックはワークスペースの Azure Blob Storage アカウントに保存されており、VM 間で共有することができます。 実行されると、データ ストアと、ワークスペースのコンピューティング リソースにもアクセスできます。
 
 + **設定が簡単**:Azure Machine Learning ワークスペース内から、いつでも作成できます。 名前を指定し、Azure VM の種類を指定するだけです。 今すぐお試しいただくには、「[チュートリアル:環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了することです。
 
 + **カスタマイズ可能**。 セキュリティで保護されたマネージド VM オファリングであるにも関わらず、ハードウェアの機能へのフル アクセスが維持されており、望みどおりにカスタマイズできます。 たとえば、最新の NVidia V100 を使用する VM をすばやく作成し、新しいニューラル ネットワーク アーキテクチャをステップバイステップでデバッグできます。
 
-ノートブック VM の課金を停止するには、[ノートブック VM を停止します](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。 
+ノートブック VM の課金を停止するには、[ノートブック VM を停止します](tutorial-1st-experiment-sdk-train.md#clean-up-resources)。
 
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
@@ -90,7 +90,7 @@ DSVM は、カスタマイズされた仮想マシン (VM) イメージです。
 
 Azure Machine Learning SDK は、DSVM の Ubuntu バージョンまたは Windows バージョンで動作します。 ただし、DSVM をコンピューティング先としても使用することを計画している場合は、Ubuntu のみがサポートされます。
 
-DSVM を開発環境として使用するには、以下の手順を実行します。
+DSVM を開発環境として使用するには
 
 1. 次のいずれかの環境で、DSVM を作成します。
 
@@ -145,13 +145,13 @@ DSVM を開発環境として使用するには、以下の手順を実行しま
     print(azureml.core.VERSION)
     ```
 
-1. Azure Machine Learning service ワークスペースを使用するよう DSVM を構成するには、「[ワークスペース構成ファイルを作成する](#workspace)」セクションを参照してください。
+1. Azure Machine Learning ワークスペースを使用するよう DSVM を構成するには、「[ワークスペース構成ファイルを作成する](#workspace)」セクションを参照してください。
 
 詳細については、「[Data Science Virtual Machines](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)」を参照してください。
 
 ## <a id="local"></a>ローカル コンピューター
 
-ローカル コンピューター (リモート仮想マシンの場合もある) を使用している場合は、以下の手順を実行して、Anaconda 環境を作成し、SDK をインストールします。
+ローカル コンピューター (リモート仮想マシンの場合もある) を使用している場合は、Anaconda 環境を作成し、SDK をインストールします。 次に例を示します。
 
 1. まだお持ちでない場合は、[Anaconda](https://www.anaconda.com/distribution/#download-section) (Python 3.7 バージョン) をダウンロードしてインストールしてください。
 
@@ -185,7 +185,7 @@ DSVM を開発環境として使用するには、以下の手順を実行しま
 
 1. 次のコマンドを使用して、パッケージをインストールします。
 
-    このコマンドで、ベース Azure Machine Learning SDK が、notebook extra および automl extra と一緒にインストールされます。 `automl` extra は大規模なインストールになるので、自動化された機械学習の実験を実行する予定がない場合はブラケットから削除できます。 `automl` extra には、既定で Azure Machine Learning Data Prep SDK も依存関係として含まれます。
+    このコマンドで、ベース Azure Machine Learning SDK が、notebook extra および `automl` extra と一緒にインストールされます。 `automl` extra は大規模なインストールになるので、自動化された機械学習の実験を実行する予定がない場合はブラケットから削除できます。 `automl` extra には、既定で Azure Machine Learning Data Prep SDK も依存関係として含まれます。
 
     ```shell
     pip install azureml-sdk[notebooks,automl]
@@ -221,14 +221,16 @@ DSVM を開発環境として使用するには、以下の手順を実行しま
 
 Jupyter Notebook は、[Jupyter プロジェクト](https://jupyter.org/)の一部です。 これらは、ライブ コードと説明のテキストとグラフィックスが混在するドキュメントを作成する対話型のコーディング エクスペリエンスを提供します。 また、Jupyter Notebook は、ドキュメントにコード セクションの出力を保存できるので、結果を他のユーザーと共有する優れた方法です。 Jupyter Notebook は、さまざまなプラットフォームにインストールできます。
 
-「[ローカル コンピューター](#local)」のセクションにある手順を実行すると、Anaconda 環境で Jupyter Notebook を実行するのに必要なコンポーネントがインストールされます。 Jupyter Notebook 環境内でこれらのコンポーネントを有効にするには、以下の手順を実行します。
+「[ローカル コンピューター](#local)」のセクションにある手順を実行すると、Anaconda 環境で Jupyter Notebook を実行するのに必要なコンポーネントがインストールされます。
+
+Jupyter Notebook 環境内でこれらのコンポーネントを有効にするには
 
 1. Anaconda プロンプトを開いて、環境をアクティブにします。
 
     ```shell
     conda activate myenv
     ```
-    
+
 1. サンプル ノートブックのセットに対して [GitHub リポジトリ](https://aka.ms/aml-notebooks)を複製します。
 
     ```CLI
@@ -254,40 +256,41 @@ Jupyter Notebook は、[Jupyter プロジェクト](https://jupyter.org/)の一�
     import sys
     sys.path
     ```
-    
-1. Azure Machine Learning service ワークスペースを使用するよう Jupyter Notebook を構成するには、「[ワークスペース構成ファイルを作成する](#workspace)」セクションを参照してください。
+
+1. Azure Machine Learning ワークスペースを使用するよう Jupyter Notebook を構成するには、「[ワークスペース構成ファイルを作成する](#workspace)」セクションを参照してください。
 
 
 ### <a id="vscode"></a>Visual Studio Code
 
-Visual Studio Code はクロス プラットフォーム コード エディターです。 Python サポートについてはローカルの Python 3 および Conda のインストールに依存していますが、AI を操作するための他のツールを提供します。 コード エディター内から Conda 環境を選択するためのサポートも提供します。
+Visual Studio Code は、[Visual Studio マーケットプレース](https://marketplace.visualstudio.com/vscode)で利用可能な拡張機能を通じて、幅広いプログラミング言語とツールのセットをサポートする、非常に一般的なクロス プラットフォームのコード エディターです。 [Azure Machine Learning 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)では、すべての種類の Python 環境 (仮想、Anaconda など) でコーディングを行うために、[Python 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-python.python)がインストールされます。 さらに、これにより、Visual Studio Code を離れることなく、Azure Machine Learning リソースを操作し、Azure Machine Learning 実験をすべて実行するための便利な機能が提供されます。
 
-開発に Visual Studio Code を使用するには、以下の手順を実行します。
+開発に Visual Studio Code を使用するには
 
-1. Python の開発に Visual Studio Code を使用する方法については、[VSCode での Python の使用](https://code.visualstudio.com/docs/python/python-tutorial)に関するページを参照してください。
-
-1. Conda 環境を選択するには、VS Code を開いてから、Ctrl+Shift+P (Linux と Windows) または Command+Shift+P (Mac) を選択します。
-    __Command Pallet__ が開きます。
-
-1. 「__Python:Select Interpreter__」と入力した後、Conda 環境を選択します。
-
-1. SDK を使用できることを確認するには、次のコードを含む新しい Python ファイル (.py) を作成してから実行します。
-
-    ```python
-    import azureml.core
-    azureml.core.VERSION
-    ```
-
-1. Visual Studio Code 用の Azure Machine Learning 拡張機能をインストールするには、[AI 用のツール](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)に関するページを参照してください。
+1. Visual Studio Code 用の Azure Machine Learning 拡張機能をインストールするには、「[Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai)」を参照してください。
 
     詳細については、[Visual Studio Code 用の Azure Machine Learning の使用](how-to-vscode-tools.md)に関するページを参照してください。
 
+1. あらゆる種類の Python 開発に Visual Studio Code を使用する方法については、「[VSCode での Python の使用](https://code.visualstudio.com/docs/python/python-tutorial)」を参照してください。
+
+    - SDK を含む SDK Python 環境を選択するには、VS Code を開いてから、Ctrl+Shift+P キー (Linux と Windows) または Command+Shift+P キー (Mac) を選択します。
+        - __コマンド パレット__が開きます。
+
+    - 「__Python:Select Interpreter__」と入力した後、適切な環境を選択します。
+
+1. SDK を使用できることを確認するには、次のコードを含む新しい Python ファイル (.py) を作成します。
+
+    ```python
+    #%%
+    import azureml.core
+    azureml.core.VERSION
+    ```
+    このコードを実行するには、[セルの実行] CodeLens をクリックするか、単に Shift+Enter キーを押します。
 <a name="aml-databricks"></a>
 
 ## <a name="azure-databricks"></a>Azure Databricks
 Azure Databricks は、Azure クラウド内の Apache Spark ベースの環境です。 これは、CPU または GPU ベースのコンピューティング クラスターを備え、コラボレーションに適した Notebook ベースの環境を提供します。
 
-Azure Databricks が Azure Machine Learning service と連携する仕組み:
+Azure Databricks が Azure Machine Learning と連携する仕組み:
 + Spark MLlib を使用してモデルをトレーニングし、そのモデルを Azure Databricks 内から ACI/AKS にデプロイできます。
 + また、Azure Databricks を使用して、特別な Azure ML SDK で[自動化された機械学習](concept-automated-ml.md)機能を使用することもできます。
 + Azure Databricks は、[Azure Machine Learning パイプライン](concept-ml-pipelines.md)からのコンピューティング先として使用できます。
@@ -326,7 +329,7 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
    * **[すべてのクラスターに自動的にアタッチする]** は選択しないでください。
    * クラスター名の横にある **[アタッチ]** を選択します。
 
-1. 状態が **[アタッチ済み]** に変わるまで、エラーを監視します。これには数分かかる場合があります。  この手順が失敗する場合は、次を確認します。
+1. 状態が **[アタッチ済み]** に変わるまで、エラーを監視します。これには数分かかる場合があります。  このステップが失敗した場合は、次の操作を行います。
 
    次のようにして、クラスターを再起動してみます。
    1. 左側のウィンドウで、 **[クラスター]** を選択します。
@@ -355,7 +358,7 @@ Azure Databricks が Azure Machine Learning service と連携する仕組み:
 
 ## <a id="workspace"></a>ワークスペース構成ファイルを作成する
 
-ワークスペース構成ファイルは、Azure Machine Learning service ワークスペースと通信する方法を SDK に示す JSON ファイルです。 ファイルの名前は *config.json* で、形式は次のとおりです。
+ワークスペース構成ファイルは、Azure Machine Learning ワークスペースと通信する方法を SDK に示す JSON ファイルです。 ファイルの名前は *config.json* で、形式は次のとおりです。
 
 ```json
 {

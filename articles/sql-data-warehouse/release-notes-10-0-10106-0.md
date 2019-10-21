@@ -5,25 +5,25 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 07/03/2019
+ms.date: 09/18/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: ee01ebad9e03aaa34911db49ce344d51b6a756d8
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: f4ee3f78159cb5d9b677f0d43492325754065841
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798703"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300833"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse リリース ノート
 
-この記事は、[Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md) の最新リリースで導入された新機能と機能強化をまとめたものです。 この記事では、今回のリリースとは直接関連しないものの、同じタイム フレームで公開された注目すべきコンテンツの更新についても一覧表示しています。 他の Azure サービスの機能強化については、「[サービスの更新情報](https://azure.microsoft.com/updates)」を参照してください
+この記事は、[Azure SQL Data Warehouse](sql-data-warehouse-overview-what-is.md) (Azure SQL DW) の最近のリリースで導入された新機能と機能強化をまとめたものです。 この記事では、今回のリリースとは直接関連しないものの、同じタイム フレームで公開された注目すべきコンテンツの更新についても一覧表示しています。 他の Azure サービスの機能強化については、「[サービスの更新情報](https://azure.microsoft.com/updates)」を参照してください
 
 ## <a name="check-your-azure-sql-data-warehouse-version"></a>Azure SQL Data Warehouse のバージョンを確認する
 
-新機能はすべてのリージョンにロールアウトされますので、機能の可用性については、ご使用のインスタンスにデプロイされているバージョン、および最新の Azure SQL DW のリリース ノートを確認してください。 お使いの Azure SQL DW のバージョンを確認するには、SQL Server Management Studio (SSMS) を介してデータ ウェアハウスに接続して `SELECT @@VERSION AS 'SQL Data Warehouse';` を実行すると、Azure SQL DW の現在のバージョンが返されます。
+新機能はすべてのリージョンにロールアウトされるので、機能の可用性については、ご使用のインスタンスにデプロイされているバージョン、および最新の Azure SQL DW のリリース ノートを確認してください。 お使いの Azure SQL DW のバージョンを確認するには、SQL Server Management Studio (SSMS) を介してデータ ウェアハウスに接続して `SELECT @@VERSION;` を実行すると、Azure SQL DW の現在のバージョンが返されます。
 
 出力例:
 
@@ -31,12 +31,23 @@ ms.locfileid: "67798703"
 
 示された日付を使用して、お使いの Azure SQL DW に適用されているリリースを確認してください。
 
+## <a name="september-2019"></a>2019 年 9 月
+
+| サービスの機能強化 | 詳細 |
+| --- | --- |
+|**Azure Private Link (プレビュー)**|[Azure Private Link](https://azure.microsoft.com/blog/announcing-azure-private-link/) を使用すると、Virtual Network (VNet) にプライベート エンドポイントを作成し、Azure SQL DW にマップできます。 これらのリソースには、VNet 内のプライベート IP アドレスを使用してアクセスできます。これにより、Azure ExpressRoute プライベート ピアリングや VPN ゲートウェイを介したオンプレミスからの接続が可能になります。 全体として、ネットワーク構成をパブリック IP アドレスに公開する必要がないため、ネットワーク構成を単純化できます。 これにより、データ流出のリスクに対する保護も可能になります。 詳細については、[概要](/azure/private-link/private-link-overview)に関するページと [SQL DW ドキュメント](/azure/sql-database/sql-database-private-endpoint-overview)を参照してください。|
+|**データの検出と分類 (GA)**|[データの検出および分類](/azure/sql-database/sql-database-data-discovery-and-classification?toc=/azure/sql-data-warehouse/toc.json)機能は、現在、一般提供されています。 この機能によって、データベース内の機密データを**検出、分類、ラベル付け、および保護する**ための高度な能力が提供されます。|
+|**Azure Advisor とのワンクリック統合**|SQL Data Warehouse は、概要ブレードの Azure Advisor 推奨事項と直接統合され、ワンクリック エクスペリエンスが提供されるようになりました。 Azure Advisor ブレードに移動しなくても、概要ブレードで推奨事項を表示できるようになりました。 推奨事項の詳細については、[こちら](sql-data-warehouse-concept-recommendations.md)を参照してください。|
+|**Read Committed スナップショット分離 (プレビュー)**|ALTER DATABSE を使用して、ユーザー データベースのスナップショット分離を有効または無効にすることができます。  現在のワークロードへの影響を回避するには、データベースのメンテナンス期間中にこのオプションを設定するか、データベースへの他のアクティブな接続がなくなるまで待機します。 詳細については、[ALTER DATABASE SET オプション](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest)に関するページを参照してください。|
+|**EXECUTE AS (Transact-SQL)**| [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql?view=azure-sqldw-latest) T-SQL サポートを SQL Data Warehouse で使用できるようになりました。これにより、セッションの実行コンテキストを、指定したユーザーに設定できます。|
+|**追加の T-SQL サポート**|SQL Data Warehouse の T-SQL 言語セキュリティが拡張され、次のサポートが含まれるようになりました。 </br> - [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql?view=azure-sqldw-latest)</br> - [TRY_PARSE (Transact-SQL)](/sql/t-sql/functions/try-parse-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CAST (Transact-SQL)](/sql/t-sql/functions/try-cast-transact-sql?view=azure-sqldw-latest)</br> - [TRY_CONVERT (Transact-SQL)](/sql/t-sql/functions/try-convert-transact-sql?view=azure-sqldw-latest)</br> - [sys.user_token (Transact-SQL)](/sql//relational-databases/system-catalog-views/sys-user-token-transact-sql?view=azure-sqldw-latest)|
+
 ## <a name="july-2019"></a>2019 年 7 月
 
 | サービスの機能強化 | 詳細 |
 | --- | --- |
 |**具体化されたビュー (プレビュー)**|具体化されたビューでは、ビュー定義クエリから返されるデータを保持し、基になるテーブルのデータが変更されると自動的に更新されます。 これによって、複雑なクエリ (一般に結合と集計を含むクエリ) のパフォーマンスが向上すると共に、メンテナンス操作が簡単になります。 詳細については、次を参照してください。 </br> - [CREATE MATERIALIZED VIEW AS SELECT &#40;Transact-SQL&#41;](/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest)</br> - [ALTER MATERIALIZED VIEW &#40;Transact-SQL&#41;](/sql/t-sql/statements/alter-materialized-view-transact-sql?view=azure-sqldw-latest) </br> - [Azure SQL Data Warehouse でサポートされる T-SQL ステートメント](/azure/sql-data-warehouse/sql-data-warehouse-reference-tsql-statements)|
-|**追加の T-SQL サポート**|SQL Data Warehouse の T-SQL 言語セキュリティが拡張され、次のサポートが含まれるようになりました。 </br> - [AT TIME ZONE](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql?view=azure-sqldw-latest)|
+|**追加の T-SQL サポート**|SQL Data Warehouse の T-SQL 言語セキュリティが拡張され、次のサポートが含まれるようになりました。 </br> - [AT TIME ZONE (Transact-SQL)](/sql/t-sql/queries/at-time-zone-transact-sql?view=azure-sqldw-latest)</br> - [STRING_AGG (Transact-SQL)](/sql/t-sql/functions/string-agg-transact-sql?view=azure-sqldw-latest)|
 |**結果セットのキャッシュ機能 (プレビュー)**|以前発表された結果セットのキャッシュを管理するために追加された DBCC コマンド。 詳細については、次を参照してください。 </br> - [DBCC DROPRESULTSETCACHE &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-dropresultsetcache-transact-sql?view=azure-sqldw-latest)  </br> - [DBCC SHOWRESULTCACHESPACEUSED &#40;Transact-SQL&#41;](/sql/t-sql/database-console-commands/dbcc-showresultcachespaceused-transact-sql?view=azure-sqldw-latest) </br></br> 実行されたクエリが結果セットのキャッシュを使用した場合に表示される、[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?view=azure-sqldw-latest) の新しい result_set_cache 列も確認してください。|
 |**順序指定クラスター化列ストア インデックス (プレビュー)**|順序付けされたクラスター化列ストア インデックス内の列の順序を識別するために、[sys.index_columns](/sql/relational-databases/system-catalog-views/sys-index-columns-transact-sql?view=azure-sqldw-latest) に追加された新しい column_store_order_ordinal 列。|
 
@@ -57,7 +68,7 @@ ms.locfileid: "67798703"
 | --- | --- |
 |**データの検出と分類**|Azure SQL Data Warehouse のパブリック プレビューで、データの検出と分類を利用できるようになりました。 機密データや顧客のプライバシーを保護することは非常に重要です。 ビジネスおよび顧客のデータ資産が増大するにつれて、データの検出、分類、保護が管理不能になります。 Azure SQL Data Warehouse でネイティブに導入される "データの検出と分類" 機能を使用すると、データ保護がより管理しやすくなります。 この機能の全体的な利点は次のとおりです。<br/>&bull; &nbsp; データのプライバシー基準および規制のコンプライアンス要件を満たします。<br/>&bull; &nbsp; 機密性の高いデータを含むデータ ウェアハウスへのアクセスを制限し、セキュリティを強化します。<br/>&bull; &nbsp; 機密データへの異常なアクセスを監視し、アラートを出します。<br/>&bull; &nbsp; Azure portal の中央ダッシュボードで機密データを視覚化します。 </br></br>データの検出と分類は、脆弱性評価と脅威検出が含まれた Advanced Data Security の一部として、すべての Azure リージョンの Azure SQL Data Warehouse で利用できます。 データの検出と分類の詳細については、[ブログ記事](https://azure.microsoft.com/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/)およびオンラインの[ドキュメント](/azure/sql-database/sql-database-data-discovery-and-classification)をご覧ください。|
 |**GROUP BY ROLLUP**|ROLLUP が Azure データ ウェアハウスの GROUP BY オプションでサポートされるようになりました。   GROUP BY ROLLUP によって列式の組み合わせごとにグループが作成されます。 GROUP BY ではまた、結果が小計と総計に "ロール アップ" されます。 GROUP BY 関数は、右から左に処理し、グループと集計が作成される列式の数を減らします。  列の順序は ROLLUP 出力に影響を与えます。結果セット内の行数に影響を与えることもあります。<br/><br/>GROUP BY ROLLUP の詳細については、「[GROUP BY (Transact-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)」をご覧ください。
-|**DWU の使用量と CPU ポータルのメトリックの精度向上**|SQL Data Warehouse によって、Azure portal のメトリックの精度が大幅に改善されます。  このリリースでは、CPU と DWU の使用量のメトリックの定義が修正され、コンピューティング ノード全体でワークロードが正しく反映されます。 この修正の前は、メトリック値は実際より少なく報告されていました。 Azure portal では、使用された DWU と CPU メトリックに増加が予想されます。 |
+|**DWU の使用量と CPU ポータルのメトリックの精度向上**|SQL Data Warehouse によって、Azure portal のメトリックの精度が大幅に改善されます。  このリリースでは、CPU と DWU の使用量のメトリックの定義が修正され、コンピューティング ノード全体でワークロードが正しく反映されます。 この修正の前は、メトリック値は実際より少なくレポートされていました。 Azure portal では、使用された DWU と CPU メトリックに増加が予想されます。 |
 |**行レベルのセキュリティ**|2017 年 11 月に、行レベルのセキュリティ機能を導入しました。 このサポートを外部テーブルにも拡張しました。 さらに、セキュリティ フィルター述語を定義するために必要なインライン テーブル値関数 (インラインTVF) で非決定論的関数を呼び出すためのサポートを追加しました。 この追加により、セキュリティ フィルター述語で IS_ROLEMEMBER()、USER_NAME() などを指定できるようになりました。 詳細については、[行レベルのセキュリティ ドキュメント](/sql/relational-databases/security/row-level-security)の例を参照してください。|
 |**追加の T-SQL サポート**|SQL Data Warehouse の T-SQL 言語セキュリティが拡張され、[STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql) のサポートが含まれるようになりました。
 |**クエリ オプティマイザーの機能強化** |クエリの最適化は、あらゆるデータベースの重要な構成要素です。 クエリの最も優れた実行方法を最適に選択することによって、大幅な改善が見込まれます。  分散環境で複雑な分析クエリを実行する場合、実行される操作の数が重要になります。 より質の高いプランを生成することで、クエリのパフォーマンスが向上しています。 これらのプランによって、高価なデータ転送操作や冗長な計算 (重複したサブクエリなど) が最小限に抑えられます。 詳細については、この Azure SQL Data Warehouse の[ブログの投稿](https://azure.microsoft.com/blog/smarter-faster-safer-azure-sql-data-warehouse-is-simply-unmatched/)を参照してください。|

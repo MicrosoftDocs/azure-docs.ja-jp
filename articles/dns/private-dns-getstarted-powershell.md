@@ -1,22 +1,20 @@
 ---
-title: Azure PowerShell を使用して Azure DNS プライベート ゾーンを作成する
+title: クイックスタート - Azure PowerShell を使用して Azure プライベート DNS ゾーンを作成する
 description: この記事では、Azure DNS でプライベート DNS ゾーンとレコードを作成してテストします。 これは、Azure PowerShell を使用して最初のプライベート DNS ゾーンとレコードを作成して管理するためのステップバイステップ ガイドです。
 services: dns
 author: vhorne
 ms.service: dns
-ms.topic: article
-ms.date: 06/14/2019
+ms.topic: quickstart
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 6603929fa7b4c597a846fc299577a9682d8f54e0
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: fb39042e53795057a3404ba1e8cb5903188966f7
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854133"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960455"
 ---
-# <a name="create-an-azure-dns-private-zone-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS プライベート ゾーンを作成する
-
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+# <a name="quickstart-create-an-azure-private-dns-zone-using-azure-powershell"></a>クイック スタート:Azure PowerShell を使用して Azure プライベート DNS ゾーンを作成する
 
 この記事では、Azure PowerShell を使用して最初のプライベート DNS ゾーンとレコードを作成する手順について説明します。
 
@@ -27,7 +25,7 @@ DNS ゾーンは、特定のドメインの DNS レコードをホストする�
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
-> * DNS プライベート ゾーンの作成
+> * プライベート DNS ゾーンの作成
 > * テスト用仮想マシンの作成
 > * 追加の DNS レコードの作成
 > * プライベート ゾーンのテスト
@@ -36,7 +34,7 @@ DNS ゾーンは、特定のドメインの DNS レコードをホストする�
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-好みに応じて、[Azure CLI](private-dns-getstarted-cli.md) を使ってこの手順を実行することもできます。
+好みに応じて、[Azure CLI](private-dns-getstarted-cli.md) を使用してこのクイックスタートを実行することもできます。
 
 ## <a name="create-the-resource-group"></a>リソース グループの作成
 
@@ -46,7 +44,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 ```
 
-## <a name="create-a-dns-private-zone"></a>DNS プライベート ゾーンの作成
+## <a name="create-a-private-dns-zone"></a>プライベート DNS ゾーンの作成
 
 DNS ゾーンは、 `New-AzPrivateDnsZone` コマンドレットを使用して作成します。
 
@@ -209,7 +207,5 @@ Remove-AzResourceGroup -Name MyAzureResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、プライベート DNS ゾーンをデプロイし、DNS レコードを作成し、ゾーンのテストを行いました。
-次は、プライベート DNS ゾーンについてさらに詳しく学習します。
-
-* [プライベート ドメインに Azure DNS を使用する](private-dns-overview.md)
+> [!div class="nextstepaction"]
+> [Azure DNS Private Zones のシナリオ](private-dns-scenarios.md)

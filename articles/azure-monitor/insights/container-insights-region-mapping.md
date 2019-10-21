@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 06/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 481a2a400be4e983e0a2337a200324061494efa1
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.openlocfilehash: ca77277c8d8d405b8fe81f612a8d7600d3c937ab
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67518125"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72388180"
 ---
 # <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Azure Monitor for containers でサポートされるリージョン マッピング
 
@@ -66,6 +66,7 @@ AKS クラスター リソースまたは Log Analytics ワークスペースは
 |WestUS |WestUS |
 |WestUS2 |WestUS2 |
 |WestCentralUS<sup>1</sup>|EastUS<sup>1</sup>|
+|米国政府バージニア州 |米国政府バージニア州 |
 
 <sup>1</sup> 容量の制約により、新しいリソースを作成するときにリージョンを使用できません。 これには Log Analytics ワークスペースが含まれます。 ただし、リージョン内のリンクされた既存のリソースは引き続き動作します。
 

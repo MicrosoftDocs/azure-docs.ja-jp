@@ -46,7 +46,7 @@ Azure Relay には、次の 2 つの機能があります。
 - [ハイブリッド接続](#hybrid-connections) - オープン スタンダードの Web ソケットを使用することで、マルチプラットフォームの用途に対応します。
 - WCF リレー - Windows Communication Foundation (WCF) を使用してリモート プロシージャ コールに対応します。 WCF リレーは従来からあるリレー サービスで、多くのお客様が自社の WCF プログラミング モデルで既に利用しています。
 
-## <a name="hybrid-connections"></a>ハイブリッド接続と
+## <a name="hybrid-connections"></a>ハイブリッド接続
 
 Azure Relay のハイブリッド接続機能は、以前存在していたリレー機能の、セキュリティで保護されたオープン プロトコル仕様の進化版です。 これは、どのプラットフォームのどの言語でも使用できます。 Azure Relay のハイブリッド接続機能は、HTTP と WebSocket プロトコルに基づいています。 Web ソケットまたは HTTP(S) 経由で、要求を送信し、応答を受信することができます。 この機能は、一般的な Web ブラウザーの WebSocket API と互換性があります。 
 
@@ -58,10 +58,10 @@ Azure Relay のハイブリッド接続機能は、以前存在していたリ�
 ## <a name="wcf-relay"></a>WCF リレー
 WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作します。 一連の WCF "リレー" バインディングを使用して、オンプレミス サービスとリレー サービスとの間に接続を作成します。 リレー バインディングは、新しいトランスポート バインディング要素にマッピングされます。この要素は、クラウド内の Service Bus と統合される WCF チャネル コンポーネントを作成するように設計されています。 詳細については、[WCF リレーの概要](service-bus-relay-tutorial.md)に関するページを参照してください。
 
-## <a name="hybrid-connections-vs-wcf-relay"></a>ハイブリッド接続とWCF リレー
+## <a name="hybrid-connections-vs-wcf-relay"></a>ハイブリッド接続WCF リレー
 ハイブリッド接続と WCF Relay のどちらでも、企業ネットワーク内に存在する資産へのセキュアな接続を実現できます。 どちらの機能を優先して使用するかは、次の表に示すように、個々のニーズによって決まります。
 
-|  | WCF リレー | ハイブリッド接続と |
+|  | WCF リレー | ハイブリッド接続 |
 | --- |:---:|:---:|
 | **WCF** |x | |
 | **.NET Core** | |○ |

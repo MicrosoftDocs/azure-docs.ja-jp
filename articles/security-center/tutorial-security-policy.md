@@ -3,9 +3,8 @@ title: セキュリティ ポリシーの操作 | Microsoft Docs
 description: この記事では、Azure Security Center でセキュリティ ポリシーを操作する方法について説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
 ms.service: security-center
 ms.devlang: na
@@ -13,14 +12,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/18/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 1820c31053c13a0f3039812b31df415bc9fa4fdc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.date: 07/18/2019
+ms.author: memildin
+ms.openlocfilehash: fce8c75dadbb255a357b85bf85049423f50d18ec
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910371"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996356"
 ---
 # <a name="working-with-security-policies"></a>セキュリティ ポリシーの操作
 
@@ -43,7 +42,7 @@ Security Center を有効にすると、Security Center に組み込まれたセ
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 Azure 管理グループの範囲は、サブスクリプションを上回ります。 "管理グループ" と呼ばれるコンテナーにサブスクリプションを整理して、管理グループに管理ポリシーを適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用されたポリシーを自動的に継承します。 各ディレクトリには、"ルート" 管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。 Azure Security Center で使用する管理グループを設定するには、「[Azure Security Center に対するテナント全体の可視性を確保する](security-center-management-groups.md)」の指示に従ってください。
 
 > [!NOTE]
-> 管理グループとサブスクリプションの階層を理解することが重要です。 管理グループ、ルート管理、および管理グループへのアクセスの詳細については、「[Organize your resources with Azure Management Groups (Azure 管理グループを使用してリソースを整理する)](../governance/management-groups/index.md#root-management-group-for-each-directory)」を参照してください。
+> 管理グループとサブスクリプションの階層を理解することが重要です。 管理グループ、ルート管理、および管理グループへのアクセスの詳細については、「[Organize your resources with Azure Management Groups (Azure 管理グループを使用してリソースを整理する)](../governance/management-groups/overview.md#root-management-group-for-each-directory)」を参照してください。
 >
 
 ## <a name="how-security-policies-work"></a>セキュリティ ポリシーのしくみ

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 528be96f95523089c78562814c292fb0f40849e1
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: b9d724a44a94ed13786391a235bb9967036f29dc
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70240238"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338478"
 ---
 ::: zone target="docs"
 
@@ -53,7 +53,7 @@ ms.locfileid: "70240238"
     - 高速ネットワークに接続していること。 10 GbE 接続を少なくとも 1 つ利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。 
 6. Data Box を設置できる平らな場所があること。 デバイスを標準的なラック棚に設置しようとする場合は、データ センター ラックに 7U のスロットが必要です。 デバイスは平面に置くことも、ラックに立てて置くこともできます。
 7. Data Box をホスト コンピューターに接続するために以下のケーブルを用意していること。
-    - 1 本以上の 10 GbE SFP+ Twinax 銅線ケーブルまたは SFP+ 光ファイバー ケーブル (DATA 1、DATA 2 ネットワーク インターフェイスで使用)。 Data Box には、PCI Express 3.0 ネットワーク インターフェイスを備えた Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T アダプターが搭載されています。そのため、このインターフェイスと互換性のあるケーブルであれば正常に機能します。 たとえば社内テストでは、CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M ケーブルが使用されています。 詳しくは、[Mellanox 社提供のサポートされているケーブルおよびスイッチの一覧](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf)をご覧ください。
+    - 1 本以上の 10 GbE SFP+ Twinax 銅線ケーブルまたは SFP+ 光ファイバー ケーブル (DATA 1、DATA 2 ネットワーク インターフェイスで使用)。 Data Box には、PCI Express 3.0 ネットワーク インターフェイスを備えた Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T アダプターが搭載されています。そのため、このインターフェイスと互換性のあるケーブルであれば正常に機能します。 たとえば、CISCO SFP-H10GB-CU3M 10GBASE-CU TWINAX SFP +3M ケーブルが社内テストに使用されました。 詳しくは、[Mellanox 社提供のサポートされているケーブルおよびスイッチの一覧](https://www.mellanox.com/pdf/firmware/ConnectX3-FW-2_42_5000-release_notes.pdf)をご覧ください。
     - RJ-45 CAT 6 ネットワーク ケーブル 1 本 (MGMT ネットワーク インターフェイスで使用)
     - RJ-45 CAT 6A OR ネットワーク ケーブル 1 本、RJ-45 CAT 6 ネットワーク ケーブル 1 本 (それぞれ 10 Gbps または 1 Gbps として構成されている DATA 3 ネットワーク インターフェイスで使用)
 

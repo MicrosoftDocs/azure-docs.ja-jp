@@ -4,7 +4,7 @@ description: ''
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
-manager: willchen
+manager: dcscontentpm
 editor: ''
 tags: ''
 ms.service: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 0a0da446385c592bfeda2e01e209ef1fb75b7de3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0cbd1a24f5c460e248d55777735da6809befba63
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711573"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028797"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Azure VM のゲスト OS のファイアウォールがインバウンド トラフィックをブロックしている
 
@@ -102,7 +102,7 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
 
 #### <a name="mitigation-2"></a>対応策 2
 
-1.  ファイアウォール プロファイルを表示するクエリを実行し、インバウンド ファイアウォール ポリシーが [ *BlockInboundAlways*] に設定されているかどうかを確認します。
+1.  ファイアウォール プロファイルを表示するクエリを実行し、インバウンド ファイアウォール ポリシーが "*BlockInboundAlways*" に設定されているかどうかを確認します。
 
     ```cmd
     netsh advfirewall show allprofiles | more
@@ -115,7 +115,7 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
     >    * *BlockInbound*:インバウンド トラフィックを許可する規則が有効になっていないと、インバウンド トラフィックがすべてブロックされます。
     >    * *BlockInboundAlways*:ファイアウォール規則がすべて無視され、トラフィックがすべてブロックされます。
 
-2.   *DefaultInboundAction*  を編集し、トラフィックを **許可** するようにこれらのプロファイルを設定します。 そのためには、次のコマンドを実行します。
+2.  "*DefaultInboundAction*" を編集して、トラフィックを**許可**するようにこれらのプロファイルを設定します。 そのためには、次のコマンドを実行します。
 
     ```cmd
     netsh advfirewall set allprofiles firewallpolicy allowinbound,allowoutbound
@@ -138,7 +138,7 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
 
 2.  復旧 VM へのリモート デスクトップ接続を開始します。
 
-3.  ディスクが ディスクの管理コンソールで  **オンライン**  の印がついていることを確認します。 アタッチしたシステム ディスクに割り当てられているドライブ文字をメモします。
+3.  ディスクが [ディスクの管理] コンソールで **[オンライン]** になっていることを確認します。 アタッチしたシステム ディスクに割り当てられているドライブ文字をメモします。
 
 #### <a name="mitigation-1"></a>対応策 1
 
@@ -150,7 +150,7 @@ RDP 規則が RDP トラフィックを許可する設定になっていませ�
 
 2.  復旧 VM へのリモート デスクトップ接続を開始します。
 
-3.  システム ディスクを回復 VM にアタッチしたら、[ディスクの管理] コンソールでそのディスクに  **[オンライン]**   のフラグが設定されていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
+3.  システム ディスクを復旧 VM に接続したら、[ディスクの管理] コンソールでそのディスクが **[オンライン]** になっていることを確認します。 接続された OS ディスクに割り当てられたドライブ文字をメモします。
 
 4.  CMD インスタンスを管理者特権で開き、次のスクリプトを実行します。
 

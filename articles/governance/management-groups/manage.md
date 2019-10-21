@@ -6,12 +6,12 @@ ms.service: governance
 ms.date: 05/22/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 7fd9a8e00072bfb8d3a0e57fb552822588111019
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 28bfabd5c28fe833050551e7be690c0ea3d1e6a0
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241194"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338948"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -281,7 +281,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
 ## <a name="move-management-groups-in-the-hierarchy"></a>階層内での管理グループの移動  
 
-親管理グループを移動すると、そのグループの下の階層も一緒に移動します。 管理グループを移動するために必要なアクセスについては、「[管理グループ アクセス](index.md#management-group-access)」を参照してください。
+親管理グループを移動すると、そのグループの下の階層も一緒に移動します。 管理グループを移動するために必要なアクセスについては、「[管理グループ アクセス](overview.md#management-group-access)」を参照してください。
 
 ### <a name="move-management-groups-in-the-portal"></a>ポータルでの管理グループの移動
 

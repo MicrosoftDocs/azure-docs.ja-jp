@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 07/24/2019
+ms.date: 09/16/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 87df37cc6baa863bb0b068bdfeb9cde873e38836
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 2f45f70f1c131e1690997cda18a8d612d3af9dee
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952079"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71010319"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Hyper-V VM の評価および Azure への移行を準備する
 
@@ -99,7 +99,7 @@ Hyper-V の評価を準備するには、次の手順を実行します。
 1. Hyper-V ホストの設定を確認します。
 2. 各ホスト上で PowerShell リモート処理を設定して、Azure Migrate アプライアンスが WinRM 接続を介してホスト上で PowerShell コマンドを実行できるようにします。
 3. VM ディスクがリモート SMB ストレージに配置されている場合は、資格情報の委任が必要になります。 
-    - Azure Migrate アプライアンスがクライアントとして機能し、資格情報をホストに委任できるように、CredSSP 委任を有効にします。 T
+    - Azure Migrate アプライアンスがクライアントとして機能し、資格情報をホストに委任できるように、CredSSP 委任を有効にします。
     - 次に示すように、各ホストがアプライアンスの代理として機能できるようにします。
     - 後でアプライアンスを設定するときに、アプライアンス上で委任を有効にします。
 4. アプライアンスの要件と、アプライアンスに必要な URL またはポート アクセスを確認します。
@@ -129,7 +129,7 @@ Hyper-V の評価を準備するには、次の手順を実行します。
 
 1. Hyper-V ホストに PowerShell バージョン 4.0 以降がインストールされていることを確認します。
 2. [Microsoft ダウンロード センター](https://aka.ms/migrate/script/hyperv)からスクリプトをダウンロードします。 このスクリプトは、Microsoft によって暗号的に署名されています。
-3. MD5 または SHA256 ハッシュ ファイルを使用して、スクリプトの整合性を検証します。 このコマンドを実行して、スクリプトのハッシュを生成します。
+3. MD5 または SHA256 ハッシュ ファイルを使用して、スクリプトの整合性を検証します。 ハッシュタグの値は以下に記載されています。 このコマンドを実行して、スクリプトのハッシュを生成します。
     ```
     C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]
     ```
@@ -138,19 +138,20 @@ Hyper-V の評価を準備するには、次の手順を実行します。
     C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
     SHA256
     ```
-    
-    ハッシュ値は次のとおりです。
-    Hash | 値
-    --- | ---
-    **MD5** | 0ef418f31915d01f896ac42a80dc414e
-    **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2
-
 
 4.  スクリプトの整合性を検証した後、この PowerShell コマンドを使用して、各 Hyper-V ホストでスクリプトを実行します。
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
 
+#### <a name="hashtag-values"></a>ハッシュタグの値
+
+ハッシュ値は次のとおりです。
+
+| **ハッシュ** | **値** |
+| --- | --- |
+| **MD5** | 0ef418f31915d01f896ac42a80dc414e |
+| **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |
 
 ### <a name="verify-hyper-v-host-settings"></a>Hyper-V ホストの設定の確認
 

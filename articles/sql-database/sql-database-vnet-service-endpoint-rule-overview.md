@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 08/27/2019
-ms.openlocfilehash: d924f0eb89984fbe77f94eff553d00a25b4b7a3a
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 5506f95d532f69286bf29ec8916485bd63ce94da
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309619"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828820"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>データベース サーバー用の仮想ネットワーク サービス エンドポイントおよび規則を使用する
 
@@ -138,7 +138,7 @@ PolyBase は、Azure ストレージ アカウントから Azure SQL Data Wareho
    > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
    > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)をご覧ください。
     
-1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** をクリックします。 手順 1 で azure Active Direcotory (AAD) に登録した Azure SQL Data Warehouse をホストする Azure SQL Server に**ストレージ BLOB データ共同作成者** RBAC ロールを割り当てます。
+1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** をクリックします。 手順 1 で Azure Active Directory (AAD) に登録した Azure SQL Data Warehouse をホストする Azure SQL Server に、**ストレージ BLOB データ共同作成者** RBAC ロールを割り当てます。
 
    > [!NOTE] 
    > 所有者特権を持つメンバーのみが、この手順を実行できます。 Azure リソースのさまざまな組み込みロールについては、この[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。
@@ -244,7 +244,7 @@ PowerShell スクリプトでも、仮想ネットワーク規則を作成でき
 3. **[Azure サービスへのアクセスを許可]** の制御を [オフ] に設定します。
 
     > [!IMPORTANT]
-    > 制御を [オン] に設定したままにすると、Azure SQL Database サーバーはすべてのサブネットからの通信を受け入れます。 制御を [オン] に設定したままにすると、セキュリティの観点からアクセス過多になる可能性があります。 Microsoft Azure 仮想ネットワーク サービス エンドポイント機能は、SQL Database の仮想ネットワーク規則機能と共に使用することで、セキュリティ脅威にさらされる領域を減少させることができます。
+    > 制御を [オン] に設定したままにすると、Azure SQL Database サーバーは、Azure の境界内のすべてのサブネットからの通信 (つまり、Azure データ センターに定義された範囲内にあるものとして認識されたいずれかの IP アドレスからの発信) を受け入れます。 制御を [オン] に設定したままにすると、セキュリティの観点からアクセス過多になる可能性があります。 Microsoft Azure 仮想ネットワーク サービス エンドポイント機能は、SQL Database の仮想ネットワーク規則機能と共に使用することで、セキュリティ脅威にさらされる領域を減少させることができます。
 
 4. **[仮想ネットワーク]** セクションにある **[既存の追加]** コントロールをクリックします。
 

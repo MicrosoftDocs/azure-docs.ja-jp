@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: c18c062d5537603284acb37081ac0a4eb8d2fd20
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: f111169558118a80602bcb2136bc63ce54c9e0d9
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67797809"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242496"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
@@ -27,10 +27,10 @@ Translator Text API バージョン 2 は、アプリ、Web サイト、ツー�
 ## <a name="getting-started"></a>使用の開始
 Translator Text API にアクセスするには、[Microsoft Azure にサインアップする](../translator-text-how-to-signup.md)必要があります。
 
-## <a name="authentication"></a>Authentication 
+## <a name="authentication"></a>認証 
 Translator Text API への呼び出しでは、いずれも認証にサブスクリプション キーが必要です。 この API では、3 つの認証方法がサポートされています。
 
-- アクセス トークン。 ステップ 9 で参照されているサブスクリプション キーを使用して、認証サービスに POST 要求を行うことで、アクセス トークンを作成します。 詳細については、トークン サービスに関するドキュメントを参照してください。 `Authorization` ヘッダーまたは `access_token` クエリ パラメーターを使用して、アクセス トークンを Translator サービスに渡します。 アクセス トークンは 10 分間有効です。 10 分ごとに新しいアクセス トークンを取得し、その 10 分間に繰り返される要求に対して同じアクセス トークンを使い続けます。
+- アクセス トークン。 サブスクリプション キーを使用し、認証サービスに POST 要求を行うことで、アクセス トークンを作成します。 詳細については、トークン サービスに関するドキュメントを参照してください。 `Authorization` ヘッダーまたは `access_token` クエリ パラメーターを使用して、アクセス トークンを Translator サービスに渡します。 アクセス トークンは 10 分間有効です。 10 分ごとに新しいアクセス トークンを取得し、その 10 分間に繰り返される要求に対して同じアクセス トークンを使い続けます。
 - 直接使用されるサブスクリプション キー。 サブスクリプション キーを、Translator Text API への要求に含まれる `Ocp-Apim-Subscription-Key` ヘッダー内の値として渡します。 サブスクリプション キーを直接使用する場合、トークン認証サービスを呼び出してアクセス トークンを作成する必要はありません。
 - [Azure Cognitive Services のマルチサービスのサブスクリプション](https://azure.microsoft.com/pricing/details/cognitive-services/)。 この方法では、単一の秘密鍵を使用して複数のサービスに対する要求を認証することができます。
 マルチサービスの秘密鍵を使用するときは、2 つの認証ヘッダーを要求に含める必要があります。 最初のヘッダーで、秘密鍵を渡します。 2 つ目のヘッダーでは、サブスクリプションに関連付けられているリージョンを指定します。

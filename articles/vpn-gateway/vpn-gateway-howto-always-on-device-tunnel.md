@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: 98d8c2f6870be16f3eb92219fc3d02f988390a41
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: bc2ec2b952b4f0c6e61fc4953559fa882edfff09
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295465"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841136"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Always On VPN デバイス トンネルの構成
 
@@ -32,12 +32,7 @@ Always On VPN 接続には、次の 2 種類のトンネルが含まれます。
 
 この[ポイント対サイトの記事](vpn-gateway-howto-point-to-site-resource-manager-portal.md)を使用して、IKEv2 と証明書ベースの認証を使用するように VPN ゲートウェイを構成します。
 
-## <a name="2-configure-the-user-tunnel"></a>2.ユーザー トンネルの構成
-
-1. この[ポイント対サイト VPN クライアントの記事](point-to-site-how-to-vpn-client-install-azure-cert.md)に示されているように、Windows 10 クライアントにクライアント証明書をインストールします。 証明書は、現在のユーザー ストアにある必要があります。
-2. [この手順](https://docs.microsoft.com/windows-server/remote/remote-access/vpn/always-on-vpn/deploy/vpn-deploy-client-vpn-connections)に従って、PowerShell、SCCM、または Intune を使用して Always On VPN クライアントを構成します。
-
-## <a name="3-configure-the-device-tunnel"></a>手順 3.デバイス トンネルの構成
+## <a name="2-configure-the-device-tunnel"></a>2.デバイス トンネルの構成
 
 デバイス トンネルを正常に確立するには、次の要件を満たす必要があります。
 

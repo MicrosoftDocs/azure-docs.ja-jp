@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 08/27/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: dc4548e0c07adc485d1bb5785179aeb7ea2f3fe1
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: ed50e6adbcca7cbb4935400c7850c37dc2ed389f
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196382"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803525"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>クイック スタート:QnA Maker ポータルで質問と回答を追加する
 
@@ -70,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     |`What is the max size of a knowledge base?`|
     |`How many GB of data can a knowledge base hold?`| 
 
-1. **[Save and train]\(保存してトレーニング\)** を選択してナレッジ ベースを再トレーニングします。 
+1. **[保存してトレーニング]** を選択してナレッジ ベースを再トレーニングします。 
 
 1. **[テスト]** を選択し、新しく追加した、代わりの言い回しのいずれかに近い質問を入力します。ただし、まったく同じ言い回しは使用しません。
 

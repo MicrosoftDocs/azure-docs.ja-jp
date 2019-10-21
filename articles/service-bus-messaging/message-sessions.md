@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 67f3fd8f3166abac987e8fefbbf4a020f165c8bf
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951869"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71091828"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 
@@ -40,6 +40,9 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 フラグは、ポータルの次のチェック ボックスを使用して設定します。
 
 ![][2]
+
+> [!NOTE]
+> キューまたはサブスクリプションでセッションが有効になっている場合、クライアント アプリケーションでは通常のメッセージを送受信***できなくなります***。 すべてのメッセージは、(セッション ID を設定することで) セッションの一部として送信し、セッションを受信することで受信する必要があります。
 
 セッションに対応する API は、キューまたはサブスクリプション クライアントに存在します。 セッションとメッセージをいつ受信するかを制御する命令モデルがあり、受信ループを管理する複雑性を低減できる プロセス *OnMessage* に類似したハンドラーベースのモデルがあります。
 

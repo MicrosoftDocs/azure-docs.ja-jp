@@ -1,45 +1,47 @@
 ---
-title: Azure HPC Cache クラウド コンテナーにデータを移動する
+title: Azure HPC Cache (プレビュー) クラウド コンテナーにデータを移動する
 description: Azure HPC Cache で使用する Azure Blob Storage にデータを事前設定する方法
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.author: v-erkell
-ms.openlocfilehash: 07a97b1afa8049ace97f1589393cd76c24f21368
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.date: 10/07/2019
+ms.author: rohogue
+ms.openlocfilehash: 6c505e6918071b61a4152b0b421ed7cee3282206
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775167"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024503"
 ---
-# <a name="move-data-to-azure-blob-storage-for-azure-hpc-cache"></a>Azure HPC Cache の Azure Blob Storage にデータを移動する
+# <a name="move-data-to-azure-blob-storage"></a>Azure Blob Storage にデータを移動する
 
-Azure Blob Storage へのデータの移動がワークフローに含まれる場合は、Azure HPC Cache 経由でデータをコピーする効率的な方法を使用していることを確認してください。
+Azure Blob Storage へのデータの移動がワークフローに含まれる場合は、効率的な方法を使用していることを確認してください。 ストレージ ターゲットとして定義する前に、新しい BLOB コンテナーにデータを事前に読み込むか、コンテナーを追加してから、Azure HPC Cache を使用してデータをコピーすることができます。
 
 この記事では、Azure HPC Cache で使用する Blob Storage にデータを移動する最良の方法について説明します。
 
 次の情報に留意してください。
 
-* Azure HPC Cache では、Blob Storage 内のデータを整理するために、専用のストレージ形式が使用されます。 Blob Storage ターゲットが、新しいコンテナーか空のコンテナー、またはそれまで Azure HPC Cache データに使用されていた BLOB コンテナーのいずれかでなければならないのは、そのためです。 このクラウド ファイル システムは、[Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) でも使用されます。
+* Azure HPC Cache では、Blob Storage 内のデータを整理するために、専用のストレージ形式が使用されます。 Blob Storage ターゲットが、新しいコンテナーか空のコンテナー、またはそれまで Azure HPC Cache データに使用されていた BLOB コンテナーのいずれかでなければならないのは、そのためです。 (このクラウド ファイル システムは、[Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) でも使用されます。)
 
-* Azure HPC Cache 経由でデータをコピーするのが最善の選択肢となるのは、複数のクライアントおよび並列操作を使用するときです。 1 つのクライアントからの単純なコピー コマンドでは、データの移動が低速になります。
+* バックエンドのストレージ ターゲットに Azure HPC Cache 経由でデータをコピーするのが最善の選択肢となるのは、複数のクライアントおよび並列操作を使用するときです。 1 つのクライアントからの単純なコピー コマンドでは、データの移動が低速になります。
 
 Blob Storage コンテナーにコンテンツを読み込む Python ベースのユーティリティが利用できます。 詳細については、[Blob Storage へのデータの事前読み込み](#pre-load-data-in-blob-storage-with-clfsload)のセクションを参照してください。
 
-読み込みユーティリティを使用したくない場合、または既存のストレージ ターゲットにコンテンツを追加したい場合は、「[Azure HPC Cache 経由でデータをコピーする](#copy-data-through-the-azure-hpc-cache)」にある並列データ取り込み処理のヒントを参考にしてください。 
+読み込みユーティリティを使用したくない場合、または既存のストレージ ターゲットにコンテンツを追加したい場合は、「[Azure HPC Cache 経由でデータをコピーする](#copy-data-through-the-azure-hpc-cache)」にある並列データ取り込み処理のヒントを参考にしてください。
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>CLFSLoad を使用して Blob Storage にデータを事前に読み込む
 
-新しい Blob Storage コンテナーをストレージ ターゲットとして追加する前に、[Avere CLFSLoad](https://aka.ms/avere-clfsload) ユーティリティを使用して、Blob Storage コンテナーにデータをコピーすることができます。 このユーティリティは Linux VM 上で動作し、Azure HPC Cache に必要な独自の形式でデータを書き込みます。 キャッシュで使用する Blob Storage コンテナーにデータを事前設定する方法としては、これが最も効率的です。
+Avere CLFSLoad ユーティリティを使用して、 <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> ストレージ ターゲットとして追加する前に、Blob Storage コンテナーにデータをコピーすることができます。 このユーティリティは単一の Linux システム上で動作し、Azure HPC Cache に必要な独自の形式でデータを書き込みます。 キャッシュで使用する Blob Storage コンテナーにデータを事前設定する方法としては、CLFSLoad が最も効率的です。
+
+Avere CLFSLoad ユーティリティは、Azure HPC Cache チームからの要求によって入手できます。 それについてチームの担当者に問い合わせるか、[サポート チケット](hpc-cache-support-ticket.md)を開いてサポートを依頼してください。
 
 この方法が使用できるのは新しい空のコンテナーのみです。 コンテナーは、Avere CLFSLoad を使用する前に作成してください。
 
-詳細については、[Avere CLFSLoad の Readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md) を参照してください。 <!-- caution literal link -->
+詳細情報は、Avere CLFSLoad ディストリビューションに含まれています。これは、Azure HPC Cache チームからの要請によって利用できます。 <!-- [Avere CLFSLoad readme](https://github.com/microsoft/Avere-CLFSLoad/blob/master/README.md). --><!-- caution literal link -->
 
 大まかな手順を以下に示します。
 
-1. Python バージョン 3.6 以降がインストールされた Linux システム (物理マシンまたは VM) を用意します (パフォーマンスを高めるために Python 3.7 を推奨します)。
+1. Python バージョン 3.6 以降を使用して Linux システム (VM または物理) を準備します パフォーマンスを高めるために Python 3.7 を推奨します。
 1. Avere-CLFSLoad ソフトウェアを Linux システムにインストールします。
 1. Linux のコマンド ラインから転送を実行します。
 
@@ -50,15 +52,15 @@ Avere CLFSLoad ユーティリティには、次の情報が必要です。
 * コンテナーへの書き込みをユーティリティに許可する Shared Access Signature (SAS) トークン
 * データ ソースへのローカル パス (コピーするデータが格納されたローカル ディレクトリ、またはデータが格納されているマウントされたリモート システムのローカル パス)
 
-これらの要件については、[Avere CLFSLoad の Readme](https://aka.ms/avere-clfsload) に詳しく記載されています。
+<!-- The requirements are explained in detail in the [Avere CLFSLoad readme](https://aka.ms/avere-clfsload). -->
 
 ## <a name="copy-data-through-the-azure-hpc-cache"></a>Azure HPC Cache 経由でデータをコピーする
 
 Avere CLFSLoad ユーティリティを使用したくない場合、または大量のデータを既存の Blob Storage ターゲットに追加したい場合は、キャッシュ経由でデータをコピーすることができます。 Azure HPC Cache は、複数のクライアントからの要求を同時に処理するように設計されています。したがって、キャッシュ経由でデータをコピーするには、複数クライアントからの並列書き込みを使用する必要があります。
 
-![マルチクライアントのマルチスレッドのデータ移動を示す図:左上に、オンプレミスのハードウェア ストレージを表すアイコンがあり、そこから複数の矢印が出ています。 矢印は、4 つのクライアント マシンを指しています。 各クライアント マシンから Azure HPC Cache に向かって 3 本の矢印が出ています。 Azure HPC Cache から、複数の矢印が Blob Storage を指しています。](media/hpc-cache-parallel-ingest.png) 
+![マルチクライアントのマルチスレッドのデータ移動を示す図:左上に、オンプレミスのハードウェア ストレージを表すアイコンがあり、そこから複数の矢印が出ています。 矢印は、4 つのクライアント マシンを指しています。 各クライアント マシンから Azure HPC Cache に向かって 3 本の矢印が出ています。 Azure HPC Cache から、複数の矢印が Blob Storage を指しています。](media/hpc-cache-parallel-ingest.png)
 
-ストレージ システム間でデータを転送するためによく使われる ``cp`` または ``copy`` コマンドは、一度に 1 つのファイルだけをコピーするシングルスレッドのプロセスです。 つまり、一度に 1 つのファイルしかファイル サーバーに取り込まれません。これでは、クラスターのリソースを浪費してしまいます。
+ストレージ システム間でデータを転送するためによく使われる ``cp`` または ``copy`` コマンドは、一度に 1 つのファイルだけをコピーするシングルスレッドのプロセスです。 つまり、一度に 1 つのファイルしかファイル サーバーに取り込まれません。これでは、キャッシュのリソースを浪費してしまいます。
 
 このセクションでは、Azure HPC Cache の Blob Storage にデータを移動するための、マルチクライアント、マルチスレッドのファイル コピー システムを作成する方法について説明します。 複数のクライアントとシンプルなコピー コマンドを使ってデータを効率よくコピーするために使用できる、ファイル転送の概念と決定点について説明します。
 
@@ -75,7 +77,7 @@ Avere CLFSLoad ユーティリティを使用したくない場合、または�
 
 Azure HPC Cache を使用した並列データ取り込みには、次の方法があります。
 
-* 手動コピー - クライアント上で、マルチスレッドのコピーを手動で作成できます。そのためには、定義済みのファイル セットまたはパスのセットに対して、一度に複数のコピー コマンドをバックグラウンドで実行します。 詳細については、[Azure HPC Cloud のデータ取り込み (手動でコピーする方法)](hpc-cache-ingest-manual.md) に関するページを参照してください。
+* 手動コピー - クライアント上で、マルチスレッドのコピーを手動で作成できます。そのためには、定義済みのファイル セットまたはパスのセットに対して、一度に複数のコピー コマンドをバックグラウンドで実行します。 詳細については、[Azure HPC Cache のデータ取り込み (手動でコピーする方法)](hpc-cache-ingest-manual.md) に関するページを参照してください。
 
 * ``msrsync`` を使用して部分的に自動化されたコピー  -  ``msrsync`` は、複数の並列 ``rsync`` プロセスを実行するラッパー ユーティリティです。 詳細については、「[Azure HPC Cache のデータ取り込み - msrsync を使用した方法](hpc-cache-ingest-msrsync.md)」を参照してください。
 

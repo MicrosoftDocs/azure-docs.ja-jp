@@ -3,9 +3,8 @@ title: Azure Security Center を使用してセキュリティ体制を強化す
 description: この記事は、Azure Security Center でリソースを監視することによってセキュリティ体制を強化するのに役立ちます。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 28b4667a9ceb4b3534d85ba28668f06c750e22c5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: 57d47712fe20fac0bf370a9a100a07a37d7aa753
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60703884"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996669"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Azure Security Center を使用してセキュリティ体制を強化する
 この記事は、セキュリティ体制を強化するために役立ちます。 リソースのセキュリティを可能な限り厳密にしたり、ポリシーへの準拠を監視したりするには、Azure Security Center の監視機能を使用します。
@@ -35,7 +34,7 @@ ms.locfileid: "60703884"
 - 仮想マシン、ネットワーク セキュリティ グループ、エンドポイントなど、ネットワーク リソースを監視し、セキュリティを改善するための推奨事項を受信する方法については、「[Azure Security Center でのネットワークの保護](security-center-network-recommendations.md)」を参照してください。 
 - SQL サーバーやストレージ アカウントなど、データとストレージ リソースを監視し、セキュリティを改善するための推奨事項を受信する方法については、「[Azure Security Center での Azure SQL サービスとデータの保護](security-center-sql-service-recommendations.md)」を参照してください。 
 - MFA やアカウント アクセス許可など、ID やアクセスのリソースを監視し、セキュリティを改善するための推奨事項を受信する方法については、「[Azure Security Center での ID とアクセスの監視](security-center-identity-access.md)」を参照してください。 
-- リソースへの Just in Time アクセスを監視する方法については、「[Just in Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)」を参照してください。 
+- リソースへの Just-In-Time アクセスを監視する方法については、「[Just-In-Time を使用した仮想マシン アクセスの管理](security-center-just-in-time.md)」を参照してください。 
 
 
 推奨事項の適用方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」を参照してください。

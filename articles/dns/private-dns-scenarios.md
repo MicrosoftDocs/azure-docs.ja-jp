@@ -5,19 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 10/05/2019
 ms.author: victorh
-ms.openlocfilehash: 409595febded7b242eae876ebb2cb35ae4999e5e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 747fe891bf4d6bd042e689107cd87680795eb82b
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60686836"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959329"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Azure DNS Private Zones のシナリオ
-Azure DNS Private Zones は、仮想ネットワーク内での名前解決と仮想ネットワーク間での名前解決を提供します。 この記事では、この機能を使用して実現できる一般的なシナリオについて説明します。 
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
+Azure DNS Private Zones は、仮想ネットワーク内での名前解決と仮想ネットワーク間での名前解決を提供します。 この記事では、この機能を使用して実現できる一般的なシナリオについて説明します。
 
 ## <a name="scenario-name-resolution-scoped-to-a-single-virtual-network"></a>シナリオ: 1 つの仮想ネットワークをスコープとする名前解決
 このシナリオでは、仮想マシン (VM) を含む多数の Azure リソースがある Azure 内の仮想ネットワークがあります。 仮想ネットワーク内から特定のドメイン名 (DNS ゾーン) を使用してリソースを解決します。そのためには、名前解決をプライベートで実行し、インターネットからアクセスできないようにする必要があります。 さらに、VNET 内の VM が Azure によって DNS ゾーンに自動的に登録される必要があります。 

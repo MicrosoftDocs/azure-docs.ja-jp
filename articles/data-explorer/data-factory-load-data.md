@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory から Azure Data Explorer にデータをコピーする
-description: このトピックでは、Azure Data Factory のコピー ツールを使用した、Azure Data Explorer へのデータの取り込み (読み込み) について説明します
+description: この記事では、Azure Data Factory のコピー ツールを使用して Azure Data Explorer にデータを取り込む (読み込む) 方法について説明します。
 services: data-explorer
 author: orspod
 ms.author: orspodek
@@ -8,186 +8,238 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: b3bd9b800da4f096639d02c78b718216441621a9
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 860b1a579d9c8cee6c6e80ae4c4e7fdd7949d5c7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70803985"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300594"
 ---
-# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer にデータをコピーする 
+# <a name="copy-data-to-azure-data-explorer-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Explorer にデータをコピーする 
 
-Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどの多くのソースからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 データを繰り返し探査し、パターンと異常を識別することにより、製品の改良、カスタマー エクスペリエンスの強化、デバイスの監視、操作の向上を実現できます。 新たな質問を試して、数分で回答を得ることができます。 Azure Data Factory は、フル マネージドのクラウドベースのデータ統合サービスです。 このサービスを使用して、既存のシステムからのデータで Azure Data Explorer データベースを設定し、分析ソリューションを構築する際の時間を節約できます。
+Azure Data Explorer は、フル マネージドの高速データ分析サービスです。 アプリケーション、Web サイト、IoT デバイスなど、さまざまなソースからストリーム配信される大量のデータをリアルタイムに分析することができます。 Azure Data Explorer を使用すると、データを繰り返し探査してパターンや異常を特定することにより、製品の改良、カスタマー エクスペリエンスの強化、デバイスの監視、操作の向上を実現できます。 これは、数分で新たな疑問を調査し、回答を得る際に役立ちます。 
 
-Azure Data Factory には、Azure Data Explorer にデータを読み込む際に次の利点があります。
+Azure Data Factory は、フル マネージドのクラウドベースのデータ統合サービスです。 これを使用して、既存のシステムから Azure Data Explorer データベースにデータを設定することができます。 分析ソリューションの構築にかかる時間を短縮する効果もあります。
 
-* **簡単なセットアップ**: 直感的なウィザードが示す 5 つの手順に従うだけです。スクリプトは必要ありません。
-* **豊富なデータ ストアのサポート**:オンプレミスとクラウドベースのデータ ストアの豊富なセットに対するサポートが組み込まれています。 詳しい一覧については、[サポートされるデータ ストア](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)の表をご覧ください。
-* **セキュリティとコンプライアンスへの準拠**:データは HTTPS または ExpressRoute 経由で転送されます。 グローバル サービスの存在により、データが地理的な境界を越えることはありません。
-* **ハイ パフォーマンス**: 最大 1 GB/秒の速度で Azure Data Explorer にデータを読み込みます。 詳しくは、[コピー アクティビティのパフォーマンス](/azure/data-factory/copy-activity-performance)に関する記事をご覧ください。
+Azure Data Explorer にデータを読み込むと、Data Factory には次の利点があります。
 
-この記事では、Data Factory のデータのコピー ツールを使用して Amazon S3 から Azure Data Explorer にデータを読み込む方法を示します。 同様の手順に従って、[Azure Blob Storage](/azure/data-factory/connector-azure-blob-storage)、[Azure SQL Database](/azure/data-factory/connector-azure-sql-database)、[Azure SQL Data Warehouse](/azure/data-factory/connector-azure-sql-data-warehouse)、[GoogleBigQuery](/azure/data-factory/connector-google-bigquery)、[Oracle](/azure/data-factory/connector-oracle)、[ファイル システム](/azure/data-factory/connector-file-system)などの他のデータ ストアからデータをコピーできます。
+* **簡単なセットアップ**: 5 つの手順からなる直感的なウィザードが表示されます。スクリプト作成は必要ありません。
+* **豊富なデータ ストアのサポート**:オンプレミスとクラウドベースの豊富なデータ ストアに対するサポートが組み込まれています。 詳しい一覧については、[サポートされるデータ ストア](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)の表をご覧ください。
+* **セキュリティとコンプライアンスへの準拠**:データは HTTPS または Azure ExpressRoute 経由で転送されます。 グローバル サービスの存在により、データが地理的な境界を越えることはありません。
+* **ハイ パフォーマンス**: Azure Data Explorer へのデータ読み込み速度は最大 1 GB/秒 (GBps) です。 詳細については、[コピー アクティビティのパフォーマンス](/azure/data-factory/copy-activity-performance)を参照してください。
+
+この記事では、Data Factory のデータ コピー ツールを使用して Amazon Simple Storage Service (S3) から Azure Data Explorer にデータを読み込みます。 同様のプロセスに従って、次のようなその他のデータ ストアからデータをコピーすることもできます。
+* [Azure BLOB Storage](/azure/data-factory/connector-azure-blob-storage)
+* [Azure SQL Database](/azure/data-factory/connector-azure-sql-database)
+* [Azure SQL Data Warehouse](/azure/data-factory/connector-azure-sql-data-warehouse)
+* [Google BigQuery](/azure/data-factory/connector-google-bigquery)
+* [Oracle](/azure/data-factory/connector-oracle)
+* [ファイル システム](/azure/data-factory/connector-file-system)
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
-* [Azure Data Explorer クラスターとデータベース](create-cluster-database-portal.md)
-* データのソースです。
+* [Azure Data Explorer クラスターとデータベース](create-cluster-database-portal.md)。
+* データのソース。
 
 ## <a name="create-a-data-factory"></a>Data Factory の作成
 
-1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) > **[分析]**  >  **[Data Factory]** を選択します。
+1. [Azure Portal](https://ms.portal.azure.com) にサインインします。
 
-   ![新しいデータ ファクトリの作成](media/data-factory-load-data/create-adf.png)
+1. 左側のウィンドウで、 **[リソースの作成]**  >  **[分析]**  >  **[Data Factory]** の順に選択します。
 
-1. **[新しいデータ ファクトリ]** ページで、次のフィールドの値を指定し、 **[作成]** を選択します。
+   ![Azure portal でデータ ファクトリを作成する](media/data-factory-load-data/create-adf.png)
 
-    ![[新しいデータ ファクトリ] ページ](media/data-factory-load-data/my-new-data-factory.png)
+1. **[新しいデータ ファクトリ]** ウィンドウで、次の表にあるフィールドの値を指定します。
 
-    **設定**  | **フィールドの説明**
-    |---|---|
-    | **Name** | データ ファクトリのグローバルに一意の名前を入力します。 "*データ ファクトリ名 \"LoadADXDemo\" は利用できません*" エラーが発生する場合は、データ ファクトリの別の名前を入力します。 Data Factory アーティファクトの名前付け規則については、[Data Factory の名前付け規則](/azure/data-factory/naming-rules)に関する記事をご覧ください。|
-    | **サブスクリプション** | データ ファクトリを作成する Azure サブスクリプションを選択します。 |
-    | **リソース グループ** | **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 既存のリソース グループがある場合は、 **[既存のものを使用]** を選択します。 |
-    | **バージョン** | **[V2]** を選択します。 |
-    | **Location** | データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 |
-    | | |
+   ![[新しいデータ ファクトリ] ウィンドウ](media/data-factory-load-data/my-new-data-factory.png)  
 
-1. 作成プロセスを監視するには、ツール バーの [通知] を選択します。 作成が完了したら、作成したデータ ファクトリに移動します。 **Data Factory** のホーム ページが開きます。
+   | Setting  | 入力する値  |
+   |---|---|
+   | **Name** | このボックスには、実際のデータ ファクトリのグローバルに一意の名前を入力します。 "*データ ファクトリ名 \"LoadADXDemo\" は利用できません*" というエラーが発生する場合は、データ ファクトリ用に別の名前を入力します。 Data Factory アーティファクトの名前付けに関する規則については、[Data Factory の名前付け規則](/azure/data-factory/naming-rules)に関する記事を参照してください。|
+   | **サブスクリプション** | ドロップダウン リストで、データ ファクトリを作成する Azure サブスクリプションを選択します。 |
+   | **リソース グループ** | **[新規作成]** を選択し、新しいリソース グループの名前を入力します。 既にリソース グループがある場合は、 **[既存のものを使用する]** を選択します。 |
+   | **バージョン** | ドロップダウン リストで、 **[V2]** を選択します。 |  
+   | **Location** | ドロップダウン リストで、データ ファクトリの場所を選択します。 サポートされている場所のみがこのリストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 |
 
-   ![データ ファクトリのホーム ページ](media/data-factory-load-data/data-factory-home-page.png)
+1. **作成** を選択します。
 
-1. **[作成と監視]** タイルを選択して、別のタブにアプリケーションを起動します。
+1. 作成プロセスを監視するには、ツール バーの **[通知]** を選択します。 データ ファクトリの作成後、それを選択します。
+   
+   **[データ ファクトリ]** ウィンドウが表示されます。
+
+   ![[データ ファクトリ] ウィンドウ](media/data-factory-load-data/data-factory-home-page.png)
+
+1. このアプリケーションを別のウィンドウで開くには、 **[Author & Monitor]\(作成と監視\)** タイルを選択します。
 
 ## <a name="load-data-into-azure-data-explorer"></a>Azure Data Explorer へのデータの読み込み
 
-多くの種類の[データ ストア](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)から Azure Data Explorer にデータを読み込むことができます。 このトピックでは、Amazon S3 からのデータの読み込みについて詳しく説明します。
+多くの種類の[データ ストア](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)から Azure Data Explorer にデータを読み込むことができます。 この記事では、Amazon S3 からデータを読み込む方法について説明します。
 
-Azure Data Factory を使用して Azure Data Explorer にデータを読み込む方法は 2 つあります。
+データは、次のいずれかの方法で読み込むことができます。
 
-* Azure Data Factory ユーザー インターフェイス - [ **[作成者]** タブ](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)
-* この記事で使用している [Azure Data Factory の**データのコピー** ツール](/azure/data-factory/quickstart-create-data-factory-copy-data-tool)。
+* Azure Data Factory のユーザー インターフェイス。[Azure Data Factory UI を使用したデータ ファクトリの作成](/azure/data-factory/quickstart-create-data-factory-portal#create-a-data-factory)に関する記事の「データ ファクトリの作成」セクションで示されているように、 **[作成]** アイコンを選択します。
+* Azure Data Factory のデータ コピー ツール ([データ コピー ツールを使用したデータのコピー](/azure/data-factory/quickstart-create-data-factory-copy-data-tool)に関する記事を参照)。
 
-### <a name="copy-data-from-amazon-s3-source"></a>Amazon S3 (ソース) からデータをコピーする
+### <a name="copy-data-from-amazon-s3-source"></a>Amazon S3 (コピー元) からデータをコピーする
 
-1. **[Let's get started]\(始めましょう\)** ページで、 **[データのコピー]** タイルを選択してデータのコピー ツールを起動します。
+1. **[Let's get started]\(始めましょう\)** ウィンドウで、 **[データ コピー]** を選択してデータ コピー ツールを開きます。
 
-   ![データのコピー ツールのタイル](media/data-factory-load-data/copy-data-tool-tile.png)
+   ![[データ コピー] ツール ボタン](media/data-factory-load-data/copy-data-tool-tile.png)
 
-1. **[プロパティ]** ページで、 **[タスク名]** を指定し、 **[次へ]** を選択します。
+1. **[プロパティ]** ウィンドウの **[タスク名]** ボックスで、名前を入力し、 **[次へ]** を選択します。
 
-    ![ソースのプロパティからコピーする](media/data-factory-load-data/copy-from-source.png)
+    ![データ コピーの [プロパティ] ウィンドウ](media/data-factory-load-data/copy-from-source.png)
 
-1. **[ソース データ ストア]** ページで、 **[新しい接続の作成]** をクリックします。
+1. **[ソース データ ストア]** ウィンドウで、 **[新しい接続の作成]** を選択します。
 
-    ![ソース データの接続の作成](media/data-factory-load-data/source-create-connection.png)
+    ![データ コピーの [ソース データ ストア] ウィンドウ](media/data-factory-load-data/source-create-connection.png)
 
-1. **[Amazon S3]** を選択し、 **[続行]** を選択します
+1. **[Amazon S3]** を選択し、 **[続行]** を選択します。
 
-    ![新規のリンクされたサービス](media/data-factory-load-data/amazons3-select-new-linked-service.png)
+    ![[New Linked Service]\(新しいリンクされたサービス\) ウィンドウ](media/data-factory-load-data/amazons3-select-new-linked-service.png)
 
-1. **[New Linked Service (Amazon S3)]\(新しいリンクされたサービス (Amazon S3)\)** ページで、次の手順を実行します。
+1. **[New Linked Service (Amazon S3)]\(新しいリンクされたサービス (Amazon S3)\)** ページで、以下を実行します。
 
     ![Amazon S3 のリンクされたサービスの指定](media/data-factory-load-data/amazons3-new-linked-service-properties.png)
 
-    * 新しいリンクされたサービスの **[名前]** を指定します。
-    * ドロップダウンから **[Connect via integration runtime]\(統合ランタイム経由で接続\)** 値を選択します。
-    * **[アクセス キー ID]** の値を指定します。
-    * **[シークレット アクセス キー]** の値を指定します。
-    * **[Test Connection]\(接続のテスト\)** を選択して、作成したリンクされたサービスの接続をテストします。
-    * **[完了]** を選択します。
+    a. **[名前]** ボックスに、リンクされた新しいサービスの名前を入力します。
 
-1. **[ソース データ ストア]** ページに、新しい AmazonS31 接続が表示されます。 **[次へ]** を選択します。
+    b. **[Connect via integration runtime]\(統合ランタイム経由で接続\)** ドロップダウン リストで値を選択します。
+
+    c. **[Access Key ID]\(アクセス キー ID\)** ボックスに値を入力します。
+    
+    > [!NOTE]
+    > Amazon S3 で、お使いのアクセス キーを見つけるには、ナビゲーション バーでご自身の Amazon ユーザー名を選択し、 **[My Security Credentials]\(自分のセキュリティ資格情報\)** を選択します。
+    
+    d. **[Secret Access Key]\(シークレット アクセス キー\)** ボックスに値を入力します。
+
+    e. リンクされたサービスの作成済みの接続をテストするには、 **[Test Connection]\(接続のテスト\)** を選択します。
+
+    f. **[完了]** を選択します。
+    
+      **[ソース データ ストア]** ウィンドウには、新しい AmazonS31 接続が表示されます。 
+
+1. **[次へ]** を選択します。
 
    ![ソース データ ストアの作成された接続](media/data-factory-load-data/source-data-store-created-connection.png)
 
-1. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ページで次の操作を実行します。
+1. **[Choose the input file or folder]\(入力ファイルまたはフォルダーの選択\)** ウィンドウで、以下を実行します。
 
-    1. コピーするフォルダー/ファイルを参照します。 フォルダー/ファイルを選択します。
-    1. 必要に応じてコピー動作を選択します。 **[Binary copy]\(バイナリ コピー\)** はオフのままにします。
-    1. **[次へ]** を選択します。
+    a. コピーするファイルまたはフォルダーを参照し、それを選択します。
+
+    b. 目的のコピー動作を選択します。 **[Binary copy]\(バイナリ コピー\)** チェック ボックスがオフになっていることを確認します。
+
+    c. **[次へ]** を選択します。
 
     ![入力ファイルまたはフォルダーの選択](media/data-factory-load-data/source-choose-input-file.png)
 
-1. **[file formats settings]\(ファイル形式設定\)** ページで、ファイルの関連設定を選択し、 **[次へ]** をクリックします。
+1. **[File format settings]\(ファイル形式設定\)** ウィンドウで、対象のファイルの関連設定を選択します。 その後、 **[次へ]** を選択します。
 
-   ![入力ファイルまたはフォルダーの選択](media/data-factory-load-data/source-file-format-settings.png)
+   ![[File format settings]\(ファイル形式設定\) ウィンドウ](media/data-factory-load-data/source-file-format-settings.png)
 
 ### <a name="copy-data-into-azure-data-explorer-destination"></a>Azure Data Explorer (コピー先) にデータをコピーする
 
-以下で指定する Azure Data Explorer のコピー先テーブル (シンク) にデータをコピーする、Azure Data Explorer の新しいリンクされたサービスが作成されます。
+このセクションで指定する Azure Data Explorer のコピー先テーブル (シンク) にデータをコピーするために、Azure Data Explorer のリンクされたサービスが新しく作成されます。
 
 #### <a name="create-the-azure-data-explorer-linked-service"></a>Azure Data Explorer のリンクされたサービスを作成する
 
-1. **[コピー先データ ストア]** ページで、既存のデータ ストア接続を使用するか、 **[新しい接続の作成]** をクリックして新しいデータ ストアを指定できます。
+Azure Data Explorer のリンクされたサービスを作成するには、以下を実行します。
 
-    ![[Destination data store]\(コピー先データ ストア\) ページ](media/data-factory-load-data/destination-create-connection.png)
+1. 既存のデータ ストア接続を使用したり、新しいデータ ストアを指定したりするには、 **[Destination data store]\(コピー先データ ストア\)** ウィンドウで **[新しい接続の作成]** を選択します。
 
-1. **[New Linked Service]\(新しいリンクされたサービス\)** ページで **[Azure Data Explorer]** を選択し、 **[続行]** を選択します
+    ![[Destination data store]\(コピー先データ ストア\) ウィンドウ](media/data-factory-load-data/destination-create-connection.png)
 
-    ![Azure Data Explorer - 新しいリンクされたサービスの選択](media/data-factory-load-data/adx-select-new-linked-service.png)
+1. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、 **[Azure Data Explorer]** を選択し、 **[続行]** を選択します。
 
-1. **[New Linked Service (Azure Data Explorer)]\(新しいリンクされたサービス (Azure Data Explorer)\)** ページで、次の手順を実行します。
+    ![[New Linked Service]\(新しいリンクされたサービス\) ウィンドウ](media/data-factory-load-data/adx-select-new-linked-service.png)
 
-    ![ADX の新しいリンクされたサービス](media/data-factory-load-data/adx-new-linked-service.png)
+1. **[New Linked Service (Azure Data Explorer)]\(新しいリンクされたサービス (Azure Data Explorer)\)** ウィンドウで、以下を実行します。
 
-   * Azure Data Explorer のリンクされたサービスの **[名前]** を選択します。
-   * **[Account selection method]\(アカウントの選択方法\)** で: 
-        * **[From Azure subscription]\(Azure サブスクリプションから\)** ラジオ ボタンを選択し、 **[Azure サブスクリプション]** アカウントを選択します。 次に、自分の **[クラスター]** を選択します。 ドロップダウンには、ユーザーに属するクラスターのみが一覧表示されることに注意してください。
-        * または、 **[手動で入力]** ラジオ ボタンを選択し、自分の **[エンドポイント]** を入力します。
-    * **[テナント]** を指定します。
-    * **[サービス プリンシパル ID]** を入力します。
-    * **[サービス プリンシパル キー]** ボタンを選択し、 **[サービス プリンシパル キー]** を入力します。
-    * ドロップダウン メニューから **[データベース]** を選択します。 または、 **[編集]** チェックボックスをオンにし、データベース名を入力します。
-    * **[Test Connection]\(接続のテスト\)** を選択して、作成したリンクされたサービスの接続をテストします。 セットアップに接続できる場合は、緑色のチェックマーク (**接続成功**) が表示されます。
-    * **[完了]** を選択して、リンクされたサービスの作成を完了します。
+    ![Azure Data Explorer の [New Linked Service]\(新しいリンクされたサービス\) ウィンドウ](media/data-factory-load-data/adx-new-linked-service.png)
+
+   a. **[名前]** ボックスに、Azure Data Explorer のリンクされたサービスの名前を入力します。
+
+   b. **[Account selection method]\(アカウントの選択方法\)** で、次のいずれかを実行します。 
+
+    * **[From Azure subscription]\(Azure サブスクリプションから\)** を選択し、ドロップダウン リストでお使いの **Azure サブスクリプション**と**クラスター**を選択します。 
+
+        > [!NOTE]
+        > **[クラスター]** ボックスの一覧には、お使いのサブスクリプションに関連付けられているクラスターのみが表示されます。
+
+    * **[手動で入力]** を選択し、お使いの**エンドポイント**を入力します。
+
+   c. **[テナント]** ボックスにテナント名を入力します。
+
+   d. **[サービス プリンシパル ID]** ボックスに、サービス プリンシパル ID を入力します。
+
+   e. **[Service principal key]\(サービス プリンシパル キー\)** を選択し、 **[Service principal key]\(サービス プリンシパル キー\)** ボックスにキーの値を入力します。
+
+   f. **[データベース]** ボックスの一覧で、お使いのデータベース名を選択します。 または、 **[編集]** チェック ボックスをオンにし、データベース名を入力します。
+
+   g. リンクされたサービスの作成済みの接続をテストするには、 **[Test Connection]\(接続のテスト\)** を選択します。 リンクされたサービスに接続できると、そのウィンドウには緑のチェックマークと "**接続成功**" メッセージが表示されます。
+
+   h. **[完了]** を選択して、リンクされたサービスの作成を完了します。
 
     > [!NOTE]
-    > このサービス プリンシパルは、Azure Data Explorer サービスにアクセスするために Azure Data Factory によって使用されます。 サービス プリンシパルの場合は、[Azure Active Directory (Azure AD) サービス プリンシパルを作成](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal)します。 **Azure Key Vault** のメソッドは使用しないでください。
+    > このサービス プリンシパルは、Azure Data Explorer サービスにアクセスするために Azure Data Factory によって使用されます。 サービス プリンシパルを作成するには、[Azure Active Directory (Azure AD) のサービス プリンシパルの作成](/azure-stack/operator/azure-stack-create-service-principals#manage-an-azure-ad-service-principal)に関する記事にアクセスします。 Azure Key Vault のメソッドは使用しないでください。
 
 #### <a name="configure-the-azure-data-explorer-data-connection"></a>Azure Data Explorer データ接続を構成する
 
-1. **[コピー先データ ストア]** が開きます。 作成した Azure Data Explorer データ接続が使用可能です。 **[次へ]** を選択して接続を構成します。
+リンクされたサービスの接続を作成したら、 **[Destination data store]\(コピー先データ ストア\)** ウィンドウが表示され、作成した接続が使用できるようになります。 この接続を構成するには、以下を実行します。
 
-    ![ADX コピー先データ ストア](media/data-factory-load-data/destination-data-store.png)
+1. **[次へ]** を選択します。
 
-1. **[テーブル マッピング]** で、コピー先テーブル名を設定し、 **[次へ]** を選択します。
+    ![Azure Data Explorer の [Destination data store]\(コピー先データ ストア\) ウィンドウ](media/data-factory-load-data/destination-data-store.png)
 
-    ![コピー先データセット テーブルのマッピング](media/data-factory-load-data/destination-dataset-table-mapping.png)
+1. **[テーブル マッピング]** ウィンドウで、コピー先テーブル名を設定し、 **[次へ]** を選択します。
 
-1. **[列マッピング]** ページで:
-    * 最初のマッピングは、[ADF スキーマ マッピング](/azure/data-factory/copy-activity-schema-and-type-mapping)に従って ADF によって実行されます
-        * Azure Data Factory のコピー先テーブルの **[列マッピング]** を設定します。 既定のマッピングは、ソースから ADF のコピー先テーブルです。
-        * 列マッピングを定義する必要がない列の選択はオフにします。
-    * 2 つ目のマッピングは、Azure Data Explorer にこの表形式データが取り込まれたときに行われます。 マッピングは [CSV のマッピング規則](/azure/kusto/management/mappings#csv-mapping)に従って実行されます。 ソース データが CSV 形式でなかった場合でも、ADF ではデータが形式に変換されるので、CSV マッピングはこの段階で関連する唯一のマッピングであることに注意してください。
-        * **[Azure Data Explorer (Kusto) sink properties]\(Azure Data Explorer (Kusto) シンク プロパティ\)** で、関連する **[Ingestion mapping name]\(インジェスト マッピング名\)** (省略可能) を追加し、列マッピングを使用できるようにします。
-        * **[Ingestion mapping name]\(インジェスト マッピング名\)** が指定されていない場合は、 **[列マッピング]** セクションで定義された "by-name" のマッピング順序になります。 "by-name" のマッピングが失敗した場合は、Azure Data Explorer によって "by-column position" 順 (既定では by-position でマップ) でのデータの取り込みが試行されます。
-    * **[次へ]** を選択します
+    ![コピー先データセットの [テーブル マッピング] ウィンドウ](media/data-factory-load-data/destination-dataset-table-mapping.png)
 
-    ![対象のデータセット列のマッピング](media/data-factory-load-data/destination-dataset-column-mapping.png)
+1. **[列マッピング]** ウィンドウで、次のマッピングが行われます。
 
-1. **[設定]** ページで次の操作を行います。
-    * 関連する**フォールト トレランス設定**を設定します。
-    * **パフォーマンス設定**:ステージングの有効化は適用されません。 **[詳細設定]** にはコストに関する考慮事項が含まれます。 特定のニーズがない場合はそのままにします。
+    a. 最初のマッピングは、[Azure Data Factory のスキーマ マッピング](/azure/data-factory/copy-activity-schema-and-type-mapping)に関する記事に従って実行されます。 以下の手順を実行します。
+
+    * Azure Data Factory のコピー先テーブルの **[列マッピング]** を設定します。 既定では、ソースから Azure Data Factory のコピー先テーブルへのマッピングが表示されます。
+
+    * 列マッピングを定義する必要がない列の選択はキャンセルします。
+
+    b. 2 つ目のマッピングは、Azure Data Explorer にこの表形式データが取り込まれたときに行われます。 マッピングは [CSV のマッピング規則](/azure/kusto/management/mappings#csv-mapping)に従って実行されます。 ソース データが CSV 形式でない場合でも、Azure Data Factory ではそのデータが表形式に変換されます。 したがって、この段階では、CSV マッピングは唯一の関連のあるマッピングになります。 以下の手順を実行します。
+
+    * (省略可能) **[Azure Data Explorer (Kusto) sink properties]\(Azure Data Explorer (Kusto) シンク プロパティ\)** で、列マッピングを使用できるように、関連する **[Ingestion mapping name]\(インジェスト マッピング名\)** を追加します。
+
+    * **[Ingestion mapping name]\(インジェスト マッピング名\)** が指定されていない場合は、 **[列マッピング]** セクションで定義されている *by-name* マッピング順序が使用されます。 *by-name* マッピングが失敗すると、Azure Data Explorer では、*by-column position*順 (つまり、既定では位置によるマップ) でデータの取り込みが試行されます。
+
     * **[次へ]** を選択します。
 
-    ![データのコピーの設定](media/data-factory-load-data/copy-data-settings.png)
+    ![コピー先データセットの [列マッピング] ウィンドウ](media/data-factory-load-data/destination-dataset-column-mapping.png)
 
-1. **[サマリー]** で設定を確認し、 **[次へ]** を選択します。
+1. **[設定]** ウィンドウで、以下を実行します。
 
-    ![データのコピーのサマリー](media/data-factory-load-data/copy-data-summary.png)
+    a. **[Fault tolerance settings]\(フォールト トレランスの設定\)** で、関連する設定を入力します。
 
-1. **[Deployment]\(デプロイ\) ページ**で:
-    * **[モニター]** を選択して **[モニター]** タブに切り替え、パイプライン(進行状況、エラー、データ フロー) の状態 を確認します。
-    * **[パイプラインの編集]** を選択して、リンクされたサービス、データセット、パイプラインを編集します。
-    * **[完了]** を選択してデータのコピー タスクを完了します
+    b. **[Performance settings]\(パフォーマンスの設定\)** で、 **[Enable staging]\(ステージングの有効化\)** が適用されていないため、 **[詳細設定]** にはコストに関する考慮事項が含まれます。 特定の要件がない場合は、これらの設定はそのままにしておきます。
 
-    ![[Deployment]\(デプロイ\) ページ](media/data-factory-load-data/deployment.png)
+    c. **[次へ]** を選択します。
+
+    ![データ コピーの [設定] ウィンドウ](media/data-factory-load-data/copy-data-settings.png)
+
+1. **[Summary]\(概要\)** ウィンドウで設定を確認し、 **[次へ]** を選択します。
+
+    ![データ コピーの [Summary]\(概要\) ウィンドウ](media/data-factory-load-data/copy-data-summary.png)
+
+1. **[Deployment complete]\(デプロイ完了\)** ウィンドウで、以下を実行します。
+
+    a. **[監視]** タブに切り替えてパイプラインの状態 (つまり、進行状況、エラー、データ フロー) を確認するには、 **[監視]** を選択します。
+
+    b. リンクされたサービス、データセット、パイプラインを編集するには、 **[パイプラインの編集]** を選択します。
+
+    c. **[完了]** を選択してデータ コピー タスクを完了します。
+
+    ![[Deployment complete]\(デプロイ完了\) ウィンドウ](media/data-factory-load-data/deployment.png)
 
 ## <a name="next-steps"></a>次の手順
 
 * Azure Data Factory 内の [Azure Data Explorer コネクタ](/azure/data-factory/connector-azure-data-explorer)について学習する。
-
 * [Data Factory UI](/azure/data-factory/quickstart-create-data-factory-portal) でのリンクされたサービス、データセット、およびパイプラインの編集の詳細について学習する。
-
 * データのクエリのための [Azure Data Explorer のクエリ](/azure/data-explorer/web-query-data)について確認する。

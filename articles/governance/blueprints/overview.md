@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 08/26/2019
 ms.topic: overview
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 631aa956573fd611988030af8ea7e34c6c266045
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 86f58594ce1af91b19f70cbdb1114a90180e3b4f
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146097"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981709"
 ---
 # <a name="overview-of-the-azure-blueprints-service"></a>Azure Blueprints サービスの概要
 
@@ -52,7 +51,7 @@ Resource Manager テンプレートとブループリントのどちらかを選
 
 ブループリントは _アーティファクト_ から成ります。 ブループリントでは現在のところ以下のリソースがアーティファクトとしてサポートされています。
 
-|Resource  | 階層のオプション| 説明  |
+|リソース  | 階層のオプション| 説明  |
 |---------|---------|---------|
 |リソース グループ | Subscription | ブループリント内の他のアーティファクトで使用する新しいリソース グループを作成します。  プレースホルダーであるこれらのリソース グループを使用すると、リソースの構造を正確に希望したとおりに編成し、Azure Resource Manager テンプレートだけでなく、含めたポリシー割り当てとロールの割り当てのアーティファクトについて、スコープを制限する指定ができます。 |
 |Azure Resource Manager テンプレート | サブスクリプション、リソース グループ | テンプレートは、複雑な環境を作成する目的で使用されます。 たとえば、SharePoint ファーム、Azure Automation State Configuration、Log Analytics ワークスペースの環境が該当します。 |

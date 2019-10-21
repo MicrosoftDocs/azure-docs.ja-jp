@@ -1,21 +1,18 @@
 ---
-title: クイック スタート:Geo Artificial Intelligence を設定する
-titleSuffix: Azure Data Science Virtual Machine
-description: Geo AI Data Science Virtual Machine を作成して構成する方法について説明します。 Geo AI Data Science Virtual Machine は、地理的なデータを使用して AI と ML のソリューションを作成するツールを提供します。
-keywords: ディープ ラーニング、AI、データ サイエンス ツール、データ サイエンス仮想マシン、地理空間分析
-services: machine-learning
+title: クイック スタート:Geo AI DSVM の作成
+description: 地理空間の分析と機械学習を行うために、Azure で Geo AI Data Science Virtual Machine を構成および作成します。
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: quickstart
-ms.date: 03/05/2018
-ms.openlocfilehash: 7afeec3f71cd1af30093801fedabf3f0357ae3d0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 09/13/2019
+ms.openlocfilehash: 6b32d1f76091d7bbb8f870402020d0ac247d425b
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208068"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170732"
 ---
 # <a name="quickstart-set-up-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>クイック スタート:Azure で Geo Artificial Intelligence Virtual Machine を設定する 
 
@@ -44,7 +41,7 @@ Geo AI Data Science VM のインスタンスを作成するには、次の手順
 
 **[基本]** :
 
-- **[名前]** :作成するデータ サイエンス サーバーの名前です。
+- **Name**:作成するデータ サイエンス サーバーの名前です。
     
 - **[ユーザー名]** : 管理者アカウントのサインイン ID です。
     

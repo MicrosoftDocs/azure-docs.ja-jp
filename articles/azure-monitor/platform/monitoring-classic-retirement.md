@@ -1,19 +1,19 @@
 ---
 title: Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 description: Azure portal で [アラート] (クラシック) に表示されていたクラシック監視サービスと機能の提供終了の概要。 クラシックなアラートと監視には、Azure リソースのクラシック メトリック アラート、Application Insights のクラシック メトリック アラート、Application Insights のクラシック Web テスト アラート、Application Insights のクラシック カスタム メトリック ベースのアラート、およびApplication Insights SmartDetection v1 のクラシック アラートが含まれます。
-author: msvijayn
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 2/7/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 2ba93ad347783d467d467b72cfa49ffccf309fa0
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: ea50a4f10aa1d794f875cb1eb9601774bec146cd
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147350"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676894"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Azure Monitor のアラートと監視の統合によるクラシックなアラートと監視の置換
 

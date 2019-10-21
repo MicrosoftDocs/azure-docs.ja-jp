@@ -2,18 +2,17 @@
 title: Azure Analysis Services サーバーに接続する | Microsoft Docs
 description: Azure の Analysis Services サーバーに接続してデータを取得する方法を説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9a8863189ee9cb63d86b157c0bbebb6fd16116b0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8059ac748f73ad8f9036f8e675e876e3a8716be
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61027985"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72295171"
 ---
 # <a name="connecting-to-servers"></a>サーバーへの接続
 

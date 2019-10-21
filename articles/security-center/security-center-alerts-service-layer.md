@@ -3,23 +3,19 @@ title: Azure Security Center での Azure サービス レイヤーの脅威検�
 description: このトピックでは、Azure Security Center で使用可能な Azure サービス レイヤーのアラートについて説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: 33c45447-3181-4b75-aa8e-c517e76cd50d
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 8/25/2019
-ms.author: v-mohabe
-ms.openlocfilehash: bc1b2a07f15ca98da7750c85cd25f2c5766c9bb5
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.date: 08/25/2019
+ms.author: memildin
+ms.openlocfilehash: 9a600b6b45dbef49f600a5e9e913c9d1839eff93
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018162"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202454"
 ---
 # <a name="threat-detection-for-the-azure-service-layer-in-azure-security-center"></a>Azure Security Center での Azure サービス レイヤーの脅威検出
 

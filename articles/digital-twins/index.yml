@@ -12,12 +12,12 @@ metadata:
   author: KingdomOfEnds
   ms.author: v-adgera
   ms.date: 09/03/2019
-  ms.openlocfilehash: 090a18b77de3ca89ecd054ce28ec9e8b0a17dd1f
-  ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+  ms.openlocfilehash: b5a449d09b1068dbf874828b9e65b1ac318b58fd
+  ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/12/2019
-  ms.locfileid: "70930698"
+  ms.lasthandoff: 09/24/2019
+  ms.locfileid: "71219732"
 landingContent:
 - title: Azure Digital Twins について
   linkLists:
@@ -47,7 +47,7 @@ landingContent:
       url: tutorial-facilities-udf.md
     - text: Logic Apps を使用した通知
       url: tutorial-facilities-events.md
-    - text: TSI によるイベントの視覚化
+    - text: Time Series Insights を使用したイベントの視覚化
       url: tutorial-facilities-analyze.md
 - title: Azure Digital Twins を使用した開発
   linkLists:

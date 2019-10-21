@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center for IoT ソリューションのイベント集計について | Microsoft Docs
-description: Azure Security Center for IoT サービスでのイベントの集計方法について説明します。
+title: Azure Security Center for IoT イベント集計について | Microsoft Docs
+description: Azure Security Center for IoT イベント集計を確認します。
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/21/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: a8f751d0a40a8d8e1555549c200a9a7ca8ef0661
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: b1a14cf4c8aec2f3dbfa7bc4fd0800d9fd1fb0aa
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600334"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327313"
 ---
-# <a name="security-agent-event-aggregation"></a>セキュリティ エージェントのイベント集計
+# <a name="azure-security-center-for-iot-event-aggregation"></a>Azure Security Center for IoT イベント集計
 
-Azure Security Center for IoT セキュリティ エージェントは、ローカル デバイスからデータとシステム イベントを収集し、処理と分析を行うためにこのデータを Azure クラウドに送信します。 セキュリティ エージェントは、新しいプロセスや新しい接続イベントなど、さまざまな種類のデバイス イベントを収集します。 新しいプロセスと新しい接続のイベントは両方とも、正当に、1 秒以内にデバイス上で頻繁に発生することがあります。堅牢で包括的なセキュリティのために重要ですが、これによってセキュリティ エージェントが送信を強制されるメッセージの量は、IoT Hub のクォータとコストの制限にすぐに達する、またはそれを超える可能性があります。 ただし、これらのイベントには、デバイスの保護に不可欠な重要なセキュリティ情報が含まれています。
+Azure Security Center for IoT セキュリティ エージェントにより、ローカル デバイスからデータとシステム イベントを収集し、処理と分析を行うためにこのデータを Azure クラウドに送信します。 セキュリティ エージェントは、新しいプロセスや新しい接続イベントなど、さまざまな種類のデバイス イベントを収集します。 新しいプロセスと新しい接続のイベントは両方とも、正当に、1 秒以内にデバイス上で頻繁に発生することがあります。堅牢で包括的なセキュリティのために重要ですが、これによってセキュリティ エージェントが送信を強制されるメッセージの量は、IoT Hub のクォータとコストの制限にすぐに達する、またはそれを超える可能性があります。 ただし、これらのイベントには、デバイスの保護に不可欠な重要なセキュリティ情報が含まれています。
 
 デバイスを保護しながら、追加のクォータとコストを削減するために、Azure Security Center for IoT エージェントはこれらの種類のイベントを集計します。
 
@@ -44,8 +44,8 @@ Azure Security Center for IoT セキュリティ エージェントは、ロー�
 
 イベントは、次の条件が満たされている場合にのみ同一と見なされます。 
 
-* ProcessCreate イベント - **コマンドライン**、**実行可能ファイル**、**ユーザー名**、および **ユーザー ID** が同一である
-* ConnectionCreate イベント - **コマンドライン**、**ユーザー ID**、**方向**、**ローカル アドレス**、**リモート アドレス**、**プロトコル**、および **宛先ポート**が同一である
+* ProcessCreate イベント - **コマンドライン**、**実行可能ファイル**、**ユーザー名**、および**ユーザー ID** が同一である
+* ConnectionCreate イベント - **コマンドライン**、**ユーザー ID**、**方向**、**ローカル アドレス**、**リモート アドレス**、**プロトコル**、および**宛先ポート**が同一である
 * ProcessTerminate イベント - **実行可能ファイル**と**終了状態**が同一である
 
 ### <a name="working-with-aggregated-events"></a>集計されたイベントの操作
@@ -59,6 +59,7 @@ Azure Security Center for IoT セキュリティ エージェントは、ロー�
 
 各イベントの集計の開始時刻、終了時刻、およびヒット カウントは、Log Analytics 内のイベント **ExtraDetails** フィールドに記録されて調査時に使用されます。 
 
+各集計イベントは、収集されたアラートの 24 時間分を表します。 各イベントの左上にある [イベント オプション] メニューを使用すると、集計された個々のイベントを**無視**できます。    
 
 ## <a name="event-aggregation-twin-configuration"></a>イベント集計のツイン構成
 **azureiotsecurity** モジュールのモジュール ツイン ID の [エージェント構成オブジェクト](how-to-agent-configuration.md)内で Azure Security Center for IoT イベント集計の構成を変更します。
@@ -95,4 +96,4 @@ Azure Security Center for IoT のデプロイの概要について引き続き�
 - [セキュリティ エージェント](how-to-deploy-agent.md)を選択してデプロイする
 - Azure Security Center for IoT [サービスの前提条件](service-prerequisites.md)を確認する
 - [IoT Hub で Azure Security Center for IoT サービスを有効にする](quickstart-onboard-iot-hub.md)方法について学習する
-- [Azure Security Center for IoT についてよく寄せられる質問](resources-frequently-asked-questions.md)から、サービスについて確認する
+- [Azure Security Center for IoT に関してよく寄せられる質問](resources-frequently-asked-questions.md)から、サービスについて確認する

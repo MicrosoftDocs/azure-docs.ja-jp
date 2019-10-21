@@ -1,17 +1,17 @@
 ---
-title: チュートリアル - Azure Data Share プレビューを使用したデータの受け入れと受信
+title: チュートリアル:データの受け入れと受信 - Azure Data Share プレビュー
 description: チュートリアル - Azure Data Share プレビューを使用したデータの受け入れと受信
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: fc63c1a0b3b496de8e5ecea58f79f1db9d872e80
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 235ef25b2d655c4388dee5bdcf88d179f3373697
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838443"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327393"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share-preview"></a>チュートリアル:Azure Data Share プレビューを使用したデータの受け入れと受信
 
@@ -37,7 +37,7 @@ ms.locfileid: "67838443"
 > [!IMPORTANT]
 > Azure Data Share を受け入れて受信するには、まず Microsoft.DataShare リソース プロバイダーを登録し、データを受け入れるストレージ アカウントの所有者になる必要があります。 「[Azure Data Share プレビューのトラブルシューティング](data-share-troubleshoot.md)」に記載されている指示に従って、データ共有リソース プロバイダーを登録し、自分自身をストレージ アカウントの所有者として追加します。 
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 

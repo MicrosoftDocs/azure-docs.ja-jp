@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: e31ad78e24f329eb46cd85ba4a5962442a216779
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c2f6847a286a9c106fc094e9f0aa315d6b1f337d
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844832"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257097"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -25,7 +25,7 @@ Azure Monitor には、さまざまな Azure サービスで監視を実施す�
 
 Azure Monitor では、複数の方法でメトリックにアクセスできます。 たとえば、[Azure portal](https://portal.azure.com)、Azure Monitor API シリーズ (REST および .NET) のほか、Event Hubs などの分析ソリューションからアクセスできます。 詳細については、[Azure Monitor のメトリック](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関するページをご覧ください。
 
-メトリックは既定で有効になっており、過去 93 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../../azure-monitor/platform/diagnostic-logs-overview.md)で構成されます。
+メトリックは既定で有効になっており、過去 93 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../../azure-monitor/platform/resource-logs-overview.md)で構成されます。
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Azure Portal でメトリックにアクセスする
 

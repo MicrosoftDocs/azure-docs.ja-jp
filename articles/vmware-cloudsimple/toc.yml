@@ -10,6 +10,8 @@
     - name: クイック スタート
       expanded: true
       items:
+        - name: ネットワークの計画
+          href: cloudsimple-network-checklist.md
         - name: 初期化と容量のプロビジョニング
           href: quickstart-create-cloudsimple-service.md
         - name: プライベート クラウド環境の構成
@@ -144,6 +146,8 @@
               href: configure-server-vrealize-automation-endpoint.md
             - name: プライベート クラウドへのワークロード VM の移行
               href: migrate-workloads.md
+            - name: Azure Data Box を使用した移行
+              href: migration-using-azure-data-box.md
             - name: Azure 上の VMware におけるアプリケーション高可用性の確保
               href: ensuring-high-availability.md
             - name: 負荷分散ソリューションの選択

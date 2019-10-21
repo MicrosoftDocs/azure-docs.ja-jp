@@ -1,15 +1,15 @@
 ---
-author: davidmu1
+author: mmacy
 ms.service: active-directory-b2c
 ms.topic: include
 ms.date: 03/19/2019
-ms.author: davidmu
-ms.openlocfilehash: 9c0f94af62e8d4688a676415b32a6a7ebf82d453
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: marsma
+ms.openlocfilehash: 46b0e499b7928bc88114b16d75dd2d8a99dca6a8
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67181697"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310584"
 ---
 > [!NOTE]
 > Azure Active Directory B2C で、[カスタム ポリシー](../articles/active-directory-b2c/active-directory-b2c-get-started-custom.md)は、主に、複雑なシナリオに取り組む用途向けに設計されています。 ほとんどのシナリオで、組み込み[ユーザー フロー](../articles/active-directory-b2c/active-directory-b2c-reference-policies.md)を使用することをお勧めします。

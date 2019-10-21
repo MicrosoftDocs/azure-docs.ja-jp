@@ -16,12 +16,12 @@ ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3636b88b14cf7e76e4fb023434316e7ee31ded04
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571379"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336819"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect:既存のテナントがある場合
 Azure AD Connect の使い方に関するトピックではほとんどの場合、新しい Azure AD テナントで作業を開始すること、そしてユーザーまたはその他のオブジェクトがないことを想定しています。 しかし、ユーザーとその他のオブジェクトが存在する Azure AD テナントを既に使用していて Connect が必要になった場合は、このトピックを参照してください。
@@ -63,8 +63,9 @@ Connect を新しくインストールする場合、完全一致とあいまい
 信頼されていないオンプレミス ユーザーが任意の管理者ロールを持つクラウド ユーザーと一致しないようにするために Azure AD Connect では、オンプレミス ユーザー オブジェクトは管理者ロールを持つオブジェクトには一致しません。 これは既定です。 この振る舞いを回避するには、次の操作を行います。
 
 1.  クラウドのみのユーザー オブジェクトからディレクトリ ロールを削除します。
-2.  同期を開始します。
-3.  一致が発生した後は、クラウド内のユーザー オブジェクトにオプションでディレクトリ ロールを追加します。
+2.  失敗したユーザー同期の試行がある場合は、クラウド内の検疫されたオブジェクトの物理的な削除を行います。
+3.  同期をトリガーします。
+4.  一致が発生した後は、クラウド内のユーザー オブジェクトにオプションでディレクトリ ロールを追加します。
 
 
 

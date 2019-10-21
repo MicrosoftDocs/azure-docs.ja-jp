@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: thweiss
-ms.openlocfilehash: 86ac042bdddce36f00be71cc5109618bec909d90
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 944c05a28eb33c659bf4aaa600985530122f8d3e
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914169"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000320"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB でのインデックス作成ポリシー
 
@@ -26,10 +26,13 @@ Azure Cosmos DB では、すべてのコンテナーに、コンテナーの項�
 
 Azure Cosmos DB では 2 つのインデックス作成モードがサポートされます。
 
-- **同期**: コンテナーのインデックス作成ポリシーが [同期] に設定されている場合、項目を作成、更新、または削除したときにインデックスが同期的に更新されます。 つまり、読み取りクエリの一貫性は、[アカウント用に構成された整合性](consistency-levels.md)になります。
-- **なし**:コンテナーのインデックス作成ポリシーが [なし] に設定されている場合、そのコンテナーのインデックス作成は実質的に無効になります。 これは、コンテナーがセカンダリ インデックスを必要としない純粋なキー値ストアとして使用される場合に一般的に使用されます。 それは、一括挿入操作を高速化するためにも役立ちます。
+- **同期**: 項目を作成、更新、削除すると、それに同期してインデックスが更新されます。 つまり、読み取りクエリの一貫性は、[アカウント用に構成された整合性](consistency-levels.md)になります。
+- **なし**:コンテナーでインデックス作成が無効になっています。 これは、コンテナーがセカンダリ インデックスを必要としない純粋なキー値ストアとして使用される場合に一般的に使用されます。 一括操作のパフォーマンスを改善する目的で使用することもできます。 一括操作が完了したら、インデックス モードを Consistent に設定し、完了まで [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) を利用して監視できます。
 
-さらに、インデックス作成ポリシー内の **automatic** プロパティを **true** に設定する必要があります。 このプロパティを true に設定すると、Azure Cosmos DB で、ドキュメントが書き込まれたときに自動的にインデックスを作成することができます。
+> [!NOTE]
+> Cosmos DB はインデックス モード Lazy にも対応しています。 Lazy 方式のインデックスではインデックス更新の優先順位が低く、エンジンが他に何も作業をしていないときに実行されます。 結果的に、クエリの結果に**一貫性がなくなったり、不完全になったり**します。 また、一括操作で "なし" の代わりに Lazy インデックスを使用した場合、インデックス モードを変更するたびにインデックスが破棄されたり、再作成されたりするため、何の利点も与えられません。 このような理由から、お客様にはこれを使用しないことをお勧めしています。 一括操作のパフォーマンスを上げるには、インデックス モードをなしに設定し、Consistent モードに戻り、完了するまでコンテナーの `IndexTransformationProgress` プロパティを監視します。
+
+既定では、インデックス作成ポリシーは `automatic` に設定されます。 これはインデックス作成ポリシーの `automatic` プロパティを `true` に設定することで行います。 このプロパティを `true` に設定すると、Azure Cosmos DB で、ドキュメントが書き込まれたときに自動的にインデックスを作成できます。
 
 ## <a name="including-and-excluding-property-paths"></a>プロパティ パスを含めるか除外する
 

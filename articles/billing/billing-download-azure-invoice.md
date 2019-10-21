@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 4dc5f88f7a5994e5bcd50d71c86bf1ba35b10734
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 862ec629504da4d8ee7eadd8f9b925984d96614c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68321767"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718890"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の表示とダウンロード
 

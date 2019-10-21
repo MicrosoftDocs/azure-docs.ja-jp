@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: mathoma, carlrab
+ms.reviewer: mathoma, carlrab, danil
 manager: craigg
-ms.date: 08/22/2019
-ms.openlocfilehash: 551c2c02af7b996a34a138586fd91a77a0455d92
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.date: 09/26/2019
+ms.openlocfilehash: a8cf17ab3eab31d4ac6113437f55d73f96425e4e
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904323"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71843298"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -46,10 +46,10 @@ SQL Database は SQL Server 技術を利用して、[完全バックアップ](h
 
 | | Azure ポータル | Azure PowerShell |
 |---|---|---|
-| バックアップ保有期間を変更する | [Single Database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-the-azure-portal) <br/> [Managed Instance](sql-database-automated-backups.md#change-pitr-for-a-managed-instance) | [Single Database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| バックアップ保有期間を変更する | [Single Database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Managed Instance](sql-database-automated-backups.md#managed-instance-database) | [Single Database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | 長期のバックアップ保有期間を変更する | [1 つのデータベース](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Managed Instance - N/A  | [Single Database](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Managed Instance - N/A  |
 | 特定の時点からデータベースを復元する | [1 つのデータベース](sql-database-recovery-using-backups.md#point-in-time-restore) | [1 つのデータベース](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| 削除済みデータベースの復元 | [1 つのデータベース](sql-database-recovery-using-backups.md#deleted-database-restore-using-the-azure-portal) | [1 つのデータベース](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| 削除済みデータベースの復元 | [1 つのデータベース](sql-database-recovery-using-backups.md) | [1 つのデータベース](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Managed Instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
 | Azure Blob Storage からデータベースを復元する | Single Database - N/A <br/>Managed Instance - N/A  | Single Database - N/A <br/>[Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="how-long-are-backups-kept"></a>バックアップの保持期間
@@ -114,15 +114,19 @@ PITR リテンション期間が 35 日間である DTU ベースのサービス
 > [!NOTE]
 > これらの API は PITR リテンション期間にのみ影響を与えます。 データベースの LTR を構成した場合、それには影響ありません。 LTR の保持期間を変更する方法については、[長期保有](sql-database-long-term-retention.md)に関するページを参照してください。
 
-### <a name="change-pitr-backup-retention-period-using-the-azure-portal"></a>Azure portal を使用して PITR のバックアップの保有期間を変更する
+### <a name="change-pitr-backup-retention-period-using-azure-portal"></a>Azure portal を使用して PITR のバックアップ保有期間を変更する
 
 Azure portal を使用して PITR バックアップ保有期間を変更するには、portal 内で保持期間を変更するサーバー オブジェクトに移動し、変更するサーバー オブジェクトに基づいて適切なオプションを選択します。
 
-#### <a name="change-pitr-for-a-sql-database-server"></a>SQL Database サーバーの PITR の変更
+#### <a name="single-azure-sql-database"></a>単一の Azure SQL Database
+
+単一の Azure SQL Database に対する PITR バックアップ保有期間の変更は、サーバー レベルで実行されます。 サーバー レベルで行われた変更は、そのサーバー上のデータベースに適用されます。 Azure SQL Database サーバーの PITR を Azure portal から変更するには、サーバーの概要ブレードに移動し、ナビゲーション メニューの [バックアップの管理] をクリックして、ナビゲーション バーの [保有期間の構成] をクリックします。
 
 ![Azure portal の PITR の変更](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="change-pitr-for-a-managed-instance"></a>マネージド インスタンスの PITR の変更
+#### <a name="managed-instance-database"></a>マネージド インスタンスのデータベース
+
+SQL Database マネージド インスタンスの PITR バックアップ保有期間の変更は、個々のデータベース レベルで実行されます。 Azure portal からインスタンス データベースの PITR バックアップ保有期間を変更するには、個々のデータベースの概要ブレードに移動し、ナビゲーション バーの [バックアップ保有期間の構成] をクリックします。
 
 ![Azure portal の PITR の変更](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
 

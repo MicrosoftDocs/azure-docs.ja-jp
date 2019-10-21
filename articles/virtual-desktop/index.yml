@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Windows Virtual Desktop プレビューのドキュメント
+title: Windows Virtual Desktop のドキュメント
 metadata:
-  title: Windows Virtual Desktop プレビューのドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
-  description: Azure 用の Windows Virtual Desktop プレビューは、クラウドで仮想化されたマルチユーザー Windows 10 Enterprise エクスペリエンスです。
+  title: Windows Virtual Desktop のドキュメント - チュートリアル、クイック スタート、API リファレンス | Microsoft Docs
+  description: Windows Virtual Desktop for Azure は、クラウドで仮想化されたマルチユーザー Windows 10 Enterprise エクスペリエンスです。
   author: Heidilohr
   manager: daveba
   ms.service: virtual-desktop
@@ -17,11 +17,11 @@ sections:
   - title: 概要
     items:
       - type: paragraph
-        text: Windows Virtual Desktop プレビューとその使用方法について説明します。 チュートリアル、操作方法、リファレンス コンテンツなどによって、ホスト プールとテナントを設定し、Windows Virtual Desktop 環境のユーザーにロールを割り当てる方法が示されます。
+        text: Windows Virtual Desktop とその使用方法について説明します。 チュートリアル、操作方法、リファレンス コンテンツなどによって、ホスト プールとテナントを設定し、Windows Virtual Desktop 環境のユーザーにロールを割り当てる方法が示されます。
       - type: list
         style: unordered
         items:
-          - html: <a href="/azure/virtual-desktop/overview">Windows Virtual Desktop プレビューとは</a>
+          - html: <a href="/azure/virtual-desktop/overview">Windows Virtual Desktop とは</a>
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph

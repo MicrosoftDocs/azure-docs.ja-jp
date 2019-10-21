@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3db0cd3dd01e3f5f6af6b4b668d1ccac094624a2
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0df6f5f9728a8e48a3257e56ddf8ad23906dc92c
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735175"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933314"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Azure における Durable Functions でのインスタンスの管理
 
@@ -31,9 +31,6 @@ Durable Functions では、これらの各管理操作の実装方法に関す�
 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) (.NET) の [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) メソッド、または `DurableOrchestrationClient` (JavaScript) の `startNew` では、新しいインスタンスが開始されます。 このクラスのインスタンスを取得するには、`orchestrationClient` バインドを使用します。 内部的には、このメソッドは、メッセージをコントロール キューにエンキューし、これにより `orchestrationTrigger` トリガー バインドを使用する、指定された名前の関数がトリガーされます。
 
 この非同期操作は、オーケストレーション プロセスが正常にスケジュールされたときに完了します。 オーケストレーション プロセスは30 秒以内に開始する必要があります。 それより長くかかると、`TimeoutException` が表示されます。
-
-> [!WARNING]
-> JavaScript でローカルに開発する場合、`DurableOrchestrationClient` でメソッドを使用するには、環境変数 `WEBSITE_HOSTNAME` を `localhost:<port>` (例: `localhost:7071`) に設定します。 この要件の詳細については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-js/issues/28)に関するページをご覧ください。
 
 ### <a name="net"></a>.NET
 
@@ -361,7 +358,7 @@ func durable terminate --id 0ab8c55a66644d68a3a8b220b12d209c --reason "It was ti
 
 ## <a name="send-events-to-instances"></a>インスタンスにイベントを送信する
 
-一部のシナリオでは、オーケストレーター関数が待機して外部イベントをリッスンできることが重要です。 これには、[監視関数](durable-functions-concepts.md#monitoring)や、[人による操作](durable-functions-concepts.md#human)を待機している関数が含まれます。
+一部のシナリオでは、オーケストレーター関数が待機して外部イベントをリッスンできることが重要です。 これには、[監視関数](durable-functions-overview.md#monitoring)や、[人による操作](durable-functions-overview.md#human)を待機している関数が含まれます。
 
 実行中のインスタンスにイベント通知を送信するには、[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) クラスの [RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_) メソッド (.NET) または `DurableOrchestrationClient` クラスの `raiseEvent` メソッド (JavaScript) を使用します。 これらのイベントを処理できるインスタンスは、[WaitForExternalEvent](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_WaitForExternalEvent_) (.NET) または `waitForExternalEvent` (JavaScript) への呼び出しを待っているインスタンスです。
 
@@ -541,7 +538,7 @@ modules.exports = async function(context, ctx) {
 
 オーケストレーションを "*実行中*" 状態に戻すには、[RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) (.NET) または `rewindAsync` (JavaScript) API を使用します。 オーケストレーション エラーの原因となったアクティビティやサブオーケストレーションの実行失敗を再実行します。
 
-たとえば、一連の[人による承認](durable-functions-concepts.md#human)が含まれるワークフローがあるものとします。 承認が必要であることをユーザーに通知し、リアルタイムの応答を待機する一連のアクティビティ関数があるとします。 すべての承認アクティビティが応答を受信するかタイムアウトになった後、アプリケーションの構成ミス (無効なデータベース接続文字列など) により別のアクティビティが失敗します。 結果として、ワークフローの深い部分でオーケストレーションが失敗します。 `RewindAsync` (.NET) または `rewindAsync` (JavaScript) API を使用すると、アプリケーション管理者は構成エラーを修正し、失敗したオーケストレーションを失敗の直前の状態に巻き戻すことができます。 人間の対話手順はいずれも再承認が不要で、オーケストレーションは正常に完了できるようになります。
+たとえば、一連の[人による承認](durable-functions-overview.md#human)が含まれるワークフローがあるものとします。 承認が必要であることをユーザーに通知し、リアルタイムの応答を待機する一連のアクティビティ関数があるとします。 すべての承認アクティビティが応答を受信するかタイムアウトになった後、アプリケーションの構成ミス (無効なデータベース接続文字列など) により別のアクティビティが失敗します。 結果として、ワークフローの深い部分でオーケストレーションが失敗します。 `RewindAsync` (.NET) または `rewindAsync` (JavaScript) API を使用すると、アプリケーション管理者は構成エラーを修正し、失敗したオーケストレーションを失敗の直前の状態に巻き戻すことができます。 人間の対話手順はいずれも再承認が不要で、オーケストレーションは正常に完了できるようになります。
 
 > [!NOTE]
 > "*巻き戻し*" 機能では、永続タイマーを使用したオーケストレーション インスタンスの巻き戻しはサポートされません。
@@ -661,4 +658,7 @@ func durable delete-task-hub --task-hub-name UserTest
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [インスタンス管理に HTTP API を使用する方法を確認する](durable-functions-http-api.md)
+> [バージョン管理の方法](durable-functions-versioning.md)
+
+> [!div class="nextstepaction"]
+> [インスタンス管理用の組み込みの HTTP API リファレンス](durable-functions-http-api.md)

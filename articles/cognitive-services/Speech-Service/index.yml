@@ -71,6 +71,8 @@ sections:
           - image:
               src: media/index/logo_netcore.svg
           - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_xamarin.svg'
+          - image:
               src: 'https://docs.microsoft.com/media/logos/logo_unity.svg'
           - image:
               src: media/index/logo_java.jpg
@@ -93,6 +95,7 @@ sections:
               - href: quickstart-csharp-windows
               - href: quickstart-cpp-windows
               - href: quickstart-csharp-dotnetcore-windows
+              - href: quickstart-csharp-xamarin
               - href: quickstart-csharp-unity
               - href: quickstart-java-jre
               - href: quickstart-python
@@ -106,6 +109,7 @@ sections:
               - href: quickstart-csharp-windows
               - href: quickstart-cpp-windows
               - href: quickstart-csharp-dotnetcore-windows
+              - href: quickstart-csharp-xamarin
               - href: quickstart-csharp-unity
               - href: null
               - href: quickstart-python
@@ -119,6 +123,7 @@ sections:
               - href: null
               - href: null
               - href: null
+              - href: quickstart-csharp-xamarin
               - href: quickstart-csharp-unity
               - href: null
               - href: null
@@ -132,6 +137,7 @@ sections:
               - href: null
               - href: quickstart-cpp-linux
               - href: quickstart-csharp-dotnetcore-windows
+              - href: null
               - href: null
               - href: quickstart-java-jre
               - href: quickstart-python
@@ -150,7 +156,22 @@ sections:
               - href: null
               - href: null
               - href: null
+              - href: null
               - href: quickstart-js-node
+              - href: null
+          - title: Linux (ARM64)
+            values:
+              - href: null
+              - href: null
+              - href: quickstart-cpp-linux
+              - href: null
+              - href: null
+              - href: null
+              - href: quickstart-java-jre
+              - href: null
+              - href: null
+              - href: null
+              - href: null
               - href: null
           - title: Android (ARM32/64)
             values:
@@ -158,6 +179,7 @@ sections:
               - href: null
               - href: null
               - href: null
+              - href: quickstart-csharp-xamarin
               - href: quickstart-csharp-unity
               - href: quickstart-java-android
               - href: null
@@ -171,6 +193,7 @@ sections:
               - href: null
               - href: null
               - href: null
+              - href: quickstart-csharp-xamarin
               - href: quickstart-csharp-unity
               - href: quickstart-java-android
               - href: null
@@ -184,7 +207,8 @@ sections:
               - href: null
               - href: null
               - href: null
-              - href: null
+              - href: quickstart-csharp-xamarin
+              - href: quickstart-csharp-unity
               - href: null
               - href: null
               - href: quickstart-objectivec-ios
@@ -198,24 +222,12 @@ sections:
               - href: quickstart-cpp-macos
               - href: quickstart-csharp-dotnetcore-windows
               - href: null
+              - href: null
               - href: quickstart-java-jre
               - href: quickstart-python
               - href: quickstart-objective-c-macos
               - href: quickstart-swift-macos
               - href: quickstart-js-node
-              - href: null
-          - title: Devices SDK (ARM32)
-            values:
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: null
-              - href: speech-devices-sdk
-              - href: null
-              - href: null
-              - href: null
-              - href: null
               - href: null
           - title: Browser
             values:
@@ -229,9 +241,11 @@ sections:
               - href: null
               - href: null
               - href: null
+              - href: null
               - href: quickstart-js-browser
           - title: REST
             values:
+              - href: null
               - href: null
               - href: null
               - href: null

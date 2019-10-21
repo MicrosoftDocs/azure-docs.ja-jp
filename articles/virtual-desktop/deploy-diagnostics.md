@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 625515223da12751b7765baa795bc68d2a7b46b4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 1bb23e3330f2350572175733445c8ef2c5ea79bb
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233257"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177766"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>診断ツールをデプロイする
 
@@ -51,14 +51,22 @@ Windows Virtual Desktop の診断ツールでは、次のことを行うこと�
 >API アクセス許可は、Windows Virtual Desktop、Log Analytics、および Microsoft Graph API アクセス許可で、Azure Active Directory アプリケーションに追加されます。
 
 1. PowerShell を管理者として開きます。
-2. [RDS-Templates GitHub リポジトリ](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)にアクセスし、PowerShell で **Create AD App Registration for Diagnostics.ps1** スクリプトを実行します。
-3.  スクリプトからアプリに名前を付けるように求められたら、一意のアプリ名を入力します。
-4.  このスクリプトによって、管理者アカウントでサインインするように求められます。 [代理管理者アクセス権](delegated-access-virtual-desktop.md)を持つユーザーの資格情報を入力します。 管理者は、RDS 所有者または共同作成者の権限を持っている必要があります。
+2. 診断ツールに使用する Azure サブスクリプションで、所有者または共同作成者のアクセス許可を持つアカウントを使用して Azure にサインインします。
+   ```powershell
+   Login-AzAccount
+   ```
+3. 同じアカウントを使用して Azure AD にサインインします。
+   ```powershell
+   Connect-AzureAD
+   ```
+4. [RDS-Templates GitHub リポジトリ](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)に移動し、PowerShell で **CreateADAppRegistrationforDiagnostics.ps1** スクリプトを実行します。
+5.  スクリプトからアプリに名前を付けるように求められたら、一意のアプリ名を入力します。
+
 
 スクリプトが正常に実行されると、出力に次の内容が表示されるはずです。
 
 -  アプリにサービス プリンシパル ロールの割り当てがあることを確認するメッセージ。
--  診断ツールをデプロイするときに必要になる印刷クライアント ID とクライアント シークレット キー。
+-  診断ツールをデプロイするときに必要になるクライアント ID とクライアント シークレット キー。
 
 アプリの登録が完了したので、次に Log Analytics ワークスペースを構成します。
 
@@ -76,7 +84,7 @@ PowerShell スクリプトを実行して Log Analytics ワークスペースを
 PowerShell スクリプトを実行するには:
 
 1.  PowerShell を管理者として開きます。
-2.  [RDS-Templates GitHub リポジトリ](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)にアクセスし、PowerShell で **Create LogAnalyticsWorkspace for Diagnostics.ps1** スクリプトを実行します。
+2.  [RDS-Templates GitHub リポジトリ](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/diagnostics-sample/deploy/scripts)に移動し、PowerShell で **CreateLogAnalyticsWorkspaceforDiagnostics.ps1** スクリプトを実行します。
 3. 各パラメーターの値を次のように入力します。
 
     - **ResourceGroupName** に、リソース グループの名前を入力します。
@@ -190,7 +198,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 ユーザーが診断ツールを使用できるようにする前に、ユーザーが次のアクセス許可を持っていることを確認してください。
 
 - ユーザーは、Log Analytics の読み取りアクセス権が必要です。 詳細については、[「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](/azure/azure-monitor/platform/roles-permissions-security)を参照してください。
--  ユーザーは、Windows Virtual Desktop テナントに対する読み取りアクセス権 (RDS 閲覧者ロール) も必要です。 詳細については、「[Windows Virtual Desktop プレビューにおける委任されたアクセス](delegated-access-virtual-desktop.md)」を参照してください。
+-  ユーザーは、Windows Virtual Desktop テナントに対する読み取りアクセス権 (RDS 閲覧者ロール) も必要です。 詳細については、「[Windows Virtual Desktop における委任されたアクセス](delegated-access-virtual-desktop.md)」を参照してください。
 
 また、ユーザーに次の情報を提供する必要もあります。
 
@@ -203,7 +211,7 @@ VM の正常性を確認できるようにするには、Log Analytics 接続を
 
 ### <a name="how-to-read-activity-search-results"></a>アクティビティ検索結果を読み取る方法
 
-アクティビティは、タイムスタンプで並べ替えられ、最新のアクティビティが先頭になります。 結果でエラーが返された場合は、まずサービス エラーであるかどうかを確認します。 サービス エラーについては、問題のデバッグに役立つアクティビティ情報を含むサポート チケットを作成します。 その他のすべてのエラーの種類は、通常ユーザーまたは管理者が解決できます。 最も一般的なエラー シナリオとその解決方法の一覧については、「[診断機能を使用して問題を特定する](diagnostics-role-service.md#common-error-scenarios)」を参照してください。
+アクティビティは、タイムスタンプで並べ替えられ、最新のアクティビティが先頭になります。 結果でエラーが返された場合は、まずサービス エラーであるかどうかを確認します。 サービス エラーについては、問題のデバッグに役立つアクティビティ情報を含むサポート チケットを作成します。 その他のすべてのエラーの種類は、通常ユーザーまたは管理者が解決できます。 最も一般的なエラー シナリオとその解決方法の一覧については、「[問題の特定と診断](diagnostics-role-service.md#common-error-scenarios)」を参照してください。
 
 >[!NOTE]
 >サービス エラーは、リンクされたドキュメントで "外部エラー" と呼ばれています。 これは、PowerShell 参照を更新すると変更されます。

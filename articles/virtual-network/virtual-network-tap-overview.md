@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: ff5c8c4d3f6a0c87afae67404a5a39d4fe3757d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3ea1b97855e5c060b6cbb6c43ce5111506bf4c20
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593183"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676907"
 ---
 # <a name="virtual-network-tap"></a>仮想ネットワーク TAP
 
@@ -48,6 +48,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
+- [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
@@ -63,7 +64,7 @@ Azure 仮想ネットワーク TAP (ターミナル アクセス ポイント) �
 
 ネットワーク インターフェイスで TAP 構成を適用するために使用するアカウントには、[ネットワーク共同作成者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表に記載されている必要なアクションを実行できる[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)が割り当てられている必要があります。
 
-| Action | Name |
+| Action | 名前 |
 |---|---|
 | Microsoft.Network/virtualNetworkTaps/* | 仮想ネットワーク TAP リソースの作成、更新、読み取り、および削除に必要 |
 | Microsoft.Network/networkInterfaces/read | TAP が構成されるネットワーク インターフェイス リソースを読み取るために必要 |

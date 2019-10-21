@@ -1,37 +1,22 @@
 ---
 title: データ エンティティ
-description: データ エンティティの概要です。
+description: PC 記事にリンクされている、非推奨の CPP 記事。以前の記述:「データ エンティティの概要です。」
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: a382f9b3ce08bba266311c2cc1d5f868f1bc3143
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 072e06527c7744891db163c637734f4878fe312c
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64934925"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034909"
 ---
 # <a name="data-entities"></a>データ エンティティ
 
-この記事では、データ エンティティを定義し、その概要を説明します。 データ エンティティの機能、サポートされるシナリオ、データ エンティティに使用されるカテゴリ、およびデータ エンティティを作成する方法に関する情報が含まれています。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Dynamics 365 for Finance and Operation オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[新しい Dynamics 365 for Operations オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)」を参照してください。
 
-## <a name="overview"></a>概要
-
-データ エンティティはデータベース テーブルの物理的な実装から抽象化したものです。 たとえば、正規化テーブルでは、各顧客のデータの多くが顧客テーブルに格納されており、残りは小さな一連の関連テーブルに分散している場合があります。 この場合、顧客概念のデータ エンティティは 1 つの非正規化ビューとして表示され、各行に顧客テーブルと関連するテーブルからのすべてのデータが含まれています。 データ エンティティは、開発と統合を簡単にする形式に、ビジネスの概念をカプセル化します。 データ エンティティの抽象化された性質により、アプリケーションの開発とカスタマイズを単純化できます。 その後は、抽象化によってアプリケーション コードもバージョン間の物理テーブルの避けられないチャーンから隔離されます。
-
-まとめると次のようになります。データ エンティティは、重要なデータの概念および機能を表すために、基礎となるテーブル スキーマの概念的な抽象化とカプセル化 (非正規化ビュー) を提供します。
-
-## <a name="capabilities"></a>機能
-
-データ エンティティには次の機能があります。
-
-- AXD、データのインポート/エクスポート フレームワーク (DIXF) エンティティ、および集計クエリの、分岐して細分化された概念を、1 つの概念で置き換えます。
-- ビジネス ロジックをキャプチャして、インポート/エクスポート、統合、およびプログラム可能性などのシナリオを有効にする 1 つのスタックを提供します。
-- アプリケーション ライフサイクル管理 (ALM) およびデモ データ シナリオに関するデータ パッケージのエクスポートおよびインポートのための主要なメカニズムになります。
-- OData サービスとして公開し、表形式の同期統合シナリオおよび Microsoft Office の統合で使用できます。
-
-詳しくは、「[データ エンティティ](https://docs.microsoft.com/dynamics365/operations/dev-itpro/data-entities/data-entities)」をご覧ください。
+新しい Dynamics 365 for Operations オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[新しい Dynamics 365 for Operations オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)」の手順に従って、オファーを作成します。

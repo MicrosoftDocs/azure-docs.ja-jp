@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 92a5f7c058904015cb22a239b7e7c4938ae1fdae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b06134c6694e54cf246f9527d10147c573b95ad9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61044656"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827996"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI 要素
 アップロードするファイルを 1 つまたは複数指定できるコントロールです。
@@ -48,7 +48,7 @@ ms.locfileid: "61044656"
 ```
 
 ## <a name="remarks"></a>解説
-- `constraints.accept` は、ブラウザーのファイル ダイアログに表示されるファイルの種類を指定します。 [HTML5 の仕様](https://www.w3.org/TR/html5/forms.html#attr-input-accept)を参照して、使用できる値を確認します。 既定値は **null** です。
+- `constraints.accept` は、ブラウザーのファイル ダイアログに表示されるファイルの種類を指定します。 [HTML5 の仕様](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept)を参照して、使用できる値を確認します。 既定値は **null** です。
 - `options.multiple` が **true** に設定されている場合、ユーザーはブラウザーのファイル ダイアログ内の複数のファイルを選択できます。 既定値は **false** です。
 - この要素は、`options.uploadMode` の値に基づいた 2 つのモードでのファイルのアップロードをサポートしています。 **file** を指定すると、出力にファイルの内容が BLOB として含まれます。 **url** を指定すると、ファイルは一時的な場所にアップロードされ、出力には BLOB の URL が含まれます。 一時的な BLOB は 24 時間後に消去されます。 既定値は **file** です。
 - アップロードされたファイルは保護されます。 出力 URL には、デプロイ中にファイルにアクセスするための [SAS トークン](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)が含まれています。

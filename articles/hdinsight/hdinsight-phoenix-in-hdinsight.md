@@ -2,18 +2,18 @@
 title: HDInsight での Apache Phoenix - Azure HDInsight
 description: Apache Phoenix の概要
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: ashishth
-ms.openlocfilehash: 8ba27261f5ba505c37ef4cc82d06b314471440bc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811907"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311648"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Azure HDInsight の Apache Phoenix
 
@@ -129,12 +129,12 @@ HDInsight HBase クラスターには、構成の変更を行うための [Ambar
 
 2. 左側のメニューのサービス一覧から **[HBase]** を選び、 **[Configs]\(構成\)** タブを選びます。
 
-    ![Ambari の HBase の構成](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config.png)
+    ![Apache Ambari HBase の構成](./media/hdinsight-phoenix-in-hdinsight/ambari-hbase-config1.png)
 
 3. **[Phoenix SQL]** 構成セクションを探して、Phoenix を有効または無効にしたり、クエリのタイムアウトを設定します。
 
-    ![Ambari の Phoenix SQL 構成セクション](./media/hdinsight-phoenix-in-hdinsight/ambari-phoenix.png)
+    ![Ambari の Phoenix SQL 構成セクション](./media/hdinsight-phoenix-in-hdinsight/apache-ambari-phoenix.png)
 
 ## <a name="see-also"></a>関連項目
 
-* [HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hbase/apache-hbase-phoenix-squirrel-linux.md)
+* [HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hbase/apache-hbase-query-with-phoenix.md)

@@ -13,12 +13,12 @@ ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
 ms.author: yucwan
-ms.openlocfilehash: cbeaccf4cdea87d6f34d5ee77e6a08b32abd76b5
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: d25a5720e3aaa8ad6306a72d2db8d3ca2e89861b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708195"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169442"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>クイック スタート:IntelliJ IDEA を使用した Azure Resource Manager テンプレートの作成とデプロイ
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="deploy-a-quickstart-template"></a>クイックスタート テンプレートをデプロイする
 
-ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 このクイック スタートで使用されるテンプレートは、[Create a standard storage account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) と呼ばれます。 これにより、Azure Storage アカウント リソースが定義されます。 
+ゼロからテンプレートを作成するのではなく、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)からテンプレートを開きます。 Azure クイック スタート テンプレートは、Resource Manager テンプレートのリポジトリです。 このクイック スタートで使用されるテンプレートは、[Create a standard storage account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) と呼ばれます。 これにより、Azure Storage アカウント リソースが定義されます。
 
 1. [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) と [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) を右クリックして、お使いのローカル コンピューターに保存します。
 
@@ -89,10 +89,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートの主な目的は、IntelliJ IDEA を使用して、Azure クイックスタート テンプレートから既存のテンプレートをデプロイすることです。 また、Azure で既存のデプロイを表示および更新する方法についても学習しました。 Azure クイック スタート テンプレートのテンプレートでは、必要なものすべてを得ることができないことがあります。 次のチュートリアルでは、テンプレート リファレンスから情報を検索して、暗号化された Azure Storage アカウントを作成できるようにする方法を示します。
+このクイックスタートの主な目的は、IntelliJ IDEA を使用して、Azure クイックスタート テンプレートから既存のテンプレートをデプロイすることです。 また、Azure で既存のデプロイを表示および更新する方法についても学習しました。 Azure クイック スタート テンプレートのテンプレートでは、必要なものすべてを得ることができないことがあります。 テンプレートの開発についてさらに学習するには、以下の新しい初心者向けチュートリアル シリーズを参照してください。
 
 > [!div class="nextstepaction"]
-> [暗号化されたストレージ アカウントを作成する](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [初心者向けチュートリアル](./template-tutorial-create-first-template.md)
 
 > [!div class="nextstepaction"]
 > [Azure デベロッパー センターで Java にアクセスする](https://docs.microsoft.com/azure/java)

@@ -10,12 +10,12 @@ ms.subservice: development
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: d97326430eebcaea64770e99c26ab593b51d5847
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 55da4e3dc9c7f1c1f86a649a654ce41ef59ad839
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68476744"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310100"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのテーブルの設計
 
@@ -109,6 +109,9 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 ## <a name="statistics"></a>統計
 クエリ オプティマイザーでは、クエリ実行のプランの作成時に列レベルの統計が使用されます。 クエリのパフォーマンスを向上させるには、個々の列、特にクエリの結合で使用される列の統計を作成することが重要です。 [統計の作成](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics#automatic-creation-of-statistic)は、自動的に行われます。  ただし、統計の更新は自動的には行われません。 大量の行が追加または変更された後に統計を更新します。 たとえば、読み込みの後に統計を更新します。 詳しくは、[統計のガイダンス](sql-data-warehouse-tables-statistics.md)に関する記事をご覧ください。
 
+## <a name="primary-key-and-unique-key"></a>主キーと一意キー
+PRIMARY KEY は、NONCLUSTERED と NOT ENFORCED が両方とも使用されている場合にのみサポートされます。  UNIQUE 制約は、NOT ENFORCED が使用されている場合にのみサポートされます。  [SQL Data Warehouse のテーブル制約](sql-data-warehouse-table-constraints.md)に関する記事を確認してください。
+
 ## <a name="commands-for-creating-tables"></a>テーブルを作成するためのコマンド
 テーブルは、新しい空のテーブルとして作成することができます。 テーブルを作成し、SELECT ステートメントの結果を使用して値を設定することもできます。 テーブルを作成するための T-SQL コマンドを次に示します。
 
@@ -128,8 +131,7 @@ ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION
 ## <a name="unsupported-table-features"></a>サポートされていないテーブルの機能
 SQL Data Warehouse では他のデータベースで提供されるテーブル機能の多くがサポートされますが、すべてサポートされるわけではありません。  次の一覧は、SQL Data Warehouse でサポートされていないテーブル機能の一部を示しています。
 
-- PRIMARY KEY、FOREIGN KEY、UNIQUE、CHECK の各 [テーブル制約](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
-
+- 外部キー、CHECK [テーブル制約](/sql/t-sql/statements/alter-table-table-constraint-transact-sql)
 - [計算列](/sql/t-sql/statements/alter-table-computed-column-definition-transact-sql)
 - [インデックス付きビュー](/sql/relational-databases/views/create-indexed-views)
 - [シーケンス](/sql/t-sql/statements/create-sequence-transact-sql)

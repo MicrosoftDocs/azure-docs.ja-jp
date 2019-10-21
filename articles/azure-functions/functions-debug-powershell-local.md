@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: fc30a2efb21d5b7f3168d9229ec5baf9a7f05eb1
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5b396ef6b00d53a313ed4fb426685c12e2c1549d
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67706427"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981846"
 ---
 # <a name="debug-powershell-azure-functions-locally"></a>PowerShell Azure Functions をローカル環境でデバッグする
 
@@ -134,6 +134,9 @@ F5 キーを押してデバッグを開始することもできます。
 * ターミナルで `func extensions install` が実行され、関数アプリで必要なすべての Azure Functions 拡張機能がインストールされます。
 * ターミナルで `func host start` が実行され、Functions ホストで関数アプリが起動されます。
 * Functions ランタイム内の PowerShell 実行空間に、PowerShell デバッガーがアタッチされます。
+
+>[!NOTE]
+> Visual Studio Code で正しいデバッグのエクスペリエンスを実現するには、PSWorkerInProcConcurrencyUpperBound が 1 に設定されていることを確認する必要があります。 既定のプランです。
 
 関数アプリが実行されたら、別の PowerShell コンソールを開いて、HTTP によってトリガーされる関数を呼び出す必要があります。
 

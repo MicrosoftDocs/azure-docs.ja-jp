@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: dacc4179483de5d5ef8a05fd836e4241c161deac
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: e2f195f648f08c31fbfe44543ee763aeed7459f0
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68741277"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702960"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
 ![Alert Management icon](media/alert-management-solution/icon.png)
 
 > [!NOTE]
->  Azure Monitor では、[SCOM、Zabbix、Nagios などの監視ツール](https://aka.ms/managing-alerts-other-monitoring-services)で生成されたアラートを含め、[アラートを大規模に管理する](https://aka.ms/azure-alerts-overview)ための強化機能がサポートされるようになりました。
+>  Azure Monitor では、[System Center Operations Manager、Zabbix、Nagios などの監視ツール](https://aka.ms/managing-alerts-other-monitoring-services)で生成されたアラートを含め、[アラートを大規模に管理する](https://aka.ms/azure-alerts-overview)ための強化機能がサポートされるようになりました。
 >  
 
 
@@ -74,7 +74,7 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 |:--- |:--- |
 | 重大なアラート |重大度が "重大" であるすべてのアラートがその名前別に表示されます。  アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
 | 警告アラート |重大度が "警告" であるすべてのアラートがその名前別に表示されます。  アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
-| アクティブ SCOM アラート |Operations Manager によって収集された *[Closed]\(終了\)* 状態を除くすべてのアラートが、その生成元ごとにグループ化されて表示されます。 |
+| アクティブな System Center Operations Manager アラート |Operations Manager によって収集された *[Closed]\(終了\)* 状態を除くすべてのアラートが、その生成元ごとにグループ化されて表示されます。 |
 | すべてのアクティブなアラート |重大度に関係なくすべてのアラートがその名前別に表示されます。 対象となるのは *[Closed]\(終了\)* 状態以外の Operations Manager アラートだけです。 |
 
 右へスクロールすると、使用頻度の高いいくつかのクエリがダッシュボードに一覧表示されます。そのクエリをクリックすると、アラート データを探すための[ログ検索](../../azure-monitor/log-query/log-query-overview.md)が実行されます。
@@ -113,7 +113,7 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 以下の表は、このソリューションによって収集されたアラート レコードを探すログ検索の例です。 
 
-| Query | 説明 |
+| クエリ | 説明 |
 |:---|:---|
 | Alert &#124; where SourceSystem == "OpsManager" and AlertSeverity == "error" and TimeRaised > ago(24h) |過去 24 時間以内に発生した重大なアラート |
 | Alert &#124; where AlertSeverity == "warning" and TimeRaised > ago(24h) |過去 24 時間以内に発生した警告アラート |

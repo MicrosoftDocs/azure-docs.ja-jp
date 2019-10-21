@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/12/2019
 ms.author: diberry
-ms.openlocfilehash: 7a6091ac1a0d54d997c40fe284d58426ecadf765
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 7e79d3119f5d2d0fe1894de0ab9535dd988706f8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898853"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935217"
 ---
 # <a name="steps-to-migrate-to-the-azure-authoring-resource"></a>Azure オーサリング リソースに移行するための手順
 
@@ -94,6 +94,13 @@ Azure サブスクリプションをお持ちでない場合は、[サインア�
 1. アプリにアクセスする前に、サブスクリプションと LUIS オーサリング リソースを選択して、自分が作成できるアプリを確認します。
 
     ![サブスクリプションと LUIS オーサリング リソースを選択して、自分が作成できるアプリを確認します。](./media/migrate-authoring-key/app-list-by-subscription-and-resource.png)
+
+
+## <a name="app-contributor-begins-the-migration-process"></a>アプリ共同作成者が移行プロセスを開始する
+
+移行については、アプリの所有者の場合と同じ手順を行います。 このプロセスでは、`LUIS.Authoring` タイプのオーサリング リソースが新規作成されます。 
+
+移行されたアプリのうち、他者が所有するアプリに共同作成者として追加されるには、自分のアカウントを移行する必要があります。  
 
 ## <a name="after-the-migration-process-add-contributors-to-your-authoring-resource"></a>移行プロセスが完了した後、オーサリング リソースに共同作成者を追加する
 

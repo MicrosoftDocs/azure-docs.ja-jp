@@ -1,25 +1,25 @@
 ---
 title: 管理ツールのデプロイ - Azure
-description: Windows Virtual Desktop プレビューのリソースを管理するためのユーザー インターフェイス ツールをインストールする方法。
+description: Windows Virtual Desktop のリソースを管理するためのユーザー インターフェイス ツールをインストールする方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 06/04/2019
 ms.author: helohr
-ms.openlocfilehash: e0f9dbd9bf6b0c12d3e3f028ab9cd4c80cdb5124
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: f07403d8d0b2c6d0dd7a6b851a87b47b0c32501a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816510"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679484"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>チュートリアル:管理ツールをデプロイする
 
-管理ツールは、Microsoft Windows Virtual Desktop プレビューのリソースを管理するためのユーザー インターフェイス (UI) を提供します。 このチュートリアルでは、管理ツールをデプロイして接続する方法を学習します。
+管理ツールは、Microsoft 仮想デスクトップのリソースを管理するためのユーザー インターフェイス (UI) を提供します。 このチュートリアルでは、管理ツールをデプロイして接続する方法を学習します。
 
 >[!NOTE]
->これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop プレビュー固有の構成に対するものです。
+>これらの手順は、組織の既存のプロセスで使用できる Windows Virtual Desktop 固有の構成に対するものです。
 
 ## <a name="important-considerations"></a>重要な考慮事項
 
@@ -50,7 +50,7 @@ Azure Resource Manager テンプレートをデプロイした後に、管理 UI
     - クラウド ソリューション プロバイダー サブスクリプションにデプロイする場合は、これらの手順に従って Azure にデプロイします。
         1. 下にスクロールし、 **[Deploy to Azure]\(Azure へのデプロイ\)** を右クリックしてから **[リンク先をコピー]** を選択します。
         2. メモ帳などのテキスト エディターを開き、そこにリンクを貼り付けます。
-        3. <https://portal.azure.com/> の直後のハッシュタグ (#) の前に、アット マーク (@) とそれに続けてテナント ドメイン名を入力します。 形式の例を次に示します。<https://portal.azure.com/@Contoso.onmicrosoft.com#create/>。
+        3. <https://portal.azure.com/> の直後のハッシュタグ (#) の前に、アット マーク (@) とそれに続けてテナント ドメイン名を入力します。 形式の例を次に示します<https://portal.azure.com/@Contoso.onmicrosoft.com#create/>。
         4. クラウド ソリューション プロバイダー サブスクリプションに対する管理者/共同作成者のアクセス許可を持つユーザーとして Azure portal にサインインします。
         5. テキスト エディターにコピーしたリンクをアドレス バーに貼り付けます。
 

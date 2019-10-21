@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: bidishac
-ms.openlocfilehash: b1be09a2af712277ccaad827b8e84e24ed9f5c5c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c5a6042e4b181190849b3759325e4aab0c22413b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553261"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71800034"
 ---
 # <a name="quickstart-create-a-voice-first-virtual-assistant-with-the-speech-sdk-java"></a>クイック スタート:Speech SDK (Java) を使用して音声優先仮想アシスタントを作成する
 
-クイック スタートは[音声変換](quickstart-java-jre.md)と[音声翻訳](quickstart-translate-speech-java-jre.md)にも使用できます。
+[音声変換](quickstart-java-jre.md)、[テキスト読み上げ](quickstart-text-to-speech-java-jre.md)、[音声翻訳](quickstart-translate-speech-java-jre.md)のクイックスタートも利用できます。
 
 この記事では、[Cognitive Services Speech SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成します。 アプリケーションは、Direct Line Speech チャネルを使用するように構成されている作成済みのボットに接続し、音声要求を送信し、音声応答アクティビティ (構成されている場合) を返します。 アプリケーションは、Speech SDK Maven パッケージと、Windows、Ubuntu Linux、または macOS 上の Eclipse Java IDE を使用して構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 4f325d9fc512fd9f6776fcd799b720aaf60ce472
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 22590a7ecc94efbfad5eefe27f284bdb191e876d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876755"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676398"
 ---
 # <a name="remote-desktop-client-connections"></a>リモート デスクトップ クライアントの接続
 
@@ -20,7 +20,7 @@ Windows Virtual Desktop クライアントの接続に関する問題を解決�
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 
-Windows Virtual Desktop がプレビューの間は、サポート ケースを受け付けていません。 Windows Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Windows Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。
+Windows Virtual Desktop サービスに関して製品チームや活発なコミュニティのメンバーと話をしたいときは、[Windows Virtual Desktop の技術コミュニティ](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop)にアクセスしてください。
 
 ## <a name="you-cant-open-a-web-client"></a>Web クライアントを開くことができない
 
@@ -153,6 +153,11 @@ Windows 7 および Windows 10 用のリモート デスクトップ クライ�
 
 **解決策:** ホスト プールの一部であるすべての VM を、ドメイン コントローラーに参加させます。
 
+### <a name="error-connectionfailedusersidinformationmismatch"></a>エラー:ConnectionFailedUserSIDInformationMismatch
+**原因:** ユーザーの Azure Active Directory (AD) トークンの SID が、ユーザーのリモート サインインを有効にしようとしたときにドメイン コントローラーによって返された SID と一致しません。 このエラーは、通常、元は Windows Server AD に属していたユーザーで Azure Active Directory Domain Services (Azure AD DS) 環境にサインインしようとしたときに発生します。
+
+**解決策:** このシナリオは、現時点ではサポートされていません。 Azure AD DS に接続されている Windows Virtual Desktop VM にサインインできるのは、Azure Active Directory のユーザーだけです。
+
 ## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>ユーザーが接続しても何も表示されない (フィードなし)
 
 ユーザーは、リモート デスクトップ クライアントを開始して認証を行うことができますが、Web 検出フィードでアイコンが何も表示されません。
@@ -173,7 +178,4 @@ Web クライアントを使っている場合は、キャッシュされた資�
 - Windows Virtual Desktop 環境でテナント/ホスト プールを作成しているときに発生した問題を解決するには、「[Tenant and host pool creation](troubleshoot-set-up-issues.md)」 (テナントとホスト プールの作成) を参照してください。
 - Windows Virtual Desktop で仮想マシン (VM) の構成中に発生した問題を解決するには、[Session host virtual machine configuration (セッション ホスト仮想マシンの構成)](troubleshoot-vm-configuration.md) に関する記事を参照してください。
 - Windows Virtual Desktop で PowerShell を使用しているときに発生した問題を解決するには、「[Windows Virtual Desktop PowerShell](troubleshoot-powershell.md)」を参照してください。
-- プレビュー サービスの詳細については、「[Windows Virtual Desktop プレビュー環境](https://docs.microsoft.com/azure/virtual-desktop/environment-setup?)」を参照してください。
 - トラブルシューティング チュートリアルについては、「[Tutorial:Resource Manager テンプレート デプロイのトラブルシューティング](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)」を参照してください。
-- 監査アクションについては、「 [リソース マネージャーの監査操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」をご覧ください。
-- デプロイ時にエラーが発生した場合の対応については、 [デプロイ操作の確認](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)に関するページを参照してください。

@@ -4,19 +4,19 @@ summary: Azure HDInsight は、クラウドで Apache Spark、Apache Hive、Apac
 metadata:
   title: Azure HDInsight
   description: Azure HDInsight は、Apache Spark、Apache Hive、Apache Kafka、Apache HBase などを実行できるようにするマネージド Apache Hadoop クラウド サービスです。
-  services: service
+  services: hdinsight
   ms.service: hdinsight
   ms.topic: landing-page
   ms.collection: collection
   author: hrasheed-msft
   ms.author: hrasheed
   ms.date: 08/30/2019
-  ms.openlocfilehash: 51c9e1b662cd82811ee43afa34c20dfef8e2fb90
-  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.openlocfilehash: b44020cc6476af03ad3c2e9e1956f9c1d951a0eb
+  ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/14/2019
-  ms.locfileid: "70995709"
+  ms.lasthandoff: 10/14/2019
+  ms.locfileid: "72312080"
 landingContent:
 - title: HDInsight について
   linkLists:
@@ -28,7 +28,7 @@ landingContent:
     links:
     - text: HDInsight のコンポーネントとバージョン
       url: ./hdinsight-component-versioning.md
-    - text: HDInsight でサポートされるノード構成
+    - text: HDInsight でサポートされている VM の種類
       url: ./hdinsight-supported-node-configuration.md
     - text: ストレージ オプションの比較
       url: ./hdinsight-hadoop-compare-storage-options.md
@@ -38,6 +38,14 @@ landingContent:
       url: ./hdinsight-hadoop-provision-linux-clusters.md
     - text: Data Lake Store Gen2 でクラスターを作成する
       url: ./hdinsight-hadoop-use-data-lake-storage-gen2.md
+  - linkListType: whats-new
+    links:
+    - text: '自動スケーリング: Hadoop クラスターを自動的にスケーリングする'
+      url: ./hdinsight-autoscale-clusters.md
+    - text: HDInsight での監視
+      url: ./hdinsight-hadoop-oms-log-analytics-tutorial.md
+    - text: Apache Hive テーブルを HDInsight 4.0 に移行する
+      url: ./interactive-query/apache-hive-migrate-workloads.md
 - title: Apache Spark
   linkLists:
   - linkListType: overview
@@ -125,7 +133,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Apache Phoenix を使用して HBase を照会する
-      url: ./hbase/apache-hbase-phoenix-squirrel-linux.md
+      url: ./hbase/apache-hbase-query-with-phoenix.md
   - linkListType: concept
     links:
     - text: Apache HBase 用書き込みアクセラレータ

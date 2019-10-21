@@ -2,17 +2,16 @@
 title: サンプル - アプリケーションが Linux VM 内にインストールされていないかどうかを監査する
 description: このサンプル Policy ゲスト構成のイニシアチブと定義は、指定したアプリケーションが Linux 仮想マシン内にインストールされていないかどうかを監査します。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 05/02/2019
 ms.author: dacoulte
-ms.openlocfilehash: eda5a2a6d2dae58f8da72deccbb89a34c7f21dae
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: ef2ab4bebf2247b08cdc80ed74bbe17a67c5baae
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65204011"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977034"
 ---
 # <a name="sample---audit-if-specified-applications-arent-installed-inside-linux-vms"></a>サンプル - 指定したアプリケーションが Linux VM 内にインストールされていないかどうかを監査する
 
@@ -45,9 +44,9 @@ ms.locfileid: "65204011"
 
 ### <a name="initiative-parameters"></a>イニシアチブ パラメーター
 
-|Name |Type |説明 |
+|名前 |Type |説明 |
 |---|---|---|
-|applicationName |String |アプリケーション名。 たとえば、"python"、"powershell"、コンマ区切りリスト ("python,powershell" など) を指定します。 ワイルドカード検索には、"power\*" のように \* を使用できます。 |
+|applicationName |string |アプリケーション名。 たとえば、"python"、"powershell"、コンマ区切りリスト ("python,powershell" など) を指定します。 ワイルドカード検索には、"power\*" のように \* を使用できます。 |
 
 PowerShell または Azure CLI を使って割り当てを作成するときは、パラメーターの値を JSON として渡すことができます。JSON として渡すパラメーターは、文字列で渡すか、または `-PolicyParameter` (PowerShell) あるいは `--params` (Azure CLI) を使用してファイルで渡します。
 PowerShell では、`-PolicyParameterObject` もサポートされます。この場合は、コマンドレットに Name/Value ハッシュ テーブルを渡す必要があります。**Name** にはパラメーターの名前を、**Value** には、割り当て時に渡す値の配列または単一値を指定します。

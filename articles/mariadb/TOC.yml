@@ -4,6 +4,8 @@
   items:
     - name: Azure DB for MariaDB とは
       href: overview.md
+    - name: 適切な MariaDB オプションの選択
+      href: select-right-deployment-type.md
 - name: クイック スタート
   expanded: true
   items:
@@ -57,7 +59,8 @@
           href: concepts-connectivity-architecture.md
     - name: ビジネス継続性
       items:
-        - name: 概要
+        - name: ビジネス継続性の概要
+          displayName: 'backup, restore, backups, restores, georestore, geo-restore, outage'
           href: concepts-business-continuity.md
         - name: バックアップと復元
           href: concepts-backup.md
@@ -183,8 +186,8 @@
       href: /rest/api/mariadb
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.dbformariadb/allversions
-    - name: データイン レプリケーションのストアド プロシージャ
-      href: reference-data-in-stored-procedures.md
+    - name: 管理ストアド プロシージャ
+      href: reference-stored-procedures.md
 - name: リソース
   items:
     - name: デプロイ テンプレート

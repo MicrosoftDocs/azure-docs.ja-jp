@@ -1,40 +1,22 @@
 ---
 title: アプリケーションのキュレーションの前提条件
-description: アプリケーションのキュレーションに対する前提条件の一覧です。
+description: PC 記事にリンクされている、非推奨の CPP 記事。以前の記述:「アプリケーションのキュレーションに対する前提条件の一覧です。」
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 03/13/2019
-ms.author: pabutler
-ms.openlocfilehash: 0219d7e8a94dd6710c553f2133442867e39f6870
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: a92d32084dd36433fdc872db66f0f375a770bfda
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935544"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034435"
 ---
 # <a name="prerequisites-for-application-curation"></a>アプリケーションのキュレーションの前提条件
 
-Microsoft では、次の要件を満たしていることを検証するために特定のレビューが必要です。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Dynamics 365 for Finance and Operation オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[新しい Dynamics 365 for Operations オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)」を参照してください。
 
-- パートナーのカスタム コードが、Microsoft のガイドラインを満たしている。
-- Microsoft Dynamics Lifecycle Services (LCS) のソリューション パッケージを正常にデプロイできる。
-- トランザクションを完了できる。
-
-現時点では、パートナーがテスト デプロイを行って結果を Microsoft と共有することにより、これらの要件を満たしていることを示す必要があります。 Microsoft が検証していない顧客環境には、コードはデプロイされません。 パートナーは、以下のキュレーション成果物とテストを完了する必要があります。
-
-- コード分析レポート (CAR)
-- ビジネス プロセス モデラー (BPM)/テスト スクリプト
-- プロジェクトの名前と説明
-- ビジネス データベース バックアップ
-- データ パッケージとプロセス データ パッケージ (PDP)
-- 手法
-- バイナリ (省略可能)
-- デプロイ可能なパッケージ
-- モデル (コードとテスト)
-- マーケティング コンテンツ
-
-技術面とプロセス面の要件の詳細については、「[Finance and Operations 用のアプリケーションを検証する](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/app-validation-lcs-solutions)」を参照してください。  また、まだお読みになっていない場合は、「[Office 365、Dynamics 365、Power BI、PowerApps 用のオファー発行ガイド](../appsource-offer-publishing-guide.md)」をご確認ください。
-
+新しい Dynamics 365 for Operations オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[新しい Dynamics 365 for Operations オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)」の手順に従って、オファーを作成します。

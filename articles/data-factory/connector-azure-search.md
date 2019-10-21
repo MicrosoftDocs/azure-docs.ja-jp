@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 09/13/2019
 ms.author: jingwang
-ms.openlocfilehash: bc914d27e9bea15a625dd2cd196401d733f8cfb8
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c2165d0ff16233766918f9e274324b02d1bf1ac8
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275932"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962112"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Search インデックスにデータをコピーする
 
@@ -164,7 +164,7 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 ]
 ```
 
-### <a name="data-type-support"></a>データ型のサポート
+## <a name="data-type-support"></a>データ型のサポート
 
 次の表は、Azure Search データ型がサポートされているかどうかを示します。
 
@@ -178,6 +178,8 @@ Azure Search サービスでは、バッチとしてのドキュメントの書�
 | DataTimeOffset | Y |
 | String Array | N |
 | GeographyPoint | N |
+
+現在、ComplexType などの他のデータ型はサポートされていません。 Azure Serach でサポートされているデータ型の完全な一覧については、「[サポートされているデータ型 (Azure Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Azure Data Factory のコピー アクティビティによってソースおよびシンクとしてサポートされるデータ ストアの一覧については、[サポートされるデータ ストア](copy-activity-overview.md##supported-data-stores-and-formats)の表をご覧ください。

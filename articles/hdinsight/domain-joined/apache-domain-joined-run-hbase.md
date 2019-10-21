@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: 72e268628560618fb6fa47843f5125d9126a9f3e
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5823bed08e0fc2ed67dbbf3c58c39982f3a1897e
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885163"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037265"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>チュートリアル:Enterprise セキュリティ パッケージを使用して HDInsight に Apache HBase ポリシーを構成する
 
@@ -88,7 +88,8 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
     ```hbaseshell
     scan 'Contacts'
     ```
-    ![HDInsight Hadoop HBase シェル](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
+
+    ![HDInsight Hadoop HBase シェルの出力](./media/apache-domain-joined-run-hbase/hbase-shell-scan-table.png)
 
 ## <a name="create-ranger-policies"></a>Ranger ポリシーの作成
 
@@ -96,7 +97,7 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
 
 1. **Ranger 管理 UI** を開きます。 **[HBase]** の下の **[\<ClusterName>_hbase]** をクリックします。
 
-   ![Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
+   ![HDInsight Apache Ranger 管理 UI](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
 2. **[List of Policies]\(ポリシーの一覧\)** 画面に、このクラスター用に作成されたすべての Ranger ポリシーが表示されます。 構成済みポリシーが 1 つリストされる場合があります。 **[Add New Policy]\(新しいポリシーの追加\)** をクリックします。
 
@@ -202,14 +203,14 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
    kinit marketing_user1
    ```
 
-2. HBase シェルを開き、`Customers` テーブルをスキャンします。
+1. HBase シェルを開き、`Customers` テーブルをスキャンします。
 
     ```hbaseshell
     hbase shell
     scan `Customers`
     ```
 
-3. marketing ユーザーは `Contact` 列ファミリの 5 列のみを表示できることに注意してください。
+1. marketing ユーザーは `Contact` 列ファミリの 5 列のみを表示できることに注意してください。
 
     ```hbaseshell
     ROW                                COLUMN+CELL
@@ -226,9 +227,9 @@ SSH を使用して HBase クラスターに接続し、[Apache HBase シェル]
     2 row(s) in 0.0730 seconds
     ```
 
-9. Ranger UI から監査アクセス イベントを表示します。
+1. Ranger UI から監査アクセス イベントを表示します。
 
-   ![Ranger UI ポリシーの監査](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
+   ![HDInsight Ranger UI ポリシーの監査](./media/apache-domain-joined-run-hbase/apache-ranger-admin-audit.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight での YARN のトラブルシューティング
 description: Apache Hadoop YARN と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 107230a4d8c2e0427c2fcf2a8862559c707831a1
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a0eb0d15d931cf1b2f71740c7a9359cf16205481
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076567"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122528"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Apache Hadoop YARN のトラブルシューティング
 
@@ -34,24 +34,24 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
 1. **[Ambari Views]** アイコンを選択し、グリッド パターンを選択します。 次に、 **[YARN Queue Manager]\(YARN キュー マネージャー\)** を選択します。
 
-    ![Ambari Views アイコンをクリックする](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
+    ![Apache Ambari ダッシュボードの YARN Queue Manager](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. **default** キューを選びます。
 
-    ![default キューを選択する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
+    ![Apache Ambari YARN での default キューの選択](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
 3. **default** キューで、**容量**を 50% から 25% に変更します。 **thriftsvr** キューで、**容量**を 25% に変更します。
 
     ![default キューと thriftsvr キューの容量を 25% に変更する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. 新しいキューを作成し、 **[キューの追加]** を選択します。
 
-    ![[キューの追加] を選択する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
+    ![Apache Ambari YARN ダッシュボードのキューの追加](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-4.png)
 
 5. 新しいキューの名前を指定します。
 
-    ![キューの名前を Spark にする](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
+    ![Apache Ambari YARN ダッシュボードのキューの名前](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
 6. **[容量]** の値は 50% のままにして、 **[アクション]** ボタンをクリックします。
 
-    ![[アクション] ボタンを選択する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
+    ![Apache Ambari YARN でのアクションの選択](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. **[Save and Refresh Queues]\(キューの保存と更新\)** を選択します。
 
     ![[Save and Refresh Queues]\(キューの保存と更新\) を選択する](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-7.png)  
@@ -64,7 +64,7 @@ Apache Ambari で Apache Hadoop YARN ペイロードを操作するときに発�
 
 ## <a name="how-do-i-download-yarn-logs-from-a-cluster"></a>クラスターから YARN ログをダウンロードする方法
 
-### <a name="resolution-steps"></a>解決手順 
+### <a name="resolution-steps"></a>解決手順
 
 1. Secure Shell (SSH) クライアントで HDInsight クラスターに接続します。 詳細については、「[参考資料](#additional-reading-2)」をご覧ください。
 

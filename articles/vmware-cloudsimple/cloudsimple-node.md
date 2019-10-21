@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 58af69b401400c7b2f663a91de8bf38bc9a296a3
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 729b832c068dcd401fa6e9d2f4af9193d3859a83
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877696"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845543"
 ---
 # <a name="cloudsimple-nodes-overview"></a>CloudSimple ノードの概要
 
@@ -36,19 +36,20 @@ ms.locfileid: "69877696"
 
 次の種類のノードを、購入または予約できます。
 
-| SKU | CS28 - ノード | CS36 - ノード |
-|-----|-------------|-------------|
-| CPU | 2x2.2 GHz、28 のコア (56 HT) | 2x2.3 GHz、36 のコア (72 HT) |
-| RAM | 256 GB | 512 GB |
-| キャッシュ ディスク |  1.6 TB NVMe | 3.2-TB NVMe |
-| 容量ディスク | 5.625 TB Raw | 11.25 TB Raw |
-| ストレージの種類 | All Flash | All Flash |
+| SKU           | CS28 - ノード                 | CS36 - ノード                 | CS36m - ノード                |
+|---------------|-----------------------------|-----------------------------|-----------------------------|
+| リージョン        | 米国東部、米国西部            | 米国東部、米国西部            | 西ヨーロッパ                 |
+| CPU           | 2x2.2 GHz、28 のコア (56 HT) | 2x2.3 GHz、36 のコア (72 HT) | 2x2.3 GHz、36 のコア (72 HT) |
+| RAM           | 256 GB                      | 512 GB                      | 576 GB                      |
+| キャッシュ ディスク    | 1.6 TB NVMe                 | 3.2-TB NVMe                 | 3.2-TB NVMe                 |
+| 容量ディスク | 5.625 TB Raw                | 11.25 TB Raw                | 15.36 TB Raw                |
+| ストレージの種類  | All Flash                   | All Flash                   | All Flash                   |
 
 ## <a name="limits"></a>制限
 
 プライベート クラウドには、次のノード制限が適用されます。
 
-| Resource | 制限 |
+| リソース | 制限 |
 |----------|-------|
 | プライベート クラウドを作成するためのノードの最小数 | 3 |
 | プライベート クラウド上のクラスター内のノードの最大数 | 16 |

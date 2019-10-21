@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: ea7d2c451127283f2af204de2c961747880e1bfe
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
+ms.openlocfilehash: 729ac9fc7c8ec6a85b3497c51888d3b5a6fc8558
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494895"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147186"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>言語識別モデルを使用して音声言語を自動的に識別する
 
@@ -59,4 +59,5 @@ API を使用して動画のインデックスを作成するとき、または[
 
 ## <a name="next-steps"></a>次の手順
 
-[概要](video-indexer-overview.md)
+* [概要](video-indexer-overview.md)
+* [複数言語のコンテンツを自動的に識別および文字起こしする](multi-language-identification-transcription.md)

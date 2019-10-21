@@ -1,7 +1,7 @@
 ---
 title: '回帰モデルのチュートリアル: 自動化された ML'
-titleSuffix: Azure Machine Learning service
-description: 自動化された機械学習を使用して機械学習モデルを生成する方法について説明します。 Azure Machine Learning では、データの事前処理、アルゴリズムの選択、ハイパーパラメーターの選択をユーザーに代わって自動的に実行できます。 その後、最終的なモデルが Azure Machine Learning service によってデプロイされます。
+titleSuffix: Azure Machine Learning
+description: 自動化された機械学習を使用して機械学習モデルを生成する方法について説明します。 Azure Machine Learning では、データの事前処理、アルゴリズムの選択、ハイパーパラメーターの選択をユーザーに代わって自動的に実行できます。 その後、最終的なモデルが Azure Machine Learning によってデプロイされます。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 08/21/2019
-ms.openlocfilehash: 990755b247190f689a90d5cdf3d60d6eff9f4ae7
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: f08f2f07137e518925ee4dbe9b128e100be870c9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036246"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71003973"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>チュートリアル:自動機械学習を使用してタクシー料金を予測する
 
-このチュートリアルでは、Azure Machine Learning service の自動機械学習を使用して、ニューヨーク市のタクシー運賃を予測する回帰モデルを作成します。 このプロセスは、トレーニング データと構成設定を受け取り、さまざまなフィーチャーの正規化/標準化の方法、モデル、およびハイパーパラメーター設定の組み合わせを自動的に反復処理し、最適なモデルに到達します。
+このチュートリアルでは、Azure Machine Learning の自動機械学習を使用して、ニューヨーク市のタクシー運賃を予測する回帰モデルを作成します。 このプロセスは、トレーニング データと構成設定を受け取り、さまざまなフィーチャーの正規化/標準化の方法、モデル、およびハイパーパラメーター設定の組み合わせを自動的に反復処理し、最適なモデルに到達します。
 
 ![フロー図](./media/tutorial-auto-train-models/flow2.png)
 
@@ -30,11 +30,11 @@ ms.locfileid: "70036246"
 > * 自動機械学習回帰モデルをトレーニングする
 > * モデルの精度を計算する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版](https://aka.ms/AMLFree)の Azure Machine Learning を今すぐお試しください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* まだ Azure Machine Learning service ワークスペースとノートブック仮想マシンがない場合は、[セットアップのチュートリアル](tutorial-1st-experiment-sdk-setup.md)を済ませておいてください。
+* まだ Azure Machine Learning ワークスペースとノートブック仮想マシンがない場合は、[セットアップのチュートリアル](tutorial-1st-experiment-sdk-setup.md)を済ませておいてください。
 * セットアップのチュートリアルを完了したら、同じノートブック サーバーを使用して、**tutorials/regression-automated-ml.ipynb** ノートブックを開きます。
 
 独自の[ローカル環境](how-to-configure-environment.md#local)で実行したい場合は、このチュートリアルを [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) で入手することもできます。 `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` を実行して必要なパッケージを取得してください。
@@ -1057,7 +1057,7 @@ print(1 - mean_abs_percent_error)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-Azure Machine Learning service の他のチュートリアルを実行する予定の場合、このセクションは完了しないでください。
+Azure Machine Learning の他のチュートリアルを実行する予定の場合、このセクションを実行しないでください。
 
 ### <a name="stop-the-notebook-vm"></a>ノートブック VM を停止する
 
@@ -1088,4 +1088,4 @@ Azure Machine Learning service の他のチュートリアルを実行する予�
 > * カスタム パラメーターを使って、自動化された回帰モデルをローカルで使用してトレーニングしました。
 > * トレーニング結果を調べて確認しました。
 
-Azure Machine Learning service を使って[モデルをデプロイ](tutorial-deploy-models-with-aml.md)してください。
+Azure Machine Learning を使って[モデルをデプロイ](tutorial-deploy-models-with-aml.md)してください。

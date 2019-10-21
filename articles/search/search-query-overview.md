@@ -7,73 +7,57 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
-ms.custom: seodec2018
-ms.openlocfilehash: 30c3b233a1454d04fb281e049376b2b3aafe1879
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.date: 09/20/2019
+ms.openlocfilehash: 4646cb30ef7602da990e24f923c8eceada4debd0
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647964"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178011"
 ---
-# <a name="how-to-compose-a-query-in-azure-search"></a>Azure Search でクエリを構成する方法
+# <a name="query-types-and-composition-in-azure-search"></a>Azure Search でのクエリの種類と構成
 
-Azure Search では、クエリにラウンドトリップ処理すべてが指定されます。 要求のパラメーターによって、インデックスでドキュメントを探すための一致条件、エンジンのための実行指示、応答を形成するための命令を指定します。 
+Azure Search では、クエリにラウンドトリップ処理すべてが指定されます。 要求のパラメーターによって、インデックスでドキュメントを探すための一致条件、含めるまたは除外するフィールド、エンジンに渡される実行指示、応答を形成するための命令を指定します。 明示的に指定しなかった場合 (`search=*` とした場合) は、フルテキスト検索操作としてすべての検索可能フィールドを対象にクエリが実行され、スコア付けされていない結果セットが任意の順序で返されます。
 
-クエリ要求はリッチな構造であり、範囲に含まれるフィールド、検索方法、返すフィールド、ソートまたはフィルタリングするかどうかなどを指定します。 明示的に指定しなかった場合は、フルテキスト検索操作としてすべての検索可能フィールドを対象にクエリが実行され、スコア付けされていない結果セットが任意の順序で返されます。
-
-## <a name="apis-and-tools-for-testing"></a>テスト用の API とツール
-
-次の表は、API とツールを使ってクエリを送信する手法の一覧です。
-
-| 手法 | 説明 |
-|-------------|-------------|
-| [Search エクスプローラー (ポータル)](search-explorer.md) | 検索バーのほか、インデックスと API バージョンの選択に関するオプションが用意されています。 結果は JSON ドキュメントとして返されます。 <br/>[詳細情報。](search-get-started-portal.md#query-index) | 
-| [Postman または Fiddler](search-get-started-postman.md) | Web テスト ツールは、REST 呼び出しを作成するための優れた選択肢です。 REST API では、Azure Search で利用可能なすべての操作をサポートします。 この記事では、Azure Search に要求を送信するために HTTP 要求のヘッダーと本文を設定する方法について説明します。  |
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Search インデックスに対してクエリを実行する目的に使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | インデックスに対する GET メソッドまたは POST メソッド。追加の入力には、クエリ パラメーターを使用します。  |
-
-## <a name="a-first-look-at-query-requests"></a>クエリ要求の概要
-
-新しい概念を紹介するときは例を示すのが役立ちます。 この例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) で作成される典型的なクエリですが、[不動産のデモ インデックス](search-get-started-portal.md)をターゲットとして、一般的なパラメーターを含んでいます。
+次の例は、[REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents) で構成された代表的なクエリです。 この例では、[ホテルのデモ インデックス](search-get-started-portal.md)を対象とし、共通のパラメーターを使用しています。
 
 ```
 {
     "queryType": "simple" 
-    "search": "seattle townhouse* +\"lake\"",
-    "searchFields": "description, city",
-    "count": "true",
-    "select": "listingId, street, status, daysOnMarket, description",
+    "search": "+New York +restaurant",
+    "searchFields": "Description, Address/City, Tags",
+    "select": "HotelId, HotelName, Description, Rating, Address/City, Tags",
     "top": "10",
-    "orderby": "daysOnMarket"
+    "count": "true",
+    "orderby": "Rating desc"
 }
 ```
 
-+ **`queryType`** にはパーサーを設定します。Azure Search の場合に設定できるのは、[既定の単純なクエリ パーサー](search-query-simple-examples.md) (フル テキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索など高度なクエリ構成で使用される[完全な Lucene クエリ パーサー](search-query-lucene-examples.md)です。
++ **`queryType`** にはパーサーを設定します。設定できるのは、[既定の単純なクエリ パーサー](search-query-simple-examples.md) (フル テキスト検索に最適) または、正規表現、近接検索、ファジー検索、ワイルドカード検索など高度なクエリ構成で使用される[完全な Lucene クエリ パーサー](search-query-lucene-examples.md)です。
 
 + **`search`** には一致条件を指定します。通常はテキストですが、ブール演算子が伴う場合もよくあります。 1 つの用語を単独で指定すると、"*用語*" クエリです。 複数の部分を引用符で囲むと、"*キー フレーズ*" クエリです。 search は **`search=*`** のように定義しないこともできますが、多くの場合は、この例のように、語、フレーズ、演算子で構成されます。
 
-+ **`searchFields`** は省略可能です。クエリ実行を特定のフィールドに限定するために使用されます。
++ **`searchFields`** は、クエリの実行を特定のフィールドに制限します。 インデックス スキーマ内で "*検索可能*" の属性を持つフィールドは、このパラメーターの候補になります。
 
-応答も、クエリに指定するパラメーターによって形成されます。 この例では、結果セットは **`select`** ステートメントに指定されたフィールドで構成されます。 このクエリでは上位 10 件しか返されませんが、 **`count`** によって、一致したドキュメントの全体数がわかります。 このクエリでは、行は daysOnMarket に基づいて並べられます。
+応答も、クエリに指定するパラメーターによって形成されます。 この例では、結果セットは **`select`** ステートメントに指定されたフィールドで構成されます。 $select ステートメントでは、"*取得可能*" とマークされたフィールドのみを使用できます。 また、このクエリでは **`top`** の 10 件の ヒットのみが返されます。 **`count`** では、全体での一致するドキュメント数が示されます。この数は、返される件数よりも大きくなる可能性があります。 このクエリでは、行が評価順に降順で並べ替えられます。
 
 Azure Search では、クエリ実行の対象となるのは常に、要求に含まれている API キーを使用して認証された 1 つのインデックスです。 REST では、両方が要求ヘッダーに指定されます。
 
 ### <a name="how-to-run-this-query"></a>このクエリを実行する方法
 
-このクエリを実行するには、[Search エクスプローラーと不動産のデモ インデックス](search-get-started-portal.md)を使用します。 
+このクエリを実行するには、[Search エクスプローラーとホテルのデモ インデックス](search-get-started-portal.md)を使用します。 
 
-次のクエリ文字列をエクスプローラーの検索バーに貼り付けます。`search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
+次のクエリ文字列をエクスプローラーの検索バーに貼り付けます。`search=+"New York" +restaurant&searchFields=Description, Address/City, Tags&$select=HotelId, HotelName, Description, Rating, Address/City, Tags&$top=10&$orderby=Rating desc&$count=true`
 
 ## <a name="how-query-operations-are-enabled-by-the-index"></a>インデックスによってクエリ操作が有効になる仕組み
 
 Azure Search ではインデックスの設計とクエリの設計は密接に関連しています。 事前に知っておくべき基本的な事実は、各フィールドに属性が設定された*インデックス スキーマ* によって、構築できるクエリの種類が決まるということです。 
 
-フィールドのインデックス属性によって、許可される操作が設定されます。フィールドがインデックス内で "*検索可能*" か、結果に "*取得可能*" か、"*ソート可能*" か、"*フィルター可能*" かなどです。 例のクエリ文字列で `"$orderby": "daysOnMarket"` が処理されるのは、daysOnMarket フィールドがインデックス スキーマで "*ソート可能*" とマークされているためです。 
+フィールドのインデックス属性によって、許可される操作が設定されます。フィールドがインデックス内で "*検索可能*" か、結果に "*取得可能*" か、"*ソート可能*" か、"*フィルター可能*" かなどです。 例のクエリ文字列で `"$orderby": "Rating"` が処理されるのは、Rating フィールドがインデックス スキーマで "*ソート可能*" とマークされているためです。 
 
-![不動産サンプルのインデックス定義](./media/search-query-overview/realestate-sample-index-definition.png "不動産サンプルのインデックス定義")
+![ホテル サンプルのインデックス定義](./media/search-query-overview/hotel-sample-index-definition.png "ホテル サンプルのインデックス定義")
 
-上記のスクリーンショットは、不動産サンプルのインデックス属性の一覧の一部です。 ポータルで、インデックススキーマ全体を確認できます。 インデックス属性について詳しくは、[インデックス作成 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページをご覧ください。
+上記のスクリーンショットは、ホテル サンプルのインデックス属性の一覧の一部です。 ポータルで、インデックススキーマ全体を確認できます。 インデックス属性について詳しくは、[インデックス作成 REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページをご覧ください。
 
 > [!Note]
 > クエリの一部の機能は、インデックスの各フィールドではなくインデックス全体に基づいて有効化されます。 このような機能には、[シノニム マップ](search-synonyms.md)、[カスタム アナライザー](index-add-custom-analyzers.md)、[提案機能による作成 (オートコンプリートおよび提案クエリ)](index-add-suggesters.md)、[結果を順位付けするためのスコアリング ロジック](index-add-scoring-profiles.md)が含まれます。
@@ -92,22 +76,33 @@ Azure Search ではインデックスの設計とクエリの設計は密接に�
 
 その他の検索パラメーターはすべて省略可能です。 属性の完全な一覧は、[インデックス作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページをご覧ください。 処理中にパラメーターがどのように使用されるかについて詳しくは、「[Azure Search のフルテキスト検索のしくみ](search-lucene-query-architecture.md)」をご覧ください。
 
+## <a name="choose-apis-and-tools"></a>API とツールの選択
+
+次の表は、API とツールを使ってクエリを送信する手法の一覧です。
+
+| 手法 | 説明 |
+|-------------|-------------|
+| [Search エクスプローラー (ポータル)](search-explorer.md) | 検索バーのほか、インデックスと API バージョンの選択に関するオプションが用意されています。 結果は JSON ドキュメントとして返されます。 探索、テスト、検証用に推奨されます。 <br/>[詳細情報。](search-get-started-portal.md#query-index) | 
+| [Postman またはその他の REST ツール](search-get-started-postman.md) | Web テスト ツールは、REST 呼び出しを作成するための優れた選択肢です。 REST API では、Azure Search で利用可能なすべての操作をサポートします。 この記事では、Azure Search に要求を送信するために HTTP 要求のヘッダーと本文を設定する方法について説明します。  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Azure Search インデックスに対してクエリを実行する目的に使用できるクライアント。  <br/>[詳細情報。](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | インデックスに対する GET メソッドまたは POST メソッド。追加の入力には、クエリ パラメーターを使用します。  |
+
 ## <a name="choose-a-parser-simple--full"></a>パーサーの選択: simple | full
 
 Azure Search は、Apache Lucene を基盤としており、一般的なクエリと特殊なクエリの処理用に 2 つのクエリ パーサーが用意されています。 単純なパーサーを使用する要求は、[単純なクエリ構文](query-simple-syntax.md)を使用して形成されます。これは自由な形式のテキスト クエリにおける処理速度と有効性のために既定として選択されます。 この構文では、AND、OR、NOT、フレーズ、サフィックス、優先順位の演算子など、一般的な各種検索演算子がサポートされています。
 
 [完全な Lucene クエリ構文](query-Lucene-syntax.md#bkmk_syntax)は、要求に `queryType=full` を追加することで有効になります。これは、[Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) の一部として開発されたもので、広く採用されている表現性の高いクエリ言語です。 完全な構文は、単純な構文を拡張したものです。 単純な構文で記述するすべてのクエリは、完全な Lucene パーサーで実行できます。 
 
-次の例で示すのは、同じクエリでも、queryType 設定が異なると、異なる結果が生成されるということです。 最初のクエリでは、`^3` が検索語句の一部として扱われます。
+次の例で示すのは、同じクエリでも、queryType 設定が異なると、異なる結果が生成されるということです。 最初のクエリでは、`historic` の後の `^3` が検索語句の一部として扱われます。 このクエリの最上位の結果は "Marquis Plaza & Suites" であり、その説明には *ocean* が含まれています
 
 ```
-queryType=simple&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=simple&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
-完全な Lucene パーサーを使用する同じクエリでは、"ranch" に対するフィールド内ブーストと解釈され、その特定の語句を含む結果の検索順位が引き上げられます。
+完全な Lucene パーサーを使用した同じクエリでは、`^3` がフィールド内の語句ブースターとして解釈されます。 パーサーを切り替えると順位が変更され、*historic* という用語が含まれた結果が表示されます。
 
 ```
-queryType=full&search=mountain beach garden ranch^3&searchFields=description&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket
+queryType=full&search=ocean historic^3&searchFields=Description, Tags&$select=HotelId, HotelName, Tags, Description&$count=true
 ```
 
 <a name="types-of-queries"></a>

@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 694bd3b5f14ac37229763b33fb97c17bd4e573d4
-ms.sourcegitcommit: a3a40ad60b8ecd8dbaf7f756091a419b1fe3208e
+ms.openlocfilehash: 4305213d272172cb89bfdd207b6c8106af3f4939
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69892532"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983928"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager パラメーター ファイルを作成する
 
@@ -204,6 +204,6 @@ PowerShell コマンドのパラメーターのいずれかと名前が同じで
 
 ## <a name="next-steps"></a>次の手順
 
-- テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」を参照してください。
+- テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートのパラメーター](template-parameters.md)」を参照してください。
 - キー コンテナーの値の使用に関する詳細は、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
-
+- パラメーターの詳細については、「[Azure Resource Manager テンプレートのパラメーター](template-parameters.md)」を参照してください。

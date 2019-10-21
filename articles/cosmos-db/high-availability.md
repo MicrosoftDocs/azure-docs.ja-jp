@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 4b039e777748499e1b9a2a120e9498d94066b735
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: ab6544e4535f2d2c2e88284f61251f177d457a84
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688278"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146660"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Azure Cosmos DB での高可用性
 
@@ -106,13 +106,26 @@ Azure Cosmos アカウントに複数リージョンの書き込みを構成す�
 > 複数のリージョン Azure Cosmos アカウントに対して可用性ゾーンのサポートを有効にするには、アカウントでマルチマスター書き込みを有効にする必要があります。
 
 
-新規または既存の Azure Cosmos アカウントにリージョンを追加すると、ゾーン冗長性を有効にできます。 現在、Azure portal、PowerShell、および Azure Resource Manager テンプレートを使用した場合にのみ、ゾーン冗長性を有効にできます。 Azure Cosmos アカウントでゾーン冗長性を有効にするには、特定の場所 の`isZoneRedundant` フラグを `true` に設定する必要があります。 場所プロパティ内に、このフラグを設定できます。 たとえば、次の PowerShell スニペットでは、"東南アジア" リージョンのゾーン冗長性が有効になります。
+新規または既存の Azure Cosmos アカウントにリージョンを追加すると、ゾーン冗長性を有効にできます。 Azure Cosmos アカウントでゾーン冗長性を有効にするには、特定の場所 の`isZoneRedundant` フラグを `true` に設定する必要があります。 場所プロパティ内に、このフラグを設定できます。 たとえば、次の PowerShell スニペットでは、"東南アジア" リージョンのゾーン冗長性が有効になります。
 
 ```powershell
 $locations = @( 
     @{ "locationName"="Southeast Asia"; "failoverPriority"=0; "isZoneRedundant"= "true" }, 
     @{ "locationName"="East US"; "failoverPriority"=1 } 
 ) 
+```
+
+次のコマンドは、"EastUS" および "WestUS2" のリージョンでゾーンの冗長性を有効にする方法を示しています。
+
+```azurecli-interactive
+az cosmosdb create \
+  --name mycosmosdbaccount \
+  --resource-group myResourceGroup \
+  --kind GlobalDocumentDB \
+  --default-consistency-level Session \
+  --locations regionName=EastUS failoverPriority=0 isZoneRedundant=True \
+  --locations regionName=WestUS2 failoverPriority=1 isZoneRedundant=True \
+  --enable-multiple-write-locations
 ```
 
 Azure Cosmos アカウントを作成するときに Azure portal を使用して、可用性ゾーンを有効にすることができます。 アカウントを作成するときは、必ず **[geo 冗長性]** 、 **[マルチ リージョン書き込み]** を有効にして、可用性ゾーンがサポートされているリージョンを選択します。 

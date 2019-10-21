@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3c122a68e9f28772be4e3a17a21e5457aa187ce6
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: a65b775a516bfccac2dee5ce00bc7d6495df256d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736111"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718371"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行 - 動機と利点
 
@@ -180,7 +180,7 @@ Azure HDInsight は、Hadoop コンポーネントのクラウド ディスト�
 |プライベートな保護済みのデータ パイプラインですか?|はい||
 |ドメイン参加済みクラスター (ESP) ですか?|     はい||
 |クラウドへのオンプレミス AD Sync ですか?|     はい||
-|同期する AD ユーザー数|          100||
+|同期する AD ユーザー数?|          100||
 |パスワードをクラウドに同期しますか?|    はい||
 |クラウドのみのユーザー?|                 はい||
 |MFA が必要ですか?|                       いいえ|| 

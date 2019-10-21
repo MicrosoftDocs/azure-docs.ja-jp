@@ -49,6 +49,10 @@
           href: api-management-howto-policies.md
         - name: ポリシー リファレンスのインデックス
           href: api-management-policies.md
+    - name: セキュリティ
+      items:
+        - name: 組み込みのセキュリティ制御
+          href: api-management-security-controls.md
     - name: Subscriptions
       href: api-management-subscriptions.md
     - name: Automation を使用して管理する
@@ -57,8 +61,6 @@
       href: api-management-error-handling-policies.md
     - name: API のインポートに関する制限事項
       href: api-management-api-import-restrictions.md
-    - name: 組み込みのセキュリティ制御
-      href: api-management-security-controls.md
 - name: ハウツー ガイド
   items:
     - name: API の定義

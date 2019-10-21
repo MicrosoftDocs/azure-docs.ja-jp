@@ -1,5 +1,5 @@
 ---
-title: Azure Custom Vision とは
+title: Custom Vision とは
 titleSuffix: Azure Cognitive Services
 description: Custom Vision サービスを使用して、Azure クラウド内にカスタム画像分類器を構築する方法について説明します。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: custom-vision
 ms.topic: overview
 ms.date: 07/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 033b0317b1738e24e4ac9c9ae2150b015cc5a8e5
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e455a42945ba4d6ce334d557b7390c3c50e7ff9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560968"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177820"
 ---
-# <a name="what-is-azure-custom-vision"></a>Azure Custom Vision とは
+# <a name="what-is-custom-vision"></a>Custom Vision とは
 
-Azure Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにする認識サービスです。 画像分類器は、視覚特性に基づいて画像にラベル ("_クラス_" を表す) を適用する AI サービスです。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision では適用するラベルをユーザーが決定できます。
+Custom Vision は、独自の画像分類器を構築、デプロイ、改良できるようにするコグニティブ サービスです。 画像分類器は、視覚特性に基づいて画像にラベル ("_クラス_" を表す) を適用する AI サービスです。 [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) サービスとは異なり、Custom Vision では適用するラベルをユーザーが決定できます。
 
 ## <a name="what-it-does"></a>実行内容
 

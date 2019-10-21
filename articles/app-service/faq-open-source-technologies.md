@@ -4,7 +4,7 @@ description: Azure App Service の Web Apps 機能のオープン ソース テ�
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: cc71d2a53241753272610a14c30e44f1cf45e95c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073118"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169680"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -187,24 +187,24 @@ App Service には組み込みの電子メール機能はありません。 ア�
 
 Azure に最近移行した場合は、WordPress が古いドメイン URL にリダイレクトする可能性があります。 これは、MySQL データベースの設定が原因です。
 
-WordPress Buddy + は、データベースで直接リダイレクト URL の更新に使用できる、Azure サイトの拡張機能です。 WordPress Buddy + の使用に関する詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)に関するページを参照してください。
+WordPress Buddy + は、データベースで直接リダイレクト URL の更新に使用できる、Azure サイトの拡張機能です。 WordPress Buddy + の使用に関する詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)に関するページを参照してください。
 
 また、SQL クエリや PHPMyAdmin を使用してリダイレクト URL を手動で更新する場合、[WordPress: 間違った URL へのリダイレクト](https://blogs.msdn.microsoft.com/azureossds/2016/07/12/wordpress-redirecting-to-wrong-url/)に関するページを参照してください。
 
 ## <a name="how-do-i-change-my-wordpress-sign-in-password"></a>WordPress のサインイン パスワードを変更する方法を教えてください?
 
-WordPress のサインイン パスワードを忘れた場合、WordPress Buddy + を使用して更新できます。 パスワードをリセットするには、WordPress Buddy + Azure サイト拡張機能をインストールし、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)に関するページに記載されている手順を実行します。
+WordPress のサインイン パスワードを忘れた場合、WordPress Buddy + を使用して更新できます。 パスワードをリセットするには、WordPress Buddy + Azure サイト拡張機能をインストールし、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)に関するページに記載されている手順を実行します。
 
 ## <a name="i-cant-sign-in-to-wordpress-how-do-i-resolve-this"></a>WordPress にサインインできません。 解決するにはどうすればよいですか?
 
-プラグインを最近インストールした後に WordPress からロックアウトされた場合、そのプラグインに欠陥がある可能性があります。 WordPress Buddy + は、WordPress のプラグインを無効化できる Azure のサイトの拡張機能です。 詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/)に関するページを参照してください。
+プラグインを最近インストールした後に WordPress からロックアウトされた場合、そのプラグインに欠陥がある可能性があります。 WordPress Buddy + は、WordPress のプラグインを無効化できる Azure のサイトの拡張機能です。 詳細については、[WordPress Buddy + を使用した WordPress ツールおよび MySQL の移行](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/)に関するページを参照してください。
 
 ## <a name="how-do-i-migrate-my-wordpress-database"></a>WordPress データベースを移行する方法は?
 
 WordPress Web サイトに接続されている MySQL データベースを移行する方法は複数あります。
 
 * 開発者 : [コマンド プロンプトまたは PHPMyAdmin](https://blogs.msdn.microsoft.com/azureossds/2016/03/02/migrating-data-between-mysql-databases-using-kudu-console-azure-app-service/) を使用
-* 開発者以外 : [WordPress Buddy +](https://blogs.msdn.microsoft.com/azureossds/2016/12/21/wordpress-tools-and-mysql-migration-with-wordpress-buddy/) を使用
+* 開発者以外 : [WordPress Buddy +](https://sharepointforum.org/threads/wordpress-tools-and-mysql-migration-with-wordpress-buddy.82929/) を使用
 
 ## <a name="how-do-i-help-make-wordpress-more-secure"></a>WordPress をより安全にする方法を教えてください?
 

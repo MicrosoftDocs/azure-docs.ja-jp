@@ -25,7 +25,7 @@ Microsoft Azure Data Box をデプロイおよび運用する際には、以下�
 
 ## <a name="data-box-limits"></a>Data Box の制限
 
-- xv@ Data Box は、最大で 5 億個のファイルを格納できます。
+- Data Box は、最大で 5 億個のファイルを格納できます。
 - Data Box は、クラウドで最大 512 個のコンテナーまたは共有をサポートしています。 ユーザー共有内の最上位レベルのディレクトリは、クラウド内のコンテナーまたは Azure ファイル共有になります。 
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 38a302545f2dd46a8123816a41c97ae26ee4c260
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b0625e3ac14e28cb4d43313bf1d9bc8b7afa08b1
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092509"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176705"
 ---
 # <a name="pass-credentials-to-the-azure-dscextension-handler"></a>資格情報を Azure DSC 拡張機能ハンドラーに渡す
 
@@ -83,11 +83,11 @@ $vm | Update-AzVM
 
 このコードを実行すると、資格情報の入力を求められます。 提供された資格情報は、短期間メモリに格納されます。 **Set-AzVMDscExtension** コマンドレットを使用して資格情報が公開されると、資格情報は HTTPS 経由で VM に送信されます。 VM では、Azure がローカル VM 証明書を使用して、暗号化された資格情報をディスクに格納します。 資格情報はメモリ内で一時的に復号化された後、再暗号化されてから DSC に渡されます。
 
-このプロセスは、[拡張機能ハンドラーがない、セキュリティで保護された構成を使用する場合](/powershell/dsc/securemof)とは異なります。 Azure 環境には、証明書を使用して構成データを安全に送信する機能が用意されています。 そのため、DSC 拡張機能ハンドラーを使用する場合、**ConfigurationData** に **$CertificatePath** または **$CertificateID**/  **$Thumbprint** エントリを指定する必要はありません。
+このプロセスは、[拡張機能ハンドラーがない、セキュリティで保護された構成を使用する場合](/powershell/scripting/dsc/pull-server/securemof)とは異なります。 Azure 環境には、証明書を使用して構成データを安全に送信する機能が用意されています。 そのため、DSC 拡張機能ハンドラーを使用する場合、**ConfigurationData** に **$CertificatePath** または **$CertificateID**/  **$Thumbprint** エントリを指定する必要はありません。
 
 ## <a name="next-steps"></a>次の手順
 
 - [Azure DSC 拡張機能ハンドラーの概要](dsc-overview.md)を確認します。
 - [DSC 拡張機能用の Azure Resource Manager テンプレート](dsc-template.md)に関するページをご覧ください。
-- PowerShell DSC の詳細については、[PowerShell ドキュメント センター](/powershell/dsc/overview)を参照してください。
+- PowerShell DSC の詳細については、[PowerShell ドキュメント センター](/powershell/scripting/dsc/overview/overview)を参照してください。
 - PowerShell DSC を使用して管理できるその他の機能や、その他の DSC リソースについては、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)をご覧ください。

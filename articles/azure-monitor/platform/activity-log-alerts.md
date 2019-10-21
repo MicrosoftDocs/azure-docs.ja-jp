@@ -1,19 +1,19 @@
 ---
 title: Azure Monitor でのアクティビティ ログ アラート
 description: アクティビティ ログで特定のイベントが発生した場合に、SMS、Webhook、電子メールなどで通知を受け取ります。
-author: msvijayn
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.author: vinagara
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 61b5b96636ea12b5c63da657e006bd3121c34756
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: b24f24edf2a3a0df8cb8ef9687f205a4a8868537
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67852606"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675238"
 ---
 # <a name="alerts-on-activity-log"></a>アクティビティ ログ アラート 
 

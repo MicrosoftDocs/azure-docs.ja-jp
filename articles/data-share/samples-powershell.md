@@ -1,20 +1,19 @@
 ---
-title: Azure Data Share 用の Azure PowerShell のサンプル | Microsoft Docs
-description: Azure PowerShell のサンプル - データ共有の作成と管理で役立つスクリプト。
-services: data-share
+title: Azure Data Share 用の Azure PowerShell のサンプル
+description: Azure Data Share プレビューでデータ共有を作成および管理するのに役立つ Azure PowerShell のサンプル スクリプトについて説明します。
 ms.service: data-share
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/6/2019
+ms.devlang: powershell
 author: joannapea
 ms.author: joanpo
-ms.openlocfilehash: 90b23da3ae911038c67dc1d99c5b98d04b935281
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.date: 07/6/2019
+ms.openlocfilehash: a694ced2697cba8cc50e3c7b5b14f712527e1cd9
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242856"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166324"
 ---
 # <a name="azure-powershell-samples-for-azure-data-share"></a>Azure Data Share 用の Azure PowerShell のサンプル
 
@@ -33,9 +32,3 @@ ms.locfileid: "70242856"
 |[データ共有の詳細を表示する](scripts/powershell/view-share-details-powershell.md)| この PowerShell サンプル スクリプトでは、データ共有の詳細を一覧表示し、取得します。 |
 |[共有データの使用状況を監視する](scripts/powershell/monitor-usage-powershell.md)| この PowerShell サンプル スクリプトでは、送信された共有データの使用状況を監視します。 |
 |[スナップショット トリガーの作成と表示](scripts/powershell/create-view-trigger-powershell.md)| この PowerShell サンプル スクリプトでは、共有のスナップショット トリガーを作成します。
-
-
-
-
-
-

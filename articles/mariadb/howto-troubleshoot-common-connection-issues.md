@@ -1,18 +1,17 @@
 ---
-title: Azure Database for MariaDB への接続に関する問題のトラブルシューティング |Microsoft Docs
-description: Azure Database for MariaDB への接続に関する問題のトラブルシューティング方法について説明します。
-keywords: mariadb 接続,接続文字列,接続の問題,一時的なエラー,接続エラー
+title: Azure Database for MariaDB への接続に関する問題のトラブルシューティング
+description: 再試行が必要な一時的なエラー、ファイアウォールの問題、障害など、Azure Database for MariaDB への接続に関する問題をトラブルシューティングする方法について説明します。
 author: jan-eng
 ms.author: janeng
 ms.service: mariadb
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 11/09/2018
-ms.openlocfilehash: f5c5a980a99bac3bf02eaaf9c072861ca753d449
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8354cdc364f221a086f4d2f4ec7da95c55baf6e
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61038497"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973514"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-mariadb"></a>Azure Database for MariaDB への接続に関する問題のトラブルシューティング
 

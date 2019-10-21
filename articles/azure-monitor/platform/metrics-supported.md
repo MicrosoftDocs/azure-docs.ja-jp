@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: dbbe5a667b8d467b416e4a4a571d8d3599ec45b6
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a8cffe83ec0f2cdfd2e71accfa55966e5dedcd89
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051824"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259135"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 
@@ -330,12 +330,11 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |Percentage CPU|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|ディメンションなし|
 |Network In|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|ディメンションなし|
-|Network Out|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|ディメンションなし|
+|Network Out|Network Out|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|ディメンションなし|
 |Disk Read Bytes/Sec|ディスクの読み取り|BytesPerSecond|平均|監視期間中にディスクから読み取られた平均バイト数。|ディメンションなし|
 |Disk Write Bytes/Sec|ディスクの書き込み|BytesPerSecond|平均|監視期間中にディスクに書き込まれた平均バイト数。|ディメンションなし|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|ディメンションなし|
-|Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|ディメンションなし|
-
+|Disk Write Operations/Sec|Disk Write Operations/Sec|CountPerSecond|平均|ディスク書き込み IOPS。|ディメンションなし|
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
@@ -343,12 +342,11 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |Percentage CPU|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|RoleInstanceId|
 |Network In|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|RoleInstanceId|
-|Network Out|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|RoleInstanceId|
+|Network Out|Network Out|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|RoleInstanceId|
 |Disk Read Bytes/Sec|ディスクの読み取り|BytesPerSecond|平均|監視期間中にディスクから読み取られた平均バイト数。|RoleInstanceId|
 |Disk Write Bytes/Sec|ディスクの書き込み|BytesPerSecond|平均|監視期間中にディスクに書き込まれた平均バイト数。|RoleInstanceId|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|RoleInstanceId|
-|Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|RoleInstanceId|
-
+|Disk Write Operations/Sec|Disk Write Operations/Sec|CountPerSecond|平均|ディスク書き込み IOPS。|RoleInstanceId|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
@@ -379,7 +377,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Disk Read Bytes|ディスク読み取りバイト数|Bytes|合計|監視期間中にディスクから読み取られたバイト数|ディメンションなし|
 |Disk Write Bytes|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれたバイト数|ディメンションなし|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|ディメンションなし|
-|Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|ディメンションなし|
+|Disk Write Operations/Sec|Disk Write Operations/Sec|CountPerSecond|平均|ディスク書き込み IOPS|ディメンションなし|
 |CPU Credits Remaining|未使用の CPU クレジット|Count|平均|バーストに使用できるクレジットの合計|ディメンションなし|
 |CPU Credits Consumed|使用済みの CPU クレジット|Count|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
 |Per Disk Read Bytes/sec|データ ディスク読み取りバイト数/秒 (非推奨)|CountPerSecond|平均|監視期間中に 1 つのディスクから読み取られたバイト数/秒|SlotId|
@@ -1644,7 +1642,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |NetworkInBytesPerSecond|受信ネットワークのバイト数/秒|BytesPerSecond|平均|受信トラフィックの平均ネットワーク スループット。|ディメンションなし|
 |NetworkOutBytesPerSecond|送信ネットワークのバイト数/秒|BytesPerSecond|平均|送信トラフィックの平均ネットワーク スループット。|ディメンションなし|
 |Network In|ネットワーク受信|Bytes|合計|受信トラフィックの合計ネットワーク スループット。|ディメンションなし|
-|Network Out|ネットワーク送信|Bytes|合計|送信トラフィックの合計ネットワーク スループット。|ディメンションなし|
+|Network Out|Network Out|Bytes|合計|送信トラフィックの合計ネットワーク スループット。|ディメンションなし|
 |MemoryUsed|メモリ使用量|Bytes|平均|VM によって使用されているマシンのメモリの容量。|ディメンションなし|
 |MemoryGranted|許可されているメモリ量|Bytes|平均|ホストによって VM に許可されたメモリの容量。 VMkernel がメモリを必要とした場合、一度アクセスされ、許可されたメモリがスワップ アウトされるか、バルーニングされるまで、メモリはホストに与えられません。|ディメンションなし|
 |MemoryActive|アクティブなメモリ|Bytes|平均|過去の小さな時間枠で VM によって使用されたメモリの容量。 これは、VM が現在必要としているメモリの容量の「真」の数値です。 ゲストのパフォーマンスに影響を与えずに、追加の未使用メモリをスワップ アウトするか、バルーニングできます。|ディメンションなし|
@@ -1806,4 +1804,4 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 ## <a name="next-steps"></a>次の手順
 * [Azure Monitor のメトリックを確認します](data-platform.md)
 * [メトリックでアラートを作成します](alerts-overview.md)
-* [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](diagnostic-logs-overview.md)
+* [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](resource-logs-overview.md)

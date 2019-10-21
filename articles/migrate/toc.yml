@@ -77,20 +77,22 @@
     - name: 評価を作成する
       href: how-to-create-assessment.md
     - name: SQL Server データベースにアクセスする
-      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json&view=sql-server-2017'
+      href: 'https://docs.microsoft.com/sql/dma/dma-assess-sql-data-estate-to-sqldb'
     - name: 評価のカスタマイズ
       href: how-to-modify-assessment.md
     - name: 移行ツールの追加
       href: how-to-migrate.md
-    - name: 評価の移行のスケール
-      items:
-        - name: 大量の VMware VM を評価する
-          href: scale-vmware-assessment.md
-        - name: 大量の Hyper-V VM を評価する
-          href: scale-hyper-v-assessment.md
-        - name: 多数の VM の移行の自動化
-          href: how-to-migrate-at-scale.md
-    - name: '移行の例: Contoso シリーズ'
+    - name: マシンの移行の準備
+      href: prepare-for-migration.md
+- name: 評価の移行のスケール
+  items:
+    - name: 大量の VMware VM を評価する
+      href: scale-vmware-assessment.md
+    - name: 大量の Hyper-V VM を評価する
+      href: scale-hyper-v-assessment.md
+    - name: 多数の VM の移行の自動化
+      href: how-to-migrate-at-scale.md
+    - name: 移行の例 (Contoso シリーズ)
       href: contoso-migration-overview.md
 - name: トラブルシューティング
   items:

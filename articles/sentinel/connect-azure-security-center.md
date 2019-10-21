@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel Preview に Azure Security Center データを接続する | Microsoft Docs
+title: Azure Sentinel に Azure Security Center データを接続する | Microsoft Docs
 description: Azure Sentinel に Azure Security Center データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 697983000f84f9e4efe7e2c8ef9dbb2f636e0735
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a9c210531f2c4cab1c3c023eab795023c3ad9f0c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620570"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240213"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Azure Security Center からデータを接続する
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 
 
@@ -44,13 +42,16 @@ Azure Sentinel では、[Azure Security Center](../security-center/security-cent
 ## <a name="connect-to-azure-security-center"></a>Azure Security Center に接続する
 
 1. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[Azure Security Center]** タイルをクリックします。
+
 1. 右側で、そのアラームを Azure Sentinel にストリーミングするサブスクリプションの横にある **[接続]**  をクリックします。 アラートを Azure Sentinel にストリーミングするには、各サブスクリプションが Azure Security Center Standard レベルにアップグレードされていることを確認します。
+
+1. Azure Security Center のアラートによって Azure Sentinel で自動的にインシデントが生成されるようにするかどうかを選択できます。 **[Create incidents]\(インシデントの作成\)** で **[有効化]** を選択して、接続されたセキュリティ サービスで生成されたアラートからインシデントを自動的に作成する既定の分析ルールを有効にします。 次に、 **[分析]** でこのルールを編集してから、 **[Active rules]\(アクティブなルール\)** を選択します。
 
 3. **[接続]** をクリックします。
 
-4. Azure Security Center のアラートで Log Analytics の関連スキーマを使用するには、**SecurityEvent** を検索します。
+4. Azure Security Center のアラートで Log Analytics の関連スキーマを使用するには、**SecurityAlert** を検索します。
 
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Azure Security Center を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、以下の記事を参照してください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。

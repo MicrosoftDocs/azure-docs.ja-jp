@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: a928640aa6d56f0a39011a2cabcf979b4d907a46
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1d95d14398bc6b5acdec89428ebe22a672551a8a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561474"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338796"
 ---
 # <a name="protect-your-content-by-using-media-services-dynamic-encryption"></a>Media Services 動的暗号化を使用してコンテンツを保護する
 
@@ -172,7 +172,7 @@ MPEG-DASH プロトコルでは、次のコンテナー形式と暗号化スキ�
 
 トークン制限コンテンツ キー ポリシーでは、コンテンツ キーは、ライセンスまたはキー要求で有効な JWT トークンまたは単純 Web トークン (SWT) を提示するクライアントにのみ送信されます。 このトークンは STS によって発行される必要があります。 
 
-Azure AD を STS として使用することも、カスタム STS をデプロイすることもできます。 STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。 Media Services ライセンス/キー配信サービスは、次の両方の条件が存在する場合に、要求されたライセンスまたはキーをクライアントに返します。
+Azure AD を STS として使用することも、[カスタム STS](#using-a-custom-sts) をデプロイすることもできます。 STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。 Media Services ライセンス/キー配信サービスは、次の両方の条件が存在する場合に、要求されたライセンスまたはキーをクライアントに返します。
 
 * トークンが有効である。 
 * トークン内の要求が、ライセンスまたはキー用に構成されているものと一致する。
@@ -259,4 +259,4 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 * [アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計](design-multi-drm-system-with-access-control.md)
 * [ストレージ側の暗号化](storage-account-concept.md#storage-side-encryption)
 * [よく寄せられる質問](frequently-asked-questions.md)
-
+* [JSON Web トークン ハンドラー](https://docs.microsoft.com/dotnet/framework/security/json-web-token-handler)

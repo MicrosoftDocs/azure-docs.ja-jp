@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/15/2019
 ms.author: heidist
-ms.openlocfilehash: 1c86649a989b16d928a46d322af3d805b6fbf832
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 32ec97ce923c1cffd92fa6522f30abf7ea87fff7
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647349"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331187"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Azure Search の価格レベルの選択
 
@@ -191,7 +191,7 @@ L2 offers twice the overall storage capacity of L1.  Choose your tier based on t
 
 1. [最初のインデックスを構築](search-create-index-portal.md)して、ソース データがどのようにインデックスに変換されるかを特定します。 これは、インデックスのサイズを推測する唯一の方法です。
 
-1. ポータルで、[ストレージ、サービス制限、クエリ量、および待機時間を監視](search-monitor-usage.md)します。 秒あたりのクエリ数、調整されたクエリ数、および検索の待ち時間がポータルに表示されます。 これらすべての値が、適切なレベルを選択したかどうかを判断するために役立ちます。 [検索トラフィック分析](search-traffic-analytics.md)を有効にすることで、クリックスルー分析など、値の詳細な監視も構成できます。
+1. ポータルで、[ストレージ、サービス制限、クエリ量、および待機時間を監視](search-monitor-usage.md)します。 秒あたりのクエリ数、調整されたクエリ数、および検索の待ち時間がポータルに表示されます。 これらすべての値が、適切なレベルを選択したかどうかを判断するために役立ちます。 
 
 インデックスの数とサイズは、分析にとってどちらも同様に重要です。 ストレージ (パーティション) を使い果たしたか、リソース (インデックス、インデクサーなど) の上限に達したか、どちらか早い方で上限に達したとされるためです。 ポータルの [概要] ページでは、現在の使用状況と最大制限が並んで表示されるため、両方を追跡できます。
 
@@ -214,8 +214,6 @@ Storage Optimized レベルは、大規模なデータ ワークロードに適�
 Free レベルおよびプレビュー機能には、[サービスレベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/) がありません。 課金対象のすべてのレベルで、SLA が有効になるのは、サービスにとって十分な冗長性がプロビジョニングされるときです。 クエリ (読み取り) の SLA には複数のレプリカが必要です。 クエリとインデックス作成 (読み取り/書き込み) の SLA には 3 つ以上のレプリカが必要です。 パーティションの数は、SLA に影響しません。
 
 ## <a name="tips-for-tier-evaluation"></a>レベルの評価に関するヒント
-
-+ 効率的なインデックスを構築する方法と、どの更新方法が最も影響が少ないかについて説明します。 [検索トラフィック分析](search-traffic-analytics.md)を使用して、クエリ アクティビティに関する分析情報を取得します。
 
 + クエリに関するメトリックを構築し、利用パターン (業務時間中のクエリ数、オフピーク時のインデックス作成) に関するデータを収集します。 このデータを使用して、サービス プロビジョニングに関する決定に役立つ情報を提供します。 時間ごと、または毎日の周期では実用的でありませんが、パーティションやリソースを動的に調節して、クエリ数の計画された変化に対応できます。 計画外ではあっても持続した変化に対応することもできます。ただし、対処する間、そのレベルが保持される場合です。
 

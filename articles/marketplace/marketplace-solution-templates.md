@@ -6,14 +6,14 @@ author: ellacroi
 manager: nunoc
 ms.service: marketplace
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 9/25/2019
 ms.author: ellacroi
-ms.openlocfilehash: 8d02d942fce7bd51a116cc4c19eac9faca0060ef
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 725be2ee239a879be8200d33acaf566b1d42d446
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561496"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300337"
 ---
 # <a name="azure-applications-solution-template-offer-publishing-guide"></a>Azure アプリケーション:ソリューション テンプレートのオファー発行ガイド
 
@@ -21,7 +21,7 @@ ms.locfileid: "68561496"
 
 デプロイと構成に関して、単一の VM を超える特別なオートメーションが必要となるソリューションの場合、オファーの種類として Azure アプリ (ソリューション テンプレート) を使用してください。 Azure アプリ (ソリューション テンプレート) を使用して、VM のプロビジョニングを自動化することができます。 ネットワーク リソースやストレージ リソースをプロビジョニングすることもできます。 Azure アプリ (ソリューション テンプレート) タイプのオファーでは、単一の VM および IaaS ベースのソリューション全体に関して、オートメーション ベネフィットが提供されます。
 
-これらのソリューション テンプレートは、Marketplace を通じてデプロイされ課金されるトランザクションのオファーです。 ユーザーに表示される行動喚起は、"今すぐ入手する" です。
+これらのソリューション テンプレートは、トランザクション プランではなく、Microsoft の商業マーケットプレースを通じて課金される有料 VM プランをデプロイする目的に使用できます。 ユーザーに表示される行動喚起は、"今すぐ入手する" です。
 
 
 ## <a name="requirements-for-solution-templates"></a>ソリューション テンプレートの要件

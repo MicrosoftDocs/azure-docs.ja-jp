@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 2e79f38fb6495d75e0438fa3622cc226886c0773
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 4a1d835ebe47ec36bb839da8dcbcd107ffcb9c4c
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885553"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71161970"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターのスケーリング
 
@@ -37,7 +37,7 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 |[Azure CLI](hdinsight-administer-use-command-line.md)|azure hdinsight cluster resize \<clusterName> \<Target Instance Count> |
 |[Azure Portal](https://portal.azure.com)|HDInsight クラスターのウィンドウを開き、左側のメニューの **[クラスター サイズ]** を選択し、[クラスター サイズ] ウィンドウでワーカー ノードの数を入力して、[保存] を選択します。|  
 
-![クラスターのスケーリング](./media/hdinsight-scaling-best-practices/scale-cluster-blade.png)
+![Azure portal のスケール クラスター オプション](./media/hdinsight-scaling-best-practices/scale-cluster-blade1.png)
 
 これらの方法のいずれかを使用すると、HDInsight クラスターを数分以内にスケールアップまたはスケールダウンできます。
 
@@ -112,7 +112,7 @@ Microsoft では、クラスターをスケーリングするための次のユ�
 3. Ambari UI から、左側のメニューにあるサービスの一覧で **[YARN]** を選択します。  
 4. [YARN] ページから **[クイック リンク]** を選択し、アクティブなヘッド ノードにポインターを置き、 **[ResourceManager UI]** を選択します。
 
-    ![ResourceManager UI](./media/hdinsight-scaling-best-practices/resourcemanager-ui.png)
+    ![Apache Ambari クイック リンク ResourceManager UI](./media/hdinsight-scaling-best-practices/resource-manager-ui1.png)
 
 `https://<HDInsightClusterName>.azurehdinsight.net/yarnui/hn/cluster` を使用すると ResourceManager UI に直接アクセスできます。
 

@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: danlep
-ms.openlocfilehash: d652c511a3f54fd0b756a95fbe183b4678416a10
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: d415bef80ed8c96ff6e5df81ae9281ae681a4879
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873206"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300185"
 ---
 # <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Azure CLI を使用して Azure Container Registry 内のコンテナー イメージを削除する
 
@@ -259,9 +259,12 @@ if ($enableDelete) {
 }
 ```
 
+
 ## <a name="automatically-purge-tags-and-manifests-preview"></a>タグとマニフェストの自動消去 (プレビュー)
 
 Azure CLI コマンドのスクリプト作成の代わりに、オンデマンドまたはスケジュールされた ACR タスクを実行して、特定の期間よりも古い、または指定した名前フィルターに一致するすべてのタグを削除します。 詳細については、「[Azure コンテナー レジストリからイメージを自動的に消去する](container-registry-auto-purge.md)」を参照してください。
+
+必要に応じて、タグなしマニフェストを管理するための[アイテム保持ポリシー](container-registry-retention-policy.md)をレジストリごとに設定します。 アイテム保持ポリシーを有効にすると、タグが一切関連付けられておらず、また基になるレイヤー データを持たないイメージのマニフェストが、設定した期間の経過後、レジストリから自動的に削除されます。
 
 ## <a name="next-steps"></a>次の手順
 

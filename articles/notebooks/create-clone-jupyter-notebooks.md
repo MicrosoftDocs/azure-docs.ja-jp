@@ -4,21 +4,20 @@ description: Azure Notebooks プロジェクトでは、別のソースから新
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13615d319af600234dcc23e04f82ce46b8f97780
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237524"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970082"
 ---
 # <a name="create-and-clone-projects"></a>プロジェクトの作成と複製
 
@@ -81,7 +80,7 @@ Azure Notebooks プロジェクトがまだない場合は、次のテンプレ�
 | about | account | administration | api | blog | classroom |
 | content | dashboard | explore | faq | help | html |
 | home | import | library | management | new | notebook |
-| notebooks | pdf | preview | 価格 | [プロファイル] | 検索 |
+| notebooks | pdf | preview | 価格 | profile | 検索 |
 | status | support | テスト | | | |
 
 これらの語のいずれかをプロジェクト ID として使用しようとすると、「**新しいプロジェクトの作成**」および「**プロジェクトの設定**」ポップアップに「Library id is a reserved identifier.(ライブラリ ID は予約済み ID です)」と表示されます。

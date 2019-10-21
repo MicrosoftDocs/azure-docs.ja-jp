@@ -1,19 +1,18 @@
 ---
-title: サンプル - PCI-DSS v3.2.1 のブループリント - 概要
-description: Payment Card Industry Data Security Standard v3.2.1 のブループリント サンプルの概要。
+title: PCI-DSS v3.2.1 のブループリント サンプル - 概要
+description: Payment Card Industry Data Security Standard v3.2.1 のブループリント サンプルの概要。 このブループリント サンプルは、お客様が特定のコントロールを評価するのに役立ちます。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 06/24/2019
 ms.topic: conceptual
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 390d07a473cff86d8870a7ec8229c6343f62c4e7
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 4dbfd750d8a12e954eea981e24c4255218c4af72
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232657"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297131"
 ---
 # <a name="overview-of-the-pci-dss-v321-blueprint-sample"></a>PCI-DSS v3.2.1 のブループリント サンプルの概要
 

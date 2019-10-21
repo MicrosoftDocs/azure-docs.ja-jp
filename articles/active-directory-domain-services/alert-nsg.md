@@ -1,60 +1,90 @@
 ---
-title: Azure Active Directory Domain Services:ネットワーク セキュリティ グループのトラブルシューティング | Microsoft Docs
-description: Azure AD Domain Services のネットワーク セキュリティ グループ構成のトラブルシューティング
+title: Azure AD DS でネットワーク セキュリティ グループのアラートを解決する | Microsoft Docs
+description: Azure Active Directory Domain Services のネットワーク セキュリティ グループ構成アラートをトラブルシューティングして解決する方法について説明します
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
-manager: ''
-editor: ''
+manager: daveba
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/22/2019
+ms.topic: troubleshooting
+ms.date: 09/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 450ee5635b378ed7c4d4e4bedc1c4245f6b52d70
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "70743425"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257999"
 ---
-# <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>マネージド ドメインの無効なネットワーク構成のトラブルシューティング
-この記事は、ネットワーク関連の構成エラーのトラブルシューティングと解決に役立ちます。次のような警告メッセージは、このようなエラーにより表示されます。
+# <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services でのネットワーク構成アラート
+
+アプリケーションとサービスが Azure Active Directory Domain Services (Azure AD DS) と正しく通信できるようにするには、トラフィックのフローを許可するために、特定のネットワーク ポートを開く必要があります。 Azure では、ネットワーク セキュリティ グループを使用してトラフィックのフローを制御します。 Azure AD DS マネージド ドメインの正常性状態は、必要なネットワーク セキュリティ グループ規則が適用されていない場合にアラートを表示します。
+
+この記事は、ネットワーク セキュリティ グループの構成に関する問題の一般的なアラートを理解し、解決するのに役立ちます。
 
 ## <a name="alert-aadds104-network-error"></a>アラート AADDS104:ネットワーク エラー
-**アラート メッセージ:** "*このマネージド ドメインのドメイン コントローラーに到達できません。これは、仮想ネットワークに構成されているネットワーク セキュリティ グループ (NSG) がマネージド ドメインへのアクセスをブロックしている場合に発生する可能性があります。別の理由として、インターネットからの着信トラフィックをブロックするユーザー定義ルートが存在していることが考えられます。*
 
-無効な NSG 構成が、Azure AD Domain Services のネットワーク エラーの最も一般的な原因です。 仮想ネットワーク用に構成されたネットワーク セキュリティ グループ (NSG) は、[特定のポート](network-considerations.md#network-security-groups-and-required-ports)へのアクセスを許可する必要があります。 こうしたポートがブロックされていると、Microsoft は、マネージド ドメインを監視または更新できません。 さらに、Azure AD ディレクトリとマネージド ドメインの間の同期が影響を受けます。 NSG を作成するときは、こうしたポートを開いたままにして、サービスが中断されないようにしてください。
+### <a name="alert-message"></a>アラート メッセージ
 
-### <a name="checking-your-nsg-for-compliance"></a>NSG のコンプライアンス対応の確認
+"*このマネージド ドメインのドメイン コントローラーに到達できません。これは、仮想ネットワークに構成されているネットワーク セキュリティ グループ (NSG) がマネージド ドメインへのアクセスをブロックしている場合に発生する可能性があります。別の理由として、インターネットからの着信トラフィックをブロックするユーザー定義ルートが存在していることが考えられます。*
 
-1. Azure Portal で、[ネットワーク セキュリティ グループ](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)のページに移動します
-2. テーブルから、マネージド ドメインが有効になっているサブネットに関連付けられている NSG を選択します。
-3. 左側のウィンドウの **[設定]** の下で、 **[受信セキュリティ規則]** をクリックします。
-4. 現在の規則を確認し、どのルールが[これらのポート](network-considerations.md#network-security-groups-and-required-ports)へのアクセスをブロックしているか確認します
-5. NSG を編集し、規則を削除するか、規則を追加するか、または完全に新しい NSG を作成することによって、コンプライアンスを確認します。 [規則の追加](#add-a-rule-to-a-network-security-group-using-the-azure-portal)または準拠している新しい NSG の作成方法は以下のとおりです
+無効なネットワーク セキュリティ グループ規則は、Azure AD DS のネットワーク エラーの最も一般的な原因です。 仮想ネットワーク用のネットワーク セキュリティ グループは、特定のポートおよびプロトコルへのアクセスを許可する必要があります。 これらのポートがブロックされている場合、Azure プラットフォームはマネージド ドメインの監視および更新を行うことができません。 Azure AD ディレクトリと Azure AD DS マネージド ドメインの間の同期にも影響があります。 サービスが中断されないように、既定のポートを開いたままにするようにしてください。
 
-## <a name="sample-nsg"></a>NSG のサンプル
-次の表では、マネージド ドメインのセキュリティ保護を維持しながら、Microsoft が情報を監視、管理、更新できるようにする、NSG の例を示します。
+## <a name="default-security-rules"></a>既定セキュリティ規則
 
-![NSG のサンプル](./media/active-directory-domain-services-alerts/default-nsg.png)
+Azure AD DS マネージド ドメインのネットワーク セキュリティ グループには、次の既定の受信および送信のセキュリティ規則が適用されます。 これらの規則は Azure AD DS のセキュリティを維持し、Azure プラットフォームがマネージド ドメインを監視、管理、および更新できるようにします。 [Secure LDAP を構成][configure-ldaps]する場合は、さらに、受信トラフィックを許可する追加の規則を持つことができます。
+
+### <a name="inbound-security-rules"></a>受信セキュリティ規則
+
+| Priority | 名前 | Port | Protocol | source | Destination | Action |
+|----------|------|------|----------|--------|-------------|--------|
+| 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Any | Allow |
+| 201      | AllowRD | 3389 | TCP | CorpNetSaw | Any | Allow |
+| 301      | AllowPSRemoting | 5986| TCP | AzureActiveDirectoryDomainServices | Any | Allow |
+| 65000    | AllVnetInBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
+| 65001    | AllowAzureLoadBalancerInBound | Any | Any | AzureLoadBalancer | Any | Allow |
+| 65500    | DenyAllInBound | Any | Any | Any | Any | 拒否 |
+
+### <a name="outbound-security-rules"></a>送信セキュリティ規則
+
+| Priority | 名前 | Port | Protocol | source | Destination | Action |
+|----------|------|------|----------|--------|-------------|--------|
+| 65000    | AllVnetOutBound | Any | Any | VirtualNetwork | VirtualNetwork | Allow |
+| 65001    | AllowAzureLoadBalancerOutBound | Any | Any |  Any | インターネット | Allow |
+| 65500    | DenyAllOutBound | Any | Any | Any | Any | 拒否 |
 
 >[!NOTE]
-> Azure AD Domain Services には、仮想ネットワークからの無制限の送信アクセスが必要です。 仮想ネットワークの発信アクセスを制限する追加の NSG 規則は作成しないようにすることをお勧めします。
+> Azure AD DS には、仮想ネットワークからの無制限の発信アクセスが必要です。 仮想ネットワークの発信アクセスを制限する追加の規則を作成することは推奨されません。
 
-## <a name="add-a-rule-to-a-network-security-group-using-the-azure-portal"></a>Azure Portal を使用してネットワーク セキュリティ グループに規則を追加する
-PowerShell を使いたくない場合は、Azure Portal を使って手動で 1 つの規則を NSG に追加できます。 ネットワーク セキュリティ グループに規則を作成するには、次の手順を実行します。
+## <a name="verify-and-edit-existing-security-rules"></a>既存のセキュリティ規則を確認および編集する
 
-1. Azure Portal で、[ネットワーク セキュリティ グループ](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)のページに移動します。
-2. テーブルから、マネージド ドメインが有効になっているサブネットに関連付けられている NSG を選択します。
-3. 左側のパネルの **[設定]** で、 **[受信セキュリティ規則]** または **[送信セキュリティ規則]** をクリックします。
-4. **[追加]** をクリックして情報を入力し、規則を作成します。 Click **OK**.
-5. 規則テーブルで検索して、規則が作成されたことを確認します。
+既存のセキュリティ規則を確認し、既定のポートが開いていることを確実にするには、次の手順を実行します。
 
+1. Azure portal で、**ネットワーク セキュリティ グループ**を検索して選択します。
+1. マネージド ドメインに関連付けられているネットワーク セキュリティ グループ (*AADDS-contoso.com-NSG* など) を選択します。
+1. **[概要]** ページに、既存の受信および送信のセキュリティ規則が表示されます。
 
-## <a name="need-help"></a>お困りの際は、
-[フィードバックの共有およびサポートについては](contact-us.md)、Azure Active Directory Domain Services 製品チームにお問い合わせください。
+    受信および送信の規則を確認し、前のセクションにある必要な規則リストと比較します。 必要に応じて、必要なトラフィックをブロックするカスタム規則を選択して削除します。 必要な規則のいずれかが不足している場合は、次のセクションで規則を追加します。
+
+    必要なトラフィックを許可するために規則を追加または削除した後、Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動的に更新され、アラートが削除されます。
+
+### <a name="add-a-security-rule"></a>セキュリティ規則を追加する
+
+不足しているセキュリティ規則を追加するには、次の手順を実行します。
+
+1. Azure portal で、**ネットワーク セキュリティ グループ**を検索して選択します。
+1. マネージド ドメインに関連付けられているネットワーク セキュリティ グループ (*AADDS-contoso.com-NSG* など) を選択します。
+1. 左側のパネルの **[設定]** で、追加する必要がある規則に応じて、 *[受信セキュリティ規則]* または *[送信セキュリティ規則]* をクリックします。
+1. **[追加]** を選択し、ポート、プロトコル、方向などに基づいて必要な規則を作成します。準備ができたら **[OK]** を選択します。
+
+セキュリティ規則が追加されて一覧に表示されるまでにしばらく時間がかかります。
+
+## <a name="next-steps"></a>次の手順
+
+まだ問題が解決しない場合は、さらなるトラブルシューティングの支援を求めて、[Azure サポート リクエストを開いて][azure-support]ください。
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[configure-ldaps]: tutorial-configure-ldaps.md

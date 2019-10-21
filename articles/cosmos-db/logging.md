@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: d8a9963edd689a32ae0642ac6fa4a622c248bc5b
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: e43bc4b8eb1db91493f279f5c46681483e4b18c4
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232386"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261397"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB での診断ログ 
 
@@ -78,7 +78,7 @@ Azure 診断ログはリソースによって出力され、そのリソース�
 
 1. **[診断設定]** ページで以下の詳細情報をフォームに入力します。 
 
-    * **[名前]** :作成するログの名前を入力します。
+    * **Name**:作成するログの名前を入力します。
 
     * 次のサービスにログを格納できます。
 
@@ -481,7 +481,7 @@ Azure Storage と Azure Monitor ログに格納されている診断データは
 
 ## <a name="next-steps"></a>次の手順
 
-- ロギングを有効にする方法、および各種 Azure サービスでサポートされるメトリックとログのカテゴリーについて理解を深めるには、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」と「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/diagnostic-logs-overview.md)」の両方をご覧ください。
+- ロギングを有効にする方法、および各種 Azure サービスでサポートされるメトリックとログのカテゴリーについて理解を深めるには、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」と「[Azure リソースからのログ データの収集と使用](../azure-monitor/platform/resource-logs-overview.md)」の両方をご覧ください。
 - Event Hubs については次の記事をご覧ください。
    - [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)

@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: d5702576b3353bbc779601c7a5fe91417d73c7a1
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 44a2b0feab19d042de58359a7ea13814415e6c9e
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624352"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129561"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Azure ファイル共有のバックアップと復元
 この記事では、Azure Portal を使用して [Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を行う方法について説明します。
@@ -86,13 +86,15 @@ Azure ファイル共有のバックアップはプレビュー段階です。 �
 
    ![[バックアップ] をクリックして Azure ファイル共有をコンテナーに関連付ける](./media/backup-file-shares/list-of-azure-files-backup-items.png)
 
-3. Azure ファイル共有の一覧から、目的のファイル共有を選択します。 選択したファイル共有の [Backup Item]\(バックアップ項目\) メニューが開きます。
+3. Azure ファイル共有の一覧から、目的のファイル共有を選択します。 **バックアップ項目**の詳細が表示されます。 **[Backup Item]\(バックアップ項目\)** メニューから **[今すぐバックアップ]** をクリックします。 これはオンデマンド バックアップ ジョブのため、復旧ポイントに関連付けられた保持ポリシーはありません。
 
    ![[バックアップ] をクリックして Azure ファイル共有をコンテナーに関連付ける](./media/backup-file-shares/backup-item-menu.png)
 
-4. [Backup Item]\(バックアップ項目\) メニューから **[今すぐバックアップ]** をクリックします。 これはオンデマンド バックアップ ジョブのため、復旧ポイントに関連付けられた保持ポリシーはありません。 **[今すぐバックアップ]** ダイアログが開きます。 復旧ポイントの保持期限を指定します。
+4. **[今すぐバックアップ]** ダイアログが開きます。 復旧ポイントの保持期限を指定します。
 
    ![[バックアップ] をクリックして Azure ファイル共有をコンテナーに関連付ける](./media/backup-file-shares/backup-now-menu.png)
+
+5. **[OK]** をクリックして、オンデマンド バックアップ ジョブを確定します。
 
 ## <a name="restore-from-backup-of-azure-file-share"></a>Azure ファイル共有のバックアップから復元する
 復元ポイントからファイル共有全体または個々のファイルやフォルダーを復元する必要がある場合は、前のセクションで詳しく説明したように [Backup Item]\(バックアップ項目\) に移動します。 **[共有の復元]** を選択して、目的の特定の時点からファイル共有全体を復元します。 表示される復元ポイントの一覧から、1 つを選択して、現在のファイル共有を上書きするか同じリージョン内の別のファイル共有に復元することができます。

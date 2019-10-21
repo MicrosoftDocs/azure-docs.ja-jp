@@ -1,5 +1,5 @@
 ---
-title: クイック スタート:Azure DevOps Projects を使用して Node.js 用の CI/CD パイプラインを作成する
+title: Azure DevOps Projects を使用して Node.js 用の CI/CD パイプラインを作成する
 description: DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 いくつかの簡単な手順により、選択した Azure サービス上でアプリを稼働させることができます。
 ms.prod: devops
 ms.technology: devops-cicd
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
-ms.custom: mvc
+ms.custom: mvc, seo-javascript-september2019
 monikerRange: vsts
-ms.openlocfilehash: 407b0a270e667e195a6b9e8dbcd3753fb71b9699
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9fc276626d2a863f7f2e53cd7312ab8b3be513dd
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899625"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815781"
 ---
-#  <a name="create-a-cicd-pipeline-for--nodejs-with-azure-devops-projects"></a>Azure DevOps Projects を使用して Node.js 用の CI/CD パイプラインを作成する 
+#  <a name="quickstart-create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-projects"></a>クイック スタート:Azure DevOps Projects を使用して Azure Pipelines に Node.js 用の CI/CD パイプラインを作成する
 
 Azure DevOps Projects は、Azure リソースを作成して、Azure Pipelines 内に Node.js アプリ用の継続的インテグレーション (CI) および継続的デリバリー (CD) のパイプラインを設定する、簡単なエクスペリエンスを提供します。  
 

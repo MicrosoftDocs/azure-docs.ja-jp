@@ -1,6 +1,6 @@
 ---
 title: PyTorch を使用したディープ ラーニング ニューラル ネットワークのトレーニング
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の PyTorch 推定クラスを使用して、PyTorch トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。  このサンプル スクリプトは、PyTorch の転移学習チュートリアルに基づいてニワトリと七面鳥の画像を分類し、ディープ ラーニング ニューラル ネットワークを構築します。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: maxluk
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7ac3675ec9d90fc51bc9e3c72b76d8fb80312a8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: c688f5a59a9a6d980f50a726f9da4dc4379ce073
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966782"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002568"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して PyTorch ディープ ラーニング モデルを大規模にトレーニングする
 
@@ -67,7 +67,7 @@ from azureml.train.dnn import PyTorch
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
 
-[Azure Machine Learning service ワークスペース](concept-workspace.md)は、本サービスの最上位レベルのリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
+[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
 
 [前提条件のセクション](#prerequisites)で作成した `config.json` ファイルからワークスペース オブジェクトを作成します。
 
@@ -93,7 +93,7 @@ experiment = Experiment(ws, name=experiment_name)
 
 ### <a name="prepare-training-scripts"></a>トレーニング スクリプトを準備する
 
-このチュートリアルでは、トレーニング スクリプトの `pytorch_train.py` は既に用意されています。 実際には、任意のカスタム トレーニング スクリプトをそのまま使用し、Azure Machine Learning service で実行できます。
+このチュートリアルでは、トレーニング スクリプトの `pytorch_train.py` は既に用意されています。 実際には、任意のカスタム トレーニング スクリプトをそのまま使用し、Azure Machine Learning で実行できます。
 
 Pytorch トレーニング スクリプト `pytorch_train.py` をアップロードします。
 
@@ -101,7 +101,7 @@ Pytorch トレーニング スクリプト `pytorch_train.py` をアップロー
 shutil.copy('pytorch_train.py', project_folder)
 ```
 
-ただし、Azure Machine Learning service の追跡およびメトリック機能を利用したい場合は、トレーニング スクリプト内に少量のコードを追加する必要があります。 メトリックの追跡の例は、`pytorch_train.py` にあります。
+ただし、Azure Machine Learning の追跡機能とメトリック機能を利用したい場合は、トレーニング スクリプト内に少量のコードを追加する必要があります。 メトリックの追跡の例は、`pytorch_train.py` にあります。
 
 ## <a name="create-a-compute-target"></a>コンピューティング ターゲットを作成する
 
@@ -189,7 +189,7 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>分散トレーニング
 
-[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) 推定器は、CPU と GPU のクラスターでの分散トレーニングもサポートしています。 分散 PyTorch ジョブは簡単に実行できます。また、オーケストレーションの管理は Azure Machine Learning service で自動的に行われます。
+[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) 推定器は、CPU と GPU のクラスターでの分散トレーニングもサポートしています。 分散 PyTorch ジョブは簡単に実行でき、オーケストレーションの管理は Azure Machine Learning service によって自動的に行われます。
 
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod) は、Uber によって開発された、分散トレーニングのためのオープン ソースの all reduce フレームワークです。 これを利用すると、分散 GPU PyTorch ジョブを簡単に実行できます。
@@ -222,7 +222,7 @@ import horovod
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Machine Learning service 上で PyTorch を使用して、ディープ ラーニング ニューラル ネットワークをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
+この記事では、Azure Machine Learning で PyTorch を使用して、ディープ ラーニング ニューラル ネットワークをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
 
 > [!div class="nextstepaction"]
 > [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)

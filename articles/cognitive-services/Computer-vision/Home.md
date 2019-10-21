@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4f823b62237e8018f092d7a94fb479f7fbdd38da
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: db62f003f7eb8dd272305b86712cf1d721797114
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565772"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719536"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
-Azure の Computer Vision サービスを使用すると、開発者は、画像を処理して情報を返す高度なアルゴリズムにアクセスできます。 イメージを分析するには、イメージをアップロードするか、またはイメージの URL を指定します。 この画像処理アルゴリズムでは、目的の視覚的特徴に応じて、さまざまな方法でコンテンツを分析できます。 たとえば、Computer Vision では、成人向けまたはきわどいコンテンツが画像に含まれているかどうかを判断したり、画像内の人の顔をすべて検索したりすることができます。
+Azure の Computer Vision サービスを使用すると、開発者は、画像を処理して情報を返す高度なアルゴリズムにアクセスできます。 イメージを分析するには、イメージをアップロードするか、またはイメージの URL を指定します。 この画像処理アルゴリズムでは、目的の視覚的特徴に応じて、さまざまな方法でコンテンツを分析できます。 たとえば、Computer Vision では、成人向けコンテンツが画像に含まれているかどうかを判断したり、画像内の人物の顔をすべて検出したりすることができます。
 
 Computer Vision は、アプリケーションからネイティブ SDK を使用するか、REST API を直接呼び出すことで使用できます。 このページでは、Computer Vision でできることを大まかに取り上げます。
 
@@ -52,7 +52,7 @@ Computer Vision の [Read API](concept-recognizing-text.md#read-api) を使用�
 
 ## <a name="moderate-content-in-images"></a>画像内のコンテンツを調整する
 
-Computer Vision を使用して、イメージ内の[成人向けやきわどいコンテンツを検出](concept-detecting-adult-content.md)し、その両方の信頼度スコアを返します。 スライディング スケールで成人向けのきわどいコンテンツを検出するためのフィルターを設定し、自分の設定を反映させることができます。
+Computer Vision を使用すると、画像内の[成人向けコンテンツを検出](concept-detecting-adult-content.md)し、さまざまな分類の信頼度スコアを返すことができます。 コンテンツをフラグ設定するためのしきい値は、自分の都合に合わせて、スライディング スケールで設定することができます。
 
 ## <a name="use-containers"></a>コンテナーの使用
 
@@ -75,6 +75,6 @@ Cognitive Services 全般に言えることですが、Computer Vision サービ
 
 以下のクイック スタート ガイドに従って、実際に Computer Vision を使ってみましょう。
 
-- [クイック スタート:画像を分析する](quickstarts-sdk/csharp-analyze-sdk.md)
-- [クイック スタート:手書きのテキストを抽出する](quickstarts-sdk/csharp-hand-text-sdk.md)
-- [クイック スタート:サムネイルを生成する](quickstarts-sdk/csharp-thumb-sdk.md)
+- [クイック スタート:Computer Vision .NET SDK](quickstarts-sdk/csharp-sdk.md)
+- [クイック スタート:Computer Vision Python SDK](quickstarts-sdk/python-sdk.md)
+- [クイック スタート:Computer Vision Java SDK](quickstarts-sdk/java-sdk.md)

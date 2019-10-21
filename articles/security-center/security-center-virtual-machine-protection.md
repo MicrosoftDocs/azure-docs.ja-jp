@@ -3,9 +3,8 @@ title: Azure Security Center でのマシンとアプリケーションの保護
 description: このドキュメントでは、仮想マシン、コンピューター、Web アプリ、および App Service 環境を保護するのに役立つ、Security Center の推奨事項について説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
-ms.author: v-mohabe
-ms.openlocfilehash: c8f381a3440d742cca880f44b73cbc22bde92ecc
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.author: memildin
+ms.openlocfilehash: a3bce8d6312dd09a7f10f8d5d2eaebd4e312d95d
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910557"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200775"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Azure Security Center でのマシンとアプリケーションの保護
 Azure Security Center は、Azure リソース、Azure 以外のサーバー、および仮想マシンのセキュリティの状態を分析します。 潜在的なセキュリティの脆弱性を識別すると、Security Center は、必要な管理を構成するプロセスを説明する推奨事項を作成します。 推奨事項は、仮想マシン (VM)、コンピューター、アプリケーション、ネットワーク、SQL、および ID とアクセスといった、Azure のリソースの種類に適用されます。
@@ -108,6 +107,7 @@ VM またはコンピューターは、マシンで Microsoft Monitoring Agent �
 各推奨事項の下に表示されるアイコンにより、注意が必要な VM とコンピューター、その推奨事項の種類をすばやく把握できます。 **リソースの種類**や**重大度**によって一覧を検索するフィルターを使用することもできます。
 
 各 VM のセキュリティの推奨事項をドリルダウンするには、[VM] をクリックします。
+ここには VM またはコンピューターのセキュリティに関する詳細が表示されます。 一番下には、推奨されるアクションと、各問題の重大度が表示されます。
 ![クラウド サービス](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
 
 ### <a name="cloud-services"></a>クラウド サービス

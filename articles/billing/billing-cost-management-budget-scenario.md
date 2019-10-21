@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 03/13/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 37f129526cb184a2eeee9e36028e8f00b5bbc247
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: bc35ba74acb2ce807597230fee0685606a93a775
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68443470"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958362"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Azure Budgets でのコストの管理
 
@@ -272,7 +272,7 @@ Azure Automation のセットアップが完了しました。 単純な Postman
 アクション グループを作成するときに、このチュートリアルで作成したロジック アプリを指定します。
 
 1.  [Azure portal](https://portal.azure.com/) にまだサインインしていない場合はサインインして、 **[すべてのサービス]**  >  **[Monitor]** を選択します。
-2.  **[設定]** セクションの **[アクション グループ]** を選択します。
+2.  **[アラート]** 、 **[アクションの管理]** の順に選択します。
 3.  **[アクション グループ]** ブレードの **[アクション グループを追加する]** を選択します。
 4.  次の項目を追加して確認します。
     - アクション グループ名

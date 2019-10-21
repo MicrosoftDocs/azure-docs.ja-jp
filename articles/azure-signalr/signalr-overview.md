@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 06/20/2019
 ms.author: zhshang
-ms.openlocfilehash: dc7ba3585ec49921c0a0e66185fc5550d3d4a006
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: e7bdc62f7fa46bbacce7f264d8f331ea64b05430
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67303618"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273687"
 ---
 # <a name="what-is-azure-signalr-service"></a>Azure SignalR サービスとは
 

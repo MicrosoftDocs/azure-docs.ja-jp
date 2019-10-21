@@ -1,22 +1,22 @@
 ---
-title: Windows Virtual Desktop プレビューのアプリ グループを管理する - Azure
-description: Windows Virtual Desktop プレビューのテナントを Azure Active Directory に設定する方法を説明します。
+title: Windows Virtual Desktop のアプリ グループを管理する - Azure
+description: Windows Virtual Desktop のテナントを Azure Active Directory に設定する方法を説明します。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 2bec7e490443727fa294e7be9412bb20ae66e691
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: e158c0a6090493bec0169c144f030300de921516
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163249"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679451"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>チュートリアル:Windows Virtual Desktop プレビューのアプリ グループを管理する
+# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>チュートリアル:Windows Virtual Desktop のアプリ グループを管理する
 
-Windows Virtual Desktop プレビューの新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自の **[スタート]** メニュー アプリを公開することができます。
+Windows Virtual Desktop の新しいホスト プール向けに作成される既定のアプリ グループには、完全なデスクトップも公開されています。 加えて、ホスト プールには RemoteApp アプリケーション グループ (複数可) を作成することができます。 このチュートリアルに沿って作業すれば、RemoteApp アプリ グループを作成して、独自の **[スタート]** メニュー アプリを公開することができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 

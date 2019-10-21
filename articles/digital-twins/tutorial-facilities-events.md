@@ -2,18 +2,19 @@
 title: チュートリアル:Azure Digital Twins 空間からのイベントをキャプチャする | Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Digital Twins を Logic Apps に統合して空間から通知を受け取る方法について説明します。
 services: digital-twins
+ms.author: alinast
 author: alinamstanciu
+manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
-ms.author: alinast
-ms.openlocfilehash: 30d43831b73edc52b461512faecac369f6bf00b0
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.date: 09/23/2019
+ms.openlocfilehash: 26976956722d77e2dfb8c17734c207b2667c0126
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827819"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949172"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>チュートリアル:Logic Apps を使用して Azure Digital Twins 空間から通知を受け取る
 
@@ -39,6 +40,9 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 - サンプルを実行する開発マシンに [.NET Core SDK バージョン 2.1.403 以上](https://www.microsoft.com/net/download)がインストールされていること。 適切なバージョンがインストールされていることを確認するには、`dotnet --version` を実行します。
 - 通知メールを送信するための Office 365 アカウント。
 
+> [!TIP]
+> 新しいインスタンスをプロビジョニングする場合は、一意の Digital Twins インスタンス名を使用します。
+
 ## <a name="integrate-events-with-event-grid"></a>Event Grid にイベントを統合する
 
 このセクションでは、Azure Digital Twins インスタンスからイベントを収集してそれを Logic Apps などの[イベント ハンドラー](../event-grid/event-handlers.md)にリダイレクトするよう、[Event Grid](../event-grid/overview.md) を設定します。
@@ -55,13 +59,13 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. Event Grid トピックの**名前**を入力し、**サブスクリプション**を選択します。 Digital Twins インスタンスに対して使用または作成した**リソース グループ**と**場所**を選択します。 **作成** を選択します。 
 
-    ![Event Grid トピックを作成する](./media/tutorial-facilities-events/create-event-grid-topic.png)
+    [![Event Grid トピックを作成する](./media/tutorial-facilities-events/create-event-grid-topic.png)](./media/tutorial-facilities-events/create-event-grid-topic.png#lightbox)
 
 1. リソース グループから Event Grid トピックに移動します。 **[概要]** を選択し、 **[トピック エンドポイント]** の値を一時ファイルにコピーします。 この URL は次のセクションで必要になります。 
 
 1. **[アクセス キー]** を選択し、**YOUR_KEY_1** と **YOUR_KEY_2** を一時ファイルにコピーします。 これらの値は、次のセクションでエンドポイントを作成するために必要になります。
 
-    ![Event Grid キー](./media/tutorial-facilities-events/event-grid-keys.png)
+    [![Event Grid キー](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Event Grid トピックのエンドポイントを作成する
 
@@ -98,7 +102,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    このコマンドを実行すると、Event Grid のエンドポイントが作成されます。 
 
-   ![Event Grid のエンドポイント](./media/tutorial-facilities-events/dotnet-create-endpoints.png)
+   [![Event Grid のエンドポイント](./media/tutorial-facilities-events/dotnet-create-endpoints.png)](./media/tutorial-facilities-events/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="notify-events-with-logic-apps"></a>Logic Apps を使用してイベントを通知する
 
@@ -110,7 +114,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. ロジック アプリ リソースの**名前**を入力し、**サブスクリプション**、**リソース グループ**、**場所**を選択します。 **作成** を選択します。
 
-    ![Logic Apps リソースを作成](./media/tutorial-facilities-events/create-logic-app.png)
+    [![Logic Apps リソースを作成する](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
 
 1. Logic Apps リソースがデプロイされたらこれを開き、 **[ロジック アプリ デザイナー]** ウィンドウを開きます。 
 
@@ -124,7 +128,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    c. **[リソース名]** のドロップダウン ボックスで目的の Event Grid リソースを選択します。
 
-   ![ロジック アプリ デザイナー ウィンドウ](./media/tutorial-facilities-events/logic-app-resource-event.png)
+   [![ロジック アプリ デザイナー ウィンドウ](./media/tutorial-facilities-events/logic-app-resource-event.png)](./media/tutorial-facilities-events/logic-app-resource-event.png#lightbox)
 
 1. **[新しいステップ]** を選択します。
 
@@ -156,7 +160,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
     このペイロードには架空の値が含まれています。 Logic Apps によってこのサンプル ペイロードが使用され、"*スキーマ*" が生成されます。
 
-    ![Event Grid に対する Logic Apps の [JSON の解析] ウィンドウ](./media/tutorial-facilities-events/logic-app-parse-json.png)
+    [![Event Grid に対する Logic Apps の [JSON の解析] ウィンドウ](./media/tutorial-facilities-events/logic-app-parse-json.png)](./media/tutorial-facilities-events/logic-app-parse-json.png#lightbox)
 
 1. **[新しいステップ]** を選択します。
 
@@ -168,7 +172,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    c. 2 番目の **[値の選択]** ボックスに「`UdfCustom`」と入力します。
 
-   ![選択された条件](./media/tutorial-facilities-events/logic-app-condition.png)
+   [![選択された条件](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
 
 1. **[true の場合]** ウィンドウで、次の操作を行います。
 
@@ -180,7 +184,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    d. 同じウィンドウの **[Body]\(本文\)** に、「**室内で空気の質の悪化が検出されました。温度を調整する必要があります**」のようなテキストを入力します。 **[動的なコンテンツ]** の一覧の要素を自由に使用して詳しい説明を追加してください。
 
-   ![Logic Apps で [電子メールの送信] を選択](./media/tutorial-facilities-events/logic-app-send-email.png)
+   [![Logic Apps での [電子メールの送信] の選択](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
 
 1. **[ロジック アプリ デザイナー]** ウィンドウの最上部にある **[保存]** ボタンを選択します。
 
@@ -188,7 +192,7 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 数分後には、この Logic Apps リソースからメール通知を受信するようになります。 
 
-   ![電子メール通知](./media/tutorial-facilities-events/logic-app-notification.png)
+   [![電子メール通知](./media/tutorial-facilities-events/logic-app-notification.png)](./media/tutorial-facilities-events/logic-app-notification.png#lightbox)
 
 これらのメールの受信を停止するには、ポータルで目的の Logic Apps リソースに移動し、 **[概要]** ウィンドウを選択します。 **[無効]** を選択します。
 

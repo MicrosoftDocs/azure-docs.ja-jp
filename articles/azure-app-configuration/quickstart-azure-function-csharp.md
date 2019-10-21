@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 5eb9d0631a4d5f4221b5184198290a5109655408
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a15b4e10938c39ba599ffb1ce7437feb788b1115
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326577"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075960"
 ---
 # <a name="quickstart-create-an-azure-function-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration で Azure Function を作成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "68326577"
 
 6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
-    | キー | 値 |
+    | Key | 値 |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ |
 
@@ -55,9 +55,10 @@ ms.locfileid: "68326577"
     Microsoft.Extensions.Configuration.AzureAppConfiguration 2.0.0-preview-009200001-1437 or later
     ```
 
-2. *Function1.cs* を開き、.NET Core App Configuration プロバイダーへの参照を追加します。
+2. *Function1.cs* を開き、.NET Core 汎用構成プロバイダーと .NET Core App Configuration プロバイダーへの参照を追加します。
 
     ```csharp
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 

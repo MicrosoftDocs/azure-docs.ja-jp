@@ -5,14 +5,14 @@ ms.service: iot-central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 06/09/2019
+ms.date: 10/4/2019
 ms.topic: conceptual
-ms.openlocfilehash: 897b72dd7b292492e45cdc7401fe1acc5c86ca20
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 3ce2f4304787107d0d6875333e4630dae8d7d1dd
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877454"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973769"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central データを Power BI ダッシュボードに視覚化する
 
@@ -31,12 +31,19 @@ Azure IoT Central 用の Power BI ソリューションを使用して、IoT デ
 
 このソリューションは、[データの連続エクスポート](howto-export-data.md)から Azure Blob Storage アカウントにデータを取り込むパイプラインを設定します。 このデータが Azure Functions、Azure Data Factory、Azure SQL Database を通って、データの処理と変換が行われます。 その出力は、PBIX ファイルとしてダウンロード可能な Power BI レポートとして視覚化し、分析することができます。 これらのリソースは、すべてが Azure サブスクリプションで作成されるため、各コンポーネントをニーズに合わせてカスタマイズできます。
 
+> [!Note] 
+> Azure IoT Central 用の Power BI ソリューションは、IoT プラグ アンド プレイをサポートしない IoT Central アプリで動作します (現在はプレビュー アプリ)
+
 ## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Microsoft AppSource から、[Azure IoT Central 用の Power BI ソリューション](https://aka.ms/iotcentralpowerbisolutiontemplate)を取得します。
 
 ## <a name="prerequisites"></a>前提条件
 このソリューションを設定するには、以下が必要です。
 - Azure サブスクリプションへのアクセス。
-- [継続的データ エクスポート](howto-export-data.md)を使用して IoT Central アプリからエクスポートされるデータ。 Power BI ダッシュボードを最大限に活用するには、測定値、デバイス、およびデバイス テンプレート ストリームを有効にすることをお勧めします。
+- IoT プラグ アンド プレイをサポートしない IoT Central アプリケーション (現在はプレビュー アプリ)
+- IoT Central アプリから Azure Blob Storage への継続的なデータ エクスポート設定
+    - データ形式が Avro であることを確認します
+    - Power BI ダッシュボードを最大限に活用するには、測定値、デバイス、およびデバイス テンプレート ストリームを有効にすることをお勧めします。
+    - [継続データ エクスポートの設定方法](howto-export-data-blob-storage.md)について学習します
 - Power BI Desktop (最新バージョン)
 - Power BI Pro (ダッシュボードを他のユーザーと共有する場合)
 

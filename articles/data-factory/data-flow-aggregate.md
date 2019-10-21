@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 778aefc05a9b12648e60d752a3c281cb18323125
-ms.sourcegitcommit: da0a8676b3c5283fddcd94cdd9044c3b99815046
+ms.openlocfilehash: 0201cbdd05cd8aae4afb92b459bf58fb5ff6a142
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68314223"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026976"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>Mapping Data Flow の集計変換 
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 集計変換では、データ ストリームに含まれる列の集計を定義します。 式ビルダーを使用して、既存の列または計算列によってグループ化できる、SUM、MIN、MAX、COUNT などのさまざまな種類の集計を定義できます。
 

@@ -1,135 +1,133 @@
 ---
-title: Azure Active Directory B2C とは | Microsoft Docs
-description: Azure Active Directory B2C を使用して、アプリケーションでサインアップ、サインイン、プロファイル管理などの ID エクスペリエンスを作成および管理する方法について説明します。
+title: Azure Active Directory B2C とは
+description: Azure Active Directory B2C を使用して、Facebook、Google、その他の ID プロバイダーでのソーシャル ログインなど、外部 ID をアプリケーションでサポートする方法について説明します。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 09/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ca9d8a8373bd73d527862864d436319eb45b5f48
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 007b23f07afec6163c2158feb3f17ba71e44bdb5
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227165"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71120663"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Azure Active Directory B2C とは
 
-Azure Active Directory (Azure AD) B2C は、企業-消費者間の ID 管理サービスです。 このサービスを使用すると、ユーザーが Web、デスクトップ、モバイル、またはシングルページ アプリケーションと安全に対話する方法を、カスタマイズしたり制御したりできます。 Azure AD B2C を使用して、ユーザーは、サインアップ、サインイン、パスワードのリセット、およびプロファイルの編集を行うことができます。 Azure AD B2C では、OpenID Connect プロトコルと OAuth 2.0 プロトコルの一形式が実装されます。 これらのプロトコルの実装で重要な点は、リソースへのセキュリティ保護されたアクセスを提供できるようにする、セキュリティ トークンとそのクレームです。
+Azure Active Directory B2C は、サービスとしての企業-消費者間 (B2C) ID が提供されます。 顧客は、好みのソーシャル、エンタープライズ、またはローカル アカウント ID を使用して、アプリケーションや API にシングル サインオン アクセスできます。
 
-"*ユーザー体験*" は、Azure AD B2C とやり取りするユーザーとアプリケーションの動作を制御するポリシーが指定されている要求です。 Azure AD B2C では、ユーザー体験を定義するために 2 つのパスを使用できます。
+![Azure AD B2C ID プロバイダーとダウンストリーム アプリケーションのインフォグラフィック](media/active-directory-b2c-overview/azureadb2c-overview.png)
 
-ID の専門知識の有無に関わらず、アプリケーション開発者の場合は、Azure portal を使用して一般的な ID ユーザー フローを定義することをお勧めします。 ID の専門家、システム インテグレーター、コンサルタント、社内の ID チームで、OpenID Connect のフローに慣れており、ID プロバイダーおよびクレーム ベースの認証を理解している場合は、XML ベースのカスタム ポリシーを選択することをお勧めします。
+Azure Active Directory B2C (Azure AD B2C) は、1日あたり何百万ものユーザーと何十億もの認証をサポートできる、顧客 ID アクセス管理 (CIAM) ソリューションです。 認証プラットフォームのスケーリングと安全性が処理され、サービス拒否、パスワード スプレー、ブルート フォース攻撃などの脅威の監視と自動処理が行われます。
 
-ユーザー体験の定義を始める前に、Azure AD B2C テナントを作成し、アプリケーションと API をテナントに登録する必要があります。 これらのタスクを完了した後は、どちらかのユーザー フローまたはカスタム ポリシーを使用して、ユーザー体験の定義を始めることができます。 また、必要に応じて、ID プロバイダーを追加または変更したり、ユーザーが体験を経験する方法をカスタマイズしたりできます。
+## <a name="custom-branded-identity-solution"></a>カスタム ブランドの ID ソリューション
 
-## <a name="protocols-and-tokens"></a>プロトコルとトークン
+Azure AD B2C は、ホワイトラベルの認証ソリューションです。 ユーザー エクスペリエンス全体を貴社のブランドでカスタマイズし、貴社の Web アプリケーションやモバイル アプリケーションとシームレスに融合できます。
 
-Azure AD B2C では、ユーザー体験に対して、[OpenID Connect プロトコルと OAuth 2.0 プロトコル](active-directory-b2c-reference-protocols.md)がサポートされています。 Azure AD B2C の OpenID Connect の実装では、アプリケーションは Azure AD B2C に認証要求を発行することで、このユーザー体験を開始します。
+ユーザーがサインアップ、サインイン、プロファイル情報の変更を行うときに Azure AD B2C によって表示されるすべてのページをカスタマイズします。 ユーザー体験の HTML、CSS、JavaScript をカスタマイズして、Azure AD B2C のエクスペリエンスがアプリケーションのネイティブ部分と同じルック アンド フィールになるようにします。
 
-Azure AD B2C に対する要求の結果として、[ID トークンやアクセス トークン](active-directory-b2c-reference-tokens.md)などのセキュリティ トークンが作成されます。 このセキュリティ トークンでは、ユーザーの ID が定義されています。 トークンは、`/token` や `/authorize` などの Azure AD B2C エンドポイントから受信します。 これらのトークンからクレームにアクセスできます。クレームは、ID の検証や、セキュリティ保護されたリソースへのアクセスの許可に使用できます。
+![カスタマイズされたサインアップおよびサインイン ページと背景画像](media/active-directory-b2c-overview/sign-in-small.png)
 
-## <a name="tenants-and-applications"></a>テナントとアプリケーション
+## <a name="single-sign-on-access-with-a-user-provided-identity"></a>ユーザー指定の ID によるシングル サインオン アクセス
 
-Azure AD B2C では、"*テナント*" は組織を表しており、ユーザーのディレクトリとなっています。 各 Azure AD B2C テナントは、他の Azure AD B2C テナントと区別され分離されています。 Azure Active Directory テナントを既にお持ちかもしれませんが、Azure AD B2C テナントは別のテナントです。 テナントには、アプリケーションを使用するためにサインアップしたユーザーに関する情報が含まれています。 たとえば、パスワード、プロファイル データ、アクセス許可が含まれます。 詳細については、[チュートリアル: Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)」の手順に従って作成できます。
+Azure AD B2C では、OpenID Connect、OAuth 2.0、SAML などの標準ベースの認証プロトコルが使用されます。 最新のアプリケーションや市販の既製ソフトウェアと統合します。
 
-Azure AD B2C を使用するようアプリケーションを構成する前に、まず、Azure portal を使用してテナントにアプリケーションを登録する必要があります。 登録プロセスでは、値が収集され、対象のアプリケーションに割り当てられます。 これらの値には、アプリケーションとリダイレクト URI を一意に識別するアプリケーション ID が含まれており、これを使用して応答がアプリケーションに戻されます。
+![サードパーティ ID の Azure AD B2C へのフェデレーションの図](media/active-directory-b2c-overview/scenario-singlesignon.png)
 
-すべてのアプリケーションによるやり取りは、次のような大まかなパターンに従って行われます。
+Web アプリケーション、モバイル アプリ、API に対する中央認証機関として機能する Azure AD B2C を使用することにより、それらすべてに対するシングル サインオン (SSO) ソリューションを構築できます。 ユーザー プロファイルとユーザー設定情報の収集が一元化され、サインイン動作とサインアップ変換に関する詳細な分析情報が取得されます。
 
-1. アプリケーションが、ポリシーを実行するようにユーザーに指示します。
-2. ユーザーがポリシーの定義に従ってポリシーを完了します。
-3. アプリケーションがトークンを受け取ります。
-4. アプリケーションはトークンを使って、リソースへのアクセスを試みます。
-5. リソース サーバーは、トークンを検証し、アクセスを許可できることを確認します。
-6. アプリケーションは、トークンを定期的に更新します。
+## <a name="integrate-with-external-user-stores"></a>外部ユーザー ストアとの統合
 
-Web アプリケーションを登録するには、[アプリケーションを登録して Azure AD B2C を使用したサインアップとサインインを有効にするチュートリアル](tutorial-register-applications.md)の手順を完了します。 [Web API アプリケーションを Azure Active Directory B2C テナントに追加する](add-web-application.md)こと、または[ネイティブ クライアント アプリケーションを Azure Active Directory B2C テナントに追加する](add-native-application.md)こともできます。
+Azure AD B2C で提供されているディレクトリには、ユーザーごとに 100 個のカスタム属性を保持できます。 ただし、外部システムと統合することもできます。 たとえば、認証には Azure AD B2C を使用しても、顧客データの信頼できる単一の情報源としての機能は、外部の顧客関係管理 (CRM) や顧客ロイヤルティ データベースに委任します。
 
-## <a name="user-journeys"></a>ユーザー体験
+もう 1 つの外部ユーザー ストアのシナリオは、アプリケーションの認証は Azure AD B2C で処理しますが、ユーザー プロファイルまたは個人データを格納する外部システムと統合する場合です。 たとえば、地域やオンプレミスのデータ ストレージ ポリシーのようなデータ保存場所要件を満たす場合です。
 
-ユーザー体験内のポリシーは、[ユーザー フロー](active-directory-b2c-reference-policies.md)または[カスタム ポリシー](active-directory-b2c-overview-custom.md)として定義することができます。 Azure portal では、サインアップ、サインイン、プロファイル編集など、最も一般的な ID タスク用の定義済みのユーザー フローを利用できます。
+![外部ユーザー ストアと通信する Azure AD B2C の論理図](media/active-directory-b2c-overview/scenario-remoteprofile.png)
 
-ユーザー体験では、次の設定を構成することにより動作を制御できます。
+Azure AD B2C を使用すると、登録またはプロファイル編集の間のユーザーからの情報収集を容易にし、そのデータを外部システムに渡すことができます。 その後、将来の認証時には、Azure AD B2C で外部システムからデータを取得し、必要に応じて、アプリケーションに送信する認証トークンの応答の一部としてそのデータを含めることができます。
 
-- ユーザーがアプリケーションへのサインアップに使用するソーシャル アカウント
-- 名や郵便番号など、ユーザーから収集されたデータ
-- 多要素認証
-- ページのルック アンド フィール
-- アプリケーションに返される情報
+## <a name="progressive-profiling"></a>プログレッシブ プロファイリング
 
-カスタム ポリシーは、Azure AD B2C テナントでの [Identity Experience Framework](trustframeworkpolicy.md) の動作を定義する構成ファイルです。 Identity Experience Framework は、マルチパーティの信頼を確立してユーザー体験の手順を完了する、基になるプラットフォームです。
+もう 1 つのユーザー体験オプションには、プログレッシブ プロファイリングが含まれます。 プログレッシブ プロファイリングを使用すると、顧客は最小限の情報を収集するだけで、最初のトランザクションをすばやく完了できます。 その後、将来のサインイン時に、より多くのプロファイル データを顧客から徐々に収集します。
 
-カスタム ポリシーは、多くのタスクを完了するために変更できます。 カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルです。 カスタム ポリシーの[スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip)を使用して、一般的な ID タスクを有効にすることができます。
+![プログレッシブ プロファイリングの視覚的な説明](media/active-directory-b2c-overview/scenario-progressive.png)
 
-Azure AD B2C テナントでは必要に応じてさまざまな種類のカスタム ポリシーまたはユーザー フローが使用され、複数のアプリケーションでそれらを再利用できます。 この柔軟性により、最小限のコード変更で、またはコードをまったく変更せずに、ユーザー ID エクスペリエンスを定義および変更できます。 ポリシーは、HTTP 認証要求に特別なクエリ パラメーターを追加することによって使用されます。 独自のカスタム ポリシーを作成するには、「[Azure Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」をご覧ください。
+## <a name="third-party-identity-verification-and-proofing"></a>サードパーティの ID の検証と証明
 
-## <a name="identity-providers"></a>ID プロバイダー
+Azure AD B2C を使用して、ユーザー データを収集し、それをサードパーティのシステムに渡して、ユーザー アカウント作成に関する検証、信頼スコアリング、承認を実行することで、ID の検証と証明を容易にします。
 
-アプリケーションでは、ユーザーが異なる ID プロバイダーでサインインできるようにすることができます。 "*ID プロバイダー*" では、ID 情報の作成、保守、管理、およびアプリケーションへの認証サービスの提供が行われます。 Azure portal を使用して、Azure AD B2C によってサポートされる ID プロバイダーを追加することができます。
+![サードパーティの ID 証明のユーザー フローを示す図](media/active-directory-b2c-overview/scenario-idproofing.png)
 
-通常、アプリケーションでは ID プロバイダーを 1 つだけ使用しますが、さらに追加することもできます。 Azure AD B2C テナントで ID プロバイダーを構成するには、最初に ID プロバイダーの開発者サイトでアプリケーションを作成した後、作成する ID プロバイダー アプリケーションからの、アプリケーション ID またはクライアント ID と、パスワードまたはクライアント シークレットを記録する必要があります。 この ID とパスワードはその後、アプリケーションを構成するのに使用されます。
+これらは、企業-消費者間 ID プラットフォームとしての Azure AD B2C で実行できることのほんの一部です。 この概要の以下のセクションでは、Azure AD B2C を使用するデモ アプリケーションについて説明します。 さらに詳しい [Azure AD B2C の技術的詳細](technical-overview.md)に直接進んでもかまいません。
 
-次の記事では、いくつかの一般的な ID プロバイダーをユーザー フローに追加する手順が説明されています。
+## <a name="example-woodgrove-groceries"></a>例:WoodGrove Groceries
 
-- [Amazon](active-directory-b2c-setup-amzn-app.md)
-- [Facebook](active-directory-b2c-setup-fb-app.md)
-- [Microsoft アカウント](active-directory-b2c-setup-msa-app.md)
+[WoodGrove Groceries][woodgrove] は、Azure AD B2C のいくつかの機能を示すために Microsoft によって作成されたライブ Web アプリケーションです。 次のいくつかのセクションでは、Azure AD B2C によって WoodGrove の Web サイトに提供されている認証オプションの一部を確認します。
 
-次の記事では、いくつかの一般的な ID プロバイダーをカスタム ポリシーに追加する手順が説明されています。
-- [Amazon](setup-amazon-custom.md)
-- [Google](active-directory-b2c-custom-setup-goog-idp.md)
-- [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
+### <a name="business-overview"></a>ビジネスの概要
 
-詳細については、[チュートリアル: Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する](tutorial-add-identity-providers.md)」をご覧ください。
+WoodGrove は、個人消費者と企業顧客の両方に食料品を販売するオンライン食料品ストアです。 企業顧客は、自分の会社または管理している企業の代理として食料品を購入します。
 
+### <a name="sign-in-options"></a>サインイン オプション
 
-## <a name="page-customization"></a>ページのカスタマイズ
+WoodGrove Groceries では、顧客とストアの関係に基づいて、いくつかのサインイン オプションが提供されています。
 
-ユーザー体験で顧客に表示される HTML および CSS コンテンツのほとんどを制御できます。 ページのカスタマイズを使用することで、ユーザー フローの任意のカスタム ポリシーの外観をカスタマイズできます。 このカスタマイズ機能を使用することで、アプリケーションと Azure AD B2C との間で、ブランドと視覚的な一貫性を維持することができます。
+* **個人**の顧客は、ソーシャル ID プロバイダーやメール アドレスとパスワードなど、個人アカウントを使用してサインアップまたはサインインできます。
+* **企業**顧客は、会社の資格情報を使用してサインアップまたはサインインできます。
+* **パートナー**と仕入先は、販売する商品を食料品ストアに提供する個人です。 パートナー ID は、[Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) によって提供されます。
 
-Azure AD B2C では、ユーザーのブラウザーでコードが実行され、クロス オリジン リソース共有 (CORS) と呼ばれる最新の手法が使用されます。 最初に、カスタマイズした HTML コンテンツを含むポリシーで URL を指定します。 Azure AD B2C により、ユーザー インターフェイス要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
+![個人 (B2C)、企業 (B2C)、およびパートナー (B2B) のサインイン ページ](media/active-directory-b2c-overview/woodgrove-overview.png)
 
-クエリ文字列で Azure AD B2C にパラメーターを送信します。 パラメーターを HTML エンドポイントに渡すことで、ページのコンテンツが動的に変更されます。 たとえば、Web アプリケーションまたはモバイル アプリケーションから渡すパラメーターに基づいて、サインアップまたはサインイン ページの背景イメージを変更します。
+### <a name="authenticate-individual-customers"></a>個人の顧客を認証する
 
-ユーザー フロー内のページのカスタマイズについては、「[チュートリアル:Azure Active Directory B2C でユーザー エクスペリエンスのインターフェイスをカスタマイズする](tutorial-customize-ui.md)」をご覧ください。 カスタム ポリシー内のページのカスタマイズについては、「[Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする](active-directory-b2c-ui-customization-custom.md)」または「[Azure Active Directory B2C: カスタム ポリシーを使用して動的コンテンツを含む UI を構成する](active-directory-b2c-ui-customization-custom-dynamic.md)」をご覧ください。
+顧客が **[Sign in with your personal account]** を選択すると、Azure AD B2C によってホストされているカスタマイズされたサインイン ページにリダイレクトされます。 次の図では、WoodGrove Groceries の Web サイトに合わせたルック アンド フィールにユーザー インターフェイス (UI) がカスタマイズされていることがわかります。 WoodGrove の顧客は、認証エクスペリエンスが Azure AD B2C によってホストおよび保護されていることを意識しないはずです。
 
-## <a name="developer-resources"></a>開発者リソース
+![Azure AD B2C によってホストされている WoodGrove のカスタム サインイン ページ](media/active-directory-b2c-overview/sign-in.png)
 
-### <a name="client-applications"></a>クライアント アプリケーション
+WoodGrove では、顧客が自分の Google、Facebook、または Microsoft アカウントを ID プロバイダーとして使用して、サインアップおよびサインインできるようになっています。 または、メール アドレスとパスワードを使用してサインアップし、"*ローカル アカウント*" と呼ばれるものを作成することもできます。
 
-[iOS](active-directory-b2c-devquickstarts-ios.md)、[Android](active-directory-b2c-devquickstarts-android.md)、.NET などのアプリケーションを選択できます。 Azure AD B2C は、これらのアクションを可能にする一方で、同時にユーザー ID を保護します。
+顧客が **[Sign up with your personal account]** を選択してから **[Sign up now]** を選択すると、カスタム サインアップ ページが表示されます。
 
-ASP.NET Web アプリケーション開発者である場合は、[Web アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにするチュートリアル](active-directory-b2c-tutorials-web-app.md)の手順を使用して、アカウントを認証するようにアプリケーションを設定します。
+![Azure AD B2C によってホストされている WoodGrove のカスタム サインアップ ページ](media/active-directory-b2c-overview/sign-up.png)
 
-デスクトップ アプリケーション開発者である場合は、[デスクトップ アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにするチュートリアル](active-directory-b2c-tutorials-desktop-app.md)の手順を使用して、アカウントを認証するようにアプリケーションを設定します。
+メール アドレスを入力し、 **[Send verification code]** を選択すると、Azure AD B2C によってコードが顧客に送信されます。 顧客は、コードを入力し、 **[Verify code]** を選択して、フォームに他の情報を入力した後、サービス使用条件に同意する必要があります。
 
-Node.js を使用するシングルページ アプリケーションの開発者である場合は、[シングルページ アプリケーションが Azure AD B2C を使用してアカウントを認証できるようにするチュートリアル](active-directory-b2c-tutorials-spa.md)の手順を使用して、アカウントを認証するようにアプリケーションを設定します。
+**[Create]** ボタンをクリックすると、Azure AD B2C によってユーザーは WoodGrove Groceries の Web サイトにリダイレクトされます。 Azure AD B2C では、リダイレクトのとき、WoodGrove の Web アプリケーションに OpenID Connect の認証トークンが渡されます。 ユーザーは、サインインが済んで操作できる状態になり、右上隅に表示名が表示されることでサインインしていることが示されます。
 
-### <a name="apis"></a>API
-クライアントまたは Web アプリケーションで API を呼び出す必要がある場合は、Azure AD B2C でそれらのリソースへのセキュリティ保護されたアクセスを設定することができます。
+![ユーザーがサインインしていることを示す WoodGrove Groceries Web サイトのヘッダー](media/active-directory-b2c-overview/signed-in-individual.png)
 
-ASP.NET Web アプリケーション開発者の場合は、「[チュートリアル: Azure Active Directory B2C を使用して ASP.NET Web API へのアクセスを許可する](active-directory-b2c-tutorials-web-api.md)」の手順を使用して、保護された API を呼び出すようにアプリケーションを設定します。
+### <a name="authenticate-business-customers"></a>企業顧客を認証する
 
-デスクトップ アプリケーション開発者の場合は、「[チュートリアル: Azure Active Directory B2C を使用してデスクトップ アプリから Node.js Web API へのアクセスを許可する](active-directory-b2c-tutorials-desktop-app-webapi.md)」の手順を使用して、保護された API を呼び出すようにアプリケーションを設定します。
+顧客が **[Business customers]** の下にあるいずれかのオプションを選択すると、WoodGrove Groceries の Web サイトでは、個人顧客の場合とは異なる Azure AD B2C ポリシーが呼び出されます。
 
-Node.js を使用するシングルページ アプリケーションの開発者である場合は、[Azure Active Directory B2C を使用してシングルページ アプリケーションから ASP.NET Core Web API へのアクセスを許可するチュートリアル](active-directory-b2c-tutorials-spa-webapi.md)の手順を使用して、保護された API を呼び出すようにアプリケーションを設定します。
+このポリシーでは、サインアップとサインインに会社の資格情報を使用するオプションが、ユーザーに提示されます。 WoodGrove の例では、ユーザーは Office 365 または Azure AD のアカウントを使用してサインインするように求められます。 このポリシーでは、[マルチテナント Azure AD アプリケーション](../active-directory/develop/howto-convert-app-to-be-multi-tenant.md) と `/common` Azure AD エンドポイントを使用して、Azure AD B2C と世界中の Office 365 顧客がフェデレーションされます。
 
-### <a name="javascript"></a>JavaScript
+### <a name="authenticate-partners"></a>パートナーを認証する
 
-独自の JavaScript クライアント側コードを、Azure AD B2C のアプリケーションに追加できます。 アプリケーションで JavaScript を設定するには、ユーザー フローまたはカスタム ポリシーで[ページ レイアウト](page-layout.md)を定義し、[JavaScript](javascript-samples.md) を有効にします。
+**[Sign in with your supplier account]** リンクでは、Azure Active Directory B2B のコラボレーション機能が使用されます。 Azure AD B2B は、パートナー ID を管理するための Azure Active Directory の機能のファミリです。 Azure AD B2C で保護されたアプリケーションにアクセスするため、Azure Active Directory からそれらの ID をフェデレーションすることができます。
 
-### <a name="user-accounts"></a>ユーザー アカウント
+Azure AD B2B について詳しくは、「[Azure Active Directory B2B のゲスト ユーザー アクセスとは](../active-directory/b2b/what-is-b2b.md)」をご覧ください。
 
-多くの一般的なテナント管理タスクをプログラムで実行する必要があります。 主な例にはユーザーの管理があります。 たとえば、既存のユーザー ストアを Azure AD B2C テナントに移行することがあります。 その場合、自分のページでユーザー登録をホストし、バックグラウンドで Azure AD B2C ディレクトリのユーザー アカウントを作成することがあります。 この種のタスクでは、ユーザー アカウントの作成、読み取り、更新、削除を実行する機能が必要です。 [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用してこれらの操作を実行できます。
+<!-- UNCOMMENT WHEN REPO IS UPDATED WITH LATEST DEMO CODE
+### Sample code
+
+If you'd like to jump right into the code to see how the WoodGrove Groceries application is built, you can find the repository on GitHub:
+
+[Azure-Samples/active-directory-external-identities-woodgrove-demo][woodgrove-repo] (GitHub)
+-->
 
 ## <a name="next-steps"></a>次の手順
 
-次のチュートリアルを続けて、サインアップおよびサインイン エクスペリエンスのためのアプリケーションの構成を開始します。
+Azure AD B2C とはどのようなものか、そしてそれが役に立ついくつかのシナリオがわかったので、その機能と技術的側面についてもう少し掘り下げて説明します。
 
 > [!div class="nextstepaction"]
-> [チュートリアル:Azure Active Directory B2C テナントを作成する](tutorial-create-tenant.md)
+> [Azure AD B2C の技術的概要 >](technical-overview.md)
+
+<!-- LINKS - External -->
+[woodgrove]: https://aka.ms/ciamdemo
+[woodgrove-repo]: https://github.com/Azure-Samples/active-directory-external-identities-woodgrove-demo

@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel Preview に Palo Alto Networks データを接続する | Microsoft Docs
+title: Azure Sentinel に Palo Alto Networks データを接続する | Microsoft Docs
 description: Azure Sentinel に Palo Alto Networks データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5860e1b1b817985aafd95f6f63d39553489482b9
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 659f36a036d8a165b0c2b28830ae2312adb56c56
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679229"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240235"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>Palo Alto Networks のアプライアンスを接続する
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 ログ ファイルを Syslog Common Error Format (CEF) として保存することにより、Azure Sentinel を任意の Palo Alto Networks アプライアンスに接続できます。 Azure Sentinel との統合により、Palo Alto Networks のすべてのログ ファイル データを簡単に分析および照会できます。 Azure Sentinel が CEF データを取り込む方法の詳細については、[CEF アプライアンスの接続](connect-common-event-format.md)に関する記事をご覧ください。
 
@@ -40,7 +38,7 @@ ms.locfileid: "68679229"
 または、既存の Azure VM、別のクラウド内の VM、またはオンプレミスのコンピューターに、手動でエージェントをデプロイすることもできます。
 
 > [!NOTE]
-> 組織のセキュリティ ポリシーに従って、コンピューターのセキュリティを構成します。 たとえば、企業のネットワーク セキュリティ ポリシーに合わせてネットワークを構成し、デーモンのポートとプロトコルを要件に合わせて変更することができます。 
+> 組織のセキュリティ ポリシーに従って、コンピューターのセキュリティを構成してください。 たとえば、企業のネットワーク セキュリティ ポリシーに合わせてネットワークを構成し、デーモンのポートとプロトコルを要件に合わせて変更することができます。 
 
 両方のオプションのネットワーク図を表示するには、「[データ ソースの接続](connect-data-sources.md#agent-options)」を参照してください。
 
@@ -121,7 +119,7 @@ Syslog のエージェントを介してお使いの Azure ワークスペース
            # source s_network {
             network( transport(UDP) port(514));
              };
-     詳細については、「[syslog-ng オープンソース エディション 3.16 - 管理者ガイド](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455)」を参照してください。
+     詳細については、「[syslog-ng Open Source Edition 3.16 - Administration Guide](https://www.syslog-ng.com/technical-documents/doc/syslog-ng-open-source-edition/3.16/administration-guide/19#TOPIC-956455)」 (syslog-ng オープンソース エディション 3.16 - 管理者ガイド) を参照してください。
 
 1. Syslog デーモンとエージェント間で通信が行われていることを確認します。 Syslog エージェント マシンで次のコマンドを実行します。`tcpdump -A -ni any  port 25226 -vv` このコマンドは、デバイスから Syslog マシンにストリーミングするログを表示します。 エージェントでログが受信されていることを確認します。
 
@@ -141,5 +139,5 @@ Syslog のエージェントを介してお使いの Azure ワークスペース
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Palo Alto Networks アプライアンスを Azure Sentinel に接続する方法について説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 

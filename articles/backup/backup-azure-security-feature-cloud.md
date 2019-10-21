@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 08/04/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 173e261266bffd042e12b327e26fda3a4e55ea4b
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b882b8ee08c38b6313558916ab46f80ce9dd5130
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898985"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129332"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Azure Backup を使用したクラウド ワークロードを保護するためのセキュリティ機能
 
@@ -26,47 +26,47 @@ ms.locfileid: "70898985"
 
 ### <a name="supported-regions"></a>サポートされているリージョン
 
-現在、論理的な削除は米国中西部リージョンと東アジアでサポートされています。
+現在、論理的な削除は、米国中西部、東アジア、カナダ中部、カナダ東部、フランス中部、フランス南部、韓国中部、韓国南部、英国南部、英国西部、オーストラリア東部、オーストラリア南東部、北ヨーロッパ、米国西部、米国西部 2、米国中部、東南アジア、米国中北部、米国中南部、東日本、西日本、インド南部、インド中部、インド西部、米国東部 2、スイス北部、スイス西部など、すべての国のリージョンでサポートされています。
 
 ### <a name="soft-delete-for-vms"></a>VM の論理的な削除
 
 1. VM のバックアップ データを削除するには、バックアップを停止する必要があります。 Azure portal で、Recovery Services コンテナーにアクセスし、バックアップ項目を右クリックして、 **[バックアップの停止]** を選択します。
 
-    ![Azure portal の [バックアップ項目] のスクリーンショット](./media/backup-azure-security-feature-cloud/backup-stopped.png)
+   ![Azure portal の [バックアップ項目] のスクリーンショット](./media/backup-azure-security-feature-cloud/backup-stopped.png)
 
 2. 次のウィンドウでは、バックアップ データを削除するか保持するかを選択できます。 **[バックアップデータの削除]** を選択してから **[バックアップの停止]** を選択した場合、VM のバックアップは完全に削除されません。 もっと正確に言えば、バックアップ データは論理的な削除状態で 14 日間保持されます。 **[バックアップ データの削除]** を選択した場合は、削除の電子メール アラートが構成済みのメール ID に送信され、バックアップ データの保有延長が 14 日間残っていることがユーザーに通知されます。 また、12 日目に、削除されたデータを復元できる期間があと 2 日間残っていることを知らせる電子メール アラートが送信されます。 削除は 15 日目まで延期されます。ここで完全な削除が行われ、データが永久に削除されたことを知らせる最終的な電子メール アラートが送信されます。
 
-    ![Azure portal の [バックアップの停止] 画面のスクリーンショット](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
+   ![Azure portal の [バックアップの停止] 画面のスクリーンショット](./media/backup-azure-security-feature-cloud/delete-backup-data.png)
 
 3. この 14 日間は、Recovery Services コンテナーで、論理的に削除された VM の横に赤い "論理的な削除" アイコンが付けられて表示されます。
 
-    ![論理的な削除状態の VM を示している Azure portal のスクリーンショット](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+   ![論理的な削除状態の VM を示している Azure portal のスクリーンショット](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
 
-> [!NOTE]
-> 論理的に削除されたバックアップ項目がコンテナーに存在する場合、その時点でコンテナーを削除することはできません。 バックアップ項目が完全に削除され、コンテナーに論理的な削除状態の項目がなくなってから、コンテナーの削除を試してください。
+   > [!NOTE]
+   > 論理的に削除されたバックアップ項目がコンテナーに存在する場合、その時点でコンテナーを削除することはできません。 バックアップ項目が完全に削除され、コンテナーに論理的な削除状態の項目がなくなってから、コンテナーの削除を試してください。
 
 4. 論理的に削除された VM を復元するには、最初に削除を取り消す必要があります。 削除を取り消すには、論理的に削除された VM を選択し、 **[削除の取り消し]** オプションをクリックします。
 
-     ![VM の削除の取り消しを示している Azure portal のスクリーンショット](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+   ![VM の削除の取り消しを示している Azure portal のスクリーンショット](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
-[削除の取り消し] を選択すると、VM のすべての復元ポイントの削除が取り消され、復元操作の実行が可能になるという警告がウィンドウに表示されます。 VM は、"データを保持して保護を停止" の状態で保持され、バックアップは一時停止され、バックアップ データはバックアップ ポリシーが有効になっていない状態で永久に保持されます。
+   [削除の取り消し] を選択すると、VM のすべての復元ポイントの削除が取り消され、復元操作の実行が可能になるという警告がウィンドウに表示されます。 VM は、"データを保持して保護を停止" の状態で保持され、バックアップは一時停止され、バックアップ データはバックアップ ポリシーが有効になっていない状態で永久に保持されます。
 
- ![VM の削除の取り消しを確認する Azure portal のスクリーンショット](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+   ![VM の削除の取り消しを確認する Azure portal のスクリーンショット](./media/backup-azure-security-feature-cloud/undelete-vm.png)
 
-この時点で、選択した復元ポイントから **[VM の復元]** を選択して VM を復元することもできます。  
+   この時点で、選択した復元ポイントから **[VM の復元]** を選択して VM を復元することもできます。  
 
    ![Azure portal の [VM の復元] オプションのスクリーンショット](./media/backup-azure-security-feature-cloud/restore-vm.png)
 
-> [!NOTE]
-> ユーザーが **[バックアップの再開]** 操作を実行した場合にのみ、ガベージ コレクターが実行され、期限切れの回復ポイントがクリーンアップされます。
+   > [!NOTE]
+   > ユーザーが **[バックアップの再開]** 操作を実行した場合にのみ、ガベージ コレクターが実行され、期限切れの回復ポイントがクリーンアップされます。
 
 5. 削除の取り消し処理が完了すると、状態は "データを保持して保護を停止" に戻り、 **[バックアップの再開]** を選択できるようになります。 **[バックアップの再開]** 操作により、ユーザー定義のバックアップと保持スケジュールで選択されたバックアップ ポリシーに関連付けられているバックアップ項目が、アクティブ状態に戻ります。
 
-      ![Azure portal の [バックアップの再開] オプションのスクリーンショット](./media/backup-azure-security-feature-cloud/resume-backup.png)
+   ![Azure portal の [バックアップの再開] オプションのスクリーンショット](./media/backup-azure-security-feature-cloud/resume-backup.png)
 
 このフロー チャートは、バックアップ項目のさまざまな手順と状態を示しています。
 
-   ![論理的に削除されたバックアップ項目のライフサイクル](./media/backup-azure-security-feature-cloud/lifecycle.png)
+![論理的に削除されたバックアップ項目のライフサイクル](./media/backup-azure-security-feature-cloud/lifecycle.png)
 
 詳細については、後述の「[よく寄せられる質問](backup-azure-security-feature-cloud.md#frequently-asked-questions)」を参照してください。
 
@@ -101,30 +101,30 @@ Recovery Services コンテナーによって使用されるストレージ ア�
 #### <a name="can-i-configure-the-number-of-days-for-which-my-data-will-be-retained-in-soft-deleted-state-after-delete-operation-is-complete"></a>削除操作の完了後、データが論理的に削除された状態で保持される日数を構成できますか?
 
 いいえ。削除操作後、追加の保持期間は 14 日間に固定されています。
-  
+ 
 #### <a name="do-i-need-to-pay-the-cost-for-this-additional-14-day-retention"></a>この 14 日間の保持期間に対するコストを支払う必要がありますか?
 
 いいえ。この 14 日間の追加の保持期間は、論理的な削除機能の一部として無料で提供されます。
-  
+ 
 #### <a name="can-i-perform-a-restore-operation-when-my-data-is-in-soft-delete-state"></a>データが論理的な削除状態であるときに復元操作を実行できますか?
 
 いいえ。復元するには、論理的に削除されたリソースの削除を取り消す必要があります。 削除の取り消し操作により、リソースが**データを保持して保護を停止の状態**に戻り、任意の時点に復元できるようになります。 ガベージ コレクターは、この状態で一時停止のままになります。
-  
+ 
 #### <a name="will-my-snapshots-follow-the-same-lifecycle-as-my-recovery-points-in-the-vault"></a>スナップショットは、コンテナー内の回復ポイントと同じライフサイクルに従いますか?
 
 はい。
-  
+ 
 #### <a name="how-can-i-trigger-the-scheduled-backups-again-for-a-soft-deleted-resource"></a>論理的に削除されたリソースに対してスケジュールされたバックアップを再びトリガーするにはどうすればよいですか?
 
 削除の取り消し後に再開操作を実行すると、リソースが再度保護されます。 再開操作により、選択した保持期間でスケジュールされたバックアップをトリガーするため、バックアップ ポリシーが関連付けられます。 また、再開操作が完了するとすぐにガベージ コレクターが実行されます。 有効期限を過ぎた回復ポイントから復元を実行する場合は、再開操作をトリガーする前に実行することをお勧めします。
-  
+ 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>コンテナー内に論理的に削除された項目がある場合、コンテナーを削除できますか?
 
 Recovery Services コンテナー内に論理的に削除された状態のバックアップ項目がある場合、そのコンテナーを削除することはできません。 論理的に削除された項目は、削除操作の 14 日後に完全に削除されます。 論理的に削除されたすべての項目が消去された場合のみコンテナーを削除できます。  
 
-#### <a name="how-can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>削除後の 14 日間の論理的な削除期間より前にデータを削除するにはどうすればよいですか?
+#### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>削除後の 14 日間の論理的な削除期間より前にデータを削除することはできますか?
 
-削除してから 14 日間はデータを消去することはできません。 これが障害またはコンプライアンスの問題になっている場合は、Microsoft サポートにお問い合わせください。
+いいえ。 論理的に削除された項目を強制的に削除することはできません。これらは、14 日後に自動的に削除されます。 このセキュリティ機能は、偶発的または悪意のある削除からバックアップされたデータを保護するために有効になっています。  VM で他の操作を実行する前に、14 日間待機する必要があります。  論理的に削除された項目については課金されません。  新しいコンテナーで 14 日以内の論理的な削除のマークが付けられた VM を再保護する必要がある場合は、Microsoft サポートにお問い合わせください。
 
 #### <a name="can-soft-delete-operations-be-performed-in-powershell-or-cli"></a>PowerShell または CLI で論理的な削除操作を実行できますか?
 

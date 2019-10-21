@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/06/2019
-ms.openlocfilehash: e747f39ca84bb859b37550efef51e01cffd96876
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 10/02/2019
+ms.openlocfilehash: fdfd026be1a10410cd7c875dbdf0de9660c8412c
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056739"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937633"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>Apache Spark を使用した Apache HBase データの読み取り/書き込み
 
@@ -25,7 +25,7 @@ ms.locfileid: "67056739"
 
 * SSH クライアント 詳細については、[SSH を使用して HDInsight (Apache Hadoop) に接続する方法](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-* クラスターのプライマリ ストレージの [URI スキーム](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Blob Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Blob Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ wasbs:// または abfss:// になります。「[安全な転送](../storage/common/storage-require-secure-transfer.md)」も参照。
+* クラスターのプライマリ ストレージの [URI スキーム](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Blob Storage では wasb://、Azure Data Lake Storage Gen2 では abfs://、Azure Data Lake Storage Gen1 では adl:// です。 Blob Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
 ## <a name="overall-process"></a>全体的なプロセス
 
@@ -144,7 +144,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     |}""".stripMargin
     ```
 
-    このコードは以下のことを実行します。  
+    このコードは、次の処理を実行します。  
 
      a. `Contacts` という名前の HBase テーブルのカタログ スキーマを定義します。  
      b. rowkey を `key` として指定し、Spark で使用されている列名を、HBase で使用されている列ファミリ、列名、列タイプにマップします。  
@@ -192,8 +192,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 8. `contacts` テーブルに対して SQL クエリを発行します。
 
     ```scala
-    val query = spark.sqlContext.sql("select personalName, officeAddress from contacts")
-    query.show()
+    spark.sqlContext.sql("select personalName, officeAddress from contacts").show
     ```
 
 9. 次のような結果が表示されます。

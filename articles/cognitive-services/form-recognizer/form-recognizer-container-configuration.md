@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 4a490e8a9f111985df9c9e8c9f73bc36d686cc2a
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: af30719ead8464d0420734818203b8070eb5d145
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68348695"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105115"
 ---
 # <a name="configure-form-recognizer-containers"></a>Form Recognizer コンテナーの構成
 
@@ -90,16 +90,17 @@ Form Recognizer コンテナーには、入力マウントと出力マウント�
 
 | プレースホルダー | 値 |
 |-------------|-------|
-|{FORM_RECOGNIZER_API_KEY} | コンテナーを起動するために使用されるキー。 Azure portal の Form Recognizer の [キー] ページで入手できます。  |
-|{FORM_RECOGNIZER_ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure portal の Form Recognizer の [概要] ページで入手できます。|
-|{COMPUTER_VISION_API_KEY}| このキーは、Azure portal の Computer Vision API の [キー] ページで入手できます。|
-|{COMPUTER_VISION_ENDPOINT_URI}|課金エンドポイント。 クラウドベースの Computer Vision リソースを使用している場合、URI 値は Azure portal の Computer Vision API の [概要] ページで入手できます。 *cognitive-services-recognize-text* コンテナーを使用している場合は、`docker run` コマンドでコンテナーに渡される課金エンドポイント URL を使用します。|
+| **{FORM_RECOGNIZER_API_KEY}** | コンテナーを起動するために使用されるキー。 Azure portal の Form Recognizer の [キー] ページで入手できます。 |
+| **{FORM_RECOGNIZER_ENDPOINT_URI}** | 課金エンドポイント URI の値は、Azure portal の Form Recognizer の [概要] ページで入手できます。|
+| **{COMPUTER_VISION_API_KEY}** | このキーは、Azure portal の Computer Vision API の [キー] ページで入手できます。|
+| **{COMPUTER_VISION_ENDPOINT_URI}** | 課金エンドポイント。 クラウドベースの Computer Vision リソースを使用している場合、URI 値は Azure portal の Computer Vision API の [概要] ページで入手できます。 *cognitive-services-recognize-text* コンテナーを使用している場合は、`docker run` コマンドでコンテナーに渡される課金エンドポイント URL を使用します。 |
+
+これらの値を取得する方法の詳細については、[必要なパラメーターの収集](form-recognizer-container-howto.md#gathering-required-parameters)に関する記事を参照してください。
+
+[!INCLUDE [cognitive-services-custom-subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定します。そうしないと、コンテナーが起動しません。 詳細については、「[課金](#billing-configuration-setting)」を参照してください。
-
-> [!NOTE] 
-> ApiKey の値は、[Azure Form Recognizer Resource keys]\(Azure Form Recognizer リソース キー\) ページからの**キー**です。
 
 ## <a name="form-recognizer-container-docker-examples"></a>Form Recognizer コンテナーの Docker の例
 

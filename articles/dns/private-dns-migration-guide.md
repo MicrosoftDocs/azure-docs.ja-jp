@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: rohink
-ms.openlocfilehash: e7ebbf35cd572601f02a69930b58811686a92c86
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 870f8f43fb37f3f58fc19f2fd544e77b1a3a3967
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67276320"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960549"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>従来の Azure DNS プライベート ゾーンを新しいリソース モデルに移行する
 
-Microsoft は、プレビュー更新版のリリースの一環として、Azure DNS プライベート ゾーン用の新しい API およびリソース モデルを公開しました。 プレビュー更新版では、新しい機能が加わっているほか、初期パブリック プレビューのいくつかの制限事項と制約事項がなくなっています。 ただし、これらのメリットは、従来の API を使用して作成されたプライベート DNS ゾーンではご利用いただけません。 新しいリリースのメリットを受けるには、従来のプライベート DNS ゾーン リソースを新しいリソース モデルに移行する必要があります。 移行プロセスはシンプルです。Microsoft は、このプロセスを自動化するための PowerShell スクリプトを用意しました。 このガイドでは、Azure DNS プライベート ゾーンを新しいリソース モデルに移行するための詳細な手順について説明します。
+最新の Azure DNS Private Zones リリースでは、新しい機能が加わっているほか、初期パブリック プレビューのいくつかの制限事項と制約事項がなくなっています。 ただし、これらのメリットは、プレビュー版の API を使用して作成されたプライベート DNS ゾーンではご利用いただけません。 新しいリリースのメリットを受けるには、従来のプライベート DNS ゾーン リソースを新しいリソース モデルに移行する必要があります。 移行プロセスはシンプルです。Microsoft は、このプロセスを自動化するための PowerShell スクリプトを用意しました。 このガイドでは、Azure DNS プライベート ゾーンを新しいリソース モデルに移行するための詳細な手順について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

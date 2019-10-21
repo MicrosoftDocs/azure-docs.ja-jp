@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins によるデータ処理とユーザー定義関数 |Microsoft Docs
+title: データ処理とユーザー定義関数 - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins によるデータ処理、マッチャー、ユーザー定義関数の概要。
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: alinast
-ms.openlocfilehash: f4aa7e6660e3febdca6e0e5b1ad9f11bebaa48ea
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/17/2019
+ms.openlocfilehash: b8ea5c54afd4b1e2c212422417688e528367d44f
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638462"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949968"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>データ処理とユーザー定義関数
 
@@ -23,7 +23,7 @@ Azure Digital Twins は高度な計算機能を備えています。 開発者�
 
 デバイスによって Azure Digital Twins にテレメトリ データが送信された後で、開発者は "*検証*"、"*照合*"、"*計算*"、"*ディスパッチ*" という 4 つのフェーズでデータを処理できます。
 
-![Azure Digital Twins のデータ処理フロー][1]
+[![Azure Digital Twins のデータ処理フロー](media/concepts/digital-twins-data-processing-flow.png)](media/concepts/digital-twins-data-processing-flow.png#lightbox)
 
 1. 検証フェーズでは、受信したテレメトリ メッセージが一般的に理解できる[データ転送オブジェクト](https://docs.microsoft.com/aspnet/web-api/overview/data/using-web-api-with-entity-framework/part-5)の形式に変換されます。 このフェーズでは、デバイスとセンサーも検証されます。
 1. 照合フェーズでは、実行する適切なユーザー定義関数が検索されます。 事前定義したマッチャーによって、受信したテレメトリ メッセージからのデバイス、センサー、空間情報に基づき、ユーザー定義関数が検索されます。
@@ -34,9 +34,7 @@ Azure Digital Twins は高度な計算機能を備えています。 開発者�
 
 Azure Digital Twins のデータ処理は、"*マッチャー*"、"*ユーザー定義関数*"、"*ロールの割り当て*" という 3 つのオブジェクトの定義で構成されています。
 
-![Azure Digital Twins のデータ処理オブジェクト][2]
-
-<div id="matcher"></div>
+[![Azure Digital Twins のデータ処理オブジェクト](media/concepts/digital-twins-user-defined-functions.png)](media/concepts/digital-twins-user-defined-functions.png#lightbox)
 
 ### <a name="matchers"></a>マッチャー
 
@@ -92,7 +90,7 @@ Azure Digital Twins のデータ処理は、"*マッチャー*"、"*ユーザー
 
 ### <a name="user-defined-functions"></a>ユーザー定義関数
 
-ユーザー定義関数は、隔離された Azure Digital Twins 環境内で実行されるカスタム関数です。 ユーザー定義関数は、生のセンサー テレメトリ メッセージの受信時に、それにアクセスします。 また、ユーザー定義関数は、空間グラフとディスパッチャー サービスにもアクセスします。 ユーザー定義関数がグラフ内に登録されたら、([前述](#matcher)の) マッチャーを作成し、ユーザー定義関数の実行タイミングを指定する必要があります。 たとえば、Azure Digital Twins が特定のセンサーから新しいテレメトリを受信すると、一致したユーザー定義関数では、直前の数回分のセンサー読み取り値から移動平均を計算できます。
+ユーザー定義関数は、隔離された Azure Digital Twins 環境内で実行されるカスタム関数です。 ユーザー定義関数は、生のセンサー テレメトリ メッセージの受信時に、それにアクセスします。 また、ユーザー定義関数は、空間グラフとディスパッチャー サービスにもアクセスします。 ユーザー定義関数がグラフ内に登録されたら、([前述](#matchers)の) マッチャーを作成し、ユーザー定義関数の実行タイミングを指定する必要があります。 たとえば、Azure Digital Twins が特定のセンサーから新しいテレメトリを受信すると、一致したユーザー定義関数では、直前の数回分のセンサー読み取り値から移動平均を計算できます。
 
 ユーザー定義関数は、JavaScript で記述できます。 ヘルパー メソッドは、ユーザー定義の実行環境でグラフとやり取りします。 開発者は、センサー テレメトリ メッセージに対してコードのカスタム スニペットを実行できます。 たとえば、次のようになります。
 
@@ -103,14 +101,11 @@ Azure Digital Twins のデータ処理は、"*マッチャー*"、"*ユーザー
 
 詳細については、[ユーザー定義関数を使用する方法](./how-to-user-defined-functions.md)に関するページを参照してください。
 
-
 #### <a name="examples"></a>例
 
 [Digital Twins の C# サンプルに関する GitHub リポジトリ](https://github.com/Azure-Samples/digital-twins-samples-csharp/)には、ユーザー定義関数の例がいくつか記載されています。
 - [こちらの関数](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js)では、二酸化炭素、モーション、および温度の値を取得し、それらの値が範囲内である部屋が使用可能かどうかを判定します。 [Digital Twins のチュートリアル](tutorial-facilities-udf.md)では、この関数について詳しく説明しています。 
 - [こちらの関数](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/multiplemotionsensors.js)では、複数のモーション センサーからデータを取得し、いずれのセンサーからもモーションが検出されなかった場合に、スペースが使用可能であると判定します。 [クイック スタート](quickstart-view-occupancy-dotnet.md) (または[チュートリアル](tutorial-facilities-setup.md)) で使用されているユーザー定義関数は、ファイルのコメント セクションで説明されている変更を加えることで、簡単に置き換えることができます。 
-
-
 
 ### <a name="role-assignment"></a>ロール割り当て
 
@@ -125,7 +120,3 @@ Azure Digital Twins のデータ処理は、"*マッチャー*"、"*ユーザー
 - マッチャー、ユーザー定義関数、ロールの割り当ての作成方法の詳細については、[ユーザー定義関数の使用ガイド](./how-to-user-defined-functions.md)に関するページを参照してください。
 
 - [ユーザー定義関数クライアント ライブラリ リファレンス ドキュメント](./reference-user-defined-functions-client-library.md)を参照してください。
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-data-processing-flow.png
-[2]: media/concepts/digital-twins-user-defined-functions.png

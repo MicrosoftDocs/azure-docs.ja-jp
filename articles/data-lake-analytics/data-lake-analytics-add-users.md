@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Analytics アカウントにユーザーを追加する
-description: Data Lake Analytics アカウントにユーザーを正しく追加する方法について説明します
+description: ユーザーの追加ウィザードと Azure PowerShell を利用し、Data Lake Analytics アカウントにユーザーを正しく追加する方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
@@ -9,17 +9,17 @@ ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: 8323c4e1b236444f55dab826d2567491f5f0f736
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 16c503fe2d584d5f8256c65bfc49825b300f6a36
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629324"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672722"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Azure portal でユーザーを追加する
 
 ## <a name="start-the-add-user-wizard"></a>ユーザーの追加ウィザードを開始する
-1. https://portal.azure.com で Azure Data Lake Analytics を開きます。
+1. [https://portal.azure.com](https://portal.azure.com ) で Azure Data Lake Analytics を開きます。
 2. **[ユーザーの追加ウィザード]** をクリックします。
 3. **[ユーザーを選択する]** 手順で、追加するユーザーを探します。 **[選択]** をクリックします。
 4. **[ロールを選択する]** 手順で、 **[Data Lake Analytics の開発者]** を選択します。 このロールには、U-SQL ジョブの送信/監視/管理に必要な最小限のアクセス許可が割り当てられています。 Azure サービスの管理を目的としていないグループの場合は、このロールに割り当てます。

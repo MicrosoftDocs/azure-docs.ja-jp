@@ -6,19 +6,21 @@ author: dlepow
 manager: gwallace
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 09/25/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 4b41a3862341ef39c1288985d86d86667fbc5866
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 28a391fded422b00508e006bfd613d6c98d82f17
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325601"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166469"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Azure Container Instances における、トラブルシューティングに関する一般的問題
 
 この記事では、Azure Container Instances を管理し、またはこれ にコンテナーをデプロイする際の、一般的問題をトラブルシューティングする方法を示します。 [よく寄せられる質問](container-instances-faq.md)も参照してください。
+
+追加のサポートが必要な場合は、[Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) で利用可能な **[ヘルプとサポート]** オプションをご覧ください。
 
 ## <a name="naming-conventions"></a>名前付け規則
 
@@ -200,16 +202,35 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 
 Azure Container Instances は、コンテナー グループをホストする、基になるインフラストラクチャへの直接アクセスを公開しません。 これには、コンテナーのホストで実行されている Docker API へのアクセスと、実行中の特権コンテナーへのアクセスが含まれます。 Docker の相互作用が必要な場合は、[REST リファレンス ドキュメント](https://aka.ms/aci/rest)を参照して、ACI API でサポートされるものをご確認ください。 不足しているものがある場合は、[ACI フィードバック フォーラム](https://aka.ms/aci/feedback)に要求を送信します。
 
-## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>ポートが一致しないために IP にアクセスできない
+## <a name="container-group-ip-address-may-not-be-accessible-due-to-mismatched-ports"></a>ポートが一致しないため、コンテナー グループの IP アドレスにアクセスできない
 
-現在、Azure Container Instances は、通常の docker 構成のようなポート マッピングをサポートしていませんが、この修正はロードマップにあります。 IP にアクセスできるはずの場合にアクセスできない場合は、`ports` プロパティを使用してコンテナー グループで公開しているものと同じポートをリッスンするようにコンテナー イメージを構成してください。
+Azure Container Instances では、通常の Docker 構成のようなポート マッピングはまだサポートされていません。 コンテナー グループの IP アドレスにアクセスできるはずの場合にアクセスできない場合は、`ports` プロパティを使用してコンテナー グループで公開しているのと同じポートをリッスンするようにコンテナー イメージを構成してください。
+
+ご自分のコンテナー イメージで構成したポートで Azure Container Instances がリッスンできることを確認したい場合は、ポートを公開する `aci-helloworld` イメージのデプロイをテストします。 さらに、このポートでリッスンするように `aci-helloworld` アプリを実行します。 `aci-helloworld` はオプションの環境変数 `PORT` を受け取り、既定のリッスン ポート 80 を上書きします。 たとえば、ポート 9000 をテストするには:
+
+1. コンテナー グループがポート 9000 を公開するよう設定し、ポート番号を環境変数の値として渡します。
+    ```azurecli
+    az container create --resource-group myResourceGroup \
+    --name mycontainer --image mcr.microsoft.com/azuredocs/aci-helloworld \
+    --ip-address Public --ports 9000 \
+    --environment-variables 'PORT'='9000'
+    ```
+1. `az container create` のコマンド出力でコンテナー グループの IP アドレスを見つけます。 **ip** の値を探します。 
+1. コンテナーが正常にプロビジョニングされた後、ブラウザーでコンテナー アプリの IP アドレスおよびポートに移動します (例: `192.0.2.0:9000`)。 
+
+    "Welcome to Azure Container Instances! (Azure Container Instances へようこそ!)" メッセージが Web アプリによって表示されます。
+1. コンテナーを使い終えたら、`az container delete` コマンドを使用して削除します。
+
+    ```azurecli
+    az container delete --resource-group myResourceGroup --name mycontainer
+    ```
 
 ## <a name="next-steps"></a>次の手順
 
 コンテナーのデバッグを支援するために、[コンテナーのログとイベントを取得する](container-instances-get-logs.md)方法を学習します。
 
 <!-- LINKS - External -->
-[azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
+[azure-name-restrictions]: https://docs.microsoft.com/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming
 [windows-sac-overview]: https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview
 [docker-multi-stage-builds]: https://docs.docker.com/engine/userguide/eng-image/multistage-build/
 [docker-hub-windows-core]: https://hub.docker.com/_/microsoft-windows-servercore

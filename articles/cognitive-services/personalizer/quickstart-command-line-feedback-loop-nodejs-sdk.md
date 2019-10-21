@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/12/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 49fa2cd53ebefa811673ea25a1851081f8cfa415
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: b7ea28f98340d3c3547b0ed66771b3982a03143d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70958958"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345247"
 ---
 # <a name="quickstart-personalize-client-library-for-nodejs"></a>クイック スタート:Node.js 用 Personalize クライアント ライブラリ
 
@@ -31,11 +31,21 @@ Node.js 用 Personalizer クライアント ライブラリの概要 以下の�
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
-* 最新バージョンの [Node.js](https://nodejs.org)。
+* 最新バージョンの [Node.js](https://nodejs.org) および NPM。
 
-## <a name="setting-up"></a>設定
+## <a name="using-this-quickstart"></a>このクイックスタートの使用法
 
-### <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
+
+このクイックスタートを使用するには、次のようないくつかの手順があります。
+
+* Azure portal で、Personalizer リソースを作成する
+* Azure portal の Personalizer リソースの **[設定]** ページで、モデルの更新頻度を変更する
+* コード エディターで、コード ファイルを作成し、コード ファイルを編集する
+* コマンド ラインまたはターミナルで、コマンド ラインから SDK をインストールする
+* コマンド ラインまたはターミナルで、コード ファイルを実行する
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
 
 Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 さらに、以下を実行できます。
 
@@ -50,7 +60,7 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 Azure portal では、キーとエンドポイントのどちらの値も **[クイック スタート]** ページで取得できます。
 
 
-### <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
+## <a name="create-a-new-nodejs-application"></a>新しい Node.js アプリケーションを作成する
 
 コンソール ウィンドウ (cmd、PowerShell、Bash など) で、ご利用のアプリ用に新しいディレクトリを作成し、そこに移動します。 
 
@@ -64,7 +74,7 @@ mkdir myapp && cd myapp
 npm init -y
 ```
 
-### <a name="install-the-nodejs-library-for-personalizer"></a>Personalizer 用 Node.js ライブラリをインストールする
+## <a name="install-the-nodejs-library-for-personalizer"></a>Personalizer 用 Node.js ライブラリをインストールする
 
 次のコマンドを使用して、Node.js 用 Personalizer クライアント ライブラリをインストールします。
 
@@ -78,9 +88,9 @@ npm install @azure/cognitiveservices-personalizer --save
 npm install @azure/ms-rest-azure-js @azure/ms-rest-js readline-sync uuid --save
 ```
 
-### <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
+## <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
 
-Azure portal の Personalizer リソースで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
+Azure portal の Personalizer リソースの **[設定]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
 
 ![モデルの更新頻度を変更する](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -143,6 +153,11 @@ Personalizer の学習ループとは、[rank](#request-a-rank) 呼び出しと 
 [!code-javascript[Create the learning loop](~/samples-personalizer/quickstarts/node/sample.js?name=mainLoop)]
 
 rank 呼び出しと reward 呼び出しについて、以降の各セクションでさらに詳しく見ていきましょう。
+
+コード ファイルを実行する前に、[コンテンツの選択肢](#get-content-choices-represented-as-actions)を取得する次のメソッドを追加します。
+
+* getActionsList
+* getContextFeaturesList
 
 ## <a name="request-a-rank"></a>ランクを要求する
 

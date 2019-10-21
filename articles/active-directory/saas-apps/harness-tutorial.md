@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 709bf2e413ddb40ae1ed84672cea0c0b71be2ce6
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 21409eb056743d92db42e0787af24f8cec07db1b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305939"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026965"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-harness"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Harness の統合
 
@@ -141,11 +141,11 @@ Harness に対する Azure AD SSO を構成してテストするには、次の�
 
 3. Harness を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者としてご自分の Harness 企業サイトにサインインして、次の手順のようにします。
 
-4. ページの右上で、 **[Continuous Security]\(継続的なセキュリティ\)**  > **[Access Management]\(アクセス管理\)**  >  **[Authentication Settings]\(認証設定\)** の順にクリックします。
+4. ページの右上で、 **[Continuous Security]\(継続的なセキュリティ\)**  >  **[Access Management]\(アクセス管理\)**  >  **[Authentication Settings]\(認証設定\)** の順にクリックします。
 
     ![Harness の構成](./media/harness-tutorial/configure01.png)
 
-5. **[SSO Providers]\(SSO プロバイダー\)** セクションで、 **[+ Add SSO Providers]\(+ SSO プロバイダーの追加\)**  > **[SAML]** の順にクリックします。
+5. **[SSO Providers]\(SSO プロバイダー\)** セクションで、 **[+ Add SSO Providers]\(+ SSO プロバイダーの追加\)**  >  **[SAML]** の順にクリックします。
 
     ![Harness の構成](./media/harness-tutorial/configure03.png)
 
@@ -169,11 +169,11 @@ Azure AD ユーザーが Harness にサインインできるようにするに�
 
 1. 管理者として Harness にサインインします。
 
-1. ページの右上で、 **[Continuous Security]\(継続的なセキュリティ\)**  > **[Access Management]\(アクセス管理\)**  >  **[Users]\(ユーザー\)** の順にクリックします。
+1. ページの右上で、 **[Continuous Security]\(継続的なセキュリティ\)**  >  **[Access Management]\(アクセス管理\)**  >  **[Users]\(ユーザー\)** の順にクリックします。
 
     ![Harness の構成](./media/harness-tutorial/configure04.png)
 
-1. ページの右側にある  **[+ Add User]\(+ ユーザーの追加)** をクリックします。
+1. ページの右側にある **[+ Add User]\(+ ユーザーの追加)** をクリックします。
 
     ![Harness の構成](./media/harness-tutorial/configure05.png)
 

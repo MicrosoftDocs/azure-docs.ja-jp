@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6bf24124c4b072a64ef59500b2f723ff6abbb0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0034668231d97e64602bdbdd0836bded97bb733d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545839"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373869"
 ---
 # <a name="native-apps"></a>ネイティブ アプリ
 
@@ -64,4 +64,4 @@ Azure AD v1.0 エンドポイントにアプリケーションを登録するに
 ## <a name="next-steps"></a>次の手順
 
 - その他の[アプリケーションの種類とシナリオ](app-types.md)について学習する
-- Azure AD [認証の基本](authentication-scenarios.md)について学習する
+- Azure AD [認証の基本](v1-authentication-scenarios.md)について学習する

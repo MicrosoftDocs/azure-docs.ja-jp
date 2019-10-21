@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 7922f07cfe08d0bd58827b59337b86387c624778
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 4fd73f528ac823a8e794a880f87dd5f8872e1251
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844687"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243272"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions の Python 開発者向けガイド
 
@@ -173,7 +173,7 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-この関数が呼び出されると、HTTP 要求は `req` として関数に渡されます。 エントリは、ルート URL 内の _ID_ に基づいて Azure Blob Storage から取得され、関数の本体で `obj` として使用できるようになります。  ここで、指定されるストレージ アカウントは、`AzureWebJobsStorage`で見つかる接続文字列であり、関数アプリケーションで使用されるストレージ アカウントと同じものです。
+この関数が呼び出されると、HTTP 要求は `req` として関数に渡されます。 エントリは、ルート URL 内の _ID_ に基づいて Azure Blob Storage から取得され、関数の本体で `obj` として使用できるようになります。  ここで、指定されるストレージ アカウントは、 で見つかる接続文字列であり、関数アプリケーションで使用されるストレージ アカウントと同じものです。
 
 
 ## <a name="outputs"></a>出力
@@ -281,28 +281,40 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 この関数では、`name` クエリ パラメーターの値は [HttpRequest] オブジェクトの `params` パラメーターから取得されます。 JSON でエンコードされたメッセージ本文は `get_json` メソッドを使用して読み取られます。 
 
 同様に、返される [HttpResponse] オブジェクトに応答メッセージの `status_code` および `headers` を設定できます。
-                                                              
-## <a name="async"></a>非同期
 
-`async def` ステートメントを使って非同期のコルーチンとして Azure 関数を記述することをお勧めします。
+## <a name="concurrency"></a>コンカレンシー
+
+既定では、Functions Python ランタイムで一度に処理できる関数の呼び出しは 1 つだけです。 このコンカレンシー レベルは、次の条件の 1 つ以上に当てはまる場合、十分ではない場合があります。
+
++ 多数の呼び出しを同時に処理しようとしている。
++ 大量の I/O イベントを処理している。
++ アプリケーションが I/O バインドされている。
+
+このような状況では、複数の言語ワーカー プロセスを使用して非同期的に実行することにより、パフォーマンスを向上させることができます。  
+
+### <a name="async"></a>非同期
+
+`async def` ステートメントを使用して、関数を非同期のコルーチンとして実行することをお勧めします。
 
 ```python
-# Will be run with asyncio directly
-
+# Runs with asyncio directly
 
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-main() 関数が同期 (修飾子が付いていない) の場合、関数は `asyncio` スレッド プール内で自動的に実行されます。
+`main()` 関数が同期 (`async` 修飾子が付いていない) の場合、関数は `asyncio` スレッド プール内で自動的に実行されます。
 
 ```python
-# Would be run in an asyncio thread-pool
-
+# Runs in an asyncio thread-pool
 
 def main():
     some_blocking_socket_io()
 ```
+
+### <a name="use-multiple-language-worker-processes"></a>複数の言語ワーカー プロセスを使用する
+
+既定では、すべての Functions ホスト インスタンスに 1 つの言語ワーカー プロセスがあります。 ただし、ホスト インスタンスあたり複数の言語ワーカー プロセスを作成することはサポートされています。 関数呼び出しは、これらの言語ワーカー プロセス間で均等に分散させることができます。 この値を変更するには、[FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) アプリケーション設定を使用します。 
 
 ## <a name="context"></a>Context
 
@@ -319,7 +331,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python) クラスには次のメソッドが含まれています。
+[**コンテキスト**](/python/api/azure-functions/azure.functions.context?view=azure-python) クラスには次の文字列属性が含まれています。
 
 `function_directory`  
 関数が実行されるディレクトリです。

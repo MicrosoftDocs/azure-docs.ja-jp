@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: 9fff9f13e5ce6bf8a7805f7794d3e71eb4030104
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ffc724ef5133ee25643a966d2b6d8448a4c3a920
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065679"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023612"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Azure CLI を使用してサーバー ログを構成してアクセスする
 Azure CLI (Azure のコマンドライン ユーティリティ) を使用して Azure Database for MariaDB のサーバー ログをダウンロードできます。
@@ -25,7 +25,7 @@ Azure CLI (Azure のコマンドライン ユーティリティ) を使用して
 ## <a name="configure-logging-for-azure-database-for-mariadb"></a>Azure Database for MariaDB のログ記録の構成
 以下の手順に従って、MariaDB 低速クエリ ログにアクセスするサーバーを構成できます。
 1. **slow\_query\_log** パラメーターをオンに設定してログ記録を有効にします。
-2. **long\_query\_time** や **log\_slow\_admin\_statements** などのパラメーターを調整します。
+2. **long\_query\_time** や **log\_slow\_admin\_statements** などのパラメーターを調整します。
 
 これらのパラメーターの値を Azure CLI で設定する方法については、[サーバーのパラメーターを構成する方法](howto-configure-server-parameters-cli.md)に関する記事をご覧ください。
 

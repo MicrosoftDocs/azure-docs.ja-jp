@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/19/2019
+ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c4f670f3bb14610e7f29a9201b357e73dacf09b
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 596da9cfe0e914183bd3b2603ffa1047f1d9352b
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293218"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310022"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID とは
 
@@ -68,28 +68,29 @@ Azure AD Authentication をサポートするサービスのアクセス トー�
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>システム割り当てマネージド ID と Azure VM の連携
 
 1. Azure Resource Manager は、VM 上でシステム割り当てマネージド ID を有効にするための要求を受け取ります。
+
 2. Azure Resource Manager は、VM の ID を表すサービス プリンシパルを Azure AD に作成します。 このサブスクリプションによって信頼されている Azure AD テナントに、サービス プリンシパルが作成されます。
-3. Azure Resource Manager が、VM 上で ID を構成します。
-    1. Azure Instance Metadata Service の ID エンドポイントを、サービス プリンシパルのクライアント ID と証明書で更新します。
-    1. VM 拡張機能 (2019 年 1 月に非推奨となる予定) をプロビジョニングし、サービス プリンシパルのクライアント ID と証明書を追加します。 (この手順は非推奨となる予定です。)
+
+3. Azure Resource Manager では、Azure Instance Metadata Service の ID エンドポイントをサービス プリンシパルのクライアント ID と証明書を使用して更新することによって、VM 上に ID が構成されます。
+
 4. VM に ID が設定された後、Azure リソースにアクセスする権利を VM に与えるには、そのサービス プリンシパル情報を使用します。 Azure Resource Manager を呼び出すには、Azure AD のロールベースのアクセス制御 (RBAC) を使用して、VM のサービス プリンシパルに適切なロールを割り当てます。 Key Vault を呼び出すには、Key Vault 内の特定のシークレットまたは特定のキーにアクセスする権利をコードに与えます。
+
 5. VM 上で実行されているコードは、VM 内からのみアクセスできる Azure Instance Metadata サービス エンドポイントにトークン (`http://169.254.169.254/metadata/identity/oauth2/token`) を要求できます。
     - リソース パラメーターは、トークンの送信先のサービスを指定します。 Azure Resource Manager に対して認証を行うには、`resource=https://management.azure.com/` を使用します。
     - API バージョン パラメーターは、IMDS バージョンを指定します。api-version=2018-02-01 以降を使用してください。
 
-> [!NOTE]
-> コードは VM 拡張機能エンドポイントにトークンを要求することもできますが、この機能は近いうちに廃止予定です。 VM 拡張機能の詳細については、[認証のための VM 拡張機能から Azure IMDS への移行](howto-migrate-vm-extension.md)に関するページを参照してください。
-
 6. 手順 3. で構成したクライアント ID と証明書を使用して、手順 5. で指定したアクセス トークンを要求する呼び出しが Azure AD に対して行われます。 Azure AD は、JSON Web トークン (JWT) アクセス トークンを返します。
+
 7. コードは、Azure AD 認証をサポートするサービスへの呼び出しでアクセス トークンを送信します。
 
 ### <a name="how-a-user-assigned-managed-identity-works-with-an-azure-vm"></a>ユーザー割り当てマネージド ID と Azure VM の連携
 
 1. Azure Resource Manager が、ユーザー割り当てマネージド ID を作成するための要求を受け取ります。
+
 2. Azure Resource Manager が、ユーザー割り当てマネージド ID を表すサービス プリンシパルを Azure AD に作成します。 このサブスクリプションによって信頼されている Azure AD テナントに、サービス プリンシパルが作成されます。
-3. Azure Resource Manager が、VM 上でユーザー割り当てマネージド ID を構成するための要求を受け取ります。
-    1. Azure Instance Metadata Service の ID エンドポイントを、ユーザー割り当てマネージド ID のサービス プリンシパルのクライアント ID と証明書で更新します。
-    1. VM 拡張機能をプロビジョニングし、ユーザー割り当てマネージド ID のサービス プリンシパルのクライアント ID と証明書を追加します。 (この手順は非推奨となる予定です。)
+
+3. ユーザーが割り当てたマネージド ID を VM 上に構成する要求が Azure Resource Manager によって受信され、Azure Instance Metadata Service の ID エンドポイントがサービス プリンシパルのクライアント ID と証明書を使用して更新されます。
+
 4. ユーザー割り当てマネージド ID が作成された後、Azure リソースにアクセスする権利をその ID に与えるには、そのサービス プリンシパル情報を使用します。 Azure Resource Manager を呼び出すには、Azure AD の RBAC を使用して、ユーザー割り当て ID のサービス プリンシパルに適切なロールを割り当てます。 Key Vault を呼び出すには、Key Vault 内の特定のシークレットまたは特定のキーにアクセスする権利をコードに与えます。
 
    > [!Note]
@@ -99,9 +100,6 @@ Azure AD Authentication をサポートするサービスのアクセス トー�
     - リソース パラメーターは、トークンの送信先のサービスを指定します。 Azure Resource Manager に対して認証を行うには、`resource=https://management.azure.com/` を使用します。
     - クライアント ID パラメーターは、トークンの要求先の ID を指定します。 この値は、1 つの VM 上に複数のユーザー割り当て ID がある場合に、あいまいさを解消するために必要です。
     - Azure Instance Metadata Service のバージョンは、API バージョン パラメーターで指定します。 `api-version=2018-02-01` 以降を使用してください。
-
-> [!NOTE]
-> コードは VM 拡張機能エンドポイントにトークンを要求することもできますが、この機能は近いうちに廃止予定です。 VM 拡張機能の詳細については、[認証のための VM 拡張機能から Azure IMDS への移行](howto-migrate-vm-extension.md)に関するページを参照してください。
 
 6. 手順 3. で構成したクライアント ID と証明書を使用して、手順 5. で指定したアクセス トークンを要求する呼び出しが Azure AD に対して行われます。 Azure AD は、JSON Web トークン (JWT) アクセス トークンを返します。
 7. コードは、Azure AD 認証をサポートするサービスへの呼び出しでアクセス トークンを送信します。

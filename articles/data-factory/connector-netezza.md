@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/02/2019
 ms.author: jingwang
-ms.openlocfilehash: 20e5e23e2000095a95913964673ce90a72b87e59
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5d0c09c9cff2fefcc2eee20b9fd2f93dd375115f
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813535"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090019"
 ---
 # <a name="copy-data-from-netezza-by-using-azure-data-factory"></a>Azure Data Factory を使用して Netezza からデータをコピーする
 
@@ -27,6 +27,12 @@ ms.locfileid: "70813535"
 >Netezza から Azure へのデータ移行のシナリオの詳細については、「[Azure Data Factory を使用してオンプレミスの Netezza サーバーから Azure にデータを移行する](data-migration-guidance-netezza-azure-sqldw.md)」を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
+
+この Netezza コネクタは、次のアクティビティでサポートされます。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
+
 
 Netezza から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティでソースおよびシンクとしてサポートされているデータ ストアの一覧については、「[サポートされるデータ ストアと形式](copy-activity-overview.md#supported-data-stores-and-formats)」を参照してください。
 
@@ -237,6 +243,11 @@ Data Factory の Netezza コネクタは、Netezza からデータを並列で�
     }
 }
 ```
+
+## <a name="lookup-activity-properties"></a>Lookup アクティビティのプロパティ
+
+プロパティの詳細については、[Lookup アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 

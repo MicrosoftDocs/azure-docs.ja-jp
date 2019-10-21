@@ -1,19 +1,18 @@
 ---
-title: サンプル - CAF 移行ランディング ゾーン ブループリント - 概要
+title: CAF 移行ランディング ゾーン ブループリント サンプル - 概要
 description: CAF 移行ランディング ゾーン ブループリント サンプルの概要とアーキテクチャ。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: 81bde54c65cf3ed25da634c38b7b99e72a187e00
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c74ec9f425b99bb11011fce7b0b7bdca98005ad8
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002459"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72297858"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 移行ランディング ゾーン ブループリント サンプルの概要
 

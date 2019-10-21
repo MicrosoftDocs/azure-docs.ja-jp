@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 6e12a16b221a8f31d82a002fbc93b090d6f0c577
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7224c6a77df496624903830f0a2cbd8d193517cc
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861257"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178197"
 ---
 # <a name="ip-addresses-of-azure-api-management"></a>Azure API Management の IP アドレス
 
@@ -61,7 +61,7 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/
 
 API Management サービスが仮想ネットワーク内にある場合、パブリックとプライベートの 2 種類の IP アドレスがあります。
 
-パブリック IP アドレスは、ポート `3443` での内部通信に使用されます。これは、構成の管理用です (たとえば、Azure Resource Manager 経由)。 また、要求が API Management から公開されている (インターネットに接続された) バックエンドに送信されると、パブリック IP アドレスが要求の送信元として表示されます。
+パブリック IP アドレスは、ポート `3443` での内部通信に使用されます。これは、構成の管理用です (たとえば、Azure Resource Manager 経由)。 外部 VNET 構成では、ランタイム API トラフィックにも使用されます。 要求が API Management から公開されている (インターネットに接続された) バックエンドに送信されると、パブリック IP アドレスが要求の送信元として表示されます。
 
 プライベート仮想 IP (VIP) アドレスは、ネットワーク内から API Management エンドポイント (ゲートウェイ、開発者ポータル、直接 API アクセス用の管理プレーン) に接続するために使用されます。 ネットワーク内の DNS レコードを設定するために、これらを使用できます。
 

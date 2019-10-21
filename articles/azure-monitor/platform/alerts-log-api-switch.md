@@ -1,19 +1,19 @@
 ---
 title: 従来の Log Analytics アラート API から新しい Azure Alerts API に切り替える
 description: 従来の savedSearch ベースの Log Analytics Alert API の概要と、アラート ルールを新しい ScheduledQueryRules API に切り替えるプロセスについて、お客様の一般的な問題への対処の詳細を含めて説明します。
-author: msvijayn
+author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: vinagara
+ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 8f23d19b06152b633df6688489753498c86aee27
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7b3a09c9227110d6dba205987903a2c97dccf1b8
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034779"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677803"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>ログ アラートの API の基本設定を切り替える
 

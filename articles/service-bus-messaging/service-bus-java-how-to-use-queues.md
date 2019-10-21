@@ -14,17 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
-ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 84f035a55256ab22c823b2aaed9c9c2400eebf5b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 19cfd2c5dd4229e4687fcb1a3286509c9b768d7a
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173418"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155499"
 ---
 # <a name="use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Java で Azure Service Bus キューを使用してメッセージを送受信する
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-このチュートリアルでは、Java アプリケーションを作成して、Service Bus キューとの間でメッセージを送受信する方法を学習します。 
+このチュートリアルでは、Java アプリケーションを作成して、Azure Service Bus キューとの間でメッセージを送受信する方法を学習します。 
 
 > [!NOTE]
 > GitHub の [azure-service-bus のリポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)には、Java のサンプルがあります。
@@ -42,7 +42,7 @@ ms.locfileid: "70173418"
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 このサンプルを作成する前に [Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。
 
-![ライブラリを追加できる [ライブラリ] タブのスクリーンショット](./media/service-bus-java-how-to-use-queues/eclipselibs.png)
+![Microsoft Azure Libraries for Java を Eclipse プロジェクトに追加する](./media/service-bus-java-how-to-use-queues/eclipse-azure-libraries-java.png)
 
 次の `import` ステートメントを Java ファイルの先頭に追加します。
 

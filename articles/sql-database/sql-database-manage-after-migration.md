@@ -11,12 +11,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: dead041845c123672d881a8538644b56c34a58a2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 36e48e86ed3cf7138f7ff5efe89d08c07df87f25
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845605"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028260"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database での単一データベースとプールされたデータベースの管理
 
@@ -39,7 +39,7 @@ ms.locfileid: "70845605"
 
 ## <a name="monitor-databases-using-the-azure-portal"></a>Azure ポータルを使用したデータベースの監視
 
-[Azure portal](https://portal.azure.com/) で、ご利用のデータベースを選択し、 **[監視]** グラフをクリックすることによって、個々のデータベースの使用率を監視できます。 これにより、 **[メトリック]** ウィンドウが表示されます。 **[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
+[Azure Portal](https://portal.azure.com/) で、ご利用のデータベースを選択し、 **[監視]** グラフをクリックすることによって、個々のデータベースの使用率を監視できます。 これにより、 **[メトリック]** ウィンドウが表示されます。 **[グラフの編集]** ボタンをクリックすると、内容を編集できます。 次のメトリックを追加します。
 
 - CPU の割合
 - DTU の割合
@@ -282,7 +282,7 @@ Azure portal でデータベースを選択し [概要] ペインのグラフを
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure Monitor ログの Azure SQL Analytics (プレビュー)
 
-[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)では、主要な SQL Azure パフォーマンス メトリックを収集して視覚化することができます。ワークスペースごとに SQL Database は 150,000 個、SQL エラスティック プールは 5,000 個がサポートされています。 これにより、監視を行い、通知を受け取ることができます。 SQL Database およびエラスティック プールのメトリックは、複数の Azure サブスクリプションとエラスティック プールにわたって監視でき、これらのメトリックを利用してアプリケーション スタックの各層における問題を特定できます。
+[Azure Monitor ログ](../azure-monitor/insights/azure-sql.md)では、主要な Azure SQL データベースのパフォーマンス メトリックを収集して視覚化することができます。ワークスペースごとに SQL Database は最大 150,000 個、SQL エラスティック プールは最大 5,000 個までサポートされています。 これにより、監視を行い、通知を受け取ることができます。 SQL Database およびエラスティック プールのメトリックは、複数の Azure サブスクリプションとエラスティック プールにわたって監視でき、これらのメトリックを利用してアプリケーション スタックの各層における問題を特定できます。
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>パフォーマンスに問題があります。SQL Database と SQL Server のトラブルシューティングの方法の違いはどのようなものですか
 

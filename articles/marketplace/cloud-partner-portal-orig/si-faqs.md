@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pabutler
-ms.openlocfilehash: 2719b6b47225576f2eadeb5e5b40b3aa7b39444d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 059ec175a48cdcdec6214a6581452ec0536bf566
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943066"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030441"
 ---
 <a name="seller-insights-faq"></a>Seller Insights に関する FAQ
 ===================
@@ -41,7 +41,7 @@ ms.locfileid: "64943066"
 <a name="calculate-revenue-by-customer-usage-period"></a>顧客の使用期間別に収益を計算する
 ------------------------------------------
 
-支払いモジュールからトランザクションをダウンロードした後、 **[Transaction Status]\(トランザクションの状態\)** というラベルの付いた列を見つけ、[支払い済み] という値を表示するフィルターを適用します。   一覧表示された各トランザクションについて、 **[Payout Amount (PC)]\(支払い額 (PC)\)**   というラベルの付いた列に、支払われた金額が表示されます。  トランザクションに関連付けられている使用期間を見積もるには、 **[課金日]** 列を使用します。これは、トランザクションが適用される期間の最終使用日の近似値です。
+支払いモジュールからトランザクションをダウンロードした後、 **[Transaction Status]\(トランザクションの状態\)** というラベルの付いた列を見つけ、[Paid Out]\(支払い済み\) という値を表示するフィルターを適用します。   一覧表示された各トランザクションについて、 **[Payout Amount (PC)]\(支払い額 (PC)\)** というラベルの付いた列に、支払われた金額が表示されます。  トランザクションに関連付けられている使用期間を見積もるには、 **[課金日]** 列を使用します。これは、トランザクションが適用される期間の最終使用日の近似値です。
 
 
 <a name="calculate-your-bad-debt"></a>貸し倒れ金を計算する

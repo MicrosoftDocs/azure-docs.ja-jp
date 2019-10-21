@@ -7,14 +7,19 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 5854a8974a4d2a9dbc1aa690dc2340fd806f4219
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 9557923fc2228e8508acaa7e15d1729ac3d29538
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67490132"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028363"
 ---
 # <a name="ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Event Grid の通知をサブスクライブすることで Azure Data Explorer に BLOB を取り込む
+
+> [!div class="op_single_selector"]
+> * [ポータル](ingest-data-event-grid.md)
+> * [C#](data-connection-event-grid-csharp.md)
+> * [Python](data-connection-event-grid-python.md)
 
 Azure Data Explorer は、ログと利用統計情報のための高速でスケーラブルなデータ探索サービスです。 BLOB コンテナーに書き込まれた BLOB からの継続的な取り込み (データの読み込み) を実行できます。 
 
@@ -38,7 +43,7 @@ Azure Data Explorer は、ログと利用統計情報のための高速でスケ
 
     **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
-    | Name | *test-grid-connection* | 作成するイベント グリッドの名前。|
+    | 名前 | *test-grid-connection* | 作成するイベント グリッドの名前。|
     | イベント スキーマ | *Event Grid スキーマ* | イベント グリッドで使用するスキーマ。 |
     | トピックの種類 | *ストレージ アカウント* | イベント グリッド トピックの種類。 |
     | トピックのリソース | *gridteststorage* | ご利用のストレージ アカウントの名前。 |
@@ -77,7 +82,7 @@ Azure Data Explorer で、Event Hubs のデータの送信先となるテーブ�
 
 ## <a name="create-an-event-grid-data-connection-in-azure-data-explorer"></a>Azure Data Explorer でイベント グリッド データ接続を作成する
 
-次に、Azure Data Explorer からイベント グリッドに接続して、BLOB コンテナーに流れ込むデータがテスト テーブルにストリーミングされるようにします。
+ここで、Azure Data Explorer から Event Grid に接続して、BLOB コンテナーに送信されるデータがテスト テーブルにストリーミングされるようにします。 
 
 1. ツールバーの **[通知]** を選択して、イベント ハブのデプロイが成功したことを確認します。
 

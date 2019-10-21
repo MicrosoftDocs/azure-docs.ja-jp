@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 836a9fd0b441ff9669c224dc41537e3c177d7dde
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 642b99e3eaaf73844d30d1cd464ae0b777b0b3fa
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389702"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71957797"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -79,22 +79,22 @@ VNet を使用して次のことが行えます。
 サポートされる最小のサブネットは /29、最大は /8 です (CIDR サブネット定義を使用)。
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>VNet を使用して、VLAN を Azure に接続できるでしょうか。
-いいえ。 VNet はレイヤー 3 のオーバーレイです。 Azure では、任意のレイヤー 2 のセマンティクスはサポートされません。
+No. VNet はレイヤー 3 のオーバーレイです。 Azure では、任意のレイヤー 2 のセマンティクスはサポートされません。
 
 ### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets"></a>私の Vnet とサブネットをカスタム ルーティング ポリシーを指定できますか。
 はい。 ルート テーブルを作成してサブネットに関連付けることができます。 Azure でのルーティングの詳細については、[ルーティングの概要](virtual-networks-udr-overview.md#custom-routes)に関する記事をご覧ください。
 
 ### <a name="do-vnets-support-multicast-or-broadcast"></a>VNet はマルチキャストやブロードキャストをサポートしますか。
-いいえ。 マルチキャストとブロードキャストはサポートされていません。
+No. マルチキャストとブロードキャストはサポートされていません。
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>VNet 内はどのようなプロトコルを使用できますか。
 VNet では、TCP、UDP、および ICMP TCP/IP プロトコルを使用することができます。 ユニキャストは VNet 内でサポートされますが、ユニキャスト (ソース ポート UDP/68 / 宛先ポート UDP/67) を経由した動的ホスト構成プロトコル (DHCP) は例外です。 マルチキャスト、ブロードキャスト、IP-in-IP のカプセル化されたパケット、Generic Routing Encapsulation (GRE) のパケットは、VNet 内でブロックされます。 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>VNet 内には、既定ルーターを ping できるでしょうか。
-いいえ。
+No.
 
 ### <a name="can-i-use-tracert-to-diagnose-connectivity"></a>Tracert を使用して、接続を診断することができますか。
-いいえ。
+No.
 
 ### <a name="can-i-add-subnets-after-the-vnet-is-created"></a>VNet を作成した後のサブネットを追加できますか。
 はい。 サブネットのアドレス範囲が VNet 内の別のサブネットの一部でなく、仮想ネットワークのアドレス範囲に空き領域があれば、いつでもサブネットを VNet に追加できます。
@@ -109,10 +109,10 @@ VNet では、TCP、UDP、および ICMP TCP/IP プロトコルを使用する�
 はい。 VNet 内にデプロイされているすべてのサービスは、インターネットに送信接続できます。 Azure での送信インターネット接続について詳しくは、[送信接続](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 Resource Manager を使用してデプロイされたリソースに受信接続するには、リソースにパブリック IP アドレスが割り当てられている必要があります。 パブリック IP アドレスについて詳しくは、[パブリック IP アドレス](virtual-network-public-ip-address.md)に関する記事をご覧ください。 Azure にデプロイされたすべての Azure クラウド サービスには、パブリックにアドレス指定可能な VIP が割り当てられています。 PaaS ロールの入力エンドポイントと仮想マシンのエンドポイントを定義して、これらのサービスがインターネットからの接続を承諾できるようにします。
 
 ### <a name="do-vnets-support-ipv6"></a>VNet は IPv6 をサポートするでしょうか。
-いいえ。 この時点で、VNet で IPv6 を使用できません。 ただし、Azure ロード バランサーに IPv6 アドレスを割り当てて、仮想マシンを負荷分散することはできます。 詳細については、「[Azure Load Balancer の IPv6 の概要](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
+No. この時点で、VNet で IPv6 を使用できません。 ただし、Azure ロード バランサーに IPv6 アドレスを割り当てて、仮想マシンを負荷分散することはできます。 詳細については、「[Azure Load Balancer の IPv6 の概要](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。
 
 ### <a name="can-a-vnet-span-regions"></a>VNet は複数のリージョンで広がるでしょうか。
-いいえ。 VNet は、1 つのリージョンに制限されます。 ただし、仮想ネットワークは複数の可用性ゾーンにまたがります。 可用性ゾーンの詳細については、「[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 仮想ネットワーク ピアリングを使用して、別々のリージョンにある仮想ネットワークを接続できます。 詳細については、[仮想ネットワーク ピアリングの概要](virtual-network-peering-overview.md)に関する記事をご覧ください。
+No. VNet は、1 つのリージョンに制限されます。 ただし、仮想ネットワークは複数の可用性ゾーンにまたがります。 可用性ゾーンの詳細については、「[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 仮想ネットワーク ピアリングを使用して、別々のリージョンにある仮想ネットワークを接続できます。 詳細については、[仮想ネットワーク ピアリングの概要](virtual-network-peering-overview.md)に関する記事をご覧ください。
 
 ### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure"></a>VNet を Azure での別の VNet に接続できますか。
 はい。 次のいずれかの方法で VNet どうしを接続できます。
@@ -142,7 +142,7 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 はい。 VM またはクラウド サービスごとに DNS サーバーを設定し、既定のネットワーク設定をオーバーライドすることができます。 ただし、できるだけネットワーク全体の DNS を使用することをお勧めします。
 
 ### <a name="can-i-bring-my-own-dns-suffix"></a>独自の DNS サフィックスを取り込むことができますか。
-いいえ。 ご使用の VNet のカスタム DNS サフィックスを指定することはできません。
+No. ご使用の VNet のカスタム DNS サフィックスを指定することはできません。
 
 ## <a name="connecting-virtual-machines"></a>仮想マシンの接続
 
@@ -158,7 +158,7 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 * **パブリック:** 必要に応じて、Azure Resource Manager デプロイ モデルを使用してデプロイされた VM に接続されている NIC に割り当てられます。 アドレスは、静的または動的な割り当て方法を使用して割り当てることができます。 クラシック デプロイ モデルを使用してデプロイされたすべての VM および Cloud Services ロール インスタンスは、"*動的な*" パブリック仮想 IP (VIP) アドレスが割り当てられたクラウド サービス内に存在します。 パブリックな "*静的*" IP アドレスは、[予約済み IP アドレス](virtual-networks-reserved-public-ip.md)と呼ばれ、必要に応じて VIP として割り当てることができます。 パブリック IP アドレスは、クラシック デプロイ モデルを使用してデプロイされた個々の VM または Cloud Services ロール インスタンスに割り当てることができます。 これらのアドレスは、[インスタンス レベルのパブリック IP (ILPIP)](virtual-networks-instance-level-public-ip.md) アドレスと呼ばれ、動的に割り当てることができます。
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>後で作成する VM 用にプライベート IP アドレスを予約することはできますか。
-いいえ。 プライベート IP アドレスを予約することはできません。 プライベート IP アドレスが使用可能な場合は、DHCP サーバーによって VM またはロール インスタンスに割り当てられます。 その VM は、プライベート IP アドレスを割り当てたい VM である場合も、そうでない場合もあります。 ただし、既に作成した VM のプライベート IP アドレスを、使用可能なプライベート IP アドレスに変更することができます。
+No. プライベート IP アドレスを予約することはできません。 プライベート IP アドレスが使用可能な場合は、DHCP サーバーによって VM またはロール インスタンスに割り当てられます。 その VM は、プライベート IP アドレスを割り当てたい VM である場合も、そうでない場合もあります。 ただし、既に作成した VM のプライベート IP アドレスを、使用可能なプライベート IP アドレスに変更することができます。
 
 ### <a name="do-private-ip-addresses-change-for-vms-in-a-vnet"></a>VNet 内の VM のプライベート IP アドレスは変更されますか。
 一概には言えません。 VM が Resource Manager を使用してデプロイされた場合は、静的または動的な割り当て方法のどちらを使用して割り当てられていても、変更されることはありません。 VM がクラシック デプロイ モデルを使用してデプロイされた場合は、VM が停止 (割り当て解除) 状態になった後で起動された場合に、動的 IP アドレスが変更される可能性があります。 このアドレスは、いずれかのデプロイメント モデルを使用してデプロイされた VM が削除されると、その VM から解放されます。
@@ -173,7 +173,7 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 はい。 詳細については、「[VM またはロール インスタンスを別のサブネットに移動する方法](virtual-networks-move-vm-role-to-subnet.md)」を参照してください。
 
 ### <a name="can-i-configure-a-static-mac-address-for-my-vm"></a>VM に静的な MAC アドレスを構成できますか。
-いいえ。 MAC アドレスを静的に構成することはできません。
+No. MAC アドレスを静的に構成することはできません。
 
 ### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-its-created"></a>MAC アドレスは、一度作成されると、VM で同じものとして残りますか。
 はい。MAC アドレスは、Resource Manager デプロイ モデルを使用してデプロイされた VM とクラシック デプロイ モデルを使用してデプロイされた VM のどちらの場合も、削除されるまで同じままです。 以前は、VM が停止 (割り当て解除) された場合に MAC アドレスが解放されました。現在、MAC アドレスは、VM が割り当て解除状態であっても保持されます。 MAC アドレスがネットワーク インターフェイスに割り当てられると、そのネットワーク インターフェイスが削除されるか、プライマリ ネットワーク インターフェイスのプライマリ IP 構成に割り当てられたプライベート IP アドレスが変更されるまで、その状態は変わりません。 
@@ -200,12 +200,12 @@ Azure で提供される DNS を使用したテナント間名前解決は、VNe
 ### <a name="is-there-a-complete-list-of-azure-services-that-can-i-deploy-resources-from-into-a-vnet"></a>VNet 内にリソースをデプロイできる Azure サービスの完全な一覧はありますか。
 はい。詳細については、「[Azure サービスの仮想ネットワーク統合](virtual-network-for-azure-services.md)」をご覧ください。
 
-### <a name="which-azure-paas-resources-can-i-restrict-access-to-from-a-vnet"></a>どの Azure PaaS リソースで、VNet からのアクセスのみにアクセスを制限できますか。
+### <a name="how-can-i-restrict-access-to-azure-paas-resources-from-a-vnet"></a>VNet から Azure PaaS リソースへのアクセスを制限するにはどうすればよいですか。
 
-Azure Storage、Azure SQL Database などの一部の Azure PaaS サービスを使用してデプロイされたリソースは、仮想ネットワーク サービス エンドポイントの使用によって、VNet 内のリソースのみにネットワーク アクセスを制限できます。 詳細については、[仮想ネットワーク サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)に関する記事をご覧ください。
+Azure Storage、Azure SQL Database などの一部の Azure PaaS サービスを使用してデプロイされたリソースは、仮想ネットワーク サービス エンドポイントまたは Azure Private Link の使用によって、VNet へのネットワーク アクセスを制限できます。 詳細については、[仮想ネットワーク サービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)と、 [Azure Private Link の概要](../private-link/private-link-overview.md)に関する記事をご覧ください
 
 ### <a name="can-i-move-my-services-in-and-out-of-vnets"></a>サービスを VNet 内外で移動できますか。
-いいえ。 サービスを VNet 内外で移動することはできません。 リソースを別の VNet に移動するには、リソースを削除して再デプロイする必要があります。
+No. サービスを VNet 内外で移動することはできません。 リソースを別の VNet に移動するには、リソースを削除して再デプロイする必要があります。
 
 ## <a name="security"></a>セキュリティ
 
@@ -254,7 +254,6 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 - Logic Apps
 - HDInsight
 -   Azure Batch
-- AKS
 - App Service 環境
 
 ExpressRoute、または VNet ゲートウェイ経由の VNet 対 VNet を介してこのようなリソースに接続できます。
@@ -272,22 +271,22 @@ VNet ピアリング接続が "*切断*" 状態にある場合、それは作成
 はい。 VNet はサブスクリプションやリージョンを越えてピアリングできます。
 
 ### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>一致するまたは重複するアドレス範囲にある 2 つの VNet をピアリングできますか。
-いいえ。 VNet ピアリングを有効にするには、アドレス空間がオーバーラップしない必要があります。
+No. VNet ピアリングを有効にするには、アドレス空間がオーバーラップしない必要があります。
 
 ### <a name="how-much-do-vnet-peering-links-cost"></a>VNet ピアリング リンクの料金をどれくらいですか。
 VNet ピアリング接続を作成するのに料金はかかりません。 ピアリング接続経由でのデータ転送には料金が発生します。 [こちらを参照](https://azure.microsoft.com/pricing/details/virtual-network/)してください。
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>VNet ピアリングのトラフィックは暗号化されますか。
-いいえ。 ピアリングされた VNet のリソース間のトラフィックはプライベートで分離されています。 マイクロソフトのバックボーンに完全に残ります。
+No. ピアリングされた VNet のリソース間のトラフィックはプライベートで分離されています。 マイクロソフトのバックボーンに完全に残ります。
 
 ### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>ピアリング接続が "*切断*" 状態にあるのはなぜですか。
 1 つの VNet ピアリング リンクが削除されると、VNet ピアリングは*切断*状態になります。 ピアリング接続を再度確立するには、両方のリンクを削除する必要があります。
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>VNetA から VNetB にピアリングし、VNetB から VNetC にピアリングすると、VNetA と VNetC がピアリングされたことになりますか。
-いいえ。 推移的なピアリングはサポートされません。 VNetA と VNetC をピアリングする必要があります。
+No. 推移的なピアリングはサポートされません。 VNetA と VNetC をピアリングする必要があります。
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>ピアリング接続に帯域幅制限はありますか。
-いいえ。 ローカルであってもグローバルであっても、VNet ピアリングで帯域幅制限は課されません。 帯域幅は VM やコンピューティング リソースによってのみ制限されます。
+No. ローカルであってもグローバルであっても、VNet ピアリングで帯域幅制限は課されません。 帯域幅は VM やコンピューティング リソースによってのみ制限されます。
 
 ### <a name="how-can-i-troubleshoot-vnet-peering-issues"></a>VNet ピアリングの問題をトラブルシューティングするにはどうすればよいですか?
 こちらの[トラブルシューティング ガイド](https://support.microsoft.com/en-us/help/4486956/troubleshooter-for-virtual-network-peering-issues)を試すことができます。
@@ -395,7 +394,7 @@ Azure サービスに到達するには、NSG で送信接続を許可する必�
 
 ### <a name="does-azure-active-directory-azure-ad-support-vnet-service-endpoints"></a>Azure Active Directory (Azure AD) は VNet サービス エンドポイントをサポートしますか。
 
-サービス エンドポイントは Azure Active Directory (Azure AD) によってネイティブにサポートされていません。 VNet サービス エンドポイントをサポートする Azure サービスの完全な一覧は[こちら](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)で確認できます。 サービス エンドポイントをサポートするサービスの下にリストされている "Microsoft.AzureActiveDirectory" タグは、ADLS Gen 1 へのサービス エンドポイントをサポートするために使用されます。 ADLS Gen 1 の場合、Azure Data Lake Storage Gen1 の仮想ネットワーク統合では、仮想ネットワークと Azure Active Directory (Azure AD) との間で仮想ネットワーク サービス エンドポイント セキュリティを利用して、アクセス トークン内に追加のセキュリティ要求が生成されます。 これらの要求は、ご利用の Data Lake Storage Gen1 アカウントに対して仮想ネットワークを認証し、アクセスを許可するために使用されます。 [Azure Data Lake Store Gen 1 VNet 統合]の詳細(../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
+サービス エンドポイントは Azure Active Directory (Azure AD) によってネイティブにサポートされていません。 VNet サービス エンドポイントをサポートする Azure サービスの完全な一覧は[こちら](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview)で確認できます。 サービス エンドポイントをサポートするサービスの下にリストされている "Microsoft.AzureActiveDirectory" タグは、ADLS Gen 1 へのサービス エンドポイントをサポートするために使用されます。 ADLS Gen 1 の場合、Azure Data Lake Storage Gen1 の仮想ネットワーク統合では、仮想ネットワークと Azure Active Directory (Azure AD) との間で仮想ネットワーク サービス エンドポイント セキュリティを利用して、アクセス トークン内に追加のセキュリティ要求が生成されます。 これらの要求は、ご利用の Data Lake Storage Gen1 アカウントに対して仮想ネットワークを認証し、アクセスを許可するために使用されます。 [Azure Data Lake Store Gen 1 の VNet 統合](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の詳細をご覧ください
 
 ### <a name="are-there-any-limits-on-how-many-vnet-service-endpoints-i-can-set-up-from-my-vnet"></a>VNet から設定できる VNet サービス エンドポイントの数に制限はありますか。
 仮想ネットワーク内の VNet サービス エンドポイントの合計数に制限はありません。 Azure サービス リソース (Azure Storage アカウントなど) の場合、リソースへのアクセスに使用されるサブネットの数がサービスによって制限される場合があります。 制限の例を次の表に示します。 

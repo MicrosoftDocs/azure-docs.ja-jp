@@ -5,16 +5,18 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 5/6/2019
-ms.openlocfilehash: ce6188732720bc43c5849fa492237c7ab98487c6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/22/2019
+ms.openlocfilehash: 91ba485347aeb19ce9b173bd4cec944a655a56dc
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067494"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203499"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でユーザーを作成する
-この記事では、Azure Database for PostgreSQL サーバーでユーザーを作成する方法について説明します。
+この記事では、Azure Database for PostgreSQL サーバー内にユーザーを作成する方法について説明します。 
+
+Azure サブスクリプションのユーザーとその特権を作成して管理する方法について確認する場合は、[Azure ロール ベース アクセス制御 (RBAC) に関する記事](../role-based-access-control/built-in-roles.md)を参照するか、または[ロールのカスタマイズ方法](../role-based-access-control/custom-roles.md)について確認してください。
 
 ## <a name="the-server-admin-account"></a>サーバー管理者アカウント
 Azure Database for PostgreSQL を初めて作成したときに、サーバー管理者のユーザー名とパスワードを指定しています。 手順について詳しくは、[クイック スタート](quickstart-create-server-database-portal.md)に関するページをご覧ください。 サーバー管理者のユーザー名はカスタム名なので、選んだサーバー管理者ユーザー名は Azure Portal で確認できます。

@@ -1,22 +1,22 @@
 ---
-title: Windows Virtual Desktop プレビューのサービス プリンシパルとロールの割り当てを PowerShell を使って作成する - Azure
-description: Windows Virtual Desktop プレビューで PowerShell を使用してサービス プリンシパルを作成する方法とロールを割り当てる方法を説明します。
+title: Windows Virtual Desktop のサービス プリンシパルとロールの割り当てを PowerShell を使って作成する - Azure
+description: Windows Virtual Desktop で PowerShell を使用してサービス プリンシパルを作成する方法とロールを割り当てる方法を説明します。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 09/09/2019
 ms.author: helohr
-ms.openlocfilehash: dbde4ccede7f27ae494c8326babc7ec69b4a1266
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 87057d29d9d95ac0ebca298e40ca0d8c2aa9b0b1
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70985003"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679631"
 ---
 # <a name="tutorial-create-service-principals-and-role-assignments-by-using-powershell"></a>チュートリアル:PowerShell を使用してサービス プリンシパルとロールの割り当てを作成する
 
-サービス プリンシパルとは、特定の目的に使用するロールやアクセス許可を割り当てるために Azure Active Directory に作成できる ID です。 Windows Virtual Desktop プレビューでは、次の用途でサービス プリンシパルを作成できます。
+サービス プリンシパルとは、特定の目的に使用するロールやアクセス許可を割り当てるために Azure Active Directory に作成できる ID です。 Windows Virtual Desktop では、次の用途でサービス プリンシパルを作成できます。
 
 - Windows Virtual Desktop の特定の管理タスクを自動化する。
 - Windows Virtual Desktop 用の Azure Resource Manager テンプレートを実行する際、MFA が求められるユーザーの代わりとなる資格情報として使用する。

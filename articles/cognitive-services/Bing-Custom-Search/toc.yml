@@ -60,8 +60,9 @@
     - name: 検索結果の強調表示の処理
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: Web ページのページング
-      href: page-webpages.md
+    - name: 検索結果をページングする
+      href: ../Bing-Web-Search/paging-search-results.md
+      maintainContext: true
 - name: リファレンス
   items:
     - name: Bing Custom Autosuggest API リファレンス

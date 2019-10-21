@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 09/13/2019
 ms.author: dacurwin
-ms.openlocfilehash: 72ab33cd280892ac6de827986e21e04672e58960
-ms.sourcegitcommit: acffa72239413c62662febd4e39ebcb6c6c0dd00
+ms.openlocfilehash: db3e4b8a8abea4718f5779790906bf45591d221c
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68951859"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018702"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM バックアップの概要
 
@@ -140,48 +140,13 @@ OS ディスク | 4095 GB | 17 GB
 この場合の VM の実際のサイズは、17 GB + 30 GB + 0 GB = 47 GB です。 この保護されたインスタンスのサイズ (47 GB) が、毎月の課金の基礎になります。 VM のデータ量が大きくなると、課金に使用される保護されたインスタンスのサイズもそれに応じて変化します。
 
 <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-## <a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>限定パブリック プレビュー:ディスク サイズが最大 30 TB のVM のバックアップ
+## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>パブリック プレビュー:ディスク サイズが最大 30 TB のVM のバックアップ
 
-Azure Backup では、サイズが最大 30 TB の大規模で強力な [Azure Managed Disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) の限定パブリック プレビューがサポートされるようになりました。 このプレビューでは、マネージド仮想マシンの運用レベルのサポートが提供されます。
+Azure Backup では、サイズが最大 30 TB の大規模で強力な [Azure Managed Disks](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) のパブリック プレビューがサポートされるようになりました。 このプレビューでは、マネージド仮想マシンの運用レベルのサポートが提供されます。
 
-実行中のバックアップに影響を与えることなく、プレビューにシームレスに登録できます。 サブスクリプションがプレビューに登録されると、最大 30 TB のディスク サイズを持つすべての仮想マシンが正常にバックアップされます。 プレビューに登録するには:
- 
-管理者特権の PowerShell ターミナルから次のコマンドレットを実行します。
+仮想マシンのバックアップ (各ディスクのサイズは最大 30 TB で、VM 内の全ディスクを結合して最大 256 TB) が、既存のバックアップに影響を与えることなく、シームレスに行われます。 Azure Backup で仮想マシンが構成済みであれば、大容量のディスクに対してバックアップを実行するのにユーザーの操作は必要ありません。
 
-1. Azure アカウントにサインインします。
-
-    ```powershell
-    PS C:> Login-AzureRmAccount
-    ```
-
-2. アップグレード用に登録するサブスクリプションを選択します。
-
-    ```powershell
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
-    ```
-3. このサブスクリプションをプレビュー プログラムに登録します。 
-
-    ```powershell
-    PS C:> Register-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-    サブスクリプションがプレビューに登録されるまで 30 分待ちます。 
-
- 4. 状態を確認するには、次のコマンドレットを実行します
-
-    ```powershell
-    PS C:> Get-AzureRmProviderFeature -FeatureName "LargeDiskVMBackupPreview" –ProviderNamespace Microsoft.RecoveryServices 
-    ```
-5. サブスクリプションが登録されたと表示されたら、次のコマンドを実行します。
-    
-    ```powershell
-    PS C:> Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
-    ```
-
-> [!NOTE]
-> このプレビューでは、4 TB を超えるディスクを使用する暗号化された VM はサポートされていません。
-
-
+大容量のディスクがある、バックアップが構成されたすべての Azure 仮想マシンは、正常にバックアップされます。
 
 ## <a name="next-steps"></a>次の手順
 

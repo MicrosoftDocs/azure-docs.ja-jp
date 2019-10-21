@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
-ms.author: subramar
-ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: atsenthi
+ms.openlocfilehash: 6f8c517c33393647e2dc5205b5a8f4afba4ae3b0
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614396"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167567"
 ---
 # <a name="application-upgrade-parameters"></a>アプリケーション アップグレードのパラメーター
 この記事では、Azure Service Fabric アプリケーションのアップグレード中に適用されるさまざまなパラメーターについて説明します。 アプリケーション アップグレードのパラメーターは、アップグレード時に適用されるタイムアウトと正常性チェックを制御します。また、パラメーターには、アップグレードの失敗時に適用する必要があるポリシーを指定します。 アプリケーション パラメーターは、以下を使用したアップグレードに適用されます。
@@ -111,7 +111,7 @@ health-check-wait-duration | ドメインのアップグレードを完了後、
 max-unhealthy-apps | 既定値と推奨値は、0 です。 アプリケーションが正常でないと見なされ、アップグレードに失敗する前にデプロイされるアプリケーションの最大数 ([正常性のセクション](service-fabric-health-introduction.md)を参照してください) を指定します。 このパラメーターは、ノード上のアプリケーションの正常性を定義するため、アップグレード中の問題を検出するうえで役立ちます。 通常、アプリケーションのレプリカの負荷はその他のノードに分散されます。これにより、アプリケーションは正常に表示され、アップグレードを続行することができます。 厳密な *max-unhealthy-apps* を指定すると、Service Fabric はアプリケーション パッケージで高速に問題を検出し、フェイルファストなアップグレードが行われるようにします。 0 ～ 100 の数値として表されます。 |
 モード | 使用できる値は、**Monitored**、**UpgradeMode**、**UnmonitoredAuto**、**UnmonitoredManual** です。 既定値は **UnmonitoredAuto** です。 これらの値の説明については、Visual Studio および PowerShell の "*必須パラメーター*" セクションをご覧ください。|
 replica-set-check-timeout |秒単位で測定されます。 <br>**ステートレス サービス**-- Service Fabric は単一のアップグレード ドメイン内で、サービスの追加インスタンスを確実に使用できるようにしようとします。 ターゲット インスタンス数が複数ある場合、最大タイムアウト値になるまで、複数のインスタンスが使用可能になるまで待機します。 このタイムアウトは、*replica-set-check-timeout* プロパティを使用して指定されます。 タイムアウトになると、サービス インスタンス数にかかわらず、Service Fabric はアップグレードを続行します。 ターゲット インスタンス数が 1 つの場合、Service Fabric は待機せずに、すぐにアップグレードを実行します。<br><br>**ステートフル サービス**-- Service Fabric は 1 つのアップグレード ドメイン内で、レプリカ セットに確実にクォーラムが含まれるようにしようとします。 Service Fabric は *replica-set-check-timeout* プロパティで指定した最大タイムアウト値になるまで、クォーラムが使用可能になるまで待機します。 タイムアウトになると、クォーラムにかかわらずアップグレードを続行します。 この設定は、ロールフォワード時には、"しない (無限)" に設定され、ロールバック時には 1,200 秒に設定されます。 |
-service-health-policy | サービスの種類名ごとにサービスの種類の正常性ポリシーを持つ JSON でエンコードされたマップ。 このマップは、既定では空です。 [パラメーターの JSON 形式。](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap). "Value" 部分の JSON には、**MaxPercentUnhealthyServices**、**MaxPercentUnhealthyPartitionsPerService**、および **MaxPercentUnhealthyReplicasPerPartition** が含まれます。 これらのパラメーターの説明については、Visual Studio および PowerShell の省略可能パラメーター セクションをご覧ください。
+service-health-policy | サービスの種類名ごとにサービスの種類の正常性ポリシーを持つ JSON でエンコードされたマップ。 このマップは、既定では空です。 [パラメーターの JSON 形式。](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-applicationhealthpolicy#servicetypehealthpolicymap) "Value" 部分の JSON には、**MaxPercentUnhealthyServices**、**MaxPercentUnhealthyPartitionsPerService**、および **MaxPercentUnhealthyReplicasPerPartition** が含まれます。 これらのパラメーターの説明については、Visual Studio および PowerShell の省略可能パラメーター セクションをご覧ください。
 timeout | 操作のタイムアウト期間 (秒) を指定します。 既定値は60 です。 |
 upgrade-domain-timeout | 各ドメインがアップグレードを完了する必要がある時間。この時間を超えると、*FailureAction* が実行されます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値はなし (無限) です。アプリケーションに合わせてカスタマイズしてください。 既定値はP10675199DT02H48M05.4775807S です。 |
 upgrade-timeout | 各ドメインがアップグレードを完了する必要がある時間。この時間を超えると、*FailureAction* が実行されます。 最初に、ISO 8601 の期間を表す文字列として解釈されます。 それが失敗した場合、ミリ秒単位の合計数を表す数値として解釈されます。 既定値はなし (無限) です。アプリケーションに合わせてカスタマイズしてください。 既定値はP10675199DT02H48M05.4775807S です。|

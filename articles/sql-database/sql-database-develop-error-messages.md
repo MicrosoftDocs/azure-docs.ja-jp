@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/06/2019
-ms.openlocfilehash: 24bd2cca2e4ed053d51f618d90274e8988a09c26
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.date: 10/02/2019
+ms.openlocfilehash: 19febc5a0a6e4a72cfebfaecd917185538130152
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568901"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035025"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題
 
@@ -55,13 +55,35 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 | エラー コード | 重大度 | 説明 |
 | ---:| ---:|:--- |
 | 4060 |16 |ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。 ログインに失敗しました。 詳細については、[エラー 4000 から 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) を参照してください。|
-| 40197 |17 |要求の処理中にサービスでエラーが発生しました。 もう一度実行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 障害の種類や発生したフェールオーバーに関する詳細な情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>SQL Database サーバーに再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 詳細については、「[一時エラー](sql-database-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
+| 40197 |17 |要求の処理中にサービスでエラーが発生しました。 もう一度実行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 障害の種類や発生したフェールオーバーに関する追加情報は、[エラー 40197 のメッセージに埋め込まれた](sql-database-develop-error-messages.md#embedded-error-codes)エラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>SQL Database サーバーに再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 詳細については、「[一時エラー](sql-database-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
 | 40501 |20 |サービスは現在ビジー状態です。 10 秒後に要求を再試行してください。 インシデント ID: %ls。 コード: %d。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md)|
 | 40613 |17 |サーバー '%.&#x2a;ls' のデータベース '%.&#x2a;ls' は現在使用できません。 後で接続を再試行してください。 問題が解決しない場合は、'%.&#x2a;ls' のセッション トレース ID を控えてカスタマー サポートに問い合わせてください。<br/><br/> このエラーは、データベースに対して専用管理者接続 (DAC) が既に確立されている場合に発生する可能性があります。 詳細については、「[一時エラー](sql-database-connectivity-issues.md#transient-errors-transient-faults)」を参照してください。|
 | 49918 |16 |要求を処理できません。 要求を処理するリソースが十分ではありません。<br/><br/>サービスは現在ビジー状態です。 後で要求を再試行してください。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
 | 49919 |16 |要求を処理、作成、更新できません。 サブスクリプション "%ld" に対して進行中の作成または更新操作が多すぎます。<br/><br/>サービスが、サブスクリプションまたはサーバーに対する複数の作成または更新要求の処理でビジ―状態です。 現在、要求はリソースの最適化のためにブロックされています。 クエリ [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) を実行して保留中の操作を確認します。 保留中の作成要求または更新要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
 | 49920 |16 |要求を処理できません。 サブスクリプション "%ld" に対して進行中の操作が多すぎます。<br/><br/>サービスが、このサブスクリプションに対する複数の要求の処理でビジー状態です。 現在、要求はリソースの最適化のためにブロックされています。 クエリ [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) を実行して操作の状態を確認します。 保留中の要求が完了するまで待つか、いずれかの保留中の要求を削除して後で要求を再試行します。 詳細については、次を参照してください。 <br/>&bull; &nbsp;[データベース サーバーのリソース制限](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[単一データベースに関する DTU ベースの制限](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[エラスティック プールに関する DTU ベースの制限](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[単一データベースに関する仮想コアベースの制限](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[エラスティック プールに関する仮想コアベースの制限](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Managed Instance のリソースの制限](sql-database-managed-instance-resource-limits.md) |
 | 4221 |16 |'HADR_DATABASE_WAIT_FOR_TRANSITION_TO_VERSIONING' を長時間待機しているため、read-secondary へのログインに失敗しました。 レプリカのリサイクル時に実行中だったトランザクションに行のバージョンがないため、レプリカはログインに使用できません。 この問題を解決するには、プライマリ レプリカのアクティブ トランザクションをロール バックするか、コミットします。 プライマリ上の長い書き込みトランザクションを避けることでこの状態が発生することを最小限に抑えられます。 |
+
+## <a name="embedded-error-codes"></a>埋め込みエラー コード
+
+次のエラーは、より一般的なエラーコード 40197 に埋め込まれています。
+
+```
+The service has encountered an error processing your request. Please try again. Error code %d.
+```
+
+| エラー コード | 重大度 | 説明 | 
+| ---:| ---:|:---|
+|  1104 |17 |書き込み中に TEMPDB の領域が不足しました。 オブジェクトを削除して領域を作成するか、クエリを書き直して使用行数を少なくします。 それでも問題が解決しない場合は、より高いサービス レベル目標にアップグレードすることを検討してください。|
+| 40020 |16 |データベースが遷移中であり、トランザクションは終了されています。|
+| 40143 |16 |要求されたパーティションに対してデータ ノードでホストされているレプリカがプライマリではありません。|
+| 40166 |16 |CloudDB の再構成が実行中であり、新しいユーザー トランザクションはすべて中止されます。|
+| 40540 |16 |データベースが読み取り専用モードに移行されたため、トランザクションは中止されました。 これは一時的な状況です。操作をやり直してください。|
+
+その他の埋め込みエラーの詳細については `sys.messages` のクエリを実行してください。
+
+```sql
+SELECT * FROM sys.[messages] WHERE [message_id] = <error_code>
+```
 
 ## <a name="database-copy-errors"></a>データベース コピー エラー
 

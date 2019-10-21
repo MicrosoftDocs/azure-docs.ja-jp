@@ -52,8 +52,9 @@
       href: gif-images.md
     - name: 注目の画像の取得
       href: trending-images.md
-    - name: 画像のページング
-      href: paging-images.md
+    - name: 検索結果をページングする
+      maintainContext: true
+      href: ../bing-web-search/paging-search-results.md
     - name: サムネイルのサイズ変更とトリミング
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

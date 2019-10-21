@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 759c804fd4128d7b28cbba078cab5e9d7e6453f6
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: f9d4b933bc9c6e11dde8168d9797a1b6196e6f47
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208300"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170684"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Azure での Linux Data Science Virtual Machine を使用したデータ サイエンス
 
@@ -30,7 +30,7 @@ Linux DSVM を使用する前に、以下の前提条件を満たしている必
 
 * **Azure サブスクリプション**。 Azure サブスクリプションを取得するには、「[無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
 * [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 仮想マシンのプロビジョニングについては、[Linux Data Science Virtual Machine のプロビジョニング](linux-dsvm-intro.md)に関するページをご覧ください。
-* お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](linux-dsvm-intro.md#install-and-configure-the-x2go-client)」をご覧ください。
+* お使いのコンピューターに [**X2Go**](https://wiki.x2go.org/doku.php) がインストールされており、XFCE セッションが開かれている。 詳細については、「[X2Go クライアントをインストールして構成する](linux-dsvm-intro.md#x2go)」をご覧ください。
 * スクロールをスムーズにするために、DSVM の FireFox Web ブラウザーで `about:config` の `gfx.xrender.enabled` フラグを切り替えます。 [詳細情報](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)。 また、`mousewheel.enable_pixel_scrolling` を `False` に設定することを検討してください。 [詳細情報](https://support.mozilla.org/questions/981140)。
 * **Azure Machine Learning アカウント**。 まだお持ちでない場合は、 [Azure Machine Learning のホームページ](https://studio.azureml.net/)で新しいアカウントにサインアップしてください。 使用開始のために無料で試すことができます。
 
@@ -382,12 +382,12 @@ Rattle では、タブベースのインターフェイスを使用します。 
 
 1. **[Distributions (ディストリビューション)]** を選択します。
 1. **word_freq_remove** と **word_freq_you** については、 **[Histogram]\(ヒストグラム\)** を選択します。
-1. **[Execute (実行)]** を選択します。 1 つのグラフ ウィンドウに両方の密度プロットが表示され、メールには _you_ という単語が _remove_ よりもはるかに頻繁に出現していることが明らかです。
+1. **[実行]** を選択します。 1 つのグラフ ウィンドウに両方の密度プロットが表示され、メールには _you_ という単語が _remove_ よりもはるかに頻繁に出現していることが明らかです。
 
 **相関関係**プロットも興味深いものです。 プロットを作成するには:
 
 1. **[Type]\(種類\)** で **[Correlation]\(相関関係\)** を選択します。
-1. **[Execute (実行)]** を選択します。
+1. **[実行]** を選択します。
 1. 推奨される変数の最大数が 40 である旨の警告が表示されます。 **[Yes (はい)]** を選択して、プロットを表示します。
 
 興味深い相関関係が表示されます。たとえば、_technology_ は _HP_ および _labs_ と強い相関があります。 また、_650_ とも強い相関があります。これは、データセットの提供者の市外局番が 650 であるためです。
@@ -409,7 +409,7 @@ Rattle では、クラスター分析を実行することもできます。 出
 * word_freq_business
 * spam
 
-**[Cluster]\(クラスター\)** タブに戻ります。 **[KMeans]** を選択し、 **[Number of clusters]\(クラスターの数\)** を **4** に設定します。 **[Execute (実行)]** を選択します。 結果が出力ウィンドウに表示されます。 1 つのクラスターには高い頻度で _george_ と _hp_ が含まれているため、おそらく本物の仕事のメールでしょう。
+**[Cluster]\(クラスター\)** タブに戻ります。 **[KMeans]** を選択し、 **[Number of clusters]\(クラスターの数\)** を **4** に設定します。 **[実行]** を選択します。 結果が出力ウィンドウに表示されます。 1 つのクラスターには高い頻度で _george_ と _hp_ が含まれているため、おそらく本物の仕事のメールでしょう。
 
 基本的なデシジョン ツリー機械学習モデルを作成するには:
 
@@ -421,7 +421,7 @@ Rattle では、クラスター分析を実行することもできます。 出
 Rattle の便利な機能に、複数の機械学習メソッドを実行し、それらをすばやく評価する機能があります。 手順は次のようになります。
 
 1. **[Type]\(種類\)** で **[All]\(すべて\)** を選択します。
-1. **[Execute (実行)]** を選択します。
+1. **[実行]** を選択します。
 1. Rattle の実行が完了すると、**SVM** のような任意の **[Type]\(種類\)** の値を選択し、結果を表示できます。
 1. また、 **[Evaluate]\(評価\)** タブを使用して、検証セットに対する各モデルのパフォーマンスを比較することもできます。たとえば、 **[Error Matrix (誤差マトリックス)]** を選択すると、検証セットに対する各モデルの混同行列、全体の誤差、および平均クラス誤差が表示されます。 また、ROC 曲線のプロット、感度解析の実行、および他の種類のモデル評価を行うこともできます。
 

@@ -6,20 +6,20 @@ author: heidisteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/16/2019
+ms.date: 10/02/2019
 ms.author: heidist
-ms.openlocfilehash: fec81cd9660348d492b1dabd24ac689f2b06e880
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 4abef5a3030643d4c7b91d2911f350190972f1eb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638823"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937263"
 ---
 # <a name="create-an-azure-search-index-in-the-portal"></a>ポータルで Azure Search インデックスを作成する
 
-Azure Search では、プロトタイプまたは Azure Search サービスでホストされる[検索インデックス](search-what-is-an-index.md)の作成に役立つインデックス デザイナーがポータルに組み込まれています。 このツールは、スキーマの構築に使用されます。 定義を保存すると、空のインデックス全体が Azure Search で表現されます。 インデックスに検索可能なデータを読み込む方法は指定されていません。
+Azure Search では、プロトタイプまたは Azure Search サービスでホストされる[検索インデックス](search-what-is-an-index.md)の作成に役立つインデックス デザイナーがポータルに組み込まれています。 このツールは、スキーマの構築に使用されます。 定義を保存すると、空のインデックス全体が Azure Search で表現されます。 インデックスに検索可能なコンテンツを読み込む方法は指定されていません。
 
-インデックス デザイナーは、インデックスを作成する 1 つの方法です。 プログラムでは、[.NET](search-create-index-dotnet.md) または [REST](search-create-index-rest-api.md) API を使用して、インデックスを作成できます。
+インデックス デザイナーは、インデックスを作成する 1 つの方法です。 または、[データのインポート ウィザード](search-get-started-portal.md)を使用して、インデックスの作成と読み込みを行うこともできます。 このウィザードでは、このウィザード自身が作成したインデックスのみが機能します。 プログラムでは、[.NET](search-create-index-dotnet.md) または [REST](search-create-index-rest-api.md) API を使用して、インデックスを作成できます。
 
 ## <a name="start-index-designer"></a>インデックス デザイナーを開始する
 
@@ -41,15 +41,17 @@ Azure Search では、プロトタイプまたは Azure Search サービスで�
 
 1. アップロードするドキュメントを完全に指定するためのフィールドを追加し、それぞれに[データ型](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)を設定します。 たとえば、ドキュメントが *hotel-id*、*hotel-name*、*address*、*city*、および *region* で構成されている場合は、インデックス内のそれぞれに対応するフィールドを作成します。 属性の設定に役立つ情報については、[下のセクションにある設計ガイダンス](#design)を参照してください。
 
-2. 型 Edm.String の *key* フィールドを指定します。 このフィールドの値で、各ドキュメントが一意に識別される必要があります。 既定では、このフィールドには *id* という名前が付けられますが、文字列が[名前付け規則](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)を満たす限り、その名前を変更できます。 たとえば、フィールド コレクションに *hotel-id* が含まれている場合は、それをキーに選択します。 キー フィールドはどの Azure Search インデックスにも必須であり、かつ文字列である必要があります。
+1. 受信データ自体が階層化されている場合、入れ子構造を表すために、スキーマには[複合型](search-howto-complex-data-types.md)が含まれている必要があります。 あらかじめ登録されているサンプル データ セットである Hotels (ホテル) は、各ホテルとの一対一のリレーションシップを持つ Address (複数のサブフィールドを含む) と、各ホテルに複数の部屋が関連付けられている複合型コレクションの Rooms を使用した複合型を示しています。 
 
-3. 各フィールドに属性を設定します。 インデックス デザイナーでは、そのデータ型に対して無効な属性は除外されますが、含める必要がある値は提案されません。 属性の目的を理解するには、次のセクションのガイダンスを参照してください。
+1. 型 Edm.String の *key* フィールドを指定します。 キー フィールドはどの Azure Search インデックスにも必須であり、かつ文字列である必要があります。 このフィールドの値で、各ドキュメントが一意に識別される必要があります。 既定では、このフィールドには *id* という名前が付けられますが、文字列が[名前付け規則](https://docs.microsoft.com/rest/api/searchservice/Naming-rules)を満たす限り、その名前を変更できます。 たとえば、フィールド コレクションに *hotel-id* が含まれている場合は、それをキーに選択します。 
+
+1. 各フィールドに属性を設定します。 インデックス デザイナーでは、そのデータ型に対して無効な属性は除外されますが、含める必要がある値は提案されません。 属性の目的を理解するには、次のセクションのガイダンスを参照してください。
 
     Azure Search API のドキュメントには、単純な*ホテル* インデックスを処理するコード例が含まれています。 下のスクリーンショットでは、インデックス定義中に指定されたフランス語の言語アナライザーを含むインデックス定義を確認できます。これは、ポータルで実習問題として再作成できます。
 
     ![ホテル デモのインデックス](media/search-create-index-portal/field-definitions.png "ホテル デモのインデックス")
 
-4. 完了したら、 **[作成]** をクリックしてインデックスを保存および作成します。
+1. 完了したら、 **[作成]** をクリックしてインデックスを保存および作成します。
 
 <a name="design"></a>
 

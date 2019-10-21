@@ -1,6 +1,6 @@
 ---
-title: Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項に関する記事 | Microsoft Docs
-description: Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項について学習します。
+title: PostgreSQL から Azure Database for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項に関する記事 | Microsoft Docs
+description: PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項について説明します。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,21 +10,21 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/06/2019
-ms.openlocfilehash: 56758e2962adb41c9876171c89b37263a70ed0e4
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.date: 10/03/2019
+ms.openlocfilehash: 891e8a261e092de0ffcef3941dd48f01942a8030
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743553"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802585"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>Azure DB for PostgreSQL へのオンライン移行に関する既知の問題と移行の制限事項
+# <a name="known-issuesmigration-limitations-with-online-migrations-from-postgresql-to-azure-db-for-postgresql-single-server"></a>PostgreSQL から Azure DB for PostgreSQL-Single Server へのオンライン移行に関する既知の問題と移行の制限事項
 
-PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に関する既知の問題点と制限事項について、後続のセクションで説明します。
+以降のセクションで、PostgreSQL から Azure Database for PostgreSQL-Single Server へのオンライン移行に関する既知の問題点と制限事項について説明します。
 
 ## <a name="online-migration-configuration"></a>オンライン移行の構成
 
-- ソースの PostgreSQL サーバーは、バージョン 9.5.11、9.6.7、または 10.3 以降を実行している必要があります。 詳しくは、「[サポートされている PostgreSQL Database バージョン](../postgresql/concepts-supported-versions.md)」の記事をご覧ください。
+- ソースの PostgreSQL サーバーでは、バージョン 9.5.11、9.6.7、または 10.3 以降が実行されている必要があります。 詳しくは、「[サポートされている PostgreSQL Database バージョン](../postgresql/concepts-supported-versions.md)」の記事をご覧ください。
 - 同じバージョンの移行のみがサポートされています。 たとえば、PostgreSQL 9.5.11 から Azure Database for PostgreSQL 9.6.7 への移行はサポートされていません。
 
     > [!NOTE]
@@ -42,7 +42,7 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
 
 - ユーザーには、ソース データベースをホストしているサーバーに対するスーパー ユーザー権限が必要です
 - ソース データベース スキーマに ENUM があることに加えて、ソースとターゲットのデータベース スキーマが一致する必要があります。
-- ターゲット Azure Database for PostgreSQL のスキーマに外部キーを含めることはできません。 外部キーを削除するには、次のクエリを使用します。
+- ターゲット Azure Database for PostgreSQL-Single Server のスキーマに外部キーを含めることはできません。 外部キーを削除するには、次のクエリを使用します。
 
     ```
                                 SELECT Queries.tablename
@@ -73,7 +73,7 @@ PostgreSQL から Azure Database for PostgreSQL へのオンライン移行に�
 
     クエリの結果内の外部キー削除 (2 列目) を実行します。
 
-- ターゲット Azure Database for PostgreSQL のスキーマにトリガーを含めることはできません。 ターゲット データベース内のトリガーを無効にするには、次のコマンドを使用します。
+- ターゲット Azure Database for PostgreSQL-Single Server のスキーマにトリガーを含めることはできません。 ターゲット データベース内のトリガーを無効にするには、次のコマンドを使用します。
 
      ```
     SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';

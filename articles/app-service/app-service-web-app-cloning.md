@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 0f4915add76ce21064b7a79ae110f608592263bd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 47efcfc4bf2b0268d6720b659786300e751e861d
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067138"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983687"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
 
@@ -50,7 +50,7 @@ New-AzAppServicePlan -Location "North Central US" -ResourceGroupName Destination
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 ```
 
-関連付けられているすべてのデプロイ スロットを含む既存のアプリを複製するには、`IncludeSourceWebAppSlots` パラメーターを使う必要があります。 次の PowerShell コマンドは、`New-AzWebApp` コマンドでのこのパラメーターの使い方を示したものです。
+関連付けられているすべてのデプロイ スロットを含む既存のアプリを複製するには、`IncludeSourceWebAppSlots` パラメーターを使う必要があります。  `IncludeSourceWebAppSlots` パラメーターは、すべてのスロットを含むアプリ全体を複製する場合にのみサポートされることに注意してください。 次の PowerShell コマンドは、`New-AzWebApp` コマンドでのこのパラメーターの使い方を示したものです。
 
 ```powershell
 $destapp = New-AzWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: b8f9ca96ac9386037460ad5c1c9f56fe7b9c2e18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 67d8421b2e545c951dcbc3280a306514e4b14897
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939991"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030054"
 ---
 # <a name="hosted-test-drive"></a>ホストされた体験版
 
@@ -52,4 +52,4 @@ ms.locfileid: "64939991"
 
 ## <a name="next-steps"></a>次の手順
 
-準備ができたらオファーを **発行**します。アプリが認定に合格すると、オファーの **プレビュー**が提供されます。 UI で体験版を開始し、体験版が正しく実行されていることを確認します。 プレビューのオファリングに問題がなければ、 **稼働**を開始します。
+準備ができたらオファーを**発行**し、アプリが認定に合格すると、オファーの**プレビュー**が提供されます。 UI で体験版を開始し、体験版が正しく実行されていることを確認します。 プレビューのオファリングに問題がなければ、**稼働**を開始します。

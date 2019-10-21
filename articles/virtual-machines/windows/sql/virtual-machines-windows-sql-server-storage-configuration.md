@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: mathoma
-ms.openlocfilehash: 2705b42849922ce7e3650162b8f1ff78723685c2
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 57a325dd297955296a94db134b6a2a6d58a37f03
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309241"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828611"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 
@@ -42,9 +42,28 @@ Azure で SQL Server 仮想マシン イメージを構成するとき、ポー�
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-SQL Server ギャラリー イメージを使用して Azure VM をプロビジョニングするとき、新しい VM のストレージを自動的に構成することを選択できます。 自動構成では、ストレージ サイズ、パフォーマンスの制限、およびワークロードの種類を指定します。 次のスクリーンショットは、SQL VM のプロビジョニング中に使用する [ストレージ構成] ブレードです。
+SQL Server のギャラリー イメージを使用して Azure VM をプロビジョニングするときは、 **[SQL Server の設定]** タブの **[構成の変更]** を選択して、パフォーマンス最適化ストレージの構成ページを開きます。 既定値のままにすることも、ワークロードに基づいてご自分のニーズに最適なディスク構成の種類に変更することもできます。 
 
 ![プロビジョニング中の SQL Server VM ストレージの構成](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
+
+**[ストレージの最適化]** では、SQL Server をデプロイする対象のワークロードの種類を選択します。 **[全般]** 最適化オプションの既定では、最大 5,000 IOPS のデータ ディスクが 1 つ使用され、この同じドライブをデータ、トランザクション ログ、TempDB ストレージに使用します。 **[トランザクション処理]** (OLTP) または **[データ ウェアハウス]** を選択すると、データ用とトランザクション ログ用にそれぞれ個別のディスクが作成され、TempDB 用にはローカル SSD が使用されます。 **[トランザクション処理]** と **[データ ウェアハウス]** でストレージに違いはありませんが、[ストライプの構成とトレース フラグ](#workload-optimization-settings)が変更されます。 Premium Storage を選択すると、[SQL Server VM のパフォーマンスのベスト プラクティス](virtual-machines-windows-sql-performance.md)に関する記事に従って、キャッシュがデータ ドライブについては "*読み取り専用*" に、ログ ドライブについては "*なし*" に設定されます。 
+
+![プロビジョニング中の SQL Server VM ストレージの構成](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+ディスク構成は完全にカスタマイズ可能であるため、SQL Server VM のワークロードに必要なストレージ トポロジ、ディスクの種類、IOPS を構成できます。 また、SQL Server VM がサポートされているリージョン (米国東部 2、東南アジア、北ヨーロッパ) にあり、[サブスクリプションで Ultra Disks](/azure/virtual-machines/windows/disks-enable-ultra-ssd) を有効にしている場合は、 **[ディスクの種類]** のオプションとして UltraSSD (プレビュー) を使用することもできます。  
+
+さらに、ディスクのキャッシュを設定することもできます。 [Premium ディスク](/azure/virtual-machines/windows/disks-types#premium-ssd)で使用する場合、Azure VM には [BLOB キャッシュ](/azure/virtual-machines/windows/premium-storage-performance#disk-caching)と呼ばれる多層キャッシュ テクノロジがあります。 BLOB キャッシュでは、仮想マシンの RAM とローカル SSD の組み合わせがキャッシュに使用されます。 
+
+Premium SSD のディスク キャッシュは、"*読み取り専用*"、"*読み取り書き込み*"、または "*なし*" にすることができます。 
+
+- "*読み取り専用*" キャッシュは、Premium Storage に格納されている SQL Server データ ファイルの場合に非常にメリットがあります。 "*読み取り専用*" キャッシュを使用すると、読み取りは VM メモリおよびローカル SSD 内にあるキャッシュから実行されるので、読み取り待機時間は短く、読み取り IOPS は高く、スループットは高くなります。 これらの読み取りは、Azure Blob Storage に存在するデータ ディスクからの読み取りよりはるかに高速です。 Premium Storage では、ディスクの IOPS とスループットのために、キャッシュからの読み取りはカウントされません。 そのため、アプリケーションの総 IOPS と総スループットを向上させることができます。 
+- ログ ファイルはシーケンシャルに書き込まれ、"*読み取り専用*" キャッシュによるメリットがないため、SQL Server ログ ファイルがホストされるディスクには "*なし*" キャッシュ構成を使用する必要があります。 
+- SQL Server では "*読み取り書き込み*" キャッシュでのデータ整合性がサポートされていないため、"*読み取り書き込み*" キャッシュを使用して SQL Server ファイルをホストしないでください。 書き込みが "*読み取り専用*" BLOB キャッシュ層を通過すると、書き込みによって "*読み取り専用*" BLOB キャッシュの容量が無駄になり、待機時間が若干増加します。 
+
+
+   > [!TIP]
+   > ストレージ構成が、選択した VM サイズによって課される制限と一致していることを確認してください。 VM サイズのパフォーマンス上限を超えるストレージ パラメーターを選択すると、次のエラーが発生します: `The desired performance might not be reached due to the maximum virtual machine disk performance cap.`。 ディスクの種類を変更して IOPS を減らすか、VM サイズを増やしてパフォーマンスの上限を上げてください。 
+
 
 VM が作成されたら、ここで選択した内容に基づいて、次のストレージ構成タスクが実行されます。
 
@@ -64,6 +83,13 @@ Azure によるストレージ設定の構成方法の詳細については、�
 * [自動修正を備えた VM の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [AKV 統合を備えた VM の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
+### <a name="quickstart-template"></a>クイック スタート テンプレート
+
+次のクイック スタート テンプレートを使用すると、ストレージ最適化を使用して SQL Server VM をデプロイできます。 
+
+* [ストレージ最適化を使用して VM を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage/)
+* [UltraSSD を使用して VM を作成する](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-new-storage-ultrassd)
+
 ## <a name="existing-vms"></a>既存の VM
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
@@ -79,32 +105,11 @@ Azure によるストレージ設定の構成方法の詳細については、�
 
 ![既存の SQL Server VM 用のストレージを構成する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
-表示される構成オプションは、この機能を前に使用したことがあるかどうかによって異なります。 初めて使用する場合は、新しいドライブのストレージ要件を指定できます。 この機能をドライブを作成したことがある場合は、そのドライブのストレージを拡張することを選択できます。
+SQL Server VM の作成プロセス中に構成されたドライブのディスク設定を変更できます。 **[ドライブの拡張]** を選択するとドライブ変更ページが開き、ディスクの種類を変更したり、ディスクを追加したりすることができます。 
 
-### <a name="use-for-the-first-time"></a>初めて使用する
+![既存の SQL Server VM 用のストレージを構成する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 
-この機能を初めて使用する場合は、新しいドライブのストレージ サイズとパフォーマンス制限を指定できます。 これは、プロビジョニングするときの操作に似ています。 主な違いは、ワークロードの種類を指定できない点です。 この制限により、仮想マシン上の既存の SQL Server 構成が利用できなくなるのを防ぎます。
 
-Azure では、仕様に基いて新しいドライブが作成されます。 このシナリオでは、次のストレージ構成タスクが実行されます。
-
-* Premium Storage データ ディスクを作成し、仮想マシンに接続する。
-* SQL Server にアクセスできるようにデータ ディスクを構成する。
-* 指定したサイズとパフォーマンス (IOPS とスループット) 要件に基づいて、データ ディスクを記憶域プールにまとめる。
-* 仮想マシンで記憶域プールを新しいドライブに関連付ける。
-
-Azure によるストレージ設定の構成方法の詳細については、「 [ストレージの構成](#storage-configuration)」を参照してください。
-
-### <a name="add-a-new-drive"></a>新しいドライブの追加
-
-SQL Server VM に既にストレージを構成してある場合は、そのストレージを拡張すると、新しいオプションが 2 つ表示されます。 1 つ目は新しいドライブを追加するオプションで、VM のパフォーマンス レベルを向上させることができます。
-
-ただし、パフォーマンス向上を実現するには、ドライブを追加した後、手動で構成しなければならない部分がいくつか出てきます。
-
-### <a name="extend-the-drive"></a>ドライブの拡張
-
-もう 1 つはストレージ拡張オプションで、既存のドライブを拡張します。 このオプションでは、ドライブの利用可能なストレージは増えますが、パフォーマンスは向上しません。 記憶域プールを使用している場合、記憶域プールの作成後に、列数を変更することはできません。 データ ディスクにわたってストライピングできる、並列書き込み数は、この列数によって決まります。 したがって、データ ディスクを追加しても、パフォーマンスを高めることはできません。 データが書き込まれるストレージが増えるだけです。 また、この制限は、ドライブを拡張するとき、列数によって、追加できるデータ ディスクの最小数が決まることを意味します。 データ ディスクが 4 つ含まれる記憶域プールを作成した場合は、列数も 4 になります。 ストレージを拡張するときは毎回、少なくとも 4 つのデータ ディスクを追加する必要があります。
-
-![SQL VM のドライブを拡張する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
 ## <a name="storage-configuration"></a>ストレージの構成
 

@@ -1,5 +1,5 @@
 ---
-title: Terraform と Azure Cloud Shell を使用する
+title: Terraform 用に Azure Cloud Shell を構成する
 description: Terraform と Azure Cloud Shell を使用すると、認証とテンプレートの構成が簡単になります。
 services: terraform
 ms.service: azure
@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/19/2017
-ms.openlocfilehash: ab2fd0c7fa546201d6eb19f727053a9ac54fa854
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 09/20/2019
+ms.openlocfilehash: e0a59697a3e4da97cf082c4c771fe93ad33b6035
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66169920"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173544"
 ---
 # <a name="terraform-cloud-shell-development"></a>Terraform Cloud Shell の開発 
 
@@ -33,7 +33,7 @@ Terraform をインストールすると、Cloud Shell ですぐに使用でき�
 
 Azure サブスクリプションのリソースにアクセスし、変更を加える場合、Azure Terraform モジュールは資格情報を要求します。 Cloud Shell で作業するときに、Cloud Shell で Azure Terraform モジュールを使用するには、次のコードをスクリプトに追加します。
 
-```tf
+```hcl
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
 }

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: quickstart
 ms.date: 06/12/2019
 ms.author: hrasheed
-ms.openlocfilehash: d937e090895a5b02026c755b1efb7dd1e0b35000
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 033227f085cd23c5fa26313cb4a2816070676560
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67054299"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076437"
 ---
 # <a name="quickstart-query-apache-hbase-in-azure-hdinsight-with-hbase-shell"></a>クイック スタート:HBase を使用して Azure HDInsight で Apache HBase を実行する
 
@@ -32,11 +32,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 多くの場合、データは次のような表形式で表示されます。
 
-![HDInsight HBase の表形式データ](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
+![HDInsight Apache HBase の表形式データ](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-tabular.png)
 
 HBase ([クラウド BigTable](https://cloud.google.com/bigtable/) の実装) では、同じデータが次のように表示されます。
 
-![HDInsight HBase の Bigtable データ](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
+![HDInsight Apache HBase の BigTable データ](./media/query-hbase-with-hbase-shell/hdinsight-hbase-contacts-bigtable.png)
 
 SSH を使用して HBase クラスターに接続し、Apache HBase シェルを使用して HBase テーブルの作成、データの挿入、データのクエリを行うことができます。
 

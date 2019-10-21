@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 04/29/2019
+ms.date: 10/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5460033902b71174dc3a10615811f657081f0e4
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 72ae1301be4a3a3c086961aae72fb9eeb12aeda2
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186301"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960226"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect:アカウントとアクセス許可
 
@@ -48,10 +48,18 @@ Azure AD Connect を実行するためのこれら 3 つのアカウントに加
 
 - **SQL SA アカウント (任意)** :     通常版の SQL Server を使用して ADSync データベースを作成する目的で使用します。  この SQL Server は、Azure AD Connect のインストール環境に対してローカルでもリモートでもかまいません。  このアカウントは、エンタープライズ管理者と同じアカウントにすることもできます。  現在では、SQL 管理者が帯域外でデータベースのプロビジョニングを実行し、データベース所有者権限を持つ Azure AD Connect 管理者がインストールできるようになっています。  詳細については、「[Install Azure AD Connect using SQL delegated administrator permissions (SQL によって委任された管理者の権限を使用した Azure AD Connect のインストール)](how-to-connect-install-sql-delegation.md)」を参照してください。
 
+
+>[!IMPORTANT]
+> ビルド 1.4.###.# 以降では、エンタープライズ管理者アカウントまたはドメイン管理者アカウントを AD DS コネクタ アカウントとして使用することはサポートされません。  **既存のアカウントを使用**するよう指定するときにエンタープライズ管理者アカウントまたはドメイン管理者アカウントを入力しようとすると、エラーが発生します。
+
 > [!NOTE]
 > ESAE 管理フォレスト ("Red Forest" とも呼ばれます) からの Azure AD Connect で使用される管理アカウントの管理がサポートされています。
 > 専用管理フォレストを使用すると、組織は、運用環境よりもセキュリティ制御が強化された環境で、管理アカウント、ワークステーション、およびグループをホストできます。
 > 専用管理フォレストの詳細については、[ESAE 管理フォレスト設計のアプローチ](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#esae-administrative-forest-design-approach)に関する記事を参照してください
+>>>>>>> e683a61b0ed62ae739941410f658a127534e2481
+
+> [!NOTE]
+> 最初のセットアップの後、グローバル管理者ロールは必要ありません。必要なアカウントは、**ディレクトリ同期アカウント** ロール アカウントのみとなります。 これは必ずしも、グローバル管理者ロールを持つアカウントを削除した方がいいという意味ではありません。 ロールをより弱いロールに変更することをお勧めします。アカウントを完全に削除すると、ウィザードを再実行する必要がある場合に問題が発生する可能性があるためです。 ロールの権限を減らすことによって、Azure AD Connect ウィザードを再び使用する必要がある場合に、常に権限を再昇格させることができます。 
 
 ## <a name="installing-azure-ad-connect"></a>Azure AD Connect のインストール
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。

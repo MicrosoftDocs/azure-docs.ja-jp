@@ -1,5 +1,5 @@
 ---
-title: Node.js を使用して Azure SQL Database に照会する | Microsoft Docs
+title: クイック スタート:Node.js を使用して Azure SQL データベースに照会する
 description: Azure SQL データベースに接続して T-SQL ステートメントでデータベースに照会するプログラムを Node.js で作成する方法。
 services: sql-database
 ms.service: sql-database
@@ -10,16 +10,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
-ms.openlocfilehash: 72e509a9a7f820c26895bdfac9216b0373729f6c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.custom: seo-javascript-september2019, seo-javascript-october2019
+ms.openlocfilehash: 4d9c3954aea5fe64439190a2a0886fd8300c4cf9
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947094"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72178046"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>クイック スタート:Node.js を使用して Azure SQL データベースに照会する
 
-この記事では、[Node.js](https://nodejs.org) を使用して Azure SQL データベースに接続する方法を紹介します。 その後、T-SQL ステートメントを使用してデータを照会することができます。
+このクイックスタートでは、[Node.js](https://nodejs.org) を使用して Azure SQL データベースに接続する方法を紹介します。 その後、T-SQL ステートメントを使用してデータを照会することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -29,7 +30,7 @@ ms.locfileid: "68947094"
 
   || 単一データベース | マネージド インスタンス |
   |:--- |:--- |:---|
-  | Create| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
+  | 作成| [ポータル](sql-database-single-database-get-started.md) | [ポータル](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | 構成 | [サーバーレベルの IP ファイアウォール規則](sql-database-server-level-firewall-rule.md)| [VM からの接続](sql-database-managed-instance-configure-vm.md)|

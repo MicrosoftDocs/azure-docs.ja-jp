@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: b731c5fe6b6c7055b7397386b1e9fd4bed47db8a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: abcd6dc8c50b819dd02347b938602af7f2152d04
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910588"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996628"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure Security Center 計画および運用ガイド
 このガイドは、Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -182,13 +182,13 @@ Security Center の [概要] では、Azure リソースと接続済みの Azure
 毎日のセキュリティ操作の一環として、[脅威インテリジェンス](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) オプションにアクセスすることを計画してください。 そこでは、特定のコンピューターがボットネットの一部であるかどうかを特定するなど、環境に対するセキュリティの脅威を特定することができます。
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>新しいリリースや変更されたリソースの監視
-ほとんどの Azure 環境は動的で、新しいリソースが日常的に増減されたり、構成や変更が実施されたりします。Security Center を使用すると、これらの新しいリソースのセキュリティ状態を可視化できるようになります。
+ほとんどの Azure 環境は、リソースが定期的に作成、スピンアップまたはダウン、再構成、変更され動的です。 Security Center を使用すると、これらの新しいリソースのセキュリティ状態を可視化できるようになります。
 
 Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security Center によって自動的にこれらのリソースが検出され、セキュリティの監視が開始されます。 これには、PaaS の Web ロールと worker ロールも含まれます。 データ収集が [セキュリティ ポリシー](tutorial-security-policy.md)で有効になっている場合は、仮想マシンに対して追加の監視機能が自動的に有効になります。
 
 ![Key areas](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
 
-1. 仮想マシンで、 **[防止]** セクションの **[コンピューティング]** をクリックします。 データの有効化に関する問題または関連する推奨事項があれば、 **[概要]** タブの **[監視の推奨事項]** セクションに表示されます。
+1. 仮想マシンの場合は、 **[リソース セキュリティの検疫]** セクションの **[計算とアプリ]** をクリックします。 データの有効化に関する問題または関連する推奨事項があれば、 **[概要]** タブの **[監視の推奨事項]** セクションに表示されます。
 2. **[推奨事項]** を表示し、新しいリソースに関してセキュリティ上のリスクが特定されているかどうか、あればどのようなリスクかを確認します。
 3. 環境に新しい VM が追加されると、通常は、最初にオペレーティング システムのみがインストールされます。 リソースの所有者は、ある時点で、これらの VM で使用されるアプリをデプロイする必要が生じることがあります。  理想としては、このワークロードの最終的な目的を理解している必要があります。 たとえば、アプリケーション サーバーかもしれません。 新しいこのワークロードの目的に基づき、適切な**セキュリティ ポリシー**を有効にできます。これは、このワークフローの 3 番目の手順です。
 4. Azure 環境に新しいリソースを追加すると、 **[セキュリティ アラート]** タイルに新しいアラートが表示される場合があります。 このタイルで新しいアラートを探し、推奨事項に従います。
@@ -203,7 +203,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 ### <a name="hardening-access-and-applications"></a>アクセスとアプリケーションのセキュリティ強化
 
-セキュリティ操作の一環として、VM へのアクセスを制限する予防措置を採用したり、VM 上で実行されているアプリケーションを制御したりする必要もあります。 Azure VM への受信トラフィックをロックダウンすることで、攻撃にさらされることを減らすと同時に、必要に応じて簡単に VM に接続できるようになります。 VM へのアクセスのセキュリティを強化するには、[Just in Time VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) アクセス機能を使用します。
+セキュリティ操作の一環として、VM へのアクセスを制限する予防措置を採用したり、VM 上で実行されているアプリケーションを制御したりする必要もあります。 Azure VM への受信トラフィックをロックダウンすることで、攻撃にさらされることを減らすと同時に、必要に応じて簡単に VM に接続できるようになります。 VM へのアクセスのセキュリティを強化するには、[Just-In-Time VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) アクセス機能を使用します。
 
 [適応型アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)を使用して、Azure に配置された VM で実行できるアプリケーションを制限することができます。 いくつかの利点のうち、これは特にマルウェアから VM を強化することに役立ちます。 機械学習を使用すると、Security Center ではホワイトリスト登録に関する規則の作成を支援するため、VM で実行されているプロセスが分析されます。
 

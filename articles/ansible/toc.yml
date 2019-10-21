@@ -1,89 +1,117 @@
-items:
 - name: Azure 上の Ansible のドキュメント
   href: ./index.yml
 - name: 概要
   items:
-  - name: Azure 上の Ansible について
-    href: ./ansible-overview.md
+    - name: Azure 上の Ansible について
+      href: ./ansible-overview.md
 - name: クイック スタート
-  items:
-  - name: Ansible ソリューション テンプレートのデプロイ
-    href: ./ansible-deploy-solution-template.md
-  - name: Linux VM での Ansible のインストール
-    href: /azure/virtual-machines/linux/ansible-install-configure
-    maintainContext: true
-  - name: Linux VM の作成
-    href: /azure/virtual-machines/linux/ansible-create-vm
-    maintainContext: true
-  - name: Linux VM の管理
-    href: /azure/virtual-machines/linux/ansible-manage-linux-vm
-    maintainContext: true
-  - name: Cloud Shell でのプレイブックの実行
-    href: ./ansible-run-playbook-in-cloudshell.md
   expanded: true
+  items:
+    - name: Ansible ソリューション テンプレートを CentOS にデプロイする
+      href: ./ansible-deploy-solution-template.md
+    - name: Ansible を Linux 仮想マシンにインストールする
+      href: /azure/virtual-machines/linux/ansible-install-configure
+      maintainContext: true
+    - name: Cloud Shell でプレイブックを実行する
+      href: ./ansible-run-playbook-in-cloudshell.md
+    - name: Linux Virtual Machines の操作
+      expanded: true
+      items:
+        - name: Linux 仮想マシンを構成する
+          href: /azure/virtual-machines/linux/ansible-create-vm
+          maintainContext: true
+        - name: Linux 仮想マシンを管理する
+          href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+          maintainContext: true
 - name: チュートリアル
   items:
-  - name: AKS
-    items:
-    - name: AKS クラスターの作成と構成
-      href: ./ansible-create-configure-aks.md
-  - name: App Service
-    items:
-    - name: Azure Web Apps の作成と構成
-      href: ./ansible-create-configure-azure-web-apps.md
-    - name: Azure Web Apps のスケール
-      href: ./ansible-scale-azure-web-apps.md
-  - name: Application Gateway
-    items:
-    - name: Azure Application Gateway の作成と構成
-      href: ./ansible-create-configure-application-gateway.md
-  - name: データベース
-    items:
-    - name: Azure DB for MySQL の作成と構成
-      href: ./ansible-create-configure-mysql.md
-  - name: 動的インベントリ
-    items:
-    - name: 動的なインベントリの管理
-      href: ./ansible-manage-azure-dynamic-inventories.md
-  - name: 仮想ネットワーク
-    items:
-    - name: ルート テーブルの作成と構成
-      href: ./ansible-create-configure-route-table.md
-  - name: VMSS
-    items:
-    - name: VMSS の作成と構成
-      href: ./ansible-create-configure-vmss.md
-    - name: VMSS へのアプリのデプロイ
-      href: ./ansible-deploy-app-vmss.md
-    - name: VMSS の自動スケーリング
-      href: ./ansible-auto-scale-vmss.md
+    - name: Azure Application Gateway
+      items:
+        - name: Web トラフィックを管理する
+          href: ./ansible-create-configure-application-gateway.md
+    - name: Azure App Service
+      items:
+        - name: アプリの構成
+          href: ./ansible-create-configure-azure-web-apps.md
+        - name: アプリのスケーリング
+          href: ./ansible-scale-azure-web-apps.md
+    - name: Azure DevTest Labs
+      items:
+        - name: ラボの構成
+          href: ./ansible-devtest-labs-configure.md
+    - name: Azure Kubernetes Service (AKS)
+      items:
+        - name: AKS クラスターの構成
+          href: ./ansible-create-configure-aks.md
+        - name: Azure CNI ネットワークの構成
+          href: ./ansible-aks-configure-cni-networking.md
+        - name: kubenet ネットワークの構成
+          href: ./ansible-aks-configure-kubenet-networking.md
+        - name: AKS クラスターでの RBAC ロールの構成
+          href: ./ansible-aks-configure-rbac.md
+    - name: Azure HDInsight
+      items:
+        - name: クラスターの構成
+          href: ./ansible-azure-hdinsight-configure.md
+    - name: Azure Service Bus
+      items:
+        - name: キューの構成
+          href: ./ansible-service-bus-queue-configure.md
+        - name: トピックの構成
+          href: ./ansible-service-bus-topic-configure.md
+    - name: Database
+      items:
+        - name: Azure Database for MySQL の構成
+          href: ./ansible-create-configure-mysql.md
+        - name: Azure Cosmos DB アカウントの構成
+          href: ./ansible-data-cosmos-configure.md
+        - name: Azure Cache for Redis の構成
+          href: ./ansible-data-cache-for-redis-configure.md
+    - name: 動的インベントリ
+      items:
+        - name: Azure リソースの管理
+          href: ./ansible-manage-azure-dynamic-inventories.md
+    - name: 仮想マシン
+      items:
+        - name: Shared Image Gallery の作成
+          href: ansible-vm-create-from-shared-generalized-image.md
+    - name: 仮想マシン スケール セット
+      items:
+        - name: 構成
+          href: ./ansible-create-configure-vmss.md
+        - name: デプロイ
+          href: ./ansible-deploy-app-vmss.md
+        - name: 自動スケール
+          href: ./ansible-auto-scale-vmss.md
+        - name: カスタム イメージの更新
+          href: ./ansible-vmss-update-image.md
+        - name: Shared Image Gallery の作成
+          href: ansible-vm-create-from-shared-generalized-image.md
+    - name: 仮想ネットワーク
+      items:
+        - name: ピアリングの構成
+          href: ./ansible-vnet-peering-configure.md
+        - name: ルート テーブルの構成
+          href: ./ansible-create-configure-route-table.md
+- name: サンプル
+  items:
+    - name: Azure の Ansible ラボ
+      href: 'https://github.com/microsoft/ansiblelabs'
+    - name: Ansible Azure プレイブックのサンプル
+      href: 'https://github.com/Azure-Samples/ansible-playbooks'
 - name: リファレンス
   items:
-  - name: プレイブックの役割
-    items:
-    - name: azure_module
-      href: https://galaxy.ansible.com/Azure/azure_modules/
-    - name: azure_preview_module
-      href: https://galaxy.ansible.com/Azure/azure_preview_modules
-  - name: リリースと機能
-    href: ./ansible-matrix.md
-  - name: Azure Container Instances
-    href: https://docs.ansible.com/ansible/latest/azure_rm_containerinstance_module.html
-  - name: Azure Functions
-    href: https://docs.ansible.com/ansible/latest/azure_rm_functionapp_module.html
-  - name: ロード バランサー
-    href: https://docs.ansible.com/ansible/latest/azure_rm_loadbalancer_module.html
-  - name: 仮想マシン
-    href: https://docs.ansible.com/ansible/latest/azure_rm_virtualmachine_module.html
-  - name: Azure 用のすべてのモジュール
-    href: https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure
+    - name: プレイブックの役割
+      items:
+        - name: azure_module
+          href: 'https://galaxy.ansible.com/Azure/azure_modules/'
+        - name: azure_preview_module
+          href: 'https://galaxy.ansible.com/Azure/azure_preview_modules'
+    - name: リリースと機能
+      href: ./ansible-matrix.md
+    - name: Azure 用のすべてのモジュール
+      href: 'https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure'
 - name: ツール
   items:
-  - name: Ansible 用 Visual Studio Code 拡張機能
-    href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: a3f1dcf9c7672938b35ba5615c8d901cbd1d1332
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226640"
+    - name: Ansible 用 Visual Studio Code 拡張機能
+      href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'

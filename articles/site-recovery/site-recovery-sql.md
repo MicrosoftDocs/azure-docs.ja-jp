@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 14fbca6dea735ed1ee13fca20f19379cc2c4d0a9
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742320"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934828"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server のためにディザスター リカバリーを設定する
 
@@ -111,7 +111,7 @@ SQL Always On などの一部の BCDR テクノロジでは、テスト フェ�
 
     ![サーバー名と状態を示す Content_AG というラベルが付いたウィンドウのスクリーンショット](./media/site-recovery-sql/bring-listener-online.png)
 
-1. ロード バランサーを作成します。 可用性グループ リスナーごとに、フロントエンド IP プールから 1 つの IP アドレスを作成します。 また、バックエンド プールに SQL Server VM を追加します。
+1. フェールオーバー ネットワークのロード バランサーに、1 つの IP アドレス (各可用性グループ リスナーに対応するフロントエンド IP アドレス プールの IP アドレス) と、バックエンド プールの SQL Server VM があることを確認します。
 
      !["SQL-AlwaysOn-LB - フロントエンド IP プール" というタイトルのウィンドウのスクリーンショット](./media/site-recovery-sql/create-load-balancer1.png)
 

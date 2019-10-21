@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 5c2041984ffa2c455ea4d60a756fcb4142219d91
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 53c171df47dde58b264b354eea5ff1ccca9f5256
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981456"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374723"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Enterprise Agreement から Microsoft 顧客契約 API に移行する
 
-この記事では、Enterprise Agreement (EA) と Microsoft 顧客契約 (MCA) アカウントとの、データ構造、API、およびその他のシステム統合に関する違いについて説明します。 Azure Cost Management では、両方のアカウントの種類に応じた API がサポートされています。 続行する前に、Microsoft 顧客契約の[請求先アカウントの設定](../billing/billing-mca-setup-account.md)に関する記事を参照してください。
+この記事では、Enterprise Agreement (EA) と Microsoft 顧客契約 (MCA) アカウントとの、データ構造、API、およびその他のシステム統合に関する違いについて説明します。 Azure Cost Management では、両方のアカウントの種類に応じた API がサポートされています。 続行する前に、Microsoft 顧客契約の[請求先アカウントの設定](../billing/mca-setup-account.md)に関する記事を参照してください。
 
 既存の EA アカウントを含む組織は、MCA アカウントを設定すると共に、この記事を参照する必要があります。 以前、EA アカウントを更新するには、古い加入契約から新しい加入契約に移行するための最低限の複数の作業が必要でした。 ただし、MCA アカウントへの移行には、追加の作業が必要です。 追加の作業は、基になる課金サブシステムでの変更がすべてのコスト関連 API およびサービス内容に影響するという理由で行います。
 
@@ -99,7 +99,7 @@ Get Balance Summary API は、Microsoft.Billing/billingAccounts/billingProfiles/
 
 Available Balance API で利用可能な残高を取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/availableBalances?api-version=2018-11-01-preview` |
 
@@ -120,13 +120,13 @@ Available Balance API で利用可能な残高を取得するには:
 
 Usage Details API で使用状況の詳細を取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?api-version=2019-01-01` |
 
 Usage Details API は、すべての Cost Management API と同様に複数のスコープで利用できます。 請求されたコストについては、従来より登録レベルで受信するので、課金プロファイルのスコープを使用してください。  Azure Cost Management のスコープの詳細については、「[スコープを理解して使用する](understand-work-scopes.md)」を参照してください。
 
-| Type | ID 形式 |
+| 種類 | ID 形式 |
 | --- | --- |
 | 請求先アカウント | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | 請求プロファイル | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
@@ -236,7 +236,7 @@ MCA 請求先アカウントは、請求期間を使用しません。 代わり
 
 Invoices API で請求書を取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoices?api-version=2018-11-01-preview` |
 
@@ -250,7 +250,7 @@ Invoices API で請求書を取得するには:
 
 Price Sheet および Billing Period API を使用して、指定されたエンタープライズ登録の適用可能な価格を取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/pricesheet` |
 | GET | `https://consumption.azure.com/v2/enrollments/{enrollmentNumber}/billingPeriods/{billingPeriod}/pricesheet` |
@@ -261,13 +261,13 @@ Microsoft 顧客契約の Price Sheet API を使用して、すべての Azure C
 
 Price Sheet API を使用して、CSV 形式ですべての Azure Consumption サービスの価格シート データを表示します。
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=csv` |
 
 Price Sheet API を使用して、JSON 形式ですべての Azure Consumption サービスの価格シート データを表示します。
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
 
@@ -277,13 +277,13 @@ API を使用すると、アカウント全体の価格シートが返されま�
 
 CSV 形式で Price Sheet API に関する請求書情報を表示するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
 JSON 形式で Price Sheet API に関する請求書情報を表示するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/2909cffc-b0a2-5de1-bb7b-5d3383764184/billingProfiles/2dcffe0c-ee92-4265-8647-515b8fe7dc78/invoices/{invoiceId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
@@ -291,13 +291,13 @@ JSON 形式で Price Sheet API に関する請求書情報を表示するには:
 
 Price Sheet API を使用して従量課金サービスの見積もり価格を CSV 形式で表示するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=csv` |
 
 Price Sheet API を使用して従量課金サービスの見積もり価格を JSON 形式で表示するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billing AccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&format=json` |
 
@@ -384,13 +384,13 @@ Enterprise 契約の場合、subscriptionId によるスコープや請求期間
 
 Price Sheet API を使用してスコープの価格シート情報を取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
 Price Sheet API を使用して課金期間ごとの価格シート情報を取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}/providers/Microsoft.Consumption/pricesheets/default?api-version=2018-10-01` |
 
@@ -410,7 +410,7 @@ Azure Resource Manager 認証は、請求先アカウントの登録スコープ
 
 請求先アカウントの登録アカウントで価格シートを取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `/providers/Microsoft.Billing/billingAccounts/65085863/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
@@ -420,7 +420,7 @@ Microsoft 顧客契約では、次のセクションの情報を使用します�
 
 請求先アカウント API により更新された価格シートは、CSV 形式で価格シートを取得します。 MCA の課金プロファイル スコープで価格シートを取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `/providers/Microsoft.Billing/billingAccounts/28ae4b7f-41bb-581e-9fa4-8270c857aa5f/billingProfiles/ef37facb-cd6f-437a-9261-65df15b673f9/providers/Microsoft.Consumption/pricesheets/download?api-version=2019-01-01` |
 
@@ -475,7 +475,7 @@ Microsoft 顧客契約の一部である Azure 従量課金サービスの価格
 
 Transactions API を使用して予約購入トランザクションを取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/transactions?api-version=2018-11-01-preview` |
 
@@ -490,7 +490,7 @@ Reserved Instance Purchase Recommendations API は、過去 7 日、30 日、ま
 
 Reservation Recommendations API を使用して予約推奨事項を取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationRecommendations?api-version=2019-01-01` |
 
@@ -507,13 +507,13 @@ Reserved Instance Usage API を使用して、加入契約での予約の使用�
 
 Reservation Details API を使用して予約の詳細を取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationDetails?api-version=2019-01-01` |
 
 Reservation Details API を使用して予約の概要を取得するには:
 
-| Method | 要求 URI |
+| 方法 | 要求 URI |
 | --- | --- |
 | GET | `https://management.azure.com/providers/Microsoft.Consumption/reservationSummaries?api-version=2019-01-01` |
 

@@ -38,14 +38,34 @@
           href: create-cluster-database-csharp.md
         - name: Python
           href: create-cluster-database-python.md
+        - name: Azure Resource Manager テンプレート
+          href: create-cluster-database-resource-manager.md
     - name: データの取り込み
       items:
         - name: イベント ハブ
-          href: ingest-data-event-hub.md
+          items:
+            - name: Azure ポータル
+              href: ingest-data-event-hub.md
+            - name: Python
+              href: data-connection-event-hub-python.md
+            - name: 'C#'
+              href: data-connection-event-hub-csharp.md
         - name: Event Grid
-          href: ingest-data-event-grid.md
+          items:
+            - name: Azure ポータル
+              href: ingest-data-event-grid.md
+            - name: Python
+              href: data-connection-event-grid-python.md
+            - name: 'C#'
+              href: data-connection-event-grid-csharp.md
         - name: IoT Hub
-          href: ingest-data-iot-hub.md
+          items:
+            - name: Azure ポータル
+              href: ingest-data-iot-hub.md
+            - name: Python
+              href: data-connection-iot-hub-python.md
+            - name: 'C#'
+              href: data-connection-iot-hub-csharp.md
         - name: ワンクリックでのインジェスト
           href: ingest-data-one-click.md
         - name: ストリーミング インジェスト
@@ -88,6 +108,8 @@
       items:
         - name: Power BI
           items:
+            - name: ベスト プラクティス
+              href: power-bi-best-practices.md
             - name: コネクタ
               href: power-bi-connector.md
             - name: インポートされたクエリ
@@ -110,22 +132,34 @@
           href: sisense.md
     - name: 管理
       items:
-        - name: クラスターの正常性を確認する
-          href: check-cluster-health.md
-        - name: クラスター VM の SKU を選択する
-          href: manage-cluster-choose-sku.md
-        - name: クラスターの水平スケーリングを管理する
-          href: manage-cluster-horizontal-scaling.md
-        - name: クラスターの垂直スケーリングを管理する
-          href: manage-cluster-vertical-scaling.md
-        - name: クラスターのセキュリティを管理する
-          href: manage-cluster-security.md
-        - name: データベースのアクセス許可を管理する
-          href: manage-database-permissions.md
-        - name: データの削除
-          href: delete-data.md
-        - name: 重複したデータを処理する
-          href: dealing-with-duplicates.md
+        - name: クラスター
+          items:
+            - name: クラスター VM の SKU を選択する
+              href: manage-cluster-choose-sku.md
+            - name: クラスターの水平スケーリングを管理する
+              href: manage-cluster-horizontal-scaling.md
+            - name: クラスターの垂直スケーリングを管理する
+              href: manage-cluster-vertical-scaling.md
+            - name: クラスターのセキュリティを管理する
+              href: manage-cluster-security.md
+            - name: クラスターの正常性を確認する
+              href: check-cluster-health.md
+        - name: Database
+          items:
+            - name: データベースのアクセス許可を管理する
+              href: manage-database-permissions.md
+            - name: ポリシー
+              items:
+                - name: 'C#'
+                  href: database-table-policies-csharp.md
+                - name: Python
+                  href: database-table-policies-python.md
+        - name: Data
+          items:
+            - name: データの削除
+              href: delete-data.md
+            - name: 重複したデータを処理する
+              href: dealing-with-duplicates.md
     - name: 監視
       items:
         - name: 診断ログを使用してインジェストを監視する

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a6d0c3e9daba6f4f37778fabde161751944e174a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 338054aadbf04c6c6e2b496677476c2c5634b6ba
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774872"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169303"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>チュートリアル:Azure Resource Manager テンプレートを使用して仮想マシン拡張機能をデプロイする
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prepare-a-powershell-script"></a>PowerShell スクリプトを準備する
 
-次の内容が含まれた PowerShell スクリプトは、[パブリック アクセスが有効な Azure ストレージ アカウント](https://armtutorials.blob.core.windows.net/usescriptextensions/installWebServer.ps1)から共有されます。
+次の内容が含まれた PowerShell スクリプトは、[Github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1) から共有されます。
 
 ```azurepowershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -63,7 +63,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 1. Visual Studio Code の **[ファイル]**  >  **[ファイルを開く]** を選択します。
 1. **[ファイル名]** ボックスに https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json という URL を貼り付けます。
 
-1. ファイルを開くには、 **[開く]** を選択します。  
+1. ファイルを開くには、 **[開く]** を選択します。
     このテンプレートには、次の 5 つのリソースが定義されています。
 
    * **Microsoft.Storage/storageAccounts**。 [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
@@ -96,7 +96,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
         "autoUpgradeMinorVersion":true,
         "settings": {
             "fileUris": [
-                "https://armtutorials.blob.core.windows.net/usescriptextensions/installWebServer.ps1"
+                "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-vm-extension/installWebServer.ps1"
             ],
             "commandToExecute": "powershell.exe -ExecutionPolicy Unrestricted -File installWebServer.ps1"
         }
@@ -109,7 +109,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 * **name**:拡張機能リソースが仮想マシン オブジェクトの子リソースであるため、名前には仮想マシン名のプレフィックスが含まれている必要があります。 [子リソースの名前と種類の設定](child-resource-name-type.md)に関する記事を参照してください。
 * **dependsOn**:仮想マシンの作成後に拡張機能リソースを作成します。
 * **fileUris**: スクリプト ファイルが格納される場所です。 提供された場所を使用しない場合は、値を更新する必要があります。
-* **commandToExecute**: このコマンドによってスクリプトが呼び出されます。  
+* **commandToExecute**: このコマンドによってスクリプトが呼び出されます。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -118,8 +118,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 ## <a name="verify-the-deployment"></a>デプロイを検証する
 
 1. Azure portal で VM を選択します。
-1. VM の概要で、 **[クリックしてコピー]** を選択して IP アドレスをコピーし、ブラウザーのタブに貼り付けます。  
-   インターネット インフォメーション サービス (IIS) の既定のウェルカム ページ (下記) が表示されます。
+1. VM の概要で、 **[クリックしてコピー]** を選択して IP アドレスをコピーし、ブラウザーのタブに貼り付けます。インターネット インフォメーション サービス (IIS) の既定のウェルカム ページ (下記) が表示されます。
 
 ![インターネット インフォメーション サービスのウェルカム ページ](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 
@@ -129,7 +128,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 1. Azure portal の左側のウィンドウで、 **[リソース グループ]** を選択します。
 2. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。
-3. リソース グループ名を選択します。  
+3. リソース グループ名を選択します。
     リソース グループには 6 つのリソースが表示されます。
 4. 一番上のメニューで、 **[リソース グループの削除]** を選択します。
 

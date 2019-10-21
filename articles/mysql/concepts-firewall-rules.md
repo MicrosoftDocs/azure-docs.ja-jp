@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL サーバーのファイアウォール規則
-description: Azure Database for MySQL サーバーのファイアウォール規則について説明します。
+description: ファイアウォール規則を使用して、ご利用の Azure Database for MySQL サーバーへの接続を有効にする方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 0802185b7fb0d1a6d7d41cd1fa5a30f5ce10424b
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.date: 09/22/2019
+ms.openlocfilehash: 1d75b9e7d997b0c62c7e235187907f0556318efe
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443905"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970403"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
@@ -46,7 +46,7 @@ Azure のアプリケーションが Azure Database for MySQL サーバーに接
 ## <a name="programmatically-managing-firewall-rules"></a>ファイアウォール規則のプログラムによる管理
 ファイアウォール規則は、Azure Portal に加え、Azure CLI を使用してプログラムで管理することができます。 「[Create and manage Azure Database for MySQL firewall rules using Azure CLI (Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理)](./howto-manage-firewall-using-cli.md)」も参照してください
 
-## <a name="troubleshooting-the-database-firewall"></a>データベース ファイアウォールのトラブルシューティング
+## <a name="troubleshooting-firewall-issues"></a>ファイアウォールの問題のトラブルシューティング
 Microsoft Azure Database for MySQL サーバー サービスに期待どおりにアクセスできない場合は、次の点を検討してください。
 
 * **許可一覧に変更が反映されない:** Azure Database for MySQL サーバーのファイアウォール構成に対する変更が反映されるまで最大 5 分間の遅延が発生する場合があります。
@@ -55,9 +55,11 @@ Microsoft Azure Database for MySQL サーバー サービスに期待どおり�
 
 * **動的 IP アドレス:** 動的 IP アドレス指定によるインターネット接続を使用しており、ファイアウォールの通過に問題が発生している場合は、次の解決策のいずれかをお試しください。
 
-* Azure Database for MySQL サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲について、インターネット サービス プロバイダー (ISP) に問い合わせ、ファイアウォール規則として、IP アドレス範囲を追加してください。
+   * Azure Database for MySQL サーバーにアクセスするクライアント コンピューターに割り当てられている IP アドレス範囲について、インターネット サービス プロバイダー (ISP) に問い合わせ、ファイアウォール規則として、IP アドレス範囲を追加してください。
 
-* 動的 IP アドレスの代わりに、静的 IP アドレスを取得し、ファイアウォール規則として、IP アドレス範囲を追加してください。
+   * 動的 IP アドレスの代わりに、静的 IP アドレスを取得し、ファイアウォール規則として、IP アドレス範囲を追加してください。
+
+* **サーバーの IP がパブリックのように見える:** Azure Database for MySQL サーバーへの接続は、パブリックにアクセス可能な Azure ゲートウェイ経由でルーティングされます。 しかし、実際のサーバー IP は、ファイアウォールによって保護されています。 詳細については、[接続アーキテクチャに関する記事](concepts-connectivity-architecture.md)をご覧ください。 
 
 ## <a name="next-steps"></a>次の手順
 

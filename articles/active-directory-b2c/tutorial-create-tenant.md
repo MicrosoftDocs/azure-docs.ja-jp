@@ -7,25 +7,27 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ce389d1f434fb0eb37413873b02e3ddfff8f7fba
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: de29929c8fda476fe276f91d4a68ce4d632503fd
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849390"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345215"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>チュートリアル:Azure Active Directory B2C テナントの作成
 
-アプリケーションが Azure Active Directory (Azure AD) B2C と対話できるようにするには、管理しているテナントに登録する必要があります。
+アプリケーションが Azure Active Directory B2C (Azure AD B2C) とやりとりできるようにするには、管理しているテナントに登録する必要があります。
 
 この記事では、次のことについて説明します。
 
 > [!div class="checklist"]
 > * Azure AD B2C テナントを作成する
 > * サブスクリプションへのテナントのリンク
+> * Azure AD B2C テナントが含まれているディレクトリに切り替える
+> * Azure portal で Azure AD B2C リソースを "*お気に入り*" として追加する
 
 次のチュートリアルでは、アプリケーションを登録する方法を学習します。
 
@@ -34,28 +36,62 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-an-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを作成する
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ご利用のサブスクリプションが含まれるディレクトリを必ず使用してください。 上部メニューで **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** フィルターをクリックし、ご利用のサブスクリプションが含まれるディレクトリを選択します。 このディレクトリは、Azure AD B2C テナントを含むディレクトリと異なります。
+1. ご利用のサブスクリプションが含まれるディレクトリを必ず使用してください。
 
-    ![ディレクトリとサブスクリプションのフィルターでサブスクリプション テナントが選択された状態](./media/tutorial-create-tenant/switch-directory-subscription.PNG)
+    上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のサブスクリプションが含まれているディレクトリを選択します。 このディレクトリは、Azure AD B2C テナントを含むディレクトリと異なります。
 
-3. Azure portal の左上にある **[リソースの作成]** を選択します。
-4. **Active Directory B2C** を検索して選択し、**作成**をクリックします。
-5. **[新しい Azure AD B2C テナントを作成する]** を選択し、組織名と初期ドメイン名を入力します。 国/地域を選択し (後で変更できません)、 **[作成]** をクリックします。
+    ![サブスクリプション テナントが選択された状態のディレクトリ + サブスクリプションのフィルター](media/tutorial-create-tenant/portal-01-select-directory.png)
 
-    初期ドメイン名はテナント名の一部として使用されます。 この例では、テナント名は *contoso0926Tenant.onmicrosoft.com* です。
+1. Azure portal の左上隅にある **[Create a resource]\(リソースの作成\)** を選択します。
+1. **Active Directory B2C** を検索して選択し、 **[作成]** を選択します。
+1. **[Create a new Azure AD B2C Tenant]\(新しい Azure AD B2C テナントの作成\)** を選択します。
 
-    ![Azure portal の B2C テナントの作成ページ](./media/tutorial-create-tenant/create-tenant.PNG)
+    ![Azure portal で選択された新しい Azure AD B2C テナントを作成する](media/tutorial-create-tenant/portal-02-create-tenant.png)
 
-6. **[新しい B2C テナントの作成または既存のテナントへのリンク]** ページで、 **[既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする]** を選択します。
+1. **[Organization name]\(組織名\)** と **[Initial domain name]\(初期ドメイン名\)** を入力します。 **[Country or region]\(国/リージョン\)** を選択し (後で変更できません)、 **[作成]** を選択します。
 
-    作成したテナントを選択し、ご利用のサブスクリプションを選択します。
+    ドメイン名は完全なテナント ドメイン名の一部として使用されます。 この例では、テナント名は *contosob2c.onmicrosoft.com* です。
 
-    リソース グループには **[新規作成]** を選択します。 テナントを含むリソース グループの名前を入力し、場所を選択してから、 **[作成]** をクリックします。
-1. 新しいテナントを使い始めるには､上部メニューの **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** をクリックし、自分の Azure AD B2C テナントを含むディレクトリを選択することによって､自分の Azure AD B2C テナントを含む適切なディレクトリを使用していることを確認します｡
+    ![Azure portal でのサンプル値が含まれているテナントの作成フォーム](media/tutorial-create-tenant/portal-03-tenant-naming.png)
 
-    新しい Azure B2C テナントが最初からリストに表示されない場合、ブラウザー ウィンドウを更新し、上部メニューでもう一度 **[Directory and subscription filter]\(ディレクトリとサブスクリプション フィルター\)** を選択します。
+1. テナントの作成が完了したら、テナント作成ページの上部にある **[Create new B2C Tenant or Link to existing Tenant]\(新しい B2C テナントの作成または既存のテナントへのリンク\)** リンクを選択します。
 
-    ![ディレクトリとサブスクリプションのフィルターで B2C テナントが選択された状態](./media/tutorial-create-tenant/switch-directories.PNG)
+    ![Azure portal で強調表示されたテナントのリンクの階層リンク](media/tutorial-create-tenant/portal-04-select-link-sub-link.png)
+
+1. **[Link an existing Azure AD B2C Tenant to my Azure subscription]\(既存の Azure AD B2C テナントを Azure サブスクリプションにリンクする\)** を選択します。
+
+   ![Azure portal での既存のサブスクリプションにリンクの選択](media/tutorial-create-tenant/portal-05-link-subscription.png)
+
+1. 作成した **Azure AD B2C テナント**を選択し、ご利用の**サブスクリプション**を選択します。
+
+    **[リソース グループ]** には **[新規作成]** を選択します。 テナントを含むリソース グループの**名前**を入力し、**リソース グループの場所**を選択してから、 **[作成]** を選択します。
+
+    ![Azure portal でのサブスクリプションのリンク設定のフォーム](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
+
+## <a name="select-your-b2c-tenant-directory"></a>B2C テナント ディレクトリを選択する
+
+新しい Azure AD B2C テナントの使用を開始するには、テナントが含まれているディレクトリに切り替える必要があります。
+
+Azure portal の上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択してから、Azure AD B2C テナントを含むディレクトリを選択します。
+
+新しい Azure B2C テナントが最初からリストに表示されない場合、ブラウザー ウィンドウを更新し、上部メニューでもう一度 **[ディレクトリ + サブスクリプション]** を選択します。
+
+![Azure portal で選択された B2C テナントを含むディレクトリ](media/tutorial-create-tenant/portal-07-select-tenant-directory.png)
+
+## <a name="add-azure-ad-b2c-as-a-favorite-optional"></a>Azure AD B2C をお気に入りとして追加する (省略可能)
+
+この省略可能な手順を実行すると、次のチュートリアルおよび以降のすべてのチュートリアルでの Azure AD B2C テナントの選択が容易になります。
+
+テナントの操作が必要になるたびに **[All services]\(すべてのサービス\)** で「Azure AD B2C」を検索するのではなく、そのリソースをお気に入りとして設定することができます。 これにより、左側の **[Favorites]\(お気に入り\)** メニューから選択することで、Azure AD B2C テナントを素早く参照することができます。
+
+この操作は 1 回だけ実行する必要があります。 これらの手順を実行する前に、前の「[B2C テナントのディレクトリを選択する](#select-your-b2c-tenant-directory)」セクションの説明に従って Azure AD B2C テナントを含むディレクトリに切り替えていることを確認してください。
+
+1. [Azure portal](https://portal.azure.com) の左側のメニューで **[All Services]\(すべてのサービス\)** を選択します
+1. 検索テキスト ボックスに「*Azure AD B2C*」と入力します
+1. **星印**を選択して、Azure AD B2C をお気に入りに追加します
+1. *Azure AD B2C* が、左側の **[お気に入り]** メニューに表示されるようになりました。 次の図に示すように、必要に応じてそれを選択し、一覧内で上の方にドラッグすることができます。
+
+![Azure portal で Azure AD B2C をお気に入りとして追加する手順](media/tutorial-create-tenant/portal-08-favorite-b2c.png)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -64,6 +100,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 > [!div class="checklist"]
 > * Azure AD B2C テナントを作成する
 > * サブスクリプションへのテナントのリンク
+> * Azure AD B2C テナントが含まれているディレクトリに切り替える
+> * Azure portal で Azure AD B2C リソースを "*お気に入り*" として追加する
 
 次に、新しいテナントに Web アプリケーションを登録する方法を学びます。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 2f0f3d70d51ff35e37506eab1082fc07b16e711c
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4074f26cdefd650c1b927293f422623841dfff7d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70018782"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71073698"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プロセッサ 
 
@@ -95,5 +95,6 @@ Cosmos コンテナーとの間のデータ移動では常に RU を消費する
 以下の記事で、変更フィード プロセッサに関してさらに詳しく知ることができます。
 
 * [変更フィードの概要](change-feed.md)
+* [変更フィード プロセッサ ライブラリから移行する方法](how-to-migrate-from-change-feed-library.md)
 * [変更フィード推定機能の使用](how-to-use-change-feed-estimator.md)
 * [変更フィード プロセッサの開始時刻](how-to-configure-change-feed-start-time.md)

@@ -1,6 +1,6 @@
 ---
 title: scikit-learn で機械学習モデルをトレーニングする
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Machine Learning の SKlearn 推定クラスを使用して、scikit-learn トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。 サンプル スクリプトは、アイリスの花の画像を分類して、scikit-learn のアイリス データセットに基づく機械学習モデルを構築します。
 services: machine-learning
 ms.service: machine-learning
@@ -10,14 +10,14 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5c44f4ed5cd6488520bf6dd99f502f33049b9b17
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 707c6d99d4c5f4335ff771bdd916b2ee37092604
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68962999"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710072"
 ---
-# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning-service"></a>Azure Machine Learning service を使用して Scikit-learn モデルを大規模に構築する
+# <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Azure Machine Learning を使用して Scikit-learn モデルを大規模に構築する
 
 この記事では、Azure Machine Learning の [SKlearn 推定](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)クラスを使用して、scikit-learn トレーニング スクリプトをエンタープライズ規模で実行する方法について説明します。 
 
@@ -31,7 +31,7 @@ scikit-learn の機械学習モデルを一からトレーニングする場合�
  - Azure Machine Learning Notebook VM - ダウンロードやインストールは必要なし
 
     - 「[チュートリアル: 環境とワークスペースを設定する](tutorial-1st-experiment-sdk-setup.md)」を完了して、SDK とサンプル リポジトリが事前に読み込まれた専用のノートブック サーバーを作成します。
-    - Notebook サーバー上の samples トレーニング用フォルダーで、**how-to-use-azureml > training > train-hyperparameter-tune-deploy-with-sklearn** の順に選択してこのディレクトリに移動し、完了済みで展開済みのノートブックを見つけます。
+    - Notebook サーバー上の samples トレーニング用フォルダーで、**how-to-use-azureml > ml-frameworks > scikit-learn > training > train-hyperparameter-tune-deploy-with-sklearn** の順に選択してこのディレクトリに移動し、完了済みで展開済みのノートブックを見つけます。
 
  - 独自の Jupyter Notebook サーバー
 
@@ -40,7 +40,7 @@ scikit-learn の機械学習モデルを一からトレーニングする場合�
     - データセットとサンプル スクリプト ファイルをダウンロードする 
         - [アイリス データセット](https://archive.ics.uci.edu/ml/datasets/iris)
         - [`train_iris.py`](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn)
-    - このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)は、GitHub サンプル ページにもあります。 ノートブックには、インテリジェントなハイパーパラメーターのチューニングをカバーし、プライマリ メトリックによる最適なモデルを取得する、拡張セクションが含まれています。
+    - このガイドの完成した [Jupyter Notebook バージョン](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/scikit-learn/training/train-hyperparameter-tune-deploy-with-sklearn/train-hyperparameter-tune-deploy-with-sklearn.ipynb)は、GitHub サンプル ページにもあります。 ノートブックには、インテリジェントなハイパーパラメーターのチューニングをカバーし、プライマリ メトリックによる最適なモデルを取得する、拡張セクションが含まれています。
 
 ## <a name="set-up-the-experiment"></a>実験を設定する
 
@@ -65,7 +65,7 @@ from azureml.core.compute_target import ComputeTargetException
 
 ### <a name="initialize-a-workspace"></a>ワークスペースを初期化する
 
-[Azure Machine Learning service ワークスペース](concept-workspace.md)は、本サービスの最上位レベルのリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
+[Azure Machine Learning ワークスペース](concept-workspace.md)は、サービス用の最上位のリソースです。 作成されるすべての成果物を操作できる一元的な場所が用意されています。 Python SDK では、[`workspace`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) オブジェクトを作成することでワークスペースの成果物にアクセスできます。
 
 [前提条件のセクション](#prerequisites)で作成した `config.json` ファイルからワークスペース オブジェクトを作成します。
 
@@ -84,28 +84,20 @@ os.makedirs(project_folder, exist_ok=True)
 exp = Experiment(workspace=ws, name='sklearn-iris')
 ```
 
-### <a name="upload-dataset-and-scripts"></a>データセットとスクリプトをアップロードする
+### <a name="prepare-training-script"></a>トレーニング スクリプトを準備する
 
-[データストア](how-to-access-data.md)は、データをコンピューティング先にマウントまたはコピーすることでデータを格納およびアクセスできる場所です。 各ワークスペースには既定のデータストアがあります。 トレーニング中に簡単にアクセスできるように、データとトレーニング スクリプトをデータストアにアップロードします。
+このチュートリアルでは、トレーニング スクリプトの **train_iris.py** は既に用意されています。 実際には、コードを変更しなくても、あらゆるカスタム トレーニング スクリプトをそのまま Azure ML で実行できるはずです。
 
-1. データ用のディレクトリを作成します。
+Azure ML の追跡およびメトリック機能を利用するには、トレーニング スクリプト内に少量の Azure ML コードを追加します。  トレーニング スクリプト **train_iris.py** には、スクリプト内の `Run` オブジェクトを使用して Azure ML 実行に一部のメトリックをログ記録する方法があります。
 
-    ```Python
-    os.makedirs('./data/iris', exist_ok=True)
-    ```
+指定されたトレーニング スクリプトでは、`iris = datasets.load_iris()` 関数のサンプル データを使用します。  独自のデータについては、[データセットやスクリプトのアップロード](how-to-train-keras.md#data-upload)などの手順を使用して、トレーニング中にデータを使用できるようにすることが必要になる場合があります。
 
-1. Iris データセットを既定のデータストアにアップロードします。
+トレーニング スクリプト **train_iris.py** をプロジェクト ディレクトリにコピーします。
 
-    ```Python
-    ds = ws.get_default_datastore()
-    ds.upload(src_dir='./data/iris', target_path='iris', overwrite=True, show_progress=True)
-    ```
-
-1. scikit-learn のトレーニング スクリプト `train_iris.py` をアップロードします。
-
-    ```Python
-    shutil.copy('./train_iris.py', project_folder)
-    ```
+```
+import shutil
+shutil.copy('./train_iris.py', project_folder)
+```
 
 ## <a name="create-or-get-a-compute-target"></a>コンピューティング先を作成または取得する
 
@@ -193,7 +185,7 @@ model = run.register_model(model_name='sklearn-iris', model_path='model.joblib')
 ## <a name="next-steps"></a>次の手順
 
 
-この記事では、Azure Machine Learning service で Keras モデルをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
+この記事では、Azure Machine Learning で Keras モデルをトレーニングして登録しました。 モデルをデプロイする方法を学習するには、モデル デプロイの記事に進んでください。
 
 > [!div class="nextstepaction"]
 > [モデルをデプロイする方法と場所](how-to-deploy-and-where.md)

@@ -1,19 +1,19 @@
 ---
-title: Azure portal での Azure Database for MySQL の監査ログの構成とアクセス
+title: 監査ログの構成とアクセス - Azure Database for MySQL
 description: この記事では、Azure portal から Azure Database for MySQL の監査ログを構成し、それにアクセスする方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/24/2019
-ms.openlocfilehash: a2f44b52c6d34adb1bebf666ff8453b17f7778a5
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 2a2d2a697f0e41fb296c61c01909a814678f8277
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448481"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350396"
 ---
-# <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Azure portal での監査ログの構成とアクセス
+# <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Azure portal での Azure Database for MySQL の監査ログの構成とアクセス
 
 [Azure Database for MySQL の監査ログ](concepts-audit-logs.md)と診断設定を Azure portal から構成することができます。
 

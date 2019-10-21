@@ -8,16 +8,16 @@ ms.service: cognitive-services
 services: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 07/16/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: c0b534848232d60929722e2036f69f4b6e670a4a
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4d7c02d8cf37f155af1fd9c0d5de7fa8ec948c4b
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68563152"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703123"
 ---
-# <a name="quickstart-query-prediction-endpoint-with-c-net-sdk"></a>クイック スタート:C# .NET SDK を使用した予測エンドポイントに対するクエリの実行
+# <a name="quickstart-query-v2-prediction-endpoint-with-c-net-sdk"></a>クイック スタート:C# .NET SDK を使用した V2 予測エンドポイントに対するクエリの実行
 
 Language Understanding (LUIS) にユーザーの発話を送信してユーザーの意図の予測を受け取るには、[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/) で見つかる .NET SDK を使用します。 
 

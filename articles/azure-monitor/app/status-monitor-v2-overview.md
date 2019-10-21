@@ -3,21 +3,21 @@ title: Azure Status Monitor v2 概要 | Microsoft Docs
 description: Status Monitor v2 の概要。 Web サイトを再デプロイせずに Web サイトのパフォーマンスを監視します。 オンプレミス、VM、または Azure でホストされた ASP.NET Web アプリが対象です。
 services: application-insights
 documentationcenter: .net
-author: MS-TimothyMothra
+author: TimothyMothra
 manager: alexklim
 ms.assetid: 769a5ea4-a8c6-4c18-b46c-657e864e24de
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 09/16/2019
 ms.author: tilee
-ms.openlocfilehash: 0264cf3a972c35edb3ad6dc600ca39bdaa076dfd
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: 3060659c5f870be60f1ac02e432dd0a8333f0900
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68333689"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71057832"
 ---
 # <a name="status-monitor-v2"></a>Status Monitor v2
 
@@ -59,7 +59,15 @@ Status Monitor v2 は https://www.powershellgallery.com/packages/Az.ApplicationM
   *はい*。 Status Monitor v2 をダウンロードする方法は複数あります。 コンピューターがインターネットにアクセスできる場合は、`-Proxy` パラメーターを使用して PowerShell ギャラリーにオンボードできます。
 このモジュールを手動でダウンロードし、コンピューターにインストールするか、直接使用することもできます。
 これらの各オプションについては、[詳細な手順](status-monitor-v2-detailed-instructions.md)で説明しています。
+
+- Status Monitor v2 では ASP.NET Core アプリケーションはサポートされていますか?
+
+  *いいえ*。 ASP.NET Core アプリケーションの監視を有効にする手順については、「[Application Insights for ASP.NET Core アプリケーション](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)」を参照してください。 ASP.NET Core アプリケーション用に Status Monitor をインストールする必要はありません。 これは、ASP.NET Core アプリケーションが IIS でホストされている場合にも当てはまります。
   
+Status Monitor v2 では ASP.NET Core アプリケーションはサポートされていますか? 
+
+  *いいえ*。 ASP.NET Core アプリケーションの監視を有効にするには、[こちら](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)の手順に従ってください。 ASP.NET Core アプリケーション用に Status Monitor をインストールする必要はありません。 これは、ASP.NET Core アプリケーションが IIS でホストされている場合にも当てはまります。
+
 - 有効化が成功したことを確認する方法を教えてください。
 
   - [Get-ApplicationInsightsMonitoringStatus](status-monitor-v2-api-get-status.md) コマンドレットは、有効化が成功したことを確認するために使用できます。

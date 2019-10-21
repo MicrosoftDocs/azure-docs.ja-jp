@@ -1,20 +1,20 @@
 ---
 title: Azure Digital Twins の概要 | Microsoft Docs
 description: 空間インテリジェンスを実現する Azure IoT ソリューション、Azure Digital Twins について詳しく説明します。
-author: julieseto
-ms.author: jseto
-ms.date: 08/01/2019
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
+ms.date: 09/17/2019
 ms.topic: overview
 ms.service: digital-twins
 services: digital-twins
-manager: bertvanhoof
 ms.custom: mvc
-ms.openlocfilehash: 6bd4e3bb688e92d30a21c39599e2e5bdb7b17dba
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2194afe4784d1b59dc5fd5628e3a9223d13f92be
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736963"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949302"
 ---
 # <a name="overview-of-azure-digital-twins"></a>Azure Digital Twins の概要
 
@@ -33,7 +33,7 @@ Azure Digital Twins は、倉庫、オフィス、学校、病院、銀行など
 - ビルの入居率を分析する。
 - 店舗内で最も稼働率の高いレジを調べる。
 
-実世界のビジネス シナリオが何であれ、高い確率で、Azure Digital Twins を介して対応するデジタル インスタンスをプロビジョニングすることができます。
+実世界のビジネス シナリオが何であれ、Azure Digital Twins を介して対応するデジタル インスタンスをプロビジョニングできる可能性があります。
 
 次のビデオでは、Azure Digital Twins についてさらに詳しく取り上げています。
 
@@ -45,13 +45,13 @@ Azure Digital Twins には、次の主要機能があります。
 
 ### <a name="spatial-intelligence-graph"></a>空間インテリジェンス グラフ
 
-"[*空間インテリジェンス グラフ*](./concepts-objectmodel-spatialgraph.md#graph)" (または " *空間グラフ*") は、物理環境の仮想表現です。 人、場所、デバイスの関係をモデル化する目的で使用できます。
+"[*空間インテリジェンス グラフ*](./concepts-objectmodel-spatialgraph.md#spatial-intelligence-graph)" (または " *空間グラフ*") は、物理環境の仮想表現です。 人、場所、デバイスの関係をモデル化する目的で使用できます。
 
 近隣一帯で相互接続された複数の電力量計を対象とするスマート ユーティリティ アプリを考えてみましょう。 このスマート ユーティリティの会社は、電力使用量と電気料金を正確に監視して予測する必要があります。 場所のコンテキストと請求対象となる顧客に基づいて、各デバイスおよびセンサーをモデル化しなければなりません。 空間インテリジェンス グラフを使用すれば、この種の複雑な関係をモデル化することができます。
 
 ### <a name="digital-twin-object-models"></a>デジタル ツインのオブジェクト モデル
 
-[デジタル ツインのオブジェクト モデル](./concepts-objectmodel-spatialgraph.md#model)は、あらかじめ定義されたデバイス プロトコルとデータ スキーマです。 迅速かつシンプルに開発を行えるよう、ソリューションの分野特有のニーズに沿ったものとなります。
+[デジタル ツインのオブジェクト モデル](./concepts-objectmodel-spatialgraph.md#digital-twins-object-models)は、あらかじめ定義されたデバイス プロトコルとデータ スキーマです。 迅速かつシンプルに開発を行えるよう、ソリューションの分野特有のニーズに沿ったものとなります。
 
 たとえば空間利用率アプリケーションであれば、あらかじめ定義された空間タイプ (キャンパス、ビル、フロア、部屋など) を使用することになるでしょう。
 
@@ -93,9 +93,9 @@ Azure Digital Twins は、現実世界とその多くの関係を表現するの
 
 現実世界を絶えず追跡する IoT のデバイスやセンサーと Azure Digital Twins との接続には、Azure IoT Hub が使用されます。 次の図は、Azure Digital Twins と他の Azure IoT サービスの関係を示しています。
 
-![Azure Digital Twins は Azure IoT Hub を基盤として構築されたサービス][1]
+[![Azure Digital Twins は Azure IoT Hub を基盤として構築されたサービス](media/overview/azure-digital-twins-in-iot-ecosystem.png)](media/overview/azure-digital-twins-in-iot-ecosystem.png#lightbox)
 
-IoT の詳細については、[Azure IoT のテクノロジとソリューション](https://docs.microsoft.com/azure/iot-fundamentals/iot-services-and-technologies)に関するページを参照してください。
+IoT の詳細については、[Azure IoT のテクノロジとソリューション](../iot-fundamentals/iot-services-and-technologies.md)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -113,6 +113,3 @@ Azure Digital Twins の主要な概念について説明します。
 
 >[!div class="nextstepaction"]
 >[Digital Twins オブジェクト モデルと空間インテリジェンス グラフを理解する](./concepts-objectmodel-spatialgraph.md)
-
-<!-- Images -->
-[1]: media/overview/azure-digital-twins-in-iot-ecosystem.png

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 0088cc2c2bd30748a8a62217c76f962dd1b174f8
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: bb7711eea927212042ed2299bae74130867c1692
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019981"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067641"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
 
@@ -34,14 +34,17 @@ DPS を使用すると、次のことが可能になります。
 
 この記事では、次の 4 つのユース ケースについて説明します。
 
-1. [SAS を使用して 1 台のデバイスをすばやく接続する](#connect-a-single-device)
-1. [SAS を使用して大量のデバイスを接続する](#connect-devices-at-scale-using-sas)
-1. [X.509 証明書を使用して大量のデバイスを接続する](#connect-devices-using-x509-certificates)。これは運用環境に対して推奨されるアプローチです。
-1. [最初にデバイスを登録しないで接続する](#connect-without-registering-devices)
+- [SAS を使用して 1 台のデバイスをすばやく接続する](#connect-a-single-device)
+- [SAS を使用して大量のデバイスを接続する](#connect-devices-at-scale-using-sas)
+- [X.509 証明書を使用して大量のデバイスを接続する](#connect-devices-using-x509-certificates)。これは運用環境に対して推奨されるアプローチです。
+- [最初にデバイスを登録しないで接続する](#connect-without-registering-devices)
 
 ## <a name="connect-a-single-device"></a>1 つのデバイスを接続する
 
-このアプローチは、IoT Central を使用した実験やデバイスのテストを行う場合に便利です。 IoT Central アプリケーションからのデバイス接続情報を使用して、デバイスの接続文字列を生成できます。 詳細については、[Azure IoT Central アプリケーションに接続するためにデバイス接続文字列を生成する方法](howto-generate-connection-string.md)に関するページを参照してください。
+このアプローチは、IoT Central を使用した実験やデバイスのテストを行う場合に便利です。 Device Provisioning Service (DPS) を使ってデバイスを IoT Central アプリケーションに接続するには、IoT Central アプリケーションからのデバイス接続情報を使用できます。 次の言語のサンプル DPS デバイス クライアント コードがあります。
+
+- [C\#](./howto-connect-raspberry-pi-csharp.md)
+- [Node.JS](./howto-connect-nodejs.md)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>SAS を使用して大量のデバイスを接続する
 
@@ -163,8 +166,6 @@ Azure Device SDK では、デバイス コードを最も簡単に実装する�
 - [Azure IoT SDK for Node.js](https://github.com/azure/azure-iot-sdk-node)
 - [Azure IoT SDK for Java](https://github.com/azure/azure-iot-sdk-java)
 - [Azure IoT SDK for .NET](https://github.com/azure/azure-iot-sdk-csharp)
-
-各デバイスは、デバイスを識別する一意の接続文字列を使用して接続します。 デバイスは、それが登録されている IoT ハブにのみ接続できます。 Azure IoT Central アプリケーションで実際のデバイスを作成すると、`dps-keygen` を使用して接続文字列を構築するために必要な情報がアプリケーションによって生成されます。
 
 ### <a name="sdk-features-and-iot-hub-connectivity"></a>SDK の機能と IoT Hub の接続機能
 

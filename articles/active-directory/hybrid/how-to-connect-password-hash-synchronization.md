@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98101973627750f87fd06d3f617a1af764a837ee
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 0ce0ac4f40f3dd1bd7252689618459769d0aeb56
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774250"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203072"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装
 この記事では、オンプレミスの Active Directory インスタンスから、クラウドベースの Azure Active Directory (Azure AD) インスタンスへの、ユーザー パスワードの同期に必要な情報を提供します。
@@ -46,49 +46,105 @@ Active Directory ドメイン サービスは、実際のユーザー パスワ�
 > パスワード同期は、Active Directory でオブジェクトの種類がユーザーであるオブジェクトのみがサポートされます。 オブジェクトの種類が INetOrgPerson であるオブジェクトはサポートされません。
 
 ### <a name="detailed-description-of-how-password-hash-synchronization-works"></a>パスワード ハッシュ同期のしくみの詳しい説明
+
 次のセクションでは、Active Directory と Azure AD の間のパスワード ハッシュ同期のしくみを詳しく説明します。
 
 ![パスワードの詳細なフロー](./media/how-to-connect-password-hash-synchronization/arch3b.png)
 
-
 1. AD Connect サーバー上のパスワード ハッシュ同期エージェントは、保存されたパスワード ハッシュ (unicodePwd 属性) を 2 分ごとに DC に要求します。  この要求は、DC 間でデータを同期するために使用される標準の [MS-DRSR](https://msdn.microsoft.com/library/cc228086.aspx) レプリケーション プロトコルを介して行われます。 サービス アカウントには、パスワード ハッシュを取得するために、Replicate Directory Changes (ディレクトリの変更のレプリケート) と Replicate Directory Changes All AD (ディレクトリの変更をすべての AD にレプリケート) の権限が必要になります (インストール時に既定で付与されます)。
 2. DC は、送信する前に、RPC セッション キーの [MD5](https://www.rfc-editor.org/rfc/rfc1321.txt) ハッシュであるキーと salt を使用して MD4 パスワード ハッシュを暗号化します。 次に、この結果を RPC 経由でパスワード ハッシュ同期エージェントに送信します。 DC は、DC のレプリケーション プロトコルを使用して同期エージェントにも salt を渡すので、エージェントはエンベロープの暗号化を解除できます。
-3.  パスワード ハッシュ同期エージェントは、暗号化されたエンベロープを受け取ると、[MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) と salt を使用して、受信したデータの暗号化を解除し元の MD4 形式に戻すためのキーを生成します。 パスワード ハッシュ同期エージェントが、クリア テキストのパスワードにアクセスすることはありません。 パスワード ハッシュ同期エージェントによる MD5 の使用は、DC とレプリケーション プロトコルとの互換性の維持に限定されており、DC とパスワード ハッシュ同期エージェントの間でオンプレミスでのみ使用されます。
-4.  パスワード ハッシュ同期エージェントは、最初にハッシュを 32 バイトの 16 進数文字列に変換し、次にこの文字列を UTF-16 エンコーディングでバイナリに変換することで、16 バイトのバイナリ パスワード ハッシュを 64 バイトに拡張します。
-5.  パスワード ハッシュ同期エージェントは、10 バイト長の salt で構成されるユーザーごとの salt を、64 バイトの バイナリに追加し、 元のハッシュの保護を強化します。
-6.  それから、パスワード ハッシュ同期エージェントは、MD4 ハッシュとユーザーごとのsalt を結合し、それを [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 関数に入力します。 [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) キー付きハッシュ アルゴリズムの 1000 のイテレーションが使用されます。 
-7.  パスワードハッシュ同期エージェントは、返された 32 バイトのハッシュを受け取り、(Azure AD で使用するために) ユーザーごとの salt と SHA256 のイテレーションの数の両方を連結し、SSL 経由で Azure AD Connect から Azure AD にこの文字列を送信します。</br> 
-8.  ユーザーが Azure AD にサインインしようとして自分のパスワードを入力すると、パスワードは同じ MD4 + salt + PBKDF2 + HMAC - SHA256 のプロセスを通じて処理されます。 返されたハッシュが Azure AD に格納されたハッシュに一致する場合、ユーザーは正しいパスワードを入力しており、認証も済んでいます。 
+3. パスワード ハッシュ同期エージェントは、暗号化されたエンベロープを受け取ると、[MD5CryptoServiceProvider](https://msdn.microsoft.com/library/System.Security.Cryptography.MD5CryptoServiceProvider.aspx) と salt を使用して、受信したデータの暗号化を解除し元の MD4 形式に戻すためのキーを生成します。 パスワード ハッシュ同期エージェントが、クリア テキストのパスワードにアクセスすることはありません。 パスワード ハッシュ同期エージェントによる MD5 の使用は、DC とレプリケーション プロトコルとの互換性の維持に限定されており、DC とパスワード ハッシュ同期エージェントの間でオンプレミスでのみ使用されます。
+4. パスワード ハッシュ同期エージェントは、最初にハッシュを 32 バイトの 16 進数文字列に変換し、次にこの文字列を UTF-16 エンコーディングでバイナリに変換することで、16 バイトのバイナリ パスワード ハッシュを 64 バイトに拡張します。
+5. パスワード ハッシュ同期エージェントは、10 バイト長の salt で構成されるユーザーごとの salt を、64 バイトの バイナリに追加し、 元のハッシュの保護を強化します。
+6. それから、パスワード ハッシュ同期エージェントは、MD4 ハッシュとユーザーごとのsalt を結合し、それを [PBKDF2](https://www.ietf.org/rfc/rfc2898.txt) 関数に入力します。 [HMAC-SHA256](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) キー付きハッシュ アルゴリズムの 1000 のイテレーションが使用されます。 
+7. パスワードハッシュ同期エージェントは、返された 32 バイトのハッシュを受け取り、(Azure AD で使用するために) ユーザーごとの salt と SHA256 のイテレーションの数の両方を連結し、SSL 経由で Azure AD Connect から Azure AD にこの文字列を送信します。</br> 
+8. ユーザーが Azure AD にサインインしようとして自分のパスワードを入力すると、パスワードは同じ MD4 + salt + PBKDF2 + HMAC - SHA256 のプロセスを通じて処理されます。 返されたハッシュが Azure AD に格納されたハッシュに一致する場合、ユーザーは正しいパスワードを入力しており、認証も済んでいます。
 
->[!Note] 
->元の MD4 ハッシュは Azure AD に送信されません。 代わりに、元の MD4 ハッシュの SHA256 ハッシュが送信されます。 その結果、Azure AD に格納されているハッシュを取得しても、このハッシュをオンプレミスの Pass-the-Hash 攻撃で使用することはできません。
+> [!NOTE]
+> 元の MD4 ハッシュは Azure AD に送信されません。 代わりに、元の MD4 ハッシュの SHA256 ハッシュが送信されます。 その結果、Azure AD に格納されているハッシュを取得しても、このハッシュをオンプレミスの Pass-the-Hash 攻撃で使用することはできません。
 
 ### <a name="security-considerations"></a>セキュリティに関する考慮事項
+
 パスワードを同期するとき、ユーザーのプレーンテキスト形式のパスワードは、パスワード ハッシュ同期機能にも、Azure AD や関連するどのサービスにも公開されません。
 
 ユーザー認証は、組織の独自の Active Directory インスタンスではなく、Azure AD に対して行われます。 Azure AD に格納された SHA256 パスワード データ (元の MD4 ハッシュのハッシュ) は、Active Directory に格納されるものよりもセキュリティで保護されます。 さらに、SHA256 ハッシュの暗号化は解除できないため、組織の Active Directory 環境に戻して、Pass-the-Hash 攻撃で有効なユーザーのパスワードとして表示することはできません。
 
 ### <a name="password-policy-considerations"></a>パスワード ポリシーの考慮事項
+
 パスワード ハッシュ同期を有効にすることによって影響を受ける 2 種類のパスワード ポリシーがあります。
 
 * パスワードの複雑性のポリシー
 * パスワードの有効期限のポリシー
 
-#### <a name="password-complexity-policy"></a>パスワードの複雑性のポリシー  
+#### <a name="password-complexity-policy"></a>パスワードの複雑性のポリシー
+
 パスワード ハッシュ同期が有効になっている場合、オンプレミスの Active Directory インスタンスでのパスワードの複雑性ポリシーによって、同期済みユーザーに対するクラウドでの複雑性ポリシーが上書きされます。 オンプレミスの Active Directory インスタンスからの有効なパスワードすべてを、Azure AD サービスへのアクセスに使用することができます。
 
 > [!NOTE]
 > クラウド内で直接作成されたユーザーのパスワードには、引き続きクラウドで定義されているパスワード ポリシーが適用されます。
 
-#### <a name="password-expiration-policy"></a>パスワードの有効期限のポリシー  
-ユーザーがパスワード ハッシュ同期のスコープ内にいる場合、クラウド アカウントのパスワードは "*期限なし*" に設定されます。
+#### <a name="password-expiration-policy"></a>パスワードの有効期限のポリシー
+
+ユーザーがパスワード ハッシュ同期のスコープ内にいる場合、既定でクラウド アカウントのパスワードは "*期限なし*" に設定されます。
 
 オンプレミス環境で期限切れになった同期パスワードを利用し、引き続きクラウド サービスにサインインできます。 クラウドのパスワードは、次にオンプレミス環境でパスワードを変更したときに更新されます。
 
+##### <a name="public-preview-of-the-enforcecloudpasswordpolicyforpasswordsyncedusers-feature"></a>*EnforceCloudPasswordPolicyForPasswordSyncedUsers* 機能 (パブリック プレビュー)
+
+Azure AD 統合サービスのみを操作し、パスワードの有効期限ポリシーに準拠している必要がある同期済みユーザーがいる場合は、*EnforceCloudPasswordPolicyForPasswordSyncedUsers* 機能を有効にすることで、Azure AD パスワードの有効期限ポリシーに強制的に準拠させることができます。
+
+ *EnforceCloudPasswordPolicyForPasswordSyncedUsers* が無効になっている場合 (既定の設定)、Azure AD Connect では、同期済みユーザーの PasswordPolicies 属性は "DisablePasswordExpiration" に設定されます。  これは、ユーザーのパスワードが同期されるたびに実行され、そのユーザーのクラウド パスワードの有効期限ポリシーを無視するように Azure AD へ指示されます。 Azure AD PowerShell モジュールを使用して、次のコマンドを使って属性の値を確認できます。
+
+`(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
+
+
+EnforceCloudPasswordPolicyForPasswordSyncedUsers 機能を有効にするには、MSOnline PowerShell モジュールを使用して次のコマンドを実行します。
+
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers  $true`
+
+有効にすると、Azure AD では、PasswordPolicies 属性から `DisablePasswordExpiration` 値を削除するために、同期済みの各ユーザーに移動することがなくなります。 代わりに、オンプレミス AD 上で次にパスワードを変更するときに、次のパスワードの同期中に、ユーザーごとに値が `None` に設定されます。  
+
+パスワード ハッシュの初期同期によってユーザーの PasswordPolicies 属性に `DisablePasswordExpiration` 値が追加されないように、パスワード ハッシュ同期を有効にする前に、EnforceCloudPasswordPolicyForPasswordSyncedUsers を有効にすることをお勧めします。
+
+既定の Azure AD パスワード ポリシーでは、90 日ごとにパスワードを変更するようにユーザーへ要求します。 AD でのポリシーも 90 日になっている場合は、2 つのポリシーが一致しているはずです。 しかし、AD のポリシーが 90 日でない場合は、Set-MsolPasswordPolicy PowerShell コマンドを使用して、Azure AD パスワード ポリシーが一致するように更新できます。
+
+Azure AD では、登録されたドメインごとに、個別のパスワード有効期限ポリシーがサポートされます。
+
+注意:有効期限内のパスワードを保持している必要がある同期済みアカウントが Azure AD 上にある場合、Azure AD 上でそのユーザー ブジェクトの PasswordPolicies 属性に `DisablePasswordExpiration` 値を明示的に追加する必要があります。  これを行うには、次のコマンドを実行します。
+
+`Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
+
+> [!NOTE]
+> この機能は現在、パブリック プレビュー段階にあります。
+
+#### <a name="public-preview-of-synchronizing-temporary-passwords-and-force-password-on-next-logon"></a>一時パスワードと "次回ログオン時にパスワードを適用" を同期する (パブリック プレビュー)
+
+通常は、最初のログオン時、特に管理者によるパスワードのリセットが行われた後に、ユーザーにパスワードの変更を強制します。  一般的に "一時" パスワードの設定と呼ばれており、Active Directory (AD) では、ユーザー オブジェクト上の [ユーザーは次回ログオン時にパスワード変更が必要] フラグのチェックをオンにすることで実現できます。
+  
+一時パスワード機能を使用すると、資格情報の所有権の譲渡が初回使用時に確実に完了し、複数の個人がその資格情報に関する知識を持つ期間を最小限に抑えることができます。
+
+同期済みユーザーに対して Azure AD 上で一時パスワードをサポートするには、Azure AD Connect サーバー上で次のコマンドを実行して *ForcePasswordResetOnLogonFeature* 機能を有効にできます。<AAD Connector Name> は、ご自身の環境に固有のコネクタ名に置き換えます。
+
+`Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
+
+次のコマンドを使用して、コネクタ名を判別できます。
+
+`(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
+
+注意:次回ログオン時のパスワード変更をユーザーに強制すると、同時でのパスワード変更が必要になります。  AD Connect では、パスワードの強制変更フラグは、パスワード ハッシュの同期中に行われた検出済みのパスワード変更に対する補足であり、単独では取得されません。
+
+> [!CAUTION]
+> Azure AD 上でセルフサービスのパスワード リセット (SSPR) を有効にしていない場合、Azure AD 上でパスワードをリセットしてから、新しいパスワードを使用して Active Directory にサインインしようとすると、Active Directory では新しいパスワードが有効ではないため、混乱が生じます。 この機能は、テナント上で SSPR とパスワード ライトバックが有効になっている場合にのみ使用してください。
+
+> [!NOTE]
+> この機能は現在、パブリック プレビュー段階にあります。
+
 #### <a name="account-expiration"></a>アカウントの有効期限
+
 組織でユーザー アカウント管理の一環として accountExpires 属性を使用する場合、この属性は Azure AD に同期されません。 この結果、パスワード ハッシュ同期用に構成された環境の期限切れの Active Directory アカウントが、Azure AD では引き続きアクティブなままとなります。 アカウントが期限切れの場合はユーザーの Azure AD アカウントを無効にする PowerShell スクリプトをワークフロー アクションでトリガーすることをお勧めします ([Set-AzureADUser](https://docs.microsoft.com/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) コマンドレットを使用)。 逆に、アカウントを有効にしたときは、Azure AD インスタンスを有効にする必要があります。
 
 ### <a name="overwrite-synchronized-passwords"></a>同期されたパスワードの上書き
+
 管理者は Windows PowerShell を使用してパスワードを手動でリセットできます。
 
 この場合、新しいパスワードによって同期されたパスワードは上書きされ、クラウドで定義されているすべてのパスワード ポリシーが新しいパスワードに適用されます。

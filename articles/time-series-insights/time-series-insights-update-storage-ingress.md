@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98baa8d3f951a8922bcd1f40449fa26840f3a3c4
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 9af53728ee038a6511c434aeedfdb9afdab6d04b
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051477"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72273874"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューのデータ ストレージおよびイングレス
 
@@ -34,7 +34,7 @@ Time Series Insights プレビューは、Time Series Insights が現在サポ�
 - [Azure IoT Hub](../iot-hub/about-iot-hub.md)
 - [Azure Event Hubs](../event-hubs/event-hubs-about.md)
   
-Azure Time Series Insights では、Azure IoT Hub または Azure Event Hubs を介して送信された JSON がサポートされています。 IoT JSON データを最適化するには、[JSON 構造化方法](./time-series-insights-send-events.md#json)に関するページを参照してください。
+Azure Time Series Insights では、Azure IoT Hub または Azure Event Hubs を介して送信された JSON がサポートされています。 IoT JSON データを最適化するには、[JSON 構造化方法](./time-series-insights-send-events.md#supported-json-shapes)に関するページを参照してください。
 
 ### <a name="data-storage"></a>データ ストレージ
 

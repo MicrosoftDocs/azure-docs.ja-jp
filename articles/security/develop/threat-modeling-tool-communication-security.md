@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 9c750522123995685191001988ae0081d9454ccf
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 090242cde79f6c31b0f70e1a75240778dca89fa7
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728357"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828576"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信のセキュリティ | 軽減策 
 | 製品/サービス | 記事 |
@@ -289,7 +289,7 @@ namespace CertificatePinningExample
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | NET Framework 3 |
 | **属性**              | 該当なし  |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_transport_security_enabled) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify Kingdom](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_transport_security_enabled) |
 | **手順** | アプリケーションは、機密情報へのすべてのアクセスに対して HTTPS が確実に使用されるよう構成されている必要があります。<ul><li>**説明:** アプリケーションが機密情報を処理しており、メッセージ レベルの暗号化が使用されていない場合は、暗号化されたトランスポート チャネル経由での通信のみを許可します。</li><li>**推奨:** HTTP トランスポートが無効になっていることを確認し、代わりに HTTPS トランスポートを有効にします。 たとえば、`<httpTransport/>` を `<httpsTransport/>` タグに置き換えます。 アプリケーションへのアクセス チャネルを確実にセキュリティで保護したい場合は、ネットワーク構成 (ファイアウォール) には依存しないでください。 論理的に言えば、アプリケーションのセキュリティをネットワークに依存するべきではありません。</li></ul><p>実際的な観点から言うと、ネットワーク セキュリティ担当者は、アプリケーションの進化に伴うアプリケーションのセキュリティ要件を常に把握しているわけではありません。</p>|
 
 ## <a id="message-protection"></a>WCF: メッセージのセキュリティ保護レベルを EncryptAndSign に設定する
@@ -301,7 +301,7 @@ namespace CertificatePinningExample
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | 該当なし  |
 | **参照**              | [MSDN](https://msdn.microsoft.com/library/ff650862.aspx) |
-| **手順** | <ul><li>**説明:** 保護レベルが "none" に設定されていると、メッセージの保護が無効になります。 機密性と整合性を実現するには、適切な設定レベルを使用します。</li><li>**推奨:**<ul><li>`Mode=None` の場合 - メッセージ保護を無効にします</li><li>`Mode=Sign` の場合 - メッセージに署名します。ただし、暗号化しません。データの整合性が重要である場合に使用します</li><li>`Mode=EncryptAndSign` の場合 - メッセージに署名し、暗号化します</li></ul></li></ul><p>機密性については心配がなく、情報の整合性のみを検証する場合は、暗号化を無効にして、メッセージへの署名のみを検討してください。 送信者を検証する必要があるが、機密データが送信されない操作またはサービス コントラクトについては、これが役に立つ場合があります。 保護レベルを下げるときは、個人を特定できる情報 (PII) がメッセージに含まれないように注意してください。</p>|
+| **手順** | <ul><li>**説明:** 保護レベルが "none" に設定されていると、メッセージの保護が無効になります。 機密性と整合性を実現するには、適切な設定レベルを使用します。</li><li>**推奨:**<ul><li>`Mode=None` の場合 - メッセージ保護を無効にします</li><li>`Mode=Sign` の場合 - メッセージに署名します。ただし、暗号化しません。データの整合性が重要である場合に使用します</li><li>`Mode=EncryptAndSign` の場合 - メッセージに署名し、暗号化します</li></ul></li></ul><p>機密性については心配がなく、情報の整合性のみを検証する場合は、暗号化を無効にして、メッセージへの署名のみを検討してください。 送信者を検証する必要があるが、機密データが送信されない操作またはサービス コントラクトについては、これが役に立つ場合があります。 保護レベルを下げるときは、個人データがメッセージに含まれないように注意してください。</p>|
 
 ### <a name="example"></a>例
 次の例では、メッセージへの署名のみを行うようにサービスと操作を構成します。 `ProtectionLevel.Sign` のサービス コントラクトの例: サービス コントラクト レベルで ProtectionLevel.Sign を使用する例を次に示します。 

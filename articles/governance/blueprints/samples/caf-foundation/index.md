@@ -1,19 +1,18 @@
 ---
-title: サンプル - CAF 基盤ブループリント - 概要
+title: CAF 基盤ブループリント サンプル - 概要
 description: CAF 基盤ブループリント サンプルの概要とアーキテクチャ。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 08/20/2019
 ms.topic: sample
 ms.service: blueprints
-manager: carmonm
 ms.custom: fasttrack-new
-ms.openlocfilehash: aa25bbb54893fa84bb345a317850df4125faed25
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: be910246666f9974eedb5315a970c6c4ba8878ef
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003301"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72298036"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Microsoft Cloud Adoption Framework for Azure 基盤ブループリント サンプルの概要
 

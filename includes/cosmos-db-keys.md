@@ -4,14 +4,13 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: sngun
-ms.openlocfilehash: 25ac3da36727c33cc916a208f1e7974a35c545ad
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 26aab287c6bf216129bdf372f7dee4d22f12f7bd
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "67180929"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299335"
 ---
-  これらの値は次で作成する Web アプリケーションで使用するため、[Azure Cosmos DB アカウント] ページに移動し、 **[キー]** をクリックします。
+  Azure Cosmos DB アカウント ページに移動し、 **[キー]** を選択します。 次に作成する Web アプリケーションで使用する値をコピーします。
 
-![[Azure Cosmos DB アカウント] ページで [キー] ボタンが強調表示されている Azure portal のスクリーンショット](./media/cosmos-db-keys/keys.png)
-
+![[Azure Cosmos DB アカウント] ページで [キー] ボタンが強調表示されている Azure portal のスクリーンショット](./media/cosmos-db-keys/copy-keys.png)

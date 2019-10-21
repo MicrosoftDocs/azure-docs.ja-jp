@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6b7feb1b980054ba224173d5054907879a88cdd5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5905afdb9832f32e837dc4496e4a951fca41b8b0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68952874"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243545"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Monitor ログへの Azure Automation State Configuration レポート データの転送
 
@@ -78,7 +78,7 @@ Automation State Configuration データ用に Azure Monitor ログとの統合�
 
 ![[ログ検索] ボタン](media/automation-dsc-diagnostics/log-search-button.png)
 
-**[ログ検索]** ブレードには、各 State Configuration ノードの **DscNodeStatusData** 操作、およびそのノードに適用されたノード構成で呼び出された各 [DSC リソース](/powershell/dsc/resources)の **DscResourceStatusData** 操作が表示されます。
+**[ログ検索]** ブレードには、各 State Configuration ノードの **DscNodeStatusData** 操作、およびそのノードに適用されたノード構成で呼び出された各 [DSC リソース](/powershell/scripting/dsc/resources/resources)の **DscResourceStatusData** 操作が表示されます。
 
 **DscResourceStatusData** 操作には、失敗したすべての DSC リソースのエラー情報が含まれます。
 
@@ -138,7 +138,7 @@ Azure Automation からの診断により、Azure Monitor ログに 2 つのカ�
 | HostName_s | 管理対象ノードの名前。 |
 | IPAddress | 管理対象ノードの IPv4 アドレス。 |
 | Category | DscNodeStatus |
-| Resource | Azure Automation アカウントの名前。 |
+| リソース | Azure Automation アカウントの名前。 |
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | NodeId_g |管理対象ノードを識別する GUID。 |
 | DscReportId_g |レポートを識別する GUID。 |
@@ -164,7 +164,7 @@ Azure Automation からの診断により、Azure Monitor ログに 2 つのカ�
 | ResultType |リソースが準拠しているかどうか。 |
 | NodeName_s |管理対象ノードの名前。 |
 | Category | DscNodeStatus |
-| Resource | Azure Automation アカウントの名前。 |
+| リソース | Azure Automation アカウントの名前。 |
 | Tenant_g | 呼び出し元のテナントを識別する GUID です。 |
 | NodeId_g |管理対象ノードを識別する GUID。 |
 | DscReportId_g |レポートを識別する GUID。 |

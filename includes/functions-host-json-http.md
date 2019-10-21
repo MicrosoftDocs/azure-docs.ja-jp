@@ -4,25 +4,14 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 35b087d13099b975a1c9c6d2dbd449935f5f0d1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec825bb59840784ca45e8a38caa664c19883fb32
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66249000"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263332"
 ---
-```json
-{
-    "http": {
-        "routePrefix": "api",
-        "maxOutstandingRequests": 200,
-        "maxConcurrentRequests": 100,
-        "dynamicThrottlesEnabled": true
-    }
-}
-```
-
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |Default | 説明 |
 |---------|---------|---------| 
 |routePrefix|api|すべてのルートに適用されるルート プレフィックス。 既定のプレフィックスを削除するには、空の文字列を使用します。 |
 |maxOutstandingRequests|200<sup>*</sup>|特定の時点で保持される未処理の要求の最大数。 この制限には、キューに格納され、まだ実行が開始されていない要求と、処理中の実行が含まれます。 この制限を超える受信要求は、429 "Too Busy" 応答で拒否されます。 これにより、呼び出し元は時間ベースの再試行戦略を採用でき、要求の最大待機時間の制御にも役立ちます。 この設定は、スクリプト ホストの実行パス内で発生するキューのみを制御します。 ASP.NET 要求キューなどの他のキューは有効なままで、この設定の影響を受けません。 <sup>*</sup>バージョン 1.x の既定値は無制限です (`-1`)。 従量課金プランでのバージョン 2.x の既定値は 200 です。 専用プランでのバージョン 2.x の既定値は無制限です (`-1`)。|

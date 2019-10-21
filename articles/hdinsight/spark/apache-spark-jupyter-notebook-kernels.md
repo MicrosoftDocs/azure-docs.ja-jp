@@ -3,20 +3,20 @@ title: Azure HDInsight の Spark クラスター上の Jupyter Notebook のカ�
 description: Azure HDInsight 上の Spark クラスターで使用可能な Jupyter Notebook 用の PySpark、PySpark3、および Spark カーネルについて説明します。
 keywords: spark 上の jupyter notebook,jupyter spark
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/27/2019
-ms.author: hrasheed
-ms.openlocfilehash: b2ae24c0449b009db6fcecdd8a1366ea5154629a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 371ba46b477b5dba245a116d2ea9d21d2b732a97
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257814"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337672"
 ---
-# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル 
+# <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスター上の Jupyter Notebook のカーネル
 
 HDInsight Spark クラスターは、アプリケーションをテストするために [Apache Spark](https://spark.apache.org/) 上の Jupyter Notebook で使用できるカーネルを提供します。 カーネルは、コードを実行し、解釈するプログラムです。 次の 3 つのカーネルがあります。
 
@@ -36,7 +36,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 
 2. **[概要]** ビューから、 **[クラスター ダッシュボード]** ボックスの **[Jupyter Notebook]** を選択します。 入力を求められたら、クラスターの管理者資格情報を入力します。
 
-    ![Spark 上の Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上の Jupyter Notebook") 
+    ![Apache Spark 上の Jupyter Notebook](./media/apache-spark-jupyter-notebook-kernels/hdinsight-spark-open-jupyter-interactive-spark-sql-query.png "Spark 上の Jupyter Notebook")
   
    > [!NOTE]  
    > ブラウザーで次の URL を開き、Spark クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
@@ -44,8 +44,8 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
 3. **[新規]** を選択し、 **[Pyspark]** 、 **[PySpark3]** 、または **[Spark]** を選択して、Notebook を作成します。 Scala アプリケーションには Spark カーネルを、Python2 アプリケーションには PySpark カーネルを、Python3 アプリケーションには PySpark3 カーネルを使用します。
-   
-    ![Spark 上の Jupyter Notebook のカーネル](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook のカーネル") 
+
+    ![Spark 上の Jupyter Notebook のカーネル](./media/apache-spark-jupyter-notebook-kernels/kernel-jupyter-notebook-on-spark.png "Spark 上の Jupyter Notebook のカーネル")
 
 4. Notebook が、選択したカーネルで開きます。
 
@@ -54,7 +54,7 @@ HDInsight での Apache Spark クラスター。 手順については、「 [Cr
 Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネルを使用する利点は次のとおりです。
 
 - **コンテキストのプリセット**。 **PySpark**、**PySpark3**、または **Spark** カーネルでは、アプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。 これらは既定で利用できます。 各コンテキストは次のとおりです。
-   
+
   * **sc** : Spark コンテキスト用
   * **sqlContext** : Hive コンテキスト用
    
@@ -62,11 +62,11 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
    
          sc = SparkContext('yarn-client')
          sqlContext = HiveContext(sc)
-   
+
     代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
 
 - **セル マジック**。 PySpark カーネルには、"マジック"、つまり、`%%` で呼び出すことができる特別なコマンドがいくつか事前定義されています (`%%MAGIC` `<args>` など)。 このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。 魔法の単語はセルの最初の単語にする必要があります。 その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。     マジックの詳細については、[こちら](https://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
-   
+
     次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
 
    | マジック | 例 | 説明 |
@@ -86,6 +86,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 - **自動視覚化**。 Pyspark カーネルによって、Hive と SQL のクエリの出力が自動的に視覚化されます。 表、円グラフ、面積グラフ、棒グラフなど、さまざまな種類の視覚化から選択できます。
 
 ## <a name="parameters-supported-with-the-sql-magic"></a>%%sql マジックでサポートされるパラメーター
+
 `%%sql` マジックでは、クエリの実行時に受け取る出力の種類の制御に使用できる、さまざまなパラメーターがサポートされます。 次の表に、出力を示します。
 
 | パラメーター | 例 | 説明 |
@@ -136,19 +137,23 @@ Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome で�
 新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。 カーネルが改良されるにつれて、API も変更される可能性があります。 これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。 これらのカーネルの最終リリースの設計に役立ちます。 ご意見やフィードバックは、この記事の下部にある **フィードバック**のセクションからお寄せください。
 
 ## <a name="seealso"></a>関連項目
+
 * [概要: Azure HDInsight での Apache Spark](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>シナリオ
+
 * [Apache Spark と BI:HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して、HVAC データを使用して建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [Apache Spark と Machine Learning:HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 * [HDInsight 上での Apache Spark を使用した Web サイト ログ分析](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行
+
 * [Scala を使用してスタンドアロン アプリケーションを作成する](apache-spark-create-standalone-application.md)
 * [Apache Livy を使用して Apache Spark クラスターでジョブをリモートから実行する](apache-spark-livy-rest-interface.md)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
+
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark Scala アプリケーションを作成し、送信する](apache-spark-intellij-tool-plugin.md)
 * [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Apache Spark アプリケーションをリモートでデバッグする](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する](apache-spark-zeppelin-notebook.md)
@@ -156,5 +161,6 @@ Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome で�
 * [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](apache-spark-jupyter-notebook-install-locally.md)
 
 ### <a name="manage-resources"></a>リソースの管理
+
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](apache-spark-job-debugging.md)

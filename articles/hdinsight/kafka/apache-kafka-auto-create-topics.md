@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/18/2018
-ms.openlocfilehash: 5d990a1c39495090fed1c78f1ddf5e879490e6c4
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 393087f4d5c5e7a52fd2dd10d20362a045a0075b
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960660"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122665"
 ---
 # <a name="how-to-configure-apache-kafka-on-hdinsight-to-automatically-create-topics"></a>トピックを自動的に作成するように HDInsight 上の Apache Kafka を構成する方法
 
@@ -25,7 +25,7 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
 1. [Azure portal](https://portal.azure.com) で Kafka クラスターを選びます。
 
-2. __クラスターの概要__ で __[クラスター ダッシュボード]__ を選びます。 
+2. __クラスターの概要__ で __[クラスター ダッシュボード]__ を選びます。
 
     ![クラスター ダッシュボードが選ばれたポータルの画像](./media/apache-kafka-auto-create-topics/kafka-cluster-overview.png)
 
@@ -35,15 +35,15 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
 3. ページの左側にある一覧で Kafka サービスを選びます。
 
-    ![サービスの一覧](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
+    ![Apache Ambari のサービス一覧タブ](./media/apache-kafka-auto-create-topics/hdinsight-service-list.png)
 
 4. ページ中央の [Configs]\(構成\) を選択します。
 
-    ![サービスの [Configs]\(構成\) タブ](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
+    ![Apache Ambari のサービス構成タブ](./media/apache-kafka-auto-create-topics/hdinsight-service-config.png)
 
-5. [フィルター] フィールドに値「`auto.create`」を入力します。 
+5. [フィルター] フィールドに値「`auto.create`」を入力します。
 
-    ![フィルター フィールドの画像](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
+    ![Apache Ambari の検索フィルター フィールド](./media/apache-kafka-auto-create-topics/hdinsight-filter-field.png)
 
     プロパティの一覧にフィルターが適用されて `auto.create.topics.enable` 設定が表示されます。
 
@@ -53,7 +53,7 @@ Ambari Web UI を使って既存のクラスターでトピックの自動作成
 
 7. Kafka サービスを選び、 __[Restart]\(再起動\)__ を選んで、 __[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選びます。 メッセージが表示されたら、 __[Confirm restart all]\(すべて再起動\)__ を選択します。
 
-    ![再起動の選択の画像](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
+    ![Apache Ambari の影響を受けるものをすべて再起動](./media/apache-kafka-auto-create-topics/restart-all-affected.png)
 
 > [!NOTE]  
 > Ambari REST API を使って Ambari の値を設定することもできます。 現在の構成の取得やその変更のために複数の REST 呼び出しを行う必要があるため、通常はこの方法の方が困難です。詳細については、[Apache Ambari REST API を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari-rest-api.md)に関するページを参照してください。

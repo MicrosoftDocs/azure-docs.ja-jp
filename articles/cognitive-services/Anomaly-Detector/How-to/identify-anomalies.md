@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 10/01/2019
 ms.author: aahi
-ms.openlocfilehash: c7b3d9b66d74f16dc0938c888456d673b9cd4b77
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882884"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840215"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>方法:時系列データに Anomaly Detector API を使用する  
 
@@ -26,7 +26,7 @@ ms.locfileid: "68882884"
 Anomaly Detector API には、バッチとストリーミングの検出モードが用意されています。
 
 > [!NOTE]
-> 次の要求 URL は、サブスクリプションに対して適切なエンドポイントと組み合わせる必要があります。 次に例を示します。`https://westus2.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> 次の要求 URL は、サブスクリプションに対して適切なエンドポイントと組み合わせる必要があります。 次に例を示します。`https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
 ### <a name="batch-detection"></a>バッチ検出

@@ -1,7 +1,7 @@
 ---
-title: トレーニングの実行中にメトリックを記録する
-titleSuffix: Azure Machine Learning service
-description: 実験を追跡し、メトリックを監視して、モデルの作成プロセスを拡張できます。 トレーニング スクリプトにログ記録を追加する方法、実験を送信する方法、実行中のジョブの進行状況を確認する方法、および実行のログに記録された結果を表示する方法について説明します。
+title: ML の実験とメトリックをログに記録する
+titleSuffix: Azure Machine Learning
+description: Azure ML の実験を監視し、実行のメトリックを監視することでモデルの作成プロセスを強化します。 トレーニング スクリプトにログ記録を追加し、記録された実行結果を表示します。  run.log、Run.start_logging、ScriptRunConfig を使用します。
 services: machine-learning
 author: heatherbshapiro
 ms.author: hshapiro
@@ -10,21 +10,21 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 09/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0f295bf3a76d89e811fe9a022a3ccb68fbe7556a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a37ed7c7f39324a7fb4750389c0d76c36539c3cc
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858723"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002704"
 ---
-# <a name="track-machine-learning-training-metrics-with-azure-machine-learning"></a>Azure Machine Learning を使用して機械学習のトレーニング メトリックを追跡する
+# <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML の実験の実行とメトリックを監視する
 
-実験を追跡し、メトリックを監視することで、モデルの作成プロセスを拡張します。 この記事では、Azure Machine Learning service におけるトレーニング スクリプトへのログ記録コードの追加、実験の実行の送信、実行の監視、結果の検査を行う方法について説明します。
+実験を追跡し、実行のメトリックを監視することでモデルの作成プロセスを強化します。 この記事では、Azure Machine Learning におけるトレーニング スクリプトへのログ記録コードの追加、実験の実行の送信、実行の監視、結果の検査を行う方法について説明します。
 
 > [!NOTE]
-> Azure Machine Learning service では、トレーニング中に、自動化された機械学習の実行や、トレーニング ジョブを実行する Docker コンテナーなど、他のソースから情報をログに記録することもできます。 これらのログについては記載されていません。 問題が発生し、Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
+> Azure Machine Learning では、トレーニング中に、自動化された機械学習の実行や、トレーニング ジョブを実行する Docker コンテナーなど、他のソースから情報をログに記録することもできます。 これらのログについては記載されていません。 問題が発生し、Microsoft サポートに問い合わせた場合、サポートはトラブルシューティングの際にこれらのログを使用できる可能性があります。
 
 ## <a name="available-metrics-to-track"></a>追跡で使用できるメトリック
 
@@ -65,7 +65,7 @@ ms.locfileid: "70858723"
 
 **start_logging** では、ノートブックなどのシナリオで使用するための対話型の実行が作成されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。
 
-次の例では、ローカルの Jupyter Notebook でローカルに単純な sklearn Ridge モデルをトレーニングします。 さまざまな環境への実験の送信について詳しくは、「[Azure Machine Learning サービスでモデルのトレーニング用のコンピューティング ターゲットを設定する](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)」をご覧ください。
+次の例では、ローカルの Jupyter Notebook でローカルに単純な sklearn Ridge モデルをトレーニングします。 さまざまな環境に実験を送信する方法の詳細については、[Azure Machine Learning でモデル トレーニング用のコンピューティング先を設定する](https://docs.microsoft.com/azure/machine-learning/service/how-to-set-up-training-targets)方法に関するページをご覧ください。
 
 1. ローカルの Jupyter Notebook でトレーニング スクリプトを作成します。 
 
@@ -91,7 +91,7 @@ ms.locfileid: "70858723"
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. Azure Machine Learning service SDK を使用して実験の追跡を追加し、永続化されたモデルを実験の実行レコードにアップロードします。 次のコードでは、タグを追加し、ログを記録して、実験の実行にモデル ファイルをアップロードします。
+2. Azure Machine Learning SDK を使用して実験の追跡を追加し、永続化されたモデルを実験の実行レコードにアップロードします。 次のコードでは、タグを追加し、ログを記録して、実験の実行にモデル ファイルをアップロードします。
 
    ```python
     # Get an experiment object from Azure Machine Learning

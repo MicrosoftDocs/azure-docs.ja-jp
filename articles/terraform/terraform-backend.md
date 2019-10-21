@@ -5,14 +5,14 @@ services: terraform
 author: tomarchermsft
 ms.service: azure
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: a88ad25e335026d5172c7997f62629d5ada46f6e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e9b447f4f4dc9d0ee090da9729e483cc17ac7c15
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66693301"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169933"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>Terraform 状態を Azure Storage に格納する
 
@@ -28,7 +28,7 @@ Terraform には、状態バックエンドの概念が含まれています。�
 
 Azure Storage をバックエンドとして使用する前に、ストレージ アカウントを作成する必要があります。 ストレージ アカウントは、Azure portal、PowerShell、Azure CLI、または Terraform 自体を使用して作成できます。 Azure CLI を使用してストレージ アカウントを構成するには、次のサンプルを使用します。
 
-```azurecli-interactive
+```azurecli
 #!/bin/bash
 
 RESOURCE_GROUP_NAME=tstate
@@ -67,13 +67,13 @@ Terraform の状態バックエンドは、*Terraform init* の実行時に構�
 
 `ARM_ACCESS_KEY` という名前の環境変数を作成し、その値に Azure ストレージ アクセス キーを指定します。
 
-```console
+```bash
 export ARM_ACCESS_KEY=<storage access key>
 ```
 
 Azure ストレージ アカウントのアクセス キーをさらに保護するには、これを Azure Key Vault に格納します。 環境変数は、次のようなコマンドを使用して設定できます。 Azure Key Vault の詳細については、[Azure Key Vault のドキュメント][azure-key-vault]を参照してください。
 
-```console
+```bash
 export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --vault-name myKeyVault --query value -o tsv)
 ```
 
@@ -81,7 +81,7 @@ export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --v
 
 次の例では、Terraform バックエンドを構成し、Azure リソース グループを作成します。 値は、実際の環境の値に置き換えてください。
 
-```json
+```hcl
 terraform {
   backend "azurerm" {
     storage_account_name  = "tstate09762"
@@ -100,7 +100,7 @@ resource "azurerm_resource_group" "state-demo-secure" {
 
 ## <a name="state-locking"></a>状態のロック
 
-Azure Storage Blob を状態ストレージに使用すると、BLOB は、状態の書き込みを伴うすべての操作の前に自動的にロックされます。 この構成によって、破損を引き起こす可能性がある、複数による同時実行の状態操作が防止されます。 詳細については、Terraform ドキュメントの「[State Locking (状態のロック)][terraform-state-lock]」を参照してください。
+Azure Storage Blob を状態ストレージに使用すると、BLOB は、状態の書き込みを伴うすべての操作の前に自動的にロックされます。 この構成によって、破損を引き起こす可能性がある、複数による同時実行の状態操作が防止されます。 詳細については、Terraform ドキュメントの「[状態のロック][terraform-state-lock]」を参照してください。
 
 Azure portal または他の Azure 管理ツールを使用して BLOB を調べると、ロックを確認できます。
 
@@ -110,7 +110,7 @@ Azure portal または他の Azure 管理ツールを使用して BLOB を調べ
 
 既定では、Azure BLOB の格納データは、ストレージ インフラストラクチャに永続化される前に暗号化されます。 Terraform で必要になると、状態はバックエンドから取得され、開発システム上のメモリに格納されます。 この構成では、状態は Azure Storage 内で保護され、お客様のローカル ディスクには書き込まれません。
 
-Azure Storage 暗号化の詳細については、「[Azure Storage Service Encryption for data at rest (保存データ向け Azure Storage Service Encryption)][azure-storage-encryption]」を参照してください。
+Azure Storage 暗号化の詳細については、[保存データに対する Azure Storage Service Encryption][azure-storage-encryption] に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: 25928ef35da1ce4b3824303a5d46749c32aa701f
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1190798b234f9c73e02fda41c03ffa296246be63
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69626362"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975317"
 ---
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "69626362"
 | タグ キーの長さ |512 |512 |
 | タグ値の長さ |256 |256 |
 
-<sup>1</sup> リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 Azure CLI の場合は [az group deployment delete](/cli/azure/group/deployment) を、PowerShell では [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) を使用して、履歴からエントリを削除できます。  継続的インテグレーションと継続的デリバリー (CI/CD) シナリオでデプロイ削除を自動化する PowerShell スクリプトについては、「[remove-deployments.ps1](https://gist.github.com/bmoore-msft/ed33fb940dafb09380174b7fca57651f)」を参照してください。
+<sup>1</sup> リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 詳細については、「[デプロイ数が 800 を超えたときのエラーを解決する](../articles/azure-resource-manager/deployment-quota-exceeded.md)」を参照してください。
 
 #### <a name="template-limits"></a>テンプレートの制限
 

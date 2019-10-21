@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 012ab849c926de332da55361c79c76c5a1311169
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0625d8371b9ecaaadd05e302413054948fd4b27b
+ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60368045"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70967036"
 ---
 # <a name="detect-common-objects-in-images"></a>画像内の一般的なオブジェクトを検出する
 
@@ -99,5 +99,5 @@ Detect API は、画像内で特定されたオブジェクトや生物に応じ
 
 オブジェクト検出機能は [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API に含まれています。 ネイティブ SDK または REST を呼び出すことでこの API を呼び出すことができます。 `Objects` を **visualFeatures** クエリ パラメーターに追加します。 その後、完全な JSON 応答が得られたら、`"objects"` セクションのコンテンツを対象に文字列を解析します。
 
-* [クイック スタート:画像の分析 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [クイック スタート:Computer Vision .NET SDK](./quickstarts-sdk/csharp-sdk.md)
 * [クイック スタート:画像の分析 (REST API)](./quickstarts/csharp-analyze.md)

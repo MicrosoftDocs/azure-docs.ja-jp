@@ -1,17 +1,17 @@
 ---
 title: Azure Monitor から Azure Cosmos DB メトリックを入手する
-description: ''
+description: Azure portal を使って Azure Monitor からさまざまなカテゴリの Azure Cosmos DB メトリックを表示する方法について説明します。
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
-ms.openlocfilehash: 762c910336fa2b50a46eda23cf66d8a7aa383c52
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 905eca99c137af2fd40a1243de8fabd15314477c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241224"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973741"
 ---
 # <a name="monitor-and-debug-azure-cosmos-db-metrics-from-azure-monitor"></a>Azure Monitor から Azure Cosmos DB メトリックを監視およびデバッグする
 

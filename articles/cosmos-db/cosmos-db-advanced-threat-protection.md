@@ -1,18 +1,19 @@
 ---
 title: Azure Cosmos DB の Advanced Threat Protection
 description: Azure Cosmos DB で保存データが暗号化される方法と、その実装方法について説明します。
-author: monhaber
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.author: v-mohabe
 ms.custom: seodec18
-ms.openlocfilehash: 035c7e9ed5ab33c89a2a55b1133294db434bfe81
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.author: memildin
+author: memildin
+manager: rkarlin
+ms.openlocfilehash: dca653bfaf625ff31e4dd7f43752219b312779d1
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123909"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286765"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db"></a>Azure Cosmos DB の Advanced Threat Protection
 

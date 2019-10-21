@@ -10,12 +10,12 @@ ms.topic: quickstart
 description: Azure でコンテナー、マイクロサービス、Java を使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Java, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 28b6a2ecff756c878bb3bc0a69976e7cede5f7ee
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 2154ec3ae99ae816b970c96ffde435f1a3366e99
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772656"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815857"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>クイック スタート:Azure Dev Spaces を使用して Kubernetes 上の Visual Studio Code と Java でデバッグと反復処理を行う
 
@@ -25,6 +25,10 @@ ms.locfileid: "70772656"
 - Visual Studio Code を使用して、コンテナー内のコードを繰り返し開発する。
 - Visual Studio Code で開発空間のコードをデバッグする。
 
+Azure Dev Spaces では、次のものを使用してデバッグと反復処理を行うこともできます。
+- [Node.js と Visual Studio Code](quickstart-nodejs.md)
+- [.NET Core と Visual Studio Code](quickstart-netcore.md)
+- [.NET Core と Visual Studio](quickstart-netcore-visualstudio.md)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,6 +50,9 @@ az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --gen
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>AKS クラスターで Azure Dev Spaces を有効にする
 
 `use-dev-spaces` コマンドを使用して AKS クラスターで Dev Spaces を有効にし、プロンプトに従います。 下記のコマンドを使用すると、*MyResourceGroup* グループ内の *MyAKS* クラスターで Dev Spaces が有効になり、*default* 開発空間が作成されます。
+
+> [!NOTE]
+> この `use-dev-spaces` コマンドでは、Azure Dev Spaces CLI がまだインストールされていない場合にはこれもインストールされます。 Azure Dev Spaces CLI を Azure Cloud Shell にインストールすることはできません。
 
 ```cmd
 $ az aks use-dev-spaces -g MyResourceGroup -n MyAKS

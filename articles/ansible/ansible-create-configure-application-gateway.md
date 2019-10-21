@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Ansible を使用して Azure Application Gateway で Web トラフィックを管理する | Microsoft Docs
+title: チュートリアル - Ansible を使用して Azure Application Gateway で Web トラフィックを管理する
 description: Ansible を使用して Azure Application Gateway を作成および構成し、Web トラフィックを管理する方法について説明する
 keywords: Ansible、Azure、DevOps、Bash、プレイブック、アプリケーションゲートウェイ、ロード バランサー、Web トラフィック
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 9f8ed3e1da72db3e1b13d5d2aef1cce8fc3922a2
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1dd547fb59a41a90de18d595a392b64ef518023a
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231260"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241883"
 ---
 # <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>チュートリアル:Ansible を使用して Azure Application Gateway で Web トラフィックを管理する
 
@@ -292,7 +292,7 @@ ansible-playbook appgw_create.yml
 
 この記事で作成したリソースが不要になったら、削除してください。 
 
-次のコードを `cleanup.yml` として保存します。
+`cleanup.yml` として次のコードを保存します。
 
 ```yml
 - hosts: localhost

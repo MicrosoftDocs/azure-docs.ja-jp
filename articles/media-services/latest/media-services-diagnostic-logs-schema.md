@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 394370738bc7996a221300540e68404986d91310
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f95258368664aabeb89426afb83854378c0e4429
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322252"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261098"
 ---
 # <a name="diagnostic-logs-schemas"></a>診断ログのスキーマ
 
 [Azure Monitor](../../azure-monitor/overview.md) により、アプリケーションの実行状況を理解する上で役立つメトリックと診断ログを監視できます。 Media Services の診断ログを監視し、収集されたメトリックおよびログに対してアラートと通知を作成できます。 ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信し、それらを [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミング配信して、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートできます。またはサード パーティのサービスを使用できます。
 
-詳細については、 [Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)に関する記事をご覧ください。
+詳細については、 [Azure Monitor メトリック](../../azure-monitor/platform/data-platform.md)および [Azure Monitor 診断ログ](../../azure-monitor/platform/resource-logs-overview.md)に関する記事をご覧ください。
 
 この記事では、Media Services の診断ログのスキーマについて説明します。
 
@@ -34,11 +34,11 @@ ms.locfileid: "60322252"
 
 ## <a name="key-delivery-log-schema"></a>キー配信ログのスキーマ
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>properties
 
 これらのプロパティは、キー配信ログのスキーマに固有です。
 
-|Name|説明|
+|名前|説明|
 |---|---|
 |keyId|要求されたキーの ID。|
 |keyType|次のいずれかの値を指定できます:"Clear" (暗号化なし)、"FairPlay"、"PlayReady"、または"Widevine"。|

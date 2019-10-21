@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c2d877a1dc611e02e9fbc245df230ca669a2ae4
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: b94607691b662dcfcf0e166cd5c339b00ed0573d
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70171441"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326678"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Slack の統合
 
@@ -87,7 +87,7 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
 1. **[基本的な SAML 構成]** セクションで、次のフィールドの値を入力します。
 
-    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<companyname>.slack.com`
+    a. **[サインオン URL]** ボックスに、次のパターンを使用して URL を入力します。`https://<your Slack company>.slack.com`
 
     b. **[識別子 (エンティティ ID)]** ボックスに、`https://slack.com` という URL を入力します。
 
@@ -136,7 +136,7 @@ Slack で Azure AD SSO を構成してテストするには、次の構成要素
 
 1. 別の Web ブラウザー ウィンドウで、Slack 社のサイトに管理者としてサインインします。
 
-2. **[Microsoft Azure AD]** 、 **[Team Settings]** の順に選択します。
+2. 左側に表示される、Slack で利用している会社名 (ここでは **Microsoft Azure AD** として設定されています) に移動し、 **[Team Settings]\(チームの設定\)** に移動します。次のスクリーンショットを参照してください。
 
      ![アプリ側でのシングル サインオンの構成](./media/slack-tutorial/tutorial_slack_001.png)
 

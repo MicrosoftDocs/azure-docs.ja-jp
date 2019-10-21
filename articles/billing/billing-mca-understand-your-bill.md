@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: ee250589133abb1944ff17e39dc650cbae4279c6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 8ab6cf061531a1ef3c72b2f36d25932c7498d291
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490671"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345277"
 ---
 # <a name="understand-charges-on-your-microsoft-customer-agreement-invoice"></a>Microsoft 顧客契約の請求書の料金を理解する
 

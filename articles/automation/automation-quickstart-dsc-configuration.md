@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 2c01172bf22fb286f790543b02a4c1e482b05fe7
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d5eca6ffce8390b2f8b4deae589d43f40897756d
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850561"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243470"
 ---
 # <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Desired State Configuration を使用して仮想マシンを構成する
 
@@ -42,7 +42,7 @@ Desired State Configuration (DSC) を有効にすると、Windows および Linu
 2. **[追加]** をクリックして、VM の選択ページを開きます。
 3. DSC を有効にする仮想マシンを探します。 検索フィールドとフィルター オプションを使用して、特定の仮想マシンを検索することができます。
 4. 仮想マシンをクリックし、 **[接続]** を選択します。
-5. 仮想マシンに適した DSC 設定を選択します。 構成を既に準備している場合は、 *[ノード構成名]* として指定できます。 [構成モード](https://docs.microsoft.com/powershell/dsc/metaconfig)を設定して、マシンの構成動作を制御することができます。
+5. 仮想マシンに適した DSC 設定を選択します。 構成を既に準備している場合は、 *[ノード構成名]* として指定できます。 [構成モード](https://docs.microsoft.com/powershell/scripting/dsc/managing-nodes/metaConfig)を設定して、マシンの構成動作を制御することができます。
 6. **[OK]**
 
 ![Azure VM を DSC にオンボードする](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -64,7 +64,7 @@ Desired State Configuration 拡張機能が仮想マシンにデプロイされ�
 
 このクイックスタートでは、マシンで Apache HTTP Server、MySQL、および PHP を構成する DSC 構成を使用します。
 
-構成の構成については、「[DSC 構成](https://docs.microsoft.com/powershell/dsc/configurations)」をご覧ください。
+構成の構成については、「[DSC 構成](https://docs.microsoft.com/powershell/scripting/dsc/configurations/configurations)」をご覧ください。
 
 テキスト エディターで次のように入力し、`LAMPServer.ps1` としてローカルに保存します。
 
@@ -142,7 +142,7 @@ Automation アカウントの **[状態の構成 (DSC)]** の **[ノード]** �
 > [!div class="nextstepaction"]
 > [DSC と Chocolatey を使用した VM への継続的配置](./automation-dsc-cd-chocolatey.md)
 
-* PowerShell Desired State Configuration の詳細については、「[Windows PowerShell Desired State Configuration の概要](https://docs.microsoft.com/powershell/dsc/overview)」を参照してください。
+* PowerShell Desired State Configuration の詳細については、「[Windows PowerShell Desired State Configuration の概要](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview)」を参照してください。
 * PowerShell から Automation DSC を管理する方法の詳細については、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/) に関するページを参照してください。
 * レポートとアラートのために DSC レポートを Azure Monitor ログに転送する方法については、[Azure Monitor ログへの DSC レポートの転送](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics)に関する記事をご覧ください。 
 

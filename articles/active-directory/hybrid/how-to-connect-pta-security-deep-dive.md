@@ -15,12 +15,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4f9686be08de2589cddadf741dadf243d0e7895
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348061"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174448"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -148,6 +148,7 @@ Azure AD の運用、サービス、データのセキュリティに関する�
 
    > [!NOTE]
    > 認証エージェントがサインイン プロセスの間に失敗した場合は、サインイン要求全体が破棄されます。 ある認証エージェントからオンプレミスの別の認証エージェントに、サインイン要求が引き継がれることはありません。 これらのエージェントはクラウドのみと通信し、相互には通信しません。
+   
 13. 認証エージェントは、ポート 443 を介して相互認証された送信 HTTPS チャネル経由で Azure AD STS に結果を戻します。 相互認証では、登録時に認証エージェントに対して以前に発行された証明書を使用します。
 14. Azure AD STS は、この結果がテナントの特定のサインイン要求と関連していることを確認します。
 15. Azure AD STS は、構成どおりにサインインの手順を続行します。 たとえば、パスワードの検証が成功した場合、ユーザーは Multi-Factor Authentication のためにチャレンジされるか、アプリケーションにリダイレクトされることがあります。

@@ -8,12 +8,12 @@ ms.service: azure-resource-manager
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a42ccb1c0e60f5bf1568ccea13392186577f2875
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 97d9aa1ed9440011fdaab3aa8eb9d3942b5a8acf
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205717"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170361"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>チュートリアル:Resource Manager テンプレートで Azure Deployment Manager を使用する (パブリック プレビュー)
 
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="download-the-tutorial-files"></a>チュートリアル ファイルのダウンロード
 
-1. このチュートリアルで使用される[テンプレートと成果物](https://armtutorials.blob.core.windows.net/admtutorial/ADMTutorial.zip)をダウンロードします。
+1. このチュートリアルで使用される[テンプレートと成果物](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-adm/ADMTutorial.zip)をダウンロードします。
 2. 地域のコンピューターにファイルを解凍します。
 
 ルート フォルダーには次の 2 つのフォルダーがあります。

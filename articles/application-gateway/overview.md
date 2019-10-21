@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 5/31/2019
 ms.author: victorh
-ms.openlocfilehash: 5f7fd47a096ddd57150a466f85fabcfc2f7045d9
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 725b284fa58296aea310f618c000e77d9a0fb4c9
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564875"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146618"
 ---
 # <a name="what-is-azure-application-gateway"></a>Azure Application Gateway とは
 
@@ -47,11 +47,11 @@ Standard_v2 または WAF_v2 SKU のアプリケーション ゲートウェイ�
 
 ## <a name="web-application-firewall"></a>Web アプリケーション ファイアウォール
 
-Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する Application Gateway の機能です。 WAF は、[OWASP (Open Web Application Security Project) コア ルール セット](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.0 または 2.2.9 の規則に基づいています。 
+Web アプリケーション ファイアウォール (WAF) は、一般的な脆弱性やその悪用から Web アプリケーションを一元的に保護する Application Gateway の機能です。 WAF は、[OWASP (Open Web Application Security Project) コア ルール セット](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) 3.1 (WAF_v2 のみ)、3.0、2.2.9 の規則に基づいています。 
 
 Web アプリケーションが、一般的な既知の脆弱性を悪用した悪意のある攻撃の的になるケースが増えています。 よくある攻撃の例として、SQL インジェクション攻撃やクロス サイト スクリプティング攻撃が挙げられます。 アプリケーション コードでこのような攻撃を防ぐことは困難な場合があり、厳格な保守、パッチの適用、アプリケーション トポロジの多数のレイヤーの監視が必要になることもあります。 Web アプリケーション ファイアウォールを一元化することで、セキュリティの管理がはるかに簡単になり、アプリケーション管理者にとっては侵入の脅威からより確実に保護されるようになります。 また、WAF のソリューションは、1 か所に既知の脆弱性の修正プログラムを適用することで、個々の Web アプリケーションをセキュリティで保護する場合と比較して、さらに迅速にセキュリティの脅威に対応できます。 既存のアプリケーション ゲートウェイは、Web アプリケーション ファイアウォールに対応したアプリケーション ゲートウェイに簡単に変換できます。
 
-詳細については、[Application Gateway の Web アプリケーション ファイアウォール (WAF)](https://docs.microsoft.com/azure/application-gateway/waf-overview) に関するページを参照してください。
+詳細については、[Application Gateway の Web アプリケーション ファイアウォール (WAF)](https://docs.microsoft.com/azure/application-gateway/waf-overview) に関する記事を参照してください。
 
 ## <a name="url-based-routing"></a>URL ベースのルーティング
 
@@ -63,7 +63,7 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 
 ## <a name="multiple-site-hosting"></a>複数サイトのホスティング
 
-複数サイトのホストにより、同じアプリケーション ゲートウェイ インスタンスで複数の Web サイトを構成することができます。 この機能を使用すると、最大で 100 の Web サイトを 1 つのアプリケーション ゲートウェイに追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のプールに送られるようにすることができます。 たとえば、アプリケーション ゲートウェイは、ContosoServerPool と FabrikamServerPool という 2 つのサーバー プールから `contoso.com` と `fabrikam.com` のトラフィックを処理できます。
+複数サイトのホストにより、同じアプリケーション ゲートウェイ インスタンスで複数の Web サイトを構成することができます。 この機能を使用すると、最大で 100 の Web サイトを 1 つのアプリケーション ゲートウェイまたは 40 を WAF (最適なパフォーマンスのため) に追加することによって、デプロイに効率的なトポロジを構成できます。 各 Web サイトは、独自のプールに送られるようにすることができます。 たとえば、アプリケーション ゲートウェイは、ContosoServerPool と FabrikamServerPool という 2 つのサーバー プールから `contoso.com` と `fabrikam.com` のトラフィックを処理できます。
 
 `http://contoso.com` の要求は ContosoServerPool にルーティングされ、`http://fabrikam.com` は FabrikamServerPool にルーティングされます。
 
@@ -107,6 +107,8 @@ Application Gateway イングレス コントローラーは、AKS クラスタ�
 
 接続のドレインを使用すると、計画的なサービスの更新中にバックエンド プール メンバーを正常に削除することができます。 この設定は、バックエンド http 設定を通じて有効にされ、ルールの作成中にバックエンド プールのすべてのメンバーに適用することができます。 Application Gateway が有効になると、バックエンド プールのすべての登録解除インスタンスが新しい要求を受け取らなくなり、既存の要求は構成された制限時間内に完了するようになります。 これは、API 呼び出しによってバックエンド プールから明示的に削除されたバックエンド インスタンスと、正常性プローブの判断によって異常であるとレポートされたバックエンド インスタンスの両方に適用されます。
 
+詳細については、「[アプリケーション ゲートウェイ構成の概要](https://docs.microsoft.com/azure/application-gateway/configuration-overview#connection-draining)」の「接続のドレイン」セクションを参照してください。
+
 ## <a name="custom-error-pages"></a>カスタム エラー ページ
 
 Application Gateway では、既定のエラー ページを表示する代わりに、カスタム エラー ページを作成することができます。 カスタム エラー ページでは、独自のブランディングとレイアウトを使用することができます。
@@ -127,13 +129,13 @@ Application Gateway では、要求/応答パケットがクライアントと�
 
 ## <a name="sizing"></a>サイズ変更
 
-Application Gateway Standard_v2 および WAF_v2 SKU は、自動スケーリング用、または固定サイズ デプロイ用に構成できます。 これらの SKU では、異なるインスタンスのサイズは提供されません。
+Application Gateway Standard_v2 および WAF_v2 SKU は、自動スケーリング用、または固定サイズ デプロイ用に構成できます。 これらの SKU では、異なるインスタンスのサイズは提供されません。 v2 のパフォーマンスと料金の詳細については、[v2 SKU の自動スケーリング](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#pricing)に関するページをご覧ください。
 
 現在、Application Gateway の Standard および WAF SKU は、次の 3 つのサイズで提供されています。**Small**、**Medium**、**Large** の 3 つのサイズで提供されています。 Small サイズのインスタンスは、開発用およびシナリオのテスト用です。
 
 アプリケーション ゲートウェイの制限の詳細な一覧については、[Application Gateway サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)に関するページをご覧ください。
 
-次の表では、SSL オフロードが有効になっているアプリケーション ゲートウェイ インスタンスごとにパフォーマンス スループットの平均値を示します。
+次の表では、SSL オフロードが有効になっているアプリケーション ゲートウェイ v1 インスタンスごとにパフォーマンス スループットの平均値を示します。
 
 | バックエンド ページの平均応答サイズ | Small | Medium | Large |
 | --- | --- | --- | --- |

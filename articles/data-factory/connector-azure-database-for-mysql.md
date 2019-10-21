@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/25/2019
 ms.author: jingwang
-ms.openlocfilehash: b6d96ef2d2cdd79bec35f2581876823990e4a971
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c15a60b7329359ee8d3e429159eb178c0c9b4782
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172615"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018764"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-mysql-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Database for MySQL との間でデータをコピーする
 
@@ -26,6 +26,11 @@ ms.locfileid: "70172615"
 このコネクタは、[Azure Database for MySQL サービス](../mysql/overview.md)に特化しています。 オンプレミスまたはクラウドにある汎用 MySQL データベースからデータをコピーするには、[MySQL コネクタ](connector-mysql.md)を使用します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
+
+この Azure Database for MySQL コネクタは、次のアクティビティでサポートされます。
+
+- [サポートされるソース/シンク マトリックス](copy-activity-overview.md)での[コピー アクティビティ](copy-activity-overview.md)
+- [Lookup アクティビティ](control-flow-lookup-activity.md)
 
 Azure Database for MySQL のデータを、サポートされているシンク データ ストアにコピーできます。 または、サポートされているソース データ ストアのデータを Azure Database for MySQL にコピーすることができます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
@@ -188,8 +193,7 @@ Azure Database for MySQL からデータをコピーするために、コピー 
 | type | コピー アクティビティのシンクの type プロパティは、次のように設定する必要があります: **AzureMySqlSink** | はい |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Azure Database for MySQL に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ |
 | writeBatchSize | バッファー サイズが writeBatchSize に達したら、Azure Database for MySQL テーブルにデータを挿入します。<br>許可される値は行数を表す整数です。 | いいえ (既定値は 10,000) |
-| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br> 
-使用可能な値: 期間。 たとえば "00:30:00" (30 分) を指定できます。 | いいえ (既定値は 00:00:30) |
+| writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br>使用可能な値: 期間。 たとえば "00:30:00" (30 分) を指定できます。 | いいえ (既定値は 00:00:30) |
 
 **例:**
 
@@ -223,6 +227,10 @@ Azure Database for MySQL からデータをコピーするために、コピー 
     }
 ]
 ```
+
+## <a name="lookup-activity-properties"></a>ルックアップ アクティビティのプロパティ
+
+プロパティの詳細については、[ルックアップ アクティビティ](control-flow-lookup-activity.md)に関する記事を参照してください。
 
 ## <a name="data-type-mapping-for-azure-database-for-mysql"></a>Azure Database for MySQL のデータ型のマッピング
 

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: 9bc6cfdcbc67761e99150c730adeb23602232632
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 7ae3eb74b0d0c3f0bd6124362608e14555179697
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032956"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71710147"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database マネージド インスタンスに関してよく寄せられる質問 (FAQ)
 
@@ -38,12 +38,19 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 バグや既知の問題については、「[既知の問題](sql-database-managed-instance-transact-sql-information.md#Issues)」をご覧ください。
 
+## <a name="where-can-i-find-latest-features-and-the-features-in-public-preview"></a>最新の機能とパブリック プレビュー段階の機能はどこにありますか。
+
+新機能とプレビュー機能については、[リリース ノート](/azure/sql-database/sql-database-release-notes?tabs=managed-instance)を参照してください。
+
+## <a name="how-much-time-takes-to-create-or-update-instance-or-to-restore-a-database"></a>インスタンスを作成または更新したり、データベースを復元したりするのにどれくらいの時間がかかりますか。
+
+新しいマネージ インスタンスの作成やサービス レベル (仮想コアやストレージ) の変更に予想される時間は、いくつかの要因に左右されます。 [こちら](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations)の管理操作をご覧ください。 
+
 ## <a name="can-a-managed-instance-have-the-same-name-as-on-premises-sql-server"></a>マネージド インスタンスにオンプレミスの SQL Server と同じ名前を付けることはできますか?
 
 マネージド インスタンスには、*database.windows.net* で終わる名前を付ける必要があります。 既定値の代わりに別の DNS ゾーン、たとえば **mi-another-name**.contoso.com などを使用するには、次のようにします。 
 - CliConfig を使用して別名を定義する。 このツールは単なるレジストリ設定ラッパーなので、グループ ポリシーやスクリプトを使用して行うことも可能です。
 - *TrustServerCertificate=true* オプションを指定した *CNAME* を使用する。
-
 
 ## <a name="how-can-i-move-database-from-managed-instance-back-to-sql-server-or-azure-sql-database"></a>データベースをマネージド インスタンスから元の SQL Server や Azure SQL Database に移動するには、どうすればよいですか?
 
@@ -55,7 +62,7 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 ## <a name="how-can-i-migrate-my-instance-database-to-a-single-azure-sql-database"></a>インスタンス データベースを単一の Azure SQL データベースに移行するには、どうすればよいですか?
 
-1 つの方法として、[データベースを BACPAC にエクスポート](sql-database-export.md)し、その [BACPAC ファイルをインポート]( sql-database-import.md)します。 
+1 つの方法として、[データベースを BACPAC にエクスポート](sql-database-export.md)し、その [BACPAC ファイルをインポート](sql-database-import.md)します。 
 
 データベースが 100 GB 未満の場合は、これが推奨される方法です。 データベース内のすべてのテーブルに主キーがある場合は、トランザクション レプリケーションを使用できます。
 
@@ -69,7 +76,7 @@ Azure SQL Database マネージド インスタンスとオンプレミス SQL S
 
 ## <a name="can-i-switch-my-managed-instance-hardware-generation-between-gen-4-and-gen-5-online"></a>マネージド インスタンスのハードウェアの世代 Gen 4 と Gen 5 をオンラインで切り替えることはできますか? 
 
-マネージド インスタンスがプロビジョニングされているリージョンでハードウェアの世代が両方とも利用可能になっている場合は、ハードウェアの世代間のオンライン切り替えを自動で行うことができます。 この場合は、Azure portal の価格レベルのセクションで、ハードウェアの世代を切り替えることができます。
+マネージド インスタンスがプロビジョニングされているリージョンでハードウェアの世代が両方とも利用可能になっている場合は、ハードウェアの世代間のオンライン切り替えを自動で行うことができます。 この場合、ハードウェア世代を切り替える方法が説明してある[こちら](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Change-hardware-generation-on-Managed-Instance/ba-p/699824)のブログ記事にあるスクリプトを利用できます。
 
 これは、新しいマネージド インスタンスがバックグラウンドでプロビジョニングされ、データベースがプロセスの最後の迅速なフェールオーバーによって古いインスタンスと新しいインスタンスの間で自動的に転送されるため、時間のかかる操作です。 
 
@@ -125,7 +132,8 @@ IO 集中型のワークロードには Gen 5 ハードウェア、コンピュ�
 マネージド インスタンスのケース スタディ:
 
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
-- [powerdetails](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
+- [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
+- [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
 - [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)   
 Azure SQL Database マネージド インスタンスのデプロイに関連する利点、コスト、リスクについて理解を深めるために、次の Forrester による調査結果もあります: [MI の総合的な経済効果](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance)。
 

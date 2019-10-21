@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fe49a57e74822c0b4349b2919ea8aa89cbfb458d
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0303f8c7e18a5c229bc5a8c5e9b90d95cdaccbe7
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622293"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672912"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して OpenID Connectでのサインアップおよびサインインを設定する
 
@@ -48,7 +48,6 @@ ms.locfileid: "69622293"
 応答の種類は、最初の呼び出しで、カスタム ID プロバイダーの`authorization_endpoint`に送信される情報の種類を表します。 次の応答の種類を使用できます。
 
 * `code`:[承認コード フロー](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)に従って、Azure AD B2C にコードが返されます。 次に Azure AD B2C が`token_endpoint`を呼び出して、トークンのコードを交換します。
-* `token`:アクセス トークンが、カスタム ID プロバイダーから、Azure AD B2C に返されます。
 * `id_token`:ID トークンが、カスタム ID プロバイダーから、Azure AD B2C に返されます。
 
 ## <a name="response-mode"></a>応答モード

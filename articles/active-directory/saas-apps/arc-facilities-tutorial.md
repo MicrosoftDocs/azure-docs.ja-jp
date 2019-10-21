@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7cf5a5e2669fcbb5344fc6dd4b5c6de8318c3a5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 43fd1375ac8ffa850ca3f2c4c2b34e63631a9811
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70846857"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025924"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-arc-facilities"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と ARC Facilities の統合
 
@@ -91,7 +91,7 @@ ARC Facilities で Azure AD SSO を構成してテストするには、次の構
 
     ![image](common/edit-attribute.png)
 
-1. その他に、ARC Facilities アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。  **[グループ要求 (プレビュー)]**   ダイアログの  **[ユーザー属性とクレーム]**   セクションで、次の手順を実行します。
+1. その他に、ARC Facilities アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。 **[グループ要求 (プレビュー)]** ダイアログの **[ユーザー属性とクレーム]** セクションで、次の手順を実行します。
 
     a. **[Groups returned in claim]\(要求で返されるグループ\)** の横にある**ペン**をクリックします。
 

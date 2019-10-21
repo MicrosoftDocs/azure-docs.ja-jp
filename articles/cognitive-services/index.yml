@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 09/16/2019
-  ms.openlocfilehash: f762586bf04ceab8cd0c81880a86df7d43507038
-  ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+  ms.openlocfilehash: 2d310832d8d1f1aca2823ffd3be9c4636d60f4fa
+  ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/18/2019
-  ms.locfileid: "71087549"
+  ms.lasthandoff: 10/15/2019
+  ms.locfileid: "72375000"
 highlightedContent:
   items:
   - title: Cognitive Services とは
@@ -90,9 +90,6 @@ conceptualContent:
     - url: ./speech/home.md
       itemType: overview
       text: Bing Speech (廃止)
-    - url: ./translator-speech/overview.md
-      itemType: overview
-      text: Translator Speech (廃止)
   - title: 決定
     summary: 情報に基づく、効率的な意思決定のためのレコメンデーションを提示するアプリを構築します。
     links:
@@ -139,23 +136,26 @@ conceptualContent:
       itemType: overview
       text: Web Search
   - title: Cognitive Service コンテナー
-    summary: Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure 内で利用できるものと同じリッチな API シリーズを使用できます。また、Docker コンテナーに付随するサービスをデプロイおよびホストできる柔軟性があります。
+    summary: Azure Cognitive Services でのコンテナーのサポートを使用すると、開発者は Azure 内で利用できるものと同じリッチな API シリーズを使用できます。Docker コンテナーに付随するサービスをデプロイおよびホストできる柔軟性もあります。
     links:
     - url: ./cognitive-services-container-support.md
       itemType: overview
       text: Cognitive Service コンテナー
     - url: ./containers/container-reuse-recipe.md
-      itemType: overview
+      itemType: learn
       text: 再利用するためのコンテナーを作成する
     - url: ./containers/azure-container-instance-recipe.md
       itemType: how-to-guide
       text: Azure コンテナー インスタンスにコンテナーをデプロイして実行する
     - url: ./containers/azure-kubernetes-recipe.md
-      itemType: how-to-guide
+      itemType: deploy
       text: Azure Kubernetes Service にデプロイする
     - url: ./containers/docker-compose-recipe.md
-      itemType: how-to-guide
+      itemType: get-started
       text: Docker Compose を使用して複数のコンテナーをデプロイする
+    - url: ./containers/container-faq.md
+      itemType: reference
+      text: Cognitive Services コンテナーに関する FAQ
 additionalContent:
   sections:
   - items:

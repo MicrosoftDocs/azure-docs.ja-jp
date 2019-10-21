@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: robb
 ms.subservice: ''
-ms.openlocfilehash: fae8e80c6fa94c3581de3038399ef031506b2f55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c642fe4a4453d72303470b5149d6d94436cdfa46
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65774244"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262294"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -68,9 +68,9 @@ Circonus は、オンプレミスまたは SaaS デプロイメント用に構�
 ![CloudHealth のロゴ](./media/partners/cloudhealth.png)
 
 
-時間と費用を節約するように構築されたプラットフォームで、クラウドを統合および自動化します。 CloudHealth は、クラウドを管理するための可視性、直感的な最適化、堅牢なガバナンス プラクティスを提供します。 Cloudhealth プラットフォームによって、企業と MSP は、クラウドへの投資から最大の利益を得ることができます。 コスト、使用状況、パフォーマンス、およびセキュリティに関して自信を持って決定を下すことができます。
+時間と費用を節約するように構築されたプラットフォームで、クラウドを統合および自動化します。 CloudHealth は、クラウドを管理するための可視性、直感的な最適化、堅牢なガバナンス プラクティスを提供します。 CloudHealth プラットフォームによって、企業と MSP は、クラウドへの投資から最大の利益を得ることができます。 コスト、使用状況、パフォーマンス、およびセキュリティに関して自信を持って決定を下すことができます。
 
-[詳細はこちら。][cloudhealth-doc]
+[詳細を確認してください。][cloudhealth-doc]
 
 ## <a name="cloudmonix"></a>CloudMonix
 
@@ -237,7 +237,7 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 - [Azure Monitor の詳細情報](../../azure-monitor/overview.md)
 - [REST API を使用してメトリックにアクセスする](rest-api-walkthrough.md)
 - [アクティビティ ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [診断ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)
+- [診断ログを Microsoft 以外のサービスにストリーミングする](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 

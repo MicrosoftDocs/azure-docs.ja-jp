@@ -1,19 +1,19 @@
 ---
 title: Azure Digital Twins パブリック プレビュー サービスの制限 | Microsoft Docs
 description: Azure Digital Twins パブリック プレビュー サービスの制限について説明します。
-author: dwalthermsft
-manager: deshner
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: dwalther
-ms.openlocfilehash: d182a4aea00581b044b5734a5b7d6831f9e55c45
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 10/03/2019
+ms.openlocfilehash: 88a66506b5102a4efaeefe1c7033b337dff9889a
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638482"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949239"
 ---
 # <a name="public-preview-service-limits"></a>パブリック プレビューのサービスの制限
 

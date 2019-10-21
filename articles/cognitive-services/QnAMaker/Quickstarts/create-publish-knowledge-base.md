@@ -8,79 +8,101 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 09/04/2019
+ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 229956b41f7f26637e6a6aa62e341c4b06b8a429
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 5d807f185a8cdb181093d37dac35ee2e467fdba9
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376361"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72328091"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>クイック スタート:QnA Maker ナレッジ ベースの作成、トレーニング、発行
 
 QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この記事には、単純な FAQ Web ページから QnA Maker ナレッジ ベースを作成して、BitLocker キーの回復に関する質問に答える例が含まれています。
+
+おしゃべりのパーソナリティを含めて、ユーザーを引き付けるナレッジにします。
+
+[!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ## <a name="prerequisite"></a>前提条件
 
 > [!div class="checklist"]
 > * Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="create-a-qna-maker-knowledge-base"></a>QnA Maker ナレッジ ベースの作成
+## <a name="create-a-new-qna-maker-knowledge-base"></a>新しい QnA Maker ナレッジ ベースを作成する
 
 1. ご自分の Azure の資格情報を使用して [QnAMaker.ai](https://QnAMaker.ai) ポータルにサインインします。
 
 1. QnA Maker ポータルで、 **[Create a knowledge base]\(ナレッジ ベースの作成\)** を選択します。
 
-   ![QnA Maker ポータルのスクリーンショット](../media/qna-maker-create-kb.png)
+1. **[Create]\(作成\)** ページで **[Create a QnA service]\(QnA サービスの作成)** を選択します。 サブスクリプションで QnA Maker サービスを設定するため、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) にリダイレクトされます。 
 
-1. 手順 1 として、 **[作成]** ページで **[Create a QnA service]\(QnA サービスの作成)** を選択します。 サブスクリプションで QnA Maker サービスを設定するため、[Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) にリダイレクトされます。 Azure portal がタイムアウトした場合は、サイトで **[Try again]\(再試行)** を選択します。 接続されると、Azure ダッシュ ボードが表示されます。
-
-1. Azure で新しい QnA Maker サービスが正常に作成できたら、qnamaker.ai/create に戻ります。 手順 2 のドロップダウン リストから QnA Maker　サービスを選択します。 新しい QnA Maker サービスを作成した場合は、必ずページを更新してください。
+1. QnA Maker ポータルで、ドロップダウン リストから QnA Maker サービスを選択します。 新しい QnA Maker サービスを作成した場合は、必ずページを更新してください。
 
    ![QnA Maker サービス ナレッジ ベースの選択のスクリーン ショット](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 
-1. 手順 3 として、ご自分のナレッジ ベースに **My Sample QnA KB** という名前を付けます。
+1. ナレッジ ベースに **My Sample QnA KB** という名前を付けます。
 
-1. ご自分のナレッジ ベースにコンテンツを追加するために、3 種類のデータ ソースを選択します。 手順 4 として、 **[Populate your KB]\(KB の入力)** の **[URL]** ボックスに [BitLocker Recovery FAQ](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview-and-requirements-faq) の URL を追加します。
+1. 次の URL でサンプルの Word 文書を追加します。 
 
-   ![データ ソース追加のスクリーンショット](../media/qnamaker-quickstart-kb/add-datasources.png)
+    `https://docs.microsoft.com/en-us/azure/cognitive-services/qnamaker/troubleshooting`
 
-1. 手順 5 として、 **[Create your KB]\(KB の作成)** を選択します。
+1. [`+ Add URL`] を選択します。
 
-1. QnA Maker がナレッジ ベースを作成している間、ポップアップ ウィンドウが表示されます。 抽出プロセスでは、HTML ページを読み取って質問と回答を識別します。これには数分かかります。
+1. " **_プロ_" のおしゃべり**を KB に追加します。 
 
-1. QnA Maker がナレッジ ベースを正常に作成すると、 **[Knowledge base]\(ナレッジ ベース\)** ページが開きます。 このページで、ナレッジ ベースの内容を編集することができます。
+1. **[Create your KB]\(KB の作成\)** を選択します。
 
-## <a name="edit-the-knowledge-base"></a>ナレッジ ベースを編集する
+    抽出プロセスでは、ドキュメントを読み取って質問と回答を識別します。これには数分かかります。
 
-1. QnA Maker ポータルの **[編集]** セクションで **[Add QnA pair]\(QnA ペアの追加\)** を選択して、ナレッジ ベースに新しい行を追加します。 **[質問]** に、**Hi** と入力します。 **[回答]** に、**こんにちは。BitLocker について質問してください。** 」と入力します。
+    QnA Maker がナレッジ ベースを正常に作成すると、 **[Knowledge base]\(ナレッジ ベース\)** ページが開きます。 このページで、ナレッジ ベースの内容を編集することができます。
 
-    ![QnA Maker ポータルのスクリーンショット](../media/qnamaker-quickstart-kb/add-qna-pair.png)
+## <a name="add-a-new-question-and-answer-set"></a>新しい質問と回答のセットを追加する
 
-1. 右上の **[Save and train]\(保存してトレーニング\)** を選択し、編集内容を保存して QnA Maker のモデルをトレーニングします。 保存しないと、編集した内容は保持されません。
+1. QnA Maker ポータルの **[Edit]\(編集\)** ページで、 **[Add QnA pair]\(Add QnA ペアの追加\)** を選択します。
+1. 次の質問を追加します。 
+
+    `How many Azure services are used by a knowledge base?`
+
+1. "_マークダウン_" で書式設定された回答を追加します。
+
+    ` * Azure QnA Maker service\n* Azure Search\n* Azure web app\n* Azure app plan`
+
+    ![ 質問をテキストとして追加し、回答をマークダウンで書式設定して追加します。](../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png)
+
+    マークダウン記号 `*` は、箇条書きに使用されます。 `\n` は、改行に使用されます。  
+
+    **[Edit]\(編集\)** ページには、マークダウンが表示されます。 後で **[Test]\(テスト\)** パネルを使用すると、マークダウンが正しく表示されることを確認できます。 
+
+## <a name="save-and-train"></a>保存してトレーニング
+
+右上の **[Save and train]\(保存してトレーニング\)** を選択し、編集内容を保存して QnA Maker のモデルをトレーニングします。 保存しないと、編集した内容は保持されません。
 
 ## <a name="test-the-knowledge-base"></a>ナレッジ ベースをテストする
 
-1. QnA Maker ポータルの右上にある **[テスト]** を選択して、行った変更が反映されたかどうかをテストします。 ボックスに「`hi there`」と入力し、Enter キーを押します。 作成した応答が回答として表示されます。
+1. QnA Maker ポータルの右上にある **[テスト]** を選択して、行った変更が反映されたかどうかをテストします。 
+1. テキスト ボックスにユーザー クエリの例を入力します。 
 
-1. **[検査]** を選択し、詳細に応答を確認します。 テスト ウィンドウは、発行前にナレッジ ベースへの変更をテストする際に使用します。
+    `How many Azure services are used by a knowledge base?`  
 
-    ![テスト パネルのスクリーンショット](../media/qnamaker-quickstart-kb/inspect.png)
+    ![ テキスト ボックスにユーザー クエリの例を入力します。 ](../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png)
 
-1. もう一度 **[テスト]** を選択して、 **[テスト]** ポップアップを閉じます。
+1. **[検査]** を選択し、詳細に応答を確認します。 テスト ウィンドウは、ナレッジ ベースへの変更を、発行前にテストする際に使用します。
+
+1. **[Test]\(テスト\)** パネルを閉じるには、もう一度 **[Test]\(テスト\)** を選択します。
 
 ## <a name="publish-the-knowledge-base"></a>ナレッジ ベースの公開
 
-ナレッジ ベースを公開すると、ナレッジ ベースの質問と回答コンテンツが、Azure Search のテスト インデックスから実稼働インデックスへ移動されます。
+ナレッジ ベースを発行すると、ナレッジ ベースのコンテンツが、Azure Search の `test` インデックスから `prod` インデックスに移動されます。
 
 ![ナレッジ ベースのコンテンツ移動のスクリーン ショット](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 
-1. QnA Maker ポータルの **[編集]** の隣にあるメニューから、 **[発行]** を選択します。 確認のため、ページの **[発行]** を選択します。
+1. QnA Maker ポータルで、 **[発行]** を選択します。 確認のため、ページの **[発行]** を選択します。
 
-1. QnA Maker サービスが正常に発行されました。 お使いのアプリケーションまたはボット コードで、エンドポイントを使用できます。
+    QnA Maker サービスが正常に発行されました。 お使いのアプリケーションまたはボット コードで、エンドポイントを使用できます。
 
-    ![正常な発行のスクリーンショット](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![正常な発行のスクリーンショット](../media/qnamaker-create-publish-knowledge-base/publish-knowledge-base-to-endpoint.png)
 
 ## <a name="create-a-bot"></a>ボットの作成
 
@@ -95,16 +117,36 @@ QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マ
 
     ![ボットの作成のスクリーンショット](../media/qnamaker-create-publish-knowledge-base/create-bot-from-published-knowledge-base-page.png)
 
-1. Azure portal の新しいブラウザー タブが開き、Azure Bot Service の作成ページが表示されます。 Azure Bot Service を構成します。 これらの構成設定の詳細については、「[Azure Bot Service v4 を使用して QnA ボットを作成する](../tutorials/create-qna-bot.md)」を参照してください。
+1. Azure portal の新しいブラウザー タブが開き、Azure Bot Service の作成ページが表示されます。 Azure Bot Service を構成します。 
     
     * ボットを作成するときに、Azure portal 上で次の設定を変更しないでください。 これらはご自分の既存のナレッジ ベースのために事前に設定されています。 
         * QnA 認証キー
         * App Service プランと場所
-        * Azure Storage
-    * ボットと QnA Maker は、Web App Service プランを共有できますが、Web アプリを共有することはできません。 そのため、**アプリ名**は、QnA Maker サービスを作成したときに使用したアプリ名と異なる必要があります。 
+    * ボットと QnA Maker は、Web App Service プランを共有できますが、Web アプリを共有することはできません。 そのため、ボットの**アプリ名**は、QnA Maker サービスのアプリ名とは異なる必要があります。 
 
+1. ボットが作成された後、 **[Bot service]\(ボット サービス\)** リソースを開きます。 
+1. **[Bot Management]\(ボット管理\)** で、 **[Test in Web Chat]\(Web チャットでのテスト\)** を選択します。
+1. チャット プロンプトの **[Type your message]\(メッセージを入力\)** で、以下のように入力します。
+
+    `Azure services?`
+
+    チャット ボットが、ナレッジ ベースからの回答で応答します。 
+
+    ![テスト Web チャットにユーザー クエリを入力します。](../media/qnamaker-create-publish-knowledge-base/test-web-chat.png)
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+Azure portal で、QnA Maker および Bot Framework のリソースをクリーンアップします。 
 
 ## <a name="next-steps"></a>次の手順
 
+詳細:
+
+* [回答でのマークダウン形式](../concepts/data-sources-supported.md)
+* [Markdown のテスト](../concepts/data-sources-supported.md#testing-your-markdown)
+* QnA Maker の[データ ソース](../Concepts/data-sources-supported.md)。 
+* [ボット リソースの構成設定](../tutorials/create-qna-bot.md)。
+
 > [!div class="nextstepaction"]
-> [ナレッジ ベースの作成](../How-To/create-knowledge-base.md)
+> [メタデータによる質問の追加](add-question-metadata-portal.md)
+

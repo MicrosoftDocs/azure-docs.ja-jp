@@ -1,6 +1,6 @@
 ---
-title: Azure AD エンタイトルメント管理 (プレビュー) でのタスクの委任 - Azure Active Directory
-description: Azure Active Directory エンタイトルメント管理でタスクを委任するために割り当てることのできるロールについて説明します。
+title: Azure AD エンタイトルメント管理 (プレビュー) の委任とロール - Azure Active Directory
+description: 部門マネージャーとプロジェクト マネージャーが自分でアクセスを管理できるよう、IT 管理者からアクセス ガバナンスを委任する方法について説明します。
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,92 +12,110 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 07/10/2019
+ms.date: 10/07/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b631f078240821e79513c4bd944a33b4725bc52
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 89cdab09e3ae03ddea6259eda657908f900f982e
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207145"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169828"
 ---
-# <a name="delegate-tasks-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) でのタスクの委任
+# <a name="delegation-and-roles-in-azure-ad-entitlement-management-preview"></a>Azure AD エンタイトルメント管理 (プレビュー) の委任とロール
 
 > [!IMPORTANT]
 > Azure Active Directory (Azure AD) エンタイトルメント管理は現在、パブリック プレビュー段階です。
 > このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
 > 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-既定では、グローバル管理者とユーザー管理者は、Azure AD エンタイトルメント管理のすべての側面を作成および管理できます。 ただし、これらのロールのユーザーが、アクセス パッケージが必要なすべてのシナリオを把握しているとは限りません。 通常、コラボレーションが必要な相手を把握しているのは、部署内のユーザーです。 
+既定では、グローバル管理者とユーザー管理者は、Azure AD エンタイトルメント管理のすべての側面を作成および管理できます。 ただし、これらのロールのユーザーは、アクセス パッケージが必要なあらゆる状況を把握しているとは限りません。 通常、コラボレーションの相手、使用するリソース、期間はそれぞれの部門、チーム、プロジェクト内のユーザーが把握しています。 管理者以外のユーザーに無制限のアクセス許可を付与する代わりに、それぞれの業務に必要な最小限のアクセス許可を付与することで、競合の発生や不適切なアクセス許可を回避することができます。
 
-管理者以外のユーザーに無制限のアクセス許可を付与する代わりに、それぞれの業務に必要な最小限のアクセス許可を付与することで、競合の発生や不適切なアクセス許可を回避することができます。 この記事では、エンタイトルメント管理のさまざまなタスクを委任するために割り当てることができるロールについて説明します。 
+この動画では、IT 管理者から管理者ではないユーザーにアクセス ガバナンスを委任する方法について概説します。
 
-## <a name="delegate-example-for-departmental-adoption"></a>部門別導入の委任の例
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE3Lq00]
 
-エンタイトルメント管理でタスクを委任する方法を理解するには、例を考えてみるとよいでしょう。 
+## <a name="delegate-example"></a>委任の例
 
-お客様の組織に次の 5 人のユーザーがいるとします。
+エンタイトルメント管理でアクセス ガバナンスを委任する方法を理解するには、例を考えてみるとよいでしょう。 組織に次の管理者やマネージャーがいるとします。
 
-| User | 部署 | メモ |
-| --- | --- | --- |
-| Alice | IT | 全体管理者 |
-| Bob | 研究 | Bob は研究グループの所有者でもあります |
-| Carole | 研究 |  |
-| Dave | Marketing |  |
-| Elisa | Marketing | Elisa はマーケティング アプリケーションの所有者でもあります |
+![IT 管理者からマネージャーに委任する](./media/entitlement-management-delegate/delegate-admin-dept-managers.png)
 
-研究とマーケティングのどちらの部署も、ユーザーにエンタイトルメント管理を使用したいと考えています。 Alice はまだ、他の部署でエンタイトルメント管理を使用する準備ができていません。 次の方法なら、Alice が研究とマーケティングの部署にタスクを委任できる可能性があります。
+IT 管理者の Hana には、各部署に連絡先担当者がいます。マーケティングの Mamta、財務の Mark、法務の Joe がそれぞれの部署のリソースとビジネス クリティカル コンテンツを担当しています。
 
-1. Alice がカタログ作成者用の新しい Azure AD セキュリティ グループを作成し、そのグループのメンバーとして Bob、Carol、Dave、Elisa を追加します。
+アクセスを必要とするユーザー、アクセスの期間、アクセスされるリソースを把握しているのが管理者以外の人であれば、エンタイトルメント管理を利用することで、そうした管理者以外の人にアクセス ガバナンスを委任できます。 これにより、適任者がその部署のアクセスを管理することになります。
 
-1. Alice がエンタイトルメント管理の設定を使用して、そのグループをカタログ作成者ロールに追加します。
+たとえば次の方法で Hana はマーケティング部、財務部、法務部にアクセス ガバナンスを委任できます。
 
-1. Carol が**研究**カタログを作成し、そのカタログの共同所有者として Bob を追加します。 Bob は、所有する研究グループをリソースとしてカタログに追加して、研究コラボレーション用のアクセス パッケージで使用できるようにします。
+1. Hana は新しい Azure AD セキュリティ グループを作成し、グループのメンバーとして Mamta、Mark、Joe を追加します。
 
-1. Dave が**マーケティング** カタログを作成し、そのカタログの共同所有者として Elisa を追加します。 Elisa は、所有するマーケティング アプリケーションをリソースとしてカタログに追加して、マーケティング コラボレーション用のアクセス パッケージで使用できるようにします。
+1. Hana はそのグループをカタログ作成者ロールに追加します。
 
-これで、研究とマーケティングの部署でエンタイトルメント管理を利用できるようになりました。 Bob、Carol、Dave、Elisa は、それぞれのカタログにアクセス パッケージを作成して管理できます。
+    Mamta、Mark、Joe はこれで、自分の部署にカタログを作成したり、自分の部署に必要なリソースを追加したり、カタログ内で追加の委任を行ったりできます。
+
+    Mamta、Mark、Joe は互いのカタログを表示できないことに注目してください。
+
+1. Mamta は、リソースのコンテナーである **Marketing** カタログを作成します。
+
+1. Mamta は、マーケティング部が所有するリソースをこのカタログに追加します。
+
+1. Mamta は、このカタログのカタログ所有者として自分の部署の人を追加できます。 これは、カタログの管理責任を共有するのに役立ちます。
+
+1. Mamta はさらに、マーケティング カタログのアクセス パッケージの作成と管理をマーケティング部のプロジェクト マネージャーに委任できます。 これは、アクセス パッケージ管理者ロールに割り当てることで実行できます。 アクセス パッケージ管理者はアクセス パッケージを作成し、管理できます。 
+
+次の図は、マーケティング部、財務部、法務部のリソースを含むカタログを示しています。 プロジェクト マネージャーは、これらのカタログを使用し、自分のチームまたはプロジェクトのアクセス パッケージを作成できます。
 
 ![エンタイトルメント管理の委任の例](./media/entitlement-management-delegate/elm-delegate.png)
 
+委任後、マーケティング部に含まれるロールは次の表のようになります。
+
+| User | 職務 | Azure AD ロール | エンタイトルメント管理ロール |
+| --- | --- | --- | --- |
+| Hana | IT 管理者 | グローバル管理者またはユーザー管理者 |  |
+| Mamta | マーケティング マネージャー | User | カタログ作成者とカタログ所有者 |
+| Bob | マーケティング リーダー | User | カタログ所有者 |
+| Jessica | マーケティング プロジェクト マネージャー | User | アクセス パッケージ マネージャー |
 
 ## <a name="entitlement-management-roles"></a>エンタイトルメント管理のロール
 
 エンタイトルメント管理には、エンタイトルメント管理に固有の次のロールがあります。
 
-| Role | 説明 |
+| エンタイトルメント管理ロール | 説明 |
 | --- | --- |
-| カタログ作成者 | カタログを作成および管理します。 通常は、グローバル管理者ではない IT 管理者、またはリソース コレクションのリソース所有者です。 カタログを作成した人物が、自動的にカタログの最初のカタログ所有者になります。カタログ所有者はさらに追加することができます。 |
+| カタログ作成者 | カタログを作成および管理します。 通常は、グローバル管理者ではない IT 管理者、またはリソース コレクションのリソース所有者です。 カタログを作成した人物が、自動的にカタログの最初のカタログ所有者になります。カタログ所有者はさらに追加することができます。 カタログ作成者は、自分が所有していないカタログを管理したり表示したりすることはできず、所有していないリソースをカタログに追加することはできません。 カタログ作成者が別のカタログを管理したり、所有していないリソースを追加したりする必要がある場合は、そのカタログまたはリソースの共同所有者になることを要求できます。 |
 | カタログ所有者 | 既存のカタログを編集および管理します。 通常は、IT 管理者かリソース所有者、またはカタログ所有者が指定したユーザーです。 |
 | アクセス パッケージ マネージャー | カタログ内のすべての既存アクセス パッケージを編集および管理します。 |
 
 また、アクセス パッケージの指定された承認者と申請者も、ロールではありませんが権限を持ちます。
- 
-* 承認者:アクセス パッケージへの要求を承認または拒否することがポリシーによって許可されています。ただし、アクセス パッケージの定義を変更することはできません。
-* 申請者:アクセス パッケージのポリシーによって、そのアクセス パッケージへの要求が許可されています。
 
-次の表に、これらのロールで実行できるタスクの一覧を示します。
+| Right | 説明 |
+| --- | --- |
+| 承認者 | アクセス パッケージへの要求を承認または拒否することがポリシーによって許可されています。ただし、アクセス パッケージの定義を変更することはできません。 |
+| 要求元 | アクセス パッケージのポリシーによって、そのアクセス パッケージへの要求が許可されています。 |
 
-| タスク | カタログ作成者 | カタログ所有者 | アクセス パッケージ マネージャー | 承認者 |
+次の表は、エンタイトルメント管理ロールで実行できるタスクを一覧にしたものです。
+
+| タスク | [Admin] | カタログ作成者 | カタログ所有者 | アクセス パッケージ マネージャー |
 | --- | :---: | :---: | :---: | :---: |
-| [新しいカタログを作成する](entitlement-management-catalog-create.md) | :heavy_check_mark: |  |  |  |
-| [カタログにリソースを追加する](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | | :heavy_check_mark: | | |
-| [カタログを編集する](entitlement-management-catalog-create.md#edit-a-catalog) |  | :heavy_check_mark: |  |  |
-| [カタログを削除する](entitlement-management-catalog-create.md#delete-a-catalog) |  | :heavy_check_mark: |  |  |
-| [カタログ所有者またはアクセス パッケージ マネージャーをカタログに追加する](#add-a-catalog-owner-or-an-access-package-manager) |  | :heavy_check_mark: |  |  |
-| [新しいアクセス パッケージをカタログに作成する](entitlement-management-access-package-create.md) |  | :heavy_check_mark:  | :heavy_check_mark:  |  |
-| [アクセス パッケージ内のリソースのロールを管理する](entitlement-management-access-package-edit.md) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [ポリシーの作成と編集](entitlement-management-access-package-edit.md#add-a-new-policy) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージにユーザーを直接割り当てる](entitlement-management-access-package-edit.md#directly-assign-a-user) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージに割り当てられているユーザーを表示する](entitlement-management-access-package-edit.md#view-who-has-an-assignment) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージの要求を表示する](entitlement-management-access-package-edit.md#view-requests) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [要求の配信エラーを表示する](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [保留中の要求をキャンセルする](entitlement-management-access-package-edit.md#cancel-a-pending-request) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージを非表示にする](entitlement-management-access-package-edit.md#change-the-hidden-setting) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス パッケージを削除する](entitlement-management-access-package-edit.md#delete) |  | :heavy_check_mark: | :heavy_check_mark: |  |
-| [アクセス要求を承認する](entitlement-management-request-approve.md) |  |  |  | :heavy_check_mark: |
+| [カタログ作成者に委任する](entitlement-management-delegate-catalog.md) | :heavy_check_mark: |  |  |  |
+| [新しいカタログを作成する](entitlement-management-catalog-create.md) | :heavy_check_mark: | :heavy_check_mark: |  |  |
+| [カタログにリソースを追加する](entitlement-management-catalog-create.md#add-resources-to-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [カタログ所有者を追加する](entitlement-management-catalog-create.md#add-additional-catalog-owners) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [カタログを編集する](entitlement-management-catalog-create.md#edit-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [カタログを削除する](entitlement-management-catalog-create.md#delete-a-catalog) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [アクセス パッケージ管理者に委任する](entitlement-management-delegate-managers.md) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [アクセス パッケージ管理者を削除する](entitlement-management-delegate-managers.md#remove-an-access-package-manager) | :heavy_check_mark: |  | :heavy_check_mark: |  |
+| [新しいアクセス パッケージをカタログに作成する](entitlement-management-access-package-create.md) | :heavy_check_mark: |  | :heavy_check_mark:  | :heavy_check_mark:  |
+| [アクセス パッケージ内のリソースのロールを管理する](entitlement-management-access-package-edit.md) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [ポリシーの作成と編集](entitlement-management-access-package-edit.md#add-a-new-policy) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [アクセス パッケージにユーザーを直接割り当てる](entitlement-management-access-package-edit.md#directly-assign-a-user) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [アクセス パッケージに割り当てられているユーザーを表示する](entitlement-management-access-package-edit.md#view-who-has-an-assignment) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [アクセス パッケージの要求を表示する](entitlement-management-access-package-edit.md#view-requests) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [要求の配信エラーを表示する](entitlement-management-access-package-edit.md#view-a-requests-delivery-errors) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [保留中の要求をキャンセルする](entitlement-management-access-package-edit.md#cancel-a-pending-request) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [アクセス パッケージを非表示にする](entitlement-management-access-package-edit.md#change-the-hidden-setting) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
+| [アクセス パッケージを削除する](entitlement-management-access-package-edit.md#delete) | :heavy_check_mark: |  | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="required-roles-to-add-resources-to-a-catalog"></a>カタログにリソースを追加するために必要なロール
 
@@ -119,41 +137,7 @@ ms.locfileid: "70207145"
 
 タスクの最小限の特権ロールを決定するには、「[Azure Active Directory における管理タスク別の管理者ロール](../users-groups-roles/roles-delegate-by-task.md#entitlement-management)」を参照することもできます。
 
-## <a name="add-a-catalog-creator"></a>カタログ作成者を追加する
-
-カタログ作成を委任する場合は、ユーザーをカタログ作成者ロールに追加します。  個々のユーザーを追加することも、手間を省くためにグループを追加することもできます。これにより、メンバーがカタログを作成できるようになります。 カタログ作成者ロールにユーザーを割り当てるには、これらの手順に従います。
-
-**事前に必要なロール:** グローバル管理者またはユーザー管理者
-
-1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
-
-1. 左側のメニューの **[エンタイトルメント管理]** セクションで、 **[設定]** をクリックします。
-
-1. **[編集]** をクリックします。
-
-1. **[Delegate entitlement management]\(エンタイトルメント管理の委任\)** セクションで、 **[Add catalog creators]\(カタログ作成者の追加\)** をクリックし、このエンタイトルメント管理ロールのメンバーとなるユーザーまたはグループを選択します。
-
-1. **[選択]** をクリックします。
-
-1. **[Save]** をクリックします。
-
-## <a name="add-a-catalog-owner-or-an-access-package-manager"></a>カタログ所有者またはアクセス パッケージ マネージャーを追加する
-
-カタログまたはカタログ内のアクセス パッケージの管理を委任する場合は、ユーザーをカタログ所有者またはアクセス パッケージ マネージャーのロールに追加します。 どのユーザーでも、カタログを作成すると、最初のカタログ所有者になります。 カタログ所有者またはアクセス パッケージ マネージャーのロールにユーザーを割り当てるには、これらの手順に従います。
-
-**事前に必要なロール:** グローバル管理者、ユーザー管理者、またはカタログ所有者
-
-1. Azure portal で **[Azure Active Directory]** をクリックし、 **[Identity Governance]** をクリックします。
-
-1. 左側のメニューで **[カタログ]** をクリックし、管理者を追加するカタログを開きます。
-
-1. 左側のメニューで **[ロールと管理者]** をクリックします。
-
-1. **[所有者の追加]** または **[Add access package managers]\(アクセス パッケージ マネージャーの追加\)** をクリックして、それらのロールのメンバーを選択します。
-
-1. **[選択]** をクリックすると、これらのメンバーが追加されます。
-
 ## <a name="next-steps"></a>次の手順
 
-- [承認者を追加する](entitlement-management-access-package-edit.md#policy-request)
-- [カタログにリソースを追加する](entitlement-management-catalog-create.md#add-resources-to-a-catalog)
+- [カタログ作成者にアクセス ガバナンスを委任する](entitlement-management-delegate-catalog.md)
+- [リソースのカタログを作成および管理する](entitlement-management-catalog-create.md)

@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: dacurwin
-ms.openlocfilehash: 719f7f1c30a79b9057f25d6137423451cc606bfa
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ae8421ca9e3705d697e9638e80fc61f853ff9d28
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088417"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028281"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
@@ -33,6 +33,9 @@ ms.locfileid: "71088417"
 
   ![保護されたサーバーの削除エラー。](./media/backup-azure-delete-vault/error-message.jpg)
 
+- バックアップ項目が論理的に削除された状態になっている場合は、以下の警告メッセージが表示されるので、完全に削除されるまで待つ必要があります。 詳しくは、こちらの[記事](https://aka.ms/SoftDeleteCloudWorkloads)を参照してください。
+
+   ![コンテナーの削除エラー。](./media/backup-azure-delete-vault/error-message-soft-delete.png)
   
 コンテナーを削除するには、ご使用のセットアップに対応するシナリオを選択し、推奨される手順に従います。
 
@@ -81,7 +84,7 @@ Azure への MABS (Microsoft Azure Backup Server) または DPM (System Center D
 
         ![MARS の場合、目的のコンテナーを選択してそのダッシュボードを開く。](./media/backup-azure-delete-vault/identify-protected-servers.png)
 
-      - MABS または DPM の場合、 **[バックアップ管理サーバー]** を選択します。 次に、削除するサーバーを選択します。 
+      - MABS または DPM の場合、 **[バックアップ管理サーバー]** を選択します。 次に、削除するサーバーを選択します。 
 
 
           ![MABS の場合、目的のコンテナーを選択してそのダッシュボードを開く。](./media/backup-azure-delete-vault/delete-backup-management-servers.png)

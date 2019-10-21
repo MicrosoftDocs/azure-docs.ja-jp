@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 10/15/2019
 ms.author: haroldw
-ms.openlocfilehash: fccb77110eafa131733ecea70fb209b2a168436c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 66d17fb2a96bbb5b1dcb51151242f014b4116b86
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082512"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390529"
 ---
 # <a name="deploy-okd-in-azure"></a>Azure で OKD をデプロイする
 
@@ -163,6 +163,6 @@ az group delete --name openshiftrg
 
 ## <a name="next-steps"></a>次の手順
 
-- [デプロイ後タスク](./openshift-post-deployment.md)
-- [OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)
+- [デプロイ後タスク](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift デプロイのトラブルシューティング](./openshift-container-platform-3x-troubleshooting.md)
 - [OKD の概要](https://docs.okd.io)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c922799b650de7f921cc0493eb3feb2ad90b9d92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 8ec61a04d6bb7289f12becf8baebae5e47150897
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183152"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802092"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C:ユーザー移行
 
@@ -49,51 +49,29 @@ Graph API を使用して Azure AD B2C ユーザー アカウントを (パス�
 
 ### <a name="step-11-register-your-application-in-your-tenant"></a>手順 1.1: アプリケーションをテナントに登録する
 
-Graph API と通信するには、まず管理特権を持つサービス アカウントを持っている必要があります。 Azure AD 内で、アプリケーションと認証を Azure AD に登録します。 アプリケーションの資格情報は、**アプリケーション ID** と**アプリケーション シークレット**です。 アプリケーションはユーザーとしてではなくアプリケーションそれ自体として Graph API を呼び出します。
+Graph API と通信するには、まず管理特権を持つサービス アカウントを持っている必要があります。 Azure AD で、アプリケーションを登録し、ディレクトリへの書き込みアクセスを有効にします。 アプリケーションの資格情報は、**アプリケーション ID** と**アプリケーション シークレット**です。 アプリケーションはユーザーとしてではなくアプリケーションそれ自体として Graph API を呼び出します。
 
-最初に、移行するアプリケーションを Azure AD に登録します。 次に、アプリケーション キー (アプリケーション シークレット) を作成し、適切な権限を使用してアプリケーションを設定します。
+最初に、ユーザーの移行などの管理タスクに使用できるアプリケーションを登録します。
 
-1. [Azure Portal][Portal] にサインインします。
-1. ポータルの右上のセクションで、 **[ディレクトリ + サブスクリプション]** フィルターを選択します。
-1. ご利用の Azure AD B2C テナントが含まれるディレクトリを選択します。
-1. 左側のメニューで、([Azure AD B2C] "*ではなく*") **[Azure Active Directory]** を選択します。 表示されていない場合は、 **[すべてのサービス]** を選択します。
-1. **[アプリの登録 (レガシ)]** を選択します。
-1. **[新しいアプリケーションの登録]** を選択します。
+[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
 
-   ![Azure Active Directory とアプリの登録メニュー項目が強調表示されている](media/active-directory-b2c-user-migration/pre-migration-app-registration.png)
+### <a name="step-12-grant-administrative-permission-to-your-application"></a>手順 1.2: アプリケーションに管理アクセス許可を付与する
 
-1. 次の手順で、新しいアプリケーションを作成します。
+次に、ディレクトリへの書き込みに必要な Azure AD Graph API のアクセス許可をアプリケーションに付与します。
 
-   - **[名前]** には、「*B2CUserMigratioin*」または他の任意の名前を入力します。
-   - **[アプリケーションの種類]** で、 **[Web アプリ/API]** を選択します。
-   - **[サインオン URL]** には、「`https://localhost`」と入力します (このアプリケーションには関係がない)。
-   - **作成** を選択します。
+[!INCLUDE [active-directory-b2c-permissions-directory](../../includes/active-directory-b2c-permissions-directory.md)]
 
-    アプリケーションが作成されると、 **[登録済みのアプリ]** ページにそのプロパティが表示されます。
-1. 後で使用するため、アプリケーションの **アプリケーション ID** をコピーして保存します。
+### <a name="step-13-create-the-application-secret"></a>手順 1.3: アプリケーション シークレットを作成する
 
-### <a name="step-12-create-the-application-secret"></a>手順 1.2: アプリケーション シークレットを作成する
+後の手順で構成するユーザー移行アプリケーションで使用するクライアント シークレット (キー) を作成します。
 
-1. **[登録済みのアプリ]** ページで、 **[設定]** を選択します。
-1. **[キー]** を選択します。
-1. **[パスワード]** で、名前 *MyClientSecret* または別の任意の名前の新しいキー (クライアント シークレットとも呼ばれます) を追加し、有効期間を選択して、 **[保存]** を選択した後、後で使用するためにキーの値をコピーします。
+[!INCLUDE [active-directory-b2c-client-secret](../../includes/active-directory-b2c-client-secret.md)]
 
-    ![Azure portal でアプリケーション ID の値とキー メニュー項目が強調表示されている](media/active-directory-b2c-user-migration/pre-migration-app-id-and-key.png)
-
-### <a name="step-13-grant-administrative-permission-to-your-application"></a>手順 1.3: アプリケーションに管理アクセス許可を付与する
-
-1. **[設定]** メニューで、 **[必要なアクセス許可]** を選択します。
-1. **[Windows Azure Active Directory]** を選択します。
-1. **[アクセスの有効化]** ウィンドウの **[アプリケーションのアクセス許可]** で、 **[ディレクトリ データの読み取りと書き込み]** を選択し、 **[保存]** を選択します。
-1. **[必要なアクセス許可]** ウィンドウで、 **[アクセス許可の付与]** を選択した後、 **[はい]** を選択します。
-
-   ![ディレクトリの読み取り/書き込みのチェックボックス、[保存]、および [アクセス許可の付与] が強調表示されている](media/active-directory-b2c-user-migration/pre-migration-app-registration-permissions.png)
-
-これで Azure AD B2C テナントのユーザーの作成、読み取り、更新を実行するアクセス許可をアプリケーションに付与できました。
+これで、Azure AD B2C テナントでユーザーの作成、読み取り、更新を実行するアクセス許可を持つアプリケーションが用意されました。
 
 ### <a name="step-14-optional-environment-cleanup"></a>手順 1.4: (省略可能) 環境のクリーンアップ
 
-ディレクトリ データの読み取りと書き込みのアクセス許可には、ユーザーを削除する権限は*含まれていません*。 (環境をクリーンアップするために) ユーザーを削除する権限をアプリケーションに付与するには、PowerShell を実行してユーザー アカウント管理者のアクセス許可を設定する操作など、追加の手順を実行する必要があります。 それ以外の場合は、次のセクションにスキップできます。
+"*ディレクトリ データの読み取りと書き込み*" のアクセス許可には、ユーザーを削除するための権限は "*含まれません*"。 (環境をクリーンアップするために) ユーザーを削除する権限をアプリケーションに付与するには、PowerShell を実行してユーザー アカウント管理者のアクセス許可を設定する操作など、追加の手順を実行する必要があります。 それ以外の場合は、次のセクションにスキップできます。
 
 > [!IMPORTANT]
 > B2C テナントの*ローカル*である B2C テナント管理者アカウントを使用する必要があります。 アカウント名の構文は *admin\@contosob2c.onmicrosoft.com* です。

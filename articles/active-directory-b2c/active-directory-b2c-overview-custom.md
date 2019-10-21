@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be6d54886f23b0fa219b1e4b8948b4a4c51f5864
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 335b6c1a12f3786d7c0f1083f5b052aaac4beccb
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716822"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065772"
 ---
 # <a name="custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C のカスタム ポリシー
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-カスタム ポリシーは、Azure Active Directory (Azure AD) B2C テナントの動作を定義する構成ファイルです。 Azure AD B2C ポータルでは、最も一般的な ID タスク用のユーザー フローが事前に定義されています。 カスタム ポリシーは、ID 開発者がさまざまなタスクを実現する目的で自由に編集することができます。
+カスタム ポリシーは、Azure Active Directory B2C (Azure AD B2C) テナントの動作を定義する構成ファイルです。 Azure AD B2C ポータルでは、最も一般的な ID タスク用のユーザー フローが事前に定義されています。 カスタム ポリシーは、ID 開発者がさまざまなタスクを実現する目的で自由に編集することができます。
 
 ## <a name="comparing-user-flows-and-custom-policies"></a>ユーザー フローとカスタム ポリシーの比較
 
@@ -55,7 +55,7 @@ Azure の顧客 ID およびアクセス管理 (CIAM) サービスには、次�
 
 Azure AD B2C は、ID プロバイダー、ユーザー、その他のシステムとやり取りし、ローカル ユーザー ディレクトリを順次操作して ID タスクを完了します。 たとえば、ユーザーのサインイン、新規ユーザーの登録、パスワードのリセットなどです。 Identity Experience Framework とポリシー (ユーザー体験または信頼フレームワーク ポリシーとも呼ばれる) によって、マルチパーティの信頼が確立され、アクター、アクション、プロトコル、および完了するための一連の手順が明示的に定義されます。
 
-Identity Experience Framework は、OpenID Connect、OAuth、SAML、WSFed などの標準のプロトコル形式、およびいくつかの標準以外の形式 (REST API ベースのシステムからシステムへの要求の交換など) のエンティティ間の信頼を調整する、完全に構成可能で、ポリシー主導かつクラウドベースの Azure プラットフォームです。 このフレームワークは、HTML と CSS をサポートする、わかりやすい、ホワイトラベルが付けられたエクスペリエンスを作成します。
+Identity Experience Framework は、OpenID Connect、OAuth、SAML などの標準のプロトコル形式、およびいくつかの標準以外の形式 (REST API ベースのシステム間の要求の交換など) のエンティティ間の信頼を調整する、完全に構成可能で、ポリシー主導かつクラウドベースの Azure プラットフォームです。 このフレームワークは、HTML と CSS をサポートする、わかりやすい、ホワイトラベルが付けられたエクスペリエンスを作成します。
 
 カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルとして表されます。 XML 要素は、要求スキーマ、要求変換、コンテンツ定義、クレーム プロバイダー、技術プロファイル、ユーザー体験のオーケストレーション手順などの要素を定義します。 カスタム ポリシーは、証明書利用者から呼び出されたときに Identity Experience Framework によって実行される 1 つまたは複数の XML ファイルとしてアクセス可能です。 カスタム ポリシーを構成する開発者は、信頼できる関係の詳細をメタデータ エンドポイント、正確な要求交換定義を含むように慎重に定義し、各 ID プロバイダーの必要に応じてシークレット、キー、および証明書を構成する必要があります。
 

@@ -1,18 +1,18 @@
 ---
 title: Microsoft Azure Site Recovery Provider のアップグレード エラーのトラブルシューティング | Microsoft Docs
 description: 理解を深める
-author: vDonGlover
-manager: jarrettr
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 02/05/2019
-ms.author: v-doglov
-ms.openlocfilehash: fc50be2a960784895947f3f154a0251f41716fc7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: raynew
+ms.openlocfilehash: 6bb8263e7291506be6af7d5af7eda5786274d73c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565703"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972599"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Microsoft Azure Site Recovery プロバイダーのアップグレード エラーのトラブルシューティング
 

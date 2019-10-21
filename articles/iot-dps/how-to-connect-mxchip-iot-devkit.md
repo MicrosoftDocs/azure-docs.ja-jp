@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: jeffya
-ms.openlocfilehash: b1aac19885e2b640063e4840f047916ad51e9656
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 2731bbcd6a6b0c8f7d82334c022c017d5eae35f0
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855747"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677016"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>Azure IoT Hub Device Provisioning Service の自動プロビジョニングを使用して MXChip IoT DevKit を IoT Hub に登録します
 
@@ -91,9 +91,6 @@ UDS を DevKit に保存するには、次の手順を実行します。
 ## <a name="generate-x509-certificate"></a>X.509 証明書を生成する
 
 このサンプルで使用される[構成証明メカニズム](/azure/iot-dps/concepts-device#attestation-mechanism)は、X.509 証明書です。 それを生成するユーティリティを使用する必要があります。
-
-> [!NOTE]
-> X.509 証明書ジェネレーターは現在 Windows のみサポートしています。
 
 1. VS Code で、`F1` をクリックし、 **[Open New Terminal ]\(新しいターミナルを開く\)** を入力して選択し、ターミナル ウィンドウを開きます。
 

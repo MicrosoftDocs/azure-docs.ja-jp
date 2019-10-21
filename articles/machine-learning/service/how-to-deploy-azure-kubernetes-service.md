@@ -1,7 +1,7 @@
 ---
 title: Azure Kubernetes Service にモデルをデプロイする方法
-titleSuffix: Azure Machine Learning service
-description: Azure Kubernetes Service を使用して Web サービスとして Azure Machine Learning service のモデルをデプロイする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Kubernetes Service を使用して Web サービスとして Azure Machine Learning のモデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/08/2019
-ms.openlocfilehash: 302fad84a2f0443fb639e57d7bb0cfddef4c3443
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: c32560f7bb182ac347e9e5a71b53b57cf80fac38
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858741"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034625"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Azure Kubernetes Service クラスターにモデルをデプロイする
 
-Azure Machine Learning service を使って Azure Kubernetes Service (AKS) 上の Web サービスとしてモデルをデプロイする方法について説明します。 Azure Kubernetes Service は高スケールの運用デプロイに適してします。 次のいずれかの機能が必要な場合は、Azure Kubernetes Service を使用します。
+Azure Machine Learning を使って Azure Kubernetes Service (AKS) 上の Web サービスとしてモデルをデプロイする方法について説明します。 Azure Kubernetes Service は高スケールの運用デプロイに適してします。 次のいずれかの機能が必要な場合は、Azure Kubernetes Service を使用します。
 
 - __高速の応答時間__。
 - デプロイされたサービスの __自動スケール__。
@@ -30,15 +30,15 @@ Azure Machine Learning service を使って Azure Kubernetes Service (AKS) 上�
 
 Azure Kubernetes Service にデプロイするときは、__ご利用のワークスペースに接続されている__ AKS クラスターにデプロイします。 AKS クラスターをワークスペースに接続するには、次の 2 つの方法があります。
 
-* Azure Machine Learning service SDK、Machine Learning CLI、[Azure portal](https://portal.azure.com)、または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) を使用して、AKS クラスターを作成します。 このプロセスにより、クラスターがワークスペースに自動的に接続されます。
-* 既存の AKS クラスターを Azure Machine Learning service のワークスペースにアタッチします。 Azure Machine Learning service SDK、Machine Learning CLI、または Azure portal を使って、クラスターをアタッチできます。
+* Azure Machine Learning SDK、Machine Learning CLI、[Azure portal](https://portal.azure.com)、または[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) を使用して、AKS クラスターを作成します。 このプロセスにより、クラスターがワークスペースに自動的に接続されます。
+* 既存の AKS クラスターを Azure Machine Learning のワークスペースにアタッチします。 Azure Machine Learning SDK、Machine Learning CLI、または Azure portal を使って、クラスターをアタッチできます。
 
 > [!IMPORTANT]
 > 作成またはアタッチのプロセスは、1 回限りのタスクです。 AKS クラスターがワークスペースに接続されると、デプロイに使用できます。 不要になった AKS クラスターは、デタッチまたは削除できます。 デタッチまたは削除したクラスターには、デプロイできなくなります。
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning service ワークスペースの作成](how-to-manage-workspace.md) に関する記事を参照してください。
+- Azure Machine Learning ワークスペース。 詳細については、[Azure Machine Learning ワークスペースの作成](how-to-manage-workspace.md)に関するページをご覧ください。
 
 - ワークスペースに登録されている機械学習モデル。 モデルが登録されていない場合は、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
@@ -117,7 +117,7 @@ az ml computetarget create aks -n myaks
 お客様の Azure サブスクリプションに既に AKS クラスターがあり、そのバージョンが 1.12.## である場合は、それを使用してお客様のイメージをデプロイできます。
 
 > [!TIP]
-> 既存の AKS クラスターは、Azure Machine Learning service ワークスペースと異なる Azure リージョンに存在してもかまいません。
+> 既存の AKS クラスターは、Azure Machine Learning ワークスペースと異なる Azure リージョンに存在してもかまいません。
 >
 > Azure Virtual Network を使用して AKS クラスターをセキュリティで保護する場合は、まず仮想ネットワークを作成する必要があります。 詳細については、[Azure Virtual Network での実験と推論の安全な実行](how-to-enable-virtual-network.md#aksvnet)に関するページを参照してください。
 

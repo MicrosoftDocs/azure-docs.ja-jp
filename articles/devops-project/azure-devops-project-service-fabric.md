@@ -2,19 +2,19 @@
 title: チュートリアル:Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする
 description: Azure DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects を使用することによって、いくつかの簡単な手順で ASP.NET Core アプリを Azure Service Fabric に簡単にデプロイできます。
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 8ba217cb9ce849e57b15d3e6cc73529c78bf340e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5f14164da5cd89cc7d0578e6b64c39d227734d75
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453773"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969470"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>チュートリアル:Azure DevOps Projects を使用して ASP.NET Core アプリを Azure Service Fabric にデプロイする
 
@@ -45,17 +45,17 @@ DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-1. 左側のウィンドウで、**[リソースの作成]** を選びます。
+1. 左側のウィンドウで、 **[リソースの作成]** を選びます。
 
-1. 検索ボックスに「**DevOps Projects**」と入力し、**[作成]** を選択します。
+1. 検索ボックスに「**DevOps Projects**」と入力し、 **[作成]** を選択します。
 
     ![DevOps Projects ダッシュボード](_img/azure-devops-project-github/fullbrowser.png)
 
-1. **[.NET]** を選択し、**[次へ]** を選択します。
+1. **[.NET]** を選択し、 **[次へ]** を選択します。
 
-1. **[アプリケーション フレームワークを選択します]** で **[ASP.NET Core]** を選択し、**[次へ]** を選択します。
+1. **[アプリケーション フレームワークを選択します]** で **[ASP.NET Core]** を選択し、 **[次へ]** を選択します。
 
-1. **[Service Fabric クラスター]** を選択し、**[次へ]** を選択します。 
+1. **[Service Fabric クラスター]** を選択し、 **[次へ]** を選択します。 
 
 ## <a name="configure-azure-devops-and-an-azure-subscription"></a>Azure DevOps と Azure サブスクリプションを構成する
 
@@ -65,10 +65,10 @@ DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが�
 
 1. Azure サブスクリプションを選択します。
 
-1. 追加の Azure 構成設定を表示し、Service Fabric クラスターのノード仮想マシンのサイズとオペレーティング システムを特定するには、**[変更]** を選択します。  
+1. 追加の Azure 構成設定を表示し、Service Fabric クラスターのノード仮想マシンのサイズとオペレーティング システムを特定するには、 **[変更]** を選択します。  
     このウィンドウには、Azure サービスの種類と場所を構成するためのさまざまなオプションが表示されます。
  
-1. Azure の構成領域を終了し、**[完了]** を選択します。  
+1. Azure の構成領域を終了し、 **[完了]** を選択します。  
     数分後に、処理が完了します。 サンプル ASP.NET Core アプリが Azure DevOps 組織内の Git リポジトリに設定され、Service Fabric クラスターが作成されます。そして CI/CD パイプラインが実行され、アプリが Azure にデプロイされます。 
 
     このすべてが完了すると、DevOps Projects ダッシュボードが Azure portal に表示されます。 DevOps Projects ダッシュボードには、Azure portal の **[すべてのリソース]** から直接移動することもできます。 
@@ -94,7 +94,7 @@ DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが�
 
 1. ビルド パイプラインの上部で、ビルド パイプラインの名前を選択します。 
 
-1. ご自身のビルド パイプラインの名前の下で、**[履歴]** を選択します。  
+1. ご自身のビルド パイプラインの名前の下で、 **[履歴]** を選択します。  
     このウィンドウには、ビルドに対する最近の変更の監査証跡が表示されます。 ビルド パイプラインに対するすべての変更が Azure DevOps によって追跡されるため、各バージョンを比較できます。
 
 1. **[トリガー]** を選択します。  
@@ -107,13 +107,13 @@ DevOps Projects によって、Azure Pipelines に CI/CD パイプラインが�
 
 DevOps Projects では、Azure DevOps 組織から Azure サブスクリプションにデプロイするために必要な手順が自動的に作成され、構成されます。 これらの手順には、Azure サブスクリプションで Azure DevOps を認証するための Azure サービス接続の構成が含まれます。 自動化によってリリース パイプラインも作成され、このパイプラインによって CD が Azure に提供されます。 リリース パイプラインの詳細を知るには、次の手順を行います。
 
-1. **[ビルドとリリース]** を選択し、**[リリース]** を選択します。  
+1. **[ビルドとリリース]** を選択し、 **[リリース]** を選択します。  
     DevOps Projects により、Azure へのデプロイを管理するリリース パイプラインが作成されます。
 
-1. リリース パイプラインの横にある省略記号 (...) を選択し、**[編集]** を選択します。  
+1. リリース パイプラインの横にある省略記号 (...) を選択し、 **[編集]** を選択します。  
     リリース パイプラインには、リリース プロセスを定義する*パイプライン*が含まれています。
 
-1. **[成果物]** で、**[ドロップ]** を選択します。  
+1. **[成果物]** で、 **[ドロップ]** を選択します。  
     前に調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
 1. **[ドロップ]** アイコンの右側にある **[継続的配置トリガー]** を選択します。  
@@ -121,7 +121,7 @@ DevOps Projects では、Azure DevOps 組織から Azure サブスクリプシ�
 
 1. 右側で **[リリースの表示]** を選択して、リリースの履歴を表示します。
 
-1. リリースの横にある省略記号 (...) を選択し、**[開く]** を選択します。  
+1. リリースの横にある省略記号 (...) を選択し、 **[開く]** を選択します。  
     リリース概要、関連付けられた作業項目、テストなど、いくつかのメニューを調べることができます。
 
 1. **[コミット]** を選択します。  
@@ -137,9 +137,9 @@ DevOps Projects では、Azure DevOps 組織から Azure サブスクリプシ�
 
 Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、アプリに対してチームで共同作業を行う準備ができました。 Git リポジトリに対する各変更によりビルドが開始され、リリースによって変更が Azure にデプロイされます。 このセクションの手順に従うか、他の手法を使用して、リポジトリに変更をコミットします。 たとえば、お気に入りのツールや IDE で Git リポジトリを複製し、変更をそのリポジトリにプッシュできます。
 
-1. Azure DevOps メニューで **[コード]** > **[ファイル]** の順に選択し、リポジトリに移動します。
+1. Azure DevOps メニューで **[コード]**  >  **[ファイル]** の順に選択し、リポジトリに移動します。
 
-1. *Views\Home* ディレクトリに移動し、*Index.cshtml* ファイルの横にある省略記号 (...) を選択し、**[編集]** を選択します。
+1. *Views\Home* ディレクトリに移動し、*Index.cshtml* ファイルの横にある省略記号 (...) を選択し、 **[編集]** を選択します。
 
 1. いずれかの div タグ内にテキストを追加するなど、ファイルを変更します。 
 

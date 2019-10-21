@@ -10,22 +10,28 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 1d9fc20055fe3adb571b5a77330cc6537998cb5f
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: b25a002cb1e2563ab97a2081c6b6a05362b66779
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534473"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338511"
 ---
 # <a name="immersive-reader-sdk-reference"></a>Immersive Reader SDK リファレンス
 
 Immersive Reader SDK は、イマーシブ リーダーを Web アプリケーションに統合するための JavaScript ライブラリです。
 
-## <a name="functions"></a>Functions
+# <a name="functions"></a>Functions
 
-SDK は 1 つの関数 `ImmersiveReader.launchAsync(token, subdomain, content, options)` を公開します。
+SDK では、次の関数が公開されています。
 
-### <a name="launchasync"></a>launchAsync
+- [`ImmersiveReader.launchAsync(token, subdomain, content, options)`](#launchasync)
+
+- [`ImmersiveReader.close()`](#close)
+
+- [`ImmersiveReader.renderButtons(options)`](#renderbuttons)
+
+## <a name="launchasync"></a>launchAsync
 
 Web アプリケーションの `iframe` 内でイマーシブ リーダーを起動します。
 
@@ -33,22 +39,50 @@ Web アプリケーションの `iframe` 内でイマーシブ リーダーを�
 launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
 ```
 
-#### <a name="parameters"></a>parameters
+### <a name="parameters"></a>parameters
 
-| Name | Type | 説明 |
+| 名前 | Type | 説明 |
 | ---- | ---- |------------ |
 | `token` | string | Azure AD 認証トークン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |
 | `subdomain` | string | Azure 内のイマーシブ リーダー リソースのカスタム サブドメイン。 [Azure AD の認証方法](./azure-active-directory-authentication.md)に関するページを参照してください。 |
 | `content` | [コンテンツ](#content) | イマーシブ リーダーで表示するコンテンツを含むオブジェクト。 |
 | `options` | [オプション](#options) | イマーシブ リーダーの特定の動作を構成するオプション。 省略可能。 |
 
-#### <a name="returns"></a>戻り値
+### <a name="returns"></a>戻り値
 
 イマーシブ リーダーが読み込まれたときに解決される `Promise<HTMLDivElement>` を返します。 `Promise` は `div` 要素に解決され、この要素の唯一の子はイマーシブ リーダーページ を含む `iframe` 要素です。
 
-#### <a name="exceptions"></a>例外
+### <a name="exceptions"></a>例外
 
 イマーシブ リーダーの読み込みに失敗した場合、返された `Promise` は [`Error`](#error) オブジェクトで拒否されます。 詳細については、「[エラー コード](#error-codes)」を参照してください。
+
+## <a name="close"></a>close
+
+イマーシブ リーダーを閉じます。
+
+この関数のユース ケースの例には、```hideExitButton: true```オプション[で ](#options) を設定して終了ボタンを非表示にする場合があります。 その後、別のボタン (たとえば、モバイル ヘッダーの戻る矢印) がクリックされたときに、この ```close``` 関数を呼び出すことができます。
+
+```typescript
+close(): void;
+```
+
+## <a name="renderbuttons"></a>renderButtons
+
+この関数は、ドキュメントのイマーシブ リーダー ボタン要素のスタイル設定と更新を行います。 ```options.elements``` が指定されている場合、この関数により ```options.elements``` 内にボタンがレンダリングされます。 それ以外の場合は、クラス ```immersive-reader-button``` を持つドキュメントの要素内にボタンがレンダリングされます。
+
+この関数は、ウィンドウの読み込み時に SDK によって自動的に呼び出されます。
+
+レンダリング オプションの詳細については、「[省略可能な属性](#optional-attributes)」を参照してください。
+
+```typescript
+renderButtons(options?: RenderButtonsOptions): void;
+```
+
+### <a name="parameters"></a>parameters
+
+| 名前 | Type | 説明 |
+| ---- | ---- |------------ |
+| `options` | [RenderButtonsOptions](#renderbuttonsoptions) | renderButtons 関数の特定の動作を構成するためのオプション。 省略可能。 |
 
 ## <a name="types"></a>型
 
@@ -58,12 +92,20 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ```typescript
 {
-    title?: string;      // Title text shown at the top of the Immersive Reader (optional)
-    chunks: [ {          // Array of chunks
-        content: string; // Plain text string
-        lang?: string;   // Language of the text, e.g. en, es-ES (optional). Language will be detected automatically if not specified.
-        mimeType?: string; // MIME type of the content (optional). Defaults to 'text/plain' if not specified.
-    } ];
+    title?: string;    // Title text shown at the top of the Immersive Reader (optional)
+    chunks: Chunk[];   // Array of chunks
+}
+```
+
+### <a name="chunk"></a>チャンク
+
+1 つのデータ チャンク。イマーシブ リーダーのコンテンツに渡されます。
+
+```typescript
+{
+    content: string;        // Plain text string
+    lang?: string;          // Language of the text, e.g. en, es-ES (optional). Language will be detected automatically if not specified.
+    mimeType?: string;      // MIME type of the content (optional). Currently 'text/plain', 'application/mathml+xml', and 'text/html' are supported. Defaults to 'text/plain' if not specified.
 }
 ```
 
@@ -72,8 +114,19 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 | MIME タイプ | 説明 |
 | --------- | ----------- |
 | text/plain | プレーンテキスト。 |
+| text/html | HTML コンテンツ。 [詳細情報](#html-support)|
 | application/mathml+xml | Mathematical Markup Language (MathML)。 [詳細情報](https://developer.mozilla.org/en-US/docs/Web/MathML)。
 | application/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word の .docx 形式のドキュメント。
+
+### <a name="html-support"></a>HTML サポート
+| HTML | サポートされているコンテンツ |
+| --------- | ----------- |
+| フォント スタイル | 太字、斜体、下線、コード、取り消し線、上付き文字、下付き文字 |
+| 順不同のリスト | ディスク、円、正方形 |
+| 順序指定済みリスト | 小数点、大文字アルファベット、小文字アルファベット、大文字ローマ字、小文字ローマ字 |
+| ハイパーリンク | 近日対応予定 |
+
+サポートされていないタグが同等にレンダリングされます。 イメージとテーブルは現在サポートされていません。
 
 ### <a name="options"></a>オプション
 
@@ -81,10 +134,24 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ```typescript
 {
-    uiLang?: string;   // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
-    timeout?: number;  // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
-    uiZIndex?: number; // Z-index of the iframe that will be created (default is 1000)
-    useWebview?: boolean; // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
+    uiLang?: string;           // Language of the UI, e.g. en, es-ES (optional). Defaults to browser language if not specified.
+    timeout?: number;          // Duration (in milliseconds) before launchAsync fails with a timeout error (default is 15000 ms).
+    uiZIndex?: number;         // Z-index of the iframe that will be created (default is 1000)
+    useWebview?: boolean;      // Use a webview tag instead of an iframe, for compatibility with Chrome Apps (default is false).
+    onExit?: () => any;        // Executes when the Immersive Reader exits
+    customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
+    allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
+    hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+}
+```
+
+### <a name="renderbuttonsoptions"></a>RenderButtonsOptions
+
+イマーシブ リーダー ボタンをレンダリングするためのオプション。
+
+```typescript
+{
+    elements: HTMLDivElement[];    // Elements to render the Immersive Reader buttons in
 }
 ```
 
@@ -123,7 +190,7 @@ SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイ
 | Attribute | 説明 |
 | --------- | ----------- |
 | `data-button-style` | ボタンのスタイルを設定します。 `icon`、`text`、または `iconAndText` を指定できます。 既定値は `icon` です。 |
-| `data-locale` | ロケール (例: `en-US`、`fr-FR`) を設定します。 既定値は English です。 |
+| `data-locale` | ロケールを設定します。 たとえば、`en-US` または `fr-FR` です。 既定値は英語 `en` です。 |
 | `data-icon-px-size` | アイコンのサイズをピクセル単位で設定します。 既定値は 20px です。 |
 
 ## <a name="browser-support"></a>ブラウザーのサポート

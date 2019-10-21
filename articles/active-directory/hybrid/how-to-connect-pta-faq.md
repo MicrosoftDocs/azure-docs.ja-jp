@@ -16,12 +16,12 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c7199cd8e5dbde1f6ff2f5cea56a4191211c853
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779076"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290758"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証:よく寄せられる質問
 
@@ -44,8 +44,7 @@ Azure AD の各種サインイン方法の比較および組織に合った適�
 はい。 Microsoft Azure Multi-Factor Authentication を含め、すべての条件付きアクセス機能がパススルー認証と連携します。
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>パススルー認証では、"userPrincipalName" の代わりに "Alternate ID" がユーザー名としてサポートされますか。
-
-はい。パススルー認証では、Azure AD Connect で構成されている場合はユーザー名として `Alternate ID` をサポートします。 前提条件として、Azure AD Connect ではオンプレミスの Active Directory の `UserPrincipalName` 属性を Azure AD に同期する必要があります。 詳細については、「[Azure AD Connect のカスタム インストール](how-to-connect-install-custom.md)」をご覧ください。 すべての Office 365 アプリケーションで `Alternate ID` をサポートしているわけではありません。 サポートの説明については、それぞれのアプリケーションのドキュメントを参照してください。
+限られた範囲となりますが、パススルー認証では、Azure AD Connect で構成されている場合はユーザー名として Alternate ID がサポートされます。 前提条件として、Azure AD Connect ではオンプレミスの Active Directory の `UserPrincipalName` 属性を Azure AD に同期する必要があります。 そうすることで、オンプレミス AD と Azure AD 上の `UserPrincipalName` が一致します。 別の属性を UPN としてオンプレミス AD から Azure AD に同期させたい場合は、パスワード ハッシュ同期または AD FS を使用する必要があります。 詳細については、「[Azure AD Connect のカスタム インストール](how-to-connect-install-custom.md)」をご覧ください。 すべての Office 365 アプリケーションで `Alternate ID` をサポートしているわけではありません。 サポートの説明については、それぞれのアプリケーションのドキュメントを参照してください。
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>パスワード ハッシュ同期は、パススルー認証のフォールバックとして機能しますか。
 

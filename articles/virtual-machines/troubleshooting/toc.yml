@@ -56,17 +56,22 @@
     - name: SSH のトラブルシューティング
       href: troubleshoot-ssh-connection.md
     - name: ファイル システム エラーのトラブルシューティング
-      href: 'https://support.microsoft.com/help/3213321'
+      href: linux-recovery-cannot-start-file-system-errors.md
     - name: カーネルに関連するブートの問題のトラブルシューティング
       href: 'https://support.microsoft.com/help/4091524'
     - name: fstab エラーのトラブルシューティング
-      href: 'https://support.microsoft.com/help/3206699'
+      href: linux-virtual-machine-cannot-start-fstab-errors.md
     - name: SSH のトラブルシューティングの詳細
       href: detailed-troubleshoot-ssh-connection.md
 - name: 一般的なエラー メッセージ
   href: error-messages.md
 - name: VM のパフォーマンスの問題
   href: performance-diagnostics.md
+- name: Linux または Windows を実行する Azure 仮想マシンの汎用パフォーマンスのトラブルシューティング
+  href: troubleshoot-performance-virtual-machine-linux-windows.md
+- name: 32 ビット オペレーティング システムのサポート
+  href: support-32-bit-operating-systems-virtual-machines.md
+- name: PerfInsights
   items:
     - name: Windows
       items:

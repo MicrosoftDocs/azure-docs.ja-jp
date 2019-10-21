@@ -1,7 +1,7 @@
 ---
-title: Project Acoustics プラグインに関する既知の問題
+title: Project Acoustics プラグインの既知の問題
 titlesuffix: Azure Cognitive Services
-description: Project Acoustics の Designer Preview の使用時に、以下で説明する既知の問題が発生する場合があります。
+description: Project Acoustics では、次の既知の問題が発生する可能性があります。
 services: cognitive-services
 author: NoelCross
 manager: nitinme
@@ -11,35 +11,37 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 37084480423de90f50beced187eda202b39f8bf1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b71b93f271608d946d964f70dae9eefbef77e87b
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933063"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243039"
 ---
 # <a name="project-acoustics-known-issues"></a>Project Acoustics の既知の問題
-Project Acoustics の Designer Preview の使用時に、以下で説明する既知の問題が発生する場合があります。
+この記事では、Project Acoustics の使用時に発生する可能性がある問題について説明します。
 
 ## <a name="acoustic-parameters-are-lost-when-you-rename-a-scene"></a>シーンの名前を変更すると音響パラメーターが失われる
 
-シーンの名前を変更する場合、そのシーンに属するすべての音響パラメーターが自動的に新しいシーンに移動するわけではありません。 ただし、古いアセット ファイルにはまだ存在します。 シーン ファイルに隣接する **Editor** ディレクトリ内の **SceneName_AcousticParameters.asset** ファイルを探します。 新しいシーン名を反映するようにファイルの名前を変更します。
+シーンの名前を変更しても、そのシーンに属するすべての音響パラメーターが新しいシーンに自動転送されることはありません。 古いアセット ファイルに残ります。 シーン ファイルに隣にある *Editor* ディレクトリ内で *[SceneName]_AcousticParameters.asset* ファイルを探します。 新しいシーン名を反映するようにファイルの名前を変更します。
 
-## <a name="deploying-to-android-from-some-unity-versions"></a>Unity の一部のバージョンから Android へのデプロイ
+## <a name="deploy-to-android-bug-from-some-unity-versions"></a>一部のバージョンの Unity で Android にデプロイする際のバグ
 
-Unity の一部のバージョンには、Android へのオーディオ プラグインのデプロイに関するバグがあります。 [こちらのバグ](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)の影響を受けるバージョンを使用していないことを確認してください。
+一部のバージョンの Unity では、Android にオーディオ プラグインをデプロイするしくみに[バグ](https://issuetracker.unity3d.com/issues/android-ios-audiosource-playing-through-google-resonance-audio-sdk-with-spatializer-enabled-does-not-play-on-built-player)があります。 このバグの影響を受けるバージョンを使用していないことを確認してください。
 
-## <a name="i-get-an-error-that-could-not-find-metadata-file-systemsecuritydll"></a>"could not find metadata file System.Security.dll"(メタデータ ファイル System.Security.dll が見つかりませんでした) というエラーが表示される
+## <a name="could-not-find-metadata-file-systemsecuritydll-error"></a>"could not find metadata file System.Security.dll" (メタデータ ファイル System.Security.dll が見つかりませんでした) というエラー
 
-Player の設定で [Scripting Runtime Version] が **[.NET 4.x Equivalent]** に設定されていることを確認して、Unity を再起動します。
+**Player** の設定で **[Scripting Runtime Version]** が *[.NET 4.x Equivalent]* に設定されていることを確認し、Unity を再起動します。
 
-## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>Azure への接続時に認証の問題が発生している
+## <a name="authentication-problems-when-connecting-to-azure"></a>Azure に接続するときの認証の問題
 
-Azure アカウントの正しい資格情報を使用していること、ベイクで要求されるノードの種類をアカウントがサポートしていること、および、システム クロックが正確であることを再確認してください。
+以下を確認します。
+- Azure アカウントに正しい資格情報を使用している。
+- お使いのアカウントで、ベイクで要求した種類のノードがサポートされている。
+- お使いのシステム クロックが正しく設定されている。
 
-## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>ベイクをキャンセルすると、[Bake]\(ベイク\) タブは「削除中」状態のままになります。
-Project Acoustics は正常な完了時またはキャンセル時にすべての Azure リソースをクリーンアップします。 この処理には最大 5 分かかることがあります。
+## <a name="the-bake-tab-still-shows-deleting-after-you-cancel"></a>キャンセル後も [Bake]\(ベイク\) タブに "削除中" と表示される
+Project Acoustics では、正常な完了時またはキャンセル時にすべての Azure リソースがクリーンアップされます。 このプロセスには最大 5 分かかることがあります。
 
 ## <a name="next-steps"></a>次の手順
-* [Unity](unity-quickstart.md) または [Unreal](unreal-quickstart.md) サンプル コンテンツを試してください
-
+* [Unity](unity-quickstart.md) または [Unreal](unreal-quickstart.md) サンプル コンテンツを試してください。

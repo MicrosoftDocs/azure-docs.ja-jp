@@ -14,6 +14,14 @@
           href: tutorial-scale-cluster.md
         - name: 3 - Azure Red Hat OpenShift クラスターを削除する
           href: tutorial-delete-cluster.md
+- name: クラスターの管理
+  items:
+    - name: Azure Red Hat OpenShift クラスターの管理
+      items:
+        - name: 1 - Azure Red Hat OpenShift クラスターの管理者ロール
+          href: cluster-administration-cluster-admin-role.md
+        - name: 2 - セキュリティ コンテキスト制約の管理
+          href: cluster-administration-security-context-constraints.md
 - name: ハウツー ガイド
   expanded: true
   items:

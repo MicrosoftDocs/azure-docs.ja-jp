@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: dacurwin
-ms.openlocfilehash: 0e8dacb97b6ccfb57573fc21c3a4df3694cc7ec8
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 24e36e231d80a82362333b7a711f94cf627816ac
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098396"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029262"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure Backup サービスで Azure VM のバックアップを管理する
 
@@ -49,7 +49,7 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
     ![[バックアップ項目] タイルを開く](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-6.  **[バックアップ項目]**   ブレードでは、保護されている VM の一覧を表示することができます。 この例では、コンテナーは 1 つの仮想マシン、demobackup を保護します。  
+6. **[バックアップ項目]** ブレードでは、保護されている VM の一覧を表示できます。 この例では、コンテナーは 1 つの仮想マシン、demobackup を保護します。  
 
     ![[バックアップ項目] ブレードを表示する](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -66,7 +66,7 @@ Azure portal では、Recovery Services コンテナーのダッシュボード�
 
     ![[バックアップ項目] タイルを開く](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-3.  **[バックアップ項目]**   ブレードでは、保護されている VM と、最新の復旧ポイントの時点の最後のバックアップの状態の一覧を表示することができます。
+3. **[バックアップ項目]** ブレードでは、保護されている VM と、最新の復元ポイントの時点の最後のバックアップの状態の一覧を表示できます。
 
     ![[バックアップ項目] ブレードを表示する](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
@@ -164,6 +164,13 @@ VM のバックアップ データを削除する方法は 2 つあります。
 
   > [!NOTE]
   > バックアップ データを削除すると、関連付けられている復旧ポイントもすべて削除されます。 特定の復旧ポイントを選択して削除することはできません。
+
+### <a name="backup-item-where-primary-data-source-no-longer-exists"></a>プライマリ データ ソースが存在しなくなったバックアップ項目
+
+- Azure Backup 用に構成された Azure VM が保護を停止せずに削除または移動された場合、スケジュールされたバックアップ ジョブとオンデマンド (アドホック) バックアップ ジョブの両方が、エラー UserErrorVmNotFoundV2 で失敗します。 バックアップの事前チェックは、失敗したアドホック バックアップ ジョブについてのみクリティカルと表示されます (スケジュールされたジョブが失敗した場合は表示されません)。 
+- ユーザーによって設定されたバックアップおよびアイテム保持ポリシーに準拠しているシステムでは、これらのバックアップ項目はアクティブなままになります。 これらの Azure VM のバックアップ データは、アイテム保持ポリシーに従って保持されます。 期限切れの復旧ポイント (最後の復旧ポイントを除く) は、バックアップ ポリシーで設定されている保持期間の範囲に従ってクリーニングされます。
+- 最後の復旧ポイントは無期限に保持され、ユーザーは該当するバックアップ価格に従って課金されるので、削除リソースのバックアップ項目/データが不要になった場合は、追加コストを回避するため、プライマリ データ ソースが存在しなくなったバックアップ項目を削除することをお勧めします。
+
 
 ## <a name="next-steps"></a>次の手順
 - [VM の設定から Azure VM をバックアップする](backup-azure-vms-first-look-arm.md)方法を確認します。

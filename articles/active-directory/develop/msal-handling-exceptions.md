@@ -1,6 +1,6 @@
 ---
-title: エラーと例外 (MSAL) | Azure
-description: MSAL アプリケーションでエラーと例外、条件付きアクセス、クレーム チャレンジを処理する方法について説明します。
+title: エラーと例外 (MSAL) | Microsoft ID プラットフォーム
+description: MSAL アプリケーションでエラーと例外、条件付きアクセス、クレーム チャレンジを処理する方法について学習します。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -13,39 +13,253 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/08/2019
-ms.author: negoe
+ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 280746281fd45b3286cc76be5d3483f0cc65f90f
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 635793d18bf33752a2672788bb632571743410b7
+ms.sourcegitcommit: 387da88b8262368c1b67fffea58fe881308db1c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70872793"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71982765"
 ---
-# <a name="handling-exceptions-and-errors-using-msal"></a>MSAL を使用して例外とエラーを処理する
+# <a name="handle-msal-exceptions-and-errors"></a>MSAL の例外とエラーを処理する
+
+この記事では、さまざまな種類のエラーの概要と、一般的なサインイン エラーを処理するための推奨事項を提供します。
+
+## <a name="msal-error-handling-basics"></a>MSAL のエラー処理の基本
 
 Microsoft Authentication Library (MSAL) での例外は、エンド ユーザーに表示するためのものではなく、アプリ開発者がトラブルシューティングに使うことが意図されています。 例外のメッセージはローカライズされていません。
 
 例外やエラーを処理するときは、例外の種類自体とエラー コードを使って、例外を区別できます。  エラー コードの一覧については、「[認証と承認エラー コード](reference-aadsts-error-codes.md)」をご覧ください。
 
+サイレントまたは対話型のトークンの取得中に、同意、条件付きアクセス (MFA、デバイス管理、場所に基づく制限)、トークンの発行と引き換え、ユーザー プロパティなどのサインイン エクスペリエンスの間に、アプリでエラーが発生することがあります。
+
+## <a name="msal-for-ios-and-macos-errors"></a>iOS および macOS 用の MSAL エラー
+
+エラーの完全なリストについては、「[MSALError 列挙型](https://github.com/AzureAD/microsoft-authentication-library-for-objc/blob/master/MSAL/src/public/MSALError.h#L128)」に一覧されています。
+
+MSAL で生成されたエラーはすべて、`MSALErrorDomain` ドメインと共に返されます。 
+
+システム エラーの場合、MSAL によってシステム API から元の `NSError` が返されます。 たとえば、ネットワーク接続がないことが原因でトークンの取得に失敗した場合、MSAL によって `NSURLErrorDomain` ドメインと `NSURLErrorNotConnectedToInternet` コードを含むエラーが返されます。
+
+クライアント側で少なくとも次の 2 つの MSAL エラーを処理することをお勧めします。
+
+- `MSALErrorInteractionRequired`:ユーザーは対話型の要求を行う必要があります。 有効期限が切れた認証セッションや追加の認証要件のニーズなど、このエラーの原因となる可能性のある条件が多数あります。 MSAL 対話型トークンの取得 API を呼び出して、復旧します。 
+
+- `MSALErrorServerDeclinedScopes`:一部またはすべてのスコープが拒否されました。 許可されたスコープのみを続行するか、サインイン プロセスを停止するかを決定します。
+
+> [!NOTE]
+> `MSALInternalError` 列挙型は、参照およびデバッグにのみ使用する必要があります。 これらのエラーを実行時に自動的に処理しないようにしてください。 `MSALInternalError` で失敗するエラーがアプリで発生した場合は、発生した内容を説明する一般的なユーザー向けメッセージを表示することができます。
+
+たとえば、`MSALInternalErrorBrokerResponseNotReceived` は、ユーザーが認証を完了せず、アプリに手動で戻ったことを意味します。 この場合、アプリには認証が完了していないことを示す一般的なエラー メッセージが表示され、認証を再試行することが提案されます。
+
+次の Objective-C サンプル コードは、一般的なエラー条件を処理するためのベスト プラクティスを示しています。
+
+Objective-C
+```ObjC
+    MSALInteractiveTokenParameters *interactiveParameters = ...;
+    MSALSilentTokenParameters *silentParameters = ...;
+    
+    MSALCompletionBlock completionBlock;
+    __block __weak MSALCompletionBlock weakCompletionBlock;
+    
+    weakCompletionBlock = completionBlock = ^(MSALResult *result, NSError *error)
+    {
+        if (!error)
+        {
+            // Use result.accessToken
+            NSString *accessToken = result.accessToken;
+            return;
+        }
+        
+        if ([error.domain isEqualToString:MSALErrorDomain])
+        {
+            switch (error.code)
+            {
+                case MSALErrorInteractionRequired:
+                {
+                    // Interactive auth will be required
+                    [application acquireTokenWithParameters:interactiveParameters
+                                            completionBlock:weakCompletionBlock];
+                    
+                    break;
+                }
+                    
+                case MSALErrorServerDeclinedScopes:
+                {
+                    // These are list of granted and declined scopes.
+                    NSArray *grantedScopes = error.userInfo[MSALGrantedScopesKey];
+                    NSArray *declinedScopes = error.userInfo[MSALDeclinedScopesKey];
+                    
+                    // To continue acquiring token for granted scopes only, do the following
+                    silentParameters.scopes = grantedScopes;
+                    [application acquireTokenSilentWithParameters:silentParameters
+                                                  completionBlock:weakCompletionBlock];
+                    
+                    // Otherwise, instead, handle error fittingly to the application context
+                    break;
+                }
+                    
+                case MSALErrorServerProtectionPoliciesRequired:
+                {
+                    // Integrate the Intune SDK and call the
+                    // remediateComplianceForIdentity:silent: API.
+                    // Handle this error only if you integrated Intune SDK.
+                    // See more info here: https://aka.ms/intuneMAMSDK
+                    
+                    break;
+                }
+                    
+                case MSALErrorUserCanceled:
+                {
+                    // The user cancelled the web auth session.
+                    // You may want to ask the user to try again.
+                    // Handling of this error is optional.
+                    
+                    break;
+                }
+                    
+                case MSALErrorInternal:
+                {
+                    // Log the error, then inspect the MSALInternalErrorCodeKey
+                    // in the userInfo dictionary.
+                    // Display generic error message to the end user
+                    // More detailed information about the specific error
+                    // under MSALInternalErrorCodeKey can be found in MSALInternalError enum.
+                    NSLog(@"Failed with error %@", error);
+                    
+                    break;
+                }
+                    
+                default:
+                    NSLog(@"Failed with unknown MSAL error %@", error);
+                    
+                    break;
+            }
+            
+            return;
+        }
+        
+        // Handle no internet connection.
+        if ([error.domain isEqualToString:NSURLErrorDomain] && error.code == NSURLErrorNotConnectedToInternet)
+        {
+            NSLog(@"No internet connection.");
+            return;
+        }
+        
+        // Other errors may require trying again later,
+        // or reporting authentication problems to the user.
+        NSLog(@"Failed with error %@", error);
+    };
+    
+    // Acquire token silently
+    [application acquireTokenSilentWithParameters:silentParameters
+                                  completionBlock:completionBlock];
+
+     // or acquire it interactively.
+     [application acquireTokenWithParameters:interactiveParameters
+                             completionBlock:completionBlock];
+```
+
+Swift
+```swift
+    let interactiveParameters: MSALInteractiveTokenParameters = ...
+    let silentParameters: MSALSilentTokenParameters = ...
+            
+    var completionBlock: MSALCompletionBlock!
+    completionBlock = { (result: MSALResult?, error: Error?) in
+                
+        if let result = result
+        {
+            // Use result.accessToken
+            let accessToken = result.accessToken
+            return
+        }
+
+        guard let error = error as NSError? else { return }
+
+        if error.domain == MSALErrorDomain, let errorCode = MSALError(rawValue: error.code)
+        {
+            switch errorCode
+            {
+                case .interactionRequired:
+                    // Interactive auth will be required
+                    application.acquireToken(with: interactiveParameters, completionBlock: completionBlock)
+
+                case .serverDeclinedScopes:
+                    let grantedScopes = error.userInfo[MSALGrantedScopesKey]
+                    let declinedScopes = error.userInfo[MSALDeclinedScopesKey]
+
+                    if let scopes = grantedScopes as? [String] {
+                        silentParameters.scopes = scopes
+                        application.acquireTokenSilent(with: silentParameters, completionBlock: completionBlock)
+                    }
+                        
+                    case .serverProtectionPoliciesRequired:
+                        // Integrate the Intune SDK and call the
+                        // remediateComplianceForIdentity:silent: API.
+                        // Handle this error only if you integrated Intune SDK.
+                        // See more info here: https://aka.ms/intuneMAMSDK
+                        break
+                        
+                    case .userCanceled:
+                       // The user cancelled the web auth session.
+                       // You may want to ask the user to try again.
+                       // Handling of this error is optional.
+                       break
+                        
+                    case .internal:
+                        // Log the error, then inspect the MSALInternalErrorCodeKey
+                        // in the userInfo dictionary.
+                        // Display generic error message to the end user
+                        // More detailed information about the specific error
+                        // under MSALInternalErrorCodeKey can be found in MSALInternalError enum.
+                        print("Failed with error \(error)");
+                        
+                    default:
+                        print("Failed with unknown MSAL error \(error)")
+            }
+        }
+                
+        // Handle no internet connection.
+        if error.domain == NSURLErrorDomain && error.code == NSURLErrorNotConnectedToInternet
+        {
+            print("No internet connection.")
+            return
+        }
+                
+        // Other errors may require trying again later,
+        // or reporting authentication problems to the user.
+        print("Failed with error \(error)");    
+    }
+   
+    // Acquire token silently
+    application.acquireToken(with: interactiveParameters, completionBlock: completionBlock)
+ 
+    // or acquire it interactively.
+    application.acquireTokenSilent(with: silentParameters, completionBlock: completionBlock)
+```
+
 ## <a name="net-exceptions"></a>.NET の例外
+
 例外を処理するときは、例外の種類自体と `ErrorCode` メンバーを使って、例外を区別できます。 `ErrorCode` の値は、[MsalError](/dotnet/api/microsoft.identity.client.msalerror?view=azure-dotnet) 型の定数です。
 
-[MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet)、[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)、[MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) の各フィールドを確認することもできます。
+[MsalClientException](/dotnet/api/microsoft.identity.client.msalexception?view=azure-dotnet)、[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet)、[MsalUIRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) のフィールドを確認することもできます。
 
-[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) がスローされた場合、「[認証と承認エラー コード](reference-aadsts-error-codes.md)」で検索できるコードがエラー コードに含まれている可能性があります。
+[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) がスローされた場合は、「[認証と承認エラー コード](reference-aadsts-error-codes.md)」を試して、コードがそこに一覧表示されているかどうかを確認します。
 
 ### <a name="common-exceptions"></a>一般的な例外
-スローされる可能性がある一般的な例外と、可能な軽減策を次に示します。
+
+スローされる可能性がある一般的な例外と、可能な軽減策を次に示します。  
 
 | 例外 | エラー コード | 対応策|
 | --- | --- | --- |
 | [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS65001: ユーザーまたは管理者は、ID が '{appId}' で名前が '{appName}' であるアプリケーションを使用することに同意していません。 このユーザーとリソースに、対話形式の承認要求を送信してください。| 先にユーザーの同意を得る必要があります。 .NET Core (Web UI はありません) を使用していない場合は、`AcquireTokeninteractive` を (1 回だけ) 呼び出します。 .NET Core を使用している場合、または `AcquireTokenInteractive` を行わない場合は、ユーザーは次の URL に移動して同意できます: https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id={clientId}&response_type=code&scope=user.read 。 `AcquireTokenInteractive` を呼び出すには: `app.AcquireTokenInteractive(scopes).WithAccount(account).WithClaims(ex.Claims).ExecuteAsync();`|
-| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: ユーザーは、多要素認証の使用を要求されています。| 軽減策はありません。テナントに MFA が構成されていて、AAD がそれを適用することを決定した場合、`AcquireTokenInteractive` や `AcquireTokenByDeviceCode` などの対話型フローにフォールバックする必要があります。|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: */common* または */consumers* エンドポイントではサポートされていない付与タイプです。 */organizations* またはテナント固有のエンドポイントを使用してください。 */common* を使用しました。| Azure AD からのメッセージで説明されているように、機関はテナントを持っている必要があり、それ以外の場合は */organizations* です。|
-| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: 要求本文には、次のパラメーターが含まれる必要があります: 'client_secret または client_assertion'。| この例外は、アプリケーションが Azure AD でパブリック クライアント アプリケーションとして登録されていなかった場合に発生する可能性があります。 Azure portal でアプリケーションのマニフェストを編集し、`allowPublicClient` を `true` に設定します。 |
-| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| unknown_user メッセージ: ログインしているユーザーを識別できませんでした| ライブラリで現在 Windows にログインしているユーザーのクエリを実行できなかったか、またはこのユーザーは AD または AAD に参加していません (ワークプレース参加ユーザーはサポートされません)。 軽減策 1: UWP で、アプリケーションに次の機能があることを確認します: エンタープライズ認証、プライベート ネットワーク (クライアントとサーバー)、ユーザー アカウント情報。 軽減策 2: 独自のロジックを実装してユーザー名をフェッチし (たとえば、john@contoso.com)、ユーザー名を受け取る `AcquireTokenByIntegratedWindowsAuth` フォームを使用します。|
+| [MsalUiRequiredException](/dotnet/api/microsoft.identity.client.msaluirequiredexception?view=azure-dotnet) | AADSTS50079: ユーザーは、多要素認証 (MFA) を使用する必要があります。| 軽減策はありません。 テナントに MFA が構成されていて、Azure Active Directory (AAD) でそれを適用することを決定した場合、`AcquireTokenInteractive` や `AcquireTokenByDeviceCode` などの対話型フローにフォールバックする必要があります。|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) |AADSTS90010: 付与タイプが */common* または */consumers* エンドポイントでサポートされていません。 */organizations* またはテナント固有のエンドポイントを使用してください。 */common* を使用しました。| Azure AD からのメッセージで説明されているように、機関はテナントを持っている必要があり、それ以外の場合は */organizations* です。|
+| [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) | AADSTS70002: 要求本文には、次のパラメーターが含まれる必要があります: `client_secret or client_assertion`。| この例外は、アプリケーションが Azure AD でパブリック クライアント アプリケーションとして登録されていなかった場合にスローされる可能性があります。 Azure portal でアプリケーションのマニフェストを編集し、`allowPublicClient` を `true` に設定します。 |
+| [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)| `unknown_user Message`:ログインしているユーザーを識別できませんでした| ライブラリで現在 Windows にログインしているユーザーのクエリを実行できなかったか、またはこのユーザーは AD または AAD に参加していません (ワークプレースに参加しているユーザーはサポートされません)。 軽減策 1: UWP で、アプリケーションに次の機能があることを確認します: エンタープライズ認証、プライベート ネットワーク (クライアントとサーバー)、ユーザー アカウント情報。 軽減策 2: 独自のロジックを実装してユーザー名をフェッチし (たとえば、john@contoso.com)、ユーザー名を受け取る `AcquireTokenByIntegratedWindowsAuth` フォームを使用します。|
 | [MsalClientException](/dotnet/api/microsoft.identity.client.msalclientexception?view=azure-dotnet)|integrated_windows_auth_not_supported_managed_user| このメソッドは、Active Directory (AD) で公開されているプロトコルに依存します。 ユーザーが AD サポートなしに Azure Active Directory で作成された場合 ("マネージド" ユーザー)、このメソッドは失敗します。 AD で作成されて AAD によってサポートされているユーザーは ("フェデレーション" ユーザー)、この非対話型メソッドの認証を利用できます。 軽減策: 対話型認証を使用します。|
 
 ### `MsalUiRequiredException`
@@ -135,7 +349,7 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 
 MSAL.js には、さまざまな種類の一般的エラーを抽象化して分類するエラー オブジェクトが用意されています。 エラーを適切に処理するため、エラー メッセージなど、エラーの特定の詳細にアクセスするためのインターフェイスも提供されています。
 
-**Error オブジェクト**
+### <a name="error-object"></a>Error オブジェクト
 
 ```javascript
 export class AuthError extends Error {
@@ -153,19 +367,19 @@ export class AuthError extends Error {
 * **AuthError.message:** errorMessage と同じです。
 * **AuthError.stack:** スローされたエラーのスタック トレースです。 エラーの発生ポイントまでトレースできます。
 
-**エラーの種類**
+### <a name="error-types"></a>エラーの種類
 
 次のエラーの種類を使用できます。
 
-* *AuthError:* MSAL.js ライブラリの基本エラー クラス、予期しないエラーにも使用されます。
+- `AuthError`:MSAL.js ライブラリの基本エラー クラス、予期しないエラーにも使用されます。
 
-* *ClientAuthError:* クライアント認証の問題を示すエラー クラス。 ライブラリから発生するほとんどのエラーは ClientAuthError です。 ログイン実行中にログイン メソッドを呼び出した、ユーザーがログインをキャンセルしたなどのエラーがあります。 
+- `ClientAuthError`:クライアント認証の問題を示すエラー クラス。 ライブラリから発生するほとんどのエラーは ClientAuthError です。 これらのエラーは、ログインが既に進行中のときにログイン メソッドを呼び出した場合、ユーザーがログインをキャンセルした場合などに発生します。
 
-* *ClientConfigurationError:* 特定のユーザー構成パラメーターが正しくないか見つからないときに、要求が行われる前にスローされる、ClientAuthError を拡張するエラー クラス。
+- `ClientConfigurationError`:特定のユーザー構成パラメーターが正しくないか見つからないときに、要求が行われる前にスローされる、`ClientAuthError` を拡張するエラー クラス。
 
-* *ServerError:* 認証サーバーによって送信されるエラー文字列を表すエラー クラス。 無効な要求形式やパラメーターなどのエラー、またはサーバーがユーザーを認証または承認できない他のエラーです。
+- `ServerError`:認証サーバーによって送信されるエラー文字列を表すエラー クラス。 無効な要求形式やパラメーターなどのエラー、またはサーバーがユーザーを認証または承認できない他のエラーです。
 
-* *InteractionRequiredAuthError:* 対話型の呼び出しを必要とするサーバー エラーを表す、ServerError を拡張するエラー クラス。 このエラーは、認証/承認に対する資格情報または同意を提供するためにユーザーがサーバーと対話する必要がある場合に、`acquireTokenSilent` によってスローされます。 エラー コードには、"interaction_required"、"login_required"、"consent_required" が含まれます。
+- `InteractionRequiredAuthError`:対話型の呼び出しを必要とするサーバー エラーを表す、`ServerError` を拡張するエラー クラス。 このエラーは、認証/承認に対する資格情報または同意を提供するためにユーザーがサーバーと対話する必要がある場合に、`acquireTokenSilent` によってスローされます。 エラーコードには、`"interaction_required"`、`"login_required"`、`"consent_required"` が含まれます。
 
 リダイレクト メソッド (`loginRedirect`、`acquireTokenRedirect`) での認証フローにおけるエラー処理の場合、次のように、`handleRedirectCallback()` メソッドを使用するリダイレクトの後に成功または失敗で呼び出されるコールバックを登録する必要があります。
 
@@ -174,16 +388,14 @@ function authCallback(error, response) {
     //handle redirect response
 }
 
-
 var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
 // Register Callbacks for redirect flow
 myMSALObj.handleRedirectCallback(authCallback);
-
 myMSALObj.acquireTokenRedirect(request);
 ```
 
-ポップアップ エクスペリエンスのメソッド (`loginPopup`、`acquireTokenPopup`) から Promise が返されるので、Promise パターン (.then と .catch) を使用して、次のように処理できます。
+ポップアップ エクスペリエンスのメソッド (`loginPopup`、`acquireTokenPopup`) は promise を返すので、promise パターン (.then と .catch) を使用して、次のように処理できます。
 
 ```javascript
 myMSALObj.acquireTokenPopup(request).then(
@@ -194,15 +406,15 @@ myMSALObj.acquireTokenPopup(request).then(
     });
 ```
 
-### <a name="interaction-required-errors"></a>対話が必要であるというエラー
+### <a name="interaction-required-errors"></a>対話が必要のエラー
 
-トークンを取得する非対話型メソッドを使用しようとしましたが (たとえば、`acquireTokenSilent`)、MSAL ではそれをサイレントで行うことができないとき、エラーが返されます。
+`acquireTokenSilent` などのトークンを取得する非対話型メソッドを使用しようとしましたが、MSAL ではそれをサイレントで行うことができないとき、エラーが返されます。
 
 次のような原因が考えられます。
 
-* ユーザーがサインインする必要がある
-* ユーザーが同意する必要がある
-* ユーザーは多要素認証エクスペリエンスを経由する必要がある。
+- サインインする必要がある
+- 同意する必要がある
+- 多要素認証エクスペリエンスを経由する必要がある。
 
 修復するには、`acquireTokenPopup` や `acquireTokenRedirect` などの対話型メソッドを呼び出します。
 
@@ -227,6 +439,7 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 ```
 
 ## <a name="conditional-access-and-claims-challenges"></a>条件付きアクセスとクレーム チャレンジ
+
 トークンをサイレントで取得するとき、アクセスしようとしている API で MFA ポリシーなどの[条件付きアクセス クレーム チャレンジ](conditional-access-dev-guide.md)が必要な場合、ご利用のアプリケーションはエラーを受け取ることがあります。
 
 このエラーを処理するパターンは、MSAL を使用して対話形式でトークンを取得することです。 対話形式でトークンを取得すると、ユーザーにメッセージが表示され、ユーザーは必要な条件付きアクセス ポリシーを満たす機会を与えられます。
@@ -234,11 +447,13 @@ myMSALObj.acquireTokenSilent(request).then(function (response) {
 条件付きアクセスを必要とする API を呼び出す特定のケースでは、API からのエラーでクレーム チャレンジを受け取ることがあります。 たとえば、条件付きアクセス ポリシーがマネージド デバイス (Intune) を使用するものである場合、エラーは [AADSTS53000: Your device is required to be managed to access this resource](reference-aadsts-error-codes.md) (このリソースにアクセスするには、デバイスがマネージドである必要があります) のようなものになります。 この場合、トークン取得呼び出しでクレームを渡して、適切なポリシーを満たすようユーザーに求めることができます。
 
 ### <a name="net"></a>.NET
+
 MSAL.NET の条件付きアクセスを必要とする API を呼び出すとき、アプリケーションではクレーム チャレンジの例外を処理する必要があります。 これは、[Claims](/dotnet/api/microsoft.identity.client.msalserviceexception.claims?view=azure-dotnet) プロパティが空ではない [MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) として示されます。
 
 クレーム チャレンジを処理するには、`PublicClientApplicationBuilder` クラスの `.WithClaim()` メソッドを使用する必要があります。
 
 ### <a name="javascript"></a>JavaScript
+
 MSAL.js を使用してトークンをサイレントで取得するとき (`acquireTokenSilent` を使用)、アクセスしようとしている API で MFA ポリシーなどの[条件付きアクセス クレーム チャレンジ](conditional-access-dev-guide.md)が必要な場合、アプリケーションはエラーを受け取ることがあります。
 
 このエラーを処理するパターンは、次の例のように、`acquireTokenPopup` や `acquireTokenRedirect` など、MSAL.js でトークンを取得する対話型の呼び出しを行うことです。
@@ -266,6 +481,14 @@ myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenRespo
 
 詳細については、「[方法:Azure AD アプリに省略可能な要求を提供する](active-directory-optional-claims.md)」を参照してください。
 
+### <a name="msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL
+
+iOS および macOS 用の MSAL を使用すると、対話型とサイレントの両方のトークン取得シナリオで特定の要求をリクエストすることができます。
+
+カスタム要求をリクエストするには、`MSALSilentTokenParameters` または `MSALInteractiveTokenParameters` で `claimsRequest` を指定します。
+
+詳細については、「[iOS と macOS 用の MSAL を使用してカスタム要求をリクエストする](request-custom-claims.md)」を参照してください。
+
 ## <a name="retrying-after-errors-and-exceptions"></a>エラーおよび例外の後の再試行
 
 MSAL を呼び出すときには、独自の再試行ポリシーを実装することが求められます。 MSAL では AAD サービスに対して HTTP 呼び出しが行われます。ネットワークがダウンしたり、サーバーが過負荷になったりするなど、障害が時折発生する可能性があります。  
@@ -276,13 +499,13 @@ MSAL.NET では、HTTP エラー コード 500 - 600 のエラーに対して、
 
 ### <a name="http-429"></a>HTTP 429
 
-サービス トークン サーバー (STS) が過剰な要求で過負荷になると、HTTP エラー 429 が返され、再試行できるタイミングに関するヒントが示されます。 このエラーは `Retry-After` 応答フィールドから読み取ることができます。
+サービス トークン サーバー (STS) が過剰な要求で過負荷になると、HTTP エラー 429 が返され、`Retry-After` 応答フィールドで再試行できるまでの期間に関するヒントが示されます。
 
-#### <a name="net"></a>.NET
+### <a name="net"></a>.NET
 
-[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) 例外では、`namedHeaders` プロパティとして `System.Net.Http.Headers.HttpResponseHeaders` が示されます。 そのため、エラー コードからの追加情報を利用して、アプリケーションの信頼性を向上させることができます。 ここで説明したケースでは、`RetryAfterproperty` (`RetryConditionHeaderValue` 型) を使用して、再試行するタイミングを計算できます。
+[MsalServiceException](/dotnet/api/microsoft.identity.client.msalserviceexception?view=azure-dotnet) では、`namedHeaders` プロパティとして `System.Net.Http.Headers.HttpResponseHeaders` が示されます。 エラー コードからの追加情報を使用して、アプリケーションの信頼性を向上させることができます。 ここで説明したケースでは、`RetryAfterproperty` (`RetryConditionHeaderValue` 型) を使用して、再試行するタイミングを計算できます。
 
-次に示すのはデーモン アプリケーションの例ですが (クライアント資格情報フローを使用)、トークンを取得する任意のメソッドに使用できます。
+クライアント資格情報フローを使用するデーモン アプリケーションの例を次に示します。 これはトークンを取得するための任意のメソッドに適用することができます。
 
 ```csharp
 do

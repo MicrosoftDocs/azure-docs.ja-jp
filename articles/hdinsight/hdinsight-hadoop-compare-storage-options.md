@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/17/2019
-ms.openlocfilehash: 5cb3b5c2d36707875c87bd589e3d96c0a2f4f939
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b73810b37020bf01c1088f194bd426e93fd95d2c
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885201"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180774"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで使用するストレージ オプションを比較する
 
@@ -34,7 +34,7 @@ HDInsight クラスターを作成する際、次のいくつかの異なる Azu
 |Azure Storage| Blob Storage** | Object | ブロック BLOB | Standard | ホット、クール、アーカイブ | All | All |
 |Azure Data Lake Storage Gen1| 該当なし | 階層構造 (ファイルシステム) | 該当なし | 該当なし | 該当なし | 3.6 のみ | HBase を除くすべて |
 
-\* * HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみが型 BlobStorage になることができます。
+** HDInsight クラスターの場合、セカンダリ ストレージ アカウントのみに BlobStorage 型を使用できます。ページ BLOB は、サポートされるストレージ オプションではありません。
 
 ストレージ アカウントの種類について詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 
@@ -95,9 +95,9 @@ Apache Hadoop アプリケーションは、ローカル ディスク ストレ�
 
 Azure Data Lake Storage Gen2 は、HDInsight から Azure Storage 内のファイルにアクセスするための新しい URI スキームを使用します。
 
-`abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
+`abfs://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>`
 
-この URI スキームは、SSL で暗号化されたアクセス (`abfss://` プレフィックス) と暗号化なしのアクセス (`abfs://` プレフィックス) に対応しています。 同じ Azure リージョン内のデータにアクセスする場合でも、可能な限り `abfss` を使用してください。
+URI スキームでは、SSL で暗号化されたアクセスが提供されます。
 
 `<FILE_SYSTEM_NAME>` には、Data Lake Storage Gen2 ファイル システムのパスを指定します。
 
@@ -108,8 +108,8 @@ Azure Data Lake Storage Gen2 は、HDInsight から Azure Storage 内のファ�
 `<FILE_SYSTEM_NAME>` と `<ACCOUNT_NAME>` の値が指定されていない場合、既定のファイルシステムが使用されます。 既定のファイル システム上にあるファイルに関しては、相対パスか絶対パスを使用します。 たとえば、HDInsight クラスターに付属している `hadoop-mapreduce-examples.jar` ファイルは、次のいずれかのパスを使用して参照できます。
 
 ```
-abfss://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
-abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
+abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
+abfs:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapreduce-examples.jar
 ```
 
 > [!Note]
@@ -129,7 +129,7 @@ Microsoft では、既定のクラスター ストレージとビジネス デ�
 
 次の図は、Azure Storage のHDInsight アーキテクチャを示しています。
 
-![Hadoop クラスターが HDFS API を使用して、BLOB ストレージの構造化データおよび非構造化データへのアクセスと保存を実行する方法を示す図](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight ストレージのアーキテクチャ")
+![HDInsight のストレージ アーキテクチャ](./media/hdinsight-hadoop-compare-storage-options/storage-architecture.png "HDInsight のストレージ アーキテクチャ")
 
 HDInsight では、それぞれのコンピューティング ノードにローカルに割り当てられている分散ファイル システムにアクセスします。 このファイル システムには、完全修飾 URI を使用してアクセスできます。次に例を示します。
 

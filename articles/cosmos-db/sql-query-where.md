@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 362024868de269ed64a440a25e8c19c5b68bef80
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: cd5643d8be06afcd43c5bfe38d6f5e9caa6f906e
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003468"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326637"
 ---
-# <a name="where-clause"></a>WHERE 句
+# <a name="where-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での WHERE 句
 
 オプションの WHERE 句 (`WHERE <filter_condition>`) は、ソース JSON 項目が、クエリでそれらを結果に含めるために、満たす必要がある条件を指定します。 結果の対象となるには、指定された条件を JSON 項目が `true` と評価する必要があります。 インデックス レイヤーは、WHERE 句を使用して、結果に含めることが可能なソース項目の最小のサブセットを判断します。
   

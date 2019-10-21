@@ -6,43 +6,28 @@ author: mlearned
 manager: gwallace
 ms.service: container-service
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: mlearned
-ms.openlocfilehash: 3c11367945b74db9be20ade86c7bc26901440e4d
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: d9d432c073872e7bb7f3562979e78989faea65eb
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305159"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241094"
 ---
-# <a name="preview---authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>プレビュー - Azure Kubernetes Service から Azure Container Registry の認証を受ける
+# <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Azure Kubernetes Service から Azure Container Registry の認証を受ける
 
 Azure Kubernetes Service (AKS) で Azure Container Registry (ACR) を使用する場合は、認証メカニズムを確立する必要があります。 この記事では、この 2 つの Azure サービス間で認証を行う場合に推奨される構成について詳しく説明します。
 
 Azure CLI を使用して、いくつかの単純なコマンドで AKS から ACR への統合を設定できます。
-
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
->
-> * [AKS のサポート ポリシー](support-policies.md)
-> * [Azure サポートに関する FAQ](faq.md)
 
 ## <a name="before-you-begin"></a>開始する前に
 
 次のものが必要です。
 
 * **Azure サブスクリプション**上の**所有者**または **Azure アカウント管理者**ロール。
-* Azure CLI バージョン 2.0.70 以降および aks-preview 0.4.8 拡張機能も必要です。
+* Azure CLI バージョン 2.0.73 以降も必要です
 * クライアントに [Docker がインストールされている](https://docs.docker.com/install/)必要があり、かつ [Docker Hub](https://hub.docker.com/) へのアクセスが必要です。
-
-## <a name="install-latest-aks-cli-preview-extension"></a>最新の AKS CLI プレビュー拡張機能をインストールする
-
-**aks-preview 0.4.13** 拡張機能以降が必要です。
-
-```azurecli
-az extension remove --name aks-preview 
-az extension add -y --name aks-preview
-```
 
 ## <a name="create-a-new-aks-cluster-with-acr-integration"></a>ACR 統合を使用して新しい AKS クラスターを作成する
 
@@ -52,9 +37,9 @@ az login
 az acr create -n myContainerRegistry -g myContainerRegistryResourceGroup --sku basic [in case you do not have an existing ACR]
 az aks create -n myAKSCluster -g myResourceGroup --attach-acr <acr-name-or-resource-id>
 ```
-** ACR リソース ID の形式は次のとおりです。 
+**ACR リソース ID の形式は次のとおりです。** 
 
-/subscriptions/<subscription-d>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/{name} 
+/subscriptions/\<subscription-id\>/resourceGroups/\<resource-group-name\>/providers/Microsoft.ContainerRegistry/registries/\<name\> 
   
 この手順は、完了するまでに数分かかることがあります。
 

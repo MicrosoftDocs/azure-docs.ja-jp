@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 03a036ce5381130af4bbcea88c87d77cd93cf6a9
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: e2816d8e6fdd900473cceebb20c96794f3f9f0f9
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743885"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350879"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage のサンプル
 
@@ -40,13 +40,7 @@ Python のサンプルを調べるには、[Python ストレージ クライア�
 ## <a name="nodejs-samples"></a>Node.js のサンプル
 Node.js のサンプルを調べるには、 [Node.js ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-node)をダウンロードします。
 
-* [BLOB アップローダー](https://github.com/Azure/azure-storage-node/tree/master/examples/blobuploader)
-* [BLOB のアップロードとダウンロード](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/blobuploaddownloadsample.js)
-* [継続トークン](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/continuationsample.js)
-* [再試行ポリシー](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/retrypolicysample.js)
-* [共有アクセス署名](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/sassample.js)
-* [スナップショット](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/snapshotsample.js)
-* [テーブル クエリ](https://github.com/Azure/azure-storage-node/blob/master/examples/samples/tablequerysample.js)
+* [JavaScript/Node.js を使用した Azure Storage サンプル](storage-samples-javascript.md)
 
 ## <a name="c-samples"></a>C++ のサンプル
 C++ のサンプルを調べるには、NuGet から [C++ ストレージ クライアント ライブラリ](https://www.nuget.org/packages/wastorage/) をダウンロードします。
@@ -71,4 +65,5 @@ C++ のサンプルを調べるには、NuGet から [C++ ストレージ クラ
 
 * [.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
 * [Java を使用した Azure Storage サンプル](storage-samples-java.md)
+* [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
 * [Python を使用した Azure Storage サンプル](storage-samples-python.md)

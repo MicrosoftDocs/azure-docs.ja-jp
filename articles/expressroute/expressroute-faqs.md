@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/18/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 9a5e5dc414d487efd5f6762c89cecb77da74e3d5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 4fd27acc58f5aaeb9b7680062ad97aaba22dec51
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592060"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71686990"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -55,11 +55,23 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 ## <a name="supported-services"></a>サポートされているサービス
 
-ExpressRoute は、さまざまな種類のサービスのために、[3 つのルーティング ドメイン](expressroute-circuit-peerings.md)をサポートしています。
+ExpressRoute では、プライベート ピアリング、Microsoft ピアリング、パブリック ピアリングといったさまざまな種類のサービスについて、[3 つのルーティング ドメイン](expressroute-circuit-peerings.md)をサポートしています。
 
 ### <a name="private-peering"></a>プライベート ピアリング
 
 * すべての仮想マシンとクラウド サービスを含む、仮想ネットワーク
+
+### <a name="microsoft-peering"></a>Microsoft ピアリング
+
+* [Office 365](https://aka.ms/ExpressRouteOffice365)
+* Power BI - Azure リージョン コミュニティを介して使用できます。Power BI テナントのリージョンを確認する方法については、[こちら](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)をご覧ください。
+* Azure Active Directory
+* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services コミュニティ)
+* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br><br>**以下のサービスはサポートされていません**。
+    * CDN
+    * Azure Front Door
+    * Multi-Factor Authentication Server (レガシ)
+    * Traffic Manager
 
 ### <a name="public-peering"></a>パブリック ピアリング
 
@@ -68,26 +80,19 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 >
 
 * Power BI
-* Dynamics 365 for Finance and Operations (旧称 Dynamics AX Online)
 * ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br><br>
   **以下のサービスはサポートされていません**。
     * CDN
     * Azure Front Door
-    * Multi-factor Authentication
+    * Multi-Factor Authentication Server (レガシ)
     * Traffic Manager
 
-### <a name="microsoft-peering"></a>Microsoft ピアリング
+### <a name="is-dynamics-365-supported-on-expressroute"></a>Dynamics 365 は ExpressRoute でサポートされていますか。
 
-* [Office 365](https://aka.ms/ExpressRouteOffice365)
-* Dynamics 365 
-* Power BI - Azure リージョン コミュニティを介して使用できます。Power BI テナントのリージョンを確認する方法については、[こちら](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located)をご覧ください。 
-* Azure Active Directory
-* [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Azure Global Services コミュニティ)
-* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br><br>**以下のサービスはサポートされていません**。
-    * CDN
-    * Azure Front Door
-    * Multi-factor Authentication
-    * Traffic Manager
+Dynamics 365 および Common Data Service (CDS) 環境は Azure でホストされているため、お客様はその基礎となっている Azure リソース向け ExpressRoute のサポートを利用できます。 このサービス エンドポイントに接続できるのは、Dynamics 365/CD(CDS) 環境がホストされている Azure リージョンが、ルーター フィルターに含まれている場合です。
+
+> [!NOTE]
+> Azure ExpressRoute 経由の Dynamics 365 接続には、[ExpressRoute Premium](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium) は必要**ありません**。
 
 ## <a name="data-and-connections"></a>データおよび接続
 
@@ -262,7 +267,7 @@ ExpressRoute Premium は、次の機能のコレクションです。
 
 * プライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
 * ExpressRoute 回線で有効にできる VNet と ExpressRoute Global Reach の接続数の増加 (既定は 10)。 詳しくは、「[ExpressRoute の制限](#limits)」の表をご覧ください。
-* Office 365 や Dynamics 365 への接続。
+* Office 365 への接続
 * Microsoft のコア ネットワーク経由のグローバル接続。 ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになりました。<br>
     **例:**
 
@@ -332,7 +337,7 @@ ExpressRoute Local は、1 つまたは 2 つの Azure リージョンが近く�
 > 
 > 
 
-### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services-and-dynamics-365"></a>既存の ExpressRoute 回線が Office 365 サービスおよび Dynamics 365 への接続をサポートするようにできますか。
+### <a name="can-my-existing-expressroute-circuits-support-connectivity-to-office-365-services"></a>既存の ExpressRoute 回線が Office 365 サービスへの接続をサポートするようにできますか。
 
 はい。 既存の ExpressRoute 回線を、Office 365 サービスへの接続をサポートするように構成できます。 Office 365 サービスに接続するための十分な容量があり、Premium アドオンを有効にしていることを確認します。 [Office 365 のネットワーク プランニングとパフォーマンス チューニング](https://aka.ms/tune/)に関するページが、接続ニーズを計画するのに役立ちます。 「 [ExpressRoute 回線の作成と変更](expressroute-howto-circuit-classic.md)」も参照してください。
 
@@ -369,13 +374,9 @@ Office 365 サービスでは、Premium アドオンを有効にする必要が�
 
 ルート フィルターを使用すると、どのユーザーでも場合 Microsoft ピアリングを有効にできます。 ただし、Office 365 サービスを使用するには、Office 365 で承認される必要があります。
 
-### <a name="do-i-need-to-get-authorization-for-turning-on-dynamics-365-over-microsoft-peering"></a>Microsoft ピアリング経由で Dynamics 365 を有効にするための承認を取得する必要がありますか。
-
-いいえ、Dynamics 365 の承認は不要です。 承認なしでルールを作成し、Dynamics 365 コミュニティを選択できます。
-
 ### <a name="i-enabled-microsoft-peering-prior-to-august-1-2017-how-can-i-take-advantage-of-route-filters"></a>2017 年 8 月 1 日より前に Microsoft ピアリングを有効にしました。どうすればルート フィルターを利用できますか。
 
-既存の回線では、Office 365 と Dynamics 365 のプレフィックスのアドバタイズが継続されます。 同じ Microsoft ピアリング上に Azure パブリック プレフィックスのアドバタイズを追加する場合、ルート フィルターを作成し、アドバタイズが必要なサービス (必要な Office 365 サービス、Dynamics 365 など) を選択し、フィルターを Microsoft ピアリングにアタッチすることができます。 手順については、[Microsoft ピアリングのルート フィルターを構成する](how-to-routefilter-powershell.md)をご覧ください。
+既存の回線では、Office 365 のプレフィックスのアドバタイズが継続されます。 同じ Microsoft ピアリング上に Azure パブリック プレフィックスのアドバタイズを追加する場合、ルート フィルターを作成し、アドバタイズが必要なサービス (必要な Office 365 サービスなど) を選択し、フィルターを Microsoft ピアリングにアタッチすることができます。 手順については、[Microsoft ピアリングのルート フィルターを構成する](how-to-routefilter-powershell.md)をご覧ください。
 
 ### <a name="i-have-microsoft-peering-at-one-location-now-i-am-trying-to-enable-it-at-another-location-and-i-am-not-seeing-any-prefixes"></a>ある場所で Microsoft ピアリングを持っています。別の場所でこれを有効にしようとしていますが、プレフィックスが表示されません。
 

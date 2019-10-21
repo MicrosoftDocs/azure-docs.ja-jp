@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/27/2017
+ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f76fef3d5e6515e9d546c709ace0a4a533c0a45
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ba8ce6fb8147736c8265148a9f3576390dcccc6
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112701"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309780"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>PowerShell を使用して Azure VM 上の Azure リソースのマネージド ID を構成する
 
@@ -57,8 +57,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    - [PowerShell で Windows 仮想マシンを作成する](../../virtual-machines/windows/quick-create-powershell.md)
    - [PowerShell で Linux 仮想マシンを作成する](../../virtual-machines/linux/quick-create-powershell.md)
 
-> [!NOTE]
-> オプションで、Azure リソース VM 拡張機能のマネージド ID をプロビジョニングできますが、これは間もなく非推奨になります。 Azure Instance Metadata ID エンドポイントを認証に使用することをお勧めします。 詳細については、[認証のための VM 拡張機能から Azure IMDS エンドポイントへの移行](howto-migrate-vm-extension.md)に関するページを参照してください。
+
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-azure-vm"></a>既存の Azure VM 上でシステム割り当てマネージド ID を有効にする
 
@@ -77,8 +76,7 @@ Azure リソースのマネージド ID は、Azure Active Directory で自動�
    Update-AzVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
    ```
 
-> [!NOTE]
-> オプションで、Azure リソース VM 拡張機能のマネージド ID をプロビジョニングできますが、これは間もなく非推奨になります。 Azure Instance Metadata ID エンドポイントを認証に使用することをお勧めします。 詳細については、[認証のための VM 拡張機能から Azure IMDS エンドポイントへの移行](howto-migrate-vm-extension.md)に関するページを参照してください。
+
 
 ### <a name="add-vm-system-assigned-identity-to-a-group"></a>VM のシステム割り当て ID をグループに追加する
 
@@ -134,8 +132,7 @@ $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 ```
 
-> [!NOTE]
-> Azure リソースの VM 拡張機能 (非推奨になる予定) のマネージド ID をプロビジョニングしている場合は、[Remove-AzVMExtension](/powershell/module/az.compute/remove-azvmextension) を使用して削除する必要があります。 詳細については、[認証のための VM 拡張機能から Azure IMDS への移行](howto-migrate-vm-extension.md)に関するページを参照してください。
+
 
 ## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID
 
@@ -156,8 +153,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
     - [PowerShell で Windows 仮想マシンを作成する](../../virtual-machines/windows/quick-create-powershell.md)
     - [PowerShell で Linux 仮想マシンを作成する](../../virtual-machines/linux/quick-create-powershell.md)
 
-> [!NOTE]
-> オプションで、Azure リソース VM 拡張機能のマネージド ID をプロビジョニングできますが、これは間もなく非推奨になります。 Azure Instance Metadata ID エンドポイントを認証に使用することをお勧めします。 詳細については、[認証のための VM 拡張機能から Azure IMDS エンドポイントへの移行](howto-migrate-vm-extension.md)に関するページを参照してください。
+
 
 ### <a name="assign-a-user-assigned-managed-identity-to-an-existing-azure-vm"></a>ユーザー割り当てマネージド ID を既存の Azure VM に割り当てる
 
@@ -187,8 +183,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
    Update-AzVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
 
-> [!NOTE]
-> オプションで、Azure リソース VM 拡張機能のマネージド ID をプロビジョニングできますが、これは間もなく非推奨になります。 Azure Instance Metadata ID エンドポイントを認証に使用することをお勧めします。 詳細については、[認証のための VM 拡張機能から Azure IMDS エンドポイントへの移行](howto-migrate-vm-extension.md)に関するページを参照してください。
+
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Azure VM からユーザー割り当てのマネージド ID を削除する
 

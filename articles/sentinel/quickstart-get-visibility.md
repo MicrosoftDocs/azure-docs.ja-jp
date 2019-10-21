@@ -1,12 +1,11 @@
 ---
-title: Azure Sentinel クイック スタート - Azure Sentinel プレビューの概要 | Microsoft Docs
+title: Azure Sentinel クイックスタート - Azure Sentinel の概要 | Microsoft Docs
 description: Azure Sentinel クイック スタート - Azure Sentinel の概要
 services: sentinel
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 5a4ae93c-d648-41fb-8fb8-96a025d2f73e
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
@@ -14,23 +13,21 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: c6434b4f5808c349d5e0ab04dafc5233f6ec63ac
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 676a41b64b79be6b11c3ef22b34d3de0e37e2a92
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780480"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023797"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel-preview"></a>クイック スタート:Azure Sentinel プレビューの概要
-
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="quickstart-get-started-with-azure-sentinel"></a>クイック スタート:Azure Sentinel の概要
 
 
-このクイック スタートでは、Azure Sentinel を使用して、環境全体で発生していることをすばやく表示および監視できるようにする方法について説明します。 データ ソースを Azure Sentinel に接続すると、すぐにデータを視覚化して分析できるため、接続されているすべてのデータ ソースで発生していることを把握できます。 Azure Sentinel には、Azure で既に使用できるツールをフルに活用できるダッシュボードと、ログとクエリの分析機能を提供するために組み込まれているテーブルとグラフが用意されています。 組み込みのダッシュボードを使用するか、最初から、または既存のダッシュボードに基づいて新しいダッシュボードを簡単に作成できます。 
+
+
+このクイックスタートでは、Azure Sentinel を使用して、環境全体で発生していることをすばやく表示および監視できるようにする方法について説明します。 データ ソースを Azure Sentinel に接続すると、すぐにデータを視覚化して分析できるため、接続されているすべてのデータ ソースで発生していることを把握できます。 Azure Sentinel には、Azure で既に使用できるツールをフルに活用できるブックと、ログとクエリの分析機能を提供するために組み込まれているテーブルとグラフが用意されています。 組み込みのブックを使用するか、最初から、または既存のブックに基づいて新しいブックを簡単に作成できます。 
 
 ## <a name="get-visualization"></a>視覚化する
 
@@ -59,43 +56,43 @@ ms.locfileid: "68780480"
 
    ![Azure Sentinel マップ](./media/qs-get-visibility/anomolies.png)
 
-## 組み込みのダッシュボードを使用する<a name="dashboards"></a>
+## 組み込みのブックを使用する<a name="dashboards"></a>
 
-組み込みのダッシュボードには、接続されたデータ ソースから統合されたデータが表示されるので、そのようなサービスで生成されたイベントを詳しく調べることができます。 組み込みのダッシュボードには、Azure ID、Azure アクティビティ イベント、およびオンプレミスのデータが表示されます。たとえば、サーバーからの Windows イベントのデータ、ファースト パーティ アラートのデータ、ファイアウォール トラフィック ログ、Office 365、Windows イベントに基づく安全ではないプロトコルを含むサード パーティからのデータです。
+組み込みのブックには、接続されたデータ ソースから統合されたデータが表示されるので、そのようなサービスで生成されたイベントを詳しく調べることができます。 組み込みのブックには、Azure ID、Azure アクティビティ イベント、およびオンプレミスのデータが表示されます。たとえば、サーバーからの Windows イベントのデータ、ファースト パーティ アラートのデータ、ファイアウォール トラフィック ログ、Office 365、Windows イベントに基づく安全ではないプロトコルを含むサード パーティからのデータです。 ブックは Azure Monitor Workbooks に基づいており、独自のブックを設計する際のカスタマイズ性と柔軟性が強化されています。 詳細については、[ブック](../azure-monitor/app/usage-workbooks.md)に関する記事を参照してください。
 
-1. **[設定]** で、 **[ダッシュボード]** を選択します。 **[インストール済み]** には、インストールされているすべてのダッシュボードが表示されます。 **[すべて]** には、インストールできる組み込みのダッシュボードのギャラリー全体が表示されます。 
-2. 特定のダッシュボードを検索して、各オファーの一覧全体と説明を確認してください。 
-3. Azure AD を使用する場合、Azure Sentinel を使い始めるには、少なくとも次のダッシュボードをインストールすることをお勧めします。
+1. **[設定]** で **[ブック]** を選択します。 **[インストール済み]** には、インストールされているすべてのブックが表示されます。 **[すべて]** には、インストールできる組み込みのブックのギャラリー全体が表示されます。 
+2. 特定のブックを検索して、各オファーの一覧全体と説明を確認してください。 
+3. Azure AD を使用する場合、Azure Sentinel を使い始めるには、少なくとも次のブックをインストールすることをお勧めします。
    - **Azure AD**:次のいずれかまたは両方を使用します。
-       - **Azure AD サインイン**は、時間の経過と共にサインインを分析し、異常があるかどうかを表示します。 このダッシュボードには、アプリケーション、デバイス、および場所ごとに失敗したサインインが表示されるため、異常が発生した場合は一目でわかります。 複数の失敗したサインインに注意してください。 
+       - **Azure AD サインイン**は、時間の経過と共にサインインを分析し、異常があるかどうかを表示します。 このブックには、アプリケーション、デバイス、および場所ごとに失敗したサインインが表示されるため、異常が発生した場合は一目でわかります。 複数の失敗したサインインに注意してください。 
        - **Azure AD 監査ログ**では、ユーザーの変更 (追加、削除など)、グループの作成、変更などの管理アクティビティを分析します。  
 
-   - ファイアウォール用のダッシュボードを追加します。 たとえば、Palo Alto ダッシュボードを追加します。 このダッシュボードでは、ファイアウォールのトラフィックを分析し、ファイアウォールのデータと脅威イベントの間の相関関係を表示し、エンティティ全体の疑わしいイベントを強調表示します。 ダッシュボードには、トラフィックの傾向に関する情報が表示され、結果をドリル ダウンしてフィルター処理することができます。 
+   - ファイアウォールのブックを追加します。 たとえば、Palo Alto ブックを追加します。 このブックでは、ファイアウォールのトラフィックを分析し、ファイアウォールのデータと脅威イベントの間の相関関係を表示し、エンティティ全体の疑わしいイベントを強調表示します。 ブックには、トラフィックの傾向に関する情報が表示され、結果をドリル ダウンしてフィルター処理することができます。 
 
       ![Pal Alto ダッシュボード](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-メイン クエリ ![ボタン](./media/qs-get-visibility/edit-query-button.png)を編集してダッシュボードをカスタマイズできます。 ボタン ![ボタン](./media/qs-get-visibility/go-to-la-button.png) をクリックして [Log Analytics に移動し、そこでクエリを編集](../azure-monitor/log-query/get-started-portal.md)できます。また、省略記号 (...) を選択し、 **[タイル データのカスタマイズ]** を選択して、メイン タイム フィルターを編集したり、ダッシュボードから特定のタイルを削除したりすることができます。
+メイン クエリ ![ボタン](./media/qs-get-visibility/edit-query-button.png)を編集してブックをカスタマイズできます。 ボタン ![ボタン](./media/qs-get-visibility/go-to-la-button.png) をクリックして [Log Analytics に移動し、そこでクエリを編集](../azure-monitor/log-query/get-started-portal.md)できます。また、省略記号 (...) を選択し、 **[タイル データのカスタマイズ]** を選択して、メイン タイム フィルターを編集したり、ブックから特定のタイルを削除したりすることができます。
 
 クエリの使用方法の詳細については、「[チュートリアル:Log Analytics でのデータの視覚化](../azure-monitor/learn/tutorial-logs-dashboards.md)」を参照してください
 
 ### <a name="add-a-new-tile"></a>新しいタイルを追加する
 
-新しいタイルを追加する場合は、既存のダッシュボード (自分で作成したダッシュボードまたは Azure Sentinel の組み込みのダッシュボード) に追加できます。 
+新しいタイルを追加する場合は、既存のブック (自分で作成したブックまたは Azure Sentinel の組み込みのブック) に追加できます。 
 1. Log Analytics で、「[チュートリアル:Log Analytics でのデータの視覚化](../azure-monitor/learn/tutorial-logs-dashboards.md)」の手順に従ってタイルを作成します。 
-2. タイルが作成されたら、 **[ピン留め]** でタイルを表示するダッシュボードを選択します。
+2. タイルが作成されたら、 **[ピン留め]** でタイルを表示するブックを選択します。
 
-## <a name="create-new-dashboards"></a>ダッシュボードの新規作成
-新しいダッシュボードは、最初から作成するか、組み込みのダッシュボードを新しいダッシュボードの基礎として使用することができます。
+## <a name="create-new-workbooks"></a>新しいブックを作成する
+新しいブックを最初から作成するか、組み込みのブックを新しいブックのベースとして使用することができます。
 
-1. 最初から新しいダッシュボードを作成するには、 **[ダッシュボード]** 、 **[+ 新しいダッシュボード]** の順に選択します。
-2. ダッシュボードを作成したサブスクリプションを選択し、わかりやすい名前を付けます。 各ダッシュボードは他のダッシュボードと同様に Azure リソースであり、アクセスできるユーザーを定義および制限するためにロールを割り当てることができます (RBAC)。 
-3. ダッシュボードに表示して視覚化をピン留めできるようにするには、共有する必要があります。 **[共有]** 、 **[ユーザーの管理]** の順にクリックします。 
+1. 新しいブックを最初から作成するには、 **[ブック]** 、 **[+New workbook]\(+ 新しいブック\)** の順に選択します。
+2. ブックを作成したサブスクリプションを選択し、わかりやすい名前を付けます。 各ブックは他のブックと同様に Azure リソースであり、アクセスできるユーザーを定義および制限するためにロールを割り当てることができます (RBAC)。 
+3. ブックに表示して視覚化をピン留めできるようにするには、共有する必要があります。 **[共有]** 、 **[ユーザーの管理]** の順にクリックします。 
  
-1. 他の Azure リソースと同様に、 **[Check access]\(アクセスの確認\)** および **[ロールの割り当て]** を使用します。 詳細については、「[RBAC を使用した Azure ダッシュボードの共有](../azure-portal/azure-portal-dashboard-share-access.md)」を参照してください。
+1. 他の Azure リソースと同様に、 **[Check access]\(アクセスの確認\)** および **[ロールの割り当て]** を使用します。 詳細については、[RBAC を使用した Azure ブックの共有](../azure-portal/azure-portal-dashboard-share-access.md)に関する記事を参照してください。
 
 
-## <a name="new-dashboard-examples"></a>新しいダッシュボードの例
+## <a name="new-workbook-examples"></a>新しいブックの例
 
 次のサンプル クエリを使用すると、数週間にわたるトラフィックの傾向を比較できます。 クエリを実行するデバイスの製造元とデータ ソースを簡単に切り替えることができます。 この例では Windows の SecurityEvent を使用していますが、他のファイアウォールの AzureActivity または CommonSecurityLog に対して実行するために切り替えることができます。
 
@@ -117,7 +114,7 @@ ms.locfileid: "68780480"
     | project OperationName, RoleAssignmentTime = TimeGenerated, user = Caller) on user
     | project-away user1
 
-データを見るユーザーのロール必要なものに基づいて、さまざまなダッシュボードを作成できます。 たとえば、ファイアウォール データを含むネットワーク管理者用のダッシュボードを作成できます。 また、ダッシュボードを確認する頻度、毎日確認することがあるかどうか、1 時間に 1 回確認する必要がある項目などに基づいてダッシュボードを作成することもできます。たとえば、Azure AD のサインを毎時確認し、異常を検索することができます。 
+データを見るユーザーのロール必要なものに基づいて、さまざまなブックを作成できます。 たとえば、ファイアウォール データを含むネットワーク管理者用のブックを作成できます。 また、確認する頻度、毎日確認することがあるかどうか、1 時間に 1 回確認する必要がある項目などに基づいてブックを作成することもできます。たとえば、Azure AD のサインを毎時確認し、異常を検索することができます。 
 
 ## <a name="create-new-detections"></a>新しい検出を作成する
 
@@ -125,18 +122,14 @@ ms.locfileid: "68780480"
 
 新しい検出を作成する際は、Microsoft のセキュリティ研究員によって作成されたビルトインの検出を活用しましょう。接続先のデータ ソースに合わせてカスタマイズされています。
 
-1. [GitHub コミュニティ](https://github.com/Azure/Azure-Sentinel/tree/master/Detections)で **Detections** フォルダーに移動し、対象となるフォルダーを選択します。
-   ![対象となるフォルダー](./media/qs-get-visibility/detection-folders.png)
- 
-3.  **[分析]** タブに移動して **[追加]** を選択します。
-   ![Log Analytics でルールを作成する](./media/qs-get-visibility/query-params.png)
+難しい設定の要らない検出機能をすべて表示するには、 **[Analytics]** 、 **[Rule templates]\(ルール テンプレート\)** の順に選択します。 このタブには、すべての Azure Sentinel 組み込み規則が含まれています。
 
-3.  そのルールにすべてのパラメーターをコピーして、 **[作成]** をクリックします。
-   ![アラート ルールを作成する](./media/qs-get-visibility/create-alert-rule.png)
+   ![Azure Sentinel の組み込みの検出機能を利用して脅威を検出する](media/tutorial-detect-built-in/view-oob-detections.png)
 
+組み込みの検出を取得する方法の詳細については、[チュートリアルの組み込みの分析の取得](tutorial-detect-threats-built-in.md)に関する記事を参照してください。
  
 ## <a name="next-steps"></a>次の手順
-このクイック スタートでは、Azure Sentinel を使い始める方法について説明しました。 [脅威の検出方法](tutorial-detect-threats.md)のチュートリアルに進んでください。
+このクイック スタートでは、Azure Sentinel を使い始める方法について説明しました。 [脅威の検出方法](tutorial-detect-threats-built-in.md)のチュートリアルに進んでください。
 > [!div class="nextstepaction"]
-> [脅威を検出](tutorial-detect-threats.md)して脅威に対する対応を自動化します。
+> [カスタムの脅威検出ルールを作成](tutorial-detect-threats-custom.md)して、脅威への対応を自動化します。
 

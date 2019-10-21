@@ -1,7 +1,7 @@
 ---
 title: FPGA とは - デプロイ方法
-titleSuffix: Azure Machine Learning service
-description: 待機時間が極端に短い推論のために、FPGA 上で実行されるモデルを含む Web サービスを Azure Machine Learning service でデプロイする方法を説明します。
+titleSuffix: Azure Machine Learning
+description: 待機時間が極端に短い推論のために、FPGA 上で実行されるモデルを含む Web サービスを Azure Machine Learning でデプロイする方法を説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,16 +11,16 @@ ms.author: tedway
 author: tedway
 ms.date: 07/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8f95846844f9ff498b1b99a0b7a375f1c883457d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 9c3c844ba7044f8e1c9c313f1ac63b94310ea322
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860469"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350538"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>フィールド プログラマブル ゲート アレイ (FPGA) の説明とデプロイ方法
 
-この記事では、フィールド プログラマブル ゲート アレイ (FPGA) についてその概要を説明し、Azure Machine Learning service を使用してモデルを Azure FPGA にデプロイする方法を示します。 
+この記事では、フィールド プログラマブル ゲート アレイ (FPGA) についてその概要を説明し、Azure Machine Learning を使用してモデルを Azure FPGA にデプロイする方法を示します。 
 
 FPGA には、プログラミング可能なロジック ブロックの配列と、再構成可能な相互接続の階層が含まれています。 相互接続を使用して、製造後にさまざまな方法でこれらのブロックを構成できます。 他のチップと比較して、FPGA はプログラミング可能であることとパフォーマンスを兼ね備えています。
 
@@ -28,7 +28,7 @@ FPGA には、プログラミング可能なロジック ブロックの配列�
 
 次の図と表に、FPGA と他のプロセッサの比較を示します。
 
-![Azure Machine Learning service における FPGA の比較図](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Azure Machine Learning における FPGA の比較図](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |プロセッサ||説明|
 |---|:-------:|------|
@@ -89,7 +89,7 @@ Azure Machine Learning Hardware Accelerated Models を使用して、モデル�
 
 ### <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。  お持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+- Azure サブスクリプション。  お持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 - FPGA クォータ。 クォータがあるかどうかを確認するには、Azure CLI を使用します。
 
@@ -112,7 +112,7 @@ Azure Machine Learning Hardware Accelerated Models を使用して、モデル�
 
     クォータがない場合は、[https://aka.ms/accelerateAI](https://aka.ms/accelerateAI) で要求を送信してください。
 
-- Azure Machine Learning サービス ワークスペースと、Azure Machine Learning SDK for Python がインストール済み。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)」を参照してください。
+- Azure Machine Learning ワークスペースと、Azure Machine Learning SDK for Python がインストール済み。 詳細については、「[ワークスペースの作成](how-to-manage-workspace.md)」を参照してください。
  
 - Hardware Accelerated Models 用の Python SDK:
 
@@ -324,9 +324,10 @@ for i in Image.list(workspace=ws):
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
 
-# Specify the Standard_PB6s Azure VM
-prov_config = AksCompute.provisioning_configuration(vm_size="Standard_PB6s",
-                                                    agent_count=1)
+# Specify the Standard_PB6s Azure VM and location. Values for location may be "eastus", "southeastasia", "westeurope", or "westus2”. If no value is specified, the default is "eastus".
+prov_config = AksCompute.provisioning_configuration(vm_size = "Standard_PB6s",
+                                                    agent_count = 1,
+                                                    location = "eastus")
 
 aks_name = 'my-aks-cluster'
 # Create the cluster

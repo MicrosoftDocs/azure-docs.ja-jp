@@ -16,12 +16,12 @@ ums.workload: na
 ms.date: 05/28/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 0820ca227a4d0e8c71ed3f35cd8fa2841163d38f
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e7f3a9bc9aade5f8ade857e9c2f14f8e9898a7da
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727646"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244665"
 ---
 # <a name="integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログの統合
 
@@ -74,7 +74,7 @@ Azure Active Directory (Azure AD) 監査イベントを利用すると、Azure A
 ## <a name="next-steps"></a>次の手順
 Azure ログ統合の詳細については、次をご覧ください。
 
-* [Azure ログ用の Microsoft Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324): このダウンロード センター ページでは、Azure Log Integration の詳細情報、システム要件、インストール手順などを説明します。
+* [Azure ログ用の Microsoft Azure Log Integration](https://azure.microsoft.com/services/monitor/): このダウンロード センター ページでは、Azure Log Integration の詳細情報、システム要件、インストール手順などを説明します。
 * [Azure Log Integration の概要](azure-log-integration-overview.md): この記事では、Azure Log Integration と、その主な機能およびしくみについて紹介します。
 * [Azure Log Integration の FAQ](azure-log-integration-faq.md):この記事は、Azure ログ統合について寄せられる質問とその回答です。
 * [Azure Diagnostics と Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/): このブログ投稿では、Azure 監査ログと、Azure リソースの操作に関する分析情報を得るために役立つその他の機能を紹介します。

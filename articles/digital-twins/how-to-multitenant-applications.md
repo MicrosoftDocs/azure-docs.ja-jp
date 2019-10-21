@@ -1,19 +1,19 @@
 ---
 title: Azure Digital Twins でマルチテナント アプリケーションを有効にする | Microsoft Docs
 description: Azure Digital Twins のマルチテナント Azure Active Directory アプリケーションを構成する方法。
-author: mavoge
+ms.author: alinast
+author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: mavoge
-ms.openlocfilehash: 2ee3681640f68839c32e2963b34d5547abb6943b
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.date: 10/02/2019
+ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976891"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958777"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Azure Digital Twins でマルチテナント アプリケーションを有効にする
 
@@ -57,20 +57,16 @@ Azure Digital Twins でソリューションを構築する開発者は、単一
   1. **[サブスクリプション]** を開きます。
   1. **DEVELOPER** のアプリケーションで使用する Azure Active Directory テナントがあるサブスクリプションを選択します。
 
-     ![Azure Active Directory のサブスクリプション][1]
+     [![Azure Active Directory のサブスクリプション](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)
 
   1. **[リソース プロバイダー]** を選択します。
   1. **Microsoft.IoTSpaces** を検索します。
   1. **[登録]** を選択します。
 
-     ![Azure Active Directory リソース プロバイダー][2]
+     [![Azure Active Directory リソース プロバイダー](media/multitenant/ad-resource-providers.png)](media/multitenant/ad-resource-providers.png#lightbox)
   
 ## <a name="next-steps"></a>次の手順
 
 - Azure Digital Twins でユーザー定義関数を使用する方法の詳細については、[Azure Digital Twins のユーザー定義関数の作成方法](./how-to-user-defined-functions.md)に関するページを参照してください。
 
 - ロールベースのアクセス制御を使用して、ロールの割り当てによってアプリケーションのセキュリティ保護を強化する方法については、[Azure Digital Twins のロールベースのアクセス制御の作成および管理方法](./security-create-manage-role-assignments.md)に関するページを参照してください。
-
-<!-- Images -->
-[1]: media/multitenant/ad-subscriptions.png
-[2]: media/multitenant/ad-resource-providers.png

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: c0163b5280de942491f2174aa371fa7cc83d5984
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 1f6eeea85a348bb8e88a387fa0fc6bed55e41a5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946521"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262784"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント:UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
@@ -113,7 +113,7 @@ Basic、Standard、および Premium プランは運用ワークロード向け�
 - 複数の Azure App Service [デプロイ スロット](https://docs.microsoft.com/azure/app-service/deploy-staging-slots):開発、プレビュー、QA、UAT、そして当然ながら運用 (既定スロット)。
 - [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に接続するための [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/app-service/overview-managed-identity) ([Azure SQL Database](https://azure.microsoft.com/services/sql-database/) へのアクセスを提供する場合にも使用できます) 
 - パフォーマンスを監視する [Azure Application Insights](../../azure-monitor/app/azure-web-apps.md) との統合
-- [診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md) 
+- [診断ログ](../../azure-monitor/platform/resource-logs-overview.md) 
 - メトリック [アラート](../../azure-monitor/app/alerts.md) 
 - [Azure API Apps](https://azure.microsoft.com/services/app-service/api/) 
 

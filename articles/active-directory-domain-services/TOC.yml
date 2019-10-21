@@ -25,6 +25,8 @@
       href: powershell-create-instance.md
 - name: 概念
   items:
+    - name: 管理の基本
+      href: administration-concepts.md
     - name: 一般的なデプロイ シナリオ
       href: scenarios.md
     - name: Azure AD DS の同期のしくみ
@@ -85,7 +87,7 @@
           href: join-rhel-linux-vm.md
         - name: Ubuntu Server
           href: join-ubuntu-linux-vm.md
-    - name: アプリケーションを Azure AD DS にデプロイする
+    - name: アプリケーションをデプロイする
       items:
         - name: Azure AD アプリケーション プロキシをデプロイする
           href: deploy-azure-app-proxy.md
@@ -95,22 +97,28 @@
       items:
         - name: 一般的なエラー
           href: troubleshoot.md
-        - name: 共通アラート
-          items:
-            - name: 共通アラート
-              href: troubleshoot-alerts.md
-            - name: 壊れたネットワーク構成の修正
-              href: alert-nsg.md
-            - name: 不足しているサービス プリンシパルの復元
-              href: alert-service-principal.md
-            - name: Secure LDAP アラート
-              href: alert-ldaps.md
-        - name: 一致しないテナントのエラー
+        - name: ドメイン参加の問題
+          href: troubleshoot-domain-join.md
+        - name: アカウント ロックアウト
+          href: troubleshoot-account-lockout.md
+        - name: サインインの問題
+          href: troubleshoot-sign-in.md
+        - name: 一致しないテナントのエラーの解決
           href: mismatched-tenant-error.md
         - name: 中断されたドメイン
           href: suspension.md
-        - name: セキュリティで保護された LDAP
+        - name: Secure LDAP の問題
           href: tshoot-ldaps.md
+        - name: 既知の問題
+          items:
+            - name: 共通アラート
+              href: troubleshoot-alerts.md
+            - name: ネットワーク アラート
+              href: alert-nsg.md
+            - name: サービス プリンシパルのアラート
+              href: alert-service-principal.md
+            - name: Secure LDAP アラート
+              href: alert-ldaps.md
 - name: リソース
   items:
     - name: FAQ

@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f535bc7d67198b3fe06326260bc1910b6afd36f2
-ms.sourcegitcommit: e72073911f7635cdae6b75066b0a88ce00b9053b
+ms.openlocfilehash: 13eedeb66d826d212b814fac321f920e78758cb8
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68346773"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063734"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory B2C カスタム ポリシーで RESTful 技術プロファイルを定義する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスにサポートを提供しています。 Azure AD B2C は、入力要求コレクションでデータを RESTful サービスに送信し、出力要求コレクションで返却データを受信します。 RESTful サービスの統合により、次の操作を実行できます。
+Azure Active Directory B2C (Azure AD B2C) では、独自の RESTful サービスのサポートを提供しています。 Azure AD B2C は、入力要求コレクションでデータを RESTful サービスに送信し、出力要求コレクションで返却データを受信します。 RESTful サービスの統合により、次の操作を実行できます。
 
 - **ユーザー入力データの検証** - 不正なデータが Azure AD B2C に残らないようにします。 ユーザーが入力した値が有効でない場合、ユーザーに入力を指示するエラー メッセージがご利用の RESTful サービスによって返されます。 たとえば、ユーザーによって入力されたメール アドレスが顧客データベースに存在するかどうかを確認できます。
 - **入力要求の上書き** - 入力要求で値の書式を再設定できるようにします。 たとえば、ユーザーが名をすべて小文字または大文字で入力する場合に、名の最初の文字だけを大文字にするように書式設定できます。
@@ -43,7 +43,7 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 <TechnicalProfile Id="REST-UserMembershipValidator">
   <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
-  ...    
+  ...
 ```
 
 ## <a name="input-claims"></a>入力要求
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 
 - **loyaltyNumber** 要求名にマップされている **MembershipId** 要求。
 
-また、技術プロファイルは、ID プロバイダーにより返されない要求も返します。 
+また、技術プロファイルは、ID プロバイダーにより返されない要求も返します。
 
 - 既定値が `true` に設定されている **loyaltyNumberIsNew** 要求。
 
@@ -85,11 +85,11 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ServiceUrl | はい | REST API エンドポイントの URL。 | 
-| AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 可能な値: `None`、`Basic`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書があるサービスのみがサービスにアクセスできます。 | 
-| SendClaimsIn | いいえ | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 | 
-| ClaimsFormat | いいえ | 出力要求の形式を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される出力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される出力要求です。 `Header` の値は、要求本文で送信される出力要求です。 `QueryString` の値は、要求クエリ文字列で送信される出力要求です。 | 
-| DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 返却エラー メッセージ セクションを参照してください。 | 
+| ServiceUrl | はい | REST API エンドポイントの URL。 |
+| AuthenticationType | はい | RESTful 要求プロバイダーにより実行されている認証の種類。 可能な値: `None`、`Basic`、または `ClientCertificate`。 `None` の値は、REST API が匿名でないことを示します。 `Basic` の値は、REST API が HTTP 基本認証で保護されていることを示します。 Azure AD B2C などの検証されたユーザーのみが API にアクセスできます。 `ClientCertificate` の (推奨) 値は、REST API がクライアント証明書認証を使用してアクセスを制限していることを示します。 Azure AD B2C などの適切な証明書があるサービスのみがサービスにアクセスできます。 |
+| SendClaimsIn | いいえ | RESTful クレーム プロバイダーへの入力要求の送信方法を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される入力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される入力要求です。 `Header` の値は、要求本文で送信される入力要求です。 `QueryString` の値は、要求クエリ文字列で送信される入力要求です。 |
+| ClaimsFormat | いいえ | 出力要求の形式を指定します。 可能な値: `Body` (既定)、`Form`、`Header`、または `QueryString`。 `Body` の値は、要求本文で、JSON 形式で送信される出力要求です。 `Form` の値は、要求本文で、キーの値をアンパサンド ' &' で区切った形式で送信される出力要求です。 `Header` の値は、要求本文で送信される出力要求です。 `QueryString` の値は、要求クエリ文字列で送信される出力要求です。 |
+| DebugMode | いいえ | 技術プロファイルをデバッグ モードで実行します。 デバッグ モードでは、REST API はより多くの情報を返すことができます。 返却エラー メッセージ セクションを参照してください。 |
 
 ## <a name="cryptographic-keys"></a>暗号化キー
 
@@ -111,7 +111,7 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| BasicAuthenticationUsername | はい | 認証に使用されるユーザー名。 | 
+| BasicAuthenticationUsername | はい | 認証に使用されるユーザー名。 |
 | BasicAuthenticationPassword | はい | 認証に使用されるパスワード。 |
 
 次の例は、基本的な認証を用いた技術プロファイルを示しています。
@@ -136,7 +136,7 @@ Azure Active Directory (Azure AD) B2C では、独自の RESTful サービスに
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| ClientCertificate | はい | 認証に使用する X509 証明書 (RSA キー セット)。 | 
+| ClientCertificate | はい | 認証に使用する X509 証明書 (RSA キー セット)。 |
 
 ```XML
 <TechnicalProfile Id="REST-API-SignUp">
@@ -159,13 +159,13 @@ REST API は、「そのユーザーは CRM システムでは見つかりませ
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| version | はい | 1.0.0 | 
-| status | はい | 409 | 
-| code | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 | 
-| requestId | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからの要求識別子。 | 
-| userMessage | はい | ユーザーに示されるエラー メッセージ。 | 
-| developerMessage | いいえ | `DebugMode` が有効な場合に表示される、問題の詳細な説明とそれを修正する方法。 | 
-| moreInfo | いいえ | `DebugMode` が有効な場合に表示される、追加情報をポイントする URI。 | 
+| version | はい | 1.0.0 |
+| status | はい | 409 |
+| code | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからのエラー コード。 |
+| requestId | いいえ | `DebugMode` が有効な場合に表示される、RESTful エンドポイント プロバイダーからの要求識別子。 |
+| userMessage | はい | ユーザーに示されるエラー メッセージ。 |
+| developerMessage | いいえ | `DebugMode` が有効な場合に表示される、問題の詳細な説明とそれを修正する方法。 |
+| moreInfo | いいえ | `DebugMode` が有効な場合に表示される、追加情報をポイントする URI。 |
 
 次の例は、JSON で書式設定されたエラー メッセージを返す REST API を示しています。
 
@@ -175,9 +175,9 @@ REST API は、「そのユーザーは CRM システムでは見つかりませ
   "status": 409,
   "code": "API12345",
   "requestId": "50f0bd91-2ff4-4b8f-828f-00f170519ddb",
-  "userMessage": "Message for the user", 
-  "developerMessage": "Verbose description of problem and how to fix it.", 
-  "moreInfo": "https://restapi/error/API12345/moreinfo" 
+  "userMessage": "Message for the user",
+  "developerMessage": "Verbose description of problem and how to fix it.",
+  "moreInfo": "https://restapi/error/API12345/moreinfo"
 }
 ```
 
@@ -197,7 +197,7 @@ public class ResponseContent
 ```
 
 ## <a name="examples"></a>次に例を示します。
-- [ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](active-directory-b2c-custom-rest-api-netfw.md) 
+- [ユーザー入力の検証として REST API 要求交換を Azure AD B2C ユーザー体験に統合する](active-directory-b2c-custom-rest-api-netfw.md)
 - [HTTP 基本認証を使用して RESTful サービスを保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
 - [クライアント証明書を使用して RESTful サービスを保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 - [チュートリアル:REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する](active-directory-b2c-rest-api-validation-custom.md)」をご覧ください

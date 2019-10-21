@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/19/2019
-ms.openlocfilehash: 50db9a588cd953bbd0e912ec942194a8deeffe4c
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 15d08b14e38f097e8e9c3e0db893efb1d6efe44d
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484038"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098665"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>ブートストラップを使って HDInsight クラスターをカスタマイズする
 
-ブートストラップ スクリプトを使用すると、Azure HDInsight のコンポーネントをプログラムでインストールおよび構成できます。 
+ブートストラップ スクリプトを使用すると、Azure HDInsight のコンポーネントをプログラムでインストールおよび構成できます。
 
 HDInsight クラスターの作成時に構成ファイル設定を指定する方法は、次の 3 つです。
 
@@ -56,7 +56,6 @@ HDInsight クラスターの作成時に構成ファイル設定を指定する�
 
 > [!IMPORTANT]  
 > [Add-Add-AzHDInsightConfigValue](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightconfigvalue) と共にパラメーター `Spark2Defaults` を使うことが必要な場合があります。 以下のコード例に示すように、パラメーターに空の値を渡すことができます。
-
 
 ```powershell
 # hive-site.xml configuration
@@ -130,9 +129,10 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 }
 ```
 
-![HDInsight Hadoop を使用し、クラスターのブートストラップの Azure Resource Manager テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
+![Hadoop でクラスター ブートストラップの Azure Resource Manager テンプレートをカスタマイズする](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
 ## <a name="see-also"></a>関連項目
+
 * [HDInsight での Apache Hadoop クラスターの作成][hdinsight-provision-cluster]に関する記事では、その他のカスタム オプションを使用して HDInsight クラスターを作成する方法について説明しています。
 * [HDInsight 用の Script Action スクリプトの開発][hdinsight-write-script]
 * [HDInsight クラスターで Apache Spark をインストールして使用する][hdinsight-install-spark]
@@ -142,8 +142,6 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 [hdinsight-write-script]: hdinsight-hadoop-script-actions-linux.md
 [hdinsight-provision-cluster]: hdinsight-hadoop-provision-linux-clusters.md
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-
-
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "クラスター作成時の段階"
 
 ## <a name="appendix-powershell-sample"></a>付録:PowerShell のサンプル
@@ -152,7 +150,6 @@ Resource Manager テンプレートでは、ブートストラップを使用で
 
 > [!WARNING]  
 > ストレージ アカウントの種類 `BlobStorage` は、HDInsight クラスターには使用できません。
-
 
 ```powershell
 ####################################

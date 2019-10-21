@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohogue
+ms.openlocfilehash: 1317e900fd4448ded046ffea481313f8ea9f68e3
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60409897"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256244"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Avere vFXT システムの計画
 
@@ -42,9 +42,9 @@ Avere vFXT システムのネットワーク インフラストラクチャを�
 
 * クラスター作成テンプレートは、リソース グループ、仮想ネットワーク、サブネット、およびストレージ アカウントなど、クラスターの必要なインフラストラクチャーのほとんどを作成できます。 既に存在するリソースを使用する場合は、それらのリソースが以下の表の要件を満たしていることを確認してください。 
 
-  | Resource | 既存のリソースを使用するか | 必要条件 |
+  | リソース | 既存のリソースを使用するか | 必要条件 |
   |----------|-----------|----------|
-  | リソース グループ | 空の場合、はい | 空でなければならない| 
+  | Resource group | 空の場合、はい | 空でなければならない| 
   | ストレージ アカウント | クラスターの作成後、既存の Blob コンテナーを接続する場合は、はい <br/>  クラスター作成中に新しい Blob コンテナーを作成する場合は、いいえ | 既存の Blob コンテナーは空でなければならない <br/> &nbsp; |
   | 仮想ネットワーク | はい | 新しい Azure Blob コンテナーを作成する場合は、ストレージ サービス エンドポイントを含める必要がある | 
   | Subnet | はい |   |

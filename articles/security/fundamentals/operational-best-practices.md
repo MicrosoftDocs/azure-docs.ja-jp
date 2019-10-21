@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 9da58bf3152867bc13dd1879ec57a69b8bd38cb0
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 69e55b17814c5b5ada0813bd0de66cc3a9a591f4
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70129330"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219508"
 ---
 # <a name="azure-operational-security-best-practices"></a>Azure で運用可能なセキュリティに関するベスト プラクティス
 この記事では、Azure 内のデータ、アプリケーション、その他の資産を保護するための運用可能な一連のベスト プラクティスについて説明します。
@@ -95,7 +95,7 @@ Security Center の Free レベルでは、Azure リソースに対してのみ�
 
 Security Center では、すべての Azure リソースのセキュリティの状態を一元的に把握できます。 セキュリティの制御が適切かつ正しく構成されているかを一目で確認し、注意が必要なリソースを素早く特定できます。
 
-Security Center は、包括的な Endpoint Detection and Response (EDR) 機能を提供する [Windows Defender Advanced Threat Protection (ATP)](../../security-center/security-center-wdatp.md) とも統合されます。 Windows Defender ATP の統合により、異常を見つけることができます。 また、Security Center によって監視されているサーバー エンドポイントでの高度な攻撃を検出して対応することもできます。
+Security Center は、包括的な Endpoint Detection and Response (EDR) 機能を提供する [Microsoft Defender Advanced Threat Protection (ATP)](../../security-center/security-center-wdatp.md) とも統合されます。 Microsoft Defender ATP の統合により、異常を見つけることができます。 また、Security Center によって監視されているサーバー エンドポイントでの高度な攻撃を検出して対応することもできます。
 
 ほぼすべてのエンタープライズ組織には、多様なシグナル収集デバイスからログ情報を統合することで新たな脅威を識別することに役立つ、セキュリティ情報およびイベント管理 (SIEM) システムがあります。 ログはその後データ分析システムにより分析され、すべてのログ収集および分析ソリューションで避けることのできないノイズから、"興味を引く" ものが何であるかを識別するのに役立ちます。
 
@@ -121,7 +121,7 @@ Center for Internet Security (CIS) コントロールを基にしたセキュリ
 **詳細**: [データの収集とエクスポートに Azure Monitor](/azure/azure-monitor/overview#integrate-and-export-data) を使用します。 この方法はセキュリティ インシデントの調査を可能にするために重要であり、オンライン ログのリテンションは制限されます。 Azure Sentinel を使用している場合、「[データ ソースの接続](../../sentinel/connect-data-sources.md)」を参照してください。
 
 **ベスト プラクティス**: Endpoint Detection and Response (EDR) 機能を攻撃の調査に統合することで、調査と検出プロセスを高速化し、誤検出を減らします。   
-**詳細**: Security Center のセキュリティ ポリシーを使用して、[Windows Defender ATP の統合を有効](../../security-center/security-center-wdatp.md#enable-windows-defender-atp-integration)にします。 脅威の検出とインシデント対応には、Azure Sentinel の使用を検討してください。
+**詳細**: Security Center のセキュリティ ポリシーを使用して、[Microsoft Defender ATP の統合を有効](../../security-center/security-center-wdatp.md#enable-microsoft-defender-atp-integration)にします。 脅威の検出とインシデント対応には、Azure Sentinel の使用を検討してください。
 
 ## <a name="monitor-end-to-end-scenario-based-network-monitoring"></a>エンド ツー エンドのシナリオ ベースのネットワーク監視
 お客様は、仮想ネットワーク、ExpressRoute、Application Gateway、ロード バランサーなどのネットワーク リソースを組み合わせて Azure にエンド ツー エンド ネットワークを構築します。 各ネットワーク リソースは監視することができます。
@@ -184,7 +184,7 @@ Azure Cloud Services の場合は、[複数インスタンス](../../cloud-servi
 [Azure Virtual Machines](/azure/virtual-machines/windows/overview) の場合は、VM アーキテクチャに 1 つ以上の VM が含まれていることと、[可用性セット](/azure/virtual-machines/virtual-machines-windows-manage-availability)に各 VM が含まれていることを確認してください。 自動スケーリング機能には仮想マシン スケール セットを使うことをお勧めします。
 
 **ベスト プラクティス**: アプリケーションのセキュリティ防御を多層化すると、攻撃が成功する可能性が減少します。 Azure プラットフォームの組み込み機能を使って、アプリケーションのセキュリティ保護設計を実装します。  
-**詳細**: 攻撃のリスクは、アプリケーションの規模 (攻撃対象領域) と共に大きくなります。 公開されている IP アドレス空間をホワイト リストによって閉鎖し、ロード バランサー ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) と [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) に必要のないポートをリッスンすることで、攻撃対象領域を減らすことができます。
+**詳細**: 攻撃のリスクは、アプリケーションの規模 (攻撃対象領域) と共に大きくなります。 公開されている IP アドレス空間をホワイト リストによって閉鎖し、ロード バランサー ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) と [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) を用いて不要にリスニングしているポートを閉じることで、攻撃対象領域を減らすことができます。
 
 [ネットワーク セキュリティ グループ](../../virtual-network/security-overview.md)も、攻撃対象領域を軽減する 1 つの手段です。 [サービス タグ](../../virtual-network/security-overview.md#service-tags)および[アプリケーション セキュリティ グループ](../../virtual-network/security-overview.md#application-security-groups)を使用して、セキュリティ規則作成の複雑さを軽減し、アプリケーションの構造の自然な延長としてネットワーク セキュリティを構成することができます。
 

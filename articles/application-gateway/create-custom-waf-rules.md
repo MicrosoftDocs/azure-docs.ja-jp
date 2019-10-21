@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: a4cc11447686f81017332a3528019a54a5167c52
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: bfd2154216e679b3074d36ea3b49c69ff5a92da8
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231986"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937181"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules"></a>Web アプリケーション ファイアウォール v2 のカスタム規則の作成と使用
 
@@ -145,7 +145,7 @@ $condition1 = New-AzApplicationGatewayFirewallCondition `
 
 $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule1 `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1 `
    -Action Block
@@ -159,7 +159,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule1",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 10,
         "action": "Block",
         "matchConditions": [
           {
@@ -179,7 +179,7 @@ $rule = New-AzApplicationGatewayFirewallCustomRule `
 
 ## <a name="example-3"></a>例 3
 
-この例では、User-Agent *evilbot* と、範囲 192.168.5.0/24 内のトラフィックをブロックしたいとします。 これを行うには、2 つの個別の一致条件を作成し、両方を同じ規則に配置します。 これは、User-Agent ヘッダー内の *evilbot* **および**範囲 192.168.5.0/24 からの IP アドレスの両方がブロックされることを保証します。
+この例では、User-Agent *evilbot* と、範囲 192.168.5.0/24 内のトラフィックをブロックしたいとします。 これを行うには、2 つの個別の一致条件を作成し、両方を同じ規則に配置します。 これにより、User-Agent ヘッダー内の *evilbot* **および**範囲 192.168.5.0/24 からの IP アドレスの両方が一致した場合、要求がブロックされることが保証されます。
 
 ロジック: p **かつ** q
 
@@ -206,7 +206,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
  $rule = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1, $condition2 `
    -Action Block
@@ -221,7 +221,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
       { 
         "name": "myrule", 
         "ruleType": "MatchRule", 
-        "priority": 100, 
+        "priority": 10, 
         "action": "block", 
         "matchConditions": [ 
             { 
@@ -278,14 +278,14 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule1 `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1 `
    -Action Block
 
 $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule2 `
-   -Priority 200 `
+   -Priority 20 `
    -RuleType MatchRule `
    -MatchCondition $condition2 `
    -Action Block
@@ -299,7 +299,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule1",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 10,
         "action": "block",
         "matchConditions": [
           {
@@ -315,7 +315,7 @@ $rule2 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule2",
         "ruleType": "MatchRule",
-        "priority": 200,
+        "priority": 20,
         "action": "block",
         "matchConditions": [
           {
@@ -398,7 +398,7 @@ $condition1 = New-AzApplicationGatewayFirewallCondition `
 
 $rule1 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule1 `
-   -Priority 100 `
+   -Priority 10 `
    -RuleType MatchRule `
    -MatchCondition $condition1 `
 -Action Block
@@ -414,7 +414,7 @@ $condition2 = New-AzApplicationGatewayFirewallCondition `
 
 $rule2 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule2 `
-   -Priority 200 `
+   -Priority 20 `
    -RuleType MatchRule `
    -MatchCondition $condition2 `
    -Action Block
@@ -430,7 +430,7 @@ $condition3 = New-AzApplicationGatewayFirewallCondition `
 
 $rule3 = New-AzApplicationGatewayFirewallCustomRule `
    -Name myrule3 `
-   -Priority 300 `
+   -Priority 30 `
    -RuleType MatchRule `
    -MatchCondition $condition3 `
    -Action Block
@@ -444,7 +444,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule1",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 10,
         "action": "block",
         "matchConditions": [
           {
@@ -459,7 +459,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule2",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 20,
         "action": "block",
         "matchConditions": [
           {
@@ -477,7 +477,7 @@ $rule3 = New-AzApplicationGatewayFirewallCustomRule `
       {
         "name": "myrule3",
         "ruleType": "MatchRule",
-        "priority": 100,
+        "priority": 30,
         "action": "block",
         "matchConditions": [
           {

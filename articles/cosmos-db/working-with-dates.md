@@ -5,21 +5,24 @@ ms.service: cosmos-db
 author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 5b482d00990add365a90f36bf6e8d047dc50efc0
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.date: 09/25/2019
+ms.openlocfilehash: 9676642e96d437965fef041930b8223241cadeaa
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467830"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349031"
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Azure Cosmos DB で日付を扱う
 Azure Cosmos DB は、ネイティブの [JSON](https://www.json.org) データ モデルにより、スキーマの柔軟性と豊富なインデックス機能を提供します。 データベース、コンテナー、ドキュメント、ストアド プロシージャを含むすべての Azure Cosmos DB リソースは、JSON ドキュメントとしてモデル化されて保存されます。 ポータブルであることが求められる JSON (および Azure Cosmos DB) では、少数の基本的な型 (String、Number、Boolean、Array、Object、Null) しかサポートされません。 ただし、JSON は柔軟性が高いため、開発者およびフレームワークは、これらのプリミティブ型を使用したり、オブジェクトまたは配列として作成したりすることにより、複雑な型を表現できます。 
 
-基本の型の他に、多くのアプリケーションでは日付やタイムスタンプを表す [DateTime](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx) 型が必要です。 この記事では、開発者が、.NET SDK を使用して Azure Cosmos DB で日付の格納、取得、クエリを行う方法を説明します。
+基本の型の他に、多くのアプリケーションでは日付やタイムスタンプを表す DateTime 型が必要です。 この記事では、開発者が、.NET SDK を使用して Azure Cosmos DB で日付の格納、取得、クエリを行う方法を説明します。
 
 ## <a name="storing-datetimes"></a>DateTimes の格納
-既定では、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) は DateTime 値を [ISO 8601](https://www.iso.org/iso/catalogue_detail?csnumber=40874) 文字列としてシリアル化します。 ほとんどのアプリケーションは、次に示す理由から、DateTime の既定の文字列表現を使用できます。
+
+Azure Cosmos DB は、string、number、boolean、null、array、object などの JSON 型をサポートしています。 DateTime 型は直接サポートされません。 現在、Azure Cosmos DB では、日付のローカリゼーションはサポートされません。 そのため、DateTimes を文字列として格納する必要があります。 Azure Cosmos DB の DateTime 文字列に推奨される形式は、ISO 8601 UTC 標準に準拠した `YYYY-MM-DDThh:mm:ss.sssZ` です。 Azure Cosmos DB のすべての日付を UTC として格納することをお勧めします。 日付文字列をこの形式に変換すると、日付を辞書式で並べ替えることができます。 UTC 以外の日付が格納されている場合は、クライアント側でロジックを処理する必要があります。 現地の DateTime を UTC に変換するには、オフセットが JSON のプロパティとして認識および格納されている必要があります。また、クライアントでオフセットを使用して UTC の DateTime 値を計算できます。
+
+ほとんどのアプリケーションは、次に示す理由から、DateTime の既定の文字列表現を使用できます。
 
 * 文字列は比較することができます。DateTime 値が文字列に変換されるとき、値の相対的な順序は維持されます。 
 * この方法では、JSON 変換のためのカスタム コードまたは属性は必要ありません。

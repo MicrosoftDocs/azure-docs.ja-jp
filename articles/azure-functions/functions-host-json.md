@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 5a4bc05e0a0b0b6a2c1b859caea2aadc12b8e0e0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b714559c6c009139da97c7d90425011fb3130ef8
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096398"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263310"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
 
@@ -117,6 +117,9 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 |---------|---------|---------| 
 |isEnabled|true|サンプリングを有効または無効にします。| 
 |maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。| 
+|EnableLiveMetrics |true|ライブ メトリックの収集を有効にします。|
+|EnableDependencyTracking|true|依存関係の追跡を有効にします。|
+|EnablePerformanceCountersCollection|true|Kudu パフォーマンス カウンターの収集を有効にします。|
 
 ## <a name="cosmosdb"></a>cosmosDb
 
@@ -184,6 +187,20 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 ## <a name="http"></a>http
 
 構成設定は、[HTTP トリガーとバインディング](functions-bindings-http-webhook.md)に関する記事に記載されています。
+
+```json
+{
+    "extensions": {
+        "http": {
+            "routePrefix": "api",
+            "maxOutstandingRequests": 200,
+            "maxConcurrentRequests": 100,
+            "dynamicThrottlesEnabled": true
+        }
+    }
+}
+```
+
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 

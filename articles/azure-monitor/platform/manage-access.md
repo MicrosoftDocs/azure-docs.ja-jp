@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor で Log Analytics ワークスペースを管理する | Microsoft Docs
-description: リソース、ワークスペース、またはテーブルレベルのアクセス許可を使用して、Log Analytics ワークスペースに格納されているデータへのアクセスを Azure Monitor で管理できます。 この記事では、方法について詳しく説明します。
+description: リソース、ワークスペース、またはテーブル レベルのアクセス許可を使用して、Log Analytics ワークスペースに格納されているデータへのアクセスを Azure Monitor で管理できます。 この記事では、これらを完了する方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 09/30/2019
 ms.author: magoedte
-ms.openlocfilehash: 9bf278b76846b98f58126957c589df87524bb8a4
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 920e470a8bc06050219d0f603ab842cfc267e6ce
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034709"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695015"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Azure Monitor でログ データとワークスペースへのアクセスを管理する
 
@@ -140,7 +140,7 @@ Azure には、Log Analytics ワークスペース用に、次の 2 つの組み
 
 Log Analytics 閲覧者ロールには、次の Azure アクションが含まれています。
 
-| Type    | アクセス許可 | 説明 |
+| 種類    | アクセス許可 | 説明 |
 | ------- | ---------- | ----------- |
 | Action | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure Diagnostics の構成 <br> すべてのリソースのすべてのプロパティと設定。 <br> ワークスペースの場合、ワークスペース設定の読み取りとデータへのクエリ実行について、制限なしの完全なアクセスが許可されます。 上の詳細なオプションを参照してください。 |
 | Action | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | 非推奨です。ユーザーに割り当てる必要はありません。 |
@@ -216,11 +216,19 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
 
     * ワークスペースのアクセス制御モードを、**ワークスペースまたはリソースのアクセス許可を使用する**よう構成します。
 
-    * ユーザーに対して、ワークスペースに対するアクセス許可 `Microsoft.OperationalInsights/workspaces/read` および `Microsoft.OperationalInsights/workspaces/sharedKeys/action` を付与します。 これらのアクセス許可を持つユーザーはワークスペースレベルのクエリを実行できません。
+    * ユーザーに対して、ワークスペースに対するアクセス許可 `Microsoft.OperationalInsights/workspaces/read` および `Microsoft.OperationalInsights/workspaces/sharedKeys/action` を付与します。 これらのアクセス許可を持つユーザーはワークスペースレベルのクエリを実行できません。 ワークスペースを列挙して、診断設定またはエージェント構成の行先として使用することのみできます。
 
-    * ユーザーに対して、自身のリソースに対するアクセス許可 `Microsoft.Insights/logs/*/read` および `Microsoft.Insights/diagnosticSettings/write` を付与します。 このリソースの [Log Analytics Contributor](../../role-based-access-control/built-in-roles.md#contributor) ロールが既に割り当てられている場合はそれで十分です。
+    * ユーザーに対して、自身のリソースに対するアクセス許可 `Microsoft.Insights/logs/*/read` および `Microsoft.Insights/diagnosticSettings/write` を付与します。 このリソースの [Log Analytics 共同作成者](../../role-based-access-control/built-in-roles.md#contributor)ロールが既に割り当てられていたり、閲覧者ロールが割り当てられたり、`*/read` アクセス許可が付与されている場合は、それで十分です。
 
-3. ユーザーに対して自身のリソースからログ データへのアクセスを許可し、Azure AD のすべてのサインインを読み取り、更新管理ソリューションのログ データを読み取るには、以下を実行します。
+3. ユーザーに対して、セキュリティ イベントを読み取り、データを送信することなく、リソースからログ データへのアクセス権を付与するには、以下を実行します。
+
+    * ワークスペースのアクセス制御モードを、**ワークスペースまたはリソースのアクセス許可を使用する**よう構成します。
+
+    * ユーザーに対して、自身のリソースに対するアクセス許可 `Microsoft.Insights/logs/*/read` を付与します。
+
+    * 次に示す非アクション `Microsoft.Insights/logs/SecurityEvent/read` を追加して、ユーザーが SecurityEvent の種類を読み取れないようにします。 非アクションは、読み取り権限 (`Microsoft.Insights/logs/*/read`) を提供するアクションと同じカスタム ロールに存在する必要があります。 このリソースまたはサブスクリプションまたはリソース グループに割り当てられている別のロールからユーザーが読み取り操作を継承する場合は、すべてのログの種類を読み取ることができます。 たとえば、これは、閲覧者または共同作成者ロールと共に存在する `*/read` を継承する場合にも当てはまります。
+
+4. ユーザーに対して自身のリソースからデータをログ記録し、Azure AD のすべてのサインインを読み取り、ワークスペースから Update Management ソリューションのログ データを読み取るアクセスを許可するには、以下を実行します。
 
     * ワークスペースのアクセス制御モードを、**ワークスペースまたはリソースのアクセス許可を使用する**よう構成します。
 
@@ -235,7 +243,7 @@ Log Analytics 共同作成者ロールには、次の Azure アクションが�
         * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read` - 更新管理ソリューションを使用できるようにするために必要です
         * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read` - 更新管理ソリューションを使用できるようにするために必要です
 
-    * ユーザーに対して、自身のリソースに対するアクセス許可 `*/read` または `Microsoft.Insights/logs/*/read` を付与します。 ワークスペースの [Log Analytics Reader](../../role-based-access-control/built-in-roles.md#reader) ロールが割り当てられている場合はそれで十分です。
+    * ユーザーに対して、自身のリソースに対するアクセス許可 `*/read` (閲覧者ロールに割り当てられている) または `Microsoft.Insights/logs/*/read` を付与します。 
 
 ## <a name="table-level-rbac"></a>テーブル レベルの RBAC
 

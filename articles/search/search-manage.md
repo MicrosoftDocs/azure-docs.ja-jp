@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2c4b2a03e7e5c818453eaf4ad6881b2caba3b93c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 9a73b4664e363e80c514ba4c01f754de3a2eed24
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647674"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719877"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure Portal での Azure Search のサービス管理
 > [!div class="op_single_selector"]
@@ -79,10 +79,9 @@ Microsoft の管理が及ばない外部の壊滅的災害の際にサービス�
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 
-Azure Search は主要なデータ ストレージ ソリューションではないため、セルフサービスのバックアップと復元のための正式なメカニズムは提供されません。 インデックスの作成と設定に使われるアプリケーション コードが、誤ってインデックスを削除した場合の事実上の復元オプションです。 
+Azure Search は主要なデータ ストレージ ソリューションではないため、セルフサービスのバックアップと復元のための正式なメカニズムは提供されません。 ただし、こちらの [Azure Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)の **index-backup-restore** サンプル コードを使用して、インデックス定義とインデックス スナップショットを一連の JSON ファイルにバックアップし、後で必要に応じて、これらのファイルを使用してインデックスを復元できます。 このツールを使用して、サービス レベル間でインデックスを移動することもできます。
 
-インデックスを再構築するには、インデックスを削除し (存在する場合)、サービスでインデックスを再作成して、プライマリ データ ストアからデータを取得することによって再読み込みします。
-
+そうしない場合は、インデックスの作成と設定に使われるアプリケーション コードが、誤ってインデックスを削除した場合の事実上の復元オプションです。 インデックスを再構築するには、インデックスを削除し (存在する場合)、サービスでインデックスを再作成して、プライマリ データ ストアからデータを取得することによって再読み込みします。
 
 <a id="scale"></a>
 

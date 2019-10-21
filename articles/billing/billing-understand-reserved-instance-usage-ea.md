@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 507ad62a917120689bee3f1e293e23c9ab8b0f66
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f2f5b2ecf096d7dc8babb79a38d00158a2120688
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68598101"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71218080"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Enterprise Agreement の予約のコストと使用状況を取得する
 
@@ -57,18 +57,20 @@ Azure の使用状況データで使用できるその他の情報が変更さ�
 - Term: 12 か月間または 36 か月間。
 - RINormalizationRatio: AdditionalInfo で使用できます。 これは、予約が使用状況レコードに適用される比率です。 予約でインスタンス サイズの柔軟性が有効になっている場合は、他のサイズに適用できます。 この値は、予約が使用状況レコードに適用された比率を示します。
 
+[フィールド定義を参照してください](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#definitions)
+
 ## <a name="get-azure-consumption-and-reservation-usage-data-using-api"></a>API を使用して Azure の従量課金と予約の使用状況データを取得する
 
 データは API を使用して取得することも、Azure portal からダウンロードすることもできます。
 
-新しいデータを取得するには、API バージョン &quot;2019-04-01-preview&quot; を使用して [Usage Details API](/rest/api/consumption/usagedetails/list) を呼び出します。 用語に関する詳細については、[利用料金の用語](billing-understand-your-usage.md)のページを参照してください。 呼び出し元は、[EA ポータル](https://ea.azure.com)を使用するエンタープライズ契約のエンタープライズ管理者である必要があります。 読み取り専用のエンタープライズ管理者は、データを取得もできます。
+新しいデータを取得するには、[使用状況の詳細 API](/rest/api/consumption/usagedetails/list) を呼び出します。 用語に関する詳細については、[利用料金の用語](billing-understand-your-usage.md)のページを参照してください。 呼び出し元は、[EA ポータル](https://ea.azure.com)を使用するエンタープライズ契約のエンタープライズ管理者である必要があります。 読み取り専用のエンタープライズ管理者は、データを取得もできます。
 
 データは[企業ユーザー向けの Reporting API - 使用状況の詳細](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail)では使用できません。
 
 API への呼び出しの例を次に示します。
 
 ```
-https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-04-01-preview&amp;$filter={filter}
+https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
 ```
 
 {billingPeriodId} と {enrollmentId} の詳細については、「[Usage Details – List](https://docs.microsoft.com/rest/api/consumption/usagedetails/list)」 (使用方法の詳細 – 一覧) の API 記事を参照してください。

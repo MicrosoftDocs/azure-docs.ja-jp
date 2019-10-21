@@ -1,5 +1,5 @@
 ---
-title: Lucene クエリの例 - Azure Search
+title: 完全な Lucene クエリ構文の使用 - Azure Search
 description: Azure Search サービスでのあいまい検索、近接検索、用語ブースト、正規表現検索、およびワイルドカード検索の Lucene クエリ構文。
 author: HeidiSteen
 manager: nitinme
@@ -7,17 +7,17 @@ tags: Lucene query analyzer syntax
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/13/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 3f6a39129db9e8c43a5e2de68d919ba1037c3f5c
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fcfc668022d0d8fc74258657bb93642aec49bd08
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69648232"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178164"
 ---
-# <a name="query-examples-using-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>"完全な" Lucene 検索構文を使用するクエリの例 (Azure Search での高度なクエリ)
+# <a name="use-the-full-lucene-search-syntax-advanced-queries-in-azure-search"></a>"完全な" Lucene 検索構文の使用 (Azure Search での高度なクエリ)
 
 Azure Search のクエリを構築するときは、既定の[単純なクエリ パーサー](query-simple-syntax.md)をより拡張性の高い [Azure Search の Lucene Query Parser](query-lucene-syntax.md) に置き換えることにより、特殊化された高度なクエリ定義を作成することができます。 
 

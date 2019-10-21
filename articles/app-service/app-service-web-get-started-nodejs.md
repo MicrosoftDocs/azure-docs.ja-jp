@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 989bff7d8be5c234d9536afa8afc0beb6870807e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: d03b209902d3ab0bcdb247b1deefdd70d01905cb
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70071662"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018487"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する
 
@@ -51,7 +51,7 @@ _index.js_ を開き、次の行を見つけます。
 const port = process.env.PORT || 1337;
 ```
 
-App Service はアプリケーションに process.env.PORT を挿入し、コードが変数を使用して、どのポートをリッスンするかを知るようにします。 
+App Service では、環境変数 **process.env.PORT** に値が設定されます。 アプリケーションではこれを使用して、リッスンするポートをコードが認識できるようにします。
 
 ターミナル ウィンドウで、サンプルの Node.js プロジェクトの**ルート ディレクトリ**に移動します (_index.js_ が含まれるディレクトリ)。
 

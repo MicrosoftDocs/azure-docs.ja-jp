@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/28/2019
+ms.date: 10/1/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 1f7c212b7bb850816557feb53099973986bab587
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: bacd26cdba24e7ad503a3ae58d5c77d5a3311537
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114491"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177759"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>チュートリアル:Azure CDN カスタム ドメインで HTTPS を構成する
 
@@ -130,9 +130,11 @@ Azure Key Vault アカウント内の証明書 (シークレット) にアクセ
 
     ![アクセス ポリシーの設定](./media/cdn-custom-ssl/cdn-access-policy-settings.png)
 
-3. **[Get Secret permissions]\(シークレットのアクセス許可を取得\)** を選択し、**証明書のアクセス許可**を取得して一覧表示します。これによって、CDN がこれらのアクセス許可を実行して証明書を取得および一覧表示できるようにします。 
+3. **[証明書のアクセス許可]** を選択し、 **[Get]\(取得\)** と **[List]\(一覧\** ) のチェック ボックスをオンにします。これによって、CDN がこれらのアクセス許可を実行して証明書を取得および一覧表示できるようにします。
 
-4. **[OK]** を選択します。 
+4. **[シークレットのアクセス許可]** を選択し、 **[Get]\(取得\)** と **[List]\(一覧\** ) のチェック ボックスをオンにします。これによって、CDN がこれらのアクセス許可を実行してシークレットを取得および一覧表示できるようにします。
+
+5. **[OK]** を選択します。 
 
     Azure CDN は、このキー コンテナーと、このキー コンテナーに格納されている証明書 (シークレット) にアクセスできるようになりました。
  
@@ -174,7 +176,7 @@ CNAME レコードでカスタム エンドポイントにマップされた使�
 
 CNAME レコードは、次の形式にする必要があります。ここで *Name* がカスタム ドメイン名で、*Value* が CDN エンドポイントのホスト名です。
 
-| 名前            | Type  | 値                 |
+| 名前            | 種類  | 値                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 
@@ -190,7 +192,7 @@ CNAME レコードが正しい形式である場合、DigiCert は自動的に�
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>カスタム ドメインが CDN エンドポイントにマップされていない
 
 >[!NOTE]
->**Azure CDN from Akamai** を使用する場合は、カスタム ドメインは前述のように CNAME レコードによって cdn エンドポイントにマップされる必要があります。  現在、この機能は未着手となっています。 
+>**Azure CDN from Akamai** を使用している場合は、次の CNAME を、自動ドメイン検証が有効になるように設定する必要があります。 "_acme-challenge.&lt;custom domain hostname&gt; -> CNAME -> &lt;custom domain hostname&gt;.ak-acme-challenge.azureedge.net"
 
 CNAME レコード エントリに cdnverify サブドメインが含まれている場合は、この手順の残りの部分に従ってください。
 

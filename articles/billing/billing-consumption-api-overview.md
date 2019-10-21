@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 6/07/2018
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 2a2922daef5e75af41252119f9a467fae976bcda
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f867cc954bcdf8cb2fc7ebf37ff19e52db485376
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68443267"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719756"
 ---
 # <a name="azure-consumption-api-overview"></a>Azure Consumption API の概要 
 

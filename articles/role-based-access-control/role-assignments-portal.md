@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: bb23cbc275e01eab5361504c547c020b0a29f4c3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e9a53c41535c17de2d56227012160c7f6eb25c6
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60532986"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71337615"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>RBAC と Azure portal を使用して Azure リソースへのアクセスを管理する
 
@@ -208,4 +208,4 @@ RBAC では、アクセス権を削除するにはロールの割り当てを削
 * [チュートリアル:RBAC と Azure portal を使用して Azure リソースへのアクセス権をユーザーに付与する](quickstart-assign-role-user-portal.md)
 * [チュートリアル:RBAC と Azure PowerShell を使用して Azure リソースへのアクセス権をユーザーに付与する](tutorial-role-assignments-user-powershell.md)
 * [Azure リソースの RBAC のトラブルシューティング](troubleshooting.md)
-* [Azure 管理グループでリソースを整理する](../governance/management-groups/index.md)
+* [Azure 管理グループでリソースを整理する](../governance/management-groups/overview.md)

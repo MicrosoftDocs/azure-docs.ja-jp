@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 8/04/2019
-ms.openlocfilehash: c56e6e004fe7f63725b5f6f4b9c71f60cc7b91ed
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 5f98cb29bd61c674ef7d7e6af781760fe81a5085
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828851"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177885"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory を使用して Amazon S3 から Azure Storage にデータを移行する 
 
@@ -136,7 +136,6 @@ S3 から Azure Blob Storage にデータを移行するために、次のパイ
 
 ![pricing-table](media/data-migration-guidance-s3-to-azure-storage/pricing-table.png)
 
-
 ### <a name="additional-references"></a>その他のリファレンス 
 - [Amazon Simple Storage Service コネクタ](https://docs.microsoft.com/azure/data-factory/connector-amazon-simple-storage-service)
 - [Azure Blob Storage コネクタ](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
@@ -149,6 +148,10 @@ S3 から Azure Blob Storage にデータを移行するために、次のパイ
 - [時間でパーティション分割されたファイル名に基づいてファイルを増分コピーする](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-partitioned-file-name-copy-data-tool)
 - [LastModifiedDate に基づいて新しいファイルと変更されたファイルをコピーする](https://docs.microsoft.com/azure/data-factory/tutorial-incremental-copy-lastmodified-copy-data-tool)
 - [ADF 料金ページ](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
+
+## <a name="template"></a>Template
+
+数億ものファイルで構成されるペタバイト規模のデータの Amazon S3 から Azure Data Lake Storage Gen2 への移行を開始するには、こちらの[テンプレート](solution-template-migration-s3-azure.md)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

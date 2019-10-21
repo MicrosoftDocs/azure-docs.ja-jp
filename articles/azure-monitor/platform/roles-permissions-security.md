@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4949391aded58f27ba8acd5c9ec437e8933f9843
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243433"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260614"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
 
@@ -31,7 +31,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 * [Azure アラート](alerts-overview.md)に定義されているアラート ルールを表示する。
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell コマンドレット](powershell-quickstart-samples.md)、または[クロスプラットフォーム CLI](cli-samples.md) を使用して、メトリックにクエリを実行する。
 * ポータル、Azure Monitor REST API、PowerShell コマンドレット、またはクロスプラットフォーム CLI を使用して、アクティビティ ログにクエリを実行する。
-* リソースの [診断設定](diagnostic-logs-overview.md#diagnostic-settings) を表示する。
+* リソースの [診断設定](diagnostic-settings.md) を表示する。
 * サブスクリプションの [ログ プロファイル](activity-log-export.md) を表示する。
 * 自動スケールの設定を表示する。
 * アラート アクティビティと設定を表示する。
@@ -52,7 +52,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 監視共同作業者の役割が割り当てられている場合、サブスクリプション内の監視データすべてを表示し、監視の設定を作成または変更できます。ただし、他のリソースについては何も変更することはできません。 この役割は監視閲覧者の役割のスーパーセットで、上記のアクセス許可以外に次の作業を行う必要がある、組織の監視チームまたはマネージド サービス プロバイダーのメンバーに適しています。
 
 * 共有ダッシュボードとして監視ダッシュボードを発行する。
-* リソースの[診断設定](diagnostic-logs-overview.md#diagnostic-settings)を設定する。\*
+* リソースの[診断設定](diagnostic-settings.md)を設定する。\*
 * サブスクリプションの[ログ プロファイル](activity-log-export.md)を設定する。\*
 * [Azure アラート](alerts-overview.md)を使用して、アラート ルール アクティビティと設定を指定する。
 * Application Insights の Web テストとコンポーネントを作成する。

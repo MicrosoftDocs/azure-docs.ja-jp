@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: d716eb761ab406b65f10898b29775327a801ac45
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f68bc211be3cffb61b3381390ae2eeacaffa4213
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875478"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960414"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>チュートリアル:Azure IoT Central を使用してデバイスを監視する
 
@@ -41,7 +41,7 @@ ms.locfileid: "69875478"
 
 Azure IoT Central では、デバイスに関する通知を電子メール メッセージとして送信します。 作成者は、コネクテッド空調デバイスの温度がしきい値を超えたときに通知を送信するルールを追加しました。 作成者が通知の受信用に選択したアカウントに送信された電子メールを確認してください。
 
-「[デバイスのルールとアクションを構成する](tutorial-configure-rules.md)」チュートリアルの最後で受信した電子メール メッセージを開きます。 電子メールの **[Click here to open your device]\(デバイスを開くにはここをクリック\)** をクリックします。
+「[デバイスのルールとアクションを構成する](tutorial-configure-rules.md)」チュートリアルの最後で受信した電子メール メッセージを開きます。 メールの **[Details]\(詳細\)** セクションで、 **[Device Name]\(デバイス名\)** の横にあるデバイスへのリンクを選択します。
 
 ![アラート通知電子メール](media/tutorial-monitor-devices/email.png)
 

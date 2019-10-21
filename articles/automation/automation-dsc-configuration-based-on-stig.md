@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 967a4542b3910b563dc30bde674e12fffdd12f48
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 685b6bda09026e64154590afd66bdfbec43b8b1e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559169"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243527"
 ---
 # <a name="configuration-based-on-stig"></a>STIG に基づく構成
 
@@ -26,7 +26,7 @@ ms.locfileid: "69559169"
 
 > [!NOTE]
 > この記事では、オープン ソース コミュニティによって管理されているソリューションについて説明します。
-> サポートは、マイクロソフトからではなく、GitHub コラボレーションの形式でのみ利用できます。
+> サポートは、Microsoft からではなく、GitHub コラボレーションの形式でのみ利用できます。
 
 ## <a name="community-project-powerstig"></a>コミュニティ プロジェクト:PowerSTIG
 
@@ -36,7 +36,7 @@ ms.locfileid: "69559169"
 多くの組織では、ルールに対する[例外を文書化](https://github.com/microsoft/powerstig#powerstigdata)し、そのデータを大規模に管理する必要があります。
 PowerSTIG では、設定の全範囲を 1 つの大きなファイルで処理するのではなく、構成の各領域に対応する[複合リソース](https://github.com/microsoft/powerstig#powerstigdsc)を提供することによって、この問題に取り組んでいます。
 
-構成が生成されたら、それらを [DSC 構成スクリプト](/powershell/dsc/configurations)を使用して MOF ファイルを生成し、[その MOF ファイルを Azure Automation にアップロードする](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)ことができます。
+構成が生成されたら、それらを [DSC 構成スクリプト](/powershell/scripting/dsc/configurations/configurations)を使用して MOF ファイルを生成し、[その MOF ファイルを Azure Automation にアップロードする](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation)ことができます。
 次に、[オンプレミス](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)または [Azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) のいずれかからサーバーを登録して、構成をプルします。
 
 PowerSTIG を試すには、[PowerShell ギャラリー](http://www.powershellgallery.com)にアクセスし、ソリューションをダウンロードするか、[Project Site]\(プロジェクト サイト\) をクリックして[ドキュメント](https://github.com/microsoft/powerstig)を参照してください。

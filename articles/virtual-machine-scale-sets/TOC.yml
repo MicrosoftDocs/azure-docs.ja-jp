@@ -150,8 +150,14 @@
     - name: インフラストラクチャの自動化
       href: ../virtual-machines/windows/infrastructure-automation.md
       maintainContext: true
-    - name: セキュリティとポリシー
-      href: ../virtual-machines/windows/security-policy.md
+    - name: セキュリティ
+      items:
+        - name: セキュリティとポリシー
+          href: ../virtual-machines/windows/security-policy.md
+        - name: Azure Disk Encryption
+          href: disk-encryption-overview.md
+        - name: 組み込みのセキュリティ制御
+          href: virtual-machine-scale-sets-security-controls.md
       maintainContext: true
     - name: 監視
       href: ../virtual-machines/windows/monitor.md
@@ -163,8 +169,6 @@
           maintainContext: true
     - name: スケール セットの FAQ
       href: virtual-machine-scale-sets-faq.md
-    - name: 組み込みのセキュリティ制御
-      href: virtual-machine-scale-sets-security-controls.md
 - name: 方法
   items:
     - name: 計画と設計
@@ -212,12 +216,15 @@
         - name: スケール セット内のディスクの暗号化
           items:
             - name: PowerShell の使用
-              href: virtual-machine-scale-sets-encrypt-disks-ps.md
+              href: disk-encryption-powershell.md
             - name: Azure CLI の使用
-              href: virtual-machine-scale-sets-encrypt-disks-cli.md
+              href: disk-encryption-cli.md
+            - name: Azure リソース マネージャー テンプレートの使用
+              href: disk-encryption-azure-resource-manager.md
             - name: 拡張機能のシーケンス処理
-              href: ../security/azure-security-disk-encryption-extension-sequencing.md
-              maintainContext: true
+              href: disk-encryption-extension-sequencing.md
+            - name: Azure Disk Encryption に対応したキー コンテナー
+              href: disk-encryption-key-vault.md
         - name: 大規模なスケール セットを処理する
           href: virtual-machine-scale-sets-placement-groups.md
         - name: スケール セット テンプレートを変換してマネージド ディスクを使用する
@@ -240,6 +247,8 @@
           href: virtual-machine-scale-sets-automatic-upgrade.md
         - name: インスタンス保護 (プレビュー)
           href: virtual-machine-scale-sets-instance-protection.md
+        - name: スケールイン ポリシー (プレビュー)
+          href: virtual-machine-scale-sets-scale-in-policy.md
         - name: 削除時の終了通知 (プレビュー)
           href: virtual-machine-scale-sets-terminate-notification.md
         - name: 共有イメージ ギャラリー

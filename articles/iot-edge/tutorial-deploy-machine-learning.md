@@ -4,17 +4,17 @@ description: このチュートリアルでは、Azure Machine Learning モデ�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/07/2019
+ms.date: 10/16/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6c48aaf404803c45122ed3fad0d6af1345406f7b
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 04c09c60a8b633c9ddb51fbe97ac02a319472448
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66239663"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72434682"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル:Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
@@ -91,7 +91,7 @@ Azure IoT Edge デバイス:
 
 ## <a name="view-container-repository"></a>コンテナー リポジトリを表示する
 
-コンテナー イメージが正常に作成され、ご自身の機械学習環境に関連付けられている Azure コンテナー レジストリに格納されたことを確認します。 前のセクションで使用したノートブックでは自動的に IoT Edge デバイスにコンテナー イメージとレジストリ資格証明が提供されますが、後から自分で情報を見つけられるように、それらの格納先を知っておく必要があります。 
+コンテナー イメージが正常に作成され、ご自身の機械学習環境に関連付けられている Azure コンテナー レジストリに格納されたことを確認します。 前のセクションで使用したノートブックでは自動的に IoT Edge デバイスにコンテナー イメージとレジストリ資格情報が提供されますが、後から自分で情報を見つけられるように、それらの格納先を知っておく必要があります。 
 
 1. [Azure portal](https://portal.azure.com) で、Machine Learning service ワークスペースに移動します。 
 

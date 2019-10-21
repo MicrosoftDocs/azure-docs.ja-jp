@@ -1,43 +1,91 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Migrate のドキュメント
+summary: Azure Migrate を使用して Azure クラウドへの移行を行います。 Azure Migrate は、オンプレミスのワークロードの検出、評価、および Azure への移行を行うための中心的なハブを提供します。 このハブには、Azure Migrate ツールのほか、独立系ソフトウェア ベンダー (ISV) からの統合ツールが用意されています。
 metadata:
-  title: Azure Migrate のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: Azure への移行についてオンプレミスのマシンを評価する方法について説明します
-  services: migration-planner
-  author: rayne-wiselman
-  manager: carmonm
-  ms.service: migration
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  title: Azure Migrate のドキュメント
+  description: Azure Migrate を使用して Azure クラウドへの移行を行います。 Azure Migrate は、オンプレミスのワークロードの検出、評価、および Azure への移行を行うための中心的なハブを提供します。 このハブには、Azure Migrate ツールのほか、独立系ソフトウェア ベンダー (ISV) からの統合ツールが用意されています。
+  ms.service: azure-migrate
   ms.topic: landing-page
-  ms.date: 11/22/2017
+  ms.collection: collection
+  author: rayne-wiselman
   ms.author: raynew
-abstract:
-  description: Azure Migrate は、Azure クラウドへの移行に役立ちます。 Azure Migrate では、オンプレミスのワークロードとクラウド VM の検出、評価、および移行を追跡するため中心に存在するハブが提供されます。 このハブには、評価および移行のための Azure Migrate ツールと、独立系ソフトウェア ベンダー (ISV) からの統合ツールが用意されています。
-sections:
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: VMware VM を評価し、Azure に移行する方法について説明します
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-vmware">VMware VM の評価および Azure への移行の準備をする</a>
-          - html: <a href="tutorial-assess-vmware">Azure への移行のために VMware VM を評価する</a>
-          - html: <a href="tutorial-migrate-vmware">エージェントレス移行で VMware VM を Azure に移行する</a>
-          - html: <a href="tutorial-migrate-vmware-agent">エージェントベース移行で VMware VM を Azure に移行する</a>
-      - type: paragraph
-        text: Hyper-V VM を評価し、Azure に移行する方法について説明します
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="tutorial-prepare-hyper-v">Hyper-V VM の評価および Azure への移行の準備をする</a>
-          - html: <a href="tutorial-assess-hyper-v">Azure への移行のために Hyper-V VM を評価する</a>
-          - html: <a href="tutorial-migrate-hyper-v">Hyper-V VM を Azure に移行する</a>
-      - type: paragraph
-        text: 物理サーバー、仮想マシン、およびクラウド VM を Azure に移行する方法について説明します
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="tutorial-migrate-physical-virtual-machines">物理サーバーまたは仮想化されたサーバーを Azure に移行する</a>
+  ms.date: 10/07/2019
+  ms.openlocfilehash: 494bb2f7ec6076bbc7b3b891cd0cb525ae53c5d1
+  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/07/2019
+  ms.locfileid: "72001144"
+landingContent:
+- title: Azure Migrate について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Migrate とは
+      url: ./migrate-services-overview.md
+    - text: Azure Migrate の新着情報
+      url: ./whats-new.md
+    - text: 一般的な質問
+      url: ./resources-faq.md
+- title: 作業開始
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Server Assessment による VMware VM の評価
+      url: ./tutorial-prepare-vmware.md
+    - text: Server Assessment による Hyper-V VM の評価
+      url: ./tutorial-prepare-hyper-v.md
+    - text: Server Migration による VMware VM の移行
+      url: ./server-migrate-overview.md
+    - text: Server Migration による Hyper-V VM の移行
+      url: ./tutorial-migrate-hyper-v.md
+    - text: Server Migration による物理サーバーまたは VM の移行
+      url: ./tutorial-migrate-physical-virtual-machines.md
+- title: デプロイの開始
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: Server Assessment のベスト プラクティスの確認
+      url: ./best-practices-assessment.md
+    - text: Azure Migrate アプライアンスのデプロイについて
+      url: ./migrate-replication-appliance.md
+    - text: Azure Migrate のサポート マトリックスの確認
+      url: migrate-support-matrix.md
+    - text: VMware のサポート マトリックスの確認
+      url: migrate-support-matrix-vmware.md
+    - text: Hyper-V のサポート マトリックスの確認
+      url: migrate-support-matrix-hyper-v.md
+- title: 管理
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 移行ツールの追加
+      url: ./how-to-migrate.md
+    - text: VMware の評価のスケーリング
+      url: ./scale-vmware-assessment.md
+    - text: 移行の自動化とスケーリング
+      url: ./how-to-migrate-at-scale.md
+    - text: 評価と移行のトラブルシューティング
+      url: ./troubleshooting-general.md
+- title: 詳細情報
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: エージェントベースの VMware 移行のアーキテクチャ
+      url: ./agent-based-migration-architecture.md
+    - text: Hyper-V 移行アーキテクチャ
+      url: ./hyper-v-migration-architecture.md
+    - text: 評価について
+      url: ./concepts-assessment-calculation.md
+    - text: 依存関係の視覚化について
+      url: ./concepts-dependency-visualization.md
+- title: 参加する
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: サービス機能のリクエスト
+      url: https://feedback.azure.com/forums/907195-azure-migrate
+    - text: フォーラムでの質問
+      url: https://social.msdn.microsoft.com/forums/azure/home?forum=AzureMigrate
+    - text: Azure Tech Community
+      url: https://techcommunity.microsoft.com/t5/Azure-Migration/bd-p/AzureMigration

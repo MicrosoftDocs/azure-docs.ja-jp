@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/06/2019
+ms.date: 09/17/2019
 ms.author: magoedte
-ms.openlocfilehash: c63feb02712447d2427061cbfabc525622107043
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 945dc6c35eacab99db28172703e1aebed10bd58a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70744591"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067089"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する
 Azure Monitor for containers を使用している場合、パフォーマンスのグラフと正常性状態を使用して、2 つの観点から実際の Azure Kubernetes Service (AKS) クラスターのワークロードを監視できます。 AKS クラスターから直接監視するか、Azure Monitor からサブスクリプション内のすべての AKS クラスターを監視することができます。 Azure Container Instances の表示は、特定の AKS クラスターを監視するときにも可能です。
@@ -170,9 +170,13 @@ Linux OS を実行している Azure Container Instances 仮想ノードは、�
 
 ページ上部のコントローラーまたはコンテナーを選択し、それらのオブジェクトの状態やリソース使用率を確認します。 メモリ使用率を確認するには、 **[メトリック]** ドロップダウン リストで **[メモリ RSS]** または **[メモリ ワーキング セット]** を選択します。 **[Memory RSS]\(使用メモリ (RSS)\)** は、Kubernetes 1.8 以降でのみサポートされています。 それ以外のバージョンでは、**Min&nbsp;%** の値が、未定義または表示できない値を示す数値データ型である、*NaN&nbsp;%* として示されます。
 
-**メモリ ワーキング セット**は、含まれている常駐メモリと仮想メモリ (キャッシュ) の両方を示し、アプリケーションが使用している合計になります。 **メモリ RSS** は、メイン メモリ (つまり常駐メモリ) だけを示します。 このメトリックは、使用可能なメモリの実際の容量を示します。
-
 ![コンテナー ノード パフォーマンス ビュー](./media/container-insights-analyze/containers-node-metric-dropdown.png)
+
+**メモリ ワーキング セット**は、含まれている常駐メモリと仮想メモリ (キャッシュ) の両方を示し、アプリケーションが使用している合計になります。 **メモリ RSS** は、メイン メモリ (つまり常駐メモリ) だけを示します。 このメトリックは、使用可能なメモリの実際の容量を示します。 常駐メモリと仮想メモリにはどのような違いがあるのでしょうか。
+
+- 常駐メモリまたはメイン メモリは、クラスターのノードで使用可能なコンピューターのメモリの実際の容量です。
+
+- 仮想メモリは、メモリ不足時にメモリからディスクにデータをスワップするためにオペレーティング システムによって使用される予約済みハードディスク領域 (キャッシュ) であり、必要に応じてメモリにフェッチされます。
 
 既定では、パフォーマンス データは、過去 6 時間のものですが、左上にある **[時間範囲]** オプションを使用して時間枠を変更できます。 パーセンタイル セレクターで **[最小]** 、 **[平均]** 、 **[50]** 、 **[90]** 、 **[95]** 、 **[最大]** を選択して、時間範囲内の結果をフィルター処理することもできます。 
 

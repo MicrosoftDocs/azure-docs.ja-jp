@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: d5326a3a154ed6f193b5527a0150ad84c843c273
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d5f64f0a9abfa736c1db0e562b6f18ecfc1f6de5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68570443"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72023837"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
 
@@ -114,7 +114,7 @@ SaaS の設計と管理のさまざまなパターンを確認するために、
 
     ![Events Hub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
-2. Events Hub で  **[Fabrikam Jazz Club]**   を選択します。
+2. Events Hub で **[Fabrikam Jazz Club]** を選択します。
 
     ![events](./media/saas-dbpertenant-get-started-deploy/fabrikam.png)
 
@@ -220,14 +220,14 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 
 ここまでで、テナントのコレクションに対する負荷の実行を開始しました。次は、デプロイされたリソースをいくつか見てみましょう。
 
-1.  [Azure portal](https://portal.azure.com) で、SQL サーバーの一覧を参照します。 次に、 **catalog-dpt-&lt;ユーザー&gt;**  サーバーを開きます。
+1.  [Azure portal](https://portal.azure.com) で、SQL サーバーの一覧を参照します。 次に、**catalog-dpt-&lt;User&gt;** サーバーを展開します。
     - カタログ サーバーには 2 つのデータベース **tenantcatalog** と **basetenantdb** (新しいテナントを作成するためにコピーされたテンプレート データベース) が含まれます。
 
    ![データベース](./media/saas-dbpertenant-get-started-deploy/databases.png)
 
 2. SQL サーバーの一覧に戻ります。
 
-3. テナント データベースを保持している **tenants1-dpt-&lt;ユーザー&gt;**  サーバーを開きます。
+3. テナント データベースを保持している **tenants1-dpt-&lt;ユーザー&gt;** サーバーを開きます。
 
 4. 次の項目を確認します。
 
@@ -240,7 +240,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 
 *LoadGenerator.ps1* を数分間実行したら、十分な量のデータが生成されています。このデータを使って、一部の監視機能を見てみましょう。 これらの機能は、プールとデータベースに組み込まれています。
 
-**tenants1-dpt-&lt;ユーザー&gt;** サーバーを参照し、 **[Pool1]**  をクリックしてプールのリソース使用率を表示します。 次のグラフでは、ロード ジェネレーターを 1 時間実行しました。
+**tenants1-dpt-&lt;ユーザー&gt;** サーバーを参照し、**Pool1** をクリックして、プールのリソース使用率を表示します。 次のグラフでは、ロード ジェネレーターを 1 時間実行しました。
 
    ![プールの監視](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

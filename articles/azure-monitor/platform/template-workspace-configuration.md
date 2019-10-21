@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/11/2019
+ms.date: 10/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 3ac5d5d31bb54ce87859a6eec52dbe5948864d4c
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 9c5fb38e66cb783b02d314d55cf0d0510523b6a7
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147326"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72375979"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics ワークスペースを管理する
 
@@ -44,7 +44,7 @@ ms.locfileid: "70147326"
 
 次の表は、この例で使用されているリソースの API バージョンの一覧です。
 
-| Resource | リソースの種類 | API バージョン |
+| リソース | リソースの種類 | API バージョン |
 |:---|:---|:---|
 | ワークスペース   | workspaces    | 2017-03-15-preview |
 | Search      | savedSearches | 2015-03-20 |
@@ -121,7 +121,7 @@ ms.locfileid: "70147326"
 
 2. 要件に合わせてテンプレートを編集します。 どのプロパティと値がサポートされているかを調べるには、[Microsoft.OperationalInsights/workspaces テンプレート](https://docs.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)のリファレンスを参照してください。 
 3. このファイルを **deploylaworkspacetemplate.json** としてローカル フォルダーに保存します。
-4. これでこのテンプレートをデプロイする準備が整いました。 PowerShell またはコマンド ラインのいずれかを使用して、コマンドの一部としてワークスペースの名前と場所を指定して、ワークスペースを作成します。
+4. これでこのテンプレートをデプロイする準備が整いました。 PowerShell またはコマンド ラインのいずれかを使用して、コマンドの一部としてワークスペースの名前と場所を指定して、ワークスペースを作成します。 ワークスペース名は、すべての Azure サブスクリプションでグローバルに一意である必要があります。
 
    * PowerShell の場合は、テンプレートがあるフォルダーから以下のコマンドを使用します。
    
@@ -243,7 +243,7 @@ ms.locfileid: "70147326"
     "customlogName": {
     "type": "string",
     "metadata": {
-      "description": "custom log name"
+      "description": "The custom log name"
       }
     },
     "variables": {
@@ -419,7 +419,7 @@ ms.locfileid: "70147326"
           "type": "dataSources",
           "name": "[concat(parameters('workspaceName'), parameters('customlogName'))]",
           "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            "[concat('Microsoft.OperationalInsights/workspaces/', '/', parameters('workspaceName'))]"
           ],
           "kind": "CustomLog",
           "properties": {
@@ -462,7 +462,7 @@ ms.locfileid: "70147326"
               }
             ]
           }
-        }
+        },
         {
           "apiVersion": "2015-11-01-preview",
           "type": "datasources",
@@ -592,6 +592,7 @@ ms.locfileid: "70147326"
 }
 
 ```
+
 ### <a name="deploying-the-sample-template"></a>サンプル テンプレートのデプロイ
 
 上記のサンプル テンプレートをデプロイするには:

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: efc439d56ee864d940942369b3d226ed2a94a383
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 166ff5f8866fca955cbe99c5896eb509f52261f6
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072629"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219549"
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 
@@ -38,7 +38,7 @@ ms.locfileid: "70072629"
 -   [要求メソッドを設定する](#SetRequestMethod) - 要求の HTTP メソッドを変更できます。
 -   [状態コードを設定する](#SetStatus) - HTTP 状態コードを指定された値に変更します。
 -   [変数の設定](api-management-advanced-policies.md#set-variable) - 名前付き[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数の値を、後でアクセスできるように保持します。
--   [トレース](#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) の出力に文字列を追加します。
+-   [トレース](#Trace) - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) 出力、Application Insights テレメトリ、診断ログにカスタム トレースを追加します。
 -   [待機](#Wait) - 含まれている[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、または[制御フロー](api-management-advanced-policies.md#choose) ポリシーが完了するまで待機してから次に進みます。
 
 ## <a name="choose"></a> 制御フロー
@@ -913,16 +913,31 @@ status code and media type. If no example or schema found, the content is empty.
 
 ## <a name="Trace"></a> トレース
 
-`trace` ポリシーは、[API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) の出力に文字列を追加します。 このポリシーは、トレースがトリガーされたときにのみ実行されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、`true` に設定されている場合、および `Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、管理者アカウントに関連付けられた有効なキーを保持している場合が該当します。
+`trace` ポリシーによって、API Inspector の出力、Application Insights テレメトリ、診断ログにカスタム トレースが追加されます。 
+
+* トレースがトリガーされたときに、ポリシーによって [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) の出力にカスタム トレースが追加されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、true に設定され、`Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、トレースを許可する有効なキーが保持されます。 
+* [Application Insights の統合](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights)が有効で、ポリシーに指定されている `severity` のレベルが診断設定に指定されている `verbosity` レベル以上である場合、このポリシーによって Application Insights に[トレース](https://docs.microsoft.com/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリが作成されます。 
+* [診断ログ](https://docs.microsoft.com/en-us/azure/api-management/api-management-howto-use-azure-monitor#diagnostic-logs)が有効で、ポリシーに指定されている重大度レベルが診断設定に指定されている詳細レベル以上である場合、このポリシーによってログ エントリにプロパティが追加されます。  
+
 
 ### <a name="policy-statement"></a>ポリシー ステートメント
 
 ```xml
 
-<trace source="arbitrary string literal">
-    <!-- string expression or literal -->
+<trace source="arbitrary string literal" severity="verbose|information|error">
+    <message>String literal or expressions</message>
+    <metadata name="string literal or expressions" value="string literal or expressions"/>
 </trace>
 
+```
+
+### <a name="traceExample"></a> 例
+
+```xml
+<trace source="PetStore API" severity="verbose">
+    <message>@((string)context.Variables["clientConnectionID"])</message>
+    <metadata name="Operation Name" value="New-Order"/>
+</trace>
 ```
 
 ### <a name="elements"></a>要素
@@ -930,12 +945,17 @@ status code and media type. If no example or schema found, the content is empty.
 | 要素 | 説明   | 必須 |
 | ------- | ------------- | -------- |
 | trace   | ルート要素。 | はい      |
+| message | ログに記録される文字列または式。 | はい |
+| metadata | カスタム プロパティを Application Insights の[トレース](https://docs.microsoft.com/en-us/azure/azure-monitor/app/data-model-trace-telemetry) テレメトリに追加します。 | いいえ |
 
 ### <a name="attributes"></a>属性
 
 | Attribute | 説明                                                                             | 必須 | Default |
 | --------- | --------------------------------------------------------------------------------------- | -------- | ------- |
 | source    | メッセージのソースを指定する、トレース ビューアーにとって意味のある文字列リテラル。 | はい      | 該当なし     |
+| severity    | トレースの重大度レベルを指定します。 使用できる値は、`verbose`、`information`、`error` (最低から最高) です。 | いいえ      | 詳細     |
+| 名前    | プロパティの名前。 | はい      | 該当なし     |
+| value    | プロパティの値。 | はい      | 該当なし     |
 
 ### <a name="usage"></a>使用法
 

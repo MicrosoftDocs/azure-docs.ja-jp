@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3ba804f76f8d443c0b49a9b4e5425333f01f0b9a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: bbf127f105f0ef22a23f00541396c2ac66b0e5f9
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102327"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828358"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート:Azure ポータルで SQL Server 2017 Windows 仮想マシンを作成する
 
@@ -81,9 +81,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 **[SQL Server の設定]** タブで、以下のオプションを構成します。
 
 1. **[セキュリティとネットワーク]** で、 **[SQL の接続]** に _[パブリック (インターネット)]_ を選択します。また、パブリック シナリオでよく知られているポート番号が使用されることを避けるために、ポートを `1401` に変更します。 
-1. **[SQL 認証]** で **[有効]** を選択します。 VM 用に構成したのと同じユーザー名と パスワードが SQL ログインに設定されます。 **[Azure Key Vault の統合]** と **[ストレージの構成]** には、既定の設定を使用します。  
+1. **[SQL 認証]** で **[有効]** を選択します。 VM 用に構成したのと同じユーザー名と パスワードが SQL ログインに設定されます。 [**Azure Key Vault の統合**](virtual-machines-windows-ps-sql-keyvault.md)の既定の設定を使用します。 **ストレージ構成**は基本的な SQL Server VM イメージでは使用できません。ただし、他のイメージに使用可能なオプションに関する詳細情報を[ストレージ構成](virtual-machines-windows-sql-server-storage-configuration.md#new-vms)に関するページで見つけることができます。  
 
    ![SQL サーバーのセキュリティの設定](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
+
 
 1. 必要に応じて、他の設定を変更し、 **[確認および作成]** を選択します。 
 

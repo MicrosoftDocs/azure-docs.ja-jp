@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30fd1ebf8a59c80764335be47c986ea77f5d1438
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: c4f236f2f2fdbf2736f87f754f48387f9f41850d
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879167"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024626"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
 
@@ -173,6 +173,9 @@ Azure AD Connect バージョン 1.1.443.0 以上の場合は、次の URL へ�
 アクセスをより細分化するために、[Microsoft Azure データセンターの IP 範囲 ](https://www.microsoft.com/download/details.aspx?id=41653) の更新された一覧を参照することができます。この一覧は、毎週水曜日に更新され、次の月曜日に有効になります。
 
 詳細については、「[Azure AD Connect の前提条件](../hybrid/how-to-connect-install-prerequisites.md)」で接続の前提条件をご確認ください。
+
+> [!NOTE]
+> SSPR は、オンプレミスで AD DS を実行するアカウントで [パスワードを無期限にする] または [ユーザーはパスワードを変更できない] 設定が構成されている場合にも失敗することがあります。 
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Azure AD Connect 同期サービスを再起動する
 

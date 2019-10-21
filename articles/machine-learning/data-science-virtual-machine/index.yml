@@ -1,32 +1,35 @@
 ### YamlMime:Landing
 title: Azure Data Science Virtual Machine のドキュメント
-summary: Azure Data Science Virtual Machine (DSVM) はカスタマイズされた VM イメージであり、データ サイエンスと ML のツールを備えています。 この VM を使用して、高度な分析用のインテリジェントなアプリケーションを構築できます。
+summary: Azure Data Science Virtual Machine (DSVM) は仮想マシン イメージであり、データ サイエンスおよび機械学習のツールを備えています。 この VM を使用して、高度な分析用のインテリジェントなアプリケーションを構築できます。
 metadata:
   title: Data Science Virtual Machine のドキュメント - Azure
-  description: Data Science Virtual Machine は、データ サイエンス用に構築された Azure クラウド内の実験環境です。 データ サイエンスと ML の一般的なツールがプレインストールされています。
-  services: machine-learning
+  description: Azure Data Science Virtual Machine (DSVM) は仮想マシン イメージであり、データ サイエンスおよび機械学習のツールを備えています。
   ms.service: machine-learning
   ms.subservice: data-science-vm
   ms.topic: landing-page
   ms.collection: collection
-  author: j-martens
-  ms.author: jmartens
-  ms.date: 09/03/2019
-  ms.openlocfilehash: c33504124bdef2edf44842581143a8468cbb1e20
-  ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+  author: gvashishtha
+  ms.author: gopalv
+  ms.date: 09/13/2019
+  ms.openlocfilehash: bd1d2434c8788d38acbb4826e03e2343e5850273
+  ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70308793"
+  ms.lasthandoff: 10/13/2019
+  ms.locfileid: "72300952"
 landingContent:
 - title: DSVM を使ってみる
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure DSVM とは
+    - text: DSVM とは
       url: overview.md
     - text: Geo AI DSVM とは
       url: geo-ai-dsvm-overview.md
+    - text: DSVM に含まれているツール
+      url: tools-included.md
+    - text: リリース ノート
+      url: release-notes.md
   - linkListType: get-started
     links:
     - text: Windows DSVM の作成
@@ -39,6 +42,10 @@ landingContent:
       url: provision-geo-ai-dsvm.md
 - title: DSVM の管理
   linkLists:
+  - linkListType: architecture
+    links:
+    - text: Enterprise のセキュリティとガイダンス
+      url: dsvm-enterprise-overview.md
   - linkListType: how-to-guide
     links:
     - text: 自動スケーリングされた DSVM プールを作成する
@@ -49,7 +56,7 @@ landingContent:
       url: dsvm-secure-access-keys.md
 - title: その他の Azure Machine Learning テクノロジ
   linkLists:
-  - linkListType: reference
+  - linkListType: learn
     links:
     - text: Azure Machine Learning サービス
       url: /azure/machine-learning/

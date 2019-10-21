@@ -3,7 +3,7 @@ title: Personalizer のドキュメント
 summary: Personalizer を使用すると、アプリケーションでユーザーのリアルタイムの行動から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようになるしくみを学習します。
 metadata:
   ms.topic: landing-page
-  ms.date: 09/10/2019
+  ms.date: 10/03/2019
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -12,12 +12,12 @@ metadata:
   title: Personalizer のドキュメント
   titleSuffix: Azure Cognitive Services
   description: Azure Personalizer は、ユーザーのリアルタイムの動作から学習し、ユーザーに表示する最良のエクスペリエンスを選択できるようにするクラウドベースの API サービスです。
-  ms.openlocfilehash: fd1b4a7c093beeb8d33579accee9178744b6fe50
-  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.openlocfilehash: f3ba5f5eef7885896d774fd8aab35784cfb6465e
+  ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70882906"
+  ms.lasthandoff: 10/04/2019
+  ms.locfileid: "71950039"
 landingContent:
 - title: Personalizer について
   linkLists:
@@ -25,6 +25,10 @@ landingContent:
     links:
     - text: Personalizer とは
       url: what-is-personalizer.md
+  - linkListType: whats-new
+    links:
+    - text: 新機能
+      url: whats-new.md
   - linkListType: concept
     links:
     - text: Personalizer のしくみ

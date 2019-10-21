@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/27/2019
+ms.date: 10/02/2019
 ms.author: diberry
-ms.openlocfilehash: c52455d69d027ff8802ef082453a3faaeee54743
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 03e04853e93bb78391476a365b20550d471e1dbb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066722"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971806"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>GenerateAnswer API およびメタデータを使って回答を取得する
 
@@ -59,7 +59,7 @@ QnA エンティティにはそれぞれ一意の永続 ID があります。 ID
 
 ## <a name="generateanswer-request-configuration"></a>GenerateAnswer 要求の構成
 
-HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を呼び出す方法を示すサンプル コードについては、[クイック スタート](../quickstarts/csharp.md)を参照してください。 
+HTTP POST 要求で GenerateAnswer を呼び出します。 GenerateAnswer を呼び出す方法を示すサンプル コードについては、[クイック スタート](../quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base)を参照してください。 
 
 POST 要求では以下を使用します。
 
@@ -249,4 +249,4 @@ GenerateAnswer への応答には、一致した質問と回答のセットの�
 **[発行]** ページでは、[Postman](../Quickstarts/get-answer-from-kb-using-postman.md) と [cURL](../Quickstarts/get-answer-from-kb-using-curl.md) を使用して回答を生成するための情報も指定できます。 
 
 > [!div class="nextstepaction"]
-> [ナレッジ ベースの作成](./create-knowledge-base.md)
+> [ナレッジ ベース ボットを作成する](../tutorials/integrate-qnamaker-luis.md)

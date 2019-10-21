@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: b7c7bfffb5ddf947dc9bd25e6828e2816a7325cd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4f5163ba448e4cc7e18b0e794a44003ce5ab1dce
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559737"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72516768"
 ---
 # <a name="speech-services-for-telephony-data"></a>電話データのための Speech Services
 
@@ -110,7 +110,7 @@ Speech Services は [Speech SDK](speech-sdk.md) か [REST API](rest-apis.md) を
 
 (Genesys や AudioCodes など) IVR 製品または電話サービス製品の中には、Azure Service との間で音声を送受信するための統合機能を提供しているものがあります。 基本的に、カスタム Azure サービスでは、通話セッション (通話の開始や終了など) を定義するためのインターフェイスを提供し、Speech Services と共に使用されるストリーム音声を受信する WebSocket API を公開します。 会話の文字起こしや Bot Framework との接続など、送信の応答を Microsoft のテキスト読み上げサービスと合成し、IVR に返して再生できます。
 
-もう 1 つのシナリオには Direct SIP 統合があります。 Azure サービスは SIP Server に接続し、音声をテキストに変換するときとテキストを読み上げるときに使用される受信ストリームと送信ストリームを取得します。 Ozieki SDK や [Teams calling and meetings API](https://docs.microsoft.com/graph/api/resources/calls-api-overview?view=graph-rest-beta) など、SIP Server に接続するためのソフトウェアが市販されています。このようなソフトウェアは、音声通話のこの種のシナリオを支援する目的で設計されています。
+もう 1 つのシナリオには Direct SIP 統合があります。 Azure サービスは SIP Server に接続し、音声をテキストに変換するときとテキストを読み上げるときに使用される受信ストリームと送信ストリームを取得します。 Ozieki SDK や [Teams calling and meetings API](/graph/api/resources/communications-api-overview) など、SIP Server に接続するためのソフトウェアが市販されています。このようなソフトウェアは、音声通話のこの種のシナリオを支援する目的で設計されています。
 
 ## <a name="customize-existing-experiences"></a>既存の体験をカスタマイズする
 

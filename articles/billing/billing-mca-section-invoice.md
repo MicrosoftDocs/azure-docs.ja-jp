@@ -8,14 +8,14 @@ tags: billing
 ms.service: billing
 ms.topic: conceptual
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: eadaf34dc5bdd93af532362e8f8542de3f17f414
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ba2a274397aa1941ef2be03ce97b0f0c9ce96a31
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490774"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709565"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>請求書にセクションを作成してコストを整理する
 

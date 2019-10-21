@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d9b4cf755bbf2e225bee813510c083570b0f8064
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 604f18fe2fbf4d8b4f3778817455d92a2811620b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70280170"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028629"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM の料金ガイダンス
 
@@ -64,7 +64,7 @@ ms.locfileid: "70280170"
 
 ## <a name="pay-per-usage"></a>使用した分を支払う
 
-**使用した分の SQL Server ライセンス料金を支払う**方法では、Azure VM を実行する秒単位のコストに SQL Server ライセンスのコストが含まれます。 各種 SQL Server エディション (Web、Standard、Enterprise) の料金は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の Azure VM の料金ページで確認できます。
+**使用した分の SQL Server ライセンス料金を支払う**方法 (**従量課金制**とも呼ばれている) は、Azure VM を実行する秒単位のコストに SQL Server ライセンスのコストが含まれることを意味します。 各種 SQL Server エディション (Web、Standard、Enterprise) の料金は、[Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) または [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux) の Azure VM の料金ページで確認できます。
 
 コストはすべてのバージョンの SQL Server (2012 SP3 から 2017 まで) で同じです。 1 秒あたりのライセンス コストは、VM vCPU の数によって異なります。
 
@@ -74,7 +74,7 @@ ms.locfileid: "70280170"
 
 - **有効期間または規模が不明なワークロード**。 たとえば、数か月で不要になるアプリ、または要求によって必要な処理能力が増減するアプリです。
 
-このような使用した分を支払うイメージの 1 つを使用して SQL Server 2017 Azure VM を作成するには、次のリンクを参照してください。
+このような従量課金制のイメージの 1 つを使用して SQL Server 2017 Azure VM を作成するには、次のリンクを参照してください。
 
 | プラットフォーム | ライセンスされたイメージ |
 |---|---|

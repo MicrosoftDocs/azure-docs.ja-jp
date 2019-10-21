@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 09/26/2019
 ms.author: juliako
-ms.openlocfilehash: a7d178972a8c8b413e3c6336c403348f1eb78abb
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 4953160a30e45b9be1ff249b6cd1f74e01bb14f3
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232602"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672659"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -27,6 +27,26 @@ ms.locfileid: "70232602"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="september-2019"></a>2019 年 9 月
+ 
+IBC 2019 で発表されたさまざまな進化:
+ 
+* アニメーション文字の認識 (パブリック プレビュー)
+
+    Custom Vision との統合で、アニメーション コンテンツでグループを検出したり、文字を認識したりできるようになりました。 詳細については、「[アニメーション キャラクターの検出](animated-characters-recognition.md)」を参照してください。
+* 複数言語の識別 (パブリック プレビュー)
+
+    オーディオ トラックに含まれる複数の言語からセグメントを検出し、それに基づいて多言語のトランスクリプトを作成します。 初回サポート:英語、スペイン語、ドイツ語、フランス語。 詳細については、「[複数言語のコンテンツを自動的に識別および文字起こしする](multi-language-identification-transcription.md)」を参照してください。
+* 人と場所に関して名前付きのエンティティを抽出する
+
+    自然言語処理 (NLP) を使用して、音声および視覚テキストからブランド、場所、および人物を抽出します。
+* 編集タイプでショットを分類する
+
+    クローズアップ、ミディアムショット、ツーショット、屋内、屋外など、編集タイプでショットにタグを付けます。詳細については、「[編集ショット タイプの検出](scenes-shots-keyframes.md#editorial-shot-type-detection)」を参照してください。
+* トピック推論の機能強化 - 現在のレベル 2
+    
+    トピック推論モデルでは、さらに細かな IPTC 分類に対応できるようになりました。 詳しくは、「[Azure Media Services の AI を活用した新たなイノベーション](https://azure.microsoft.com/blog/azure-media-services-new-ai-powered-innovation/)」をお読みください。
 
 ## <a name="august-2019"></a>2019 年 8 月
  

@@ -1,42 +1,41 @@
 ---
-title: 成人向けコンテンツとわいせつなコンテンツ - Computer Vision
+title: 成人向けコンテンツ、わいせつなコンテンツ、不快なコンテンツ - Computer Vision
 titleSuffix: Azure Cognitive Services
-description: Computer Vision API を使用したイメージの成人向けコンテンツとわいせつなコンテンツの検出に関連する概念。
+description: Computer Vision API を使用したイメージの成人向けコンテンツの検出に関連する概念。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ca5f35ab47822d74de556671c38886942d23d9ff
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: ee18916a59bb081d65494f46e7aba7c29c7177cc
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946279"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718512"
 ---
-# <a name="detect-adult-and-racy-content"></a>成人向けコンテンツとわいせつなコンテンツの検出
+# <a name="detect-adult-content"></a>成人向けコンテンツを検出する
 
-Computer Vision では、イメージ内にある成人向けの素材を検出できます。このため、開発者は、そのようなイメージがソフトウェアに表示されないように制限できます。 0 ～ 1 のスコアを持つコンテンツ フラグが適用されるため、開発者は、自分の設定に応じて結果を解釈できます。 
+Computer Vision では、イメージ内にある成人向けの素材を検出できます。このため、開発者は、これらのイメージがソフトウェアに表示されないように制限できます。 0 ～ 1 のスコアを持つコンテンツ フラグが適用されるため、開発者は、自分の設定に応じて結果を解釈できます。
 
 > [!NOTE]
-> この機能は、 [Azure Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) サービスでも利用できます。 より厳格なコンテンツ モデレーション シナリオ (テキスト モデレーションやヒューマン レビュー ワークフローなど) に対するソリューションが必要な場合は、このサービスをご確認ください。
+> この機能の多くは、[Azure Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) サービスでも提供されています。 より厳格なコンテンツ モデレーション シナリオ (テキスト モデレーションやヒューマン レビュー ワークフローなど) に対するソリューションが必要な場合は、このサービスをご確認ください。
 
 ## <a name="content-flag-definitions"></a>コンテンツ フラグの定義
 
-**成人向け**イメージは、性的な内容で、その多くがヌードや性的な行為を描写したものと定義されています。 
+"成人向け" 分類内には、次のようなカテゴリがあります。
 
-**わいせつ**なイメージは、性的なものを想起させるものの、**成人向け** とタグ付けされたイメージに比べると性的に明白な内容が少ないものと定義されています。 
+- **成人向け**イメージは、露骨に性的な内容で、その多くがヌードや性的な行為を描写したものと定義されています。
+- **わいせつ**なイメージは、性的なものを想起させるものの、**成人向け** とタグ付けされたイメージに比べると性的に明白な内容が少ないものと定義されています。
+- **不快な**イメージは、血が描写されているものとして定義されています。
 
-## <a name="identify-adult-and-racy-content"></a>成人向けコンテンツとわいせつなコンテンツの識別
+## <a name="use-the-api"></a>API の使用
 
-[Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API。
+成人向けコンテンツは、[Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API を使用して検出できます。 **visualFeatures** クエリ パラメーターに値 `Adult` を追加すると、API の JSON 応答で、3 つのブール型プロパティ `isAdultContent`、`isRacyContent`、`isGoryContent` が返されます。 メソッドでは、それぞれのカテゴリに対する信頼度スコアが 0 から 1 の範囲の値で表されている、対応するプロパティ `adultScore`、`racyScore`、`goreScore` も返されます。
 
-イメージ分析メソッドでは、成人向けコンテンツとわいせつなコンテンツのそれぞれを示すメソッドの JSON 応答で、`isAdultContent` と `isRacyContent` の 2 つのブール プロパティが返されます。 このメソッドでは、`adultScore` と `racyScore` の 2 つのプロパティも返されます。これは、それぞれ成人向けコンテンツとわいせつなコンテンツを識別するための信頼度スコアを表しています。
-
-## <a name="next-steps"></a>次の手順
-
-[ドメイン固有のコンテンツの検出](concept-detecting-domain-content.md)と[顔の検出](concept-detecting-faces.md)についての概念を学習します。
+- [クイック スタート:画像の分析 (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [クイック スタート:画像の分析 (REST API)](./quickstarts/csharp-analyze.md)

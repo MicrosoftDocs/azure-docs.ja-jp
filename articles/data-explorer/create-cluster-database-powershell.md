@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 85c8cc81b3c61e2faf65bf8a06c69ca7f2b906c9
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 1975125dd3bcd327ae7520e4cc413718e48d6ba9
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66497324"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326749"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>PowerShell を使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -22,7 +22,7 @@ ms.locfileid: "66497324"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+> * [ARM テンプレート](create-cluster-database-resource-manager.md)  
 
 Azure Data Explorer は、アプリケーション、Web サイト、IoT デバイスなどからの大量のデータ ストリーミングをリアルタイムに分析するためのフル マネージドのデータ分析サービスです。 Azure Data Explorer を使用するには、最初にクラスターを作成し、そのクラスター内に 1 つまたは複数のデータベースを作成します。 その後、クエリを実行できるように、データをデータベースに取り込み (読み込み) ます。 この記事では、PowerShell を使用して、クラスターとデータベースを 1 つずつ作成します。 [Az.Kusto](/powershell/module/az.kusto/?view=azps-1.4.0#kusto) を使って Windows、Linux、または [Azure Cloud Shell](../cloud-shell/overview.md) で PowerShell コマンドレットとスクリプトを実行し、Azure Data Explorer のクラスターとデータベースを作成および構成できます。
 
@@ -67,7 +67,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
 
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
-   | Name | *mykustocluster* | クラスターの任意の名前。|
+   | 名前 | *mykustocluster* | クラスターの任意の名前。|
    | Sku | *D13_v2* | クラスターに使用される SKU。 |
    | ResourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
 
@@ -92,7 +92,7 @@ Azure Cloud Shell でコマンドを実行している場合、次の手順は�
    |**設定** | **推奨値** | **フィールドの説明**|
    |---|---|---|
    | ClusterName | *mykustocluster* | データベースの作成先となるクラスターの名前。|
-   | Name | *mykustodatabase* | データベースの名前。|
+   | 名前 | *mykustodatabase* | データベースの名前。|
    | ResourceGroupName | *testrg* | クラスターが作成されるリソース グループの名前。 |
    | SoftDeletePeriod | *3650:00:00:00* | データをクエリに使用できるようにしておく時間。 |
    | HotCachePeriod | *3650:00:00:00* | データをキャッシュに保持する時間。 |

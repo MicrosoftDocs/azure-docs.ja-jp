@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.openlocfilehash: 5a6912f2df3f82596dc8ba6ecdd413f4cdc136d1
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
+ms.lasthandoff: 10/15/2019
 ms.locfileid: "67465583"
 ---
 > [!div class="op_single_selector"]

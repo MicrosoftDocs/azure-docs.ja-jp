@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: 4e4e4d250de823ae8fb78a306bae313f340e7ce9
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 5badd4aeabd8ec322ea5fb847cf134f302269c27
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992295"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72331015"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>クイック スタート:Azure Databricks を使用して Azure Data Lake Storage Gen2 のデータを分析する
 
@@ -78,11 +78,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure で Databricks Spark クラスターを作成する](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Azure で Databricks Spark クラスターを作成する")
 
-    以下を除くすべての値は、既定値のままにします。
+    次のフィールドに値を入力し、他のフィールドの既定値はそのまま使用します。
 
-    * クラスターの名前を入力します。
-    * **5.1** ランタイムを使用してクラスターを作成します。
-    * **[Terminate after 120 minutes of inactivity]** \(アクティビティが 120 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+    - クラスターの名前を入力します。
+     
+    - **[Terminate after 120 minutes of inactivity]** \(アクティビティが 120 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
 4. **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 

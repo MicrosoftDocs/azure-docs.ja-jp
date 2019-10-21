@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/29/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6820daf34e63fd48e83c645e7509a3256bc8435b
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 0c8c270681794621b2a12671d4bcf350cd6cc4d8
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066987"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981116"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Azure App Service のアプリケーション コードに SSL 証明書を使用する
 
@@ -71,7 +71,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 自分の証明書をすべてアクセス可能にするには、値を `*` に設定します。
 
 > [!NOTE]
-> この設定により、ほとんどの価格レベルでは指定された証明書が [Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) ストアに配置されます。ただし、**Isolated** レベルの場合 (つまり、アプリが [App Service Environment](environment/intro.md) で実行される場合) は、証明書が [Local Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) ストアに配置されます。
+> この設定により、ほとんどの価格レベルでは指定された証明書が [Current User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) ストアに配置されます。ただし、アプリが **Isolated** レベルで実行される場合 (つまり、アプリが [App Service Environment](environment/intro.md) で実行される場合) は、[Local Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores) ストアを検査することが必要な場合もあります。
 >
 
 ![アプリケーション設定の構成](./media/app-service-web-ssl-cert-load/configure-app-setting.png)

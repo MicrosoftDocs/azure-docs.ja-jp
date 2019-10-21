@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 28ec42f1634e0546d75f81ed76b1ecbac51f6c3f
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: a2b467eed010edbb842d536bd8f6e3f4107fcea8
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70277603"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984359"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker のリソースを管理する
 
@@ -87,6 +87,8 @@ QnA Maker リソースを作成した Azure portal で、サブスクリプシ�
 
 ## <a name="find-endpoint-keys-in-the-qna-maker-portal"></a>QnA Maker ポータルでエンドポイント キーを確認する
 
+ナレッジ ベースの呼び出しにはエンドポイント キーが使用されるため、エンドポイントはリソースと同じリージョンにあります。
+
 エンドポイント キーは、[QnA Maker ポータル](https://qnamaker.ai)から管理することができます。
 
 1. [QnA Maker ポータル](https://qnamaker.ai)にサインインし、お使いのプロファイルに移動してから、 **[サービスの設定]** を選択します。
@@ -110,7 +112,9 @@ QnA Maker はいくつかの Azure リソースを作成します。 管理を�
 |App Service プラン|✔|App Service プランに対して固定のディスク領域が割り当てられています。 同じ App Service プランを共有している他のアプリによって大量のディスク領域が使用された場合、QnA Maker App Service インスタンスで問題が発生します。|
 |App Service|X|仕様により不可能|
 |Application Insights|✔|共有できます|
-|検索サービス|✔|1. `testkb` は QnA Maker サービス用の予約された名前です。他のサービスで使用することはできません。<br>2.`synonym-map` という名前のシノニム マップは、QnA Maker サービス用に予約されています。<br>3.公開されるナレッジ ベースの数は、Search サービスのレベルによって制限されます。 使用可能な空きインデックスがある場合は、他のサービスでそれらを使用できます。|
+|検索サービス|✔|1. `testkb` は QnA Maker サービス用の予約された名前です。他のサービスで使用することはできません。<br>2.`synonym-map` という名前のシノニム マップは、QnA Maker サービス用に予約されています。<br>手順 3.公開されるナレッジ ベースの数は、Search サービスのレベルによって制限されます。 使用可能な空きインデックスがある場合は、他のサービスでそれらを使用できます。|
+
+[App Service](../../../app-service/index.yml) と [Search Service](../../../search/index.yml) の詳細をご覧ください。
 
 ### <a name="using-a-single-search-service"></a>単一の Search サービスの使用
 
@@ -202,6 +206,8 @@ QnA Maker ランタイムは、Azure portal で [QnA Maker サービスを作成
 QnA Maker の管理サービスは、QnA Maker ポータルと初期データ処理でのみ使用されます。 このサービスは、米国西部リージョンでのみ利用できます。 この米国西部のサービスでは、顧客データは保存されません。
 
 ## <a name="next-steps"></a>次の手順
+
+[App Service](../../../app-service/index.yml) と [Search Service](../../../search/index.yml) の詳細をご覧ください。
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースの作成と発行](../Quickstarts/create-publish-knowledge-base.md)

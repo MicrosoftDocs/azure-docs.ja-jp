@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: erhopf
-ms.openlocfilehash: cd380b4e2a7c05f0beedc2ab102b268aa4068f66
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 539a35f170b2ee0c94762a30ed9376ca4a416210
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516370"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827896"
 ---
 # <a name="enable-diagnostic-logging-for-azure-cognitive-services"></a>Azure Cognitive Services の診断ログを有効にする
 
@@ -35,7 +35,7 @@ ms.locfileid: "68516370"
 最初に、Azure portal を使用して診断ログを有効にします。
 
 > [!NOTE]
-> PowerShell または Azure CLI を使用してこの機能を有効にするには、[Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#diagnostic-settings)に関するページに示されている手順を使用します。
+> PowerShell または Azure CLI を使用してこの機能を有効にするには、[Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview)に関するページに示されている手順を使用します。
 
 1. Azure Portal に移動します。 次に、Cognitive Services リソースを見つけて選択します。 たとえば、Bing Web Search へのサブスクリプションを選択します。   
 2. 次に、左側のナビゲーション メニューから、 **[監視]** を見つけて **[診断設定]** を選択します。 この画面には、このリソースに対して前に作成したすべての診断設定が含まれています。

@@ -7,13 +7,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: overview
-ms.date: 06/14/2019
-ms.openlocfilehash: 29b2a9378abaaa697d2d869145d5e912d6c06d6c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.date: 09/17/2019
+ms.openlocfilehash: 3e0fddc03ad880d36876276827198b0ac180a00d
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811600"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076371"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Azure HDInsight での対話型クエリとは
 
@@ -28,6 +28,9 @@ ms.locfileid: "70811600"
 ## <a name="create-an-interactive-query-cluster"></a>対話型クエリ クラスターの作成
 
 HDInsight クラスターの作成について詳しくは、[HDInsight 内での Apache Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)に関する記事をご覧ください。 対話型クエリのクラスターの種類を選択します。
+
+> [!IMPORTANT]
+> 対話型クエリ クラスターのヘッドノードの最小サイズは Standard_D13_v2 です。 詳細については、[Azure VM のサイズ一覧表](../../cloud-services/cloud-services-sizes-specs.md#dv2-series)を参照してください。
 
 ## <a name="execute-apache-hive-queries-from-interactive-query"></a>対話型クエリから Apache Hive クエリを実行する
 

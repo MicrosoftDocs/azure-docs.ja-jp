@@ -2,17 +2,16 @@
 title: サンプル - タグとその値を強制
 description: このサンプル ポリシー定義は、タグの名前と値がそれぞれパラメーターとして設定されていることを要求します。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4ab5b47307315c4aea8d6f6dfc4968ac1dfb26cd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ec92fc13a97b6961d5adcd19603b8c8c3197170a
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262025"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980490"
 ---
 # <a name="sample---enforce-tag-and-its-value"></a>サンプル - タグとその値を強制
 

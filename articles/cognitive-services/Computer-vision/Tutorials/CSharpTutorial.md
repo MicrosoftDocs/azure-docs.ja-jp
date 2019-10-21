@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3da22d11dce1e535763476d906ac45f3da22bc8d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141282"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170037"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>サンプル:画像処理アプリの探索 (C#)
 
@@ -80,8 +80,8 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
    ![[Subscription Key Management]\(サブスクリプション キーの管理\) ページ](../Images/Vision_UI_Subscription.PNG)  
 1. **[Subscription Key]\(サブスクリプション キー\)** にサブスクリプション キーを入力します。
 1. **[エンドポイント]** にエンドポイント URL を入力します。  
-   たとえば、Computer Vision 無料試用版のサブスクリプション キーを使用している場合は、`https://westcentralus.api.cognitive.microsoft.com`
-   [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)] というエンドポイント URL を入力します。
+   たとえば、Computer Vision 無料試用版のサブスクリプション キーを使用している場合は、次のエンドポイント URL を入力します: `https://westcentralus.api.cognitive.microsoft.com`  
+   [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. 次にサンプル アプリを実行したときにサブスクリプション キーとエンドポイント URL を入力したくない場合は、 **[Save Setting]\(設定の保存\)** を選択して、サブスクリプション キーとエンドポイント URL をお使いのコンピューターに保存します。 以前に保存したサブスクリプション キーとエンドポイント URL を削除する場合は、 **[Delete Setting]\(設定の削除\)** を選択します。
 
    > [!NOTE]

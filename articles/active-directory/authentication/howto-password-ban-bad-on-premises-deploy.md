@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5949f57a87f324dc2e6651611574f4b66215c8a8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: cfa8e8c570b47eb6437ed6ca6a53f6c8188e18a2
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389774"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71314987"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 
@@ -43,28 +43,47 @@ ms.locfileid: "70389774"
 ## <a name="deployment-requirements"></a>デプロイ要件
 
 * Azure AD パスワード保護でのライセンス要件については、[組織内の不適切なパスワードの排除](concept-password-ban-bad.md#license-requirements)に関する記事を参照してください。
-* Azure AD パスワード保護用の DC エージェント サービスがインストールされるすべてのドメイン コントローラーでは、Windows Server 2012 以降を実行している必要があります。 この要件は、Active Directory ドメインまたはフォレストも Windows Server 2012 ドメインまたはフォレストの機能レベルにする必要があることを意味するものではありません。 「[設計原則](concept-password-ban-bad-on-premises.md#design-principles)」で説明されているように、DC エージェントまたはプロキシ ソフトウェアが実行するために必要な最低限の DFL または FFL はありません。
+* Azure AD パスワード保護 DC エージェント ソフトウェアがインストールされるマシンではすべて、Windows Server 2012 以降を実行する必要があります。 この要件は、Active Directory ドメインまたはフォレストも Windows Server 2012 ドメインまたはフォレストの機能レベルにする必要があることを意味するものではありません。 「[設計原則](concept-password-ban-bad-on-premises.md#design-principles)」で説明されているように、DC エージェントまたはプロキシ ソフトウェアが実行するために必要な最低限の DFL または FFL はありません。
 * DC エージェント サービスがインストールされるすべてのマシンには、.NET 4.5 をインストールする必要があります。
-* Azure AD パスワード保護用のプロキシ サービスがインストールされるすべてのマシンでは、Windows Server 2012 R2 以降を実行している必要があります。
+* Azure AD パスワード保護プロキシ サービスがインストールされるマシンではすべて、Windows Server 2012 R2 以降を実行する必要があります。
    > [!NOTE]
-   > ドメイン コントローラーにインターネットへの直接の送信接続があった場合でも、Azure AD パスワード保護のデプロイには、プロキシ サービスの展開が必須要件です。 
+   > ドメイン コントローラーにインターネットへの直接の送信接続があった場合でも、Azure AD パスワード保護のデプロイには、プロキシ サービスのデプロイが必須要件です。 
    >
 * Azure AD パスワード保護プロキシ サービスがインストールされるすべてのマシンには、.NET 4.7 をインストールしておく必要があります。
-  .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 そうでない場合には、「[The .NET Framework 4.7 offline installer for Windows (Windows 用 .NET Framework 4.7 オフライン インストーラー)](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
-* ドメイン コントローラーを含め、Azure AD パスワード保護コンポーネントがインストールされるすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。 Windows Update からすべての更新プログラムを確実に取得することでランタイムを入手できます。 または、OS 固有の更新プログラム パッケージで入手できます。 詳しくは、「[Update for Universal C Runtime in Windows (Windows のユニバーサル C ランタイムの更新プログラム)](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)」をご覧ください。
+  .NET 4.7 は、完全に更新された Windows Server には既にインストールされています。 必要な場合は、「[Windows 用の.NET Framework の 4.7 オフライン インストーラー](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows)」にあるインストーラーをダウンロードして実行してください。
+* ドメイン コントローラーを含め、Azure AD パスワード保護コンポーネントがインストールされているすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。 Windows Update からすべての更新プログラムを確実に取得することでランタイムを入手できます。 または、OS 固有の更新プログラム パッケージで入手できます。 詳しくは、「[Update for Universal C Runtime in Windows (Windows のユニバーサル C ランタイムの更新プログラム)](https://support.microsoft.com/help/2999226/update-for-uniersal-c-runtime-in-windows)」をご覧ください。
 * 各ドメイン内の少なくとも 1 つのドメイン コントローラーと、パスワード保護用のプロキシ サービスをホストする少なくとも 1 つのサーバーとの間に、ネットワーク接続が存在する必要があります。 この接続では、ドメイン コントローラーがプロキシ サービス上の RPC エンドポイント マッパー ポート 135 および RPC サーバー ポートにアクセスできるようにする必要があります。 RPC サーバー ポートは、既定では動的 RPC ポートですが、[静的ポートを使用](#static)するように構成することができます。
-* プロキシ サービスをホストしているすべてのマシンに、次のエンドポイントへのネットワーク アクセスが必要です。
+* Azure AD のパスワード保護プロキシ サービスがインストールされるすべてのマシンに、次のエンドポイントへのネットワーク アクセスが必要です。
 
     |**エンドポイント**|**目的**|
     | --- | --- |
     |`https://login.microsoftonline.com`|認証要求|
     |`https://enterpriseregistration.windows.net`|Azure AD パスワード保護機能|
+ 
+* Microsoft Azure AD Connect エージェント アップデーターの前提条件
 
-* パスワード保護用のプロキシ サービスがホストされているすべてのコンピューターを、プロキシ サービスにログオンする機能をドメイン コントローラーに許可するように、構成する必要があります。 これは、"ネットワーク経由でコンピューターへアクセス" 特権の割り当てによって制御されます。
+  Microsoft Azure AD Connect エージェント アップデーター サービスは、Azure AD パスワード保護プロキシ サービスとサイド バイ サイドでインストールされます。 Microsoft Azure AD Connect エージェント アップデーター サービスを機能させるには、追加の構成が必要です。
+
+  お使いの環境で http プロキシ サーバーを使用している場合は、「[既存のオンプレミス プロキシ サーバーと連携する](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers)」で指定されているガイドラインに従う必要があります。
+
+  「[アプリケーション プロキシ環境の設定手順](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application#prepare-your-on-premises-environment)」で指定されている一連のポートと URL に対し、ネットワーク アクセスを有効にする必要があります。
+
+  > [!WARNING]
+  > Azure AD パスワード保護プロキシとアプリケーション プロキシでは、異なるバージョンの Microsoft Azure AD Connect エージェント アップデーター サービスがインストールされ、そのため説明ではアプリケーション プロキシのコンテンツが参照されています。 これらの異なるバージョンは、サイド バイ サイドでインストールすると互換性がないため、Azure AD パスワード保護プロキシとアプリケーション プロキシを同じコンピューターにサイド バイ サイドでインストールすることはお勧めしません。
+
+* パスワード保護用のプロキシ サービスがホストされているすべてのコンピューターを、プロキシ サービスにログオンする機能をドメイン コントローラーに許可するように、構成する必要があります。 この機能は、"ネットワーク経由でコンピューターへアクセス" 特権の割り当てによって制御されます。
 * パスワード保護用プロキシ サービスがホストされているすべてのマシンで、送信 TLS 1.2 HTTP トラフィックを許可するように構成する必要があります。
 * Azure AD でパスワード保護用プロキシ サービスとフォレストを登録するグローバル管理者アカウント。
 * Azure AD で Windows Server Active Directory フォレストを登録するために、フォレスト ルート ドメインの Active Directory ドメイン管理者特権を持つアカウント。
 * DC エージェント サービス ソフトウェアを実行しているすべての Active Directory ドメインは、sysvol レプリケーションに分散ファイル システム レプリケーション (DFSR) を使用する必要があります。
+
+  ご利用のドメインでまだ DFSR を使用していない場合、Azure AD パスワード保護をインストールする前に DFSR 使用にドメインを移行する必要があります。 詳細については、次のリンクを参照してください。
+
+  [SYSVOL レプリケーション移行ガイド: FRS レプリケーションから DFS レプリケーションに移行する](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+
+  > [!WARNING]
+  > Azure AD パスワード保護 DC エージェント ソフトウェアは現在のところ、sysvol レプリケーションのために依然として FRS (DFSR の前身テクノロジ) を使用しているドメインにあるドメイン コントローラーにインストールされますが、この環境ではソフトウェアは正しく機能しません。 その他のマイナスの副作用としては、個々のファイルを複製できない、sysvol 復元処理が成功したように見えたが、一部のファイルの複製に失敗しており、何のエラーも表示されない、などがあります。 できるだけ早く、DFSR の使用にドメインを移行してください。DFSR に固有のメリットがあるだけでなく、Azure AD パスワード保護のデプロイのブロックを解除します。 今後のバージョンでは、ドメインで依然として FRS を使用している場合、このソフトウェアは自動的に無効になります。
+
 * Windows Server 2012 を実行するドメイン内のすべてのドメイン コントローラーで、キー配布サービスを有効にする必要があります。 既定では、このサービスは手動トリガーで開始して有効化されます。
 
 ## <a name="single-forest-deployment"></a>単一フォレスト デプロイ
@@ -202,7 +221,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
    Active Directory フォレストの登録は、フォレストの有効期間中に 1 回だけ必要です。 その後、他の必要なメンテナンスは、フォレスト内のドメイン コントローラー エージェントによって自動的に実行されます。 フォレストに対して `Register-AzureADPasswordProtectionForest` が正常に実行された後、それ以降のコマンドレットの呼び出しも成功しますが、必要ありません。
 
-   `Register-AzureADPasswordProtectionForest` を成功させるには、Windows Server 2012 以降を実行している少なくとも 1 台のドメイン コントローラーがプロキシ サーバーのドメイン内で使用できる必要があります。 ただし、この手順の前に、DC エージェント ソフトウェアをいずれかのドメイン コントローラーにインストールしておく必要はありません。
+   `Register-AzureADPasswordProtectionForest` を成功させるには、Windows Server 2012 以降を実行している少なくとも 1 台のドメイン コントローラーがプロキシ サーバーのドメイン内で使用できる必要があります。 この手順の前に、DC エージェント ソフトウェアをいずれかのドメイン コントローラーにインストールしておく必要はありません。
 
 1. HTTP プロキシを通じて通信するようにパスワード保護用のプロキシ サービスを構成します。
 
@@ -277,7 +296,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
    `AzureADPasswordProtectionDCAgentSetup.msi` パッケージを使用して、パスワード保護用の DC エージェント サービスをインストールします。
 
-   ソフトウェアをインストールまたはアンインストールすると再起動が必要になります。 パスワード フィルター DLL は再起動しないとロードまたはアンロードされないためです。
+   ソフトウェアをインストールまたはアンインストールすると再起動が必要になります。 この要件は、パスワード フィルター DLL は再起動しないとロードまたはアンロードされないためです。
 
    DC エージェント サービスは、ドメイン コントローラーになっていないコンピューターにインストールできます。 この場合、サービスは開始して実行されますが、コンピューターがドメイン コントローラーにレベル上げされるまで、サービスはアクティブになりません。
 
@@ -295,7 +314,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
 現在のバージョンのプロキシ ソフトウェアをアンインストールする必要はありません。インストーラーによってインプレース アップグレードが実行されます。 プロキシ ソフトウェアをアップグレードするときに、再起動は必要ありません。 ソフトウェアのアップグレードは、標準 MSI プロシージャを使用して自動化できます。次はその例です: `AzureADPasswordProtectionProxySetup.exe /quiet`。
 
-プロキシ エージェントでは、自動アップグレードがサポートされています。 自動アップグレードでは、プロキシ サービスと並んでインストールされる Microsoft Azure AD Connect Agent Updater サービスが使用されます。 自動アップグレードは既定でオンになっており、`Set-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用して有効または無効にすることができます。 現在の設定は、`Get-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用して照会できます。 自動アップグレードを有効のままにしておくことをお勧めします。
+プロキシ エージェントでは、自動アップグレードがサポートされています。 自動アップグレードでは、プロキシ サービスとサイド バイ サイドでインストールされる Microsoft Azure AD Connect Agent Updater サービスが使用されます。 自動アップグレードは既定でオンになっており、`Set-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用して有効または無効にすることができます。 現在の設定は、`Get-AzureADPasswordProtectionProxyConfiguration` コマンドレットを使用して照会できます。 自動アップグレードの設定を常に有効にしておくことをお勧めします。
 
 `Get-AzureADPasswordProtectionProxy` コマンドレットを使用して、フォレストに現在インストールされているすべてのプロキシ エージェントのソフトウェア バージョンを照会できます。
 
@@ -303,7 +322,7 @@ Azure AD パスワード保護には 2 つのインストーラーが必要で�
 
 新しいバージョンの Azure AD パスワード保護 DC エージェント ソフトウェアを使用できるようになったら、最新バージョンの `AzureADPasswordProtectionDCAgentSetup.msi` ソフトウェア パッケージを実行してアップグレードを行います。 最新バージョンのソフトウェアは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=57071)で入手できます。
 
-現在のバージョンの DC エージェント ソフトウェアをアンインストールする必要はありません。インストーラーによってインプレース アップグレードが実行されます。 DC エージェント ソフトウェアをアップグレードするときは、再起動が常に必要になります。これは、Windows のコア動作によるものです。 
+現在のバージョンの DC エージェント ソフトウェアをアンインストールする必要はありません。インストーラーによってインプレース アップグレードが実行されます。 DC エージェント ソフトウェアをアップグレードするときは、再起動が常に必要になります。この要件は、Windows のコア動作によるものです。 
 
 ソフトウェアのアップグレードは、標準 MSI プロシージャを使用して自動化できます。次はその例です: `msiexec.exe /i AzureADPasswordProtectionDCAgentSetup.msi /quiet /qn /norestart`。
 

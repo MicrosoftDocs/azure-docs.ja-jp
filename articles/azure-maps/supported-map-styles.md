@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 1aad2284c0f64c92efaefe3f9145d95c4aabec67
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 457154a797a4b6d9853b1effe0d8121053653a99
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839450"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174766"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps でサポートされているマップ スタイル
 Azure Maps は、次に説明するように、いくつかの異なる組み込みマップ スタイルをサポートしています。
@@ -96,3 +96,11 @@ Azure Maps は、次に説明するように、いくつかの異なる組み込
 * [マップ タイル](https://docs.microsoft.com/rest/api/maps/render/getmaptile)
 * Web SDK マップ コントロール
 * Android マップ コントロール
+
+
+## <a name="next-steps"></a>次の手順
+
+Azure Maps でマップ スタイルを設定する方法について説明します。
+
+> [!div class="nextstepaction"]
+> [マップ スタイルを選択する](https://docs.microsoft.com/en-us/azure/azure-maps/choose-map-style)

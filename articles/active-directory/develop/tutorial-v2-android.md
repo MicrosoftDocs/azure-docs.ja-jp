@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a53a0d5ea8405c116d0286d3b67b1640f98ed96d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 0a26a7fc27fa13d86eb3b82fd4be70e5b371581f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852455"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677960"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Android アプリケーションからユーザーにサインインし、Microsoft Graph を呼び出す
 
@@ -49,7 +49,7 @@ ms.locfileid: "68852455"
 
 ## <a name="prerequisites"></a>前提条件
 
-* このチュートリアルでは、Android Studio バージョン 16 以降 (19 以降を推奨) が必要です。
+* このチュートリアルでは、Android Studio バージョン 3.5 が必要です。
 
 ## <a name="create-a-project"></a>プロジェクトの作成
 
@@ -59,15 +59,16 @@ ms.locfileid: "68852455"
 2. **[Basic Activity]\(基本アクティビティ\)** を選択し、 **[Next]\(次へ\)** を選択します。
 3. アプリケーションに名前を付けます。
 4. パッケージ名を保存しておきます。 後ほど、Azure portal でそれを入力します。
-5. **[Minimum API level]\(最低 API レベル\)** を **API 19** 以上に設定し、 **[Finish]\(完了\)** をクリックします。
-6. プロジェクト ビューのドロップダウンで **[Project]\(プロジェクト\)** を選択して、ソースとソース以外のプロジェクト ファイルを表示し、**app/build.gradle** を開いて、`targetSdkVersion` を `27` に設定します。
+5. 言語を **[Kotlin]** から **[Java]** に変更します。
+6. **[Minimum API level]\(最低 API レベル\)** を **API 19** 以上に設定し、 **[Finish]\(完了\)** をクリックします。
+7. プロジェクト ビューのドロップダウンで **[Project]\(プロジェクト\)** を選択して、ソースとソース以外のプロジェクト ファイルを表示し、**app/build.gradle** を開いて、`targetSdkVersion` を `28` に設定します。
 
 ## <a name="register-your-application"></a>アプリケーションの登録
 
 1. [Azure ポータル](https://aka.ms/MobileAppReg)にアクセスします。
 2. [[アプリの登録] ブレード](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)を開き、 **[+ 新しい登録]** をクリックします。
 3. アプリの **[名前]** を入力した後、リダイレクト URI を設定しないで、 **[登録]** をクリックします。
-4. 表示されたウィンドウの **[管理]** セクションで、 **[認証]**  >  **[+ プラットフォームの追加]**  >  **[Android]** を選択します。
+4. 表示されたウィンドウの **[管理]** セクションで、 **[認証]**  >  **[+ プラットフォームの追加]**  >  **[Android]** を選択します。 (このセクションを表示するには、ブレードの上部付近にある [Switch to the new experience]\(新しいエクスペリエンスに切り替える\) を選択することが必要な場合があります)
 5. プロジェクトのパッケージ名を入力します。 コードをダウンロードした場合、この値は `com.azuresamples.msalandroidapp` です。
 6. **[Android アプリの構成]** ページの **[署名ハッシュ]** セクションで、 **[Generating a development Signature Hash]\(開発用署名ハッシュの生成\)** をクリックします。 そして、お使いのプラットフォームに使用する KeyTool コマンドをコピーします。
 
@@ -83,8 +84,8 @@ ms.locfileid: "68852455"
 
 1. Android Studio のプロジェクト ウィンドウで、**app\src\main\res** に移動します。
 2. **res** を右クリックして、 **[New]\(新規\)**  >  **[Directory]\(ディレクトリ\)** を選択します。 新しいディレクトリの名前に「`raw`」と入力し、 **[OK]** をクリックします。
-3. **app** > **src** > **res** > **raw** で、`auth_config.json` という名前の新しい JSON ファイルを作成し、先ほど保存した MSAL 構成を貼り付けます。 詳細については、[MSAL の構成](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)に関するページを参照してください。
-4. **app** > **src** > **main** > **AndroidManifest.xml** で、以下の `BrowserTabActivity` アクティビティを追加します。 このエントリにより、Microsoft は認証の完了後にアプリケーションにコールバックできます。
+3. **app** > **src** > **main** > **res** > **raw** で、`auth_config.json` という名前の新しい JSON ファイルを作成し、先ほど保存した MSAL 構成を貼り付けます。 詳細については、[MSAL の構成](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)に関するページを参照してください。
+4. **app** > **src** > **main** > **AndroidManifest.xml** で、以下の `BrowserTabActivity` アクティビティをアプリケーション本文に追加します。 このエントリにより、Microsoft は認証の完了後にアプリケーションにコールバックできます。
 
     ```xml
     <!--Intent filter to capture System Browser or Authenticator calling back to our app after sign-in-->
@@ -114,7 +115,7 @@ ms.locfileid: "68852455"
 ### <a name="create-the-apps-ui"></a>アプリケーションの UI を作成する
 
 1. Android Studio のプロジェクト ウィンドウで、**app** > **src** > **main** > **res** > **layout** に移動し、**activity_main.xml** を開いて、 **[Text]\(テキスト\)** ビューを開きます。
-2. アクティビティのレイアウトを変更します (たとえば、`<androidx.coordinatorlayout.widget.CoordinatorLayout` を `<androidx.coordinatorlayout.widget.LinearLayout` に)。
+2. アクティビティのレイアウトを変更します (たとえば、`<androidx.coordinatorlayout.widget.CoordinatorLayout` を `<androidx.coordinatorlayout.widget.DrawerLayout` に)。 
 3. `android:orientation="vertical"` プロパティを `LinearLayout` ノードに追加します。
 4. `LinearLayout` ノードに次のコードを貼り付け、現在の内容を置き換えます。
 
@@ -176,13 +177,13 @@ ms.locfileid: "68852455"
 
     ```gradle  
     implementation 'com.android.volley:volley:1.1.1'
-    implementation 'com.microsoft.identity.client:msal:0.3.+'
+    implementation 'com.microsoft.identity.client:msal:1.0.+'
     ```
 
 ### <a name="use-msal"></a>MSAL の使用
 
 次に、`MainActivity.java` の内部を変更し、アプリで使用する MSAL を追加します。
-Android Studio のプロジェクト ウィンドウで、**app** > **src** > **main** > **java** > **com.example.msal** に移動し、`MainActivity.java` を開きます。
+Android Studio のプロジェクト ウィンドウで、**app** > **src** > **main** > **java** > **com.example.(your app)** に移動し、`MainActivity.java` を開きます。
 
 #### <a name="required-imports"></a>必要なインポート
 

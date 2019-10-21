@@ -3,7 +3,7 @@ title: Azure 仮想マシン エージェントの概要 | Microsoft Docs
 description: Azure 仮想マシン エージェントの概要
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: roiyz-msft
+author: axayjo
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
-ms.author: roiyz
-ms.openlocfilehash: 6a845cad298e2aedbe68a11cd170120d1d229043
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.author: akjosh
+ms.openlocfilehash: 24c7f6c1488d7a78a16aafef88177f7045eb2492
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382839"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244650"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
@@ -68,7 +68,7 @@ msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /q
 ```
 
 ### <a name="prerequisites"></a>前提条件
-Windows VM エージェントでは、.Net Framework 4.0 を使用して、少なくとも Windows Server 2008 R2 (64 ビット) を実行する必要があります。
+Windows VM エージェントでは、.Net Framework 4.0 を使用して、少なくとも Windows Server 2008 R2 (64 ビット) を実行する必要があります。 「[Azure の仮想マシン エージェントの最小バージョン サポート](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)」を参照してください
 
 ## <a name="detect-the-vm-agent"></a>VM エージェントの検出
 
@@ -110,6 +110,8 @@ Windows VM にログインすると、タスク マネージャーを使用し�
 ## <a name="upgrade-the-vm-agent"></a>VM エージェントのアップグレード
 Windows 用の Azure VM エージェントは自動的にアップグレードされます。 新しい VM が Azure にデプロイされると、VM のプロビジョニング時に最新の VM エージェントが提供されます。 カスタム VM イメージの場合は、新しい VM エージェントを含めるために、イメージ作成時に手動で更新する必要があります。
 
+## <a name="windows-guest-agent-automatic-logs-collection"></a>Windows ゲスト エージェントの自動ログ収集
+Windows ゲスト エージェントには、一部のログを自動的に収集する機能があります。 この機能は、CollectGuestLogs.exe プロセスによって制御されます。 それは PaaS Cloud Services と IaaS Virtual Machines の両方のために存在し、その目的は、VM から診断ログをすばやく自動的に収集し、オフライン分析に使用できるようにすることです。 収集されるログは、イベント ログ、OS ログ、Azure ログ、および一部のレジストリ キーです。 VM のホストに転送される ZIP ファイルが生成されます。 その後、エンジニアリング チームやサポート担当者がこの ZIP ファイルを調べて、VM を所有しているお客様の要求に関する問題を調査できます。
 
 ## <a name="next-steps"></a>次の手順
 VM 拡張機能の詳細については、「[Azure 仮想マシンの拡張機能と機能の概要](overview.md)」をご覧ください。

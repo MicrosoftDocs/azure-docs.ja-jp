@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e535d8cce4e2aa56305283651b9cc21dfc301a4
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ef3d6a47986056925f9964638c9c7192341ca5f9
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807619"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240989"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ
 
@@ -142,6 +142,7 @@ ServiceNow、Box、G Suite などいくつかのアプリケーションでは�
 - 推奨されるベスト プラクティスとして、属性マッピングに対する連続的な変更の回数は最小限に抑えてください。
 - 写真を同期する形式は指定できないので、プロビジョニングする写真属性のアプリへの追加は、現在サポートされていません。 [ユーザーの声](https://feedback.azure.com/forums/169401-azure-active-directory)に関するページで機能の要求をお送りください
 - IsSoftDeleted 属性は、多くの場合、アプリケーションの既定のマッピングに含まれます。 IsSoftDeleted は 4 つのシナリオ (アプリケーションから割り当てられていないためユーザーがスコープ外になっている、スコープ フィルターを満たしていないためユーザーがスコープ外になっている、Azure AD でユーザーが論理的に削除されている、AccountEnabled プロパティがユーザーに対して false に設定されている) のいずれかで true にすることができます。 
+- Azure AD プロビジョニング サービスでは、null 値のプロビジョニングがサポートされていません
 
 ## <a name="next-steps"></a>次の手順
 

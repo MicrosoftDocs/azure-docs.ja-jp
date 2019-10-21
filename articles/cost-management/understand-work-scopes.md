@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 66bad9c9c647fe87fdcf6b99a8d17f319b1ef9fc
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 41d83d4a6c5aad4c3b575513c6b3e2e25a425829
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479974"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338632"
 ---
 # <a name="understand-and-work-with-scopes"></a>スコープを理解して使用する
 
@@ -37,7 +37,7 @@ Cost Management はリソースよりも上のすべてのスコープで機能�
 
 Azure では、リソース管理用の 3 つのスコープがサポートされます。 各スコープでは、アクセスとカバンナスの管理がサポートされます。これにはコスト管理も含まれますが、これに限定されるものではありません。
 
-- [**管理グループ**](../governance/management-groups/index.md) - Azure サブスクリプションを整理するための階層型コンテナー (最大 8 つ)。
+- [**管理グループ**](../governance/management-groups/overview.md) - Azure サブスクリプションを整理するための階層型コンテナー (最大 8 つ)。
 
     リソースの種類:[Microsoft.Management/managementGroups](/rest/api/resources/managementgroups)
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Data Share プレビューのロールおよび要件
-description: Azure Data Share プレビューのロールおよび要件
+description: Azure Data Share プレビューでデータ プロバイダーとデータ コンシューマーがデータを共有するためのアクセス制御の役割と要件について説明します。
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 7bf98f8774551292574d4f1951eba44657fa7de0
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c0841f6386440776c6ea719f9932a53cada9d9c4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307352"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166371"
 ---
 # <a name="roles-and-requirements-for-azure-data-share-preview"></a>Azure Data Share プレビューのロールおよび要件
 

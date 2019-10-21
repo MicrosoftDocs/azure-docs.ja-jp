@@ -1,0 +1,97 @@
+### YamlMime:Landing
+title: Azure SQL Data Warehouse
+summary: SQL リレーショナル データベースに超並列処理 (MPP) を統合する Azure SQL Data Warehouse の使用方法について説明します。 チュートリアルなどのドキュメントでは、データ ウェアハウスを使ってデータを設計、読み込み、管理、分析する方法を紹介します。
+metadata:
+  title: Azure SQL Data Warehouse
+  description: description
+  services: sql-data-warehouse
+  ms.service: sql-data-warehouse
+  ms.subservice: design
+  ms.topic: landing-page
+  ms.collection: collection
+  author: julieMSFT
+  ms.author: jrasnick
+  ms.date: 10/03/2019
+  ms.openlocfilehash: ffb90d5d15b83570511c3f70b39f9f83f000ab35
+  ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/10/2019
+  ms.locfileid: "72245849"
+landingContent:
+- title: SQL Data Warehouse について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SQL Data Warehouse の概要
+      url: sql-data-warehouse-overview-what-is.md
+  - linkListType: architecture
+    links:
+    - text: SQL Data Warehouse - MPP アーキテクチャ
+      url: massively-parallel-processing-mpp-architecture.md
+    - text: データ ウェアハウスに関するヒントとベスト プラクティス
+      url: cheat-sheet.md
+- title: 使用の開始
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: SQL Data Warehouse の作成
+      url: create-data-warehouse-portal.md
+- title: データを読み込む
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: PolyBase データの読み込み戦略を設計する
+      url: design-elt-data-loading.md
+    - text: データの読み込みのベスト プラクティス
+      url: guidance-for-loading-data.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Data Lake Storage からデータを読み込む
+      url: sql-data-warehouse-load-from-azure-data-lake-store.md
+  - linkListType: tutorial
+    links:
+    - text: Azure Blob Storage からデータを読み込む
+      url: load-data-from-azure-blob-storage-using-polybase.md
+- title: パフォーマンスのチューニング
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SQL Data Warehouse のベスト プラクティス
+      url: sql-data-warehouse-best-practices.md
+    - text: 順序指定クラスター化列ストア インデックスのチューニング
+      url: performance-tuning-ordered-cci.md
+    - text: ワークロードのチューニングに具体化されたビューを使用する
+      url: performance-tuning-materialized-views.md
+  - linkListType: how-to-guide
+    links:
+    - text: ワークロードを分析する
+      url: analyze-your-workload.md
+- title: SQL Data Warehouse の管理と監視
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SQL Data Warehouse の管理と監視について学ぶ
+      url: sql-data-warehouse-overview-manageability-monitoring.md
+  - linkListType: how-to-guide
+    links:
+    - text: DMV を利用してワークロードを監視する
+      url: sql-data-warehouse-manage-monitor.md
+    - text: ワークロードの重要度の管理と監視
+      url: sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md
+- title: SQL Data Warehouse をセキュリティで保護します
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: SQL Data Warehouse のセキュリティ保護の基本を学ぶ
+      url: sql-data-warehouse-overview-manage-security.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Active Directory 認証を構成する
+      url: /azure/sql-database/sql-database-aad-authentication-configure?toc=/azure/sql-data-warehouse/toc.json&bc=/azure/sql-data-warehouse/breadcrumb/toc.json
+- title: リソース
+  linkLists:
+  - linkListType: video
+    links:
+    - text: Azure SQL Data Warehouse に関する最新のビデオを見る
+      url: sql-data-warehouse-videos.md

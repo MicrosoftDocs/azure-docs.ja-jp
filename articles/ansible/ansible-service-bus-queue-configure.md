@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Ansible を使用して Azure Service Bus のキューを構成する | Microsoft Docs
+title: チュートリアル - Ansible を使用して Azure Service Bus のキューを構成する
 description: Ansible を使用して、Azure Service Bus キューを作成する方法について説明します
 keywords: ansible、azure、devops、bash、プレイブック、サービス バス、キュー
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 6efc11106fae18beac43ab1896733ab6bfc64dad
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: a48796c2177a8b5b818553bf8aa0ff36f712d4e0
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230779"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241397"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>チュートリアル:Ansible を使用して Azure Service Bus のキューを構成する
 
@@ -82,7 +82,7 @@ ansible-playbook servicebus_queue.yml
 
 [Shared Access Signature (SAS)](/azure/storage/common/storage-dotnet-shared-access-signature-part-1) は、トークンを使う要求ベースの承認メカニズムです。 
 
-プレイブックのサンプル コードは、特権の異なる Service Bus キューの 2 つの SAS ポリシーを作成します。
+サンプル プレイブック コードは、異なる特権を持つ Service Bus キューの 2 つの SAS ポリシーを作成します。
 
 次のプレイブックを `servicebus_queue_policy.yml` という名前で保存します。
 
@@ -117,7 +117,7 @@ ansible-playbook servicebus_queue_policy.yml
 
 ## <a name="retrieve-namespace-information"></a>名前空間情報を取得する
 
-プレイブックのサンプル コードは、名前空間の情報をクエリします。
+サンプル プレイブック コードは、名前空間情報のクエリを実行します。
 
 次のプレイブックを `servicebus_namespace_info.yml` という名前で保存します。
 
@@ -185,7 +185,7 @@ ansible-playbook servicebus_queue_info.yml
 
 ## <a name="revoke-the-queue-sas-policy"></a>キューの SAS ポリシーを取り消す
 
-プレイブックのサンプル コードは、キューの SAS ポリシーを削除します。
+サンプル プレイブック コードは、キューの SAS ポリシーを削除します。
 
 次のプレイブックを `servicebus_queue_policy_delete.yml` という名前で保存します。
 

@@ -1,18 +1,18 @@
 ---
-title: Azure Lighthouse で推奨されるセキュリティ プラクティス
-description: Azure の委任されたリソース管理を使用する場合は、セキュリティとアクセスの制御を考慮することが大切です。
+title: 推奨セキュリティ プラクティス
+description: Azure の委任されたリソース管理を使用する場合、セキュリティとアクセスの制御を考慮することが大切です。
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
 ms.date: 07/11/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: 843b965e6ea74a7c11dc11459ff5d30ddbe5c987
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 08a54313885c7d38117c242f01c2780796f38a08
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810866"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286184"
 ---
 # <a name="recommended-security-practices"></a>推奨セキュリティ プラクティス
 
@@ -32,7 +32,7 @@ Azure の委任されたリソース管理を使用する場合は、セキュ�
 
 たとえば、次のような体系を使用することが考えられます。
 
-|グループ名  |Type  |principalId  |ロール定義  |ロール定義 ID  |
+|グループ名  |種類  |principalId  |ロール定義  |ロール定義 ID  |
 |---------|---------|---------|---------|---------|
 |Architects     |ユーザー グループ         |\<principalId\>         |Contributor         |b24988ac-6180-42a0-ab88-20f7382dd24c  |
 |評価     |ユーザー グループ         |\<principalId\>         |Reader         |acdd72a7-3385-48ef-bd42-f606fba81ae7  |

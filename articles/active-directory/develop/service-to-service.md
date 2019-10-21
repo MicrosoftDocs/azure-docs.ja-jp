@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 683664b3172cb12ba6adf6c8006e9685a6d1ec35
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a8f95dfd6410ae22a4596ac7d5d72add57e8029d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540316"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373885"
 ---
 # <a name="service-to-service-apps"></a>サービス間アプリ
 
@@ -73,4 +73,4 @@ ms.locfileid: "65540316"
 ## <a name="next-steps"></a>次の手順
 
 - その他の[アプリケーションの種類とシナリオ](app-types.md)について学習する
-- Azure AD [認証の基本](authentication-scenarios.md)について学習する
+- Azure AD [認証の基本](v1-authentication-scenarios.md)について学習する

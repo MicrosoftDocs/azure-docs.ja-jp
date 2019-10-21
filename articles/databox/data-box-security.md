@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 09/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 3e871b8d4de8ff83e260aded89e09ad5b17b3297
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 678bef1b18d60679be6c296a1fd7beef42f721b7
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65799239"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203828"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Azure Data Box のセキュリティとデータ保護
 
@@ -58,7 +58,7 @@ Data Box に対する入出力データは、次の機能によって保護さ�
 
 - 保存データの AES 256 ビット暗号化。
 - 輸送中データのための暗号化プロトコルを使用できます。
-- Azure へのアップロードが完了したデータは、デバイスから確実に消去されます。 データの消去は、NIST 800-88r1 標準に準拠しています。 データ消去イベントは[注文履歴](data-box-logs.md#download-order-history)に記録されます。
+- Azure へのアップロードが完了したデータは、デバイスから確実に消去されます。 データ消去は、[NIST 800-88r1 標準の ATA ハード ディスク ドライブに関する付録 A](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) のガイドラインに従っています。 データ消去イベントは[注文履歴](data-box-logs.md#download-order-history)に記録されます。
 
 ### <a name="data-box-service-protection"></a>Data Box サービスの保護
 
@@ -84,7 +84,7 @@ Azure Data Box は、同サービスにおける次の主要なインスタン�
   - 番地
   - City
   - 郵便番号
-  - 状態
+  - State
   - 国/地方/地域
   - 運送業者のアカウント番号
   - 配送追跡番号
@@ -106,7 +106,7 @@ Data Box では、次のセキュリティ ガイドラインが実装されて�
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | 劣悪な輸送条件に対する耐久性のため          |
 |[NIST SP 800-147](https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-147.pdf)      | 安全なファームウェア更新のため         |
 |[FIPS 140-2 Level 2](https://csrc.nist.gov/csrc/media/publications/fips/140/2/final/documents/fips1402.pdf)      | データ保護のため         |
-|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf)      | データのサニタイズのため         |
+|[NIST SP 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf) の ATA ハード ディスク ドライブに関する付録 A      | データのサニタイズのため         |
 
 ## <a name="next-steps"></a>次の手順
 

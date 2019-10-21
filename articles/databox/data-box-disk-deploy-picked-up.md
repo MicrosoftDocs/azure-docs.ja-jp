@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/11/2019
+ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 03ca6163b4f788d50f7f27a2fcaf2c9b6c02d84c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910112"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71128695"
 ---
 ::: zone target="chromeless"
 
@@ -89,11 +89,7 @@ ms.locfileid: "70910112"
 3. 箱にラベルを貼り付けます。 
 4. リンク先 (https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference ) からオンラインで集荷を予約します。 
 
-### <a name="in-japan-koreatabin-japan-korea"></a>[日本、韓国](#tab/in-japan-korea)
-
-日本と韓国での集荷手順を以下に示します。
-
-#### <a name="pick-up-in-japan"></a>日本で集荷する
+### <a name="in-japantabin-japan"></a>[日本](#tab/in-japan)
 
 1. 伝票に送信元の情報としてお客様の会社名と住所の情報を記入します。
 2. 次のメール テンプレートを使用して Quantium Solutions にメールを送信します。
@@ -118,9 +114,9 @@ ms.locfileid: "70910112"
 必要に応じて、次の情報で Quantium Solutions のサポート (日本語) にお問い合わせください。 
 
 - メール: Customerservice.JP@quantiumsolutions.com 
-- 電話： 03-5755-0150 
+- 電話: 03-5755-0150 
 
-#### <a name="pick-up-in-korea"></a>韓国で集荷する
+### <a name="in-koreatabin-korea"></a>[韓国](#tab/in-korea)
 
 1. 必ず返品用の伝票を同封してください。
 2. 伝票があるときに集荷を依頼するには:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 9ae8620b803fa9a911f44840a5fff5d190a316a1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086528"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030593"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Azure VM でゲスト OS ファイアウォールを無効にします
 
@@ -92,7 +92,7 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 1.  トラブルシューティング用の VM では、レジストリ エディターを起動し、**ファイル** > **ネットワーク レジストリへの接続**に移動します。
 
-2.   *ターゲット マシン*\SYSTEM 分岐を開き、次の値を指定します：
+2.  "*ターゲット マシン*"\SYSTEM 分岐を開き、次の値を指定します。
 
     ```
     <TARGET MACHINE>\SYSTEM\CurrentControlSet\services\SharedAccess\Parameters\FirewallPolicy\DomainProfile\EnableFirewall           -->        0 
@@ -102,13 +102,13 @@ VM がオンラインにあり、同じ仮想ネットワーク上の別の VM �
 
 3.  サービスを再起動します。 リモート レジストリを使用して行うことはできないため、サービス コンソールの削除を行う必要があります。
 
-4.  [ **Services.msc**]のインスタンスを開きます。
+4.  **Services.msc** のインスタンスを開きます。
 
 5.  **[サービス(ローカル)]** をクリックします。
 
 6.  **[Connect to another computer]\(別のコンピューターに接続\)** を選択します。
 
-7.  問題VMの **プライベート IP アドレス (DIP)**  を入力します。
+7.  問題の VM の**プライベート IP アドレス (DIP)** を入力します。
 
 8.  ローカルのファイアウォール ポリシーを再起動します。
 

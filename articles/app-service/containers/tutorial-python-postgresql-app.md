@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b5a21bd144558459ac60ae2da405f9ea57ca2fd1
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.openlocfilehash: 1fc322cf7e425e35751369ab8daf1ef1809d5f07
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70020184"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203269"
 ---
 # <a name="build-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>PostgreSQL を使用した Python (Django) Web アプリを Azure App Service で作成する
 
@@ -37,7 +37,7 @@ ms.locfileid: "70020184"
 > [!NOTE]
 > Azure Database for PostgreSQL を作成する前に、[ご利用のリージョンで提供されているコンピューティング世代](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers#compute-generations-and-vcores)を確認してください。
 
-この記事の手順は macOS で実行できます。 Linux および Windows でも手順はほとんど同じですが、このチュートリアルでは相違点について詳しく説明していません。
+この記事の手順は、macOS、Linux、および Windows で実行できます。手順はほとんど同じですが、このチュートリアルでは相違点について詳しく説明していません。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a33c6f6621e7fc7944bc116b27e5f26de88f77d9
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: 0abc7c4ae370a894c46eda38df41d64a6ef2cd91
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66389576"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027709"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Monitor アラートによって複雑なアクションをトリガーする方法
 
@@ -38,7 +38,7 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
 
 1.  Azure portal で、左上隅にある **[リソースの作成]** を選択します。
 
-2.   **[ロジック アプリ]** を見つけて選択し、 **[作成]** を選択します。
+2.  **[ロジック アプリ]** を見つけて選択し、 **[作成]** を選択します。
 
 3.  ロジック アプリに**名前**を付け、**リソース グループ**などを選択します。
 

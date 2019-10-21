@@ -1,19 +1,19 @@
 ---
-title: Azure HPC Cache の前提条件
+title: Azure HPC Cache (プレビュー) の前提条件
 description: Azure HPC Cache を使用するための前提条件
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 08/30/2019
-ms.author: v-erkell
-ms.openlocfilehash: 7bd1268784df50168e03673ac809b3a5854e2be7
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.date: 10/01/2019
+ms.author: rohogue
+ms.openlocfilehash: cfaa8f94dbb836a61b7f024c9426625d874dc524
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70775071"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709970"
 ---
-# <a name="prerequisites-for-azure-hpc-cache"></a>Azure HPC Cache の前提条件
+# <a name="prerequisites-for-azure-hpc-cache-preview"></a>Azure HPC Cache (プレビュー) の前提条件
 
 Azure portal を使用して新しい Azure HPC Cache を作成する前に、ご利用の環境が要件を満たしていることを確認します。
 
@@ -22,11 +22,11 @@ Azure portal を使用して新しい Azure HPC Cache を作成する前に、�
 有料サブスクリプションをお勧めします。
 
 > [!NOTE]
-> パブリック プレビューのリリース期間中は、お客様のサブスクリプションを使用してキャッシュ インスタンスを作成するためには、そのサブスクリプションを Azure HPC Cache チームがアクセス リストに追加する必要があります。 この手順によって、それぞれのお客様が確実にそのテスト キャッシュから高品質の応答性を得ることができます。 [こちらのフォーム](https://aka.ms/onboard-hpc-cache)に必要事項を記入してアクセスを要求してください。
+> プレビューのリリース期間中は、お客様のサブスクリプションを使用してキャッシュ インスタンスを作成するためには、そのサブスクリプションを Azure HPC Cache チームがアクセス リストに追加する必要があります。 この手順によって、それぞれのお客様が確実にそのテスト キャッシュから高品質の応答性を得ることができます。 [こちらのフォーム](https://aka.ms/onboard-hpc-cache)に必要事項を記入してアクセスを要求してください。
 
 ## <a name="network-infrastructure"></a>ネットワーク インフラストラクチャ
 
-キャッシュを使用するには、次の 2 つのネットワーク関連オプションを事前に設定しておく必要があります。
+キャッシュを使用するには、ネットワークに関連した次の 2 つの前提条件を事前に設定しておく必要があります。
 
 * Azure HPC Cache インスタンスの専用サブネット
 * DNS サポート (キャッシュがストレージや他のリソースにアクセスできるようにするため)
@@ -37,13 +37,13 @@ Azure HPC Cache には、次の条件を満たした専用のサブネットが�
 
 * サブネットには、使用できる IP アドレスが少なくとも 64 個必要です。
 * そのサブネットで他の VM をホストすることはできません。クライアント マシンなど、関連サービス用の VM であっても同様です。
-* 複数のキャッシュ インスタンスを使用する場合、各インスタンスに独自のサブネットが必要です。
+* 複数の Azure HPC Cache インスタンスを使用する場合、各インスタンスに独自のサブネットが必要です。
 
-ベスト プラクティスとして、キャッシュ用に新しいサブネットを作成することをお勧めします。 キャッシュを作成する過程で新しい仮想ネットワークとサブネットを作成できます。
+ベスト プラクティスとして、キャッシュごとに新しいサブネットを作成することをお勧めします。 キャッシュを作成する過程で新しい仮想ネットワークとサブネットを作成できます。
 
 ### <a name="dns-access"></a>DNS アクセス
 
-Azure HPC Cache がその仮想ネットワークの外部のリソースにアクセスするためには DNS が必要となります。 使用するリソースによっては、カスタマイズした DNS サーバーをセットアップし、そのサーバーと Azure DNS サーバーとの間の転送を構成する必要があります。 
+キャッシュからその仮想ネットワークの外部のリソースにアクセスするためには、DNS が必要です。 使用するリソースによっては、カスタマイズした DNS サーバーをセットアップし、そのサーバーと Azure DNS サーバーとの間の転送を構成する必要があります。
 
 * Azure Blob Storage のエンドポイントなど内部のリソースにアクセスするには、Azure ベースの DNS サーバーが必要です。
 * オンプレミスのストレージにアクセスするためには、ストレージのホスト名を解決できるカスタム DNS サーバーを構成する必要があります。
@@ -56,14 +56,15 @@ Azure 仮想ネットワークと DNS サーバーの構成について詳しく
 
 アクセス許可に関連したこれらの前提条件は、キャッシュの作成を始める前に確認しておいてください。
 
-* Azure HPC Cache は、仮想ネットワーク インターフェイス (NIC) を作成できることが必要です。 キャッシュを作成するユーザーは、NIC を作成できるだけの権限をサブスクリプションにおいて有している必要があります。
-<!-- There are several ways to authorize this access; read [Additional prerequisites](media/preview-prereqs.md) to learn more. -->
+* キャッシュ インスタンスで仮想ネットワーク インターフェイス (NIC) を作成できる必要があります。 キャッシュを作成するユーザーは、NIC を作成できるだけの権限をサブスクリプションにおいて有している必要があります。
 
-* Blob Storage を使用する場合、Azure HPC Cache インスタンスは、ストレージ アカウントにアクセスするために承認を必要とします。 ロールベースのアクセス制御 (RBAC) を使用して Blob Storage へのアクセス権をキャッシュに与えることができます。 ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者の 2 つのロールが必要となります。 [キャッシュにストレージを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順に従ってください。
+* Blob Storage を使用する場合、Azure HPC Cache には、ストレージ アカウントにアクセスするための承認が必要です。 ロールベースのアクセス制御 (RBAC) を使用して Blob Storage へのアクセス権をキャッシュに与えることができます。 2 つのロールが必要です。ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者です。 ロールを追加するには、[ストレージ ターゲットを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順に従ってください。
 
 ## <a name="storage-infrastructure"></a>ストレージ インフラストラクチャ
 
-キャッシュでは、Azure BLOB コンテナーまたは NFS ハードウェア ストレージ エクスポートがサポートされます。 ストレージ ターゲットはキャッシュの作成時に定義できますが、後から追加することもできます。 
+キャッシュでは、Azure BLOB コンテナーまたは NFS ハードウェア ストレージ エクスポートがサポートされます。 キャッシュを作成した後で、ストレージ ターゲットを追加します。
+
+ストレージの種類ごとに特定の前提条件があります。
 
 ### <a name="nfs-storage-requirements"></a>NFS ストレージの要件
 
@@ -73,7 +74,7 @@ NFS バックエンド ストレージは、互換性のあるハードウェア
 
 ### <a name="blob-storage-requirements"></a>Blob Storage の要件
 
-Azure HPC Cache で Azure Blob Storage の使用を希望する場合、互換性のあるストレージ アカウントに加え、空の BLOB コンテナーか、Azure HPC Cache フォーマットのデータが事前設定されたコンテナーが必要です ([Azure Blob Storage へのデータの移動](hpc-cache-ingest.md)に関するページを参照)。
+お使いのキャッシュで Azure Blob Storage の使用を希望する場合、互換性のあるストレージ アカウントに加え、空の BLOB コンテナーか、Azure HPC Cache フォーマットのデータが事前設定されたコンテナーが必要です ([Azure Blob Storage にデータを移動する](hpc-cache-ingest.md)方法を参照)。
 
 ストレージ ターゲットとして追加するアカウントとコンテナーは、事前に作成しておいてください。
 
@@ -85,8 +86,9 @@ Azure HPC Cache で Azure Blob Storage の使用を希望する場合、互換�
 * アクセス層 (既定): **ホット**
 
 キャッシュと同じ場所にあるストレージ アカウントの使用をお勧めします。
+<!-- need to clarify location - same region or same resource group or same virtual network? -->
 
-また、キャッシュ アプリケーションには、Azure Storage アカウントへのアクセス権を与える必要があります。 [キャッシュにストレージを追加](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)する手順の説明に従って、ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者のアクセス ロールをキャッシュに与えます。 ストレージ アカウント所有者ではない場合は、この手順を所有者に依頼してください。
+また、キャッシュ アプリケーションには、Azure Storage アカウントへのアクセス権を与える必要があります。 [ストレージ ターゲットを追加する](hpc-cache-add-storage.md#add-the-access-control-roles-to-your-account)手順の説明に従って、ストレージ アカウント共同作成者とストレージ BLOB データ共同作成者のアクセス ロールをキャッシュに与えます。 ストレージ アカウント所有者ではない場合は、この手順を所有者に依頼してください。
 
 ## <a name="next-steps"></a>次の手順
 

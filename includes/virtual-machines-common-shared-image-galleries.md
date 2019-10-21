@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 529a8b6136a5d9c69b044df2614644bdbd4fd4f4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 9a564bf7f633903c58a5719327216baee2df6550
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012182"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026156"
 ---
 共有イメージ ギャラリーは、マネージド イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -31,7 +31,7 @@ ms.locfileid: "69012182"
 
 共有イメージ ギャラリー機能には、次のような複数のリソースの種類があります。
 
-| Resource | 説明|
+| リソース | 説明|
 |----------|------------|
 | **マネージド イメージ** | 単独で使用することも、イメージ ギャラリーに**イメージ バージョン**を作成するために使用することもできる基本的なイメージ。 マネージド イメージは、一般化された VM から作成されます。 マネージド イメージは、複数の VM を作成する際に使用できる特別な種類の VHD で、共有イメージ バージョンを作成する際にも使用できるようになりました。 |
 | **イメージ ギャラリー** | Azure Marketplace などの **イメージ ギャラリー**は、イメージを管理して共有するためのリポジトリです。ただし、アクセス権の所有者を制御します。 |
@@ -40,13 +40,11 @@ ms.locfileid: "69012182"
 
 <br>
 
-
 ![ギャラリー内に複数のイメージ バージョンを保持できる仕組みを示した図](./media/shared-image-galleries/shared-image-gallery.png)
 
 ## <a name="image-definitions"></a>イメージ定義
 
 イメージ定義は、イメージのバージョンの論理的なグループです。 イメージ定義では、イメージが作成された理由、対象の OS、イメージの使用に関する情報などの情報が保持されます。 イメージ定義は、特定のイメージの作成に関するすべての詳細情についてのプランのようなものです。 VM のデプロイは、イメージ定義からではなく、定義から作成されたイメージ バージョンから行います。
-
 
 各イメージ定義には、**パブリッシャー**、**オファー**、**SKU** という 3 つのパラメーターがあり、これらを組み合わせて使います。 これらは、特定のイメージ定義の検索に使われます。 3 つの値のうち 1 つまたは 2 つを共有するイメージ バージョンを保有することはできますが、3 つ全部を共有するイメージ バージョンを保有することはできません。  たとえば、以下に示したのは 3 つのイメージ定義とその値です。
 
@@ -65,16 +63,14 @@ ms.locfileid: "69012182"
 * 説明 - そのイメージ定義が存在する理由についての詳細な情報を提供するために使います。 たとえば、アプリケーションがプレインストールされているフロントエンド サーバー用のイメージ定義などです。
 * Eula - イメージ定義に固有のエンド ユーザー ライセンス契約を示すために使うことができます。
 * プライバシーに関する声明およびリリース ノート - リリース ノートとプライバシーに関する声明を Azure Storage に格納し、イメージ定義の一部としてそれらにアクセスするための URI を提供します。
-* 有効期限日 - オートメーションを使って古いイメージ定義を削除できるようにするには、有効期限の日付をイメージ定義に添付します。
+* 終了日 - オートメーションを使って古いイメージ定義を削除できるように、終了日をイメージ定義にアタッチします。
 * タグ - イメージ定義を作成するときに、タグを追加することができます。 タグについて詳しくは、[タグを使用したリソースの整理](../articles/azure-resource-manager/resource-group-using-tags.md)に関する記事をご覧ください
 * vCPU とメモリの最小値と最大値の推奨 - イメージに vCPU とメモリの推奨値がある場合は、その情報をイメージ定義に添付できます。
 * 許可されないディスクの種類 - VM に対するストレージ ニーズに関する情報を提供することができます。 たとえば、イメージが Standard HDD ディスクに適さない場合は、禁止リストにそれを追加します。
 
-
 ## <a name="regional-support"></a>リージョン サポート
 
 ソース リージョンを次の表に示します。 すべてのパブリック リージョンをターゲット リージョンにできますが、オーストラリア中部およびオーストラリア中部 2 にレプリケートするには、サブスクリプションがホワイトリストに登録されている必要があります。 ホワイトリストへの登録を申請するには、 https://azure.microsoft.com/global-infrastructure/australia/contact/ にアクセスしてください。
-
 
 | ソース リージョン |
 |---------------------|-----------------|------------------|-----------------|
@@ -83,12 +79,10 @@ ms.locfileid: "69012182"
 | オーストラリア東部      | East US         | 米国中北部 | インド西部      |
 | オーストラリア南東部 | 米国東部 2       | 北ヨーロッパ     | 米国西部         |
 | ブラジル南部        | 米国東部 2 EUAP  | 米国中南部 | 米国西部 2       |
-| カナダ中部      | フランス中部  | インド南部      |                 |
-| カナダ東部         | フランス南部    | 東南アジア   |                 |
-| インド中部       | 東日本      | 英国南部         |                 |
-| 米国中部          | 西日本      | 英国西部          |                 |
-
-
+| カナダ中部      | フランス中部  | インド南部      | 中国 (東部)      |
+| カナダ東部         | フランス南部    | 東南アジア   | 中国東部 2    |
+| インド中部       | 東日本      | 英国南部         | 中国 (北部)     |
+| 米国中部          | 西日本      | 英国西部          | 中国北部 2   |
 
 ## <a name="limits"></a>制限 
 
@@ -99,22 +93,17 @@ ms.locfileid: "69012182"
 
 現在の使用量を確認する方法など、詳細については、「[制限に照らしたリソース使用量の確認](https://docs.microsoft.com/azure/networking/check-usage-against-limits)」をご覧ください。
  
-
 ## <a name="scaling"></a>スケーリング
 共有イメージ ギャラリーを使用して、Azure で保持したいイメージのレプリカ数を指定できます。 これにより、単一レプリカのオーバーロードが原因でインスタンス作成処理の機会が減少しているさまざまなレプリカに対して、VM のデプロイを拡大できるので、マルチ VM デプロイのシナリオに役立ちます。
 
-
 共有イメージ ギャラリーを使用すると、仮想マシン スケール セットで最大 1,000 個の VM インスタンスをデプロイできます (マネージド イメージでの 600 個から増加)。 イメージ レプリカでは、より優れたデプロイのパフォーマンス、信頼性、一貫性を提供します。  そのリージョンでのスケールのニーズに基づいて、各ターゲット リージョンで異なるレプリカ数を設定できます。 各レプリカはご利用のイメージの詳細コピーであるため、これによりそれぞれの追加のレプリカで線形的にデプロイをスケーリングできます。 2 つのイメージまたはリージョンが同じではないことは理解していますが、1 つのリージョンで複数のレプリカを使用する方法についての一般的なガイドラインを次に示します。
 
-- 同時に作成する VM 20 個ごとに、1 つのレプリカを保持することをお勧めします。 たとえば、1 つのリージョンの同じイメージを使用して同時に 120 個の VM を作成している場合、自分のイメージの少なくとも 6 個のレプリカを保持することをお勧めします。 
-- 最大 600 個のインスタンスを含むスケール セットのデプロイごとに、少なくとも 1 つのレプリカを保持することをお勧めします。 たとえば、それぞれが 1 つのリージョンの同じイメージを使用する 600 個の VM インスタンスを含む、5 個のスケール セットを同時に作成している場合、自分のイメージの少なくとも 5 個のレプリカを保持することをお勧めします。 
+- Virtual Machine Scale Set (VMSS) デプロイ以外の場合 - 同時に作成する 20 個の VM ごとに、1 つのレプリカを保持することをお勧めします。 たとえば、1 つのリージョンの同じイメージを使用して同時に 120 個の VM を作成している場合、自分のイメージの少なくとも 6 個のレプリカを保持することをお勧めします。 
+- Virtual Machine Scale Set (VMSS) デプロイの場合 - 最大 600 個のインスタンスを含むスケール セットのデプロイごとに、少なくとも 1 つのレプリカを保持することをお勧めします。 たとえば、それぞれが 1 つのリージョンの同じイメージを使用する 600 個の VM インスタンスを含む、5 個のスケール セットを同時に作成している場合、自分のイメージの少なくとも 5 個のレプリカを保持することをお勧めします。 
 
 常に、イメージ サイズ、コンテンツ、OS の種類などの要因で、レプリカの数を過剰プロビジョニングすることをお勧めします。
 
-
 ![イメージをスケーリングできる仕組みを示した図](./media/shared-image-galleries/scaling.png)
-
-
 
 ## <a name="make-your-images-highly-available"></a>イメージの高可用性化
 
@@ -124,14 +113,12 @@ ms.locfileid: "69012182"
 
 ![ZRS を示すグラフィック](./media/shared-image-galleries/zrs.png)
 
-
 ## <a name="replication"></a>レプリケーション
 共有イメージ ギャラリーでは、他の Azure リージョンにイメージを自動的にレプリケートすることもできます。 各共有イメージ バージョンは、組織の目的に応じて、さまざまなリージョンにレプリケートできます。 たとえば、古いバージョンをすべて 1 つのリージョン内のみで利用可能にし、その一方で、複数のリージョンに最新のイメージを常にレプリケートするとします。 これにより、共有イメージ バージョンのストレージに対するコストが節約できます。 
 
 共有イメージ バージョンのレプリケート先のリージョンは、作成時刻より後に更新できます。 さまざまなリージョンへのレプリケートにかかる時間は、コピーされるデータ量と、バージョンのレプリケート先となるリージョン数に応じて変わります。 場合によっては、これに 2 ～ 3 時間かかることがあります。 レプリケーションが行われている間は、リージョンごとのレプリケーション ステータスを確認できます。 リージョンでイメージのレプリケーションが完了すると、以降はリージョン内でそのイメージ バージョンを使って、VM またはスケール セットをデプロイできます。
 
 ![イメージをレプリケートできる仕組みを示した図](./media/shared-image-galleries/replication.png)
-
 
 ## <a name="access"></a>Access
 
@@ -170,7 +157,6 @@ ms.locfileid: "69012182"
 - 最新から除外
 - 有効期限の終了日
 
-
 ## <a name="sdk-support"></a>SDK のサポート
 
 共有イメージ ギャラリーの作成は、次の SDK でサポートされます。
@@ -192,9 +178,25 @@ ms.locfileid: "69012182"
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問 
 
-**Q.** サブスクリプション全体のすべての共有イメージ ギャラリーのリソースを表示する方法はありますか? 
- 
- A. アクセス可能なサブスクリプション全体の共有イメージ ギャラリーのリソースをAzure portal 上にすべて一覧表示するには、次の手順に従います。
+* [サブスクリプションを超えてすべての Shared Image Gallery のリソースを表示する方法はありますか?](#how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions) 
+* [共有イメージ ギャラリーに既存のイメージを移動できますか?](#can-i-move-my-existing-image-to-the-shared-image-gallery)
+* [特殊なディスクからイメージ バージョンを作成できますか?](#can-i-create-an-image-version-from-a-specialized-disk)
+* [Shared Image Gallery リソースが作成された後に、それを別のサブスクリプションに移動することはできますか?](#can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created)
+* [Azure China 21Vianet、Azure Germany、または Azure Government クラウドなどの複数のクラウドとの間で、自分のイメージ バージョンをレプリケートできますか?](#can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud)
+* [サブスクリプションとの間で自分のイメージ バージョンをレプリケートできますか?](#can-i-replicate-my-image-versions-across-subscriptions)
+* [Azure AD のテナントとの間でイメージ バージョンを共有できますか?](#can-i-share-image-versions-across-azure-ad-tenants)
+* [ターゲット リージョン全体でイメージ バージョンをレプリケートするには、どのくらいの時間がかかりますか?](#how-long-does-it-take-to-replicate-image-versions-across-the-target-regions)
+* [ソース リージョンとターゲット リージョンの違いは何ですか?](#what-is-the-difference-between-source-region-and-target-region)
+* [イメージ バージョンの作成時にソース リージョンを指定する方法](#how-do-i-specify-the-source-region-while-creating-the-image-version)
+* [各リージョンで作成されるイメージ バージョンのレプリカ数を指定する方法](#how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region)
+* [イメージ定義とイメージ バージョン用のものとは別の場所に、共有イメージ ギャラリーを作成できますか?](#can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version)
+* [Shared Image Gallery の使用料金はどうなりますか?](#what-are-the-charges-for-using-the-shared-image-gallery)
+* [Shared Image Gallery、イメージ定義、イメージ バージョンを作成するには、どの API バージョンを使用する必要がありますか?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
+* [イメージ バージョンから共有 VM または仮想マシン スケール セットを作成するには、どの API バージョンを使用する必要がありますか?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+
+### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>サブスクリプション全体のすべての共有イメージ ギャラリーのリソースを表示する方法はありますか?
+
+アクセス可能なサブスクリプション全体での Shared Image Gallery リソースをAzure Portal 上にすべて一覧表示するには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
 1. **[すべてのリソース]** に移動します。
@@ -209,10 +211,9 @@ ms.locfileid: "69012182"
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
    ```
 
-
-**Q.** 共有イメージ ギャラリーに既存のイメージを移動できますか?
+### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>共有イメージ ギャラリーに既存のイメージを移動できますか?
  
- A. はい。 イメージの種類に基づいて、次の 3 つのシナリオが考えられます。
+はい。 イメージの種類に基づいて、次の 3 つのシナリオが考えられます。
 
  シナリオ 1:マネージド イメージがある場合は、イメージ定義を作成して、その定義からイメージ バージョンを作成できる。
 
@@ -222,47 +223,41 @@ ms.locfileid: "69012182"
 - VHD が Windows VM 対応の場合は、[汎用 VHD のアップロード](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed)に関するページを参照してください。
 - VHD が Linux VM 対応の場合は、「[VHD をアップロードする](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)」の手順を参照してください。
 
+### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>特殊なディスクからイメージ バージョンを作成できますか?
 
-**Q.** 特殊なディスクからイメージ バージョンを作成できますか?
+いいえ、特殊なディスクは現在、イメージとしてサポートしていません。 特殊なディスクがある場合、新しい VM にそのディスクをアタッチして、[VHD から VM を作成する](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk)必要があります。 VM が実行されたら、[Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) からマネージド イメージを作成する手順を実行する必要があります。 汎用のマネージド イメージができたら、共有イメージの説明とイメージ バージョンを作成するプロセスを開始できます。
 
- A. いいえ、特殊なディスクは現在、イメージとしてサポートしていません。 特殊なディスクがある場合、新しい VM にそのディスクをアタッチして、[VHD から VM を作成する](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk)必要があります。 VM が実行されたら、[Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) からマネージド イメージを作成する手順を実行する必要があります。 汎用のマネージド イメージができたら、共有イメージの説明とイメージ バージョンを作成するプロセスを開始できます。
+### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Shared Image Gallery リソースが作成された後に、それを別のサブスクリプションに移動することはできますか?
 
- 
-**Q.** 作成後、別のサブスクリプションに共有イメージ ギャラリー リソースを移動できますか?
+いいえ、別のサブスクリプションに共有イメージ ギャラリー リソースを移動することはできません。 ただし、今後、必要に応じてギャラリー内のイメージ バージョンを他のリージョンにレプリケートできるようにする予定です。
 
- A. いいえ、別のサブスクリプションに共有イメージ ギャラリー リソースを移動することはできません。 ただし、今後、必要に応じてギャラリー内のイメージ バージョンを他のリージョンにレプリケートできるようにする予定です。
+### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Azure China 21Vianet、Azure Germany、または Azure Government クラウドなどの複数のクラウドとの間で、自分のイメージ バージョンをレプリケートできますか?
 
-**Q.** Azure China 21Vianet、Azure Germany、および Azure Government Cloud の複数のクラウド間で、自分のイメージ バージョンをレプリケートできますか? 
+いいえ、クラウド間でイメージのバージョンをレプリケートすることはできません。
 
- A. いいえ、クラウド間でイメージのバージョンをレプリケートすることはできません。
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>サブスクリプション間で自分のイメージ バージョンをレプリケートできますか? 
 
-**Q.** サブスクリプション間で自分のイメージ バージョンをレプリケートできますか? 
+いいえ、1 つのサブスクリプション内にあるリージョン全体にイメージ バージョンをレプリケートして、RBAC 経由で他のサブスクリプションでこれを使用できます。
 
- A. いいえ、1 つのサブスクリプション内にあるリージョン全体にイメージ バージョンをレプリケートして、RBAC 経由で他のサブスクリプションでこれを使用できます。
+### <a name="can-i-share-image-versions-across-azure-ad-tenants"></a>Azure AD のテナント間でイメージ バージョンを共有できますか? 
 
-**Q.** Azure AD のテナント間でイメージ バージョンを共有できますか? 
+はい、RBAC を使用して、別のテナントのユーザーと共有することができます。 ただし、大規模に共有するには、[PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) または [CLI](../articles/virtual-machines/linux/share-images-across-tenants.md) を使用する "Azure テナント間のイメージ ギャラリーの共有" を参照してください。
 
- A. はい、RBAC を使用して、別のテナントのユーザーと共有することができます。 ただし、大規模に共有するには、[PowerShell](../articles/virtual-machines/windows/share-images-across-tenants.md) または [CLI](../articles/virtual-machines/linux/share-images-across-tenants.md) を使用する "Azure テナント間のイメージ ギャラリーの共有" を参照してください。
+### <a name="how-long-does-it-take-to-replicate-image-versions-across-the-target-regions"></a>ターゲット リージョン全体にイメージ バージョンをレプリケートするには、どのくらいの時間がかかりますか?
 
+イメージ バージョンのレプリケート時間は、イメージのサイズとレプリケートされるリージョン数に完全に依存します。 ただし、最短時間にするには、ベスト プラクティスとして、イメージを小規模なままにして、ソースとターゲットのリージョンを近接させることをお勧めします。 -ReplicationStatus フラグを使用して、レプリケーション ステータスをチェックできます。
 
-**Q.** ターゲット リージョン全体にイメージ バージョンをレプリケートするには、どのくらいの時間がかかりますか?
+### <a name="what-is-the-difference-between-source-region-and-target-region"></a>ソース リージョンとターゲット リージョンの違いは何ですか?
 
- A. イメージ バージョンのレプリケート時間は、イメージのサイズとレプリケートされるリージョン数に完全に依存します。 ただし、最短時間にするには、ベスト プラクティスとして、イメージを小規模なままにして、ソースとターゲットのリージョンを近接させることをお勧めします。 -ReplicationStatus フラグを使用して、レプリケーション ステータスをチェックできます。
+ソース リージョンとは、イメージ バージョンが作成されるリージョンであり、ターゲット リージョンとは、イメージ バージョンのコピーが保管されるリージョンです。 イメージ バージョンごとに、ソース リージョンは 1 つだけです。 また、イメージ バージョンを作成するときに、必ずソース リージョンの場所をターゲット リージョンの 1 つとして渡すようにします。
 
+### <a name="how-do-i-specify-the-source-region-while-creating-the-image-version"></a>イメージ バージョンの作成時にソース リージョンを指定する方法を教えてください。
 
-**Q.** ソース リージョンとターゲット リージョンの違いは何ですか?
+イメージ バージョンの作成時は、CLI の場合 **-location** タグ、PowerShell の場合 **-Location** タグを使用して、ソース リージョンを指定できます。 イメージ バージョンを作成するための基本イメージとして使用しているマネージド イメージが、イメージ バージョンの作成を予定している場所と同じ場所にあることを確認してください。 また、イメージ バージョンを作成するときに、必ずソース リージョンの場所をターゲット リージョンの 1 つとして渡すようにします。  
 
- A. ソース リージョンとは、イメージ バージョンが作成されるリージョンであり、ターゲット リージョンとは、イメージ バージョンのコピーが保管されるリージョンです。 イメージ バージョンごとに、ソース リージョンは 1 つだけです。 また、イメージ バージョンを作成するときに、必ずソース リージョンの場所をターゲット リージョンの 1 つとして渡すようにします。  
+### <a name="how-do-i-specify-the-number-of-image-version-replicas-to-be-created-in-each-region"></a>各リージョンで作成されるイメージ バージョンのレプリカ数を指定する方法を教えてください。
 
-
-**Q.** イメージ バージョンの作成時にソース リージョンを指定する方法を教えてください。
-
- A. イメージ バージョンの作成時は、CLI の場合 **-location** タグ、PowerShell の場合 **-Location** タグを使用して、ソース リージョンを指定できます。 イメージ バージョンを作成するための基本イメージとして使用しているマネージド イメージが、イメージ バージョンの作成を予定している場所と同じ場所にあることを確認してください。 また、イメージ バージョンを作成するときに、必ずソース リージョンの場所をターゲット リージョンの 1 つとして渡すようにします。  
-
-
-**Q.** 各リージョンで作成されるイメージ バージョンのレプリカ数を指定する方法を教えてください。
-
- A. 各リージョンで作成されるイメージ バージョンのレプリカ数は、次の 2 つの方法で指定できます。
+各リージョンで作成されるイメージ バージョンのレプリカ数は、次の 2 つの方法で指定できます。
  
 1. リージョン レプリカ数。リージョンごとに作成したいレプリカ数を指定します。 
 2. リージョン レプリカ数が指定されない場合、リージョンごとの既定値となる共通レプリカ数。 
@@ -273,16 +268,18 @@ ms.locfileid: "69012182"
 
 CLI で共通レプリカ数を指定するには、`az sig image-version create` コマンドで **-replica-count** 引数を使用します。
 
+### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>イメージ定義とイメージ バージョン用のものとは別の場所に、共有イメージ ギャラリーを作成できますか?
 
-**Q.** イメージ定義とイメージ バージョンの作成場所とは別の場所に、共有イメージ ギャラリーを作成できますか?
+はい、できます。 ただし、ベスト プラクティスとしては、リソース グループ、共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンを同じ場所に保持することをお勧めします。
 
- A. はい、できます。 ただし、ベスト プラクティスとしては、リソース グループ、共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンを同じ場所に保持することをお勧めします。
+### <a name="what-are-the-charges-for-using-the-shared-image-gallery"></a>共有イメージ ギャラリーの使用料金はどうなりますか?
 
+イメージ バージョンを格納するためのストレージの料金、ソース リージョンからターゲット リージョンへイメージ バージョンをレプリケートするためのネットワーク エグレスの料金を除いて、共有イメージ ギャラリー サービスの使用料金はかかりません。
 
-**Q.** 共有イメージ ギャラリーの使用料金はどうなりますか?
+### <a name="what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version"></a>Shared Image Gallery、イメージ定義、イメージ バージョンを作成するには、どの API バージョンを使用する必要がありますか?
 
- A. イメージ バージョンを格納するためのストレージの料金、ソース リージョンからターゲット リージョンへイメージ バージョンをレプリケートするためのネットワーク エグレスの料金を除いて、共有イメージ ギャラリー サービスの使用料金はかかりません。
+共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンを操作するには、API バージョン 2018-06-01 を使用することをお勧めします。 ゾーン冗長ストレージ (ZRS) には、バージョン 2019-03-01 以降が必要です。
 
-**Q.** 共有イメージ ギャラリー、イメージ定義、イメージ バージョン、およびイメージ バージョンからの VM/VMSS を作成するには、どの API バージョンを使用する必要がありますか?
+### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>イメージ バージョンから共有 VM または仮想マシン スケール セットを作成するには、どの API バージョンを使用する必要がありますか?
 
- A. イメージ バージョンを使用する VM と仮想マシン スケール セットのデプロイには、API バージョン 2018-04-01 以上を使用することをお勧めします。 共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンを操作するには、API バージョン 2018-06-01 を使用することをお勧めします。 ゾーン冗長ストレージ (ZRS) には、バージョン 2019-03-01 以降が必要です。
+イメージ バージョンを使用する VM と仮想マシン スケール セットのデプロイには、API バージョン 2018-04-01 以上を使用することをお勧めします。

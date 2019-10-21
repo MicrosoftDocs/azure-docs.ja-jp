@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8b2cad95929d6132a4f0ae52597fb1633874ff1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 673807377914aabad5b90d1ac2ecc16623870d30
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68592109"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063371"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -41,7 +41,7 @@ ms.locfileid: "68592109"
 | Attribute | 必須 | 説明 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | はい | ポリシーを実行するために使用されるスキーマ バージョン。 値は `0.3.0.0` である必要があります |
-| TenantObjectId | いいえ | Azure Active Directory (Azure AD) B2C テナントの一意のオブジェクト識別子。 |
+| TenantObjectId | いいえ | Azure Active Directory B2C (Azure AD B2C) テナントの一意のオブジェクト識別子。 |
 | TenantId | はい | このポリシーが属するテナントの一意の識別子。 |
 | PolicyId | はい | ポリシーの一意識別子。 この識別子には、プレフィックスとして *B2C_1A_* を付ける必要があります。 |
 | PublicPolicyUri | はい | ポリシーの URI。テナント ID とポリシー ID の組み合わせです。 |

@@ -7,19 +7,19 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: atsenthi
-ms.openlocfilehash: cf04efd8dac3ba4d252701d79c65b1bf56619fe0
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: cf971d71c2566d91bc5a2490d47521725c62b17d
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968237"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973421"
 ---
 # <a name="deploy-service-fabric-application-with-system-assigned-managed-identity-preview"></a>システム割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする (プレビュー)
 
 Azure Service Fabric アプリケーションのマネージド ID 機能にアクセスするには、まずクラスターでマネージド ID トークン サービスを有効にする必要があります。 このサービスは、マネージド ID を使用して Service Fabric アプリケーションの認証を実行し、アクセス トークンを代理で取得します。 サービスが有効になると、Service Fabric Explorer の左側のウィンドウの **[システム]** セクションに表示され、他のシステム サービスの横で **fabric:/System/ManagedIdentityTokenService** という名前で実行されます。
 
 > [!NOTE] 
-> マネージ ID を持つ Service Fabric アプリケーションのデプロイは、API バージョン `"2019-06-01-preview"` 以降でサポートされています。 アプリケーションの種類、アプリケーションの種類のバージョン、サービス リソースに対しても同じ API バージョンを使用できます。 サポートされている Service Fabric ランタイムの最小バージョンは 6.5 CU2 です。
+> マネージ ID を持つ Service Fabric アプリケーションのデプロイは、API バージョン `"2019-06-01-preview"` 以降でサポートされています。 アプリケーションの種類、アプリケーションの種類のバージョン、サービス リソースに対しても同じ API バージョンを使用できます。 サポートされている Service Fabric ランタイムの最小バージョンは 6.5 CU2 です。 さらに、ビルド/パッケージ環境には CU2 以上の SF .Net SDK も含まれている必要があります。
 
 ## <a name="system-assigned-managed-identity"></a>システム割り当てマネージド ID
 

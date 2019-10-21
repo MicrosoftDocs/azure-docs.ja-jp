@@ -12,14 +12,14 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: b86f08fbcb661ae4266658016de7aa92da785bf9
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 436ab0a561349185de58c3783f334ea1dce9001d
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070592"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720126"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -140,9 +140,6 @@ ms.locfileid: "70070592"
 
 ### <a name="swap-with-preview-multi-phase-swap"></a>プレビューでのスワップ (複数フェーズのスワップ)
 
-> [!NOTE]
-> プレビューでのスワップは、Linux 上の Web アプリではサポートされていません。
-
 ターゲット スロットとしての運用環境にスワップする前に、スワップ後の設定でアプリの実行を検証します。 ソース スロットは、スワップの完了前にウォームアップもされているため、ミッション クリティカルなアプリケーションに適しています。
 
 プレビューでのスワップを実行すると、App Service は同じ[スワップ操作](#AboutConfiguration)を実行しますが、最初の手順の後に、一時停止します。 その後、スワップを完了する前にステージング スロットでの結果を検証できます。 
@@ -204,7 +201,8 @@ ms.locfileid: "70070592"
 <a name="Warm-up"></a>
 
 ## <a name="specify-custom-warm-up"></a>カスタム ウォームアップを指定する
-[自動スワップ](#Auto-Swap)を使おうとしているときに、一部のアプリでは、スワップ前のカスタム ウォームアップ アクションが必要な場合があります。 web.config の `applicationInitialization` 構成要素を使用して、カスタム初期化アクションを指定できます。 [スワップ操作](#AboutConfiguration)では、このカスタム ウォームアップの終了を待ってから、ターゲット スロットとのスワップが行われます。 以下に、サンプルの web.config フラグメントを示します。
+
+一部のアプリでは、スワップ前のカスタム ウォームアップ アクションが必要な場合があります。 web.config の `applicationInitialization` 構成要素を使用して、カスタム初期化アクションを指定できます。 [スワップ操作](#AboutConfiguration)では、このカスタム ウォームアップの終了を待ってから、ターゲット スロットとのスワップが行われます。 以下に、サンプルの web.config フラグメントを示します。
 
     <system.webServer>
         <applicationInitialization>
@@ -219,6 +217,9 @@ ms.locfileid: "70070592"
 
 - `WEBSITE_SWAP_WARMUP_PING_PATH`:サイトをウォームアップするための ping へのパス。 このアプリ設定を追加するには、値としてスラッシュで始まるカスタム パスを指定します。 例: `/statuscheck`。 既定値は `/` です。 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`:ウォーム アップ操作の有効な HTTP 応答コード。 HTTP コードのコンマ区切りの一覧で、このアプリ設定を追加します。 たとえば `200,202` とします。 返された状態コードが一覧にない場合、ウォームアップとスワップの操作が停止されます。 既定で、すべての応答コードは有効です。
+
+> [!NOTE]
+> `<applicationInitialization>` は、各アプリの起動に含まれますが、2 つのアプリ設定はスロット スワップにのみ適用されます。
 
 問題がある場合は、「[スワップのトラブルシューティングを行う](#troubleshoot-swaps)」を参照してください。
 
@@ -331,7 +332,61 @@ Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller Slo
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
----
+## <a name="automate-with-arm-templates"></a>ARM テンプレートで自動化する
+
+[ARM テンプレート](https://docs.microsoft.com/en-us/azure/azure-resource-manager/template-deployment-overview)は、Azure リソースのデプロイと構成を自動化するために使用される宣言型の JSON ファイルです。 ARM テンプレートを使用してスロットをスワップするには、*Microsoft.Web/sites/slots* と *Microsoft.Web/sites* リソースに 2 つのプロパティを設定する必要があります。
+
+- `buildVersion`: これは、スロットにデプロイされているアプリの現在のバージョンを表す文字列プロパティです。 たとえば、"v1"、"1.0.0.1"、または "2019-09-20T11:53:25.2887393-07:00" のようになります。
+- `targetBuildVersion`: これは、スロットに必要な `buildVersion` を指定する文字列プロパティです。 targetBuildVersion が現在の `buildVersion` と等しくない場合は、指定された `buildVersion` を持つスロットを検索することによってスワップ操作がトリガーされます。
+
+### <a name="example-arm-template"></a>ARM テンプレートの例
+
+次の ARM テンプレートは、ステージング スロットの `buildVersion` を更新し、運用スロットに `targetBuildVersion` を設定します。 これにより、2 つのスロットがスワップされます。 このテンプレートは、"staging" という名前のスロットを持つ Web アプリが既に作成されていることを前提としています。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "my_site_name": {
+            "defaultValue": "SwapAPIDemo",
+            "type": "String"
+        },
+        "sites_buildVersion": {
+            "defaultValue": "v1",
+            "type": "String"
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites/slots",
+            "apiVersion": "2018-02-01",
+            "name": "[concat(parameters('my_site_name'), '/staging')]",
+            "location": "East US",
+            "kind": "app",
+            "properties": {
+                "buildVersion": "[parameters('sites_buildVersion')]"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2018-02-01",
+            "name": "[parameters('my_site_name')]",
+            "location": "East US",
+            "kind": "app",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites/slots', parameters('my_site_name'), 'staging')]"
+            ],
+            "properties": {
+                "targetBuildVersion": "[parameters('sites_buildVersion')]"
+            }
+        }        
+    ]
+}
+```
+
+この ARM テンプレートはべき等です。つまり、繰り返し実行して、スロットの同じ状態を生成することができます。 最初の実行後、`targetBuildVersion` は現在の `buildVersion` と一致するため、スワップはトリガーされません。
+
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
@@ -368,6 +423,8 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
     </conditions>
     ```
 - 一部の [IP 制限ルール](app-service-ip-restrictions.md)により、スワップ操作でのアプリへの HTTP 要求の送信が妨げられる可能性があります。 `10.` および `100.` で始まる IPv4 アドレスの範囲は、デプロイに対して内側です。 これらにアプリへの接続を許可する必要があります。
+
+- スロットをスワップした後、アプリが予期せず再起動する可能性があります。 これは、スワップ後にホスト名のバインド構成の同期が切れ、単体では再起動を行うことができないためです。 ただし、基盤となる特定のストレージ イベント (記憶域ボリュームのフェールオーバーなど) によってこれらの不一致が検出され、すべてのワーカー プロセスが強制的に再起動される可能性があります。 このような再起動を最小限に抑えるには、*すべてのスロット*で[`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`アプリ設定](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)を設定します。 ただし、このアプリケーション設定は Windows Communication Foundation (WCF) アプリでは動作*しません*。
 
 ## <a name="next-steps"></a>次の手順
 [非運用スロットへのアクセスをブロックする](app-service-ip-restrictions.md)

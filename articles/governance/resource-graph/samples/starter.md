@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 04/23/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 688c591cbe94c69c73779843011cb24c3d2fd4cf
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 14bac2299505214b8b087946222c5560a9d90efd
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241091"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976860"
 ---
 # <a name="starter-resource-graph-queries"></a>Resource Graph の初歩的なクエリ
 

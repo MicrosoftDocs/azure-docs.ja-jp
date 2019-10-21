@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.custom: mvc
 ms.date: 05/07/2019
-ms.openlocfilehash: dd6cd16302c69266a954816868c04c8507762717
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: db4143b3bf75d1745245d5baae267a55ce71e95f
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801265"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212602"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Visual Studio でロジック アプリを管理する
 
@@ -30,19 +30,17 @@ ms.locfileid: "70801265"
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
-* まだお持ちでない場合は、以下のツールをダウンロードしてインストールしてください。 
+* まだお持ちでない場合は、以下のツールをダウンロードしてインストールしてください。
 
-  * [Visual Studio 2019、2017、または 2015 - Community Edition 以降](https://aka.ms/download-visual-studio)。 
-  このクイックスタートでは、無料の Visual Studio Community 2017 を使用します。
+  * [Visual Studio 2019、2017、または 2015 - Community Edition 以降](https://aka.ms/download-visual-studio)。 このクイックスタートでは、無料の Visual Studio Community 2017 を使用します。
 
     > [!IMPORTANT]
     > Visual Studio 2019 または 2017 をインストールする場合は、 **[Azure の開発]** ワークロードを選択してください。
     > 詳細については、「[Visual Studio Cloud Explorer で Azure アカウントに関連付けられているリソースを管理する](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view)」を参照してください。
 
-    Cloud Explorer for Visual Studio 2015 をインストールするには、[Visual Studio Marketplace から Cloud Explorer をダウンロード](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)します。 
-    詳細については、[Visual Studio Cloud Explorer での Azure アカウントに関連付けられているリソースの管理 (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015) に関するページをご覧ください。
+    Cloud Explorer for Visual Studio 2015 をインストールするには、[Visual Studio Marketplace から Cloud Explorer をダウンロード](https://marketplace.visualstudio.com/items?itemName=MicrosoftCloudExplorer.CloudExplorerforVisualStudio2015)します。 詳細については、[Visual Studio Cloud Explorer での Azure アカウントに関連付けられているリソースの管理 (2015)](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2015) に関するページをご覧ください。
 
-  * [Azure SDK (2.9.1 以降)](https://azure.microsoft.com/downloads/) 
+  * [Azure SDK (2.9.1 以降)](https://azure.microsoft.com/downloads/)
 
   * [Azure PowerShell](https://github.com/Azure/azure-powershell#installation)
 
@@ -54,13 +52,11 @@ ms.locfileid: "70801265"
 
     * [Visual Studio 2015](https://aka.ms/download-azure-logic-apps-tools-visual-studio-2015)
 
-    Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 
-    インストールが完了したら、必ず Visual Studio を再起動してください。
+    Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 インストールが完了したら、必ず Visual Studio を再起動してください。
 
 * 組み込みの Logic Apps デザイナーを使用する際の Web へのアクセス
 
-  デザイナーが Azure でリソースを作成し、ロジック アプリでコネクタからプロパティとデータを読み取るためには、インターネット接続が必要です。 
-  たとえば、Dynamics CRM Online コネクタを使用する場合、デザイナーは CRM インスタンスの使用可能な既定およびカスタムのプロパティをチェックします。
+  デザイナーが Azure でリソースを作成し、ロジック アプリでコネクタからプロパティとデータを読み取るためには、インターネット接続が必要です。 たとえば、Dynamics CRM Online コネクタを使用する場合、デザイナーは CRM インスタンスの使用可能な既定およびカスタムのプロパティをチェックします。
 
 <a name="find-logic-apps-vs"></a>
 
@@ -76,8 +72,7 @@ Visual Studio では、Azure サブスクリプションに関連付けられて
 
 1. **[リソース グループ]** または **[リソースの種類]** のどちらで検索するかに応じて、次のいずれかの手順に従います。
 
-   * **リソース グループ**:Cloud Explorer では、Azure サブスクリプションの下に、そのサブスクリプションと関連付けられているすべてのリソース グループが表示されます。 
-   目的のロジック アプリを含むリソース グループを展開して、ロジック アプリを選びます。
+   * **リソース グループ**:Cloud Explorer では、Azure サブスクリプションの下に、そのサブスクリプションと関連付けられているすべてのリソース グループが表示されます。 目的のロジック アプリを含むリソース グループを展開して、ロジック アプリを選びます。
 
    * **リソースの種類**:Azure サブスクリプションの **[Logic Apps]** を展開します。 サブスクリプションに関連付けられているすべてのロジック アプリが表示されるので、目的のロジック アプリを選びます。
 
@@ -87,7 +82,7 @@ Visual Studio では、Azure サブスクリプションに関連付けられて
 
 Visual Studio では、Azure portal から直接デプロイされているか、Visual Studio から Azure リソース グループ プロジェクトとしてデプロイされている作成済みのロジック アプリを開くことができます。
 
-1. Cloud Explorer を開いて、ロジック アプリを検索します。 
+1. Cloud Explorer を開いて、ロジック アプリを検索します。
 
 1. ロジック アプリのショートカット メニューで、 **[Logic App Editor で開く]** を選びます。
 
@@ -98,32 +93,30 @@ Visual Studio では、Azure portal から直接デプロイされているか�
 
    ![Azure Portal から展開済みのロジック アプリを開く](./media/manage-logic-apps-with-visual-studio/open-logic-app-in-editor.png)
 
-   Logic Apps デザイナーでロジック アプリを開いた後、デザイナーの下端で **[コード ビュー]** を選んで、基になっているロジック アプリの定義構造を確認することができます。 
-   ロジック アプリの配置テンプレートを作成する場合は、そのロジック アプリの [Azure Resource Manager テンプレートをダウンロードする方法](#download-logic-app)を学習してください。 詳しくは、[Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)に関するページをご覧ください。
+   ロジック アプリ デザイナーでロジック アプリを開いた後、デザイナーの下端で **[コード ビュー]** を選んで、基になっているロジック アプリの定義構造を確認することができます。 ロジック アプリの配置テンプレートを作成する場合は、そのロジック アプリの [Azure Resource Manager テンプレートをダウンロードする方法](#download-logic-app)を学習してください。 詳しくは、[Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)に関するページをご覧ください。
 
 <a name="download-logic-app"></a>
 
 ## <a name="download-from-azure"></a>Azure からのダウンロード
 
-[Azure Portal](https://portal.azure.com) からロジック アプリをダウンロードし、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートとして保存することができます。 その後、Visual Studio でそのテンプレートをローカルに編集し、さまざまな展開環境用にロジック アプリをカスタマイズできます。 ロジック アプリをダウンロードすると、[Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)内のその定義は自動的に "*パラメーター化*" され、JavaScript Object Notation (JSON) も使用されます。
+[Azure Portal](https://portal.azure.com) からロジック アプリをダウンロードし、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) テンプレートとして保存することができます。 その後、Visual Studio でそのテンプレートをローカルに編集し、さまざまな展開環境用にロジック アプリをカスタマイズできます。  ロジック アプリをダウンロードすると、[Resource Manager テンプレート](../azure-resource-manager/template-deployment-overview.md)内のその定義は自動的に "*パラメーター化*" され、JavaScript Object Notation (JSON) も使用されます。
 
-1. Visual Studio で Cloud Explorer を開き、Azure からダウンロードするロジック アプリを検索して選びます。
+1. Visual Studio で Cloud Explorer を開きます。 Azure からダウンロードするロジック アプリを検索して選びます。
 
-2. アプリのショートカット メニューで、 **[Logic App Editor で開く]** を選びます。
+1. アプリのショートカット メニューで、 **[Logic App Editor で開く]** を選びます。
 
    > [!TIP]
    > このコマンドが Visual Studio 2019 にない場合は、Visual Studio の最新の更新プログラムが適用されていることを確認してください。
 
-   ロジック アプリ デザイナーが開き、ロジック アプリが表示されます。 
-   ロジック アプリの基になっている定義と構造を確認するには、デザイナーの下端で **[コード ビュー]** を選びます。 
+   ロジック アプリ デザイナーが開き、ロジック アプリが表示されます。 ロジック アプリの基になっている定義と構造を確認するには、デザイナーの下端で **[コード ビュー]** を選びます。
 
-3. デザイナーのツール バーで、 **[ダウンロード]** を選びます。
+1. デザイナーのツール バーで、 **[ダウンロード]** を選びます。
 
    ![[ダウンロード] を選ぶ](./media/manage-logic-apps-with-visual-studio/download-logic-app.png)
 
-4. 場所の指定を求められたら、その場所を参照し、ロジック アプリの定義の Resource Manager テンプレートを JSON (.json) ファイル形式で保存します。 
+1. 場所の指定を求められたら、その場所を参照し、ロジック アプリの定義の Resource Manager テンプレートを JSON (.json) ファイル形式で保存します。
 
-ロジック アプリの定義は、Resource Manager テンプレートの `resources` サブセクションにあります。 Visual Studio でロジック アプリの定義と Resource Manager テンプレートを編集できるようになります。 また、このテンプレートを [Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)として Visual Studio ソリューションに追加することもできます。 [Visual Studio でのロジック アプリ用の Azure リソース グループ プロジェクト](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)について確認してください。 
+   ロジック アプリの定義は、Resource Manager テンプレートの `resources` サブセクションにあります。 Visual Studio でロジック アプリの定義と Resource Manager テンプレートを編集できるようになります。 また、このテンプレートを [Azure リソース グループ プロジェクト](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)として Visual Studio ソリューションに追加することもできます。 [Visual Studio でのロジック アプリ用の Azure リソース グループ プロジェクト](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)について確認してください。
 
 <a name="link-integration-account"></a>
 
@@ -150,13 +143,13 @@ Visual Studio では、Azure portal から直接デプロイされているか�
 
 1. 完了したら、忘れずにその Visual Studio ソリューションを保存します。
 
-Visual Studio で **[統合アカウント]** プロパティを設定し、そのロジック アプリを Azure Resource Manager テンプレートとして保存すると、そのテンプレートには、選択した統合アカウントのパラメーター宣言も含まれます。 テンプレート パラメーターとロジック アプリの詳細については、[ロジック アプリのデプロイの自動化の概要](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)に関するページを参照してください。
+Visual Studio で **[統合アカウント]** プロパティを設定し、そのロジック アプリを Azure Resource Manager テンプレートとして保存すると、そのテンプレートには、選択した統合アカウントのパラメーター宣言も含まれます。 テンプレート パラメーターとロジック アプリの詳細については、[ロジック アプリの自動デプロイの概要](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#template-parameters)に関する記事を参照してください。
 
 <a name="refresh"></a>
 
 ## <a name="refresh-from-azure"></a>Azure から更新する
 
-Azure Portal で行ったロジック アプリの編集による変更を残しておきたい場合は、Visual Studio で保持されているそのアプリのバージョンを、これらの変更で更新する必要があります。 
+Azure Portal で行ったロジック アプリの編集による変更を残しておきたい場合は、Visual Studio で保持されているそのアプリのバージョンを、これらの変更で更新する必要があります。
 
 * Visual Studio のロジック アプリ デザイナーのツール バーで、 **[最新の情報に更新]** を選びます。
 
@@ -191,23 +184,22 @@ Azure に展開されているロジック アプリを、Visual Studio から�
    ![詳細な実行履歴](./media/manage-logic-apps-with-visual-studio/view-run-history-details.png)
   
    > [!TIP]
-   > プロパティでテーブルを並べ替えるには、そのプロパティの列ヘッダーを選びます。 
+   > プロパティでテーブルを並べ替えるには、そのプロパティの列ヘッダーを選びます。
 
-1. 入力と出力を確認するステップを展開します。 例:
+1. 入力と出力を確認するステップを展開します。例えば次のようにします。
 
    ![各ステップの入力と出力を表示する](./media/manage-logic-apps-with-visual-studio/run-inputs-outputs.png)
 
 ## <a name="disable-or-enable-logic-app"></a>ロジック アプリを無効または有効にする
 
-ロジック アプリを削除することなく、次にトリガー条件が満たされたときにトリガーが発動しないようにすることができます。 ロジック アプリを無効にすると、それ以降、Logic Apps エンジンはロジック アプリのワークフロー インスタンスを作成および実行しなくなります。
-Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[無効化]** を選びます。
+ロジック アプリを削除することなく、次にトリガー条件が満たされたときにトリガーが発動しないようにすることができます。 ロジック アプリを無効にすると、それ以降、Logic Apps エンジンはロジック アプリのワークフロー インスタンスを作成および実行しなくなります。 Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[無効化]** を選びます。
 
 ![ロジック アプリを無効にする](./media/manage-logic-apps-with-visual-studio/disable-logic-app.png)
 
 > [!NOTE]
-> ロジック アプリを無効にすると、新しい実行は開始されなくなります。 進行中および保留中のすべての実行は完了するまで引き続き実行され、完了するには時間がかかる場合があります。 
+> ロジック アプリを無効にすると、新しい実行は開始されなくなります。 進行中および保留中のすべての実行は完了するまで引き続き実行され、完了するには時間がかかる場合があります。
 
-ロジック アプリの動作を再開する準備ができたら、ロジック アプリを再アクティブ化できます。 Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[有効化]** を選びます。
+ロジック アプリを再度有効にするには、Cloud Explorer でロジック アプリのショートカット メニューを開き、 **[有効化]** を選びます。
 
 ![ロジック アプリを有効にする](./media/manage-logic-apps-with-visual-studio/enable-logic-app.png)
 

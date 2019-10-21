@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/29/2019
 ms.author: suhuruli
 ms.custom: mvc, devcenter, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 2aa5879ee3960bd5d26855ac7e7c3e12994ee54e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 4ec6addb348b8c13f124ec225e056d2003a93c38
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861332"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703515"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-app-on-azure-service-fabric"></a>クイック スタート:Azure Service Fabric 上に Java Spring Boot アプリをデプロイする
 
@@ -28,7 +28,7 @@ ms.locfileid: "70861332"
 
 このクイックスタートでは、Spring の Web サイトからの [Getting Started](https://spring.io/guides/gs/spring-boot/) サンプルを使用します。 このクイックスタートでは、使い慣れたコマンド ライン ツールを使用し、Azure Service Fabric アプリケーションとして Spring Boot サンプルをデプロイする方法を説明します。 クイックスタートを完了すると、Spring Boot の Getting Started サンプルが Azure Service Fabric 上で動作します。
 
-![アプリケーションのスクリーンショット](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
+![Spring Boot Service Fabric サンプル](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 このクイックスタートでは、次の方法について説明します。
 
@@ -79,7 +79,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 
 1. 各プロンプトで次の情報を入力します。
 
-    ![Yeoman エントリ](./media/service-fabric-quickstart-java-spring-boot/yeomanspringboot.png)
+    ![Spring Boot の Yeoman エントリ](./media/service-fabric-quickstart-java-spring-boot/yeoman-entries-spring-boot.png)
 
 1. `SpringServiceFabric/SpringServiceFabric/SpringGettingStartedPkg/code` フォルダーで、`entryPoint.sh` という名前のファイルを作成します。 `entryPoint.sh` ファイルに次のテキストを追加します。 
 
@@ -147,7 +147,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 
     ローカル クラスターの起動には、一定の時間がかかります。 クラスターが完全に起動されたことを確認するには、 **http://localhost:19080** で Service Fabric Explorer にアクセスします。 5 つの正常なノードは、ローカル クラスターが起動され、実行されていることを示します。 
     
-    ![正常なローカル クラスター](./media/service-fabric-quickstart-java-spring-boot/sfxlocalhost.png)
+    ![Service Fabric Explorer が正常なノードを表示する](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-healthy-nodes.png)
 
 1. `gs-spring-boot/SpringServiceFabric` フォルダーを開きます。
 1. 次のコマンドを実行して、ローカル クラスターに接続します。
@@ -163,7 +163,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
 
 1. 使い慣れた Web ブラウザーを開き、`http://localhost:8080` に接続してアプリケーションにアクセスします。
 
-    ![ローカルのアプリケーション フロントエンド](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
+    ![Spring Boot Service Fabric サンプル](./media/service-fabric-quickstart-java-spring-boot/spring-boot-service-fabric-sample.png)
 
 これで、Azure Service Fabric クラスターに展開された Spring Boot アプリケーションにアクセスできるようになりました。
 
@@ -178,7 +178,7 @@ Web フロントエンド サービスをスケーリングするには、以下
 1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
 1. ツリービューで **fabric:/SpringServiceFabric/SpringGettingStarted** ノードの横にある省略記号 ( **...** ) を選択し、 **[サービスのスケール]** を選択します。
 
-    ![Service Fabric Explorer スケール サービス](./media/service-fabric-quickstart-java-spring-boot/sfxscaleservicehowto.png)
+    ![Service Fabric Explorer スケーリング サービスのサンプル](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-scale-sample.png)
 
     次に、スケーリングするサービスのインスタンス数を選択します。
 
@@ -196,7 +196,7 @@ Web フロントエンド サービスをスケーリングするには、以下
 
 1. ツリー ビューの **fabric:/SpringServiceFabric/SpringGettingStarted** ノードを選択し、パーティション ノード (GUID で表されます) を展開します。
 
-    ![Service Fabric Explorer スケール サービスの完了](./media/service-fabric-quickstart-java-spring-boot/sfxscaledservice.png)
+    ![Service Fabric Explorer スケーリング サービスの完了](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-partition-node.png)
 
     サービスには 3 つのインスタンスがあり、各インスタンスを実行しているノードがツリー ビューに表示されます。
 
@@ -209,10 +209,10 @@ Web フロントエンド サービスをスケーリングするには、以下
 1. クラスターで Service Fabric Explorer を開きます (例: `http://localhost:19080`)。
 1. サービスのインスタンスを実行しているノードの横にある省略記号 ( **...** ) を選択し、ノードを再起動します。
 
-    ![Service Fabric Explorer でのノードの再起動](./media/service-fabric-quickstart-java-spring-boot/sfxhowtofailover.png)
+    ![Service Fabric Explorer でのノードの再起動](./media/service-fabric-quickstart-java-spring-boot/service=fabric-explorer-restart=node.png)
 1. サービスのインスタンスは別のノードに移動され、アプリケーションにはダウンタイムは発生しません。
 
-    ![Service Fabric Explorer でのノード再起動成功](./media/service-fabric-quickstart-java-spring-boot/sfxfailedover.png)
+    ![Service Fabric Explorer でのノードの再起動の成功](./media/service-fabric-quickstart-java-spring-boot/service-fabric-explorer-service-moved.png)
 
 ## <a name="next-steps"></a>次の手順
 

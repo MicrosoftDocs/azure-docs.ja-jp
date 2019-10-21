@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 2118f137f2c0d32f891a170c3509bceee7ba13ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1f02e01fef95bdd06930aa30479dd16d40675ce
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60764964"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812566"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Azure Monitor で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Azure Monitor での CollectD からのパフォーマンス データの収集に関する情報を提供します。
@@ -69,6 +69,8 @@ CollectD 構成では、既定の `write_http` プラグインを使用して、
       type filter_collectd
     </filter>
 
+> [!NOTE]
+> CollectD は、既定では、10 秒[間隔](https://collectd.org/wiki/index.php/Interval)で値を読み取るように設定されています。 これは Azure Monitor ログに送信されるデータの量に直接影響するため、監視要件と関連するコストと Azure Monitor ログの使用率の適切なバランスを取るために、CollectD 構成内でこの間隔を調整することが必要になる場合があります。
 
 ## <a name="versions-supported"></a>サポートされているバージョン
 - Azure Monitor は現在、CollectD バージョン 4.8 以降をサポートしています。

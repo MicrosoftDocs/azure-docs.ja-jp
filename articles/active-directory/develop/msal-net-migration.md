@@ -17,20 +17,28 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4de1fa903120fa6adc50d34428d8c3e2a28cf23
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 9a132834952d2654f400217bd6eed1a3745efbf9
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835003"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264267"
 ---
 # <a name="migrating-applications-to-msalnet"></a>MSAL.NET へのアプリケーションの移行
 
-Azure AD エンティティを認証し、Azure AD からのトークンを要求する場合、Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD Authentication Library for .NET (ADAL.NET) の両方が使用されます。 これまで、ほとんどの開発者は、開発者プラットフォーム用の Azure AD (v1.0) で、Azure AD Authentication Library (ADAL) を使用してトークンを要求することで、Azure AD ID (職場と学校のアカウント) を認証していました。 現在では、MSAL.NET を使用して、より広範な Microsoft ID (Azure AD の ID と Microsoft アカウント、および Azure AD B2C 経由のソーシャル アカウントとローカル アカウント) を Microsoft ID プラットフォーム エンドポイントを介して認証することができます。 
+Azure AD エンティティを認証し、Azure AD からのトークンを要求する場合、Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD Authentication Library for .NET (ADAL.NET) の両方が使用されます。 これまで、ほとんどの開発者は、開発者プラットフォーム用の Azure AD (v1.0) で、Azure AD Authentication Library (ADAL) を使用してトークンを要求することで、Azure AD ID (職場と学校のアカウント) を認証していました。 MSAL を使用すると、次のようになります。
 
-この記事では、Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD Authentication Library for .NET (ADAL.NET) のいずれかを選択する方法について説明し、2 つのライブラリを比較します。  
+- Microsoft ID プラットフォーム エンドポイントを使用するため、より広範な Microsoft ID (Azure AD の ID と Microsoft アカウント、および Azure AD B2C 経由のソーシャル アカウントとローカル アカウント) を認証できます。
+- ユーザーの優れたシングルサインオン エクスペリエンスが実現します。
+- アプリケーションでは、増分同意を有効にすることができ、条件付きアクセスのサポートが容易になります。
+- イノベーションを活用できます。
+
+**MSAL.NET は、Microsoft ID プラットフォームと併せて使用する場合にお勧めの認証ライブラリです**。 ADAL.NET に新しい機能は実装されません。 この取り組みは、MSAL の改良に重点を置いています。
+
+この記事では、Microsoft Authentication Library for .NET (MSAL.NET) と Azure AD Authentication Library for .NET (ADAL.NET) との違いについて説明し、MSAL への移行を支援します。  
 
 ## <a name="differences-between-adal-and-msal-apps"></a>ADAL アプリと MSAL アプリの違い
+
 ほとんどの場合、MSAL.NET と Microsoft ID プラットフォーム エンドポイント (最新世代の Microsoft 認証ライブラリ) を使用します。 MSAL.NET を使用して、Azure AD (職場と学校のアカウント)、Microsoft (個人用) アカウント (MSA)、または Azure AD B2C でアプリケーションにサインインしているユーザーのためにトークンを取得します。 
 
 開発者向け Azure AD (v1.0) エンドポイント (および ADAL.NET) を既に使い慣れている場合は、[Microsoft ID プラットフォーム (v2.0) エンドポイントの違い](active-directory-v2-compare.md)に関するページをお読みください。
@@ -206,7 +214,7 @@ var scopes = new [] {  ResourceId+"/.default"};
 
 ### <a name="scopes-to-request-in-the-case-of-client-credential-flow--daemon-app"></a>クライアント資格証明フロー / デーモン アプリの場合に要求するスコープ
 
-クライアント資格情報フローの場合、`/.default` スコープも渡します。 これにより、管理者がアプリケーションの登録で同意したアプリレベルのすべてのアクセス許可が、Azure AD に示されます。
+クライアント資格情報フローの場合、`/.default` スコープも渡します。 このスコープにより、管理者がアプリケーションの登録で同意したアプリレベルのすべてのアクセス許可が、Azure AD に示されます。
 
 ## <a name="adal-to-msal-migration"></a>ADAL から MSAL への移行
 
@@ -214,9 +222,9 @@ ADAL.NET v2.X では、更新トークンが公開されました。これによ
 * 長時間実行されているサービスで、ユーザーの代わりにダッシュボードの更新などのアクションを行うが、ユーザーが接続されなくなった。 
 * クライアントで RT を Web サービスに移行できるようにする WebFarm シナリオ (サーバー側ではなく、クライアント側でキャッシュが行われ、Cookie が暗号化される)
 
-これは MSAL.NET には当てはまりません。しかし、セキュリティ上の理由で、この方法での更新トークンの利用は推奨されなくなりました。 API では、以前取得された更新トークンを渡す方法が提供されないため、MSAL 3.x への移行が困難になります。 
+MSAL.NET では、セキュリティ上の理由により、更新トークンは公開されません。MSAL によって、トークンの更新が処理されます。 
 
-さいわい、MSAL.NET では現在、API で以前の更新トークンを `IConfidentialClientApplication` に移行することができます 
+さいわい、MSAL.NET では現在、API で以前の更新トークン (ADAL で取得) を `IConfidentialClientApplication` に移行することができます。
 
 ```CSharp
 /// <summary>

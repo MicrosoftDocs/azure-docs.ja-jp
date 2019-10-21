@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 10/01/2019
 ms.author: diberry
-ms.openlocfilehash: e5b8cd01a64274e58927a5647897b1f9d86f7c24
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: f0888b25258f6a7830df1195995159432b19907d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390869"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802817"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>チュートリアル: C# を使用してナレッジ ベースを作成し、質問に回答する
 
@@ -41,7 +41,7 @@ ms.locfileid: "70390869"
 ## <a name="prerequisites"></a>前提条件
 
 * 最新の [**Visual Studio Community エディション**](https://www.visualstudio.com/downloads/)。
-* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーとリソース名を取得するために、Azure portal で QnA Maker リソースの **[クイックスタート]** を選択します。 
 
 > [!NOTE] 
 > 完全なソリューション ファイルは、[**Azure-Samples/cognitive-services-qnamaker-csharp** GitHub リポジトリ](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)から入手できます。
@@ -146,13 +146,13 @@ Program クラス内に次のコード ブロックを追加します。
 それ以外の応答の場合は、その応答がそのまま返されます。
 
 ## <a name="generating-an-answer"></a>回答を生成する
-KB にアクセスして質問を送信し、最適な回答を受け取るために、プログラムには、KB の詳細 API の "_エンドポイント ホスト_" とエンドポイント API の "_プライマリ エンドポイント キー_"が必要です。 これらのメソッドは、回答を生成するメソッドと合わせて次のセクションに含まれています。 
+KB にアクセスして質問を送信し、最適な回答を受け取るために、プログラムには、KB の詳細 API の "_リソース名_" とエンドポイント API の "_プライマリ エンドポイント キー_" が必要です。 これらのメソッドは、回答を生成するメソッドと合わせて次のセクションに含まれています。 
 
 次の表は、データを使用して URI を構築する方法を示しています。
 
 |回答の URI テンプレートの生成|
 |--|
-|https://**HOSTNAME**.azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
+|https:// **<リソース名>** .azurewebsites.net/qnamaker/knowledgebases/**KBID**/generateAnswer|
 
 "_プライマリ エンドポイント_" は、回答を生成するための要求を認証するためにヘッダーとして渡されます。
 
@@ -169,7 +169,7 @@ KB にアクセスして質問を送信し、最適な回答を受け取るた�
 ```
 
 ## <a name="get-kb-details"></a>KB の詳細を取得する
-KB の詳細を取得するために次のメソッドを追加します。 これらの詳細には、KB のホスト名が含まれます。 ホスト名は、QnA Maker のリソースの作成時に入力した QnA Maker Azure Web サービスの名前です。 
+KB の詳細を取得するために次のメソッドを追加します。 これらの詳細には、次の JSON で `hostName` と呼ばれる KB のリソース名が含まれています。 リソース名は、QnA Maker のリソースの作成時に入力した QnA Maker リソースの名前です。 
 
 [!code-csharp[Get KB Details](~/samples-qnamaker-csharp/documentation-samples/tutorials/create-publish-answer-knowledge-base/QnaMakerQuickstart/Program.cs?range=260-273 "Add publish method")]
 

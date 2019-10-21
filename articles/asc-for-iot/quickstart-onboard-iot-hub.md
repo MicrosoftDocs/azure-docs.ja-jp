@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/16/2019
+ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: a794ccea13323f38b20906458e216f85652bfc3e
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 3d9c5352a90d5bcacbaf27b7b62be61fc404e87a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596951"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299491"
 ---
 # <a name="quickstart-onboard-azure-security-center-for-iot-service-in-iot-hub"></a>クイック スタート:IoT Hub で Azure Security Center for IoT サービスをオンボードする
 
@@ -37,19 +37,6 @@ ms.locfileid: "68596951"
   - 追加の情報の種類として**未加工のイベント**のストレージを追加することもできます。 Log Analytics に**未加工のイベント**を保存すると、追加のストレージ コストがかかることに注意してください。 
 - IoT Hub (Standard レベル)
 - すべての[サービスの前提条件](service-prerequisites.md)を満たしていること 
-
-|サポートされている Azure サービス リージョン | ||
-|---|---|---|
-| 米国中部 |East US |米国東部 2 |
-| 米国中西部 |米国西部 |米国西部 2 |
-| 米国中南部|米国中北部 | カナダ中部|
-| カナダ東部| 北ヨーロッパ|ブラジル南部|
-| フランス中部| 英国西部|英国南部|
-|西ヨーロッパ|北ヨーロッパ| 西日本|
-|東日本 | オーストラリア南東部|オーストラリア東部|
-|東アジア| 東南アジア| 韓国中部|
-|韓国南部| インド中部| インド南部|
-|
 
 ## <a name="enable-azure-security-center-for-iot-on-your-iot-hub"></a>IoT Hub 上で Azure Security Center for IoT を有効にする 
 

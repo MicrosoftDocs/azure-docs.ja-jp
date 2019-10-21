@@ -1,21 +1,21 @@
 ---
-title: Azure Database for MySQL によるビジネス継続性の概要
-description: Azure Database for MySQL でのビジネス継続性の概要について説明します。
+title: Azure Database for MySQL でのビジネス継続性を理解する
+description: Azure Database for MySQL サービスを使用する場合のビジネス継続性 (ポイントインタイム リストア、データ センターの停止、geo リストア) について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: a09c1934ecb34518b191a8e730a72efecc85aa2f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28cd46077e67aa48169421607cd977103da735c5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525428"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972891"
 ---
-# <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Azure Database for MySQL によるビジネス継続性の概要
+# <a name="understand-business-continuity-in-azure-database-for-mysql"></a>Azure Database for MySQL でのビジネス継続性を理解する
 
-この概要では、Azure Database for MySQL に用意されているビジネス継続性とディザスター リカバリーの機能について説明します。 また、データ損失につながる、またはデータベースやアプリケーションを使用不能状態に追い込む破壊的なイベントから復旧するためのオプションについて説明します。 ユーザーまたはアプリケーション エラーがデータ整合性に影響を及ぼすとき、Azure リージョンでシステム停止が発生したとき、あるいはアプリケーションにメンテナンスが必要なときの対処方法について説明します。
+この記事では、Azure Database for MySQL に用意されているビジネス継続性とディザスター リカバリーの機能について説明します。 また、データ損失につながる、またはデータベースやアプリケーションを使用不能状態に追い込む破壊的なイベントから復旧するためのオプションについて説明します。 ユーザーまたはアプリケーション エラーがデータ整合性に影響を及ぼすとき、Azure リージョンでシステム停止が発生したとき、あるいはアプリケーションにメンテナンスが必要なときの対処方法について説明します。
 
 ## <a name="features-that-you-can-use-to-provide-business-continuity"></a>ビジネス継続性を提供するときに使用できる機能
 

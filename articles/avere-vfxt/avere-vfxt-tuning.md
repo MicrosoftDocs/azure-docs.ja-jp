@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 17e55dbe84cda87ee902c94e0024c9a3aad8b31b
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.author: rohogue
+ms.openlocfilehash: 274a20f84b978b38a284d1feb315d6621b7d3ccd
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698338"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256153"
 ---
 # <a name="cluster-tuning"></a>クラスター チューニング
 

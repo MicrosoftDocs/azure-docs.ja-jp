@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/19/2019
+ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c2096b6c5ddb72c8ab5c5d3203a05c94db51f6c5
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 9c5e87d8d6fe49302bee2b2248f84ba98a650533
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444330"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802311"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure の従来のサブスクリプション管理者
 
@@ -56,12 +56,14 @@ ms.locfileid: "68444330"
 
 共同管理者ロールが割り当てられた[ゲスト ユーザー](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md)は、同じく共同管理者ロールが割り当てられたメンバー ユーザーとは異なる点にいくつか気付くことがあります。 次のシナリオで考えてみましょう。
 
-- Azure AD の職場または学校アカウントを持つユーザー A は、Azure サブスクリプションのサービス管理者です。
+- Azure AD アカウント (職場または学校アカウント) を持つユーザー A は、Azure サブスクリプションのサービス管理者です。
 - ユーザー B は Microsoft アカウントを持っています。
 - ユーザー A がユーザー B に共同管理者ロールを割り当てます。
 - ユーザー B はほぼすべての操作を実行できますが、Azure AD にアプリケーションを登録したり、Azure AD ディレクトリでユーザーを検索したりすることはできません。
 
-想定とは異なり、ユーザー B はすべてを管理できるわけではありません。 この違いの理由は、Microsoft アカウントはメンバー ユーザーとしてではなく、ゲスト ユーザーとしてサブスクリプションに追加されるためです。 Azure AD でゲスト ユーザーに割り当てられる既定のアクセス許可は、メンバー ユーザーとは異なります。 たとえば、メンバー ユーザーは Azure AD の他のユーザーを読み取ることができますが、ゲスト ユーザーには他のユーザーの読み取りは許可されていません。 メンバー ユーザーは新しいサービス プリンシパルを Azure AD に登録できますが、ゲスト ユーザーにはサービス プリンシパルの登録は許可されていません。 ゲスト ユーザーがこれらのタスクを実行できるようにする必要がある場合、考えられるソリューションは、ゲスト ユーザーに必要な特定の Azure AD 管理者ロールを割り当てることです。 たとえば前のシナリオで他のユーザーの読み取りを許可するには[ディレクトリ リーダー](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)のロールを割り当て、サービス プリンシパルを作成できるようにするには[アプリケーション開発者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)のロールを割り当てます。 メンバー ユーザーとゲスト ユーザーおよびそれぞれのアクセス許可の詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」をご覧ください。
+想定とは異なり、ユーザー B はすべてを管理できるわけではありません。 この違いの理由は、Microsoft アカウントはメンバー ユーザーとしてではなく、ゲスト ユーザーとしてサブスクリプションに追加されるためです。 Azure AD でゲスト ユーザーに割り当てられる既定のアクセス許可は、メンバー ユーザーとは異なります。 たとえば、メンバー ユーザーは Azure AD の他のユーザーを読み取ることができますが、ゲスト ユーザーには他のユーザーの読み取りは許可されていません。 メンバー ユーザーは新しいサービス プリンシパルを Azure AD に登録できますが、ゲスト ユーザーにはサービス プリンシパルの登録は許可されていません。
+
+ゲスト ユーザーがこれらのタスクを実行できるようにする必要がある場合、考えられるソリューションは、ゲスト ユーザーに必要な特定の Azure AD 管理者ロールを割り当てることです。 たとえば前のシナリオで他のユーザーの読み取りを許可するには[ディレクトリ リーダー](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)のロールを割り当て、サービス プリンシパルを作成できるようにするには[アプリケーション開発者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)のロールを割り当てます。 メンバー ユーザーとゲスト ユーザーおよびそれぞれのアクセス許可の詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」をご覧ください。
 
 [Azure リソースの組み込みロール](../role-based-access-control/built-in-roles.md)は、[Azure AD 管理者ロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md)とは異なることに注意してください。 組み込みロールは Azure AD に対するアクセス許可を一切付与しません。 詳細については、「[各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」をご覧ください。
 
@@ -127,14 +129,16 @@ ms.locfileid: "68444330"
 
 ### <a name="limitations-for-changing-the-service-administrator"></a>サービス管理者の変更に関する制限事項
 
-すべてのサブスクリプションは Azure AD ディレクトリと関連付けられています。 サブスクリプションが関連付けられているディレクトリを検索するには、Azure portal で **[サブスクリプション]** を開き、ディレクトリを表示するサブスクリプションを選択します。
+Azure サブスクリプションごとに 1 人のサービス管理者のみを設定できます。 サービス管理者の変更の動作は、アカウント管理者が Microsoft アカウントか、Azure AD アカウント (職場または学校アカウント) かによって異なります。
 
-職場または学校アカウントを使用してサインインした場合、組織内の他のアカウントをサービス管理者として追加することができます。 たとえば、abby@contoso.com はサービス管理者として bob@contoso.com を追加できますが、john@notcontoso.com が contoso.com ディレクトリ内にない限り john@notcontoso.com は追加できません。 職場または学校アカウントでサインインしているユーザーは、引き続き Microsoft アカウント ユーザーをサービス管理者として追加できます。 Azure サブスクリプションごとに 1 人のサービス管理者のみを設定できます。
+| アカウント管理者のアカウント | サービス管理者を別の Microsoft アカウントに変更できるか? | サービス管理者を同じディレクトリの Azure AD アカウントに変更できるか? | サービス管理者を異なるディレクトリの Azure AD アカウントに変更できるか? |
+| --- | --- | --- | --- |
+| Microsoft アカウント | はい | いいえ | いいえ |
+| Azure AD アカウント | はい | はい | いいえ |
 
-  | サインイン方法 | サービス管理者として Microsoft アカウント ユーザーを追加できる | 同じ組織内の職場または学校アカウントをサービス管理者として追加できる | 別の組織内の職場または学校アカウントをサービス管理者として追加できる |
-  | --- | --- | --- | --- |
-  |  Microsoft アカウント |はい |いいえ |いいえ |
-  |  会社または学校のアカウント |はい |はい |いいえ |
+アカウント管理者が Azure AD アカウントの場合は、サービス管理者を同じディレクトリ内の Azure AD アカウントに変更することはできますが、別のディレクトリには変更できません。 たとえば、abby@contoso.com は、サービス管理者を bob@contoso.com に変更できますが、john@notcontoso.com に変更することは、john@notcontoso.com が contoso.com ディレクトリに存在しない場合はできません。
+
+Microsoft アカウントと Azure AD アカウントの詳細については、「[Azure Active Directory とは](../active-directory/fundamentals/active-directory-whatis.md)」を参照してください。
 
 ## <a name="view-the-account-administrator"></a>アカウント管理者を表示する
 

@@ -5,19 +5,19 @@ metadata:
   title: アプリケーション管理のドキュメント
   description: Azure Active Directory では、クラウドとオンプレミス アプリケーションに安全かつシームレスなアクセスを提供します。 さらに、パスワードを管理する必要がありません。 エンドユーザーは、1 回サインインするだけで、Office 365 や数千もの他のアプリケーションにアクセスできます。 クイックスタート、チュートリアル、およびガイダンスを使用してアプリケーションを管理、デプロイする方法について説明します。
   ms.service: active-directory
-  ms.subservice: manage-apps
+  ms.subservice: app-mgmt
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/16/2019
+  ms.date: 10/10/2019
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: acb99eab233836f46c1e1dfe4c857fb2e80ed3de
-  ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+  ms.openlocfilehash: 0d7081a35a143abf1ae068ce7344e0e50e240eaa
+  ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/28/2019
-  ms.locfileid: "70127542"
+  ms.lasthandoff: 10/11/2019
+  ms.locfileid: "72264125"
 landingContent:
 - title: アプリケーション管理について
   linkLists:

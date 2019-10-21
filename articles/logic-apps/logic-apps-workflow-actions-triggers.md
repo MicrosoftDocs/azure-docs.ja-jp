@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/19/2019
-ms.openlocfilehash: df1b03d5fbb5b8ef8cda9407e4a595bc2de8ce54
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3311ca3665083ec8c71f48b28e7195aa8c14f13d
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918952"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350673"
 ---
 # <a name="reference-for-trigger-and-action-types-in-workflow-definition-language-for-azure-logic-apps"></a>Azure Logic Apps におけるワークフロー定義言語のトリガーとアクションの種類のリファレンス
 
@@ -2402,12 +2402,38 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 ### <a name="change-trigger-concurrency"></a>トリガーのコンカレンシーを変更する
 
-既定では、ロジック アプリ インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは同時に (並行して) 実行されます。 そのため、先行するワークフロー インスタンスの実行が終了する前に、各トリガー インスタンスが起動します。 この制限を使用して、バックエンド システムが受信する要求の数を制限できます。 
+既定では、ロジック アプリ インスタンスは、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは (同時に並行して) 実行されます。 そのため、先行するワークフロー インスタンスの実行が終了する前に、各トリガー インスタンスが起動します。 この制限を使用して、バックエンド システムが受信する要求の数を制限できます。 
 
-既定の制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティは、並行して実行できるワークフロー インスタンスの最大数を制御します。 
+既定の制限を変更するには、コード ビュー エディターまたは Logic Apps デザイナーのどちらを使用してもかまいません。コンカレンシーの設定をデザイナーから変更すると、基になるトリガー定義において `runtimeConfiguration.concurrency.runs` プロパティの追加または更新が行われるからです (または、その逆も行われます)。 このプロパティは、並行して実行できるワークフロー インスタンスの最大数を制御します。 コンカレンシー制御を使用する場合の考慮事項のいくつかを次に示します。
 
-> [!NOTE] 
-> デザイナーまたはコード ビュー エディターを使用してトリガーの順次実行を設定する場合、コード ビュー エディターでトリガーの `operationOptions` プロパティを `SingleInstance` に設定しないでください。 これに従わないと、検証エラーになります。 詳細については、「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。
+* コンカレンシーが有効になっている間は、実行時間の長いロジック アプリ インスタンスによって、新しいロジック アプリ インスタンスが待機状態になることがあります。 この状態により、Azure Logic Apps で新しいインスタンスが作成されなくなります。この状態は、同時実行の数が、指定された同時実行の最大数よりも少ない場合でも発生します。
+
+  * この状態を中断するには、"*まだ実行されている*" インスタンスのうち最も古いものを取り消します。
+
+    1. ロジック アプリのメニューで、 **[概要]** を選択します。
+
+    1. **[実行履歴]** セクションで、次の例のように、まだ実行されているインスタンスのうち最も古いものを選択します。
+
+       ![最も古い実行中インスタンスの選択](./media/logic-apps-workflow-actions-triggers/waiting-runs.png)
+
+       > [!TIP]
+       > まだ実行されているインスタンスだけを表示するには、 **[すべて]** の一覧を開き、 **[実行中]** を選択します。    
+
+    1. **[ロジック アプリの実行]** で、 **[実行の取り消し]** を選択します。
+
+       ![最も古い実行中インスタンスの検索](./media/logic-apps-workflow-actions-triggers/cancel-run.png)
+
+  * この可能性を回避するには、これらの実行を保持する可能性のある任意のアクションにタイムアウトを追加します。 コード エディターで作業している場合は、「[非同期の継続時間を変更する](#asynchronous-limits)」を参照してください。 それ以外の場合で、デザイナーを使用している場合は、次の手順に従います。
+
+    1. ロジック アプリのタイムアウトを追加するアクションで、右上隅にある省略記号 ( **[...]** ) ボタンを選択し、 **[設定]** を選択します。
+
+       ![アクションの設定を開く](./media/logic-apps-workflow-actions-triggers/action-settings.png)
+
+    1. **[タイムアウト]** の下で、タイムアウト期間を [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)で指定します。
+
+       ![タイムアウト期間の指定](./media/logic-apps-workflow-actions-triggers/timeout.png)
+
+* ロジック アプリを順番に実行する場合は、コード ビュー エディターまたはデザイナーを使用して、トリガーのコンカレンシーを `1` に設定できます。 ただし、コード ビュー エディターでは、トリガーの `operationOptions` プロパティを `SingleInstance` に設定しないでください。 これに従わないと、検証エラーになります。 詳細については、「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。
 
 #### <a name="edit-in-code-view"></a>コード ビューで編集する 
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 132dd91ba121fc5939a0f30194fe4abdd3755414
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67847048"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999099"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -71,7 +71,7 @@ PredicateValidationReference| 0:1 | **PredicateValidationsInput**要素への参
 
 | Attribute | 必須 | 説明 |
 | --------- | -------- | ----------- |
-| Name | はい | Azure AD B2C によってサポートされている有効なプロトコルの名前。 次のいずれかの値になります。OAuth1、OAuth2、SAML2、OpenIdConnect、WsFed、または WsTrust。 |
+| Name | はい | Azure AD B2C によってサポートされている有効なプロトコルの名前。 次のいずれかの値になります。OAuth1、OAuth2、SAML2、OpenIdConnect。 |
 | PartnerClaimType | はい | 使用する要求種類の名。 |
 
 次の例で、Identity Experience Framework は SAML2 id プロバイダーまたは証明書利用者アプリケーションと相互作用するときに、 **surname**要求が`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`にマップされ、OpenIdConnect と OAuth2 とともに、要求は、`family_name`にマップされます。

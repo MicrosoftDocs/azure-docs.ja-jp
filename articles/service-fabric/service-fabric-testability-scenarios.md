@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/07/2017
+ms.date: 10/1/2019
 ms.author: motanv
-ms.openlocfilehash: d12c5097d4ba5e0ccfe0e2b2cbc8ccd758c32d98
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2ea30b59e3195a0229c2584212e2897aaff4ee31
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60865020"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718228"
 ---
 # <a name="testability-scenarios"></a>Testability のシナリオ
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者は信頼性の低いインフラストラクチャ上で実行できるサービスのコードを記述できます。 高品質なサービスのコードを記述するには、開発者はこのような信頼性の低いインフラストラクチャを誘発してサービスの安定性をテストできる必要があります。
@@ -132,6 +132,8 @@ class Test
 ```
 
 PowerShell
+
+Service Fabric Powershell モジュールでは、2 とおりの方法で混乱シナリオを開始できます。 `Invoke-ServiceFabricChaosTestScenario` はクライアントベースであり、テストの途中でクライアント コンピューターがシャットダウンされた場合、それ以上のエラーは発生しません。 また、コンピューターのシャットダウン時にテストの実行を維持するための一連のコマンドがあります。 `Start-ServiceFabricChaos` では、FaultAnalysisService という名称の、信頼性の高いステートフル サービスが使用され、TimeToRun が起動するまでエラーが引き続き表示されます。 `Stop-ServiceFabricChaos` を使用し、シナリオを手動で停止できます。また、`Get-ServiceFabricChaosReport` でレポートが取得されます。 詳細については、「[Azure Service Fabric Powershell リファレンス](https://docs.microsoft.com/powershell/module/servicefabric/?view=azureservicefabricps)」と「[Service Fabric クラスターでの制御された混乱の誘発](service-fabric-controlled-chaos.md)」を参照してください。
 
 ```powershell
 $connection = "localhost:19000"

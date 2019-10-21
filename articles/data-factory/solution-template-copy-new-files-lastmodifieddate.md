@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 3/8/2019
-ms.openlocfilehash: cae75f4d64c8b3f74cc40e94a675c0f10a6bd9ec
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a2a8f0478d1ae4fb19cb911b02572145ff59839b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60312815"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030078"
 ---
 # <a name="copy-new-and-changed-files-by-lastmodifieddate-with-azure-data-factory"></a>Azure Data Factory で LastModifiedDate に基づいて新規および変更済みのファイルをコピーする
 
@@ -88,8 +88,8 @@ ms.locfileid: "60312815"
 11. **[トリガー実行のパラメーター]** の値を次のように書き込み、 **[完了]** を選択します。
     - **FolderPath_Source** =  **/source/** 。  ソース データ ストアのフォルダーに置き換えることができます。
     - **FolderPath_Destination** =  **/destination/** 。  コピー先データ ストアのフォルダーに置き換えることができます。
-    - **LastModified_From** =   **@trigger().outputs.windowStartTime**。  これは、パイプラインが最後にトリガーされた時間を特定するトリガーのシステム変数です。
-    - **LastModified_To** =  **@trigger().outputs.windowEndTime**。  これは、今回パイプラインがトリガーされる時間を特定するトリガーのシステム変数です。
+    - **LastModified_From** =   **\@trigger().outputs.windowStartTime**。  これは、パイプラインが最後にトリガーされた時間を特定するトリガーのシステム変数です。
+    - **LastModified_To** =  **\@trigger().outputs.windowEndTime**。  これは、今回パイプラインがトリガーされる時間を特定するトリガーのシステム変数です。
     
     ![入力パラメーター](media/solution-template-copy-new-files-lastmodifieddate/copy-new-files-lastmodifieddate11.png)
     

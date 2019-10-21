@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 05/31/2019
 ms.author: kumud
 ms.reviewer: tyao
-ms.openlocfilehash: d2d52d2faf9122b7dc87f71ac7b1be53eaa99878
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: adca1bdd0cf525627cc284b1c0d3509beddef131
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69534989"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219395"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Azure Front Door Service 用の Web アプリケーション ファイアウォールで IP 制限規則を構成する
 この記事では、Azure CLI、Azure PowerShell、または Azure Resource Manager テンプレートを使って、Azure Front Door Service 用の Web アプリケーション ファイアウォール (WAF) で IP 制限規則を構成する方法を示します。
@@ -25,6 +25,8 @@ ms.locfileid: "69534989"
 IP アドレス ベースのアクセス制御規則は、Web アプリケーションへのアクセスの制御を可能にするカスタム WAF 規則です。 これは、Classless Inter-Domain Routing (CIDR) 形式で IP アドレスまたは IP アドレス範囲の一覧を指定することによって行われます。
 
 既定では、Web アプリケーションにはインターネットからアクセスできます。 既知の IP アドレスまたは IP アドレス範囲の一覧からクライアントへのアクセスを制限する場合、照合値として IP アドレスの一覧が含まれ、演算子が "Not" (否定が true) に、アクションが **[ブロック]** に設定する IP 照合ルールを作成する必要があります。 IP 制限規則が適用されると、この許可リストに含まれていないアドレスからの要求は、403 (禁止) 応答を受け取ります。  
+
+クライアント IP アドレスは、クライアントがプロキシ経由で WAF にアクセスする場合などは、WAF の監視する IP アドレスとは異なる場合があります。 IP 制限規則は、クライアント IP アドレス (RemoteAddr) または WAF によって検出されたソケット IP アドレス (SocketAddr) に基づいて作成できます。 
 
 ## <a name="configure-a-waf-policy-with-the-azure-cli"></a>Azure CLI で WAF ポリシーを構成する
 
@@ -67,7 +69,7 @@ az network front-door waf-policy rule create \
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI --defer
 ```
-次に、一致条件を規則に追加します。
+次に、クライアント IP の一致条件を規則に追加します。
 
 ```azurecli
 az network front-door waf-policy rule match-condition add\
@@ -79,9 +81,19 @@ az network front-door waf-policy rule match-condition add\
   --resource-group <resource-group-name> \
   --policy-name IPAllowPolicyExampleCLI 
   ```
-                                                   
-### <a name="find-the-id-of-a-waf-policy"></a>WAF ポリシーの ID を見つける 
-[az network front-door waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) コマンドを使用して、WAF ポリシーの ID を見つけます。 次の例の *IPAllowPolicyExampleCLI* を、先ほど作成した一意のポリシーに置き換えます。
+ソケット IP (SocketAddr) の一致条件の場合。
+  ```azurecli
+az network front-door waf-policy rule match-condition add\
+--match-variable SocketAddr \
+--operator IPMatch
+--values "ip-address-range-1" "ip-address-range-2"
+--negate true\
+--name IPAllowListRule\
+  --resource-group <resource-group-name> \
+  --policy-name IPAllowPolicyExampleCLI                                                  
+
+### Find the ID of a WAF policy 
+Find a WAF policy's ID by using the [az network front-door waf-policy show](/cli/azure/ext/front-door/network/front-door/waf-policy?view=azure-cli-latest#ext-front-door-az-network-front-door-waf-policy-show) command. Replace *IPAllowPolicyExampleCLI* in the following example with your unique policy that you created earlier.
 
    ```azurecli
    az network front-door  waf-policy show \
@@ -141,7 +153,17 @@ $IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
 -MatchValue "ip-address-range-1", "ip-address-range-2"
 -NegateCondition 1
 ```
-     
+
+ソケット IP (SocketAddr) の一致条件の場合。   
+```powershell
+$IPMatchCondition = New-AzFrontDoorWafMatchConditionObject `
+-MatchVariable  SocketAddr `
+-OperatorProperty IPMatch `
+-MatchValue "ip-address-range-1", "ip-address-range-2"
+-NegateCondition 1
+```
+
+
 ### <a name="create-a-custom-ip-allow-rule"></a>カスタム IP 許可規則を作成する
 
 アクションを定義して優先順位を設定するには、[New-AzFrontDoorCustomRuleObject](/powershell/module/Az.FrontDoor/New-azfrontdoorwafcustomruleobject) コマンドを使用します。 次の例では、リストに一致する、クライアント IP からではない要求が禁止されます。

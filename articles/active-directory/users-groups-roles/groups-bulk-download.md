@@ -13,23 +13,16 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1d0f94e9cf9b91bc365586dafc147dc73b17876
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 4b08e807e179270b63ca81d3777c230c3e129c3a
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914749"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72517140"
 ---
 # <a name="bulk-download-a-list-of-groups-preview-in-azure-active-directory"></a>Azure Active Directory でグループの一覧を一括ダウンロードする (プレビュー)
 
 Azure Active Directory (Azure AD) ポータルを利用し、組織の全グループの一覧をコンマ区切り値 (CSV) ファイルに一括ダウンロードできます。
-
-> [!NOTE]
-> Azure AD の一括操作は Azure AD のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 プレビューの使用条件について詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
-
-## <a name="bulk-download-service-limits"></a>一括ダウンロード サービスの制限
-
-グループの一覧を一括ダウンロードするごとに、最大 1 時間かかることがあります。 少なくとも 300,000 グループの一覧を一括でダウンロードできます。
 
 ## <a name="to-download-a-list-of-groups"></a>グループの一覧をダウンロードするには
 
@@ -45,7 +38,11 @@ Azure Active Directory (Azure AD) ポータルを利用し、組織の全グル�
 
    ![[一括操作の結果] ページに、一括要求の状態が表示されます](./media/groups-bulk-download/bulk-center.png)
 
+## <a name="bulk-download-service-limits"></a>一括ダウンロード サービスの制限
+
+グループの一覧を一括ダウンロードするごとに、最大 1 時間かかることがあります。 少なくとも 300,000 グループの一覧を一括でダウンロードできます。
+
 ## <a name="next-steps"></a>次の手順
 
-- [グループ メンバーの一括削除](groups-bulk-remove-members.md)
-- [グループ メンバーのダウンロード](groups-bulk-download-members.md)
+- [グループ メンバーを一括削除する](groups-bulk-remove-members.md)
+- [グループ メンバーをダウンロードする](groups-bulk-download-members.md)

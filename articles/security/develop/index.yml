@@ -13,7 +13,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/14/2019
+  ms.date: 09/30/2019
   ms.author: terrylan
 abstract:
   description: Microsoft のサンプル アプリ、ベスト プラクティス、ガイダンスを使用して、セキュリティで保護されたアプリケーションを Azure で開発してデプロイする方法について説明します。
@@ -41,6 +41,7 @@ sections:
         className: spaced noBullet
         items:
           - html: <a href="/azure/security/develop/secure-web-app">Linux コンテナー内の Web アプリ</a>
+          - html: <a href="/azure/security/develop/secure-aad-app">Web アプリと Azure Active Directory</a>
           - html: <a href="/azure/security/develop/secure-pci-web-app">ペイメント カード業界</a>
   - title: 概念
     items:

@@ -1,18 +1,18 @@
 ---
 title: Azure Database for MariaDB リレーショナル データベース サービスの概要
-description: Azure Database for MariaDB リレーショナル データベース サービスの概要。
+description: MySQL Community Edition をベースとした、Microsoft クラウドのリレーショナル データベース サービス、Azure Database for MariaDB サービスについて説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 08/13/2019
-ms.openlocfilehash: 20f6ff518daae71856446415099ae4cb095ff728
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 46ba972c489326157cbdea19a1363a30e18f72b8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013608"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177970"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Azure Database for MariaDB とは
 
@@ -55,7 +55,7 @@ Azure の業界をリードする可用性 99.99% の SLA は、Microsoft が管
 
 Azure データベース サービスは、Azure Database for MariaDB によって、データ セキュリティを維持してきました。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能が Azure Database for MariaDB には備わっています。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/en-us/trustcenter/security)をご覧ください。
 
-Azure Database for MariaDB サービスは、保存データにストレージ暗号化を使用し、FIPS 140-2 に準拠しています。 バックアップ データも含め、データはディスク上で暗号化されます (クエリの実行時にエンジンによって作成される一時ファイルはディスク上で暗号化されません)。このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用されます。 このキーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
+Azure Database for MariaDB サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中に作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用されます。 このキーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
 
 既定では、Azure Database for MariaDB サービスは、ネットワーク全体で移動中のデータに [SSL 接続セキュリティ](./concepts-ssl-connection-security.md)を要求するように構成されています。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。 クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要件を無効にできます。
 

@@ -12,12 +12,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/06/2019
   ms.author: robreed
-  ms.openlocfilehash: 3242e2c699e0f99164d6c5ecd2cf61441648b8e8
-  ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+  ms.openlocfilehash: e168142ade25e7b92e6336b04753132056fd7de9
+  ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/06/2019
-  ms.locfileid: "70743731"
+  ms.lasthandoff: 10/15/2019
+  ms.locfileid: "72375992"
 landingContent:
 - title: Azure オートメーションの使用
   linkLists:
@@ -33,6 +33,10 @@ landingContent:
     links:
     - text: Runbook を作成する
       url: automation-quickstart-create-runbook.md
+  - linkListType: deploy
+    links:
+    - text: 勤務時間外に VM を起動/停止する
+      url: automation-solution-vm-management.md
 - title: VM の更新プログラムを管理する
   linkLists:
   - linkListType: overview

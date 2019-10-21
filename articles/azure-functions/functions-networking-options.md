@@ -117,7 +117,7 @@ Functions の仮想ネットワーク統合では、App Service Web アプリで
 
 [HTTP 以外のすべてのトリガーについてこちらの一覧](./functions-triggers-bindings.md#supported-bindings)をチェックして、サポートされているものを再度確認してください。
 
-## <a name="hybrid-connections"></a>ハイブリッド接続と
+## <a name="hybrid-connections"></a>ハイブリッド接続
 
 [ハイブリッド接続](../service-bus-relay/relay-hybrid-connections-protocol.md)は、他のネットワークのアプリケーション リソースにアクセスするために使用できる Azure Relay の機能です。 アプリからアプリケーション エンドポイントにアクセスできます。 アプリケーションにアクセスするために使用することはできません。 ハイブリッド接続は、[App Service プラン](functions-scale.md#app-service-plan)および [App Service Environment](../app-service/environment/intro.md) で実行されている関数に使用できます。
 

@@ -44,6 +44,8 @@
       href: expressroute-erdirect-about.md
     - name: ExpressRoute Global Reach について
       href: expressroute-global-reach.md
+    - name: ExpressRoute の暗号化について
+      href: expressroute-about-encryption.md
     - name: Azure をパブリック クラウドに接続する
       href: expressroute-connect-azure-to-public-cloud.md
     - name: バックエンド接続の相互運用性
@@ -121,6 +123,8 @@
           href: expressroute-howto-erdirect.md
         - name: Azure CLI
           href: expressroute-howto-expressroute-direct-cli.md
+    - name: ExpressRoute Direct ポート用に MACsec を構成する
+      href: expressroute-howto-macsec.md
     - name: Microsoft ピアリングにルート フィルターを構成する
       items:
         - name: Azure ポータル

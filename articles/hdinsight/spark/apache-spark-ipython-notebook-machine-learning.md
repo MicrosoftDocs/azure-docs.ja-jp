@@ -1,21 +1,21 @@
 ---
 title: チュートリアル:Azure HDInsight で Spark Machine Learning アプリケーションを作成する
 description: チュートリアル - Apache Spark Machine Learning アプリケーションを HDInsight Spark クラスター内に Jupyter Notebook を使用して作成するための詳細な手順。
-ms.service: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 06/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: e1a52072ab3309454742d2d3e8582b58a33666e3
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: e77414da964d548b64250bbf98f86bee1529f2ab
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448703"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327007"
 ---
-# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Spark 機械学習アプリケーションを作成する 
+# <a name="tutorial-build-an-apache-spark-machine-learning-application-in-azure-hdinsight"></a>チュートリアル:Azure HDInsight で Apache Spark 機械学習アプリケーションを作成する
 
 このチュートリアルでは、[Jupyter Notebook](https://jupyter.org/) を使用して、Azure HDInsight 用の [Apache Spark](https://spark.apache.org/) 機械学習アプリケーションを作成する方法について説明します。
 
@@ -43,7 +43,7 @@ ms.locfileid: "67448703"
 
 1. PySpark カーネルを使用して Jupyter Notebook を作成します。 手順については、[Jupyter Notebook の作成](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)に関するページをご覧ください。
 
-1. このシナリオに必要な型をインポートします。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。 
+1. このシナリオに必要な型をインポートします。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -60,7 +60,7 @@ ms.locfileid: "67448703"
     from numpy import array
     ```
 
-3. データ (hvac.csv) を読み込み、解析し、それを使用してモデルをトレーニングします。 
+1. データ (hvac.csv) を読み込み、解析し、それを使用してモデルをトレーニングします。
 
     ```PySpark
     # Define a type called LabelDocument
@@ -72,7 +72,7 @@ ms.locfileid: "67448703"
         if (values[3] > values[2]):
             hot = 1.0
         else:
-            hot = 0.0        
+            hot = 0.0
 
         textValue = str(values[4]) + " " + str(values[5])
 
@@ -87,7 +87,7 @@ ms.locfileid: "67448703"
 
     このコード スニペットでは、実際の温度と目標温度とを比較する関数を定義します。 実際の温度の方が高い場合、ビルは暑く、値 **1.0**で示されます。 それ以外の場合、ビルは寒く、値 **0.0** で示されます。
 
-4. トークナイザー、hashingTF、lr という 3 つのステージで構成される Spark 機械学習パイプラインを構成します。
+1. トークナイザー、hashingTF、lr という 3 つのステージで構成される Spark 機械学習パイプラインを構成します。
 
     ```PySpark
     tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
@@ -98,18 +98,18 @@ ms.locfileid: "67448703"
 
     パイプラインとそのしくみの詳細については、[Apache Spark 機械学習パイプライン](https://spark.apache.org/docs/latest/ml-pipeline.html)に関するページを参照してください。
 
-5. パイプラインをトレーニング ドキュメントに適合させます。
+1. パイプラインをトレーニング ドキュメントに適合させます。
 
     ```PySpark
     model = pipeline.fit(training)
     ```
 
-6. トレーニング ドキュメントを検証してアプリケーションでの進行状況をチェックポイントします。
+1. トレーニング ドキュメントを検証してアプリケーションでの進行状況をチェックポイントします。
 
     ```PySpark
     training.show()
     ```
-   
+
     次のように出力されます。
 
     ```output
@@ -145,7 +145,7 @@ ms.locfileid: "67448703"
 
     実際の温度は目標温度より低く、ビルが寒いことを示します。 そのため、トレーニングの出力では、最初の行の **label** の値は **0.0** であり、ビルが暑くないことを意味します。
 
-7. トレーニング済みのモデルを実行するようにデータ セットを準備します。 そのためには、システム ID とシステム経過年数 (トレーニング出力では **SystemInfo** として示されます) を渡し、モデルはそのシステム ID とシステム経過年数のビルが暑すぎるか (1.0 で示されます) または寒すぎるか (0.0 で示されます) を予測します。
+1. トレーニング済みのモデルを実行するようにデータ セットを準備します。 そのためには、システム ID とシステム経過年数 (トレーニング出力では **SystemInfo** として示されます) を渡し、モデルはそのシステム ID とシステム経過年数のビルが暑すぎるか (1.0 で示されます) または寒すぎるか (0.0 で示されます) を予測します。
 
     ```PySpark
     # SystemInfo here is a combination of system ID followed by system age
@@ -159,7 +159,7 @@ ms.locfileid: "67448703"
         .map(lambda x: Document(*x)).toDF()
     ```
 
-8. 最後に、テスト データで予測を行います。
+1. 最後に、テスト データで予測を行います。
 
     ```PySpark
     # Make predictions on test documents and print columns of interest
@@ -182,9 +182,10 @@ ms.locfileid: "67448703"
 
    予測の 1 行目からは、ID が 20 でシステム経過年数が 25 年の HVAC システムではビルが暑い (**prediction=1.0**) ことがわかります。 DenseVector の 1 番目の値 (0.49999) は予測 0.0 に対応し、2 番目の値 (0.5001) は予測 1.0 に対応します。 出力では、2 番目の値はわずかに高いだけですが、モデルは **prediction=1.0**を示します。
 
-10. Notebook をシャットダウンしてリソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 このアクションにより Notebook がシャットダウンされ、Notebook が閉じます。
+1. Notebook をシャットダウンしてリソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 このアクションにより Notebook がシャットダウンされ、Notebook が閉じます。
 
 ## <a name="use-anaconda-scikit-learn-library-for-spark-machine-learning"></a>Spark Machine Learning での Anaconda scikit-learn ライブラリの使用
+
 HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。 これには、機械学習用の **scikit-learn** ライブラリも含まれます。 ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。 scikit-learn ライブラリの使用例については、「[ https://scikit-learn.org/stable/auto_examples/index.html](https://scikit-learn.org/stable/auto_examples/index.html)」を参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
@@ -201,7 +202,7 @@ HDInsight の Apache Spark クラスターには、Anaconda ライブラリが�
 
 1. **[削除]** を選択します。 **[はい]** を選択します。
 
-![HDInsight クラスターの削除](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
+![Azure portal で HDInsight クラスターを削除する](./media/apache-spark-ipython-notebook-machine-learning/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターを削除する")
 
 ## <a name="next-steps"></a>次の手順
 

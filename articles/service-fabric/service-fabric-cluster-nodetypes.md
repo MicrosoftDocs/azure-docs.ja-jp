@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/23/2018
-ms.author: chackdan
-ms.openlocfilehash: f33b25112b5c4ee77f1f7d2a419ffb8e926a27d9
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.author: pepogors
+ms.openlocfilehash: cec134f9e71f86cd0ed17912f1a3c76adc9a4164
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501357"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72167321"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric のノードの種類と仮想マシン スケール セット
 [仮想マシン スケール セット](/azure/virtual-machine-scale-sets)は、Azure コンピューティング リソースです。 スケール セットを使用すると、仮想マシンのコレクションをセットとしてデプロイおよび管理できます。 Azure Service Fabric クラスターで定義するノードの種類ごとに別個のスケールが設定されます。  Service Fabric ランタイムは、Microsoft.Azure.ServiceFabric 仮想マシン拡張機能により設定されたスケール セットでの各仮想マシンにインストールされます。 各ノードの種類を個別にスケールアップまたはスケールダウンしたり、各クラスター ノードで実行されている OS SKU を変更したり、異なるポートのセットを開いたり、別の容量メトリックを使用したりできます。
@@ -77,8 +77,8 @@ Service Fabric 仮想マシン拡張機能は、Service Fabric を　Azure 仮�
 
 | **Name** | **使用できる値** | ** --- ** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-| 名前 | string | --- | 拡張機能の一意な名前 |
-| type | "ServiceFabricLinuxNode" または "ServiceFabricWindowsNode | --- | OS の Service Fabric が次に対してブートストラップすることを識別します。 |
+| name | string | --- | 拡張機能の一意な名前 |
+| type | "ServiceFabricLinuxNode" または "ServiceFabricWindowsNode" | --- | OS の Service Fabric が次に対してブートストラップすることを識別します。 |
 | autoUpgradeMinorVersion | true または false | --- | SF ランタイムのマイナー バージョンの自動アップグレードを有効にします。 |
 | publisher | Microsoft.Azure.ServiceFabric | --- | Service Fabric 拡張機能のパブリッシャー名 |
 | clusterEndpont | string | --- | 管理エンドポイントへに対する URI:PORT |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 80f90f1788e798261f77bb7a4147763e7ca6cec0
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: d64cdce34127b066aedc8a5fcd6ec3a891b38c5e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946507"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262847"
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 
@@ -36,7 +36,7 @@ Azure にはさまざまな構成可能なセキュリティ監査およびロ�
 Azure のログは、次の種類に分類されます。
 * **コントロール/管理ログ**: Azure Resource Manager の CREATE、UPDATE、DELETE 操作に関する情報を提供します。 詳細については、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)に関するページを参照してください。
 
-* **データ プレーン ログ**: Azure のリソース使用の一環として発生したイベントに関する情報を提供します。 この種類のログの例として、仮想マシンの Windows イベント システム ログ、セキュリティ ログ、アプリケーション ログや、Azure Monitor で構成される[診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)があります。
+* **データ プレーン ログ**: Azure のリソース使用の一環として発生したイベントに関する情報を提供します。 この種類のログの例として、仮想マシンの Windows イベント システム ログ、セキュリティ ログ、アプリケーション ログや、Azure Monitor で構成される[診断ログ](../../azure-monitor/platform/resource-logs-overview.md)があります。
 
 * **処理済みイベント**: ユーザーに代わって処理された分析済みのイベント/アラートに関する情報を提供します。 この種類の例として、[Azure Security Center](../../security-center/security-center-intro.md) がサブスクリプションを処理して分析し、簡潔なセキュリティ アラートを提供する [Azure Security Center のアラート](../../security-center/security-center-managing-and-responding-alerts.md)があります。
 
@@ -45,7 +45,7 @@ Azure のログは、次の種類に分類されます。
 | ログのカテゴリ | ログのタイプ | 使用法 | 統合 |
 | ------------ | -------- | ------ | ----------- |
 |[アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)|Azure Resource Manager リソースのコントロールプレーン イベント|  サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。|    Rest API、[Azure Monitor](../../azure-monitor/platform/activity-logs-overview.md)|
-|[Azure Diagnostics ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)|サブスクリプションの Azure Resource Manager リソースの操作に関してよく使用されるデータ|  リソース自体が実行した操作に関する分析情報を提供します。| Azure Monitor、[Stream](../../azure-monitor/platform/diagnostic-logs-overview.md)|
+|[Azure Diagnostics ログ](../../azure-monitor/platform/resource-logs-overview.md)|サブスクリプションの Azure Resource Manager リソースの操作に関してよく使用されるデータ|    リソース自体が実行した操作に関する分析情報を提供します。| Azure Monitor、[Stream](../../azure-monitor/platform/resource-logs-overview.md)|
 |[Azure AD レポート](../../active-directory/reports-monitoring/overview-reports.md)|ログとレポート | ユーザーのサインイン アクティビティと、ユーザーおよびグループの管理に関するシステム アクティビティの情報を報告します。|[Graph API](../../active-directory/develop/active-directory-graph-api-quickstart.md)|
 |[仮想マシンとクラウド サービス](../../azure-monitor/learn/quick-collect-azurevm.md)|Windows イベント ログ サービスと Linux Syslog|  仮想マシンのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。|   Azure Monitor の Windows (Microsoft Azure Diagnostics ([WAD](../../monitoring-and-diagnostics/azure-diagnostics.md)) ストレージを使用) と Linux|
 |[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|ストレージ ログ (ストレージ アカウントのメトリック データの提供)|トレース要求に関する分析情報を提供し、使用傾向を分析して、ストレージ アカウントの問題を診断します。|   REST API または[クライアント ライブラリ](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
@@ -95,7 +95,7 @@ Azure Diagnostics ログには、Azure portal、PowerShell、Azure CLI、REST AP
 
 * 監査や手動での検査に使用するために[ストレージ アカウント](../../azure-monitor/platform/archive-diagnostic-logs.md)に保存する。 診断設定を使用して保持期間 (日数) を指定できます。
 
-* サード パーティのサービスや [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/) などのカスタム分析ソリューションで取り込むために[イベント ハブにストリーム配信する](../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)。
+* サード パーティのサービスや [PowerBI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/) などのカスタム分析ソリューションで取り込むために[イベント ハブにストリーム配信する](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)。
 
 * [Azure Monitor ログ](../../log-analytics/log-analytics-queries.md)を使用して分析する。
 
@@ -315,11 +315,11 @@ Azure Monitor ログの核となる機能は、Azure でホストされている
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-接続先のソースは、Azure Monitor ログによって収集されるデータを生成するコンピューターとその他のリソースです。 ソースには、直接接続している [Windows](../../log-analytics/log-analytics-agent-windows.md) および [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) のコンピューターにインストールされているエージェント、または[接続されている System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)のエージェントを含めることができます。 また、Azure Monitor ログは [Azure ストレージ アカウント](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md)からもデータを収集できます。
+接続先のソースは、Azure Monitor ログによって収集されるデータを生成するコンピューターとその他のリソースです。 ソースには、直接接続している [Windows](../../log-analytics/log-analytics-agent-windows.md) および [Linux](../../log-analytics/log-analytics-quick-collect-linux-computer.md) のコンピューターにインストールされているエージェント、または[接続されている System Center Operations Manager 管理グループ](../../azure-monitor/platform/om-agents.md)のエージェントを含めることができます。 また、Azure Monitor ログは [Azure ストレージ アカウント](../../azure-monitor/platform/resource-logs-collect-storage.md)からもデータを収集できます。
 
 [データ ソース](../../azure-monitor/platform/agent-data-sources.md)は、接続先の各ソースから収集されるさまざまな種類のデータです。 ソースには、[IIS ログ](../../azure-monitor/platform/data-sources-iis-logs.md)や[カスタム テキスト ログ](../../azure-monitor/platform/data-sources-custom-logs.md)などのソースに加えて、[Windows](../../azure-monitor/platform/data-sources-windows-events.md) および Linux エージェントからのイベントと[パフォーマンス データ](../../azure-monitor/platform/data-sources-performance-counters.md)が含まれます。 収集するデータ ソースをそれぞれ構成すると、構成は接続されているソースごとに自動的に提供されます。
 
-[Azure サービスのログとメトリックを収集する](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md)方法は 4 つあります。
+[Azure サービスのログとメトリックを収集する](../../azure-monitor/platform/resource-logs-collect-storage.md)方法は 4 つあります。
 
 * Azure Diagnostics から Azure Monitor ログに直接 (次の表では "**診断**")
 

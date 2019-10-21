@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f63aebb9a9bbefe84ac36b92cd69e0d93de0ab76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fc25cffde264a5c9c9e9627bbf4b72ccda60673
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66298752"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71290867"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -53,7 +53,7 @@ Azure Active Directory スキーマでは、次の属性について複数のオ
 * ProxyAddresses
 * UserPrincipalName
 * onPremisesSecurityIdentifier
-* オブジェクト ID
+* ObjectId
 
 > [!NOTE]
 > [Azure AD Attribute Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) 機能は、Azure Active Directory の既定動作としても展開されます。  これにより、オンプレミス AD 環境に存在する重複した ProxyAddresses 属性や UserPrincipalName 属性の処理において、Azure AD の復元力が向上し、Azure AD Connect (および他の同期クライアント) によって検出される同期エラーの数が減少します。 この機能では重複エラーは修正されません。 したがって、データの修正は必要です。 ただし、新しいオブジェクトのプロビジョニングは許可されます (この機能がない場合には、Azure AD に重複値があるとプロビジョニングが禁止されます)。 これにより、同期クライアントに返される同期エラーの数も減少します。
@@ -237,9 +237,10 @@ Azure AD Connect は、オンプレミスの AD からのユーザー オブジ�
 ### <a name="how-to-fix"></a>修正方法
 この問題を解決するには、次のいずれかの操作を行ってください。
 
-
-- UserPrincipalName を Azure AD の管理者ユーザーのものと一致しない値に変更する - Azure AD に UserPrincipalName が一致する新しいユーザーを作成します
-- Azure AD の管理者ユーザーから管理ロールを削除します。これにより、オンプレミスのユーザー オブジェクトと既存の Azure AD ユーザー オブジェクトの間のあいまい一致が有効になります。
+ - Azure AD アカウント (所有者) をすべての管理者ロールから削除する。 
+ - 検疫済みオブジェクトをクラウドから**物理的に削除**する。 
+ - クラウド アカウントに対するオンプレミス ユーザーのあいまい一致を次の同期サイクルで対処します。(クラウド ユーザーはグローバル GA ではなくなっているため)。 
+ - 所有者のロールのメンバーシップを復元する。 
 
 >[!NOTE]
 >オンプレミスのユーザー オブジェクトと Azure AD ユーザー オブジェクトの間のあいまい一致が完了した後、管理ロールを既存のユーザー オブジェクトに再度割り当てることができます。

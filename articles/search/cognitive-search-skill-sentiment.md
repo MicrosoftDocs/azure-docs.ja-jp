@@ -9,13 +9,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: luisca
-ms.subservice: cognitive-search
-ms.openlocfilehash: ad6689dad3789329ad202c82dd10847c618906a2
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 8610506b7d62542e9eb801b06dd49a5e130fa7fa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183361"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265735"
 ---
 #   <a name="sentiment-cognitive-skill"></a>センチメント コグニティブ スキル
 

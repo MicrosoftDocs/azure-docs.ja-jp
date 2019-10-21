@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: tomfitz
-ms.openlocfilehash: c30bb47f3f35663a6ffcfc0126758eb82c9dec4e
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 93f17ea9d2ffa33d1dca9da3eb60f75165e8ed61
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194779"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973331"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
 
@@ -59,7 +59,7 @@ ms.locfileid: "70194779"
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | inputString |はい |string |Base 64 形式として返す値。 |
 
@@ -110,7 +110,7 @@ base64 形式を含む文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | base64Output | string | b25lLCB0d28sIHRocmVl |
 | toStringOutput | string | one, two, three |
@@ -124,7 +124,7 @@ base64 形式を JSON オブジェクトに変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | base64Value |はい |string |JSON オブジェクトに変換する base64 形式。 |
 
@@ -175,7 +175,7 @@ JSON オブジェクト。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | base64Output | string | b25lLCB0d28sIHRocmVl |
 | toStringOutput | string | one, two, three |
@@ -189,7 +189,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | base64Value |はい |string |文字列に変換する base64 形式。 |
 
@@ -240,7 +240,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | base64Output | string | b25lLCB0d28sIHRocmVl |
 | toStringOutput | string | one, two, three |
@@ -254,7 +254,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |文字列または配列 |連結の最初の値。 |
 | 残りの引数 |いいえ |string |連結する順の追加の値。 |
@@ -288,7 +288,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | concatOutput | string | prefix-5yj4yjf5mbg72 |
 
@@ -329,7 +329,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | return | Array | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
@@ -341,7 +341,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | container |はい |配列、オブジェクト、文字列 |検索対象の値を含む値。 |
 | itemToFind |はい |文字列または整数 |検索対象の値。 |
@@ -405,7 +405,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | stringTrue | Bool | True |
 | stringFalse | Bool | False |
@@ -422,7 +422,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToConvert |はい |string |データ URI に変換する値。 |
 
@@ -464,7 +464,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | dataUriOutput | string | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | string | Hello, World! |
@@ -477,7 +477,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | dataUriToConvert |はい |string |変換するデータ URI 値。 |
 
@@ -519,7 +519,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | dataUriOutput | string | data:text/plain;charset=utf8;base64,SGVsbG8= |
 | toStringOutput | string | Hello, World! |
@@ -532,7 +532,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | itemToTest |はい |配列、オブジェクト、文字列 |空かどうかを確認する値。 |
 
@@ -583,7 +583,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayEmpty | Bool | True |
 | objectEmpty | Bool | True |
@@ -597,7 +597,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |はい |string |検索対象の値。 |
@@ -646,7 +646,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -663,7 +663,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最初の要素または文字を取得する値。 |
 
@@ -702,7 +702,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | string | one |
 | stringOutput | string | O |
@@ -715,7 +715,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | formatString | はい | string | 複合の書式設定文字列。 |
 | arg1 | はい | 文字列、整数、またはブール値 | 書式設定された文字列に含める値。 |
@@ -760,7 +760,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | formatTest | string | Hello, User. Formatted number:8,175,133 |
 
@@ -772,7 +772,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseString |はい |string |GUID を作成するためにハッシュ関数で使用される値。 |
 | 必要に応じて追加のパラメーター |いいえ |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
@@ -843,7 +843,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |はい |string |検索対象の値。 |
@@ -888,7 +888,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -904,7 +904,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |配列または文字列 |最後の要素または文字を取得する値。 |
 
@@ -943,7 +943,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | string | three |
 | stringOutput | string | e |
@@ -956,7 +956,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |はい |string |検索対象の値。 |
@@ -1001,7 +1001,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | firstT | int | 0 |
 | lastT | int | 3 |
@@ -1017,7 +1017,7 @@ base64 形式を文字列に変換します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |はい |array、string、または object |要素の数を取得するために使用する配列、文字の数を取得するために使用する文字列、またはルート レベル プロパティの数を取得するために使用するオブジェクト。 |
 
@@ -1079,7 +1079,7 @@ base64 形式を文字列に変換します。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayLength | int | 3 |
 | stringLength | int | 13 |
@@ -1097,7 +1097,7 @@ base64 形式を文字列に変換します。
 
 newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 関数と異なります。 guid では、同じパラメーターを使用して呼び出すと、毎回同じ識別子が返されます。 特定の環境に対して同じ GUID を確実に生成する必要がある場合は、guid を使用してください。 テスト環境へのリソースのデプロイなど、毎回異なる識別子が必要なときは、newGuid を使用してください。
 
-[以前の正常なデプロイを再デプロイするオプション](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)を使用し、以前のデプロイに newGuid を使用するパラメーターが含まれている場合、パラメーターは再評価されません。 代わりに、以前のデプロイのパラメーター値が、ロールバック デプロイで自動的に再利用されます。
+[以前の正常なデプロイを再デプロイするオプション](rollback-on-error.md)を使用し、以前のデプロイに newGuid を使用するパラメーターが含まれている場合、パラメーターは再評価されません。 代わりに、以前のデプロイのパラメーター値が、ロールバック デプロイで自動的に再利用されます。
 
 テスト環境では、短時間だけ存在するリソースを繰り返しデプロイすることが必要な場合があります。 一意の名前を構築するのではなく、[uniqueString](#uniquestring) で newGuid を使用して一意の名前を作成できます。
 
@@ -1134,7 +1134,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | guidOutput | string | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
@@ -1177,7 +1177,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | nameOutput | string | storagenziwvyru7uxie |
 
@@ -1190,7 +1190,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToPad |はい |文字列または整数 |右揃えにする値。 |
 | totalLength |はい |int |返される文字列の文字合計数。 |
@@ -1228,7 +1228,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | stringOutput | string | 0000000123 |
 
@@ -1240,7 +1240,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalString |はい |string |別の文字列で置き換えられる文字列の全インスタンスを含む値。 |
 | oldString |はい |string |元の文字列から削除する文字列。 |
@@ -1280,7 +1280,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | firstOutput | string | 1231231234 |
 | secondOutput | string | 123-123-xxxx |
@@ -1293,7 +1293,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |スキップ対象の配列または文字列。 |
 | numberToSkip |はい |int |スキップする要素または文字の数。 この値が 0 以下である場合は、値内のすべての要素または文字が返されます。 配列または文字列の長さを超過している場合は、空の配列または文字列が返されます。 |
@@ -1348,7 +1348,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["three"] |
 | stringOutput | string | two three |
@@ -1361,7 +1361,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | inputString |はい |string |分割する文字列。 |
 | delimiter |はい |文字列または文字列の配列 |文字列の分割に使用する区切り記号。 |
@@ -1407,7 +1407,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | firstOutput | Array | ["one", "two", "three"] |
 | secondOutput | Array | ["one", "two", "three"] |
@@ -1420,7 +1420,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |はい |string |検索対象の項目を含む値。 |
 | stringToFind |はい |string |検索対象の値。 |
@@ -1469,7 +1469,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | startsTrue | Bool | True |
 | startsCapTrue | Bool | True |
@@ -1486,7 +1486,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | valueToConvert |はい | Any |文字列に変換する値。 オブジェクトと配列を含む、あらゆる種類の値を変換できます。 |
 
@@ -1543,7 +1543,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | objectOutput | string | {"valueA":10,"valueB":"Example Text"} |
 | arrayOutput | string | ["a","b","c"] |
@@ -1557,7 +1557,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToParse |はい |string |部分文字列の抽出元となる文字列。 |
 | startIndex |いいえ |int |部分文字列の 0 から始まる開始文字位置。 |
@@ -1606,7 +1606,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | substringOutput | string | two |
 
@@ -1618,7 +1618,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | originalValue |はい |配列または文字列 |要素の取得元となる配列または文字列。 |
 | numberToTake |はい |int |取得する要素または文字の数。 この値が 0 以下である場合、空の配列または文字列が返されます。 指定された配列または文字列の長さを超過している場合は、その配列または文字列のすべての要素が返されます。 |
@@ -1673,7 +1673,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | arrayOutput | Array | ["one", "two"] |
 | stringOutput | string | on |
@@ -1686,7 +1686,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |はい |string |小文字に変換する値。 |
 
@@ -1724,7 +1724,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | toLowerOutput | string | one two three |
 | toUpperOutput | string | ONE TWO THREE |
@@ -1737,7 +1737,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToChange |はい |string |大文字に変換する値。 |
 
@@ -1775,7 +1775,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | toLowerOutput | string | one two three |
 | toUpperOutput | string | ONE TWO THREE |
@@ -1788,7 +1788,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToTrim |はい |string |トリムする値。 |
 
@@ -1822,7 +1822,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | 戻り値 | string | one two three |
 
@@ -1834,7 +1834,7 @@ newGuid 関数は、パラメーターを受け取らない点が [guid](#guid) 
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | baseString |はい |string |一意の文字列を作成するためにハッシュ関数で使用される値。 |
 | 必要に応じて追加のパラメーター |いいえ |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
@@ -1912,12 +1912,28 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
-| baseUri |はい |string |ベース URI 文字列。 |
+| baseUri |はい |string |ベース URI 文字列。 この表の後に記述されている、末尾のスラッシュ ("/") の処理に関する動作を注意して確認してください。  |
 | relativeUri |はい |string |ベース URI 文字列に追加する相対 URI 文字列。 |
 
-**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。 たとえば、baseUri パラメーターとして `http://contoso.com/resources/azuredeploy.json` を渡すと、`http://contoso.com/resources/` というベース URI が作成されます。
+* **baseUri** の末尾がスラッシュで終わる場合、結果は単純に **baseUri** の後に **relativeUri** が続きます。
+
+* **baseUri** の末尾がスラッシュで終わっていない場合は、次の 2 つのいずれかが発生します。  
+
+   * **baseUri** にスラッシュが (先頭付近の "//" を除いて) まったく含まれていない場合、結果は単純に **baseUri** の後に **relativeUri** が続きます。
+
+   * **baseUri** にスラッシュが含まれているが、末尾がスラッシュでない場合は、最後のスラッシュの後ろがすべて **baseUri** から削除され、結果は **baseUri** の後に **relativeUri** が続きます。
+     
+次に例をいくつか示します。
+
+```
+uri('http://contoso.org/firstpath', 'myscript.sh') -> http://contoso.org/myscript.sh
+uri('http://contoso.org/firstpath/', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json', 'myscript.sh') -> http://contoso.org/firstpath/myscript.sh
+uri('http://contoso.org/firstpath/azuredeploy.json/', 'myscript.sh') -> http://contoso.org/firstpath/azuredeploy.json/myscript.sh
+```
+詳細については、[RFC 3986 のセクション 5](https://tools.ietf.org/html/rfc3986#section-5) に記載されているように、**baseUri** パラメーターと **relativeUri** パラメーターが解決されます。
 
 ### <a name="return-value"></a>戻り値
 
@@ -1962,7 +1978,7 @@ baseUri と relativeUri の文字列を組み合わせることにより、絶�
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -1976,7 +1992,7 @@ URI をエンコードします。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | stringToEncode |はい |string |エンコード対象の値。 |
 
@@ -2017,7 +2033,7 @@ URI エンコードされた値の文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2031,7 +2047,7 @@ URI エンコードされた値の文字列を返します。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | uriEncodedString |はい |string |文字列に変換する URI エンコードされた値。 |
 
@@ -2072,7 +2088,7 @@ URI エンコードされた値のデコード済み文字列。
 
 既定値を使用した場合の前の例の出力は次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | uriOutput | string | http://contoso.com/resources/nested/azuredeploy.json |
 | componentOutput | string | http%3A%2F%2Fcontoso.com%2Fresources%2Fnested%2Fazuredeploy.json |
@@ -2086,7 +2102,7 @@ URI エンコードされた値のデコード済み文字列。
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | Type | 説明 |
+| パラメーター | 必須 | 種類 | 説明 |
 |:--- |:--- |:--- |:--- |
 | format |いいえ |string |文字列に変換する URI エンコードされた値。 [標準書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式指定文字列](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)を使用します。 |
 
@@ -2094,7 +2110,7 @@ URI エンコードされた値のデコード済み文字列。
 
 この関数は、パラメーターの既定値に対する式の中でのみ使用できます。 この関数をテンプレートのその他の場所で使用すると、エラーが返されます。 テンプレートの他の場所でこの関数を使用することは、呼び出しのたびに異なる値が返されるため、許可されていません。 同じパラメーターで同じテンプレートをデプロイしても、同じ結果が生成される保証はありません。
 
-[以前の正常なデプロイを再デプロイするオプション](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)を使用し、以前のデプロイに utcNow を使用するパラメーターが含まれている場合、パラメーターは再評価されません。 代わりに、以前のデプロイのパラメーター値が、ロールバック デプロイで自動的に再利用されます。
+[以前の正常なデプロイを再デプロイするオプション](rollback-on-error.md)を使用し、以前のデプロイに utcNow を使用するパラメーターが含まれている場合、パラメーターは再評価されません。 代わりに、以前のデプロイのパラメーター値が、ロールバック デプロイで自動的に再利用されます。
 
 既定値に対する utcNow 関数に依存するテンプレートを再デプロイするときは注意が必要です。 再デプロイを行うときに、パラメーターの値を指定しないと、関数が再評価されます。 新しいリソースを作成するのではなく、既存のリソースを更新する場合は、以前のデプロイのパラメーター値を渡します。
 
@@ -2145,7 +2161,7 @@ URI エンコードされた値のデコード済み文字列。
 
 前の例からの出力はデプロイごとに変わりますが、次のようになります。
 
-| Name | Type | 値 |
+| Name | 種類 | 値 |
 | ---- | ---- | ----- |
 | utcOutput | string | 20190305T175318Z |
 | utcShortOutput | string | 03/05/2019 |

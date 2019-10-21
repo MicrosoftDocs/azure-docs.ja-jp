@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.date: 4/11/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: e56301e98ca773369631e2f7ae137c63d0b9ddef
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 9f90f373bd6f1cfd34de1605783bf3a7f0185f4c
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67613310"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240334"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web アプリケーション ファイアウォールの CRS 規則グループと規則
 
@@ -197,6 +197,7 @@ Application Gateway Web アプリケーション ファイアウォール (WAF) 
 |942270|基本的な sql インジェクションを探しています。 mysql oracle などの共通攻撃文字列。|
 |942290|基本的な MongoDB SQL インジェクション試行を探します|
 |942300|MySQL コメント、条件、および ch(a)r インジェクションを検出します。|
+|942310|チェーンされた SQL インジェクション試行 2/2 を検出します|
 |942320|MySQL および PostgreSQL ストアド プロシージャ/関数インジェクションを検出します|
 |942330|従来の SQL インジェクション プローブ 1/2 を検出します|
 |942340|基本的な SQL 認証のバイパスの試行 3/3 を検出します|

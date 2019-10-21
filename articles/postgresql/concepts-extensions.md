@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/23/2019
-ms.openlocfilehash: 04b17d2e3acba7f003325ca7fdef2107108aea4d
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 10/11/2019
+ms.openlocfilehash: 4f81b23378427faa522071f4a20e07485f5c3387
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013412"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296421"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを単一のパッケージにまとめて、単一のコマンドでデータベースに対する読み込みや削除を行うことができます。 データベースに読み込まれた後、拡張機能は組み込み機能と同じように機能します。
@@ -44,6 +44,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サー
 > |[isn](https://www.postgresql.org/docs/11/isn.html)                          | 1.2             | 国際対応の製品番号規格のデータ型|
 > |[ltree](https://www.postgresql.org/docs/11/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.3.1             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/11/pgcrypto.html)                     | 1.3             | 暗号化関数|
 > |[pgrouting](https://pgrouting.org/)                    | 2.6.2           | pgRouting の拡張機能|
 > |[pgrowlocks](https://www.postgresql.org/docs/11/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
@@ -61,6 +62,7 @@ Postgres バージョン 11 を搭載した Azure Database for PostgreSQL サー
 > |[postgis_topology](https://postgis.net/docs/Topology.html)             | 2.5.1           | PostGIS トポロジの空間型と関数|
 > |[postgres_fdw](https://www.postgresql.org/docs/11/postgres-fdw.html)                 | 1.0             | リモート PostgreSQL サーバー用の外部データ ラッパー|
 > |[tablefunc](https://www.postgresql.org/docs/11/tablefunc.html)                    | 1.0             | クロス集計を含む、テーブル全体を操作する関数|
+> |[timescaledb](https://docs.timescale.com/latest)                    | 1.3.2             | 時系列データに対するスケーラブルな挿入と複雑なクエリを可能にします|
 > |[unaccent](https://www.postgresql.org/docs/11/unaccent.html)                     | 1.1             | アクセントを削除するテキスト検索辞書|
 > |[uuid-ossp](https://www.postgresql.org/docs/11/uuid-ossp.html)                    | 1.1             | 汎用一意識別子 (UUID) を生成する|
 
@@ -88,6 +90,7 @@ Postgres バージョン 10 を搭載した Azure Database for PostgreSQL サー
 > |[isn](https://www.postgresql.org/docs/10/isn.html)                          | 1.1             | 国際対応の製品番号規格のデータ型|
 > |[ltree](https://www.postgresql.org/docs/10/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.2             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/10/pgcrypto.html)                     | 1.3             | 暗号化関数|
 > |[pgrouting](https://pgrouting.org/)                    | 2.5.2           | pgRouting の拡張機能|
 > |[pgrowlocks](https://www.postgresql.org/docs/10/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
@@ -133,6 +136,7 @@ Postgres バージョン 9.6 を搭載した Azure Database for PostgreSQL サ�
 > |[isn](https://www.postgresql.org/docs/9.6/isn.html)                          | 1.1             | 国際対応の製品番号規格のデータ型|
 > |[ltree](https://www.postgresql.org/docs/9.6/ltree.html)                        | 1.1             | 階層ツリー状の構造体のデータ型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.1.2             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/9.6/pgcrypto.html)                     | 1.3             | 暗号化関数|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.2           | pgRouting の拡張機能|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.6/pgrowlocks.html)                   | 1.2             | 行レベルのロック情報を表示する|
@@ -178,6 +182,7 @@ Postgres バージョン 9.5 を搭載した Azure Database for PostgreSQL サ�
 > |[isn](https://www.postgresql.org/docs/9.5/isn.html)                          | 1.0             | 国際対応の製品番号規格のデータ型|
 > |[ltree](https://www.postgresql.org/docs/9.5/ltree.html)                        | 1.0             | 階層ツリー状の構造体のデータ型|
 > |[orafce](https://github.com/orafce/orafce)                       | 3.7             | 商用 RDBMS から関数とパッケージのサブセットをエミュレートする関数と演算子|
+> |[pgaudit](https://www.pgaudit.org/)                     | 1.0.7             | 監査機能を提供する|
 > |[pgcrypto](https://www.postgresql.org/docs/9.5/pgcrypto.html)                     | 1.2             | 暗号化関数|
 > |[pgrouting](https://pgrouting.org/)                    | 2.3.0           | pgRouting の拡張機能|
 > |[pgrowlocks](https://www.postgresql.org/docs/9.5/pgrowlocks.html)                   | 1.1             | 行レベルのロック情報を表示する|
@@ -213,6 +218,9 @@ dblink および postgres_fdw を使用して、1 つの PostgreSQL サーバー
 uuid-ossp 拡張機能の `uuid_generate_v4()` を使用する予定の場合、パフォーマンス上の利点について、pgcrypto 拡張機能の `gen_random_uuid()` と比較することを検討してください。
 
 
+## <a name="pgaudit"></a>pgAudit
+pgAudit 拡張機能では、セッションとオブジェクトの監査ログが提供されます。 Azure Database for PostgreSQL でこの拡張機能を使用する方法については、[監査の概念に関する記事](concepts-audit.md)を参照してください。 
+
 ## <a name="timescaledb"></a>TimescaleDB
 TimescaleDB は、PostgreSQL の拡張機能としてパッケージされた時系列データベースです。 TimescaleDB は、時間指向の分析関数、最適化を提供し、時系列ワークロードに合わせて PostgreSQL を拡大縮小します。
 
@@ -220,9 +228,6 @@ TimescaleDB は、PostgreSQL の拡張機能としてパッケージされた時
 
 ### <a name="installing-timescaledb"></a>TimescaleDB をインストールする
 TimescaleDB をインストールするには、それをサーバーの共有プリロード ライブラリに含める必要があります。 Postgres の `shared_preload_libraries` パラメーターへの変更を有効にするには、**サーバーの再起動**が必要です。 [Azure portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用してパラメーターを変更できます。
-
-> [!NOTE]
-> TimescaleDB は、Azure Database for PostgreSQL バージョン 9.6 および 10 で有効にできます。
 
 [Azure portal](https://portal.azure.com/) を使用して以下を実行します。
 

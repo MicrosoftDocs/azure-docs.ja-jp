@@ -6,16 +6,16 @@ keywords: データ サイエンス ツール,データ サイエンス仮想マ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 0cedc9ede43d18d0b94b8a516170db53e3a27910
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 09/27/2019
+ms.openlocfilehash: 586cdd6dc06a7685f17c78fa4c4ea2f2ebf52f3d
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70885634"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802393"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでサポートされている言語 
 
@@ -65,18 +65,17 @@ Data Science Virtual Machine (DSVM) には、人工知能 (AI) アプリケー�
 
   DSVM での既定の Python 環境は、すべてのユーザーが読み取り可能なグローバル環境です。 しかし、グローバル パッケージの書き込みとインストールを行うことができるのは管理者のみです。 グローバル環境にパッケージをインストールするには、管理者として `activate` コマンドを使用して、root または python2 環境に対してアクティブ化します。 その後、`conda` や `pip` などのパッケージ マネージャーを使用して、パッケージをインストールまたは更新できます。
 
-## <a name="python-linux-and-windows-server-2012-edition"></a>Python (Linux および Windows Server 2012 エディション)
+## <a name="python-linux-edition"></a>Python (Linux エディション)
 
 |    |           |
 | ------------- | ------------- |
 | サポートされている言語バージョン | Python 2.7 および 3.5 |
-| サポートされている DSVM エディション      | Linux、Windows Server 2012    |
+| サポートされている DSVM エディション      | Linux   |
 | DSVM での構成/インストール方法  | 次の 2 つのグローバル `conda` 環境が作成されます: <br /> * `/anaconda/` にある `root` 環境は Python 2.7 です。 <br/> * `/anaconda/envs/py35` にある `py35` 環境は Python 3.5 です。       |
 | サンプルへのリンク      | Python 用のサンプル Jupyter ノートブックが含まれています。     |
 | DSVM 上の関連ツール      | PySpark、R、Julia      |
 ### <a name="how-to-use-and-run-it"></a>使用と実行方法    
 
-**Linux**
 * ターミナルで実行する:
 
   ターミナルを開き、実行する Python のバージョンに応じて、次のいずれかを実行します。
@@ -103,34 +102,6 @@ Data Science Virtual Machine (DSVM) には、人工知能 (AI) アプリケー�
 
   DSVM での既定の Python 環境は、すべてのユーザーが読み取り可能なグローバル環境です。 しかし、グローバル パッケージの書き込みとインストールを行うことができるのは管理者のみです。 グローバル環境にパッケージをインストールするには、管理者または sudo 権限のあるユーザーとして `source activate` コマンドを使用して、root または py35 環境に対してアクティブ化します。 その後、`conda` や `pip` などのパッケージ マネージャーを使用して、パッケージをインストールまたは更新できます。
 
-**Windows 2012**
-* コマンド プロンプトでの実行:
-
-  コマンド プロンプトを開き、実行する Python のバージョンに応じて、次のいずれかを実行します。
-
-     ```
-    # To run Python 2.7
-    activate 
-    python --version
-    
-    # To run Python 3.5
-    activate py35
-    python --version
-    
-    ```
-* IDE で使用する:
-
-  Visual Studio Community エディションでインストールされる Python Tools for Visual Studio (PTVS) を使用します。 PTVS で自動的に設定される唯一の環境は Python 2.7 です。
-    > [!NOTE]
-    > Python 3.5 にある PTVS をポイントするには、PTVS でカスタム環境を作成する必要があります。 Visual Studio Community エディションでこの環境パスを設定するには、 **[ツール]**  ->  **[Python ツール]**  ->  **[Python 環境]** の順に移動し、 **[+ カスタム]** を選択します。 次に、場所を `c:\anaconda\envs\py35` に設定して _[自動検出]_ を選択します。
-
-* Jupyter で使用する:
-
-  Jupyter を開き、 **[新規]** を選択して新しいノートブックを作成します。 カーネルの種類を、Python 2.7 向けの **Python [Conda Root]** および Python 3.5 向けの **Python [Conda env:py35]** として設定できます。 
-
-* Python パッケージをインストールする:
-
-  DSVM での既定の Python 環境は、すべてのユーザーが読み取り可能なグローバル環境です。 しかし、グローバル パッケージの書き込みとインストールを行うことができるのは管理者のみです。 グローバル環境にパッケージをインストールするには、管理者として `activate` コマンドを使用して、root または py35 環境に対してアクティブ化します。 その後、`conda` や `pip` などのパッケージ マネージャーを使用して、パッケージをインストールまたは更新できます。
 
 ## <a name="r"></a>R
 

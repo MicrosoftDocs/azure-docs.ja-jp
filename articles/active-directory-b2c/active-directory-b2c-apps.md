@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 09cdc2fb5dba152e467164fd757225c7a9183264
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369406"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066158"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>Active Directory B2C で使用できるアプリケーションの種類
 
-Azure Active Directory (Azure AD) B2C は、さまざまな最新アプリケーション アーキテクチャの認証をサポートします。 すべての認証は、業界標準のプロトコルである [OAuth 2.0](active-directory-b2c-reference-protocols.md) または [OpenID Connect](active-directory-b2c-reference-protocols.md) に基づいています。 この記事では、選択する言語またはプラットフォームには関係なく、構築できるアプリケーションの種類について説明します。 また、アプリケーションの構築を始める前にシナリオの概要を理解することもできます。
+Azure Active Directory B2C (Azure AD B2C) では、さまざまな最新アプリケーション アーキテクチャの認証がサポートされています。 すべての認証は、業界標準のプロトコルである [OAuth 2.0](active-directory-b2c-reference-protocols.md) または [OpenID Connect](active-directory-b2c-reference-protocols.md) に基づいています。 この記事では、選択する言語またはプラットフォームには関係なく、構築できるアプリケーションの種類について説明します。 また、アプリケーションの構築を始める前にシナリオの概要を理解することもできます。
 
 Azure AD B2C を使用しているすべてのアプリケーションは、[Azure portal](https://portal.azure.com/) を使用して [Azure AD B2C テナント](active-directory-b2c-get-started.md)に登録する必要があります。 アプリケーション登録プロセスでは、次のような値が収集されて割り当てられます。
 
@@ -132,12 +132,12 @@ Azure AD B2C を使用して Web API をセキュリティ保護する方法の�
 
 Azure AD B2C アプリケーションは、次の方法で編集しないでください。
 
-- 他のアプリケーション管理ポータル ( [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)など)。
+- 他のアプリケーション管理ポータル ( [アプリケーション登録ポータル](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)など)。
 - Graph API または PowerShell の使用。
 
 Azure portal の外部で Azure AD B2C アプリケーションを編集すると、アプリケーションにエラーが発生し、Azure AD B2C で使用できなくなります。 この場合は、アプリケーションを削除して、もう一度作成してください。
 
-アプリケーションを削除するには、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/)に移動し、そこでアプリケーションを削除します。 アプリケーションを表示するためには、そのアプリケーションの所有者である必要があります (テナントの管理者であるだけでは不十分です)。
+アプリケーションを削除するには、[アプリケーション登録ポータル](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)に移動し、そこでアプリケーションを削除します。 アプリケーションを表示するためには、そのアプリケーションの所有者である必要があります (テナントの管理者であるだけでは不十分です)。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -9,19 +9,22 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 25cac6a66baeb1587e4b5ba3f0923ca9c4394706
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 686c20aeb22c16298967aa6f73ee829472f4ea0c
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68325500"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72175935"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Azure Container Instances に Azure ファイル共有をマウントする
 
-既定では、Azure Container Instances はステートレスです。 コンテナーがクラッシュまたは停止すると、すべての状態が失われます。 コンテナーの有効期間後も状態を保持するには、外部ストアからボリュームをマウントする必要があります。 この記事では、Azure Container Instances で使用できるように [Azure Files](../storage/files/storage-files-introduction.md) で作成された Azure ファイル共有をマウントする方法について説明します。 Azure Files はクラウドで、業界標準の Server Message Block (SMB) プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Container Instances で Azure ファイル共有を使用することで、 Azure 仮想マシンで Azure ファイル共有を使用するのと同様のファイル共有機能を提供します。
+既定では、Azure Container Instances はステートレスです。 コンテナーがクラッシュまたは停止すると、すべての状態が失われます。 コンテナーの有効期間後も状態を保持するには、外部ストアからボリュームをマウントする必要があります。 この記事に示すように、Azure Container Instances では [Azure Files](../storage/files/storage-files-introduction.md) で作成された Azure ファイル共有をマウントすることができます。 Azure Files はクラウドで、業界標準の Server Message Block (SMB) プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Container Instances で Azure ファイル共有を使用することで、 Azure 仮想マシンで Azure ファイル共有を使用するのと同様のファイル共有機能を提供します。
 
 > [!NOTE]
-> Azure ファイル共有のマウントは現在、Linux コンテナーに限定されています。 Microsoft ではすべての機能を Windows コンテナーにも取り入れるように取り組んでいますが、現在のプラットフォームの違いは、[概要](container-instances-overview.md#linux-and-windows-containers)に関するページで確認できます。
+> Azure ファイル共有のマウントは現在、Linux コンテナーに限定されています。 現在のプラットフォームの違いについては[概要](container-instances-overview.md#linux-and-windows-containers)を参照してください。
+>
+> Azure Files 共有をコンテナー インスタンスにマウントすることは、Docker の[バインド マウント](https://docs.docker.com/storage/bind-mounts/)に似ています。 ファイルまたはディレクトリが存在するコンテナー ディレクトリに共有をマウントする場合、これらのファイルまたはディレクトリはマウントによって隠され、コンテナーの実行中はアクセスできなくなることに注意してください。
+>
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 

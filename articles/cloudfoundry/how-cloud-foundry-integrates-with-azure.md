@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: eb5de6bf42769e7fd04782fc52d93764d1d7a3d6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e341cc5beeb8e8362a848bb1e208ddf1dc773978
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093920"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976797"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry と Azure を統合する
 
@@ -47,7 +47,7 @@ Azure 可用性ゾーンは、VM のセットを 2 つ以上のデータ セン�
 ### <a name="azure-standard-load-balancer-"></a>Azure Standard Load Balancer *
 Azure Load Balancer は、レイヤー 4 のロード バランサーです。 負荷分散セット内のサービスのインスタンス間でトラフィックを分散するために使用されます。 標準バージョンには、基本バージョンに加えて、[高度な機能](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が用意されています。 例 1。 バックエンド プールの上限が、100 から 1,000 VM に上げられました。  2. エンドポイントで、1 つの可用性セットだけではなく複数の可用性セットをサポートできるようになりました。  手順 3. HA ポート、より豊富な監視データなど、追加の機能があります。 Azure 可用性ゾーンに移行する場合は、標準ロード バランサーが必要です。 新たにデプロイする場合は、Azure Standard Load Balancer で始めることをお勧めします。 
 
-## <a name="3-authentication"></a>手順 3.Authentication 
+## <a name="3-authentication"></a>手順 3.認証 
 [Cloud Foundry User Account and Authentication](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) は、CF とそのさまざまなコンポーネントの中心的な ID 管理サービスです。 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、Microsoft が提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 既定では、Cloud Foundry 認証には UAA が使用されます。 高度なオプションとして、UAA は外部ユーザー ストアとして Azure AD もサポートしています。 Azure AD ユーザーは、Cloud Foundry アカウントなしで、LDAP ID を使用して Cloud Foundry にアクセスすることができます。 PCF で UAA 用に Azure AD を構成するには、[こちらの手順](https://docs.pivotal.io/p-identity/1-6/azure/index.html)に従ってください。
 
 ## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4.Cloud Foundry ランタイム システムのデータ ストレージ
@@ -65,7 +65,7 @@ User Account and Authentication 用のデータベース。 ユーザー認証�
 既定では、ローカルのシステム データベース (MySQL) を使用することができます。 HA とスケーリングのために、Azure で管理されている MySQL または PostgreSQL サービスを利用してください。 Open Source Cloud Foundry で CCDB、UAADB、およびその他のシステム データベース用に Azure MySQL/PostgreSQL を有効にする手順については、[こちら](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/configure-cf-external-databases-using-azure-mysql-postgres-service)を参照してください。
 
 ## <a name="5-open-service-broker"></a>5.Open Service Broker
-Azure のサービス ブローカーは、Azure サービスへのアプリケーションのアクセスを管理するために、一貫性のあるインターフェイスを提供します。 新しい [Open Service Broker for Azure プロジェクト](https://github.com/Azure/open-service-broker-azure)は、Cloud Foundry、OpenShift、および Kubernetes にわたってアプリケーションにサービスを提供するために、単一の単純な方法を提供します。 PCF でのデプロイの手順については、[Azure Open Service Broker for PCF タイル](https://network.pivotal.io/products/azure-open-service-broker-pcf/)を参照してください。
+Azure のサービス ブローカーは、Azure サービスへのアプリケーションのアクセスを管理するために、一貫性のあるインターフェイスを提供します。 新しい [Open Service Broker for Azure プロジェクト](https://github.com/Azure/open-service-broker-azure)は、Cloud Foundry、OpenShift、および Kubernetes にわたってアプリケーションにサービスを提供するために、単一の単純な方法を提供します。 PCF でのデプロイの手順については、[Azure Open Service Broker for PCF タイル](https://pivotal.io/platform/services-marketplace/data-management/microsoft-azure)を参照してください。
 
 ## <a name="6-metrics-and-logging"></a>6.メトリックとログ
 Azure Log Analytics Nozzle は Cloud Foundry コンポーネントであり、[Cloud Foundry loggregator firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) から [Azure Monitor ログ](https://azure.microsoft.com/services/log-analytics/)にメトリックを転送します。 Nozzle を使用すると、複数のデプロイにわたる CF のシステム正常性とパフォーマンスのメトリックを収集、表示、および分析することができます。

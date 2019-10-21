@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5288fe57b2f83522b140f65fa62e08f9c63a7af5
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d56a07b46c4cd54577bcb3d81f2c45c03433fc31
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852685"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268346"
 ---
 # <a name="scenario-desktop-app-that-calls-web-apis"></a>シナリオ: Web API を呼び出すデスクトップ アプリ
 
@@ -32,7 +32,7 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 
 ## <a name="getting-started"></a>使用の開始
 
-最初のアプリケーションをまだ作成していない場合は、.NET デスクトップのクイック スタートまたは UWP のクイック スタートに従って作成してください。
+最初のアプリケーションをまだ作成していない場合は、.NET デスクトップのクイックスタート、UWP のクイックスタートまたは macOS のクイックスタートに従って作成してください。
 
 > [!div class="nextstepaction"]
 > [クイック スタート:Windows デスクトップ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-windows-desktop.md)
@@ -41,13 +41,16 @@ Web API を呼び出すデスクトップ アプリを構築するために必�
 > [!div class="nextstepaction"]
 > [クイック スタート:UWP アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-uwp.md)
 
+> [!div class="nextstepaction"]
+> [クイック スタート:macOS ネイティブ アプリからトークンを取得し、Microsoft Graph API を呼び出す](./quickstart-v2-ios.md)
+
 ## <a name="overview"></a>概要
 
 デスクトップ アプリケーションを作成して、ユーザーをアプリケーションにサインインさせ、Microsoft Graph、他の Microsoft API、または独自の Web API などの Web API を呼び出します。 次のようにいくつかの可能性があります。
 
 - 対話型トークン取得を使用できます。
 
-  - ご利用のデスクトップ アプリケーションでグラフィカル コントロールがサポートされている場合 (たとえば、Windows.Form アプリケーションや WPF アプリケーションの場合)。
+  - ご利用のデスクトップ アプリケーションでグラフィカル コントロールがサポートされている場合 (たとえば、Windows.Form アプリケーション、WPF アプリケーション、macOS ネイティブ アプリケーションなどの場合)。
   - または、.NET Core アプリケーションであり、システム ブラウザーで Azure AD との認証のやり取りが発生することに同意している場合。
 
 - Windows でホストされているアプリケーションの場合、Windows ドメインに参加しているコンピューター、または AAD に参加しているコンピューターで実行されているアプリケーションが、統合 Windows 認証を使用して自動的にトークンを取得することも可能です。

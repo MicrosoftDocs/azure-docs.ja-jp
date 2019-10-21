@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b88d355ec1784b3b613369e90cd5fac99d3d69a6
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 618931c3a45fcb25b2a9221ea3f6069e9ff11de5
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916406"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933196"
 ---
 # <a name="implement-iot-spatial-analytics-using-azure-maps"></a>Azure Maps を使用した IoT 空間分析の実装
 
@@ -167,7 +167,7 @@ Azure Maps の Data Upload API を使用してジオフェンスをアップロ�
     
     URL パス内の `dataFormat` パラメーターに対する "geojson" 値は、アップロードされるデータの形式を表します。
 
-3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key の値は、実際の Azure Maps のサブスクリプション キーに置き換えてください。
+3. **[Params]\(パラメーター\)** をクリックして、POST 要求の URL に使用する次のキーと値のペアを入力します。 subscription-key の値は、実際の Azure Maps のプライマリ サブスクリプション キーに置き換えてください。
    
     ![Postman のキーと値のペアから成るパラメーター](./media/tutorial-iot-hub-maps/postman-key-vals.png)
 
@@ -224,7 +224,7 @@ Azure Functions は、コンピューティング インフラストラクチャ
 6. [C# コード](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx)を自分の関数にコピーし、 **[保存]** をクリックします。
  
 7. C# スクリプト内で、次のパラメーターを置き換えます。
-    * **SUBSCRIPTION_KEY** を、自分の Azure Maps アカウントのサブスクリプション キーに置き換えます。
+    * **SUBSCRIPTION_KEY** を、自分の Azure Maps アカウントのプライマリ サブスクリプション キーに置き換えます。
     * **UDID** を、自分がアップロードしたジオフェンスの udId に置き換えます。 
     * スクリプト内の **CreateBlobAsync** 関数では、データ ストレージ アカウントでイベントごとに BLOB を作成します。 **ACCESS_KEY**、**ACCOUNT_NAME**、および **STORAGE_CONTAINER_NAME** を、自分のストレージ アカウントのアクセス キー、アカウント名、およびデータ ストレージ コンテナーに置き換えます。
 

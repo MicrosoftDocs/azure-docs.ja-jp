@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて | Microsoft Docs
+title: Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 description: Azure Active Directory B2C を使用するアプリケーションのユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
 author: mmacy
@@ -7,64 +7,88 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5ae12742c2ad50d5bf1caaf14ae2f6d34bd6d3a2
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 6ebaeedf88bc02aa16e8be07fcb734e44ffa5bb6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70880794"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258168"
 ---
-# <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのユーザー インターフェイスのカスタマイズについて
+# <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 内のユーザー インターフェイスをカスタマイズする
 
-Azure Active Directory B2C (Azure AD B2C) によってアプリケーションに提供されるユーザー インターフェイス (UI) をカスタマイズしたり、ブランド名を付けたりする機能は、一貫性のある操作性を顧客に与えるために重要です。 そのような操作性には、サインアップ、サインイン、プロファイル編集、パスワード リセットが含まれます。 この記事では、アプリケーションの UI カスタマイズに役立つ情報を提供します。
+Azure Active Directory B2C (Azure AD B2C) に表示されるユーザー インターフェイスを顧客に合わせてブランド化したりカスタマイズすることは、アプリケーション内でシームレスなユーザー エクスペリエンスを提供するのに役立ちます。 そのような操作性には、サインアップ、サインイン、プロファイル編集、パスワード リセットが含まれます。 この記事では、ユーザー フローとカスタム ポリシーの両面から、ユーザー インターフェイス (UI) のカスタマイズ方法について説明します。
 
-これらの操作性のニーズに基づき、さまざまな方法でアプリケーションの UI をカスタマイズします。 例:
+## <a name="ui-customization-in-different-scenarios"></a>さまざまなシナリオにおける UI のカスタマイズ
 
-- [ユーザー フロー](active-directory-b2c-reference-policies.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集といった操作を提供している場合、[Azure portal を使用して UI をカスタマイズ](tutorial-customize-ui.md)します。
-- v2 のユーザー フローを使用している場合は、[ページ レイアウト テンプレート](#page-layout-templates)を使用して、さらにカスタマイズを行うことなく、ユーザー フロー ページの外観を変更できます。 たとえば、オーシャン ブルーやスレート グレーのテーマをユーザー フローのすべてのページに適用できます。
-- サインインのみ、それに付随するパスワード リセット ページ、確認メールを提供している場合、[Azure AD サインイン ページ](../active-directory/fundamentals/customize-branding.md)の場合と同じカスタマイズ手順を使用します。
-- 顧客がサインイン前にプロファイルを編集しようとすると、Azure AD サインイン ページのカスタマイズに使用した同じ手順でカスタマイズするページにリダイレクトされます。
-- [カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集をアプリケーションで提供している場合、[ポリシー ファイルを使用して UI をカスタマイズ](active-directory-b2c-ui-customization-custom.md)します。
-- 顧客の決定に基づく動的コンテンツを提供する必要がある場合、クエリ文字列で送信されたパラメーターに基づいて[ページの内容を変更できるカスタム ポリシー](active-directory-b2c-ui-customization-custom-dynamic.md)を使用します。 たとえば、Web やモバイル アプリケーションから渡されるパラメーターに基づき、Azure AD B2C のサインアップまたはサインイン ページの背景イメージが変化します。
-- Azure AD B2C の[ユーザー フロー](user-flow-javascript-overview.md)または[カスタム ポリシー](page-layout.md)で、JavaScript のクライアント側コードを有効にすることができます。
+アプリケーションの UI をカスタマイズする方法はいくつかあり、どれを使用するかはシナリオに応じて決まります。
 
-Azure AD B2C によって、顧客のブラウザーでコードが実行され、[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) と呼ばれる最新の手法が使用されます。 実行時、コンテンツは、ユーザー フローまたはポリシーで指定された URL から読み込まれます。 URL はページごとに指定します。 URL から読み込まれたコンテンツが Azure AD B2C から挿入された HTML フラグメントに統合され、顧客に表示されます。
+### <a name="user-flows"></a>ユーザー フロー
 
-独自の HTML ファイルと CSS ファイルを使用して UI をカスタマイズするときは、始める前に次のガイダンスを確認してください。
+[ユーザー フロー](active-directory-b2c-reference-policies.md)を使用する場合は、組み込みの *ページ レイアウト テンプレート*を使用するか、独自の HTML と CSS を使用して、ユーザー フロー ページの外観を変更できます。 これらの各方法については、後で説明します。
 
-- Azure AD B2C によって HTML コンテンツがページに統合されます。 Azure AD B2C によって提供される既定のコンテンツをコピーしたり、変更したりしないでください。 HTML コンテンツは最初から構築し、既定のコンテンツはあくまで参考としての利用にとどめることをお勧めします。
-- カスタム コンテンツに JavaScript を含めることができるようになりました。
-- サポートされているブラウザーのバージョン:
-    - Internet Explorer 11、10、Microsoft Edge
-    - Internet Explorer 8 と 9 (サポートに制限あり)
-    - Google Chrome 42.0 以降
-    - Mozilla Firefox 38.0 以降
-- HTML に form タグが含まれていないことを確認してください。含まれている場合、Azure AD B2C から挿入された HTML によって生成された POST 操作が妨げられます。
+ユーザー フローの UI カスタマイズを構成するには、[Azure portal](tutorial-customize-ui.md) を使用します。
+
+### <a name="custom-policies"></a>カスタム ポリシー
+
+[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用してサインアップ、サインイン、パスワード リセット、プロファイル編集をアプリケーションで提供している場合、[ポリシー ファイルを使用して UI をカスタマイズ](active-directory-b2c-ui-customization-custom.md)します。
+
+顧客の決定に基づく動的コンテンツを提供する必要がある場合、クエリ文字列で送信されたパラメーターに基づいて[ページの内容を動的に変更](active-directory-b2c-ui-customization-custom-dynamic.md)できるカスタム ポリシーを使用します。 たとえば、Web またはモバイル アプリケーションから渡すパラメーターに基づいて、Azure AD B2C サインアップまたはサインイン ページの背景イメージを変更できます。
+
+### <a name="javascript"></a>JavaScript
+
+クライアント側の JavaScript コードは、[ユーザー フロー](user-flow-javascript-overview.md)と[カスタム ポリシー](page-layout.md)の両方で有効にすることができます。
+
+### <a name="sign-in-only-ui-customization"></a>サインイン専用 UI のカスタマイズ
+
+サインインのみ、それに付随するパスワード リセット ページ、確認メールを提供している場合、[Azure AD サインイン ページ](../active-directory/fundamentals/customize-branding.md)の場合と同じカスタマイズ手順を使用します。
+
+顧客がサインイン前にプロファイルを編集しようとすると、Azure AD サインイン ページのカスタマイズに使用した同じ手順でカスタマイズするページにリダイレクトされます。
 
 ## <a name="page-layout-templates"></a>ページ レイアウト テンプレート
 
-v2 のユーザー フローでは、既定のページの見た目をよくし、独自のカスタマイズの適切なベースとして使用できる、デザイン済みのテンプレートを選択できます。
+ユーザー フローにはいくつかの組み込みテンプレートが用意されています。これらを使用すると、ユーザー エクスペリエンスのページにプロフェッショナルな外観を提供できます。 これらのレイアウト テンプレートは、独自のカスタマイズの開始点としても使用できます。
 
-左側のメニューで、 **[カスタマイズ]** の **[ページ レイアウト]** を選択します。 次に、 **[テンプレート (プレビュー)]** を選択します。
+左側のメニューの **[カスタマイズ]** で、 **[ページ レイアウト]** を選択し、 **[テンプレート]** を選択します。
 
-![Azure portal のユーザー フロー ページのテンプレート選択ドロップダウン](media/customize-ui-overview/template.png)
+![Azure portal のユーザー フロー ページのテンプレート選択ドロップダウン](media/customize-ui-overview/template-selection.png)
 
-一覧からテンプレートを選択します。 たとえば、 **[オーシャン ブルー]** テンプレートでは、次のレイアウトがユーザー フロー ページに適用されます。
+次に、一覧からテンプレートを選択します。 次に示すのは、各テンプレートのサインイン ページの例です。
 
-![サインアップ サインイン ページ上に表示される、オーシャン ブルー テンプレートの例](media/customize-ui-overview/ocean-blue.png)
+| オーシャン ブルー | スレート グレー | クラシック |
+|:-:|:-:|:-:|
+|![サインアップ サインイン ページ上に表示される、オーシャン ブルー テンプレートの例](media/customize-ui-overview/template-ocean-blue.png)|![サインアップ サインイン ページ上に表示される、スレート グレー テンプレートの例](media/customize-ui-overview/template-slate-gray.png)|![サインアップ サインイン ページ上に表示される、クラシック テンプレートの例](media/customize-ui-overview/template-classic.png)|
 
 テンプレートを選択すると、選択したレイアウトがユーザー フローのすべてのページに適用されて、各ページの URI が **[カスタム ページ URI]** フィールドに表示されます。
 
-## <a name="where-do-i-store-ui-content"></a>UI コンテンツはどこに保存しますか。
+## <a name="custom-html-and-css"></a>カスタム HTML および CSS
 
-独自の HTML ファイルと CSS ファイルを使用して UI をカスタマイズするときは、[Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md)、Web サーバー、CDN、AWS S3、ファイル共有システムなど、任意の場所で UI コンテンツをホストできます。 重要な点は、CORS が有効になっている公開 HTTPS エンドポイントでコンテンツがホストされていることです。 コンテンツに指定するとき、絶対 URL を使用する必要があります。
+Azure AD B2C では、[クロス オリジン リソース共有 (CORS)](https://www.w3.org/TR/cors/) と呼ばれる手法を使用して、顧客のブラウザーでコードが実行されます。
 
-## <a name="how-do-i-get-started"></a>開始するには?
+実行時、コンテンツは、ユーザー フローまたはカスタム ポリシーで指定された URL から読み込まれます。 ユーザー エクスペリエンスの各ページでは、そのページに指定した URL からコンテンツが読み込まれます。 URL から読み込まれたコンテンツが Azure AD B2C によって挿入された HTML フラグメントに統合され、ページが顧客に表示されます。
 
-UI をカスタマイズするには次を行います。
+独自の HTML ファイルと CSS ファイルを使用して UI をカスタマイズする前に、次のガイダンスを確認してください。
+
+- Azure AD B2C によって HTML コンテンツがページに**統合**されます。 Azure AD B2C によって提供される既定のコンテンツをコピーしたり、変更したりしないでください。 HTML コンテンツは最初から構築し、既定のコンテンツはあくまで参考としての利用にとどめることをお勧めします。
+- **JavaScript**  は、[ ユーザー フロー](user-flow-javascript-overview.md)と[カスタム ポリシー](javascript-samples.md)のいずれの場合も、カスタム コンテンツに含めることができます。
+- サポートされている**ブラウザーのバージョン**:
+  - Internet Explorer 11、10、Microsoft Edge
+  - Internet Explorer 8 と 9 (サポートに制限あり)
+  - Google Chrome 42.0 以降
+  - Mozilla Firefox 38.0 以降
+- HTML には **form タグ**を含めないでください。 form タグがあると、Azure AD B2C によって挿入された HTML によって生成される POST 操作が妨げられます。
+
+### <a name="where-do-i-store-ui-content"></a>UI コンテンツはどこに保存しますか。
+
+独自の HTML ファイルと CSS ファイルを使用して UI をカスタマイズする場合、CORS をサポートしている、パブリックに使用可能な任意の HTTPS エンドポイントで UI コンテンツをホストできます。 たとえば、[Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)、Web サーバー、CDN、AWS S3、またはファイル共有システムなどです。
+
+重要な点は、CORS が有効になっている公開 HTTPS エンドポイントでコンテンツがホストされていることです。 コンテンツに指定するとき、絶対 URL を使用する必要があります。
+
+## <a name="get-started-with-custom-html-and-css"></a>カスタム HTML および CSS の概要
+
+ユーザー エクスペリエンス ページで独自の HTML と CSS の使用を開始する際には、次のガイドラインに従ってください。
 
 - 整形された HTML コンテンツを作成し、空の `<div id="api"></div>` 要素を `<body>` の任意の場所に配置します。 この要素は、Azure AD B2C コンテンツを挿入する位置をマークします。 次に最小限のページの例を示します。
 
@@ -82,7 +106,6 @@ UI をカスタマイズするには次を行います。
     </html>
     ```
 
-- (CORS が許可されている) HTTPS エンドポイントでコンテンツをホストします。 CORS を構成するときに、GET と OPTIONS の両方の要求メソッドを有効にする必要があります。
 - CSS を使用して、Azure AD B2C によってページに挿入される UI 要素のスタイルを設定します。 サインアップで挿入される HTML 要素の設定も含まれる単純な CSS ファイルの例を次に示します。
 
     ```css
@@ -108,7 +131,10 @@ UI をカスタマイズするには次を行います。
     }
     ```
 
-- 作成したコンテンツを使用するポリシーを作成するか、あるいはそのようにポリシーを編集します。
+- (CORS が許可されている) HTTPS エンドポイントでコンテンツをホストします。 CORS を構成するときに、GET と OPTIONS の両方の要求メソッドを有効にする必要があります。
+- 作成したコンテンツを使用するユーザー フローまたはカスタム ポリシーを作成するか、あるいはそのようにポリシーを編集します。
+
+### <a name="html-fragments-from-azure-ad-b2c"></a>Azure AD B2C からの HTML フラグメント
 
 コンテンツに配置されている `<div id="api"></div>` 要素に Azure AD B2C によって統合される HTML フラグメントをまとめたのが次の表です。
 
@@ -121,16 +147,29 @@ UI をカスタマイズするには次を行います。
 | 多要素認証 | 顧客がサインアップやサインインをするときに、電話番号を (文字や音声を使用して) 確認できます。 |
 | Error | エラー情報を顧客に提供します。 |
 
-
-## <a name="how-do-i-localize-content"></a>コンテンツをローカライズする方法は?
+## <a name="localize-content"></a>コンテンツのローカライズ
 
 Azure AD B2C テナントで [[言語のカスタマイズ]](active-directory-b2c-reference-language-customization.md) を有効にすることで HTML コンテンツをローカライズします。 この機能を有効にすると、Azure AD B2C で OpenID Connect パラメーター `ui-locales` をエンドポイントに転送できるようになります。 コンテンツ サーバーではこのパラメーターを使用し、言語固有の HTML ページを提供できます。
 
-使用されているロケールに基づき、さまざまな場所からコンテンツを取得できます。 CORS 対応エンドポイントでは、特定の言語のコンテンツをホストするようにフォルダー構造を設定します。 ワイルドカード値 {Culture:RFC5646} を使用すると、適切な言語が呼び出されます。 たとえば、カスタム ページ URI は `https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html` のようになります。 `https://contoso.blob.core.windows.net/fr/myHTML/unified.html` からコンテンツを取得すれば、フランス語でページを読み込むことができます。
+使用されているロケールに基づき、さまざまな場所からコンテンツを取得できます。 CORS 対応エンドポイントでは、特定の言語のコンテンツをホストするようにフォルダー構造を設定します。 ワイルドカード値 `{Culture:RFC5646}` を使うと、適切な言語が呼び出されます。
+
+たとえば、カスタム ページ URI は次のようになります。
+
+```HTTP
+https://contoso.blob.core.windows.net/{Culture:RFC5646}/myHTML/unified.html
+```
+
+コンテンツを以下から取得すれば、フランス語でページを読み込むことができます。
+
+```HTTP
+https://contoso.blob.core.windows.net/fr/myHTML/unified.html
+```
 
 ## <a name="examples"></a>例
 
-カスタマイズ サンプルが必要であれば、[こちら](https://github.com/azureadquickstarts/b2c-azureblobstorage-client/archive/master.zip)からサンプル テンプレート ファイルをダウンロードしてご覧ください。
+サンプル テンプレート ファイルは、GitHub の [B2C-AzureBlobStorage-Client](https://github.com/azureadquickstarts/b2c-azureblobstorage-client) リポジトリにあります。
+
+テンプレート内のサンプル HTML および CSS ファイルは、[/sample_templates](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates) ディレクトリにあります。
 
 ## <a name="next-steps"></a>次の手順
 

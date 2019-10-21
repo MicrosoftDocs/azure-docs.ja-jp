@@ -1,31 +1,39 @@
 ---
-title: Windows 10 または Windows 7 から Windows Virtual Desktop プレビューに接続する - Azure
-description: Windows 10 または Windows 7 から Windows Virtual Desktop プレビューに接続する方法。
+title: Windows 10 または Windows 7 から Windows Virtual Desktop に接続する - Azure
+description: Windows デスクトップ クライアントを使用して Windows Virtual Desktop に接続する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 66b423ea27cc0f9112349964fcfd0d75f08c12bd
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 561dad566d7f1caaf609c8013fa075062e4471ea
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620113"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676741"
 ---
-# <a name="connect-from-windows-10-or-windows-7"></a>Windows 10 または Windows 7 から接続する
+# <a name="connect-with-the-windows-desktop-client"></a>Windows デスクトップ クライアントに接続する
 
 > 適用対象:Windows 7 および Windows 10
 
-Windows 7 と Windows 10 を実行するデバイスから Windows Virtual Desktop プレビューのリソースへのアクセスを提供するダウンロード可能なクライアントを利用できます。
+Windows デスクトップ クライアントを使用して、Windows 7 または Windows 10 を使用しているデバイス上の Windows Virtual Desktop リソースにアクセスできます。
 
 > [!IMPORTANT]
-> Windows Virtual Desktop リソースへのアクセスには **RemoteApp とデスクトップ接続 (RADC)** または**リモート デスクトップ接続 (MSTSC)** を使用しないでください。Windows Virtual Desktop ではどちらのクライアントもサポートされていないためです。
+> Windows Virtual Desktop では、RemoteApp とデスクトップ接続 (RADC) クライアントおよびリモート デスクトップ接続 (MSTSC) クライアントはサポートされていません。
 
-## <a name="install-the-client"></a>クライアントをインストールします。
+## <a name="install-the-windows-desktop-client"></a>Windows デスクトップ クライアントをインストールする
 
-クライアントを[ダウンロード](https://go.microsoft.com/fwlink/?linkid=2068602) して、ローカル PC にインストールします。 インストールには管理者権限が必要です。
+現在ダウンロードできるクライアントは次のとおりです。
+
+- [Windows (64 ビット)](https://go.microsoft.com/fwlink/?linkid=2068602)
+
+このリストは、クライアントがより多くのバージョンの Windows で使用できるようになったときに更新されます。
+
+現在のユーザー用にのクライアントをインストールできます。この場合、管理者権限は必要ありません。または、管理者がクライアントをインストールして構成し、デバイス上のすべてのユーザーがアクセスできるようにすることができます。
+
+インストールが完了すると、クライアントはスタート メニューから**リモート デスクトップ**を検索することにより起動できます。
 
 ## <a name="subscribe-to-a-feed"></a>フィードのサブスクライブ
 
@@ -33,11 +41,11 @@ Windows 7 と Windows 10 を実行するデバイスから Windows Virtual Deskt
 
 フィードをサブスクライブするには:
 
-1. すべてのアプリ リストからクライアントを起動し、 **[リモート デスクトップ]** を探します。
-1. サービスに接続して自分のリソースを取得するために、メイン ページで **[サブスクライブ]** を選択します。
-1. メッセージが表示されたら、自分のユーザー アカウントで**サインイン**します。
+1. Windows デスクトップ クライアントを開きます。
+2. サービスに接続して自分のリソースを取得するために、メイン ページで **[サブスクライブ]** を選択します。
+3. メッセージが表示されたら、自分のユーザー アカウントでサインインします。
 
-正常に認証すると、利用できるリソースの一覧が表示されるようになります。
+サインインに成功すると、アクセスできるリソースの一覧が表示されます。
 
 リソースは、次の 2 つの方法のいずれかで起動できます。
 
@@ -47,31 +55,6 @@ Windows 7 と Windows 10 を実行するデバイスから Windows Virtual Deskt
 
 フィードにサブスクライブすると、フィードのコンテンツが自動的に定期的に更新されます。 管理者によって行われる変更に基づいて、リソースが追加、変更、または削除されることがあります。
 
-## <a name="view-the-details-of-a-feed"></a>フィードの詳細を表示する
+## <a name="next-steps"></a>次の手順
 
-サブスクライブ後、詳細パネルにアクセスしてフィードに関する追加情報を表示できます。
-
-1. クライアントのメイン ページで、フィード名の右側の省略記号 ( **...** ) を選択します。
-1. ドロップダウン メニューから、 **[詳細]** を選択します。
-1. クライアントの右側に [詳細] パネルが表示されます。
-
-[詳細] パネルには、フィードに関する有用な情報が含まれます。
-
-- サブスクライブに使用されている URL とユーザー名
-- アプリとデスクトップの数
-- 前回の更新の日付/時刻
-- 前回の更新の状態
-
-必要に応じて、 **[今すぐ更新]** を選択して手動の更新を開始できます。
-
-## <a name="unsubscribe-from-a-feed"></a>フィードからサブスクライブ解除する
-
-このセクションでは、フィードからサブスクライブ解除する方法を説明します。 別のアカウントで再度サブスクライブするか、システムからリソースを削除するために、サブスクライブ解除できます。
-
-1. クライアントのメイン ページで、フィード名の右側の省略記号 ( **...** ) を選択します。
-1. ドロップダウン メニューから、 **[サブスクライブ解除]** を選択します。
-1. 確認し、ダイアログから **[続行]** を選択します。
-
-## <a name="update-the-client"></a>クライアントの更新
-
-新しいバージョンのクライアントが利用できる場合は、クライアントと Windows アクション センターから通知されます。 通知を選択して、更新プロセスを開始します。
+Windows デスクトップ クライアントの使用方法の詳細については、「[Windows デスクトップ クライアントの概要](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/windowsdesktop)」を参照してください。

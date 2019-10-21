@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 40f0a667ffa23010ef00ed105454ab305171cc19
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 11924b44a51767df68372cd94c581b2feaa8ac25
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812444"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72247106"
 ---
 ### <a name="number-of-fault-domains-per-region"></a>リージョンごとの障害ドメイン数
 
@@ -23,7 +23,7 @@ ms.locfileid: "67812444"
 | 米国中北部    | 3                       |
 | 米国中南部    | 3                       |
 | 米国中西部     | 2                       |
-| カナダ中部      | 3                      |
+| カナダ中部      | 3                       |
 | カナダ東部         | 2                       |
 |                     |                         |
 | 北ヨーロッパ        | 3                       |
@@ -42,6 +42,11 @@ ms.locfileid: "67812444"
 | 韓国南部         | 2                       |
 | アラブ首長国連邦北部           | 2                       |
 |                     |                         |
+| 中国 (東部)          | 2                       |
+| 中国東部 2        | 2                       |
+| 中国 (北部)         | 2                       |
+| 中国北部 2       | 2                       |
+|
 | オーストラリア東部      | 2                       |
 | オーストラリア南東部 | 2                       |
 | オーストラリア中部   | 2                       |

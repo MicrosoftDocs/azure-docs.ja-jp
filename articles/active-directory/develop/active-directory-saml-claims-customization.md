@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 10/01/2019
 ms.author: ryanwi
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0625a233b3b4a949feff2e289361a26fc8dc5a
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f4f26c82d4cda6ce3d8bf01c7fd52fa579e86dcf
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835346"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240227"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法:エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -65,9 +65,8 @@ SAML 要求に NameIDPolicy の要素が含まれていない場合、Azure AD �
 | **永続的** | Azure AD では、NameID の形式として "永続的" が使用されます。 |
 | **EmailAddress** | Azure AD では、NameID の形式として "EmailAddress" が使用されます。 |
 | **未指定** | Azure AD では、NameID の形式として "未指定" が使用されます。 |
-| **一時的** | Azure AD では、NameID の形式として "一時的" が使用されます。 |
 
-NameIDPolicy 属性について詳しくは、「[シングル サインオンの SAML プロトコル](single-sign-on-saml-protocol.md)」をご覧ください。
+一時的な NameID もサポートされていますが、ドロップダウンでは選択できず、また、Azure 側で構成できません。 NameIDPolicy 属性について詳しくは、「[シングル サインオンの SAML プロトコル](single-sign-on-saml-protocol.md)」をご覧ください。
 
 ### <a name="attributes"></a>属性
 
@@ -84,6 +83,20 @@ NameIDPolicy 属性について詳しくは、「[シングル サインオン�
 | 拡張属性 1 ～ 15 | Azure AD のスキーマを拡張するために使用されるオンプレミスの 拡張機能属性 |
 
 詳しくは、「[表 3: ソースごとに有効な ID 値](active-directory-claims-mapping.md#table-3-valid-id-values-per-source)」をご覧ください。
+
+また、Azure AD で定義したあらゆるクレームに定数 (静的) 値を割り当てることができます。 定数値は次の手順で割り当ててください。
+
+1. [Azure portal](https://portal.azure.com/) の **[User Attributes & Claims]\(ユーザー属性とクレーム\)** セクションで、**編集**アイコンをクリックしてクレームを編集ます。
+
+1. 変更する必要があるクレームをクリックします。
+
+1. 組織に従って **[ソース属性]** に定数値を入力し、 **[保存]** をクリックします。
+
+    ![Azure portal で [ユーザー属性とクレーム] セクションを開く](./media/active-directory-saml-claims-customization/organization-attribute.png)
+
+1. 定数値は次のように表示されます。
+
+    ![Azure portal で [ユーザー属性とクレーム] セクションを開く](./media/active-directory-saml-claims-customization/edit-attributes-claims.png)
 
 ### <a name="special-claims---transformations"></a>特別な要求 - 変換
 

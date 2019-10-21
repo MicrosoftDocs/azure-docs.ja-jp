@@ -49,8 +49,8 @@
     - name: 検索結果の強調表示の処理
       href: ../Bing-Web-Search/hit-highlighting.md
       maintainContext: true
-    - name: ニュースのページング
-      href: paging-news.md
+    - name: 検索結果をページングする
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: サムネイルのサイズ変更とトリミング
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

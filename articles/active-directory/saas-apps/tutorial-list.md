@@ -17,12 +17,12 @@ ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49a87346d76bbf1502a073f4bcb4d11eb659929d
-ms.sourcegitcommit: a7ea412ca4411fc28431cbe7d2cc399900267585
+ms.openlocfilehash: 4594d54f245c8fb96e62d7f193816e1031138ec0
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2019
-ms.locfileid: "67358154"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026137"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合に関するチュートリアル
 
@@ -50,7 +50,7 @@ Azure AD に事前に統合されているすべての SaaS アプリの一覧�
 | ![ロゴ](./media/tutorial-list/active-directory-saas-alibaba-tutorial.png)| [Alibaba Cloud Service (ロールベースの SSO)](alibaba-cloud-service-role-based-sso-tutorial.md)| |
 | ![ロゴ](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [Google Cloud Platform](google-apps-tutorial.md)| [Google Cloud Platform - ユーザー プロビジョニング](google-apps-provisioning-tutorial.md) |
 | ![ロゴ](./media/tutorial-list/active-directory-saas-salesforce-tutorial.png)| [Salesforce](salesforce-tutorial.md)| [Salesforce - User Provisioning](salesforce-provisioning-tutorial.md) |
-| ![ロゴ](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP Cloud ID プラットフォーム](saphana-tutorial.md)| |
+| ![ロゴ](./media/tutorial-list/active-directory-saas-sapboc-tutorial.png)| [SAP Cloud ID プラットフォーム](saphana-tutorial.md)|[SAP Cloud ID プラットフォーム - プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/sap-cloud-platform-identity-authentication-provisioning-tutorial) |
 
 ## <a name="oneclick-sso"></a>OneClick SSO
 

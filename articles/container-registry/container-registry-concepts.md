@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 09/10/2019
 ms.author: danlep
-ms.openlocfilehash: a14f0a2a86c5e4922fcddf3c92d48c6dfb1497a3
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 9a3d4a7d9c3fd4a0465d4e780024559a71372d9d
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799936"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300198"
 ---
 # <a name="about-registries-repositories-and-images"></a>レジストリ、リポジトリ、イメージについて
 
@@ -94,7 +94,7 @@ product-returns/legacy-integrator:20180715
 az acr repository show-manifests --name <acrName> --repository <repositoryName>
 ```
 
-たとえば、"acr-helloworld" リポジトリのマニフェスト ダイジェストの一覧は次のようになります。
+たとえば、"acr-helloworld" リポジトリのマニフェストの一覧は次のようになります。
 
 ```console
 $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -137,8 +137,7 @@ $ docker pull myregistry.azurecr.io/acr-helloworld@sha256:0a2e01852872580b2c2fea
 ```
 
 > [!IMPORTANT]
-> 同じタグを持つ変更されたイメージを繰り返しプッシュする場合、孤立したイメージ (タグは付けられていないが、それでもレジストリの領域を消費するイメージ) が作成されることがあります。 Azure CLI または Azure portal でタグを使用してイメージを一覧表示または表示したとき、タグなしのイメージは表示されません。 ただし、それらのレイヤーはまだ存在し、レジストリの領域を消費します。 タグの付いていないイメージによって使用されている領域を開放する方法の詳細については、「[Azure Container Registry のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
-
+> 同じタグを持つ変更されたイメージを繰り返しプッシュする場合、孤立したイメージ (タグは付けられていないが、それでもレジストリの領域を消費するイメージ) が作成されることがあります。 Azure CLI または Azure portal でタグを使用してイメージを一覧表示または表示したとき、タグなしのイメージは表示されません。 ただし、それらのレイヤーはまだ存在し、レジストリの領域を消費します。 特定のレイヤーを指すマニフェストが他に存在しなければ (つまり最後のマニフェストであれば)、タグの付いていないイメージを削除することで、レジストリの領域は解放されます。 タグの付いていないイメージによって使用されている領域を開放する方法の詳細については、「[Azure Container Registry のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 3/28/2019
+ms.date: 10/09/2019
 ms.author: victorh
-ms.openlocfilehash: 6df78a46e6bc8055f8cce89e199d01ad631e178e
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 36f26808b94893990ceec65e114b11113dbafd6f
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306189"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177482"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Application Gateway のバックエンドの正常性および診断ログ
 
@@ -309,6 +309,8 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 |details.data     | 要求で見つかった、ルールに一致するデータ。         |
 |details.file     | ルールが含まれている構成ファイル。        |
 |details.line     | イベントをトリガーした、構成ファイル内の行番号。       |
+|hostname   | Application Gateway のホスト名または IP アドレス。    |
+|transactionId  | 同じ要求内で発生した複数の規則違反をグループ化するのに役立つ、指定されたトランザクションの一意の ID。   |
 
 ```json
 {
@@ -333,6 +335,8 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
       "file": "rules/REQUEST-941-APPLICATION-ATTACK-XSS.conf",
       "line": "865"
     }
+    "hostname": "40.90.218.100", 
+    "transactionId": "AYAcUqAcAcAcAcAcASAcAcAc"
   }
 } 
 
@@ -343,7 +347,7 @@ Application Gateway と WAF v2 の場合、ログにはさらにいくつかの�
 次のいずれかの方法を使用して、アクティビティ ログのデータを表示および分析できます。
 
 * **Azure Tools**:Azure PowerShell、Azure CLI、Azure REST API、または Azure portal を使用して、アクティビティ ログから情報を取得します。 それぞれの方法の詳細な手順については、「[リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md)」を参照してください。
-* **Power BI**:[Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure アクティビティ ログ コンテンツ パック](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/)を使用すると、事前に構成されたダッシュボードでデータを分析できます。ダッシュボードは、そのまま使用することも、カスタマイズすることもできます。
+* **Power BI**:[Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI テンプレート アプリ](https://docs.microsoft.com/power-bi/service-template-apps-overview)を使用して、データを分析できます。
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>アクセス ログ、パフォーマンス ログ、ファイアウォール ログの表示と分析
 

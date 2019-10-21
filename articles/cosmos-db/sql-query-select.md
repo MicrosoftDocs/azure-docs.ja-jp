@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: girobins
-ms.openlocfilehash: d34b1c39d9789409dc365cd4cf07fdc3d5a780fd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: b90fc6f1f50ec2ea75619188cca36f78061f28df
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003523"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326788"
 ---
-# <a name="select-clause"></a>SELECT 句
+# <a name="select-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での SELECT 句
 
 すべてのクエリは ANSI SQL 標準に従って SELECT 句とオプションの [FROM](sql-query-from.md) および [WHERE](sql-query-where.md) 句で構成されます。 通常、FROM 句のソースが列挙され、JSON 項目のサブセットを取得するためにそのソースに WHERE 句のフィルターが適用されます。 SELECT 句は、要求された JSON 値を選択リストにプロジェクションします。
 

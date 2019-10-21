@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 15c8aabbcb19d009bb202d111dc7f80da4cebff1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a546d153c6fe4f14ccc8c21308bd4a33385870c3
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597033"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299700"
 ---
 # <a name="quickstart-configure-your-iot-solution"></a>クイック スタート:IoT ソリューションを構成する
 
@@ -34,9 +34,9 @@ Azure Security Center for IoT を使用すると、1 つのダッシュボード
 
 Azure Security Center for IoT を IoT ハブ上で有効にすると、IoT ハブに接続されていて IoT ソリューションに関連している他の Azure サービスが自動的に識別されます。
 
-自動でリレーションシップを検出できるだけでなく、他のどの Azure リソース グループを IoT ソリューションの一部としてタグ付けするかを選択することもできます。
+自動でリレーションシップを検出できるだけでなく、他のどの Azure リソース グループを IoT ソリューションの一部としてタグ付けするかを選択することもできます。 
 
-選択に応じて、サブスクリプション全体、リソース グループ、または単一のリソースを追加できます。
+選択に応じて、サブスクリプション全体、リソース グループ、または単一のリソースを追加できます。 
 
 すべてのリソースのリレーションシップを定義すると、Azure Security Center for IoT によって、これらのリソースに対するセキュリティのレコメンデーションとアラートが Azure Security Center を通じて提供されるようになります。
 
@@ -45,9 +45,9 @@ Azure Security Center for IoT を IoT ハブ上で有効にすると、IoT ハ�
 IoT ソリューションに新しいリソースを追加するには、次の操作を行います。 
 
 1. Azure portal で **[IoT Hub]** を開きます。 
-2. 左側のメニューの **[セキュリティ]** の下の **[リソース]** を選択して開きます。 
-3. **[編集]** を選択し、自分の IoT ソリューションに属しているリソース グループを選択します。
-5. **[追加]** をクリックします。 
+1. 左側のメニューの **[セキュリティ]** の下の **[リソース]** を選択して開きます。 
+1. **[編集]** を選択し、自分の IoT ソリューションに属しているリソース グループを選択します。
+1. **[追加]** をクリックします。 
 
 お疲れさまでした。 IoT ソリューションに新しいリソース グループが追加されました。
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 09/03/2019
 ms.author: mimart
-ms.reviewer: asteen
+ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80539181e6614283b6170b9cd9d4db85f812a5f
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0562027bb599b596b640e0c1a669447e3fed9680
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68879890"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034163"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない
 アプリケーションで自動プロビジョニングが構成された後 (アプリに接続するために Azure AD に提供されたアプリの資格情報が有効であることの確認を含む)、そのアプリに対してユーザーまたはグループ、あるいはその両方がプロビジョニングされます。 プロビジョニングは、次のものによって決定されます。
@@ -30,29 +30,29 @@ ms.locfileid: "68879890"
 -   **属性マッピング**が有効になっているかどうか、および有効な属性を Azure AD からアプリに同期するように構成されているかどうか。 属性マッピングの詳細については、「[Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](customize-application-attributes.md)」を参照してください。
 -   特定の属性値に基づいてユーザーをフィルター処理する**スコープ フィルター**が存在するかどうか。 スコープ フィルターの詳細については、「[スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング](define-conditional-rules-for-provisioning-user-accounts.md)」を参照してください。
   
-ユーザーがプロビジョニングされていないことがわかった場合は、Azure AD の監査ログを調べてください。 特定のユーザーのログ エントリを検索します。
+ユーザーがプロビジョニングされていないことがわかった場合は、Azure AD の[プロビジョニング ログ (プレビュー)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) を調べてください。 特定のユーザーのログ エントリを検索します。
 
-プロビジョニングの監査ログには、Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンタープライズ アプリ)] &gt; \[アプリケーション名\] &gt; [監査ログ]** タブからアクセスできます。 **[アカウント プロビジョニング]** カテゴリでログをフィルター処理すると、そのアプリのプロビジョニング イベントのみを表示できます。 属性マッピングでユーザー向けに構成された "照合 ID" に基づいてユーザーを検索できます。 たとえば、"ユーザー プリンシパル名" または "メール アドレス" を Azure AD 側の照合属性として構成し、プロビジョニングされていないユーザーの値が "audrey@contoso.com" である場合は、監査ログで "audrey@contoso.com" を検索し、返されたエントリを確認します。
+Azure portal で、 **[Azure Active Directory]** &gt; **[エンタープライズ アプリ]** &gt; **[プロビジョニング ログ (プレビュー)]** ( **[アクティビティ]** セクション内) を順に選択して、プロビジョニング ログにアクセスできます。 プロビジョニング データは、ユーザー名か、ソース システムまたはターゲット システムの識別子に基づいて検索できます。 詳細については、[プロビジョニング ログ(プレビュー)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) に関する記事を参照してください。 
 
-プロビジョニングの監査ログには、プロビジョニング サービスによって実行されたすべての操作が記録されます。これには、プロビジョニングの対象となる割り当て済みのユーザーを Azure AD で照会する操作、これらのユーザーが存在するかどうかを対象となるアプリで照会する操作、システム間でユーザー オブジェクトを比較する操作が含まれます。 その後、比較に基づいて、対象のシステムのユーザー アカウントを追加または更新するか、無効にします。
+プロビジョニング ログには、プロビジョニング サービスによって実行されたすべての操作が記録されます。これには、プロビジョニングの対象となる割り当て済みのユーザーを Azure AD で照会する操作、これらのユーザーが存在するかどうかを対象となるアプリで照会する操作、システム間でユーザー オブジェクトを比較する操作が含まれます。 その後、比較に基づいて、対象のシステムのユーザー アカウントを追加または更新するか、無効にします。
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>プロビジョニングに関して考慮すべき一般的問題
 次の一覧は、どこから始めるべきかわかっている場合に詳しく確認できる一般的問題を示しています。
 
 - [プロビジョニング サービスが開始されない](#provisioning-service-does-not-appear-to-start)
-- [ユーザーを割り当てたにもかかわらず、ユーザーがスキップされておりプロビジョニングされていないと監査ログに表示される](#audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
+- [ユーザーを割り当てたにもかかわらず、ユーザーがスキップされておりプロビジョニングされていないとプロビジョニング ログに表示される](#provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned)
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>プロビジョニング サービスが開始されない
-Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンタープライズ アプリ)] &gt; \[アプリケーション名\] &gt; [プロビジョニング]** セクションで、 **[Provisioning Status (プロビジョニングの状態)]** を**オン**にしているとします。 しかし、その後再読み込みしても、他の状態がページに表示されません。これは、サービスは実行されていますが、初回の同期がまだ完了していないことを示している可能性があります。 上で説明されている**監査ログ**を確認し、サービスによってどのような操作が実行されているのかと、エラーが発生していないかを判断します。
+Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンタープライズ アプリ)] &gt; \[アプリケーション名\] &gt; [プロビジョニング]** セクションで、 **[Provisioning Status (プロビジョニングの状態)]** を**オン**にしているとします。 しかし、その後再読み込みしても、他の状態の詳細がページに表示されません。サービスは実行されていますが、初回サイクルがまだ完了していない可能性があります。 前述の**プロビジョニング ログ (プレビュー)** を確認し、サービスによって実行されている操作と、エラーの有無を判断します。
 
 >[!NOTE]
->初回の同期には 20 分～数時間かかることがあります。この時間は Azure AD のディレクトリ サイズと、プロビジョニングの対象となるユーザーの数によって異なります。 初回の同期後の両方のシステムの状態を表すウォーターマークがプロビジョニング サービスに保存されるため、初回の同期後の後続の同期はより速くなります。初回の同期により、以降の同期のパフォーマンスが向上します。
+>初回サイクルには 20 分から数時間かかることがあります。この時間は Azure AD のディレクトリ サイズと、プロビジョニングの対象となるユーザーの数によって異なります。 初回サイクル後の両方のシステムの状態を表すウォーターマークがプロビジョニング サービスに保存されるため、初回サイクルの後の後続の同期はより速くなります。 初回サイクルにより、以降の同期のパフォーマンスが向上します。
 >
 
 
-## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>ユーザーを割り当てたにもかかわらず、ユーザーがスキップされておりプロビジョニングされていないと監査ログに表示される
+## <a name="provisioning-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>ユーザーを割り当てたにもかかわらず、ユーザーがスキップされておりプロビジョニングされていないとプロビジョニング ログに表示される
 
-監査ログでユーザーが "スキップされ" ていると表示される場合は、ログ メッセージで詳細を確認して原因を判断することが重要です。 一般的な原因と解決策を次に示します。
+プロビジョニング ログにユーザーが "スキップ" されていると表示される場合、ログの **[ステップ]** タブを確認して原因を判断することが重要です。 一般的な原因と解決策を次に示します。
 
 - **属性値に基づいてユーザーをフィルター処理する** **スコープ フィルターが構成されています**。 スコープ フィルターの詳細については、「[スコープ フィルター](define-conditional-rules-for-provisioning-user-accounts.md)」を参照してください。
 - **ユーザーが "実質的に有効でない" 状態です**。 この特定のエラー メッセージが表示された場合、その原因は、Azure AD に格納されているユーザー割り当てレコードの問題です。 この問題を解決するには、アプリからユーザー (またはグループ) を割り当て解除し、再割り当てします。 割り当ての詳細については、[ユーザーまたはグループ アクセスの割り当て](assign-user-or-group-access-portal.md)に関するページを参照してください。

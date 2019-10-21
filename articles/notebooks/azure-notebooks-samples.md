@@ -4,21 +4,20 @@ description: サンプルは、無料の Azure Notebooks クラウド サービ�
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 07e95905-0f1b-49ce-a0f9-820f61952278
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 50e24ce29b5378b3aa930c54824fd444cd823b46
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8e4c817437c22d15e60cf48d5976c30433e83d75
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631826"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970021"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>サンプル ノートブックを検索して使用する
 

@@ -1,6 +1,6 @@
 ---
 title: 実験ファイルを保存する場所と書き込む場所
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: ストレージ制限エラーを回避し、待機時間を実験するために、実験で入力ファイルをどこに保存し、出力ファイルをどこに書き込むかについて説明します。
 services: machine-learning
 author: rastala
@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: 7d5e147173e766d0da54aa3422faef4b6035b914
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 77f816400709262fab8cb9bd351bdcde73377e09
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114509"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034283"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Azure Machine Learning の実験でファイルを保存する場所と書き込む場所
 
@@ -33,7 +33,7 @@ Azure Machine Learning では、スクリプト フォルダー全体をター�
 
 このため、次のことをお勧めします。
 
-* **お使いのファイルを Azure Machine Learning の[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)に格納します。** これにより、実験の待機時間の問題を防止でき、リモート コンピューティング ターゲットからデータにアクセスする利点が得られます。つまり、認証とマウントは Azure Machine Learning service によって管理されます。 データストアをソース ディレクトリとして指定し、データストアにファイルをアップロードする方法の詳細については、[データストアからデータにアクセスする](how-to-access-data.md)方法に関する記事を参照してください。
+* **お使いのファイルを Azure Machine Learning の[データストア](https://docs.microsoft.com/python/api/azureml-core/azureml.data?view=azure-ml-py)に格納します。** これにより、実験の待機時間の問題を防止でき、リモート コンピューティング ターゲットからデータにアクセスする利点が得られます。つまり、認証とマウントは Azure Machine Learning によって管理されます。 データストアをソース ディレクトリとして指定し、データストアにファイルをアップロードする方法の詳細については、[データストアからデータにアクセスする](how-to-access-data.md)方法に関する記事を参照してください。
 
 * **数個のデータ ファイルと依存関係スクリプトのみが必要であり、データストアを使用できない場合は、** トレーニング スクリプトと同じフォルダー ディレクトリにファイルを配置します。 このフォルダーを `source_directory` ディレクトリとして、トレーニング スクリプトで直接指定するか、またはトレーニング スクリプトを呼び出すコードで指定します。
 

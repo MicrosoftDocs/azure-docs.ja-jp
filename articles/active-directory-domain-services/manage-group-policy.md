@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c6d7b3403209710c9086b90abcb0e2ce61a0e8a
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 6fe959a661f23673bb5d3e6df630ef4ee25128f7
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69612738"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958557"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでグループ ポリシーを管理する
 
@@ -38,6 +38,9 @@ Azure Active Directory Domain Services (Azure AD DS) のユーザー オブジ�
 * Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
     * 必要に応じて、[Windows Server VM を作成してマネージド ドメインに参加させる][create-join-windows-vm]チュートリアルを完了します。
 * Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
+
+> [!NOTE]
+> [Azure AD DS 内のドメイン コントローラーへのアクセス権がない](faqs.md#can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop)ため、マネージド ドメイン内にグループ ポリシー管理テンプレート用の中央ストアを作成して使用することはできません。 [Sysvol はオンプレミスの Azure AD Connect 同期に含まれていない](synchronization.md#what-isnt-synchronized-to-azure-ad-ds)ため、オンプレミスの中央ストアを作成して、これを Azure AD 経由で Azure AD DS に同期することもできません。
 
 ## <a name="install-group-policy-management-tools"></a>グループ ポリシーの管理ツールをインストールする
 

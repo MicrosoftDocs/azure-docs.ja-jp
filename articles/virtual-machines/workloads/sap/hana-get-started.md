@@ -219,7 +219,7 @@ Azure 上の Linux VM のルート ファイル システムには、サイズ�
 
 ゲスト OS として Linux を実行する Azure VM にディスクをアタッチする方法については、「[Linux VM へのディスクの追加](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
-Azure Premium SSD をし王すると、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にします。 その他のボリューム (つまりディスク) では、キャッシュ モードを **ReadOnly** に設定します。
+Azure Premium SSD を使用すると、ディスクのキャッシュ モードを定義できます。 /hana/data と /hana/log を保持するストライプ セットでは、ディスク キャッシュを無効にします。 その他のボリューム (つまりディスク) では、キャッシュ モードを **ReadOnly** に設定します。
 
 VM の作成に使用する JSON のサンプル テンプレートを検索するには、[Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates)に関するページをご覧ください。
 vm-simple-sles テンプレートは、基本的なテンプレートです。 追加 100 GB のデータ ディスクを使用する記憶域セクションが含まれています。 このテンプレートをベースとして使用します。 テンプレートは特定の構成に適用できます。

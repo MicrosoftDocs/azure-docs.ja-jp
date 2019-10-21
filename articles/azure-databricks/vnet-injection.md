@@ -1,5 +1,5 @@
 ---
-title: 仮想ネットワーク内での Azure Databricks のデプロイ (プレビュー)
+title: 仮想ネットワーク内に Azure Databricks をデプロイする
 description: この記事では、仮想ネットワークに Azure Databricks をデプロイする (VNet インジェクションとも呼ばれる) 方法について説明します。
 services: azure-databricks
 author: mamccrea
@@ -7,15 +7,15 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
-ms.date: 03/18/2019
-ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 10/10/2019
+ms.openlocfilehash: 0bb3221c201e6dd4dd17cca8ef7e3ed3331de228
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126683"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72432665"
 ---
-# <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>仮想ネットワーク内での Azure Databricks のデプロイ (プレビュー)
+# <a name="deploy-azure-databricks-in-your-virtual-network"></a>仮想ネットワーク内に Azure Databricks をデプロイする
 
 Azure Databricks の既定のデプロイは、Azure 上のフルマネ－ジド サービスとなります。 仮想ネットワーク (VNet) を含むすべてのデータ プレーン リソースが、ロック済みのリソース グループにデプロイされます。 ただし、ネットワークのカスタマイズが必要な場合は、Azure Databricks リソースを独自の仮想ネットワーク内にデプロイできます (VNet インジェクションとも呼ばれます)。この場合、以下のことが可能になります。
 
@@ -101,7 +101,7 @@ Azure Databricks ワークスペースをデプロイする仮想ネットワー
 
 ### <a name="network-security-groups"></a>ネットワーク セキュリティ グループ
 
-既存の仮想ネットワークに必要な規則と共にネットワーク セキュリティ グループを作成するには、[Databricks VNet インジェクション用のネットワーク セキュリティ グループ テンプレート](https://azure.microsoft.com/resources/templates/101-databricks-nsg-for-vnet-injection)を使用します。
+既存の仮想ネットワークに必要な規則と共にネットワーク セキュリティ グループを作成するには、[Databricks VNet インジェクション用のネットワーク セキュリティ グループ テンプレート](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/)を使用します。
 
 このテンプレートを使用するときは、サブネット トラフィックを手動でホワイトリスト登録する必要はありません。
 
@@ -135,7 +135,7 @@ Azure Databricks ワークスペースをデプロイする仮想ネットワー
 
 |Azure Databricks リージョン|Service|パブリック IP|
 |-----------------------|-------|---------|
-|米国東部|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
+|East US|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |米国東部 2|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |米国中北部|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|
 |米国中部|コントロール プレーン NAT </br></br>Webapp|23.101.152.95/32 </br></br>40.70.58.221/32|

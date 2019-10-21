@@ -1,21 +1,21 @@
 ---
-title: チュートリアル - Azure Data Share プレビューを使用して顧客やパートナーとデータを共有する
+title: チュートリアル:組織の外部と共有する - Azure Data Share プレビュー
 description: チュートリアル - Azure Data Share プレビューを使用して顧客やパートナーとデータを共有する
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: 01888f3656765b922c1b646e7ca8e07d81e799f3
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: f7df46a6a6f149ef0228fda8c967469a25dc3d50
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838414"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327413"
 ---
 # <a name="tutorial-share-your-data-using-azure-data-share-preview"></a>チュートリアル:Azure Data Share プレビューを使用してデータを共有する
 
-このチュートリアルでは、新しい Azure データ共有を設定して、Azure 組織の外部の顧客やパートナーとのデータの共有を開始する方法を学習します。 
+このチュートリアルでは、新しい Azure Data Share を設定して、Azure 組織の外部の顧客やパートナーとのデータの共有を開始する方法を学習します。 
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -32,7 +32,7 @@ ms.locfileid: "67838414"
 * ストレージ アカウントにロールの割り当てを追加する権限。これは、*Microsoft.Authorization/role assignments/write* 権限に含まれています。 この権限は、所有者ロール内に存在します。 
 * 受信者の Azure ログイン用メール アドレス (メール エイリアスは無効です)。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure Portal](https://portal.azure.com/) にサインインします。
 

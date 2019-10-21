@@ -1,19 +1,19 @@
 ---
 title: HDInsight での Azure Active Directory を使用した Enterprise セキュリティ パッケージ
 description: Azure Active Directory Domain Services を使って HDInsight Enterprise セキュリティ パッケージのクラスターをセットアップして構成する方法について説明する。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seodec18
-ms.date: 04/23/2019
-ms.openlocfilehash: aa18c4a078edf579e8d9c4c09df99100dfcea148
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.date: 10/02/2019
+ms.openlocfilehash: 5989aca2b577621c31fe486877ea006cb25d47b5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918335"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030353"
 ---
 # <a name="enterprise-security-package-configurations-with-azure-active-directory-domain-services-in-hdinsight"></a>HDInsight での Azure Active Directory Domain Services を使用した Enterprise セキュリティ パッケージの構成
 
@@ -70,7 +70,7 @@ ESP クラスターを設定するには、まだ作成していない場合は�
 ## <a name="networking-considerations"></a>ネットワークに関する考慮事項
 
 > [!NOTE]  
-> Azure AD-DS は、Azure Resource Manager ベースの vNET にデプロイする必要があります。 Azure AD-DS では、クラシック仮想ネットワークはサポートされません。 詳しくは、「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network)」をご覧ください。
+> Azure AD-DS は、Azure Resource Manager ベースの vNET にデプロイする必要があります。 Azure AD-DS では、クラシック仮想ネットワークはサポートされません。 詳細については、「[Azure Portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/tutorial-create-instance.md#create-and-configure-the-virtual-network)」を参照してください。
 
 Azure AD-DS を有効にした後、ローカルのドメイン ネーム サービス (DNS) サーバーが AD Virtual Machines (VM) で実行されます。 Azure AD-DS 仮想ネットワーク (VNET) を、これらのカスタム DNS サーバーを使用するように構成します。 適切な IP アドレスを見つけるには、 **[マネージド]** カテゴリで **[プロパティ]** を選択し、 **[仮想ネットワーク上の IP アドレス]** の下に表示される IP アドレスを参照します。
 
@@ -86,23 +86,23 @@ VNET がピアリングされたら、HDInsight VNET を カスタム DNS サー
 
 ![ピアリングされた VNET のカスタム DNS サーバーを構成する](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-aadds-peered-vnet-configuration.png)
 
-お客様の HDInsight サブネットでネットワーク セキュリティ グループ (NSG) 規則を使用している場合は、インバウンド トラフィックとアウトバウンド トラフィックの両方に対して[必須 IP](../hdinsight-management-ip-addresses.md) を許可する必要があります。 
+お客様の HDInsight サブネットでネットワーク セキュリティ グループ (NSG) 規則を使用している場合は、インバウンド トラフィックとアウトバウンド トラフィックの両方に対して[必須 IP](../hdinsight-management-ip-addresses.md) を許可する必要があります。
 
 ネットワークが正しく設定されているかどうかを**テストする**には、Windows VM を HDInsight VNET/サブネットに参加させて、ドメイン名に対して ping を実行し (IP に解決されます)、**ldp.exe** を実行して、Azure AD-DS ドメインにアクセスします。 次に、**この Windows VM をドメインに参加**させて、必要なすべての RPC 呼び出しがクライアントとサーバー間で成功していることを確認します。 **nslookup** を使って、ストレージ アカウント、または使用する任意の外部 DB (外部の Hive metastore、Ranger DB など) へのネットワーク アクセスを確認することもできます。
-AAD-DS が NSG によって保護されている場合、[必須ポート](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)がすべて、AAD-DS サブネット ネットワーク セキュリティ グループ ルールのホワイトリストに含まれていることを確認してください。 この Windows VM のドメイン参加に成功した場合、次の手順に進んで ESP クラスターを作成することができます。
+AAD-DS が NSG によって保護されている場合、[必須ポート](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772723(v=ws.10)#communication-to-domain-controllers)がすべて、AAD-DS サブネット ネットワーク セキュリティ グループ ルールのホワイトリストに含まれていることを確認してください。 この Windows VM のドメイン参加に成功した場合、次の手順を続行して ESP クラスターを作成することができます。
 
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>ESP の HDInsight クラスターの作成
 
-前の手順を正しく設定したら、次の手順は、ESP が有効になった HDInsight クラスターを作成することです。 HDInsight クラスターを作成するとき、**カスタム** タブで Enterprise セキュリティ パッケージを有効にできます。デプロイ用に Azure Resource Manager テンプレートを使用する場合は、ポータルのエクスペリエンスを一度使用して、最後の "概要" ページに後で再利用するために事前入力されたテンプレートをダウンロードします。
+前の手順を正しく設定したら、次の手順は、ESP が有効になった HDInsight クラスターを作成することです。 HDInsight クラスターを作成するとき、 **[セキュリティとネットワーク]** タブで Enterprise セキュリティ パッケージを有効にできます。デプロイ用に Azure Resource Manager テンプレートを使用する場合は、ポータルのエクスペリエンスを一度使用して、 **[確認と作成]** ページに後で再利用するために事前入力されたテンプレートをダウンロードします。
 
 > [!NOTE]  
 > ESP クラスター名の最初の 6 文字は、環境内で一意である必要があります。 たとえば、異なる VNET 内に複数の ESP クラスターがある場合、クラスター名の最初の 6 文字が一意になるように名前付け規則を選択する必要があります。
 
-![Azure HDInsight Enterprise セキュリティ パッケージのドメインの検証](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
+![Azure HDInsight Enterprise セキュリティ パッケージのドメインの検証](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp.png)
 
-ESP を有効にすると、Azure AD-DS に関連する一般的な構成ミスが自動的に検出され、検証されます。 これらのエラーを修正した後は、次の手順に進むことができます。 
+ESP を有効にすると、Azure AD-DS に関連する一般的な構成ミスが自動的に検出され、検証されます。 これらのエラーを修正した後は、次の手順を続行することができます。
 
-![Aazure HDInsight Enterprise セキュリティ パッケージがドメインの検証に失敗しました](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate-failed.png)
+![Aazure HDInsight Enterprise セキュリティ パッケージがドメインの検証に失敗しました](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-esp-error.png)
 
 ESP で HDInsight クラスターを作成するときは、次のパラメーターを指定する必要があります。
 
@@ -112,13 +112,9 @@ ESP で HDInsight クラスターを作成するときは、次のパラメー�
 
 - **LDAPS URL**: 例: `ldaps://contoso.com:636`。
 
-次のスクリーンショットは、Azure portal における適切な構成を示しています。
-
-![Azure HDInsight ESP Active Directory Domain Services の構成](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-domain-joined-configuration-azure-aads-portal.png)。
-
 作成したマネージド ID は、新しいクラスターを作成するときに、ユーザー割り当てマネージド ID ドロップダウンから選択できます。
 
-![Azure HDInsight ESP Active Directory Domain Services のマネージド ID](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-identity-managed-identity.png)。
+![Azure HDInsight ESP Active Directory Domain Services のマネージド ID](./media/apache-domain-joined-configure-using-azure-adds/azure-portal-cluster-security-networking-identity.png)。
 
 ## <a name="next-steps"></a>次の手順
 

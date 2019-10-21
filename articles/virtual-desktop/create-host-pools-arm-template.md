@@ -1,22 +1,22 @@
 ---
-title: Azure Resource Manager テンプレートを使用した Windows Virtual Desktop プレビューのホスト プールの作成 - Azure
-description: Azure Resource Manager テンプレートを使用して Windows Virtual Desktop プレビューにホスト プールを作成する方法。
+title: Azure Resource Manager テンプレートを使用した Windows Virtual Desktop ホスト プールの作成 - Azure
+description: Azure Resource Manager テンプレートを使用して Windows Virtual Desktop にホスト プールを作成する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: 27fe19c2b1f92b67e02b4e09d5fcd607759d8abd
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b96ecad93c481a762b81a7888940850ed3a73e5f
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163753"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679607"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用してホスト プールを作成する
 
-ホスト プールは、Windows Virtual Desktop プレビュー テナント環境内の 1 つ以上の同一仮想マシンのコレクションです。 各ホスト プールには、物理デスクトップ上と同様にユーザーが対話できるアプリ グループを含めることができます。
+ホスト プールは、Windows Virtual Desktop テナント環境内にある 1 つまたは複数の同一の仮想マシンをコレクションとしてまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
 
 マイクロソフトが提供する Azure Resource Manager テンプレートを使用して Windows Virtual Desktop テナントのホスト プールを作成するには、このセクションの手順に従います。 この記事では、Windows Virtual Desktop にホスト プールを作成し、Azure サブスクリプション内の VM を使用してリソース グループを作成し、それらの VM を AD ドメインに参加させて、VM を Windows Virtual Desktop に登録する方法を説明します。
 

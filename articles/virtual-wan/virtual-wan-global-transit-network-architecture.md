@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/23/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand global transit network architecture as it relates to Virtual WAN.
-ms.openlocfilehash: 2376c77ecc328788c842e045aafb618cbad39b0e
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 0a5059382c26afd6120dc14a1ab2c7e5d281e7a1
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68421429"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695262"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>グローバル トランジット ネットワーク アーキテクチャと Virtual WAN
 
@@ -44,7 +44,7 @@ Azure Virtual WAN のアーキテクチャでは、Azure リージョンがハ�
 
 "**図 2:ハブ アンド スポーク**
 
-図 2 で示すグローバル ネットワークの論理ビューでは、地理的に分散したユーザー、物理サイト、VNet が、クラウドでホストされたネットワーク ハブを介して相互接続されています。 このアーキテクチャでは、ネットワーク エンドポイント間の論理的な 1 ホップ トランジット接続が可能になります。 ハブにスポークを接続するには、物理ブランチに対する ExpressRoute やサイト間 VPN、VNet に対する VNet ピアリング、リモート ユーザーに対するポイント対サイト VPN など、さまざまな Azure ネットワーク サービスが使用されます。
+図 2 で示すグローバル ネットワークの論理ビューでは、地理的に分散したユーザー、物理サイト、VNet が、クラウドでホストされたネットワーク ハブを介して相互接続されています。 このアーキテクチャでは、ネットワーク エンドポイント間の論理的な 1 ホップ トランジット接続が可能になります。 ハブにスポークを接続するには、物理ブランチに対する ExpressRoute やサイト間 VPN、VNet に対する VNet 接続、リモート ユーザーに対するポイント対サイト VPN など、さまざまな Azure ネットワーク サービスが使用されます。
 
 ## <a name="crossregion"></a>リージョン間の接続
 
@@ -71,7 +71,7 @@ Azure Virtual WAN では、次のグローバル トランジット接続パス�
 
 ### <a name="branchvnet"></a>Branch-to-VNet
 
-ブランチと VNet の間は、Azure Virtual WAN によってサポートされる主要なパスです。 このパスにより、Azure VNet にデプロイされた Azure IAAS エンタープライズ ワークロードにブランチを接続できます。 ブランチは、ExpressRoute またはサイト間 VPN を介して仮想 WAN に接続できます。 トラフィックは、VNet 接続を介して Virtual WAN ハブに接続されている VNet に転送されます。
+ブランチと VNet の間は、Azure Virtual WAN によってサポートされる主要なパスです。 このパスにより、Azure VNet にデプロイされた Azure IAAS エンタープライズ ワークロードにブランチを接続できます。 ブランチは、ExpressRoute またはサイト間 VPN を介して仮想 WAN に接続できます。 トラフィックは、VNet 接続を介して Virtual WAN ハブに接続されている VNet に転送されます。Virtual WAN によってブランチ サイトへのゲートウェイ トランジットが自動的に有効にされるので、[ゲートウェイ トランジット](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity)は Virtual WAN の場合は必要ありません。
 
 ### <a name="branchbranch"></a>ブランチとブランチ
 
@@ -89,7 +89,7 @@ Azure Virtual WAN では、次のグローバル トランジット接続パス�
 
 ### <a name="vnetvnet"></a>VNet ピアリングを用いた VNet と VNet
 
-複数の VNet に実装されている多層アプリケーションをサポートするために VNet を相互接続するには、VNet ピアリングを使います。 Azure Virtual WAN 経由のVNet 対 VNet のトランジットのシナリオは、現在はサポートされていませんが、Azure のロードマップ上にはあります。 VNet を相互に接続する必要がある場合に推奨されるソリューションは、VNet ピアリングを介して VNet を接続することです。 Virtual WAN によって自動的にゲートウェイ トランジットが有効になるので、[ゲートウェイ トランジット](../virtual-network/virtual-network-peering-overview.md#gateways-and-on-premises-connectivity) (VNet ピアリングのコンテキストの) は Virtual WAN には必要ありません。
+複数の VNet に実装されている多層アプリケーションをサポートするために VNet を相互接続するには、VNet ピアリングを使います。 Azure Virtual WAN 経由のVNet 対 VNet のトランジットのシナリオは、現在はサポートされていませんが、Azure のロードマップ上にはあります。 VNet を相互に接続する必要がある場合に推奨されるソリューションは、VNet ピアリングを介して VNet を接続することです。 
 
 ### <a name="globalreach"></a>ExpressRoute Global Reach
 

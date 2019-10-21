@@ -11,18 +11,22 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: c39c585d9947422260868734ec89814d8a510089
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.custom: fasttrack-edit
+ms.openlocfilehash: a585ab059319b15be1f2a86bf10b7dc58da72494
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67836961"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299462"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API Management インスタンスの容量
 
 **容量**は、より多くの負荷に対応できるように API Management インスタンスをスケーリングするかどうかについて情報に基づいて判断する上で、最も重要な [Azure Monitor のメトリック](api-management-howto-use-azure-monitor.md#view-metrics-of-your-apis)です。 その構造は複雑であり、特定の動作が課せられます。
 
 この記事では、**容量**の概要とその動作について説明します。 Azure portal の**容量**メトリックにアクセスする方法を説明し、API Management インスタンスのスケーリングまたはアップグレードを検討する時期を提案します。
+
+> [!IMPORTANT]
+> この記事では、Azure API Management インスタンスを監視し、その容量メトリックに基づいてスケーリングする方法について説明します。 ただし、個々の API Management インスタンスが実際にその容量に "*達した*" ときにどうなるかを理解することも重要です。 インスタンスの物理的な過負荷を防ぐためのサービスレベルのスロットリングが Azure API Management によって適用されることはありません。 インスタンスは、その物理的な容量に達したとき、過剰な負荷がかかって受信要求を処理できない Web サーバーと同じように振る舞います。待ち時間が増えたり、接続がドロップされたり、タイムアウト エラーが発生したりします。つまり、他のあらゆる外部サービスと同様、こうしたリスクに対処できるよう API クライアント側で備える必要があります (再試行ポリシーを適用するなど)。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,8 +46,9 @@ ms.locfileid: "67836961"
 
 **容量**は、API Management インスタンスの負荷のインジケーターです。 リソース使用量 (CPU、メモリ) とネットワーク キューの長さを反映します。 CPU とメモリの使用量によって、以下によるリソース使用量がわかります。
 
-+ 管理アクションや要求処理などの API Management サービス (要求の転送やポリシーの実行が含まれます)
-+ 一部のオペレーティング システム プロセス (新しい接続での SSL ハンドシェイクのコストを伴うプロセスが含まれます)
++ 要求処理など API Management のデータ プレーン サービス (要求の転送やポリシーの実行が含まれます)。
++ API Management 管理プレーン サービス (Azure portal または ARM 経由で適用された管理アクション、[開発者ポータル](api-management-howto-developer-portal.md)から来る負荷など)。
++ 一部のオペレーティング システム プロセス (新しい接続での SSL ハンドシェイクのコストを伴うプロセスが含まれます)。
 
 合計**容量**は、API Management インスタンスの各ユニットの値の平均です。
 
@@ -73,7 +78,7 @@ ms.locfileid: "67836961"
 ![容量メトリック](./media/api-management-capacity/capacity-metric.png)  
 
 1. [Azure ポータル](https://portal.azure.com/)で、APIM インスタンスに移動します。
-2. **[メトリック (プレビュー)]** を選択します。
+2. **[メトリック]** を選びます。
 3. 紫色のセクションから、使用できるメトリックから **[容量]** メトリックを選択し、既定の **[平均]** 集計のままにします。
 
     > [!TIP]

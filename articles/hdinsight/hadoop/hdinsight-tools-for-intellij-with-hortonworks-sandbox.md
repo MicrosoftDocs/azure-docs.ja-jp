@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5234835f5fbfd5617e6b0440ff38fa900051470a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 783d7fc8bc26ce2c715c774e63ecf60c5b75a439
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450123"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076268"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
 
@@ -55,7 +55,7 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
       * **Maven**: Scala プロジェクト作成ウィザードをサポートする場合。
       * **SBT**: 依存関係を管理し、Scala プロジェクトをビルドする場合。
 
-   ![[New Project]\(新しいプロジェクト\) ダイアログ ボックス](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
+   ![Intellij で新しい Scala プロジェクトを作成する](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
 2. **[次へ]** を選択します。
 3. 次の **[New Project]\(新しいプロジェクト\)** ダイアログ ボックスで、以下の手順を実行します。

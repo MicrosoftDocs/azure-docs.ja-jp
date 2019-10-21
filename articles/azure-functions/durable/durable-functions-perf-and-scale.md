@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: ed0fe22903412d4164fb3a85dbd9afafdc7023e6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 53f561283d4d07d58bd03b59a24a30d8010caaf0
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097997"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933284"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions のパフォーマンスとスケーリング (Azure Functions)
 
@@ -243,4 +243,4 @@ Azure Functions では、1 つのアプリ インスタンス内での複数の�
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [C# で最初の永続関数を作成する](durable-functions-create-first-csharp.md)
+> [ディザスター リカバリーと地理的分散について学習する](durable-functions-disaster-recovery-geo-distribution.md)

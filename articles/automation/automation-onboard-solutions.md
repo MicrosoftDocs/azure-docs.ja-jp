@@ -9,12 +9,12 @@ manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: d247369647106cf1671a8770a6dce21f1a34a4b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58082196"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372827"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Update と Change Tracking ソリューションの Azure Automation への配布準備をする
 
@@ -43,40 +43,40 @@ ms.locfileid: "58082196"
 
 Change Tracking と Inventory ソリューションには、仮想マシンで[変更を追跡](automation-vm-change-tracking.md)し、[インベントリを作成](automation-vm-inventory.md)する機能が用意されています。 この手順では、仮想マシンでソリューションを有効にします。
 
-1. 左側のメニューから、**[Automation アカウント]** を選択し、一覧からご自身の Automation アカウントを選択します。
+1. 左側のメニューから、 **[Automation アカウント]** を選択し、一覧からご自身の Automation アカウントを選択します。
 1. **[構成管理]** で **[Inventory]** を選択します。
 1. 既存の Log Analytics ワークスペースを選択するか、新規に作成します。 **[有効]** ボタンをクリックします。
 
 ![Update ソリューションの配布準備](media/automation-onboard-solutions/inventory-onboard.png)
 
-Change Tracking と Inventory ソリューションの配布準備通知が完了したら、**[構成管理]** で **[Update Management]** をクリックします。
+Change Tracking と Inventory ソリューションの配布準備通知が完了したら、 **[構成管理]** で **[Update Management]** をクリックします。
 
 ### <a name="enable-update-management"></a>Update Management の有効化
 
 Update Management ソリューションでは、Azure Windows VM の更新プログラムとパッチを管理できます。 利用可能な更新プログラムの状態を迅速に把握したり、必要な更新プログラムのインストールをスケジュールしたり、デプロイの結果を確認して、VM に更新プログラムが正常に適用されたことを検証したりできます。 この手順では、VM のソリューションを有効にします。
 
-1. Automation アカウントから、**[更新の管理]** で **[Update Management]** を選択します。
+1. Automation アカウントから、 **[更新の管理]** で **[Update Management]** を選択します。
 1. 選択されている Log Analytics ワークスペースは、前の手順で使用されたワークスペースと同じです。 **[有効]** をクリックして、Update Management ソリューションの配布準備を行います。
 
 ![Update ソリューションの配布準備](media/automation-onboard-solutions/update-onboard.png)
 
-Update Management ソリューションのインストール中、青いバナーが表示されます。 ソリューションが有効のときに、**[構成管理]** で **[Change Tracking]** を選択して、次の手順に移動します。
+Update Management ソリューションのインストール中、青いバナーが表示されます。 ソリューションが有効のときに、 **[構成管理]** で **[Change Tracking]** を選択して、次の手順に移動します。
 
 ### <a name="select-azure-vm-to-be-managed"></a>管理する Azure VM を選択します
 
 ソリューションが有効になったら、そのソリューションに、配布準備を行う Azure VM を追加できます。
 
-1. Automation アカウントから、**[Change Tracking ]** ページで、**[+ Azure VM の追加]** を選択して仮想マシンを追加します。
+1. Automation アカウントから、 **[Change Tracking ]** ページで、 **[+ Azure VM の追加]** を選択して仮想マシンを追加します。
 
-1. 一覧から VM を選択し、**[有効]** を選択します。 このアクションにより、仮想マシンに対して Change Tracking と Inventory ソリューションが有効になります。
+1. 一覧から VM を選択し、 **[有効]** を選択します。 このアクションにより、仮想マシンに対して Change Tracking と Inventory ソリューションが有効になります。
 
    ![VM の Update ソリューションの有効化](media/automation-onboard-solutions/enable-change-tracking.png)
 
-1. VM オンボード通知が完了したら、Automation アカウントから、**[更新の管理]** で **[Update Management]** を選択します。
+1. VM オンボード通知が完了したら、Automation アカウントから、 **[更新の管理]** で **[Update Management]** を選択します。
 
 1. **[+ Azure VM の追加]** を選択して、仮想マシンを追加します。
 
-1. 一覧から VM を選択し、**[有効]** を選択します。 このアクションにより、仮想マシンに対して Update Management ソリューションが有効になります。
+1. 一覧から VM を選択し、 **[有効]** を選択します。 このアクションにより、仮想マシンに対して Update Management ソリューションが有効になります。
 
    ![VM の Update ソリューションの有効化](media/automation-onboard-solutions/enable-update.png)
 
@@ -89,25 +89,25 @@ Update Management ソリューションのインストール中、青いバナ�
 
 ## <a name="update-azure-modules"></a>Azure モジュールの更新
 
-Automation アカウントから、**[共有リソース]** で **[モジュール]** を選択します。 **[Azure モジュールの更新]** を選択して、Azure モジュールを最新バージョンに更新します。 既存の Azure モジュールすべてを最新バージョンに更新するかどうかを確認するプロンプトが表示されたら、**[はい]** を選択します。
+Automation アカウントから、 **[共有リソース]** で **[モジュール]** を選択します。 **[Azure モジュールの更新]** を選択して、Azure モジュールを最新バージョンに更新します。 既存の Azure モジュールすべてを最新バージョンに更新するかどうかを確認するプロンプトが表示されたら、 **[はい]** を選択します。
 
 ![モジュールの更新](media/automation-onboard-solutions/update-modules.png)
 
 ### <a name="install-azurermoperationalinsights-module"></a>AzureRM.OperationalInsights モジュールのインストール
 
-**[モジュール]** ページで、**[ギャラリーを参照]** を選択して、モジュール ギャラリーを開きます。 AzureRM.OperationalInsights を検索し、そのモジュールを Automation アカウントにインポートします。
+**[モジュール]** ページで、 **[ギャラリーを参照]** を選択して、モジュール ギャラリーを開きます。 AzureRM.OperationalInsights を検索し、そのモジュールを Automation アカウントにインポートします。
 
 ![OperationalInsights モジュールのインポート](media/automation-onboard-solutions/import-operational-insights-module.png)
 
 ## <a name="import-the-onboarding-runbook"></a>オンボード Runbook のインポート
 
-1. Automation アカウントから、**[プロセスの自動化]** で **[Runbook]** を選択します。
+1. Automation アカウントから、 **[プロセスの自動化]** で **[Runbook]** を選択します。
 1. **[ギャラリーの参照]** を選択します。
-1. **Update と Change Tracking** を検索し、Runbook をクリックして、**[ソースの表示]** ページで **[インポート]** を選択します。 **[OK]** を選択して、その Runbook を Automation アカウントにインポートします。
+1. **Update と Change Tracking** を検索し、Runbook をクリックして、 **[ソースの表示]** ページで **[インポート]** を選択します。 **[OK]** を選択して、その Runbook を Automation アカウントにインポートします。
 
    ![オンボード Runbook のインポート](media/automation-onboard-solutions/import-from-gallery.png)
 
-1. **[Runbook]** ページで、**[編集]**、**[発行]** の順に選択します。 **[Runbook の発行]** ダイアログで、**[はい]** を選択して、Runbook を発行します。
+1. **[Runbook]** ページで、 **[編集]** 、 **[発行]** の順に選択します。 **[Runbook の発行]** ダイアログで、 **[はい]** を選択して、Runbook を発行します。
 
 ## <a name="start-the-runbook"></a>Runbook の起動
 
@@ -130,6 +130,13 @@ Automation アカウントから、**[共有リソース]** で **[モジュー�
 
 1. **[OK]** を選択して、Runbook ジョブを開始します。
 1. Runbook ジョブ ページで進行状況とエラーを監視します。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+Update Management から VM を削除するには:
+
+* Log Analytics ワークスペースで、スコープ構成 `MicrosoftDefaultScopeConfig-Updates` の保存された検索条件から VM を削除します。 保存された検索条件は、ワークスペース内の **[全般]** にあります。
+* [Microsoft Monitoring Agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) または [Linux 用 Log Analytics エージェント](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources)を削除します。
 
 ## <a name="next-steps"></a>次の手順
 

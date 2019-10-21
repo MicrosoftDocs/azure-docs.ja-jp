@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: bryanla
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da694dd77186ce22bd7080540bd3b08e14f205b0
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 48be16827da21643af485d1fb94b9a7b76728325
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835371"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374047"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 
@@ -37,7 +37,7 @@ ms.locfileid: "68835371"
 
 ### <a name="support-azure-ad-as-a-way-to-sign-in-to-your-application"></a>アプリケーションにサインインする手段としての Azure AD のサポート
 
-**サインインの手間が減り、サポート コストが削減されます。** Azure AD を使用してアプリケーションにサインインすることで、ユーザーは名前とパスワードを 1 つ余計に覚える必要がなくなります。 開発者としては、保存して保護するパスワードが 1 つ減ります。 忘れたパスワードのリセットを処理する必要がないだけで、かなり手間が省けます。 Azure AD により、Office 365 や Microsoft Azure などの世界で最も人気のある一部のクラウド アプリケーションのサインインが容易になります。 数百万の組織の何億人ものユーザーが、既に Azure AD にサインインしています。 [Azure AD サインインのサポートの追加](authentication-scenarios.md)に関する詳細を参照してください。
+**サインインの手間が減り、サポート コストが削減されます。** Azure AD を使用してアプリケーションにサインインすることで、ユーザーは名前とパスワードを 1 つ余計に覚える必要がなくなります。 開発者としては、保存して保護するパスワードが 1 つ減ります。 忘れたパスワードのリセットを処理する必要がないだけで、かなり手間が省けます。 Azure AD により、Office 365 や Microsoft Azure などの世界で最も人気のある一部のクラウド アプリケーションのサインインが容易になります。 数百万の組織の何億人ものユーザーが、既に Azure AD にサインインしています。 [Azure AD サインインのサポートの追加](v1-authentication-scenarios.md)に関する詳細を参照してください。
 
 **アプリケーションへのサインアップが簡単になります。**  アプリケーションへのサインアップの間に、Azure AD はユーザーに関する基本的な情報を送信するので、サインアップ フォームに事前に入力したり、入力を完全に排除したりできます。 ユーザーは、ソーシャル メディアやモバイル アプリケーションと同様の使い慣れた同意エクスペリエンスから、Azure AD アカウントを使用してアプリケーションにサインアップできます。 すべてのユーザーが、IT スタッフの介入を必要とせずに、Azure AD と統合されているアプリケーションにサインアップおよびサインインできます。 [Azure AD アカウント ログイン用のアプリケーションのサインアップ](../../app-service/configure-authentication-provider-aad.md)の詳細を参照してください。
 
@@ -97,5 +97,5 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 
 [コード作成の開始](v2-overview.md#getting-started)
 
-[Microsoft ID プラットフォームを使用してユーザーをサインインさせる](authentication-scenarios.md)
+[Microsoft ID プラットフォームを使用してユーザーをサインインさせる](v1-authentication-scenarios.md)
 

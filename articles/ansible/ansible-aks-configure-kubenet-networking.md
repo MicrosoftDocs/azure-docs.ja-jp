@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Ansible を使用して Azure Kubernetes Service (AKS) で kubenet ネットワークを構成する | Microsoft Docs
+title: チュートリアル - Ansible を使用して Azure Kubernetes Service (AKS) で kubenet ネットワークを構成する
 description: Ansible を使用して Azure Kubernetes Service (AKS) クラスターで kubenet ネットワークを構成する方法について説明します。
 keywords: ansible, azure, devops, bash, cloudshell, プレイブック, aks, コンテナー, aks, kubernetes
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: cd32347f9de87ea6272be922d0359f1cc7f6f758
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 949a55fd8c004bc656d02816231c4ebb6dd8f92b
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231304"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242179"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>チュートリアル:Ansible を使用して Azure Kubernetes Service (AKS) で kubenet ネットワークを構成する
 

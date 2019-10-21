@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: b2bfbed33433521fd086d474ea4b754f5435f5e6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67092920"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72027107"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル:Azure Active Directory と Riskware の統合
 
@@ -170,7 +170,7 @@ Riskware で Azure AD シングル サインオンを構成するには、次の
 
     g. **[XML Identity Tag Name]\(XML ID タグ名\)** ボックスに、SAML 応答内の一意の識別子を含む属性を入力します (例: NameID)。
 
-    h. Azure portal からダウンロードした **メタデータ Xml**  をメモ帳で開き、メタデータ ファイルから証明書をコピーして **[Certificate]\(証明書\)** ボックスに貼り付けます
+    h. Azure Portal からダウンロードした**メタデータ Xml** をメモ帳で開き、メタデータ ファイルから証明書をコピーして **[証明書]\(Certificate\)** ボックスに貼り付けます
 
     i. **[Consumer URL]\(コンシューマー URL\)** ボックスに、サポート チームから入手した**応答 URL** の値を貼り付けます。
 

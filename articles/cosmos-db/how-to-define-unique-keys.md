@@ -4,14 +4,14 @@ description: Azure Cosmos コンテナーの一意のキーを定義する方法
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/28/2019
 ms.author: thweiss
-ms.openlocfilehash: 67b6ca1914d1728930c29c4a0bbca6cf86753da9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2f61afd12a50b1b135419585bfada52d7ef98f3a
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093323"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811638"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Azure Cosmos コンテナーの一意のキーを定義する
 
@@ -33,7 +33,11 @@ ms.locfileid: "70093323"
 
 1. 必要な場合は、 **[+ Add unique key]** (+ 一意のキーの追加) をクリックして、一意のキー エントリを追加します
 
-![Azure portal での一意キー制約エントリのスクリーンショット](./media/how-to-define-unique-keys/unique-keys-portal.png)
+    ![Azure portal での一意キー制約エントリのスクリーンショット](./media/how-to-define-unique-keys/unique-keys-portal.png)
+
+## <a name="use-powershell"></a>PowerShell の使用
+
+一意のキーを持つコンテナーを作成する方法については、[一意のキーと TTL を使用した Azure Cosmos コンテナーの作成](manage-with-powershell.md#create-container-unique-key-ttl)に関するページを参照してください。
 
 ## <a name="use-the-net-sdk-v2"></a>.NET SDK V2 の使用
 
@@ -43,15 +47,33 @@ ms.locfileid: "70093323"
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
 {
     Id = "container",
+    PartitionKey = new PartitionKeyDefinition { Paths = new Collection<string>(new List<string> { "/myPartitionKey" }) },
     UniqueKeyPolicy = new UniqueKeyPolicy
     {
         UniqueKeys = new Collection<UniqueKey>(new List<UniqueKey>
         {
-            new UniqueKey { Paths = new Collection<string>(new List<string> { "/firstName", "/lastName", "emailAddress" }) },
+            new UniqueKey { Paths = new Collection<string>(new List<string> { "/firstName", "/lastName", "/emailAddress" }) },
             new UniqueKey { Paths = new Collection<string>(new List<string> { "/address/zipCode" }) }
         })
     }
 });
+```
+
+## <a name="use-the-net-sdk-v3"></a>.NET SDK V3 の使用
+
+[.NET SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) を使用して新しいコンテナーを作成するときに、SDK の fluent API を使用して、簡潔で読みやすい方法で一意のキーを宣言します。
+
+```csharp
+await client.GetDatabase("database").DefineContainer(name: "container", partitionKeyPath: "/myPartitionKey")
+    .WithUniqueKey()
+        .Path("/firstName")
+        .Path("/lastName")
+        .Path("/emailAddress")
+    .Attach()
+    .WithUniqueKey()
+        .Path("/address/zipCode")
+    .Attach()
+    .CreateIfNotExistsAsync();
 ```
 
 ## <a name="use-the-java-sdk"></a>Java SDK の使用
@@ -62,6 +84,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 // create a new DocumentCollection object
 DocumentCollection container = new DocumentCollection();
 container.setId("container");
+
 // create array of strings and populate them with the unique key paths
 Collection<String> uniqueKey1Paths = new ArrayList<String>();
 uniqueKey1Paths.add("/firstName");
@@ -69,19 +92,23 @@ uniqueKey1Paths.add("/lastName");
 uniqueKey1Paths.add("/emailAddress");
 Collection<String> uniqueKey2Paths = new ArrayList<String>();
 uniqueKey2Paths.add("/address/zipCode");
+
 // create UniqueKey objects and set their paths
 UniqueKey uniqueKey1 = new UniqueKey();
 UniqueKey uniqueKey2 = new UniqueKey();
 uniqueKey1.setPaths(uniqueKey1Paths);
 uniqueKey2.setPaths(uniqueKey2Paths);
+
 // create a new UniqueKeyPolicy object and set its unique keys
 UniqueKeyPolicy uniqueKeyPolicy = new UniqueKeyPolicy();
 Collection<UniqueKey> uniqueKeys = new ArrayList<UniqueKey>();
 uniqueKeys.add(uniqueKey1);
 uniqueKeys.add(uniqueKey2);
 uniqueKeyPolicy.setUniqueKeys(uniqueKeys);
+
 // set the unique key policy
 container.setUniqueKeyPolicy(uniqueKeyPolicy);
+
 // create the container
 client.createCollection(String.format("/dbs/%s", "database"), container, null);
 ```

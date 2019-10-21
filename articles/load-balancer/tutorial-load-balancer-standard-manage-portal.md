@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 22d0e56a77036c551b6006f43997c92fcce07499
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: a0887a66b6cb886419f86d93973b991151141e0a
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68273349"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327219"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してインターネット トラフィックを VM に負荷分散する
 
@@ -36,7 +36,7 @@ ms.locfileid: "68273349"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
@@ -53,7 +53,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     | Resource group         | **[新規作成]** を選択して、テキスト ボックスに「*myResourceGroupSLB*」と入力します。|
     | 名前                   | *myLoadBalancer*                                   |
     | リージョン         | **[西ヨーロッパ]** を選択します。                                        |
-    | Type          | **[パブリック]** を選択します。                                        |
+    | 種類          | **[パブリック]** を選択します。                                        |
     | SKU           | **[Standard]** を選択します。                          |
     | パブリック IP アドレス | **[新規作成]** を選択します。 |
     | パブリック IP アドレス名              | テキスト ボックスに「*myPublicIP*」と入力します。   |
@@ -90,7 +90,6 @@ Load Balancer でアプリの状態を監視するには、正常性プローブ
     | Port | 「*80*」と入力します。|
     | Interval | プローブの試行の**間隔**を示す秒数として、「*15*」を入力します。 |
     | 異常のしきい値 | **異常しきい値**またはプローブの連続する失敗の回数として *[2]* を選択します。この回数を超えると、VM は異常と見なされます。|
-    | 正常性プローブ | *[myHealthProbe]* を選択します。 |
     
 4. **[OK]** を選択します。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: eb4f0e26d1795abc3392e9736e71093fab79aae2
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 1bef73e6be4bdbe8828e1d20ea6e684759984627
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967947"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244628"
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム: 認証 | 対応策 
 
@@ -308,7 +308,7 @@ ms.locfileid: "68967947"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | .NET Framework 3 |
 | **属性**              | クライアント資格情報の種類 - なし |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_message_client) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
 | **手順** | 認証が存在しないということは、すべてのユーザーがこのサービスにアクセスできるということです。 クライアントを認証しないサービスでは、すべてのユーザーへのアクセスが許可されます。 アプリケーションは、クライアントの資格情報に対して認証を行うように構成してください。 これを行うには、メッセージ clientCredentialType を Windows または証明書に設定します。 |
 
 ### <a name="example"></a>例
@@ -324,7 +324,7 @@ ms.locfileid: "68967947"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、NET Framework 3 |
 | **属性**              | クライアント資格情報の種類 - なし |
-| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://vulncat.fortify.com/en/detail?id=desc.semantic.dotnet.wcf_misconfiguration_anonymous_transport_client) |
+| **参照**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx)、[Fortify](https://community.microfocus.com/t5/UFT-Discussions/UFT-API-Test-with-WCF-wsHttpBinding/m-p/600927) |
 | **手順** | 認証が存在しないということは、すべてのユーザーがこのサービスにアクセスできるということです。 クライアントを認証しないサービスでは、すべてのユーザーがその機能にアクセスできます。 アプリケーションは、クライアントの資格情報に対して認証を行うように構成してください。 これを行うには、トランスポート clientCredentialType を Windows または証明書に設定します。 |
 
 ### <a name="example"></a>例

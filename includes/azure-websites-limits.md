@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 08/09/2019
 ms.author: jroth
-ms.openlocfilehash: 1080e3488483610af0f0c9afadaf000895021821
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 8cdfe82888cca471aa5aae6717a16f62000c4ad5
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "69657815"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839240"
 ---
 | リソース | 無料 | 共有 | Basic | Standard | Premium (v2) | Isolated </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ ms.locfileid: "69657815"
 <sup>2</sup>これらのマシンで実際にホストできるアプリの数は、アプリのアクティビティ、マシン インスタンスのサイズ、対応するリソース使用量によって異なります。  
 <sup>3</sup>専用インスタンスのサイズはさまざまです。 詳細については、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」を参照してください。  
 <sup>4</sup>要求に応じて追加できます。  
-<sup>5</sup>ストレージの制限は、同じ App Service プランのすべてのアプリにまたがる合計コンテンツ サイズです。  
+<sup>5</sup>ストレージの制限は、同じ App Service プランのすべてのアプリにまたがる合計コンテンツ サイズです。 1 つのリソース グループとリージョンを含めたすべての App Service プランのアプリのコンテンツサイズの合計は、500 GB を超えることはできません。  
 <sup>6</sup>これらのリソースは、専用インスタンス上の物理リソース (インスタンスのサイズとインスタンス数) によって制限されます。  
 <sup>7</sup>Basic レベルでアプリケーションを 2 つのインスタンスにスケーリングする場合、2 つのインスタンスのそれぞれに 350 本のコンカレント接続があります。 Standard レベル以上では、Web ソケットに理論的な制限はありませんが、他の要因によって Web ソケットの数が制限されることがあります。 たとえば、許可される最大同時要求数 (`maxConcurrentRequestsPerCpu` で定義される) は次のとおりです。小規模 VM あたり 7,500、中規模 VM あたり 15,000 (7,500 x 2 コア)、および大規模 VM あたり 75,000 (18,750 x 4 コア)。  
 <sup>8</sup>カスタムの実行可能ファイルやスクリプトを、オンデマンドやスケジュールで、または App Service インスタンス内のバックグラウンド タスクとして継続的に実行します。 Web ジョブを継続的に実行するには、常時接続が必要です。 スケジュールされた Web ジョブの実行には、Azure Scheduler Free または Standard が必要です。 App Service インスタンスで実行できる Web ジョブの数に定義済みの制限はありません。 実際にはアプリケーション コードの処理に依存する限界があります。  

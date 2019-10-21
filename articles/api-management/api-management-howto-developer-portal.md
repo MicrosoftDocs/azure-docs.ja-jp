@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: apimpm
-ms.openlocfilehash: da75ca43a2576e3214d4b67f9eb61c7bad3bd5cc
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c015b1afbc61e1501e656aaa480ee2a4e19ba094
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073510"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672798"
 ---
 # <a name="access-and-customize-the-new-developer-portal-in-azure-api-management"></a>Azure API Management での新しい開発者ポータルへのアクセスとそのカスタマイズ
 
@@ -86,6 +86,14 @@ ms.locfileid: "70073510"
 この動作はポータルのバージョン管理型とセルフホステッド型の両方で実行できます。 新しい開発者ポータルでは、API Management サービスの管理 API を使用したコンテンツの抽出がサポートされています。 API については、[GitHub リポジトリの wiki セクション](https://github.com/Azure/api-management-developer-portal/wiki/)に記載されています。 また、[スクリプト](https://github.com/Azure/api-management-developer-portal/blob/master/scripts/migrate.bat)も作成しました。これは作業の開始に役立つ場合があります。
 
 このプロセスと API Management DevOps リソース キットとの整合に引き続き取り組んでいます。
+
+### <a name="what-do-i-need-to-configure-for-the-new-portal-to-work-in-my-api-management-service-in-vnet"></a>VNET にある自分の API Management サービスで新しいポータルを動作させるには、何を構成する必要がありますか。
+
+新しい開発者ポータルがプレビュー段階にある間、VNET にある API Management サービスでマネージド ポータルを動作させるには、米国西部リージョンにある Azure ストレージ サービスへの接続を許可する必要があります。 詳細は[ストレージ ドキュメント](../storage/common/storage-network-security.md#available-virtual-network-regions)にあります。
+
+新しいポータルが一般公開されたら、上記のセットアップは不要になります。
+
+自己ホスト型のポータルでは、セットアップによっては、追加の接続構成が必要になる場合があります。
 
 ### <a name="how-can-i-select-a-layout-when-creating-a-new-page"></a>新しい "*ページ*" を作成するときに "*レイアウト*" を選択する方法はありますか。
 

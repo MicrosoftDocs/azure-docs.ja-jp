@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Azure Managed Applications のドキュメント
 metadata:
-  title: Azure Managed Applications のドキュメント - チュートリアル、API リファレンス
+  title: Azure Managed Applications のドキュメント
   description: Azure Managed Applications を使用して、コンシューマーが管理しやすいクラウド ソリューションを発行します。
   services: managed-applications
   author: tfitzmac

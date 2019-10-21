@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/23/2018
+ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: f9f1072954e01f718fd3d9f03430b6ed6666bb62
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 97529118d420813cf638f211bdd5559068802c95
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082592"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390649"
 ---
 # <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>Azure Stack で OpenShift Container Platform または OKD をデプロイする
 
@@ -66,9 +66,9 @@ Resource Manager テンプレートを使用してデプロイするには、パ
 - OpenShift クラスターの詳細 - ホスト ファイル (deployOpenShift.sh) 経由で変更済み
 - RHEL イメージ参照 (azuredeploy.json 内の変数)
 
-Azure CLI を使用したデプロイの手順については、[OpenShift Container Platform](./openshift-container-platform.md) に関するセクションまたは [OKD](./openshift-okd.md) に関するセクションの該当セクションに従ってください。
+Azure CLI を使用したデプロイの手順については、[OpenShift Container Platform](./openshift-container-platform-3x.md) に関するセクションまたは [OKD](./openshift-okd.md) に関するセクションの該当セクションに従ってください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [デプロイ後タスク](./openshift-post-deployment.md)
-- [Azure での OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)
+- [デプロイ後タスク](./openshift-container-platform-3x-post-deployment.md)
+- [Azure での OpenShift デプロイのトラブルシューティング](./openshift-container-platform-3x-troubleshooting.md)

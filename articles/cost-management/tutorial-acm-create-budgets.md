@@ -5,23 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 59ae3b587751bd4af2c9e5ab0abefb8a5c3bf8e6
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 8d8f796fa7db9cab5bcac88a293dd1b98707a571
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843936"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025764"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
 Cost Management での予算は、組織のアカウンタビリティを計画および推進するのに役立ちます。 予算では、特定の期間中に消費またはサブスクライブする Azure サービスを考慮することができます。 コストを事前に管理するために支出を他のユーザーに通知したり、支出の時間変化を監視したりするのに役立ちます。 作成した予算のしきい値を超えた場合は、通知のみがトリガーされます。 どのリソースも影響を受けることはなく、消費が停止されることはありません。 予算を使用して、コストを分析するときに支出を比較および追跡できます。
 
-毎月の予算は、4 時間ごとに支出に対して評価されます。 ただし、使用されたリソースについてのデータを利用できるのは 8 時間以内です。 予算のしきい値が満たされたとき、通常、12 時間以内に電子メールの通知が届きます。 
+コストと使用状況データは通常 12 時間から 16 時間以内に利用できるようになり、予算は 4 時間ごとにこれらのコストに対して評価されます。 通常、メール通知は 12 から 16 時間以内に受け取ります。
 
 将来の有効期限日を選択した場合、期間 (月、四半期、または年) の最後に、予算は自動的に同じ予算金額にリセットされます。 同じ予算金額でリセットされるため、予算を計上される通貨金額が将来の期間では異なる場合は、別の予算を作成する必要があります。
 
@@ -78,7 +78,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ![月額コスト データを使用した予算の作成を示す例 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-予算金額を構成したら、 **[次へ]** をクリックして予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、8 時間以内に電子メールの通知が届きます。 通知の詳細については、[コスト アラートの使用](cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。 以下の例では、予算の 90% に達すると、メール アラートが生成されます。
+予算金額を構成したら、 **[次へ]** をクリックして予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、20 時間以内に電子メールの通知が届きます。 通知の詳細については、[コスト アラートの使用](cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。 以下の例では、予算の 90% に達すると、メール アラートが生成されます。
 
 ![アラート条件を示す例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 

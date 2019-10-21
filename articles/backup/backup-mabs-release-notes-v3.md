@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/22/2018
 ms.author: dacurwin
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: 5ca3305dd96ad9f14f028c88520368ae5a49016c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: e9c7d5f79f2af77554122b607aeae470a1145954
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019012"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827286"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup Server のリリース ノート
 この記事では、Microsoft Azure Backup Server (MABS) V3 の既知の問題と回避策を提供します。
@@ -62,7 +62,7 @@ ms.locfileid: "69019012"
 1.  [バックアップ](https://docs.microsoft.com/sql/relational-databases/backup-restore/create-a-full-database-backup-sql-server?view=sql-server-2017#SSMSProcedure) SQL データベースと MABS V2 のアンインストール (アンインストール中に、保護されたデータを保持すると選択)。
 2.  SQL 2017 (Enterprise) にアップグレードし、アップグレードの一環としてレポートをアンインストールします。
 3. SQL Server Reporting Services (SSRS)[をインストール](https://docs.microsoft.com/sql/reporting-services/install-windows/install-reporting-services?view=sql-server-2017#install-your-report-server)。
-4.  SQL Server Management Studio (SSMS) を[インストール](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms#download-ssms-182)。
+4.  SQL Server Management Studio (SSMS) を[インストール](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 5.  [SQL 2017 を使用した SSRS 構成](https://docs.microsoft.com/azure/backup/backup-azure-microsoft-azure-backup#upgrade-mabs)に記載されているパラメーターを使用してレポートを構成します。
 6.  MABS V3を [インストール](backup-azure-microsoft-azure-backup.md)。
 7. [ここ](https://docs.microsoft.com/previous-versions/system-center/data-protection-manager-2010/ff634215(v=technet.10))に記されている通り、SSMS と実行 DPM 同期ツールを使用して SQL を[復元](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms?view=sql-server-2017)します。

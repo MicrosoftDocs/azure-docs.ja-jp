@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7286bf1fd51883587aa41dc69d5dae0a3e6fb824
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 158bb3b1329d2ad2cbd55ecf44f980966e2546e2
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622410"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065186"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Google アカウントでのサインアップおよびサインインを設定する
 
 ## <a name="create-a-google-application"></a>Google アプリケーションを作成する
 
-Azure Active Directory (Azure AD) B2C で [ID プロバイダー](active-directory-b2c-reference-oauth-code.md)として Google アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ Google アカウントを持っていない場合は、[https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) でサインアップできます。
+Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](active-directory-b2c-reference-oauth-code.md)として Google アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ Google アカウントを持っていない場合は、[https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) でサインアップできます。
 
 1. Google アカウントの資格情報で [Google Developers Console](https://console.developers.google.com/) にサインインします。
 1. ページの左上隅にあるプロジェクトの一覧を選択し、 **[新しいプロジェクト]** を選択します。

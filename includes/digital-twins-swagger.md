@@ -2,18 +2,19 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: digital-twins
-author: kingdomofends
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 08/12/2019
-ms.author: v-adgera
+ms.date: 10/02/2019
 ms.custom: include file
-ms.openlocfilehash: 5c53f4408fb9e2345cf9efabffc39e93e9ec300b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: bfcebacf6d8240f067cecc7828c299504b49b44b
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012192"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949141"
 ---
 > [!TIP]
 > API の機能を見ることができる Swagger のプレビューが提供されています。

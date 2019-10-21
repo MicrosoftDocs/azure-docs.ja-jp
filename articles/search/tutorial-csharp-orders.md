@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.author: v-pettur
 author: PeterTurcan
 ms.date: 06/21/2019
-ms.openlocfilehash: 32e253b4e131d753ab6937d0aa2a49bda471e091
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 684ce33e5ecf587aa2030a817680f2d405225117
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466546"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327661"
 ---
 # <a name="c-tutorial-order-the-results---azure-search"></a>C# のチュートリアル: 結果の並べ替え - Azure Search
 
@@ -320,7 +320,7 @@ ms.locfileid: "67466546"
 
     ![宿泊料金範囲の表示](./media/tutorial-csharp-create-first-app/azure-search-orders-rooms.png)
 
-検索パラメーターの **OrderBy** プロパティは、客室が既に料金順で並べ替えられている (そうでない) 場合でも、最安の宿泊料金を提供するための **Rooms.BaseRate** のようなエントリを受け付けません。 サンプル データ セットのホテルを宿泊料金で並べ替えて表示するためには、ホーム コントローラーで結果を並べ替えて、これらの結果を希望の順序でビューに送信する必要があります。
+検索パラメーターの **OrderBy** プロパティは、客室が既に料金順で並べ替えられている場合でも、最安の宿泊料金を提供するための **Rooms.BaseRate** のようなエントリを受け付けません。 このケースでは、客室が料金で並べ替えられることはありません。 サンプル データ セットのホテルを宿泊料金で並べ替えて表示するためには、ホーム コントローラーで結果を並べ替えて、これらの結果を希望の順序でビューに送信する必要があります。
 
 ## <a name="order-results-based-on-multiple-values"></a>複数の値に基づいて結果を並べ替える
 

@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efed9e35aed729c9efa39b0772b681d8c53ba7b8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 72fab8a51f1ea1b9c7bda14d825dad538f96cde6
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65540660"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374059"
 ---
 # <a name="application-types-in-v10"></a>v1.0 でのアプリケーションの種類
 
@@ -82,4 +82,4 @@ Azure AD に認証を委託するすべてのアプリケーションを、デ�
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure AD での他の[認証の基礎](authentication-scenarios.md)について詳細を参照する。
+- Azure AD での他の[認証の基礎](v1-authentication-scenarios.md)について詳細を参照する。

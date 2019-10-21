@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 09/23/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2129405dfdc2585d29c35a0982c9823a4cd57f71
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5dfe5b886ff389cf2d0f01d402990929c0ef5628
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359999"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033980"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Azure Active Directory のグループのライセンスに関する問題を特定して解決する
 
@@ -30,25 +30,25 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 グループベースのライセンスを使用している場合も同じエラーが発生する可能性がありますが、この場合のエラーは、Azure AD サービスがライセンスを割り当てているときにバック グラウンドで発生します。 このため、エラーを即座に伝達することはできません。 その代わりに、エラーはユーザー オブジェクトに記録され、管理ポータル経由で報告されます。 ユーザーへのライセンス付与という元の操作が無効になることはありませんが、後で調査して解決できるようにエラー状態にあることが記録されます。
 
-## <a name="how-to-find-license-assignment-errors"></a>ライセンスの割り当てエラーを見つける方法
-**ライセンスの割り当てエラーを見つけるには**
+## <a name="find-license-assignment-errors"></a>ライセンスの割り当てエラーを見つける
 
-1. 特定のグループ内でエラー状態にあるユーザーを見つけるには、そのグループのウィンドウを開きます。 エラー状態にあるユーザーが存在する場合は、 **[ライセンス]** の下に通知が表示されます。
+### <a name="to-find-users-in-an-error-state-in-a-group"></a>グループ内でエラー状態にあるユーザーを見つけるには
+
+1. グループの概要ページを開き、 **[ライセンス]** を選択します。 エラー状態にあるユーザーが存在する場合は、通知が表示されます。
 
    ![グループおよびエラーの通知メッセージ](./media/licensing-groups-resolve-problems/group-error-notification.png)
 
-2. その通知を選択すると、影響を受けているすべてのユーザーの一覧が開きます。 個別に各ユーザーを選択すると、詳細を表示できます。
+1. その通知を選択すると、影響を受けているすべてのユーザーの一覧が開きます。 個別に各ユーザーを選択すると、詳細を表示できます。
 
    ![グループ ライセンス エラー状態のユーザーの一覧](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-3. 少なくとも 1 つのエラーを含むすべてのグループを見つけるには、 **[Azure Active Directory]** ブレードで、 **[ライセンス]** 、 **[概要]** の順に選択します。 注意が必要なグループの場合は、情報ボックスが表示されます。
+1. 少なくとも 1 つのエラーを含むすべてのグループを見つけるには、 **[Azure Active Directory]** ブレードで、 **[ライセンス]** 、 **[概要]** の順に選択します。 注意が必要なグループの場合は、情報ボックスが表示されます。
 
    ![概要、およびエラー状態にあるグループに関する情報](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
-4. エラーのあるグループの一覧を表示するには、ボックスをオンにします。 各グループを選択すると、詳細を表示できます。
+1. エラーのあるグループの一覧を表示するには、ボックスをオンにします。 各グループを選択すると、詳細を表示できます。
 
    ![概要、およびエラーのあるグループの一覧](./media/licensing-groups-resolve-problems/list-of-groups-with-errors.png)
-
 
 次のセクションでは、考えられる問題とその解決方法を個別に説明します。
 
@@ -68,8 +68,8 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 
 各データ メンバー フィールドが JSON オブジェクトにマップされ、フィールド名がオブジェクトの "key" 部分にマップされ、"value" 部分がオブジェクトの値の部分に再帰的にマップされます。 すべてのプランを有効にした Office 365 Enterprise *E1* のライセンスがユーザーに直接割り当てられているとします。 このユーザーが、Office 365 Enterprise *E3* 製品を割り当てられたグループに追加された場合、 この E3 製品には E1 に含まれているプランと重複できないサービス プランが含まれているため、グループのライセンス割り当ては、"競合するサービス プラン" エラーで失敗します。 この例では、競合しているサービス プランは次のとおりです。
 
--   SharePoint Online (プラン 2) と SharePoint Online (プラン 1) の競合
--   Exchange Online (プラン 2) と Exchange Online (プラン 1) の競合
+- SharePoint Online (プラン 2) と SharePoint Online (プラン 1) の競合
+- Exchange Online (プラン 2) と Exchange Online (プラン 1) の競合
 
 この競合を解決するには、2 つのプランを無効にする必要があります。 ユーザーに直接割り当てられている E1 ライセンスを無効にできます。 または、グループのライセンス割り当てを変更して、E3 ライセンスのプランを無効にする必要があります。 E3 ライセンスのコンテキストで冗長である場合は、E1 ライセンスをユーザーから削除することもできます。
 
@@ -117,7 +117,7 @@ Exchange Online を使用する場合は、テナント内の一部のユーザ�
 
 ユーザーのライセンス割り当てを更新すると、プロキシ アドレスの計算が開始され、それによってユーザーの属性が変更されることがあります。 変更の正確な理由を理解し、問題を解決するには、[Azure AD で proxyAddresses 属性がどのように設定されるか](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad)についての、この記事を参照してください。
 
-## <a name="what-happens-when-theres-more-than-one-product-license-on-a-group"></a>1 つのグループに複数の製品ライセンスがある場合
+## <a name="more-than-one-product-license-assigned-to-a-group"></a>1 つのグループに割り当てられた複数の製品ライセンス
 
 1 つのグループに複数の製品ライセンスを割り当てることができます。 たとえば、Office 365 Enterprise E3 と Enterprise Mobility + Security をグループに割り当てて、ユーザーによる製品内の全サービスの使用を簡単に有効にできます。
 
@@ -125,48 +125,44 @@ Exchange Online を使用する場合は、テナント内の一部のユーザ�
 
 割り当てられなかったユーザーと、どの製品がその問題の影響を受けているかを確認できます。
 
-## <a name="what-happens-when-a-group-with-licenses-assigned-is-deleted"></a>ライセンスが割り当てられているグループを削除するとどうなりますか。
+## <a name="when-a-licensed-group-is-deleted"></a>ライセンス グループが削除された場合
 
 グループを削除する前に、グループに割り当てられているすべてのライセンスを削除する必要があります。 ただし、グループ内のすべてのユーザーからライセンスを削除する処理には時間がかかることがあります。 グループからライセンスの割り当てを削除するときに、ユーザーに依存ライセンスが割り当てられている場合、またはライセンスの削除を禁止するプロキシ アドレスの競合の問題がある場合にエラーが発生する可能性があります。 グループの削除のために削除処理中のライセンスに依存しているライセンスをユーザーが持っている場合、そのユーザーへのライセンスの割り当ては継承から直接に変換されます。
 
 たとえば、Skype for Business サービス プランが有効な Office 365 E3/E5 が割り当てられたグループがあるとします。 また、グループの一部のメンバーに電話会議ライセンスが直接割り当てられているとします。 このグループが削除されると、グループベースのライセンスではすべてのユーザーから Office 365 E3/E5 の削除が試行されます。 電話会議は Skype for Business に依存しているため、電話会議が割り当てられているユーザーの場合、グループベースのライセンスによって Office 365 E3/E5 ライセンスが直接のライセンス割り当てに変換されます。
 
-## <a name="how-do-you-manage-licenses-for-products-with-prerequisites"></a>前提条件のある製品のライセンスを管理する方法
+## <a name="manage-licenses-for-products-with-prerequisites"></a>前提条件のある製品のライセンスを管理する
 
 Microsoft Online 製品の中には "*アドオン*" であるものがあります。 ユーザーやグループにライセンスを割り当てるには、前提条件のサービス プランをユーザーまたはグループに対して有効にする必要があります。 グループごとにライセンスを付与する場合は、前提条件とアドオンのサービス プランが同じグループに存在する必要があります。 この措置によって、そのグループに追加されたユーザーに、完全に動作する製品が与えられます。 次の例について考察してみましょう。
 
 Microsoft Workplace Analytics はアドオン製品です。 同じ名前の単一サービス プランが含まれています。 このサービス プランは、次の前提条件のいずれかが割り当てられている場合にのみ、ユーザーまたはグループに割り当てることができます。
-- Exchange Online (プラン 1) 
+
+- Exchange Online (プラン 1)
 - Exchange Online (プラン 2)
 
-この製品だけをグループに割り当てようとすると、ポータルからエラーが返されます。 エラー通知をクリックすると、次の詳細が表示されます。
+この製品だけをグループに割り当てようとすると、ポータルから通知メッセージが返されます。 項目の詳細を選択すると、次のエラー メッセージが表示されます。
 
-![グループ、前提条件がない](./media/licensing-groups-resolve-problems/group-prerequisite-required.png)
-
-詳細を選択すると、次のエラー メッセージが表示されます。
-
->ライセンス操作に失敗しました。 Make sure that the group has necessary services before adding or removing a dependent service. **サービス Microsoft Workplace Analytics では、Exchange Online (プラン 2) も有効にする必要があります。**
+  "ライセンス操作に失敗しました。 Make sure that the group has necessary services before adding or removing a dependent service. **サービス Microsoft Workplace Analytics では、Exchange Online (プラン 2) も有効にする必要があります。** "
 
 このアドオン ライセンスをグループに割り当てるには、そのグループに前提条件のサービス プランも含まれている必要があります。 そこで、たとえば、完全版 Office 365 E3 製品が既に含まれている既存のグループを更新してから、アドオン製品を追加します。
 
-必要最小限の製品だけを含むスタンドアロン グループを作成することで、アドオンが機能する場合もあります。 この方法は、選択されたユーザーに、アドオン製品のライセンスを付与するときにのみご利用いただけます。 この例では、次の製品を同じグループに割り当てました。
+必要最小限の製品だけを含むスタンドアロン グループを作成することで、アドオンが機能する場合もあります。 これは、選択されたユーザーだけに、アドオン製品のライセンスを付与するときにご利用いただけます。 前の例に基づいて、次の製品を同じグループに割り当てます。
+
 - Office 365 Enterprise E3 (Exchange Online (プラン 2) サービス プランのみが有効)
 - Microsoft Workplace Analytics
-
-![グループ、前提条件がある](./media/licensing-groups-resolve-problems/group-addon-with-prerequisite.png)
 
 今後は、このグループに追加されたユーザーすべてが、E3 製品のライセンスと Workplace Analytics 製品のライセンスを 1 つずつ使用できます。 また、そのユーザーは、完全版 E3 製品を提供する別のグループに属することもできますが、使用できるその製品のライセンスは引き続き 1 つだけです。
 
 > [!TIP]
 > 前提条件のサービス プランごとに複数のグループを作成できます。 たとえば、Office 365 Enterprise E1 と Office 365 Enterprise E3 の両方をユーザーに使用する場合、2 つのグループを作成して Microsoft Workplace Analytics にライセンスを付与できます。1 つは前提条件として E1 を利用するグループ、もう 1 つは E3 を利用するグループです。 これにより、追加のライセンスを使用せずに、E1 ユーザーと E3 ユーザーにアドオンを配布できます。
 
-## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>グループでライセンスの処理を強制してエラーを解決する方法
+## <a name="force-group-license-processing-to-resolve-errors"></a>グループでライセンスの処理を強制してエラーを解決する
 
 エラーを解決した手順によっては、グループの処理を手動でトリガーして、ユーザーの状態を更新しなければならない場合があります。
 
 たとえば、直接的に割り当てられたライセンスをユーザーから削除することで、一部のライセンスを解放した場合は、前に失敗したグループの処理を手動でトリガーして、すべてのユーザー メンバーに対して、完全にライセンスを付与する必要があります。 グループを処理するには、グループ ウィンドウに移動して **[ライセンス]** を開き、ツール バーの **[再処理]** ボタンを選択します。
 
-## <a name="how-do-you-force-license-processing-on-a-user-to-resolve-errors"></a>ユーザーにライセンスの処理を強制してエラーを解決する方法
+## <a name="force-user-license-processing-to-resolve-errors"></a>ユーザーにライセンスの処理を強制してエラーを解決する
 
 エラーを解決した手順によっては、ユーザーの処理を手動でトリガーして、ユーザーの状態を更新しなければならない場合があります。
 

@@ -1,6 +1,6 @@
 ---
 title: ML パイプラインとは
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: この記事では、Azure Machine Learning SDK for Python を使用して構築できる機械学習パイプラインと、パイプラインを使用する利点について説明します。 機械学習 (ML) パイプラインは、データ サイエンティストが機械学習ワークフローを構築、最適化、管理するために使用します。
 services: machine-learning
 ms.service: machine-learning
@@ -11,16 +11,16 @@ ms.author: sanpil
 author: sanpil
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: c40fd4f776e0372d7368d182d30cfb2e01a4b0e2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 07efde7c3664ba1866e59f23c31b9c385ed9c366
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858820"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035485"
 ---
-# <a name="what-are-ml-pipelines-in-azure-machine-learning-service"></a>Azure Machine Learning service の ML パイプラインとは
+# <a name="what-are-ml-pipelines-in-azure-machine-learning"></a>Azure Machine Learning の ML パイプラインとは
 
-Azure Machine Learning service を使用して構築および管理できる機械学習パイプラインについて説明します。 
+Azure Machine Learning を使用して構築し、管理できる機械学習パイプラインについて説明します。 
 
 機械学習 (ML) パイプラインを使用すると、データ サイエンティスト、データ エンジニア、および IT プロフェッショナルは、以下に含まれるステップで共同作業を行うことができます。
 + データ準備 (正規化や変換など)
@@ -30,7 +30,7 @@ Azure Machine Learning service を使用して構築および管理できる機�
 
 [最初のパイプラインを作成する](how-to-create-your-first-pipeline.md)方法を学習します。
 
-![Azure Machine Learning サービスでの機械学習パイプライン](./media/concept-ml-pipelines/pipeline-flow.png)
+![Azure Machine Learning での機械学習パイプライン](./media/concept-ml-pipelines/pipeline-flow.png)
 
 <a name="compare"></a>
 ### <a name="which-azure-pipeline-technology-should-i-use"></a>どの Azure パイプライン テクノロジを使用すべきか
@@ -86,7 +86,7 @@ Azure Machine Learning には、[azureml-pipelines-core](https://docs.microsoft.
 
 + [最初のパイプラインを作成する](how-to-create-your-first-pipeline.md)方法を学習します。
 
-+ [大量のデータに対してバッチ予測を実行する](how-to-run-batch-predictions.md)方法を学習します。
++ [大量のデータに対してバッチ予測を実行する](tutorial-pipeline-batch-scoring-classification.md)方法を学習します。
 
 + [パイプラインの SDK リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)を参照します。
 

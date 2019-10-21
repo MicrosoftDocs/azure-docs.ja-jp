@@ -8,18 +8,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/14/2019
 ms.author: danlep
-ms.openlocfilehash: 3e65718a51f80d9c90a5579a2b1dd5be3bd9239a
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: c4c09a78f9bad1af1f7a904914ad6ad066ec0e40
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543106"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718438"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Azure コンテナー レジストリからイメージを自動的に消去する
 
 開発ワークフローの一部として Azure コンテナー レジストリを使用すると、レジストリは短時間で不要なイメージやその他の成果物によりすぐにいっぱいになる可能性があります。 特定の期間よりも前のタグをすべて削除することも、指定した名前フィルターに一致したタグをすべて削除することもできます。 複数の成果物をすばやく削除できるように、この記事では、オンデマンドまたは[スケジュールされた](container-registry-tasks-scheduled.md) ACR タスクとして実行できる `acr purge` コマンドを紹介します。 
 
-`acr purge` コマンドは、現在、Microsoft Container Registry から入手できるパブリック コンテナー イメージに配布されています。
+`acr purge` コマンドは現在、GitHub の [acr-cli](https://github.com/Azure/acr-cli) リポジトリのソース コードから作成された、パブリック コンテナー イメージ (`mcr.microsoft.com/acr/acr-cli:0.1`) で配布されています。
 
 Azure Cloud Shell または Azure CLI のローカル インストールを使用して、この記事の ACR タスクの例を実行できます。 それをローカルで使用する場合は、バージョン 2.0.69 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。 
 

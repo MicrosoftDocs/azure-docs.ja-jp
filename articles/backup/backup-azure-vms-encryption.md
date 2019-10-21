@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: dacurwin
-ms.openlocfilehash: ac101c6079eee908a6499f5e6ed8cc3aadffb75a
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 5968a675c3f0f9a2c6426ed73d06e2d116a8ff3b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210305"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827385"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
 
@@ -55,7 +55,7 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 
 開始する前に、以下を行います。
 
-1. ADE が有効にされた 1 つまたは複数の [Windows](../security/azure-security-disk-encryption-windows.md) または [Linux](../security/azure-security-disk-encryption-linux.md) の VM があることを確認します。
+1. ADE が有効にされた 1 つまたは複数の [Windows](../security/azure-security-disk-encryption-windows.md) または [Linux](../virtual-machines/linux/disk-encryption-overview.md) の VM があることを確認します。
 2. Azure VM バックアップの[サポート マトリックスを確認](backup-support-matrix-iaas.md)します。
 3. Recovery Services のバックアップ コンテナーをまだお持ちでない場合は、[作成](backup-azure-arm-vms-prepare.md#create-a-vault)します。
 4. 既にバックアップが有効になっている VM に対して暗号化を有効にしている場合、中断せずにバックアップを継続できるように、Key Vault へのアクセス許可を Backup に提供する必要があるだけです。 これらのアクセス許可に関する[詳細](#provide-permissions)を参照してください。

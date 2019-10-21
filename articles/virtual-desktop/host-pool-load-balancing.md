@@ -1,22 +1,22 @@
 ---
-title: Windows Virtual Desktop プレビューのホスト プールの負荷分散方法 - Azure
-description: Windows Virtual Desktop プレビュー環境でのホスト プールの負荷分散方法。
+title: Windows Virtual Desktop のホスト プールの負荷分散方法 - Azure
+description: Windows Virtual Desktop 環境でのホスト プールの負荷分散方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 8b18224339654c067d8ab9b543fa49a9c7d55ddd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c2e50593c31951b63601e75c51648a95e54c6959
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60870525"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676572"
 ---
 # <a name="host-pool-load-balancing-methods"></a>ホスト プールの負荷分散方法
 
-Windows Virtual Desktop プレビューでは 2 つの負荷分散方法がサポートされます。 それぞれの方法では、ユーザーがホスト プール内のリソースに接続するときにそのユーザーのセッションをホストするセッション ホストが決定されます。
+Windows Virtual Desktop では 2 つの負荷分散方法がサポートされます。 それぞれの方法では、ユーザーがホスト プール内のリソースに接続するときにそのユーザーのセッションをホストするセッション ホストが決定されます。
 
 Windows Virtual Desktop では以下の負荷分散方法を使用できます。
 

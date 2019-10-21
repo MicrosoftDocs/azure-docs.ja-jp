@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/18/2019
-ms.openlocfilehash: 8fd3aedd2e371e511730fd98751ae3214545c489
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: c1422b6411fc60383cffa6c3082108bb940c4343
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034579"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996211"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET Standard API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -41,6 +41,9 @@ ms.locfileid: "70034579"
 
 ## <a name="release-notes-for-100-series"></a>1\.0.0 シリーズのリリース ノート
 1.0.0 シリーズは [Microsoft.Azure.DocumentDB.Core](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/) に依存します。
+
+### <a name="a-name105105"></a><a name="1.0.5"/>1.0.5
+* Rest Executor を使用して Cosmos DB Table API と通信するための新しい構成が TableClientConfiguration に導入されました
 
 ### <a name="a-name105-preview105-preview"></a><a name="1.0.5-preview"/>1.0.5-preview
 * バグの修正
@@ -92,6 +95,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 ### <a name="100-series"></a>1.0.0 シリーズ
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.0.5](#1.0.5) |2019 年 9 月 13 日 |--- |
 | [1.0.5-preview](#1.0.5-preview) |2019 年 8 月 20 日 |--- |
 | [1.0.4](#1.0.4) |2019 年 8 月 12 日 |--- |
 | [1.0.4-preview](#1.0.4-preview) |2019 年 7 月 26 日 |--- |

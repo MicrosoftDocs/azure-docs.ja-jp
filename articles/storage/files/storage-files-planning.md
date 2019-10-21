@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 30842c787e2009b4919fef916f3c5e1f73a79bf2
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 76637c566d85816b3af6d0ed457031e7d4cd4068
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918813"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327665"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -95,7 +95,9 @@ Premium ファイル共有を作成する方法については、[Azure Premium 
 現在、標準ファイル共有と Premium ファイル共有の間で直接変換することはできません。 どちらかの層に切り替える場合は、その層に新しいファイル共有を作成し、作成した新しい共有に元の共有から手動でデータをコピーする必要があります。 これは、Azure Files でサポートされているいずれかのコピー ツール (Robocopy、AzCopy など) を使用して行うことができます。
 
 > [!IMPORTANT]
-> Premium ファイル共有は LRS でのみ使用できますが、ストレージ アカウントを提供するほとんどのリージョンで使用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。
+> Premium ファイル共有は、ストレージ アカウントを提供するほとんどのリージョンにおいて、LRS で利用できます。また、一部のリージョンでは ZRS で利用できます。 ご自分のリージョンで現在 Premium ファイル共有を使用できるかどうかを見つけるには、Azure の [[リージョン別の利用可能な製品]](https://azure.microsoft.com/global-infrastructure/services/?products=storage) ページを参照してください。 ZRS 対応のリージョンを見つけるには、「[サポート範囲とリージョンの可用性](../common/storage-redundancy-zrs.md#support-coverage-and-regional-availability)」を参照してください。
+>
+> この[アンケート](https://aka.ms/pfsfeedback)にご記入ください。新しいリージョンと機能に優先順位を付けるために役立ちます。
 
 #### <a name="provisioned-shares"></a>プロビジョニングされた共有
 
@@ -157,7 +159,7 @@ Premium ファイル共有は、最大 3 倍の IOPS をバーストできます
 
 Azure Files 標準の共有でサポートされているデータ冗長性オプションは、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、geo ゾーン冗長ストレージ (GZRS) (プレビュー) の 4 種類です。
 
-Azure Files の Premium 共有でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。
+Azure Files Premium ファイル共有は LRS と ZRS の両方に対応していますが、ZRS は現在のところ、一部のリージョンで利用できます。
 
 次のセクションで、さまざまな冗長性オプションの違いについて説明します。
 
@@ -211,9 +213,11 @@ Standard ファイル共有は、すべてのリージョンで 5 TiB まで利�
 |オーストラリア東部 |LRS     |いいえ    |はい|
 |オーストラリア南東部|LRS     |いいえ    |まだ、いいえ|
 |インド中部  |LRS     |いいえ    |まだ、いいえ|
+|東アジア      |LRS     |いいえ    |まだ、いいえ|
 |East US        |LRS     |いいえ    |まだ、いいえ|
 |フランス中部 |LRS、ZRS|いいえ    |LRS - はい、ZRS - まだ、いいえ|
 |フランス南部   |LRS     |いいえ    |はい|
+|北ヨーロッパ   |LRS     |いいえ    |まだ、いいえ|
 |インド南部    |LRS     |いいえ    |まだ、いいえ|
 |東南アジア |LRS、ZRS|いいえ    |はい|
 |米国中西部|LRS     |いいえ    |まだ、いいえ|

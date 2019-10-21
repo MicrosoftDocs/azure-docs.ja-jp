@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: c692b1c5b77b95e5487a847b46473906135c3d86
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: aeb00b84ac254232e0d68fd9631fb539a928e67d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261151"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931899"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>VMware VM と物理サーバーのためのモビリティ サービスについて
 
@@ -119,7 +119,7 @@ ms.locfileid: "68261151"
 セットアップ ログ | %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log の下。
 /Role | 必須のインストール パラメーターです。 モビリティ サービス (MS) またはマスター ターゲット (MT) をインストールするかどうかを指定します。
 /InstallLocation| 省略可能なパラメーター。 モビリティ サービスのインストール場所 (任意のフォルダー) を指定します。
-/Platform | 必須。 モビリティ サービスをインストールするプラットフォームを指定します。 VMware VM/物理サーバーの場合は **VMware**、Azure VM の場合は **Azure**。
+/Platform | 必須。 モビリティ サービスをインストールするプラットフォームを指定します。 VMware VM/物理サーバーの場合は **VMware**、Azure VM の場合は **Azure**。<br/><br/> Azure VM を物理マシンとして扱う場合は、**VMware** を指定します。
 /Silent| 省略可能。 インストーラーをサイレント モードで実行するかどうかを指定します。
 
 #### <a name="registration-settings"></a>登録設定

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 9f7957fb0e6e888367c1f8ded1abfb3828697cbb
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087095"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168952"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Azure VM でリモート デスクトップ サービスが起動しない
 
@@ -141,14 +141,14 @@ VM に接続しようとすると、次のシナリオが発生します。
    procmon /Terminate 
    ```
 
-5. \ **c:\temp\ProcMonTrace.PML** というファイルを収集します。
+5. **c:\temp\ProcMonTrace.PML**: というファイルを収集します。
 
     1. [データ ディスクを VM に接続します](../windows/attach-managed-disk-portal.md
 )。
     2. 新しいドライブにファイルをコピーできるシリアル コンソールを使用します。 たとえば、「 `copy C:\temp\ProcMonTrace.PML F:\` 」のように入力します。 このコマンドの F は、接続されたデータ ディスクのドライブ文字です。
     3. データ ドライブを切断してから、プロセス モニターがインストールされている作業用 VM に接続します。
 
-6. プロセス モニター (作業用 VM) を使用して、**ProcMonTrace.PML** を開きます。 次に、以下のスクリーンショットに示すように、 **Result is ACCESS DENIED** でフィルター処理します。
+6. プロセス モニター (作業用 VM) を使用して、**ProcMonTrace.PML** を開きます。 次に、以下のスクリーンショットに示すように、**Result is ACCESS DENIED** でフィルター処理します。
 
     ![プロセス モニターでの結果によるフィルター処理](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 

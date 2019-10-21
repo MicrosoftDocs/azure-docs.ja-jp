@@ -1,7 +1,7 @@
 ---
 title: Jupyter ノートブックの例
-titleSuffix: Azure Machine Learning service
-description: サンプルの Jupyter Notebook を検索して使用し、Azure Machine Learning service Python SDK を探索します。
+titleSuffix: Azure Machine Learning
+description: サンプルの Jupyter Notebook を検索して使用し、Azure Machine Learning Python SDK を探索します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 07/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14962b936d1c09a6c50daa7bec460ce11dbefe5d
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: dd93e4e621a4fd474283f788e2cf67b305a1be3d
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860383"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997057"
 ---
-# <a name="explore-azure-machine-learning-service-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning service を探索する
+# <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Jupyter ノートブックを使用して Azure Machine Learning を探索する
 
 [サンプルの Azure Machine Learning Notebooks のリポジトリ](https://github.com/azure/machinelearningnotebooks)には、最新の Azure Machine Learning Python SDK のサンプルが含まれています。 これらの Juypter Notebook は、SDK の探索を支援し、独自の機械学習プロジェクトのモデルとして機能するように設計されています。
 
@@ -55,7 +55,7 @@ ms.locfileid: "70860383"
 
 ## <a name="next-steps"></a>次の手順
 
-[サンプル ノートブック](https://aka.ms/aml-notebooks)を探索して、Azure Machine Learning service で実行できることを把握します。または、次のチュートリアルをお試しください。
+[サンプル ノートブック](https://aka.ms/aml-notebooks)を探索して、Azure Machine Learning で実行できることを把握します。または、次のチュートリアルをお試しください。
 
 - [MNIST を使用した画像分類モデルのトレーニングとデプロイ](tutorial-train-models-with-aml.md)
 

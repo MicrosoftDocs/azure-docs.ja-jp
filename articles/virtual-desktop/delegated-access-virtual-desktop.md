@@ -1,22 +1,22 @@
 ---
-title: Windows Virtual Desktop プレビューにおける委任されたアクセス - Azure
-description: Windows Virtual Desktop プレビューのデプロイで管理機能を委任する方法 (例を含む)。
+title: Windows Virtual Desktop における委任されたアクセス - Azure
+description: Windows Virtual Desktop のデプロイで管理機能を委任する方法 (例を含む)。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 41cf5f8bcc69e181350a63d215fb0d78d43dcfdf
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: e8d1ba00043f43f626043d78ce0ab8953a0b3fbe
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67272820"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679561"
 ---
-# <a name="delegated-access-in-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビューにおける委任されたアクセス
+# <a name="delegated-access-in-windows-virtual-desktop"></a>Windows Virtual Desktop における委任されたアクセス
 
-Windows Virtual Desktop プレビューには委任されたアクセス モデルが用意され、これにより特定のユーザーにロールを割り当てて、それらのユーザーが持つことのできるアクセス数を定義できます。 ロールの割り当てには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つのコンポーネントがあります。 Windows Virtual Desktop の委任されたアクセス モデルは、Azure RBAC モデルに基づいています。 特定のロールの割り当てとそのコンポーネントの詳細については、「[Azure ロールベースのアクセス制御の概要](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)」を参照してください。
+Windows Virtual Desktop には委任されたアクセス モデルが用意され、これにより特定のユーザーにロールを割り当てることで、それらのユーザーが持つことのできるアクセス数を定義できます。 ロールの割り当てには、セキュリティ プリンシパル、ロールの定義、スコープの 3 つのコンポーネントがあります。 Windows Virtual Desktop の委任されたアクセス モデルは、Azure RBAC モデルに基づいています。 特定のロールの割り当てとそのコンポーネントの詳細については、「[Azure ロールベースのアクセス制御の概要](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)」を参照してください。
 
 Windows Virtual Desktop の委任されたアクセスでは、ロール割り当ての要素ごとに次の値がサポートされています。
 
@@ -66,4 +66,4 @@ Windows Virtual Desktop の委任されたアクセスには、ユーザーお�
 
 各ロールで使用できる PowerShell コマンドレットのより詳細な一覧については、「[PowerShell リファレンス](/powershell/windows-virtual-desktop/overview)」を参照してください。
 
-Windows Virtual Desktop 環境のセットアップ ガイドについては、「[Windows Virtual Desktop プレビュー環境](environment-setup.md)」を参照してください。
+Windows Virtual Desktop 環境を設定する方法のガイドについては、「[Windows Virtual Desktop 環境](environment-setup.md)」を参照してください。

@@ -2,25 +2,18 @@
 title: '複数の VPN Gateway サイト間接続を VNet に追加するAzure portal: Resource Manager| Microsoft Docs'
 description: マルチサイトのサイト間接続を、既存の接続がある VPN Gateway に追加する
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: f3e8b165-f20a-42ab-afbb-bf60974bb4b1
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4b9f007e00d0912687b723bd4f7e747da893948d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2c32fd35bbc6de1f010013c40a06af69052d3f5
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60760462"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244619"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
 
@@ -32,7 +25,7 @@ ms.locfileid: "60760462"
 
 この記事では、Azure Portal を使用して、既存の接続がある VPN ゲートウェイにサイト間 (S2S) 接続を追加する方法について説明します。 この種類の構成は、一般に "マルチサイト" 構成と呼ばれます。 既にサイト間接続、ポイント対サイト接続、またはVNet 間接続のある VNet にサイト間接続を追加できます。 接続を追加する際には、制限があります。 構成を始める前に、この記事の「[開始する前に](#before)」セクションで内容をご確認ください。 
 
-この記事は、RouteBased VPN ゲートウェイが存在する Resource Manager VNet に適用されます。 次の手順は、ExpressRoute/サイト間の共存接続の構成には適用されません。 共存接続の詳細については、「[クラシック デプロイ モデルにおいて共存する ExpressRoute 接続とサイト間接続を構成する](../expressroute/expressroute-howto-coexist-resource-manager.md)」を参照してください。
+この記事は、RouteBased VPN ゲートウェイが存在する Resource Manager VNet に適用されます。 次の手順は、新しい ExpressRoute/サイト間の共存接続の構成には適用されません。 ただし、既存の共存構成に新しい VPN 接続を追加するだけの場合は、次の手順を使用できます。 共存接続の詳細については、「[クラシック デプロイ モデルにおいて共存する ExpressRoute 接続とサイト間接続を構成する](../expressroute/expressroute-howto-coexist-resource-manager.md)」を参照してください。
 
 ### <a name="deployment-models-and-methods"></a>デプロイメント モデルおよび方法
 [!INCLUDE [vpn-gateway-classic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
@@ -44,7 +37,7 @@ ms.locfileid: "60760462"
 ## <a name="before"></a>開始する前に
 次の項目についてご確認ください。
 
-* ExpressRoute/S2S と共存する接続の作成ではない。
+* ExpressRoute と VPN Gateway の共存構成を新しく構成しているのではない。
 * 既存の接続のある Resource Manager デプロイ モデルを使用して作成した仮想ネットワークがある。
 * VNet の仮想ネットワーク ゲートウェイがルートベースである。 VPN ゲートウェイがポリシーベースの場合は、仮想ネットワーク ゲートウェイを削除して、ルートベースとして新しい VPN ゲートウェイを作成する必要があります。
 * この VNet が接続する VNet のアドレスの範囲のいずれも重複していないこと。

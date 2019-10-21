@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: db9f7e75af01ed83c39ef3a37ab2612426ef6ea4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a3faa76c1506664a075648edc7d57fbba542b011
+ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099616"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71960544"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
 
@@ -178,7 +178,7 @@ ms.locfileid: "70099616"
      | -------------------- | -----------       |
      | 表示名         | Fan Motor Error   |
      | フィールド名           | fanmotorerr       |
-     | Severity             | Error             |
+     | 重大度             | Error             |
 
      イベントの定義を保存するために、 **[保存]** を選択します。
 
@@ -365,7 +365,7 @@ _コマンド_ を使用して、デバイス上で直接コマンドを実行�
     | 表示名         | Echo Command    |
     | フィールド名           | echo            |
     | [Default Timeout]\(既定のタイムアウト\)      | 30              |
-    | [Display Type]\(表示タイプ\)         | text            |
+    | データ型         | text            |
     | 説明          | デバイス コマンド  |  
 
     **[入力フィールド]** の **+** を選択することで、コマンドに追加入力を追加できます。

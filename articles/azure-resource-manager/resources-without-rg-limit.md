@@ -4,14 +4,14 @@ description: リソース グループ内に 800 より多くのインスタン�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 7/30/2019
+ms.date: 10/4/2019
 ms.author: tomfitz
-ms.openlocfilehash: eec448dcbf1c550b6b0a0ee0f17505fd6ddd3c74
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 6677290999049dead40f39e9a840735810c7c763
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194741"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973321"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>リソース グループあたり 800 インスタンスに制限されないリソース
 
@@ -40,6 +40,10 @@ ms.locfileid: "70194741"
 * images
 * スナップショット
 * virtualMachines
+
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
+
+* containerGroups
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 
@@ -81,6 +85,14 @@ ms.locfileid: "70194741"
 
 * integrationAccounts
 * workflows
+
+## <a name="microsoftnetapp"></a>Microsoft.NetApp
+
+* netAppAccounts
+* netAppAccounts/capacityPools
+* netAppAccounts/capacityPools/volumes
+* netAppAccounts/capacityPools/volumes/mountTargets
+* netAppAccounts/capacityPools/volumes/snapshots
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
@@ -132,6 +144,15 @@ ms.locfileid: "70194741"
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 
 * jobcollections
+
+## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
+
+* applications
+* containerGroups
+* gateways
+* networks
+* secrets
+* volumes
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 

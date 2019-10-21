@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: a62a302748cb7e60b6a857c686d1833ad499cc7a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 42e1ede7c762fef1f33436ea4c757b0c0531a8f2
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70081653"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828424"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>チュートリアル:Jenkins と Azure DevOps Services を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -54,7 +54,7 @@ Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.
 ## <a name="get-the-sample-app"></a>サンプル アプリを入手する
 
 デプロイするアプリを Git リポジトリに格納する必要があります。
-このチュートリアルでは、[GitHub で入手できるこのサンプル アプリ](https://github.com/azooinmyluggage/fabrikam-node)を使用することをお勧めします。 このチュートリアルには、Node.js のインストールに使用するサンプル スクリプトとアプリケーションが含まれています。 独自のリポジトリで作業する場合は、同様のサンプルを構成する必要があります。
+このチュートリアルでは、[GitHub で入手できるこのサンプル アプリ](https://github.com/azure-devops/fabrikam-node)を使用することをお勧めします。 このチュートリアルには、Node.js のインストールに使用するサンプル スクリプトとアプリケーションが含まれています。 独自のリポジトリで作業する場合は、同様のサンプルを構成する必要があります。
 
 このアプリのフォークを作成し、このチュートリアルの後の手順で使用できるように場所 (URL) のメモを取ります。 詳細については、「[Fork a repo (リポジトリのフォーク)](https://help.github.com/articles/fork-a-repo/)」を参照してください。    
 

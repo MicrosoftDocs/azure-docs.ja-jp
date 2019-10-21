@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 07/24/2019
+ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 82cce359f2161800c53ccce7cdb0342bba759d43
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ae46df875d588186cd083134820f349158d7e307
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559943"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695215"
 ---
 # <a name="regular-expression-entity"></a>正規表現エンティティ 
 
@@ -46,35 +46,63 @@ ms.locfileid: "68559943"
 
 ### <a name="example-json"></a>JSON の例
 
-正規表現エンティティの定義として `kb[0-9]{6}` を使用した場合、次の JSON 応答が、クエリ `When was kb123456 published?` に対して返される正規表現エンティティを含む発話の例です。
+正規表現エンティティの定義として `kb[0-9]{6}` を使用したときの、次のクエリに対して返される正規表現エンティティを含む発話の例は、以下の JSON 応答のようになります。
+
+`When was kb123456 published?`:
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
-{
-  "query": "when was kb123456 published?",
-  "topScoringIntent": {
-    "intent": "FindKBArticle",
-    "score": 0.933641255
-  },
-  "intents": [
-    {
-      "intent": "FindKBArticle",
-      "score": 0.933641255
-    },
-    {
-      "intent": "None",
-      "score": 0.04397359
-    }
-  ],
-  "entities": [
-    {
-      "entity": "kb123456",
-      "type": "KB number",
-      "startIndex": 9,
-      "endIndex": 16
-    }
-  ]
+"entities": [
+  {
+    "entity": "kb123456",
+    "type": "KB number",
+    "startIndex": 9,
+    "endIndex": 16
+  }
+]
+```
+
+
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+
+
+これは、クエリ文字列で `verbose=false` が設定されている場合の JSON です。
+
+```json
+"entities": {
+    "KB number": [
+        "kb123456"
+    ]
 }
 ```
+
+これは、クエリ文字列で `verbose=true` が設定されている場合の JSON です。
+
+```json
+"entities": {
+    "KB number": [
+        "kb123456"
+    ],
+    "$instance": {
+        "KB number": [
+            {
+                "type": "KB number",
+                "text": "kb123456",
+                "startIndex": 9,
+                "length": 8,
+                "modelTypeId": 8,
+                "modelType": "Regex Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+* * * 
 
 ## <a name="next-steps"></a>次の手順
 

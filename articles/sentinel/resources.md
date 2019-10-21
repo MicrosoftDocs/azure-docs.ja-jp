@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel プレビュー使用時に便利なリソース| Microsoft Docs
+title: Azure Sentinel の使用時に便利なリソース| Microsoft Docs
 description: このドキュメントでは、Azure Sentinel の使用時に便利なリソースの一覧を示します。
 services: sentinel
 documentationcenter: na
@@ -13,27 +13,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/14/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 138efd7cba80e288c4f8831b45272f4e46c8ee3f
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 6634920b1efa3cd24267aca8bcf53587754caa66
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036238"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71239975"
 ---
-# <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>Azure Sentinel プレビューの使用に便利なリソース| Preview
+# <a name="useful-resources-for-working-with-azure-sentinel"></a>Azure Sentinel の操作に便利なリソース
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 この記事には、Azure Sentinel の操作の詳細を入手するのに役立つリソースをまとめています。
 
 Azure Logic Apps コネクタ: <https://docs.microsoft.com/connectors/>
 
-## <a name="vendor-documentation"></a>ベンダーのドキュメント
 
+## <a name="auditing-and-reporting"></a>監査とレポート
+Azure Sentinel の監査ログは、[Azure アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)に保持されます。
+
+
+## <a name="vendor-documentation"></a>ベンダーのドキュメント
 
 | **ベンダー名**  | **Azure Sentinel でインシデントを使用する** | **リンク**|
 |----|----|----|

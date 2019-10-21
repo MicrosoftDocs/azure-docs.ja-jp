@@ -2,20 +2,22 @@
 title: Azure portal を使用して Azure 通知ハブを作成する | Microsoft Docs
 description: このチュートリアルでは、Azure portal を使用して Azure 通知ハブを作成する方法を学習します。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: quickstart
 ms.date: 02/14/2019
-ms.author: jowargo
-ms.openlocfilehash: 62e72f27e48f7bf220901f4eb36090f926724a2a
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 02/14/2019
+ms.openlocfilehash: 53abc28a6923c2d55b3bb39defb08778485a9744
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313986"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212449"
 ---
 # <a name="create-an-azure-notification-hub-in-the-azure-portal"></a>Azure portal 内で Azure 通知ハブを作成する 
 Azure Notification Hubs は、任意のバックエンド (クラウドまたはオンプレミス) から任意のプラットフォーム (iOS、Android、Windows、Kindle、Baidu など) に通知を送信できる、使いやすく、かつスケールアウトされたプッシュ エンジンを提供します。 このサービスの詳細については、「[Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)」を参照してください。
@@ -31,7 +33,7 @@ Azure Notification Hubs は、任意のバックエンド (クラウドまたは
 このセクションでは、既存の名前空間の中に通知ハブを作成します。 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューで **[すべてのサービス]** を選択し、「**通知ハブ**」を検索します。**[Notification Hub の名前空間]** の横にある**星印** (`*`) を選択して、左側のメニューの **[お気に入り]** セクションに追加します。 **[Notification Hub の名前空間]** を選択します。 
+2. 左側のメニューで **[すべてのサービス]** を選択し、「**通知ハブ**」を検索します。 **[Notification Hub の名前空間]** の横にある**星印** (`*`) を選択して、左側のメニューの **[お気に入り]** セクションに追加します。 **[Notification Hub の名前空間]** を選択します。 
 
       ![Azure portal - [Notification Hub の名前空間] を選択する](./media/create-notification-hub-portal/select-notification-hub-namespaces-all-services.png)
 3. **[Notification Hub の名前空間]** ページで、一覧から目的の名前空間を選択します。 
@@ -40,7 +42,7 @@ Azure Notification Hubs は、任意のバックエンド (クラウドまたは
 1. **[Notification Hub の名前空間]** ページで、ツール バーの **[ハブの追加]** を選択します。 
 
       ![[Notification Hub の名前空間] - [ハブの追加] ボタン](./media/create-notification-hub-portal/add-hub-button.png)
-4. **[新しい Notification Hub]** ページで、通知ハブの名前を入力し、**[OK]** を選択します。
+4. **[新しい Notification Hub]** ページで、通知ハブの名前を入力し、 **[OK]** を選択します。
 
       ![[新しい Notification Hub] ページ -> ハブの名前を入力する](./media/create-notification-hub-portal/new-notification-hub-page.png)
 4. 上部にある **[通知]** (ベルのアイコン) を選択して、新しいハブのデプロイの状態を確認します。 右隅にある **[X]** を選択して、通知ウィンドウを閉じます。 

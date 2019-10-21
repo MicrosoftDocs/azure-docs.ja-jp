@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/28/2018
 ms.author: cynthn
-ms.openlocfilehash: c394b013b057a78e99cafc0adde9727d0a75a87c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: effe1169fb531abd3fe8a206f2baf83380fcd28f
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091820"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828394"
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
@@ -115,5 +115,5 @@ Linux VM を再起動すると、マウントされた SMB 共有はシャット
 
 - [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md)
 - [Linux VM へのディスクの追加](add-disk.md)
-- [Azure CLI を使って Linux VM のディスクを暗号化する](encrypt-disks.md)
+- [Linux VM に対する Azure Disk Encryption](disk-encryption-overview.md)
 

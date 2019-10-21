@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5479bc7f4e65f23a2e2dcf7deb91742fe50610
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 1d5a29ca7ed4eb23c2e0edd4d39cc2920e779acb
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382500"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025512"
 ---
 # <a name="delegate-app-registration-permissions-in-azure-active-directory"></a>Azure Active Directory でアプリ登録のアクセス許可を委任する
 
@@ -63,8 +63,8 @@ Azure AD の既定では、すべてのユーザーがアプリケーション�
 
 1. 組織のアプリケーション管理者またはクラウド アプリケーション管理者に適したアカウントを使用して、[Azure AD 組織](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) にサインインします。
 1. 組織の [アプリ登録ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) で、アプリを選択して、アプリの [概要] ページを開きます。
-1.  **[所有者]**   を選択して、アプリの所有者の一覧を表示します。
-1.  **[追加]**   を選択し、アプリに追加する所有者を 1 人以上選択します。
+1. **[所有者]** を選択して、アプリの所有者の一覧を表示します。
+1. **[追加]** を選択し、アプリに追加する所有者を 1 人以上選択します。
 
 > [!IMPORTANT]
 > ユーザーおよびサービス プリンシパルは、アプリケーション登録の所有者になることができます。 エンタープライズ アプリケーションの所有者になることができるのはユーザーのみです。 グループはいずれの所有者としても割り当てることはできません。

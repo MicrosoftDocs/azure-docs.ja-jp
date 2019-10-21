@@ -7,12 +7,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: 9c9d02eeead4ccbed372e9a55d9b551da83caa39
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: 7af40404550fb78af891563d8256f23620781b24
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641592"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71841528"
 ---
 # <a name="understanding-the-ip-address-of-your-iot-hub"></a>IoT ハブの IP アドレスについて
 
@@ -34,3 +34,6 @@ nslookup {YourIoTHubName}.azure-devices.net
 
 ファイアウォール規則を作成し、IoT ハブのホスト名またはドメインに基づいてフィルター処理を行うようにしてください。 特定のアドレスへの送信トラフィックのみを許可できる場合は、IoT ハブの IP アドレスを定期的にポーリングし、ファイアウォール規則を更新します。
 
+## <a name="support-for-ipv6"></a>IPv6 のサポート 
+
+現在、IPv6 は IoT Hub ではサポートされていません。

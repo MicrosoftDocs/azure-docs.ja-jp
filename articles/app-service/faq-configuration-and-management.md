@@ -4,7 +4,7 @@ description: Azure App Service の Web Apps 機能の構成および管理の問
 services: app-service\web
 documentationcenter: ''
 author: genlin
-manager: cshepard
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 0b78b05e30185487df0b06d861b60b63741dc938
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 68d0f693d0cc7d8db8e6f697ff8907400a7aca50
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073201"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71121330"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -71,7 +71,7 @@ Web アプリのサーバーのタイム ゾーンを設定するには、次の
     * Value = *目的のタイム ゾーン*
 3. **[保存]** を選択します。
 
-指定可能な値については、[既定のタイム ゾーン](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)の記事の**タイムゾーン**の列を参照してください。
+Windows で実行される App Service の場合、指定可能な値については、[既定のタイム ゾーン](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones)の記事の**タイムゾーン**の列を参照してください。 Linux で実行される App Service の場合、タイム ゾーン値として [TZ データベース名](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)を設定します。 TZ データベース名の例を挙げると、America/Adak のようになります。
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>継続的な Web ジョブがときどき失敗する理由はなんですか?
 
@@ -96,7 +96,7 @@ Azure アプリ Web サイトへの着信呼び出し用 IP アドレスを専�
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-outside-azure-such-as-for-a-website-hosted-elsewhere"></a>他の場所でホストされている web サイトなど、Azure の外部で使用できるように App Service 証明書をエクスポートできますか? 
 
-App Service 証明書は、Azure リソースと見なされます。 Azure サービスの外部で使用することは意図されていません。 Azure の外部で使用するようにエクスポートすることはできません。 詳細については、「[App Service 証明書とカスタム ドメインの FAQ](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)」を参照してください。
+はい。Azure の外部で使用する目的でエクスポートできます。 詳細については、「[App Service 証明書とカスタム ドメインの FAQ](https://social.msdn.microsoft.com/Forums/azure/f3e6faeb-5ed4-435a-adaa-987d5db43b80/faq-on-app-service-certificates-and-custom-domains?forum=windowsazurewebsitespreview)」を参照してください。
 
 ## <a name="can-i-export-my-app-service-certificate-to-use-with-other-azure-cloud-services"></a>その他の Azure クラウド サービスで使用できるように App Service 証明書をエクスポートできますか?
 

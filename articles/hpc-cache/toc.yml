@@ -6,18 +6,8 @@
       href: hpc-cache-overview.md
 - name: 概念
   items:
-    - name: 集約された名前空間を使用する
+    - name: 集約された名前空間を計画する
       href: hpc-cache-namespace.md
-    - name: 新しい Blob Storage にデータを設定する
-      href: hpc-cache-ingest.md
-    - name: 代替のデータ取り込み方法
-      items:
-        - name: 並列コピーを使用してキャッシュを設定する
-          href: hpc-cache-ingest-parallelcp.md
-        - name: msrsync を使用してキャッシュを設定する
-          href: hpc-cache-ingest-msrsync.md
-        - name: 手動によるファイル コピーを使用してキャッシュを設定する
-          href: hpc-cache-ingest-manual.md
 - name: ハウツー ガイド
   items:
     - name: 前提条件
@@ -25,10 +15,26 @@
     - name: キャッシュを作成する
       href: hpc-cache-create.md
     - name: ストレージを追加する
-      href: hpc-cache-add-storage.md
+      items:
+        - name: ストレージ ターゲットを追加する
+          href: hpc-cache-add-storage.md
+        - name: データをストレージ ターゲットに移動する (必要な場合)
+          items:
+            - name: 新しい Blob Storage を事前に読み込む
+              href: hpc-cache-ingest.md
+            - name: 代替のデータ取り込み方法
+              items:
+                - name: 並列コピーを使用してキャッシュを設定する
+                  href: hpc-cache-ingest-parallelcp.md
+                - name: msrsync を使用してキャッシュを設定する
+                  href: hpc-cache-ingest-msrsync.md
+                - name: 手動によるファイル コピーを使用してキャッシュを設定する
+                  href: hpc-cache-ingest-manual.md
     - name: キャッシュに接続する
       href: hpc-cache-mount.md
 - name: リソース
   items:
     - name: サポート チケットを開く
       href: hpc-cache-support-ticket.md
+    - name: リージョンの障害から復旧する
+      href: hpc-region-recovery.md

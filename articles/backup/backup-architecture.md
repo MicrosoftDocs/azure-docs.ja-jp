@@ -7,16 +7,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9e67e063ed37c706ba172703f0a5483d8d4f68ca
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881865"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035252"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
-[Azure Backup サービス](backup-overview.md)を使用して、Microsoft Azure クラウド プラットフォームにデータをバックアップすることができます。 この記事では、Azure Backup のアーキテクチャ、コンポーネント、およびプロセスの概要を示します。 
+[Azure Backup サービス](backup-overview.md)を使用して、Microsoft Azure クラウド プラットフォームにデータをバックアップすることができます。 この記事では、Azure Backup のアーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 
 ## <a name="what-does-azure-backup-do"></a>Azure Backup の機能
 
@@ -27,13 +27,13 @@ Azure Backup では、データ、マシンの状態、オンプレミスのマ�
 複数の方法を使用して、マシンとデータをバックアップすることができます。
 
 - **オンプレミスのマシンをバックアップする**:
-    - Azure Backup Microsoft Azure Recovery Services (MARS) エージェントを使用して、オンプレミスの Windows マシンを Azure に直接バックアップできます。 Linux マシンはサポートされていません。
-    - オンプレミスのマシンは、バックアップ サーバー (System Center Data Protection Manager (DPM) または Microsoft Azure Backup Server (MABS)) にバックアップできます。 その後、Azure 上の Recovery Services コンテナーにバックアップ サーバーをバックアップできます。
+  - Azure Backup Microsoft Azure Recovery Services (MARS) エージェントを使用して、オンプレミスの Windows マシンを Azure に直接バックアップできます。 Linux マシンはサポートされていません。
+  - オンプレミスのマシンは、バックアップ サーバー (System Center Data Protection Manager (DPM) または Microsoft Azure Backup Server (MABS)) にバックアップできます。 その後、Azure 上の Recovery Services コンテナーにバックアップ サーバーをバックアップできます。
 
 - **Azure VM をバックアップする**:
-    - Azure VM を直接バックアップすることができます。 Azure Backup によって、VM 上で実行されている Azure VM エージェントに、バックアップ拡張機能がインストールされます。 この拡張機能は、VM 全体をバックアップします。
-    - MARS エージェントを実行することにより、Azure VM 上の特定のファイルおよびフォルダーをバックアップできます。
-    - Azure VM を Azure 上で実行されている MABS にバックアップし、MABS を Recovery Services コンテナーにバックアップすることができます。
+  - Azure VM を直接バックアップすることができます。 Azure Backup によって、VM 上で実行されている Azure VM エージェントに、バックアップ拡張機能がインストールされます。 この拡張機能は、VM 全体をバックアップします。
+  - MARS エージェントを実行することにより、Azure VM 上の特定のファイルおよびフォルダーをバックアップできます。
+  - Azure VM を Azure 上で実行されている MABS にバックアップし、MABS を Recovery Services コンテナーにバックアップすることができます。
 
 詳しくは、[バックアップできる内容](backup-overview.md)と[サポートされるバックアップ シナリオ](backup-support-matrix.md)に関するページをご覧ください。
 
@@ -48,17 +48,17 @@ Recovery Services コンテナーには、次の機能があります。
 - Azure VM とオンプレミスのマシンを含む、コンテナーでバックアップされたアイテムを監視することができます。
 - Azure の[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) を使用して、コンテナーのアクセスを管理できます。
 - 冗長性のためにコンテナー内のデータをレプリケートする方法を指定します。
-    - **ローカル冗長ストレージ (LRS)** : データセンターの障害から保護するために、LRS を使用できます。 LRS では、ストレージ スケール ユニットにデータをレプリケートします。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
-    - **geo 冗長ストレージ (GRS)** :リージョン全体の障害から保護するために、GRS を使用できます。 GRS ではデータがセカンダリ リージョンにレプリケートされます。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。 
-    - 既定では、Recovery Services コンテナーでは GRS が使用されます。 
+  - **ローカル冗長ストレージ (LRS)** : データセンターの障害から保護するために、LRS を使用できます。 LRS では、ストレージ スケール ユニットにデータをレプリケートします。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)。
+  - **geo 冗長ストレージ (GRS)** :リージョン全体の障害から保護するために、GRS を使用できます。 GRS ではデータがセカンダリ リージョンにレプリケートされます。 [詳細情報](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs)。
+  - 既定では、Recovery Services コンテナーでは GRS が使用されます。
 
 ## <a name="backup-agents"></a>Backup のエージェント
 
 Azure Backup では、バックアップされるマシンの種類に応じて異なるバックアップ エージェントが用意されています。
 
-**エージェント** | **詳細** 
---- | --- 
-**MARS エージェント** | <ul><li>オンプレミスの Windows Server マシン上で実行され、ファイル、フォルダー、システムの状態をバックアップします。</li> <li>Azure VM 上で実行され、ファイル、フォルダー、システムの状態をバックアップします。</li> <li>DPM/MABS サーバー上で実行され、DPM/MABS のローカル ストレージ ディスクを Azure にバックアップします。</li></ul> 
+**エージェント** | **詳細**
+--- | ---
+**MARS エージェント** | <ul><li>オンプレミスの Windows Server マシン上で実行され、ファイル、フォルダー、システムの状態をバックアップします。</li> <li>Azure VM 上で実行され、ファイル、フォルダー、システムの状態をバックアップします。</li> <li>DPM/MABS サーバー上で実行され、DPM/MABS のローカル ストレージ ディスクを Azure にバックアップします。</li></ul>
 **Azure VM 拡張機能** | Azure VM 上で実行され、コンテナーに VM をバックアップします。
 
 ## <a name="backup-types"></a>バックアップの種類
@@ -69,7 +69,7 @@ Azure Backup では、バックアップされるマシンの種類に応じて�
 --- | --- | ---
 **完全** | 完全バックアップにはデータ ソース全体が含まれます。 差分バックアップや増分バックアップよりも多くのネットワーク帯域幅を使用します。 | 初回バックアップで使用されます。
 **差分** |  差分バックアップでは、初回の完全バックアップ以降に変更されたブロックが格納されます。 より少量のネットワークとストレージが使用され、変更されていないデータの冗長コピーは保持されません。<br/><br/> 以降の各バックアップの間には変更されていないデータ ブロックが転送され、格納されるため、非効率です。 | Azure Backup では使用されません。
-**増分** | 増分バックアップでは、前回のバックアップ以降に変更されたデータのブロックのみが格納されます。 ストレージとネットワークの効率が高くなります。 <br/><br/> 増分バックアップを完全バックアップで補完する必要はありません。 | ディスク バックアップで DPM/MABS によって使用され、Azure へのすべてのバックアップで使用されます。
+**増分** | 増分バックアップでは、前回のバックアップ以降に変更されたデータのブロックのみが格納されます。 ストレージとネットワークの効率が高くなります。 <br/><br/> 増分バックアップを完全バックアップで補完する必要はありません。 | ディスク バックアップで DPM/MABS によって使用され、Azure へのすべてのバックアップで使用されます。 SQL Server のバックアップには使用されません。
 
 ## <a name="sql-server-backup-types"></a>SQL Server のバックアップの種類
 
@@ -88,7 +88,7 @@ Azure Backup では、バックアップされるマシンの種類に応じて�
 - データ ソース A は A1 から A10 の 10 個のストレージ ブロックで構成され、毎月バックアップされます。
 - ブロック A2、A3、A4、および A9 は最初の月に変更され、ブロック A5 はその翌月に変更されます。
 - 差分バックアップでは、2 か月目に、変更されたブロック A2、A3、A4、および A9 がバックアップされます。 3 か月目は、既にバックアップ済みのブロックが再度バックアップされたうえで、変更された A5 がバックアップされます。 変更されたブロックは、次回完全バックアップが行われるまでバックアップされ続けます。
-- 増分バックアップでは、2 か月目にブロック A2、A3、A4、および A9 が変更済みとしてマークされ、転送されます。 3 か月目は、変更された A5 のみがマークされ、転送されます。 
+- 増分バックアップでは、2 か月目にブロック A2、A3、A4、および A9 が変更済みとしてマークされ、転送されます。 3 か月目は、変更された A5 のみがマークされ、転送されます。
 
 ![バックアップ方法の比較を示す図](./media/backup-architecture/backup-method-comparison.png)
 
@@ -98,11 +98,11 @@ Azure Backup では、バックアップされるマシンの種類に応じて�
 
 **機能** | **オンプレミスの Windows Server マシン (直接)** | **Azure VM** | **DPM/MABS を使用するマシンまたはアプリ**
 --- | --- | --- | ---
-コンテナーにバックアップする | ![はい][green] | ![はい][green] | ![はい][green] 
-DPM/MABS ディスクにバックアップしてから、Azure にバックアップする | | | ![はい][green] 
-バックアップのために送信されるデータを圧縮する | ![はい][green] | データの転送時に圧縮は使用されません。 ストレージが少し大きくなりますが、復元はより高速になります。  | ![はい][green] 
-増分バックアップを実行する |![はい][green] |![はい][green] |![はい][green] 
-重複除去されたディスクをバックアップする | | | ![部分的][yellow]<br/><br/> オンプレミスにデプロイされた DPM/MABS サーバーの場合のみ。 
+コンテナーにバックアップする | ![はい][green] | ![はい][green] | ![はい][green]
+DPM/MABS ディスクにバックアップしてから、Azure にバックアップする | | | ![はい][green]
+バックアップのために送信されるデータを圧縮する | ![はい][green] | データの転送時に圧縮は使用されません。 ストレージが少し大きくなりますが、復元はより高速になります。  | ![はい][green]
+増分バックアップを実行する |![はい][green] |![はい][green] |![はい][green]
+重複除去されたディスクをバックアップする | | | ![部分的][yellow]<br/><br/> オンプレミスにデプロイされた DPM/MABS サーバーの場合のみ。
 
 ![テーブル キー](./media/backup-architecture/table-key.png)
 
@@ -112,17 +112,17 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
 1. 最初のバックアップ時に、バックアップ拡張機能が VM にインストールされます (VM が実行されている場合)。
     - Windows VM の場合は、VMSnapshot 拡張機能がインストールされます。
     - Linux VM の場合は、VMSnapshot Linux 拡張機能がインストールされます。
-1. この拡張機能によって、ストレージ レベルのスナップショットが取得されます。 
+1. この拡張機能によって、ストレージ レベルのスナップショットが取得されます。
     - 実行されている Windows VM については、Backup は Windows ボリューム シャドウ コピー サービス (VSS) と連携して VM のアプリ整合性スナップショットを取得します。 既定では、Backup によって完全 VSS バックアップが取得されます。 Backup でアプリ整合性スナップショットを取得できない場合、ファイル整合性スナップショットが取得されます。
     - Linux VM の場合、Backup ではファイル整合性スナップショットが取得されます。 アプリ整合性スナップショットの場合は、事前/事後スクリプトを手動でカスタマイズする必要があります。
-    - Backup は、各 VM ディスクを並行してバックアップすることで最適化されます。 バックアップ対象の各ディスクについては、Azure Backup でディスク上のブロックが読み取られ、変更されたデータのみが格納されます。 
-1. スナップショットが取得された後、データはコンテナーに転送されます。 
+    - Backup は、各 VM ディスクを並行してバックアップすることで最適化されます。 バックアップ対象の各ディスクについては、Azure Backup でディスク上のブロックが読み取られ、変更されたデータのみが格納されます。
+1. スナップショットが取得された後、データはコンテナーに転送されます。
     - 最後のバックアップ以降に変更されたデータのブロックのみがコピーされます。
     - データは暗号化されません。 Azure Backup では、Azure Disk Encryption を使用して暗号化された Azure VM をバックアップできます。
     - スナップショット データはコンテナーにすぐにコピーされない場合があります。 ピーク時には、バックアップに数時間かかる場合があります。 毎日のバックアップ ポリシーでは、VM のバックアップの合計時間は 24 時間未満になります。
 1. データがコンテナーに送信されると、復旧ポイントが作成されます。 既定では、スナップショットは 2 日間保持されてから削除されます。 この機能では、復元時間を削減して、これらのスナップショットから復元操作を行うことができます。 それにより、コンテナーからデータを変換して元の場所にコピーするために必要な時間が削減されます。 [Azure Backup のインスタント リストア機能](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability)に関するページを参照してください。
 
-Azure VM では制御コマンド用にインターネット アクセスが必要です。 VM 内のワークロードをバックアップしている場合は (SQL Server データベースのバックアップなど)、バックエンド データにもインターネット アクセスが必要です。 
+Azure VM では制御コマンド用にインターネット アクセスが必要です。 VM 内のワークロードをバックアップしている場合は (SQL Server データベースのバックアップなど)、バックエンド データにもインターネット アクセスが必要です。
 
 ![Azure VM のバックアップ](./media/backup-architecture/architecture-azure-vm.png)
 
@@ -157,15 +157,15 @@ Azure VM では制御コマンド用にインターネット アクセスが必�
 Azure VM ではディスクを使用して、そのオペレーティング システム、アプリ、およびデータを格納します。 各 Azure VM には、オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 Azure VM ではアプリ データ用のデータ ディスクも使用できます。 ディスクは VHD として格納されます。
 
 - Azure では、Standard または Premium Storage アカウントにページ BLOB として VHD が格納されます。
-    - **Standard Storage:** 待機時間の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポート。 Standard Storage には、標準のソリッド ステート ドライブ (SSD) ディスクまたは標準のハード ディスク ドライブ (HDD) ディスクを使用できます。
-    - **Premium Storage:** 高パフォーマンスのディスク サポート。 Premium SSD ディスクを使用します。
+  - **Standard Storage:** 待機時間の影響を受けないワークロードを実行する VM 向けの信頼性の高い低コストのディスク サポート。 Standard Storage には、標準のソリッド ステート ドライブ (SSD) ディスクまたは標準のハード ディスク ドライブ (HDD) ディスクを使用できます。
+  - **Premium Storage:** 高パフォーマンスのディスク サポート。 Premium SSD ディスクを使用します。
 - ディスクにはさまざまなパフォーマンス レベルがあります。
-    - **Standard HDD ディスク:** HDD によってサポートされ、コスト効率の高いストレージに使用されます。
-    - **Standard SSD ディスク:** Premium SSD ディスクと Standard HDD ディスクの要素を兼ね備えています。 一貫したパフォーマンスと信頼性が HDD よりも優れていますが、コスト効果に優れています。
-    - **Premium SSD ディスク:** SSD によってサポートされ、I/O 集中型ワークロードを実行する VM 用の高パフォーマンスと低待機時間を提供します。
+  - **Standard HDD ディスク:** HDD によってサポートされ、コスト効率の高いストレージに使用されます。
+  - **Standard SSD ディスク:** Premium SSD ディスクと Standard HDD ディスクの要素を兼ね備えています。 一貫したパフォーマンスと信頼性が HDD よりも優れていますが、コスト効果に優れています。
+  - **Premium SSD ディスク:** SSD によってサポートされ、I/O 集中型ワークロードを実行する VM 用の高パフォーマンスと低待機時間を提供します。
 - ディスクには、次のようなマネージドとアンマネージドがあります。
-    - **アンマネージド ディスク:** VM で使用されるディスクの従来の種類。 これらのディスクでは、独自のストレージ アカウントを作成し、ディスクの作成時にそれを指定します。 VM のストレージ リソースを最大化する方法を確認する必要があります。
-    - **マネージド ディスク**: Azure によりストレージ アカウントが作成、管理されます。 ディスク サイズとパフォーマンス レベルの指定はユーザーが行い、マネージド ディスクの作成は Azure で行います。 ユーザーがディスクを追加し、VM をスケーリングすると、Azure によってストレージ アカウントが処理されます。
+  - **アンマネージド ディスク:** VM で使用されるディスクの従来の種類。 これらのディスクでは、独自のストレージ アカウントを作成し、ディスクの作成時にそれを指定します。 VM のストレージ リソースを最大化する方法を確認する必要があります。
+  - **マネージド ディスク**: Azure によりストレージ アカウントが作成、管理されます。 ディスク サイズとパフォーマンス レベルの指定はユーザーが行い、マネージド ディスクの作成は Azure で行います。 ユーザーがディスクを追加し、VM をスケーリングすると、Azure によってストレージ アカウントが処理されます。
 
 VM 用のディスク ストレージと使用可能なディスクの種類について詳しくは、以下の記事をご覧ください。
 
@@ -173,7 +173,7 @@ VM 用のディスク ストレージと使用可能なディスクの種類に�
 - [Linux VM 用の Azure マネージド ディスク](../virtual-machines/linux/managed-disks-overview.md)
 - [VM で利用できるディスクの種類](../virtual-machines/windows/disks-types.md)
 
-### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Premium Storage を使用する Azure VM のバックアップと復元 
+### <a name="back-up-and-restore-azure-vms-with-premium-storage"></a>Premium Storage を使用する Azure VM のバックアップと復元
 
 Azure Backup で Premium Storage を使用して、Azure VM をバックアップすることができます。
 
@@ -201,13 +201,11 @@ Premium Storage を使用して Azure VM を復元する場合、Premium また�
 
 - サポート マトリックスを確認し、[バックアップ シナリオでサポートされる機能と制限事項について学習します](backup-support-matrix.md)。
 - 以下のシナリオのいずれかのバックアップを設定します。
-    - [Azure VM をバックアップします](backup-azure-arm-vms-prepare.md)。
-    - バックアップ サーバーなしで、[Windows マシンを直接バックアップ](tutorial-backup-windows-server-to-azure.md)します。
-    - Azure へのバックアップのために [MABS を設定](backup-azure-microsoft-azure-backup.md)してから、MABS にワークロードをバックアップします。
-    - Azure へのバックアップのために [DPM を設定](backup-azure-dpm-introduction.md)してから、DPM にワークロードをバックアップします。
-
+  - [Azure VM をバックアップします](backup-azure-arm-vms-prepare.md)。
+  - バックアップ サーバーなしで、[Windows マシンを直接バックアップ](tutorial-backup-windows-server-to-azure.md)します。
+  - Azure へのバックアップのために [MABS を設定](backup-azure-microsoft-azure-backup.md)してから、MABS にワークロードをバックアップします。
+  - Azure へのバックアップのために [DPM を設定](backup-azure-dpm-introduction.md)してから、DPM にワークロードをバックアップします。
 
 [green]: ./media/backup-architecture/green.png
 [yellow]: ./media/backup-architecture/yellow.png
 [red]: ./media/backup-architecture/red.png
-

@@ -1,53 +1,23 @@
 ---
 title: 技術情報フォームに記入する方法
-description: 新しい Dynamics 365 Business Central アプリの技術情報フォームに値を入力する方法について説明します。
+description: '対応する PC 記事にリンクする非推奨の記事。以前の記述: 「新しい Dynamics 365 Business Central アプリの技術情報フォームに値を入力する方法について説明します。」'
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 09/18/2019
 ms.author: pabutler
-ms.openlocfilehash: dbc38fab5bd8e55f6dd280ecc46af1b1a5ae7ede
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c59bf5aa4518d556de36b7aa4ea4ef91fa244dea
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935063"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105565"
 ---
-<a name="how-to-fill-out-the-technical-info-form"></a>技術情報フォームの入力方法
-===========================================
+# <a name="how-to-fill-out-the-technical-info-form"></a>技術情報フォームに記入する方法
 
-1.  **[Choose Application Type (アプリケーションの種類の選択)]** セクションで、拡張機能パッケージ ファイル (.app) と、拡張機能が依存しているパッケージ ファイルをアップロードします。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Dynamics 365 Business Central オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[新しい Dynamics 365 Business Central オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)」を参照してください。
 
-    ![アプリケーション パッケージの情報](./media/d365-financials/image015.png)
+## <a name="next-steps"></a>次の手順
 
--   **Extensions Package File (拡張機能パッケージ ファイル)** : 必須。拡張機能パッケージ ファイル (.app)。
-
--   **Dependency package file (依存関係パッケージ ファイル)** : アプリが AppSource で公開されている別のアプリに依存している場合に必須。 現在のアプリが依存している、AppSource で既に公開された拡張機能の .app ファイル。 
-
--   **Library Package File (ライブラリ パッケージ ファイル)** : アプリが AppSource で公開されて*いない*別のアプリに依存している場合に必須。 既存のアプリの .app ファイルのうち、AppSource で公開されておらず、今後も公開される予定のないファイル。
-
--   **App Test Automation (アプリ テストの自動化)** : 必須。拡張機能のテストを自動化するために作成する必要のある、VS でコード化されたテスト パッケージ。
-
-1. **[Additional Information for the extension (拡張機能の追加情報)]** セクションで、拡張機能の追加情報をアップロードします。 この情報は、検証中に使用されます。
-
-   ![アプリの拡張機能フォームの追加情報](./media/d365-financials/image016.png)
-
-
--   **URL to Product Documentation (製品ドキュメントの URL)** : 必須。拡張機能のドキュメントの URL。
-
--   **Key Usage Scenarios (重要な使用方法のシナリオ)** : 必須。手順と使用の詳細を示したドキュメント。 例については、[ユーザー シナリオのドキュメント](https://docs.microsoft.com/dynamics-nav/compliance/apptest-userscenario/)をご覧ください。
-
--   **Target Release (ターゲット リリース)** : 必須。アプリをデプロイする対象のリリースを選択します。 現在提供中のバージョンにデプロイするには、 **[current (現在)]** を選択します。 次にリリースされるマイナー バージョンを使用してデプロイするには、 **[next minor (次回のマイナー)]** を選択します。 次にリリースされるメジャー バージョンを使用してデプロイするには、 **[next major (次回のメジャー)]** を選択します。
-
--   **Requires Premium SKU (Premium SKU が必要)** : 省略可能。アプリに Premium SKU が必要な場合は、[Premium] ボタンを選択します。 サービス管理と製造は、Premium でのみ使用できます。 Essential と Premium の比較の詳細については、「[Changing Which Features are Displayed (表示する機能の変更)](https://docs.microsoft.com/dynamics365/financials/ui-experiences)」という記事をご覧ください。
-
--   **Explanation for Code Analysis Errors (コード分析エラーの説明)** : 省略可能。要件を満たしていないすべてのコードの一覧と説明を示したドキュメントです。
-
--   **Explanation of Impacted Core Functionality (影響を受けるコア機能の説明)** : 省略可能。拡張機能によって制限を受けるすべてのコア機能の一覧と説明を示したドキュメントです。
-
--   **Test Accounts (テスト アカウント)** : 省略可能。エンド ツー エンドの使用テストを完了するために必要なリモート サービスや Web サイトなどのユーザー アカウントです。
-
--   **UX requirements exceptions (UX 要件の例外)** : 省略可能。拡張機能によって満たされていないすべてのユーザー エクスペリエンス要件の一覧と説明を示したドキュメントです。
-
-次の手順では、プランにネット ショップの詳細を追加します。
+新しい Dynamics 365 Business Central オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[新しい Dynamics 365 Business Central オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-business-central-offer)」の手順に従って、オファーを作成します。

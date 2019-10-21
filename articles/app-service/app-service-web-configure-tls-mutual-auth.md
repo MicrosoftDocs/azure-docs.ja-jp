@@ -11,15 +11,15 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c4e97a96687e5fa1d934ab8c0317b52cb753f72c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70088166"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811627"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Azure App Service に対する TLS 相互認証の構成
 
@@ -36,6 +36,15 @@ ms.locfileid: "70088166"
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
 ```
+
+## <a name="exclude-paths-from-requiring-authentication"></a>パスを認証を必要としないものとして除外する
+
+お使いのアプリケーションで相互認証を有効にすると、お使いのアプリのルート下のすべてのパスで、アクセスにクライアント証明書が必要になります。 特定のパスが匿名アクセスできるよう残すには、お使いのアプリケーションを構成するときに除外するパスを定義する必要があります。
+
+除外するパスを構成するには、 **[構成]**  >  **[全般設定]** の順に選択して除外するパスを定義します。 この例では、お使いのアプリケーションの `/public` パスの下のすべてで、クライアント証明書は要求されません。
+
+![証明書不要のパス][exclusion-paths]
+
 
 ## <a name="access-client-certificate"></a>クライアント証明書にアクセスする
 
@@ -213,3 +222,5 @@ export class AuthorizationHandler {
     }
 }
 ```
+
+[exclusion-paths]: ./media/app-service-web-configure-tls-mutual-auth/exclusion-paths.png

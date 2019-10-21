@@ -1,6 +1,6 @@
 ---
-title: HTTP 要求への応答 - Azure Logic Apps
-description: Azure Logic Apps を使用して HTTP 経由でイベントにリアルタイムで応答する
+title: HTTPS 呼び出しを受信して応答する - Azure Logic Apps
+description: Azure Logic Apps を使用して、HTTPS 要求とイベントをリアルタイムで処理する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -12,20 +12,22 @@ ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
 ms.topic: article
 ms.date: 09/06/2019
 tags: connectors
-ms.openlocfilehash: 07f143b261d0cff9eba0d4b1803753446c311818
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 668e815f1dc1ead0ad38264bdc71fc3c315b751c
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914327"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122709"
 ---
-# <a name="respond-to-http-requests-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して HTTP 要求に応答する
+# <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して、HTTPS 呼び出しを受信して応答する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と組み込みの Request トリガーまたは Response アクションを使用すると、HTTP 要求をリアルタイムで受け取ってそれに応答する自動化されたタスクおよびワークフローを作成することができます。 たとえば、次のようなロジック アプリを作成できます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と組み込みの Request トリガーまたは Response アクションを使用すると、受信した HTTP 要求を受け取ってそれに応答する自動化されたタスクおよびワークフローを作成することができます。 たとえば、次のようなロジック アプリを作成できます。
 
-* オンプレミス データベース内のデータに対する HTTP 要求に応答する。
+* オンプレミス データベース内のデータに対する HTTP 要求を受信して応答する。
 * 外部 Webhook イベントが発生したときにワークフローをトリガーする。
-* ロジック アプリを別のロジック アプリ内から呼び出す。
+* 別のロジック アプリからの HTTPS 呼び出しを受信して応答する。
+
+要求トリガーは HTTPS *のみ*をサポートします。 代わりに、HTTP または HTTPS の呼び出しを発信するには、組み込みの [HTTP トリガまたはアクション](../connectors/connectors-native-http.md)を使用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,15 +37,15 @@ ms.locfileid: "70914327"
 
 <a name="add-request"></a>
 
-## <a name="add-a-request-trigger"></a>Request トリガーの追加
+## <a name="add-request-trigger"></a>要求トリガーの追加
 
-この組み込みトリガーでは、受信 HTTP 要求を受け取ることができる、手動で呼び出し可能なエンドポイントが作成されます。 このイベントが発生すると、トリガーが起動してロジック アプリが実行されます。 トリガーの基になる JSON 定義と、このトリガーの呼び出し方法の詳細については、[Request タイプのトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)に関するページ、および「[Azure Logic Apps で HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」を参照してください。
+この組み込みトリガーでは、受信 HTTPS 要求*のみ*を受け取ることができる、手動で呼び出し可能な HTTPS エンドポイントが作成されます。 このイベントが発生すると、トリガーが起動してロジック アプリが実行されます。 トリガーの基になる JSON 定義と、このトリガーの呼び出し方法の詳細については、[Request タイプのトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger)に関するページ、および「[Azure Logic Apps で HTTP エンドポイントを使用してワークフローを呼び出すか、トリガーするか、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」を参照してください。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 空のロジック アプリを作成します。
 
 1. ロジック アプリ デザイナーが開いたら、検索ボックスに、ご自分のフィルターとして「HTTP 要求」と入力します。 トリガーの一覧から、 **[HTTP 要求の受信時]** トリガーを選択します。これは、ロジック アプリ ワークフローでの最初のステップです。
 
-   ![HTTP 要求トリガーを選ぶ](./media/connectors-native-reqres/select-request-trigger.png)
+   ![Request トリガーを選択する](./media/connectors-native-reqres/select-request-trigger.png)
 
    Request トリガーでは、次のプロパティが表示されます。
 
@@ -52,10 +54,10 @@ ms.locfileid: "70914327"
    | プロパティ名 | JSON プロパティ名 | 必須 | 説明 |
    |---------------|--------------------|----------|-------------|
    | **HTTP POST の URL** | {なし} | はい | ロジック アプリを保存したら生成され、ご自分のロジック アプリの呼び出しに使用されるエンドポイント URL |
-   | **要求本文の JSON スキーマ** | `schema` | いいえ | 受信 HTTP 要求本文内のプロパティと値を記述する JSON スキーマ |
+   | **要求本文の JSON スキーマ** | `schema` | いいえ | 受信要求本文内のプロパティと値を記述する JSON スキーマ |
    |||||
 
-1. **[要求本文の JSON スキーマ]** ボックスに、必要に応じて、受信要求内の HTTP 要求本文を記述する JSON スキーマを入力します。次に例を示します。
+1. **[要求本文の JSON スキーマ]** ボックスに、必要に応じて、受信要求内の本文を記述する JSON スキーマを入力します。次に例を示します。
 
    ![JSON スキーマの例](./media/connectors-native-reqres/provide-json-schema.png)
 
@@ -158,7 +160,7 @@ ms.locfileid: "70914327"
 
    ![メソッド パラメーターを追加する](./media/connectors-native-reqres/add-parameters.png)
 
-   <bpt id="p1">**</bpt>[メソッド]<ept id="p1">**</ept> プロパティがトリガー内に表示されるので、メソッドを一覧から選択できます。
+   **[メソッド]** プロパティがトリガー内に表示されるので、一覧からメソッドを選択できます。
 
    ![メソッドを選択する](./media/connectors-native-reqres/select-method.png)
 
@@ -190,7 +192,7 @@ Request トリガーからの出力の詳細を次に示します。
 
 ## <a name="add-a-response-action"></a>Response アクションを追加する
 
-Response アクションを使用すると、受信 HTTP 要求に対してペイロード (データ) で応答することができますが、これは HTTP 要求によってトリガーされるロジック アプリでのみ可能です。 Response アクションは、ご自分のワークフロー内の任意のポイントに追加できます。 このトリガーの基になる JSON 定義の詳細については、[Response タイプのアクション](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)に関するページを参照してください。
+Response アクションを使用すると、受信 HTTPS 要求に対してペイロード (データ) で応答することができますが、これは HTTPS 要求によってトリガーされるロジック アプリでのみ可能です。 Response アクションは、ご自分のワークフロー内の任意のポイントに追加できます。 このトリガーの基になる JSON 定義の詳細については、[Response タイプのアクション](../logic-apps/logic-apps-workflow-actions-triggers.md#response-action)に関するページを参照してください。
 
 ご利用のロジック アプリでは、受信要求が 1 分間だけ開いたままになります。 ご利用のロジック アプリのワークフローに Response アクションが含まれていると仮定すると、この時間が経過してもロジック アプリから応答がない場合、ご利用のロジック アプリは呼び出し元に `504 GATEWAY TIMEOUT` を返します。 あるいは、ご利用のロジック アプリに Response アクションが含まれていない場合、ご利用のロジック アプリは呼び出し元にすぐに `202 ACCEPTED` 応答を返します。
 
@@ -224,7 +226,7 @@ Response アクションを使用すると、受信 HTTP 要求に対してペ�
 
    | プロパティ名 | JSON プロパティ名 | 必須 | 説明 |
    |---------------|--------------------|----------|-------------|
-   | **状態コード** | `statusCode` | はい | 応答で返される HTTP 状態コード |
+   | **状態コード** | `statusCode` | はい | 応答で返される状態コード |
    | **ヘッダー** | `headers` | いいえ | 応答に含める 1 つまたは複数のヘッダーを記述する JSON オブジェクト |
    | **本文** | `body` | いいえ | 応答本文 |
    |||||

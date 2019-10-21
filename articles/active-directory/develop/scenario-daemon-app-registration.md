@@ -16,12 +16,12 @@ ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f590010a655fb01529a4a59b5540cc03068f2b8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: fddd95564e3683aaee067f0442573c41e93376dd
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056470"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264389"
 ---
 # <a name="daemon-app-that-calls-web-apis---app-registration"></a>Web API を呼び出すデーモン アプリ - アプリの登録
 
@@ -43,6 +43,9 @@ ms.locfileid: "71056470"
 デーモン アプリケーションでは、(委任されたアクセス許可ではなく) API に対するアプリケーションのアクセス許可のみを要求できます。 アプリケーション登録の「**API のアクセス許可**」ページで **[アクセス許可の追加]** を選択して API ファミリを選択した後に、 **[アプリケーションのアクセス許可]** を選択して、該当のアクセス許可を選択します
 
 ![アプリのアクセス許可と管理者の同意](media/scenario-daemon-app/app-permissions-and-admin-consent.png)
+
+> [!NOTE]
+> 呼び出す Web API では、委任されたアクセス許可ではなく、**アプリケーションのアクセス許可 (アプリ ロール)** を定義する必要があります。 そのような API を公開する方法の詳細については、[保護された Web API: アプリの登録 - デーモン アプリで Web API が呼び出される場合](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-protected-web-api-app-registration#if-your-web-api-is-called-by-a-daemon-app)に関するページを参照してください。
 
 デーモン アプリケーションには、Web API を呼び出すアプリケーションに対するテナント管理者の事前同意が必要です。 この同意は、テナント管理者が **[ *組織* に管理者の同意を与えます]** を選択することによって、同じ「 **API のアクセス許可** 」ページで提供されます
 

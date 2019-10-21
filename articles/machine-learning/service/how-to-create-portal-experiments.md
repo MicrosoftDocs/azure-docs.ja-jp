@@ -1,6 +1,6 @@
 ---
 title: Azure の自動 ML インターフェイスを使用してモデルをトレーニングおよびデプロイする
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Azure Machine Learning のワークスペース ランディング ページ (プレビュー) で自動化された機械学習の実験を作成、管理、およびデプロイします。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/09/2019
-ms.openlocfilehash: 3ee15b5485f4fc0f81788107ce2378c65085e000
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 45207eb1cdc62f2468d8b0c052723337c18d5021
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910417"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350555"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learnings-workspace-landing-page-preview"></a>Azure Machine Learning のワークスペース ランディング ページ (プレビュー) で自動化された機械学習の実験を作成、参照、およびデプロイします。
 
@@ -26,18 +26,17 @@ ms.locfileid: "70910417"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* Azure Machine Learning ワークスペース。 「[Create an Azure Machine Learning service workspace](how-to-manage-workspace.md)」(Azure Machine Learning service ワークスペースを作成する) を参照してください。
+* Azure Machine Learning ワークスペース。 [Azure Machine Learning ワークスペースを作成する](how-to-manage-workspace.md)方法に関するページを参照してください。
 
 ## <a name="get-started"></a>作業開始
-
 
 1. [ワークスペース ランディング ページ](https://ml.azure.com/workspaceportal/)にサインインします。 
 
 1. サブスクリプションとワークスペースを選択します。 
 
-1. 左ウィンドウに移動します。 **[作成]** セクションで **[Automated ML]\(自動化された ML\)** を選択します。
+1. 左ウィンドウに移動します。 **[作成者]** セクションで **[Automated ML]\(自動 ML\)** を選択します。
 
 [![Azure portal ナビゲーション ウィンドウ](media/how-to-create-portal-experiments/nav-pane.png)](media/how-to-create-portal-experiments/nav-pane-expanded.png)
 
@@ -59,7 +58,7 @@ ms.locfileid: "70910417"
     ---|---
     コンピューティング名| コンピューティング コンテキストを識別する一意名を入力します。
     仮想マシンのサイズ| コンピューティングの仮想マシン サイズを選択します。
-    追加設定| *Min node (最小ノード)* : コンピューティングの最小ノード数を入力します。 AML コンピューティングの最小ノード数は 0 です。 データ プロファイルを有効にするには、1 つ以上のノードが必要です。 <br> *Max node (最大ノード)* : コンピューティングの最大ノード数を入力します。 AML コンピューティングの既定は 6 ノードです。
+    最小および最大ノード ([詳細設定] 内)| データをプロファイリングするには、1 つ以上のノードを指定する必要があります。 コンピューティングの最大ノード数を入力します。 AML コンピューティングの既定は 6 ノードです。
     
     **作成** を選択します。 新しいコンピューティングの作成には数分かかる場合があります。
 
@@ -109,7 +108,7 @@ ms.locfileid: "70910417"
     詳細設定|説明
     ------|------
     主要メトリック| モデルをスコアリングするために使用される主なメトリックです。 [モデルのメトリックの詳細については、こちらを参照してください](how-to-configure-auto-train.md#explore-model-metrics)。
-    終了基準| これらの基準のどれかが満たされると、トレーニング ジョブは完全に完了する前に終了します。 <br> *Training job time (minutes) (トレーニング ジョブ時間 (分))* : トレーニング ジョブを実行できる時間の長さ。  <br> *イテレーションの最大数*: トレーニング ジョブでテストするパイプライン (イテレーション) の最大数。 ジョブは、指定したイテレーションの数より多く実行されることはありません。 <br> *Metric score threshold* (メトリック スコアのしきい値): すべてのパイプラインの最小メトリック スコアです。 これにより、達成目標のターゲット メトリックを定義した場合には、必要以上にトレーニング ジョブに時間を費やすことはなくなります。
+    終了基準| これらの基準のどれかが満たされると、トレーニング ジョブが終了します。 <br> *Training job time (minutes) (トレーニング ジョブ時間 (分))* : トレーニング ジョブを実行できる時間の長さ。  <br> *イテレーションの最大数*: トレーニング ジョブでテストするパイプライン (イテレーション) の最大数。 ジョブは、指定したイテレーションの数より多く実行されることはありません。 <br> *Metric score threshold* (メトリック スコアのしきい値): すべてのパイプラインの最小メトリック スコアです。 これにより、達成目標のターゲット メトリックを定義した場合には、必要以上にトレーニング ジョブに時間を費やすことはなくなります。
     前処理| 自動化された機械学習によって行われる前処理を有効または無効にするように選択します。 前処理には、合成的特徴を生成するための自動データ クレンジング、準備、変換が含まれます。 [前処理の詳細については、こちらを参照してください](#preprocess)。
     検証| トレーニング ジョブで使用するクロス検証オプションをどれか選択します。 [クロス検証の詳細については、こちらを参照してください](how-to-configure-auto-train.md)。
     コンカレンシー| マルチコア コンピューティングの使用時に使用するマルチコアの制限を選択します。

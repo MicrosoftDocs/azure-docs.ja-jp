@@ -2,32 +2,44 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/05/2019
+ms.date: 08/30/2019
 ms.author: wolfma
-ms.openlocfilehash: 308ee2ef121648cb45152948926c5fd7fb934744
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68362551"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327056"
 ---
+Windows 開発用に Visual Studio プロジェクトを作成するためには、プロジェクトの作成、.NET デスクトップ開発用の Visual Studio 設定、Speech SDK のインストール、ターゲット アーキテクチャの選択が必要となります。
+
+### <a name="create-the-project-and-add-the-workload"></a>プロジェクトを作成してワークロードを追加する
+
+まず、Visual Studio でプロジェクトを作成し、.NET デスクトップ開発用に Visual Studio を設定します。
+
 1. Visual Studio 2019 を開きます。
 
 1. [スタート] ウィンドウで、 **[新しいプロジェクトの作成]** を選択します。 
 
-1. **[コンソール アプリ (.NET Framework)]** を選択し、 **[次へ]** を選択します。
+1. **[新しいプロジェクトの作成]** ウィンドウで、 **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
 
-1. **[プロジェクト名]** に `helloworld` と入力して、 **[作成]** を選択します。
+1. **[新しいプロジェクトの構成]** ウィンドウの **[プロジェクト名]** に「*helloworld*」と入力し、**保存先**となるディレクトリのパスを選択するか作成して、 **[作成]** を選択します。
 
-1. Visual Studio のメニュー バーから **[ツール]** 、 **[ツールと機能の取得]** を選択し、 **[.NET デスクトップ開発]** ワークロードが利用できることを確認します。 このワークロードがまだインストールされていない場合は、チェック ボックスをオンにし、 **[変更]** を選択してインストールを開始してください。 ダウンロードとインストールに数分かかる場合があります。
+1. Visual Studio のメニュー バーから、 **[ツール]**  >  **[ツールと機能を取得]** の順に選択して Visual Studio インストーラーを開き、 **[変更中]** ダイアログ ボックスを表示します。
 
-   **[.NET デスクトップ開発]** の横のチェック ボックスがオンになっている場合は、ここでダイアログ ボックスを閉じてかまいません。
+1. **[.NET デスクトップ開発]** ワークロードが利用できるかどうかを確認します。 このワークロードがまだインストールされていない場合は、その横にあるチェック ボックスをオンにし、 **[変更]** を選択してインストールを開始してください。 ダウンロードとインストールに数分かかる場合があります。
+
+   **[.NET デスクトップ開発]** の横のチェック ボックスが既にオンになっている場合は、 **[閉じる]** を選択してダイアログ ボックスを終了します。
 
    ![.NET デスクトップ環境を有効にする](../articles/cognitive-services/speech-service/media/sdk/vs-enable-net-desktop-workload.png)
 
+1. Visual Studio インストーラーを閉じます。
+
+### <a name="install-the-speech-sdk"></a>Speech SDK のインストール
+
 次の手順は、コード内で参照できるように、[Speech SDK NuGet パッケージ](https://aka.ms/csspeech/nuget)をインストールすることです。
 
-1. ソリューション エクスプローラーで `helloworld` を右クリックし、 **[NuGet パッケージの管理]** を選択して NuGet パッケージ マネージャーを表示します。
+1. ソリューション エクスプローラーで **helloworld** プロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択して NuGet パッケージ マネージャーを表示します。
 
    ![NuGet パッケージ マネージャー](../articles/cognitive-services/speech-service/media/sdk/vs-nuget-package-manager.png)
 
@@ -35,15 +47,17 @@ ms.locfileid: "68362551"
 
 1. 左上隅で **[参照]** を選択します。
 
-1. 検索ボックスに「`Microsoft.CognitiveServices.Speech` package」と入力し、Enter キーを押します。
+1. 検索ボックスに「*Microsoft.CognitiveServices.Speech*」と入力し、**Enter** キーを押します。
 
-1. `Microsoft.CognitiveServices.Speech` を選択し、 **[インストール]** を選択し、安定している最新版をインストールします。
+1. 検索結果から **[Microsoft.CognitiveServices.Speech]** パッケージを選択し、 **[インストール]** を選択して最新の安定バージョンをインストールします。
 
    ![Microsoft.CognitiveServices.Speech NuGet パッケージをインストールする](../articles/cognitive-services/speech-service/media/sdk/qs-csharp-dotnet-windows-03-nuget-install-1.0.0.png)
 
 1. すべての契約とライセンスに同意して、インストールを開始します。
 
    パッケージがインストールされると、 **[パッケージマネージャー コンソール]** ウィンドウに確認が表示されます。
+
+### <a name="choose-the-target-architecture"></a>ターゲット アーキテクチャを選択する
 
 次に、コンソール アプリケーションをビルドして実行する目的で、お使いのコンピューターのアーキテクチャに合ったプラットフォーム構成を作成します。
 

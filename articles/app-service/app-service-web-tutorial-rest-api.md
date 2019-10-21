@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/21/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 137b569820ea7394b6a3beb24129c905a2efd123
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: f13b390047ea4d8280b106f3b02a8f18944a6f99
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743875"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255112"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>チュートリアル:Azure App Service で CORS を使用して RESTful API をホストする
 
@@ -72,7 +72,7 @@ dotnet run
 
 ブラウザーで `http://localhost:5000/swagger` に移動して、Swagger UI を起動します。
 
-![ローカルで実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/local-run.png)
+![ローカルで実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-local-swagger-ui.png)
 
 `http://localhost:5000/api/todo` に移動して、ToDo JSON 項目の一覧を確認します。
 
@@ -136,7 +136,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
 
 ブラウザーで `http://<app_name>.azurewebsites.net/swagger` に移動して、Swagger UI を起動します。
 
-![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-run.png)
+![Azure App Service で実行される ASP.NET Core API](./media/app-service-web-tutorial-rest-api/azure-app-service-browse-app.png)
 
 `http://<app_name>.azurewebsites.net/swagger/v1/swagger.json` に移動して、デプロイされた API の _swagger.json_ を確認します。
 
@@ -160,7 +160,7 @@ dotnet run
 
 `http://localhost:5000` でブラウザー アプリに移動します。 ブラウザーで開発者ツール ウィンドウを開き (Windows 用の Chrome では `Ctrl` + `Shift` + `i`)、 **[Console]\(コンソール\)** タブを確認します。`No 'Access-Control-Allow-Origin' header is present on the requested resource` というエラー メッセージが表示されています。
 
-![ブラウザー クライアントでの CORS エラー](./media/app-service-web-tutorial-rest-api/cors-error.png)
+![ブラウザー クライアントでの CORS エラー](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
 ブラウザー アプリ (`http://localhost:5000`) とリモート リソース (`http://<app_name>.azurewebsites.net`) の間でドメインが一致しておらず、App Service の API が `Access-Control-Allow-Origin` ヘッダーを送信していないため、ブラウザー アプリでのクロスドメイン コンテンツの読み込みが、ブラウザーによって妨げられています。
 
@@ -183,7 +183,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 
 `http://localhost:5000` でブラウザー アプリを更新します。 **[Console]\(コンソール\)** ウィンドウのエラー メッセージは消えており、デプロイされた API からのデータを確認して操作できます。 これで、ローカルで実行されているブラウザー アプリへの CORS がリモート API でサポートされました。 
 
-![ブラウザー クライアントでの CORS の成功](./media/app-service-web-tutorial-rest-api/cors-success.png)
+![ブラウザー クライアントでの CORS の成功](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-success.png)
 
 おめでとうございます。CORS サポートを使用して Azure App Service の API が実行されています。
 

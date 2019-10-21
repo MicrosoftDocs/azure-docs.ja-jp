@@ -3,20 +3,19 @@ title: ゲスト構成ポリシーを作成する方法
 description: Windows VM または Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 07/26/2019
+ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: ee8a17846495a122f7432e66c3e343a00dd0a015
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 0be6afc2d4d7f97717200b86d5e5b3bc2194afee
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194625"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376183"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>ゲスト構成ポリシーを作成する方法
 
-ゲスト構成では [Desired State Configuration](/powershell/dsc) (DSC) リソース モジュールを使って、Azure マシンの監査用の構成を作成します。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは**非準拠**と見なされます。
+ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使って、Azure マシンの監査用の構成を作成します。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が失敗した場合、ポリシー効果の **auditIfNotExists** がトリガーされて、マシンは**非準拠**と見なされます。
 
 [Azure Policy のゲスト構成](/azure/governance/policy/concepts/guest-configuration)は、マシン内の設定を監査するためにのみ使用できます。 マシン内の設定の修復はまだ利用できません。
 
@@ -54,9 +53,45 @@ Azure マシンの状態を検証するための独自の構成を作成する�
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration"></a>カスタム ゲスト構成の構成を作成する
+## <a name="create-custom-guest-configuration-configuration-and-resources"></a>カスタム ゲスト構成の構成とリソースを作成する
 
-ゲスト構成のカスタム ポリシーを作成する最初のステップは、DSC 構成の作成です。 DSC の概念と用語の概要については、[PowerShell DSC の概要](/powershell/dsc/overview/overview)に関する記事をご覧ください。
+ゲスト構成のカスタム ポリシーを作成する最初のステップは、DSC 構成の作成です。 DSC の概念と用語の概要については、[PowerShell DSC の概要](/powershell/scripting/dsc/overview/overview)に関する記事をご覧ください。
+
+構成に、ゲスト構成エージェントをインストールすることで組み込まれるリソースのみが必要な場合は、構成 MOF ファイルを作成するだけでかまいません。 追加のスクリプトを実行する必要がある場合は、カスタム リソース モジュールを作成する必要があります。
+
+### <a name="requirements-for-guest-configuration-custom-resources"></a>ゲスト構成のカスタム リソースの要件
+
+ゲスト構成でマシンを監査する場合は、最初に `Test-TargetResource` を実行して、正しい状態であるかどうかを確認します。 関数によって返されるブール値は、ゲスト割り当ての Azure Resource Manager ステータスが準拠しているべきか否かを決定します。 構成内のいずれかのリソースに対してブール値が `$false` の場合、プロバイダーは `Get-TargetResource` を実行します。 ブール値が `$true` の場合、`Get-TargetResource` は呼び出されません。
+
+関数 `Get-TargetResource` には、Windows Desired State Configuration では不要なゲスト構成の特殊な要件があります。
+
+- 返されるハッシュテーブルには **Reasons** という名前のプロパティが含まれている必要があります。
+- Reason プロパティは配列である必要があります。
+- 配列内の各項目は、**コード**および**フレーズ**という名前のキーを持つハッシュテーブルである必要があります。
+
+Reason プロパティは、マシンが準拠していない場合に情報をどのように表示するかをサービスが標準化するために使用されます。 Reasons の各項目は、そのリソースが準拠していない「理由」であると考えることができます。 リソースが複数の理由で準拠していない可能性があるため、プロパティは配列となっています。
+
+サービスでは、プロパティ **コード**および**フレーズ**を指定する必要があります。 カスタムリソースを作成する場合、リソースが準拠していない理由として表示するテキスト (通常は stdout) を**フレーズ**の値に設定します。 **コード**には特定の書式設定要件があるため、監査に使用されたリソースに関する情報をレポートではっきり表示できます。 このソリューションにより、ゲスト構成を拡張できます。 出力をキャプチャして、**Phrase** プロパティの文字列値として返すことができる限り、任意のコマンドを実行してコンピューターを監査できます。
+
+- **コード** (文字列):リソースの名前、繰り返し、およびスペースを含まない短い名前を理由の識別子として指定します。 これら 3 つの値は、スペースを含まず、コロンで区切られている必要があります。
+  - たとえば、`registry:registry:keynotpresent` などです
+- **フレーズ** (文字列):設定が準拠していない理由を説明するための、人間が判読できるテキスト。
+  - たとえば、`The registry key $key is not present on the machine.` などです
+
+```powershell
+$reasons = @()
+$reasons += @{
+  Code = 'Name:Name:ReasonIdentifer'
+  Phrase = 'Explain why the setting is not compliant'
+}
+return @{
+    reasons = $reasons
+}
+```
+
+#### <a name="scaffolding-a-guest-configuration-project"></a>ゲスト構成プロジェクトのスキャフォールディング
+
+サンプルコードを使用して作業開始プロセスの迅速化に取り組む開発者向けに、[Plaster](https://github.com/powershell/plaster) PowerShell モジュール用のテンプレートとして**ゲスト構成プロジェクト**という名前のコミュニティ プロジェクトがあります。 このツールを使用することで、作業中の構成とサンプルリソースを含むプロジェクトと、プロジェクトを検証するための一連の [Pester](https://github.com/pester/pester) をスキャフォールディングできます。 このテンプレートには、ゲスト構成パッケージの構築と検証を自動化するための Visual Studio Code のタスク ランナーも含まれています。 詳細については、[ゲスト構成プロジェクト](https://github.com/microsoft/guestconfigurationproject) に関する GitHub プロジェクトを参照してください。
 
 ### <a name="custom-guest-configuration-configuration-on-linux"></a>Linux でのカスタム ゲスト構成の構成
 
@@ -80,7 +115,7 @@ Configuration baseline
 baseline
 ```
 
-詳細については、[構成の作成、コンパイル、適用](/powershell/dsc/configurations/write-compile-apply-configuration)に関する記事をご覧ください。
+詳細については、[構成の作成、コンパイル、適用](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)に関する記事をご覧ください。
 
 ### <a name="custom-guest-configuration-configuration-on-windows"></a>Windows でのカスタム ゲスト構成の構成
 
@@ -106,7 +141,7 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-詳細については、[構成の作成、コンパイル、適用](/powershell/dsc/configurations/write-compile-apply-configuration)に関する記事をご覧ください。
+詳細については、[構成の作成、コンパイル、適用](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)に関する記事をご覧ください。
 
 ## <a name="create-guest-configuration-custom-policy-package"></a>ゲスト構成のカスタム ポリシー パッケージを作成する
 
@@ -128,7 +163,7 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 
 `New-GuestConfigurationPackage` コマンドレットのパラメーター:
 
-- **[名前]** :ゲスト構成のパッケージ名。
+- **Name**:ゲスト構成のパッケージ名。
 - **構成**:コンパイル済み DSC 構成ドキュメントの完全なパス。
 - **パス**:出力フォルダーのパス。 このパラメーターは省略可能です。 指定しないと、パッケージは現在のディレクトリに作成されます。
 - **ChefProfilePath**: InSpec プロファイルへの完全なパス。 このパラメーターは、Linux を監査するコンテンツを作成する場合にのみサポートされます。
@@ -139,15 +174,23 @@ New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}'
 
 Azure Policy のゲスト構成で、実行時に使われるシークレットを管理する最適な方法は、Azure Key Vault に保存することです。 この設計は、カスタム DSC リソース内に実装されます。
 
-最初に、Azure でユーザー割り当てマネージド ID を作成します。 その ID は、Key Vault に格納されているシークレットにアクセスするために、マシンによって使われます。 詳しい手順については、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」をご覧ください。
+1. 最初に、Azure でユーザー割り当てマネージド ID を作成します。
 
-次に、Key Vault のインスタンスを作成します。 詳しい手順については、[PowerShell を使用してシークレットの設定と取得を行う](../../../key-vault/quick-create-powershell.md)に関する記事をご覧ください。
-インスタンスにアクセス許可を割り当てて、Key Vault に格納されているシークレットにユーザー割り当て ID でアクセスできるようにします。 詳しい手順については、[.NET を使用してシークレットの設定と取得を行う](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)に関する記事をご覧ください。
+   その ID は、Key Vault に格納されているシークレットにアクセスするために、マシンによって使われます。 詳しい手順については、「[Azure PowerShell を使用してユーザー割り当てマネージド ID を作成、一覧表示、削除する](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)」をご覧ください。
 
-次に、ユーザー割り当て ID をマシンに割り当てます。 詳しい手順については、[PowerShell を使用して Azure VM 上の Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)に関する記事をご覧ください。
-大規模な場合は、Azure Resource Manager を使って Azure Policy でこの ID を割り当てます。 詳しい手順については、[テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)に関する記事をご覧ください。
+1. Key Vault のインスタンスを作成します。
 
-最後に、カスタム リソース内で、上で生成されたクライアント ID を使って、コンピューターから利用可能なトークンを使って Key Vault にアクセスします。 `client_id` と Key Vault インスタンスへの URL は、[プロパティ](/powershell/dsc/resources/authoringresourcemof#creating-the-mof-schema)としてリソースに渡すことができるため、複数の環境の場合、または値を変更する必要がある場合でも、リソースを更新する必要はありません。
+   詳しい手順については、[PowerShell を使用してシークレットの設定と取得を行う](../../../key-vault/quick-create-powershell.md)に関する記事をご覧ください。
+   インスタンスにアクセス許可を割り当てて、Key Vault に格納されているシークレットにユーザー割り当て ID でアクセスできるようにします。 詳しい手順については、[.NET を使用してシークレットの設定と取得を行う](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault)に関する記事をご覧ください。
+
+1. ユーザー割り当て ID をマシンに割り当てます。
+
+   詳しい手順については、[PowerShell を使用して Azure VM 上の Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)に関する記事をご覧ください。
+   大規模な場合は、Azure Resource Manager を使って Azure Policy でこの ID を割り当てます。 詳しい手順については、[テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)に関する記事をご覧ください。
+
+1. 最後に、カスタム リソース内で、上で生成されたクライアント ID を使って、コンピューターから利用可能なトークンを使って Key Vault にアクセスします。
+
+   `client_id` と Key Vault インスタンスへの URL は、[プロパティ](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema)としてリソースに渡すことができるため、複数の環境の場合、または値を変更する必要がある場合でも、リソースを更新する必要はありません。
 
 カスタム リソースで次のコード サンプルを使うことで、ユーザー割り当て ID を使って Key Vault からシークレットを取得できます。 Key Vault への要求から返される値はプレーンテキストです。 ベスト プラクティスとしては、それを資格情報オブジェクト内に格納します。
 
@@ -173,7 +216,7 @@ Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsS
 
 `Test-GuestConfigurationPackage` コマンドレットのパラメーター:
 
-- **[名前]** :ゲスト構成ポリシーの名前。
+- **Name**:ゲスト構成ポリシーの名前。
 - **Parameter**: ハッシュテーブル形式で提供されるポリシー パラメーター。
 - **パス**:ゲスト構成パッケージの完全なパス。
 
@@ -183,7 +226,7 @@ Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsS
 New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
 ```
 
-パラメーターでのテスト方法の詳細については、後述の「[カスタム ゲスト構成ポリシーでのパラメーターの使用](/azure/governance/policy/how-to/guest-configuration-create#using-parameters-in-custom-guest-configuration-policies)」のセクションを参照してください。
+パラメーターでのテスト方法の詳細については、後述の「[カスタム ゲスト構成ポリシーでのパラメーターの使用](#using-parameters-in-custom-guest-configuration-policies)」のセクションを参照してください。
 
 ## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Azure Policy 定義とイニシアティブ デプロイ ファイルを作成する
 
@@ -226,8 +269,7 @@ New-GuestConfigurationPolicy
 
 ゲスト構成では、実行時に構成のプロパティをオーバーライドすることができます。 この機能は、パッケージの MOF ファイル内の値を静的と見なす必要がないことを意味します。 オーバーライドする値は Azure Policy を通じて提供され、構成の作成方法またはコンパイル方法には影響しません。
 
-`New-GuestConfigurationPolicy` と `Test-GuestConfigurationPolicyPackage` のコマンドレットには、**Parameters** という名前のパラメーターが含まれています。
-このパラメーターは、各パラメーターの詳細をすべて含むハッシュテーブル定義を受け取り、各 Azure Policy 定義の作成に使用されるファイルのすべての必要なセクションが自動的に作成されます。
+`New-GuestConfigurationPolicy` と `Test-GuestConfigurationPolicyPackage` のコマンドレットには、**Parameters** という名前のパラメーターが含まれています。 このパラメーターは、各パラメーターの詳細をすべて含むハッシュテーブル定義を受け取り、各 Azure Policy 定義の作成に使用されるファイルのすべての必要なセクションが自動的に作成されます。
 
 次の例では、サービスを監査するための Azure Policy を作成します。ポリシーの割り当て時にサービスの一覧からユーザーが選択します。
 
@@ -256,7 +298,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Linux ポリシーの場合は、構成に `AttributesYmlContent` プロパティを含め、それに従って値を上書きします。 ゲスト構成エージェントでは、属性を格納するために InSpec によって使われる YaML ファイルが自動的に作成されます。 次の例を見てください。
+Linux ポリシーの場合は、構成に **AttributesYmlContent** プロパティを含め、それに従って値を上書きします。 ゲスト構成エージェントでは、属性を格納するために InSpec によって使われる YaML ファイルが自動的に作成されます。 次の例を見てください。
 
 ```azurepowershell-interactive
 Configuration FirewalldEnabled {
@@ -318,18 +360,14 @@ Azure で作成されるポリシー定義とイニシアティブ定義に関�
 
 カスタム コンテンツ パッケージを使ってカスタム Azure Policy を発行した後、新しいリリースを発行する場合に更新する必要があるフィールドが 2 つあります。
 
-- **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。  このプロパティにより、新しいポリシー ファイルのゲスト構成割り当てのバージョンが更新され、パッケージが更新されたことを拡張機能で認識できるようになります。
-- **contentHash**: このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。  `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。  このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。  ユーザーがポータルからポリシー定義を手動で変更した場合など、`contentUri` プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
+- **バージョン**:`New-GuestConfigurationPolicy` コマンドレットを実行するときは、現在発行されているバージョンより大きいバージョン番号を指定する必要があります。 このプロパティにより、新しいポリシー ファイルのゲスト構成割り当てのバージョンが更新され、パッケージが更新されたことを拡張機能で認識できるようになります。
+- **contentHash**: このプロパティは、`New-GuestConfigurationPolicy` コマンドレットによって自動的に更新されます。 `New-GuestConfigurationPackage` によって作成されるパッケージのハッシュ値です。 このプロパティは、発行する `.zip` ファイルに対して適切なものである必要があります。 ユーザーがポータルからポリシー定義を手動で変更した場合など、**contentUri** プロパティのみが更新された場合、拡張機能ではコンテンツ パッケージが受け入れられません。
 
-更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。
-このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。
+更新されたパッケージをリリースする最も簡単な方法は、この記事で説明されているプロセスを繰り返し、更新されたバージョン番号を指定することです。 このプロセスにより、すべてのプロパティが正しく更新されることが保証されます。
 
 ## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows グループ ポリシー コンテンツから Azure Policy ゲスト構成への変換
 
-Windows マシンを監査する場合のゲスト構成は、PowerShell Desired State Configuration 構文の実装です。
-DSC コミュニティでは、エクスポートしたグループ ポリシー テンプレートを DSC 形式に変換するためのツールが公開されています。
-このツールを前述のゲスト構成コマンドレットと共に使用することで、Windows グループ ポリシーのコンテンツを変換し、Azure Policy 用にパッケージ化および公開して監査することができます。
-ツールの使用の詳細については、[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。
+Windows マシンを監査する場合のゲスト構成は、PowerShell Desired State Configuration 構文の実装です。 DSC コミュニティでは、エクスポートしたグループ ポリシー テンプレートを DSC 形式に変換するためのツールが公開されています。 このツールを前述のゲスト構成コマンドレットと共に使用することで、Windows グループ ポリシーのコンテンツを変換し、Azure Policy 用にパッケージ化および公開して監査することができます。 ツールの使用の詳細については、[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/scripting/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。
 コンテンツの変換後は、パッケージを作成して Azure Policy として公開する上記の手順は、他の DSC コンテンツと同じです。
 
 ## <a name="optional-signing-guest-configuration-packages"></a>省略可能:ゲスト構成パッケージに署名する
@@ -365,15 +403,13 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 
 Linux マシンで使用する GPG キーの作成については、GitHub の[新しい GPG キーの生成](https://help.github.com/en/articles/generating-a-new-gpg-key)に関する記事に優れたリファレンスが提供されています。
 
-コンテンツを発行した後、コード署名が必要なすべての仮想マシンに、名前が `GuestConfigPolicyCertificateValidation` で値が `enabled` のタグを追加します。 このタグは、Azure Policy を使って大規模に配信できます。 「[サンプル - タグとその既定値の適用](../samples/apply-tag-default-value.md)」をご覧ください。
-このタグを配置すると、`New-GuestConfigurationPolicy` コマンドレットを使って生成されるポリシー定義では、ゲスト構成拡張による要件が有効になります。
+コンテンツを発行した後、コード署名が必要なすべての仮想マシンに、名前が `GuestConfigPolicyCertificateValidation` で値が `enabled` のタグを追加します。 このタグは、Azure Policy を使って大規模に配信できます。 「[サンプル - タグとその既定値の適用](../samples/apply-tag-default-value.md)」をご覧ください。 このタグを配置すると、`New-GuestConfigurationPolicy` コマンドレットを使って生成されるポリシー定義では、ゲスト構成拡張による要件が有効になります。
 
 ## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>[プレビュー] ゲスト構成ポリシー割り当てのトラブルシューティング
 
-Azure Policy ゲスト構成割り当てのトラブルシューティングに役立つツールをプレビューで利用できます。
-このツールはプレビュー段階であり、[Guest Configuration Troubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) というモジュール名で PowerShell ギャラリーに公開されています。
+Azure Policy ゲスト構成割り当てのトラブルシューティングに役立つツールをプレビューで利用できます。 このツールはプレビュー段階であり、[Guest Configuration Troubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) というモジュール名で PowerShell ギャラリーに公開されています。
 
-このツールのコマンドレットの詳細については、PowerShell の Get-Help コマンドを使用して、組み込みのガイダンスを参照してください。  ツールは頻繁に更新されるため、この方法が最新の情報を取得するための最適な方法です。
+このツールのコマンドレットの詳細については、PowerShell の Get-Help コマンドを使用して、組み込みのガイダンスを参照してください。 ツールは頻繁に更新されるため、この方法が最新の情報を取得するための最適な方法です。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,32 +12,39 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: ce5f7ab1e6751a9ce68aa2d9c466a112c9cac182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff9d4bb98a79c379fda2c1a0a0ab9d5e0ec212ce
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60900610"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338085"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、およびメソッド実行時間の監視
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、メソッド実行時間の監視
 
 
 [Java Web アプリを Application Insights][java] でインストルメント化した場合、Java エージェントを使用して、コードを変更することなく、詳細な分析を行うことができます。
 
 * **依存関係:** アプリケーションが他のコンポーネントに対して行った呼び出しについてのデータであり、次のものを含みます。
-  * HttpClient、OkHttp、および RestTemplate (Spring) 経由で行われた **REST 呼び出し**がキャプチャされます。
+  * Apache HttpClient、OkHttp、`java.net.HttpURLConnection` 経由で**発信された HTTP 呼び出し**がキャプチャされます。
   * Jedis クライアント経由で行われた **Redis** 呼び出しがキャプチャされます。
-  * **[JDBC 呼び出し](https://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** - MySQL、SQL Server、Oracle DB の各コマンドが自動的にキャプチャされます。 MySQL で呼び出しにかかる時間が 10 秒を超えた場合、エージェントはクエリ プランをレポートします。
-* **例外の検出:** コードで処理される例外に関する情報。
-* **メソッドの実行時間:** 特定のメソッドの実行にかかる時間に関する情報。
+  * **JDBC クエリ** - MySQL と PostgreSQL で呼び出しにかかる時間が 10 秒を超えた場合、エージェントはクエリ プランをレポートします。
+
+* **アプリケーションのログ記録:** アプリケーション ログをキャプチャし、HTTP 要求やその他のテレメトリに関連付けます。
+  * **Log4j 1.2**
+  * **Log4j2**
+  * **Logback**
+
+* **操作の名前付けの改善:** (ポータルでの要求の集計に使用)
+  * **Spring** - `@RequestMapping` に基づく。
+  * **JAX-RS** - `@Path` に基づく。 
 
 Java エージェントを使用するには、これをサーバーにインストールします。 Web アプリを [Application Insights Java SDK][java] を使用してインストルメント化する必要があります。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Jave 用の Application Insights エージェントのインストール
 1. Java サーバーを実行しているコンピューターで [エージェントをダウンロード](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)します。 Application Insights の Java SDK コアおよび Web パッケージと同じバージョンの Java エージェントをダウンロードするようにしてください。
-2. アプリケーション サーバーのスタートアップ スクリプトを編集し、次の JVM を追加します。
+2. アプリケーション サーバーのスタートアップ スクリプトを編集し、次の JVM 引数を追加します。
    
-    `javaagent:`*エージェント JAR ファイルへの完全パス*
+    `-javaagent:<full path to the agent JAR file>`
    
     たとえば、Linux マシンの Tomcat で以下を実行します。
    
@@ -50,44 +57,32 @@ Java エージェントを使用するには、これをサーバーにインス
 xml ファイルの内容を設定します。 次の例を編集して、必要に応じて、機能を含めるか省略します。
 
 ```XML
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn enabled="true">
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <ApplicationInsightsAgent>
-      <Instrumentation>
+         <!-- capture logging via Log4j 1.2, Log4j2, and Logback, default is true -->
+         <Logging enabled="true" />
 
-        <!-- Collect remote dependency data -->
-        <BuiltIn enabled="true">
-           <!-- Disable Redis or alter threshold call duration above which arguments are sent.
-               Defaults: enabled, 10000 ms -->
-           <Jedis enabled="true" thresholdInMS="1000"/>
+         <!-- capture outgoing HTTP calls performed through Apache HttpClient, OkHttp,
+              and java.net.HttpURLConnection, default is true -->
+         <HTTP enabled="true" />
 
-           <!-- Set SQL query duration above which query plan is reported (MySQL, PostgreSQL). Default is 10000 ms. -->
-           <MaxStatementQueryLimitInMS>1000</MaxStatementQueryLimitInMS>
-        </BuiltIn>
+         <!-- capture JDBC queries, default is true -->
+         <JDBC enabled="true" />
 
-        <!-- Collect data about caught exceptions
-             and method execution times -->
+         <!-- capture Redis calls, default is true -->
+         <Jedis enabled="true" />
 
-        <Class name="com.myCompany.MyClass">
-           <Method name="methodOne"
-               reportCaughtExceptions="true"
-               reportExecutionTime="true"
-               />
-           <!-- Report on the particular signature
-                void methodTwo(String, int) -->
-           <Method name="methodTwo"
-              reportExecutionTime="true"
-              signature="(Ljava/lang/String;I)V" />
-        </Class>
+         <!-- capture query plans for JDBC queries that exceed this value (MySQL, PostgreSQL),
+              default is 10000 milliseconds -->
+         <MaxStatementQueryLimitInMS>1000</MaxStatementQueryLimitInMS>
 
-      </Instrumentation>
-    </ApplicationInsightsAgent>
-
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
 ```
-
-レポートの例外や、個々のメソッドのメソッド タイミングを有効にする必要があります。
-
-既定では、`reportExecutionTime` は true、`reportCaughtExceptions` は false です。
 
 ## <a name="additional-config-spring-boot"></a>追加構成 (Spring Boot)
 
@@ -98,10 +93,10 @@ Azure App Services については、次のようにします。
 * [設定]、[アプリケーションの設定] の順に選択します
 * [アプリ設定] で、新しいキー値ペアを追加します。
 
-キー:`JAVA_OPTS`値:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.3.1-SNAPSHOT.jar`
+キー:`JAVA_OPTS`値:`-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.5.0.jar`
 
 Java の最新バージョンについては、[ここ](https://github.com/Microsoft/ApplicationInsights-Java/releases
-) でリリースを確認してください。 
+)でリリースを確認してください。 
 
 エージェントは、D:/home/site/wwwroot/ directory で終わるようにプロジェクト内でリソースとしてパッケージ化する必要があります。 **[開発ツール]**  >  **[高度なツール]**  >  **[デバッグ コンソール]** に進み、サイト ディレクトリの内容を調べることで、エージェントが正しい App Service ディレクトリにあることを確認できます。    
 
@@ -110,33 +105,16 @@ Java の最新バージョンについては、[ここ](https://github.com/Micro
 > [!NOTE]
 > AI-Agent.xml とエージェントの jar ファイルは同じフォルダーに含まれている必要があります。 多くの場合、これらはプロジェクトの `/resources` フォルダーに一緒に配置されます。  
 
-### <a name="spring-rest-template"></a>Spring Rest テンプレート
-
-Spring の Rest テンプレートで行われた HTTP 呼び出しを Application Insights で正しくインストルメント化するためには、Apache HTTP クライアントが必要です。 既定では、Spring の Rest テンプレートが Apache HTTP クライアントを使用する構成になっていません。 Spring Rest テンプレートのコンストラクターで [HttpComponentsClientHttpRequestfactory](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/http/client/HttpComponentsClientHttpRequestFactory.html) を指定することによって、Apache HTTP が使用されるようになります。
-
-これを Spring Beans で行う例を以下に示しました。 これは、ファクトリ クラスの既定の設定を使用するごく単純な例です。
-
-```java
-@bean
-public ClientHttpRequestFactory httpRequestFactory() {
-return new HttpComponentsClientHttpRequestFactory()
-}
-@Bean(name = 'myRestTemplate')
-public RestTemplate dcrAccessRestTemplate() {
-    return new RestTemplate(httpRequestFactory())
-}
-```
-
 #### <a name="enable-w3c-distributed-tracing"></a>W3C 分散トレースを有効にする
 
 AI-Agent.xml に次のコードを追加します。
 
 ```xml
 <Instrumentation>
-        <BuiltIn enabled="true">
-            <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
-        </BuiltIn>
-    </Instrumentation>
+   <BuiltIn enabled="true">
+      <HTTP enabled="true" W3C="true" enableW3CBackCompat="true"/>
+   </BuiltIn>
+</Instrumentation>
 ```
 
 > [!NOTE]
@@ -144,7 +122,7 @@ AI-Agent.xml に次のコードを追加します。
 
 すべてのサービスが、W3C プロトコルをサポートする新しいバージョンの SDK に更新されたときに、これを行うことが理想的です。 W3C をサポートする新しいバージョンの SDK にできるだけ早く移行することを強くお勧めします。
 
-**受信と送信 (エージェント) の構成が**[両方とも](correlation.md#w3c-distributed-tracing)正確に同じであることを確認してください。
+**受信と送信 (エージェント) の構成が**[両方とも](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps)正確に同じであることを確認してください。
 
 ## <a name="view-the-data"></a>データの表示
 Application Insights リソースでは、集計されたリモートの依存関係やメソッドの実行時間が [[パフォーマンス] タイル][metrics]に表示されます。

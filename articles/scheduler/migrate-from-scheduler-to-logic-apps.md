@@ -8,40 +8,44 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 09/20/2018
-ms.openlocfilehash: 0225a9f34e016a4b1de51c06ba982d384e41007c
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.date: 09/23/2019
+ms.openlocfilehash: 73aa641fc4bb01ef3d06820ecd18b61197ab81e7
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302087"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695493"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler ジョブを Azure Logic Apps に移行する
 
 > [!IMPORTANT]
-> Azure Logic Apps は、廃止予定の Azure Scheduler の後継です。 ジョブのスケジュールを設定するには、代わりに Azure Logic Apps に移行するためのこの記事に従います。
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、この記事に従って、できるだけ早く Azure Logic Apps に移行してください。 
 
 この記事では、Azure Scheduler ではなく Azure Logic Apps を使用して自動化されたワークフローを作成することで、1 回限りのジョブと定期的なジョブをスケジュール設定する方法を示します。 Logic Apps を使用してスケジュールされたジョブを作成すると、次のメリットが得られます。
 
-* 各ロジック アプリは個別の Azure リソースであるため、*ジョブ コレクション*の概念について心配する必要はありません。
+* ビジュアル デザイナーと、Azure Blob Storage、Azure Service Bus、Office 365 Outlook、SAP などの数百のサービスの[すぐに使用できるコネクタ](../connectors/apis-list.md)を使用して、ジョブを構築します。
 
-* 1 つのロジック アプリを使用して、複数の 1 回限りのジョブを実行できます。
+* スケジュールされた各ワークフローを最上級の Azure リソースとして管理します。 各ロジック アプリは個別の Azure リソースであるため、*ジョブ コレクション*の概念について心配する必要はありません。
 
-* Azure Logic Apps サービスでは、タイム ゾーンと夏時間 (DST) をサポートしています。
+* 1 つのロジック アプリを使用して、複数の 1 回限りのジョブを実行します。
 
-詳細については、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照するか、 または[初めてのロジック アプリを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)のクイック スタートで初めてのロジック アプリを作成してみてください。
+* タイム ゾーンをサポートし、夏時間 (DST) に合わせて自動調整されるスケジュールを設定します。
+
+詳細については、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照するか、[初めてのロジック アプリを作成する](../logic-apps/quickstart-create-first-logic-app-workflow.md)のクイック スタートで初めてのロジック アプリを作成してみてください。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 
 * HTTP 要求を送信することでロジック アプリをトリガーするには、[Postman デスクトップ アプリ](https://www.getpostman.com/apps)などのツールを使用します。
+
+## <a name="migrate-by-using-a-script"></a>スクリプトを使用して移行する
+
+Scheduler ジョブはそれぞれ固有であるため、Azure Logic Apps へのすべての Scheduler ジョブの移行に 1 つで対応できるツールは存在しません。 ただし、[このスクリプトを編集する](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)ことにより、ニーズを満たすことができます。
 
 ## <a name="schedule-one-time-jobs"></a>1 回限りのジョブをスケジュール設定する
 
 ロジック アプリを 1 つだけ作成して、複数の 1 回限りのジョブを実行できます。 
-
-### <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーで空のロジック アプリを作成します。 
 
@@ -102,10 +106,10 @@ ms.locfileid: "68302087"
 
 たとえば、Postman アプリを使用して、このサンプルと同じような設定で POST 要求を作成し、 **[送信]** を選択して要求を行うことができます。
 
-| 要求メソッド | URL | 本文 | headers |
-|----------------|-----|------|---------| 
-| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>**[raw]** ボックスに、要求で送信するペイロードを入力します。 <p>**メモ**:この設定により、 **[ヘッダー]** 値が自動的に構成されます。 | **[キー]** :Content-Type <br>**値**: application/json
- |||| 
+| 要求メソッド | URL | Body | headers |
+|----------------|-----|------|---------|
+| **POST** | <*endpoint-URL*> | **raw** <p>**JSON(application/json)** <p>**[raw]** ボックスに、要求で送信するペイロードを入力します。 <p>**メモ**:この設定により、 **[ヘッダー]** 値が自動的に構成されます。 | **[キー]** :Content-Type <br>**値**: application/json |
+|||||
 
 ![ロジック アプリを手動でトリガーする要求を送信する](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
 
@@ -115,7 +119,7 @@ ms.locfileid: "68302087"
 
 > [!IMPORTANT]
 >
-> 後でジョブをキャンセルする場合は、 **[ヘッダー]** タブを選択します。応答で **x-ms-workflow-run-id** ヘッダー値を見つけてコピーします。 
+> 後でジョブを取り消す場合は、 **[ヘッダー]** タブを選択します。応答で **x-ms-workflow-run-id** ヘッダー値を見つけてコピーします。 
 >
 > ![Response](./media/migrate-from-scheduler-to-logic-apps/postman-response.png)
 
@@ -124,8 +128,6 @@ ms.locfileid: "68302087"
 Logic Apps では、1 回限りのジョブはそれぞれ 1 つのロジック アプリの実行インスタンスとして実行されます。 1 回限りのジョブをキャンセルするには、Logic Apps REST API で[ワークフロー実行 - キャンセル](https://docs.microsoft.com/rest/api/logic/workflowruns/cancel)を使用できます。 トリガーへの呼び出しを送信するときに、[ワークフロー実行 ID](#workflow-run-id) を指定します。
 
 ## <a name="schedule-recurring-jobs"></a>定期的なジョブをスケジュール設定する
-
-### <a name="create-your-logic-app"></a>ロジック アプリを作成する
 
 1. [Azure portal](https://portal.azure.com) のロジック アプリ デザイナーで空のロジック アプリを作成します。 
 
@@ -139,7 +141,7 @@ Logic Apps では、1 回限りのジョブはそれぞれ 1 つのロジック 
 
    ![詳細なスケジュール](./media/migrate-from-scheduler-to-logic-apps/recurrence-advanced-schedule.png)
 
-   詳細なスケジュール オプションの詳細については、「[定期的に実行されるタスクとワークフローを Azure Logic Apps で作成、実行する](../connectors/connectors-native-recurrence.md)」を参照してください。
+   詳細なスケジュール オプションの詳細については、[定期的に実行されるタスクとワークフローを Azure Logic Apps で作成、実行する方法](../connectors/connectors-native-recurrence.md)に関するページを参照してください。
 
 1. [数百単位のすぐに使えるコネクタ](../connectors/apis-list.md)から選択し、実行するその他のアクションを追加できます。 トリガーで、 **[次のステップ]** を選択します。 目的のアクションを探して選択します。
 
@@ -159,7 +161,7 @@ Logic Apps では、1 回限りのジョブはそれぞれ 1 つのロジック 
 
 断続的なエラーが発生したときに、ロジック アプリでアクションが再実行を試行する方法を制御するために、各アクションの設定で[再試行ポリシー](../logic-apps/logic-apps-exception-handling.md#retry-policies)を設定できます。次に例を示します。
 
-1. アクションの **[...]** メニューを開き、 **[設定]** を選択します。
+1. アクションの省略記号 ( **[...]** ) メニューを開き、 **[設定]** を選択します。
 
    ![アクションの設定を開く](./media/migrate-from-scheduler-to-logic-apps/action-settings.png)
 
@@ -179,7 +181,7 @@ Azure Sheduler では、既定のアクションが実行に失敗した場合�
 
    ![並列アクションを追加する](./media/migrate-from-scheduler-to-logic-apps/add-parallel-action.png)
 
-1. 代替アクションで、 **[...]** メニューを開き、 **[実行条件の構成]** を選択します。
+1. 代替アクションで、省略記号 ( **[...]** ) メニューを開き、 **[実行条件の構成]** を選択します。
 
    ![実行条件の構成](./media/migrate-from-scheduler-to-logic-apps/configure-run-after.png)
 
@@ -187,25 +189,25 @@ Azure Sheduler では、既定のアクションが実行に失敗した場合�
 
    !["実行条件" プロパティの設定](./media/migrate-from-scheduler-to-logic-apps/select-run-after-properties.png)
 
-1. 完了したら、 **[完了]** を選択します。
+1. 完了したら、 **[完了]** をクリックします。
 
 例外処理の詳細については、[エラーと例外処理 - RunAfter プロパティ](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property)に関するセクションを参照してください。
 
 ## <a name="faq"></a>FAQ
 
-<a name="retire-date"></a> 
+<a name="retire-date"></a>
 
 **Q**: Azure Scheduler が廃止になるのはいつですか。 <br>
-**A**: Azure Scheduler は、2019 年 9 月 30 日に廃止される予定です。
+**A**: Azure Scheduler は、2019 年 12 月 31 日に完全に廃止される予定です。 この日付より前に行う必要がある重要な手順と詳細なタイムラインについては、「[Scheduler のサービス停止日を 2019 年 12 月 31 日まで延長](https://azure.microsoft.com/en-us/updates/extending-retirement-date-of-scheduler/)」を参照してください。 一般的な更新については、[Azure の更新情報 - スケジューラ](https://azure.microsoft.com/updates/?product=scheduler)を参照してください。
 
-**Q**: サービスの廃止後、Scheduler のジョブ コレクションとジョブはどうなりますか。 <br>
-**A**: Scheduler のすべてのジョブ コレクションとジョブがシステムから削除されます。
+**Q**: サービスの廃止後、ジョブ コレクションとジョブはどうなりますか。 <br>
+**A**: Scheduler のすべてのジョブ コレクションとジョブが実行を停止され、システムから削除されます。
 
 **Q**: Scheduler ジョブを Logic Apps に移行する前に、バックアップまたはその他のタスクを実行する必要がありますか。 <br>
 **A**: ベスト プラクティスとして、作業は常にバックアップしてください。 Scheduler ジョブを削除または無効にする前に、作成したロジック アプリが期待どおりに実行されていることを確認します。 
 
 **Q**: ジョブを Scheduler から Logic Apps に移行するために役立つツールはありますか。 <br>
-**A**: 各 Scheduler ジョブは独特であるため、すべてに対応できるツールは存在しません。 ただし、必要に応じた変更を行うために使用できるさまざまなスクリプトがあります。 スクリプトの可用性については、後で確認します。
+**A**: 各 Scheduler ジョブは独特であるため、すべてに対応できるツールは存在しません。 ただし、ニーズに基づき、[このスクリプトを編集して Azure Scheduler ジョブを Azure Logic Apps に移行する](https://github.com/Azure/logicapps/tree/master/scripts/scheduler-migration)ことができます。
 
 **Q**: Scheduler ジョブを移行するためのサポートはどこで受けられますか。 <br>
 **A**: サポートを受けるためのいくつかの方法を次に示します。 
@@ -216,13 +218,13 @@ Azure サブスクリプションに有料サポート プランがある場合�
 
 1. [Azure portal](https://portal.azure.com) のメイン メニューで、 **[ヘルプとサポート]** を選択します。
 
-1. **[サポート]** の下で、 **[新しいサポート要求]** を選びます。 要求に対して次の詳細を指定します。
+1. **[サポート]** メニューの **[新しいサポート リクエスト]** を選択します。 リクエストに関して次の情報を入力します。
 
-   | Setting | 値 |
+   | プロパティ | 値 |
    |---------|-------|
-   | **問題の種類** | **テクニカル** | 
-   | **サブスクリプション** | <*ご使用の Azure サブスクリプション*> | 
-   | **サービス** | **[監視 + 管理]** の下で、 **[Scheduler]** を選択します。 | 
+   | **問題の種類** | **テクニカル** |
+   | **サブスクリプション** | <*ご使用の Azure サブスクリプション*> |
+   | **サービス** | **[監視 + 管理]** の下で、 **[Scheduler]** を選択します。 **[Scheduler]** が見つからない場合は、まず **[すべてのサービス]** を選択します。 |
    ||| 
 
 1. 必要なサポート オプションを選択します。 有料サポート プランがある場合は、 **[次へ]** を選択します。

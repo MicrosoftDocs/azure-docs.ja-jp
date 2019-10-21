@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/08/2019
-ms.openlocfilehash: 6ba252ccf7a46e93b2057b6822f2aae298f537d1
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 86875643950e11f1e5030676c1ab3825039749ed
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991642"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71203530"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Azure Red Hat OpenShift に関する FAQ
 
@@ -164,3 +164,45 @@ Azure で仮想マシン スケール セットを使用すると、既定で 5 
 Azure Red Hat OpenShift では、VNET ピアリングをサポートしており、顧客がピアリングする VNET と、OpenShift ネットワークが動作する VNET CIDR を提供することを許可します。
 
 ARO によって作成された VNET は保護され、構成の変更は受け入れられません。 ピアリングされた VNET は顧客によって制御され、そのサブスクリプションに存在します。
+
+## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>クラスターは顧客のサブスクリプション内に存在しますか? 
+
+Azure マネージド アプリケーションは、顧客のサブスクリプションを利用するロックされたリソース グループ内に存在します。 顧客は、その RG 内のオブジェクトを表示できますが、変更はできません。
+
+## <a name="is-the-sdn-module-configurable"></a>SDN モジュールは構成可能ですか?
+
+SDN は openshift-ovs-networkpolicy であり、構成することはできません。
+
+## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>マスター/インフラストラクチャ/アプリ ノードでは、どの UNIX 権限 (IaaS 内) を使用できますか?
+
+このオファリングには該当しません。 ノード アクセスは禁止されています。
+
+## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>私たちには、どの OCP 権限がありますか? クラスター管理者ですか? プロジェクト管理者ですか?
+
+詳細については、Azure Red Hat OpenShift [クラスター管理者の概要](https://docs.openshift.com/aro/admin_guide/index.html)に関するページを参照してください。
+
+## <a name="which-kind-of-federation-with-ldap"></a>LDAP と共に利用されるのは、どの種類のフェデレーションですか?
+
+これは、Azure AD の統合によって実現されます。 
+
+## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>他の顧客と共有される ARO 内の要素はありますか? それとも、すべてが独立しているのでしょうか?
+
+各 Azure Red Hat OpenShift クラスターは指定された顧客専用であり、その顧客のサブスクリプション内に存在します。 
+
+## <a name="can-we-choose-any-persistent-storage-solution-ocs"></a>いずれかの永続ストレージ ソリューションを OCS 用に選択できますか? 
+
+2 つのストレージ クラスから選ぶことができます。Azure Disk と Azure File です。
+
+## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>クラスターはどのように更新されますか (脆弱性に起因するメジャーとマイナーを含む)。
+
+「[一般的なアップグレード プロセスとは何ですか?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)」を参照してください。
+
+## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>どの Azure Load Balancer が ARO によって使用されますか?  Standard ですか、それとも Basic ですか、また、構成は可能ですか?
+
+ARO では Standard の Azure Load Balancer が使用され、構成することはできません。
+
+## <a name="can-aro-use-netapp-based-storage"></a>ARO では、NetApp ベースのストレージを使用できますか?
+
+現時点では、サポートされているストレージ オプションは、Azure Disk および Azure File ストレージ クラスだけです。 
+
+

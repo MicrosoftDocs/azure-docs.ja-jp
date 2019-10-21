@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: b003c0cc6480c5d03c3755e7c57785ab2026194b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: cf95a66cf68cf0b33444a17cf762bae79db4b50c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498401"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243429"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Azure Automation State Configuration による管理のためのマシンのオンボード
 
@@ -56,7 +56,7 @@ Azure VM Desired State Configuration 拡張機能は非同期に実行される�
 
 マシンに PowerShell Desired State 拡張機能がインストールされておらず、[電源の状態] が [実行中] の場合は、 **[接続]** をクリックします。
 
-**[登録]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/dsc/managing-nodes/metaconfig)、および必要に応じて VM に割り当てるノード構成を入力します。
+**[登録]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](/powershell/scripting/dsc/managing-nodes/metaConfig)、および必要に応じて VM に割り当てるノード構成を入力します。
 
 ![オンボード](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
@@ -67,7 +67,8 @@ Azure Virtual Machines は、Azure Resource Manager テンプレートを使用�
 
 ### <a name="powershell"></a>PowerShell
 
-[Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) コマンドレットを使用すると、PowerShell 経由で Azure portal で仮想マシンをオンボードできます。
+PowerShell を使用して Azure に仮想マシンをオンボードするには、[Register-AzAutomationDscNode](/powershell/module/az.automation/register-azautomationdscnode) コマンドレットを使用します。
+ただし現在、このコマンドレットの実装で想定されているのは、Windows を実行するマシンだけです (このコマンドレットでトリガーされるのは Windows の拡張機能だけです)。
 
 ### <a name="registering-virtual-machines-across-azure-subscriptions"></a>Azure サブスクリプションにまたがる仮想マシンの登録
 
@@ -99,7 +100,7 @@ AWS DSC Toolkit を使用して Azure Automation State Configuration による�
 オンプレミスまたは他のクラウド環境で実行している Linux サーバーも、[Azure にアウトバウンド アクセス](automation-dsc-overview.md#network-planning)できる限り、Azure Automation State Configuration にオンボードできます。
 
 1. Azure Automation State Configuration にオンボードするマシンに最新バージョンの [PowerShell Desired State Configuration for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) がインストールされていることを確認します。
-1. [PowerShell DSC Local Configuration Manager の既定値](/powershell/dsc/metaconfig4) がユース ケースに適しており、 **両方とも** Azure Automation State Configuration とデータをやり取りするマシンをオンボードするには、次のようにします。
+1. [PowerShell DSC Local Configuration Manager の既定値](/powershell/scripting/dsc/managing-nodes/metaConfig4) がユース ケースに適しており、 **両方とも** Azure Automation State Configuration とデータをやり取りするマシンをオンボードするには、次のようにします。
 
    - Azure Automation State Configuration にオンボードする各 Linux マシンで、`Register.py` と PowerShell DSC Local Configuration Manager の既定値を使用してオンボードします。
 
@@ -133,7 +134,7 @@ AWS DSC Toolkit を使用して Azure Automation State Configuration による�
 
 ## <a name="generating-dsc-metaconfigurations"></a>DSC メタ構成の生成
 
-マシンを包括的に Azure Automation State Configuration にオンボードするために、Azure Automation State Configuration とデータをやり取りするように DSC エージェントに指示する [DSC メタ構成](/powershell/dsc/metaconfig)を生成できます。 Azure Automation State Configuration の DSC メタ構成は、PowerShell DSC 構成または Azure Automation PowerShell コマンドレットのいずれかを使用して生成できます。
+マシンを包括的に Azure Automation State Configuration にオンボードするために、Azure Automation State Configuration とデータをやり取りするように DSC エージェントに指示する [DSC メタ構成](/powershell/scripting/dsc/managing-nodes/metaConfig)を生成できます。 Azure Automation State Configuration の DSC メタ構成は、PowerShell DSC 構成または Azure Automation PowerShell コマンドレットのいずれかを使用して生成できます。
 
 > [!NOTE]
 > DSC メタ構成には Automation アカウントにマシンをオンボードするために必要な管理用の機密データが含まれています。 作成した DSC メタ構成は適切に保護し、使用後は削除してください。
@@ -317,8 +318,8 @@ Azure Automation State Configuration を使用すると、構成管理のため�
 
 Azure Automation State Configuration に DSC ノードとしてマシンを登録した後も、さまざまな理由で、そのノードを再登録する必要があります。
 
-- 登録すると、各ノードは、1 年後に有効期限が切れる認証用の一意の証明書を自動的にネゴシエートします。 現時点では、PowerShell DSC 登録プロトコルは、有効期限が近づいたときに証明書を自動的に更新することはできないため、1 年後にノードを再登録する必要があります。 再登録する前に、各ノードで Windows Management Framework 5.0 RTM が実行されていることを確認します。 ノードの認証証明書の有効期限が切れるときにノードが再登録されない場合、ノードは Azure Automation と通信できなくなり、[反応なし] とマークされます。 証明書の有効期限が切れる 90 日以内または証明書の有効期限が切れた後で再登録を実行すると、新しい証明書が生成されて使用されます。
-- ConfigurationMode など、ノードの最初の登録時に設定した [PowerShell DSC Configuration Manager 値](/powershell/dsc/metaconfig4)を変更する場合。 現在、DSC エージェント値を変更するには、再登録を使用する必要があります。 1 つの例外は、ノードに割り当てられたノード構成です。この場合、Azure Automation DSC で直接変更できます。
+- Windows Server 2019 より前のバージョンのWindows Server では、1 年後に有効期限が切れる認証用の一意の証明書を各ノードが自動的にネゴシエートします。 現時点では、PowerShell DSC 登録プロトコルは、有効期限が近づいたときに証明書を自動的に更新することはできないため、1 年後にノードを再登録する必要があります。 再登録する前に、各ノードで Windows Management Framework 5.0 RTM が実行されていることを確認します。 ノードの認証証明書の有効期限が切れるときにノードが再登録されない場合、ノードは Azure Automation と通信できなくなり、[反応なし] とマークされます。 証明書の有効期限が切れる 90 日以内または証明書の有効期限が切れた後で再登録を実行すると、新しい証明書が生成されて使用されます。  Windows Server 2019 以降には、この問題への解決策が含まれています。
+- ConfigurationMode など、ノードの最初の登録時に設定した [PowerShell DSC Configuration Manager 値](/powershell/scripting/dsc/managing-nodes/metaConfig4)を変更する場合。 現在、DSC エージェント値を変更するには、再登録を使用する必要があります。 1 つの例外は、ノードに割り当てられたノード構成です。この場合、Azure Automation DSC で直接変更できます。
 
 再登録は、ノードを最初に登録する場合と同様です。このドキュメントで説明しているオンボード方法のいずれかを使用します。 ノードを再登録する前に、Azure Automation State Configuration のノードの登録を解除する必要はありません。
 

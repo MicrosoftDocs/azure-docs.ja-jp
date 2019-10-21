@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9ab09c7215827369b3e1fc449af68be307881f51
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a3e4a598446c0b59cd678e186906abc61d3d727d
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928009"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123076"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure Public Cloud での分離
 ##  <a name="introduction"></a>はじめに
@@ -128,19 +128,8 @@ ISO/IEC 27001 など監査済み認証を備えたビジネス サービスは�
 Microsoft Azure ではクラウドベースのコンピューティング サービスが提供されます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。 これらのコンピューティング インスタンスおよびサービスでは、複数のレベルで分離が提供され、お客様が求める構成の柔軟性を損なわずにデータを保護することができます。
 
 ### <a name="isolated-virtual-machine-sizes"></a>分離された仮想マシン サイズ
-Azure Compute では、特定のハードウェアの種類に分離される、単一顧客専用の仮想マシン サイズを提供します。  これらの仮想マシン サイズは、コンプライアンスや規制上の要件などの要素に関連するワークロードについて、他の顧客からの高いレベルの分離を必要とするワークロードに最適です。  お客様は、[入れ子になった仮想マシンの Azure サポート](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)を使用して、これらの分離された仮想マシンのリソースをさらに分割することもできます。
 
-分離されたサイズを利用することで、お使いの仮想マシンがその特定のサーバー インスタンス上で実行されている唯一のマシンであることが保証されます。  現在の分離された仮想マシンのプランには、以下が含まれます。
-* Standard_E64is_v3
-* Standard_E64i_v3
-* Standard_M128ms
-* Standard_GS5
-* Standard_G5
-* Standard_DS15_v2
-* Standard_D15_v2
-* Standard_F72s_v2
-
-利用可能な分離されたサイズごとの詳細については、[こちら](../../virtual-machines/windows/sizes-memory.md)を参照してください。
+[!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>ルート VM とゲスト VM の間での Hyper-V とルート OS の分離
 Azure のコンピューティング プラットフォームは、コンピューターの仮想化に基づいています。つまり、顧客のすべてのコードは Hyper-V 仮想マシンで実行します。 各 Azure ノード (またはネットワーク エンドポイント) にはハイパーバイザーがあり、ハードウェア上で直接実行して、ノードをいくつものゲスト仮想マシン (VM) に分割します。
@@ -352,7 +341,7 @@ Azure デプロイでは、複数の層でネットワークの分離を行う�
 
 - [Windows Azure Virtual Network 内のマシンのためのネットワーク分離のオプション](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
 
-これには、従来のフロントエンドとバックエンドのシナリオが含まれます。特定のバックエンド ネットワークまたはサブネットワーク内のマシンは、特定のクライアントまたは他のコンピューターが、IP アドレスのホワイトリストに基づいて特定のエンドポイントのみに接続するように許可できます。
+これには、従来のフロントエンドとバックエンドのシナリオが含まれます。特定のバックエンド ネットワークまたはサブネットワーク内のマシンでは、IP アドレスの許可リストに基づいて、特定のクライアントまたは他のコンピューターに、特定のエンドポイントへの接続だけを許可できます。
 
 - [コンピューティングの分離](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
 

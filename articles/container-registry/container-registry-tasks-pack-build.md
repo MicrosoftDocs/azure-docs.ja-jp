@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 08/06/2019
+ms.date: 10/10/2019
 ms.author: danlep
-ms.openlocfilehash: 4e41bcaff8faef2c4eaec9ae852955d4b7ce354b
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: b544820a0c496e0814de44790ea9c28878031a7d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839900"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72293904"
 ---
 # <a name="build-and-push-an-image-from-an-app-using-a-cloud-native-buildpack"></a>Cloud Native Buildpacks を使用して、アプリからイメージをビルドしてプッシュする
 
@@ -31,20 +31,20 @@ Cloud Native Buildpacks を使用してコンテナー イメージをビルド�
 
 * コマンドを実行する Azure コンテナー レジストリ
 * イメージ名と生成されるイメージのタグ
-* ローカル ディレクトリ、GitHub リポジトリ、リモートの tarball など、ACR タスクで[サポートされるコンテキストの場所](container-registry-tasks-overview.md#quick-task)のいずれか。
-* Buildpack ビルダー イメージの名前 (例: `cloudfoundry/cnb:bionic`)。  
+* ローカル ディレクトリ、GitHub リポジトリ、リモートの tarball など、ACR タスクで[サポートされるコンテキストの場所](container-registry-tasks-overview.md#context-locations)のいずれか。
+* Buildpack ビルダー イメージの名前 (例: `cloudfoundry/cnb:0.0.12-bionic`)。  
 
 `az acr pack build` では、[Run 変数](container-registry-tasks-reference-yaml.md#run-variables)や、ストリーミングされ、後で取得できるように保存される[タスク実行ログ](container-registry-tasks-overview.md#view-task-logs)など、ACR タスク コマンドの他の機能もサポートしています。
 
 ## <a name="example-build-nodejs-image-with-cloud-foundry-builder"></a>例:Cloud Foundry ビルダーを使用して Node.js イメージをビルドする
 
-次の例では、`cloudfoundry/cnb:bionic` ビルダーを使用して、[Azure Samples/nodejs-docs-hello world リポジトリ](https://github.com/Azure-Samples/nodejs-docs-hello-world)の node.js アプリからコンテナー イメージをビルドします。
+次の例では、`cloudfoundry/cnb:0.0.12-bionic` ビルダーを使用して、[Azure Samples/nodejs-docs-hello world リポジトリ](https://github.com/Azure-Samples/nodejs-docs-hello-world)の node.js アプリからコンテナー イメージをビルドします。
 
 ```azurecli
 az acr pack build \
     --registry myregistry \
     --image {{.Run.Registry}}/node-app:1.0 \
-    --pull --builder cloudfoundry/cnb:bionic \
+    --pull --builder cloudfoundry/cnb:0.0.12-bionic \
     https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 ```
 

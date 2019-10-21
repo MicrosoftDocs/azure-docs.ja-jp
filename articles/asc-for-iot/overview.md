@@ -13,22 +13,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
+ms.date: 09/26/2019
 ms.author: mlottner
-ms.openlocfilehash: fdccf486cacabda4f363f4629a4d6daa4a00c8e4
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 36514c342f8ed8d988f26fcb69daf30c42ee5cf3
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597158"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176631"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure Security Center for IoT の概要
 
 ハイブリッド クラウド ワークロードおよび Azure IoT ソリューション全体で、セキュリティ管理を統合し、エンド ツー エンドの脅威の検出と分析を可能にします。 
 
-## <a name="protect-iot-and-hybrid-cloud-workloads-against-evolving-cyber-attacks"></a>進化するサイバー攻撃から IoT およびハイブリッド クラウド ワークロードを保護する
+## <a name="secure-your-entire-iot-solution-from-iot-devices-to-azure-cloud"></a>IoT デバイスから Azure クラウドまで IoT ソリューション全体を保護します。
 
-モノのインターネットにより、私たちの世界は急速に変化しています。 接続されたデバイスやバックエンド システムから分析情報を得ることができ、こうした情報を、組織が経営や事業の実績をこれまでにないレベルに引き上げるのに役立つ、強力なアプリケーションやサービスに作り替えることができます。 ただし、何十億もの新しいデバイスがインターネットに接続され、私たちの日常生活やビジネスに統合されているため、セキュリティ運用チームは、これらの新しい攻撃面をカバーできるよう、セキュリティ戦略を迅速に進化させる必要があります。 他のシステムと同様に、IoT ソリューションをセキュリティで保護するには、実装の各段階での保護が必要です。 
+Microsoft のシームレスなエージェントレス ソリューションから選択するか、エージェント ベースの包括的なセキュリティを利用してください。Azure Security Center for IoT は、ご利用の IoT アセット全体で、すべてのデバイス、IoT Edge およびIoT Hub に対して脅威の防止と分析を提供します。
+
+何十億もの新しいデバイスがインターネットに接続され、私たちの日常生活やビジネスに統合されているため、セキュリティ運用チームは、それぞれの新しい攻撃面をカバーできるよう、セキュリティ戦略を迅速に進化させる必要があります。 他のシステムと同様に、IoT ソリューションを包括的に保護するためには、実装のすべての段階において保護が必要になります。 
 
 Azure Security Center for IoT は、エッジ、オンプレミス、Azure、その他のクラウド上で実行されているワークロードにまたがる統一された可視性と制御、アダプティブな脅威の防止、およびインテリジェントな脅威の検出と対応を提供することによってハイブリッド ワークロード保護を簡素化します。 
 
@@ -36,7 +38,7 @@ Azure Security Center for IoT は、エッジ、オンプレミス、Azure、そ
 
 ### <a name="unified-visibility-and-control"></a>統一された可視性と制御
 
-Azure IoT ソリューションなど、オンプレミスとクラウドのすべてのワークロードのセキュリティを、統合された 1 つのビューで確認できます。 新しいデバイスをオンボードし、ワークロード (リーフ デバイス、Microsoft Edge デバイス、IoT Hub) にセキュリティ ポリシーを適用して、セキュリティ標準へのコンプライアンスとセキュリティ体制の改善を保証します。
+Azure IoT ソリューションなど、オンプレミスとクラウドのすべてのワークロードのセキュリティを、統合された 1 つのビューで確認できます。 新しいデバイスをオンボードし、ワークロード (リーフ デバイス、Microsoft Edge デバイス、IoT Hub) にセキュリティ ポリシーを適用して、セキュリティ標準へのコンプライアンスとセキュリティ体制の改善を保証します。 
 
 ### <a name="adaptive-threat-prevention"></a>アダプティブ脅威に対する防護
 

@@ -2,17 +2,16 @@
 title: Azure Automation を使用した Azure Analysis Services モデルの更新 | Microsoft Docs
 description: Azure Automation を使用してモデルの更新をコーディングする方法について説明します。
 author: chrislound
-manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 4cae93cff594ad561973f8029ea7335dc4c60263
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ed1634ef1009149dc2937174b20248eab9cd335f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66356998"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294783"
 ---
 # <a name="refresh-with-azure-automation"></a>Azure Automation を使用した更新
 
@@ -22,7 +21,7 @@ Azure Automation および PowerShell Runbook を使用して、Azure Analysis �
 
 モデルの更新方法を示す PowerShell Runbook のサンプルは、この記事の後半で提供されます。  
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 すべての呼び出しを、有効な Azure Active Directory (OAuth 2) トークンで認証する必要があります。  この記事の例では、サービス プリンシパル (SPN) を使用して Azure Analysis Services を認証します。
 

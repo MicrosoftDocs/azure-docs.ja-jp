@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: 94b2b807eb68d628165ca8fa4011b8f3e41d3c6d
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: d8925f1c31b7a0c8f45e65e783077e8f5e2b0add
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599650"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103244"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
 オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。 
@@ -73,16 +73,16 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
 
    - 既定の設定で DNS サービスを有効にするには、次の例のように、`properties` セクション内の `addonFeatures` セクションに DNS サービスを追加します。
 
-       ```json
-           "properties": {
-              ...
-
-              "addonFeatures": [
-                "DnsService"
+        ```json
+          "properties": {
+            ...
+            "addonFeatures": [
+              "DnsService"
               ],
-              ...
-           }
-       ```
+            ...
+          }
+        ```
+
    - 既定以外の設定でサービスを有効にするには、`properties` セクション内の `fabricSettings` セクションに `DnsService` セクションを追加します。 このケースでは、DnsService を `addonFeatures` に追加する必要はありません。 DNS サービスに関して設定できるプロパティの詳細については、[DNS サービスの設定](./service-fabric-cluster-fabric-settings.md#dnsservice)に関するページを参照してください。
 
        ```json
@@ -111,7 +111,10 @@ Service Fabric バージョン 6.3 以降では、Service Fabric の DNS プロ�
               ]
             }
        ```
-1. 必要な変更でクラスター テンプレートを更新したら、変更を適用してアップグレードを完了します。 アップグレードが完了すると、DNS システム サービスはクラスター内で実行を開始します。 サービス名は `fabric:/System/DnsService` であり、それは Service Fabric Explorer の **[システム]** サービス セクションで見つかります。 
+3. 必要な変更でクラスター テンプレートを更新したら、変更を適用してアップグレードを完了します。 アップグレードが完了すると、DNS システム サービスはクラスター内で実行を開始します。 サービス名は `fabric:/System/DnsService` であり、それは Service Fabric Explorer の **[システム]** サービス セクションで見つかります。 
+
+> [!NOTE]
+> DNS を無効から有効にアップグレードしたときに、Service Fabric Explorer に新しい状態が反映されない場合があります。 解決するには、Azure Resource Manager テンプレート内で UpgradePolicy を変更して、ノードを再起動します。 詳細については、[Service Fabric テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications)に関するページを参照してください。
 
 
 ## <a name="setting-the-dns-name-for-your-service"></a>サービスの DNS 名を設定する
@@ -179,7 +182,7 @@ DNS クエリで使用されるパーティションについては、名前付�
 各値の説明:
 
 - <*First-Label-Of-Partitioned-Service-DNSName*> は、サービスの DNS 名の最初の部分です。
-- <*PartitionPrefix*> は、クラスター マニフェストの DnsService セクションで設定できる値、またはクラスターの Resource Manager テンプレートで設定できる値です。 既定値は "-" です。 詳細については、[DNS サービスの設定](./service-fabric-cluster-fabric-settings.md#dnsservice)に関するページを参照してください。
+- <*PartitionPrefix*> は、クラスター マニフェストの DnsService セクションで設定できる値、またはクラスターの Resource Manager テンプレートで設定できる値です。 既定値は "--" です。 詳細については、[DNS サービスの設定](./service-fabric-cluster-fabric-settings.md#dnsservice)に関するページを参照してください。
 - <*Target-Partition-Name*> は、パーティションの名前です。 
 - <*PartitionSuffix*> は、クラスター マニフェストの DnsService セクションで設定できる値、またはクラスターの Resource Manager テンプレートで設定できる値です。 既定値は空の文字列です。 詳細については、[DNS サービスの設定](./service-fabric-cluster-fabric-settings.md#dnsservice)に関するページを参照してください。
 - <*Remaining-Partitioned-Service-DNSName*> は、サービスの DNS 名の残りの部分です。

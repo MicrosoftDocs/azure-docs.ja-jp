@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 473e16c610e7dee0b2838cb1a54ef7cd98958889
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f4dc13717b65a53b90a68ac48a2281687c157edf
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232974"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978571"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>クイック スタート:ポータル内でブループリントを定義して割り当てる
 
@@ -223,7 +222,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    1. ドロップダウン リストから使用可能な **[オファー]** を選択します。
 
-   1. 省略記号を使用して、サブスクリプションをその子にする[管理グループ](../management-groups/index.md)を選択します。
+   1. 省略記号を使用して、サブスクリプションをその子にする[管理グループ](../management-groups/overview.md)を選択します。
 
    1. ページの下部にある **[作成]** を選択します。
 

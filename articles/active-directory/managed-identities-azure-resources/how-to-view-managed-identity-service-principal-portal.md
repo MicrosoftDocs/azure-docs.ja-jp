@@ -15,18 +15,21 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5f6139062c4d302284cc653606ae838206d3691a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0a8db0254f85980022115cab5d73f7f329b57001
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290726"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827565"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>Azure portal でマネージド ID のサービス プリンシパルを表示する
 
 Azure リソースのマネージド ID は、Azure Active Directory で自動的に管理される ID を Azure サービスに提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
 この記事では、Azure portal でマネージド ID のサービス プリンシパルを表示する方法について説明します。
+
+ > [!NOTE] 
+ > サービス プリンシパルは、エンタープライズ アプリケーションです。 
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -8,12 +8,12 @@ ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: rugopala
-ms.openlocfilehash: 7c018ad15ee653bcdc903492028ec5ed058dbd14
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: aaff1d5e657b8acb28293f3450849b1446727680
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992227"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030779"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>ビッグ データ分析ソリューションを Azure Data Lake Storage Gen1 から Azure Data Lake Storage Gen2 にアップグレードする
 
@@ -115,7 +115,7 @@ Data Lake Storage Gen1 から Data Lake Storage Gen2 を使用するようにソ
 
 Data Lake Storage Gen1 を使用するときは、さまざまな Microsoft サービスと製品をエンド ツー エンドのパイプラインで使用できます。 これらのサービスと製品は、Data Lake Storage Gen1 で直接的または間接的に動作します。 次の表では、Data Lake Storage Gen1 で動作するように変更されているサービス、および現在 Data Lake Storage Gen2 と互換性があるサービスの一覧を示します。
 
-| **領域**             | **Data Lake Storage Gen1 での使用可否**                                                                                                                                    | **Data Lake Storage Gen2 での使用可否 - 共有キー認証を使用**                                                                                                           | **Data Lake Storage Gen2 での使用可否 - OAuth を使用**                                                                                        |
+| **領域**             | **Data Lake Storage Gen1 での使用可否**                                                                                                                                    | **Data Lake Storage Gen2 での使用可否 - 共有キー認証を使用**                                                                                                           | **Data Lake Storage Gen2 での使用可否 - OAuth を使用**                                                                                        |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 分析フレームワーク  | [Apache Hadoop](https://hadoop.apache.org/docs/current/hadoop-azure-datalake/index.html)                                                                                       | "*既に使用可能*"                                                                                                                                                              | "*既に使用可能*"                                                                                                                                 |
 |                      | [HDInsight](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-hdinsight-hadoop-use-portal)                                                               | [HDInsight](https://docs.microsoft.com/azure/storage/data-lake-storage/quickstart-create-connect-hdi-cluster) 3.6 - "*既に使用可能*"、HDInsight 4.0 - "*まだ使用不可能*"      | HDInsight 3.6 ESP – "*既に使用可能*" <br><br>  HDInsight 4.0 ESP - "*まだ使用不可能*"                                                                 |
@@ -249,7 +249,7 @@ Data Lake Storage Gen1 または Data Lake Storage Gen2 でアプリケーショ
 
 Data Lake Storage Gen1 の詳細な URI 形式は[こちら](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-store)でせつめいされていますが、大まかには *adl://mydatalakestore.azuredatalakestore.net/\<ファイル パス\>* です。
 
-Data Lake Storage Gen2 のファイルにアクセスするための URI 形式については[こちら](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)で詳しく説明されていますが、大まかには `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>` です。
+Data Lake Storage Gen2 のファイルにアクセスするための URI 形式については[こちら](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md)で詳しく説明されていますが、大まかには `abfss://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>` です。
 
 既存のアプリケーションを調べて、Data Lake Storage Gen2 の URI を指すように URI が適切に変更されていることを確認する必要があります。 また、適切な資格情報を追加する必要があります。 最後に、元のアプリケーションの使用を終了して新しいアプリケーションに置き換える方法は、全体的なアップグレード戦略と密接に整合している必要があります。
 

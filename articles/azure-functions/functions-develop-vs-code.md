@@ -7,12 +7,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/21/2019
 ms.author: glenga
-ms.openlocfilehash: 3fa68cf3996efa047b7573306749acb56b4c9411
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 77805b15d0061d0ab4b6ef2185c2f7f1c3459f0c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "70744096"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172073"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Visual Studio Code を使用して Azure Functions を開発する
 
@@ -90,7 +90,7 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
     >[!IMPORTANT]
     >local.settings.json ファイルにはシークレットを含めることができるため、それをプロジェクト ソース管理から除外する必要があります。
 
-この時点で、[function.json ファイルを変更する](#javascript-2)か、[パラメーターを C# クラス ライブラリ関数に追加する](#c-class-library-2)ことにより、関数に入出力バインドを追加できます。
+この時点で、[function.json ファイルを変更する](#add-a-function-to-your-project)か、[パラメーターを C# クラス ライブラリ関数に追加する](#add-a-function-to-your-project)ことにより、関数に入出力バインドを追加できます。
 
 また、[新しい関数をプロジェクトに追加する](#add-a-function-to-your-project)こともできます。
 
@@ -98,11 +98,11 @@ Functions の拡張機能により、最初の関数と共に関数アプリ プ
 
 HTTP トリガーとタイマー トリガーを除き、バインドは拡張機能パッケージで実装されます。 拡張機能パッケージは、それらを必要とするトリガーおよびバインド用のものをインストールする必要があります。 バインドの拡張機能をインストールするプロセスは、プロジェクトの言語によって異なります。
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-### <a name="c-class-library"></a>C\# クラス ライブラリ
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 ターミナル ウィンドウで [dotnet add package](/dotnet/core/tools/dotnet-add-package) コマンドを実行して、プロジェクトに必要な拡張機能パッケージをインストールします。 次のコマンドは、Blob Storage、Queue Storage、Table Storage のバインドを実装する Azure Storage 拡張機能をインストールします。
 
@@ -110,19 +110,23 @@ HTTP トリガーとタイマー トリガーを除き、バインドは拡張�
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
 
+---
+
 ## <a name="add-a-function-to-your-project"></a>プロジェクトに関数を追加する
 
-定義済みの Functions トリガー テンプレートのいずれかを使用して、既存のプロジェクトに新しい関数を追加できます。 新しい関数トリガーを追加するには、F1 キーを選択してコマンド パレットを開き、次にコマンド **Azure Functions: Create Function** を検索して実行します。 プロンプトに従ってトリガーの種類を選択し、そのトリガーの必要な属性を定義します。 トリガーで、サービスに接続するためのアクセス キーまたは接続文字列が必要な場合は、関数トリガーを作成する前にそれを準備しておいてください。
+定義済みの Functions トリガー テンプレートのいずれかを使用して、既存のプロジェクトに新しい関数を追加できます。 新しい関数トリガーを追加するには、F1 キーを押してコマンド パレットを開き、次のコマンドを探して実行します: **Azure Functions: Create Function**。 プロンプトに従ってトリガーの種類を選択し、そのトリガーの必要な属性を定義します。 トリガーで、サービスに接続するためのアクセス キーまたは接続文字列が必要な場合は、関数トリガーを作成する前にそれを準備しておいてください。
 
 このアクションの結果は、お使いのプロジェクトの言語によって異なります。
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 プロジェクト内に新しいフォルダーが作成されます。 そのフォルダーには、新しい function.json ファイルと新しい JavaScript コード ファイルが含まれています。
 
-### <a name="c-class-library"></a>C\# クラス ライブラリ
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 新しい C# クラス ライブラリ (.cs) ファイルがプロジェクトに追加されます。
+
+---
 
 ## <a name="add-input-and-output-bindings"></a>入出力バインドを追加する
 
@@ -130,7 +134,7 @@ dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 
 次の例では、`outqueue` という名前のストレージ キューに接続します。ここで、ストレージ アカウントの接続文字列は、local.settings.json の `MyStorageConnection` アプリケーション設定に指定されています。
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
 Visual Studio Code では、便利な一連のプロンプトに従って、function.json ファイルにバインドを追加できます。 バインドを作成するには、関数フォルダー内の **function.json** ファイルを右クリック (macOS では Ctrl を押しながらクリック) して **[バインドの追加]** を選択します。
 
@@ -168,7 +172,7 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 
 詳細については、[キュー ストレージの出力バインド](functions-bindings-storage-queue.md#output---javascript-example)の参照をご覧ください。
 
-### <a name="c-class-library"></a>C\# クラス ライブラリ
+# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
 次のパラメーターを `Run` メソッド定義に追加する関数メソッドを更新します。
 
@@ -181,6 +185,8 @@ context.bindings.msg = "Name passed to the function: " req.query.name;
 ```cs
 using Microsoft.Azure.WebJobs.Extensions.Storage;
 ```
+
+---
 
 `msg` パラメーターは `ICollector<T>` 型です。これは、関数の完了時に出力バインドに書き込まれるメッセージのコレクションを表します。 1 つ以上のメッセージをコレクションに追加します。 これらのメッセージは、関数の完了時にキューに送信されます。
 
@@ -212,7 +218,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 
 1. サインしていない場合は、**Azure にサインイン**するよう求められます。 **無料の Azure アカウントを作成**することもできます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。
 
-1. 複数のサブスクリプションがある場合は、関数アプリの**サブスクリプションを選択**してから、 **[+ Create New Function App in Azure...]\(+Azure で新しい関数アプリを作成する...\) _[Advanced]\(高度\)_** を選択してください。 この_高度_なオプションを使用すると、Azure で作成するリソースをより細かく制御できます。 
+1. 複数のサブスクリプションがある場合、関数アプリの**サブスクリプションを選択**してから、 **[+ Create New Function App in Azure... _Advanced_]\(+ Azure で新しい関数アプリを作成... 詳細\)** を選択します。 この_高度_なオプションを使用すると、Azure で作成するリソースをより細かく制御できます。 
 
 1. プロンプトに従って、次の情報を入力します。
 
@@ -235,7 +241,7 @@ Visual Studio Code から発行するときには、[ZIP デプロイ](functions
 > [!IMPORTANT]
 > 既存の関数アプリに発行すると、Azure のそのアプリのコンテンツが上書きされます。
 
-1. Visual Studio Code で、F1 キーを選択してコマンド パレットを開きます。 コマンド パレットで、**Azure Functions:Deploy to function app** を検索して選択します。
+1. Visual Studio Code で、F1 キーを選択してコマンド パレットを開きます。 コマンド パレットで、次のコマンドを探して実行します: **Azure Functions: Deploy to function app**。
 
 1. サインしていない場合は、**Azure にサインイン**するよう求められます。 ブラウザーからサインインしたら、Visual Studio Code に戻ります。 複数のサブスクリプションがある場合は、自分の関数アプリが含まれている**サブスクリプションを選択**します。
 
@@ -323,14 +329,14 @@ Azure の関数アプリに必要な設定を発行する最も簡単な方法�
 
 ![アプリケーション設定をアップロードする](./media/functions-develop-vs-code/upload-app-settings.png)
 
-コマンド パレットで **Azure Functions:Upload Local Setting** コマンドを使用して設定を発行することもできます。 **Azure Functions:Add New Setting** コマンドを使用して、Azure のアプリケーション設定に個々の設定を追加できます。
+設定を発行するには、**Azure Functions: Upload Local Setting** コマンド (コマンド パレット) を使用することもできます。 Azure のアプリケーション設定に個々の設定を追加するには、**Azure Functions: Add New Setting** コマンドを使用します。
 
 > [!TIP]
 > 発行する前に local.settings.json ファイルを必ず保存してください。
 
 ローカル ファイルが暗号化されている場合は、復号化され、発行されて、再び暗号化されます。 2 つの場所で値が競合する設定がある場合は、続行する方法を選択するように求められます。
 
-お使いのサブスクリプション、関数アプリ、 **[アプリケーションの設定]** を展開して、**Azure:Functions** 領域で既存のアプリ設定を表示します。
+既存のアプリ設定を **Azure: Functions** 領域で表示するには、サブスクリプション、関数アプリ、 **[アプリケーションの設定]** を展開します。
 
 ![Visual Studio Code で関数アプリの設定を表示する](./media/functions-develop-vs-code/view-app-settings.png)
 
@@ -373,7 +379,7 @@ Azure でアプリケーション設定を作成した場合は、次のコマ�
 
 1. **[ユーザー設定]**  >  **[拡張機能]**  >  **[Azure Functions]** にアクセスします。
 
-1. **[Azure Function:Project Language]\(Azure Function: プロジェクト言語\)** から **[C#Script]** を選択します。
+1. **C#Script** を **Azure Function: Project Language** から選択します。
 
 これらの手順を完了した後、基盤となる Core Tools への呼び出しには、C# スクリプト (.csx) プロジェクト ファイルを生成して発行する `--csx` オプションが含まれます。 この既定の言語を指定すると、作成するすべてのプロジェクトは既定で C# スクリプト プロジェクトになります。 既定が設定されているときは、プロジェクト言語を選択するよう求められません。 他の言語でプロジェクトを作成するには、この設定を変更するか、ユーザーの settings.json ファイルから削除する必要があります。 この設定を削除すると、プロジェクトを作成するときに、言語を選択するよう再び求められます。
 
@@ -388,7 +394,7 @@ Azure Functions 拡張機能には、Azure の関数アプリと対話するた�
 | **Connect to GitHub Repository** | 関数アプリを GitHub リポジトリに接続します。 |
 | **Copy Function URL** | Azure で実行されている、HTTP によってトリガーされる関数のリモート URL を取得します。 詳細については、[デプロイされた関数の URL を取得する](#get-the-url-of-the-deployed-function)ことに関するセクションを参照してください。 |
 | **Create function app in Azure** | Azure のサブスクリプションに新しいアプリを作成します。 詳細については、[Azure で新しい関数アプリを発行する](#publish-to-azure)方法に関するセクションを参照してください。        |
-| **Decrypt Settings** | **[Azure Functions:Encrypt Settings]** によって暗号化された[ローカル設定](#local-settings-file)を復号化します。  |
+| **Decrypt Settings** | [ローカル設定](#local-settings-file)を復号化します。これは、**Azure Functions: Encrypt Settings** によって暗号化されています。  |
 | **Delete Function App** | Azure のサブスクリプションから関数アプリを削除します。 App Service プランに他のアプリがない場合は、それも削除することを選択できます。 ストレージ アカウントやリソース グループなどの他のリソースは削除されません。 すべてのリソースを削除するには、代わりに[リソース グループを削除](functions-add-output-binding-storage-queue-vs-code.md#clean-up-resources)してください。 ローカル プロジェクトには影響はありません。 |
 |**Delete Function**  | Azure の関数アプリから既存の関数を削除します。 この削除はローカル プロジェクトに影響を与えないため、代わりに、関数をローカルで削除してから、[プロジェクトを再発行する](#republish-project-files)ことを検討してください。 |
 | **Delete Proxy** | Azure の関数アプリから Azure Functions プロキシを削除します。 プロキシについて詳しくは、「[Azure Functions プロキシの操作](functions-proxies.md)」をご覧ください。 |

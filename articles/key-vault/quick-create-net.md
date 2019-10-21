@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: b61dab28ff3fb6710e59e6209282c71a8f52f674
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 3ccc5c7c0def7ec1d8d2f8927dc8f8e5d3678a52
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914877"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71718983"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net"></a>クイック スタート:.NET 用 Azure Key Vault クライアント ライブラリ
 
@@ -26,7 +26,6 @@ Azure Key Vault は、クラウド アプリケーションやサービスで使
 - FIPS 140-2 レベル 2 への準拠が検証済みの HSM を使用する。
 
 [API リファレンスのドキュメント](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/KeyVault) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
-
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -84,7 +83,7 @@ dotnet add package Microsoft.Azure.Management.ResourceManager.Fluent
 このクイックスタートでは、あらかじめ作成しておいた Azure キー コンテナーを使用します。 キー コンテナーは、[Azure CLI のクイックスタート](quick-create-cli.md)、[Azure PowerShell のクイックスタート](quick-create-powershell.md)、または [Azure portal のクイックスタート](quick-create-portal.md)の手順に従って作成できます。 または、以下の Azure CLI コマンドを実行するだけでもかまいません。
 
 > [!Important]
-> 各キー コンテナーには一意の名前が必要です。 次の例では、*myKV* という名前のキー コンテナーを作成しますが、ご自身で別の名前を付けて、その名前をこのクイックスタート全体で使用する必要があります。
+> 各キー コンテナーには一意の名前が必要です。 次の例では、<your-unique-keyvault-name> をお使いのキー コンテナーの名前に置き換えてください。
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
@@ -94,7 +93,8 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
 
-クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、「[.NET を使用した Azure Key Vault に対するサービス間認証](service-to-service-authentication.md)」を参照してください。 ただし、わかりやすくするために、このクイックスタートでは .NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルを使用する必要があります。
+クラウドベースの .NET アプリケーションを認証するための最も簡単な方法は、マネージド ID を使用することです。詳細については、[App Service マネージド ID を使用した Azure Key Vault へのアクセス](managed-identity.md)に関するページを参照してください。 ただし、わかりやすくするために、このクイックスタートでは .NET コンソール アプリケーションを作成します。 Azure でデスクトップ アプリケーションを認証するには、サービス プリンシパルとアクセス制御ポリシーを使用する必要があります。
+
 Azure CLI の [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) コマンドを使用してサービス プリンシパルを作成します。
 
 ```azurecli
@@ -118,26 +118,14 @@ az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 }
 ```
 
-clientId、clientSecret、subscriptionId、tenantId を書き留めておきます。これらは、「[キー コンテナーに対して認証を行う](#authenticate-to-your-key-vault)」手順で使用します。
-
-また、サービス プリンシパルの appID も必要になります。 これを探すには、[az ad sp list](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) に `--show-mine` パラメーターを指定して実行します。
-
-```azurecli
-az ad sp list --show-mine
-```
-
-返された JSON に `appID` が表示されます。
-
-```json
-    "appId": "2cf5aa18-0100-445a-9438-0b93e577a3ed",
-```
+clientId および clientSecret を書き留めておきます。これらは、下記の手順「[キー コンテナーに対する認証](#authenticate-to-your-key-vault)」で使用します。
 
 #### <a name="give-the-service-principal-access-to-your-key-vault"></a>サービス プリンシパルにキー コンテナーへのアクセス権を付与する
 
-サービス プリンシパルにキー コンテナーへのアクセス許可を付与するアクセス ポリシーを作成します。 これは、[az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドを使用して行います。 ここでは、キーとシークレットの両方に対する get、list、set の各アクセス許可をサービス プリンシパルに付与します。
+[az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) コマンドに clientId を渡すことでご利用のサービス プリンシパルにアクセス許可を付与するアクセス ポリシーをご利用のキー コンテナー用に作成します。 キーとシークレットの両方に対する get、list、set の各アクセス許可をサービス プリンシパルに付与します。
 
 ```azurecli
-az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
 ## <a name="object-model"></a>オブジェクト モデル
@@ -164,10 +152,6 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <appid-of-your-servi
 setx akvClientId <your-clientID>
 
 setx akvClientSecret <your-clientSecret>
-
-setx akvTenantId <your-tentantId>
-
-setx akvSubscriptionId <your-subscriptionId>
 ````
 
 `setx` を呼び出すたびに、"成功: 指定した値は保存されました。" という応答が返されます。

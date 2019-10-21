@@ -1,18 +1,18 @@
 ---
 title: Linux ベースの Azure HDInsight で Hadoop Oozie ワークフローを使用する
 description: Linux ベースの HDInsight で Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
-ms.service: hdinsight
 author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: d601dc1efe8dc3f6f2678f5d4df03f172146cd07
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: b0cb5f9fa0a0bc64b38225fba03568cf31021572
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900558"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71181098"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Hadoop で Apache Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する
 
@@ -37,14 +37,13 @@ Oozie を使って、Java プログラムやシェル スクリプトなどの�
 
 * **Azure SQL Database**。  [Azure portal での Azure SQL データベースの作成](../sql-database/sql-database-get-started.md)に関するページを参照してください。  この記事では、`oozietest` という名前のデータベースを使用します。
 
-* クラスターのプライマリ ストレージの [URI スキーム](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ `wasbs://` または `abfss://` になります。[「安全な転送」](../storage/common/storage-require-secure-transfer.md)も参照してください。
-
+* クラスターのプライマリ ストレージの [URI スキーム](./hdinsight-hadoop-linux-information.md#URI-and-scheme)。 Azure Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Azure Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。 [安全な転送](../storage/common/storage-require-secure-transfer.md)に関するページも参照してください。
 
 ## <a name="example-workflow"></a>ワークフローの例
 
 このドキュメントで使用されるワークフローには、2 つのアクションが含まれています。 アクションは、タスク (Hive、Sqoop、MapReduce、または他のプロセスの実行など) の定義です。
 
-![ワークフロー図][img-workflow-diagram]
+![HDInsight oozie のワークフロー図](./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png)
 
 1. Hive アクションは、HiveQL スクリプトを実行して、HDInsight に含まれている `hivesampletable` からレコードを抽出します。 各データ行は、特定のモバイル デバイスからのアクセスを表します。 レコードの形式は次のテキストのようになります。
 
@@ -510,29 +509,29 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
 3. ページの左側で、 **[Oozie]**  >  **[クイック リンク]**  >  **[Oozie Web UI]** の順に選びます。
 
-    ![メニューの画像](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
+    ![Apache Ambari oozie Web UI の手順](./media/hdinsight-use-oozie-linux-mac/hdi-oozie-web-ui-steps.png)
 
 4. Oozie Web UI には、実行中のワークフロー ジョブが既定で表示されます。 すべてのワークフロー ジョブを表示するには、 **[All Jobs]\(すべてのジョブ\)** を選びます。
 
-    ![すべてのジョブの表示](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
+    ![Oozie Web コンソールのワークフロー ジョブ](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-jobs.png)
 
 5. ジョブに関する他の情報を表示するには、ジョブを選びます。
 
-    ![[Job Info]](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
+    ![HDInsight Apache Oozie ジョブの情報](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-info.png)
 
 6. **[Job Info]\(ジョブの情報\)** タブでは、基本的なジョブ情報とジョブの個々のアクションを確認できます。 上部にあるタブを使って、 **[Job Definition]\(ジョブの定義\)** の表示、 **[Job Configuration]\(ジョブの構成\)** の表示、 **[Job Log]\(ジョブのログ\)** へのアクセス、 **[Job DAG]\(ジョブの DAG\)** でジョブの有向非巡回グラフ (DAG) の表示を行うことができます。
 
    * **[ジョブのログ]** :ジョブのすべてのログを取得するには、 **[Get Logs]\(ログの取得)** ボタンを選びます。ログをフィルター処理するには、 **[Enter Search Filter]\(検索フィルターの入力)** フィールドを使います。
 
-       ![ジョブのログ](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
+       ![HDInsight Apache Oozie ジョブのログ](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-log.png)
 
    * **[Job DAG]\(ジョブの DAG)** :DAG は、ワークフローで取得されるデータ パスの概要をグラフィックで表したものです。
 
-       ![ジョブの DAG](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
+       ![HDInsight Apache Oozie ジョブの DAG](./media/hdinsight-use-oozie-linux-mac/hdinsight-oozie-job-dag.png)
 
 7. **[Job Info]\(ジョブの情報\)** タブでアクションのいずれかを選択すると、そのアクションの情報が表示されます。 たとえば、**RunHiveScript** アクションを選びます。
 
-    ![アクション情報](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
+    ![HDInsight oozie ジョブ アクション情報](./media/hdinsight-use-oozie-linux-mac/oozie-job-action-info.png)
 
 8. **コンソールの URL** へのリンクなど、アクションの詳細を確認できます。 このリンクを使うと、ジョブ トラッカーでのジョブの情報が表示されます。
 
@@ -632,18 +631,18 @@ Oozie Web UI にアクセスするには、次の手順のようにします。
 
 7. Oozie Web UI にアクセスし、 **[Coordinator Jobs]\(コーディネーター ジョブ\)** タブを選ぶと、次の画像のような情報が表示されます。
 
-    ![[Coordinator Jobs]\(コーディネーター ジョブ\) タブ](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
+    ![Oozie Web コンソールの [Coordinator Jobs]\(コーディネーター ジョブ\) タブ](./media/hdinsight-use-oozie-linux-mac/coordinator-jobs-tab.png)
 
     **[Next Materialization (次の実体化)]** エントリは、このジョブが次回実行される日時を示しています。
 
 8. 前のワークフロー ジョブと同様に、Web UI でジョブ エントリを選ぶと、そのジョブの情報が表示されます。
 
-    ![コーディネーター ジョブの情報](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
+    ![Apache Oozie コーディネーター ジョブ情報](./media/hdinsight-use-oozie-linux-mac/coordinator-job-info.png)
 
     > [!NOTE]  
     > この画像には、正常に実行されたジョブのみが表示されており、スケジュールされたワークフロー内の個々のアクションについては表示されません。 個々のアクションを表示するには、 **[Action]\(アクション\)** エントリの 1 つを選びます。
 
-    ![コーディネーター アクションの情報](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
+    ![OOzie web コンソールの [ジョブ情報] タブ](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -747,7 +746,6 @@ Oozie UI では、Oozie のログを見ることができます。 また、Oozi
 
 [cindygross-hive-tables]: https://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx
 
-[img-workflow-diagram]: ./media/hdinsight-use-oozie-linux-mac/oozie-workflow-diagram.png
 [img-preparation-output]: ./media/hdinsight-use-oozie-linux-mac/HDI.UseOozie.Preparation.Output1.png
 [img-runworkflow-output]: ./media/hdinsight-use-oozie/HDI.UseOozie.RunWF.Output.png
 

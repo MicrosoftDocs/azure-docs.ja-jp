@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 9e3df59af33d6e5fdd1024d42c34dc2b4ed3184e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 40ce5c4f73daac2b88d3a59e46d43dba10db0954
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873193"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177991"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages-preview"></a>device-to-cloud IoT Hub のメッセージ エンリッチメント (プレビュー)
 
@@ -90,7 +90,7 @@ ms.locfileid: "69873193"
 
 IoT Hub へのメッセージのルーティングの詳細については、次の記事を参照してください。
 
-* [メッセージ拡張のチュートリアル](tutorial-message-enrichments.md)
+* [メッセージ エンリッチメント チュートリアル](tutorial-message-enrichments.md)
 
 * [IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する](iot-hub-devguide-messages-d2c.md)
 

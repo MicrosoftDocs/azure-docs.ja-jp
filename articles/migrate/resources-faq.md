@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: snehaa
-ms.openlocfilehash: 46c6ac52e1afb6c1619b814580a1059fd3dfedda
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: ec4cb58692cd98a799f1dc58f60b11a0552829c8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70279500"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934920"
 ---
 # <a name="azure-migrate-frequently-asked-questions-faq"></a>Azure Migrate: よく寄せられる質問 (FAQ)
 
@@ -26,6 +26,37 @@ ms.locfileid: "70279500"
 ### <a name="whats-the-difference-between-azure-migrate-and-azure-site-recovery"></a>Azure Migrate と Azure Site Recovery の違い
 
 Azure Migrate には、移行の開始、コンピューターとワークロードの検出と評価の実行と追跡、Azure へのマシンとワークロードの移行の実行と追跡を行う一元的なハブが用意されています。 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) はディザスター リカバリー ソリューションです。 Azure Migrate Server Migration は、Azure Site Recovery をバックエンドで利用して、オンプレミス マシンのリフトアンドシフト方式による移行シナリオを実現します。
+
+### <a name="how-do-i-delete-an-azure-migrate-project"></a>Azure Migrate プロジェクトを削除するにはどうすればよいですか
+
+Azure Migrate プロジェクトと、その関連リソース (サイト、Recovery Services コンテナー、移行コンテナー、キー コンテナー、評価プロジェクトなど) を削除するには、Azure portal の [リソース グループ] ページに移動し、移行プロジェクトが作成されたリソース グループを選択し、[非表示の型の表示] を選択します。 次に、移行プロジェクトと、以下の一覧に示されている関連リソースを選択して、削除します。 また、リソース グループが移行プロジェクトとその関連リソースによって排他的に使用されている場合は、リソース グループ全体を削除することもできます。 この一覧は、すべてのシナリオ (検出、評価、および移行) で作成されるすべてのリソースの種類の完全な一覧であることに注意してください。 このリソース グループでは、実際のシナリオ用に作成されたリソースのみが表示されます。
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-vmware-or-physical-servers-resource-type"></a>VMware または物理サーバー上で検出、評価、または移行されたサーバー用に作成されたリソース [リソース (種類)]:
+
+- "Appliancename"kv (キー コンテナー)
+- "Appliancename"site (Microsoft.OffAzure/VMwareSites)
+- "ProjectName" (Microsoft.Migrate/migrateprojects)
+- "ProjectName"project (Microsoft.Migrate/assessmentProjects)
+- "ProjectName"rsvault (Recovery Services コンテナー)
+- "ProjectName"-MigrateVault-* (Recovery Services コンテナー)
+- migrateappligwsa* (ストレージ アカウント)
+- migrateapplilsa* (ストレージ アカウント)
+- migrateapplicsa* (ストレージ アカウント)
+- migrateapplikv* (キー コンテナー)
+- migrateapplisbns16041 (Service Bus 名前空間)
+
+注:ストレージ アカウントとキー コンテナーは、それぞれアプリケーション データとセキュリティ キーが含まれている可能性があるため、注意して削除してください。
+
+#### <a name="resources-created-for-discovered-assessed-or-migrated-servers-on-hyper-v-resource-type"></a>Hyper-V 上で検出、評価、または移行されたサーバー用に作成されたリソース [リソース (種類)]:
+
+- "ProjectName" (Microsoft.Migrate/migrateprojects)
+- "ProjectName"project (Microsoft.Migrate/assessmentProjects)
+- HyperV*kv (キー コンテナー)
+- HyperV*site (Microsoft.OffAzure/HyperVSites)
+- "ProjectName"-MigrateVault-* (Recovery Services コンテナー) 
+
+注:キー コンテナーは、セキュリティ キーが含まれている可能性があるため、注意して削除してください。
+
 
 ## <a name="azure-migrate-appliance"></a>Azure Migrate アプライアンス
 

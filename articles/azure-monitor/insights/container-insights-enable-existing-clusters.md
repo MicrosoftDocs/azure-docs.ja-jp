@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/19/2019
+ms.date: 09/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 650729269370bfcd6608b82fc14c3306da1ed222
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0153d39e1307458baa920d8e9107c8931242014e
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624431"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996265"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>既にデプロイされている Azure Kubernetes Service (AKS) クラスターの監視を有効にする
 
@@ -31,7 +31,7 @@ ms.locfileid: "69624431"
 * Azure Portal で [Azure Monitor から](#enable-from-azure-monitor-in-the-portal)、または [AKS クラスターから直接](#enable-directly-from-aks-cluster-in-the-portal) 
 * Azure PowerShell コマンドレット `New-AzResourceGroupDeployment` または Azure CLI を使用して、[提供されている Azure Resource Manager テンプレート](#enable-using-an-azure-resource-manager-template)で。 
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [Azure Portal](https://portal.azure.com) にサインインします。 
 
@@ -49,17 +49,51 @@ az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingMana
 provisioningState       : Succeeded
 ```
 
-既存のワークスペースと統合する方が望ましい場合は、次のコマンドを使用して、そのワークスペースを指定します。
+### <a name="integrate-with-an-existing-workspace"></a>既存のワークスペースと統合する
 
-```azurecli
-az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG --workspace-resource-id <ExistingWorkspaceResourceID> 
-```
+既存のワークスペースと統合する場合は、次の手順を実行して、最初に `--workspace-resource-id` パラメーターに必要な Log Analytics ワークスペースの完全なリソース ID を特定し、コマンドを実行して、指定されたワークスペースに対して監視アドオンを有効にします。  
 
-出力は次のようになります。
+1. 次のコマンドを使用して、アクセス権のあるすべてのサブスクリプションを一覧表示します。
 
-```azurecli
-provisioningState       : Succeeded
-```
+    ```azurecli
+    az account list --all -o table
+    ```
+
+    出力は次のようになります。
+
+    ```azurecli
+    Name                                  CloudName    SubscriptionId                        State    IsDefault
+    ------------------------------------  -----------  ------------------------------------  -------  -----------
+    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    ```
+
+    **SubscriptionId** の値をコピーします。
+
+2. 次のコマンドを使用して、Log Analytics ワークスペースをホストしているサブスクリプションに切り替えます。
+
+    ```azurecli
+    az account set -s <subscriptionId of the workspace>
+    ```
+
+3. 次の例では、既定の JSON 形式で、サブスクリプション内のワークスペースの一覧が表示されます。 
+
+    ```
+    az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
+    ```
+
+    出力で、ワークスペース名を見つけて、フィールド **id** の下にあるその Log Analytics ワークスペースの完全なリソース ID をコピーします。
+ 
+4. 次のコマンドを実行して、監視アドオンを有効にし、`--workspace-resource-id` パラメーターの値を置き換えます。 文字列値は二重引用符で囲む必要があります。
+
+    ```azurecli
+    az aks enable-addons -a monitoring -n ExistingManagedCluster -g ExistingManagedClusterRG --workspace-resource-id  “/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>”
+    ```
+
+    出力は次のようになります。
+
+    ```azurecli
+    provisioningState       : Succeeded
+    ```
 
 ## <a name="enable-using-terraform"></a>Terraform を使用して有効にする
 

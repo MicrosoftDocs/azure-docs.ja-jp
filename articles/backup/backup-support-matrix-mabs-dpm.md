@@ -7,12 +7,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 7f890ddf7aff63189a720f3d604b00610af7a933
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: d14cd996fe0e5a67cc3b554fe1e12146cd6b8e1c
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68949843"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981083"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -25,8 +25,10 @@ ms.locfileid: "68949843"
 MABS は、オンプレミスの物理サーバー、VM、およびそれらで実行されているアプリをバックアップするために使用できるサーバー製品です。
 
 MABS は System Center DPM に基づいており、同様の機能を提供しますが、次のようないくつかの違いがあります。
+
 - MABS を実行するために System Center ライセンスは必要ありません。
 - MABS と DPM の両方に対して、Azure は長期的なバックアップ ストレージを提供します。 さらに、DPM では、テープで長期保存するためのデータのバックアップが可能になります。 MABS では、この機能は提供されません。
+- セカンダリ DPM サーバーを使用してプライマリ DPM サーバーをバックアップすることができます。 セカンダリ サーバーは、プライマリ サーバー データベースと、プライマリ サーバーに格納されているデータ ソース レプリカを保護します。 プライマリ サーバーに障害が発生した場合、セカンダリ サーバーは、プライマリ サーバーが再び使用可能になるまで、プライマリ サーバーによって保護されているワークロードを引き続き保護することができます。  MABS では、この機能は提供されません。
 
 MABS は、[Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=57520)からダウンロードします。 これは、オンプレミスまたは Azure VM で実行できます。
 
@@ -56,7 +58,6 @@ DPM/MABS と Azure Backup を使用したバックアップは、次のように
 --- | --- | ---
 **オンプレミス マシン/ワークロードのバックアップ** | DPM/MABS 保護エージェントは、バックアップするコンピューター上で実行されます。<br/><br/> DPM/MABS サーバー上の MARS エージェント。<br/> この機能を有効にするための、Microsoft Azure Recovery Services エージェントまたは Azure Backup エージェントの最小バージョンは、2.0.8719.0 です。  | DPM/MABS は、オンプレミスで実行する必要があります。
 
-
 ## <a name="supported-deployments"></a>サポートされているデプロイ
 
 DPM/MABS は、次の表に要約されているようにデプロイできます。
@@ -66,7 +67,6 @@ DPM/MABS は、次の表に要約されているようにデプロイできま�
 **オンプレミスでデプロイ** | 物理サーバー<br/><br/>Hyper-V VM<br/><br/> VMware VM | DPM/MABS は、VMware VM としてインストールされている場合、VMware VM とそれらの VM 上で実行されているワークロードのみをバックアップします。
 **Azure Stack VM としてデプロイ** | MABS のみ | DPM を使用して Azure Stack VM をバックアップすることはできません。
 **Azure VM としてデプロイ** | Azure VM とそれらの VM 上で実行されているワークロードを保護します。 | Azure で実行されている DPM/MABS は、オンプレミスのコンピューターをバックアップできません。
-
 
 ## <a name="supported-mabs-and-dpm-operating-systems"></a>サポートされている MABS および DPM オペレーティング システム
 
@@ -79,8 +79,6 @@ Azure Backup は、次のいずれかのオペレーティング システムを
 **MABS オンプレミス** | サポートされている 64 ビット オペレーティング システム:<br/><br/> MABS v3 以降: Windows Server 2019 (Standard、Datacenter、Essentials)。 <br/><br/> MABS v2 以降: Windows Server 2016 (Standard、Datacenter、Essentials)。<br/><br/> MABS のすべてのバージョン:  Windows Server 2012 R2 です。<br/><br/>MABS のすべてのバージョン: Windows Storage Server 2012 R2。
 **DPM オンプレミス** | 物理サーバー/Hyper-V VM: System Center 2012 SP1 以降。<br/><br/> VMware VM: 更新プログラム 5 以降が適用された System Center 2012 R2。
 
-
-
 ## <a name="management-support"></a>管理のサポート
 
 **問題** | **詳細**
@@ -90,7 +88,6 @@ Azure Backup は、次のいずれかのオペレーティング システムを
 **Storage** | Modern Backup Storage (MBS) は、DPM 2016/MABS v2 以降でサポートされています。 MABS v1 では使用できません。
 **MABS のアップグレード** | MABS v3 を直接インストールすることも、MABS v2 から MABS v3 にアップグレードすることもできます。 [詳細情報](backup-azure-microsoft-azure-backup.md#upgrade-mabs)。
 **MABS の移動** | MBS を使用している場合、ストレージを保持したまま MABS を新しいサーバーに移動できます。<br/><br/> このサーバーは元のサーバーと同じ名前でなければなりません。 同じ記憶域プールを保持し、同じ MABS データベースを使用してデータ復旧ポイントを格納する場合、この名前は変更できません。<br/><br/> MABS データベースを復元する必要があるため、このデータベースのバックアップが必要です。
-
 
 ## <a name="mabs-support-on-azure-stack"></a>Azure Stack での MABS のサポート
 
@@ -144,8 +141,8 @@ DPM/MABS にバックアップされたデータは、ローカル ディスク 
 **Azure VM 上の MABS ストレージ** | データは、DPM/MABS VM に接続され、DPM/MABS で管理されている Azure ディスクに格納されます。 DPM/MABS 記憶域プールに使用できるディスクの数は、VM のサイズによって制限されます。<br/><br/> A2 VM: 4 ディスク、A3 VM: 8 ディスク、A4 VM: 16 ディスク (各ディスクの最大サイズは 1 TB)。 これにより、使用可能な合計のバックアップ記憶域プールが決定されます。<br/><br/> バックアップできるデータの量は、接続されたディスクの数とサイズによって決まります。
 **Azure VM 上の MABS のデータ保持期間** | データは DPM/MABS Azure ディスクに 1 日保持し、それより長期間の場合は DPM/MABS からコンテナーにバックアップすることをお勧めします。 そのため、Azure Backup にデータをオフロードすることで大量のデータを保護できます。
 
-
 ### <a name="modern-backup-storage-mbs"></a>Modern Backup Storage (MBS)
+
 DPM 2016/MABS v2 (Windows Server 2016 上で実行されている) 以降は、Modern Backup Storage (MBS) を利用できます。
 
 - MBS バックアップは、Resilient File System (ReFS) ディスクに格納されます。
@@ -153,11 +150,9 @@ DPM 2016/MABS v2 (Windows Server 2016 上で実行されている) 以降は、M
 - ローカルの DPM/MABS 記憶域プールにボリュームを追加する場合は、それらをドライブ文字を使用して構成します。 その後、別のボリュームでワークロード ストレージを構成できます。
 - データを DPM/MABS にバックアップするために保護グループを作成する場合、使用するドライブを選択します。 たとえば、SQL やその他の高 IOPS ワークロードのバックアップを高パフォーマンスのドライブに格納し、バックアップ頻度の低いワークロードをより低パフォーマンスのドライブに格納することができます。
 
-
 ## <a name="supported-backups-to-mabs"></a>サポートされる MABS へのバックアップ
 
 次の表に、オンプレミス マシンと Azure VM から MABS に何をバックアップできるかについてまとめます。
-
 
 **Backup** | **バージョン** | **MABS** | **詳細** |
 --- | --- | --- | --- |
@@ -177,13 +172,9 @@ DPM 2016/MABS v2 (Windows Server 2016 上で実行されている) 以降は、M
 **Windows Server 2016 上の Hyper-V**<br/><br/> **Windows Server 2008 R2 (SP1)** | MABS v3、v2 | オンプレミス。 | **Hyper-V ホスト上の MABS エージェント**: VM 全体とホスト データ ファイルをバックアップします。 ローカル ストレージを持つ VM、CSV ストレージを持つクラスター内の VM、SMB ファイル サーバー ストレージを持つ VM をバックアップします。<br/><br/> **ゲスト VM 上の MABS エージェント**: VM で実行されているワークロードをバックアップします。 CSV。<br/><br/> **復旧**: VM、および VHD/ボリューム/フォルダー/ファイルの項目レベルの復旧。<br/><br/> **Linux VM**:Hyper-V が Windows Server 2012 R2 以降で実行されている場合にバックアップします。 Linux VM の復旧は、マシン全体に対してです。 |
 **VMware VM: vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3、v2 | オンプレミス。 | CSV、NFS、および SAN ストレージ上の VMware VM をバックアップします。<br/><br/> VM 全体を復旧します。<br/><br/> Windows/Linux のバックアップ。<br/><br/> Windows VM のフォルダー/ファイルの項目レベルの復旧のみ。<br/><br/> VMware vApps はサポートされません。<br/><br/> Linux VM の復旧は、マシン全体に対してです。 |
 
-
-
 ## <a name="supported-backups-to-dpm"></a>サポートされる DPM へのバックアップ
 
 次の表に、オンプレミス マシンと Azure VM から DPM に何をバックアップできるかについてまとめます。
-
-
 
 **Backup** | **DPM** | **詳細**
 --- | --- | ---
@@ -204,11 +195,8 @@ DPM 2016/MABS v2 (Windows Server 2016 上で実行されている) 以降は、M
 **Windows Server 2016 上の Hyper-V**<br/><br/> **Windows Server 2012 R2/2012** (Datacenter/Standard)<br/><br/> **Windows Server 2008 R2 (SP1)** | DPM 2016 以降でサポートされる 2016 上の Hyper-V。<br/><br/> オンプレミス。 | **Hyper-V ホスト上の MABS エージェント**: VM 全体とホスト データ ファイルをバックアップします。 ローカル ストレージを持つ VM、CSV ストレージを持つクラスター内の VM、SMB ファイル サーバー ストレージを持つ VM をバックアップします。<br/><br/> **ゲスト VM 上の MABS エージェント**: VM で実行されているワークロードをバックアップします。 CSV。<br/><br/> **復旧**: VM、および VHD/ボリューム/フォルダー/ファイルの項目レベルの復旧。<br/><br/> **Linux VM**:Hyper-V が Windows Server 2012 R2 以降で実行されている場合にバックアップします。 Linux VM の復旧は、マシン全体に対してです。
 **VMware VM: vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3、v2 <br/><br/> DPM 2012 R2 には、System Center の更新プログラム ロールアップ 1 が必要です。 <br/><br/>オンプレミス。 | CSV、NFS、および SAN ストレージ上の VMware VM をバックアップします。<br/><br/> VM 全体を復旧します。<br/><br/> Windows/Linux のバックアップ。<br/><br/> Windows VM のフォルダー/ファイルの項目レベルの復旧のみ。<br/><br/> VMware vApps はサポートされません。<br/><br/> Linux VM の復旧は、マシン全体に対してです。
 
-
 - DPM/MABS によってバックアップされるクラスター化されたワークロードは DPM/MABS と同じドメインか、または子/信頼できるドメインに存在する必要があります。
 - NTLM/証明書認証を使用して、信頼されていないドメインまたはワークグループのデータをバックアップできます。
-
-
 
 ## <a name="next-steps"></a>次の手順
 

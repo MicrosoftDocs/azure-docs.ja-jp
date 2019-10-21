@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: f9fd346d4c4eaed0797d564fe52dd44e9f0e240a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fec2b09b9dc471135d9cdd00ac2465728a47bdbf
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65795621"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026920"
 ---
 # <a name="mapping-data-flow-conditional-split-transformation"></a>データ フローの条件分割変換のマッピング
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ![条件分割ツールボックス](media/data-flow/conditionalsplit2.png "条件分割ツールボックス")
 

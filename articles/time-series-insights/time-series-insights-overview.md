@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0c65f364e9e72d87d6618944ab296354e03a1fc
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 0c832e272029dc110e156ef89deb908fec02f1b2
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736190"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981193"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Azure Time Series Insights とは
 
@@ -31,7 +31,7 @@ Time Series Insights には 4 つの主要な仕事があります。
 - Time Series Insights は、Time Series Insights エクスプローラー経由ですぐに使用できる視覚化を提供します。 
 - Time Series Insights では、クエリ サービスが提供されます。これは、Time Series Insights エクスプローラーと、時系列データをカスタム アプリケーションに組み込むために簡単に統合できる API の両方で使用できます。
 
-社内使用向け、または外部の顧客が使用するアプリケーションをビルドする場合は、バック エンドとして Time Series Insights を使用できます。 これを使用して、時系列データのインデックス作成、格納、集計を行うことができます。 ここでカスタムの視覚化機能やユーザー エクスペリエンスを構築するには、[クライアント SDK](tutorial-explore-js-client-lib.md) を使用します。 Time Series Insights にはまた、これらのカスタマイズされたシナリオを可能にするための[クエリ API](how-to-shape-query-json.md) もいくつか用意されています。
+社内使用向け、または外部の顧客が使用するアプリケーションをビルドする場合は、バック エンドとして Time Series Insights を使用できます。 これを使用して、時系列データのインデックス作成、格納、集計を行うことができます。 ここでカスタムの視覚化機能やユーザー エクスペリエンスを構築するには、[クライアント SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) を使用します。 Time Series Insights にはまた、これらのカスタマイズされたシナリオを可能にするための[クエリ API](how-to-shape-query-json.md) もいくつか用意されています。
 
 時系列データは、資産やプロセスの経時的な変化を表します。 時系列データにはタイムスタンプでインデックスが付けられ、最も重要な軸である時間に沿ってデータが整理されます。 一般に時系列データは時間順に到着するので、データベースに対する更新ではなく挿入として扱われます。
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 055cd25f534de5d3cc3ccbe44df88e7111e101a3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: ff0a9838d1fcc9db3b6cc25b47c840e01056e6cd
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68560753"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703144"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>意図とエンティティが含まれる発話テキストからデータを抽出する
 LUIS を使用すると、ユーザーの自然言語での発話から情報を取得できます。 この情報は、アクションを実行するために、プログラム、アプリケーション、またはチャットボットで使用できるような方法で抽出されます。 以降のセクションで、JSON の例を使用して、意図とエンティティから返されるデータについて説明します。
@@ -26,14 +26,26 @@ LUIS を使用すると、ユーザーの自然言語での発話から情報を
 ## <a name="data-location-and-key-usage"></a>データの場所とキー使用法
 LUIS では、公開されている[エンドポイント](luis-glossary.md#endpoint)からデータを提供しています。 **HTTPS 要求** (POST または GET) には、発話と、ステージング環境や運用環境など、オプションの構成がいくつか含まれます。
 
+#### <a name="v2-prediction-endpoint-requesttabv2"></a>[V2 予測エンドポイントの要求](#tab/V2)
+
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
+
+#### <a name="v3-prediction-endpoint-requesttabv3"></a>[V3 予測エンドポイントの要求](#tab/V3)
+
+`https://westus.api.cognitive.microsoft.com/luis/v3.0-preview/apps/<appID>/slots/<slot-type>/predict?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&query=book 2 tickets to paris`
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * * 
 
 `appID` は、LUIS アプリの **[設定]** ページで確認できます。また、LUIS アプリの編集時に URL の一部 (`/apps/` の後) として確認できます。 `subscription-key` は、アプリの照会に使用するエンドポイント キーです。 LUIS を学習している間は無料のオーサリング/スターター キーを使用できますが、エンドポイント キーを、[想定される LUIS の使用法](luis-boundaries.md#key-limits)をサポートするキーに変更することが重要です。 `timezoneOffset` の単位は分です。
 
 **HTTPS 応答**には、ステージングまたは運用エンドポイントの現在公開されているモデルに基づいて LUIS によって判別できるすべての意図およびエンティティの情報が含まれています。 エンドポイント URL は [LUIS](luis-reference-regions.md) Web サイトの **[Manage]\(管理\)** セクションの **[Keys and endpoints]\(キーとエンドポイント\)** ページにあります。
 
 ## <a name="data-from-intents"></a>意図からのデータ
-プライマリ データは、最上位スコアの**意図の名前**です。 `MyStore` [クイック スタート](luis-quickstart-intents-only.md)を使用すると、エンドポイントの応答は次のとおりです。
+プライマリ データは、最上位スコアの**意図の名前**です。 エンドポイントの応答は次のとおりです。
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 {
@@ -46,11 +58,38 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 }
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+
+```JSON
+{
+  "query": "when do you open next?",
+  "prediction": {
+    "normalizedQuery": "when do you open next?",
+    "topIntent": "GetStoreInfo",
+    "intents": {
+        "GetStoreInfo": {
+            "score": 0.984749258
+        }
+    }
+  },
+  "entities": []
+}
+```
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * * 
+
 |データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|
 |Intent|string|topScoringIntent.intent|"GetStoreInfo"|
 
-チャットボットまたは LUIS 呼び出し元アプリが複数の意図のスコアに基づいて決定を行う場合、querystring パラメーター `verbose=true` を設定して、すべての意図のスコアを返します。 エンドポイントの応答は次のとおりです。
+チャットボットまたは LUIS 呼び出し元アプリが複数の意図のスコアに基づいて決定を行う場合、すべての意図のスコアを返します。
+
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+
+querystring パラメーター `verbose=true` を設定します。 エンドポイントの応答は次のとおりです。
 
 ```JSON
 {
@@ -73,6 +112,34 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 }
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+
+querystring パラメーター `show-all-intents=true` を設定します。 エンドポイントの応答は次のとおりです。
+
+```JSON
+{
+    "query": "when do you open next?",
+    "prediction": {
+        "normalizedQuery": "when do you open next?",
+        "topIntent": "GetStoreInfo",
+        "intents": {
+            "GetStoreInfo": {
+                "score": 0.984749258
+            },
+            "None": {
+                 "score": 0.2040639
+            }
+        },
+        "entities": {
+        }
+    }
+}
+```
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * * 
+
 意図は、スコアが最も高いものから最も低いものへと並べ替えられます。
 
 |データ オブジェクト|データ型|データの場所|値|Score|
@@ -81,6 +148,8 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 |Intent|string|intents[1].intent|"None"|0.0168218873|
 
 事前構築済みのドメインを追加する場合、意図の名前は、`Utilties` や`Communication` などのドメインと、意図を表します。
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 {
@@ -106,6 +175,34 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 }
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+
+```JSON
+{
+    "query": "Turn on the lights next monday at 9am",
+    "prediction": {
+        "normalizedQuery": "Turn on the lights next monday at 9am",
+        "topIntent": "Utilities.ShowNext",
+        "intents": {
+            "Utilities.ShowNext": {
+                "score": 0.07842206
+            },
+            "Communication.StartOver": {
+                "score": 0.0239675418
+            },
+            "None": {
+                "score": 0.00085447653
+            }
+        },
+        "entities": []
+    }
+}
+```
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * * 
+
 |Domain|データ オブジェクト|データ型|データの場所|値|
 |--|--|--|--|--|
 |Utilities|Intent|string|intents[0].intent|"<b>Utilities</b>.ShowNext"|
@@ -119,6 +216,8 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 発話内の 1 つの単語またはフレーズは、複数のエンティティと一致する可能性があります。 その場合、一致するエンティティごとにそのスコアが返されます。
 
 すべてのエンティティが、エンドポイントから応答の**エンティティ**配列で返されます。
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 "entities": [
@@ -141,6 +240,18 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 ]
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+
+```JSON
+"entities": {
+    "name":["bob jones"],
+    "number": [3]
+}
+```
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * * 
+
 ## <a name="tokenized-entity-returned"></a>返されるトークン化されたエンティティ
 いくつかの[カルチャ](luis-language-support.md#tokenization)では、`entity` 値が[トークン化](luis-glossary.md#token)されたエンティティ オブジェクトが返されます。 エンティティ オブジェクト内で LUIS によって返される startIndex および endIndex は、トークン化された新しい値にマップされていませんが、代わりに生のエンティティをプログラムで抽出できるように、元のクエリにマップされています。 
 
@@ -162,6 +273,8 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 [事前構築済み](luis-concept-entity-types.md)のエンティティは、オープン ソースの [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) プロジェクトを使用して、正規表現の一致に基づき検出されます。 事前構築済みのエンティティは、エンティティ配列で返され、`builtin::` というプレフィックスが付加された種類の名前が使用されます。 次のテキストは、返される事前構築済みのエンティティを含む発話の例です。
 
 `Dec 5th send to +1 360-555-1212`
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 "entities": [
@@ -242,6 +355,186 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
   ]
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+
+querystring パラメーター `verbose=true` なし。
+
+```json
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "date",
+            "values": [
+                {
+                    "timex": "XXXX-12-05",
+                    "value": "2018-12-05"
+                },
+                {
+                    "timex": "XXXX-12-05",
+                    "value": "2019-12-05"
+                }
+            ]
+        }
+    ],
+    "ordinal": [
+        {
+            "offset": 5,
+            "relativeTo": "start"
+        }
+    ],
+    "ordinalV2": [
+        {
+            "offset": 5,
+            "relativeTo": "start"
+        }
+    ],
+    "number": [
+        1360,
+        555,
+        1212
+    ],
+    "phonenumber": [
+        "1 360-555-1212"
+    ]
+}
+```
+
+querystring パラメーター `verbose=true` あり。
+
+```json
+
+"entities": {
+    "datetimeV2": [
+        {
+            "type": "date",
+            "values": [
+                {
+                    "timex": "XXXX-12-05",
+                    "value": "2018-12-05"
+                },
+                {
+                    "timex": "XXXX-12-05",
+                    "value": "2019-12-05"
+                }
+            ]
+        }
+    ],
+    "ordinal": [
+        {
+            "offset": 5,
+            "relativeTo": "start"
+        }
+    ],
+    "ordinalV2": [
+        {
+            "offset": 5,
+            "relativeTo": "start"
+        }
+    ],
+    "number": [
+        1360,
+        555,
+        1212
+    ],
+    "phonenumber": [
+        "1 360-555-1212"
+    ],
+    "$instance": {
+        "datetimeV2": [
+            {
+                "type": "builtin.datetimeV2.date",
+                "text": "Dec 5th",
+                "startIndex": 0,
+                "length": 7,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "ordinal": [
+            {
+                "type": "builtin.ordinal",
+                "text": "5th",
+                "startIndex": 4,
+                "length": 3,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "ordinalV2": [
+            {
+                "type": "builtin.ordinalV2",
+                "text": "5th",
+                "startIndex": 4,
+                "length": 3,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "number": [
+            {
+                "type": "builtin.number",
+                "text": "1 360",
+                "startIndex": 17,
+                "length": 5,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.number",
+                "text": "555",
+                "startIndex": 23,
+                "length": 3,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.number",
+                "text": "1212",
+                "startIndex": 27,
+                "length": 4,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "phonenumber": [
+            {
+                "type": "builtin.phonenumber",
+                "text": "1 360-555-1212",
+                "startIndex": 17,
+                "length": 14,
+                "score": 1.0,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * * 
 ## <a name="regular-expression-entity-data"></a>正規表現エンティティ データ
 
 [正規表現エンティティ](reference-entity-regular-expression.md)は、指定した正規表現パターンに基づいてエンティティを抽出します。
@@ -270,63 +563,127 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 ## <a name="pattern-roles-data"></a>パターンの役割データ
 役割は、エンティティのコンテキスト上の差異です。
 
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+
+エンティティ名は `Location` で、2 つのロール、`Origin` と `Destination` があります。
+
 ```JSON
-{
-  "query": "move bob jones from seattle to redmond",
-  "topScoringIntent": {
-    "intent": "MoveAssetsOrPeople",
-    "score": 0.9999998
+"entities": [
+  {
+    "entity": "bob jones",
+    "type": "Employee",
+    "startIndex": 5,
+    "endIndex": 13,
+    "score": 0.922820568,
+    "role": ""
   },
-  "intents": [
-    {
-      "intent": "MoveAssetsOrPeople",
-      "score": 0.9999998
-    },
-    {
-      "intent": "None",
-      "score": 1.02040713E-06
-    },
-    {
-      "intent": "GetEmployeeBenefits",
-      "score": 6.12244548E-07
-    },
-    {
-      "intent": "GetEmployeeOrgChart",
-      "score": 6.12244548E-07
-    },
-    {
-      "intent": "FindForm",
-      "score": 1.1E-09
-    }
-  ],
-  "entities": [
-    {
-      "entity": "bob jones",
-      "type": "Employee",
-      "startIndex": 5,
-      "endIndex": 13,
-      "score": 0.922820568,
-      "role": ""
-    },
-    {
-      "entity": "seattle",
-      "type": "Location",
-      "startIndex": 20,
-      "endIndex": 26,
-      "score": 0.948008537,
-      "role": "Origin"
-    },
-    {
-      "entity": "redmond",
-      "type": "Location",
-      "startIndex": 31,
-      "endIndex": 37,
-      "score": 0.7047979,
-      "role": "Destination"
-    }
-  ]
+  {
+    "entity": "seattle",
+    "type": "Location",
+    "startIndex": 20,
+    "endIndex": 26,
+    "score": 0.948008537,
+    "role": "Origin"
+  },
+  {
+    "entity": "redmond",
+    "type": "Location",
+    "startIndex": 31,
+    "endIndex": 37,
+    "score": 0.7047979,
+    "role": "Destination"
+  }
+]
+```
+
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+
+V3 では、**ロール名**はオブジェクトのプライマリ名になります。 
+
+エンティティ名は `Location` で、2 つのロール、`Origin` と `Destination` があります。
+
+querystring パラメーター `verbose=true` なし。
+
+```json
+"entities": {
+    "Employee": [
+        "bob jones"
+    ],
+    "Origin": [
+        "seattle"
+    ],
+    "Destination": [
+        "redmond"
+    ]
 }
 ```
+
+querystring パラメーター `verbose=true` あり。
+
+```json
+"entities": {
+    "Employee": [
+        "bob jones"
+    ],
+    "LocationOrigin": [
+        "seattle"
+    ],
+    "LocationDestination": [
+        "redmond"
+    ],
+    "$instance": {
+        "Employee": [
+            {
+                "type": "Employee",
+                "text": "bob jones",
+                "startIndex": 5,
+                "length": 9,
+                "score": 0.982873261,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "Origin": [
+            {
+                "role": "Origin",
+                "type": "Location",
+                "text": "seattle",
+                "startIndex": 20,
+                "length": 7,
+                "score": 0.9913306,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "Destination": [
+            {
+                "role": "Destination",
+                "type": "Location",
+                "text": "redmond",
+                "startIndex": 31,
+                "length": 7,
+                "score": 0.898179531,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+
+}
+```
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * *
 
 ## <a name="patternany-entity-data"></a>Pattern.any エンティティ データ
 
@@ -358,6 +715,9 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 
 ### <a name="key-phrase-extraction-entity-data"></a>キー フレーズ抽出エンティティ データ
 キー フレーズ抽出エンティティでは、[Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) によって提供される、発話内のキー フレーズを返します。
+
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 {
@@ -392,6 +752,76 @@ LUIS では、公開されている[エンドポイント](luis-glossary.md#endp
 }
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+querystring パラメーター `verbose=true` なし。
+
+```json
+"entities": {
+    "keyPhrase": [
+        "map of places",
+        "beautiful views",
+        "favorite trail"
+    ]
+}
+```
+
+querystring パラメーター `verbose=true` あり。
+
+```json
+"entities": {
+    "keyPhrase": [
+        "map of places",
+        "beautiful views",
+        "favorite trail"
+    ],
+    "$instance": {
+        "keyPhrase": [
+            {
+                "type": "builtin.keyPhrase",
+                "text": "map of places",
+                "startIndex": 11,
+                "length": 13,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.keyPhrase",
+                "text": "beautiful views",
+                "startIndex": 30,
+                "length": 15,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            },
+            {
+                "type": "builtin.keyPhrase",
+                "text": "favorite trail",
+                "startIndex": 51,
+                "length": 14,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * *
+
+
 ## <a name="data-matching-multiple-entities"></a>複数のエンティティに一致するデータ
 
 LUIS では、発話内で検出されたすべてのエンティティを返します。 その結果、チャットボットでは、結果に基づいて決定を行う必要があります。 発話内には多数のエンティティが存在する可能性があります。
@@ -399,6 +829,8 @@ LUIS では、発話内で検出されたすべてのエンティティを返し
 `book me 2 adult business tickets to paris tomorrow on air france`
 
 LUIS エンドポイントでは、異なるエンティティ内に同じデータが見つかる場合があります。
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 {
@@ -524,11 +956,194 @@ LUIS エンドポイントでは、異なるエンティティ内に同じデー
 }
 ```
 
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+
+querystring パラメーター `verbose=true` なし。
+
+```json
+"entities": {
+    "TicketsOrder": [
+        {
+            "number": [
+                2
+            ],
+            "PassengerCategory": [
+                "adult"
+            ],
+            "TravelClass": [
+                "business"
+            ]
+        }
+    ],
+    "Location::LocationTo": [
+        "paris"
+    ],
+    "datetimeV2": [
+        {
+            "type": "date",
+            "values": [
+                {
+                    "timex": "2019-09-28",
+                    "value": "2019-09-28"
+                }
+            ]
+        }
+    ],
+    "Airline": [
+        "air france"
+    ]
+}
+```
+
+querystring パラメーター `verbose=true` あり。
+
+
+```json
+"entities": {
+    "TicketsOrder": [
+        {
+            "number": [
+                2
+            ],
+            "PassengerCategory": [
+                "adult"
+            ],
+            "TravelClass": [
+                "business"
+            ],
+            "$instance": {
+                "number": [
+                    {
+                        "type": "builtin.number",
+                        "text": "2",
+                        "startIndex": 8,
+                        "length": 1,
+                        "modelTypeId": 2,
+                        "modelType": "Prebuilt Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ],
+                "PassengerCategory": [
+                    {
+                        "type": "PassengerCategory",
+                        "text": "adult",
+                        "startIndex": 10,
+                        "length": 5,
+                        "score": 0.9503733,
+                        "modelTypeId": 3,
+                        "modelType": "Hierarchical Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ],
+                "TravelClass": [
+                    {
+                        "type": "TravelClass",
+                        "text": "business",
+                        "startIndex": 16,
+                        "length": 8,
+                        "score": 0.950095,
+                        "modelTypeId": 3,
+                        "modelType": "Hierarchical Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    ],
+    "Location::LocationTo": [
+        "paris"
+    ],
+    "datetimeV2": [
+        {
+            "type": "date",
+            "values": [
+                {
+                    "timex": "2019-09-28",
+                    "value": "2019-09-28"
+                }
+            ]
+        }
+    ],
+    "Airline": [
+        "air france"
+    ],
+    "$instance": {
+        "TicketsOrder": [
+            {
+                "type": "TicketsOrder",
+                "text": "2 adult business",
+                "startIndex": 8,
+                "length": 16,
+                "score": 0.942183256,
+                "modelTypeId": 4,
+                "modelType": "Composite Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "Location::LocationTo": [
+            {
+                "type": "Location::LocationTo",
+                "text": "paris",
+                "startIndex": 36,
+                "length": 5,
+                "score": 0.9905354,
+                "modelTypeId": 3,
+                "modelType": "Hierarchical Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "datetimeV2": [
+            {
+                "type": "builtin.datetimeV2.date",
+                "text": "tomorrow",
+                "startIndex": 42,
+                "length": 8,
+                "modelTypeId": 2,
+                "modelType": "Prebuilt Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ],
+        "Airline": [
+            {
+                "type": "Airline",
+                "text": "air france",
+                "startIndex": 54,
+                "length": 10,
+                "score": 0.9455415,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                    "model"
+                ]
+            }
+        ]
+    }
+}
+```
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * *
+
 ## <a name="data-matching-multiple-list-entities"></a>複数のリスト エンティティに一致するデータ
 
 単語またはフレーズが複数のリスト エンティティに一致すると、エンドポイント クエリからそれぞれのリスト エンティティが返されます。
 
 クエリ `when is the best time to go to red rock?` の場合、アプリの複数のリストに単語 `red` があると、LUIS ではすべてのエンティティを認識し、JSON エンドポイントの応答の一部としてエンティティの配列を返します。 
+
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 ```JSON
 {
@@ -563,6 +1178,101 @@ LUIS エンドポイントでは、異なるエンティティ内に同じデー
   ]
 }
 ```
+
+
+
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
+
+クエリ文字列に `verbose=true` なし。
+
+```JSON
+{
+    "query": "when is the best time to go to red rock",
+    "prediction": {
+        "normalizedQuery": "when is the best time to go to red rock",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.823669851
+            }
+        },
+        "entities": {
+            "Colors": [
+                [
+                    "red"
+                ]
+            ],
+            "Cities": [
+                [
+                    "Destinations"
+                ]
+            ]
+        }
+    }
+}
+```
+
+
+クエリ文字列に `verbose=true` あり。
+
+```JSON
+{
+    "query": "when is the best time to go to red rock",
+    "prediction": {
+        "normalizedQuery": "when is the best time to go to red rock",
+        "topIntent": "None",
+        "intents": {
+            "None": {
+                "score": 0.823669851
+            }
+        },
+        "entities": {
+            "Colors": [
+                [
+                    "red"
+                ]
+            ],
+            "Cities": [
+                [
+                    "Destinations"
+                ]
+            ],
+            "$instance": {
+                "Colors": [
+                    {
+                        "type": "Colors",
+                        "text": "red",
+                        "startIndex": 31,
+                        "length": 3,
+                        "modelTypeId": 5,
+                        "modelType": "List Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ],
+                "Cities": [
+                    {
+                        "type": "Cities",
+                        "text": "red rock",
+                        "startIndex": 31,
+                        "length": 8,
+                        "modelTypeId": 5,
+                        "modelType": "List Entity Extractor",
+                        "recognitionSources": [
+                            "model"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}
+```
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * *
 
 ## <a name="next-steps"></a>次の手順
 

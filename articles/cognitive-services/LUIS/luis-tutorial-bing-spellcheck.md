@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 43cb2f0c3ef0f845afcd309dccb35bc632ffd324
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 3bde609c83425d660c867939e034247d7e6898c5
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390960"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300271"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Bing Spell Check を使用した単語のスペルミスの修正
 
@@ -89,7 +89,13 @@ LUIS では 2 つの場所でキーを使用します。 1 つ目は[テスト �
 ```
 
 ## <a name="ignore-spelling-mistakes"></a>スペル ミスの無視
-Bing Spell Check API v7 サービスを使用したくない場合は、LUIS が正しいスペルと入力ミスを学習できるように、スペル ミスを含む発話にラベルを付けることができます。 このラベル付けオプションは、スペル チェックを使用するよりも手間がかかります。
+
+Bing Spell Check API v7 サービスを使用したくない場合は、正しいスペルと正しくないスペルを追加する必要があります。 
+
+次の 2 つの解決策があります。
+
+* LUIS が正しいスペルと入力ミスを学習できるように、さまざまなスペルを含んだ発話の例にラベルを付ける。 このラベル付けオプションは、スペル チェックを使用するよりも手間がかかります。
+* さまざまなバリエーションの単語を含んだ語句一覧を作成する。 この解決策では、発話の例に含まれる単語のバリエーションにラベルを付ける必要はありません。 
 
 ## <a name="publishing-page"></a>ページの公開
 [公開](luis-how-to-publish-app.md)ページには、 **[Enable Bing spell checker]\(Bing スペル チェックを有効にする\)** チェック ボックスがあります。 これは、キーを作成し、エンドポイント URL がどのように変わったかを解釈するうえで便利です。 発話ごとにスペルが修正されるようにするには、引き続き正しいエンドポイント パラメーターを使用する必要があります。 

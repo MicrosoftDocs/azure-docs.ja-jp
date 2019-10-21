@@ -1,37 +1,39 @@
 ---
-title: Gremlin での Azure Cosmos DB リソース トークン
-description: リソース トークンを作成し、それらを使用してグラフ データベースにアクセスする方法について説明します
+title: Gremlin SDK で Azure Cosmos DB リソース トークンを使用する
+description: リソース トークンを作成し、それらを使用して Graph データベースにアクセスする方法について説明します。
 author: olignat
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/06/2019
 ms.author: olignat
-ms.openlocfilehash: fcb18fb14cf787713735da07ca2048d0853fa46c
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.openlocfilehash: 6364bd0f762647b5fe9567ed40042a5ad81f97c1
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70807013"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105035"
 ---
-# <a name="azure-cosmos-db-resource-tokens-with-gremlin"></a>Gremlin での Azure Cosmos DB リソース トークン
-この記事では、[Cosmos DB リソース トークン](secure-access-to-data.md)を使用して、Gremlin SDK 経由で Graph データベースにアクセスする方法について説明します。
+# <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK で Azure Cosmos DB リソース トークンを使用する
+
+この記事では、[Azure Cosmos DB リソース トークン](secure-access-to-data.md)を使用して、Gremlin SDK 経由で Graph データベースにアクセスする方法について説明します。
 
 ## <a name="create-a-resource-token"></a>リソース グループを作成する
 
-TinkerPop Gremlin SDK には、リソース トークンを作成するための API がありません。 リソース トークンは Cosmos DB の概念です。 リソース トークンを作成するには、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) をダウンロードします。 ご利用のアプリケーションでリソース トークンを作成し、それらを使用して Graph データベースにアクセスする必要がある場合は、個別の SDK が 2 つ必要です。
+Apache TinkerPop Gremlin SDK には、リソース トークンを作成するための API がありません。 "*リソース トークン*" という用語は、Azure Cosmos DB の概念です。 リソース トークンを作成するには、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) をダウンロードします。 ご利用のアプリケーションでリソース トークンを作成し、それらを使用して Graph データベースにアクセスする必要がある場合は、個別の SDK が 2 つ必要です。
 
-リソース トークンの上にあるオブジェクト モデル階層:
-- **Cosmos DB アカウント** - DNS が関連付けられている最上位のエンティティ (たとえば、`contoso.gremlin.cosmos.azure.com`)
-  - **Cosmos DB データベース**
+リソース トークンの上位にあるオブジェクト モデル階層を次のアウトラインで示します。
+
+- **Azure Cosmos DB アカウント** - DNS が関連付けられている最上位のエンティティ (たとえば、`contoso.gremlin.cosmos.azure.com`)。
+  - **Azure Cosmos DB データベース**
     - **User**
       - **アクセス許可**
-        - *トークン* - 許可または拒否するアクションを示す**アクセス許可**オブジェクトのプロパティです。
+        - **トークン** - 許可または拒否するアクションを示すアクセス許可オブジェクト プロパティです。
 
-リソース トークンの形式は `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"` となります。 この文字列はクライアントに対して非透過的であり、変更または解釈を行わずにそのまま使用する必要があります。
+リソース トークンに使用する形式は `"type=resource&ver=1&sig=<base64 string>;<base64 string>;"` です。 この文字列はクライアントに対して非透過的であり、変更または解釈を行わずにそのまま使用する必要があります。
 
 ```csharp
-// Notice that document client is created against .NET SDK end-point rather than Gremlin.
+// Notice that document client is created against .NET SDK endpoint, rather than Gremlin.
 DocumentClient client = new DocumentClient(
   new Uri("https://contoso.documents.azure.com:443/"), 
   "<master key>", 
@@ -42,10 +44,10 @@ DocumentClient client = new DocumentClient(
   });
 
   // Read specific permission to obtain a token.
-  // Token will not be returned during ReadPermissionReedAsync() call.
-  // This call will succeed only if database id, user id and permission id already exist. 
-  // Note that <database id> is not a database name, it is a base64 string that represents database identifier, for example "KalVAA==".
-  // Similar comment applies to <user id> and <permission id>
+  // The token isn't returned during the ReadPermissionReedAsync() call.
+  // The call succeeds only if database id, user id, and permission id already exist. 
+  // Note that <database id> is not a database name. It is a base64 string that represents the database identifier, for example "KalVAA==".
+  // Similar comment applies to <user id> and <permission id>.
   Permission permission = await client.ReadPermissionAsync(UriFactory.CreatePermissionUri("<database id>", "<user id>", "<permission id>"));
 
   Console.WriteLine("Obtained token {0}", permission.Token);
@@ -53,21 +55,21 @@ DocumentClient client = new DocumentClient(
 ```
 
 ## <a name="use-a-resource-token"></a>リソース トークンを使用する
-リソース トークンは、`GremlinServer` クラスを構築するときに、"password" プロパティとして直接使用できます。
+リソース トークンは、GremlinServer クラスを作成するときに、"パスワード" プロパティとして直接使用できます。
 
 ```csharp
-// Gremlin application needs to be given a resource token. It can't discover the token on its own.
-// Token can be obtained for a given permission using Cosmos DB SDK or passed into the application as command line argument or configuration value.
+// The Gremlin application needs to be given a resource token. It can't discover the token on its own.
+// You can obtain the token for a given permission by using the Azure Cosmos DB SDK, or you can pass it into the application as a command line argument or configuration value.
 string resourceToken = GetResourceToken();
 
-// Configure gremlin servier to use resource token rather than master key
+// Configure the Gremlin server to use a resource token rather than a master key.
 GremlinServer server = new GremlinServer(
   "contoso.gremlin.cosmosdb.azure.com",
   port: 443,
   enableSsl: true,
   username: "/dbs/<database name>/colls/<collection name>",
 
-  // Format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;"
+  // The format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;".
   password: resourceToken);
 
   using (GremlinClient gremlinClient = new GremlinClient(server, new GraphSON2Reader(), new GraphSON2Writer(), GremlinClient.GraphSON2MimeType))
@@ -85,7 +87,7 @@ AuthProperties authenticationProperties = new AuthProperties();
 authenticationProperties.with(AuthProperties.Property.USERNAME,
     String.format("/dbs/%s/colls/%s", "<database name>", "<collection name>"));
 
-// Format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;"
+// The format of the token is "type=resource&ver=1&sig=<base64 string>;<base64 string>;".
 authenticationProperties.with(AuthProperties.Property.PASSWORD, resourceToken);
 
 builder.authProperties(authenticationProperties);
@@ -93,11 +95,11 @@ builder.authProperties(authenticationProperties);
 
 ## <a name="limit"></a>制限
 
-単一の Gremlin アカウントで発行できるトークンの数に制限はありませんが、**1 時間**以内に同時に使用できるトークンは **100** 個までです。 アプリケーションが 1 時間あたりのトークン制限を超えた場合、認証要求は拒否され、エラー メッセージ `"Exceeded allowed resource token limit of 100 that can be used concurrently"` が返されます。 新しいトークン用にスロットを解放するために、特定のトークンとのアクティブな接続を閉じることは効果的ではありません。 Cosmos DB Gremlin エンジンでは、認証要求の前に、過去 1 時間の個別のトークンが追跡されます。
+1 つの Gremlin アカウントで発行できるトークンの数は無制限です。 ただし、1 時間以内に同時に使用できるトークンは最大 100 個のみです。 アプリケーションが 1 時間あたりのトークン制限を超えた場合、認証要求は拒否され、次のエラー メッセージが表示されます。"Exceeded allowed resource token limit of 100 that can be used concurrently." (同時に使用できるリソース トークン制限である 100 の許容値を超えました。) 新しいトークン用にスロットを解放するために、特定のトークンを使用しているアクティブな接続を閉じることは効果的ではありません。 Azure Cosmos DB Gremlin データベース エンジンによって、認証要求の直前の 1 時間にわたって、一意のトークンが追跡されます。
 
 ## <a name="permission"></a>アクセス許可
 
-リソース トークンの使用中に発生する一般的なエラー アプリケーションは `"Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header."` です。 Gremlin トラバーサルでエッジまたは頂点の書き込みが試みられたが、リソース トークンからは `Read` アクセス許可しか付与されていない場合、このエラーが返されます。 次のステップのいずれかが含まれているかどうか、ご利用のトラバーサルを調べてください: `.addV()`、`.addE()`、`.drop()`、または `.property()`。
+アプリケーションでリソース トークン使用中に発生する一般的なエラーは、"Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header." (対応する要求の認証ヘッダーに与えられているアクセス許可が不十分です。別の認証ヘッダーを使用して再試行してください。) です。 Gremlin トラバーサルでエッジまたは頂点の書き込みが試みられたが、リソース トークンからは*読み取り*アクセス許可しか付与されていない場合、このエラーが返されます。 次のステップのいずれかが含まれているかどうかを確認するために、ご利用のトラバーサルを調べてください: *.addV()* 、 *.addE()* 、 *.drop()* 、 *.property()* 。
 
 ## <a name="next-steps"></a>次の手順
 * Azure Cosmos DB の[ロールベースのアクセス制御](role-based-access-control.md)

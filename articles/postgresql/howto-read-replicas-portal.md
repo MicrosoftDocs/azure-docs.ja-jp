@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: bd1317242f84b4d8bd039da89d991a73f6cd3781
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0ff6cd50a5a6cb1599a2248fbc61b0b6b307e791
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309307"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70995448"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Azure portal から Azure Database for PostgreSQL - 単一サーバーの読み取りレプリカを作成および管理する
 
@@ -179,4 +179,4 @@ Azure Portal からサーバーを削除するには、次の手順に従いま�
  
 ## <a name="next-steps"></a>次の手順
 * [Azure Database for PostgreSQL の読み取りレプリカ](concepts-read-replicas.md)について確認してください。
-* [Azure CLI で読み取りレプリカを作成および管理する](howto-read-replicas-cli.md)方法を学習します。
+* [Azure CLI と REST API で読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認してください。

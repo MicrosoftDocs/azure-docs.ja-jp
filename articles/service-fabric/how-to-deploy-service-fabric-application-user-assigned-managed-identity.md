@@ -7,12 +7,12 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: atsenthi
-ms.openlocfilehash: f8dfaa39f02aefbdda1f34afa5011ce5fadbae49
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624914"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037485"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>ユーザー割り当てのマネージド ID を持つ Service Fabric アプリケーションをデプロイする (プレビュー)
 
@@ -27,7 +27,7 @@ ms.locfileid: "69624914"
 
 ## <a name="user-assigned-identity"></a>ユーザー割り当て ID
 
-ユーザー割り当て ID を持つアプリケーションを有効にするには、まず、**userAssigned** 型と参照されるユーザー割り当て ID でアプリケーション リソースに **ID** プロパティを追加します。 次に、**application** リソースの **properties** セクション内に **managedIdentities** セクションを追加します。このセクションには、ユーザー割り当て ID ごとのフレンドリ名と principalId のマッピングの一覧が含まれます。
+ユーザー割り当て ID を持つアプリケーションを有効にするには、まず、**userAssigned** 型と参照されるユーザー割り当て ID でアプリケーション リソースに **ID** プロパティを追加します。 次に、**application** リソースの **properties** セクション内に **managedIdentities** セクションを追加します。このセクションには、ユーザー割り当て ID ごとのフレンドリ名と principalId のマッピングの一覧が含まれます。 ユーザー割り当て ID について詳しくは、[ユーザー割り当てマネージド ID の作成、一覧表示、削除](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell)に関する記事をご覧ください。
 
 ### <a name="application-template"></a>アプリケーション テンプレート
 

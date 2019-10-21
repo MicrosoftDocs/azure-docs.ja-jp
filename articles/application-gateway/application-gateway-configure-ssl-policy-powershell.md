@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/3/2018
 ms.author: victorh
-ms.openlocfilehash: e154b830df6b49855414563be8c740bfe513c85a
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 5c881a42cdd6fd76c591cf12b341fd777d18baea
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967885"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018261"
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する
 
@@ -116,13 +116,7 @@ CipherSuites:
 * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
 
 > [!IMPORTANT]
-> カスタム SSL ポリシーを構成するときは、次の一覧から少なくとも 1 つの暗号スイートを選択する必要があります。 アプリケーション ゲートウェイでは、バックエンドの管理に RSA SHA256 暗号スイートを使用します。
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
-> * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_RSA_WITH_AES_256_CBC_SHA256
-> * TLS_RSA_WITH_AES_128_CBC_SHA256
+> カスタム SSL ポリシーを構成する場合は、TLS_RSA_WITH_AES_256_CBC_SHA256 を選択する必要があります。 アプリケーション ゲートウェイでは、バックエンドの管理にこの暗号スイートを使用します。 他のどのスイートと組み合わせて使用することもできますが、これも選択する必要があります。 
 
 ```powershell
 # get an application gateway resource

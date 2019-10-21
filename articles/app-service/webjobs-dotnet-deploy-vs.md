@@ -1,26 +1,21 @@
 ---
 title: Visual Studio を使用して Web ジョブを開発してデプロイする - Azure
 description: Visual Studio を使用して Azure WebJobs を Azure App Service にデプロイする方法について説明します。
-services: app-service
-documentationcenter: ''
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
 ms.service: app-service
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.custom: vs-azure
-ms.workload: azure-vs
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 58d03d80c82fbf58803f7fefa8ef60c19f99bced
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: ac458b01135be8628fbf939e310f8bda02b8d290
+ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876887"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72303553"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service
 
@@ -229,6 +224,8 @@ WebJobs では *settings.job* ファイルを使用して、Web ジョブが実�
 ### <a name="cron-expressions"></a>CRON 式
 
 WebJobs では、Azure Functions でのタイマー トリガーと同じ CRON 式がスケジュール設定で使用されます。 CRON サポートの詳細については、[タイマー トリガーのリファレンス記事](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)を参照してください。
+
+[!INCLUDE [webjobs-cron-timezone-note](../../includes/webjobs-cron-timezone-note.md)]
 
 ### <a name="settingjob-reference"></a>setting.job 参照
 

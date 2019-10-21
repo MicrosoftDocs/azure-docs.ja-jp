@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1168963c0698c6bdafe20babe2e5143585bf90a8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ee5b18ddc734335ddac2a7d3352de0e4388f445d
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087122"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933269"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル
 
-関数チェーンとは、特定の順序で一連の関数を実行するパターンです。 ある関数の出力が、別の関数の入力に適用される必要がある、ということがよくあります。 この記事では、Durable Functions のクイックスタート ([C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md)) を実行するときに作成するチェーンのシーケンスについて説明します。 Durable Functions の詳細については、「[Durable Functions patterns and technical concepts](durable-functions-concepts.md)」(Durable Functions のパターンおよび技術的概念) を参照してください。
+関数チェーンとは、特定の順序で一連の関数を実行するパターンです。 ある関数の出力が、別の関数の入力に適用される必要がある、ということがよくあります。 この記事では、Durable Functions のクイックスタート ([C#](durable-functions-create-first-csharp.md) または [JavaScript](quickstart-js-vscode.md)) を実行するときに作成するチェーンのシーケンスについて説明します。 Durable Functions について詳しくは、「[Durable Functions overview](durable-functions-overview.md)」(Durable Functions の概要) をご覧ください。
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
@@ -141,7 +141,7 @@ Content-Type: application/json; charset=utf-8
 > [!NOTE]
 > orchestrator 関数を開始した HTTP POST エンドポイントは、"HttpStart" という名前の HTTP トリガー関数としてサンプル アプリに実装されています。 同様のスターター ロジックを `queueTrigger`、`eventHubTrigger`、`timerTrigger` などの他のトリガーの種類に実装することができます。
 
-関数の実行ログを確認しましょう。 `E1_HelloSequence` 関数が、[概要](durable-functions-concepts.md)で説明されている再生の動作のため、複数回、開始し完了しています。 その一方で、`E1_SayHello` の実行は 3 回だけでした。これらの関数の実行は再生されなかったためです。
+関数の実行ログを確認しましょう。 `E1_HelloSequence` 関数が、[オーケストレーションの信頼性](durable-functions-orchestrations.md#reliability)に関するトピックで説明されている再生の動作のため、複数回、開始し完了しています。 その一方で、`E1_SayHello` の実行は 3 回だけでした。これらの関数の実行は再生されなかったためです。
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio サンプル コード
 

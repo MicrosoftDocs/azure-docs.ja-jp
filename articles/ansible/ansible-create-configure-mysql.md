@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Ansible を使用して Azure Database for MySQL のデータべベースを構成する |Microsoft Docs
+title: チュートリアル - Ansible を使用して Azure Database for MySQL のデータベースを構成する
 description: Ansible を使用して Azure Database for MySQL サーバーを作成して構成する方法を学習します。
 keywords: ansible、azure、devops、bash、プレイブック、mysql、データベース
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1170ae9d609a07dbdaebf50e145de65faefa60ec
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 1b6c9a9aa3abbda7ffd72db0ecb137b3c9da1a6c
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230917"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241837"
 ---
 # <a name="tutorial-configure-databases-in-azure-database-for-mysql-using-ansible"></a>チュートリアル:Ansible を使用して Azure Database for MySQL のデータベースを構成する
 

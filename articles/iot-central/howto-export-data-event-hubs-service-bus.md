@@ -8,12 +8,12 @@ ms.date: 07/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: e6df6a1f751106f62cdfecc3a7b5efb0fe4c63bf
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 732ce570f8235d1f147055af6972c2a8d12599dc
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69875994"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971623"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Azure IoT Central でデータをエクスポートする
 
@@ -33,9 +33,9 @@ ms.locfileid: "69875994"
 
 ## <a name="set-up-export-destination"></a>エクスポート先の設定
 
-エクスポート先となる既存の Event Hubs/Service Bus がない場合は、次の手順に従います。
+エクスポート先となる既存の Event Hubs/Service Bus がない場合は、次の手順に従って作成します。
 
-## <a name="create-event-hubs-namespace"></a>Event Hubs 名前空間の作成
+### <a name="create-event-hubs-namespace"></a>Event Hubs 名前空間の作成
 
 1. [Azure portal で新しい Event Hubs 名前空間](https://ms.portal.azure.com/#create/Microsoft.EventHub)を作成します。 詳細については、[Azure Event Hubs のドキュメント](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)を参照してください。
 2. サブスクリプションを選択します。 
@@ -44,7 +44,7 @@ ms.locfileid: "69875994"
     > これで、ご使用の従量課金制 IoT Central アプリケーションのサブスクリプションとは**異なる**別のサブスクリプションにデータをエクスポートできます。 この場合、接続文字列を使用して接続します。
 3. Event Hubs 名前空間にイベント ハブを作成します。 名前空間に移動し、上部の **[+ イベント ハブ]** を選択して、イベント ハブ インスタンスを作成します。
 
-## <a name="create-service-bus-namespace"></a>Service Bus 名前空間の作成
+### <a name="create-service-bus-namespace"></a>Service Bus 名前空間の作成
 
 1. [Azure portal で新しい Service Bus 名前空間](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5)を作成します。 詳細については、[Azure Service Bus のドキュメント](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal)を参照してください。
 2. サブスクリプションを選択します。 
@@ -66,14 +66,12 @@ ms.locfileid: "69875994"
     > [!Note]
     > 左側のメニューに [継続的データ エクスポート] が表示されない場合は、そのアプリの管理者ではありません。 データ エクスポートの設定について、管理者に問い合わせてください。
 
-    ![新しい cde イベント ハブの作成](media/howto-export-data/export_menu1.png)
-
 3. 右上の **[+ 新規]** ボタンを選択します。 エクスポート先として、 **[Azure Event Hubs]** または **[Azure Service Bus]** を選択します。 
 
     > [!NOTE] 
     > アプリごとのエクスポートの最大数は 5 です。 
 
-    ![新しい継続的データ エクスポートの作成](media/howto-export-data/export_new1.png)
+    ![新しい継続的データ エクスポートの作成](media/howto-export-data/export-new2.png)
 
 4. ドロップダウン リスト ボックスで、お使いの **Event Hubs 名前空間/Service Bus 名前空間**を選択します。 リスト内の最後のオプション ( **[Enter a connection string]\(接続文字列を入力する\)** ) を選択することもできます。 
 
@@ -83,7 +81,7 @@ ms.locfileid: "69875994"
     > [!NOTE] 
     > 7 日間の試用版アプリの場合、継続的データ エクスポートを構成する唯一の方法は、接続文字列を使用することです。 7 日間の試用版アプリに関連付けられた Azure サブスクリプションがないのはこのためです。
 
-    ![新しい cde イベント ハブの作成](media/howto-export-data/export_create1.png)
+    ![新しい cde イベント ハブの作成](media/howto-export-data/export-eh.png)
 
 5. (省略可能) **[Enter a connection string]\(接続文字列を入力する\)** を選択すると、接続文字列を貼り付けるための新しいボックスが表示されます。 次の接続文字列を取得するには:
     - Event Hubs や Service Bus。Azure portal で名前空間に移動します。
@@ -95,14 +93,12 @@ ms.locfileid: "69875994"
 
 7. **[Data to export]\(エクスポートするデータ\)** で、エクスポートするデータの種類を **[オン]** に設定して指定します。
 
-6. 継続的データ エクスポートを有効にするには、 **[データのエクスポート]** が **[オン]** になっていることを確認します。 **[保存]** を選択します。
+8. 連続データ エクスポートを有効にするには、 **[データのエクスポート]** トグルが **[オン]** になっていることを確認します。 **[保存]** を選択します。
 
-    ![連続データ エクスポートを構成する](media/howto-export-data/export_list1.png)
-
-7. 数分後に、選択したエクスポート先にデータが表示されます。
+9. 数分後に、選択したエクスポート先にデータが表示されます。
 
 
-## <a name="export-to-azure-event-hubs-and-azure-service-bus"></a>Azure Event Hubs および Azure Service Bus にエクスポートする
+## <a name="data-format"></a>データ形式
 
 測定、デバイス、およびデバイス テンプレートのデータは、ほぼリアルタイムに、ご利用のイベント ハブや Service Bus のキュー、またはトピックにエクスポートされます。 エクスポートされた測定データには、測定自体の値だけでなく、デバイスが IoT Central に送信したメッセージ全体が含まれています。 エクスポートされたデバイス データには、すべてのデバイスのプロパティと設定に対する変更が含まれていて、エクスポートされたデバイス テンプレートには、すべてのデバイス テンプレートに対する変更が含まれています。 エクスポートされたデータは "body" プロパティ内にあり、JSON 形式になっています。
 
@@ -146,7 +142,7 @@ ms.locfileid: "69875994"
     "x-opt-enqueued-time": 1539381030200
   },
   "sequenceNumber": 25325,
-  "enqueuedTimeUtc": "2018-10-12T21:50:30.200Z",
+  "enqueuedTimeUtc": "2018-10-02T21:50:30.200Z",
   "offset": "<offset>",
   "properties": {
     "content_type": "application/json",
@@ -211,7 +207,7 @@ ms.locfileid: "69875994"
   },
   "partitionKey": "<partitionKey>",
   "sequenceNumber": 39740,
-  "enqueuedTimeUtc": "2018-10-11T16:22:39.654Z",
+  "enqueuedTimeUtc": "2018-10-02T16:22:39.654Z",
   "offset": "<offset>",
 }
 ```
@@ -236,62 +232,62 @@ ms.locfileid: "69875994"
 次の例は、イベント ハブまたは Service Bus のキューまたはトピック内にあるデバイス テンプレート データに関するメッセージを示しています。
 
 ```json
-{
-  "body": {
-    "id": "<id>",
-    "version": "1.0.0",
-    "name": "<templateName>",
-    "measurements": {
-      "telemetry": {
-        "humidity": {
-          "dataType": "double",
-          "name": "humidity"
+{ 
+  "body":{ 
+    "id":"<id>",
+    "version":"1.0.0",
+    "name":"<templateName>",
+    "measurements":{ 
+      "telemetry":{ 
+        "humidity":{ 
+          "dataType":"double",
+          "name":"humidity"
         },
-        "pressure": {
-          "dataType": "double",
-          "name": "pressure"
+        "pressure":{ 
+          "dataType":"double",
+          "name":"pressure"
         },
-        "temp": {
-          "dataType": "double",
-          "name": "temperature"
+        "temp":{ 
+          "dataType":"double",
+          "name":"temperature"
         }
       }
     },
-    "properties": {
-      "cloud": {
-        "location": {
-          "dataType": "string",
-          "name": "Location"
+    "properties":{ 
+      "cloud":{ 
+        "location":{ 
+          "dataType":"string",
+          "name":"Location"
         }
       },
-      "device": {
-        "dieNumber": {
-          "dataType": "double",
-          "name": "Die Number"
+      "device":{ 
+        "dieNumber":{ 
+          "dataType":"double",
+          "name":"Die Number"
         }
       }
     },
-    "settings": {
-      "device": {
-        "fanSpeed": {
-          "dataType": "double",
-          "name": "Fan Speed",
-          "initialValue": 0
+    "settings":{ 
+      "device":{ 
+        "fanSpeed":{ 
+          "dataType":"double",
+          "name":"Fan Speed",
+          "initialValue":0
         }
       }
     }
   },
-  "annotations": {
-    "iotcentral-message-source": "deviceTemplates",
-    "x-opt-partition-key": "<partitionKey>",
-    "x-opt-sequence-number": 25315,
-    "x-opt-offset": "<offset>",
-    "x-opt-enqueued-time": 1539274985085
+  "annotations":{ 
+    "iotcentral-message-source":"deviceTemplates",
+    "x-opt-partition-key":"<partitionKey>",
+    "x-opt-sequence-number":25315,
+    "x-opt-offset":"<offset>",
+    "x-opt-enqueued-time":1539274985085
   },
-  "partitionKey": "<partitionKey>",
-  "sequenceNumber": 25315,
-  "enqueuedTimeUtc": "2018-10-11T16:23:05.085Z",
-  "offset": "<offset>",
+  "partitionKey":"<partitionKey>",
+  "sequenceNumber":25315,
+  "enqueuedTimeUtc":"2018-10-02T16:23:05.085Z",
+  "offset":"<offset>"
 }
 ```
 

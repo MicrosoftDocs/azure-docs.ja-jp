@@ -12,12 +12,12 @@ ms.date: 04/11/2019
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4002c14ed6340a0e1a89ee295d47c98436515775
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0c416d7279dd558b8a793064e295b7654925b1c8
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561780"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034893"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Azure Active Directory を使用してユーザーのプロファイル情報を追加または更新する
 Azure Active Directory (Azure AD) を使用して、プロファイル画像、職種別情報、および一部の設定などのユーザー プロファイル情報を追加します。 新しいユーザーの追加方法については、[Azure Active Directory でユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページをご覧ください。
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) を使用して、プロファイル画像、�
 
     - **設定。** ユーザーが Azure Active Directory テナントにサインインできるかどうかを決定します。 ユーザーのグローバルな場所を指定することも可能です。
 
-    - **連絡先情報。** ユーザーに関係する任意の連絡先情報を追加します。 たとえば、住所または携帯電話番号です。
+    - **連絡先情報。** ユーザーの電話または携帯電話の連絡先情報を除き、ユーザーの関連する連絡先情報を追加します (管理者のロールのユーザーに対しては、全体管理者のみが更新できます)。
 
     - **認証の連絡先情報。** この情報を確認し、ユーザーの有効な電話番号と電子メール アドレスがあることを確認します。 この情報は、サインインしようとしているユーザーが本当にそのユーザーであるかどうかを Azure Active Directory が確認するために使用されます。 認証の連絡先情報は全体管理者のみが更新できます。
 

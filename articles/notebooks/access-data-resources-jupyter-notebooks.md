@@ -4,21 +4,20 @@ description: Jupyter Notebook からファイル、REST API、データベース
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 3dd1dde067a2ec745d7d60a78a50ab34ea30d0dd
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e1284072db8ca8aa7a49bd3c4d52f54e5d09420a
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359807"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970252"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>ノートブックでクラウド データにアクセスする
 

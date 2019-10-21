@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Ansible を使用して Azure の仮想マシン スケール セットにアプリをデプロイする | Microsoft Docs
+title: チュートリアル - Ansible を使用して Azure の仮想マシン スケール セットにアプリをデプロイする
 description: Ansible を使用して Azure 仮想マシン スケール セットを構成し、そのスケール セットにアプリケーションをデプロイする方法について説明します。
 keywords: ansible, azure, devops, bash, プレイブック, 仮想マシン, 仮想マシン スケール セット, vmss
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: a44fd06ace9b21122f5f4253ac7d9601b54e6b62
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231060"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241745"
 ---
 # <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>チュートリアル:Ansible を使用して Azure の仮想マシン スケール セットにアプリをデプロイする
 

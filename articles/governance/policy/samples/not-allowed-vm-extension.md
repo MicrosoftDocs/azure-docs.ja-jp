@@ -2,17 +2,16 @@
 title: サンプル - 許可されていない VM 拡張機能
 description: このサンプル ポリシー定義は、仮想マシンに対する特定の拡張機能の使用を禁止します。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 29ca02023eb06463962dd207ca74bc705069a3aa
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6107dbd1d0c4ac1423f54f205a7da5ae939ebd70
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59256687"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976895"
 ---
 # <a name="sample---not-allowed-vm-extensions"></a>サンプル - 許可されていない VM 拡張機能
 

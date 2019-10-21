@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: QnA Maker のドキュメント
   description: QnA Maker は、データに基づく対話型の Q&A レイヤーを作成できるクラウドベースの API サービスです。 QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。 QnA Maker サービスでは、ユーザーが自然言語を使って行った質問に対し、ナレッジにある Q&A から回答となる可能性が最も高いものが提示されます。
-  ms.openlocfilehash: 8e47211194be3653c3d0ba060b573bad446162ba
-  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+  ms.openlocfilehash: 091d2007d115c5e08904af6081d0f67b2eb60071
+  ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71155086"
+  ms.lasthandoff: 10/05/2019
+  ms.locfileid: "71971464"
 landingContent:
 - title: QnA Maker について
   linkLists:
@@ -26,6 +26,10 @@ landingContent:
       url: overview/overview.md
     - text: QnA Maker ポータル
       url: https://www.qnamaker.ai
+  - linkListType: whats-new
+    links:
+    - text: 新機能
+      url: whats-new.md
   - linkListType: concept
     links:
     - text: 開発ライフサイクル
@@ -45,7 +49,7 @@ landingContent:
   - linkListType: get-started
     links:
     - text: クイック スタート:新しいナレッジ ベースの作成
-      url: how-to/create-knowledge-base.md
+      url: quickstarts/create-publish-knowledge-base.md
     - text: クイック スタート:質問と回答を追加する
       url: quickstarts/add-question-metadata-portal.md
   - linkListType: how-to-guide

@@ -4,7 +4,7 @@ description: Azure サブスクリプションに支払期限を過ぎた未払�
 services: ''
 documentationcenter: ''
 author: genlin
-manager: jureid
+manager: dcscontentpm
 editor: ''
 tags: billing
 ms.assetid: d0b88c92-fb9d-4d12-931b-c26104ad63e9
@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: banders
-ms.openlocfilehash: f58969b167b6c0f0a66d46731ad76c1f6e9acc41
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: cd3c29c4b65f45863647599ae2447584845f27c8
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491449"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300294"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>支払期限を過ぎた Azure サブスクリプション未払い額の支払い
+
+この記事は、Microsoft オンライン サービス プログラム アカウントを使用するお客様に適用されます。
 
 お客様の支払いが届いていない場合や、お客様の支払いを処理できない場合、メールが届いたり、Azure portal またはアカウント センターにアラートが表示されたりすることがあります。
 自分が[アカウント管理者](billing-subscription-transfer.md#whoisaa)である場合は、[Azure portal](https://portal.azure.com) で未払い料金を清算できます。 請求書モードの支払いを利用している場合、請求書の下部に記載されている場所に支払いを送付します。
@@ -43,6 +45,13 @@ ms.locfileid: "67491449"
 1. 選択した支払い方法にも Microsoft サービスの未払い料金がある場合は、これが合計未払い残高に反映されます。 それらの未払い料金も支払う必要があります。
 1. **[Pay]\(支払う\)** をクリックします。
 
+## <a name="troubleshoot-declined-credit-card"></a>拒否されたクレジット カードのトラブルシューティング
+
+クレジット カードによる支払いが金融機関によって拒否された場合は、金融機関に問い合わせてこの問題を解決してください。 お使いの銀行で、以下を確認してください。
+- カードの国際取引が有効になっている。
+- カードに、残高を清算するのに十分な信用限度または資金がある。
+- カードの定期的な支払いが有効になっている。
+
 ## <a name="not-getting-billing-email-notifications"></a>支払いに関する電子メール通知が届きません。
 
 アカウント管理者である場合は、[通知に使用されている電子メール アドレスを確認](billing-how-to-change-azure-account-profile.md)します。 定期的にチェックする電子メール アドレスを使用することをお勧めします。 電子メールが正しい場合は、迷惑メール フォルダーを確認します。
@@ -52,6 +61,7 @@ ms.locfileid: "67491449"
 サービスが取り消され、リソースは使用できなくなります。 サービス停止の 90 日後に、すべての Azure データが削除されます。 詳しくは、[Microsoft Trust Center の Microsoft によるデータの管理方法](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409)に関するページをご覧ください。
 
 支払い処理が完了しているのに、サブスクリプションが無効のままになっている場合は、[Azure サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)までご連絡ください。
+
 
 ## <a name="need-help-contact-us"></a>お困りの際は、 お問い合わせください。
 

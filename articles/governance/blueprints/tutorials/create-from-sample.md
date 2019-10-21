@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 137764cba91ab94adef4719a0d34b6fb9e6efe29
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: f3250052a7e26b5d8ef7cb1d411f9d9252089875
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232613"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980711"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>チュートリアル:ブループリント サンプルから環境を作成する
 

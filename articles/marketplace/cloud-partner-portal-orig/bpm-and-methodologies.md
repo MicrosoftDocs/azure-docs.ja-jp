@@ -1,36 +1,22 @@
 ---
 title: 業務プロセス ライブラリ | Azure Marketplace
-description: 業務プロセス ライブラリと方法の説明。
+description: PC 記事にリンクされている、非推奨の CPP 記事。以前の記述:「業務プロセス ライブラリと方法の説明。」
 services: Azure, Marketplace, Cloud Partner Portal,
-author: pbutlerm
+author: ChJenk
 manager: Ricardo.Villalobos
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 09/13/2018
-ms.author: pabutler
-ms.openlocfilehash: 870e77f3390c820278970f5ffda002b4826b82a4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: f29d82a187027c3eee9d89258b6cf6c166089e70
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64935619"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034396"
 ---
 # <a name="business-process-libraries"></a>業務プロセス ライブラリ
 
-業務プロセス ライブラリは、エンド ツー エンドのシナリオのタスク ガイドに過ぎません。 業務プロセス ライブラリはマーケティング コンテンツと完全に合致している必要があります。 業務プロセス ライブラリ内の各業務プロセスには、それに関連付けられた[タスク レコード](https://docs.microsoft.com/dynamics365/operations/dev-itpro/user-interface/task-recorder)が必要です。 Dynamics 365 for Operations の外部にプロセスがある場合は、BPM ライブラリに Visio をアタッチしてください。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Dynamics 365 for Finance and Operation オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[新しい Dynamics 365 for Operations オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)」を参照してください。
 
-さらに詳細な情報については、「[ビジネス プロセス モデラー](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lcs-solutions/business-process-modeler-libraries-lcs-solutions)」を参照してください。
-
-## <a name="methodologies"></a>方法
-
-Microsoft Dynamics の Lifecycle Services (LCS) は、反復可能性や予測可能性がより高い実装プロジェクト体験を保証するために使用できる方法を提供します。 提供された方法のいずれかを使用するか、自分の方法を作成することができます。 方法を使うことで、進捗状況の追跡と報告を簡単に行うことができます。
-
-方法は、フェーズ、タスク、マイルストーンから構成されます。 各フェーズは、任意の数のタスクを持つことができ、そのいくつかは必須です。 フェーズのすべてのタスクが完了すると、そのフェーズに完了のマークを付けることができます。 フェーズの完了を予想する時点を示すマイルストーンも作成することができます。 LCS プロジェクトには以下の方法が含まれています。
-
-- 実装
-- Sure Step
-- 開発について学ぶ
-- ソリューションの移行と作成
-- ソリューションの使用
-
-さらに詳細な情報については「[LCS の方法](https://docs.microsoft.com/dynamics365/operations/dev-itpro/lifecycle-services/create-methodology)」を参照してください。
+新しい Dynamics 365 for Operations オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[新しい Dynamics 365 for Operations オファーを作成する](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-operations-offer)」の手順に従って、オファーを作成します。

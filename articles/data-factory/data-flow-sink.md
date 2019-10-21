@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 24ad0f2e917420c327577851cabc9e5bdbad2825
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: be2ab5605f7fa60ebb78493f714648d458e82a6c
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515684"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029239"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>データ フローのシンク変換
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 データ フローを変換した後、データを変換先のデータセットにシンクできます。 シンク変換では、変換先の出力データのデータセット定義を選択します。 データ フローに必要な数だけシンク変換を設定できます。
 

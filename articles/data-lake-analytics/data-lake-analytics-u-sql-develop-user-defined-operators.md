@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Analytics の U-SQL ユーザー定義演算子 (UDO) の開発
+title: U-SQL ユーザー定義演算子の開発 - Azure Data Lake Analytics
 description: Azure Data Lake Analytics ジョブで使用および再使用されるユーザー定義演算子の開発方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 122a4b6af78a22f74d5057da75767077f8d9b978
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2d1293b06b4d8791138ed666bc3cb4abe3adf40
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813801"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316539"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL ユーザー定義演算子 (UDO) の開発
 このアーティクルでは、U-SQL ジョブ内のデータを処理するユーザー定義演算子を開発する方法について説明します。

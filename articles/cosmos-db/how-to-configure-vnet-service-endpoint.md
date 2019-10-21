@@ -1,30 +1,30 @@
 ---
 title: Azure Cosmos DB アカウント用の仮想ネットワークとサブネット ベースのアクセスを構成する
 description: このドキュメントでは、Azure Cosmos DB の仮想ネットワーク サービス エンドポイントのセットアップに必要な手順について説明します。
-author: kanshiG
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: govindk
-ms.openlocfilehash: 375e79d2fe70e0988d8c58997a746f77b21d7f50
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/28/2019
+ms.author: mjbrown
+ms.openlocfilehash: 1c81045408a948820c8b9fef56e2c7d69cd39e08
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66241998"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71811912"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>仮想ネットワーク (VNet) からのアクセスの構成
 
 Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワークの特定のサブネットのみからアクセスを許可するよう構成できます。 Azure Cosmos DB アカウントへの仮想ネットワーク内のサブネットからの接続をアクセス制限するには、次を実行します。
- 
+
 1. サブネットが、Azure Cosmos DB にサブネットと仮想ネットワークの ID を送信できるようにします。 これは、特定のサブネット上で Azure Cosmos DB 用のサービス エンドポイントを有効にすることで実現できます。
 
 1. Azure Cosmos DB アカウントにアクセスできるソースとしてサブネットを指定する規則を Azure Cosmos DB アカウントに追加します。
 
 > [!NOTE]
-> ご使用の Azure Cosmos DB アカウント用のサービス エンドポイントがサブネット上で有効になると、Azure Cosmos DB に到達するトラフィックのソースが、パブリック IP から、仮想ネットワークとサブネットに切り替わります。 このトラフィックの切り替えは、このサブネットからアクセスされるすべての Azure Cosmos DB アカウントに適用されます。 このサブネットを許可する IP ベースのファイアウォールがご使用の Azure Cosmos DB アカウントにある場合、サービスで有効なサブネットからの要求は IP ファイアウォール規則と一致しなくなり、要求は拒否されるようになります。 
+> ご使用の Azure Cosmos DB アカウント用のサービス エンドポイントがサブネット上で有効になると、Azure Cosmos DB に到達するトラフィックのソースが、パブリック IP から、仮想ネットワークとサブネットに切り替わります。 このトラフィックの切り替えは、このサブネットからアクセスされるすべての Azure Cosmos DB アカウントに適用されます。 このサブネットを許可する IP ベースのファイアウォールがご使用の Azure Cosmos DB アカウントにある場合、サービスで有効なサブネットからの要求は IP ファイアウォール規則と一致しなくなり、要求は拒否されるようになります。
 >
-> 詳細については、この記事の「[IP ファイアウォール規則から VNET ACL への移行](#migrate-from-firewall-to-vnet)」セクションの手順を参照してください。 
+> 詳細については、この記事の「[IP ファイアウォール規則から VNET ACL への移行](#migrate-from-firewall-to-vnet)」セクションの手順を参照してください。
 
 以下のセクションでは、Azure Cosmos DB アカウント用の仮想ネットワーク サービス エンドポイントを構成する方法について説明します。
 
@@ -40,10 +40,9 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
 1. 既存の仮想ネットワークにあるサブネットへのアクセスを許可するには、 **[仮想ネットワーク]** で **[Add existing Azure virtual network]\(既存の Azure 仮想ネットワークを追加\)** を選択します。
 
-1. 追加する Azure 仮想ネットワークの**サブスクリプション**を選択します。 Azure Cosmos DB アカウントへのアクセスを提供する Azure **仮想ネットワーク**と**サブネット**を選択します。 次に、 **[有効化]** を選択して、サービス エンドポイントを持つ選択したネットワークを "Microsoft.AzureCosmosDB" に対して有効にします。 完了したら、 **[追加]** を選択します。 
+1. 追加する Azure 仮想ネットワークの**サブスクリプション**を選択します。 Azure Cosmos DB アカウントへのアクセスを提供する Azure **仮想ネットワーク**と**サブネット**を選択します。 次に、 **[有効化]** を選択して、サービス エンドポイントを持つ選択したネットワークを "Microsoft.AzureCosmosDB" に対して有効にします。 完了したら、 **[追加]** を選択します。
 
    ![仮想ネットワークとサブネットを選択する](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet.png)
-
 
 1. 仮想ネットワークから Azure Cosmos DB アカウントへのアクセスを有効にすると、この選択したサブネットからのトラフィックのみが許可されます。 追加した仮想ネットワークとサブネットは、次のスクリーン ショットのように表示されます。
 
@@ -53,7 +52,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 > 仮想ネットワーク サービス エンドポイントを有効にするには、次のサブスクリプションのアクセス許可が必要です。
 >   * 仮想ネットワークのサブスクリプション:ネットワーク共同作成者
 >   * Azure Cosmos DB アカウントのサブスクリプション:DocumentDB アカウント共同作成者
->   * 仮想ネットワークと Azure Cosmos DB アカウントが異なるサブスクリプションにある場合は、仮想ネットワークを持つサブスクリプションにも `Microsoft.DocumentDB` リソース プロバイダーが登録されていることを確認します。 リソース プロバイダーを登録するには、「[Azure リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。 
+>   * 仮想ネットワークと Azure Cosmos DB アカウントが異なるサブスクリプションにある場合は、仮想ネットワークを持つサブスクリプションにも `Microsoft.DocumentDB` リソース プロバイダーが登録されていることを確認します。 リソース プロバイダーを登録するには、「[Azure リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
 
 リソース プロバイダーにサブスクリプションを登録するための手順を次に示します。
 
@@ -69,11 +68,11 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
    ![仮想ネットワークと新しい仮想ネットワークのサブネットを選択する](./media/how-to-configure-vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-ご使用の Azure Cosmos DB アカウントが Azure Search のような他の Azure サービスによって使用されていたり、Stream Analytics または Power BI からアクセスされたりする場合は、 **[パブリック Azure データセンター内からの接続を受け入れる]** をオンにしてアクセスを許可します。
+ご使用の Azure Cosmos DB アカウントが Azure Search のような他の Azure サービスによって使用されていたり、Stream Analytics または Power BI からアクセスされたりする場合は、 **[Accept connections from within global Azure datacenters]\(グローバル Azure データセンター内からの接続を受け入れる\)** をオンにしてアクセスを許可します。
 
 ポータルから Azure Cosmos DB のメトリックにアクセスできるようにするには、 **[Azure Portal からのアクセスを許可する]** オプションを有効にする必要があります。 これらのオプションの詳細については、[IP ファイアウォールの構成](how-to-configure-firewall.md)に関する記事を参照してください。 アクセスを有効にしたら、 **[保存]** を選択して、設定を保存します。
 
-## <a id="remove-vnet-or-subnet"></a>仮想ネットワークまたはサブネットを削除する 
+## <a id="remove-vnet-or-subnet"></a>仮想ネットワークまたはサブネットを削除する
 
 1. **[すべてのリソース]** ブレードで、サービス エンドポイントを割り当てた Azure Cosmos DB アカウントを見つけます。  
 
@@ -83,7 +82,7 @@ Azure Cosmos DB アカウントを構成して、Azure 仮想ネットワーク�
 
    ![仮想ネットワークを削除する](./media/how-to-configure-vnet-service-endpoint/remove-a-vnet.png)
 
-4.  **[保存]** を選択して変更を保存します。
+4. **[保存]** を選択して変更を保存します。
 
 ## <a id="configure-using-powershell"></a>Azure PowerShell を使用してサービス エンドポイントを構成する
 
@@ -184,38 +183,115 @@ Azure PowerShell を使用して、Azure Cosmos DB アカウントへのサー�
    $UpdatedcosmosDBConfiguration.Properties
    ```
 
-## <a id="configure-using-cli"></a>Azure CLI を使用してサービス エンドポイントを構成する 
+## <a id="configure-using-cli"></a>Azure CLI を使用してサービス エンドポイントを構成する
 
-1. 仮想ネットワーク内のサブネットに対してサービス エンドポイントを有効にします。
+Azure Cosmos アカウントは、サブネットが既に構成されている場合に、作成または後で更新されたときにサービス エンドポイント用に構成できます。 サービス エンドポイントは、サブネットがまだ構成されていない Cosmos アカウントで有効にすることもできます。その後、サブネットが後で構成されたときに機能し始めます。 Cosmos アカウントと仮想ネットワーク リソースの両方にアクセスできない管理者は、この柔軟性により、構成を互いに独立させることができます。
 
-1. サブネットのアクセス制御リスト (ACL) を使用して、既存の Azure Cosmos DB アカウントを更新します。
+### <a name="create-a-new-cosmos-account-and-connect-it-to-a-back-end-subnet-for-a-new-virtual-network"></a>新しい Cosmos アカウントを作成し、新しい仮想ネットワークのバック エンド サブネットに接続する
 
-   ```azurecli-interactive
+この例では、仮想ネットワークとサブネットが作成され、両方のサービス エンドポイントが作成時に有効になります。
 
-   name="<Azure Cosmos DB account name>"
-   resourceGroupName="<Resource group name>"
+```azurecli-interactive
+# Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
 
-   az cosmosdb update \
-    --name $name \
-    --resource-group $resourceGroupName \
-    --enable-virtual-network true \
-    --virtual-network-rules "/subscriptions/testsub/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/frontend"
-   ```
+# Resource group and Cosmos account variables
+resourceGroupName='MyResourceGroup'
+location='West US 2'
+accountName='mycosmosaccount'
 
-1. サブネットの ACL を使用して新しい Azure Cosmos DB アカウントを作成します。
+# Variables for a new Virtual Network with two subnets
+vnetName='myVnet'
+frontEnd='FrontEnd'
+backEnd='BackEnd'
 
-   ```azurecli-interactive
-   az cosmosdb create \
-    --name $name \
-    --kind GlobalDocumentDB \
-    --resource-group $resourceGroupName \
-    --max-interval 10 \
-    --max-staleness-prefix 200 \
-    --enable-virtual-network true \
-    --virtual-network-rules "/subscriptions/testsub/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/testvnet/subnets/default"
-   ```
+# Create a resource group
+az group create -n $resourceGroupName -l $location
 
-## <a id="migrate-from-firewall-to-vnet"></a>IP ファイアウォール規則から仮想ネットワーク ACL へ移行する 
+# Create a virtual network with a front-end subnet
+az network vnet create \
+   -n $vnetName \
+   -g $resourceGroupName \
+   --address-prefix 10.0.0.0/16 \
+   --subnet-name $frontEnd \
+   --subnet-prefix 10.0.1.0/24
+
+# Create a back-end subnet with service endpoints enabled for Cosmos DB
+az network vnet subnet create \
+   -n $backEnd \
+   -g $resourceGroupName \
+   --address-prefix 10.0.2.0/24 \
+   --vnet-name $vnetName \
+   --service-endpoints Microsoft.AzureCosmosDB
+
+svcEndpoint=$(az network vnet subnet show -g $resourceGroupName -n $backEnd --vnet-name $vnetName --query 'id' -o tsv)
+
+# Create a Cosmos DB account with default values and service endpoints
+az cosmosdb create \
+   -n $accountName \
+   -g $resourceGroupName \
+   --enable-virtual-network true \
+   --virtual-network-rules $svcEndpoint
+```
+
+### <a name="connect-and-configure-a-cosmos-account-to-a-back-end-subnet-independently"></a>Cosmos アカウントをバック エンドのサブネットに個別に接続して構成する
+
+このサンプルは、サービス エンドポイント用のサブネットがまだ構成されていない既存の新しい仮想ネットワークに Azure Cosmos アカウントを接続する方法を示すことを目的としています。 これを行うには、`--ignore-missing-vnet-service-endpoint` パラメーターを使用します。 これにより、仮想ネットワークのサブネットへの構成が完了する前に、Cosmos アカウントの構成をエラーなしで完了することができます。 サブネットの構成が完了すると、構成されたサブネットを介して Cosmos アカウントにアクセスできるようになります。
+
+```azurecli-interactive
+# Create an Azure Cosmos Account with a service endpoint connected to a backend subnet
+# that is not yet enabled for service endpoints.
+
+# Resource group and Cosmos account variables
+resourceGroupName='MyResourceGroup'
+location='West US 2'
+accountName='mycosmosaccount'
+
+# Variables for a new Virtual Network with two subnets
+vnetName='myVnet'
+frontEnd='FrontEnd'
+backEnd='BackEnd'
+
+# Create a resource group
+az group create -n $resourceGroupName -l $location
+
+# Create a virtual network with a front-end subnet
+az network vnet create \
+   -n $vnetName \
+   -g $resourceGroupName \
+   --address-prefix 10.0.0.0/16 \
+   --subnet-name $frontEnd \
+   --subnet-prefix 10.0.1.0/24
+
+# Create a back-end subnet but without configuring service endpoints (--service-endpoints Microsoft.AzureCosmosDB)
+az network vnet subnet create \
+   -n $backEnd \
+   -g $resourceGroupName \
+   --address-prefix 10.0.2.0/24 \
+   --vnet-name $vnetName
+
+svcEndpoint=$(az network vnet subnet show -g $resourceGroupName -n $backEnd --vnet-name $vnetName --query 'id' -o tsv)
+
+# Create a Cosmos DB account with default values
+az cosmosdb create -n $accountName -g $resourceGroupName
+
+# Add the virtual network rule but ignore the missing service endpoint on the subnet
+az cosmosdb network-rule add \
+   -n $accountName \
+   -g $resourceGroupName \
+   --virtual-network $vnetName \
+   --subnet svcEndpoint \
+   --ignore-missing-vnet-service-endpoint true
+
+read -p'Press any key to now configure the subnet for service endpoints'
+
+az network vnet subnet update \
+   -n $backEnd \
+   -g $resourceGroupName \
+   --vnet-name $vnetName \
+   --service-endpoints Microsoft.AzureCosmosDB
+```
+
+## <a id="migrate-from-firewall-to-vnet"></a>IP ファイアウォール規則から仮想ネットワーク ACL へ移行する
 
 以下の手順は、サブネットを許可する既存の IP ファイアウォール規則が設定されている Azure Cosmos DB アカウントがあるときに、IP ファイアウォール規則ではなく仮想ネットワークとサブネットベースの ACL を使用する場合にのみ実行する必要があります。
 

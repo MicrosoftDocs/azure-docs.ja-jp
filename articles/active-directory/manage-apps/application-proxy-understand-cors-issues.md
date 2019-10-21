@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 265458066a528246cbfa7876bf61b02a0382581b
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: c49535ad11139ac5145d4f283374bf9cc6d71f52
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499601"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025794"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory アプリケーション プロキシの CORS の問題を理解して解決する
 
@@ -52,7 +52,7 @@ CORS の問題はブラウザーのデバッグ ツールを使用して識別�
 
 ## <a name="cors-challenges-with-application-proxy"></a>アプリケーション プロキシでの CORS の課題
 
-次の例は、Azure AD アプリケーション プロキシの CORS の一般的なシナリオを示しています。 内部サーバーは、**CORSWebService** Web API コントローラーと、 **CORSWebService** を呼び出す **CORSWebClient** をホストします。 **CORSWebClient** から **CORSWebService** への AJAX 要求があります。
+次の例は、Azure AD アプリケーション プロキシの CORS の一般的なシナリオを示しています。 内部サーバーは、**CORSWebService** Web API コントローラーと、**CORSWebService** を呼び出す **CORSWebClient** をホストします。 **CORSWebClient** から **CORSWebService** への AJAX 要求があります。
 
 ![オンプレミスの同一オリジン要求](./media/application-proxy-understand-cors-issues/image1.png)
 

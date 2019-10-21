@@ -2,18 +2,19 @@
 title: チュートリアル:Azure Digital Twins 設定からのイベントを分析する | Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Time Series Insights を使って Azure Digital Twins 空間からのイベントを視覚化および分析する方法を学習します。
 services: digital-twins
+ms.author: alinast
 author: alinamstanciu
+manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/05/2019
-ms.author: alinast
-ms.openlocfilehash: 0244d6ac51b7cad6b74139c39914223928e2b627
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.date: 09/23/2019
+ms.openlocfilehash: af776372026bf9affcda03fa9188b854ebedfc73
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827839"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949799"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-your-azure-digital-twins-spaces-by-using-time-series-insights"></a>チュートリアル:Time Series Insights を使用して Azure Digital Twins 空間からのイベントを視覚化および分析する
 
@@ -38,6 +39,9 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 - [Digital Twins C# のサンプル](https://github.com/Azure-Samples/digital-twins-samples-csharp)がダウンロードされ、作業マシン上に展開されていること。
 - サンプルを実行する開発マシンに [.NET Core SDK バージョン 2.1.403 以上](https://www.microsoft.com/net/download)がインストールされていること。 適切なバージョンがインストールされていることを確認するには、`dotnet --version` を実行します。
 
+> [!TIP]
+> 新しいインスタンスをプロビジョニングする場合は、一意の Digital Twins インスタンス名を使用します。
+
 ## <a name="stream-data-by-using-event-hubs"></a>Event Hubs を使用したデータのストリーム配信
 
 [Event Hubs](../event-hubs/event-hubs-about.md) サービスを使用すると、データをストリーム配信するパイプラインを作成できます。 このセクションでは、Azure Digital Twins インスタンスと Time Series Insights インスタンスの間のコネクタとしてイベント ハブを作成する方法について説明します。
@@ -54,10 +58,10 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. Event Hubs 名前空間のデプロイで、 **[概要]** ウィンドウを選択し、 **[リソースに移動]** を選択します。
 
-    ![デプロイ後の Event Hubs 名前空間](./media/tutorial-facilities-analyze/open-event-hub-ns.png)
+    [![デプロイ後の Event Hubs 名前空間](./media/tutorial-facilities-analyze/open-event-hub-ns.png)](./media/tutorial-facilities-analyze/open-event-hub-ns.png#lightbox)
 
 1. Event Hubs 名前空間の **[概要]** ウィンドウで、最上部にある **[イベント ハブ]** を選択します。
-    ![[イベント ハブ] ボタン](./media/tutorial-facilities-analyze/create-event-hub.png)
+    [![[イベント ハブ] ボタン](./media/tutorial-facilities-analyze/create-event-hub.png)](./media/tutorial-facilities-analyze/create-event-hub.png#lightbox)
 
 1. イベント ハブの**名前**を入力し、 **[作成]** を選択します。
 
@@ -65,13 +69,13 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. 最上部にある **[コンシューマー グループ]** をクリックし、コンシューマー グループの名前 (たとえば、**tsievents**) を選択します。 **作成** を選択します。
 
-    ![イベント ハブ コンシューマー グループ](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)
+    [![イベント ハブ コンシューマー グループ](./media/tutorial-facilities-analyze/event-hub-consumer-group.png)](./media/tutorial-facilities-analyze/event-hub-consumer-group.png#lightbox)
 
    作成されたコンシューマー グループが、イベント ハブの **[概要]** ウィンドウの下部にある一覧に表示されます。
 
 1. イベント ハブの **[共有アクセス ポリシー]** ウィンドウを開き、 **[追加]** ボタンを選択します。 ポリシーの名前として「**ManageSend**」を入力し、すべてのチェック ボックスがオンになっていることを確認して、 **[作成]** を選択します。
 
-    ![イベント ハブの接続文字列](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)
+    [![イベント ハブの接続文字列](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
 1. 作成した ManageSend ポリシーを開き、 **[接続文字列 - 主キー]** と **[接続文字列 - セカンダリ キー]** の値を一時ファイルにコピーします。 これらの値は、次のセクションでイベント ハブのエンドポイントを作成するために必要です。
 
@@ -124,21 +128,21 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
    イベント ハブに対して 2 つのエンドポイントが作成されます。
 
-   ![Event Hubs のエンドポイント](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)
+   [![Event Hubs のエンドポイント](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png)](./media/tutorial-facilities-analyze/dotnet-create-endpoints.png#lightbox)
 
 ## <a name="analyze-with-time-series-insights"></a>Time Series Insights を使用した分析
 
 1. [Azure portal](https://portal.azure.com) の左側のウィンドウで、 **[リソースの作成]** を選択します。 
 
-1. 新しい **Time Series Insights** リソースを見つけて選択します。 **作成** を選択します。
+1. **Time Series Insights** の一般公開 (GA) リソースを検索して選択します。 **作成** を選択します。
 
 1. Time Series Insights インスタンスの**名前**を入力し、**サブスクリプション**を選択します。 Digital Twins インスタンスに対して使用した**リソース グループ**と**場所**を選択します。 **[次へ:イベント ソース]** ボタンまたは **[イベント ソース]** タブを選択します。
 
-    ![Time Series Insights インスタンスを作成するための選択内容](./media/tutorial-facilities-analyze/create-tsi.png)
+    [![Time Series Insights インスタンスを作成するための選択内容](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
 1. **[イベント ソース]** タブで、 **[名前]** を入力し、 **[ソースの種類]** として **[イベントハブ]** を選択し、他の値が適切に選択されていることを確認します。 **[イベント ハブ アクセス ポリシー名]** には、**ManageSend** を選択します。さらに、 **[イベント ハブ コンシューマー グループ]** には、前のセクションで作成したコンシューマー グループを選択します。 **[Review + create]\(レビュー + 作成\)** を選択します。
 
-    ![イベント ソースを作成するための選択内容](./media/tutorial-facilities-analyze/tsi-event-source.png)
+    [![イベント ソースを作成するための選択内容](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 
 1. **[確認と作成]** ウィンドウで、入力した情報を確認し、 **[作成]** を選択します。
 
@@ -150,13 +154,13 @@ Azure Digital Twins インスタンスをデプロイし、空間をプロビジ
 
 1. いくつかのシミュレートされたイベントが生成されたら、Time Series Insights エクスプローラーに戻り、最上部にある更新ボタンを選択します。 シミュレートされたセンサー データの分析グラフが作成されるのがわかります。 
 
-    ![Time Series Insights エクスプローラーのグラフ](./media/tutorial-facilities-analyze/tsi-explorer.png)
+    [![Time Series Insights エクスプローラーのグラフ](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 
 1. 次に、Time Series Insights エクスプローラーを使用して、部屋、センサー、その他のリソースからのさまざまなイベントやデータについてグラフやヒートマップを生成できます。 独自の視覚化を作成するには、左側の **[メジャー]** と **[SPLIT BY]\(分割基準\)** ドロップダウン ボックスを使用します。 
 
    たとえば、 **[メジャー]** で **[イベント]** を選択し、 **[SPLIT BY]\(分割基準\)** で **[DigitalTwins-SensorHardwareId]** を選択して、各センサーのヒートマップを生成します。 次の画像のようなヒートマップが得られます。
 
-   ![Time Series Insights エクスプローラーのヒートマップ](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)
+   [![Time Series Insights エクスプローラーのヒートマップ](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png)](./media/tutorial-facilities-analyze/tsi-explorer-heatmap.png#lightbox)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

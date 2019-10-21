@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/7/2019
 ms.author: haroldw
-ms.openlocfilehash: 80f0ec57aa287bae9b10d9a4cdb013014aab3332
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2293eac45da6f53b0cd29fda68b0ddc76aea1a6c
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082564"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72390631"
 ---
 # <a name="openshift-in-azure"></a>Azure の OpenShift
 
@@ -49,9 +49,9 @@ OKD は OpenShift の[オープン ソース](https://www.okd.io/)上流プロ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure で OpenShift の共通の前提条件を構成する](./openshift-prerequisites.md)
-- [OpenShift Container Platform の Azure へのデプロイ](./openshift-container-platform.md)
-- [OpenShift Container Platform 自己管理型マーケットプレース プランをデプロイする](./openshift-marketplace-self-managed.md)
+- [Azure で OpenShift の共通の前提条件を構成する](./openshift-container-platform-3x-prerequisites.md)
+- [OpenShift Container Platform の Azure へのデプロイ](./openshift-container-platform-3x.md)
+- [OpenShift Container Platform 自己管理型マーケットプレース プランをデプロイする](./openshift-container-platform-3x-marketplace-self-managed.md)
 - [OpenShift を Azure Stack にデプロイする](./openshift-azure-stack.md)
-- [デプロイ後タスク](./openshift-post-deployment.md)
-- [OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)
+- [デプロイ後タスク](./openshift-container-platform-3x-post-deployment.md)
+- [OpenShift デプロイのトラブルシューティング](./openshift-container-platform-3x-troubleshooting.md)

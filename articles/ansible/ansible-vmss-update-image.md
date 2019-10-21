@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Ansible を使用して Azure Virtual Machine Scale Sets のカスタム イメージを更新する | Microsoft Docs
+title: チュートリアル - Ansible を使用して Azure Virtual Machine Scale Sets のカスタム イメージを更新する
 description: Ansible を使用して、カスタム イメージを使って Azure 内の仮想マシン スケール セットを更新する方法について説明します。
 keywords: ansible, azure, devops, bash, プレイブック, 仮想マシン, 仮想マシン スケール セット, vmss
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d3eedc5b83190af46669b9b5df8643f3c80e9bb1
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 3b7baffe6ce0fadbac2dd56b9c8296c80546fa72
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230853"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241344"
 ---
 # <a name="tutorial-update-the-custom-image-of-azure-virtual-machine-scale-sets-using-ansible"></a>チュートリアル:Ansible を使用して Azure Virtual Machine Scale Sets のカスタム イメージを更新する
 
@@ -50,7 +50,7 @@ VM がデプロイされたら、アプリに必要なソフトウェアを使�
 
 サンプル プレイブックを取得するには、次の 2 つの方法があります。
 
-* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml)して、`create_vms.yml` に保存する。
+* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/01-create-vms.yml)して `create_vms.yml` に保存する。
 * `create_vms.yml` という名前の新規ファイルを作成して、次のコンテンツをコピーする。
 
 ```yml
@@ -198,7 +198,7 @@ ansible-playbook create-vms.yml --extra-vars "resource_group=myrg"
 
 サンプル プレイブックを取得するには、次の 2 つの方法があります。
 
-* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml)して、`capture-images.yml` に保存する。
+* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/02-capture-images.yml)して `capture-images.yml` に保存する。
 * `capture-images.yml` という名前の新規ファイルを作成して、次のコンテンツをコピーする。
 
 ```yml
@@ -343,7 +343,7 @@ ansible-playbook create-vmss.yml --extra-vars "resource_group=myrg"
 
 サンプル プレイブックを取得するには、次の 2 つの方法があります。
 
-* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml)して、`update-vmss-image.yml` に保存する。
+* [プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss_images/04-update-vmss-image.yml)して `update-vmss-image.yml` に保存する。
 * `update-vmss-image.yml` という名前の新規ファイルを作成して、次のコンテンツをコピーする。
 
 ```yml

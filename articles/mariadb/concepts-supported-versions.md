@@ -1,21 +1,21 @@
 ---
-title: Azure Database for MariaDB でサポートされているバージョン
-description: Azure Database for MariaDB でサポートされているバージョンについて説明します。
+title: サポートされているバージョン - Azure Database for MariaDB
+description: Azure Database for MariaDB サービスでサポートされている MariaDB サーバーのバージョンについて説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 950294094584958e83f6a16630a6e1f897785e46
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.date: 09/12/2019
+ms.openlocfilehash: 950f8600dac6fccfa72f5dea6e900a210572ee38
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69897281"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973538"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>サポートされている Azure Database for MariaDB サーバーのバージョン
 
-Azure Database for MariaDB は、InnoDB エンジンを使用して、オープン ソースの [MariaDB Server](https://downloads.mariadb.org/) から開発されました。 
+Azure Database for MariaDB は、InnoDB エンジンを使用して、オープン ソースの [MariaDB Server](https://downloads.mariadb.org/) から開発されました。
 
 MariaDB では、X.Y.Z の名前付けスキームが使用されます。 X はメジャー バージョン、Y はマイナー バージョン、Z はパッチ バージョンです。
 
@@ -26,15 +26,15 @@ Azure Database for MariaDB では現在、次のバージョンがサポート�
 
 ## <a name="mariadb-version-102"></a>MariaDB バージョン 10.2
 
-パッチ バージョン:10.2.23
+パッチ バージョン:10.2.25
 
-MariaDB 10.2.23 の機能強化と修正については、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/mariadb-10223-release-notes/)を参照してください。
+このバージョンの機能強化と修正について詳しくは、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/)を参照してください。
 
 ## <a name="mariadb-version-103"></a>MariaDB バージョン 10.3
 
-パッチ バージョン:10.3.14
+パッチ バージョン:10.3.16
 
-MariaDB 10.3.14 の機能強化と修正については、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/mariadb-10314-release-notes/)を参照してください。
+このバージョンの機能強化と修正について詳しくは、[MariaDB のドキュメント](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/)を参照してください。
 
 ## <a name="managing-updates-and-upgrades"></a>更新プログラムとアップグレードの管理
 サービスはパッチの更新プログラムのアップグレードを自動的に管理します。 たとえば、10.2.21 から 10.2.23 などです。  

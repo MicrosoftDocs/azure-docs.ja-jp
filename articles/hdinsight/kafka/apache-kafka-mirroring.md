@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/24/2019
-ms.openlocfilehash: 8565ee03ddff67afb3700aa1cda91ae696a0fc93
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70960244"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123238"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
@@ -84,7 +84,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
     1. **[追加]** をクリックします。
     1. **[ピアリングの追加]** 画面で、次のスクリーンショットに示すように詳細を入力します。
 
-        ![vnet ピアリングの追加](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
+        ![HDInsight Kafka での VNET ピアリングの追加](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. IP アドバタイズを構成します。
     1. `https://PRIMARYCLUSTERNAME.azurehdinsight.net` からプライマリ クラスターの Ambari ダッシュボードに移動します。
@@ -104,7 +104,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
     1. **[Save Configuration Changes] (構成の変更を保存)** の **[Ok]** をクリックします。
     1. **再起動が必要**通知の **[再起動]**  >  **[すべて再起動]** をクリックします。 **[Confirm Restart All] (すべて再起動)** をクリックします。
 
-        ![kafka ノードの再起動](./media/apache-kafka-mirroring/ambari-restart-notification.png)
+        ![Apache Ambari の影響を受けるものをすべて再起動](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. すべてのネットワーク インターフェイスをリッスンするように Kafka を構成します。
     1. **[サービス]**  >  **[Kafka]** の **[構成]** タブにとどまります。 **[Kafka Broker] (Kafka ブローカー)** セクションで、**リスナー** プロパティを `PLAINTEXT://0.0.0.0:9092` に設定します。
@@ -115,7 +115,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
     1. Ambari ダッシュボードの **[ホスト]** をクリックします。
     1. ブローカーと Zookeeper の IP アドレスをメモしておきます。 ブローカー ノードのホスト名の最初の 2 文字は **wn**、Zookeeper ノードのホスト名の最初 2 文字は **zk** です。
 
-        ![IP アドレスの表示](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
+        ![Apache Ambari でのノードの IP アドレスの表示](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
 
 1. 2 番目のクラスター **kafka-secondary-cluster** に対して前の 3 つの手順を繰り返します。IP アドバタイズを構成し、リスナーを設定して、ブローカーと Zookeeper の IP アドレスをメモします。
 
@@ -251,7 +251,7 @@ Apache Kafka のミラーリング機能を使用して、セカンダリ クラ
         6. `auto.create.topics.enable` の値を true に変更して __[保存]__ を選択します。 ノートを追加して、もう一度 __[保存]__ を選択します。
         7. __Kafka__ サービスを選択し、 __[Restart]\(再起動\)__ を選択して、 __[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選択します。 メッセージが表示されたら、 __[Confirm restart all]\(すべて再起動\)__ を選択します。
 
-        ![トピックの自動作成の構成](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
+        ![kafka でのトピックの自動作成の有効化](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
 ## <a name="start-mirrormaker"></a>MirrorMaker の開始
 

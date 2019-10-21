@@ -2,17 +2,17 @@
 title: チュートリアル:Azure HDInsight でのオンデマンド Apache Hadoop クラスター - Data Factory
 description: チュートリアル - Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する方法について説明します。
 author: hrasheed-msft
-ms.reviewer: jasonh
 ms.author: hrasheed
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 04/18/2019
-ms.openlocfilehash: de12725952a2bac6a0b86b1d2e239428c0eaa709
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 0b3062e14873ec971163c125fccd6852d8662663
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736176"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098718"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して HDInsight でオンデマンドの Apache Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -203,7 +203,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 
 6. **[作成と監視]** を選択して、Azure Data Factory の作成および監視ポータルを起動します。
 
-    ![Azure Data Factory の概要](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory の概要")
+    ![Azure Data Factory ポータルの概要](./media/hdinsight-hadoop-create-linux-clusters-adf/data-factory-portal-overview.png "Azure Data Factory の概要")
 
 ## <a name="create-linked-services"></a>リンクされたサービスを作成します
 
@@ -352,7 +352,7 @@ Azure Data Factory では、データ ファクトリに 1 つまたは複数の
 1. **[リソース]** タイルには、リソース グループを他のプロジェクトと共有する場合を除き、既定のストレージ アカウントとデータ ファクトリが表示されます。
 1. **[リソース グループの削除]** を選択します。 この操作を実行すると、ストレージ アカウントと、そのストレージ アカウントに格納されているデータが削除されます。
 
-    ![リソース グループを削除する](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "リソース グループを削除する")
+    ![Azure portal でリソース グループを削除する](./media/hdinsight-hadoop-create-linux-clusters-adf/delete-resource-group.png "リソース グループを削除する")
 
 1. リソース グループ名を入力して削除を確認し、 **[削除]** をクリックします。
 

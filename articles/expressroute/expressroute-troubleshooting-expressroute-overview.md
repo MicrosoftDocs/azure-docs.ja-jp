@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: 888f4dedf2fda0f54297d42a5f813abf73ded748
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 026900e3dcbf7c20750bb8e17e44ba64897c9a30
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66117880"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123453"
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
 この記事は、ExpressRoute 接続の検証とトラブルシューティングに役立ちます。 ExpressRoute は、接続プロバイダーが提供するプライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の 3 つの異なるネットワーク ゾーンが含まれています。
@@ -157,7 +157,7 @@ ExpressRoute 回線が運用可能かどうかを確認するには、特に次�
     Sku                              : Standard
     Status                           : Enabled
 
-ExpressRoute 回線が運用可能かどうかを確認するには、特に次のフィールドに注目してください。ServiceProviderProvisioningState:Provisioned Status                           :Enabled
+ExpressRoute 回線が運用可能かどうかを確認するには、特に次のフィールドに注目してください。ServiceProviderProvisioningState:Provisioned Status                           :有効
 
 > [!NOTE]
 > *Status* が有効になっていない場合は、[Microsoft サポート][Support]にお問い合わせください。 *ServiceProviderProvisioningState* がプロビジョニング済みになっていない場合は、サービス プロバイダーにお問い合わせください。
@@ -165,7 +165,7 @@ ExpressRoute 回線が運用可能かどうかを確認するには、特に次�
 >
 
 ## <a name="validate-peering-configuration"></a>ピアリング構成を検証する
-サービス プロバイダーが ExpressRoute 回線のプロビジョニングを完了すると、MSEE-PR (4) と MSEE (5) の間の ExpressRoute 回線でルーティング構成を作成できます。 各 ExpressRoute 回線では、1 つ、2 つ、または 3 つのルーティング コンテキストを有効にしておくことができます。これらのルーティング コンテキストとは、Azure プライベート ピアリング (Azure 内のプライベート仮想ネットワークへのトラフィック)、Azure パブリック ピアリング (Azure 内のパブリック IP アドレスへのトラフィック)、Microsoft ピアリング (Office 365 と Dynamics 365 へのトラフィック) です。 ルーティング構成の作成と変更方法の詳細については、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。
+サービス プロバイダーが ExpressRoute 回線のプロビジョニングを完了すると、MSEE-PR (4) と MSEE (5) の間の ExpressRoute 回線でルーティング構成を作成できます。 各 ExpressRoute 回線では、1 つ、2 つ、または 3 つのルーティング コンテキストを有効にしておくことができます。これらのルーティング コンテキストとは、Azure プライベート ピアリング (Azure 内のプライベート仮想ネットワークへのトラフィック)、Azure パブリック ピアリング (Azure 内のパブリック IP アドレスへのトラフィック)、Microsoft ピアリング (Office 365 へのトラフィック) です。 ルーティング構成の作成と変更方法の詳細については、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。
 
 ### <a name="verification-via-the-azure-portal"></a>Azure Portal を使用した検証
 
@@ -181,7 +181,7 @@ Azure Portal で、ExpressRoute 回線の状態を確認するには、左側の
 上の例では、説明したように Azure プライベート ピアリングのルーティング コンテキストが有効になっていますが、Azure パブリック ピアリングと Microsoft ピアリングのルーティング コンテキストは有効になっていません。 正常に有効にされたピアリング コンテキストでは、(BGP に必要な) プライマリとセカンダリのポイント ツー ポイントのサブネットも表示されます。 /30 サブネットは、MSEE と PE-MSEE のインターフェイス IP アドレスに使用されます。 
 
 > [!NOTE]
-> ピアリングが有効になっていない場合は、割り当てられたプライマリ サブネットとセカンダリ サブネットが PE-MSEE 上の構成と一致するかどうかを確認してください。 一致しない場合、MSEE ルーター上の構成を変更するには、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。
+> ピアリングが有効になっていない場合は、割り当てられたプライマリ サブネットとセカンダリ サブネットが PE-MSEE 上の構成と一致するかどうかを確認してください。 一致しない場合、MSEE ルーター上の構成を変更するには、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください
 >
 >
 

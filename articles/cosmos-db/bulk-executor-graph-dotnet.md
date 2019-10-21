@@ -4,16 +4,16 @@ description: Bulk Executor ライブラリを使って、Azure Cosmos DB Gremlin
 author: luisbosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 127c12b6a36f31f91fdce3700c43e2602a5c0194
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 35f42f3e222767d9d201d9948581151ae3cb5127
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624537"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72327189"
 ---
 # <a name="using-the-graph-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Graph Bulk Executor .NET ライブラリを使って Azure Cosmos DB Gremlin API の一括操作を実行する
 
@@ -73,7 +73,7 @@ catch (Exception e)
 }
 ```
 
-Bulk Executor ライブラリのパラメーターについて詳しくは、[Azure Cosmos DB へのデータの一括インポートに関するトピック](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#bulk-import-data-to-azure-cosmos-db)を参照してください。
+Bulk Executor ライブラリのパラメーターについて詳しくは、[Azure Cosmos DB へのデータの一括インポートに関するトピック](bulk-executor-dot-net.md#bulk-import-data-to-an-azure-cosmos-account)を参照してください。
 
 ペイロードは、`GremlinVertex` オブジェクトと `GremlinEdge` オブジェクトとしてインスタンス化する必要があります。 これらのオブジェクトの作成方法は次のとおりです。
 

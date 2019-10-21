@@ -1,18 +1,17 @@
 ---
 title: サンプル - 許可された SQL DB の SKU
-description: このサンプル ポリシー定義は、適切な SKU の使用を SQL データベースに要求します。
+description: このサンプル ポリシー定義は、適切な SKU の使用を SQL データベースに要求します。 要件を満たしていない新しいリソースは拒否されます。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 193048baac8ffcc5212b3e1d9772148f8c55aacd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 812ba137bad052e9ee784504151d2a52f99fb9a8
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59262977"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244188"
 ---
 # <a name="sample---allowed-sql-database-skus"></a>サンプル - 許可された SQL データベースの SKU
 

@@ -1,0 +1,78 @@
+### YamlMime:Landing
+title: Azure Spring Cloud のドキュメント
+summary: Azure Spring Cloud は、Java 開発者がコードを変更せずに、Azure で Spring Boot ベースのマイクロサービスを容易に構築して実行できるようにするマネージド サービスを提供します。
+metadata:
+  title: Azure Spring Cloud
+  description: Azure Spring Cloud は、Java 開発者がコードを変更せずに、Azure で Spring Boot ベースのマイクロサービスを容易に構築して実行できるようにするマネージド サービスを提供します。
+  services: spring-cloud
+  ms.service: spring-cloud
+  ms.topic: landing-page
+  ms.collection: collection
+  author: jpconnock
+  ms.author: jpconnock
+  ms.date: 09/26/2019
+  ms.openlocfilehash: 0dcbe8d01761e8feb06cd5705a104d8c9e5196e0
+  ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/08/2019
+  ms.locfileid: "72038603"
+landingContent:
+- title: Azure Spring Cloud について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Spring Cloud とは
+      url: spring-cloud-overview.md
+    - text: Azure Spring Cloud のクォータと制限について
+      url: spring-cloud-quotas.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: ポータルを使用して Java Spring アプリを起動する
+      url: spring-cloud-quickstart-launch-app-portal.md
+    - text: Azure CLI を使用して Java Spring アプリを起動する
+      url: spring-cloud-quickstart-launch-app-cli.md
+  - linkListType: tutorial
+    links:
+    - text: Java Spring アプリをデプロイ用に準備する
+      url: spring-cloud-tutorial-prepare-app-deployment.md
+- title: アプリケーションを監視する
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 分散トレースと App Insights を使用してアプリケーションを監視する
+      url: spring-cloud-tutorial-distributed-tracing.md
+    - text: Java Spring アプリケーションで診断サービスを有効にする
+      url: diagnostic-services.md
+  - linkListType: concept
+    links:
+    - text: Azure Monitor Metrics for Spring Cloud について
+      url: spring-cloud-concept-metrics.md
+- title: 他のサービスとバインドする
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: アプリケーションを Azure Cache for Redis にバインドする
+      url: spring-cloud-tutorial-bind-redis.md
+    - text: アプリケーションを Azure MySQL DB にバインドする
+      url: spring-cloud-tutorial-bind-mysql.md
+    - text: アプリケーションを Azure CosmosDB にバインドする
+      url: spring-cloud-tutorial-bind-cosmos.md
+- title: サービスを構成する
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 構成サーバーを使用してアプリケーションの構成を維持する
+      url: spring-cloud-tutorial-config-server.md
+    - text: アプリケーションを手動でスケーリングする
+      url: spring-cloud-tutorial-scale-manual.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Spring Cloud で CI/CD パイプラインを自動化する
+      url: spring-cloud-howto-cicd.md
+    - text: Azure Spring Cloud を使用してブルー グリーン デプロイを有効にする
+      url: spring-cloud-howto-staging-environment.md
+    - text: Azure Spring Cloud で永続ストレージを使用する
+      url: spring-cloud-howto-persistent-storage.md

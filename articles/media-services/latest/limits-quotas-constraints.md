@@ -9,20 +9,20 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 10/11/2019
 ms.author: juliako
-ms.openlocfilehash: 709ed293dbb0550dc1bb43bf1e1e1cc50906cc31
-ms.sourcegitcommit: 2d3b1d7653c6c585e9423cf41658de0c68d883fa
+ms.openlocfilehash: 819548d784e5cba9fcec6b2110137d91bf28e03d
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67293442"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72296912"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Azure Media Services v3 のクォータと制限
 
 この記事では、Azure Media Services v3 のクォータと制限について説明します
 
-| Resource | 既定の制限 | 
+| リソース | 既定の制限 | 
 | --- | --- | 
 | Azure Media Services アカウントあたりの資産 | 1,000,000|
 | 動的マニフェスト フィルター|100|
@@ -32,8 +32,6 @@ ms.locfileid: "67293442"
 | JobInput あたりのファイル|10 (固定)|
 | ファイル サイズ| シナリオによっては、Media Services での処理についてサポートされている最大ファイル サイズに制限があります。 <sup>(1)</sup> |
 | Media Services アカウントあたりの Job | 500,000 <sup>(2)</sup> (固定)|
-| 変換の一覧表示|応答の改ページ処理 (ページあたり 1,000 変換)|
-| ジョブの一覧表示|応答の改ページ処理 (ページあたり 500 ジョブ)|
 | Media Services アカウントあたりのライブ イベント数 |5|
 | 1 つのサブスクリプション内の Media Services アカウント | 25 (固定) |
 | ライブ イベントあたりのライブ出力 |3 <sup>(3)</sup> |

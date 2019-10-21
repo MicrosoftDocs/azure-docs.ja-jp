@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 31273105c2f4de6950eae6a66c50264803197642
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: af99f369245d6006d0d4784e572020b820e406a3
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981876"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266056"
 ---
 # <a name="migrate-data-to-azure-cosmos-db-cassandra-api-account-using-striim"></a>Striim を使用して Azure Cosmos DB Cassandra API アカウントにデータを移行する
 
@@ -155,7 +155,19 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
    ![Connect to target](./media/cosmosdb-cassandra-api-migrate-data-striim/connect-to-target.png)
 
-1. ターゲット Azure Cosmos DB インスタンスの構成プロパティを入力し、 **[保存]** を選択して続行します。
+1. ターゲットを構成する前に、[Striim の Java 環境に Baltimore ルート証明書](/azure/java/java-sdk-add-certificate-ca-store#to-add-a-root-certificate-to-the-cacerts-store)が追加されていることを確認します。
+
+1. ターゲット Azure Cosmos DB インスタンスの構成プロパティを入力し、 **[保存]** を選択して続行します。 注意が必要な重要なパラメーターを次に示します。
+
+   * **アダプター** - **DatabaseWriter** を使用します。 Azure Cosmos DB Cassandra API に書き込む場合は、DatabaseWriter が必要です。 Cassandra ドライバー 3.6.0 は Striim にバンドルされています。 DatabaseWriter が Azure Cosmos コンテナーにプロビジョニングされている RU の数を超えると、アプリケーションはクラッシュします。
+
+   * **接続 URL** - Azure Cosmos DB JDBC 接続 URL を指定します。 この URL は `jdbc:cassandra://<contactpoint>:10350/<databaseName>?SSL=true` という形式になっています。
+
+   * **ユーザー名** - Azure Cosmos アカウント名を指定します。
+   
+   * **パスワード** - Azure Cosmos アカウントの主キーを指定します。
+
+   * **テーブル** - ターゲット テーブルには主キーが必要です。主キーを更新することはできません。
 
    ![ターゲット プロパティを構成する](./media/cosmosdb-cassandra-api-migrate-data-striim/configure-target-parameters1.png)
 
@@ -178,8 +190,7 @@ Azure Marketplace の Striim イメージは、データウェアハウスとデ
 
 1. 最後に、Azure にサインインし、Azure Cosmos アカウントに移動します。 データ エクスプローラーを更新すると、データが到着していることを確認できます。 
 
-Azure の Striim ソリューションを使用することにより、Oracle、Cassandra、MongoDB、およびその他のさまざまなソースから Azure Cosmos DB にデータを継続的に移行することができます。 Striim で移行パスを設定する際の問題については、[Striim Web サイト](https://go2.striim.com/request-support-striim)でサポート要求を提出してください。
-
+Azure の Striim ソリューションを使用することにより、Oracle、Cassandra、MongoDB、およびその他のさまざまなソースから Azure Cosmos DB にデータを継続的に移行することができます。 詳細については、[Striim の Web サイト](https://www.striim.com/)や [Striim の 30 日間無料お試し版のダウンロード](https://go2.striim.com/download-free-trial) ページにアクセスしてください。Striim で移行パスを設定しようとして問題が発生した場合、[サポート リクエスト](https://go2.striim.com/request-support-striim)を提出してください。
 
 ## <a name="next-steps"></a>次の手順
 

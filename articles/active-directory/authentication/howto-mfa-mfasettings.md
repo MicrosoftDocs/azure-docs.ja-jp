@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eab92f044f62a1ca32062753f824ea76a2726a8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: cf732ec97a57a5bc1d2bcaa39e5fd14a305504d0
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860289"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71075495"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
@@ -403,6 +403,8 @@ Multi-Factor Authentication の記憶機能では、ブラウザーでユーザ�
 >ユーザーが Azure Multi-Factor Authentication Server またはサードパーティの多要素認証ソリューションを介して AD FS の 2 段階認証を行う場合、 **[Multi-Factor Authentication を記憶する]** 機能は、AD FS の **[サインインしたままにする]** 機能とは互換性がありません。
 >
 >ユーザーが AD FS の **[サインインしたままにする]** を選択し、さらに Multi-Factor Authentication に対してデバイスを信頼済みとしてマークした場合、**Multi-Factor Authentication を記憶する** 日数が過ぎるとユーザーは自動的に確認されません。 Azure AD は新たに 2 段階認証を行うよう要求しますが、AD FS は、2 段階認証を再実行するのではなく、元の Multi-Factor Authentication 要求と日付を含むトークンを返します。 **その結果、Azure AD と AD FS との間で本人確認がループ状態に陥ります。**
+>
+>**Multi-Factor Authentication の記憶**機能は、B2B ユーザーとは互換性がなく、招待されたテナントにサインインしても B2B ユーザーには表示されません。
 >
 
 ### <a name="enable-remember-multi-factor-authentication"></a>Multi-Factor Authentication の記憶を有効にする

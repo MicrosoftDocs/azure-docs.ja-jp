@@ -9,21 +9,21 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 1579c50f2dcf78e350ce014ffb1516cec4ac85b3
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 48dcbd51190e747859f0172473c94b0caa296071
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933479"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677565"
 ---
 # <a name="ordinal-v2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの事前作成済み ordinal V2 エンティティ
 ordinal V2 (序数) では、[ordinal](luis-reference-prebuilt-ordinal.md) を拡張して、`next`、`last`、`previous` などの相対参照を提供します。 事前作成済み ordinal エンティティを使用しても、これらは抽出されません。
 
 ## <a name="resolution-for-prebuilt-ordinal-v2-entity"></a>事前作成済み ordinal V2 エンティティの解決
 
-### <a name="api-version-2x"></a>API バージョン 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 次の例は、**builtin.ordinalV2** エンティティの解決を示しています。
 
@@ -55,7 +55,7 @@ ordinal V2 (序数) では、[ordinal](luis-reference-prebuilt-ordinal.md) を�
 }
 ```
 
-### <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
@@ -122,6 +122,10 @@ ordinal V2 (序数) では、[ordinal](luis-reference-prebuilt-ordinal.md) を�
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>次の手順
+
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 [percentage](luis-reference-prebuilt-percentage.md)、[phone number](luis-reference-prebuilt-phonenumber.md)、および [temperature](luis-reference-prebuilt-temperature.md) エンティティについて学習します。 

@@ -1,59 +1,86 @@
 ---
-title: Azure Sentinel Preview に脅威インテリジェンス データを接続する | Microsoft Docs
+title: Azure Sentinel に脅威インテリジェンス データを接続する | Microsoft Docs
 description: 脅威インテリジェンス データを Azure Sentinel に接続する方法について説明します。
 documentationcenter: na
 author: rkarlin
 manager: rkarlin
 editor: ''
-ms.assetid: 56412543-5664-44c1-b026-2dbaf78a9a50
 ms.service: security-center
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 266e487a7c345f75e966afbde567c5bc4683b5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 44b3830465bf2b5aa06612aa868b086b120f1ece
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65233749"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72372273"
 ---
-# <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する 
+# <a name="connect-data-from-threat-intelligence-providers"></a>脅威インテリジェンス プロバイダーからデータを接続する
 
 > [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+> Azure Sentinel の脅威インテリジェンス プラットフォーム データ コネクタは、現在パブリック プレビューです。
+> この機能はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
-Azure Sentinel にデータをストリーミングしたら、組織全体で使用されている脅威インテリジェンス フィードでデータを強化することができます。 
+Azure Sentinel を使用すると、組織で使用されている脅威インジケーターをインポートでき、これにより、セキュリティ アナリストをいっそう適切に既知の脅威を検出して優先順位を付けることができるようになります。 Azure Sentinel の複数の機能が利用可能になるか、強化されます。
 
-アラートやルールを実際の脅威インテリジェンスと照合できるように、Azure Sentinel は[脅威インテリジェンス プロバイダー](https://aka.ms/graphsecuritytips)と統合できます。たとえば、特定の IP アドレスからアラートを受け取った場合、脅威インテリジェンス プロバイダーの統合により、その IP アドレスが悪意のあるものであることが最近判明したかどうかを通知できるようになります。 
+- **分析**には、一連のスケジュールされた規則テンプレートが含まれており、これを有効にすると、脅威インジケーターからのログ イベントの一致に基づいてアラートとインシデントを生成できます。
 
-シングル クリックで、脅威インテリジェンス プロバイダーから Azure Sentinel にログをストリーミングできます。 この接続により、さまざまな種類の監視可能なもの (IP アドレス、ドメイン、URL、ファイル ハッシュなど) を含むインジケーターを組み込んで、Azure Sentinel でカスタム アラート ルールを検索および作成できます。  
-> [!NOTE]
-> [Microsoft Graph Security tiIndicator](https://aka.ms/graphsecuritytiindicators) のエンティティと統合するか、[Microsoft Graph Security 統合脅威インテリジェンス プラットフォーム](https://aka.ms/graphsecuritytips)を使用して、カスタマイズした脅威インジケーターを、警告ルール、ダッシュボード、捜索シナリオで使用するために Azure Sentinel に入力することができます。
+- **ブック**では、Azure Sentinel にインポートされた脅威インジケーターと、脅威インジケーターに一致する分析ルールから生成されたアラートに関する、概要情報が提供されます。
+
+- **ハンティング**  クエリを使用すると、セキュリティの調査担当は、一般的な捜索シナリオのコンテキスト内で脅威インジケーターを使用できるようになります。
+
+- **ノートブック**では、異常を調査し、悪意のある動作を捜索するときに、脅威インジケーターを使用できます。
+
+次のセクションの一覧で示す統合された脅威インテリジェンス プラットフォーム (TIP) 製品のいずれかを使用して、または [Microsoft Graph Security tiIndicators API](https://aka.ms/graphsecuritytiindicators) との直接統合を使用することによって、脅威インジケーターを Azure Sentinel にストリーミングできます。
+
+## <a name="integrated-threat-intelligence-platform-products"></a>統合された脅威インテリジェンス プラットフォーム製品
+
+- [MISP Open Source Threat Intelligence Platform](https://www.misp-project.org/)
+    
+    脅威インジケーターを Microsoft Graph Security API に移行するための MISP インスタンスをクライアントに提供するサンプルスクリプトについては、「[MISP から Microsoft Graph Security へのスクリプト](https://github.com/microsoftgraph/security-api-solutions/tree/master/Samples/MISP)」を参照してください。
+
+- [Palo Alto Networks MineMeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld)
+    
+    ガイド付きの手順については、「[MineMeld を使用して IOC を Microsoft Graph Security API に送信する](https://live.paloaltonetworks.com/t5/MineMeld-Articles/Sending-IOCs-to-the-Microsoft-Graph-Security-API-using-MineMeld/ta-p/258540)」を参照してください。
+
+- [ThreatConnect Platform](https://threatconnect.com/solution/)
+
 
 ## <a name="prerequisites"></a>前提条件  
 
-- グローバル管理者またはセキュリティ管理者のアクセス許可を持つユーザー 
+- Microsoft Graph Security tiIndicators API との直接統合を使用する TIP 製品またはカスタム アプリケーションにアクセス許可を付与するための、グローバル管理者またはセキュリティ管理者の Azure AD ロール。
 
-- Microsoft インテリジェント セキュリティ グラフと統合された脅威インテリジェンス アプリケーション 
+- 脅威インジケーターを格納するための、Azure Sentinel ワークスペースに対する読み取りおよび書き込みアクセス許可。
 
-## <a name="connect-to-threat-intelligence"></a>脅威インテリジェンスに接続する 
+## <a name="connect-azure-sentinel-to-your-threat-intelligence-provider"></a>Azure Sentinel を脅威インテリジェンス プロバイダーに接続する
 
-1. 脅威インテリジェンス プロバイダーを既に使用している場合は、TIP アプリケーションを参照し、インジケーターを Microsoft に送信するためのアクセス許可を付与して、サービスを Azure Sentinel として指定する必要があります。  
+1. Azure Active Directory に[アプリケーションを登録](/graph/auth-v2-service#1-register-your-app)して、アプリケーション ID、アプリケーションシークレット、Azure Active Directory テナント ID を取得します。 Microsoft Graph Security tiIndicators API との直接統合を使用する統合された TIP 製品またはアプリケーションを構成するときに、これらの値が必要になります。
 
-2. Azure Sentinel で **[Data connectors]\(データ コネクタ\)** を選択し、 **[脅威インテリジェンス]** タイルをクリックします。
+2. 登録されたアプリケーションに対する [API アクセス許可を構成](/graph/auth-v2-service#2-configure-permissions-for-microsoft-graph)します。登録したアプリケーションに、Microsoft Graph アプリケーションのアクセス許可 **ThreatIndicators.ReadWrite.OwnedBy** を追加します。
 
-3. **[接続]** をクリックします。 
+3. 組織に登録されているアプリケーションに対して管理者の同意を許可するよう、Azure Active Directory テナント管理者に依頼します。 Azure ポータルで次の手順を実行します。 **[Azure Active Directory]**  >  **[アプリの登録]**  >  **\<_アプリ名_>**  >  **[API アクセス許可の表示]**  >  **[\<_テナント名_> に管理者の同意を与えます]** 。
 
-4. Log Analytics で脅威インテリジェンス フィードに関連するスキーマを使用するために、**ThreatIntelligenceIndicator** を検索します。 
+4. 以下を指定することにより、Azure Sentinel にインジケーターを送信するように、Microsoft Graph Security tiIndicators API との直接統合を使用する TIP 製品またはアプリを構成します。
+    
+    a. 登録されているアプリケーションの ID、シークレット、およびテナント ID の値。
+    
+    b. ターゲット製品として、Azure Sentinel を指定します。
+    
+    c. アクションとして、アラートを指定します。
 
- 
+5. Azure portal で、 **[Azure Sentinel]**  >  **[Data connectors]\(データ コネクタ\)** に移動し、 **[Threat Intelligence Platforms (Preview)]\(脅威インテリジェンス プラットフォーム (プレビュー)\)** コネクタを選択します。
+
+6. **[Open connector page]\(コネクタ ページを開く\)** を選択し、 **[接続]** を選択します。
+
+7. Azure Sentinel にインポートされた脅威インジケーターを表示するには、 **[Azure Sentinel - ログ]**  >  **[SecurityInsights]** に移動し、 **[ThreatIntelligenceIndicator]** を展開します。
+
 ## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、Azure Sentinel に脅威インテリジェンス プロバイダーを接続する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 
-- Azure Sentinel を使用するには、Microsoft Azure のサブスクリプションが必要です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/free/)にサインアップできます。
-- [データを Azure Sentinel にオンボード](quickstart-onboard.md)し、[データや潜在的な脅威を視覚化する](quickstart-get-visibility.md)方法を確認します。
+- [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。

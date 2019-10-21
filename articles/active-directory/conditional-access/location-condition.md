@@ -144,7 +144,7 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 
 ### <a name="api-support-and-powershell"></a>API のサポートと PowerShell
 
-ネームド ロケーションや条件付きアクセス ポリシーでは、API と PowerShell はまだサポートされていません。
+API と PowerShell による、ネームド ロケーションや条件付きアクセス ポリシーの制御はまだサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

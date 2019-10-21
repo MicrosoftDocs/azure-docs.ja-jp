@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 12/11/2018
 ms.topic: troubleshooting
 ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 14e957986df7a114b8c865ee82e2ac447683dc2c
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: b99e94bfdcbf12e82a094f14995b6b93aa3354ed
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257189"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978224"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure Blueprints でエラーを解決する
 

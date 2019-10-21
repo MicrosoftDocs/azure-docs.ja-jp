@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 1904ab07a188e4e877a4fb2f2b7682d923c08fb2
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: f50702688b9a261ed98c2eb3a5892d1bdbe8d11b
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441989"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71308079"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -88,7 +88,7 @@ HDInsight は、[ドメイン参加済み](./domain-joined/hdinsight-security-ov
 
 Hadoop 関連ファイルは、 `/usr/hdp`のクラスター ノードにあります。 このディレクトリには、次のサブディレクトリが含まれます。
 
-* **2.6.5.3006-29**:このディレクトリは、HDInsight が使用する Hortonworks Data Platform のバージョンから名前が付けられます。 クラスター上の番号は、ここに記載されているものと異なる場合があります。
+* **2.6.5.3006-29**:そのディレクトリの名前は、HDInsight によって使用される Hadoop プラットフォームのバージョンです。 クラスター上の番号は、ここに記載されているものと異なる場合があります。
 * **current**:このディレクトリには、**2.6.5.3006-29** ディレクトリ下のサブディレクトリへのリンクが含まれています。 バージョン番号を記憶する必要がないのは、このディレクトリが存在するためです。
 
 サンプル データ ファイルと JAR ファイルは、Hadoop 分散ファイル システムの `/example` と `/HdiSamples` にあります。
@@ -124,11 +124,9 @@ __Azure Storage__ を使用する場合は、次のいずれかの URI スキー
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`:既定以外のストレージ アカウントを使用して通信するときに使用します。 (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 
-__Azure Data Lake Storage Gen2__ を使用する場合は、次のいずれかの URI スキームを使用します。
+__Azure Data Lake Storage Gen2__ を使用する場合は、次の URI スキームを使用します。
 
-* `abfs:///`:暗号化されていない通信を使用して既定のストレージにアクセスします。
-
-* `abfss:///`:暗号化された通信を使用して既定のストレージにアクセスします。  abfss スキームは、HDInsight バージョン 3.6 以降でのみサポートされます。
+* `abfs://`:暗号化された通信を使用して既定のストレージにアクセスします。
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`:既定以外のストレージ アカウントを使用して通信するときに使用します。 (追加のストレージ アカウントがある場合や、パブリックにアクセス可能なストレージ アカウントにる格納されているデータにアクセスする場合など)。
 

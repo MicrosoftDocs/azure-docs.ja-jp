@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 06/21/2019
 ms.author: juliako
-ms.openlocfilehash: 28b9c8f343437c20e277d2f3ba53767afa45a5c2
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 6e52a51c82529a98ef679dd747b9c8b7d177b660
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68501253"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338831"
 ---
 # <a name="media-services-v3-frequently-asked-questions"></a>Media Services v3 のよく寄せられる質問
 
@@ -65,6 +65,14 @@ Media Services v3 のライブ エンコードでは、ライブ ストリーミ
 AES 暗号化と DRM システムのどちらを使えばよいか迷うことがあります。 2 つのシステムの主な違いは、AES 暗号化ではコンテンツ キーが TLS でクライアントに送信されるため、キーが送信中に暗号化されますが、それ以外の暗号化は行われないことです (クリア)。 その結果、コンテンツの復号化に使用されるキーは、クライアント プレーヤーがアクセスでき、クライアントのネットワーク トレースでプレーンテキストとして表示できます。 AES-128 クリア キー暗号化は、閲覧者が信頼できる相手である場合 (従業員が見るために社内で配信される企業ビデオの暗号化など) に適しています。
 
 PlayReady、Widevine、FairPlay など DRM システムではすべて、コンテンツの復号化に使用されるキーの暗号化のレベルが、AES-128 クリア キーと比較して高くなります。 TLS によって提供されるトランスポート レベルの暗号化に加え、コンテンツ キーが暗号化され、DRM ランタイムによって保護されるキーになります。 さらに、解読はオペレーティング システム レベルのセキュリティで保護された環境で行われるため、悪意のあるユーザーによる攻撃はより難しくなります。 閲覧者が信頼できない可能性があり、最高レベルのセキュリティを必要とするユース ケースでは、DRM をお勧めします。
+
+### <a name="how-to-show-a-video-only-to-users-who-have-a-specific-permission-without-using-azure-ad"></a>Azure AD を使用せずに特定のアクセス許可を持つユーザーにのみビデオを表示する方法
+
+特定のトークン プロバイダー (Azure AD など) を使用する必要はありません。 非対称キー暗号化を使用して、独自の [JWT](https://jwt.io/) プロバイダー (いわゆる Secure Token Service (STS)) を作成できます。 カスタム STS では、ビジネス ロジックに基づいて要求を追加できます。
+
+発行者、対象ユーザー、および要求がすべて、JWT の内容と、ContentKeyPolicy で使用されている ContentKeyPolicyRestriction の間で完全に一致していることを確認します。
+
+詳細については、「[Media Services 動的暗号化を使用してコンテンツを保護する](content-protection-overview.md)」を参照してください。
 
 ### <a name="how-and-where-to-get-jwt-token-before-using-it-to-request-license-or-key"></a>JWT トークンを使用してライセンスまたはキーを要求する前に、JWT トークンを入手する方法と入手できる場所を教えてください。
 

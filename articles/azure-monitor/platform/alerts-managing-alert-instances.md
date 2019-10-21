@@ -6,14 +6,14 @@ services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.author: anantr
+ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: f97fa69926cd9c59a0617f409c72610336120333
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 91a770b522011f3955ae0956e289886eb204cf47
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916007"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71702905"
 ---
 # <a name="manage-alert-instances-with-unified-alerts"></a>統合アラートを使用したアラートのインスタンスの管理
 Azure Monitor の[統合アラート エクスペリエンス](https://aka.ms/azure-alerts-overview)では、1 つのウィンドウで、Azure 全体のさまざまな種類のアラートをすべて表示できます。 1 つのウィンドウで、複数のサブスクリプションが対象になります。 この記事では、アラート インスタンスを表示する方法と、トラブルシューティングのために特定のアラート インスタンスを見つける方法を示します。

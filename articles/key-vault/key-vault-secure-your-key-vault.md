@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 4857cda7c3387e72be8837422469888adc5504d1
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 04f4a71e6b54100e5a133958845cf732c2286b32
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883096"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72301068"
 ---
 # <a name="secure-access-to-a-key-vault"></a>キー コンテナーへのアクセスをセキュリティで保護する
 
@@ -37,7 +37,7 @@ Azure サブスクリプション内でキー コンテナーを作成すると�
 - **ユーザー + アプリケーション アクセス**: サインインしたユーザーの代わりにアプリケーションによって Key Vault にアクセスされます。 この種類のアクセスの例として、Azure PowerShell や Azure portal があります。 ユーザー アクセスは 2 つの方法で許可されます。 ユーザーは任意のアプリケーションから Key Vault にアクセスできます。あるいはユーザーは特定のアプリケーションを使用してアクセスする必要があります (_複合 ID_ と呼ばれます)。
 - **アプリケーション専用アクセス**: アプリケーションは、デーモン サービスまたはバックグラウンド ジョブとして実行されます。 アプリケーション ID にはキー コンテナーへのアクセス権が付与されます。
 
-どちらの種類のアクセスの場合も、アプリケーションでは Azure AD を使用して認証が行われます。 アプリケーションでは、アプリケーションの種類に基づいて[サポートされる認証方法](../active-directory/develop/authentication-scenarios.md)が使用されます。 アプリケーションでは、アクセス権を付与するプレーン内のリソース用のトークを取得します。 このリソースは、管理プレーンまたはデータ プレーン内にあるエンドポイントであり、Azure 環境に基づいています。 アプリケーションでは、このトークンを使用して、Key Vault に REST API 要求を送信します。 詳細については、[認証フロー全体](../active-directory/develop/v1-protocols-oauth-code.md)に関するページを確認してください。
+どちらの種類のアクセスの場合も、アプリケーションでは Azure AD を使用して認証が行われます。 アプリケーションでは、アプリケーションの種類に基づいて[サポートされる認証方法](../active-directory/develop/authentication-scenarios.md)が使用されます。 アプリケーションでは、アクセス権を付与するプレーン内のリソース用のトークを取得します。 このリソースは、管理プレーンまたはデータ プレーン内にあるエンドポイントであり、Azure 環境に基づいています。 アプリケーションでは、このトークンを使用して、Key Vault に REST API 要求を送信します。 詳細については、[認証フロー全体](../active-directory/develop/v2-oauth2-auth-code-flow.md)に関するページを確認してください。
 
 1 つのメカニズムで両方のプレーンを認証するモデルには次のようないくつかの利点があります。
 
@@ -208,7 +208,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
     この 2015 Microsoft Ignite カンファレンス ビデオでは、Azure でのアクセス管理とレポート機能について説明されています。 また、Azure AD を使用して Azure サブスクリプションへのアクセスをセキュリティで保護するためのベスト プラクティスについても説明しています。
 
-* [OAuth 2.0 と Azure AD を使用した Web アプリケーションへのアクセスの承認](../active-directory/develop/v1-protocols-oauth-code.md)
+* [OAuth 2.0 と Azure AD を使用した Web アプリケーションへのアクセスの承認](../active-directory/develop/v2-oauth2-auth-code-flow.md)
 
 * [Key Vault 管理 REST API](https://msdn.microsoft.com/library/azure/mt620024.aspx)
 

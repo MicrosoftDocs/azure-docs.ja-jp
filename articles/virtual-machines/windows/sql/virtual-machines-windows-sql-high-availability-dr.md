@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: 175ea1c0c25a0c6dd41c68ea0a340cc1b18cc8b0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d0bdfbbad7e811ac8f1eeffb1991cc5430483a6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100602"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71262903"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー
 
@@ -78,7 +78,11 @@ Azure 内の SQL Server データベースのディザスター リカバリー 
 Azure の VM、ストレージ、およびネットワークには、オンプレミスの非仮想化 IT インフラストラクチャとは異なる動作特性があります。 Azure での HADR SQL Server ソリューションの実装を成功させるには、これらの違いを理解し、それに対応したソリューションを設計する必要があります。
 
 ### <a name="high-availability-nodes-in-an-availability-set"></a>可用性セットでの高可用性ノード
-Azure の可用性セットを使用すると、高可用性ノードを別個の障害ドメイン (FD) と更新ドメイン (UD) に配置できます。 Azure VM を同じ可用性セットに配置するには、同じクラウド サービスにデプロイする必要があります。 同じクラウド サービス上にあるノードのみが同じ可用性セットに属することができます。 詳細については、「 [Virtual Machines の可用性管理](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+Azure の可用性セットを使用すると、高可用性ノードを別個の障害ドメイン (FD) と更新ドメイン (UD) に配置できます。 基盤となる Azure プラットフォームにより、可用性セット内の各仮想マシンに更新ドメインと障害ドメインが割り当てられます。 データセンター内のこのような構成により、計画的または計画外のメンテナンス イベント中に、少なくとも 1 つの仮想マシンが利用可能となり、99.95% の Azure SLA を満たします。 高可用性の設定を構成するには、参加するすべての SQL Virtual Machines を同じ可用性セットに配置して、メンテナンス イベント中のアプリケーションまたはデータの損失を回避します。 同じクラウド サービス上にあるノードのみが同じ可用性セットに属することができます。 詳細については、「 [Virtual Machines の可用性管理](../manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+
+### <a name="high-availability-nodes-in-an-availability-zone"></a>可用性ゾーンでの高可用性ノード
+Availability Zones は、Azure リージョン内の一意の物理的な場所です。 それぞれのゾーンは、独立した電源、冷却手段、ネットワークを備えた 1 つまたは複数のデータセンターで構成されています。 可用性ゾーンをリージョン内で物理的に分離して、少なくとも 1 つの仮想マシンが確実に利用できるようにし、99.99% Azure SLA を確実に満足することで、データセンターで障害が発生してもアプリケーションとデータは保護されます。 高可用性を構成するには、参加する SQL Virtual Machines をリージョン内の利用可能な Availability Zones に分散させて配置します。 可用性ゾーン VM 間データ転送の追加料金がかかります。 詳細については、[可用性ゾーン](/azure/availability-zones/az-overview)に関するページをご覧ください。 
+
 
 ### <a name="failover-cluster-behavior-in-azure-networking"></a>Azure ネットワークでのフェールオーバー クラスターの動作
 Azure の RFC に準拠していない DHCP サービスが原因で、特定のフェールオーバー クラスター構成の作成が失敗する場合があります。これは、クラスター ネットワーク名に重複する IP アドレス (クラスター ノードのいずれかと同じ IP アドレスなど) が割り当てられているためです。 これは、Windows フェールオーバー クラスター機能に依存する、可用性グループを実装するときに問題になります。

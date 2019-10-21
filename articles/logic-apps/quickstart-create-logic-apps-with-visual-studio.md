@@ -12,12 +12,12 @@ ms.manager: carmonm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/25/2019
-ms.openlocfilehash: c9248e5bcc9ebd819518b6ee609f529ea9b8f8bc
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 47b7609fe111ecbe41a161bfbff1f7225ad66357
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051702"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165925"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>クイック スタート:Azure Logic Apps を使用して自動化されたタスク、プロセス、およびワークフローを作成する - Visual Studio
 
@@ -27,7 +27,7 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 
 このクイック スタートでは、Visual Studio で Azure Portal クイック スタートと同じロジック アプリを作成します。 このロジック アプリは Web サイトの RSS フィードを監視し、そのフィード内の新しい項目ごとに電子メールを送信します。 完成したロジック アプリは、次の高レベルのワークフローのようになります。
 
-![完成したロジック アプリ](./media/quickstart-create-logic-apps-with-visual-studio/overview.png)
+![ロジック アプリの大まかなワークフローの概要](./media/quickstart-create-logic-apps-with-visual-studio/high-level-workflow-overview.png)
 
 <a name="prerequisites"></a>
 
@@ -59,6 +59,8 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
     Azure Logic Apps Tools は、Visual Studio Marketplace から直接ダウンロードしてインストールできます。または、[この拡張機能を Visual Studio 内からインストールする方法](https://docs.microsoft.com/visualstudio/ide/finding-and-using-visual-studio-extensions)を確認できます。 
     インストールが完了したら、必ず Visual Studio を再起動してください。
 
+* Azure Government などのさまざまな Azure 環境で作業するために、[Azure 環境セレクター](https://marketplace.visualstudio.com/items?itemName=SteveMichelotti.AzureEnvironmentSelector)拡張機能をインストールして使用できます。これにより、環境間の切り替えが容易になります。 詳細については、「[Azure 環境セレクター Visual Studio 拡張機能の概要](https://devblogs.microsoft.com/azuregov/introducing-the-azure-environment-selector-visual-studio-extension/)」を参照してください。
+
 * 組み込みのロジック アプリ デザイナーを使用する際の Web へのアクセス
 
   デザイナーが Azure でリソースを作成し、ロジック アプリでコネクタからプロパティやデータを読み取るには、インターネット接続が必要です。 
@@ -76,7 +78,7 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 
 1. **[ファイル]** メニューで、 **[新規作成]**  >  **[プロジェクト]** の順に選択します (Ctrl + Shift + N キー)。
 
-   ![[ファイル] メニューで [新規作成]、[プロジェクト] の順に選択する](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
+   ![新しい Visual Studio プロジェクトを作成する](./media/quickstart-create-logic-apps-with-visual-studio/create-new-visual-studio-project.png)
 
 1. **[インストール済み]** で、 **[Visual C#]** または **[Visual Basic]** を選択します。 **[クラウド]**  >  **[Azure リソース グループ]** の順に選択します。 プロジェクトに名前を付けます。例:
 
@@ -95,7 +97,7 @@ Azure Logic Apps が初めてであり、その基本的な概念だけを必要
 
 1. テンプレートの一覧で、 **[ロジック アプリ]** テンプレートを選択します。 **[OK]** を選択します。
 
-   ![ロジック アプリ テンプレートを選ぶ](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
+   ![プロジェクトを作成するための [ロジック アプリ] テンプレートを選択する](./media/quickstart-create-logic-apps-with-visual-studio/select-logic-app-template.png)
 
    プロジェクトが作成された後、ソリューション エクスプローラーが開かれ、ソリューションが表示されます。 
    ソリューションで、**LogicApp.json** ファイルはロジック アプリの定義を格納するだけでなく、デプロイのために使用できる Azure Resource Manager テンプレートにもなっています。
@@ -142,7 +144,7 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
 1. デザイナーにトリガーが表示されたら、[Azure Portal クイック スタート](../logic-apps/quickstart-create-first-logic-app-workflow.md#add-rss-trigger)にあるワークフロー手順に従ってロジック アプリの構築を完了してから、この記事に戻ります。 完了すると、ロジック アプリは次の例のようになります。
 
-   ![完成したロジック アプリ](./media/quickstart-create-logic-apps-with-visual-studio/finished-logic-app.png)
+   ![ロジック アプリのワークフローの完成例](./media/quickstart-create-logic-apps-with-visual-studio/finished-logic-app-workflow.png)
 
 1. Visual Studio ソリューションを保存します。 (Ctrl + S キー)。
 
@@ -154,7 +156,7 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
 1. ソリューション エクスプローラーのプロジェクトのショートカット メニューで、 **[デプロイ]**  >  **[新規作成]** の順に選択します。 メッセージに従って Azure アカウントでサインインします。
 
-   ![ロジック アプリ デプロイを作成する](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
+   ![新しいロジック アプリ デプロイを作成する](./media/quickstart-create-logic-apps-with-visual-studio/create-logic-app-deployment.png)
 
 1. このデプロイでは、既定の Azure サブスクリプション、リソース グループ、およびその他の設定を保持します。 **[配置]** を選択します。
 
@@ -166,18 +168,18 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
    デプロイが開始されると、Visual Studio の **[出力]** ウィンドウにアプリのデプロイ状態が表示されます。 状態が表示されない場合、 **[Show output from]\(出力元の表示\)** の一覧を開いて、Azure リソース グループを選択します。
 
-   ![デプロイの状態の出力](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
+   ![Visual Studio 出力ウィンドウでのデプロイ状態](./media/quickstart-create-logic-apps-with-visual-studio/logic-app-output-window.png)
 
    選択したコネクタにユーザーからの入力が必要な場合は、バックグラウンドで PowerShell ウィンドウが開き、必要なパスワードまたはシークレット キーの入力を求められます。 その情報を入力すると、デプロイが続行されます。
 
-   ![PowerShell ウィンドウ](./media/quickstart-create-logic-apps-with-visual-studio/logic-apps-powershell-window.png)
+   ![パスワードまたは秘密キーに対する PowerShell プロンプト](./media/quickstart-create-logic-apps-with-visual-studio/logic-apps-powershell-window.png)
 
    デプロイが完了すると、ロジック アプリは Azure Portal で有効になり、指定されたスケジュールで (1 分ごとに) 実行されます。 新しいフィード項目が検出されるとトリガーが起動され、それにより、ロジック アプリのアクションを実行するワークフロー インスタンスが作成されます。 ロジック アプリは、新しい項目ごとに電子メールを送信します。 新しい項目が検出されない場合、トリガーは起動されず、ワークフローのインスタンス化を "スキップ" します。 ロジック アプリは、次の間隔まで待ってからチェックします。
 
    このロジック アプリが送信するサンプルの電子メールを次に示します。 
    電子メールが届かない場合は、迷惑メール フォルダーを確認してください。
 
-   ![Outlook が新しい RSS 項目ごとにメールを送信する](./media/quickstart-create-logic-apps-with-visual-studio/outlook-email.png)
+   ![Outlook が新しい RSS 項目ごとにメールを送信する](./media/quickstart-create-logic-apps-with-visual-studio/example-outlook-email.png)
 
 これで、Visual Studio でロジック アプリが正常に構築およびデプロイされました。 ロジック アプリを管理して実行履歴を確認するには、「[Manage logic apps with Visual Studio (Visual Studio でロジック アプリを管理する)](../logic-apps/manage-logic-apps-with-visual-studio.md)」を参照してください。
 
@@ -191,11 +193,11 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
 1. テンプレート ファイルにリソースを追加するには、[JSON アウトライン] ウィンドウの上部にある **[リソースの追加]** を選択します。 または、[JSON アウトライン] ウィンドウで、 **[リソース]** を右クリックして、 **[新しいリソースの追加]** を選びます。
 
-   ![[JSON アウトライン] ウィンドウ](./media/quickstart-create-logic-apps-with-visual-studio/jsonoutline.png)
+   ![[JSON アウトライン] ウィンドウで、新しいリソースを追加します](./media/quickstart-create-logic-apps-with-visual-studio/json-outline-window-add-resource.png)
 
 1. **[リソースの追加]** ダイアログ ボックスで、 **[ロジック アプリ]** を探して選びます。 ロジック アプリの名前を指定し、 **[追加]** を選びます。
 
-   ![リソースの追加](./media/quickstart-create-logic-apps-with-visual-studio/addresource.png)
+   ![プロジェクトに新しいロジック アプリ リソースを追加する](./media/quickstart-create-logic-apps-with-visual-studio/add-logic-app-resource.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -208,7 +210,7 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
 1. **[概要]** ページで **[リソース グループの削除]** を選択します。 確認のためにリソース グループ名を入力し、 **[削除]** を選択します。
 
-   ![[リソース グループ] > [概要] > [リソース グループの削除]](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
+   ![ロジック アプリのリソース グループを削除](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
 
 1. ローカル コンピューターで Visual Studio ソリューションを削除します。
 

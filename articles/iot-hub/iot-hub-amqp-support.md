@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
 ms.author: robinsh
-ms.openlocfilehash: b53bb0f04bf6a739b588b14febd622f6bf7a6a63
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 7f7e957502419b766f7da63048e8168192ea20da
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68354897"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72286642"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>AMQP プロトコルを使用した IoT Hub との通信
 
@@ -262,7 +262,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 | 作成者 | リンクの種類 | リンク パス | 説明 |
 |------------|-----------|-----------|-------------|
 | デバイス | 受信者リンク | `/devices/<deviceID>/messages/devicebound` | デバイスが宛先の cloud-to-device メッセージは、各宛先デバイスによってこのリンクで受信されます。 |
-| デバイス | 送信者リンク | `/devices/<deviceID>messages/events` | デバイスから送信された cloud-to-device メッセージは、このリンク経由で送信されます。 |
+| デバイス | 送信者リンク | `/devices/<deviceID>/messages/events` | デバイスから送信された cloud-to-device メッセージは、このリンク経由で送信されます。 |
 | デバイス | 送信者リンク | `/messages/serviceBound/feedback` | cloud-to-device メッセージのフィードバックは、デバイスによってこのリンク経由でサービスに送信されます。 |
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>cloud-to-device コマンドを受信する (デバイス クライアント)

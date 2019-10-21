@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: mbullwin
-ms.openlocfilehash: c681b58b01979b95e35ae57cefde38c56a787543
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: fa4e45416e83d933cd21fe482bcead14bfbcae22
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68360252"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349928"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 
@@ -148,11 +148,12 @@ Azure Web Apps にデプロイされた ASP.NET アプリケーションと ASP.
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>ASP.NET Core アプリケーションのパフォーマンス カウンター
 
-* [ASP.NET Core SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.4.1 以上では、アプリケーションが Azure Web アプリ (Windows) で実行されている場合、パフォーマンス カウンターが収集されます。
+ASP.NET Core でのパフォーマンス カウンターのサポートは制限されています。
 
-* SDK バージョン 2.7.0-beta3 以上では、アプリケーションが Windows で実行されており、`NETSTANDARD2.0` 以降をターゲットにしている場合、パフォーマンス カウンターが収集されます。
+* [SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) バージョン 2.4.1 以降では、アプリケーションが Azure Web Apps (Windows) で実行されている場合、パフォーマンス カウンターが収集されます。
+* SDK バージョン 2.7.1 以降では、アプリケーションが Windows で実行されていて、`NETSTANDARD2.0` 以降を対象とする場合、パフォーマンス カウンターが収集されます。
 * .NET Framework を対象とするアプリケーションの場合、すべてのバージョンの SDK でパフォーマンス カウンターがサポートされます。
-* この記事は、パフォーマンス カウンターのサポートが Windows 以外に追加されるときに更新されます。
+* SDK バージョン 2.8.0 以降では、Linux の CPU/メモリ カウンターがサポートされます。 Linux では、その他のカウンターはサポートされません。 Linux (およびその他の非 Windows 環境) でシステム カウンターを取得するには、[EventCounter](eventcounters.md) を使用することをお勧めします。
 
 ## <a name="alerts"></a>アラート
 他のメトリックと同様に、パフォーマンス カウンターが指定した制限を超えた場合に警告する[アラートを設定](../../azure-monitor/app/alerts.md)できます。 [アラート] ウィンドウを開き、[アラートの追加] をクリックします。

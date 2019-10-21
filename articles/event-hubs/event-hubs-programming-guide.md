@@ -1,5 +1,5 @@
 ---
-title: プログラミング ガイド - Azure Event Hubs | Microsoft Docs
+title: .NET プログラミング ガイド - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure .NET SDK を使用して Azure Event Hubs 用のコードを記述する方法について説明します。
 services: event-hubs
 documentationcenter: na
@@ -7,16 +7,16 @@ author: ShubhaVijayasarathy
 ms.service: event-hubs
 ms.custom: seodec18
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 28b5c2db0f347b27beb31d427c7f189d74903dff
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: c2e23c38abbec5fd0e6010bdfc0feca882a6180d
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70913969"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309830"
 ---
-# <a name="programming-guide-for-azure-event-hubs"></a>Azure Event Hubs のプログラミング ガイド
+# <a name="net-programming-guide-for-azure-event-hubs"></a>Azure Event Hubs の .NET プログラミング ガイド
 この記事では、Azure Event Hubs を使用してコードを作成する一般的なシナリオについて説明します。 Event Hubs の予備知識があることを前提としています。 Event Hub の概要/概念については、「 [Event Hubs 概要](event-hubs-what-is-event-hubs.md)」を参照してください。
 
 ## <a name="event-publishers"></a>イベント発行元

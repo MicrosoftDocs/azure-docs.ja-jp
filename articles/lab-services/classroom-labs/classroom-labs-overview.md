@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 05/21/2018
+ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 964f5624a3a588a1520a08365c5fa9c783114e48
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 67ebce2130bf5594d3c8c671934f7141a02eb60d
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958832"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694668"
 ---
 # <a name="introduction-to-classroom-labs"></a>クラスルーム ラボの概要
 Azure Lab Services を使用すると、クラウド内にクラスルーム ラボ環境をすばやく設定することができます。 教師はクラスルーム ラボを作成し、Windows または Linux 仮想マシンをプロビジョニングし、必要なソフトウェアとツール ラボをクラスにインストールし、学生が利用できるようにします。 クラスの学生はラボの仮想マシン (VM) に接続し、プロジェクト、課題、教室での演習に使用します。 
@@ -33,6 +33,9 @@ Azure Lab Services はマネージド サービスです。つまり、ラボの
 
 ## <a name="cost-optimization-and-tracking"></a>コストの最適化と追跡  
 ラボ ユーザーが仮想マシンを使用できる時間数を正確に制御することによって、予算を抑えることができます。 ラボでのスケジュールを設定して、指定した時間帯だけユーザーに仮想マシンの使用を許可したり、自動シャットダウンと起動の時刻が繰り返されるように設定したりできます。 個々のユーザーの使用量を追跡して制限を設定してください。
+
+## <a name="example-class-types"></a>各種クラスの例
+Azure Lab Services を使用すると、さまざまな種類のクラスを対象としたラボをセットアップできます。 Azure Lab Services でラボをセットアップできる各種クラスの例については、[Azure Lab Services における各種クラスの例](class-types.md)の記事を参照してください。 
 
 ## <a name="next-steps"></a>次の手順
 Azure Lab Services を使用してクラスルーム ラボを作成するために必要なラボ アカウントを設定します。

@@ -11,8 +11,6 @@
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure
     - name: CF アプリを Azure にデプロイする
       href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-    - name: PCF 上でアプリを実行して OSBA を使用する
-      href: /azure/cloudfoundry/use-osba-pcf-app
     - name: Azure での Cloud Foundry
       href: /azure/virtual-machines/linux/cloudfoundry-get-started
     - name: CF OMS Nozzle のデプロイ

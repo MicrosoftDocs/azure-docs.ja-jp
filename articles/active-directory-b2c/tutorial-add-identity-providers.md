@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 388ef66351140dab18bd7c92290d84f0f4d734ac
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: bc7828b7926ea6e7f2d6bc3891ee231972ae3208
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622784"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71063244"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でアプリケーションに ID プロバイダーを追加する
 
-アプリケーションでは、ユーザーが異なる ID プロバイダーでサインインできるようにすることができます。 "*ID プロバイダー*" では、ID 情報の作成、保守、管理、およびアプリケーションへの認証サービスの提供が行われます。 Azure portal を使用して、Azure Active Directory (Azure AD) B2C によってサポートされる ID プロバイダーを、[ユーザー フロー](active-directory-b2c-reference-policies.md)に追加することができます。
+アプリケーションでは、ユーザーが異なる ID プロバイダーでサインインできるようにすることができます。 "*ID プロバイダー*" では、ID 情報の作成、保守、管理、およびアプリケーションへの認証サービスの提供が行われます。 Azure portal を使用して、Azure Active Directory B2C (Azure AD B2C) によってサポートされる ID プロバイダーを[ユーザー フロー](active-directory-b2c-reference-policies.md)に追加できます。
 
 この記事では、次のことについて説明します。
 
@@ -45,7 +45,7 @@ ID プロバイダー アプリケーションでは、Azure AD B2C テナント
 Azure AD のユーザーのサインインを有効にするには、Azure AD テナント内でアプリケーションを登録する必要があります。 Azure AD テナントは、Azure AD B2C テナントと同じものではありません。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. お使いの Azure AD テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いの Azure AD テナントを含むディレクトリを選択します。
+1. ご利用の Azure AD テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターをクリックして、ご利用の Azure AD テナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択し、 **[アプリの登録]** を検索して選択します。
 1. **[新規登録]** を選択します。
 1. アプリケーションの名前を入力します。 たとえば、「 `Azure AD B2C App` 」のように入力します。
@@ -94,11 +94,11 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
 
 ### <a name="add-the-azure-active-directory-identity-provider"></a>Azure Active Directory の ID プロバイダーを追加する
 
-1. Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを含むディレクトリを選択します。
+1. Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用の Azure AD B2C テナントを含むディレクトリを選択します。
 1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-1. **[ID プロバイダー]** を選択してから、 **[New OpenID Connect provider] (新しい OpenID Connect プロバイダー)** を選択します。
+1. **[ID プロバイダー]** を選択してから、 **[新しい OpenID Connect プロバイダー ]** を選択します。
 1. **[名前]** を入力します。 たとえば､「*Contoso Azure AD*」と入力します。
-1. **[メタデータ URL]** には、次の URL を入力します。`your-AD-tenant-domain` を Azure AD テナントのドメイン名に置き換えてください。
+1. **[メタデータ URL]** には、次の URL を入力します。`your-AD-tenant-domain` は、利用する Azure AD テナントのドメイン名に置き換えます。
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -114,8 +114,8 @@ Azure AD B2C で ID プロバイダーとして Facebook アカウントを使�
 
     * **[ユーザー ID]** : *oid*
     * **[表示名]** : *name*
-    * **[Given name] (指定された名前)** : *given_name*
-    * **[Surname] (姓)** : *family_name*
+    * **[名]** : *given_name*
+    * **[姓]** : *family_name*
     * **[電子メール]** : *unique_name*
 
 1. **[保存]** を選択します。

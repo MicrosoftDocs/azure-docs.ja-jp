@@ -4,21 +4,20 @@ description: Jupyter ノートブックをローカル コンピューターま�
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 2e935425-3923-4a33-89b2-0f2100b0c0c4
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 7df64c3fb70bdf3e7689787ec558bfe0e4942352
-ms.sourcegitcommit: 45e4466eac6cfd6a30da9facd8fe6afba64f6f50
+ms.openlocfilehash: 2151d5b04b0fe5d47e8e2ddfb750ac279b6f74fa
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2019
-ms.locfileid: "66754014"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970188"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook"></a>クイック スタート:ローカルの Jupyter ノートブックの移行
 

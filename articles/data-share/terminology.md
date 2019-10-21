@@ -1,17 +1,17 @@
 ---
 title: Azure Data Share プレビューの用語
-description: Azure Data Share プレビューの用語
+description: Azure Data Share プレビューで使用されるリソースの説明に使用される一般的な用語 (データ プロバイダー、デー タコンシューマー、データ共有、共有サブスクリプション、スナップショット、招待、受信者) について説明します。
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: joanpo
-ms.openlocfilehash: b78a1b250f46c2ddd2b36e19590c4a94ca3ab3fb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: dd3235b7d87d8e02f44a440741b90f675263d147
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844692"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166271"
 ---
 # <a name="azure-data-share-preview-concepts"></a>Azure Data Share プレビューの概念 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c3201ec64ee7a3471b7d93b83664c62c2e7e0435
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 155ca71ae30559cc79e090a8a7bbc12c896b637f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69541497"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973010"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについてよく寄せられる質問
 
@@ -51,7 +51,7 @@ Premium マネージド ディスクの価格は Premium アンマネージド �
 
 **Azure ストレージ アカウントの VHD ファイルを使用して、別のリージョンにマネージド ディスクを作成できますか?**
 
-いいえ。
+No.
 
 **マネージド ディスクを使用するユーザーがスケールを制限されることはありますか?**
 
@@ -59,11 +59,11 @@ Managed Disks では、ストレージ アカウントに関連する制限が�
 
 **マネージド ディスクの増分スナップショットを作成できますか?**
 
-いいえ。 現在のスナップショット機能では、マネージド ディスクの完全なコピーが作成されます。
+No. 現在のスナップショット機能では、マネージド ディスクの完全なコピーが作成されます。
 
 **可用性セット内の VM でマネージド ディスクとアンマネージド ディスクを混在させることができますか?**
 
-いいえ。 可用性セット内の VM は、すべてマネージド ディスクにするか、すべてアンマネージド ディスクにする必要があります。 可用性セットを作成するときに、使用するディスクの種類を選択できます。
+No. 可用性セット内の VM は、すべてマネージド ディスクにするか、すべてアンマネージド ディスクにする必要があります。 可用性セットを作成するときに、使用するディスクの種類を選択できます。
 
 **Managed Disks は Azure Portal の既定オプションですか?**
 
@@ -103,7 +103,7 @@ Managed Disks では 3 つの重要な既定のロールがサポートされま
 
 **アンマネージド ディスクとマネージド ディスクを同じ VM 上に共存させることはできますか?**
 
-いいえ。
+No.
 
 **128 GB のディスクを作成した後でサイズを 130 ギビバイト (GiB) に増やした場合は、1 つ上のディスク サイズ (256 GiB) として課金されますか?**
 
@@ -115,15 +115,15 @@ Azure Managed Disks では、現在、ローカル冗長ストレージ マネ�
 
 **マネージド ディスクを縮小またはダウンサイズできますか?**
 
-いいえ。 現在、この機能はサポートされていません。
+No. 現在、この機能はサポートされていません。
 
 **ディスク上のリースを解除できますか?**
 
-いいえ。 リースが存在するのはディスクを使用しているときに誤ってディスクが削除されるのを防ぐためなので、これは現在サポートされていません。
+No. リースが存在するのはディスクを使用しているときに誤ってディスクが削除されるのを防ぐためなので、これは現在サポートされていません。
 
 **VM のプロビジョニングに特殊な (システム準備ツールを使用して作成されたり汎用化されたりしていない) オペレーティング システム ディスクを使用する場合に、コンピューター名プロパティを変更できますか?**
 
-いいえ。 コンピューター名プロパティを更新することはできません。 新しい VM のコンピューター名プロパティは、オペレーティング システム ディスクの作成に使用した親 VM から継承されます。 
+No. コンピューター名プロパティを更新することはできません。 新しい VM のコンピューター名プロパティは、オペレーティング システム ディスクの作成に使用した親 VM から継承されます。 
 
 **マネージド ディスクを使用して VM を作成するための Azure Resource Manager のサンプル テンプレートは、どこで見つけることができますか?**
 * [Managed Disks を使用するテンプレートの一覧](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
@@ -183,8 +183,26 @@ Premium SSD、Standard SSD、および Standard HDD でスナップショット�
 **Ultra ディスクを可用性セットで実行されている VM に接続できますか?**
 いいえ。これはまだサポートされていません。
 
-**Ultra ディスクを使用する VM に対して Azure Site Recovery (ASR) を有効にできますか?**
-いいえ。Ultra ディスクに対して ASR はまだサポートされていません。
+**Ultra ディスクを使用する VM に対して Azure Site Recovery を有効にできますか?**
+いいえ。Ultra ディスクに対して Azure Site Recovery はまだサポートされていません。
+
+## <a name="uploading-to-a-managed-disk"></a>マネージド ディスクへのアップロード
+
+**既存のマネージド ディスクにデータをアップロードできますか?**
+
+いいえ。アップロードは、**ReadyToUpload** 状態を持つ新しい空のディスクの作成中にのみ使用できます。
+
+**マネージド ディスクにアップロードするにはどうすればよいですか?**
+
+[creationData](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#creationdata) の [createOption](https://docs.microsoft.com/rest/api/compute/disks/createorupdate#diskcreateoption) プロパティを "Upload" に設定することでマネージド ディスクを作成してから、それにデータをアップロードします。
+
+**VM がアップロード状態にある間、その VM にディスクを接続できますか?**
+
+No.
+
+**アップロード状態にあるマネージド ディスクのスナップショットを取得できますか?**
+
+No.
 
 ## <a name="standard-ssd-disks"></a>Standard SSD ディスク
 
@@ -252,11 +270,11 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 **既存の仮想マシン スケール セットに関して、アンマネージド ディスクから Managed Disks への移行は自動化されていますか?**
 
-いいえ。 アンマネージド ディスクを含んだ以前のスケール セットからのイメージを使用し、Managed Disks で新しいスケール セットを作成してください。
+No. アンマネージド ディスクを含んだ以前のスケール セットからのイメージを使用し、Managed Disks で新しいスケール セットを作成してください。
 
 **Managed Disks への移行前に作成したページ BLOB のスナップショットから Managed Disks を作成することはできますか?**
 
-いいえ。 ページ BLOB のスナップショットをページ BLOB としてエクスポートしておき、エクスポートしたページ BLOB から Managed Disks を作成してください。
+No. ページ BLOB のスナップショットをページ BLOB としてエクスポートしておき、エクスポートしたページ BLOB から Managed Disks を作成してください。
 
 **Azure Site Recovery で保護されているオンプレミスのマシンを Managed Disks の VM にフェールオーバーすることはできますか?**
 
@@ -264,7 +282,7 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 **Azure Site Recovery で Azure から Azure へのレプリケーションによって保護されている Azure VM に、何か移行の影響はありますか?**
 
-いいえ。 Azure Site Recovery の Azure から Azure への Managed Disks を使用した VM の保護を利用できます。
+No. Azure Site Recovery の Azure から Azure への Managed Disks を使用した VM の保護を利用できます。
 
 **暗号化されているか、以前に暗号化されていたストレージ アカウント上に配置されているアンマネージド ディスクを持つ VM をマネージド ディスクに移行できますか?**
 
@@ -276,17 +294,21 @@ Standard SSD ディスクは、HDD ディスクに比べて、待機時間、一
 
 はい。
 
+**ブートボリュームは、マネージド ディスク上で既定で暗号化されていますか?**
+
+はい。 既定では、OS ディスクを含むすべてのマネージド ディスクが暗号化されています。
+
 **だれが暗号化キーを管理するのですか?**
 
 暗号化キーは Microsoft が管理します。
 
 **自分のマネージド ディスクの Storage Service Encryption を無効にすることはできますか?**
 
-いいえ。
+No.
 
 **Storage Service Encryption は、特定のリージョンだけで使用可能ですか?**
 
-いいえ。 Managed Disks を使用できるすべてのリージョンで使用できます。 Managed Disks は、すべてのパブリック リージョンおよびドイツで使用できます。 中国でも使用できますが、Microsoft 管理キーのみが対象であり、顧客管理キーは対象外です。
+No. Managed Disks を使用できるすべてのリージョンで使用できます。 Managed Disks は、すべてのパブリック リージョンおよびドイツで使用できます。 中国でも使用できますが、Microsoft 管理キーのみが対象であり、顧客管理キーは対象外です。
 
 **マネージド ディスクが暗号化されているかどうかは、どうすれば判断できますか?**
 
@@ -309,7 +331,7 @@ Azure Portal、Azure CLI、および PowerShell で、マネージド ディス�
 
 **マネージド ディスクまたはスナップショットからエクスポートされた VHD も暗号化されますか?**
 
-いいえ。 ただし、暗号化されたマネージド ディスクまたはスナップショットから暗号化されたストレージ アカウントに VHD をエクスポートした場合は、暗号化されます。 
+No. ただし、暗号化されたマネージド ディスクまたはスナップショットから暗号化されたストレージ アカウントに VHD をエクスポートした場合は、暗号化されます。 
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Premium ディスク: マネージドとアンマネージド
 
@@ -319,7 +341,7 @@ Azure Portal、Azure CLI、および PowerShell で、マネージド ディス�
 
 **Premium と Standard 両方のデータ ディスクを、Premium SSD ディスクをサポートしないサイズ シリーズ (D、Dv2、G、F シリーズなど) にアタッチできますか?**
 
-いいえ。 Premium SSD ディスクをサポートするサイズ シリーズを使用しない VM にアタッチできるのは、Standard データ ディスクのみです。
+No. Premium SSD ディスクをサポートするサイズ シリーズを使用しない VM にアタッチできるのは、Standard データ ディスクのみです。
 
 **Premium データ ディスクを 80 GB の既存の VHD から作成した場合、どのくらいの料金がかかりますか?**
 

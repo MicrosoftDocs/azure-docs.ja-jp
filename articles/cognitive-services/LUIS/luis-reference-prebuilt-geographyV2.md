@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: e28b541c1b5aa8f733c9f4ed44fd2ea5296b34d8
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 04bc3019a55920351b0e91c87e63b8309d94e34c
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933537"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677608"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの geographyV2 作成済みエンティティ
 作成済みの geographyV2 エンティティは、場所を検出します。 このエンティティは既にトレーニングされているので、GeographyV2 を含む発話の例をアプリケーション意図に追加する必要はありません。 GeographyV2 エンティティは、英語[カルチャ](luis-reference-prebuilt-entities.md)でサポートされています。
@@ -35,7 +35,7 @@ ms.locfileid: "68933537"
 
 ## <a name="resolution-for-geographyv2-entity"></a>GeographyV2 エンティティの解決
 
-### <a name="api-version-2x"></a>API バージョン 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 次の例では、**builtin.geographyV2** エンティティの解決を示します。
 
@@ -93,7 +93,7 @@ ms.locfileid: "68933537"
 } 
 ```
 
-### <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
@@ -191,6 +191,10 @@ ms.locfileid: "68933537"
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>次の手順
+
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 [email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md)、[ordinal](luis-reference-prebuilt-ordinal.md) エンティティについて学習します。 

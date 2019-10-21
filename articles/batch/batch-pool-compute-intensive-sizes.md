@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: c3c54b003017f7512cd40c7798fc351e4e4a3f69
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c8fa96e41b98cfa227fd25dc4b3bd66a171ff3c8
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094929"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350135"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Batch プールで RDMA または GPU インスタンスを使用する
 
@@ -86,7 +86,7 @@ Batch プール用の特殊な VM サイズを構成するために、必要な�
 
     * [Azure Batch コンテナー プール用の Ubuntu Server (GPU および RDMA ドライバー付き)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-batch.ubuntu-server-container-rdma?tab=Overview)
 
-* インストールされているドライバー、ソフトウェア、またはその VM サイズに必要な他の設定を含む、[カスタムの Windows または Linux VM イメージ](batch-custom-images.md)を作成します。 
+* インストールされているドライバー、ソフトウェア、またはその VM サイズに必要な他の設定を含む、[カスタムの Windows または Linux VM イメージ](batch-sig-images.md)を作成します。 
 
 * zip 形式のドライバーまたはアプリケーションのインストーラーから Batch の[アプリケーション パッケージ](batch-application-packages.md)を作成し、パッケージをプール ノードにデプロイするように Batch を構成し、各ノードが作成されたときに 1 回インストールします。 たとえば、アプリケーション パッケージがインストーラーの場合は、プールのすべてのノードにアプリケーションをサイレント インストールする[開始タスク](batch-api-basics.md#start-task) コマンド ラインを作成します。 ワークロードが特定のドライバー バージョンに依存する場合は、アプリケーション パッケージとプールの開始タスクの使用を検討してください。
 
@@ -123,9 +123,9 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 1. Ubuntu 16.04 LTS を実行する Azure NC シリーズ VM をデプロイします。 たとえば、米国中南部リージョンに VM を作成します。 
 2. Azure portal、Azure サブスクリプションに接続するクライアント コンピューター、または Azure Cloud Shell を使用して、[NVIDIA GPU ドライバー拡張機能](../virtual-machines/extensions/hpccompute-gpu-linux.md
 )を VM に追加します。 または、手順に従って VM に接続し、手動で [CUDA ドライバーをインストール](../virtual-machines/linux/n-series-driver-setup.md)します。
-3. 手順に従って、Batch 用の[スナップショットとカスタム Linux VM イメージ](batch-custom-images.md)を作成します。
+3. 次の手順に従って、Batch 用の [Shared Image Gallery イメージ](batch-sig-images.md)を作成します。
 4. NC VM をサポートするリージョンに Batch アカウントを作成します。
-5. Batch API または Azure Portal で、[カスタム イメージを使い](batch-custom-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
+5. Batch API または Azure Portal で、[カスタム イメージを使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
 | Setting | 値 |
 | ---- | ---- |
@@ -143,8 +143,8 @@ Azure H16r VM ノードのプールで Windows MPI アプリケーションを�
 )、または Azure Cloud Shell を使用して、HpcVmDrivers 拡張機能を VM に追加します。 
 1. VM へのリモート デスクトップ接続を作成します。
 1. 最新バージョンの Microsoft MPI の[セットアップ パッケージ](https://www.microsoft.com/download/details.aspx?id=57467) (MSMpiSetup.exe) をダウンロードし、Microsoft MPI をインストールします。
-1. 手順に従って、Batch 用の[スナップショットとカスタム Windows VM イメージ](batch-custom-images.md)を作成します。
-1. Batch API または Azure Portal で、[カスタム イメージを使い](batch-custom-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
+1. 次の手順に従って、Batch 用の [Shared Image Gallery イメージ](batch-sig-images.md)を作成します。
+1. Batch API または Azure portal で、[Shared Image Gallery を使い](batch-sig-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
 | Setting | 値 |
 | ---- | ---- |

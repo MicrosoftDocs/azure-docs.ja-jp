@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 9b4e7ce714d0a1f65e0a35b9c493e99200c668c6
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 925fed320359edc04ad6c91fe7a7d9bde5370254
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034860"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258469"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure アクティビティ ログをストレージまたは Azure Event Hubs にエクスポートする
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 Azure portal でアクティビティ ログを表示したり、これを Azure Monitor によって収集された他のデータで分析できる Log Analytics ワークスペースにコピーしたりするだけでなく、ログ プロファイルを作成してアクティビティ ログを Azure ストレージ アカウントにアーカイブしたり、これをイベント ハブにストリーミングしたりすることができます。
@@ -60,13 +60,9 @@ ms.locfileid: "70034860"
 リテンション ポリシーが設定されていても、ストレージ アカウントへのログの保存は無効になっている場合、保持ポリシーへの影響はありません。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 削除プロセスは午前 0 時 (UTC) に開始されますが、ストレージ アカウントからのログの削除には最大で 24 時間かかる可能性があるので注意してください。
 
 
-
-> [!WARNING]
-> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更しました。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](diagnostic-logs-append-blobs.md)
-
-
 > [!IMPORTANT]
 > Microsoft.Insights リソースプロバイダーが登録されていない場合、ログ プロファイルを作成するときにエラーが発生することがあります。 このプロバイダーの登録については、「[Azure リソースプロバイダーと種類](../../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
+
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Azure portal を使用してログ プロファイルを作成する
 
@@ -167,6 +163,9 @@ Azure portal の **[イベント ハブにエクスポート]** オプション�
 
 ## <a name="activity-log-schema"></a>アクティビティ ログのスキーマ
 Azure Storage とイベント ハブのどちらに送信される場合でも、アクティビティ ログ データは、次の形式で JSON に書き込まれます。
+
+
+> ストレージ アカウントに書き込まれるアクティビティ ログ データの形式は、2018 年 11 月 1 日に JSON 行に変更されました。 この形式変更の詳細については、「[ストレージ アカウントにアーカイブされている Azure Monitor 診断ログの形式変更のための準備](diagnostic-logs-append-blobs.md)」を参照してください。
 
 ``` JSON
 {

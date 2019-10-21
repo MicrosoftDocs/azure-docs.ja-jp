@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291de1fa9bbb43ff9393a3163d1cd21dd7cd1b01
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835142"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257929"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain-preview"></a>方法:アプリケーションの発行元ドメインを構成する (プレビュー)
 
@@ -96,6 +96,12 @@ ms.locfileid: "68835142"
 ### <a name="to-select-a-verified-domain"></a>検証済みのドメインを選択するには
 
 - テナントに検証済みのドメインが存在する場合は、 **[確認済みドメインの選択]** ドロップダウンからいずれかのドメインを選択します。
+
+>[!Note]
+> 返される必要がある 'Content-Type' ヘッダーは `application/json` です。 `application/json; charset=utf-8` のようにそれ以外のものを使用すると、以下に示すエラーが発生する場合があります。 
+> 
+>``` "Verification of publisher domain failed. Error getting JSON file from https:///.well-known/microsoft-identity-association. The server returned an unexpected content type header value. " ```
+>
 
 ## <a name="implications-on-the-app-consent-prompt"></a>アプリの同意プロンプトへの影響
 

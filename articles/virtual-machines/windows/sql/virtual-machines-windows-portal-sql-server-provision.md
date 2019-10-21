@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 38fdbbf76806325e457f066e6b469a531c27b038
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1e0bc4647476cd5c6aa0f38456ef8890b4ddcaa5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102235"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828777"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンをプロビジョニングする方法
 
@@ -38,7 +38,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 
 1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 **[Azure SQL]** が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「Azure SQL」と入力します。 (省略可能) **[Azure SQL]** の横にある星を選択してお気に入りに追加し、左側のナビゲーションに項目として追加します。 
 1. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[詳細の表示]** を選択すると、追加情報を表示できます。 
-1. **[SQL 仮想マシン]** タイルの SQL Server イメージ検索ボックスに「`2017`」と入力し、ドロップダウンから **[Free SQL Server License:SQL Server 2017 Developer on Windows Server 2016]** を選択します。 
+1. **[SQL 仮想マシン]** タイルの SQL Server イメージ検索ボックスに「`2017`」と入力し、ドロップダウンから **[Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016]** を選択します。 
 
 
    ![SQL VM イメージの選択](media/virtual-machines-windows-portal-sql-server-provision/select-sql-vm-image-portal.png)
@@ -54,17 +54,6 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 
 1. **作成** を選択します。
 
-
-## <a id="configure"></a> 構成オプション
-
-SQL Server 仮想マシンを構成するタブが複数あります。 このガイドの目的のために、以下の内容に焦点を当てます。 
-
-| 手順 | 説明 |
-| --- | --- |
-| **基本** |[基本設定を構成する](#1-configure-basic-settings) |
-| **オプション機能** |[オプション機能を構成する](#2-configure-optional-features) |
-| **SQL Server の設定** |[SQL Server の設定を構成する](#3-configure-sql-server-settings) |
-| **確認および作成** | [概要を確認する](#4-review--create) |
 
 ## <a name="1-configure-basic-settings"></a>1.基本設定を構成する
 
@@ -142,8 +131,6 @@ SQL Server 仮想マシンを構成するタブが複数あります。 この�
 
 **[SQL Server の設定]** タブで、SQL Server の個々の設定と最適化を構成します。 SQL Server について構成できる設定は次のとおりです。
 
-
-
 | Setting |
 | --- |
 | [接続](#connectivity) |
@@ -175,7 +162,7 @@ SQL Server 仮想マシンを構成するタブが複数あります。 この�
 
 
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>認証
 
 SQL Server 認証が必要な場合は、 **[SQL Server の設定]** タブで **[SQL 認証]** の **[有効にする]** をクリックします。
 
@@ -208,16 +195,9 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 
 ### <a name="storage-configuration"></a>ストレージの構成
 
-**[SQL Server の設定]** タブで、 **[ストレージの構成]** の **[構成の変更]** を選択して、ストレージの要件を指定します。
+**[SQL Server の設定]** タブの **[ストレージの構成]** で、 **[構成の変更]** を選択してパフォーマンス最適化ストレージの構成ページを開き、ストレージの要件を指定します。
 
-
-> [!NOTE]
-> 標準のストレージを使用するように VM を手動で構成した場合は、このオプションを利用できません。 ストレージの自動最適化は、Premium Storage でのみ使用できます。
-
-> [!TIP]
-> 各スライダーの刻みの数と上限は、選択した VM のサイズに依存します。 より大きくてより強力な VM は、より多くスケールアップできます。
-
-1 秒間の入力/出力操作数 (IOP)、スループット (MB/秒)、およびストレージの合計サイズで、要件を指定できます。 スライド スケールを使用してこれらを構成します。 ワークロードに基づいて、これらのストレージ設定を変更できます。 これらの要件に基づいて、アタッチおよび構成するディスクの数が自動的に計算されます。
+![SQL VM Storage の構成](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 **[ストレージの最適化]** で、次のいずれかのオプションを選択します。
 
@@ -225,7 +205,9 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 * **[トランザクション]** は、従来のデータベース OLTP ワークロード用にストレージを最適化します。
 * **[データ ウェアハウス]** は、分析とレポートのワークロード用にストレージを最適化します。
 
-![SQL VM Storage の構成](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-storage-configuration.png)
+![SQL VM Storage の構成](media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration.png)
+
+既定値のままにすることも、IOPS のニーズに合わせてストレージ トポロジを手動で変更することもできます。 詳細については、[ストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)に関する記事を参照してください。 
 
 ### <a name="sql-server-license"></a>SQL Server ライセンス
 ソフトウェア アシュアランスをご利用のお客様は、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-benefit/)を利用して自分の SQL Server ライセンスを取得し、リソースを節約することができます。 

@@ -1,19 +1,19 @@
 ---
 title: Azure PowerShell スクリプト - Azure Cosmos アカウントを更新する
-description: Azure PowerShell サンプル スクリプト - 追加のリージョンで Azure Cosmos アカウントを更新する
+description: Azure PowerShell サンプル スクリプト - Azure Cosmos アカウントを更新したりリージョンを変更したりする
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/06/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8fad9b47b4f451f4b77f32038b26d6dc43809a60
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: ec160f03fa5a8b9415dc33885fca512d4289f37b
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603951"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71969687"
 ---
-# <a name="update-an-azure-cosmos-account-and-add-a-region-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントを更新してリージョンを追加する
+# <a name="update-an-azure-cosmos-account-or-modify-regions-using-powershell"></a>PowerShell を使用して Azure Cosmos アカウントを更新したりリージョンを変更したりする
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -21,7 +21,12 @@ ms.locfileid: "67603951"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/sql/ps-account-update.ps1 "Update and add regions to an Azure Cosmos account")]
+> [!NOTE]
+> リージョンの変更とその他の Cosmos アカウントのプロパティに対する変更を同じ操作で実行することはできません。 これらは 2 つの独立した操作として行う必要があります。
+> [!NOTE]
+> このサンプルでは、SQL (Core) API アカウントの使用方法を紹介しています。 このサンプルを他の API で使用する場合は、関連するプロパティをコピーし、お使いの API 固有のスクリプトに適用してください。
+
+[!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-update.ps1 "Add a region to an Azure Cosmos account")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -38,7 +43,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 | command | メモ |
 |---|---|
 |**Azure リソース**| |
-| [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) | リソースを取得します。 |
+| [New-AzResource](https://docs.microsoft.com/powershell/module/az.resources/new-azresource) | リソースを作成します。 |
 | [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource) | リソースを更新します。 |
 |**Azure リソース グループ**| |
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |

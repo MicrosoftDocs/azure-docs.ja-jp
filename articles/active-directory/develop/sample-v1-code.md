@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bc671080a05e2c4e27fabcbab5cc40b9717dc85
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 41ff9bce6135936a4b23096fb18efecf7be1e1e2
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834899"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374111"
 ---
 # <a name="azure-active-directory-code-samples-v10-endpoint"></a>Azure Active Directory のコード サンプル (v1.0 エンドポイント)
 
@@ -36,7 +36,7 @@ Microsoft Azure Active Directory (Azure AD) を使用すると、Web アプリ�
 > [!NOTE]
 > Azure AD V2 のコード サンプルに関心がある場合は、「[シナリオ別の v2.0 コード サンプル](sample-v2-code.md)」をご覧ください。
 
-各サンプル タイプの基本的なシナリオを理解するには、「[Azure AD の認証シナリオ](authentication-scenarios.md)」をご覧ください。
+各サンプル タイプの基本的なシナリオを理解するには、「[Azure AD の認証シナリオ](v1-authentication-scenarios.md)」をご覧ください。
 
 GitHub でサンプルに協力することもできます。 その方法については、[Microsoft Azure Active Directory のサンプルとドキュメント](https://github.com/Azure-Samples?page=3&query=active-directory)をご覧ください。
 

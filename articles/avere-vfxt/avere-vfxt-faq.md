@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.author: v-erkell
-ms.openlocfilehash: 47a4b38d39c52992b51284776ec34cb9491020e7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rohogue
+ms.openlocfilehash: f42a9cf5aaa3256865bcf388aa5bd422664c73dd
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65595418"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255412"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure の FAQ
 
@@ -25,7 +25,7 @@ Avere vFXT for Azure は、重要なワークロードの効率的な処理の�
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Avere vFXT はストレージ ソリューションですか?
 
-いいえ。 Avere vFXT は、EMC や NetApp の NAS または Azure Blob コンテナーといったストレージ環境に接続するファイル システム*キャッシュ*です。 Avere vFXT は、クライアントからのデータ要求を効率化し、提供するデータをキャッシュすることによって大規模な環境のパフォーマンスを徐々に向上させます。 Avere vFXT 自体にはデータは保存されません。 その背後に保存されているデータの量に関する情報は保持されません。
+No. Avere vFXT は、EMC や NetApp の NAS または Azure Blob コンテナーといったストレージ環境に接続するファイル システム*キャッシュ*です。 Avere vFXT は、クライアントからのデータ要求を効率化し、提供するデータをキャッシュすることによって大規模な環境のパフォーマンスを徐々に向上させます。 Avere vFXT 自体にはデータは保存されません。 その背後に保存されているデータの量に関する情報は保持されません。
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>Avere vFXT は階層化ソリューションですか?
 
@@ -106,7 +106,7 @@ Avere vFXT クラスターは、最小 3 ノードから最大 24 ノードま�
 
 ### <a name="does-the-avere-vfxt-environment-autoscale"></a>Avere vFXT 環境は "自動スケーリング" ですか?
 
-いいえ。 クラスターのサイズをスケールアップ/ダウンできますが、クラスター ノードの追加または削除は手動のステップです。
+No. クラスターのサイズをスケールアップ/ダウンできますが、クラスター ノードの追加または削除は手動のステップです。
 
 ### <a name="can-i-run-the-avere-vfxt-cluster-as-a-virtual-machine-scale-set"></a>Avere vFXT クラスターを仮想マシン スケール セットとして実行できますか?
 
@@ -126,7 +126,7 @@ Avere vFXT では、仮想マシン スケール セットのデプロイはサ�
 
 ### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>Avere vFXT クラスターのマシンを別の可用性ゾーン内で実行できますか?
 
-いいえ。 現在、Avere vFXT で使用されている高可用性モデルでは、Avere vFXT クラスターの個々のメンバーが異なる可用性ゾーンに存在することはサポートされていません。
+No. 現在、Avere vFXT で使用されている高可用性モデルでは、Avere vFXT クラスターの個々のメンバーが異なる可用性ゾーンに存在することはサポートされていません。
 
 ### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Avere vFXT の仮想マシンを複製できますか?
 
@@ -254,7 +254,7 @@ Avere vFXT では、プライベート オブジェクト ストレージはサ�
 
 ### <a name="can-i-use-archive-blob-storage"></a>アーカイブ BLOB ストレージを使用できますか?
 
-いいえ。 アーカイブ ストレージのサービス レベル アグリーメント (SLA) は、Avere vFXT システムで必要なリアルタイムのディレクトリおよびファイル アクセスと互換性がありません。 
+No. アーカイブ ストレージのサービス レベル アグリーメント (SLA) は、Avere vFXT システムで必要なリアルタイムのディレクトリおよびファイル アクセスと互換性がありません。 
 
 ### <a name="can-i-use-cool-blob-storage"></a>クール BLOB ストレージを使用できますか?
 

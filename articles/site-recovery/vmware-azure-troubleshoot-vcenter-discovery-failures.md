@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery を使用した VMware VM の Azure へのディザスター リカバリー時のオンプレミスへのフェールバックのトラブルシューティング | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用して VMware VM を Azure にディザスター リカバリーするときのフェールバックと再保護の問題をトラブルシューティングする方法について説明します。
-author: vDonGlover
-manager: JarrettRenshaw
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: v-doglov
-ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: raynew
+ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60565193"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970852"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>vCenter の検出エラーのトラブルシューティング
 
@@ -46,8 +46,8 @@ vCenter の検出では、システム ユーザーによって構成された�
 
 この問題が発生すると、次のような状況になります。
 
-- 次のエラーのため vCenter サーバー \<vCenter> に到達できません。リモート サーバーからエラーが返される:(503) Server Unavailable
-- 次のエラーのため vCenter サーバー \<vCenter> に到達できません。リモート サーバーからエラーが返される:リモート サーバーに接続できません。
+- 次のエラーのため vCenter サーバー \<vCenter> に到達できません。リモート サーバーがエラー(503) Server Unavailable
+- 次のエラーのため vCenter サーバー \<vCenter> に到達できません。リモート サーバーがエラーリモート サーバーに接続できません。
 - vCenter/ESXi サーバーに接続できない。
 
 この問題を解決するには:

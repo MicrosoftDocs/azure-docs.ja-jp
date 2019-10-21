@@ -9,14 +9,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/05/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 1704b62cae6375d376fc43fb7a2940cd9c717072
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 748c51e74db20ac101dc2dff0d924567acded114
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382516"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703236"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート: 事前構築済みの Home Automation アプリを使用する
 
@@ -31,15 +31,15 @@ ms.locfileid: "70382516"
 ## <a name="create-a-new-app"></a>新しいアプリの作成
 アプリケーションは、 **[マイ アプリ]** で作成および管理できます。 
 
-2. **[Create new app]\(新しいアプリの作成\)** を選択します。
+1. **[Create new app]\(新しいアプリの作成\)** を選択します。
 
     [![アプリの一覧のスクリーン ショット](media/luis-quickstart-new-app/app-list.png "アプリの一覧のスクリーン ショット")](media/luis-quickstart-new-app/app-list.png)
 
-3. ダイアログ ボックスで、アプリケーションに "Home Automation" という名前を付けます。
+1. ダイアログ ボックスで、アプリケーションに "Home Automation" という名前を付けます。
 
     [![新しいアプリの作成 ポップアップ ダイアログのスクリーンショット](media/luis-quickstart-new-app/create-new-app-dialog.png "新しいアプリの作成 ポップアップ ダイアログのスクリーンショット")](media/luis-quickstart-new-app/create-new-app-dialog.png)
 
-4. アプリケーションのカルチャを選択します。 この Home Automation アプリでは、英語を選択します。 **[完了]** を選択します。 LUIS により Home Automation アプリが作成されます。 
+1. アプリケーションのカルチャを選択します。 この Home Automation アプリでは、英語を選択します。 **[完了]** を選択します。 LUIS により Home Automation アプリが作成されます。 
 
     >[!NOTE]
     >カルチャは、アプリケーションを作成した後に変更できません。 
@@ -101,69 +101,27 @@ Turn off the lights
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-1. アドレスの URL の末尾に移動し、「`turn off the living room light`」と入力して Enter キーを押します。 HTTP エンドポイントの、**V2 API** バージョンの JSON 応答がブラウザーに表示されます。
+1. アドレスの URL の末尾に移動し、「`turn off the living room light`」と入力して Enter キーを押します。 
+
+    #### <a name="v2-prediction-endpointtabv2"></a>[V2 予測エンドポイント](#tab/V2)
+
+    `https://<region>.api.cognitive.microsoft.com/luis/**v2.0**/apps/<appID>?subscription-key=<YOUR_KEY>&**q=<user-utterance-text>**`
+
+    HTTP エンドポイントの、**V2 API** バージョンの JSON 応答がブラウザーに表示されます。
 
     ```json
     {
-      "query": "turn off the living room light",
+      "query": "turn off the lights",
       "topScoringIntent": {
         "intent": "HomeAutomation.TurnOff",
-        "score": 0.9753089
+        "score": 0.995867
       },
-      "intents": [
-        {
-          "intent": "HomeAutomation.TurnOff",
-          "score": 0.9753089
-        },
-        {
-          "intent": "HomeAutomation.QueryState",
-          "score": 0.01027893
-        },
-        {
-          "intent": "HomeAutomation.TurnUp",
-          "score": 0.006881481
-        },
-        {
-          "intent": "HomeAutomation.SetDevice",
-          "score": 0.006786365
-        },
-        {
-          "intent": "HomeAutomation.TurnDown",
-          "score": 0.005145787
-        },
-        {
-          "intent": "HomeAutomation.TurnOn",
-          "score": 0.004114749
-        },
-        {
-          "intent": "None",
-          "score": 0.000598924
-        }
-      ],
       "entities": [
         {
-          "entity": "living room",
-          "type": "HomeAutomation.Location",
-          "startIndex": 13,
-          "endIndex": 23,
-          "score": 0.94558233
-        },
-        {
-          "entity": "living room light",
-          "type": "HomeAutomation.DeviceName",
-          "startIndex": 13,
-          "endIndex": 29,
-          "resolution": {
-            "values": [
-              "living room light"
-            ]
-          }
-        },
-        {
-          "entity": "light",
+          "entity": "lights",
           "type": "HomeAutomation.DeviceType",
-          "startIndex": 25,
-          "endIndex": 29,
+          "startIndex": 13,
+          "endIndex": 18,
           "resolution": {
             "values": [
               "light"
@@ -174,56 +132,38 @@ Turn off the lights
     }
     ```
     
-## <a name="query-the-v3-api-prediction-endpoint"></a>V3 API 予測エンドポイントに対してクエリを実行する
+    #### <a name="v3-prediction-endpointtabv3"></a>[V3 予測エンドポイント](#tab/V3)
 
-[V3 API クエリ](luis-migration-api-v3.md)の場合は、ブラウザーで GET メソッドの HTTPS 要求を変更します。山かっこ内の値は、実際の値に置き換えてください。 
+    [V3 API クエリ](luis-migration-api-v3.md)の場合は、ブラウザーで GET メソッドの HTTPS 要求を変更します。山かっこ内の値は、実際の値に置き換えてください。     
 
-**V2 URL と GET メソッド**:
+    `https://<region>.api.cognitive.microsoft.com/luis/**v3.0-preview**/apps/<appID>/**slots**/**production**/**predict**?subscription-key=<YOUR_KEY>&**query=<user-utterance-text>**`
 
-https://\<region>.api.cognitive.microsoft.com/luis/**v2.0**/apps/\<appID>?verbose=true&subscription-key=\<YOUR_KEY>&**q=\<user-utterance-text>**
-
-**V3 URL と GET メソッド**:
-
-https://\<region>.api.cognitive.microsoft.com/luis/**v3.0-preview**/apps/\<appID>/**slots**/**production**/**predict**?verbose=true&subscription-key=\<YOUR_KEY>&**query=\<user-utterance-text>**
-
-HTTP エンドポイントの、**V3 API** バージョンの JSON 応答がブラウザーに表示されます。
-
-```json
-{
-    "query": "turn off the lights",
-    "prediction": {
-        "normalizedQuery": "turn off the lights",
-        "topIntent": "HomeAutomation.TurnOff",
-        "intents": {
-            "HomeAutomation.TurnOff": {
-                "score": 0.99649024
-            }
-        },
-        "entities": {
-            "HomeAutomation.DeviceType": [
-                [
-                    "light"
-                ]
-            ],
-            "$instance": {
+    ```json
+    {
+        "query": "turn off the lights",
+        "prediction": {
+            "normalizedQuery": "turn off the lights",
+            "topIntent": "HomeAutomation.TurnOff",
+            "intents": {
+                "HomeAutomation.TurnOff": {
+                    "score": 0.99649024
+                }
+            },
+            "entities": {
                 "HomeAutomation.DeviceType": [
-                    {
-                        "type": "HomeAutomation.DeviceType",
-                        "text": "lights",
-                        "startIndex": 13,
-                        "length": 6,
-                        "modelTypeId": 5,
-                        "modelType": "List Entity Extractor",
-                        "recognitionSources": [
-                            "model"
-                        ]
-                    }
+                    [
+                        "light"
+                    ]
                 ]
             }
         }
     }
-}
-```
+    ```
+
+
+    [V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
+    
+    * * * 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

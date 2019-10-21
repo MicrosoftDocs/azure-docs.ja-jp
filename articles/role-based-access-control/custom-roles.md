@@ -15,12 +15,12 @@ ms.date: 06/07/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b628086a67f1d76357fda4f753350b6411b8f15
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: fbea0567ec125ce12acd8f757b32df723876fe09
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67273717"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338566"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Azure リソースのカスタム ロール
 
@@ -90,7 +90,7 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 
 カスタム ロールには、次のプロパティがあります。
 
-| プロパティ | 必須 | Type | 説明 |
+| プロパティ | 必須 | 種類 | 説明 |
 | --- | --- | --- | --- |
 | `Name` | はい | string | カスタム ロールの表示名。 ロールの定義は、サブスクリプション レベルのリソースですが、同じ Azure AD ディレクトリを共有する複数のサブスクリプションで使用できます。 この表示名は、Azure AD ディレクトリ範囲で一意である必要があります。 英字、数字、スペース、特殊文字を含めることができます。 最大文字数は 128 文字です。 |
 | `Id` | はい | string | カスタム ロールの一意の ID。 Azure PowerShell と Azure CLI では、新しいロールを作成するときに自動的にこの ID が生成されます。 |
@@ -100,7 +100,7 @@ JSON 形式で表示されるカスタム ロールの例を次に示します�
 | `NotActions` | いいえ | String[] | 許可された `Actions` から除外される管理操作を指定する文字列の配列。 詳細については、「[notActions](role-definitions.md#notactions)」を参照してください。 |
 | `DataActions` | いいえ | String[] | 対象のオブジェクト内のデータに対して、ロールで実行できるデータ操作を指定する文字列の配列。 詳細については、「[DataActions](role-definitions.md#dataactions)」を参照してください。 |
 | `NotDataActions` | いいえ | String[] | 許可された `DataActions` から除外されるデータ操作を指定する文字列の配列。 詳細については、「[NotDataActions](role-definitions.md#notdataactions)」を参照してください。 |
-| `AssignableScopes` | はい | String[] | 割り当てにカスタム ロールを使用できるスコープを指定する文字列の配列。 カスタム ロールでは、現在のところルート スコープ (`"/"`) または管理グループ スコープに `AssignableScopes` を設定することはできません。 詳細については、[AssignableScopes](role-definitions.md#assignablescopes) および [Azure 管理グループでリソースを整理する方法](../governance/management-groups/index.md#custom-rbac-role-definition-and-assignment)に関するページを参照してください。 |
+| `AssignableScopes` | はい | String[] | 割り当てにカスタム ロールを使用できるスコープを指定する文字列の配列。 カスタム ロールでは、現在のところルート スコープ (`"/"`) または管理グループ スコープに `AssignableScopes` を設定することはできません。 詳細については、[AssignableScopes](role-definitions.md#assignablescopes) および [Azure 管理グループでリソースを整理する方法](../governance/management-groups/overview.md#custom-rbac-role-definition-and-assignment)に関するページを参照してください。 |
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>カスタム ロールを作成、削除、更新、または表示できるユーザー
 

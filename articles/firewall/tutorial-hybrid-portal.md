@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 09/17/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 08c1a8940bedb1093f618c8de53abc78f81c10dd
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 50f1d0bca958ef4504394cad1d771459cc8be27d
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918783"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71018975"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -58,9 +58,9 @@ Azure Firewall を使用すれば、許可するネットワーク トラフィ�
 これらのルートの作成方法については、このチュートリアルの「[ルートを作成する](#create-the-routes)」セクションをご覧ください。
 
 >[!NOTE]
->Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。 既定では、Azure Firewall はオンプレミス ネットワークへの強制トンネリングをサポートしません。
+>Azure Firewall には、インターネットへの直接接続が必要です。 AzureFirewallSubnet が BGP 経由のオンプレミス ネットワークへの既定のルートを学習する場合は、インターネットへの直接接続を保持するために、**NextHopType** の値を **Internet** に設定した 0.0.0.0/0 UDR でこれを上書きする必要があります。
 >
->ただし、オンプレミス ネットワークへの強制トンネリングが必要な構成の場合、Microsoft は状況に応じてサポートします。 サポートにお問い合わせいただければ、お客様の状況を確認させていただきます。 受け付けると、Microsoft ではサブスクリプションを許可し、必要なファイアウォールのインターネット接続が確保されていることを確認します。
+>Azure Firewall では、現在、強制的なトンネリングはサポートされていません。 使用する構成でオンプレミスのネットワークへの強制的なトンネリングが必要であり、インターネット上のアクセス先のターゲット IP プレフィックスを決定できる場合は、AzureFirewallSubnet 上のユーザー定義のルートを介して、次のホップとしてオンプレミスのネットワークに対してこれらの範囲を構成することができます。 または、BGP を使用してこれらのルートを定義することもできます。
 
 >[!NOTE]
 >直接ピアリングされた VNets 間のトラフィックは、UDR が既定のゲートウェイとして Azure Firewall をポイントしている場合でも、直接ルーティングされます。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。
@@ -373,7 +373,7 @@ SpoketoHub ピアリング上で **[転送されたトラフィックを許可�
     - **[ユーザー名]** : *azureuser*。
     - **Password**:*Azure123456!*
 4. **[Next:Disks]\(次へ: ディスク\)** を選択します。
-5. 既定値をそのまま使用し、 **[Next:Networking]\(次へ: ネットワーク\)** を選択します。
+5. 既定値をそのまま使用し、 **[次へ: ネットワーク]** を選択します。
 6. 仮想ネットワークとして **[VNet-Spoke]** を選択します。サブネットは **SN-Workload** です。
 7. **[パブリック IP]** で、 **[なし]** を選択します。
 8. **[パブリック受信ポート]** で **[選択したポートを許可する]** を選択し、 **[HTTP (80)]** と **[RDP (3389)]** を選択します

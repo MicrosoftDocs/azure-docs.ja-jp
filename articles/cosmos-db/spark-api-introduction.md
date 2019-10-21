@@ -3,24 +3,21 @@ title: Azure Cosmos DB での Apache Spark を使用した組み込み運用分�
 description: Azure Cosmos DB で Apache Spark の組み込みサポートを利用して運用分析と AI を実行する方法について説明します
 ms.service: cosmos-db
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 09/26/2019
 author: rimman
 ms.author: rimman
-ms.openlocfilehash: 3fd7990043543b92eb3daf8ec699ec58db3387ec
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 952dd084bccd67a0a8833002d73d3aaf1d5dfb25
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717580"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338627"
 ---
-# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark-preview"></a>Azure Cosmos DB での Apache Spark を使用した組み込み運用分析 (プレビュー) 
+# <a name="built-in-operational-analytics-in-azure-cosmos-db-with-apache-spark"></a>Azure Cosmos DB での Apache Spark を使用した組み込み運用分析
 
-Azure Cosmos DB での Apache Spark の組み込みサポートにより、Azure Cosmos アカウントに保存されているデータに対する分析を Apache Spark から実行できます。 また、グローバルに分散された Cosmos データベースで Apache Spark ジョブを直接実行する処理がネイティブにサポートされます。 このような機能があることで、開発者、データ エンジニア、データ サイエンティストは **OLTP と OLAP/HTAP** という両方のワークロードを実行する柔軟性、拡張性、パフォーマンスに優れたデータ プラットフォームとして Azure Cosmos DB を使用できます。 
+Azure Cosmos DB を使用すると、グローバルに分散された低遅延の分析と AI をトランザクション データに対して実行できます。 Azure Cosmos DB は、Apache Spark と Jupyter ノートブックのネイティブ サポートにより、分析情報が短時間で得られるようになっています。 データの取り込みと処理、分析が、Azure リージョン内のローカル データベース レプリカに対して実行されるためです。 お使いのデータ パーティションに格納されているインデックス付きマルチモデル データに、Apache Spark クエリを直接実行することができます。
 
-Spark コンピューティングは、Azure Cosmos アカウントに関連付けられたすべての Azure リージョンで自動的に使用できます。 Spark ジョブは、Azure Cosmos DB のマルチマスター機能を使用し、各リージョンでのローカル レプリカに対して書き込みやクエリを行えます。 
-
-> [!NOTE]
-> 現在、Azure Cosmos DB での Apache Spark の組み込みサポートは、制限付きのプレビュー段階です。 プレビューに申し込むには、[プレビューのためのサインアップ ページ](https://portal.azure.com/?feature.customportal=false#create/Microsoft.DocumentDB)に移動してください。 
+Azure Cosmos DB での Apache Spark の組み込みサポートにより、Azure Cosmos アカウントに保存されているデータに対する分析を Apache Spark から実行できます。 また、グローバルに分散された Cosmos データベースで Apache Spark ジョブを直接実行する処理がネイティブにサポートされます。 このような機能があることで、開発者、データ エンジニア、データ サイエンティストは **OLTP と OLAP/HTAP** という両方のワークロードを実行する柔軟性、拡張性、パフォーマンスに優れたデータ プラットフォームとして Azure Cosmos DB を使用できます。
 
 Azure Cosmos DB での Apache Spark のサポートには、次の利点があります。
 
@@ -43,15 +40,17 @@ Azure Cosmos DB での Apache Spark のサポートでは、Apache Spark ラン�
 
 ## <a name="key-benefits"></a>主な利点
 
-### <a name="globally-distributed-low-latency-operational-analytics-and-ai"></a>世界中に分散され、待ち時間の短い運用分析と AI
+### <a name="low-latency-operational-analytics-and-ai"></a>低遅延の運用分析と AI
 
 世界中に分散されている Azure Cosmos データベースの Apache Spark を利用することで、世界中の分析情報を短時間で得ることができるようになりました。 Azure Cosmos DB は、3 つの主要な手法により、**世界中に分散された待ち時間の短い運用分析**をエラスティックなスケールで可能にします。
 
-* Azure Cosmos データベースは世界中に分散しているため、データはすべてローカルで、すなわち、データのプロデューサー (ユーザーなど) がいる場所で取り込まれます。 クエリはデータのプロデューサーとコンシューマーの所在地に関係なく、両方にとって最も近いローカル レプリカに対して実行されます。 
+* Azure Cosmos データベースは世界中に分散しているため、データはすべてローカルで、すなわち、データのプロデューサー (ユーザーなど) がいる場所で取り込まれます。 クエリはデータのプロデューサーとコンシューマーの所在地に関係なく、両方にとって最も近いローカル レプリカに対して実行されます。
 
-* 分析クエリはすべて、データ パーティション内に保管されているインデックス付きデータで直接実行されています。不要なデータ移動は必要ありません。 
+* 分析クエリはすべて、データ パーティション内に保管されているインデックス付きデータで直接実行されています。不要なデータ移動は必要ありません。
 
 * Spark は Azure Cosmos DB と併設されるため、中間的な変換とデータ移動が少なくなります。その結果、パフォーマンスと拡張性が向上します。
+
+* Azure Cosmos DB に組み込まれた Apache Spark から、マルチマスター、自動フェールオーバー、可用性ゾーンなど、Azure Cosmos DB の主要な機能がすべて利用できます。
 
 ### <a name="unified-serverless-experience-for-apache-spark"></a>Apache Spark の統一サーバーレス体験
 
@@ -61,87 +60,29 @@ Azure Cosmos DB での Apache Spark のサポートにより、Scala、Python、
 
 ### <a name="no-schema-or-index-management"></a>スキーマやインデックスの管理が不要
 
-従来の分析データベースとは異なり、Azure Cosmos DB の場合、データ エンジニアやデータ サイエンティストは面倒なスキーマやインデックス管理を扱う必要がなくなります。 Azure Cosmos DB のデータベース エンジンは、明示的なスキーマやインデックス管理を必要としません。また、Apache Spark のクエリにすばやくサービスを提供するために取り込むすべてのデータに自動的にインデックスを付けることができます。 
+従来の分析データベースとは異なり、Azure Cosmos DB の場合、データ エンジニアやデータ サイエンティストは面倒なスキーマやインデックス管理を扱う必要がなくなります。 Azure Cosmos DB のデータベース エンジンは、明示的なスキーマやインデックス管理を必要としません。また、Apache Spark のクエリにすばやくサービスを提供するために取り込むすべてのデータに自動的にインデックスを付けることができます。
 
 ### <a name="consistency-choices"></a>整合性の選択肢
 
-Apache Spark ジョブは Azure Cosmos データベースのデータ パーティションで実行されるため、クエリには [5 つの明確に定義された整合性選択肢](consistency-levels.md)が与えられます。 このような整合性モデルには柔軟性があり、厳密な整合性を選択すれば、待ち時間と高可用性で妥協することなく、機械学習アルゴリズムで最も精確な結果を提供できます。 
+Apache Spark ジョブは Azure Cosmos データベースのデータ パーティションで実行されるため、クエリには [5 つの明確に定義された整合性選択肢](consistency-levels.md)が与えられます。 このような整合性モデルには柔軟性があり、厳密な整合性を選択すれば、待ち時間と高可用性で妥協することなく、機械学習アルゴリズムで最も精確な結果を提供できます。
 
 ### <a name="comprehensive-slas"></a>包括的な SLA
 
 Apache Spark ジョブには、業界をリードする包括的な [SLA](https://azure.microsoft.com/support/legal/sla/documentdb/v1_1/) (99.999) など、Azure Cosmos DB の長所が与えられ、個々の Apache Spark クラスターを管理するというオーバーヘッドがありません。 このような SLA には、スループット、99 パーセンタイルの待ち時間、整合性、高可用性が含まれます。 
 
-### <a name="mixed-workloads"></a>ワークロードの混在
+### <a name="mixed-operational-and-analytical-workloads-with-complete-isolation"></a>運用ワークロードと分析ワークロードが完全に分離した状態で混在
 
-Apache Spark を Azure Cosmos DB に統合することで、分離していたトランザクションと分析がつながります。この分離は、クラウドネイティブのアプリケーションを世界規模で構築するとき、顧客にとって大きな難点の 1 つでした。 
+Apache Spark を Azure Cosmos DB に統合することで、分離していたトランザクションと分析がつながります。この分離は、クラウドネイティブのアプリケーションを世界規模で構築するとき、顧客にとって大きな難点の 1 つでした。 OLTP ワークロードと OLAP ワークロードはサイド バイ サイドで実行され、互いに干渉し合うことがありません。
 
-## <a name="scenarios-for-azure-cosmos-db-spark-support"></a>Azure Cosmos DB の Spark サポートのシナリオ
+### <a name="low-latency-analytical-and-transactional-storage"></a>低遅延の分析ストレージとトランザクショナル ストレージ
 
-### <a name="retail-and-consumer-goods"></a>小売/一般消費財
+Azure Cosmos DB はネイティブで、トランザクショナル (行指向) ストレージと分析ストレージ (列指向、Apache Parquet ファイル形式) という 2 つの別個のストレージ層にデータを格納します。 データはそれぞれの層でグローバルにレプリケートされ、ユーザーは、それらの層のデータをアイテム保持ポリシーに基づいて別々に管理することができます。
 
-Azure Cosmos DB の Spark サポートを使用して、リアルタイムのおすすめ候補とプランを提供できます。 リアルタイムのパーソナル化と製品のおすすめ候補を使用して、顧客が必要とする項目を検出できるよう支援できます。
+このストレージ アーキテクチャでは、グローバルに分散された同じデータに対して、ミッション クリティカルなトランザクショナル ワークロードと分析ワークロードの両方を使用することができます。 Cosmos DB を使えば、ETL 操作は必要ありません。また、不要なデータ移動を実行する必要もありません。 基になる同じデータに対して、そのままトランザクショナル ワークロードと分析ワークロードの両方を実行することができます。 トランザクショナル ワークロードでは、SQL、Cassandra、MongoDB、Gremlin、Etcd など、使い慣れたトランザクショナル アクセス API を使用できます。 一方、分析ワークロードおよび AI ワークロードでは、組み込みの Apache Spark SQL、ML フレームワークのほか、Apache Spark のツールチェーン全体を使用することができます。
 
-* Apache Spark ランタイムによって提供される組み込みの Machine Learning サポートを使用して、製品カタログ全体でリアルタイムのおすすめ候補を生成できます。
+### <a name="snapshots-and-historical-analytical-queries"></a>スナップショットと履歴分析クエリ
 
-* ストリーム データ、購入データ、および顧客データをマイニングしてクリックし、有効期間の値を指定する対象を絞ったおすすめ候補を提供することができます。
-
-* Azure Cosmos DB のグローバル配布機能を使用すると、複数のリージョンに分散されている大量の製品データをミリ秒単位で分析できます。
-
-* 地理的に分散されているユーザーやデータに関する分析情報をすばやく得られます。 適切な広告を適切なユーザーに適切なタイミングで提供することにより、プロモーション変換率を向上させることができます。
-
-* 組み込みの Spark ストリーミング機能を活用して、静的な顧客データと組み合わせてライブ データを強化することができます。 こうすることで、顧客が何をしているかに合わせて、よりパーソナライズされた広告や対象を絞った広告をリアルタイムで配信できます。
-
-次の図は Azure Cosmos DB Spark サポートを使用して価格とプロモーションを最適化する方法を示しています。
-
-![価格とプロモーションを最適化するための Azure Cosmos DB の Spark サポート](./media/spark-api-introduction/optimize-pricing-and-promotions.png)
-
-
-次の図は Azure Cosmos DB Spark サポートをリアルタイムのおすすめ候補エンジンで使用する方法を示しています。
-
-![リアルタイムのおすすめ候補エンジンでの Azure Cosmos DB Spark サポート](./media/spark-api-introduction/real-time-recommendation-engine.png)
-
-### <a name="manufacturing-and-iot"></a>製造と IoT
-
-Azure Cosmos DB の組み込みの分析プラットフォームを使用すると、世界規模で何百万ものデバイスからの IoT データをリアルタイムに分析できます。 気象パターンの予測、予測分析、エネルギーの最適化など、最新のイノベーションを行うことができます。
-
-* Azure Cosmos DB を使用すると、リアルタイム資産のメトリックや気象要因などのデータをマイニングし、スマート グリッド分析を適用して、フィールドで接続されているデバイスのパフォーマンスを最適化することができます。 スマート グリッド分析は、運用コストを制御し、グリッドの信頼性を向上させ、パーソナライズされたエネルギー サービスをコンシューマーに提供するための鍵です。
-
-次の図は、IoT デバイスからメトリックを読み取り、スマート グリッド分析を適用するために Azure Cosmos DB の Spark サポートを使用する方法を示しています。
-
-![IoT デバイスからメトリックを読み取るための Azure Cosmos DB の Spark サポート](./media/spark-api-introduction/read-metrics-from-iot-devices.png)
-
-
-### <a name="predictive-maintenance"></a>予測的なメンテナンス
-
-* 小規模なドリル マシンで使用される圧縮機のような資産を、深い水中のプラットフォームに維持することは複雑な作業です。 これらの資産は世界各地に配置され、ペタバイト単位のデータを生成します。 Azure Cosmos DB を使用すると、エンドツーエンドの予測データ パイプラインを構築できます。このパイプラインでは、Spark ストリーミングを使用して大量のセンサー テレメトリを処理し、資産パーツを保存し、マッピング データを検出します。
-
-* 機械学習モデルを構築およびデプロイして、資産の故障を発生前に予測し、障害が発生する前にメンテナンス作業を命令することができます。
-
-次の図は Azure Cosmos DB の Spark サポートを使用して予測メンテナンス システムを構築する方法を示しています。
-
-![予測メンテナンス システムを構築するための Azure Cosmos DB の Spark サポート](./media/spark-api-introduction/predictive-maintenance-system.png)
-
-次の図は Azure Cosmos DB の Spark サポートを使用してリアルタイムの車両診断システムを構築する方法を示しています。
-
-![リアルタイムの車両診断システムを構築するための Azure Cosmos DB の Spark サポート](./media/spark-api-introduction/real-time-vehicle-diagnostic-system.png)
-
-### <a name="gaming"></a>Gaming
-
-* Azure Cosmos DB では、組み込みの Spark サポートにより、高度な分析および機械学習モデルを数分で簡単にビルド、スケーリング、デプロイできるので、最適なゲーム エクスペリエンスをビルドできます。
-
-* プレーヤー、購入、行動データを分析して、関連するパーソナライズされたプランを作成し、高いコンバージョン率を得ることができます。
-
-* Spark 機械学習を使用して、ゲーム テレメトリ データを分析し、分析情報を得ることができます。 低速の読み込み時間とゲーム中の問題を診断して防止できます。
-
-次の図は Azure Cosmos DB の Spark サポートをゲーム分析で使用する方法を示しています。
-
-![ゲーム分析での Azure Cosmos DB の Spark サポート](./media/spark-api-introduction/gaming-analytics.png)
-
-## <a name="built-in-jupyter-notebooks-support"></a>組み込み Jupyter Notebook のサポート
-
-Azure Cosmos DB では、Cassandra、MongoDB、SQL、Gremlin、テーブルなど、すべての API の組み込み Jupyter Notebook がサポートされています。 Jupyter Notebook は Azure Cosmos アカウント内で実行され、これにより開発者エクスペリエンスが向上されます。 組み込み Notebook がすべての Azure Cosmos DB API とデータ モデルをサポートしているので、対話形式でクエリを実行できます。 機械学習モデルを実行し、Azure Cosmos データベースに格納されたデータを分析することもできます。 Jupyter Notebook エクスペリエンスを使用することにより、格納されたデータを分析し、機械学習モデルをビルドおよびトレーニングし、次の図に示すように Azure portal のデータに対して推論を実行できます。
-
-![Azure Cosmos DB における Jupyter Notebook のサポート](./media/spark-api-introduction/jupyter-notebooks-portal.png)
+分析層に格納された列指向の圧縮データからオンデマンドのスナップショットまたはスケジュールに基づくスナップショットを作成し、特定のスナップショットに対して直接、分析クエリを実行することができます。 この機能により、フラッシュバック分析クエリやタイムトラベル分析クエリ、ロールバック、全履歴の監査証跡、再現可能な機械学習および AI 実験が可能となります。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -150,7 +91,3 @@ Azure Cosmos DB では、Cassandra、MongoDB、SQL、Gremlin、テーブルな�
 * [Azure Cosmos DB Cassandra API を使ってみる](cassandra-introduction.md)
 * [Azure Cosmos DB Gremlin API を使ってみる](graph-introduction.md)
 * [Azure Cosmos DB Table API を使ってみる](table-introduction.md)
-
-
-
-

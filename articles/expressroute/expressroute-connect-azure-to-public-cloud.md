@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: osamaz
-ms.openlocfilehash: 681a99d31e7ededda74aa186ff36cc837125bbda
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: a496b91ab8ec14ce859df0da93e0ad5d87c50982
+ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70052174"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71019024"
 ---
 # <a name="connecting-azure-with-public-clouds"></a>Azure をパブリック クラウドに接続する
 
@@ -36,7 +36,7 @@ ExpressRoute 経由で接続するには 3 つの方法があります。
 
 ![](media/expressroute-connect-azure-to-public-cloud/azure-to-public-clouds-l3.png)
 
-プロバイダーは、各クラウド プロバイダーを個別の VRF にランディングする場合があります。 すべてのクラウド プロバイダーからのトラフィックが顧客のルーターに送信される場合。 顧客がサービス プロバイダーに依頼して BGP を実行している場合、これらのルートは既定で他のクラウド プロバイダーに再びアドバタイズされます。 
+すべてのクラウド プロバイダーからのトラフィックが顧客ルーターに到達する場合、プロバイダーは個別の VRF 内の各クラウド プロバイダーにランディングする場合があります。 顧客がサービス プロバイダーに依頼して BGP を実行している場合、これらのルートは既定で他のクラウド プロバイダーに再びアドバタイズされます。 
 
 サービス プロバイダーがすべてのクラウド プロバイダーを同じ VRF にランディングしている場合、ルートはサービス プロバイダーから他のクラウド プロバイダーに直接アドバタイズされます。 これは、eBGP ルートが既定で他の eBGP 近隣にアドバタイズされる場合の標準の BGP 操作を想定しています。
 

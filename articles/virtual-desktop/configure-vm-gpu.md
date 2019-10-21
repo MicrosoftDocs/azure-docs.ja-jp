@@ -1,22 +1,22 @@
 ---
-title: Windows Virtual Desktop プレビュー用に GPU を構成する - Azure
-description: Windows Virtual Desktop プレビューで GPU アクセラレーションを使用したレンダリングとエンコードを有効にする方法です。
+title: Windows Virtual Desktop の GPU を構成する - Azure
+description: Windows Virtual Desktop で GPU アクセラレーションを使用したレンダリングとエンコードを有効にする方法。
 services: virtual-desktop
 author: gundarev
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: b6a4811f685803ecdc079a690d550618c071c4a6
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 1059dd463529f4c357038225f2f9ef11d0092802
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620193"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71679598"
 ---
-# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビュー用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
+# <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Windows Virtual Desktop 用にグラフィックス処理装置 (GPU) のアクセラレーションを構成する
 
-Windows Virtual Desktop プレビューでは、アプリのパフォーマンスとスケーラビリティを向上させるために、GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。 GPU アクセラレーションは、グラフィックを多用するアプリケーションの場合に特に重要です。
+Windows Virtual Desktop では、アプリのパフォーマンスとスケーラビリティを向上させるために、GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。 GPU アクセラレーションは、グラフィックを多用するアプリケーションの場合に特に重要です。
 
 この記事で説明するようにして、GPU で最適化された Azure 仮想マシンを作成し、それをホスト プールに追加して、レンダリングとエンコードに GPU アクセラレーションを使うように構成します。 この記事では、Windows Virtual Desktop テナントを既に構成してあるものとします。
 
@@ -28,21 +28,21 @@ Azure では、複数の [GPU 最適化済み仮想マシン サイズ](/azure/v
 
 選択したサイズの VM を使って、新しいホスト プールを作成します。 手順については、「[チュートリアル:Azure Marketplace を使用してホスト プールを作成する](/azure/virtual-desktop/create-host-pools-azure-marketplace)」をご覧ください。
 
-Windows Virtual Desktop プレビューでは、次のオペレーティング システムで GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。
+Windows Virtual Desktop では、次のオペレーティング システムで GPU アクセラレーションを使用したレンダリングとエンコードがサポートされています。
 
 * Windows 10 バージョン 1511 以降
 * Windows Server 2016 以降
 
-また、アプリ グループを構成するか、または新しいホスト プールを作成すると自動的に作成される ("Desktop Application Group" という名前の) 既定のデスクトップ アプリ グループを使う必要があります。 手順については、「[チュートリアル:Windows Virtual Desktop プレビューのアプリ グループを管理する](/azure/virtual-desktop/manage-app-groups)」をご覧ください。
+また、アプリ グループを構成するか、または新しいホスト プールを作成すると自動的に作成される ("Desktop Application Group" という名前の) 既定のデスクトップ アプリ グループを使う必要があります。 手順については、「[チュートリアル:Windows Virtual Desktop のアプリ グループを管理する](/azure/virtual-desktop/manage-app-groups)」を参照してください。
 
 >[!NOTE]
->Windows Virtual Desktop プレビューでは、GPU 対応のプールに対しては "Desktop" アプリ グループの種類のみがサポートされています。 "RemoteApp" アプリ グループの種類は、GPU 対応のホスト プールではサポートされていません。
+>Windows Virtual Desktop では、GPU 対応のホスト プールに対しては "Desktop" アプリ グループの種類のみがサポートされています。 "RemoteApp" アプリ グループの種類は、GPU 対応のホスト プールではサポートされていません。
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>サポートされているグラフィック ドライバーを仮想マシンにインストールする
 
-Windows Virtual Desktop プレビューで Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA グラフィック ドライバーをインストールする必要があります。 「[Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](/azure/virtual-machines/windows/n-series-driver-setup)」の説明に従って、手動で、または [NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を使って、ドライバーをインストールします。
+Windows Virtual Desktop で Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA グラフィック ドライバーをインストールする必要があります。 「[Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする](/azure/virtual-machines/windows/n-series-driver-setup)」の説明に従って、手動で、または [NVIDIA GPU ドライバー拡張機能](/azure/virtual-machines/extensions/hpccompute-gpu-windows)を使って、ドライバーをインストールします。
 
-Windows Virtual Desktop プレビュー用にサポートされているのは、Azure によって配布された [NVIDIA GRID ドライバー](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)だけであることに注意してください。
+Windows Virtual Desktop 用にサポートされているのは、Azure によって配布された [NVIDIA GRID ドライバー](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers)のみであることに注意してください。
 
 ドライバーをインストールした後は、VM を再起動する必要があります。 上記の説明の検証手順を使って、グラフィック ドライバーが正常にインストールされたことを確認します。
 

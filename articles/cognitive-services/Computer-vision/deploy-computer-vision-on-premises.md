@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 8/22/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 1627aea958707eaaef6ee79908a17afc2e8f7b45
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 7560f2395447e81dcd01e1d3e092b39b129b4ce3
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068964"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71129834"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Kubernetes と Helm と共に Computer Vision コンテナーを使用する
 
-オンプレミスの Computer Vision コンテナーを管理するための 1 つの方法は、Kubernetes と Helm を使用することです。 Kubernetes と Helm を使ってテキスト認識コンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。 最後に、デプロイされたサービスをテストする方法を検討します。 Kubernetes オーケストレーションを使用せずに Docker コンテナーを実行する方法の詳細については、「[テキスト認識コンテナーをインストールして実行する](computer-vision-how-to-install-containers.md)」を参照してください。
+オンプレミスの Computer Vision コンテナーを管理するための 1 つの方法は、Kubernetes と Helm を使用することです。 Kubernetes と Helm を使用して Computer Vision コンテナー イメージを定義し、Kubernetes パッケージを作成します。 このパッケージは、オンプレミスの Kubernetes クラスターに展開されます。 最後に、デプロイされたサービスをテストする方法を検討します。 Kubernetes オーケストレーションを使用せずに Docker コンテナーを実行する方法の詳細については、「[Computer Vision コンテナーをインストールして実行する](computer-vision-how-to-install-containers.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -89,6 +89,86 @@ containerpreview      kubernetes.io/dockerconfigjson        1         30s
 ```
 
 ## <a name="configure-helm-chart-values-for-deployment"></a>展開に対する Helm チャートの値を構成する
+
+# <a name="readtabread"></a>[読み取り](#tab/read)
+
+まず、*read* という名前のフォルダーを作成した後、次の YAML コンテンツを *Chart.yml* という名前の新しいファイルに貼り付けます。
+
+```yaml
+apiVersion: v1
+name: read
+version: 1.0.0
+description: A Helm chart to deploy the microsoft/cognitive-services-read to a Kubernetes cluster
+```
+
+Helm チャートの既定値を構成するために、次の YAML をコピーし、`values.yaml` という名前のファイルに貼り付けます。 `# {ENDPOINT_URI}` と `# {API_KEY}` のコメントを独自の値に置き換えます。
+
+```yaml
+# These settings are deployment specific and users can provide customizations
+
+read:
+  enabled: true
+  image:
+    name: cognitive-services-read
+    registry: containerpreview.azurecr.io/
+    repository: microsoft/cognitive-services-read
+    tag: latest
+    pullSecret: containerpreview # Or an existing secret
+    args:
+      eula: accept
+      billing: # {ENDPOINT_URI}
+      apikey: # {API_KEY}
+```
+
+> [!IMPORTANT]
+> `billing` および `apikey` の値を指定しないと、サービスの有効期限は 15 分後に切れます。 同様に、サービスを利用できないため、検証が失敗します。
+
+*read* ディレクトリの下に *templates* フォルダーを作成します。 次の YAML をコピーし、`deployment.yaml` という名前のファイルに貼り付けます。 `deployment.yaml` ファイルは Helm テンプレートとして機能します。
+
+> テンプレートによってマニフェスト ファイルが生成されます。マニフェスト ファイルは、Kubernetes が理解できる YAML 形式のリソース記述です。 [- Helm チャート テンプレート ガイド][chart-template-guide]
+
+```yaml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: read
+spec:
+  template:
+    metadata:
+      labels:
+        app: read-app
+    spec:
+      containers:
+      - name: {{.Values.read.image.name}}
+        image: {{.Values.read.image.registry}}{{.Values.read.image.repository}}
+        ports:
+        - containerPort: 5000
+        env:
+        - name: EULA
+          value: {{.Values.read.image.args.eula}}
+        - name: billing
+          value: {{.Values.read.image.args.billing}}
+        - name: apikey
+          value: {{.Values.read.image.args.apikey}}
+      imagePullSecrets:
+      - name: {{.Values.read.image.pullSecret}}
+
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: read
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+  selector:
+    app: read-app
+```
+
+テンプレートでは、ロード バランサー サービスと、読み取り用のコンテナー/イメージのデプロイが指定されています。
+
+# <a name="recognize-texttabrecognize-text"></a>[Recognize Text](#tab/recognize-text)
 
 まず、*text-recognizer* という名前のフォルダーを作成します。次の YAML コンテンツをコピーし、`Chart.yml` という名前の新しいファイルに貼り付けます。
 
@@ -166,15 +246,73 @@ spec:
 
 このテンプレートでは、ロード バランサー サービスと、テキスト認識用のコンテナーまたはイメージのデプロイを指定しています。
 
+***
+
 ### <a name="the-kubernetes-package-helm-chart"></a>Kubernetes パッケージ (Helm チャート)
 
 "*Helm チャート*" には、`containerpreview.azurecr.io` コンテナー レジストリからプルする Docker イメージの構成が含まれます。
 
 > [Helm チャート][helm-charts] は、関連する Kubernetes リソースのセットが記述されているファイルのコレクションです。 1 つのチャートを使って、memcached ポッドのような単純なものや、HTTP サーバー、データベース、キャッシュなどを含む完全な Web アプリ スタックのような複雑なものを、展開できます。
 
-提供されている "*Helm チャート*" では、Computer Vision サービスとテキスト認識サービス Docker イメージが、`containerpreview.azurecr.io` コンテナー レジストリからプルされます。
+提供されている "*Helm チャート*" では、Computer Vision サービスと対応するサービスの Docker イメージが、`containerpreview.azurecr.io` コンテナー レジストリからプルされます。
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>Kubernetes クラスターに Helm チャートをインストールする
+
+# <a name="readtabread"></a>[読み取り](#tab/read)
+
+"*Helm チャート*" をインストールするには、[`helm install`][helm-install-cmd] コマンドを実行する必要があります。 必ず `read` フォルダーの上のディレクトリから install コマンドを実行します。
+
+```console
+helm install read --name read
+```
+
+インストールが正常に実行されると表示される出力の例を次に示します。
+
+```console
+NAME: read
+LAST DEPLOYED: Thu Sep 04 13:24:06 2019
+NAMESPACE: default
+STATUS: DEPLOYED
+
+RESOURCES:
+==> v1/Pod(related)
+NAME                    READY  STATUS             RESTARTS  AGE
+read-57cb76bcf7-45sdh   0/1    ContainerCreating  0         0s
+
+==> v1/Service
+NAME     TYPE          CLUSTER-IP    EXTERNAL-IP  PORT(S)         AGE
+read     LoadBalancer  10.110.44.86  localhost    5000:31301/TCP  0s
+
+==> v1beta1/Deployment
+NAME    READY  UP-TO-DATE  AVAILABLE  AGE
+read    0/1    1           0          0s
+```
+
+Kubernetes の展開が完了するには数分かかります。 ポッドとサービスの両方が適切に展開されて使用可能なことを確認するには、次のコマンドを実行します。
+
+```console
+kubectl get all
+```
+
+次のような出力結果が表示されます。
+
+```console
+λ kubectl get all
+NAME                        READY   STATUS    RESTARTS   AGE
+pod/read-57cb76bcf7-45sdh   1/1     Running   0          17s
+
+NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+service/kubernetes     ClusterIP      10.96.0.1      <none>        443/TCP          45h
+service/read           LoadBalancer   10.110.44.86   localhost     5000:31301/TCP   17s
+
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/read   1/1     1            1           17s
+
+NAME                              DESIRED   CURRENT   READY   AGE
+replicaset.apps/read-57cb76bcf7   1         1         1       17s
+```
+
+# <a name="recognize-texttabrecognize-text"></a>[Recognize Text](#tab/recognize-text)
 
 "*Helm チャート*" をインストールするには、[`helm install`][helm-install-cmd] コマンドを実行する必要があります。 必ず `text-recognizer` フォルダーの上のディレクトリから install コマンドを実行します。
 
@@ -227,6 +365,8 @@ deployment.apps/text-recognizer   1/1     1            1           17s
 NAME                                         DESIRED   CURRENT   READY   AGE
 replicaset.apps/text-recognizer-57cb76bcf7   1         1         1       17s
 ```
+
+***
 
 <!--  ## Validate container is running -->
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55e3f073c1d22ef09784f699dc2decb0492d9edf
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: b610a62e9ca9b964482638c2c0302461996c0bf2
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162308"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71145686"
 ---
 # <a name="enable-combined-security-information-registration-preview"></a>統合されたセキュリティ情報の登録の有効化 (プレビュー)
 
@@ -30,7 +30,7 @@ ms.locfileid: "70162308"
 |     |
 
 > [!NOTE]
-> セキュリティ情報の登録と管理のための以前のプレビューを有効にしている組織は、強化されたプレビュー エクスペリエンスを有効にするために、下の手順を完了する必要があります。 この切り替えを行わない組織については、2019 年 9 月 25 日に Microsoft が、セキュリティ情報の登録と管理のための以前のプレビューのユーザーを強化されたエクスペリエンスに切り替えます。 
+> セキュリティ情報の登録と管理のための以前のプレビューを有効にしている組織は、強化されたプレビュー エクスペリエンスを有効にするために、下の手順を完了する必要があります。 この切り替えを行わない組織については、2019 年 10 月 8 日に Microsoft が、セキュリティ情報の登録と管理のための以前のプレビューのユーザーを強化されたエクスペリエンスに切り替えます。 
 > 
 > どのバージョンのプレビューも有効にしていない場合、組織は影響を受けません。
 

@@ -1,7 +1,7 @@
 ---
 title: AKS デプロイでのデータの誤差の検出 (プレビュー)
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service で Azure Kubernetes Service にデプロイされたモデルのデータの誤差を検出する
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning で Azure Kubernetes Service にデプロイされたモデルのデータの誤差を検出する
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,25 +9,25 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
-ms.date: 07/08/2019
-ms.openlocfilehash: 7d47b74d4fef3676101f3f624dcacb832dcedc3a
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.date: 09/13/2019
+ms.openlocfilehash: 3b3fbce40c93389037435a7cdb1271e773163de3
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858699"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123279"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) にデプロイされたモデルのデータの誤差 (プレビュー) を検出する
 
-この記事では、デプロイ済みモデルのトレーニング データセットと推論データの間におけるデータの誤差を監視する方法について説明します。 機械学習のコンテキストでは、トレーニングされた機械学習モデルで、誤差が原因で予測パフォーマンスが低下する場合があります。 Azure Machine Learning service では、データの誤差を監視することができ、誤差が検出されたらこのサービスがユーザーに電子メール アラートを送信できます。
+この記事では、デプロイ済みモデルのトレーニング データセットと推論データの間におけるデータの誤差を監視する方法について説明します。 機械学習のコンテキストでは、トレーニングされた機械学習モデルで、誤差が原因で予測パフォーマンスが低下する場合があります。 Azure Machine Learning では、データの誤差を監視することができ、誤差が検出されると、このサービスから電子メール アラートが送られてきます。
 
 ## <a name="what-is-data-drift"></a>データの誤差とは
 
-データの誤差は、運用環境のモデルに提供されるデータが、モデルをトレーニングするために使用されるデータとは異なる場合に発生します。 これは、モデルの精度が時間の経過と共に低下する主な理由の 1 つであるため、データの誤差の監視はモデルのパフォーマンスの問題を検出するために役立ちます。 
+機械学習においてデータの誤差とは、モデルのパフォーマンスの低下につながるモデルの入力データの変更のことです。 これは、モデルの精度が時間の経過と共に低下する主な理由の 1 つであるため、データの誤差の監視はモデルのパフォーマンスの問題を検出するために役立ちます。 
 
 ## <a name="what-can-i-monitor"></a>何を監視できるか
 
-Azure Machine Learning service では、AKS にデプロイされたモデルへの入力を監視し、このデータをそのモデルのトレーニング データセットと比較できます。 推論データは一定の間隔で[スナップショットが取得されてプロファイリングされ](how-to-explore-prepare-data.md)、基準のデータセットに対して計算されて、以下のようなデータの誤差の分析が行われます。 
+Azure Machine Learning では、AKS にデプロイされたモデルへの入力を監視し、このデータをそのモデルのトレーニング データセットと比較できます。 推論データは一定の間隔で[スナップショットが取得されてプロファイリングされ](how-to-explore-prepare-data.md)、基準のデータセットに対して計算されて、以下のようなデータの誤差の分析が行われます。 
 
 + ドリフト係数と呼ばれるデータの誤差の大きさを測定します。
 + フィーチャーによってデータの誤差の寄与度を測定し、データの誤差の原因となったフィーチャーを通知します。
@@ -38,20 +38,20 @@ Azure Machine Learning service では、AKS にデプロイされたモデルへ
 > [!Note]
 > このサービスは "プレビュー" であり、構成オプションに制限があります。 詳細情報および更新情報については、[API ドキュメント](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py)および[リリース ノート](azure-machine-learning-release-notes.md)を参照してください。 
 
-### <a name="how-data-drift-is-monitored-in-azure-machine-learning-service"></a>Azure Machine Learning service でデータの誤差が監視される仕組み
+### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Azure Machine Learning でデータの誤差が監視される仕組み
 
-Azure Machine Learning service を使用すると、データの誤差はデータセットまたはデプロイを通して監視されます。 データの誤差を監視するには、基準データセット (通常は、モデルのトレーニング データセット) を指定します。 基準データセットに対して 2 番目のデータセット (通常はデプロイから収集されたモデル入力データ) がテストされます。 両方のデータセットがプロファイリングされ、データの誤差の監視サービスに入力されます。 2 つのデータセット間の違いを検出するために、機械学習モデルがトレーニングされます。 モデルのパフォーマンスは、2 つのデータセット間の誤差の大きさを測定するドリフト係数に変換されます。 [モデルの解釈可能性](machine-learning-interpretability-explainability.md)を使用して、ドリフト係数に寄与するフィーチャーが計算されます。 データセットのプロファイルから、各フィーチャーに関する統計情報が追跡されます。 
+Azure Machine Learning を使用すると、データの誤差はデータセットまたはデプロイを通して監視されます。 データの誤差を監視するには、基準データセット (通常は、モデルのトレーニング データセット) を指定します。 基準データセットに対して 2 番目のデータセット (通常はデプロイから収集されたモデル入力データ) がテストされます。 両方のデータセットがプロファイリングされ、データの誤差の監視サービスに入力されます。 2 つのデータセット間の違いを検出するために、機械学習モデルがトレーニングされます。 モデルのパフォーマンスは、2 つのデータセット間の誤差の大きさを測定するドリフト係数に変換されます。 [モデルの解釈可能性](machine-learning-interpretability-explainability.md)を使用して、ドリフト係数に寄与するフィーチャーが計算されます。 データセットのプロファイルから、各フィーチャーに関する統計情報が追跡されます。 
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure サブスクリプション。 まだ持っていない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+- Azure サブスクリプション。 まだ持っていない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 - Azure Machine Learning SDK for Python がインストールされている場合。 [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) の手順を使用して、次のことを実行します。
 
     - Miniconda 環境を作成する
     - Azure Machine Learning SDK for Python をインストールする
 
-- [Azure Machine Learning service ワークスペース](how-to-manage-workspace.md)。
+- [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
 - ワークスペース[構成ファイル](how-to-configure-environment.md#workspace)。
 
@@ -133,7 +133,6 @@ datadrift_contribution|誤差に寄与するフィーチャーの重要度。|
 
 * `RunDetails`[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用する。
 * 任意の `datadrift` 実行オブジェクト上で [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) 関数を使用する。
-* モデルについて Azure portal でメトリックを表示する。
 * [ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) の **[モデル]** セクションでメトリックを表示します。
 
 次の Python の例は、関連するデータの誤差のメトリックをプロットする方法を示しています。 返されたメトリックを使用して、カスタムの視覚化を作成できます。
@@ -159,23 +158,22 @@ datadrift.enable_schedule()
 datadrift.disable_schedule()
 ```
 
-データの誤差の検出機能の構成は、Azure portal のモデルの詳細ページまたはワークスペースのランディング ページ (プレビュー) で確認できます。
+データの誤差の検出機能の構成は、ご利用の[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) の **[詳細]** タブの **[モデル]** に表示されます。
 
-![Azure portal のデータの誤差の構成](media/how-to-monitor-data-drift/drift_config.png)
+![Azure portal のデータの誤差](media/how-to-monitor-data-drift/drift-config.png)
 
-## <a name="view-results-in-azure-portal"></a>Azure portal で結果を表示する
+## <a name="view-results-in-your-workspace-landing-page"></a>ご利用のワークスペースのランディング ページ (プレビュー) に結果を表示する
 
-[Azure portal](https://portal.azure.com) でワークスペースに結果を表示するには、モデル ページに移動します。 モデルの詳細タブに、データの誤差の構成が表示されます。 データの誤差のメトリックを視覚化する [Data Drift (preview)]/(データの誤差 (プレビュー)/) タブを現在利用できます。 
+ご利用のワークスペースの結果を[ランディング ページ (プレビュー)](https://ml.azure.com) に表示するには、モデル ページに移動します。 モデルの詳細タブに、データの誤差の構成が表示されます。 データの誤差のメトリックを視覚化する **[データの誤差]** タブを利用できるようになりました。 
 
-![Azure portal のデータの誤差](media/how-to-monitor-data-drift/drift_ui.png)
+[![ワークスペースのランディングページの [データの誤差]](media/how-to-monitor-data-drift/drift-ui.png)](media/how-to-monitor-data-drift/drift-ui-expanded.png)
 
-結果は、[ワークスペースのランディング ページ (プレビュー)](https://ml.azure.com) のモデルの詳細でも確認できます。
 
 ## <a name="receiving-drift-alerts"></a>誤差アラートを受け取る
 
 ドリフト係数アラートしきい値を設定し、電子メール アドレスを指定することによって、ドリフト係数がしきい値を超えたときに [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) の電子メール アラートが自動的に送信されます。 
 
-ユーザーがカスタムのアラートやアクションを設定できるように、データの誤差のすべてのメトリックが、Azure Machine Learning service ワークスペースと共に作成された [Application Insights](how-to-enable-app-insights.md) リソース内に格納されます。 電子メール アラートのリンクから Application Insights のクエリに移動できます。
+ユーザーがカスタムのアラートやアクションを設定できるように、データの誤差のすべてのメトリックが、Azure Machine Learning ワークスペースと共に作成された [Application Insights](how-to-enable-app-insights.md) リソース内に格納されます。 電子メール アラートのリンクから Application Insights のクエリに移動できます。
 
 ![データの誤差の電子メール アラート](media/how-to-monitor-data-drift/drift_email.png)
 

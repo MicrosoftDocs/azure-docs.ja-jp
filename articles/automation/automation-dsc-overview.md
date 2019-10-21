@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a3a52fbda91d19905bd6add631f536010197c4dd
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061391"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429407"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation State Configuration の概要
 
-Azure Automation State Configuration は、PowerShell の Desired State Configuration (DSC) [構成](/powershell/dsc/configurations)の書き込み、管理、コンパイル、[DSC リソース](/powershell/dsc/resources)のインポート、および構成のターゲット ノードへの割り当てを、すべてクラウドで実行できる Azure サービスです。
+Azure Automation State Configuration は、PowerShell の Desired State Configuration (DSC) [構成](/powershell/scripting/dsc/configurations/configurations)の書き込み、管理、コンパイル、[DSC リソース](/powershell/scripting/dsc/resources/resources)のインポート、および構成のターゲット ノードへの割り当てを、すべてクラウドで実行できる Azure サービスです。
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Azure Automation State Configuration を使用する理由
 
@@ -27,11 +27,11 @@ Azure Automation State Configuration には、Azure の外部で DSC を使用�
 
 ### <a name="built-in-pull-server"></a>組み込みのプル サーバー
 
-Azure Automation State Configuration には、ターゲット ノードが自動的に構成を受信して、目的の状態に適合し、その準拠の状態に関するレポートを返すことができる [Windows Feature DSC-Service](/powershell/dsc/pullserver) と似た DSC プル サーバーが用意されています。 Azure Automation の組み込みのプル サーバーでは、独自のプル サーバーを設定して管理する必要はありません。 Azure Automation は、クラウドまたはオンプレミスの仮想または物理的な Windows コンピューターや Linux コンピューターを対象とすることができます。
+Azure Automation State Configuration には、ターゲット ノードが自動的に構成を受信して、目的の状態に適合し、その準拠の状態に関するレポートを返すことができる [Windows Feature DSC-Service](/powershell/scripting/dsc/pull-server/pullserver) と似た DSC プル サーバーが用意されています。 Azure Automation の組み込みのプル サーバーでは、独自のプル サーバーを設定して管理する必要はありません。 Azure Automation は、クラウドまたはオンプレミスの仮想または物理的な Windows コンピューターや Linux コンピューターを対象とすることができます。
 
 ### <a name="management-of-all-your-dsc-artifacts"></a>すべての DSC アーティファクトの管理
 
-Azure Automation State Configuration は、Azure Automation が PowerShell スクリプト用に提供するものと同じ管理レイヤーを [PowerShell Desired State Configuration](/powershell/dsc/overview) に提供します。
+Azure Automation State Configuration は、Azure Automation が PowerShell スクリプト用に提供するものと同じ管理レイヤーを [PowerShell Desired State Configuration](/powershell/scripting/dsc/overview/overview) に提供します。
 
 Azure Portal から、または PowerShell から、すべての DSC 構成、リソース、およびターゲット ノードを管理できます。
 

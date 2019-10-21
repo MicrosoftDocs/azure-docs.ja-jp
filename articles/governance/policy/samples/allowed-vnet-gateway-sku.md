@@ -2,17 +2,16 @@
 title: サンプル - 許可されている仮想ネットワーク ゲートウェイ SKU
 description: このサンプル ポリシー定義は、適切な SKU とゲートウェイの種類を使用するよう仮想ネットワーク ゲートウェイに要求します。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 3338117f44639fd8342c4275016461db16a76686
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 0ec66dff07d6c0a39517768e7a856d87e346bd90
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59280606"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977640"
 ---
 # <a name="sample---allowed-virtual-network-gateway-skus"></a>サンプル - 許可されている仮想ネットワーク ゲートウェイ SKU
 

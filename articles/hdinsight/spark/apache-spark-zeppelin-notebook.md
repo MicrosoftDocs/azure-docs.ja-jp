@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/04/2019
-ms.openlocfilehash: 6801f2b3bca1fbfa221ec2eba07f51b76712b4ff
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 26634e2fe23e0a23540638c4559af6e11eccbe72
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813973"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180737"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight 上の Apache Spark クラスターで Apache Zeppelin Notebook を使用する
 
@@ -23,7 +23,7 @@ HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/
 
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
-* クラスターのプライマリ ストレージの URI スキーム。 Azure Blob Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Blob Storage または Data Lake Storage Gen2 で安全な転送が有効になっている場合、URI はそれぞれ `wasbs://` または `abfss://` になります。  詳細については、「[Azure Storage で安全な転送が必要](../../storage/common/storage-require-secure-transfer.md)」も参照してください。
+* クラスターのプライマリ ストレージの URI スキーム。 Azure Blob Storage では `wasb://`、Azure Data Lake Storage Gen2 では `abfs://`、Azure Data Lake Storage Gen1 では `adl://` です。 Blob Storage で安全な転送が有効になっている場合、URI は `wasbs://` になります。  詳細については、「[Azure Storage で安全な転送が必要](../../storage/common/storage-require-secure-transfer.md)」も参照してください。
 
 ## <a name="launch-an-apache-zeppelin-notebook"></a>Apache Zeppelin Notebook を起動する
 
@@ -101,7 +101,7 @@ HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/
     select buildingID, date, targettemp, (targettemp - actualtemp) as temp_diff from hvac where targettemp > "${Temp = 65,65|75|85}"
     ```
 
-    このスニペットを新しい段落に貼り付けて、 **Shift + Enter**キーを押します。 **[Temp]** ドロップダウン リスト ボックスから **[65]** を選択します。 
+    このスニペットを新しい段落に貼り付けて、 **Shift + Enter**キーを押します。 **[Temp]** ドロップダウン リストから **[65]** を選択します。 
 
 8. **棒グラフ** アイコンを選択し、表示を変更します。  次に、 **[設定]** を選択し、次の変更を行います。
 
@@ -118,7 +118,7 @@ HDInsight Spark クラスターには、[Apache Spark](https://spark.apache.org/
 
 10. **livy** までスクロールし、 **[再起動]** を選択します。  プロンプトで **[OK]** を選択します。
 
-    ![Livy インタープリターを再起動する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Zeppelin インタープリターを再起動します")
+    ![Livy インタープリターを再起動する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Zeppelin インタープリターを再起動する")
 
 ## <a name="how-do-i-use-external-packages-with-the-notebook"></a>Notebook で外部のパッケージを使用する方法
 HDInsight 上の Apache Spark クラスターに標準では搭載されていない外部のコミュニティから提供されているパッケージを使用するようにクラスター内の Zeppelin Notebook を構成することができます。 利用できるすべてのパッケージは、 [Maven リポジトリ](https://search.maven.org/) で検索できます。 公開されているパッケージの一覧を他のソースから入手してもかまいません。 たとえば、コミュニティから提供されている全パッケージの一覧を [Spark Packages](https://spark-packages.org/)で入手できます。
@@ -169,7 +169,7 @@ Zeppelin Notebook は、クラスターのヘッドノードに保存されま�
 
 2. **livy** までスクロールし、 **[再起動]** を選択します。
 
-    ![Livy インタープリターを再起動する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Zeppelin インタープリターを再起動します")
+    ![Livy インタープリターを再起動する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-restart-interpreter.png "Zeppelin インタープリターを再起動する")
 
 3. 既存の Zeppelin Notebook からコードのセルを実行します。 これにより、HDInsight クラスター内に新しい Livy セッションが作成されます。
 

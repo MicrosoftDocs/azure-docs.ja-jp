@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 54686a96385532e17fe0ac6e59058b91b40c1342
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: b02e819255db0cdf8b9d241f2ec0d41df7494162
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742561"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71844352"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware VM および物理サーバーのレプリケーション問題のトラブルシューティング
 
@@ -55,35 +55,15 @@ Site Recovery を使用してレプリケーションを有効にするソース
 
 Site Recovery でレプリケートされる仮想マシンは、システム内に重複したエントリが存在する場合、Azure portal 内で使用できません。 古いエントリを削除してこの問題を解決する方法については、「[Azure Site Recovery VMware-to-Azure:How to clean up duplicate or stale entries (Azure Site Recovery (VMware から Azure へ): 重複エントリまたは古いエントリのクリーンアップ方法)](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx)」を参照してください。
 
-## <a name="common-errors-and-solutions"></a>一般的なエラーと解決
+## <a name="no-crash-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>過去 'XXX' 分間に、VM で使用可能なクラッシュ整合性復旧ポイントはありませんでした
+
+最も一般的な問題の一部を次に示します
 
 ### <a name="initial-replication-issues-error-78169"></a>初期レプリケーションの問題 [エラー 78169]
 
 接続、帯域幅、時間同期に関係する問題がないことを確認するのに加えて、次の点を確認します。
 
 - ウイルス対策ソフトウェアが Azure Site Recovery をブロックしていない。 Azure Site Recovery で必要なフォルダーの除外について、[詳細](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program)を参照してください。
-
-### <a name="missing-app-consistent-recovery-points-error-78144"></a>アプリケーション整合性復旧ポイントが見つからない [エラー 78144]
-
- これは、ボリューム シャドウ コピー サービス (VSS) に関連した問題が原因で発生します。 解決するには、以下を行います。 
- 
-- インストールされている Azure Site Recovery エージェントのバージョンが、9.22.2 以上であることを確認します。 
-- VSS プロバイダーが Windows サービスのサービスとしてインストールされていることを確認します。また、コンポーネント サービス MMC を確認して、Azure Site Recovery VSS プロバイダーが一覧にあることを確認します。
-- VSS プロバイダーがインストールされていない場合は、[インストール エラーのトラブルシューティング記事](vmware-azure-troubleshoot-push-install.md#vss-installation-failures)を参照してください。
-
-- VSS が無効になっている場合は、
-    - VSS プロバイダー サービスのスタートアップの種類が **[自動]** に設定されていることを確認します。
-    - 次のサービスを再起動します。
-        - VSS サービス
-        - Azure Site Recovery VSS プロバイダー
-        - VDS サービス
-
-- SQL または Exchange ワークロードを実行している場合は、これらのアプリケーション ライターのログでエラーを確認します。 よく発生するエラーとその解決策については、以下の記事に記載されています。
-    -  [SQL Server データベースの AUTO-CLOSE オプションが TRUE に設定されている](https://support.microsoft.com/help/4504104)
-    - [SQL Server 2008 R2 で再試行できないエラーがスローされる](https://support.microsoft.com/help/4504103)
-    - [SQL Server 2016 と 2017 の既知の問題](https://support.microsoft.com/help/4493364)
-    - [Exchange Servers 2013 と 2016 の一般的な問題](https://support.microsoft.com/help/4037535)
-
 
 ### <a name="source-machines-with-high-churn-error-78188"></a>ソース マシンのチャーン レートが高い [エラー 78188]
 
@@ -138,8 +118,21 @@ Site Recovery でレプリケートされる仮想マシンは、システム内
     - エラーの詳細が保存されているログを確認します。
         
           C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+3. マスター ターゲットを構成サーバーに登録するには、フォルダー **%PROGRAMDATA%\ASR\Agent** に移動し、コマンド プロンプトで以下を実行します。
+   ```
+   cmd
+   cdpcli.exe --registermt
+
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
 
 ## <a name="error-id-78144---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>エラー ID 78144 - 過去 "XXX" 分間に、VM 使用可能なアプリ整合性復旧ポイントはありません
+
+モビリティ エージェントのバージョン [9.23](vmware-physical-mobility-service-overview.md##from-923-version-onwards) および [9.27](site-recovery-whats-new.md#update-rollup-39) では、VSS インストール エラーの動作を処理するための機能強化が行われています。 VSS の障害についてのトラブルシューティングの最適なガイダンスを得るには、確実に最新バージョンを使用します。
 
 最も一般的な問題の一部を次に示します
 

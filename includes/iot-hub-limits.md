@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 104849557a8580e16fa1860b7919d1c0252debe9
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 689322614e2cea4e59a5a573b72bfeb2aafda847
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67181570"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71148445"
 ---
 次の表には、各サービス レベル (S1、S2、S3、F1) に関連付けられている制限がリストされています。 各レベルのそれぞれの *ユニット* のコストについては、「 [Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
@@ -38,6 +38,7 @@ ms.locfileid: "67181570"
 | クラウドからデバイスへのメッセージの最大サイズ |64 KB |
 | クラウドからデバイスへのメッセージの最大 TTL |2 日 |
 | クラウドからデバイスへのメッセージの <br/> messages |100 |
+| デバイスあたりのクラウドからデバイスへの最大のキューの深さ |50 |
 | クラウドからデバイスへのメッセージに対する <br/> フィードバック メッセージの最大配信数 |100 |
 | クラウドからデバイスへのメッセージに対する <br/> フィードバック メッセージの最大 TTL |2 日 |
 | [デバイス ツインの最大サイズ](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (タグ、報告されるプロパティ、および必要なプロパティ) | 8 KB |

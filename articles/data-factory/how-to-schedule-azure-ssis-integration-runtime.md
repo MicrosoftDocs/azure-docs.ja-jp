@@ -13,19 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d7a4a54f979cd4b14e12c5a57792241f1b2388d2
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: b1f963eb804adc0f40749957e9052f2deba08ef6
+ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68734699"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71687104"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS Integration Runtime をスケジュールに従って開始および停止する方法
 この記事では、Azure Data Factory (ADF) を使用して、Azure-SSIS Integration Runtime (IR) の開始と停止のスケジュールを設定する方法を説明します。 Azure-SSIS IR は、SQL Server Integration Services (SSIS) パッケージの実行専用の ADF コンピューティング リソースです。 Azure-SSIS IR を実行するには、それに関連するコストがあります。 このため一般には、SSIS パッケージを Azure で実行する必要がある場合にのみ IR を実行し、必要ないときには IR を停止する必要があります。 ADF のユーザー インターフェイス (UI)/アプリまたは Azure PowerShell を使用して、[IR を手動で開始または停止する](manage-azure-ssis-integration-runtime.md)ことができます。
 
 または、ADF パイプラインで Web アクティビティを作成し、スケジュールに従って IR を開始/停止することができます。たとえば、朝、毎日の ETL ワークロードを実行する前に開始し、午後、ワークロードが完了した後で停止することができます。  また、IR を開始および停止する 2 つの Web アクティビティの間を SSIS パッケージの実行アクティビティで連結し、パッケージ実行の直前/直後に必要に応じて IR を開始/停止することもできます。 SSIS パッケージの実行アクティビティについて詳しくは、「[Azure Data Factory の SSIS パッケージの実行アクティビティを使用して SSIS パッケージを実行する](how-to-invoke-ssis-package-ssis-activity.md)」をご覧ください。
 
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>前提条件
 Azure-SSIS IR をまだプロビジョニングしていない場合は、[チュートリアル](tutorial-create-azure-ssis-runtime-portal.md)の手順に従ってプロビジョニングします。 
@@ -241,15 +241,15 @@ Azure Automation アカウントをまだ持っていない場合は、この手
 
 ### <a name="import-adf-modules"></a>ADF モジュールをインポートする
 
-1. 左側のメニューの **[共有リソース]** セクションで **[モジュール]** を選択し、モジュールの一覧に **AzureRM.DataFactoryV2** + **AzureRM.Profile** があるかどうか確認します。
+1. 左側のメニューの **[共有リソース]** セクションで **[モジュール]** を選択し、モジュールの一覧に **Az.DataFactory** + **Az.Profile** があるかどうか確認します。
 
    ![必要なモジュールの確認](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image1.png)
 
-2.  **AzureRM.DataFactoryV2** がない場合は、[AzureRM.DataFactoryV2 モジュール](https://www.powershellgallery.com/packages/AzureRM.DataFactoryV2/)の PowerShell ギャラリーに移動して、 **[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** 、自分の Azure Automation アカウントの順に選択し、 **[OK]** を選択します。 左側のメニューの **[共有リソース]** セクションの **[モジュール]** に戻り、**AzureRM.DataFactoryV2** モジュールの **[ステータス]** が**利用可能**に変わるまで待ちます。
+2.  **Az.DataFactory** がない場合は、[Az.DataFactory モジュール](https://www.powershellgallery.com/packages/Az.DataFactory/)の PowerShell ギャラリーに移動して、 **[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** 、自分の Azure Automation アカウントの順に選択し、 **[OK]** を選択します。 左側のメニューの **[共有リソース]** セクションの **[モジュール]** の表示に戻り、**Az.DataFactory** モジュールの **[状態]** が**利用可能**に変わるまで待ちます。
 
     ![データ ファクトリ モジュールの確認](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image2.png)
 
-3.  **AzureRM.Profile** がない場合は、[AzureRM.Profile モジュール](https://www.powershellgallery.com/packages/AzureRM.profile/)の PowerShell ギャラリーに移動して、 **[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** 、自分の Azure Automation アカウントの順に選択し、 **[OK]** を選択します。 左側のメニューの **[共有リソース]** セクションの **[モジュール]** に戻り、**AzureRM.Profile** モジュールの **[ステータス]** が**利用可能**に変わるまで待ちます。
+3.  **Az.Profile** がない場合は、[Az.Profile モジュール](https://www.powershellgallery.com/packages/Az.profile/)の PowerShell ギャラリーに移動して、 **[Deploy to Azure Automation]\(Azure Automation にデプロイする\)** 、自分の Azure Automation アカウントの順に選択し、 **[OK]** を選択します。 左側のメニューの **[共有リソース]** セクションの **[モジュール]** の表示に戻り、**Az.Profile** モジュールの **[状態]** が**利用可能**に変わるまで待ちます。
 
     ![プロファイル モジュールの確認](media/how-to-schedule-azure-ssis-integration-runtime/automation-fix-image3.png)
 

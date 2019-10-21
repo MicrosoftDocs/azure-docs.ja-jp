@@ -1,5 +1,5 @@
 ---
-title: チュートリアル:Foodee を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
+title: チュートリアル:Azure Active Directory を使用して Foodee を自動ユーザー プロビジョニング用に構成する | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを Foodee に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
 documentationcenter: ''
@@ -15,152 +15,158 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 171a1141670e55814474390c59ae8d514491edbd
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 97ecf3ea324f43753030f415c8a5e254b87595e5
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088088"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170070"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>チュートリアル:Foodee を構成し、自動ユーザー プロビジョニングに対応させる
 
-このチュートリアルの目的は、Azure Active Directory (Azure AD) が自動的にユーザーまたはグループを Foodee にプロビジョニングまたは Foodee からプロビジョニング解除するように構成するために、Foodee と Azure AD で実行される手順を示すことです。
+この記事では、Foodee での Azure Active Directory (Azure AD) と Azure AD を構成して、ユーザーまたはグループを Foodee に自動的にプロビジョニングしたり、プロビジョニング解除したりする方法を説明します。
 
 > [!NOTE]
-> このチュートリアルでは、Azure AD ユーザー プロビジョニング サービスの上にビルドされるコネクタについて説明します。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
+> この記事では、Azure AD ユーザー プロビジョニング サービス上に構築されるコネクタについて説明します。 このサービスが実行する内容、しくみについて、よく寄せられる質問への回答については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
 >
-> 現在、このコネクタはパブリック プレビュー段階にあります。 プレビュー機能を使用するための一般的な Microsoft Azure 使用条件の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+> このコネクタは、現在プレビューの段階です。 プレビュー機能のための Azure 利用規約機能の詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルで説明するシナリオでは、次の前提条件目があることを前提としています。
+このチュートリアルでは、次の前提条件があることを前提としています。
 
-* Azure AD テナント。
+* Azure AD テナント
 * [Foodee テナント](https://www.food.ee/about/)
-* Admin アクセス許可がある Foodee のユーザー アカウント。
+* Admin アクセス許可がある Foodee のユーザー アカウント
 
-## <a name="assigning-users-to-foodee"></a>Foodee へのユーザーの割り当て 
+## <a name="assign-users-to-foodee"></a>ユーザーを Foodee に割り当てる 
 
-Azure Active Directory では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に "*割り当て*" という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーとグループのみが同期されます。
+Azure AD では、選択されたアプリへのアクセスが付与されるユーザーを決定する際に *割り当て* という概念が使用されます。 自動ユーザー プロビジョニングのコンテキストでは、Azure AD 内のアプリケーションに割り当て済みのユーザーまたはグループのみが同期されます。
 
-自動ユーザー プロビジョニングを構成して有効にする前に、Foodee へのアクセスが必要な Azure AD のユーザーやグループを決定しておく必要があります。 決定し終えたら、次の手順に従って、これらのユーザーやグループを Foodee に割り当てることができます。
-* [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](../manage-apps/assign-user-or-group-access-portal.md)
+自動ユーザー プロビジョニングを構成して有効にする前に、Foodee へのアクセスが必要な Azure AD のユーザーまたはグループを決定しておく必要があります。 これを決定したら、[エンタープライズ アプリへのユーザーまたはグループの割り当て](../manage-apps/assign-user-or-group-access-portal.md)に関するページの手順に従って、これらのユーザーまたはグループを Foodee に割り当てることができます。
 
 ## <a name="important-tips-for-assigning-users-to-foodee"></a>ユーザーを Foodee に割り当てる際の重要なヒント 
 
-* 単一の Azure AD ユーザーを Foodee に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後でユーザーやグループを追加で割り当てられます。
+ユーザーを割り当てるときは、次のヒントに留意してください。
 
-* Foodee にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を割り当てダイアログで選択する必要があります。 **既定のアクセス** ロールのユーザーは、プロビジョニングから除外されます。
+* 単一の Azure AD ユーザーのみを Foodee に割り当てて、自動ユーザー プロビジョニングの構成をテストすることをお勧めします。 後で、追加のユーザーまたはグループを割り当てることができます。
 
-## <a name="setup-foodee-for-provisioning"></a>プロビジョニングのために Foodee を設定する
+* Foodee にユーザーを割り当てるときは、有効なアプリケーション固有ロール (使用可能な場合) を **[割り当て]** ウィンドウで選択します。 *既定のアクセス* ロールのユーザーは、プロビジョニングから除外されます。
 
-Azure AD での自動ユーザー プロビジョニング用に Foodee を構成する前に、Foodee 上で SCIM プロビジョニングを有効にする必要があります。
+## <a name="set-up-foodee-for-provisioning"></a>プロビジョニングのために Foodee を設定する
 
-1. [Foodee](https://www.food.ee/login/) にログインします。 **テナント ID** をクリックします。
+Azure AD を使用して自動ユーザー プロビジョニング用に Foodee を構成する前に、Foodee で System for Cross-domain Identity Management (SCIM) プロビジョニングを有効にする必要があります。
+
+1. [Foodee](https://www.food.ee/login/) にサインインし、ご自分のテナント ID を選択します。
 
     ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
 
-2. [エンタープライズ ポータル]で、 **[シングル サインオン]** を選択します。
+1. **[エンタープライズ ポータル]** で、 **[シングル サインオン]** を選択します。
 
-    ![Foodee](media/Foodee-provisioning-tutorial/scim.png)
+    ![Foodee エンタープライズ ポータルの左側のウィンドウのメニュー](media/Foodee-provisioning-tutorial/scim.png)
 
-3. **API トークン**をコピーします。 これらの値は、Azure portal で Foodee アプリケーションの [プロビジョニング] タブにある **[シークレット トークン]** フィールドに入力します。
+1. 後で使用するために、 **[API Token]\(API トークン\)** の値をコピーします。 この値は、Azure portal で Foodee アプリケーションの **[プロビジョニング]** タブにある **[シークレット トークン]** ボックスに入力します。
 
     ![Foodee](media/Foodee-provisioning-tutorial/token.png)
 
-
 ## <a name="add-foodee-from-the-gallery"></a>ギャラリーからの Foodee の追加
 
-Azure AD で自動ユーザー プロビジョニング用に Foodee を構成するには、Azure AD アプリケーション ギャラリーから Foodee をマネージド SaaS アプリケーションの一覧に追加する必要があります。
+Azure AD を使用して自動ユーザー プロビジョニング用に Foodee を構成するには、Azure AD アプリケーション ギャラリーから Foodee をマネージド SaaS アプリケーションの一覧に追加する必要があります。
 
-**Azure AD アプリケーション ギャラリーから Foodee を追加するには、次の手順を実行します**。
+Azure AD アプリケーション ギャラリーから Foodee を追加するには、次の操作を行います。
 
-1. **[Azure portal](https://portal.azure.com)** の左側のナビゲーション パネルで、 **[Azure Active Directory]** を選択します。
+1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、 **[Azure Active Directory]** を選択します。
 
-    ![Azure Active Directory のボタン](common/select-azuread.png)
+    ![Azure Active Directory コマンド](common/select-azuread.png)
 
-2. **[エンタープライズ アプリケーション]** に移動し、 **[すべてのアプリケーション]** を選択します。
+1. **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
 
-3. 新しいアプリケーションを追加するには、ウィンドウの上部にある **[新しいアプリケーション]** ボタンを選びます。
+1. 新しいアプリケーションを追加するには、ウィンドウの上部の **[新しいアプリケーション]** を選択します。
 
     ![[新しいアプリケーション] ボタン](common/add-new-app.png)
 
-4. 検索ボックスに「**Foodee**」と入力し、結果パネルで **[Foodee]** を選択してから、 **[追加]** ボタンをクリックしてアプリケーションを追加します。
+1. 検索ボックスに「**Foodee**」と入力し、結果パネルで **[Foodee]** を選択してから、 **[追加]** ボタンを選択してアプリケーションを追加します。
 
     ![結果一覧の Foodee](common/search-new-app.png)
 
-## <a name="configuring-automatic-user-provisioning-to-foodee"></a>Foodee への自動ユーザー プロビジョニングの構成  
+## <a name="configure-automatic-user-provisioning-to-foodee"></a>Foodee への自動ユーザー プロビジョニングを構成する 
 
-このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Foodee のユーザーやグループを作成、更新、無効化する手順について説明します。
+このセクションでは、Azure AD プロビジョニング サービスを構成し、Azure AD でのユーザーやグループの割り当てに基づいて Foodee のユーザーまたはグループを作成、更新、無効化します。
 
 > [!TIP]
-> Foodee では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Foodee シングル サインオンのチュートリアル](Foodee-tutorial.md)に関するページで説明されている手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
+> Foodee では SAML ベースのシングル サインオンを有効にすることもできます。これを行うには、[Foodee シングル サインオンのチュートリアル](Foodee-tutorial.md)に関するページの手順に従ってください。 シングル サインオンは自動ユーザー プロビジョニングとは別に構成できますが、これらの 2 つの機能は相補的な関係にあります。
 
-### <a name="to-configure-automatic-user-provisioning-for-foodee-in-azure-ad"></a>Azure AD で Foodee の自動ユーザー プロビジョニングを構成するには、次の操作を行います。
+Azure AD で Foodee の自動ユーザー プロビジョニングを構成するには、次の操作を行います。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。 **[エンタープライズ アプリケーション]** を選択し、 **[すべてのアプリケーション]** を選択します。
+1. [Azure portal](https://portal.azure.com) で、 **[エンタープライズ アプリケーション]**  >  **[すべてのアプリケーション]** の順に選択します。
 
-    ![[エンタープライズ アプリケーション] ブレード](common/enterprise-applications.png)
+    ![[エンタープライズ アプリケーション] ウィンドウ](common/enterprise-applications.png)
 
-2. アプリケーションの一覧で **[Foodee]** を選択します。
+1. **アプリケーション**一覧で、 **[Foodee]** を選択します。
 
     ![アプリケーションの一覧の Foodee のリンク](common/all-applications.png)
 
-3. **[プロビジョニング]** タブを選択します。
+1. **[プロビジョニング]** タブを選択します。
 
     ![[プロビジョニング] タブ](common/provisioning.png)
 
-4. **[プロビジョニング モード]** を **[自動]** に設定します。
+1. **[プロビジョニング モード]** ドロップダウン リストで、 **[自動]** を選択します。
 
     ![[プロビジョニング] タブ](common/provisioning-automatic.png)
 
-5. [管理者資格情報] セクションの **[テナント URL]** および **[シークレット トークン]** に、先ほど取得した ` https://concierge.food.ee/scim/v2` と **API トークン**の値をそれぞれ入力します。 **[テスト接続]** をクリックして、Azure AD から Foodee への接続を確認します。 接続できない場合は、使用中の Foodee アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
+1. **[管理者資格情報]** で、次の操作を行います。
 
-    ![テナント URL + トークン](common/provisioning-testconnection-tenanturltoken.png)
+   a. **[テナント URL]** ボックスに、前に取得した **https:\//concierge.food.ee/scim/v2** 値を入力します。
 
-6. **[通知用メール]** フィールドに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
+   b. **[シークレット トークン]** ボックスに、前に取得した **API トークン**値を入力します。
+   
+   c. Azure AD から Foodee へ接続できることを確認するために、 **[テスト接続]** を選択します。 接続できない場合は、使用中の Foodee アカウントに管理者アクセス許可があることを確認してから、もう一度試します。
 
-    ![通知用メール](common/provisioning-notification-email.png)
+    ![[テスト接続] リンク](common/provisioning-testconnection-tenanturltoken.png)
 
-7. **[Save]** をクリックします。
+1. **[通知用メール]** ボックスに、プロビジョニングのエラー通知を受け取るユーザーまたはグループの電子メール アドレスを入力して、 **[エラーが発生したときにメール通知を送信します]** チェック ボックスをオンにします。
 
-8. **[マッピング]** セクションの **[Synchronize Azure Active Directory Users to Foodee]\(Azure Active Directory ユーザーを Foodee に同期する\)** を選択します。
+    ![[通知用メール] テキスト ボックス](common/provisioning-notification-email.png)
+
+1. **[保存]** を選択します。
+
+1. **[マッピング]** の下で、 **[Synchronize Azure Active Directory Users to Foodee]\(Azure Active Directory ユーザーを Foodee に同期する\)** を選択します。
 
     ![Foodee のユーザー マッピング](media/Foodee-provisioning-tutorial/usermapping.png)
 
-9. **[属性マッピング]** セクションで、Azure AD から Foodee に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Foodee のユーザー アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+1. **[属性マッピング]** の下で、Azure AD から Foodee に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Foodee の*ユーザー アカウント*との照合に使用されます。 
 
-    ![Foodee のユーザー属性](media/Foodee-provisioning-tutorial/userattribute.png)
+    ![Foodee のユーザー マッピング](media/Foodee-provisioning-tutorial/userattribute.png)
 
-10. **[マッピング]** セクションの **[Synchronize Azure Active Directory Groups to Foodee]\(Azure Active Directory グループを Foodee に同期する\)** を選択します。
+1. 変更をコミットするには、 **[保存]** を選択します。
+1. **[マッピング]** の下で、 **[Synchronize Azure Active Directory Groups to Foodee]\(Azure Active Directory グループを Foodee に同期する\)** を選択します。
 
-    ![Foodee のユーザー属性](media/Foodee-provisioning-tutorial/groupmapping.png)
+    ![Foodee のユーザー マッピング](media/Foodee-provisioning-tutorial/groupmapping.png)
 
-11. **[属性マッピング]** セクションで、Azure AD から Foodee に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Foodee のグループ アカウントとの照合に使用されます。 **[保存]** ボタンをクリックして変更をコミットします。
+1. **[属性マッピング]** の下で、Azure AD から Foodee に同期されるユーザー属性を確認します。 **[Matching]\(照合\)** プロパティとして選択されている属性は、更新処理で Foodee の*グループ アカウント*との照合に使用されます。
 
-    ![Foodee のユーザー属性](media/Foodee-provisioning-tutorial/groupattribute.png)
+    ![Foodee のユーザー マッピング](media/Foodee-provisioning-tutorial/groupattribute.png)
 
-12. スコープ フィルターを構成するには、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)の次の手順を参照してください。
+1. 変更をコミットするには、 **[保存]** を選択します。
+1. スコープ フィルターを構成します。 方法については、[スコープ フィルターのチュートリアル](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)に関するページの手順を参照してください。
 
-13. Foodee に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
+1. Foodee に対して Azure AD プロビジョニング サービスを有効にするには、 **[設定]** セクションで **[プロビジョニング状態]** を **[オン]** に変更します。
 
-    ![プロビジョニングの状態を [オン] に切り替える](common/provisioning-toggle-on.png)
+    ![[プロビジョニング状態] スイッチ](common/provisioning-toggle-on.png)
 
-14. **[設定]** セクションの **[スコープ]** で目的の値を選択して、Foodee にプロビジョニングするユーザーやグループを定義します。
+1. **[設定]** の下の **[スコープ]** ドロップダウン リストで、Foodee にプロビジョニングするユーザーまたはグループを定義します。
 
-    ![プロビジョニングのスコープ](common/provisioning-scope.png)
+    ![プロビジョニングのスコープのドロップダウン リスト](common/provisioning-scope.png)
 
-15. プロビジョニングの準備ができたら、 **[保存]** をクリックします。
+1. プロビジョニングの準備ができたら、 **[保存]** を選択します。
 
-    ![プロビジョニング構成の保存](common/provisioning-configuration-save.png)
+    ![プロビジョニングの構成の [保存] ボタン](common/provisioning-configuration-save.png)
 
-これにより、 **[設定]** セクションの **[スコープ]** で 定義したユーザーやグループの初期同期が開始されます。 初期同期は、後続の同期よりも実行に時間がかかります。 ユーザーやグループのプロビジョニングにかかる時間の詳細については、「[ユーザーをプロビジョニングするにはどのくらいの時間がかかりますか](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)」を参照してください。
+上記の操作によって、 **[スコープ]** ドロップダウン リストで定義したユーザーまたはグループの初期同期が開始されます。 初期同期は、後続の同期よりも実行に時間がかかります。 詳細については、「[ユーザーをプロビジョニングするにはどのくらいの時間がかかりますか。](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users)」を参照してください。
 
-**[現在の状態]** セクションを使用すると、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。このレポートには、Azure AD プロビジョニング サービスによって Foodee に対して実行されたすべてのアクションが記載されています。 詳細については、「[ユーザー プロビジョニングの状態を確認する](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)」を参照してください。 Azure AD プロビジョニング ログを読むには、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」を参照してください。
-
-
+**[現在の状態]** セクションを使用して進行状況を監視し、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。 このレポートには、Azure AD プロビジョニング サービスによって Foodee で実行されたすべてのアクションが記述されます。 詳細については、「[ユーザー プロビジョニングの状態を確認する](../manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)」を参照してください。 Azure AD プロビジョニング ログを読むには、「[自動ユーザー アカウント プロビジョニングについてのレポート](../manage-apps/check-status-user-account-provisioning.md)」を参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

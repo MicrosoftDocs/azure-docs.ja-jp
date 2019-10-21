@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4951984d05e75b0271cf6592c77c54ad13678994
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 6bd746e79bc9d70be23771f97b1757f090f6375f
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476551"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709283"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>Azure Active Directory でエンド ユーザーがアプリケーションに同意する方法を構成する
 ユーザーがアプリケーションのアクセス許可に同意する方法を構成する方法について説明します。 管理者の同意を付与することでユーザー エクスペリエンスを簡素化できます。 この記事では、ユーザーの同意を構成するさまざまな方法を紹介します。 この方法は、Azure Active Directory (Azure AD) テナントのすべてのエンド ユーザーに適用されます。 
@@ -63,13 +63,14 @@ ms.locfileid: "67476551"
 
 URL 要求を介して管理者の同意を付与します。
 
-1. アプリ構成を使用して *login.microsoftonline.com* に対する要求を作成し、そこに `&prompt=admin_consent` を追加します。 
+1. アプリ構成を使用して *login.microsoftonline.com* に対する要求を作成し、そこに `&prompt=admin_consent` を追加します。 URL は次のようになります: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=admin_consent`
 2. 管理者の資格情報でサインインしたら、すべてのユーザーに関してアプリに同意が付与されます。
 
 
 ## <a name="force-user-consent-through-a-url-request"></a>URL 要求を介してユーザーの同意を強制する
 
 認証のたびにアプリケーションへの同意をエンド ユーザーに要求するには、認証要求 URL に `&prompt=consent` を追加します。
+URL は次のようになります: `https://login.microsoftonline.com/<tenant-id>/oauth2/authorize?client_id=<client id>&response_type=code&redirect_uri=<Your-Redirect-URI-Https-Encoded>&nonce=1234&resource=<your-resource-Https-encoded>&prompt=consent`
 
 ## <a name="next-steps"></a>次の手順
 

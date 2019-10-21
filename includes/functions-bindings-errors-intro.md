@@ -4,14 +4,32 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: c1784111cd2fc2c93b67510f310b9e513cf2b86e
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 178fa7d5f129a12736ec068fca605ba24cd37839
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67180970"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71955869"
 ---
-Azure Functions の[トリガーとバインディング](../articles/azure-functions/functions-triggers-bindings.md)はさまざまな Azure サービスと通信します。 これらのサービスと統合する際、基になる Azure サービスの API からのエラーが発生する場合があります。 エラーは、REST またはクライアント ライブラリを使用して、関数コードから他のサービスと通信しようとした場合に発生することもあります。 データの損失を防ぎ、関数を適切に動作させるには、いずれのソースからのエラーも処理することが重要です。
+Azure Functions で発生するエラーは、次のいずれかが元になっています。
+
+- Azure Functions の組み込みの[トリガーとバインド](..\articles\azure-functions\functions-triggers-bindings.md)の使用
+- 基になっている Azure サービスの API の呼び出し
+- REST エンドポイントの呼び出し
+- クライアント ライブラリ、パッケージ、またはサードパーティ API の呼び出し
+
+データやメッセージが失われないようにするには、次の確実なエラー処理手法が重要です。 推奨されるエラー処理方法には、次のアクションが含まれます。
+
+- [Application Insights を有効にする](../articles/azure-functions/functions-monitoring.md)
+- [構造化エラー処理を使用する](#use-structured-error-handling)
+- [べき等に設計する](../articles/azure-functions/functions-idempotent.md)
+- [再試行ポリシーを実装する](../articles/azure-functions/functions-reliable-event-processing.md) (該当する場合)
+
+### <a name="use-structured-error-handling"></a>構造化エラー処理を使用する
+
+アプリケーションの正常性を監視するには、エラーをキャプチャして発行することが重要です。 関数コードの最上位レベルに、try/catch ブロックを含める必要があります。 catch ブロックでは、エラーをキャプチャして発行できます。
+
+### <a name="retry-support"></a>再試行のサポート
 
 次のトリガーには、組み込みの再試行サポートがあります。
 
@@ -19,8 +37,6 @@ Azure Functions の[トリガーとバインディング](../articles/azure-func
 * [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (キュー/トピック)](../articles/azure-functions/functions-bindings-service-bus.md)
 
-既定では、これらのトリガーは最大 5 回再試行されます。 5 回目の再試行後に、これらのトリガーは特別な[有害キュー](../articles/azure-functions/functions-bindings-storage-queue.md#trigger---poison-messages)にメッセージを書き込みます。
+既定では、これらのトリガーにより要求が最大 5 回再試行されます。 5 回目の再試行後に、両方のトリガーによって[有害キュー](..\articles\azure-functions\functions-bindings-storage-queue.md#trigger---poison-messages)にメッセージが書き込まれます。
 
-他の Functions トリガーでは、関数の実行時にエラーが発生した場合に組み込み再試行がありません。 関数でエラーが発生したときにトリガー情報の損失を防ぐために、関数コードで、try-catch ブロックを使用してエラーを受け取ることをお勧めします。 エラーが発生したときに、トリガーによって関数に渡される情報が特別な "有害" メッセージ キューに書き込まれます。 この方法は、[Blob ストレージ トリガー](../articles/azure-functions/functions-bindings-storage-blob.md#trigger---poison-blobs)によって使用されるものと同じです。
-
-この方法では、エラーにより失われた可能性のあるトリガー イベントをキャプチャし、他の関数を使用してこれらを後で再試行して、格納されている情報を使って有害キューからのメッセージを処理できます。  
+他のトリガーまたはバインドの種類については、再試行ポリシーを手動で実装する必要があります。 手動の実装には、[有害メッセージ キュー](..\articles\azure-functions\functions-bindings-storage-blob.md#trigger---poison-blobs)へのエラー情報の書き込みが含まれる場合があります。 有害キューに書き込むことによって、後で操作を再試行する機会ができます。 この方法は、Blob Storage トリガーによって使用されるものと同じです。

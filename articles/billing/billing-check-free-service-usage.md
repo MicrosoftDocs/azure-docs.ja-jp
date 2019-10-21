@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 3543bed7f699fd149ca7f2a6f61e9eb5aad5f1a3
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: ae8b26f0032c6659da18b822f4f8568995eff82b
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67491421"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709765"
 ---
 # <a name="check-free-service-usage-included-with-your-azure-free-account"></a>Azure 無料アカウントに含まれている無料サービスの使用状況を確認する
 

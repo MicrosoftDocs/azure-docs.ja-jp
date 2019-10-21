@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 10/07/2019
 ms.author: anavin
-ms.openlocfilehash: 100bbb6e0ed8e2ea5b35e30e7759a3b11c169b60
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a53d5810b20aa8389c152889fed5d7f4e8cfc5b7
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67077625"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177669"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -90,13 +90,13 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
 仮想ネットワーク ピアリング接続を利用するイグレス トラフィックとエグレス トラフィックには少額の料金が発生します。 VNet ピアリングとグローバル VNet ピアリングの料金の詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-network)を参照してください。
 
-ゲートウェイ転送は、1 つの仮想ネットワークがクロスプレミス接続または VNet 間接続用にピアリングされた仮想ネットワーク内の VPN/ExpressRoute ゲートウェイを活用できるようにするピアリング プロパティです。 このシナリオのリモート ゲートウェイを通過するトラフィックに対しては、[VPN ゲートウェイの料金](https://azure.microsoft.com/pricing/details/vpn-gateway/)または ExpressRoute ゲートウェイの料金が発生しますが、[VNet ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は発生しません。 たとえば、VNetA にオンプレミス接続用の VPN ゲートウェイがあり、VNetB が適切なプロパティを構成して VNetA にピアリングされている場合、VNetB からオンプレミスへのトラフィックに対しては、VPN ゲートウェイまたは ExpressRoute あたりのエグレス料金のみが発生します。 VNet ピアリングの料金は適用されません。 [仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法について学習してください。
+ゲートウェイ転送は、1 つの仮想ネットワークが構内間接続または VNet 間接続用にピアリングされた仮想ネットワーク内の VPN/ExpressRoute ゲートウェイを活用できるようにするピアリング プロパティです。 ピアリングされた VNet でのゲートウェイ (イングレスまたはエグレス) へのトラフィックは、VNet ピアリングの料金が発生します。 詳細については、「[VPN Gateway の価格](https://azure.microsoft.com/pricing/details/vpn-gateway/)」または ExpressRoute ゲートウェイの価格、[VNet のピアリングの価格](https://azure.microsoft.com/pricing/details/virtual-network)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 * 仮想ネットワーク ピアリングは、同じまたは異なるサブスクリプションに存在する同じまたは異なるデプロイメント モデルを使って作成された仮想ネットワーク間に作成されます。 次のいずれかのシナリオのチュートリアルを完了します。
 
-    |Azure デプロイメント モデル             | サブスクリプション  |
+    |Azure デプロイメント モデル             | Subscription  |
     |---------                          |---------|
     |両方が Resource Manager              |[同じ](tutorial-connect-virtual-networks-portal.md)|
     |                                   |[異なる](create-peering-different-subscriptions.md)|

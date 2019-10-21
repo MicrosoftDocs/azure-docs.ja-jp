@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 5806c17b0532f4d18b7ac57fbf70c92ed9d47daa
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: c21647e3fbbc38e905a6d6ec116551004da20d5c
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67827494"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300532"
 ---
 # <a name="example-identify-faces-in-images"></a>例:画像内の顔を識別する
 
@@ -81,7 +81,7 @@ CreatePersonResult friend1 = await faceClient.PersonGroupPerson.CreateAsync(
 // Define Bill and Clare in the same way
 ```
 ### <a name="step2-2"></a> 手順 2.2:顔を検出し、それらを適切な人物に登録する
-HTTP 要求の本文に画像ファイルを入れ、"POST" web 要求を [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API に送信することによって検出を実行します。 クライアント ライブラリを使用する場合、FaceClient クラスの DetectAsync メソッドを使用して顔の検出が行われます。
+HTTP 要求の本文に画像ファイルを入れ、"POST" web 要求を [Face - Detect](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) API に送信することによって検出を実行します。 クライアント ライブラリを使用する場合、FaceClient クラスのいずれかの DetectAsync メソッドを使用して顔の検出が行われます。
 
 検出されたそれぞれの顔について、[PersonGroup Person – Add Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) を呼び出してそれを正しい人物に追加します。
 
@@ -142,7 +142,7 @@ string testImageFile = @"D:\Pictures\test_img1.jpg";
 
 using (Stream s = File.OpenRead(testImageFile))
 {
-    var faces = await faceClient.Face.DetectAsync(s);
+    var faces = await faceClient.Face.DetectWithStreamAsync(s);
     var faceIds = faces.Select(face => face.FaceId).ToArray();
  
     var results = await faceClient.Face.IdentifyAsync(faceIds, personGroupId);

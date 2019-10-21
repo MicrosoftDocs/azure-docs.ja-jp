@@ -3,9 +3,8 @@ title: Azure Security Center で Disk Encryption を適用する | Microsoft Doc
 description: このドキュメントでは、**ディスク暗号化の適用**という Azure Security Center の推奨事項を実装する方法について説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 6cc7824a-8d6b-4a5f-ab40-e3bbaebc4a91
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 1abb0a5f5523032440086932eb9a1621d4cef455
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.author: memildin
+ms.openlocfilehash: b3d05e71726ae37dd30bbb68ceb84b67a3bef0e5
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726236"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71822271"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>Azure Security Center で Disk Encryption を適用する
 お使いの Windows または Linux VM ディスクが Azure Disk Encryption を使用して暗号化されていない場合、Azure Security Center により、ディスク暗号化を適用することが推奨されます。 Disk Encryption を使用すると、Windows および Linux IaaS VM ディスクを暗号化できます。  VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。
@@ -44,7 +43,7 @@ Security Center で暗号化が必要と識別された Azure Virtual Machines �
 * Azure Disk Encryption の前提条件となる Azure PowerShell スクリプトの取得と実行。
 * 仮想マシンの暗号化。
 
-これらの手順については、「[Azure PowerShell を使用して Windows IaaS VM を暗号化する](../security/azure-disk-encryption-linux-powershell-quickstart.md)」で具体的に説明しています。 このトピックでは、ディスク暗号化を構成するために Windows クライアント マシンを使用していると想定しています。
+これらの手順については、「[Azure PowerShell を使用して Windows IaaS VM を暗号化する](../virtual-machines/linux/disk-encryption-powershell-quickstart.md)」で具体的に説明しています。 このトピックでは、ディスク暗号化を構成するために Windows クライアント マシンを使用していると想定しています。
 
 Azure Virtual Machines に使用できる方法はたくさんあります。 既に Azure PowerShell または Azure CLI についてよく知っている方は、他の方法を好む場合もあります。 こうした方法の詳細については、「[Azure Disk Encryption](../security/azure-security-disk-encryption.md)」を参照してください。
 

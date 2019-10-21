@@ -1,21 +1,21 @@
 ---
 title: Azure Database for MariaDB のクエリ ストア
-description: この記事では、Azure Database for MariaDB のクエリ ストア機能について説明します
+description: Azure Database for MariaDB のクエリ ストア機能について説明します。これは、時間の経過と共にパフォーマンスを追跡するのに役立ちます。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 5d4d01f9f85c78d0e864ec9d11c1d8cd43542e57
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: d68934174c3bbb53bba4eb786ac79ab94725151b
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950628"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166226"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>クエリ ストアを使用した Azure Database for MariaDB のパフォーマンスの監視
 
-**適用対象:**  Azure Database for MariaDB 10.2
+**適用対象:** Azure Database for MariaDB 10.2
 
 > [!IMPORTANT]
 > クエリ ストアはプレビュー段階にあります。
@@ -37,14 +37,14 @@ Azure Database for MariaDB のクエリ ストア機能を使用すると、ク�
 ### <a name="enable-query-store-using-the-azure-portal"></a>Azure portal を使用してクエリ ストアを有効にする
 
 1. Azure portal にサインインし、ご利用の Azure Database for MariaDB サーバーを選択します。
-1. メニューの **[設定]**  セクションで **[サーバー パラメーター]**  を選択します。
+1. メニューの **[設定]** セクションで、 **[サーバー パラメーター]** を選択します。
 1. query_store_capture_mode パラメーターを検索します。
-1. 値を ALL に設定し、 **保存**します。
+1. 値を ALL に設定し、**保存**します。
 
 クエリ ストアでの待機統計を有効にするには、次の手順に従います。
 
 1. query_store_wait_sampling_capture_mode パラメーターを検索します。
-1. 値を ALL に設定し、 **保存**します。
+1. 値を ALL に設定し、**保存**します。
 
 mysql データベース内にデータの最初のバッチが保持されるまで最大 20 分かかります。
 
@@ -78,8 +78,8 @@ SELECT * FROM mysql.query_store_wait_stats;
 | **観測** | **アクション** |
 |---|---|
 |ロック待機が長い | 影響を受けているクエリのクエリ テキストを確認し、ターゲット エンティティを識別します。 同じエンティティを変更する他のクエリのクエリ ストアで、頻繁に実行されているクエリ、実行時間が長いクエリ、あるいはその両方を探します。 これらのクエリを特定した後で、コンカレンシーを向上させるためにアプリケーション ロジックを変更するか、より制限の低い分離レベルを使用します。 |
-|バッファー IO 待機が長い | クエリ ストア内で物理読み取り回数が多いクエリを検索します。 それらと IO 待機が長いクエリが一致する場合は、スキャンではなくシークを実行するために、基になるエンティティへのインデックスの導入を検討します。 これにより、クエリの IO オーバーヘッドが最小限に抑えられます。 ポータルでご利用のサーバーの **[パフォーマンスの推奨事項]**  を調べて、このサーバーに対してクエリを最適化するインデックスの推奨事項があるかどうかを確認します。 |
-|メモリ待機が多い | クエリ ストア内で、メモリを最も消費しているクエリを探します。 おそらくこれらのクエリによって、影響を受けているクエリの進行がさらに遅れています。 ポータルでご利用のサーバーの **[パフォーマンスの推奨事項]**  を調べて、これらのクエリを最適化するインデックスの推奨事項があるかどうかを確認します。|
+|バッファー IO 待機が長い | クエリ ストア内で物理読み取り回数が多いクエリを検索します。 それらと IO 待機が長いクエリが一致する場合は、スキャンではなくシークを実行するために、基になるエンティティへのインデックスの導入を検討します。 これにより、クエリの IO オーバーヘッドが最小限に抑えられます。 ポータル上でサーバーの **[パフォーマンスの推奨事項]** を調べて、このサーバーに対してクエリを最適化するインデックスの推奨事項があるかどうかを確認します。 |
+|メモリ待機が多い | クエリ ストア内で、メモリを最も消費しているクエリを探します。 おそらくこれらのクエリによって、影響を受けているクエリの進行がさらに遅れています。 ポータル上でサーバーの **[パフォーマンスの推奨事項]** を調べて、これらのクエリを最適化するインデックスの推奨事項があるかどうかを確認します。|
 
 ## <a name="configuration-options"></a>構成オプション
 
@@ -104,11 +104,11 @@ SELECT * FROM mysql.query_store_wait_stats;
 > [!NOTE]
 > 現時点では、**query_store_capture_mode** がこの構成よりも優先されます。そのため、待機統計を機能させるには、**query_store_capture_mode** と **query_store_wait_sampling_capture_mode** の両方を ALL に設定して有効にする必要があります。 待機統計では、有効になっている performance_schema と、クエリ ストアによってキャプチャされた query_text を利用するため、**query_store_capture_mode** がオフになっている場合、待機統計もオフになります。
 
-パラメーターの別の値を取得または設定するには、 [Azure portal](howto-server-parameters.md) を使用します。
+パラメーターの別の値を取得または設定するには、[Azure portal](howto-server-parameters.md) を使用します。
 
 ## <a name="views-and-functions"></a>ビューと関数
 
-次のビューと関数を使用してクエリ ストアを表示および管理します。 [select privilege public ロール](howto-create-users.md#create-additional-admin-users)に属するユーザーは、これらのビューを使用してクエリ ストア内のデータを表示できます。 これらのビューは、**mysql** データベース内でのみ使用できます。
+次のビューと関数を使用してクエリ ストアを表示および管理します。 [select privilege public ロール](howto-create-users.md#create-additional-admin-users)に属するユーザーは、これらのビューを使用してクエリ ストア内のデータを表示できます。 これらのビューは、**mysql** データベース内でのみ使用できます。
 
 クエリは、リテラルと定数を削除した後、その構造を調べることで正規化されます。 2 つのクエリがリテラル値を除いて同一の場合、それらは同じハッシュを持ちます。
 

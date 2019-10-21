@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: kumud
-ms.openlocfilehash: 45200e7620326dedcee92c579843e61bb07ff68e
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b232df010190a95d12d5a57f076a4c1bf336cea4
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610251"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026586"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
 
@@ -132,7 +132,7 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>未処理のログを別のサブスクリプションで格納することはできますか?
 
-いいえ。 NSG のフロー ログが有効になっているストレージ アカウントでは、未処理のログを保存できます。 ただし、ストレージ アカウントと未処理のログは、同じサブスクリプションとリージョンに属している必要があります。
+No. NSG のフロー ログが有効になっているストレージ アカウントでは、未処理のログを保存できます。 ただし、ストレージ アカウントと未処理のログは、同じサブスクリプションとリージョンに属している必要があります。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>"見つかりません" エラーによってトラフィック分析用に NSG を構成できないとどうなりますか?
 
@@ -143,8 +143,8 @@ Log Analytics ワークスペースは、次のリージョンに存在する必
 フロー ログが正しく機能するには、Microsoft.Insights プロバイダーが登録されている必要があります。 サブスクリプションで Microsoft.Insights プロバイダーが登録されているかどうかわからない場合は、次のコマンドの *xxxxx-xxxxx-xxxxxx-xxxx* を置き換え、PowerShell から次のコマンドを実行します。
 
 ```powershell-interactive
-**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>ソリューションを構成しました。 ダッシュボードに何も表示されないのはなぜですか?

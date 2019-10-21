@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins のロールベースのアクセス制御を理解する | Microsoft Docs
-description: Digital Twins でのロールベースのアクセス制御による認証について説明します。
-author: lyrana
-manager: alinast
+title: ロールベースのアクセス制御を理解する - Azure Digital Twins | Microsoft Docs
+description: Azure Digital Twins のロールベースのアクセス制御とアクセス許可の管理について説明します。
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: lyhughes
-ms.openlocfilehash: 6602a4df2c6e313156010102780240ba19fbac95
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.date: 09/30/2019
+ms.openlocfilehash: 1d4243457f51f11db5bc9681b29d27293fbc6250
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815573"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949021"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure Digital Twins でのロール ベースのアクセス制御
 
@@ -49,20 +49,20 @@ RBAC は、アクセス許可が空間グラフの下方に継承されるとい
 
 ### <a name="role-definitions"></a>ロールの定義
 
-ロールの定義は、アクセス許可と、ロールを構成するその他の属性のコレクションです。 ロールの定義では、そのロールを持つすべてのオブジェクトで実行される可能性のある*作成*、*読み取り*、*更新*、*削除*など、許可される操作がリストされます。 また、アクセス許可が適用されるオブジェクトの型も指定されます。
+ロールの定義は、アクセス許可と、ロールを構成するその他の属性のコレクションです。 ロールの定義では、そのロールを持つすべてのオブジェクトで実行される可能性のある*作成*、*読み取り*、*更新*、*削除*など、許可される操作がリストされます。 アクセス許可が適用されるオブジェクトの型も指定されます。
 
 [!INCLUDE [digital-twins-roles](../../includes/digital-twins-roles.md)]
 
 >[!NOTE]
 > 前のロールの完全定義を取得するには、システム/ロール API にお問い合わせください。
-> 詳細については、[ロール割り当ての作成と管理](./security-create-manage-role-assignments.md#all)に関するページを参照してください。
+> 詳細については、[ロール割り当ての作成と管理](./security-create-manage-role-assignments.md#retrieve-all-roles)に関するページを参照してください。
 
 ### <a name="object-identifier-types"></a>オブジェクト識別子の型
 
 [!INCLUDE [digital-twins-object-types](../../includes/digital-twins-object-id-types.md)]
 
 >[!TIP]
-> サービス プリンシパルにアクセス許可を付与する方法については、[ロール割り当ての作成と管理](./security-create-manage-role-assignments.md#grant)に関するページを参照してください。
+> サービス プリンシパルにアクセス許可を付与する方法については、[ロール割り当ての作成と管理](./security-create-manage-role-assignments.md#grant-permissions-to-your-service-principal)に関するページを参照してください。
 
 次のリファレンス ドキュメント記事では、以下について説明されています。
 

@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 5d823059842bf539f00ad372127fc8b636c74b65
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70745969"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351161"
 ---
 # <a name="azure-storage-samples-using-python"></a>Python を使用した Azure Storage サンプル
 
@@ -99,4 +99,5 @@ Azure Storage ライブラリのインストール方法と概要については
 
 * .NET:[.NET を使用した Azure Storage サンプル](storage-samples-dotnet.md)
 * Java:[Java を使用した Azure Storage サンプル](storage-samples-java.md)
+* JavaScript/Node.js: [JavaScript を使用した Azure Storage サンプル](storage-samples-javascript.md)
 * その他すべての言語: [Azure Storage のサンプル](storage-samples.md)

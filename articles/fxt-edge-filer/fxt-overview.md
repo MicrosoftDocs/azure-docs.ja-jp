@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: overview
 ms.date: 07/01/2019
-ms.author: v-erkell
-ms.openlocfilehash: 58d4a2a52757b6ace1059fcccf379df3de5fd75c
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: acf35015ff7851f7ea2a2527852be2573512e35d
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542895"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254846"
 ---
 # <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Azure FXT Edge Filer ハイブリッド ストレージ キャッシュとは何か
 

@@ -2,19 +2,19 @@
 title: チュートリアル:Azure DevOps Projects を使用して Azure Functions に ASP.NET アプリをデプロイする
 description: Azure DevOps Projects を利用すると、Azure を使い始めるのが簡単になります。 DevOps Projects を使用することによって、いくつかの簡単な手順で ASP.NET アプリを Azure Functions にデプロイできます。
 ms.author: mlearned
-ms.manager: douge
+ms.manager: gwallace
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 06/20/2019
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 6894f9bc6c803e2692afb54d7459adf6b0e6dbd6
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.openlocfilehash: 4e7e9428af86f131632650f18d45e7dd48f4b5cb
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828157"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971574"
 ---
 # <a name="continuously-deploy-to-azure-functions-with-devops-projects"></a>DevOps Projects を使用して Azure Functions に継続的にデプロイする
 

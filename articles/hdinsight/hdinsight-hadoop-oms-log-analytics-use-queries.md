@@ -2,18 +2,18 @@
 title: Azure Monitor ログのクエリを実行して Azure HDInsight クラスターを監視する
 description: Azure Monitor ログでクエリを実行し、HDInsight クラスターで実行されているジョブを監視する方法を説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
-ms.author: hrasheed
-ms.openlocfilehash: 031879ac1d0d2dd1148c0c37ee72c60d093f8a7d
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 51344ff7381b6392870b1fd0e331eed38a33915d
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70809372"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103516"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログでクエリを実行して HDInsight クラスターを監視する
 
@@ -27,38 +27,38 @@ Azure Monitor ログを使用して Azure HDInsight クラスターを監視す�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Monitor ログを使用するように HDInsight クラスターを構成し、HDInsight クラスター固有の Azure Monitor ログ監視ソリューションをワークスペースに追加しておく必要があります。 手順については、「[Use Azure Monitor logs with HDInsight clusters](hdinsight-hadoop-oms-log-analytics-tutorial.md)」(HDInsight クラスターでの Azure Monitor ログの使用) を参照してください。
+Azure Monitor ログを使用するように HDInsight クラスターを構成し、HDInsight クラスター固有の Azure Monitor ログ監視ソリューションをワークスペースに追加しておく必要があります。 手順については、「[Use Azure Monitor logs with HDInsight clusters](hdinsight-hadoop-oms-log-analytics-tutorial.md)」(HDInsight クラスターでの Azure Monitor ログの使用) を参照してください。
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>HDInsight クラスターのメトリックを分析する
 
 HDInsight クラスターの特定のメトリックを検索する方法を説明します。
 
 1. Azure Portal から HDInsight クラスターに関連付けられた Log Analytics ワークスペースを開きます。
-2. **[ログ検索]** タイルを選択します。
-3. 検索ボックスに、Azure Monitor ログを使用するように構成したすべての HDInsight クラスターで使用できるすべてのメトリックを検索する次のクエリを入力して、 **[実行]** を選択します。
+1. **[ログ検索]** タイルを選択します。
+1. 検索ボックスに、Azure Monitor ログを使用するように構成したすべての HDInsight クラスターで使用できるすべてのメトリックを検索する次のクエリを入力して、 **[実行]** を選択します。
 
         search *
 
-    ![すべてのメトリックを検索](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "すべてのメトリックを検索")
+    ![Apache Ambari の分析によってすべてのメトリックを検索する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics.png "すべてのメトリックを検索する")
 
     出力は次のようになります。
 
-    ![すべてのメトリックの検索結果](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "すべてのメトリックの検索結果")
+    ![Log Analytics によってすべてのメトリックを検索する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-metrics-output.png "すべてのメトリックの出力を検索する")
 
-5. 左側のウィンドウの **[種類]** の下で、詳しく調べたいメトリックを選択して **[適用]** を選択します。 次のスクリーンショットは `metrics_resourcemanager_queue_root_default_CL` 種類を選択した場合を示しています。
+1. 左側のウィンドウの **[種類]** の下で、詳しく調べたいメトリックを選択して **[適用]** を選択します。 次のスクリーンショットは `metrics_resourcemanager_queue_root_default_CL` 種類を選択した場合を示しています。
 
     > [!NOTE]  
     > 目的のメトリックが表示されていない場合は、 **[[+] 増やす]** ボタンを選択します。 また、 **[適用]** ボタンはリストの一番下にあるので、このボタンを表示するには下までスクロールする必要があります。
 
     テキスト ボックスのクエリが、下記のスクリーンショットの赤枠で示された内容に変わっていることを確認してください。
 
-    ![特定のメトリックの検索](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "特定のメトリックの検索")
+    ![Log Analytics によって特定のメトリックを検索する](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-specific-metrics.png "特定のメトリックを検索する")
 
-6. この特定のメトリックのデータを詳しく調べるには: たとえば、次のクエリを使用すると、クラスター名ごとに、10 分間に使用されたリソースの平均値に基づいて出力結果を調整することができます。
+1. この特定のメトリックのデータを詳しく調べるには: たとえば、次のクエリを使用すると、クラスター名ごとに、10 分間に使用されたリソースの平均値に基づいて出力結果を調整することができます。
 
         search in (metrics_resourcemanager_queue_root_default_CL) * | summarize AggregatedValue = avg(UsedAMResourceMB_d) by ClusterName_s, bin(TimeGenerated, 10m)
 
-7. 使用されたリソースの平均値に基づいて結果を調整する代わりに、次のクエリを使用すると、10 分間で最大 (および 90 パーセンタイルと 95 パーセンタイル) のリソースが使用された時刻に基づいて結果を調整できます。
+1. 使用されたリソースの平均値に基づいて結果を調整する代わりに、次のクエリを使用すると、10 分間で最大 (および 90 パーセンタイルと 95 パーセンタイル) のリソースが使用された時刻に基づいて結果を調整できます。
 
         search in (metrics_resourcemanager_queue_root_default_CL) * | summarize ["max(UsedAMResourceMB_d)"] = max(UsedAMResourceMB_d), ["pct95(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 95), ["pct90(UsedAMResourceMB_d)"] = percentile(UsedAMResourceMB_d, 90) by ClusterName_s, bin(TimeGenerated, 10m)
 
@@ -68,15 +68,16 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 1. Azure Portal から HDInsight クラスターに関連付けられた Log Analytics ワークスペースを開きます。
 2. **[ログ検索]** タイルを選択します。
-3. Azure Monitor ログを使用するように構成したすべての HDInsight クラスターのすべてのエラー メッセージを検索する次のクエリを入力して、 **[実行]** を選択します。 
+3. Azure Monitor ログを使用するように構成したすべての HDInsight クラスターのすべてのエラー メッセージを検索する次のクエリを入力して、 **[実行]** を選択します。
 
          search "Error"
 
     出力は次のようになります。
 
-    ![すべてのエラーの検索結果](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "すべてのエラーの検索結果")
+    ![Azure portal のログ検索エラー](./media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-search-all-errors-output.png "すべてのエラーの出力を検索する")
 
 4. 左側のウィンドウの **[種類]** カテゴリの下で、詳しく調べたいエラーの種類を選択して、 **[適用]** を選択します。  選択した種類のエラーのみが表示されるように結果が調整されたことを確認してください。
+
 5. 左側のウィンドウにあるオプションを使って、このエラーの一覧を詳しく調べることができます。 例:
 
     - 特定のワーカー ノードからのエラー メッセージを表示するには:

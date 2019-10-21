@@ -1,7 +1,7 @@
 ---
 title: Azure CLI を使用したワークスペースの作成
-titleSuffix: Azure Machine Learning service
-description: Azure CLI を使用して、新しい Azure Machine Learning service ワークスペースを作成する方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure CLI を使用して、新しい Azure Machine Learning ワークスペースを作成する方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 08/30/2019
-ms.openlocfilehash: f398eb8124f45562ebc3c4238c641a6638811394
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 75487906e4323ea12a47d75164617212bd3e65d9
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873502"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002645"
 ---
-# <a name="create-a-workspace-for-azure-machine-learning-service-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning service のワークスペースを作成する
+# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Azure CLI を使用して Azure Machine Learning のワークスペースを作成する
 
-この記事では、Azure CLI を使用して Azure Machine Learning service ワークスペースを作成する方法について説明します。 Azure CLI には、Azure リソースを管理するためのコマンドが用意されています。 CLI の機械学習拡張機能には、Azure Machine Learning service リソースを操作するためのコマンドが用意されています。
+この記事では、Azure CLI を使用して Azure Machine Learning ワークスペースを作成する方法について説明します。 Azure CLI には、Azure リソースを管理するためのコマンドが用意されています。 CLI の機械学習拡張機能には、Azure Machine Learning リソースを操作するためのコマンドが用意されています。
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) をお試しください。
+* **Azure サブスクリプション**。 お持ちでない場合は、[無料版または有料版の Azure Machine Learning ](https://aka.ms/AMLFree)をお試しください。
 
 * ご使用の**ローカル環境**からこのドキュメントの CLI コマンドを使用するには、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) が必要です。
 
@@ -53,7 +53,7 @@ az extension add -n azure-cli-ml
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 
-Azure Machine Learning service ワークスペースは、次の Azure サービスまたはエンティティに依存しています。
+Azure Machine Learning ワークスペースは、次の Azure サービスまたはエンティティに依存しています。
 
 > [!IMPORTANT]
 > 既存の Azure サービスを指定しない場合は、ワークスペースの作成時に自動的に作成されます。 リソース グループは必ず指定する必要があります。
@@ -68,10 +68,10 @@ Azure Machine Learning service ワークスペースは、次の Azure サービ
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-Azure Machine Learning service ワークスペースは、リソース グループ内に作成する必要があります。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。 __新しいリソース グループを作成__するには、次のコマンドを使用します。 `<resource-group-name>` をこのリソース グループに使用する名前に置き換えます。 `<location>` をこのリソース グループに使用する Azure リージョンに置き換えます。
+Azure Machine Learning ワークスペースは、リソース グループ内に作成する必要があります。 既存のリソース グループを使用することも、新しいリソース グループを作成することもできます。 __新しいリソース グループを作成__するには、次のコマンドを使用します。 `<resource-group-name>` をこのリソース グループに使用する名前に置き換えます。 `<location>` をこのリソース グループに使用する Azure リージョンに置き換えます。
 
 > [!TIP]
-> Azure Machine Learning service が使用可能なリージョンを選択する必要があります。 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)」を参照してください。
+> Azure Machine Learning が使用可能なリージョンを選択する必要があります。 詳細については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)」を参照してください。
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -170,7 +170,7 @@ az ml workspace create -w <workspace-name> -g <resource-group-name>
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > コンテナー レジストリを Azure Machine Learning service ワークスペースで使用するには、事前に[管理者アカウント](/azure/container-registry/container-registry-authentication#admin-account)が有効になっている必要があります。
+    > コンテナー レジストリを Azure Machine Learning ワークスペースで使用するには、事前に[管理者アカウント](/azure/container-registry/container-registry-authentication#admin-account)が有効になっている必要があります。
 
 ワークスペースで使用するリソースの ID を取得したら、ベース コマンド `az workspace create -w <workspace-name> -g <resource-group-name>` を使用して、既存のリソースのパラメーターと ID を追加します。 たとえば、次のコマンドでは、既存のコンテナー レジストリを使用するワークスペースが作成されます。
 
@@ -302,7 +302,7 @@ az ml workspace update -w <workspace-name> -g <resource-group-name>
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-Azure Machine Learning service を使用したロールベースのアクセス制御 (RBAC) の詳細については、[ユーザーとロールの管理](how-to-assign-roles.md)に関するページを参照してください。
+Azure Machine Learning を使用したロールベースのアクセス制御 (RBAC) の詳細については、[ユーザーとロールの管理](how-to-assign-roles.md)に関するページを参照してください。
 
 詳細については、[az ml workspace share](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/workspace?view=azure-cli-latest#ext-azure-cli-ml-az-ml-workspace-share) のドキュメントをご覧ください。
 

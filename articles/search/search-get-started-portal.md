@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 09/10/2019
 ms.author: laobri
-ms.openlocfilehash: 44f370829b972840ac4266a760fefb4aa317be30
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a4a25b8504d873b624e1f6822807c9c08ebd2e4f
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884569"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936980"
 ---
 # <a name="quickstart-create-an-azure-search-index-using-the-azure-portal"></a>クイック スタート:Azure portal を利用して Azure Search インデックスを作成する
 > [!div class="op_single_selector"]
@@ -24,7 +24,7 @@ ms.locfileid: "70884569"
 > * [Python](search-get-started-python.md)
 > * [C#](search-get-started-dotnet.md)
 
-Azure Search の概念をすばやく把握するために、Azure portal のビルトイン ツールをお試しください。 ウィザードとエディターは .NET および REST API と完全には対応していませんが、コーディングなしの導入ですぐに開始でき、サンプル データに対する興味深いクエリを数分以内に記述できます。
+Azure Search の概念をすばやく把握するために、Azure portal のビルトイン ツールをお試しください。 ウィザードとエディターは .NET および REST API と完全には対応していませんが、コーディングなしの導入ですぐに開始でき、インデックスに対する興味深いクエリを数分以内に記述できます。
 
 > [!div class="checklist"]
 > * Azure にホストされている無料のパブリック サンプル データセットから開始する
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 検索クエリは、"[*インデックス*](search-what-is-an-index.md)" を反復処理します。インデックスには、検索可能なデータやメタデータに加え、特定の検索の動作を最適化する構造が含まれています。
 
-このチュートリアルでは、**データのインポート** ウィザードから "[*インデクサー*](search-indexer-overview.md)" を使用してクロールできる、組み込みのサンプル データセットを使用します。 インデクサーは、サポートされている Azure データ ソースからメタデータとコンテンツを読み取ることができるソース固有のクローラーです。 通常、インデクサーはプログラムで使用されますが、ポータル上では**データのインポート** ウィザードを使用してアクセスできます。 
+このチュートリアルでは、[**データのインポート** ウィザード](search-import-data-portal.md)から "[*インデクサー*](search-indexer-overview.md)" を使用してクロールできる、組み込みのサンプル データセットを使用します。 インデクサーは、サポートされている Azure データ ソースからメタデータとコンテンツを読み取ることができるソース固有のクローラーです。 通常、インデクサーはプログラムで使用されますが、ポータル上では**データのインポート** ウィザードを使用してアクセスできます。 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>手順 1 - データのインポート ウィザードを起動し、データ ソースを作成する
 

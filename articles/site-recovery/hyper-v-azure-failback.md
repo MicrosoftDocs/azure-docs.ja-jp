@@ -6,23 +6,25 @@ author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 09/12/2019
 ms.author: rajanaki
-ms.openlocfilehash: 4030b1905f8d5b50ef6be3ffa61eda74d8a27951
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 07ecc8547ab155600bccfd1ad8f1ecbb58a18fa3
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60552418"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931845"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Hyper-V VM のフェールバックの実行
 
 この記事では、Site Recovery によって保護されている Hyper-V 仮想マシンをフェールバックする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-1. [さまざまな種類のフェールバック](concepts-types-of-failback.md)とそれぞれの注意事項に関する詳細情報を既に読んだことを確認します。
-1. プライマリ サイトの VMM サーバーまたは Hyper-V ホストサーバーが Azure に接続されていることを確認します。
-2. 仮想マシンが**コミット**済みである必要があります。
+
+- [さまざまな種類のフェールバック](concepts-types-of-failback.md)とそれぞれの注意事項に関する詳細情報を既に読んだことを確認します。
+- プライマリ サイトの VMM サーバーまたは Hyper-V ホストサーバーが Azure に接続されていることを確認します。
+- 仮想マシンが**コミット**済みである必要があります。
+- レプリケーションにストレージ アカウントを使用していることと、マネージド ディスクではないことを確認します。 ディスクの管理を使用してレプリケートされた Hyper-V VM のフェールバックはサポートされていません。
 
 ## <a name="perform-failback"></a>フェールバックを実行する
 プライマリからセカンダリの場所へのフェールオーバー後は、レプリケートされた仮想マシンは Site Recovery では保護されず、セカンダリの場所が "アクティブな場所" として機能するようになります。 復旧計画で VM をフェールバックするには、次のようにセカンダリ サイトからプライマリ サイトに対して計画されたフェールオーバーを実行します。 

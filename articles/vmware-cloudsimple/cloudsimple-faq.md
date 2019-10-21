@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d1cbca20b9f1ee1d5f7eefb760ed60fa4d019050
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 95d8c2974ea372dd59d15a9f2cc31ed171acd932
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972838"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828916"
 ---
 # <a name="frequently-asked-questions-about-vmware-solution-by-cloudsimple"></a>CloudSimple による VMware ソリューションについてよく寄せられる質問
 
@@ -29,7 +29,7 @@ CloudSimple プライベート クラウドは個人の専用クラウドであ�
 
 **CloudSimple サービスが使用可能な場所は?**
 
-CloudSimple は米国東部と米国西部リージョンで利用できます。近日中にリージョンが追加される予定です。
+CloudSimple は米国東部、米国西部、西ヨーロッパ リージョンで利用できます。近日中にリージョンが追加される予定です。
 
 **CloudSimple のサブスクリプションを有効にする方法は?**
 
@@ -106,8 +106,9 @@ CloudSimple は、プライベート クラウド環境をセキュリティで�
 
 CloudSimple は次の種類のホストを提供します。
 
-* **CS28 ノード**:CPU:2x 2.2 GHz、合計 28 コア、48 HT。  RAM: 256 GB。  ストレージ:1600 GB NVMe キャッシュ、5760 GB データ (オールフラッシュ)。 ネットワーク: 2x25Gbe NIC
-* **CS36 ノード:** CPU 2x 2.3 GHz、合計 36 コア、72 HT。  RAM: 512 GB。  ストレージ:3200 GB NVMe キャッシュ、11520 GB データ (オール フラッシュ)。  ネットワーク: 2x25Gbe NIC
+* **CS28 ノード**:CPU:2x 2.2 GHz、合計 28 コア、48 HT。  RAM: 256 GB。  ストレージ:1600 GB NVMe キャッシュ、5760 GB データ (オールフラッシュ)。 ネットワーク: 4x25Gbe NIC
+* **CS36 ノード:** CPU 2x 2.3 GHz、合計 36 コア、72 HT。  RAM: 512 GB。  ストレージ:3200 GB NVMe キャッシュ、11520 GB データ (オール フラッシュ)。  ネットワーク: 4x25Gbe NIC
+* **CS36m ノード:** CPU 2x 2.3 GHz、合計 36 コア、72 HT。  RAM: 576 GB。  ストレージ:3200 GB NVMe キャッシュ、13360 GB データ (オール フラッシュ)。  ネットワーク: 4x25Gbe NIC
 
 **ハードウェア障害はどのように処理されますか?**
 

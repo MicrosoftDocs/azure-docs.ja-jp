@@ -3,18 +3,17 @@ title: マシンのコンテンツを監査する方法を理解する
 description: Azure Policy によりゲスト構成を使用して Azure マシン内の設定が監査される方法を説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/04/2019
+ms.date: 09/20/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: bfa7f7486a9fa5ef62e8bf9e01dbe39d675d8d27
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: ac8d4d2519ce918a943cfe1e93ed2c5c7afd9a47
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308566"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978050"
 ---
-# <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成を理解します。
+# <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
 Azure リソースの監査と[修復](../how-to/remediate-resources.md)以外に、Azure Policy ではマシン内の設定を監査することができます。 検証は、クライアントとゲスト構成拡張機能によって実行されます。 クライアントを介した拡張機能によって、次のような設定が検証されます。
 
@@ -130,7 +129,7 @@ Azure Policy は、ゲスト構成リソースプロバイダーの **compliance
 
 ## <a name="built-in-resource-modules"></a>組み込みリソース モジュール
 
-ゲスト構成拡張機能をインストールするとき、最新バージョンの DSC リソース モジュールには "GuestConfiguration" PowerShell モジュールが含まれています。 このモジュールは、PowerShell ギャラリーのモジュール ページ [GuestConfiguration/](https://www.powershellgallery.com/packages/GuestConfiguration/) の [Manual Download] リンクを使用してダウンロードできます。
+ゲスト構成拡張機能をインストールするとき、最新バージョンの DSC リソース モジュールには "GuestConfiguration" PowerShell モジュールが含まれています。 このモジュールは、PowerShell ギャラリーのモジュール ページ [GuestConfiguration](https://www.powershellgallery.com/packages/GuestConfiguration/) の [Manual Download] リンクを使用してダウンロードできます。
 ".nupkg'" ファイル形式の名前を ".zip" に変更することで、圧縮を解除して確認できます。
 
 ## <a name="client-log-files"></a>クライアントのログ ファイル
@@ -175,7 +174,7 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 ポリシー ゲスト構成のサンプルは、以下を参照してください。
 
 - [サンプル インデックス - ゲスト構成](../samples/index.md#guest-configuration)
-- [Azure Policy サンプルの GitHub リポジトリ](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)。
+- [Azure Policy サンプルの GitHub リポジトリ](https://github.com/Azure/azure-policy/tree/master/samples/GuestConfiguration)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -185,4 +184,4 @@ egrep -B $linesToIncludeBeforeMatch -A $linesToIncludeAfterMatch 'DSCEngine|DSCM
 - [プログラムによってポリシーを作成する](../how-to/programmatically-create.md)方法を理解します。
 - [コンプライアンス データを取得する](../how-to/getting-compliance-data.md)方法を学習します。
 - [準拠していないリソースを修復する](../how-to/remediate-resources.md)方法を学習します。
-- 「[Azure 管理グループのリソースを整理する](../../management-groups/index.md)」で、管理グループとは何かを確認します。
+- 「[Azure 管理グループのリソースを整理する](../../management-groups/overview.md)」で、管理グループとは何かを確認します。

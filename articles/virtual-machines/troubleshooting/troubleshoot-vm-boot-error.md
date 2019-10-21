@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2019
 ms.author: tiag
-ms.openlocfilehash: 14bf7b289f3d03dd1437a18b0b5bd35fdec567ea
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 9995b9049378a0ab4f3450ec577d034598d171e9
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70143162"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984833"
 ---
 # <a name="vm-boot-error"></a>VM の起動エラー
 
@@ -48,7 +48,7 @@ ms.locfileid: "70143162"
 
     2. 次に、次のコマンドを実行し、その構成を再生成します。 `grub2-mkconfig -o /boot/grub2/grub.cfg`
 
-   * 不足しているファイルが `/boot/grub/menu.lst` の場合、このエラーは以前の OS バージョン (**RHEL 6.x**、**Centos 6.x** と **Ubuntu 14.04**) に対するものであり、コマンドが遅れることがあります。 古いサーバーを起動し、正しいコマンドが入力されていることを確認する必要があります。
+   * 不足しているファイルが `/boot/grub/menu.lst` の場合、このエラーは以前の OS バージョン (**RHEL 6.x**、**Centos 6.x** と **Ubuntu 14.04**) に対するものであり、コマンドが異なることがあります。 古いサーバーを起動し、正しいコマンドが入力されていることを確認する必要があります。
 
 ### <a name="error---no-such-partition"></a>エラー - そのようなパーティションはありません
 

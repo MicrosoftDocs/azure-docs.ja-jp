@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
-ms.openlocfilehash: 143da2a08dd79c3f08a7bd8e8ec57d233e98df93
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 4d3b7ce56863d82ed8322b937a290c52774677d2
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70140926"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272278"
 ---
 # <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>クイック スタート:Python を使用してデータ ファクトリとパイプラインを作成する
 
@@ -158,7 +158,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ls_name = 'storageLinkedService'
 
     # IMPORTANT: specify the name and key of your Azure Storage account.
-    storage_string = SecureString('DefaultEndpointsProtocol=https;AccountName=<storageaccountname>;AccountKey=<storageaccountkey>')
+    storage_string = SecureString(value='DefaultEndpointsProtocol=https;AccountName=<storageaccountname>;AccountKey=<storageaccountkey>')
 
     ls_azure_storage = AzureStorageLinkedService(connection_string=storage_string)
     ls = adf_client.linked_services.create_or_update(rg_name, df_name, ls_name, ls_azure_storage)
@@ -227,10 +227,7 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
 
 ```python
     #Create a pipeline run.
-    run_response = adf_client.pipelines.create_run(rg_name, df_name, p_name,
-        {
-        }
-    )
+    run_response = adf_client.pipelines.create_run(rg_name, df_name, p_name, parameters={})
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>パイプラインの実行を監視する
@@ -242,8 +239,12 @@ Azure BLOB 内のソース データを表すデータセットを定義しま�
     time.sleep(30)
     pipeline_run = adf_client.pipeline_runs.get(rg_name, df_name, run_response.run_id)
     print("\n\tPipeline run status: {}".format(pipeline_run.status))
-    activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1),  datetime.now() + timedelta(1)))
-    print_activity_run_details(activity_runs_paged[0])
+    filter_params = RunFilterParameters(
+        last_updated_after=datetime.now() - timedelta(1), last_updated_before=datetime.now() + timedelta(1))
+    query_response = adf_client.activity_runs.query_by_pipeline_run(
+        rg_name, df_name, pipeline_run.run_id, filter_params)
+    print_activity_run_details(query_response.value[0])
+
 ```
 
 プログラムの実行時に **main** メソッドを呼び出す次のステートメントを追加します。
@@ -339,7 +340,7 @@ def main():
 
     # Specify the name and key of your Azure Storage account
     storage_string = SecureString(
-        'DefaultEndpointsProtocol=https;AccountName=<storage account name>;AccountKey=<storage account key>')
+        value='DefaultEndpointsProtocol=https;AccountName=<storage account name>;AccountKey=<storage account key>')
 
     ls_azure_storage = AzureStorageLinkedService(
         connection_string=storage_string)
@@ -353,7 +354,7 @@ def main():
     blob_path = 'adfv2tutorial/input'
     blob_filename = 'input.txt'
     ds_azure_blob = AzureBlobDataset(
-        ds_ls, folder_path=blob_path, file_name=blob_filename)
+        linked_service_name=ds_ls, folder_path=blob_path, file_name=blob_filename)
     ds = adf_client.datasets.create_or_update(
         rg_name, df_name, ds_name, ds_azure_blob)
     print_item(ds)
@@ -361,7 +362,7 @@ def main():
     # Create an Azure blob dataset (output)
     dsOut_name = 'ds_out'
     output_blobpath = 'adfv2tutorial/output'
-    dsOut_azure_blob = AzureBlobDataset(ds_ls, folder_path=output_blobpath)
+    dsOut_azure_blob = AzureBlobDataset(linked_service_name=ds_ls, folder_path=output_blobpath)
     dsOut = adf_client.datasets.create_or_update(
         rg_name, df_name, dsOut_name, dsOut_azure_blob)
     print_item(dsOut)
@@ -384,19 +385,18 @@ def main():
     print_item(p)
 
     # Create a pipeline run
-    run_response = adf_client.pipelines.create_run(rg_name, df_name, p_name,
-                                                   {
-                                                   }
-                                                   )
+    run_response = adf_client.pipelines.create_run(rg_name, df_name, p_name, parameters={})
 
     # Monitor the pipeline run
     time.sleep(30)
     pipeline_run = adf_client.pipeline_runs.get(
         rg_name, df_name, run_response.run_id)
     print("\n\tPipeline run status: {}".format(pipeline_run.status))
-    activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
-        rg_name, df_name, pipeline_run.run_id, datetime.now() - timedelta(1), datetime.now() + timedelta(1)))
-    print_activity_run_details(activity_runs_paged[0])
+    filter_params = RunFilterParameters(
+        last_updated_after=datetime.now() - timedelta(1), last_updated_before=datetime.now() + timedelta(1))
+    query_response = adf_client.activity_runs.query_by_pipeline_run(
+        rg_name, df_name, pipeline_run.run_id, filter_params)
+    print_activity_run_details(query_response.value[0])
 
 
 # Start the main method

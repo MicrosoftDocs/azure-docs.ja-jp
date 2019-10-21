@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.reviewer: ''
-ms.openlocfilehash: 04a2a3f2557ccef510a831a5c9fbf89bb62cb9a7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 959d959cd269884b3b75c4c23bfd0054ae64ced7
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70812834"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033646"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD アプリケーション プロキシのデプロイ計画
 
@@ -292,11 +292,11 @@ Azure AD アプリケーション プロキシをサポートするために次�
 
 ### <a name="reporting-and-monitoring"></a>レポートと監視
 
-Azure AD は、[監査ログとレポート](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs)によって組織のアプリケーション使用状況と操作の正常性に関する追加の分析情報を提供します。 また、アプリケーション プロキシを使用すると、Azure AD ポータルと Windows イベント ログからのコネクタの監視が非常に簡単になります。
+Azure AD は、[監査ログとレポート](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)によって組織のアプリケーション使用状況と操作の正常性に関する追加の分析情報を提供します。 また、アプリケーション プロキシを使用すると、Azure AD ポータルと Windows イベント ログからのコネクタの監視が非常に簡単になります。
 
 #### <a name="application-audit-logs"></a>アプリケーションの監査ログ
 
-これらのログでは、アプリケーション プロキシで構成されたアプリケーションへのログインと、アプリケーションにアクセスしているデバイスおよびユーザーに関する詳細情報が提供されます。 [監査ログ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-audit-logs)は Azure portal 内に、およびエクスポート用の [Audit API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) にあります。 また、[使用状況と分析情報のレポート](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-usage-insights-report)もアプリケーションで利用できます。
+これらのログでは、アプリケーション プロキシで構成されたアプリケーションへのログインと、アプリケーションにアクセスしているデバイスおよびユーザーに関する詳細情報が提供されます。 [監査ログ](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)は Azure portal 内に、およびエクスポート用の [Audit API](https://docs.microsoft.com/graph/api/resources/directoryaudit?view=graph-rest-beta) にあります。 また、[使用状況と分析情報のレポート](../reports-monitoring/concept-usage-insights-report.md?context=azure/active-directory/manage-apps/context/manage-apps-context)もアプリケーションで利用できます。
 
 #### <a name="application-proxy-connector-monitoring"></a>アプリケーション プロキシ コネクタの監視
 

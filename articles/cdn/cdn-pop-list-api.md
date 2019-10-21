@@ -15,20 +15,22 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: magattus
 ms.custom: ''
-ms.openlocfilehash: bc8e8219c8f8de75b01c584a2a5ce13cc1429fec
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 95b85aa11d99ddd48c90c8d9fa28789e79ee979f
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991775"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299237"
 ---
-# <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の Verizon POP IP リストの取得
+# <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の POP IP リストの取得
+
+## <a name="retrieve-the-current-verizon-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の Verizon POP IP リストの取得
 
 REST API を使用して、Verizon の POP (point of presence) サーバーの IP アドレスのセットを取得できます。 これらの POP サーバーは、Verizon プロファイル (**Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon**) で Azure Content Delivery Network (CDN) エンドポイントに関連付けられている配信元サーバーに要求を送信します。 この IP アドレスのセットは POP に要求を送信するときにクライアントが認識する IP アドレスとは異なることに注意してください。 
 
 POP リストを取得するための REST API 操作の構文については、「[Edge Nodes - List (エッジ ノード - リスト)](https://docs.microsoft.com/rest/api/cdn/edgenodes/list)」を参照してください。
 
-# <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の Microsoft POP IP リストの取得
+## <a name="retrieve-the-current-microsoft-pop-ip-list-for-azure-cdn"></a>Azure CDN の現在の Microsoft POP IP リストの取得
 
 Microsoft の Azure CDN からのトラフィックのみを受け入れるようにアプリケーションを制限するには、バックエンド用の IP ACL を設定する必要があります。 また、Microsoft の Azure CDN によって送信されたヘッダー 'X-Forwarded-Host' に対して許容される値のセットを制限することもできます。 以下に、これらの手順の詳細を示します。
 
@@ -39,7 +41,6 @@ Microsoft のバックエンド IP アドレス空間と Azure のインフラ�
 
 Microsoft サービスに対する IP 範囲とサービス タグについては、[こちら](https://www.microsoft.com/download/details.aspx?id=56519)で見つけることができます。
 
-Microsoft の Azure CDN によって送信された受信ヘッダー "X-Forwarded-Host" の値をフィルター処理します。 ヘッダーの許可される値は、CDN の構成で定義されているすべてのエンドポイント ホストだけにする必要があります。実際には、さらに具体的に言えば、この特定の配信元でトラフィックを受け入れるホスト名のみにします。
 
 ## <a name="typical-use-case"></a>一般的なユース ケース
 

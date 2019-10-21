@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 4/05/2018
-ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: ec2ed1da46df2793a241c9c89d168a6c5d462b9d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992234"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169828"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Terraform を使用し、Azure デプロイ スロットでインフラストラクチャをプロビジョニングする
 
@@ -74,7 +74,7 @@ ms.locfileid: "57992234"
 
 1. 以下のコードをエディターに貼り付けます。
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 
@@ -143,11 +143,11 @@ ms.locfileid: "57992234"
 
 1. Cloud Shell ウィンドウを閉じます。
 
-1. Azure Portal のメイン メニューで、**[リソース グループ]** を選択します。
+1. Azure Portal のメイン メニューで、 **[リソース グループ]** を選択します。
 
     ![ポータルの "リソース グループ"](./media/terraform-slot-walkthru/resource-groups-menu-option.png)
 
-1. **[リソース グループ]** タブで、**[slotDemoResourceGroup]** を選択します。
+1. **[リソース グループ]** タブで、 **[slotDemoResourceGroup]** を選択します。
 
     ![Terraform によって作成されたリソース グループ](./media/terraform-slot-walkthru/resource-group.png)
 
@@ -171,7 +171,7 @@ Terraform によって作成されたすべてのリソースが表示されま�
 
 テスト プロジェクト リポジトリをフォークしたら、次の手順でデプロイ スロットを構成します。
 
-1. Azure Portal のメイン メニューで、**[リソース グループ]** を選択します。
+1. Azure Portal のメイン メニューで、 **[リソース グループ]** を選択します。
 
 1. **[slotDemoResourceGroup]** を選択します。
 
@@ -181,11 +181,11 @@ Terraform によって作成されたすべてのリソースが表示されま�
 
     ![App Service リソースのデプロイ オプション](./media/terraform-slot-walkthru/deployment-options.png)
 
-1. **[デプロイ オプション]** タブで **[ソースの選択]** を選択し、**[GitHub]** を選択します。
+1. **[デプロイ オプション]** タブで **[ソースの選択]** を選択し、 **[GitHub]** を選択します。
 
     ![デプロイ ソースを選択する](./media/terraform-slot-walkthru/select-source.png)
 
-1. Azure が接続し、すべてのオプションが表示されたら、**[承認]** を選択します。
+1. Azure が接続し、すべてのオプションが表示されたら、 **[承認]** を選択します。
 
 1. **[承認]** タブで **[承認]** を選択し、Azure から GitHub アカウントにアクセスするために必要な資格情報を入力します。 
 
@@ -221,7 +221,7 @@ Terraform によって作成されたすべてのリソースが表示されま�
 
 次の手順を 2 回実行します。 手順 3 では 1 回目に **slotAppService** を選択し、2 回目に **slotAppServiceSlotOne** を選択します。
 
-1. Azure Portal のメイン メニューで、**[リソース グループ]** を選択します。
+1. Azure Portal のメイン メニューで、 **[リソース グループ]** を選択します。
 
 1. **[slotDemoResourceGroup]** を選択します。
 
@@ -266,7 +266,7 @@ Terraform によって作成されたすべてのリソースが表示されま�
 
 1. 以下のコードをエディターに貼り付けます。
 
-    ```JSON
+    ```hcl
     # Configure the Azure provider
     provider "azurerm" { }
 

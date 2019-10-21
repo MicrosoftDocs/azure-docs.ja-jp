@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 02ddaf4878367524291ce54a4e12fc9b4fee4cd2
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f89d7935af10ebb477125c598a01278a4ceef0bd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490283"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326939"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 
@@ -28,10 +28,10 @@ Enterprise Agreement による Azure カスタマーは、組織のクレジッ�
 
 このセクションは、オーストラリア、日本、またはシンガポールの Azure のお客様には適用されません。 これらの国や地域のお客様は、「[その他のお客様の請求書](#invoices-for-other-customers)」をご覧ください。
 
-請求サイクル中に、次のいずれかが発生すると、Azure の請求書が発行されます。
+請求サイクル中に、次のいずれかのイベントが発生すると、Azure の請求書が発行されます。
 
 - **サービスの超過**:組織の利用料金がクレジットの残高を超過した場合。
-- **個別請求の料金**:組織が使用したサービスにクレジットが対応していない場合。 以下のサービスについては、クレジットの残高に関わらず請求書が発行されます。
+- **個別請求の料金**:組織が使用したサービスにクレジットが対応していない場合。 以下のサービスについては、クレジットの残高にかかわらず請求書が発行されます。
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop
@@ -66,10 +66,10 @@ Enterprise Portal の **[レポート]**  >  **[使用状況の要約]** に表�
 
 このセクションは、オーストラリア、日本、またはシンガポールの Azure のお客様にのみ適用されます。
 
-お客様は、以下の状況で 1 枚以上の請求書を受け取ります。
+お客様は、以下の状況に 1 つでも該当すると、1 枚以上の請求書を受け取ります。
 
 - **サービスの超過**:組織の利用料金がクレジットの残高を超過した場合。
-- **個別請求の料金**:組織が使用したサービスにクレジットが対応していない場合。 以下のサービスについては、クレジットの残高に関わらず請求書が発行されます。
+- **個別請求の料金**:組織が使用したサービスにクレジットが対応していない場合。 以下のサービスについて請求書が発行されます。
     - Canonical
     - Citrix XenApp Essentials
     - Citrix XenDesktop

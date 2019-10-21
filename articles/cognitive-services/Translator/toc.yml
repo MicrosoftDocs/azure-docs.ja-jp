@@ -98,8 +98,6 @@
           href: 'https://aka.ms/TranslatorGitHub'
         - name: FAQ
           href: 'https://www.microsoft.com/translator/faq.aspx'
-        - name: ナレッジ ベース
-          href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
         - name: 言語とリージョンのサポート
           href: language-support.md
         - name: 価格
@@ -112,8 +110,6 @@
           href: request-limits.md
         - name: スタック オーバーフロー
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-        - name: UserVoice
-          href: 'https://cognitive.uservoice.com/forums/558796-translator'
 - name: Custom Translator
   items:
     - name: 概要
@@ -178,5 +174,3 @@
           href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
         - name: スタック オーバーフロー
           href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-        - name: UserVoice
-          href: 'https://cognitive.uservoice.com/knowledgebase/articles/1855897-custom-translator-preview-resource-guide'

@@ -6,15 +6,15 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: 3c81ec5e213364ed6f159fd20e12879a098caad4
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 289f98fdc2f39449cdeede9ee46fb39847ae2cb5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774989"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029270"
 ---
 # <a name="mapping-data-flow-select-transformation"></a>マッピング データ フローの選択変換
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 この変換は、列を選択する (行数を減らす) ため、列とストリームの名前をエイリアス化するため、および列の並べ替えを行うために使用します。
 

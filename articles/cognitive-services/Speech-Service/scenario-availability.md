@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: cbasoglu
-ms.openlocfilehash: 94fd415909e86a43916ee2f510732a6a6d9c5ed3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: af5bb7126af65a755cb1d58788d39cb8bdcbbb3b
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552949"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959021"
 ---
 # <a name="scenario-availability"></a>シナリオの利用可否
 
@@ -26,6 +26,10 @@ Speech service SDK には、さまざまなプログラミング言語と環境�
 - **テキスト読み上げ (TTS)**
   - C++/Windows および Linux
   - C#/Windows および UWP および Unity
+  - Java (Jre および Android)
+  - Python
+  - Swift
+  - Objective-C
   - TTS REST API は他のすべての状況で使用できます。
 - **ウェイク ワード (Keyword Spotter/KWS)**
   - C++/Windows および Linux
@@ -46,4 +50,4 @@ Speech service SDK には、さまざまなプログラミング言語と環境�
 - **コーデック圧縮オーディオ入力**
   - C++/Linux
   - C#/Linux
-  - Java/Linux および Android
+  - Java/Linux、Android、および iOS

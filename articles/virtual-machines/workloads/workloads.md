@@ -12,14 +12,14 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.date: 06/06/2019
+ms.date: 09/20/2019
 ms.author: cynthn
-ms.openlocfilehash: 4593859c441073115fddc3a67dc4ce99fdd6124a
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 11d503e7dd15f148208da65d551f9c6ae71a7e7f
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795069"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265567"
 ---
 # <a name="workloads-on-azure-virtual-machines"></a>Azure Virtual Machines 上のワークロード
 
@@ -34,4 +34,4 @@ Azure Virtual Machines では、多くのワークロードをサポートでき
 
 **次のステップ**
 
-[Linux](../linux/quick-create-cli-nodejs.md) と [Windows](../windows/quick-create-powershell.md) の Azure VM クイック スタート ガイドを利用して Azure VM を習得します。
+[Linux](../linux/quick-create-cli.md) と [Windows](../windows/quick-create-powershell.md) の Azure VM クイック スタート ガイドを利用して Azure VM を習得します。

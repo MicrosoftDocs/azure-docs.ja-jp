@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 88664238fa7cf21381ad6f95e77e02ad89103556
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 67cd7f82597d306c8bf3c463d11457199aec7277
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850845"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815741"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -816,7 +816,7 @@ Async 関数のコードを書く方法については、[Azure Functions](../az
 
 Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各インスタンスで実行され、トリガーをリッスンして関数の呼び出しを行います。 各種のトリガー バインドは、インスタンス間で協調して作業を効率的に共有するよう設計されているので、より多くのインスタンスにスケール アウトすると、より多くの負荷を処理することができます。
 
-キューと BLOB トリガーは、関数がキュー メッセージや BLOB を 1 回を超えて処理することを自動的に防止します。関数は冪等である必要はありません。
+一部のトリガーで二重の処理が発生する可能性がありますが、キューと BLOB ストレージ トリガーでは、関数がキュー メッセージや BLOB を 2 回以上処理することが自動的に防止されます。 詳細については、Azure Functions ドキュメントの[同一入力のための設計](../azure-functions/functions-idempotent.md)に関する記事を参照してください。
 
 タイマー トリガーは、指定された時刻に常に 1 つを超える関数のインスタンスが実行しないように、自動的に タイマーの1 つのインスタンスのみが実行するようにします。
 

@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: yijenj
 ms.service: marketplace
 ms.topic: article
-ms.date: 11/17/2018
+ms.date: 9/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 98d33dd1aad726d4da8499006166dfd2c043378f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: c077b93b887482dda5ae127bb3dbaec71b2ea11b
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977148"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260081"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -166,43 +166,28 @@ SKU など、さらに細かな粒度で GUID を追跡することもできま�
 
 顧客の使用状況の属性を有効にするには、GUID を登録する必要があります。
 
-テンプレート GUID の登録はすべて、Azure Marketplace Cloud パートナー ポータル (CPP) を経由して行われます。
+テンプレート GUID の登録はすべて、パートナー センター内で行われます。
 
-テンプレートまたはユーザー エージェントに GUID を追加し、CPP に GUID を登録すると、すべてのデプロイが追跡されます。
+テンプレートまたはユーザー エージェントに GUID を追加し、パートナー センターに GUID を登録すると、すべてのデプロイが追跡されます。
 
-1. [Azure Marketplace](https://aka.ms/listonazuremarketplace) に申し込んで、CPP へのアクセス権を取得します。
+1. [商業マーケットプレース パブリッシャー](https://aka.ms/JoinMarketplace)としてサインアップします。
 
-   * パートナーは、[CPP にプロファイルを有している](https://docs.microsoft.com/azure/marketplace/become-publisher)ことが必要です。 Azure Marketplace または AppSource にプランを登録することをお勧めします。
+   * パートナーは、[パートナー センターにプロファイルを持っている](https://docs.microsoft.com/azure/marketplace/become-publisher)必要があります。 Azure Marketplace または AppSource にプランを登録することをお勧めします。
    * パートナーは複数の GUID を登録できます。
    * パートナーは、Marketplace 以外のソリューション テンプレートやプランについて、GUID を登録することができます。
 
-1. [クラウド パートナー ポータル](https://cloudpartner.azure.com/)にサインインします。
+1. [パートナー センター](https://partner.microsoft.com/dashboard)にサインインします。
 
-1. 右上隅に表示されるご自身のアカウント アイコンを選択し、 **[Publisher profile]\(発行プロファイル\)** を選択します。
+1. 右上にある設定の歯車アイコンを選択し、 **[開発者向け設定]** を選択します。
 
-   ![発行プロファイルの選択](media/marketplace-publishers-guide/guid-image-for-lu.png)
+1. **[アカウント設定]** ページで、 **[Add Tracking GUID]\(追跡用 GUID の追加\)** を選択します。
 
-1. **[プロファイル]** ページで、 **[Add Tracking GUID]\(トラッキング GUID の追加\)** を選択します。
-
-   ![[Add Tracking GUID]\(トラッキング GUID の追加\) を選択](media/marketplace-publishers-guide/guid-how-to-add-tracking.png)
-
-1. **[Tracking GUID]\(トラッキング GUID\)** ボックスに追跡用の GUID を入力します。 **pid-** プレフィックスは付けずに GUID だけを入力してください。 **[Custom Description]\(カスタムの説明\)** ボックスに、プランの名前または説明を入力します。
-
-   ![プロファイル ページ](media/marketplace-publishers-guide/guid-dev-center-login.png)
-
-   ![GUID とプランの説明を入力](media/marketplace-publishers-guide/guid-dev-center-example.png)
+1. **[GUID]** ボックスに、追跡用 GUID を入力します。 **pid-** プレフィックスは付けずに GUID だけを入力してください。 **[説明]** ボックスに、プランの名前または説明を入力します。
 
 1. 複数の GUID を登録するには、もう一度 **[Add Tracking GUID]\(トラッキング GUID の追加\)** を選択します。 追加のボックスがページに表示されます。
 
-   ![[Add Tracking GUID]\(トラッキング GUID の追加\) を再度選択](media/marketplace-publishers-guide/guid-dev-center-example-add.png)
-
-   ![別の GUID とプランの説明を入力](media/marketplace-publishers-guide/guid-dev-center-example-description.png)
-
 1. **[保存]** を選択します。
 
-   ![[保存] の選択](media/marketplace-publishers-guide/guid-dev-center-save.png)
-
-テンプレートまたはユーザー エージェントに GUID を追加し、CPP に GUID を登録すると、すべてのデプロイが追跡されます。
 
 ## <a name="verify-the-guid-deployment"></a>GUID のデプロイを確認する
 
@@ -247,7 +232,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>レポート
 
-顧客の使用状況の属性のレポートは、パートナー センター分析ダッシュ ボードで確認できます。 ([https://partner.microsoft.com/en-us/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure))。 レポートを表示するには、パートナー センターの資格情報を使用してサインインする必要があります。 レポートまたはサインインに関する問題が発生した場合は、「サポートを受ける」セクションの指示に従ってサポート リクエストを作成します。
+顧客の使用状況の属性のレポートは、パートナー センター分析ダッシュ ボードで確認できます。 ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure))。 レポートを表示するには、パートナー センターの資格情報を使用してサインインする必要があります。 レポートまたはサインインに関する問題が発生した場合は、「サポートを受ける」セクションの指示に従ってサポート リクエストを作成します。
 
 [Partner Association Type]\(パートナー関連付けタイプ\) のドロップダウン リストで追跡対象のテンプレートを選択すると、レポートが表示されます。
 
@@ -269,7 +254,7 @@ foreach ($deployment in $deployments){
 
 発生した問題に応じて 2 つのサポート チャネルがあります。
 
-パートナー センターの問題 (顧客の利用状況属性レポートの表示やサインインなど) が発生した場合は、[https://partner.microsoft.com/en-US/support](https://partner.microsoft.com/support) でパートナー センター サポート チームにサポート要求を作成します。
+パートナー センターの問題 (顧客の利用状況属性レポートの表示やサインインなど) が発生した場合は、[https://partner.microsoft.com/support](https://partner.microsoft.com/support) でパートナー センター サポート チームにサポート要求を作成します。
 
 ![](./media/marketplace-publishers-guide/partner-center-log-in-support.png)
 

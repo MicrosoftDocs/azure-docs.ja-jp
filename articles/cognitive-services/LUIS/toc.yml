@@ -19,6 +19,8 @@
         - name: 2. アプリのデプロイ
           href: get-started-portal-deploy-app.md
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
+    - name: ブラウザーの使用
+      href: luis-get-started-get-intent-from-browser.md
     - name: .NET SDK の使用
       items:
         - name: アプリの作成と管理
@@ -32,17 +34,7 @@
     - name: REST API の使用
       items:
         - name: 意図の取得
-          items:
-            - name: 'C#'
-              href: luis-get-started-cs-get-intent.md
-            - name: Go
-              href: luis-get-started-go-get-intent.md
-            - name: Java
-              href: luis-get-started-java-get-intent.md
-            - name: Node.js
-              href: luis-get-started-node-get-intent.md
-            - name: Python
-              href: luis-get-started-python-get-intent.md
+          href: luis-get-started-get-intent-from-rest.md
         - name: モデルの変更
           items:
             - name: 'C#'
@@ -109,10 +101,6 @@
             - name: 2. Application Insights へのテレメトリの追加
               displayName: 'Application insight, kusto'
               href: luis-tutorial-bot-nodejs-appinsights.md
-- name: サンプル
-  items:
-    - name: コード サンプル
-      href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
 - name: 概念
   items:
     - name: ベスト プラクティス
@@ -403,8 +391,6 @@
   items:
     - name: Azure Bot Service
       href: 'https://dev.botframework.com/'
-    - name: 'Bot Builder 3.x SDK C#'
-      href: 'https://github.com/Microsoft/BotBuilder'
     - name: 'Bot Builder 4.x SDK C#'
       href: 'https://github.com/Microsoft/botbuilder-dotnet'
     - name: QnA Maker
@@ -421,6 +407,8 @@
       href: 'https://github.com/Microsoft/Cognitive-Samples-IntelligentKiosk'
 - name: リソース
   items:
+    - name: コード サンプル
+      href: 'https://github.com/Azure-Samples/cognitive-services-language-understanding'
     - name: リージョン別の提供状況
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
     - name: 言語とリージョンのサポート

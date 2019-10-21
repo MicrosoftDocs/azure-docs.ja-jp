@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 788fee724f381ab317b97a682aa21d17ec1ffa9d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c4daa5989013ba8d5c5a7136fe0878fae64f0357
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70137310"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72030565"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください。"]
@@ -75,7 +75,7 @@ typeProperties | 型のプロパティは型によって異なります (たと�
 
 ### <a name="data-flow-compatible-dataset"></a>Data Flow の互換性のあるデータセット
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 [データ フロー](concepts-data-flow-overview.md)が互換性のあるデータセット型のリストについて、「[サポートされているデータセットの型](#dataset-type)」を参照してください。 データ フローの互換性があるデータセットでは、変換にあたり詳細なデータセットの定義が必要です。 そのため、JSON 定義は若干異なります。 _構造体_プロパティの代わりに、データ フローと互換性のあるデータセットには_スキーマ_プロパティがあります。
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 7/9/2019
+ms.date: 10/02/2019
 ms.author: b-juche
-ms.openlocfilehash: 3cd60f390f0233e2923660fc39675b5a307d8d8f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: bd00c04ecfc211ae4ed410e886c0fe6553bea241
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515419"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827506"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Azure NetApp Files の SMB ボリュームを作成する
 
@@ -68,7 +68,11 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
 
     サポートされるネットワーク トポロジについては、「[Azure NetApp Files のネットワーク計画のガイドライン](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies)」を参照してください。
 
-    ネットワーク セキュリティ グループ (NSG) とファイアウォールに、Active Directory と DNS トラフィック要求を許可するように適切に構成された規則が必要です。
+    ネットワーク セキュリティ グループ (NSG) とファイアウォールに、Active Directory と DNS トラフィック要求を許可するように適切に構成された規則が必要です。 
+
+* Azure NetApp Files の委任されたサブネットは、すべてのローカルおよびリモート ドメイン コントローラーを含め、ドメイン内のすべての Active Directory Domain Services (ADDS) ドメイン コントローラーに接続できる必要があります。 そうでない場合、サービスの中断が発生する可能性があります。  
+
+    Azure NetApp Files の委任されたサブネット経由で到達できないドメイン コントローラーがある場合は、Azure サポート リクエストを送信して、その範囲を**グローバル** (既定) から**サイト**に変更することができます。  Azure NetApp Files は、Azure NetApp Files の委任されたサブネットのアドレス空間が存在するサイト内のドメイン コントローラーとのみ通信する必要があります。
 
     AD サイトとサービスに関する「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」を参照してください。 
 
@@ -95,6 +99,9 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
 
     * **組織単位名**  
         これは、SMB サーバー コンピューター アカウントが作成される組織単位 (OU) の LDAP パスです。 つまり、OU=second level, OU=first level です。 
+
+        Azure Active Directory Domain Services と組み合わせて Azure NetApp Files を使用している場合、NetApp アカウント用に Active Directory を構成する際の組織単位のパスは `OU=AADDC Computers` になります。
+        
     * **ユーザー名**や**パスワード**などの資格情報
 
     ![Active Directory に参加する](../media/azure-netapp-files/azure-netapp-files-join-active-directory.png)
@@ -118,7 +125,9 @@ Azure NetApp Files は NFS ボリュームと SMBv3 ボリュームをサポー�
     * **ボリューム名**      
         作成するボリュームの名前を指定します。   
 
-        ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 任意の英数字を使用できます。
+        ボリューム名は、各容量プール内で一意である必要があります。 3 文字以上になるようにしてください。 任意の英数字を使用できます。   
+
+        ボリューム名として `default` を使用することはできません。
 
     * **容量プール**  
         ボリュームを作成する容量プールを指定します。

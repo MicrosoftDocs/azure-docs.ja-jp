@@ -3,9 +3,8 @@ title: Azure Security Center 上で SQL 情報保護ポリシーをカスタマ�
 description: Azure Security Center 上で情報保護ポリシーをカスタマイズする方法について説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 2ebf2bc7-232a-45c4-a06a-b3d32aaf2500
 ms.service: security-center
 ms.devlang: na
@@ -13,19 +12,19 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
-ms.author: rkarlin
-ms.openlocfilehash: e2bcd92ffc8799b2edf04251b6ce160e96c7609c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: memildin
+ms.openlocfilehash: edd415c330656d4cecc42a39d27598a88a1a8d2c
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64875599"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202095"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Azure Security Center 上で SQL 情報保護ポリシーをカスタマイズする (プレビュー)
  
 Azure Security Center 上で、Azure テナント全体に対する SQL 情報保護ポリシーを定義およびカスタマイズできます。
 
-Information Protection は、Azure データ リソース内の機密データを検出、分類、ラベル付け、保護するための高度なセキュリティ機能です。 最も機微なデータの検出と分類 (ビジネス/金融、医療、PII など) は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
+Information Protection は、Azure データ リソース内の機密データを検出、分類、ラベル付け、保護するための高度なセキュリティ機能です。 最も機微なデータ (ビジネス、財務、医療、個人データなど) の検出と分類は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
 - データのプライバシー基準および規制のコンプライアンス要件を満たす支援
 - さまざまなセキュリティ シナリオ (機密データに対する異常なアクセスの監視 (監査) とアラートなど)
 - 非常に機密性の高いデータを含むデータ ストアへのアクセスの制御と、セキュリティの強化

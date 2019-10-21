@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel プレビューの概要 | Microsoft Docs
+title: Azure Sentinel とは | Microsoft Docs
 description: Azure Sentinel の主な機能とそのしくみについて説明します。
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/24/2019
 ms.author: rkarlin
-ms.openlocfilehash: 15cf770a372c9a1386dd0293abeac01fd3cacf63
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 964ba16fb7421c58f43d8b7d0d0d96f5cd377579
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779745"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261877"
 ---
-# <a name="what-is-azure-sentinel-preview"></a>Azure Sentinel プレビューの概要
-
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+# <a name="what-is-azure-sentinel"></a>Azure Sentinel とは
 
 Microsoft Azure Sentinel は、スケーラブルでクラウドネイティブ型の**セキュリティ情報イベント管理 (SIEM)** および**セキュリティ オーケストレーション自動応答 (SOAR)** ソリューションです。 Azure Sentinel は、高度なセキュリティ分析と脅威インテリジェンスを企業全体で実現し、アラートの検出、脅威の可視性、予防的な捜索、および脅威への対応のための 1 つのソリューションを提供します。 
 
@@ -53,25 +49,17 @@ Azure Sentinel をオンボードするには、まず[セキュリティ ソー
 
 ![データ コレクター](./media/collect-data/collect-data-page.png)
 
-## <a name="dashboards"></a>ダッシュボード
+## <a name="workbooks"></a>Workbooks
 
-データ ソースを接続した後、[優れた設計のダッシュボード](quickstart-get-visibility.md#dashboards)のギャラリーから選択し、データ ソースの分析情報を表示することができます。 各ダッシュボードは完全にカスタマイズ可能です。独自のロジックを追加する、クエリを変更する、または一からダッシュボードを作成することができます。
+Azure Sentinel に [データソースを接続](quickstart-onboard.md) した後、Azure Sentinel と Azure Monitor ブックの統合を使用してデータを監視できます。これにより、多用途のカスタム ブックを作成できます。 ブックの表示は Azure Sentinel では異なりますが、[Azure Monitor ブックを使用して対話型レポートを作成する](../azure-monitor/app/usage-workbooks.md)方法を確認すると役立つ場合があります。 Azure Sentinel を使用すると、データ全体に対してカスタム ブックを作成できます。また、用意されている組み込みのブック テンプレートを使用してデータ ソースに接続すると、すぐにデータ全体の分析情報をすばやく得ることもできます。
 
-ダッシュボードには、高度な分析を使用して対話型の視覚的な情報が表示されるので、セキュリティ アナリストは攻撃中に状況をより深く理解できます。 調査ツールを使用すると、任意のデータから任意の分野について深く掘り下げて脅威の状況を迅速に把握できます。 
-
-![ダッシュボード](./media/overview/dashboards.png)
+![ダッシュボード](./media/tutorial-monitor-data/access-workbooks.png)
 
 ## <a name="analytics"></a>Analytics
 
-ノイズを減らし、確認および調査する必要があるアラートの数を最小限に抑えるために、Azure Sentinel は[分析を使用してアラートをインシデントに関連付けます](tutorial-detect-threats.md)。 **インシデント**は、調査して解決できる対応可能な脅威をまとめた、関連するアラートのグループです。 組み込みの相関関係ルールをそのまま使用するか、独自のルールを作成する際の出発点として使用します。 Azure Sentinel には、ネットワークの動作をマップし、リソース全体の異常を探すための機械学習ルールも用意されています。 これらの分析では、さまざまなエンティティに関する信頼度の低いアラートを組み合わせて信頼度の高いセキュリティ インシデントにすることで、点を結び付けます。
+ノイズを減らし、確認および調査する必要があるアラートの数を最小限に抑えるために、Azure Sentinel は[分析を使用してアラートをインシデントに関連付けます](tutorial-detect-threats-built-in.md)。 **インシデント**は、調査して解決できる対応可能な脅威をまとめた、関連するアラートのグループです。 組み込みの相関関係ルールをそのまま使用するか、独自のルールを作成する際の出発点として使用します。 Azure Sentinel には、ネットワークの動作をマップし、リソース全体の異常を探すための機械学習ルールも用意されています。 これらの分析では、さまざまなエンティティに関する信頼度の低いアラートを組み合わせて信頼度の高いセキュリティ インシデントにすることで、点を結び付けます。
 
-![ケース](./media/overview/cases.png)
-
-## <a name="user-analytics"></a>ユーザー分析
-
-Azure Sentinel は、機械学習 (ML) と[ユーザー分析](user-analytics.md)のネイティブ統合により、脅威を迅速に検出することができます。 Azure Sentinel は Azure Advanced Threat Protection とシームレスに統合され、アラート、および Azure Sentinel と Microsoft 365 全体の疑わしいアクティビティ パターンに基づいて、ユーザーの行動を分析し、最初に調査すべきユーザーに優先順位を付けます。
-
-![ユーザー分析](./media/overview/user-analytics.png)
+![インシデント](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>セキュリティのオートメーションとオーケストレーション
@@ -83,23 +71,22 @@ Azure Sentinel は、機械学習 (ML) と[ユーザー分析](user-analytics.md
 ![プレイブック](./media/tutorial-respond-threats-playbook/logic-app.png)
 
 
-
 ## <a name="investigation"></a>調査
 
-Azure Sentinel の[詳細調査](tutorial-investigate-cases.md)ツールは、潜在的なセキュリティの脅威の範囲を把握し、根本的な原因を見つけるために役立ちます。 対話型グラフ上のエンティティを選択し、特定のエンティティについて興味がある質問をして、そのエンティティとその関連性を掘り下げて脅威の根本的な原因を突き止めることができます。 
+現在プレビュー段階にある Azure Sentinel の[詳細調査](tutorial-investigate-cases.md)ツールを使用して、潜在的なセキュリティの脅威の範囲を把握し、根本的な原因を見つけるために役立てることができます。 対話型グラフ上のエンティティを選択し、特定のエンティティについて興味がある質問をして、そのエンティティとその関連性を掘り下げて脅威の根本的な原因を突き止めることができます。 
 
-![調査](./media/overview/investigation.png)
+![調査](./media/tutorial-investigate-cases/map-timeline.png)
 
 
 ## <a name="hunting"></a>検出
 
-MITER フレームワークに基づく Azure Sentinel の[強力な捜索検索およびクエリ ツール](hunting.md)を使用すると、アラートがトリガーされる前に、組織のデータ ソース全体でセキュリティの脅威を予防的に捜索することができます。 攻撃の可能性について重要な分析情報を提供する捜索クエリがわかったら、クエリに基づいてカスタム検出ルールを作成し、セキュリティ インシデントの対応者へのアラートとしてそのような分析情報を表示することができます。 捜索中に興味深いイベントのブックマークを作成し、後で戻って他のユーザーと共有し、他の関連イベントとグループ化して、説得力のある調査のケースを作成することができます。
+MITER フレームワークに基づく Azure Sentinel の[強力な捜索検索およびクエリ ツール](hunting.md)を使用すると、アラートがトリガーされる前に、組織のデータ ソース全体でセキュリティの脅威を予防的に捜索することができます。 攻撃の可能性について重要な分析情報を提供する捜索クエリがわかったら、クエリに基づいてカスタム検出ルールを作成し、セキュリティ インシデントの対応者へのアラートとしてそのような分析情報を表示することができます。 捜索中に興味深いイベントのブックマークを作成し、後で戻って他のユーザーと共有し、他の関連イベントとグループ化して、説得力のある調査のインシデントを作成することができます。
 
 ![検出](./media/overview/hunting.png)
 
 ## <a name="community"></a>コミュニティ
 
-Azure Sentinel コミュニティは、脅威の検出とオートメーションのための強力なリソースです。 Microsoft のセキュリティ アナリストは、新しいダッシュボード、プレイブック、捜索のクエリなどを常に作成して追加し、お客様の環境で使用できるようにそれらをコミュニティに投稿しています。 プライベート コミュニティの GitHub [リポジトリ](https://aka.ms/asicommunity)からサンプル コンテンツをダウンロードして、Azure Sentinel 用のカスタム ダッシュボード、捜索クエリ、ノートブック、プレイブックを作成できます。 
+Azure Sentinel コミュニティは、脅威の検出とオートメーションのための強力なリソースです。 Microsoft のセキュリティ アナリストは、新しいブック、プレイブック、捜索クエリなどを常に作成して追加し、お客様の環境で使用できるようにそれらをコミュニティに投稿しています。 プライベート コミュニティの GitHub [リポジトリ](https://aka.ms/asicommunity)からサンプル コンテンツをダウンロードして、Azure Sentinel 用のカスタム ブック、捜索クエリ、ノートブック、プレイブックを作成できます。 
 
 ![コミュニティ](./media/overview/community.png)
 

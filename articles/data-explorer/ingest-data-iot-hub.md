@@ -7,14 +7,19 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: cbe9aa2ea664d97df6008de05d6cb84da9771bcc
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70166444"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028476"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>IoT Hub から Azure Data Explorer にデータを取り込む (プレビュー)
+
+> [!div class="op_single_selector"]
+> * [ポータル](ingest-data-iot-hub.md)
+> * [C#](data-connection-iot-hub-csharp.md)
+> * [Python](data-connection-iot-hub-python.md)
 
 Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Azure Data Explorer では、IoT Hub からの取り込み (データの読み込み) が可能で、ビッグ データのストリーミング プラットフォーム、IoT の取り込みサービスがあります。
 
@@ -80,8 +85,7 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
     | IoT Hub | IoT Hub 名 |
     | 共有アクセス ポリシー | 共有アクセス ポリシーの名前。 読み取りアクセス許可が必要 |
     | コンシューマー グループ |  IoT Hub の組み込みのエンドポイントに定義されているコンシューマー グループ |
-    | イベント システム プロパティ | IoT Hub イベントのシステム プロパティ |
-    | | 
+    | イベント システム プロパティ | [IoT Hub イベントのシステム プロパティ](/azure/iot-hub/iot-hub-devguide-messages-construct#system-properties-of-d2c-iot-hub-messages)。 システム プロパティを追加する場合は、テーブル スキーマと[マッピング](/azure/kusto/management/mappings)を[作成](/azure/kusto/management/tables#create-table)または[更新](/azure/kusto/management/tables#alter-table-and-alter-merge-table)して、選択したプロパティを含めます。 | | | 
 
     > [!NOTE]
     > [手動フェールオーバー](/azure/iot-hub/iot-hub-ha-dr#manual-failover)が発生した場合は、データ接続を再作成する必要があります。
@@ -94,12 +98,13 @@ Azure Data Explorer は、ログと利用統計情報データのための高速
      **設定** | **推奨値** | **フィールドの説明**
     |---|---|---|
     | テーブル | *TestTable* | **testdb** に作成したテーブル。 |
-    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOH、SCSV、TSV、および TXT です。 |
-    | 列マッピング | *TestMapping* | **testdb** に作成したマッピング。受信 JSON データを **testdb** の列名とデータ型にマッピングします。 JSON、MULTILINE JSON、AVRO では必須。その他の形式では省略可能。|
+    | データ形式 | *JSON* | サポートされている形式は、Avro、CSV、JSON、MULTILINE JSON、PSV、SOHSV、SCSV、TSV、TSVE、TXT です。 |
+    | 列マッピング | *TestMapping* | **testdb** に作成した[マッピング](/azure/kusto/management/mappings)。これにより、受信 JSON データを **testdb** の列名とデータ型にマッピングします。 JSON、MULTILINE JSON、AVRO では必須。その他の形式では省略可能。|
     | | |
 
-    > [!TIP]
-    > 動的ルーティングを使用するには、 **[My data includes routing info]\(データにルーティング情報が含まれている\)** を選択します。この場合、[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)のコメントに示されているように、データに必要なルーティング情報が含まれています。 静的プロパティと動的プロパティの両方が設定されている場合、静的プロパティは動的プロパティによってオーバーライドされます。 
+    > [!NOTE]
+    > * 動的ルーティングを使用するには、 **[My data includes routing info]\(データにルーティング情報が含まれている\)** を選択します。この場合、[サンプル アプリ](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)のコメントに示されているように、データに必要なルーティング情報が含まれています。 静的プロパティと動的プロパティの両方が設定されている場合、静的プロパティは動的プロパティによってオーバーライドされます。 
+    > * データ接続の作成後にエンキューされたイベントのみが取り込まれたます。
 
 ## <a name="generate-sample-data-for-testing"></a>テスト用のサンプル データを生成する
 

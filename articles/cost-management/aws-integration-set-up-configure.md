@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 9664beca514abcbad4eca7c8f9dc1b494018802e
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: deb13b833707849bcbce8bcae7b05aeb5e0bce3b
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535191"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338876"
 ---
 # <a name="set-up-and-configure-aws-cost-and-usage-report-integration"></a>AWS のコストと使用状況レポートの統合を設定して構成する
 
@@ -172,7 +172,7 @@ AWS コネクタを作成し、AWS コストの監視を開始するには、次
 
 ## <a name="take-additional-steps"></a>追加の手順を実行する
 
-- まだ設定していない場合は、[管理グループを設定](../governance/management-groups/index.md#initial-setup-of-management-groups)します。
+- まだ設定していない場合は、[管理グループを設定](../governance/management-groups/overview.md#initial-setup-of-management-groups)します。
 - スコープ ピッカーに新しいスコープが追加されたことを確認します。 **[更新]** を選択して最新のデータを表示します。
 - **[クラウド コネクタ]** ページで、コネクタを選択し、 **[請求先アカウントに移動する]** を選択して、管理グループにリンクされたアカウントを割り当てます。
 
@@ -189,7 +189,7 @@ AWS コネクタを作成し、AWS コストの監視を開始するには、次
 
 ## <a name="set-up-azure-management-groups"></a>Azure 管理グループを設定する
 
-クラウド間のプロバイダーの情報を表示する単一の場所を作成するには、Azure サブスクリプションと AWS のリンクされたアカウントを同じ管理グループに配置します。 Azure 環境を管理グループでまだ構成していない場合は、「[管理グループの初期セットアップ](../governance/management-groups/index.md#initial-setup-of-management-groups)」を参照してください。
+クラウド間のプロバイダーの情報を表示する単一の場所を作成するには、Azure サブスクリプションと AWS のリンクされたアカウントを同じ管理グループに配置します。 Azure 環境を管理グループでまだ構成していない場合は、「[管理グループの初期セットアップ](../governance/management-groups/overview.md#initial-setup-of-management-groups)」を参照してください。
 
 コストを分ける場合は、AWS のリンクされたアカウントのみを保持する管理グループを作成できます。
 

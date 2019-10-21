@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
-ms.date: 07/29/2019
+ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 998471d99a785eeff39ef7c99e60e1d9b49e0d7a
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e680652d490d75701780e2e3618a43451bfe2819
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725827"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71845100"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>チュートリアル:Azure Time Series Insights プレビューの環境を設定する
 
@@ -149,7 +149,7 @@ Time Series Insights 環境をデプロイできたので、分析のために�
     | **Name** | シミュレーターの一意名を入力します。 |
     | **説明** | 定義を入力します。 |
     | **[Simulation duration]\(シミュレーション期間\)** | **[Run indefinitely]\(無期限に実行する\)** に設定します。 |
-    | **[デバイス モデル]** | **[名前]** :「**Chiller**」と入力します。 <br />**[Amount]\(量\)** :「**3**」と入力します。 |
+    | **[デバイス モデル]** | **Name**:「**Chiller**」と入力します。 <br />**[Amount]\(量\)** :「**3**」と入力します。 |
     | **[Target IoT Hub]\(IoT Hub をターゲットにする\)** | **[Use pre-provisioned IoT Hub]\(事前プロビジョニングされている IoT Hub を使用する\)** に設定します。 |
 
     [![設定するパラメーター](media/v2-update-provision/device-five-params.png)](media/v2-update-provision/device-five-params.png#lightbox)

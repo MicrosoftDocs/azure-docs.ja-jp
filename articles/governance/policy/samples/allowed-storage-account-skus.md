@@ -2,17 +2,16 @@
 title: サンプル - 許可されるストレージ アカウントの SKU
 description: このサンプル ポリシー定義は、適切な SKU の使用をストレージ アカウントに要求します。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 6ad2b11d02174afa2092ade75686c17c10ab26ff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b1da45176384474ed7ff138d2bdca8de3d336beb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271460"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977680"
 ---
 # <a name="sample---allowed-storage-account-skus"></a>サンプル - 許可されるストレージ アカウントの SKU
 

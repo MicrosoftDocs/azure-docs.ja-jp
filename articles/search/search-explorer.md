@@ -1,33 +1,30 @@
 ---
-title: Azure portal でデータを問い合わせるための Search エクスプローラー ツール - Azure Search
-description: Azure Search で Search エクスプローラーなどの Azure portal ツールを使用して、インデックスのクエリを実行します。 検索用語や、高度な構文を含む完全修飾の検索文字列を入力します。
+title: Search エクスプローラー ツールを使用して Azure portal でデータのクエリを実行する - Azure Search
+description: Search エクスプローラーは Azure portal に組み込まれており、Azure Search でコンテンツを探索したり、クエリを検証したりする場合に便利です。 用語検索または語句検索の文字列、または高度な構文を使用した完全修飾検索式を入力します。
 manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/02/2019
+ms.date: 09/20/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e941e487adaac38c4ec3bd61a58b4b0c61f4c80a
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: fe66787ea82a8f97470199e99faadb72b85c83b2
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649966"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178138"
 ---
-# <a name="search-explorer-for-querying-data-in-azure-search"></a>Azure Search でデータを問い合わせるための Search エクスプローラー 
+# <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-search"></a>Azure portal の Search エクスプローラーを使用して Azure Search でドキュメントのクエリを実行する 
 
-この記事では、Azure Portal で **Search エクスプローラー**を使用して、既存の Azure Search インデックスのクエリを実行する方法について説明します。 Search エクスプローラーを使用すると、サービス内の既存のインデックスに対して単純または完全な Lucene クエリ文字列を送信できます。 
+この記事では、Azure Portal で **Search エクスプローラー**を使用して、既存の Azure Search インデックスのクエリを実行する方法について説明します。 コマンド バーから Search エクスプローラーを起動すると、サービス内の既存のインデックスに対して単純または完全な Lucene クエリ式を送信できます。 
 
    ![ポータルの [Search エクスプローラー] コマンド](./media/search-explorer/search-explorer-cmd2.png "ポータルの [Search エクスプローラー] コマンド")
 
-
-作業を開始する際にガイドが必要な場合は、「[Search エクスプローラーの起動方法](#start-search-explorer)」を参照してください。
-
 ## <a name="basic-search-strings"></a>基本的な検索文字列
 
-以下の例では、組み込みの不動産サンプル インデックスを前提としています。 このインデックスの作成については、「[クイック スタート: Azure portal でのインポート、インデックス付け、クエリに関するクイック スタート](search-get-started-portal.md)を参照してください。
+以下の例では、組み込みの不動産サンプル インデックスを前提としています。 このインデックスを作成するには、ポータルのデータ インポート ウィザードを使用し、データ ソースとして **Samples** を選択します。
 
 ### <a name="example-1---empty-search"></a>例 1 - 空の検索
 

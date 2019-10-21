@@ -1,18 +1,18 @@
 ---
-title: ポイント対サイト VPN とネイティブ Azure 証明書認証を使用してコンピューターから Azure 仮想ネットワークに接続する:Azure Portal |Microsoft Docs
+title: ポイント対サイト VPN とネイティブ Azure 証明書認証を使用してコンピューターから Azure 仮想ネットワークに接続する:Azure portal | Microsoft Docs
 description: Azure Virtual Network に対し、P2S と自己署名証明書 (または CA によって発行された証明書) を使用して安全に Windows、Mac OS X、および Linux クライアントを接続します。 この記事では Azure Portal を使用します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: fc8c2ff72da49d8542508443eb9423f028da0d39
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: ea80fda927d293d743f1fdc69f9a7f5fa29838fa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843668"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266592"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト VPN 接続の構成:Azure ポータル
 
@@ -41,7 +41,6 @@ ms.locfileid: "70843668"
 * **[リソース グループ]:** TestRG
 * **[場所]:** East US
 * **GatewaySubnet:** 192.168.200.0/24<br>
-* **DNS サーバー**: (オプション) 名前解決に利用する DNS サーバーの IP アドレス。
 * **仮想ネットワーク ゲートウェイ名:** VNet1GW
 * **ゲートウェイの種類:** VPN
 * **VPN の種類:** ルート ベース
@@ -54,19 +53,11 @@ ms.locfileid: "70843668"
 最初に Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
 [!INCLUDE [Basic Point-to-Site VNet](../../includes/vpn-gateway-basic-p2s-vnet-rm-portal-include.md)]
 
-## <a name="gatewaysubnet"></a>2.ゲートウェイ サブネットの追加
+## <a name="creategw"></a>2.仮想ネットワーク ゲートウェイの作成
 
-仮想ネットワークをゲートウェイに接続する前に、まず、接続先の仮想ネットワークのゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サービスでは、ゲートウェイ サブネット内に指定された IP アドレスを使用します。 将来的な構成要件も見越して十分な IP アドレスを確保するために、可能であれば、/28 または /27 の CIDR ブロックを使用してゲートウェイ サブネットを作成します。
+この手順では、VNet の仮想ネットワーク ゲートウェイを作成します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
 
-[!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-p2s-rm-portal-include.md)]
-
-## <a name="dns"></a>3.DNS サーバーの指定 (省略可能)
-
-仮想ネットワークを作成した後は、名前解決を処理するために、DNS サーバーの IP アドレスを追加できます。 DNS サーバーはこの構成ではオプションですが、名前解決が必要な場合は必須になります。 値を指定しても新しい DNS サーバーは作成されません。 指定する DNS サーバーの IP アドレスは、接続先のリソースの名前を解決できる DNS サーバーの IP アドレスである必要があります。 この例ではプライベート IP アドレスを使用していますが、これはおそらく実際の DNS サーバーの IP アドレスと一致しません。 実際には独自の値を使用してください。 指定された値は、P2S 接続や VPN のクライアントではなく、VNet にデプロイするリソースが使用します。
-
-[!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
-
-## <a name="creategw"></a>4.仮想ネットワーク ゲートウェイの作成
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-portal-include.md)]
 
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
@@ -74,7 +65,7 @@ ms.locfileid: "70843668"
 >Basic ゲートウェイ SKU では、IKEv2 と RADIUS 認証はサポートされません。 Mac クライアントを仮想ネットワークに接続する予定がある場合は、Basic SKU を使用しないでください。
 >
 
-## <a name="generatecert"></a>5.証明書の生成
+## <a name="generatecert"></a>3.証明書の生成
 
 証明書は、ポイント対サイト VPN 接続を介して VNet に接続するクライアントを認証するために、Azure によって使用されます。 ルート証明書を取得したら、公開キー情報を Azure に[アップロード](#uploadfile)します。 ルート証明書は、Azure によって "信頼された" と見なされ、P2S 経由での仮想ネットワークへの接続に使用されます。 また、信頼されたルート証明書からクライアント証明書を生成し、それを各クライアント コンピューターにインストールします。 クライアント証明書は、クライアントで VNet への接続を開始するときに、そのクライアントを認証するために使用されます。 
 
@@ -86,7 +77,7 @@ ms.locfileid: "70843668"
 
 [!INCLUDE [generate-client-cert](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
-## <a name="addresspool"></a>6.クライアント アドレス プールの追加
+## <a name="addresspool"></a>4.クライアント アドレス プールの追加
 
 クライアント アドレス プールとは、指定するプライベート IP アドレスの範囲です。 ポイント対サイト VPN 経由で接続するクライアントは、この範囲内の IP アドレスを動的に受け取ります。 接続元であるオンプレミスの場所、または接続先とする VNet と重複しないプライベート IP アドレス範囲を使用してください。
 
@@ -104,19 +95,19 @@ ms.locfileid: "70843668"
    >このポータル ページに、トンネルの種類も認証の種類も表示されない場合、ご利用のゲートウェイで使用されているのは Basic SKU です。 Basic SKU では、IKEv2 と RADIUS 認証はサポートされません。
    >
 
-## <a name="tunneltype"></a>7.トンネルの種類の構成
+## <a name="tunneltype"></a>5.トンネルの種類の構成
 
 トンネルの種類を選択することができます。 トンネルのオプションには、OpenVPN、SSTP、IKEv2 があります。 Android と Linux の strongSwan クライアントおよび iOS と OSX のネイティブ IKEv2 VPN クライアントでは、接続に IKEv2 トンネルのみを使用します。 Windows クライアントでは最初に IKEv2 を試し、接続できなかった場合に SSTP を使用します。 OpenVPN クライアントを使用して、OpenVPN トンネルの種類に接続することができます。
 
 ![トンネルの種類](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/tunneltype.png)
 
-## <a name="authenticationtype"></a>8.認証の種類の構成
+## <a name="authenticationtype"></a>6.認証の種類の構成
 
 **[Azure 証明書]** を選択します。
 
   ![トンネルの種類](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/authenticationtype.png)
 
-## <a name="uploadfile"></a>9.ルート証明書の公開証明書データのアップロード
+## <a name="uploadfile"></a>7.ルート証明書の公開証明書データのアップロード
 
 その後は、最大で合計 20 個まで、信頼されたルート証明書を追加でアップロードできます。 公開証明書データがアップロードされたら、Azure でそれを使用し、信頼されたルート証明書から生成されたクライアント証明書がインストールされているクライアントを認証できます。 ルート証明書の公開キー情報を Azure にアップロードします。
 
@@ -132,7 +123,7 @@ ms.locfileid: "70843668"
 
    ![保存](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/save.png)
 
-## <a name="installclientcert"></a>10.エクスポートしたクライアント証明書のインストール
+## <a name="installclientcert"></a>8.エクスポートしたクライアント証明書のインストール
 
 クライアント証明書の生成に使用したクライアント コンピューター以外から P2S 接続を作成する場合は、クライアント証明書をインストールする必要があります。 クライアント証明書をインストールするときに、クライアント証明書のエクスポート時に作成されたパスワードが必要になります。
 
@@ -140,11 +131,11 @@ ms.locfileid: "70843668"
 
 インストールの手順については、[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページを参照してください。
 
-## <a name="clientconfig"></a>11.VPN クライアント構成パッケージの生成とインストール
+## <a name="clientconfig"></a>9.VPN クライアント構成パッケージの生成とインストール
 
 VPN クライアント構成ファイルには、P2S 接続を使って VNet に接続できるようにデバイスを構成するための設定が含まれています。 VPN クライアント構成ファイルの生成とインストールに関する手順については、「[ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする](point-to-site-vpn-client-configuration-azure-cert.md)」を参照してください。
 
-## <a name="connect"></a>12.Azure への接続
+## <a name="connect"></a>10.Azure への接続
 
 ### <a name="to-connect-from-a-windows-vpn-client"></a>Windows VPN クライアントから接続するには
 

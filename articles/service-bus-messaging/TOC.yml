@@ -91,6 +91,8 @@
       href: service-bus-async-messaging.md
     - name: 故障と障害の扱い
       href: service-bus-outages-disasters.md
+    - name: Throttling
+      href: service-bus-throttling.md
     - name: セキュリティ
       items:
         - name: 認証と権限承認

@@ -1,38 +1,28 @@
 ---
-title: Azure カスタム プロバイダーを作成して利用する
-description: このチュートリアルでは、カスタム プロバイダーを作成して利用する方法を説明します。
+title: カスタム プロバイダーを作成して使用する
+description: このチュートリアルでは、カスタム プロバイダーを作成して使用する方法について説明します。
 author: jjbfour
 ms.service: managed-applications
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 65a8e60d8216e1da16af987c9e699e24ecaec3ec
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 053cf9fca03bf58cf10c313ae2569ce1918a46b9
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799131"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172899"
 ---
-# <a name="authoring-a-restful-endpoint-for-custom-providers"></a>カスタム プロバイダー用の RESTful エンドポイントを作成する
+# <a name="create-and-use-a-custom-provider"></a>カスタム プロバイダーを作成して使用する
 
-カスタム プロバイダーを使うと、Azure 上でワークフローをカスタマイズできます。 カスタム プロバイダーは、Azure と`endpoint`の間のコントラクトです。 このチュートリアルでは、カスタム プロバイダーを作成する手順について説明します。 Azure カスタム プロバイダーについてよくご存じでない場合は、[カスタム リソース プロバイダーの概要](./custom-providers-overview.md)に関するページをご覧ください。
+カスタム プロバイダーは、Azure とエンドポイントの間のコントラクトです。 カスタム プロバイダーを使うと、Azure 上のワークフローに変更を加えることができます。 このチュートリアルでは、カスタム プロバイダーを作成する手順について説明します。 Azure カスタム プロバイダーについてなじみがない場合は、[Azure カスタム リソースプロバイダーの概要](./custom-providers-overview.md)に関するページを参照してください。
 
-このチュートリアルは、次のステップに分かれています。
-
-- カスタム プロバイダーとは
-- カスタム アクションとリソースを定義する
-- カスタム プロバイダーをデプロイする
-
-このチュートリアルは、次のチュートリアルが基になっています。
-
-- [カスタム プロバイダー用の RESTful エンドポイントを作成する](./tutorial-custom-providers-function-authoring.md)
-
-## <a name="creating-a-custom-provider"></a>カスタム プロバイダーを作成する
+## <a name="create-a-custom-provider"></a>カスタム プロバイダーを作成する
 
 > [!NOTE]
-> このチュートリアルでは、エンドポイントの作成については説明しません。 RESTful エンドポイントがない場合は、[RESTful エンドポイントの作成に関するチュートリアル](./tutorial-custom-providers-function-authoring.md)に従ってください。
+> このチュートリアルでは、エンドポイントの作成方法については取り上げません。 RESTFUL エンドポイントがない場合は、このチュートリアルの土台となっている、[RESTful エンドポイントの作成に関するチュートリアル](./tutorial-custom-providers-function-authoring.md)に従ってください。
 
-`endpoint`を作成した後は、カスタム プロバイダーを作成し、それと`endpoint`の間のコントラクトを生成できます。 カスタム プロバイダーを使うと、エンドポイント定義の一覧を指定できます。
+エンドポイントを作成したら、カスタム プロバイダーを作成して、プロバイダーとエンドポイントとの間のコントラクトを生成できます。 カスタム プロバイダーには、一連のエンドポイント定義を指定できます。
 
 ```JSON
 {
@@ -44,15 +34,15 @@ ms.locfileid: "67799131"
 
 プロパティ | 必須 | 説明
 ---|---|---
-名前 | *はい* | エンドポイント定義の名前。 Azure では、この名前は '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/<br>resourceProviders/{resourceProviderName}/{endpointDefinitionName}' の下にあるその API によって公開されます。
-routingType | *いいえ* | `endpoint`とのコントラクトの種類を決定します。 指定しないと、既定で "Proxy" になります。
-endpoint | *はい* | 要求をルーティングするエンドポイント。 これにより、応答と要求の副作用がすべて処理されます。
+**name** | はい | エンドポイント定義の名前。 この名前は、/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders<br>/resourceProviders/{resourceProviderName}/{endpointDefinitionName} 下の対応する API を通じて公開されます。
+**routingType** | いいえ | エンドポイントのコントラクトの種類。 この値が指定されなかった場合は、"Proxy" が既定値となります。
+**endpoint** | はい | 要求をルーティングするエンドポイント。 このエンドポイントによって応答が処理され、また要求の副作用があればそれも処理されます。
 
-ここでは、`endpoint`は Azure 関数のトリガー URL です。 `<yourapp>`、`<funcname>`、`<functionkey>` は、作成した関数の値に置き換える必要があります。
+Azure 関数アプリのトリガー URL が **endpoint** の値になります。 `<yourapp>`、`<funcname>`、`<functionkey>` の各プレースホルダーは、作成した関数アプリの値に置き換える必要があります。
 
-## <a name="defining-custom-actions-and-resources"></a>カスタム アクションとリソースを定義する
+## <a name="define-custom-actions-and-resources"></a>カスタム アクションとリソースを定義する
 
-カスタム プロバイダーには、`actions` と `resourceTypes` の下でモデル化されているエンドポイント定義の一覧が含まれます。 `actions` はカスタム プロバイダーによって公開されるカスタム アクションに対応し、`resourceTypes` はカスタム リソースです。 このチュートリアルでは、`myCustomAction` という名前の `action` および `myCustomResources` という名前の `resourceType` で、カスタム プロバイダーを定義します。
+カスタム プロバイダーには、**actions** プロパティと **resourceTypes** プロパティの下でモデル化される一連のエンドポイント定義が含まれています。 **actions** プロパティは、カスタム プロバイダーによって公開されるカスタム アクションに対応し、**resourceTypes** プロパティはカスタム リソースを表します。 このチュートリアルのカスタム プロバイダーには、`myCustomAction` という名前の **actions** プロパティと `myCustomResources` という名前の **resourceTypes** プロパティが存在します。
 
 ```JSON
 {
@@ -76,14 +66,12 @@ endpoint | *はい* | 要求をルーティングするエンドポイント。 
 }
 ```
 
-`endpoint` は、前のチュートリアルで作成した関数のトリガー URL に置き換えます。
-
-## <a name="deploying-the-custom-provider"></a>カスタム プロバイダーをデプロイする
+## <a name="deploy-the-custom-provider"></a>カスタム プロバイダーをデプロイする
 
 > [!NOTE]
-> `endpoint` は関数の URL に置き換える必要があります。
+> **endpoint** の値は、前のチュートリアルで作成した関数アプリのトリガー URL に置き換える必要があります。
 
-Azure Resource Manager テンプレートを使って、上記のカスタム プロバイダーをデプロイできます。
+前出のカスタム プロバイダーは、Azure Resource Manager テンプレートを使用してデプロイできます。
 
 ```JSON
 {
@@ -116,16 +104,16 @@ Azure Resource Manager テンプレートを使って、上記のカスタム �
 }
 ```
 
-## <a name="using-custom-actions-and-resources"></a>カスタム アクションとリソースを使用する
+## <a name="use-custom-actions-and-resources"></a>カスタム アクションとカスタム リソースを使用する
 
-カスタム プロバイダーを作成した後は、新しい Azure API を利用できます。 次のセクションでは、カスタム プロバイダーを呼び出して利用する方法を説明します。
+カスタム プロバイダーを作成したら、その新しい Azure API を使用できます。 カスタム プロバイダーを呼び出して使用する方法を以下のタブで説明します。
 
 ### <a name="custom-actions"></a>カスタム アクション
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> `{subscriptionId}` と `{resourceGroupName}` は、カスタム プロバイダーがデプロイされたサブスクリプションとリソース グループに置き換える必要があります。
+> `{subscriptionId}` と `{resourceGroupName}` の各プレースホルダーは、カスタム プロバイダーのデプロイ先のサブスクリプションとリソース グループに置き換えてください。
 
 ```azurecli-interactive
 az resource invoke-action --action myCustomAction \
@@ -138,9 +126,9 @@ az resource invoke-action --action myCustomAction \
 
 パラメーター | 必須 | 説明
 ---|---|---
-action | *はい* | 作成したカスタム プロバイダーで定義されているアクションの名前。
-ids | *はい* | 作成したカスタム プロバイダーのリソース ID。
-request-body | *いいえ* | `endpoint`に送信される要求本文。
+*action* | はい | カスタム プロバイダーに定義されているアクションの名前
+*ids* | はい | カスタム プロバイダーのリソース ID
+*request-body* | いいえ | エンドポイントに送信される要求本文
 
 # <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
 
@@ -153,9 +141,9 @@ request-body | *いいえ* | `endpoint`に送信される要求本文。
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 > [!NOTE]
-> `{subscriptionId}` と `{resourceGroupName}` は、カスタム プロバイダーがデプロイされたサブスクリプションとリソース グループに置き換える必要があります。
+> `{subscriptionId}` と `{resourceGroupName}` の各プレースホルダーは、カスタム プロバイダーのデプロイ先のサブスクリプションとリソース グループに置き換えてください。
 
-カスタム リソースを作成します。
+#### <a name="create-a-custom-resource"></a>カスタム リソースの作成
 
 ```azurecli-interactive
 az resource create --is-full-object \
@@ -171,11 +159,11 @@ az resource create --is-full-object \
 
 パラメーター | 必須 | 説明
 ---|---|---
-is-full-object | *はい* | properties オブジェクトに、場所、タグ、SKU、プランなどの他のオプションが含まれることを示します。
-id | *はい* | カスタム リソースのリソース ID。 これは、作成したカスタム プロバイダーのものが存在する必要があります。
-properties | *はい* | `endpoint`に送信される要求本文。
+*is-full-object* | はい | properties オブジェクトに、場所、タグ、SKU、プランなどの他のオプションが含まれるかどうかを示します。
+*id* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
+*properties* | はい | エンドポイントに送信される要求本文。
 
-Azure のカスタム リソースを削除します。
+#### <a name="delete-a-custom-resource"></a>カスタム リソースを削除する
 
 ```azurecli-interactive
 az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
@@ -183,9 +171,9 @@ az resource delete --id /subscriptions/{subscriptionId}/resourceGroups/{resource
 
 パラメーター | 必須 | 説明
 ---|---|---
-id | *はい* | カスタム リソースのリソース ID。 これは、作成したカスタム プロバイダーのものが存在する必要があります。
+*id* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
 
-Azure のカスタム リソースを取得します。
+#### <a name="retrieve-a-custom-resource"></a>カスタム リソースの取得
 
 ```azurecli-interactive
 az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/myCustomProvider/myCustomResources/myTestResourceName1
@@ -193,11 +181,11 @@ az resource show --id /subscriptions/{subscriptionId}/resourceGroups/{resourceGr
 
 パラメーター | 必須 | 説明
 ---|---|---
-id | *はい* | カスタム リソースのリソース ID。 これは、作成したカスタム プロバイダーのものが存在する必要があります。
+*id* | はい | カスタム リソースのリソース ID。 この ID は、カスタム プロバイダーのリソース ID の拡張情報です。
 
 # <a name="templatetabtemplate"></a>[テンプレート](#tab/template)
 
-サンプルの Azure Resource Manager テンプレート:
+サンプル Resource Manager テンプレート:
 
 ```JSON
 {
@@ -219,18 +207,18 @@ id | *はい* | カスタム リソースのリソース ID。 これは、作�
 
 パラメーター | 必須 | 説明
 ---|---|---
-resourceTypeName | *はい* | カスタム プロバイダーで定義されている *resourceType* の `name`。
-resourceProviderName | *はい* | カスタム プロバイダーのインスタンス名。
-customResourceName | *はい* | カスタム リソースの名前。
+*resourceTypeName* | はい | カスタム プロバイダーに定義されている **resourceTypes** プロパティの `name` 値。
+*resourceProviderName* | はい | カスタム プロバイダーのインスタンス名。
+*customResourceName* | はい | カスタム リソースの名前。
 
 ---
 
 > [!NOTE]
-> カスタム プロバイダーのデプロイと使用が完了した後は、Azure 関数も含めて、作成したリソースをクリーンアップしてください。
+> カスタム プロバイダーのデプロイと使用が完了した後は、Azure 関数アプリも含めて、作成したリソースをすべてクリーンアップしてください。
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、カスタム プロバイダーについて学習しました。 次の記事にアクセスしてカスタム プロバイダーを作成しましょう。
+この記事では、カスタム プロバイダーについて学習しました。 詳細については、次を参照してください。
 
-- [方法:カスタム アクションを Azure REST API に追加する](./custom-providers-action-endpoint-how-to.md)
-- [方法:カスタム リソースを Azure REST API に追加する](./custom-providers-resources-endpoint-how-to.md)
+- [方法: カスタム アクションを Azure REST API に追加する](./custom-providers-action-endpoint-how-to.md)
+- [方法: カスタム リソースを Azure REST API に追加する](./custom-providers-resources-endpoint-how-to.md)

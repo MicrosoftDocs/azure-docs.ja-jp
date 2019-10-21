@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/28/2019
-ms.openlocfilehash: 9a80cb7ba44c86d449e4ff4178a2982db302a717
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/20/2019
+ms.openlocfilehash: 6feeab9b48715a8fe1f6c6fe11ae90b6be71a57a
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138334"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173486"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Terraform を使用して Packer カスタム イメージから Azure 仮想マシン スケール セットを作成する
 
@@ -42,9 +42,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 空のディレクトリに次の名前で新しいファイルを 3 つ作成します。
 
-- ```variables.tf``` このファイルには、テンプレートに使用される変数の値が格納されます。
-- ```output.tf``` このファイルには、デプロイ後に表示される設定が記述されます。
-- ```vmss.tf``` このファイルには、デプロイしているインフラストラクチャのコードが格納されます。
+- `variables.tf`:このファイルには、テンプレートに使用される変数の値が格納されます。
+- `output.tf`:このファイルには、デプロイ後に表示される設定が記述されます。
+- `vmss.tf`:このファイルには、デプロイしているインフラストラクチャのコードが格納されます。
 
 ##  <a name="create-the-variables"></a>変数を作成する 
 
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 `variables.tf` ファイルを編集し、次のコードをコピーしてから変更を保存します。
 
-```tf 
+```hcl
 variable "location" {
   description = "The location where resources are created"
   default     = "East US"
@@ -70,7 +70,7 @@ variable "resource_group_name" {
 
 ファイルを保存します。
 
-Terraform テンプレートをデプロイするときに、アプリケーションへのアクセスに使用される完全修飾ドメイン名を取得できます。 Terraform の ```output``` リソースの種類を使用して、リソースの ```fqdn``` プロパティを取得します。 
+Terraform テンプレートをデプロイするときに、アプリケーションへのアクセスに使用される完全修飾ドメイン名を取得できます。 Terraform の `output` リソースの種類を使用して、リソースの `fqdn` プロパティを取得します。 
 
 `output.tf` ファイルを編集し、次のコードをコピーして、仮想マシンの完全修飾ドメイン名が表示されるようにします。 
 
@@ -89,9 +89,9 @@ output "vmss_public_ip" {
 
 また、すべてのリソースの作成場所となるリソース グループも必要です。 
 
-次のコードを編集し、```vmss.tf``` ファイルにコピーします。 
+次のコードを編集し、`vmss.tf` ファイルにコピーします。 
 
-```tf 
+```hcl
 
 resource "azurerm_resource_group" "vmss" {
   name     = "${var.resource_group_name}"
@@ -145,7 +145,7 @@ resource "azurerm_public_ip" "vmss" {
 terraform init 
 ```
  
-コマンドを実行したディレクトリの ```.terraform``` フォルダー内に、Terraform レジストリからプロバイダー プラグインがダウンロードされます。
+コマンドを実行したディレクトリの `.terraform` フォルダー内に、Terraform レジストリからプロバイダー プラグインがダウンロードされます。
 
 次のコマンドを実行して、Azure にインフラストラクチャをデプロイします。
 
@@ -185,8 +185,7 @@ terraform apply
 
 `vmss.tf` ファイルの末尾に次のコードを追加します。
 
-```tf
-
+```hcl
 
 resource "azurerm_lb" "vmss" {
   name                = "vmss-lb"
@@ -303,7 +302,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
 次のコードを `variables.tf` に追加してデプロイをカスタマイズします。
 
-```tf 
+```hcl
 variable "application_port" {
     description = "The port that you want to expose to the external load balancer"
     default     = 80

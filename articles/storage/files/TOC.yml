@@ -23,9 +23,9 @@
       href: storage-sync-files-extend-servers.md
 - name: 概念
   items:
-    - name: Azure Files について
+    - name: Azure Files のデプロイの計画
       href: storage-files-planning.md
-    - name: Azure File Sync について
+    - name: Azure File Sync のデプロイの計画
       href: storage-sync-files-planning.md
     - name: クラウドの階層化について
       href: storage-sync-cloud-tiering.md
@@ -53,7 +53,7 @@
           href: ../common/storage-auth.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure Storage セキュリティ
           href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ストレージ アカウントの暗号化
+        - name: Azure Storage の暗号化
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: SMB 経由の Azure AD 認証
           href: storage-files-active-directory-overview.md
@@ -83,10 +83,12 @@
       href: storage-files-faq.md
 - name: ハウツー ガイド
   items:
-    - name: Create
+    - name: 作成
       items:
         - name: 標準ファイル共有を作成する
           href: storage-how-to-create-file-share.md
+        - name: 大型ファイル共有を有効にする
+          href: storage-files-how-to-create-large-file-share.md
         - name: Premium ファイル共有を作成する
           href: storage-how-to-create-premium-fileshare.md
     - name: デプロイ
@@ -167,44 +169,84 @@
           href: storage-sync-files-troubleshoot.md
 - name: リファレンス
   items:
-    - name: PowerShell
-      href: /powershell/module/azure.storage
+    - name: Azure PowerShell
+      href: /powershell/module/az.storage
     - name: Azure CLI
       href: /cli/azure/storage
     - name: .NET
       items:
-        - name: BLOB、キュー、テーブル、ファイル
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
+        - name: BLOB、キュー、ファイル
+          href: /dotnet/api/overview/azure/storage/client
         - name: データの移動
           href: /dotnet/api/microsoft.azure.storage.datamovement
-        - name: リソース マネージャー
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
+        - name: ストレージ リソース プロバイダー
+          href: /dotnet/api/overview/azure/storage/management
     - name: Java
       items:
-        - name: BLOB、キュー、テーブル、ファイル
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client'
+        - name: BLOB、キュー、ファイル (バージョン 12.x - プレビュー)
+          href: 'https://azure.github.io/azure-sdk-for-java/track2reports/index.html'
+        - name: BLOB、キュー、ファイル (バージョン 8)
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage?view=azure-java-legacy'
+        - name: ストレージ リソース プロバイダー
+          href: /java/api/overview/azure/storage/management
     - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/storage'
-    - name: Ruby
-      href: 'https://azure.github.io/azure-storage-ruby'
-    - name: PHP
-      href: 'https://azure.github.io/azure-storage-php/'
+      href: /javascript/api/overview/azure/storage
     - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/storage'
-    - name: C++
-      href: 'https://azure.github.io/azure-storage-cpp'
-    - name: iOS
-      href: 'https://azure.github.io/azure-storage-ios/'
-    - name: Android
-      href: 'https://azure.github.io/azure-storage-android'
+      href: /python/api/overview/azure/storage
     - name: REST
       items:
         - name: BLOB、キュー、テーブル、ファイル
           href: /rest/api/storageservices
-        - name: リソース プロバイダー
+        - name: ストレージ リソース プロバイダー
           href: /rest/api/storagerp
         - name: Import/Export
           href: /rest/api/storageimportexport
+    - name: C++
+      href: 'https://azure.github.io/azure-storage-cpp'
+    - name: Ruby
+      href: 'https://azure.github.io/azure-storage-ruby'
+    - name: PHP
+      href: 'https://azure.github.io/azure-storage-php/'
+    - name: iOS
+      href: 'https://azure.github.io/azure-storage-ios/'
+    - name: Android
+      href: 'https://azure.github.io/azure-storage-android'
+    - name: AzCopy v10
+      items:
+        - name: azcopy
+          href: ../common/storage-ref-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy bench
+          href: ../common/storage-ref-azcopy-bench.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy copy
+          href: ../common/storage-ref-azcopy-copy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy doc
+          href: ../common/storage-ref-azcopy-doc.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy env
+          href: ../common/storage-ref-azcopy-env.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy jobs
+          href: ../common/storage-ref-azcopy-jobs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy jobs clean
+          href: ../common/storage-ref-azcopy-jobs-clean.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy jobs list
+          href: ../common/storage-ref-azcopy-jobs-list.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy jobs remove
+          href: ../common/storage-ref-azcopy-jobs-remove.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy jobs resume
+          href: ../common/storage-ref-azcopy-jobs-resume.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy jobs show
+          href: ../common/storage-ref-azcopy-jobs-show.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy list
+          href: ../common/storage-ref-azcopy-list.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy login
+          href: ../common/storage-ref-azcopy-login.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy logout
+          href: ../common/storage-ref-azcopy-logout.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy make
+          href: ../common/storage-ref-azcopy-make.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy remove
+          href: ../common/storage-ref-azcopy-remove.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: azcopy sync
+          href: ../common/storage-ref-azcopy-sync.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Resource Manager テンプレート
       displayName: arm
       href: /azure/templates/microsoft.storage/allversions
@@ -212,55 +254,77 @@
       href: 'https://azure.microsoft.com/documentation/samples/?service=storage&term=file'
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Azure の更新情報
+      href: 'https://azure.microsoft.com/updates/?category=storage'
     - name: Azure File Sync のリリース ノート
       href: storage-files-release-notes.md
-    - name: Azure Storage クライアント ツール
-      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: フォーラム
+    - name: Azure ストレージ エクスプローラー
+      items:
+        - name: Storage Explorer のダウンロード
+          href: 'https://azure.microsoft.com/features/storage-explorer/'
+        - name: Storage Explorer の概要
+          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: ストレージ エクスプローラーのリリース ノート
+          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: ストレージ エクスプローラーのトラブルシューティング
+          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: ストレージ エクスプローラーのアクセシビリティ
+          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Azure Storage フォーラム
       href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
-    - name: 料金計算ツール
+    - name: Stack Overflow の Azure Storage
+      href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Azure Storage の価格
+      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Azure 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: ビデオ
       href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
-    - name: Azure ストレージ エクスプローラー
+    - name: NuGet パッケージ (.NET)
       items:
-        - name: ストレージ エクスプローラー
-          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ストレージ エクスプローラーのリリース ノート
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ストレージ エクスプローラーのトラブルシューティング
-          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: ストレージ エクスプローラーのアクセシビリティ
-          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: NuGet パッケージ
-      items:
-        - name: Azure Storage Common クライアント ライブラリ
+        - name: Microsoft.Azure.Storage.Common (バージョン 11.x)
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
-        - name: Azure Files ストレージ クライアント ライブラリ
+        - name: Azure.Storage.Common (バージョン 12.x - プレビュー)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
+        - name: Microsoft.Azure.Storage.File (バージョン 11.x)
           href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.File/'
-        - name: Azure Storage Data Movement Library
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Azure.Storage.File (バージョン 12.x - プレビュー)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Files/'
         - name: Azure Configuration Manager
           href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
+        - name: Azure Storage データ移動ライブラリ
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: ストレージ リソース プロバイダーのライブラリ
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
     - name: ソース コード
       items:
         - name: .NET
           items:
-            - name: BLOB、キュー、ファイル
-              href: 'https://github.com/Azure/azure-storage-net'
-            - name: データの移動
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: ストレージ リソース プロバイダー
-              href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
+            - name: Azure Storage クライアント ライブラリ
+              items:
+                - name: バージョン 12.x (プレビュー)
+                  href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
+                - name: バージョン 11.x 以前
+                  href: 'https://github.com/Azure/azure-storage-net'
+            - name: データ移動ライブラリ
+              href: 'https://github.com/Azure/azure-storage-net-data-movement'
+            - name: ストレージ リソース プロバイダーのライブラリ
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
         - name: Java
-          href: 'https://github.com/Azure/azure-storage-java'
-        - name: C++
-          href: 'https://github.com/Azure/azure-storage-cpp'
+          items:
+            - name: Azure Storage クライアント ライブラリ バージョン 12.x (プレビュー)
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
+            - name: Azure Storage クライアント ライブラリ バージョン 8.x 以前
+              href: 'https://github.com/Azure/azure-storage-java'
+        - name: Node.js
+          items:
+            - name: Azure Storage クライアント ライブラリ バージョン 12.x (プレビュー)
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
+            - name: Azure Storage クライアント ライブラリ バージョン 10.x
+              href: 'https://github.com/Azure/azure-storage-node'
         - name: Python
-          href: 'https://github.com/Azure/azure-storage-python'
+          items:
+            - name: Azure Storage クライアント ライブラリ バージョン 12.x (プレビュー)
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
+            - name: Azure Storage クライアント ライブラリ バージョン 2.1
+              href: 'https://github.com/Azure/azure-storage-python'

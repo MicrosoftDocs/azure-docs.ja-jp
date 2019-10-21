@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 28026a429643c62434ddfd7591126169857a7371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1799acdc7a6969d88936705006d67a6ea832fd81
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61479074"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72300281"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure Import/Export サービスを使用してデータを Azure Files にインポートする
 
@@ -70,7 +70,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
                         
        ```
-     詳しくは、[データセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file)に関する記事をご覧ください。
+     詳しくは、[データセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md)に関する記事をご覧ください。
     
 
 4. ツールが配置されているルート フォルダーにある *driveset.csv* ファイルを変更します。 次の例のようなエントリを *driveset.csv* ファイルに追加します。 ドライブセット ファイルには、ツールが準備するディスクの一覧を正しく選択できるように、ディスクとそれに対応するドライブ文字の一覧が含まれています。
@@ -91,7 +91,7 @@ Import/Export サービスでは、Azure Files の Azure Storage へのインポ
        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
        ```
 
-     複数のドライブに対応する複数のエントリを同じファイル内に作成できます。 詳しくは、[ドライブセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file)に関する記事をご覧ください。 
+     複数のドライブに対応する複数のエントリを同じファイル内に作成できます。 詳しくは、[ドライブセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md)に関する記事をご覧ください。 
 
 5. `PrepImport` オプションを使用して、ディスク ドライブにデータをコピーして準備します。 最初のコピー セッションで新しいコピー セッションを使用してディレクトリやファイルをコピーするために、次のコマンドを実行します。
 

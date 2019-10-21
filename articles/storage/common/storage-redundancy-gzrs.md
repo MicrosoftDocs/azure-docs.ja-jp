@@ -3,37 +3,41 @@ title: geo ゾーン冗長ストレージ (GZRS) (プレビュー) を使用し�
 description: geo ゾーン冗長ストレージ (GZRS) では、ゾーン冗長ストレージ (ZRS) の高可用性と、geo 冗長ストレージ (GRS) によって提供されるリージョン障害からの保護を融合させます。 GZRS ストレージ アカウント内のデータは、プライマリ リージョンの Azure 可用性ゾーン間でレプリケートされ、リージョンの災害から保護するためにセカンダリ地理的リージョンにもレプリケートされます。
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 9019e6f72944823d7c256fa5f6b99b0aca84c845
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 395e8b1bc92ea64c8a5cea114be443d6411c7412
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036333"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170322"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>geo ゾーン冗長ストレージ (GZRS) (プレビュー) を使用して高可用性 Azure Storage アプリケーションを構築する
 
 geo ゾーン冗長ストレージ (GZRS) (プレビュー) では、[ゾーン冗長ストレージ (ZRS)](storage-redundancy-zrs.md) の高可用性と、[geo 冗長ストレージ (GRS)](storage-redundancy-grs.md) によって提供されるリージョン障害からの保護を融合させます。 GZRS ストレージ アカウント内のデータは、プライマリ リージョンの 3 つの [Azure 可用性ゾーン](../../availability-zones/az-overview.md)間でレプリケートされ、リージョンの災害から保護するためにセカンダリ リージョンにもレプリケートされます。 各 Azure リージョンは、同じ geo 内の別のリージョンと組み合わせて、リージョン ペアにして使用します。 詳細と例外については、[ドキュメント](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)をご覧ください。
 
-GZRS ストレージ アカウントを使用すると、可用性ゾーンが使用できなくなったり、回復できなくなった場合に、引き続きデータの読み取りと書き込みを行うことができます。 さらに、リージョン全体の障害が発生した場合や、プライマリ リージョンを回復できない災害が発生した場合にも、データは保持されます。 GZRS は、指定された 1 年間にわたって、オブジェクトの 99.99999999999999% (シックスティーン ナイン) 以上の持続性を提供するように設計されています。 GZRS では、LRS、ZRS、GRS、または RA-GRS と同じ [スケーラビリティ ターゲット](storage-scalability-targets.md)も提供されます。 プライマリ リージョンで災害が発生した場合にアプリケーションでデータを読み取れるようにする必要がある場合は、読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) を使用して、必要に応じてセカンダリ リージョンのデータに対する読み取りアクセスを有効にすることができます。
+GZRS ストレージ アカウントを使用すると、可用性ゾーンが使用できなくなったり、回復できなくなった場合に、引き続きデータの読み取りと書き込みを行うことができます。 さらに、リージョン全体の障害が発生した場合や、プライマリ リージョンを回復できない災害が発生した場合にも、データは保持されます。 GZRS は、オブジェクトに年間 99.99999999999999% (シックスティーンナイン) 以上の持続性を確保するように設計されています。 GZRS では、LRS、ZRS、GRS、または RA-GRS と同じ[スケーラビリティ ターゲット](storage-scalability-targets.md)も提供されます。 プライマリ リージョンで災害が発生した場合にアプリケーションでデータを読み取れるようにする必要がある場合は、読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS) を使用して、必要に応じてセカンダリ リージョンのデータに対する読み取りアクセスを有効にすることができます。
 
-一貫性、持続性、高可用性、優れたパフォーマンス、災害復旧のための回復性を必要とするアプリケーションに対しては、Microsoft では GZRS を使用することをお勧めします。 リージョンの災害が発生した場合のセカンダリ リージョンへの読み取りアクセスのセキュリティを強化するには、ストレージ アカウントに対して RA-GZRS を有効にします。
+一貫性、持続性、高可用性、優れたパフォーマンス、ディザスター リカバリーのための回復性を必要とするアプリケーションに対しては、GZRS を使用することをお勧めします。 リージョンの災害が発生した場合のセカンダリ リージョンへの読み取りアクセスのセキュリティを強化するには、ストレージ アカウントに対して RA-GZRS を有効にします。
 
 ## <a name="about-the-preview"></a>プレビューについて
 
-GZRS と RA-GZRS は、汎用 v2 ストレージ アカウントでのみサポートされます。 ストレージ アカウントの種類の詳細については、「 [Azure Storage アカウントの概要](storage-account-overview.md)」を参照してください。 GZRS と RA-GZRS では、ブロック BLOB、ページ BLOB (VHD ディスクではない)、ファイル、テーブル、およびキューがサポートされます。
+GZRS と RA-GZRS は、汎用 v2 ストレージ アカウントでのみサポートされます。 ストレージ アカウントの種類の詳細については、[Azure Storage アカウントの概要](storage-account-overview.md)に関するページを参照してください。 GZRS と RA-GZRS では、ブロック BLOB、ページ BLOB (VHD ディスクではない)、ファイル、テーブル、およびキューがサポートされます。
 
 GZRS と RA-GZRS は現在、次のリージョンにおいてプレビューで利用できます。
 
+- 北ヨーロッパ
+- 西ヨーロッパ
 - 米国東部
+- 米国東部 2
+- 米国中部
 
-Microsoft では引き続き、他の Azure リージョンでも GZRS と RA-GZRS を有効にしていきます。 サポートされているリージョンについては、 [Azure サービスの更新情報](https://azure.microsoft.com/updates/) に関するページを定期的に確認してください。
+Microsoft では引き続き、他の Azure リージョンでも GZRS と RA-GZRS を有効にしていきます。 サポートされているリージョンの情報については、[Azure サービスの更新情報](https://azure.microsoft.com/updates/)に関するページを定期的に参照してください。
 
-プレビュー価格については、 [BLOB](https://azure.microsoft.com/pricing/details/storage/blobs)、 [Files](https://azure.microsoft.com/pricing/details/storage/files/)、 [Queues](https://azure.microsoft.com/pricing/details/storage/queues/)、 [Tables](https://azure.microsoft.com/pricing/details/storage/tables/)の GZRS プレビュー価格に関する説明を参照してください。
+プレビュー価格については、[BLOB](https://azure.microsoft.com/pricing/details/storage/blobs)、[Files](https://azure.microsoft.com/pricing/details/storage/files/)、[Queues](https://azure.microsoft.com/pricing/details/storage/queues/)、[Tables](https://azure.microsoft.com/pricing/details/storage/tables/) の GZRS プレビュー価格に関する説明を参照してください。
 
 > [!IMPORTANT]
 > Microsoft では、運用環境ワークロードにはプレビュー機能を使用しないことをお勧めします。
@@ -45,13 +49,13 @@ GZRS または RA-GZRS が有効になっているストレージ アカウン�
 > [!IMPORTANT]
 > 非同期レプリケーションでは、データがプライマリ リージョンに書き込まれる時間から、それがセカンダリ リージョンにレプリケートされるまでの遅延が伴います。 地域的な災害が発生した場合に、データをプライマリ リージョンから復旧できないと、セカンダリ リージョンにまだレプリケートされていない変更が失われる可能性があります。
 
-ストレージ アカウントを作成するときは、そのアカウントのデータをレプリケートする方法を指定し、そのアカウントのプライマリ リージョンも指定します。 geo レプリケートされたアカウントのペアになっているセカンダリ リージョンは、プライマリ リージョンに基づいて決定され、変更することはできません。 Azure でサポートされているリージョンに関する最新情報については、「 [ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」を参照してください。 GZRS または RA-GZRS を使用したストレージ アカウントの作成については、「[ストレージアカウントの作成](storage-quickstart-create-account.md)」を参照してください。
+ストレージ アカウントを作成するときは、そのアカウントのデータをレプリケートする方法を指定し、そのアカウントのプライマリ リージョンも指定します。 geo レプリケートされたアカウントのペアになっているセカンダリ リージョンは、プライマリ リージョンに基づいて決定され、変更することはできません。 Azure でサポートされているリージョンに関する最新の情報については、「[ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)」を参照してください。 GZRS または RA-GZRS を使用したストレージ アカウントの作成については、「[ストレージアカウントの作成](storage-quickstart-create-account.md)」を参照してください。
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>高可用性を確保するために RA-GZRS を使用する
 
-ストレージ アカウントに対して RA-GZRS を有効にすると、ストレージ アカウントのプライマリ エンドポイントからだけでなく、セカンダリ エンドポイントからもデータを読み取ることができます。 セカンダリ エンドポイントでは、アカウント名にサフィックス *–secondary* が追加されます。 たとえば、Blob service のプライマリ エンドポイントが `myaccount.blob.core.windows.net` の場合、セカンダリ エンドポイントは `myaccount-secondary.blob.core.windows.net` になります。 ストレージ アカウントのアクセス キーは、プライマリ エンドポイントとセカンダリ エンドポイントの両方で同じです。
+ストレージ アカウントに対して RA-GZRS を有効にすると、ストレージ アカウントのプライマリ エンドポイントからだけでなく、セカンダリ エンドポイントからもデータを読み取ることができます。 セカンダリ エンドポイントでは、アカウント名にサフィックス " *–secondary*" が追加されます。 たとえば、Blob service のプライマリ エンドポイントが `myaccount.blob.core.windows.net` の場合、セカンダリ エンドポイントは `myaccount-secondary.blob.core.windows.net` になります。 ストレージ アカウントのアクセス キーは、プライマリ エンドポイントとセカンダリ エンドポイントの両方で同じです。
 
-リージョン障害が発生した場合に RA-GZRS を利用するには、このシナリオを処理するようにアプリケーションを事前に設計する必要があります。 アプリケーションではプライマリ エンドポイントに対する読み取りと書き込みを行う必要がありますが、プライマリ リージョンが使用できなくなった場合は、セカンダリ エンドポイントを使用するように切り替える必要があります。 RA-GRS を使用した高可用性を確保するための設計に関するガイダンスについては、 [RA-GZRS または RA-GRS を使用した高可用性アプリケーションの設計](https://docs.microsoft.com/en-us/azure/storage/common/storage-designing-ha-apps-with-ragrs)に関するページを参照してください。
+リージョン障害が発生した場合に RA-GZRS を利用するには、このシナリオを処理するようにアプリケーションを事前に設計する必要があります。 アプリケーションではプライマリ エンドポイントに対する読み取りと書き込みを行う必要がありますが、プライマリ リージョンが使用できなくなった場合は、セカンダリ エンドポイントを使用するように切り替える必要があります。 RA-GZRS を使用した高可用性を確保するための設計に関するガイダンスについては、[RA-GZRS または RA-GRS を使用した高可用性アプリケーションの設計](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs)に関するページを参照してください。
 
 データはセカンダリ リージョンに非同期的にレプリケートされるため、セカンダリ リージョンは多くの場合、プライマリ リージョンより遅れています。 セカンダリ リージョンにレプリケートされた書き込み操作を特定するために、アプリケーションでは、ストレージ アカウントの最終同期時刻が確認されます。 最終同期時刻より前にプライマリ リージョンに書き込まれたすべての書き込み操作は、セカンダリ リージョンに正常にレプリケートされています。つまり、セカンダリ リージョンからの読み取りが可能です。 最終同期時刻の後にプライマリ リージョンに書き込まれた書き込み操作は、セカンダリ リージョンにレプリケートされている場合とそうでない場合があります。つまり、読み取り操作で使用できない場合があります。
 
@@ -111,7 +115,7 @@ LRS、GRS、または RA-GRS アカウントから GZRS または RA-GZRS に移
 
 ライブ マイグレーション中は、ソースとターゲットのストレージ アカウント間でのデータの移行時にストレージ アカウントを使用できます。 ライブ マイグレーション プロセス中は、アカウントで引き続き、持続性と可用性の SLA が満たされます。 ライブ マイグレーションによってダウンタイムやデータ損失が発生することはありません。
 
-GZRS/RA-GZRS がサポートされるのは、汎用 v2 アカウントでのみです。そのため、GZRS/RA-GZRS へのライブ マイグレーションの要求を送信する前に、アカウントを汎用 v2 にアップグレードする必要があります。 詳細については、「 [Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview) 」と「 [汎用 v2 ストレージ アカウントにアップグレードする](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)」を参照してください。
+GZRS/RA-GZRS がサポートされるのは、汎用 v2 アカウントでのみです。そのため、GZRS/RA-GZRS へのライブ マイグレーションの要求を送信する前に、アカウントを汎用 v2 にアップグレードする必要があります。 詳細については、「[Azure ストレージ アカウントの概要](https://docs.microsoft.com/azure/storage/common/storage-account-overview)」と「[汎用 v2 ストレージ アカウントにアップグレードする](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)」を参照してください。
 
 移行が完了すると、ストレージ アカウントのレプリケーション設定が、**geo ゾーン冗長ストレージ (GZRS)** または**読み取りアクセス geo ゾーン冗長ストレージ (RA-GZRS)** に更新されます。 サービス エンドポイント、アクセス キー、Shared Access Signatures (SAS)、およびその他のアカウント構成オプションは変更されず、そのままです。
 
@@ -123,24 +127,24 @@ GZRS/RA-GZRS がサポートされるのは、汎用 v2 アカウントでのみ
 - Standard ストレージ アカウントの種類のみがライブ マイグレーションをサポートします。 Premium ストレージ アカウントは手動で移行する必要があります。
 - GZRS または RA-GZRS アカウントから LRS、GRS、または RA-GRS アカウントへのライブ マイグレーションはサポートされていません。 新しいストレージ アカウントか既存のストレージ アカウントにデータを手動で移動する必要があります。
 - RA-GRS から RA-GZRS へのライブ マイグレーションを要求できます。 しかし、RA-GRS から GZRS への移行はサポートされていません。 この場合は、RA-GZRS へのライブ マイグレーションを要求してから、GZRS を使用するようにストレージ アカウントを手動で変換する必要があります。
-- マネージド ディスクでは LRS のみがサポートされており、GZRS や RA-GZRS に移行することはできません。 可用性セットとの統合については、「 [Azure マネージド ディスクの概要](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)」を参照してください。
-- Standard SSD マネージド ディスクのスナップショットとイメージを、Standard HDD ストレージに格納できます。また、 [LRS、ZRS、GZRS、および RA-GZRS オプションから選択](https://azure.microsoft.com/pricing/details/managed-disks/)できます。
+- マネージド ディスクでは LRS のみがサポートされており、GZRS や RA-GZRS に移行することはできません。 可用性セットとの統合については、[Azure マネージド ディスクの概要](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview#integration-with-availability-sets)に関する記事を参照してください。
+- Standard SSD マネージド ディスクのスナップショットとイメージを、Standard HDD ストレージに格納できます。また、[LRS、ZRS、GZRS、および RA-GZRS オプションから選択](https://azure.microsoft.com/pricing/details/managed-disks/)できます。
 - 大きなファイル共有を含むアカウントは、GZRS ではサポートされていません。
 
-ライブ マイグレーションを要求するには、 [Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) を使用します。 ポータルから、GZRS または RA-GZRS に移行するストレージ アカウントを選択し、次の手順に従います。
+ライブ マイグレーションを要求するには、[Azure portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) を使用します。 ポータルから、GZRS または RA-GZRS に移行するストレージ アカウントを選択し、次の手順に従います。
 
-1.  **[新しいサポート リクエスト]** を選択します。
-2. アカウント情報に基づいて、 **[基本]**  に入力します。  **[サービス] ** セクションで、 **[Storage Account Management]\(ストレージ アカウントの管理\)**  を選択し、移行するアカウントを指定します。
-3.  **[次へ]** を選択します。
-4.  **[問題]**  セクションで、以下の値を指定します。
+1. **[新しいサポート要求]** を選択します。
+2. アカウント情報に基づき **[基本]** に入力します。 **[サービス]** セクションで、 **[Storage Account Management]\(ストレージ アカウントの管理\)** を選択し、移行するアカウントを指定します。
+3. **[次へ]** を選択します。
+4. **[Problem]\(問題)** セクションで以下の値を指定します。
     - **[重大度]** :既定値をそのまま使用します。
-    - **[問題の種類]** : **[データ移行]** を選択します。
-    - **[カテゴリ]** : **[Migrate to (RA-)GZRS within a region]\(リージョン内の (RA-)GZRS への移行\)** を選択します。
-    - **[タイトル]** : **(RA-)GZRS アカウント移行**などのわかりやすいタイトルを入力します。
-    - **[詳細]** : **[詳細]**  ボックスには、「\_\_ リージョンで [LRS、GRS] から GZRS に移行する」などの詳細情報を入力します。 または、「\_\_ リージョンで [LRS、RA-GRS] から RA-GZRS に移行する」と入力します。
-5.  **[次へ]** を選択します。
-6.  **[連絡先情報]**  ブレードの連絡先情報が正しいことを確認します。
-7.  **[作成]** を選択します。
+    - **[問題の種類]** : **[データ移行]** を選択します。
+    - **[カテゴリ]** : **[Migrate to (RA-)GZRS within a region]\(リージョン内の (RA-)GZRS への移行\)** を選択します。
+    - **[タイトル]** : **(RA-)GZRS アカウント移行**などのわかりやすいタイトルを入力します。
+    - **[詳細]** : **[詳細]** ボックスには、たとえば、"\_\_ リージョンで [LRS、GRS] から GZRS に移行する" などの詳細情報を入力します。 または、「\_\_ リージョンで [LRS、RA-GRS] から RA-GZRS に移行する」と入力します。
+5. **[次へ]** を選択します。
+6. **[連絡先情報]** ブレードの連絡先情報が正しいことを確認します。
+7. **作成** を選択します。
 
 サポート担当者から連絡があり、サポートを受けることができます。
 

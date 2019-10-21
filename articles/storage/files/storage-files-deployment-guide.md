@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 802b4deb91f1df784ac0aed2952d3f915b54ce73
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 3ce754a67643f4506fa825f0780969dc4a06f826
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699712"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72299584"
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
@@ -63,7 +63,7 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    1 つのストレージ アカウントを使用して複数の共有を指定する場合があります。 詳細については[データセット CSV ファイルの準備](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-the-dataset-csv-file)を参照してください。
+    1 つのストレージ アカウントを使用して複数の共有を指定する場合があります。 詳細については[データセット CSV ファイルの準備](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)を参照してください。
 
 5. ドライブセット CSV ファイルを作成します。 ドライブセット CSV ファイルには、オンプレミスのエクスポート エージェントが使用可能なディスクが一覧表示されます。 たとえば、次のドライブセット CSV ファイルでは、オンプレミスのエクスポート ジョブで使用される `X:`、`Y:`、および `Z:` ドライブが一覧表示されます。
 
@@ -74,7 +74,7 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
     Z,Format,SilentMode,Encrypt,
     ```
     
-    詳細については[ドライブセット CSV ファイルの準備](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#prepare-initialdriveset-or-additionaldriveset-csv-file)を参照してください。
+    詳細については[ドライブセット CSV ファイルの準備](../common/storage-import-export-tool-preparing-hard-drives-import.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)を参照してください。
 
 6. [WAImportExport ツール](https://www.microsoft.com/download/details.aspx?id=55280)を使用して、1 台以上のハード ドライブにデータをコピーします。
 

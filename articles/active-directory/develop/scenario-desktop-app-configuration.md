@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 600b6db1eb3d3b422d62e49c5bc816a1a56370f9
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 0926e6800dbcd81d2e542e27afe3afb1240cff22
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798508"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268409"
 ---
 # <a name="desktop-app-that-calls-web-apis---code-configuration"></a>Web API を呼び出すデスクトップ アプリ - コードの構成
 
@@ -28,9 +28,11 @@ ms.locfileid: "67798508"
 
 ## <a name="msal-libraries"></a>MSAL ライブラリ
 
-デスクトップ アプリケーションをサポートしている唯一の MSAL ライブラリは、現在 MSAL.NET です
+現在、複数のプラットフォーム上でデスクトップ アプリケーションをサポートしている唯一の MSAL ライブラリは、MSAL.NET です
 
-## <a name="public-client-application"></a>パブリック クライアント アプリケーション
+iOS および macOS 用の MSAL では、macOS 上でのみ実行されるデスクトップアプリケーションがサポートされています。 
+
+## <a name="public-client-application-with-msalnet"></a>MSAL.NET を使用したパブリック クライアント アプリケーション
 
 コードの観点から、デスクトップ アプリケーションは、パブリック クライアント アプリケーションであり、このため、MSAL.NET `IPublicClientApplication` を構築して操作します。 また、対話型認証を使用するかどうかにかかわらず、状況は少し異なります。
 
@@ -174,6 +176,59 @@ var app = PublicClientApplicationBuilder.CreateWithApplicationOptions(config.Pub
 ```
 
 また、`.Build()` メソッドを呼び出す前に、前述のように `.WithXXX` メソッドを呼び出すことで構成を上書きできます。
+
+## <a name="public-client-application-with-msal-for-ios-and-macos"></a>iOS および macOS 用の MSAL を使用したパブリック クライアント アプリケーション
+
+以下のコードでは、パブリック クライアント アプリケーションをインスタンス化して、職場および学校のアカウントまたは個人の Microsoft アカウントを使用して、Microsoft Azure のパブリック クラウドにユーザーをサインインさせます。
+
+### <a name="quick-configuration"></a>クイック構成
+
+Objective-C:
+
+```objc
+NSError *msalError = nil;
+    
+MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"];    
+MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&msalError];
+```
+
+Swift:
+```swift
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>")
+if let application = try? MSALPublicClientApplication(configuration: config){ /* Use application */}
+```
+
+### <a name="more-elaborated-configuration"></a>より詳細な構成
+
+多数の修飾子を追加して、アプリケーションの構築を細かく設定できます。 たとえば、お使いのアプリケーションを国内クラウド (ここでは米国政府) のマルチテナント アプリケーションにする場合、次のように記述できます。
+
+Objective-C:
+
+```objc
+MSALAADAuthority *aadAuthority =
+                [[MSALAADAuthority alloc] initWithCloudInstance:MSALAzureUsGovernmentCloudInstance
+                                                   audienceType:MSALAzureADMultipleOrgsAudience
+                                                      rawTenant:nil
+                                                          error:nil];
+                                                          
+MSALPublicClientApplicationConfig *config =
+                [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"<your-client-id-here>"
+                                                                redirectUri:@"<your-redirect-uri-here>"
+                                                                  authority:aadAuthority];
+                                                                  
+NSError *applicationError = nil;
+MSALPublicClientApplication *application =
+                [[MSALPublicClientApplication alloc] initWithConfiguration:config error:&applicationError];
+```
+
+Swift:
+
+```swift
+let authority = try? MSALAADAuthority(cloudInstance: .usGovernmentCloudInstance, audienceType: .azureADMultipleOrgsAudience, rawTenant: nil)
+        
+let config = MSALPublicClientApplicationConfig(clientId: "<your-client-id-here>", redirectUri: "<your-redirect-uri-here>", authority: authority)
+if let application = try? MSALPublicClientApplication(configuration: config) { /* Use application */}
+```
 
 ## <a name="next-steps"></a>次の手順
 

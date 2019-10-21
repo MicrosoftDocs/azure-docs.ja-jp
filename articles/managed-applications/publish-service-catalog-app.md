@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: bf6ae32a61504dc344e140a0e27c5a17b5422073
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 1d28a9d330dd001e3fdc05e37f7bbcdd2db7ee6e
+ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609875"
+ms.lasthandoff: 08/09/2019
+ms.locfileid: "71224538"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>マネージド アプリケーション定義を作成して発行する
 
@@ -139,6 +139,7 @@ mainTemplate.json ファイルを保存します。
             "location": "[location()]"
         }
     }
+}
 ```
 
 詳細については、[CreateUiDefinition の概要](create-uidefinition-overview.md)に関するページを参照してください。

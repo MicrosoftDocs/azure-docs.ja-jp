@@ -8,12 +8,12 @@ ms.date: 07/25/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 8a96c5b2d39967c8ee82f48e880bac9270a58c36
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 3843eb2e906e3fb8d390e509e17117b7849ac220
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68844809"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244711"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -58,7 +58,7 @@ azcopy cap-mbps 10
 
 ## <a name="change-the-location-of-the-log-files"></a>ログ ファイルの場所を変更する
 
-既定では、ログ ファイルは、Windows では `%USERPROFILE\\.azcopy` ディレクトリに、Mac および Linux では `$HOME\\.azcopy` ディレクトリにあります。 この場所は、以下のコマンドを使用することで、必要に応じて変更することができます。
+既定では、ログ ファイルは、Windows では `%USERPROFILE%\.azcopy` ディレクトリに、Mac および Linux では `$HOME\\.azcopy` ディレクトリにあります。 この場所は、以下のコマンドを使用することで、必要に応じて変更することができます。
 
 | オペレーティング システム | command  |
 |--------|-----------|

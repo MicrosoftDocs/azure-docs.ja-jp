@@ -7,6 +7,12 @@
       items:
         - name: Linux コンテナー内の Web アプリ
           href: secure-web-app.md
+        - name: Web アプリと Azure Active Directory
+          href: secure-aad-app.md
+    - name: 業界準拠のソリューション
+      items:
+        - name: ペイメント カード業界
+          href: secure-pci-web-app.md
 - name: 概念
   expanded: true
   items:
@@ -61,7 +67,7 @@
           items:
             - name: 監査とログ記録
               href: threat-modeling-tool-auditing-and-logging.md
-            - name: Authentication
+            - name: 認証
               href: threat-modeling-tool-authentication.md
             - name: Authorization
               href: threat-modeling-tool-authorization.md

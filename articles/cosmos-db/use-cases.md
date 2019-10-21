@@ -6,12 +6,12 @@ author: SnehaGunda
 ms.author: sngun
 ms.topic: conceptual
 ms.date: 05/21/2019
-ms.openlocfilehash: 04c1466c47d28f638bf7461050cb06b59c7d2396
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: e22b426b2172c169f9343569fffac57f370afbee
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69614233"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219884"
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Azure Cosmos DB の一般的なユース ケース
 この記事では、Azure Cosmos DB のいくつかの一般的なユースケースの概要について説明します。  この記事に記載されている推奨事項は、Cosmos DB を使用してアプリケーションを開発する際の出発点として利用できます。   
@@ -40,7 +40,7 @@ Azure Cosmos DB を、グローバルな展開を視野に入れた高性能ア�
 このように、DocumentDB は大量の読み取り/書き込みを迅速に処理する必要がある Web アプリケーション、モバイル アプリケーション、ゲーム アプリケーション、IoT アプリケーションに有用です。
 
 ## <a name="iot-and-telematics"></a>IoT とテレマティックス
-IoT のユース ケースでは、データの取り込み、処理、および格納の方法にいくつかの共通パターンがあります。  まず、これらのシステムでは、さまざまなロケールのデバイス センサーから大量のデータを取り込む必要があります。 次に、これらのシステムではストリーミング データを処理および分析して、インサイトをリアルタイムで導き出しています。 その後、データはバッチ分析用にコールド ストレージにアーカイブされます。 Microsoft Azure では、Azure Cosmos DB、Azure Event Hub、Azure Stream Analytics、Azure Notification Hub、Azure Machine Learning、Azure HDInsight、PowerBI など、IoT のユース ケースに適用できる豊富なサービスを提供しています。 
+IoT のユース ケースでは、データの取り込み、処理、および格納の方法にいくつかの共通パターンがあります。  まず、これらのシステムでは、さまざまなロケールのデバイス センサーから大量のデータを取り込む必要があります。 次に、これらのシステムではストリーミング データを処理および分析して、インサイトをリアルタイムで導き出しています。 その後、データはバッチ分析用にコールド ストレージにアーカイブされます。 Microsoft Azure では、Azure Cosmos DB、Azure Event Hubs、Azure Stream Analytics、Azure Notification Hub、Azure Machine Learning、Azure HDInsight、Power BI など、IoT のユース ケースに適用できる豊富なサービスを提供しています。 
 
 ![Azure Cosmos DB IoT リファレンス アーキテクチャ](./media/use-cases/iot.png)
 
@@ -98,32 +98,7 @@ Cosmos DB でサポートされる形式である JSON は、軽量なうえに 
 ![Azure Cosmos DB Web アプリ リファレンス アーキテクチャ](./media/use-cases/personalization.png)
 
 ## <a name="next-steps"></a>次の手順
-Azure Cosmos DB の使用を開始するには、[クイック スタート](create-sql-api-dotnet.md)をご覧ください。このクイック スタートでは、アカウントを作成して Cosmos DB を実際に使用する方法を説明しています。 
 
-または、Cosmos DB を使用しているお客様の詳細情報を確認したい場合は、次の顧客事例が提供されています。
+* Azure Cosmos DB の使用を開始するには、[クイック スタート](create-sql-api-dotnet.md)をご覧ください。このクイック スタートでは、アカウントを作成して Cosmos DB を実際に使用する方法を説明しています。
 
-* [Jet.com](https://jet.com)。 電子商取引の挑戦者はトップを見据えて、Microsoft のクラウド上で運用を行い、世界規模で Cosmos DB を活用しています。
-* [Asos.com](https://www.asos.com/)。 Asos.com は、英国のファッションおよび美容用品のオンライン ストアです。 主に若者をターゲットとし、Asos は 850 以上のブランドおよび、独自のラインナップの衣類やアクセサリーを販売しています。
-* [トヨタ](https://www.toyota.com/)。 トヨタ自動車は日本の自動車メーカーです。 トヨタでは、グローバル IoT アプリに Cosmos DB を活用しています。
-* [Citrix](https://customers.microsoft.com/story/citrix)。 Citrix では、Azure Service Fabric および Azure Cosmos DB を使用してシングル サインオン ソリューションを開発しています。
-* [TEXA](https://customers.microsoft.com/story/texaspa) TEXA の革新的な車両所有者向け IoT ソリューションは、時間、費用、ガソリンを節約し、ひいては生活全般の負担を軽減します。
-* [Domino's Pizza](https://www.dominos.com)。 Domino's Pizza Inc. は、アメリカのピザ レストラン チェーンです。
-* [Johnson Controls](https://www.johnsoncontrols.com)。 Johnson Controls は、150 以上の国や地域で幅広い顧客にサービスを提供する、グローバルな総合テクノロジおよび多業種のリーダーです。
-* [Microsoft Windows、ユニバーサル ストア、Azure IoT Hub、Xbox Live、その他のインターネット規模のサービス](https://azure.microsoft.com/blog/how-azure-documentdb-planet-scale-nosql-helps-run-microsoft-s-own-businesses/)。 Microsoft が Azure Cosmos DB を使用して大規模でスケーラブルなサービスを構築する方法。
-* [Microsoft のデータと分析チーム](https://customers.microsoft.com/story/microsoftdataandanalytics)。 マイクロソフトのデータと分析チームは、Azure Cosmos DB を使用して、地球規模のビッグデータの収集を実現しました。
-* [Sulekha.com](https://customers.microsoft.com/story/sulekha-uses-azure-documentdb-to-connect-customers-and-businesses-across-india)。 Sulekha では、Azure Cosmos DB を使用してインド各地で顧客と企業を結び付けています。
-* [NewOrbit](https://customers.microsoft.com/story/neworbit-takes-flight-with-azure-documentdb)。 NewOrbit は、Azure Cosmos DB を使用することで飛躍を遂げています。
-* [Affinio](https://customers.microsoft.com/doclink/affinio-switches-from-aws-to-azure-documentdb-to-harness-social-data-at-scale)。 Affinio は、大規模なソーシャル データを処理するために、AWS から Azure Cosmos DB に切り替えます。
-* [Next Games](https://azure.microsoft.com//blog/the-walking-dead-no-mans-land-game-soars-to-1-with-azure-documentdb/)。 「The Walking Dead: No Man's Land」は、Azure Cosmos DB のサポートによりランキング 1 位に浮上しました。
-* [Halo](https://azure.microsoft.com/blog/how-halo-5-guardians-implemented-social-gameplay-using-azure-documentdb/)。 Azure Cosmos DB を使用して「Halo 5」にソーシャル ゲームプレイを実装した方法をご紹介します。
-* [Cortana Analytics ギャラリー](https://azure.microsoft.com/blog/cortana-analytics-gallery-a-scalable-community-site-built-on-azure-documentdb/)。 Cortana Analytics ギャラリーは、Azure Cosmos DB 上に構築されたスケーラブルなコミュニティ サイトです。
-* [Breeze](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18602)。 業界屈指のインテグレーターが柔軟なクラウド テクノロジを使用した多国籍企業のグローバル インサイトを数分で説明します。
-* [News Republic](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18639)。 ニュースにインテリジェントを追加し、意識の高い市民に向けて情報を提供しています。 
-* [SGS International](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18653)。 世界全体で一貫した色を提示するために、大手ブランドが SGS を頼っています。 その SGS は Azure を活用しています。
-* [Telenor](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18608)。 世界的リーダーの Telenor では、クラウドを使用して、スタートアップ時のスピードを保って前進しています。 
-* [XOMNI](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18667)。 未来の店舗は、スピーディな検索と容易なデータ フローを基盤として運営されます。
-* [Nucleo](https://customers.microsoft.com/story/azure-based-software-platform-breaks-down-barriers-bet)。 Azure ベースのソフトウェア プラットフォームが、企業と顧客との間の壁を打ち壊します。
-* [Weka](https://customers.microsoft.com/story/weka-smart-fridge-improves-vaccine-management-so-more-people-can-be-protected-against-diseases)。 Weka の Smart Fridge によってワクチン管理が向上し、より多くの人を感染症から守ることができるようになりました。
-* [Orange Tribes](https://customers.microsoft.com/story/theres-more-to-that-food-app-than-meets-the-eye-or-the-mouth)。 そこには、目に映るフード アプリ以上のものがあります。
-* [Real Madrid](https://customers.microsoft.com/story/real-madrid-brings-the-stadium-closer-to-450-million-f)。 Real Madrid は、Microsoft Cloud により、世界中から 4 億 5,000 万人近くのファンをスタジアムに動員しています。
-* [Tuku](https://customers.microsoft.com/story/tuku-makes-car-buying-fun-with-help-from-azure-services)。 TUKU では、Azure サービスを利用して自動車を快適に購入できます。
+* Azure Cosmos DB を使用する顧客の詳細については、「[顧客のケース スタディ](https://azure.microsoft.com/en-us/case-studies/?service=cosmos-db)」ページを参照してください。

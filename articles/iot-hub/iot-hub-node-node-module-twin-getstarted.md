@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: 3796017af643c993871757482ed17d1765cd6494
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 0fc676fd32c585324bac0024655765ebd628385a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70802406"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72165908"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-nodejs"></a>IoT Hub モジュール ID とモジュール ツイン (Node.js) の概要
 
@@ -54,9 +54,9 @@ ms.locfileid: "70802406"
 
 1. コードを保持するためのディレクトリを作成します。
 
-2. そのディレクトリ内で、まず  **npm init -y**  を実行して、既定値で空の package.json を作成します。 これは、コードのプロジェクト ファイルです。
+2. そのディレクトリ内で最初に **npm init -y** を実行して、既定値で空の package.json を作成します。 これは、コードのプロジェクト ファイルです。
 
-3.  **npm install -S azure-iothub\@modules-preview** を実行して、 **node_modules**  サブディレクトリ内にサービス SDK をインストールします。
+3. **npm install -S azure-iothub\@modules-preview** を実行して、**node_modules** サブディレクトリ内にサービス SDK をインストールします。
 
     > [!NOTE]
     > サブディレクトリ名 node_modules では、"ノード ライブラリ" を意味する用語モジュールを使用します。 ここで言う用語は IoT Hub モジュールとは関係ありません。
@@ -192,7 +192,7 @@ ms.locfileid: "70802406"
     });
     ```
 
-4. 次に、コマンド  **node twin.js** を使用してこれを実行します。
+4. 次に、コマンド **node twin.js** を使用してこれを実行します。
 
    ```cmd/sh
    F:\temp\module_twin>node twin.js

@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: danlep
-ms.openlocfilehash: ad7f93bb3934ca01b7f45c0bd4b5cc8be81ea54b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 05f1bcd5e80d7c06fbaca1abe89c84f6743a5979
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325518"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034975"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -29,6 +29,7 @@ Azure 仮想ネットワークにデプロイされたコンテナー グルー�
 
 > [!IMPORTANT]
 > この機能は現在プレビュー段階であり、一定の[制限事項が適用されます](#preview-limitations)。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+
 
 ## <a name="virtual-network-deployment-limitations"></a>仮想ネットワークのデプロイに関する制限事項
 
@@ -263,6 +264,10 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 ```
 
 ### <a name="delete-network-resources"></a>ネットワーク リソースの削除
+
+
+> [!NOTE]
+> ネットワーク プロファイルを削除しようとしているときにエラーが発生した場合は、プラットフォームが自動的に問題を軽減し、削除を再試行するまで 2 ～ 3 日待ちます。 それでもネットワーク プロファイルの削除に問題が発生する場合は、[サポート リクエストを作成します。](https://azure.microsoft.com/support/create-ticket/)
 
 この機能の初期プレビューでは、先ほど作成したネットワーク リソースを削除するために、いくつかの追加コマンドが必要になります。 この記事の前のセクションに示したサンプル コマンドを使って仮想ネットワークとサブネットを作成した場合は、次のスクリプトを使ってそれらのネットワーク リソースを削除できます。
 

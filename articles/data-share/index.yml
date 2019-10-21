@@ -4,20 +4,20 @@ summary: Azure Data Share プレビューは、サードパーティの組織と
 metadata:
   title: Azure Data Share (プレビュー)
   description: Azure Data Share (プレビュー) は、サードパーティの組織とデータを共有するためのセキュリティで保護された安全なサービスです。
-  services: service
+  services: data-share
   ms.service: data-share
   ms.subservice: subservice
   ms.topic: landing-page
   ms.collection: collection
-  author: hrasheed-msft
-  ms.author: hrasheed
+  author: joannapea
+  ms.author: joanpo
   ms.date: 09/13/2019
-  ms.openlocfilehash: 7e44541fae4cb9987f4c2e3b68a6ec3ff61c1bcf
-  ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+  ms.openlocfilehash: 3780957ad47869181ba6cae39996eb13638f9326
+  ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/14/2019
-  ms.locfileid: "70993936"
+  ms.lasthandoff: 10/09/2019
+  ms.locfileid: "72169038"
 landingContent:
 - title: Azure Data Share について
   linkLists:

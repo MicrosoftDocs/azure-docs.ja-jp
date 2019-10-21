@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f008cdf80e15e2737fea19f72ec6703932cf301f
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70382816"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026407"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Azure Active Directory でカスタム ロールを作成して割り当てる
 
@@ -31,7 +31,7 @@ ms.locfileid: "70382816"
 ### <a name="create-a-new-custom-role-to-grant-access-to-manage-app-registrations"></a>新しいカスタム ロールを作成してアプリ登録を管理するためのアクセス権を付与する
 
 1. Azure AD 組織の特権ロール管理者またはグローバル管理者のアクセス許可を使用して  [Azure AD 管理センター](https://aad.portal.azure.com) にサインインします。
-1.  **[Azure Active Directory]**  >  **[ロールと管理者]**  > **[新しいカスタム ロール]** を選択します。
+1. **[Azure Active Directory]**  >  **[ロールと管理者]**  >  **[新しいカスタム ロール]** を選択します。
 
    ![[ロールと管理者] ページでロールを作成または編集する](./media/roles-create-custom/new-custom-role.png)
 

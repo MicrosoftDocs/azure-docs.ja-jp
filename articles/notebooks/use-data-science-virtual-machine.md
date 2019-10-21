@@ -9,16 +9,15 @@ ms.assetid: 0ccc2529-e17f-4221-b7c7-9496d6a731cc
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: getroyer
-ms.openlocfilehash: fe9886429a5e894f40c04b1f65094e412c1dc9e2
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 0f06475708adaf1324eedbd8e315fe4d731339be
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441202"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970095"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure Data Science Virtual Machine を使用する
 

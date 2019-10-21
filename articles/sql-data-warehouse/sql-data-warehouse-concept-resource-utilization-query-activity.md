@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/09/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 7f7575daa91cef5cb5be6274a699323fafe67a68
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 786ae1f18d52c6763b60f5019ecfe365f1cd540a
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68935134"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71334102"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのリソース使用状況とクエリ アクティビティを監視する
 Azure portal 内にある Azure SQL Data Warehouse のリッチな監視エクスペリエンスでは、データ ウェアハウスのワークロードに関する分析情報が表示されます。 データ ウェアハウスを監視するときの推奨されるツールである Azure portal では、構成可能なリテンション期間、アラート、推奨事項、およびメトリックとログのカスタマイズ可能なグラフとダッシュボードが提供されます。 ポータルでは、Operations Management Suite (OMS) や Azure Monitor (ログ) などの他の Azure 監視サービスと統合して、お使いのデータ ウェアハウスだけでなく、統合された監視エクスペリエンスに対する Azure 分析プラットフォーム全体も含む、総合的な監視エクスペリエンスを提供することもできます。 このドキュメントでは、SQL Data Warehouse で分析プラットフォームの最適化と管理に使用できる監視機能について説明します。 
@@ -42,6 +42,8 @@ Azure portal では、SQL Data Warehouse に対して以下のメトリックを
 > メトリックを表示してアラートを設定するときに考慮が必要な事項は次のとおりです。
 >
 > - 接続の失敗と成功がレポートされるのは、特定のデータ ウェアハウスについてです。論理サーバーについてはレポートされません
+> - データ ウェアハウスがアイドル状態であっても、メモリの割合には使用率が反映されます。アクティブなワークロードのメモリ消費は反映されません。 追加のキャッシュ容量のスケーリングによってワークロードのパフォーマンスが要件を満たすように向上するかどうかに関する総合的な意思決定を行うために、このメトリックとその他 (tempdb、gen2 キャッシュ) を使用して追跡します。
+
 
 ## <a name="query-activity"></a>クエリ アクティビティ
 T-SQL を使用して SQL Data Warehouse を監視するときのプログラム エクスペリエンスでは、動的管理ビュー (DMV) のセットがサービスによって提供されます。 これらのビューは、アクティブのトラブルシューティングを行うときと、ワークロードでパフォーマンスのボトルネックを特定するときに役に立ちます。

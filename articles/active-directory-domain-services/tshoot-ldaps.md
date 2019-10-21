@@ -1,50 +1,51 @@
 ---
-title: Azure AD Domain Services での Secure LDAP (LDAPS) のトラブルシューティング | Microsoft Docs
-description: Azure AD Domain Services のマネージド ドメインに対する Secure LDAP (LDAPS) のトラブルシューティング
+title: Azure AD Domain Services での Secure LDAP のトラブルシューティング | Microsoft Docs
+description: Azure AD Domain Services のマネージド ドメインに対する Secure LDAP (LDAPS) をトラブルシューティングする方法について説明します
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 445c60da-e115-447b-841d-96739975bdf6
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/20/2019
+ms.topic: troubleshooting
+ms.date: 09/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 285af0e5e5d5ab03027fc29064a5f3623ed10e2f
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 96aa463441c9e0f21e2ef1aa27c566b94e1e5f4f
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617042"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71257885"
 ---
-# <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに対する Secure LDAP (LDAPS) のトラブルシューティング
+# <a name="troubleshoot-secure-ldap-connectivity-issues-to-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメインに対する Secure LDAP の接続に関する問題のトラブルシューティング
 
-## <a name="connection-issues"></a>接続に関する問題
-Secure LDAP を使用したマネージド ドメインへの接続に問題がある場合:
+ライトウェイト ディレクトリ アクセス プロトコル (LDAP) を使用して Azure Active Directory Domain Services (Azure AD DS) と通信するアプリケーションとサービスは、[Secure LDAP を使用するように構成](tutorial-configure-ldaps.md)できます。 Secure LDAP が正しく機能するためには、適切な証明書と必要なネットワーク ポートが開いている必要があります。
 
-* Secure LDAP 証明書の発行者チェーンは、クライアントで信頼されている必要があります。 信頼を確立するために、信頼されたルート証明書ストアにルート証明機関を追加することもできます。
-* LDAP クライアント (ldp.exe など) が、IP アドレスではなく、DNS 名を使用して Secure LDAP エンドポイントに接続していることを確認します。
-* LDAP クライアントの接続先の DNS 名を確認します。 この DNS 名は、マネージド ドメイン上の Secure LDAP に対するパブリック IP アドレスに解決される必要があります。
-* マネージド ドメインの Secure LDAP 証明書の "サブジェクト" 属性または "サブジェクトの別名" 属性に、上記の DNS 名が含まれていることを確認します。
-* 仮想ネットワークの NSG の設定では、インターネットからポート 636 へのトラフィックを許可する必要があります。 このステップは、インターネット経由での Secure LDAP を有効にしている場合にのみ適用されます。
+この記事は、Azure AD DS での Secure LDAP アクセスに関する問題のトラブルシューティングに役立ちます。
 
+## <a name="common-connection-issues"></a>一般的な接続に関する問題
 
-## <a name="need-help"></a>お困りの際は、
-Secure LDAP を使用したマネージド ドメインへの接続の問題が解決しない場合は、支援を得るために[製品チームに連絡](contact-us.md)してください。 問題を適切に診断できるように、次の情報を含めます。
-* ldp.exe が接続に失敗したことを示しているスクリーンショット。
-* Azure AD テナント ID と、マネージド ドメインの DNS ドメイン名。
-* バインドしようとしている正確なユーザー名。
+Secure LDAP を使用した Azure AD DS マネージド ドメインへの接続で問題がある場合は、次のトラブルシューティングの手順を確認してください。 トラブルシューティングの各手順を実行した後、Azure AD DS マネージド ドメインに再度接続を試みてください。
 
+* Secure LDAP 証明書の発行者チェーンは、クライアントで信頼されている必要があります。 信頼を確立するために、クライアント上の信頼されたルート証明書ストアにルート証明機関 (CA) を追加できます。
+    * [クライアント コンピューターに証明書をエクスポートして適用していること][client-cert]を確認します。
+* マネージド ドメインの Secure LDAP 証明書の *Subject* (サブジェクト) 属性または *Subject Alternative Names* (サブジェクトの別名) 属性に、DNS 名が含まれていることを確認します。
+    * [Secure LDAP 証明書の要件][certs-prereqs]を確認し、必要に応じて代替証明書を作成します。
+* LDAP クライアント (*ldp.exe* など) が、IP アドレスではなく、DNS 名を使用して Secure LDAP エンドポイントに接続していることを確認します。
+    * Azure AD DS マネージド ドメインに適用される証明書には、サービスの IP アドレスは含まれず、DNS 名のみが含まれます。
+* LDAP クライアントの接続先の DNS 名を確認します。 これは、Azure AD DS マネージド ドメイン上の Secure LDAP のパブリック IP アドレスに解決される必要があります。
+    * DNS 名が内部 IP アドレスに解決される場合は、外部 IP アドレスに解決されるように DNS レコードを更新します。
+* 外部接続の場合、ネットワーク セキュリティ グループに、インターネットから TCP ポート 636 へのトラフィックを許可する規則が含まれている必要があります。
+    * 仮想ネットワークに直接接続するリソースから Secure LDAP を使用して Azure AD DS マネージド ドメインには接続できるが、外部接続ができない場合は、[Secure LDAP トラフィックを許可するネットワーク セキュリティ グループ規則を作成][ldaps-nsg]してください。
 
-## <a name="related-content"></a>関連コンテンツ
-* [Azure AD ドメイン サービス - 作業開始ガイド](tutorial-create-instance.md)
-* [Azure AD Domain Services ドメインを管理する](tutorial-create-management-vm.md)
-* [LDAP query basics](https://technet.microsoft.com/library/aa996205.aspx) (LDAP クエリの基本)
-* [Azure AD Domain Services のグループ ポリシーを管理する](manage-group-policy.md)
-* [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
-* [ネットワーク セキュリティ グループの作成](../virtual-network/tutorial-filter-network-traffic.md)
+## <a name="next-steps"></a>次の手順
+
+まだ問題が解決しない場合は、さらなるトラブルシューティングの支援を求めて、[Azure サポート リクエストを開いて][azure-support]ください。
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md
+[configure-ldaps]: tutorial-configure-ldaps.md
+[certs-prereqs]: tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap
+[client-cert]: tutorial-configure-ldaps.md#export-a-certificate-for-client-computers
+[ldaps-nsg]: tutorial-configure-ldaps.md#lock-down-secure-ldap-access-over-the-internet

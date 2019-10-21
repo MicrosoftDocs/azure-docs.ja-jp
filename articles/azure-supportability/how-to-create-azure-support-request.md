@@ -2,32 +2,27 @@
 title: Azure サポート要求を作成する方法 | Microsoft Docs
 description: Azure サポート要求を作成する方法
 services: Azure Supportability
-documentationcenter: ''
 author: ganganarayanan
 manager: scotthit
-editor: ''
 ms.assetid: fd6841ea-c1d5-4bb7-86bd-0c708d193b89
 ms.service: azure-supportability
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: f6d9e683e1feff670c26b01a31ce977557295bff
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0195cc86875b075e00e9305d803b8d637905db78
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62129061"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72248712"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>Azure サポート要求を作成する方法
 ## <a name="summary"></a>まとめ
 Azure ユーザーは、Azure Portal ([https://portal.azure.com](https://portal.azure.com)) でサポート要求を作成し、管理できます。
 
 > [!NOTE]
-> ドイツの Azure Portal は、[https://portal.microsoftazure.de](https://portal.microsoftazure.de)  です。  
-> 米国政府機関向け Azure Portal は、[https://portal.azure.us](https://portal.azure.us) です。
+> 商用の Azure portal は [https://portal.azure.com](https://portal.azure.com) です。ドイツ向けの Azure portal は [https://portal.microsoftazure.de](https://portal.microsoftazure.de)  です  
+> 米国政府機関向けの Azure portal は [https://portal.azure.us](https://portal.azure.us) です
 
 
 お客様からいただいたご意見とご要望に基づき、サポート要求のシステムを改善しました。大きな目標として次の 3 つに取り組んでいます。

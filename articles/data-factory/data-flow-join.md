@@ -7,16 +7,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 18f713198ef9aa45cb72a6718c0f7b086c019258
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48cf9d58c8acd85e545a5bcb5104d7069670e349
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61348556"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029328"
 ---
 # <a name="mapping-data-flow-join-transformation"></a>Mapping Data Flow の結合変換
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 データ フロー内の 2 つのテーブルのデータを結合するには、結合を使用します。 左側のリレーションシップになる変換をクリックし、ツールボックスから結合変換を追加します。 結合変換の内部で、右側のリレーションシップになる別のデータ ストリームをデータ フローから選択します。
 
@@ -54,11 +54,11 @@ ms.locfileid: "61348556"
 
 ## <a name="join-performance-optimizations"></a>結合のパフォーマンスの最適化
 
-SSIS などのツールのマージ結合とは異なり、ADF Data Flow の結合は強制的なマージ結合操作ではありません。 そのため、最初に結合キーを並べ替える必要がありません。 結合操作は、Spark での最適な結合操作に基づき、Spark でDatabricks を使用して行われます。ブロードキャスト/マップ側の結合:
+SSIS などのツールのマージ結合とは異なり、ADF Data Flow の結合は強制的なマージ結合操作ではありません。 そのため、最初に結合キーを並べ替える必要がありません。 結合操作は、Spark での最適な結合操作に基づいて行われます。ブロードキャスト/マップ側の結合:
 
 ![結合変換の最適化](media/data-flow/joinoptimize.png "結合の最適化")
 
-データセットが Databricks ワーカー ノードのメモリに収まる場合、結合のパフォーマンスは自動的に最適化されます。 結合操作でデータのパーティション分割を指定して、各ワーカーのメモリにより適したデータセットを作成することもできます。
+データセットがワーカー ノードのメモリに収まる場合、結合のパフォーマンスは自動的に最適化されます。 結合操作でデータのパーティション分割を指定して、各ワーカーのメモリにより適したデータセットを作成することもできます。
 
 ## <a name="self-join"></a>自己結合
 

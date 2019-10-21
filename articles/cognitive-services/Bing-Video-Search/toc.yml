@@ -50,7 +50,8 @@
     - name: 急上昇中の動画の取得
       href: trending-videos.md
     - name: ビデオのページング
-      href: paging-videos.md
+      maintainContext: true
+      href: ../Bing-Web-Search/paging-search-results.md
     - name: サムネイルのサイズ変更とトリミング
       maintainContext: true
       href: ../bing-web-search/resize-and-crop-thumbnails.md

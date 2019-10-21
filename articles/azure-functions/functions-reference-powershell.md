@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: tyleonha
 ms.reviewer: glenga
-ms.openlocfilehash: 36d24e798e73ef336324eedadee1ba3fec4c0e1d
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 9163f2b7943a8022b88b2ed514f4a466e61a8d98
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773044"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029019"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions の PowerShell 開発者向けガイド
 
@@ -426,6 +426,17 @@ requirements.psd1
     SqlServer = '21.1.18147'
 }
 ```
+
+次の設定を使用して、管理対象の依存関係をダウンロードしてインストールする方法を変更できます。 アプリのアップグレードは MDMaxBackgroundUpgradePeriod 以内に開始され、アップグレード プロセスはほとんど MDNewSnapshotCheckPeriod 以内に完了します。
+
+| 関数アプリ設定              | 既定値             | 説明                                         |
+|   -----------------------------   |   -------------------     |  -----------------------------------------------    |
+| MDMaxBackgroundUpgradePeriod      | “7.00:00:00” (7 日)     | すべての PS ワーカーは、ワーカー プロセスの開始時に PS ギャラリーでモジュールのアップグレードのチェックを開始し、その後は MDMaxBackgroundUpgradePeriod ごとにチェックします。 新しいモジュール バージョンが PS ギャラリーで利用可能な場合、PS ワーカーが使用できるファイル システムにインストールされます。 この値を小さくすると、関数アプリはより新しいモジュール バージョンをより早く取得できますが、アプリ リソースの使用量 (ネットワーク I/O、CPU、ストレージ) も増加します。 この値を大きくすると、アプリ リソースの使用量が減少しますが、アプリへの新しいモジュール バージョンの配信が遅れる可能性もあります。      | 
+| MDNewSnapshotCheckPeriod          | “01:00:00” (1 時間)       | 新しいモジュール バージョンがファイル システムにインストールされたら、すべての PS ワーカーを再起動する必要があります。 PS ワーカーの再起動は、現在の関数呼び出しを中断する可能性があるため、アプリの可用性に影響を与える可能性があります。 すべての PS ワーカーが再起動されるまで、関数呼び出しでは、前のモジュール バージョンまたは新しいモジュール バージョンのいずれかが使用される可能性があります。 すべての PS ワーカーの再起動は MDNewSnapshotCheckPeriod 以内に完了します。 この値を大きくすると、中断の頻度は低くなりますが、関数呼び出しで、前のモジュール バージョンまたは新しいモジュール バージョンのいずれかが非決定的に使用される期間が長くなる可能性もあります。 |
+| MDMinBackgroundUpgradePeriod      | “1.00:00:00” (1 日)     | ワーカーの頻繁な再起動でモジュールのアップグレードが過剰にならないようにするため、最後の MDMinBackgroundUpgradePeriod 以内に既に開始されているワーカーがある場合は、モジュールのアップグレード確認は実行されません。 |
+
+> [!NOTE]
+> 管理対象の依存関係は、www.powershellgallery.com へのアクセスに依存して、モジュールをダウンロードします。 あらゆる必要なファイアウォール規則を追加して、関数ランタイムで、確実にこの URL にアクセスできるようにします。
 
 独自のカスタム モジュールを利用する方法が、通常の方法とは若干異なります。
 

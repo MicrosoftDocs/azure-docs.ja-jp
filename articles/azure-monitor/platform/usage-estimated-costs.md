@@ -9,22 +9,19 @@ ms.date: 04/18/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7117e7287f601b306893cb02dc5d7599d7c6224d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 787618b59cd18dd4c38892ddf0861808211671cb
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60453832"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936618"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>Azure Monitor での使用量と推定コストの監視
 
 > [!NOTE]
-> この記事では、Azure の異なる価格モデルの複数の監視機能全体の使用量と推定コストを表示する方法について説明します。  関連する情報については、次の記事を参照してください。
-> - 「[Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する](manage-cost-storage.md)」では、データ保有期間を変更することでコストを制御する方法について説明します。
-> - 「[Log Analytics でのデータ使用状況の分析](../../azure-monitor/platform/data-usage.md)」では、データ使用状況を分析し、アラートを作成する方法について説明します。
-> - 「[Application Insights での価格とデータ ボリュームの管理](../../azure-monitor/app/pricing.md)」では、Application Insights でデータ使用状況を分析する方法について説明します。
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> この記事では、Azure の異なる価格モデルの複数の監視機能全体の使用量と推定コストを表示する方法について説明します。 Azure Monitor の特定のコンポーネントに関連する記事は次のとおりです。
+> - 「[Azure Monitor ログで使用量とコストを管理する](manage-cost-storage.md)」では、データ保持期間を変更してコストを管理する方法、およびデータの使用状況を分析してアラートを作成する方法について説明します。
+> - 「[Application Insights の使用量とコストを管理する](../../azure-monitor/app/pricing.md)」では、Application Insights でデータ使用状況を分析する方法について説明します。
 
 Azure Portal の [監視] ハブの **[使用量と推定コスト]** ページには、[アラート、メトリック、通知](https://azure.microsoft.com/pricing/details/monitor/)[Azure Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)、[Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) などの中心的な監視機能の使用量が説明されています。 2018 年 4 月より前の価格プランを利用しているお客様の場合は、Insights と Analytics 経由で購入した Log Analytics の使用量も含まれています。
 
@@ -42,9 +39,11 @@ Azure Portal の [監視] ハブの **[使用量と推定コスト]** ページ�
 
 ![使用量と推定コストを表示しているポータルのスクリーンショット - 2018 年 4 月の価格](./media/usage-estimated-costs/003.png)
 
-## <a name="new-pricing-model"></a>新しい価格モデル
+## <a name="pricing-model"></a>価格モデル
 
-2018 年 4 月に[新しい監視の価格モデルがリリースされました](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。  これは、クラウドに適した使用量に基づく料金であることを特徴としています。 ノード ベースに支払うのではなく、使用した分だけ支払います。 新しい価格モデルは、[アラート、メトリック、通知](https://azure.microsoft.com/pricing/details/monitor/)、[Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)、および [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) で利用できます。 
+2018 年 4 月に[新しい監視の価格モデルがリリースされました](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。  これは、クラウドに適した使用量に基づく料金 (従量課金制) であることを特徴としています。 ノード ベースに支払うのではなく、使用した分だけ支払います。 新しい価格モデルは、[アラート、メトリック、通知](https://azure.microsoft.com/pricing/details/monitor/)、[Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)、および [Application Insights](https://azure.microsoft.com/pricing/details/application-insights/) で利用できます。 
+
+従量課金制モデルに加え、2019 年 9 月に Log Analytics に対して容量予約を追加しました。こちらを選択すると、従量課金制の価格に比べて 25% も節約できます。 容量予約の価格を選択すると、1 日あたり 100 GB から予約を購入できます。 予約レベルを超える使用量は、従量課金制で請求されます。 容量予約の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/monitor/)を参照してください。
 
 2018 年 4 月 2 日より後に Log Analytics または Application Insights の利用を開始するお客様は、この新しい料金プランのみを選択できます。 これらのサービスを既に利用しているお客様は、新しい価格モデルに移行するかどうかを選択できます。
 
@@ -112,4 +111,3 @@ Microsoft Operations Management Suite E1 および E2 を購入されたお客�
 既に説明したように、サブスクリプション内のすべての監視リソースを新しい価格モデルに同時に移動するという要件がなくなったため、``migratetonewpricingmodel`` アクションは効果を持たなくなりました。 今では、Application Insights リソースと Log Analytics ワークスペースを個別に最新の価格レベルに移動できます。  
 
 この変更の自動化についてのドキュメントがあります。Application Insights の場合は [Set-AzureRmApplicationInsightsPricingPlan](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/set-azurermapplicationinsightspricingplan) と ``-PricingPlan "Basic"`` を使用し、Log Analytics の場合は [Set-AzureRmOperationalInsightsWorkspace](https://docs.microsoft.com/powershell/module/AzureRM.OperationalInsights/Set-AzureRmOperationalInsightsWorkspace) と ``-sku "PerGB2018"`` を使用しています。 
-

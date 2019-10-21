@@ -6,13 +6,12 @@ ms.author: dacoulte
 ms.date: 05/06/2019
 ms.topic: overview
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 7091e2bd1ee24843299721d3c21a8546197fac6f
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: bf54f1a96c6be7bbfb19770472752b3f958695c4
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207579"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71976812"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph サービスの概要
 
@@ -27,7 +26,7 @@ Azure Resource Graph は Azure 内のサービスであり、Azure Resource Mana
 
 > [!NOTE]
 > Azure Resource Graph は、Azure portal の検索バー、新しい "すべてのリソース" 参照エクスペリエンス、Azure Policy の[変更履歴](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> の "_差分表示_" を強化します。大規模な環境を管理するお客様をサポートするために設計されています。
+> の "_差分表示_" を強化します。 大規模な環境を管理するお客様をサポートするために設計されています。
 
 [!INCLUDE [service-provider-management-toolkit](../../../includes/azure-lighthouse-supported-service.md)]
 

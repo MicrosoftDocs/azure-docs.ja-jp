@@ -1,7 +1,7 @@
 ---
 title: デプロイ トラブルシューティング ガイド
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service を使用する Azure Kubernetes Service と Azure Container Instances での一般的な Docker デプロイ エラーの回避、解決、またはトラブルシューティング方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning を使用する Azure Kubernetes Service と Azure Container Instances での一般的な Docker デプロイ エラーの回避、解決、またはトラブルシューティング方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,18 +11,18 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 07/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ec92e34ffa68718525e9b407dc9e58f4c409975
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 08b9434dbcca96ff57e2c8182693023a5eb2eea9
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183543"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70997173"
 ---
-# <a name="troubleshooting-azure-machine-learning-service-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Machine Learning service の Azure Kubernetes Service および Azure Container Instances デプロイのトラブルシューティング
+# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Azure Machine Learning の Azure Kubernetes Service および Azure Container Instances デプロイのトラブルシューティング
 
-Azure Machine Learning service を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) での一般的な Docker デプロイ エラーの回避方法または解決方法について説明します。
+Azure Machine Learning を使用する Azure Container Instances (ACI) と Azure Kubernetes Service (AKS) での一般的な Docker デプロイ エラーの回避方法または解決方法について説明します。
 
-Azure Machine Learning サービスでモデルをデプロイするとき、さまざまなタスクが実行されます。 デプロイ タスクの内容:
+Azure Machine Learning にモデルをデプロイすると、システムによって多数のタスクが実行されます。 デプロイ タスクの内容:
 
 1. ワークスペース モデル レジストリにモデルを登録します。
 
@@ -346,7 +346,7 @@ Azure Kubernetes Service のデプロイでは、自動スケールがサポー�
 
         ```json
         {
-            "name": "Azure Machine Learning service: Docker Debug",
+            "name": "Azure Machine Learning: Docker Debug",
             "type": "python",
             "request": "attach",
             "port": 5678,
@@ -479,7 +479,7 @@ myregistry.azurecr.io/myimage:1
     docker run --rm --name debug -p 8000:5001 -p 5678:5678 debug:1
     ```
 
-1. VS Code をコンテナー内の PTVSD に接続するには、VS Code を開き、F5 キーを使用するか __[デバッグ]__ を選択します。 メッセージが表示されたら、 __[Azure Machine Learning service: Docker Debug]__ 構成を選択します。 サイド バーのデバッグ アイコンを選択して、[デバッグ] ドロップダウン メニューから __[Azure Machine Learning service: Docker Debug]__ エントリを選択し、緑色の矢印を使用してデバッガーをアタッチすることもできます。
+1. VS Code をコンテナー内の PTVSD に接続するには、VS Code を開き、F5 キーを使用するか __[デバッグ]__ を選択します。 メッセージが表示されたら、 __[Azure Machine Learning : Docker Debug]__ 構成を選択します。 サイド バーのデバッグ アイコンを選択し、[デバッグ] ドロップダウン メニューから __[Azure Machine Learning: Docker Debug]__ エントリを選択し、緑色の矢印を使用してデバッガーをアタッチすることもできます。
 
     ![デバッグ アイコン、デバッグの開始ボタン、および構成セレクター](media/how-to-troubleshoot-deployment/start-debugging.png)
 

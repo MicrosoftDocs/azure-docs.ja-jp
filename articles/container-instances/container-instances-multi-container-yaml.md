@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 599339b0591245462dcc0840400ad5241cd5922c
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a38b0cfe7072975e4bcaf61b65ab7733694f714c
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325809"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178557"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>チュートリアル:YAML ファイルを使用して複数コンテナー グループをデプロイする
 
@@ -24,7 +24,7 @@ ms.locfileid: "68325809"
 
 Azure Container Instances では、[コンテナー グループ](container-instances-container-groups.md)を使用して、複数のコンテナーを 1 つのホストにデプロイできます。 コンテナー グループは、サービスが 2 つ目のアタッチされたプロセスを必要とする場合に、ログ記録、監視などの構成用にアプリケーション サイドカーを作成するときに便利です。
 
-このチュートリアルでは、Azure CLI を使用して YAML ファイルをデプロイすることで、単純な 2 コンテナー サイドカー構成を実行する手順を実行します。 YAML ファイルは、インスタンスの設定を指定するための簡潔な形式を提供します。 学習内容は次のとおりです。
+このチュートリアルでは、Azure CLI を使用して [YAML ファイル](container-instances-reference-yaml.md)をデプロイすることで、単純な 2 コンテナー サイドカー構成を実行する手順に従います。 YAML ファイルは、インスタンスの設定を指定するための簡潔な形式を提供します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * YAML ファイルを構成する

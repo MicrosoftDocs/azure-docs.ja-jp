@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: b454b563cdb870ca8f07a45b796dc6b1e272502d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9adfc1ef355c31f0bfeeb6c3b194d62426b7b9b3
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64924593"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244314"
 ---
 # <a name="azure-data-box-edge-limits"></a>Azure Data Box Edge の制限
 
@@ -29,9 +29,9 @@ Microsoft Azure Data Box Edge ソリューションをデプロイおよび運�
 
 | 説明 | 値 |
 |---|---|
-|デバイス あたりのファイル数 |1 億 |
-|デバイス あたりの共有数 |24 |
-|コンテナ ーあたりの共有数 |1 |
+|No. デバイスあたりのファイル数 |1 億 |
+|No. デバイスあたりの共有数 |24 |
+|No. コンテナーあたりの共有数 |1 |
 |1 つの共有に書き込まれる最大サイズ ファイル| 5 TB |
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限
@@ -53,4 +53,4 @@ Microsoft Azure Data Box Edge ソリューションをデプロイおよび運�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Data Box Gateway のデプロイを準備する](data-box-gateway-deploy-prep.md)
+- [Azure Data Box Edge のデプロイを準備する](data-box-edge-deploy-prep.md)

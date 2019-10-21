@@ -3,9 +3,8 @@ title: Azure Security Center を Standard レベルへアップグレードす�
 description: この記事では、Azure Security Center の価格について説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 4d1364cd-7847-425a-bb3a-722cb0779f78
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 547aed05746cb3f6c73c420169c727cc98c4ac4f
-ms.sourcegitcommit: 978e1b8cac3da254f9d6309e0195c45b38c24eb5
+ms.author: memildin
+ms.openlocfilehash: 356bfc28984ecc1bc6990c10378a3df155593e94
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67551748"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996714"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Azure Security Center を Standard レベルへアップグレードすることによるセキュリティ強化
 Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。 ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー攻撃への対応に役立つインテリジェント検出などの機能が提供されます。
@@ -49,7 +48,7 @@ Standard レベルを取得するには
 (画像内の価格はあくまでも例です。)![Security Center の価格](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
-> Security Center のすべての機能を有効にするには、Standard 価格レベルを適用可能な仮想マシンを含むサブスクリプションに適用する必要があります。 ワークスペースの価格設定の構成では、Just in time VM アクセス、アダプティブ アプリケーション コントロール、および Azure リソースのネットワーク検出は有効になりません。
+> Security Center のすべての機能を有効にするには、Standard 価格レベルを適用可能な仮想マシンを含むサブスクリプションに適用する必要があります。 ワークスペースの価格を構成しても、Just-In-Time VM アクセス、適応型アプリケーション制御、および Azure リソースのネットワーク検出は有効になりません。
 >
 >
 
@@ -65,7 +64,7 @@ Security Center は、次のようなハイブリッド クラウド ワーク�
 この記事では、Security Center の価格について紹介しました。 Standard レベルの強化されたセキュリティと高度な脅威保護に関する詳細については、次の記事を参照してください。
 
 - [高度な脅威検出](security-center-threat-report.md)
-- [[Just In Time VM アクセスの制御]](security-center-just-in-time.md)
+- [Just-In-Time VM アクセスの制御](security-center-just-in-time.md)
 
 <!--Image references-->
 [1]: ./media/security-center-pricing/get-standard.png

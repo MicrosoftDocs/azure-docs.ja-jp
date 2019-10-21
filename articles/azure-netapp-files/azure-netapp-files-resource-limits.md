@@ -1,6 +1,6 @@
 ---
 title: Azure NetApp Files のリソース制限 | Microsoft Docs
-description: NetApp アカウント、容量プール、ボリューム、スナップショット、委任されたサブネットの制限など、Azure NetApp Files のリソース制限について説明します。
+description: Azure NetApp Files リソースの制限と、リソース制限の引き上げを要求する方法について説明します。
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 09/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 4ce40fdf36f7d66e60e15955318e43f1f24f275f
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f7213ddee5d7bdfd41508f5fee66de63cde5b7c4
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515850"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170027"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -29,21 +29,38 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 
 次の表は、Azure NetApp Files のリソース制限について説明しています。
 
-|  Resource  |  既定の制限  |  サポート要求による調整の可否  |
+|  リソース  |  既定の制限  |  サポート要求による調整の可否  |
 |----------------|---------------------|--------------------------------------|
 |  Azure サブスクリプションあたりの NetApp アカウント数   |  10    |  はい   |
 |  NetApp アカウントあたりの容量プールの数   |    25     |   はい   |
 |  容量プールあたりのボリュームの数     |    500   |    はい     |
 |  ボリュームあたりのスナップショット数       |    255     |    いいえ        |
 |  Azure Virtual Network あたりの Azure NetApp Files (Microsoft.NetApp/volumes) に委任されたサブネットの数    |   1   |    いいえ    |
-|  Azure NetApp Files にアクセスできる (ピアリング VNet を含む) VNet 内の同時 IP 数   |    1000   |    いいえ   |
+|  Azure NetApp Files にアクセスできる (ピアリング VNet を含む) VNet 内の IP 数   |    1000   |    はい   |
 |  単一の容量プールの最小サイズ   |  4 TiB     |    いいえ  |
 |  単一の容量プールの最大サイズ    |  500 TiB   |   いいえ   |
 |  単一のボリュームの最小サイズ    |    100 GiB    |    いいえ    |
-|  単一のボリュームの最大サイズ     |    100 TiB    |    いいえ       |
-|  ボリュームあたりのファイル (inode) の最大数     |    5 千万    |    いいえ    |    
+|  単一のボリュームの最大サイズ     |    100 TiB    |    いいえ    |
+|  ボリュームあたりのファイルの最大数 ([maxfiles](#maxfiles))     |    1 億    |    はい    |    
+|  1 つのファイルの最大サイズ     |    16 TiB    |    いいえ    |    
 
-## <a name="request-limit-increase"></a>上限の引き上げを要求する 
+## maxfiles の制限 <a name="maxfiles"></a> 
+
+Azure NetApp Files ボリュームには、*maxfiles* という制限があります。 maxfiles の制限は、ボリュームに格納できるファイルの数です。 Azure NetApp Files ボリュームの maxfiles の制限には、ボリュームのサイズ (クォータ) に基づいてインデックスが作成されます。 ボリュームの maxfiles の制限は、プロビジョニングされたボリュームサイズの TiB ごとに 2000 万ファイルの割合で増減されます。 
+
+サービスでは、プロビジョニングされたサイズに基づいて、ボリュームの maxfiles 制限が動的に調整されます。 たとえば、1 TiB のサイズで初期構成されたボリュームの maxfiles 制限は 2000 万です。 その後ボリュームのサイズを変更すると、以下の規則に基づいて、maxfiles の制限が自動的に再調整されます。 
+
+|    ボリューム サイズ (クォータ)     |  maxfiles 制限の自動再調整    |
+|----------------------------|-------------------|
+|    1 TiB 未満                 |    2,000 万     |
+|    1 TiB 以上、2 TiB 未満    |    4,000 万     |
+|    2 TiB 以上、3 TiB 未満    |    6,000 万     |
+|    3 TiB 以上、4 TiB 未満    |    8,000 万     |
+|    4 TiB 以上                |    1 億    |
+
+任意のボリューム サイズに対し、[サポート リクエスト](#limit_increase)を開始し、1 億より大きい値に maxfiles 制限を増やすことができます。
+
+## 上限の引き上げを要求する<a name="limit_increase"></a> 
 
 上記の表から調整可能な上限を引き上げるように、Azure サポート要求を作成できます。 
 
@@ -59,11 +76,12 @@ Azure portal ナビゲーション プレーンから:
 4. [詳細] タブで次の操作を実行します。
     1. [説明] ボックスで、対応するリソースの種類に対して、次の情報を指定します。
 
-        |  Resource  |    親リソース      |    要求された新しい制限     |    クォータの引き上げの理由       |
+        |  リソース  |    親リソース      |    要求された新しい制限     |    クォータの引き上げの理由       |
         |----------------|------------------------------|---------------------------------|------------------------------------------|
         |  Account |  *サブスクリプション ID*   |  *要求された新しい最大**アカウント**数*    |  *どのシナリオやユース ケースが要求を求めたか?*  |
         |  プール    |  *サブスクリプション ID、アカウント URI*  |  *要求された新しい最大**プール**数*   |  *どのシナリオやユース ケースが要求を求めたか?*  |
         |  ボリューム  |  *サブスクリプション ID、アカウント URI、プール URI*   |  *要求された新しい最大**ボリューム**数*     |  *どのシナリオやユース ケースが要求を求めたか?*  |
+        |  maxfiles  |  *サブスクリプション ID、アカウント URI、プール URI、ボリューム URI*   |  *要求された新しい最大 **maxfiles** 数*     |  *どのシナリオやユース ケースが要求を求めたか?*  |    
 
     2. 適切なサポート方法を指定し、契約情報を指定します。
 

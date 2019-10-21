@@ -1,22 +1,21 @@
 ---
 title: 準拠していないリソースを修復する
-description: このハウツーでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
+description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 40658412f19c444cfa06f5663f567a78453c7e9a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 219a3c56f9e4e4c9e132fa759b017fac63ade766
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241136"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977987"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 
-**deployIfNotExists**に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに割り当てられているポリシーの **deployIfNotExists** 効果を実行するように Azure Policy に指示することによって実行されます。 この記事では、Azure Policy による修復を理解して実行するために必要な手順を示します。
+**deployIfNotExists** や **modify** に準拠していないリソースは､**修復**を使って準拠状態にすることができます。 修復は､既存のリソースに割り当てられているポリシーの **deployIfNotExists** 効果やタグ**操作**を実行するように Azure Policy に指示することによって実行されます。 この記事では、Azure Policy による修復を理解して実行するために必要な手順を示します。
 
 ## <a name="how-remediation-security-works"></a>修復のセキュリティの仕組み
 
@@ -26,11 +25,11 @@ ms.locfileid: "70241136"
 ![管理対象 ID - ロールが存在しない](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> **deployIfNotExists** で変更されたリソースがポリシー割り当てのスコープの範囲外の場合､あるいはテンプレートがポリシー割り当てのスコープの範囲外にあるリソース上のプロパティにアクセスした場合､その割り当ての管理対象 ID には[手動でアクセス権を付与](#manually-configure-the-managed-identity)する必要があります｡さもないと､修復デプロイは失敗します。
+> **deployIfNotExists** や **modify** で変更されたリソースがポリシー割り当てのスコープの範囲外の場合､あるいはテンプレートがポリシー割り当てのスコープの範囲外にあるリソース上のプロパティにアクセスした場合､その割り当ての管理対象 ID には[手動でアクセス権を付与](#manually-configure-the-managed-identity)する必要があります。さもないと､修復デプロイは失敗します。
 
 ## <a name="configure-policy-definition"></a>ポリシー定義を設定する
 
-最初の手順は、含まれているテンプレートのコンテンツを **deployIfNotExists** が正しくデプロイするために必要なロールをポリシー定義に定義することです｡ **details (詳細)** プロパティで **roleDefinitionIds** プロパティを追加します。 このプロパティは、環境にあるロールに合致する一連の文字列です。 [deployIfNotExists の例](../concepts/effects.md#deployifnotexists-example)に示す例を参照してください｡
+最初の手順は、含まれているテンプレートのコンテンツを **deployIfNotExists** と **modify** が正しくデプロイするために必要なロールを、ポリシー定義に定義することです。 **details (詳細)** プロパティで **roleDefinitionIds** プロパティを追加します。 このプロパティは、環境にあるロールに合致する一連の文字列です。 [deployIfNotExists の例](../concepts/effects.md#deployifnotexists-example)または [modify の例](../concepts/effects.md#modify-examples)に示す例を参照してください。
 
 ```json
 "details": {
@@ -42,7 +41,7 @@ ms.locfileid: "70241136"
 }
 ```
 
-**roleDefinitionIds** は完全なリソース識別子を使用し、ロールの短い **roleName** は使用しません｡ 環境にある「共同作成者」ロールの ID を取得するには、次のコードを使用します。
+**roleDefinitionIds** プロパティは完全なリソース識別子を使用し、ロールの短い **roleName** は使用しません。 環境にある「共同作成者」ロールの ID を取得するには、次のコードを使用します。
 
 ```azurecli-interactive
 az role definition list --name 'Contributor'
@@ -126,7 +125,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="create-a-remediation-task-through-portal"></a>ポータルを通じて修復タスクを作成する
 
-評価では､**deployIfNotExists** 効果を持つポリシー割り当てによって､準拠していないリソースがあるかどうかが判定されます｡ 準拠していないリソースが見つかった場合は、**修復**ページにその詳細が表示されます。 準拠していないリソースがあるポリシーの一覧には、**修復タスク** をトリガーするオプションがあります｡ このオプションは､**deployIfNotExists** テンプレートからデプロイを作成するものです。
+評価では､**deployIfNotExists** または **modify** 効果を持つポリシー割り当てによって､準拠していないリソースがあるかどうかが判定されます。 準拠していないリソースが見つかった場合は、**修復**ページにその詳細が表示されます。 準拠していないリソースがあるポリシーの一覧には、**修復タスク** をトリガーするオプションがあります｡ このオプションは､**deployIfNotExists** テンプレートまたは **modify** 操作からデプロイを作成するものです。
 
 **修復タスク** を作成するには､次の手順に従います。
 
@@ -138,7 +137,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
    ![[ポリシー] ページで [修復] を選択する](../media/remediate-resources/select-remediation.png)
 
-1. 準拠していないリソースがある **deployIfNotExists** ポリシー割り当てはすべて､**Policies to remediate**タブとデータ テーブルに含まれます。 準拠していないリソースがあるポリシーをクリックします。 **新しい修復タスク**ページが開きます。
+1. **deployIfNotExists** および **modify** のポリシー割り当てのうち、準拠していないリソースがあるものはすべて､ **[修復するポリシー]** タブとデータ テーブルに含まれます。 準拠していないリソースがあるポリシーをクリックします。 **新しい修復タスク**ページが開きます。
 
    > [!NOTE]
    > **修復タスク**ページは、**コンプライアンス** ページから問題のポリシーを見つけて､クリックし、ページの [] をクリックし、**修復タスクの作成**ボタンをクリックしても開くことができます。
@@ -161,7 +160,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 ### <a name="create-a-remediation-task-through-azure-cli"></a>Azure CLI を通じて修復タスクを作成する
 
-Azure CLI を使用して**修復タスク** を作成するには、`az policy remediation` コマンドを使用します。 `{subscriptionId}` をサブスクリプション ID に置き換え、`{myAssignmentId}` を **deployIfNotExists** ポリシー割り当て ID に置き換えます。
+Azure CLI を使用して**修復タスク** を作成するには、`az policy remediation` コマンドを使用します。 `{subscriptionId}` をサブスクリプション ID に置き換え、`{myAssignmentId}` を **deployIfNotExists** または **modify** のポリシー割り当て ID に置き換えます。
 
 ```azurecli-interactive
 # Login first with az login if not using Cloud Shell
@@ -174,7 +173,7 @@ az policy remediation create --name myRemediation --policy-assignment '/subscrip
 
 ### <a name="create-a-remediation-task-through-azure-powershell"></a>Azure PowerShell を通じて修復タスクを作成する
 
-Azure PowerShell を使用して**修復タスク** を作成するには、`Start-AzPolicyRemediation` コマンドを使用します。 `{subscriptionId}` をサブスクリプション ID に置き換え、`{myAssignmentId}` を **deployIfNotExists** ポリシー割り当て ID に置き換えます。
+Azure PowerShell を使用して**修復タスク** を作成するには、`Start-AzPolicyRemediation` コマンドを使用します。 `{subscriptionId}` をサブスクリプション ID に置き換え、`{myAssignmentId}` を **deployIfNotExists** または **modify** のポリシー割り当て ID に置き換えます。
 
 ```azurepowershell-interactive
 # Login first with Connect-AzAccount if not using Cloud Shell

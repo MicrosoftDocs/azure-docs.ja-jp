@@ -1,7 +1,7 @@
 ---
 title: Azure App Service に ML モデルをデプロイする (プレビュー)
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service を使用して Azure App Service の Web アプリにモデルをデプロイする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning を使用して Azure App Service の Web アプリにモデルをデプロイする方法について説明します。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,21 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 20a90a70c66310f6838b41a40aa945308bf338d4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: 24ec49a0f23516638d1f525341ea44e204653fea
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147908"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034592"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Azure App Service に機械学習モデルをデプロイする (プレビュー)
 
-Azure Machine Learning service から Web アプリとして Azure App Service にモデルをデプロイする方法について説明します。
+Azure Machine Learning から Web アプリとして Azure App Service にモデルをデプロイする方法について説明します。
 
 > [!IMPORTANT]
-> Azure Machine Learning service と Azure App Service の両方が一般公開されていますが、Machine Learning サービスから App Service にモデルをデプロイする機能はプレビュー段階です。
+> Azure Machine Learning と Azure App Service の両方が一般公開されていますが、Machine Learning サービスから App Service にモデルをデプロイする機能はプレビュー段階です。
 
-Azure Machine Learning service を使用すると、トレーニング済みの機械学習モデルから Docker イメージを作成できます。 このイメージには、データを受信してモデルに送信し、応答を返す Web サービスが含まれています。 Azure App Service を使用してこのイメージを展開でき、さらに次の機能が用意されています。
+Azure Machine Learning を使用すると、トレーニング済みの機械学習モデルから Docker イメージを作成できます。 このイメージには、データを受信してモデルに送信し、応答を返す Web サービスが含まれています。 Azure App Service を使用してこのイメージを展開でき、さらに次の機能が用意されています。
 
 * セキュリティ強化を目的とした[高度な認証](/azure/app-service/configure-authentication-provider-aad)。 認証方法には、Azure Active Directory と多要素認証の両方が含まれます。
 * 再デプロイ不要の[自動スケーリング](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json)。
@@ -48,7 +48,7 @@ Azure App Service によって提供される機能の詳細については、[A
     > * `model` - デプロイされる登録済みのモデル。
     > * `inference_config` - モデルの推論構成。
     >
-    > これらの変数の設定の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+    > これらの変数の設定の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ## <a name="prepare-for-deployment"></a>デプロイの準備をする
 
@@ -66,7 +66,7 @@ Azure App Service によって提供される機能の詳細については、[A
     >
     > シナリオに適したもう 1 つの方法として[バッチ予測](how-to-run-batch-predictions.md)があります。これにより、スコアリング時にデータストアにアクセスすることができます。
 
-    エントリ スクリプトの詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+    エントリ スクリプトの詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 * **依存関係**。エントリ スクリプトまたはモデルを実行するために必要なヘルパー スクリプトや Python/Conda パッケージなど。
 
@@ -87,9 +87,9 @@ Azure App Service によって提供される機能の詳細については、[A
 > myenv.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 > ```
 
-環境の詳細については、「[トレーニングとデプロイ用の環境を作成して管理する](how-to-use-environments.md)」を参照してください。
+環境の詳細については、[トレーニングとデプロイのための環境の作成と管理](how-to-use-environments.md)に関する記事を参照してください。
 
-推論構成の詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+推論構成の詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 > [!IMPORTANT]
 > Azure App Service にデプロイするときに__デプロイ構成__を作成する必要はありません。
@@ -99,7 +99,7 @@ Azure App Service によって提供される機能の詳細については、[A
 Azure App Service にデプロイされる Docker イメージを作成するには、[Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config--generate-dockerfile-false-) を使用します。 次のコード スニペットで、モデルと推論構成から新しいイメージを作成する方法を示します。
 
 > [!NOTE]
-> このコード スニペットは、`model` に登録済みのモデルが含まれており、`inference_config` に推論環境の構成が含まれていることを前提としています。 詳細については、「[Azure Machine Learning service を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
+> このコード スニペットは、`model` に登録済みのモデルが含まれており、`inference_config` に推論環境の構成が含まれていることを前提としています。 詳細については、「[Azure Machine Learning を使用してモデルをデプロイする](how-to-deploy-and-where.md)」を参照してください。
 
 ```python
 from azureml.core import Model
@@ -153,7 +153,7 @@ print(package.location)
     この例では、__Basic__ 価格レベル (`--sku B1`) が使用されます。
 
     > [!IMPORTANT]
-    > Azure Machine Learning service によって作成されたイメージでは Linux が使用されるため、`--is-linux` パラメーターを使用する必要があります。
+    > Azure Machine Learning によって作成されたイメージでは Linux が使用されるため、`--is-linux` パラメーターを使用する必要があります。
 
 1. Web アプリを作成するには、次のコマンドを使用します。 `<app-name>` を使用する名前に置き換えます。 `<acrinstance>` と `<imagename>` を、前の手順で返された `package.location` の値に置き換えます。
 

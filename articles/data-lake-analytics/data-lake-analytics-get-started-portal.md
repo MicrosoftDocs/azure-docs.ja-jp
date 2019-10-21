@@ -1,7 +1,6 @@
 ---
-title: Azure portal で Azure Data Lake Analytics の使用を開始する
+title: Azure Data Lake Analytics の作成とクエリ - Azure portal
 description: Azure portal を使って Azure Data Lake Analytics アカウントを作成し、U-SQL ジョブを送信します。
-services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
@@ -9,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 25d58bdc5791de868c6302b4d2763fa34e98af17
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 46da3750e4d0ac78c5fd9df91ae37670e541302d
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615037"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315757"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -32,7 +31,7 @@ ms.locfileid: "60615037"
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. **[リソースの作成]**  >   **[データ + 分析]**  >  **[Data Lake Analytics]** の順にクリックします。
 3. 次の項目の値を選択します。
-   * **[名前]** :Data Lake Analytics アカウントに名前を付けます (小文字と数字のみが許可されています)。
+   * **Name**:Data Lake Analytics アカウントに名前を付けます (小文字と数字のみが許可されています)。
    * **サブスクリプション**:Analytics アカウントに使用される Azure サブスクリプションを選択します。
    * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。
    * **場所**。 Data Lake Analytics アカウントの Azure データ センターを選択します。

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: dd1c9f5b10583e886c0357ce64bdf9d8bdc6c4c8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 629a7c98a7b46b470470445cc56a6f53d9e4f4b4
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883345"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71077209"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 
@@ -91,7 +91,7 @@ SELECT * FROM StudentsOneLine
 
 **SELECT** ステートメントの出力を次に示します。
 
-![JSON ドキュメントのフラット化](./media/using-json-in-hive/hdinsight-flatten-json.png)
+![HDInsight の JSON ドキュメントのフラット化](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
 ## <a name="analyze-json-documents-in-hive"></a>Hive での JSON ドキュメントの分析
 Hive は、JSON ドキュメントに対してクエリを実行するための次の 3 つの異なるメカニズムを提供します。あるいは、独自に記述することもできます。
@@ -115,7 +115,7 @@ FROM StudentsOneLine;
 
 このクエリをコンソール ウィンドウで実行したときの出力を次に示します。
 
-![get_json_object UDF](./media/using-json-in-hive/hdinsight-get-json-object.png)
+![Apache Hive の JSON オブジェクト UDF の取得](./media/using-json-in-hive/hdinsight-get-json-object.png)
 
 get_json_object UDF には次の制限があります。
 
@@ -136,7 +136,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 Hive コンソールにおけるこのスクリプトの出力:
 
-![json_tuple UDF](./media/using-json-in-hive/hdinsight-json-tuple.png)
+![Apache Hive の JSON クエリ結果](./media/using-json-in-hive/hdinsight-json-tuple.png)
 
 json_tuple UDF では、Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文を使用します。これによって、json\_tuple は元のテーブルの各行に UDT 関数を適用して、仮想テーブルを作成することができます。 複雑な JSON では **LATERAL VIEW** が繰り返し使用されるため、処理が難しくなります。 また、**JSON_TUPLE** では入れ子になった JSON を処理できません。
 

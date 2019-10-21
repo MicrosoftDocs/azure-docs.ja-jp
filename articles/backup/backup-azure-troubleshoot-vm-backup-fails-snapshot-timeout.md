@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 391ad5c6535d457c2df988cd29d21e481310b17f
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: ab03056557c7c67c5b75d701c9995c9ad500caae
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061763"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268771"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -105,12 +105,12 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **原因 5:リソース グループのロックが原因で、バックアップ サービスに古い復元ポイントを削除するためのアクセス許可がない** <br>
 **原因 6:[VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**
 
-## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095-gb"></a>UserErrorUnsupportedDiskSize - 現在、Azure Backup では 4,095 GB を超えるディスク サイズはサポートされていません
+## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize - The configured disk size(s) is currently not supported by Azure Backup. (構成されたディスク サイズは、Azure Backup では現在サポートされていません。)
 
 **エラー コード**:UserErrorUnsupportedDiskSize <br>
-**エラー メッセージ**:現在、Azure Backup では 4,095 GB を超えるディスク サイズはサポートされていません <br>
+**エラー メッセージ**:The configured disk size(s) is currently not supported by Azure Backup. (構成されたディスク サイズは、現在、Azure Backup ではサポートされていません。) <br>
 
-VM をバックアップする際にディスク サイズが 4,095 GB よりも大きいと、バックアップ操作が失敗することがあります。 4 TB 超から 30 TB までのサイズのディスクに対する Azure Backup 大容量ディスク サポートの制限付きパブリック プレビューにサインアップするには、[こちらの記事](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb)を参照してください。
+VM をバックアップするときにディスク サイズが 30 TB よりも大きいと、バックアップ操作が失敗することがあります。 また、現時点では、4 TB のサイズを超える暗号化されたディスクのバックアップはサポートされていません。 ディスクを分割して、ディスクのサイズが、サポートされている制限以下になるようにしてください。
 
 ## <a name="usererrorbackupoperationinprogress---unable-to-initiate-backup-as-another-backup-operation-is-currently-in-progress"></a>UserErrorBackupOperationInProgress - 別のバックアップ操作が進行中であるためバックアップを開始できません
 
@@ -122,12 +122,10 @@ VM をバックアップする際にディスク サイズが 4,095 GB よりも
 1. Azure portal にサインインし、 **[すべてのサービス]** をクリックします。 「Recovery Services」と入力し、 **[Recovery Services コンテナー]** をクリックします。 Recovery Services コンテナーの一覧が表示されます。
 2. Recovery Services コンテナーの一覧から、バックアップの構成先のコンテナーを選択します。
 3. コンテナーのダッシュボード メニューの **[バックアップ ジョブ]** をクリックすると、すべてのバックアップ ジョブが表示されます。
-
-- バックアップ ジョブが進行中の場合は、そのジョブが完了するまで待機する、そのバックアップ ジョブを取り消します。
-  - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0) を使用します。
-- 別のコンテナーでバックアップを再構成した場合は、その後、古いコンテナーで実行されているバックアップ ジョブがないことを確認します。 存在する場合は、バックアップ ジョブを取り消します。
-  - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0) を使用します
-
+   - バックアップ ジョブが進行中の場合は、そのジョブが完了するまで待機する、そのバックアップ ジョブを取り消します。
+     - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0) を使用します。
+   - 別のコンテナーでバックアップを再構成した場合は、その後、古いコンテナーで実行されているバックアップ ジョブがないことを確認します。 存在する場合は、バックアップ ジョブを取り消します。
+     - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](https://docs.microsoft.com/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob?view=azps-1.4.0) を使用します
 4. バックアップ操作を再試行してください。
 
 スケジュールしたバックアップ操作に長い時間がかかり、次のバックアップの構成と競合している場合は、[ベスト プラクティス](backup-azure-vms-introduction.md#best-practices)、[バックアップ パフォーマンス](backup-azure-vms-introduction.md#backup-performance)、および[復元に関する考慮事項](backup-azure-vms-introduction.md#backup-and-restore-considerations)について確認してください。
@@ -156,8 +154,7 @@ VM エージェントが破損しているまたはサービスが停止して�
 4. [最新バージョンのエージェント MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。 インストールを実行するには、管理者権限が必要です。
 5. [サービス] に Windows Azure ゲスト エージェント サービスが表示されることを確認します。
 6. オンデマンド バックアップを実行します。
-
-- ポータルの **[今すぐバックアップ]** を選択します。
+   - ポータルの **[今すぐバックアップ]** を選択します。
 
 さらに、VM に [Microsoft .NET 4.5 がインストールされていること](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)を確認します。 VM エージェントがサービスと通信するためには .NET 4.5 が必要です。
 
@@ -236,7 +233,11 @@ Linux VM で、VMSnapshot 拡張機能が Azure Portal に表示されない場�
 
 ### <a name="clean_up_restore_point_collection"></a> 復元ポイント コレクションをクリーンアップする
 
-ロックを解除した後で、復元ポイントをクリーンアップする必要があります。 復元ポイントをクリーンアップするには、次のいずれかの手順に従います。<br>
+ロックを解除した後で、復元ポイントをクリーンアップする必要があります。
+
+VM のリソース グループまたは VM 自体を削除した場合、マネージド ディスクのインスタント復元スナップショットはアクティブなままで、リテンション期間の設定に従って有効期限が切れます。 復元ポイント コレクションに格納されているインスタント復元スナップショットを削除するには (不要になった場合)、以下の手順に従って復元ポイント コレクションをクリーンアップします。
+
+復元ポイントをクリーンアップするには、次のいずれかの手順に従います。<br>
 
 - [アドホック バックアップを実行して復元ポイント コレクションをクリーンアップする](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
 - [Azure portal から復元ポイント コレクションをクリーンアップする](#clean-up-restore-point-collection-from-azure-portal)<br>

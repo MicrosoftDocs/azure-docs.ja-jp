@@ -4,21 +4,20 @@ description: Jupyter ノートブックのスライドショー モードにセ�
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 405fe71676de311ed7e59ea72798ff4fd2db0f62
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 04612dc8892a544397251580b3494badc84e2ad5
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60237399"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973110"
 ---
 # <a name="run-a-notebook-slideshow"></a>ノートブックのスライドショーを実行する
 

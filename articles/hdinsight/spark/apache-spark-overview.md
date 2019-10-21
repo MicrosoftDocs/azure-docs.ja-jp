@@ -2,18 +2,18 @@
 title: Apache Spark とは - Azure HDInsight
 description: この記事では、HDInsight での Spark の概要と、HDInsight で Spark クラスターを使用できるさまざまなシナリオについて説明します。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: overview
-ms.date: 05/28/2019
-ms.author: hrasheed
-ms.openlocfilehash: e325618ed1cdec6149ac31771c8bd67ecea7d559
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.date: 10/01/2019
+ms.openlocfilehash: 923e5a961ee9b7bdea94cf7a3e6fc833f596fafd
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70993802"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937603"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Apache Spark とは - Azure HDInsight
 
@@ -73,20 +73,20 @@ SparkContext は Spark マスターに接続し、worker ノードの Executor �
 
 HDInsight の Spark クラスターでは、以下に挙げる主なシナリオを実現できます。
 
-- 対話型のデータ分析と BI
+* 対話型のデータ分析と BI
 
     HDInsight の Apache Spark では、Azure Storage または Azure Data Lake Storage にデータが格納されます。 ビジネス エキスパートや重要な意思決定者は、そのデータを分析してレポートを作成し、分析されたデータから Microsoft Power BI を使用して対話型レポートを作成できます。 アナリストはクラスター ストレージ内の非構造化データや半構造化データから作業を開始し、そのデータのスキーマを Notebook を使用して定義してから、Microsoft Power BI を使用してデータ モデルを作成することができます。 また、HDInsight の Spark クラスターでは Tableau などの多数のサードパーティ製 BI ツールもサポートされるので、データ アナリストやビジネス エキスパート、重要な意思決定者にとって使いやすくなります。
 
     [チュートリアル: Power BI を使用して Spark データを視覚化する](apache-spark-use-bi-tools.md)
 
-- Spark Machine Learning
+* Spark Machine Learning
 
-    Apache Spark には、Spark を基に作成された機械学習ライブラリである [MLlib](https://spark.apache.org/mllib/) が付属し、HDInsight の Spark クラスターから使用できます。 HDInsight の Spark クラスターには、機械学習用のさまざまなパッケージを含む Python ディストリビューションである Anaconda も含まれています。 これと Jupyter および Zeppelin Notebook の組み込みサポートを組み合わせることにより、機械学習アプリケーションを作成するための環境が得られます。
+    Apache Spark には、Spark を基に作成された機械学習ライブラリである [MLlib](https://spark.apache.org/mllib/) が付属し、HDInsight の Spark クラスターから使用できます。 HDInsight の Spark クラスターには、機械学習用のさまざまな種類のパッケージを含む Python ディストリビューションである Anaconda も含まれています。 これと Jupyter および Zeppelin Notebook の組み込みサポートを組み合わせることにより、機械学習アプリケーションを作成するための環境が得られます。
 
     [チュートリアル:HVAC データを使用して建物の温度を予測する](apache-spark-ipython-notebook-machine-learning.md)  
     [チュートリアル:食品検査の結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
 
-- Spark のストリーミングおよびリアルタイム データ分析
+* Spark のストリーミングおよびリアルタイム データ分析
 
     HDInsight の Spark クラスターには、リアルタイム分析ソリューションを構築するための豊富なサポートが用意されています。 Spark には既に Kafka、Flume、Twitter、ZeroMQ、TCP ソケットなどの多数のソースからデータを取り込むためのコネクタがありますが、HDInsight の Spark では Azure Event Hubs からデータを取り込むためのファーストクラスのサポートが追加されます。 Event Hubs は、Azure で最も広く使用されているキュー サービスです。 Event Hubs 向けのサポートがすぐに利用できることから、HDInsight の Spark クラスターは、リアルタイム分析パイプラインを構築するうえで理想的なプラットフォームです。
 
@@ -94,14 +94,14 @@ HDInsight の Spark クラスターでは、以下に挙げる主なシナリオ
 
 HDInsight の Apache Spark の詳細については、次の記事を使用できます。
 
-- [クイック スタート:HDInsight での Apache Spark クラスターの作成と Jupyter を使用した対話型クエリの実行](./apache-spark-jupyter-spark-sql-use-portal.md)
-- [チュートリアル:Jupyter を使用した Apache Spark ジョブの実行](./apache-spark-load-data-run-query.md)
-- [チュートリアル:BI ツールを使用したデータの分析](./apache-spark-use-bi-tools.md)
-- [チュートリアル:Apache Spark を使用した機械学習](./apache-spark-ipython-notebook-machine-learning.md)
-- [チュートリアル:IntelliJ を使用した Scala Maven アプリケーションの作成](./apache-spark-create-standalone-application.md)
+* [クイック スタート:HDInsight での Apache Spark クラスターの作成と Jupyter を使用した対話型クエリの実行](./apache-spark-jupyter-spark-sql-use-portal.md)
+* [チュートリアル:Jupyter を使用した Apache Spark ジョブの実行](./apache-spark-load-data-run-query.md)
+* [チュートリアル:BI ツールを使用したデータの分析](./apache-spark-use-bi-tools.md)
+* [チュートリアル:Apache Spark を使用した機械学習](./apache-spark-ipython-notebook-machine-learning.md)
+* [チュートリアル:IntelliJ を使用した Scala Maven アプリケーションの作成](./apache-spark-create-standalone-application.md)
 
 ## <a name="next-steps"></a>次の手順
 
 この概要では、Azure HDInsight の Apache Spark の基本について理解します。 次の記事に進む前に、HDInsight Spark クラスターを作成し、いくつかの Spark SQL クエリを実行する方法を確認します。
 
-- [HDInsight での Apache Spark クラスターの作成](./apache-spark-jupyter-spark-sql-use-portal.md)
+* [HDInsight での Apache Spark クラスターの作成](./apache-spark-jupyter-spark-sql-use-portal.md)

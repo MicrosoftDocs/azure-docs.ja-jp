@@ -6,16 +6,16 @@ services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 06/16/2019
+ms.topic: conceptual
+ms.date: 09/26/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: cd31215f578062548c67f8d14e724dc49f73b21c
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: d6519ad5a130eee25ab17135e26d7207047dcf7a
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68775002"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327256"
 ---
 # <a name="natural-language-support-for-azure-cognitive-services"></a>Azure Cognitive Services の自然言語のサポート
 
@@ -38,7 +38,7 @@ Azure Cognitive Services では、見る、聞く、話す、そして、ユー�
 * スペイン語
 
 > [!NOTE]
-> ¹ LUIS および Video Indexer: 音声テキスト変換はサポートされていません。
+> ¹ LUIS、Video Indexer、Text Analytics、音声テキスト変換はサポートされていません。
 
 ## <a name="additional-language-availability-by-service"></a>サービスによって利用可能なその他の言語
 

@@ -10,16 +10,16 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.author: aahi
-ms.openlocfilehash: 59a4d79cc68c57faf54bde3d42370fb17a317325
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 28dbcde723e25577545cfd44fed9ef00249d8f30
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725557"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694906"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>クイック スタート:Python 用 Anomaly Detector クライアント ライブラリ
 
-.NET 用 Anomaly Detector クライアント ライブラリの使用を開始します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Anomaly Detector サービスにより、業界、シナリオ、データ量に関係なく、最適なモデルを自動的に使用することで、時系列データ内の異常を検出できます。
+Python 用 Anomaly Detector クライアント ライブラリを使ってみます。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。 Anomaly Detector サービスにより、業界、シナリオ、データ量に関係なく、最適なモデルを自動的に使用することで、時系列データ内の異常を検出できます。
 
 Python 用 Anomaly Detector クライアント ライブラリは、次の目的で使用することができます。
 
@@ -70,7 +70,7 @@ Anomaly Detector の応答は、使用する方法に応じて、[LastDetectResp
 
 ## <a name="code-examples"></a>コード例 
 
-以下のコード スニペットは、.NET 用 Anomaly Detector クライアント ライブラリを使用して次のことを実行する方法を示します。
+以下のコード スニペットは、Python 用 Anomaly Detector クライアント ライブラリを使用して次のことを実行する方法を示します。
 
 * [クライアントを認証する](#authenticate-the-client)
 * [ファイルから時系列データ セットを読み込む](#load-time-series-data-from-a-file)

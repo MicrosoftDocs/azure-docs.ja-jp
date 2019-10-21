@@ -87,7 +87,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 このセクションでは、コードを更新し、両方のトークン発行者エンドポイントが有効であることを指定します。
 
 1. Visual Studio で **B2C-WebAPI-DotNet.sln** ソリューションを開きます
-1. **TaskService** プロジェクトの *TaskService\\App_Start\\ **Startup.Auth.cs*** ファイルをエディターで開きます。
+1. **TaskService** プロジェクトの *TaskService\\App_Start\\ **Startup.Auth.cs**.* ファイルをエディターで開きます。
 1. 次の `using` ディレクティブをファイルの先頭に追加します。
 
     `using System.Collections.Generic;`
@@ -122,7 +122,7 @@ app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
 
 Web API で両方の URI がサポートされるようになったので、今度は b2clogin.com エンドポイントからトークンを取得するように、Web アプリケーションを更新する必要があります。
 
-たとえば、**TaskWebApp** プロジェクトの *TaskWebApp\\**Web.config*** ファイルで `ida:AadInstance` の値を変更することにより、新しいエンドポイントを使うようにサンプル Web アプリケーションを構成できます。
+たとえば、**TaskWebApp** プロジェクトの *TaskWebApp\\**Web.config**.* ファイルで `ida:AadInstance` の値を変更することにより、新しいエンドポイントを使うようにサンプル Web アプリケーションを構成できます。
 
 TaskWebApp の *Web.config* の `ida:AadInstance` の値を、`login.microsoftonline.com` ではなく `{your-b2c-tenant-name}.b2clogin.com` を参照するように変更します。
 

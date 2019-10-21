@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 09/22/2019
 ms.author: raynew
-ms.openlocfilehash: 82585a6f1df369e299bd9df4d57f6106aad4ead7
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: d20c0be47f44cdce8ea895007494565d37f5923f
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67696214"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179144"
 ---
 # <a name="contoso-migration-series"></a>Contoso 移行シリーズ
 
@@ -41,14 +41,11 @@ ms.locfileid: "67696214"
 [記事 9:Azure Web App と Azure SQL Database 内でアプリをリファクタリングする](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-web-app-sql) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。     
 [記事 10:Azure Web アプリと Azure Database for MySQL 内で Linux アプリをリファクタリングする](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-refactor-linux-app-service-mysql) | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 
 [記事 11:Azure DevOps サービスでの Team Foundation Server をリファクタリングします](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-tfs-vsts) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。
-[記事 12:Azure コンテナーと Azure SQL Database 内でアプリを再構築する](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rearchitect-container-sql) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 
-[記事 13:Azure でのアプリのリビルド](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rebuild) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。  
-[記事 14:Azure への移行のスケーリング](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-scale) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 
-
-
-    
+[記事 12:Azure コンテナーと Azure SQL Database 内でアプリを再構築する](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rearchitect-container-sql) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。
+[記事 13:Azure でのアプリのリビルド](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-rebuild) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。
+[記事 14:Azure への移行のスケーリング](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/azure-best-practices/contoso-migration-scale) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。
 
 ## <a name="next-steps"></a>次の手順
 
-クラウド移行について[学習します](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/)。 
-
+- クラウド移行について[学習します](https://docs.microsoft.com/azure/architecture/cloud-adoption/migrate/)。
+- [データベース移行ガイド](https://datamigration.microsoft.com/)の他のシナリオ (ソース/ターゲットのペア) に対する移行戦略を学習します。

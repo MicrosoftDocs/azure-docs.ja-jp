@@ -13,17 +13,22 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: 0c2a28462633d47ad1d3f247793e3fcf6f4d40c0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: 53a765cd2e71b5b1eb1ac2c70506fd55aec6736e
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67795457"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274135"
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
+
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。
 
 [Microsoft Azure](https://azure.com) のサブスクリプションが必要になります。 Windows、Xbox Live、またはその他の Microsoft クラウド サービスの Microsoft アカウントでサインインします。 所属するチームが組織の Azure サブスクリプションを持っている場合は、自分の Microsoft アカウントを使用してサブスクリプションに追加してもらうよう所有者に依頼してください。
+
+> [!NOTE]
+> [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) と呼ばれる新しいベータ版 Application Insights SDK があります。これは、任意のコンソール アプリケーションに対して Application Insights を有効にするために使用できます。 このパッケージおよび関連する手順は、[ここ](../../azure-monitor/app/worker-service.md)から使用することをお勧めします。 このパッケージは [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard) を対象としているため、.NET Core 2.0 以上と .NET Framework 4.7.2 以上で使用できます。
+この新しいパッケージの安定したバージョンがリリースされると、このドキュメントは非推奨となります。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -154,7 +159,7 @@ namespace ConsoleApp
             configuration.InstrumentationKey = "removed";
             configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 
-            var telemetryClient = new TelemetryClient();
+            var telemetryClient = new TelemetryClient(configuration);
             using (InitializeDependencyTracking(configuration))
             {
                 // run app...

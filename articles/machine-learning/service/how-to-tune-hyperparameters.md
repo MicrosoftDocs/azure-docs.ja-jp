@@ -1,7 +1,7 @@
 ---
 title: モデルに合わせてハイパーパラメーターを調整する
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning サービスを使用して、ディープ ラーニング/機械学習モデルのハイパーパラメーターを効率的に調整します。 パラメーター検索空間を定義し、最適化する主要なメトリックを指定し、パフォーマンスの低い実行を早期に終了する方法を学習します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning を使用して、ディープ ラーニング/機械学習モデルのハイパーパラメーターを効率的に調整します。 パラメーター検索空間を定義し、最適化する主要なメトリックを指定し、パフォーマンスの低い実行を早期に終了する方法を学習します。
 ms.author: swatig
 author: swatig007
 ms.reviewer: sgilley
@@ -11,16 +11,16 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5a6f7c6de005112578cc29865574e5e255c99a8e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: cb4023be41377846ed209b3d6702188f5d79ba00
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69873068"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999388"
 ---
-# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルのハイパーパラメーターを調整する
+# <a name="tune-hyperparameters-for-your-model-with-azure-machine-learning"></a>Azure Machine Learning でモデルのハイパーパラメーターを調整する
 
-Azure Machine Learning service を使用してモデルのハイパーパラメーターを効率的に調整します。  ハイパーパラメーターの調整には、次の手順が含まれます。
+Azure Machine Learning を使用してモデルのハイパーパラメーターを効率的に調整します。  ハイパーパラメーターの調整には、次の手順が含まれます。
 
 * パラメーター検索空間を定義する
 * 最適化する主要メトリックを指定する  
@@ -94,7 +94,7 @@ Azure Machine Learning では、ハイパーパラメーター探索を効率的
 
 ### <a name="sampling-the-hyperparameter-space"></a>ハイパーパラメーター空間のサンプリング
 
-ユーザーは、ハイパーパラメーター空間定義に対して使用するパラメーター サンプリング方法も指定できます。 Azure Machine Learning サービスは、ランダム サンプリング、グリッド サンプリング、ベイジアン サンプリングをサポートしています。
+ユーザーは、ハイパーパラメーター空間定義に対して使用するパラメーター サンプリング方法も指定できます。 Azure Machine Learning では、ランダム サンプリング、グリッド サンプリング、およびベイジアン サンプリングがサポートされています。
 
 #### <a name="random-sampling"></a>ランダム サンプリング
 
@@ -186,7 +186,7 @@ run_logger.log("accuracy", float(val_accuracy))
 * `evaluation_interval`: ポリシーを適用する頻度。 トレーニング スクリプトによってログに記録されるたびに、主要メトリックは 1 間隔としてカウントされます。 そのため、`evaluation_interval` に 1 を指定すると、トレーニング スクリプトが主要メトリックを報告するたびにポリシーが適用されます。 `evaluation_interval` に 2 を指定すると、トレーニング スクリプトが主要メトリックを報告する 2 回に 1 回、ポリシーが適用されます。 指定しないと、`evaluation_interval` は既定で 1 に設定されます。
 * `delay_evaluation`: 指定した間隔数の期間、最初のポリシー評価を遅延させます。 これは省略可能なパラメーターです。すべての構成を初期の最小間隔で実行できるため、トレーニング実行の早期終了を回避できます。 指定すると、このポリシーは delay_evaluation 以上の evaluation_interval の倍数ごとに適用されます。
 
-Azure Machine Learning サービスは、以下の早期終了ポリシーをサポートしています。
+Azure Machine Learning では、以下の早期終了ポリシーがサポートされています。
 
 ### <a name="bandit-policy"></a>バンディット ポリシー
 
@@ -304,7 +304,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` はハイパーパラメーター調整実験に割り当てる名前、`workspace` は実験を作成するワークスペースです (実験について詳しくは、「[Azure Machine Learning サービスのしくみ](concept-azure-machine-learning-architecture.md)」をご覧ください)。
+`experiment_name` はハイパーパラメーター調整実験に割り当てる名前、`workspace` は実験を作成するワークスペースです (実験について詳しくは、「[Azure Machine Learning のしくみ](concept-azure-machine-learning-architecture.md)」をご覧ください)。
 
 ## <a name="visualize-experiment"></a>実験を視覚化する
 

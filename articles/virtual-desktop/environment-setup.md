@@ -1,22 +1,22 @@
 ---
-title: Windows Virtual Desktop プレビュー環境 - Azure
-description: Windows Virtual Desktop プレビュー環境の基本的な要素。
+title: Windows Virtual Desktop の環境 - Azure
+description: Windows Virtual Desktop 環境の基本的な要素。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: helohr
-ms.openlocfilehash: 6aa6c7326759e480235df5fe9d4b0878cd11024d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23bf9be8e3e5f1c52546faa9ed5171c140eba59a
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65142383"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676622"
 ---
-# <a name="windows-virtual-desktop-preview-environment"></a>Windows Virtual Desktop プレビュー環境
+# <a name="windows-virtual-desktop-environment"></a>Windows Virtual Desktop の環境
 
-Windows Virtual Desktop プレビューは、仮想デスクトップと RemoteApp への簡単で安全なアクセスをユーザーに提供するサービスです。 このトピックでは、Windows Virtual Desktop 環境の一般構造について少し詳しく説明します。
+Windows Virtual Desktop は、仮想デスクトップと RemoteApp への簡単で安全なアクセスをユーザーに提供するサービスです。 このトピックでは、Windows Virtual Desktop 環境の一般構造について少し詳しく説明します。
 
 ## <a name="tenants"></a>テナント
 
@@ -57,9 +57,9 @@ Windows Virtual Desktop では、Windows Virtual Desktop テナントはほと�
 
 ## <a name="next-steps"></a>次の手順
 
-委任されたアクセスとユーザーにロールを割り当てる方法について詳しくは、「[Delegated Access in Windows Virtual Desktop Preview (Windows Virtual Desktop プレビューでの委任されたアクセス)](delegated-access-virtual-desktop.md)」をご覧ください。
+委任されたアクセスとユーザーにロールを割り当てる方法について詳しくは、「[Delegated Access in Windows Virtual Desktop Preview (Windows Virtual Desktop での委任されたアクセス)](delegated-access-virtual-desktop.md)」をご覧ください。
 
-Windows Virtual Desktop テナントを設定する方法については、「[Create a tenant in Windows Virtual Desktop Preview (Windows Virtual Desktop プレビューにテナントを作成する)](tenant-setup-azure-active-directory.md)」をご覧ください。
+Windows Virtual Desktop テナントを設定する方法については、「[Create a tenant in Windows Virtual Desktop Preview (Windows Virtual Desktop にテナントを作成する)](tenant-setup-azure-active-directory.md)」をご覧ください。
 
 Windows Virtual Desktop に接続する方法については、次のいずれかの記事をご覧ください。
 

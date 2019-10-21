@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 9aa8cda7d65d97d831a218be393581d0e5bf3a4a
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 6f5472e42b7ef43123698f01ee76fb0e691aa45e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910183"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827801"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Azure Monitor を使用してデータ ファクトリのアラート送信および監視を行う
 
@@ -468,8 +468,11 @@ Monitor と Data Factory の統合を使用して、データを Monitor にル�
 
 しばらくすると、このデータ ファクトリに対する設定の一覧に新しい設定が表示されます。 新しいイベント データが生成されるとすぐに、診断ログがそのワークスペースにストリーミングされます。 イベントが生成されてから、Log Analytics に表示されるまでに最大 15 分かかかる場合があります。
 
+* _リソース固有_モードでは、Azure Data Factory からの診断ログは、_ADFPipelineRun_、_ADFTriggerRun_、_ADFActivityRun_ テーブルに送られます
+* _Azure Diagnostics_ モードでは、診断ログは _AzureDiagnostics_ テーブルに送られます
+
 > [!NOTE]
-> Azure ログ テーブルには 500 個を超える列を含めることができないため、リソース固有モードを選択することを強くお勧めします。 詳細については、[Log Analytics の既知の制限](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-stream-log-store#known-limitation-column-limit-in-azurediagnostics)に関するセクションを参照してください。
+> Azure ログ テーブルには 500 個を超える列を含めることができないため、リソース固有モードを選択することを強くお勧めします。 詳細については、[Log Analytics の既知の制限](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics)に関するセクションを参照してください。
 
 ### <a name="install-azure-data-factory-analytics-from-azure-marketplace"></a>Azure Marketplace から Azure Data Factory Analytics をインストールする
 
@@ -505,11 +508,12 @@ Azure Data Factory Analytics をインストールすると、既定のセット
 
 !["Workbooks (プレビュー)" と "AzureDataFactoryAnalytics" が強調表示されているウィンドウ](media/data-factory-monitor-oms/monitor-oms-image6.png)
 
-![実行とエラーのグラフィック表示](media/data-factory-monitor-oms/monitor-oms-image7.png)
-
 前述のメトリックの視覚化、これらのメトリックの背後にあるクエリの確認、クエリの編集、アラートの作成、およびその他のアクションを実行できます。
 
 ![データ ファクトリによるパイプライン実行のグラフィック表示](media/data-factory-monitor-oms/monitor-oms-image8.png)
+
+> [!NOTE]
+> Azure Data Factory Analytics (プレビュー) では、診断ログが_リソース固有_の宛先テーブルに送られます。 次のテーブルに対するクエリを作成できます: _ADFPipelineRun_、_ADFTriggerRun_、_ADFActivityRun_。
 
 ## <a name="alerts"></a>アラート
 

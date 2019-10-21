@@ -25,7 +25,7 @@ ms.locfileid: "60789928"
 
 Azure リレーのポート値に必要な構成を次の表に示します。
 
-## <a name="hybrid-connections"></a>ハイブリッド接続と
+## <a name="hybrid-connections"></a>ハイブリッド接続
 
 ハイブリッド接続は、基盤となるトランスポート構造として SSL を使用するポート 443 の WebSocket を採用し、**HTTPS** のみを使用します。 
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f22cb620bf8cf56110bec60a4dd809066393a8ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3becf5ef579acdc52a51f9ad618e37460491c2ec
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067655"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71146743"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Azure Application Insights データを利用したカスタム レポートの自動化
 
@@ -95,7 +95,9 @@ availabilityResults
 5. **_Application Insights スケジュールされたダイジェスト テンプレート_** を選択します。
 
      > [!NOTE]
-     > 既定では、関数アプリはランタイム バージョン 2.x で作成されます。 Application Insights のスケジュール済みダイジェスト テンプレートを使用するには、[Azure Functions ランタイム バージョン 1.x をターゲットにする](https://docs.microsoft.com/azure/azure-functions/set-runtime-version)必要があります。
+     > 既定では、関数アプリはランタイム バージョン 2.x で作成されます。 Application Insights のスケジュール済みダイジェスト テンプレートを使用するには、[Azure Functions ランタイム バージョン](https://docs.microsoft.com/azure/azure-functions/set-runtime-version) **1.x** をターゲットにする必要があります。  ![ランタイムのスクリーンショット](./../../../includes/media/functions-view-update-version-portal/function-app-view-version.png)
+
+
 
    ![新しい関数の Application Insights テンプレートのスクリーン ショット](./media/automate-custom-reports/function-app-04.png)
 

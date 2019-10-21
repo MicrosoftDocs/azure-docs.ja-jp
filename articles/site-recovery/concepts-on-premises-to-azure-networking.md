@@ -1,87 +1,159 @@
 ---
-title: Azure Site Recovery を使用したディザスター リカバリーと Azure へのフェールオーバー後に接続する IP アドレス指定の設定 | Microsoft Docs
-description: Azure Site Recovery を使用したディザスター リカバリーとオンプレミスからのフェールオーバー後に、Azure VM へ接続する IP アドレス指定の設定方法を説明します
-services: site-recovery
+title: Azure Site Recovery を使用したオンプレミスから Azure へのフェールオーバー後の Azure VM への接続
+description: Azure Site Recovery を使用してオンプレミスから Azure へのフェールオーバー後に Azure VM に接続する方法について説明します
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/15/2019
+ms.date: 10/03/2019
 ms.author: mayg
-ms.openlocfilehash: 2e1cbb2446501d0afda29eba179e388b5a22e6a8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 182c93ea0b887242d142eda5aeb44b2749c7ac66
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60772259"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937551"
 ---
-# <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための IP アドレス指定を設定する
+# <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>オンプレミスからフェールオーバー後に Azure VM に接続する 
 
-この記事では、Azure へのレプリケーションとフェールオーバーのために [Azure Site Recovery](site-recovery-overview.md) サービスを使用した後、Azure VM に接続するためのネットワーク要件について説明します。
 
-この記事では、次の内容について説明します。
+この記事では、フェールオーバー後に Azure VM に正常に接続できるように接続を設定する方法について説明します。
+
+オンプレミスの仮想マシン (VM) と物理サーバーのディザスター リカバリーを Azure に対して設定すると、[Azure Site Recovery](site-recovery-overview.md) が Azure へのマシンのレプリケートを開始します。 その後、障害が発生したときに、オンプレミスのサイトから Azure にフェールオーバーできます。 フェールオーバーが発生すると、Site Recovery は、レプリケートされたオンプレミス データを使用して Azure VM を作成します。 ディザスター リカバリー計画の一環として、フェールオーバー後にこれらの Azure VM で実行されているアプリに接続する方法を理解する必要があります。
+
+この記事では、次の方法について説明します。
 
 > [!div class="checklist"]
-> * 使用できる接続方式
-> * レプリケートされた Azure VM に別の IP アドレスを使用する方法
-> * フェールオーバー後に Azure VM の IP アドレスを保持する方法
+> * フェールオーバー前にオンプレミスのマシンを準備する。
+> * フェールオーバー後に Azure VM を準備する。 
+> * フェールオーバー後に Azure VM で IP アドレスを維持する。
+> * フェールオーバー後に Azure VM に新しい IP アドレスを割り当てる。
 
-## <a name="connecting-to-replica-vms"></a>レプリカ VM への接続
+## <a name="prepare-on-premises-machines"></a>オンプレミスのマシンの準備
 
-レプリケーションとフェールオーバー戦略を計画する際の重要な問題の 1 つとして、フェールオーバー後の Azure VM への接続方法があります。 レプリカの Azure VM のネットワーク戦略を設計する場合は、いくつかの選択肢があります。
+Azure VM への接続を確保するには、フェールオーバー前にオンプレミスのマシンを準備します。
 
-- **異なる IP アドレスを使用する**:レプリケートされた Azure VM ネットワークに対して異なる IP アドレス範囲を使用することを選択できます。 このシナリオでは、VM はフェールオーバー後に新しい IP アドレスを取得するため、DNS の更新が必要になります。
-- **同じ IP アドレスを保持する**:フェールオーバー後、Azure ネットワークに対して、プライマリのオンプレミス サイトと同じ IP アドレス範囲を使用することができます。 同じ IP アドレスを維持することで、フェールオーバー後のネットワーク関連の問題が少なくなるため、復旧が簡単になります。 ただし、Azure にレプリケートする場合は、フェールオーバー後に IP アドレスの新しい場所でルートを更新する必要があります。
+### <a name="prepare-windows-machines"></a>Windows マシンの準備
 
-## <a name="retaining-ip-addresses"></a>IP アドレスの保持
+オンプレミスの Windows マシンで、次の手順を実行します。
 
-Site Recovery には、サブネットのフェールオーバーを使用して、Azure へのフェールオーバー時に固定 IP アドレスを保持する機能があります。
+1. Windows 設定を構成します。 これには、すべての静的な固定ルートまたは WinHTTP プロキシを削除することと、ディスク SAN ポリシーを **OnlineAll** に設定することが含まれます。 [こちらの手順](../virtual-machines/windows/prepare-for-upload-vhd-image.md#set-windows-configurations-for-azure)に従います。
 
-- サブネットのフェールオーバーでは、特定のサブネットはサイト 1 とサイト 2 のどちらかにのみ存在し、両方のサイトに同時に存在することはありません。
-- フェールオーバーの発生時に IP アドレス空間を維持するには、サイトからサイトへサブネットを移動するよう、ルーター インフラストラクチャをプログラムで制御します。
-- フェールオーバー時に、サブネットは、関連付けられた保護対象 VM と共に移動します。 主な欠点は、障害が発生した場合にサブネット全体を移動する必要があることです。
+2. [こちらのサービス](../virtual-machines/windows/prepare-for-upload-vhd-image.md#check-the-windows-services) が実行されていることを確認します。
 
+3. オンプレミスのマシンへのリモート接続を許可するために、リモート デスクトップ (RDP) を有効にします。 PowerShell を使用して RDP を有効にする[方法を確認してください](../virtual-machines/windows/prepare-for-upload-vhd-image.md#update-remote-desktop-registry-settings)。
+
+4. フェールオーバー後にインターネット経由で Azure VM にアクセスするには、オンプレミスのマシン上の Windows ファイアウォールにおいて、パブリック プロファイルで TCP と UDP を許可し、すべてのプロファイルに対して許可されたアプリとして RDP を設定します。
+
+5. フェールオーバー後にサイト間 VPN 経由で Azure VM にアクセスする場合は、オンプレミスのマシン上の Windows ファイアウォールで、ドメイン プロファイルとプライベート プロファイルに対して RDP を許可します。 RDP トラフィックを許可する[方法を確認してください](../virtual-machines/windows/prepare-for-upload-vhd-image.md#configure-windows-firewall-rules)。
+6. フェールオーバーを開始するときに、実行待ちの Windows 更新プログラムがオンプレミス VM にないことを確認してください。 存在する場合、フェールオーバー後に Azure VM で更新プログラムのインストールが開始されることがあり、更新が完了するまで VM にサインインできません。
+
+### <a name="prepare-linux-machines"></a>Linux マシンの準備
+
+オンプレミスの Linux マシンで、次の手順を実行します。
+
+1. Secure Shell サービスがシステム起動時に自動的に開始されるよう設定されていることを確認します。
+2. ファイアウォール規則で SSH 接続が許可されていることを確認します。
+
+
+## <a name="configure-azure-vms-after-failover"></a>フェールオーバー後に Azure VM を構成する
+
+フェールオーバー後に、作成された Azure VM で次の手順を実行します。
+
+1. インターネット経由で VM に接続するには、パブリック IP アドレスを VM に割り当てます。 オンプレミスのマシンに使用したパブリック IP アドレスと同じものを Azure VM に対して使用することはできません。 [詳細情報](../virtual-network/virtual-network-public-ip-address.md)
+2. VM 上のネットワーク セキュリティ グループ (NSG) 規則で RDP または SSH ポートへの着信接続が許可されていることを確認します。
+3. [[ブート診断]](../virtual-machines/troubleshooting/boot-diagnostics.md#enable-boot-diagnostics-on-existing-virtual-machine) をオンにして VM を表示します。
+
+
+> [!NOTE]
+> Azure Bastion サービスでは、Azure VM へのプライベート RDP および SSH アクセスが提供されます。 このサービスに関する[詳細情報](../bastion/bastion-overview.md)を参照してください。
+
+## <a name="set-a-public-ip-address"></a>パブリック IP アドレスの設定
+
+Azure VM にパブリック IP アドレスを手動で割り当てる代わりに、Site Recovery [復旧計画](site-recovery-create-recovery-plans.md)のスクリプトまたは Azure Automation Runbook を使用して、フェールオーバー時にアドレスを割り当てることができます。または、Azure Traffic Manager を使用して DNS レベルのルーティングを設定することもできます。 パブリック アドレスの設定に関する[詳細情報](concepts-public-ip-address-with-site-recovery.md)を参照してください。
+
+
+## <a name="assign-an-internal-address"></a>内部アドレスの割り当て
+
+フェールオーバー後に Azure VM の内部 IP アドレスを設定するには、いくつかのオプションがあります。
+
+- **同じ IP アドレスを保持する**:オンプレミスのマシンに割り当てられている IP アドレスと同じものを Azure VM で使用できます。
+- **異なる IP アドレスを使用する**:別の IP アドレスを Azure VM に使用できます。
+
+
+## <a name="retain-ip-addresses"></a>IP アドレスを維持する
+
+Site Recovery では、Azure へのフェールオーバー時に同じ IP アドレスを維持できます。 同じ IP アドレスを維持すると、フェールオーバー後の潜在的なネットワークの問題を回避できますが、若干複雑になります。
+
+- ターゲットの Azure VM がオンプレミスのサイトと同じ IP アドレス/サブネットを使用している場合は、アドレスが重複しているため、サイト間 VPN 接続または ExpressRoute を使用してそれらを接続することはできません。 サブネットは一意である必要があります。
+- Azure VM でアプリを利用できるように、フェールオーバー後にオンプレミスから Azure への接続が必要です。 Azure では、拡張された VLAN はサポートされないため、IP アドレスを維持する場合は、オンプレミスのマシンに加えて、サブネット全体をフェールオーバーすることで、IP アドレス空間を Azure に引き継ぐ必要があります。
+- サブネットのフェールオーバーにより、特定のサブネットがオンプレミスと Azure で同時に使用できないことが保証されます。
+
+IP アドレスを維持するには、次の手順を実行する必要があります。
+
+- オンプレミスのマシンのプロパティで、ターゲット Azure VM のネットワークと IP アドレス指定を設定して、オンプレミスの設定をミラーリングします。
+- サブネットは、ディザスター リカバリー プロセスの一部として管理される必要があります。 オンプレミスのネットワークと一致する Azure VNet が必要です。フェールオーバー後のネットワーク ルートは、サブネットの Azure への移動と新しい IP アドレスの場所を反映するように変更される必要があります。  
 
 ### <a name="failover-example"></a>フェールオーバーの例
 
-架空の会社 Woodgrove Bank を使用した Azure へのフェールオーバーの例を見てみましょう。
+1 つ例を見てみましょう。
 
-- Woodgrove Bank は、オンプレミス サイトでそのビジネス アプリをホストします。 モバイル アプリは Azure でホストします。
-- オンプレミス エッジ ネットワークと Azure 仮想ネットワークとの間には、VPN サイト間接続が存在します。 VPN 接続により、Azure 内の仮想ネットワークはオンプレミス ネットワークの拡張として表示されます。
-- Woodgrove では、Site Recovery を使用して、オンプレミスのワークロードを Azure にレプリケートしたいと考えています。
-  - Woodgrove には、ハード コーディングされた IP アドレスに依存するアプリがあるため、Azure にフェールオーバーした後、アプリの IP アドレスを保持する必要があります。
-  - Azure で実行されているリソースが使用する IP アドレスの範囲は、 172.16.1.0/24、172.16.2.0/24 です。
+- 架空の会社である Woodgrove Bank は、オンプレミスでビジネス アプリをホストし、Azure でそれらのモバイル アプリをホストしています。
+- サイト間 VPN 経由でオンプレミスから Azure に接続します。 
+- Woodgrove では、オンプレミスのマシンを Azure にレプリケートするために、Site Recovery を使用しています。
+- オンプレミスのアプリではハードコーディングされた IP アドレスが使用されるため、Azure で同じ IP アドレスを維持する必要があります。
+- オンプレミスでアプリを実行しているマシンは、次の 3 つのサブネットで実行されています。
+    - 192.168.1.0/24
+    - 192.168.2.0/24
+    - 192.168.3.0/24
+- Azure で実行されているアプリは、次の 2 つのサブネット内の Azure VNet **Azure ネットワーク**にあります。
+- 172.16.1.0/24
+- 172.16.2.0/24
 
-![サブネットのフェールオーバー前](./media/site-recovery-network-design/network-design7.png)
+これらのアドレスを維持するために、同社では次の操作を実行します。
+
+1. レプリケーションを有効にするときに、マシンが **Azure ネットワーク**にレプリケートするように指定します。
+2. Azure で **復旧ネットワーク**を作成します。 この VNet は、オンプレミス ネットワーク内の 192.168.1.0/24 サブネットをミラーリングします。
+3. Woodgrove は、2 つのネットワークをつなぐ [VNet 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を設定します。 
+
+    > [!NOTE]
+    > アプリケーションの要件に応じて、フェールオーバー前に VNet 間接続を Site Recovery [復旧計画](site-recovery-create-recovery-plans.md)の手動の手順/スクリプト化した手順/Azure Automation Runbook として設定できます。または、フェールオーバーが完了した後に設定します。
+
+4. フェールオーバー前に、次の手順で説明するように、Site Recovery のマシン プロパティで、ターゲット IP アドレスをオンプレミスのマシンのアドレスに設定します。
+5. フェールオーバー後、Azure VM は同じ IP アドレスを使用して作成されます。 Woodgrove は、**Azure ネットワーク**から**復旧ネットワーク**の VNet に接続します。 
+6. オンプレミスで、Woodgrove はネットワークの変更を行う必要があります (192.168.1.0/24 が Azure に移動したことを反映するためのルートの変更など)。  
 
 **フェールオーバー前のインフラストラクチャ**
 
-
-Woodgrove が IP アドレスを維持したまま VM を Azure にレプリケートできるようにするには、次のことを行う必要があります。
-
-
-1. オンプレミス マシンのフェールオーバーの後に Azure VM が作成される Azure 仮想ネットワークを作成します。 これは、アプリケーションがシームレスにフェールオーバーできるように、オンプレミス ネットワークの拡張機能となります。
-2. フェールオーバー前に、Site Recovery で、マシンのプロパティに同じ IP アドレスを割り当てます。 フェールオーバー後、Site Recovery は Azure 仮想マシンにこのアドレスを割り当てます。
-3. フェールオーバーが実行され、同じ IP アドレスで Azure VM が作成されると、それらは [Vnet 間接続](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)を使用してネットワークに接続します。 このアクションはスクリプト化することができます。
-4. 192\.168.1.0/24 が Azure に移動したことを反映させるためには、ルートを変更する必要があります。
+![サブネットのフェールオーバー前](./media/site-recovery-network-design/network-design7.png)
 
 
 **フェールオーバー後のインフラストラクチャ**
 
 ![サブネットのフェールオーバー後](./media/site-recovery-network-design/network-design9.png)
 
-#### <a name="site-to-site-connection"></a>サイト間接続
 
-フェールオーバー後に、Woodgrove は、Vnet 間接続だけでなく サイト間 VPN 接続を設定できます。
-- サイト間接続をセットアップする際、Azure ネットワークでは、IP アドレス範囲がオンプレミスの IP アドレス範囲と異なる場合のみ、トラフィックをオンプレミスの場所 (ローカル ネットワーク) にルーティングできます。 これは、Azure で拡張サブネットがサポートされていないためです。 そのため、オンプレミス上にサブネット 192.168.1.0/24 がある場合、Azure ネットワークにローカル ネットワーク 192.168.1.0/24 を追加することはできません。 これは予想される状況です。その理由は、サブネットにアクティブな VM がないこととサブネットがディザスター リカバリーの目的でのみ作成されることを Azure が認識しないことにあります。
-- Azure ネットワークからネットワーク トラフィックを正しくルーティングできるようにするには、ネットワーク内のサブネットとローカル ネットワーク内のサブネットが競合してはなりません。
+### <a name="set-target-network-settings"></a>ターゲット ネットワークの設定
+
+フェールオーバー前に、ターゲット Azure VM のネットワーク設定と IP アドレスを指定します。
+
+1.  [Recovery Services コンテナー]-> **[レプリケートされたアイテム]** で、オンプレミス マシンを選択します。
+2. そのマシンの **[コンピューティングとネットワーク]** ページで **[編集]** をクリックし、ターゲット Azure VM のネットワークおよびアダプターの設定を構成します。
+3. **[ネットワークのプロパティ]** で、フェールオーバー後の作成時に Azure VM が配置されるターゲット ネットワークを選択します。
+4. **[ネットワーク インターフェイス]** で、ターゲット ネットワークのネットワーク アダプターを構成します。 既定では、そのオンプレミス マシンで検出されたすべての NIC が Site Recovery に表示されます。
+    - **[ターゲット ネットワーク インターフェイスの種類]** では、各 NIC を **[プライマリ]** 、 **[セカンダリ]** 、または **[作成しない]** (ターゲット ネットワーク内で特定の NIC が不要な場合) のいずれかとして設定できます。 1 つのネットワーク アダプターをフェールオーバーのプライマリとして設定する必要があります。 ターゲット ネットワークを変更すると、Azure VM のすべての NIC に影響を与えることに注意してください。
+    - NIC 名をクリックして、Azure VM がデプロイされるサブネットを指定します。
+    - ターゲット Azure VM に割り当てるプライベート IP アドレスで **[動的]** を上書きします。 IP アドレスが指定されていない場合、Site Recovery ではフェールオーバー時にサブネット内の次に使用可能な IP アドレスを NIC に割り当てます。
+    - Azure へのオンプレミスのフェールオーバーのための NIC の管理に関する[詳細情報](site-recovery-manage-network-interfaces-on-premises-to-azure.md)を参照してください。
 
 
+## <a name="get-new-ip-addresses"></a>新しい IP アドレスの取得
+
+このシナリオでは、Azure VM はフェールオーバー後に新しい IP アドレスを取得します。 DNS の更新により、フェールオーバーされたマシンのレコードが Azure VM の IP アドレスを指すように更新されます。
 
 
-## <a name="assigning-new-ip-addresses"></a>新しい IP アドレスの割り当て
-
-フェールオーバー後に IP アドレスを保持する必要がない場合の Azure ネットワーク インフラストラクチャの設定方法については、こちらの[ブログ記事](https://azure.microsoft.com/blog/2014/09/04/networking-infrastructure-setup-for-microsoft-azure-as-a-disaster-recovery-site/)を参照してください。 アプリケーションの説明から始まり、オンプレミスと Azure でのネットワークの設定方法を説明し、最後にフェールオーバーの実行に関する情報が示されています。
 
 ## <a name="next-steps"></a>次の手順
-[フェールオーバーの実行](site-recovery-failover.md)
+オンプレミスの Active Directory と DNS の Azure へのレプリケートについて[確認します](site-recovery-active-directory.md)。
+
+

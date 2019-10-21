@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: fc77ef6786fbd16ecfeb34397ead11be8b107176
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 45bc55141c9f338ae2f69cf4ccefae3d2492b239
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70207270"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336930"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -97,19 +97,37 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
     sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
     ```
 
-1. Ubuntu サーバーで、次の表の該当するバージョンのいずれかが実行されていることを確認します。 apt ソースを追加するには、次のコマンドを実行します。
+1. APT 更新を行う前に、.NET 開発ソース リストを設定します。
+
+   Ubuntu の APT ソース リストを設定するには、次のコマンドを実行します。
 
     ```bash
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-$(lsb_release -cs)-prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
-    sudo apt-get update
     ```
+
+   Debian の APT ソース リストを設定するには、次のコマンドを実行します。
+
+    ```bash
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    ```
+
+1. `/etc/apt/sources.list.d/dotnetdev.list` ファイルを調べて、次に示す適切な Linux バージョン文字列のいずれかがあることを確認します。
 
     | Linux ディストリビューション | Version |
     | --------------- | ----------- |
+    | Debian 10 | `buster` |
+    | Debian 9 | `stretch` |
+    | Debian 8 | `jessie` |
     | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
+
+1. APT ソースの更新を開始します。
+
+    ```bash
+    sudo apt-get update
+    ```
 
 1. 次のコマンドを使って、Core Tools のパッケージをインストールします。
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/15/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 16c65a98ca420a4b15281ee033ea7773197b5b2a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1774fcf0af287bba03c2c5c79e14883e3594ef0c
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098470"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260154"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
@@ -306,10 +306,13 @@ Vault myKeyVault = azure.vaults().getByResourceGroup(resourceGroup, keyvaultName
 
 > |パラメーター名|場所|説明|
 > |-----|-----|-----|
-> |resource|Query|トークンを取得する必要のあるリソースの AAD リソース URI。 これは [Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の 1 つか、その他のリソース URI になります。|
-> |api-version|Query|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
+> |resource|クエリ|トークンを取得する必要のあるリソースの AAD リソース URI。 これは [Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)の 1 つか、その他のリソース URI になります。|
+> |api-version|クエリ|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
 > |secret|ヘッダー|MSI_SECRET 環境変数の値。 このヘッダーは、サーバー側のリクエスト フォージェリ (SSRF) 攻撃を回避するために使用されます。|
-> |clientid|Query|(省略可能) 使用するユーザー割り当て ID のID。 省略すると、システム割り当て ID が使用されます。|
+> |clientid|クエリ|(ユーザーが割り当てられていない場合は省略可能) 使用するユーザー割り当て ID の ID。 省略すると、システム割り当て ID が使用されます。|
+
+> [!IMPORTANT]
+> ユーザー割り当て ID のトークンを取得する場合は、`clientid` プロパティを含める必要があります。 このようにしないと、トークン サービスは存在する場合と存在しない場合があるシステムが割り当てた ID のトークンを取得しようとします。
 
 正常終了の応答である 200 OK には、JSON 本文と次のプロパティが含まれています。
 

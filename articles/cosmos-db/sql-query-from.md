@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: tisande
-ms.openlocfilehash: 6bc93569dc9a0405ec3a8dfd719c89ede01df84d
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 79bb17277a041f71c095ed724737012f9501f16f
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343249"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72326994"
 ---
-# <a name="from-clause"></a>FROM 句
+# <a name="from-clause-in-azure-cosmos-db"></a>Azure Cosmos DB での FROM 句
 
 ソースがクエリの後半でフィルター処理またはプロジェクションされる場合を除いて、FROM (`FROM <from_specification>`) 句はオプションです。 `SELECT * FROM Families` のようなクエリは、`Families` コンテナー全体を列挙します。 コンテナー名の代わりにコンテナーに特別な識別子 ROOT を使うこともできます。
 

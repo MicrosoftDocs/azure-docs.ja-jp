@@ -9,15 +9,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 0c7e9c57b360ad1a3cd864634a690e22e42c6410
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 66d47ad1d67c963d70fb40e43eb077222ad8b360
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490719"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709800"
 ---
 # <a name="view-the-tax-documents-for-your-microsoft-customer-agreement"></a>Microsoft 顧客契約に関する税務書類を表示する
 

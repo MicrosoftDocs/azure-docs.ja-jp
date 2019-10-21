@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 58b6531a394db8f9d29dcc0fe9b4b40d1725e70a
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: c0c160d9fc2fcfb8da004d02baae1dd410620cbb
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774581"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71204192"
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
 
@@ -69,7 +69,7 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 {
     "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
-    "name": "config-app",
+    "name": "virtualMachineName/config-app",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'),copyindex())]",
@@ -101,9 +101,12 @@ GitHub または Azure Storage などからスクリプトを外部でダウン�
 > [!NOTE]
 > 1 つの時点で VM にインストールできる拡張機能のバージョンは 1 つだけです。同じ VM は失敗するので、同じ Resource Manager テンプレートにはカスタム スクリプトを 2 回指定します。
 
+> [!NOTE]
+> このスキーマは、VirtualMachine リソース内で、またはスタンドアロン リソースとして使用できます。 この拡張機能が ARM テンプレートでスタンドアロン リソースとして使用される場合、リソースの名前は "virtualMachineName/extensionName" という形式である必要があります。 
+
 ### <a name="property-values"></a>プロパティ値
 
-| EnableAdfsAuthentication | 値/例 | データ型 |
+| 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Compute | string |

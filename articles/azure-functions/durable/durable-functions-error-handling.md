@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 7b357189a9ce67f27952985b78dd3134517ffba5
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 5a3cfb78fe97b52abb1406dff64132fc1b3fb985
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70734301"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70933424"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions のエラー処理 (Azure Functions)
 
-Durable Function のオーケストレーションはコードで実装され、プログラミング言語のエラー処理機能を使用できます。 この点を考慮すると、エラー処理と補正をオーケストレーションに組み込む場合について知っておく必要がある新しい概念は実際にはありません。 ただし、注意する必要があるいくつかの動作があります。
+Durable Function のオーケストレーションはコードで実装され、プログラミング言語の組み込みエラー処理機能を使用できます。 エラー処理と補正をオーケストレーションに追加するために学習する必要がある新しい概念は、実際にはありません。 ただし、注意する必要があるいくつかの動作があります。
 
 ## <a name="errors-in-activity-functions"></a>アクティビティ関数のエラー
 
@@ -139,7 +139,7 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-送金先口座に対する **CreditAccount** 関数の呼び出しが失敗した場合、オーケストレーター関数は、資金を送金元口座に戻すことで、これを補正します。
+最初の **CreditAccount** 関数の呼び出しが失敗した場合、オーケストレーター関数は、資金を送金元口座に戻すことで、これを補正します。
 
 ## <a name="automatic-retry-on-failure"></a>エラー発生時の自動再試行
 
@@ -192,18 +192,18 @@ module.exports = df.orchestrator(function*(context) {
 
 `CallActivityWithRetryAsync` (.NET) または `callActivityWithRetry` (JavaScript) API は、`RetryOptions` パラメーターを取ります。 `CallSubOrchestratorWithRetryAsync` (.NET) または `callSubOrchestratorWithRetry` (JavaScript) API を使用するサブオーケストレーション呼び出しは、これらの同じ再試行ポリシーを使用できます。
 
-自動再試行ポリシーをカスタマイズするためのいくつかのオプションがあります。 次のオプションが含まれます。
+自動再試行ポリシーをカスタマイズするために、次のようないくつかのオプションがあります。
 
 * **最大試行回数**: 再試行の最大数。
 * **1 回目の再試行の間隔**: 1 回目の再試行の前に待つ時間。
 * **バックオフ係数**: バックオフの増加率を決定するために使用される係数。 既定値は 1 です。
 * **最大再試行間隔**: 再試行の間に待つ最長時間。
 * **再試行タイムアウト**: 再試行の実行に費やす最長時間。 既定の動作は、無限の再試行です。
-* **ハンドル**: 関数呼び出しを再試行する必要があるかどうかを決定するユーザー定義のコールバックを指定できます。
+* **ハンドル**: 関数を再試行する必要があるかどうかを決定するために、ユーザー定義のコールバックを指定できます。
 
 ## <a name="function-timeouts"></a>関数のタイムアウト
 
-完了に時間がかかりすぎる場合は、オーケストレーター関数内の関数呼び出しを破棄できます。 現時点でこれを適切に行うには、次の例のように、`context.CreateTimer` (.NET) または `context.df.createTimer` (JavaScript) を `Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) と組み合わせて使用して[持続的タイマー](durable-functions-timers.md)を作成します。
+オーケストレーター関数内の関数呼び出しは、完了に時間がかかりすぎる場合は破棄できます。 現時点でこれを適切に行うには、次の例のように、`context.CreateTimer` (.NET) または `context.df.createTimer` (JavaScript) を `Task.WhenAny` (.NET) または `context.df.Task.any` (JavaScript) と組み合わせて使用して[持続的タイマー](durable-functions-timers.md)を作成します。
 
 ### <a name="precompiled-c"></a>プリコンパイル済み C#
 
@@ -296,6 +296,9 @@ module.exports = df.orchestrator(function*(context) {
 オーケストレーター関数がハンドルされない例外で失敗した場合、例外の詳細がログに記録され、インスタンスは `Failed` 状態で完了します。
 
 ## <a name="next-steps"></a>次の手順
+
+> [!div class="nextstepaction"]
+> [永続的オーケストレーションについて学習する](durable-functions-eternal-orchestrations.md)
 
 > [!div class="nextstepaction"]
 > [問題を診断する方法を知る](durable-functions-diagnostics.md)

@@ -1,6 +1,6 @@
 ---
-title: 継続的インテグレーション Azure パイプラインを作成する - Team Data Science Process
-description: 人工知能 (AI) アプリケーションの DevOps:Docker と Kubernetes を使用した Azure での継続的インテグレーション パイプラインの作成
+title: Azure Pipelines を使用した CI/CD パイプラインの作成 - Team Data Science Process
+description: Docker と Kubernetes を使用して、人工知能 (AI) アプリケーション用の継続的インテグレーションと継続的デリバリーのパイプラインを作成します。
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -8,63 +8,61 @@ editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 09/06/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: d99149f8112c19a07208523a1ee26ba1c36e5362
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62103560"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260662"
 ---
-# <a name="creating-continuous-integration-pipeline-on-azure-using-docker-kubernetes-and-python-flask-application"></a>Docker、Kubernetes、および Python Flask アプリケーションを使用した Azure での継続的インテグレーション パイプラインの作成
-多くの場合、AI アプリケーションには、データ サイエンティストが機械学習モデルを構築し、アプリ開発者がアプリケーションをビルドしてエンド ユーザーが使用できるように公開するという 2 つの作業の流れがあります。 この記事では、AI アプリケーション パイプラインの継続的インテグレーション (CI)/継続的デリバリー (CD) を実装する方法について説明します。 AI アプリケーションは、事前トレーニング済みの機械学習 (ML) モデルに埋め込まれたアプリケーション コードの組み合わせです。 この記事では、個人の Azure Blob Storage アカウントから事前トレーニング済みモデルを取得しますが、AWS S3 アカウントも使用できます。 この記事では、単純な Python Flask Web アプリケーションを使用します。
+# <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>Azure Pipelines、Docker、Kubernetes を使用して AI アプリ用の CI/CD パイプラインを作成する
+
+人工知能 (AI) アプリケーションは、事前トレーニング済みの機械学習 (ML) モデルに埋め込まれたアプリケーション コードです。 AI アプリケーションには、常に 2 つの作業の流れがあります。データ サイエンティストは ML モデルを構築し、アプリ開発者はアプリをビルドしてエンド ユーザーが使用できるように公開します。 この記事では、ML モデルをアプリのソース コードに埋め込む AI アプリケーション用の継続的インテグレーションと継続的デリバリー (CI/CD) パイプラインを実装する方法について説明します。 このサンプル コードとチュートリアルでは、シンプルな Python Flask Web アプリケーションを使用して、個人の Azure BLOB ストレージ アカウントから事前トレーニング済みのモデルをフェッチします。 また、AWS S3 ストレージ アカウントも使用できます。
 
 > [!NOTE]
-> これは、CI/CD を実行できるさまざまな方法の 1 つです。 以下に示すツールとその他の前提条件とは別のツールと前提条件があります。 記事の用意ができたら、順次公開する予定です。
->
->
+> 次のプロセスは、CI/CD を実行するいくつかの方法のうちの 1 つです。 このツールと前提条件に代わる別のツールや前提条件もあります。
 
-## <a name="github-repository-with-document-and-code"></a>GitHub リポジトリのドキュメントとコード
-ソース コードを [GitHub](https://github.com/Azure/DevOps-For-AI-Apps) からダウンロードできます。 [詳細なチュートリアル](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)も利用できます。
+## <a name="source-code-tutorial-and-prerequisites"></a>ソース コード、チュートリアル、前提条件
 
-## <a name="pre-requisites"></a>前提条件
-後述する CI/CD パイプラインには、次の前提条件があります。
-* [Azure DevOps 組織](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Kubernetes を実行する Azure Container Service (AKS)](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-* [Azure Container Registry (ACR) アカウント](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
-* [Kubernetes クラスターに対してコマンドを実行するための Kubectl のインストール](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。 これは、ACS クラスターから構成をフェッチするために必要になります。 
-* GitHub アカウントへのリポジトリのフォーク
+[ソース コード](https://github.com/Azure/DevOps-For-AI-Apps)と[詳細なチュートリアル](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)を GitHub からダウンロードできます。 チュートリアルの手順に従って、独自のアプリケーション用に CI/CD パイプラインを実装します。
 
-## <a name="description-of-the-cicd-pipeline"></a>CI/CD パイプラインの説明
-このパイプラインは、新しいコミットのたびに開始され、テスト スイートを実行し、テストに合格した最新のビルドを採用し、それを Docker コンテナーにパッケージ化します。 その後、Azure Container Service (ACS) を使用してコンテナーが配置され、イメージが Azure Container Registry (ACR) に安全に格納されます。 ACS では、コンテナー クラスターを管理するために Kubernetes が実行されますが、Docker Swarm または Mesos も選択できます。
+ダウンロードしたソース コードとチュートリアルを使用するには、次の前提条件が必要です。 
 
-アプリケーションは、Azure Storage アカウントから最新のモデルを安全にプルし、それをアプリケーションの一部としてパッケージ化します。 展開されるアプリケーションには、アプリ コードと ML モデルが 1 つのコンテナーとしてパッケージ化されます。 これにより、アプリ開発者とデータ サイエンティストが切り離され、運用アプリで常に最新のコードが最新の ML モデルで実行されることが保証されます。
+- お使いの GitHub アカウントにフォークされた[ソース コード リポジトリ](https://github.com/Azure/DevOps-For-AI-Apps)
+- [Azure DevOps 組織](/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
+- [Azure CLI](/cli/azure/install-azure-cli)
+- [Azure Container Service for Kubernetes (AKS) クラスター](/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
+- コマンドを実行して AKS クラスターから構成をフェッチするための [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) 
+- [Azure Container Registry (ACR) アカウント](/azure/container-registry/container-registry-get-started-portal)
 
-このパイプラインのアーキテクチャを次に示します。 
+## <a name="cicd-pipeline-summary"></a>CI/CD パイプラインの概要
 
-![アーキテクチャ](./media/ci-cd-flask/Architecture.PNG?raw=true)
+新しく Git コミットが行われるたびに、ビルド パイプラインが開始されます。 このビルドにより、BLOB ストレージ アカウントから最新の ML モデルが安全にプルされ、アプリ コードと共に 1 つのコンテナーにパッケージ化されます。 このように、アプリケーション開発とデータ サイエンスの作業の流れを分離することで、運用アプリでは常に最新の ML モデルを使用して最新のコードが実行されるようになります。 アプリがテストに合格すると、パイプラインはビルド イメージを ACR 内の Docker コンテナーに安全に格納します。 その後、リリース パイプラインでは AKS を使用してコンテナーがデプロイされます。 
 
-## <a name="steps-of-the-cicd-pipeline"></a>CI/CD パイプラインの各ステップ
-1. 開発者は、任意の IDE でアプリケーション コードに対する作業を行います。
-2. 開発者は、任意のソース管理にコードをコミットします (Azure DevOps には、さまざまなソース コントロールの適切なサポートがあります)
-3. これとは別に、データ サイエンティストは、モデルの開発に取り組みます。
-4. 開発が終わったら、モデルをモデル リポジトリにパブリッシュします。ここでは、Blob Storage アカウントを使用しています。 
-5. GitHub のコミットに基づいて、Azure DevOps でビルドが開始されます。
-6. Azure DevOps ビルド パイプラインは、Blob コンテナーから最新のモデルをプルしてコンテナーを作成します。
-7. Azure DevOps は、イメージを Azure Container Registry のプライベート イメージ リポジトリにプッシュします
-8. 設定されたスケジュール (夜間) に従って、リリース パイプラインが開始されます。
-9. 最新のイメージが ACR からプルされ、ACS の Kubernetes クラスターに配置されます。
-10. アプリに対するユーザー要求は、DNS サーバーを経由します。
-11. DNS サーバーは、要求をロード バランサーに渡し、応答をユーザーに返します。
+## <a name="cicd-pipeline-steps"></a>CI/CD パイプラインのステップ
 
-## <a name="next-steps"></a>次の手順
-* 各自のアプリケーション向けの独自の CI/CD パイプラインを実装するための詳細については、こちらの[チュートリアル](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)を参照してください。
+次の図とステップは、CI/CD パイプラインのアーキテクチャを説明しています。
 
-## <a name="references"></a>参照
-* [Team Data Science Process (TDSP)](https://aka.ms/tdsp)
-* [Azure Machine Learning (AML)](https://docs.microsoft.com/azure/machine-learning/service/)
-* [Azure DevOps](https://www.visualstudio.com/vso/)
-* [Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes)
+![CI/CD パイプラインのアーキテクチャ](./media/ci-cd-flask/architecture.png)
+
+1. 開発者が、任意の IDE でアプリケーション コードに取り組みます。
+2. その開発者は、Azure Repos、GitHub、またはその他の Git ソース管理プロバイダーにコードをコミットします。 
+3. これとは別に、データ サイエンティストが ML モデルの開発に取り組みます。
+4. このデータ サイエンティストは、完成したモデルをモデル リポジトリ (この場合は BLOB ストレージ アカウント) に公開します。 
+5. Azure Pipelines によって、Git コミットに基づいたビルドが開始されます。
+6. ビルド パイプラインによって、BLOB ストレージから最新の ML モデルがプルされ、コンテナーが作成されます。
+7. パイプラインによって、ビルド イメージが ACR のプライベート イメージ リポジトリにプッシュされます。
+8. 成功したビルドに基づいて、リリース パイプラインが開始されます。
+9. パイプラインによって、最新のイメージが ACR からプルされ、AKS 上の Kubernetes クラスター全体にデプロイされます。
+10. アプリに対するユーザー要求が DNS サーバーを経由します。
+11. DNS サーバーはこの要求をロード バランサーに渡し、応答をユーザーに送り返します。
+
+## <a name="see-also"></a>関連項目
+
+- [Team Data Science Process (TDSP)](/azure/machine-learning/team-data-science-process/)
+- [Azure Machine Learning (AML)](/azure/machine-learning/)
+- [Azure DevOps](https://azure.microsoft.com/services/devops/)
+- [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes)

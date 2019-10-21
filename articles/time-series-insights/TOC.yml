@@ -17,17 +17,13 @@
           href: time-series-insights-update-quickstart.md
 - name: チュートリアル
   items:
-    - name: Time Series Insights JavaScript クライアント ライブラリ
-      href: tutorial-explore-js-client-lib.md
-    - name: 単一ページの Web アプリの作成
-      href: tutorial-create-tsi-sample-spa.md
     - name: Azure Time Series Insights GA
       items:
         - name: Time Series Insights 環境を作成する
           href: tutorial-create-populate-tsi-environment.md
     - name: Azure Time Series Insights プレビュー
       items:
-        - name: Azure Time Series Insights プレビューのチュートリアル
+        - name: プレビュー環境を設定する
           href: time-series-insights-update-create-environment.md
 - name: 概念
   items:
@@ -61,7 +57,7 @@
           href: time-series-insights-update-use-cases.md
         - name: タイム シリーズ モデル
           href: time-series-insights-update-tsm.md
-        - name: データ照会
+        - name: タイム シリーズ クエリ
           href: time-series-insights-update-tsq.md
         - name: エクスプローラー プレビューでデータを視覚化する
           href: time-series-insights-update-explorer.md
@@ -115,10 +111,12 @@
   items:
     - name: Time Series Insights
       items:
-        - name: Azure Time Series Insights GA
+        - name: Azure Time Series Insights
+          href: /rest/api/time-series-insights/index
+        - name: データ アクセスの一般提供
           href: /rest/api/time-series-insights/ga
           items:
-            - name: Query
+            - name: クエリ
               href: /rest/api/time-series-insights/ga-query
               items:
                 - name: API
@@ -127,17 +125,8 @@
                   href: /rest/api/time-series-insights/ga-query-syntax
             - name: 参照データ API
               href: /rest/api/time-series-insights/ga-reference-data-api
-        - name: Azure Time Series Insights プレビュー
+        - name: データ アクセスの概念のプレビュー
           href: /rest/api/time-series-insights/preview
-          items:
-            - name: タイム シリーズ クエリ
-              href: /rest/api/time-series-insights/preview-query
-            - name: タイム シリーズ モデル
-              href: /rest/api/time-series-insights/preview-model
-            - name: Time Series の環境 API
-              href: /rest/api/time-series-insights/preview-env
-            - name: Time Series の式と構文
-              href: /rest/api/time-series-insights/preview-tsx
     - name: クライアント SDK
       items:
         - name: JavaScript クライアント SDK

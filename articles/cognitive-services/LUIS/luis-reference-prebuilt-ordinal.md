@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 51f1082034a710ed9d0f78b79bc6ae469771459e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d1d69b256c4fc7e7b9d1c84b7c409d01a9f8ce52
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933466"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677542"
 ---
 # <a name="ordinal-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの ordinal 作成済みエンティティ
 序数は、セット内のオブジェクトの数値表現 `first`、`second`、`third` です。 このエンティティは既にトレーニングされているので、序数メールを含む発話の例をアプリケーション意図に追加する必要はありません。 ordinal エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされます。 
@@ -26,7 +26,7 @@ ordinal は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blo
 
 ## <a name="resolution-for-prebuilt-ordinal-entity"></a>作成済み ordinal エンティティの解決
 
-### <a name="api-version-2x"></a>API バージョン 2.x
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
 
 次の例では、**builtin.ordinal** エンティティの解決を示します。
 
@@ -61,7 +61,7 @@ ordinal は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blo
 }
 ```
 
-### <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 次の JSON は、`verbose` パラメーターが `false` に設定されている場合です。
 
@@ -128,6 +128,10 @@ ordinal は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/blo
 }
 ```
 
+* * * 
+
 ## <a name="next-steps"></a>次の手順
+
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)、[phone number](luis-reference-prebuilt-phonenumber.md)、[temperature](luis-reference-prebuilt-temperature.md) エンティティについて学習します。 

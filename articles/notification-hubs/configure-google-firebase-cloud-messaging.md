@@ -2,20 +2,22 @@
 title: Azure Notification Hubs で Google Firebase Cloud Messaging を構成する | Microsoft Docs
 description: Google Firebase Cloud Messaging の設定で Azure 通知ハブを構成する方法について説明します。
 services: notification-hubs
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 ms.service: notification-hubs
 ms.workload: mobile
 ms.topic: article
 ms.date: 03/25/2019
-ms.author: jowargo
-ms.openlocfilehash: d200f5746d5f7c62ff3a52873d5d5d6c3e1322dc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 03/25/2019
+ms.openlocfilehash: 803289476d4d8869f7828b2843a983ee0c86bfbd
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60239197"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212503"
 ---
 # <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>Azure portal で通知ハブ用に Google Firebase Cloud Messaging (FCM) の設定を構成する
 この記事では、Azure portal を使用して Azure 通知ハブ用に Google Firebase Cloud Messaging (FCM) の設定を構成する方法について説明します。  

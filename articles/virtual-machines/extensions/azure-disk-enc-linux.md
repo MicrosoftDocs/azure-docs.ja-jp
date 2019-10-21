@@ -151,7 +151,7 @@ V1.1 スキーマは推奨されており、Azure Active Directory のプロパ�
 | KeyEncryptionAlgorithm | 'RSA-OAEP'、'RSA-OAEP-256'、'RSA1_5' | string |
 | KeyEncryptionKeyURL | url | string |
 | (省略可能) KeyVaultURL | url | string |
-| パスフレーズ | password | string | 
+| Passphrase | password | string | 
 | SequenceVersion | uniqueidentifier | string |
 | VolumeType | OS、Data、All | string |
 

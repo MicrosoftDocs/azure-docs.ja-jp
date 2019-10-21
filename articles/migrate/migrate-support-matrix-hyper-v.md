@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 09/17/2019
 ms.author: raynew
-ms.openlocfilehash: 97972be655a6a03cfe29d8589a144d1e027b86fc
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 004010983b87c333adeb4b20abbe851581917a3a
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376094"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937432"
 ---
 # <a name="support-matrix-for-hyper-v-assessment-and-migration"></a>Hyper-V の評価と移行のサポート マトリックス
 
@@ -27,9 +27,9 @@ ms.locfileid: "70376094"
 **Deployment** | **詳細***
 --- | ---
 **オンプレミスの Hyper-V VM を評価する** | 最初の評価を[設定](tutorial-prepare-hyper-v.md)します。<br/><br/> 大規模な評価を[実行](scale-hyper-v-assessment.md)します。
-**Hyper-V VM を Azure に移行する** | Azure への移行を[試します](tutorial-migrate-hyper-v.md)。 
+**Hyper-V VM を Azure に移行する** | Azure への移行を[試します](tutorial-migrate-hyper-v.md)。
 
-Azure Migrate のサーバー移行では、System Center Virtual Machine Manager (VMM) を使って管理している Hyper-V サーバーの移行をサポートしていません。 
+Azure Migrate のサーバー移行では、System Center Virtual Machine Manager (VMM) を使って管理している Hyper-V サーバーの移行をサポートしていません。
 
 ## <a name="azure-migrate-projects"></a>Azure Migrate プロジェクト
 
@@ -44,10 +44,13 @@ Hyper-V VM | 1 つのプロジェクトで最大 35,000 の Hyper-V VM を評価
   Azure Government | 米国政府バージニア州
   アジア太平洋 | 東アジアまたは東南アジア
   オーストラリア | オーストラリア東部またはオーストラリア南東部
+  ブラジル | ブラジル南部
   カナダ | カナダ中部またはカナダ東部
   ヨーロッパ | 北ヨーロッパまたは西ヨーロッパ
+  フランス | フランス中部
   インド | インド中部またはインド南部
   日本 |  東日本または西日本
+  韓国 | 韓国中部または韓国南部
   イギリス | 英国南部または英国西部
   米国 | 米国中部または米国西部 2
 
@@ -142,7 +145,8 @@ https://download.microsoft.com/download/* | Microsoft ダウンロード サイ�
 | **統合サービス**       | オペレーティング システム情報をキャプチャするには、評価する VM で [Hyper-V 統合サービス](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services)が実行されている必要があります。 |
 | **Azure に必要な変更** | 一部の VM は、Azure で実行できるように変更が必要な場合があります。 次のオペレーティング システムでは、これらの変更が Azure Migrate によって自動的に行われます。<br/> - Red Hat Enterprise Linux 6.5+、7.0+<br/> - CentOS 6.5+、7.0+</br> - SUSE Linux Enterprise Server 12 SP1+<br/> - Ubuntu 14.04LTS、16.04LTS、18.04LTS<br/> - Debian 7、8<br/><br/> その他のオペレーティング システムについては、移行前に手動で調整する必要があります。 関連する記事には、その手順が記載されています。 |
 | **Linux ブート**                 | /boot が専用パーティションに存在する場合は、OS ディスク上に存在する必要があり、複数のディスクに分散していてはいけません。<br/> /boot がルート (/) パーティションに含まれている場合は、"/" パーティションは OS ディスク上に存在する必要があり、他のディスクにまたがっていてはいけません。 |
-| **UEFI ブート**                  | UEFI ブートを使用した VM の移行はサポートされません。  |
+| **UEFI ブート**                  | Azure 内の移行された VM は、自動的に BIOS ブート VM に変換されます。 VM では、Windows Server 2012 以降のみが実行されている必要があります。 OS ディスクには最大 5 つのパーティションが必要であり、OS ディスクのサイズは 300 GB 未満にする必要があります。
+  |
 | **ディスク サイズ**                  | OS ディスク用に 2 TB、データ ディスク用に 4 TB。
 | **ディスクの数** | VM あたり最大で 16 台のディスク。
 | **暗号化されたディスクまたはボリューム**    | 移行はサポートされません。 |

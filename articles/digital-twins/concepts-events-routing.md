@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins でのイベントとメッセージのルーティング | Microsoft Docs
+title: イベントとメッセージのルーティング - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins でのサービス エンドポイントへのイベントとメッセージのルーティングの概要を説明します
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: alinast
-ms.openlocfilehash: a013525109fe85ad70e5aaa5895da20f5abc3237
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/17/2019
+ms.openlocfilehash: 217a1d94a4a5235fc5886f34986ffcb3aef60873
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638537"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949264"
 ---
 # <a name="routing-events-and-messages"></a>ルーティング イベントおよびメッセージ
 
@@ -29,7 +29,7 @@ Azure Digital Twins には、IoT イベントを他の Azure サービスやビ�
 
 ユーザーは、イベントの送信またはメッセージの転送のためのエグレス エンドポイントを 1 つ以上指定できます。 イベントとメッセージは、これらの定義済みのルーティング設定に従って、エンドポイントに送信されます。 つまり、ユーザーは、グラフ操作イベントの受信用に特定のエンドポイントを指定し、デバイスのテレメトリ イベントの受信用に別のエンドポイントを指定できます。
 
-![Azure Digital Twins のイベントのルーティング][1]
+[![Azure Digital Twins のイベントのルーティング](media/concepts/digital-twins-events-routing.png)](media/concepts/digital-twins-events-routing.png#lightbox)
 
 Event Hubs へのルーティングでは、テレメトリ メッセージの送信順序が保持されます。 そのため、メッセージは最初の受信時と同じ順序でエンドポイントに到達します。 Event Grid と Service Bus では、エンドポイントがその発生順にイベントを取得することは保証されません。 ただし、イベント スキーマにはタイムスタンプが含まれており、これを使用してイベントがエンドポイントに到着した後に順序を特定できます。
 
@@ -67,6 +67,3 @@ Azure Digital Twins サービスでは、現在、以下の **EndpointTypes** �
 - Azure Digital Twins のプレビューの制限については、「[パブリック プレビューのサービスの制限](concepts-service-limits.md)」をご覧ください。
 
 - Azure Digital Twins のサンプルを試すには、[使用可能な部屋を検索するクイック スタート](quickstart-view-occupancy-dotnet.md)のページをご覧ください。
-
-<!-- Images -->
-[1]: media/concepts/digital-twins-events-routing.png

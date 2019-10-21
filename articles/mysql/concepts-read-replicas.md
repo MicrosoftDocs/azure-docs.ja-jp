@@ -1,17 +1,17 @@
 ---
 title: Azure Database for MySQL の読み取りレプリカ。
-description: この記事では、Azure Database for MySQL の読み取りレプリカについて説明します。
+description: 'Azure Database for MySQL の読み取りレプリカについて次の内容を説明します: リージョンの選択、レプリカの作成、レプリカへの接続、レプリケーションの監視、レプリケーションの停止。'
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 7e1f27738ae5a87cfb84fad955f80ad2f2eb910f
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: 6ad71cecfd088a92bdd41ae13cb530c286ebea4c
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773312"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970393"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -39,7 +39,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 [ ![読み取りレプリカ リージョン](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>ユニバーサル レプリカ リージョン
-マスター サーバーが配置されている場所に関係なく、次のいずれかのリージョンに読み取りレプリカをいつでも作成できます。 ユニバーサル レプリカ リージョンは次のとおりです。
+マスター サーバーが配置されている場所に関係なく、次のいずれかのリージョンに読み取りレプリカを作成できます。 サポートされているユニバーサル レプリカ リージョンは次のとおりです。
 
 オーストラリア東部、オーストラリア南東部、米国中部、東アジア、米国東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、西ヨーロッパ、米国西部、米国西部 2。
 
@@ -109,7 +109,7 @@ Azure Database for MySQL は、Azure Monitor に **[Replication lag in seconds]\
 
 ### <a name="master-server-restart"></a>マスター サーバーの再起動
 
-既存のレプリカがないマスターのレプリカを作成すると、マスターは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク時に実行してください。
+既存のレプリカがないマスターのレプリカを作成すると、マスターは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク期間中に実行してください。
 
 ### <a name="new-replicas"></a>新しいレプリカ
 
@@ -155,4 +155,4 @@ Azure Database for MySQL は、Azure Monitor に **[Replication lag in seconds]\
 ## <a name="next-steps"></a>次の手順
 
 - [Azure portal を使用して読み取りレプリカの作成と管理](howto-read-replicas-portal.md)を行う方法について確認する。
-- [Azure CLI を使用して読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認する。
+- [Azure CLI と REST API を使用して読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認する。

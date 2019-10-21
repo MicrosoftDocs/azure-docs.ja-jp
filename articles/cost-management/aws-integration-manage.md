@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: ormaoz
 ms.custom: ''
-ms.openlocfilehash: 6767644e037c6abb3e3044c8707e923a9137a01c
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 772f6cdde575a9ac669c73ecca039914357ffe2f
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019545"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338890"
 ---
 # <a name="manage-aws-costs-and-usage-in-azure"></a>Azure での AWS のコストと使用状況の管理
 
@@ -83,7 +83,7 @@ AWS 統合アカウントのコストを表示するには、スコープ ピッ
 | Meter category | lineItem/ProductCode | All |   |
 | Meter subcategory | lineitem/UsageType | All |   |
 | Operation | lineItem/Operation | All |   |
-| Resource | lineItem/ResourceId | All |   |
+| リソース | lineItem/ResourceId | All |   |
 | リソースの種類 | product/instanceType | All | product/instanceType が null の場合は、UsageType が使用されます。 |
 | ResourceGuid | 該当なし | All | Azure メーターの GUID。 |
 | サービス名 | product/ProductName | All | product/ProductName が null の場合は、lineItem/ProductCode が使用されます。 |
@@ -183,4 +183,4 @@ AWS のリンクされたアカウントのコストへのアクセス許可を�
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure 環境を管理グループでまだ構成していない場合は、「[管理グループの初期セットアップ](../governance/management-groups/index.md#initial-setup-of-management-groups)」を参照してください。
+- Azure 環境を管理グループでまだ構成していない場合は、「[管理グループの初期セットアップ](../governance/management-groups/overview.md#initial-setup-of-management-groups)」を参照してください。

@@ -16,19 +16,19 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff6466ddc6b64dfe85ebfb190205859aeb39ad17
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822338"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260838"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Azure イベント ハブの診断ログを設定する
 
 Azure Event Hubs の 2 種類のログを表示できます。
 
 * **[アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)** : これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
-* **[診断ログ](../azure-monitor/platform/diagnostic-logs-overview.md)** : 診断ログを構成することで、ジョブで発生するすべてのイベントについて、より深く考察できます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
+* **[診断ログ](../azure-monitor/platform/resource-logs-overview.md)** : 診断ログを構成することで、ジョブで発生するすべてのイベントについて、より深く考察できます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
 ## <a name="enable-diagnostic-logs"></a>Traffic Manager で診断ログを有効にする
 
@@ -54,7 +54,7 @@ Azure Event Hubs の 2 種類のログを表示できます。
 
 新しい設定は、10 分ほどで有効になります。 その後、構成されたアーカイブ ターゲットのログが **[診断ログ]** ウィンドウに表示されます。
 
-診断の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)に関するページを参照してください。
+診断の構成の詳細については、[Azure 診断ログの概要](../azure-monitor/platform/resource-logs-overview.md)に関するページを参照してください。
 
 ## <a name="diagnostic-logs-categories"></a>診断ログのカテゴリ
 
@@ -71,7 +71,7 @@ Event Hubs では、2 つのカテゴリの診断ログをキャプチャしま�
 
 アーカイブ ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | 説明
+名前 | 説明
 ------- | -------
 TaskName | 失敗したタスクの説明。
 ActivityId | 内部 ID。追跡目的で使用されます。
@@ -109,7 +109,7 @@ category | ArchiveLogs
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-Name | 説明
+名前 | 説明
 ------- | -------
 ActivityId | 内部 ID。追跡目的で使用されます。
 EventName | 操作の名前。  

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: c42e70efc8543e1d255690070ffb51b865e1754f
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: b571ba8d259a5e3b3b049ad66d4718e9e85d488b
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68608587"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70931262"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -59,7 +59,7 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
 ### <a name="securing-data-store-credentials"></a>データ ストアの資格情報の保護
 
-- **Azure Data Factory で管理されたストアに暗号化された資格情報を格納します**。 Data Factory では、データ ストアの資格情報の保護を容易にするために、Microsoft が管理する証明書を使用して暗号化します。 証明書は、2 年ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、Azure Data Factory 管理サービスによって管理される Azure ストレージ アカウントに安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../security/fundamentals/storage-overview.md)」を参照してください。
+- **Azure Data Factory で管理されたストアに暗号化された資格情報を格納します**。 Data Factory では、データ ストアの資格情報の保護を容易にするために、Microsoft が管理する証明書を使用して暗号化します。 証明書は、2 年ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../security/fundamentals/storage-overview.md)」を参照してください。
 - **Azure Key Vault に資格情報を格納します**。 データ ストアの資格情報は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に格納することもできます。 Data Factory は、アクティビティの実行中に資格情報を取得します。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。
 
 ### <a name="data-encryption-in-transit"></a>転送中のデータの暗号化
@@ -108,14 +108,15 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 コマンド チャネルは、Data Factory のデータ移動サービスとセルフホステッド統合ランタイム間で通信できるようにします。 通信には、アクティビティに関連する情報が含まれます。 データ チャネルは、オンプレミス データ ストアとクラウド データ ストア間でデータを転送するために使用されます。    
 
 ### <a name="on-premises-data-store-credentials"></a>オンプレミス データ ストアの資格情報
-オンプレミス データ ストアの資格情報は、常に暗号化され格納されます。 セルフホステッド統合ランタイム コンピューターのローカル、または Azure Data Factory で管理されている記憶域のいずれかに格納できます (クラウド ストア資格情報と同様)。 
+資格情報は、Data Factory 内に格納することも、Azure Key Vault から実行時に [Data Factory によって参照](store-credentials-in-key-vault.md)することもできます。 Data Factory 内に資格情報を格納する場合は、常に、セルフホステッド統合ランタイムに暗号化されて格納されます。 
+ 
+- **資格情報をローカルに保存します**。 JSON にインラインで指定されている接続文字列と資格情報を使用して **Set-AzDataFactoryV2LinkedService** コマンドレットを直接使用すると、リンクされたサービスは暗号化されてセルフホステッド統合ランタイムに格納されます。  この場合、資格情報は、非常に安全な Azure バックエンド サービスを経由してセルフホスティッド統合マシンに送られ、そこで最終的に暗号化されて格納されます。 セルフホステッド統合ランタイムは、Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) を使用して機密データと資格情報を暗号化します。
 
-- **資格情報をローカルに保存します**。 セルフホステッド統合ランタイムでローカルに資格情報を暗号化して格納したい場合、「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」の手順に従ってください。 このオプションは、すべてのコネクタでサポートされています。 セルフホステッド統合ランタイムは、Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) を使用して機密データと資格情報を暗号化します。 
+- **Azure Key Vault に資格情報を格納します**。 データ ストアの資格情報は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に格納することもできます。 Data Factory は、アクティビティの実行中に資格情報を取得します。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。
+
+- **Azure バックエンドを経由してセルフホステッド統合ランタイムに送らずに、ローカルに資格情報を格納します**。 Data Factory バックエンドを経由して資格情報を送らずに、セルフホステッド統合ランタイムでローカルに資格情報を暗号化して格納する場合は、「[Azure Data Factory でオンプレミスのデータ ストアの資格情報を暗号化する](encrypt-credentials-self-hosted-integration-runtime.md)」の手順に従ってください。 このオプションは、すべてのコネクタでサポートされています。 セルフホステッド統合ランタイムは、Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) を使用して機密データと資格情報を暗号化します。 
 
    リンクされたサービスの資格情報およびリンクされたサービスの機密情報の暗号化には、**New-AzDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用してください。 それから (接続文字列の **EncryptedCredential** 要素と共に) 返される JSON を使用して、**Set-AzDataFactoryV2LinkedService** コマンドレットを使用してリンクされたサービスを作成できます。  
-
-- **Azure Data Factory で管理されているストレージに格納します**。 接続文字列と資格情報をインラインで使用して **Set-AzDataFactoryV2LinkedService** コマンドレットを JSON で直接使用する場合、リンクされたサービスは暗号化され Azure Data Factory マネージド ストレージに格納されます。 それでも機密情報は証明書によって暗号化され、Microsoft がこれらの証明書を管理します。
-
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイム上のリンクされたサービスの暗号化時に使用されるポート
@@ -135,7 +136,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 次の表には、ハイブリッド データ移動のソースと移動先の場所の異なる組み合わせに基づいたネットワークとセルフホステッド統合ランタイムの構成の推奨事項がまとめてあります。
 
-| source      | 宛先                              | ネットワーク構成                    | 統合ランタイムのセットアップ                |
+| source      | Destination                              | ネットワーク構成                    | 統合ランタイムのセットアップ                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | セルフホステッド統合ランタイムは、仮想ネットワークの Azure 仮想マシン上にインストールすることをお勧めします。  |
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング)           | セルフホステッド統合ランタイムは、仮想ネットワークの Azure 仮想マシン上にインストールすることをお勧めします。  |

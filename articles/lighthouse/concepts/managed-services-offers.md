@@ -4,15 +4,15 @@ description: マネージド サービス オファーにより、サービス �
 author: JnHs
 ms.service: lighthouse
 ms.author: jenhayes
-ms.date: 07/11/2019
+ms.date: 09/19/2019
 ms.topic: overview
 manager: carmonm
-ms.openlocfilehash: a6fcf5f1d0ac194d60f834fb8d26db019c538410
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 0a6371a1020182650d83d5e7ec9bb2378b44b557
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810876"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155270"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Azure Marketplace のマネージド サービス オファー
 
@@ -20,9 +20,9 @@ ms.locfileid: "67810876"
 
 ## <a name="understand-managed-services-offers"></a>マネージド サービス オファーについて
 
-マネージド サービス オファーにより、Azure の委任されたリソース管理に顧客をオンボードするプロセスを効率化できます。 顧客は、Azure Marketplace でオファーを購入した後、オンボードするサブスクリプションやリソース グループを指定できるようになります。これにより、お客様の組織の指定ユーザーが、組織のテナント内から顧客の代わりに管理タスクを実行可能になります。
+マネージド サービス オファーにより、Azure の委任されたリソース管理に顧客をオンボードするプロセスを効率化できます。 顧客は、Azure Marketplace でオファーを購入すると、オンボードするサブスクリプションやリソース グループを指定できるようになります。 先に、**Microsoft.ManagedServices** リソース プロバイダーを手動で登録することにより、サブスクリプションのオンボードを承認する必要があることに注意してください。
 
-その後は、顧客のオンボードについて、顧客とサービス プロバイダーのどちらもこれ以上の処理を行う必要はありません。 その理由は、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)でオファーを定義するときに、Azure の委任されたリソース管理機能を使用して顧客のリソースにアクセスできる Azure AD ユーザー、グループ、サービス原則や、 それらのアクセス レベルを定義するロールを指定するマニフェストを指定するためです。 個々のユーザー アカウントやアプリケーション アカウントではなく、Azure AD グループに権限を割り当てるので、アクセス要件が変わった場合にユーザーを個別に追加、削除できます。
+その後、組織内のユーザーは、[Cloud パートナー ポータル](https://cloudpartner.azure.com/)でオファーを作成するときに定義したアクセス権に従って、組織のテナント内からそれらのリソースの管理タスクを実行できるようになります。 これは、Azure の委任されたリソース管理を使用して顧客のリソースにアクセスできる Azure AD ユーザー、グループ、サービス プリンシパルが指定されているマニフェストと、それらのアクセス レベルが定義されているロールによって、行われます。 個々のユーザー アカウントやアプリケーション アカウントではなく、Azure AD グループに権限を割り当てるので、アクセス要件が変わった場合にユーザーを個別に追加、削除できます。
 
 ## <a name="public-and-private-offers"></a>パブリック オファーとプライベート オファー
 

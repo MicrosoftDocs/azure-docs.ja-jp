@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: heidist
-ms.openlocfilehash: e83e84cc8627be468ce0074b35549d5ea7def4f5
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: d0c93d941047413c5056b3718f57b360357affbd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69640528"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327139"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search でリソースの消費量とクエリ アクティビティを監視する
 
@@ -56,14 +56,14 @@ Azure Search では管理対象のオブジェクトの外部にデータは格�
 
 次の表は、ログの格納、および Application Insights によるサービス操作とクエリ ワークロードの詳細監視の追加に関して、オプションを比較したものです。
 
-| Resource | 使用対象 |
+| リソース | 使用対象 |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | アプリのユーザー イベントと関連付けられた、後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 これは、アプリケーション コードによって送信されたフィルター要求ではなく、ユーザーが開始した検索からのイベントをマッピングする、ユーザーのアクションまたはシグナルが考慮された唯一のソリューションです。 この方法を使用するには、インストルメンテーション コードをコピーしてソース ファイルに貼り付け、要求の情報を Application Insights にルーティングします。 詳しくは、「[検索トラフィックの分析](search-traffic-analytics.md)」をご覧ください。 |
 | [Azure Monitor ログ](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントは Log Analytics ワークスペースに記録されます。 ワークスペースに対してクエリを実行し、ログから詳細な情報を取得することができます。 詳細については、[Azure Monitor ログの使用](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata)に関するページを参照してください |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | 後述のスキーマに基づいてログに記録されるイベントとクエリ メトリック。 イベントのログは BLOB コンテナーに記録されて、JSON ファイルに格納されます。 ファイルの内容を表示するには JSON エディターを使用します。|
 | [イベント ハブ](https://docs.microsoft.com/azure/event-hubs/) | この記事に記載されているスキーマに基づいてログに記録されるイベントとクエリ メトリック。 非常に大きなログに対する代替データ コレクション サービスとしては、これを選択します。 |
 
-Azure Monitor ログと Blob Storage は、どちらも無料の共有サービスとして利用でき、Azure サブスクリプションの有効期間にわたって無料で試すことができます。 Application Insights は、アプリケーション データのサイズが一定の制限以下である限りは無料でサインアップして使用できます (詳しくは[価格のページ](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください)。
+Azure Monitor ログと Blob Storage は、どちらも無料のサービスとして利用でき、Azure サブスクリプションの有効期間にわたって無料で試すことができます。 Application Insights は、アプリケーション データのサイズが一定の制限以下である限りは無料でサインアップして使用できます (詳しくは[価格のページ](https://azure.microsoft.com/pricing/details/monitor/)をご覧ください)。
 
 次のセクションでは、Azure Blob Storage を有効にして使用し、Azure Search の操作によって作成されるログ データを収集してそれにアクセスする手順を説明します。
 
@@ -109,9 +109,9 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>ログのスキーマ
 検索サービスのトラフィック ログが格納される BLOB は、このセクションで説明するような構成になっています。 各 BLOB には、ログ オブジェクトの配列を含む、**レコード**と呼ばれるルート オブジェクトが 1 つあります。 各 BLOB には、同じ時間帯に行われたすべての操作に関するレコードが含まれます。
 
-| Name | Type | 例 | メモ |
+| 名前 | 種類 | 例 | メモ |
 | --- | --- | --- | --- |
-| time |Datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/> MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用している ResourceId |
 | operationName |string |"Query.Search" |操作の名前 |
 | operationVersion |string |"2019-05-06" |使用されている API バージョン |
@@ -123,7 +123,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 **プロパティのスキーマ**
 
-| Name | Type | 例 | メモ |
+| 名前 | 種類 | 例 | メモ |
 | --- | --- | --- | --- |
 | 説明 |string |"GET /indexes('content')/docs" |操作のエンドポイント |
 | クエリ |string |"?search=AzureSearch&$count=true&api-version=2019-05-06" |クエリ パラメーター |
@@ -134,11 +134,11 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 
 メトリックはクエリ要求に対してキャプチャされます。
 
-| Name | Type | 例 | メモ |
+| 名前 | 種類 | 例 | メモ |
 | --- | --- | --- | --- |
 | resourceId |string |"/SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111/<br/>RESOURCEGROUPS/DEFAULT/PROVIDERS/<br/>MICROSOFT.SEARCH/SEARCHSERVICES/SEARCHSERVICE" |使用しているリソース ID |
 | metricName |string |"Latency" |メトリックの名前 |
-| time |Datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
+| time |datetime |"2018-12-07T00:00:43.6872559Z" |操作のタイムスタンプ |
 | average |int |64 |メトリックの時間間隔内の生のサンプルの平均値 |
 | minimum |int |37 |メトリックの時間間隔内の生のサンプルの最小値 |
 | maximum |int |78 |メトリックの時間間隔内の生のサンプルの最大値 |

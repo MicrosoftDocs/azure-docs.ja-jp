@@ -1,106 +1,21 @@
 ---
 title: Dynamics 365 for Customer Engagement オファーの [ネットショップの詳細] タブ | Azure Marketplace
-description: Dynamics 365 for Customer Engagement オファーに関する販売とマーケティングの情報を指定するには、[ネットショップの詳細] タブを使用します。
+description: PC 記事にリンクされている、非推奨の CPP 記事。 以前の記述:「Dynamics 365 for Customer Engagement オファーに関する販売とマーケティングの情報を指定するには、[ネットショップの詳細] タブを使用します。」
 services: Dynamics 365 for Customer Engagement, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: ad6a84679df09964b1bed047f3fbd236a29172b5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 1854f0d9098fdda03e5f17a61125a3e1f67e33ed
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942285"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72034200"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 for Customer Engagement の [ネットショップの詳細] タブ
 
-販売とマーケティングの情報およびアーティファクトを指定するには、 **[ネットショップの詳細]** タブを使用します。  このタブには次の 6 つのセクションが含まれます: **[オファーの詳細]** 、 **[一覧の詳細]** 、 **[マーケティングの成果物]** 、 **[法的情報]** 、 **[カスタマー サポート]** 、 **[リード管理]** 。  アスタリスク (*) が付いているラベルは、必須項目であることを示します。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Dynamics 365 Customer Engagement オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[新しい Dynamics 365 for Customer Engagement & PowerApps オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)」を参照してください。
 
-
-## <a name="offer-details-section"></a>[オファーの詳細] セクション
-
-このセクションでは、オファーの概要と説明を指定します。  この情報は、マーケットプレースで目立つように表示されます。
- 
-![[ネットショップの詳細] タブの [オファーの詳細] セクション](./media/storefront-tab-offer-details.png)
-
-次の表ではこのタブのフィールドについて説明します。必須フィールドはアスタリスク (*) で示されます。 
-
-|    **フィールド**          |  **説明**               |
-|  ---------------      |  ---------------               |
-|  Offer summary (オファーの概要)\*        | オファーの価値提案の概要です。 オファーの検索ページに表示されます。 形式は、最大 100 文字のプレーンテキストです。 |
-|  Offer description (オファーの説明)\*    | アプリの詳細ページに表示される説明です。 形式は、最大 1300 文字の単純な HTML (p、em、ul、li、ol、header タグを含む) です。  |
-|  |  | 
-
-
-## <a name="listing-details-section"></a>[一覧の詳細] セクション
-
-このセクションでは、マーケットプレースの一覧に関する詳細を指定します。
-
-![[ネットショップの詳細] タブの [一覧の詳細] セクション](./media/storefront-tab-listing-details.png)
-
-次の表ではこのタブのフィールドについて説明します。必須フィールドはアスタリスク (*) で示されます。 
-
-|    **フィールド**          |  **説明**               |
-|  ---------------      |  ---------------               |
-|  業界           | アプリが最もよく当てはまる業界を (最大で 2 つ) 選択します。 該当するものがない場合は、何も選択しなくてもかまいません。  |
-|  カテゴリ\*         | アプリに関連するカテゴリを選択します。 1 ～ 3 つのオプションを選択します。  |
-|  アプリの種類\*           | AppSource 上のアプリで有効にする試用版の種類を選択します。 **[無料]** は、料金なしでアプリを使用できることを示します。 **[試用]** は、顧客が短期間無料でアプリを試すことができることを示します。 **[連絡を希望する]** は、顧客が AppSource でアプリの試用を要求できることを示します。  |
-| Help link for your app (アプリのヘルプ リンク)\* | アプリのオンライン ドキュメントまたは他のヘルプ リソースの URL です。  |
-| サポートされている国/地域 | ポップアップ ダイアログで、アプリを提供する地理的な地域を選択できます。  世界全体での配布が既定値です。 |
-| サポートされている言語   | アプリがサポートする言語を選択します。 現在は、いくつかの言語オプションだけがサポートされています。  (アプリでこの一覧にない他の言語がサポートされている場合は、オファーの公開を継続し、この情報を appsource\@microsoft.com までメールでお知らせください。)  |
-| アプリのバージョン           | アプリのバージョン番号です    |
-| アプリのリリース日      | アプリのリリース/公開日です |
-| アプリが対応する製品 | アプリと相互運用が可能な製品またはサービスです。 最大 3 つの製品を列挙できます。 製品を一覧表示するには、 **[+ 新規]** をクリックして、表示されるテキスト ボックスに製品の名前を入力します。  |
-| キーワード検索       | アプリに関連付けるキーワードのセット (最大 3 個) です。  AppSource で顧客はキーワードに基づく検索を行うことができます。  ユーザーがアプリの検索に使用する可能性のある一般的でよく使用される単語を選択します。  |
-|  Hide key (非表示キー)\*           | 公開前にオファーをプレビューできるオファー URL と組み合わせる秘密鍵です。  このキーはパスワードでは "*ありません*"。  使用できるのは英数字のみです。  |
-|  |  |
-
-
-## <a name="marketing-artifacts-section"></a>[マーケティングの成果物] セクション
-
-このセクションでは、ロゴの画像、プロモーション ビデオや説明ビデオ、製品ドキュメント、ユーザー インターフェイスのスクリーンショットなど、マーケティング資料を提供します。
-
-![[ネットショップの詳細] タブの [マーケティングの成果物] セクション](./media/storefront-tab-market-artifacts.png)
-
-次の表ではこのタブのフィールドについて説明します。 
-
-|      フィールド            |    説明                 |
-|  ---------------      |  ---------------               |
-| Offer logo (png format, 48x48) (オファーのロゴ (png 形式、48 x 48))\* | アプリの検索ページに表示する画像をアップロードします。 形式は PNG、サイズは 48 x 48 ピクセルにする必要があります。 |
-| Offer logo (png format, 216x216) (オファーのロゴ (png 形式、216 x 216))\* | アプリの詳細ページに表示する画像をアップロードします。 形式は PNG、サイズは 216 x 216 ピクセルにする必要があります。 |
-| ビデオ                | 最大 4 つのプロモーション ビデオや説明ビデオをアップロードします。  ビデオごとに、ビデオの名前、URL (YouTube または Vimeo のみ)、および関連するサムネイル (PNG 形式で 1280 x 720 ピクセル) を入力します。  | 
-| ドキュメント\*             | プロモーション用または説明用のドキュメントをアップロードします (PDF 形式で、最大 3 つ)。  ドキュメントごとに、ドキュメント名を指定します。  |
-| Screenshots (スクリーンショット)\*           | アプリの UI の画像をアップロードします (最大 5 つ、PNG 形式、1280 x 720 ピクセル)。  これらのスクリーンショットは、AppSource でアプリの詳細ページに表示されます。 |
-|  |  |
-
-
-## <a name="legal-section"></a>[法的情報] セクション
-
-このセクションでは、アプリの "*プライバシー ポリシー*" と "*使用条件*" を指定します。
-
-![[ネットショップの詳細] タブの [法的情報] セクション](./media/storefront-tab-legal.png)
-
-次の表ではこのタブのフィールドについて説明します。 
-
-|      フィールド            |    説明                 |
-|  ---------------      |  ---------------               |
-| プライバシー ポリシーの URL\*    | アプリのオンラインのプライバシー ポリシーの URL です。  |
-| 使用条件\*          | プレーンテキストで書かれたアプリの使用条件です。  AppSource の顧客は、アプリを試す前にこれらの条件を承諾する必要があります。 |
-|  |  |
-
-
-## <a name="customer-support-section"></a>[カスタマー サポート] セクション
-
-このセクションでは、アプリの**サポート URL** を指定します。
-
-
-## <a name="lead-management-section"></a>[リード管理] セクション
-
-このセクションでは、オファーの一覧によって生成されるリードを処理するためのメカニズムを指定します。  通常、リードは顧客関係管理 (CRM) システムに格納されます。  次の格納先がサポートされています:**なし**、**Azure テーブル**、**Dynamics CRM Online**、**HTTPS エンドポイント**、**Marketo**、**Salesforce**。  詳しくは、「[潜在顧客の獲得](../../cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)」をご覧ください。
-
-
-## <a name="next-steps"></a>次の手順
-
-次に、[[連絡先] タブ](./cpp-contacts-tab.md)で、技術関係と顧客関係のサポート情報を提供します。 
+新しい Dynamics 365 for Customer Engagement オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[新しい Dynamics 365 for Customer Engagement & PowerApps オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)」の手順に従って、オファーを作成します。

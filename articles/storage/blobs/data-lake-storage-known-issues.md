@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 951b1f3749807ac6aee78a96ae7eb38877ca6acc
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: fb333db693c0f42b66e9fd45f5eb3c879787875d
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991807"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70959108"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 に関する既知の問題
 
@@ -100,7 +100,7 @@ Data Lake Storage のマルチプロトコル アクセスのパブリック プ
 | **Blobfuse** |まだサポートされていません|
 | **カスタム ドメイン** |まだサポートされていません|
 | **ファイル システム エクスプローラー** | 制限付きサポート |
-| **診断ログ** |診断ログは、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のプレビューに登録している場合にのみサポートされます。 <br><br>Azure portal でのログの有効化は現在サポートされていません。 PowerShell を使用してログを有効にする方法の例を次に示します。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>` <br><br>この例に示すように、`-ServiceType` パラメーターの値として `Blob` を指定してください。 
+| **診断ログ** |診断ログは、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のプレビューに登録している場合にのみサポートされます。 <br><br>Azure portal でのログの有効化は現在サポートされていません。 PowerShell を使用してログを有効にする方法の例を次に示します。 <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>` <br><br>この例に示すように、`-ServiceType` パラメーターの値として `Blob` を指定してください。 <br><br>現時点では、診断ログの表示に Azure Storage Explorer を使用できません。 ログを表示するには、AzCopy または SDK を使用してください。
 | **不変ストレージ** |まだサポートされていません <br><br>不変ストレージでは、[WORM (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) 状態でデータを格納できます。|
 | **オブジェクト レベルの階層** |クール レベルとアーカイブ レベルは、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)のプレビューに登録している場合にのみサポートされます。 <br><br> その他のすべてのアクセス層は、まだサポートされていません。|
 | **Powershell と CLI のサポート** | 機能の制限あり <br><br>アカウントの作成などの管理操作がサポートされています。 ファイルのアップロードやダウンロードなどのデータ プレーン操作は、[Data Lake Storage のマルチプロトコル アクセス](data-lake-storage-multi-protocol-access.md)の一部として、パブリック プレビュー段階にあります。 ディレクトリの操作とアクセス制御リスト (ACL) の設定は、まだサポートされていません。 |

@@ -3,23 +3,19 @@ title: Azure Security Center での VM とサーバーの脅威検出 | Microsof
 description: このトピックでは、Azure Security Center で使用可能な VM および サーバーのアラートについて説明します。
 services: security-center
 documentationcenter: na
-author: monhaber
+author: memildin
 manager: rkarlin
-editor: ''
 ms.assetid: dd2eb069-4c76-4154-96bb-6e6ae553ef46
 ms.service: security-center
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 7/02/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 055b578c1d976b7f85c65ab4e028f9d609861cd4
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 07/02/2019
+ms.author: memildin
+ms.openlocfilehash: 50d4023b09eb14fcfafe752ca60b8e888acc1fef
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013329"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273882"
 ---
 # <a name="threat-detection-for-vms-and-servers-in-azure-security-center"></a>Azure Security Center での VM とサーバーの脅威検出
 
@@ -32,14 +28,14 @@ ms.locfileid: "70013329"
 
 Azure Security Center は Azure サービスと統合し、Windows ベースのマシンの監視と保護が行われます。 Security Center は、これらすべてのサービスからのアラートと修復の提案を使いやすい形式で示します。
 
-### Windows Server Defender ATP <a nanme="windows-atp"></a>
+### Microsoft Defender ATP<a nanme="windows-atp"></a>
 
-Security Center のクラウド ワークロード保護プラットフォームは、Windows Server Defender Advanced Threat Protection (ATP) との統合によって拡張されます。 これにより、包括的なエンドポイントの検出と対応 (EDR) 機能が提供されます。
+Security Center は、Microsoft Defender Advanced Threat Protection (ATP) との統合により、そのクラウド ワークロード保護プラットフォームを拡張します。 これにより、包括的なエンドポイントの検出と対応 (EDR) 機能が提供されます。
 
 > [!NOTE]
-> Windows Server Defender ATP センサーは、Security Center を使用する Windows サーバーで自動的に有効になります。
+> Microsoft Defender ATP センサーは、Security Center を使用する Windows サーバーで自動的に有効になります。
 
-Windows Server Defender ATP で脅威が検出されると、アラートがトリガーされます。 アラートは、[Security Center] ダッシュボードに表示されます。 ダッシュボードからは、Windows Defender ATP コンソールにピボットし、詳細な調査を実行して攻撃の範囲を明らかにすることができます。 Windows Server Defender ATP の詳細については、「[Windows Defender ATP サービスに対するサーバーのオンボード](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)」をご覧ください。
+Microsoft Defender ATP で脅威が検出されると、アラートがトリガーされます。 アラートは、[Security Center] ダッシュボードに表示されます。 ダッシュボードからは、Microsoft Defender ATP コンソールにピボットし、詳細な調査を実行して攻撃の範囲を明らかにすることができます。 Microsoft Defender ATP の詳細については、「[Microsoft Defender ATP サービスに対するサーバーのオンボード](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)」をご覧ください。
 
 ### クラッシュ ダンプ分析 <a nanme="windows-dump"></a>
 

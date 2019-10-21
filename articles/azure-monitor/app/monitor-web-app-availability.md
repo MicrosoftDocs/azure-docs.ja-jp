@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8e9cc93a74c299be6fb4898b4af143a43fc079f5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3c7ba10525dedf213a416d9ce6b55c80539fedd7
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067034"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812207"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>任意の Web サイトの可用性を監視する
 
@@ -31,7 +31,7 @@ ms.locfileid: "71067034"
 
 * [URL の Ping テスト](#create-a-url-ping-test): Azure Portal で作成できる簡単なテストです。
 * [複数ステップ Web テスト](availability-multistep.md):一連の Web 要求の記録であり、さらに複雑なシナリオをテストするために再生できます。 複数ステップ Web テストは Visual Studio Enterprise で作成され、ポータルにアップロードされて実行されます。
-* [カスタム可用性追跡テスト](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet):`TrackAvailability()` メソッドを使用して、独自のカスタム可用性テストを作成できます。
+* [カスタム可用性追跡テスト](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet):可用性テストを実行するカスタム アプリケーションを作成する場合は、`TrackAvailability()` メソッドを使用して Application Insights に結果を送信できます。
 
 **Application Insights リソースごとに最大 100 個の可用性テストを作成できます。**
 

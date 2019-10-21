@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 09/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ba929ab13864664a823ba969ecb472812d946a9
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5cd7ea1a20eb82d030e9bdabe76ff7d14a619d1e
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989546"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72373089"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-oracle-fusion-erp"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Oracle Fusion ERP の統合
 
@@ -87,7 +87,7 @@ Oracle Fusion ERP で Azure AD SSO を構成してテストするには、次の
     b. **[識別子 (エンティティ ID)]** ボックスに、次のパターンを使用して URL を入力します。`https://<SUBDOMAIN>.login.em2.oraclecloud.com:443/oam/fed`
 
     > [!NOTE]
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Oracle Fusion ERP クライアント サポート チーム](mailto:jinshu.peethambaran@oracle.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新します。 これらの値を取得するには、[Oracle Fusion ERP クライアント サポート チーム](https://www.oracle.com/applications/erp/)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[フェデレーション メタデータ XML]** を探して **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -129,11 +129,11 @@ Oracle Fusion ERP で Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-oracle-fusion-erp-sso"></a>Oracle Fusion ERP SSO の構成
 
-**Oracle Fusion ERP** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Oracle Fusion ERP サポート チーム](mailto:jinshu.peethambaran@oracle.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Oracle Fusion ERP** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Oracle Fusion ERP サポート チーム](https://www.oracle.com/applications/erp/)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-oracle-fusion-erp-test-user"></a>Oracle Fusion ERP のテスト ユーザーの作成
 
-このセクションでは、Oracle Fusion ERP で Britta Simon というユーザーを作成します。 [Oracle Fusion ERP サポート チーム](mailto:jinshu.peethambaran@oracle.com)と連携して、Oracle Fusion ERP プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Oracle Fusion ERP で Britta Simon というユーザーを作成します。 [Oracle Fusion ERP サポート チーム](https://www.oracle.com/applications/erp/)と連携して、Oracle Fusion ERP プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

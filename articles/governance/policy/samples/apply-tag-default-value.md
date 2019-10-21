@@ -2,17 +2,16 @@
 title: サンプル - タグとその既定値の適用
 description: このサンプル ポリシー定義は、指定されたタグがない場合、そのタグ名と値を付加します。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: a9ad211ac1ef9889fcff9646f30fe306458c3538
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03c5c1de3713d2d7a2b2914b7b9bff9fa8b01320
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266649"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977604"
 ---
 # <a name="sample---apply-tag-and-its-default-value"></a>サンプル - タグとその既定値の適用
 
@@ -50,10 +49,10 @@ ms.locfileid: "59266649"
 
 [!code-json[parameters](../../../../policy-templates/samples/built-in-policy/apply-default-tag-value/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name |Type |フィールド |説明 |
+|名前 |種類 |フィールド |説明 |
 |---|---|---|---|
-|tagName |String |tags |タグの名前 (例: costCenter)|
-|tagValue |String |tags |タグの値 (例: headquarter)|
+|tagName |string |tags |タグの名前 (例: costCenter)|
+|tagValue |string |tags |タグの値 (例: headquarter)|
 
 PowerShell または Azure CLI を使って割り当てを作成するときは、パラメーターの値を JSON として渡すことができます。JSON として渡すパラメーターは、文字列で渡すか、または `-PolicyParameter` (PowerShell) あるいは `--params` (Azure CLI) を使用してファイルで渡します。
 PowerShell では、`-PolicyParameterObject` もサポートされます。この場合は、コマンドレットに Name/Value ハッシュ テーブルを渡す必要があります。**Name** にはパラメーターの名前を、**Value** には、割り当て時に渡す値の配列または単一値を指定します。

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0f6a74308f1bc4a7b77576fb9f39f965de0a4f8
-ms.sourcegitcommit: d3b1f89edceb9bff1870f562bc2c2fd52636fc21
+ms.openlocfilehash: ddfea07989f52c463816318276fd5b6643cb2041
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67561025"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255063"
 ---
 # <a name="authentication-methods-usage--insights-preview"></a>認証方法の使用状況と分析情報 (プレビュー)
 
@@ -59,15 +59,13 @@ ms.locfileid: "67561025"
 
 右上隅にあるコントロールを使うと、登録とリセットのグラフに表示されている監査データの日付範囲を 24 時間、7 日間、または 30 日間に変更できます。
 
-からの登録データ 
-
 ### <a name="registration-details"></a>登録の詳細
 
 **[登録済みユーザー]** 、 **[有効なユーザー]** 、または **[対応ユーザー]** のタイルまたは分析情報をクリックすると、登録の詳細に移動します。
 
 登録の詳細レポートには、ユーザーごとに次の情報が表示されます。
 
-- Name
+- 名前
 - ユーザー名
 - 登録の状態 ([すべて]、[登録済み]、[未登録])
 - 有効化の状態 ([すべて]、[有効]、[無効])
@@ -82,7 +80,7 @@ ms.locfileid: "67561025"
 
 リセットの詳細レポートには、直近 30 日間に発生した登録とリセットのイベントについて、次のような情報が表示されます。
 
-- Name
+- 名前
 - ユーザー名
 - 機能 ([すべて]、[登録]、[リセット])
 - 認証方法 ([アプリ通知]、[アプリ コード]、[音声通話]、[Office call]\(会社の電話\)、[SMS]、[メール]、[セキュリティの質問])

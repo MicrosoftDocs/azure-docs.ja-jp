@@ -8,17 +8,45 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: jhakulin
+ms.date: 09/20/2019
+ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: 12eecc4998153cbeedeb907ecad33c56141a50e6
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0e4d0eb19da2485b689b1c5d5192e344153aef0b
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559125"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71799970"
 ---
 # <a name="release-notes"></a>リリース ノート
+## <a name="speech-sdk-170-2019-september-release"></a>Speech SDK 1.7.0: 2019-September リリース
+
+**新機能**
+*   ユニバーサル Windows プラットフォーム (UWP)、Android、iOS での Xamarin のベータ サポートが追加されました
+*   Unity の iOS サポートが追加されました
+*   Android、iOS、Linux での ALaw、Mulaw、FLAC に対する圧縮された入力のサポートが追加されました
+*   メッセージをサービスに送信するために Connection クラスの SendMessageAsync が追加されました
+*   メッセージのプロパティを設定するために Connection クラスの SetMessageProperty が追加されました
+*   TTS で Java (Jre と Android)、Python、Swift、Objective-C に対するバインドが追加されました
+*   TTS で macOS、iOS、Android に対する再生のサポートが追加されました。
+*   TTS に対する "ワード境界" の情報が追加されました。
+
+**バグの修正**
+*   Unity 2019 for Android での IL2CPP のビルドの問題が修正されました
+*   wav ファイルの入力が正しく処理されない、間違った形式のヘッダーに関する問題が修正されました
+*   一部の接続プロパティで UUID が一意ではない問題が修正されました
+*   Swift バインドでの NULL 値許容指定子に関するいくつかの警告が修正されました (小さなコード変更が必要な場合があります)
+*   ネットワークに負荷がかかると WebSocket 接続が異常終了する原因となっていたバグが修正されました
+*   iOS: arm7s アーキテクチャのサポートが削除されました
+*   DialogServiceConnector によって使用される印象 ID が重複することがある原因であった Android の問題が修正されました
+*   複数ターン相互作用を通した接続の安定性と、DialogServiceConnector でエラーが発生したときの (Canceled イベント経による) エラーの報告が向上しました
+*   アクティブな StartKeywordRecognitionAsync() の間に ListenOnceAsync() を呼び出すときなど、DialogServiceConnector セッションの開始時にイベントが適切に提供されるようになりました
+*   DialogServiceConnector アクティビティの受信に関連するクラッシュが対処されました 
+
+**サンプル**
+*   Xamarin のクイックスタート
+*   Linux ARM64 の情報で CPP のクイックスタートを更新しました
+*   iOS の情報で Unity のクイックスタートを更新しました
 
 ## <a name="speech-sdk-160-2019-june-release"></a>Speech SDK 1.6.0: 2019-June リリース
 

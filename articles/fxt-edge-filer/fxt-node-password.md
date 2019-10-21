@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 11cf9f49014648fff1e78aff91c5a724a812e9e7
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: 080aa05af77b996bc0eb71287a3dfef25c24629a
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67451763"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256017"
 ---
 # <a name="tutorial-set-hardware-passwords"></a>チュートリアル:ハードウェア パスワードを設定する
 

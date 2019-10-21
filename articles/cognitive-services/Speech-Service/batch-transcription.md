@@ -96,11 +96,11 @@ Batch 文字起こし API では、次の形式がサポートされています
 
 Batch 文字起こしでは、オーディオの読み取りや、文字起こしのストレージへの書き込みに [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) をサポートしています。
 
-## <a name="webhooks"></a>webhooks
+## <a name="webhooks"></a>Webhooks
 
 文字起こし状態のポーリングでは、最も高いパフォーマンスを実現できない場合や、最適なユーザー エクスペリエンスを提供できない場合があります。 状態をポーリングするには、コールバックを登録して、実行時間の長い文字起こしタスクが完了したときにクライアントに通知することができます。
 
-詳細については、「[Webhook](webhooks.md)」を参照してください。
+詳細については、「[Webhooks](webhooks.md)」を参照してください。
 
 ## <a name="speaker-separation-diarization"></a>話者の分離 (ダイアライゼーション)
 

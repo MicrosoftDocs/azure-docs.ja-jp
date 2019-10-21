@@ -1,18 +1,18 @@
 ---
 title: Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 description: Azure HDInsight 上で Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する方法について説明します。
-ms.service: hdinsight
 author: nakhanha
 ms.author: nakhanha
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.openlocfilehash: 068dc76112db39ad8db118062656013e20cfc2ab
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 8a946a75a2dbd487494d70d0fd195a5becf5bd5a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70811664"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122204"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Hive Warehouse Connector を使用して Apache Spark と Apache Hive を統合する
 
@@ -22,7 +22,7 @@ Hive Warehouse Connector を使用すると、Hive および Spark の独自の�
 
 Apache Spark には、Apache Hive では使用できないストリーミング機能を提供する Structured Streaming API があります。 HDInsight 4.0 以降、Apache Spark 2.3.1 と Apache Hive 3.1.0 は異なる metastore になっており、相互運用性が困難になることがあります。 Hive Warehouse Connector によって、Spark と Hive を一緒に使用することが容易になります。 HWC ライブラリによって LLAP デーモンから Spark Executor にデータが並列で読み込まれるため、Spark から Hive への標準的な JDBC 接続を使用するよりも効率的でスケーラブルになります。
 
-![アーキテクチャ](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
+![Hive Warehouse Connector のアーキテクチャ](./media/apache-hive-warehouse-connector/hive-warehouse-connector-architecture.png)
 
 Hive Warehouse Connector でサポートされる操作の一部を次に示します。
 
@@ -42,14 +42,14 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
 1. Azure portal を使用し、Spark クラスターと同じストレージ アカウントと Azure 仮想ネットワークを使って HDInsight 対話型クエリ (LLAP) 4.0 クラスターを作成します。
 1. 自分の対話型クエリ クラスターの headnode0 にある `/etc/hosts` ファイルの内容を、自分の Spark クラスターの headnode0 にある `/etc/hosts` ファイルにコピーします。 この手順によって、自分の Spark クラスターが対話型クエリ クラスター内のノードの IP アドレスを解決できるようになります。 `cat /etc/hosts` を使用して、更新されたファイルの内容を表示します。 出力は、次のスクリーンショットに示されている内容のようになります。
 
-    ![hosts ファイルの表示](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
+    ![Hive Warehouse Connector の hosts ファイル](./media/apache-hive-warehouse-connector/hive-warehouse-connector-hosts-file.png)
 
 1. 次の手順に従って、Spark クラスターの設定を行います。 
     1. Azure portal に移動し、HDInsight クラスターを選択してから、自分のクラスターの名前をクリックします。
     1. 右側で**クラスター ダッシュボード**の下にある **[Ambari ホーム]** を選択します。
     1. Ambari Web UI で、 **[SPARK2]**  >  **[CONFIGS]\(構成\)**  >  **[Custom spark2-defaults]\(カスタム spark2 既定値\)** の順にクリックします。
 
-        ![Spark2 Ambari の構成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
+        ![Apache Ambari Spark2 の構成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark2-ambari.png)
 
     1. `spark.hadoop.hive.llap.daemon.service.hosts` を、** Advanced hive-interactive-site** の **hive.llap.daemon.service.hosts** プロパティと同じ値に設定します。 たとえば、`@llap0` のように指定します。
 
@@ -59,7 +59,7 @@ Hive Warehouse Connector でサポートされる操作の一部を次に示し�
         jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2
         ```
 
-        >[!Note] 
+        > [!Note]
         > JDBC URL には、ユーザー名とパスワードを含め、Hiveserver2 に接続するための資格情報が含まれている必要があります。
 
     1. `spark.datasource.hive.warehouse.load.staging.dir` を、HDFS と互換性のある適切なステージング ディレクトリに設定します。 2 つの異なるクラスターがある場合、ステージング ディレクトリは、HiveServer2 がそこにアクセスできるよう、LLAP クラスターのストレージ アカウントのステージング ディレクトリにあるフォルダーである必要があります。 たとえば `wasb://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp` だと、`STORAGE_ACCOUNT_NAME` はクラスターによって使用されているストレージ アカウントの名前で、`STORAGE_CONTAINER_NAME` はストレージ コンテナーの名前です。
@@ -159,14 +159,14 @@ Spark は、Hive によって管理される ACID テーブルへの書き込み
     ```
 
 2. テーブル `hivesampletable` をフィルターします (列 `state` = `Colorado`)。 Hive テーブルのこのクエリは Spark DataFrame として返されます。 その後 DataFrame は、`write` 関数を使用して Hive テーブル `sampletable_colorado` に保存されます。
-    
+
     ```scala
     hive.table("hivesampletable").filter("state = 'Colorado'").write.format(HiveWarehouseSession.HIVE_WAREHOUSE_CONNECTOR).option("table","sampletable_colorado").save()
     ```
 
 次のスクリーンショットで結果のテーブルを確認できます。
 
-![結果のテーブルの表示](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
+![Hive Warehouse Connector の Hive テーブルの表示](./media/apache-hive-warehouse-connector/hive-warehouse-connector-show-hive-table.png)
 
 ### <a name="structured-streaming-writes"></a>構造化ストリーミングの書き込み
 
@@ -185,7 +185,9 @@ Hive Warehouse Connector を使用すると、Spark ストリーミングを使�
     1. 同じ Spark クラスターで別のターミナルを開きます。
     1. コマンド プロンプトで「 `nc -lk 9999`」と入力します。 このコマンドでは、netcat ユーティリティを使用して、コマンド ラインから指定のポートにデータを送信します。
     1. Spark ストリームに取り込みたい語句を入力してから、キャリッジ リターンを入力します。
-        ![Spark ストリームへの入力データ](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark-stream-data-input.png)
+
+        ![Apache Spark ストリームへの入力データ](./media/apache-hive-warehouse-connector/hive-warehouse-connector-spark-stream-data-input.png)
+
 1. ストリーミング データを保持する新しい Hive テーブルを作成します。 spark-shell で、次のコマンドを入力します。
 
     ```scala
@@ -230,8 +232,11 @@ Hive Warehouse Connector を使用すると、Spark ストリーミングを使�
     1. `https://CLUSTERNAME.azurehdinsight.net/ranger/` で Ranger 管理 UI に移動します。
     1. **[Hive]** の下にある自分のクラスターの Hive サービスをクリックします。
         ![Ranger サービス マネージャー](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-service-manager.png)
-    1. **[Masking]\(マスク\)** タブ、 **[Add New Policy]\(新しいポリシーの追加\)** の順にクリックします。![Hive ポリシーの一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
-    1. 目的のポリシー名を入力します。 次のように選択します。データベース: **default**、Hive テーブル: **demo**、Hive 列: **name**、ユーザー: **rsadmin2**、アクセスの種類: **select**、 **[Select Masking Option]\(マスク オプションの選択\)** メニュー: **Partial mask: show last 4**。 **[追加]** をクリックします。
+    1. **[Masking]\(マスク\)** タブをクリックし、 **[Add New Policy]\(新しいポリシーの追加\)** をクリックします
+
+        ![Hive Warehouse Connector の Ranger Hive ポリシーの一覧](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-hive-policy-list.png)
+
+    a. 目的のポリシー名を入力します。 次のように選択します。データベース: **default**、Hive テーブル: **demo**、Hive 列: **name**、ユーザー: **rsadmin2**、アクセスの種類: **select**、 **[Select Masking Option]\(マスク オプションの選択\)** メニュー: **Partial mask: show last 4**。 **[追加]** をクリックします。
                 ![ポリシーの作成](./media/apache-hive-warehouse-connector/hive-warehouse-connector-ranger-create-policy.png)
 1. テーブルの内容をもう一度表示します。 Ranger ポリシーの適用後は、列の最後の 4 文字だけを確認できます。
 

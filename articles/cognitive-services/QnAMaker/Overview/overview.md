@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 08/01/2019
 ms.author: diberry
-ms.openlocfilehash: f56798359cdc8739a363bed3bfddadd584617adf
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815508"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973797"
 ---
 # <a name="what-is-the-qna-maker-service"></a>QnA Maker サービスとは
 
@@ -85,21 +85,8 @@ QnA Maker では、完全な開発ライフサイクルに統合するために�
 
 **手順 4**:お使いのクライアント アプリケーションから、プログラムを使用してナレッジ ベースのエンドポイントを呼び出し、ユーザーに最適な回答を示す JSON 応答を読み取ります。  
 
-## <a name="news-and-updates"></a>新機能と更新
-
-QnA Maker の新機能について説明します。
-
-* 2019 年 6 月
-    * フランス語、イタリア語、ドイツ語、スペイン語、ポルトガル語向けのランカー モデルの改善
-* 2019 年 4 月
-    * Web サイト コンテンツ抽出のサポート
-    * SharePoint ドキュメントのサポート
-* 2019 年 3 月
-    * アクティブ ラーニング 
-    * 英語の NLP ランカー モデルの改善 
-
 ## <a name="next-steps"></a>次の手順
 QnA Maker には、カスタム ナレッジ ベースのビルド、管理、および展開に必要なすべてのものが用意されています。 
 
 > [!div class="nextstepaction"]
-> [QnA Maker サービスを作成する](../how-to/set-up-qnamaker-service-azure.md)
+> [最新の変更を確認する](../whats-new.md)

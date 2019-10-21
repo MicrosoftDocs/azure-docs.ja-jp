@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: mlearned
-ms.openlocfilehash: 5dabbb6458d0d0d4af51490bea0c3f38a7c5c41d
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 26f1544cab5cf5be2edd52f97c758d46eb835514
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69542896"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103789"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Azure Active Directory と Azure Kubernetes Service を統合する
 
@@ -86,7 +86,7 @@ AKS クラスターに対して Azure AD 認証を提供するため、2 つの 
 
     e. **[アクセス許可の追加]** を選択して、更新を保存します。
 
-    f. **[同意する]** で、 **[管理者の同意を与えます]** を選択します。 現在のアカウントがテナント管理者ではない場合、このボタンは使用できます。
+    f. **[同意する]** で、 **[管理者の同意を与えます]** を選択します。 このボタンは使用できません。現在のアカウントは、テナント管理者として一覧に示されていません。
 
     アクセス許可が正常に付与されると、ポータルに次の通知が表示されます。
 

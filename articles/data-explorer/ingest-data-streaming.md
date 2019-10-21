@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 5aa2d694c2c74b493a7fd1a2a89d39866928d1d4
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70843858"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71090627"
 ---
 # <a name="streaming-ingestion-preview"></a>ストリーミング インジェスト (プレビュー)
 
@@ -41,8 +41,9 @@ ms.locfileid: "70843858"
  
 1. [Web UI](https://dataexplorer.azure.com/) で、ストリーミング データを受信するテーブルまたはデータベースに[ストリーミング インジェスト ポリシー](/azure/kusto/concepts/streamingingestionpolicy)を定義します。 
 
-    > [!TIP]
-    > ポリシーがデータベース レベルで定義されている場合、データベース内のすべてのテーブルでストリーミング インジェストが有効になります。
+    > [!NOTE]
+    > * ポリシーがデータベース レベルで定義されている場合、データベース内のすべてのテーブルでストリーミング インジェストが有効になります。
+    > * 適用されるポリシーでは、新しく取り込まれたたデータのみを参照でき、データベース内の他のテーブルは参照できません。
 
 ## <a name="use-streaming-ingestion-to-ingest-data-to-your-cluster"></a>ストリーミング インジェストを使用してクラスターにデータを取り込む
 

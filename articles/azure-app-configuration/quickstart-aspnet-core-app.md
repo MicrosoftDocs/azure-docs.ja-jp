@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 600c808c0bda991bb7203bbf60c098918e274da6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a2764c8e634fd8d827cba9fa7ec9cb61cc6c40af
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326623"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035305"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 
@@ -36,7 +36,7 @@ ms.locfileid: "68326623"
 
 6. **[Configuration Explorer]\(構成エクスプローラー)**  >  **[+ 作成]** の順に選択して、次のキーと値のペアを追加します。
 
-    | キー | 値 |
+    | Key | 値 |
     |---|---|
     | TestApp:Settings:BackgroundColor | White |
     | TestApp:Settings:FontSize | 24 |
@@ -53,13 +53,13 @@ ms.locfileid: "68326623"
 
 2. 新しいフォルダーで次のコマンドを実行して、新しい ASP.NET Core MVC Web アプリ プロジェクトを作成します。
 
-        dotnet new mvc
+        dotnet new mvc --no-https
 
 ## <a name="add-secret-manager"></a>シークレット マネージャーを追加する
 
-プロジェクトに[シークレット マネージャー ツール](https://docs.microsoft.com/aspnet/core/security/app-secrets)を追加します。 シークレット マネージャー ツールは、開発作業の機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。
+シークレット マネージャーを使用するには、 *.csproj* ファイルに `UserSecretsId` 要素を追加します。
 
-- *.csproj* ファイルを開きます。 次に示すように、`UserSecretsId` 要素を追加し、その値を自分の値 (通常は GUID) に置き換えます。 ファイルを保存します。
+- *.csproj* ファイルを開きます。 ここに示すように、`UserSecretsId` 要素を追加します。 同じ GUID を使用することも、この値を独自の値に置き換えることもできます。 ファイルを保存します。
 
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
@@ -77,11 +77,13 @@ ms.locfileid: "68326623"
     </Project>
     ```
 
+シークレット マネージャー ツールは、開発作業の機密データをプロジェクト ツリーの外部に格納します。 これにより、ソース コード内のアプリ シークレットが偶発的に共有されるのを防止できます。 シークレット マネージャーの詳細については、「[ASP.NET Core での開発におけるアプリ シークレットの安全な格納](https://docs.microsoft.com/aspnet/core/security/app-secrets)」を参照してください。
+
 ## <a name="connect-to-an-app-configuration-store"></a>アプリ構成ストアに接続する
 
 1. 次のコマンドを実行して、`Microsoft.Azure.AppConfiguration.AspNetCore` NuGet パッケージへの参照を追加します。
 
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009200001-7
+        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
 
 2. 次のコマンドを実行して、プロジェクトのパッケージを復元します。
 
@@ -94,6 +96,9 @@ ms.locfileid: "68326623"
     このコマンドは、 *.csproj* ファイルと同じディレクトリで実行する必要があります。
 
         dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
+
+    > [!IMPORTANT]
+    > 一部のシェルでは、引用符で囲まれていない限り、接続文字列が切り捨てられます。 `dotnet user-secrets` コマンドの出力に接続文字列全体が表示されていることを確認します。 そうでない場合は、接続文字列を引用符で囲んでコマンドを再実行します。
 
     シークレット マネージャーは、Web アプリをローカルにテストするためだけに使用されます。 たとえば [Azure App Service](https://azure.microsoft.com/services/app-service/web) にアプリをデプロイするときは、シークレット マネージャーで接続文字列を格納する代わりに、App Service でアプリケーションの設定の**接続文字列**を使用します。
 
@@ -182,7 +187,7 @@ ms.locfileid: "68326623"
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、新しいアプリ構成ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から ASP.NET Core Web アプリと共に使用しました。 App Configuration の使用方法についてさらに学習するには、認証について示した次のチュートリアルに進んでください。
+このクイック スタートでは、新しいアプリ構成ストアを作成して、[App Configuration プロバイダー](https://go.microsoft.com/fwlink/?linkid=2074664)から ASP.NET Core Web アプリと共に使用しました。 App Configuration の使用方法の詳細については、次のチュートリアルに進んでください。構成設定を動的に更新するように Web アプリを構成する方法を説明しています。
 
 > [!div class="nextstepaction"]
-> [マネージド ID の統合](./howto-integrate-azure-managed-service-identity.md)
+> [ASP.NET Core アプリで動的な構成を使用する](./enable-dynamic-configuration-aspnet-core.md)

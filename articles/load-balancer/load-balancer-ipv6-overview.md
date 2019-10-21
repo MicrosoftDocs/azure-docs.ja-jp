@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b276766d69c187e2268f5896f23e3bd435ed63c3
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274818"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147339"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
@@ -27,7 +27,7 @@ ms.locfileid: "68274818"
 >[!NOTE] 
 >Azure Load Balancer では、Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
 
-インターネットに接続するロード バランサーは、IPv6 アドレスでデプロイできます。 これにより、IPv4 接続に加えて次の機能を使用できます。
+Basic SKU のインターネットに接続するロード バランサーは、IPv6 アドレスでデプロイできます。 これにより、IPv4 接続に加えて次の機能を使用できます。
 
 * ロード バランサーを介したパブリック インターネット クライアントと Azure Virtual Machines (VMs) の間のネイティブなエンド ツー エンドの IPv6 接続。
 * VM と IPv6 対応のパブリック インターネット クライアントの間のネイティブなエンド ツー エンドの IPv6 送信接続。
@@ -79,6 +79,7 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 * IPv6 の loadDistributionMethod パラメーターの変更は、**現在サポートされてません**。
 * 予約済み IPv6 IP (IPAllocationMethod = static) は、**現在サポートされていません**。
 * NAT64 (IPv6 の IPv4 への変換) はサポートされていません。
+* Standard SKU のロード バランサーでは、現在、IPv6 アドレスはサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

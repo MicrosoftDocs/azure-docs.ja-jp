@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/20/2019
 ms.author: mbullwin
-ms.openlocfilehash: f3b093b8d5f772bad759d3384405f4ca9f0cee15
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 9b2cb9b16a91220db6fcc193fe64ea674b7103ab
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933768"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937087"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -50,7 +50,7 @@ appInsights.loadAppInsights();
 
 ### <a name="snippet-based-setup"></a>スニペット ベースのセットアップ
 
-アプリで NPM が使用されない場合は、各ページの上部にこのスニペットを貼り付けることによって、Application Insights で Web ページを直接インストルメント化できます。 可能であれば、これを `<head>` セクションの最初のスクリプトとして指定すると、すべての依存関係に関する潜在的な問題を監視することができます。
+アプリで NPM が使用されない場合は、各ページの上部にこのスニペットを貼り付けることによって、Application Insights で Web ページを直接インストルメント化できます。 可能であれば、これを `<head>` セクションの最初のスクリプトとして指定すると、すべての依存関係に関する潜在的な問題を監視することができます。 Blazor サーバー アプリを使用している場合は、ファイル `_Host.cshtml` の先頭の `<head>` セクションにスニペットを追加します。
 
 ```html
 <script type="text/javascript">
@@ -120,7 +120,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | disableAjaxTracking | false | true の場合、Ajax 呼び出しは自動収集されません。 既定値は false です。 |
 | disableFetchTracking | true | true の場合、フェッチ要求は自動収集されません。 既定値は true です。 |
 | overridePageViewDuration | false | true の場合、trackPageView の既定の動作が変わり、trackPageView の呼び出し時にページビュー期間の終了を記録します。 false の場合に、trackPageView にカスタム期間が指定されていないと、Navigation Timing API を使用してページ ビューのパフォーマンスが計算されます。 既定値は false です。 |
-| maxAjaxCallsPerView | 500 | 既定値: 500 - ページ ビュー 1 回あたりの AJAX 呼び出し数を監視し制御します。 -1 に設定すると、ページで発行されたすべて (無制限) の AJAX 呼び出しを監視します。 |
+| maxAjaxCallsPerView | 500 | 既定値: 500 - ページ ビュー 1 回あたりの Ajax 呼び出し数を監視し制御します。 -1 に設定すると、ページで発行されたすべて (無制限) の Ajax 呼び出しを監視します。 |
 | disableDataLossAnalysis | true | false の場合、まだ送信されていない項目について、内部テレメトリ センダー バッファーがスタートアップ時にチェックされます。 |
 | disableCorrelationHeaders | false | false の場合、SDK によって 2 つのヘッダー (Request-Id と Request-Context) がすべての依存関係要求に追加され、サーバー側の対応する要求と関連付けられます。 既定値は false です。 |
 | correlationHeaderExcludedDomains |  | 特定のドメインの関連付けヘッダーを無効にします。 |
@@ -132,12 +132,16 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 | isRetryDisabled | false | 既定値は false です。 false の場合、206 (部分的な成功)、408 (タイムアウト)、429 (要求が多すぎる)、500 (内部サーバー エラー)、503 (サービス利用不可)、および 0 (オフライン、検出された場合のみ) で再試行します。 |
 | isStorageUseDisabled | false | true の場合、SDK によってローカルおよびセッション ストレージに対するデータの格納や読み取りは行われません。 既定値は false です。 |
 | isBeaconApiDisabled | true | false の場合、SDK が [Beacon API](https://www.w3.org/TR/beacon) を使用してすべてのテレメトリが送信されます。 |
+| onunloadDisableBeacon | false | 既定値は false です。 タブが閉じられると、SDK により [Beacon API](https://www.w3.org/TR/beacon) を使用してすべてのテレメトリが送信されます。 |
 | sdkExtension | null | sdk 拡張機能の名前を設定します。 英字のみを使用できます。 拡張機能名はプレフィックスとして ai.internal.sdkVersion タグに付けられます (ext_javascript:2.0.0 など)。 既定値は Null です。 |
 | isBrowserLinkTrackingEnabled | false | 既定値は false です。 true の場合、SDK によってすべての[ブラウザー リンク](https://docs.microsoft.com/aspnet/core/client-side/using-browserlink)要求が追跡されます。 |
 | appId | null | appId は、サーバー側の要求によってクライアント側で発生する AJAX 依存関係の相関関係のために使用されます。 Beacon API が有効になっているとき、これを自動的に使用することはできませんが、構成で手動で設定できます。 既定値は null です。 |
 | enableCorsCorrelation | false | truee の場合、SDK によって 2 つのヘッダー (Request-Id と Request-Context) がすべての CORS 要求に追加され、送信される AJAX 依存関係がサーバー側の対応する要求と関連付けられます。 既定値は false です。 |
 | namePrefix | undefined | localStorage および Cookie 名の接尾語として使用される省略可能な値。
 | enableAutoRouteTracking | false | シングル ページ アプリケーション (SPA) でのルート変更を自動的に追跡します。 true の場合、ルートの変更ごとに Application Insights に新しいページビューが送信されます。 ハッシュ ルート変更 (`example.com/foo#bar`) も新しいページ ビューとして記録されます。
+| enableRequestHeaderTracking | false | true の場合、AJAX と Fetch の要求ヘッダーが追跡されます。既定値は false です。
+| enableResponseHeaderTracking | false | true の場合、AJAX と Fetch の要求の応答ヘッダーが追跡されます。既定値は false です。
+| distributedTracingMode | `DistributedTracingModes.AI` | 分散トレース モードを設定します。 AI_AND_W3C モードまたは W3C モードが設定されている場合、W3C トレース コンテキスト ヘッダー (traceparent/traceparent) が生成され、送信されるすべての要求に組み込まれます。 AI_AND_W3C は、従来の Application Insights のインストルメント化されたサービスとの下位互換性を保つために用意されています。
 
 ## <a name="single-page-applications"></a>シングル ページ アプリケーション
 

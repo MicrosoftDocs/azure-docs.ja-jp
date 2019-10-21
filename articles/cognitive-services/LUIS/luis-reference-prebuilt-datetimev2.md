@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: c4e83ed15c2b15ccb3339ff775b08c8d2dab4c32
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4f46efaeddb0bfe789ef752abdd133c14da514da
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932516"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677687"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>LUIS アプリの datetimeV2 作成済みエンティティ
 
@@ -89,7 +89,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 
 **datetimeV2** は、次の範囲の日付をサポートします。
 
-| Min | max |
+| Min | Max |
 |----------|-------------|
 | 1900 年 1 月 1 日   | 2099 年 12 月 31 日 |
 
@@ -185,6 +185,8 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
 
 次の例では、時刻の範囲を含む発話の解決に LUIS が **datetimeV2** を使用する方法を示します。
 
+#### <a name="v2-prediction-endpoint-responsetabv2"></a>[V2 予測エンドポイントの応答](#tab/V2)
+
 ```json
   "entities": [
     {
@@ -206,7 +208,7 @@ datetimeV2 は [Recognizers-text](https://github.com/Microsoft/Recognizers-Text/
   ]
 ```
 
-## <a name="preview-api-version-3x"></a>プレビュー API バージョン 3.x
+#### <a name="v3-prediction-endpoint-responsetabv3"></a>[V3 予測エンドポイントの応答](#tab/V3)
 
 DatetimeV2 JSON 応答は API V3 で変更されました。 
 
@@ -289,6 +291,9 @@ API V2 からの変更点:
 }
 ```
 
+
+* * * 
+
 ## <a name="deprecated-prebuilt-datetime"></a>非推奨の作成済み datetime
 
 `datetime` 事前構築済みエンティティは非推奨であり、**datetimeV2** に置き換えられています。 
@@ -301,6 +306,8 @@ LUIS アプリで `datetime` を `datetimeV2` に置き換えるには、次の�
 4. **datetimeV2** を選択し、 **[保存]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
+
+[V3 予測エンドポイント](luis-migration-api-v3.md)の詳細について学習します。
 
 [dimension](luis-reference-prebuilt-dimension.md)、[email](luis-reference-prebuilt-email.md)、[number](luis-reference-prebuilt-number.md) について学習します。 
 

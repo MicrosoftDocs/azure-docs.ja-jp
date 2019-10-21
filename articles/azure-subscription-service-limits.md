@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: 7c4c80950e43f374b40085cb4e1c3e026e5f3abd
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: ccddd13ddd8c10daba84f959b1cc1f8a4a80deb1
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "68698268"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345555"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、より多くのサービスをカバーするように一覧を拡大し、更新していく予定です。
@@ -66,7 +66,7 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
 * [Batch](#batch-limits)
 * [BizTalk Services](#biztalk-services-limits)
 * [Container Instances](#container-instances-limits)
-* [コンテナー レジストリ](#container-registry-limits)
+* [Container Registry](#container-registry-limits)
 * [Content Delivery Network](#content-delivery-network-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
@@ -89,10 +89,12 @@ Azure の価格の詳細については、[Azure の価格の概要](https://azu
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
   * [Load Balancer](#load-balancer)
-  * [パブリック IP アドレス](#publicip-address)
   * [Network Watcher](#network-watcher-limits)
+  * [パブリック IP アドレス](#publicip-address)
+  * [Private Link](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
   * [Virtual Network](#networking-limits)
+  * [Virtual WAN](#virtual-wan-limits)
 * [Notification Hubs](#notification-hubs-limits)
 * [リソース グループ](#resource-group-limits)
 * [ロールベースのアクセス制御](#role-based-access-control-limits)
@@ -161,6 +163,9 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 #### <a name="expressroute-limits"></a>ExpressRoute の制限
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
 
+#### <a name="virtual-wan-limits"></a>Virtual WAN の制限
+[!INCLUDE [virtual-wan-limits](../includes/virtual-wan-limits.md)]
+
 #### <a name="application-gateway-limits"></a>Application Gateway の制限
 
 特に記載のない限り、次の表は v1、v2、Standard、および WAF SKU に適用されます。
@@ -168,6 +173,9 @@ Azure Machine Learning コンピューティング クォータの最新の値�
 
 #### <a name="network-watcher-limits"></a>Network Watcher の制限
 [!INCLUDE [network-watcher-limits](../includes/network-watcher-limits.md)]
+
+#### <a name="private-link-limits"></a>Private Link の制限
+[!INCLUDE [private-link-limits](../includes/private-link-limits.md)]
 
 #### <a name="traffic-manager-limits"></a>Traffic Manager の制限
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]

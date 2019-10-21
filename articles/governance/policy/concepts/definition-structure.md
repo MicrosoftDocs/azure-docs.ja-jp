@@ -3,23 +3,22 @@ title: ポリシー定義の構造の詳細
 description: Azure Policy でリソース ポリシー定義を使用して、ポリシーが適用されるタイミングとその効果を示すことで、組織でのリソースの規則を確立する方法について説明します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2019
+ms.date: 09/09/2019
 ms.topic: conceptual
 ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: 1999a47d18fd3ce6388d6177be85c7debd3c1e97
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 27cf1539fc98b2ad7f1b82e194989c1619ab99fb
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70239183"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980705"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
 リソース ポリシーの定義は、Azure Policy でソースに対する規則を確立するために使用されます。 各定義には、リソースのコンプライアンスと、リソースが準拠していない場合にどのような効果を適用するかが記述されます。
 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、すべてのリソースに特定のタグが指定されていることを必須にすることができます。 ポリシーは、すべての子リソースが継承します。 リソース グループにポリシーが適用された場合、ポリシーは、そのリソース グループ内のすべてのリソースに適用されます。
 
-Azure Policy で使用されるスキーマについては、[https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json](https://schema.management.azure.com/schemas/2018-05-01/policyDefinition.json) を参照してください。
+ポリシー定義のスキーマは [https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json) にあります
 
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
@@ -398,6 +397,7 @@ Azure Policy では、次の種類の効果をサポートしています。
 - **DeployIfNotExists**: リソースが存在しない場合にリソースをデプロイします。
 - **Disabled**: リソースがポリシー規則に準拠しているかどうかを評価しません。
 - **EnforceRegoPolicy**: Azure Kubernetes Service の Open Policy Agent アドミッション コントローラーを構成します (プレビュー)
+- **Modify**: リソースで定義されているタグを追加、更新、または削除します。
 
 **append** の場合、次のように詳細を指定する必要があります。
 
@@ -424,6 +424,8 @@ Azure Policy では、次の種類の効果をサポートしています。
     ]
 }
 ```
+
+同様に、**Modify** では、[修復タスク](../how-to/remediate-resources.md)のポリシー規則の **details** 部分に **roleDefinitionId** プロパティが必要です。 **Modify** では、リソース タグに対して実行するアクションを定義する **operations** 配列も必要です。
 
 各効果の詳細、評価の順序、プロパティ、例については、「[Azure Policy の効果について](effects.md)」を参照してください。
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4c42959d46aa522042275456a87e590f9e009348
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: c5fb79fc3aa3297068f93b631d11e967c9345f4c
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70183063"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71717162"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Azure AD B2C を使用して Azure API Management API をセキュリティで保護する
 
@@ -203,17 +203,17 @@ API を呼び出すには、Azure AD B2C によって発行されたアクセス
 
 ## <a name="support-multiple-applications-and-issuers"></a>複数のアプリケーションと発行者をサポートする
 
-通常は、複数のアプリケーションが 1 つの REST API でやりとりします。 API を複数のアプリケーションから呼び出すことができるようにするには、APIM 受信ポリシーの `<audiences>` 要素にアプリケーション ID を追加します。
+通常は、複数のアプリケーションが 1 つの REST API でやりとりします。 複数のアプリケーションを対象とするトークンを API で受け取れるようにするには、APIM 受信ポリシーの `<audiences>` 要素にアプリケーション ID を追加します。
 
 ```XML
-<!-- Accept requests from multiple applications -->
+<!-- Accept tokens intended for these recipient applications -->
 <audiences>
     <audience>44444444-0000-0000-0000-444444444444</audience>
     <audience>66666666-0000-0000-0000-666666666666</audience>
 </audiences>
 ```
 
-同様に、複数のトークン発行者をサポートするには、APIM 受信ポリシーの `<audiences>` 要素にエンドポイント URI を追加します。
+同様に、複数のトークン発行者をサポートするには、APIM 受信ポリシーの `<issuers>` 要素にエンドポイント URI を追加します。
 
 ```XML
 <!-- Accept tokens from multiple issuers -->

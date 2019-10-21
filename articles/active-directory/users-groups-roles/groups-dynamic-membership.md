@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59450fc93052a1e169d13fab5b80cbc57c169e0f
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909780"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241166"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -64,7 +64,7 @@ user.department -eq "Sales"
 
 単一式の場合、かっこは省略可能です。 メンバーシップ ルール本文の合計文字数が 2,048 文字を超えないようにしてください。
 
-# <a name="constructing-the-body-of-a-membership-rule"></a>メンバーシップ ルールの本文の作成
+## <a name="constructing-the-body-of-a-membership-rule"></a>メンバーシップ ルールの本文の作成
 
 グループにユーザーまたはデバイスを自動的に入力するメンバーシップ ルールは、true または false に帰結するバイナリ式です。 シンプルなルールの要素は次の 3 つです。
 
@@ -342,7 +342,7 @@ device.objectid -ne null
 (user.extensionAttribute15 -eq "Marketing")
 ```
 
-カスタム拡張機能プロパティはオンプレミス Windows Server AD または接続されている SaaS アプリケーションから同期され、形式は `user.extension_[GUID]__[Attribute]` になります。
+カスタム拡張機能プロパティはオンプレミス Windows Server AD または接続されている SaaS アプリケーションから同期され、形式は `user.extension_[GUID]_[Attribute]` になります。
 
 * [GUID] は Azure AD でプロパティを作成したアプリケーションの Azure AD における一意の識別子です
 * [Attribute] は作成されたプロパティの名前です
@@ -350,7 +350,7 @@ device.objectid -ne null
 カスタム拡張機能プロパティを使用するルールの例を次に示します。
 
 ```
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber -eq "123"
+user.extension_c272a57b722d4eb29bfe327874ae79cb_OfficeNumber -eq "123"
 ```
 
 カスタム プロパティ名は、Graph Explorer を使用してユーザーのプロパティを問い合わせ、プロパティ名を探すことで見つけられます。 また、動的ユーザー グループのルール ビルダーにある **[カスタム拡張機能のプロパティを取得します]** リンクを選択し、一意のアプリ ID を入力すると、ユーザーの動的メンバーシップ ルールの作成時に使用するカスタム拡張機能プロパティの完全な一覧が表示されるようになりました。 この一覧を最新の情報に更新して、そのアプリの新しいカスタム拡張機能プロパティを取得することもできます。

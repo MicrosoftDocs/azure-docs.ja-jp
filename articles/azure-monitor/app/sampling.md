@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
 ms.author: cithomas
-ms.openlocfilehash: 4da91150999864c64ead28b74242e85d23a51ead
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: d43fe7f1f0fc63ab50821a345802a9e7e62881b2
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310446"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169483"
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -459,6 +459,10 @@ ASP.NET バージョン 2.0.0 以降および Java SDK バージョン 2.0.1 以
 * SDK のバージョンが 2.0 以降であることを確認してください。
 * クライアントとサーバーの両方で同じサンプリング率を設定していることを確認してください。
 
+### <a name="sampling-in-azure-functions"></a>Azure Functions でのサンプリング
+
+Azure Functions で実行されているアプリに対してサンプリングを構成するには、[ここ](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)の手順に従います。
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 *ASP.NET および ASP.NET Core SDK での既定のサンプリング動作はどのようなものですか*
@@ -515,13 +519,19 @@ ASP.NET バージョン 2.0.0 以降および Java SDK バージョン 2.0.1 以
 
 *常に確認したい頻度の低いイベントがあります。サンプリング モジュールを使わずに確認するにはどうすればよいですか。*
 
-* これを実現する最善の方法は、次に示すように、保持したいテレメトリ項目で `SamplingPercentage` を 100 に設定するカスタムの [TelemetryProcessor](../../azure-monitor/app/api-filtering-sampling.md#filtering) を記述することです。 これにより、すべてのサンプリング手法で、任意のサンプリングに関する考慮事項からこの項目が無視されるようになります。
+* これを実現する最善の方法は、次に示すように、保持したいテレメトリ項目で `SamplingPercentage` を 100 に設定するカスタムの [TelemetryInitializer](../../azure-monitor/app/api-filtering-sampling.md#add-properties-itelemetryinitializer) を記述することです。 初期化子はテレメトリ プロセッサ (サンプリングを含む) の前に実行されることが保証されるため、これにより、すべてのサンプリング手法ではサンプリングに関する考慮事項からこの項目が確実に無視されます。
 
 ```csharp
-    if(somecondition)
-    {
-        ((ISupportSampling)item).SamplingPercentage = 100;
-    }
+     public class MyTelemetryInitializer : ITelemetryInitializer
+      {
+         public void Initialize(ITelemetry telemetry)
+        {
+            if(somecondition)
+            {
+                ((ISupportSampling)item).SamplingPercentage = 100;
+            }
+        }
+      }
 ```
 
 ## <a name="next-steps"></a>次の手順

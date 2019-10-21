@@ -12,12 +12,12 @@ ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 66c1b62dc94fc071d3b04fc0d4e89220df74d1f8
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 53f808570a298c8e576b6df7b4654196ffc56813
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945803"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177503"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -75,15 +75,15 @@ when making changes in one don't forget the other two.
 
     ![[Web ジョブ] ページ](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. **[Web ジョブの追加]**  設定を、次の表に示されているように使用します。
+3. **[Web ジョブの追加]** 設定を、次の表に示されているように使用します。
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
    | Setting      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
-   | **[名前]**  | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
-   | **[ファイルのアップロード]**  | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
-   | **種類** | 継続的 | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
+   | **Name** | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
+   | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
+   | **Type** | 継続的 | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **スケール** | 複数のインスタンス | 継続的 Web ジョブでのみ使用できます。 プログラムまたはスクリプトがすべてのインスタンスで実行されるか、1 つのインスタンスだけで実行されるかどうかを決定します。 複数のインスタンスで実行するオプションは、Free または Shared [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)には適用されません。 | 
 
 4. Click **OK**.
@@ -113,16 +113,16 @@ when making changes in one don't forget the other two.
 
     ![[Web ジョブ] ページ](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. **[Web ジョブの追加]**  設定を、次の表に示されているように使用します。
+3. **[Web ジョブの追加]** 設定を、次の表に示されているように使用します。
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
    | Setting      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
-   | **[名前]**  | myTriggeredWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。|
-   | **[ファイルのアップロード]**  | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
-   | **[種類]**  | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
-   | **[トリガー]**  | マニュアル | |
+   | **Name** | myTriggeredWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。|
+   | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
+   | **Type** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
+   | **トリガー** | マニュアル | |
 
 4. Click **OK**.
 
@@ -151,17 +151,17 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブ] ページ](./media/web-sites-create-web-jobs/wjblade.png)
 
-3. **[Web ジョブの追加]**  設定を、次の表に示されているように使用します。
+3. **[Web ジョブの追加]** 設定を、次の表に示されているように使用します。
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
    | Setting      | 値の例   | 説明  |
    | ------------ | ----------------- | ------------ |
-   | **[名前]**  | myScheduledWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
-   | **[ファイルのアップロード]**  | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
-   | **[種類]**  | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
-   | **[トリガー]**  | スケジュール | スケジュールを確実に動作させるために、Always On 機能を有効にします。 Always On 機能は、Basic、Standard、および Premium の価格レベルでのみ利用できます。|
-   | **[CRON 式]**  | 0 0/20 * * * * | [CRON 式](#ncrontab-expressions)については、次のセクションで説明します。 |
+   | **Name** | myScheduledWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
+   | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
+   | **Type** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
+   | **トリガー** | スケジュール | スケジュールを確実に動作させるために、Always On 機能を有効にします。 Always On 機能は、Basic、Standard、および Premium の価格レベルでのみ利用できます。|
+   | **CRON 式** | 0 0/20 * * * * | [CRON 式](#ncrontab-expressions)については、次のセクションで説明します。 |
 
 4. Click **OK**.
 
@@ -171,7 +171,7 @@ when making changes in one don't forget the other two.
 
 ## <a name="ncrontab-expressions"></a>NCRONTAB 式
 
-[NCRONRAB 式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)は、ポータルで入力するか、`settings.job` ファイルを Web ジョブの *.zip* ファイルのルートに含めることができます。例を以下に示します。
+[NCRONTAB 式](../azure-functions/functions-bindings-timer.md#ncrontab-expressions)は、ポータルで入力するか、`settings.job` ファイルを Web ジョブの *.zip* ファイルのルートに含めることができます。例を以下に示します。
 
 ```json
 {

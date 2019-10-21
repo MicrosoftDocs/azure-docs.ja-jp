@@ -2,14 +2,13 @@
 documentType: LandingData
 title: Azure Notebooks のドキュメント
 metadata:
-  title: Azure Notebooks のドキュメント - クイック スタート、チュートリアル、ガイド | Microsoft Docs
+  title: Azure Notebooks のドキュメント
   description: ホストされている Azure Notebooks サービスを使用して Jupyter ノートブックを作成、実行、共有する方法について説明します。
   services: notebooks
   author: kraigb
-  manager: douge
+  manager: barbkess
   ms.service: azure-notebooks
   ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
   ms.date: 12/04/2018
   ms.author: kraigb

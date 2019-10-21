@@ -14,12 +14,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 4097d4fc46aac88cd44d21a4cdcf0d7d5093feea
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 2d0519abdf25a6fc8373f9d1a3a7232a9783d316
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66242736"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70984902"
 ---
 # <a name="tutorial-filter-network-traffic-with-a-network-security-group-using-the-azure-portal"></a>チュートリアル:Azure portal を使用してネットワーク セキュリティ グループでネットワーク トラフィックをフィルター処理する
 
@@ -47,10 +47,10 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     | Setting                 | 値                                              |
     | ---                     | ---                                                |
-    | Name                    | myVirtualNetwork                                   |
+    | 名前                    | myVirtualNetwork                                   |
     | アドレス空間           | 10.0.0.0/16                                        |
-    | サブスクリプション            | サブスクリプションを選択します。                          |
-    | リソース グループ          | **[新規作成]** を選択し、「*myResourceGroup*と入力します。 |
+    | Subscription            | サブスクリプションを選択します。                          |
+    | Resource group          | **[新規作成]** を選択し、「*myResourceGroup*と入力します。 |
     | Location                | **[米国東部]** を選択します。                                |
     | サブネット名            | mySubnet                                           |
     | サブネット アドレス範囲  | 10.0.0.0/24                                        |
@@ -65,19 +65,19 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     | Setting        | 値                                                         |
     | ---            | ---                                                           |
-    | Name           | myAsgWebServers                                               |
-    | サブスクリプション   | サブスクリプションを選択します。                                     |
-    | リソース グループ | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。 |
-    | Location       | 米国東部                                                       |
+    | 名前           | myAsgWebServers                                               |
+    | Subscription   | サブスクリプションを選択します。                                     |
+    | Resource group | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。 |
+    | Location       | East US                                                       |
 
 4. 手順 3 を繰り返し、次の値を指定します。
 
     | Setting        | 値                                                         |
     | ---            | ---                                                           |
-    | Name           | myAsgMgmtServers                                              |
-    | サブスクリプション   | サブスクリプションを選択します。                                     |
-    | リソース グループ | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。 |
-    | Location       | 米国東部                                                       |
+    | 名前           | myAsgMgmtServers                                              |
+    | Subscription   | サブスクリプションを選択します。                                     |
+    | Resource group | **[既存のものを使用]** 、 **[myResourceGroup]** の順に選択します。 |
+    | Location       | East US                                                       |
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
@@ -87,10 +87,10 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     |Setting|値|
     |---|---|
-    |Name|myNsg|
-    |サブスクリプション| サブスクリプションを選択します。|
-    |リソース グループ | **[既存のものを使用]** 、 *[myResourceGroup]* の順に選択します。|
-    |Location|米国東部|
+    |名前|myNsg|
+    |Subscription| サブスクリプションを選択します。|
+    |Resource group | **[既存のものを使用]** 、 *[myResourceGroup]* の順に選択します。|
+    |Location|East US|
 
 ## <a name="associate-network-security-group-to-subnet"></a>ネットワーク セキュリティ グループをサブネットに関連付ける
 
@@ -111,20 +111,20 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
     | Setting                 | 値                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | 宛先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgWebServers]** を選択します。  |
+    | Destination             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgWebServers]** を選択します。  |
     | 宛先ポート範囲 | 「80,443」と入力                                                                                                    |
     | Protocol                | [TCP] を選択                                                                                                      |
-    | Name                    | Allow-Web-All                                                                                                   |
+    | 名前                    | Allow-Web-All                                                                                                   |
 
 3. 手順 2 を繰り返して、次の値を指定します。
 
     | Setting                 | 値                                                                                                           |
     | ---------               | ---------                                                                                                       |
-    | 宛先             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgMgmtServers]** を選択します。 |
+    | Destination             | **[アプリケーションのセキュリティ グループ]** を選択し、**アプリケーション セキュリティ グループ**として **[myAsgMgmtServers]** を選択します。 |
     | 宛先ポート範囲 | 「3389」と入力                                                                                                      |
     | Protocol                | [TCP] を選択                                                                                                      |
-    | 優先順位                | 「110」と入力                                                                                                       |
-    | Name                    | Allow-RDP-All                                                                                                   |
+    | Priority                | 「110」と入力                                                                                                       |
+    | 名前                    | Allow-RDP-All                                                                                                   |
 
     このチュートリアルでは、*myAsgMgmtServers* アプリケーション セキュリティ グループに割り当てられている VM 用に、RDP (ポート 3389) がインターネットに公開されています。 運用環境では、ポート 3389 をインターネットに公開せずに、VPN またはプライベート ネットワーク接続を使用して、管理する Azure リソースに接続することをお勧めします。
 
@@ -140,27 +140,29 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. Azure Portal の左上隅にある **[+ リソースの作成]** を選択します。
 2. **[コンピューティング]** 、 **[Windows Server 2016 Datacenter]** の順に選択します。
-3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用して、 **[OK]** を選択します。
+3. 次の情報を入力するか選択し、それ以外の設定では既定値をそのまま使用します。
 
     |Setting|値|
     |---|---|
-    |Name|myVmWeb|
+    |Subscription| サブスクリプションを選択します。|
+    |Resource group| **[既存のものを使用]** を選択し、 **[myResourceGroup]** を選択します。|
+    |名前|myVmWeb|
+    |Location| **[米国東部]** を選択します。|
     |ユーザー名| 任意のユーザー名を入力します。|
     |パスワード| 任意のパスワードを入力します。 パスワードは 12 文字以上で、[定義された複雑さの要件](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)を満たす必要があります。|
-    |サブスクリプション| サブスクリプションを選択します。|
-    |リソース グループ| **[既存のものを使用]** を選択し、 **[myResourceGroup]** を選択します。|
-    |Location| **[米国東部]** を選択します。|
+
+   
 
 4. VM のサイズを選択して、 **[選択]** を選択します。
-5. **[設定]** で、次の値を選択し、それ以外の値は既定値をそのまま使用して、 **[OK]** を選択します。
+5. **[ネットワーク]** で次の値を選択します。それ以外は既定値のままにしてください。
 
     |Setting|値|
     |---|---|
-    |仮想ネットワーク |**[myVirtualNetwork]** を選択する|
-    |ネットワーク セキュリティ グループ | **[Advanced] \(詳細設定)** を選択します。|
-    |ネットワーク セキュリティ グループ (ファイアウォール)| **[(new) myVmWeb-nsg]** を選択し、 **[ネットワーク セキュリティ グループの選択]** で、 **[なし]** を選択します。 |
+    |仮想ネットワーク |**[myVirtualNetwork]** を選択します。|
+    |NIC ネットワーク セキュリティ グループ |**[Advanced] \(詳細設定)** を選択します。|
+    |パブリック受信ポート|**[なし]** を選択します。 |
 
-6. **[概要]** の **[作成]** で **[作成]** を選択して、VM のデプロイを開始します。
+6. 左下隅の **[確認および作成]** を選択し、 **[作成]** を選択して VM のデプロイを開始します。
 
 ### <a name="create-the-second-vm"></a>2 つ目の VM を作成する
 

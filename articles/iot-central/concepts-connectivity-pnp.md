@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 26f05e60761af0b8f0db9508488f28613b82293f
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 81e386be98f9c5684402c376372f43e90fefcb42
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69879135"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066744"
 ---
 # <a name="device-connectivity-in-azure-iot-central-preview-features"></a>Azure IoT Central のデバイス接続機能 (プレビュー機能)
 
@@ -34,15 +34,18 @@ DPS を使用すると、次のことが可能になります。
 
 この記事では、次のユース ケースについて説明します。
 
-1. [SAS を使用して 1 台のデバイスをすばやく接続する](#connect-a-single-device)
-1. [SAS を使用して大量のデバイスを接続する](#connect-devices-at-scale-using-sas)
-1. [X.509 証明書を使用して大量のデバイスを接続する](#connect-devices-using-x509-certificates)。これは運用環境に対して推奨されるアプローチです。
-1. [最初にデバイスを登録しないで接続する](#connect-without-registering-devices)
-1. [IoT プラグ アンド プレイ機能を使用してデバイスを接続する](howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
+- [SAS を使用して 1 台のデバイスをすばやく接続する](#connect-a-single-device)
+- [SAS を使用して大量のデバイスを接続する](#connect-devices-at-scale-using-sas)
+- [X.509 証明書を使用して大量のデバイスを接続する](#connect-devices-using-x509-certificates)。これは運用環境に対して推奨されるアプローチです。
+- [最初にデバイスを登録しないで接続する](#connect-without-registering-devices)
+- [IoT プラグ アンド プレイ機能を使用してデバイスを接続する](howto-connect-pnp-device-pnp.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)
 
 ## <a name="connect-a-single-device"></a>1 つのデバイスを接続する
 
-このアプローチは、IoT Central を使用した実験やデバイスのテストを行う場合に便利です。 IoT Central アプリケーションからのデバイス接続情報を使用して、デバイスの接続文字列を生成できます。 詳細については、[Azure IoT Central アプリケーションに接続するためにデバイス接続文字列を生成する方法](howto-generate-connection-string.md?toc=/azure/iot-central-pnp/toc.json&bc=/azure/iot-central-pnp/breadcrumb/toc.json)に関するページを参照してください。
+このアプローチは、IoT Central を使用した実験やデバイスのテストを行う場合に便利です。 Device Provisioning Service (DPS) を使ってデバイスを IoT Central アプリケーションに接続するには、IoT Central アプリケーションからのデバイス接続情報を使用できます。 次の言語のサンプル DPS デバイス クライアント コードがあります。
+
+- [C\#](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)
+- [Node.JS](https://github.com/Azure-Samples/azure-iot-samples-node/tree/master/provisioning/Samples/device)
 
 ## <a name="connect-devices-at-scale-using-sas"></a>SAS を使用して大量のデバイスを接続する
 
@@ -190,8 +193,6 @@ Azure Device SDK では、デバイス コードを最も簡単に実装する�
 - [Azure IoT SDK for Node.js](https://github.com/azure/azure-iot-sdk-node)
 - [Azure IoT SDK for Java](https://github.com/azure/azure-iot-sdk-java)
 - [Azure IoT SDK for .NET](https://github.com/azure/azure-iot-sdk-csharp)
-
-各デバイスは、デバイスを識別する一意の接続文字列を使用して接続します。 デバイスは、それが登録されている IoT ハブにのみ接続できます。 Azure IoT Central アプリケーションで実際のデバイスを作成すると、`dps-keygen` を使用して接続文字列を構築するために必要な情報がアプリケーションによって生成されます。
 
 ### <a name="sdk-features-and-iot-hub-connectivity"></a>SDK の機能と IoT Hub の接続機能
 

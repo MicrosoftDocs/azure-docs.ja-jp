@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c07b325f3de6cd2cf3aaa436736786d2cdc42881
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: debc30a368a0f9ef7be9b0cda0b1238f8e2bc2e3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306327"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338075"
 ---
 # <a name="profile-production-applications-in-azure-with-application-insights"></a>Application Insights を使用した Azure のプロファイル運用アプリケーション
 ## <a name="enable-application-insights-profiler-for-your-application"></a>アプリケーションに対して Application Insights Profiler を有効にする
@@ -36,7 +36,7 @@ Profiler を有効にして、トレースが表示されない場合は、[ト�
 
 ## <a name="view-profiler-data"></a>Profiler データを表示する
 
-Profiler がトレースをアップロードするには、アプリケーションが要求をアクティブに処理する必要があります。 実験を行っている場合は、[Application Insights パフォーマンス テスト](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)を使用して Web アプリへの要求を生成できます。 Profiler を新しく有効にした場合は、短い読み込みテストを実行することができます。 読み込みテストの実行中に、[ **[Profiler Settings]\(Profiler の設定\)** ウィンドウ](profiler-settings.md#profiler-settings-pane)の **[Profile Now]\(今すぐプロファイル\)** ボタンを選択します。 Profiler が実行されると、1 時間に約 1 回、2 分間、ランダムにプロファイリングされます。 アプリケーションが要求の安定したストリームを処理している場合、Profiler から 1 時間ごとにトレースがアップロードされます。
+Profiler がトレースをアップロードするには、アプリケーションが要求をアクティブに処理する必要があります。 実験を行っている場合は、[Application Insights パフォーマンス テスト](https://docs.microsoft.com/vsts/load-test/app-service-web-app-performance-test)を使用して Web アプリへの要求を生成できます。 Profiler を新しく有効にした場合は、短い読み込みテストを実行することができます。 読み込みテストの実行中に、[ **[Profiler Settings]\(Profiler の設定\)** ウィンドウ](profiler-settings.md)の **[Profile Now]\(今すぐプロファイル\)** ボタンを選択します。 Profiler が実行されると、1 時間に約 1 回、2 分間、ランダムにプロファイリングされます。 アプリケーションが要求の安定したストリームを処理している場合、Profiler から 1 時間ごとにトレースがアップロードされます。
 
 アプリケーションでトラフィックを受け取り、Profiler にトレースをアップロードする時間があった場合、表示するトレースがあります。 このプロセスには 5 分から 10 分かかる可能性があります。 トレースを表示するには、 **[パフォーマンス]** ウィンドウで **[Take Actions]\(アクションの実行\)** を選択して、 **[Profiler トレース]** ボタンを選択します。
 

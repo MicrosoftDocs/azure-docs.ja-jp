@@ -6,16 +6,16 @@ keywords: データ サイエンス ツール,データ サイエンス仮想マ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 09/11/2017
-ms.openlocfilehash: 2d3d37bcb6ee4bae82d82cf676211e9e1546cfad
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 10/3/2019
+ms.openlocfilehash: 47a701cce348e86359947376b3d6a9915dfb2264
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70191991"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950170"
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
@@ -91,15 +91,3 @@ ms.locfileid: "70191991"
 |  使用と実行の方法    |   端末で _blobfuse_ を実行します。    |
 | サンプルへのリンク      | [GitHub の blobfuse](https://github.com/Azure/azure-storage-fuse)      |
 | DSVM 上の関連ツール      | Azure CLI      |
-
-
-## <a name="microsoft-data-management-gateway"></a>Microsoft Data Management Gateway
-
-|    |           |
-| ------------- | ------------- |
-| 紹介   | 内部設置型データ ソースを、使用のためにクラウド サービスに接続するツール。      |
-| サポートされている DSVM バージョン      | Windows      |
-| 標準的な使用      | 内部設置型データ ソースに VM を接続します。      |
-|  使用/実行方法    |   [スタート] メニューから Microsoft Data Management Gateway を開きます。    |
-| サンプルへのリンク      | [Data Management Gateway](https://msdn.microsoft.com/library/dn879362.aspx)      |
-| DSVM 上の関連ツール      | AzCopy、AdlCopy、bcp    |

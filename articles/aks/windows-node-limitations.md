@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: ca5d857e4d473c7f76b7fac62e8a8bab39769b25
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a0fe65428a3329d4843ec913e934fb7a91b13759
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70233133"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71000217"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Windows Server ノード プールとアプリケーション ワークロードについての現在の制限事項
 
@@ -36,7 +36,7 @@ Window Server ノード プールのサポートには、Kubernetes プロジェ
 
 Kubernetes は従来より Linux が中心となっています。 アップストリームの [Kubernetes.io][kubernetes] Web サイトで使用されている多くの例は、Linux ノードでの使用を意図したものです。 Windows Server コンテナーを使用したデプロイを作成する場合、OS レベルの次の考慮事項が該当します。
 
-- **ID** -Linux ではユーザー ID (UID) とグループ ID (GID) が使用され、整数型として表されます。 ユーザー名とグループ名は正規名ではなく、これらは UID と GID に由来する */etc/groups* または */etc/passwd* 内の別名にすぎません。
+- **ID** - Linux では、整数のユーザー識別子 (UID) によってユーザーが識別されます。 ユーザーは、ログオンに使用する英数字のユーザー名も持っています。これは、Linux によって、ユーザーの UID に変換されます。 同様に、Linux では、整数のグループ識別子 (GID) によってユーザー グループが識別され、グループ名が対応する GID に変換されます。
     - Windows Server では、Windows Security Access Manager (SAM) データベースに格納されている大きいバイナリ セキュリティ識別子 (SID) を使用します。 このデータベースは、ホストとコンテナー、またはコンテナー間で共有されません。
 - **ファイルのアクセス許可** - Windows Server では、アクセス許可および UID と GID のビットマスクではなく、SID に基づくアクセス制御リストを使用します
 - **ファイル パス** - Windows Server の規則では、/ の代わりに \ が使用されます。

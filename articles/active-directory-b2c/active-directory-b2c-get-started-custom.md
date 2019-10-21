@@ -7,62 +7,63 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 83269a5ae0d2e5fb7ae2651dbc27926c910a0e03
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 8e858869d742120138e7997ce21d9e4cca93ed9b
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68302490"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264358"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でのカスタム ポリシーの概要
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[カスタム ポリシー](active-directory-b2c-overview-custom.md)は、Azure Active Directory (Azure AD) B2C テナントの動作を定義する構成ファイルです。 この記事では、電子メール アドレスとパスワードを使用してローカル アカウント サインアップまたはサインインをサポートするカスタム ポリシーを作成します。 また、ID プロバイダーを追加するために環境を準備します。
+[カスタム ポリシー](active-directory-b2c-overview-custom.md)は、Azure Active Directory B2C (Azure AD B2C) テナントの動作を定義する構成ファイルです。 この記事では、電子メール アドレスとパスワードを使用してローカル アカウント サインアップまたはサインインをサポートするカスタム ポリシーを作成します。 また、ID プロバイダーを追加するために環境を準備します。
 
 ## <a name="prerequisites"></a>前提条件
 
-- 既に持っていない場合は、[ご使用の Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成する必要があります。
+- まだ持っていない場合は、[お使いの Azure サブスクリプションにリンクされている Azure AD B2C テナント](tutorial-create-tenant.md)を作成します。
 - Azure AD B2C と通信できるように、自分が作成した[テナントにアプリケーションを登録](tutorial-register-applications.md)します。
+- [Facebook アカウントでのサインアップとサインインの設定](active-directory-b2c-setup-fb-app.md)に関する記事の手順を完了して、Facebook アプリケーションを構成します。
 
 ## <a name="add-signing-and-encryption-keys"></a>署名および暗号化キーを追加します。
 
-1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ご自分の Azure AD B2C テナントが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション] フィルター**をクリックし、ご利用のテナントが含まれるディレクトリを選択します。
-3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
-4. [概要] ページで、 **[Identity Experience Framework]** を選択します。
+1. [Azure ポータル](https://portal.azure.com)
+1. 上部のメニューにある **[ディレクトリとサブスクリプション]** フィルターを使用して、お使いの Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. [概要] ページで、 **[Identity Experience Framework]** を選択します。
 
 ### <a name="create-the-signing-key"></a>署名キーを作成します。
 
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-2. **オプション**については、`Generate`を選択してください。
-3. **名前**に`TokenSigningKeyContainer`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
-4. **キー タイプ**については、**RSA** を選択します。
-5. **[キー使用法]** には **[署名]** を選択します。
-6. **Create** をクリックしてください。
+1. **オプション**については、`Generate`を選択してください。
+1. **名前**に`TokenSigningKeyContainer`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
+1. **キー タイプ**については、**RSA** を選択します。
+1. **[キー使用法]** には **[署名]** を選択します。
+1. **作成** を選択します。
 
 ### <a name="create-the-encryption-key"></a>暗号化キーを作成します。
 
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-2. **オプション**については、`Generate`を選択してください。
-3. **名前**に`TokenEncryptionKeyContainer`を入力します。 プレフィックス `B2C_1A`_ が自動的に追加される場合があります。
-4. **キー タイプ**については、**RSA** を選択します。
-5. **[キー使用法]** には **[暗号化]** を選択します。
-6. **Create** をクリックしてください。
+1. **オプション**については、`Generate`を選択してください。
+1. **名前**に`TokenEncryptionKeyContainer`を入力します。 プレフィックス `B2C_1A`_ が自動的に追加される場合があります。
+1. **キー タイプ**については、**RSA** を選択します。
+1. **[キー使用法]** には **[暗号化]** を選択します。
+1. **作成** を選択します。
 
 ### <a name="create-the-facebook-key"></a>Facebook のキーを作成します。
 
-[Facebook アプリケーション シークレット](active-directory-b2c-setup-fb-app.md)が既にある場合は、それをポリシー キーとしてテナントに追加します。 ない場合は、ポリシーが検証にパスするように、プレースホルダー値を含むキーを作成する必要があります。
+ポリシー キーとして、Facebook アプリケーションの [[アプリ シークレット]](active-directory-b2c-setup-fb-app.md)を追加します。 この記事の前提条件の一部として作成したアプリケーションのアプリ シークレットを使用できます。
 
 1. **[ポリシー キー]** を選択し、 **[追加]** を選択します。
-2. **オプション**については、`Manual`を選択します。
-3. **名前**には、`FacebookSecret`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
-4. **シークレット**で、developers.facebook.com から Facebook シークレットを入力するか、または`0`をプレースホルダーとして入力します。 この値はシークレットであり、アプリケーション ID ではありません。
-5. **[キー使用法]** には **[署名]** を選択します。
-6. **Create** をクリックしてください。
+1. **オプション**については、`Manual`を選択します。
+1. **名前**には、`FacebookSecret`を入力します。 プレフィックス `B2C_1A_` が自動的に追加される場合があります。
+1. **シークレット**で、developers.facebook.com から Facebook アプリケーションの*アプリ シークレット*を入力します。 この値はシークレットであり、アプリケーション ID ではありません。
+1. **[キー使用法]** には **[署名]** を選択します。
+1. **作成** を選択します。
 
 ## <a name="register-identity-experience-framework-applications"></a>Identity Experience Framework アプリケーションを登録する
 
@@ -78,19 +79,19 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 1. **名前**には、`IdentityExperienceFramework`を入力します。
 1. **アプリケーションの種類**については、**Web アプリケーション/ API** を選択します。
 1. **サインオン URL** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は、Azure AD B2C テナント ドメイン名です。 ここでは、すべての URL で [b2clogin.com](b2clogin.md) を使用してください。
-1. **Create** をクリックしてください。 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
+1. **作成** を選択します。 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>ProxyIdentityExperienceFramework アプリケーションを登録する
 
 1. **[アプリの登録 (レガシ)]** で、 **[新しいアプリケーションの登録]** を選択します。
-2. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
-3. **アプリケーションの種類**については、**ネイティブ**を選択します。
-4. **リダイレクト URI** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は Azure AD B2C テナントです。
-5. **Create** をクリックしてください。 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
-6. [設定] ページで、**必要な権限**を選択し、**追加**を選択します。
-7. **[API を選択します]** を選択し、**IdentityExperienceFramework** を検索して選択してから、 **[選択]** をクリックします。
-9. **[IdentityExperienceFramework にアクセスする]** の横のチェックボックスにチェックを入れて、 **[選択する]** をクリックし、 **[完了]** をクリックします。
-10. **[Grant Permissions] \(アクセス許可の付与)** を選択してから、 **[はい]** を選択して確認します。
+1. **名前**には、`ProxyIdentityExperienceFramework`を入力します。
+1. **アプリケーションの種類**については、**ネイティブ**を選択します。
+1. **リダイレクト URI** には、`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`を入力します。ここで、`your-tenant-name`は Azure AD B2C テナントです。
+1. **作成** を選択します。 作成した後は、アプリケーション ID をコピーし、後で使用するために保存します。
+1. **[設定]** を選択し、 **[必要なアクセス許可]** を選択したら、 **[追加]** を選択します。
+1. **[API を選択します]** を選択し、**IdentityExperienceFramework** を検索して選択してから、 **[選択]** をクリックします。
+1. **[IdentityExperienceFramework にアクセスする]** の横のチェックボックスにチェックを入れて、 **[選択する]** をクリックし、 **[完了]** をクリックします。
+1. **[アクセス許可を付与する]** を選択したら、 **[はい]** を選択して確定します。
 
 ## <a name="custom-policy-starter-pack"></a>カスタム ポリシー スターター パック
 
@@ -160,7 +161,6 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Facebook を ID プロバイダーとして追加する
 
-1. [Facebook アカウントでのサインアップとサインインの設定](active-directory-b2c-setup-fb-app.md)に関する記事の手順を完了して、Facebook アプリケーションを構成します。
 1. `SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`** ファイルで、`client_id` の値を Facebook アプリケーション ID に置き換えます。
 
    ```xml
@@ -172,7 +172,7 @@ GitHub からカスタム ポリシー スターター パックを取得し、S
 
 1. *TrustFrameworkExtensions.xml* ファイルをテナントにアップロードします。
 1. **[カスタム ポリシー]** ページで、**B2C_1A_signup_signin** を選択します。
-1. **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。 または、登録済みアプリケーションからポリシーを直接呼び出します。
+1. **[今すぐ実行]** を選択し、Facebook でサインインする Facebook を選択し、カスタム ポリシーをテストします。
 
 ## <a name="next-steps"></a>次の手順
 

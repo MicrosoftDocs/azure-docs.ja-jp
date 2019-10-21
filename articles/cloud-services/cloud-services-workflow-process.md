@@ -4,7 +4,7 @@ description: この記事では、サービスをデプロイするときのワ�
 services: cloud-services
 documentationcenter: ''
 author: genlin
-manager: Willchen
+manager: dcscontentpm
 editor: ''
 tags: top-support-issue
 ms.assetid: 9f2af8dd-2012-4b36-9dd5-19bf6a67e47d
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 04/08/2019
 ms.author: kwill
-ms.openlocfilehash: 383f4d26d44871936ccc910f15575db5aec3ec8c
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 5dd57a87658554bf59acf5cee1b6daf67b8692b8
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945337"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162157"
 ---
 #    <a name="workflow-of-windows-azure-classic-vm-architecture"></a>Windows Azure クラシック VM のアーキテクチャのワークフロー 
 この記事では、仮想マシンなどの Azure リソースをデプロイまたは更新するときに発生するワークフロー プロセスの概要を示します。 
@@ -37,15 +37,16 @@ ms.locfileid: "68945337"
 
 **B**. ファブリック コントローラーは、データ センター内のすべてのリソースの管理と監視を担当します。 ゲスト OS のバージョン、サービス パッケージ、サービスの構成、サービスの状態などの情報を送信するファブリック OS 上のファブリック ホスト エージェントと通信します。
 
-**C**. ホスト エージェントはホスト OSsystem 上に存在し、意図される目標の状態に向けてロールを更新し、ゲスト エージェントとのハートビートのチェックを行うために、ゲスト OS のセットアップおよびゲスト エージェント (WindowsAzureGuestAgent) との通信を担当します。 ホスト エージェントは、ハートビート応答を 10 分間受信しなかった場合、ゲスト OS を再起動します。
+**C**. ホスト エージェントはホスト OS 上に存在し、意図される目標の状態に向けてロールを更新し、ゲスト エージェントとのハートビートのチェックを行うために、ゲスト OS のセットアップおよびゲスト エージェント (WindowsAzureGuestAgent) との通信を担当します。 ホスト エージェントは、ハートビート応答を 10 分間受信しなかった場合、ゲスト OS を再起動します。
 
 **C2**. WaAppAgent は、WindowsAzureGuestAgent.exe のインストール、構成、および更新を担当します。
 
 **D**.  WindowsAzureGuestAgent は、以下のことを担当します。
 
-1. ファイアウォール、ACL、LocalStorage リソース、サービス パッケージと構成、証明書を含むゲスト OS の構成。ロールを実行するユーザー アカウントの SID の設定。
-2. ファブリックへのロールの状態の通信。
-3. WaHostBootstrapper の開始、およびロールが目標の状態であることを確認するための監視。
+1. ファイアウォール、ACL、LocalStorage リソース、サービス パッケージと構成、証明書を含むゲスト OS の構成。
+2. ロールを実行するユーザー アカウントの SID の設定。
+3. ファブリックへのロールの状態の通信。
+4. WaHostBootstrapper の開始、およびロールが目標の状態であることを確認するための監視。
 
 **E**. WaHostBootstrapper は、以下のことを担当します。
 
@@ -60,7 +61,7 @@ ms.locfileid: "68945337"
 3. サービス モデルの構成済みロールに対する AppPool の設定
 4. DiagnosticStore LocalStorage フォルダーを指すように IIS ログを設定
 5. アクセス許可と ACL の構成
-6. Web サイトは %roleroot%:\sitesroot\0 に存在し、apppool は IIS を実行するためにこの場所を参照します。 
+6. Web サイトは %roleroot%:\sitesroot\0 に存在し、AppPool は IIS を実行するためにこの場所を参照します。 
 
 **G**. スタートアップ タスクは、ロール モデルによって定義されており、WaHostBootstrapper によって開始されます。 スタートアップ タスクはバックグラウンドで非同期に実行するように構成でき、ホスト ブートストラッパーはスタートアップ タスクを開始してから、他のスタートアップ タスクに進みます。 スタートアップ タスクは、簡易 (既定) モードで実行するように構成することもできます。このモードでは、ホスト ブートストラッパーは、スタートアップ タスクの実行が完了するまで待ってから、成功 (0) 終了コードを返した後で、次のスタートアップ タスクを続けます。
 
@@ -76,7 +77,7 @@ ms.locfileid: "68945337"
 
 ## <a name="workflow-processes"></a>ワークフローのプロセス
 
-1. ユーザーは、.cspkg ファイルや .cscfg ファイルのアップロード、リソースへの停止通知、構成の変更など、要求を行います。 これは、Azure portal で、または Visual Studio の発行機能のような Service Management API を使うツールによって、行うことができます。 この要求は、RDFE に送られてサブスクリプション関連のすべての処理が行われた後、FFE に送られます。 ワークフローのこれらの手順の残りの部分では、新しいパッケージをデプロイして開始します。
+1. ユーザーは、".cspkg" ファイルや ".cscfg "ファイルのアップロード、リソースへの停止通知、構成の変更など、要求を行います。 これは、Azure portal で、または Visual Studio の発行機能のような Service Management API を使うツールによって、行うことができます。 この要求は、RDFE に送られてサブスクリプション関連のすべての処理が行われた後、FFE に送られます。 ワークフローのこれらの手順の残りの部分では、新しいパッケージをデプロイして開始します。
 2. FFE で (アフィニティ グループや地理的な場所などのお客様からの入力に加えて、マシンの可用性などのファブリックからの入力に基づいて) 適切なマシン プールが検索され、そのマシン プール内のマスター ファブリック コントローラーとの通信が行われます。
 3. ファブリック コントローラーで、使用可能な CPU コアを持つホストが検索されます (または、新しいホストが起動されます)。 サービス パッケージと構成がホストにコピーされ、ファブリック コントローラーとホスト OS 上のホスト エージェントとの間で通信が行われて、パッケージがデプロイされます (DIP、ポート、ゲスト OS などが構成されます)。
 4. ホスト エージェントによって、ゲスト OS が開始され、ゲスト エージェント (WindowsAzureGuestAgent) との通信が行われます。 ホストによって、ゲストにハートビートが送信され、ロールがその目標とする状態に向かって動作していることが確認されます。
@@ -85,7 +86,7 @@ ms.locfileid: "68945337"
 7. WaHostBootstrapper によって、**スタートアップ** タスクが E:\RoleModel.xml から読み取られて、スタートアップ タスクの実行が開始されます。 WaHostBootstrapper は、すべての簡易スタートアップ タスクが完了して、"成功" メッセージが返されるまで待機します。
 8. 完全な IIS Web ロールの場合、WaHostBootstrapper は、IIS AppPool を構成するよう IISConfigurator に指示し、サイトに `E:\Sitesroot\<index>` を示します。`<index>` は、サービスに対して定義されている `<Sites>` 要素の数に対する 0 から始まるインデックスです。
 9. WaHostBootstrapper によって、ロールの種類に応じたホスト プロセスが開始されます。
-    1. **worker ロール**: WaWorkerHost.exe が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。それが終了した後、WaHostBootstrapper によって Run() メソッドの実行が開始されるのと同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます (InputEndpoints が定義されている場合)。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
+    1. **worker ロール**: WaWorkerHost.exe が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。 それが終了した後、WaHostBootstrapper によって Run() メソッドの実行が開始されるのと同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます (InputEndpoints が定義されている場合)。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
     1. **SDK 1.2 HWC Web ロール**: WaWebHost が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。 それが終了した後、WaHostBootstrapper によって Run() メソッドの実行が開始されるのと同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます。 WaWebHost によって、ウォームアップ要求 (GET /do.rd_runtime_init) が発行されます。 すべての Web 要求は、WaWebHost.exe に送信されます。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
     1. **完全な IIS Web ロール**: aIISHost が開始されます。 WaHostBootstrapper によって OnStart() メソッドが実行されます。 それが終了した後、Run() メソッドの実行が開始され、同時に、ロールが準備完了としてマークされて、ロード バランサーのローテーションに入れられます。 その後、WaHostBootsrapper はロールの状態をチェックするループに入ります。
 10. 完全な IIS Web ロールへの Web 要求の着信でトリガーされた IIS により、W3WP プロセスが開始されて、要求の処理が行われます。これは、オンプレミスの IIS 環境の場合と同様です。

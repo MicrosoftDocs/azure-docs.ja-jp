@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 72c425a1ec9fb83cc2e9dd1bae2c4f521109f162
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.openlocfilehash: bb9a9c1d67e52c21d2cb039832d27547a023da9f
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68663373"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154664"
 ---
 # <a name="reward-scores-indicate-success-of-personalization"></a>報酬スコアは、パーソナル化の成功を示します
 
@@ -25,7 +25,7 @@ Personalizer は、報酬を評価することにより、機械学習モデル�
 
 ## <a name="use-reward-api-to-send-reward-score-to-personalizer"></a>Reward API を使用した Personalizer への報酬スコアの送信
 
-報酬は [Reward API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) によって Personalizer に送信されます。 報酬は、-1 から 1 の数値です。 Personalizer は、時間の経過に伴って報酬の合計が最大限可能な値に到達するようにモデルをトレーニングします。
+報酬は [Reward API](https://docs.microsoft.com/rest/api/cognitiveservices/personalizer/events/reward) によって Personalizer に送信されます。 通常、報酬は、0 から 1 の数値です。 特定のシナリオでは負の報酬 (-1) を使用することができますが、強化学習 (RL) に馴染みがある場合にのみ使用してください。 Personalizer は、時間の経過に伴って報酬の合計が最大限可能な値に到達するようにモデルをトレーニングします。
 
 報酬は、ユーザーの動作が行われた後に送信されます。これは数日後になることがあります。 イベントに報酬がない、または既定の報酬しかないと見なされるまで Personalizer が待機する最大の時間は、Azure portal の[報酬の待機時間](#reward-wait-time)で構成されます。
 
@@ -56,7 +56,7 @@ Rank 呼び出し以降の期間である[報酬の待機時間](#reward-wait-ti
 
 ## <a name="building-up-rewards-with-multiple-factors"></a>複数の要因による報酬の作成  
 
-有効なパーソナル化には、複数の要因に基づいて報酬スコア (-1 から 1 の任意の数) を作成できます。 
+有効なパーソナル化には、複数の要因に基づいて報酬スコアを作成できます。 
 
 たとえば、ビデオ コンテンツの一覧をパーソナライズするために以下の規則を適用できます。
 
@@ -80,7 +80,7 @@ Rank 呼び出し以降の期間である[報酬の待機時間](#reward-wait-ti
 
 **報酬の待機時間**後に受信されたイベントのすべての報酬は破棄され、モデルのトレーニングには影響しません。
 
-報酬スコアを追加することにより、最終的な報酬は 1 より高くなったり、-1 より低くなることがあります。 これによりサービスが失敗することはありません。
+報酬スコアを加算した結果、最終的な報酬が想定されるスコアの範囲外になる場合があります。 これによりサービスが失敗することはありません。
 
 <!--
 @edjez - is the number ignored if it is outside the acceptable range?

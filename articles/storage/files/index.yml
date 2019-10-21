@@ -2,7 +2,7 @@
 title: Azure Files のドキュメント
 summary: Azure Files はクラウドで、サーバー メッセージ ブロック (SMB) プロトコルを介してアクセスできるフル マネージドのクロスプラットフォーム ファイル共有を提供します。
 metadata:
-  title: Azure Files
+  title: Azure Files のドキュメント
   description: Windows、Linux、および macOS でクラウドまたはオンプレミスのファイル共有をマウントします。 Azure File Sync を使用して Azure ファイル共有を Windows Server でキャッシュし、ローカル アクセスを実現します。
   services: storage
   ms.service: storage
@@ -12,12 +12,12 @@ metadata:
   author: roygara
   ms.author: rogarana
   ms.date: 08/27/2019
-  ms.openlocfilehash: 21be0cb23dc5673d0a060636da148ee97463ec4b
-  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.openlocfilehash: 3e9224746c400f9795e16edd51b69740fb3c45c7
+  ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70241718"
+  ms.lasthandoff: 10/13/2019
+  ms.locfileid: "72299567"
 landingContent:
 - title: Azure Files について
   linkLists:

@@ -11,18 +11,16 @@ ms.topic: quickstart
 ms.date: 09/05/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: e1d31aab9c113a421fda2f6de96ee25b44bba8d1
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 18eb9f2e1c509cbefef2cab59c82317b927ef060
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70393815"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827841"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>クイック スタート:Translator Text API を使用してサポートされている言語の一覧を取得する
 
 このクイック スタートでは、Translator Text API を使用して、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得します。
-
-[!INCLUDE [Custom subdomains notice](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 ::: zone pivot="programming-language-csharp"
 

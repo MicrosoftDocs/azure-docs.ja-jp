@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 487940bfb5d6e7c5eebf99f804f57c3e17709377
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 5819a6c6d73b2ee51fc72d2b56d99b0efb3ea0be
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276499"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241126"
 ---
 # <a name="preview---secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>プレビュー - Azure Kubernetes Service (AKS) で許可された IP アドレス範囲を使用して API サーバーへのアクセスをセキュリティで保護する
 
@@ -28,7 +28,7 @@ Kubernetes では、API サーバーは、リソースの作成やノードの�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、[kubenet][kubenet] を使用しているクラスターを操作することを前提としています。  [Azure Container Networking Interface (CNI)][cni-networking] ベースのクラスターでは、アクセスをセキュリティで保護するために必要なルート テーブルがありません。  ルート テーブルを手動で作成する必要があります。  詳細については、[ルート テーブルの管理](https://docs.microsoft.com/azure/virtual-network/manage-route-table)に関するページをご覧ください。
+この記事では、[kubenet][kubenet] を使用しているクラスターで作業することを前提としています。  [Azure Container Networking Interface (CNI)][cni-networking] ベースのクラスターでは、アクセスをセキュリティで保護するために必要なルート テーブルがありません。  ルート テーブルを手動で作成する必要があります。  詳細については、[ルート テーブルの管理](https://docs.microsoft.com/azure/virtual-network/manage-route-table)に関するページをご覧ください。
 
 API サーバーの許可された IP 範囲は、作成する新しい AKS クラスターに対してのみ機能します。 この記事では、Azure CLI を使用して AKS クラスターを作成する方法について説明します。
 
@@ -228,7 +228,7 @@ API サーバーの許可された IP 範囲を有効にするには、許可さ
 
 [az aks update][az-aks-update] コマンドを使用し、 *--api-server-authorized-ip-ranges* を指定して許可します。 これらの IP アドレス範囲は通常、オンプレミス ネットワークによって使用されるアドレス範囲です。 前の手順で取得された独自の Azure Firewall のパブリック IP アドレス (*20.42.25.196/32* など) を追加します。
 
-次の例では、*myResourceGroup* という名前のリソース グループ内の *myAKSCluster* という名前のクラスターで API サーバーの許可された IP 範囲を有効にします。 許可する IP アドレス範囲は、*20.42.25.196/32* (Azure ファイアウォールのパブリック IP アドレス)、次に *172.0.0.0/16* と *168.10.0.0/18* です。
+次の例では、*myResourceGroup* という名前のリソース グループ内の *myAKSCluster* という名前のクラスターで API サーバーの許可された IP 範囲を有効にします。 許可する IP アドレス範囲は、*20.42.25.196/32* (Azure ファイアウォールのパブリック IP アドレス)、次に *172.0.0.0/16* (ポッド/ノード アドレス範囲) と *168.10.0.0/18* (ServiceCidr) です。
 
 ```azurecli-interactive
 az aks update \
@@ -236,6 +236,13 @@ az aks update \
     --name myAKSCluster \
     --api-server-authorized-ip-ranges 20.42.25.196/32,172.0.0.0/16,168.10.0.0/18
 ```
+
+> [!NOTE]
+> 次の範囲を許可リストに追加してください。
+> - ファイアウォール パブリック IP アドレス
+> - サービス CIDR
+> - サブネットのアドレス範囲、ノード、ポッド
+> - クラスターを管理するネットワークを表すあらゆる範囲
 
 ## <a name="update-or-disable-authorized-ip-ranges"></a>許可された IP 範囲を更新するか、または無効にする
 
@@ -256,6 +263,8 @@ az aks update \
 
 <!-- LINKS - external -->
 [azure-firewall-costs]: https://azure.microsoft.com/pricing/details/azure-firewall/
+[kubenet]: https://kubernetes.io/docs/concepts/extend-kubernetes/compute-storage-net/network-plugins/#kubenet
+[cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md

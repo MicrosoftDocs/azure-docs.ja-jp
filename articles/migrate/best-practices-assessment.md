@@ -1,17 +1,17 @@
 ---
-title: Azure Migrate Server Assessment で評価を作成するためのベスト プラクティス |Microsoft Docs
+title: Azure Migrate Server Assessment で評価を作成するためのベスト プラクティス
 description: Azure Migrate Server Assessment を使用して評価を作成するためのヒントを提供します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 09/16/2019
 ms.author: raynew
-ms.openlocfilehash: 18b82b5553f7045c38c9de532199c2a0fd815ee1
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: a07e83c805fc422c861f6c644a59da0b42bb8072
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234313"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71007710"
 ---
 # <a name="best-practices-for-creating-assessments"></a>評価を作成するためのベスト プラクティス
 
@@ -34,7 +34,7 @@ Azure Migrate Server Assessment を使用して作成した評価は、特定の
 - **パフォーマンスベースの評価**:
     - コア (4 x 0.20 = 0.8) とメモリ (8 GB x 0.10 = 0.8) の使用率に基づいて、有効なコアとメモリを識別します。
     - 評価のプロパティで指定された快適性係数 (たとえば 1.3 x) を適用して、サイズ変更に使用する値を取得します。 
-    - 最大 1.4 コア (0.8 x 1.3) の CPU と最大 1.4 GB (0.8 x 1.3) のメモリをサポートできる、直近の VM サイズを推奨します。
+    - 最大 1.04 コア (0.8 x 1.3) の CPU と最大 1.04 GB (0.8 x 1.3) のメモリをサポートできる、直近の VM サイズが推奨されます。
 
 - **現状 (オンプレミス) での評価**:
     -  4 コア、8 GB メモリの VM を推奨します。

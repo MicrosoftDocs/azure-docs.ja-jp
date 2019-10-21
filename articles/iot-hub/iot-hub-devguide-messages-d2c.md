@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: asrastog
-ms.openlocfilehash: 6ee9e334c10bd2d0f291b5fd1bb547ba3ba83ddb
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: d2c84f5b6389ac83206472440d26aa8d81ba76be
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877186"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147358"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>IoT Hub メッセージ ルーティングを使用して device-to-cloud メッセージを別のエンドポイントに送信する
 
@@ -25,13 +25,17 @@ ms.locfileid: "69877186"
 
 * リッチ クエリを適用して、**さまざまなエンドポイントにルーティングする前にデータをフィルター処理**する。 メッセージ ルーティングでは、メッセージ プロパティとメッセージ本文に基づいてクエリを実行できるほか、デバイス ツインのタグとプロパティに基づいてクエリを実行することもできます。 [メッセージ ルーティングでクエリ](iot-hub-devguide-routing-query-syntax.md)を使用する方法の詳細について確認してください。
 
-IoT Hub でメッセージのルーティングを機能させるには、これらのサービス エンドポイントへの書き込みアクセス許可が必要です。 Azure Portal を使用してエンドポイントを構成する場合、必要なアクセス許可は自動的に追加されます。 必要なスループットをサポートするようにサービスを確実に構成してください。 IoT ソリューションを初めて構成する場合は、追加したエンドポイントを監視し、実際の負荷の調整を行う必要があります。
+IoT Hub でメッセージのルーティングを機能させるには、これらのサービス エンドポイントへの書き込みアクセス許可が必要です。 Azure Portal を使用してエンドポイントを構成する場合、必要なアクセス許可は自動的に追加されます。 必要なスループットをサポートするようにサービスを確実に構成してください。 たとえば、Event Hubs をカスタム エンドポイントとして使用している場合は、そのイベント ハブに対して**スループット ユニット**を構成して、IoT Hub メッセージ ルーティングを介して送信する予定のイベントのイングレスを処理できるようにする必要があります。 同様に、Service Bus キューをエンドポイントとして使用する場合は、コンシューマーによって送信されるまで、キューがすべてのデータ イングレスを保持できるように、**最大サイズ**を構成する必要があります。 IoT ソリューションを初めて構成する場合は、追加したエンドポイントを監視し、実際の負荷の調整を行う必要があります。
 
 IoT ハブは、各種プロトコルにおける相互運用性を確保するためにすべての device-to-cloud メッセージ用の[共通形式](iot-hub-devguide-messages-construct.md)を定義します。 メッセージが、同じエンドポイントを指している複数のルートと一致する場合、IoT Hub はそのエンドポイントにメッセージを 1 回だけ送信します。 そのため、Service Bus キューまたはトピックで重複除去を構成する必要はありません。 パーティション分割されたキューでは、パーティションのアフィニティによってメッセージの順序が保証されます。 このチュートリアルを使用して、[メッセージ ルーティングを構成する](tutorial-routing.md)方法について学習してください。
 
 ## <a name="routing-endpoints"></a>ルーティング エンドポイント
 
-IoT ハブには、Event Hubs との互換性がある、既定の組み込みのエンドポイント (**messages/events**) があります。 サブスクリプション内の他のサービスを IoT ハブにリンクして、メッセージのルーティング先となる[カスタム エンドポイント](iot-hub-devguide-endpoints.md#custom-endpoints)を作成することができます。 現在、IoT Hub では、カスタム エンドポイントとして、次のサービスをサポートしています。
+IoT ハブには、Event Hubs との互換性がある、既定の組み込みのエンドポイント (**messages/events**) があります。 サブスクリプション内の他のサービスを IoT ハブにリンクして、メッセージのルーティング先となる[カスタム エンドポイント](iot-hub-devguide-endpoints.md#custom-endpoints)を作成することができます。 
+
+各メッセージは、一致するルーティング クエリを持つすべてのエンドポイントにルーティングされます。 つまり、メッセージは複数のエンドポイントにルーティングできます。
+
+現在、IoT Hub では、カスタム エンドポイントとして、次のサービスをサポートしています。
 
 ### <a name="built-in-endpoint"></a>組み込みのエンドポイント
 
@@ -43,9 +47,9 @@ IoT Hub では、[Apache Avro](https://avro.apache.org/) 形式と JSON 形式�
 
 ![Blob Storage エンドポイントのエンコード](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
-IoT Hub は、ADLS Gen2 アカウントへのメッセージのルーティングもサポートしています。これは、BLOB ストレージ上に構築された[階層的な名前空間](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace)対応のストレージ アカウントです。 この機能はパブリック プレビュー段階であり、米国西部 2 と米国中西部で新しい ADLS Gen2 アカウントに使用できます。 この機能は、近日中にすべてのクラウド リージョンにデプロイする予定です。
+IoT Hub は、[Azure Data Lake Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction) (ADLS) Gen2 アカウントへのメッセージのルーティングもサポートしています。これは、BLOB ストレージ上に構築された[階層的な名前空間](../storage/blobs/data-lake-storage-namespace.md)対応のストレージ アカウントです。 この機能はパブリック プレビュー段階であり、米国西部 2 と米国中西部で新しい ADLS Gen2 アカウントに使用できます。 これをプレビューするには、[サインアップ](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)してください。 この機能は、近日中にすべてのクラウド リージョンにデプロイする予定です。 
 
-IoT Hub は、バッチが特定のサイズに達するか、一定の時間が経過した時点で、メッセージを一括処理して BLOB にデータを書き込みます。 IoT Hub の既定のファイル名前付け規則は次のとおりです。
+IoT Hub は、バッチが特定のサイズに達するか、一定の時間が経過した時点で、メッセージを一括処理して BLOB にデータを書き込みます。 IoT Hub の既定のファイル名前付け規則は次のとおりです。 
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}

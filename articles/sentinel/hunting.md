@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel プレビューでの検出機能 | Microsoft Docs
+title: Azure Sentinel の検出機能 | Microsoft Docs
 description: この記事では、Azure Sentinel 検出機能の使用方法について説明します。
 services: sentinel
 documentationcenter: na
@@ -14,20 +14,18 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/28/2019
+ms.date: 09/10/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5e6ad3c0b415722349dc584434add1031b7c3cb1
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: b00f60394a24008ca39f3ac7b378b1936c46ef76
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780457"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240610"
 ---
-# <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>Azure Sentinel プレビューでの脅威の検出
+# <a name="hunt-for-threats-with-in-azure-sentinel"></a>Azure Sentinel での脅威の検出
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 セキュリティ上の脅威を事前に探索しようとしている調査担当者である場合、Azure Sentinel の強力な検出用検索およびクエリ ツールは、組織のデータ ソース全体からセキュリティ上の脅威を検出します。 ただし、システムとセキュリティ アプライアンスから山のようなデータが生成されますが、これらを解析したり、意味のあるイベントにフィルター処理したりすることが難しい場合があります。 セキュリティ アプリで検出されなかった新しい異常をセキュリティ アナリストが事前に探すときに役立つように、Azure Sentinel には検出クエリが組み込まれており、これを通じて、ネットワーク上で既に保有しているデータ内の問題を見つけるために適切な質問を行うことができます。 
 
@@ -41,8 +39,7 @@ Azure Sentinel 検出機能では、次の機能を利用できます。
 
 - IntelliSense での強力なクエリ言語:柔軟性をもたらすクエリ言語に基づいて、検出を次のレベルに進める必要があります。
 
-- 独自のブックマークの作成:検出プロセスでは、一致した結果や、異常または不審に見える所見、ダッシュボード、アクティビティが見つかることがあります。 後からこれらの項目に戻れるようにマークするには、ブックマーク機能を使用します。 ブックマークを使用すれば、後で調査するインシデントを作成するために使用できるように項目を保存できます。 ブックマークの詳細については、[検出でのブックマーク] の使用に関するページを参照してください。
-
+- 独自のブックマークの作成:検出プロセスでは、一致した結果や、異常または不審に見える所見、ダッシュボード、アクティビティが見つかることがあります。 後からこれらの項目に戻れるようにマークするには、ブックマーク機能を使用します。 ブックマークを使用すれば、後で調査するインシデントを作成するために使用できるように項目を保存できます。 ブックマークの詳細については、[検出でのブックマークの使用](hunting.md)に関するページを参照してください。
 - ノートブックを使用した調査の自動化:ノートブックは、調査および検出の手順を進めるために構築できる段階的なプレイブックのようなものです。  ノートブックは、組織の他のユーザーと共有できる再利用可能なプレイブックにすべての検出手順をカプセル化します。 
 - 格納されたデータのクエリ:クエリを実行するために、テーブル内でデータにアクセスできます。 たとえば、プロセス作成、DNS イベント、他の多くのイベントの種類に対してクエリを実行できます。
 

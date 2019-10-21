@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/09/2019
 ms.author: sharadag
 ms.custom: include file
-ms.openlocfilehash: deca0034996f6c8ddcac71cd4f191c1a0659b655
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 37ebe2f0c5cbbaca712e69ab4484379ecf0f4830
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67333382"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72237388"
 ---
 | リソース | 既定/上限 |
 | --- | --- |
@@ -24,7 +24,7 @@ ms.locfileid: "67333382"
 | バック エンド プールあたりのバック エンド | 100 |
 | ルーティング規則に関して一致するパス パターン数 | 25 |
 | ポリシーあたりのカスタム Web アプリケーション ファイアウォール規則数 | 10 |
-| リソースあたりの Web アプリケーション ファイアウォール ポリシー数 | 100 |
+| サブスクリプションあたりの Web アプリケーション ファイアウォール | 100 |
 | カスタム規則ごとの Web アプリケーション ファイアウォールの一致条件 | 10 |
 | 一致条件ごとの Web アプリケーション ファイアウォール IP アドレスの範囲 | 600 |
 | 一致条件ごとの Web アプリケーション ファイアウォール文字列の一致する値 | 10 |
@@ -53,4 +53,5 @@ ms.locfileid: "67333382"
 | **アップロード** |  各 CTE アップロードが 2 GB 未満である限り、制限はありません。 | このサイズが 2 GB を超えることはできません。 |
 
 ### <a name="other-limits"></a>その他の制限
-- URL の最大サイズ - 8,192 バイト - 生の URL の最大長を指定します (URL のスキーム + ホスト名 + ポート + パス + クエリ文字列) - クエリ文字列の最大サイズ - 4,096 バイト - クエリ文字列の最大長 (バイト単位) を指定します。
+- URL の最大サイズ - 8192 バイト - 未加工 URL の最大長を指定します (スキーム + ホスト名 + ポート + パス + URL のクエリ文字列)
+- クエリ文字列の最大サイズ - 4096 バイト - クエリ文字列の最大長をバイト単位で指定します。

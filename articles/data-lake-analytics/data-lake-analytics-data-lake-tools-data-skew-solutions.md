@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake Tools for Visual Studio を使用してデータ スキュー問題を解決する
+title: データ スキューを解決する - Azure Data Lake Tools for Visual Studio
 description: Azure Data Lake Tools for Visual Studio を使用して、データ スキュー問題の解決策をトラブルシューティングします。
 services: data-lake-analytics
 author: yanancai
@@ -8,12 +8,12 @@ ms.reviewer: jasonwhowell
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 12/16/2016
-ms.openlocfilehash: 611439802c200b30586b73b82d0a4bbbc857e114
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ff7ba5f04a8c1862f8ef136f8f3f6900f00a431
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65606703"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802548"
 ---
 # <a name="resolve-data-skew-problems-by-using-azure-data-lake-tools-for-visual-studio"></a>Azure Data Lake Tools for Visual Studio を使用してデータ スキュー問題を解決する
 
@@ -165,7 +165,7 @@ SKEWFACTOR に加えて、特定の傾斜キー結合については、結合さ
 
 コンバイナー モードの属性:
 
-- [SqlUserDefinedCombiner(Mode=CombinerMode.Full)]: Every output row potentially depends on all the input rows from left and right with the same key value.
+- SqlUserDefinedCombiner(Mode=CombinerMode.Full): 出力行がいずれも、キー値が同じ左右の入力行すべてに依存する可能性があります。
 
 - SqlUserDefinedCombiner(Mode=CombinerMode.Left): 出力行がいずれも、左側の単一の入力行に依存します (また、キー値が同じ右側の行すべてにも依存する可能性があります)。
 

@@ -11,18 +11,18 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 02/13/2019
-ms.openlocfilehash: 058afdbc4aa134b5b3c4c8cc5e9e2f2ae6f53084
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 049122b97a26e63188142dd5494927c2ae71d852
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569651"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71103223"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure Portal を使用して Azure SQL Database のアクティブ geo レプリケーションを構成してフェールオーバーを開始する
 
 この記事では、[Azure portal](https://portal.azure.com) を使用して Azure SQL Database の[単一データベースまたはプールされたデータベースのアクティブ geo レプリケーション](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)を構成し、フェールオーバーを開始する方法について説明します。
 
-単一データベースまたはプールされたデータベースでの自動フェールオーバー グループについては、[単一データベースまたはプールされたデータベースでフェールオーバー グループを使用する場合のベスト プラクティス](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)に関するページを参照してください。 マネージド インスタンスでの自動フェールオーバー グループ (プレビュー) については、[マネージド インスタンスでフェールオーバー グループを使用する場合のベスト プラクティス](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)に関するページを参照してください。
+単一データベースまたはプールされたデータベースでの自動フェールオーバー グループについては、[単一データベースまたはプールされたデータベースでフェールオーバー グループを使用する場合のベスト プラクティス](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)に関するページを参照してください。 マネージド インスタンスでの自動フェールオーバー グループについては、[マネージド インスタンスと共にフェールオーバー グループを使用する場合のベスト プラクティス](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

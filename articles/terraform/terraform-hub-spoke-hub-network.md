@@ -8,13 +8,13 @@ author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 5f8d9119ea9caeb598946a384f321fa6f7e14def
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 12538c0348efc1621d3f8f6ee0cb93d73c712898
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000225"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173431"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>チュートリアル:Azure で Terraform を使用してハブ仮想ネットワークを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "58000225"
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Azure で Terraform を使用して、ハブとスポークのハイブリッド ネットワーク トポロジを作成します](./terraform-hub-spoke-introduction.md)。
+1. [Azure で Terraform を使用して、ハブ スポーク ハイブリッド ネットワーク トポロジを作成します](./terraform-hub-spoke-introduction.md)。
 1. [Azure で Terraform を使用して、オンプレミス仮想ネットワークを作成します](./terraform-hub-spoke-on-prem.md)。
 
 ## <a name="create-the-directory-structure"></a>ディレクトリ構造を作成する
@@ -73,7 +73,7 @@ ms.locfileid: "58000225"
 
 1. 以下のコードをエディターに貼り付けます。
 
-    ```JSON
+    ```hcl
     locals {
       prefix-hub         = "hub"
       hub-location       = "CentralUS"

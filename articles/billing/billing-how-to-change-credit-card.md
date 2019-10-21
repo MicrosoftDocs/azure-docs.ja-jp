@@ -11,14 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: banders
-ms.openlocfilehash: 7719ae83525883a6d3f014dbb99877b7319f2ccd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: f89f9a08feb2ea2bcb7a9e8180002557df1d2b56
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "68383665"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300306"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure 用にクレジット カードを追加、更新、または削除する
+
+このドキュメントは、クレジット カードを使用して Azure オンラインにサインアップされているお客様を対象としています。
 
 Azure portal では、新しいクレジット カードの追加、既存のクレジット カードの更新、または使用しないクレジット カードの削除が可能です。 クレジット カードを変更するには、[アカウント管理者](billing-subscription-transfer.md#whoisaa)になる必要があります。
 
@@ -104,55 +106,6 @@ Azure portal では、新しいクレジット カードの追加、既存のク
 1. **[削除]** をクリックします。
 
 クレジット カードがいずれかの Microsoft サブスクリプションのアクティブな支払い方法である場合は、Azure アカウントから削除できません。 このクレジット カードにリンクされているすべてのサブスクリプションのアクティブな支払い方法を変更し、再度お試しください
-<!-- # Add, update, or remove a credit card for Azure
-
-In the Account Center, you can add a new credit card, update an existing credit card, or delete a credit card that you don't use. You must be an [Account Administrator](billing-subscription-transfer.md#whoisaa) to make these changes.
-
-**Want to switch to pay by invoice?** See [Pay for Azure subscriptions by invoice](billing-how-to-pay-by-invoice.md).
-
-<a id="addcard"></a>
-
-## Add a new credit card
-
-1. Sign in to the [Account Center](https://account.windowsazure.com/Subscriptions) as the [Account Administrator](billing-subscription-transfer.md#whoisaa).
-1. Select a subscription.
-1. On the right side of the page, select **Manage payment methods**.
-
-    ![Screenshot that shows Manage payment methods option selected.](./media/billing-how-to-change-credit-card/changesub_new.png)
-1. Select “+” to add a card.
-
-    ![Screenshot that shows the edit option next to the payment method.](./media/billing-how-to-change-credit-card/editcard_new.png)
-1. Enter credit card details.
-1. Select **Save**.
-
-If you get an error after you add the credit card, see [Credit card declined at Azure sign-up](billing-credit-card-fails-during-azure-sign-up.md).
-
-## Update existing credit card
-
-If your credit card gets renewed and the number remains the same, update the existing credit card details like the expiration date. If your credit card number changes because the card is lost, stolen, or expired, follow the steps in the [Add a credit card as a payment method](#addcard) section. You don't need to update the CVV.
-
-1. Sign in to the [Azure Account Center](https://account.windowsazure.com/Subscriptions) as the [Account Administrator](billing-subscription-transfer.md#whoisaa).
-1. Select the subscription that's linked to the card.
-1. Select **Manage payment methods**.
-1. Select **Edit** next to the card you want to update.
-1. Update the credit card details.
-1. Select **Save**.
-
-## Use a different credit card for the Azure subscription
-
-1. Sign in to the [Azure Account Center](https://account.windowsazure.com/Subscriptions) as the [Account Administrator](billing-subscription-transfer.md#whoisaa).
-1. Select the subscription that's linked to the card.
-1. On the right side of the page, select **Manage payment methods**.
-1. Click **Use Instead** next to the card that you want to use. This also updates any other subscriptions currently associated with this card.
-
-## Remove a credit card from the account
-
-1. Sign in to the [Azure Account Center](https://account.windowsazure.com/Subscriptions) as the [Account Administrator](billing-subscription-transfer.md#whoisaa).
-1. Select the subscription that's linked to the card.
-3. On the right side of the page, select **Manage payment methods**.
-4. Click **Delete** for the credit card that you want to delete.
-
-If your credit card is associated with other active Microsoft subscriptions, you can't remove it from your Azure account. Remove the credit card from all active subscriptions that you have with Microsoft and try again. -->
 
 ## <a name="change-payment-method-for-a-billing-profile"></a>課金プロファイルの支払方法を変更する
 
@@ -176,6 +129,9 @@ If your credit card is associated with other active Microsoft subscriptions, you
     ![[変更] ボタンを示すスクリーンショット](./media/billing-how-to-change-credit-card/customer-led-switch-credit-card.png)
 
 1. 既存のカードを選択するか、新たに追加します。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+クレジット カードを追加または更新するときにエラーが発生する場合は、ブラウザーをプライベート モードで開いてみてください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 次のセクションでは、クレジット カードの情報の変更についてよく寄せられる質問に回答します。

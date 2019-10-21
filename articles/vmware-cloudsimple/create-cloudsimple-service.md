@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6d4af28d79b2375e774da98d4fdb1ad9dc22063
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 99194c42dbc6ef07301be517021bf0fb4b4e7c23
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035732"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173506"
 ---
 # <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Azure VMware Solution by CloudSimple サービスの作成
 
@@ -46,5 +46,6 @@ CloudSimple による Azure VMware ソリューションを開始するには、
 
 ## <a name="next-steps"></a>次の手順
 
+* [ノードをプロビジョニングする](create-nodes.md)方法を学習する
 * [プライベート クラウドを作成する](create-private-cloud.md)方法を確認する
 * [プライベート クラウド環境を構成する](quickstart-create-private-cloud.md)方法を確認する

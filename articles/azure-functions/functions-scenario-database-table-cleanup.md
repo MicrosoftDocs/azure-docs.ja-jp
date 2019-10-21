@@ -8,18 +8,18 @@ manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 10/02/2019
 ms.author: glenga
-ms.openlocfilehash: 0388c712d6f44755e768e491944df1a9451653b7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 469e0149a3b9dce22f0590240a053ee3b183c7b9
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085250"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71815978"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 
-この記事では、Azure Functions を使用して Azure SQL データベース インスタンスに接続するスケジュール済みジョブを作成する方法を示します。 この関数コードは、データベース内のテーブル内の行をクリーンアップします。 この新しい C# 関数は、Visual Studio 2019 の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 
+この記事では、Azure Functions を使用して Azure SQL Database または Azure SQL Managed Instance に接続するスケジュール済みジョブを作成する方法を示します。 この関数コードは、データベース内のテーブル内の行をクリーンアップします。 この新しい C# 関数は、Visual Studio 2019 の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 Azure SQL Managed Instance の場合は、Azure Functions から接続できるように[パブリック エンドポイントを有効にする](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)必要があります。 このシナリオではデータベースに対する一括操作を使用しています。 
 
 C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向けリファレンス](functions-dotnet-class-library.md)をお読みください。
 
@@ -39,7 +39,7 @@ C# 関数を初めて使用する場合は、[Azure Functions C# 開発者向け
 
 1. 左側のメニューから **[SQL データベース]** を選択し、 **[SQL データベース]** ページで目的のデータベースをクリックします。
 
-1. **[Settings]** \(設定) の下の **[接続文字列]** を選択し、完全な **ADO.NET** の接続文字列をコピーします。
+1. **[Settings]** \(設定) の下の **[接続文字列]** を選択し、完全な **ADO.NET** の接続文字列をコピーします。 Azure SQL Managed Instance の場合は、パブリック エンドポイントの接続文字列をコピーします。
 
     ![ADO.NET の接続文字列をコピーします。](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 

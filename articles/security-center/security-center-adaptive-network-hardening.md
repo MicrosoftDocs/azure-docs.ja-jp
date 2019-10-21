@@ -3,9 +3,8 @@ title: Azure Security Center でのアダプティブ ネットワークのセ�
 description: " Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を有効にする方法を説明します。 "
 services: security-center
 documentationcenter: na
-author: monhaber
-manager: barbkess
-editor: monhaber
+author: memildin
+manager: rkarlin
 ms.assetid: 09d62d23-ab32-41f0-a5cf-8d80578181dd
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/24/2019
-ms.author: v-mohabe
-ms.openlocfilehash: 2f82f3fe6f5cb6808ba606125ee0869475a60274
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.author: memildin
+ms.openlocfilehash: 060a5a6a356574e04a3492cdeadd93ddf9a38535
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295885"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255258"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Azure Security Center でのアダプティブ ネットワークのセキュリティ強化機能
 Azure Security Center のアダプティブ ネットワークのセキュリティ強化機能を構成する方法を説明します。
@@ -50,7 +49,7 @@ Azure Security Center のアダプティブ ネットワークのセキュリテ
 
 2. **[異常なリソース]** タブから、そのアラートと適用する推奨されるセキュリティ強化ルールを表示する VM を選択します。
 
-    ![強化アラート](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
+    ![強化アラート](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
 
 
 ## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>アダプティブ ネットワークのセキュリティ強化機能の推奨されるルールの確認と適用
@@ -132,9 +131,9 @@ Security Center によって推奨されていない "許可" ルールを追加
 
 ### ルールを削除する<a name ="delete-rule"> </a>
 
-推奨されるルールが不要な場合は、削除できます。 たとえば、推奨されるルールを適用すると、正当なトラフィックがブロックされると判断することがあるかもしれません。
+現在のセッションの推奨されるルールが不要な場合は、削除できます。 たとえば、推奨されるルールを適用すると、正当なトラフィックがブロックされると判断することがあるかもしれません。
 
-*アダプティブ ネットワークのセキュリティ強化機能ルールを削除するには:*
+*現在のセッションのアダプティブ ネットワークのセキュリティ強化機能ルールを削除するには:*
 
 1. **[ルール]** タブで、ルールの行の最後にある 3 つのドット (...) をクリックし、 **[削除]** をクリックします。  
 

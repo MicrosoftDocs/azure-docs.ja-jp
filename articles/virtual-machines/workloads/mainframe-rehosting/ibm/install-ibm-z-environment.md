@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 tags: ''
 keywords: ''
-ms.openlocfilehash: 7ba3323f0811f3f9b76d73796264bf17712a1179
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 67af4eae03b773fad9cf38964152c1fb9d623bd5
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68841330"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025943"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>Azure で IBM zD&T 開発/テスト環境をインストールする
 
@@ -104,7 +104,7 @@ Web サーバーのインストール ファイルは **ZDT\_Install\_EE\_V12.0.
     ./ZDT_Install_EE_V12.0.0.0.x86_64
     ```
 
-3. **1**  を選択して Enterprise Server をインストールします。
+3. **1** を選択して Enterprise Server をインストールします。
 
 4. **Enter** キーを押し、使用許諾契約書を注意深く読みます。 ライセンスの最後に「**Yes**」と入力して処理を続行します。
 

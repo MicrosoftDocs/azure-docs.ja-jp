@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d82785a0f833afb6a9c675fc7022ed19e96c7fc0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8acf499d4d82c49096e4e5beff8209d0970b421
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511310"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71064334"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-[セルフアサート技術プロファイル](self-asserted-technical-profile.md)の外観をカスタマイズすることができます。 Azure Active Directory (Azure AD) B2C は、ユーザーのブラウザーでコードを実行する共に、クロス オリジン リソース共有 (CORS) と呼ばれる最新の手法を使用します。 
+[セルフアサート技術プロファイル](self-asserted-technical-profile.md)の外観をカスタマイズすることができます。 Azure Active Directory B2C (Azure AD B2C) は、ユーザーのブラウザーでコードを実行し、クロス オリジン リソース共有 (CORS) と呼ばれる最新の手法を使用します。
 
 ユーザー インターフェイスをカスタマイズするには、**ContentDefinition** 要素でカスタマイズされた HTMLコンテンツを含む URL を指定します。 セルフアサート技術プロファイルまたは **OrchestrationStep** で、そのコンテンツ定義識別子をポイントします。 コンテンツ定義には、ロードするローカライズされたリソースの一覧を指定する、**LocalizedResourcesReference**  要素を含めることができます。 Azure AD B2C により、ユーザー インターフェイス要素が URL から読み込まれた HTML コンテンツとマージされ、ユーザーにページが表示されます。
 
@@ -70,9 +70,9 @@ ms.locfileid: "66511310"
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | コンテンツ定義用の HTML5 ページの URL を含む文字列。 |
-| RecoveryUri | 0:1 | コンテンツ定義に関連するエラーを表示するための HTML ページの URL を含む文字列。 | 
-| DataUri | 1:1 | ステップに対して呼び出すユーザー エクスペリエンスを提供する、HTML ファイルの相対 URL を含む文字列。 |  
-| Metadata | 1:1 | コンテンツ定義によって利用されるメタデータを含む、キー/値ペアのコレクション。 | 
+| RecoveryUri | 0:1 | コンテンツ定義に関連するエラーを表示するための HTML ページの URL を含む文字列。 |
+| DataUri | 1:1 | ステップに対して呼び出すユーザー エクスペリエンスを提供する、HTML ファイルの相対 URL を含む文字列。 |
+| Metadata | 1:1 | コンテンツ定義によって利用されるメタデータを含む、キー/値ペアのコレクション。 |
 | LocalizedResourcesReferences | 0:1 | ローカライズされたリソース参照のコレクション。 この要素を使用して、ユーザー インターフェイスと要求属性のローカライズをカスタマイズします。 |
 
 ### <a name="datauri"></a>DataUri
@@ -82,11 +82,11 @@ ms.locfileid: "66511310"
 | 値 |   説明 |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | 例外またはエラーが発生したときにエラー ページを表示します。 |
-| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 | 
-| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインインするためのフォームを表示します。 またこの値は、「サインインしたままにする機能」および「パスワードを忘れた場合」 のリンクをクリックするように促します。 | 
+| `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 |
+| `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0` | 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインインするためのフォームを表示します。 またこの値は、「サインインしたままにする機能」および「パスワードを忘れた場合」 のリンクをクリックするように促します。 |
 | `urn:com:microsoft:aad:b2c:elements:unifiedssd:1.0.0` | 電子メール アドレスまたはユーザー名に基づいたローカル アカウントでサインインするためのフォームを表示します。 |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | サインアップ中またはサインイン中にテキストまたは音声を使用して電話番号を確認します。 |
-| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | ユーザーがプロファイルを作成または更新できるフォームを表示します。 | 
+| `urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0` | ユーザーがプロファイルを作成または更新できるフォームを表示します。 |
 
 
 ### <a name="localizedresourcesreferences"></a>LocalizedResourcesReferences
@@ -95,7 +95,7 @@ ms.locfileid: "66511310"
 
 | 要素 | 発生回数 | 説明 |
 | ------- | ----------- | ----------- |
-| LocalizedResourcesReference | 1:n | コンテンツ定義のローカライズされたリソース参照の一覧。 | 
+| LocalizedResourcesReference | 1:n | コンテンツ定義のローカライズされたリソース参照の一覧。 |
 
 **LocalizedResourcesReferences** 要素には、次の属性が含まれています。
 
@@ -141,7 +141,7 @@ ms.locfileid: "66511310"
 
 **ContentDefinition** 要素の ID 属性は、コンテンツ定義に関連するページの種類を指定します。 この要素は、カスタム HTML5/CSS テンプレートが適用されるコンテキストを定義します。 次の表は、Identity Experience Framework によって認識される一連のコンテンツ定義 ID と、それらに関連するページの種類を示しています。 任意の ID を使用して独自のコンテンツ定義を作成できます。
 
-| ID | 既定のテンプレート | 説明 | 
+| id | 既定のテンプレート | 説明 |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **エラー ページ** - 例外またはエラーが発生したときにエラーページを表示します。 |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **ID プロバイダーの選択ページ** - ユーザーがサインイン時に選択できる ID プロバイダーを一覧表示します。 ID プロバイダーは、通常、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |
@@ -153,4 +153,4 @@ ms.locfileid: "66511310"
 | **api.selfasserted** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **ソーシャル アカウントのサインアップ ページ** - ソーシャル ID プロバイダーの既存のアカウントを使用してサインアップするときに、ユーザーが入力する必要があるフォームを表示します。 このページは、パスワード入力フィールドを除いて、上記のソーシャル アカウントのサインアップ ページに似ています。 |
 | **api.selfasserted.profileupdate** | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **プロファイルの更新ページ** - ユーザーがプロファイルを更新するためにアクセスできるフォームを表示します。 このページは、パスワード入力フィールドを除いて、ソーシャル アカウントのサインアップ ページに似ています。 |
 | **api.signuporsignin** | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **統合されたサインアップ ページまたはサインイン ページ** - ユーザーのサインアップおよびサインイン プロセスを処理します。 ユーザーは、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかを使用できます。 |
- 
+

@@ -16,25 +16,22 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59b5ddbff646104b3d4a35c26c1ecf3968dea31d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c41dedf6b4fe52ba3250ada14b0cca6bbeb636af
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852907"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827112"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application"></a>クイック スタート:ユーザーをサインインさせて、JavaScript のシングルページ アプリケーションからアクセス トークンを取得する
 
-このクイックスタートでは、JavaScript シングルページ アプリケーション (SPA) で個人アカウント、職場アカウント、学校アカウントのユーザーをサインインさせる方法を示すコード サンプルを使用する方法について説明します。 JavaScript SPA では、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得することもできます。
-
-![このクイックスタートのサンプル アプリによる処理](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+このクイックスタートでは、コード サンプルを使用して、JavaScript シングルページ アプリケーション (SPA) で個人アカウント、職場アカウント、学校アカウントのユーザーをサインインさせる方法について学習します。 JavaScript SPA では、Microsoft Graph API または任意の Web API を呼び出すためのアクセス トークンを取得することもできます。 (「<bpt id="p1">[</bpt>このサンプルのしくみ<ept id="p1">](#how-the-sample-works)</ept>」の図を参照してください)。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイックスタートでは、次の設定が必要です。
-* Node.js サーバーを使用してプロジェクトを実行するために、[Node.js](https://nodejs.org/en/download/) をダウンロードしてインストールする。
-* プロジェクト ファイルを編集するために、[Visual Studio Code](https://code.visualstudio.com/download) をダウンロードしてインストールする。
-* プロジェクトを Visual Studio ソリューションとして実行するために、[Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) をダウンロードしてインストールする。
+* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Node.js](https://nodejs.org/en/download/)。
+* [Visual Studio Code](https://code.visualstudio.com/download) (プロジェクト ファイルを編集する場合) または [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (プロジェクトを Visual Studio ソリューションとして実行する場合)。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>クイック スタート アプリケーションを登録してダウンロードする
@@ -82,8 +79,6 @@ ms.locfileid: "68852907"
 
 * (省略可能) IIS サーバーでプロジェクトを実行するために、[Visual Studio プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)します。 ローカル フォルダー (例: *C:\Azure-Samples*) に zip ファイルを解凍します。
 
-
-
 #### <a name="step-3-configure-your-javascript-app"></a>手順 3:JavaScript アプリの構成
 
 > [!div renderon="docs"]
@@ -96,7 +91,8 @@ ms.locfileid: "68852907"
 var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here"
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_info_here",
+        redirectURI: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -144,6 +140,10 @@ var msalConfig = {
 
 ## <a name="more-information"></a>詳細情報
 
+### <a name="how-the-sample-works"></a>このサンプルのしくみ
+
+![このクイックスタートのサンプル アプリによる処理](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+
 ### <a name="msaljs"></a>msal.js
 
 MSAL ライブラリは、ユーザーをサインインさせ、Microsoft ID プラットフォームによって保護された API へのアクセスに使用されるトークンを要求します。 クイックスタートの *index.html* ファイルにはこのライブラリへの参照が含まれています。
@@ -169,7 +169,8 @@ npm install msal
 var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
+        redirectURI: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -182,8 +183,9 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 
 > |Where  |  |
 > |---------|---------|
-> |`ClientId`     | Azure portal に登録されているアプリケーションのアプリケーション ID。|
+> |`clientId`     | Azure portal に登録されているアプリケーションのアプリケーション ID。|
 > |`authority`    | (省略可能) 先ほど構成に関するセクションで説明したように、アカウントの種類をサポートする機関 URL。 既定の機関は `https://login.microsoftonline.com/common`です。 |
+> |`redirectURI`     | アプリケーション登録の構成済みの応答/リダイレクト URI。 例では、 `http://localhost:30662/`が使用されます。 |
 > |`cacheLocation`  | (省略可能) 認証状態のブラウザー ストレージを設定します。 既定では sessionStorage です。   |
 > |`storeAuthStateInCookie`  | (省略可能) 認証フローの検証に必要な認証要求の状態をブラウザーの Cookie に格納するライブラリ。 この Cookie は、特定の[既知の問題](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)に対処するために、IE および Edge ブラウザー用に設定されます。 |
 

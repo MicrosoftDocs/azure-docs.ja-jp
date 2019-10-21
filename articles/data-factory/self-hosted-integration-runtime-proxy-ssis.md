@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2f65303cd5cda50a95c3563422c059b985ecf28a
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 2ade270011ad5c1e1e5f5940ca305687e52bba86
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737321"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71200308"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>セルフホステッド IR を ADF で Azure-SSIS IR のプロキシとして構成する
 この記事では、セルフホステッド統合ランタイム (IR) をプロキシとして構成して、Azure Data Factory (ADF) の Azure SSIS 統合ランタイム (IR) で SQL Server Integration Services (SSIS) パッケージを実行する方法について説明します。  この機能を使用すると、[Azure-SSIS IR を仮想ネットワークに参加](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)させずに、オンプレミスのデータにアクセスすることができます。  これは、企業ネットワークが、Azure SSIS IR を挿入するには複雑すぎる構成/制限の厳しいポリシーを持っている場合に役立ちます。
@@ -86,9 +86,11 @@ Visual Studio 用の SSIS プロジェクト拡張機能 ([こちら](https://ma
 Azure-SSIS IR で実行されている 2 番目のステージング タスクは別個に課金されませんが、実行中の Azure-SSIS IR は、[Azure-SSIS IR の価格](https://azure.microsoft.com/pricing/details/data-factory/ssis/)に関する記事の指定どおりに課金されます。
 
 ## <a name="current-limitations"></a>現時点での制限事項
-- 現在、OLEDB/フラット ファイルの接続マネージャーと OLEDB/フラット ファイルのソースのみがサポートされています。
+
+- 現在、OLEDB/フラット ファイルの接続マネージャーと OLEDB/フラット ファイルのソースのみがサポートされています。 
 - **アカウント キー**/**SAS URI**/**サービス プリンシパル**の認証を使って構成された Azure Blob Storage のリンクされたサービスのみが現在サポートされています。
 - Azure-SSIS IR がプロビジョニングされている同じ ADF にプロビジョニングされているセルフホステッド IR のみが現在サポートされています。
+- OLEDB/フラット ファイル ソースと接続マネージャーのプロパティ内での SSIS パラメーター/変数の使用はサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 セルフホステッド IR を Azure-SSIS IR のプロキシとして構成したら、ADF パイプラインの SSIS パッケージ実行アクティビティとしてパッケージをデプロイおよび実行してオンプレミスのデータにアクセスできます。[ADF パイプラインの SSIS パッケージ実行アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関する記事を参照してください。

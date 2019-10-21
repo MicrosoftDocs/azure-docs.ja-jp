@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: iainfou
-ms.openlocfilehash: 45fb2daaeaf9ee788207d43d805e070320372ca0
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 19a618bd576687fcb0d92f8e35613e4cdc749e70
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617202"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71320451"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>マネージド ドメインに関するパスワードとアカウントのロックアウト ポリシー
 
@@ -33,7 +33,7 @@ Azure Active Directory Domain Services (Azure AD DS) でアカウントのセキ
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
   * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
 * Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
-  * 必要であれば、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了してください。
+  * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
 * Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
   * 必要に応じて、[管理 VM を作成する][tutorial-create-management-vm]チュートリアルを完了します。
 * Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
@@ -87,9 +87,12 @@ Azure でアプリケーションを構築するときに、カスタムの FGPP
 > [!NOTE]
 > Azure AD DS マネージド ドメインで細かい設定が可能なパスワード ポリシーを作成するには、*AAD DC 管理者*グループのメンバーであるユーザー アカウントにサインインする必要があります。
 
-1. スタート画面で **[管理ツール]** を選択します。 [管理 VM を作成する][tutorial-create-management-vm]チュートリアルでインストールした使用可能な管理ツールの一覧が表示されます。
-1. OU を作成および管理するには、管理ツールの一覧から **[Active Directory 管理センター]** を選択します。
-1. 左側のウィンドウで、*contoso.com* などの Azure AD DS マネージド ドメインを選択します。
+1. スタート画面で **[管理ツール]** を選択します。 [管理 VM を作成する][tutorial-create-management-vm]ためのチュートリアルでインストールされた使用可能な管理ツールの一覧が表示されます。
+1. OU を作成して管理するには、管理ツールの一覧から **[Active Directory 管理センター]** を選択します。
+1. 左側のウィンドウで、Azure AD DS マネージド ドメイン (*contoso.com* など) を選択します。
+1. **システム** コンテナーを開き、**パスワード設定**コンテナーを開きます。
+
+    Azure AD DS 管理対象ドメインの組み込みの FGPP が表示されます。 この組み込みの FGPP は変更できません。 その代わり、新しいカスタム FGPP を作成し、既定の FGPP をオーバーライドします。
 1. 右側の **[タスク]** パネルで、 **[新規] > [パスワードの設定]** を選択します。
 1. **[Create Password Settings]\(パスワード設定の作成\)** ダイアログで、ポリシーの名前 (*MyCustomFGPP* など) を入力します。 優先順位 (*1* など) を適切に設定して、既定の FGPP (*200*) をオーバーライドします。
 

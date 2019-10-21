@@ -10,17 +10,17 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 386284543cd8fb00cc49fea9a29d9eaee4ca4963
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60531821"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300961"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Azure Scheduler でジョブの高度なスケジュールと繰り返しを構築する
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、廃止される予定の Azure Scheduler の後継です。 ジョブをスケジュールするには、[Azure Logic Apps を代わりにお試しください](../scheduler/migrate-from-scheduler-to-logic-apps.md)。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。
 
 [Azure Scheduler](../scheduler/scheduler-intro.md) ジョブでは、スケジュールが核となって、Scheduler サービスでジョブを実行するタイミングと方法が決定されます。 Scheduler を使うと、1 回限りのスケジュールと定期的なスケジュールをジョブに対して複数設定することができます。 1 回限りのスケジュールは、指定された時刻に 1 回だけ実行されます。基本的には、これらは 1 回だけ実行される定期的なスケジュールです。 定期的なスケジュールは、指定された頻度で実行されます。 この柔軟性を活かし、さまざまなビジネス シナリオで Scheduler を使用することができます。その例を次に示します。
 

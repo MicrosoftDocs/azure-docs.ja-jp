@@ -70,6 +70,16 @@
               href: devtest-lab-use-claim-capabilities.md
 - name: ハウツー ガイド
   items:
+    - name: クラスルーム ラボ - クラスの種類
+      items:
+        - name: クラスの種類の概要
+          href: classroom-labs/class-types.md
+        - name: 自然処理でのディープ ラーニング
+          href: classroom-labs/class-type-deep-learning-natural-processing.md
+        - name: Linux でのシェル スクリプト
+          href: classroom-labs/class-type-shell-scripting-linux.md
+        - name: 倫理的ハッキング
+          href: classroom-labs/class-type-ethical-hacking.md
     - name: クラスルーム ラボ
       items:
         - name: ラボ アカウントを作成および構成する (ラボ アカウント オーナー)
@@ -86,20 +96,22 @@
           items:
             - name: クラスルーム ラボを作成して管理する
               href: classroom-labs/how-to-manage-classroom-labs.md
-            - name: テンプレートの設定と公開
+            - name: テンプレートを設定、カスタマイズ、公開する
               href: classroom-labs/how-to-create-manage-template.md
-            - name: 使用の構成と制御
+            - name: 仮想マシン プールを設定および管理する
+              href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: ラボ ユーザーを追加および管理する
               href: classroom-labs/how-to-configure-student-usage.md
             - name: スケジュールの作成と管理
               href: classroom-labs/how-to-create-schedules.md
-            - name: テンプレート VM 内に複数の VM を備えた環境を作成する
-              href: classroom-labs/how-to-enable-multi-vm-environment.md
             - name: 共有イメージ ギャラリーを使用する
               href: classroom-labs/how-to-use-shared-image-gallery.md
             - name: Linux のリモート デスクトップ接続を有効にする
               href: classroom-labs/how-to-enable-remote-desktop-linux.md
-            - name: 仮想マシンのパスワードを設定またはリセットする
-              href: classroom-labs/how-to-set-virtual-machine-passwords.md
+            - name: テンプレート VM で入れ子になった仮想化を有効にする
+              href: classroom-labs/how-to-enable-nested-virtualization-template-vm.md
+            - name: テンプレート VM 内に複数の VM を備えた環境を作成する
+              href: classroom-labs/how-to-enable-multi-vm-environment.md
         - name: クラスルーム ラボの VM に接続する (学生)
           items:
             - name: クラスルーム ラボへのアクセス
@@ -212,6 +224,8 @@
               href: connect-environment-lab-virtual-network.md
             - name: 入れ子になったテンプレートを使用したテスト環境の構成
               href: deploy-nested-template-environments.md
+            - name: Azure マネージド ID を使用した環境のデプロイ
+              href: use-managed-identities-environments.md
         - name: 再利用可能なテンプレートの管理
           items:
             - name: カスタム イメージと数式

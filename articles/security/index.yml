@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: db9cd038d5992aa698e8dc0f0cd30d915700895a
-  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.openlocfilehash: d6dac668a3827aac83fbab8475a0e7cc9914ffb4
+  ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70880878"
+  ms.lasthandoff: 10/18/2019
+  ms.locfileid: "72592326"
 highlightedContent:
   items:
   - title: Azure のセキュリティの概要
@@ -95,7 +95,7 @@ conceptualContent:
       itemType: concept
       text: ストレージのセキュリティ
     footerLink:
-      url: azure-security-disk-encryption-overview.md
+      url: /fundamentals/encryption-overview.md
       text: 関連項目
   - title: ID 管理
     links:

@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/19/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: 87bc87d7d105d581f0143e87044fb0337c0fd7f6
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: fd56fffe6b11d1c32d7abfe28140127d01933def
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67304748"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695038"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -44,12 +44,11 @@ ms.locfileid: "67304748"
 |    |Load Balancer、Geo Traffic Manager、Azure Express Route を介して特定の IP アドレスの再ルーティングが生じています。 
 |    |Azure ExpressRoute を使用している場合、[非対称ルーティングが発生](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing)してパケットがドロップしている状況が考えられます。|
 
-## <a name="intermittent-test-failure-with-a-protocol-violation-error"></a>プロトコル違反エラーでテストが断続的に失敗します
+## <a name="test-failure-with-a-protocol-violation-error"></a>プロトコル違反エラーでのテスト失敗
 
-|症状/エラー メッセージ| 考えられる原因|
-|----|---------|
-プロトコル違反 CR の後には LF を指定しなければなりません | これは、形式に誤りのあるヘッダーが検出されたときに発生します。 具体的には、行末の指定で CRLF を使用していないヘッダーがあります。これは HTTP 仕様に違反しているため、.NET WebRequest レベルで失敗します。
- || ロード バランサーまたは CDN が原因である可能性もあります。
+|症状/エラー メッセージ| 考えられる原因| 考えられる解決策 |
+|----|---------|-----|
+|サーバーによってプロトコル違反が発生しました。 Section=ResponseHeader Detail=CR の後には LF を指定しなければなりません | これは、形式に誤りのあるヘッダーが検出されたときに発生します。 具体的には、行末の指定で CRLF を使用していないヘッダーがあり、これは HTTP 仕様に違反しています。 Application Insights では、この HTTP 仕様が適用され、形式が正しくないヘッダーを持つ応答は失敗します。| a. Web サイト ホスト プロバイダー/CDN プロバイダーに問い合わせて、問題のあるサーバーを修正してください。 <br> b. 失敗した要求がリソース (スタイル ファイル、イメージ、スクリプトなど) である場合は、依存する要求の解析を無効にすることを検討してください。 これを行うと、それらのファイルの可用性を監視できなくなることに注意してください。
 
 > [!NOTE]
 > HTTP ヘッダーの緩和された検証を行うブラウザーでは、URL は 失敗しない場合があります。 この問題の詳細については、こちらのブログ記事を参照してください: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
@@ -101,7 +100,7 @@ Web hook 通知を受信するアプリケーションが利用可能である�
    解決策として、次の 2 つが考えられます。
 
    * [Web テスト エージェントの IP アドレス](../../azure-monitor/app/ip-addresses.md)からの受信要求を許可するようにファイアウォールを構成します。
-   * 内部サーバーを定期的にテストする独自のコードを作成します。 このコードを、バック グラウンド プロセスとして、ファイアウォールの内側のテスト サーバーで実行します。 テスト プロセスは、コア SDK パッケージ内の [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API を使用して、その結果を Application Insights に送信できます。 この方法では、テスト サーバーに Application Insights のインジェスト エンドポイントへの送信アクセスが必要となりますが、受信要求を許可する代替方法と比べて、セキュリティのリスクは大幅に小さくなります。 結果は可用性 Web テストのブレードには表示されませんが、分析、検索、メトリックス エクスプローラーでの可用性の結果として表示されます。
+   * 内部サーバーを定期的にテストする独自のコードを作成します。 このコードを、バック グラウンド プロセスとして、ファイアウォールの内側のテスト サーバーで実行します。 テスト プロセスは、コア SDK パッケージ内の [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API を使用して、その結果を Application Insights に送信できます。 この方法では、テスト サーバーに Application Insights のインジェスト エンドポイントへの送信アクセスが必要となりますが、受信要求を許可する代替方法と比べて、セキュリティのリスクは大幅に小さくなります。 結果は可用性 Web テストブレードに表示されますが、エクスペリエンスはポータルによって作成されたテストに対して使用できるものより少し簡単になります。 カスタム可用性テストは、分析、検索、およびメトリックにも可用性の結果として表示されます。
 
 ### <a name="uploading-a-multi-step-web-test-fails"></a>複数ステップの Web テストのアップロードが失敗します。
 

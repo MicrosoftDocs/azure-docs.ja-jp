@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: 27f86660de4f37142829114780ab9c198cb1858d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 5f95b42fd17aec4e3ec6b7b8fac1965772fefa67
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088504"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162589"
 ---
 #  <a name="cannot-connect-remotely-to-a-vm-because-rdp-port-is-not-enabled-in-nsg"></a>NSG で RDP ポートが有効ではないために VM にリモート接続できない
 
@@ -42,9 +42,8 @@ NSG で RDP ポートを有効にするには、次の手順のようにしま�
 4. **[受信ポートの規則]** で、RDP のポートが正しく設定されていることを確認します。 構成の例を次に示します。 
 
     **優先度**:300 </br>
-    **ポート**:3389 </br>
-    **名前**:Port_3389 </br>
-    **ポート**:3389 </br>
+    **Name**:Port_3389 </br>
+    **ポート (宛先)** :3389 </br>
     **プロトコル**:TCP </br>
     **ソース**:Any </br>
     **宛先**:Any </br>

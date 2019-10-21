@@ -4,27 +4,27 @@ description: Azure IoT Central アプリケーションから Azure Blob Storage
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/08/2019
+ms.date: 09/26/2019
 ms.topic: conceptual
 ms.service: iot-central
-manager: peterpr
-ms.openlocfilehash: 7366072dbf6b000981899a56ca1c8cfe6af6f04a
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+manager: corywink
+ms.openlocfilehash: 7ee9d2bf32fcec5f5f4435fe09916f437d6323ee
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876045"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71971654"
 ---
 # <a name="export-your-data-to-azure-blob-storage"></a>Azure Blob Storage にデータをエクスポートする
 
-[!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
+[!INCLUDE [iot-central-pnp-original](../../includes/iot-central-pnp-original-note.md)]
 
 *このトピックでは、管理者に適用されます。*
 
-この記事では、定期的にデータを **Azure BLOB ストレージ アカウント**にエクスポートする Azure IoT Central の連続データ エクスポート機能の使用方法について説明します。 **測定**、**デバイス**、**デバイス テンプレート**を Apache Avro 形式のファイルにエクスポートできます。 エクスポートしたデータは、Azure Machine Learning のトレーニング モデルや Microsoft Power BI の長期傾向分析などのコールド パス分析に使用できます。
+この記事では、Azure IoT Central の連続データ エクスポート機能を使用して、**Azure Blob Storage アカウント**または **Azure Data Lake Storage Gen2 ストレージ アカウント**に定期的にデータをエクスポートする方法について説明します。 **測定**、**デバイス**、**デバイス テンプレート**を JSON または Apache Avro 形式のファイルにエクスポートできます。 エクスポートしたデータは、Azure Machine Learning のトレーニング モデルや Microsoft Power BI の長期傾向分析などのコールド パス分析に使用できます。
 
 > [!Note]
-> この場合も、連続データ エクスポートを有効にすると、その時点以降のデータのみが取得されます。 現在は、連続データ エクスポートがオフになっていたときのデータを取得することはできません。 より多くの履歴データを保持するには、連続データ エクスポートを早い段階で有効にしてください。
+> 連続データ エクスポートを有効にすると、その時点以降のデータのみが取得されます。 現在は、連続データ エクスポートがオフになっていたときのデータを取得することはできません。 より多くの履歴データを保持するには、連続データ エクスポートを早い段階で有効にしてください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -36,17 +36,15 @@ ms.locfileid: "69876045"
 
 エクスポート先となる既存のストレージがない場合は、次の手順に従います。
 
-## <a name="create-storage-account"></a>ストレージ アカウントの作成
-
-1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 詳細については、[Azure Storage のドキュメント](https://aka.ms/blobdocscreatestorageaccount)を参照してください。
-2. アカウントの種類として、 **[汎用]** または **[BLOB ストレージ]** を選択します。
-3. サブスクリプションを選択します。 
+1. [Azure portal で新しいストレージ アカウント](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)を作成します。 新しい [Azure Blob ストレージ アカウント](https://aka.ms/blobdocscreatestorageaccount)または [Azure Data Lake Storage v2 ストレージ アカウント](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-account)の作成の詳細を確認できます。
 
     > [!Note] 
-    > これで、ご使用の従量課金制 IoT Central アプリケーションのサブスクリプションとは**異なる**別のサブスクリプションにデータをエクスポートできます。 この場合、接続文字列を使用して接続します。
+    > ADLS v2 ストレージ アカウントにデータをエクスポートする場合は、 **[アカウントの種類]** に **[BlobStorage]** を選択する必要があります。 
 
-4. ご自分のストレージ アカウントでコンテナーを作成します。 ストレージ アカウントに移動します。 **[Blob service]** で **[BLOB の参照]** を選択します。 上部の **[+ コンテナー]** を選択して、新しいコンテナーを作成します。
+    > [!Note] 
+    > 従量課金制 IoT Central アプリケーションとは異なるサブスクリプションのストレージ アカウントにデータをエクスポートできます。 この場合、接続文字列を使用して接続します。
 
+2. ご自分のストレージ アカウントでコンテナーを作成します。 ストレージ アカウントに移動します。 **[Blob service]** で **[BLOB の参照]** を選択します。 上部の **[+ コンテナー]** を選択して、新しいコンテナーを作成します。
 
 ## <a name="set-up-continuous-data-export"></a>連続データ エクスポートを設定する
 
@@ -54,19 +52,17 @@ ms.locfileid: "69876045"
 
 1. ご使用の IoT Central アプリケーションにサインインします。
 
-2. 左側のメニューで、 **[継続的データ エクスポート]** を選択します。
+2. 左側のメニューで、 **[データのエクスポート]** を選択します。
 
     > [!Note]
-    > 左側のメニューに [継続的データ エクスポート] が表示されない場合は、そのアプリの管理者ではありません。 データ エクスポートの設定について、管理者に問い合わせてください。
-
-    ![新しい cde イベント ハブの作成](media/howto-export-data/export_menu1.png)
+    > 左側のメニューに [データのエクスポート] が表示されない場合は、アプリの管理者ではありません。 データ エクスポートの設定について、管理者に問い合わせてください。
 
 3. 右上の **[+ 新規]** ボタンを選択します。 エクスポート先として、 **[Azure Blob Storage]** を選択します。 
 
     > [!NOTE] 
     > アプリごとのエクスポートの最大数は 5 です。 
 
-    ![新しい継続的データ エクスポートの作成](media/howto-export-data/export_new1.png)
+    ![新しい継続的データ エクスポートの作成](media/howto-export-data/export-new2.png)
 
 4. ドロップダウン リスト ボックスで、お使いの **Storage Account 名前空間**を選択します。 リスト内の最後のオプション ( **[Enter a connection string]\(接続文字列を入力する\)** ) を選択することもできます。 
 
@@ -76,37 +72,41 @@ ms.locfileid: "69876045"
     > [!NOTE] 
     > 7 日間の試用版アプリの場合、継続的データ エクスポートを構成する唯一の方法は、接続文字列を使用することです。 7 日間の試用版アプリに関連付けられた Azure サブスクリプションがないのはこのためです。
 
-    ![新しい cde イベント ハブの作成](media/howto-export-data/export-create-blob.png)
+    ![BLOB への新しいエクスポートを作成する](media/howto-export-data/export-create-blob2.png)
 
-5. (省略可能) **[Enter a connection string]\(接続文字列を入力する\)** を選択すると、接続文字列を貼り付けるための新しいボックスが表示されます。 次の接続文字列を取得するには:
-    - ストレージ アカウント。Azure portal で [ストレージ アカウント] に移動します。
-        - **[設定]** で **[アクセス キー]** を選択します。
-        - key1 接続文字列または key2 接続文字列のいずれかをコピーします。
+5. (省略可能) **[Enter a connection string]\(接続文字列を入力する\)** を選択すると、接続文字列を貼り付けるための新しいボックスが表示されます。 ストレージ アカウントの接続文字列を取得するには、Azure portal でストレージ アカウントに移動して **[設定]** から **[アクセス キー]**  を選択し、key1 接続文字列または key2 接続文字列のいずれかをコピーします。
  
-6. ドロップダウン リスト ボックスでコンテナーを選択します。
+6. ドロップダウン リスト ボックスでコンテナーを選択します。 コンテナーがない場合は、Azure Portal でストレージ アカウントにアクセスします。
+    - **[BLOB service]** で、 **[BLOB]** を選択します。 **[+ コンテナー]** をクリックし、コンテナーに名前を付けます。 データのパブリック アクセス レベルを選択します (連続データ エクスポートではいずれも機能します)。 詳細については、[Azure Storage のドキュメント](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container)を参照してください。
 
-7. **[Data to export]\(エクスポートするデータ\)** で、エクスポートするデータの種類を **[オン]** に設定して指定します。
+7. 任意の**データ形式**を選択します。JSON または [Apache Avro](https://avro.apache.org/docs/current/index.html) 形式。
 
-6. 継続的データ エクスポートを有効にするには、 **[データのエクスポート]** が **[オン]** になっていることを確認します。 **[保存]** を選択します。
+8. **[Data to export]\(エクスポートするデータ\)** で、エクスポートするデータの種類を **[オン]** に設定して指定します。
 
-   ![連続データ エクスポートを構成する](media/howto-export-data/export-list-blob.png)
+9. 連続データ エクスポートを有効にするには、 **[データのエクスポート]** トグルが **[オン]** になっていることを確認します。 **[保存]** を選択します。
 
-7. 数分後に、選択したエクスポート先にデータが表示されます。
+   ![連続データ エクスポートを構成する](media/howto-export-data/export-list-blob2.png)
+
+10. 数分後に、データがストレージ アカウントに表示されます。
 
 
-## <a name="export-to-azure-blob-storage"></a>Azure Blob Storage にエクスポートする
+## <a name="path-structure"></a>パス構造
 
-測定、デバイス、およびデバイス テンプレートのデータは、1 分間に 1 回、お使いのストレージ アカウントにエクスポートされます。各ファイルには、最後にエクスポートしたファイル以降の変更バッチが含まれています。 エクスポートされたデータは [Apache Avro](https://avro.apache.org/docs/current/index.html) 形式で、3 つのフォルダーにエクスポートされます。 ストレージ アカウントでの既定のパスは次のとおりです。
-- メッセージ: 
-{container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- デバイス: 
-{container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
-- デバイス テンプレート: 
-{container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+測定、デバイス、およびデバイス テンプレートのデータは、1 分間に 1 回、お使いのストレージ アカウントにエクスポートされます。各ファイルには、最後にエクスポートしたファイル以降の変更バッチが含まれています。 エクスポートされたデータは、JSON 形式または Avro 形式で 3 つのフォルダーに配置されます。 ストレージ アカウントでの既定のパスは次のとおりです。
+- メッセージ: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+- デバイス: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+- デバイス テンプレート: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}
+
+Azure portal でエクスポートされたファイルを参照するには、ファイルに移動し、 **[BLOB の編集]** タブを選択します。
+
+## <a name="data-format"></a>データ形式 
 
 ### <a name="measurements"></a>測定
 
 エクスポートされた測定データには、その間に IoT Central がすべてのデバイスから受信した新しいメッセージがすべて含まれています。 エクスポートされるファイルでは、[IoT Hub メッセージ ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c)によって BLOB ストレージにエクスポートされるメッセージ ファイルと同じ形式が使われます。
+
+> [!NOTE]
+> デバイスが `contentType: application/JSON` および `contentEncoding:utf-8` (または `utf-16`、`utf-32`) のメッセージを送信していることを確認します。 例については、[IoT Hub のドキュメント](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#message-routing-query-based-on-message-body)を参照してください。
 
 > [!NOTE]
 > 測定を送信するデバイスは、デバイス ID で表されます (以下のセクションを参照)。 デバイスの名前を取得するには、デバイスのスナップショットをエクスポートします。 デバイスレコードの**デバイス ID** と一致する **connectionDeviceId** を使っデバイスて、各メッセージ レコードを関連付けます。
@@ -114,16 +114,16 @@ ms.locfileid: "69876045"
 次の例は、デコードされた Avro ファイル内のレコードを示しています。
 
 ```json
-{
-    "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
-    "Properties": {},
-    "SystemProperties": {
-        "connectionDeviceId": "<connectionDeviceId>",
-        "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "<generationId>",
-        "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
-    },
-    "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
+{ 
+  "EnqueuedTimeUtc":"2019-06-11T00:00:08.2250000Z",
+  "Properties":{},
+  "SystemProperties":{ 
+    "connectionDeviceId":"<deviceId>",
+    "connectionAuthMethod":"{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
+    "connectionDeviceGenerationId":"<generationId>",
+    "enqueuedTime":"2019-06-11T00:00:08.2250000Z"
+  },
+  "Body":"{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
 }
 ```
 
@@ -147,33 +147,33 @@ ms.locfileid: "69876045"
 >
 > 各デバイスが属するデバイス テンプレートは、デバイス テンプレート ID によって表されます。 デバイス テンプレートの名前を取得するには、デバイス テンプレートのスナップショットをエクスポートします。
 
-デコードされた Avro ファイル内の 1 つのレコードは、次のようになります。
+エクスポートされたファイルには、1 つのレコードにつき 1 行が含まれます。 次の例は、Avro 形式 (デコード済) のレコードを示しています。
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerator 2",
-    "simulated": true,
-    "deviceId": "<deviceId>",
-    "deviceTemplate": {
-        "id": "<template id>",
-        "version": "1.0.0"
+{ 
+  "id":"<id>",
+  "name":"Refrigerator 2",
+  "simulated":true,
+  "deviceId":"<deviceId>",
+  "deviceTemplate":{ 
+    "id":"<template id>",
+    "version":"1.0.0"
+  },
+  "properties":{ 
+    "cloud":{ 
+      "location":"New York",
+      "maintCon":true,
+      "tempThresh":20
     },
-    "properties": {
-        "cloud": {
-            "location": "New York",
-            "maintCon": true,
-            "tempThresh": 20
-        },
-        "device": {
-            "lastReboot": "2018-02-09T22:22:47.156Z"
-        }
-    },
-    "settings": {
-        "device": {
-            "fanSpeed": 0
-        }
+    "device":{ 
+      "lastReboot":"2018-02-09T22:22:47.156Z"
     }
+  },
+  "settings":{ 
+    "device":{ 
+      "fanSpeed":0
+    }
+  }
 }
 ```
 
@@ -195,79 +195,79 @@ ms.locfileid: "69876045"
 > [!NOTE]
 > 最後のスナップショット以降に削除されたデバイス テンプレートは、エクスポートされません。 現時点では、スナップショットに削除されたデバイス テンプレートのインジケーターはありません。
 
-デコードされた Avro ファイル内の 1 つのレコードは、次のようになります。
+エクスポートされたファイルには、1 つのレコードにつき 1 行が含まれます。 次の例は、Avro 形式 (デコード済) のレコードを示しています。
 
 ```json
-{
-    "id": "<id>",
-    "name": "Refrigerated Vending Machine",
-    "version": "1.0.0",
-    "measurements": {
-        "telemetry": {
-            "humidity": {
-                "dataType": "double",
-                "name": "Humidity"
-            },
-            "magnetometerX": {
-                "dataType": "double",
-                "name": "Magnetometer X"
-            },
-            "magnetometerY": {
-                "dataType": "double",
-                "name": "Magnetometer Y"
-            },
-            "magnetometerZ": {
-                "dataType": "double",
-                "name": "Magnetometer Z"
-            }
-        },
-        "states": {
-            "connectivity": {
-                "dataType": "enum",
-                "name": "Connectivity"
-            }
-        },
-        "events": {
-            "opened": {
-                "name": "Door Opened",
-                "category": "informational"
-            }
-        }
+{ 
+  "id":"<id>",
+  "name":"Refrigerated Vending Machine",
+  "version":"1.0.0",
+  "measurements":{ 
+    "telemetry":{ 
+      "humidity":{ 
+        "dataType":"double",
+        "name":"Humidity"
+      },
+      "magnetometerX":{ 
+        "dataType":"double",
+        "name":"Magnetometer X"
+      },
+      "magnetometerY":{ 
+        "dataType":"double",
+        "name":"Magnetometer Y"
+      },
+      "magnetometerZ":{ 
+        "dataType":"double",
+        "name":"Magnetometer Z"
+      }
     },
-    "settings": {
-        "device": {
-            "fanSpeed": {
-                "dataType": "double",
-                "name": "Fan Speed",
-                "initialValue": 0
-            }
-        }
+    "states":{ 
+      "connectivity":{ 
+        "dataType":"enum",
+        "name":"Connectivity"
+      }
     },
-    "properties": {
-        "cloud": {
-            "location": {
-                "dataType": "string",
-                "name": "Location",
-                "initialValue": "Seattle"
-            },
-            "maintCon": {
-                "dataType": "boolean",
-                "name": "Maintenance Contract",
-                "initialValue": true
-            },
-            "tempThresh": {
-                "dataType": "double",
-                "name": "Temperature Alert Threshold",
-                "initialValue": 30
-            }
-        },
-        "device": {
-            "lastReboot": {
-                "dataType": "dateTime",
-                "name": "Last Reboot"
-            }
-        }
+    "events":{ 
+      "opened":{ 
+        "name":"Door Opened",
+        "category":"informational"
+      }
     }
+  },
+  "settings":{ 
+    "device":{ 
+      "fanSpeed":{ 
+        "dataType":"double",
+        "name":"Fan Speed",
+        "initialValue":0
+      }
+    }
+  },
+  "properties":{ 
+    "cloud":{ 
+      "location":{ 
+        "dataType":"string",
+        "name":"Location",
+        "initialValue":"Seattle"
+      },
+      "maintCon":{ 
+        "dataType":"boolean",
+        "name":"Maintenance Contract",
+        "initialValue":true
+      },
+      "tempThresh":{ 
+        "dataType":"double",
+        "name":"Temperature Alert Threshold",
+        "initialValue":30
+      }
+    },
+    "device":{ 
+      "lastReboot":{ 
+        "dataType":"dateTime",
+        "name":"Last Reboot"
+      }
+    }
+  }
 }
 ```
 

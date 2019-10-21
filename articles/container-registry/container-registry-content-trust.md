@@ -1,19 +1,19 @@
 ---
 title: Azure Container Registry におけるコンテンツの信頼
-description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュ/プルする方法について説明します。
+description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュしたりプルしたりする方法について説明します。
 services: container-registry
 author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 09/06/2019
 ms.author: danlep
-ms.openlocfilehash: 6cf5efb33340844d782dc4481f5834d7590e745a
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: f14d4d32d2423b12786095da17305af605088fb7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172306"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300418"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 
@@ -43,7 +43,7 @@ Azure Container Registry では、Docker の[コンテンツの信頼][docker-co
 
 まず、コンテンツの信頼をレジストリ レベルで有効にしましょう。 コンテンツの信頼を有効にした後、クライアント (ユーザーまたはサービス) は、署名済みのイメージをレジストリにプッシュすることができます。 レジストリに対してコンテンツの信頼を有効にしたからといって、コンテンツの信頼を有効にしているコンシューマーにレジストリの使用が限定されることはありません。 コンテンツの信頼を有効にしていないコンシューマーも引き続き、通常どおりにレジストリを使うことができます。 一方、クライアントでコンテンツの信頼を有効にしているコンシューマーは、レジストリ内の署名済みのイメージ*のみ*を表示することができます。
 
-レジストリに対してコンテンツの信頼を有効にするには、まず Azure portal で目的のレジストリに移動します。 **[ポリシー]** で、 **[コンテンツの信頼]**  >  **[有効]**  >  **[保存]** の順に選択します。
+レジストリに対してコンテンツの信頼を有効にするには、まず Azure portal で目的のレジストリに移動します。 **[ポリシー]** で、 **[コンテンツの信頼]**  >  **[有効]**  >  **[保存]** の順に選択します。 また、Azure CLI で [az acr config content-trust update][az-acr-config-content-trust-update] コマンドを使用することもできます。
 
 ![Azure portal でレジストリに対するコンテンツの信頼を有効にする][content-trust-01-portal]
 
@@ -75,6 +75,9 @@ docker build --disable-content-trust -t myacr.azurecr.io/myimage:v1 .
 ## <a name="grant-image-signing-permissions"></a>イメージに署名するためのアクセス許可を与える
 
 信頼済みのイメージをレジストリにプッシュできるのは、アクセス許可が与えられたユーザーまたはシステムだけです。 信頼済みのイメージをプッシュするアクセス許可をユーザー (またはサービス プリンシパルを使用するシステム) に与えるには、その Azure Active Directory ID に `AcrImageSigner` ロールを与えます。 レジストリにイメージをプッシュするために必要な `AcrPush` (または同等の) ロールとは別に、これを追加することになります。 詳細については、「[Azure Container Registry のロールとアクセス許可](container-registry-roles.md)」を参照してください。
+
+> [!NOTE]
+> 信頼されたイメージのプッシュ アクセス許可を Azure コンテナー レジストリの[管理者アカウント](container-registry-authentication.md#admin-account)に付与することはできません。
 
 以降、Azure portal と Azure CLI から `AcrImageSigner` ロールを付与する方法について詳しく説明します。
 
@@ -113,7 +116,8 @@ az role assignment create --scope $REGISTRY_ID --role AcrImageSigner --assignee 
 
 `<service principal ID>` には、サービス プリンシパルの **appId**、**objectId**、またはその **servicePrincipalNames** を指定できます。 サービス プリンシパルと Azure Container Registry の取り扱いについて詳しくは、「[サービス プリンシパルによる Azure Container Registry 認証](container-registry-auth-service-principal.md)」をご覧ください。
 
-ロールが変更されたら、新しいロールを有効にするために、`az acr login` を実行して Azure CLI のローカル ID トークンを更新します。
+> [!IMPORTANT]
+> ロールが変更されたら、新しいロールを有効にするために、`az acr login` を実行して Azure CLI のローカル ID トークンを更新します。 ID のロールの検証の詳細については、「[RBAC と Azure CLI を使用して Azure リソースへのアクセスを管理する](../role-based-access-control/role-assignments-cli.md)」と「[Azure リソースの RBAC のトラブルシューティング](../role-based-access-control/troubleshooting.md)」を参照してください。
 
 ## <a name="push-a-trusted-image"></a>信頼済みのイメージをプッシュする
 
@@ -214,3 +218,4 @@ umask 077; tar -zcvf docker_private_keys_backup.tar.gz ~/.docker/trust/private; 
 
 <!-- LINKS - internal -->
 [azure-cli]: /cli/azure/install-azure-cli
+[az-acr-config-content-trust-update]: /cli/azure/acr/config/content-trust#az-acr-config-content-trust-update

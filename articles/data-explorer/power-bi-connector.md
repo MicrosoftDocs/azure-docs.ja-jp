@@ -7,27 +7,23 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: cfe7d5fa82197a05ddadd08a8811dc86067a05d7
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: a2ec179321c5d9cb6e9627e397fcb6ae09dc82ed
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806482"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71349146"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Power BI 用 Azure Data Explorer コネクタを使用してデータを視覚化する
 
-Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Power BI はビジネス分析ソリューションであり、データを視覚化して、組織全体で結果を共有することができます。
-
-Azure Data Explorer には、Power BI のデータに接続する方法が 3 つ用意されています。ビルトインのコネクタを使用する方法、Azure Data Explorer からクエリをインポートする方法、SQL クエリを使用する方法です。 この記事では、ビルトインのコネクタを使用してデータを取得し、それを Power BI レポートで視覚化する方法について説明します。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
+Azure Data Explorer は、ログと利用統計情報データのための高速で拡張性に優れたデータ探索サービスです。 Power BI はビジネス分析ソリューションであり、データを視覚化して、組織全体で結果を共有することができます。 Azure Data Explorer には、Power BI のデータに接続する方法が 3 つ用意されています。ビルトインのコネクタを使用する方法、Azure Data Explorer からクエリをインポートする方法、SQL クエリを使用する方法です。 この記事では、ビルトインのコネクタを使用してデータを取得し、それを Power BI レポートで視覚化する方法について説明します。 Power BI ダッシュボードの作成に Azure Data Explorer ネイティブ コネクタを使用する方法は簡単です。 Power BI コネクタでは、[Import および DirectQuery 接続モード](https://docs.microsoft.com/power-bi/desktop-directquery-about)がサポートされています。 シナリオ、スケール、およびパフォーマンスの要件に応じて、**Import** または **DirectQuery** モードを使用してダッシュボードを構築できます。 
 
 ## <a name="prerequisites"></a>前提条件
 
 この記事を完了するには、以下が必要です。
 
+* Azure サブスクリプションをお持ちでない場合は、開始する前に[無料の Azure アカウント](https://azure.microsoft.com/free/)を作成してください。
 * Azure Active Directory のメンバーである組織の電子メール アカウント。このアカウントによって [Azure Data Explorer ヘルプ クラスター](https://dataexplorer.azure.com/clusters/help/databases/samples)に接続できます。
-
 * [Power BI Desktop](https://powerbi.microsoft.com/get-started/) ( **[無料ダウンロード]** を選択)
 
 ## <a name="get-data-from-azure-data-explorer"></a>Azure Data Explorer からデータを取得する
@@ -54,6 +50,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | [詳細オプション] | 空白 | クエリのオプション (結果セットのサイズなど)。 |
     | データ接続モード | *DirectQuery* | Power BI がデータをインポートするか、直接データ ソースに接続するかを決定します。 このコネクタでは、どちらかのオプションを使用できます。 |
     | | | |
+    
+    > [!NOTE]
+    > **Import** モードでは、データは Power BI に移行されます。 **DirectQuery** モードでは、Azure Data Explorer クラスターからデータのクエリが直接実行されます。
+    >
+    > 次の場合は **Import** モードを使用します。
+    > * データ セットが小さい。
+    > * ほぼリアルタイムのデータが必要ない。 
+    > * データは既に集計済みか、[Kusto で集計](/azure/kusto/query/summarizeoperator#list-of-aggregation-functions)を実行している。    
+    >
+    > 次の場合は **DirectQuery** モードを使用します。
+    > * データ セットが非常に大きい。 
+    > * ほぼリアルタイムのデータが必要。   
 
 1. ヘルプ クラスターへの接続がまだない場合は、サインインしてください。 組織アカウントでサインインし、 **[接続]** を選択します。
 
@@ -87,4 +95,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-[Power BI にインポートされたクエリを使用してデータを視覚化する](power-bi-imported-query.md)
+[Power BI 用 Azure Data Explorer コネクタを使用してデータのクエリを実行するためのヒント](power-bi-best-practices.md#tips-for-using-the-azure-data-explorer-connector-for-power-bi-to-query-data)

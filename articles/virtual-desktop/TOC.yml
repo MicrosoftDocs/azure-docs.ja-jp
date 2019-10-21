@@ -24,14 +24,22 @@
   items:
     - name: Windows Virtual Desktop リソースに接続する
       items:
-        - name: Windows 10 または Windows 7 から接続する
+        - name: Windows デスクトップ クライアントに接続する
           href: connect-windows-7-and-10.md
-        - name: Web ブラウザーから接続する
+        - name: Web クライアントに接続する
           href: connect-web.md
+        - name: Android クライアントに接続する
+          href: connect-android.md
+        - name: macOS クライアントに接続する
+          href: connect-macos.md
+        - name: iOS クライアントに接続する
+          href: connect-ios.md
     - name: Azure Resource Manager テンプレートを使用してホスト プールを作成する
       href: create-host-pools-arm-template.md
     - name: PowerShell を使用してホスト プールを作成する
       href: create-host-pools-powershell.md
+    - name: Windows Virtual Desktop で Windows 7 仮想マシンをデプロイする
+      href: deploy-windows-7-virtual-machine.md
     - name: Windows Virtual Desktop セッション ホストに Windows ライセンスを適用する
       href: apply-windows-license.md
     - name: ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する
@@ -46,7 +54,7 @@
       href: install-office-on-wvd-master-image.md
     - name: Windows Virtual Desktop の GPU を構成する
       href: configure-vm-gpu.md
-    - name: セッション ホストを自動的にスケーリングする
+    - name: セッション ホストを動的にスケーリングする
       href: set-up-scaling-script.md
     - name: Windows Virtual Desktop ユーザー用のフィードをカスタマイズする
       href: customize-feed-for-virtual-desktop-users.md
@@ -58,26 +66,34 @@
   items:
     - name: Windows Virtual Desktop の環境
       href: environment-setup.md
+    - name: リモート セッションで推奨される帯域幅
+      href: bandwidth-recommendations.md
     - name: Windows Virtual Desktop における委任されたアクセス
       href: delegated-access-virtual-desktop.md
     - name: ホスト プールの負荷分散方法
       href: host-pool-load-balancing.md
     - name: FSLogix プロファイル コンテナーと Azure のファイル
       href: fslogix-containers-azure-files.md
+    - name: FSLogix プロファイル コンテナー用のストレージ オプション
+      href: store-fslogix-profile.md
     - name: パートナー統合
       href: partners.md
     - name: Windows 10 Enterprise マルチセッションに関する FAQ
       href: windows-10-multisession-faq.md
+    - name: データの場所
+      href: data-locations.md
 - name: トラブルシューティング
   items:
     - name: トラブルシューティングの概要、フィードバック、サポート
       href: troubleshoot-set-up-overview.md
-    - name: 診断機能を使用して問題を特定する
+    - name: 問題の特定と診断
       href: diagnostics-role-service.md
     - name: テナントとホスト プールの作成
       href: troubleshoot-set-up-issues.md
     - name: セッション ホスト仮想マシンの構成
       href: troubleshoot-vm-configuration.md
+    - name: Windows Virtual Desktop で Windows 7 仮想マシンのトラブルシューティングを行う
+      href: troubleshoot-windows-7-vm.md
     - name: リモート デスクトップ クライアントの接続
       href: troubleshoot-client-connection.md
     - name: Windows Virtual Desktop PowerShell
@@ -92,6 +108,10 @@
       href: /rest/api/virtual-desktop/
 - name: リソース
   items:
+    - name: エクスペリエンス見積もりツール
+      href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 技術コミュニティ サポート グループ
       href: 'https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop'
     - name: UserVoice フォーラム

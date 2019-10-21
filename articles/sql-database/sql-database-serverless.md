@@ -11,12 +11,12 @@ author: moslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: ba4e1e933b00aa8ca74be30a6ea5e1a22844b15f
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3b2cc5c0b5deab084c6fdae9435ea3a90b2dd8a6
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858504"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72173397"
 ---
 # <a name="azure-sql-database-serverless-preview"></a>Azure SQL Database サーバーレス (プレビュー)
 
@@ -132,7 +132,7 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
 |監査|監査レコードの表示。<br>監査ポリシーの更新または表示。|
 |データ マスク|データ マスク ルールの追加、変更、削除、表示|
 |透過的なデータ暗号化|透過的データ暗号化の状態またはステータスの表示|
-|クエリ (パフォーマンス) データ ストア|クエリ ストアの設定の変更または表示、自動チューニング|
+|クエリ (パフォーマンス) データ ストア|クエリ ストアの設定の変更または表示|
 |自動調整|自動インデックス作成などの自動調整の推奨事項の適用と検証|
 |データベースのコピー|コピーとしてのデータベースの作成。<br>BACPAC ファイルへのエクスポート。|
 |SQL データ同期|構成可能なスケジュールまたは手動で実行される、ハブとメンバー データベースの間の同期|
@@ -160,12 +160,18 @@ SQL Database サーバーレスは、現在、仮想コア購入モデルの第 
    |GP_S_Gen5_1|汎用|第 5 世代|1|
    |GP_S_Gen5_2|汎用|第 5 世代|2|
    |GP_S_Gen5_4|汎用|第 5 世代|4|
+   |GP_S_Gen5_6|汎用|第 5 世代|6|
+   |GP_S_Gen5_8|汎用|第 5 世代|8|
+   |GP_S_Gen5_10|汎用|第 5 世代|10|
+   |GP_S_Gen5_12|汎用|第 5 世代|12|
+   |GP_S_Gen5_14|汎用|第 5 世代|14|
+   |GP_S_Gen5_16|汎用|第 5 世代|16|
 
 2. 必要に応じて、最小仮想コア数と自動一時停止遅延を指定して、既定値を変更します。 これらのパラメーターに対して使用可能な値を次の表に示します。
 
    |パラメーター|値の選択肢|既定値|
    |---|---|---|---|
-   |最小仮想コア|最大仮想コア数を超えない {0.5、1、2、4} のいずれか|0.5 仮想コア|
+   |最小仮想コア|構成された最大仮想コアによって異なります。[リソースの制限](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)に関するページを参照してください。|0.5 仮想コア|
    |自動一時停止遅延|最小:60 分 (1 時間)<br>最大値:10080 分 (7 日)<br>増分: 約 60 分<br>自動一時停止の無効化: -1|約 60 分|
 
 > [!NOTE]
@@ -282,7 +288,7 @@ Get-AzSqlDatabase `
 
 ## <a name="resource-limits"></a>リソース制限
 
-リソースの制限については、[サーバーレス コンピューティング レベル](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)に関する記事をご覧ください。
+リソースの制限については、[サーバーレス コンピューティング レベル](sql-database-vCore-resource-limits-single-databases.md#general-purpose-service-tier-for-serverless-compute)をご覧ください。
 
 ## <a name="billing"></a>課金
 
@@ -320,7 +326,7 @@ Get-AzSqlDatabase `
 
 ## <a name="available-regions"></a>対応リージョン
 
-サーバーレス コンピューティング レベルは、次のリージョンを除く全世界で利用できます。オーストラリア中部、中国東部、中国北部、フランス南部、ドイツ中部、ドイツ北東部、インド西部、韓国南部、南アフリカ西部、英国北部、英国南部、英国西部、および米国中西部。
+サーバーレス コンピューティング レベルは、次のリージョンを除く全世界で利用できます。中国東部、中国北部、ドイツ中部、ドイツ北東部、英国北部、英国南部 2、米国中西部の各リージョンと、米国政府中部 (アイオワ) を除くすべてのリージョンで利用できます。
 
 ## <a name="next-steps"></a>次の手順
 

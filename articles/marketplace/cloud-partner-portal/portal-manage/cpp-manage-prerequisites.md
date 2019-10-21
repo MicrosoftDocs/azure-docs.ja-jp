@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: pabutler
-ms.openlocfilehash: 9c55688674fe16f64bfb27788a6e038059694a77
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 09bf8479921c9bd55b98e835a19ea995fa37e20b
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087472"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720067"
 ---
 # <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Cloud パートナー ポータルでアカウントを管理するための前提条件 
 
@@ -28,8 +28,7 @@ ms.locfileid: "71087472"
 
 ## <a name="registration-steps"></a>登録手順
 
-次の表は、Microsoft クラウドのパブリッシャーとして完全に登録するための手順を示しています。  詳細については、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher
-)」を参照してください。 
+次の表は、Microsoft クラウドのパブリッシャーとして完全に登録するための手順を示しています。  詳細については、「[クラウド マーケットプレース パブリッシャーになる](https://docs.microsoft.com/azure/marketplace/become-publisher)」を参照してください。 
 
 
 |                   手順                   |  作成される登録またはリソース                     |

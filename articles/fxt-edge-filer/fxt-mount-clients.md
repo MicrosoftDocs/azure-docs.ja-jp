@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 5471bf4041275d5988414def99dd2130f51fbb80
-ms.sourcegitcommit: 441e59b8657a1eb1538c848b9b78c2e9e1b6cfd5
+ms.author: rohogue
+ms.openlocfilehash: ac1263b352e7fdde57dfee6515a8b22400f22b06
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67828035"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256028"
 ---
 # <a name="tutorial-mount-the-cluster"></a>チュートリアル:クラスターのマウント
 

@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 08/13/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86895ab315784c49c2b240badb249dce57ae958a
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 7791e7b50a963d2f92a2cbc460e36f9e83bb1b52
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622574"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025707"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -63,7 +63,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 | OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|はい\*|いいえ|はい|はい\*\*\*|該当なし
+|Windows 10|はい\*|はい|はい|はい\*\*\*|該当なし
 |Windows 8.1|はい\*|該当なし|はい|はい\*\*\*|該当なし
 |Windows 8|はい\*|該当なし|はい|はい\*\*\*|該当なし
 |Windows 7|はい\*|該当なし|はい|はい\*\*\*|該当なし

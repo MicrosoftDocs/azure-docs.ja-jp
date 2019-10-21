@@ -2,18 +2,19 @@
 title: チュートリアル:Azure Digital Twins を使用して空間を監視する | Microsoft Docs
 description: このチュートリアルの手順を使用して、Azure Digital Twins を使用して空間リソースをプロビジョニングし、作業条件を監視する方法を学習します。
 services: digital-twins
+ms.author: alinast
 author: alinamstanciu
+manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 08/16/2019
-ms.author: alinast
-ms.openlocfilehash: 38df195f787407c4beab2f7251cf00c08a739e09
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 09/20/2019
+ms.openlocfilehash: 74e3c46b2b1427c27923ed91846755797b8da690
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622896"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949081"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>チュートリアル:Azure Digital Twins プレビューを使用して建物をプロビジョニングし、作業環境を監視する
 
@@ -37,6 +38,9 @@ ms.locfileid: "69622896"
 - サンプルをビルドして実行する開発用マシンに [.NET Core SDK バージョン 2.1.403 以降](https://www.microsoft.com/net/download)があること。 適切なバージョンがインストールされていることを確認するには、`dotnet --version` を実行します。 
 - [Visual Studio Code](https://code.visualstudio.com/)。サンプル コードを確認するために使用します。 
 
+> [!TIP]
+> 新しいインスタンスをプロビジョニングする場合は、一意の Digital Twins インスタンス名を使用します。
+
 ## <a name="define-conditions-to-monitor"></a>監視する条件を定義する
 
 デバイスまたはセンサーのデータについて監視する特定の条件のセット ("*マッチャー*" と呼ばれます) を定義できます。 その後、"*ユーザー定義関数*" と呼ばれる関数を定義できます。 ユーザー定義関数では、マッチャーによって指定された条件が発生したときに、空間およびデバイスから受け取ったデータに対してカスタム ロジックが実行されます。 詳細については、「[データ処理とユーザー定義関数](concepts-user-defined-functions.md)」を参照してください。 
@@ -50,25 +54,23 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
         dataTypeValue: Temperature
 ```
 
-このマッチャーは、[最初のチュートリアル](tutorial-facilities-setup.md)で追加した SAMPLE_SENSOR_TEMPERATURE センサーを追跡します。 
-
-<a id="udf"></a>
+このマッチャーでは、[最初のチュートリアル](tutorial-facilities-setup.md)で追加した `SAMPLE_SENSOR_TEMPERATURE` センサーが追跡されます。 
 
 ## <a name="create-a-user-defined-function"></a>ユーザー定義関数を作成する
 
 ユーザー定義関数を使用すると、センサー データの処理をカスタマイズできます。 これらは、マッチャーによって記述された特定の条件が発生したときに Azure Digital Twins インスタンス内で実行できるカスタム JavaScript コードです。 マッチャーとユーザー定義関数は、監視したいセンサーごとに作成できます。 詳細については、「[データ処理とユーザー定義関数](concepts-user-defined-functions.md)」を参照してください。 
 
-サンプルの provisionSample.yaml ファイルで、型 **userdefinedfunctions** で始まるセクションを見つけます。 このセクションによって、指定された**名前**のユーザー定義関数がプロビジョニングされます。 この UDF は、**matcherNames** の下のマッチャーの一覧を対象にして動作します。 独自の JavaScript ファイルを**スクリプト**として UDF に提供する方法に注目してください。
+サンプルの *provisionSample.yaml* ファイルで、型 **userdefinedfunctions** で始まるセクションを見つけます。 このセクションによって、指定された**名前**のユーザー定義関数がプロビジョニングされます。 この UDF は、**matcherNames** の下のマッチャーの一覧を対象にして動作します。 独自の JavaScript ファイルを**スクリプト**として UDF に提供する方法に注目してください。
 
 さらに、**roleassignments** という名前のセクションに注目してください。 これによって、ユーザー定義関数にスペース管理者ロールが割り当てられます。 このロールでは、すべてのプロビジョニング済み空間から届いたイベントへのアクセスが許可されます。 
 
-1. 温度マッチャーを含めるように UDF を構成します。そのためには、provisionSample.yaml ファイルの `matcherNames` ノードに次の行を追加するか、この行をコメント解除します。
+1. 温度マッチャーを含めるように UDF を構成します。そのためには、*provisionSample.yaml* ファイルの `matcherNames` ノードに次の行を追加するか、この行をコメント解除します。
 
     ```yaml
             - Matcher Temperature
     ```
 
-1. エディターで **src\actions\userDefinedFunctions\availability.js** ファイルを開きます。 これは、provisionSample.yaml の **script** 要素で参照されているファイルです。 このファイル内のユーザー定義関数では、室内でモーションが検出されず、二酸化炭素レベルが 1,000 ppm 未満の条件が検索されます。 
+1. エディターで **src\actions\userDefinedFunctions\availability.js** ファイルを開きます。 これは、*provisionSample.yaml* の **script** 要素で参照されているファイルです。 このファイル内のユーザー定義関数では、室内でモーションが検出されず、二酸化炭素レベルが 1,000 ppm 未満の条件が検索されます。 
 
    温度とその他の条件を監視するように JavaScript ファイルを変更します。 室内でモーションが検出されず、二酸化炭素レベルが 1,000 ppm 未満、温度が華氏 78 度未満の条件を検索するために、次のコード行を追加します。
 
@@ -135,15 +137,12 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
         if(carbonDioxideValue < carbonDioxideThreshold && !presence) {
             log(`${availableFresh}. Carbon Dioxide: ${carbonDioxideValue}. Presence: ${presence}.`);
             setSpaceValue(parentSpace.Id, spaceAvailFresh, availableFresh);
-
-            // Set up custom notification for air quality
-            parentSpace.Notify(JSON.stringify(availableFresh));
         }
         else {
             log(`${noAvailableOrFresh}. Carbon Dioxide: ${carbonDioxideValue}. Presence: ${presence}.`);
             setSpaceValue(parentSpace.Id, spaceAvailFresh, noAvailableOrFresh);
 
-            // Set up custom notification for air quality
+            // Set up custom notification for poor air quality
             parentSpace.Notify(JSON.stringify(noAvailableOrFresh));
         }
     ```
@@ -173,7 +172,7 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
 
     g. ファイルを保存します。
 
-1. コマンド ウィンドウを開き、**occupancy-quickstart\src** フォルダーに移動します。次のコマンドを実行して、空間インテリジェンス グラフおよびユーザー定義関数をプロビジョニングします。
+1. コマンド ウィンドウを開き、**occupancy-quickstart\src** フォルダーに移動します。 次のコマンドを実行して、空間インテリジェンス グラフおよびユーザー定義関数をプロビジョニングします。
 
     ```cmd/sh
     dotnet run ProvisionSample
@@ -182,16 +181,14 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
    > [!IMPORTANT]
    > Digital Twins Management API への不正アクセスを防ぐために、**occupancy-quickstart** アプリケーションでは Azure アカウントの資格情報を使用してサインインする必要があります。 資格情報は一時的に保存されるため、実行するたびにサインインする必要はありません。 このプログラムを初めて実行したときと、その後保存された資格情報が期限切れになったときは、アプリケーションによってサインイン ページが表示され、そのページに入力するセッション固有のコードが与えられます。 プロンプトに従って、Azure アカウントを使用してサインインします。
 
-1. アカウントが認証された後、アプリケーションによって、provisionSample.yaml の構成どおりにサンプル空間グラフの作成が開始されます。 プロビジョニングが完了するまで待機します。 これには数分かかります。 その後、コマンド ウィンドウのメッセージを見て、空間グラフがどのように作成されているかを確認します。 アプリケーションによってルート ノードまたは `Venue` に IoT ハブがどのように作成されているかに注目します。
+1. アカウントが認証された後、アプリケーションによって、*provisionSample.yaml* の構成どおりにサンプル空間グラフの作成が開始されます。 プロビジョニングが完了するまで待機します。 これには数分かかります。 その後、コマンド ウィンドウのメッセージを見て、空間グラフがどのように作成されているかを確認します。 アプリケーションによってルート ノードまたは `Venue` に IoT ハブがどのように作成されているかに注目します。
 
 1. コマンド ウィンドウの出力から、`Devices` セクションの `ConnectionString` の値をクリップボードにコピーします。 この値は、次のセクションでデバイス接続をシミュレートするために必要です。
 
-    ![サンプルをプロビジョニングする](./media/tutorial-facilities-udf/run-provision-sample.png)
+    [![サンプルをプロビジョニングする](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
 > [!TIP]
 > プロビジョニングの途中で "The I/O operation has been aborted because of either a thread exit or an application request (スレッドの終了またはアプリケーション要求のため I/O 操作が中止されました)" のようなエラー メッセージが表示された場合は、コマンドをもう一度実行してみてください。 これは、ネットワークの問題が原因で HTTP クライアントがタイムアウトしたときに発生する可能性があります。
-
-<a id="simulate"></a>
 
 ## <a name="simulate-sensor-data"></a>センサー データをシミュレートする
 
@@ -209,9 +206,9 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
 
    a. **DeviceConnectionString**: 前のセクションの出力ウィンドウに含まれている `ConnectionString` の値を割り当てます。 シミュレーターが IoT ハブに正常に接続できるように、引用符で囲まれたこの文字列を完全にコピーしてください。
 
-   b. **Sensors** 配列内の **HardwareId**: Azure Digital Twins インスタンスにプロビジョニングされたセンサーからのイベントをシミュレートしているので、このファイル内のハードウェア ID とセンサーの名前が provisionSample.yaml ファイルの `sensors` ノードと一致している必要があります。
+   b. **Sensors** 配列内の **HardwareId**: Azure Digital Twins インスタンスにプロビジョニングされたセンサーからのイベントをシミュレートしているので、このファイル内のハードウェア ID とセンサーの名前が *provisionSample.yaml* ファイルの `sensors` ノードと一致している必要があります。
 
-      温度センサーの新しいエントリを追加します。 appsettings.json の **Sensors** ノードは次のようになります。
+      温度センサーの新しいエントリを追加します。 *appsettings.json* の **Sensors** ノードは次のようになります。
 
       ```JSON
       "Sensors": [{
@@ -249,9 +246,9 @@ Visual Studio Code で、**occupancy-quickstart** サンプル プロジェク�
 
 出力ウィンドウに、どのようにユーザー定義関数が実行され、デバイス シミュレーションからのイベントがインターセプトされているかが表示されます。 
 
-   ![UDF の出力](./media/tutorial-facilities-udf/udf-running.png)
+   [![UDF の出力](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
 
-監視されている条件が満たされると、[前述](#udf)のとおりに、ユーザー定義関数によって空間の値が関連メッセージと共に設定されます。 メッセージは、`GetAvailableAndFreshSpaces` 関数によってコンソールに出力されます。
+監視されている条件が満たされると、[前述](#create-a-user-defined-function)のとおりに、ユーザー定義関数によって空間の値が関連メッセージと共に設定されます。 メッセージは、`GetAvailableAndFreshSpaces` 関数によってコンソールに出力されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

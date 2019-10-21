@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/17/2019
+ms.date: 10/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 576a44663518343a9132af468a0f1c1fb8e4de50
-ms.sourcegitcommit: 5ded08785546f4a687c2f76b2b871bbe802e7dae
+ms.openlocfilehash: 1eec8b79579a1c4d5c889b830706299ccc25e88b
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69575399"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72035636"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Log Analytics エージェントを使用してログ データを収集する
 
@@ -38,6 +38,7 @@ Log Analytics エージェントを使用してデータを収集している場
 
 * Windows エージェントからデータを収集するには、[1 つまたは複数のワークスペースにレポートするように各エージェントを構成](agent-windows.md)できます。これは、System Center Operations Manager 管理グループにレポートしている場合でも同様です。 Windows エージェントでは、最大 4 つのワークスペースを報告できます。
 * Linux エージェントでは、マルチホームがサポートされず、1 つのワークスペースにしかレポートできません。
+* Windows エージェントでは [FIPS 140 規格](https://docs.microsoft.com/windows/security/threat-protection/fips-140-validation)がサポートされていますが、Linux エージェントではサポートされていません。  
 
 System Center Operations Manager 2012 R2 以降を使用している場合:
 
@@ -52,7 +53,7 @@ Linux および Windows 用エージェントは、Azure Monitor に接続する
 Windows エージェントでは、次のバージョンの Windows オペレーティング システムが正式にサポートされています。
 
 * Windows Server 2019
-* Windows Server 2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
+* Windows Server 2008 SP2 (x64)、2008 R2、2012、2012 R2、2016、バージョン 1709 および 1803
 * Windows 7 SP1、Windows 8 Enterprise および Pro、Windows 10 Enterprise および Pro
 
 >[!NOTE]
@@ -146,7 +147,7 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 
 Azure Monitor ログを直接、Azure サブスクリプションまたはハイブリッド環境内のマシンに接続することは、要件に応じてさまざまな方法を使用して実現できます。 次の表は、どの方法が組織で最も効果的であるかを判断できるように、各方法について説明しています。
 
-|Source | Method | 説明|
+|source | 方法 | 説明|
 |-------|-------------|-------------|
 |Azure VM| - Azure CLI または Azure Resource Manager テンプレートを使用する [Windows](../../virtual-machines/extensions/oms-windows.md) または [Linux](../../virtual-machines/extensions/oms-linux.md) 用の Log Analytics VM 拡張機能<br>- [Azure portal から手動で](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>- [Azure Security Center の自動プロビジョニング](../../security-center/security-center-enable-data-collection.md)| - この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Azure Monitor ワークスペースに登録されます。<br>- Azure Security Center では、セキュリティの脆弱性と脅威を監視するために有効にされている場合、サポートされているすべての Azure VM と作成された新しいものに、Log Analytics エージェントをプロビジョニングできます。 有効な場合、エージェントがインストールされていない新規または既存の VM がプロビジョニングされます。|
 | ハイブリッド Windows コンピューター|- [手動インストール](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Azure Stack を使用する Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |コマンド ラインから、または Azure Automation DSC や [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications) などの自動化された方法を使用して、Microsoft Monitoring エージェントをインストールします。データセンターに Microsoft Azure Stack が配置されている場合は、Azure Resource Manager テンプレートも使用できます。| 

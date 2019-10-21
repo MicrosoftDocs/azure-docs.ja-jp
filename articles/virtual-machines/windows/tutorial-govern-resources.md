@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 8c551e5c61c091e46870efcc8bffcb669aa78ea9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: cb0050f79f2f6a38b9cd58ee87aa88899f0f5a15
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100331"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71674985"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
 
@@ -235,8 +235,8 @@ Remove-AzResourceGroup -Name myResourceGroup
 > * 重要なリソースをロックで保護する
 > * 課金と管理のためにリソースにタグを付ける
 
-次のチュートリアルに進み、仮想マシンの高可用性について学習してください。
+次のチュートリアルに進み、Linux 仮想マシン上の変更を特定したりパッケージの更新プログラムを管理したりする方法を学習してください。
 
 > [!div class="nextstepaction"]
-> [仮想マシンの監視](tutorial-monitoring.md)
+> [仮想マシンの管理](tutorial-config-management.md)
 

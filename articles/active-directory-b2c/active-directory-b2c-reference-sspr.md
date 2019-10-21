@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e8137bc0e75595b5f548584bb2d1644de2e0fecd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7903ec669772c3a3858a9c1d514ab3e6de6a2bd4
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508917"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71936827"
 ---
 # <a name="set-up-self-service-password-reset-for-your-customers"></a>顧客向けにセルフサービス パスワードのリセットをセットアップする
 
@@ -30,6 +30,7 @@ ms.locfileid: "66508917"
 
 1. サブスクリプション管理者として [Azure Portal](https://portal.azure.com/) にサインインします。 これは、ディレクトリを作成するときに使用したものと同じ職場/学校アカウント、または同じ Microsoft アカウントです。
 2. (左側にあるナビゲーション バーで) **Azure Active Directory** を開きます。
+3. オプション ブレードで下にスクロールし、 **[パスワードのリセット]** を選択します。
 4. **[セルフ サービスによるパスワードのリセットが有効]** を **[すべて]** に設定します。 
 5. ページの上部にある **[保存]** をクリックします。 以上で終わりです。
 

@@ -135,14 +135,14 @@
           href: how-to-update-iot-edge.md
     - name: DPS による自動プロビジョニング
       items:
-        - name: 対称キーの構成証明
-          href: how-to-auto-provision-symmetric-keys.md
         - name: TPM の構成証明
           items:
             - name: Linux
               href: how-to-auto-provision-simulated-device-linux.md
             - name: Windows
               href: how-to-auto-provision-simulated-device-windows.md
+        - name: 対称キーの構成証明
+          href: how-to-auto-provision-symmetric-keys.md
     - name: カスタム モジュールの開発とデバッグ
       items:
         - name: Visual Studio 2019
@@ -177,6 +177,8 @@
       href: how-to-configure-proxy-support.md
     - name: エッジでのデータの格納
       items:
+        - name: モジュールにデバイスのローカル ストレージへのアクセスを許可する
+          href: how-to-access-host-storage-from-module.md
         - name: IoT Edge 上の Azure Blob Storage
           href: how-to-store-data-blob.md
         - name: Blob Storage モジュールのデプロイ
@@ -248,14 +250,14 @@
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
+      href: 'https://azure.microsoft.com/pricing/details/iot-edge/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: サービスの更新情報
-      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
+      href: 'https://azure.microsoft.com/updates/?product=iot-edge'
     - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/azure-iot-hub'
+      href: 'https://stackoverflow.com/questions/tagged/azure-iot-edge'
     - name: 技術的なケース スタディ
       href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
     - name: ビデオ
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-edge'

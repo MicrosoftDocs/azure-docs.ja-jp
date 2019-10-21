@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: c759567e4d8c183452eccbbdca8459c8993d1361
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7e309237589dfaf037114401172fc8f928a30077
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70092416"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176651"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 拡張機能ハンドラーの概要
 
 Azure VM エージェントとそれに関連付けられた拡張機能は、Microsoft Azure インフラストラクチャ サービスの一部です。 VM 拡張機能は、VM の機能を拡張し、さまざまな VM の管理操作を簡略化するソフトウェア コンポーネントです。
 
 Azure Desired State Configuration (DSC) 拡張機能の主な用途は、[Azure Automation State Configuration (DSC) サービス](../../automation/automation-dsc-overview.md)への VM のブートストラップです。
-このサービスには、VM 構成の継続的な管理や、Azure Monitoring などの他の操作ツールとの統合を含む[メリット](/powershell/dsc/metaconfig#pull-service)があります。
+このサービスには、VM 構成の継続的な管理や、Azure Monitoring などの他の操作ツールとの統合を含む[メリット](/powershell/scripting/dsc/managing-nodes/metaConfig#pull-service)があります。
 この拡張機能を使用して VM をこのサービスに登録することで、複数の Azure のサブスクリプションで機能する柔軟なソリューションが提供されます。
 
 DSC 拡張機能を Automation DSC サービスから独立して使用することができます。
@@ -39,7 +39,7 @@ VM 内でローカルに使用する場合を除き、継続的なレポート�
 ## <a name="prerequisites"></a>前提条件
 
 - **ローカル マシン**:Azure VM 拡張機能を利用するには、Azure portal または Azure PowerShell SDK のいずれかを使用する必要があります。
-- **ゲスト エージェント**:DSC 構成で構成する Azure VM は、Windows Management Framework (WMF) 4.0 以降をサポートする OS である必要があります。 サポートされている OS バージョンの詳細な一覧については、 [DSC 拡張機能のバージョン履歴](/powershell/dsc/azuredscexthistory)を参照してください。
+- **ゲスト エージェント**:DSC 構成で構成する Azure VM は、Windows Management Framework (WMF) 4.0 以降をサポートする OS である必要があります。 サポートされている OS バージョンの詳細な一覧については、 [DSC 拡張機能のバージョン履歴](/powershell/scripting/dsc/getting-started/azuredscexthistory)を参照してください。
 
 ## <a name="terms-and-concepts"></a>用語と概念
 
@@ -51,7 +51,7 @@ VM 内でローカルに使用する場合を除き、継続的なレポート�
 
 ## <a name="architecture"></a>アーキテクチャ
 
-Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。 DSC 拡張機能は、構成ドキュメントと一連のパラメーターを受け取ります。 ファイルが指定されていない場合、[既定の構成スクリプト](#default-configuration-script)が拡張機能に埋め込まれています。 既定の構成スクリプトは、[ローカル構成マネージャー](/powershell/dsc/metaconfig)にメタデータを設定するためにのみ使用されます。
+Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。 DSC 拡張機能は、構成ドキュメントと一連のパラメーターを受け取ります。 ファイルが指定されていない場合、[既定の構成スクリプト](#default-configuration-script)が拡張機能に埋め込まれています。 既定の構成スクリプトは、[ローカル構成マネージャー](/powershell/scripting/dsc/managing-nodes/metaConfig)にメタデータを設定するためにのみ使用されます。
 
 拡張機能が初めて呼び出されると、次のロジックに従って、あるバージョンの WMF がインストールされます。
 
@@ -63,7 +63,7 @@ WMF をインストールするには、再起動が必要です。 再起動後
 
 ### <a name="default-configuration-script"></a>既定の構成スクリプト
 
-Azure DSC 拡張機能には、VM を Azure Automation DSC サービスにオンボードするときに使用することを目的とした既定の構成スクリプトが含まれています。 スクリプト パラメーターは、[ローカル構成マネージャー](/powershell/dsc/metaconfig)の構成可能なプロパティと合致しています。 スクリプト パラメーターについては、[Azure Resource Manager テンプレートでの Desired State Configuration 拡張機能](dsc-template.md)に関するページの[既定の構成スクリプト](dsc-template.md#default-configuration-script)に関する記事を参照してください。 完全なスクリプトについては、[GitHub の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)に関するページを参照してください。
+Azure DSC 拡張機能には、VM を Azure Automation DSC サービスにオンボードするときに使用することを目的とした既定の構成スクリプトが含まれています。 スクリプト パラメーターは、[ローカル構成マネージャー](/powershell/scripting/dsc/managing-nodes/metaConfig)の構成可能なプロパティと合致しています。 スクリプト パラメーターについては、[Azure Resource Manager テンプレートでの Desired State Configuration 拡張機能](dsc-template.md)に関するページの[既定の構成スクリプト](dsc-template.md#default-configuration-script)に関する記事を参照してください。 完全なスクリプトについては、[GitHub の Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)に関するページを参照してください。
 
 ## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Azure Automation State Configuration (DSC) サービスに登録するための情報
 
@@ -194,7 +194,7 @@ az vm extension set \
 
 - **[Data Collection]\(データ収集\)** :拡張機能でテレメトリを収集するかどうかを決定します。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。
 
-- **バージョン**:インストールする DSC 拡張機能のバージョンを指定します。 バージョンの詳細については、[DSC 拡張機能のバージョン履歴](/powershell/dsc/azuredscexthistory)に関するページを参照してください。
+- **バージョン**:インストールする DSC 拡張機能のバージョンを指定します。 バージョンの詳細については、[DSC 拡張機能のバージョン履歴](/powershell/scripting/dsc/getting-started/azuredscexthistory)に関するページを参照してください。
 
 - **[自動アップグレードのマイナー バージョン]** :このフィールドは、コマンドレットの **AutoUpdate** スイッチにマップされ、インストール時に拡張機能を最新バージョンに自動的に更新できます。 **[はい]** の場合、利用可能な最新バージョンを使用するように拡張機能ハンドラーに指示します。 **[いいえ]** の場合は、指定された**バージョン**が強制的にインストールされます。 **[はい]** と **[いいえ]** のいずれも選択しないことは、 **[いいえ]** を選択することと同じです。
 
@@ -204,7 +204,7 @@ az vm extension set \
 
 ## <a name="next-steps"></a>次の手順
 
-- PowerShell DSC の詳細については、[PowerShell ドキュメント センター](/powershell/dsc/overview)を参照してください。
+- PowerShell DSC の詳細については、[PowerShell ドキュメント センター](/powershell/scripting/dsc/overview/overview)を参照してください。
 - [DSC 拡張機能用の Resource Manager テンプレート](dsc-template.md)をご覧ください。
 - PowerShell DSC を使用して管理できるその他の機能や、その他の DSC リソースについては、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)をご覧ください。
 - 機微なパラメーターを構成に渡す方法について詳しくは、[資格情報を Azure DSC 拡張機能ハンドラーに渡す方法](dsc-credentials.md)をご覧ください。

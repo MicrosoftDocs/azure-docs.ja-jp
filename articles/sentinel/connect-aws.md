@@ -1,6 +1,6 @@
 ---
-title: Symantec AWS データを Azure Sentinel プレビューに接続する | Microsoft Docs
-description: Symantec AWS データを Azure Sentinel に続する方法について説明します。
+title: AWS CloudTrail を Azure Sentinel に接続する | Microsoft Docs
+description: Azure Sentinel に AWS CloudTrail のデータを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 246d4cd7d64554ae575767cdba2e26066ad1720d
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 61bee1618092788da33549ec322dc4ab7130de16
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68295619"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244692"
 ---
 # <a name="connect-azure-sentinel-to-aws-cloudtrail"></a>Azure Sentinel を AWS CloudTrail に接続する
 
@@ -82,5 +82,5 @@ Azure Sentinel ワークスペースへの書き込みアクセス許可が必�
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、AWS CloudTrail を Azure Sentinel に接続する方法について学習しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 

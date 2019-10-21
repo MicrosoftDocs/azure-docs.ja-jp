@@ -4,16 +4,16 @@ description: この記事では、azcopy jobs resume コマンドに関する参
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 08/26/2019
+ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8786da42f000a2f13279499159a7af424aa10748
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 9e8dbbd40259c7a71f252d0d6e93dd6f135973de
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196761"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513543"
 ---
 # <a name="azcopy-jobs-resume"></a>azcopy jobs resume
 
@@ -39,7 +39,7 @@ azcopy jobs resume [jobID] [flags]
 
 |オプション|説明|
 |---|---|
-|--cap-mbps uint32|転送速度を制限します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
+|--cap-mbps uint32|転送速度の上限を設定します (メガビット/秒)。 瞬間的なスループットは、上限と若干異なる場合があります。 このオプションを 0 に設定した場合や省略した場合、スループットは制限されません。|
 |--output-type string|コマンドの出力形式。 選択肢には、text、json などがあります。 既定値は "text" です。|
 
 ## <a name="see-also"></a>関連項目

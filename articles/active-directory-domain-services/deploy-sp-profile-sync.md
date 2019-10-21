@@ -1,54 +1,83 @@
 ---
-title: Azure Active Directory Domain Services:SharePoint User Profile サービスを有効にする | Microsoft Docs
-description: SharePoint Server のプロファイルの同期をサポートするように Azure Active Directory Domain Services のマネージド ドメインを構成します。
+title: Azure AD DS で SharePoint ユーザー プロファイル サービスを有効にする | Microsoft Docs
+description: SharePoint Server のプロファイルの同期をサポートするように Azure Active Directory Domain Services のマネージド ドメインを構成する方法について説明します
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
 manager: daveba
-editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 09/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 4a9ee05b37a69927d70269dccef2b74a2c251722
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 90d728ceee0b9a4ed5e5e33805de9358aca6530c
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234098"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996328"
 ---
-# <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>SharePoint Server のプロファイルの同期をサポートするようにマネージド ドメインを構成する
-SharePoint Server には、ユーザー プロファイルの同期に使用する User Profile Service が用意されています。 User Profile Service を設定するには、Active Directory ドメインで適切なアクセス許可を付与する必要があります。 詳細については、「[SharePoint Server 2013 でプロファイルを同期するために Active Directory Domain Services のアクセス許可を付与する](https://technet.microsoft.com/library/hh296982.aspx)」をご覧ください。
+# <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>SharePoint Server のユーザー プロファイルの同期をサポートするように Azure Active Directory Domain Services を構成します。
 
-この記事では、SharePoint Server のユーザー プロファイルの同期サービスをデプロイするために、Azure AD Domain Services のマネージド ドメインを構成する方法について説明します。
+SharePoint Server には、ユーザー プロファイルを同期するサービスが含まれています。 この機能を使用すると、ユーザー プロファイルを中央の場所に格納し、複数の SharePoint サイトおよびファームにアクセスできるようになります。 SharePoint Server ユーザー プロファイル サービスを構成するには、Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメインで適切なアクセス許可を付与する必要があります。 詳細については、[SharePoint Server のユーザー プロファイルの同期](https://technet.microsoft.com/library/hh296982.aspx)に関する記事を参照してください。
 
-[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+この記事では、SharePoint Server ユーザー プロファイル同期サービスを許可するように Azure AD DS を構成する方法について説明します。
 
-## <a name="the-aad-dc-service-accounts-group"></a>"AAD DC Service Accounts" グループ
-マネージド ドメインの "ユーザー" 組織単位では、"**AAD DC Service Accounts**" と呼ばれるセキュリティ グループを使用できます。 このグループは、マネージド ドメインの **[Active Directory ユーザーとコンピューター]** MMC スナップインに表示されます。
+## <a name="before-you-begin"></a>開始する前に
 
-!["AAD DC Service Accounts" セキュリティ グループ](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts.png)
+この記事を完了するには、以下のリソースと特権が必要です。
 
-このセキュリティ グループのメンバーには、次の特権が委任されます。
-- マネージド ドメインのルート DSE での "ディレクトリの変更のレプリケート" 特権。
-- マネージド ドメインの構成名前付けコンテキスト (cn=configuration container) での "ディレクトリの変更のレプリケート" 特権。
+* 有効な Azure サブスクリプション
+    * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
+* ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
+    * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
+* Azure AD テナントで有効化され、構成された Azure Active Directory Domain Services のマネージド ドメイン。
+    * 必要に応じて、[Azure Active Directory Domain Services インスタンスを作成して構成する][create-azure-ad-ds-instance]チュートリアルを完了します。
+* Azure AD DS マネージド ドメインに参加している Windows Server 管理 VM。
+    * 必要に応じて、[管理 VM を作成する][tutorial-create-management-vm]チュートリアルを完了します。
+* Azure AD テナントの *Azure AD DC administrators* グループのメンバーであるユーザー アカウント。
+* ユーザー プロファイル同期サービスの SharePoint サービス アカウント。
+    * 必要に応じて、「[SharePoint Server の管理アカウントとサービス アカウントを計画する][sharepoint-service-account]」を参照してください。
 
-このセキュリティ グループは、組み込みの **Pre-Windows 2000 Compatible Access** グループのメンバーでもあります。
+## <a name="service-accounts-overview"></a>サービス アカウントの概要
 
-!["AAD DC Service Accounts" セキュリティ グループ](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-properties.png)
+Azure AD DS マネージド ドメインでは、 **[AAD DC Service Accounts]\(AAD DC サービス アカウント\)** という名前のセキュリティ グループが *[ユーザー]* 組織単位 (OU) の一部として存在します。 このセキュリティ グループのメンバーには、次の特権が委任されます。
 
+- ルート DSE に対する**ディレクトリの変更のレプリケート**特権。
+- *[構成]* 名前付けコンテキスト (`cn=configuration` コンテナー) に対する**ディレクトリの変更のレプリケート**特権。
 
-## <a name="enable-your-managed-domain-to-support-sharepoint-server-user-profile-sync"></a>マネージド ドメインで SharePoint Server のユーザー プロファイルの同期をサポートできるようにする
-**AAD DC Service Accounts** グループに、SharePoint のユーザー プロファイルの同期に使用するサービス アカウントを追加できます。 これにより、同期アカウントはディレクトリの変更をレプリケートするための適切な特権を取得します。 この構成手順により、SharePoint Server のユーザー プロファイルの同期を正しく動作させることができます。
+**[AAD DC Service Accounts]\(AAD DC サービス アカウント\)** セキュリティ グループは、組み込みグループの **Pre-Windows 2000 Compatible Access** のメンバーでもあります。
 
-![AAD DC Service Accounts - メンバーの追加](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member.png)
+このセキュリティ グループに追加されると、SharePoint Server ユーザー プロファイル同期サービスのサービス アカウントに、正しく機能するために必要な特権が付与されます。
 
-![AAD DC Service Accounts - メンバーの追加](./media/active-directory-domain-services-admin-guide/aad-dc-service-accounts-add-member2.png)
+## <a name="enable-support-for-sharepoint-server-user-profile-sync"></a>SharePoint Server ユーザー プロファイルの同期のサポートを有効にする
 
-## <a name="related-content"></a>関連コンテンツ
-* [テクニカル リファレンス - SharePoint Server 2013 でプロファイルを同期するために Active Directory Domain Services のアクセス許可を付与する](https://technet.microsoft.com/library/hh296982.aspx)
+SharePoint Server のサービス アカウントには、変更をディレクトリにレプリケートし、SharePoint Server ユーザー プロファイルの同期を正しく機能させるために適切な特権が必要です。 これらの特権を付与するには、**AAD DC Service Accounts** グループに、SharePoint のユーザー プロファイルの同期に使用するサービス アカウントを追加します。
+
+Azure AD DS 管理 VM から、次の手順を実行します。
+
+> [!NOTE]
+> Azure AD DS マネージド ドメインでグループのメンバーシップを編集するには、*AAD DC 管理者*グループのメンバーであるユーザー アカウントにサインインする必要があります。
+
+1. スタート画面で **[管理ツール]** を選択します。 [管理 VM を作成する][tutorial-create-management-vm]ためのチュートリアルでインストールされた使用可能な管理ツールの一覧が表示されます。
+1. グループのメンバーシップを管理するには、管理ツールの一覧から **[Active Directory 管理センター]** を選択します。
+1. 左側のウィンドウで、Azure AD DS マネージド ドメイン (*contoso.com* など) を選択します。 既存の OU とリソースの一覧が表示されます。
+1. **[ユーザー]** OU を選択し、 *[AAD DC Service Accounts]\(AAD DC サービス アカウント\)* セキュリティ グループを選択します。
+1. **[メンバー]** を選択し、 **[追加]** を選択します。
+1. SharePoint サービス アカウントの名前を入力し、 **[OK]** を選択します。 次の例では、SharePoint サービス アカウントに *spadmin* という名前が付けられています。
+
+    ![SharePoint サービス アカウントを [AAD DC Service Accounts]\(AAD DC サービス アカウント\) セキュリティ グループに追加する](./media/deploy-sp-profile-sync/add-member-to-aad-dc-service-accounts-group.png)
+
+## <a name="next-steps"></a>次の手順
+
+詳細については、「[SharePoint Server でプロファイルを同期するために Active Directory Domain Services のアクセス許可を付与する](https://technet.microsoft.com/library/hh296982.aspx)」を参照してください
+
+<!-- INTERNAL LINKS -->
+[create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
+[associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
+[create-azure-ad-ds-instance]: tutorial-create-instance.md
+[tutorial-create-management-vm]: tutorial-create-management-vm.md
+
+<!-- EXTERNAL LINKS -->
+[sharepoint-service-account]: /sharepoint/security-for-sharepoint-server/plan-for-administrative-and-service-accounts

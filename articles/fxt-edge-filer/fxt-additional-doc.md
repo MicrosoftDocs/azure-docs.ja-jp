@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 6b04537da7c26cdeff6cac9f262e138c29bee37a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.author: rohogue
+ms.openlocfilehash: e3205827f9603545b0a99b064a53e50fc94c374e
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67454594"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254905"
 ---
 # <a name="additional-documentation"></a>その他のドキュメント 
 

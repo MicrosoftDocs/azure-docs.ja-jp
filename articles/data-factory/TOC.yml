@@ -80,6 +80,8 @@
           items:
             - name: データのコピー ツール
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
+    - name: マッピング データ フローを使用してデータを変換する
+      href: tutorial-data-flow.md
     - name: クラウドのデータを変換する
       items:
         - name: HDInsight Spark
@@ -141,9 +143,9 @@
       href: concepts-pipeline-execution-triggers.md
     - name: 統合ランタイム
       href: concepts-integration-runtime.md
-    - name: マッピング データ フロー
+    - name: データ フローのマッピング
       items:
-        - name: マッピング データ フローの概念
+        - name: マッピング データ フローの概要
           href: concepts-data-flow-overview.md
         - name: デバッグ モード
           href: concepts-data-flow-debug-mode.md
@@ -151,8 +153,6 @@
           href: concepts-data-flow-json.md
         - name: スキーマの誤差
           href: concepts-data-flow-schema-drift.md
-        - name: '[検査] ウィンドウ'
-          href: concepts-data-flow-inspect-pane.md
         - name: 列パターン
           href: concepts-data-flow-column-pattern.md
         - name: データ フローの監視
@@ -161,12 +161,8 @@
           href: concepts-data-flow-performance.md
         - name: ノードの移動
           href: concepts-data-flow-move-nodes.md
-        - name: '[最適化] タブ'
-          href: concepts-data-flow-optimize-tab.md
         - name: 式ビルダー
           href: concepts-data-flow-expression-builder.md
-        - name: 参照ノード
-          href: concepts-data-flow-reference-node.md
         - name: 式言語
           href: data-flow-expression-functions.md
     - name: ロールとアクセス許可
@@ -390,6 +386,8 @@
     - name: データを変換する
       href: transform-data.md
       items:
+        - name: データ フローの実行アクティビティ
+          href: control-flow-execute-data-flow-activity.md
         - name: Azure 関数アクティビティ
           href: control-flow-azure-function-activity.md
         - name: カスタム アクティビティ
@@ -412,10 +410,12 @@
           href: transform-data-using-spark.md
         - name: HDInsight Streaming アクティビティ
           href: transform-data-using-hadoop-streaming.md
-        - name: ML バッチ実行アクティビティ
+        - name: Machine Learning バッチ実行アクティビティ
           href: transform-data-using-machine-learning.md
-        - name: ML 更新リソース アクティビティ
+        - name: Machine Learning 更新リソース アクティビティ
           href: update-machine-learning-models.md
+        - name: Machine Learning パイプラインの実行アクティビティ
+          href: transform-data-machine-learning-service.md
         - name: ストアド プロシージャ アクティビティ
           href: transform-data-using-stored-procedure.md
         - name: コンピューティングのリンクされたサービス
@@ -424,8 +424,6 @@
       items:
         - name: 変数アクティビティの追加
           href: control-flow-append-variable-activity.md
-        - name: データ フローの実行アクティビティ
-          href: control-flow-execute-data-flow-activity.md
         - name: パイプラインの実行アクティビティ
           href: control-flow-execute-pipeline-activity.md
         - name: アクティビティのフィルター処理
@@ -436,6 +434,8 @@
           href: control-flow-get-metadata-activity.md
         - name: If 条件アクティビティ
           href: control-flow-if-condition-activity.md
+        - name: Switch アクティビティ
+          href: control-flow-switch-activity.md
         - name: ルックアップ アクティビティ
           href: control-flow-lookup-activity.md
         - name: 変数アクティビティの設定
@@ -538,6 +538,8 @@
       items:
         - name: SSDT からの Azure での SSIS パッケージの実行
           href: how-to-invoke-ssis-package-ssdt.md
+        - name: Azure 対応の dtexec を使用して SSIS パッケージを実行する
+          href: how-to-invoke-ssis-package-azure-enabled-dtexec.md
         - name: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行
           href: how-to-invoke-ssis-package-ssis-activity.md
         - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの実行
@@ -600,6 +602,8 @@
           href: ssis-integration-runtime-management-troubleshoot.md
         - name: Azure-SSIS IR でのパッケージ実行に関するトラブルシューティング
           href: ssis-integration-runtime-ssis-activity-faq.md
+        - name: データ フローのトラブルシューティング
+          href: data-flow-troubleshoot-guide.md
 - name: シナリオ
   items:
     - name: データ レイクおよび EDW のデータ移行

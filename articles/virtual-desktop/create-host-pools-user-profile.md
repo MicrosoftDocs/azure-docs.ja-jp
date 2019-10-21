@@ -1,22 +1,22 @@
 ---
 title: 仮想マシンベースのファイル共有を使用してホスト プール用の FSLogix プロファイル コンテナーを作成する  - Azure
-description: 仮想マシンベースのファイル共有を使用して Windows Virtual Desktop プレビュー ホスト プールの FSLogix プロファイル コンテナーを設定する方法。
+description: 仮想マシンベースのファイル共有を使用して Windows Virtual Desktop ホスト プールの FSLogix プロファイル コンテナーを設定する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: helohr
-ms.openlocfilehash: cf3d682e4d0c68822267a4e63846d80b632cbdcc
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 9b187696524e96bc13254a24fd8f39d5aeb89e7d
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876791"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676697"
 ---
 # <a name="create-a-profile-container-for-a-host-pool-using-a-file-share"></a>ファイル共有を使用してホスト プール用のプロファイル コンテナーを作成する
 
-Windows Virtual Desktop プレビュー サービスでは、推奨されるユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが提供されます。 ユーザー プロファイル ディスク (UPD) ソリューションの使用は推奨されず、Windows Virtual Desktop の将来のバージョンでは非推奨になります。
+Windows Virtual Desktop サービスでは、推奨されるユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが提供されます。 ユーザー プロファイル ディスク (UPD) ソリューションの使用は推奨されず、Windows Virtual Desktop の将来のバージョンでは非推奨になります。
 
 この記事では、仮想マシンベースのファイル共有を使用してホスト プールの FSLogix プロファイル コンテナー共有を設定する方法について説明します。 FSLogix のその他のドキュメントについては、[FSLogix サイト](https://docs.fslogix.com/)を参照してください。
 
@@ -62,7 +62,7 @@ FSLogix ソフトウェアで仮想マシンを構成するには、ホスト �
 6. **Profiles** という名前のキーを作成します。
 7. Profiles キーに以下の値を作成します。
 
-| Name                | Type               | データ/値                        |
+| 名前                | 種類               | データ/値                        |
 |---------------------|--------------------|-----------------------------------|
 | 有効             | DWORD              | 1                                 |
 | VHDLocations        | 複数行文字列値 | "ファイル共有のネットワーク パス"     |

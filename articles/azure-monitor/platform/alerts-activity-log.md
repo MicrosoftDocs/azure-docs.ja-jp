@@ -1,18 +1,18 @@
 ---
 title: Azure Monitor でアクティビティ ログ アラートを作成、表示、管理する
 description: Azure portal、Azure Resource Manager テンプレート、および Azure PowerShell を使用してアクティビティ ログ アラートを作成します。
-author: msvijayn
+author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: vinagara
-ms.openlocfilehash: a7f80698791831b3d4404ea0f687a75c660c2222
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.author: robb
+ms.openlocfilehash: e93b6f9c74bb44cb7341f5763261ecb699432ae2
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67852742"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675269"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -75,7 +75,7 @@ Azure portal を使用して、アクティビティ ログ アラート ルー�
 
      - **[アラート ロジック]** :
 
-       - **イベントのレベル**:イベントの重大度レベル: "_詳細_"、"_情報_"、"_警告_"、"_エラー_" または "_重大_"。
+       - **イベントのレベル**:イベントの重大度レベル: "詳細"、"_情報_"、"_警告_"、"_エラー_" または "_重大_"。
        - **[状態]** :イベントの状態: "_開始済み_"、"_失敗_" または "_成功_"。
        - **[イベント開始者]** : "呼び出し元" とも呼ばれます。 操作を実行したユーザーの電子メール アドレスまたは Azure Active Directory 識別子。
 

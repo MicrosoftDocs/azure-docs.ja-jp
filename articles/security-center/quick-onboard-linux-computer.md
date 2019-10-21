@@ -3,9 +3,8 @@ title: Azure Security Center クイックスタート - Linux コンピュータ
 description: このクイック スタートでは、Linux コンピューターで Security Center の利用を開始する方法を説明します。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -14,13 +13,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
-ms.author: rkarlin
-ms.openlocfilehash: 110dcb1531390b207ae741af07fe0ad18964aae1
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.author: memildin
+ms.openlocfilehash: 82ce466f12acef529b5e45e5dd94c64b94be0f7e
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816122"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202892"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイック スタート:Linux コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。 このエージェントは Microsoft Monitoring Agent (MMA) と呼ばれていますが、OMS エージェントとも呼ばれます。
@@ -82,7 +81,7 @@ Azure サブスクリプションの利用を開始した後で、エージェ�
     `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
 
 ## <a name="next-steps"></a>次の手順
-このクイック スタートでは、Linux コンピューターでエージェントをプロビジョニングしました。 Security Center の使用方法について学習するには、セキュリティ ポリシーの構成とリソースのセキュリティの評価に関するチュートリアルに進んでください。
+このクイックスタートでは、Linux コンピューター上でエージェントをプロビジョニングしました。 Security Center の使用方法について学習するには、セキュリティ ポリシーの構成とリソースのセキュリティの評価に関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:セキュリティ ポリシーの定義と評価](tutorial-security-policy.md)

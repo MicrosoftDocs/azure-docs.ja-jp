@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/11/2019
+ms.date: 09/24/2019
 ms.author: magoedte
-ms.openlocfilehash: bd4016d91000ee23023eaa64872bff9a057058d1
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 477343e188bece55f72a59debbab8c9a3f3e2905
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70916061"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264994"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Azure Monitor for VMs の有効化 (プレビュー) の概要
 
@@ -45,10 +45,13 @@ Azure Monitor for VMs は、次のリージョンで Log Analytics ワークス�
 - 米国中西部
 - 米国西部 2<sup>1</sup>
 - East US
+- 米国東部 2<sup>1</sup>
 - カナダ中部
 - 英国南部
+- 北ヨーロッパ<sup>1</sup>
 - 西ヨーロッパ
 - 東南アジア
+- 東日本<sup>1</sup>
 - オーストラリア東部<sup>1</sup>
 - オーストラリア南東部<sup>1</sup>
 
@@ -179,7 +182,7 @@ Dependency Agent は、以下の場所からダウンロードできます。
 
 | ファイル | OS | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.1 | FCF9C1D9B20AD414051B49EE79144E595CCC411EB6D444D6D5B5A7B1874DCDEC |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.9.2 | 6DFF19B9690E42CA190E3B69137C77904B657FA02895033EAA4C3A6A41DA5C6A |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.9.1 | 1CB447EF30FC042FE7499A686638F3F9B4F449692FB9D80096820F8024BE4D7C |
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御

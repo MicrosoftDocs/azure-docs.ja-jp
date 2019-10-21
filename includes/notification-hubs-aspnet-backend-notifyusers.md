@@ -5,15 +5,15 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/22/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 590ba4b7a61fa437767d99ac6b9ae3e0fa94edc3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 60d5d8efb10cce54743038599238cc6f61922369
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227795"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "70934102"
 ---
 ## <a name="create-the-webapi-project"></a>Web API プロジェクトを作成する
 
@@ -185,6 +185,9 @@ ms.locfileid: "68227795"
         }
     }
     ```
+    > [!IMPORTANT]
+    > 先に進む前に、ハブの**名前**と **DefaultFullSharedAccessSignature** を入力します。 
+    
 7. 次に、**RegisterController** という名前の新しいコントローラーを作成します。 ソリューション エクスプローラーで、**Controllers** フォルダーを右クリックし、 **[追加]** 、 **[コントローラー]** の順に選択します。
 
 8. **[Web API 2 コントローラー - 空]** 、 **[追加]** の順に選択します。

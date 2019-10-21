@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 4b627b13fb79cd5105a95d9161d9239f28f2e062
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 167e243b1fe4ea5ba9403ac3ca1fcea42f02f59a
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68567506"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71273554"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance に使用する VNet のサブネット サイズを決める
 
@@ -29,7 +29,7 @@ VNet のサブネットにデプロイできる Managed Instance の数は、そ
 仕様上、マネージド インスタンスにはサブネット内で 16 個以上の IP アドレスが必要であり、最大 256 個の IP アドレスを使用する場合があります。 その結果、サブネットの IP 範囲を定義するときに、/28 から /24 までの間のサブネット マスクを使用することができます。 ネットワーク マスク ビット /28 (ネットワークあたり 14 ホスト) は、単一の汎用デプロイおよびビジネスクリティカル デプロイに適したサイズです。 マスク ビット /27 (ネットワークあたり 30 ホスト) は、同じ VNet 内での複数のマネージ インスタンス デプロイに最適です。 /26 (62 ホスト) および /24 (254 ホスト) のマスク ビット設定を使用すれば、VNet をさらに拡張して、追加のマネージ インスタンスをサポートすることができます。
 
 > [!IMPORTANT]
-> 16 個の IP アドレスから成るサブネット サイズは、マネージド インスタンスをさらにスケールアウトするために必要な最小限の潜在能力です。プレフィックス /27 以下のサブネットを選択することを強くお勧めします。
+> 16 個の IP アドレスから成るサブネット サイズは最小限に抑えられており、仮想コア サイズの変更などのスケーリング操作はサポートされていません。 プレフィックス /27 または最長プレフィックスのサブネットを選択することを強くお勧めします。
 
 ## <a name="determine-subnet-size"></a>サブネットのサイズを決める
 

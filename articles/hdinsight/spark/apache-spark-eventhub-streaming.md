@@ -1,19 +1,19 @@
 ---
 title: チュートリアル:HDInsight で Apache Spark を使用して Azure Event Hubs からのデータを処理する
 description: チュートリアル - Azure HDInsight で Apache Spark を Azure Event Hubs に接続し、ストリーミング データを処理します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/24/2019
-ms.openlocfilehash: 2483ba22d3d502479e87ae385bcc837ec87a103c
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: be21b809272a132ee6e63582036c36ad5dcdf4ad
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735348"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "71266208"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>チュートリアル:HDInsight で Azure Event Hubs と Apache Spark を使用してツイートを処理する
 
@@ -106,7 +106,7 @@ Event Hubs 名前空間がデプロイされたら、イベント ハブを作�
 1. **[Event Hubs 名前空間]** ページから、 **[+ イベント ハブ]** を選択します。  
 1. **[Create Event Hub] (イベント ハブの作成)** ページで、次の値を入力します。
 
-    - **[名前]** :イベント ハブの名前を指定します。 
+    - **Name**:イベント ハブの名前を指定します。 
  
     - **[パーティション数]** : 10.  
 
@@ -252,9 +252,9 @@ HDInsight では、データが Azure Storage または Azure Data Lake Storage 
 
 Azure Portal で、クラスターを開き、 **[削除]** を選択します。
 
-![HDInsight クラスターの削除](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
+![HDInsight におけるクラスターの削除 (Azure portal)](./media/apache-spark-load-data-run-query/hdinsight-azure-portal-delete-cluster.png "HDInsight クラスターの削除")
 
-リソース グループ名を選択し、リソース グループ ページを開いて、 **[リソース グループの削除]** を選択することもできます。 リソース グループを削除すると、HDInsight Spark クラスターと既定のストレージ アカウントの両方が削除されます。
+リソース グループ名を選び、リソース グループ ページを開いて、 **[リソース グループの削除]** を選ぶこともできます。 リソース グループを削除すると、HDInsight Spark クラスターと既定のストレージ アカウントの両方が削除されます。
 
 ## <a name="next-steps"></a>次の手順
 

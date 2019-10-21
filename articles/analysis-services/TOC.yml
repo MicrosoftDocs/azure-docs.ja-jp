@@ -66,6 +66,8 @@
           href: analysis-services-addservprinc-admins.md
     - name: モデル
       items:
+        - name: 表形式のモデリング
+          href: 'https://docs.microsoft.com/analysis-services/tabular-models/tabular-models-ssas'
         - name: Visual Studio からのデプロイ (SSDT)
           href: analysis-services-deploy.md
         - name: REST API を使用した更新

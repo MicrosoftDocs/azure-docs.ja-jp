@@ -17,12 +17,12 @@ ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b996b2387e324c7e318536c2a13bdc9de39a7a5e
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 648652ed32a5dea30de665b7fa49190171a7f10a
+ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860886"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71268410"
 ---
 # <a name="desktop-app-that-calls-web-apis---app-registration"></a>Web API を呼び出すデスクトップ アプリ - アプリの登録
 
@@ -51,6 +51,7 @@ ms.locfileid: "70860886"
   > [!IMPORTANT]
   > 現在、MSAL.NET は、Windows で実行されているデスクトップ アプリケーションでは、既定で別のリダイレクト URI を使用しています (`urn:ietf:wg:oauth:2.0:oob`)。 今後、この既定を変更することを予定しているため、`https://login.microsoftonline.com/common/oauth2/nativeclient` を使用することをお勧めします。
 
+- MacOS 用のネイティブ Objective-C アプリまたは Swift アプリを構築している場合は、アプリケーションのバンドル識別子に基づいて redirectUri を次の形式で登録する必要があります: **msauth.<your.app.bundle.id>://auth** (<your.app.bundle.id> をご自分のアプリケーションのバンドル識別子に置き換えます)
 - アプリで統合 Windows 認証またはユーザー名/パスワードのみを使用する場合は、アプリケーションのリダイレクト URI を登録する必要はありません。 これらのフローが Microsoft ID プラットフォームの v2.0 エンドポイントへのラウンド トリップを行い、アプリケーションは特定の URI にコールバックされません。
 - デバイス コード フロー、統合 Windows 認証、ユーザー名/パスワードを、いずれのリダイレクト URI も持たない機密性の高いクライアント アプリケーション フロー (デーモン アプリケーションで使用されるクライアント資格証明フロー) と区別するには、アプリケーションがパブリック クライアント アプリケーションであることを示す必要があります。 この構成を実現するには、アプリケーションの **[認証]** セクションにアクセスします。 次に、 **[詳細設定]** サブセクションの **[既定のクライアントの種類]** 段落で、 **[アプリケーションは、パブリック クライアントとして扱います]** の質問に対して **[はい]** を選択します。
 

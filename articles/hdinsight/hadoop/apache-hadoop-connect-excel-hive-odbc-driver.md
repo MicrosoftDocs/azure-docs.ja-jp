@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: b1231a406ac20512e9ce92032379d697c3346af3
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: c81c0de98442f576145f2c2e12f0b2053b80e83a
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882760"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71033604"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用して Excel を Azure HDInsight 上の Apache Hadoop に接続する
 
@@ -32,9 +32,11 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 * Office 2010 Professional Plus 以降または Excel 2010 以降を使用するワークステーション。
 
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーのインストール
+
 ODBC ドライバーを使用するアプリケーションのバージョンに合致した [Microsoft Hive ODBC Driver](https://go.microsoft.com/fwlink/?LinkID=286698) のバージョンをダウンロードしてインストールします。  この記事では、Office Excel に対してこのドライバーを使用します。
 
 ## <a name="create-apache-hive-odbc-data-source"></a>Apache Hive ODBC データ ソースを作成する
+
 次の手順に従って、Hive ODBC データ ソースを作成します。
 
 1. Windows で、[スタート]、[Windows 管理ツール]、[ODBC データ ソース (32 ビット)/(64 ビット)] の順に移動します。  これにより、 **[ODBC データ ソース アドミニストレーター]** ウィンドウが開きます。
@@ -65,7 +67,7 @@ ODBC ドライバーを使用するアプリケーションのバージョンに
    |  ブロック単位でフェッチされた行 |大量のレコードをフェッチする場合、このパラメーターを調整してパフォーマンスを最適化する必要がある場合があります。 |
    |  既定の文字列の列の長さ、バイナリ列の長さ、10 進数の列の桁数 |データ型の長さおよび精度は、データが返される方法に影響する可能性があります。 精度が失われたり、切り捨てられたりするために間違った情報が返されます。 |
 
-    ![詳細オプション](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "DSN の詳細構成オプション")
+    ![DSN の詳細構成オプション](./media/apache-hadoop-connect-excel-hive-odbc-driver/hiveodbc-datasource-advancedoptions1.png "DSN の詳細構成オプション")
 
 1. **[テスト]** を選択して、データ ソースをテストします。 データ ソースが正しく構成された場合、テスト結果に "**成功!** " と表示されます。  
 
@@ -83,7 +85,7 @@ ODBC ドライバーを使用するアプリケーションのバージョンに
 
 2. **[データ]** タブで **[データの取得]**  >  **[その他のデータ ソース]**  >  **[ODBC]** の順に移動して、 **[ODBC]** ウィンドウを起動します。
 
-    ![データ接続ウィザードを開く](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "データ接続ウィザードを開く")
+    ![Excel データ接続ウィザードを開く](./media/apache-hadoop-connect-excel-hive-odbc-driver/simbahiveodbc-excel-dataconnection1.png "Excel データ接続ウィザードを開く")
 
 3. ドロップダウン リストから、前のセクションで作成したデータ ソース名を選択して、 **[OK]** を選択します。
 
@@ -91,7 +93,7 @@ ODBC ドライバーを使用するアプリケーションのバージョンに
 
 5. **[ナビゲーター]** で、 **[HIVE]**  >  **[既定値]**  >  **[hivesampletable]** の順に移動し、次に **[読み込み]** を選択します。 データが Excel にインポートされるまでに、しばらく時間がかかります。
 
-    ![HDInsight Hive ODBC ナビゲーター](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "データ接続ウィザードを開く")
+    ![HDInsight Excel Hive ODBC ナビゲーター](./media/apache-hadoop-connect-excel-hive-odbc-driver/hdinsight-hive-odbc-navigator.png "HDInsight Excel Hive ODBC ナビゲーター")
 
 ## <a name="next-steps"></a>次の手順
 

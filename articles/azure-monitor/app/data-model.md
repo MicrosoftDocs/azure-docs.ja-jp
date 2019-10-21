@@ -5,19 +5,20 @@ services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
-ms.service: application-insights
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 04/25/2017
+ms.date: 10/14/2019
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 749b4077b457eff836ec515f21d97e892e663156
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b14ce5cc83dcbbeef2379d21027d4bca337fd9fd
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60899200"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376034"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights Telemetry のデータ モデル
 
@@ -49,7 +50,7 @@ Application Insights Telemetry モデルは、テレメトリをそれが属す�
 
 Application Insights データ モデルはシンプルで基本的でありながら、アプリケーション テレメトリをモデル化するのに十分に強力な方法です。 基本的なシナリオをサポートするモデルをシンプルかつスリムに維持しながら、高度な用途に対してスキーマを拡張できるよう努めています。
 
-データ モデルまたはスキーマの問題やご提案を報告するには、GitHub の[ApplicationInsights ホーム](https://github.com/Microsoft/ApplicationInsights-Home/labels/schema) リポジトリを使用してください。
+データ モデルまたはスキーマの問題やご提案を報告するには、GitHub の[ApplicationInsights ホーム](https://github.com/Microsoft/ApplicationInsights-Home/issues) リポジトリを使用してください。
 
 ## <a name="next-steps"></a>次の手順
 

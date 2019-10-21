@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: bf60ba7d940ab3ea3f4d30fc9fb1d76f9304ec1b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1db929e3ec4b400113d04cb7dd1cd4b8d2e86a9a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086592"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176594"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -360,7 +360,7 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|Resource|アクセス許可|
+|リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
 
@@ -523,7 +523,7 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|Resource|アクセス許可|
+|リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
 
@@ -666,7 +666,7 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|Resource|アクセス許可|
+|リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルの読み取り|
 
@@ -814,7 +814,7 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|Resource|アクセス許可|
+|リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザー ファイルへのフル アクセスを持つ|
 
@@ -964,7 +964,7 @@ module.exports = function (context, req) {
 
 このバインドには、Azure AD の次のアクセス許可が必要です。
 
-|Resource|アクセス許可|
+|リソース|アクセス許可|
 |--------|--------|
 |Microsoft Graph|ユーザーとしてのメールの送信|
 
@@ -979,7 +979,7 @@ module.exports = function (context, req) {
 
 
 
-## <a name="webhooks"></a>webhooks
+## <a name="webhooks"></a>Webhooks
 
 Webhook を使用すると、Microsoft Graph でのイベントに応答できます。 Webhook をサポートするには、_webhook サブスクリプション_ の作成、更新、および対応のための関数が必要です。 webhook の完全なソリューションには、次のバインドの組み合わせが必要です。
 - [Microsoft Graph の webhook トリガー](#webhook-trigger)を使用すると、受信した webhook に応答できます。
@@ -1087,11 +1087,11 @@ module.exports = function (context) {
 
 ### <a name="webhook-trigger---attributes"></a>webhook トリガー - 属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[GraphWebhookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookTriggerAttribute.cs) 属性を使用します。
 
 ### <a name="webhook-trigger---configuration"></a>webhook トリガー - 構成
 
-次の表は、*function.json* ファイルと `GraphWebHookTrigger` 属性で設定したバインド構成のプロパティを説明しています。
+次の表は、*function.json* ファイルと `GraphWebhookTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
@@ -1239,11 +1239,11 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-input---attributes"></a>webhook の入力 - 属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) 属性を使用します。
 
 ### <a name="webhook-input---configuration"></a>webhook の入力 - 構成
 
-次の表は、*function.json* ファイルと `GraphWebHookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
+次の表は、*function.json* ファイルと `GraphWebhookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
@@ -1380,11 +1380,11 @@ module.exports = function (context, req) {
 
 ### <a name="webhook-output---attributes"></a>webhook の出力 - 属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[GraphWebhookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebhookSubscriptionAttribute.cs) 属性を使用します。
 
 ### <a name="webhook-output---configuration"></a>webhook の出力 - 構成
 
-次の表は、*function.json* ファイルと `GraphWebHookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
+次の表は、*function.json* ファイルと `GraphWebhookSubscription` 属性で設定したバインド構成のプロパティを説明しています。
 
 |function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|

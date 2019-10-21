@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: daf7b01725a931b8fa76be14e06e2b32cffe5da6
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: f57a0431bbdafee2d38038d0039b47a34e5454c7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900631"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315830"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>Data Box Edge 上のファイルを移動する C# IoT Edge モジュールを開発する
 
@@ -180,7 +180,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
     }
     ```
 
-6. **パイプ メッセージ メソッド**のコードを削除し、その代わりに **FileCopy** のコードを挿入します。
+6. **PipeMessage メソッド**のコードを削除し、その代わりに **FileCopy** のコードを挿入します。
 
     ```
         /// <summary>

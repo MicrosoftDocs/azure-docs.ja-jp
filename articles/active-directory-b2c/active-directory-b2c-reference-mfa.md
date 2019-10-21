@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a14c648e55c25c6244f1ba09d5b73bf31e5f7337
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0b872fcfbc2ead2cebdd32ff718b582c13af314e
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509310"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065579"
 ---
 # <a name="enable-multi-factor-authentication-in-azure-active-directory-b2c"></a>Azure Active Directory B2C の多要素認証 | Microsoft Docs
 
-Azure Active Directory (Azure AD) B2C は [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) と直接統合されているので、ご自分のアプリケーションのサインアップおよびサインイン エクスペリエンスに第 2 のセキュリティ層を簡単に追加できます。 コードを 1 行も記述する必要なく多要素認証を有効にできます。 サインアップおよびサインイン ユーザー フローを既に作成していても、多要素認証を有効にできます。
+Azure Active Directory B2C (Azure AD B2C) は [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) と直接統合されているため、ご自分のアプリケーションのサインアップおよびサインイン エクスペリエンスに第 2 のセキュリティ層を簡単に追加できます。 コードを 1 行も記述する必要なく多要素認証を有効にできます。 サインアップおよびサインイン ユーザー フローを既に作成していても、多要素認証を有効にできます。
 
 この機能を利用すると、次のようなシナリオをアプリケーションで処理するのに役立ちます。
 
@@ -40,11 +40,11 @@ Azure Active Directory (Azure AD) B2C は [Azure Multi-Factor Authentication](..
 
 ## <a name="add-multi-factor-authentication"></a>多要素認証の追加
 
-以前作成したユーザー フローで多要素認証を有効にすることもできます。 
+以前作成したユーザー フローで多要素認証を有効にすることもできます。
 
 多要素認証を有効にするには
 
-1. ユーザー フローを開き、 **[プロパティ]** を選択します。 
+1. ユーザー フローを開き、 **[プロパティ]** を選択します。
 2. **[多要素認証]** の横にある **[有効]** を選択します。
 3. ページの上部にある **[保存]** をクリックします。
 

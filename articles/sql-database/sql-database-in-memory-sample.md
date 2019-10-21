@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: 5f6f4ce4fc77533a4d893472298ef3a20f153136
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: e3e819fc90e8900219ebc7809adb293369084a72
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68568004"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828208"
 ---
 # <a name="in-memory-sample"></a>In-Memory のサンプル
 
@@ -49,7 +49,7 @@ Azure SQL Database のインメモリ テクノロジにより、アプリケー
 
 2. SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)を使用して、データベースに接続します。
 
-3. [インメモリ OLTP Transact-SQL スクリプト](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) をクリップボードにコピーします。 この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
+3. [インメモリ OLTP Transact-SQL スクリプト](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) をクリップボードにコピーします。 この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
 
 4. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 `MEMORY_OPTIMIZED = ON` 句の CREATE TABLE ステートメントが重要です。 例:
 
@@ -198,7 +198,7 @@ whereas for SQL 2016+
 
 
 
-### <a name="run-the-inmem-stress-workload-first"></a>最初に *_inmem* stress ワークロードを実行する
+### <a name="run-the-_inmem-stress-workload-first"></a>最初に *_inmem* stress ワークロードを実行する
 
 
 *RML コマンド プロンプト* ウィンドウを使用して、ostress.exe コマンド ラインを実行できます。 コマンドライン パラメーターは `ostress` に次のことを行うように求めます。
@@ -236,7 +236,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 `11/12/15 00:35:00.873 [0x000030A8] OSTRESS exiting normally, elapsed time: 00:01:31.867`
 
 
-#### <a name="reset-edit-for-ondisk-then-rerun"></a>リセット、 *_ondisk* の編集、再実行
+#### <a name="reset-edit-for-_ondisk-then-rerun"></a>リセット、 *_ondisk* の編集、再実行
 
 
 *_inmem* 実行の結果を取得したら、 *_ondisk* 実行に次の手順を実行します。
@@ -279,7 +279,7 @@ OLTP ワークロードのリアルタイム分析では、多くの場合、非
    - 正確な名前を使用します。
    - 任意の Premium サービス階層を選択します。
 
-2. [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) をクリップボードにコピーします。
+2. [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) をクリップボードにコピーします。
    - この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
    - このスクリプトでは、Dimension テーブルと 2 つのファクト テーブルを作成します。 fact テーブルには、それぞれ 350 万行のデータが設定されています。
    - スクリプトが完了するには約 15 分かかります。
@@ -302,7 +302,7 @@ OLTP ワークロードのリアルタイム分析では、多くの場合、非
 #### <a name="key-queries-to-compare-the-columnstore-index"></a>列ストア インデックスを比較する重要なクエリ
 
 
-パフォーマンスの改善を確認できるいくつかの T-SQL クエリの種類については、[こちら](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/clustered_columnstore_sample_queries.sql)を参照してください。 T-SQL スクリプトの手順 2. では、このペアのクエリに注意してください。 2 つのクエリの違いは次の 1 行のみです。
+パフォーマンスの改善を確認できるいくつかの T-SQL クエリの種類については、[こちら](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/clustered_columnstore_sample_queries.sql)を参照してください。 T-SQL スクリプトの手順 2. では、このペアのクエリに注意してください。 2 つのクエリの違いは次の 1 行のみです。
 
 
 - `FROM FactResellerSalesXL_PageCompressed a`

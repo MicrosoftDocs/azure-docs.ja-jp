@@ -5,16 +5,15 @@ manager: nitinme
 author: HeidiSteen
 services: search
 ms.service: search
-ms.subservice: cognitive-search
 ms.topic: overview
 ms.date: 08/02/2019
 ms.author: heidist
-ms.openlocfilehash: f4308cf0309725fc0ba3b5feb047d04af2ebbe66
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: ec0bf6002d8e90b41c2eed3c21f53e38f0fbbe8f
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638182"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71265213"
 ---
 # <a name="what-is-knowledge-store-in-azure-search"></a>Azure Search 内のナレッジ ストアとは
 
@@ -26,13 +25,13 @@ ms.locfileid: "69638182"
 
 過去にコグニティブ検索を使用したことがある場合は、スキルセットを使用して、一連のエンリッチメントを通じてドキュメントを移動することは既にわかっています。 結果は、Azure Search インデックスまたは (このプレビューの新機能である) ナレッジ ストア内のプロジェクションです。 2 つの出力 (検索インデックスとナレッジ ストア) は、互いに物理的に異なります。 同じコンテンツを共有していますが、まったく異なる方法で格納および使用されます。
 
-物理的には、ナレッジ ストアはパイプラインの構成方法に応じて、Azure Table Storage または Blob Storage として Azure Storage アカウントで作成されます。 Azure Storage に接続できるすべてのツールまたはプロセスは、ナレッジ ストアのコンテンツを使用できます。
+物理的には、ナレッジ ストアは、パイプラインの構成方法に応じて、Azure Table Storage、Blob Storage、またはその両方としての Azure Storage アカウントです。 Azure Storage に接続できるすべてのツールまたはプロセスは、ナレッジ ストアのコンテンツを使用できます。
 
 プロジェクションとは、ナレッジ ストア内にデータを構築するためのメカニズムのことです。 たとえば、プロジェクションを使用して、出力を 1 つの BLOB として保存するのか、関連するテーブルのコレクションとして保存するのかを選択できます。 ナレッジ ストアのコンテンツを表示する簡単な方法は、Azure Storage の組み込みの [Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) を使用することです。
 
 ![パイプライン ダイアグラム内のナレッジ ストア](./media/knowledge-store-concept-intro/annotationstore_sans_internalcache.png "パイプライン ダイアグラム内のナレッジ ストア")
 
-ナレッジ ストアを使用するには、インデックス作成パイプラインに段階的な操作を定義するスキルセットに `knowledgeStore` 要素を追加します。 実行中に、Azure Search によって Azure ストレージ アカウント内にスペースが作成され、パイプラインによって作成された定義とコンテンツがそこに入力されます。
+ナレッジ ストアを使用するには、インデックス作成パイプラインに段階的な操作を定義するスキルセットに `knowledgeStore` 要素を追加します。 実行中に、Azure Search によって Azure ストレージ アカウント内にスペースが作成され、パイプライン内に作成された定義を使用してエンリッチされたドキュメントがプロジェクションされます。
 
 ## <a name="benefits-of-knowledge-store"></a>ナレッジ ストアのメリット
 
@@ -105,6 +104,13 @@ AI ベースのインデックス作成パイプラインで何を生成でき�
 
             ], 
             "objects": [ 
+               
+            ]      
+        },
+        { 
+            "tables": [ 
+            ], 
+            "objects": [ 
                 { 
                 "storageContainer": "Reviews", 
                 "format": "json", 
@@ -112,7 +118,7 @@ AI ベースのインデックス作成パイプラインで何を生成でき�
                 "key": "/document/Review/Id" 
                 } 
             ]      
-        }    
+        }        
     ]     
     } 
 }
@@ -132,7 +138,7 @@ AI ベースのインデックス作成パイプラインで何を生成でき�
 
 * [Azure BLOB Storage](search-howto-indexing-azure-blob-storage.md)
 
-[Azure Table Storage](search-howto-indexing-azure-tables.md) は、ナレッジ ストア内の送信データに使用できますが、AI ベースのインデックス作成パイプラインへの受信データのリソースとして使用することはできません。
+* [Azure Table Storage](search-howto-indexing-azure-tables.md)
 
 ### <a name="2---azure-search-service"></a>2 - Azure Search サービス
 
@@ -143,17 +149,17 @@ Azure Search ではインデクサー機能が提供されます。インデク�
 | Object | REST API | 説明 |
 |--------|----------|-------------|
 | データ ソース | [データ ソースの作成](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | エンリッチメントされたドキュメントを作成するために使用されるソース データを提供する外部 Azure データ ソースを識別するリソースです。  |
-| スキルセット | [スキルセットの作成 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | エンリッチメント パイプラインでインデックス作成時に使用される[組み込みのスキル](cognitive-search-predefined-skills.md)と[カスタム コグニティブ スキル](cognitive-search-custom-skill-interface.md)の使用を調整するリソース。 |
+| スキルセット | スキルセットを作成する [(api-version=2019-05-06-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | エンリッチメント パイプラインでインデックス作成時に使用される[組み込みのスキル](cognitive-search-predefined-skills.md)と[カスタム コグニティブ スキル](cognitive-search-custom-skill-interface.md)の使用を調整するリソース。 |
 | index | [インデックスの作成](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Azure Search インデックスを表すスキーマです。 ソース データ内のフィールドやエンリッチメント フェーズで作成されたフィールドにマッピングされるインデックス内のフィールド (たとえば、エンティティ認識によって作成された組織名のためのフィールド)。 |
 | インデクサー | [インデクサーの作成 (api-version=2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | データ ソース、スキルセット、ソースからのフィールドの関連付け、ターゲット インデックスまでの中間データ構造、およびインデックス自体などの、インデックス作成時に使用されるコンポーネントを定義するリソースです。 インデクサーを実行すると、データの取り込みやエンリッチメントがトリガーされます。 出力は、インデックス スキーマを基に作成され、ソース データが入力され、スキルセットでエンリッチメントされた検索インデックスです。  |
 
 ### <a name="3---cognitive-services"></a>3 - Cognitive Services
 
-スキルセット内で指定されたエンリッチメントは、Cognitive Services の Computer Vision および Language 機能に基づいています。 Cognitive Services 機能は、スキルセットを通じたインデックス作成時に利用されます。 スキルセットはスキルの合成であり、スキルは特定の Computer Vision および Language 機能にバインドされます。 Cognitive Services を統合するには、[Cognitive Services リソースをスキルセットにアタッチ](cognitive-search-attach-cognitive-services.md)します。
+スキルセット内に指定されたエンリッチメントは、カスタムであるか、Cognitive Services の Computer Vision 機能と Language 機能に基づいています。 Cognitive Services 機能は、スキルセットを通じたインデックス作成時に利用されます。 スキルセットはスキルの合成であり、スキルは特定の Computer Vision および Language 機能にバインドされます。 Cognitive Services を統合するには、[Cognitive Services リソースをスキルセットにアタッチ](cognitive-search-attach-cognitive-services.md)します。
 
 ### <a name="4---storage-account"></a>4 - ストレージ アカウント
 
-Azure ストレージ アカウントでは、Azure Search によって、スキルセットの構成方法に応じて BLOB コンテナーまたはテーブルが作成されます。 データのソースが Azure Blob または Table Storage の場合は、既に設定しています。 そうでない場合は、Azure ストレージ アカウントを作成する必要があります。 Azure ストレージ内のテーブルとオブジェクトには、AI ベースのインデックス作成パイプラインによって作成されるエンリッチメントされたドキュメントが含まれます。
+Azure Storage アカウントの下に、Azure Search によって、スキルセット内のプロジェクションの構成方法に応じて、BLOB コンテナー、テーブル、または両方が作成されます。 データのソースが Azure Blob Storage または Azure Table Storage の場合、ストレージ アカウントは既に設定されているため、それを再利用できます。 そうでない場合は、Azure ストレージ アカウントを作成する必要があります。 Azure ストレージ内のテーブルとオブジェクトには、AI ベースのインデックス作成パイプラインによって作成されるエンリッチメントされたドキュメントが含まれます。
 
 ストレージ アカウントは、スキルセット内で指定されます。 `api-version=2019-05-06-Preview` では、スキルセット定義には、アカウント情報を提供できるようにナレッジ ストア定義が含まれます。
 
@@ -179,15 +185,13 @@ Azure ストレージ アカウントでは、Azure Search によって、スキ
 
 + Blob Storage では、ドキュメントごとに 1 つの包括的な JSON 表現が作成されます。 両方のストレージ オプションを 1 つのスキルセット内で使用して、さまざまな表現を取得できます。
 
-+ Azure Search では、コンテンツがインデックス内に永続化されます。 シナリオが検索に関連しない場合、たとえば、別のツールで分析することが目的の場合は、パイプラインによって作成されるインデックスを削除することができます。 しかし、インデックスを保持し、コンテンツと対話するために [Search エクスプローラー](search-explorer.md)などの組み込みツールを (Storage Explorer と分析アプリの後ろの) 第 3 のメディアとして使用することもできます。
-
-ドキュメントのコンテンツと共に、エンリッチメントされたドキュメントには、エンリッチメントを生成したスキルセット バージョンのメタデータが含まれます。  
++ Azure Search では、コンテンツがインデックス内に永続化されます。 シナリオが検索に関連しない場合、たとえば、別のツールで分析することが目的の場合は、パイプラインによって作成されるインデックスを削除することができます。 しかし、インデックスを保持し、コンテンツと対話するために [Search エクスプローラー](search-explorer.md)などの組み込みツールを (Storage Explorer と分析アプリの後ろの) 第 3 のメディアとして使用することもできます。  
 
 ## <a name="inside-a-knowledge-store"></a>ナレッジ ストアの内部
 
-ナレッジ ストアは、注釈キャッシュとプロジェクションで構成されます。 "*キャッシュ*" は、スキルからの結果をキャッシュして変更を追跡するためにサービスによって内部的に使用されます。 "*プロジェクション*" では、目的の用途に一致するエンリッチメントのスキーマと構造を定義します。 ナレッジ ストアごとに 1 つのキャッシュがありますが、プロジェクションは複数あります。 
+ "*プロジェクション*" では、目的の用途に一致するエンリッチメントのスキーマと構造を定義します。 形式と形状が異なるデータを使用するアプリケーションがある場合は、複数のプロジェクションを定義できます。 
 
-キャッシュは常に BLOB コンテナーですが、プロジェクションはテーブルまたはオブジェクトとして明確に示すことができます。
+プロジェクションは、オブジェクトまたはテーブルとして表すことができます。
 
 + オブジェクトとして、プロジェクションは Blob Storage にマップされ、プロジェクションはコンテナーに保存されます。コンテナー内には、データ サイエンス パイプラインなどのシナリオ用に JSON でのオブジェクトまたは階層表現があります。
 

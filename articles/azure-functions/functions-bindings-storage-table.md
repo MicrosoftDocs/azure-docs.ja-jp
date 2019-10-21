@@ -10,12 +10,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: d647a643dafe50a5768261c2b09bf8c4154be469
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 464c1a8ab27f6615fdffd8efa6ab20d75e10a7c1
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086241"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171188"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -529,7 +529,7 @@ Table Storage の入力バインドは、次のシナリオをサポートして
 
 * **JavaScript で 1 行または複数行を読み取る**
 
-  `filter` と `take` プロパティを設定します。 `partitionKey` と `rowKey` は設定しません。 `context.bindings.<name>` を使用して入力テーブルの単一のエンティティ (または複数のエンティティ) にアクセスします。 逆シリアル化されたオブジェクトには `RowKey` プロパティと `PartitionKey` プロパティがあります。
+  `filter` と `take` プロパティを設定します。 `partitionKey` と `rowKey` は設定しません。 `context.bindings.<BINDING_NAME>` を使用して入力テーブルの単一のエンティティ (または複数のエンティティ) にアクセスします。 逆シリアル化されたオブジェクトには `RowKey` プロパティと `PartitionKey` プロパティがあります。
 
 ## <a name="output"></a>Output
 
@@ -786,7 +786,7 @@ Table Storage の出力バインドは、次のシナリオをサポートして
 
 * **JavaScript で 1 行または複数行を書き込む**
 
-  JavaScript 関数の場合、`context.bindings.<name>` を使用してテーブルの出力にアクセスします。
+  JavaScript 関数の場合、`context.bindings.<BINDING_NAME>` を使用してテーブルの出力にアクセスします。
 
 ## <a name="exceptions-and-return-codes"></a>例外とリターン コード
 

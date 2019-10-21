@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Ansible を使用して Azure Cosmos DB アカウントを構成する | Microsoft Docs
+title: チュートリアル - Ansible を使用して Azure Cosmos DB アカウントを構成する
 description: Ansible を使用して、Azure Cosmos DB を作成して構成する方法について説明します。
 keywords: ansible, azure, devops, bash, プレイブック, cosmo db, データベース
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 06d416358c1886f09b0b2336cc1ea53ce89947ae
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 82cb29cfe3aeb7b6ca43fceca4c900b2eeb148c2
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230815"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242064"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>チュートリアル:Ansible を使用して Azure Cosmos DB アカウントを構成する
 
@@ -50,7 +50,7 @@ ms.locfileid: "65230815"
 
 ## <a name="create-resource-group"></a>リソース グループの作成 
 
-サンプル プレイブックのスニペットは、Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+このサンプル プレイブックのスニペットは、Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 ```yml
   - name: Create a resource group

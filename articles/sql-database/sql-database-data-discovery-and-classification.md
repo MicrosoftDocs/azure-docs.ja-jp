@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 5aaad8c44328e1cc2aeb7729e3e221665823a467
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b85793223e23aa3d668d6f86494da3ee78c43e91
+ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072971"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71009985"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Azure SQL Database および SQL Data Warehouse のデータの検出と分類
 
@@ -138,12 +138,17 @@ T-SQL を使って、列の分類を追加/削除し、データベース全体�
 - 1 つ以上の列の分類の削除:[DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - データベースのすべての分類の表示: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
+### <a name="manage-classifications-using-rest-apis"></a>Rest API を使用して分類を管理する
+
 REST API を使用して、分類をプログラムで管理することもできます。 公開された REST API は、次の操作をサポートします。
 
-- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): 指定された列の機密ラベルを作成または更新します
+- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) - 指定された列の機密ラベルを作成または更新します
 - [削除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): 指定された列の機密ラベルを削除します
+- [推奨の無効化](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/disablerecommendation) - 指定された列に対する秘密度の推奨を無効にします
+- [推奨の有効化](https://docs.microsoft.com/en-us/rest/api/sql/sensitivitylabels/enablerecommendation) - 指定された列に対する秘密度の推奨を有効にします (既定では、すべての列で推奨事項が有効になっています)
 - [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): 指定された列の機密ラベルを取得します
 - [現在の内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) - 指定されたデータベースの現在の機密ラベルを取得します
+
 - [推奨される内容をデータベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) - 指定されたデータベースの推奨される機密ラベルを取得します
 
 ## <a name="manage-data-discovery-and-classification-using-azure-powershell"></a>Azure PowerShell を使用してデータの検出と分類を管理する

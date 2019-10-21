@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f891642761a2f692158efbd9111ff96444c4269d
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 31d84d5bf43bac55769a6479917794a51c1ccd0c
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476200"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "70999114"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory Terms of Use
 
@@ -355,7 +355,7 @@ A:いいえ。管理者が利用規約の詳細 (名前、表示名、展開必�
 A:現在、既存の利用規約のドキュメントを更新することはできません。 利用規約のドキュメントを変更するには、新しい利用規約のインスタンスを作成する必要があります。
 
 **Q:ハイパーリンクが利用規約の PDF ドキュメント内にある場合、エンド ユーザーはそれらをクリックできますか?**<br />
-A:PDF は既定で JPEG としてレンダリングされるため、ハイパーリンクをクリックすることはできません。 必要に応じて、ユーザーは **[表示に問題がある場合は、ここをクリックします]** を選択できます。ハイパーリンクがサポートされていれば、PDF がネイティブでレンダリングされます。
+A:はい。エンド ユーザーは、追加のページへのハイパーリンクを選択できますが、ドキュメント内のセクションへのリンクはサポートされていません。
 
 **Q:利用規約は複数の言語をサポートしていますか?**<br />
 A:はい。 現時点では、管理者が 1 つの利用規約に対して構成できる言語が 108 あります。 管理者は、複数の PDF ドキュメントをアップロードして各言語に対応付けることができます (最大 108)。 エンド ユーザーがサインインすると、ブラウザーの言語設定を確認して一致するドキュメントを表示します。 一致しない場合は、既定のドキュメント (最初にアップロードされたドキュメント) が表示されます。

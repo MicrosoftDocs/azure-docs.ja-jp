@@ -173,7 +173,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![新しい関数の作成](./media/tutorial-process-email-attachments-workflow/function-app-new-function.png)
 
-3. **[Choose a template below or go to the quickstart]\(下のテンプレートを選択するか、クイックスタートに移動してください\)** で、 **[HTTP trigger]\(Http トリガー)\** テンプレートを選択します。
+3. **(下のテンプレートを選択するか、クイックスタートに移動してください)** で、 **(Http トリガー)** テンプレートを選択します。
 
    ![HTTP トリガー テンプレートを選択する](./media/tutorial-process-email-attachments-workflow/function-select-httptrigger-csharp-function-template.png)
 
@@ -312,7 +312,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    !["新しいステップ"](./media/tutorial-process-email-attachments-workflow/add-condition-under-trigger.png)
 
-2. **[アクションを選択してください]** で、検索ボックスに「条件」と入力します。 このアクションを選択: **[条件] - [Control]\(コントロール)\**
+2. **[アクションを選択してください]** で、検索ボックスに「条件」と入力します。 このアクションを選択: **[条件] - (コントロール)**
 
    ![[条件] を選択](./media/tutorial-process-email-attachments-workflow/select-condition.png)
 

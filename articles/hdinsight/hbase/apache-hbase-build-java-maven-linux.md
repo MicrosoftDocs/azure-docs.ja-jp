@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.openlocfilehash: 1ec4e9cbfd1d70c128f530bd996793a49c8a7d00
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c948d07bed99f1286e27d645fde7b96fdc699c02
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67484135"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311692"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
@@ -704,4 +704,4 @@ public class DeleteTable {
 
 ## <a name="next-steps"></a>次の手順
 
-[Apache HBase と SQuirreL SQL を使用する方法を確認する](apache-hbase-phoenix-squirrel-linux.md)
+[Apache HBase と SQLLine を使用する方法を確認する](apache-hbase-query-with-phoenix.md)

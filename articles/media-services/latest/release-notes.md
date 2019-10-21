@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 10/07/2019
 ms.author: juliako
-ms.openlocfilehash: 618aa58fe8553789c831ca933ae6be73843b93dd
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 34d68974366eb17704b4ea1291bd1d29a0eea95a
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801390"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72168628"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート
 
@@ -36,16 +36,38 @@ ms.locfileid: "70801390"
 
 ## <a name="september-2019"></a>2019 年 9 月
 
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="live-linear-encoding-of-live-events"></a>ライブ イベントのライブ リニア エンコード
+
 Media Services v3 で、24 時間 365 日のライブ イベントのライブ リニア エンコードのプレビュー版が発表されました。
- 
+
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
+
+*Azure Media Indexer* および "*Azure Media Indexer 2 プレビュー*" の廃止を発表します。 [Azure Media Indexer](../previous/media-services-index-content.md) メディア プロセッサは、2020 年 10 月 1 日に廃止されます。 [Azure Media Indexer 2 プレビュー](../previous/media-services-process-content-with-indexer2.md) メディア プロセッサは、2020 年 1 月 1 日に廃止されます。 [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) が、これらの従来のメディア プロセッサに取って代わります。
+
+詳細については、「[Azure Media Indexer および Azure Media Indexer 2 から Azure Media Services Video Indexer に移行する](../previous/migrate-indexer-v1-v2.md)」を参照してください。
+
 ## <a name="august-2019"></a>2019 年 8 月
 
-### <a name="south-africa-regional-pair-is-open-for-media-services"></a>南アフリカのリージョン ペアで Media Services を提供開始 
+###  <a name="media-services-v3"></a>Media Services v3  
+
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>南アフリカのリージョン ペアで Media Services を提供開始 
 
 Media Services を南アフリカ北部と南アフリカ西部の各リージョンで利用できるようになりました。
 
 詳細については、「[Media Services v3 が存在するクラウドとリージョン](azure-clouds-regions.md)」を参照してください。
 
+###  <a name="media-services-v2"></a>Media Services v2  
+
+#### <a name="deprecation-of-media-processors"></a>メディア プロセッサの非推奨化
+
+お知らせしているように *Windows Azure Media Encoder* (WAME) と *Azure Media Encoder* (AME) のメディア プロセッサは非推奨となっており、2019 年 11 月 30 日には廃止される予定です。
+
+詳細については、[WAME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101334)と [AME から Media Encoder Standard への移行](https://go.microsoft.com/fwlink/?LinkId=2101335)に関するページを参照してください。
+ 
 ## <a name="july-2019"></a>2019 年 7 月
 
 ### <a name="content-protection"></a>コンテンツ保護
@@ -275,4 +297,5 @@ Media Services v3 CLI または API を使用して 9 月 28 日から 10 月 12
 
 ## <a name="next-steps"></a>次の手順
 
-[概要](media-services-overview.md)
+- [概要](media-services-overview.md)
+- [Media Services v2 リリース ノート](../previous/media-services-release-notes.md)

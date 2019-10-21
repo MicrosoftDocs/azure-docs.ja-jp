@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e4403c245a3cae671f83260ae313ed400b0f7721
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60400856"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259350"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>分散トレース (プレビュー) を使用して Azure IoT の cloud-to-device メッセージをトレースする
 
@@ -240,7 +240,7 @@ C SDK を使用せずに分散トレース機能をプレビューするのは**
 }
 ```
 
-| 要素名 | 必須 | Type | 説明 |
+| 要素名 | 必須 | 種類 | 説明 |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | はい | 整数 | サンプリングのオンとオフを切り替えるために、現在 2 つのモード値がサポートされています。 `1` がオンで、`2` がオフです。 |
 | `sampling_rate` | はい | 整数 | この値は、パーセンテージです。 `0` から `100` までの値 (両端を含む) のみ許可されます。  |
@@ -251,7 +251,7 @@ IoT Hub によって記録されたすべてのトレースを表示するには
 
 ### <a name="query-using-log-analytics"></a>Log Analytics を使用してクエリを実行する
 
-[診断ログで Log Analytics](../azure-monitor/platform/diagnostic-logs-stream-log-store.md) を設定した場合、`DistributedTracing` カテゴリでログを探すことでクエリを実行します。 たとえば、次のクエリでは、記録されたすべてのトレースが表示されます。
+[診断ログで Log Analytics](../azure-monitor/platform/resource-logs-collect-storage.md) を設定した場合、`DistributedTracing` カテゴリでログを探すことでクエリを実行します。 たとえば、次のクエリでは、記録されたすべてのトレースが表示されます。
 
 ```Kusto
 // All distributed traces 
@@ -263,7 +263,7 @@ AzureDiagnostics
 
 Log Analytics で表示されるログの例
 
-| TimeGenerated | OperationName | Category | Level | CorrelationId | DurationMs | Properties |
+| TimeGenerated | OperationName | Category | Level | CorrelationId | DurationMs | properties |
 |--------------------------|---------------|--------------------|---------------|---------------------------------------------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-02-22T03:28:28.633Z | DiagnosticIoTHubD2C | DistributedTracing | 情報 | 00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01 |  | {"deviceId":"AZ3166","messageSize":"96","callerLocalTimeUtc":"2018-02-22T03:27:28.633Z","calleeLocalTimeUtc":"2018-02-22T03:27:28.687Z"} |
 | 2018-02-22T03:28:38.633Z | DiagnosticIoTHubIngress | DistributedTracing | 情報 | 00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01 | 20 | {"isRoutingEnabled":"false","parentSpanId":"0144d2590aacd909"} |

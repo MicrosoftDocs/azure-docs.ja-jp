@@ -1,41 +1,40 @@
 ---
 title: クイック スタート:音声を合成する、Unity - Speech Service
 titleSuffix: Azure Cognitive Services
-description: このガイドでは、Unity と Unity 用 Speech SDK (ベータ版) を使用してテキスト読み上げアプリケーションを作成します。 完了すると、テキストから音声を合成し、デバイスのスピーカーにリアルタイムで出力できます。
+description: このガイドでは、Unity と Unity 用 Speech SDK を使用してテキスト読み上げアプリケーションを作成します。 完了すると、テキストから音声を合成し、デバイスのスピーカーにリアルタイムで出力できます。
 services: cognitive-services
 author: yinhew
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 6/26/2019
+ms.date: 9/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 507ab9ef9bb3e482e5a33d2406424dfb9116de54
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: be5f07b8ea58d0d62c70e0e9dc8ab187ce4a0f63
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553618"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803198"
 ---
-# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-unity-beta"></a>クイック スタート:Unity 用 Speech SDK (ベータ版) を使用して音声を合成する
+# <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-unity"></a>クイック スタート:Unity 用 Speech SDK を使用して音声を合成する
 
-クイック スタートは[音声認識](quickstart-csharp-unity.md)にも使用できます。
+[音声認識](quickstart-csharp-unity.md)のクイックスタートも利用できます。
 
-このガイドでは、[Unity](https://unity3d.com/) と Unity 用 Speech SDK (ベータ版) を使用してテキスト読み上げアプリケーションを作成します。
+このガイドでは、[Unity](https://unity3d.com/) と Unity 用 Speech SDK を使用してテキスト読み上げアプリケーションを作成します。
 完了すると、テキストから音声を合成し、デバイスのスピーカーにリアルタイムで出力できます。
 Unity に慣れていない場合は、アプリケーションの開発を始める前に [Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/UnityManual.html)を確認することをお勧めします。
 
 > [!NOTE]
-> Unity 用 Speech SDK は、現在ベータ版です。
-> Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM/ARM64)、および Android (x86、ARM32/64) がサポートされています。
+> Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています。
 
 ## <a name="prerequisites"></a>前提条件
 
 このプロジェクトを完了するには、以下が必要になります。
 
 * [Unity 2018.3 以降](https://store.unity.com/)および [UWP ARM64 のサポートを追加する Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-     * ARM64 をサポートするために、[ARM64 用のオプションのビルド ツール、および ARM64 用の Windows10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) をインストールします 
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。 Visual Studio 2017 バージョン 15.9 以降も許容されます。
+* Windows ARM64 をサポートするため、[ARM64 用のオプションのビルド ツール、および ARM64 用の Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) をインストールします 
 * 音声サービス用のサブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 
 ## <a name="create-a-unity-project"></a>Unity プロジェクトを作成する

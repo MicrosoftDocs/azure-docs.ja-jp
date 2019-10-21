@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 293f2a704fecb04bc6b65e49743ea80905f2394f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: b365c914db0ce43da5dac4c5b889c854c0ea0639
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142684"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827406"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Azure Container Registry に関するよく寄せられる質問
 
@@ -260,6 +260,7 @@ ACR は、さまざまなレベルのアクセス許可を提供する[カスタ
 - [更新の直後に新しいユーザー アクセス許可が有効にならない場合がある](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [REST API の直接呼び出しで認証情報が正しい形式で提供されない](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
+- [Azure portal でリポジトリまたはタグをフェッチできないのはなぜですか?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
 - [Windows で http トレースを収集するにはどうすればよいですか?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>`az acr check-health` を使用した正常性チェック
@@ -409,6 +410,17 @@ curl $redirect_url
 ### <a name="why-does-the-azure-portal-not-list-all-my-repositories-or-tags"></a>Azure Portal にすべてのリポジトリまたはタグが一覧表示されないのはなぜですか? 
 
 Microsoft Edge または IE ブラウザーを使用している場合は、最大で 100 個のリポジトリまたはタグを表示できます。 レジストリに 100 を超えるリポジトリまたはタグが含まれている場合は、すべてを一覧表示するために Firefox または Chrome ブラウザーを使用することをお勧めします。
+
+### <a name="why-does-the-azure-portal-fail-to-fetch-repositories-or-tags"></a>Azure portal でリポジトリまたはタグをフェッチできないのはなぜですか?
+
+ブラウザーがリポジトリまたはタグをサーバーにフェッチするための要求を送信できない可能性があります。 次のような理由が考えられます。
+
+* ネットワーク接続の不備
+* ファイアウォール
+* 広告ブロッカー
+* DNS エラー
+
+ネットワーク管理者に問い合わせるか、ネットワークの構成と接続を確認してください。 また、ブラウザーでシークレット/プライベート セッションを試して、古いブラウザー キャッシュや Cookie を回避することもできます。
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Windows で http トレースを収集するにはどうすればよいですか?
 

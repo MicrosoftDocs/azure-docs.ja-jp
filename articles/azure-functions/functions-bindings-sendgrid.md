@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: dc113417be3df97b9ab9509c30a1f23e1eeaf35b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a0d12639ce074c3ed105513a3d90e323e30d1087
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086274"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155073"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
 
@@ -31,6 +31,9 @@ SendGrid バインディングは [Microsoft.Azure.WebJobs.Extensions.SendGrid](
 ## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
 
 SendGrid バインディングは [Microsoft.Azure.WebJobs.Extensions.SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) GitHub リポジトリにあります。
+
+> [!NOTE]
+> バージョン 2.x では、`ServiceBusTrigger` インスタンスで構成されたトピックまたはサブスクリプションが作成されることはありません。 バージョン 2.x は、[Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) に基づいており、キューの管理を処理することはありません。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 

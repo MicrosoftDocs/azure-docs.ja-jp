@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/27/2019
+ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 5f273f2eb36b0bd1d6757eb1ffb2403641cd461f
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 65a049070806fd702497d50236e9d541de2e8b1a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801379"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71842296"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 
@@ -60,6 +60,9 @@ ms.locfileid: "70801379"
 | [Azure Kubernetes Service クラスター管理者ロール](#azure-kubernetes-service-cluster-admin-role) | クラスター管理者の資格情報アクションを一覧表示します。 |
 | [Azure Kubernetes Service クラスター ユーザー ロール](#azure-kubernetes-service-cluster-user-role) | クラスター ユーザーの資格情報アクションを一覧表示します。 |
 | [Azure Maps データ閲覧者 (プレビュー)](#azure-maps-data-reader-preview) | Azure Maps アカウントからマップ関連データを読み取るためのアクセス権を付与します。 |
+| [Azure Sentinel 共同作成者](#azure-sentinel-contributor) | Azure Sentinel 共同作成者 |
+| [Azure Sentinel 閲覧者](#azure-sentinel-reader) | Azure Sentinel 閲覧者 |
+| [Azure Sentinel レスポンダー](#azure-sentinel-responder) | Azure Sentinel レスポンダー |
 | [Azure Service Bus データ所有者](#azure-service-bus-data-owner) | Azure Service Bus リソースへのフル アクセスを許可します。 |
 | [Azure Service Bus データ受信者](#azure-service-bus-data-receiver) | Azure Service Bus リソースへの受信アクセスを許可します。 |
 | [Azure Service Bus データ送信者](#azure-service-bus-data-sender) | Azure Service Bus リソースへの送信アクセスを許可します。 |
@@ -178,16 +181,16 @@ ms.locfileid: "70801379"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | リソースへのアクセス以外のすべてを管理できます。 |
+> | **説明** | リソースへのアクセス権の付与以外のすべてを管理できます。 |
 > | **Id** | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | **アクション** |  |
 > | * | あらゆる種類のリソースの作成と管理 |
 > | **NotActions** |  |
-> | Microsoft.Authorization/*/Delete | ロールとロール割り当ての削除 |
-> | Microsoft.Authorization/*/Write | ロールとロール割り当ての作成 |
+> | Microsoft.Authorization/*/Delete | ロール、ポリシーの割り当て、ポリシーの定義、ポリシー セットの定義を削除します。 |
+> | Microsoft.Authorization/*/Write | ロール、ロールの割り当て、ポリシーの割り当て、ポリシーの定義、ポリシー セットの定義を作成します。 |
 > | Microsoft.Authorization/elevateAccess/Action | テナント スコープで、ユーザー アクセス管理者のアクセス権を呼び出し元に付与します。 |
-> | Microsoft.Blueprint/blueprintAssignments/write | 任意のブループリント アーティファクトを作成または更新します |
-> | Microsoft.Blueprint/blueprintAssignments/delete | 任意のブループリント アーティファクトを削除します |
+> | Microsoft.Blueprint/blueprintAssignments/write | 任意のブループリント割り当てを作成または更新します |
+> | Microsoft.Blueprint/blueprintAssignments/delete | 任意のブループリント割り当てを削除します |
 > | **DataActions** |  |
 > | "*なし*" |  |
 > | **NotDataActions** |  |
@@ -645,6 +648,89 @@ ms.locfileid: "70801379"
 > | "*なし*" |  |
 > | **DataActions** |  |
 > | Microsoft.Maps/accounts/data/read | Maps アカウントにデータ読み取りアクセスを許可します。 |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-sentinel-contributor"></a>Azure Sentinel 共同作成者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Sentinel 共同作成者 |
+> | **Id** | ab8e14d6-4a74-4a29-9ba8-549422addade |
+> | **アクション** |  |
+> | Microsoft.SecurityInsights/* |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
+> | Microsoft.OperationalInsights/workspaces/read | 既存のワークスペースを取得します。 |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/* |  |
+> | Microsoft.OperationsManagement/solutions/read | 既存の OMS ソリューションを取得します。 |
+> | Microsoft.OperationalInsights/workspaces/query/read | ワークスペース内のデータに対してクエリを実行します |
+> | Microsoft.OperationalInsights/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
+> | Microsoft.Insights/workbooks/* |  |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-sentinel-reader"></a>Azure Sentinel 閲覧者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Sentinel 閲覧者 |
+> | **Id** | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
+> | **アクション** |  |
+> | Microsoft.SecurityInsights/*/read |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
+> | Microsoft.OperationalInsights/workspaces/read | 既存のワークスペースを取得します。 |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/read | 保存された検索クエリを取得します。 |
+> | Microsoft.OperationsManagement/solutions/read | 既存の OMS ソリューションを取得します。 |
+> | Microsoft.OperationalInsights/workspaces/query/read | ワークスペース内のデータに対してクエリを実行します |
+> | Microsoft.OperationalInsights/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
+> | Microsoft.Insights/workbooks/read | ブックを読み取ります |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
+> | **NotDataActions** |  |
+> | "*なし*" |  |
+
+## <a name="azure-sentinel-responder"></a>Azure Sentinel レスポンダー
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure Sentinel レスポンダー |
+> | **Id** | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
+> | **アクション** |  |
+> | Microsoft.SecurityInsights/*/read |  |
+> | Microsoft.SecurityInsights/cases/* |  |
+> | Microsoft.OperationalInsights/workspaces/analytics/query/action | 新しいエンジンを使用して検索します。 |
+> | Microsoft.OperationalInsights/workspaces/read | 既存のワークスペースを取得します。 |
+> | Microsoft.OperationalInsights/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/read | 保存された検索クエリを取得します。 |
+> | Microsoft.OperationsManagement/solutions/read | 既存の OMS ソリューションを取得します。 |
+> | Microsoft.OperationalInsights/workspaces/query/read | ワークスペース内のデータに対してクエリを実行します |
+> | Microsoft.OperationalInsights/workspaces/dataSources/read | ワークスペースのデータソースを取得します。 |
+> | Microsoft.Insights/workbooks/read | ブックを読み取ります |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | **NotActions** |  |
+> | "*なし*" |  |
+> | **DataActions** |  |
+> | "*なし*" |  |
 > | **NotDataActions** |  |
 > | "*なし*" |  |
 
@@ -1767,7 +1853,7 @@ ms.locfileid: "70801379"
 > | Microsoft.Web/customApis/* | カスタム API を作成および管理します。 |
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | App Service プランのプロパティを取得します。 |
-> | Microsoft.Web/sites/functions/listSecrets/action | Web アプリの関数のシークレットを一覧表示します。 |
+> | Microsoft.Web/sites/functions/listSecrets/action | 機能のシークレットを一覧表示します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -2278,6 +2364,7 @@ ms.locfileid: "70801379"
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | レプリケーションの復旧ポイントを読み取ります |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/action | レプリケーションを修復します。 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | 保護された項目を再保護します。 |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/switchprotection/action | 保護コンテナーを切り替えます。 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | テスト フェールオーバー |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | テスト フェールオーバーのクリーンアップ。 |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | フェールオーバー |

@@ -6,16 +6,16 @@ keywords: データ サイエンス ツール,データ サイエンス仮想マ
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
-author: vijetajo
-ms.author: vijetaj
+author: gvashishtha
+ms.author: gopalv
 ms.topic: conceptual
-ms.date: 03/16/2018
-ms.openlocfilehash: 5dbaf969420f066698a07b8d137d2ba44fc99080
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.date: 10/3/2019
+ms.openlocfilehash: df112889fd7cd8ad1574147072b6e13137945462
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208123"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947541"
 ---
 # <a name="data-platforms-supported-on-the-data-science-virtual-machine"></a>Data Science Virtual Machine でサポートされているデータ プラットフォーム
 
@@ -23,7 +23,7 @@ Data Science Virtual Machine (DSVM) を使用すると、さまざまなデー�
 
 DSVM でサポートされているデータ プラットフォーム ツールは次のとおりです。
 
-## <a name="sql-server-2016-developer-edition"></a>SQL Server 2016 Developer エディション
+## <a name="sql-server-2017-developer-edition"></a>SQL Server 2017 Developer エディション
 
 | | |
 | ------------- | ------------- |

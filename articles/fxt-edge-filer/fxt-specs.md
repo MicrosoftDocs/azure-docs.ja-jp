@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: fxt-edge-filer
 ms.topic: overview
 ms.date: 06/20/2019
-ms.author: v-erkell
-ms.openlocfilehash: 0679bce8eae515aa6b90e34fcfd15ee9b4e56b31
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.author: rohogue
+ms.openlocfilehash: 90d56ad0cec3d187d4c7307f8c004b14c3860390
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542890"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72254710"
 ---
 # <a name="azure-fxt-edge-filer-specifications"></a>Azure FXT Edge Filer の仕様
 
@@ -37,7 +37,7 @@ ms.locfileid: "67542890"
 | ドライブ番号    |  用途   |  仕様 |
 |------------------|--------|-----------------|
 | 0、1             | OS     | 480 GB の SATA SSD |
-| 2、3、4、5、6、7、8、9 | データ   | FXT 6600:3.2 TB NVMe SSD <br> FXT 6400:1.6 TB NVMe SSD |
+| 2、3、4、5、6、7、8、9 | Data   | FXT 6600:3.2 TB NVMe SSD <br> FXT 6400:1.6 TB NVMe SSD |
 
 
 ## <a name="dimensions-and-weight"></a>寸法と重量

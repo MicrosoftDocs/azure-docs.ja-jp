@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 09/18/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 508a20e826c2f7bf1260bde6858eb4472c16a5c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d2879b6830a5c793358cc2200485ed971c5f3c48
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883419"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71123317"
 ---
 # <a name="expressroute-nat-requirements"></a>ExpressRoute NAT の要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、NAT をセットアップして管理する必要があります。 一部の接続プロバイダーでは、NAT のセットアップと管理が管理されたサービスとして提供されています。 このようなサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 このようなサービスが提供されていない場合は、次に示す要件に従う必要があります。 
@@ -21,7 +21,7 @@ ExpressRoute を使用して Microsoft クラウド サービスに接続する�
 [ExpressRoute の回線とルーティング ドメイン](expressroute-circuit-peerings.md) のページをお読みになり、さまざまなルーティング ドメインの概要をご確認ください。 Azure パブリックと Microsoft ピアリングのパブリック IP アドレス要件を満たすために、ネットワークと Microsoft の間に NAT をセットアップすることをお勧めします。 このセクションでは、セットアップする NAT インフラストラクチャに関して説明します。
 
 ## <a name="nat-requirements-for-microsoft-peering"></a>Microsoft ピアリングの NAT 要件
-Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business、Dynamics 365 などの Office 365 サービスが含まれます。 Microsoft は今後、Microsoft ピアリングで双方向の接続をサポートする予定です。 Microsoft クラウド サービスに向かうトラフィックは有効な IPv4 アドレスに SNAT 変換しないと、Microsoft ネットワークに入れません。 Microsoft クラウド サービスからご利用のネットワークに送信されるトラフィックは、[非対称ルーティング](expressroute-asymmetric-routing.md)を回避するためにインターネット エッジで SNAT 変換する必要があります。 下の図に、Microsoft ピアリングのために NAT を設定する方法の概要を示します。
+Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business などの Office 365 サービスが含まれます。 Microsoft は今後、Microsoft ピアリングで双方向の接続をサポートする予定です。 Microsoft クラウド サービスに向かうトラフィックは有効な IPv4 アドレスに SNAT 変換しないと、Microsoft ネットワークに入れません。 Microsoft クラウド サービスからご利用のネットワークに送信されるトラフィックは、[非対称ルーティング](expressroute-asymmetric-routing.md)を回避するためにインターネット エッジで SNAT 変換する必要があります。 下の図に、Microsoft ピアリングのために NAT を設定する方法の概要を示します。
 
 ![](./media/expressroute-nat/expressroute-nat-microsoft.png) 
 

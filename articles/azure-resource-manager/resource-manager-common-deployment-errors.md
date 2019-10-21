@@ -6,20 +6,20 @@ author: tfitzmac
 keywords: デプロイのエラー、Azure へのデプロイ、Azure へのデプロイ
 ms.service: azure-resource-manager
 ms.topic: troubleshooting
-ms.date: 08/30/2019
+ms.date: 10/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: fc6fdde4daa2d671b9d93673c2a78c2d9d85963c
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 185570992ad0308b500da30bca212a0495bcb0fa
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275733"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001641"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
 この記事では、Azure へのデプロイに関する一般的なエラーについて説明し、そのエラーを解決するための情報を提供します。 デプロイ エラーのエラー コードを見つけることができない場合は、「[エラー コードを見つける](#find-error-code)」を参照してください。
 
-エラー コードに関する情報を探していて、その情報がこの記事に記載されていない場合は、お知らせください。 このページの最後で、フィードバックを残していただくことができます。 このフィードバックは、GitHub のイシューで追跡されます。 
+エラー コードに関する情報を探していて、その情報がこの記事に記載されていない場合は、お知らせください。 このページの最後で、フィードバックを残していただくことができます。 このフィードバックは、GitHub のイシューで追跡されます。
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -34,14 +34,17 @@ ms.locfileid: "70275733"
 | AuthorizationFailed | お客様のアカウントまたはサービス プリンシパルには、デプロイを完了するために十分なアクセス権がありません。 自分のアカウントが属するロールと、デプロイの範囲に対するアクセス権を確認してください。<br><br>必要なリソース プロバイダーが登録されていないと、このエラーを受け取ることがあります。 | [Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)<br><br>[登録を解決する](resource-manager-register-provider-errors.md) |
 | BadRequest | Resource Manager で予期される値と一致しないデプロイ値を送信しました。 トラブルシューティングの方法については、内部ステータス メッセージを確認してください。 | [テンプレート リファレンス](/azure/templates/)と[サポートされている場所](resource-location.md) |
 | 競合 | リソースの現在の状態では許可されていない操作を要求しています。 たとえば、ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。 | |
-| DeploymentActive | このリソース グループへの同時実行デプロイが完了するまで待ちます。 | |
+| DeploymentActiveAndUneditable | このリソース グループへの同時実行デプロイが完了するまで待ちます。 | |
+| DeploymentNameInvalidCharacters | デプロイ名に使用できるのは、文字、数字、'-'、'.' または '_'. のみです。 | |
+| DeploymentNameLengthLimitExceeded | デプロイ名は、64 文字までに制限されています。  | |
 | DeploymentFailed | DeploymentFailed エラーは、そのエラーを解決するために必要な詳細が示されない一般的なエラーです。 エラー コードのエラー詳細で情報を確認してください。 | [エラー コードを見つける](#find-error-code) |
-| DeploymentQuotaExceeded | リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 Azure CLI の場合は [az group deployment delete](/cli/azure/group/deployment#az-group-deployment-delete) を、PowerShell では [Remove-AzResourceGroupDeployment](/powershell/module/az.resources/remove-azresourcegroupdeployment) を使用して、履歴からエントリを削除できます。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 | |
+| DeploymentQuotaExceeded | リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 | [デプロイ数が 800 を超えたときのエラーを解決する](deployment-quota-exceeded.md) |
 | DnsRecordInUse | DNS レコード名は、一意の名前にする必要があります。 別の番号を入力します。 | |
 | ImageNotFound | VM イメージの設定を確認してください。 |  |
 | InUseSubnetCannotBeDeleted | リソースを更新しようとするときにこのエラーが発生することがありますが、リソースを削除して作成すると、要求が処理されます。 変更されていないすべての値を指定してください。 | [リソースを更新する](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | 該当するテナントのアクセス トークンを取得します。 トークンは、自分のアカウントが属するテナントからのみ取得できます。 | |
 | InvalidContentLink | これは、入れ子になった無効なテンプレートにリンクしようとしたことが原因と考えられます。 入れ子になったテンプレートに指定した URI を十分に確認してください。 ストレージ アカウントにテンプレートがある場合は、URI がアクセス可能であることを確認してください。 場合によっては、SAS トークンを渡す必要があります。 現時点では、[Azure Storage ファイアウォール](../storage/common/storage-network-security.md)の背後にあるストレージ アカウントのテンプレートにリンクすることはできません。 GitHub などの別のリポジトリにテンプレートを移動することを検討してください。 | [リンク済みテンプレート](resource-group-linked-templates.md) |
+| InvalidDeploymentLocation | サブスクリプション レベルでデプロイする場合は、以前に使用したデプロイ名に別の場所を指定しています。 | [サブスクリプション レベルのデプロイ](deploy-to-subscription.md) |
 | InvalidParameter | リソースに対して指定したいずれかの値が、予期される値に一致しません。 このエラーはさまざまな状況が原因となって発生する可能性があります。 たとえば、パスワードが十分でない場合や、BLOB 名が正しくない場合があります。 エラー メッセージから、どの値を修正する必要があるかがわかるはずです。 | |
 | InvalidRequestContent | デプロイの値に認識されない値が含まれているか、必要な値が不足しています。 リソースの種類の値を確認してください。 | [テンプレート リファレンス](/azure/templates/) |
 | InvalidRequestFormat | デプロイを実行するときにデバッグ ログを有効にし、要求の内容を確認してください。 | [デバッグ ログ](#enable-debug-logging) |
@@ -124,13 +127,13 @@ az group deployment operation list --name exampledeployment -g examplegroup --qu
 
 ![デプロイの失敗](./media/resource-manager-common-deployment-errors/deployment-failed.png)
 
-エラー メッセージとエラー コードを表示します。 2 つのエラー コードがあることを確認します。 最初のエラー コード (**DeploymentFailed**) は、解決する必要があるエラーの詳細が示されない一般的なエラーです。 2 つ目のエラー コード (**StorageAccountNotFound**) は、必要な詳細が示されます。 
+エラー メッセージとエラー コードを表示します。 2 つのエラー コードがあることを確認します。 最初のエラー コード (**DeploymentFailed**) は、解決する必要があるエラーの詳細が示されない一般的なエラーです。 2 つ目のエラー コード (**StorageAccountNotFound**) は、必要な詳細が示されます。
 
 ![エラーの詳細](./media/resource-manager-common-deployment-errors/error-details.png)
 
 ## <a name="enable-debug-logging"></a>デバッグ ログの有効化
 
-問題が発生した原因を調べるには、要求と応答の詳細が必要な場合があります。 デプロイ中に、追加情報をログに記録することを要求できます。 
+問題が発生した原因を調べるには、要求と応答の詳細が必要な場合があります。 デプロイ中に、追加情報をログに記録することを要求できます。
 
 ### <a name="powershell"></a>PowerShell
 

@@ -1,22 +1,22 @@
 ---
-title: Windows Virtual Desktop プレビューの診断機能を使用して問題を特定する - Azure
-description: Windows Virtual Desktop プレビューの診断機能とその使用方法について説明します。
+title: Windows Virtual Desktop の診断機能を使用して問題を特定する - Azure
+description: Windows Virtual Desktop の診断機能とその使用方法について説明します。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: c07086feef1851f1a6e2a5cda2f541d52a50d91d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 5401260921aee5fc54b50c1222188a6b244a0c5a
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163491"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71840144"
 ---
-# <a name="identify-issues-with-the-diagnostics-feature"></a>診断機能を使用して問題を特定する
+# <a name="identify-and-diagnose-issues"></a>問題の特定と診断
 
-Windows Virtual Desktop プレビューでは、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 Windows Virtual Desktop ロールでは、ユーザーがシステムとやり取りするたびに診断アクティビティがログに記録されます。 各ログには、トランザクションに関連する Windows Virtual Desktop ロール、エラー メッセージ、テナント情報、ユーザー情報などの関連情報が含まれています。 診断アクティビティは、エンドユーザーのアクションと管理者のアクションの両方によって作成され、3 つの主要バケットに分類できます。
+Windows Virtual Desktop では、管理者が単一のインターフェイスを使用して問題を特定できる診断機能が提供されます。 Windows Virtual Desktop ロールでは、ユーザーがシステムとやり取りするたびに診断アクティビティがログに記録されます。 各ログには、トランザクションに関連する Windows Virtual Desktop ロール、エラー メッセージ、テナント情報、ユーザー情報などの関連情報が含まれています。 診断アクティビティは、エンドユーザーのアクションと管理者のアクションの両方によって作成され、3 つの主要バケットに分類できます。
 
 * フィード サブスクリプション アクティビティ: エンドユーザーが Microsoft リモート デスクトップ アプリケーションを通じてフィードに接続しようとするたびに、これらのアクティビティがトリガーされます。
 * 接続アクティビティ: エンドユーザーが Microsoft リモート デスクトップ アプリケーションを通じてデスクトップまたは RemoteApp に接続しようとするたびに、これらのアクティビティがトリガーされます。
@@ -136,7 +136,7 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
 次の表では、管理者が経験する可能性のある一般的なエラーの一覧を示します。
 
 >[!NOTE]
->このプレビューは、エラーの完全な分類を含むものではなく、定期的に更新されます。 最新の情報を得るために、必ず 1 か月に 1 回以上この記事をご確認ください。
+>この一覧には、最も一般的なエラーが含まれており、定期的に更新されます。 最新の情報を得るために、必ず 1 か月に 1 回以上この記事をご確認ください。
 
 ### <a name="external-management-error-codes"></a>外部管理エラー コード
 
@@ -176,6 +176,6 @@ Get-RdsDiagnosticActivities -TenantName <tenantName> -Outcome Failure
 
 ## <a name="next-steps"></a>次の手順
 
-Windows Virtual Desktop 内のロールについて詳しくは、「[Windows Virtual Desktop プレビュー環境](environment-setup.md)」をご覧ください。
+Windows Virtual Desktop 内のロールについて詳しくは、「[Windows Virtual Desktop 環境](environment-setup.md)」をご覧ください。
 
 Windows Virtual Desktop に使用可能な PowerShell コマンドレットの一覧を表示するには、[PowerShell リファレンス](/powershell/windows-virtual-desktop/overview)に関する記事をご覧ください。

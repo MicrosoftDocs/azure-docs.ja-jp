@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/06/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 32e6311a8796e708119f3e1df813b6ebb2ed0673
-ms.sourcegitcommit: 7042ec27b18f69db9331b3bf3b9296a9cd0c0402
+ms.openlocfilehash: c5095bc8c274ef0985b00459b0d088371ab24d88
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66743006"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177037"
 ---
 # <a name="tutorial-upload-and-bind-ssl-certificates-to-azure-app-service"></a>チュートリアル:Azure App Service への SSL 証明書のアップロードとバインド
 
@@ -233,9 +233,18 @@ thumbprint=$(az webapp config ssl upload \
 ```azurecli-interactive
 az webapp config ssl bind \
     --name <app-name> \
-    --resource-group <resource-group-name>
+    --resource-group <resource-group-name> \
     --certificate-thumbprint $thumbprint \
     --ssl-type SNI \
+```
+
+次のコマンドは、アプリに https の使用を強制します。
+
+```azurecli-interactive
+az webapp update \
+    --name <app-name> \
+    --resource-group <resource-group-name> \
+    --https-only true
 ```
 
 次のコマンドを実行すると、TLS の最低バージョンが強制的に 1.2 になります。
@@ -243,7 +252,7 @@ az webapp config ssl bind \
 ```azurecli-interactive
 az webapp config set \
     --name <app-name> \
-    --resource-group <resource-group-name>
+    --resource-group <resource-group-name> \
     --min-tls-version 1.2
 ```
 

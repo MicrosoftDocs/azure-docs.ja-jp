@@ -4,16 +4,16 @@ description: この記事では、Azure エンタープライズ登録で使用�
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/09/2019
+ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: billing
 manager: boalcsva
-ms.openlocfilehash: 4b56ef09525473920c5f5925485aae9c793ecc04
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a8cf0d2eb87a823ee4b1d27484e7ea8d89c1abfc
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900864"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105454"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 
@@ -31,7 +31,7 @@ Microsoft Enterprise Azure のお客様は、REST API を使用して使用状�
 
 **Marketplace Store Charge** - [Marketplace Store Charge API](billing-enterprise-api-marketplace-storecharge.md) では、指定された請求期間または開始日から終了日までの使用量に基づく Marketplace 料金の日別内訳が返されます。 詳細については、「[Reporting APIs for Enterprise customers - Marketplace Store Charge (Enterprise のお客様向けの Reporting API - Marketplace Store Charge)](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)」を参照してください。
 
-**Price sheet** - [Price Sheet API](/billing-enterprise-api-pricesheet.md) では、登録と請求期間に対する各測定に適用される課金率が提供されます。 詳細については、「[Reporting APIs for Enterprise customers - Price Sheet (Enterprise のお客様向けの Reporting API - Price Sheet)](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet)」を参照してください。
+**Price sheet** - [Price Sheet API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) では、登録と請求期間に対する各測定に適用される課金率が提供されます。 詳細については、「[Reporting APIs for Enterprise customers - Price Sheet (Enterprise のお客様向けの Reporting API - Price Sheet)](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet)」を参照してください。
 
 **Billing Periods** - [Billing Periods API](billing-enterprise-api-billing-periods.md) では、登録の消費量データが記載された請求期間の一覧が逆時系列順に返されます。 各期間には、BalanceSummary、UsageDetails、Marktplace Charges および PriceSheet という 4 セットのデータの API ルートを示すプロパティが含まれています。 詳細については、「[Reporting APIs for Enterprise customers - Billing Periods (Enterprise のお客様向けの Reporting API - Billing Periods)](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods)」を参照してください。
 
@@ -68,7 +68,7 @@ Microsoft Enterprise Azure のお客様は、REST API を使用して使用状�
 
 認証と承認をそれぞれ呼び出すために API キーを渡します。 次のプロパティを HTTP ヘッダーに渡します。
 
-| Request Header Key | 値 |
+| 要求ヘッダー キー | 値 |
 | --- | --- |
 | Authorization | 次の形式で値を指定します: **bearer {API\_KEY}**
 例: bearer \&lt;APIKey\&gt; |

@@ -119,6 +119,10 @@
           href: app/troubleshoot-faq.md
 - name: ハウツー ガイド
   items:
+    - name: 監視シナリオ
+      items:
+        - name: Azure サービスの監視
+          href: insights/monitor-azure-resource.md
     - name: Azure Monitor の管理
       items:
         - name: ワークスペース デプロイの設計
@@ -138,7 +142,7 @@
                   href: learn/quick-create-workspace-cli.md
                 - name: Azure PowerShell の使用
                   href: learn/quick-create-workspace-posh.md
-            - name: ワークスペースを削除する
+            - name: ワークスペースの削除と復旧
               href: platform/delete-workspace.md
             - name: サービス プロバイダー向けの設計
               href: platform/service-providers.md
@@ -166,6 +170,9 @@
                 - name: ASP.NET
                   displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
                   href: app/asp-net.md
+                - name: 非 HTTP アプリ/バックグラウンド アプリ
+                  displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
+                  href: app/worker-service.md
                 - name: .NET コンソール
                   displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
                   href: app/console.md
@@ -177,36 +184,32 @@
                     - name: Web Apps
                       displayname: java
                       href: app/java-get-started.md
-                    - name: Web アプリ (2.5.0-BETA)
-                      href: app/java-get-started-25-beta.md
                     - name: Docker アプリ
                       href: app/docker.md
                     - name: ログ トレース
                       href: app/java-trace-logs.md
-                    - name: ログ トレース (2.5.0-BETA)
-                      href: app/java-trace-logs-25-beta.md
                     - name: Unix メトリック
                       href: app/java-collectd.md
                     - name: 依存関係
                       href: app/java-agent.md
-                    - name: 依存関係 (2.5.0-BETA)
-                      href: app/java-agent-25-beta.md
                     - name: テレメトリのフィルター処理
                       href: app/java-filter-telemetry.md
                     - name: Micrometer メトリック
                       displayname: java
                       href: app/micrometer-java.md
-                    - name: Micrometer メトリック (2.5.0-BETA)
-                      href: app/micrometer-java-25-beta.md
                     - name: Spring Boot アプリ
                       displayname: java
                       href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
                     - name: トラブルシューティング
                       href: app/java-troubleshoot.md
-                - name: Node.js アプリ
+                - name: Node.js
+                  href: app/nodejs.md
+                - name: Python
                   items:
-                    - name: Node.js
-                      href: app/nodejs.md
+                    - name: 概要
+                      href: app/opencensus-python.md
+                    - name: 依存関係
+                      href: app/opencensus-python-dependency.md
                 - name: Web ページ
                   items:
                     - name: クライアント側の JavaScript
@@ -218,7 +221,7 @@
                   href: app/asp-net-troubleshoot-no-data.md
             - name: コード不要の監視
               items:
-                - name: Azure VM と Azure 仮想マシン スケール セット
+                - name: Azure VM とスケール セット
                   href: app/azure-vm-vmss-apps.md
                 - name: Azure App Service
                   displayname: 'App Service, web app, PaaS, Azure web app'
@@ -232,10 +235,10 @@
                 - name: Kubernetes アプリケーション
                   displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
                   href: app/kubernetes.md
-                - name: Status Monitor
+                - name: Status Monitor (レガシ)
                   displayname: 'IIS monitoring, on premises monitoring, on prem,'
                   href: app/monitor-performance-live-website-now.md
-                - name: Status Monitor v2
+                - name: オンプレミスのサーバー
                   items:
                     - name: 概要
                       displayname: 'IIS monitoring, on premises monitoring, on prem,'
@@ -281,6 +284,9 @@
                 - name: 複数ステップ テスト
                   displayname: 'availability, GSM, visual studio web test, web test'
                   href: app/availability-multistep.md
+                - name: 可用性 + Azure Functions
+                  href: app/availability-azure-functions.md
+                  displayname: 'availability,azure functions,TrackAvailability(), timer function, azure gov, azure china, custom test, customized tests, contentmatch'
                 - name: 可用性のアラート
                   displayname: 'alerts, global, alerting'
                   href: app/availability-alerts.md
@@ -298,8 +304,6 @@
                   displayname: 'correlation headers, w3c, distributed tracing, tracing'
                 - name: ローカル フォワーダー
                   href: app/opencensus-local-forwarder.md
-                - name: Python
-                  href: app/opencensus-python.md
                 - name: Go
                   href: app/opencensus-go.md
             - name: ライブ メトリック ストリーム
@@ -428,6 +432,8 @@
                   href: app/asp-net-trace-logs.md
                 - name: パフォーマンス カウンター
                   href: app/performance-counters.md
+                - name: EventCounters
+                  href: app/eventcounters.md
                 - name: 依存関係
                   href: app/asp-net-dependencies.md
                 - name: ApplicationInsights.config
@@ -516,6 +522,8 @@
                   items:
                     - name: 概要
                       href: platform/diagnostics-extension-overview.md
+                    - name: ログの収集
+                      href: platform/azure-storage-iis-table.md
                     - name: Windows
                       items:
                         - name: バージョン履歴
@@ -603,6 +611,8 @@
                   href: insights/vminsights-overview.md
                 - name: 既知の問題
                   href: insights/vminsights-known-issues.md
+                - name: 一般提供の FAQ
+                  href: insights/vminsights-ga-release-faq.md
                 - name: FAQ
                   href: insights/vminsights-faq.md
                 - name: 監視の有効化
@@ -641,22 +651,20 @@
               href: insights/service-map.md
             - name: コンピューター グループ
               href: platform/computer-groups.md
-        - name: Azure リソース
+        - name: Azure プラットフォーム
           items:
-            - name: 診断ログ
+            - name: プラットフォームのログの概要
+              href: platform/platform-logs-overview.md
+            - name: リソース ログ
               items:
                 - name: 概要
-                  href: platform/diagnostic-logs-overview.md
-                - name: ログでの収集
-                  href: platform/diagnostic-logs-stream-log-store.md
-                - name: Azure Storage からの収集
-                  href: platform/azure-storage-iis-table.md
+                  href: platform/resource-logs-overview.md
+                - name: Azure Monitor ログの収集
+                  href: platform/resource-logs-collect-workspace.md
                 - name: ストレージへのアーカイブ
-                  href: platform/archive-diagnostic-logs.md
-                - name: Resource Manager テンプレートを使用した有効化
-                  href: platform/diagnostic-logs-stream-template.md
-        - name: Azure サブスクリプション
-          items:
+                  href: platform/resource-logs-collect-storage.md
+                - name: Event Hubs へのストリーム
+                  href: platform/resource-logs-stream-event-hubs.md
             - name: アクティビティ ログ
               items:
                 - name: 概要
@@ -671,6 +679,14 @@
                   href: platform/activity-log-export.md
                 - name: スキーマ
                   href: platform/activity-log-schema.md
+            - name: 診断設定
+              items:
+                - name: 診断設定の作成
+                  href: platform/diagnostic-settings.md
+                - name: Resource Manager での診断設定の作成
+                  href: platform/diagnostic-settings-template.md
+                - name: BLOB ストレージのフォーマットの変更
+                  href: platform/resource-logs-blob-format.md
             - name: Event Hubs へのデータのストリーム配信
               href: platform/stream-monitoring-data-event-hubs.md
             - name: Key Vault Analytics
@@ -682,6 +698,7 @@
         - name: Storage
           items:
             - name: Azure Monitor for Storage
+              displayname: 'storage, monitor, insights, storage accounts, azure storage'
               href: insights/storage-insights-overview.md
         - name: データベース
           items:
@@ -744,7 +761,7 @@
             - name: Configuration Manager の接続
               href: platform/collect-sccm.md
         - name: Event Hubs へのデータのストリーム配信
-          href: platform/diagnostic-logs-stream-event-hubs.md
+          href: platform/resource-logs-stream-event-hubs.md
     - name: データを分析する
       items:
         - name: メトリック
@@ -824,6 +841,8 @@
                   href: log-query/app-expression.md
                 - name: ワークスペースの式
                   href: log-query/workspace-expression.md
+                - name: リソースの式
+                  href: log-query/resource-expression.md
                 - name: アプリケーション データ リソースの統合
                   href: log-query/unify-app-resource-data.md
             - name: 例とガイダンス

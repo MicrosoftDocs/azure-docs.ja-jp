@@ -1,7 +1,7 @@
 ---
-title: Azure Machine Learning service でログ記録を有効にする
-titleSuffix: Azure Machine Learning service
-description: 既定の Python ロギング パッケージと SDK 固有の機能の両方を使用して、Azure Machine Learning service でログ記録を有効にする方法について説明します。
+title: Azure Machine Learning でログ記録を有効にする
+titleSuffix: Azure Machine Learning
+description: 既定の Python ロギング パッケージと SDK 固有の機能の両方を使用して、Azure Machine Learning でログ記録を有効にする方法について説明します。
 ms.author: trbye
 author: trevorbye
 services: machine-learning
@@ -10,14 +10,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 07/12/2019
-ms.openlocfilehash: 9deb369dc812616cd7256bbab4101531ca08f127
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 80508a31db8d86569c52df98697ceb62520059d2
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847919"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002750"
 ---
-# <a name="enable-logging-in-azure-machine-learning-service"></a>Azure Machine Learning service でログ記録を有効にする
+# <a name="enable-logging-in-azure-machine-learning"></a>Azure Machine Learning でログ記録を有効にする
 
 Azure Machine Learning Python SDK を使用すると、既定の Python ロギング パッケージと SDK 固有の機能の両方を使用して、ローカルなログ記録と、ポータルのワークスペースへのログ記録の両方のログ記録を有効にすることができます。 ログでは、アプリケーションの状態に関するリアルタイムの情報が開発者に提供され、エラーまたは警告の診断に役立ちます。 この記事では、次の領域でログ記録を有効にするさまざまな方法について説明します。
 
@@ -27,7 +27,7 @@ Azure Machine Learning Python SDK を使用すると、既定の Python ロギ�
 > * デプロイ済みのモデル
 > * Python の `logging` 設定
 
-[Azure Machine Learning service ワークスペースを作成する](how-to-manage-workspace.md) SDK について詳しくは、[ガイド](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)を使用してください。
+[Azure Machine Learning ワークスペースを作成](how-to-manage-workspace.md)します。 SDK について詳しくは、[ガイド](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)を使用してください。
 
 ## <a name="training-models-and-compute-target-logging"></a>モデルのトレーニングとコンピューティング先のログ記録
 

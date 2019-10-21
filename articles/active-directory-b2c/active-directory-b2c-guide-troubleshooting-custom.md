@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5dee0ef768180057452a232436fc295b36fd756c
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 4893025b7d54dad1f1da6c5967d3c1dec99b499b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963734"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71826889"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C のカスタム ポリシーと Identity Experience Framework のトラブルシューティング
 
@@ -56,13 +56,11 @@ XML ポリシー ファイルの検証は、アップロード時に自動的に
 
 ## <a name="troubleshoot-the-runtime"></a>ランタイムのトラブルシューティング
 
-* **[今すぐ実行]** と `https://jwt.ms` を使用して、Web アプリケーションまたはモバイル アプリケーションとは別にポリシーをテストします。 この Web サイトは、証明書利用者アプリケーションと同様に動作します。 このサイトには、Azure AD B2C ポリシーによって生成される JSON Web トークン (JWT) の内容が表示されます。 テスト アプリケーションを作成するには、Azure portal で **[Azure AD B2C]** \> **[アプリケーション]** に移動し、次の値のアプリケーションを追加します。
+* **[今すぐ実行]** と `https://jwt.ms` を使用して、Web アプリケーションまたはモバイル アプリケーションとは別にポリシーをテストします。 この Web サイトは、証明書利用者アプリケーションと同様に動作します。 このサイトには、Azure AD B2C ポリシーによって生成される JSON Web トークン (JWT) の内容が表示されます。
 
-  * **[名前]** :TestApp
-  * **Web アプリ/Web API**:いいえ
-  * **ネイティブ クライアント**: いいえ
+    トークン検査のために `https://jwt.ms` にリダイレクトできるテスト アプリケーションを作成するには:
 
-  次に、`https://jwt.ms` を**応答 URL** として追加します。
+    [!INCLUDE [active-directory-b2c-appreg-idp](../../includes/active-directory-b2c-appreg-idp.md)]
 
 * クライアント ブラウザーと Azure AD B2C の間でのメッセージ交換をトレースするには、[Fiddler](https://www.telerik.com/fiddler) を使用します。 これにより、オーケストレーション手順のどこでユーザー体験が失敗するか、ヒントを得ることができます。
 

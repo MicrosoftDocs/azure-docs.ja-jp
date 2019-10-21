@@ -8,16 +8,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2017
-ms.openlocfilehash: 1f468cac29579d8748f61a47b548a67d36ff8279
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c9e9258fb7ace93d0866463563d328456cbd1daa
+ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64695950"
+ms.lasthandoff: 10/14/2019
+ms.locfileid: "72311683"
 ---
 # <a name="apache-phoenix-query-server-rest-sdk"></a>Apache Phoenix Query Server REST SDK
 
-[Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](apache-hbase-overview.md) の上に構築されたオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、[SQLLine](apache-hbase-phoenix-squirrel-linux.md) などの SSH ツールを利用して HBase で SQL に似たクエリを使うことができます。 Phoenix にはまた、Phoenix Query Server (PQS) と呼ばれる HTTP サーバーも用意されています。これは、クライアント通信のために JSON と Protocol Buffers の 2 つのトランスポート メカニズムをサポートするシン クライアントです。 Protocol Buffers が既定のメカニズムであり、JSON より効率的な通信を提供します。
+[Apache Phoenix](https://phoenix.apache.org/) は、[Apache HBase](apache-hbase-overview.md) の上に構築されたオープンソースの超並列リレーショナル データベース レイヤーです。 Phoenix では、[SQLLine](apache-hbase-query-with-phoenix.md) などの SSH ツールを利用して HBase で SQL に似たクエリを使うことができます。 Phoenix にはまた、Phoenix Query Server (PQS) と呼ばれる HTTP サーバーも用意されています。これは、クライアント通信のために JSON と Protocol Buffers の 2 つのトランスポート メカニズムをサポートするシン クライアントです。 Protocol Buffers が既定のメカニズムであり、JSON より効率的な通信を提供します。
 
 この記事では、PQS REST SDK を使って、テーブルを作成する方法、行を個別にまたは一括でアップサートする方法、および SQL ステートメントでデータを選ぶ方法について説明します。 例では、[Apache Phoenix Query Server 用の Microsoft .NET ドライバー](https://www.nuget.org/packages/Microsoft.Phoenix.Client)を使います。 この SDK は [Apache Calcite の Avatica](https://calcite.apache.org/avatica/) API を基に構築されており、シリアル化形式に Protocol Buffers のみを使います。
 

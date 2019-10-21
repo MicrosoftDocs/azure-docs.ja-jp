@@ -1,22 +1,22 @@
 ---
-title: Web ブラウザーから Windows Virtual Desktop プレビューに接続する - Azure
-description: Web ブラウザーから Windows Virtual Desktop プレビューに接続する方法。
+title: Web ブラウザーから Windows Virtual Desktop に接続する - Azure
+description: Web クライアントを使用して Windows Virtual Desktop に接続する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 09/24/2019
 ms.author: helohr
-ms.openlocfilehash: 4f6bb7c414c38eaa605d259195218c461ddb0ca7
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: e7fa1d2b21bfde6495a63676bc2aa1faa07e6bc5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620163"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676766"
 ---
-# <a name="connect-from-a-web-browser"></a>Web ブラウザーから接続する
+# <a name="connect-with-the-web-client"></a>Web クライアントに接続する
 
-Web クライアントでは、時間のかかるインストール プロセスなしで Web ブラウザーから Windows Virtual Desktop プレビュー リソースにアクセスすることができます。
+Web クライアントを利用すると、時間のかかるインストール プロセスなしで Web ブラウザーから Windows Virtual Desktop リソースにアクセスできます。
 
 >[!NOTE]
 >現在、Web クライアントにはモバイル OS のサポートがありません。

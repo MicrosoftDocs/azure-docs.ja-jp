@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: b53ce30f4c49580bcd8ad3e259adf0300d8bd4a6
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 60fe9569b0e6e92ae161271439ecbf1b04788ed4
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369308"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694573"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-core-web-api-from-a-single-page-application-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用してシングルページ アプリケーションから ASP.NET Core Web API へのアクセスを許可する
 
-このチュートリアルでは、Azure Active Directory (Azure AD) B2C で保護された ASP.NET Core Web API リソースをシングルページ アプリケーションから呼び出す方法について説明します。
+このチュートリアルでは、Azure Active Directory B2C (Azure AD B2C) で保護された ASP.NET Core Web API リソースをシングルページ アプリケーションから呼び出す方法について説明します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -38,32 +38,15 @@ ms.locfileid: "68369308"
 
 ## <a name="add-a-web-api-application"></a>Web API アプリケーションを追加する
 
-アクセス トークンを提示するクライアント アプリケーションによる保護されたリソース要求を Web API リソースで受け取って処理できるためには、Web API リソースをテナントに登録しておく必要があります。
-
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-1. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
-1. **[アプリケーション]** を選択し、 **[追加]** を選択します。
-1. アプリケーションの名前を入力します。 たとえば、*webapi1* とします。
-1. **[Include web app/ web API]\(Web アプリ/Web API を含める\)** と **[暗黙的フローを許可する]** には、 **[はい]** を選択します。
-1. **[応答 URL]** には、ご使用のアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 このチュートリアルでは、サンプルはローカル環境で実行され、`https://localhost:5000` でリッスンします。
-1. **[アプリケーション ID/URI]** には、表示されている URI に対する API エンドポイント識別子を入力します。 このチュートリアルでは、完全な URI が `https://contosotenant.onmicrosoft.com/api` のような形になるように、「`api`」と入力します。
-1. **Create** をクリックしてください。
-1. *webapi1* アプリケーションを選択して、そのプロパティ ページを開きます。
-1. プロパティ ページに表示されている**アプリケーション ID** をメモします。 この ID は、後の手順で Web アプリケーションを構成するときに必要になります。
+[!INCLUDE [active-directory-b2c-appreg-webapi](../../includes/active-directory-b2c-appreg-webapi.md)]
 
 ## <a name="configure-scopes"></a>スコープを構成する
 
 スコープを使用すると、保護されたリソースへのアクセスを統制できます。 スコープは、スコープベースのアクセス制御を実装するために Web API によって使用されます。 たとえば、読み取りアクセスと書き込みアクセス両方を持つユーザーもいれば、読み取り専用アクセス許可を持つユーザーもいます。 このチュートリアルでは、Web API の読み取りと書き込み両方のアクセス許可を定義します。
 
-1. **[アプリケーション]** を選択し、 *[webapi1]* を選択して、まだ開いていない場合はそのプロパティ ページを開きます。
-1. **[公開済みスコープ]** を選択します。
-1. **[スコープ]** に「`Hello.Read`」と入力し、 **[説明]** に「`Read access to hello`」と入力します。
-1. **[スコープ]** に「`Hello.Write`」と入力し、 **[説明]** に「`Write access to hello`」と入力します。
-1. **[保存]** を選択します。
-1. 後の手順でシングルページ アプリケーションを構成するときに使用できるように、`Hello.Read` スコープの**完全なスコープ値**をメモしておきます。 完全なスコープ値は `https://yourtenant.onmicrosoft.com/api/Hello.Read` のようになります。
+[!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-公開済みスコープを使用すると、クライアント アプリに Web API へのアクセス許可を付与することができます。
+後の手順でシングルページ アプリケーションを構成するときに使用できるように、`demo.read` スコープの**完全なスコープ値**をメモしておきます。 完全なスコープ値は `https://yourtenant.onmicrosoft.com/api/demo.read` のようになります。
 
 ## <a name="grant-permissions"></a>アクセス許可を付与する
 
@@ -71,12 +54,7 @@ ms.locfileid: "68369308"
 
 前提条件のチュートリアルでは、*webapp1* という名前の Web アプリケーションを作成しました。 このチュートリアルでは、前のセクションで作成した Web API である *webapi1* を呼び出すようにそのアプリケーションを構成します。
 
-1. Azure portal で、自分の B2C テナントに移動します。
-1. **[アプリケーション]** を選択し、*webapp1* を選択します。
-1. **[API アクセス]** を選択し、 **[追加]** を選択します。
-1. **[API の選択]** ドロップダウンで、*webapi1* を選択します。
-1. **[スコープの選択]** ドロップダウンで、前に定義した **Hello.Read** スコープと **Hello.Write** スコープを選択します。
-1. Click **OK**.
+[!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
 シングルページ Web アプリケーションが登録されて、保護された Web API を呼び出すことができるようになります。 ユーザーは、シングルページ アプリケーションを使用するために Azure AD B2C で認証を行います。 シングルページ アプリは、保護された Web API にアクセスするために、Azure AD B2C から承認付与を取得します。
 
@@ -101,8 +79,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
       "ClientId": "<webapi-application-ID>",
       "Policy": "B2C_1_signupsignin1",
 
-      "ScopeRead": "Hello.Read",
-      "ScopeWrite": "Hello.Write"
+      "ScopeRead": "demo.read",
+      "ScopeWrite": "demo.write"
     },
     ```
 
@@ -154,7 +132,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webap
 SPA 内の設定を変更するには:
 
 1. 前のチュートリアルでダウンロードまたは複製した [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa] プロジェクト内にある *index.html* ファイルを開きます。
-1. 先ほど作成した *Hello.Read* スコープの URI と Web API の URL を使用してサンプルを構成します。
+1. 先ほど作成した *demo.read* スコープの URI と Web API の URL を使用してサンプルを構成します。
     1. `appConfig` 定義内で、`b2cScopes` の値をスコープの完全な URI に置き換えます (前に記録した**完全なスコープ値**です)。
     1. `webApi` の値を、前のセクションで指定した `applicationURL` の値に変更します。
 
@@ -163,7 +141,7 @@ SPA 内の設定を変更するには:
     ```javascript
     // The current application coordinates were pre-registered in a B2C tenant.
     var appConfig = {
-      b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/Hello.Read"],
+      b2cScopes: ["https://<your-tenant-name>.onmicrosoft.com/api/demo.read"],
       webApi: "http://localhost:5000/"
     };
     ```

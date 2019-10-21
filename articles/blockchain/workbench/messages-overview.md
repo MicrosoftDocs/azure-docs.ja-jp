@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: f0a9e90f1208d690c2423196be7f59dce71eb78b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 9f1580a9a43781996afadde5487adcafec860e26
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844070"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029704"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench のメッセージング統合
 
@@ -65,7 +65,7 @@ Blockchain Workbench は、次のフィールドを含む応答を返します�
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------|
 | requestId             | クライアントによって指定された GUID |
 | userId                | 作成されたユーザーの ID |
-| userChainIdentifier   | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの **オンチェーン**  アドレスです。 |
+| userChainIdentifier   | ブロックチェーン ネットワーク上に作成されたユーザーのアドレス。 Ethereum では、このアドレスはユーザーの**オン チェーン** アドレスです。 |
 | connectionId          | ブロックチェーン接続の一意識別子|
 | messageSchemaVersion  | メッセージング スキーマ バージョン |
 | messageName           | **CreateUserUpdate** |

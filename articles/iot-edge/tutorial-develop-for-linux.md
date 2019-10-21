@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 30b1af29d1a7e3a01659353b27d8c997e739e702
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: a523028fb312f030bc453692daceb0f254f844b6
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69031001"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240944"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>チュートリアル:Linux のデバイス用の IoT Edge モジュールを開発する
 
@@ -63,6 +63,7 @@ IoT Edge モジュールを開発する場合は、開発マシンと、モジ�
 開発マシン:
 
 * 開発設定に応じて、独自のコンピューターまたは仮想マシンを使用できます。
+  * 開発用マシンで、入れ子になった仮想化がサポートされていることを確認します。 この機能は、次のセクションでインストールするコンテナー エンジンを実行するために必要です。
 * コンテナー エンジンを実行できるほとんどのオペレーティング システムを使用して、Linux デバイス用の IoT Edge モジュールを開発することができます。 このチュートリアルでは、Windows コンピューターを使用しますが、MacOS または Linux での既知の相違点を指摘します。 
 * このチュートリアルの後半でモジュール テンプレート パッケージをプルするために、[Git](https://git-scm.com/) をインストールします。  
 * [Visual Studio Code 用の C# (OmniSharp を使用) 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)

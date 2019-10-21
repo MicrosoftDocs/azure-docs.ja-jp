@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a543b17633b99bea63d72f46ba856a8b4593d16a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: bec09e5cd053774902083c6dd042c1ed4b293d20
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439546"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066679"
 ---
 # <a name="language-support-for-qna-maker"></a>QnA Maker の言語サポート
 
@@ -25,7 +25,7 @@ ms.locfileid: "67439546"
 ## <a name="auto-extraction"></a>自動抽出
 QnA Maker は任意の言語ページでの質問と回答の抽出をサポートしますが、QnA Maker は質問の識別にキーワードを使うため、抽出の有効性は次の言語の場合に非常に高くなります。
 
-|サポートされている言語| ロケール|
+|サポートされている言語| Locale|
 |-----|----|
 |英語|en-*|
 |フランス語|fr-*|
@@ -42,7 +42,7 @@ QnA Maker は任意の言語ページでの質問と回答の抽出をサポー�
 第一言語を確認する手順は次のとおりです。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。  
-1. QnA Maker リソースの一部として作成された Azure Search リソースを検索して選択します。 Azure Search リソース名は QnA Maker リソースと同じ名前で始まり、種類は**検索サービス**です。 
+1. QnA Maker リソースの一部として作成された Azure Search リソースを検索して選択します。 Azure Search リソース名は QnA Maker リソースと同じ名前で始まり、種類は**検索サービス**です。 1 つの Azure Search リソースにリンクできるのは、1 つの QnA Maker リソースのみであることに注意してください。
 1. 検索リソースの **[概要]** ページで **[インデックス]** を選択します。 
 1. **[testkb]** インデックスを選択します。
 1. **[フィールド]** タブを選択します。 

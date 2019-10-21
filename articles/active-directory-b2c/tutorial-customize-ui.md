@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: da7ec020b6f3f4a3b1890695a78fb6bdb363d233
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 08edf6e841dc7d389573d5e5b5ea7e043f750e76
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67849376"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71291106"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C でユーザー エクスペリエンスのインターフェースをカスタマイズする
 
-サインアップ、サインイン、プロファイル編集など、より一般的なユーザー エクスペリエンスについては、Azure Active Directory (Azure AD) B2C の[ユーザー フロー](active-directory-b2c-reference-policies.md)を使用できます。 このチュートリアルの情報は、独自の HTML ファイルや CSS ファイルを使用してそのようなエクスペリエンスの[ユーザー インターフェイス (UI) をカスタマイズする](customize-ui-overview.md)方法を理解する上で役立ちます。
+サインアップ、サインイン、プロファイル編集など、より一般的なユーザー エクスペリエンスについては、Azure Active Directory B2C (Azure AD B2C) の[ユーザー フロー](active-directory-b2c-reference-policies.md)を使用できます。 このチュートリアルの情報は、独自の HTML ファイルや CSS ファイルを使用してそのようなエクスペリエンスの[ユーザー インターフェイス (UI) をカスタマイズする](customize-ui-overview.md)方法を理解する上で役立ちます。
 
 この記事では、次のことについて説明します。
 
@@ -43,7 +43,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 ファイルはさまざまな方法で保存できますが、このチュートリアルでは、[Azure BLOB ストレージ](../storage/blobs/storage-blobs-introduction.md)に保存します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. Azure サブスクリプションが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリとサブスクリプション]** フィルターを選択し、ご利用のサブスクリプションが含まれるディレクトリを選択します。 このディレクトリは、Azure B2C テナントが含まれるディレクトリとは異なります。
+2. Azure サブスクリプションが含まれるディレクトリを必ず使用してください。 上部メニューで **[ディレクトリ + サブスクリプション]** フィルターを選択し、ご利用のサブスクリプションが含まれるディレクトリを選択します。 このディレクトリは、Azure B2C テナントが含まれるディレクトリとは異なります。
 3. Azure portal の左上隅の [すべてのサービス] を選択し、 **[ストレージ アカウント]** を検索して選択します。
 4. **[追加]** を選択します。
 5. **[リソース グループ]** の下で **[新規作成]** を選択し、新しいリソース グループの名前を入力し、 **[OK]** をクリックします。
@@ -63,7 +63,7 @@ Azure のストレージ アカウントとコンテナーを作成し、基本�
 
 1. メニューで **[CORS]** を選択します。
 2. **[許可されるオリジン]** には、`https://your-tenant-name.b2clogin.com` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。 たとえば、「 `https://fabrikam.b2clogin.com` 」のように入力します。 テナント名を入力するときは、すべて小文字を使用する必要があります。
-3. **[許可されたメソッド]** に、`GET` と `OPTIONS` を両方選択します。
+3. **[許可されたメソッド]** に、`GET`、`PUT`、`OPTIONS` を選択します。
 4. **[許可されたヘッダー]** に、アスタリスク (*) を入力します。
 5. **[公開されるヘッダー]** に、アスタリスク (*) を入力します。
 6. **[最長有効期間]** には「200」と入力します。

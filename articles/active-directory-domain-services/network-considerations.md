@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/09/2019
 ms.author: iainfou
-ms.openlocfilehash: 506967fc4cecd322c694d31789cf09bec22ad3d4
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 81d20a973454db600d8be9ce036f001dd41784e7
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617321"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71315002"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Azure AD Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
@@ -36,7 +36,7 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
     * 待機時間を最小限に抑えるには、Azure AD DS マネージド ドメインの仮想ネットワーク サブネットの近く、または同じリージョンにコア アプリケーションを保持します。 Azure 仮想ネットワーク間には、仮想ネットワーク ピアリングまたは仮想プライベート ネットワーク (VPN) 接続を使用できます。
 * 仮想ネットワークは、Azure AD DS が提供するもの以外の DNS サービスに依存することはできません。
     * Azure AD DS は独自の DNS サービスを提供しています。 これらの DNS サービス アドレスを使用するように仮想ネットワークを構成する必要があります。 追加の名前空間の名前解決は、条件付きフォワーダーを使用して実現できます。
-    * カスタム DNS サーバー設定を使用して、VM などの他の DNS サーバーにクエリを送信することはできません。 仮想ネットワーク内のリソースでは、Azure AD DS から提供される DNS サービスを使用する必要があります。
+    * カスタム DNS サーバーの設定を使用して、VM などの他の DNS サーバーからのクエリを送信することはできません。 仮想ネットワーク内のリソースでは、Azure AD DS から提供される DNS サービスを使用する必要があります。
 
 > [!IMPORTANT]
 > サービスを有効にした後、Azure AD DS を別の仮想ネットワークに移行することはできません。
@@ -46,7 +46,7 @@ Azure AD DS マネージド ドメインは、Azure 仮想ネットワーク内�
 * Azure AD DS は、独自のサブネットにデプロイする必要があります。 既存のサブネットまたはゲートウェイ サブネットは使用しないでください。
 * Azure AD DS マネージド ドメインのデプロイ時に、ネットワーク セキュリティ グループが作成されます。 このネットワーク セキュリティ グループには、サービス通信を正しく行うために必要な規則が含まれています。
     * 独自のカスタム規則を持つ既存のネットワーク セキュリティ グループを作成または使用しないでください。
-* Azure AD DS には、5 から 7 個の IP アドレスが必要です。 サブネットの IP アドレス範囲でこの数のアドレスを提供できることを確認してください。
+* Azure AD DS には、3 から 5 個の IP アドレスが必要です。 サブネットの IP アドレス範囲でこの数のアドレスを提供できることを確認してください。
     * 使用可能な IP アドレスを制限すると、Azure AD Domain Services で 2 つのドメイン コントローラーを維持できなくなる可能性があります。
 
 次の図の例は、Azure AD DS に独自のサブネットがあり、外部接続用にゲートウェイ サブネットがあり、アプリケーション ワークロードが仮想ネットワーク内の接続されたサブネットにある有効な設計を示しています。
@@ -105,7 +105,7 @@ Azure AD DS マネージド ドメインでは、デプロイ時にいくつか�
 
 Azure AD DS で認証と管理サービスを提供するには、次のネットワーク セキュリティ グループの規則が必要です。 Azure AD DS マネージド ドメインが展開されている仮想ネットワーク サブネットのネットワーク セキュリティ グループ規則を編集または削除しないでください。
 
-| ポート番号 | Protocol | Source                             | Destination | Action | 必須 | 目的 |
+| ポート番号 | Protocol | source                             | Destination | Action | 必須 | 目的 |
 |:-----------:|:--------:|:----------------------------------:|:-----------:|:------:|:--------:|:--------|
 | 443         | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | はい      | Azure AD テナントとの同期。 |
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | はい      | ドメインの管理。 |

@@ -1,6 +1,6 @@
 ---
 title: トレーニングの実行でシークレットを使用する
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: ワークスペース キー コンテナ―を使用して、セキュリティで保護された方法でトレーニングの実行にシークレットを渡します
 services: machine-learning
 author: rastala
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 777818b74f935a560047d1eea20e0d0e657efcac
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: 4872ba8a707192cd61ec371fa982a076d410e918
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019339"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996568"
 ---
 # <a name="use-secrets-in-training-runs"></a>トレーニングの実行でシークレットを使用する
 
@@ -69,4 +69,4 @@ set メソッドと get メソッドには、複数のシークレットに一�
 ## <a name="next-steps"></a>次の手順
 
  * [ノートブックの例を表示する](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/manage-azureml-service/authentication-in-azureml/authentication-in-azureml.ipynb)
- * [Azure Machine Learning service のエンタープライズ セキュリティを確認する](concept-enterprise-security.md)
+ * [Azure Machine Learning のエンタープライズ セキュリティを確認する](concept-enterprise-security.md)

@@ -8,30 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 08/27/2019
 ms.author: yinhew
-ms.openlocfilehash: 65db847c5df1a05671e3b1c0ac4541f00506c8fd
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1a411455e4a6dea22e092cdfc8e70ee23b656435
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854692"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327450"
 ---
 # <a name="quickstart-synthesize-speech-with-the-speech-sdk-for-net-framework-windows"></a>クイック スタート:.NET Framework (Windows) 用 Speech SDK を使用して音声を合成する
 
-クイック スタートは[音声認識](quickstart-csharp-dotnet-windows.md)と[音声翻訳](quickstart-translate-speech-dotnetframework-windows.md)にも使用できます。
+[音声認識](quickstart-csharp-dotnet-windows.md)と[音声翻訳](quickstart-translate-speech-dotnetframework-windows.md)のクイックスタートも利用できます。
 
 このガイドでは、.NET framework for Windows と Speech SDK を使用してテキスト読み上げのコンソール アプリケーションを作成します。 完了すると、テキストから音声を合成し、その音声をスピーカーからリアルタイムで聞くことができます。
 
-簡単なデモ (以下に示されているように Visual Studio プロジェクトを自身で構築しない):
-
-最新の [Cognitive Services Speech SDK サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk)を GitHub から取得します。
+この記事に示したような Visual Studio プロジェクトをご自身で作成する必要のない簡単なデモについては、最新の [Cognitive Services Speech SDK サンプル](https://github.com/Azure-Samples/cognitive-services-speech-sdk)を GitHub から入手してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 このプロジェクトを完了するには、以下が必要になります。
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。
 * 音声サービス用のサブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 * スピーカー (またはヘッドセット)。
 
@@ -41,29 +39,25 @@ ms.locfileid: "68854692"
 
 ## <a name="add-sample-code"></a>サンプル コードを追加する
 
-1. `Program.cs` を開いて、自動的に生成されたコードを次のサンプルに置き換えます。
+1. **Program.cs** を開いて、自動的に生成されたコードを次のサンプルに置き換えます。
 
-    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnet-windows/helloworld/Program.cs#code)]
+   [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/text-to-speech/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
 1. `YourSubscriptionKey` という文字列を探し、実際の Speech Services のサブスクリプション キーに置き換えます。
 
-1. `YourServiceRegion` という文字列を探し、実際のサブスクリプションに関連付けられている[リージョン](regions.md)に置き換えます。 たとえば、無料試用版を使用している場合、リージョンは `westus` になります。
+1. `YourServiceRegion` という文字列を探し、ご利用のサブスクリプションに関連付けられている[リージョン](regions.md)に置き換えます。 たとえば、無料試用版サブスクリプションを使用している場合、リージョンは `westus` になります。
 
-1. プロジェクトへの変更内容を保存します。
+1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択します。
 
-## <a name="build-and-run-the-app"></a>アプリのビルドと実行
+## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 
-1. メニュー バーから、 **[ビルド]**  >  **[ソリューションのビルド]** を選択します。 これで、コードは、エラーなしでコンパイルされます。
+1. メニュー バーから **[ビルド]**  >  **[ソリューションのビルド]** を選択してアプリケーションをビルドします。 これで、コードは、エラーなしでコンパイルされます。
 
-    ![[ソリューションのビルド] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-dotnet-windows-08-build.png "成功したビルド")
+1. **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、**helloworld** アプリケーションを起動します。
 
-1. メニュー バーから **[デバッグ]**  >  **[デバッグの開始]** の順に選択するか、**F5** キーを押して、アプリケーションを起動します。
+1. 英語の語句または文を入力します。 そのテキストが Speech Services に転送され、そこで合成された音声がアプリケーションに送信されてスピーカーで再生されます。
 
-    ![[デバッグの開始] オプションを強調表示した Visual Studio アプリケーションのスクリーンショット](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "アプリのデバッグの開始")
-
-1. コンソール ウィンドウが表示され、何かテキストを入力するよう求められます。 いくつかの単語または文を入力してください。 入力したテキストが Speech Services に転送されて音声に合成され、スピーカーで再生されます。
-
-    ![正常に認識された後のコンソールの出力のスクリーンショット](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png "正常に認識された後のコンソールの出力")
+   ![音声合成ユーザー インターフェイス](media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 
 ## <a name="next-steps"></a>次の手順
 
@@ -72,5 +66,5 @@ ms.locfileid: "68854692"
 
 ## <a name="see-also"></a>関連項目
 
-- [音声フォントをカスタマイズする](how-to-customize-voice-font.md)
-- [音声サンプルを録音する](record-custom-voice-samples.md)
+- [カスタム音声を作成する](how-to-custom-voice-create-voice.md)
+- [カスタム音声サンプルを録音する](record-custom-voice-samples.md)

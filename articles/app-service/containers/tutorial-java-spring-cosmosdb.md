@@ -8,19 +8,19 @@ ms.service: app-service-web
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
-ms.custom: seodec18, seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: 27b30bae80e2959698d71279efbfa2531498d8de
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.custom: seodec18, seo-java-july2019, seo-java-august2019, seo-java-september2019
+ms.openlocfilehash: 582ed374e7895d0b99f25ac033d0d4b1ec99104c
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70171202"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71171496"
 ---
 # <a name="tutorial-build-a-java-spring-boot-web-app-with-azure-app-service-on-linux-and-azure-cosmos-db"></a>チュートリアル:Azure App Service on Linux と Azure Cosmos DB を使用して Java Spring Boot Web アプリを構築する
 
 このチュートリアルでは、Azure で Java Web アプリを構築、構成、デプロイ、およびスケーリングするプロセスを、順を追って説明します。 完了すると、[Azure App Service on Linux](/azure/app-service/containers) で実行中の [Azure Cosmos DB](/azure/cosmos-db) にデータを格納する [Spring Boot](https://projects.spring.io/spring-boot/) アプリケーションが完成します。
 
-![Azure App Service で実行される Java アプリ](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+![Azure Cosmos DB にデータを格納する Spring Boot アプリケーション](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -169,7 +169,7 @@ bash-3.2$ mvn package spring-boot:run
 
 アプリが開始されたら、リンク [http://localhost:8080/](http://localhost:8080/) を使用して Spring TODO アプリにローカルでアクセスできます。
 
- ![Azure App Service で実行される Java アプリ](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
+ ![Spring TODO アプリにローカルでアクセスする](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
 TODO アプリケーションを開始したというメッセージではなく、例外が表示される場合は、前の手順の `bash` スクリプトによって環境変数が正しくエクスポートされたかを確認し、値が、作成した Azure Cosmos DB データベースに対して正しいことを確認してください。
 
@@ -263,7 +263,7 @@ open https://spring-todo-app.azurewebsites.net
 
 アドレス バーにリモート URL が表示されて、実行されているアプリが表示されるはずです。
 
- ![Azure App Service で実行される Java アプリ](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
+ ![リモート URL で実行中の Spring Boot アプリケーション](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-in-app-service.jpg)
 
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする
 

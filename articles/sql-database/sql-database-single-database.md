@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: 1dc1d2780dcaf27e0c60cfffe84581c0278491dd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c5de4277915e71763f034596d372554e4f88e204
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566536"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316656"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Azure SQL Database の単一データベースとは
 
@@ -59,6 +59,6 @@ SQL Database は、アプリケーションがさまざまなセキュリティ�
 
 ## <a name="next-steps"></a>次の手順
 
-- 単一データベースをすぐに使い始めるには、[単一データベースのクイック スタート ガイド](sql-database-single-database-quickstart-guide.md)に関する記事をご覧ください。
+- 単一データベースをすぐに使い始めるには、[単一データベースのクイック スタート ガイド](sql-database-single-database-quickstart-guide.md)から始めてください。
 - SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](sql-database-single-database-migrate.md)」を参照してください。
 - サポートされている機能については、[機能](sql-database-features.md)に関する記事をご覧ください。

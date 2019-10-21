@@ -9,23 +9,23 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8731d66c9d2dca0043307ac2f6a0d1828aeaa275
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 2673d0d2c1cb174316e99a79a10a67347e2bc031
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050520"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001354"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>チュートリアル:Azure IoT Central アプリケーションに実デバイスを追加する
 
 [!INCLUDE [iot-central-original-pnp](../../includes/iot-central-original-pnp-note.md)]
 
-このチュートリアルでは、実デバイスを Microsoft Azure IoT Central アプリケーションに追加して構成する方法について説明します。
+このチュートリアルでは、"*実デバイス*" を自分の Microsoft Azure IoT Central アプリケーションに追加して構成する方法について説明します。 このチュートリアルでは、Node.js を使用して実デバイスをコーディングし、そのコードをデスクトップ マシンで実行します。 このチュートリアルを完了するのに、Raspberry Pi や MXChip IoT DevKit デバイスなどの個別の IoT デバイスは必要ありません。
 
 このチュートリアルは次の 2 つの部分で構成されています。
 
-1. まず、オペレーター向けに、Azure IoT Central アプリケーションで実デバイスを追加して構成する方法について説明します。 この部分の最後では、2 つ目の部分で使用する接続文字列を取得します。
-2. 次に、デバイス開発者向けに、実デバイスのコードについて説明します。 最初の部分で取得した接続文字列をサンプル コードに追加します。
+* まず、オペレーター向けに、Azure IoT Central アプリケーションで実デバイスを追加して構成する方法について説明します。 この部分の最後では、2 つ目の部分で使用する接続文字列を取得します。
+* 次に、デバイス開発者向けに、実デバイスのコードについて説明します。 最初の部分で取得した接続文字列をサンプル コードに追加します。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -40,7 +40,6 @@ ms.locfileid: "70050520"
 
 始める前に、作成者が少なくとも Azure IoT Central アプリケーションを作成する最初の作成者向けチュートリアルを完了する必要があります。[新しいデバイスの種類を定義する](tutorial-define-device-type.md) (必須)
 
-
 開発用コンピューターに [Node.js](https://nodejs.org/) バージョン 8.0.0 以降をインストールします。 バージョンを確認するには、コマンド ラインで `node --version` を実行できます。 Node.js は、さまざまなオペレーティング システムで使用できます。
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
@@ -53,11 +52,11 @@ ms.locfileid: "70050520"
 
    **デバイス エクスプローラー**に、**Connected Air Conditioner** デバイス テンプレートとシミュレートされたデバイスが表示されます。 デバイス テンプレートを作成すると、IoT Central によってシミュレートされたデバイスが自動的に作成されます。
 
-2. コネクテッド空調機の実デバイスの接続を開始するには、 **+** を選択してから **[Real]\(実デバイス\)** を選択します。
+2. **Connected Air Conditioner** デバイス テンプレートが**デバイス エクスプローラー**で選択されていることに注意してください。 このテンプレートを使用する空調機の実デバイスの接続を開始するには、 **[+]** を選択してから **[Real]\(実デバイス\)** を選択します。
 
    ![コネクテッド空調機の新しい実デバイスの追加の開始](media/tutorial-add-device/newreal.png)
 
-3. デバイス ID (小文字のみ) を入力するか、推奨デバイス ID を使います。 新しいデバイスの名前を入力して、 **[作成]** を選択することもできます。
+3. 自分の**デバイス ID** (小文字のみ) を入力するか、推奨される値を使用します。 新しいデバイスの **[デバイス名]** を入力して、 **[作成]** を選択することもできます。
 
    ![デバイス名の変更](media/tutorial-add-device/rename.png)
 
@@ -75,15 +74,11 @@ ms.locfileid: "70050520"
 
 3. 実デバイスの **[Measurements]\(測定\)** 、 **[ルール]** 、 **[ダッシュボード]** の各ページを確認できます。
 
-## <a name="generate-connection-string"></a>接続文字列の生成
-
-デバイス開発者は、実デバイスの "*接続文字列*" をデバイス上で実行されるコードに埋め込む必要があります。 接続文字列により、デバイスがお使いのアプリケーションに安全に接続できます。 次の手順は、接続文字列を生成し、クライアントの Node.js コードを準備する方法を示しています。
-
 ## <a name="prepare-the-client-code"></a>クライアント コードの準備
 
-この記事のサンプル コードは [Node.js](https://nodejs.org/) で記述されており、次の処理を行うための十分なコードを示しています。
+この記事のサンプル コードは [Node.js](https://nodejs.org/) で記述されており、次の用途で使用されるデバイス用の十分なコードを示しています。
 
-* Azure IoT Central アプリケーションにデバイスとして接続する。
+* Azure IoT Central アプリケーションに接続する。
 * コネクテッド空調デバイスとして温度テレメトリを送信する。
 * Azure IoT Central アプリケーションにデバイス プロパティを送信する。
 * **Set Temperature** 設定を使用するオペレーターに応答する。
@@ -101,13 +96,9 @@ ms.locfileid: "70050520"
 
    ![接続情報の表示リンクが表示されている [デバイス] ページ](media/tutorial-add-device/connectionlink.png)
 
-1. [デバイス接続] ページで、 **[スコープ ID]** 、 **[デバイス ID]** 、 **[主キー]** の値をメモします。 これらの値は、次の手順で使用します。
+1. **[デバイス接続]** ページで、 **[スコープ ID]** 、 **[デバイス ID]** 、 **[主キー]** の値をメモします。 これらの値を、このチュートリアルで後ほど使用します。
 
    ![接続の詳細](media/tutorial-add-device/device-connect.png)
-
-### <a name="generate-the-connection-string"></a>接続文字列を生成する
-
-[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
 ### <a name="prepare-the-nodejs-project"></a>Node.js プロジェクトを準備する
 
@@ -124,7 +115,7 @@ ms.locfileid: "70050520"
 1. 必要なパッケージをインストールするために、次のコマンドを実行します。
 
     ```cmd/sh
-    npm install azure-iot-device azure-iot-device-mqtt --save
+    npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
 1. テキスト エディターを使用して、`connectedairconditioner` フォルダーに **ConnectedAirConditioner.js** というファイルを作成します。
@@ -134,27 +125,32 @@ ms.locfileid: "70050520"
     ```javascript
     'use strict';
 
-    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var iotHubTransport = require('azure-iot-device-mqtt').Mqtt;
+    var Client = require('azure-iot-device').Client;
     var Message = require('azure-iot-device').Message;
-    var ConnectionString = require('azure-iot-device').ConnectionString;
+    var ProvisioningTransport = require('azure-iot-provisioning-device-mqtt').Mqtt;
+    var SymmetricKeySecurityClient = require('azure-iot-security-symmetric-key').SymmetricKeySecurityClient;
+    var ProvisioningDeviceClient = require('azure-iot-provisioning-device').ProvisioningDeviceClient;
     ```
 
-1. このファイルに次の変数宣言を追加します。
+1. このファイルに次の変数宣言を追加します。 プレースホルダーの `{your Scope ID}`、`{your Device ID}`、`{your Primary Key}` は、先ほどメモしたデバイスの接続情報に置き換えてください。
 
     ```javascript
-    var connectionString = '{your device connection string}';
+    var provisioningHost = 'global.azure-devices-provisioning.net';
+    var idScope = '{your Scope ID}';
+    var registrationId = '{your Device ID}';
+    var symmetricKey = '{your Primary Key}';
+    var provisioningSecurityClient = new SymmetricKeySecurityClient(registrationId, symmetricKey);
+    var provisioningClient = ProvisioningDeviceClient.create(provisioningHost, idScope, new ProvisioningTransport(), provisioningSecurityClient);
+    var hubClient;
     var targetTemperature = 0;
-    var client = clientFromConnectionString(connectionString);
     ```
-
-    > [!NOTE]
-    > 後の手順で、プレースホルダー `{your device connection string}` を更新します。
 
 1. これまでに行った変更を保存しますが、ファイルは開いたままにしておきます。
 
 ## <a name="review-client-code"></a>クライアント コードのレビュー
 
-前のセクションでは、Azure IoT Central アプリケーションに接続するアプリケーションのスケルトン Node.js プロジェクトを作成しました。 次の手順では、次の処理を行うためのコードを追加します。
+前のセクションでは、Azure IoT Central アプリケーションに接続するデバイス アプリケーションのスケルトン Node.js プロジェクトを作成しました。 次の手順では、次の処理を行うためのコードを追加します。
 
 * Azure IoT Central アプリケーションに接続する。
 * Azure IoT Central アプリケーションにテレメトリを送信する。
@@ -165,12 +161,12 @@ ms.locfileid: "70050520"
 1. Azure IoT Central アプリケーションに温度テレメトリを送信するために、**ConnectedAirConditioner.js** ファイルに次のコードを追加します。
 
     ```javascript
-    // Send device telemetry.
+    // Send device measurements.
     function sendTelemetry() {
       var temperature = targetTemperature + (Math.random() * 15);
       var data = JSON.stringify({ temperature: temperature });
       var message = new Message(data);
-      client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
+      hubClient.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
         (err ? `; error: ${err.toString()}` : '') +
         (res ? `; status: ${res.constructor.name}` : '')));
     }
@@ -187,7 +183,7 @@ ms.locfileid: "70050520"
         firmwareVersion: "9.75",
         serialNumber: "10001"
       };
-      twin.properties.reported.update(properties, (errorMessage) => 
+      twin.properties.reported.update(properties, (errorMessage) =>
       console.log(` * Sent device properties ` + (errorMessage ? `Error: ${errorMessage.toString()}` : `(success)`)));
     }
     ```
@@ -266,43 +262,53 @@ ms.locfileid: "70050520"
         console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
       } else {
         console.log('Device successfully connected to Azure IoT Central');
+
+        // Create handler for countdown command
+        hubClient.onDeviceMethod('echo', onCommandEcho);
+
         // Send telemetry measurements to Azure IoT Central every 1 second.
         setInterval(sendTelemetry, 1000);
-        // Setup device command callbacks
-        client.onDeviceMethod('echo', onCommandEcho);
+
         // Get device twin from Azure IoT Central.
-        client.getTwin((err, twin) => {
+        hubClient.getTwin((err, twin) => {
           if (err) {
             console.log(`Error getting device twin: ${err.toString()}`);
           } else {
-            // Send device properties once on device start up
+            // Send device properties once on device start up.
             sendDeviceProperties(twin);
+
             // Apply device settings and handle changes to device settings.
             handleSettings(twin);
           }
         });
       }
     };
-
-    client.open(connectCallback);
     ```
 
-1. これまでに行った変更を保存しますが、ファイルは開いたままにしておきます。
-
-## <a name="configure-client-code"></a>クライアント コードの構成
-
-<!-- Add the connection string to the sample code, build, and run -->
-Azure IoT Central アプリケーションに接続するようにクライアント コードを構成するには、このチュートリアルの前の方でメモした実デバイスの接続文字列を追加する必要があります。
-
-1. **ConnectedAirConditioner.js** ファイルで、次のコード行を見つけます。
+1. デバイスを登録して IoT Central アプリケーションに接続します。
 
     ```javascript
-    var connectionString = '{your device connection string}';
+    // Start the device (connect it to Azure IoT Central).
+    provisioningClient.register((err, result) => {
+      if (err) {
+        console.log("error registering device: " + err);
+      } else {
+        console.log('registration succeeded');
+        console.log('assigned hub=' + result.assignedHub);
+        console.log('deviceId=' + result.deviceId);
+        var connectionString = 'HostName=' + result.assignedHub + ';DeviceId=' + result.deviceId + ';SharedAccessKey=' + symmetricKey;
+        hubClient = Client.fromConnectionString(connectionString, iotHubTransport);
+
+        hubClient.open(connectCallback);
+      }
+    });
     ```
 
-1. `{your device connection string}` を実デバイスの接続文字列に置き換えます。 生成した接続文字列は、前の手順でコピーしています。
+1. 変更を保存します。
 
-1. **ConnectedAirConditioner.js** ファイルの変更を保存します。
+## <a name="run-the-client-code"></a>クライアント コードを実行する
+
+クライアント コードを実行する準備が整いました。IoT Central アプリケーションと対話するようすを確認してみましょう。
 
 1. サンプルを実行するために、コマンド ライン環境で次のコマンドを入力します。
 

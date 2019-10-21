@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins でのデバイスの接続とテレメトリのイングレス | Microsoft Docs
+title: デバイスの接続とテレメトリのイングレス - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins を使用してデバイスをオンボードする方法の概要です
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: alinast
-ms.openlocfilehash: a3a5555bf163aedd9b41a9c9aa363a883deb4cb8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.date: 09/17/2019
+ms.openlocfilehash: 6c61bc6075b3f0713dd790f1b3aa1a47af9d8e6c
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68638509"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950032"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>デバイスの接続性とテレメトリの受信
 

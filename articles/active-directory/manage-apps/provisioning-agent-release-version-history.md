@@ -16,15 +16,15 @@ ms.date: 04/05/2019
 ms.subservice: app-mgmt
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de6ef5dedb0779536cfbc1e6a3440e748ff78524
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 2ce9549765f6a912b3e95f99d11da20347b82ad8
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70861990"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326459"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect プロビジョニング エージェント: バージョンのリリース履歴
-この記事では、これまでにリリースされた Azure AD Connect プロビジョニング エージェントのバージョンと機能を一覧表示します。 Azure AD チームは、プロビジョニング エージェントを新機能で定期的に更新しています。 プロビジョニング エージェントは、新しいバージョンがリリースされると自動的に更新されます。 
+この記事では、これまでにリリースされた Azure Active Directory Connect プロビジョニング エージェントのバージョンと機能を一覧表示します。 Azure AD チームは、プロビジョニング エージェントを新機能で定期的に更新しています。 プロビジョニング エージェントは、新しいバージョンがリリースされると自動的に更新されます。 
 
 最新の機能とバグの修正が確実に適用されるように、エージェントの自動更新を有効にすることをお勧めします。 Microsoft では、エージェントの最新バージョンと 1 つ前のバージョンを直接サポートしています。
 
@@ -37,19 +37,19 @@ ms.locfileid: "70861990"
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 
 * プロビジョニング エージェントに関する問題をデバッグするために追加のトレースとログ記録を構成する機能
-* 同期のパフォーマンスを向上させるために、マッピングで構成されている AD 属性のみを取り込む機能
+* 同期のパフォーマンスを向上させるために、マッピングで構成されている Azure AD 属性のみを取り込む機能
 
 ### <a name="fixed-issues"></a>修正された問題
 
-* AD 接続エラーに関する問題が発生した場合に、エージェントを応答しない状態にしていたバグを修正しました
-* バイナリ データを Active Directory から読み取るときに問題を引き起こしていたバグを修正しました
+* Azure AD 接続エラーに関する問題が発生した場合に、エージェントを応答しない状態にしていたバグを修正しました
+* バイナリ データを Azure Active Directory から読み取るときに問題を引き起こしていたバグを修正しました
 * エージェントがクラウド ハイブリッド ID サービスとの信頼を更新するのを失敗させていたバグを修正しました
 
 ## <a name="11300"></a>1.1.30.0
 
 ### <a name="release-status"></a>リリースの状態
 
-2019 年 1 月 23 日: ダウンロード対象としてリリース済み
+2019 年 1 月 23 日:ダウンロード対象としてリリース済み
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 

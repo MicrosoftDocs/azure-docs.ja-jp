@@ -1,6 +1,6 @@
 ---
 title: Python でのトレーニングの実行の開始、監視、およびキャンセル
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: 自分の機械学習の実験を、開始、状態設定、タグ付けおよび整理する方法を説明します。
 services: machine-learning
 ms.service: machine-learning
@@ -11,12 +11,12 @@ author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2019
-ms.openlocfilehash: b938d55749373711ddf2a19df12b987276b224ca
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 7ebbc7575ad52bbf7a399babb048113bc505a7f8
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376291"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174537"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Python でのトレーニングの実行の開始、監視、およびキャンセル
 
@@ -33,9 +33,9 @@ ms.locfileid: "70376291"
 
 次のものが必要です。
 
-* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning service](https://aka.ms/AMLFree) を今日からお試しいただけます。
+* Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
-* [Azure Machine Learning service ワークスペース](how-to-manage-workspace.md)。
+* [Azure Machine Learning ワークスペース](how-to-manage-workspace.md)。
 
 * Azure Machine Learning SDK for Python (バージョン 1.0.21 以降)。 SDK の最新バージョンのインストールまたは最新バージョンへの更新を行うには、[SDK のインストールまたは更新](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)に関する記事を参照してください。
 
@@ -45,7 +45,7 @@ ms.locfileid: "70376291"
     print(azureml.core.VERSION)
     ```
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) と [Azure Machine Learning service 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
+* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) と [Azure Machine Learning 用 CLI 拡張機能](reference-azure-machine-learning-cli.md)。
 
 ## <a name="start-a-run-and-its-logging-process"></a>実行とそのロギング プロセスを開始する
 
@@ -79,7 +79,7 @@ notebook_run.log(name="message", value="Hello from run!")
     az login
     ```
 
-1. ワークスペースの構成を、トレーニング スクリプトを含むフォルダーにアタッチします。 `myworkspace` は、お使いの Azure Machine Learning service ワークスペースに置き換えます。 `myresourcegroup` は、ワークスペースが含まれている Azure リソース グループに置き換えます。
+1. ワークスペースの構成を、トレーニング スクリプトを含むフォルダーにアタッチします。 `myworkspace` は、ご利用の Azure Machine Learning ワークスペースに置き換えます。 `myresourcegroup` は、ワークスペースが含まれている Azure リソース グループに置き換えます。
 
     ```azurecli-interactive
     az ml folder attach -w myworkspace -g myresourcegroup
@@ -189,7 +189,7 @@ print(local_script_run.get_status())
 CLI を使用して実行をキャンセルするには、次のコマンドを使用します。 `runid` は、実行の ID に置き換えます
 
 ```azurecli-interactive
-az ml run cancel -r runid
+az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 詳しくは、「[az ml run cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel)」をご覧ください。
@@ -226,7 +226,7 @@ with exp.start_logging() as parent_run:
 
 親実行から子実行を送信することもできます。 そうすることで、親実行と子実行の階層を作成することができます。子実行はそれぞれ異なるコンピューティング先で実行され、共通の親実行 ID で関連付けられます。
 
-親実行内から子実行を送信するには、["submit_child()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) メソッドを使用します。 これを親実行スクリプト内で行うには、実行コンテキストを取得し、そのコンテキスト インスタンスの "submit_child" メソッドを使用して子実行を送信します。
+親実行内から子実行を送信するには、["submit_child()"](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#submit-child-config--tags-none----kwargs-) メソッドを使用します。 これを親実行スクリプト内で行うには、実行コンテキストを取得し、そのコンテキスト インスタンスの ``submit_child`` メソッドを使用して子実行を送信します。
 
 ```python
 ## In parent run script
@@ -245,7 +245,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>子実行を照会する
 
-特定の親の子実行をクエリするには、[`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) メソッドを使用します。 "recursive = True" 引数を指定すると、入れ子になった子と孫のツリーを照会できます。
+特定の親の子実行をクエリするには、[`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) メソッドを使用します。 ``recursive = True`` 引数を指定すると、入れ子になった子と孫のツリーを照会できます。
 
 ```python
 print(parent_run.get_children())
@@ -253,7 +253,7 @@ print(parent_run.get_children())
 
 ## <a name="tag-and-find-runs"></a>実行のタグ付けおよび検索
 
-Azure Machine Learning service では、実行の整理にプロパティとタグを使用したり、自分の実行に対し重要な情報をクエリしたりできます。
+Azure Machine Learning では、実行の整理にプロパティとタグを使用したり、自分の実行に対し重要な情報をクエリしたりできます。
 
 ### <a name="add-properties-and-tags"></a>プロパティとタグの追加
 
@@ -335,9 +335,9 @@ Azure CLI 結果のクエリ実行の詳細については、「[Azure CLI コ�
 
 次のノートブックは、この記事の概念を示しています。
 
-* ロギング API の詳細については、[ロギング API ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api/logging-api.ipynb)に関するページを参照してください。
+* ロギング API の詳細については、[ロギング API ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api/logging-api.ipynb)に関するページを参照してください。
 
-* Azure Machine Learning SDK での実行の管理の詳細については、[実行の管理ノートブック](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/manage-runs)に関するページを参照してください。
+* Azure Machine Learning SDK での実行の管理の詳細については、[実行の管理ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

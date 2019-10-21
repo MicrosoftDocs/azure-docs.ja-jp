@@ -1,18 +1,18 @@
 ---
 title: Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む
 description: この記事では、Azure Key Vault から自分のキーを使用し、Azure HDInsight で Apache Kafka に保存されているデータを暗号化する方法について説明します。
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: hrasheed
+ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: 15638d90fe24938a45f6d4cce156e998f1f9afc2
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: ba49944011546db45d25cc87c2c4b93c8b99502a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000102"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122681"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む
 
@@ -22,7 +22,7 @@ HDInsight のマネージド ディスクはすべて、Azure Storage Service En
 
 BYOK 暗号化は 1 つのステップからなるプロセスであり、クラスター作成中に処理されます。追加コストはかかりません。 必要な作業は、HDInsight をマネージド ID として Azure Key Vault に登録し、クラスターの作成時に暗号化キーを追加することだけです。
 
-Kafka クラスターに送信されるメッセージはすべて、Kafka で保守管理されるレプリカも含め、対称的 DEK (データ暗号化キー) で暗号化されます。 DEK は、キー コンテナーからの KEK (キー暗号化キー) を使用して保護されます。 暗号化と復号のプロセスはすべて、Azure HDInsight によって処理されます。 
+Kafka クラスターに送信されるメッセージはすべて、Kafka で保守管理されるレプリカも含め、対称的 DEK (データ暗号化キー) で暗号化されます。 DEK は、キー コンテナーからの KEK (キー暗号化キー) を使用して保護されます。 暗号化と復号のプロセスはすべて、Azure HDInsight によって処理されます。
 
 Azure portal または Azure CLI を使用し、キー コンテナーのキーを安全にローテーションすることができます。 キーをローテーションすると、HDInsight Kafka クラスターはすぐに新しいキーの使用を開始します。 ランサムウェア シナリオと誤削除の対策として、[論理的な削除] キー保護機能を有効にします。 この保護機能のないキー コンテナーはサポートされていません。
 
@@ -46,6 +46,7 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
    1. 新しいキー コンテナーを作成するには、[Azure Key Vault](../../key-vault/key-vault-overview.md) クイック スタートに従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md)」をご覧ください。
 
    2. [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI コマンドを使用して、キー コンテナーで [論理的な削除] を有効にします。
+
         ```Azure CLI
         az keyvault update --name <Key Vault Name> --enable-soft-delete
         ```
@@ -58,16 +59,16 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
 
         b. **[オプション]** を **[生成]** に設定し、キーの名前を付けます。
 
-        ![キー名を生成する](./media/apache-kafka-byok/apache-kafka-create-key.png "キー名を生成する")
+        ![Apache Kafka のキー名の生成](./media/apache-kafka-byok/apache-kafka-create-key.png "キー名を生成する")
 
         c. キーの一覧から作成したキーを選択します。
 
-        ![Azure Key Vault キーのリスト](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+        ![Apache Kafka の Key Vault のキー リスト](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
 
         d. Kafka クラスターの暗号化に独自のキーを使用する場合は、キーの URI を指定する必要があります。 **キー識別子**をコピーし、クラスターを作成する準備ができるまでどこかに保存します。
 
-        ![キー識別子をコピーする](./media/apache-kafka-byok/kafka-get-key-identifier.png)
-   
+        ![Apache Kafka のキー識別子の取得](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+
     4. キー コンテナーのアクセス ポリシーにマネージド ID を追加します。
 
         a. 新しい Azure Key Vault アクセス ポリシーを作成します。
@@ -99,6 +100,7 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
    クラスター作成時、キーのバージョンも含む、完全キー URL を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
 
 ## <a name="rotating-the-encryption-key"></a>暗号化キーを入れ替える
+
    暗号化キーが作成された後で、Kafka クラスターによって使用される暗号化キーを変更することが必要になる場合があります。 これはポータルを使用して簡単に行うことができます。 この操作を行うには、クラスターが現在のキーと目的の新しいキーの両方にアクセスできる必要があり、そうでないとキーの交換操作は失敗します。
 
    キーを交換するには、新しいキーの完全な URL が必要です (「[Key Vault とキーを設定する](#setup-the-key-vault-and-keys)」の手順 3 を参照してください)。 これを入手したら、ポータルで Kafka クラスターのプロパティ セクションに移動し、 **[ディスクの暗号化キーの URL]** の **[キーの変更]** をクリックします。 新しいキーの URL を入力し、キーの交換を実行します。
@@ -122,7 +124,7 @@ BYOK が有効な Kafka クラスターを作成するには、次の手順を�
 **クラスターがキー　コンテナーまたはキーにアクセスできなくなった場合はどうなりますか。**
 クラスターがキーへのアクセスを失うと、Apache Ambari ポータルに警告が表示されます。 この状態では、**キーの変更**操作は失敗します。 キー アクセスが復元されると、Ambari の警告が消え、キーの交換などの操作を正常に実行できます。
 
-   ![Kafka キー アクセス Ambari アラート](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
+   ![Apache Kafka のキー アクセス Ambari アラート](./media/apache-kafka-byok/kafka-byok-ambari-alert.png)
 
 **キーを削除した場合、どのようにしてクラスターを復元しますか?**
 

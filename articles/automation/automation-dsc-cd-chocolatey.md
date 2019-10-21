@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b53cb65ec99637dadb16ed9d97c495571be956d7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4512b79873d7f770b32a452a02c53bc5575bdac
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61073899"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243601"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用例: Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ
 
@@ -36,7 +36,7 @@ DevOps 領域には、継続的な統合パイプラインのさまざまなポ�
 [apt-get](https://en.wikipedia.org/wiki/Advanced_Packaging_Tool) などのパッケージ マネージャーは、Linux の世界ではかなりよく知られていますが、Windows の世界ではそれほどでもありません。
 [Chocolatey](https://chocolatey.org/) もあまり知られてはいませんが、Scott Hanselman の[ブログ](https://www.hanselman.com/blog/IsTheWindowsUserReadyForAptget.aspx)に Chocolatey の概要が適切にまとめられています。 簡単に言えば、Chocolatey ではコマンドラインを使用して、パッケージの中央リポジトリから Windows システムにパッケージをインストールすることができます。 ユーザーは独自のリポジトリを作成してそれを管理でき、Chocolatey を使用して、指定した任意の数のリポジトリからパッケージをインストールすることができます。
 
-Desired State Configuration (DSC) ([概要](/powershell/dsc/overview)) は、マシンに必要な構成を宣言できるようにする PowerShell ツールです。 たとえば、Chocolatey をインストールする必要がある、IIS をインストールする必要がある、ポート 80 を開く必要がある、バージョン 1.0.0 の自分の Web サイトをインストールする必要がある、などと示すことができます。 DSC Local Configuration Manager (LCM) により、その構成が実装されます。 DSC プル サーバーは、マシンの構成リポジトリを保持します。 各マシンの LCM は、その構成が格納されている構成と一致するかどうかを定期的に確認します。 状態をレポートしたり、格納されている構成に合わせてマシンを元に戻すように試みたりすることもできます。 プル サーバーに格納されている構成を編集することで、マシンやマシン セットを変更された構成に合わせることができます。
+Desired State Configuration (DSC) ([概要](/powershell/scripting/dsc/overview/overview)) は、マシンに必要な構成を宣言できるようにする PowerShell ツールです。 たとえば、Chocolatey をインストールする必要がある、IIS をインストールする必要がある、ポート 80 を開く必要がある、バージョン 1.0.0 の自分の Web サイトをインストールする必要がある、などと示すことができます。 DSC Local Configuration Manager (LCM) により、その構成が実装されます。 DSC プル サーバーは、マシンの構成リポジトリを保持します。 各マシンの LCM は、その構成が格納されている構成と一致するかどうかを定期的に確認します。 状態をレポートしたり、格納されている構成に合わせてマシンを元に戻すように試みたりすることもできます。 プル サーバーに格納されている構成を編集することで、マシンやマシン セットを変更された構成に合わせることができます。
 
 Azure Automation は、Runbook、ノード、資格情報、スケジュールやグローバル変数などのリソースおよび資産を使用して、さまざまなタスクを自動化できる Microsoft Azure の管理されたサービスです。
 Azure Automation State Configuration はこのオートメーション機能を拡張して、PowerShell DSC ツールを組み込みます。 こちらの[概要](automation-dsc-overview.md)をご覧ください。

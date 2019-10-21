@@ -5,71 +5,86 @@ author: roygara
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 11/22/2017
+ms.date: 10/7/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b79086298983e807cbfe0f4413d1fde54969cc6c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 6f2159ddf3e3039dc0c38fc8f942c508ac177f06
+ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986370"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72038187"
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する
 
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
-このチュートリアルでは、ファイル データの格納に [Azure Files](storage-files-introduction.md) を使うアプリケーションを開発するための .NET の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、.NET と Azure Files で次のような基本的な操作を実行します。
+このチュートリアルでは、ファイル データの格納に [Azure Files](storage-files-introduction.md) を使うアプリケーションを開発するための .NET の基本的な使い方を示します。 このチュートリアルでは、シンプルなコンソール アプリケーションを作成し、.NET と Azure Files で次のような基本的な操作を行います。
 
 * ファイルの内容を取得する
-* ファイル共有のクォータ (最大サイズ) を設定する
+* ファイル共有の最大サイズ (*クォータ*) を設定する
 * 共有で定義されている共有アクセス ポリシーを使用するファイルの Shared Access Signature (SAS キー) を作成する
 * ファイルを、同じストレージ アカウント内の別のファイルにコピーする
 * ファイルを、同じストレージ アカウント内の BLOB にコピーする
-* トラブルシューティングに Azure Storage メトリックを使用します。
+* トラブルシューティングに Azure Storage メトリックを使用する
 
-Azure Files の詳細については、「[Azure Files の概要](storage-files-introduction.md)」を参照してください。
+Azure Files の詳細については、「[Azure Files とは](storage-files-introduction.md)」を参照してください。
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="understanding-the-net-apis"></a>.NET API について
 
-Azure Files は、クライアント アプリケーションに対して、2 つの幅広いアプローチを提供します。それは、サーバー メッセージ ブロック (SMB) と REST です。 .NET 内では、これらのアプローチは `System.IO` API と `WindowsAzure.Storage` API によって抽象化されています。
+Azure Files は、クライアント アプリケーションに対して、2 つの幅広いアプローチを提供します。それは、サーバー メッセージ ブロック (SMB) と REST です。 .NET 内では、これらのアプローチは `System.IO` および `WindowsAzure.Storage` API によって抽象化されています。
 
 API | いつ使用するか | メモ
 ----|-------------|------
-[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | アプリケーションが次のような場合。 <ul><li>SMB 経由でファイルの読み取り/書き込みをする必要がある</li><li>ポート 445 経由で Azure Files アカウントにアクセスするデバイスで実行している</li><li>ファイル共有のどの管理設定も管理する必要がない</li></ul> | SMB 経由の Azure Files によるファイル I/O のコーディングは、通常、ネットワーク ファイル共有またはローカル ストレージ デバイスでの I/O のコーディングと同じです。 ファイル I/O など、.NET のさまざまな機能の概要については、[このチュートリアル](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)を参照してください。
-[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 の SMB 経由で Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST とファイル共有の管理を使用するファイル I/O に `Microsoft.Azure.Storage.File` を使用する方法について説明します。
+[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | アプリケーションが次のような場合。 <ul><li>SMB を使用してファイルの読み取り/書き込みをする必要がある</li><li>ポート 445 経由で Azure Files アカウントにアクセスするデバイスで実行している</li><li>ファイル共有のどの管理設定も管理する必要がない</li></ul> | SMB 経由の Azure Files によるファイル I/O の実装は、通常、ネットワーク ファイル共有またはローカル ストレージ デバイスでの I/O と同じです。 ファイル I/O など、.NET のさまざまな機能の概要については、「[コンソール アプリケーション](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter)」のチュートリアルを参照してください。
+[Microsoft.Azure.Storage.File](https://docs.microsoft.com/dotnet/api/overview/azure/storage#client-library) | アプリケーションが次のような場合。 <ul><li>ファイアウォールや ISP の制約のため、ポート 445 で SMB を使用して Azure Files にアクセスできない</li><li>ファイル共有のクォータを設定したり共有アクセス署名を作成したりする管理機能を必要としている</li></ul> | この記事では、SMB の代わりに REST を使用するファイル I/O のため、およびファイル共有の管理のために、`Microsoft.Azure.Storage.File` を使用する方法について説明します。
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>コンソール アプリケーションの作成とアセンブリの取得
-Visual Studio で、新しい Windows コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2017 でコンソール アプリケーションを作成する方法を説明しますが、この手順は Visual Studio の他のバージョンでも同様です。
 
-1. **[ファイル]**  >  **[新規]**  >  **[プロジェクト]** の順に選択します。
-2. **[インストール済み]**  >  **[テンプレート]**  >  **[Visual C#]**  >  **[Windows クラシック デスクトップ]** の順に選択します。
-3. **[コンソール アプリ (.NET Framework)]** を選択します。
-4. **[名前]** フィールドに、アプリケーションの名前を入力します。
-5. **[OK]** を選択します。
+Visual Studio で、新しい Windows コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2019 でコンソール アプリケーションを作成する方法を説明します。 この手順は Visual Studio の他のバージョンでも同様です。
+
+1. Visual Studio を起動し、 **[新しいプロジェクトの作成]** を選択します。
+1. **[新しいプロジェクトの作成]** で、C# の **[コンソール アプリ (.NET Framework)]** を選択してから、 **[次へ]** を選択します。
+1. **[新しいプロジェクトの構成]** で、アプリの名前を入力し、 **[作成]** を選択します。
 
 このチュートリアルのすべてのコード例は、コンソール アプリケーションの `Program.cs` ファイルの `Main()` メソッドに追加できます。
 
-Azure クラウド サービス、Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなど、どの種類の .NET アプリケーションでも Azure Storage クライアント ライブラリを使用できます。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
+Azure Storage クライアント ライブラリは、すべての種類の .NET アプリケーションで使用できます。 Azure クラウド サービスまたは Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなどの種類があります。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
 
 ## <a name="use-nuget-to-install-the-required-packages"></a>NuGet を使用した必要なパッケージのインストール
-このチュートリアルを完了するには、次のパッケージをプロジェクトで参照する必要があります。
 
-* [.NET 用 Microsoft Azure Storage 共通ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/):このパッケージを使用すると、ストレージ アカウント内の共通リソースにプログラムでアクセスできます。
-* [.NET 用 Microsoft Azure Storage Blob ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/):このパッケージを使用すると、ストレージ アカウント内の BLOB リソースにプログラムでアクセスできます。
-* [.NET 用の Microsoft Azure Storage ファイル ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/):このパッケージを使用すると、ストレージ アカウント内のファイル リソースにプログラムでアクセスできます。
-* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/):このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
+このチュートリアルを完了するには、プロジェクトの次のパッケージを参照してください。
+
+* [.NET 用 Microsoft Azure Storage 共通ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
+  
+  このパッケージを使用すると、ストレージ アカウント内の共通リソースにプログラムでアクセスできます。
+* [.NET 用 Microsoft Azure Storage Blob ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
+
+  このパッケージを使用すると、ストレージ アカウント内の BLOB リソースにプログラムでアクセスできます。
+* [.NET 用 Microsoft Azure Storage ファイル ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Storage.File/)
+
+  このパッケージを使用すると、ストレージ アカウント内のファイル リソースにプログラムでアクセスできます。
+* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
+
+  このパッケージには、アプリケーションの実行場所に関係なく、構成ファイル内の接続文字列を解析するためのクラスが用意されています。
 
 NuGet を使って両方のパッケージを取得できます。 次の手順に従います。
 
-1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** をクリックします。
-2. "WindowsAzure.Storage" をオンラインで検索し、 **[インストール]** をクリックしてストレージ クライアント ライブラリとその依存関係をインストールします。
-3. "WindowsAzure.ConfigurationManager" をオンラインで検索し、 **[インストール]** をクリックして Azure Configuration Manager をインストールします。
+1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、 **[NuGet パッケージの管理]** を選択します。
+1. **NuGet パッケージ マネージャー**で、 **[参照]** を選択します。 次に、**Microsoft.Azure.Storage.Blob** を検索して選択し、 **[インストール]** を選択します。
 
-## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>ストレージ アカウントの資格情報を app.config ファイルに保存
-次に、プロジェクトの app.config ファイルに資格情報を保存します。 次の例のようになるように app.config ファイルを編集します。ここで、`myaccount` は実際のストレージ アカウント名に置き換え、`mykey` は実際のストレージ アカウント キーに置き換えてください。
+   この手順により、パッケージとその依存関係がインストールされます。
+1. それらのパッケージを検索してインストールします。
+
+   * **Microsoft.Azure.Storage.Common**
+   * **Microsoft.Azure.Storage.File**
+   * **Microsoft.Azure.ConfigurationManager**
+
+## <a name="save-your-storage-account-credentials-to-the-appconfig-file"></a>ストレージ アカウントの資格情報を App.config ファイルに保存
+
+次に、プロジェクトの `App.config` ファイルに資格情報を保存します。 **ソリューション エクスプローラー**で `App.config` をダブルクリックし、次の例のようにファイルを編集します。 `myaccount` を実際のストレージ アカウント名に置き換え、`mykey` を実際のストレージ アカウント キーに置き換えます。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -87,7 +102,8 @@ NuGet を使って両方のパッケージを取得できます。 次の手順�
 > 最新バージョンの Azure ストレージ エミュレーターでは、Azure Files はサポートされません。 Azure Files を操作するには、接続文字列がクラウド内の Azure ストレージ アカウントを対象とする必要があります。
 
 ## <a name="add-using-directives"></a>using ディレクティブを追加する
-ソリューション エクスプローラーで `Program.cs` ファイルを開き、次の using ディレクティブをファイルの先頭に追加します。
+
+**ソリューション エクスプローラー**で `Program.cs` ファイルを開き、次の using ディレクティブをファイルの先頭に追加します。
 
 ```csharp
 using Microsoft.Azure; // Namespace for Azure Configuration Manager
@@ -99,7 +115,8 @@ using Microsoft.Azure.Storage.File; // Namespace for Azure Files
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
 ## <a name="access-the-file-share-programmatically"></a>プログラムによるファイル共有へのアクセス
-次に、前に示したコードの後で、`Main()` メソッドに次のコードを追加し、接続文字列を取得します。 このコードは、前の手順で作成したファイルへの参照を取得し、その内容をコンソール ウィンドウに出力します。
+
+次に、前に示したコードの後にある `Main()` メソッドに次のコードを追加し、接続文字列を取得します。 このコードでは、前の手順で作成したファイルへの参照を取得し、その内容を出力します。
 
 ```csharp
 // Create a CloudFileClient object for credentialed access to Azure Files.
@@ -136,9 +153,10 @@ if (share.Exists())
 コンソール アプリケーションを実行して、出力結果を確認します。
 
 ## <a name="set-the-maximum-size-for-a-file-share"></a>ファイル共有の最大サイズの設定
-Azure Storage クライアント ライブラリのバージョン 5.x 以降では、GB 単位でファイル共有のクォータ (最大サイズ) を設定できます。 また、共有に現在格納されているデータの量も確認できます。
 
-共有のクォータを設定することにより、共有に格納するファイルの合計サイズを制限できます。 共有上のファイルの合計サイズが共有に設定されたクォータを超過すると、クライアントは既存ファイルのサイズを増やせなくなったり、新しいファイルを作成できなくなったりします。ただし、これらのファイルが空である場合は除きます。
+Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイル共有のクォータ (最大サイズ) を設定できます。 また、共有に現在格納されているデータの量も確認できます。
+
+共有のクォータを設定することにより、共有に格納するファイルの合計サイズを制限します。 共有上のファイルの合計サイズが、共有に設定されているクォータを超えると、クライアントは既存のファイルのサイズを増やすことができません。 それらのファイルが空でない限り、クライアントは新しいファイルを作成できません。
 
 次の例では、共有の現在の使用状況を確認する方法と、共有のクォータを設定する方法を示します。
 
@@ -173,9 +191,10 @@ if (share.Exists())
 ```
 
 ### <a name="generate-a-shared-access-signature-for-a-file-or-file-share"></a>ファイルまたはファイル共有の Shared Access Signature の生成
-Azure Storage クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成できます。 また、ファイル共有に共有アクセス ポリシーを作成して、Shared Access Signature を管理することもできます。 共有アクセス ポリシーを作成することをお勧めします。これにより、侵害されそうな場合に SAS を取り消すことができます。
 
-次の例では、共有上に共有アクセス ポリシーを作成し、そのポリシーを使用して共有上のファイルの SAS に制約を指定します。
+Azure Storage クライアント ライブラリのバージョン 5.x 以降、ファイル共有または個々のファイルの Shared Access Signature (SAS) を生成できます。 また、ファイル共有に共有アクセス ポリシーを作成して、Shared Access Signature を管理することもできます。 共有アクセス ポリシーを使用すると、SAS が危害を受けた場合に SAS を失効させることができるため、共有アクセス ポリシーを作成することをお勧めします。
+
+次の例では、共有に対して共有アクセス ポリシーを作成します。 この例では、そのポリシーを使用して、共有内のファイルの SAS に制約を指定しています。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -221,19 +240,21 @@ if (share.Exists())
 }
 ```
 
-Shared Access Signature の作成方法と使用方法の詳細については、「[Shared Access Signatures (SAS) の使用](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
+Shared Access Signature の作成方法と使用方法の詳細については、「[Shared Access Signature の機能](../common/storage-sas-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#how-a-shared-access-signature-works)」を参照してください。
 
 ## <a name="copy-files"></a>ファイルのコピー
-Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。 次のセクションでは、プログラムを使用してこれらのコピー操作を実行する方法を示します。
 
-また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。 「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
+Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ファイルを別のファイルにコピーしたり、ファイルを BLOB にコピーしたり、BLOB をファイルにコピーしたりすることができます。 次のセクションでは、プログラムを使用してこれらのコピー操作を行う方法を示します。
+
+また、AzCopy を使用してあるファイルを別のファイルにコピーしたり、BLOB をファイルにコピーしたり、その反対の操作をしたりすることもできます。 [AzCopy の作業開始](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
 
 > [!NOTE]
 > BLOB をファイルにコピーしたり、ファイルを BLOB にコピーしたりする場合は、同じストレージ アカウント内でコピーする場合でも、Shared Access Signature (SAS) を使用してソース オブジェクトへのアクセスを承認する必要があります。
-> 
-> 
+>
 
-**別のファイルへのファイルのコピー** 次の例では、同じ共有内の別のファイルに、ファイルをコピーします。 このコピー操作では同じストレージ アカウント内のファイルがコピーされるため、共有キー認証を使用してコピーを実行できます。
+### <a name="copy-a-file-to-another-file"></a>別のファイルへのファイルのコピー
+
+次の例では、同じ共有内の別のファイルに、ファイルをコピーします。 このコピー操作では同じストレージ アカウント内のファイル間でコピーされるため、共有キー認証を使用してコピーを行うことができます。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -277,7 +298,9 @@ if (share.Exists())
 }
 ```
 
-**BLOB へのファイルのコピー** 次の例では、ファイルを作成し、同じストレージ アカウント内の BLOB にそれをコピーします。 この例では、ソース ファイルの SAS を作成します。サービスはこれを使用してコピー操作中にソース ファイルへのアクセスを承認します。
+### <a name="copy-a-file-to-a-blob"></a>BLOB へのファイルのコピー
+
+次の例では、ファイルを作成し、同じストレージ アカウント内の BLOB にそれをコピーします。 この例では、ソース ファイルの SAS を作成します。サービスはこれを使用してコピー操作中にソース ファイルへのアクセスを承認します。
 
 ```csharp
 // Parse the connection string for the storage account.
@@ -326,9 +349,10 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 同じ方法で、ファイルに BLOB をコピーできます。 ソース オブジェクトが BLOB である場合、SAS を作成して、コピー操作中にその BLOB へのアクセスを承認します。
 
 ## <a name="share-snapshots"></a>共有スナップショット
+
 Azure Storage クライアント ライブラリのバージョン 8.5 以降では、共有スナップショットを作成できます。 また、共有スナップショットを一覧表示または参照したり、削除したりすることもできます。 共有スナップショットは読み取り専用であるため、共有スナップショットに対する書き込み操作は許可されていません。
 
-**共有スナップショットを作成する**
+### <a name="create-share-snapshots"></a>共有スナップショットを作成する
 
 次の例では、ファイル共有スナップショットを作成します。
 
@@ -340,7 +364,8 @@ CloudFileShare myShare = fClient.GetShareReference(baseShareName);
 var snapshotShare = myShare.Snapshot();
 
 ```
-**共有スナップショットを一覧表示する**
+
+### <a name="list-share-snapshots"></a>共有スナップショットの一覧表示
 
 次の例では、共有上の共有スナップショットを一覧表示します。
 
@@ -348,7 +373,7 @@ var snapshotShare = myShare.Snapshot();
 var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
 ```
 
-**共有スナップショット内のファイルとディレクトリを参照する**
+### <a name="browse-files-and-directories-within-share-snapshots"></a>共有スナップショット内のファイルとディレクトリを参照する
 
 次の例では、共有スナップショット内のファイルとディレクトリを参照します。
 
@@ -358,40 +383,36 @@ var rootDirectory = mySnapshot.GetRootDirectoryReference();
 var items = rootDirectory.ListFilesAndDirectories();
 ```
 
-**共有と共有スナップショットを一覧表示し、共有スナップショットからファイル共有またはファイルを復元する** 
+### <a name="list-shares-and-share-snapshots-and-restore-file-shares-or-files-from-share-snapshots"></a>共有と共有スナップショットを一覧表示し、共有スナップショットからファイル共有またはファイルを復元する
 
-ファイル共有のスナップショットを取得すると、将来的に個々のファイルまたはファイル共有全体を復旧できます。 
+ファイル共有のスナップショットを取得すると、将来的に個々のファイルまたはファイル共有全体を復旧できます。
 
-ファイル共有の共有スナップショットを照会することで、ファイル共有スナップショットからファイルを復元できます。 その後、特定の共有スナップショットに属しているファイルを取得し、そのバージョンを使用して、直接読み取りと比較を行うか復元することができます。
+ファイル共有の共有スナップショットを照会することで、ファイル共有スナップショットからファイルを復元できます。 その後、特定の共有スナップショットに属するファイルを取得できます。 そのバージョンを使用して、直接読み取って比較するか、復元します。
 
 ```csharp
 CloudFileShare liveShare = fClient.GetShareReference(baseShareName);
 var rootDirOfliveShare = liveShare.GetRootDirectoryReference();
-
-       var dirInliveShare = rootDirOfliveShare.GetDirectoryReference(dirName);
+var dirInliveShare = rootDirOfliveShare.GetDirectoryReference(dirName);
 var fileInliveShare = dirInliveShare.GetFileReference(fileName);
 
-           
 CloudFileShare snapshot = fClient.GetShareReference(baseShareName, snapshotTime);
 var rootDirOfSnapshot = snapshot.GetRootDirectoryReference();
-
-       var dirInSnapshot = rootDirOfSnapshot.GetDirectoryReference(dirName);
+var dirInSnapshot = rootDirOfSnapshot.GetDirectoryReference(dirName);
 var fileInSnapshot = dir1InSnapshot.GetFileReference(fileName);
 
 string sasContainerToken = string.Empty;
-       SharedAccessFilePolicy sasConstraints = new SharedAccessFilePolicy();
-       sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
-       sasConstraints.Permissions = SharedAccessFilePermissions.Read;
-       //Generate the shared access signature on the container, setting the constraints directly on the signature.
+SharedAccessFilePolicy sasConstraints = new SharedAccessFilePolicy();
+sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
+sasConstraints.Permissions = SharedAccessFilePermissions.Read;
+
+//Generate the shared access signature on the container, setting the constraints directly on the signature.
 sasContainerToken = fileInSnapshot.GetSharedAccessSignature(sasConstraints);
 
 string sourceUri = (fileInSnapshot.Uri.ToString() + sasContainerToken + "&" + fileInSnapshot.SnapshotTime.ToString()); ;
 fileInliveShare.StartCopyAsync(new Uri(sourceUri));
-
 ```
 
-
-**共有スナップショットを削除する**
+### <a name="delete-share-snapshots"></a>共有スナップショットを削除する
 
 次の例では、ファイル共有スナップショットを削除します。
 
@@ -399,21 +420,22 @@ fileInliveShare.StartCopyAsync(new Uri(sourceUri));
 CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
 ```
 
-## <a name="troubleshooting-azure-files-using-metrics"></a>メトリックを使用した Azure Files のトラブルシューティング
+## メトリックを使用した Azure Files のトラブルシューティング<a name="troubleshooting-azure-files-using-metrics"></a>
+
 Azure ストレージ分析で Azure Files のメトリックがサポートされるようになりました。 メトリック データを使用すると、要求のトレースや問題の診断ができます。
 
-[Azure portal](https://portal.azure.com) から Azure Files のメトリックを有効にすることができます。 REST API を使用して Set File Service Properties 操作を呼び出すか、ストレージ クライアント ライブラリのアナログの 1 つを使用して、プログラムでメトリックを有効にすることも可能です。
+[Azure portal](https://portal.azure.com) から Azure Files のメトリックを有効にすることができます。 REST API またはストレージ クライアント ライブラリの類似のものをどれか使用して、Set File Service Properties 操作を呼び出すことによって、プログラムでメトリックを有効にすることも可能です。
 
 次のコード例では、.NET 用ストレージ クライアント ライブラリを使用して、Azure Files のメトリックを有効にする方法を示します。
 
-まず、`Program.cs` ファイルで、先ほど追加したディレクティブに加え、次の `using` ディレクティブを追加します。
+まず、`Program.cs` ファイルで、先ほど追加したディレクティブと共に、次の `using` ディレクティブを追加します。
 
 ```csharp
 using Microsoft.Azure.Storage.File.Protocol;
 using Microsoft.Azure.Storage.Shared.Protocol;
 ```
 
-Azure BLOB、Azure テーブル、Azure キューは `Microsoft.Azure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` 型を使用しますが、Azure Files はその独自の型である、`Microsoft.Azure.Storage.File.Protocol` 名前空間の `FileServiceProperties` 型を使用することに注意してください。 ただし、両方の名前空間は、次のコードのコンパイルのため、自身のコードから参照される必要があります。
+Azure BLOB、Azure テーブル、Azure キューでは `Microsoft.Azure.Storage.Shared.Protocol` 名前空間の共有 `ServiceProperties` 型が使用されますが、Azure Files ではその独自の型である、`Microsoft.Azure.Storage.File.Protocol` 名前空間の `FileServiceProperties` 型が使用されます。 ただし、次のコードをコンパイルするためには、ご自身のコードから両方の名前空間を参照する必要があります。
 
 ```csharp
 // Parse your storage connection string from your application's configuration file.
@@ -456,26 +478,31 @@ Console.WriteLine(serviceProperties.MinuteMetrics.RetentionDays);
 Console.WriteLine(serviceProperties.MinuteMetrics.Version);
 ```
 
-エンド ツー エンドのトラブルシューティング ガイダンスについては、[Azure File のトラブルシューティングに関する記事](storage-troubleshoot-windows-file-connection-problems.md)も参照してください。
+問題が発生した場合は、「[Windows での Azure Files に関する問題のトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
-Azure Files の詳細については、次のリンクをご覧ください。
+
+Azure Files の詳細については、次のリソースを参照してください。
 
 ### <a name="conceptual-articles-and-videos"></a>概念に関する記事とビデオ
+
 * [Azure Files: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Linux で Azure Files を使用する方法](storage-how-to-use-files-linux.md)
+* [Linux で Azure Files を使用する](storage-how-to-use-files-linux.md)
 
 ### <a name="tooling-support-for-file-storage"></a>File Storage 用のツールのサポート
-* [Microsoft Azure Storage で AzCopy を使用する方法](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
+
+* [AzCopy を使ってみる](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Azure Storage での Azure CLI の使用](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Azure Files に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
+* [Windows での Azure Files に関する問題のトラブルシューティング](https://docs.microsoft.com/azure/storage/storage-troubleshoot-file-connection-problems)
 
 ### <a name="reference"></a>リファレンス
-* [.NET 用ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)
-* [File サービスの REST API リファレンス](https://msdn.microsoft.com/library/azure/dn167006.aspx)
+
+* [.NET 用 Azure Storage API](/dotnet/api/overview/azure/storage)
+* [ファイル サービスの REST API](/rest/api/storageservices/File-Service-REST-API)
 
 ### <a name="blog-posts"></a>ブログ記事
-* [Azure Files が一般公開されました](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Azure Files の内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Microsoft Azure File サービスの概要](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
+
+* [Azure File Storage の一般提供を開始](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+* [Inside Azure File Storage (Azure File Storage の内部)](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+* [Microsoft Azure Files サービスの概要](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [Microsoft Azure Files への接続の維持](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)

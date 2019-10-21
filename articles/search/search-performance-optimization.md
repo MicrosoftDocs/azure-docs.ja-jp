@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/02/2019
 ms.author: liamca
 ms.custom: seodec2018
-ms.openlocfilehash: 97628535deb79733e9d286977534a6ea97ba60e6
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 566c208ef415f6fc9f3ada419e2f9e9244bc066d
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70182292"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72333160"
 ---
 # <a name="deployment-strategies-and-best-practices-for-optimizing-performance-on-azure-search"></a>Azure Search でのパフォーマンスの最適化のためのデプロイ戦略とベスト プラクティス
 
@@ -94,11 +94,6 @@ ms.locfileid: "70182292"
 [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用すると、複数の Azure Search サービスが支援する地理的に配置された複数の Web サイトに要求をルーティングできます。 Traffic Manager の利点の 1 つは、Azure Search をプローブしてサービスが利用可能であることを確認し、ダウンタイムが発生した場合にユーザーを別の Search サービスにルーティングできることです。 また、Azure Websites を使用して検索要求をルーティングしている場合、Azure Traffic Manager を使用すると、Websites は稼働していても Azure Search が稼働していない場合に負荷を分散できます。 Traffic Manager を活用したアーキテクチャの例を次に示します。
 
    ![リージョン別のサービスのクロス集計 (中央の Traffic Manager を使用)][3]
-
-## <a name="monitor-performance"></a>パフォーマンスの監視
-Azure Search では、[検索トラフィックの分析](search-traffic-analytics.md)を使用してサービスのパフォーマンスを分析および監視できます。 この機能を有効にし、クライアント アプリにインストルメンテーションを追加すると、必要に応じて、個々の検索操作や Azure Storage アカウントの集計メトリックをログに記録できます。ログに記録された集計メトリックは、Power BI で分析または視覚化するために処理できます。 この方法でメトリックをキャプチャすることで、平均クエリ数やクエリの応答時間などのパフォーマンス統計情報が提供されます。 また、操作のログでは、特定の検索操作の詳細を調べることができます。
-
-トラフィック分析は、その Azure Search の観点から待機時間の割合を把握するのに役立ちます。 ログに記録されたクエリのパフォーマンス メトリックは、Azure Search でクエリが完全に処理されるまでの所要時間 (クエリが要求された時点から送信されるまでの時間) に基づいているので、これを使用して、待機時間の問題が Azure Search サービス側とサービスの外部 (ネットワーク待ち時間など) のどちらで発生しているのかを特定できます。  
 
 ## <a name="next-steps"></a>次の手順
 価格レベルと各レベルのサービスの制限の詳細については、「 [Azure Search サービスの制限](search-limits-quotas-capacity.md)」をご覧ください。

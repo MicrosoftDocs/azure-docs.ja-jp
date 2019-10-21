@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4db4806b6be018bfc53a155627de825bf62d8395
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29f1fc2a6fd23ef3a770f58fd78d5067672136dd
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510110"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326300"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Azure Active Directory B2C で Android アプリケーションを使用してサインインする
 
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 これらの標準により、Azure Active Directory B2C と統合する任意のライブラリを活用できます。 他のライブラリを使用できるように、このようなチュートリアルを使用して、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を示すことができます。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
 
 > [!WARNING]
-> Microsoft では、サード パーティ製のライブラリ用の修正プログラムは提供していません。また、これらのライブラリのレビューも実施していません。 このサンプルでは、Azure AD B2C を使用する基本的なシナリオでの互換性がテスト済みである、AppAuth と呼ばれるサード パーティ製のライブラリを使用しています。 問題や機能に関する要望は、ライブラリのオープン ソース プロジェクトにお送りください。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)をご覧ください。  
+> Microsoft では、サード パーティ製のライブラリ用の修正プログラムは提供していません。また、これらのライブラリのレビューも実施していません。 このサンプルでは、Azure AD B2C を使用する基本的なシナリオでの互換性がテスト済みである、AppAuth と呼ばれるサード パーティ製のライブラリを使用しています。 問題や機能に関する要望は、ライブラリのオープン ソース プロジェクトにお送りください。 詳細については、[こちらの記事](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-libraries)をご覧ください。
 >
 >
 
@@ -34,11 +34,11 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 
 ## <a name="create-an-application"></a>アプリケーションの作成
 
-次に、B2C ディレクトリにアプリを作成する必要があります。 これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。 モバイル アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
+次に、アプリケーションをお使いの Azure AD B2C テナントに登録します。 これにより、アプリと安全に通信するために必要な情報が Azure AD に提供されます。
 
-* アプリケーションに**ネイティブ クライアント**を含めます。
-* アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この情報は後で必要になります。
-* ネイティブ クライアントの**リダイレクト URI** (例: com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect) を設定します。 この情報も後で必要になります。
+[!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
+
+後の手順で使用するために、**アプリケーション ID** を記録しておきます。 次に、一覧からアプリケーションを選択し、**カスタム リダイレクト URI** を記録しておきます。これも後の手順で使用します。 たとえば、「 `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 」のように入力します。
 
 ## <a name="create-your-user-flows"></a>ユーザー フローを作成する
 
@@ -117,8 +117,8 @@ AuthorizationServiceConfiguration config =
 
 承認サービスの構成を行うか取得した後、承認要求を構築できます。 この要求を作成するには、次の情報が必要です。
 
-* クライアント ID (例: 00000000-0000-0000-0000-000000000000)
-* カスタム スキーマを使用するリダイレクト URI (例: com.onmicrosoft.fabrikamb2c.exampleapp://oauthredirect)
+* 前に記録しておいたクライアント ID (アプリケーション ID)。 たとえば、「 `00000000-0000-0000-0000-000000000000` 」のように入力します。
+* 前に記録しておいたカスタム リダイレクト URI。 たとえば、「 `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 」のように入力します。
 
 どちらの項目も、[アプリの登録](#create-an-application)を行ったときに保存されています。
 
@@ -132,4 +132,3 @@ AuthorizationRequest req = new AuthorizationRequest.Builder(
 ```
 
 残りのプロセスを完了する方法については、[AppAuth ガイド](https://openid.github.io/AppAuth-Android/)を参照してください。 動作するアプリをすぐに開始する必要がある場合は、[用意されているサンプル](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c)をチェックしてください。 [README.md](https://github.com/Azure-Samples/active-directory-android-native-appauth-b2c/blob/master/README.md) の手順に従って、独自の Azure AD B2C 構成を入力してください。
-

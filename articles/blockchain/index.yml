@@ -1,0 +1,88 @@
+### YamlMime:Hub
+title: Azure Blockchain のドキュメント
+summary: Azure Blockchain を使用して、安全なブロックチェーン アプリを開発、テスト、デプロイする方法について説明します。
+brand: azure
+metadata:
+  title: Azure Blockchain のドキュメント
+  description: Azure Blockchain を使用して、安全なブロックチェーン アプリを開発、テスト、デプロイする方法について説明します。
+  services: service
+  ms.service: azure-blockchain
+  ms.topic: hub-page
+  author: PatAltimore
+  ms.author: patricka
+  ms.date: 09/25/2019
+  ms.openlocfilehash: 93a1e54dd2f1c209792c688666782a9c9823214b
+  ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71328626"
+productDirectory:
+  items:
+  - title: Azure Blockchain サービス
+    imageSrc: ./media/index/blockchain-service.svg
+    links:
+    - url: ./service/overview.md
+      text: Azure Blockchain Service とは
+    - url: ./service/index.yml
+      text: 詳細を表示 >
+  - title: Azure Blockchain Workbench
+    imageSrc: ./media/index/blockchain-workbench.svg
+    links:
+    - url: ./workbench/overview.md
+      text: Azure Blockchain Workbench とは
+    - url: ./workbench/index.yml
+      text: 詳細を表示 >
+conceptualContent:
+  title: 作業開始
+  items:
+  - title: コンソーシアム ブロックチェーン ネットワークを使用した構築と開発
+    links:
+    - url: ./service/create-member.md
+      itemType: quickstart
+      text: Azure Blockchain Service のブロックチェーン メンバーをデプロイする
+    - url: ./service/send-transaction.md
+      itemType: tutorial
+      text: チュートリアルに従ってスマート コントラクトを作成する
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-I-Deploy-and-configure-your-network
+      itemType: video
+      text: ネットワークをデプロイして構成する方法を見る
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Getting-started-with-Azure-Blockchain-Service-Part-II-Write-and-test-smart-contracts-with-VS-Code
+      itemType: video
+      text: VS Code を使用してスマート コントラクトを作成する方法を見る
+  - title: ブロックチェーン ソリューションのプロトタイプ作成
+    links:
+    - url: ./workbench/deploy.md
+      itemType: how-to-guide
+      text: Azure Blockchain Workbench をデプロイする
+    - url: ./workbench/create-app.md
+      itemType: tutorial
+      text: チュートリアルに従って Blockchain Workbench アプリケーションを構築する
+    - url: ./workbench/integration-patterns.md
+      itemType: concept
+      text: ソリューションを Blockchain Workbench と統合する方法を確認する
+    - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
+      itemType: video
+      text: 最初のアプリケーションを構築する方法を見る
+  - title: ユース ケースに適した台帳を使用した構築
+    links:
+    - url: ./templates/ethereum-poa-deployment.md
+      itemType: how-to-guide
+      text: マルチメンバーのコンソーシアム Proof-of-Authority Ethereum ネットワークを Azure にデプロイする
+    - url: ./templates/hyperledger-fabric-consortium-blockchain.md
+      itemType: how-to-guide
+      text: Hyperledger Fabric コンソーシアム ネットワークを Azure にデプロイする
+additionalContent:
+  sections:
+  - title: 開発ツールとサンプル
+    summary: ブロックチェーン アプリの開発ツールとコード サンプル。
+    items:
+    - title: Azure Blockchain Development Kit for Ethereum
+      summary: Azure Blockchain Service ソリューションの開発、デプロイ、デバッグ、管理を行います。
+      url: https://marketplace.visualstudio.com/items?itemName=azblockchain.azure-blockchain
+    - title: Ethereum ブロックチェーン コネクタ
+      summary: Azure Logic Apps、Microsoft Flow、Microsoft PowerApps を使用して、トランザクションの送信、コントラクト状態の読み取り、コントラクト更新後のフローのトリガーなど、スマート コントラクト アクションを実行します。
+      url: https://docs.microsoft.com/connectors/blockchainethereum/
+    - title: コード サンプル
+      summary: 作業を開始するためのコード サンプルが含まれた GitHub リポジトリ。
+      url: https://github.com/Azure-Samples/blockchain

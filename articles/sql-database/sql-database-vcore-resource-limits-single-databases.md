@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/29/2019
-ms.openlocfilehash: cb7d55db978cb8eb7944ffe3f3f51d025d5fb891
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: ae7baf09df42a5824e5f59e7ebb372f4d9f6350c
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164301"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72032872"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-based-purchasing-model"></a>仮想コアベースの購入モデルを使用した単一データベースに対するリソース制限
 
@@ -291,27 +291,32 @@ SQL Database サーバー上の 1 つのデータベースに対する DTU ベ�
 |コンピューティング世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|第 5 世代|
 |仮想コア|2|4|8|16|24|32|40|80|
 |メモリ (GB)|10.2|20.4|40.8|81.6|122.4|163.2|204|408|
+|[RBPEX](sql-database-service-tier-hyperscale.md#compute) サイズ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|3X メモリ|
 |列ストアをサポート|はい|はい|はい|はい|はい|はい|はい|はい|
 |インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |最大データ サイズ (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
 |最大ログ サイズ (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
 |TempDB の最大データ サイズ (GB)|64|128|256|384|384|384|384|384|
-|ストレージの種類|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|
-|最大データ IOPS (64 KB)| [注 1](#note-1) |[注 1](#note-1)|[注 1](#note-1) |[注 1](#note-1) |[注 1](#note-1) |[注 1](#note-1) |[注 1](#note-1) | [注 1](#note-1) |
-|IO 待機時間 (概算)|未定|未定|未定|未定|未定|未定|未定|未定|
+|ストレージの種類| [注 1](#notes) |[注 1](#notes)|[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) |[注 1](#notes) | [注 1](#notes) |
+|最大データ IOPS (64 KB)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|[注 2](#notes)|
+|IO 待機時間 (概算)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|[注 3](#notes)|
 |最大同時実行ワーカー (要求) 数|200|400|800|1600|2400|3200|4000|8000|
 |最大同時セッション数|30000|30000|30000|30000|30000|30000|30000|30000|
 |セカンダリ レプリカ|0-4|0-4|0-4|0-4|0-4|0-4|0-4|0-4|
 |マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |読み取りスケールアウト|はい|はい|はい|はい|はい|はい|はい|はい|
-|含まれるバックアップ ストレージ |7|7|7|7|7|7|7|7|
+|バックアップ ストレージのリテンション期間|7 日|7 日|7 日|7 日|7 日|7 日|7 日|7 日|
 |||
 
-### <a name="note-1"></a>注 1
+#### <a name="notes"></a>メモ
 
-Hyperscale は、複数のレベルのキャッシュが存在する複数レベル アーキテクチャです。 有効な IOPS はワークロードによって異なります。
+**注 1**: Hyperscale は、個別のコンピューティングとストレージ コンポーネントを含む多層アーキテクチャです。[Hyperscale サービス レベルのアーキテクチャ](sql-database-service-tier-hyperscale.md#distributed-functions-architecture)
 
-### <a name="next-steps"></a>次の手順
+**注 2**: Hyperscale 多層アーキテクチャには、複数のレベルのキャッシュが存在します。 有効な IOPS はワークロードによって異なります。
+
+**注 3**: コンピューティング レプリカの RBPEX SSD ベースでキャッシュされるデータについては、待機時間は 1 から 2 ミリ秒です。これにより、最も使用されているデータ ページがキャッシュされます。 ページ サーバーから取得したデータは、待機時間が長くなります。
+
+## <a name="next-steps"></a>次の手順
 
 - 単一データベースに対する DTU リソースの制限については、[DTU ベースの購入モデルを使用した単一データベースに対するリソース制限](sql-database-dtu-resource-limits-single-databases.md)に関するページを参照してください
 - エラスティック プールに対する仮想コア リソースの制限については、「[仮想コアベースの購入モデルを使用したエラスティック プールに対するリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)」を参照してください

@@ -8,13 +8,13 @@ author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 157be65a19a1f790b911aa9d861c5f18fc8c0813
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: e35af0fcf4a8f1f8f0446be44fe5b0bb6eeec693
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006179"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169724"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-with-terraform-in-azure"></a>チュートリアル:Azure で Terraform を使用してハブ とスポークのネットワークを検証する
 
@@ -23,15 +23,15 @@ ms.locfileid: "58006179"
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
-> * HCL (HashiCorp 言語) を使用して、ハブ スポーク トポロジでハブ VNet を実装する
-> * Terraform plan を使用して、デプロイするリソースを確認する
+> * HCL (HashiCorp 言語) を使用して、ハブ スポーク トポロジにハブ VNet を実装する
+> * Terraform プランを使用して、デプロイするリソースを確認する
 > * Terraform apply を使用して、Azure にリソースを作成する
 > * 異なるネットワークの間の接続を確認する
 > * Terraform を使用して、すべてのリソースを破棄する
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Azure で Terraform を使用して、ハブとスポークのハイブリッド ネットワーク トポロジを作成します](./terraform-hub-spoke-introduction.md)。
+1. [Azure で Terraform を使用して、ハブ スポーク ハイブリッド ネットワーク トポロジを作成します](./terraform-hub-spoke-introduction.md)。
 1. [Azure で Terraform を使用して、オンプレミス仮想ネットワークを作成します](./terraform-hub-spoke-on-prem.md)。
 1. [Azure で Terraform を使用して、ハブ仮想ネットワークを作成します](./terraform-hub-spoke-hub-network.md)。
 1. [Azure で Terraform を使用して、ハブ仮想ネットワーク アプライアンスを作成します](./terraform-hub-spoke-hub-nva.md)。

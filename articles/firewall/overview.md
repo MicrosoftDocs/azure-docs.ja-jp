@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 09/4/2019
+ms.date: 10/08/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: c685b2314d15e431ccac3470fd337ca92697e1a5
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 5be1a673ac456b0896ce83afcb469e4ac6b8b40a
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241174"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72001332"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -78,10 +78,6 @@ FQDN のタグにより、ファイアウォール経由の既知の Azure サ�
 ファイアウォールのパブリック IP アドレスへの着信ネットワーク トラフィックは、変換され (宛先ネットワーク アドレス変換)、仮想ネットワークのプライベート IP アドレスでフィルター処理されます。
 
 ## <a name="multiple-public-ip-addresses"></a>複数のパブリック IP アドレス
-
-> [!IMPORTANT]
-> Azure portal、Azure PowerShell、Azure CLI、REST、テンプレートで、複数のパブリック IP アドレスを持つ Azure Firewall を使用できます。
-
 
 複数のパブリック IP アドレス (最大 100) をファイアウォールに関連付けることができます。
 

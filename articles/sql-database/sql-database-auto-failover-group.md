@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: a80e1d0e4aa243d46efa79173af3fc5d774eb46f
-ms.sourcegitcommit: b8578b14c8629c4e4dea4c2e90164e42393e8064
+ms.date: 10/09/2019
+ms.openlocfilehash: b876fba2ae10c4f8b973ad1bb0c98bfa95c7f481
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70806596"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249314"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>自動フェールオーバー グループを使用して、複数のデータベースの透過的な調整されたフェールオーバーを有効にする
 
@@ -173,9 +173,6 @@ ms.locfileid: "70806596"
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>マネージド インスタンスでフェールオーバー グループを使用する場合のベスト プラクティス
 
-> [!IMPORTANT]
-> マネージド インスタンスの自動フェールオーバー グループは、パブリック プレビュー段階です。
-
 自動フェールオーバー グループはプライマリ インスタンスに構成する必要があり、それを別の Azure リージョンのセカンダリ インスタンスに接続します。  インスタンス内のすべてのデータベースは、セカンダリ インスタンスにレプリケートされます。 
 
 次の図に、マネージド インスタンスと自動フェールオーバー グループを使用する、geo 冗長クラウド アプリケーションの一般的な構成を示します。
@@ -307,9 +304,6 @@ ms.locfileid: "70806596"
 > [!NOTE]
 > セカンダリ データベースをフェールオーバー グループ構成の一部として作成した場合、セカンダリ データベースをダウングレードすることは推奨されません。 これは、フェールオーバーがアクティブ化された後にデータ層に通常のワークロードを処理するのに十分な容量を確保するためです。
 
-> [!IMPORTANT]
-> フェールオーバー グループのメンバーである Managed Instance のアップグレードまたはダウングレードは、現在サポートされていません。
-
 ## <a name="preventing-the-loss-of-critical-data"></a>重要なデータの損失の防止
 
 ワイド エリア ネットワークの遅延は大きいため、連続コピーでは非同期のレプリケーション メカニズムが使用されます。 非同期レプリケーションでは、障害が発生した場合に部分的なデータ損失が避けられません。 しかし、データ損失が許されないアプリケーションもあります。 重要な更新情報を保護するには、アプリケーション開発者は、トランザクションがコミットされた直後に [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) ステム プロシージャを呼び出すことができます。 `sp_wait_for_database_copy_sync` を呼び出すと、最後にコミットされたトランザクションがセカンダリ データベースに転送されるまで、呼び出しスレッドがブロックされます。 ただし、転送されたトランザクションがセカンダリで再生およびコミットされるのを待つことはありません。 `sp_wait_for_database_copy_sync` は、特定の連続コピー リンクを対象としています。 プライマリ データベースへの接続権限を持つユーザーが、このプロシージャを呼び出すことができます。
@@ -365,7 +359,7 @@ ms.locfileid: "70806596"
 | [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | フェールオーバー グループを更新します。 |
 |  | |
 
-### <a name="rest-api-manage-failover-groups-with-managed-instances-preview"></a>REST API:マネージド インスタンスでフェールオーバー グループを管理する (プレビュー)
+### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API:マネージド インスタンスでフェールオーバー グループを管理する
 
 | API | 説明 |
 | --- | --- |

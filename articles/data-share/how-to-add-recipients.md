@@ -1,17 +1,17 @@
 ---
-title: Azure Data Share プレビューで既存のデータ共有への受信者の追加
-description: 既存のデータ共有への受信者の追加
-author: madams0013
+title: Azure Data Share プレビューで受信者を追加する
+description: Azure Data Share プレビューで既存のデータ共有に受信者を追加する方法について説明します。
+author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: jasonh
-ms.openlocfilehash: 7df0e92bd6dba988e7a8241f7076410c3cafca37
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 1deda63f7f440116eaf47c41fa00c8b5f7566dcf
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258726"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169167"
 ---
 # <a name="how-to-add-a-recipient-to-an-existing-data-share-in-azure-data-share-preview"></a>Azure Data Share プレビューで既存のデータ共有に受信者を追加する方法
 

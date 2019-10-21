@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f53ade09c5e2e7db0499122526a1de482af9378f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: d392ae97a8325dd4a56acd807ebfb2b951216eae
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70901351"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72174240"
 ---
 # <a name="bulk-restore-deleted-users-preview-in-azure-active-directory"></a>Azure Active Directory で削除済みユーザーを一括復元する (プレビュー)
 
@@ -26,18 +26,22 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 ## <a name="to-bulk-restore-users"></a>ユーザーを一括復元するには
 
-1. 組織のユーザー管理者アカウントで、[ご自身の Azure AD 組織にサインイン](https://aad.portal.azure.com)します。
+1. Azure AD 組織のユーザー管理者アカウントで、[ご自身の Azure AD 組織にサインイン](https://aad.portal.azure.com)します。
 1. Azure AD で、 **[ユーザー]**  >  **[削除済み]** の順に選択します。
 1. **[削除済みのユーザー]** ページで、 **[一括復元]** を選択して、復元するユーザーのプロパティの有効な CSV ファイルをアップロードします。
 
    ![[削除済みのユーザー] ページで一括復元コマンドを選択する](./media/users-bulk-restore/bulk-restore.png)
 
-1. CSV ファイルの編集が完了したら、またはアップロードするご自身のファイルの準備が既にできている場合、 **[csv ファイルをアップロードします]** の下からそのファイルを選択します。
+1. この CSV ファイルを開いて、復元するユーザーごとに 1 行を追加します。 唯一の必須値は **ObjectID** です。 そのうえでファイルを保存します。
 
    ![追加するユーザーをリストするローカル CSV ファイルを選択する](./media/users-bulk-restore/upload-button.png)
 
-1. ファイルの内容が検証されたら、ファイル情報を修正し、エラーがある場合はファイルを再送信します。 有効なファイルを送信すると、データ アップロード ジョブが自動的に開始されます。
-1. CSV ファイルの検証に合格した後、 **[送信]** を選択して、ユーザーを復元する Azure Batch ジョブを開始します。 エラーが発生した場合は、[一括操作の結果] ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。
+1. **[ユーザーの一括復元 (プレビュー)]** ページの **[csv ファイルをアップロードします]** で、そのファイルを参照します。 ファイルを選択して **[送信]** をクリックすると、CSV ファイルの検証が開始されます。
+1. ファイルの内容が検証されると、"**ファイルが正常にアップロードされました**" と表示されます。 エラーが存在する場合は、ジョブを送信する前にそれらを修正する必要があります。
+1. ファイルの検証に合格したら、 **[送信]** を選択して、ユーザーを復元する Azure 一括操作を開始します。
+1. 復元操作が完了すると、一括操作が成功したという通知が表示されます。
+
+エラーが発生した場合は、 **[一括操作の結果]** ページで結果ファイルをダウンロードして表示できます。 このファイルには、各エラーの理由が含まれています。
 
 ## <a name="check-status"></a>状態の確認
 

@@ -1,121 +1,162 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Azure Functions のドキュメント
+summary: Azure Functions は、インフラストラクチャを明示的にプロビジョニングしたり管理したりする必要がない、イベントトリガー型のコードを実行できるサーバーレス コンピューティング サービスです。
 metadata:
-  document_id: 83ceabb5-fb4f-a709-3fd2-37d024409f31
-  title: Azure Functions のドキュメント - チュートリアル | Microsoft Docs
-  meta.description: Learn how to develop and deploy functions in the language of your choice to run tasks in the background or on a schedule without special infrastructure.
-  services: functions
-  author: georgewallace
-  manager: gwallace
+  title: Azure Functions のドキュメント
+  description: Azure Functions は、インフラストラクチャを明示的にプロビジョニングしたり管理したりする必要がない、イベントトリガー型のコードを実行できるサーバーレス コンピューティング サービスです。
   ms.service: azure-functions
   ms.topic: landing-page
-  ms.date: 08/09/2018
-  ms.author: gwallace
-abstract:
-  description: 'Azure Functions は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できる<a href="https://azure.microsoft.com/solutions/serverless/">サーバーレス</a> コンピューティング サービスです。 Azure Functions を使用すると、各種のイベントに応じてスクリプトまたはコードの一部を実行できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Functions の使用方法を確認してください。'
-  aside:
-    image:
-      alt: null
-      height: 110
-      src: media/index/video-thumb-get-started.png
-      width: 250
-    title: 'Azure Functions の概要。 (2:39)'
-    href: 'https://azure.microsoft.com/resources/videos/get-started-with-azure-functions/'
-    width: 250
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: 以下を使用して作成されたイベントに基づいて実行される関数の作成方法について説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_http.svg'
-            text: HTTP
-            href: /azure/azure-functions/functions-create-first-azure-function
-          - image:
-              src: media/index/stopwatch.svg
-            text: Timer
-            href: /azure/azure-functions/functions-create-scheduled-function
-          - image:
-              src: media/index/cosmosdb.svg
-            text: Azure Cosmos DB
-            href: /azure/azure-functions/functions-create-cosmos-db-triggered-function
-          - image:
-              src: media/index/blob.svg
-            text: Blob
-            href: /azure/azure-functions/functions-create-storage-blob-triggered-function
-          - image:
-              src: media/index/storage.svg
-            text: キュー
-            href: /azure/azure-functions/functions-create-storage-queue-triggered-function
-      - type: paragraph
-        text: ローカルでの開発とデバッグの方法を学習します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_visual-studio.svg'
-            text: Visual Studio
-            href: /azure/azure-functions/functions-create-your-first-function-visual-studio
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
-            text: Visual Studio Code
-            href: /azure/azure-functions/functions-create-first-function-vs-code
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: Azure Functions を構築して管理する方法を学習します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/azure-functions/functions-twitter-email">Azure Logic Apps と統合される関数を作成する</a>
-          - html: <a href="/azure/azure-functions/functions-create-serverless-api">Azure Functions を使用してサーバーレス API を作成する</a>
-          - html: <a href="/azure/azure-functions/functions-openapi-definition">関数の OpenAPI 定義を作成する</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する</a>
-          - html: '<a href="https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database">画像をメタデータと共に格納するサーバーレス Web アプリを作成する</a>'
-  - title: サンプル
-    items:
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/azure-functions/functions-cli-samples">Azure CLI</a>
-          - html: <a href="/sandbox/functions-recipes/">Azure Functions レシピ</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure Functions を使用してサーバーレス ロジックを作成する
-            href: /learn/modules/create-serverless-logic-with-azure-functions/
-            image:
-              src: /learn/achievements/create-serverless-logic-with-azure-functions.svg
-              href: /learn/modules/create-serverless-logic-with-azure-functions/
-          - title: トリガーを使用して Azure 関数を実行する
-            href: /learn/modules/execute-azure-function-with-triggers/
-            image:
-              src: /learn/achievements/execute-azure-function-with-triggers.svg
-              href: /learn/modules/execute-azure-function-with-triggers/
-          - title: 入力バインディングと出力バインディングを使用して Azure Functions とデータをチェーン設定する
-            href: /learn/modules/chain-azure-functions-data-using-bindings/
-            image:
-              src: /learn/achievements/chain-azure-functions-data-using-bindings.svg
-              href: /learn/modules/chain-azure-functions-data-using-bindings/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-functions">対話型学習の詳細...</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/cli/azure">Azure CLI</a></p>
-          - title: REST
-            html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
-          - title: バインド
-            html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">イベント ハブ</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP と webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">SignalR Service</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Timer</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Twilio 出力バインド</a></p>
+  author: ggailey777
+  ms.author: azfundocs
+  ms.date: 09/17/2019
+  ms.openlocfilehash: fe554b2e7a146ccb3c0b593ffc7e8bef66e55ef2
+  ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/27/2019
+  ms.locfileid: "71349910"
+landingContent:
+- title: Azure Functions について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Functions とは
+      url: functions-overview.md
+    - text: サーバーレス オプションの比較
+      url: functions-compare-logic-apps-ms-flow-webjobs.md
+  - linkListType: concept
+    links:
+    - text: ホスティング オプション
+      url: functions-scale.md
+  - linkListType: learn
+    links:
+    - text: サーバーレス コンピューティング オプションの選択
+      url: /learn/modules/choose-azure-service-to-integrate-and-automate-business-processes/index
+  - linkListType: video
+    links:
+    - text: コードをホストするのに最適な場所
+      url: https://azure.microsoft.com/resources/videos/build-2019-where-should-i-host-my-code-choosing-between-kubernetes-containers-and-serverless/
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 最初の関数の作成 (C#)
+      url: functions-create-your-first-function-visual-studio.md
+    - text: 最初の関数の作成 (Java)
+      url: functions-create-first-java-maven.md
+    - text: 最初の関数の作成 (JavaScript)
+      url: functions-create-first-function-vs-code.md
+    - text: 最初の関数の作成 (PowerShell)
+      url: functions-create-first-function-powershell.md
+    - text: 最初の関数の作成 (Python)
+      url: functions-create-first-function-python.md
+  - linkListType: learn
+    links:
+    - text: サーバーレス ロジックの作成
+      url: /learn/modules/create-serverless-logic-with-azure-functions/
+  - linkListType: video
+    links:
+    - text: 開始方法の確認
+      url: https://azure.microsoft.com/resources/videos/get-started-with-azure-functions/
+- title: 関数を開発する
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 開発者ガイド
+      url: functions-reference.md
+    - text: サポートされている言語
+      url: supported-languages.md
+  - linkListType: how-to-guide
+    links:
+    - text: ローカル開発
+      url: functions-develop-local.md
+    - text: テスト関数
+      url: functions-test-a-function.md
+    - text: エラー処理
+      url: functions-bindings-error-pages.md
+  - linkListType: learn
+    links:
+    - text: Visual Studio を使用した開発、テスト、デプロイ
+      url: /learn/modules/develop-test-deploy-azure-functions-with-visual-studio/index
+  - linkListType: video
+    links:
+    - text: Visual Studio Code を使用した開発
+      url: https://azure.microsoft.com/resources/videos/build-nodejs-apis-using-serverless/
+- title: サービスへの接続
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: イベント ドリブン トリガー
+      url: functions-triggers-bindings.md
+    - text: ネットワーク オプション
+      url: functions-networking-options.md
+  - linkListType: tutorial
+    links:
+    - text: Logic Apps との統合
+      url: functions-twitter-email.md
+    - text: Event Grid イベントの使用
+      url: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
+  - linkListType: learn
+    links:
+    - text: バインドによる関数の連鎖
+      url: /learn/modules/chain-azure-functions-data-using-bindings/index
+    - text: GitHub Webhook への接続
+      url: /learn/modules/monitor-github-events-with-a-function-triggered-by-a-webhook/index
+- title: 関数のデプロイ
+  linkLists:
+  - linkListType: deploy
+    links:
+    - text: デプロイ オプション
+      url: functions-deployment-technologies.md
+    - text: デプロイ スロット
+      url: functions-deployment-slots.md
+    - text: リソースのデプロイの自動化
+      url: functions-infrastructure-as-code.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure App Service での GIT による継続的なデプロイ
+      url: functions-continuous-deployment.md
+    - text: Azure Pipelines を使用してビルドおよびデプロイする
+      url: functions-how-to-azure-devops.md
+    - text: Jenkins プラグインを使用したデプロイ
+      url: /azure/jenkins/jenkins-azure-functions-deploy
+- title: パフォーマンスと監視
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: 関数の監視
+      url: functions-monitoring.md
+    - text: パフォーマンスを最適化する
+      url: functions-best-practices.md
+    - text: ネットワークに関する考慮事項
+      url: functions-networking-options.md
+  - linkListType: how-to-guide
+    links:
+    - text: トラブルシューティング
+      url: functions-recover-storage-account.md
+- title: 実行時間の長い関数
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Premium ホスティング プラン
+      url: functions-premium-plan.md
+    - text: Durable Functions
+      url: durable/durable-functions-overview.md
+  - linkListType: learn
+    links:
+    - text: 実行時間の長いサーバーレス ワークフローの作成
+      url: /learn/modules/create-long-running-serverless-workflow-with-durable-functions/index
+- title: サンプル
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Azure Functions のサンプル
+      url: /samples/browse/?products=azure-functions
+    - text: Azure Serverless Community Library
+      url: https://www.serverlesslibrary.net/
+    - text: Azure Resource Manager のテンプレート
+      url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI のサンプル
+      url: functions-cli-samples.md

@@ -1,5 +1,5 @@
 ---
-title: クイック スタート - Azure 用の Ansible ソリューション テンプレートを CentOS にデプロイする | Microsoft Docs
+title: クイックスタート - Azure 用の Ansible ソリューション テンプレートを CentOS にデプロイする
 description: このクイック スタートでは、Azure と連携するように構成されたツールと共に、Azure 上でホストされた CentOS 仮想マシンに Ansible ソリューション テンプレートをデプロイする方法について説明します。
 keywords: Ansible, Azure, DevOps, ソリューション テンプレート, 仮想マシン, Azure リソースのマネージド ID, CentOS, Red Hat
 ms.topic: quickstart
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 58f28d5cf7d31a3fbddc8e1ca18be4dbcf617f61
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 5ababe9eb1f680378e882970df2d0b008287a7c4
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65231003"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241707"
 ---
 # <a name="quickstart-deploy-the-ansible-solution-template-for-azure-to-centos"></a>クイック スタート:Azure 用の Ansible ソリューション テンプレートを CentOS にデプロイする
 
@@ -41,11 +41,11 @@ Azure 用の Ansible ソリューション テンプレートは、Azure と連�
 
    - **[名前]** - お客様の Ansible インスタンスの名前を指定します。 デモの目的で、`ansiblehost` という名前が使用されています。
    - **[ユーザー名]** - Ansible インスタンスにアクセスできるユーザーの名前を指定します。 デモの目的で、`ansibleuser` という名前が使用されています。
-   - **[認証の種類]** - **[パスワード]** または **[SSH 公開キー]** を選択します。 デモの目的で、**[SSH 公開キー]** が選択されています。
+   - **[認証の種類]** - **[パスワード]** または **[SSH 公開キー]** を選択します。 デモの目的で、 **[SSH 公開キー]** が選択されています。
    - **[パスワード]** と **[パスワードの確認]** - **[認証の種類]** に **[パスワード]** を選択する場合、これらの値にお客様のパスワードを入力します。
    - **[SSH 公開キー]** - **[認証の種類]** に **[SSH 公開キー]** を選択する場合、`ssh-rsa` で始まる一行形式でお客様の RSA 公開キーを入力します。
    - **[サブスクリプション]** - ドロップダウン リストからお客様の Azure サブスクリプションを選択します。
-   - **[リソース グループ]** - ドロップダウン リストから既存のリソース グループを選択します。または、**[新規作成]** を選択し、新しいリソース グループの名前を指定します。 デモの目的で、`ansiblerg` という名前の新しいリソース グループが使用されています。
+   - **[リソース グループ]** - ドロップダウン リストから既存のリソース グループを選択します。または、 **[新規作成]** を選択し、新しいリソース グループの名前を指定します。 デモの目的で、`ansiblerg` という名前の新しいリソース グループが使用されています。
    - **[場所]** - お客様のシナリオに適した場所をドロップダウン リストから選択します。
 
      ![Ansible の基本設定を行うための Azure portal タブ](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-tab-1.png)
@@ -78,9 +78,9 @@ Azure 用の Ansible ソリューション テンプレートは、Azure と連�
 
 1. **[OK]** を選択します。
 
-1. **[作成]** タブが表示されたら、**[OK]** を選択して Ansible をデプロイします。
+1. **[作成]** タブが表示されたら、 **[OK]** を選択して Ansible をデプロイします。
 
-1. ポータル ページの上部にある **[通知]** アイコンを選択して、Ansible のデプロイを追跡します。 デプロイが完了したら、**[リソース グループに移動]** を選択します。 
+1. ポータル ページの上部にある **[通知]** アイコンを選択して、Ansible のデプロイを追跡します。 デプロイが完了したら、 **[リソース グループに移動]** を選択します。 
 
      ![Ansible の [概要] タブを示す Azure portal タブ](./media/ansible-quick-deploy-solution-template/portal-ansible-setup-complete.png)
 

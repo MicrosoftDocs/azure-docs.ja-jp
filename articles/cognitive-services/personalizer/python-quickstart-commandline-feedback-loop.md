@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: 404ee6fd51493735b8f96e98276f71d1d2f91158
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 4409f04f9fd370b862ee62f9595ffca9fe6e4406
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882878"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71802533"
 ---
 # <a name="quickstart-personalize-client-library-for-python"></a>クイック スタート:Python 用 Personalize クライアント ライブラリ
 
@@ -33,11 +33,21 @@ Python 用 Personalizer クライアント ライブラリの概要。 以下の
 * Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
 * [Python 3.x](https://www.python.org/)
 
-## <a name="setting-up"></a>設定
+## <a name="using-this-quickstart"></a>このクイックスタートの使用法
 
-### <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
 
-Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 さらに、以下を実行できます。
+このクイックスタートを使用するには、次のようないくつかの手順があります。
+
+* Azure portal で、Personalizer リソースを作成する
+* Azure portal の Personalizer リソースの **[設定]** ページで、モデルの更新頻度を変更する
+* コード エディターで、コード ファイルを作成し、コード ファイルを編集する
+* コマンド ラインまたはターミナルで、コマンド ラインから SDK をインストールする
+* コマンド ラインまたはターミナルで、コード ファイルを実行する
+
+
+## <a name="create-a-personalizer-azure-resource"></a>Personalizer Azure リソースを作成する
+
+Azure Cognitive Services は、ユーザーがサブスクライブする Azure リソースによって表されます。 [Azure portal](https://portal.azure.com/) または [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) を使用して、ローカル マシン上に Personalizer のリソースを作成します。 詳細については、[Azure portal を使用して Cognitive Services リソースを作成する方法](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページを参照してください。 さらに、以下を実行できます。
 
 * 7 日間有効な[試用版のキー](https://azure.microsoft.com/try/cognitive-services)を無料で入手する。 これは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。  
 * [Azure portal](https://portal.azure.com/) でご利用のリソースを表示する。
@@ -50,7 +60,7 @@ Azure Cognitive Services は、ユーザーがサブスクライブする Azure 
 Azure portal では、キーとエンドポイントのどちらの値も **[クイック スタート]** ページで取得できます。
 
 
-### <a name="install-the-python-library-for-personalizer"></a>Personalizer 用 Python ライブラリをインストールする
+## <a name="install-the-python-library-for-personalizer"></a>Personalizer 用 Python ライブラリをインストールする
 
 次のコマンドを使用して、Python 用 Personalizer クライアント ライブラリをインストールします。
 
@@ -58,11 +68,9 @@ Azure portal では、キーとエンドポイントのどちらの値も **[ク
 pip install azure-cognitiveservices-personalizer
 ```
 
-Visual Studio IDE を使用している場合、クライアント ライブラリは、ダウンロード可能な NuGet パッケージとして入手できます。
+## <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
 
-### <a name="change-the-model-update-frequency"></a>モデルの更新頻度を変更する
-
-Azure portal の Personalizer リソースで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
+Azure portal の Personalizer リソースの **[設定]** ページで、 **[モデルの更新頻度]** を 10 秒に変更します。 これでサービスが迅速にトレーニングされるようになり、繰り返しのたびに上位のアクションが変化する様子を確認できます。
 
 ![モデルの更新頻度を変更する](./media/settings/configure-model-update-frequency-settings.png)
 
@@ -92,13 +100,15 @@ Personalizer に報酬を送信するには、RewardRequest を作成し、そ�
 
 ## <a name="add-the-dependencies"></a>依存関係を追加する
 
-プロジェクト ディレクトリから、好みのエディターまたは IDE で **Program.cs** ファイルを開きます。 既存の `using` コードを次の `using` ディレクティブに置き換えます。
+プロジェクト ディレクトリから、好みのエディターまたは IDE で **sample.py** ファイルを開きます。 以下を追加します。
 
 [!code-python[Add module dependencies](~/samples-personalizer/quickstarts/python/sample.py?name=Dependencies)]
 
 ## <a name="add-personalizer-resource-information"></a>Personalizer のリソース情報を追加する
 
-**Program** クラスに、`PERSONALIZER_RESOURCE_KEY` および `PERSONALIZER_RESOURCE_ENDPOINT` という名前の環境変数から取得される、リソースの Azure キーとエンドポイントの変数を作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、再読み込みしなければならない場合があります。 メソッドは、このクイックスタートの中で後から作成します。
+`PERSONALIZER_RESOURCE_KEY` および `PERSONALIZER_RESOURCE_ENDPOINT` という名前の環境変数から取得される、リソースの Azure キーとエンドポイントの変数を作成します。 アプリケーションの起動後に環境変数を作成した場合、その変数にアクセスするには、アプリケーションを実行しているエディター、IDE、またはシェルを閉じて、再読み込みしなければならない場合があります。 メソッドは、このクイックスタートの中で後から作成します。
+
+リソース名はエンドポイント URL の一部です: `https://<your-resource-name>.api.cognitive.microsoft.com/`。
 
 [!code-python[Create variables to hold the Personalizer resource key and endpoint values found in the Azure portal.](~/samples-personalizer/quickstarts/python/sample.py?name=AuthorizationVariables)]
 
@@ -110,7 +120,7 @@ Personalizer に報酬を送信するには、RewardRequest を作成し、そ�
 
 ## <a name="get-content-choices-represented-as-actions"></a>アクションとして表されるコンテンツの選択肢を取得する
 
-アクションとは、Personalizer にランク付けさせたいコンテンツの選択肢を表します。 Program クラスに次のメソッドを追加します。時間帯と現在の食べ物の好みに関するユーザーの入力をコマンド ラインから取得するものです。
+アクションとは、Personalizer にランク付けさせたいコンテンツの選択肢を表します。 時間帯と現在の食べ物の好みに関するユーザーの入力をコマンド ラインから取得するために、次のメソッドを追加します。
 
 [!code-python[Present time out day preference to the user](~/samples-personalizer/quickstarts/python/sample.py?name=getActions)]
 
@@ -122,11 +132,17 @@ Personalizer に報酬を送信するには、RewardRequest を作成し、そ�
 
 Personalizer の学習ループとは、[rank](#request-a-rank) 呼び出しと [reward](#send-a-reward) 呼び出しのサイクルです。 このクイックスタートでは、コンテンツをパーソナライズするための各ランク呼び出しの後に、そのコンテンツへのランク付けにサービスがどの程度寄与したかを Personalizer に伝える報酬呼び出しを行います。 
 
-次のコードは、プログラムの `main` メソッドです。コマンド ラインでユーザーに好みをたずね、その情報を Personalizer に送信してランク付けし、そのランク付けされた選択肢をリストから選択できるようユーザーに提示した後、選択のランク付けにサービスがどの程度寄与したかを報酬の形で Personalizer に伝達するサイクルをループで処理しています。
+次のコードでは、コマンド ラインでユーザーに好みをたずね、その情報を Personalizer に送信してランク付けし、そのランク付けされた選択肢をリストから選択できるようユーザーに提示した後、選択のランク付けにサービスがどの程度寄与したかを報酬の形で Personalizer に伝達するサイクルをループで処理しています。
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=mainLoop&highlight=9,10,29)]
 
 rank 呼び出しと reward 呼び出しについて、以降の各セクションでさらに詳しく見ていきましょう。
+
+コード ファイルを実行する前に、[コンテンツの選択肢](#get-content-choices-represented-as-actions)を取得する次のメソッドを追加します。
+
+* get_user_preference
+* get_user_timeofday
+* get_actions
 
 ## <a name="request-a-rank"></a>ランクを要求する
 

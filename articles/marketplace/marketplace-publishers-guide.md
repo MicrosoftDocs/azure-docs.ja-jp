@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 58591302280c67dbd0f69ebe0bc47cf95c8bfc18
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cd6b09a1130e50fae7bd83579a0f176af0b5b9cd
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956750"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962618"
 ---
 # <a name="azure-marketplace-and-appsource-publishing-guide"></a>Azure Marketplace と AppSource の公開ガイド
 
@@ -52,7 +52,7 @@ Marketplace の機能を活用して、ビジネスを成長させましょう�
 
 Marketplace から提供される分析情報および分析を通じて、リスト登録のパフォーマンスに関する分析情報が得られます。 キャンペーンのパフォーマンス、注文と支払い、および、ソリューションのキャンペーン活動を最大化する方法について、より多くの情報を入手します。
 
-### <a name="marketplace-go-to-market-benefits"></a>Marketplace の Go-To-Market 特典 
+### <a name="commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット 
 
 Marketplace に新しく参加することで、パートナーは、Marketplace でビジネスを成長させるための多様な特典を無料で手に入れることができます。 これらの特典は次のカテゴリに分類されます。 
 
@@ -64,7 +64,7 @@ Marketplace に新しく参加することで、パートナーは、Marketplace
 
 Marketplace に[ソリューションを提出](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)したら、オンボーディング チームからの連絡を待ち、パブリッシング プロセスのサポートを受けてください。  詳細については、[パートナー センター アカウントの作成方法](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を参照してください。
 
-Microsoft Go-To-Market の特典および Marketplace でビジネスを拡大する方法については、「[Microsoft Go-To-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」をご覧ください。
+[商用マーケットプレースのベネフィット](https://docs.microsoft.com//azure/marketplace/gtm-your-marketplace-benefits)の詳細を確認します。
 
 ## <a name="next-steps"></a>次の手順
 

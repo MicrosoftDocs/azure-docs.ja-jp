@@ -8,14 +8,6 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: REST API
-      items:
-        - name: 'C# の使用'
-          href: quickstarts/detect-data-anomalies-csharp.md
-        - name: Java の使用
-          href: quickstarts/detect-data-anomalies-java.md
-        - name: Python の使用
-          href: quickstarts/detect-data-anomalies-python.md
     - name: クライアント ライブラリ
       items:
         - name: 'C# の使用'
@@ -24,6 +16,14 @@
           href: quickstarts/detect-data-anomalies-python-sdk.md
         - name: Node.js の使用
           href: quickstarts/detect-data-anomalies-nodejs-sdk.md
+    - name: REST API
+      items:
+        - name: 'C# の使用'
+          href: quickstarts/detect-data-anomalies-csharp.md
+        - name: Java の使用
+          href: quickstarts/detect-data-anomalies-java.md
+        - name: Python の使用
+          href: quickstarts/detect-data-anomalies-python.md
 - name: チュートリアル
   items:
     - name: Power BI を使用して異常をバッチとして視覚化する

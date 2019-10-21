@@ -1,27 +1,27 @@
 ---
-title: Windows Virtual Desktop プレビューとは  - Azure
-description: Windows Virtual Desktop プレビューの概要です。
+title: Windows Virtual Desktop とは  - Azure
+description: Windows Virtual Desktop の概要
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 8827aa660d348ef9e42c617067c2837b8697ba6e
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 97087b7fdc6e4cdaccf922a1c72f35284c7a7040
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876777"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676561"
 ---
-# <a name="what-is-windows-virtual-desktop-preview"></a>Windows Virtual Desktop プレビューとは 
+# <a name="what-is-windows-virtual-desktop"></a>Windows Virtual Desktop とは 
 
-このたびパブリック プレビューを迎えた Windows Virtual Desktop プレビューは、クラウド上で運営されるデスクトップとアプリの仮想化サービスです。
+Windows Virtual Desktop は、クラウド上で実行されるデスクトップおよびアプリの仮想化サービスです。
 
 Azure 上の Windows Virtual Desktop でできることは次のとおりです。
 
-* マルチ セッションの Windows 10 デプロイを設定し、スケーラビリティを備えた完全版の Windows 10 を提供
-* Office 365 ProPlus を仮想化および最適化し、マルチ ユーザーの仮想シナリオで運用
+* マルチセッションの Windows 10 デプロイを設定し、スケーラビリティを備えた完全版の Windows 10 を提供
+* Office 365 ProPlus を仮想化および最適化し、マルチユーザーの仮想シナリオで運用
 * Windows 7 仮想デスクトップに無料の延長セキュリティ更新プログラムを提供
 * 既存のリモート デスクトップ サービス (RDS) と Windows Server のデスクトップやアプリをあらゆるコンピューターで利用
 * デスクトップとアプリの両方を仮想化
@@ -33,7 +33,7 @@ Windows Virtual Desktop について、その独自性や新機能を、この�
 
 <br></br><iframe src="https://www.youtube.com/embed/NQFtI3JLtaU" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
-Windows Virtual Desktop に関するその他のビデオについては、[ プレイリスト ](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev) を参照してください。
+Windows Virtual Desktop に関するその他のビデオについては、[プレイリスト](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)を参照してください。
 
 ## <a name="key-capabilities"></a>主な機能
 
@@ -42,7 +42,7 @@ Windows Virtual Desktop を使うと、スケーラブルで柔軟な環境を�
 * ゲートウェイ サーバーを追加で稼働させることなく、Azure サブスクリプション内に完全な仮想デスクトップ環境を作成できます。
 * 多種多様なワークロードに対応するうえで必要なホスト プールをいくつでも公開できます。
 * Azure ギャラリーから独自のイメージを取得して運用ワークロードに使用したり、テストしたりできます。
-* プールしたマルチ セッション リソースを使ってコストを節約できます。 Windows Virtual Desktop 限定の新しい Windows 10 Enterprise マルチ セッション機能と、Windows Server 上のリモート デスクトップ セッション ホスト (RDSH) ロールを併用すれば、ユーザーにこれまでと同じリソースを提供しつつ、仮想マシンの数やオペレーティング システム (OS) のオーバーヘッドを大幅に削減できます。
+* プールしたマルチセッション リソースを使ってコストを節約できます。 Windows Virtual Desktop 限定の新しい Windows 10 Enterprise マルチセッション機能と、Windows Server 上のリモート デスクトップ セッション ホスト (RDSH) ロールを併用すれば、ユーザーにこれまでと同じリソースを提供しつつ、仮想マシンの数やオペレーティング システム (OS) のオーバーヘッドを大幅に削減できます。
 * (永続的な) 個人用デスクトップを提供できるので、個々人が自分のマシンを保有しているような感覚を持たせることができます。
 
 仮想デスクトップをデプロイおよび管理できます。
@@ -62,11 +62,11 @@ Windows Virtual Desktop を使うと、スケーラブルで柔軟な環境を�
 
 Windows Virtual Desktop を設定し、ユーザーを Windows のデスクトップやアプリケーションに正常に接続するうえで必要なことがいくつかあります。
 
-以下の OS のサポートが追加される予定になっています。デプロイする予定のデスクトップとアプリに基づいて、ユーザーのための [ 適切なライセンス ](https://azure.microsoft.com/pricing/details/virtual-desktop/) があることを確認してください。
+以下の OS のサポートが追加される予定になっています。デプロイする予定のデスクトップとアプリに基づいて、ユーザーのための[適切なライセンス](https://azure.microsoft.com/pricing/details/virtual-desktop/)があることを確認してください。
 
 |OS|必要とされるライセンス|
 |---|---|
-|Windows 10 Enterprise マルチ セッションまたは Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
+|Windows 10 Enterprise マルチセッションまたは Windows 10 Enterprise|Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
 |Windows 7 Enterprise |Microsoft 365 E3、E5、A3、A5、F1、Business<br>Windows E3、E5、A3、A5|
 |Windows Server 2012 R2、2016、2019|ソフトウェア アシュアランス付きの RDS クライアント アクセス ライセンス (CAL)|
 
@@ -76,17 +76,31 @@ Windows Virtual Desktop を設定し、ユーザーを Windows のデスクト�
 * Azure Active Directory と同期している Windows Server Active Directory。 これは、次のいずれかを使うことにより可能になります。
   * Azure AD Connect
   * Azure AD Domain Services
+  >[!NOTE]
+  >Windows Virtual Desktop では、Azure Active Directory をソースとする Azure AD Domain Services ユーザーのみがサポートされます。 Windows Server AD をソースとするユーザーは、今回はサポートされません。
 * Azure サブスクリプション (Windows Server Active Directory を含むか、Windows Server Active Directory に接続している仮想ネットワークが含まれるもの)
   
 Windows Virtual Desktop 用に作成する Azure 仮想マシンに必要な条件は次のとおりです。
 
-* [ 標準ドメイン参加済み ](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) または [Hybrid AD 参加済み ](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan) であること。 仮想マシンを Azure AD に参加させることはできません。
-* 次のいずれかの [ サポート対象となる OS イメージ ](#supported-virtual-machine-os-images) を実行していること。
+* [標準ドメイン参加済み](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison)または [Hybrid AD 参加済み](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)であること。 仮想マシンを Azure AD に参加させることはできません。
+* 次のいずれかの[サポート対象となる OS イメージ](#supported-virtual-machine-os-images)を実行していること。
 
 >[!NOTE]
->Azure サブスクリプションが必要な場合には、[1 か月間の無料試用版にサインアップ ](https://azure.microsoft.com/free/) できます。 無料試用版の Azure をご利用中の場合には、Windows Server Active Directory が Azure Active Directory と同期した状態を保つことができるよう、Azure AD Domain Services を使用する必要があります。
+>Azure サブスクリプションが必要な場合には、[1 か月間の無料試用版にサインアップ](https://azure.microsoft.com/free/)できます。 無料試用版の Azure をご利用中の場合には、Windows Server Active Directory が Azure Active Directory と同期した状態を保つことができるよう、Azure AD Domain Services を使用する必要があります。
 
-Windows Virtual Desktop の構成要素には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションがあります。 パブリック プレビューの期間中は、デスクトップとアプリは任意の Azure リージョンの仮想マシン (VM) 上にデプロイできるのに対して、管理ソリューションと VM 関連のデータはどちらも、米国 (米国東部 2 リージョン) でホストされます。 このため、パブリック プレビュー期間中にサービスをテストするときは、米国を宛先とするデータ転送が発生することがあります。 管理ソリューションとデータを Azure の全リージョンにローカライズして展開していく作業は、一般提供が始まってから開始する予定です。
+Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の URL に対するアウトバウンド TCP 443 アクセスが必要です。
+
+* *.wvd.microsoft.com
+* *.blob.core.windows.net
+* *.core.windows.net
+* *.servicebus.windows.net
+* prod.warmpath.msftcloudes.com
+* catalogartifact.azureedge.net
+
+>[!NOTE]
+>Windows Virtual Desktop を確実にデプロイするためには、これらの URL を開放することが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、Windows Virtual Desktop のサイトとリソースにのみ対応しており、他のサービス (Azure AD など) の URL は含まれません。
+
+Windows Virtual Desktop の構成要素には、お客様がユーザーに配信する Windows のデスクトップとアプリのほか、Microsoft が Azure 上でサービスとしてホストしている管理ソリューションがあります。 デスクトップとアプリは任意の Azure リージョンの仮想マシン (VM) 上にデプロイできるのに対して、管理ソリューションと VM 関連のデータはどちらも、米国 (米国東部 2 リージョン) でホストされます。 このため、米国を宛先とするデータ転送が発生することがあります。
 
 最適なパフォーマンスを実現するために、お使いのネットワークが次の要件を満たしていることを確認してください。
 
@@ -105,12 +119,29 @@ Windows Virtual Desktop の構成要素には、お客様がユーザーに配�
 
 Windows Virtual Desktop は、次の OS イメージをサポートします。
 
-* Windows 10 (Enterprise マルチ セッション)
+* Windows 10 (Enterprise マルチセッション)
+* Windows 10 Enterprise
+* Windows 7 Enterprise
+* Windows Server 2019
 * Windows Server 2016
+* Windows Server 2012 R2
+
+利用できる自動化とデプロイ オプションは、選択した OS とバージョンによって異なります。次の表を参照してください。 
+
+|オペレーティング システム|Azure イメージ ギャラリー|手動での VM のデプロイ|Azure Resource Manager テンプレート統合|Azure Marketplace でのホスト プールのプロビジョニング|Windows Virtual Desktop エージェントの更新|
+|--------------------------------------|:------:|:------:|:------:|:------:|:------:|
+|Windows 10 マルチセッション、バージョン 1903|はい|はい|はい|はい|自動|
+|Windows 10 マルチセッション、バージョン 1809|はい|はい|いいえ|いいえ|自動|
+|Windows 10 Enterprise、バージョン 1903|はい|はい|はい|はい|自動|
+|Windows 10 Enterprise、バージョン 1809|はい|はい|いいえ|いいえ|自動|
+|Windows 7 Enterprise|はい|はい|いいえ|いいえ|マニュアル|
+|Windows Server 2019|はい|はい|いいえ|いいえ|自動|
+|Windows Server 2016|はい|はい|はい|はい|自動|
+|Windows Server 2012 R2|はい|はい|いいえ|いいえ|自動|
 
 ## <a name="next-steps"></a>次の手順
 
 まずは、テナントを作成する必要があります。 テナントの作成方法については、テナント作成に関するチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Windows Virtual Desktop プレビューでテナントを作成する ](tenant-setup-azure-active-directory.md)
+> [Windows Virtual Desktop でテナントを作成する](tenant-setup-azure-active-directory.md)

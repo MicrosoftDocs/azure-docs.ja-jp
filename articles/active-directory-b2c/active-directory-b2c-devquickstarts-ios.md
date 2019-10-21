@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f7c864102a4985aa1b2c66e12b42cbe3bc19bca
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 96221ffc8249f722268ea5778bee4b4389ded26e
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66510099"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326596"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C:iOS アプリケーションを使用してサインインする
 
@@ -32,11 +32,12 @@ Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect と�
 Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。 ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。 まだディレクトリを作成していない場合は、 [B2C ディレクトリを作成](tutorial-create-tenant.md) してから先に進んでください。
 
 ## <a name="create-an-application"></a>アプリケーションの作成
-次に、B2C ディレクトリにアプリを作成する必要があります。 アプリを登録すると、Azure AD がアプリと安全に通信するために必要な情報が提供されます。 モバイル アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従ってください。 次を行ってください。
 
-* アプリケーションに**ネイティブ クライアント**を含めます。
-* アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この GUID は後で必要になります。
-* カスタム スキーマを使用する**リダイレクト URI** を設定します (例: com.onmicrosoft.fabrikamb2c.exampleapp://oauthredirect)。 この URI は後で必要になります。
+次に、アプリケーションをお使いの Azure AD B2C テナントに登録します。 これにより、アプリと安全に通信するために必要な情報が Azure AD に提供されます。
+
+[!INCLUDE [active-directory-b2c-appreg-native](../../includes/active-directory-b2c-appreg-native.md)]
+
+後の手順で使用するために、**アプリケーション ID** を記録しておきます。 次に、一覧からアプリケーションを選択し、**カスタム リダイレクト URI** を記録しておきます。これも後の手順で使用します。 たとえば、「 `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 」のように入力します。
 
 ## <a name="create-your-user-flows"></a>ユーザー フローを作成する
 Azure AD B2C では、すべてのユーザー エクスペリエンスが[ユーザー フロー](active-directory-b2c-reference-policies.md)によって定義されます。 このアプリケーションには、サインインとサインアップを組み合わせた 1 つの ID エクスペリエンスが含まれています。 ユーザー フローを作成するときは、必ず次のようにします。
@@ -79,21 +80,22 @@ static NSString *const authorizationEndpoint = @"https://<Tenant_name>.b2clogin.
 AuthorizationServiceConfiguration オブジェクトを作成するには、次のコードを実行します。
 
 ```objc
-OIDServiceConfiguration *configuration = 
+OIDServiceConfiguration *configuration =
     [[OIDServiceConfiguration alloc] initWithAuthorizationEndpoint:authorizationEndpoint tokenEndpoint:tokenEndpoint];
 // now we are ready to perform the auth request...
 ```
 
 ### <a name="authorizing"></a>承認
 
-承認サービスの構成を行うか取得した後、承認要求を構築できます。 この要求を作成するには、次の情報が必要です。  
-* クライアント ID (例: 00000000-0000-0000-0000-000000000000)
-* カスタム スキーマを使用するリダイレクト URI (例: com.onmicrosoft.fabrikamb2c.exampleapp://oauth/redirect)
+承認サービスの構成を行うか取得した後、承認要求を構築できます。 この要求を作成するには、次の情報が必要です。
+
+* 前に記録しておいたクライアント ID (アプリケーション ID)。 たとえば、「 `00000000-0000-0000-0000-000000000000` 」のように入力します。
+* 前に記録しておいたカスタム リダイレクト URI。 たとえば、「 `com.onmicrosoft.contosob2c.exampleapp://oauth/redirect` 」のように入力します。
 
 どちらの項目も、[アプリの登録](#create-an-application)を行ったときに保存されています。
 
 ```objc
-OIDAuthorizationRequest *request = 
+OIDAuthorizationRequest *request =
     [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
                                                   clientId:kClientId
                                                     scopes:@[OIDScopeOpenID, OIDScopeProfile]
@@ -102,7 +104,7 @@ OIDAuthorizationRequest *request =
                                       additionalParameters:nil];
 
 AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-appDelegate.currentAuthorizationFlow = 
+appDelegate.currentAuthorizationFlow =
     [OIDAuthState authStateByPresentingAuthorizationRequest:request
                                    presentingViewController:self
                                                    callback:^(OIDAuthState *_Nullable authState, NSError *_Nullable error) {

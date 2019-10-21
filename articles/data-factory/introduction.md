@@ -10,15 +10,16 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: overview
-ms.date: 01/11/2018
-ms.openlocfilehash: 985d38b75ca99e85c8b066427ecea9eb4d3e90f2
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 09/30/2019
+ms.openlocfilehash: 7bc03e80fc49756d19677edbef6bd8d372849732
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194457"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937246"
 ---
-# <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
+# <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。
+
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-introduction.md)
 > * [現在のバージョン](introduction.md)

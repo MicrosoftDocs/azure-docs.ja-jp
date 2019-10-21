@@ -1,22 +1,22 @@
 ---
-title: Azure Marketplace を使用して Windows Virtual Desktop プレビューのホスト プールを作成する - Azure
-description: Azure Marketplace を使用して Windows Virtual Desktop プレビューのホスト プールを作成する方法。
+title: Azure Marketplace を使用して Windows Virtual Desktop のホスト プールを作成する - Azure
+description: Azure Marketplace を使用して Windows Virtual Desktop のホスト プールを作成する方法。
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 08/30/2019
 ms.author: helohr
-ms.openlocfilehash: d6628f1522880f650bfd8c728fe46fd050a8e6a0
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: c0b93529872de774e1a6e915ef8254c5c0e0a1a9
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208382"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676702"
 ---
 # <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>チュートリアル:Azure Marketplace を使用してホスト プールを作成する
 
-ホスト プールは、Windows Virtual Desktop プレビュー テナント環境内にある同一の仮想マシンをコレクションとしてまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
+ホスト プールは、Windows Virtual Desktop テナント環境内にある同一の仮想マシンをコレクションとしてまとめたものです。 各ホスト プールには、物理デスクトップの場合と同じようにユーザーが利用できるアプリ グループを含めることができます。
 
 このチュートリアルでは、Microsoft Azure Marketplace オファリングを使用して Windows Virtual Desktop テナント内にホスト プールを作成する方法を説明します。 具体的なタスクは次のとおりです。
 
@@ -80,7 +80,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 3. Active Directory サーバーに接続している仮想ネットワークを選択し、仮想マシンをホストするサブネットを選択します。
 4. **[OK]** を選択します。
 
-### <a name="windows-virtual-desktop-preview-tenant-information"></a>Windows Virtual Desktop プレビューのテナント情報
+### <a name="windows-virtual-desktop-tenant-information"></a>Windows Virtual Desktop のテナント情報
 
 **[Windows Virtual Desktop tenant information]\(Windows Virtual Desktop テナント情報\)** ブレードで必要な操作は次のとおりです。
 

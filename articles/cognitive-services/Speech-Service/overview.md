@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 0aa4286d8cb630f221613bebd13f7ea722224ac6
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 993064a36bd12c95e83ffb7c9635c3e4dfcec0f0
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70068840"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803339"
 ---
 # <a name="what-are-the-speech-services"></a>Speech Service とは
 
@@ -41,6 +41,8 @@ Azure Speech Services は次の機能で構成されています。 各機能の
 
 Azure Speech Services の新機能について説明します。
 
+* 2019 年 9 月
+  * Speech SDK 1.7.0 がリリースされました。 更新、拡張機能、既知の問題の完全な一覧については、「[リリース ノート](releasenotes.md)」を参照してください。
 * 2019 年 8 月
   * **新しいチュートリアル**: [Speech SDK を使用してボットを音声対応にする (C#)](tutorial-voice-enable-your-bot-speech-sdk.md)
   * `en-US-JessaNeural` 音声の新しい話し方である [`chat`](speech-synthesis-markup.md#adjust-speaking-styles) を追加しました。 

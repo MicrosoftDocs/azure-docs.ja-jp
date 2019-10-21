@@ -1,68 +1,66 @@
 ---
-title: Azure Active Directory Domain Services:Secure LDAP のトラブルシューティング | Microsoft Docs
-description: Azure AD Domain Services の Secure LDAP のトラブルシューティング
+title: Azure AD Domain Services で Secure LDAP アラートを解決する | Microsoft Docs
+description: Azure Active Directory Domain Services での Secure LDAP の一般的なアラートをトラブルシューティングおよび解決する方法について説明します。
 services: active-directory-ds
-documentationcenter: ''
 author: iainfoulds
-manager: ''
-editor: ''
+manager: daveba
 ms.assetid: 81208c0b-8d41-4f65-be15-42119b1b5957
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 05/22/2019
+ms.topic: troubleshooting
+ms.date: 09/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 8f9f4a8b52548dad011f5e825fa42c50da970ea7
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69613160"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71258044"
 ---
-# <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services - Secure LDAP の構成のトラブルシューティング
+# <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>既知の問題:Azure Active Directory Domain Services の Secure LDAP アラート
 
-この記事では、Azure AD Domain Services に [Secure LDAP を構成する](tutorial-configure-ldaps.md)ときの一般的な問題に対する解決策を示します。
+ライトウェイト ディレクトリ アクセス プロトコル (LDAP) を使用して Azure Active Directory Domain Services (Azure AD DS) と通信するアプリケーションとサービスは、[Secure LDAP を使用するように構成](tutorial-configure-ldaps.md)できます。 Secure LDAP が正しく機能するためには、適切な証明書と必要なネットワーク ポートが開いている必要があります。
 
-## <a name="aadds101-secure-ldap-network-security-group-configuration"></a>AADDS101:Secure LDAP ネットワーク セキュリティ グループの構成
+この記事は、Azure AD DS での Secur LDAP アクセスの一般的なアラートを理解して解決するのに役立ちます。
 
-**アラート メッセージ:**
+## <a name="aadds101-secure-ldap-network-configuration"></a>AADDS101:Secure LDAP ネットワーク構成
+
+### <a name="alert-message"></a>アラート メッセージ
 
 "*マネージド ドメインに対してインターネット経由のセキュリティで Secure LDAP が有効になっています。ただし、ポート 636 へのアクセスはネットワーク セキュリティ グループを使用してロックダウンされていません。これにより、マネージド ドメインのユーザー アカウントがパスワードの総当り攻撃の対象になる可能性があります。* "
 
-### <a name="secure-ldap-port"></a>Secure LDAP ポート
+### <a name="resolution"></a>解決策
 
-Secure LDAP を有効にするときは、特定の IP アドレスからの受信 LDAPS アクセスのみを許可する追加規則を作成することをお勧めします。 これらの規則は、セキュリティの脅威となる可能性があるブルート フォース攻撃からドメインを保護します。 ポート 636 は、マネージド ドメインへのアクセスを許可します。 Secure LDAP へのアクセスを許可するように NSG を更新する方法を次に示します。
+Secure LDAP を有効にする場合は、特定の IP アドレスへの受信 LDAPS アクセスを制限する追加の規則を作成することをお勧めします。 これらの規則は、Azure AD DS マネージド ドメインをブルート フォース攻撃から保護します。 Secure LDAP への TCP ポート 636 アクセスを制限するようにネットワーク セキュリティ グループを更新するには、次の手順を実行します。
 
-1. Azure Portal で、[[ネットワーク セキュリティ グループ] タブ](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FNetworkSecurityGroups)に移動します
-2. テーブルから、ドメインに関連付けられている NSG を選びます。
-3. **[受信セキュリティ規則]** をクリックします
-4. ポート 636 の規則を作成します
-   1. 上部ナビゲーション バーの **[追加]** をクリックします。
-   2. 接続元の **[IP アドレス]** を選びます。
-   3. この規則の接続元ポートの範囲を指定します。
-   4. 接続先ポートの範囲には「636」と入力します。
-   5. プロトコルは **[TCP]** です。
-   6. 規則に、適切な名前、説明、優先順位を指定します。 この規則の優先順位は、"すべて拒否" 規則 (ある場合) の優先順位より高くする必要があります。
-   7. Click **OK**.
-5. 規則が作成されたことを確認します。
-6. 手順を正しく完了したことを確認するには、2 時間後にドメインの正常性をチェックします。
+1. Azure portal で、**ネットワーク セキュリティ グループ**を検索して選択します。
+1. マネージド ドメインに関連付けられているネットワーク セキュリティ グループ (*AADDS-contoso.com-NSG* など) を選択し、次に **[受信セキュリティ規則]** を選択します。
+1. **[+ 追加]** を選択して TCP ポート 636 用の規則を追加します。 必要に応じて、ウィンドウで **[詳細]** を選択して規則を作成します。
+1. **[Source]\(ソース\)** には、ドロップダウン メニューから *[IP アドレス]* を選択します。 Secure LDAP トラフィックのアクセス権を付与するソース IP アドレスを入力します。
+1. **[宛先]** として *[Any]\(任意\)* を選択し、 **[宛先ポート範囲]** に「*636*」を入力します。
+1. **[プロトコル]** を *[TCP]* と設定し、 **[アクション]** を *[許可]* と設定します。
+1. 規則の優先順位を指定し、名前 (*RestrictLDAPS* など) を入力します。
+1. 準備ができたら、 **[追加]** を選択して規則を作成します。
+
+Azure AD DS マネージド ドメインの正常性が 2 時間以内に自動的に更新され、アラートが削除されます。
 
 > [!TIP]
-> Azure AD Domain Services を円滑に動作させるために必要なのはポート 636 だけではありません。 詳細については、[ネットワークに関するガイドライン](network-considerations.md)または [NSG 構成のトラブルシューティング](alert-nsg.md)に関する記事を参照してください。
->
+> Azure AD DS を円滑に実行するために必要な規則は、TCP ポート 636 だけではありません。 詳細については、[Azure AD DS ネットワーク セキュリティ グループと必要なポート](network-considerations.md#network-security-groups-and-required-ports)に関するページを参照してください。
 
 ## <a name="aadds502-secure-ldap-certificate-expiring"></a>AADDS502:Secure LDAP 証明書の期限切れ間近
 
-**アラート メッセージ:**
+### <a name="alert-message"></a>アラート メッセージ
 
 *マネージド ドメインのセキュリティで保護された LDAP 証明は[日付] に有効期限が切れます。*
 
-**解決策:**
+### <a name="resolution"></a>解決策
 
-[セキュリティで保護された LDAP の構成](tutorial-configure-ldaps.md)に関する記事で説明されている手順に従って、セキュリティで保護された LDAP 証明書を新規に作成します。
+交換用の Secure LDAP 証明書を作成するには、「[Secure LDAP 用の証明書を作成する](tutorial-configure-ldaps.md#create-a-certificate-for-secure-ldap)」の手順を実行してください。 交換用の証明書を Azure AD DS に適用し、Secure LDAP を使用して接続するすべてのクライアントにその証明書を配布します。
 
-## <a name="contact-us"></a>お問い合わせ
-[フィードバックの共有およびサポートについては](contact-us.md)、Azure Active Directory Domain Services 製品チームにお問い合わせください。
+## <a name="next-steps"></a>次の手順
+
+まだ問題が解決しない場合は、さらなるトラブルシューティングの支援を求めて、[Azure サポート リクエストを開いて][azure-support]ください。
+
+<!-- INTERNAL LINKS -->
+[azure-support]: ../active-directory/fundamentals/active-directory-troubleshooting-support-howto.md

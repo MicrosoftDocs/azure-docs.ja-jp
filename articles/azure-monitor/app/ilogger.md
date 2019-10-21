@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: 925264bb69093ab70465665e1d2da615a7a3e53d
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: acc7a218d40ec7b752d9495bd48e5f37436d736d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68261756"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71169459"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider for .NET Core の ILogger ログ
 
@@ -220,6 +220,10 @@ public class Startup
 > 新しいプロバイダーは、NETSTANDARD2.0 以降を対象とするアプリケーションで使用できます。 アプリケーションが .NET Core 1.1 のような古いバージョンの .NET Core または .NET Framework を対象にしている場合は、引き続き古いプロバイダーを使用してください。
 
 ## <a name="console-application"></a>コンソール アプリケーション
+
+> [!NOTE]
+> [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) と呼ばれる新しいベータ版 Application Insights SDK があります。これは、任意のコンソール アプリケーションに対して Application Insights (ILogger とその他の Application Insights テレメトリ) を有効にするために使用できます。 このパッケージおよび関連する手順は、[ここ](../../azure-monitor/app/worker-service.md)から使用することをお勧めします。
+この新しいパッケージの安定したバージョンがリリースされると、次の例は非推奨となります。
 
 ILogger のトレースを Application Insights に送信するように構成されたコンソール アプリケーションのコードの例を次に示します。
 

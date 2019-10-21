@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 4e9ecdad0fb4d02f160977fa28a484b2a3a5bb30
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f640921e6f48559db3f1414551d6ed974df15e4f
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257073"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703215"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>クイック スタート:LUIS ポータル内でアプリをデプロイする
 
@@ -87,43 +87,50 @@ LUIS 向けの新しいリソースを作成するたびに、LUIS アプリに�
 
 1. ご自分の新しいリソースの名前に関連付けられているエンドポイントの URL を選択します。 このアクションにより、Web ブラウザーが開き、予測エンドポイントのランタイムに対して `GET` 要求を行うための、正しく構築された URL が入力されます。
 
-1. URL の末尾の `q=` は、**query** (クエリ) の省略形で、ここで GET 要求に対してユーザーの発話を追加します。 `q=` の後に、前のクイック スタートの最後に使用したのと同じユーザーの発話を入力します。
+## <a name="prediction-endpoint-request"></a>予測エンドポイントの要求
 
-    ```Is there a form named hrf-234098```
+<!-- V3FIX -->
 
-    ブラウザーに応答が表示されます。これは、クライアント アプリケーションが受け取るのと同じ JSON です。
+URL の末尾の `q=` は、**query** (クエリ) の省略形で、ここで GET 要求に対してユーザーの発話を追加します。 `q=` の後に、前のクイック スタートの最後に使用したのと同じユーザーの発話を入力します。
 
-    ```JSON
+```Is there a form named hrf-234098```
+
+ブラウザーに応答が表示されます。これは、クライアント アプリケーションが受け取るのと同じ JSON です。
+
+```JSON
+{
+"query": "Is there a form named hrf-234098",
+"topScoringIntent": {
+    "intent": "FindForm",
+    "score": 0.9768753
+},
+"intents": [
     {
-    "query": "Is there a form named hrf-234098",
-    "topScoringIntent": {
-        "intent": "FindForm",
-        "score": 0.9768753
+    "intent": "FindForm",
+    "score": 0.9768753
     },
-    "intents": [
-        {
-        "intent": "FindForm",
-        "score": 0.9768753
-        },
-        {
-        "intent": "None",
-        "score": 0.0216071066
-        }
-    ],
-    "entities": [
-        {
-        "entity": "hrf-234098",
-        "type": "Human Resources Form Number",
-        "startIndex": 22,
-        "endIndex": 31
-        }
-      ]
+    {
+    "intent": "None",
+    "score": 0.0216071066
     }
-    ```
+],
+"entities": [
+    {
+    "entity": "hrf-234098",
+    "type": "Human Resources Form Number",
+    "startIndex": 22,
+    "endIndex": 31
+    }
+    ]
+}
+```
 
-    この応答からは、前のチュートリアルの既定のテスト ウィンドウよりも多くの情報が得られます。 テスト ウィンドウにこれと同じレベルの情報を表示する場合は、アプリを公開する必要があります。 アプリが公開されたら、テスト ウィンドウで、 **[Compare with published]\(公開済みのものと比較\)** を選択します。 公開済みのテスト ウィンドウの **[Show JSON view]\(JSON ビューの表示\)** を使用して、前の手順と同じ JSON を表示します。 このようにして、現在作業しているアプリと、エンドポイントに公開されているアプリを比較できます。
+この応答からは、前のチュートリアルの既定のテスト ウィンドウよりも多くの情報が得られます。 テスト ウィンドウにこれと同じレベルの情報を表示する場合は、アプリを公開する必要があります。 アプリが公開されたら、テスト ウィンドウで、 **[Compare with published]\(公開済みのものと比較\)** を選択します。 公開済みのテスト ウィンドウの **[Show JSON view]\(JSON ビューの表示\)** を使用して、前の手順と同じ JSON を表示します。 このようにして、現在作業しているアプリと、エンドポイントに公開されているアプリを比較できます。
 
-    [![アプリの現在編集中のバージョンと公開済みのバージョンを比較する](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+[![アプリの現在編集中のバージョンと公開済みのバージョンを比較する](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
+
+
+
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

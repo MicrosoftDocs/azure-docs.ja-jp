@@ -7,12 +7,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 6/18/2019
 ms.author: victorh
-ms.openlocfilehash: 9c04f805cf410d2306eda76c84a201a67b022b84
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 154317e558c2c9a22f569f569684cced467900d5
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68716618"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937479"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2"></a>Web アプリケーション ファイアウォール v2 のカスタム規則
 
@@ -96,8 +96,8 @@ $BlockRule = New-AzApplicationGatewayFirewallCustomRule `
 
 ### <a name="priority-required"></a>Priority (優先度) [必須]
 
-- 規則が評価される順序を決定します。 値を小さくするほど、規則が早く評価されます。
--すべてのカスタム規則間で一意である必要があります。 優先度が 100 の規則は、優先度が 200 の規則よりも先に評価されます。
+- 規則が評価される順序を決定します。 値を小さくするほど、規則が早く評価されます。 許容範囲は 1 ～ 100 です。 
+- すべてのカスタム規則間で一意である必要があります。 優先度が 40 の規則は、優先度が 80 の規則よりも先に評価されます。
 
 ### <a name="rule-type-required"></a>Rule type (規則の種類) [必須]
 

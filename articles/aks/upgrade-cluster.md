@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 50264b1364f40ff5e68ae4a93783d62837c167b3
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 9404888eadf94eaf86a6e8584b49595e10b34c69
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69898811"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71264178"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Azure Kubernetes Service (AKS) クラスターのアップグレード
 
@@ -47,6 +47,10 @@ Name     ResourceGroup     MasterVersion    NodePoolVersion    Upgrades
 -------  ----------------  ---------------  -----------------  ---------------
 default  myResourceGroup   1.12.8           1.12.8             1.13.9, 1.13.10
 ```
+アップグレードが利用できない場合は、次のように表示されます。
+```console
+ERROR: Table output unavailable. Use the --query option to specify an appropriate query. Use --debug for more info.
+```
 
 ## <a name="upgrade-an-aks-cluster"></a>AKS クラスターのアップグレード
 
@@ -58,7 +62,10 @@ AKS クラスターに利用できるバージョンの一覧を参照し、[az 
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.13.10
 ```
 
-ノード数にもよりますが、クラスターのアップグレードには数分かかります。
+ノード数にもよりますが、クラスターのアップグレードには数分かかります。 
+
+> [!NOTE]
+> クラスターのアップグレードについては、完了までの合計許容時間があります。 この時間は `10 minutes * total number of nodes in the cluster` の積を取得することによって計算されます。 たとえば、20 ノードのクラスターでは、アップグレード操作が 200 分で成功する必要があります。それを超えた場合は、AKS によって操作が失敗します。これは、クラスターが回復不能な状態になるのを回避するためです。 アップグレードの失敗から回復するには、タイムアウトに達した後にアップグレード操作を再試行してください。
 
 アップグレードが成功したことを確認するには、[az aks show][az-aks-show] コマンドを使用します。
 

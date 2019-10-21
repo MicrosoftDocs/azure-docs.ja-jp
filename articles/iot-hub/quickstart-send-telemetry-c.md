@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/10/2019
 ms.author: wesmc
-ms.openlocfilehash: 842efca1b40827f63ab23581aeac7e5226d04349
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4ccfa45c56a7e59024ce0639f218861054e32395
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900282"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72166940"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-c"></a>クイック スタート:デバイスから IoT ハブに利用統計情報を送信してバックエンド アプリケーションで読み取る (C)
 
@@ -25,7 +25,7 @@ IoT Hub は、保管や処理のために IoT デバイスから大量の利用�
 
 クイック スタートでは、[C 対応の Azure IoT device SDK ](iot-hub-device-sdk-c-intro.md) から C サンプル アプリケーションを使用して、IoT ハブに利用統計情報を送信します。 Azure IoT device SDK は、移植性と広範なプラットフォーム互換性のために、[ANSI C (C99)](https://wikipedia.org/wiki/C99) で作成されています。 サンプル コードを実行する前に、IoT ハブを作成して、そのハブを使ってシミュレートされたデバイスを登録します。
 
-この記事は Windows 用に書かれていますが、Linux 上でも、このクイック スタートを完了できます。
+この記事は Windows 用に書かれていますが、Linux 上でも、このクイックスタートを完了できます。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -45,7 +45,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このクイック スタートでは、[C 対応の Azure IoT device SDK](iot-hub-device-sdk-c-intro.md) を使用します。 
 
-次の環境にパッケージとライブラリをインストールして、SDK を使用できます。
+以下の環境にこれらのパッケージとライブラリをインストールして、SDK を使用できます。
 
 * **Linux**: CPU アーキテクチャ amd64、arm64、armhf、および i386 を使用して、Ubuntu 16.04 および 18.04 用に apt-get パッケージが利用可能です。 詳細については、「[Using apt-get to create a C device client project on Ubuntu](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/ubuntu_apt-get_sample_setup.md)」(apt-get を使用して Ubuntu 上に C デバイス クライアント プロジェクトを作成する) を参照してください。
 
@@ -113,25 +113,25 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
-   **MyCDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyCDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+   **MyCDevice**: これは、登録するデバイスの名前です。 示されているように、**MyCDevice** を使用することをお勧めします。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
-    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyCDevice
+    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyCDevice
     ```
 
-2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの_デバイス接続文字列_を取得します。
+2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyCDevice --output table
+    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyCDevice --output table
     ```
 
     次のようなデバイス接続文字列をメモしておきます。
 
-   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyCDevice;SharedAccessKey={YourSharedAccessKey}`
 
-    この値は、このクイック スタートの後の方で使います。
+    この値は、このクイックスタートの後の方で使用します。
 
 ## <a name="send-simulated-telemetry"></a>シミュレートされた利用統計情報の送信
 
@@ -183,7 +183,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub monitor-events --hub-name YourIoTHubName --output table
+    az iot hub monitor-events --hub-name {YourIoTHubName} --output table
     ```
 
     ![Azure CLI を使用してデバイス メッセージを読み取る](media/quickstart-send-telemetry-c/read-device-to-cloud-messages-app.png)
@@ -194,7 +194,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、IoT ハブをセットアップして、デバイスを登録し、C アプリケーションを使ってハブにシミュレートされた利用統計情報を送信し、Azure Cloud Shell を使用してハブから利用統計情報を読み取りました。
+このクイックスタートでは、IoT ハブの設定、デバイスの登録、C アプリケーションによるハブへのシミュレートされた利用統計情報の送信、および Azure Cloud Shell によるハブからの利用統計情報の読み取りを行いました。
 
 Azure IoT Hub C SDK による開発の詳細については、引き続き次の攻略ガイドを参照してください。
 

@@ -98,7 +98,7 @@ ms.locfileid: "70886033"
 ### <a name="service-tags-in-on-premises"></a>オンプレミスのサービス タグ  
 Azure [パブリック](https://www.microsoft.com/download/details.aspx?id=56519)、[米国政府](https://www.microsoft.com/download/details.aspx?id=57063)、[中国](https://www.microsoft.com/download/details.aspx?id=57062)、[ドイツ](https://www.microsoft.com/download/details.aspx?id=57064) クラウドに対する翌週のパブリケーションでサービス タグのリストとプレフィックスの詳細をダウンロードして、オンプレミスのファイアウォールと統合できます。
 
-**Service Tag Discovery API** (パブリック プレビュー)、[REST](https://aka.ms/discoveryapi_rest)、[Azure PowerShell](https://aka.ms/discoveryapi_powershell)、および [Azure CLI](https://aka.ms/discoveryapi_cli) を使用してこの情報をプログラムで取得することもできます。 
+[REST](https://aka.ms/discoveryapi_rest)、[Azure PowerShell](https://aka.ms/discoveryapi_powershell)、および [Azure CLI](https://aka.ms/discoveryapi_cli) で **Service Tag Discovery API** (パブリック プレビュー) を使用して、この情報をプログラムで取得することもできます。 
 
 > [!NOTE]
 > Azure [パブリック](https://www.microsoft.com/en-us/download/details.aspx?id=41653)、[中国](https://www.microsoft.com/en-us/download/details.aspx?id=42064)、および[ドイツ](https://www.microsoft.com/en-us/download/details.aspx?id=54770) クラウドに対する翌週のパブリケーション (古いバージョン) は、2020 年 6 月 30 日までに非推奨になります。 上記の説明に従い更新されたパブリケーションの使用を開始してください。 

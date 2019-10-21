@@ -2,19 +2,18 @@
 title: Azure Kubernetes のデプロイ センター
 description: Azure DevOps のデプロイ センターを利用すると、アプリケーションの信頼性の高い Azure DevOps パイプラインを容易に設定できます
 ms.author: puagarw
-ms.manager: douge
 ms.prod: devops
 ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 07/12/2019
 author: pulkitaggarwl
 monikerRange: vsts
-ms.openlocfilehash: 35484566890f3bfd964e3fda337bfb3666d1da6c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 5384180720d391c6b4ae830f9316a70e80003063
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618729"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71972974"
 ---
 # <a name="deployment-center-for-azure-kubernetes"></a>Azure Kubernetes のデプロイ センター
 

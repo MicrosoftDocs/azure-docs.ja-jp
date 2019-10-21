@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 09/18/2019
 ms.author: shvija
-ms.openlocfilehash: 99b3b4b8d48ff04fc2ced686c01b2d4de12c6555
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 788f0647bec11184c2a85d87d0dfde2cb6c5744c
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68742147"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266299"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor での Azure Event Hubs メトリック
 
@@ -32,7 +32,8 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Log Analytics や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../azure-monitor/platform/data-platform.md)」をご覧ください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)で構成されます。
+メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../azure-monitor/platform/diagnostic-settings.md)で構成されます。
+
 
 ## <a name="access-metrics-in-the-portal"></a>ポータルでメトリックにアクセスする
 
@@ -109,6 +110,19 @@ Azure Event Hubs は、Azure Monitor でのメトリックの次のディメン�
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |
 |EntityName| Event Hubs は、名前空間の下のイベント ハブ エンティティをサポートします。|
+
+## <a name="azure-monitor-integration-with-siem-tools"></a>SIEM ツールとの Azure Monitor 統合
+Azure Monitor を使用して監視データ (アクティビティ ログ、診断ログなど) をイベント ハブにルーティングすると、セキュリティ情報イベント管理 (SIEM) ツールと簡単に統合できます。 詳細については、次の記事/ブログ投稿を参照してください。
+
+- [外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
+- [Azure Log Integration の概要](../security/fundamentals/azure-log-integration-overview.md)
+- [Azure Monitor を使用して SIEM ツールと統合する](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)
+
+SIEM ツールでイベント ハブからログ データを使用するシナリオでは、受信メッセージが表示されない場合や、受信メッセージは表示されものの、メトリック グラフに送信メッセージが表示されない場合、次の手順を実行してください。
+
+- **受信メッセージがない**場合は、Azure Monitor サービスが監査ログと診断ログをイベント ハブに移動していないことを意味します。 その場合は、Azure Monitor チームとのサポート チケットを開いてください。 
+- 受信メッセージはあるが**送信メッセージがない**場合は、SIEM アプリケーションがメッセージを読み取っていないことを意味します。 SIEM プロバイダーに問い合わせて、それらのアプリケーションのイベント ハブの構成が正しいかどうかを確認してください。
+
 
 ## <a name="next-steps"></a>次の手順
 

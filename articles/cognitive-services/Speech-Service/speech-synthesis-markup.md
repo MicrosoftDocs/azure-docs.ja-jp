@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 12d556fd9c37b83a919b830d155250e9eaa64128
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 3791b2d60b84299fc3b646f7e6585002078b607f
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624255"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350165"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>音声合成マークアップ言語 (SSML)
 
@@ -142,7 +142,7 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
 
 各ニューラル音声でサポートされている話し方を確認するには、次の表を使用してください。
 
-| 音声 | Type | 説明 |
+| 音声 | 種類 | 説明 |
 |-------|------|-------------|
 | `en-US-JessaNeural` | type=`cheerful` | ポジティブで幸せな感情を示します |
 | | type=`empathy` | 思いやりと理解を示します |
@@ -359,6 +359,58 @@ SSML の各ドキュメントは、SSML 要素 (またはタグ) を使用して
     </voice>
 </speak>
 ```
+## <a name="say-as-element"></a>say-as 要素  
+
+`say-as` は、要素のテキストのコンテンツの種類 (数値や日付など) を示す省略可能な要素です。 これにより、音声合成エンジンにテキストを発音する方法に関するガイダンスが提供されます。 
+
+**構文**
+
+```XML
+<say-as interpret-as="string" format="digit string" detail="string"> <say-as>
+```
+
+**属性**
+
+| Attribute | 説明 | 必須/省略可能 |
+|-----------|-------------|---------------------|
+| interpret-as | 要素のテキストのコンテンツの種類を示します。 種類の一覧については、次の表を参照してください。 | 必須 |
+| format | あいまいな形式を持つ可能性のあるコンテンツの種類に対して、要素のテキストの正確な書式設定に関する追加情報を提供します。 SSML では、それらを使用するコンテンツの種類の形式が定義されます (次の表を参照)。 | 省略可能 |
+| 詳細 | 読み上げられる詳細のレベルを示します。 たとえば、この属性では、音声合成エンジンが句読点を発音するように要求する場合があります。 `detail` に対して定義されている標準値はありません。 | 省略可能 |
+
+<!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
+
+`interpret-as` および `format` 属性でサポートされているコンテンツの種類は、次のとおりです。 `interpret-as` が日付と時刻に設定されている場合にのみ、`format` 属性を含めます。
+
+| interpret-as | format | 解釈 |
+|--------------|--------|----------------|
+| address | | テキストはアドレスとして読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br />`I'm at <say-as interpret-as="address">150th CT NE, Redmond, WA</say-as>`<br /><br />"I'm at 150th court north east redmond washington" (私はワシントン州レドモンド 150th コート ノースイーストにいます)。 |
+| cardinal、number | | テキストは基数として読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br />`There are <say-as interpret-as="cardinal">3</say-as> alternatives`<br /><br />"There are three alternatives" (代替手段は 3 つあります)。 |
+| characters、spell-out | | テキストは、個別の文字 (綴り) として読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br />`<say-as interpret-as="characters">test</say-as>`<br /><br />"T E S T"。 |
+| date  | dmy、mdy、ymd、ydm、ym、my、md、dm、d、m、y | テキストは日付として読み上げられます。 `format` 属性では、日付の形式を指定します (*d=日、m=月、y=年*)。 音声合成エンジンで次のように発音されます。<br /><br />`Today is <say-as interpret-as="date" format="mdy">10-19-2016</say-as>`<br /><br />"Today is October nineteenth two thousand sixteen" (今日は 2016 年 10 月 19 日です)。 |
+| digits、number_digit | | テキストは、個別の数字のシーケンスとして読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br />`<say-as interpret-as="number_digit">123456789</say-as>`<br /><br />"1 2 3 4 5 6 7 8 9"。 |
+| fraction | | テキストは分数として読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />"three eighths of an inch" (1 インチの 8 分の 3)。 |
+| ordinal  | | テキストは序数として読み上げられます。 音声合成エンジンで次のように発音されます。<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />"3 つ目のオプションを選択します"。 |
+| telephone  | | テキストは電話番号として読み上げられます。 `format` 属性には、国番号を表す数字を含めることができます。 たとえば、米国の場合は "1"、イタリアの場合は "39" になります。 音声合成エンジンでは、この情報を使用して、電話番号の発音するガイドにすることができます。 電話番号には、国番号を含めることもできます。その場合は、`format` の国番号よりも優先されます。 音声合成エンジンでは次のように発音されます。<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />"My number is area code eight eight eight five five five one two one two" (私の番号は市外局番 888 555 1212 です)。 |
+| time | hms12、hms24 | テキストは時刻として読み上げられます。 `format` 属性では、時刻が 12 時間形式 (hms12) または 24 時間形式 (hms24) のいずれを使用するかを指定します。 時間、分、秒を表す数字を区切るには、コロンを使用します。 有効な時刻の例を次に示します。12:35、1:14:32、08:15、02:50:45。 音声合成エンジンでは次のように発音されます。<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />"The train departs at four A M" (この電車は午前 4 時に発車します)。 |
+
+**使用方法**
+
+`say-as` 要素にはテキストのみを含めることができます。
+
+**例**
+
+音声合成エンジンは、"Your first request was for one room on October nineteenth twenty ten with early arrival at twelve thirty five P M" (最初のリクエストは 2010 年 10 月 19 日に 1 部屋、午後 12 時 35 分にアーリー アライバル、というものでした) という例を読み上げます。
+ 
+```XML
+<speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
+    <voice  name="en-US-Jessa24kRUS">
+    <p>
+    Your <say-as interpret-as="ordinal"> 1st </say-as> request was for <say-as interpret-as="cardinal"> 1 </say-as> room
+    on <say-as interpret-as="date" format="mdy"> 10/19/2010 </say-as>, with early arrival at <say-as interpret-as="time" format="hms12"> 12:35pm </say-as>.
+    </p>
+</speak>
+```
+
 
 ## <a name="add-recorded-audio"></a>録音されたオーディオを追加する
 

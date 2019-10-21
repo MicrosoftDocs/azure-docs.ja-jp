@@ -99,7 +99,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンが Azu
 
 | 名前 | 値/例 | データ型 |
 | ---- | ---- | ---- |
-| apiVersion | 2018 年 10 月 1 日 | date |
+| apiVersion | 2018-10-01 | date |
 | publisher | Microsoft.Powershell.DSC | string |
 | type | DSC | string |
 | typeHandlerVersion | 2.77 | int |

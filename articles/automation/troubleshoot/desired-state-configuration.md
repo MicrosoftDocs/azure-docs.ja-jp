@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67e5364996be2945d67aa1a95cbc3ab8137e077e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: b9d2dda589cc59be24b73ce16dcdcbbe79b31aef
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68850250"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71259170"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) をトラブルシューティングする
 
@@ -149,7 +149,7 @@ WMF のバージョンをアップグレードした結果、WMI が破損して
 
 #### <a name="resolution"></a>解決策
 
-この問題を解決するには、「[Desired State Configuration (DSC) の既知の問題と制限事項](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc)」の記事にある手順に従ってください。
+この問題を解決するには、「[Desired State Configuration (DSC) の既知の問題と制限事項](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)」の記事にある手順に従ってください。
 
 ### <a name="issue-using-credential"></a>シナリオ:DSC 構成で資格情報が使用できない
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor でのハイブリッド Linux コンピューターからのデータの収集 | Microsoft Docs
+title: クイック スタート:Azure Monitor を使用してハイブリッド Linux コンピューターからデータを収集する
 description: このクイックスタートでは、Azure の外部で実行中の Linux コンピューター用に Log Analytics エージェントをデプロイし、Azure Monitor ログを使用してデータを収集できるようにする方法について説明します。
 services: azure-monitor
 documentationcenter: azure-monitor
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/22/2019
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 6fa26adab64a91ac2910607e4a828f9362490d08
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.custom: mvc, seo-javascript-september2019
+ms.openlocfilehash: 72f50754a28f0bbf5648ae64299d28ff13e2ec31
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991763"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703052"
 ---
-# <a name="collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>Azure Monitor を使用してハイブリッド環境の Linux コンピューターからデータを収集する
+# <a name="quickstart-collect-data-from-a-linux-computer-in-a-hybrid-environment-with-azure-monitor"></a>クイック スタート:Azure Monitor を使用してハイブリッド環境の Linux コンピューターからデータを収集する
 
 [Azure Monitor](../overview.md) は、詳細な分析と相関のために、環境内の物理的または仮想的な Linux コンピューターから直接データを Log Analytics ワークスペースに収集することができます。 [Log Analytics エージェント](../platform/log-analytics-agent.md)をインストールすることにより、Azure Monitor でデータセンターまたは他のクラウド環境からデータを収集できるようになります。 このクイックスタートでは、いくつかの簡単な手順で、Linux サーバーを構成し、データを収集する方法を示します。 Azure Linux VM については、[Azure 仮想マシンに関するデータの収集](../../azure-monitor/learn/quick-collect-azurevm.md)のページを参照してください。  
 
@@ -29,7 +29,7 @@ ms.locfileid: "69991763"
  
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
 

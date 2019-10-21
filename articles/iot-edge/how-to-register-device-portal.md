@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 16660fbed465cc70f16cde430024f33b8aa4350e
-ms.sourcegitcommit: 600d5b140dae979f029c43c033757652cddc2029
+ms.openlocfilehash: 7f3d0037bcf0fd33ae23c298679e3157046247cb
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66495352"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983538"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-the-azure-portal"></a>Azure portal から新しい Azure IoT Edge デバイスを登録する
 
@@ -24,7 +24,7 @@ Azure IoT Edge で IoT デバイスを使用する前に、それらを IoT ハ�
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure サブスクリプション内の無料の標準 [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。
+Azure サブスクリプション内の無料または標準の [IoT ハブ](../iot-hub/iot-hub-create-through-portal.md)。
 
 ## <a name="create-a-device"></a>デバイスを作成する
 

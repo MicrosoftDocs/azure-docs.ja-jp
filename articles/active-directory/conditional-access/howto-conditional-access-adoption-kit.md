@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c75ec0ec212c99e474d13892178acbdc14e5f386
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: c34f59c3e9f679adf8ae410f648cb7de6dba6447
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075286"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72430042"
 ---
 #  <a name="adopting-azure-ad-conditional-access"></a>Azure AD の条件付きアクセスの導入
 
@@ -69,7 +69,6 @@ Azure AD の条件付きアクセスが機能するしくみの概要につい�
 
 また、Azure Active Directory と統合されているすべてのサービスへのアクセスを保護するためのガイダンスについては、以下のリンクを参照してください。
 
-* [ベースラインの保護とは (プレビュー)](baseline-protection.md)。 ベースラインの保護により、Azure Active Directory 環境で少なくともベースライン レベルのセキュリティを有効にします。
 * [ID とデバイスのアクセスの構成](https://docs.microsoft.com/microsoft-365/enterprise/microsoft-365-policies-configurations)。 Enterprise Mobility + Security 製品を使用して、クラウド サービスへの安全なアクセスを構成する方法について説明します。これは、条件付きアクセス ポリシーと関連機能の所定のセットを含めた、推奨される環境と構成を実装することによって実現されます。
 * [Azure Active Directory の条件付きアクセス設定に関するリファレンス](technical-reference.md)。 次のことを学びます:
    * 条件付きアクセスはどのアプリで使用されるか

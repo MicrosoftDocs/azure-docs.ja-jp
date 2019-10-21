@@ -4,17 +4,17 @@ description: ストレージ アカウントの多層型ネットワーク セ�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 00e69d9222444e3b700fca10e3f15b4b110e0c60
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b474e090db48b792ade81e8d0f5be0b69f6f109c
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241739"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673175"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 
@@ -82,7 +82,7 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
     ```
 
-1. 既定でネットワーク アクセスを許可するする既定のルールを設定します。
+1. 既定でネットワーク アクセスを許可する既定のルールを設定します。
 
     ```powershell
     Update-AzStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
@@ -104,7 +104,7 @@ Azure portal、PowerShell、または CLIv2 を使用して、ストレージ �
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Deny
     ```
 
-1. 既定でネットワーク アクセスを許可するする既定のルールを設定します。
+1. 既定でネットワーク アクセスを許可する既定のルールを設定します。
 
     ```azurecli
     az storage account update --resource-group "myresourcegroup" --name "mystorageaccount" --default-action Allow

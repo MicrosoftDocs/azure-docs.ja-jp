@@ -3,16 +3,15 @@ title: Azure Resource Graph エクスプローラーを使用して初めての�
 description: この記事では、Azure Resource Graph エクスプローラーを使用して Azure portal から初めてのクエリを実行する手順を紹介します。
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/29/2019
+ms.date: 10/18/2019
 ms.topic: quickstart
 ms.service: resource-graph
-manager: carmonm
-ms.openlocfilehash: 8b765f0b7a8e3e610f849ebe92a14f1498c4b959
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 755556b9ba049da7542494ee580215d29c1eb5f4
+ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208425"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72387615"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>クイック スタート:Azure Resource Graph エクスプローラーを使用して初めての Resource Graph クエリを実行する
 
@@ -28,19 +27,19 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. 左側のウィンドウにある **[すべてのサービス]** を選択します。 **[Resource Graph エクスプローラー]** を探して選択します。
 
-1. ウィンドウの **[クエリ 1]** 部分に「`project name, type | limit 5`」というクエリを入力し、 **[クエリの実行]** を選択します。
+1. ウィンドウの **[クエリ 1]** 部分に「`Resources | project name, type | limit 5`」というクエリを入力し、 **[クエリの実行]** を選択します。
 
    > [!NOTE]
    > このクエリ例では、`order by` などの並べ替え修飾子を指定していません。そのため、このクエリを複数回実行すると、要求ごとに、得られる一連のリソースが異なる可能性があります。
 
 1. **[結果]** タブでクエリの応答を確認します。 **[メッセージ]** タブを選択すると、結果の件数やクエリの実行時間など、クエリの詳細が表示されます。 エラーがある場合は、このタブに表示されます。
 
-1. このクエリを更新して `order by` に **Name** プロパティを指定します (`project name, type | limit 5 | order by name asc`)。 その後、 **[クエリの実行]** を選択します。
+1. このクエリを更新して `order by` に **Name** プロパティを指定します (`Resources | project name, type | limit 5 | order by name asc`)。 その後、 **[クエリの実行]** を選択します。
 
    > [!NOTE]
    > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 これによりクエリの結果をまず制限し、それからそれらを注文します。
 
-1. このクエリを更新して、最初に `order by` に **Name** プロパティを指定してから `limit` に上位 5 件の結果を指定します (`project name, type | order by name asc | limit 5`)。 その後、 **[クエリの実行]** を選択します。
+1. このクエリを更新して、最初に `order by` に **Name** プロパティを指定してから `limit` に上位 5 件の結果を指定します (`Resources | project name, type | order by name asc | limit 5`)。 その後、 **[クエリの実行]** を選択します。
 
 最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は **Name** プロパティで並べ替えられますが、上位 5 件に制限されます。
 
@@ -55,7 +54,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. ウィンドウの **[クエリ 1]** 部分に次のクエリを入力し、 **[クエリの実行]** を選択します。
 
    ```kusto
-   where type =~ 'Microsoft.Compute/virtualMachines'
+   Resources
+   | where type =~ 'Microsoft.Compute/virtualMachines'
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 

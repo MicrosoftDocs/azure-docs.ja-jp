@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: c24ed7efe9e046a36a05ec5924cbd61d218b1b01
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bcc9736280b144a77bca57b4f4df1303f4b54796
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091729"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71179089"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight の Apache HBase 用書き込みアクセラレータ
 
@@ -54,6 +54,12 @@ flush 'mytable'
 ```
 disable 'mytable'
 ```
+
+クラスターのスケール ダウン時にも同様の手順に従います。つまり、テーブルをフラッシュし、テーブルを無効にして受信データを停止します。 クラスターを 3 ノード未満にスケール ダウンすることはできません。
+
+これらの手順に従うことで、スケール ダウンが正常に行われ、レプリケーション不足のファイルまたは一時ファイルが原因で NameNode がセーフモードになる可能性が回避されます。
+
+スケールダウン後に NameNode がセーフモードになった場合は、hdfs のコマンドを使用して、レプリケーション不足のブロックを再レプリケートし、hdfs のセーフモードを解除します。 この再レプリケーションにより、HBase を正常に再起動できます。
 
 ## <a name="next-steps"></a>次の手順
 

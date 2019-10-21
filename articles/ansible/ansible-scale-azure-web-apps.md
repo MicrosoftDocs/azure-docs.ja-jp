@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Ansible を使用して Azure App Service のアプリをスケーリングする | Microsoft Docs
+title: チュートリアル - Ansible を使用して Azure App Service のアプリをスケーリングする
 description: Azure App Service のアプリをスケールアップする方法について説明します
 keywords: ansible, azure, devops, bash, プレイブック, Azure App Service, Web アプリ, スケール, Java
 ms.topic: tutorial
@@ -8,12 +8,12 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: d63708cd87afa426f2712da6d0fcb11c84590798
-ms.sourcegitcommit: 2ce4f275bc45ef1fb061932634ac0cf04183f181
+ms.openlocfilehash: 0adcddb8afa4f0e3d0b9288f351dae7d77922612
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2019
-ms.locfileid: "65230952"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72241491"
 ---
 # <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>チュートリアル:Ansible を使用して Azure App Service のアプリをスケーリングする
 

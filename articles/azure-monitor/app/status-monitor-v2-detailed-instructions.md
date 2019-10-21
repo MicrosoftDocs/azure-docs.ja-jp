@@ -161,7 +161,7 @@ SerializationVersion           1.1.0.1
 
 ### <a name="manually-download-the-latest-nupkg-file"></a>最新の nupkg ファイルを手動でダウンロードする
 
-1. https://www.powershellgallery.com/packages/Az.ApplicationMonitor にアクセスします。
+1. [https://www.powershellgallery.com/packages/Az.ApplicationMonitor](https://www.powershellgallery.com/packages/Az.ApplicationMonitor ) にアクセスします。
 2. 「**Version History (バージョン履歴)** 」一覧から最新バージョンのファイルを選択します。
 3. 「**Installation Options (インストール オプション)** 」の「**Manual Download (手動ダウンロード)** 」を選択します。
 

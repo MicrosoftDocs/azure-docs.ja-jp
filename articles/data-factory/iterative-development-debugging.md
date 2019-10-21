@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
 manager: craigg
-ms.openlocfilehash: afc51735fcbd8f4131b2a4066a0fc4adbb8f1a41
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a1c4bf55fbb8242293fc0e30bbe16a6884b901cb
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142332"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178624"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory での反復開発とデバッグ
 
@@ -51,6 +51,10 @@ Azure Data Factory では、Data Factory パイプラインの開発とデバッ
 ![[View active debug runs] アイコンを選択](media/iterative-development-debugging/view-debug-runs-image1.png)
 
 ![アクティブなデバッグ実行のサンプル一覧](media/iterative-development-debugging/view-debug-runs-image2.png)
+
+アクティブなデータ フロー デバッグ セッションがある場合、これらのセッションはアクティブなデバッグ ウィンドウの下部に表示されます。 アクティブなデータ フロー セッションを選択し、それぞれのクラスターを停止することができます。
+
+![アクティブなデータ フロー デバッグ実行の一覧 (サンプル)](media/data-flow/dfsessions.png)
 
 ## <a name="monitoring-debug-runs"></a>デバッグ実行の監視
 

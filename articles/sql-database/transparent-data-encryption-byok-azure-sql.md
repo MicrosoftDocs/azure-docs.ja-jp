@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 ms.date: 07/18/2019
-ms.openlocfilehash: 6b1b706e68b090090ed4268b70b7c9d254f8b629
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 095ecc360e5639a5d47dff4bc4675fc237cf81da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596700"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71348924"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Azure Key Vault のユーザー管理キーを使用した Azure SQL Transparent Data Encryption:Bring Your Own Key のサポート
 
@@ -149,7 +149,7 @@ geo レプリケートされた Azure SQL データベースの場合、Azure Ke
 - 2 つの Azure Key Vault を 2 つの異なるリージョンに作成します。作成時に、[PowerShell を使用して各キー コンテナーの "soft-delete" プロパティを有効にします](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) (このオプションは AKV ポータルからはまだ使用できませんが、SQL で必要です)。
 - キーのバックアップと復元が機能するように、2 つの Azure Key Vault は、同じ Azure Geo で利用できる 2 つのリージョンに配置する必要があります。  SQL Geo-DR の要件を満たすために、2 つのキー コンテナーを異なる Geo に配置する必要がある場合は、オンプレミスの HSM からキーをインポートできる [BYOK プロセス](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys)に従います。
 - 1 つ目のキー コンテナーに次のような新しいキーを作成します。  
-  - RSA/RSA-HSA 2048 キー
+  - RSA/RSA-HSM 2048 キー
   - 有効期限なし
   - キーが有効化され、取得、キーのラップ、キーのラップ解除の各操作を実行するためのアクセス許可がある
 - 主キーをバックアップし、2 つ目のキー コンテナーにキーを復元します。  「[Backup-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey)」および「[Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey)」をご覧ください。

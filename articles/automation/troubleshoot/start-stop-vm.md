@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 447aa4f5bb3c274900beddcef8c89db88d3f3ee9
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: fe4317c193e8aa6c6723556ef36d6111df6f51cd
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688045"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240843"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours ソリューションのトラブルシューティング
 
@@ -44,6 +44,14 @@ The subscription is not registered to use namespace 'Microsoft.Insights'.
 The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
 ```
 
+```error
+A parameter cannot be found that matches parameter name 'TagName'
+```
+
+```error
+Start-AzureRmVm : Run Login-AzureRmAccount to login
+```
+
 ### <a name="cause"></a>原因
 
 デプロイは、次のいずれかの理由で失敗する場合があります。
@@ -52,6 +60,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 2. VM の起動/停止ソリューションのデプロイを許可しないポリシーが設定されている。
 3. リソースの種類として `Microsoft.OperationsManagement`、`Microsoft.Insights`、または `Microsoft.Automation` が登録されていない。
 4. Log Analytics ワークスペースがロックされている。
+5. 古いバージョンの AzureRM モジュールまたは起動/停止ソリューションを使用しています。
 
 ### <a name="resolution"></a>解決策
 
@@ -66,6 +75,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
    プロバイダーの登録時のエラーについては、「[Resolve errors for resource provider registration (リソースプロバイダーの登録エラーを解決する)](../../azure-resource-manager/resource-manager-register-provider-errors.md)」を参照してください。
 4. Log Analytics ワークスペースがロックされている場合は、Azure portal でワークスペースに移動し、すべてのリソースのロックを削除します。
+5. 上記の解決方法でイシューが解決しない場合は、「[ソリューションを更新する](../automation-solution-vm-management.md#update-the-solution)」の手順に従って、起動/停止ソリューションを再デプロイします。
 
 ## <a name="all-vms-fail-to-startstop"></a>シナリオ:すべての VM を起動/停止できない
 

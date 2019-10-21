@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 682059914b5d86f5e670e373a4acf3e4ac6246ba
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.openlocfilehash: ee5354845efba0cce92ccf4f11eb3480684e7509
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428215"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71947900"
 ---
 # <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Visual Studio による Service Fabric アプリケーションのデバッグ
 > [!div class="op_single_selector"]
@@ -62,6 +62,13 @@ ms.locfileid: "66428215"
    
     ![アプリケーションのデバッグを開始する][breakpoint]
 
+
+### <a name="running-a-script-as-part-of-debugging"></a>デバッグの一部としてのスクリプトの実行
+特定のシナリオでは、デバッグ セッションの開始の一部としてスクリプトを実行する必要があります (既定のサービスを使用していない場合など)。
+
+Visual Studio では、Service Fabric Application プロジェクト (.sfproj) の **Scripts** フォルダーに **Start-Service.ps1** というファイルを追加できます。 このスクリプトは、ローカル クラスターでアプリケーションが作成された後に呼び出されます。
+
+
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 ## <a name="debug-a-remote-service-fabric-application"></a>リモートの Service Fabric アプリケーションをデバッグする
@@ -69,14 +76,10 @@ Service Fabric アプリケーションが Azure 内の Service Fabric クラス
 
 > [!NOTE]
 > この機能には [Service Fabric SDK 2.0](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) と [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/) が必要です。    
-> 
-> 
 
 <!-- -->
 > [!WARNING]
 > リモート デバッグは開発/テスト シナリオ向けであり、運用環境向けではありません。これは、実行中のアプリケーションに影響が生じるためです。
-> 
-> 
 
 1. **Cloud Explorer** でクラスターに移動します。 右クリックし、 **[デバッグを有効にする]** を選択します。
    
@@ -121,8 +124,6 @@ Service Fabric アプリケーションが Azure 内の Service Fabric クラス
 > [!WARNING]
 > ストリーミング トレースは開発/テスト シナリオ向けであり、運用環境向けではありません。これは、実行中のアプリケーションに影響が生じるためです。
 > 運用環境のシナリオでは、Azure Diagnostics を使用したイベント転送に頼る必要があります。
-> 
-> 
 
 1. **Cloud Explorer** でクラスターに移動します。 右クリックし、 **[ストリーミング トレースを有効にする]** を選択します。
    

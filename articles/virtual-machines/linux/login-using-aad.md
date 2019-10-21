@@ -3,7 +3,7 @@ title: Linux VM に Azure Active Directory の資格情報を使用してログ�
 description: Azure Active Directory 認証を使用してサインインするために、Linux VM を作成して構成する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: iainfoulds
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
-ms.author: cynthn
-ms.openlocfilehash: 0e3996c28750639b227475bf4e0196f3a0c3ab0d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.author: iainfou
+ms.openlocfilehash: b473844f1507285e0052ca1f8de00f6ca3207e6f
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163216"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71327092"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>プレビュー:Azure Active Directory 認証を使用して Azure の Linux 仮想マシンにログインする
 
@@ -86,6 +86,9 @@ az vm create \
 VM とサポートするリソースを作成するには数分かかります。
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>Azure AD ログイン VM 拡張機能をインストールする
+
+> [!NOTE]
+> この拡張機能を、以前に作成した VM にデプロイする場合は、マシンに少なくとも 1 GB のメモリが割り当てられていることを確認してください。そうでない場合、拡張機能のインストールは失敗します
 
 Azure AD 資格情報を使用して Linux VM にログインするには、VM 拡張機能に Azure Active Directory ログインをインストールします。 VM 拡張機能は、Azure 仮想マシンでのデプロイ後の構成と自動タスクを提供する小さなアプリケーションです。 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) を使用して、*myResourceGroup* リソース グループの *myVM* という名前の VM に *AADLoginForLinux* 拡張機能をインストールします。
 

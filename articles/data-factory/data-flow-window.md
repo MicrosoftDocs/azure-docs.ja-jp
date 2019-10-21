@@ -7,16 +7,16 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 6f3f06ff54fc76416ba63f4f09835897d546f8dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cf58db14398026da62ed13c66be815be8fe166a2
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61349970"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029909"
 ---
 # <a name="azure-data-factory-window-transformation"></a>Azure Data Factory のウィンドウ変換
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ウィンドウ変換では、データ ストリームに含まれる列のウィンドウ ベースの集計を定義します。 式ビルダーで、データまたは時間ウィンドウに基づくさまざまな種類の集計 (SQL OVER 句の LEAD、LAG、NTILE、CUMEDIST、RANK など) を定義できます。 これらの集計を含む新しいフィールドが出力に生成されます。 省略可能な group-by フィールドを含めることもできます。
 

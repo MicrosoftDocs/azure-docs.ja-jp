@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 09/26/2019
 ms.author: banders
-ms.openlocfilehash: 4d83228fbec395d604e5ce3f988d2a6157f21eed
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 2259c9f05b157226c30a0e32e791ba540fa5af99
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490658"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338309"
 ---
 # <a name="terms-in-your-microsoft-customer-agreement-price-sheet"></a>Microsoft 顧客契約の価格シートの用語
 
@@ -30,27 +30,32 @@ ms.locfileid: "67490658"
 
 | **フィールド名**   | **説明**   |
 | --- | --- |
+| basePrice  | お客様がサインオンした時点での市場価格、またはサインオン後の場合はサービス メーターが開始した時点での市場価格。   |
 | billingAccountId  | 請求先アカウントの一意の識別子。   |
 | billingAccountName  | 請求先アカウントの名前。  |
+| billingCurrency | 請求金額の計上に使用される通貨 |
 | billingProfileId  | 課金プロファイルの一意の識別子。   |
 | billingProfileName  | 請求書を受け取るよう設定されている課金プロファイルの名前。 価格シート内の価格は、この課金プロファイルに関連付けられています。 |
-| productOrderName  | 購入した製品プランの名前。 |
-| serviceFamily  | Azure サービスの種類。例: Compute、Analytics、Security |
+| currency | すべての価格が反映される通貨。 |
+| discount | Graduation レベル、Free レベル、含まれる数量、交渉済み割引 (該当する場合) で提供される価格割引。 パーセンテージで表されます。 |
+| effectiveEndDate  | 有効価格の終了日。 |
+| effectiveStartDate  | 価格が有効になる開始日。 |
+| includedQuantity | 増分料金なしで顧客に利用資格がある特定のサービスの数量。 |
+| marketPrice | 特定のサービスの最新の実勢市場価格。 |
+| meterId  | メーターの一意の識別子。 |
+| meterCategory  | メーターの分類カテゴリの名前。 たとえば、_Cloud services_、_Networking_ などです。 |
+| meterName  | メーターの名前。 メーターは、Azure サービスのデプロイ可能なリソースを表します。 |
+| meterSubCategory  | メーターのサブ分類カテゴリの名前。  |
+| meterType  |  メーターの種類の名前。 |
+| meterRegion  | サービスのメーターが使用可能なリージョンの名前。 データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。    |
 | Product  | 料金が発生する製品の名前。例: Basic SQL DB vs Standard SQL DB  |
 | productId  | メーターが消費される製品の一意の識別子。 |
-| unitOfMeasure  | サービス課金の測定単位の一意の識別子。 たとえば、コンピューティング サービスは時間単位で課金されます。 |
-| meterId  | メーターの一意の識別子。 |
-| meterName  | メーターの名前。 メーターは、Azure サービスのデプロイ可能なリソースを表します。 |
-| meterCategory  | メーターの分類カテゴリの名前。 たとえば、_Cloud services_、_Networking_ などです。 |
-| meterType  |  メーターの種類の名前。 |
-| meterSubCategory  | メーターのサブ分類カテゴリの名前。  |
-| meterRegion  | サービスのメーターが使用可能なリージョンの名前。 データセンターの場所に基づいて価格が設定されるサービスについて、データセンターの場所を示します。    |
-| tierId  | 価格レベルを特定します (該当する場合)。 消費されるユニット数に応じて価格が変動する場合、tierMinimumUnits と連携して価格レベルを設定します。    |
+| productOrderName  | 購入した製品プランの名前。 |
+| serviceFamily  | Azure サービスの種類。例: Compute、Analytics、Security |
 | tierMinimumUnits  | 価格が定義されているレベル範囲の下限を定義します。 たとえば、範囲が 0 から 100 の場合、tierMinimumUnits は 0 になります。  |
-| effectiveStartDate  | 価格が有効になる開始日。 |
-| effectiveEndDate  | 有効価格の終了日。 |
+| unitOfMeasure  | サービス課金の測定単位の一意の識別子。 たとえば、コンピューティング サービスは時間単位で課金されます。 |
 | unitPrice  | メーターと製品オーダー名に特有の、課金時のユニットあたりの価格 (有効なブレンド価格ではない)。  注:レベルごとに価格が異なるサービスの場合、単価は使用量の詳細のダウンロード内の有効価格と同じではありません。  複数のレベルの価格にわたるサービスの場合、有効価格はレベル全体のブレンド価格であり、レベル別の単価は示されません。 ブレンド価格または有効価格は、複数のレベル (各レベルには固有の単価が存在) にまたがって消費された数量に対する正味価格です。 |
-| basePrice  | お客様がサインオンした時点での市場価格、またはサインオン後の場合はサービス メーターが開始した時点での市場価格。   |
+
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Microsoft 顧客契約にアクセスできるかどうかを確認する
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

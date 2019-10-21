@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps から HTTP または HTTPS エンドポイントに接続する
-description: Azure Logic Apps を使用して、自動化されたタスク、プロセス、およびワークフロー内で HTTP または HTTPS エンドポイントを監視します
+title: HTTP または HTTPS エンドポイントを呼び出す - Azure Logic Apps
+description: Azure Logic Apps を使用して HTTP および HTTPS エンドポイントに送信要求を送信する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -10,16 +10,18 @@ ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 04d9beaef29e76d40c0bb3f9dcf0bb6f4fe3152d
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: df856e0d76dbd5903964bc80aa01b97b7461128a
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234369"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122694"
 ---
-# <a name="call-http-or-https-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して HTTP または HTTPS エンドポイントを呼び出す
+# <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して HTTP または HTTPS エンドポイントに発信呼び出しを送信する
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と組み込み HTTP コネクタを使用すると、ロジック アプリを構築することで、任意の HTTP または HTTPS エンドポイントを定期的に呼び出すワークフローを自動化できます。 たとえば、対象の Web サイトのサービス エンドポイントは、そのエンドポイントを指定したスケジュールで確認することで監視できます。 Web サイトの停止など、そのエンドポイントで特定のイベントが発生すると、そのイベントによって対象のロジック アプリのワークフローがトリガーされ、指定したアクションが実行されます。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) と組み込みの HTTP トリガーまたはアクションを使用すると、HTTP または HTTPS エンドポイントに要求を定期的に送信する自動化されたタスクおよびワークフローを作成することができます。 これの代わりに着信した HTTP または HTTPS 呼び出しを受信して応答するには、組み込みの [Request トリガーまたは Response アクション](../connectors/connectors-native-reqres.md)を使用します。
+
+たとえば、対象の Web サイトのサービス エンドポイントは、そのエンドポイントを指定したスケジュールで確認することで監視できます。 Web サイトの停止など、そのエンドポイントで特定のイベントが発生すると、そのイベントによって対象のロジック アプリのワークフローがトリガーされ、指定したアクションが実行されます。
 
 定期的にエンドポイントを確認する、つまり "*ポーリング*" するために、ワークフローの最初のステップとして HTTP トリガーを使用できます。 チェックごとに、トリガーからエンドポイントに対する呼び出し、つまり*要求*が送信されます。 エンドポイントの応答によって、ロジック アプリのワークフローが実行されるかどうかが決定します。 トリガーによって、応答の任意のコンテンツがロジック アプリのアクションに渡されます。
 
@@ -146,7 +148,7 @@ HTTP 要求に `multipart/form-data` 型を含むコンテンツを処理する�
 
 ここでは、以下の情報を返す HTTP トリガーまたはアクションからの出力の詳細情報を示します。
 
-| プロパティ名 | Type | 説明 |
+| プロパティ名 | 種類 | 説明 |
 |---------------|------|-------------|
 | headers | object | 要求のヘッダー |
 | body | object | JSON オブジェクト | 要求の本文の内容を含むオブジェクト |
@@ -159,7 +161,7 @@ HTTP 要求に `multipart/form-data` 型を含むコンテンツを処理する�
 | 202 | 承認済み |
 | 400 | 正しくない要求 |
 | 401 | 権限がありません |
-| 403 | 許可されていません |
+| 403 | Forbidden |
 | 404 | 見つかりません |
 | 500 | 内部サーバー エラー。 不明なエラーが発生しました。 |
 |||

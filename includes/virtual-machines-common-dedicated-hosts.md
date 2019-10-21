@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a627592bdfcbebc3c7fcda911e31c0ae6f4a630f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: d27b3613acb2980ff4116825197d018f9c183baa
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976609"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266859"
 ---
 ## <a name="benefits"></a>メリット 
 
@@ -113,6 +113,6 @@ Azure では、ホストの正常性状態が監視および管理されます�
 |----------|----------------|
 | 使用可能なホスト     | ホストに既知の問題はありません。   |
 | 調査対象のホスト  | ホストには調査中の問題がいくつかあります。 これは、識別された問題のスコープと根本原因を Azure で特定するために必要な移行状態です。 ホストで実行されている仮想マシンが影響を受ける可能性があります。 |
-| Host Pending Deallocate (割り当て解除中保留中のホスト)   | Azure では、ホストを正常な状態に復元することができず、このホストから仮想マシンを再デプロイすることをユーザーに求めます。 `autoHealingOnFailure` が有効になっている場合、仮想マシンは正常なハードウェアに "*サービス復旧*" されます。 それ以外の場合、仮想マシンは障害が発生しようとしているホストで実行される可能性があります。|
+| Host Pending Deallocate (割り当て解除中保留中のホスト)   | Azure では、ホストを正常な状態に復元することができず、このホストから仮想マシンを再デプロイすることをユーザーに求めます。 `autoReplaceOnFailure` が有効になっている場合、仮想マシンは正常なハードウェアに "*サービス復旧*" されます。 それ以外の場合、仮想マシンは障害が発生しようとしているホストで実行される可能性があります。|
 | Host deallocated (割り当て解除済みのホスト)  | すべての仮想マシンがホストから削除されました。 ハードウェアがローテーションから外されたため、このホストに対して課金されることはありません。   |
 

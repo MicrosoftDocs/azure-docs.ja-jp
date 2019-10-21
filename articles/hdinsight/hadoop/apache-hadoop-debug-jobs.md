@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 751d5b47006f5c99a747503ad4f052b3e03a043c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 8ad2bdd0f12abad08515f0314b9c03cc971127cb
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882436"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71059212"
 ---
 # <a name="analyze-apache-hadoop-logs-in-azure-hdinsight"></a>Azure HDInsight の Apache Hadoop ログを分析する
 
@@ -110,7 +110,7 @@ Azure テーブルに書き込まれたログは、HDInsight クラスターで�
 ### <a name="access-the-ambari-ui"></a>Ambari UI にアクセスする
 Azure Portal から、HDInsight クラスター名をクリックし、クラスター ウィンドウを開きます。 クラスター ウィンドウから、 **[ダッシュボード]** をクリックします。
 
-![クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
+![HDInsight クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-launch-dashboard.png)
 
 
 ### <a name="access-the-yarn-ui"></a>Yarn UI にアクセスする
@@ -120,7 +120,7 @@ YARN UI では、次の操作を実行できます。
 
 * **クラスターの状態を取得します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[About]** をクリックします。 割り当て済みメモリの合計、使用済みコア、クラスター リソース マネージャーの状態、クラスター バージョンなど、クラスターの状態に関する詳細が表示されます。
   
-    ![YARN でのクラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "YARN でのクラスター ダッシュボードの起動")
+    ![YARN での HDInsight クラスター ダッシュボードの起動](./media/apache-hadoop-debug-jobs/hdi-debug-yarn-cluster-state.png "YARN での HDInsight クラスター ダッシュボードの起動")
 * **ノードの状態を取得します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[Nodes]** をクリックします。 ここにはクラスターの全ノード、各ノードの HTTP アドレス、各ノードに割り当てられているリソースなどが一覧表示されます。
 * **ジョブの状態を監視します**。 左側のウィンドウから、 **[Cluster]** を展開し、 **[Applications]** をクリックし、クラスター内のすべてのジョブを一覧表示します。 特定の状態 (新規、送信済み、実行中など) のジョブを確認する場合、 **[Applications]** の下にある該当リンクをクリックします。 さらに、ジョブ名をクリックすると、出力やログなど、ジョブに関する詳細がわかります。
 

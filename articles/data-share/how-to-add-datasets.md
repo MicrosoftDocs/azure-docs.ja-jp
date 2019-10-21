@@ -1,17 +1,17 @@
 ---
-title: Azure Data Share プレビューで既存のデータ共有にデータセットを追加する
-description: 既存のデータ共有にデータセットを追加する
-author: madams0013
+title: 既存の Azure Data Share プレビューにデータセットを追加する
+description: Azure Data Share で既存のデータ共有にデータセットを追加し、同じ受信者と共有する方法について説明します。
+author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: jasonh
-ms.openlocfilehash: 75ac837491927881fd8b7547b0f49a069c3f2d47
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 8cc61307ae6664889f60469cc3ca65c840c43b86
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70257209"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169194"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share-preview"></a>Azure Data Share プレビューで既存の共有にデータセットを追加する方法
 

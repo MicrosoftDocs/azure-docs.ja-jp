@@ -1,5 +1,5 @@
 ---
-title: メッセージングの例外 - Azure Event Hubs | Microsoft Docs
+title: .NET でのメッセージングの例外 - Azure Event Hubs | Microsoft Docs
 description: この記事では、Azure Event Hubs メッセージングの例外と推奨アクションの一覧を示します。
 services: event-hubs
 documentationcenter: na
@@ -11,22 +11,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 09/25/2019
 ms.author: shvija
-ms.openlocfilehash: 7b6323e02225be3d954e4ee91ea06952bb3ce396
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b6680902180a1d4a3c75080e232569cf760ba078
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66001761"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309840"
 ---
-# <a name="event-hubs-messaging-exceptions"></a>Event Hubs メッセージングの例外
+# <a name="event-hubs-messaging-exceptions---net"></a>Event Hubs メッセージングの例外 - .NET
 
-この記事では、.NET Framework Event Hubs API を含む、Azure Service Bus のメッセージング API ライブラリによって生成されるいくつかの例外を示します。 このリファレンスは変更される可能性があるため、最新情報をご確認ください。
+この記事では、.NET Framework Event Hubs API を含む、Azure Service Bus のメッセージング .NET API ライブラリによって生成されるいくつかの .NET 例外を示します。 このリファレンスは変更される可能性があるため、最新情報をご確認ください。
 
 ## <a name="exception-categories"></a>例外のカテゴリ
 
-Event Hubs API で生成される例外をカテゴリ別に分類し、修復のために実行できる関連するアクションと共に以下に示します。
+Event Hubs API .NET で生成される例外をカテゴリ別に分類し、修復のために実行できる関連するアクションと共に以下に示します。
 
 1. ユーザー コードのエラー: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、[System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、[System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、[System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx)。 一般アクション: 処理を実行する前にコードの修正を試みます。
 2. セットアップ/構成エラー: [Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.servicebus.messaging.messagingentitynotfoundexception)、[Microsoft.Azure.EventHubs.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.eventhubs.messagingentitynotfoundexception)、[System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx)。 一般アクション: 構成を確認し、必要に応じて変更します。

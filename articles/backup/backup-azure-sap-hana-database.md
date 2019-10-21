@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: dacurwin
-ms.openlocfilehash: 6ac15e042f93befe406553d622c790eeabad7c2c
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: 9f16a00bd8bc8e61aecbf6d6bd7f31e90f50140a
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70060713"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71067100"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>SAP HANA データベースを Azure にバックアップする
 
@@ -26,8 +26,8 @@ ms.locfileid: "70060713"
 **サポート** | **詳細**
 --- | ---
 **サポートされている地域** | オーストラリア南東部、オーストラリア東部 <br> ブラジル南部 <br> カナダ中部、カナダ東部 <br> 東南アジア、東アジア <br> 米国東部、米国東部 2、米国中西部、米国西部、米国西部 2、米国中北部、米国中部、米国中南部<br> インド中部、インド南部 <br> 東日本、西日本<br> 韓国中部、韓国南部 <br> 北ヨーロッパ、西ヨーロッパ <br> 英国南部、英国西部
-**サポートされている VM オペレーティング システム** | SLES 12 SP2 または SP3。
-**サポートされている HANA のバージョン** | HANA 1.x の場合は SDC、HANA 2.x SPS03 以下の場合は MDC
+**サポートされている VM オペレーティング システム** | SLES 12 SP2、SP3、SP4。
+**サポートされている HANA のバージョン** | HANA 1.x の場合は SDC、HANA 2.x SPS04 Rev 42 以下の場合は MDC
 
 ### <a name="current-limitations"></a>現時点での制限事項
 

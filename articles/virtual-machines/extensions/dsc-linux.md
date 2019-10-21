@@ -13,16 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: c37b81e08e5d9f150081a9dc12af51175e3f590c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e2faf444aa411f0e60f1b5c7b1f811abc2f6b63a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084717"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176681"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Linux 用の DSC 拡張機能 (Microsoft.OSTCExtensions.DSCForLinux)
 
 Desired State Configuration (DSC) は、コードで構成を行って IT および開発インフラストラクチャを管理できる管理プラットフォームです。
+
+> 注意: Linux 用の DSC 拡張機能と [Linux 用の Azure Monitor 仮想マシン拡張機能](/azure/virtual-machines/extensions/oms-linux) では現在競合があるため、並列構成ではサポートされていません。  つまり、2 つのソリューションを同じ VM で同時に使用することはできません。
 
 DSCForLinux 拡張機能は Microsoft によって公開され、サポートされています。 拡張機能では、OMI および DSC のエージェントが Azure 仮想マシンにインストールされます。 DSC 拡張機能では、さらに次のアクションを実行できます
 
@@ -39,7 +41,7 @@ DSCForLinux 拡張機能は Microsoft によって公開され、サポートさ
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの Linux ディストリビューション](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)がすべてサポートされます。
+DSC Linux 拡張機能では、以下を除き、[Azure で動作保証済みの Linux ディストリビューション](/azure/virtual-machines/linux/endorsed-distros)がすべてサポートされます。
 
 | ディストリビューション | Version |
 |---|---|

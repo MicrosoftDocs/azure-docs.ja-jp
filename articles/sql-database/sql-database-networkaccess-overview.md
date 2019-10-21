@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 2d7cc217ff8ae45491c0f9d6b54ea8afea19cd2e
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: b2c1f01e53cfe41b72e3e079059c66e4e2409012
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981234"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703268"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Azure SQL Database および Data Warehouse のネットワーク アクセスの制御
 
@@ -72,7 +72,9 @@ IP ベースのファイアウォールは、Azure SQL Server の機能であり
 ## <a name="virtual-network-firewall-rules"></a>仮想ネットワーク ファイアウォール規則
 
 Azure SQL Server ファイアウォールでは、IP 規則だけでなく、"*仮想ネットワーク規則*" を定義することもできます。  
-詳細については、[Azure SQL Database の仮想ネットワーク サービス エンドポイントと規則](sql-database-vnet-service-endpoint-rule-overview.md)に関する記事をご覧ください。
+詳細については、[Azure SQL Database の仮想ネットワーク サービス エンドポイントと規則](sql-database-vnet-service-endpoint-rule-overview.md)に関する記事をお読みいただくか、この動画をご覧ください。
+
+> [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Data-Exposed--Demo--Vnet-Firewall-Rules-for-SQL-Database/player?WT.mc_id=dataexposed-c9-niner]
 
  ### <a name="azure-networking-terminology"></a>Azure のネットワーク用語  
 仮想ネットワーク ファイアウォール規則について調べる際には、次の Azure のネットワーク用語に注意してください

@@ -1,7 +1,7 @@
 ---
 title: ストレージ アカウントのアクセス キーを変更する
-titleSuffix: Azure Machine Learning service
-description: ご利用のワークスペースで使用される Azure ストレージ アカウントのアクセス キーを変更する方法について説明します。 Azure Machine Learning service では、Azure ストレージ アカウントを使用してデータとモデルを格納します。 ストレージ アカウントのアクセス キーを再生成した場合は、その新しいキーを使用するように Azure Machine Learning service を更新する必要があります。
+titleSuffix: Azure Machine Learning
+description: ご利用のワークスペースで使用される Azure ストレージ アカウントのアクセス キーを変更する方法について説明します。 Azure Machine Learning では、Azure ストレージ アカウントを使用してデータとモデルが格納されます。 ストレージ アカウントのアクセス キーを再生成した場合は、その新しいキーを使用するように Azure Machine Learning を更新する必要があります。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/16/2019
-ms.openlocfilehash: e386e34a8326a51753631ee9ea4215d01ba7ceb3
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: 6c87d4553c7b0fd34513d761558a06cd527c4e3b
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558231"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034964"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>ストレージ アカウント キーの再生成
 
-Azure Machine Learning service で使用される Azure ストレージ アカウントのアクセス キーを変更する方法について説明します。 Azure Machine Learning では、ストレージ アカウントを使用してデータまたはトレーニング済みモデルを保存できます。
+Azure Machine Learning で使用される Azure ストレージ アカウントのアクセス キーを変更する方法について説明します。 Azure Machine Learning では、ストレージ アカウントを使用してデータまたはトレーニング済みモデルを保存できます。
 
 セキュリティ上の理由から、Azure ストレージ アカウントのアクセス キーを変更することが必要になる場合があります。 アクセス キーを再生成した場合は、その新しいキーを使用するように Azure Machine Learning を更新する必要があります。 Azure Machine Learning では、ストレージ アカウントはモデル ストレージ用に使用される場合とデータストアとして使用される場合の両方があります。
 
@@ -35,7 +35,7 @@ Azure Machine Learning service で使用される Azure ストレージ アカ�
 
 ## <a name="what-needs-to-be-updated"></a>更新する必要があるもの
 
-ストレージ アカウントは、Azure Machine Learning service のワークスペース (ログ、モデル、スナップショットなどを格納する) で使用することも、データストアとして使用することもできます。 ワークスペースを更新するプロセスは 1 つの Azure CLI コマンドであり、ストレージ キーを更新した後に実行できます。 データストアを更新するプロセスはより複雑で、どのデータストアが現在そのストレージ アカウントを使用しているのかを検出してから再登録する必要があります。
+ストレージ アカウントは、Azure Machine Learning のワークスペース (ログ、モデル、スナップショットなどを格納する) で使用することも、データストアとして使用することもできます。 ワークスペースを更新するプロセスは 1 つの Azure CLI コマンドであり、ストレージ キーを更新した後に実行できます。 データストアを更新するプロセスはより複雑で、どのデータストアが現在そのストレージ アカウントを使用しているのかを検出してから再登録する必要があります。
 
 > [!IMPORTANT]
 > Azure CLI を使用してワークスペースを更新し、同時に、Python を使用してデータストアを更新します。 どちらか一方を更新するだけでは不十分であり、両方が更新されるまでエラーが発生する可能性があります。
@@ -74,7 +74,7 @@ for name, ds in datastores.items():
 
 ## <a name="update-the-access-key"></a>アクセス キーの更新
 
-新しいキーを使用するように Azure Machine Learning service を更新するには、次の手順に従います。
+新しいキーを使用するように Azure Machine Learning を更新するには、次の手順のようにします。
 
 > [!IMPORTANT]
 > すべての手順を実行し、ワークスペース (CLI を使用して) とデータストア (Python を使用して) の両方を更新します。 どちらか一方だけを更新すると、両方が更新されるまでエラーが発生する可能性があります。

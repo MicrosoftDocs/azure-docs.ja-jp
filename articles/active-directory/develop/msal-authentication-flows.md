@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/25/2019
+ms.date: 10/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd932d2b11c61c380638a1a95f8da357d0c62e3
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: d41e011fd58c20cbe6d2dc8d9029e645f8851bd9
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533000"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72513035"
 ---
 # <a name="authentication-flows"></a>認証フロー
 
@@ -37,9 +37,26 @@ ms.locfileid: "69533000"
 | [クライアントの資格情報](#client-credentials) | アプリケーションの ID を使って Web でホストされているリソースにアクセスできます。 バックグラウンドでの実行が必要なサーバー間の相互作用に使用され、ユーザーとの即時の相互動作は必要ありません。 | [デーモン アプリ](scenario-daemon-overview.md) |
 | [デバイス コード](#device-code) | ユーザーは、スマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできます。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
 | [統合 Windows 認証](scenario-desktop-acquire-token.md#integrated-windows-authentication) | ドメインまたは Azure Active Directory (Azure AD) に参加しているコンピューターのアプリケーションは、サイレントで (ユーザーからの UI 操作なしで) トークンを取得できます。| [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [ユーザー名/パスワード](scenario-desktop-acquire-token.md#username--password) | アプリケーションはパスワードを直接処理することによって、ユーザーをサインインさせることができます。 このフローは推奨されません。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#username--password) | 
+| [ユーザー名/パスワード](scenario-desktop-acquire-token.md#username--password) | アプリケーションはパスワードを直接処理することによって、ユーザーをサインインさせることができます。 このフローは推奨されません。 | [デスクトップ/モバイル アプリ](scenario-desktop-acquire-token.md#username--password) |
+
+## <a name="how-each-flow-emits-tokens-and-codes"></a>各フローがトークンとコードを生成する方法
+ 
+クライアントの構築方法に応じて、Microsoft ID プラットフォームでサポートされている認証フローの 1 つ (または複数) を使用できます。  これらのフローでは、さまざまなトークン (id_tokens、更新トークン、アクセス トークン) と承認コードを生成し、異なるトークンを使用して動作させるようにすることができます。 このグラフで概要を示します。
+ 
+|Flow | 必要 | id_token | アクセス トークン | 更新トークン | 承認コード | 
+|-----|----------|----------|--------------|---------------|--------------------|
+|[承認コード フロー](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[暗黙的なフロー](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[ハイブリッド OIDC フロー](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[更新トークンの使用](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | 更新トークン | x | x | x| |
+|[On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md) | アクセス トークン| x| x| x| |
+|[デバイス コード フロー](v2-oauth2-device-code.md) | | x| x| x| |
+|[クライアントの資格情報](v2-oauth2-client-creds-grant-flow.md) | | | x (アプリのみ)| | |
+ 
+暗黙的モードで発行されたトークンには、URL を介してブラウザーに返されるために長さの制限があります (`response_mode` は `query` または `fragment`)。  一部のブラウザーでは、ブラウザーのバーに入力できる URL のサイズに制限があり、長すぎると失敗します。  したがって、これらのトークンには `groups` または `wids` 要求がありません。
 
 ## <a name="interactive"></a>Interactive
+
 MSAL では、対話形式でユーザーにサインインのための資格情報の入力を要求し、それらの資格情報を使用してトークンを取得する機能がサポートされています。
 
 ![対話型フローの図](media/msal-authentication-flows/interactive.png)
@@ -62,6 +79,7 @@ MSAL でサポートされている [OAuth 2 の暗黙的な許可のフロー](
 この認証フローには、Electron や React-Native などのクロスプラットフォーム JavaScript フレームワークを使用するアプリケーションのシナリオは含まれません。これらでは、さらにネイティブ プラットフォームと対話する機能が必要であるためです。
 
 ## <a name="authorization-code"></a>Authorization code (承認コード)
+
 MSAL は [OAuth 2 承認コード付与](v2-oauth2-auth-code-flow.md)をサポートしています。 この付与は、デバイスにインストールされているアプリで、Web API などの保護されたリソースにアクセスするために使用できます。 これにより、モバイル アプリおよびデスクトップ アプリにサインインおよび API アクセスを追加できます。 
 
 ユーザーが Web アプリケーション (Web サイト) にサインインするとき、Web アプリケーションは承認コードを受け取ります。  承認コードと引き換えに、Web API を呼び出すためのトークンを取得します。 ASP.NET および ASP.NET Core Web アプリでは、`AcquireTokenByAuthorizationCode` の唯一の目的はトークンをトークン キャッシュに追加することです。 その後、そのトークンをアプリケーションで (通常、`AcquireTokenSilent` を使用して API のトークンを取得するだけのコントローラーで) 使用できます。
@@ -74,6 +92,7 @@ MSAL は [OAuth 2 承認コード付与](v2-oauth2-auth-code-flow.md)をサポ�
 2. アクセス トークンを使用して Web API を呼び出します。
 
 ### <a name="considerations"></a>考慮事項
+
 - 承認コードは、トークンの引き換えに 1 回だけ使用できます。 同じ承認コードで何回もトークンを取得しないでください (プロトコル標準の仕様で明確に禁止されています)。 意図的に何回もコードを引き換えた場合、またはフレームワークでも自動的に行われていたことを知らなかった場合は、次のエラーが発生します: `AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 
 - ASP.NET または ASP.NET Core アプリケーションを作成する場合、承認コードを既に引き換えたことをフレームワークに通知しないと、これが発生する可能性があります。 その場合は、`AuthorizationCodeReceived` イベント ハンドラーの `context.HandleCodeRedemption()` メソッドを呼び出す必要があります。
@@ -104,7 +123,7 @@ MSAL では、[OAuth 2 のクライアント資格情報フロー](v2-oauth2-cli
 
 MSAL.NET では、2 種類のクライアント資格情報がサポートされています。 これらのクライアント資格情報は、Azure AD に登録する必要があります。 資格情報は、コード内の機密クライアント アプリケーションのコンストラクターに渡されます。
 
-### <a name="application-secrets"></a>アプリケーション シークレット 
+### <a name="application-secrets"></a>アプリケーション シークレット
 
 ![パスワードを使用する機密クライアントの図](media/msal-authentication-flows/confidential-client-password.png)
 
@@ -113,7 +132,7 @@ MSAL.NET では、2 種類のクライアント資格情報がサポートされ
 1. アプリケーションのシークレットまたはパスワード資格情報を使用してトークンを取得します。
 2. トークンを使用してリソースの要求を行います。
 
-### <a name="certificates"></a>証明書 
+### <a name="certificates"></a>証明書
 
 ![証明書を使用する機密クライアントの図](media/msal-authentication-flows/confidential-client-certificate.png)
 
@@ -126,8 +145,8 @@ MSAL.NET では、2 種類のクライアント資格情報がサポートされ
 - Azure AD に登録されている。
 - コード内の機密クライアント アプリケーションのコンストラクターに渡される。
 
-
 ## <a name="device-code"></a>デバイス コード
+
 MSAL では、ユーザーがスマート TV、IoT デバイス、プリンターなどの入力制限のあるデバイスにサインインできるようにする [OAuth 2 デバイス コード フロー](v2-oauth2-device-code.md)がサポートされています。 Azure AD による対話型認証には Web ブラウザーが必要です。 Web ブラウザーを提供しないデバイスまたはオペレーティング システムでは、ユーザーはデバイス コード フローによって別のデバイス (たとえば、別のコンピューターや携帯電話) を使用して対話形式でサインインできます。
 
 デバイス コード フローを使用すると、アプリケーションでは、これらのデバイスまたはオペレーティング システム用に特別に設計された 2 ステップ プロセスを通じてトークンを取得します。 このようなアプリケーションには、IoT デバイスで実行されているアプリケーションやコマンドライン ツール (CLI) などがあります。 
@@ -149,6 +168,7 @@ MSAL では、ユーザーがスマート TV、IoT デバイス、プリンタ�
 - Microsoft の個人用アカウントは、Azure AD v2.0 エンドポイントではまだサポートされていません (`/common` または `/consumers` テナントを使用することはできません)。
 
 ## <a name="integrated-windows-authentication"></a>統合 Windows 認証
+
 MSAL では、ドメイン参加済みまたは Azure AD 参加済みの Windows コンピューターで実行されているデスクトップまたはモバイル アプリケーションに対して統合 Windows 認証 (IWA) がサポートされています。 IWA を使用して、これらのアプリケーションはトークンをサイレントに (ユーザーからの UI 操作なしで) 取得できます。 
 
 ![統合 Windows 認証の図](media/msal-authentication-flows/integrated-windows-authentication.png)
@@ -186,7 +206,8 @@ IWA フローは、.NET デスクトップ、.NET Core、および Windows ユ�
   
 同意の詳細については、[v2.0 のアクセス許可と同意](v2-permissions-and-consent.md)に関するページを参照してください。
 
-## <a name="usernamepassword"></a>ユーザー名/パスワード 
+## <a name="usernamepassword"></a>ユーザー名/パスワード
+
 MSAL では、[OAuth 2 のリソース所有者のパスワード資格情報許可](v2-oauth-ropc.md)がサポートされています。これにより、アプリケーションでは、ユーザーのパスワードを直接処理することでユーザーをサインインさせることができます。 デスクトップ アプリケーションでは、ユーザー名/パスワードのフローを使ってサイレントにトークンを取得できます。 アプリケーションを使用するときに UI は必要ありません。
 
 ![ユーザー名/パスワードのフローの図](media/msal-authentication-flows/username-password.png)

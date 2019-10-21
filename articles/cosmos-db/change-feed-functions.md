@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/23/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 299799566f0d54cc3fa017b032e15b387fe8cdd5
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 876fef2b597e9a7dfd896f2b9697378e745a07f3
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467917"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709827"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレスなイベントベースのアーキテクチャ
 
@@ -37,7 +37,7 @@ Azure Functions には、[変更フィード](change-feed.md)に接続する最�
 Cosmos DB 用 Azure Functions トリガーを使用した Azure 関数の作成は、すべての Azure Functions IDE および CLI 統合にわたってサポートされるようになりました。
 
 * Visual Studio ユーザー用の [Visual Studio 拡張機能](../azure-functions/functions-develop-vs.md)。
-* Visual Studio Code ユーザー用の [Visual Studio コア拡張機能](https://code.visualstudio.com/tutorials/functions-extension/create-function)。
+* Visual Studio Code ユーザー用の [Visual Studio コア拡張機能](/azure/javascript/tutorial-vscode-serverless-node-01)。
 * 最後に、クロスプラットフォーム IDE に非依存なエクスペリエンスのための [Core CLI ツール](../azure-functions/functions-run-local.md#create-func)。
 
 ## <a name="run-your-trigger-locally"></a>ローカルでトリガーを実行する

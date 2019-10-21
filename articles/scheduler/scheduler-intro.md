@@ -10,17 +10,17 @@ ms.reviewer: klam
 ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 21204e85adf1c68264ea448360c9e1120567ef3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2f418a78f80d65cbb784685804a4cc6790c28b99
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530913"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300900"
 ---
 # <a name="what-is-azure-scheduler"></a>Azure Scheduler とは
 
 > [!IMPORTANT]
-> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、廃止される予定の Azure Scheduler の後継です。 ジョブをスケジュールするには、[Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) を代わりにお使いください。 
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、[廃止される予定](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)の Azure Scheduler の後継です。 Scheduler で設定したジョブを使用し続けるには、できるだけ早く [Azure Logic Apps に移行](../scheduler/migrate-from-scheduler-to-logic-apps.md)してください。
 
 [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) は、宣言でアクションを記述することによって、クラウド内で実行される[ジョブ](../scheduler/scheduler-concepts-terms.md)を作成するのに役立ちます。 その後、サービスはそれらのアクションを自動的にスケジュールして実行します。 たとえば、Azure の内部および外部のサービスを呼び出すことができ (HTTP または HTTPS エンドポイントの呼び出しなど)、Azure Storage キューおよび Azure Service Bus キューまたはトピックにメッセージを送信することもできます。 すぐに、または後で、ジョブを実行することができます。 Scheduler は、[複雑なスケジュールおよび高度な定期実行](../scheduler/scheduler-advanced-complexity.md)に容易に対応できます。 Scheduler は、ジョブを実行するタイミングを指定し、ユーザーが確認できるジョブの結果の履歴を保持し、実行するワークロードを予期したとおり確実にスケジュールします。
 

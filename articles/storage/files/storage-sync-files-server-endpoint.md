@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 3a4a77a9b4cdd30c04de4c4eb9d8731c1ea0616c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 684b30a24e049722cb531cbc84e3a2cd90912ec8
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699250"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932632"
 ---
 # <a name="addremove-an-azure-file-sync-server-endpoint"></a>Azure File Sync サーバー エンドポイントの追加/削除
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -50,10 +50,15 @@ Azure File Sync をエンドツーエンドでデプロイする方法の詳細�
 
 サーバー エンドポイントを削除する前に、すべての階層化されたファイルを確実に呼び戻すには、サーバー エンドポイントでクラウドの階層化を無効にした後、次の PowerShell コマンドレットを実行して、サーバー エンドポイントの名前空間内にあるすべての階層化されたファイルを呼び戻します。
 
-```powershell
+```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
+Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -Order CloudTieringPolicy
 ```
+`-Order CloudTieringPolicy` を指定すると、最後に変更されたファイルから先に呼び戻されます。
+その他のお勧めの省略可能で便利なパラメーターを次に示します。
+* `-ThreadCount` では、並行して呼び戻すことができるファイルの数を指定します。
+* `-PerFileRetryCount` では、現在ブロックされているファイルの呼び戻しを試行する頻度を指定します。
+* `-PerFileRetryDelaySeconds` では、再試行から呼び戻しまでの時間を秒単位で指定します。また、常に前のパラメーターと組み合わせて使用する必要があります。
 
 > [!Note]  
 > サーバーをホストするローカル ボリュームに、階層化されたデータをすべて回収できる空き領域がない場合、`Invoke-StorageSyncFileRecall` コマンドレットは失敗します。  

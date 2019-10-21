@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: d4aae2f2ef9ccbc645647125682d999c11c99ab6
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 600c619134cae18e69b5a200cb03fbebd82dee0f
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69649830"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719886"
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search - よく寄せられる質問 (FAQ)
 
@@ -30,7 +30,7 @@ Azure Search は、複数のデータ ソース、[多数の言語の言語分�
 
 検索テクノロジと比較するときに、Azure Search と Elasticsearch の比較についてお客様からよく質問をいただきます。 検索アプリケーション プロジェクトに Elasticsearch ではなく Azure Search を選択したお客様は、一般的に、Azure Search では主要なタスクが簡単なことや、他の Microsoft テクノロジとの統合が組み込まれている必要があることを理由にしています。
 
-+ Azure Search は、十分な冗長性 (読み取りアクセス用に 2 レプリカ、読み取り/書き込み用に 3 レプリカ) でプロビジョニングすると、サービス レベル アグリーメント (SLA) が 99.9% の完全に管理されているクラウド サービスです。
++ Azure Search は、十分な冗長性 (読み取りアクセス用に 2 レプリカ、読み取り/書き込み用に 3 レプリカ) でプロビジョニングした場合、サービス レベル アグリーメント (SLA) が 99.9% のフル マネージド クラウド サービスです。
 + Microsoft の[自然言語プロセッサ](https://docs.microsoft.com/rest/api/searchservice/language-support)は、最先端の言語分析を提供します。  
 + [Azure Search インデクサー](search-indexer-overview.md)は、初回および増分のインデックス作成に合わせて多様な Azure データ ソースをクロールできます。
 + クエリまたはインデックス作成ボリュームの変動にすばやく反応する必要がある場合、Azure Portal の[スライダー コントロール](search-manage.md#scale-up-or-down)を使用するか [PowerShell スクリプト](search-manage-powershell.md)を実行して、シャード管理を直接パイパスすることができます。  
@@ -42,17 +42,27 @@ Azure Search は、複数のデータ ソース、[多数の言語の言語分�
 
 ## <a name="indexing-operations"></a>インデックス作成操作
 
-### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>インデックスまたはインデックスのスナップショットのバックアップと復元 (またはダウンロードと移動) はできますか?
+### <a name="move-backup-and-restore-indexes-or-index-snapshots"></a>インデックスまたはインデックスのスナップショットを移動、バックアップ、復元しますか?
 
-[インデックス定義はいつでも取得できます](https://docs.microsoft.com/rest/api/searchservice/get-index)が、クラウドで実行されている*設定済み*インデックスのローカル システムにダウンロードするため、または別の Azure Search サービスに移行するためのインデックスの抽出、スナップショット、またはバックアップ/復元機能はありません。
+開発フェーズで、検索サービス間でのインデックスの移動が必要になることがあります。 たとえば、Basic または Free の価格レベルを使用してインデックスを作成し、運用環境で使用するために Standard 以上のレベルにそれを移動することが必要になる場合があります。 
 
-インデックスは、作成したコードから構築および設定され、クラウド内の Azure Search でのみ実行されます。 通常、インデックスを別のサービスに移行するには、新しいエンドポイントを使用するようにコードを編集してから、インデックス作成を再実行します。 インデックスのスナップショットまたはバックアップを作成する機能が必要な場合は、[ユーザーの声](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index)で投票してください。
+また、後で復元するために使用できるファイルにインデックス スナップショットをバックアップしたい場合もあります。 
+
+これらのことはすべて、こちらの [Azure Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)にある **index-backup-restore** サンプル コードを使用して実行できます。 
+
+また、Azure Search REST API を使用して、いつでも[インデックス定義を取得する](https://docs.microsoft.com/rest/api/searchservice/get-index)こと ができます。
+
+現在、Azure portal には、組み込みのインデックスの抽出、スナップショット、バックアップおよび復元の機能はありません。 ただし、今後のリリースで、バックアップおよび復元の機能の追加を検討しています。 この機能への支持を表明するには、[User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index) で投票してください。
 
 ### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>削除されたインデックスまたはサービスは復元できますか?
 
-いいえ、インデックスとサービスは復元できません。 Azure Search インデックスを削除した場合、この操作は最終的なものであり、インデックスを復旧することはできません。 Azure Search サービスを削除すると、サービス内のすべてのインデックスが完全に削除されます。 また、1 つ以上の Azure Search サービスを含む Azure リソース グループを削除すると、すべてのサービスが完全に削除されます。  
+いいえ。 Azure Search インデックスまたはサービスを削除した場合、復旧できません。 Azure Search サービスを削除すると、サービス内のすべてのインデックスが完全に削除されます。 1 つ以上の Azure Search サービスを含む Azure リソース グループを削除すると、すべてのサービスが完全に削除されます。  
 
-インデックス、インデクサー、データ ソース、スキルセットなどのリソースを復元するには、コードからそれらを再作成する必要があります。 インデックスの場合、外部ソースからデータのインデックスを再作成する必要があります。 そのため、元のデータのマスター コピーまたはバックアップを、Azure SQL Database や Cosmos DB などの別のデータ ストアに保持することを強くお勧めします。
+インデックス、インデクサー、データ ソース、スキルセットなどのリソースを再作成するには、コードからそれらを再作成する必要があります。 
+
+インデックスを再作成するには、外部ソースからデータのインデックスを再作成する必要があります。 そのため、元のデータのマスター コピーまたはバックアップを、Azure SQL Database や Cosmos DB などの別のデータ ストアに保持することをお勧めします。
+
+別の方法として、こちらの [Azure Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)の **index-backup-restore** サンプル コードを使用して、インデックス定義とインデックス スナップショットを一連の JSON ファイルにバックアップすることができます。 後で、必要に応じてツールとファイルを使用してインデックスを復元できます。  
 
 ### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>SQL データベース レプリカからインデックスを作成することはできますか (対象: [Azure SQL Database インデクサー](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
 

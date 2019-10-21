@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 1571fc449bd40063c531f9942fe9b51da56f783c
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e276340041e69101190645caad9dbf6de57abd95
+ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70764348"
+ms.lasthandoff: 09/14/2019
+ms.locfileid: "70996511"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -35,7 +35,7 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 
 任意の [Azure Database for PostgreSQL リージョン](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)にマスター サーバーを作成できます。 マスター サーバーは、ペアになっているリージョンまたはユニバーサル レプリカ リージョンにレプリカを持つことができます。 次の図は、マスター リージョンに応じて使用できるレプリカ リージョンを示しています。
 
-[ ![読み取りレプリカ　リージョン](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[ ![読み取りレプリカ リージョン](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>ユニバーサル レプリカ リージョン
 マスター サーバーが配置されている場所に関係なく、次のいずれかのリージョンに読み取りレプリカをいつでも作成できます。 ユニバーサル レプリカ リージョンは次のとおりです。
@@ -173,4 +173,4 @@ PostgreSQL では、読み取りレプリカの `max_connections` パラメー�
 
 ## <a name="next-steps"></a>次の手順
 * [Azure portal で読み取りレプリカを作成および管理する](howto-read-replicas-portal.md)方法を確認する。
-* [Azure CLI で読み取りレプリカを作成および管理する](howto-read-replicas-cli.md)方法を学習します。
+* [Azure CLI と REST API で読み取りレプリカの作成と管理](howto-read-replicas-cli.md)を行う方法について確認する。

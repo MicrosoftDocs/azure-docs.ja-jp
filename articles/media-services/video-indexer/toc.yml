@@ -9,6 +9,8 @@
   items:
     - name: 作業開始
       href: video-indexer-get-started.md
+    - name: ユーザーの招待
+      href: invite-users.md
 - name: チュートリアル
   items:
     - name: Video Indexer API の使用

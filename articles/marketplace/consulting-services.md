@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 4986f888abca94549e921bfe5400d68f6d28c01f
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: e23a83ab3a5b110f74ab4ac203dfc020e8920c24
+ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67876687"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72285987"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Azure Marketplace および AppSource 向けコンサルティング サービス
 Azure Marketplace および AppSource のコンサルティング サービスは、お客様とサービスを結ぶという目標を Microsoft パートナーに提供し、Azure の使用と業務目標を支援して拡張します。 
@@ -24,15 +24,17 @@ Azure Marketplace および AppSource では、Microsoft のシステム イン�
 ## <a name="consulting-services-in-azure-marketplace-vs-appsource-storefront"></a>Azure Marketplace と AppSource Storefront のコンサルティング サービス
 マーケットプレースのネットショップは、対象ユーザーや Microsoft のクラウド製品に合わせて作られており、顧客が必要なものを見つけるのに役立ちます。 各ネットショップでは、公開への投資を最大限に活かすための特別な公開オプションが提供されています。 これらのオプションを以下の表にまとめています。
 
-|         |Azure Marketplace  |AppSource |
+|         |Azure Marketplace  |Microsoft AppSource |
 |---------|---------|---------|
 |**対象ユーザー**   |**IT プロフェッショナルとクラウド開発者**|**ビジネス ユーザー/基幹業務の意思決定者**|
 |ソリューションの関連性     |Azure 用または Azure 上に構築されたテクノロジ アプリ|D365、Power BI、O365、Azure を活用/拡張するビジネス アプリ (アドインまたはアドオンの完成したアプリ)|
-|公開オプション     |問い合わせ、試用版、取引、コンサルティング サービス|問い合わせ、試用版、コンサルティング サービス|
+|公開オプション     |問い合わせ、試用版、取引、Azure 向けサービス|問い合わせ、試用版、Dynamics 365 および Power BI 向けサービス|
 |製品エクスペリエンス      |Microsoft Azure 管理ポータル|Dynamics 365、Office 365、Office クライアント アプリ| 
-|その他      |Azure Stack 経由のオンプレミス公開|Dynamics と Power BI 向けのコンサルティング サービス|
+|その他      |Azure Stack 経由のオンプレミス公開、Azure 向けコンサルティング サービス、Azure 向けマネージド サービス|Dynamics と Power BI 向けのコンサルティング サービス|
 
-Microsoft Dynamics 365、Office 365、Power BI に基づくサービス プランは、AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)を参照してください。 
+Microsoft Dynamics 365 および Power BI に基づくコンサルティング サービス オファーは、Microsoft AppSource に掲載される資格があります。 詳細については、[Microsoft AppSource のコンサルティング サービスの掲載に関するガイドライン](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf)を参照してください。 
+
+Microsoft Azure に基づくコンサルティング サービスおよびマネージド サービス オファーは、Azure Marketplace に掲載される資格があります。 詳細については、[Azure コンサルティング サービスの発行](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer)および[Azure Marketplace へのマネージド サービス オファーの発行](https://docs.microsoft.com/azure/lighthouse/how-to/publish-managed-services-offers)に関する記事を参照してください。
 
 > [!Note]
 > Azure Marketplace のコンサルティング サービスでは、*Azure の技術的なソリューションとサービス*に焦点を当て、**技術者を対象にしたサービスを活用する必要があります。 \* * AppSource のコンサルティング サービスでは、Dynamics 365、Power BI、または PowerApps の品質ソリューションを提供する専門家に向けたプランを活用し、AppSouce 上でのコンサルティング サービス プランの一覧を示しています
@@ -77,7 +79,6 @@ Microsoft Dynamics 365、Office 365、Power BI に基づくサービス プラ�
 |デンマーク   |イタリア   |     ノルウェー          |米国 |
 |フィンランド   |日本   |     ポーランド          
 
-コンサルティング サービスは、一部のリージョンで提供が開始されます。 最初の提供開始は、米国、カナダ、英国、オーストラリアです。 他の国/地域のカタログは、ある程度の数の魅力的なサービス プランがパートナーから提出されて、Microsoft がそれを承認した後に開始されます。
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace-and-appsource"></a>Azure Marketplace および AppSource のコンサルティング サービスに登録する方法
 最初に、マーケットプレースにご自身の企業情報を[登録](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)します。 パブリッシャーは、登録要件の完全なチェックリストについて、「[Marketplace のネットショップで公開元になる](https://docs.microsoft.com/azure/marketplace/become-publisher)」を参照することができます。 

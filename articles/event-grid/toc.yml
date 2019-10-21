@@ -84,7 +84,7 @@
     - name: Resource Manager テンプレート
       href: template-samples.md
     - name: コード サンプル
-      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid'
+      href: 'https://docs.microsoft.com/samples/browse/?term=Event%20Grid'
 - name: 概念
   items:
     - name: Event Grid の概念

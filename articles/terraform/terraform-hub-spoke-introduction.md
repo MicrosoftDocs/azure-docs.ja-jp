@@ -8,13 +8,13 @@ author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 648369d89bd2b5b08171e1f6f5482c81bfba3c66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 5c2a61dd9da6d233a4b1410042f2125a1c300758
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010344"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173442"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>チュートリアル:Azure で Terraform を使用してハブ スポーク ハイブリッド ネットワーク トポロジを作成する
 
@@ -46,7 +46,7 @@ ms.locfileid: "58010344"
 
 ## <a name="benefits-of-the-hub-and-spoke-topology"></a>ハブ スポーク トポロジの利点
 
-ハブ スポーク ネットワーク トポロジは、一般的なサービスを共有しながらワークロードを分離する方法です。 これらのサービスには、ID とセキュリティが含まれます。 ハブは、オンプレミス ネットワークへの中心となる接続ポイントとして機能する VNet です。 スポークはハブとピア接続する VNet です。 共有サービスはハブにデプロイされ、個々のワークロードはスポーク ネットワークにデプロイされます。 ハブ スポーク ネットワーク トポロジのいくつかの利点を次に示します。
+ハブ スポーク ネットワーク トポロジは、一般的なサービスを共有しながらワークロードを分離する方法です。 これらのサービスには、ID とセキュリティが含まれます。 ハブは、オンプレミス ネットワークへの中心となる接続ポイントとして機能する VNet です。 スポークはハブとピア接続する Vnet です。 共有サービスはハブにデプロイされ、個々のワークロードはスポーク ネットワークにデプロイされます。 ハブ スポーク ネットワーク トポロジのいくつかの利点を次に示します。
 
 - **コストの削減**: 複数のワークロードによって共有できる単一の場所にサービスを一元化します。 これらのワークロードには、ネットワーク仮想アプライアンスと DNS サーバーが含まれます。
 - **サブスクリプション数の上限の解消**: 中央のハブに別のサブスクリプションから VNet をピアリングします。
@@ -117,7 +117,7 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
 
 1. 以下のコードをエディターに貼り付けます。
 
-    ```JSON
+    ```hcl
     provider "azurerm" {
         version = "~>1.22"
     }
@@ -137,7 +137,7 @@ Azure プロバイダーを宣言する Terraform 構成ファイルを作成し
 
 1. 以下のコードをエディターに貼り付けます。
 
-    ```JSON
+    ```hcl
     variable "location" {
       description = "Location of the network"
       default     = "centralus"

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: magoedte
-ms.openlocfilehash: 36f70ebaaf3fe6d841ef700561bbd6a200366c84
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1ab49d17ebf10a1ae0277768ddbd1878195d835d
+ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563750"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71212766"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Azure Monitor for Storage (プレビュー) でストレージ サービスを監視する
 
@@ -42,6 +42,10 @@ Azure Monitor for Storage (プレビュー) では、Azure Storage サービス�
 
 >[!NOTE]
 >この機能へのアクセスに対して料金はかからず、構成または有効にした Azure Monitor の基本機能に対してのみ課金されます。[Azure Monitor の価格の詳細](https://azure.microsoft.com/pricing/details/monitor/)に関するページをご覧ください。
+
+>[!NOTE]
+>Azure Monitor for Storage では、[汎用 v1 アカウント](../../storage/common/storage-account-overview.md#general-purpose-v1-accounts)をサポートしていません。
+>
 
 ## <a name="view-from-azure-monitor"></a>Azure Monitor から表示する
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 29a771b93e1d686f7972e7dc4d9e78e5858644d6
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 599b5b075f32294f9e68c776c4a7744283e9c269
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899401"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244042"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>IoT Edge ソリューションを運用環境にデプロイするための準備を行う
 
@@ -83,7 +83,7 @@ IoT Edge デバイスが接続されたら、必ず、以降のデプロイで�
 
 ### <a name="be-consistent-with-upstream-protocol"></a>アップストリーム プロトコルに合わせる
 
-既定の AMQP とは異なるプロトコルを使用するように IoT Edge デバイス上の IoT Edge エージェントを構成した場合は、今後のすべてのデプロイで同じプロトコルを宣言する必要があります。 たとえば、IoT Edge デバイスが、AMQP ポートをブロックするプロキシ サーバーの背後にある場合、WebSocket (AMQPWS) 経由の AMQP で接続するようにデバイスを構成したと考えられます。 デバイスにモジュールをデプロイするときは、IoT Edge エージェントと IoT Edge ハブに対して同じ APQPWS プロトコルを構成します。そうしない場合、既定の AMQP で設定がオーバーライドされ、再度接続することはできません。 
+既定の AMQP とは異なるプロトコルを使用するように IoT Edge デバイス上の IoT Edge エージェントを構成した場合は、今後のすべてのデプロイで同じプロトコルを宣言する必要があります。 たとえば、IoT Edge デバイスが、AMQP ポートをブロックするプロキシ サーバーの背後にある場合、WebSocket (AMQPWS) 経由の AMQP で接続するようにデバイスを構成したと考えられます。 デバイスにモジュールをデプロイするときは、IoT Edge エージェントと IoT Edge ハブに対して同じ AMQPWS プロトコルを構成します。そうしない場合、既定の AMQP で設定がオーバーライドされ、再度接続することはできません。 
 
 IoT Edge エージェントおよび IoT Edge ハブ モジュールには、UpstreamProtocol 環境変数のみを構成する必要があります。 追加モジュールではすべて、ランタイム モジュールに設定されている任意のプロトコルが採用されます。 
 
@@ -177,9 +177,11 @@ Azure IoT Hub および IoT Edge の間の通信チャネルは、常にアウ�
    | mcr.microsoft.com  | 443 | Microsoft コンテナー レジストリ |
    | global.azure-devices-provisioning.net  | 443 | DPS でのアクセス (任意指定) |
    | \*.azurecr.io | 443 | 個人やサード パーティのコンテナー レジストリ |
-   | \*.blob.core.windows.net | 443 | イメージ差分のダウンロード | 
+   | \*.blob.core.windows.net | 443 | BLOB ストレージから Azure Container Registry イメージの差分をダウンロードする  | 
    | \*.azure-devices.net | 5671、8883、443 | IoT Hub でのアクセス |
    | \*.docker.io  | 443 | Docker Hub でのアクセス (任意指定) |
+
+これらのファイアウォール規則の一部は Azure Container Registry から継承されます。 詳細については、「[ファイアウォールの内側から Azure コンテナー レジストリにアクセスする規則を構成する](../container-registry/container-registry-firewall-access-rules.md)」を参照してください。
 
 ### <a name="configure-communication-through-a-proxy"></a>プロキシを介した通信を構成する
 

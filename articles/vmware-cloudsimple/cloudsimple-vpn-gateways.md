@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8b7b02c164021ac084dccf5663122620b2af1b15
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 662fa342b3a18f726b418c496ff3fda937445301
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972886"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244766"
 ---
 # <a name="vpn-gateways-overview"></a>VPN ゲートウェイの概要
 
@@ -63,6 +63,10 @@ VPN ゲートウェイでは、プライベート クラウド上でオンプレ
 | Perfect Forward Secrecy グループ (PFS グループ) | なし | なし | なし |
 | 有効期間 | 1,800 秒 | 1,800 秒 | 1,800 秒 |
 | データ サイズ | 4 GB | 4 GB | 4 GB |
+
+
+> [!IMPORTANT]
+> VPN デバイスでの TCP MSS クランプは 1,200 で設定します。 お使いの VPN デバイスで MSS クランプがサポートされていない場合は、別の方法として、トンネル インターフェイスの MTU を 1,240 バイトに設定できます。
 
 ## <a name="point-to-site-vpn-gateway"></a>ポイント対サイト VPN ゲートウェイ
 

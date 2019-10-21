@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 09/06/2019
-ms.openlocfilehash: 03f16987941f79f9161ccbc172bb2ca1a7139384
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: e735d8832912f5b512b7cfe015ca47efbe641da7
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773206"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000434"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>DTU ベースの購入モデルでのサービス レベル
 
-DTU ベースの購入モデルでのサービス レベルは、固定された量の付属ストレージ、固定されたバックアップ保有期間、および固定された価格を持つさまざまなコンピューティング サイズによって区別されます。 DTU ベースの購入モデルのどのサービス レベルにも、最小限の[ダウンタイム](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)でコンピューティング サイズを変更できる柔軟性があります。ただし、データベースへの接続が短時間失われる切り替え期間があります。これは、再試行ロジックを使用することで軽減できます。 単一データベースとエラスティック プールは、サービス レベルとコンピューティング サイズに基づいて時間単位で課金されます。
+DTU ベースの購入モデルでのサービス レベルは、固定された容量の付属ストレージ、固定されたバックアップ保有期間、および固定された価格を持つさまざまなコンピューティング サイズによって区別されます。 DTU ベースの購入モデルのどのサービス レベルにも、最小限の[ダウンタイム](https://azure.microsoft.com/support/legal/sla/sql-database/v1_2/)でコンピューティング サイズを変更できる柔軟性があります。ただし、データベースへの接続が短時間失われる切り替え期間があります。これは、再試行ロジックを使用することで軽減できます。 単一データベースとエラスティック プールは、サービス レベルとコンピューティング サイズに基づいて時間単位で課金されます。
 
 > [!IMPORTANT]
 > SQL Database Managed Instance は、DTU ベースの購入モデルをサポートしていません。 詳細については、[Azure SQL Database Managed Instance に関するページ](sql-database-managed-instance.md)を参照してください。
@@ -35,7 +35,7 @@ DTU ベースの購入モデルでのサービス レベルは、固定された
 | :-- | --: |--:| --:|
 |対象のワークロード|開発、運用|開発、運用|開発、運用|
 |アップタイム SLA|99.99%|99.99%|99.99%|
-|バックアップ保有期間|7 日|35 日|35 日|
+|最大バックアップ保有期間|7 日|35 日|35 日|
 |CPU|低|低、中、高|中、高|
 |IO スループット (概算) |DTU あたり 1-5 IOPS| DTU あたり 1-5 IOPS | DTU あたり 25 IOPS|
 |IO 待機時間 (概算)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|2 ミリ秒 (読み取り/書き込み)|

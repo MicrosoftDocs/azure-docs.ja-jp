@@ -7,20 +7,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: e0b41850c149ff7095333cf77b780dec1f03b882
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd29753ff14d16081a46eebbc2ea02d94e5985f1
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66234408"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029361"
 ---
 # <a name="azure-data-factory-filter-transformation"></a>Azure Data Factory のフィルター変換
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 フィルター変換では、行のフィルター処理が実行されます。 フィルター条件を定義する式を作成します。 テキスト ボックスをクリックして、式ビルダーを起動します。 式ビルダーの中で、現在のデータ ストリームから次の変換に渡すことを許可する行を制御する (フィルター処理する) フィルター式を作成します。 フィルター変換は SQL ステートメントの WHERE 句と考えてください。
 
-## <a name="filter-on-loanstatus-column"></a>loan_status 列をフィルター処理:
+## <a name="filter-on-loan_status-column"></a>loan_status 列をフィルター処理:
 
 ```
 in([‘Default’, ‘Charged Off’, ‘Fully Paid’], loan_status).

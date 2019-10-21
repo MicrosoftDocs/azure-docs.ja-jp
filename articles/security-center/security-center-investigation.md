@@ -3,9 +3,8 @@ title: Azure Security Center でのインシデントとアラートの調査 | 
 description: このドキュメントは、Azure Security Center の調査機能を使用して、セキュリティ インシデントとアラートを調査する際に役立ちます。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: barbkess
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
@@ -13,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
-ms.author: rkarlin
-ms.openlocfilehash: 476bdd50a56b953585a8a4e9cea05975c9922e0f
-ms.sourcegitcommit: e3b0fb00b27e6d2696acf0b73c6ba05b74efcd85
+ms.author: memildin
+ms.openlocfilehash: 32cc4b01d68ee7a15ae7cfa2259d234cbcd143c4
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68662955"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202048"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-retired"></a>Azure Security Center でのインシデントとアラートの調査 (廃止)
 このドキュメントは、Azure Security Center の調査機能 (プレビュー) を使用して、セキュリティ インシデントとアラートを調査するときに役立ちます。

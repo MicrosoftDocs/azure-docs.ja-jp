@@ -2,17 +2,16 @@
 title: 'サンプル: リソース グループへのタグと値の強制'
 description: このサンプル ポリシー定義は、1 つのリソース グループに 1 つのタグと値を使用することを要求します。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/31/2019
 ms.author: dacoulte
-ms.openlocfilehash: a7a76fbde74ab80f8aa0f5e67e6445504c3aafa5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 00c94aa6077c8a8599b31e9ab37f925fdfebefb0
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276662"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71977169"
 ---
 # <a name="sample---enforce-tag-and-its-value-on-resource-groups"></a>サンプル: リソース グループへのタグと値の強制
 
@@ -50,10 +49,10 @@ ms.locfileid: "59276662"
 
 [!code-json[parameters](../../../../policy-templates/samples/ResourceGroup/enforce-resourceGroup-tags/azurepolicy.parameters.json "Policy parameters (JSON)")]
 
-|Name |Type |フィールド |説明 |
+|名前 |種類 |フィールド |説明 |
 |---|---|---|---|
-|tagName |String |tags |タグの名前 (例: costCenter)|
-|tagValue |String |tags |タグの値 (例: headquarter)|
+|tagName |string |tags |タグの名前 (例: costCenter)|
+|tagValue |string |tags |タグの値 (例: headquarter)|
 
 PowerShell または Azure CLI を使って割り当てを作成するときは、パラメーターの値を JSON として渡すことができます。JSON として渡すパラメーターは、文字列で渡すか、または `-PolicyParameter` (PowerShell) あるいは `--params` (Azure CLI) を使用してファイルで渡します。
 PowerShell では、`-PolicyParameterObject` もサポートされます。この場合は、コマンドレットに Name/Value ハッシュ テーブルを渡す必要があります。**Name** にはパラメーターの名前を、**Value** には、割り当て時に渡す値の配列または単一値を指定します。

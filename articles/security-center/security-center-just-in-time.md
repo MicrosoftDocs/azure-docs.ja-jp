@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 9948f4d9e6287530004b073adf10bb723899e96d
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: a6326b2ea9b4c2247df4f93eba904b7527666131
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910604"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996378"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-In-Time を使用した仮想マシン アクセスの管理
 
@@ -38,7 +38,7 @@ Just-In-Time (JIT) 仮想マシン (VM) アクセスを使用すると、Azure V
 
 Just-In-Time が有効になっている場合、Security Center では NSG ルールの作成により Azure VM への受信トラフィックがロックダウンされます。 ユーザーは VM 上の受信トラフィックがロックダウンされるポートを選択します。 これらのポートは、Just-In-Time ソリューションによって制御されます。
 
-ユーザーが VM へのアクセスを要求すると、VM へのアクセスを正常に要求できるように許可する[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) アクセス許可が、そのユーザーにあるかどうかが、Security Center によってチェックされます。 要求が承認されると、Security Center では、選択したポートおよび要求されたソース IP アドレスまたは範囲への受信トラフィックを指定された時間だけ許可するように、ネットワーク セキュリティ グループ (NSG) および Azure Firewall が自動的に構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 既に確立されているこれらの接続は中断されません。ただし次のようになります。
+ユーザーが VM へのアクセス権を要求すると、そのユーザーに VM への[ロール ベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) のアクセス許可があることが、Security Center によってチェックされます。 要求が承認されると、Security Center では、選択したポートおよび要求されたソース IP アドレスまたは範囲への受信トラフィックを指定された時間だけ許可するように、ネットワーク セキュリティ グループ (NSG) および Azure Firewall が自動的に構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 既に確立されているこれらの接続は中断されません。ただし次のようになります。
 
  > [!NOTE]
  > Azure Firewall の背後にある VM への JIT アクセス要求が承認されると、Security Center は NSG とファイアウォールの両方のポリシー規則を自動的に変更します。 この規則によって、選択したポートおよび要求されたソース IP アドレスまたは範囲への受信トラフィックが指定された時間だけ許可されます。 指定された期間が経過すると、Security Center は ファイアウォールと NSG の規則を以前の状態に復元します。
@@ -118,7 +118,7 @@ ASC から JIT ポリシーを構成し、JIT のポリシー使用して VM へ
 
 ASC から VM へのアクセス権を要求するには、以下の手順に従います。
 
-1. **[Just In Time VM アクセス]** で、 **[構成済み]** タブを選択します。
+1. **[Just-in-time VM access] (Just-In-Time VM アクセス)** で、 **[構成済み]** タブを選択します。
 
 2. **[仮想マシン]** で、アクセスを要求する VM をクリックします。 VM の横にチェックマークが付きます。
 

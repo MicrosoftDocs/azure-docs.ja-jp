@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/15/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 627dab0cb23800664c5fb5b3df9c61f5071d4b87
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c509e061c43c81f72682fb428529a8e72b34066a
+ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65545403"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71056318"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデーモン アプリ - 運用環境への移行
 
@@ -42,7 +42,7 @@ ms.locfileid: "65545403"
 
 以下に、詳細を学習できるリンクをいくつか示します。
 
-### <a name="net"></a>.NET
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 - まだ行っていない場合は、クイック スタートの「[トークンを取得し、コンソール アプリからアプリの ID を使用して Microsoft Graph API を呼び出す](./quickstart-v2-netcore-daemon.md)」を試してください。
 - 以下に関するリファレンス ドキュメント:
@@ -61,10 +61,13 @@ ms.locfileid: "65545403"
 
     ![トポロジ](media/scenario-daemon-app/damon-app-sample-web.svg)
 
-### <a name="python"></a>Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
-MSAL Python は現在、パブリック プレビュー段階です。 詳しい情報については、[MSAL Python クライアント資格情報のリポジトリ内のサンプル](https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/dev/sample/client_credentials_sample.py)に関するページをご覧ください。
+MSAL Python は現在、パブリック プレビュー段階です。
+詳しい情報については、[MSAL Python のリポジトリ内のサンプル](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample)をご覧ください。
 
-### <a name="java"></a>Java
+# <a name="javatabjava"></a>[Java](#tab/java)
 
-MSAL Python は現在、パブリック プレビュー段階です。 詳しい情報については、[MSAL Java のリポジトリ内のサンプル](https://github.com/AzureAD/azure-activedirectory-library-for-java/tree/dev/src/samples)に関するページをご覧ください。
+msal4j (MSAL.Java) は現在、パブリック プレビュー段階です。 詳しい情報については、[MSAL Java のリポジトリ内のサンプル](https://github.com/AzureAD/microsoft-authentication-library-for-java/tree/dev/src/samples)に関するページをご覧ください。
+
+---

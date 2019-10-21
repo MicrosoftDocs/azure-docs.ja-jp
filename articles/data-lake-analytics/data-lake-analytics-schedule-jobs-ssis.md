@@ -1,6 +1,6 @@
 ---
 title: SSIS を使用した Azure Data Lake Analytics U-SQL ジョブのスケジュール設定
-description: SQL Server Integration Services を使用して U-SQL ジョブのスケジュールを設定する方法について説明します。
+description: SQL Server Integration Services を使用し、インライン スクリプトで、あるいは U-SQL クエリ ファイルから U-SQL ジョブのスケジュールを設定する方法について説明します。
 services: data-lake-analytics
 author: yanancai
 ms.author: yanacai
@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 6894486118f69e682353142be04821e1d28440e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0650fcc5023ac57b193fa23b0dedf65113fd64e6
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60814668"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71672889"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>SQL Server Integration Services (SSIS) を使用した U-SQL ジョブのスケジュール設定
 
@@ -171,4 +171,3 @@ U-SQL スクリプトのパラメーターの設定方法については、[こ�
 - [Azure での SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [Integration Services (SSIS) 用の Azure Feature Pack](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
 - [Azure Data Factory を使用した U-SQL ジョブのスケジュール設定](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
-

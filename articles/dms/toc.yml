@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Database Migration Service (DMS) とは
+    - name: Azure Database Migration Service とは何ですか。
       href: dms-overview.md
 - name: クイック スタート
   items:
@@ -10,41 +10,41 @@
       href: quickstart-create-data-migration-service-portal.md
 - name: チュートリアル
   items:
-    - name: オフラインで SQL Server を Azure SQL DB に移行する
+    - name: オフラインで SQL Server から Azure SQL DB 単一データベースに移行する
       href: tutorial-sql-server-to-azure-sql.md
-    - name: オンラインで SQL Server を Azure SQL DB に移行する
+    - name: オンラインで SQL Server から Azure SQL DB 単一データベースに移行する
       href: tutorial-sql-server-azure-sql-online.md
-    - name: オフラインで SQL Server を Azure SQL DB Managed Instance に移行する
+    - name: オフラインで SQL Server を Azure SQL DB マネージド インスタンスに移行する
       href: tutorial-sql-server-to-managed-instance.md
-    - name: オンラインで SQL Server を Azure SQL DB Managed Instance に移行する
+    - name: オンラインで SQL Server を Azure SQL DB マネージド インスタンスに移行する
       href: tutorial-sql-server-managed-instance-online.md
-    - name: オンラインで RDS SQL Server を Azure SQL DB または Azure SQL DB Managed Instance に移行する
+    - name: RDS SQL Server を Azure SQL DB 単一データベースまたは Azure SQL DB マネージド インスタンスにオンラインで移行する
       href: tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md
     - name: オンラインで MySQL を Azure DB for MySQL に移行する
       href: tutorial-mysql-azure-mysql-online.md
     - name: オンラインで RDS MySQL を Azure DB for MySQL に移行する
       href: tutorial-rds-mysql-server-azure-db-for-mysql-online.md
-    - name: オンラインで PostgreSQL を Azure DB for PostgreSQL に移行する
+    - name: オンラインで PostgreSQL を Azure DB for PostgreSQL 単一サーバーに移行する
       href: tutorial-postgresql-azure-postgresql-online.md
-    - name: オンラインで RDS PostgreSQL を Azure DB for PostgreSQL に移行する
+    - name: オンラインで RDS PostgreSQL を Azure DB for PostgreSQL 単一サーバーに移行する
       href: tutorial-rds-postgresql-server-azure-db-for-postgresql-online.md
     - name: オフラインで MongoDB を Azure Cosmos DB Mongo API に移行する
       href: tutorial-mongodb-cosmos-db.md
     - name: オンラインで MongoDB を Azure Cosmos DB Mongo API に移行する
       href: tutorial-mongodb-cosmos-db-online.md
-    - name: オンラインで Oracle を Azure Database for PostgreSQL に移行する
+    - name: オンラインで Oracle を Azure Database for PostgreSQL 単一サーバーに移行する
       href: tutorial-oracle-azure-postgresql-online.md
 - name: ハウツー ガイド
   items:
-    - name: PowerShell を使用して SQL Server から Azure SQL DB に移行する
+    - name: PowerShell を使用して SQL Server から Azure SQL DB 単一データベースに移行する
       href: howto-sql-server-to-azure-sql-powershell.md
-    - name: PowerShell を使用して SQL Server から Azure SQL DB MI に移行する
+    - name: PowerShell を使用して SQL Server から Azure SQL DB マネージド インスタンスに移行する
       href: howto-sql-server-to-azure-sql-mi-powershell.md
     - name: 移行アクティビティの監視
       href: how-to-monitor-migration-activity.md
-    - name: SSIS パッケージを Azure SQL Database に移行する
+    - name: SSIS パッケージを Azure SQL Database 単一データベースに再デプロイする
       href: how-to-migrate-ssis-packages.md
-    - name: SSIS パッケージを Azure SQL Database マネージド インスタンスに移行する
+    - name: SSIS パッケージを Azure SQL Database マネージド インスタンスに再デプロイする
       href: how-to-migrate-ssis-packages-managed-instance.md
 - name: リソース
   expanded: true
@@ -53,7 +53,7 @@
       href: resource-scenario-status.md
     - name: 前提条件の概要
       href: pre-reqs.md
-    - name: Azure SQL DB Managed Instance への移行のネットワーク トポロジ
+    - name: Azure SQL DB マネージド インスタンスへの移行のネットワーク トポロジ
       href: resource-network-topologies.md
     - name: トラブルシューティングと既知の問題
       items:
@@ -61,12 +61,14 @@
           href: known-issues-troubleshooting-dms-source-connectivity.md
         - name: 一般的な問題とエラーのトラブルシューティング
           href: known-issues-troubleshooting-dms.md
-        - name: 既知の問題 - Azure SQL DB へのオンライン移行
+        - name: 既知の問題 - Azure SQL DB 単一データベースへのオンライン移行
           href: known-issues-azure-sql-online.md
         - name: 既知の問題 - Azure DB for MySQL へのオンライン移行
           href: known-issues-azure-mysql-online.md
-        - name: 既知の問題 - Azure DB for PostgreSQL へのオンライン移行
+        - name: 既知の問題 - PostgreSQL から Azure DB for PostgreSQL 単一サーバーへのオンライン移行
           href: known-issues-azure-postgresql-online.md
+        - name: 既知の問題 - Oracle から Azure DB for PostgreSQL 単一サーバーへのオンライン移行
+          href: known-issues-oracle-azure-postgresql-online.md
     - name: ビデオ
       items:
         - name: データベース移行ガイドを使用する
@@ -89,7 +91,7 @@
       items:
         - name: データ移行シナリオに利用できるサービスとツール
           href: dms-tools-matrix.md
-        - name: データベース移行ガイド
+        - name: Azure データベースの移行ガイド
           href: 'https://aka.ms/datamigration'
         - name: Data Migration Assistant
           href: 'https://aka.ms/dma'
@@ -97,6 +99,8 @@
           href: 'https://aka.ms/ssma'
         - name: Database Experimentation Assistant
           href: 'https://aka.ms/dea-docs'
+        - name: データ アクセス移行ツールキット
+          href: 'https://marketplace.visualstudio.com/items?itemName=ms-databasemigration.data-access-migration-toolkit'
     - name: よく寄せられる質問
       href: faq.md
     - name: UserVoice のフィードバック

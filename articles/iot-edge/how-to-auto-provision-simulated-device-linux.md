@@ -9,30 +9,37 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: b48455b6ea9c1cd74e94c10d8f9f938c20512c02
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 228851a0d528bfb222e5aa19880f856424e95ad1
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68414574"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828126"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Linux 仮想マシン上で、仮想 TPM を使用する IoT Edge デバイスを作成し、プロビジョニングする
 
-Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](../iot-dps/concepts-auto-provisioning.md)」を読んでから先に進んでください。 
+Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](../iot-dps/concepts-auto-provisioning.md)」を読んでから先に進んでください。
 
-この記事では、シミュレートされた IoT Edge デバイスの自動プロビジョニングを次の手順でテストする方法を示します。 
+この記事では、シミュレートされた IoT Edge デバイスの自動プロビジョニングを次の手順でテストする方法を示します。
 
 * ハードウェアのセキュリティ用のシミュレートされたトラステッド プラットフォーム モジュール (TPM) がある Hyper-V 内に Linux 仮想マシン (VM) を作成する。
 * IoT Hub Device Provisioning Service (DPS) のインスタンスを作成する。
 * デバイスの個別登録を作成する。
 * IoT Edge ランタイムをインストールし、デバイスを IoT Hub に接続する。
 
-この記事の手順は、テスト目的のものです。
+> [!NOTE]
+> DPS で TPM 構成証明を使用する場合は、TPM 2.0 が必要です。これは、グループではなく個別の登録を作成する場合にのみ使用できます。
+
+> [!TIP]
+> この記事では、TPM シミュレーターを使用して DPS プロビジョニングをテストする方法について説明しますが、その多くは、Azure Certified for IoT デバイスである [Infineon OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board) などの物理 TPM ハードウェアに適用されます。
+>
+> 物理デバイスを使用している場合は、この記事の「[物理デバイスからプロビジョニング情報を取得する](#retrieve-provisioning-information-from-a-physical-device)」セクションに進むことができます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Hyper-V 対応の](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) Windows 開発マシン。 この記事では、Ubuntu Server VM を実行中の Windows 10 を使用します。 
-* アクティブな IoT Hub。 
+* [Hyper-V 対応の](https://docs.microsoft.com/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v) Windows 開発マシン。 この記事では、Ubuntu Server VM を実行中の Windows 10 を使用します。
+* アクティブな IoT Hub。
+* シミュレートされた TPM を使用している場合、["C++ によるデスクトップ開発"](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) ワークロードが有効になった [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 以降。
 
 ## <a name="create-a-linux-virtual-machine-with-a-virtual-tpm"></a>仮想 TPM がある Linux 仮想マシンを作成する
 
@@ -72,7 +79,7 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 
 ### <a name="enable-virtual-tpm"></a>仮想 TPM を有効にする
 
-VM が作成されたら、その設定を開いて、デバイスの自動プロビジョニングに使用する仮想トラステッド プラットフォーム モジュール (TPM) を有効化します。 
+VM が作成されたら、その設定を開いて、デバイスの自動プロビジョニングに使用する仮想トラステッド プラットフォーム モジュール (TPM) を有効化します。
 
 1. 仮想マシンを選択し、その **[設定]** を開きます。
 
@@ -86,18 +93,48 @@ VM が作成されたら、その設定を開いて、デバイスの自動プ�
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>仮想マシンを起動し、TPM データを収集する
 
-仮想マシンで、デバイスの**登録 ID** と**保証キー**を取得するために使用できる C SDK ツールをビルドします。 
+仮想マシンで、デバイスの**登録 ID** と**保証キー**を取得するために使用できるツールをビルドします。
 
 1. 仮想マシンを起動して接続します。
 
-2. 仮想マシン内のプロンプトに従ってインストール プロセスを実行し、コンピューターを再起動します。 
+1. 仮想マシン内のプロンプトに従ってインストール プロセスを実行し、コンピューターを再起動します。
 
-3. VM にサインインし、[Linux 開発環境の設定](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)に関するセクションの手順に従って、Azure IoT device SDK for C をインストールしてビルドします。 
+1. VM にサインインし、[Linux 開発環境の設定](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)に関するセクションの手順に従って、Azure IoT device SDK for C をインストールしてビルドします。
 
    >[!TIP]
    >この記事の過程では、仮想マシンとの間でコピー/貼り付けを行います。Hyper-V Manager 接続アプリケーション経由でこの操作を行うことは容易ではありません。 Hyper-V Manager 経由でいったん仮想マシンに接続して、その IP アドレス: `ifconfig` を取得することをお勧めします。 その後、この IP アドレスを使用して、SSH 経由で接続できます: `ssh <username>@<ipaddress>`。
 
-4. 次のコマンドを実行して、デバイスのプロビジョニング情報を取得する C SDK ツールをビルドします。 
+1. 次のコマンドを実行して、TPM シミュレーターからデバイスのプロビジョニング情報を取得する SDK ツールをビルドします。
+
+   ```bash
+   cd azure-iot-sdk-c/cmake
+   cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..
+   cd provisioning_client/tools/tpm_device_provision
+   make
+   sudo ./tpm_device_provision
+   ```
+
+1. コマンド ウィンドウから、`azure-iot-sdk-c` ディレクトリに移動して、TPM シミュレーターを実行します。 これは、ソケットでポート 2321 とポート 2322 をリッスンします。 このコマンド ウィンドウは閉じないでください。このシミュレーターを実行状態にしておく必要があります。
+
+   `azure-iot-sdk-c` ディレクトリで次のコマンドを実行して、シミュレーターを起動します。
+
+   ```bash
+   ./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe
+   ```
+
+1. Visual Studio を使用して、`cmake` ディレクトリに生成された `azure_iot_sdks.sln` という名前のソリューションを開き、 **[ビルド]** メニューの **[ソリューションのビルド]** コマンドを使用してビルドします。
+
+1. Visual Studio の "**ソリューション エクスプローラー**" ウィンドウで、**Provision\_Tools** フォルダーに移動します。 **tpm_device_provision** プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** を選択します。
+
+1. **[デバッグ]** メニューのいずれかの **[開始]** コマンドを使用してソリューションを実行します。 出力ウィンドウには TPM シミュレーターの**登録 ID** と**保証キー**が表示されます。後でデバイスの個別登録を作成するときに使用するため、これをコピーする必要があります。この (登録 ID と保証キーが表示されている) ウィンドウは閉じることができますが、TPM シミュレーター ウィンドウは実行状態にしておく必要があります。
+
+## <a name="retrieve-provisioning-information-from-a-physical-device"></a>物理デバイスからプロビジョニング情報を取得する
+
+デバイスで、デバイスのプロビジョニング情報を取得するために使用できるツールをビルドします。
+
+1. [Linux 開発環境の設定](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)に関するセクションの手順に従って、Azure IoT device SDK for C をインストールしてビルドします。
+
+1. 次のコマンドを実行して、TPM デバイスからデバイスのプロビジョニング情報を取得する SDK ツールをビルドします。
 
    ```bash
    cd azure-iot-sdk-c/cmake
@@ -106,10 +143,8 @@ VM が作成されたら、その設定を開いて、デバイスの自動プ�
    make
    sudo ./tpm_device_provision
    ```
-   >[!TIP]
-   >TPM シミュレーターでテストしている場合は、追加のパラメーター `-Duse_tpm_simulator:BOOL=ON` を使用して有効にする必要があります。 完全なコマンドは `cmake -Duse_prov_client:BOOL=ON -Duse_tpm_simulator:BOOL=ON ..` となります。
 
-5. **登録 ID**と**保証キー**の値をコピーします。 これらの値を使用して、DPS でのデバイスの個別登録を作成します。 
+1. **登録 ID** と**保証キー**の値をコピーします。 これらの値を使用して、DPS でのデバイスの個別登録を作成します。
 
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を設定する
 
@@ -130,15 +165,18 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 3. **[Add individual enrollment]\(個別登録の追加\)** を選択し、登録を構成する次の手順を完了します。  
 
    1. **[メカニズム]** で **[TPM]** を選択します。 
-   
+
    2. 仮想マシンからコピーした**保証キー**と**登録 ID** を指定します。
-   
+
+      > [!TIP]
+      > 物理 TPM デバイスを使用している場合は、各 TPM チップに固有であり、それに関連付けられている TPM チップの製造元から取得される**保証キー**を判断する必要があります。 たとえば保証キーの SHA-256 ハッシュを作成することによって、TPM デバイスの一意の**登録 ID** を派生させることができます。
+
    3. **[True]** を選択して、この仮想マシンが IoT Edge デバイスであることを宣言します。 
-   
+
    4. デバイスの接続先になるリンクされた **IoT Hub** を選択します。 複数のハブを選択でき、デバイスは、選択した割り当てポリシーに従ってそれらのハブの 1 つに割り当てられます。 
-   
+
    5. 必要に応じて、デバイス ID を指定します。 デバイス ID を使用して、個々のデバイスをモジュール展開のターゲットにすることができます。 デバイス ID を指定しなかった場合は、登録 ID が使用されます。
-   
+
    6. 必要に応じて、 **[デバイス ツインの初期状態]** にタグ値を追加します。 タグを使用して、デバイス グループをモジュール展開のターゲットにすることができます。 例: 
 
       ```json
@@ -216,35 +254,6 @@ IoT Edge ランタイムに TPM へのアクセス権を付与するには、sys
    ```
 
    適切なアクセス許可が適用されない場合は、コンピューターを再起動して udev を更新してみてください。 
-
-8. IoT Edge ランタイム上書きファイルを開きます。 
-
-   ```bash
-   sudo systemctl edit iotedge.service
-   ```
-
-9. TPM 環境変数を確立する次のコードを追加します。
-
-   ```input
-   [Service]
-   Environment=IOTEDGE_USE_TPM_DEVICE=ON
-   ```
-
-10. ファイルを保存して終了します。
-
-11. 上書きが成功したことを確認します。
-
-    ```bash
-    sudo systemctl cat iotedge.service
-    ```
-
-    成功の出力では、**iotedge** の既定のサービス変数が表示された後、**override.conf** に設定した環境変数が表示されます。 
-
-12. 設定を再度読み込みます。
-
-    ```bash
-    sudo systemctl daemon-reload
-    ```
 
 ## <a name="restart-the-iot-edge-runtime"></a>IoT Edge ランタイムを再起動する
 

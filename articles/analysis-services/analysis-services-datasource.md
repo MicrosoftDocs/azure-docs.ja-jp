@@ -2,18 +2,17 @@
 title: Azure Analysis Services でサポートされるデータ ソース | Microsoft Docs
 description: Azure Analysis Services のデータ モデルでサポートされるデータ ソースについて説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 10/16/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 096f8b3aa6ae66e65bbbd9ea6e2204af619199dd
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: c6043d9e18c364073ad1ea46e26335577e0ec3b2
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899423"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72512447"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -21,7 +20,7 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 
 ## <a name="azure-data-sources"></a>Azure データ ソース
 
-|データソース  |メモリ内  |DirectQuery  |
+|データ ソース  |メモリ内  |DirectQuery  |
 |---------|---------|---------|
 |Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   はい      |    はい      |
 |Azure SQL Data Warehouse     |   はい      |   はい       |
@@ -42,13 +41,13 @@ Visual Studio のデータ ファイル指定ウィザードまたはインポ�
 **プロバイダー**   
 Azure データ ソースに接続するメモリ内モデルおよび DirectQuery モデルは、.NET Framework SQL Server 用データ プロバイダーを使います。
 
-## <a name="on-premises-data-sources"></a>オンプレミス データ ソース
+## <a name="other-data-sources"></a>他のデータ ソース
 
 Azure AS サーバーからオンプレミスのデータ ソースに接続するには、オンプレミスのゲートウェイが必要です。 ゲートウェイを使うときは、64 ビットのプロバイダーが必要です。
 
 ### <a name="in-memory-and-directquery"></a>メモリ内と DirectQuery
 
-|データソース | メモリ内のプロバイダー | DirectQuery プロバイダー |
+|データ ソース | メモリ内のプロバイダー | DirectQuery プロバイダー |
 |  --- | --- | --- |
 | SQL Server |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework SQL Server 用データ プロバイダー | SQL Server 用の .NET Framework データ プロバイダー |
 | SQL Server Data Warehouse |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework SQL Server 用データ プロバイダー | SQL Server 用の .NET Framework データ プロバイダー |
@@ -58,7 +57,7 @@ Azure AS サーバーからオンプレミスのデータ ソースに接続す�
 
 ### <a name="in-memory-only"></a>メモリ内のみ
 
-|データソース  |  
+|データ ソース  |  
 |---------|
 |Access データベース     |  
 |Active Directory<sup>[1](#tab1400b)</sup>     |  
@@ -113,6 +112,10 @@ Azure Analysis Services のデータ モデルでは、特定のデータ ソー
 クラウド データ ソースの場合:
 
 * SQL 認証を使っている場合、権限借用にはサービス アカウントを使う必要があります。
+
+## <a name="oauth-credentials"></a>OAuth 資格情報
+
+1400 以上の互換性レベルの表形式モデルでは、Azure SQL Database、Azure SQL Data Warehouse、Dynamics 365、SharePoint リストで OAuth 資格情報がサポートされています。 Azure Analysis Services では、実行時間の長い更新操作のタイムアウトを避けるために、OAuth データ ソースのトークン更新を管理します。 有効なトークンを生成するには、SSMS を使用して資格情報を設定します。
 
 ## <a name="next-steps"></a>次の手順
 [オンプレミス ゲートウェイ](analysis-services-gateway.md)   

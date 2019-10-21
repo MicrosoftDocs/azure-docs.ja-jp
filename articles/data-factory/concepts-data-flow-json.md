@@ -6,16 +6,16 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: cde42dda47d54c03c50895bc625f99c9350b53e3
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 37db3e153e8dfcbc1120fcb1f6d2f77187edc78e
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210513"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029668"
 ---
 # <a name="mapping-data-flow-json-handling"></a>Mapping Data Flow での JSON の処理
 
-[!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
+
 
 ## <a name="creating-json-structures-in-expression-editor"></a>式エディターでの JSON 構造の作成
 ### <a name="derived-column-transformation"></a>派生列変換
@@ -50,7 +50,7 @@ JSON 構造を手動で追加するには、新しい列を追加し、エディ
 }
 ```
 
-#### <a name="sample-manual-dsl"></a>サンプルの手動 DSL
+#### <a name="sample-manual-script-for-complete-hierarchical-definition"></a>完全な階層定義のサンプル手動スクリプト
 ```
 @(
     title=Title,
@@ -144,7 +144,7 @@ File3.json
 { "json": "record 3" }
 ```
 
-# <a name="higher-order-functions"></a>高階関数
+## <a name="higher-order-functions"></a>高階関数
 ## <a name="filter"></a>filter
 指定された述語を満たさない要素を配列から除外します。 filter は、述語関数の 1 つの要素への参照を #item として予期します。
 

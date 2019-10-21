@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: c566dc28338a47c1bf24066436c21544eb7c5c7d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9c97723687484e8af82d63b6fb4999401a69fb2c
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072448"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71958540"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -218,7 +218,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> バックアップと復元の操作は、PowerShell の _Backup-AzApiManagement_ コマンドと _Restore-AzApiManagement_ コマンドでも実行できます。
+> バックアップと復元の操作は、それぞれ PowerShell の [_Backup-AzApiManagement_](/powershell/module/az.apimanagement/backup-azapimanagement) コマンドと [_Restore-AzApiManagement_](/powershell/module/az.apimanagement/restore-azapimanagement) コマンドでも実行できます。
 
 ## <a name="next-steps"></a>次の手順
 

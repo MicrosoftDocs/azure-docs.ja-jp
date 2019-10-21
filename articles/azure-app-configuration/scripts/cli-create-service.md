@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7833b5d6b9b94ddcd4b94d96201ccc85497f2529
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8a58b73f3f3acb8d7c6ced9e0086687b54fff734
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446930"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029798"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure App Configuration ストアの作成
 
@@ -51,6 +51,7 @@ az group create --name $myResourceGroupName --location eastus
 # Create the Azure AppConfig Service resource and query the hostName
 appConfigHostname=$(az appconfig create \
   --name $myAppConfigStoreName \
+  --location eastus \
   --resource-group $myResourceGroupName \
   --query hostName \
   -o tsv)

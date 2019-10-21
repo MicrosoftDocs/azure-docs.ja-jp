@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 07/04/2019
-ms.openlocfilehash: 17f1b36ba5d5b699cce621db3917ef92654047ff
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.date: 09/25/2019
+ms.openlocfilehash: a73f3eefbf76b2ea24f34ed496ff45c5d2467e3e
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565574"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266354"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms"></a>チュートリアル:DMS を使用して MongoDB を Azure Cosmos DB の MongoDB 用 API にオンラインで移行する
 
@@ -132,6 +132,9 @@ Azure Database Migration Service を使用して、MongoDB のオンプレミス
 ## <a name="specify-source-details"></a>ソース詳細を指定する
 
 1. **[ソースの詳細]** 画面で、ソース MongoDB サーバーの接続の詳細を指定します。
+
+   > [!IMPORTANT]
+   > Azure Database Migration Service では、Azure Cosmos DB はソースとしてサポートされていません。
 
     ソースへの接続には、3 つのモードがあります。
    * **標準モード**: 完全修飾ドメイン名または IP アドレス、ポート番号、および接続の資格情報を受け取ります。

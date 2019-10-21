@@ -5,15 +5,15 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 02/05/2019
+ms.date: 09/11/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: fef6122eceda213fb6353ada53033d0d1e27fd7e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ccb5e40738680181e7339b8652d029597c7d0bd4
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509114"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70935150"
 ---
 1. [Firebase コンソール](https://firebase.google.com/console/)にサインインします。 Firebase プロジェクトがまだない場合は、新しく作成します。
 2. プロジェクトを作成した後、 **[Add Firebase to your Android app]\(Android アプリに Firebase を追加する\)** を選択します。 
@@ -33,10 +33,11 @@ ms.locfileid: "67509114"
         ```
         classpath 'com.google.gms:google-services:4.0.1'
         ```
-    2. アプリ レベルの build.gradle ファイル (&lt;project&gt;/&lt;app-module&gt;/build.gradle) で、**dependencies** セクションに次のステートメントを追加します。 
+    2. アプリレベルの build.gradle ファイル (&lt;project&gt;/&lt;app-module&gt;/build.gradle) で、**dependencies** セクションに次のステートメントを追加します。 
 
         ```
-        implementation 'com.google.firebase:firebase-core:16.0.1'
+        implementation 'com.google.firebase:firebase-core:16.0.8'
+        implementation 'com.google.firebase:firebase-messaging:17.3.4'
         ```
 
     3. アプリ レベルの build.gradle ファイルの最後の dependencies セクションの末尾に次の行を追加します。 

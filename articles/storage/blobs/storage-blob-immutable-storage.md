@@ -4,19 +4,19 @@ description: Azure Storage では、BLOB (オブジェクト) ストレージの
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/01/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: aa6bee9cceffc0252dd39d85ebe9d70625e33419
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 633c5944f7d813b78f7a0c9b71266d4012fd72cf
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036403"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71673395"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
+# <a name="store-business-critical-data-in-azure-blob-storage-immutably"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に不変状態で保管する 
 
 Azure Blob Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータ オブジェクトを WORM (Write Once Read Many) 状態で保存できます。 この状態では、ユーザーが指定した期間、データを消去および変更できなくなります。 保持間隔の間、BLOB オブジェクトの作成と読み取りは可能ですが、変更または削除することはできません。 不変ストレージは、Azure リージョン内の General Purpose V2 および Blob Storage アカウントに対して有効になっています。
 
@@ -42,7 +42,7 @@ Azure Blob Storage の不変ストレージを使用すると、ユーザーは�
 
 - **コンテナー レベルの構成:** ユーザーは、時間ベースのリテンション ポリシーと訴訟ホールド タグをコンテナー レベルで構成できます。 ユーザーは、コンテナー レベルのシンプルな設定を使用して、時間ベースのリテンション ポリシーの作成とロック、保持間隔の延長、訴訟ホールドの設定とクリアなどを行うことができます。 これらのポリシーは、コンテナー内の既存および新規のすべての BLOB に適用されます。
 
-- **監査ログのサポート**:各コンテナーには、ポリシー監査ログが含まれています。 ロックされている時間ベースのリテンション ポリシーに対して最大 7 つの時間ベースのリテンション コマンドが表示されます。また、ユーザー ID、コマンドの種類、タイム スタンプ、保持間隔が含まれています。 訴訟ホールドの場合、ログにはユーザー ID、コマンドの種類、タイム スタンプ、訴訟ホールド タグが含まれます。 このログは、SEC 17a-4(f) 規制ガイドラインに従い、ポリシーの有効期間の間、保持されます。 コントロール プレーンのすべてのアクティビティのより包括的なログは、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)に表示されます。有効になっているときは [Azure 診断ログ](../../azure-monitor/platform/diagnostic-logs-overview.md)が保持され、データ プレーン操作が表示されます。 規制や他の目的で必要になる可能性のあるログは、ユーザーが永続的に保存する必要があります。
+- **監査ログのサポート**:各コンテナーには、ポリシー監査ログが含まれています。 ロックされている時間ベースのリテンション ポリシーに対して最大 7 つの時間ベースのリテンション コマンドが表示されます。また、ユーザー ID、コマンドの種類、タイム スタンプ、保持間隔が含まれています。 訴訟ホールドの場合、ログにはユーザー ID、コマンドの種類、タイム スタンプ、訴訟ホールド タグが含まれます。 このログは、SEC 17a-4(f) 規制ガイドラインに従い、ポリシーの有効期間の間、保持されます。 コントロール プレーンのすべてのアクティビティのより包括的なログは、[Azure アクティビティ ログ](../../azure-monitor/platform/activity-logs-overview.md)に表示されます。有効になっているときは [Azure 診断ログ](../../azure-monitor/platform/resource-logs-overview.md)が保持され、データ プレーン操作が表示されます。 規制や他の目的で必要になる可能性のあるログは、ユーザーが永続的に保存する必要があります。
 
 ## <a name="how-it-works"></a>動作のしくみ
 

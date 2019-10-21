@@ -1,68 +1,205 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure の管理 - ガバナンス
+### YamlMime:Hub
+title: Azure ガバナンスのドキュメント
+summary: 大手クラウド プロバイダーの中でも最も先進的なガバナンス機能を揃えています。
+brand: azure
 metadata:
-  title: Azure の管理 - ガバナンス
-  description: 明示的な設計と規則を通して一貫性のある環境の管理を行うために使用できる概念および Azure サービスと、コンプライアンスを監査する方法について学習します。
-  author: DCtheGeek
-  manager: carmonm
+  title: Azure ガバナンスのドキュメント
+  description: 大手クラウド プロバイダーの中でも最も先進的なガバナンス機能を揃えています。
   ms.service: governance
-  ms.topic: landing-page
-  ms.date: 05/07/2019
+  ms.topic: hub-page
+  ms.collection: collection
+  author: DCtheGeek
   ms.author: dacoulte
-abstract:
-  description: Azure ガバナンスは、さまざまな Azure リソースの大規模な管理を有効にするように設計された概念およびサービスのコレクションです。 これらのサービスを使用すると、サブスクリプションを論理的な方法で整理および構造化し、再利用可能な Azure ネイティブ リソース パッケージを作成およびデプロイすることで、リソースの定義、監査、修復など、さまざまな処理を実行できます。 これらの概念およびサービスの詳細と、現在の環境でそれらを有効化して使用する方法については、以下のページをご覧ください。
-  aside:
-    image:
-      alt: null
-      height: 225
-      src: ./media/video.png
-      width: 250
-    title: 'Azure ガバナンスによってリソースの制御とスピードを実現 (1:47)'
-    href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
-    width: 250
-sections:
-  - title: コンポーネントとサービス
-  - items:
-      - type: list
-        style: cards
-        className: cardsD
-        columns: 2
-        items:
-          - href: ./management-groups/overview
-            html: <p>構造化された方法で他のガバナンス サービスのデプロイをサポートする論理階層内で、サブスクリプションをグループ化して整理する方法について学習します。<br /></p>
-            image:
-              alt: 管理グループ
-              src: ./media/management-groups-illustration.svg
-            title: 管理グループ
-          - href: ./resource-graph/
-            html: <p>(Azure CLI と Azure PowerShell をサポートする) 強力なコマンド ライン ツールを使用して、Azure リソースに関する複雑な詳細情報を迅速にクエリします。 以前は、これらのリソースを大規模に検出するために、複雑で反復的なスクリプトを必要としていた情報を検索して公開します。</p>
-            image:
-              alt: リソース グラフ
-              src: ./media/resource-graph-illustration.svg
-            title: リソース グラフ
-          - href: ./policy/
-            html: <p>環境内のリソースの基準を定義し、適用します。 不要なリソースの作成を防止し、新しいリソースを追加の要素により強化して、環境内に既に存在するリソースを監査して修復します。</p>
-            image:
-              alt: ポリシー
-              src: ./media/policy-illustration.svg
-            title: ポリシー
-          - href: ./blueprints/
-            html: <p>一貫性のある反復可能な環境を作成するためにサブスクリプションに動的にデプロイできる、<i>成果物</i>の Azure ネイティブ パッケージ (リソース グループ、ポリシー、ロールの割り当て、Resource Manager テンプレートなど) を作成します。</p>
-            image:
-              alt: ブループリント
-              src: ./media/blueprints-illustration.svg
-            title: ブループリント
-  - title: クラウド導入フレームワーク
-  - items:
-      - type: list
-        style: cards
-        className: cardsZ
-        columns: 3
-        items:
-          - href: /azure/architecture/cloud-adoption/index?toc=/azure/governance/toc.json
-            html: <p>クラウド導入フレームワークは Microsoft Azure の技術的なガイダンスを提供します。 お客様がまだクラウド ベンダーの選択段階にある可能性があるため、このフレームワークでは、より優れた決断を下せるように、可能な場合にはクラウドにとらわれないガイダンスを提供します。</p>
-            title: 概要
-          - href: /azure/architecture/cloud-adoption/governance/index?toc=/azure/governance/toc.json
-            html: <p>オンプレミスの IT 環境を管理する既存のポリシーを持つ組織の場合、クラウド ガバナンスはそれらのビジネス ポリシーを補完する必要があります。<br /><br /></p>
-            title: ガバナンスの概要
+  ms.date: 09/10/2019
+  ms.openlocfilehash: 926220dc7260798ed9b2ffd9f6317fc97be198ac
+  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72529514"
+highlightedContent:
+  items:
+  - title: ガバナンスの概要
+    itemType: overview
+    url: ./azure-management.md
+  - title: ガバナンスに関する YouTube チャンネル
+    itemType: video
+    url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
+  - title: クラウド導入フレームワークのガバナンス
+    itemType: architecture
+    url: /azure/architecture/cloud-adoption/governance
+  - title: Azure Policy でインフラストラクチャの標準を適用して監視する
+    itemType: learn
+    url: /learn/modules/intro-to-governance/
+productDirectory:
+  title: コンポーネントとサービス
+  items:
+  - title: Azure 管理グループ
+    imageSrc: ./media/management-groups.svg
+    links:
+    - url: ./management-groups/overview.md
+      text: 概要
+    - url: ./management-groups/index.yml
+      text: 詳細を表示 >
+  - title: Azure Policy
+    imageSrc: ./media/azure-policy.svg
+    links:
+    - url: ./policy/overview.md
+      text: 概要
+    - url: ./policy/how-to/get-compliance-data.md
+      text: コンプライアンスの評価
+    - url: ./policy/concepts/rego-for-aks.md
+      text: AKS 構成の管理
+    - url: ./policy/concepts/guest-configuration.md
+      text: VM 構成の管理
+    - url: ./policy/index.yml
+      text: 詳細を表示 >
+  - title: Azure Blueprint
+    imageSrc: ./media/azure-blueprints.svg
+    links:
+    - url: ./blueprints/overview.md
+      text: 概要
+    - url: ./blueprints/tutorials/protect-new-resources.md
+      text: リソースの保護
+    - url: ./blueprints/index.yml
+      text: 詳細を表示 >
+  - title: Azure Resource Graph
+    imageSrc: ./media/azure-resource-graph.svg
+    links:
+    - url: ./resource-graph/overview.md
+      text: 概要
+    - url: ./resource-graph/concepts/explore-resources.md
+      text: Azure リソースの探索
+    - url: ./resource-graph/how-to/get-resource-changes.md
+      text: 変更を追跡する
+    - url: ./resource-graph/index.yml
+      text: 詳細を表示 >
+  - title: Cost Management
+    imageSrc: ./media/cost-management.svg
+    links:
+    - url: ../cost-management/overview-cost-mgt.md
+      text: 概要
+    - url: ../cost-management/aws-integration-manage.md
+      text: AWS のコストと使用量の管理
+    - url: ../cost-management/index.yml
+      text: 詳細を表示 >
+tools:
+  title: サンプル
+  summary: ポリシー定義、コンプライアンス ブループリント、リソース クエリなど
+  items:
+  - title: Azure Policy
+    imageSrc: ./media/azure-policy.svg
+    url: ./policy/samples/index.md
+  - title: Azure Blueprint
+    imageSrc: ./media/azure-blueprints.svg
+    url: ./blueprints/samples/index.md
+  - title: Azure Resource Graph
+    imageSrc: ./media/azure-resource-graph.svg
+    url: ./resource-graph/samples/starter.md
+  - title: Cost Management
+    imageSrc: ./media/cost-management.svg
+    url: https://github.com/Azure-Samples/Cost-Management-Samples
+additionalContent:
+  sections:
+  - title: 開発者向けリソース
+    items:
+    - title: 管理グループ
+      links:
+      - text: Azure CLI
+        url: /cli/azure/ext/managementgroups/?view=azure-cli-latest
+      - text: Azure PowerShell
+        url: /powershell/module/az.resources/#resources
+      - text: Azure SDK for .NET
+        url: /dotnet/api/overview/azure/managementgroups
+      - text: Azure SDK For Node
+        url: /javascript/api/azure-arm-resource/managementgroups
+    - title: Azure Policy
+      links:
+      - text: Azure CLI
+        url: /cli/azure/policy
+      - text: Azure PowerShell
+        url: /powershell/module/az.resources/#policies
+        note: (ポリシー)
+      - text: Azure PowerShell
+        url: /powershell/module/az.policyinsights#policy_insights
+        note: (ポリシーの分析情報)
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.GuestConfiguration
+        note: (ゲスト構成)
+      - text: Azure SDK for .NET
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+        note: (割り当て)
+      - text: Azure SDK for .NET
+        url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+        note: (ポリシー定義)
+      - text: REST
+        url: /rest/api/policy-insights/
+        note: (ポリシーの分析情報)
+      - text: REST
+        url: /rest/api/resources/policyassignments
+        note: (割り当て)
+      - text: REST
+        url: /rest/api/resources/policydefinitions
+        note: (定義)
+      - text: REST
+        url: /rest/api/resources/policysetdefinitions
+        note: (イニシアティブ)
+      - text: REST
+        url: /rest/api/guestconfiguration/
+        note: (ゲスト構成)
+      - text: Resource Manager テンプレート
+        url: /azure/templates/microsoft.authorization/allversions
+    - title: Azure Blueprint
+      links:
+      - text: ブループリントの関数
+        url: ./blueprints/reference/blueprint-functions.md
+      - text: Azure PowerShell
+        url: /powershell/module/az.blueprint/#blueprint
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.Blueprint
+        note: (PS ギャラリー モジュール)
+      - text: Azure SDK for .NET
+        url: /dotnet/api/overview/azure/blueprints/management
+      - text: REST
+        url: /rest/api/blueprints/
+    - title: Azure Resource Graph
+      links:
+      - text: Azure CLI
+        url: /cli/azure/ext/resource-graph/graph
+      - text: Azure PowerShell
+        url: /powershell/module/az.resourcegraph/
+      - text: Azure PowerShell
+        url: https://www.powershellgallery.com/packages/Az.ResourceGraph
+        note: (PS ギャラリー モジュール)
+      - text: Azure SDK for .NET
+        url: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
+      - text: Azure SDK for .NET
+        url: https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceGraph/
+        note: (NuGet)
+      - text: Azure SDK for Go
+        url: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph
+      - text: Azure SDK for Java
+        url: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
+      - text: Azure SDK for Java
+        url: https://search.maven.org/artifact/com.microsoft.azure.resourcegraph.v2019_04_01/azure-mgmt-resourcegraph/1.0.0-beta/jar
+        note: (Maven)
+      - text: Azure SDK For Node
+        url: /javascript/api/@azure/arm-resourcegraph
+      - text: Azure SDK for Python
+        url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
+      - text: Azure SDK for Ruby
+        url: https://rubygems.org/gems/azure_mgmt_resourcegraph
+        note: (Gem)
+      - text: REST
+        url: /rest/api/azure-resourcegraph/
+    - title: Cost Management
+      links:
+      - text: REST
+        url: /rest/api/cost-management
+        note: (コスト管理)
+      - text: REST
+        url: /rest/api/consumption
+        note: (使用)
+      - text: Resource Manager テンプレート
+        url: /azure/templates/microsoft.consumption/budgets
+  footer: '[UserVoice](https://feedback.azure.com/forums/915958-azure-governance) | [Microsoft Tech Community - Azure のガバナンス](https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance) | [Azure サポート](https://azure.microsoft.com/support/create-ticket/)'

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: b4d50c39bf670cb8c14d9dbe4feb2fc18c89bf0a
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 201e86908b61efa72eed76346f70cfc55e08d03c
+ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70917222"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71076813"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>HDInsight 上の Apache Kafka を用いた Apache Spark ストリーミング (DStream) の例
 
@@ -40,9 +40,9 @@ HDInsight の Apache Kafka では、パブリック インターネットを介�
 Azure 仮想ネットワーク、Kafka、および Spark クラスターは手動で作成できますが、Azure Resource Manager テンプレートを使用する方が簡単です。 次の手順に従って、Azure 仮想ネットワーク、Kafka クラスター、および Spark クラスターを Azure サブスクリプションにデプロイします。
 
 1. 次のボタンを使用して Azure にサインインし、Azure Portal でテンプレートを開きます。
-    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure"></a>
-    
+
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-spark-cluster-in-vnet-v4.1.json" target="_blank"><img src="./media/hdinsight-apache-spark-with-kafka/hdi-deploy-to-azure1.png" alt="Deploy to Azure button for new cluster"></a>
+
     Azure Resource Manager テンプレートは、 **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-spark-cluster-in-vnet-v4.1.json** にあります。
 
     > [!WARNING]  
@@ -51,10 +51,10 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
     このテンプレートは、Kafka と Spark の両方の HDInsight 3.6 クラスターを作成します。
 
 2. 以下の情報を使用して、 **[カスタム デプロイ]** セクションに各エントリを入力します。
-   
-    ![HDInsight のカスタム デプロイ](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
-   
-    * **リソース グループ**:グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
+
+    ![HDInsight カスタム デプロイ パラメーター](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
+
+    * **[リソース グループ]** :グループを作成するか、または既存のグループを選択します。 このグループに HDInsight クラスターが含まれます。
 
     * **場所**: 地理的に近い場所を選択します。
 

@@ -6,19 +6,22 @@ manager: evansma
 ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/14/2019
-ms.openlocfilehash: 7dd57e41144ec33aec6eb716716d0794d92071f5
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.date: 10/04/2019
+ms.openlocfilehash: 578904d40b1354dde99644cb2fc73e0a56223b34
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013086"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72376283"
 ---
 # <a name="create-a-new-saas-offer"></a>新しい SaaS オファーを作成する
 
 サービスとしてのソフトウェア (SaaS) オファーの作成を開始するには、必ず、最初に[パートナー センター アカウントを作成](./create-account.md)し、 **[概要]** タブを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)を開いてください。
 
 ![パートナー センターの商業マーケットプレース ダッシュボード](./media/new-offer-overview.png)
+
+>[!Note]
+> オファーが発行されると、パートナー センターで行われたオファーへの編集は、再発行後はシステム内およびネットショップでのみ更新されます。 変更を行った後に、発行のために必ずオファーを送信してください。
 
 **[+ 新しいオファー]** ボタン、 **[サービスとしてのソフトウェア]** メニュー項目の順に選択します。 
 
@@ -157,18 +160,7 @@ SaaS オファーでは、定額料金、ユーザー単位、または従量制
 
 ## <a name="connect-lead-management"></a>リード管理の接続
 
-マーケットプレースでオファーをリスト登録して顧客関係管理 (CRM) システムに接続することで、顧客と直接つながります。これにより、顧客がお客様の製品に興味を示した直後、またはそれをデプロイした直後に、顧客の連絡先情報を受け取ることができます。
-
-- **リードのターゲットの選択** (ドロップダウン メニュー): Microsoft に顧客リードを送信してもらいたい CRM システムに接続の詳細を入力します。 
-
-パートナー センターでは、リード管理について以下の CRM システムをサポートしています。 セットアップ手順を確認するには、リンクを選択してください。
-
-- Azure BLOB - 連絡先のメール アドレス、コンテナー名、ストレージ アカウントの接続文字列を入力します。 
-- [Azure テーブル](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-azure-table) - 連絡先のメール アドレスとストレージ アカウントの接続文字列を入力します。 
-- [Dynamics CRM Online](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-dynamics) -連絡先のメール アドレス、URL、および認証モード (Office 365 または Azure Active Directory) を入力します。
-- [HTTPS エンドポイント](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-https) - 連絡先のメール アドレスと HTTPS エンドポイントの URL を入力します。 
-- [Marketo](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-marketo) - 連絡先のメール アドレス、フォーム ID、Munchkin アカウント ID、サーバー ID を入力します。
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-lead-management-instructions-salesforce) -連絡先のメール アドレスと組織 ID を入力します。 
+[!INCLUDE [Connect lead management](./includes/connect-lead-management-a.md)]
 
 #### <a name="additional-lead-management-resources"></a>リード管理に関するその他のリソース
 - [リード管理に関する FAQ](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
@@ -220,7 +212,7 @@ Azure Marketplace の発行元は、カスタムの使用条件を作成する�
 
 オファーの説明やマーケティング資産など、マーケットプレースで表示される詳細を入力します。
 
-- **名前** (必須): ここで定義した名前は、お客様が選択したマーケットプレース上でオファーのリスト登録のタイトルとして表示されます。 名前は、前の **[新しいオファー]** のエントリに基づいて事前入力されます。  これは商標登録されている場合があります。  これは、空白と絵文字 (商標および著作権マークの場合を除く) を含むことができず、50 文字以下にする必要があります。
+- **名前** (必須): ここで定義した名前は、お客様が選択したマーケットプレース上でオファーのリスト登録のタイトルとして表示されます。 名前は、前の **[新しいオファー]** のエントリに基づいて事前入力されます。  これは商標登録されている場合があります。  これは、絵文字 (商標および著作権マークの場合を除く) を含むことができず、50 文字以下にする必要があります。
 - **概要** (必須): マーケットプレースのリスト登録の検索結果で使用される、お客様のオファーの簡単な説明を入力します。 このフィールドには、最大で 100 文字のテキストを入力できます。
 - **説明** (必須): マーケットプレースのリスト登録の概要で表示される、お客様のオファーの説明を入力します。 価値提案、主なメリット、カテゴリまたは業界との関連性、アプリ内の購入機会、必要な情報開示、詳細情報へのリンクを含めることを検討してください。
 このフィールドには、最大で 3,000 文字のテキストを入力できます。 その他のヒントについては、記事「[Write a great app description (アプリの優れた説明を書く)](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)」を参照してください。
@@ -390,7 +382,7 @@ Azure Marketplace の発行元は、カスタムの使用条件を作成する�
 
 プランのいずれかの言語を選択すると、 **[名前]** と **[説明]** が含まれている、**プランのリスト登録**に関する情報が表示されます。
 
-- **[名前]** :プレビューの **[新しいプラン]** エントリに基づいて事前に設定されます。これは、マーケットプレースでオファーの "ソフトウェア プラン" のタイトルとして表示されます。
+- **Name**:プレビューの **[新しいプラン]** エントリに基づいて事前に設定されます。これは、マーケットプレースでオファーの "ソフトウェア プラン" のタイトルとして表示されます。
 - **説明:** この説明では、このソフトウェア プランに固有な点や、オファー内の他のソフトウェア プランとの違いを説明できます。 最大で 500 文字を含めることができます。
 
 これらのフィールドに入力した後、 **[保存]** を選択します。
@@ -409,6 +401,9 @@ Azure Marketplace の発行元は、カスタムの使用条件を作成する�
 無料試用版の構成は、オファーのプランごとに行うことができます。 オファーごとの [Pricing and Availability]\(価格と使用可能状況\) に移動し、1 か月の試用版の使用を許可するボックスをオンにします。
 
 ![1 か月間の無料試用版チェックボックス](./media/free-trial-enable.png)
+
+>[!Note]
+>取引可能オファーが無料試用版で公開されると、そのプランに対して無効にできなくなります。 プランを再作成する必要がないように、最初の公開でこの設定が正しいことを確認してください。
 
 無料試用版に現在参加しているお客様のサブスクリプションに関する情報を取得するには、新しい API プロパティの `isFreeTrial` を使用します。このプロパティは、true または false としてマークされます。 詳細については、[SaaS サブスクリプションの取得 API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) に関する記事を参照してください。
 
@@ -441,7 +436,7 @@ Azure Marketplace の発行元は、カスタムの使用条件を作成する�
 - **価格**: 1 か月あたりの米国ドルまたは 1 年あたりの米国ドル
 
 現地通貨 (USD = 米国ドル) で設定された価格は、セットアップ中に使用可能な現時点の為替レートを使用して、選択されたすべての市場の現地通貨に変換されます。 これらの価格は公開前に検証してください。そのためには、価格スプレッドシートをエクスポートして各市場の価格を確認します。 個々の市場でカスタム価格を設定したい場合は、価格スプレッドシートを修正してインポートします。 この価格は公開元が検証する必要があります。そのため、これらの設定が用意されています。
-*"*価格データのエクスポートを有効にするには、先に価格の変更を保存する必要があります。* "
+*\*価格データのエクスポートを有効にするには、先に価格の変更を保存する必要があります*。
 
 プランの公開後に変更できる内容には一部制限があるため、価格は公開前に注意深く確認してください。
 

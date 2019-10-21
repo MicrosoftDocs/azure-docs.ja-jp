@@ -7,16 +7,16 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
+ms.date: 09/19/2019
 ms.author: dapine
-ms.openlocfilehash: e79717b15cabe815debfa9fd960c0b2623e8088e
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 5ec535fe2ce23a2ead1163e870aae97fd104ef09
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70847703"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130064"
 ---
-## <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>キーフレーズ抽出コンテナーを AKS クラスターにデプロイする
+### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>キーフレーズ抽出コンテナーを AKS クラスターにデプロイする
 
 1. Azure CLI を開き、Azure にサインインします。
 

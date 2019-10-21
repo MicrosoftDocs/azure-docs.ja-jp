@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 09/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: b349576f5e9f5410afc29f48e40c38e12168252d
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258899"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71675100"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース、プロパティ、または変数の反復
 
@@ -49,7 +49,7 @@ ms.locfileid: "70258899"
 
 反復回数を指定するには、count プロパティの値を指定します。 count は 800 を超えることはできません。
 
-count は負の数値にすることはできません。 Azure PowerShell 2.6 以降、または REST API バージョン **2019-05-10** 以降を使用してテンプレートをデプロイする場合は、count を 0 に設定できます。 以前のバージョンの PowerShell と REST API では、count の 0 をサポートしていません。 現時点では、Azure CLI では count の 0 はサポートされていませんが、このサポートは将来のリリースで追加される予定です。
+count は負の数値にすることはできません。 Azure PowerShell 2.6 以降、Azure CLI 2.0.74 以降、または REST API バージョン **2019-05-10** 以降を使用してテンプレートをデプロイする場合は、count を 0 に設定できます。 以前のバージョンの PowerShell、CLI、および REST API では、count の 0 をサポートしていません。
 
 コピーで[完全モード デプロイ](deployment-modes.md)を使用する際は注意してください。 完全モードでリソース グループに再デプロイする場合、コピー ループを解決した後でテンプレートに指定されていないリソースはすべて削除されます。
 
@@ -57,7 +57,7 @@ count の制限は、リソース、変数、プロパティのいずれで使�
 
 ## <a name="resource-iteration"></a>リソースの反復
 
-デプロイ時に、リソースのインスタンスを 1 つまたは複数作成することを決定する必要がある場合は、リソースの種類に `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。
+デプロイにリソースのインスタンスを複数作成する場合は、リソースの種類に `copy` 要素を追加します。 copy 要素には、そのループの反復回数と名前を指定します。
 
 複数回作成するリソースは、次の形式を取ります。
 
@@ -113,25 +113,25 @@ count の制限は、リソース、変数、プロパティのいずれで使�
 コピー操作は、配列内の各要素に対して反復処理するため、配列で作業するときに便利です。 配列で反復回数を指定するには `length` 関数を使います。また、配列における現在のインデックスを取得するには `copyIndex` を使います。 次の例を見てください。
 
 ```json
-"parameters": { 
-  "org": { 
-    "type": "array", 
-    "defaultValue": [ 
-      "contoso", 
-      "fabrikam", 
-      "coho" 
-    ] 
+"parameters": {
+  "org": {
+    "type": "array",
+    "defaultValue": [
+      "contoso",
+      "fabrikam",
+      "coho"
+    ]
   }
-}, 
-"resources": [ 
-  { 
-    "name": "[concat('storage', parameters('org')[copyIndex()])]", 
-    "copy": { 
-      "name": "storagecopy", 
-      "count": "[length(parameters('org'))]" 
-    }, 
+},
+"resources": [
+  {
+    "name": "[concat('storage', parameters('org')[copyIndex()])]",
+    "copy": {
+      "name": "storagecopy",
+      "count": "[length(parameters('org'))]"
+    },
     ...
-  } 
+  }
 ]
 ```
 
@@ -184,7 +184,7 @@ mode プロパティでも **parallel** が既定値として使用されます�
 
 * name - 複数の値を作成するプロパティの名前
 * count - 作成する値の数。
-* input - プロパティに割り当てる値を格納するオブジェクト  
+* input - プロパティに割り当てる値を格納するオブジェクト
 
 次の例は、仮想マシンで dataDisks プロパティに `copy` を適用する方法を示しています。
 
@@ -450,9 +450,9 @@ copy 要素は配列であるため、リソースの複数のプロパティを
       }
     },
     {
-      "apiVersion": "2015-06-15", 
-      "type": "Microsoft.Compute/virtualMachines", 
-      "name": "[concat('VM', uniqueString(resourceGroup().id))]",  
+      "apiVersion": "2015-06-15",
+      "type": "Microsoft.Compute/virtualMachines",
+      "name": "[concat('VM', uniqueString(resourceGroup().id))]",
       "dependsOn": ["storagecopy"],
       ...
     }
@@ -488,7 +488,7 @@ copy 要素は配列であるため、リソースの複数のプロパティを
 
 複数のデータ セットを作成するには、それをデータ ファクトリの外部に移動します。 データセットは、データ ファクトリと同じレベルである必要がありますが、今までどおりデータ ファクトリの子リソースです。 type および name の各プロパティを使用して、データセットとデータ ファクトリの関係を保存します。 テンプレート内の位置から type を推論できなくなったため、`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}` の形式で完全修飾型を指定する必要があります。
 
-データ ファクトリのインスタンスを使用して親子関係を確立するには、親リソースの名前を含むデータ セットの名前を指定します。 `{parent-resource-name}/{child-resource-name}` の形式で入力します。  
+データ ファクトリのインスタンスを使用して親子関係を確立するには、親リソースの名前を含むデータ セットの名前を指定します。 `{parent-resource-name}/{child-resource-name}` の形式で入力します。
 
 次の例は、実装を示します。
 

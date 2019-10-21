@@ -4,21 +4,20 @@ description: Azure Notebooks プロジェクトに外部ソースからデータ
 services: app-service
 documentationcenter: ''
 author: kraigb
-manager: douge
+manager: barbkess
 ms.assetid: 586b423b-6668-4bdd-9592-4c237d7458fb
 ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: b522b0bd641d0147518843b11be4cd3a1430ae20
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b33d5dbfa354061b9b25069b3b300010b7cd49bf
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60240422"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970213"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Azure Notebook プロジェクトでデータ ファイルを操作する
 

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
-ms.openlocfilehash: 35c317c4b73e9a22e3b0d6192abcfc2a596066b8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ee92ad6e0687018f69044bf3edde76b9f98cee52
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60598268"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72255595"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>System Center Configuration Manager を使用して Mobility Service のインストールを自動化する
 
@@ -172,16 +172,13 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
    | **パラメーター名** | **値** |
    |--|--|
-   | Name | Microsoft Azure Mobility Service のインストール (Windows) |
+   | 名前 | Microsoft Azure Mobility Service のインストール (Windows) |
    | コマンド ライン | install.bat |
    | プログラムの実行条件 | ユーザーがログオンしているかどうか |
 
    ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
 
-9. 次のページで、ターゲットのオペレーティング システムを選択します。 Mobility Service は、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 にのみインストールできます。
-
-   ![パッケージとプログラムの作成ウィザードのスクリーンショット](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2.png)
-
+9. 次のページで、ターゲットのオペレーティング システムを選択します。 
 10. **[次へ]** を 2 回クリックしてウィザードを終了します。
 
 
@@ -397,7 +394,7 @@ cd /tmp
 
     | **パラメーター名** | **値** |
    |--|--|
-   | Name | Microsoft Azure Mobility Service のインストール (Linux) |
+   | 名前 | Microsoft Azure Mobility Service のインストール (Linux) |
    | コマンド ライン | ./install_linux.sh |
    | プログラムの実行条件 | ユーザーがログオンしているかどうか |
 

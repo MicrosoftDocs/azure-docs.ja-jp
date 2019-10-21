@@ -2,18 +2,17 @@
 title: チュートリアル - Azure Analysis Services の管理者とユーザーのロールを構成する | Microsoft Docs
 description: Azure Analysis Services ロールを構成する方法について説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: b36541cde457b7faf8b3a020cdde01f049ceb652
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b70d1502985a1ffc0ebdf6fcb487cda3992d1c19
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932207"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294423"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル:サーバー管理者とユーザー ロールを構成する
 
@@ -36,7 +35,7 @@ Azure Analysis Services のユーザー セキュリティの詳細について�
 - [adventureworks サンプル モデル](../analysis-services-create-sample-model.md)をサーバーに追加する。
 - [最新バージョンの SQL Server Management Studio (SSMS) をインストールする](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインします
+## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
 [ポータル](https://portal.azure.com/)にサインインします。
 

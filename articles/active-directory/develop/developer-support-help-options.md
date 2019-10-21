@@ -17,12 +17,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a160f78f69ed559c576147e9758c837d5ae9b77e
+ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235333"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72429986"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 
@@ -95,9 +95,3 @@ Stack Overflow の次の投稿には、質問方法やソース コードの追�
 * Azure をご利用でない場合、マイクロソフトの[商用サポート](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial)からサポート要求をオープンすることもできます。
 
 サポートを受けたり質問したりするために、[仮想エージェント](https://support.microsoft.com/contactus/?ws=support)をお試しいただくこともできます。
-
-### <a name="free-chat-support-for-a-limited-time"></a>無料のチャット サポート (時間制限あり)
-
-マイクロソフトのパートナーであれば、所定の時間、無料のチャット サポートを利用することもできます。 マイクロソフトのパートナーでない場合は、[こちら](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx)から無料で登録し、他のメリットも享受できます。
-
-登録後、[こちら](https://aka.ms/devchat)からチャット要求を開始できます。

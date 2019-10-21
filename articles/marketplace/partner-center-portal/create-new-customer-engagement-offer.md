@@ -6,13 +6,13 @@ manager: evansma
 ms.author: jenhayes
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: 58dd9ade749458facd6f11682af0b730258a7584
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 10/04/2019
+ms.openlocfilehash: 703b8b5732109faed1523c678af612e7fc8dab6d
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70033245"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244098"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>新しい Dynamics 365 for Customer Engagement & PowerApps オファーの作成
 
@@ -21,6 +21,9 @@ ms.locfileid: "70033245"
 Dynamics 365 for Customer Engagement & PowerApps オファーの作成を開始するには、確実に、最初に[パートナー センター アカウントを作成](./create-account.md)し、 **[概要]** タブを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/commercial-marketplace/offers)を開いてください。
 
 ![パートナー センターの商業マーケットプレース ダッシュボード](./media/new-offer-overview.png)
+
+>[!Note]
+> オファーが発行されると、パートナー センターで行われたオファーへの編集は、再発行後はシステム内およびネットショップでのみ更新されます。 変更を行った後に、発行のために必ずオファーを送信してください。
 
 ## <a name="create-a-new-offer"></a>新しいオファーを作成する
 
@@ -82,7 +85,7 @@ Dynamics 365 for Customer Engagement & PowerApps オファーの作成を開始�
 
 ## <a name="connect-lead-management"></a>リード管理の接続
 
-[!INCLUDE [Test drive content](./includes/connect-lead-management.md)]
+[!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
 詳しくは、[リード管理の概要](./commercial-marketplace-get-customer-leads.md)に関する記事をご覧ください。
 

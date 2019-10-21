@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 311f69ffa436eebb261fb8aa5ee72886ad9fe9d0
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 37ca2b655d30ffd330d5430da20d07d9548a7c84
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035905"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260871"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Azure portal を使用して Azure Event Hubs 保存データの暗号化用にカスタマー マネージド キーを構成する
 Azure Event Hubs では、Azure Storage Service Encryption (Azure SSE) による保存データの暗号化が提供されます。 Event Hubs では、データを格納するために Azure Storage が使用されます。既定では、Azure Storage を使用して格納されるすべてのデータは、Microsoft のマネージド キーを使用して暗号化されます。 
@@ -84,7 +84,7 @@ Azure Key Vault のローテーション メカニズムを使用して、キー
 > 既存の暗号化キーをご自身のキー コンテナーから削除し、Event Hubs 名前空間の新しいキーに置き換えた場合、削除キーは (キャッシュされているため) 最大 1 時間は引き続き有効です。そのため、新しいキーを使用してのみアクセスできる新しいデータと共に、古いデータ (古いキーで暗号化したデータ) に引き続きアクセスできる可能性があります。 この動作は、プレビュー バージョンの機能の設計によるものです。 
 
 ## <a name="set-up-diagnostic-logs"></a>診断ログの設定 
-BYOK が有効になっている名前空間に対して診断ログを設定すると、カスタマー マネージド キーを使用して名前空間を暗号化した場合に、操作に関する必要な情報を得ることができます。 これらのログを有効にして、後からイベント ハブにストリーミングしたり、ログ分析を使用して分析したり、ストレージにストリーミングしてカスタマイズした分析を実行したりできます。 診断ログの詳細については、「[Azure 診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)」を参照してください。
+BYOK が有効になっている名前空間に対して診断ログを設定すると、カスタマー マネージド キーを使用して名前空間を暗号化した場合に、操作に関する必要な情報を得ることができます。 これらのログを有効にして、後からイベント ハブにストリーミングしたり、ログ分析を使用して分析したり、ストレージにストリーミングしてカスタマイズした分析を実行したりできます。 診断ログの詳細については、「[Azure 診断ログの概要](../azure-monitor/platform/resource-logs-overview.md)」を参照してください。
 
 ## <a name="enable-user-logs"></a>ユーザー ログの有効化
 カスタマー マネージド キーのログを有効にするには、次の手順に従います。

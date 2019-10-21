@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel Preview に Cisco データを接続する | Microsoft Docs
+title: Azure Sentinel に Cisco データを接続する | Microsoft Docs
 description: Azure Sentinel に Cisco データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: e4df594128a119f38c66796d7b00a30420a2a0bd
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 6218d3a53df38e938b7d7805c45facd30f850105
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679329"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240156"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Cisco ASA アプライアンスを接続する 
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+
 
 Azure Sentinel はあらゆる Cisco ASA アプライアンスに接続できます。 Cisco ASA は、データ インジェストのために Azure Sentinel とネイティブ統合されます。そのため、ご利用の Cisco アプライアンスでログが CEF として保存されなくても、Azure Sentinel で、CEF ログと同じ方法でログが取り込まれます。 Azure Sentinel との統合により、Cisco ASA のすべてのログ ファイル データを簡単に分析および照会できます。 
 
@@ -131,5 +129,5 @@ Log Analytics で Cisco イベントに関連するスキーマを使用する�
 ## <a name="next-steps"></a>次の手順
 このドキュメントでは、Cisco ASA アプライアンスを Azure Sentinel に接続する方法について学びました。 Azure Sentinel の詳細については、以下の記事を参照してください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 

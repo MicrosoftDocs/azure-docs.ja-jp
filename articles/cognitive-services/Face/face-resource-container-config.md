@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: 752613becb92711866d520e6fcd46ed3a320353f
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a07f088f7f5699a2698c0ea8fb0e853b3d287572
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860274"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71101947"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker コンテナーの構成
 
@@ -138,8 +138,8 @@ Face コンテナーでは、トレーニングやサービスのデータを格
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
-|{API_KEY} | Cognitive Services リソースのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | エンドポイントの URL の値。|`https://myresourcename.cognitive.microsoft.com/face/v1.0`|
+| **{API_KEY}** | Azure `Face` の [キー] ページの `Face` リソースのエンドポイント キー。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | 課金エンドポイントの値は、Azure `Face` の [概要] ページで確認できます。| 明示的な例が必要であれば、[必須パラメーターの収集](face-how-to-install-containers.md#gathering-required-parameters)に関するページを参照してください。 |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 

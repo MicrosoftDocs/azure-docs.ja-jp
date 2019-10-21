@@ -1,9 +1,9 @@
 ---
 title: App Service Mobile Apps との統合
 description: Azure Notification Hubs と Azure App Service Mobile Apps がどのように連携するかについて説明します。
-author: jwargo
-manager: patniko
-editor: spelluru
+author: sethmanheim
+manager: femila
+editor: jwargo
 services: notification-hubs
 documentationcenter: ''
 ms.assetid: 83132dff-a01d-4b31-a426-b57496852b81
@@ -14,20 +14,24 @@ ms.devlang: multiple
 ms.topic: overview
 ms.custom: mvc
 ms.date: 01/04/2019
-ms.author: jowargo
-ms.openlocfilehash: bb39949bc21ece819b7ac6e279390f8bdb0ee00a
-ms.sourcegitcommit: f6ba5c5a4b1ec4e35c41a4e799fb669ad5099522
+ms.author: sethm
+ms.reviewer: jowargo
+ms.lastreviewed: 01/04/2019
+ms.openlocfilehash: 8c3bc90b282092ede0e924d32b50b67e5c4e22b8
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65157450"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244498"
 ---
 # <a name="integration-with-app-service-mobile-apps"></a>App Service Mobile Apps との統合
 
-> [!NOTE]
-> Microsoft は、最新の OS リリースのサポート、バグの修正、ドキュメントの改善、コミュニティの PR レビューなど、Azure App Service Mobile Apps を完全にサポートするために尽力しています。 製品チームは現在 Azure Mobile Apps 向けの新機能に投資していないことに注意してください。 Azure Mobile Apps のすべての領域に対するコミュニティの協力に非常に感謝しています。
-
 Azure のサービス間でシームレスかつ同一のエクスペリエンスを実現するために、 [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) には Notification Hubs を使用したプッシュ通知のサポートが組み込まれています。 [App Service Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。
+
+Visual Studio App Center は、現代の開発者向けに最新のモバイル ソリューションを提供しています。 モバイル アプリ開発に対するエンド ツー エンドの統合サービスをサポートしています。 開発者は、**ビルド**、**テスト**、**配布**のサービスを使用して、継続的インテグレーションおよびデリバリー パイプラインを設定できます。 アプリがデプロイされたら、開発者は**分析**および**診断**のサービスを利用してアプリの状態と使用状況を監視し、**プッシュ** サービスを利用してユーザーと関わることができます。 また、開発者は **Auth** を利用してユーザーを認証し、**データ** サービスを利用してクラウド内のアプリ データを保持および同期することもできます。
+
+> [!NOTE]
+> モバイル アプリケーションにクラウド サービスを統合することを検討している場合は、今すぐ [App Center](https://appcenter.ms/signup?utm_source=NotificationHubs&utm_medium=Azure&utm_campaign=docs) にサインアップしてください。
 
 Mobile Apps の開発者は、次のワークフローで Notification Hubs を使用します。
 

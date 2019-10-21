@@ -1,7 +1,7 @@
 ---
 title: エンタープライズ セキュリティ
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service (認証、認可、ネットワーク セキュリティ、データ暗号化、および監視) を安全に使用します。
+titleSuffix: Azure Machine Learning
+description: 'Azure Machine Learning を安全に使用します: 認証、認可、ネットワーク セキュリティ、データ暗号化、監視。'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/07/2019
-ms.openlocfilehash: e1029ad34a05d342e5aed5bb30407dee7c914f3c
-ms.sourcegitcommit: 23389df08a9f4cab1f3bb0f474c0e5ba31923f12
+ms.openlocfilehash: 309cef6ec058d8192bc7a6341b49a59c0000a305
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70873564"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71035557"
 ---
-# <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Azure Machine Learning service のエンタープライズ セキュリティ
+# <a name="enterprise-security-for-azure-machine-learning"></a>Azure Machine Learning のエンタープライズ セキュリティ
 
-この記事では、Azure Machine Learning service で利用できるセキュリティ機能について学習します。
+この記事では、Azure Machine Learning で利用できるセキュリティ機能について学習します。
 
 クラウド サービスを使用する場合は、アクセスを必要とするユーザーのみに制限することをお勧めします。 まず、サービスによって使用される認証および認可モデルについて理解します。 ネットワーク アクセスを制限したり、オンプレミス ネットワークのリソースをクラウドと安全に結合したりすることも必要になる場合があります。 保存時とサービス間の移動時の両方でデータを暗号化することも不可欠です。 最後に、サービスを監視し、すべてのアクティビティの監査ログを生成できることも必要です。
 
@@ -28,10 +28,10 @@ ms.locfileid: "70873564"
 多要素認証がサポートされるのは、それを使用するように Azure Active Directory (Azure AD) が構成されている場合です。 以下に認証プロセスを示します。
 
 1. クライアントでは、Azure AD にサインインして、Azure Resource Manager トークンを取得します。  ユーザーとサービス プリンシパルは完全にサポートされています。
-1. クライアントによって、Azure Resource Manager とすべての Azure Machine Learning service にトークンが提示されます。
+1. クライアントによって、Azure Resource Manager とすべての Azure Machine Learning にトークンが提示されます。
 1. Machine Learning service では、ユーザーのコンピューティング先 (たとえば、Machine Learning コンピューティング) に Machine Learning service トークンが提供されます。 このトークンは、実行の完了後に Machine Learning service にコールバックするために、ユーザーのコンピューティング ターゲットによって使用されます。 スコープはワークスペースに制限されます。
 
-[![Azure Machine Learning service での認証](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
+[![Azure Machine Learning での認証](./media/enterprise-readiness/authentication.png)](./media/enterprise-readiness/authentication-expanded.png)
 
 ### <a name="authentication-for-web-service-deployment"></a>Web サービスのデプロイ用の認証
 
@@ -94,9 +94,9 @@ print(token)
 * Contributor
 * Reader
 
-次の表では、いくつかの主要な Azure Machine Learning service の操作とそれらを実行できるロールを示します。
+次の表では、いくつかの主要な Azure Machine Learning の操作とそれらを実行できるロールを示します。
 
-| Azure Machine Learning service の操作 | Owner | Contributor | Reader |
+| Azure Machine Learning の操作 | Owner | Contributor | Reader |
 | ---- |:----:|:----:|:----:|
 | ワークスペースの作成 | ✓ | ✓ | |
 | ワークスペースを共有する | ✓ | |  |
@@ -132,11 +132,11 @@ print(token)
 
 管理者が上記の表のリソースに対するマネージド ID のアクセスを取り消すことはお勧めできません。 キーの再同期操作を使用して、アクセスを復元できます。
 
-Azure Machine Learning service では、すべてのワークスペース リージョンのサブスクリプションに、共同作成者レベルのアクセス権を持つ追加のアプリケーション (名前が `aml-` または `Microsoft-AzureML-Support-App-` で始まるもの) が作成されます。 たとえば、同じサブスクリプション内で、米国東部にあるワークスペースがあり、北ヨーロッパには別のワークスペースがある場合、これらのアプリケーションが 2 つ表示されます。 これらのアプリケーションでは、コンピューティング リソースの管理に役立つ Azure Machine Learning service を有効にします。
+Azure Machine Learning では、すべてのワークスペース リージョンのサブスクリプションに、共同作成者レベルのアクセス権を持つ追加のアプリケーション (名前が `aml-` または `Microsoft-AzureML-Support-App-` で始まるもの) が作成されます。 たとえば、同じサブスクリプション内で、米国東部にあるワークスペースがあり、北ヨーロッパには別のワークスペースがある場合、これらのアプリケーションが 2 つ表示されます。 これらのアプリケーションでは、コンピューティング リソースの管理に役立つ Azure Machine Learning を有効にします。
 
 ## <a name="network-security"></a>ネットワークのセキュリティ
 
-Azure Machine Learning service は、コンピューティング リソースのために他の Azure サービスに依存します。 コンピューティング リソース (コンピューティング ターゲット) は、モデルのトレーニングとデプロイに使用されます。 これらのコンピューティング先は、仮想ネットワーク内に作成することができます。 たとえば、Azure Data Science Virtual Machine を使用してモデルをトレーニングしてから、そのモデルを AKS にデプロイできます。  
+Azure Machine Learning は、コンピューティング リソースに関して他の Azure サービスに依存します。 コンピューティング リソース (コンピューティング ターゲット) は、モデルのトレーニングとデプロイに使用されます。 これらのコンピューティング先は、仮想ネットワーク内に作成することができます。 たとえば、Azure Data Science Virtual Machine を使用してモデルをトレーニングしてから、そのモデルを AKS にデプロイできます。  
 
 詳しくは、[仮想ネットワークで実験と推論を実行する方法](how-to-enable-virtual-network.md)に関する記事をご覧ください。
 
@@ -146,7 +146,7 @@ Azure Machine Learning service は、コンピューティング リソースの
 
 #### <a name="azure-blob-storage"></a>Azure BLOB ストレージ
 
-Azure Machine Learning service では、Azure Machine Learning service ワークスペースとサブスクリプションに関連付けられている Azure BLOB ストレージ アカウントにスナップショット、出力、およびログを格納します。 Azure BLOB ストレージに格納されるすべてのデータは、Microsoft によって管理されたキーを使用して保存時に暗号化されます。
+Azure Machine Learning では、Azure Machine Learning ワークスペースとサブスクリプションに関連付けられている Azure BLOB ストレージ アカウントにスナップショット、出力、ログを格納します。 Azure BLOB ストレージに格納されるすべてのデータは、Microsoft によって管理されたキーを使用して保存時に暗号化されます。
 
 Azure BLOB ストレージに格納されるデータに独自のキーを使用する方法については、[Azure Key Vault でのカスタマー マネージド キーによる Azure Storage の暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption-customer-managed-keys)に関するページを参照してください。
 
@@ -156,15 +156,15 @@ Azure BLOB ストレージに格納されるデータに独自のキーを使用
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Azure Machine Learning service では、Azure Machine Learning service によって管理される Microsoft サブスクリプションに関連付けられた Azure Cosmos DB インスタンスにメトリックとメタデータが格納されます。 Azure Cosmos DB に格納されているすべてのデータは、Microsoft によって管理されるキーを使用して保存時に暗号化されます。
+Azure Machine Learning では、Azure Machine Learning によって管理される Microsoft サブスクリプションに関連付けられた Azure Cosmos DB インスタンスにメトリックとメタデータが格納されます。 Azure Cosmos DB に格納されているすべてのデータは、Microsoft によって管理されるキーを使用して保存時に暗号化されます。
 
 #### <a name="azure-container-registry"></a>Azure Container Registry
 
-レジストリ (Azure Container Registry) 内のすべてのコンテナー イメージは、保存時に暗号化されます。 Azure では、イメージは格納の前に自動的に暗号化され、Azure Machine Learning service でイメージがプルされるときにその場で暗号が解除されます。
+レジストリ (Azure Container Registry) 内のすべてのコンテナー イメージは、保存時に暗号化されます。 Azure では、イメージは保存前に自動的に暗号化され、Azure Machine Learning がイメージをプルするときにその場で暗号解除されます。
 
 #### <a name="machine-learning-compute"></a>Machine Learning コンピューティング
 
-Azure Storage に格納されている各コンピューティング ノードの OS ディスクは、Azure Machine Learning service ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 このコンピューティング先は一時的なものであり、キューに入れられた実行がない場合、通常はクラスターがスケールダウンされます。 基になる仮想マシンのプロビジョニングは解除され、OS ディスクは削除されます。 OS ディスクでは Azure Disk Encryption はサポートされません。
+Azure Storage に格納されている各コンピューティング ノードの OS ディスクは、Azure Machine Learning ストレージ アカウント内の Microsoft によって管理されるキーを使用して暗号化されます。 このコンピューティング先は一時的なものであり、キューに入れられた実行がない場合、通常はクラスターがスケールダウンされます。 基になる仮想マシンのプロビジョニングは解除され、OS ディスクは削除されます。 OS ディスクでは Azure Disk Encryption はサポートされません。
 
 各仮想マシンにも、OS 操作用にローカルな一時ディスクがあります。 必要に応じて、ディスクを使用してトレーニング データをステージできます。 ディスクは暗号化されません。
 Azure での保存時の暗号化のしくみについて詳しくは、[保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)を参照してください。
@@ -177,13 +177,13 @@ SSL を使用して、Azure Machine Learning マイクロサービス間の内�
 
 ### <a name="using-azure-key-vault"></a>Azure Key Vault の使用
 
-Azure Machine Learning service では、ワークスペースに関連付けられた Azure Key Vault インスタンスを使用して、さまざまな種類の資格情報を格納します。
+Azure Machine Learning では、ワークスペースに関連付けられた Azure Key Vault インスタンスを使用して、さまざまな種類の資格情報を格納します。
 
 * 関連付けられたストレージ アカウントの接続文字列
 * Azure コンテナー リポジトリ インスタンスへのパスワード
 * データ ストアへの接続文字列
 
-Azure HDInsight や VM などのコンピューティング先に対する SSH パスワードとキーは、Microsoft サブスクリプションに関連付けられている別のキー コンテナーに格納されます。 Azure Machine Learning service には、ユーザーによって提供されるパスワードやキーは格納されません。 代わりに、VM と HDInsight に接続して実験を行うために、独自の SSH キーを生成、承認、および格納します。
+Azure HDInsight や VM などのコンピューティング先に対する SSH パスワードとキーは、Microsoft サブスクリプションに関連付けられている別のキー コンテナーに格納されます。 Azure Machine Learning には、ユーザーによって提供されるパスワードやキーは格納されません。 代わりに、VM と HDInsight に接続して実験を行うために、独自の SSH キーを生成、承認、および格納します。
 
 各ワークスペースには、ワークスペースと同じ名前を持つ、関連付けられたシステム割り当て済みマネージド ID があります。 このマネージド ID では、キー コンテナー内のすべてのキー、シークレット、および証明書にアクセスできます。
 
@@ -191,7 +191,7 @@ Azure HDInsight や VM などのコンピューティング先に対する SSH �
 
 ### <a name="metrics"></a>メトリック
 
-Azure Monitor メトリックを使用して、Azure Machine Learning service ワークスペースのメトリックを表示および監視することができます。 [Azure portal](https://portal.azure.com) で、ワークスペースを選び、 **[メトリック]** を選択します。
+Azure Monitor メトリックを使用し、Azure Machine Learning ワークスペースのメトリックを表示したり、監視したりできます。 [Azure portal](https://portal.azure.com) で、ワークスペースを選び、 **[メトリック]** を選択します。
 
 [![ワークスペースのメトリックの例を示すスクリーンショット](./media/enterprise-readiness/workspace-metrics.png)](./media/enterprise-readiness/workspace-metrics-expanded.png)
 
@@ -220,9 +220,9 @@ Azure Monitor メトリックを使用して、Azure Machine Learning service �
 
 次の図は、ワークスペース作成のワークフローを示したものです。
 
-* ユーザーは、サポートされている Azure Machine Learning service クライアント (Azure CLI、Python SDK、Azure portal) のいずれかから Azure AD にサインインし、適切な Azure Resource Manager トークンを要求します。
+* ユーザーは、サポートされている Azure Machine Learning クライアント (Azure CLI、Python SDK、Azure portal) のいずれかから Azure AD にサインインし、適切な Azure Resource Manager トークンを要求します。
 * ユーザーは、ワークスペースを作成するために Azure Resource Manager を呼び出します。 
-* Azure Resource Manager では、Azure Machine Learning service のリソース プロバイダーに連絡し、ワークスペースをプロビジョニングします。
+* Azure Resource Manager では、Azure Machine Learning のリソース プロバイダーに連絡し、ワークスペースをプロビジョニングします。
 
 ワークスペースの作成中に、追加のリソースがユーザーのサブスクリプションに作成されます。
 
@@ -239,7 +239,7 @@ Azure Monitor メトリックを使用して、Azure Machine Learning service �
 
 次の図は、コード スナップショットのワークフローを示したものです。
 
-Azure Machine Learning service ワークスペースに関連付けられているディレクトリ (実験) には、ソース コード (トレーニング スクリプト) が含まれます。 これらのスクリプトは、ご利用のローカル コンピューターとクラウド (ご利用のサブスクリプションの Azure BLOB ストレージ内) に格納されます。 このコード スナップショットは、履歴監査の実行または検査に使用されます。
+Azure Machine Learning ワークスペースに関連付けられているディレクトリ (実験) には、ソース コード (トレーニング スクリプト) が含まれます。 これらのスクリプトは、ご利用のローカル コンピューターとクラウド (ご利用のサブスクリプションの Azure BLOB ストレージ内) に格納されます。 このコード スナップショットは、履歴監査の実行または検査に使用されます。
 
 [![コード スナップショット ワークフロー](./media/enterprise-readiness/code-snapshot.png)](./media/enterprise-readiness/code-snapshot-expanded.png)
 
@@ -247,10 +247,10 @@ Azure Machine Learning service ワークスペースに関連付けられてい�
 
 次の図はトレーニングのワークフローを示したものです。
 
-* 前のセクションで保存されたコード スナップショットのスナップショット ID を指定して、Azure Machine Learning service が呼び出されます。
-* Azure Machine Learning service では実行 ID (省略可能) と Machine Learning service トークンが作成され、これは後で Machine Learning コンピューティング/VM などのコンピューティング先によって、Machine Learning service と通信するために使用されます。
+* 前のセクションで保存されたコード スナップショットのスナップショット ID を指定して、Azure Machine Learning が呼び出されます。
+* Azure Machine Learning では実行 ID (省略可能) と Machine Learning service トークンが作成され、これは後で Machine Learning コンピューティング/VM などのコンピューティング先によって、Machine Learning service と通信するために使用されます。
 * トレーニング ジョブを実行するために、マネージド コンピューティング先 (Machine Learning コンピューティングなど) またはアンマネージド コンピューティング先 (VM など) のいずれかを選択できます。 両方のシナリオのデータ フローを次に示します。
-   * VM/HDInsight。Microsoft サブスクリプションのキー コンテナー内の SSH 資格情報でアクセスされます。 Azure Machine Learning service では、以下を行うコンピューティング先で管理コードを実行します。
+   * VM/HDInsight。Microsoft サブスクリプションのキー コンテナー内の SSH 資格情報でアクセスされます。 Azure Machine Learning では、以下を行うコンピューティング先で管理コードを実行します。
 
    1. 環境を準備します (Docker は VM とローカル コンピューターのオプションです。 Docker コンテナーで実験を行う方法については、Machine Learning コンピューティングに関する以下の手順を参照してください)。
    1. コードをダウンロードします。
@@ -266,7 +266,7 @@ Machine Learning コンピューティングはマネージド コンピュー�
 
 #### <a name="querying-runs-and-metrics"></a>実行とメトリックのクエリを実行する
 
-以下のフロー図では、トレーニング コンピューティング先で、Cosmos DB データベースのストレージから Azure Machine Learning service に実行メトリックが書き戻された場合に、この手順が行われます。 クライアントで、Azure Machine Learning service を呼び出すことができます。 その後、Machine Learning によって Cosmos DB データベースからメトリックがプルされ、クライアントに戻されます。
+以下のフロー図では、トレーニング コンピューティング先で、Cosmos DB データベースのストレージから Azure Machine Learning に実行メトリックが書き戻された場合に、この手順が行われます。 クライアントで、Azure Machine Learning を呼び出すことができます。 その後、Machine Learning によって Cosmos DB データベースからメトリックがプルされ、クライアントに戻されます。
 
 [![トレーニング ワークフロー](./media/enterprise-readiness/training-and-metrics.png)](./media/enterprise-readiness/training-and-metrics-expanded.png)
 
@@ -292,7 +292,7 @@ Machine Learning コンピューティングはマネージド コンピュー�
 * [バッチ予測を実行する方法](how-to-run-batch-predictions.md)
 * [Application Insights を使用して Azure Machine Learning のモデルを監視する](how-to-enable-app-insights.md)
 * [実稼働環境でモデルのデータを収集する](how-to-enable-data-collection.md)
-* [Azure Machine Learning service SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [Azure Machine Learning service と Azure Virtual Network を使用する](how-to-enable-virtual-network.md)
+* [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
+* [Azure Machine Learning と Azure Virtual Network を使用する](how-to-enable-virtual-network.md)
 * [推奨システムを構築するためのベスト プラクティス](https://github.com/Microsoft/Recommenders)
 * [Azure 上でリアルタイム レコメンデーション API を構築する](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

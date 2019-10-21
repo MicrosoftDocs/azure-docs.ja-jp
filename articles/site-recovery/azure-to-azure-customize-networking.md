@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rajanaki
-ms.openlocfilehash: 907a698a675a039dfdc852210adecb94c7bfab25
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 1905d6afb023b1bed15f1359fed8477d815acb45
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886542"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71087705"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>ターゲット Azure VM のネットワーク構成をカスタマイズする
 
@@ -23,13 +23,16 @@ ms.locfileid: "68886542"
 
 [このシナリオ](azure-to-azure-architecture.md)に対して、Site Recovery でどのようにディザスター リカバリーを提供するかについて説明します。
 
-## <a name="support-networking-resources"></a>ネットワーク リソースのサポート
+## <a name="supported-networking-resources"></a>サポートされているネットワーク リソース
 
 Azure VM のレプリケート中に、フェールオーバー VM に対して次の主要なリソース構成を提供できます。
 
 - [内部ロード バランサー](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#what-is-standard-load-balancer)
 - [パブリック IP](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - サブネットと NIC 両方の[ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
+
+ > [!IMPORTANT]
+  > 現時点では、これらの設定はフェールオーバー操作でのみサポートされており、テスト フェールオーバーではサポートされていません。
 
 ## <a name="pre-requisites"></a>前提条件
 

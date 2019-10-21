@@ -5,13 +5,13 @@ author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 10/31/2018
-ms.author: v-erkell
-ms.openlocfilehash: 724352ae9f7c66dfeab293473ea79438e3b36254
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.author: rohogue
+ms.openlocfilehash: 70ae20daa81ab52d4054dcd4bea3c9432a5ceaeb
+ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56989321"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72256162"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Avere vFXT for Azure とは 
 

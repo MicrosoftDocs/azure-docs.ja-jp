@@ -14,18 +14,139 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 1a051f3a0c55e207e6a53955d1cb4b9ea7e54a4d
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 9e5bdb574439378b91a243d5d36ebddeb8520d49
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67544136"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71037452"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
-この記事には、Azure Storage Explorer 1.9.0 リリースのリリース ノートだけでなく、以前のバージョンのリリース ノートも含まれています。
+この記事には、Azure Storage Explorer 1.10.0 リリースのリリース ノートだけでなく、以前のバージョンのリリース ノートも含まれています。
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
+
+## <a name="version-1100"></a>バージョン 1.10.0
+9/12/2019
+
+### <a name="download-azure-storage-explorer-1100"></a>Azure Storage Explorer 1.10.0 をダウンロードする
+- [Windows 用 Azure Storage Explorer 1.10.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 1.10.0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Snap Store の Azure Storage Explorer 1.10.0](https://snapcraft.io/storage-explorer)
+- [Linux 用 Azure Storage Explorer 1.10.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>新規
+
+* Storage Explorer で専用の設定 UI が利用できるようになりました。 アクセスするには、[編集]→[設定] の順に選択するか、左側の垂直ツールバーの [設定] アイコン (歯車) をクリックします。 この機能は、[ユーザーによってリクエストされたさまざまな設定](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate)の提供に向けた最初の一歩です。 このリリースから、次の設定がサポートされるようになりました。
+    * テーマ
+    * プロキシ
+    * 終了時のログアウト ([#6](https://www.github.com/Microsoft/AzureStorageExplorer/issues/6))
+    * デバイス コード フローのサインインの有効化
+    * 自動更新 ([#1526](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1526))
+    * AzCopy の有効化
+    * SAS 期間の AzCopy
+
+    他に追加を希望する設定がある場合は、[希望する設定を説明して、GitHub でイシューを開いてください](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=)。
+* Storage Explorer でマネージド ディスクがサポートされるようになりました。 次のようにすることができます。
+    * オンプレミスの VHD を新しいディスクにアップロードする
+    * ディスクをダウンロードする
+    * 複数のリソース グループおよびリージョン間でディスクのコピーと貼り付けを行う
+    * ディスクを削除する
+    * ディスクのスナップショットを作成する
+
+    ディスクのアップロード、ダウンロード、およびリージョン間のコピーは、AzCopy v10 を利用して行われます。
+* Linux の Snap Store を介して Storage Explorer をインストールできるようになりました。 Snap Store を介してインストールすると、.NET Core を含めてすべての依存関係がインストールされます。 現時点では、Ubuntu および CentOS で Storage Explorer が正常に動作することを確認済みです。 他の Linux ディストリビューションにおいて Snap Store からのインストールで問題が発生した場合は、[GitHub でイシューを開いてください](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=)。 Snap Store からのインストールの詳細については、[概要ガイド](https://aka.ms/storageexplorer/snapinformation)を参照してください。 [#68](https://www.github.com/Microsoft/AzureStorageExplorer/issues/68)
+* Azure Active Directory (Azure AD) でのアタッチに対して、この機能が ADLS Gen2 ユーザーにとってより使いやすくなるように、次の 2 つの大きな変更が行われました。* アタッチするリソースが存在するテナントを選択できるようになりました。 これは、リソースのサブスクリプションへの RBAC アクセスが必要がなくなったことを意味します。
+        * ADLS Gen2 Blob コンテナーをアタッチする場合は、コンテナー内の特定のパスにアタッチできるようになりました。
+* ADLS Gen2 のファイルとフォルダーの ACL を管理する場合、Storage Explorer に、ACL 内のエンティティのフレンドリ名が表示されるようになりました。 [#957](https://www.github.com/Microsoft/AzureStorageExplorer/issues/957)
+* OID を使用して ADLS Gen2 ACL に追加する場合、OID がテナント内の有効なエンティティに属しているかどうかが Storage Explorer によって検証されるようになりました。 [#1603](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1603)
+* タブ間を移動するためのキーボード ショートカットで、より標準的なキーの組み合わせが使用されるようになりました。 [#1018](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1018)
+* タブの中央をクリックすると、タブが閉じるようになりました。 [#1348](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1348)
+* AzCopy 転送にスキップが含まれており、エラーがない場合、Storage Explorer には、スキップが発生したことを強調表示する警告アイコンが表示されるようになりました。 [#1490](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1490)
+* 統合された AzCopy はバージョン 10.2.1 に更新されました。 また、[バージョン情報] ダイアログに、インストールされている AzCopy のバージョンを表示できるようになりました。 [#1343](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1343)
+
+### <a name="fixes"></a>修正
+
+* アタッチされたストレージアカウントを操作しているときに、"cannot read version of undefined (未定義のバージョンを読み取れません)" または "cannot read connection of undefined (未定義の接続を読み取れません)" というさまざまなエラーがユーザーに表示されました。 この問題の根本原因については引き続き調査中ですが、1.10.0 では、アタッチされたストレージ アカウントの読み込みに関するエラー処理が改善されました。 [#1626](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1626)、[#985](https://www.github.com/Microsoft/AzureStorageExplorer/issues/985)、および [#1532](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1532)
+* エクスプローラー ツリー (左側) で、フォーカスが最上位ノードに繰り返し移動する状態になる可能性がありました。 この問題は修正されています。 [#1596](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1596)
+* BLOB のスナップショットを管理しているときに、スクリーン リーダーは、スナップショットに関連付けられているタイムスタンプを読み取りませんでした。 この問題は修正されています。 [#1202](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1202)
+* macOS のプロキシ設定は、認証プロセスで使用するための時間内に設定されていませんでした。 この問題は修正されています。 [#1567](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1567)
+* ソブリン クラウドのストレージ アカウントが名前とキーを使用してアタッチされている場合、AzCopy は機能しませんでした。 この問題は修正されています。 [#1544](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1544)
+* 接続文字列を使用してアタッチすると、Storage Explorer によって末尾のスペースが削除されるようになりました。 [#1387](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1387)
+
+### <a name="known-issues"></a>既知の問題
+
+* 自動更新設定は、BLOB エクスプローラーでのすべての操作にはまだ影響しません。
+* マネージド ディスクの機能は、Azure Stack ではサポートされていません。
+* ディスクのアップロードまたは貼り付けが失敗し、その失敗の前に新しいディスクが作成されていた場合、Storage Explorer はそのディスクを削除しません。
+* ディスクのアップロードまたは貼り付けをキャンセルしたタイミングによっては、新しいディスクが破損した状態で残される可能性があります。 この問題が発生した場合は、新しいディスクを削除するか、Disk API を手動で呼び出して、破損していない状態になるようにディスクの内容を置き換える必要があります。
+* AzCopy 以外の Blob のダウンロードを実行すると、サイズの大きいファイルの MD5 が検証されません。 これは、Storage SDK のバグが原因です。 [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* RBAC を使用する場合、Storage Explorer は、ストレージ リソースにアクセスするために管理レイヤーのアクセス許可を必要とします。 詳細については、[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting)を参照してください。
+* BLOB コンテナーなど、SAS URI を使用してアタッチされているリソースからデタッチすると、他のアタッチが正しく表示されないエラーが発生することがあります。 この問題は、グループ ノードを更新するだけで回避できます。 詳細については、#537 をご覧ください。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、この問題についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。 BLOB コンテナーにアップロードするとき、または BLOB コンテナーからダウンロードするときに、この問題を回避するには、試験段階の AzCopy 機能を使用できます。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、こちらで説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* Azure Stack では、次の機能はサポートされません。 Azure Stack リソースを操作しているときに、これらの機能を使用しようとすると、予期しないエラーが発生する場合があります。
+   * ファイル共有
+   * アクセス層
+   * 論理的な削除
+   * ADLS Gen2
+   * Managed Disks
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)をご確認ください。
+
+## <a name="previous-releases"></a>以前のリリース
+
+* [バージョン 1.9.0](#version-190)
+* [バージョン 1.8.1](#version-181)
+* [バージョン 1.8.0](#version-180)
+* [バージョン 1.7.0](#version-170)
+* [バージョン 1.6.2](#version-162)
+* [バージョン 1.6.1](#version-161)
+* [バージョン 1.6.0](#version-160)
+* [バージョン 1.5.0](#version-150)
+* [バージョン 1.4.4](#version-144)
+* [バージョン 1.4.3](#version-143)
+* [バージョン 1.4.2](#version-142)
+* [バージョン 1.4.1](#version-141)
+* [バージョン 1.3.0](#version-130)
+* [バージョン 1.2.0](#version-120)
+* [バージョン 1.1.0](#version-110)
+* [バージョン 1.0.0](#version-100)
+* [バージョン 0.9.6](#version-096)
+* [バージョン 0.9.5](#version-095)
+* [バージョン 0.9.4 および 0.9.3](#version-094-and-093)
+* [バージョン 0.9.2](#version-092)
+* [バージョン 0.9.1 および 0.9.0](#version-091-and-090)
+* [バージョン 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [バージョン 0.8.13](#version-0813)
+* [バージョン 0.8.12 および 0.8.11 および 0.8.10](#version-0812-and-0811-and-0810)
+* [バージョン 0.8.9 および 0.8.8](#version-089-and-088)
+* [バージョン 0.8.7](#version-087)
+* [バージョン 0.8.6](#version-086)
+* [バージョン 0.8.5](#version-085)
+* [バージョン 0.8.4](#version-084)
+* [バージョン 0.8.3](#version-083)
+* [バージョン 0.8.2](#version-082)
+* [バージョン 0.8.0](#version-080)
+* [バージョン 0.7.20160509.0](#version-07201605090)
+* [バージョン 0.7.20160325.0](#version-07201603250)
+* [バージョン 0.7.20160129.1](#version-07201601291)
+* [バージョン 0.7.20160105.0](#version-07201601050)
+* [バージョン 0.7.20151116.0](#version-07201511160)
+
 
 ## <a name="version-190"></a>バージョン 1.9.0
 7/1/2019
@@ -84,46 +205,6 @@ ms.locfileid: "67544136"
     ```
 
 * Linux で Storage Explorer を実行するには、特定の依存関係を先にインストールする必要があります。 詳細については、Storage Explorer の[トラブルシューティング ガイド](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies)をご確認ください。
-
-## <a name="previous-releases"></a>以前のリリース
-
-* [バージョン 1.8.1](#version-181)
-* [バージョン 1.8.0](#version-180)
-* [バージョン 1.7.0](#version-170)
-* [バージョン 1.6.2](#version-162)
-* [バージョン 1.6.1](#version-161)
-* [バージョン 1.6.0](#version-160)
-* [バージョン 1.5.0](#version-150)
-* [バージョン 1.4.4](#version-144)
-* [バージョン 1.4.3](#version-143)
-* [バージョン 1.4.2](#version-142)
-* [バージョン 1.4.1](#version-141)
-* [バージョン 1.3.0](#version-130)
-* [バージョン 1.2.0](#version-120)
-* [バージョン 1.1.0](#version-110)
-* [バージョン 1.0.0](#version-100)
-* [バージョン 0.9.6](#version-096)
-* [バージョン 0.9.5](#version-095)
-* [バージョン 0.9.4 および 0.9.3](#version-094-and-093)
-* [バージョン 0.9.2](#version-092)
-* [バージョン 0.9.1 および 0.9.0](#version-091-and-090)
-* [バージョン 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [バージョン 0.8.13](#version-0813)
-* [バージョン 0.8.12 および 0.8.11 および 0.8.10](#version-0812-and-0811-and-0810)
-* [バージョン 0.8.9 および 0.8.8](#version-089-and-088)
-* [バージョン 0.8.7](#version-087)
-* [バージョン 0.8.6](#version-086)
-* [バージョン 0.8.5](#version-085)
-* [バージョン 0.8.4](#version-084)
-* [バージョン 0.8.3](#version-083)
-* [バージョン 0.8.2](#version-082)
-* [バージョン 0.8.0](#version-080)
-* [バージョン 0.7.20160509.0](#version-07201605090)
-* [バージョン 0.7.20160325.0](#version-07201603250)
-* [バージョン 0.7.20160129.1](#version-07201601291)
-* [バージョン 0.7.20160105.0](#version-07201601050)
-* [バージョン 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-181"></a>バージョン 1.8.1
 5/13/2019

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bd79b9a6fa8aedd45f41b64f8f81a908feab71f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 18fbaad8ce15ab4eb9a08d5edc273098e7fb372e
+ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883004"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72263968"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 この記事では、Azure Active Directory (Azure AD) PowerShell コマンドレットを使用して、グループを作成し、更新する手順を説明します。 このコンテンツは、Office 365 グループ (統合グループと呼ばれることもあります) にのみ適用されます。 
@@ -50,11 +50,12 @@ PowerShell コマンドを実行する前に、古いバージョンの Windows 
   
    ``` PowerShell
    Install-Module AzureADPreview
+   ```
+   
+## <a name="create-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の作成
+次の手順では、ディレクトリ内のすべての Office 365 グループに適用される設定をディレクトリ レベルで作成します。 Get-AzureADDirectorySettingTemplate コマンドレットは、[グラフ用の Azure AD PowerShell プレビュー モジュール](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)でのみ使用できます。
 
-## Create settings at the directory level
-These steps create settings at directory level, which apply to all Office 365 groups in the directory. The Get-AzureADDirectorySettingTemplate cmdlet is available only in the [Azure AD PowerShell Preview module for Graph](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137).
-
-1. In the DirectorySettings cmdlets, you must specify the ID of the SettingsTemplate you want to use. If you do not know this ID, this cmdlet returns the list of all settings templates:
+1. DirectorySettings コマンドレットでは、使用する SettingsTemplate の ID を指定する必要があります。 使用する ID を把握していない場合、このコマンドレットでは、すべての Settings テンプレートの一覧が返されます。
   
    ```powershell
    Get-AzureADDirectorySettingTemplate
@@ -123,7 +124,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: Boolean<li>既定値はFalse | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>型: Boolean<li>既定値はTrue | ゲスト ユーザーが Office 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>型: string<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
-|  <ul><li>AllowToAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。|
+|  <ul><li>AllowAddGuests<li>型: Boolean<li>既定値はTrue | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。|
 |  <ul><li>ClassificationList<li>型: string<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>例:ディレクトリ レベルでグループのゲスト ポリシーを構成する
@@ -140,9 +141,9 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    ```powershell
    $Setting = $template.CreateDirectorySetting()
    ```  
-4. 次に AllowToAddGuests 設定を更新します
+4. 次に AllowAddGuests 設定を更新します
    ```powershell
-   $Setting["AllowToAddGuests"] = $False
+   $Setting["AllowAddGuests"] = $False
    ```  
 5. 次に設定を適用します。
   
@@ -196,7 +197,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    AllowGuestsToAccessGroups     True
    GuestUsageGuidelinesUrl
    GroupCreationAllowedGroupId
-   AllowToAddGuests              True
+   AllowAddGuests              True
    UsageGuidelinesUrl            https://guideline.example.com
    ClassificationList
    EnableGroupCreation           True
@@ -233,7 +234,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 
 4. この設定を必要な値に設定します。
    ```powershell
-   $SettingCopy["AllowToAddGuests"]=$False
+   $SettingCopy["AllowAddGuests"]=$False
    ```
 5. この設定を適用するグループの ID を取得します。
    ```powershell
@@ -259,7 +260,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
    ```
 3. 必要に応じて、グループの設定を更新します。たとえば次のようにします。
    ```powershell
-   $Setting["AllowToAddGuests"] = $True
+   $Setting["AllowAddGuests"] = $True
    ```
 4. 次に、この特定のグループに対する設定の ID を取得します。
    ```powershell

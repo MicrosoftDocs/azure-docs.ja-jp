@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5eaaa6d41b9dae97a2d6219ffa44fb75ed67e61
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62118689"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350050"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -30,15 +30,15 @@ Windows 2016 のイメージと CentOS のイメージがあります。  [Azure
 
 プール構成の例については、[Azure CLI でのレンダリングのチュートリアル](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)をご覧ください。  Azure portal と Batch Explorer には、プールを作成するときにレンダリングする VM イメージを選択する、GUI ツールが用意されています。  Batch API を使用している場合は、プールの作成時に [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) に次のプロパティ値を指定します。
 
-| Publisher | プラン | SKU | バージョン |
+| Publisher | プラン | SKU | Version |
 |---------|---------|---------|--------|
 | batch (バッチ) | rendering-centos73 | rendering | latest |
 | batch (バッチ) | rendering-windows2016 | rendering | latest |
 
 プールの VM で追加のアプリケーションが要求されている場合は、その他のオプションを使用できます。
 
-* Marketplace の標準のイメージに基づくカスタム イメージ:
-  * このオプションを使用すると、必要な目的のアプリケーションと特定のバージョンで VM を構成できます。 詳しくは、[カスタム イメージを使用して仮想マシンのプールを作成する](https://docs.microsoft.com/azure/batch/batch-custom-images)方法に関するページをご覧ください。 Autodesk と Chaos Group では Azure Batch のライセンス サービスに対する検証を行うために Arnold と V-Ray をそれぞれ修正していることに注意してください。 所有しているアプリケーションがこのサポートに対応するバージョンであることを確認してください。対応していない場合、従量課金ライセンスが動作しません。 現在のバージョンの Maya と 3ds Max は、ヘッドレス (バッチ/コマンドライン モード) で実行されている場合、ライセンス サーバーを必要としません。 このオプションの使用方法について不明な点がある場合は、Azure サポートにお問い合わせください。
+* Shared Image Gallery のカスタム イメージ
+  * このオプションを使用すると、必要な目的のアプリケーションと特定のバージョンで VM を構成できます。 詳細については、「[Shared Image Gallery を使用してプールを作成する](batch-sig-images.md)」を参照してください。 Autodesk と Chaos Group では Azure Batch のライセンス サービスに対する検証を行うために Arnold と V-Ray をそれぞれ修正していることに注意してください。 所有しているアプリケーションがこのサポートに対応するバージョンであることを確認してください。対応していない場合、従量課金ライセンスが動作しません。 現在のバージョンの Maya と 3ds Max は、ヘッドレス (バッチ/コマンドライン モード) で実行されている場合、ライセンス サーバーを必要としません。 このオプションの使用方法について不明な点がある場合は、Azure サポートにお問い合わせください。
 * [アプリケーション パッケージ](https://docs.microsoft.com/azure/batch/batch-application-packages):
   * 1 つまたは複数の ZIP ファイルを使用してアプリケーション ファイルをパッケージ化し、Azure portal でアップロードして、プール構成でそのパッケージを指定します。 プール のVM が作成されると、ZIP ファイルがダウンロードされ、ファイルが抽出されます。
 * リソース ファイル:

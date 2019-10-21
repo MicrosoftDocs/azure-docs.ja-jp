@@ -1,6 +1,6 @@
 ---
-title: Microsoft ID プラットフォーム iOS のクイック スタート | Azure
-description: iOS アプリケーションでユーザーにサインインし、Microsoft Graph に対してクエリを実行する方法を説明します。
+title: Microsoft ID プラットフォームでの iOS と macOS のクイック スタート | Azure
+description: iOS または macOS アプリケーションでユーザーのサインインを行い、Microsoft Graph に対してクエリを実行する方法を説明します。
 services: active-directory
 documentationcenter: dev-center-name
 author: TylerMSFT
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2019
+ms.date: 09/24/2019
 ms.author: twhitney
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e6a9dab8a2a37d7fa312b525453683fe789269b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: bdb1ae92b17bef281e3b82a8c1a21344fa37f0da
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852946"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71345538"
 ---
-# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-app"></a>クイック スタート:iOS アプリからユーザーにサインインし、Microsoft Graph API を呼び出す
+# <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>クイック スタート:iOS または macOS アプリからユーザーのサインインを行い、Microsoft Graph API を呼び出す
 
-[!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
+このクイック スタートには、ネイティブの iOS または macOS アプリケーションから個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、および Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
 
-このクイック スタートには、ネイティブ iOS アプリケーションから個人や仕事、学校のアカウントへのサインイン、アクセス トークンの取得、Microsoft Graph API の呼び出しを行う方法を示すコード サンプルが含まれています。
+このクイック スタートは、iOS アプリと macOS アプリの両方に適用されます。 一部の手順は、iOS アプリにのみ必要です。 それらの手順では、iOS のみが対象であることが示されています。
 
 ![このクイック スタートで生成されたサンプル アプリの動作の紹介](media/quickstart-v2-ios/ios-intro.svg)
 
@@ -36,14 +36,15 @@ ms.locfileid: "68852946"
 > **前提条件**
 > * XCode 10 以降
 > * iOS 10 以降 
+> * macOS 10.12 以降
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
 > クイック スタート アプリケーションを開始する方法としては、次の 2 つの選択肢があります。
-> * [簡易] [選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
+> * [簡易] [選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする](#option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample)
 > * [手動] [選択肢 2: アプリケーションを登録し、コード サンプルを手動で構成する](#option-2-register-and-manually-configure-your-application-and-code-sample)
 >
-> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>選択肢 1: アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
+> ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-the-code-sample"></a>オプション 1:アプリを登録して自動構成を行った後、コード サンプルをダウンロードする
 > #### <a name="step-1-register-your-application"></a>手順 1:アプリケーションの登録
 > アプリを登録するには、
 > 1. 新しい [Azure portal の [アプリの登録]](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/IosQuickstartPage/sourceType/docs) ウィンドウに移動します。
@@ -58,41 +59,72 @@ ms.locfileid: "68852946"
 > 1. 開発者用の Microsoft ID プラットフォームの [[アプリの登録]](https://aka.ms/MobileAppReg) ページに移動します。
 > 1. **[新規登録]** を選択します。
 > 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
->      - **[名前]** セクションに、アプリのユーザーがアプリにサインインまたは同意したときにユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `iOSQuickstart`)。
->      - このページの他の設定はスキップします。 
->      - [`Register`] ボタンをクリックします。
-> 1. 新しいアプリをクリックし、`Authentication` > `Add Platform` > `iOS` の順に選択します。    
->      - アプリケーションの***バンドル ID*** を入力します。 
-> 1. `Configure` を選択し、後に備えて ***MSAL 構成***の詳細を保存します。 
-
+>      - **[名前]** セクションに、アプリのユーザーがアプリにサインインまたは同意したときにユーザーに表示されるわかりやすいアプリケーション名を入力します。
+>      - このページの他の設定はスキップします。
+>      - [`Register`] を選択します。
+> 1. **[管理]** セクションで、[`Authentication`] > [`Add Platform`] > [`iOS`] を選択します。
+>      - アプリケーションの***バンドル ID*** を入力します。 バンドル ID は、アプリケーションを一意に識別する一意の文字列 (例: `com.<yourname>.identitysample.MSALMacOS`) にすぎません。 使用する値を書き留めておきます。
+>      - iOS の構成は macOS アプリケーションにも適用できることに注意してください。
+> 1. `Configure` を選択し、このクイック スタートでの後の手順のために "***MSAL 構成***" の詳細を保存しておきます。
 > [!div renderon="portal" class="sxs-lookup"]
 >
 > #### <a name="step-1-configure-your-application"></a>手順 1:アプリケーションの作成
-> このクイック スタートのコード サンプルを動作させるには、Auth ブローカーと互換性があるリダイレクト URI を追加する必要があります。 
+> このクイック スタートのコード サンプルを動作させるには、Auth ブローカーと互換性があるリダイレクト URI を追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-ios/green-check.png) アプリケーションはこれらの属性で構成されています
 
-#### <a name="step-2-download-your-web-server-or-project"></a>手順 2:Web サーバーまたはプロジェクトのダウンロード
+#### <a name="step-2-download-the-sample-project"></a>手順 2:サンプル プロジェクトのダウンロード
 
-- [コード サンプルのダウンロード](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+- [iOS 用のコード サンプルをダウンロードする](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+- [macOS 用のコード サンプルをダウンロードする](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
-#### <a name="step-3-configure-your-project"></a>手順 3:プロジェクトを構成する
+#### <a name="step-3-install-dependencies"></a>手順 3:依存関係をインストールする
+
+ターミナル ウィンドウで、ダウンロードしたコード サンプルが含まれるフォルダーに移動し、`pod install` を実行して、最新の MSAL ライブラリをインストールします。
+
+#### <a name="step-4-configure-your-project"></a>手順 4:プロジェクトを構成する
 
 > [!div renderon="docs"]
 > 上のオプション 1 を選択した場合は、以下の手順を省略できます。 
 
 > [!div renderon="portal" class="sxs-lookup"]
 > 1. zip ファイルを解凍し、XCode でプロジェクトを開きます。
-> 1. **ViewController.swift** を編集し、'let kClientID' で始まる行を次のコード スニペットで置換します。
+> 1. **ViewController.swift** を編集し、'let kClientID' で始まる行を次のコード スニペットに置き換えます。 `kClientID` の値を、このクイック スタートの前の手順でポータルにアプリを登録したときに保存したクライアント ID に必ず更新してください。
 >    ```swift
->    let kClientID = "Enter_the_Application_Id_here"
->    let kAuthority = "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here"
->    ``` 
-> 1. **Info.plist** を右クリックし、 **[形式を指定して開く]**  >  **[ソース コード]** を選択します。
-> 1. dict ルート ノードの下で、***バンドル ID*** と置き換えます。
+>    let kClientID = "Enter_the_Application_Id_Here"
+>    ```
+> 1. プロジェクトの設定を開きます。 **[ID]** セクションに、ポータルに入力した**バンドル ID** を入力します。
+> 1. iOS のみ: **Info.plist** を右クリックし、 **[形式を指定して開く]**  >  **[ソース コード]** を選択します。
+> 1. iOS のみ: dict ルート ノードの下の `CFBundleURLSchemes` を、ポータルに入力した "***バンドル ID***" に置き換えます。
+>
+>    ```xml
+>    <key>CFBundleURLTypes</key>
+>    <array>
+>       <dict>
+>          <key>CFBundleURLSchemes</key>
+>          <array>
+>             <string>msauth.Enter_the_Bundle_Id_Here</string>
+>          </array>
+>       </dict>
+>    </array>
+>    ```
+> 1. アプリをビルドして実行します。
+> [!div class="sxs-lookup" renderon="portal"]
+> > [!NOTE]
+> > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
+> [!div renderon="docs"]
+>
+> 1. zip ファイルを解凍し、XCode でプロジェクトを開きます。
+> 1. **ViewController.swift** を編集し、'let kClientID' で始まる行を次のコード スニペットに置き換えます。 `kClientID` の値を、このクイック スタートの前の手順でポータルにアプリを登録したときに保存したクライアント ID に必ず更新してください。
+>    ```swift
+>    let kClientID = "Enter_the_Application_Id_Here"
+>    ```
+> 1. プロジェクトの設定を開きます。 **[ID]** セクションに、ポータルに入力した**バンドル ID** を入力します。
+> 1. iOS のみ: **Info.plist** を右クリックし、 **[形式を指定して開く]**  >  **[ソース コード]** を選択します。
+> 1. iOS のみ: dict ルート ノードの下の `Enter_the_bundle_Id_Here` を、ポータルで使用した "***バンドル ID***" に置き換えます。
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
@@ -108,41 +140,11 @@ ms.locfileid: "68852946"
 >    ```
 > 1. アプリをビルドして実行します。 
 
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
-> > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
-
-> [!div renderon="docs"]
->
-> 1. zip ファイルを解凍し、XCode でプロジェクトを開きます。
-> 1. **ViewController.swift** を編集し、'let kClientID' で始まる行を次のコード スニペットで置換します。
->
->    ```swift
->    let kClientID = "<ENTER_YOUR_APPLICATION/CLIENT_ID>"
-> 
->    ```
-> 1. **Info.plist** を右クリックし、 **[形式を指定して開く]**  >  **[ソース コード]** を選択します。
-> 1. dict ルート ノードの下で、***バンドル ID*** と置き換えます。
->
->    ```xml
->    <key>CFBundleURLTypes</key>
->    <array>
->       <dict>
->          <key>CFBundleURLSchemes</key>
->          <array>
->             <string>msauth.<ENTER_YOUR_BUNDLE_ID></string>
->          </array>
->       </dict>
->    </array>
->
->    ```
-> 1. アプリをビルドして実行します。 
-
 ## <a name="more-information"></a>詳細情報
 
 このクイック スタートの詳細については、以下のセクションをお読みください。
 
-### <a name="getting-msal"></a>MSAL の取得
+### <a name="get-msal"></a>MSAL の取得
 
 MSAL ([MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)) はユーザーをサインインし、Microsoft ID プラットフォームによって保護されている API にアクセスするトークンを要求するために使用するライブラリです。 MSAL は、次のプロセスを使用してアプリケーションに追加できます。
 
@@ -156,12 +158,16 @@ $ vi Podfile
 use_frameworks!
 
 target 'MSALiOS' do
-   pod 'MSAL', '~> 0.4.0'
+   pod 'MSAL'
 end
 
 ```
 
-### <a name="msal-initialization"></a>MSAL の初期化
+CocoaPods インストール コマンドを実行します。
+
+```pod install```
+
+### <a name="initialize-msal"></a>MSAL の初期化
 
 MSAL への参照を追加するには、次のコードを追加します。
 
@@ -176,7 +182,6 @@ let authority = try MSALAADAuthority(url: URL(string: kAuthority)!)
             
 let msalConfiguration = MSALPublicClientApplicationConfig(clientId: kClientID, redirectUri: nil, authority: authority)
 self.applicationContext = try MSALPublicClientApplication(configuration: msalConfiguration)
-
 ```
 
 > |各値の説明: ||
@@ -185,36 +190,51 @@ self.applicationContext = try MSALPublicClientApplication(configuration: msalCon
 > | `authority` | Microsoft ID プラットフォーム エンドポイント。 ほとんどの場合は *https<span/>://login.microsoftonline.com/common* |
 > | `redirectUri` | アプリケーションのリダイレクト URI。 'nil' を渡すと、既定値またはカスタムのリダイレクト URI を使用できます。 |
 
-### <a name="additional-app-requirements"></a>アプリのその他の要件  
+### <a name="for-ios-only-additional-app-requirements"></a>iOS のみ: アプリの追加要件
 
-アプリでは、`AppDelegate` 内に次の内容も必要です。 これにより、認証を実行するときに MSAL SDK が Auth ブローカー アプリからのトークン応答を処理できるようになります。
+アプリでは、`AppDelegate` 内に次の内容も必要です。 これにより、認証を実行するときに MSAL SDK による Auth ブローカー アプリからのトークン応答の処理が可能になります。
 
  ```swift
  func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-         guard let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String else {
-             return false
-         }
-         
-         return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApplication)
-     }
+        
+        return MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String)
+    }
 
-```
+ ```
+
+> [!NOTE]
+> iOS 13 以降では、`UIApplicationDelegate` ではなく `UISceneDelegate` を採用する場合は、代わりに `scene:openURLContexts:` のコールバックにこのコードを配置します ([Apple のドキュメント](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc)を参照してください)。
+> 以前の iOS との互換性を保持するために UISceneDelegate と UIApplicationDelegate の両方をサポートしている場合は、MSAL コールバックを両方の場所に配置する必要があります。
+
+ ```swift
+ func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        
+        guard let urlContext = URLContexts.first else {
+            return
+        }
+        
+        let url = urlContext.url
+        let sourceApp = urlContext.options.sourceApplication
+        
+        MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: sourceApp)
+    }
+ ```
 
 最後に、アプリでは、`LSApplicationQueriesSchemes` エントリが ***Info.plist*** に `CFBundleURLTypes` と並んで存在している必要があります。 サンプルにはこれが含まれています。 
 
    ```xml 
    <key>LSApplicationQueriesSchemes</key>
    <array>
-      <string>msauth</string>
       <string>msauthv2</string>
+      <string>msauthv3</string>
    </array>
    ```
 
-### <a name="sign-in-users--request-tokens"></a>ユーザーをサインインさせてトークンを要求する
+### <a name="sign-in-users--request-tokens"></a>ユーザーのサインインを行ってトークンを要求する
 
 MSAL には、トークンの取得に使用する 2 つのメソッド `acquireToken`、`acquireTokenSilent` があります。
 
-#### <a name="acquiretoken-getting-a-token-interactively"></a>acquireToken:トークンを対話形式で取得する
+#### <a name="acquiretoken-get-a-token-interactively"></a>acquireToken: 対話形式でのユーザー トークンの取得
 
 状況によっては、ユーザーが Microsoft ID プラットフォームと対話する必要があります。 このような場合、エンド ユーザーは自分のアカウントを選択する、自分の資格情報を入力する、またはアプリのアクセス許可に同意することを要求される可能性があります。 たとえば、次のように入力します。 
 
@@ -224,21 +244,23 @@ MSAL には、トークンの取得に使用する 2 つのメソッド `acquire
 * MFA またはその他の条件付きアクセス ポリシーが必要な場合
 
 ```swift
-let parameters = MSALInteractiveTokenParameters(scopes: kScopes)
-applicationContext.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
+let parameters = MSALInteractiveTokenParameters(scopes: kScopes, webviewParameters: self.webViewParamaters!)
+self.applicationContext!.acquireToken(with: parameters) { (result, error) in /* Add your handling logic */}
 ```
 
 > |各値の説明:||
 > |---------|---------|
 > | `scopes` | 要求するスコープを含む (つまり、Microsoft Graph 用の `[ "user.read" ]` またはカスタム Web API 用の `[ "<Application ID URL>/scope" ]`) (`api://<Application ID>/access_as_user`) |
 
-#### <a name="acquiretokensilent-getting-an-access-token-silently"></a>acquireTokenSilent:アクセス トークンを自動的に取得する
+#### <a name="acquiretokensilent-get-an-access-token-silently"></a>acquireTokenSilent: アクセス トークンを自動的に取得する
 
-アプリは、ユーザーがトークンを要求するたびに、サインインすることをユーザーに要求するべきではありません。 ユーザーが既にサインインしている場合は、この方法により、アプリはトークンを暗黙的に要求できます。 
+アプリは、トークンを要求するたびに、ユーザーにサインインを要求するべきではありません。 ユーザーが既にサインインしている場合は、この方法により、アプリはトークンを暗黙的に要求できます。 
 
 ```swift
-let parameters = MSALSilentTokenParameters(scopes: kScopes, account: applicationContext.allAccounts().first)
-applicationContext.acquireTokenSilent(with: parameters) { (result, error) in /* Add your handling logic */}
+guard let account = try self.applicationContext!.allAccounts().first else { return }
+        
+let silentParams = MSALSilentTokenParameters(scopes: kScopes, account: account)
+self.applicationContext!.acquireTokenSilent(with: silentParams) { (result, error) in /* Add your handling logic */}
 ```
 
 > |各値の説明: ||
@@ -250,7 +272,7 @@ applicationContext.acquireTokenSilent(with: parameters) { (result, error) in /* 
 
 アプリケーションの構築についての完全なステップ バイ ステップ ガイドは、iOS チュートリアルをお試しください。このクイック スタートの完全な説明も含まれています。
 
-### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>このクイック スタートで使用されているアプリケーションを作成する手順
+### <a name="learn-how-to-create-the-application-used-in-this-quickstart"></a>このクイック スタートで使用されているアプリケーションの作成方法を確認する
 
 > [!div class="nextstepaction"]
 > [Graph API 呼び出し iOS チュートリアル](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-ios)

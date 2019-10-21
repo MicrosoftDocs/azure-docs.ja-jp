@@ -7,18 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: fe45adc3eb65631c0b127872240f8d76400f9102
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 5e52275cc7215f6c54c2ff6a11faf82114c414b4
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899662"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676595"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix プロファイル コンテナーと Azure のファイル
 
-Windows Virtual Desktop プレビュー サービスでは、ユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが推奨されています。 FSLogix は、Windows Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 1 つのコンテナーに完全なユーザー プロファイルが格納されます。 サインイン時、このコンテナーは、ネイティブにサポートされた仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。
-
-この記事では、Azure Files で使用する FSLogix プロファイル コンテナーについて説明します。 この情報は、[3 月 21 日に発表](https://www.microsoft.com/microsoft-365/blog/2019/03/21/windows-virtual-desktop-public-preview/)された Windows Virtual Desktop のコンテキストに基づいています。
+Windows Virtual Desktop サービスでは、ユーザー プロファイル ソリューションとして FSLogix プロファイル コンテナーが推奨されています。 FSLogix は、Windows Virtual Desktop などのリモート コンピューティング環境でプロファイルをローミングするように設計されています。 1 つのコンテナーに完全なユーザー プロファイルが格納されます。 サインイン時、このコンテナーは、ネイティブにサポートされた仮想ハード ディスク (VHD) と Hyper-V 仮想ハード ディスク (VHDX) を使用して、コンピューティング環境に動的に接続されます。 ユーザー プロファイルはすぐに利用できるようになり、ネイティブのユーザー プロファイルとまったく同じようにシステムに表示されます。 この記事では、Windows Virtual Desktop の Azure Files 機能で FSLogix プロファイル コンテナーが使用される方法について説明します。
 
 ## <a name="user-profiles"></a>ユーザー プロファイル
 
@@ -55,7 +53,7 @@ UPD と RUP は、リモート デスクトップ セッション ホスト (RDS
 
 #### <a name="performance"></a>パフォーマンス
 
-UPD では、パフォーマンス要件に対応するために[記憶域スペース ダイレクト (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) が必要です。 UPD ではサーバー メッセージ ブロック (SMB) プロトコルが使用されます。 これによって、ユーザーがログインする VM にプロファイルがコピーされます。 S2D と UPD の組み合わせは、Windows Virtual Desktop 用に RDS チームがサービスのプレビュー期間中に推奨するソリューションです。  
+UPD では、パフォーマンス要件に対応するために[記憶域スペース ダイレクト (S2D)](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-storage-spaces-direct-deployment) が必要です。 UPD ではサーバー メッセージ ブロック (SMB) プロトコルが使用されます。 これによって、ユーザーがログインする VM にプロファイルがコピーされます。 S2D と UPD の組み合わせは、Windows Virtual Desktop 用に推奨されるソリューションです。  
 
 #### <a name="cost"></a>コスト
 
@@ -81,7 +79,7 @@ FSLogix プロファイル コンテナーのパフォーマンスおよび機�
 
 ## <a name="best-practices-for-windows-virtual-desktop"></a>Windows Virtual Desktop のベスト プラクティス
 
-Windows Virtual Desktop では、顧客が使用している VM のサイズ、種類、および数を完全に制御できます。 詳細については、「[Windows Virtual Desktop プレビューとは](overview.md)」を参照してください。
+Windows Virtual Desktop では、顧客が使用している VM のサイズ、種類、および数を完全に制御できます。 詳細については、「[Windows Virtual Desktop とは](overview.md)」を参照してください。
 
 ご利用の Windows Virtual Desktop がベスト プラクティスに確実に従うようにするには:
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Data Lake U-SQL SDK を使用して U-SQL ジョブをローカルで実行およびテストする
+title: U-SQL ジョブをローカルに実行する - Azure Data Lake U-SQL SDK
 description: U-SQL ジョブを、ローカル ワークステーションでコマンド ラインとプログラミング インターフェイスを使用して実行およびテストする方法について説明します。
 services: data-lake-analytics
 ms.service: data-lake-analytics
@@ -8,12 +8,12 @@ ms.author: yanacai
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 03/01/2017
-ms.openlocfilehash: 14908225e78b79cb748e712ae23643ddde4a4242
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 51d9060eaf4b30c696ef2a3b5f798a31e2f2a98a
+ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60813470"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71309694"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL の実行およびテストする
 
@@ -137,7 +137,7 @@ U-SQL のローカル実行では、依存関係にある特定の CppSDK パス
 **run** の省略可能な引数を次に示します。
 
 
-|引数|Default value|説明|
+|引数|既定値|説明|
 |--------|-------------|-----------|
 |-分離コード|False|スクリプトには .cs 分離コードがあります|
 |-CppSDK| |CppSDK ディレクトリ|
@@ -207,7 +207,7 @@ U-SQL スクリプトをコンパイルし、作業ディレクトリ、参照�
 
 **execute** の省略可能な引数を次に示します。
 
-|引数|Default value|説明|
+|引数|既定値|説明|
 |--------|-------------|-----------|
 |-DataRoot | '' |メタデータ実行のデータ ルート。 既定値は **LOCALRUN_DATAROOT** 環境変数です。|
 |-MessageOut | '' |ファイルにダンプされるコンソール上のメッセージ。|
@@ -332,13 +332,13 @@ LocalRunHelper.exe は、U-SQL のローカル コンパイルや実行などの
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|パラメーター|Type|説明|
+|パラメーター|種類|説明|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|出力メッセージ用。コンソールで使用するには null に設定します|
 
 **プロパティ**
 
-|プロパティ|Type|説明|
+|プロパティ|種類|説明|
 |--------|----|-----------|
 |AlgebraPath|string|代数ファイルへのパス (代数ファイルは、コンパイル結果の 1 つです)|
 |CodeBehindReferences|string|スクリプトに分離コード参照がある場合は、パスを ';' で区切って指定します|
@@ -364,7 +364,7 @@ public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
 **メソッド**
 
-|Method|説明|戻り値|パラメーター|
+|方法|説明|戻り値|パラメーター|
 |------|-----------|------|---------|
 |public bool DoCompile()|U-SQL スクリプトをコンパイルします|成功時に True| |
 |public bool DoExec()|コンパイル結果を実行します|成功時に True| |

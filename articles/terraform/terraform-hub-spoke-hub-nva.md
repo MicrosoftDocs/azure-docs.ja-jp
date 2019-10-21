@@ -8,13 +8,13 @@ author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
-ms.date: 03/01/2019
-ms.openlocfilehash: 4155a67f70ccc238c6046c07dded7f0214689617
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 09/20/2019
+ms.openlocfilehash: 1fae21e9a60f533533607e74609853ef68348daf
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993511"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173417"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-appliance-with-terraform-in-azure"></a>チュートリアル:Azure で Terraform を使用してハブ仮想ネットワーク アプライアンスを作成する
 
@@ -32,7 +32,7 @@ Azure では、さまざまなネットワーク仮想アプライアンスが�
 
 ## <a name="prerequisites"></a>前提条件
 
-1. [Azure で Terraform を使用して、ハブとスポークのハイブリッド ネットワーク トポロジを作成します](./terraform-hub-spoke-introduction.md)。
+1. [Azure で Terraform を使用して、ハブ スポーク ハイブリッド ネットワーク トポロジを作成します](./terraform-hub-spoke-introduction.md)。
 1. [Azure で Terraform を使用して、オンプレミス仮想ネットワークを作成します](./terraform-hub-spoke-on-prem.md)。
 1. [Azure で Terraform を使用して、ハブ仮想ネットワークを作成します](./terraform-hub-spoke-hub-network.md)。
 
@@ -68,7 +68,7 @@ Azure では、さまざまなネットワーク仮想アプライアンスが�
 
 1. 以下のコードをエディターに貼り付けます。
     
-    ```JSON
+    ```hcl
     locals {
       prefix-hub-nva         = "hub-nva"
       hub-nva-location       = "CentralUS"

@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: 83ff39e9f3b7f95256466c74011e55ebdc22a7a9
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 5df9df1474489d7f1b1fb4e1089143cca63a3e42
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910523"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71935595"
 ---
 # <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
 
@@ -187,7 +187,7 @@ RECOMPILE ヒントを使用した場合、プランはキャッシュされま�
 
 問題を識別したら、問題が発生しているクエリを調整するか、または CPU の要件を吸収するために SQL データベースの容量を増やすようにコンピューティング サイズまたはサービス レベルをアップグレードすることができます。 
 
-詳細については、「[Azure SQL Database で単一データベースのリソースをスケーリングする](sql-database-single-database-scale.md)」および「[Azure SQL Database でエラスティック プールのリソースをスケーリングする](sql-database-elastic-pool-scale.md)」を参照してください。 マネージド インスタンスのスケーリングについては、「[インスタンス レベルのリソース制限](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)」を参照してください。
+詳細については、「[Azure SQL Database で単一データベースのリソースをスケーリングする](sql-database-single-database-scale.md)」および「[Azure SQL Database でエラスティック プールのリソースをスケーリングする](sql-database-elastic-pool-scale.md)」を参照してください。 マネージド インスタンスのスケーリングについては、「[サービス レベルのリソース制限](sql-database-managed-instance-resource-limits.md#service-tier-characteristics)」を参照してください。
 
 ### <a name="performance-problems-caused-by-increased-workload-volume"></a>ワークロード ボリュームの増加が原因で発生したパフォーマンスの問題
 

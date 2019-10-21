@@ -11,24 +11,26 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: aefd3da1908b2be879b5ba500746fab48e43d5bd
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 73c31a60fb14df00f50fefb35ca123298241c61d
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68566962"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71812381"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[高可用性アーキテクチャ](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)の一部として、Premium、Business Critical、または Hyperscale サービス レベルの各データベースは、1 つのプライマリ レプリカと複数のセカンダリ レプリカを使用して自動的にプロビジョニングされます。 セカンダリ レプリカは、プライマリ レプリカと同じコンピューティング サイズでプロビジョニングされます。 **読み取りスケールアウト**機能では、読み取り/書き込みレプリカを共有する代わりに、読み取り専用レプリカのいずれか 1 つの処理能力を使用して SQL Database の読み取り専用ワークロードを負荷分散できます。 これにより、読み取り専用のワークロードは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーション向けです。 追加コストなしで利用できるこの追加能力を使用すると、パフォーマンス上のメリットを得られる可能性があります。
+[高可用性アーキテクチャ](./sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)の一部として、Premium および Business Critical サービス レベルの各データベースは、1 つのプライマリ レプリカと複数のセカンダリ レプリカを使用して自動的にプロビジョニングされます。 セカンダリ レプリカは、プライマリ レプリカと同じコンピューティング サイズでプロビジョニングされます。 **読み取りスケールアウト**機能では、読み取り/書き込みレプリカを共有する代わりに、読み取り専用レプリカのいずれか 1 つの処理能力を使用して SQL Database の読み取り専用ワークロードを負荷分散できます。 これにより、読み取り専用のワークロードは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーション向けです。 Premium および Business Critical サービス レベルでは、余分なコストをかけることなく、この追加の処理能力を使用してパフォーマンス上のメリットをアプリケーションで得ることが可能です。
+
+また、少なくとも 1 つのセカンダリ レプリカが作成されている場合は、ハイパースケール サービス レベルで**読み取りスケールアウト**機能を使用することもできます。 読み取り専用ワークロードが 1 つのセカンダリ レプリカで利用可能なリソースよりも多くのリソースを必要とする場合は、複数のセカンダリ レプリカを使用できます。 Basic、Standard、および General Purpose サービス レベルの高可用性アーキテクチャには、レプリカは一切含まれていません。 **読み取りスケールアウト**機能は、これらのサービス レベルでは使用できません。
 
 次の図に、Business Critical データベースの使用例を示します。
 
 ![読み取り専用レプリカ](media/sql-database-read-scale-out/business-critical-service-tier-read-scale-out.png)
 
-新しい Premium、Business Critical、および Hyperscale データベースでは、読み取りスケールアウト機能は既定で有効になっています。 お使いの SQL 接続文字列が `ApplicationIntent=ReadOnly` で構成されている場合、アプリケーションは、ゲートウェイによって、データベースの読み取り専用レプリカにリダイレクトされます。 `ApplicationIntent` プロパティの使用方法の詳細については、「[アプリケーションの目的を指定する](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)」をご覧ください。
+新しい Premium、Business Critical、および Hyperscale データベースでは、読み取りスケールアウト機能は既定で有効になっています。 ハイパースケールの場合、既定では、新しいデータベースに対して 1 つのセカンダリ レプリカが作成されます。 お使いの SQL 接続文字列が `ApplicationIntent=ReadOnly` で構成されている場合、アプリケーションは、ゲートウェイによって、データベースの読み取り専用レプリカにリダイレクトされます。 `ApplicationIntent` プロパティの使用方法の詳細については、「[アプリケーションの目的を指定する](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)」をご覧ください。
 
 SQL 接続文字列の `ApplicationIntent` 設定に関係なく、アプリケーションがプライマリ レプリカに確実に接続されるようにする場合は、データベースを作成するとき、またはその構成を変更するときに、読み取りスケールアウトを明示的に無効にする必要があります。 たとえばデータベースを Standard または General Purpose レベルから Premium、Business Critical、または Hyperscale レベルにアップグレードするときに、すべての接続が引き続きプライマリ レプリカに対して行われるようにするには、読み取りスケールアウトを無効にします。無効にする方法の詳細については、「[読み取りスケールアウトの有効化と無効化](#enable-and-disable-read-scale-out)」を参照してください。
 

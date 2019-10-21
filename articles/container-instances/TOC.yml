@@ -29,6 +29,10 @@
           href: container-instances-multi-container-yaml.md
         - name: コンテナー グループのデプロイ - Resource Manager
           href: container-instances-multi-container-group.md
+    - name: Azure サービスと統合する
+      items:
+        - name: Azure Functions でトリガーする
+          href: container-instances-tutorial-azure-function-trigger.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -121,6 +125,8 @@
       href: /javascript/api/overview/azure/containerinstances
     - name: Resource Manager テンプレート
       href: /azure/templates/microsoft.containerinstance/containergroups
+    - name: YAML
+      href: container-instances-reference-yaml.md
     - name: コネクタ
       href: /connectors/aci
 - name: リソース

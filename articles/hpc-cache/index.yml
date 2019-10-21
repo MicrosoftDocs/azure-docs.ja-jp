@@ -3,19 +3,19 @@ title: Azure HPC Cache プレビューのドキュメント
 summary: 読み取り集中型のハイ パフォーマンス コンピューティング (HPC) ワークロードのファイル アクセスを高速化するには、Azure HPC Cache を使用します。
 metadata:
   title: Microsoft Azure HPC Cache
-  description: Azure HPC Cache を作成および使用して、コンピューティング リソースとストレージの間の待ち時間の問題を解決する方法について説明します。 Azure HPC Cache は、ファイルベースの読み取り負荷の高いワークロードを対象としており、Azure Blob Storage とオンプレミスのハードウェア ファイラーが組み込まれた集約型の仮想ファイルシステムを作成できます。
+  description: Azure HPC Cache を作成および使用して、コンピューティング リソースとストレージの間の待ち時間の問題を解決する方法について説明します。 Azure HPC Cache は、ファイルベースの読み取り負荷の高いワークロードを対象としており、Azure Blob Storage とオンプレミスのハードウェア ファイラーが組み込まれた集約型の仮想ファイル システムを作成できます。
   ms.service: hpc-cache
   ms.topic: landing-page
   ms.collection: collection
   author: ekpgh
-  ms.author: v-erkell
-  ms.date: 08/30/2019
-  ms.openlocfilehash: 4d5935646c3266624395b3b29a34d9cf8d446de7
-  ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+  ms.author: rohogue
+  ms.date: 09/24/2019
+  ms.openlocfilehash: 0914d3458a153c05a5bd818c448b69f0ef133fb4
+  ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/06/2019
-  ms.locfileid: "70774557"
+  ms.lasthandoff: 10/10/2019
+  ms.locfileid: "72254458"
 landingContent:
 - title: Azure HPC Cache について
   linkLists:
@@ -37,9 +37,9 @@ landingContent:
       url: hpc-cache-mount.md
   - linkListType: concept
     links:
-    - text: 集約された名前空間を構成する
+    - text: 集約された名前空間を計画する
       url: hpc-cache-namespace.md
-    - text: 新しい Blob Storage にデータを設定する
+    - text: データをストレージ ターゲットに移動する (必要な場合)
       url: hpc-cache-ingest.md
 - title: トラブルシューティング
   linkLists:
@@ -47,3 +47,7 @@ landingContent:
     links:
     - text: サポート チケットを開く
       url: hpc-cache-support-ticket.md
+  - linkListType: concept
+    links:
+    - text: リージョンの障害から復旧する
+      url: hpc-region-recovery.md

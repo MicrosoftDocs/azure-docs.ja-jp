@@ -2,18 +2,17 @@
 title: Azure Analysis Services でのサーバー メトリックの監視 | Microsoft Docs
 description: Azure Portal で、Analysis Services のサーバー メトリックを監視する方法を説明します。
 author: minewiskan
-manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/26/2019
+ms.date: 09/12/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5431dd74629b9ed76a6a072d8ada286ce71a7633
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: a66089d01ed9eabdb78975eb1738b87c99fbf311
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596104"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294874"
 ---
 # <a name="monitor-server-metrics"></a>サーバー メトリックの監視
 
@@ -55,6 +54,10 @@ Analysis Services は、ポータルの無料ツールの Azure メトリック�
 |MemoryLimitLow|メモリ:メモリの制限 - 低|Bytes|平均|構成ファイルに指定されているメモリの下限。|
 |MemoryLimitVertiPaq|メモリ:メモリの制限 - VertiPaq|Bytes|平均|構成ファイルに指定されているインメモリの制限。|
 |MemoryUsage|メモリ:メモリ使用量|Bytes|平均|クリーナー メモリの価格の計算で使用されるサーバー プロセスのメモリ使用量。 Process\PrivateBytes カウンターの値に、メモリがマップされたデータのサイズを加えた値と等しくなります。インメモリ分析エンジン (VertiPaq) によって、エンジンのメモリの制限を超えてマップされた (割り当てられた) メモリは無視されます。|
+|private_bytes_metric|Private Bytes |Bytes|平均|他のプロセスと共有されているメモリを含まない、Analysis Services エンジン プロセスと Mashup コンテナー プロセスによって割り当てられたメモリの総量。|
+|virtual_bytes_metric|Virtual Bytes |Bytes|平均|Analysis Services エンジン プロセスと Mashup コンテナー プロセスで使用されている仮想アドレス空間の現在のサイズ。|
+|mashup_engine_private_bytes_metric|M エンジン プライベート バイト |Bytes|平均|他のプロセスと共有されているメモリを含まない、メモリの Mashup コンテナー プロセスによって割り当てられたメモリの総量。|
+|mashup_engine_virtual_bytes_metric|M エンジン仮想バイト |Bytes|平均|仮想アドレス空間の Mashup コンテナー プロセスが使用している現在のサイズ。|
 |Quota|メモリ:Quota|Bytes|平均|現在のメモリ クォータ (バイト単位)。 メモリ クォータはメモリ付与またはメモリ予約とも呼ばれます。|
 |QuotaBlocked|メモリ:ブロックされているクォータ|Count|平均|他のメモリ クォータが解放されるまでブロックされている現在のクォータ要求の数。|
 |VertiPaqNonpaged|メモリ:VertiPaq 非ページ|Bytes|平均|メモリ内エンジン用にワーキング セットでロックされているメモリの量 (バイト単位)。|

@@ -2,17 +2,16 @@
 title: 'サンプル: ストレージ ファイルの暗号化の確認'
 description: このサンプル ポリシー定義は、ファイルの暗号化がストレージ アカウントに対して有効になっていることを要求します。
 author: DCtheGeek
-manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 78d1f14132d19b65f78638986661eef78a406734
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e6a9796d7c70bb4e09d4ce1c2cd9be479a06be0d
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59275761"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980461"
 ---
 # <a name="sample---ensure-storage-file-encryption"></a>サンプル: ストレージ ファイルの暗号化の確認
 

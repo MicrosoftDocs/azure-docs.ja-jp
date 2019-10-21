@@ -19,6 +19,8 @@
   items:
     - name: エンタイトルメント管理
       items:
+        - name: 委任とロール
+          href: entitlement-management-delegate.md
         - name: 要求のプロセスとメール
           href: entitlement-management-process.md
     - name: アクセス レビュー
@@ -36,22 +38,48 @@
       items:
         - name: 一般的なシナリオ
           href: entitlement-management-scenarios.md
-        - name: 新しいアクセス パッケージを作成する
-          href: entitlement-management-access-package-create.md
-        - name: アクセス パッケージを編集する
-          href: entitlement-management-access-package-edit.md
-        - name: カタログを作成する
-          href: entitlement-management-catalog-create.md
-        - name: アクセスの要求
-          href: entitlement-management-request-access.md
-        - name: 要求の承認
-          href: entitlement-management-request-approve.md
-        - name: タスクの委任
-          href: entitlement-management-delegate.md
-        - name: レポートとログを表示する
-          href: entitlement-management-reports.md
-        - name: トラブルシューティング
-          href: entitlement-management-troubleshoot.md
+        - name: 管理者
+          items:
+            - name: カタログ作成者への委任
+              href: entitlement-management-delegate-catalog.md
+            - name: 外部ユーザーのアクセス権の管理
+              href: entitlement-management-external-users.md
+            - name: レポートとログを表示する
+              href: entitlement-management-reports.md
+            - name: トラブルシューティング
+              href: entitlement-management-troubleshoot.md
+        - name: カタログ所有者
+          items:
+            - name: リソースのカタログを作成する
+              href: entitlement-management-catalog-create.md
+            - name: アクセス パッケージ管理者への委任
+              href: entitlement-management-delegate-managers.md
+        - name: アクセス パッケージ管理者
+          items:
+            - name: 新しいアクセス パッケージを作成する
+              href: entitlement-management-access-package-create.md
+            - name: アクセス パッケージのリンクの共有
+              href: entitlement-management-access-package-settings.md
+            - name: リソース ロールの変更
+              href: entitlement-management-access-package-resources.md
+            - name: 要求と承認の設定の変更
+              href: entitlement-management-access-package-request-policy.md
+            - name: ライフサイクルの設定の変更
+              href: entitlement-management-access-package-lifecycle-policy.md
+            - name: 要求の表示と管理
+              href: entitlement-management-access-package-requests.md
+            - name: 割り当ての表示、追加、削除
+              href: entitlement-management-access-package-assignments.md
+            - name: 非表示または削除
+              href: entitlement-management-access-package-edit.md
+        - name: 承認者
+          items:
+            - name: 要求の承認
+              href: entitlement-management-request-approve.md
+        - name: 要求元
+          items:
+            - name: アクセスの要求
+              href: entitlement-management-request-access.md
     - name: アクセス レビュー
       items:
         - name: グループとアプリ

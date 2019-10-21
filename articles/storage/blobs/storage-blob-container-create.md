@@ -4,16 +4,16 @@ description: .NET クライアント ライブラリを使用して、Azure Stor
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 99773b83f15ea4b386c1078eed510fc233322f0f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d1218b10eadf0788752bab2aec4b21614666888c
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985688"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71671280"
 ---
 # <a name="create-or-delete-a-container-in-azure-storage-with-net"></a>.NET を使用して Azure Storage 内でコンテナーを作成または削除する
 

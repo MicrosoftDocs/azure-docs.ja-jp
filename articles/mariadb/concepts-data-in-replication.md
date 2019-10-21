@@ -1,17 +1,17 @@
 ---
 title: データを Azure Database for MariaDB にレプリケートする
-description: この記事では、Azure Database for MariaDB のデータイン レプリケーションについて説明します。
+description: データイン レプリケーションを使用して、外部のサーバーから Azure Database for MariaDB サービスに同期する方法について説明します。
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 07/11/2019
-ms.openlocfilehash: 28c2c01e85120ec17e6f782fb0686a627d50d0d0
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 09/13/2019
+ms.openlocfilehash: 826a6db289bf8b938e85d270f91836b3d8790206
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136740"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71973634"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>データを Azure Database for MariaDB にレプリケートする
 
@@ -37,7 +37,7 @@ ms.locfileid: "70136740"
 - マスター サーバーで SSL が有効になっている場合は、ドメインに対して指定されている SSL CA 証明書が `mariadb.az_replication_change_master` ストアド プロシージャに含まれていることを確認します。 次の[例](https://docs.microsoft.com/azure/mariadb/howto-data-in-replication#link-the-master-and-replica-servers-to-start-data-in-replication)と `master_ssl_ca` パラメーターを参照してください。
 - マスター サーバーの IP アドレスが Azure Database for MariaDB レプリカ サーバーのファイアウォール規則に確実に追加されているようにします。 [Azure portal](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-portal) または [Azure CLI](https://docs.microsoft.com/azure/mariadb/howto-manage-firewall-cli) を使用してファイアウォール規則を更新します。
 - マスター サーバーをホストしているコンピューターで、ポート 3306 の受信トラフィックと送信トラフィックの両方が確実に許可されているようにします。
-- 確実にマスター サーバーに**パブリック IP アドレス**があるか、または DNS がパブリックでアクセス可能であるようにします。
+- マスター サーバーに**パブリック IP アドレス**があるか、DNS がパブリックにアクセスできるか、または完全修飾ドメイン名 (FQDN) を持っているようにしてください。
 
 ### <a name="other"></a>その他
 - データイン レプリケーションは、General Purpose 価格レベルとメモリ最適化価格レベルでのみサポートされます。

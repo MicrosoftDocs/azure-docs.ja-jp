@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: e1eb0d7450e1a7f263f29b8d4657547dd85d4276
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: ed0594373c8702ab01b50facaf0ef5ece2d6c7e1
+ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883290"
+ms.lasthandoff: 10/11/2019
+ms.locfileid: "72274275"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューでのイベントの調整
 
@@ -108,9 +108,9 @@ Azure Time Series Insights プレビューにイベントを送信する方法�
   },
 ```
 
-Time Series Insights プレビューは、クエリ時に (フラット化の後に) テーブルを結合します。 このテーブルには、**Type** などの追加の列が含まれます。 次の例で、テレメトリ データの[調整](./time-series-insights-send-events.md#json)方法を示します。
+Time Series Insights プレビューは、クエリ時に (フラット化の後に) テーブルを結合します。 このテーブルには、**Type** などの追加の列が含まれます。 次の例で、テレメトリ データの[調整](./time-series-insights-send-events.md#supported-json-shapes)方法を示します。
 
-| deviceId  | Type | L1 | L2 | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
+| deviceId  | 種類 | L1 | L2 | timestamp | series.Flow Rate ft3/s | series.Engine Oil Pressure psi |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | `FXXX` | Default_Type | SIMULATOR | Battery System | 2018-01-17T01:17:00Z |   1.0172575712203979 |    34.7 |
 | `FXXX` | Default_Type | SIMULATOR |   Battery System |    2018-01-17T01:17:00Z | 2.445906400680542 |  49.2 |
@@ -130,4 +130,4 @@ Time Series Insights プレビューは、クエリ時に (フラット化の後
 ## <a name="next-steps"></a>次の手順
 
 - これらのガイドラインを実践するには、[Azure Time Series Insights プレビューのクエリ構文](./time-series-insights-query-data-csharp.md)に関するページを参照してください。 Time Series Insights プレビュー データ アクセス REST API のクエリ構文の詳細について説明します。
-- サポートされている JSON の調整の詳細については、「[サポートされている JSON 構造](./time-series-insights-send-events.md#json)」を参照してください。
+- サポートされている JSON の調整の詳細については、「[サポートされている JSON 構造](./time-series-insights-send-events.md#supported-json-shapes)」を参照してください。

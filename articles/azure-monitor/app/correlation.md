@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: bb28171ceca9861fb5cc0b7be1db9ab58ef72a1b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: fe52fe51b347b232e03bad943906413b90c853c0
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70124118"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71338186"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -62,24 +62,35 @@ Application Insights は、分散しているテレメトリを相関付ける�
 
 ## <a name="correlation-headers"></a>相関付けヘッダー
 
-Microsoft は、[相関付け HTTP プロトコル](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)の RFC 提案に取り組んでいます。 この提案では、2 つのヘッダーを定義しています。
-
-- `Request-Id`:呼び出しのグローバルに一意の ID を記述します。
-- `Correlation-Context`:分散トレースのプロパティの名前と値のペアのコレクションを記述します。
-
-この標準では、`Request-Id` 生成の 2 つのスキーマ (フラットと階層) も定義しています。 フラット スキーマでは、既知の `Id` キーが `Correlation-Context` コレクションに対して定義されます。
-
-Application Insights は、相関付け HTTP プロトコル用の[拡張機能](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)を定義します。 これは `Request-Context` の名前と値のペアを使用して、直接の呼び出し元または呼び出し先によって使用されたプロパティのコレクションを伝達します。 Application Insights SDK は、このヘッダーを使用して、`dependency.target` フィールドと `request.source` フィールドを設定します。
-
-### <a name="w3c-distributed-tracing"></a>W3C 分散トレース
-
-Microsoft では、[W3C 分散トレース形式](https://w3c.github.io/trace-context/)への切り替えを実施しています。 次のように定義します。
+以下を定義する [W3C Trace-Context](https://w3c.github.io/trace-context/) に現在移行中です。
 
 - `traceparent`:呼び出しのグローバルに一意の操作 ID と一意識別子を記述します。
 - `tracestate`:トレース システム固有のコンテキストを記述します。
 
-#### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>クラシック ASP.NET アプリの W3C 分散トレース サポートを有効にする
+Application Insights SDK の最新バージョンでは Trace-Context プロトコルがサポートされますが、それをオプトインする必要がある場合があります (Application Insights SDK でサポートされる以前の相関付けプロトコルとの後方互換性が維持されます)。
 
+[相関付け HTTP プロトコル (別名 Request-Id)](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) は、非推奨になる予定です。 このプロトコルは、2 つのヘッダーを定義しています。
+
+- `Request-Id`:呼び出しのグローバルに一意の ID を記述します。
+- `Correlation-Context`:分散トレースのプロパティの名前と値のペアのコレクションを記述します。
+
+Application Insights では、相関付け HTTP プロトコル用の[拡張機能](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)も定義されています。 これは `Request-Context` の名前と値のペアを使用して、直接の呼び出し元または呼び出し先によって使用されたプロパティのコレクションを伝達します。 Application Insights SDK は、このヘッダーを使用して、`dependency.target` フィールドと `request.source` フィールドを設定します。
+
+### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>クラシック ASP.NET アプリの W3C 分散トレース サポートを有効にする
+ 
+  > [!NOTE]
+  > `Microsoft.ApplicationInsights.Web` および `Microsoft.ApplicationInsights.DependencyCollector` 以降は、構成は不要です 
+
+W3C Trace-Context のサポートは、後方互換性により実現され、(W3C のサポートがない) 以前のバージョンの SDK でインストルメント化されたアプリケーションで相関付けが動作するようになっています。 
+
+何らかの理由で以前の `Request-Id` プロトコルを使用し続ける場合、以下の構成により Trace-Context を*無効*にできます。
+
+```csharp
+  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
+  Activity.ForceDefaultIdFormat = true;
+```
+
+以前のバージョンの SDK を実行する場合、更新するか、以下の構成を適用することによって Trace-Context を有効にすることをお勧めします。
 この機能は、バージョン 2.8.0-beta1 以降の `Microsoft.ApplicationInsights.Web` および `Microsoft.ApplicationInsights.DependencyCollector` パッケージで利用できます。
 既定では無効になっています。 有効にするには、`ApplicationInsights.config` を次のように変更します。
 
@@ -94,7 +105,21 @@ Microsoft では、[W3C 分散トレース形式](https://w3c.github.io/trace-co
 </TelemetryInitializers> 
 ```
 
-#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>ASP.NET Core アプリの W3C 分散トレース サポートを有効にする
+### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>ASP.NET Core アプリの W3C 分散トレース サポートを有効にする
+
+ > [!NOTE]
+  > `Microsoft.ApplicationInsights.AspNetCore` バージョン 2.8.0 以降は、構成は不要です。
+ 
+W3C Trace-Context のサポートは、後方互換性により実現され、(W3C のサポートがない) 以前のバージョンの SDK でインストルメント化されたアプリケーションで相関付けが動作するようになっています。 
+
+何らかの理由で以前の `Request-Id` プロトコルを使用し続ける場合、以下の構成により Trace-Context を*無効*にできます。
+
+```csharp
+  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
+  Activity.ForceDefaultIdFormat = true;
+```
+
+以前のバージョンの SDK を実行する場合、更新するか、以下の構成を適用することによって Trace-Context を有効にすることをお勧めします。
 
 この機能は、`Microsoft.ApplicationInsights.AspNetCore` バージョン 2.5.0-beta1 および `Microsoft.ApplicationInsights.DependencyCollector` バージョン 2.8.0-beta1 で利用できます。
 既定では無効になっています。 有効にするには、`ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` を `true` に設定します。
@@ -108,7 +133,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-#### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Java アプリの W3C 分散トレース サポートを有効にする
+### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>Java アプリの W3C 分散トレース サポートを有効にする
 
 - **受信の構成**
 
@@ -145,7 +170,7 @@ public void ConfigureServices(IServiceCollection services)
 > [!IMPORTANT]
 > 受信と送信の両方の構成が正確に同じであることを確認してください。
 
-#### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>Web アプリの W3C 分散トレース サポートを有効にする
+### <a name="enable-w3c-distributed-tracing-support-for-web-apps"></a>Web アプリの W3C 分散トレース サポートを有効にする
 
 この機能は `Microsoft.ApplicationInsights.JavaScript` にあります。 既定では無効になっています。 有効にするには、`distributedTracingMode` config を使用します。AI_AND_W3C は、従来の Application Insights のインストルメント化されたサービスとの下位互換性を保つために用意されています。
 
@@ -209,7 +234,7 @@ OpenTracing の概念の定義については、OpenTracing の[仕様](https://
 
 ASP.NET Core 2.0 では、HTTP ヘッダーの抽出と新しいアクティビティの開始がサポートされています。
 
-バージョン 4.1.0 以降の `System.Net.HttpClient` では、関連付け HTTP ヘッダーの自動挿入と、アクティビティとしての HTTP 呼び出しの追跡がサポートされています。
+バージョン 4.1.0 以降の `System.Net.Http.HttpClient` では、関連付け HTTP ヘッダーの自動挿入と、アクティビティとしての HTTP 呼び出しの追跡がサポートされています。
 
 クラシック ASP.NET 用には、新しい HTTP モジュール [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) があります。 このモジュールは `DiagnosticSource` を使用してテレメトリの関連付けを実装します。 これは、受信要求ヘッダーに基づいてアクティビティを開始します。 また、インターネット インフォメーション サービス (IIS) の処理の各段階が別のマネージド スレッド上で実行される場合でも、要求処理のさまざまな段階からのテレメトリを関連付けます。
 

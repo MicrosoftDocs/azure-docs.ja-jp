@@ -6,16 +6,16 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.date: 06/20/2019
 ms.author: tomfitz
-ms.openlocfilehash: 8677d906375853bdde5c192c86dacc7479f2e31e
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: c7f71dbadf24244756cf65f68ceea24547190737
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67311282"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72170249"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Visual Studio での Azure リソース グループの作成とデプロイ
 
-Visual Studio では、インフラストラクチャとコードを Azure にデプロイするプロジェクトを作成することができます。 たとえば、Web ホスト、Web サイト、および Web サイトのコードをデプロイできます。 Visual Studio では、一般的なシナリオのデプロイに適したさまざまなスターター テンプレートを多数用意しています。 この記事では、Web アプリをデプロイします。  
+Visual Studio では、インフラストラクチャとコードを Azure にデプロイするプロジェクトを作成することができます。 たとえば、Web ホスト、Web サイト、および Web サイトのコードをデプロイできます。 Visual Studio では、一般的なシナリオのデプロイに適したさまざまなスターター テンプレートを多数用意しています。 この記事では、Web アプリをデプロイします。
 
 この記事では、[Azure の開発および ASP.NETのワークロードがインストールされている Visual Studio 2019 以降](/visualstudio/install/install-visual-studio?view=vs-2019)を使用する方法について説明します。 Visual Studio 2017 を使用しても、操作内容はほとんど同じです。
 
@@ -205,13 +205,13 @@ AzureRM モジュール スクリプトの場合は、Visual Studio を使用し
 
     ![リソースの追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-resource-2.png)
 
-1. 今回は **[Web App の Web 配置]** を選択します。 
+1. 今回は **[Web App の Web 配置]** を選択します。
 
     ![Web 配置の追加](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/add-web-deploy.png)
 
    テンプレートを保存します。
 
-1. テンプレートには、新しいパラメーターがいくつか存在します。 それらは前の手順で追加されました。 **_artifactsLocation** または **_artifactsLocationSasToken** の値は自動的に生成されるため、指定する必要はありません。 ただし、デプロイ パッケージが含まれているパスにフォルダーおよびファイル名を設定する必要があります。 これらのパラメーターの名前の末尾は、**PackageFolder** および **PackageFileName** となります。 名前の最初の部分は、追加した Web 配置リソースの名前です。 この記事では、**ExampleAppPackageFolder** および **ExampleAppPackageFileName** という名前が付いています。 
+1. テンプレートには、新しいパラメーターがいくつか存在します。 それらは前の手順で追加されました。 **_artifactsLocation** または **_artifactsLocationSasToken** の値は自動的に生成されるため、指定する必要はありません。 ただし、デプロイ パッケージが含まれているパスにフォルダーおよびファイル名を設定する必要があります。 これらのパラメーターの名前の末尾は、**PackageFolder** および **PackageFileName** となります。 名前の最初の部分は、追加した Web 配置リソースの名前です。 この記事では、**ExampleAppPackageFolder** および **ExampleAppPackageFileName** という名前が付いています。
 
    **Website.parameters.json** を開き、それらのパラメーターを、参照プロパティで確認した値に設定します。 **ExampleAppPackageFolder** をフォルダーの名前に設定します。 **ExampleAppPackageFileName** を ZIP ファイルの名前に設定します。
 
@@ -386,7 +386,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Visual Studio を使用してテンプレートを作成およびデプロイする方法について説明しました。 次のチュートリアルでは、テンプレート リファレンスから情報を検索して、暗号化された Azure Storage アカウントを作成できるようにする方法を示します。
+このクイック スタートでは、Visual Studio を使用してテンプレートを作成およびデプロイする方法について説明しました。 テンプレートの開発についてさらに学習するには、以下の新しい初心者向けチュートリアル シリーズを参照してください。
 
 > [!div class="nextstepaction"]
-> [暗号化されたストレージ アカウントを作成する](./resource-manager-tutorial-create-encrypted-storage-accounts.md)
+> [初心者向けチュートリアル](./template-tutorial-create-first-template.md)

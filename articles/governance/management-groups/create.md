@@ -2,20 +2,16 @@
 title: 管理グループを作成して Azure リソースを整理する - Azure のガバナンス
 description: ポータル、Azure PowerShell、および Azure CLI を使用して、複数のリソースを管理する Azure 管理グループを作成する方法について説明します。
 author: rthorn17
-manager: rithorn
 ms.service: governance
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f34efbbca1616c75c13ee3a8bf73bbee1e66dc92
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 92ab550aa76adc39863a6557d3959b4538bc9a63
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241158"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71980792"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
@@ -31,15 +27,19 @@ ms.locfileid: "70241158"
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
-1. **[すべてのサービス]**  >  **[管理グループ]** を選択します。
+1. **[すべてのサービス]**  >  **[管理 + ガバナンス]** を選択します。
 
-1. メイン ページで、 **[新しい管理グループ]** を選択します。
+1. **[コストの管理と請求]** を選択します
+
+1. [コストの管理と請求] - [管理グループ] ページで、 **[管理グループ]** を選択します
+
+1. **[+ 管理グループの追加]** を選択します。
 
    ![管理グループを操作するためのページ](./media/main.png)
 
 1. [管理グループ ID] フィールドに入力します。
 
-   - **[管理グループ ID]** は、この管理グループでコマンドを送信するために使用するディレクトリの一意識別子です。 この識別子は、このグループを識別するために Azure システム全体で使用されるため、作成後は編集できません。 [ルート管理グループ](index.md#root-management-group-for-each-directory)は、Azure Active Directory ID である ID を使用して自動的に作成されます。 他のすべての管理グループには、一意の ID を割り当てます。
+   - **[管理グループ ID]** は、この管理グループでコマンドを送信するために使用するディレクトリの一意識別子です。 この識別子は、このグループを識別するために Azure システム全体で使用されるため、作成後は編集できません。 [ルート管理グループ](overview.md#root-management-group-for-each-directory)は、Azure Active Directory ID である ID を使用して自動的に作成されます。 他のすべての管理グループには、一意の ID を割り当てます。
    - 表示名フィールドは、Azure Portal 内で表示される名前です。 管理グループの作成時には別の表示名は省略可能なフィールドで、いつでも変更できます。  
 
    ![新しい管理グループを作成するための [オプション] ウィンドウ](./media/create_context_menu.png)  

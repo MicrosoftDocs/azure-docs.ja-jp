@@ -10,26 +10,26 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49f62b6fc1ea00084266d4c5405f8bf96d034cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0775920e1d6572223253edbfc066123a515b5480
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66509255"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71065523"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C では、ローカル アカウントでサインインしているユーザーが、電子メールでの確認による信頼性の証明なしでパスワードを変更できます。 ユーザーがパスワードの変更フローを終了する前にセッションの有効期限が切れた場合は、もう一度サインインすることを求められます。 この記事では、[カスタム ポリシー](active-directory-b2c-overview-custom.md)にパスワードの変更を構成する方法について説明します。 ユーザー フローの[セルフ サービス パスワード リセット](active-directory-b2c-reference-sspr.md)を構成することもできます。
+Azure Active Directory B2C (Azure AD B2C) では、ローカル アカウントでサインインしているユーザーが、電子メールでの確認による信頼性の証明なしでパスワードを変更できます。 ユーザーがパスワードの変更フローを終了する前にセッションの有効期限が切れた場合は、もう一度サインインすることを求められます。 この記事では、[カスタム ポリシー](active-directory-b2c-overview-custom.md)にパスワードの変更を構成する方法について説明します。 ユーザー フローの[セルフ サービス パスワード リセット](active-directory-b2c-reference-sspr.md)を構成することもできます。
 
 ## <a name="prerequisites"></a>前提条件
 
 「[Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
 
-## <a name="add-the-elements"></a>要素を追加する 
+## <a name="add-the-elements"></a>要素を追加する
 
-1. ご自身の *TrustframeworkExtensions.xml* ファイルを開き、識別子が `oldPassword` の次の **ClaimType** 要素を、[ClaimsSchema](claimsschema.md) 要素に追加します。 
+1. ご自身の *TrustframeworkExtensions.xml* ファイルを開き、識別子が `oldPassword` の次の **ClaimType** 要素を、[ClaimsSchema](claimsschema.md) 要素に追加します。
 
     ```XML
     <BuildingBlocks>
@@ -156,7 +156,7 @@ Azure Active Directory (Azure AD) B2C では、ローカル アカウントで�
 7. `<DefaultUserJourney>` の **ReferenceId** 属性を変更して、作成した新しいユーザー体験の ID と一致するようにします。 たとえば、*PasswordChange* です。
 8. 変更を保存します。
 
-[こちら](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)でサンプル ポリシーを見つけることができます。 
+[こちら](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change)でサンプル ポリシーを見つけることができます。
 
 ## <a name="test-your-policy"></a>ポリシーのテスト
 
@@ -165,7 +165,7 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 ### <a name="upload-the-files"></a>ファイルのアップロード
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+2. ご利用の Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。そのためには、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、ご利用のテナントを含むディレクトリを選択します。
 3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、 **[Azure AD B2C]** を検索して選択します。
 4. **[Identity Experience Framework]** を選択します。
 5. [カスタム ポリシー] ページで、 **[ポリシーのアップロード]** をクリックします。
@@ -177,8 +177,8 @@ Azure AD B2C でアプリケーションをテスト中に、Azure AD B2C トー
 
 1. 変更したポリシーを開きます。 たとえば、*B2C_1A_profile_edit_password_change* です。
 2. **[アプリケーション]** には、前に登録したアプリケーションを選択します。 トークンを表示するには、 **[応答 URL]** に `https://jwt.ms` が表示される必要があります。
-3. **[今すぐ実行]** をクリックします。 前に作成したアカウントでサインインします。 これで、パスワードを変更することができます。 
+3. **[今すぐ実行]** をクリックします。 前に作成したアカウントでサインインします。 これで、パスワードを変更することができます。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する](active-directory-b2c-reference-password-complexity-custom.md)方法について学習します。 
+- [Azure Active Directory B2C でカスタム ポリシーを使用してパスワードの変更を構成する](active-directory-b2c-reference-password-complexity-custom.md)方法について学習します。

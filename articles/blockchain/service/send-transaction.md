@@ -1,28 +1,27 @@
 ---
-title: Azure Blockchain Service 上でスマート コントラクトを使用する
-description: Azure Blockchain Service を使用してスマート コントラクトをデプロイし、トランザクションを介して関数を実行する方法に関するチュートリアルです。
+title: Visual Studio Code と Azure Blockchain Service を使用してスマート コントラクトを作成、ビルド、デプロイする
+description: Visual Studio Code の Ethereum 用 Azure Blockchain 開発キット拡張機能を使用して Azure Blockchain Service にスマート コントラクトを作成、ビルド、デプロイするチュートリアル
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/31/2019
+ms.date: 09/10/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 1843bd66e11a6686c9ae81fb8e30c7b030e889b7
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 96fe4d77efdd1fda309d7da021bcc208edd2dfe9
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705126"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934984"
 ---
-# <a name="tutorial-use-smart-contracts-on-azure-blockchain-service"></a>チュートリアル:Azure Blockchain Service 上でスマート コントラクトを使用する
+# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>チュートリアル:Visual Studio Code を使用してスマート コントラクトを作成、ビルド、デプロイする
 
-このチュートリアルでは、Azure Blockchain Development Kit for Ethereum を使用してスマート コントラクトを作成、デプロイし、コンソーシアム ブロックチェーン ネットワーク上のトランザクションを介してスマート コントラクト関数を実行します。
+このチュートリアルでは、Visual Studio Code の Ethereum 用 Azure Blockchain 開発キット拡張機能を使用して、Azure Blockchain Service にスマート コントラクトを作成、ビルド、デプロイします。 また、Truffle を使用し、トランザクションを介してスマート コントラクト関数を実行します。
 
 Azure Blockchain Development Kit for Ethereum を使用して、以下のことを行います。
 
 > [!div class="checklist"]
-> * Azure Blockchain Service コンソーシアム ブロックチェーン メンバーに接続する
 > * スマート コントラクトを作成する
 > * スマート コントラクトをデプロイする
 > * トランザクションを介してスマート コントラクト関数を実行する
@@ -32,52 +31,11 @@ Azure Blockchain Development Kit for Ethereum を使用して、以下のこと�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Quickstart: Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)と「[クイックスタート: Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する](create-member-cli.md)」を完了していること
-* [Visual Studio Code](https://code.visualstudio.com/Download)
-* [Azure Blockchain Development Kit for Ethereum 拡張機能](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node.JS](https://nodejs.org)
-* [Git](https://git-scm.com)
-* [Python](https://www.python.org/downloads/release/python-2715/)。 python.exe をパスに追加します。 Azure Blockchain Development Kit では、パス内に Python が必要です。
-* [Truffle](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
-* [Ganache CLI](https://github.com/trufflesuite/ganache-cli)
-
-### <a name="verify-azure-blockchain-development-kit-environment"></a>Azure Blockchain Development Kit の環境を検証する
-
-Azure Blockchain Development Kit では、自分の開発環境の前提条件が満たされていることが確認されます。 開発環境を検証するには:
-
-VS Code コマンド パレットで、 **[Azure Blockchain: Show Welcome Page]\(Azure Blockchain: ウェルカム ページを表示\)** を選択します。
-
-Azure Blockchain Development Kit によって、完了までに約 1 分かかる検証スクリプトが実行されます。 出力を表示するには、 **[ターミナル] > [新しいターミナル]** の順に選択します。 ターミナルのメニュー バーで、 **[出力]** タブを選択し、ドロップダウン リストの **[Azure Blockchain]** を選択します。 検証が成功すると、次の画像のように表示されます。
-
-![有効な開発環境](./media/send-transaction/valid-environment.png)
-
- 必要なツールがない場合は、 **[Azure Blockchain Development Kit - Preview]\(Azure Blockchain Development Kit - プレビュー\)** という名前の新しいタブに、インストールが必要なアプリと、ツールをダウンロードするためのリンクの一覧が表示されます。
-
-![開発キットで必要なアプリ](./media/send-transaction/required-apps.png)
-
-## <a name="connect-to-consortium-member"></a>コンソーシアム メンバーに接続する
-
-Azure Blockchain Development Kit VS Code 拡張機能を使用して、コンソーシアム メンバーに接続できます。 コンソーシアムに接続したら、スマート コントラクトをコンパイル、ビルドし、Azure Blockchain Service コンソーシアム メンバーにデプロイできます。
-
-Azure Blockchain Service コンソーシアム メンバーにアクセスできない場合は、前提条件の [Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)に関するクイックスタートと「[クイックスタート: Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する](create-member-cli.md)」を完了してください。
-
-1. Visual Studio Code (VS Code) のエクスプローラー ウィンドウで、 **[Azure Blockchain]** 拡張機能を展開します。
-1. **[Connect to Consortium]\(コンソーシアムに接続\)** を選択します。
-
-   ![コンソーシアムに接続する](./media/send-transaction/connect-consortium.png)
-
-    Azure 認証を求められた場合は、プロンプトに従って、ブラウザーを使用して認証します。
-1. コマンド パレットのドロップダウンで **[Connect to Azure Blockchain Service consortium]\(Azure Blockchain Service コンソーシアムに接続\)** を選択します。
-1. Azure Blockchain Service コンソーシアム メンバーに関連付けられているサブスクリプションとリソース グループを選択します。
-1. 一覧からコンソーシアムを選択します。
-
-コンソーシアムおよびブロックチェーン メンバーは、Visual Studio エクスプローラーのサイド バーに一覧表示されます。
-
-![エクスプローラーに表示されているコンソーシアム](./media/send-transaction/consortium-node.png)
+* 「[Quickstart: Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」が完了していること
 
 ## <a name="create-a-smart-contract"></a>スマート コントラクトを作成する
 
-Azure Blockchain Development Kit for Ethereum では、プロジェクト テンプレートと Truffle ツールを使用して、コントラクトのスキャフォールディング、ビルド、およびデプロイを支援します。
+Azure Blockchain Development Kit for Ethereum では、プロジェクト テンプレートと Truffle ツールを使用して、コントラクトのスキャフォールディング、ビルド、およびデプロイを支援します。 前提条件である「[クイックスタート:Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する](connect-vscode.md)」を事前に済ませておいてください。 クイックスタートには、Ethereum 用 Azure Blockchain 開発キットのインストールと構成の手順が紹介されています。
 
 1. VS Code コマンド パレットで、 **[Azure Blockchain: New Solidity Project]\(Azure Blockchain: 新しい Solidity プロジェクト\)** を選択します。
 1. **[Create basic project]\(基本プロジェクトの作成\)** を選択します。
@@ -107,7 +65,7 @@ Azure Blockchain Development Kit では、Truffle を使用してスマート �
 Truffle では、移行スクリプトを使用して、コントラクトが Ethereum ネットワークにデプロイされます。 移行は、プロジェクトの **migrations** ディレクトリに配置されている JavaScript ファイルです。
 
 1. スマート コントラクトをデプロイするには、**HelloBlockchain.sol** を右クリックし、メニューの **[Deploy Contracts]\(コントラクトのデプロイ\)** を選択します。
-1. **[From truffle-config.js]\(truffle-config.js から\)** で Azure Blockchain コンソーシアム ネットワークを選択します。 プロジェクトを作成したときに、コンソーシアムのブロックチェーン ネットワークがプロジェクトの Truffle 構成ファイルに追加されました。
+1. コマンド パレットで Azure Blockchain コンソーシアム ネットワークを選択します。 プロジェクトを作成したときに、コンソーシアムのブロックチェーン ネットワークがプロジェクトの Truffle 構成ファイルに追加されました。
 1. **[Generate mnemonic]\(ニーモニックの生成\)** を選択します。 ファイル名を選択し、ニーモニック ファイルをプロジェクト フォルダーに保存します。 たとえば、「 `myblockchainmember.env` 」のように入力します。 ニーモニック ファイルは、ブロックチェーン メンバーの Ethereum 秘密キーを生成するために使用されます。
 
 Azure Blockchain Development Kit では、Truffle を使用して移行スクリプトが実行され、コントラクトがブロックチェーンにデプロイされます。
@@ -173,7 +131,7 @@ Truffle によってブロックチェーン ネットワーク上でスクリ�
     この関数は、コントラクトの現在の状態を基に、状態変数に格納されているメッセージを返します。
 
 1. **HelloBlockchain.sol** を右クリックし、メニューの **[Build Contracts]\(コントラクトのビルド\)** を選択して、スマート コントラクトへの変更をコンパイルします。
-1. デプロイするには、**HelloBlockchain.sol** を右クリックし、メニューの **[Deploy Contracts]\(コントラクトのデプロイ\)** を選択します。
+1. デプロイするには、**HelloBlockchain.sol** を右クリックし、メニューの **[Deploy Contracts]\(コントラクトのデプロイ\)** を選択します。 確認を求められたら、コマンド パレットで Azure Blockchain コンソーシアム ネットワークを選択します。
 1. 次に、**getMessage** 関数を呼び出すスクリプトを作成します。 Truffle プロジェクトのルートに新しいファイルを作成し、`getmessage.js` という名前を付けます。 そのファイルに次の Web3 JavaScript コードを追加します。
 
     ```javascript

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 4caa4219d2bf7558dbdf71e92e4993722c6e8f6a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a31f839b4bad79a52f5cab386d17e3084314784b
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614875"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72026108"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での高度なスケジューラ機能に関するベスト プラクティス
 
@@ -87,7 +87,7 @@ AKS でノード プールをアップグレードすると、テイントと容
   - 別の新規ノードが作成されます (前の *node1* が削除されたため、名前は *node1* になります)、そして *node2* のテイントが新しい *node1* に適用されます。 次に、*node2* が削除されます。
   - 要するに、*node1* が *node3* になり、*node2* が *node1* になります。
 
-- **仮想マシン スケール セットを使用するクラスター** (現在、AKS でプレビュー段階)
+- **仮想マシン スケール セットを使用するクラスター**
   - ここでも、2 つのノード クラスター *node1* と *node2* があると仮定します。 ノード プールをアップグレードします。
   - 2 つの追加ノード *node3* と *node4* が作成されて、それぞれにテイントが渡されます。
   - 元の *node1* と *node2* は削除されます。

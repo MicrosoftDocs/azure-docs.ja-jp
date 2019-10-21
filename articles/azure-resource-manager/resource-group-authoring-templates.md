@@ -4,14 +4,14 @@ description: 宣言型 JSON 構文を使用した Azure Resource Manager テン�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 09/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: d396b6b48687e451396849cc256c25f847a219cf
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: b6d479935bc9e4bd731b93d3e027644b9ca4dbe0
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306840"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71694971"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 
@@ -75,7 +75,7 @@ ms.locfileid: "70306840"
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
 | parameter-name |はい |パラメーターの名前。 有効な JavaScript 識別子で指定する必要があります。 |
-| type |はい |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
+| type |はい |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 「[データの種類](#data-types)」を参照してください。 |
 | defaultValue |いいえ |パラメーターに値が指定されない場合のパラメーターの既定値。 |
 | allowedValues |いいえ |適切な値が確実に指定されるように、パラメーターに使用できる値の配列。 |
 | minValue |いいえ |int 型パラメーターの最小値。 |
@@ -83,6 +83,20 @@ ms.locfileid: "70306840"
 | minLength |いいえ |string 型、securestring 型、array 型パラメーターの長さの最小値 (この値を含む)。 |
 | maxLength |いいえ |string 型、securestring 型、array 型パラメーターの長さの最大値 (この値を含む)。 |
 | description |いいえ |ポータルを通じてユーザーに表示されるパラメーターの説明。 詳しくは、[テンプレート内のコメント](#comments)に関するページをご覧ください。 |
+
+パラメーターの使用方法の例については、「[Azure Resource Manager テンプレートのパラメーター](template-parameters.md)」を参照してください。
+
+### <a name="data-types"></a>データの種類
+
+インライン パラメーターとして渡される整数の場合、値の範囲はデプロイに使用する SDK またはコマンドライン ツールによって制限されることがあります。 たとえば、PowerShell を使用してテンプレートをデプロイする場合、整数型は -2147483648 から 2147483647 の範囲で指定できます。 この制限を回避するには、[パラメーター ファイル](resource-manager-parameter-files.md)で大きな整数値を指定します。 リソースの種類によって、整数プロパティに独自の制限が適用されます。
+
+テンプレートでブール値と整数値を指定する場合は、値を引用符で囲まないでください。 文字列値は二重引用符で始めて終わります。
+
+オブジェクトは左中かっこで始めて、右中かっこで終わります。 配列は左大かっこで始めて、右大かっこで終わります。
+
+セキュリティで保護された文字列とセキュリティで保護されたオブジェクトは、リソースのデプロイ後に読み取ることはできません。
+
+データ型の書式設定のサンプルについては、「[パラメーターの型の形式](resource-manager-parameter-files.md#parameter-type-formats)」を参照してください。
 
 ## <a name="variables"></a>変数
 
@@ -117,9 +131,11 @@ ms.locfileid: "70306840"
 
 `copy` を使用して変数に複数の値を作成する方法については、「[変数の反復処理](resource-group-create-multiple.md#variable-iteration)」をご覧ください。
 
+変数の使用方法の例については、「[Azure Resource Manager テンプレートの変数](template-variables.md)」を参照してください。
+
 ## <a name="functions"></a>Functions
 
-テンプレート内で、独自の関数を作成できます。 これらの関数は、テンプレートで使用可能です。 通常は、テンプレート内で繰り返したくない複雑な式を定義します。 ユーザー定義関数は、テンプレートでサポートされている[関数](resource-group-template-functions.md)および式から作成します。
+テンプレート内で、独自の関数を作成できます。 これらの関数は、テンプレートで使用可能です。 通常は、テンプレート全体で繰り返したくない複雑な式を定義します。 ユーザー定義関数は、テンプレートでサポートされている[関数](resource-group-template-functions.md)および式から作成します。
 
 ユーザー関数を定義するときに、適用される制限がいくつかあります。
 
@@ -159,6 +175,8 @@ ms.locfileid: "70306840"
 | parameter-value |いいえ |パラメーター値の型。 使用できる型および値は、**string**、**securestring**、**int**、**bool**、**object**、**secureObject**、**array** です。 |
 | output-type |はい |出力値の型。 出力値では、関数入力パラメーターと同じ型がサポートされています。 |
 | output-value |はい |評価され、関数から返されるテンプレート言語式。 |
+
+カスタム関数の使用方法の例については、「[Azure Resource Manager テンプレートのユーザー定義関数](template-user-defined-functions.md)」を参照してください。
 
 ## <a name="resources"></a>リソース
 
@@ -259,6 +277,8 @@ resources セクションでは、デプロイまたは更新されるリソー�
 | condition |いいえ | この出力値が返されたかどうかを示すブール値。 `true` の場合、値はデプロイの出力に含まれています。 `false` の場合、このデプロイでは、出力値はスキップされます。 指定しない場合、既定値は `true` です。 |
 | type |はい |出力値の型。 出力値では、テンプレート入力パラメーターと同じ型がサポートされています。 出力の種類に **securestring** を指定した場合、値はデプロイ履歴に表示されず、他のテンプレートから取得できません。 複数のテンプレートでシークレット値を使用するには、シークレットをキー コンテナーに格納し、パラメーター ファイルでそのシークレットを参照します。 詳細については、「[デプロイ時に Azure Key Vault を使用して、セキュリティで保護されたパラメーター値を渡す](resource-manager-keyvault-parameter.md)」を参照してください |
 | value |はい |評価され、出力値として返されるテンプレート言語式。 |
+
+出力の使用方法の例については、「[Azure Resource Manager テンプレートの出力](template-outputs.md)」を参照してください。
 
 <a id="comments" />
 

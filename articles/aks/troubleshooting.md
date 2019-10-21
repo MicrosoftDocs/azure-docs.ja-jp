@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 50bb26aa1a29dc8b1454fadec416aceea76405b2
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: d2561b1882ea612f29c0ff0eeb4bd6614403c9ff
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844265"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72025487"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 
@@ -105,9 +105,9 @@ AKS クラスターを別のサブスクリプションに移したり、サブ�
 
 **AgentPool 'agentpool' は自動スケールが有効に設定されていますが、Microsoft Azure Virtual Machine Scale Sets 上にありません**
 
-クラスター オートスケーラーや複数ノード プールなどの機能を使用するには、仮想マシン スケール セットを使用する AKS クラスターを作成する必要があります。 仮想マシン スケール セットに依存する機能を使用しようとして、通常の非仮想マシン スケール セットの AKS クラスターを対象とする場合、エラーが返されます。 仮想マシン スケール セットのサポートは現在 AKS でプレビューの段階です。
+クラスター オートスケーラーや複数ノード プールなどの機能を使用するには、仮想マシン スケール セットを使用する AKS クラスターを作成する必要があります。 仮想マシン スケール セットに依存する機能を使用しようとして、通常の非仮想マシン スケール セットの AKS クラスターを対象とする場合、エラーが返されます。
 
-適切なドキュメントの「*開始する前に*」に従って、仮想マシン スケール セット機能のプレビューに正しく登録し、AKS クラスターを作成します。
+適切なドキュメントの「*開始する前に*」のステップに従い、AKS クラスターを正しく作成します。
 
 * [クラスター オートスケーラーを使用する](cluster-autoscaler.md)
 * [複数のノード プールを作成し使用する](use-multiple-node-pools.md)
@@ -141,3 +141,9 @@ AKS クラスターの作成時には、ユーザーに代わってリソース�
 1. リージョン間で既に伝達されていて、クラスターの作成時に AKS に渡すために存在する既存のサービス プリンシパルを使用します。
 2. 自動化スクリプトを使用する場合は、サービス プリンシパルの作成と AKS クラスターの作成の間に遅延時間を追加します。
 3. Azure portal を使用する場合は、作成中にクラスター設定に戻り、数分後に検証ページを再試行します。
+
+## <a name="im-receiving-errors-after-restricting-my-egress-traffic"></a>エグレス トラフィックを制限した後、エラーが表示されました
+
+AKS クラスターからのエグレス トラフィックを制限するときには、AKS 向けの[必須および任意の推奨される](limit-egress-traffic.md)送信ポート、ネットワーク規則と FQDN、アプリケーション規則があります。 ご利用の設定がこのような規則と競合するとき、一部の `kubectl` コマンドを実行できないことがあります。 また、AKS クラスターの作成時にエラーが表示されることがあります。
+
+必須または任意の推奨される送信ポート、ネットワーク規則と FQDN、およびアプリケーション規則のいずれにもご利用の設定が競合していないことを確認します。

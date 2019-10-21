@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: 1649fefda5073761d616fc48c602cab84d293ed0
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: e56aba81b2e6b8e66aeb2c3e5284843055713826
+ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67799091"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71316087"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>チュートリアル:.NET Core アプリで動的な構成を使用する
 
@@ -44,9 +44,14 @@ App Configuration .NET Core クライアント ライブラリでは、アプリ
 
 ## <a name="reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込む
 
-*Program.cs* を開き、`AddAzureAppConfiguration` メソッドで更新の構成を指定し、`Refresh` メソッドを使用して手動更新をトリガーするように、ファイルを更新します。
+*Program.cs* を開いてファイルを更新します。`System.Threading.Tasks` 名前空間の参照を追加し、`AddAzureAppConfiguration` メソッドに更新の構成を指定し、`Refresh` メソッドを使用して手動更新をトリガーするようにします。
 
 ```csharp
+using System;
+using System.Threading.Tasks;
+
+namespace TestConsole
+{
 class Program
 {
     private static IConfiguration _configuration = null;
@@ -54,8 +59,6 @@ class Program
 
     static void Main(string[] args)
     {
-        IConfigurationRefresher refresher = null;
-
         var builder = new ConfigurationBuilder();
         builder.AddAzureAppConfiguration(options =>
         {
@@ -83,6 +86,7 @@ class Program
         await _refresher.Refresh();
         Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
     }
+}
 }
 ```
 
@@ -119,7 +123,7 @@ class Program
 
 1. **[Configuration Explorer]\(構成エクスプローラー)** を選択して次のキーの値を更新します。
 
-    | キー | 値 |
+    | Key | 値 |
     |---|---|
     | TestApp:Settings:Message | Azure App Configuration からのデータ - 更新済み |
 

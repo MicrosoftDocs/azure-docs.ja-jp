@@ -7,12 +7,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6878d3b4fc8648db540d016389747eceb45d936a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: eb3ce47e5ffed697392065a1faacbbfaec19f4d1
+ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67436177"
+ms.lasthandoff: 09/13/2019
+ms.locfileid: "70983682"
 ---
 # <a name="using-azure-batch-with-render-farm-managers"></a>レンダー ファーム マネージャーで Azure Batch を使用する
 
@@ -26,9 +26,15 @@ Azure では、一般的なレンダー マネージャーのビルトイン サ
 * [Royal Render](https://www.royalrender.de/)
 * [Thinkbox Deadline](https://deadline.thinkboxsoftware.com/)
 
+## <a name="azure-render-hub"></a>Azure Render Hub
+
+Azure Render Hub を使用すると、Azure レンダー ファームの作成と管理が簡単になります。  Render Hub では、PipelineFx Qube と Deadline 10 がネイティブにサポートされています。  詳細情報と詳細な手順については、[GitHub リポジトリ](https://github.com/Azure/azure-render-hub)を参照してください。
+
 ## <a name="using-azure-with-pipelinefx-qube"></a>Azure を PipelineFX Qube で使用する
 
-Azure Batch のプール VM を Qube のワーカーとして使用することを有効にするスクリプトや手順は、[GitHub のリポジトリ](https://github.com/Azure/azure-qube)に用意されています。
+Azure Render Hub は、Deadline を含む一般的なレンダー マネージャーをサポートしています。  Render Hub をデプロイして使用する手順については、[GitHub リポジトリ](https://github.com/Azure/azure-render-hub)を参照してください。
+
+Azure Batch のプール VM を Qube のワーカーとして使用することを有効にするスクリプトや手順は、[GitHub のリポジトリ](https://github.com/Azure/azure-qube)でも入手できます。
 
 ## <a name="using-azure-with-royal-render"></a>Azure を Royal Render で使用する
 
@@ -38,7 +44,7 @@ Azure の統合を使用する Royal Render のお客様の例については、
 
 ## <a name="using-azure-with-thinkbox-deadline"></a>Thinkbox Deadline で Azure を使用する
 
-Azure Batch のプール VM を Deadline のスレーブとして使用することを有効にするスクリプトや手順は、[GitHub のリポジトリ](https://github.com/Azure/azure-deadline)に用意されています。
+Azure Render Hub は、Deadline を含む一般的なレンダー マネージャーをサポートしています。  Render Hub をデプロイして使用する手順については、[GitHub リポジトリ](https://github.com/Azure/azure-render-hub)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

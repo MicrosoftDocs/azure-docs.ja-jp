@@ -114,7 +114,7 @@
           href: event-hubs-get-connection-string.md
         - name: さまざまなプロトコルを使用してアプリケーション間でイベントを交換する
           href: event-hubs-exchange-events-different-protocols.md
-        - name: プログラミング ガイド
+        - name: .NET プログラミング ガイド
           href: event-hubs-programming-guide.md
         - name: Python を使用したイベントの送信、受信、およびキャプチャ
           href: event-hubs-python.md

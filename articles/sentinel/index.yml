@@ -1,63 +1,91 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Sentinel プレビューのドキュメント
+### YamlMime:Landing
+title: Azure Sentinel のドキュメント
+summary: この記事では、Azure Sentinel の使用を開始するためのユース ケースを紹介します。 損害を受ける前に、現代に合わせて再開発された SIEM を使用して脅威を確認して停止します。 Azure Sentinel を使用すると、企業全体を鳥瞰できます。
 metadata:
-  title: Azure Sentinel プレビューのドキュメント - チュートリアル、クイック スタート | Microsoft Doc
-  meta.description: Azure Sentinel is a cloud-native SIEM that provides intelligent security analytics for your entire enterprise at cloud scale.
+  title: Azure Sentinel のドキュメント
+  description: 'この記事では、Azure Sentinel の使用を開始するためのユース ケースとシナリオを紹介します。 損害を受ける前に、現代に合わせて再開発された SIEM を使用して脅威を確認して停止します。 Azure Sentinel を使用すると、企業全体を鳥瞰できます。# 必須: 検索結果に表示される記事の説明。 160 文字未満。'
   services: sentinel
-  author: cmcclister
-  manager: carolz
-  ms.service: azure-sentinel
+  ms.service: sentinel
   ms.subservice: azure-sentinel
-  ms.tgt_pltfrm: na
-  ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/28/19
-  ms.author: cmcclister
-abstract:
-  description: Azure Sentinel プレビューとは、企業全体にクラウド規模のインテリジェントなセキュリティ分析を提供するクラウドネイティブな SIEM です。 クラウドの速度と規模の際限をなくし、本当に重要なことに集中できるようにします。 クラウド アセットとオンプレミスのアセット、Office 365、Azure リソース、その他のクラウドすべてから簡単にデータを収集します。 Microsoft のセキュリティ分析の専門家による組み込みの機械学習を使用して、効率的に脅威を検出します。 これらの対応は、組み込みのオーケストレーションと自動プレイブックを使用して自動化できます。
-sections:
-  - title: 5 分間のクイック スタート
-    items:
-      - type: paragraph
-        text: データを Azure Sentine にオンボードし、データや潜在的な脅威を視覚化する方法を説明します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: media/index/deploy.svg
-            text: Azure Sentinel のオンボード
-            href: /azure/sentinel/quickstart-onboard
-          - image:
-              src: media/index/get-started.svg
-            text: Azure Sentinel の概要
-            href: /azure/sentinel/quickstart-get-visibility
-  - title: ステップバイステップのチュートリアル
-    items:
-      - type: paragraph
-        text: セキュリティ ポリシーを定義する方法、悪意のあるアクティビティからリソースを保護する方法、セキュリティのアラートおよびインシデントに対応する方法について説明します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/sentinel/tutorial-detect-threats">Azure Sentinel を使用して脅威を検出する</a>
-          - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">脅威への自動対応を設定する</a>
-  - title: Microsoft Learn でスキルを身に付ける
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Azure のセキュリティの概要
-            href: 'https://docs.microsoft.com/learn/azure'
-            image:
-              src: media/index/tutorial.svg
-              href: 'https://docs.microsoft.com/learn/azure'
-      - type: paragraph
-        text: <a href="/learn/browse/?term=security">対話型学習の詳細...</a>
-  - title: リファレンス
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - html: '<a href="https://azure.microsoft.com/updates/?product=sentinel">サービスの更新情報</a>'
+  ms.collection: collection
+  author: rkarlin
+  ms.author: rkarlin
+  ms.date: 25/09/2019
+  ms.openlocfilehash: 8f8815645b7dfcdcc5e1ed5212ecd1ec298f8644
+  ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 09/26/2019
+  ms.locfileid: "71316496"
+landingContent:
+- title: Azure Sentinel について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Sentinel とは
+      url: overview.md
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Azure Sentinel のオンボード
+      url: quickstart-onboard.md
+    - text: アラートの視覚化
+      url: quickstart-get-visibility.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Sentinel へのデータ接続
+      url: connect-data-sources.md
+- title: 追加のデータ ソースの接続
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure AD の接続
+      url: connect-azure-active-directory.md
+    - text: Azure Information Protection の接続
+      url: connect-azure-information-protection.md
+    - text: AWS の接続
+      url: connect-aws.md
+    - text: Palo Alto Networks の接続
+      url: connect-paloalto.md
+    - text: 脅威インテリジェンスの接続
+      url: connect-threat-intelligence.md
+- title: 複数のテナントの操作
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Azure Sentinel でマルチテナントのサポートを有効にする方法
+      url: multiple-tenants-service-providers.md
+- title: 環境内の状況の把握
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: データを監視する
+      url: tutorial-monitor-your-data.md
+    - text: インシデントの調査
+      url: tutorial-investigate-cases.md
+- title: 脅威を検出する
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 組み込みの分析を使用した脅威の検出
+      url: tutorial-detect-threats-built-in.md
+    - text: カスタム検出ルールの作成
+      url: tutorial-detect-threats-custom.md
+- title: 脅威の防止の自動化
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 脅威への自動対応
+      url: tutorial-respond-threats-playbook.md
+    - text: Jupyter Notebook を使用してセキュリティの脅威を検出する
+      url: notebooks.md
+- title: プロアクティブな脅威検出
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 脅威インテリジェンスの接続
+      url: connect-threat-intelligence.md
+    - text: 脅威の探索
+      url: hunting.md

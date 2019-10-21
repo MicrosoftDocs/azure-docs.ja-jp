@@ -5,14 +5,14 @@ services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: qianw211
 ms.service: marketplace
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/10/2019
 ms.author: v-qiwe
-ms.openlocfilehash: d1a0f3ea46922b8a684c269c13df068e0c879cbd
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: c09e685d10764470d328e7c66293551287b5b1b2
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309107"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962667"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -74,7 +74,7 @@ Azure Marketplace または Microsoft AppSource でトランザクション可�
 
 これらすべてのベネフィットの詳細については、[Marketplace 報酬プログラム デッキ](https://aka.ms/marketplacerewards)をご覧ください。
 
-報酬ベネフィットに加えて、Microsoft AppSource に発行された Dynamics オファーのビジネス アプリケーション パートナーは、[ISV Connect](https://partner.microsoft.com/en-us/solutions/business-applications/isv-overview) を通じて補助プログラムを利用できます。 これには、ビジネス アプリケーション パートナーのニーズに特化した技術、マーケティング、および販売サポートが含まれます。
+報酬ベネフィットに加えて、Microsoft AppSource に発行された Dynamics オファーのビジネス アプリケーション パートナーは、[ISV Connect](https://partner.microsoft.com/solutions/business-applications/isv-overview) を通じて補助プログラムを利用できます。 これには、ビジネス アプリケーション パートナーのニーズに特化した技術、マーケティング、および販売サポートが含まれます。
 
 ## <a name="marketplace-rewards-requirements-and-restrictions"></a>Marketplace 報酬の要件と制限事項
 
@@ -101,9 +101,9 @@ Microsoft は、次のような発行元に対する Marketplace 報酬ベネフ
 
 ## <a name="next-steps"></a>次の手順
 
-Cloud パートナー ポータルでオファーを作成した場合は、サインインしてオファーを作成または構成します。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com)でオファーを作成した場合は、サインインしてオファーを作成または構成します。
 
-パートナー センターでオファーを作成した場合、サインインしてオファーを作成または構成します。
+[パートナー センター](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview)でオファーを作成した場合は、サインインしてオファーを作成または構成します。
 
 [利用可能なセルフサービス リソース](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)を確認します。
 

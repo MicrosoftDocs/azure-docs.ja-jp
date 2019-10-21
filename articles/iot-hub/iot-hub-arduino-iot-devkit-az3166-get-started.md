@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: e4379c38d90f444102a9bbddbae64a8018defcf8
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: e8a186fbcb04dc29fcf57a2353adcf89ce46b119
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844573"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71677930"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 を Azure IoT Hub に接続する
 
@@ -31,7 +31,7 @@ ms.locfileid: "70844573"
 
 DevKit をお持ちでない場合は、 [DevKit シミュレーター](https://azure-samples.github.io/iot-devkit-web-simulator/)を使用するか、[DevKit を購入](https://aka.ms/iot-devkit-purchase)してください。
 
-すべての DevKit チュートリアルのソース コードは、[IoTDevEnvExamples](https://github.com/IoTDevEnvExamples) リポジトリにあります。
+DevKit のすべてのチュートリアルのソース コードは、[コード サンプル ギャラリー](https://docs.microsoft.com/samples/browse/?term=mxchip)に関するページにあります。
 
 ## <a name="what-you-need"></a>必要なもの
 

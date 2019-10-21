@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: sukishen
-ms.openlocfilehash: bd67dbd16d058f43baf8a7d9699b3576f6277718
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: bf62e62e1235c7a37c092e79df57ca518e07ff4b
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900192"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828198"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ネットワーク MSP パートナーについて
 
@@ -40,19 +40,25 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 
 [InterCloud](https://www.intercloud.com/partners/cloud-service-providers/get-azure-expressroute)
 
-[IIJ](https://www.iij.ad.jp/en/)
+[IIJ](https://www.iij.ad.jp/biz/cloudex/)
 
 [Interxion](https://www.interxion.com/products/interconnection/cloud-connect/)
 
 [ixreach](https://www.ixreach.com/)
 
+[KINX](https://www.kinx.net/service/cloud/?lang=en)
+
 [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
 
 [Oncore Cloud Services]( https://www.oncore.cloud/services/ue-for-expressroute/)
 
+[Orixcom]( https://www.orixcom.com/cloud-solutions/)
+
 [Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)
 
-[Vandis](https://www.vandis.com/services/azure-migration/)
+[Vandis](https://www.vandis.com/microsoft-azure-practice/)
+
+[Vigilant IT](https://vigilant.it/manage-cloud-service/)
 
 ## <a name="expressroute"></a>ExpressRoute パートナー
 

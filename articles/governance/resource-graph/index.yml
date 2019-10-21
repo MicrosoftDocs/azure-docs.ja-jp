@@ -10,12 +10,12 @@ metadata:
   author: DCtheGeek
   ms.author: dacoulte
   ms.date: 09/01/2019
-  ms.openlocfilehash: 1f23338b7e894b2ff58b1a5bf9565f842b273465
-  ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+  ms.openlocfilehash: 13bab3dae30a7c6277f465584619726a962f014a
+  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 09/04/2019
-  ms.locfileid: "70239050"
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72527175"
 landingContent:
 - title: Azure Resource Graph について
   linkLists:
@@ -99,3 +99,5 @@ landingContent:
       url: /javascript/api/@azure/arm-resourcegraph
     - text: Python
       url: /python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph
+    - text: REST
+      url: /rest/api/azure-resourcegraph/

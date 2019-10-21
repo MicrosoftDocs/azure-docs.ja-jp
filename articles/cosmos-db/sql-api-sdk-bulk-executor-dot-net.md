@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 11/19/2018
+ms.date: 10/08/2019
 ms.author: ramkris
-ms.openlocfilehash: d24481c1364b41f38e4ca7b8f7d726ebc22a1117
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 90537a7e24e5f87087fb718322a7271043d1d229
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624638"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176844"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>.NET Bulk Executor ライブラリ:ダウンロード情報 
 
@@ -42,6 +42,10 @@ ms.locfileid: "69624638"
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="a-name240-preview240-preview"></a><a name="2.4.0-preview"/>2.4.0-preview
+
+* SDK 依存関係を >= 2.5.1 に変更しました
+
 ### <a name="a-name230-preview2230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
 
 * グラフの Bulk Executor で頂点とエッジに ttl を受け付けるためのサポートが追加されました。
@@ -61,6 +65,12 @@ ms.locfileid: "69624638"
 ### <a name="a-name200-preview200-preview"></a><a name="2.0.0-preview"/>2.0.0-preview
 
 * Bulk Executor ライブラリを .NET Core アプリケーションに対応させるため、サポートされているターゲット フレームワークの 1 つとして .NET Standard 2.0 が追加されました。
+
+### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
+
+* 特定のシナリオで CPU 使用率が高い問題を修正しました。
+* トレースで TraceSource が使用されるようになりました。 ユーザーは、`BulkExecutorTrace` ソースのリスナーを定義できます。
+* サイズが 2MB に近いドキュメントの送信時にロックがまれに発生する問題を修正しました。
 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 

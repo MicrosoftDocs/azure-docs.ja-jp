@@ -7,28 +7,34 @@
       href: billing-understand-your-bill.md
     - name: EA 課金内容を確認する
       href: billing-understand-your-bill-ea.md
-    - name: 課金内容を確認する - Microsoft 顧客契約のみ
+    - name: 課金内容を確認する - Microsoft 顧客契約
       href: billing-mca-understand-your-bill.md
+    - name: 課金内容を確認する - Microsoft パートナー契約
+      href: billing-mpa-understand-your-bill.md
     - name: Microsoft Azure の請求書の表示とダウンロード
       href: billing-download-azure-invoice.md
     - name: Microsoft Azure の使用量と料金の表示とダウンロード
       href: billing-download-azure-daily-usage.md
-    - name: Microsoft 顧客契約に関する税務書類の表示とダウンロード
+    - name: 税務書類を表示してダウンロードする
       href: billing-mca-download-tax-document.md
     - name: サードパーティのサービス料金
       href: billing-understand-your-azure-marketplace-charges.md
     - name: 使用条件の説明
       href: billing-understand-your-usage.md
-    - name: 使用条件の説明 - Microsoft 顧客契約のみ
+    - name: 使用条件の説明 - Microsoft 顧客契約
       href: billing-mca-understand-your-usage.md
     - name: 請求条件の説明
       href: billing-understand-your-invoice.md
-    - name: 請求条件の説明 - Microsoft 顧客契約のみ
+    - name: 請求条件の説明 - Microsoft 顧客契約
       href: billing-mca-understand-your-invoice.md
-    - name: 請求金額を支払う方法 - Microsoft 顧客契約のみ
+    - name: 請求条件の説明 - Microsoft パートナー契約
+      href: billing-mpa-invoice-terms-explained.md
+    - name: 請求金額を支払う方法 - Microsoft 顧客契約
       href: billing-how-to-pay-bill.md
     - name: Microsoft 顧客契約の請求先アカウント
       href: billing-mca-overview.md
+    - name: Microsoft パートナー契約の課金アカウント
+      href: mpa-overview.md
 - name: コストを管理する
   items:
     - name: 予想外のコストを防ぐ
@@ -115,10 +121,8 @@
           href: billing-avoid-charges-free-account.md
         - name: 使用量を確認する
           href: billing-check-free-service-usage.md
-        - name: サブスクリプションのアップグレード
+        - name: アカウントをアップグレードする
           href: billing-upgrade-azure-subscription.md
-        - name: メーターのマッピングを理解する
-          href: billing-understand-free-service-meter-mapping.md
     - name: プロファイルを編集する
       href: billing-how-to-change-azure-account-profile.md
     - name: オープン バンキングと強力なカスタマー認証
@@ -158,19 +162,23 @@
         - name: Microsoft 顧客契約における EA タスク
           href: billing-mca-enterprise-operations.md
     - name: Microsoft 顧客契約の請求先アカウントの設定
-      href: billing-mca-setup-account.md
+      href: mca-setup-account.md
     - name: Office 365 アカウントでサインアップする
       href: billing-use-existing-office-365-account-azure-subscription.md
     - name: Azure アカウントで Office 365 にサインアップする
       href: billing-use-existing-azure-account-for-office-365-subscription.md
 - name: サブスクリプションの管理
   items:
+    - name: サブスクリプションの状態
+      href: billing-azure-subscription-states.md
     - name: サブスクリプションの再アクティブ化
       href: billing-subscription-become-disable.md
     - name: 所有権の移転
       href: billing-subscription-transfer.md
     - name: 所有権の要求 - Microsoft 顧客契約
       href: billing-mca-request-billing-ownership.md
+    - name: 所有権の要求 - Microsoft パートナー契約
+      href: mpa-request-ownership.md
     - name: サブスクリプションを取り消す
       href: billing-how-to-cancel-azure-subscription.md
     - name: クレジット カードの変更
@@ -187,8 +195,6 @@
       href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
     - name: 追加のサブスクリプションの作成
       href: billing-create-subscription.md
-    - name: 追加のサブスクリプションの作成 - Microsoft 顧客契約
-      href: billing-mca-create-subscription.md
     - name: プログラムによる Enterprise サブスクリプションの作成
       href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
     - name: サブスクリプション情報のエクスポート

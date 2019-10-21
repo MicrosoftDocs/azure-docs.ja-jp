@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c39ee29b9a4449000d44e44bc6feae407cf4cd38
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 2fcace82eed81b85571ba88243a3de991ae01aa0
+ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874947"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71180109"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -47,8 +47,8 @@ App Service プランでは、お客様が管理している専用のインフ�
 
 | | 従量課金プラン | Premium プラン | 専用プラン |
 |-|:----------------:|:------------:|:----------------:|
-| Windows | 一般公開 | preview | 一般公開 |
-| Linux | 一般公開 | preview | 一般公開 |
+| Windows | GA | preview | GA |
+| Linux | GA | preview | GA |
 
 ## <a name="consumption-plan"></a>従量課金プラン
 
@@ -62,6 +62,8 @@ App Service プランでは、お客様が管理している専用のインフ�
 * 負荷が高い期間中であっても、自動的にスケールアウトされます。
 
 同じリージョンの関数アプリを同じ従量課金プランに割り当てることができます。 同じ従量課金制プランで複数のアプリケーションを実行しても、マイナス面や影響はありません。 同じ従量課金プランに複数のアプリを割り当てても、各アプリの回復性、スケーラビリティ、または信頼性には影響しません。
+
+従量課金プランで実行しているときのコストを見積もる方法の詳細については、[従量課金プランのコストの概要](functions-consumption-costs.md)に関するページを参照してください。
 
 ## <a name="premium-plan"></a>Premium プラン (プレビュー)
 
@@ -129,7 +131,9 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ## <a name="storage-account-requirements"></a>ストレージ アカウントの要件
 
-どのプランでも、関数アプリを使用するには、Azure BLOB、Queue、Files、Table Storage をサポートする一般的な Azure ストレージ アカウントが必要です。 これは、Functions が、Azure Storage を利用してトリガーの管理や関数実行のログなどの操作を行っているためですが、ストレージ アカウントによってはキューとテーブルはサポートされません。 そのようなアカウント (BLOB専用ストレージ アカウント (including premium storage) や、ゾーン冗長ストレージ レプリケーションを備えた汎用ストレージ アカウントなど) は、関数アプリを作成するときに既存の **[ストレージ アカウント]** の選択肢から除外されます。
+どのプランでも、関数アプリを使用するには、Azure BLOB、Queue、Files、Table Storage をサポートする一般的な Azure ストレージ アカウントが必要です。 これは、Functions が、Azure Storage を利用してトリガーの管理や関数実行のログなどの操作を行っているためですが、ストレージ アカウントによってはキューと表はサポートされません。 そのようなアカウント (BLOB専用ストレージ アカウント (including premium storage) や、ゾーン冗長ストレージ レプリケーションを備えた汎用ストレージ アカウントなど) は、関数アプリを作成するときに既存の **[ストレージ アカウント]** の選択肢から除外されます。
+
+関数アプリで使用されるものと同じストレージ アカウントを、アプリケーション データを格納するためのトリガーとバインドで使用することもできます。 ただし、ストレージを集中的に使用する操作の場合は、別のストレージ アカウントを使用する必要があります。   
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 

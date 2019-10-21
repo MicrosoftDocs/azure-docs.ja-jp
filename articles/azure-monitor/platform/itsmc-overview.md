@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 31d9307d23d308192b362d9570911c86a7dd8372
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: eb9d803bcc9667c26acecbfd098a3022b7421478
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051838"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177646"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -83,7 +83,7 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 
 接続を作成するには、ITSM Connector ソリューションからの接続を許可するように ITSM ツールを準備する必要があります。  
 
-接続先の ITSM 製品に応じて、次の手順に従います。
+接続先の ITSM 製品に応じて、次の手順を使用します。
 
 - [System Center Service Manager (SCSM)](../../azure-monitor/platform/itsmc-connections.md#connect-system-center-service-manager-to-it-service-management-connector-in-azure)
 - [ServiceNow](../../azure-monitor/platform/itsmc-connections.md#connect-servicenow-to-it-service-management-connector-in-azure)
@@ -217,7 +217,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - source
 - 割当先
 - タイトル
-- Type
+- 種類
 - Category
 - 状態
 - エスカレーション
@@ -269,7 +269,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | 終了者 |
 | AssignedTo_s | 割り当て先  |
 | Title_s|  簡単な説明 |
-| Type_s|  Type |
+| Type_s|  種類 |
 | Category_s|  Category |
 | CRState_s|  State|
 | Urgency_s|  緊急度 |

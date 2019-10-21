@@ -7,12 +7,12 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 05/06/2019
-ms.openlocfilehash: f4023fa84215a0319669de0d812d8306b62278e3
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 5194cf51fd7f1debeba76edb48e8377919ae448a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "65073280"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72177965"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
 Azure Database for PostgreSQL は、開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。 これは、コミュニティ バージョンのオープンソースの [PostgreSQL](https://www.postgresql.org/) データベース エンジンに基づいており、2 つのデプロイ オプション: Single Server と Hyperscale (Citus) (プレビュー) で利用できます。
@@ -48,7 +48,7 @@ Hyperscale (Citus) はパブリック プレビュー段階であるため、SLA
 ## <a name="data-security"></a>データのセキュリティ
 Azure Database for PostgreSQL では、Azure データベース サービスの従来のデータ セキュリティが維持されています。 アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能を備えいます。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://azure.microsoft.com/overview/trusted-cloud/)をご覧ください。
 
-Azure Database for PostgreSQL サービスは、保存データにストレージ暗号化を使用し、FIPS 140-2 に準拠しています。 バックアップも含め、データはディスク上で暗号化されます。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。 既定で、Azure Database for PostgreSQL サービスでは、ネットワーク経由の移動データ、およびデータベースとクライアント アプリケーション間の移動データに対して、セキュリティで保護された接続が必要です。
+Azure Database for PostgreSQL サービスでは、保存データのストレージ暗号化に FIPS 140-2 認証済みの暗号モジュールが使用されます。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中に作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。 既定で、Azure Database for PostgreSQL サービスでは、ネットワーク経由の移動データ、およびデータベースとクライアント アプリケーション間の移動データに対して、セキュリティで保護された接続が必要です。
 
 ## <a name="contacts"></a>連絡先
 Azure Database for PostgreSQL についての質問やご提案は、Azure Database for PostgreSQL チームにメール ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)) でお送りください。 このアドレスは、サポート チケットではなく一般的な質問用です。

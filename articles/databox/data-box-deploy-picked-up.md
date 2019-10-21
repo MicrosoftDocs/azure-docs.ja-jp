@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 194b90ab27d02c1fa3eb05bb3ddd78395d351599
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 28666aaac4ec221acca00d937d54a753a4e6a055
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898173"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71172680"
 ---
 ::: zone target="docs"
 
@@ -93,6 +93,26 @@ ms.locfileid: "70898173"
     集荷のスケジュールを設定する代わりに、最寄りの持ち込み場所に Data Box を持ち込むこともできます。
 4. 運送業者によって Data Box が集荷され、スキャンされると、ポータルの注文状態は "**集荷されました**" に更新されます。 追跡 ID も表示されます。
 
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
+ 
+Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+
+
+::: zone-end
+
 
 ## <a name="in-australiatabin-australia"></a>[オーストラリア](#tab/in-australia)
 
@@ -126,6 +146,24 @@ ms.locfileid: "70898173"
 - 最初に集荷に関するメールを送信します。
 - 電話で注文の名前を伝えます。
 
+::: zone target="chromeless"
+
+## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
+
+[!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
+
+## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
+ 
+Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
+
+::: zone-end
+
+::: zone target="docs"
+
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
+
+::: zone-end
+
 ## <a name="in-japantabin-japan"></a>[日本](#tab/in-japan) 
 
 1. 返品対象のデバイスを発送する場合に使用する元の箱を保管しておきます。
@@ -156,69 +194,23 @@ ms.locfileid: "70898173"
 - メール: Customerservice.JP@quantiumsolutions.com 
 - 電話: 03-5755-0150 
 
-::: zone target="docs"
-
-## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
-
-Microsoft がディスクを受け取ってスキャンすると、注文の状態は "**受取済み**" に更新されます。 その後、デバイスの損傷または改ざんの印がないか物理的に検証されます。
-
-検証が完了すると、Data Box は Azure データセンターのネットワークに接続されます。 データのコピーが自動的に開始されます。 データのサイズによっては、コピー処理が完了するまでに数時間から数日かかる場合があります。 コピー ジョブの進行状況は、ポータルで監視することができます。
-
-コピーが完了すると、注文の状態が "**完了**" に更新されます。
-
-コピー元からデータを削除する前に、データが Azure にアップロードされていることを確認します。 データは次の場所にあります。
-
-- お使いの Azure Storage アカウント。 データを Data Box にコピーする場合は、そのデータがタイプに応じて Azure Storage アカウントの次のいずれかのパスにアップロードされます。
-
-  - ブロック BLOB およびページ BLOB の場合: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-  - Azure Files の場合: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
-
-    あるいは、Azure Portal で Azure ストレージ アカウントにアクセスし、そこから移動することもできます。
-
-- マネージド ディスク リソース グループ。 マネージド ディスクを作成するとき、VHD はページ BLOB としてアップロードされた後、マネージド ディスクに変換されます。 マネージド ディスクは、注文の作成時に指定されたリソース グループに接続されています。 
-
-    - Azure のマネージド ディスクへのコピーが正常に完了した場合は、Azure portal の **[注文の詳細]** に移動して、マネージド ディスクに指定されているリソース グループをメモすることができます。
-
-        ![マネージド ディスク リソース グループを識別する](media/data-box-deploy-copy-data-from-vhds/order-details-managed-disk-resource-groups.png)
-
-        メモしたリソース グループに移動し、目的のマネージド ディスクを見つけます。
-
-        ![リソース グループに接続されているマネージド ディスク](media/data-box-deploy-copy-data-from-vhds/managed-disks-resource-group.png)
-
-    - VHDX または動的/差分 VHD をコピーした場合、VHDX/VHD はページ BLOB としてステージング ストレージ アカウントにアップロードされますが、VHD からマネージド ディスクへの変換は失敗します。 ステージング環境の **[ストレージ アカウント] > [BLOB]** に移動し、適切なコンテナー (Standard SSD、Standard HDD、または Premium SSD) を選択します。 VHD は、ステージング ストレージ アカウントにページ BLOB としてアップロードされます。
-
-::: zone-end
-
 ::: zone target="chromeless"
 
 ## <a name="verify-data-upload-to-azure"></a>Azure へのデータのアップロードを確認する
 
 [!INCLUDE [data-box-verify-upload](../../includes/data-box-verify-upload.md)]
 
-::: zone-end
-
 ## <a name="erasure-of-data-from-data-box"></a>Data Box からデータを消去する
  
 Azure へのアップロードが完了すると、Data Box は [NIST SP 800-88 Revision 1 のガイドライン](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)に従ってディスク上のデータを消去します。
 
+::: zone-end
+
 ::: zone target="docs"
 
-## <a name="next-steps"></a>次の手順
-
-このチュートリアルでは、Azure Data Box に関する次のようなトピックについて説明しました。
-
-> [!div class="checklist"]
-> * 前提条件
-> * 発送の準備をする
-> * Data Box を Microsoft に送付する
-> * Azure へのデータのアップロードを確認する
-> * Data Box からデータを消去する
-
-次の記事に進み、ローカル Web UI 経由で Data Box を管理する方法を学習します。
-
-> [!div class="nextstepaction"]
-> [ローカル Web UI を使用して Azure Data Box を管理する](./data-box-local-web-ui-admin.md)
+[!INCLUDE [data-box-verify-upload-return](../../includes/data-box-verify-upload-return.md)]
 
 ::: zone-end
+
 
 

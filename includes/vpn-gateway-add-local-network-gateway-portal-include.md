@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 08/02/2019
+ms.date: 10/04/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dbfa7ff6e30b64fe1025114590c1b1a8824e6cdf
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 6c59513c2c84b5f280e8200411b53848768eaf29
+ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68780278"
+ms.lasthandoff: 10/05/2019
+ms.locfileid: "71970840"
 ---
 1. ポータルで **+ [リソースの作成]** をクリックします。
 2. 検索ボックスに「**ローカル ネットワーク ゲートウェイ**」と入力し、**Enter** キーを押して検索します。 これにより、結果の一覧が返されます。 **[ローカル ネットワーク ゲートウェイ]** をクリックし、 **[作成]** ボタンをクリックして **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。
@@ -28,6 +28,6 @@ ms.locfileid: "68780278"
    - **[BGP 設定の構成]:** BGP を構成する場合にのみ使用します。 それ以外の場合は選択しないでください。
    - **サブスクリプション:** 正しいサブスクリプションが表示されていることを確認します。
    - **[リソース グループ]:** 使用するリソース グループを選択します。 新しいリソース グループを作成することも、作成済みのリソース グループを選択することもできます。
-   - **[場所]:** このオブジェクトが作成される場所を選択します。 VNet が存在するのと同じ場所を選択することもできますが、必須ではありません。
+   - **[場所]:** この場所は、他の設定の**リージョン**と同じです。 このオブジェクトが作成される場所を選択します。 VNet が存在するのと同じ場所を選択することもできますが、必須ではありません。
 
 4. 値の指定が完了したら、ページの下部にある **[作成]** ボタンをクリックして、ローカル ネットワーク ゲートウェイを作成します。

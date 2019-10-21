@@ -9,23 +9,29 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0236491f9ebc8e3ecf7df8b74db4fd5ff441c7f8
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 16ac8ef9e0fb876103b57b1cc463bdae5b2362b7
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677434"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828104"
 ---
-# <a name="create-and-provision-a-simulated-tpm-edge-device-on-windows"></a>Windows 上のシミュレートされた TPM Edge デバイスの作成とプロビジョニング
+# <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Windows 上で、仮想 TPM を使用するシミュレートされた IoT Edge デバイスを作成し、プロビジョニングする
 
 Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.yml) を使用して、Edge に対応していないデバイスと同じように自動プロビジョニングできます。 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](../iot-dps/concepts-auto-provisioning.md)」を読んでから先に進んでください。
 
-この記事では、シミュレートされた Edge デバイスの自動プロビジョニングを次の手順でテストする方法を示します。
+この記事では、シミュレートされた IoT Edge デバイスの自動プロビジョニングを次の手順でテストする方法を示します。
 
 * IoT Hub Device Provisioning Service (DPS) のインスタンスを作成する。
 * ハードウェアのセキュリティ用のシミュレートされたトラステッド プラットフォーム モジュール (TPM) を使用して、Windows マシン上にシミュレートされたデバイスを作成する。
 * デバイスの個別登録を作成する。
 * IoT Edge ランタイムをインストールし、デバイスを IoT Hub に接続する。
+
+> [!NOTE]
+> DPS で TPM 構成証明を使用する場合は、TPM 2.0 が必要です。これは、グループではなく個別の登録を作成する場合にのみ使用できます。
+
+> [!TIP]
+> この記事では、仮想デバイスでの TPM 構成証明を使用した自動プロビジョニングのテストについて説明しますが、その多くは、物理 TPM ハードウェアを使用する場合にも適用されます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,6 +43,11 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 Azure 内に IoT Hub Device Provisioning Service の新しいインスタンスを作成し、それを自分の IoT Hub にリンクします。 手順については、[IoT Hub DPS の設定](../iot-dps/quick-setup-auto-provision.md)に関する記事を参照してください。
 
 Device Provisioning Service を実行した後、概要ページから **[ID スコープ]** の値をコピーします。 この値は、IoT Edge ランタイムを構成するときに使用します。
+
+> [!TIP]
+> 物理 TPM デバイスを使用している場合は、各 TPM チップに固有であり、それに関連付けられている TPM チップの製造元から取得される**保証キー**を判断する必要があります。 たとえば保証キーの SHA-256 ハッシュを作成することによって、TPM デバイスの一意の**登録 ID** を派生させることができます。
+>
+> 記事「[Azure Portal でデバイス登録を管理する方法](../iot-dps/how-to-manage-enrollments.md)」の手順にしたがって DPS に登録を作成し、その後、この記事内の「[IoT Edge ランタイムをインストールする](#install-the-iot-edge-runtime)」セクションに進んで処理を続行します。
 
 ## <a name="simulate-a-tpm-device"></a>TPM デバイスのシミュレート
 
@@ -60,15 +71,39 @@ DPS 内に登録を作成するときに、**デバイス ツインの初期状�
 
 ## <a name="install-the-iot-edge-runtime"></a>IoT Edge ランタイムをインストールする
 
-前のセクションを完了すると、新しいデバイスが IoT Edge デバイスとして IoT Hub に一覧表示されます。 次は、IoT Edge ランタイムをデバイスにインストールする必要があります。
+IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 そのコンポーネントはコンテナー内で実行されるため、デバイスに追加のコンテナーを展開して、Edge でコードを実行できるようにすることができます。
 
-IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 そのコンポーネントはコンテナー内で実行されるため、デバイスに追加のコンテナーを展開して、Edge でコードを実行できるようにすることができます。  
+デバイスをプロビジョニングする際には、次の情報が必要になります。
 
-手順に従って、前のセクションのシミュレートされた TPM を実行しているデバイスに IoT Edge ランタイムをインストールします。 IoT Edge ランタイムの構成が、手動プロビジョニングではなく、自動プロビジョニングになっていることを確認してください。
+* DPS の **ID スコープ**値
+* 作成したデバイス**登録 ID**
 
-IoT Edge をデバイスにインストールする前に、DPS の **ID スコープ**とデバイスの**登録 ID** を確認します。
+シミュレートされた TPM を実行しているデバイスに IoT Edge ランタイムをインストールします。 IoT Edge ランタイムを、手動プロビジョニングではなく、自動プロビジョニング用に構成します。
 
-[IoT Edge をインストールして自動的にプロビジョニングする](how-to-install-iot-edge-windows.md#option-2-install-and-automatically-provision)
+> [!TIP]
+> インストールとテストを行っている間は、TPM シミュレーターを実行しているウィンドウを開いたままにしてください。
+
+Windows での IoT Edge のインストールの詳細については、コンテナーの管理や IoT Edge の更新などのタスクに関する前提条件や手順を含めて、「[Windows に Azure IoT Edge ランタイムをインストールする](how-to-install-iot-edge-windows.md)」を参照してください。
+
+1. 管理者モードで PowerShell ウィンドウを開きます。 IoT Edge をインストールするときは、PowerShell (x86) ではなく、PowerShell の AMD64 セッションを必ず使用してください。
+
+1. **Deploy-IoTEdge** コマンドを使用して、ご使用の Windows コンピューターがサポートされているバージョンであることを確認し、コンテナー機能をオンに設定した後、moby ランタイムと IoT Edge ランタイムをダウンロードします。 コマンドの既定値では Windows コンテナーが使用されます。
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Deploy-IoTEdge
+   ```
+
+1. この時点で、IoT Core デバイスが自動的に再起動することがあります。 その他の Windows 10 または Windows Server デバイスでは、再起動が求められることがあります。 その場合、デバイスをすぐに再起動してください。 デバイスが起動されたら、管理者として PowerShell を再実行します。
+
+1. **Initialize-IoTEdge** コマンドを使用して、お使いのマシンに IoT Edge ランタイムを構成します。 このコマンドでは、Windows コンテナーを使用した手動プロビジョニングが既定で設定されます。 手動プロビジョニングではなく Device Provisioning Service を使用するには、`-Dps` フラグを使用します。
+
+   `{scope_id}` および `{registration_id}` のプレースホルダー値を、前に収集したデータに置き換えます。
+
+   ```powershell
+   . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
+   Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID}
+   ```
 
 ## <a name="verify-successful-installation"></a>インストールの成功を確認する
 
@@ -81,7 +116,6 @@ Get-Service iotedge
 ```
 
 過去 5 分のサービス ログを調べます。
-
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog

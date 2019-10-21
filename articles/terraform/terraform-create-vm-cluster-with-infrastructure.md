@@ -8,13 +8,13 @@ author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 11/13/2017
-ms.openlocfilehash: 284dcd99dc77d7ec0fb5cb214d49b6fcf93a6aef
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 09/20/2019
+ms.openlocfilehash: bf9539512961930a97d9dcfe86722d0103c1facc
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854482"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71173468"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Terraform と HCL を使用して VM クラスターを作成する
 
@@ -46,7 +46,7 @@ ms.locfileid: "68854482"
 
 5. 変数宣言ファイルに次のコードをコピーします。
 
-   ```tf
+   ```hcl
    variable subscription_id {}
    variable tenant_id {}
    variable client_id {}
@@ -64,7 +64,7 @@ ms.locfileid: "68854482"
 
 7. 変数ファイルに次のコードをコピーします。 次のように、必ずプレースホルダーを置き換えます。`subscription_id` には、`az account set` の実行時に指定した Azure サブスクリプション ID を使用します。 `tenant_id` には、`az ad sp create-for-rbac` から返された `tenant` の値を使います。 `client_id` には、`az ad sp create-for-rbac` から返された `appId` の値を使います。 `client_secret` には、`az ad sp create-for-rbac` から返された `password` の値を使います。
 
-   ```tf
+   ```hcl
    subscription_id = "<azure-subscription-id>"
    tenant_id = "<tenant-returned-from-creating-a-service-principal>"
    client_id = "<appId-returned-from-creating-a-service-principal>"
@@ -79,7 +79,7 @@ ms.locfileid: "68854482"
 
 2. 次のサンプル リソース定義を、新しく作成した `main.tf` ファイルにコピーします。 
 
-   ```tf
+   ```hcl
    resource "azurerm_resource_group" "test" {
     name     = "acctestrg"
     location = "West US 2"
@@ -227,7 +227,7 @@ ms.locfileid: "68854482"
 
 Terraform を初期化するには、次のコマンドを実行します。
 
-  ```cmd
+  ```bash
   terraform init
   ```
 
@@ -245,13 +245,13 @@ Terraform 変数ファイルの名前が `terraform.tfvars` ではなく、`*.au
 
 実行プランを保存する必要がない場合は、次のコマンドを実行します。
 
-  ```cmd
+  ```bash
   terraform plan
   ```
 
 実行プランを保存する必要がある場合は、次のコマンドを実行します (&lt;path> プレースホルダーを、実際の出力パスに置き換えます)。
 
-  ```cmd
+  ```bash
   terraform plan -out=<path>
   ```
 
@@ -263,13 +263,13 @@ Terraform 変数ファイルの名前が `terraform.tfvars` ではなく、`*.au
 
 最新の実行プランを適用する場合は、次のコマンドを実行します。
 
-  ```cmd
+  ```bash
   terraform apply
   ```
 
 以前に保存した実行プランを適用する場合は、次のコマンドを実行します (&lt;path> プレースホルダーを、実行プランを保存したパスに置き換えます)。
 
-  ```cmd
+  ```bash
   terraform apply <path>
   ```
 

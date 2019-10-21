@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 97d900146b3485df5cdf226f07aaa3aee116fc92
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: 100740e87c13887a3e7ac85aa5fce3d67c838ea0
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186754"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240320"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -41,8 +41,7 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Runbook のアクセス許可
 
-Hybrid Runbook Worker で実行されている Runbook は Azure 以外のリソースにアクセスするため、Azure のリソースへの認証に Runbook で通常使用される方法と同じものを使用することはできません。 Runbook では、ローカル リソースに対する独自の認証を提供するか、または [Azure リソースのマネージド ID ](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
-)を使用して認証を構成することができます。 また、すべての Runbook にユーザー コンテキストを提供する RunAs アカウントを指定することもできます。
+Hybrid Runbook Worker で実行されている Runbook は Azure 以外のリソースにアクセスするため、Azure のリソースへの認証に Runbook で通常使用される方法と同じものを使用することはできません。 Runbook では、ローカル リソースに対する独自の認証を提供するか、または [Azure リソースのマネージド ID ](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)を使用して認証を構成することができます。 また、すべての Runbook にユーザー コンテキストを提供する RunAs アカウントを指定することもできます。
 
 ### <a name="runbook-authentication"></a>Runbook の認証
 

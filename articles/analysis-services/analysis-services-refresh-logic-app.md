@@ -2,17 +2,16 @@
 title: Logic Apps を使用した Azure Analysis Services モデルの更新 | Microsoft Docs
 description: Azure Logic Apps を使用して非同期更新のコードを記述する方法を説明します。
 author: chrislound
-manager: kfile
 ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: chlound
-ms.openlocfilehash: 2234a2c6cd42be45a2b2e7784c1dd5aec8839cb9
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: acf31bf3e7e8c3a0835640dee36f8435a1eba625
+ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311733"
+ms.lasthandoff: 10/13/2019
+ms.locfileid: "72294618"
 ---
 # <a name="refresh-with-logic-apps"></a>Logic Apps を使用した更新
 
@@ -20,7 +19,7 @@ Logic Apps と REST 呼び出しを使用すると、Azure Analysis 表形式モ
 
 Azure Analysis Services での REST API の使用に関する詳細については、「[REST API を使用した非同期更新](analysis-services-async-refresh.md)」を参照してください。
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>認証
 
 すべての呼び出しを、有効な Azure Active Directory (OAuth 2) トークンで認証する必要があります。  この記事の例では、サービス プリンシパル (SPN) を使用して Azure Analysis Services を認証します。 詳細については、[Azure portal を使用したサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事を参照してください。
 

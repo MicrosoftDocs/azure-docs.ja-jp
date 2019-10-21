@@ -1,7 +1,7 @@
 ---
 title: ワークスペースとは
-titleSuffix: Azure Machine Learning service
-description: ワークスペースは、Azure Machine Learning service の最上位のリソースです。 スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴も保持されています。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します
+titleSuffix: Azure Machine Learning
+description: ワークスペースは、Azure Machine Learning の最上位のリソースです。 スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴も保持されています。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 08/06/2019
-ms.openlocfilehash: ef060c083109a7096b62ebb35f2b49bb37a371b8
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: de215502f1ecb55bc331f29057a4f7c3f30b0132
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860498"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71720176"
 ---
-# <a name="what-is-an-azure-machine-learning-service-workspace"></a>Azure Machine Learning service ワークスペースとは
+# <a name="what-is-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースとは
 
-ワークスペースは、Azure Machine Learning service の最上位のリソースで、Azure Machine Learning service を使用するときに作成するすべての成果物を操作するための一元的な場所を提供します。  ワークスペースには、スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴が保持されます。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します。  
+ワークスペースは、Azure Machine Learning の最上位のリソースで、Azure Machine Learning を使用するときに作成するすべての成果物を操作するための一元的な場所を提供します。  ワークスペースには、スクリプトのログ、メトリック、出力、スナップショットなど、すべてのトレーニング実行の履歴が保持されます。 この情報を使用して、最適なモデルを生成するトレーニング実行を判断します。  
 
 必要なモデルを作成したら、ワークスペースに登録します。 次に、登録済みモデルとスコアリング スクリプトを使用して、Azure Container Instances、Azure Kubernetes Service、または Field-Programmable Gate Array (FPGA) に REST ベースの HTTP エンドポイントとしてデプロイします。 モジュールとして Azure IoT Edge デバイスにモデルをデプロイすることもできます。
 
@@ -66,9 +66,6 @@ ms.locfileid: "70860498"
 + 実験、パイプライン、モデル、デプロイなどの機械学習の成果物を表示します。
 + モデルを追跡および監視します。
 
-
-
-
 ## <a name="workspace-management"></a>ワークスペースの管理
 
 次のワークスペース管理タスクを実行することもできます。
@@ -80,14 +77,14 @@ ms.locfileid: "70860498"
 | ワークスペース アクセスの管理    | **&check;**   | |  **&check;**    |
 | ノートブック VM を作成する | **&check;**   | |     |
 
-### <a name='create-workspace'></a> ワークスペースを作成する
+## <a name='create-workspace'></a> ワークスペースを作成する
 
 ワークスペースは、さまざまな方法で作成できます。
 
 * ポイント アンド クリック形式のインターフェイスで各手順の作業を行う場合は、[Azure portal](how-to-manage-workspace.md) を使用します。
 * Python スクリプトまたは Jupiter Notebook からオンザフライでワークスペースを作成するには、[Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py#workspace) を使用します。
 * 会社のセキュリティ標準に沿って作成を自動化またはカスタマイズするには、[Azure Resource Manager テンプレート](how-to-create-workspace-template.md)または [Azure Machine Learning CLI](reference-azure-machine-learning-cli.md) を使用します。
-* Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning)を使用します。
+* Visual Studio Code で作業する場合は、[VS Code 拡張機能](how-to-vscode-tools.md#get-started-with-azure-machine-learning-for-visual-studio-code)を使用します。
 
 ## <a name="resources"></a> 関連するリソース
 
@@ -103,9 +100,9 @@ ms.locfileid: "70860498"
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Machine Learning service の利用を開始する場合は、以下を参照してください。
+Azure Machine Learning の利用を開始するには、以下を参照してください。
 
-+ [Azure Machine Learning service の概要](overview-what-is-azure-ml.md)
++ [Azure Machine Learning の概要](overview-what-is-azure-ml.md)
 + [ワークスペースを作成する](how-to-manage-workspace.md)
 + [ワークスペースを管理する](how-to-manage-workspace.md)
 + [チュートリアル:モデルをトレーニングする](tutorial-train-models-with-aml.md)

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95aeeacfd85dd79453bff4e365e5b050039f77b9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 1f9b6d4ce4048b31f17b50184f90aed4d2a8ba81
+ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852463"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71086568"
 ---
 # <a name="scenario-web-app-that-signs-in-users"></a>シナリオ: ユーザーをサインインさせる Web アプリ
 
@@ -32,15 +32,35 @@ Microsoft ID プラットフォームを使用してユーザーをサインイ�
 
 ## <a name="getting-started"></a>使用の開始
 
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
+
 ユーザーをサインインさせる最初のポータブル (ASP.NET Core) Web アプリを作成する場合は、このクイック スタートに従います。
 
 > [!div class="nextstepaction"]
 > [クイック スタート:ユーザーをサインインさせる ASP.NET Core Web アプリ](quickstart-v2-aspnet-core-webapp.md)
 
-ASP.NET を引き続き使用する場合は、次のチュートリアルをお試しください。
+# <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
+
+従来の ASP.NET Web アプリケーションにサインインを追加する方法を理解したい場合は、次のチュートリアルをお試しください。
 
 > [!div class="nextstepaction"]
 > [クイック スタート:ユーザーをサインインさせる ASP.NET Web アプリ](quickstart-v2-aspnet-webapp.md)
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Java 開発者の場合は、次のクイックスタートをお試しください。
+
+> [!div class="nextstepaction"]
+> [クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する](quickstart-v2-java-webapp.md)
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Python で開発する場合は、次をお試しください。
+
+> [!div class="nextstepaction"]
+> [クイック スタート:Python Web アプリに Microsoft でサインインを追加する](quickstart-v2-python-webapp.md)
+
+---
 
 ## <a name="overview"></a>概要
 
@@ -51,11 +71,11 @@ ASP.NET を引き続き使用する場合は、次のチュートリアルをお
 第 2 フェーズとして、お使いのアプリで、サインインしたユーザーの代わりに Web API を呼び出すこともできます。 この第 2 フェーズは別のシナリオであり、[Web アプリで Web API を呼び出す](scenario-web-app-call-api-overview.md)に関するページでご確認いただけます
 
 > [!NOTE]
-> Web アプリにサインインを追加することは、Web アプリの保護と、**ミドルウェア**のライブラリが行うユーザー トークンの検証に関連します。 このシナリオでは、保護された API を呼び出すためのトークンを取得することに関連する Microsoft 認証ライブラリ (MSAL) はまだ必要ありません。 認証ライブラリは、Web アプリで Web API を呼び出す必要がある場合のみ、フォローアップ シナリオで導入されます。
+> Web アプリにサインインを追加することは、Web アプリの保護と、**ミドルウェア**のライブラリが行うユーザー トークンの検証に関連します。 .NET の場合、このシナリオでは、保護された API を呼び出すためのトークンを取得することに関連する Microsoft 認証ライブラリ (MSAL) はまだ必要ありません。 認証ライブラリは、Web アプリで Web API を呼び出す必要がある場合のみ、フォローアップ シナリオで導入されます。
 
 ## <a name="specifics"></a>詳細
 
-- アプリケーションの登録時、1 つまたは複数 (お使いのアプリを複数の場所にデプロイする場合) の応答 URI を提供する必要があります。 一部のケース (ASP.NET/ASP.NET Core) では、IDToken を有効にする必要があります。 最終的に、お使いのアプリケーションがユーザーのサインアウトに反応できるように、サインアウト URI を設定する必要が生じることがあります。
+- アプリケーションの登録時、1 つまたは複数 (お使いのアプリを複数の場所にデプロイする場合) の応答 URI を提供する必要があります。 一部のケース (ASP.NET/ASP.NET Core) では、ID トークンを有効にする必要があります。 最終的に、お使いのアプリケーションがユーザーのサインアウトに反応できるように、サインアウト URI を設定する必要が生じることがあります。
 - お使いのアプリケーションのコードでは、お使いの Web アプリでサインインを委任する権限を提供する必要があります。 トークンの検証をカスタマイズする必要が生じる場合があります (ISV シナリオでは特に)。
 - Web アプリケーションでは、さまざまなアカウントの種類をサポートしています。 詳細については、「[サポートされているアカウントの種類](v2-supported-account-types.md)」を参照してください。
 

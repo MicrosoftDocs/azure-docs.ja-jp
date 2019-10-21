@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/11/2019
+ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev
-ms.openlocfilehash: 22d65d20220bfda821fe255e08dd056b761a828d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 8bb9073ccb4aef81b46b3b2b87730ddede5c0ff7
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086990"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72240204"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>クイック スタート:Java Web アプリに "Microsoft でサインイン" を追加する
 
@@ -34,8 +34,8 @@ ms.locfileid: "71086990"
 
 ## <a name="prerequisites"></a>前提条件
 
-このサンプルを実行するには、次のものが必要になります。 
-- Java Development Kit (JDK) 8 以降および Maven。
+このサンプルを実行するには、次のものが必要になります。
+- [Java Development Kit (JDK)](https://openjdk.java.net/) 8 以降および [Maven](https://maven.apache.org/)。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>クイック スタート アプリを登録してダウンロードする
@@ -50,18 +50,7 @@ ms.locfileid: "71086990"
 > ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>オプション 2:アプリケーションを登録し、アプリケーションとコード サンプルを手動で構成する
 > 
 >
-> #### <a name="step-1-download-the-code-sample"></a>手順 1:コード サンプルのダウンロード
-> 
-> - [コード サンプルのダウンロード](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
->
-> #### <a name="step-2-open-applicationproperties"></a>手順 2:application.properties のオープン
->
-> 1. ZIP ファイルをローカル フォルダーに展開します。
-> 1. (オプション) 統合開発環境を使用する場合は、その IDE でサンプルを開きます。
-> 1. *application.properties* ファイルを開きます。 次の手順でアプリケーションを登録するときに、`aad.clientId`、`aad.authority`、および `aad.secretKey` の値を挿入します。
-
-
-> #### <a name="step-3-register-your-application"></a>手順 3:アプリケーションの登録
+> #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
 > アプリケーションを登録し、その登録情報をソリューションに手動で追加するには、次の手順を実行します。
 >
 > 1. 職場または学校アカウントか、個人の Microsoft アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
@@ -71,8 +60,8 @@ ms.locfileid: "71086990"
 > 1. **[アプリケーションの登録]** ページが表示されたら、以下のアプリケーションの登録情報を入力します。
 >    - **[名前]** セクションに、アプリのユーザーに表示されるわかりやすいアプリケーション名を入力します (例: `java-webapp`)。
 >    - ここでは **[リダイレクト URI]** は空白のままにして、 **[登録]** を選択します。
-> 1. アプリケーションの**アプリケーション (クライアント) ID** の値を見つけます。 *application.properties* ファイル内の `Enter_the_Application_Id_here` の値を更新します。
-> 1. アプリケーションの**ディレクトリ (テナント) ID** の値を見つけます。 *application.properties* ファイル内の `Enter_the_Tenant_Info_Here` の値を更新します。 
+> 1. アプリケーションの**アプリケーション (クライアント) ID** の値を見つけます。 この値をコピーします。後で必要になります。
+> 1. アプリケーションの**ディレクトリ (テナント) ID** の値を見つけます。 この値をコピーします。後で必要になります。
 > 1. **[認証]** メニューを選択し、次の情報を追加します。
 >    - **[リダイレクト URI]** で `http://localhost:8080/msal4jsamples/secure/aad` と `https://localhost:8080/msal4jsamples/graph/users` を追加します。
 >    - **[保存]** を選択します。
@@ -81,7 +70,7 @@ ms.locfileid: "71086990"
 >    - キーの説明 (インスタンス アプリ シークレットの) を入力します。
 >    - キーの有効期間として **[1 年]** を選択します。
 >    - **[追加]** をクリックすると、キーの値が表示されます。 
->    - キーの値をコピーします。 前にダウンロードした *application.properties* ファイルを開き、`Enter_the_Client_Secret_Here` の値をキーの値で更新します。 
+>    - キーの値をコピーします。後で必要になります。
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1:Azure portal でのアプリケーションの構成
@@ -93,20 +82,26 @@ ms.locfileid: "71086990"
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![構成済み](media/quickstart-v2-aspnet-webapp/green-check.png) アプリケーションはこれらの属性で構成されています。
-> 
-> #### <a name="step-2-download-the-code-sample"></a>手順 2:コード サンプルのダウンロード
-> 
-> - [コード サンプルのダウンロード](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
-> 
-> #### <a name="step-3-configure-the-code-sample"></a>手順 3:コード サンプルの構成 
-> 
-> 1. ZIP ファイルをローカル フォルダーに展開します。
-> 1. 統合開発環境を使用する場合は、その IDE でサンプルを開きます (オプション)。
-> 1. **application.properties** ファイルを開きます。このファイルは、*src/main/resources/* にあります。
-> 1. アプリケーションのプロパティを置き換えます。
->   1. `aad.clientId` を探し、`Enter_the_Application_Id_here` の値を、登録済みのアプリケーションの**アプリケーション (クライアント) ID** 値で更新します。 
->   1. `aad.authority` を探し、`Enter_the_Tenant_Name_Here` の値を、登録済みのアプリケーションの**ディレクトリ (テナント) ID** 値で更新します。
->   1. `aad.secretKey` を探し、`Enter_the_Client_Secret_Here` の値を、登録済みアプリケーションの **[証明書とシークレット]** で作成した**クライアント シークレット**で更新します。
+
+#### <a name="step-2-download-the-code-sample"></a>手順 2:コード サンプルのダウンロード
+ 
+ [コード サンプルのダウンロード](https://github.com/Azure-Samples/ms-identity-java-webapp/archive/master.zip)
+ 
+ #### <a name="step-3-configure-the-code-sample"></a>手順 3:コード サンプルの構成 
+ 
+ 1. ZIP ファイルをローカル フォルダーに展開します。
+ 1. 統合開発環境を使用する場合は、その IDE でサンプルを開きます (オプション)。
+ 1. **application.properties** ファイルを開きます。このファイルは、*src/main/resources/* にあります。
+ 1. アプリケーションのプロパティを置き換えます。
+   1. `aad.clientId` を探し、`Enter_the_Application_Id_here` の値を、登録済みのアプリケーションの**アプリケーション (クライアント) ID** 値で更新します。 
+   1. `aad.authority` を探し、`Enter_the_Tenant_Name_Here` の値を、登録済みのアプリケーションの**ディレクトリ (テナント) ID** 値で更新します。
+   1. `aad.secretKey` を探し、`Enter_the_Client_Secret_Here` の値を、登録済みアプリケーションの **[証明書とシークレット]** で作成した**クライアント シークレット**で更新します。
+
+> [!div renderon="docs"]
+> 各値の説明:
+>
+> - `Enter_the_Application_Id_here` - 登録したアプリケーションのアプリケーション ID。
+> - `Enter_the_Client_Secret_Here` - 登録済みアプリケーション用に **[証明書とシークレット]** で作成した **[クライアント シークレット]** です。
 
 #### <a name="step-4-run-the-code-sample"></a>手順 4:コード サンプルの実行
 1. コード サンプルを実行し、ブラウザーを開いて、 *http://localhost:8080* に移動します。
@@ -114,7 +109,6 @@ ms.locfileid: "71086990"
 1. Azure Active Directory で正常に認証されると、 *http://localhost:8080/msal4jsamples/secure/aad* にリダイレクトされます。 これらのユーザーはアプリケーションに正式にサインインし、ページにはサインインしたアカウントの情報が表示されます。 また、以下の操作のためのボタンも含まれています。 
     - "*サインアウト*": 現在のユーザーをアプリケーションからサインアウトし、ホーム ページにリダイレクトします。
     - "*ユーザーの表示*": Microsoft Graph のトークンを取得してから、トークンを要求にアタッチして Microsoft Graph を呼び出し、テナント内のすべてのユーザーを取得します。
-
 
 ## <a name="more-information"></a>詳細情報
 
@@ -134,7 +128,7 @@ compile group: 'com.microsoft.azure', name: 'msal4j', version: '0.5.0-preview'
 ```
 
 
-### <a name="msal-initialization"></a>Msal の初期化
+### <a name="msal-initialization"></a>MSAL の初期化
 MSAL4J を使用するファイルの先頭に次のコードを追加すると、MSAL4J への参照を追加できます。 
 
 ```Java

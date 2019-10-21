@@ -54,7 +54,7 @@ Event Hubs は、イベント ソースまたはイベント ハンドラーと�
 
 ソースとしての Event Hubs の例については、[Event Hubs ソース](event-sources.md#event-hubs)に関するページを参照してください。
 
-## <a name="hybrid-connections"></a>ハイブリッド接続と
+## <a name="hybrid-connections"></a>ハイブリッド接続
 
 Azure Relay ハイブリッド接続を使用して、エンタープライズ ネットワーク内にあり、パブリックにアクセスできるエンドポイントがないアプリケーションにイベントを送信します。
 

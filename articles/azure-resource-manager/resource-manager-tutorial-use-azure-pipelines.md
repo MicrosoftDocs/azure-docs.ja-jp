@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 06/12/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 85dc0476da12bea64610b6910b0682fef00f4b5a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 462d9cd6d2a911e660221621ebde5829e928cf00
+ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67064736"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71122219"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>チュートリアル:Azure Pipelines を使用した Azure Resource Manager テンプレートの継続的インテグレーション
 
@@ -264,4 +264,4 @@ GitHub リポジトリと Azure DevOps プロジェクトを削除しても構�
 このチュートリアルでは、Azure DevOps パイプラインを作成して Azure Resource Manager テンプレートをデプロイしました。 複数のリージョンにわたって Azure リソースをデプロイする方法のほか、安全なデプロイの実践については、以下を参照してください
 
 > [!div class="nextstepaction"]
-> [Azure Deployment Manager の使用](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [安全なデプロイ プラクティスの使用](./deployment-manager-tutorial.md)

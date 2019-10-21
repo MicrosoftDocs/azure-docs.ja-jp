@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 9108f83e854b51720c64c5a74a828543cc5e7688
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b705123dc6492466c30b3c1ddaf4b330b0d684a1
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64875815"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272259"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>コピー アクティビティでのスキーマ マッピング
 
@@ -90,7 +90,7 @@ ms.locfileid: "64875815"
 
 | プロパティ | 説明                                                  | 必須 |
 | -------- | ------------------------------------------------------------ | -------- |
-| name     | ソースまたはシンク列の名前。                           | はい      |
+| 名前     | ソースまたはシンク列の名前。                           | はい      |
 | ordinal  | 列のインデックス。 1 から始まります。 <br>ヘッダー行がない区切りテキストを使用するときに適用され、必須です。 | いいえ       |
 | path     | 抽出またはマップする各フィールドの JSON パス式。 たとえば MongoDB/REST などの階層データに適用します。<br>ルート オブジェクトの下のフィールドでは、JSON パスはルート $ で始まり、`collectionReference` プロパティにより選択された配列内のフィールドでは、JSON パスは配列要素で始まります。 | いいえ       |
 | type     | ソースまたはシンク列の Data Factory 中間データ型。 | いいえ       |
@@ -287,7 +287,7 @@ Data Factory は次の中間データ型をサポートしています。[デー
 
 * Byte[]
 * Boolean
-* DateTime
+* Datetime
 * Datetimeoffset
 * Decimal
 * Double

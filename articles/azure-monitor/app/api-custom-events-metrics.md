@@ -12,19 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: mbullwin
-ms.openlocfilehash: cdc16c2ea01d14edc236d0d6a0897e0dd9578924
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 8f29ea1e3de8f71c489438cd2d794c03b72ca38e
+ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909811"
+ms.lasthandoff: 10/17/2019
+ms.locfileid: "72514272"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
 アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。 デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) コア テレメトリ API を使用すると、カスタムのイベントやメトリック、独自バージョンの標準テレメトリを送信できます。 この API は、Application Insights の標準のデータ コレクターで使用される API と同じものです。
-
-> [!NOTE]
-> `TrackMetric()` は、.NET ベースのアプリケーションのためにカスタム メトリックを送信する場合に推奨される方法ではなくなりました。 Application Insights .NET SDK の[バージョン 2.60 beta 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) で、新しいメソッドの [`TelemetryClient.GetMetric()`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) が導入されました。 Application Insights .NET SDK [バージョン 2.72](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) の時点で、この機能は安定したリリースの一部になりました。
 
 ## <a name="api-summary"></a>API の概要
 
@@ -68,6 +65,8 @@ Application Insights SDK の参照がまだない場合:
 
 `TelemetryClient` インスタンスを取得します (Web ページの JavaScript を除く)。
 
+[ASP.NET Core](asp-net-core.md#how-can-i-track-telemetry-thats-not-automatically-collected) アプリと [.NET/.NET Core 向けの非 HTTP/ワーカー](worker-service.md#how-can-i-track-telemetry-thats-not-automatically-collected) アプリの場合、それぞれのドキュメントに説明されているとおり、依存関係インジェクション コンテナーから `TelemetryClient` のインスタンスを取得することが推奨されます。
+
 *C#*
 
 ```csharp
@@ -94,7 +93,7 @@ var telemetry = applicationInsights.defaultClient;
 
 TelemetryClient はスレッド セーフです。
 
-ASP.NET および Java プロジェクトの場合は、受信 HTTP 要求が自動的にキャプチャされます。 アプリの他のモジュールのために TelemetryClient の追加のインスタンスを作成することもできます。 たとえば、ミドルウェア クラスでビジネス ロジック イベントを報告する 1 つの TelemetryClient インスタンスを使用できます。 マシンを識別するために UserId や DeviceId などのプロパティを設定できます。 こうした情報は、インスタンスから送信されるすべてのイベントに付属します。 
+ASP.NET および Java プロジェクトの場合は、受信 HTTP 要求が自動的にキャプチャされます。 アプリの他のモジュールのために TelemetryClient の追加のインスタンスを作成することもできます。 たとえば、ミドルウェア クラスでビジネス ロジック イベントを報告する 1 つの TelemetryClient インスタンスを使用できます。 マシンを識別するために UserId や DeviceId などのプロパティを設定できます。 こうした情報は、インスタンスから送信されるすべてのイベントに付属します。
 
 *C#*
 
@@ -123,7 +122,7 @@ Application Insights の*カスタム イベント*はデータ ポイントで�
 *JavaScript*
 
 ```javascript
-appInsights.trackEvent("WinGame");
+appInsights.trackEvent({name:"WinGame"});
 ```
 
 *C#*
@@ -342,7 +341,7 @@ appInsights.trackPageView("tab1", "http://fabrikam.com/page1.htm");
 
 代わりに、次のいずれかを行うことができます。
 
-* [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) の呼び出し `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);` で明示的な時間を設定する。
+* [trackPageView](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/legacy/API.md#trackpageview) の呼び出し `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);` で明示的な時間を設定する。
 * ページ ビューのタイミングの呼び出し (`startTrackPage` と `stopTrackPage`) を使用する。
 
 *JavaScript*
@@ -969,7 +968,7 @@ telemetry.trackEvent("SignalProcessed", properties, metrics);
 using Microsoft.ApplicationInsights.DataContracts;
 
 var gameTelemetry = new TelemetryClient();
-gameTelemetry.Context.Properties["Game"] = currentGame.Name;
+gameTelemetry.Context.GlobalProperties["Game"] = currentGame.Name;
 // Now all telemetry will automatically be sent with the context property:
 gameTelemetry.TrackEvent("WinGame");
 ```
@@ -978,7 +977,7 @@ gameTelemetry.TrackEvent("WinGame");
 
 ```vb
 Dim gameTelemetry = New TelemetryClient()
-gameTelemetry.Context.Properties("Game") = currentGame.Name
+gameTelemetry.Context.GlobalProperties("Game") = currentGame.Name
 ' Now all telemetry will automatically be sent with the context property:
 gameTelemetry.TrackEvent("WinGame")
 ```
@@ -1184,21 +1183,20 @@ telemetry.Context.Operation.Name = "MyOperationName";
 
 ## <a name="reference-docs"></a>リファレンス ドキュメント
 
-* [ASP.NET リファレンス](https://msdn.microsoft.com/library/dn817570.aspx)
-* [Java リファレンス](http://dl.windowsazure.com/applicationinsights/javadoc/)
+* [ASP.NET リファレンス](https://docs.microsoft.com/en-us/dotnet/api/overview/azure/insights?view=azure-dotnet)
+* [Java リファレンス](https://docs.microsoft.com/en-us/java/api/overview/azure/appinsights?view=azure-java-stable/)
 * [JavaScript リファレンス](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
-* [Android SDK](https://github.com/Microsoft/ApplicationInsights-Android)
-* [iOS SDK](https://github.com/Microsoft/ApplicationInsights-iOS)
+
 
 ## <a name="sdk-code"></a>SDK コード
 
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
-* [ASP.NET 5](https://github.com/Microsoft/ApplicationInsights-dotnet)
+* [ASP.NET](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [Windows Server パッケージ](https://github.com/Microsoft/applicationInsights-dotnet-server)
 * [Java SDK](https://github.com/Microsoft/ApplicationInsights-Java)
 * [Node.js SDK](https://github.com/Microsoft/ApplicationInsights-Node.js)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)
-* [すべてのプラットフォーム](https://github.com/Microsoft?utf8=%E2%9C%93&query=applicationInsights)
+
 
 ## <a name="questions"></a>疑問がある場合
 

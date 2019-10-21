@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/06/2019
-ms.openlocfilehash: 3ddee3dabd51d95f230f0178dfb647f8e297b3d4
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b6c2885f0919752f7ede7f5a15121be2f8a953ca
+ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569395"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71162317"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database での自動チューニング
 
@@ -68,14 +68,14 @@ Azure SQL Database で使用可能な自動チューニング オプションは
 | 自動チューニング オプション | 単一データベースとプールされたデータベースのサポート | インスタンス データベースのサポート |
 | :----------------------------- | ----- | ----- |
 | **CREATE INDEX** - ご自分のワークロードのパフォーマンスを向上させる可能性があるインデックスを特定し、インデックスを作成して、クエリのパフォーマンスが向上したことを自動的に確認します。 | はい | いいえ | 
-| **DROP INDEX** - 一意なインデックスを除く冗長なインデックスや重複するインデックス、また長期間 (90 日超) 使用されていないインデックスを特定します。 なお、現在のところ、このオプションはパーティション切り替えやインデックス ヒントを使用するアプリケーションと互換性がありません。 | はい | いいえ |
+| **DROP INDEX** - 一意なインデックスを除く冗長なインデックスや重複するインデックス、また長期間 (90 日超) 使用されていないインデックスを特定します。 なお、このオプションはパーティション切り替えやインデックス ヒントを使用するアプリケーションと互換性がありません。 Premium および Business Critical サービスレベルでは、使われていないインデックスの削除はサポートされていません。 | はい | いいえ |
 | **FORCE LAST GOOD PLAN** (自動プラン修正) - 以前の良好なプランよりも速度の低い実行プランを使用している SQL クエリを特定し、その低速なプランの代わりに、最後に確認された良好なプランを使用してクエリを実行します。 | はい | はい |
 
 自動チューニングは、データベースのパフォーマンスを最適化できる **CREATE INDEX**、**DROP INDEX**、および **FORCE LAST GOOD PLAN** の推奨事項を識別し、[Azure portal](sql-database-advisor-portal.md) でそれらを表示し、[T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) と [REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning) を通してそれらを公開します。 FORCE LAST GOOD PLAN と、T-SQL による自動チューニング オプションの構成の詳細については、[自動チューニングでの自動プラン修正の導入](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)に関するページを参照してください。
 
 ポータルを使用してチューニングの推奨事項を手動で適用するか、または自動チューニングでチューニングの推奨事項を自律的に適用することができます。 システムで自律的にチューニングの推奨事項を適用する利点は、ワークロードのパフォーマンスが向上することが自動的に検証されることです。パフォーマンスの顕著な向上が検出されない場合、チューニングの推奨事項は自動的に元に戻されます。 頻繁に実行されないクエリがチューニングの推奨事項によって影響を受ける場合、設計上、検証フェーズに最大で 72 時間かかる可能性があることに注意してください。
 
-チューニングの推奨事項を手動で適用する場合は、パフォーマンスの自動検証および取り消しメカニズムは使用できません。 さらに、手動で適用した推奨事項は、24 時間から 48 時間、アクティブなままになり、推奨事項の一覧に表示された後、 自動的に取り消されます。 それよりも前に推奨事項を削除したい場合は、手動で破棄できます。
+T-SQL を使用してチューニングの推奨事項を適用する場合は、パフォーマンスの自動検証および取り消しメカニズムは使用できません。 そのような方法で適用された推奨事項は、24 時間から 48 時間、アクティブなままになり、チューニングの推奨事項の一覧に表示された後、 自動的に取り消されます。 推奨事項をすぐに削除する場合は、Azure portal から破棄できます。
 
 自動チューニング オプションをデータベースごとに個別に有効または無効にすることも、SQL Database サーバーで構成し、サーバーから設定を継承するすべてのデータベースに適用することもできます。 SQL Database サーバーでは、自動チューニングの設定について、Azure の既定値を継承できます。 現時点の Azure の既定値では、FORCE_LAST_GOOD_PLAN と CREATE_INDEX が有効に、DROP_INDEX が無効に設定されています。
 

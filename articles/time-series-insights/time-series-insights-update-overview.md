@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: dpalled
 ms.workload: big-data
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d411e8d41f3026476ca8344e8ff9736701d6af6
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: e4a57c6d4a9034d9145058e9137759c2cea19aa6
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736169"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71978671"
 ---
 # <a name="what-is-azure-time-series-insights-preview"></a>Azure Time Series Insights プレビューとは
 
@@ -81,7 +81,7 @@ Operational Insights およびデータ探索は、データ処理、ストレ�
 | 他のデータ ソリューションとの円滑で連続的な統合 | Time Series Insights のデータは、オープンソース化された Apache Parquet ファイルに[格納](./time-series-insights-update-storage-ingress.md)されます。 ファースト パーティかサード パーティかにかかわらず、エンド ツー エンドのシナリオで他のデータ ソリューションと簡単に統合できます。 これらのシナリオには、ビジネス インテリジェンス、高度な機械学習、予測分析などが含まれます。 |
 | ほぼリアルタイムのデータ探索 | [Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)のユーザー エクスペリエンスは、取り込みのパイプライン経由ですべてのデータ ストリーミングの視覚化を提供しています。 イベント ソースを接続するとすぐに、イベント データの表示、調査、クエリを行うことができます。 これにより、デバイスが想定どおりにデータを出力しているかどうかを検証できます。 IoT アセットの正常性、生産性、全体的な有効性を監視することもできます。 |
 | 根本原因分析と異常検出 | [Azure Time Series Insights プレビュー エクスプローラー](./time-series-insights-update-explorer.md)では、多段階の根本原因分析を実行して保存するために、パターン ビューとパースペクティブ ビューの両方がサポートされています。 Azure Stream Analytics と組み合わせて Time Series Insights を使用すると、ほぼリアルタイムでアラートや異常を検出できます。 |
-| Time Series Insights プラットフォーム上に構築されたカスタム アプリケーション | Time Series Insights では、[JavaScript SDK](./tutorial-explore-js-client-lib.md) がサポートされています。 SDK では、豊富なコントロールとクエリへの簡単なアクセスが提供されます。 SDK を使用し、特定のビジネス ニーズに合わせて、Time Series Insights 上にカスタム IoT アプリケーションを構築します。 また、Time Series Insights の [Query API](./time-series-insights-update-tsq.md) を直接使用して、カスタム IoT アプリケーションへのデータを生成できます。 |
+| Time Series Insights プラットフォーム上に構築されたカスタム アプリケーション | Time Series Insights では、[JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) がサポートされています。 SDK では、豊富なコントロールとクエリへの簡単なアクセスが提供されます。 SDK を使用し、特定のビジネス ニーズに合わせて、Time Series Insights 上にカスタム IoT アプリケーションを構築します。 また、Time Series Insights の [Query API](./time-series-insights-update-tsq.md) を直接使用して、カスタム IoT アプリケーションへのデータを生成できます。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c357cba8ce2fbe2ad902d5c215f8adbfc99a9f0a
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 63176c325fd42c46e988ab3798f46089a43e70bf
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813020"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326786"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル:Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -97,7 +97,8 @@ Workday の統合を開始する前に、以下の前提条件を確認し、現
 
 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-* グローバル管理者アクセス権を持つ有効な Azure AD Premium P1 以降のサブスクリプション
+* Workday から供給され、オンプレミスの Active Directory または Azure Active Directory にプロビジョニングされるすべてのユーザーに対する、Azure AD Premium P1 以上の有効なサブスクリプション ライセンス。
+* プロビジョニング エージェントを構成するための Azure AD グローバル管理者アクセス
 * テストと統合のために Workday を実装したテナント
 * システム統合ユーザーを作成し、テスト目的でテスト用従業員データを変更する Workday の管理者権限
 * Active Directory へのユーザー プロビジョニングの場合、[オンプレミス プロビジョニング エージェント](https://go.microsoft.com/fwlink/?linkid=847801)をホストするために、.NET 4.7.1 以降のランタイムがインストールされた Windows Server 2012 以降を実行しているサーバーが必要です

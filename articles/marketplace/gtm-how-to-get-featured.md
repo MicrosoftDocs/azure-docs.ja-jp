@@ -7,18 +7,18 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5194bdcd5b77b0527ccdefc1af85bf03bdac2cab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a99237ec52d302dbb7fc3914c6abfff5fecf4523
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64938166"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962753"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>AppSource および Azure Marketplace でおすすめになる方法
 
 Azure Marketplace や AppSource の **[おすすめアプリ]** セクションで、自分のアプリをおすすめにしてもらうことができます。
 
-* 最初に、試用オファーまたはトランザクション オファーがある場合は、Go-to-Market のベネフィットで "カテゴリ プロモーション" ベネフィットを使用できます。
+* 最初に、試用版オファーまたはトランザクション オファーがある場合は、[商用マーケットプレースのベネフィット](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits) で "カテゴリ プロモーション" ベネフィットを使用できます。
 * 次に、スポットの獲得に関する以下のベスト プラクティスと条件の一覧を確認します。
 
 米国での個人のクレジット スコアと同じように、おすすめアプリ選択アルゴリズムによって、Microsoft によるアプリに対するスコアが生成されます。  週ごとのおすすめアプリの選択は、アプリおよびサービスのパフォーマンスの計算に基づいて行われます。
@@ -44,7 +44,7 @@ GTM のサポートには、掲載とビジネスのいっそうの促進に役�
 
 ## <a name="next-steps"></a>次の手順
 
-マーケットプレース GTM サービスの詳細については、「[Go-to-Market サービス](https://partner.microsoft.com/reach-customers/gtm)」を参照してください。
+[商用マーケットプレースのベネフィット](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits)の詳細を確認する。
 
 [Cloud パートナー ポータル](https://cloudpartner.azure.com)にログインして、オファーを作成および構成する。
 

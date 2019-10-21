@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/18/2019
 ms.author: dapine
-ms.openlocfilehash: a2f743b2b7e63df8b81a1024b20e3e27a3f247a9
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 4a961080bc124e53a8c5fe4dcc5f3cd6f21e9e5c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932993"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71102569"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomaly Detector コンテナーを構成する
 
@@ -104,8 +104,10 @@ Anomaly Detector コンテナーでは、トレーニングやサービスのデ
 
 | プレースホルダー | 値 | 形式または例 |
 |-------------|-------|---|
-|{API_KEY} | Anomaly Detector リソースのエンドポイント キー。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{ENDPOINT_URI} | リージョンを含む課金エンドポイントの値。|`https://westus2.api.cognitive.microsoft.com`|
+| **{API_KEY}** | Azure `Anomaly Detector` の [キー] ページの `Anomaly Detector` リソースのエンドポイント キー。 | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{ENDPOINT_URI}** | 課金エンドポイントの値は、Azure `Anomaly Detector` の [概要] ページで確認できます。| 明示的な例が必要であれば、[必須パラメーターの収集](anomaly-detector-container-howto.md#gathering-required-parameters)に関するページを参照してください。 |
+
+[!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
 > コンテナーを実行するには、`Eula`、`Billing`、`ApiKey` の各オプションを指定する必要があります。そうしないと、コンテナーが起動しません。  詳細については、「[課金](anomaly-detector-container-howto.md#billing)」を参照してください。

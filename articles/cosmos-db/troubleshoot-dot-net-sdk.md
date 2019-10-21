@@ -8,12 +8,12 @@ ms.author: jawilley
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: b9511562b81f7ac0c1582897d703f4c5ccb89716
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 51b37c43b94ad59090f32af0d57bbefaa57f30fa
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67806399"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70932558"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Azure Cosmos DB .NET SDK の使用時の問題を診断しトラブルシューティングする
 この記事では、Azure Cosmos DB SQL API アカウントで [.NET SDK](sql-api-sdk-dotnet.md) を使用するときの一般的な問題、回避策、診断手順、およびツールについて説明します。
@@ -48,7 +48,7 @@ ms.locfileid: "67806399"
 RequestTimeout は、通常ダイレクト/TCP を使用するときに発生しますが、ゲートウェイ モードで起きることがあります。 以下は、一般的な既知の原因と、問題の解決方法に関する推奨事項です。
 
 * CPU 使用率が高くなっているため、待ち時間または要求タイムアウト、あるいはその両方が発生しています。 顧客がホスト マシンをスケールアップしてリソースを増やすか、複数のマシンに負荷を分散できます。
-* ソケット・ポートの可用性が低下している可能性があります。 2\.0 バージョン以前にリリースされた .NET SDK を使用している場合、Azure で実行しているクライアントで、[Azure SNAT (PAT) ポート不足]が発生することがあります。 これが、常に最新の SDK バージョンを実行することをお勧めする理由のひとつです。
+* ソケット・ポートの可用性が低下している可能性があります。 Azure で実行されている場合、.NET SDK を使用しているクライアントで Azure SNAT (PAT) ポートの枯渇が発生する可能性があります。 この問題が発生する可能性を低くするには、最新バージョンの 2.x または 3.x の .NET SDK を使用します。 これが、常に最新の SDK バージョンを実行することをお勧めする理由のひとつです。
 * 複数の DocumentClient インスタンスを作成すると、接続の競合およびタイムアウトの問題を招くおそれがあります。 [パフォーマンスに関するヒント](performance-tips.md)に従って、プロセス全体で単一の DocumentClient インスタンスを使用します。
 * コレクションのプロビジョニングが不十分であり、バックエンドが要求を調整し、クライアントがこれを呼び出し側に表面化させることなく内部的に再試行するので、ユーザーは待ち時間または要求タイムアウトの増大を経験することがあります。 [ポータルのメトリック](monitor-accounts.md)を確認します。
 * Azure Cosmos DB は、プロビジョニングされたスループット全体を物理パーティション間で均等に分散します。 ポータルのメトリックを調べて、ワークロードでホットな[パーティション キー](partition-data.md)が発生しているかどうかを確認します。 これにより、消費済みスループットの集計 (RU/秒) がプロビジョニングされた RU より低く表示されますが、単一パーティションの消費済みスループット (RU/秒) はプロビジョニングされたスループットを超過します。 

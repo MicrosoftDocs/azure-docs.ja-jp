@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7b33484084b4ada5aeaf89eb90167658ade15ad8
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 4aca2a4495d4b6c3669982b2e7757b7252d70f6a
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899782"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828553"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Azure 仮想マシンのセキュリティの概要
 この記事では、仮想マシンで使用できるコアの Azure セキュリティ機能の概要を示します。
@@ -102,7 +102,7 @@ Azure Disk Encryption は、Windows および Linux 仮想マシン ディスク
 詳細情報:
 
 * [IaaS VM の Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview)
-* [クイック スタート:Azure PowerShell を使用して Windows IaaS VM を暗号化する](../azure-disk-encryption-linux-powershell-quickstart.md)
+* [クイック スタート:Azure PowerShell を使用して Windows IaaS VM を暗号化する](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>仮想マシンのバックアップ
 

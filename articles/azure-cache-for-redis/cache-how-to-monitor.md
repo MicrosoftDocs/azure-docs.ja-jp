@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 2cfd5a99144af1120afbf06fe6222228a9332bb6
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 5ae1827c7af3346a9197a9e28ee442d8aca0e38f
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "65787421"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299516"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Azure Cache for Redis を監視する方法
 Azure Cache for Redis は、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) を使用して、キャッシュのインスタンスを監視するための複数のオプションを提供します。 メトリックの表示、メトリック グラフのスタート画面へのピン留め、監視グラフの日付と時刻の範囲のカスタマイズ、グラフのメトリックの追加と削除、特定の条件が満たされた場合のアラートの設定を行うことができます。 これらのツールによって、Azure Cache for Redis インスタンスの正常性を監視でき、キャッシュ アプリケーションの管理が容易になります。
@@ -105,7 +105,7 @@ Azure Monitor を使用してメトリックを操作する方法について詳
 | キャッシュの書き込み |指定したレポート期間中にキャッシュに書き込まれた、メガバイト単位での 1 秒あたりのデータ量 (MB/秒)。 この値は、キャッシュをホストする仮想マシンをサポートするネットワーク インターフェイス カードから派生し、Redis 固有のものではありません。 この値は、クライアントからキャッシュに送信されるデータのネットワーク帯域幅に対応しています。 |
 | 接続されているクライアント数 |指定したレポート期間中に、キャッシュに接続されるクライアントの数。 これは Redis INFO コマンドの `connected_clients` にマッピングされます。 [接続の上限](cache-configure.md#default-redis-server-configuration) に達すると、それ以降のキャッシュへの接続の試行は失敗します。 アクティブなクライアント アプリケーションがない場合でも、内部処理や接続によって接続されたクライアントのインスタンスが少数見つかることがあります。 |
 | CPU |指定したレポート期間中の Azure Cache for Redis サーバーの CPU 使用率 (パーセント)。 この値は、オペレーティング システム `\Processor(_Total)\% Processor Time` パフォーマンス カウンターにマッピングされます。 |
-| Errors | 指定されたレポート間隔中にキャッシュで発生する可能性がある特定のエラーおよびパフォーマンスの問題。 このメトリックには、さまざまなエラーの種類を表す 8 つのディメンションがありますが、今後追加される可能性があります。 現在表されているエラーの種類は次のとおりです。 <br/><ul><li>**Failover**: キャッシュがフェールオーバーした場合 (下位からマスターへの昇格)</li><li>**Crash**: いずれかのノードで予期せずキャッシュがクラッシュした場合</li><li>**Dataloss**: キャッシュにデータ損失がある場合</li><li>**UnresponsiveClients**: 十分な速さでクライアントがサーバーからデータを読み取っていない場合</li><li>**AOF**: AOF 永続化に関連する問題がある場合</li><li>**RDB**: RDB 永続化に関連する問題がある場合</li><li>**Import**: RDB のインポートに関連する問題がある場合</li><li>**Export**: RDB のエクスポートに関連する問題がある場合</li></ul> |
+| Errors | 指定されたレポート間隔中にキャッシュで発生する可能性がある特定のエラーおよびパフォーマンスの問題。 このメトリックには、さまざまなエラーの種類を表す 8 つのディメンションがありますが、今後追加される可能性があります。 現在表されているエラーの種類は次のとおりです。 <br/><ul><li>**Failover**: キャッシュがフェールオーバーした場合 (下位からマスターへの昇格)</li><li>**Dataloss**: キャッシュにデータ損失がある場合</li><li>**UnresponsiveClients**: 十分な速さでクライアントがサーバーからデータを読み取っていない場合</li><li>**AOF**: AOF 永続化に関連する問題がある場合</li><li>**RDB**: RDB 永続化に関連する問題がある場合</li><li>**Import**: RDB のインポートに関連する問題がある場合</li><li>**Export**: RDB のエクスポートに関連する問題がある場合</li></ul> |
 | 削除されたキー数 |指定したレポート期間中に、 `maxmemory` の制限によってキャッシュから削除された項目の数。 これは Redis INFO コマンドの `evicted_keys` にマッピングされます。 |
 | 期限切れキー数 |指定したレポート期間中に、期限が切れたキャッシュの項目の数。 この値は Redis INFO コマンドの `expired_keys` にマッピングされます。|
 | 取得数 |指定したレポート期間中に、キャッシュから実行された取得操作の数。 この値は、Redis INFO のすべてのコマンド (`cmdstat_get`、`cmdstat_hget`、`cmdstat_hgetall`、`cmdstat_hmget`、`cmdstat_mget`、`cmdstat_getbit`、および `cmdstat_getrange`) からの値の合計で、レポート期間中のキャッシュ ヒット数とキャッシュ ミス数の合計と同じです。 |

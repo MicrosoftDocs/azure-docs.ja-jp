@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2fd8dd09da8080e9eff60bcec7d595476243cd02
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 9b246fe9b09f2939663b4fb74ee1da703264d533
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736129"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72028927"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight"></a>オンプレミスの Apache Hadoop クラスターの Azure HDInsight への移行
 
@@ -110,7 +110,7 @@ Data Lake Storage Gen2 の基本的な機能は、パフォーマンスの高い
 
 次の形式の 1 つを使用して、ADLS Gen2 に格納されているデータにアクセスできます。
 - `abfs:///`:クラスターの既定の Data Lake Storage にアクセスします。
-- `abfs[s]://file_system@account_name.dfs.core.windows.net`:既定以外の Data Lake Storage を使用して通信するときに使用します。
+- `abfs://file_system@account_name.dfs.core.windows.net`:既定以外の Data Lake Storage を使用して通信するときに使用します。
 
 詳細については、次の記事を参照してください。
 
@@ -177,7 +177,7 @@ HDInsight には、既定の状態で、クラスターに関連付けられた 
 
 7. **[追加]** ボタンをクリックしてこのキーと値を保存し、 **[保存]** ボタンをクリックして構成の変更を保存します。 プロンプトが表示されたら、変更の説明 (「SAS ストレージ アクセスの追加」など) を追加し、 **[保存]** をクリックします。
 
-8. Ambari Web UI で、左側の一覧から [HDFS] を選択して、右側の [サービス アクション] ドロップダウン リストから  **[すべて再起動]**   を選択します。 メッセージが表示されたら、 **[Confirm Restart All]\(すべての再起動の確認\)** を選択します。
+8. Ambari Web UI で、左側の一覧から [HDFS] を選択して、右側の [サービス アクション] ドロップダウン リストから **[すべて再起動]** を選択します。 メッセージが表示されたら、 **[Confirm Restart All]\(すべての再起動の確認\)** を選択します。
 
 9. この手順を MapReduce2 と YARN に対して繰り返します。
 

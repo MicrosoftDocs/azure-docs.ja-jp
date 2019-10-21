@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 08/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: cad04df9ba76ce483a308411949e6f98bab23bf9
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 9a043d07004870c00c656b655d56a1526f8993d8
+ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858546"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "72000500"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>マネージド インスタンスの T-SQL の相違点、制限、既知の問題
 
@@ -24,7 +24,7 @@ ms.locfileid: "70858546"
 
 ![移行](./media/sql-database-managed-instance/migration.png)
 
-マネージド インスタンスには、SQL Server と比べて PaaS の制限と動作の違いがいくつかあります。 それらの相違点は、次のカテゴリに分けることができます。<a name="Differences"></a>
+Managed Instance には、SQL Server と比べて PaaS の制限と動作の違いがいくつかあります。 それらの相違点は、次のカテゴリに分けることができます。<a name="Differences"></a>
 
 - [可用性](#availability)には、[Always On](#always-on-availability) と[バックアップ](#backup)の相違点が含まれます。
 - [セキュリティ](#security)には、[監査](#auditing)、[証明書](#certificates)、[資格情報](#credential)、[暗号化プロバイダー](#cryptographic-providers)、[ログイン/ユーザー](#logins-and-users)、[サービス キーとサービス マスター キー](#service-key-and-service-master-key)の相違点が含まれます。
@@ -110,7 +110,7 @@ Managed Instance　はファイル共有と Windows フォルダーにはアク�
 
 [CREATE CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/create-certificate-transact-sql) に関する記事、および [BACKUP CERTIFICATE](https://docs.microsoft.com/sql/t-sql/statements/backup-certificate-transact-sql) に関する記事をご覧ください。 
  
-**対処法**: 証明書または秘密キーのスクリプトを作成し、.sql ファイルとして保存してバイナリから作成します。
+**対処法**: 証明書のバックアップを作成してバックアップを復元するのでなく、[証明書のバイナリ コンテンツと秘密キーを取得し、それを .sql ファイルとして保存し、バイナリから作成します](https://docs.microsoft.com/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database)。
 
 ```sql
 CREATE CERTIFICATE  
@@ -329,6 +329,7 @@ Managed Instance はファイル共有や Windows フォルダーにアクセス
 
 - が、Azure BLOB ストレージからファイルをインポートしている間、`BULK INSERT` コマンドで `DATASOURCE` が必要です。 [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql) に関する記事をご覧ください。
 - Azure BLOB ストレージからのファイルの内容を読み取る場合、`OPENROWSET` 関数で `DATASOURCE` が必要です。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
+- `OPENROWSET` を使用すると、他の Azure SQL 単一データベース、マネージド インスタンス、または SQL Server インスタンスからデータを読み取ることができます。 Oracle データベースや Excel ファイルなどのその他のソースはサポートされていません。
 
 ### <a name="clr"></a>CLR
 
@@ -339,14 +340,14 @@ Managed Instance　はファイル共有と Windows フォルダーにはアク�
 - `ALTER ASSEMBLY` ではファイルを参照できません。 [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql) に関する記事をご覧ください。
 
 ### <a name="database-mail-db_mail"></a>データベース メール (db_mail)
- - `sp_send_dbmail` では、@file_attachments パラメーターを使用して添付ファイルを送信できません。 この手順では、ローカル ファイル システムと外部共有または Azure Blob ストレージにはアクセスできません。
+ - `sp_send_dbmail` では、@file_attachments パラメーターを使用して添付ファイルを送信できません。 この手順では、ローカル ファイル システムと外部共有または Azure Blob Storage にはアクセスできません。
  - `@query` パラメーターと認証に関連する既知の問題をご覧ください。
  
 ### <a name="dbcc"></a>DBCC
 
 SQL Server で有効になっている、ドキュメントに記載されていない DBCC ステートメントは、Managed Instance ではサポートされていません。
 
-- サポートされるグローバル `Trace flags` の数が限られています。 セッションレベルの `Trace flags` はサポートされません。 [トレース フラグ](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)に関する記事をご覧ください。
+- サポートされるグローバル トレース フラグの数は限られています。 セッションレベルの `Trace flags` はサポートされません。 [トレース フラグ](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql)に関する記事をご覧ください。
 - [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) と [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) で使用できるトレースフラグの数が限られています。
 - [DBCC CHECKDB](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-checkdb-transact-sql) とオプション REPAIR_ALLOW_DATA_LOSS、REPAIR_FAST、REPAIR_REBUILD の組み合わせは使用できません。これは、データベースを `SINGLE_USER` モードで設定することはできないためです。[ALTER DATABASE の相違点](#alter-database-statement)を参照してください。 データベースが破損した場合は Azure サポート チームが対応します。 データベースに修正すべき破損が見つかった場合は、Azure サポートにお問い合わせください。
 
@@ -408,7 +409,7 @@ HDFS または Azure BLOB ストレージ内のファイルを参照する外部
 
 - スナップショットおよび双方向のレプリケーションの種類がサポートされています。 マージ レプリケーション、ピア ツー ピア レプリケーション、および更新可能サブスクリプションはサポートされていません。
 - [トランザクション レプリケーション](sql-database-managed-instance-transactional-replication.md)はマネージド インスタンスのパブリック プレビューで使用できますが、制約がいくつかあります。
-    - すべての種類のレプリケーション参加者 (パブリッシャー、ディストリビューター、プル サブスクライバー、プッシュ サブスクライバー) をマネージド インスタンスに配置できますが、パブリッシャーとディストリビューターを異なるインスタンスに配置することはできません。
+    - すべての種類のレプリケーション参加者 (パブリッシャー、ディストリビューター、プル サブスクライバー、プッシュ サブスクライバー) をマネージド インスタンスに配置できますが、パブリッシャーとディストリビューターは両者ともクラウドに配置するか、または両者ともオンプレミスに配置する必要があります。
     - マネージド インスタンスは、最新バージョンの SQL Server と通信できます。 サポートされているバージョンについては、[こちら](sql-database-managed-instance-transactional-replication.md#supportability-matrix-for-instance-databases-and-on-premises-systems)をご覧ください。
     - トランザクション レプリケーションには、いくつかの[追加のネットワーク要件](sql-database-managed-instance-transactional-replication.md#requirements)があります。
 
@@ -479,9 +480,12 @@ HDFS または Azure BLOB ストレージ内のファイルを参照する外部
 - このドキュメントで説明されている制限 (たとえば `FILESTREAM` または `FILETABLE` オブジェクト) を含むデータベースの `.BAK` ファイルの復元は、Managed Instance では復元できません。
 - `.BAK` ファイルに複数のバックアップ セットが含まれている場合、復元できません。 
 - `.BAK` ファイルに複数のログ ファイルが含まれている場合、復元できません。
-- 8 TB を超えるデータベース、アクティブなインメモリ OLTP オブジェクト、または 280 個を超えるファイルを含むバックアップは、General Purpose インスタンスでは復元できません。 
-- 4 TB を超えるデータベース、または[リソースの制限](sql-database-managed-instance-resource-limits.md)のページで説明されているサイズよりも合計サイズが大きいインメモリ OLTP オブジェクトを含むバックアップは、Business Critical インスタンスでは復元できません。
+- 8 TB を超えるデータベース、アクティブなインメモリ OLTP オブジェクト、または 280 個を超えるファイル数を含むバックアップは、General Purpose インスタンスでは復元できません。 
+- 4 TB を超えるデータベース、または[リソースの制限](sql-database-managed-instance-resource-limits.md)で説明されているサイズよりも合計サイズが大きいインメモリ OLTP オブジェクトを含むバックアップは、Business Critical インスタンスでは復元できません。
 RESTORE ステートメントについては、[RESTORE ステートメント](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)に関する記事をご覧ください。
+
+ > [!IMPORTANT]
+ > 同じ制限が、組み込みのポイントインタイム リストア操作に適用されます。 たとえば、4 TB を超える General Purpose データベースは、Business Critical インスタンスで復元することはできません。 インメモリ OLTP ファイルまたは 280 個を超えるファイルを含む Business Critical データベースは、General Purpose インスタンスで復元することはできません。
 
 ### <a name="service-broker"></a>Service Broker
 
@@ -541,6 +545,32 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 
 ## <a name="Issues"></a> 既知の問題
 
+### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>空ではないファイルを削除しようとしたときに誤ったエラーが返される
+
+**日付:** 2019 年 10 月
+
+SQL Server/Managed Instance では、[ユーザーは空でないファイルを削除できません](https://docs.microsoft.com/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites)。 `ALTER DATABASE REMOVE FILE` ステートメントを使用して空でないデータ ファイルを削除しようとすると、エラー `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` はすぐには返されません。 Managed Instance では引き続きファイルの削除が試行されますが、30 分後に操作が失敗し、`Internal server error` になります。
+
+**対処法**: `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` コマンドを使用して、ファイルの内容を削除します。 ファイル グループ内の唯一のファイルの場合は、ファイルを圧縮する前に、このファイル グループに関連付けられているテーブルまたはパーティションからデータを削除する必要があります。また、必要に応じて、このデータを別のテーブルまたはパーティションに読み込みます。
+
+### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>サービス レベルの変更とインスタンスの作成操作が、進行中のデータベースの復元によってブロックされる
+
+**日付:** 2019 年 9 月
+
+進行中の `RESTORE` ステートメント、データ移行サービスの移行プロセス、組み込みのポイントインタイム リストアでは、復元処理が完了するまで、サービス レベルの更新や既存のインスタンスのサイズ変更、新しいインスタンスの作成がブロックされます。 復元プロセスでは、復元プロセスが実行されているのと同じサブネット内のマネージド インスタンスとインスタンス プールでこれらの操作がブロックされます。 インスタンス プール内のインスタンスは影響を受けません。 サービス レベルの操作の作成または変更は、失敗したり、タイムアウトしたりすることはありません。復元処理が完了するかキャンセルされるまで処理が続行されます。
+
+**対処法**: サービス レベルの作成または更新操作の優先順位が高い場合は、復元プロセスが完了するか、復元プロセスがキャンセルされるまで待機します。
+
+### <a name="missing-validations-in-restore-process"></a>復元プロセスで検証が不足しています
+
+**日付:** 2019 年 9 月
+
+`RESTORE` ステートメントおよび組み込みのポイントインタイム リストアでは、復元されたデータベースに対していくつかの必要なチェックが実行されません。
+- **DBCC CHECKDB** - `RESTORE` ステートメントでは、復元されたデータベースで `DBCC CHECKDB` は実行されません。 元のデータベースが破損している場合、またはバックアップ ファイルが Azure BLOB ストレージにコピーされている間に破損している場合は、自動バックアップは行われず、Azure サポートがお客様にご連絡します。 
+- 組み込みのポイントインタイム リストア プロセスでは、Business Critical インスタンスからの自動バックアップに[インメモリ OLTP オブジェクト](sql-database-in-memory.md#in-memory-oltp)が含まれているかどうかは確認されません。 
+
+**対処法**: バックアップを取得する前にソース データベースで `DBCC CHECKDB` を実行していること、およびマネージド インスタンスで復元される可能性のある破損を回避するために、バックアップで `WITH CHECKSUM` オプションを使用していることを確認します。 General Purpose レベルで復元する場合は、ソース データベースに[インメモリ OLTP オブジェクト](sql-database-in-memory.md#in-memory-oltp)が含まれていないことを確認してください。
+
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Business Critical サービス レベルの Resource Governor をフェールオーバー後に再構成しなければならない場合がある
 
 **日付:** 2019 年 9 月
@@ -549,7 +579,7 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 
 **対処法**: [Resource Governor](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) を使用している場合、`ALTER RESOURCE GOVERNOR RECONFIGURE` を定期的に、または、インスタンスの開始時に SQL タスクを実行する SQL エージェント ジョブの一環として実行します。
 
-### <a name="cannot-authenicate-to-external-mail-servers-using-secure-connection-ssl"></a>セキュリティで保護された接続 (SSL) を使用して外部メール サーバーに対する認証ができない
+### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>セキュリティで保護された接続 (SSL) を使用して外部メール サーバーに対する認証ができない
 
 **日付:** 2019 年 8 月
 
@@ -609,7 +639,7 @@ SQL Server Management Studio および SQL Server Data Tools では、Azure Acti
 
 各 General Purpose Managed Instance には、Azure Premium ディスク領域用に予約された 最大 35 TB のストレージがあります。 各データベース ファイルは、個別の物理ディスクに配置されます。 ディスク サイズとして、128 GB、256 GB、512 GB、1 TB、4 TB のいずれかを指定できます。 ディスク上の未使用領域については請求されませんが、Azure Premium ディスクのサイズ合計が 35 TB を超えることはできません。 場合によっては、内部の断片化のために、合計で 8 TB を必要としない Managed Instance が、記憶域のサイズに関する 35 TB の Azure での制限を超える場合があります。
 
-たとえば、General Purpose マネージド インスタンスに、4 TB のディスクにサイズが 1.2 TB の大きなファイルが 1 つ配置される場合があります。 また、248 ファイルの 1 GB のファイルがあり、それぞれが個別の 128 GB ディスクに配置される場合があります。 次の点に注意してください。
+たとえば、General Purpose マネージド インスタンスには、4 TB のディスクに配置されているサイズが 1.2 TB の大きなファイルが 1 つあります。 また、サイズがそれぞれ 1 GB のファイルが 248 個あり、これらは個別の 128 GB ディスクに配置される場合があります。 次の点に注意してください。
 
 - 割り当てられるディスク ストレージの合計サイズは、1 x 4 TB + 248 x 128 GB = 35 TB となります。
 - インスタンス上のデータベースの予約済み領域の合計は、1 x 1.2 TB + 248 x 1 GB = 1.4 TB となります。
@@ -626,7 +656,7 @@ SQL Server Management Studio および SQL Server Data Tools では、Azure Acti
 
 ### <a name="error-logs-arent-persisted"></a>エラー ログが非永続的である
 
-マネージド インスタンスで利用可能なエラー ログは永続的ではなく、このログのサイズは、最大ストレージ上限には含まれません。 フェールオーバーが発生した場合、エラー ログは自動的に消去される可能性があります。 マネージド インスタンスが複数の仮想マシンで複数回移動されたことが原因で、エラー ログの履歴に欠落部分が生じる可能性があります。
+マネージド インスタンスで利用可能なエラー ログは永続的ではなく、このログのサイズは、最大ストレージ上限には含まれません。 フェールオーバーが発生した場合、エラー ログは自動的に消去される可能性があります。 Managed Instance が複数の仮想マシンで複数回移動されたことが原因で、エラー ログの履歴に欠落部分が生じる可能性があります。
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない
 

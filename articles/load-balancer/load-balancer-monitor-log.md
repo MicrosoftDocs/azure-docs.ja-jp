@@ -11,23 +11,23 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2018
+ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 1995ad5e8179fdee11e960c2ad0e7c03602ebd31
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: df35168d0fab0b01ff11c4105a1fcc5b16e21f30
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274800"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350727"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>パブリック Basic ロード バランサーの Azure Monitor ログ
 
 >[!IMPORTANT] 
 >Azure Load Balancer では、2 種類がサポートされています。Basic と Standard です。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer の詳細については、「[Standard Load Balancer の概要](load-balancer-standard-overview.md)」を参照してください。Azure Monitor での多次元メトリックによるテレメトリが公開されています。
 
-Azure の各種ログを使用して、Basic Load Balancer の管理やトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、Excel や PowerBI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
+Azure の各種ログを使用して、Basic Load Balancer の管理やトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 ログは、イベント ハブまたは Log Analytics ワークスペースにストリーム配信できます。 どのログも Azure Blob Storage から抽出し、Excel や Power BI などのさまざまなツールで表示できます。  各種ログの詳細については、以下の一覧を参照してください。
 
-* **監査ログ:** [Azure 監査ログ](../monitoring-and-diagnostics/insights-debugging-with-events.md) (以前の操作ログ) を使用すると、Azure サブスクリプションに送信されているすべての操作とその状態を表示できます。 監査ログは既定で有効になっており、Azure ポータルで表示できます。
+* **アクティビティ ログ:** 「[リソースのアクションを監視するアクティビティ ログの表示](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」を使用して、Azure サブスクリプションに送信されているすべてのアクティビティとそれらの状態を表示できます。 アクティビティ ログは既定で有効になっており、Azure portal で表示できます。
 * **アラート イベント ログ:** ロード バランサーによって生成されたアラートは、このログで確認できます。 ロード バランサーの状態は 5 分ごとに収集されます。 このログは、ロード バランサーのアラート イベントが発生した場合にのみ書き込まれます。
 * **正常性プローブ ログ:** 正常性プローブによって検出された問題 (バックエンド プールの中で、正常性プローブの障害が原因でロード バランサーから要求を受信していないインスタンスの数など) は、このログで確認できます。 このログは、正常性プローブの状態に変化があったときに書き込まれます。
 
@@ -36,37 +36,64 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 
 ## <a name="enable-logging"></a>ログの有効化
 
-監査ログは、リソース マネージャーのすべてのリソースで自動的に有効になります。 イベント ログと正常性プローブ ログでデータの収集を開始するには、ログを有効にする必要があります。 ログ記録を有効にするには、次の手順に従います。
+アクティビティ ログは、Resource Manager のすべてのリソースで自動的に有効になります。 イベント ログと正常性プローブ ログでデータの収集を開始するには、これらのログを有効にします。 ログ記録を有効にするには、次の手順に従います。
 
-[Azure ポータル](https://portal.azure.com)にサインインします。 ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](load-balancer-get-started-internet-arm-ps.md) します。
+[Azure Portal](https://portal.azure.com) にサインインします。 ロード バランサーをまだ作成していない場合は、先に進む前に [ロード バランサーを作成](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) します。
 
-1. ポータルで **[参照]** をクリックします。
-2. **[ロード バランサー]** を選択します。
+1. ポータルで、 **[リソース グループ]** をクリックします。
+2. ロード バランサーがある **\<resource-group-name>** を選択します。
+3. ロード バランサーを選択します。
+4. **[監視]**  >  **[診断設定]** を選択します。
+5. **[診断設定]** ウィンドウの **[診断設定]** で、 **[+ Add diagnostic setting]\(+ 診断設定の追加\)** を選択します。
+6. **[診断設定]** 作成ウィンドウで、 **[名前]** フィールドに「**myLBDiagnostics**」と入力します。
+7. **[診断設定]** には、3 つのオプションがあります。  1 つ、2 つ、または 3 つすべてを選択し、それぞれをご自身の要件に合わせて構成することができます。
+   * **ストレージ アカウントへのアーカイブ**
+   * **イベント ハブへのストリーム**
+   * **Log Analytics への送信**
 
-    ![portal - load-balancer](./media/load-balancer-monitor-log/load-balancer-browse.png)
+    ### <a name="archive-to-a-storage-account"></a>ストレージ アカウントへのアーカイブ
+    このプロセス用に既に作成されているストレージ アカウントが必要になります。  ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)」を参照してください
 
-3. 既存のロード バランサーを選択し、 **[すべての設定]** をクリックします。
-4. ダイアログの右側のロード バランサー名の下で、 **[監視]** までスクロールし、 **[診断]** をクリックします。
+    1. **[ストレージ アカウントへのアーカイブ]** の横のチェックボックスをオンにします。
+    2. **[構成]** を選択して、 **[ストレージ アカウントの選択]** ウィンドウを開きます。
+    3. プルダウン ボックスで、ストレージ アカウントが作成された**サブスクリプション**を選択します。
+    4. プルダウン ボックスの **[ストレージ アカウント]** で、ストレージ アカウントの名前を選択します。 
+    5. [OK] を選択します。
 
-    ![portal - load-balancer-settings](./media/load-balancer-monitor-log/load-balancer-settings.png)
+    ### <a name="stream-to-an-event-hub"></a>イベント ハブへのストリーミング
+    このプロセス用に既に作成されているイベント ハブが必要になります。  イベント ハブを作成するには、「[クイックスタート:Azure portal を使用したイベント ハブの作成](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)」を参照してください
 
-5. **[診断]** ウィンドウの **[状態]** で、 **[オン]** を選択します。
-6. **[ストレージ アカウント]** をクリックします。
-7. **[ログ]** で既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。 スライダーを使用して、イベント データをイベント ログに格納しておく日数を指定します。 
-8. **[Save]** をクリックします。
+    1. **[イベント ハブへのストリーム]** の横にあるチェックボックスをオンにします
+    2. **[構成]** を選択して、 **[イベント ハブの選択]** ウィンドウを開きます。
+    3. プルダウン ボックスで、イベント ハブが作成された**サブスクリプション**を選択します。
+    4. プルダウン ボックスで **[イベント ハブの名前空間の選択]** を選択します。
+    5. プルダウン ボックスで **[イベント ハブ ポリシー名の選択]** を選択します。
+    6. [OK] を選択します。
 
-診断は、指定されたストレージ アカウントで Table Storage に保存されます。 ログが保存されていない場合は、関連ログが生成されていないためです。
+    ### <a name="send-to-log-analytics"></a>Log Analytics への送信
+    このプロセスでは、Log Analytics ワークスペースが既に作成され、構成されている必要があります。  Log Analytics ワークスペースを作成するには、「[Azure portal で Log Analytics ワークスペースを作成する](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace)」を参照してください
 
-![ポータル - 診断ログ](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
+    1. **[Log Analytics への送信]** の横のチェックボックスをオンにします。
+    2. プルダウン ボックスで、Log Analytics ワークスペースがある**サブスクリプション**を選択します。
+    3. プルダウン ボックスで、 **[Log Analytics ワークスペース]** を選択します。
 
-> [!NOTE]
-> 監査ログでは別のストレージ アカウントは必要ありません。 イベントと正常性プローブのログ記録にストレージを使用すると、サービス料金が発生します。
 
-## <a name="audit-log"></a>監査ログ
+8. **[診断設定]** ウィンドウの **[ログ]** セクションの下で、両方の横にあるチェック ボックスをオンにします。
+   * **LoadBalancerAlertEvent**
+   * **LoadBalancerProbeHealthStatus**
 
-監査ログは既定で生成されます。 ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログの詳細については、「 [イベント ログと監査ログの表示](../monitoring-and-diagnostics/insights-debugging-with-events.md) 」を参照してください。
+9.  **[診断設定]** ウィンドウの **[メトリック]** セクションの下で、以下の横にあるチェック ボックスをオンにします。
+   * **AllMetrics**
 
-## <a name="alert-event-log"></a>アラート イベント ログ
+11. すべてが正しく表示されていることを確認し、 **[診断設定]** の作成ウィンドウの上部にある **[保存]** をクリックします。
+
+## <a name="activity-log"></a>アクティビティ ログ
+
+アクティビティ ログは既定で生成されます。 ログは、Azure のイベント ログ ストアに 90 日間保存されます。 これらのログについて詳しくは、「[リソースのアクションを監視するアクティビティ ログの表示](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)」を参照してください。
+
+## <a name="archive-to-storage-account-logs"></a>ストレージ アカウント ログへのアーカイブ
+
+### <a name="alert-event-log"></a>アラート イベント ログ
 
 このログは、ロード バランサーごとにログを有効にした場合にのみ生成されます。 イベントは JSON 形式で記録され、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 イベントの例を次に示します。
 
@@ -89,7 +116,7 @@ Azure の各種ログを使用して、Basic Load Balancer の管理やトラブ
 
 JSON 形式の出力で *eventname* プロパティを見ると、ロード バランサーでアラートが生成された理由がわかります。 この例では、アラートが生成された理由は、ソース IP NAT (SNAT) の制限により TCP ポートが枯渇したことです。
 
-## <a name="health-probe-log"></a>正常性プローブ ログ
+### <a name="health-probe-log"></a>正常性プローブ ログ
 
 このログは、既に詳しく説明したように、ロード バランサーごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 'insights-logs-loadbalancerprobehealthstatus' という名前のコンテナーが作成され、次のデータがログに記録されます。
 
@@ -127,26 +154,27 @@ JSON 形式の出力で *eventname* プロパティを見ると、ロード バ�
 }
 ```
 
-JSON 形式の出力でプロパティ フィールドを見れば、プローブの正常性状態の基本的な情報がわかります。 *DipDownCount* プロパティは、プローブの応答の失敗によりネットワーク トラフィックを受信していないバックエンド上のインスタンスの合計数を示します。
+JSON 形式の出力でプロパティ フィールドを見れば、プローブの正常性状態の基本的な情報がわかります。 *dipDownCount* プロパティは、プローブの応答の失敗によりネットワーク トラフィックを受信していないバックエンド上のインスタンスの合計数を示します。
 
-## <a name="view-and-analyze-the-audit-log"></a>監査ログの表示と分析
+### <a name="view-and-analyze-the-audit-log"></a>監査ログの表示と分析
 
 次のいずれかの方法を使用して、監査ログのデータを表示および分析できます。
 
-* **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure プレビュー ポータルを使用して、監査ログから情報を取得します。 それぞれの方法の詳細な手順については、「 [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md) 」を参照してください。
-* **Power BI:** [Power BI](https://powerbi.microsoft.com/pricing) アカウントをまだお持ちではない場合は、無料で試すことができます。 [Power BI 用 Azure 監査ログ コンテンツ パック](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs)を使用すると、構成済みのダッシュボードでデータを分析できます。また、要件に合わせてビューをカスタマイズすることもできます。
+* **Azure Tools:** Azure PowerShell、Azure コマンド ライン インターフェイス (CLI)、Azure REST API、または Azure portal を使用して、監査ログから情報を取得します。 それぞれの方法の詳細な手順については、「 [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md) 」を参照してください。
+* **Power BI:** [Power BI](https:// .microsoft.com/pricing) アカウントをまだ所有していない場合は、無料で試すことができます。 [Power BI 用 Azure 監査ログ コンテンツ パック](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)を使用すると、構成済みのダッシュボードでデータを分析できます。また、要件に合わせてビューをカスタマイズすることもできます。
 
-## <a name="view-and-analyze-the-health-probe-and-event-log"></a>正常性プローブ ログとイベント ログの表示と分析
+### <a name="view-and-analyze-the-health-probe-and-event-log"></a>正常性プローブ ログとイベント ログの表示と分析
 
-イベント ログと正常性プローブ ログの場合は、自身のストレージ アカウントに接続して JSON ログ エントリを取得する必要があります。 JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
+イベント ログと正常性プローブ ログの場合は、自身のストレージ アカウントに接続して JSON ログ エントリを取得します。 JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
 
 > [!TIP]
 > Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、GitHub から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="stream-to-an-event-hub"></a>イベント ハブへのストリーミング
+診断情報がイベント ハブにストリーム配信されたら、Azure Monitor 統合を使用して、サードパーティ製の SIEM ツールで集中ログ分析に使用できます。 詳しくは、「[イベント ハブへの Azure 監視データのストリーム配信](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)」を参照してください
 
-* [Power BI を使用した Azure 監査ログの視覚化](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) に関するブログ記事
-* [Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) に関するブログ記事
+## <a name="send-to-log-analytics"></a>Log Analytics への送信
+Azure 内のリソースは、Log Analytics ワークスペースに直接送信される診断情報を持つことができます。このワークスペースでは、トラブルシューティングと分析のために情報に対して複雑なクエリを実行できます。  詳しくは、「[Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)」を参照してください
 
 ## <a name="next-steps"></a>次の手順
 

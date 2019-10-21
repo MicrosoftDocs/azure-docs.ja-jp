@@ -11,14 +11,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2018
+ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 89deedd3ef99ba76d0bb133bac37c0acee0a9f73
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 350c6ae2e62a88477ce67132b56d9253166d13ec
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275032"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130441"
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
@@ -94,12 +94,10 @@ HA ポート機能は、すべてのグローバル Azure リージョンで使�
 
 ## <a name="limitations"></a>制限事項
 
-- HA ポートの構成は内部ロード バランサーに対してのみ使用できます。 パブリック ロード バランサーに対しては使用できません。
-
+- HA ポートの負荷分散規則は、内部 Standard Load Balancer でのみ使用できます。
 - HA ポートの負荷分散規則と非 HA ポートの負荷分散規則の組み合わせはサポートされていません。
-
-- HA ポート機能は、IPv6 では使うことができません。
-
+- 既存の IP フラグメントは、HA ポートの負荷分散規則によって、最初のパケットと同じ宛先に転送されます。  UDP または TCP パケットの IP フラグメントはサポートされていません。
+- HA ポートの負荷分散規則は、IPv6 では使用できません。
 - フロー対称 (主に NVA シナリオの場合) がバックエンド インスタンスと 1 つの NIC (および 1 つの IP 構成) でサポートされるのは、上の図に示すように使用し、HA ポート負荷分散規則が使用されている場合のみです。 これは他のシナリオでは提供されません。 つまり、2 つ以上のロード バランサー リソースと個別の規則を使用した場合、それぞれ独立した意思決定が行われるため調整することはできません。 [ネットワーク仮想アプライアンス](#nva)の説明と図をご覧ください。 複数の NIC を使用しているか、またはパブリック ロード バランサーおよび内部ロード バランサーの間に NVA を配置している場合は、フロー対称を使用できません。  イングレス フローをアプライアンスの IP にソース NAT して、応答が同じ NVA に到着できるようにすることによって、これを回避できる場合があります。  ただし、1 つの NIC を使用し、上の図に示す参照アーキテクチャを使用することを強くお勧めします。
 
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/05/2019
+ms.date: 10/02/2019
 ms.author: TomSh
-ms.openlocfilehash: 4bc4e8e02c5b44c63ee531a295f2b59e91c056bd
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 85e1ebc05ad4ebe1d58716981c0688df0126efb0
+ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900464"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71937240"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Azure のネットワーク セキュリティのベスト プラクティス
 この記事では、お使いのネットワーク セキュリティを強化するための Azure のベスト プラクティスについて説明します。 このベスト プラクティスは、Azure のネットワークに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
@@ -63,7 +63,7 @@ Azure 仮想ネットワークは、オンプレミス ネットワーク上の 
 **ベスト プラクティス**: 小さな仮想ネットワークとサブネットを回避して、シンプルさと柔軟性を確保します。   
 **詳細**: ほとんどの組織では、最初の計画よりも多くのリソースが追加され、アドレスの再割り当てには多くの労力を要します。 小さなサブネットを使用すると、セキュリティティの価値が制限され、各ネットワークにネットワーク セキュリティ グループをマッピングするとオーバーヘッドが追加されます。 幅広いサブネットを定義して、成長するための柔軟性が確保されるようにします。
 
-**ベスト プラクティス**: [アプリケーション セキュリティ グループ](https://docs.microsoft.com/rest/api/virtualnetwork/applicationsecuritygroups)を定義することで、ネットワーク セキュリティ グループのルール管理をシンプルにします。  
+**ベスト プラクティス**: [アプリケーション セキュリティ グループ](https://azure.microsoft.com/blog/applicationsecuritygroups/)を定義することで、ネットワーク セキュリティ グループのルール管理をシンプルにします。  
 **詳細**: 将来変更されたり、多数のネットワークセキュリティグループ間で使用されたりする可能性があると思われる IP アドレスの一覧に対して、アプリケーション セキュリティ グループを定義します。 アプリケーション セキュリティ グループの名前が、他の人間がその内容と目的を明確に理解できるようになっていることを確認します。
 
 ## <a name="adopt-a-zero-trust-approach"></a>ゼロ トラスト アプローチを採用する

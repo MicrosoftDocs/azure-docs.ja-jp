@@ -3,18 +3,18 @@ title: Azure Compute - Linux Diagnostic Extension |Microsoft ドキュメント
 description: Azure Linux Diagnostic Extension (LAD) を構成して、Azure で実行中の Linux VM からメトリックとログ イベントを収集する方法。
 services: virtual-machines-linux
 author: abhijeetgaiha
-manager: sankalpsoni
+manager: gwallace
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: c4028ff4fef5472ba2a964f70db6d4fe11eeaba6
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 63008de6d29790333764f4dcca27b8dc03cedbdb
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918811"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71838190"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -384,7 +384,7 @@ minSeverity | Syslog の重大度レベル ("LOG\_ERR" や "LOG\_INFO" など)�
 
 要素 | 値
 ------- | -----
-namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)によって実装されます。
+namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](https://github.com/Microsoft/SCXcore)によって実装されます。
 query | 実行される OMI クエリ。
 table | (省略可能) 指定されたストレージ アカウントの Azure ストレージ テーブル ([保護された設定](#protected-settings)を参照してください)。
 frequency | (省略可能) クエリの実行間隔 (秒) 。 既定値は 300 (5 分) です。最小値は 15 秒です。
@@ -695,7 +695,7 @@ JsonBlob シンクに送信されるデータは、[保護された設定](#prot
 さらに、次の UI ツールを使用して、Azure Storage のデータにアクセスすることもできます。
 
 * Visual Studio のサーバー エクスプローラー。
-* [Microsoft Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
+* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure ストレージ エクスプローラー")。
 
 この Microsoft Azure Storage エクスプ ローラー セッションのスナップショットは、テスト VM 上で正しく構成された LAD 3.0 拡張機能から生成された Azure Storage テーブルとコンテナーが表示されています。 イメージは [サンプル LAD 3.0 構成](#an-example-lad-30-configuration)と正確には一致しません。
 

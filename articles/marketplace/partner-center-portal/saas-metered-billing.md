@@ -7,12 +7,12 @@ ms.author: v-qiwe
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 3fa485c9fb2835b8270cb35fc75b57251476005f
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: a244e4f7ac406fecd4c053b39a5e9a9cb6ecab2c
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70141777"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71105491"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>マーケットプレース測定サービスを使用した従量制課金
 
@@ -55,7 +55,7 @@ ms.locfileid: "70141777"
     * 電子メールが 50000 件を超えると、100 件ごとに 0.5 ドル支払う
     * テキストが 10000 件を超えると、テキストごとに 0.01 ドル支払う
 
-CNS サービスをサブスクライブする Azure のお客様は、選択したプランに基づいて、1 か月の無料使用量分のテキストと電子メールを送信できるようになります。  お客様の使用量が無料使用量を超えた場合、プランを変更したり別のことを行ったりする必要はありません。  Contoso は無料使用量の超過分を測定し、[Marketplace の測定サービス API](./marketplace-metering-service-apis.md) を使用して、追加使用についての使用状況イベントを Microsoft に送信し始めます。  Microsoft はこれに応じて、公開元によって指定された追加の使用量に対してお客様に請求します。
+CNS サービスをサブスクライブする Azure のお客様は、選択したプランに基づいて、1 か月の無料使用量分のテキストと電子メールを送信できるようになります。  Contoso は、Microsoft に使用状況イベントを送信することなく、無料使用量に達するまで使用量を測定します。  お客様の使用量が無料使用量を超えた場合、プランを変更したり別のことを行ったりする必要はありません。  Contoso は無料使用量の超過分を測定し、[Marketplace の測定サービス API](./marketplace-metering-service-apis.md) を使用して、追加使用についての使用状況イベントを Microsoft に送信し始めます。  Microsoft はこれに応じて、公開元によって指定された追加の使用量に対してお客様に請求します。
 
 ## <a name="billing-dimensions"></a>課金ディメンション
 

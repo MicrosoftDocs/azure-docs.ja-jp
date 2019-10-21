@@ -8,14 +8,14 @@ manager: cshankar
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 09/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 726fc2d2f53e904fdf7f50be5aef7b274dcc51ac
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: 906cff017c3f80cb1bdd369453b18564d19eb492
+ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68736153"
+ms.lasthandoff: 10/06/2019
+ms.locfileid: "71981171"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights プレビューのユース ケース
 
@@ -40,11 +40,15 @@ Azure Time Series Insights は、エンドツーエンドのサービスとし�
 
 [![データ エクスプローラー](media/v2-update-use-cases/data-explorer.svg)](media/v2-update-use-cases/data-explorer.svg#lightbox)
 
-ほとんどのお客様は、洞察にかかる時間が Time Series Insights の最も強力な資産であることに同意しています。 Time Series Insights では、事前のデータ準備が不要です。 高速に動作し、Azure IoT Hub や Azure Event Hubs の数十億件ものイベントに数分で接続します。 接続したら、数十億件のイベントを視覚化して分析し、データの異常を特定し、潜んでいる傾向を明らかにします。
+分析情報を最短時間で取得できることが Time Series Insights の特筆すべき機能の 1 つであることに、ほとんどのお客様が納得します。
 
-Time Series Insights は、直感的で使い方は簡単です。 コードを全く記述しなくてもデータを操作できます。 新しい言語を習得することもありません。 Time Series Insights は、SQL を使い慣れている上級ユーザー向けに、詳細なテキストベースのクエリを備えています。 初心者向けに、選択してクリックの探索も用意されています。
+* Time Series Insights では、事前のデータ準備が不要です。 
+* 高速に動作し、Azure IoT Hub や Azure Event Hubs の数十億件ものイベントに数分で接続します。 
+* 接続したら、数十億件のイベントを視覚化して分析し、データの異常を特定し、潜んでいる傾向を明らかにします。
 
-お客様は、資産関連の問題をすばやく診断できます。 DevOps を実行して、IoT ソリューションのバグの根本原因を取得できます。 また、データ サイエンス イニシアティブを調査するための領域を識別することもできます。  
+Time Series Insights は、直感的で使い方は簡単です。 コードを全く記述しなくてもデータを操作できます。 新しい言語を学ぶ必要もありません。Time Series Insights は、SQL を熟知した、詳しい知識があるユーザー向けの、詳細なテキストベースのクエリ言語を備えています。 初心者向けに、選択してクリックの探索も用意されています。
+
+お客様は、スピードを活かして、資産関連の問題をすばやく診断できます。 DevOps 分析を実行して、IoT ソリューションのバグの根本原因を把握できます。 また、データ サイエンス イニシアティブの一貫として、さらなる調査に向け、フラグを設定する領域を特定することもできます。  
 
 Time Series Insights に格納されたデータと対話する方法は主に 3 つあります。
 
@@ -52,7 +56,7 @@ Time Series Insights に格納されたデータと対話する方法は主に 3
 
 - 2 つ目の開始方法は、JavaScript SDK を使用して、Web アプリケーションに強力なチャートやグラフをすばやく埋め込むことです。 数行のコードで、強力なクエリを作成できます。 それらを使用して、折れ線グラフ、円グラフ、棒グラフ、ヒートマップ、データ グリッドなどのデータを入力します。 SDK を使用することで、これらのすべての要素がすぐに使用できる状態で存在します。 さらに、SDK は、Time Series Insights クエリ API を抽象化します。 それらを使用して、SQL に似た述語を作成して、ダッシュボードに表示するデータをクエリできます。 プレゼンテーション レイヤーのハイブリッド ソリューションに対して、Time Series Insights は、パラメーター化 URL を提供します。 それらは、データを深く探索するための Time Series Insights プレビュー エクスプローラーとのシームレスな接続ポイントを提供します。
 
-    * JavaScript SDK の詳細については、[Time Series Insights JS クライアント ライブラリ](tutorial-explore-js-client-lib.md)と [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。
+    * JavaScript SDK の詳細については、[Time Series Insights JS クライアント ライブラリ](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)と [Time Series Insights クライアント](https://github.com/Microsoft/tsiclient)のドキュメントを参照してください。
 
     * URL と新しい UI の共有の詳細について、[Azure Time Series Insights プレビューのエクスプローラーでのデータ視覚化](time-series-insights-update-explorer.md)に関するページを確認してください。
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a03472b72ea7c2dc69d79400e33d5ec65cc6126
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 863050b2646f6f7b3a3d9ba3487f11729bef22c8
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647689"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719844"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Azure Search インデックスを再構築する方法
 
@@ -33,7 +33,7 @@ ms.locfileid: "69647689"
 | インデックス内のアナライザー定義を更新または削除する | インデックス全体を再構築しない限り、インデックス内の既存のアナライザー構成 (アナライザー、トークナイザー、トークン フィルター、文字フィルター) を削除または変更することはできません。 |
 | サジェスタにフィールドを追加する | フィールドが既に存在していて、それを [Suggesters](index-add-suggesters.md) コンストラクトに追加する場合は、インデックスを再構築する必要があります。 |
 | フィールドの削除 | フィールドのすべてのトレースを物理的に削除するには、インデックスを再構築する必要があります。 すぐに再構築できない場合は、"削除された" フィールドにアクセスしないようにアプリケーションのコードを変更することができます。 物理的には、そのフィールドを無視するスキーマを適用すると、次に再構築が行われるまでフィールドの定義と内容はインデックスに維持されます。 |
-| 階層を切り替える | より多くの容量が必要な場合、インプレース アップグレードはありません。 新しい容量ポイントで新しいサービスが作成され、新しいサービスで最初からインデックスを構築する必要があります。 |
+| 階層を切り替える | より多くの容量が必要な場合、Azure portal にはインプレース アップグレードはありません。 新しいサービスを作成し、その新しいサービスで最初からインデックスを構築する必要があります。 このプロセスを自動化するには、こちらの [Azure Search .NET サンプル リポジトリ](https://github.com/Azure-Samples/azure-search-dotnet-samples)にある **index-backup-restore** サンプル コードを使用します。 このアプリは、一連の JSON ファイルにインデックスをバックアップし、指定した検索サービスでインデックスを再作成します。|
 
 これら以外の変更は、既存の物理構造に影響を与えずに行うことができます。 具体的には、以下の変更では、インデックスの再構築を行う "*必要はありません*"。
 

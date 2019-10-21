@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: barclayn
-ms.openlocfilehash: b574f7c4f30c3bce8bd7d0e234cb523c965772e1
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3d6b1ed2a3800058acba9fe5df2137811afed74a
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727578"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71300782"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Azure Marketplace イメージのセキュリティに関する推奨事項
 
@@ -56,7 +56,7 @@ ms.locfileid: "68727578"
 | セキュリティ                                                         | セキュリティで保護された OS ベース イメージを使います。 Windows Server に基づくイメージのソースに使われる VHD は、Microsoft Azure によって提供される Windows Server OS イメージが基になっている必要があります。 |
 | セキュリティ                                                         | 最新のセキュリティ更新プログラムをすべてインストールします。                                                                                                                                     |
 | セキュリティ                                                         | アプリケーションは、Administrator、root、admin などの制限されたユーザー名に依存してはなりません。                                                                |
-| セキュリティ                                                         | オペレーティング システムのハード ディスクでは、BitLocker ドライブ暗号化はサポートされていません。 データ ディスクでは BitLocker を使うことができます。                                                            |
+| セキュリティ                                                         | OS ハード ドライブとデータ ハード ドライブの両方に対して BitLocker ドライブ暗号化が有効になっています。                                                             |
 | セキュリティ                                                         | Windows Server の役割、機能、サービス、ネットワーク ポートは必要なものだけを有効にしてフット プリントを最小限にすることで、攻撃対象領域を制限します。                         |
 | セキュリティ                                                         | ソース コードおよびそれから作成される VM イメージでマルウェアをスキャンします。                                                                                                                     |
 | セキュリティ                                                         | Windows Server イメージのセキュリティ更新プログラムを自動更新に設定します。                                                                                                                |

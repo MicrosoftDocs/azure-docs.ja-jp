@@ -3,15 +3,16 @@ title: Azure PowerShell スクリプト - Azure Cosmos DB Gremlin API の操作�
 description: Azure PowerShell スクリプト - Azure Cosmos DB Gremlin API の操作を一覧表示および取得する
 author: markjbrown
 ms.service: cosmos-db
+ms.subservice: cosmosdb-graph
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: ab13b867efc073b8dffc7d9eb33ce4596bdf4099
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 532d28e5d10177e25ff700e35c9c2387690d4609
+ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67603932"
+ms.lasthandoff: 09/22/2019
+ms.locfileid: "71178954"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---gremlin-api"></a>Azure Cosmos DB - Gremlin API のデータベースとグラフを一覧表示および取得する
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 06/26/2019
+ms.date: 09/25/2019
 ms.author: diberry
-ms.openlocfilehash: 585dc03503a61ff6666d3da3374586287e24283f
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: dc99626e2341e180ba0ab191003cf3a6ba9b72e9
+ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68966697"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71695142"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>フォローアップ プロンプトを使用して、複数のターンを含む会話を作成します。
 
@@ -55,23 +55,37 @@ ms.locfileid: "68966697"
 
 ![複数ターン抽出の有効化チェック ボックス](../media/conversational-context/enable-multi-turn.png)
 
-インポートされるドキュメントに対してこのオプションを選択すると、複数ターン会話をドキュメントの構造から暗黙に示すことができます。 その構造が存在する場合、QnA Maker はインポート プロセスの一環として、質問と応答をペアにしたフォローアップ プロンプトを作成します。 
+このオプションを選択すると、複数ターン会話をドキュメントの構造から暗黙に示すことができます。 その構造が存在する場合、QnA Maker はインポート プロセスの一環として、質問と応答をペアにしたフォローアップ プロンプトを作成します。 
 
 複数ターン構造は、URL、PDF ファイル、または DOCX ファイルからのみ推論できます。 構造の例として、[Microsoft Surface ユーザー マニュアル PDF ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/product-manual.pdf)の画像を表示します。 この PDF ファイルのサイズのために、QnA Maker リソースには、**B** (15 インデックス) 以上の **Search の価格レベル**が必要です。 
 
 ![![ユーザー マニュアル内の構造の例](../media/conversational-context/import-file-with-conversational-structure.png)](../media/conversational-context/import-file-with-conversational-structure.png#lightbox)
 
-この PDF ドキュメントをインポートすると、QnA Maker は構造からフォローアップ プロンプトを決定して、会話フローを作成します。 
+### <a name="determine-multi-turn-structure-from-format"></a>形式からの複数ターン構造の指定
 
-1. QnA Maker で、 **[Create a knowledge base]\(ナレッジ ベースの作成\)** を選択します。
-1. QnA Maker サービスを作成するか、既存のものを使用します。 先の Microsoft Surface の例では、より下のレベルに対して PDF ファイルが大きすぎるため、**B** (15 インデックス) 以上の **Search サービス**で QnA Maker サービスを使用してください。
-1. ナレッジ ベースの名前 (例: **Surface manual**) を入力します。
-1. **[Enable multi-turn extraction from URLs, .pdf or .docx files]\(URL や.pdf または .docx ファイルからの複数ターン抽出を有効にする\)** チェック ボックスをオンにします。 
-1. Surface マニュアルの URL **https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/product-manual.pdf** を選択します。
+QnA Maker によって、以下から複数ターン構造を決定します。
 
-1. **[Create your KB]** (KB の作成) ボタンを選択します。 
+* 見出しのフォント サイズ - スタイル、色、またはその他のメカニズムを使用して、ドキュメント内の構造を暗黙に示す場合、QnA Maker では複数ターンのプロンプトが抽出されることはありません。 
 
-    ナレッジ ベースが作成された後、質問と応答のペアのビューが表示されます。
+見出しのルールは次のとおりです。
+
+* 見出しの末尾に疑問符 `?` を付けないでください。 
+
+### <a name="add-file-with-multi-turn-prompts"></a>複数ターンのプロンプトを含むファイルを追加する
+
+複数ターンのドキュメントを追加すると、QnA Maker では構造からフォローアップ プロンプトを決定し、会話フローを作成します。 
+
+1. QnA Maker で、 **[Enable multi-turn extraction from URLs, .pdf or .docx files]\(URL や .pdf または .docx ファイルからの複数ターン抽出を有効にする\)** を有効にして作成された既存のナレッジ ベースを選択します 。 
+1. **[設定]** ページにアクセスし、追加するファイルまたは URL を選択します。 
+1. ナレッジ ベースを**保存してトレーニングします**。
+
+> [!Caution]
+> 新規または空のナレッジ ベースのデータ ソースとしてエクスポートされた TSV または XLS の複数ターンのナレッジ ベース ファイルを使用することは、サポートされていません。 エクスポートされた複数ターン プロンプトをナレッジ ベースに追加するには、QnA Maker ポータルの **[設定]** ページから、そのファイルの種類を**インポート**する必要があります。
+
+
+## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>作成 API を使用して複数ターンのプロンプトを持つナレッジ ベースを作成する
+
+[QnA Maker 作成 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) を使用して、複数ターンのプロンプトを持つナレッジ ケースを作成できます。 プロンプトは `context` プロパティの `prompts` 配列に追加されます。 
 
 ## <a name="show-questions-and-answers-with-context"></a>コンテキストを使用して質問と応答を表示する
 
@@ -126,29 +140,6 @@ ms.locfileid: "68966697"
 1. 表示テキストの編集が完了したら、 **[保存]** を選択します。 
 1. 上部のナビゲーション バーで、 **[Save and train]\(保存してトレーニング\)** を選択します。
 
-
-<!--
-
-## To find the best prompt answer, add metadata to follow-up prompts 
-
-If you have several follow-up prompts for a specific question-and-answer pair but you know, as the knowledge base manager, that not all prompts should be returned, use metadata to categorize the prompts in the knowledge base. You can then send the metadata from the client application as part of the GenerateAnswer request.
-
-In the knowledge base, when a question-and-answer pair is linked to follow-up prompts, the metadata filters are applied first, and then the follow-ups are returned.
-
-1. Add metadata to each of the two follow-up question-and-answer pairs:
-
-    |Question|Add metadata|
-    |--|--|
-    |*Feedback on a QnA Maker service*|"Feature":"all"|
-    |*Feedback on an existing feature*|"Feature":"one"|
-    
-    ![The "Metadata tags" column for adding metadata to a follow-up prompt](../media/conversational-context/add-metadata-feature-to-follow-up-prompt.png) 
-
-1. Select **Save and train**. 
-
-    When you send the question **Give feedback** with the metadata filter **Feature** with a value of **all**, only the question-and-answer pair with that metadata is returned. QnA Maker doesn't return both question-and-answer pairs, because both don't match the filter. 
-
--->
 
 ## <a name="add-a-new-question-and-answer-pair-as-a-follow-up-prompt"></a>新しい質問と応答のペアをフォローアップ プロンプトとして追加する
 
@@ -374,21 +365,13 @@ QnA Maker _GenerateAnswer_ JSON 応答は、`answers`オブジェクトの最初
 
 JSON 応答で返される[表示テキストと表示の順序](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#promptdto)は、[更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) による編集でサポートされています。 
 
-<!--
-
-FIX - Need to go to parent, then answer column, then edit answer. 
-
--->
-
-## <a name="create-knowledge-base-with-multi-turn-prompts-with-the-create-api"></a>作成 API を使用して複数ターンのプロンプトを持つナレッジ ベースを作成する
-
-[QnA Maker 作成 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/create) を使用して、複数ターンのプロンプトを持つナレッジ ケースを作成できます。 プロンプトは `context` プロパティの `prompts` 配列に追加されます。 
-
-
 ## <a name="add-or-delete-multi-turn-prompts-with-the-update-api"></a>更新 API を使用して複数ターンのプロンプトを追加または削除する
 
 [QnA Maker 更新 API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update) を使用して、複数ターンのプロンプトを追加または削除できます。  プロンプトは `context` プロパティの `promptsToAdd` 配列と `promptsToDelete` 配列に追加されます。 
 
+## <a name="export-knowledge-base-for-version-control"></a>バージョン管理用のナレッジ ベースのエクスポート
+
+QnA Maker では、エクスポートされたファイルに複数ターンの会話の手順を含めることによって、QnA Maker ポータルで[バージョン管理をサポートしています](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base)。
 
 ## <a name="next-steps"></a>次の手順
 

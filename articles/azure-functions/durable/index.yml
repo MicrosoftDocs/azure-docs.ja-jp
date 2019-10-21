@@ -1,0 +1,110 @@
+### YamlMime:Landing
+title: Azure Durable Functions のドキュメント
+summary: Durable Functions は、サーバーレス コンピューティング環境でステートフル関数を記述できる Azure Functions の拡張機能です。
+metadata:
+  title: Azure Durable Functions のドキュメント
+  description: Durable Functions は、サーバーレス コンピューティング環境でステートフル関数を記述できる Azure Functions の拡張機能です。
+  ms.service: azure-functions
+  ms.topic: landing-page
+  author: ggailey777
+  ms.author: azfundocs
+  ms.date: 10/04/2019
+  ms.openlocfilehash: f0f47c8d997a3d02ad3bae1bc4634f4c7ad2155c
+  ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 10/17/2019
+  ms.locfileid: "72529688"
+landingContent:
+- title: Durable Functions について
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Durable Functions とは
+      url: durable-functions-overview.md
+    - text: サーバーレス オプションの比較
+      url: ../functions-compare-logic-apps-ms-flow-webjobs.md
+  - linkListType: concept
+    links:
+    - text: 持続的な関数の種類
+      url: durable-functions-types-features-overview.md
+  - linkListType: video
+    links:
+    - text: サーバーレスに関する障壁を打破する
+      url: https://azure.microsoft.com/resources/videos/break-through-the-serverless-barriers-with-durable-functions/
+- title: 作業開始
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: 持続的な関数の作成 (C#)
+      url: durable-functions-create-first-csharp.md
+    - text: 最初の関数の作成 (JavaScript)
+      url: quickstart-js-vscode.md
+  - linkListType: learn
+    links:
+    - text: 実行時間の長いサーバーレス ワークフローの作成
+      url: /learn/modules/create-long-running-serverless-workflow-with-durable-functions/
+  - linkListType: video
+    links:
+    - text: 開始方法の確認
+      url: https://azure.microsoft.com/resources/videos/azure-friday-durable-functions-in-azure-functions/
+- title: 主要な概念
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: オーケストレーション
+      url: durable-functions-orchestrations.md
+    - text: ステートフル エンティティ
+      url: durable-functions-entities.md
+    - text: HTTP 機能
+      url: durable-functions-http-features.md
+    - text: タスク ハブ
+      url: durable-functions-task-hubs.md
+    - text: バージョン管理
+      url: durable-functions-versioning.md
+  - linkListType: video
+    links:
+    - text: サーバーレス エンティティ、オーケストレーション、ステートフル関数
+      url: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B206
+- title: アプリケーション パターン
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 関数チェーン
+      url: durable-functions-sequence.md
+    - text: 非同期 HTTP API
+      url: durable-functions-create-first-csharp.md
+    - text: ファンアウト/ファンイン
+      url: durable-functions-cloud-backup.md
+    - text: モニター
+      url: durable-functions-monitor.md
+    - text: 人による操作
+      url: durable-functions-phone-verification.md
+    - text: アグリゲーター
+      url: durable-functions-entities.md
+- title: パフォーマンスと監視
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: 診断
+      url: durable-functions-diagnostics.md
+  - linkListType: concept
+    links:
+    - text: 関数の監視
+      url: ../functions-monitoring.md
+    - text: ネットワークに関する考慮事項
+      url: ../functions-networking-options.md
+- title: サンプル
+  linkLists:
+  - linkListType: download
+    links:
+    - text: Durable Functions のサンプル
+      url: /samples/browse/?products=azure-functions&term=durable
+    - text: Azure Serverless Community Library
+      url: https://www.serverlesslibrary.net/
+    - text: Azure Resource Manager のテンプレート
+      url: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Web&term=functions
+  - linkListType: how-to-guide
+    links:
+    - text: Azure CLI のサンプル
+      url: ../functions-cli-samples.md

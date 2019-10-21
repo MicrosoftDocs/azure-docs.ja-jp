@@ -6,14 +6,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 09/17/2019
 ms.author: dacurwin
-ms.openlocfilehash: 26d07ac0b09655e170b53af91f890f21d15afb1b
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e1cfb9bf0e8b17df67b2f7060f665d169a71c8d6
+ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909794"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71098378"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -126,6 +126,10 @@ PowerShell でこれを行う方法の詳細については、[こちら](backup
 暗号化された VM の KeyVault 設定を変更した後も、バックアップは新しい詳細情報のセットで引き続き動作します。ただし、変更前の復旧ポイントからの復元後は、KeyVault 内のシークレットを復元してから VM を作成する必要があります。 詳細については、この[記事](https://docs.microsoft.com/azure/backup/backup-azure-restore-key-secret)を参照してください
 
 シークレットまたはキーのロールオーバーなどの操作では、この手順は必要ありません。復元後も同じ KeyVault を使用できます。
+
+### <a name="can-i-access-the-vm-once-restored-due-to-an-vm-having-broken-relationship-with-domain-controller"></a>VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできますか。
+
+はい、VM とドメイン コントローラーとの関係が壊れたために復元された VM にアクセスできます。 詳細については、この[記事](https://docs.microsoft.com/azure/backup/backup-azure-arm-restore-vms#post-restore-steps)を参照してください
 
 ## <a name="manage-vm-backups"></a>VM バックアップの管理
 

@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 846f0ecdd49fc1c501893209b60fa9acc8a32ed2
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242330"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71828243"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 ご不明な点がある場合は、 詳細については、次の FAQ を参照してください。
@@ -70,7 +70,7 @@ ms.locfileid: "70242330"
 はい。 この拡張機能に含まれるタスクとツールはすべて、ホステッド ビルド エージェント上で実行できます。
 
 >[!NOTE]
-> Anti-Malware Scanner ビルド タスクには、Windows Defender が有効なビルド エージェントが必要です。 Hosted Visual Studio 2017 以降では、このようなエージェントが用意されています。 ビルド タスクは、Visual Studio 2015 ホステッド エージェントでは実行されません。
+> Anti-Malware Scanner ビルド タスクには、Windows Defender が有効なビルド エージェントが必要です。 ホストされている Visual Studio 2017 以降には、このようなエージェントが用意されています。 ビルド タスクは、Visual Studio 2015 ホステッド エージェントでは実行されません。
 >
 > これらのエージェント上で署名を更新することはできませんが、署名の期間は常に 3 時間未満です。
 
@@ -152,12 +152,6 @@ ms.locfileid: "70242330"
 
 #### <a name="what-are-recommended-guidelines-for-managing-secrets"></a>シークレットの管理についてどのようなガイドラインが推奨されますか?
 
-ハードコーディングされたシークレットを迅速に検出し、リスクを軽減することは役立ちます。 ただし、シークレットがまったく登録されないようにする方が推奨されます。
-
-この点に役立つように、Microsoft では、Visual Studio 用の [Microsoft DevLabs 拡張機能](https://marketplace.visualstudio.com/items?itemName=VSIDEDevOpsMSFT.ContinuousDeliveryToolsforVisualStudio)の一部として、Credential Scanner Code Analyzer の早期プレビューをリリースしました。 このアナライザーは早期プレビュー リリースです。 これで、開発者は、コード内に存在する可能性があるシークレットをインラインで検出できるようになります。 この機能により、開発者はアナライザーを使用して、このような問題をリアルタイムで修正できるようになります。
-
-詳細については、ブログ記事「[クラウドで安全にシークレットを管理する](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)」を参照してください。
-
 次のリソースは、機密情報を安全に管理し、アプリケーション内からシークレットにアクセスするために役立ちます。
 
  - [Azure Key Vault](../../key-vault/index.yml)
@@ -166,6 +160,9 @@ ms.locfileid: "70242330"
  - [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Azure App Service および Azure Functions でのマネージド ID](../../app-service/overview-managed-identity.md)
  - [AppAuthentication ライブラリ](../../key-vault/service-to-service-authentication.md)
+
+
+詳細については、ブログ記事「[クラウドで安全にシークレットを管理する](https://devblogs.microsoft.com/visualstudio/managing-secrets-securely-in-the-cloud/)」を参照してください。
 
 #### <a name="can-i-write-my-own-custom-searchers"></a>カスタムの検索ツールを作成することはできますか?
 

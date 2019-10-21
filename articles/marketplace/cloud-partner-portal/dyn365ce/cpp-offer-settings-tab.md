@@ -1,42 +1,21 @@
 ---
-title: Dynamics 365 for Customer Engagement の [Offer Settings]\(オファーの設定\) タブ | Azure Marketplace
-description: AppSource Marketplace で Dynamics 365 for Customer Engagement アプリケーション オファーのオファー設定を構成します。
+title: Dynamics 365 for Customer Engagement の Offer Settingsオファーの設定 タブ | Azure Marketplace
+description: PC 記事にリンクされている、非推奨の CPP 記事。以前の記述:「AppSource Marketplace で Dynamics 365 for Customer Engagement アプリケーション オファーのオファー設定を構成します。」
 services: Dynamics 365 for Customer Engagement Offer, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.author: pabutler
-ms.openlocfilehash: 219a69632fe29b1d756702d97804613021b57006
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 71cea44a428fe9eca40ac70e56e6e0a80362115a
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64942439"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033894"
 ---
 # <a name="dynamics-365-for-customer-engagement-offer-settings-tab"></a>Dynamics 365 for Customer Engagement の [Offer Settings]\(オファーの設定\) タブ
 
-この記事では、Dynamics 365 for Customer Engagement アプリケーションのオファーの設定を構成する方法について説明します。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Dynamics 365 Customer Engagement オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[新しい Dynamics 365 for Customer Engagement & PowerApps オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)」を参照してください。
 
-**[Dynamics 365 for Customer Engagement]**  >  **[New Offer]\(新しいオファー\)** ページを開くと、 **[Offer Settings]\(オファーの設定\)** タブにフォーカスが設定されています。フィールド名に付いているアスタリスク (*) は、そのフィールドが必須であることを示します。
-
-![Dynamics 365 for Customer Engagement の [Offer Settings]\(オファーの設定\) タブ](./media/dyn365ce-offer-settings-tab.png)
-
-
-## <a name="offer-settings-fields"></a>[Offer Settings]\(オファーの設定\) のフィールド
-
-次の表ではこのタブのフィールドについて説明します。必須フィールドはアスタリスク (*) で示されます。
-
-|    フィールド         |       説明                                                            |
-|  ---------       |     ---------------                                                          |
-| **オファー ID\***   | オファーの (発行元プロファイル内での) 一意識別子です。 この ID は、製品の URL と分析情報レポートに表示されます。 最大長は 50 文字で、小文字の英数字とダッシュ (-) を使用できます。 (ID の最後をダッシュにすることはできません。)**注:** このフィールドはオファーのマーケットプレース ベース URL に関連付けられているので、オファーを公開した後は、このフィールドを変更できません。  |
-| **発行元 ID\***  | Azure Marketplace での組織の一意識別子です。 すべてのオファリングには、発行元 ID が関連付けられる必要があります。 オファーの保存後にこの値を変更することはできません。 |
-| **[名前]\***       | オファーの表示名です。 この名前は AppSource Marketplace に表示されます。 最大で 50 文字の長さにできます。 製品の覚えやすいブランド名を使用することをお勧めします。 それが製品の販売方法である場合を除き、組織の名前は含めないでください。 他の Web サイトやパブリケーションでこのオファーを販売している場合は、すべてのパブリケーションで名前が正確に同じであることを確認します。 |
-|  |  |
-
-**[保存]** を選択してオファーの設定を保存します。
-
-
-## <a name="next-steps"></a>次の手順
-
-[[Technical Info]\(技術情報\) タブ](./cpp-technical-info-tab.md)を使用して、オファーに対するアプリケーションとパッケージの情報を構成します。
+新しい Dynamics 365 for Customer Engagement オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[新しい Dynamics 365 for Customer Engagement & PowerApps オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)」の手順に従って、オファーを作成します。

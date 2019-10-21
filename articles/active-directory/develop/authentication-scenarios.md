@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/05/2019
+ms.date: 09/23/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f462b8903033784f186032c715cc966dfae7b4
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.openlocfilehash: 76c5214fc26d299c6abb72ed6cd448728903e78f
+ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69622703"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71272541"
 ---
 # <a name="what-is-authentication"></a>認証とは
 
@@ -59,6 +59,25 @@ ID が必要とされる最も基本的なシナリオについて考えてみ�
 
 * リソースに安全にアクセスする必要があるアプリ
 * リソース自体の役割を果たすアプリ
+
+### <a name="how-each-flow-emits-tokens-and-codes"></a>各フローがトークンとコードを生成する方法
+
+クライアントの構築方法に応じて、Microsoft ID プラットフォームでサポートされている認証フローの 1 つ (または複数) を使用できます。  これらのフローでは、さまざまなトークン (id_tokens、更新トークン、アクセス トークン) と承認コードを生成し、異なるトークンを使用して動作させるようにすることができます。 このグラフで概要を示します。
+
+|Flow | 必要 | id_token | アクセス トークン | 更新トークン | 承認コード | 
+|-----|----------|----------|--------------|---------------|--------------------|
+|[承認コード フロー](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
+|[暗黙的なフロー](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
+|[ハイブリッド OIDC フロー](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[更新トークンの使用](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | 更新トークン | x | x | x| |
+|[On-Behalf-Of フロー](v2-oauth2-on-behalf-of-flow.md) | アクセス トークン| x| x| x| |
+|[デバイス コード フロー](v2-oauth2-device-code.md) | | x| x| x| |
+|[クライアントの資格情報](v2-oauth2-client-creds-grant-flow.md) | | | x (アプリのみ)| | |
+
+**注**:
+
+暗黙的モードで発行されたトークンには、URL を介してブラウザーに返されるために長さの制限があります (`response_mode` は `query` または `fragment`)。  一部のブラウザーでは、ブラウザーのバーに入力できる URL のサイズに制限があり、長すぎると失敗します。  したがって、これらのトークンには `groups` または `wids` 要求がありません。 
+
 
 基本の説明は以上です。以降では、ID アプリ モデルと API や、Microsoft ID プラットフォームでのプロビジョニングのしくみについて説明します。Microsoft ID プラットフォームでサポートされている一般的なシナリオに関する詳細情報へのリンクも示します。
 

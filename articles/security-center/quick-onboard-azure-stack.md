@@ -5,7 +5,6 @@ services: security-center
 documentationcenter: na
 author: pipposera
 manager: dsavage
-editor: ''
 ms.assetid: 8982348a-0624-40c7-8a1e-642a523c7f6b
 ms.service: security-center
 ms.devlang: na
@@ -15,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: fiseraci
-ms.openlocfilehash: 7a630acee079301b95e7e05f5c5333dd116abb68
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 1772fd34a2d79b725b2b5ccaa66adb0b251b7e1d
+ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563796"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71202855"
 ---
 # <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>クイック スタート:Azure Stack 仮想マシンを Security Center にオンボードする
 Azure サブスクリプションをオンボードした後、Azure Stack Marketplace から **Azure Monitor, Update and Configuration Management** 仮想マシン拡張機能を追加することにより、Security Center を有効にして、Azure Stack で動作している仮想マシンを保護できます。
@@ -63,21 +62,21 @@ Azure サブスクリプションをオンボードした後、Azure Stack Marke
 1. 新しいブラウザー タブで、**Azure Stack** ポータルにログインします。
 2. **[仮想マシン]** ページに移動し、Security Center で保護したい仮想マシンを選択します。 Azure Stack に仮想マシンを作成する方法については、[Windows 仮想マシンの場合はこのクイック スタート](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-windows-portal)、[Linux 仮想マシンの場合はこのクイック スタート](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-quick-linux-portal)を参照してください。
 3. **[拡張機能]** を選択します。 この仮想マシンにインストールされている仮想マシン拡張機能の一覧が表示されます。
-4. **[Add (追加)]** タブをクリックします。**[新しいリソース]** メニュー ブレードが開かれ、使用可能な仮想マシン拡張機能の一覧が表示されます。 
-5. **Azure Monitor, Update and Configuration Management** 拡張機能を選択し、**[作成]** をクリックします。 **[拡張機能のインストール]** 構成ブレードが開かれます。
+4. **[Add (追加)]** タブをクリックします。 **[新しいリソース]** メニュー ブレードが開かれ、使用可能な仮想マシン拡張機能の一覧が表示されます。 
+5. **Azure Monitor, Update and Configuration Management** 拡張機能を選択し、 **[作成]** をクリックします。 **[拡張機能のインストール]** 構成ブレードが開かれます。
 
 >[!NOTE]
 > **Azure Monitor, Update and Configuration Management** 拡張機能が Marketplace に一覧表示されていない場合は、該当の Azure Stack オペレーターに連絡して使用可能にしてください。
 
 6. **[拡張機能のインストール]** 構成ブレードに、前の手順でメモ帳にコピーしておいた**ワークスペース ID** と**ワークスペース キー (主キー)** を貼り付けます。
-7.  必要な構成設定の指定が終了したら、**[OK]** をクリックします。
+7.  必要な構成設定の指定が終了したら、 **[OK]** をクリックします。
 8. 拡張機能のインストールが完了すると、その状態が **[プロビジョニング成功]** と表示されます。 Security Center ポータルに仮想マシンが表示されるまでに、最大で 1 時間かかる場合があります。
 
 Windows 用エージェントのインストールと構成の詳細については、[Windows コンピューターの接続](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)に関するページを参照してください。
 
 エージェントの問題に対する Linux のトラブルシューティングについては、[Azure Log Analytics Linux エージェントのトラブルシューティング](../azure-monitor/platform/agent-linux-troubleshoot.md)に関するページを参照してください。
 
-これで、Azure VM と Azure 以外のコンピューターを 1 か所で監視できます。 Azure の Security Center ポータルで、**[コンピューティング]** の下に、すべての VM とコンピューターの概要が推奨事項と共に表示されます。 Security Center では、セキュリティ アラートでのこれらのコンピューターの検出も明らかになります。
+これで、Azure VM と Azure 以外のコンピューターを 1 か所で監視できます。 Azure の Security Center ポータルで、 **[コンピューティング]** の下に、すべての VM とコンピューターの概要が推奨事項と共に表示されます。 Security Center では、セキュリティ アラートでのこれらのコンピューターの検出も明らかになります。
 
   ![[コンピューティング] ブレード][6]
 

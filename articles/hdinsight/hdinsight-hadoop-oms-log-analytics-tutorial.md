@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7d015f485a51ae1f929e2ecaf1a05811d21594a2
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a693b14bb61eb52a09ab1f1ecd5d00b339357d5d
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68816035"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240365"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Azure Monitor ログを使用して HDInsight クラスターを監視する
 
@@ -109,6 +109,15 @@ HDInsight では、Azure Monitor ログに追加できるクラスター固有�
 ## <a name="configuring-performance-counters"></a>パフォーマンス カウンターの構成
 
 Azure Monitor では、クラスター内のノードのパフォーマンス メトリックの収集と分析もサポートしています。 この機能の有効化および構成の詳細については、[Azure Monitor での Linux パフォーマンス データ ソース](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters#linux-performance-counters)に関するページを参照してください。
+
+## <a name="cluster-auditing"></a>クラスターの監査
+
+HDInsight では、次の種類のログをインポートすることによって、Azure Monitor ログを使用したクラスターの監査をサポートしています。
+
+* `log_gateway_audit_CL` - このテーブルは、成功/失敗したログイン試行を示すクラスター ゲートウェイ ノードの監査ログを提供します。
+* `log_auth_CL` - このテーブルは、成功/失敗したログイン試行が含まれる SSH のログを提供します。
+* `log_ambari_audit_CL` - このテーブルは、Ambari からの監査ログを提供します。
+* `log_ranger_audti_CL` - このテーブルは、ESP クラスター上の Apache Ranger からの監査ログを提供します。
 
 ## <a name="next-steps"></a>次の手順
 

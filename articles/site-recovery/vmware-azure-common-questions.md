@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 06/27/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 79118fb053c7064fa29730680feb0434f45f031a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
+ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491690"
+ms.lasthandoff: 09/15/2019
+ms.locfileid: "71002271"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>VMware から Azure へのレプリケーションに関するよくある質問
 
@@ -88,7 +88,7 @@ Site Recovery を使用している間は、[料金計算ツール](https://aka.
 
 ### <a name="is-there-any-difference-in-cost-when-replicating-to-general-purpose-v2-storage-account"></a>General Purpose v2 ストレージ アカウントにレプリケートする場合、コストに差はありますか?
 
-Azure Site Recovery のトランザクションは大量にあるため、一般的には GPv2 ストレージ アカウントについて発生するトランザクション コストの増加が見られます。 差を見積もるには、[こちら](../storage/common/storage-account-upgrade.md#pricing-and-billing)をご覧ください。
+Azure Site Recovery のトランザクションは大量にあるため、通常は GPv2 ストレージ アカウントに対して発生するトランザクション コストが増加します。 差を見積もるには、[こちら](../storage/common/storage-account-upgrade.md#pricing-and-billing)をご覧ください。
 
 ## <a name="mobility-service"></a>モビリティ サービス
 
@@ -231,7 +231,7 @@ Site Recovery は、N-4 サポート モデルに従っています。 非常に
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>テンプレートを使う代わりに、手動で構成サーバーを設定できますか?
 
-最新バージョンの Open Virtual Machine Format (OVF) テンプレートを使用して[構成サーバー VM を作成する](vmware-azure-deploy-configuration-server.md)ことをお勧めします。 テンプレートを使用できない場合 (VMware サーバーにアクセスできない場合など)、ポータルからセットアップ ファイルを[ダウンロード](physical-azure-set-up-source.md)して、構成サーバーを設定します。
+最新バージョンの Open Virtualization Format (OVF) テンプレートを使用して[構成サーバー VM を作成する](vmware-azure-deploy-configuration-server.md)ことをお勧めします。 テンプレートを使用できない場合 (VMware サーバーにアクセスできない場合など)、ポータルからセットアップ ファイルを[ダウンロード](physical-azure-set-up-source.md)して、構成サーバーを設定します。
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>構成サーバーは複数のリージョンにレプリケートできますか?
 
@@ -288,6 +288,14 @@ Site Recovery は、N-4 サポート モデルに従っています。 非常に
 ### <a name="where-can-i-download-vault-registration-keys"></a>コンテナー登録キーはどこでダウンロードできますか?
 
 Recovery Services コンテナーで、 **[Site Recovery インフラストラクチャ]**  >  **[管理]** の **[構成サーバー]** を選択します。 次に、 **[サーバー]** で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
+
+### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>単一の構成サーバーを使用して複数の vCenter インスタンスを保護できますか?
+
+はい。単一の構成サーバーで、複数の vCenter の VM を保護できます。  構成サーバーに追加できる vCenter インスタンスの数に制限はありませんが、単一の構成サーバーで保護できる VM の数には制限が適用されます。
+
+### <a name="can-a-single-configuration-server-protect-multiple-clusters-within-vcenter"></a>単一の構成サーバーで、vCenter 内の複数のインスタンスを保護できますか?
+
+はい。Azure Site Recovery では、異なるクラスターの VM を保護できます。
 
 ## <a name="process-server"></a>プロセス サーバー
 

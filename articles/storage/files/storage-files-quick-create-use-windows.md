@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 626a6a5e0449d267b67653c2f63303226dd0c99d
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 95a5df4ca14f4be8553c83dfe8b4d09d00341102
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699749"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71260394"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>クイック スタート:Windows Virtual Machines で Azure Files 共有を作成して管理する
 
@@ -46,7 +46,7 @@ Azure ファイル共有を使用するためには、あらかじめ Azure ス�
 
     ![[ファイル] を選択する](./media/storage-files-quick-create-use-windows/click-files.png)
 
-1. **+ [ファイル共有]** を選択します。
+1. **[ファイル共有]** を選択します。
 
     ![ファイル共有の追加ボタンを選択する](./media/storage-files-quick-create-use-windows/create-file-share.png)
 

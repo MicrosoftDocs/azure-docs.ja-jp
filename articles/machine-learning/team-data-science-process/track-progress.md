@@ -1,52 +1,53 @@
 ---
-title: データ サイエンス プロジェクトの進行状況の追跡 - Team Data Science Process
-description: データ サイエンス グループのマネージャー、チーム リーダー、プロジェクト リードが、データ サイエンス プロジェクトの進行状況を追跡できる方法です。
+title: Team Data Science Process プロジェクトの進行状況の追跡
+description: データ サイエンス グループのマネージャー、チーム リーダー、プロジェクト リーダーが、データ サイエンス プロジェクトの進行状況を追跡できる方法です。
 author: marktab
 manager: cgronlun
 editor: cgronlun
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 09/26/2019
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7745a53084f4477f7b736ea9d130ffd3eed771f4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 28bd3e558294c000ba65a1c60fe227bbae7e82dd
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60252568"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72244081"
 ---
-# <a name="tracking-the-progress-of-data-science-projects"></a>データ サイエンス プロジェクトの進行状況の追跡
+# <a name="track-the-progress-of-data-science-projects"></a>データ サイエンス プロジェクトの進行状況の追跡
 
-データ サイエンス グループ マネージャー、チーム リーダー、プロジェクト リーダーは、プロジェクトの進行状況、プロジェクトに対して実行した作業とその実行者、To-do リストに残っている項目を追跡する必要があります。 
+データ サイエンス グループ マネージャー、チーム リーダー、プロジェクト リーダーは、行われた作業、作業の担当者、残っている作業など、プロジェクトの進捗状況を追跡できます。 
 
 ## <a name="azure-devops-dashboards"></a>Azure DevOps ダッシュ ボード
-Azure DevOps を使用している場合は、アクティビティおよび指定されたアジャイル プロジェクトに関連付けられている作業項目を追跡するためにダッシュ ボードを構築することができます。 
 
-Azure DevOps でダッシュ ボードとウィジェットを作成およびカスタマイズする方法の詳細については、次の一連の手順を参照してください。
+Azure DevOps を使用している場合は、アクティビティおよび指定されたアジャイル プロジェクトに関連付けられている作業項目を追跡するためにダッシュボードを構築することができます。 ダッシュボードの詳細については、「[ダッシュボード、レポート、ウィジェット](/azure/devops/report/dashboards/)」を参照してください。
 
-- [ダッシュボードを追加および管理する](https://docs.microsoft.com/azure/devops/report/dashboards/dashboards)
-- [ダッシュ ボードにウィジェットを追加する](https://docs.microsoft.com/azure/devops/report/dashboards/add-widget-to-dashboard)
+Azure DevOps でダッシュボードとウィジェットの作成方法とカスタマイズ方法の手順については、次のクイックスタートを参照してください。
+
+- [ダッシュボードを追加および管理する](/azure/devops/report/dashboards/dashboards)
+- [ダッシュボードにウィジェットを追加する](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
 ## <a name="example-dashboard"></a>サンプルのダッシュ ボード
 
-アジャイル データ サイエンス プロジェクトのスプリント アクティビティと、関連付けられているリポジトリへのコミット数を追跡するために構築された、簡単なサンプル ダッシュ ボードを次に示します。 **左上**にあるパネルは、次の内容を示しています。
+アジャイル データ サイエンス プロジェクトのスプリント アクティビティ (関連付けられているリポジトリへのコミット数を含む) を追跡するために構築された、簡単なサンプル ダッシュボードを次に示します。 
 
-- 現在のスプリントのカウントダウン 
-- 過去 7 日間の各リポジトリのコミット数
-- 特定のユーザーの作業項目 
+- **カウントダウン** タイルには、現在のスプリントに保持される日数が表示されます。 
 
-それ以外のパネルはそれぞれ、プロジェクトの累積フロー ダイアグラム (CFD)、バーンダウン、およびバーンアップを表示します。
+- 2 つの**コード タイル**には、過去 7 日間の 2 つのプロジェクト リポジトリのコミット数が表示されます。 
 
-- **左下**:CFD は指定された状態の作業量を示します。承認済みは灰色、コミット済みは青色、完了済みは緑色で表されます。
-- **右上**: 未完了の作業と残り時間を示したバーンダウン チャートです。
-- **右下**: 完了済みの作業と総作業量を示したバーンアップ チャートです。
+- **TDSP Customer Project の作業項目**には、すべての作業項目のクエリの結果とその状態が表示されます。 
 
-![dashboard](./media/track-progress/dashboard.png)
+- **累積フローダイアグラム** (CFD) には、終了した作業項目とアクティブな作業項目の数が表示されます。
 
-これらのグラフの作成方法については、[ダッシュ ボード](https://docs.microsoft.com/azure/devops/report/dashboards/)のクイックスタートおよびチュートリアルを参照してください。
- 
+- **バーンダウン チャート**には、スプリントの残りの時間に対してまだ完了しているない作業が示されます。
+
+- **バーンアップ チャート**には、スプリントの作業量の合計と比較して、完了した作業が示されます。
+
+![ダッシュボード](./media/track-progress/dashboard.png)
+
 ## <a name="next-steps"></a>次の手順
 
-また、**特定のシナリオ**のプロセスにおけるすべての手順を説明するチュートリアルも用意されています。 これらは、[サンプル チュートリアル](walkthroughs.md)の記事で簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 
+「[Team Data Science Process を実行するチュートリアル](walkthroughs.md)」には、特定のシナリオのプロセスのすべての手順を示すチュートリアルと、リンクとサムネイルの説明が記載されています。 これらのリンクされたシナリオでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明します。 

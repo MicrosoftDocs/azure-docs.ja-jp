@@ -8,84 +8,84 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 8/18/2019
 ms.author: makromer
-ms.openlocfilehash: e1ba09f459152616941071c23f7a6545ec2a8b73
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 9964aaf060c43cc3e9992f515bf272011e795043
+ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210509"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70962125"
 ---
-# <a name="process-fixed-length-text-files-using-data-factory-mapping-data-flows"></a>Data Factory の Mapping Data Flow を使用して固定長テキスト ファイルを処理する
+# <a name="process-fixed-length-text-files-by-using-data-factory-mapping-data-flows"></a>Data Factory の Mapping Data Flow を使用して固定長テキスト ファイルを処理する
 
-Data Factory の Mapping Data Flow では、固定幅テキスト ファイルからのデータの変換がサポートされます。 区切り記号を使用せずにテキスト ファイルのデータセットを定義し、次に序数の位置に基づいて部分文字列の分割を設定します。
+Microsoft Azure Data Factory のマッピング データ フローを使用すると、固定幅のテキスト ファイルからデータを変換できます。 次のタスクでは、区切り記号を使用せずにテキスト ファイルのデータセットを定義し、次に序数の位置に基づいて部分文字列の分割を設定します。
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する。
 
-1. **[+New Pipeline]\(+新しいパイプライン\)** に移動して、新しいパイプラインを開始します
+1. **[+ 新しいパイプライン]** を選択して新しいパイプラインを作成します。
 
-2. 固定幅ファイルの処理に使用されるデータ フロー アクティビティを追加します
+2. 固定幅ファイルの処理に使用されるデータ フロー アクティビティを追加します。
 
-  ![固定幅パイプライン](media/data-flow/fwpipe.png)
+    ![固定幅パイプライン](media/data-flow/fwpipe.png)
 
-3. データ フロー アクティビティで、[New Mapping Data Flow]\(新しい Mapping Data Flow\) を選択します
+3. データ フロー アクティビティで、 **[New Mapping Data Flow]\(新しい Mapping Data Flow\)** を選択します
 
-4. ソース変換、派生列、SELECT、およびシンク変換を追加します
+4. ソース、派生列、選択、およびシンクの変換を追加します。
 
-  ![固定幅データ フロー](media/data-flow/fw2.png)
+    ![固定幅データ フロー](media/data-flow/fw2.png)
 
-5. 区切りテキスト型となる新しいデータ セットを使用するようにソース変換を構成します
+5. 新しいデータ セットを使用するようにソース変換を構成します。これは区切りテキスト型になります。
 
-6. 列区切り記号とヘッダーは設定しません
+6. 列区切り記号またはヘッダーは設定しないでください。
 
-単にこのファイル コンテンツのフィールドの開始点と長さを設定します。
+   ここで、このファイルの内容のフィールドの開始点と長さを設定します。
 
-```
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-1234567813572468
-```
+    ```
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    1234567813572468
+    ```
 
-7. ソース変換の [Projection]\(プロジェクション\) タブに、"Column_1" という文字列が 1 つ表示されます
+7. ソース変換の **[プロジェクション]** タブには、*Column_1* という名前の文字列型の列が表示されます。
 
-8. 次に派生列で新しい列を作成します
+8. 派生列で新しい列を作成します。
 
-9. 列には、col1 のように単純な名前を付けます
+9. 列には、*col1* のように簡単な名前を付けます。
 
-10. 次に、式ビルダーで、次のように入力します。
+10. 式ビルダーで、次のように入力します。
 
-  ```substring(Column_1,1,4)```
+    ```substring(Column_1,1,4)```
 
-  ![派生列](media/data-flow/fwderivedcol1.png)
+    ![派生列](media/data-flow/fwderivedcol1.png)
 
-10. 解析する必要があるすべての列について、これを繰り返します
+11. 解析する必要があるすべての列について、手順 10 を繰り返します。
 
-12. [Inspect]\(検査\) タブをクリックすると、生成される新しい列が表示されます
+12. **[Inspect]\(検査\)** タブを選択すると、生成される新しい列が表示されます。
 
-  ![検査](media/data-flow/fwinspect.png)
+    ![検査](media/data-flow/fwinspect.png)
 
-13. SELECT 変換を使用して、変換に必要のない列をすべて削除します
+13. SELECT 変換を使用して、変換に必要のない列をすべて削除します。
 
-  ![SELECT 変換](media/data-flow/fwselect.png)
+    ![SELECT 変換](media/data-flow/fwselect.png)
 
-14. 最後に、シンクを使用して、データをフォルダーに出力します。
+14. シンクを使用して、データをフォルダーに出力します。
 
-  ![固定幅シンク](media/data-flow/fwsink.png)
+    ![固定幅シンク](media/data-flow/fwsink.png)
 
-  出力は次のようになります。
+    出力は次のようになります。
 
-  ![固定幅出力](media/data-flow/fxdoutput.png)
+    ![固定幅出力](media/data-flow/fxdoutput.png)
 
-  固定幅データがそれぞれ 4 文字で分割され、Col1、Col2、Col3、Col4、... に割り当てられます。上記の例に基づいて、データを 4 列に分割します。
+  固定幅データがそれぞれ 4 文字で分割され、Col1、Col2、Col3、Col4 などに割り当てられます。 前の例に基づいて、データは 4 つの列に分割されます。
 
 ## <a name="next-steps"></a>次の手順
 

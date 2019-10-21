@@ -7,21 +7,21 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.custom: seodec18, seo-java-august2019
+ms.custom: seodec18, seo-java-august2019, seo-java-september2019
 ms.date: 04/15/2019
 ms.author: shvija
-ms.openlocfilehash: c622e9af4263c844fb25dc65657998cfc82d4a2d
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: be9919950f24dbee7fb8a3f901767c298105bf53
+ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884200"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72325468"
 ---
 # <a name="use-java-to-send-events-to-or-receive-events-from-azure-event-hubs"></a>Java を使用して Azure Event Hubs との間でイベントを送受信する
 
-Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
+このチュートリアルでは、Java アプリケーションを作成し、Azure Event Hubs との間でイベントを送受信する方法について説明します。
 
-このチュートリアルでは、Java アプリケーションを作成し、イベント ハブとの間でイベントを送受信する方法について説明します。 
+Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、Event Hubs の概要と Event Hubs の機能に関するページを参照してください。
 
 > [!NOTE]
 > このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
@@ -181,11 +181,11 @@ EventProcessorHost を使用するには、[Azure Storage アカウント][Azure
 1. [Azure portal](https://portal.azure.com) にサインインし、画面左側の **[Create a resource]\(リソースの作成\)** を選択します。
 2. **[ストレージ]** を選択し、 **[ストレージ アカウント]** を選択します。 **[ストレージ アカウントの作成]** ウィンドウで、ストレージ アカウントの名前を入力します。 残りのフィールドを完了し、目的の地域を選択し、 **[作成]** を選択します。
    
-    ![ストレージ アカウントの作成](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage2.png)
+    ![Azure portal でストレージ アカウントを作成する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-azure-storage-account.png)
 
 3. 新しく作成したストレージ アカウントを選択し、 **[アクセス キー]** を選択します。
    
-    ![アクセス キーを取得する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/create-storage3.png)
+    ![Azure portal でアクセス キーを取得する](./media/event-hubs-dotnet-framework-getstarted-receive-eph/select-azure-storage-access-keys.png)
 
     key1 の値を一時的な場所にコピーします。 このチュートリアルの後の方で、それを使用します。
 
@@ -206,7 +206,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
 </dependency>
 ```
 
-ビルド環境の種類に応じて、[Maven セントラル リポジトリ][https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22 ] から最新リリースの JAR ファイルを明示的に取得できます。  
+ビルド環境の種類に応じて、[Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) から最新リリースの JAR ファイルを明示的に取得できます。
 
 1. 次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。 このクラスは `ErrorNotificationHandler`と呼ばれます。     
    

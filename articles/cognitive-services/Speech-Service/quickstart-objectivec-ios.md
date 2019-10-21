@@ -10,14 +10,16 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 01a2b9d5bad7d490f5ee9f6a21af5bc1308bdab1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: d87fd06b45d1d3636c442d962daa79cf526e74f2
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553655"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803286"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>クイック スタート:iOS で Objective-C と Speech SDK を使用して音声を認識する
+
+[音声合成](quickstart-text-to-speech-objectivec-ios.md)のクイックスタートも利用できます。
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -34,8 +36,6 @@ ms.locfileid: "68553655"
 ## <a name="get-the-speech-sdk-for-ios"></a>iOS 用の Speech SDK を取得する
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
-
-Cognitive Services Speech SDK の現在のバージョンは `1.6.0` です。
 
 iOS 用の Cognitive Services Speech SDK は、現在は Cocoa フレームワークとして配布されています。
 [こちら](https://aka.ms/csspeech/iosbinary)からダウンロードできます。 ファイルをホーム ディレクトリにダウンロードします。
@@ -87,7 +87,7 @@ UI はプロジェクトの `Main.storyboard` 部分に設定されます。
     <string>Need microphone access for speech recognition from microphone.</string>
     ```
 
-## <a name="building-and-running-the-sample"></a>サンプルのビルドと実行
+## <a name="build-and-run-the-sample"></a>サンプルのビルドと実行
 
 1. デバッグ出力が表示されるようにします ( **[View]**  >  **[Debug Area]**  >  **[Activate Console]** )。
 1. **[Product]\(製品\)**  >  **[Destination]\(ターゲット\)** メニューの一覧から、お使いの開発マシンに接続された iOS デバイスまたは iOS シミュレーターをアプリのターゲットとして選択します。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 10e8edcd3a1e781866eaee2cbe48d1536dbc1229
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: ae467e3def65d446a8c331c4f15033b4c01886ae
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073582"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219494"
 ---
 # <a name="how-to-integrate-azure-api-management-with-azure-application-insights"></a>Azure API Management と Azure Application Insights を統合する方法
 
@@ -78,7 +78,8 @@ Azure Application Insights を使用する前に、このサービスのイン�
 | [Sampling (%)]\(サンプリング (%)\)                        | decimal                           | 0 から 100 までの値 (パーセント)。 <br/> Azure Application Insights に記録する要求のパーセンテージを指定します。 0% サンプリングの場合、要求はまったく記録されません。100% サンプリングの場合、すべての要求が記録されます。 <br/> この設定は、Azure Application Insights に要求記録が与えるパフォーマンス上の影響を抑える目的で使用されます (下のセクションをご覧ください)。 |
 | [Always log errors]\(エラーは常に記録する\)                   | ブール値                           | この設定が選択されている場合、 **[サンプリング]** 設定に関係なく、すべてのエラーが Azure Application Insights に記録されます。                                                                                                                                                                                                                  |
 | 基本オプション: headers              | list                              | Azure Application Insights に記録する、要求と応答のヘッダーを指定します。  既定値: ヘッダーはログに記録されません。                                                                                                                                                                                                             |
-| 基本オプション: [First bytes of body]\(本文の最初のバイト\)  | integer                           | Azure Application Insights に記録する、要求本文と応答本文の最初のバイト数を指定します。  既定値: 本文は記録されません。                                                                                                                                                                                              |
+| 基本オプション: [First bytes of body]\(本文の最初のバイト\)  | integer                           | Azure Application Insights に記録する、要求本文と応答本文の最初のバイト数を指定します。  既定値: 本文は記録されません。                                                                                                                                                                                                    |
+| 詳細オプション: 詳細度         |                                   | 詳細レベルを指定します。 重大度レベルが高いカスタム トレースだけがログに記録されます。 既定値はInformation です。                                                                                                                                                                                                                               |
 | 詳細オプション: [Frontend Request]\(フロントエンド要求\)  |                                   | *フロントエンド要求*を Azure Application Insights に記録するかどうか、また、その方法を指定します。 *フロントエンド要求*は、Azure API Management サービスで受信する要求です。                                                                                                                                                                        |
 | 詳細オプション: [Frontend Response]\(フロントエンド応答\) |                                   | *フロントエンド応答*を Azure Application Insights に記録するかどうか、また、その方法を指定します。 *フロントエンド応答*は、Azure API Management サービスから発信される応答です。                                                                                                                                                                   |
 | 詳細オプション: [Backend Request]\(バックエンド要求\)   |                                   | *バックエンド要求*を Azure Application Insights に記録するかどうか、また、その方法を指定します。 *バックエンド要求*は、Azure API Management サービスから発信される要求です。                                                                                                                                                                        |

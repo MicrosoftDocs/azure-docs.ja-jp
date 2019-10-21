@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 73ef5cc00b5154dbdbc92911d17740c7d13038ec
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341971"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72243220"
 ---
 # <a name="troubleshooting-metrics-charts"></a>メトリック グラフのトラブルシューティング
 
@@ -95,19 +95,21 @@ Azure のメトリック グラフでは、2 つの既知の時間グレイン �
 
 ## <a name="cannot-pick-guest-os-namespace-and-metrics"></a>ゲスト OS の名前空間とメトリックを選択できない
 
-仮想マシンと仮想マシン スケール セットには、メトリックの 2 つのカテゴリがあります。Azure のホスティング環境によって収集される**仮想マシン ホスト** メトリックと、仮想マシンで実行されている[監視エージェント](agents-overview.md)によって収集される**ゲスト OS** メトリックです。 監視エージェントは、[Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)を有効にすることでインストールします。
+仮想マシンと仮想マシン スケール セットには、メトリックの 2 つのカテゴリがあります。Azure のホスティング環境によって収集される**仮想マシン ホスト** メトリックと、仮想マシンで実行されている[監視エージェント](agents-overview.md)によって収集される**ゲスト OS (クラシック)** メトリックです。 監視エージェントは、[Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)を有効にすることでインストールします。
 
 既定では、ゲスト OS メトリックは Azure Storage アカウントに格納され、リソースの **[診断設定]** タブから選択します。 ゲスト OS メトリックが収集されない場合、またはメトリックス エクスプローラーでアクセスできない場合は、**仮想マシン ホスト** メトリック名前空間のみが表示されます。
 
 ![メトリックの画像](./media/metrics-troubleshoot/cannot-pick-guest-os-namespace.png)
 
-**解決策:** **ゲスト OS** の名前空間とメトリックがメトリックス エクスプローラーに表示されない場合:
+**解決策:** **ゲスト OS (クラシック)** の名前空間とメトリックがメトリックス エクスプローラーに表示されない場合:
 
 1. [Azure Diagnostics 拡張機能](diagnostics-extension-overview.md)が有効になっており、メトリックを収集するように構成されていることを確認します。
     > [!WARNING]
     > [Log Analytics エージェント](agents-overview.md#log-analytics-agent) (Microsoft Monitoring Agent または "MMA" とも呼ばれます) を使って**ゲスト OS** をストレージ アカウントに送信することはできません。
 
-1. ストレージ アカウントがファイアウォールによって保護されていないことを確認します。
+1. **Microsoft.Insights** リソース プロバイダーが[ご利用のサブスクリプションに登録されている](metrics-troubleshoot.md#microsoftinsights-resource-provider-isnt-registered-for-your-subscription)ことを確認します。
+
+1. ストレージ アカウントがファイアウォールによって保護されていないことを確認します。 Azure portal では、メトリック データを取得してグラフをプロットするために、ストレージ アカウントにアクセスする必要があります。
 
 1. [Azure ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)を使って、メトリックがストレージ アカウントに送られていることを検証します。 メトリックが収集されていない場合は、[Azure Diagnostics 拡張機能のトラブルシューティング ガイド](diagnostics-extension-troubleshooting.md#metric-data-doesnt-appear-in-the-azure-portal)に従ってください。
 

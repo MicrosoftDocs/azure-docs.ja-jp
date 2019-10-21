@@ -54,7 +54,7 @@
     - name: 検索結果の強調表示の処理
       href: hit-highlighting.md
     - name: 結果のページング
-      href: paging-webpages.md
+      href: paging-search-results.md
     - name: サムネイルのサイズ変更とトリミング
       href: resize-and-crop-thumbnails.md
     - name: v5 から v7 へのアップグレード

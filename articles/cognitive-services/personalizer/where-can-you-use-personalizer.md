@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/19/2019
 ms.author: diberry
-ms.openlocfilehash: 87065709b16a5a0c7076584e8fc33c3830319e4f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 246e76a0ab94624945723b500ef136e038ab40ec
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999642"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71155227"
 ---
 # <a name="where-can-you-use-personalizer"></a>Personalizer を使用できる状況
 
@@ -33,7 +33,7 @@ Personalizer は、次の状況で適用できます。
 * 全体的なユーザーの動作および合計報酬スコアから最適な選択肢を学習でき、そうする必要がある。
 * パーソナル化のための機械学習の使用が、[責任ある使用に関するガイドライン](ethics-responsible-use.md)と選択した選択内容に従っている。
 * コンテキスト上の決定を、限られた選択肢から最良の選択肢 (アクション) を順位付けすることとして表現できる。
-* ユーザー動作の一定の側面を測定し、それを "_報酬スコア_" で表現することによって、順位付けされた選択肢がアプリケーションにとってどれだけうまく機能したかを判断できる。 これは -1 から 1 までの数値です。
+* ユーザー動作の一定の側面を測定し、それを " _[報酬スコア](concept-rewards.md)_ " で表現することによって、順位付けされた選択肢がアプリケーションにとってどれだけうまく機能したかを判断できる。
 * 報酬スコアに含まれる交絡または外部因子が多すぎない。 実験期間は、関連性を保持したまま報酬スコアを計算するのに必要上最小限の長さにします。
 * 順位のコンテキストを、適切な選択をするのに役立つと思われる少なくとも 5 つの[特徴](concepts-features.md)のリストとして表現できる。加えて、これには個人を特定できる情報が含まれない (PII)。
 * Personalizer が適切な選択をするのに役立つと思われる少なくとも 5 つの[特徴](concepts-features.md)のリストとして、各コンテンツの選択 ("_アクション_") に関する情報がある。

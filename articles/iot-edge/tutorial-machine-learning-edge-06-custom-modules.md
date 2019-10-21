@@ -8,12 +8,12 @@ ms.date: 06/13/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4d03e5ee5faf39425e1bf927a3c0557b0ad01b82
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: e629cbdce55f236e095f606f56adec453b0b17c7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840111"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299862"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>チュートリアル:カスタム IoT Edge モジュールの作成とデプロイ
 
@@ -27,7 +27,7 @@ IoT Edge ハブを使用することで、モジュール間の通信が容易�
 IoT Edge デバイスで 4 つのことを達成できるようにします。
 
 * リーフ デバイスからデータを受信する
-* データを送信したデバイスの RUL を予測する
+* データを送信したデバイスの残存耐用年数 (RUL) を予測する
 * デバイスの RUL のみを含むメッセージを IoT Hub に送信する (この機能は、RUL があるレベルを下回った場合にのみデータを送信するように変更できます)
 * リーフ デバイスのデータを IoT Edge デバイス上のローカル ファイルに保存する。 このデータ ファイルは、機械学習モデルのトレーニングを洗練するために、ファイル アップロードによって定期的に IoT Hub にアップロードされます。 絶えず続くメッセージ ストリーミングの代わりにファイル アップロードを使用するとコスト効率が良くなります。
 
@@ -56,7 +56,7 @@ IoT Edge デバイスで 4 つのことを達成できるようにします。
 
 ## <a name="create-a-new-iot-edge-solution"></a>新しい IoT Edge ソリューションを作成する
 
-2 つの Azure Notebooks のうち 2 番目の実行中に、RUL モデルを含むコンテナー イメージを作成および発行しました。 イメージを Azure IoT Edge モジュールとしてデプロイ可能にするために、Azure Machine Learning は、イメージ作成プロセスの一部として部品に組み込まれています。 このステップでは、"Azure Machine Learning" モジュールを使用して Azure IoT Edge ソリューションを作成し、そのモジュールが、Azure Notebooks を使用して発行したイメージをポイントするようにします。
+2 つの Azure Notebooks のうち 2 番目の実行中に、RUL モデルを含むコンテナー イメージを作成および発行しました。 Azure Machine Learning では、イメージを Azure IoT Edge モジュールとしてデプロイ可能にするために、イメージ作成プロセスの一部として、そのモデルがパッケージ化されています。 このステップでは、"Azure Machine Learning" モジュールを使用して Azure IoT Edge ソリューションを作成し、そのモジュールが、Azure Notebooks を使用して発行したイメージをポイントするようにします。
 
 1. 開発用コンピューターへのリモート デスクトップ セッションを開きます。
 

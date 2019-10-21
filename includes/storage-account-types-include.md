@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 280ef8550177a514a6704a8bfab226745222f91e
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: 0e5c1974ecb1b3efb8df602c76700b7db04a88d7
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69029813"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310528"
 ---
 Azure Storage では、数種類のストレージ アカウントが提供されています。 各種類は異なる機能をサポートし、独自の価格モデルがあります。 アプリケーションに最適な種類を判断するために、ストレージ アカウントを作成する前にこれらの違いを検討してください。 ストレージ アカウントには、次の種類があります。
 
@@ -27,7 +27,7 @@ Azure Storage では、数種類のストレージ アカウントが提供さ�
 
 | ストレージ アカウントの種類 | サポートされているサービス                       | サポートされているパフォーマンス レベル      | サポートされているアクセス層         | レプリケーション オプション               | デプロイメント モデル<div role="complementary" aria-labelledby="deployment-model"><sup>1</sup></div> | 暗号化<div role="complementary" aria-labelledby="encryption"><sup>2</sup></div> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| 汎用 v2   | BLOB、ファイル、キュー、テーブル、およびディスク       | Standard、Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | ホット、クール、アーカイブ<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS、GRS、RA-GRS、ZRS、ZGRS (プレビュー)、RA-ZGRS (プレビュー)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | リソース マネージャー             | 暗号化              |
+| 汎用 v2   | BLOB、ファイル、キュー、テーブル、およびディスク       | Standard、Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | ホット、クール、アーカイブ<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS、GRS、RA-GRS、ZRS、GZRS (プレビュー)、RA-GZRS (プレビュー)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | リソース マネージャー             | 暗号化              |
 | 汎用 v1   | BLOB、ファイル、キュー、テーブル、およびディスク       | Standard、Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | 該当なし                            | LRS、GRS、RA-GRS                  | Resource Manager、クラシック    | 暗号化              |
 | ブロック BLOB ストレージ   | BLOB (ブロック BLOB と追加 BLOB のみ) | Premium                       | 該当なし                            | LRS                               | リソース マネージャー             | 暗号化              |
 | FileStorage   | ファイル専用 | Premium                       | 該当なし                            | LRS                               | リソース マネージャー             | 暗号化              |

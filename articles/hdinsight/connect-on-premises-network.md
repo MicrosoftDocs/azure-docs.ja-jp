@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 1ed722ad68280226387b98b3fefb77647f5cd825
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: ad43af0f6f9bd8d5d78cef78b26345436169c0fd
+ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918539"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71034126"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -40,7 +40,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
 次の図の緑色の線は、仮想ネットワークの DNS サフィックスで終わるリソースの要求です。 青色の線は、オンプレミス ネットワークまたはパブリック インターネットのリソースの要求です。
 
-![このドキュメントで使用される構成で DNS 要求がどのように解決されるかを示す図](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
+![構成で DNS 要求がどのように解決されるかを示す図](./media/connect-on-premises-network/on-premises-to-cloud-dns.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -96,7 +96,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     |Subnet | 前に作成した仮想ネットワークの既定のサブネットを選択します。 VPN Gateway で使用されているサブネットは選択 __しないでください__。|
     |パブリック IP | 自動入力されている値を使用します。  |
 
-    ![仮想ネットワークの設定](./media/connect-on-premises-network/virtual-network-settings.png)
+    ![HDInsight 仮想ネットワークの設定](./media/connect-on-premises-network/virtual-network-settings.png)
 
     他のエントリは既定値のままにして、 **[確認と作成]** を選択します。
 

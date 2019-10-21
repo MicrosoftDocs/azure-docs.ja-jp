@@ -25,7 +25,7 @@
       items:
         - name: AKS を使用して Kubernetes クラスターを作成する
           href: terraform-create-k8s-cluster-with-tf-and-aks.md
-        - name: AKS を使用してイングレス コントローラーとしての Application Gateway を備えた Kubernetes クラスターを作成する
+        - name: AKS で Application Gateway イングレス コントローラーを作成する
           href: terraform-create-k8s-cluster-with-aks-applicationgateway-ingress.md
     - name: インフラストラクチャ
       items:

@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/10/2019
+ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ceefb565a82301d2ddedf70d12c0fc564b801229
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d3c810746218e9761ae4c821dc22fef921e62a60
+ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101201"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71719061"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure における SAP HANA インフラストラクチャの構成と運用
 このドキュメントは、Azure インフラストラクチャの構成と Azure のネイティブ仮想マシン (VM) にデプロイされている SAP HANA システムの運用に関するガイダンスを提供します。 また、ドキュメントには、M128 の VM SKU 向けの SAP HANA スケールアウトの構成情報が含まれます。 このドキュメントは、以下の内容を含む標準の SAP ドキュメントを代替するものではありません。
@@ -67,7 +67,7 @@ VPN または ExpressRoute 経由でのサイト対サイト接続は運用環�
 [SAP Cloud platform](https://cal.sap.com/) を使って Azure VM サービスに完全にインストールされた SAP HANA プラットフォームをデプロイすることもできます。 インストール プロセスについては、「[Azure に SAP S/4HANA または BW/4HANA をデプロイする](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)」をご覧いただくか、[こちら](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)でリリースされている自動化スクリプトを参照してください。
 
 >[!IMPORTANT]
-> M208xx_v2 VM を使用するためには、Azure VM イメージ ギャラリーから SUSE Linux イメージを選択するときに注意する必要があります。 詳細については、[メモリ最適化された仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)に関する記事をお読みください。 Mv2 ファミリ VM で HANA を使用する場合、Red Hat はまだサポートされていません。 現在の計画では、Mv2 VM ファミリで HANA を実行する Red Hat バージョンのサポートは 2019 年の第 4 四半期に提供されます。 
+> M208xx_v2 VM を使用するには、Azure VM イメージ ギャラリーから Linux イメージを選択するときに注意する必要があります。 詳細については、[メモリ最適化された仮想マシンのサイズ](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory#mv2-series)に関する記事をお読みください。 
 > 
 
 
@@ -139,10 +139,8 @@ Azure VM でスケールアウト構成をデプロイするための最小の O
 >Azure VM スケールアウトのデプロイで、スタンバイ ノードを使用することはありません。
 >
 
-スタンバイ ノードを構成できない理由として、次の 2 つあります。
+Azure には [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) によるネイティブな NFS サービスがあり、この NFS サービスは SAP アプリケーション層ではサポートされていますが、SAP HANA についてはまだ認定されていません。 結果として、NFS 共有はまだサードパーティの機能を利用して構成する必要があります。 
 
-- Azure には、このポイントにネイティブな NFS サービスがありません。 結果として、NFS 共有はサードパーティの機能を利用して構成する必要があります。
-- サードパーティの NFS 構成のうち、Azure にデプロイされたソリューションを使って、SAP HANA のストレージ待機時間の条件を達成できるものはありません。
 
 結果として、 **/hana/data** および **/hana/log** ボリュームは共有できません。 単一ノードのこれらのボリュームを共有しないので、スケールアウト構成で SAP HANA スタンバイ ノードは使用されません。
 
@@ -152,11 +150,15 @@ Azure VM でスケールアウト構成をデプロイするための最小の O
 
 SAP HANA スケールアウトの VM ノードの基本構成は、次のようになります。
 
-- **/hana/shared** の場合、SUSE Linux 12 SP3 に基づいて高可用性 NFS クラスターを構築します。 このクラスターでは、自分のスケールアウト構成および SAP NetWeaver または BW/4HANA Central Services の **/hana/shared** NFS 共有をホストします。 この構成を構築するための資料は、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)」の記事で入手できます
+- **/hana/shared** の場合、高可用性 NFS 共有を構築する必要があります。 現在、そのような高可用性共有を実現するには、さまざまな可能性があります。 これらについては、SAP NetWeaver と共に以下のドキュメントで説明されています。
+    - [SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
+    - [Red Hat Enterprise Linux for SAP NetWeaver における Azure VM での GlusterFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-glusterfs)
+    - [SAP アプリケーション用の Azure NetApp Files を使用した SUSE Linux Enterprise Server 上の Azure VM 上の SAP NetWeaver の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
+    - [SAP アプリケーション用の Azure NetApp Files を使用した Red Hat Enterprise Linux 上の SAP NetWeaver 用の Azure Virtual Machines の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 - その他のディスク ボリュームはすべて、異なるノード間では共有**されず**、NFS に基づき**ません**。 非共有 **/hana/data** および **/hana/log** を使用したスケールアウト HANA インストールのインストール構成と手順については、このドキュメントで後述します。
 
 >[!NOTE]
->これまでの各図に示した高可用性 NFS クラスターは、SUSE Linux のみでサポートされています。 Red Hat に基づく高可用性 NFS ソリューションについては、後で説明します。
+>図で示されている高可用性 NFS クラスターについては、「[SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)」で説明されています。 その他の可能性については、上記の一覧に記載されています。
 
 ノードのボリュームのサイズ調整は、 **/hana/shared** 以外ではスケールアップと同じです。 M128 の VM SKU の場合、推奨されるサイズと種類は次の通りです。
 

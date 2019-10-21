@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc93a7de824aeaf173e7179de0b0233b73488feb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 91947c243b521e970a89152f76abe9a99142b89d
+ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321153"
+ms.lasthandoff: 10/15/2019
+ms.locfileid: "72374003"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -35,7 +35,7 @@ Azure Active Directory (Azure AD) の条件付きアクセス機能では、ア�
 
 Azure AD のアプリをビルドしている開発者のために、この記事では、条件付きアクセスを使用する方法について示し、条件付きアクセス ポリシーが適用される可能性のある制御不能なリソースにアクセスした場合の影響についても学習します。 この記事では、On-Behalf-Of フロー、Web アプリ、Microsoft Graph へのアクセス、API の呼び出しに対し条件付きアクセスが与える影響についても説明します。
 
-[シングル](quickstart-v1-integrate-apps-with-azure-ad.md)および[マルチテナント](howto-convert-app-to-be-multi-tenant.md) アプリおよび[一般的な認証パターン](authentication-scenarios.md)の知識を持っているユーザーを対象とします。
+[シングル](quickstart-v1-integrate-apps-with-azure-ad.md)および[マルチテナント](howto-convert-app-to-be-multi-tenant.md) アプリおよび[一般的な認証パターン](v1-authentication-scenarios.md)の知識を持っているユーザーを対象とします。
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>条件付きアクセスはどのようにアプリに影響を与えますか?
 

@@ -7,19 +7,19 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 7232917df6018c9c8afc7e7edd3730a277b193f4
-ms.sourcegitcommit: 66237bcd9b08359a6cce8d671f846b0c93ee6a82
+ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67798264"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71256901"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でリソースやデータに対する脅威を管理する
 
-Azure Active Directory (Azure AD) B2C には、リソースやデータに対する脅威から保護するうえで役立つ組み込み機能があります。 これらの脅威には、サービス拒否攻撃やパスワード攻撃が含まれます。 サービス拒否攻撃により、目的のユーザーがリソースを使用できなくなることがあります。 パスワード攻撃は、リソースへの不正アクセスにつながります。
+Azure Active Directory B2C (Azure AD B2C) には、リソースやデータに対する脅威から保護するうえで役立つ組み込み機能があります。 これらの脅威には、サービス拒否攻撃やパスワード攻撃が含まれます。 サービス拒否攻撃により、目的のユーザーがリソースを使用できなくなることがあります。 パスワード攻撃は、リソースへの不正アクセスにつながります。
 
 ## <a name="denial-of-service-attacks"></a>サービス拒否攻撃
 
@@ -37,10 +37,10 @@ Azure AD B2C では高度な戦略を使用して、アカウントをロック�
 
 ロックアウトのしきい値を含むパスワード保護設定を管理するには、以下の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) に移動します。
-1. ポータルの右上のメニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択し、Azure AD B2C テナントを選択します。
-1. 左側のメニューの **[Azure Active Directory]** を選択します (または、ポータルの左上のセクションにある **[すべてのサービス]** を選択し、 *[Azure Active Directory]* を検索して選択します)。
-1. **[セキュリティ]** で、 **[認証方法]** を選択し、 **[パスワード保護]** を選択します。
+1. [Azure ポータル](https://portal.azure.com)
+1. 上部のメニューにある **[ディレクトリとサブスクリプション]** フィルターを使用して、お使いの Azure AD B2C テナントを含むディレクトリを選択します。
+1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
+1. **[セキュリティ]** で、 **[認証方法 (プレビュー)]** を選択し、 **[パスワード保護]** を選択します。
 1. 必要なパスワード保護設定を入力し、 **[保存]** を選択します。
 
     ![Azure portal の Azure AD 設定内パスワード保護ページ](media/active-directory-b2c-reference-threat-management/portal-02-password-protection.png)

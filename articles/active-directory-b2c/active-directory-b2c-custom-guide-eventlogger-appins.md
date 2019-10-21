@@ -10,18 +10,18 @@ ms.workload: identity
 ms.date: 10/12/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e18157c95dac0de90c50b4b7e8591e32c5b76aaf
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: c02757fb4b48ebf1220a5826bc9699741faa5170
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227230"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066183"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>Application Insights を使用した Azure Active Directory B2C でのユーザー動作の追跡
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Azure Active Directory (Azure AD) B2C を Azure Application Insights と連携させて使用すると、ユーザー体験の詳細なイベント ログをカスタマイズして取得することができます。 この記事では、次のことについて説明します。
+Azure Active Directory B2C (Azure AD B2C) を Azure Application Insights と連携させて使用すると、ユーザー体験の詳細なイベント ログをカスタマイズして取得することができます。 この記事では、次のことについて説明します。
 
 * ユーザーの動作を把握する。
 * 開発時または運用時にポリシーの問題を解決する。
@@ -45,7 +45,7 @@ Application Insight は、相関 ID を使用してこのイベントを統合�
 Application Insights と Azure AD B2C を併用している場合、唯一の要件はリソースを作成してインストルメンテーション キーを取得することです。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. お使いのサブスクリプションを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのサブスクリプションを含むディレクトリを選択します。 このテナントは自社の Azure AD B2C テナントではありません。
+2. お使いのサブスクリプションを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリ + サブスクリプション]** フィルターを選択して、お使いのサブスクリプションを含むディレクトリを選択します。 このテナントは自社の Azure AD B2C テナントではありません。
 3. Azure portal の左上隅にある **[リソースの作成]** を選択し、 **[Application Insights]** を検索して選択します。
 4. **Create** をクリックしてください。
 5. リソースの **[名前]** を入力します。
@@ -111,10 +111,10 @@ Application Insights と Azure AD B2C を併用している場合、唯一の要
 
 | 技術プロファイル | タスク |
 | ----------------- | -----|
-| AzureInsights-Common | すべての AzureInsights 技術プロファイルに含まれる共通パラメーター セットを作成します。 | 
-| AzureInsights-SignInRequest | サインイン要求を受け取ったときに一連の要求を含む SignIn イベントを作成します。 | 
-| AzureInsights-UserSignup | ユーザーがサインアップ/サインインの体験でサインアップ オプションをトリガーしたときに、UserSignup イベントを作成します。 | 
-| AzureInsights-SignInComplete | トークンが証明書利用者アプリケーションに送信されたときに、認証の正常完了を記録します。 | 
+| AzureInsights-Common | すべての AzureInsights 技術プロファイルに含まれる共通パラメーター セットを作成します。 |
+| AzureInsights-SignInRequest | サインイン要求を受け取ったときに一連の要求を含む SignIn イベントを作成します。 |
+| AzureInsights-UserSignup | ユーザーがサインアップ/サインインの体験でサインアップ オプションをトリガーしたときに、UserSignup イベントを作成します。 |
+| AzureInsights-SignInComplete | トークンが証明書利用者アプリケーションに送信されたときに、認証の正常完了を記録します。 |
 
 スターター パックの *TrustFrameworkExtensions.xml* ファイルにプロファイルを追加します。 **ClaimsProviders** 要素に次の要素を追加します。
 
@@ -230,11 +230,11 @@ Application Insights と Azure AD B2C を併用している場合、唯一の要
 
 ## <a name="next-steps"></a>次の手順
 
-ニーズに合わせて、要求の種類とイベントをユーザー体験に追加します。 [要求リゾルバー](claim-resolver-overview.md)や任意の種類の文字列要求を使用し、Application Insights イベントや AzureInsights-Common 技術プロファイルに **Input Claim** 要素を追加して、要求を追加できます。 
+ニーズに合わせて、要求の種類とイベントをユーザー体験に追加します。 [要求リゾルバー](claim-resolver-overview.md)や任意の種類の文字列要求を使用し、Application Insights イベントや AzureInsights-Common 技術プロファイルに **Input Claim** 要素を追加して、要求を追加できます。
 
 - **ClaimTypeReferenceId** は要求の種類への参照です。
-- **PartnerClaimType** は、Azure Insights で表示されるプロパティの名前です。 `{property:NAME}` の構文を使用します (`NAME` はイベントに追加されるプロパティです)。 
-- **DefaultValue** では、任意の文字列値または要求リゾルバーが使用されます。 
+- **PartnerClaimType** は、Azure Insights で表示されるプロパティの名前です。 `{property:NAME}` の構文を使用します (`NAME` はイベントに追加されるプロパティです)。
+- **DefaultValue** では、任意の文字列値または要求リゾルバーが使用されます。
 
 ```XML
 <InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />

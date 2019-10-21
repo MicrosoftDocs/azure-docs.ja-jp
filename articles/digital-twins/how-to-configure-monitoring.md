@@ -1,20 +1,20 @@
 ---
-title: Azure Digital Twins で監視を構成する方法 | Microsoft Docs
+title: 監視を構成する方法 - Azure Digital Twins | Microsoft Docs
 description: Azure Digital Twins で監視を構成する方法。
-author: kingdomofends
-manager: alinast
+ms.author: alinast
+author: alinamstanciu
+manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/09/2019
-ms.author: v-adgera
+ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd1481c74cdf519dcb4588e0b7cf09b7b6ab5f1d
-ms.sourcegitcommit: 78ebf29ee6be84b415c558f43d34cbe1bcc0b38a
+ms.openlocfilehash: d7d81636bfb60c2d5fa059da01ac535e09b829f4
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68950123"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949993"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Azure Digital Twins で監視を構成する方法
 
@@ -57,7 +57,7 @@ Azure Digital Twins のアクティビティ ログの記録は既定で有効�
 
 ## <a name="enable-customer-diagnostic-logs"></a>顧客の診断ログを有効にする
 
-Azure の[診断設定](../azure-monitor/platform/diagnostic-logs-overview.md)は、アクティビティ ログの記録を補足するために、各 Azure インスタンスに対して設定できます。 アクティビティ ログはサブスクリプション レベルのイベントに関連する一方で、診断ログはリソース自体の操作履歴に関する洞察が提供されます。
+Azure の[診断設定](../azure-monitor/platform/resource-logs-overview.md)は、アクティビティ ログの記録を補足するために、各 Azure インスタンスに対して設定できます。 アクティビティ ログはサブスクリプション レベルのイベントに関連する一方で、診断ログはリソース自体の操作履歴に関する洞察が提供されます。
 
 診断ログの例は次のとおりです。
 
@@ -129,6 +129,6 @@ Azure Digital Twins はアプリケーション固有のログ記録やセキュ
 
 - Azure [アクティビティ ログ](../azure-monitor/platform/activity-logs-overview.md)の詳細を確認する。
 
-- [診断ログの概要](../azure-monitor/platform/diagnostic-logs-overview.md)を確認して Azure 診断の設定の詳細を確認する。
+- [診断ログの概要](../azure-monitor/platform/resource-logs-overview.md)を確認して Azure 診断の設定の詳細を確認する。
 
 - 詳細については、「[Azure Monitor ログ](../azure-monitor/log-query/get-started-portal.md)」を参照してください。

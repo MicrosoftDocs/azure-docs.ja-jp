@@ -4,16 +4,16 @@ ms.service: redis-cache
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
-ms.openlocfilehash: 77019068279261a36f8ba40247e5f5694ca77892
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 1ab6243be39bf30bc060ed5745fbf600924743a9
+ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67181579"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71839215"
 ---
 | リソース | 制限 |
 | --- | --- |
-| キャッシュ サイズ |530 GB |
+| キャッシュ サイズ |1.2 TB |
 | データベース |64 |
 | 接続されている最大クライアント数 |40,000 |
 | Azure Cache for Redis のレプリカ (高可用性向け) |1 |

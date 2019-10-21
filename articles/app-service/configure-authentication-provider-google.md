@@ -14,14 +14,15 @@ ms.topic: article
 ms.date: 09/02/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fcbb284a0807ef88c5f40a7c8b65398d45bf73d7
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 917fa87a0cd0f7b0615a5139a7c15311f866739a
+ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232132"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72176979"
 ---
-# <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Google ログインを使用するように App Service アプリケーションを構成する方法
+# <a name="configure-your-app-service-app-to-use-google-login"></a>Google ログインを使用するように App Service アプリを構成する
+
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 このトピックでは、認証プロバイダーとして Google を使用するように Azure App Services を構成する方法を示します。
@@ -29,31 +30,35 @@ ms.locfileid: "70232132"
 このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。 新しい Google アカウントを作成するには、 [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302)にアクセスしてください。
 
 ## <a name="register"> </a>Google にアプリケーションを登録する
-1. 「[サーバー側アプリの Google サインイン](https://developers.google.com/identity/sign-in/web/server-side-flow)」で Google のドキュメントに従い、次の情報を使用して、クライアント ID とクライアント シークレットを作成します (コードを変更する必要はありません)。
+
+1. 「[サーバー側アプリの Google サインイン](https://developers.google.com/identity/sign-in/web/server-side-flow)」で Google のドキュメントに従い、クライアント ID とクライアント シークレットを作成します。 コードを変更する必要はありません。 次の情報を使用してください。
     - **[Authorized JavaScript Origins]\(承認済みの JavaScript 生成元\)** には、`https://<app-name>.azurewebsites.net` を使用し、 *\<app-name>* にアプリの名前を指定します。
     - **[Authorized Redirect URI] (承認済みのリダイレクト URI)** には `https://<app-name>.azurewebsites.net/.auth/login/google/callback` を使用します。
-1. クライアント ID とクライアント シークレットが作成されたら、それらの値をコピーします。
+1. [App ID]\(アプリ ID\) と [App Secret]\(アプリ シークレット\) の値をコピーします。
 
     > [!IMPORTANT]
-    > クライアント シークレットは、重要なセキュリティ資格情報です。 このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
-
+    > アプリ シークレットは重要なセキュリティ資格情報です。 このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
 ## <a name="secrets"> </a>Google の情報をアプリケーションに追加する
-1. [Azure Portal] で App Service アプリに移動します。 左側のメニューで、 **[認証/承認]** を選択します。
-2. [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。
-3. **[Google]** にアクセスしてください。 前の手順で取得した App ID と App Secret の値を貼り付けます。アプリケーションで必要なスコープを有効にします (省略可能)。 次に、 **[OK]** をクリックします
+
+1. [Azure portal] で App Service アプリに移動します。
+1. **[設定]** 、 **[認証/承認]** の順に選択し、 **[App Service 認証]** が **[オン]** になっていることを確認します。
+1. **[Google]** を選択し、前に入手したアプリ ID とアプリ シークレットの値を貼り付けます。 アプリケーションに必要な任意のスコープを有効にします。
+1. **[OK]** を選択します。
 
    App Service は認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 詳細については、「[ユーザーを承認または拒否する](app-service-authentication-how-to.md#authorize-or-deny-users)」を参照してください。
-4. (省略可能) Google によって認証されたユーザーしかサイトにアクセスできないように制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Google]** に設定します。 この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Google にリダイレクトされます。
 
-    > [!NOTE]
-    > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホームページを必要とするアプリには適切でない場合があります。 このようなアプリケーションの場合は、[ここ](overview-authentication-authorization.md#authentication-flow)で説明しているように、アプリが手動で自身のログインを開始する、 **[匿名要求を許可する (操作不要)]** が望ましいと考えられます。
-    
-5. **[Save]** をクリックします。
+1. (省略可能) Google によって認証されたユーザーしかアクセスできないように制限するには、 **[要求が認証されない場合に実行するアクション]** を **[Google]** に設定します。 この機能を設定すると、お使いのアプリでは、すべての要求を認証する必要があります。 また、認証されていない要求はすべて、Google に認証のためにリダイレクトされます。
+
+    > [!CAUTION]
+    > この方法でのアクセスの制限は、アプリへのすべての呼び出しに適用されますが、これは、多くのシングルページ アプリケーションのように、一般公開されているホーム ページが与えられているアプリには適切でない場合があります。 このようなアプリケーションの場合は、アプリ自体が手動で認証を開始する、 **[匿名要求を許可する (操作不要)]** が推奨されることがあります。 詳細については、「[認証フロー](overview-authentication-authorization.md#authentication-flow)」をご覧ください。
+
+1. **[保存]** を選択します。
 
 これで、アプリケーションで認証に Google を使用する準備ができました。
 
-## <a name="related-content"> </a>関連コンテンツ
+## <a name="related-content"> </a>次のステップ
+
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
 <!-- Anchors. -->

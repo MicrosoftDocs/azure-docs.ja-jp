@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 1e7d64aabba19f04fb98bd208389dc0b2077bfe4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094693"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71350097"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -52,7 +52,7 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 | **[ノード間通信に対応するプール](batch-mpi.md)内の計算ノード**  ||
 | バッチ サービス プール割り当てモード | 100 |
 | バッチ サブスクリプション プール割り当てモード | 80 |
-| **[カスタム VM イメージを使用して作成されたプール](batch-custom-images.md)内の計算ノード**<sup>1</sup> ||
+| **マネージド イメージ リソースで作成されたプール[内の計算ノード](batch-custom-images.md)** <sup>1</sup> ||
 | 専用ノード | 2000 |
 | 優先順位の低いノード | 1000 |
 

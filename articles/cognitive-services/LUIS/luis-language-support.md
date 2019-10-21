@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3b1b31da68d821ff27fa30e75ec1522b9d4875c8
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: bd1e665114fff4d5b7b0b2dca267207bdeebab56
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307429"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71949544"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS の言語と地域のサポート
 
@@ -34,18 +34,18 @@ LUIS が理解する発話の言語を次に示します。
 |--|--|:--:|:--:|:--:|:--:|
 | 英語 (米国) |`en-US` | ✔ | ✔  |✔|✔|
 | *[中国語](#chinese-support-notes) |`zh-CN` | ✔ | ✔ |✔|-|
-| オランダ語 |`nl-NL` |-|  -   |-|✔|
-| フランス語 (フランス) |`fr-FR` |-| ✔ |✔ |✔|
+| オランダ語 |`nl-NL` |✔|  -   |-|✔|
+| フランス語 (フランス) |`fr-FR` |✔| ✔ |✔ |✔|
 | フランス語 (カナダ) |`fr-CA` |-|   -   |-|✔|
-| ドイツ語 |`de-DE` |-| ✔ |✔ |✔|
+| ドイツ語 |`de-DE` |✔| ✔ |✔ |✔|
 | ヒンディー語 | `hi-IN`|-|-|-|-|
-| イタリア語 |`it-IT` |-| ✔ |✔|✔|
-| *[日本語](#japanese-support-notes) |`ja-JP` |-| ✔ |✔|キー フレーズのみ|
-| 韓国語 |`ko-KR` |-|   -   |-|キー フレーズのみ|
-| ポルトガル語 (ブラジル) |`pt-BR` |-| ✔ |✔ |一部のサブカルチャのみ|
-| スペイン語 (スペイン) |`es-ES` |-| ✔ |✔|✔|
+| イタリア語 |`it-IT` |✔| ✔ |✔|✔|
+| *[日本語](#japanese-support-notes) |`ja-JP` |✔| ✔ |✔|キー フレーズのみ|
+| 韓国語 |`ko-KR` |✔|   -   |-|キー フレーズのみ|
+| ポルトガル語 (ブラジル) |`pt-BR` |✔| ✔ |✔ |一部のサブカルチャのみ|
+| スペイン語 (スペイン) |`es-ES` |✔| ✔ |✔|✔|
 | スペイン語 (メキシコ)|`es-MX` |-|  -   |✔|✔|
-| トルコ語 | `tr-TR` |-|-|-|センチメントのみ|
+| トルコ語 | `tr-TR` |✔|-|-|センチメントのみ|
 
 
 言語サポートは、[事前構築済みのエンティティ](luis-reference-prebuilt-entities.md)および[事前構築済みのドメイン](luis-reference-prebuilt-domains.md)によって異なります。
@@ -73,7 +73,9 @@ Speech ディクテーション モードの言語については、Speech の�
 サポートされている言語と状態の一覧については、Bing Spell Check の[サポートされている言語](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages)に関するページをご覧ください。
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>アプリケーションの珍しい単語または外国の単語
-`en-us` カルチャの LUIS では、学習によって英語の単語のほとんど (スラングを含む) が区別されます。 `zh-cn` カルチャの LUIS では、学習によってほとんどの中国語の文字が区別されます。 `en-us` で珍しい単語を使用するか、`zh-cn` で珍しい文字を使用する場合、LUIS で単語または文字を区別できない可能性があるときは、その単語または文字を[フレーズ リスト機能](luis-how-to-add-features.md)に追加できます。 たとえば、アプリケーションのカルチャ以外の単語、つまり外国の単語は、フレーズ リスト機能に追加する必要があります。 このフレーズ リストは、交換不可能としてマークする必要があります。これにより、一連の珍しい単語によって、LUIS が学習によって認識する必要があるクラスが形成されていること、ただし、それらはシノニムではなく、相互に交換できないことが示されます。
+`en-us` カルチャの LUIS では、学習によって英語の単語のほとんど (スラングを含む) が区別されます。 `zh-cn` カルチャの LUIS では、学習によってほとんどの中国語の文字が区別されます。 `en-us` で珍しい単語を使用するか、`zh-cn` で珍しい文字を使用する場合、LUIS で単語または文字を区別できない可能性があるときは、その単語または文字を[フレーズ リスト機能](luis-how-to-add-features.md)に追加できます。 たとえば、アプリケーションのカルチャ以外の単語、つまり外国の単語は、フレーズ リスト機能に追加する必要があります。 
+
+<!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
 ### <a name="hybrid-languages"></a>ハイブリッド言語
 ハイブリッド言語では、英語、中国語など、2 つのカルチャの単語が結合されます。 アプリが基づくカルチャは 1 つであるため、これらの言語は LUIS ではサポートされていません。

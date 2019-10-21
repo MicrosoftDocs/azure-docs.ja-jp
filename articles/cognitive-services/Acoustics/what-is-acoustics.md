@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: 51bfcc47961e870fb7fb87b26a78aea0f1564d46
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 65678f08399f378b8580eed79e49197dd4d84c64
+ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390306"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71351136"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics とは
 Project Acoustics は、3D 対話型エクスペリエンス用の波動音響エンジンです。 複雑なシーンにおける閉鎖、障害、ポータリング、反響効果などの波動効果をモデル化します。手動のゾーン マークアップや CPU に負荷のかかるレイトレーシングは必要ありません。 ゲーム エンジンとオーディオ ミドルウェアの統合も含まれます。 Project Acoustics の理念は、静的ライティングに似ています。詳細な物理学をオフラインでベイクし、物理的なベースラインを提供し、表現豊かな設計コントロールで軽量ランタイムを使用して、仮想世界の音響効果に関する芸術的目標を達成します。
@@ -31,7 +31,7 @@ Project Acoustics の重要な革新は、リアルな音波ベースの音響�
 ![シーンを通る波動伝搬の水平方向の 2D スライスを示すアニメーション](media/wave-simulation.gif)
 
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>GDC 2019 のビデオ プレゼンテーション (約 30 分)
-[![Project Acoustics のビデオ](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "クリックしてビデオを再生します")
+[![Project Acoustics ビデオ](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "クリックしてビデオを再生")
 
 ## <a name="setup"></a>セットアップ
 [Project Acoustics Unity の統合](unity-integration.md)はドラッグ アンド ドロップで行われ、Unity オーディオ エンジン プラグインが含まれます。 Project Acoustics C# コントロール コンポーネントを各オーディオ オブジェクトにアタッチして、Unity オーディオ ソース コントロールを補強します。
@@ -58,11 +58,10 @@ Project Acoustics エディター プラグインは、次のプラットフォ�
 ## <a name="download"></a>ダウンロード
 * [Project Acoustics Unity プラグインとサンプル](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
 * [Project Acoustics Unreal と Wwise のプラグインとサンプル](https://www.microsoft.com/download/details.aspx?id=58090)
-  * Xbox のバイナリとサポートについては、以下のサインアップ フォームを使用してお問い合わせください
+  * Xbox のバイナリとその他のサポートについては、[フォーラム](https://github.com/microsoft/ProjectAcoustics/issues)からお問い合わせください。
 
 ## <a name="contact-us"></a>お問い合わせ
 * [Project Acoustics のディスカッションと問題報告](https://github.com/microsoft/ProjectAcoustics/issues)
-* [サインアップして Project Acoustics の更新プログラムを受け取る](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u)
 
 ## <a name="next-steps"></a>次の手順
 * [Project Acoustics のクイック スタート (Unity 用](unity-quickstart.md) または [Unreal 用)](unreal-quickstart.md) を試す

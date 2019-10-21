@@ -5,14 +5,14 @@ author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 06/07/2019
 ms.topic: article
-ms.service: azure
+ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 7ac6dce9aec1c363fa9772caabad9ce542d43888
-ms.sourcegitcommit: 5cb0b6645bd5dff9c1a4324793df3fdd776225e4
+ms.openlocfilehash: e73f22b0e617ad8f20b98c3bb0fb1647bf5fe61d
+ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2019
-ms.locfileid: "67310646"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72249070"
 ---
 # <a name="total-regional-vcpu-limit-increase"></a>リージョンにおける合計 vCPU の上限の引き上げ 
 
@@ -31,7 +31,7 @@ Azure Portal から VM シリーズの vCPU クォータ制限の増加を要求
 
 Azure Portal で使用可能な Azure の [ヘルプとサポート] ブレード経由でサポート要求を作成するには、次の手順に従います。 
 
-1. https://portal.azure.com から、 **[ヘルプとサポート]** を選択します。
+1. [https://portal.azure.com](https://portal.azure.com ) から、 **[ヘルプとサポート]** を選択します。
 
 ![[ヘルプとサポート]](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -62,7 +62,7 @@ Azure Portal で使用可能な Azure の [ヘルプとサポート] ブレー�
 
 Azure Portal で使用可能な Azure の [Usages + Quota] (使用量とクォータ) ブレード経由でサポート要求を作成するには、次の手順に従います。 
 
-1. https://portal.azure.com から **[サブスクリプション]** を選択します。
+1. [https://portal.azure.com](https://portal.azure.com ) から **[サブスクリプション]** を選択します。
 
 ![Subscriptions](./media/resource-manager-core-quotas-request/subscriptions.png)
 

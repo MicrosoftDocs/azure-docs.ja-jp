@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bc135e58d0fbabc809f3718915e9f4e35b8ed875
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd7c24489e8ac7b26cb703923ddf9cbb741cfd68
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067156"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72029966"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server
 この記事では、Azure Database for PostgreSQL - Single Server を操作するための考慮事項とガイドラインを示します。
@@ -64,6 +64,6 @@ Postgres の管理対象サービスとして、Azure Database for PostgreSQL �
 
 ## <a name="next-steps"></a>次の手順
 - サービスの概要については、 [Azure Database for PostgreSQL の概要](overview.md)に関するページをご覧ください。
--  **サービス レベル**に基づく特定のリソース クォータと制限については、 [サービス レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
+- **サービス レベル**に基づく特定のリソース クォータと制限については、 [サービス レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
 - サービスへの接続については、「 [Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」を参照してください。
 - [Azure Portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) でサーバー パラメーターを表示および編集します。

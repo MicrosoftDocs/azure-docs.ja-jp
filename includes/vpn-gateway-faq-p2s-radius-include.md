@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 857d29f407c9939143fbb8263be40dadb040efdc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: f9b787413dd6e2aaeafd4aa3bcee0eff746abece
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181000"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71310545"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
@@ -50,3 +50,7 @@ RADIUS による証明書認証では、認証要求が実際に証明書の検�
 ### <a name="does-radius-authentication-work-with-both-ikev2-and-sstp-vpn"></a>RADIUS 認証は、IKEv2 と SSTP VPN の両方で機能しますか。
 
 はい、RADIUS 認証は、IKEv2 と SSTP VPN の両方でサポートされています。 
+
+### <a name="does-radius-authentication-work-with-the-openvpn-client"></a>RADIUS 認証は、OpenVPN クライアントで機能しますか。
+
+OpenVPN クライアントでは、RADIUS 認証はサポートされていません。

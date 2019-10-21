@@ -3,8 +3,8 @@ title: Linux での Python アプリの作成 - Azure App Service | Microsoft Do
 description: Azure App Service on Linux で、初めての Python の Hello World アプリを数分でデプロイします。
 services: app-service\web
 documentationcenter: ''
-author: cephalin
-manager: jeconnoc
+author: msangapu-msft
+manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: app-service-web
@@ -14,18 +14,18 @@ ms.topic: quickstart
 ms.date: 08/23/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 08b1b85b980f992e799fc5198891290ec0d55c5d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+experimental: false
+experiment_id: 1e304dc9-5add-4b
+ms.openlocfilehash: d6e062145474b8479db749627b56163106f088d8
+ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070997"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72024931"
 ---
-# <a name="create-a-python-app-in-azure-app-service-on-linux-preview"></a>Azure App Service on Linux で Python アプリを作成する (プレビュー)
+# <a name="create-a-python-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で Python アプリを作成する
 
-[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイック スタートでは、[Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) を使用して、App Service on Linux の組み込み Python イメージ (プレビュー) の上に Python アプリをデプロイする方法を示します。
-
-この記事の手順は、Mac、Windows、または Linux コンピューターを使って実行できます。
+このクイック スタートでは、高度にスケーラブルな自己適用型の Web ホスティング サービスである [App Service on Linux](app-service-linux-intro.md) にシンプルな Python アプリをデプロイします。 インタラクティブなブラウザーベースの Azure Cloud Shell を通じて Azure のコマンド ライン インターフェイス ([Azure CLI](/cli/azure/install-azure-cli)) を使用するので、以下の手順は、Mac、Linux、Windows のどのコンピューターからでも使用できます。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-python/hello-world-in-browser.png)
 
@@ -122,7 +122,7 @@ App Service on Linux で組み込みのイメージを使用して Python サン
 
 **お疲れさまでした。** App Service on Linux に初めての Python アプリをデプロイしました。
 
-## <a name="update-locally-and-redeploy-the-code"></a>コードをローカルで更新して再デプロイする
+## <a name="update-and-redeploy-the-code"></a>コードを更新して再デプロイする
 
 Cloud Shell で、「`code application.py`」と入力して Cloud Shell エディターを開きます。
 
@@ -163,8 +163,6 @@ az webapp up -n <app_name>
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
 
 ## <a name="next-steps"></a>次の手順
-
-App Service on Linux の組み込み Python イメージは現在プレビュー段階であり、アプリを開始するために使用するコマンドをカスタマイズすることができます。 代わりにカスタム コンテナーを使用して運用環境向け Python アプリを作成することもできます。
 
 > [!div class="nextstepaction"]
 > [チュートリアル:PostgreSQL を使った Python アプリ](tutorial-python-postgresql-app.md)

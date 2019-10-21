@@ -3,9 +3,8 @@ title: Azure Security Center の対応準備ロードマップ | Microsoft Docs
 description: このドキュメントでは、Azure Security Center を導入するための対応準備ロードマップについて取り上げます。
 services: security-center
 documentationcenter: na
-author: rkarlin
-manager: ndicola
-editor: ''
+author: memildin
+manager: rkarlin
 ms.assetid: fece670cc-df70-445d-9773-b32cbaba8d4a
 ms.service: security-center
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: 989d438ad2c5ec80b89540eb7ddfc80d69a9d0e6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b2b4dc1aa9486e432fb2fae48343c21fba620221
+ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100916"
+ms.lasthandoff: 10/07/2019
+ms.locfileid: "71996697"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Azure Security Center の対応準備ロードマップ
 このドキュメントでは、Azure Security Center の導入を支援する対応準備ロードマップについて取り上げます。
@@ -95,11 +94,11 @@ Azure VM は、Security Center にある高度なクラウド防御機能を有�
 これらの Security Center 機能の使い方については、次の資料を参照してください。
 
 ビデオ  
-* [Azure Security Center - Just-in-Time VM Access (Azure Security Center - Just-in-Time VM アクセス)](https://youtu.be/UOQb2FcdQnU)
+* [Azure Security Center - Just-in-Time VM アクセス](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center - アダプティブ アプリケーション制御](https://youtu.be/wWWekI1Y9ck)
 
 記事    
-* [ジャスト イン タイムを使用した仮想マシン アクセスの管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
+* [Just-In-Time を使用した仮想マシン アクセスの管理](https://docs.microsoft.com/azure/security-center/security-center-just-in-time)
 * [Azure Security Center におけるアダプティブ アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)
 
 ## <a name="hands-on-activities"></a>実践アクティビティ

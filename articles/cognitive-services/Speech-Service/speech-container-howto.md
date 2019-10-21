@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/19/2019
+ms.date: 09/26/2019
 ms.author: dapine
-ms.openlocfilehash: 7708133fcba0d594ecd420afd8da1b2881055aa7
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: dbd4f2cd4691f9ae6d8e37f38d2b600ec4897e45
+ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241029"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71326697"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech サービス コンテナーをインストールして実行する
 
@@ -39,6 +39,8 @@ Speech コンテナーを使用する前に、次の前提条件を満たす必�
 |Docker エンジン| [ホスト コンピューター](#the-host-computer)に Docker エンジンをインストールしておく必要があります。 Docker には、[macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、[Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上で Docker 環境の構成を行うパッケージが用意されています。 Docker やコンテナーの基礎に関する入門情報については、「[Docker overview](https://docs.docker.com/engine/docker-overview/)」(Docker の概要) を参照してください。<br><br> コンテナーが Azure に接続して課金データを送信できるように、Docker を構成する必要があります。 <br><br> **Windows では**、Linux コンテナーをサポートするように Docker を構成することも必要です。<br><br>|
 |Docker に関する知識 | レジストリ、リポジトリ、コンテナー、コンテナー イメージなど、Docker の概念の基本的な理解に加えて、基本的な `docker` コマンドの知識が必要です。| 
 |Speech リソース |これらのコンテナーを使用するためには、以下が必要です。<br><br>関連付けられている API キーとエンドポイント URI を取得するための Azure _Speech_ リソース。 どちらの値も、Azure portal の **Speech** の [概要] ページと [キー] ページで確認できます。 コンテナーを起動するには、両方が必要です。<br><br>**{API_KEY}** : **[キー]** ページにある 2 つの利用可能なリソース キーのどちらか<br><br>**{ENDPOINT_URI}** : **[概要]** ページに提示されているエンドポイント|
+
+[!INCLUDE [Gathering required container parameters](../containers/includes/container-gathering-required-parameters.md)]
 
 ## <a name="request-access-to-the-container-registry"></a>コンテナー レジストリへのアクセスの要求
 
@@ -174,16 +176,12 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 
 ## <a name="run-the-container-with-docker-run"></a>`docker run` によるコンテナーの実行
 
-3 つのコンテナーのいずれかを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 このコマンドには、次のパラメーターが使用されます。
+コンテナーを実行するには、[docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを使用します。 `{ENDPOINT_URI}` と `{API_KEY}` の値を取得する方法の詳細については、「[必須パラメーターの収集](#gathering-required-parameters)」を参照してください。
 
-**プレビュー期間中**は、コンテナーを起動するために課金設定が有効になっている必要がありますが、使用量は課金されません。
+`docker run` コマンドの[例](speech-container-configuration.md#example-docker-run-commands)を利用できます。
 
-| プレースホルダー | 値 |
-|-------------|-------|
-|{API_KEY} | このキーは、コンテナーを起動するために使用され、Azure portal の Speech の [キー] ページで入手できます。  |
-|{ENDPOINT_URI} | 課金エンドポイント URI の値は、Azure portal の Speech の [概要] ページで入手できます。|
-
-次の例の `docker run` コマンドでは、これらのパラメーターをお客様独自の値に置き換えてください。
+> [!NOTE]
+> **プレビュー期間中**は、コンテナーを起動するために課金設定が有効になっている必要がありますが、使用量は課金されません。
 
 ### <a name="text-to-speech"></a>テキスト読み上げ
 
@@ -272,7 +270,9 @@ speech_config = speechsdk.SpeechConfig(
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-コンテナーを実行するとき、コンテナーでは **stdout** と **stderr** を使用して、コンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立つ情報を出力します。
+出力[マウント](speech-container-configuration.md#mount-settings)とログを有効にした状態でコンテナーを実行すると、コンテナーによってログ ファイルが生成されます。これらはコンテナーの起動時または実行時に発生した問題のトラブルシューティングに役立ちます。
+
+[!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
 ## <a name="billing"></a>課金
 

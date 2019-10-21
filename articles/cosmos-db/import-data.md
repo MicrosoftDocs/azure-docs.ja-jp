@@ -91,7 +91,7 @@ JSON ファイル ソース インポーター オプションを使用すると
 `AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>`
 
 * `<CosmosDB Endpoint>` はエンドポイント URI です。 この値は Azure portal から取得できます。 Azure Cosmos アカウントに移動します。 **[概要]** ウィンドウを開き、**URI** 値をコピーします。
-* `<AccountKey>` は "パスワード" または**主キー**です。 この値は Azure portal から取得できます。 Azure Cosmos アカウントに移動します。 **[接続文字列]** または **[キー]** ウィンドウを開き、"パスワード" または**主キー**値をコピーします。
+* `<AccountKey>` は "パスワード" または**プライマリ キー**です。 この値は Azure portal から取得できます。 Azure Cosmos アカウントに移動します。 **[接続文字列]** または **[キー]** ウィンドウを開き、"パスワード" または**プライマリ キー**値をコピーします。
 * `<CosmosDB Database>` は CosmosDB データベース名です。
 
 例: `AccountEndpoint=https://myCosmosDBName.documents.azure.com:443/;AccountKey=wJmFRYna6ttQ79ATmrTMKql8vPri84QBiHTt6oinFkZRvoe7Vv81x9sn6zlVlBY10bEPMgGM982wfYXpWXWB9w==;Database=myDatabaseName`

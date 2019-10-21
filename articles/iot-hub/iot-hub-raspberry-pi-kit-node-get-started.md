@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: e7346fa0f9cc977755c441077a50707dd207019f
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 79e565668db661d02833d22d2ef619fc67708115
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638307"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266149"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
 
@@ -135,7 +135,7 @@ microSD カードに Raspbian イメージをインストールするための�
 
 ![Raspberry Pi とセンサーの接続](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
-BME280 センサーでは、温度と湿度のデータを収集できます。 デバイスがメッセージをクラウドに送信すると、LED が点滅します。 
+BME280 センサーでは、温度と湿度のデータを収集できます。 デバイスがメッセージをクラウドに送信すると、LED が点滅します。
 
 センサーの各ピンで、次のように接続します。
 
@@ -170,8 +170,8 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 1. 以下の SSH クライアントのいずれかを使用して、ホスト コンピューターから Raspberry Pi に接続します。
 
    **Windows ユーザー**
-  
-   a. Windows 版の [PuTTY](https://www.putty.org/) をダウンロードしてインストールします。 
+
+   a. Windows 版の [PuTTY](https://www.putty.org/) をダウンロードしてインストールします。
 
    b. Pi の IP アドレスをホスト名 (または IP アドレス) セクションにコピーし、接続の種類として SSH を選択します。
 
@@ -192,10 +192,10 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    node -v
    ```
 
-   バージョンが 11.x より前であるか、Node.js が Pi にない場合は、最新バージョンをインストールします。
+   バージョンが 10.x より前であるか、Node.js が Pi にない場合は、最新バージョンをインストールします。
 
    ```bash
-   curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
@@ -209,7 +209,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
-   sudo npm install
+   npm install
    ```
 
    > [!NOTE]
@@ -228,6 +228,8 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    このファイルには、構成可能な 2 つの項目があります。 1 つは `interval` で、クラウドに送信するメッセージ間の時間間隔 (ミリ秒) を定義します。 もう 1 つは `simulatedData` で、シミュレートされたセンサー データを使用するかどうかを表すブール値です。
 
    **センサーがない**場合は、`simulatedData` 値を `true` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
+
+   *注:このチュートリアルで使用する i2c アドレスは、既定では 0x77 です。構成によっては、0x76 になることもあります。 i2c エラーが発生した場合は、値を 118 に変更し、その動作が適切かどうかを確認してください。センサーによって使用されているアドレスを確認するには、raspberry pi 上のシェルで `sudo i2cdetect -y 1` を実行します*
 
 2. Ctrl + O キー、Enter キー、Ctrl + X キーの順に押し、保存して終了します。
 

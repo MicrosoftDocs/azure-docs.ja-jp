@@ -1,17 +1,17 @@
 ---
 title: Azure Data Share プレビューでの共有サブスクリプションの取り消し
-description: 共有サブスクリプションの取り消し
-author: madams0013
+description: Azure Data Share プレビューを利用し、受信者から共有サブスクリプションを取り消す方法について説明します。
+author: joannapea
+ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: jasonh
-ms.openlocfilehash: dc14bb121d18179091aa5f6f2854b391e72632f1
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: bd8ef23ead500acb9e403b38fd52a2d980d12bf4
+ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258628"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72169048"
 ---
 # <a name="how-to-revoke-a-consumers-share-subscription-in-azure-data-share-preview"></a>Azure Data Share プレビューでコンシューマーの共有サブスクリプションを取り消す方法
 

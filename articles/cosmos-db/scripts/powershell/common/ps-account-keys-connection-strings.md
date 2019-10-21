@@ -4,14 +4,14 @@ description: Azure PowerShell スクリプト サンプル - Azure Cosmos アカ
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 05/20/2019
+ms.date: 09/20/2019
 ms.author: mjbrown
-ms.openlocfilehash: 55f28ef6c6ff82f0b82b10ac1dd7931ac46aa2fc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 1eb9cc4c35584b94d3d16654b1bec253e21a91ff
+ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67602505"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71154757"
 ---
 # <a name="connection-string-and-account-key-operations-for-an-azure-cosmos-account-using-powershell"></a>PowerShell を使用する、Azure Cosmos アカウントの接続文字列とアカウント キーの操作
 
@@ -21,7 +21,8 @@ ms.locfileid: "67602505"
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-このサンプルでは、リソース グループとアカウントが存在することが必須となります。 既存の PowerShell 作成サンプルを使用し、最初にアカウントをプロビジョニングしてください。
+> [!NOTE]
+> このサンプルでは、SQL (Core) API アカウントの使用方法を紹介しています。 このサンプルを他の API で使用する場合は、関連するプロパティをコピーし、お使いの API 固有のスクリプトに適用してください。
 
 [!code-powershell[main](../../../../../powershell_scripts/cosmosdb/common/ps-account-keys-connection-strings.ps1 "Connection strings and account keys for Azure Cosmos account")]
 

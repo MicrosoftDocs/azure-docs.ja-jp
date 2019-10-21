@@ -1,5 +1,5 @@
 ---
-title: Azure Sentinel プレビューに Fortinet データを接続する | Microsoft Docs
+title: Azure Sentinel に Fortinet データを接続する | Microsoft Docs
 description: Azure Sentinel に Fortinet データを接続する方法について説明します。
 services: sentinel
 documentationcenter: na
@@ -13,20 +13,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2019
+ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 339b8c1b59720989016f68fdb94fae30c26b42f0
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 20079fd0c95da3e3aec9518f194ea39561a5e662
+ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679279"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71240696"
 ---
 # <a name="connect-your-fortinet-appliance"></a>お使いの Fortinet アプライアンスを接続する
 
-> [!IMPORTANT]
-> 現在、Azure Sentinel はパブリック プレビュー段階にあります。
-> このプレビュー バージョンは、サービス レベル アグリーメントなしに提供されます。 運用環境のワークロード用にはお勧めしません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
 
 ログ ファイルを Syslog 共通イベント形式 (CEF) として保存することで、Azure Sentinel を任意の Fortinet アプライアンスに接続できます。 Azure Sentinel との統合により、Fortinet のログ ファイル データ全体にわたる分析とクエリの発行を容易に実行することができます。 Azure Sentinel が CEF データを取り込む方法の詳細については、[CEF アプライアンスの接続](connect-common-event-format.md)に関する記事をご覧ください。
 
@@ -147,5 +145,5 @@ Syslog エージェントを介して、CEF 形式で Syslog メッセージを 
 ## <a name="next-steps"></a>次の手順
 この記事では、Fortinet アプライアンスを Azure Sentinel に接続する方法について学びました。 Azure Sentinel の詳細については、次の記事をご覧ください。
 - [データと潜在的な脅威を可視化](quickstart-get-visibility.md)する方法についての説明。
-- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats.md)の概要。
+- [Azure Sentinel を使用した脅威の検出](tutorial-detect-threats-built-in.md)の概要。
 

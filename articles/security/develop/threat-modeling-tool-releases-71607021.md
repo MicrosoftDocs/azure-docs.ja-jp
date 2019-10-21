@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: jegeib
-ms.openlocfilehash: 889704a2312bc51e57c18f25875fdbc838876522
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 44fd84af629fadfc96d738e81f2568359ee19d66
+ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928044"
+ms.lasthandoff: 09/24/2019
+ms.locfileid: "71219840"
 ---
 # <a name="threat-modeling-tool-update-release-71607021---722019"></a>Threat Modeling Tool 更新プログラム リリース 7.1.60702.1 - 7/2/2019
 
@@ -43,7 +43,7 @@ ms.locfileid: "68928044"
 - サポートされているオペレーティング システム
   - [Microsoft Windows 10 Anniversary Update](https://blogs.windows.com/windowsexperience/2016/08/02/how-to-get-the-windows-10-anniversary-update/#HTkoK5Zdv0g2F2Zq.97) 以降
 - 必要な .NET のバージョン
-  - [.Net 4.7.1](http://go.microsoft.com/fwlink/?LinkId=863262) 以降
+  - [.Net 4.7.1](https://go.microsoft.com/fwlink/?LinkId=863262) 以降
 - その他の要件
   - ツールとテンプレートの更新プログラムを受け取るには、インターネット接続が必要です。
 

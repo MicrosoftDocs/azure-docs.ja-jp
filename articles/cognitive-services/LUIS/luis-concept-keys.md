@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/02/2019
+ms.date: 09/27/2019
 ms.author: diberry
-ms.openlocfilehash: 5a6c87da7ae62af54990e0a1a2c62065717a201a
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 70e58077fa40ce685324cd24b447886ec3411034
+ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256950"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71703180"
 ---
 # <a name="authoring-and-runtime-keys"></a>オーサリング キーとランタイム キー
 
@@ -85,10 +85,28 @@ LUIS ランタイム エンドポイントには、2 つのクエリ スタイ�
 
 ランタイムにアクセスするために使用されるエンドポイントでは、次の表の `{region}` で示すように、リソースの領域に固有のサブドメインを使用します。 
 
+
+#### <a name="v2-prediction-endpointtabv2"></a>[V2 予測エンドポイント](#tab/V2)
+
 |動詞|URL とキーの場所の例|
 |--|--|
-|[GET](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>`runtime-key` のクエリ文字列値<br><br>LUIS エンドポイント キーのクォータ レートを使用するために、`runtime-key` のエンドポイント クエリ値をオーサリング (スターター) キーから新しいエンドポイント キーに変更します。 キーを作成する場合、キーを割り当てるが、`runtime-key` のエンドポイント クエリ値を変更しないときは、エンドポイント キー クォータは使用しません。|
-|[POST](https://{region}.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> `Ocp-Apim-Subscription-Key` のヘッダー値<br>ランタイム キーを作成し、ランタイム キーを割り当てても、`Ocp-Apim-Subscription-Key` のエンドポイント クエリ値を変更しない場合は、ランタイム キーを使用していません。|
+|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?runtime-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`|
+|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`|
+
+#### <a name="v3-prediction-endpointtabv3"></a>[V3 予測エンドポイント](#tab/V3)
+
+|動詞|URL とキーの場所の例|
+|--|--|
+|[GET](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a91e54c9db63d589f433)|`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict?runtime-key=your-endpoint-key-here&query=turn%20on%20the%20lights`|
+|[POST](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0-preview/operations/5cb0a5830f741b27cd03a061)| `https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2/slots/production/predict`| 
+
+V3 予測エンドポイントの詳細については[こちら](luis-migration-api-v3.md)を参照してください。
+
+* * * 
+
+**GET**:LUIS エンドポイント キーのクォータ レートを使用するために、`runtime-key` のエンドポイント クエリ値をオーサリング (スターター) キーから新しいエンドポイント キーに変更します。 キーを作成する場合、キーを割り当てるが、`runtime-key` のエンドポイント クエリ値を変更しないときは、エンドポイント キー クォータは使用しません。
+
+**POST**: `Ocp-Apim-Subscription-Key` のヘッダー値を変更します。<br>ランタイム キーを作成し、ランタイム キーを割り当てても、`Ocp-Apim-Subscription-Key` のエンドポイント クエリ値を変更しない場合は、ランタイム キーを使用していません。
 
 前の URL `df67dcdb-c37d-46af-88e1-8b97951ca1c2` で使用されたアプリ ID は、[対話型デモ](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)に使用されるパブリック IoT アプリです。 
 
@@ -187,7 +205,7 @@ LUIS ランタイム キーを表示できるユーザーを制御するには�
 
 ## <a name="transfer-of-ownership"></a>所有権の移転
 
-**[オーサリング リソースが移行された](luis-migration-authoring.md)アプリの場合**: 
+**[オーサリング リソースが移行された](luis-migration-authoring.md)アプリの場合**:リソースの所有者として、`contributor` を追加できます。
 
 **まだ移行されていないアプリの場合**:アプリを JSON ファイルとしてエクスポートします。 別の LUIS ユーザーがアプリをインポートすると、アプリの所有者になります。 新しいアプリには別のアプリ ID が割り当てられます。  
 

@@ -1,34 +1,21 @@
 ---
 title: Dynamics 365 for Customer Engagement の技術資産を作成する | Azure Marketplace
-description: Dynamics 365 for Customer Engagement アプリケーション オファー用の技術資産を作成します。
+description: PC 記事にリンクされている、非推奨の CPP 記事。以前の記述:「Dynamics 365 for Customer Engagement アプリケーション オファー用の技術資産を作成します。」
 services: Dynamics 365 for Customer Engagement, Azure, Marketplace, Cloud Partner Portal, AppSource
-author: v-miclar
+author: ChJenk
 ms.service: marketplace
 ms.topic: article
-ms.date: 12/29/2018
-ms.author: pabutler
-ms.openlocfilehash: eff175264677d6b8ffb885229b5e68b306424335
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/30/2019
+ms.author: v-chjen
+ms.openlocfilehash: 378dc7d4b267a27088616cbe46b1a4309471af6b
+ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64943107"
+ms.lasthandoff: 10/08/2019
+ms.locfileid: "72033835"
 ---
 # <a name="create-technical-assets-for-azure-application-offer"></a>Azure アプリケーション オファー用の技術資産を作成する
 
-通常、ソリューションの開発には [Dynamics 365 for Customer Engagement アプリ用の SDK](https://docs.microsoft.com/dynamics365/customer-engagement/developer/get-started-sdk) を使用します。  「[Dynamics 365 Customer Engagement のプログラミング モデル](https://docs.microsoft.com/dynamics365/customer-engagement/developer/programming-models)」で説明されているように、ソリューションにはさまざまな形式があります。  ソリューションの要件を満たす最適な形式を選択します。  ソリューションを開発するときは、拡張性の選択、ソリューションのコンポーネント、バージョンの互換性など、多くの問題に対処する必要があります。  詳しくは、「[ソリューションの概要](https://docs.microsoft.com/dynamics365/customer-engagement/developer/introduction-solutions)」をご覧ください。
+[Cloud パートナー ポータル](https://cloudpartner.azure.com/)は、Dynamics 365 Customer Engagement オファーの作成と管理をサポートしなくなりました。 その代わりに、この機能は Microsoft [パートナー センター ポータル](https://partner.microsoft.com/)に移行されました。 詳細については、「[新しい Dynamics 365 for Customer Engagement & PowerApps オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)」を参照してください。
 
-AppSource に公開されるほとんどの Dynamics 365 ソリューションは、パッケージ ファイルとして配布されるマネージド アプリケーションです。
-
-
-## <a name="creating-and-storing-the-package"></a>パッケージの作成と格納
-
-Dynamics 365 for Customer Engagement オファーの作成に対応するドキュメントが、「[AppSource 上にアプリを公開する](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource)」セクションで見つかります。  それに含まれる次のトピックでは、ソリューション パッケージ ファイルを作成して Azure ストレージにアップロードする方法が詳しく説明されています。
-
-- [手順 4:アプリの AppSource パッケージを作成する](https://docs.microsoft.com/dynamics365/customer-engagement/developer/create-package-app-appsource) - マネージド アプリケーションを表す圧縮 (zip) ファイルの作成方法が説明されています。パッケージには、ソリューション資産フォルダー、カスタム コード DLL、MIME の種類の情報ファイル、AppSource パッケージ アイコン、ライセンス条件 (HTML) ファイル、コンテンツ ファイル (XML) が含まれます。
-- [手順 5:AppSource パッケージを Azure Storage に保存し、SAS キーで URL を生成する](https://docs.microsoft.com/dynamics365/customer-engagement/developer/store-appsource-package-azure-storage) - AppSource パッケージ ファイルを Microsoft Azure Blob Storage アカウントに格納する方法、および Shared Access Signature (SAS) キーを使用してパッケージ ファイルを共有する方法について説明されています。 認定と、その後の AppSource 試用版および公開のために、Azure Storage の場所からパッケージ ファイルが取得されます。
-
-
-## <a name="next-steps"></a>次の手順
-
-まだ行っていない場合は、[Dynamics 365 for Customer Engagement オファーを作成](./cpp-create-offer.md)します。  そうすれば、[オファーを公開する](./cpp-publish-offer.md)準備ができます。
+新しい Dynamics 365 for Customer Engagement オファーを作成する前に、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)に関する記事を読み、 **[概要]** ページを選択した状態で[商業マーケットプレース ダッシュボード](https://partner.microsoft.com/dashboard/directory)を開いてください。 「[新しい Dynamics 365 for Customer Engagement & PowerApps オファーの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-customer-engagement-offer)」の手順に従って、オファーを作成します。

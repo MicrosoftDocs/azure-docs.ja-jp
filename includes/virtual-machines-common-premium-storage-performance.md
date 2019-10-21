@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: abee645f8929c10856f662b1504b163b58d953a5
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: ca7136f6e1c24d32ff5d6e3e53878c11fb5f1edb
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036022"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71975316"
 ---
 ## <a name="application-performance-indicators"></a>アプリケーションのパフォーマンス指標
 
@@ -135,7 +135,7 @@ VM のサイズと、各種 VM で利用できる IOPS、スループット、�
 
 ## <a name="nature-of-io-requests"></a>IO 要求の特性
 
-IO 要求は、アプリケーションが実行する入力/出力操作の単位です。 IO 要求の特性 (ランダムまたは順次、読み取りまたは書き込み、サイズの大小) を特定すると、アプリケーションのパフォーマンス要件の決定に役立ちます。 アプリケーション インフラストラクチャの設計時に適切な判断を下すには、IO 要求の特性を理解することが重要です。
+IO 要求は、アプリケーションが実行する入力/出力操作の単位です。 IO 要求の特性 (ランダムまたは順次、読み取りまたは書き込み、サイズの大小) を特定すると、アプリケーションのパフォーマンス要件の決定に役立ちます。 アプリケーション インフラストラクチャの設計時に適切な判断を下すには、IO 要求の特性を理解することが重要です。 最適なパフォーマンスを実現するには、IO を均等に分散する必要があります。
 
 IO サイズは、さらに重要な要素の 1 つです。 IO サイズは、アプリケーションによって生成される入力/出力操作の要求のサイズです。 IO サイズはパフォーマンスに影響を及ぼし、特にアプリケーションが実現できる IOPS と帯域幅に大きな影響を及ぼします。 次の式は、IOPS、IO サイズ、帯域幅/スループットの関係を示しています。  
     ![](media/premium-storage-performance/image1.png)
@@ -209,13 +209,9 @@ Premium Storage で Linux を実行するときは、高パフォーマンスを
 
 ## <a name="premium-storage-disk-sizes"></a>Premium Storage のディスク サイズ
 
-Azure Premium Storage では、現在、8 つの GA ディスク サイズと、プレビューでは 3 つのディスク サイズを提供します。 ディスク サイズによって、IOPS、帯域幅、ストレージのスケールの上限がそれぞれ異なります。 アプリケーションの要件と高スケール VM のサイズに応じて、Premium Storage の適切なディスク サイズを選択します。 次の表に、11 種類のディスク サイズとその機能を示します。 P4、P6、P15、P60、P70、P80 サイズは、現在、Managed Disks のみでサポートされています。
+Azure Premium Storage ではさまざまなサイズが用意されているため、ニーズに最も適したものを選択できます。 ディスク サイズによって、IOPS、帯域幅、ストレージのスケールの上限がそれぞれ異なります。 アプリケーションの要件と高スケール VM のサイズに応じて、Premium Storage の適切なディスク サイズを選択します。 次の表に、ディスク サイズとその機能を示します。 P4、P6、P15、P60、P70、P80 サイズは、現在、Managed Disks のみでサポートされています。
 
-| Premium ディスクの種類  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| ディスク サイズ           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1,024 GiB (1 TiB)    | 2,048 GiB (2 TiB)    | 4,095 GiB (4 TiB)    | 8,192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32,767 GiB (32 TiB)    |
-| ディスクあたりの IOPS       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12,500              | 15,000              | 20,000              |
-| ディスクあたりのスループット | 25 MiB/秒  | 50 MiB/秒  | 100 MiB/秒 |125 MiB/秒 | 150 MiB/秒 | 200 MiB/秒 | 250 MiB/秒 | 250 MiB/秒 | 480 MiB/秒 | 750 MiB/秒 | 750 MiB/秒 |
+[!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
 選択するディスク数は、選択したディスク サイズによって異なります。 1 つの P50 ディスクまたは複数の P10 ディスクを使用して、アプリケーションの要件を満たすことができます。 選択時には以下の考慮事項に注意してください。
 

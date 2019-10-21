@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 09/30/2019
 ms.author: diberry
-ms.openlocfilehash: 376c2efbf3269092d0534870108ef6d753f8743e
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: bad581fbc53292b5a7c25157ef839e07f33e131e
+ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70962515"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71827891"
 ---
 # <a name="personalizer-settings"></a>Personalizer 設定
 
@@ -87,6 +87,21 @@ ms.locfileid: "70962515"
 
 **[Model and Policy]\(モデルとポリシー\)** のリソース管理セクションで、新しい学習ポリシーをインポートしたり、現在の学習ポリシーをエクスポートしたりします。
 以前のエクスポートから学習ポリシー ファイルを取得したり、オフライン評価中に検出された最適化されたポリシーをダウンロードしたりできます。 これらのファイルに手動で変更を加えると、機械学習のパフォーマンスとオフライン評価の精度に影響します。Microsoft では、手動で編集されたポリシーによる機械学習と評価の精度やサービス例外を保証することはできません。
+
+## <a name="clear-data-for-your-learning-loop"></a>学習ループのデータを消去する
+
+1. Azure portal の Personalizer リソースで、 **[モデルとポリシー]** ページの **[データの消去]** を選択します。
+1. すべてのデータを消去し、学習ループを元の状態にリセットするには、3 つのチェック ボックスをすべてオンにします。
+
+    ![Azure portal で、Personalizer リソースからデータを消去します。](./media/settings/clear-data-from-personalizer-resource.png)
+
+    |Setting|目的|
+    |--|--|
+    |ログに記録された個人用設定と報酬のデータ。|このログ データは、オフライン評価で使用されます。 リソースをリセットする場合は、データを消去します。|
+    |Personalizer モデルのリセット。|このモデルは、再トレーニングのたびに変わります。 このトレーニング頻度は、 **[設定]** ページの **[upload model frequency]\(モデルのアップロードの頻度\)** で指定されています。 |
+    |学習ポリシーを既定に設定する。|オフライン評価の一部として学習ポリシーを変更した場合、これにより元の学習ポリシーにリセットされます。|
+
+1. **[選択したデータの消去]** を選択して、消去プロセスを開始します。 状態は、右上のナビゲーションにある Azure 通知で報告されます。 
 
 ## <a name="next-steps"></a>次の手順
 

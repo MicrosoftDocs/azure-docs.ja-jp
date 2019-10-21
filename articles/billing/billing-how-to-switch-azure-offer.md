@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/01/2019
+ms.date: 09/30/2019
 ms.author: banders
-ms.openlocfilehash: 8e87bcb9f7d05fd5041623693c96f8c737758c32
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: e382b4bf12b53573f3506474837093456f9b84c6
+ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "67490979"
+ms.lasthandoff: 10/01/2019
+ms.locfileid: "71709626"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Azure サブスクリプションを別のオファーに変更する
 
@@ -101,7 +101,7 @@ Azure オファーとは、ご利用の Azure サブスクリプションの*種
 
 切り替えを行った日に、すべての未処理料金の請求書が生成されます。 その後、サブスクリプションは新しいオファーの価格条件に従って課金されます。 サブスクリプションの請求日はオファーを変更した日付に変更されます。 プラン変更前の使用状況と課金データは保存されないので、切り替え前にコピーをダウンロードしておくことをお勧めします。
 
-### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>従量課金制料金のサブスクリプションから [Cloud Solution Provider](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) または [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA) に移行することはできますか?
+### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>従量課金制料金のサブスクリプションからクラウド ソリューション プロバイダー (CSP) またはマイクロソフト エンタープライズ契約 (EA) に移行することはできますか?
 
 * CSP に移行するには、[Azure の従量課金制サブスクリプションから CSP への移行](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp)に関する記事をご覧ください。
 * EA に移行するには、登録管理者に依頼してアカウントを EA に追加してもらう必要があります。 登録案内メールの指示に従って、サブスクリプションを EA 加入契約に移行します。 詳細については、EA ポータルの「[既存のアカウントの関連付け](https://ea.azure.com/helpdocs/associateExistingAccount)」を参照してください。

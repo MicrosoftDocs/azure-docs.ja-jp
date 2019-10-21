@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 7fca5709a1c7c3ecae11a5fc7de2109f1b20645e
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7714d065d8ac449d10d9b022005e7799f8280bda
+ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839581"
+ms.lasthandoff: 09/18/2019
+ms.locfileid: "71104449"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>チュートリアル:Linux デバイス用の C# IoT Edge モジュールを開発する
 
@@ -36,7 +36,7 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
 
 このチュートリアルでは、**Visual Studio Code** を使用して **C#** でモジュールを開発し、それを **Linux デバイス**にデプロイする方法について説明します。 Windows デバイス用のモジュールを開発する場合は、「[Windows デバイス用の C# IoT Edge モジュールを開発する](tutorial-csharp-module-windows.md)」を参照してください。
 
-次の表を使用し、C モジュールを開発して Linux にデプロイする際のオプションをご確認ください。 
+次の表を使用し、C# モジュールを開発して Linux にデプロイする際のオプションをご確認ください。 
 
 | C# | Visual Studio Code | Visual Studio | 
 | -- | ------------------ | ------------- |
@@ -209,14 +209,16 @@ Azure IoT Edge モジュールを使用して、ビジネス ロジックを実�
             {
                 Console.WriteLine($"Machine temperature {messageBody.machine.temperature} " +
                     $"exceeds threshold {temperatureThreshold}");
-                var filteredMessage = new Message(messageBytes);
-                foreach (KeyValuePair<string, string> prop in message.Properties)
+                using (var filteredMessage = new Message(messageBytes))
                 {
-                    filteredMessage.Properties.Add(prop.Key, prop.Value);
-                }
+                    foreach (KeyValuePair<string, string> prop in message.Properties)
+                    {
+                        filteredMessage.Properties.Add(prop.Key, prop.Value);
+                    }
 
-                filteredMessage.Properties.Add("MessageType", "Alert");
-                await moduleClient.SendEventAsync("output1", filteredMessage);
+                    filteredMessage.Properties.Add("MessageType", "Alert");
+                    await moduleClient.SendEventAsync("output1", filteredMessage);
+                }
             }
 
             // Indicate that the message treatment is completed.

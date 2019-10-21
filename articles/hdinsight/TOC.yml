@@ -17,8 +17,12 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: HDInsight クラスターの管理 - PowerShell
           href: ./hdinsight-administer-use-powershell.md
+        - name: ETL パイプラインの作成
+          href: ./hdinsight-sales-insights-etl.md
     - name: サンプル
       items:
+        - name: Azure CLI のサンプル
+          href: ./azure-cli-samples.md
         - name: .NET のサンプル
           href: ./hdinsight-sdk-dotnet-samples.md
         - name: Java のサンプル
@@ -217,6 +221,8 @@
               href: ./hdinsight-release-notes.md
             - name: HDInsight 3.6 の完全なリリース ノート
               href: ./hdinsight-release-notes-archive.md
+        - name: よく寄せられる質問 (FAQ)
+          href: ./hdinsight-faq.md
         - name: クラスター構成できめ細かなロールベースのアクセスに移行する
           href: ./hdinsight-migrate-granular-access-cluster-configurations.md
         - name: Linux での HDInsight の使用方法
@@ -574,7 +580,7 @@
     - name: クイック スタート
       items:
         - name: Apache HBase のクエリ - Apache Phoenix
-          href: ./hbase/apache-hbase-phoenix-squirrel-linux.md
+          href: ./hbase/apache-hbase-query-with-phoenix.md
         - name: Apache HBase のクエリ - HBase シェル
           href: ./hbase/query-hbase-with-hbase-shell.md
     - name: チュートリアル
@@ -589,6 +595,8 @@
               href: ./hbase/apache-hbase-rest-sdk.md
             - name: Java アプリケーションの開発
               href: ./hbase/apache-hbase-build-java-maven-linux.md
+            - name: Apache Phoenix と Apache Zeppelin
+              href: ./hbase/apache-hbase-phoenix-zeppelin.md
             - name: HDInsight の Apache Phoenix
               href: ./hdinsight-phoenix-in-hdinsight.md
             - name: Apache Phoenix Query Server REST SDK の使用
@@ -611,6 +619,8 @@
               href: ./hbase/apache-hbase-provision-vnet.md
         - name: トラブルシューティング
           items:
+            - name: Apache HBase のパフォーマンスに関する問題のトラブルシューティング
+              href: ./hbase/troubleshoot-hbase-performance-issues.md
             - name: hbase hbck によって不一致が返される
               href: ./hbase/hbase-troubleshoot-hbase-hbck-inconsistencies.md
             - name: 接続リセット後のストレージ例外

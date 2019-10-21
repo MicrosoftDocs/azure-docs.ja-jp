@@ -1,7 +1,7 @@
 ---
 title: 時系列予測モデルを自動トレーニングする
-titleSuffix: Azure Machine Learning service
-description: Azure Machine Learning service を使用して、自動化された機械学習で時系列予測回帰モデルをトレーニングする方法について説明します。
+titleSuffix: Azure Machine Learning
+description: Azure Machine Learning を使用して、自動化された機械学習で時系列予測回帰モデルをトレーニングする方法について説明します。
 services: machine-learning
 author: trevorbye
 ms.author: trbye
@@ -10,16 +10,16 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 06/20/2019
-ms.openlocfilehash: e75de16d0e16bc639a0439220a1c9dfe53e1689b
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 03c5d46221dc385a390e840381270c01c40bdc6d
+ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879065"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71170408"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>時系列予測モデルを自動トレーニングする
 
-この記事では、Azure Machine Learning service で自動化された機械学習を使用して、時系列予測回帰モデルをトレーニングする方法について説明します。 予測モデルの構成は、自動化された機械学習を使用した標準的な回帰モデルの設定に似ていますが、時系列データを操作するために特定の構成オプションと前処理の手順が存在します。 次の例では、以下の方法について説明します。
+この記事では、Azure Machine Learning で自動化された機械学習を使用して、時系列予測回帰モデルをトレーニングする方法について説明します。 予測モデルの構成は、自動化された機械学習を使用した標準的な回帰モデルの設定に似ていますが、時系列データを操作するために特定の構成オプションと前処理の手順が存在します。 次の例では、以下の方法について説明します。
 
 * 時系列モデリング用のデータを準備する
 * [`AutoMLConfig`](/python/api/azureml-train-automl/azureml.train.automl.automlconfig) オブジェクトで特定の時系列パラメーターを構成する
@@ -37,7 +37,7 @@ ms.locfileid: "70879065"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure Machine Learning ワークスペース。 ワークスペースを作成するには、「[Create an Azure Machine Learning service workspace](how-to-manage-workspace.md)」 (Azure Machine Learning サービス ワークスペースの作成) を参照してください。
+* Azure Machine Learning ワークスペース。 ワークスペースを作成するには、[Azure Machine Learning ワークスペース](how-to-manage-workspace.md)の作成に関するページを参照してください。
 * この記事では、自動化された機械学習実験の設定に基本的に精通していることを前提としています。 [チュートリアル](tutorial-auto-train-models.md)または[ハウツー](how-to-configure-auto-train.md)に従って、自動化された機械学習実験の基本的な設計パターンについて確認してください。
 
 ## <a name="preparing-data"></a>データの準備
@@ -95,10 +95,12 @@ y_test = X_test.pop("sales_quantity").values
 |`time_column_name`|時系列の構築とその頻度の推定に使用される入力データで、datetime 列を指定するために使用されます。|✓|
 |`grain_column_names`|入力データ内の個々の系列グループを定義する名前。 グレインが定義されていない場合、データ セットは 1 つの時系列であると見なされます。||
 |`max_horizon`|時系列頻度を単位にした目的の最大予測期間を定義します。 単位は、月ごとや週ごとなどの予測を実行する必要があるトレーニング データの時間間隔に基づきます。|✓|
-|`target_lags`|モデルのトレーニング前にターゲット値を前方に *n* 期間ずらします。||
-|`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。||
+|`target_lags`|データの頻度に基づいて対象の値を遅延させる行の数。 これは一覧または単一の整数として表されます。 独立変数と依存変数の間のリレーションシップが既定で一致しない場合、または関連付けられていない場合、ラグを使用する必要があります。 たとえば、製品の需要を予測しようとする場合、任意の月の需要は、3 か月前の特定の商品の価格によって異なる可能性があります。 この例では、モデルが正しいリレーションシップでトレーニングされるように、目標 (要求) を 3 か月間遅延させてください。||
+|`target_rolling_window_size`|予測値の生成に使用する *n* 履歴期間 (トレーニング セットのサイズ以下)。 省略した場合、*n* はトレーニング セットの全体のサイズになります。 モデルのトレーニング時に特定の量の履歴のみを考慮する場合は、このパラメーターを指定します。||
 
-ディクショナリ オブジェクトとして時系列設定を作成します。 `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 ストア A と B 用の **2 つの個別の時系列グループ**がデータに対して作成されるように `grain_column_names` パラメーターを定義します。最後に、テスト セット全体に対して予測を行うために `max_horizon` を 50 に設定します。 `target_rolling_window_size` で予測ウィンドウを 10 期間に設定し、`target_lags` パラメーターでターゲット値を前方に 2 期間ずらします。
+詳しくは、[リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)をご覧ください。
+
+ディクショナリ オブジェクトとして時系列設定を作成します。 `time_column_name` をデータ セットの `day_datetime` フィールドに設定します。 ストア A と B 用の **2 つの個別の時系列グループ**がデータに対して作成されるように `grain_column_names` パラメーターを定義します。最後に、テスト セット全体に対して予測を行うために `max_horizon` を 50 に設定します。 `target_rolling_window_size` で予測ウィンドウを 10 期間に設定し、`target_lags` パラメーターで前方に 2 期間のターゲット値に 1 つのラグを指定します。
 
 ```python
 time_series_settings = {
@@ -111,8 +113,14 @@ time_series_settings = {
 }
 ```
 
+
+
 > [!NOTE]
 > 自動化された機械学習の前処理手順 (機能の正規化、欠損データの処理、テキストから数値への変換など) は、基になるモデルの一部になります。 モデルを予測に使用する場合、トレーニング中に適用されたのと同じ前処理手順が入力データに自動的に適用されます。
+
+上記のコード スニペットで `grain_column_names` を定義することで、AutoML では 2 つの個別の時系列グループを作成します (複数の時系列とも呼ばれます)。 グレインが定義されていない場合、AutoML ではデータセットが単一の時系列であると想定されます。 単一の時系列の詳細については、「[energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand)」を参照してください。
+
+
 
 次に標準的な `AutoMLConfig` オブジェクトを作成し、`forecasting` タスクの種類を指定して、実験を送信します。 モデルの終了後、最適な実行イテレーションを取得します。
 

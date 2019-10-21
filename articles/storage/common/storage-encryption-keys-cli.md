@@ -4,17 +4,17 @@ description: Azure CLI を使用して Azure Storage 暗号化用にカスタマ
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 06/24/2019
+ms.topic: conceptual
+ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ca155763109dbf4292738354244dc397272d06f4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 036322e73470ad4aa25de03e95c506e9f04496d8
+ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002251"
+ms.lasthandoff: 09/29/2019
+ms.locfileid: "71670993"
 ---
 # <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Azure CLI から Azure Storage 暗号化用にカスタマー マネージド キーを構成する
 

@@ -12,12 +12,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
-ms.openlocfilehash: 3b9022dd2b5998f95179ee3dfabe6706b55036bc
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: edbc9eef6b5f0af2e70152b66228cdf09ef31110
+ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69636009"
+ms.lasthandoff: 10/10/2019
+ms.locfileid: "72242181"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Twilio を使用して音声通話と SMS を実行する方法 (Python)
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -111,7 +111,7 @@ Python 用 Twilio ライブラリをインストールしたら、Python ファ�
 
         import twilio
 
-詳細については、「[twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.rst)」を参照してください。
+詳細については、「[twilio_github_readme](https://github.com/twilio/twilio-python/blob/master/README.md)」を参照してください。
 
 ## <a id="howto_make_call"></a>方法:発信通話する
 次のコードでは、発信通話を行う方法を示します。 このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。 コードを実行する前に、**from_number** および **to_number** の電話番号の値を置き換えて、Twilio アカウントの **from_number** の電話番号を確認します。

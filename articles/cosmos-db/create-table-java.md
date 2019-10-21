@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 ms.custom: seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 4ede3d863ed47b16b12f516d8af778fdb2576d27
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 14742984fb993679abc87e279f3ad9882ec77ce3
+ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70391046"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266038"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-table-api-data"></a>クイック スタート:Azure Cosmos DB Table API データを管理する Java アプリを作成する
 
@@ -87,7 +87,7 @@ GitHub で Table アプリの複製を作成し、接続文字列を設定して
 
 1. [Azure portal](https://portal.azure.com/) で **[接続文字列]** を選択します。 
 
-   ![[接続文字列] ウィンドウに表示されている必要な接続文字列情報をコピーします。](./media/create-table-java/connection-string.png)
+   ![[接続文字列] ウィンドウで接続文字列の情報を表示する](./media/create-table-java/cosmos-db-quickstart-connection-string.png)
 
 2. 右側にある [コピー] ボタンを使って、プライマリ接続文字列をコピーします。
 

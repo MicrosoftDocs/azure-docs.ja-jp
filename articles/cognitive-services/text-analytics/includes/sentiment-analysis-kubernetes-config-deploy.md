@@ -7,16 +7,16 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/21/2019
+ms.date: 09/19/2019
 ms.author: dapine
-ms.openlocfilehash: 5d16500b45cbc6190186835d0c793a48fd121bd0
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: f1c571e421dccad366abf403de350b07113e04ba
+ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051541"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71130038"
 ---
-## <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>感情分析コンテナーを AKS クラスターにデプロイする
+### <a name="deploy-the-sentiment-analysis-container-to-an-aks-cluster"></a>感情分析コンテナーを AKS クラスターにデプロイする
 
 1. Azure CLI を開き、Azure にサインインします。
 

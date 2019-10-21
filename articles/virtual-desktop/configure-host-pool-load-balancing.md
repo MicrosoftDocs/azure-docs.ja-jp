@@ -1,5 +1,5 @@
 ---
-title: Windows Virtual Desktop プレビューの負荷分散方法を構成する - Azure
+title: Windows Virtual Desktop の負荷分散方法を構成する - Azure
 description: Windows Virtual Desktop 環境での負荷分散方法を構成する方法。
 services: virtual-desktop
 author: Heidilohr
@@ -7,16 +7,16 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
-ms.openlocfilehash: e1f1ea10dc68e501cfac7ef0cf0383ce78e8f380
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3a940dbf592087878cb9dd19f856f1a3d94291c5
+ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163763"
+ms.lasthandoff: 09/30/2019
+ms.locfileid: "71676777"
 ---
-# <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>Windows Virtual Desktop プレビューの負荷分散方法を構成する
+# <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Windows Virtual Desktop の負荷分散方法を構成する
 
-ホスト プールの負荷分散方法を構成することで、Windows Virtual Desktop プレビュー環境をニーズに合うように調整できます。
+ホスト プールの負荷分散方法を構成することで、Windows Virtual Desktop 環境をニーズに合うように調整できます。
 
 >[!NOTE]
 > これは、ユーザーにホスト プール内のセッション ホストに対して常に 1 対 1 のマッピングがあるため、永続的なデスクトップ ホスト プールには適用されません。

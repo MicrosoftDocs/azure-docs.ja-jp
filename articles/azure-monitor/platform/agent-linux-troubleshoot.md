@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 83f9cc050694344cdc5f4f5a2070bc875fcba3d9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 732c93688dbc73cb5a4ce21e4669744be61c5925
+ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071667"
+ms.lasthandoff: 09/26/2019
+ms.locfileid: "71299563"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -51,7 +51,7 @@ Azure Monitor の Linux 用 Log Analytics エージェントで発生する可�
 
  >[!NOTE]
  >Azure portal でワークスペースに対する [Log Analytics の [詳細設定] の [データ] メニュー](../../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)からコレクションを構成した場合、パフォーマンス カウンターおよび Syslog に関する構成ファイルの編集が上書きされます。 すべてのエージェントの構成を無効にするには、Log Analytics の **[詳細設定]** でコレクションを無効にします。1 つのエージェントの場合は、次を実行します。  
-> `sudo su omsagent -c /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable`
+> `sudo su omsagent -c 'python /opt/microsoft/omsconfig/Scripts/OMS_MetaConfigHelper.py --disable'`
 
 ## <a name="installation-error-codes"></a>インストール エラー コード
 
@@ -192,7 +192,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 ## <a name="issue-you-see-omiagent-using-100-cpu"></a>問題: omiagent が 100% の CPU を使用している
 
 ### <a name="probable-causes"></a>考えられる原因
-nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-5.el7.x86_64.rpm.html) の回帰によって、重大なパフォーマンス上の問題が発生しました。これは、Redhat/Centos 7.x のディストリビューションで多く発生しています。 この問題の詳細については、「バグ [1667121 libcurl でのパフォーマンス回帰](https://bugzilla.redhat.com/show_bug.cgi?id=1667121)」というドキュメントを確認してください。
+nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) の回帰によって、重大なパフォーマンス上の問題が発生しました。これは、Redhat/Centos 7.x のディストリビューションで多く発生しています。 この問題の詳細については、[libcurl でのパフォーマンス低下のバグ (1667121)](https://bugzilla.redhat.com/show_bug.cgi?id=1667121)に関するドキュメントを確認してください。
 
 パフォーマンスに関連したバグは常に発生するわけではなく、再現するのは非常に困難です。 omiagent でそのような問題が発生する場合は、スクリプト omiHighCPUDiagnostics.sh を使用してください。これは、特定のしきい値を超えると、omiagent のスタック トレースを収集します。
 
@@ -206,7 +206,7 @@ nss-pem パッケージ [v1.0.3-5.el7](https://centos.pkgs.org/7/centos-x86_64/n
 
 ### <a name="resolution-step-by-step"></a>解決 (段階的)
 
-1. nss-pem パッケージを [v1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-updates-x86_64/nss-pem-1.0.3-5.el7_6.1.x86_64.rpm.html) にアップグレードします。 <br/>
+1. nss-pem パッケージを [v1.0.3-5.el7_6.1](https://centos.pkgs.org/7/centos-x86_64/nss-pem-1.0.3-7.el7.x86_64.rpm.html) にアップグレードします。 <br/>
 `sudo yum upgrade nss-pem`
 
 2. nss-pem がアップグレードに使用できない場合 (多くの場合、Centos で発生する) 場合は、curl を 7.29.0-46 にダウングレードします。 誤って "yum update" を実行すると、curl は 7.29.0-51 にアップグレードされ、問題が再度発生します。 <br/>

@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a4a7f951d34455f2e333f2c11e30d24efdfd22c1
+ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62106302"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71261200"
 ---
 # <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Azure Logic Apps で Azure Monitor ログを使用して Azure B2B メッセージを監視する
 
@@ -124,7 +124,7 @@ ms.locfileid: "62106302"
 Azure Monitor ログと併せて、ロジック アプリの診断データを他の Azure サービスで使用する方法を次のように拡張できます。 
 
 * [Azure Diagnostics ログを Azure Storage にアーカイブする](../azure-monitor/platform/archive-diagnostic-logs.md)
-* [Azure Diagnostics ログを Azure Event Hubs にストリーミングする](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
+* [Azure Diagnostics ログを Azure Event Hubs にストリーミングする](../azure-monitor/platform/resource-logs-stream-event-hubs.md) 
 
 これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../azure-monitor/platform/powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 例:
 
@@ -147,5 +147,5 @@ Azure では、次の種類の追跡スキーマをサポートしています�
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Monitor ログで B2B メッセージを追跡する](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "Azure Monitor ログで B2B メッセージを追跡する")
-* [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
+* [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack について学習する")
 

@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/08/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dce7cc2cd8e97eef81023eb803cace3f6d011171
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 4d0e7bc7f491e328f5e9fce291d415452c49c745
+ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "70174637"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71830119"
 ---
 メモリ最適化済み VM のサイズは、リレーショナル データベース サーバー、中規模から大規模のキャッシュ、インメモリ分析に適した、メモリと CPU の高い比率を提供します。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を提供します。
 
 * Ev3 シリーズは、ハイパー スレッド構成の E5-2673 v4 2.3 GHz (Broadwell) プロセッサを備えることで、大半の汎用ワークロード向けに付加価値を高め、他の多くのクラウドの汎用 VM と一線化されています。  メモリが増設 (7 GiB/vCPU から 8 GiB/vCPU) される一方、ディスクおよびネットワークの制限は、ハイパースレッディングへの移行に合わせてコア単位ベースで調整されています。  Ev3 は、D/Dv2 ファミリーのハイ メモリ VM サイズのフォローアップです。
 
-* Eav3 シリーズと Easv3 シリーズでは、最大 256 MB の L3 キャッシュを備えたマルチスレッド構成で AMD の 2.35Ghz EPYC<sup>TM</sup> 7452V プロセッサを利用しており、ほとんどのメモリ最適化されたワークロードを実行するためのオプションが増えています。  Eav3 シリーズと Easv3 シリーズは、Ev3 および Esv3 シリーズと同じメモリおよびディスク構成を備えています。
+* Eav3 シリーズと Easv3 シリーズのプレビュー サイズでは、最大 256 MB の L3 キャッシュを備えたマルチスレッド構成で AMD の 2.35Ghz EPYC<sup>TM</sup> 7452 プロセッサを利用しており、ほとんどのメモリ最適化されたワークロードを実行するためのオプションが増えています。  Eav3 シリーズと Easv3 シリーズは、Ev3 および Esv3 シリーズと同じメモリおよびディスク構成を備えています。
 
 * Mv2 シリーズは、クラウドの VM で最大の vCPU 数 (最大 208 個の vCPU) と最大のメモリ (最大 5.7 TiB) を提供します。 非常に大規模なデータベースや他のアプリケーションに最適であり、多数の vCPU と大量のメモリによるメリットを活用することができます。
 
@@ -61,13 +61,15 @@ ESv3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Bro
 
 <sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
-## <a name="easv3-series"></a>Easv3 シリーズ
+## <a name="easv3-series-preview"></a>Easv3 シリーズ (プレビュー)
 
 Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
-Easv3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452V プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Easv3 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
+Easv3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Easv3 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。
+
+[プレビュー用にサインアップするには、こちらをクリックしてください](http://aka.ms/azureamdpreview)。
 
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
 |---|---|---|---|
@@ -110,23 +112,25 @@ Ev3 シリーズのインスタンスは、2.3 GHz Intel XEON® E5-2673 v4 (Broa
 
 <sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
-## <a name="eav3-series"></a>Eav3 シリーズ
+## <a name="eav3-series-preview"></a>Eav3 シリーズ (プレビュー)
 
 Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
 
-Eav3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452V プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Eav3 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、Easv3 シリーズのサイズを使用してください。 Easv3 サイズの料金および課金の計算方法は、Eav3 シリーズと同じです。
+Eav3 シリーズのサイズは、2.35Ghz AMD EPYC<sup>TM</sup> 7452 プロセッサをベースにしています。このプロセッサでは 3.35 GHz のブースト Fmax を達成し、Premium Storage を使用できます。 Eav3 シリーズのサイズは、メモリへの負荷が高いエンタープライズ アプリケーションに最適です。 データ ディスク ストレージは、仮想マシンとは別に課金されます。 Premium Storage ディスクを使用するには、Easv3 シリーズのサイズを使用してください。 Easv3 サイズの料金および課金の計算方法は、Eav3 シリーズと同じです。
 
-| Size | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
-|---|---|---|---|---|---|
-| Standard_E2a_v3  | 2  | 16  | 50   |
-| Standard_E4a_v3  | 4  | 32  | 100  |
-| Standard_E8a_v3  | 8  | 64  | 200  |
-| Standard_E16a_v3 | 16 | 128 | 400  |
-| Standard_E32a_v3 | 32 | 256 | 800  |
-| Standard_E48a_v3 | 48 | 384 | 1200 |
-| Standard_E64a_v3 | 64 | 432 | 1600 |
+[プレビュー用にサインアップするには、こちらをクリックしてください](http://aka.ms/azureamdpreview)。
+
+| Size             | vCPU | メモリ: GiB | 一時ストレージ (SSD): GiB |
+|------------------|------|-------------|-------------------------|
+| Standard_E2a_v3  | 2    | 16          | 50                      |
+| Standard_E4a_v3  | 4    | 32          | 100                     |
+| Standard_E8a_v3  | 8    | 64          | 200                     |
+| Standard_E16a_v3 | 16   | 128         | 400                     |
+| Standard_E32a_v3 | 32   | 256         | 800                     |
+| Standard_E48a_v3 | 48   | 384         | 1200                    |
+| Standard_E64a_v3 | 64   | 432         | 1600                    |
 
 ## <a name="mv2-series"></a>Mv2 シリーズ
 
@@ -196,6 +200,8 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
+M シリーズのサイズは Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz に基づいています   
+
 書き込みアクセラレータ:[サポートされています](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator)
 
 | Size            | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
@@ -235,6 +241,8 @@ Premium Storage: サポートされています
 
 Premium Storage キャッシュ:サポートされています
 
+DSv2 シリーズのサイズは Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz に基づいています
+
 | Size | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合の一時ストレージの最大スループット: IOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS11_v2&nbsp;<sup>3</sup> |2 |14 |28 |8 |8000 / 64 (72) |6400 / 96 |2/1,500 |
@@ -257,6 +265,8 @@ ACU: 210 から 250
 Premium Storage: サポートされていません
 
 Premium Storage キャッシュ:サポートされていません
+
+DSv2 シリーズのサイズは Intel(R) Xeon(R) CPU E5-2673 v3 @ 2.40GHz に基づいています
 
 | Size              | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | 一時ストレージの最大スループット: IOPS/読み取り MBps/書き込み MBps | 最大データ ディスク数/スループット: IOPS | 最大 NIC 数/想定ネットワーク帯域幅 (Mbps) |
 |-------------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|

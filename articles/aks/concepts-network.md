@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 967ca233169e2a2a213534d5b60bef2e3f44b6a9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 26ba3ff600ddca6158579941ab5d32b60ff13101
+ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69969640"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71950360"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) でのアプリケーションに対するネットワークの概念
 
@@ -29,7 +29,7 @@ ms.locfileid: "69969640"
 
 アプリケーションへのアクセスまたはアプリケーション コンポーネントの相互通信を可能にするため、Kubernetes には、仮想ネットワークに対する抽象化レイヤーが提供されています。 仮想ネットワークに接続された Kubernetes ノードは、ポッドに対して受信接続と送信接続を実行できます。 これらのネットワーク機能を提供するために、各ノードで *kube-proxy* コンポーネントが実行されます。
 
-Kubernetes では、特定のポートで IP アドレスまたは DNS 名を使用した直接アクセスを許可するように、"*サービス*" によってポッドが論理的にグループ化されます。 "*ロード バランサー*" を使用してトラフィックを分散させることもできます。 "*イングレス コントローラー*" を使用して、アプリケーションのトラフィックの複雑なルーティングも実現できます。 ポッドに対するネットワーク トラフィックのセキュリティ保護とフィルター処理は、Kubernetes の "*ネットワーク ポリシー*" (AKS ではプレビュー段階) によって実行できます。
+Kubernetes では、特定のポートで IP アドレスまたは DNS 名を使用した直接アクセスを許可するように、"*サービス*" によってポッドが論理的にグループ化されます。 "*ロード バランサー*" を使用してトラフィックを分散させることもできます。 "*イングレス コントローラー*" を使用して、アプリケーションのトラフィックの複雑なルーティングも実現できます。 ポッドに対するネットワーク トラフィックのセキュリティ保護とフィルター処理は、 *" Kubernetes ネットワーク ポリシー*" によって実行できます。
 
 Azure プラットフォームは、AKS クラスターの仮想ネットワークを簡略化するためにも役立ちます。 Kubernetes ロード バランサーを作成すると、基になる Azure ロード バランサーのリソースが作成されて構成されます。 ポッドへのネットワーク ポートを開くと、対応する Azure ネットワーク セキュリティ グループ規則が構成されます。 HTTP アプリケーション ルーティングでは、新しいイングレス ルートが構成されると、Azure によって "*外部 DNS*" も構成されます。
 

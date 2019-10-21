@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a335bcbb45b1aac48a3aaea282ffeffe1696f4c
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: b7c851c2d865a7b553be2cd0f619ad09985115a3
+ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69900082"
+ms.lasthandoff: 09/27/2019
+ms.locfileid: "71336874"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのエンド ツー エンドのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
@@ -47,6 +47,14 @@ ms.locfileid: "69900082"
 - **C** プロジェクト計画と成果への貢献者 
 
 - **I** プロジェクト計画と成果を知らされる
+
+
+## <a name="best-practices-for-a-pilot"></a>パイロットのベスト プラクティス
+すべてのユーザーに対して機能を有効にする前に、パイロットを使用して、小規模なグループでテストすることができます。 テストの一部として、組織内の各ユース ケースが十分にテストされていることを確認します。 組織全体にロールアウトする前に、特定のパイロット ユーザー グループを対象にすることをお勧めします。
+
+最初の段階では、テストを受けてフィードバックを提供できる IT、ユーザビリティ、およびその他の適切なユーザーを対象にします。 このフィードバックを使用して、ユーザーに伝える情報と指示をさらに開発し、サポート スタッフが確認する可能性がある問題の種類に関する分析情報を提供します。 
+
+大規模なユーザー グループへのロールアウトの拡大は、対象とするグループのスコープを広げることで実行する必要があります。 これは、[動的グループ メンバーシップ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)を使用するか、対象グループにユーザーを手動で追加することで実行できます。
 
 
 ## <a name="deploy-authentication"></a>認証のデプロイ

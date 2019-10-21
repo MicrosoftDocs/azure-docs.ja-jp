@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: a1d31eb3fa6e37302e1afa5ebd36d04f75830dea
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 9515f0ecae92e6350924b3856aa6cbf20e608d51
+ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70918162"
+ms.lasthandoff: 09/17/2019
+ms.locfileid: "71066685"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Apache Hadoop サンドボックス (仮想マシンのエミュレーター) の概要
 
@@ -42,7 +42,7 @@ Hortonworks の Hadoop サンドボックスを仮想マシンにインストー
 1. **[ファイル]** メニューの **[Import Appliance (アプライアンスのインストール)]** をクリックしHortonworks Sandbox イメージを指定します。
 1. Hortonworks Sandbox を選択し、 **[Start (開始)]** 、 **[Normal Start (通常の方法で開始)]** の順にクリックします。 仮想マシンのブート プロセスが終了すると、ログインに関する手順が表示されます。
 
-    ![[Normal Start (通常の方法で開始)]](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
+    ![virtualbox マネージャーの通常の方法での開始](./media/apache-hadoop-emulator-get-started/virtualbox-normal-start.png)
 
 1. Web ブラウザーを開き、表示された URL に移動します (通常は `http://127.0.0.1:8888`)。
 

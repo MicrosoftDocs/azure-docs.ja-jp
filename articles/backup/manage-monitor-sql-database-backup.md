@@ -5,14 +5,14 @@ author: dcurwin
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/11/2019
 ms.author: dacurwin
-ms.openlocfilehash: 1d50f239a0ef4de02c9f0c87a28b0f5092d9c529
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
+ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019032"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70934825"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>バックアップされる SQL Server データベースを管理および監視する
 
@@ -140,6 +140,32 @@ SQL Database の保護を再開するには:
 4. 保護されたサーバーを右クリックし、 **[Unregister]** (登録解除) を選択します。
 
    ![[削除] を選択する](./media/backup-azure-sql-database/delete-protected-server.jpg)
+
+
+## <a name="modify-policy"></a>ポリシーを変更する
+バックアップの頻度や保有期間の範囲を変更するためにポリシーを変更します。
+
+> [!NOTE]
+> 保持期間の変更は、新しい復旧ポイントだけでなく古い復旧ポイントすべてにもさかのぼって適用されます。
+
+コンテナーのダッシュボードで、 **[管理]**  >  **[バックアップ ポリシー]** に移動し、編集するポリシーを選択します。
+
+  ![バックアップ ポリシーの管理](./media/backup-azure-sql-database/modify-backup-policy.png)
+
+  ![バックアップ ポリシーの変更](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
+
+ポリシーの変更は、関連付けられているすべてのバックアップ項目に影響し、対応する**保護の構成**ジョブをトリガーします。 
+
+#### <a name="inconsistent-policy"></a>不整合なポリシー 
+
+場合によっては、ポリシーの変更操作によって、一部のバックアップ項目に**不整合な**ポリシーのバージョンができてしまうことがあります。 これは、ポリシーの変更操作がトリガーされた後に、対応する**保護の構成**ジョブがバックアップ項目に対して失敗した場合に発生します。 バックアップ項目のビューには、次のように表示されます。
+ 
+  ![不整合なポリシー](./media/backup-azure-sql-database/inconsistent-policy.png)
+
+次のように、1 回のクリックで、影響を受けるすべての項目のポリシー バージョンを修正できます。
+
+  ![不整合なポリシーの修正](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
+ 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM で拡張を再登録する
 

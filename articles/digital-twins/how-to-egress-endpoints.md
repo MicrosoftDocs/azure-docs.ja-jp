@@ -1,19 +1,19 @@
 ---
 title: Azure Digital Twins でのエグレスとエンドポイント | Microsoft Docs
 description: Azure Digital Twins を使用してエンドポイントを作成する方法のガイドラインです。
+ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 08/12/2019
-ms.author: alinast
-ms.openlocfilehash: 3c33992ce3c130d6c06e0709a9c4ddcab4fff159
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.date: 10/02/2019
+ms.openlocfilehash: e7516fffb4aa8806062655e39c591e4691e779b1
+ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69013938"
+ms.lasthandoff: 10/04/2019
+ms.locfileid: "71959114"
 ---
 # <a name="egress-and-endpoints"></a>エグレスとエンドポイント
 
@@ -47,7 +47,7 @@ Azure Digital Twins の*エンドポイント*は、ユーザーの Azure サブ
 }
 ```
 
-| Attribute | Type | 説明 |
+| Attribute | 種類 | 説明 |
 | --- | --- | --- |
 | id | string | イベントの一意識別子。 |
 | subject | string | 発行元が定義したイベントの対象のパス。 |

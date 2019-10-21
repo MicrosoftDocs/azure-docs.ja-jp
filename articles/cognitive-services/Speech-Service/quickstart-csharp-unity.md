@@ -1,35 +1,34 @@
 ---
 title: クイック スタート:音声を認識する、Unity - Speech Service
 titleSuffix: Azure Cognitive Services
-description: このガイドでは、Unity と Unity 用 Speech SDK (ベータ版) を使用して音声テキスト変換アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
+description: このガイドでは、Unity と Unity 用 Speech SDK を使用して音声テキスト変換アプリケーションを作成します。 完了すると、お使いのコンピューターのマイクを使用して、リアルタイムに文字起こし (音声テキスト変換) することができます。
 services: cognitive-services
 author: jhakulin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 09/17/2019
 ms.author: jhakulin
-ms.openlocfilehash: 1b6e60edd86cff2d657b562f05351e20571c0909
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a7ac6831fd21fcc0dc425b57f5d73d8c328f9350
+ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815441"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71803457"
 ---
-# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>クイック スタート:Unity 用 Speech SDK (ベータ版) を使用して音声を認識する
+# <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity"></a>クイック スタート:Unity 用 Speech SDK を使用して音声を認識する
 
 クイック スタートは[テキスト読み上げ](quickstart-text-to-speech-csharp-unity.md)にも使用できます。
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-このガイドでは、[Unity](https://unity3d.com/) と Unity 用 Speech SDK (ベータ版) を使用して音声テキスト変換アプリケーションを作成します。
+このガイドでは、[Unity](https://unity3d.com/) と Unity 用 Speech SDK を使用して音声テキスト変換アプリケーションを作成します。
 完了すると、お使いのデバイスに話しかけて、リアルタイムに文字起こし (音声テキスト変換) することができます。
 Unity を初めて使用する場合は、アプリケーションを開発する前に [Unity のユーザー マニュアル](https://docs.unity3d.com/Manual/UnityManual.html)を調べることをお勧めします。
 
 > [!NOTE]
-> Unity 用 Speech SDK は、現在ベータ版です。
-> Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM/ARM64)、および Android (x86、ARM32/64) がサポートされています。
+> Unity 用 Speech SDK では、Windows デスクトップ (x86 および x64) またはユニバーサル Windows プラットフォーム (x86、x64、ARM、ARM64)、Android (x86、ARM32、ARM64)、および iOS (x64 シミュレーター、ARM32 および ARM64) がサポートされています
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -37,7 +36,7 @@ Unity を初めて使用する場合は、アプリケーションを開発す�
 
 - [Unity 2018.3 以降](https://store.unity.com/)および [UWP ARM64 のサポートを追加する Unity 2019.1](https://blogs.unity3d.com/2019/04/16/introducing-unity-2019-1/#universal)。
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)。 Visual Studio 2017 バージョン 15.9 以降も許容されます。
-  - ARM64 をサポートするため、[ARM64 用のオプションのビルド ツール、および ARM64 用の Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) をインストールします。
+- Windows ARM64 をサポートするため、[ARM64 用のオプションのビルド ツール、および ARM64 用の Windows 10 SDK](https://blogs.windows.com/buildingapps/2018/11/15/official-support-for-windows-10-on-arm-development/) をインストールします。
 - 音声サービス用のサブスクリプション キー。 [無料で 1 つ取得します](get-started.md)。
 - お使いのコンピューターに備わっているマイクへのアクセス。
 
@@ -62,7 +61,7 @@ Unity 用 Speech SDK をインストールするには、次の手順を実行�
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-1. Unity のアセット パッケージ (.unitypackage) としてパッケージ化された [Unity 用 Speech SDK (ベータ版)](https://aka.ms/csspeech/unitypackage) をダウンロードして開きます。 アセット パッケージを開くと、 **[Import Unity Package]\(Unity パッケージのインポート\)** ダイアログ ボックスが表示されます。
+1. Unity のアセット パッケージ (.unitypackage) としてパッケージ化された [Unity 用 Speech SDK](https://aka.ms/csspeech/unitypackage) をダウンロードして開きます。 アセット パッケージを開くと、 **[Import Unity Package]\(Unity パッケージのインポート\)** ダイアログ ボックスが表示されます。
 
    [![Unity エディターの [Import Unity Package]\(Unity パッケージのインポート\) ダイアログ ボックス](media/sdk/qs-csharp-unity-01-import.png)](media/sdk/qs-csharp-unity-01-import.png#lightbox)
 1. すべてのファイルが選択されていることを確認したら、 **[Import]\(インポート\)** を選択します。 しばらくすると、Unity アセット パッケージがプロジェクトにインポートされます。

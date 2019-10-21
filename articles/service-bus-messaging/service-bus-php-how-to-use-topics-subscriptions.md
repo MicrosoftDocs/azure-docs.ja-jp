@@ -14,18 +14,18 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 18aeaccef724ba94a9c18240fb77ea33897e8d26
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: eba2c0aeb37f2bc2283e7afb108bb4578981120e
+ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67063867"
+ms.lasthandoff: 09/19/2019
+ms.locfileid: "71147233"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>PHP で Service Bus のトピックとサブスクリプションを使用する方法
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
 
-この記事では、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP](../php-download-sdk.md) を利用しています。 紹介するシナリオは次のとおりです。
+この記事では、Service Bus のトピックとサブスクリプションの使用方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) を利用しています。 紹介するシナリオは次のとおりです。
 
 - キュー、トピック、およびサブスクリプションを作成する 
 - サブスクリプション フィルターを作成する 
@@ -41,7 +41,7 @@ ms.locfileid: "67063867"
     > このクイック スタートでは、**PHP** を使用して **トピック**とその中に含まれる**サブスクリプション**を作成します。 
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
-Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](../php-download-sdk.md) のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
+Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php) のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
 
 > [!NOTE]
 > PHP のインストールでは、[OpenSSL 拡張機能](https://php.net/openssl)をインストールして有効にしておく必要もあります。
@@ -252,7 +252,7 @@ catch(ServiceException $e){
 }
 ```
 
-Service Bus トピックに送信されるメッセージは、[BrokeredMessage][BrokeredMessage] クラスのインスタンスです。 [BrokeredMessage][BrokeredMessage] オブジェクトには、一連の標準的なプロパティとメソッドだけでなく、アプリケーションに固有のカスタム プロパティの保持に使用できるプロパティも用意されています。 次の例は以前に作成した `mytopic` トピックに 5 つのテスト メッセージを送信する方法を示しています。 `setProperty` メソッドを使用して、カスタム プロパティ (`MessageNumber`) を各メッセージに追加します。 `MessageNumber` プロパティの値がメッセージごとに異なります (「[サブスクリプションを作成する](#create-a-subscription)」のセクションで説明したように、この値を使用して、メッセージを受信するサブスクリプションを決定できます)。
+Service Bus トピックに送信されたメッセージは、[BrokeredMessage][BrokeredMessage] クラスのインスタンスです。 [BrokeredMessage][BrokeredMessage] オブジェクトには、一連の標準的なプロパティとメソッドだけでなく、アプリケーションに固有のカスタム プロパティの保持に使用できるプロパティも用意されています。 次の例は以前に作成した `mytopic` トピックに 5 つのテスト メッセージを送信する方法を示しています。 `setProperty` メソッドを使用して、カスタム プロパティ (`MessageNumber`) を各メッセージに追加します。 `MessageNumber` プロパティの値がメッセージごとに異なります (「[サブスクリプションを作成する](#create-a-subscription)」のセクションで説明したように、この値を使用して、メッセージを受信するサブスクリプションを決定できます)。
 
 ```php
 for($i = 0; $i < 5; $i++){
@@ -268,7 +268,7 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータについて詳しくは、「[Service Bus のクォータ][Service Bus quotas]」をご覧ください。
+Service Bus トピックでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 1 つのトピックで保持されるメッセージ数に上限はありませんが、1 つのトピックで保持できるメッセージの合計サイズには上限があります。 このトピック サイズの上限は 5 GB です。 クォータの詳細については、「[Service Bus のクォータ][Service Bus quotas]」を参照してください。
 
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 サブスクリプションからメッセージを受信する最適な方法は、`ServiceBusRestProxy->receiveSubscriptionMessage` メソッドを使用する方法です。 メッセージは 2 つの異なるモードで受信できます。[*ReceiveAndDelete* と *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) です。 **PeekLock** が既定値です。
@@ -364,7 +364,7 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 > Service Bus リソースは、[Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/) で管理できます。 Service Bus Explorer を使用すると、ユーザーは Service Bus 名前空間に接続し、簡単な方法でメッセージング エンティティを管理できます。 このツールには、インポート/エクスポート機能や、トピック、キュー、サブスクリプション、リレー サービス、通知ハブ、イベント ハブをテストする機能などの高度な機能が用意されています。 
 
 ## <a name="next-steps"></a>次の手順
-詳細は、[キュー、トピック、およびサブスクリプション][Queues, topics, and subscriptions]を参照してください｡
+詳細は、[キュー、トピック、およびサブスクリプション][Queues, topics, and subscriptions]に関するページを参照してください。
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
