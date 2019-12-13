@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 7b9f1cfeb6ebcbc693135d83ad167092e16f478d
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 5e19e4247e58135c6a9bb7c6cc327cb566d294df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647332"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978460"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>チュートリアル:Azure Cognitive Services を使用して Flask アプリを作成する
 

@@ -4,17 +4,17 @@ description: Azure Automation State Configuration (DSC) の最も一般的なタ
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f943aac4a91217983963fac6f8d0b2b3ba6895a1
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9fce9a769dd6d88c9926913d22716666284938c1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243622"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850960"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration の使用開始
 

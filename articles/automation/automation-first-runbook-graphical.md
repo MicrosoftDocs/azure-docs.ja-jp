@@ -5,17 +5,17 @@ keywords: Runbook, Runbook テンプレート, Runbook Automation, Azure Runbook
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/13/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 043a39fbcb908e4c277e5eba9972a2a17ca23813
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 1cdd015d9f29c3fb672d626f32a485271e2757c2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478675"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850314"
 ---
 # <a name="my-first-graphical-runbook"></a>初めてのグラフィカルな Runbook
 

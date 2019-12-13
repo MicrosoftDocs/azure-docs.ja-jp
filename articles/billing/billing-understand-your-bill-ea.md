@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 12/04/2019
 ms.author: banders
-ms.openlocfilehash: 70d46d0d212f339fae9c99ef2ae13d13d1433709
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: cc4b552143917f5a9ca66ad402cca79956186d08
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225699"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841271"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Azure Enterprise Agreement 請求書を理解する
 

@@ -4,20 +4,19 @@ description: 互換性のない行をスキップすることによって Azure 
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
-ms.openlocfilehash: a60cafd529db1c6726a15db2c442af8d097411cc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b874c0dcc1f394866e74b45e6bc335a25ce24499
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678154"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930013"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティのフォールト トレランス
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]

@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーション設定を変更する | Microso
 description: 管理者としてアプリケーション名や URL を変更し、Azure IoT Central アプリケーションを管理する方法、イメージをアップロードする方法、アプリケーションを削除する方法について説明します。
 author: viv-liu
 ms.author: viviali
-ms.date: 10/10/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5d14ed31b41deb0db44ba452470c45d69a0ec781
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 016e356e306468441fc9308d2853f5c44a37379e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894547"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895503"
 ---
 # <a name="change-iot-central-application-settings"></a>IoT Central アプリケーションの設定を変更する
 

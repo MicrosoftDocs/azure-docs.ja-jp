@@ -4,16 +4,16 @@ description: この記事では、VM 予約インスタンスに対する Azure 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 6e76ba2c776bcb6a05dd9f5ae2e143c19d47495c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3c3d95feed4f7cf47448c4fe62d8368fa5498dd7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226291"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841322"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Azure EA VM 予約インスタンス
 

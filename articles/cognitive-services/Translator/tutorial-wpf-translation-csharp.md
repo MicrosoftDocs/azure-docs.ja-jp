@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
-ms.openlocfilehash: 6f8196c276b4f8ef5c8a49f6f83f59f9f505a6be
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 25c51067f713b5d713684e5d267c133c21b17c93
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647704"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978528"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>チュートリアル:WPF を使って翻訳アプリを作成する
 

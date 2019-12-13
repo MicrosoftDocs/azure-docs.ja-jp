@@ -1,23 +1,24 @@
 ---
 title: Azure のサインアップのトラブルシューティング
 description: Microsoft Azure portal アカウント センターで新しいアカウントにサインアップしようとしたときに発生する問題を解決します。
+services: billing
 author: v-miegge
-manager: na
+manager: dcscontentpm
 editor: v-jesits
 tags: billing
 ms.service: cost-management-billing
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/12/2019
 ms.author: v-miegge
-ms.openlocfilehash: 95358d7171db14ea44f5baee211d26e8f00492ad
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f1414f96a00626b8e47decd22e4560bff1394468
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223534"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872725"
 ---
 # <a name="troubleshoot-azure-sign-up"></a>Azure のサインアップのトラブルシューティング
 

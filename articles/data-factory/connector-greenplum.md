@@ -4,20 +4,19 @@ description: Azure Data Factory パイプラインでコピー アクティビ�
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: 92d07cd4783838c1e9167d5cc1863aedfe6cc464
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 327891f16e3a41b49d43dabed42e8ab55a85fc92
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680898"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929388"
 ---
 # <a name="copy-data-from-greenplum-using-azure-data-factory"></a>Azure Data Factory を使用して Greenplum からデータをコピーする
 

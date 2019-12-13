@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB でのグローバル分散 - 内部のしくみ
 description: この記事では、Azure Cosmos DB のグローバル配信に関する技術的な詳細について説明します
-author: dharmas-cosmos
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: ce943fbed0774667100f6de4c60f91c0b02de6c3
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: a46a69476a2ad6550bc7b3a533fd09565d461db3
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69615348"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872130"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---under-the-hood"></a>Azure Cosmos DB でのグローバル データ分散 - 内部のしくみ
 

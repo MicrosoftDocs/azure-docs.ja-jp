@@ -2,13 +2,13 @@
 title: 準拠していないリソースを修復する
 description: このガイドでは、Azure Policy のポリシーに準拠していないリソースを修復する手順を説明します。
 ms.date: 09/09/2019
-ms.topic: conceptual
-ms.openlocfilehash: 8f1d263286a7504e7a8234ebd944bbbee69c5303
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.topic: how-to
+ms.openlocfilehash: 341a325aa7a82c8b1f6366c3a674848c60a8fb5e
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267355"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873048"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Azure Policy を使って準拠していないリソースを修復する
 

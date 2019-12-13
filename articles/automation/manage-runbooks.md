@@ -4,17 +4,17 @@ description: この記事では、Azure Automation で Runbook を管理する�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a477811e46d97375d4dce4d83072dda60ca797c
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 42b973ce8a25abff60211afb34ef719d42366175
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717213"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850501"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Azure Automation で Runbook を管理する
 

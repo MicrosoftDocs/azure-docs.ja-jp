@@ -2,18 +2,18 @@
 title: Update Management のエラーをトラブルシューティングする
 description: Update Management の問題をトラブルシューティングする方法を説明します。
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2aebcf05cbc818997943ed3bab19fb1fd8a83592
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: a42b05239ae1ddf8909e288486694bf57595b195
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786054"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849243"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 

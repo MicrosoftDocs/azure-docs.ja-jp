@@ -6,19 +6,18 @@ documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: douglasl
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 8efbf5cd6003781450afe70b8019b39d75290546
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d061a132699e733e78a7d717ee32222b158d73b4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675618"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927535"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure Data Factory の Delete アクティビティ
 
@@ -117,7 +116,7 @@ Delete アクティビティの結果は、次の 2 つの場所から表示お�
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Delete アクティビティのログ ファイル例
 
-| Name | Category | Status | Error |
+| Name | カテゴリ | Status | Error |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.json | ファイル | Deleted |  |
 | test2/hello789.txt | ファイル | Deleted |  |

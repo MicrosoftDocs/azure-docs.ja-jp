@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 07062ea9ce10b99e0f03a66247bb97795b45aedc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40025e2347fa80d2717ba292f6e3d74f5dda8e5c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212581"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931405"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する
 
-> [!NOTE]
+> [!WARNING]
 > リソース ログの収集方法と同様に、診断設定を使用してアクティビティ ログを Log Analytics ワークスペースに収集できるようになりました。 「[Collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor (Azure Monitor の Log Analytics ワークスペースで Azure アクティビティ ログを収集して分析する)](diagnostic-settings-subscription.md)」を参照してください。
 
 [Azure アクティビティ ログ](activity-logs-overview.md)は、Azure サブスクリプションで発生したサブスクリプションレベルのイベントを分析します。 この記事では、アクティビティ ログを Log Analytics ワークスペースに収集する方法と、このデータを分析するためのログ クエリおよびビューを提供する Activity Log Analytics [監視ソリューション](../insights/solutions.md)の使用方法について説明します。 

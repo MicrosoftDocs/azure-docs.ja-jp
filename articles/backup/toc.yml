@@ -222,6 +222,8 @@
       items:
         - name: Recovery Services コンテナーの作成
           href: backup-azure-arm-userestapi-createorupdatevault.md
+        - name: Recovery Services コンテナーの構成の更新
+          href: use-restapi-update-vault-properties.md
         - name: バックアップ ポリシーの作成と更新
           href: backup-azure-arm-userestapi-createorupdatepolicy.md
         - name: Azure VM のバックアップ

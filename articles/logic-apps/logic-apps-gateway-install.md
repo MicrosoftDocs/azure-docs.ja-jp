@@ -1,20 +1,17 @@
 ---
-title: オンプレミス データ ゲートウェイのインストール - Azure Logic Apps
+title: オンプレミスのデータ ゲートウェイのインストール
 description: Azure Logic Apps からオンプレミスのデータにアクセスするには、オンプレミス データ ゲートウェイをダウンロードしてインストールします。
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: arthii, LADocs
+ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: e1e56d18b0874a724849e28092ed46892a1b5519
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.date: 12/05/2019
+ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326374"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893685"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -88,14 +85,6 @@ ms.locfileid: "74326374"
 ## <a name="install-data-gateway"></a>データ ゲートウェイをインストールする
 
 1. [ゲートウェイ インストーラーをローカル コンピューターにダウンロードして実行します](https://aka.ms/on-premises-data-gateway-installer)。
-
-1. インストーラーが開いたら、 **[次へ]** を選択します。
-
-   ![ゲートウェイ インストーラーの導入画面](./media/logic-apps-gateway-install/gateway-intro-screen.png)
-
-1. 標準モードである **［On-premises data gateway (recommended)\(オンプレミス データ ゲートウェイ (推奨)\)** を選択し、**次へ** を選択します。
-
-   ![データ ゲートウェイの実行モードを選択する](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. 最小要件を確認し、既定のインストール パスをそのまま使用して、使用条件に同意してから、 **[インストール]** を選択します。
 

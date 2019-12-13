@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: a2a3bdeb0ee454185c92c6e49a17bda7e4e5d5f0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083579"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931979"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の変更 (クラシック)
 
@@ -35,20 +35,7 @@ ms.locfileid: "74083579"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-最新バージョンの Azure Service Management (SM) PowerShell モジュールと ExpressRoute モジュールをインストールします。 Azure CloudShell 環境を使用して SM モジュールを実行することはできません。
-
-1. [Service Management モジュールのインストール](/powershell/azure/servicemanagement/install-azure-ps)に関する記事の手順を使用して、Azure Service Management モジュールをインストールします。 Az または RM モジュールが既にインストールされている場合は、必ず '-AllowClobber' を使用してください。
-2. インストールされているモジュールをインポートします。 次の例を使用している場合は、インストールされている PowerShell モジュールの場所が反映されるようにパスを調整します。
-
-   ```powershell
-   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\Azure.psd1'
-   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\ExpressRoute\ExpressRoute.psd1'
-   ```
-3. Azure アカウントにサインインするには、管理者特権で PowerShell コンソールを開き、アカウントに接続します。 次の例を使用すると、Service Management モジュールを使用した接続に役立ちます。
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="get-the-status-of-a-circuit"></a>回線の状態を取得する
 

@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ed13b5028341637d71dee95f38cc44cc91aa2376
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481437"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851828"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL Database と Azure SQL Data Warehouse の IP ファイアウォール規則
 
@@ -127,13 +127,15 @@ Azure portal でサーバー レベルの IP ファイアウォール規則を�
 
 #### <a name="from-the-database-overview-page"></a>データベースの概要ページから
 
-1. データベースの概要ページからサーバー レベルの IP ファイアウォール規則を設定するには、次の画像に示すように、ツールバーの **[サーバー ファイアウォールの設定]** を選択します。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
+1. データベースの概要ページからサーバー レベルの IP ファイアウォール規則を設定するには、次の画像に示すように、ツールバーの **[サーバー ファイアウォールの設定]** を選択します。 
 
-      ![サーバーの IP ファイアウォール規則](./media/sql-database-get-started-portal/server-firewall-rule.png)
+    ![サーバーの IP ファイアウォール規則](./media/sql-database-get-started-portal/sql-database-server-set-firewall-rule.png)
+
+    SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。
 
 2. ツールバーの **[クライアント IP の追加]** を選択し、使用しているコンピューターの IP アドレスを追加したら、 **[保存]** を選択します。 現在の IP アドレスに対してサーバー レベルの IP ファイアウォール規則が作成されます。
 
-      ![サーバー レベルの IP ファイアウォール規則の設定](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+    ![サーバー レベルの IP ファイアウォール規則の設定](./media/sql-database-get-started-portal/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>サーバーの概要ページから
 

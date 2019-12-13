@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: b9f5929b26a3fa0be43454e3027944cdb4c26cd4
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 88f0a890d8cc3a3651d3b4ccbb20d5fb0079bc3e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816923"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980949"
 ---
 ## <a name="prerequisites"></a>前提条件
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: addb188584b05661f01e61ac520cab91e031d911
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 400273d107c0b077fe59391673361c531f726641
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817005"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981066"
 ---
 ## <a name="additional-language-and-platform-support"></a>言語とプラットフォームのその他のサポート
 

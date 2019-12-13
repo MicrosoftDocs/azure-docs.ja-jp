@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 02/18/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 013a14505f7ac1382bce369e161fdae834f605fc
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1b9d07099f8de996181948921330ef6744b302a8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200217"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848648"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Windows Server Active Directory に Azure AD パスワード保護を適用する
 

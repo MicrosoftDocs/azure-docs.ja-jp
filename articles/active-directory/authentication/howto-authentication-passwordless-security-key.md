@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f87f1b2561b65590dfe29d7d2c8d1318e3d35e1
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 826b8e923575db3d6c6aee7ead230f87f1efb50e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381853"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848444"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Azure AD へのパスワードレス セキュリティ キー サインインを有効にする (プレビュー)
 

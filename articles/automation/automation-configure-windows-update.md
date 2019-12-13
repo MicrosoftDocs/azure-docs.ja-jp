@@ -4,17 +4,17 @@ description: この記事では、Azure Update Management と連携するよう�
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 10/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 813d34f9c07e6c2909c483f040d4f3bf09b3ad24
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 804f42121293e142cf77ad73c4aab36e62e3242d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690838"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850416"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Update Management 用に Windows Update の設定を構成する
 

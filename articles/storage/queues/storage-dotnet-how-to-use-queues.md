@@ -80,7 +80,7 @@ NuGet を使用してこれらのパッケージを取得できます。 次の�
 > [!NOTE]
 > Storage クライアント ライブラリ パッケージは、[Azure SDK for .NET](https://azure.microsoft.com/downloads/) にも含まれています。 しかし、常に最新バージョンを使用できるように、NuGet から Storage クライアント ライブラリもインストールすることをお勧めします。
 >
-> .NET 用 Storage クライアント ライブラリの ODataLib 依存関係は、WCF Data Services ではなく NuGet で入手できる ODataLib パッケージで解決されます。 ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。 Storage クライアント ライブラリで使用される特定の ODataLib パッケージは、[OData](https://nuget.org/packages/Microsoft.Data.OData/)、[Edm](https://nuget.org/packages/Microsoft.Data.Edm/)、[Spatial](https://nuget.org/packages/System.Spatial/) です。 これらのライブラリは Azure テーブル ストレージ クラスによって使用されますが、これらは Storage クライアント ライブラリを使用したプログラミングの必須の依存関係です。
+> .NET 用 Storage クライアント ライブラリの ODataLib 依存関係は、WCF Data Services ではなく NuGet で入手できる ODataLib パッケージで解決されます。 ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。 Storage クライアント ライブラリで使用される特定の ODataLib パッケージは、[OData](https://nuget.org/packages/Microsoft.Data.OData/)、[Edm](https://nuget.org/packages/Microsoft.Data.Edm/)、[Spatial](https://nuget.org/packages/System.Spatial/) です。 これらのライブラリは Azure Table Storage クラスによって使用されますが、これらは Storage クライアント ライブラリを使用したプログラミングの必須の依存関係です。
 
 ### <a name="determine-your-target-environment"></a>ターゲット環境の決定
 

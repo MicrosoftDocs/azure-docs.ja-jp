@@ -3,12 +3,12 @@ title: Azure Functions ランタイム バージョンをターゲットにす�
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 Azure でホストされる関数アプリのランタイム バージョンを指定する方法について説明します。
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 6f93ac7bcbd25c1b120cfeecae9dd4353524855f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0031fe08ee1e77c35a78b2128615f08846c1b612
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230320"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942275"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 
@@ -29,9 +29,9 @@ Azure Functions を使用すると、関数アプリ内で `FUNCTIONS_EXTENSION_
 
 | メジャー バージョン | `FUNCTIONS_EXTENSION_VERSION` 値 |
 | ------------- | ----------------------------------- |
-| 3.x (プレビュー) | `~3` |
+| 3.x  | `~3` |
 | 2.x  | `~2` |
-| 1.x | `~1` |
+| 1.x  | `~1` |
 
 ランタイム バージョンを変更するたびに、関数アプリが再起動されます。
 

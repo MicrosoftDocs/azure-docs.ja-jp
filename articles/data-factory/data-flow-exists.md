@@ -1,18 +1,19 @@
 ---
-title: Azure Data Factory マッピング データ フローの存在変換
+title: マッピング データ フローの存在変換
 description: Azure Data Factory マッピング データ フローでの存在変換を使用して、既存の行を確認します
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: a477eba246c4ebcfbd32e92f1fd30c301ea1cc5b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: efcc45dcf3565b70305323701810c49c4a720394
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676732"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930404"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>マッピング データ フローの存在変換
 

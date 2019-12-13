@@ -9,15 +9,14 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/3/2019
-ms.openlocfilehash: 99b7de8c0e24fdbd12742b26394e61c956638525
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 52629b8e2e190cc041116e6f65488480712baf01
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038275"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929804"
 ---
 # <a name="migrate-on-premises-ssis-workloads-to-ssis-in-adf"></a>ADF でオンプレミスの SSIS ワークロードを SSIS に移行する
 

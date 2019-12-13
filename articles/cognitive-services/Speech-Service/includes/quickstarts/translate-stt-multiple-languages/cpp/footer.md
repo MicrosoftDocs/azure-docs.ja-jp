@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: f58da03807a4fc4109c0524ea95517faeb2f31fe
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: cebe453235b8453caf6c482485774d49c75cbfeb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817050"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981051"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で C++ のサンプルを詳しく見てみる](https://aka.ms/speech/github-cpp)

@@ -7,16 +7,15 @@ ms.service: data-factory
 services: data-factory
 documentationcenter: ''
 ms.workload: data-services
-ms.tgt_pltfrm: na
 author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: f5b4cbc670a429a84f42be79adb00057656a5483
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 00d84a7f3b4a15c9278caac8c2715380dd330482
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681420"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930489"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Azure Data Factory のロールとアクセス許可
 

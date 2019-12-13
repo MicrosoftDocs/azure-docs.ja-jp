@@ -4,21 +4,20 @@ description: オンプレミスとクラウドの間でデータを移動する�
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 41d8a5d3569d0b38ff569f9ccfa28a4b2af1d959
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9d86fa9bfe9c17867b8a30519b79d9ee8c5af363
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682721"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932003"
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
@@ -252,7 +251,7 @@ Azure ポータルでオンプレミスのリンクされたサービスを設�
 
 ゲートウェイ コンピューター上でポート 8050 を開かない場合は、 **資格情報の設定** アプリケーション以外のメカニズムを使用して、データ ストア資格情報を構成する必要があります。 たとえば、[New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) PowerShell コマンドレットを使用できます。 データ ストア資格情報を設定する方法については、「資格情報とセキュリティの設定」に関するセクションを参照してください。
 
-## <a name="update"></a>アップデート
+## <a name="update"></a>更新
 既定では、データ管理ゲートウェイの新しいバージョンが利用可能になると、自動的に更新されます。 ゲートウェイは、すべてのスケジュールされたタスクが完了するまで、更新されません。 更新操作が完了するまで、ゲートウェイは追加のタスクを処理しません。 更新が失敗した場合、ゲートウェイは古いバージョンにロールバックします。
 
 更新時刻のスケジュールは次の場所に表示されます。

@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでデバイス テンプレー
 description: 測定値、設定、プロパティ、ルール、およびダッシュボードを含むデバイス テンプレートを設定する方法を説明します。
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/23/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e3925f2d6c2a1034cc96475721de7936deeb4a9d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 648d93b996cf8d4ef6a8beb323bb1ebce9d4c9c0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894415"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974378"
 ---
 # <a name="set-up-and-manage-a-device-template-preview-features"></a>デバイス テンプレートの設定および管理 (プレビュー機能)
 

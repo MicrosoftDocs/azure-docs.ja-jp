@@ -3,27 +3,23 @@ title: キーチェーンの構成
 titleSuffix: Microsoft identity platform
 description: キーチェーンを構成して、アプリでキーチェーン内のトークンをキャッシュできるようにする方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8b4599549e15d6ebe4d0bd04f96c89df86b0c0cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803809"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917507"
 ---
 # <a name="configure-keychain"></a>キーチェーンの構成
 
@@ -51,7 +47,7 @@ macOS 10.15 以降 (macOS Catalina) では、MSAL ではキーチェーン ア�
 
 別のキーチェーン アクセス グループを使用する場合は、次のように、`MSALPublicClientApplication` の作成前に `MSALPublicClientApplicationConfig` を作成するときにカスタム グループを渡すことができます。
 
-Objective-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -67,9 +63,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-
-
-Swift:
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -85,25 +79,27 @@ do {
 }       
 ```
 
-
+---
 
 ## <a name="disable-keychain-sharing"></a>キーチェーンの共有を無効にする
 
 複数のアプリ間で SSO 状態を共有したくない場合、または任意のキーチェーン アクセス グループを使用する場合は、keychainGroup としてアプリケーション バンドル ID を渡すことで、キーチェーンの共有を無効にします。
 
-Objective-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-Swift:
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {
     config.cacheConfig.keychainSharingGroup = bundleIdentifier
 }
 ```
+
+---
 
 ## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>Handle -34018 エラー (キーチェーンへの項目の設定の失敗)
 

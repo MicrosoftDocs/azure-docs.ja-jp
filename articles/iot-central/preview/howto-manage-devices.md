@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでデバイス を管理する
 description: オペレーターとして、Azure IoT Central アプリケーションでデバイスを管理する方法について説明します。
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/17/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 07afe441b9463cace9076a07d89e762586730e1b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bab5411b63cb71c47656696bd8049855ca797a57
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894151"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974106"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-preview-features"></a>Azure IoT Central アプリケーションでデバイスを管理する (プレビュー機能)
 
@@ -120,7 +120,7 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 1. 左側のウィンドウで **[デバイス]** を選択します。
 
-1. 左側のパネルで、デバイスをエクスポートするデバイス テンプレートを選択します。
+1. 左側のペインで、デバイスをエクスポートするデバイス テンプレートを選択します。
 
 1. エクスポートするデバイスを選択して、 **[エクスポート]** アクションを選択します。
 

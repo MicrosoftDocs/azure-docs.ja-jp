@@ -1,19 +1,19 @@
 ---
 title: リポジトリ内の IoT プラグ アンド プレイ プレビューのモデルを管理する | Microsoft Docs
 description: Azure Certified for IoT ポータル、Azure CLI、Visual Studio Code を使用して、リポジトリ内のデバイス機能モデルを管理する方法。
-author: YasinMSFT
+author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: yahajiza
-ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.author: philmea
+ms.openlocfilehash: 4320a975f74d000bd492d291f5e610f591536b0d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932867"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979106"
 ---
 # <a name="manage-models-in-the-repository"></a>リポジトリ内のモデルを管理する
 

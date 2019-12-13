@@ -1,22 +1,21 @@
 ---
-title: Azure Data Factory マッピング データ フローのデバッグ モード
+title: マッピング データ フローのデバッグ モード
 description: データ フローの構築時に対話型デバッグ セッションを開始する
-author: kromerm
 ms.author: makromer
+author: kromerm
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: c65ed14abb86b3b434e46fbe857487b06e217aad
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 18848695327a374f12fbe5a34d03366b050d8b65
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72387368"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928362"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>マッピング データ フローのデバッグ モード
-
-
 
 ## <a name="overview"></a>概要
 

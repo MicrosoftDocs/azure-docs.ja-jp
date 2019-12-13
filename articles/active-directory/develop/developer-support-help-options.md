@@ -2,27 +2,24 @@
 title: Azure AD アプリ開発者向けのサポート オプションとヘルプ オプション | Microsoft Docs
 description: Microsoft ID (Azure Active Directory および Microsoft アカウント) と連携するアプリケーションを作成するときの開発関連の質問や問題について、ヘルプとサポートを入手する方法について確認します
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a160f78f69ed559c576147e9758c837d5ae9b77e
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3f1c6d89af1d88be9a241c94462b17edf0c93de2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429986"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843191"
 ---
 # <a name="support-and-help-options-for-developers"></a>開発者向けのサポート オプションとヘルプ オプション
 

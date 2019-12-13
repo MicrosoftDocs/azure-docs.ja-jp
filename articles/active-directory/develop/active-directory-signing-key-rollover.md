@@ -2,27 +2,23 @@
 title: Azure AD の署名キーのロールオーバー
 description: この記事では、Azure Active Directory の署名キーのロール オーバーのベスト プラクティスについて説明します
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f20a10f7c6f98b352e8a2d794fabc3b6b3b57319
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f3c696b3fed36ca8ee7faf6ec78f833191cedf9d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835302"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844653"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Azure Active Directory の署名キーのロールオーバー
 この記事では、Azure Active Directory (Azure AD) でセキュリティ トークンに署名するために使用される公開キーについて説明します。 これらのキーは定期的にロールオーバーされ、緊急時にはすぐにロールオーバーされる可能性があることにご注意ください。 Azure AD を使用するすべてのアプリケーションには、プログラムからキーのロールオーバー プロセスを処理できる機能、または定期的な手動ロールオーバー プロセスを確立できる機能が必要です。 ここではキーのしくみについて説明すると共に、アプリケーションへのロールオーバーの影響を評価する方法について説明します。また、必要に応じてキーのロールオーバーに対処できるよう、アプリケーションを更新したり、定期的な手動ロールオーバー プロセスを確立したりする方法について説明しています。

@@ -4,18 +4,18 @@ description: Change Tracking ソリューションは、ユーザーの環境で
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0fc0aeab4e9603995130392e3560325ccaba1ffc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1fd800062c4a8362919b1818550b2fca9fa3eb88
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886802"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850552"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 

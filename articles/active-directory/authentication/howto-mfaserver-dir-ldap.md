@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc67fb216451bd19fe8cfb327c101aa989228b01
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 6e24442abd707706e035bc1f9dc0a46951e0711a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536908"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848070"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP 認証と Azure Multi-Factor Authentication Server
 
@@ -25,7 +25,7 @@ ms.locfileid: "67536908"
 Azure Multi-Factor Authentication を LDAP プロキシとして使用するには、LDAP クライアント (VPN アプライアンスやアプリケーションなど) と LDAP ディレクトリ サーバーの間に Azure Multi-Factor Authentication Server を挿入します。 クライアント サーバーと LDAP ディレクトリの両方と通信するように Azure Multi-Factor Authentication Server を構成する必要があります。 この構成の中で、Azure Multi-Factor Authentication Server は、クライアント サーバーとアプリケーションから LDAP 要求を受け取り、プライマリ資格情報を検証するためにターゲット LDAP ディレクトリ サーバーに要求を転送します。 LDAP ディレクトリでプライマリ資格情報を検証する場合、Azure Multi-Factor Authentication は 2 段階目の識別子認証を実行し、応答を LDAP クライアントに送信します。 LDAP サーバーの認証と 2 段階目の認証の両方が成功した場合のみ、認証全体が成功します。
 
 > [!IMPORTANT]
-> 2019 年 7 月 1 日より、Microsoft では新しいデプロイの MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用する必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
+> 2019 年 7 月 1 日より、Microsoft では新しいデプロイの MFA Server が提供されなくなります。 ユーザーからの多要素認証が必要な新しいお客様は、クラウドベースの Azure Multi-Factor Authentication を使用していただく必要があります。 7 月 1 日より前に MFA Server をアクティブ化した既存のお客様は、最新バージョンの今後の更新プログラムをダウンロードし、アクティブ化資格情報を通常どおり生成することができます。
 
 ## <a name="configure-ldap-authentication"></a>LDAP 認証を構成する
 

@@ -9,28 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488734"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894605"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>チュートリアル:コンテキストが関連するデータを発話から抽出する
 
-このチュートリアルでは、コンテキストに基づいて関連するデータを検索します。 たとえば、ある都市から別の都市へ移動する場合の出発地と目的地です。 両方のデータが必要である可能性があり、これらは互いに関連しています。  
+このチュートリアルでは、コンテキストに基づいて関連するデータを検索します。 たとえば、ある都市から別の都市へ移動する場合の出発地と目的地です。 両方のデータが必要である可能性があり、これらは互いに関連しています。
 
-ロールは、任意の事前構築済みまたはカスタムのエンティティ型で使用でき、発話とパターンの両方の例で使用できます。 
+ロールは、任意の事前構築済みまたはカスタムのエンティティ型で使用でき、発話とパターンの両方の例で使用できます。
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
 > [!div class="checklist"]
 > * 新しいアプリを作成する
-> * 意図を追加する 
+> * 意図を追加する
 > * ロールを使用して、出発地と目的地の情報を取得する
 > * トレーニング
 > * 発行
@@ -57,9 +57,9 @@ ms.locfileid: "73488734"
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. **[Create new intent]\(意図の新規作成\)** を選択します。 
+1. **[Create new intent]\(意図の新規作成\)** を選択します。
 
-1. ポップアップ ダイアログ ボックスに「`MoveEmployeeToCity`」と入力して、 **[完了]** を選択します。 
+1. ポップアップ ダイアログ ボックスに「`MoveEmployeeToCity`」と入力して、 **[完了]** を選択します。
 
     ![新しい意図の作成ダイアログのスクリーンショット](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
@@ -85,24 +85,24 @@ ms.locfileid: "73488734"
 
 1. 左側のナビゲーションから **[エンティティ]** を選択します。
 
-1. **[Add prebuilt entity]\(作成済みエンティティの追加\)** を選択し、検索バーで `geo` を選択して事前構築済みエンティティをフィルター処理します。 
+1. **[Add prebuilt entity]\(作成済みエンティティの追加\)** を選択し、検索バーで `geo` を選択して事前構築済みエンティティをフィルター処理します。
 
     ![geographyV2 事前構築済みエンティティをアプリに追加する](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. 該当するチェック ボックスをオンにし、 **[完了]** を選択します。
-1. **[エンティティ]** の一覧で、 **[geographyV2]** を選択して新しいエンティティを開きます。 
-1. `Origin` と `Destination` の 2 つのロールを追加します。 
+1. **[エンティティ]** の一覧で、 **[geographyV2]** を選択して新しいエンティティを開きます。
+1. `Origin` と `Destination` の 2 つのロールを追加します。
 
     ![事前構築済みエンティティにロールを追加する](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. 左側のナビゲーションから **[Intents]\(意図\)** を選択し、次に **MoveEmployeeToCity** 意図を選択します。 都市名は、あらかじめ構築されたエンティティ **geographyV2** のラベルが付いていることに注意してください。
 1. 一覧の最初の発話で、出発地を選択します。 ドロップダウン メニューが表示されます。 一覧の **[geographyV2]** を選択し、メニューに従って **[Origin]\(出発地\)** を選択します。
-1. 前の手順の方法を使用して、すべての発話内の場所のすべてのロールをマークします。 
+1. 前の手順の方法を使用して、すべての発話内の場所のすべてのロールをマークします。
 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>発話の例を None 意図に追加する 
+## <a name="add-example-utterances-to-the-none-intent"></a>発話の例を None 意図に追加する
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>意図への変更をテストできるようにアプリをトレーニングする 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>意図への変更をテストできるようにアプリをトレーニングする
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -152,9 +152,9 @@ ms.locfileid: "73488734"
       ]
     }
     ```
-    
+
     正しい意図が予測され、エンティティ配列の対応する **entities** プロパティには出発地と到着地の両方のロールが含まれています。
-    
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
@@ -173,5 +173,5 @@ ms.locfileid: "73488734"
 
 このチュートリアルでは、新しい意図を作成し、出発地と到着地のコンテキストから学習されたデータに関する発話の例を追加しました。 アプリがトレーニングおよび発行されたら、クライアント アプリケーションはその情報を使用して、関連する情報を含む移動チケットを作成できます。
 
-> [!div class="nextstepaction"] 
-> [複合エンティティを追加する方法を確認する](luis-tutorial-composite-entity.md) 
+> [!div class="nextstepaction"]
+> [複合エンティティを追加する方法を確認する](luis-tutorial-composite-entity.md)

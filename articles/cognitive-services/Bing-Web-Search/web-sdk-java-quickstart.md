@@ -8,24 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 07/25/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 64d1ce1aa6435d9d1716364cb16f8fee7ca09ebb
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 97266269a5fbb66f9787cb4a8042f3b3dc13a5ec
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68597812"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977235"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>クイック スタート:Java 用の Bing Web Search SDK を使用する
 
 Bing Web Search SDK を使用すると、Java アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、要求を送信し、JSON 応答を受け取って、結果をフィルター処理および解析する方法を学習します。
 
 今すぐコードを確認したい場合は、 GitHub で、[Java 用の Bing Web Search SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/)を入手できます。
-
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -34,6 +30,8 @@ Bing Web Search SDK を使用すると、Java アプリケーションに Bing W
 * [JDK 7 または 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) または普段使用しているビルド オートメーション ツール
 * サブスクリプション キー
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-set-up-your-pom-file"></a>プロジェクトを作成して POM ファイルを設定する
 

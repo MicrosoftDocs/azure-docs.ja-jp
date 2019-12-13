@@ -3,17 +3,17 @@ title: メトリック アラートを使用して Azure Automation Runbook を�
 description: この記事では、メトリックに基づいて Azure Automation Runbook を監視する手順を説明します
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/01/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 142fb84624c2b0d3d92868aae5794792ed90b577
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: bea99820bee107b8329dd3c36ac3ceb84a042b86
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478020"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850977"
 ---
 # <a name="monitoring-runbooks-with-metric-alerts"></a>メトリック アラートによる Runbook の監視
 

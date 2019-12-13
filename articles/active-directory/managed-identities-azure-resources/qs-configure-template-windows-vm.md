@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bbc596321b4882ef99104e045ee2da752b125a
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6b12cd339aee0e9ae0e1cd6d31e523b9b1457c57
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547196"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971062"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する
 
@@ -117,12 +117,12 @@ VM のシステム割り当て ID にロールを割り当てるには、お使�
 
     ```JSON
     "builtInRoleType": {
-          "type": "string",
-          "defaultValue": "Reader"
-        },
-        "rbacGuid": {
-          "type": "string"
-        }
+        "type": "string",
+        "defaultValue": "Reader"
+    },
+    "rbacGuid": {
+        "type": "string"
+    }
     ```
 
     `variables` セクションの下に、以下を追加します。
@@ -136,16 +136,16 @@ VM のシステム割り当て ID にロールを割り当てるには、お使�
     ```JSON
     {
         "apiVersion": "2017-09-01",
-         "type": "Microsoft.Authorization/roleAssignments",
-         "name": "[parameters('rbacGuid')]",
-         "properties": {
-                "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
-                "principalId": "[reference(variables('vmResourceId'), '2017-12-01', 'Full').identity.principalId]",
-                "scope": "[resourceGroup().id]"
-          },
-          "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
-            ]
+        "type": "Microsoft.Authorization/roleAssignments",
+        "name": "[parameters('rbacGuid')]",
+        "properties": {
+            "roleDefinitionId": "[variables(parameters('builtInRoleType'))]",
+            "principalId": "[reference(variables('vmResourceId'), '2017-12-01', 'Full').identity.principalId]",
+            "scope": "[resourceGroup().id]"
+        },
+         "dependsOn": [
+            "[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+        ]
     }
     ```
 
@@ -167,17 +167,17 @@ VM からシステム割り当てマネージド ID を削除するには、お�
    
 次の例は、ユーザー割り当てマネージド ID が割り当てられていない VM からシステム割り当てマネージド ID を削除する方法を示しています。
 
-```JSON
-{
-    "apiVersion": "2018-06-01",
-    "type": "Microsoft.Compute/virtualMachines",
-    "name": "[parameters('vmName')]",
-    "location": "[resourceGroup().location]",
-    "identity": { 
-        "type": "None"
-        },
-}
-```
+ ```JSON
+ {
+     "apiVersion": "2018-06-01",
+     "type": "Microsoft.Compute/virtualMachines",
+     "name": "[parameters('vmName')]",
+     "location": "[resourceGroup().location]",
+     "identity": { 
+         "type": "None"
+     }
+ }
+ ```
 
 ## <a name="user-assigned-managed-identity"></a>ユーザー割り当てマネージド ID
 
@@ -196,26 +196,26 @@ VM からシステム割り当てマネージド ID を削除するには、お�
 
    `apiVersion` が `2018-06-01` の場合、ユーザー割り当てマネージド ID は `userAssignedIdentities` ディクショナリ形式で格納されます。`<USERASSIGNEDIDENTITYNAME>` 値は、テンプレートの `variables` セクションに定義された変数に格納する必要があります。
 
-   ```json
-   {
-       "apiVersion": "2018-06-01",
-       "type": "Microsoft.Compute/virtualMachines",
-       "name": "[variables('vmName')]",
-       "location": "[resourceGroup().location]",
-       "identity": {
-           "type": "userAssigned",
-           "userAssignedIdentities": {
-               "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
-           }
+   ```JSON
+    {
+        "apiVersion": "2018-06-01",
+        "type": "Microsoft.Compute/virtualMachines",
+        "name": "[variables('vmName')]",
+        "location": "[resourceGroup().location]",
+        "identity": {
+            "type": "userAssigned",
+            "userAssignedIdentities": {
+                "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
+            }
         }
-   }
+    }
    ```
    
    **Microsoft.Compute/virtualMachines API バージョン 2017-12-01**
     
    `apiVersion` が `2017-12-01` の場合、ユーザー割り当てマネージド ID は `identityIds` 配列に格納されます。`<USERASSIGNEDIDENTITYNAME>` 値は、テンプレートの `variables` セクションに定義された変数に格納する必要があります。
     
-   ```json
+   ```JSON
    {
        "apiVersion": "2017-12-01",
        "type": "Microsoft.Compute/virtualMachines",
@@ -265,10 +265,10 @@ VM からシステム割り当てマネージド ID を削除するには、お�
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "port": 50342
+                }
             }
         }
-       }
-    ]
+    ]   
    ```
    **Microsoft.Compute/virtualMachines API バージョン 2017-12-01**
    
@@ -304,8 +304,8 @@ VM からシステム割り当てマネージド ID を削除するには、お�
                 "autoUpgradeMinorVersion": true,
                 "settings": {
                     "port": 50342
+                }
             }
-        }
        }
     ]
    ```
@@ -347,4 +347,3 @@ VM からユーザー割り当て ID を削除するには、お使いのアカ�
 ## <a name="next-steps"></a>次の手順
 
 - [Azure リソースのマネージド ID の概要](overview.md)
-

@@ -3,18 +3,18 @@ title: カスタム ルールと通知を使用して Azure IoT Central を拡�
 description: ソリューション開発者は、デバイスがテレメトリの送信を停止したときに電子メール通知を送信するように IoT Central アプリケーションを構成します。 このソリューションでは、Azure Stream Analytics、Azure Functions、SendGrid を使用します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/01/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 56ff01af6466e90ff4b69cd37c1638265c59b873
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: bdaa08e8c3b104c7269c1fb4169779d98b4e0880
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894487"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895728"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid-preview-features"></a>Stream Analytics、Azure Functions、SendGrid を使用してカスタム ルールで Azure IoT Central を拡張する (プレビュー機能)
 
@@ -66,7 +66,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | ------- | ----- |
 | 名前    | 名前空間名を選択します |
 | Pricing tier | Basic |
-| Subscription | 該当するサブスクリプション |
+| サブスクリプション | 該当するサブスクリプション |
 | Resource group | DetectStoppedDevices |
 | Location | East US |
 | スループット ユニット | 1 |
@@ -78,7 +78,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Setting | 値 |
 | ------- | ----- |
 | 名前    | ジョブ名を選択します |
-| Subscription | 該当するサブスクリプション |
+| サブスクリプション | 該当するサブスクリプション |
 | Resource group | DetectStoppedDevices |
 | Location | 米国東部 |
 | ホスティング環境 | クラウド |
@@ -91,7 +91,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | Setting | 値 |
 | ------- | ----- |
 | アプリの名前    | 関数アプリ名を選択します |
-| Subscription | 該当するサブスクリプション |
+| サブスクリプション | 該当するサブスクリプション |
 | Resource group | DetectStoppedDevices |
 | OS | Windows |
 | ホスティング プラン | 従量課金プラン |
@@ -107,7 +107,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 | ------- | ----- |
 | 名前    | SendGrid アカウント名を選択します |
 | パスワード | パスワードを作成します |
-| Subscription | 該当するサブスクリプション |
+| サブスクリプション | 該当するサブスクリプション |
 | Resource group | DetectStoppedDevices |
 | Pricing tier | F1 Free |
 | 連絡先情報 | 必須情報を入力します |
@@ -247,7 +247,7 @@ test-device-3   2019-05-02T14:24:28.919Z
     | Setting | 値 |
     | ------- | ----- |
     | 入力のエイリアス | centraltelemetry |
-    | Subscription | 該当するサブスクリプション |
+    | サブスクリプション | 該当するサブスクリプション |
     | Event Hub 名前空間 | Event Hub 名前空間 |
     | イベント ハブ名 | 既存のものを使用 - **centralexport** |
 
@@ -257,7 +257,7 @@ test-device-3   2019-05-02T14:24:28.919Z
     | Setting | 値 |
     | ------- | ----- |
     | 出力エイリアス | emailnotification |
-    | Subscription | 該当するサブスクリプション |
+    | サブスクリプション | 該当するサブスクリプション |
     | 関数アプリ | 関数アプリ |
     | Function  | HttpTrigger1 |
 

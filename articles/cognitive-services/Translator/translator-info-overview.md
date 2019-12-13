@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: overview
-ms.date: 06/04/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: 8cdd52963f89041ea97b018fd3756c925308e641
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8f27e8e8693fc5d1d3e432b78f2877d71274f146
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67443274"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978477"
 ---
 # <a name="what-is-the-translator-text-api"></a>Translator Text API とは
 

@@ -4,20 +4,19 @@ description: Azure Data Factory パイプラインでコピー アクティビ�
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 277af8c0683897737fd5194aba68cd7be79d7dd7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 04509ac2ca229ee6175ca7be827eabb0caf0bc70
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680749"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929233"
 ---
 # <a name="copy-data-from-jira-using-azure-data-factory"></a>Azure Data Factory を使用して Jira からデータをコピーする
 

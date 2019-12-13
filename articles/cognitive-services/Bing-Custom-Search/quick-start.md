@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 2806ca6f7079ffac3d2222363cd5b3839ef8f97d
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 2c98395e2671c245d9349a72ed6a964b2ebd28ca
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405019"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978545"
 ---
 # <a name="quickstart-create-your-first-bing-custom-search-instance"></a>クイック スタート:最初の Bing Custom Search インスタンスの作成
 

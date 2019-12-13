@@ -4,20 +4,19 @@ description: Azure Data Factory パイプラインでコピー アクティビ�
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 6e303ce4a797029f5001676d9d49457fcc408c9d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a7317992eaeb06cb3909314be2bfd2057254b6a4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680759"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927142"
 ---
 # <a name="copy-data-from-magento-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Magento からデータをコピーする (プレビュー)
 

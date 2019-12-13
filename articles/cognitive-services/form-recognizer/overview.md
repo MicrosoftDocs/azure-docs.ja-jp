@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 07/25/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 86e0494ded84e9711b2283ae5fad77ff626cf792
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5b8628a8a235e89614ab87dcc2020915db459f38
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904479"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978426"
 ---
 # <a name="what-is-form-recognizer"></a>Form Recognizer とは
 

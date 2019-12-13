@@ -1,22 +1,23 @@
 ---
-title: Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
+title: Azure Data Lake Storage Gen2 にデータを読み込む
 description: Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータをコピーします
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.author: jingwang
-ms.openlocfilehash: f8af34207eddb613f7a59bd3e3d300555e10f985
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff43173823919f25f85d32996b77265a8a5864c3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65560730"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926838"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen2 にデータを読み込む
 
@@ -37,7 +38,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
 * Data Lake Storage Gen2 が有効な Azure Storage アカウント:ストレージ アカウントがない場合、[作成します](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。
 * データが含まれる S3 バケットを持つ AWS アカウント:この記事では、Amazon S3 からデータをコピーする方法を示します。 同様の手順に従うことによって、その他のデータ ストアも使用できます。
 
-## <a name="create-a-data-factory"></a>Data Factory を作成する。
+## <a name="create-a-data-factory"></a>Data Factory の作成
 
 1. 左側のメニューで、 **[リソースの作成]**  >  **[データ + 分析]**  >  **[Data Factory]** の順に選択します。
    

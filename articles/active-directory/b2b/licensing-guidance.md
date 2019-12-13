@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5968536d0bd0fbe2496fd9bf5fca86c7a1c4053d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 28d02160163da4081ad8adbe233b27fee970a0df
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162262"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868849"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Azure Active Directory B2B コラボレーションのライセンスに関するガイダンス
 
@@ -25,7 +25,7 @@ Azure Active Directory (Azure AD) 企業間 (B2B) コラボレーション機能
 > [!NOTE]
 > Azure AD の価格と B2B コラボレーション機能の詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
 
-B2B ユーザーのライセンスは、1:5 の割合に基づいて自動的に計算され、報告されます。 現在のところ、B2B ゲスト ユーザー ライセンスをゲスト ユーザーに直接割り当てることはできません。
+B2B ユーザーのライセンスは、1:5 の割合に基づいて自動的に計算され、報告されます。 
 
 さらに、ゲスト ユーザーは、追加のライセンス要件なしで Azure AD の無料の機能を使用できます。 ゲスト ユーザーは、お客様が Azure AD の有料ライセンスを所有していない場合でも、Azure AD の無料の機能にアクセスできます。 
 

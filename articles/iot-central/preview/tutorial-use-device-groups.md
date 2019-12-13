@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでデバイス グループを
 description: オペレーターとして、デバイス グループを使用して Azure IoT Central アプリケーションでデバイスからのテレメトリを分析する方法について説明します。
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/29/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: 281806999b08c3babbb753459835850ad9d733eb
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 981046f9417876a68c215c6d01a63c7f0a634464
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894355"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976215"
 ---
 # <a name="tutorial-use-device-groups-to-analyze-device-telemetry-preview-features"></a>チュートリアル:デバイス グループを使用してデバイス テレメトリを分析する (プレビュー機能)
 
@@ -47,7 +47,7 @@ ms.locfileid: "73894355"
 
 デバイス グループを作成するには、次の手順を実行します。
 
-1. 左側のペインで **[Device Groups]\(デバイス グループ\)** を選択します。
+1. 左側のウィンドウで **[Device Groups]\(デバイス グループ\)** を選択します。
 
 1. **[+新規]** を選択します。
 
@@ -69,17 +69,17 @@ ms.locfileid: "73894355"
 
 ## <a name="analytics"></a>Analytics
 
-**Analytics** をデバイス グループと共に使用して、グループ内のデバイスからのテレメトリを分析することができます。 たとえば、すべての Contoso 環境センサーによって報告された平均温度をプロットできます。
+**Analytics** をデバイス グループと共に使用して、グループ内のデバイスからのテレメトリを分析することができます。 たとえば、すべての Contoso 環境センサーによってレポートされた平均温度をプロットできます。
 
 デバイス グループのテレメトリを分析するには、次のようにします。
 
-1. 左側のペインで **[Analytics]** を選択します。
+1. 左側のウィンドウで **[Analytics]** を選択します。
 
 1. 作成した **[Contoso デバイス]** デバイス グループを選択します。 次に、 **[温度]** と **[湿度]** 両方のテレメトリの種類を追加します。
 
     ![分析を作成する](./media/tutorial-use-device-groups/create-analysis.png)
 
-    テレメトリの種類の横にある歯車アイコンを使用して、集計の種類を選択します。 既定値は、 **[平均]** です。 **[Split by]\(分割基準\)** を使用して、集計データの表示方法を変更します。 たとえば、デバイス ID で分割する場合、 **[分析]** を選択するとデバイスごとにプロットが表示されます。
+    テレメトリの種類の横にある歯車アイコンを使用して、集計の種類を選択します。 既定値は、 **[平均]** です。 **[分割基準]** を使用して、集計データの表示方法を変更します。 たとえば、デバイス ID で分割する場合、 **[分析]** を選択するとデバイスごとにプロットが表示されます。
 
 1. 平均テレメトリ値を表示するには、 **[分析]** を選択します。
 

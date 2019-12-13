@@ -1,19 +1,19 @@
 ---
 title: Azure Import/Export のエクスポート ジョブの修復 - v1 | Microsoft Docs
 description: Azure Import/Export サービスを使用して作成し実行したエクスポート ジョブを修復する方法について説明します。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b2ba30bddfc6364c79e1bb01d30cde63b261a07f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477945"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978017"
 ---
 # <a name="repairing-an-export-job"></a>Export ジョブの修復
 エクスポート ジョブが完了した後、オンプレミスで Microsoft Azure Import/Export ツールを実行して、次を行うことができます。  

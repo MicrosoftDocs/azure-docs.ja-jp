@@ -1,22 +1,22 @@
 ---
-title: Azure Data Factory 用のテンプレートの概要
+title: テンプレートの概要
 description: 定義済みのテンプレートを使用して Azure Data Factory の使用をすぐに開始する方法について説明します。
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/04/2019
-author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: 7895fedd0f68ae1c8ea4808c54a18a4e73b57b2c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: djpmsft
+manager: anandsub
+ms.custom: seo-lt-2019
+ms.date: 01/04/2019
+ms.openlocfilehash: f150234ecd3446858e8a6aa7d224eb3ad3d0efd3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684053"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927342"
 ---
 # <a name="templates"></a>テンプレート
 

@@ -3,17 +3,17 @@ title: Azure IoT Central アプリのデバイス テンプレートのバージ
 description: 新しいバージョンを作成することで、ライブ接続されたデバイスに影響を与えずにデバイス テンプレートを反復処理します
 author: sarahhubbard
 ms.author: sahubbar
-ms.date: 07/17/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 666c3030d91fba3c3bdfe23f808c4e830dff6ec1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1f2ecb37ebe156b1eb092bda95f296c39c9e2baf
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894403"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974966"
 ---
 # <a name="create-a-new-device-template-version-preview-features"></a>デバイス テンプレートの新しいバージョンを作成する (プレビュー機能)
 

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 77442eda6c8b2aae71c5d647127ead9f851ec485
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1754168478caf3ca029e003ad0187fc29e85fa8a
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421421"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997294"
 ---
 # <a name="automated-backups"></a>自動バックアップ
 
@@ -115,7 +115,7 @@ PITR リテンション期間が 35 日間である DTU ベースのサービス
 
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>PITR のバックアップの保有期間を変更する方法
 
-既定の PITR バックアップ保持期間は、Azure portal、PowerShell、または REST API を使用して変更できます。 サポートされる値は7、14、21、28、または 35 日間です。 次の例では、PITR リテンション期間を 28 日間に変更する方法を示します。
+既定の PITR バックアップ保持期間は、Azure portal、PowerShell、または REST API を使用して変更できます。 次の例では、PITR リテンション期間を 28 日間に変更する方法を示します。
 
 > [!WARNING]
 > 現在の保持期間を短縮した場合、新しい保持期間より古いすべての既存のバックアップは使用できなくなります。 現在のリテンション期間を延長した場合、SQL Database は、より長いリテンション期間に達するまでに、既存のバックアップを保持します。

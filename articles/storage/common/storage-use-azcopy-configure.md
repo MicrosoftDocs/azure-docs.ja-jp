@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0be50ef43774be6082a4ede330f65296094552de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786845"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926449"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -99,7 +99,7 @@ AzCopy は、ジョブごとにログ ファイルとプラン ファイルを�
 
 ログには、エラーの状態 (`UPLOADFAILED`、`COPYFAILED`、および `DOWNLOADFAILED`)、完全なパス、エラーの理由が含まれます。
 
-既定では、ログ ファイルとプラン ファイルは、Windows では `%USERPROFILE$\.azcopy` ディレクトリに、Mac および Linux では `$HOME$\.azcopy` ディレクトリにありますが、必要に応じてその場所を変更できます。
+既定では、ログ ファイルとプラン ファイルは、Windows では `%USERPROFILE%\.azcopy` ディレクトリに、Mac および Linux では `$HOME$\.azcopy` ディレクトリにありますが、必要に応じてその場所を変更できます。
 
 > [!IMPORTANT]
 > Microsoft サポートに要求を送信するとき (または、サード パーティが関わる問題のトラブルシューティングを行うとき) は、実行したいコマンドの修正済みバージョンを共有します。 これにより、SAS が誤って誰かと共有されることがなくなります。 修正済みバージョンは、ログ ファイルの先頭にあります。
@@ -151,7 +151,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>プラン ファイルおよびログ ファイルの場所を変更する
 
-既定では、プラン ファイルとログ ファイルは、Windows では `%USERPROFILE$\.azcopy` ディレクトリに、Mac および Linux では `$HOME$\.azcopy` ディレクトリにあります。 この場所は変更できます。
+既定では、プラン ファイルとログ ファイルは、Windows では `%USERPROFILE%\.azcopy` ディレクトリに、Mac および Linux では `$HOME$\.azcopy` ディレクトリにあります。 この場所は変更できます。
 
 ### <a name="change-the-location-of-plan-files"></a>プラン ファイルの場所を変更する
 

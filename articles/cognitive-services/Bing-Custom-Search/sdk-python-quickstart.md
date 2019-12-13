@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 7a9d0d6619878299768e1f17b4da3280ea1ec1fc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98070ab8f715305fe01c940026ecf5f49f8c28f9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564618"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976045"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-python-sdk"></a>クイック スタート:Python SDK を使用して Bing Custom Search エンドポイントを呼び出す 
 

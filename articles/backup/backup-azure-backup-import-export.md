@@ -4,12 +4,12 @@ description: Azure Backup の Azure Import/Export サービスを使用してネ
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 331d5528c8f124f4d43142ff7be4daa3169b0381
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173299"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997362"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 
@@ -206,4 +206,4 @@ Azure portal で **[インポート/エクスポート ジョブ]** ページに
 ## <a name="next-steps"></a>次の手順
 
 * Azure Import/Export ワークフローについて質問がある場合は、「 [Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送](../storage/common/storage-import-export-service.md)」を参照してください。
-* ワークフローについて質問がある場合は、Azure Backup [FAQ](backup-azure-backup-faq.md) のオフライン バックアップのセクションを参照してください。
+

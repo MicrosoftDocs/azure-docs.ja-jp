@@ -4,16 +4,16 @@ description: この記事では、Azure EA Portal で管理者が行う一般的
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/08/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 8b6c127113a7d56f4ded2ddfbb1212f1157b2dda
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c53a051df0a0100d9209530490d910612be2f30d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226339"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849923"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA Portal の管理
 

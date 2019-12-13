@@ -2,19 +2,19 @@
 title: Azure VM から Update Management、Change Tracking、および Inventory ソリューションをオンボードする
 description: Azure 仮想マシンを Azure Automation の一部である Update Management、Change Tracking、および Inventory ソリューションでオンボードする方法について説明します。
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0069d2e8ccd3b4f65ced8b6e18ce568689f81e14
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 8dd69b1cf4ac8874175cff84d3c2b9fc5e323922
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374422"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849685"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure 仮想マシンから Update Management、Change Tracking、および Inventory ソリューションをオンボードする
 
@@ -59,7 +59,7 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 ワークスペースに移動します。 **[全般]** の下の **[保存された検索]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|名前     |Category  |エイリアス  |
+|名前     |カテゴリ  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |

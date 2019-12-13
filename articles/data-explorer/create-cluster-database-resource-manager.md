@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: eddfb9a8f2e3c034e50dc3bc1cdf4983a6163079
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 4a95804bcff3653df42186907f03d0bc27a603ea
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667866"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869716"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Explorer クラスターとデータベースを作成する
 
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
               "tier": "Standard",
               "capacity": 2
           },
-          "apiVersion": "2019-05-15",
+          "apiVersion": "2019-09-07",
           "location": "[parameters('location')]",
           "tags": {
             "Created By": "GitHub quickstart template"
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
       {
           "name": "[concat(parameters('clusters_kustocluster_name'), '/', parameters('databases_kustodb_name'))]",
           "type": "Microsoft.Kusto/clusters/databases",
-          "apiVersion": "2019-05-15",
+          "apiVersion": "2019-09-07",
           "location": "[parameters('location')]",
           "dependsOn": [
               "[resourceId('Microsoft.Kusto/clusters', parameters('clusters_kustocluster_name'))]"

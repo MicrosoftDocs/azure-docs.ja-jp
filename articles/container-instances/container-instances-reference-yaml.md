@@ -3,12 +3,12 @@ title: コンテナー グループの YAML リファレンス
 description: コンテナー グループを構成するために Azure Container Instances によってサポートされている YAML ファイルのリファレンス
 ms.topic: article
 ms.date: 08/12/2019
-ms.openlocfilehash: 5603f2e0f63c4f83a6d3761feb540abb8b8b7d5c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 8497330a327201c4c64e9f7ae57e6fc4225b52de
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533487"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896564"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML リファレンス: Azure Container Instances
 
@@ -38,7 +38,7 @@ properties: # Properties of container group
       image: string # Container image used to create the instance
       command:
       - string
-      ports: # Exposed ports on the instance
+      ports: # External-facing ports exposed on the instance, must also be set in group ipAddress property 
       - protocol: string
         port: integer
       environmentVariables:

@@ -45,7 +45,7 @@ Service Fabric プラットフォームでは、クラスター内で発生し�
 ## <a name="how-to-access-events"></a>イベントへのアクセス方法
 
 Service Fabric イベントには、いくつかの異なる方法を通してアクセスすることができます。
-* イベントは ETW/Windows イベント ログなどの標準的なチャネルを通じて記録され、Azure Monitor ログのようなこれらをサポートする任意の監視ツールで視覚化することができます。 ポータルでクラスターを作成すると、既定で、診断が有効になり、Windows Azure Diagnostics エージェントによって Azure テーブル ストレージにイベントが送信されるようになりますが、それでも、これをログ分析リソースと統合する必要があります。 より多くのログやパフォーマンス カウンターを収集するようにクラスターの診断構成を変更するための [Microsoft Azure Diagnostics エージェント](service-fabric-diagnostics-event-aggregation-wad.md) の構成と、[Azure Monitor ログの統合](service-fabric-diagnostics-event-analysis-oms.md) に関する詳細を参照してください
+* イベントは ETW/Windows イベント ログなどの標準的なチャネルを通じて記録され、Azure Monitor ログのようなこれらをサポートする任意の監視ツールで視覚化することができます。 ポータルでクラスターを作成すると、既定で、診断が有効になり、Windows Azure Diagnostics エージェントによって Azure Table Storage にイベントが送信されるようになりますが、それでも、これをログ分析リソースと統合する必要があります。 より多くのログやパフォーマンス カウンターを収集するようにクラスターの診断構成を変更するための [Microsoft Azure Diagnostics エージェント](service-fabric-diagnostics-event-aggregation-wad.md) の構成と、[Azure Monitor ログの統合](service-fabric-diagnostics-event-analysis-oms.md) に関する詳細を参照してください。
 * EventStore サービスの Rest API。この方法では、クラスターに直接、または Service Fabric クライアント ライブラリを介して、クエリを実行することができます。 「[EventStore API でクラスター イベントのクエリを実行する](service-fabric-diagnostics-eventstore-query.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順

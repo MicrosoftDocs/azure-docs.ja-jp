@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 07/05/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: b20a8aabbd41c09efb6818cac2999a8c84b669fc
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: c645d01dd37fd370911019446c99c76c9da6221c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816429"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975977"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>クイック スタート:Python を使用してテキスト読み上げ音声の一覧を取得する
 

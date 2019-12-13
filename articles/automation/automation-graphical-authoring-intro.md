@@ -4,17 +4,17 @@ description: グラフィカル作成では、コードを操作せずに Azure 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d7626706951cc522dce9c6d70251455e64300bc
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 82a06510bd9d1e0de2b38260773cb4848156bf12
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476686"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850297"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Automation でのグラフィカル作成
 
@@ -326,7 +326,7 @@ Runbook の入力パラメーターには、Runbook ツールバーの **[入力
 |:--- |:--- |
 | Name |パラメーターの一意の名前です。 これに含めることができるのは英数字のみです。スペースを含めることはできません。 |
 | Description |入力パラメーターのオプションの説明です。 |
-| Type |パラメーター値に必要なデータ型です。 Azure Portal では、入力を求められた場合に各パラメーターのデータ型に適したコントロールが提供されます。 |
+| 種類 |パラメーター値に必要なデータ型です。 Azure Portal では、入力を求められた場合に各パラメーターのデータ型に適したコントロールが提供されます。 |
 | Mandatory |パラメーターの値を指定する必要があるかどうかを示します。 既定値が定義されていない各必須パラメーターの値を指定しないと、Runbook を開始できません。 |
 | Default value |パラメーターに値が指定されていない場合は、使用する値を指定します。 Null または特定の値を指定できます。 |
 

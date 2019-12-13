@@ -7,16 +7,16 @@ ms.subservice: security
 ms.custom: seo-lt-2019
 ms.devlang: ''
 ms.topic: conceptual
-author: aliceku
-ms.author: aliceku
+author: jaszymas
+ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e60b83f8eb1e95733512180417bb2a1be679b0a0
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e647725c5d30f35f39263757508bdd1725552731
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422455"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997311"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell と CLI:Azure Key Vault のユーザー管理キーを使用して Transparent Data Encryption を有効にする
 

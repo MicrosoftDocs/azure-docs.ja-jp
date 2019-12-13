@@ -4,19 +4,19 @@ description: Azure Data Factory を使用して Office 365 からデータをコ
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0c938caef81063409d3c8d6632cd7e8df99f1ea1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 896265311a67b74ccf9d0226a2969284ee491c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672615"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931435"
 ---
 # <a name="load-data-from-office-365-by-using-azure-data-factory"></a>Azure Data Factory を使用して Office 365 からデータを読み込む
 
@@ -45,7 +45,7 @@ ms.locfileid: "73672615"
 
 5. **[作成と監視]** タイルを選択して、別のタブでデータ統合アプリケーションを起動します。
 
-## <a name="create-a-pipeline"></a>パイプラインを作成する。
+## <a name="create-a-pipeline"></a>パイプラインを作成する
 
 1. [Let's get started]\(始めましょう\) ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。
  

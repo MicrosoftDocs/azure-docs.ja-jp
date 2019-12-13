@@ -9,13 +9,13 @@ ms.workload: data-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 518da092f690108111ca4456eaca66e4f3153c54
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: 15aac35a7ebc505e76ddfd0c538c4fddb7b2d9ff
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681433"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930538"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 07/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8e3b6d0fbefb8e3d3437fd5e24f929e453c573df
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 07fa43563ca9b6c9ae247df6eb28894331b004c1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621007"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976436"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure Stream Analytics on IoT Edge
  
@@ -147,7 +147,7 @@ ASA ジョブに作成された入力および出力の名前を、ルーティ�
 ただし、次の機能はエッジ ジョブではまだサポートされていません。
 * JavaScript でのユーザー定義関数 (UDF)。 UDF は、[IoT Edge ジョブ向けの C#](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf) (プレビュー) で使用できます。
 * ユーザー定義集計 (UDA)。
-* Azure ML 関数
+* Azure ML 関数。
 * 1 つの手順での 14 を超える集計の使用。
 * 入力/出力の AVRO 形式。 現時点では、CSV と JSON のみがサポートされています。
 * 次の SQL 演算子:

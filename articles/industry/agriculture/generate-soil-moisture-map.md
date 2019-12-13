@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 61deb5361c9857956318f8b9b4ca836fcfa65d48
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e11f560c2b101d86d41feb3f6c93cffe7c1a748d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797368"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851453"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>土壌水分ヒートマップを生成する
 
@@ -67,7 +67,7 @@ Azure FarmBeats にセンサー アカウントをリンクさせたら、対象
 3.  **[Farm Details]\(ファームの詳細\)** ページで **[Generate Precision Map]\(プレシジョン マップの生成\)** を選択します。
 4.  ドロップダウン メニューから **[Soil Moisture]\(土壌水分\)** を選択します。
 5.  **[Soil Moisture]\(土壌水分\)** ウィンドウで **[This Week]\(今週\)** を選択します。
-6.  **[Select Soil Moisture Sensor Measure]\(土壌水分センサーのメジャーの選択\)** で、マップに使用するメジャーを入力します。
+6.  **[Select Soil Moisture** **Sensor Measure**]\(土壌水分センサーのメジャーの選択\) で、マップに使用するメジャーを入力します。
     センサーのメジャーを検索するには、 **[Sensors]\(センサー\)** でいずれかの土壌水分センサーを選択します。 **[Sensor Properties]\(センサーのプロパティ\)** の **[Measure Name]\(メジャー名\)** の値を使用します。
 
     ![プロジェクト (Farm Beats)](./media/get-sensor-data-from-sensor-partner/soil-moisture-1.png)
@@ -93,4 +93,4 @@ Azure FarmBeats にセンサー アカウントをリンクさせたら、対象
 
 ## <a name="next-steps"></a>次の手順
 
-土壌水分ヒートマップが正しく生成されました。[センサー配置マップを生成する方法](generate-maps.md#sensor-placement-maps)と[テレメトリ履歴データを取り込む方法](ingest-historical-telemetry-data.md)を参照してください。 
+土壌水分ヒートマップが正しく生成されました。[センサー配置マップを生成する方法](generate-maps.md#sensor-placement-map)と[テレメトリ履歴データを取り込む方法](ingest-historical-telemetry-data.md)を参照してください。 

@@ -2,27 +2,23 @@
 title: 承認エージェントとそれらを有効にする方法 | Azure
 description: Microsoft Authentication Library (MSAL) によって Android アプリで使用できるさまざまな承認エージェントと、それらを有効にする方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/05/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: shoatman, brianmel, hahamil
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7daf40d6c6e552d6b76e424359f57f031641039
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 44a0e93c87c50fbc63cddad349ec9b5fbf45d91f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678851"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843905"
 ---
 # <a name="authorization-agents-android"></a>承認エージェント (Android)
 
@@ -68,7 +64,7 @@ MSAL では、`WebView` またはシステム ブラウザーを使用した承�
 
 MSAL では、さまざまな Android フォンで使用するブラウザー パッケージを厳密には指定できないため、最適なクロスデバイス SSO を提供しようとするブラウザー選択ヒューリスティックが実装されています。
 
-MSAL では、デバイスにインストールされているブラウザーの完全なリストを取得して、使用するブラウザーが選択されます。 このリストは、パッケージ マネージャーによって返された順序になっており、ユーザーの設定が間接的に反映されています。 たとえば、既定のブラウザー (設定されている場合) がリストの最初のエントリになります。 カスタム タブがサポートされているかどうかに関係なく、リスト内の_最初の_ブラウザーが選択されます。 ブラウザーでカスタム タブがサポートされている場合、MSAL ではカスタムタブが起動されます。カスタム タブは、アプリ内 `WebView` に近い外観を持ち、基本的な UI カスタマイズが可能です。 詳細については、「[Custom Tabs in Android](https://developer.chrome.com/multidevice/android/customtabs)」(Android のカスタム タブ) を参照してください。
+MSAL では、デバイスにインストールされているブラウザーの完全なリストを取得して、使用するブラウザーが選択されます。 このリストは、パッケージ マネージャーによって返された順序になっており、ユーザーの設定が間接的に反映されています。 たとえば、既定のブラウザー (設定されている場合) がリストの最初のエントリになります。 カスタム タブがサポートされているかどうかに関係なく、リスト内の _最初の_ ブラウザーが選択されます。 ブラウザーでカスタム タブがサポートされている場合、MSAL ではカスタムタブが起動されます。カスタム タブは、アプリ内 `WebView` に近い外観を持ち、基本的な UI カスタマイズが可能です。 詳細については、「[Custom Tabs in Android](https://developer.chrome.com/multidevice/android/customtabs)」(Android のカスタム タブ) を参照してください。
 
 デバイスにブラウザー パッケージがない場合、MSAL ではアプリ内 `WebView` が使用されます。
 

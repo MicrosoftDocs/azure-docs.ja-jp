@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44e25efcb068fe51f05dbbde50e8a96da492a735
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: be1c0e93a51064870635d4f06bd5b365bbfe517a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381241"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847288"
 ---
 # <a name="how-to-enable-password-reset-from-the-windows-login-screen"></a>方法:Windows のログイン画面からパスワードをリセットできるようにする
 

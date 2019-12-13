@@ -2,19 +2,19 @@
 title: Azure Data Factory でサポートされるファイル形式
 description: このトピックでは、Azure Data Factory 内のファイルベースのコネクタでサポートされている圧縮コードやファイル形式について説明します。
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 4a81cc9887610036007b92e43b8bd44f0a8b7740
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 48121dabfa4fc56e2f797f715cb3fce3e3be9578
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075548"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928691"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure Data Factory でサポートされるファイル形式と圧縮コーデック
 

@@ -3,20 +3,19 @@ title: Azure Key Vault への資格情報の格納
 description: Azure Data Factory で実行時に自動的に取得できる、Azure Key Vault で使用されたデータ ストアの資格情報を格納する方法を説明します。
 services: data-factory
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 1e2458fa125ee4d223ef46001534fb7ae72b805e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 32c4b9b8e6268aa648e3414b337e8b2b908589e8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684012"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928715"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
 

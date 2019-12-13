@@ -2,18 +2,18 @@
 title: Update Management、Change Tracking、および Inventory のオンボード時のエラーをトラブルシューティングする
 description: Update Management、Change Tracking、および Inventory ソリューションのオンボード時のエラーをトラブルシューティングする方法について説明します。
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 8b4ee999bb23abdcea3411720bde244b2da4e89f
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0371c59ae63389bc3f7f0132260b0d98f496086c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516398"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849311"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>ソリューションをオンボードする際のエラーをトラブルシューティングする
 

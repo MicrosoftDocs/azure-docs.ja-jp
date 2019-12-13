@@ -3,21 +3,20 @@ title: Data Management Gateway に関する問題をトラブルシューティ�
 description: Data Management Gateway に関連する問題のトラブルシューティングを行うためのヒントを示します。
 services: data-factory
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: c6756c37-4e5a-4d1e-ab52-365f149b4128
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 34930061189c11c9cea9c2cd0feb2ede9aade74d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 0b8aee32869202a8cc24a27dec85c93ffd294c6b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682332"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931596"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Data Management Gateway の使用に関する問題のトラブルシューティング
 この記事では、Data Management Gateway の使用に関する問題のトラブルシューティングについて説明します。

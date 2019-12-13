@@ -2,26 +2,23 @@
 title: Microsoft ID プラットフォーム (v2.0) に更新する理由 | Azure
 description: Microsoft ID プラットフォーム (v2.0) エンドポイントと Azure Active Directory (Azure AD) v1.0 エンドポイントの相違点と、v2.0 に更新する利点について説明します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5a000d08afb3afba06d82aae4414e87b61e502f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 882b4a8bfe951212d2d1fe081d16b25641dfa4d4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533052"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843888"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Microsoft ID プラットフォーム (v2.0) に更新する理由
 

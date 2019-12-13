@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 7644876a41679c8692fb36367b35e4be3e6f9c82
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 4c825bebbc3d2036b3b018045aac8f6966eea411
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817099"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980460"
 ---
 [!INCLUDE [windows](./windows.md)]
 

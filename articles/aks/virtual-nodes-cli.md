@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 05/06/2019
 ms.author: mlearned
-ms.openlocfilehash: d3651c63b206c37b1f41ecab7f69e24fc94ddffd
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 43ea197c4dc774a4e011cd9fb2b3adcf94866d90
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263855"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926082"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Azure CLI を使って仮想ノードを使用する Azure Kubernetes Service (AKS) クラスターを作成して構成する
 
@@ -272,7 +272,7 @@ aci-helloworld-9b55975f-bnmfl   1/1       Running   0          4m        10.241.
 仮想ノードで実行されているポッドをテストするには、Web クライアントでデモ アプリケーションを参照します。 ポッドには内部 IP アドレスが割り当てられているため、AKS クラスターの別のポッドからこの接続をすばやくテストできます。 テスト ポッドを作成し、それにターミナル セッションをアタッチします。
 
 ```console
-kubectl run -it --rm virtual-node-test --image=debian
+kubectl run --generator=run-pod/v1 -it --rm testvk --image=debian
 ```
 
 `apt-get` を使用して、`curl` をポッドにインストールします。

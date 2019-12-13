@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 08/20/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 2b095f76eb2c2c9ca420e0049ced3e7af1e742c4
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 5602e26e2e1b327d65d411f8e92f264f1bf9fb91
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74405916"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977864"
 ---
 # <a name="quickstart-face-client-library-for-net"></a>クイック スタート:.NET 用 Face クライアント ライブラリ
 

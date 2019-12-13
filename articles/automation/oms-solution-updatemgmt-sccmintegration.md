@@ -4,17 +4,17 @@ description: この記事は、このソリューションを使用して System
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 92a93982cdd042a92b006cab7052ad4a6fee6fff
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 345adeee37f5f9bc4c794eb9bb624e7797197f22
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478198"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850212"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager と Update Management の統合
 

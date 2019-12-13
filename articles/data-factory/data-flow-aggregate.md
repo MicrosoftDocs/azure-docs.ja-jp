@@ -1,18 +1,19 @@
 ---
-title: Azure Data Factory マッピング データ フローの集計変換
+title: マッピング データ フローの集計変換
 description: Azure Data Factory でマッピング データ フローの集計変換を使用して、大規模なデータ集計を行う方法について説明します。
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: 3f21367c36ae31aa2115c109933a581bef464baf
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 74b96bf2cac0de7c57e496c637f2e3ef549eb61f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676908"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930455"
 ---
 # <a name="aggregate-transformation-in-mapping-data-flow"></a>マッピング データ フローの集計変換 
 

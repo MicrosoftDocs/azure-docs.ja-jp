@@ -1,19 +1,19 @@
 ---
 title: Azure Import/Export ツールの使用 | Microsoft Docs
 description: Import-Export ツールを使用してインポート ジョブのハード ドライブを準備したり、インポート ジョブやエクスポート ジョブを修復する方法について説明します。
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/15/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 5eaf29623a18f7347ad287e4b8389667f4b4e272
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 19614570369e3814658f9ca6e50635507f094712
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478489"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977320"
 ---
 # <a name="using-the-azure-importexport-tool"></a>Azure Import/Export ツールの使用 
 

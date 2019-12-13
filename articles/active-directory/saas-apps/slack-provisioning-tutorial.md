@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278168"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849150"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>チュートリアル: Slack を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -66,13 +66,13 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 4. **[プロビジョニング モード]** を **[自動]** に設定します。
 
-   ![Slack のプロビジョニング](./media/slack-provisioning-tutorial/Slack1.PNG)
+   ![Slack のプロビジョニング](./media/slack-provisioning-tutorial/slack1.png)
 
 5. **[管理者資格情報]** セクションにある **[承認する]** をクリックします。 これで、ブラウザーの新しいウィンドウで Slack 承認ダイアログが開きます。
 
 6. 新しいウィンドウで、Team Admin アカウントを使用して Slack にサインインします。 表示された承認ダイアログで、プロビジョニングを有効にしたい Slack チームを選択して **[承認する]** を選択します。 終わったら Azure Portal に戻り、プロビジョニング構成を完了します。
 
-    ![承認ダイアログ](./media/slack-provisioning-tutorial/Slack3.PNG)
+    ![承認ダイアログ](./media/slack-provisioning-tutorial/slackauthorize.png)
 
 7. Azure Portal で、 **[テスト接続]** をクリックして Azure AD が Slack アプリに接続できることを確認します。 接続が失敗した場合、使用中の Slack アカウントに Team Admin アクセス許可があることを確認して、"承認" の手順をもう一度試してください。
 

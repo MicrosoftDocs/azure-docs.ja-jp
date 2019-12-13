@@ -4,16 +4,16 @@ description: Azure IoT Central アプリケーションから Azure Event Hubs�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 10/15/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: corywink
-ms.openlocfilehash: 35415fd1a552328faa8d1ad5812f44d8f4b6d5e4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1aac5af916e414178676a1caf42fead41109de68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894179"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974463"
 ---
 # <a name="export-your-azure-iot-central-data-preview-features"></a>Azure IoT Central データをエクスポートする (プレビュー機能)
 
@@ -84,9 +84,9 @@ ms.locfileid: "73894179"
 
     ![新しい継続的データ エクスポートの作成](media/howto-export-data/export-new2.png)
 
-4. ドロップダウン リスト ボックスで、**Event Hubs 名前空間**、**Service Bus 名前空間**、**Storage Account 名前空間**、または **[Enter a connection string]\(接続文字列を入力する\)** を選択します。
+4. ドロップダウン リスト ボックスで、**Event Hubs 名前空間**、**Service Bus 名前空間**、**Storage Account 名前空間**、または **[接続文字列を入力してください]** を選択します。
 
-    - ご使用の IoT Central アプリケーションと同じサブスクリプション内の Storage Account、Event Hubs 名前空間、および Service Bus 名前空間のみが表示されます。 このサブスクリプションとは異なる場所にエクスポートする場合は、 **[Enter a connection string]\(接続文字列を入力する\)** を選択して、手順 5 に進みます。
+    - ご使用の IoT Central アプリケーションと同じサブスクリプション内の Storage Account、Event Hubs 名前空間、Service Bus 名前空間のみが表示されます。 このサブスクリプションとは異なる場所にエクスポートする場合は、 **[Enter a connection string]\(接続文字列を入力する\)** を選択して、手順 5 に進みます。
     - 7 日間の試用版アプリの場合、連続データ エクスポートを構成する唯一の方法は、接続文字列を使用することです。 7 日間の試用版アプリには、関連付けられた Azure サブスクリプションがありません。
 
     ![新しい Event Hub を作成する](media/howto-export-data/export-eh.png)
@@ -98,11 +98,11 @@ ms.locfileid: "73894179"
         - プライマリまたはセカンダリの接続文字列をコピーします。
     - ストレージ アカウント。Azure portal でストレージ アカウントに移動します。
         - **[設定]** で **[アクセス キー]** を選択します。
-        - key1 接続文字列または key2 接続文字列のいずれかをコピーします
+        - key1 接続文字列または key2 接続文字列のいずれかをコピーします。
 
 6. ドロップダウン リスト ボックスから、イベント ハブ、キュー、トピック、またはコンテナーを選択します。
 
-7. **[Data to export]\(エクスポートするデータ\)** で、種類を **[オン]** に設定して、エクスポートするデータの種類を選択します。
+7. **[エクスポートするデータ]** で、種類を **[オン]** に設定して、エクスポートするデータの種類を選択します。
 
 8. 連続データ エクスポートを有効にするには、 **[データのエクスポート]** トグルが **[オン]** になっていることを確認します。 **[保存]** を選択します。
 

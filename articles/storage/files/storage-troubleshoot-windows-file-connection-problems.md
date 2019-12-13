@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 86b4b19ca80b7dfb2bd9a1a56069fe3d347377ec
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560127"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927850"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -97,8 +97,7 @@ Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号
 Azure File Sync により、オンプレミスの Windows Server を Azure ファイル共有の高速キャッシュに変えることができます。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 Azure File Sync は、ポート 443 上で動作するため、ポート 445 がブロックされているクライアントから Azure Files にアクセスするための回避策として使用できます。 [Azure File Sync を設定する方法を確認してください](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers)。
 
 #### <a name="solution-2---use-vpn"></a>ソリューション 2 - VPN を使用する
-特定のストレージ アカウントへの VPN を設定すると、トラフィックは、インターネット経由ではなく安全なトンネル経由で送信されます。 Windows から Azure Files にアクセスするための [VPN の設定手順](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
-)に従ってください。
+特定のストレージ アカウントへの VPN を設定すると、トラフィックは、インターネット経由ではなく安全なトンネル経由で送信されます。 Windows から Azure Files にアクセスするための [VPN の設定手順](storage-files-configure-p2s-vpn-windows.md)に従ってください。
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>ソリューション 3 - ISP/IT 管理者の支援を受けてポート 445 のブロックを解除する
 IT 部門または ISP と連携して、ポート 445 の送信方向の通信を [Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に解放します。

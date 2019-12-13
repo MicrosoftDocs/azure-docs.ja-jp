@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 1203947efadf4fed328655c9cfb839f666a80b0c
-ms.sourcegitcommit: 3d4121badd265e99d1177a7c78edfa55ed7a9626
+ms.openlocfilehash: ec6c1ef31b6cf92629be600b3b139bb2e1a0d3ce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66390041"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977252"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>チュートリアル:Bing Web Search API を使用して単一ページの Web アプリを作成する
 

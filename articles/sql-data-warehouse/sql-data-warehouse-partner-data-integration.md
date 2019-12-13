@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c6951ad129a564193a33a4c21fb97e9000ac8dc2
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: d71c4ee7c5d982708c8a3b0a79b453d7196ad02d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555436"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923625"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL Data Warehouse データ統合パートナー
 データ ウェアハウス ソリューションを作成するには、業界をリードする広範なツールから選択する必要があります。 この記事では、Azure SQL Data Warehouse をサポートする公式のデータ統合ソリューションを提供している Microsoft パートナー企業について説明します。
@@ -35,9 +35,9 @@ ms.locfileid: "74555436"
 | ![Segment][10] |**セグメント**<br>Segment は、さまざまなソースに由来する顧客データを有意義に活用できるデータ管理と分析のソリューションです。 より優れた意思決定、製品、およびエクスペリエンスを作り出すために、200 を超えるツールにデータを接続できます。 Segment では、組み込みのデータ コネクターを使用して、複数のデータ ソースを変換してユーザーのウェアハウスに読み込みます。|[製品ページ][segment_website]<br> |
 | ![Skyvia][11] |**Skyvia (データ統合)**<br>Skyvia のデータ統合は、データのインポートを自動化するウィザードを提供します。 このウィザードは、さまざまな種類のソース (CRM、アプリケーション データベース、CSV ファイルなど) 間でのデータ移行を可能にします。 |[製品ページ][segment_website]<br> |
 | ![SnapLogic][6] |**SnapLogic**<br>SnapLogic プラットフォームを利用すると、顧客は Microsoft Azure SQL Data Warehouse に出入りするデータをすばやく転送できます。 数百ものアプリケーション、サービス、および IoT シナリオを 1 つのソリューションに統合する機能を提供しています。|[製品ページ][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
-| ![StreamSets][15] |**StreamSets**<br>StreamSets は、DataOps 用のデータ統合プラットフォームを提供します。 これは、データを Azure SQL Data Warehouse に統合する、設計、デプロイ、運用の完全なライフサイクルを操作できるようにします。 ストリーミング、バッチ、または変更されたデータ キャプチャ データ配信方法を使用して、ウェアハウス間でデータの迅速な取り込みと統合ができるだけでなく、エンドツーエンドのデータ フローの可視性および回復性を提供するスマート データ パイプラインを使用して継続的な操作を確保することもできます。|[製品ページ][streamsets_website]|
+| ![StreamSets][16] |**StreamSets**<br>StreamSets は、DataOps 用のデータ統合プラットフォームを提供します。 これは、データを Azure SQL Data Warehouse に統合する、設計、デプロイ、運用の完全なライフサイクルを操作できるようにします。 ストリーミング、バッチ、または変更されたデータ キャプチャ データ配信方法を使用して、ウェアハウス間でデータの迅速な取り込みと統合ができるだけでなく、エンドツーエンドのデータ フローの可視性および回復性を提供するスマート データ パイプラインを使用して継続的な操作を確保することもできます。|[製品ページ][streamsets_website]|
 | ![Talend][12] |**Talend Cloud**<br>Talend Cloud は、クラウドまたはオンプレミスにわたって、データの接続、アクセス、および変換を行うためのエンタープライズ データ統合プラットフォームです。 幅広い接続、組み込みのデータ品質、最新のビッグ データとクラウド テクノロジに対するネイティブ サポートを提供する integration Platform-as-a-Service (iPaaS) のオファリングです。 |[製品ページ][talend_website]<br> [Azure Marketplace][talend_marketplace] |
-| ![TimeXtender][13] |**TimeXtender**<br>TimeXtender の検出ハブは、データ インサイトまでの時間を最大 10 倍短縮する、統合されたデータ管理プラットフォームを提供することで、企業が最新のデータ資産を構築するのに役立ちます。 1 つのプラットフォーム内でデータ アクセス、データ モデリング、コンプライアンスの自動化と機能を提供することで、日々の抽出、変換、読み込み (ETL)、または抽出、読み込み、変換 (ELT) を超える作業を行うことができます。 検出ハブでは、クラウド スケール分析用の統合されたデータ ファブリックが提供されています。これにより、さまざまなデータ サイロ、カタログ、モデル、移動、およびドキュメント データを、分析と AI のために接続して統合することができます。 | [製品ページ][timextender_website] |
+| ![TimeXtender][13] |**TimeXtender**<br>TimeXtender の検出ハブは、データ インサイトまでの時間を最大 10 倍短縮する、統合されたデータ管理プラットフォームを提供することで、企業が最新のデータ資産を構築するのに役立ちます。 1 つのプラットフォーム内でデータ アクセス、データ モデリング、コンプライアンスの自動化と機能を提供することで、日々の抽出、変換、読み込み (ETL)、または抽出、読み込み、変換 (ELT) を超える作業を行うことができます。 検出ハブでは、クラウド スケール分析用の統合されたデータ ファブリックが提供されています。これにより、さまざまなデータ サイロ、カタログ、モデル、移動、およびドキュメント データを、分析と AI のために接続して統合することができます。 | [製品ページ][timextender_website]<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
 | ![Trifacta][14] |**Trifacta Wrangler**<br> Trifacta では、個人と組織が、分析のためのさまざまなデータを探索して融合させることができます。 Trifacta Wrangler は、大規模なデータと多数のエンド ユーザーをサポートする必要があるデータ ラングリング ワークロードを処理するように設計されています。|[製品ページ][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
 | ![WhereScape][15] |**Wherescape RED**<br> WhereScape RED は、ETL ワークフローを合理化するための自動ツールをチームに提供する IDE です。 IDE は、一般的なデータ ターゲットに対するベスト プラクティス、つまり最適化されたネイティブ コードを提供します。 WhereScape RED を使用して、データ インフラストラクチャの開発、デプロイ、および運用にかかる時間を短縮します。|[製品ページ][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
 

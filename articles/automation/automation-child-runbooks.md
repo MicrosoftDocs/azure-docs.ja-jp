@@ -4,17 +4,17 @@ description: Azure Automation で別の Runbook から Runbook を開始し、�
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 64d9246284be58c8378ab102db25ab7e5220c9eb
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: e7341a8c270d16497430a70c2a1b21354a775787
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477958"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850450"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Automation での子 Runbook
 

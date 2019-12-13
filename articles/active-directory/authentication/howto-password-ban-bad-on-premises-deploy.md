@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1d53d63b40ad62a4d21cbad22a67e9e9781b1f
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381712"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74847868"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Azure AD のパスワード保護をデプロイする
 

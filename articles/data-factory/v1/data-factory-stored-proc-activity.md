@@ -6,19 +6,18 @@ documentationcenter: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 77842b60108629168f423f25eb03b01079cf55e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61256020"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931640"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="変換アクティビティ"]
@@ -87,7 +86,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
    > [!IMPORTANT]
    > パラメーター (この例では DateTime) の**名前**と**大文字小文字の区別**は、パイプライン/アクティビティ JSON に指定されたパラメーターのものと一致する必要があります。 ストアド プロシージャ定義で、 **\@** がパラメーターのプレフィックスとして使用されていることを確認します。
 
-### <a name="create-a-data-factory"></a>Data Factory を作成する。
+### <a name="create-a-data-factory"></a>Data Factory の作成
 1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューの **[新規]** をクリックし、 **[インテリジェンス + 分析]** 、 **[Data Factory]** の順にクリックします。
 
@@ -306,7 +305,7 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| name | アクティビティの名前 |はい |
+| 名前 | アクティビティの名前 |はい |
 | description |アクティビティの用途を説明するテキストです。 |いいえ |
 | type | 次のように設定する必要があります。**SqlServerStoredProcedure** | はい |
 | inputs | 省略可能。 入力データセットを指定した場合、ストアド プロシージャ アクティビティの実行に使用できる ("準備完了" 状態である) 必要があります。 ストアド プロシージャで入力データセットをパラメーターとして使用することはできません。 入力データセットは、ストアド プロシージャ アクティビティを開始する前に、依存関係の確認にのみ使用されます。 |いいえ |

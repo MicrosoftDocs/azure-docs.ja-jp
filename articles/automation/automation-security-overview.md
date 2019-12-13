@@ -5,18 +5,18 @@ keywords: Automation のセキュリティ, セキュリティで保護された
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
 ROBOTS: NOINDEX
-ms.openlocfilehash: 88f1826191934ee76c565bd73de907a26d368c88
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0a05497c05051576868c1311857d58caa0d76055
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476841"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850671"
 ---
 # <a name="introduction-to-authentication-in-azure-automation"></a>Azure Automation での認証の概要  
 Azure Automation を使用すると、Azure 内のリソース、オンプレミスのリソース、Amazon Web Services (AWS) などの他のクラウド プロバイダーのリソースに対するタスクを自動化できます。  Runbook が必要な操作を実行するためには、操作対象のリソースに安全に、サブスクリプション内で必要な最低限の権限だけでアクセスするための、アクセス許可が必要です。
@@ -42,7 +42,7 @@ Azure Automation で Azure Resource Manager と Azure コマンドレットを�
 ## <a name="authentication-methods"></a>認証方法
 次の表は、Azure Automation によってサポートされる各環境のさまざまな認証方法と、Runbook 用の認証のセットアップ方法に関する記事をまとめたものです。
 
-| Method | 環境 | 記事 |
+| 方法 | 環境 | 記事 |
 | --- | --- | --- |
 | Azure AD ユーザー アカウント |Azure Resource Manager と Azure クラシック |[Azure AD ユーザー アカウントを使用した Runbook の認証](automation-create-aduser-account.md) |
 | Azure 実行アカウント |Azure リソース マネージャー |[Azure 実行アカウントを使用した Runbook の認証](automation-sec-configure-azure-runas-account.md) |

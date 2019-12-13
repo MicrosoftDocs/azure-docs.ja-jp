@@ -1,20 +1,21 @@
 ---
-title: Azure AD 資格情報で Azure CLI または PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする | Microsoft Docs
+title: Azure AD 資格情報で Azure CLI または PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする
+titleSuffix: Azure Storage
 description: Azure CLI と PowerShell では、Azure AD 資格情報でサインインし、Azure Storage Blob とキューのデータにコマンドを実行できます。 セッションにはアクセス トークンが与えられ、呼び出し操作の承認に使用されます。 アクセス許可は、Azure AD セキュリティ プリンシパルに割り当てられた RBAC ロールによって異なります。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/03/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e1c7f4531dee8673cc5b6dfe675e4c793144931e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 07abb9d604c14a5c78a088cb07f57088b84552a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671099"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891866"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Azure AD 資格情報で Azure CLI または PowerShell コマンドを実行して BLOB またはキューのデータにアクセスする
 

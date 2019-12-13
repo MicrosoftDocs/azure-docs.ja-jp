@@ -142,7 +142,7 @@ MSAL は、`–canOpenURL:` を使用してブローカーがデバイスにイ�
 ```
 
 ### <a name="step-6-register-your-redirect-uri-in-the-application-portal"></a>手順 6:アプリケーション ポータルでリダイレクト URI を登録する
-ブローカーを使用すると、リダイレクト URI に追加の要件が追加されます。 リダイレクト URI は次の形式にする_必要_があります。
+ブローカーを使用すると、リダイレクト URI に追加の要件が追加されます。 リダイレクト URI は次の形式にする _必要_ があります。
 ```CSharp
 $"msauth.{BundleId}://auth"
 ```

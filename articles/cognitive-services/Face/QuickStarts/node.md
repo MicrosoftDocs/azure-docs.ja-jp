@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 09/06/2019
+ms.date: 12/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 7035689f3813a94c7e24e4c6138016b11c1a4ef3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 2a3deff1d6220d21c3796b22dc7c39ea284cb36b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859136"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977949"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>クイック スタート:Face REST API と Node.js を使用して画像から顔を検出する
 

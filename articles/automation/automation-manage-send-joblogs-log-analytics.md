@@ -4,17 +4,17 @@ description: この記事では、ジョブの状態と Runbook ジョブ スト
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ff455ed355d4412bcf042208d2fd1e7a2a11b965
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d2433e8193026b8aaa3cbf29eb1411c7449a4953
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186783"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849736"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Automation から Azure Monitor ログにジョブの状態とジョブ ストリームを転送する
 

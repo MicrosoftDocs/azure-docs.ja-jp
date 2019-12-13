@@ -3,17 +3,17 @@ title: Azure IoT Central アプリケーションでユーザーとロールを�
 description: 管理者として Azure IoT Central アプリケーションでユーザーとロールを管理する方法
 author: lmasieri
 ms.author: lmasieri
-ms.date: 10/22/2019
+ms.date: 12/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 603bc4ad39a472f2ebc786257bc7c625e3f6b9a4
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 9729a51c36a520a2c196fb83515c9fa616411cf3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894451"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974429"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application-preview-features"></a>IoT Central アプリケーションでユーザーとロールを管理する (プレビュー機能)
 
