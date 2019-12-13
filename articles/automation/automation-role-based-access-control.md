@@ -5,17 +5,17 @@ keywords: Automation RBAC, ロールベースのアクセス制御, Azure RBAC
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9b2bcdf3d74c6946b8c9f0dacaeabf28d9c76f94
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0ee524768f46de965b1755f2cfffdf9e2034bec8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477729"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850790"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
@@ -218,10 +218,10 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |---------|---------|---------|
 |新しいデプロイを記述する      | Microsoft.Resources/deployments/*          |サブスクリプション          |
 |新しいリソース グループを記述する      | Microsoft.Resources/subscriptions/resourceGroups/write        | サブスクリプション          |
-|新しい既定のワークスペースを作成する      | Microsoft.OperationalInsights/workspaces/write         | リソース グループ         |
-|新しいアカウントを作成する      |  Microsoft.Automation/automationAccounts/write        |リソース グループ         |
+|新しい既定のワークスペースを作成する      | Microsoft.OperationalInsights/workspaces/write         | Resource group         |
+|新しいアカウントを作成する      |  Microsoft.Automation/automationAccounts/write        |Resource group         |
 |ワークスペースとアカウントをリンクする      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft.Automation/automationAccounts/read|ワークスペース</br>Automation アカウント
-|ソリューションを作成する      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |リソース グループ          |
+|ソリューションを作成する      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Resource group          |
 |MMA 拡張機能を作成する      | Microsoft.Compute/virtualMachines/write         | 仮想マシン         |
 |保存した検索条件を作成する      | Microsoft.OperationalInsights/workspaces/write          | ワークスペース         |
 |スコープ構成を作成する      | Microsoft.OperationalInsights/workspaces/write          | ワークスペース         |
@@ -242,7 +242,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |---------|---------|---------|
 |新しいデプロイを作成する     | Microsoft.Resources/deployments/*        | サブスクリプション         |
 |新しいリソース グループの作成     | Microsoft.Resources/subscriptions/resourceGroups/write         | サブスクリプション        |
-|AutomationOnboarding ブレード - 新しいワークスペースを作成する     |Microsoft.OperationalInsights/workspaces/write           | リソース グループ        |
+|AutomationOnboarding ブレード - 新しいワークスペースを作成する     |Microsoft.OperationalInsights/workspaces/write           | Resource group        |
 |AutomationOnboarding ブレード - リンクされたワークスペースを読み取る     | Microsoft.Automation/automationAccounts/read        | Automation アカウント       |
 |AutomationOnboarding ブレード - ソリューションを読み取る     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | 解決策        |
 |AutomationOnboarding ブレード - ワークスペースを読み取る     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | ワークスペース        |

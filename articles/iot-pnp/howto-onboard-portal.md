@@ -1,19 +1,19 @@
 ---
 title: Azure Certified for IoT ポータルにオンボードする | Microsoft Docs
 description: Azure Certified for IoT ポータルにオンボードします。
-author: YasinMSFT
+author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: yahajiza
-ms.openlocfilehash: b35aeff4c87c676b91e022edb56542a018cb707c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.author: philmea
+ms.openlocfilehash: 77559636dab00a570db416118b047200320c0308
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69878919"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978987"
 ---
 # <a name="onboard-to-the-azure-certified-for-iot-portal"></a>Azure Certified for IoT ポータルにオンボードする
 

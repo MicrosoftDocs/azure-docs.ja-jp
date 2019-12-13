@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 90710176ec16d1c565e24ff7df56b0b838f2699e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e54aa00df9efa60cce0fd6fa1da32720f2947b12
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229415"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851198"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Azure Private Link を使用して Azure Cosmos アカウントに非公開で接続する
 
@@ -37,7 +37,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
     | ------- | ----- |
     | 名前 | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
-    | Subscription | サブスクリプションを選択します。|
+    | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
     | Location | **[WestCentralUS]** を選択します。|
     | サブネット - 名前 | 「*mySubnet*」と入力します。 |
@@ -55,7 +55,7 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
     | Setting | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
-    | Subscription | サブスクリプションを選択します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。  |
     | **インスタンスの詳細** |  |
     | 仮想マシン名 | 「*myVm*」と入力します。 |
@@ -129,9 +129,6 @@ Azure プライベート エンドポイントは、Azure におけるプライ�
 ## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>VM から非公開で Azure Cosmos アカウントにアクセスする
 
 このセクションでは、プライベート エンドポイントを使用して Azure Cosmos アカウントに非公開で接続します。 
-
-> [!IMPORTANT]
-> Azure Cosmos アカウントの DNS 構成では、特定のアカウントの FQDN を含めるように、hosts ファイルに手動で変更を加える必要があります。 運用環境のシナリオでは、プライベート IP アドレスを使用するように DNS サーバーを構成します。 ただし、デモを目的として、VM の管理者権限を使用し、`c:\Windows\System32\Drivers\etc\hosts` ファイル (Windows の場合) または `/etc/hosts` ファイル (Linux の場合) を変更して、IP アドレスと DNS のマッピングを含めることができます。
 
 1. IP アドレスと DNS のマッピングを含めるには、仮想マシン *myVM* にサインインし、`c:\Windows\System32\Drivers\etc\hosts` ファイルを開き、前の手順で取得した DNS 情報を次の形式で含めます。
 

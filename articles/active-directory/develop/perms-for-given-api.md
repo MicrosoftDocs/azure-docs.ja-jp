@@ -2,7 +2,6 @@
 title: 指定の API のアクセス許可を選択する | Microsoft Docs
 description: 開発中のアプリケーションに関するクライアント アプリケーションとリソース アプリケーションでアクセス許可要求を使用する方法について説明します
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: ''
@@ -10,18 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abae311057ac5cfadb72faa0df525fdbec17f757
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: d459325b6c02a4109825ea7de984b57ff3d7ae00
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321053"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921383"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>指定の API のアクセス許可を選択する方法 
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4001f3c88b676a2786159946a8981823e18ea5f6
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 790a948611c6cfa336964397282a38d2b9c00e11
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70274410"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848784"
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -41,7 +41,7 @@ ms.locfileid: "70274410"
   >
 * **Q:グループに対してパスワード リセットを有効にし、その後全員に対してパスワード リセットを有効にする場合、ユーザーは再登録する必要がありますか。**
 
-  > **A:** いいえ。 認証データを設定したユーザーは、再登録する必要はありません。
+  > **A:** No. 認証データを設定したユーザーは、再登録する必要はありません。
   >
   >
 * **Q:ユーザーの代わりにパスワード リセット データを定義することはできますか。**
@@ -61,7 +61,7 @@ ms.locfileid: "70274410"
   >
 * **Q:ユーザーがパスワード リセットを使用するには、そのユーザーが事前に登録されている必要がありますか。**
 
-  > **A:** いいえ。 ユーザーに代わって必要な認証情報を定義している場合は、ユーザー が登録を行う必要はありません。 適切に書式設定されたデータがディレクトリ内の該当フィールドに格納されている限り、パスワード リセットは正常に動作します。
+  > **A:** No. ユーザーに代わって必要な認証情報を定義している場合は、ユーザー が登録を行う必要はありません。 適切に書式設定されたデータがディレクトリ内の該当フィールドに格納されている限り、パスワード リセットは正常に動作します。
   >
   >
 * **Q:ユーザーの代わりに [認証用電話]、[認証用電子メール]、または [代替の認証用電話] フィールドを同期または設定できますか。**
@@ -159,7 +159,7 @@ ms.locfileid: "70274410"
   >
 * **Q:ユーザーが同じセキュリティの質問を 2 回以上登録することはできますか。**
 
-  > **A:** いいえ。 ユーザーは、特定の質問を登録した後、同じ質問を再度登録することはできません。
+  > **A:** No. ユーザーは、特定の質問を登録した後、同じ質問を再度登録することはできません。
   >
   >
 * **Q:登録用とリセット用のセキュリティの質問について個数の下限を設定できますか。**

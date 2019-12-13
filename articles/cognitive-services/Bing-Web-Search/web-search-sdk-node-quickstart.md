@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 79f0630c65aa438ac5d831b03842cc74b609cd3b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 059862255ca2cf0ce435496bf22d866a37c8be71
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132745"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977167"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>クイック スタート:Node.js 用の Bing Web Search SDK を使用する
 
@@ -23,15 +23,14 @@ Bing Web Search SDK を使用すると、Node.js アプリケーションに Bin
 
 今すぐコードを確認したい場合は、 GitHub で、[Node.js 用の Bing Web Search SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)を入手できます。
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
-
 ## <a name="prerequisites"></a>前提条件
 このクイック スタートを実行するには、以下のものが必要です。
 
 * [Node.js 6](https://nodejs.org/en/download/) 以降
 * サブスクリプション キー  
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+
 
 ## <a name="set-up-your-development-environment"></a>開発環境を設定する
 

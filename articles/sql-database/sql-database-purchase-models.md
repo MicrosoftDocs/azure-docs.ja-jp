@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821262"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973528"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>仮想コアと DTU の購入モデルから選択する
 
@@ -129,7 +129,7 @@ DTU ベースの購入モデルでは、[単一データベース](sql-database-
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>リソースのエラスティック プールを使うとメリットがあるワークロード
 
-プールは、リソース使用率の平均が低く、使用率の急上昇が比較的発生しにくいデータベースに最適です。 SQL Database は、既存の SQL Database サーバー上にあるデータベースのリソース使用量の履歴を自動的に評価し、Azure portal での適切なプール構成を推奨します。 詳しくは、「[SQL Database エラスティック プールを検討すべきとき](sql-database-elastic-pool.md)」をご覧ください。
+プールは、リソース使用率の平均が低く、使用率の急上昇が比較的発生しにくいデータベースに最適です。 詳しくは、「[SQL Database エラスティック プールを検討すべきとき](sql-database-elastic-pool.md)」をご覧ください。
 
 ## <a name="frequently-asked-questions-faqs"></a>よく寄せられる質問 (FAQ)
 

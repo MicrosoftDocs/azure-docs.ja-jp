@@ -3,27 +3,23 @@ title: Java 用 Microsoft Authentication Library での AD FS サポート
 titleSuffix: Microsoft identity platform
 description: Java 用 Microsoft Authentication Library (MSAL4j) での Active Directory フェデレーション サービス (AD FS) サポートについて説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: sangonzal
-manager: henrikm
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/21/2019
 ms.author: sagonzal
-ms.reviewer: navyasri.canumalla
+ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c286ed7467560c90f9cf9594e75af06d6cdcc5d1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 665cef55965f6871a654b9baceaad3e4f5d196c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482089"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916657"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>MSAL for Java での Active Directory フェデレーション サービスのサポート
 
@@ -42,7 +38,7 @@ MSAL for Java が Azure AD に接続されると、Azure AD で管理されて�
 1. ユーザーは自分のアカウント ID を入力します。
 2. Azure AD に "組織のページに移動します" と短い時間だけ表示された後、ユーザーは ID プロバイダーのサインイン ページにリダイレクトされます。 サインイン ページは、通常、組織のロゴでカスタマイズされます。
 
-このフェデレーション シナリオでサポートされている AD FS のバージョン:
+このフェデレーション シナリオでサポートされている AD FS バージョンは次のとおりです。
 - Active Directory フェデレーション サービス FS v2
 - Active Directory フェデレーション サービス v3 (Windows Server 2012 R2)
 - Active Directory フェデレーション サービス v4 (AD FS 2016)

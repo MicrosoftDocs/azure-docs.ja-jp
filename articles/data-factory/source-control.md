@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory のソース管理
+title: ソース管理
 description: Azure Data Factory でソース管理を構成する方法について説明します
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: naF
-ms.topic: conceptual
-ms.date: 01/09/2019
 author: djpmsft
 ms.author: daperlov
+manager: anandsub
 ms.reviewer: ''
-manager: craigg
-ms.openlocfilehash: 904165c4a221e1db30f9aa1ce1f2ce7b21cf04ed
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 01/09/2019
+ms.openlocfilehash: 1f31bb78fced6db2a26559cbd098407823161dfc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703826"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928764"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 

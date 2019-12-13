@@ -1,6 +1,6 @@
 ---
 title: マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング - Azure | Microsoft Docs
-description: このトピックでは、オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。 ストリームでは、1 つ以上のストリーミング エンドポイントを介し、次のアダプティブ ストリーミング プロトコルのいずれかを使用してクライアントの再生アプリケーションに送信できます:HLS、スムーズ ストリーミング、DASH。
+description: このトピックでは、オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a299c050be37d53acd01ddc2db580c4881eeae07
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69015478"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887103"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する
 

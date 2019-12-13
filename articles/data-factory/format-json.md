@@ -2,19 +2,19 @@
 title: Azure Data Factory での JSON 形式
 description: このトピックでは、Azure Data Factory で JSON 形式を処理する方法について説明します。
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: c3d879e808e7903f6257926d06c5eb2ddbe93c43
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: f8f5e65115acddd71808a169039d0b98b2470147
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74548256"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74932072"
 ---
 # <a name="json-format-in-azure-data-factory"></a>Azure Data Factory での JSON 形式
 

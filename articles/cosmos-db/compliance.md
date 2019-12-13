@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB のコンプライアンス
 description: この記事では、Azure Cosmos DB のコンプライアンス認証の範囲について説明します。
-author: dharmas-cosmos
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 9ebec5498da8f7280179a48a6e3e3b10a9810e28
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: a41d95a5ab0665698676d0f17333e2f5c7f467eb
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881842"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872205"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Azure Cosmos DB のコンプライアンス 
 

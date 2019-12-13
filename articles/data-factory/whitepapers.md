@@ -9,16 +9,15 @@ ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.openlocfilehash: 9421a4bbc5f05e8473d25aa63f31e9a8e23e3c98
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b4b13f8b21cfdedde93145a8e437bc2301bee460
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555190"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927104"
 ---
 # <a name="azure-data-factory-whitepapers"></a>Azure Data Factory のホワイトペーパー 
 

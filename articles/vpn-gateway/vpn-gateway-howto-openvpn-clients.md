@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: b8f1626da730178d2cd9c2f31c4f9876102b3d46
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477841"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997158"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>Azure VPN Gateway 用に OpenVPN クライアントを構成する
 
@@ -121,7 +121,7 @@ VPN ゲートウェイ用に OpenVPN を構成する手順を完了している�
 11. コマンド ラインを使用して接続するには、以下のコマンドを入力します。
   
     ```
-    sudo openvpn –-config <name and path of your VPN profile file>
+    sudo openvpn –-config <name and path of your VPN profile file>&
     ```
 12. GUI を使用して接続するには、システム設定に移動します。
 13. **+** をクリックして新しい VPN 接続を追加します。

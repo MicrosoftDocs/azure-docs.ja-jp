@@ -4,16 +4,16 @@ description: この記事では、Azure Enterprise Agreement (EA) に関して A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.topic: troubleshooting
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 13f5aa80a12a0c28e1780bcfa18156da53990ba7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ff8408a098049d860a614900bdeea80da1bd95e4
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223961"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841389"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Azure EA Portal のアクセスのトラブルシューティング
 

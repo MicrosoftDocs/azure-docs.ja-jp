@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 497efda857dcd7de3079d702be00a094d221b779
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034832"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900837"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーシップによるユーザーへのライセンスの割り当て
 
@@ -41,7 +41,7 @@ ms.locfileid: "72034832"
 
 1. **[すべての製品]** で、製品名を選択して Office 365 Enterprise E5 と Enterprise Mobility + Security E3 の両方を選択します。 割り当てを開始するには、ページの上部にある **[割り当て]** を選択します。
 
-   ![ライセンスを割り当てる製品を選択します](./media/licensing-groups-assign/all-products-assign.png)
+   ![ライセンスを割り当てる製品を選択します](./media/licensing-groups-assign/licenses-all-products-assign.png)
   
 1. **[ライセンスの割り当て]** ページで **[ユーザーとグループ]** を選択して、ユーザーとグループの一覧を開きます。
 
@@ -89,7 +89,7 @@ ms.locfileid: "72034832"
 
 1. ユーザーの **[ライセンス]** ページを開くユーザーを選択します。 このページには、ユーザーに現在割り当てられているすべてのライセンスが表示されます。 この例では、このユーザーは**キオスク ユーザー** グループから継承された Office 365 Enterprise E1 のライセンスを持っています。 これは、システムが**人事部**グループから適用しようとした E3 ライセンスと競合しています。 結果的にこのユーザーには、そのグループからどのライセンスも割り当てられていません。
 
-   ![ユーザーのすべてのライセンスの競合を表示します](./media/licensing-groups-assign/user-license-view.png)
+   ![ユーザーのすべてのライセンスの競合を表示します](./media/licensing-groups-assign/user-licence-conflicting-service-plans.png)
 
 1. この競合を解消するには、**キオスク ユーザー** グループからこのユーザーを削除します。 Azure AD によって変更が処理された後、**人事部**のライセンスは正常に割り当てられます。
 

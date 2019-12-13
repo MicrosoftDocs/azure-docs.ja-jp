@@ -1,18 +1,19 @@
 ---
-title: Azure portal でストレージ アカウント設定を管理する - Azure Storage | Microsoft Docs
+title: Azure portal でストレージ アカウント設定を管理する
+titleSuffix: Azure Storage
 description: Azure portal でストレージ アカウント設定を管理する方法について説明します。これには、アクセス制御設定の構成、アカウント アクセス キーの再生成、アクセス層の変更、アカウントにより使用されるレプリケーションの種類の変更などが含まれます。 ポータルでストレージ アカウントを削除する方法についても説明します。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 11/06/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93d3bf3d17348a0f5ad62118fcb9c9a0c6f2f656
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748995"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892381"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Azure portal でストレージ アカウント設定を管理する
 

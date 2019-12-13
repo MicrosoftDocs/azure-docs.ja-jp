@@ -1,23 +1,22 @@
 ---
-title: Azure Data Factory のセキュリティに関する考慮事項
+title: セキュリティに関する考慮事項
 description: Azure Data Factory のデータ移動サービスがデータの保護を容易にするために使用する基本的なセキュリティ インフラストラクチャについて説明します。
 services: data-factory
-documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 06/15/2018
-ms.author: abnarain
-ms.openlocfilehash: 15178fd0b5253b34f21030665a5835646c13b75d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e809c88d8a0a0efeb12e9f2a472a497349fdfa1b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675843"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927508"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
@@ -136,7 +135,7 @@ Azure Virtual Network は、クラウド内のユーザーのネットワーク�
 
 次の表には、ハイブリッド データ移動のソースと移動先の場所の異なる組み合わせに基づいたネットワークとセルフホステッド統合ランタイムの構成の推奨事項がまとめてあります。
 
-| source      | Destination                              | ネットワーク構成                    | 統合ランタイムのセットアップ                |
+| source      | 宛先                              | ネットワーク構成                    | 統合ランタイムのセットアップ                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | IPSec VPN (ポイント対サイトまたはサイト間) | セルフホステッド統合ランタイムは、仮想ネットワークの Azure 仮想マシン上にインストールすることをお勧めします。  |
 | オンプレミス | 仮想ネットワークにデプロイされた仮想マシンとクラウド サービス | ExpressRoute (プライベート ピアリング)           | セルフホステッド統合ランタイムは、仮想ネットワークの Azure 仮想マシン上にインストールすることをお勧めします。  |

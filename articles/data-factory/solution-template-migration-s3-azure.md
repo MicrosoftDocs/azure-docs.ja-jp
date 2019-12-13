@@ -1,24 +1,22 @@
 ---
-title: Azure Data Factory を使用して Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する
+title: Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する
 description: ソリューション テンプレートを使用して Amazon S3 からデータを移行する方法について説明します。これには、Azure Data Factory で AWS S3 のパーティション一覧を格納する外部制御テーブルを使用します。
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/07/2019
-ms.openlocfilehash: a8591762bf4e8eccd5e1b7d67538674feed720b9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e918fe01426202746f0225d25304b9c1b26cb74b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684195"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927318"
 ---
 # <a name="migrate-data-from-amazon-s3-to-azure-data-lake-storage-gen2"></a>Amazon S3 から Azure Data Lake Storage Gen2 にデータを移行する
 

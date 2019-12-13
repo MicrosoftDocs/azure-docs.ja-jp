@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: deab16f3b80ada12a7167e90922dc38f3012be91
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d654dc05668a71b0fe69de32e5c09f8936951f8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478684"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951583"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>コンテナーの Azure Monitor に対するエージェントのデータ収集を構成する
 
@@ -63,12 +63,6 @@ ConfigMap 構成ファイルを構成してクラスターにデプロイする�
     
     構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
 
-4. 次の kubectl コマンドを実行して、ConfigMap を作成します: `kubectl apply -f <configmap_yaml_file.yaml>`。
-    
-    例: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
-    
-    構成の変更が有効になるまでに数分かかる場合があり、クラスター内のすべての omsagent ポッドが再起動されます。 すべての omsagent ポッドが同時に再起動されるのではなく、ローリング再起動で行われます。 再起動が完了すると、次のような結果を含むメッセージが表示されます: `configmap "container-azm-ms-agentconfig" created`。
-
 ## <a name="verify-configuration"></a>構成の確認 
 
 構成が正常に適用されたことを検証するには、次のコマンドを使って、エージェント ポッドからのログを確認します: `kubectl logs omsagent-fdf58 -n=kube-system`。 omsagent ポッドからの構成エラーがある場合は、出力で次のようなエラーが示されます。
@@ -88,7 +82,7 @@ config::unsupported/missing config schema version - 'v21' , using defaults
     config::error::Exception while parsing config map for log collection/env variable settings: \nparse error on value \"$\" ($end), using defaults, please check config map for errors
     ```
 
-- Log Analytics ワークスペースの **KubeMonAgentEvents** テーブルから。 データは、構成エラーに関する*エラー*の重大度と共に、1 時間ごとに送信されます。 エラーがない場合、テーブルのエントリには*情報*の重大度を含むデータがあり、エラーは報告されません。 **Tags** プロパティには、エラーが発生したポッドとコンテナーの ID に関する詳細情報のほか、過去 1 時間の最初の発生時刻、最後の発生時刻、発生回数も含まれます。
+- Log Analytics ワークスペースの **KubeMonAgentEvents** テーブルから。 データは、構成エラーに関する*エラー*の重大度と共に、1 時間ごとに送信されます。 エラーがない場合、テーブルのエントリには*情報*の重大度を含むデータがあり、エラーは報告されません。 **[タグ]** プロパティには、エラーが発生したポッドとコンテナー ID に関する詳細情報のほか、過去 1 時間の最初の発生、最後の発生、および発生回数も含まれます。
 
 エラーがあると omsagent でファイルを解析できず、再起動されて、既定の構成が使用されます。 ConfigMap でエラーを修正した後、yaml ファイルを保存し、次のコマンドを実行して更新された ConfigMap を適用します: `kubectl apply -f <configmap_yaml_file.yaml`。
 

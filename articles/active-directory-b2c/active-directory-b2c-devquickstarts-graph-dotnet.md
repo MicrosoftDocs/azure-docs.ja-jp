@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e0b87757326b5e2a54a78a38bbcd5bef8e6f5be2
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 42378c4377057902937b718555489636bc5dcbaa
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74119978"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900014"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C:Azure AD Graph API を使用する
 
@@ -363,6 +363,5 @@ B2C Update-User <object-id-of-user> <path-to-json-file>
 ご自分のアプリケーションにこの機能を組み込むときは、B2C アプリケーションに関するいくつかの重要な点に注意してください。
 
 * テナントで必要なアクセス許可をアプリケーションに付与します。
-* 現時点では、ADAL (MSAL ではありません) を使用してアクセス トークンを取得する必要があります。 (ライブラリを使用せず、プロトコル メッセージを直接送信することもできます。)
 * Graph API を呼び出す場合は、`api-version=1.6` を使用します。
 * コンシューマー ユーザーを作成し、更新するとき、上述のようにいくつかのプロパティが必要になります。

@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor ブックの視覚化を使用した対話型レポートの作成 | Microsoft Docs
+title: Azure Monitor ブックの視覚化
 description: テキスト、チャート、グリッド、ツリー、グラフなど、Azure Monitor ブックのすべての視覚化コンポーネントについて説明します。
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d878e8b5dd49ba517f85ebb74332bc6a245c33ca
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: bcc60c0f934111f779e3fdedc399881acb16f208
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164173"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872793"
 ---
 # <a name="azure-monitor-workbook-visualizations"></a>Azure Monitor ブックの視覚化
 
@@ -127,7 +127,7 @@ Azure Monitor のブックでは、レポートのニーズに合わせてさま
 
 1. _[編集]_ ツール バー項目をクリックして、ブックを編集モードに切り替えます。
 2. **[クエリの追加]** リンクを使用して、ログ クエリ コントロールをブックに追加します。 
-3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) とターゲットのリソースを選択します。
+3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) と、ターゲットにするリソースを選択します。
 4. クエリ エディターを使用して、分析用の KQL を入力します
     ```kusto
     requests
@@ -160,7 +160,7 @@ Azure Monitor のブックでは、レポートのニーズに合わせてさま
 ### <a name="adding-a-tree-grid"></a>ツリー グリッドの追加
 1. _[編集]_ ツール バー項目をクリックして、ブックを編集モードに切り替えます。
 2. **[クエリの追加]** リンクを使用して、ログ クエリ コントロールをブックに追加します。 
-3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) とターゲットのリソースを選択します。
+3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) と、ターゲットにするリソースを選択します。
 4. クエリ エディターを使用して、分析用の KQL を入力します
     ```kusto
     requests
@@ -208,7 +208,7 @@ Azure Monitor のブックでは、レポートのニーズに合わせてさま
 ### <a name="adding-a-graph"></a>グラフの追加
 1. _[編集]_ ツール バー項目をクリックして、ブックを編集モードに切り替えます。
 2. **[クエリの追加]** リンクを使用して、ログ クエリ コントロールをブックに追加します。 
-3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) とターゲットのリソースを選択します。
+3. クエリの種類として **[ログ]** を選択し、リソースの種類 (たとえば、Application Insights) と、ターゲットにするリソースを選択します。
 4. クエリ エディターを使用して、分析用の KQL を入力します
     ```kusto
     let data = dependencies

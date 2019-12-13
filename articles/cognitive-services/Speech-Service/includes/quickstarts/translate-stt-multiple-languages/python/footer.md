@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 25a9c7061c1b0e53320097b36262c7f8ed9ab868
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 535a4dfb6127c4507126c377f6fbb8842c759d06
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817209"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981079"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で Python のサンプルを詳しく見てみる](https://aka.ms/speech/github-python)

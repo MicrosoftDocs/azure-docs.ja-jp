@@ -223,7 +223,7 @@ CSV インポート用のコマンド ライン サンプルを以下に示し�
 dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionThroughput:2500
 ```
 
-## <a id="AzureTableSource"></a>Azure テーブル ストレージからのインポート
+## <a id="AzureTableSource"></a>Azure Table Storage からのインポート
 
 Azure Table Storage ソース インポーター オプションを使用して、個々の Azure Table Storage テーブルからインポートできます。 必要に応じて、インポートするテーブル エンティティをフィルター処理できます。
 
@@ -231,7 +231,7 @@ Azure Table Storage からインポートしたデータは、Table API で使�
 
 ![Azure Table Storage ソース オプションのスクリーンショット](./media/import-data/azuretablesource.png)
 
-Azure テーブル ストレージの接続文字列の形式は次のとおりです。
+Azure Table Storage の接続文字列の形式は次のとおりです。
 
 `DefaultEndpointsProtocol=<protocol>;AccountName=<Account Name>;AccountKey=<Account Key>;`
 
@@ -247,7 +247,7 @@ Azure Table Storage ソース インポーター オプションには、次の�
    2. なし - すべての内部フィールドを除外します。
    3. RowKey - RowKey フィールドのみを含めます。
 2. 列の選択
-   1. Azure テーブル ストレージのフィルターでは、プロジェクションはサポートされません。 特定の Azure テーブル エンティティ プロパティのみをインポートする場合は、[列の選択] リストに追加します。 これにより、他のエンティティ プロパティはすべて無視されます。
+   1. Azure Table Storage のフィルターでは、プロジェクションはサポートされません。 特定の Azure テーブル エンティティ プロパティのみをインポートする場合は、[列の選択] リストに追加します。 これにより、他のエンティティ プロパティはすべて無視されます。
 
 Azure Table Storage からインポートするためのコマンド ライン サンプルを以下に示します。
 

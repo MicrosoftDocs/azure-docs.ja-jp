@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 6c3ecfb892af357bd6f77d1e27a632caf6f58872
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 739be9bfe382e0180a4c00994a48e06a5ab5caeb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817637"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981149"
 ---
 > [!div class="nextstepaction"]
 > [GitHub で Java のサンプルを詳しく見てみる](https://aka.ms/speech/github-java)

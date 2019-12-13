@@ -4,17 +4,17 @@ description: この記事には、Azure Automation 環境の管理に関する�
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9de5909ddca5fd36f3fafcb79e2a4ad519402c9c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476579"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850773"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation のデータの管理
 この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。
@@ -26,7 +26,7 @@ Azure Automation は、90 日を超えるジョブを自動的に削除した後
 
 次の表は、さまざまなリソースの保持ポリシーをまとめたものです。
 
-| データ | ポリシー |
+| Data | ポリシー |
 |:--- |:--- |
 | アカウント |ユーザーによってアカウントが削除された日から 90 日後に完全に消去されます。 |
 | アセット |ユーザーによって資産が削除された日から 90 日後に、または資産を保持するアカウントがユーザーによって削除された日から 90 日後に完全に消去されます。 |

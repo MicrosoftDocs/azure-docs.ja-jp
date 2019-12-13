@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: helohr
-ms.openlocfilehash: 6b4e1a5024fec07ca73c79d2742933b7b115e6c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384318"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851181"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -28,16 +28,6 @@ Citrix は、堅牢なエンタープライズ ツールで、ユーザー密度
 
 - [パートナーの Web サイトにアクセスする。](https://more.citrix.com/wvd)
 
-## <a name="cloudhouse"></a>Cloudhouse
-
-![Cloudhouse ロゴ](./media/partners/cloudhouse.png)
-
-Cloudhouse は、最新の Windows オペレーティング システムと互換性のないアプリケーションを含むすべてのアプリケーションを Windows Virtual Desktop 環境に移行できる、ターンキー アプリケーション移行サービスを顧客に提供する、Windows Virtual Desktop に付加価値を付けるサービス プロバイダーです。これにより顧客は、Windows 10 を真にマルチセッションで利用できるようになります。 
-
-この Cloudhouse のサービスでは、実証済みの Cloudhouse コンテナー化テクノロジを活用して、Windows XP、Windows 7、または Windows 8 向けに設計されたすべてのアプリケーションを、コードを変更したり、ユーザー エクスペリエンスに影響を与えずに、最新の Windows Virtual Desktop に展開できます。 Cloudhouse では、基になるオペレーティング システムからアプリケーションを分離することにより、コンテナー化されたアプリケーションに影響を与えずに Windows のサービス更新プログラムをロールアウトできることでも、Windows Virtual Desktop にさらに付加価値を付けます。 
-
-- [パートナーの Web サイトにアクセスする。](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua)
-
 ## <a name="vmware"></a>VMware
 
 ![VMware のロゴ](./media/partners/vmware.png)
@@ -48,6 +38,17 @@ Cloudhouse は、最新の Windows オペレーティング システムと互�
 
 - [Horizon Cloud on Microsoft Azure のテクニカル プレビューに登録する。](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html)
 - [パートナーの Web サイトにアクセスする。](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)
+
+
+## <a name="cloudhouse"></a>Cloudhouse
+
+![Cloudhouse ロゴ](./media/partners/cloudhouse.png)
+
+Cloudhouse は、最新の Windows オペレーティング システムと互換性のないアプリケーションを含むすべてのアプリケーションを Windows Virtual Desktop 環境に移行できる、ターンキー アプリケーション移行サービスを顧客に提供する、Windows Virtual Desktop に付加価値を付けるサービス プロバイダーです。これにより顧客は、Windows 10 を真にマルチセッションで利用できるようになります。 
+
+この Cloudhouse のサービスでは、実証済みの Cloudhouse コンテナー化テクノロジを活用して、Windows XP、Windows 7、または Windows 8 向けに設計されたすべてのアプリケーションを、コードを変更したり、ユーザー エクスペリエンスに影響を与えずに、最新の Windows Virtual Desktop に展開できます。 Cloudhouse では、基になるオペレーティング システムからアプリケーションを分離することにより、コンテナー化されたアプリケーションに影響を与えずに Windows のサービス更新プログラムをロールアウトできることでも、Windows Virtual Desktop にさらに付加価値を付けます。 
+
+- [パートナーの Web サイトにアクセスする。](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua)
 
 ## <a name="cloudjumper"></a>CloudJumper
 

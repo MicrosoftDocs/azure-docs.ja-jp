@@ -4,15 +4,15 @@ description: Application Insights でシステムとカスタムの .NET/.NET Co
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cithomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 0762819239e8fd71a015f317776a94280806db53
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72677163"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889126"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter の概要
 
@@ -28,7 +28,7 @@ Application Insights では、その `EventCounterCollectionModule` (新しく�
 
 .NET Core 3.0 で実行されているアプリでは、次のカウンターが SDK によって自動的に収集されます。 カウンターの名前の形式は、"カテゴリ|カウンター" になります。
 
-|Category | カウンター|
+|カテゴリ | カウンター|
 |---------------|-------|
 |`System.Runtime` | `cpu-usage` |
 |`System.Runtime` | `working-set` |

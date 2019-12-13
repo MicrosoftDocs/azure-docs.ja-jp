@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d11dc70a78fcec62032c2a6af168bd306c9d416
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227867"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931114"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 
@@ -216,6 +216,7 @@ Standard ファイル共有は、すべてのリージョンで 5 TiB まで利�
 |米国東部 2*      |LRS     |
 |フランス中部 |LRS、ZRS|
 |フランス南部   |LRS     |
+|米国中北部 |LRS     |
 |北ヨーロッパ   |LRS     |
 |インド南部    |LRS     |
 |東南アジア |LRS、ZRS|

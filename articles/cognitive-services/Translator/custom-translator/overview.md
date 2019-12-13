@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: 0269b4e611432093ea677e2ea7e429c84ce9db87
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e002a5fbe38596d6507eec81ba3dd2a05c25153a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257660"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975807"
 ---
 # <a name="what-is-custom-translator"></a>Custom Translator とは
 

@@ -3,20 +3,19 @@ title: Data Factory のマネージド ID
 description: Azure Data Factory のマネージド ID について説明します。
 services: data-factory
 author: linda33wj
-manager: craigg
+manager: shwang
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: d8f65bef669e21af96ffe86319602ca5d1eea2c1
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ede1e56384c75c64765962b7db196973a30c605b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822730"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928444"
 ---
 # <a name="managed-identity-for-data-factory"></a>Data Factory のマネージド ID
 

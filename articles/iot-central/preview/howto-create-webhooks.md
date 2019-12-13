@@ -3,17 +3,17 @@ title: Azure IoT Central でルールに対する Webhook を作成する | Micr
 description: Azure IoT Central でルールが作動したときに他のアプリケーションに自動的に通知する Webhook を作成します。
 author: viv-liu
 ms.author: viviali
-ms.date: 10/21/2019
+ms.date: 12/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: d1f99be5f21cbf8f1dcfe4a32595a639d3760494
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 206c93c291654d22e945c3064e3c581dceb50cea
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929933"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895469"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central-preview-features"></a>Azure IoT Central でルールに対する Webhook アクションを作成する (プレビュー機能)
 

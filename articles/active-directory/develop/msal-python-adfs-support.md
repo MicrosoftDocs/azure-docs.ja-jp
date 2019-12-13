@@ -3,27 +3,23 @@ title: Python 用 Microsoft Authentication Library での Azure AD FS サポー�
 titleSuffix: Microsoft identity platform
 description: Python 用 Microsoft Authentication Library での Active Directory フェデレーション サービス (AD FS) サポートについて説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: abhidnya13
-manager: henrikm
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/23/2019
 ms.author: abpati
-ms.reviewer: navyasri.canumalla
+ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aada339ab68eeb7f29eeb815611a8e434e6a998
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: d83148f6bfff038f7310ff6fa1f3e1f5a4f8f066
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803650"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921434"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>MSAL for Python での Active Directory フェデレーション サービスのサポート
 

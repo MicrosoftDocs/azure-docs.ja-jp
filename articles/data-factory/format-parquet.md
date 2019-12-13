@@ -2,19 +2,19 @@
 title: Azure Data Factory での Parquet 形式
 description: このトピックでは、Azure Data Factory で Parquet 形式を処理する方法について説明します。
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: jingwang
-ms.openlocfilehash: 9047e82713b709027275c75b17eb955877c62f08
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 72b001ada98ecd768cd39fea012a20f2ada466d2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674783"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931268"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>Azure Data Factory での Parquet 形式
 

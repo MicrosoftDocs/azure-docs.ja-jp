@@ -8,13 +8,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 2bac26f0fd0a6aff80280dfd1b768aeeb3634511
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 173f63943fdb65d6ddcf794ab631fa2c0bef2254
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816814"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74981080"
 ---
 すぐに使用できるようにするには、GitHub ですべての <a href="https://aka.ms/speech/github-cpp">Speech SDK C++ サンプル</a>を表示またはダウンロードします。 それ以外の場合は、始めましょう。

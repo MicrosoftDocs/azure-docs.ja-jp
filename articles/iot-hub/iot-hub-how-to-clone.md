@@ -2,18 +2,17 @@
 title: Azure IoT ハブを複製する方法
 description: Azure IoT ハブを複製する方法
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083281"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976147"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT ハブを別のリージョンに複製する方法
 
@@ -73,9 +72,7 @@ IoT ハブを複製する前に、いくつかの点を考慮する必要があ�
    1. テンプレートにエクスポートされていないものを追加します。 
    
        たとえば、コンシューマー グループはテンプレートにエクスポートされません。 コンシューマー グループを手動でテンプレートに追加するか、ハブの作成後に [Azure portal](https://portal.azure.com) を使用する必要があります。 テンプレートにコンシューマー グループを 1 つ追加する例については、「[Azure Resource Manager テンプレートを使用して IoT Hub のメッセージ ルーティングを構成する](tutorial-routing-config-message-routing-rm-template.md)」記事を参照してください。
-
-       [メッセージ エンリッチメント](iot-hub-message-enrichments-overview.md)もテンプレートにエクスポートされません。 これらはルーティング メッセージと組み合わせて使用されるため、メッセージ ルーティングの構成が更新されたときに、新しいハブで手動で更新する必要があります。
-
+       
    1. 元のハブから複製にデバイスをコピーします。 これについては、[IoT ハブに登録されているデバイスを管理](#managing-the-devices-registered-to-the-iot-hub)する方法に関するセクションを参照してください。
 
 ## <a name="how-to-handle-message-routing"></a>メッセージ ルーティングを処理する方法
@@ -103,9 +100,6 @@ IoT ハブを複製する前に、いくつかの点を考慮する必要があ�
    * ハブは引き続き元のルーティング リソースを参照し、構成されたとおりにメッセージをルーティングします。
 
    * ハブとルーティング エンドポイント リソースが同じ場所にないため、パフォーマンスがわずかに低下します。
-
-> [!NOTE]
-> ハブで[メッセージの拡張機能](iot-hub-message-enrichments-overview.md)を使用している場合は、Resource Manager テンプレートではエクスポートされないため、新しい IoT ハブでこれらを手動で設定する必要があります。
 
 ## <a name="prepare-to-migrate-the-hub-to-another-region"></a>ハブを別のリージョンに移行するための準備
 

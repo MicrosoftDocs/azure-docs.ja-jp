@@ -4,13 +4,13 @@ ms.service: time-series-insights
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.date: 10/09/2019
-ms.openlocfilehash: 038d25a01c02799f48b8430fb6ac3facc1cd3bd6
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.date: 12/06/2019
+ms.openlocfilehash: 8d0c1edd2766d5fa46603d241c4f769fe5777cd1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990858"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980719"
 ---
 ## <a name="business-disaster-recovery"></a>ビジネスのディザスター リカバリー
 

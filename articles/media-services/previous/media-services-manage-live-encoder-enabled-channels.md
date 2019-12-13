@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services を使用してマルチビットレートのストリームを作成するライブ ストリーミング | Microsoft Docs
-description: このトピックでは、オンプレミスのエンコーダーからシングル ビットレートのライブ ストリームを受信した後、Media Services を使用してアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの設定方法について説明します。 ストリームでは、1 つ以上のストリーミング エンドポイントを介し、次のアダプティブ ストリーミング プロトコルのいずれかを使用してクライアントの再生アプリケーションに送信できます:HLS、スムーズ ストリーミング、MPEG DASH。
+description: このトピックでは、オンプレミスのエンコーダーからシングル ビットレートのライブ ストリームを受信した後、Media Services を使用してアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの設定方法について説明します。
 services: media-services
 documentationcenter: ''
 author: anilmur
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: anilmur
 ms.reviewer: juliako
-ms.openlocfilehash: 4131e9b0ec057c16516f5a656debcf7053c2c1fe
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 32a4fde12287e06c12fac9ed13ad7a8889b49fc1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598315"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895911"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 

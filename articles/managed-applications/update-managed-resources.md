@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 21f4e0aa339eb0c746f9b9b06f8aaada6c4d4b71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f00a99a31a4543ef45c90a86820e627134d8963
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043460"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888701"
 ---
 # <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Azure マネージド アプリケーションのマネージド リソース グループを操作する
 
 この記事では、マネージド アプリケーションの一部としてデプロイされているリソースを更新する方法について説明します。 マネージド アプリケーションの発行元として、マネージド リソース グループ内のリソースにアクセスできます。 これらのリソースを更新するには、マネージド アプリケーションに関連付けられているマネージド リソース グループを見つけて、そのリソース グループ内のリソースにアクセスする必要があります。
 
-この記事では、マネージド アプリケーションを「[Managed Web Application (IaaS) with Azure management services](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app)」(Azure 管理サービスを使用するマネージド Web アプリケーション (IaaS)) サンプル プロジェクトにデプロイしていることを前提としています。 そのマネージド アプリケーションには、**Standard_D1_v2** 仮想マシンが含まれています。 マネージド アプリケーションをデプロイしていない場合でも、この記事で、マネージド リソース グループを更新するための手順に慣れることができます。
+この記事では、マネージド アプリケーションを「[Managed Web Application (IaaS) with Azure management services](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-web-app)」(Azure 管理サービスを使用するマネージド Web アプリケーション (IaaS)) サンプル プロジェクトにデプロイしていることを前提としています。 そのマネージド アプリケーションには、**Standard_D1_v2** 仮想マシンが含まれています。 マネージド アプリケーションをデプロイしていない場合でも、この記事で、マネージド リソース グループを更新するための手順に慣れることができます。
 
 次の図は、デプロイ済みのマネージド アプリケーションを示しています。
 
@@ -97,4 +97,4 @@ az policy assignment show --name locationAssignment --scope $managedGroup --quer
 ## <a name="next-steps"></a>次の手順
 
 * マネージド アプリケーションの概要については、[マネージド アプリケーションの概要](overview.md)に関するページをご覧ください。
-* サンプル プロジェクトについては、[Azure マネージド アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。.
+* サンプル プロジェクトについては、[Azure マネージド アプリケーションのサンプル プロジェクト](sample-projects.md)に関する記事を参照してください。

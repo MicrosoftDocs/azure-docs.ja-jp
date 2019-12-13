@@ -1,18 +1,18 @@
 ---
 title: Azure リソース ログでサポートされているサービスとスキーマ
-description: Azure 診断ログでサポートされているサービスとイベント スキーマについて説明します。
+description: Azure リソース ログでサポートされているサービスとイベント スキーマについて説明します。
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: 09d1a25b83f405b45bbefd39766c82565ea86925
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af47195a336739d604f0eb40ce6c5c54e15547cb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476677"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894081"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Azure リソース ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -86,7 +86,7 @@ ms.locfileid: "73476677"
 | 仮想ネットワーク ゲートウェイ | スキーマは使用できません。 |
 
 ## <a name="supported-log-categories-per-resource-type"></a>リソースの種類ごとのサポートされているログ カテゴリ
-|リソースの種類|Category|カテゴリの表示名|
+|リソースの種類|カテゴリ|カテゴリの表示名|
 |---|---|---|
 |Microsoft.AAD/domainServices|SystemSecurity|SystemSecurity|
 |Microsoft.AAD/domainServices|AccountManagement|AccountManagement|
