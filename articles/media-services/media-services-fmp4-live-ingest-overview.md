@@ -38,7 +38,7 @@ ms.locfileid: "74888055"
 
 ![インジェスト フロー][image1]
 
-## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>手順 3.ビットストリーム形式 – ISO 14496-12 Fragmented MP4
+## <a name="3-bitstream-format--iso-14496-12-fragmented-mp4"></a>3.ビットストリーム形式 – ISO 14496-12 Fragmented MP4
 このドキュメントで言及するライブ ストリーミング インジェスト用のワイヤ形式は、[ISO-14496-12] に基づきます。 Fragmented MP4 形式、ビデオ オンデマンド ファイルの拡張子、ライブ ストリーミング インジェストの詳細については、[[MS-SSTR]](https://msdn.microsoft.com/library/ff469518.aspx) に関するページをご覧ください。
 
 ### <a name="live-ingest-format-definitions"></a>ライブ インジェスト形式の定義

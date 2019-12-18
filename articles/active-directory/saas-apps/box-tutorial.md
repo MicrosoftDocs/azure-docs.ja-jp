@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b808e13ec37b9667a3ab1aaa233532a076bf4970
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: aceec8ad6ca23a1bd89b93a6442d48aa81597e55
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558930"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964176"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Box の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "69558930"
 
 * Box にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して Box に自動的にサインインするように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -45,8 +45,8 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Box では、**SP** によって開始される SSO がサポートされます
+* Box では、[**自動化された**ユーザー プロビジョニングとプロビジョニング解除](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial) (推奨) がサポートされます
 * Box では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
-* Box では、[**自動化された**ユーザー プロビジョニング](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial)がサポートされます
 
 ## <a name="adding-box-from-the-gallery"></a>ギャラリーからの Box の追加
 

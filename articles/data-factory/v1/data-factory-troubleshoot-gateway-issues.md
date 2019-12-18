@@ -51,7 +51,7 @@ Azure Portal で **[このコンピューターに直接インストールしま
 #### <a name="resolution"></a>解決策
 コンピューター上の既存のゲートウェイをアンインストールしてから、 **[このコンピューターに直接インストールします]** リンクをもう一度クリックします。
 
-### <a name="3-problem"></a>手順 3.問題点
+### <a name="3-problem"></a>3.問題点
 新しいゲートウェイを登録するときに、次のエラーが表示される場合があります。
 
 `Error: The gateway has encountered an error during registration.`
@@ -171,7 +171,7 @@ Data Management Gateway Configuration Manager の **[設定]** タブにある *
 1. ゲートウェイのプロキシ設定を構成します。 詳細については、プロキシ サーバーに関する考慮事項セクションを参照してください。
 1. ゲートウェイ コンピューターの Windows ファイアウォールと会社のファイアウォールの両方で送信ポート 5671 および 9350 ～ 9354 を有効にします。 詳細については、ポートとファイアウォールのセクションを参照してください。 この手順は省略できますが、パフォーマンスの観点から推奨されます。
 
-### <a name="3-problem"></a>手順 3.問題点
+### <a name="3-problem"></a>3.問題点
 次のエラーが表示されます。
 
 `Error: Cloud service cannot connect to gateway through service bus.`

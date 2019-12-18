@@ -1,15 +1,15 @@
 ---
 title: Blockchain Data Manager を使用して Azure Cosmos DB を更新する - Azure Blockchain Service
 description: Azure Blockchain Service の Blockchain Data Manager を使用して、Azure Cosmos DB にブロックチェーン データを送信します
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.topic: tutorial
 ms.reviewer: chroyal
-ms.openlocfilehash: 497652f91d46592212a17a0a22832c02a696df62
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 79c39d9883b5ba618e368b0ff6d3e95f1af5bd96
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326257"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977398"
 ---
 # <a name="tutorial-use-blockchain-data-manager-to-send-data-to-azure-cosmos-db"></a>チュートリアル:Blockchain Data Manager を使用して Azure Cosmos DB にデータを送信する
 
@@ -78,13 +78,15 @@ Blockchain Data Manager インスタンスは、Azure Blockchain Service トラ�
 
 1. **abi** 配列を JSON ファイルとして保存します。 たとえば、*abi.json* です。 このファイルは、後の手順で使用します。
 
-Blockchain Data Manager には、スマート コントラクトのデプロイ済みバイトコードが必要です。 デプロイ済みバイトコードは、スマート コントラクトのバイトコードとは異なります。 デプロイ済みバイトコードは、コンパイルされたコントラクト メタデータ ファイルから取得できます。
+Blockchain Data Manager には、スマート コントラクトのデプロイ済みバイトコードが必要です。 デプロイ済みバイトコードは、スマート コントラクトのバイトコードとは異なります。 Azure Blockchain 開発キット拡張機能を使用してバイトコードをクリップボードにコピーします。
 
-1. 自分の Solidity プロジェクトの **build/contracts** フォルダー内に含まれているコントラクト メタデータ ファイルを開きます。 ファイル名は、スマート コントラクト名に **.json** 拡張子を付けたものです。
-1. JSON ファイル内の **deployedBytecode** 要素を見つけます。
-1. 引用符を除く 16 進値をコピーします。
+1. Visual Studio Code のエクスプローラー ウィンドウで、自分の Solidity プロジェクトの **build/contracts** フォルダーを展開します。
+1. コントラクト メタデータの JSON ファイルを右クリックします。 ファイル名は、スマート コントラクト名に **.json** 拡張子を付けたものです。
+1. **[Copy Transaction Bytecode]\(トランザクションのバイトコードのコピー\)** を選択します。
 
-    ![Visual Studio Code のウィンドウに表示されたメタデータ内のバイトコード](./media/data-manager-portal/bytecode-metadata.png)
+    ![[Copy Transaction Bytecode]\(トランザクションのバイトコードのコピー\) が選択されている Visual Studio Code のペイン](./media/data-manager-cosmosdb/bytecode-devkit.png)
+
+    バイトコードがクリップボードにコピーされます。
 
 1. **バイトコード**値を JSON ファイルとして保存します。 たとえば、*bytecode.json* です。 このファイルは、後の手順で使用します。
 
@@ -202,7 +204,7 @@ Azure Logic Apps は、システムとサービスを統合する必要がある
 
     | Setting | 説明
     |---------|-------------|
-    | Subscription | Event Grid トピックが含まれているサブスクリプションを選択します。 |
+    | サブスクリプション | Event Grid トピックが含まれているサブスクリプションを選択します。 |
     | リソースの種類 | **Microsoft.EventGrid.Topics** を選択します。 |
     | リソース名 | Blockchain Data Manager がトランザクション データ メッセージを送信している Event Grid トピックの名前を選択します。 |
 

@@ -1,28 +1,25 @@
 ---
-title: Microsoft Authentication Library を使用してアプリケーションを Azure AD B2C と相互運用できる方法を学習する
+title: Azure Active Directory B2CLearn で MSAL を使用する | Azure
+titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library (MSAL) を使用すると、アプリケーションを Azure AD B2C と相互運用し、セキュリティで保護された Web API を呼び出すためにトークンを取得できます。 これらの Web API には、Microsoft Graph、その他の Microsoft API、他の開発者の Web API、または自分の Web API が可能です。
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eea0fd03b1df49e912a867b0c667ff0fd28c08a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: f080c14cd0aa20bd312b4be8d9eacd8d901b7cef
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097614"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917031"
 ---
 # <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Microsoft Authentication Library を使用して Azure Active Directory B2C と相互運用する
 

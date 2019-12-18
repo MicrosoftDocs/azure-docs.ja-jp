@@ -1,20 +1,21 @@
 ---
-title: 読み取りアクセス geo 冗長ストレージ (RA-GZRS または RA-GRS) を使用した高可用性アプリケーションの設計 | Microsoft Docs
-description: Azure の RA-GZRS または RA-GRS ストレージを使用して、サービス停止に対応できる高い柔軟性を備えた高可用性アプリケーションを設計する方法を説明します。
+title: Geo 冗長ストレージを使用した高可用性アプリケーションの設計
+titleSuffix: Azure Storage
+description: 読み取りアクセス Geo 的冗長ストレージを使用して、障害を処理するのに十分な柔軟性を備えた高可用性アプリケーションを設計する方法を学びます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673112"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895340"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>読み取りアクセス geo 冗長ストレージを使用した高可用性アプリケーションの設計
 
@@ -203,7 +204,7 @@ geo 冗長ストレージは、プライマリ リージョンからセカンダ
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | トランザクション A: <br> 従業員エンティティを <br> プライマリに挿入する |                                   |                    | トランザクション A はプライマリに挿入されていますが、<br> まだレプリケートされていません。 |
 | T1       |                                                            | トランザクション A が <br> セカンダリに<br> レプリケートされる | T1 | トランザクション A がセカンダリにレプリケートされ、 <br>最後の同期時刻が更新されます。    |
-| T2       | トランザクション B:<br>アップデート<br> プライマリの<br> 従業員エンティティ  |                                | T1                 | トランザクション B はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
+| T2       | トランザクション B:<br>更新<br> プライマリの<br> 従業員エンティティ  |                                | T1                 | トランザクション B はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
 | T3       | トランザクション C:<br> プライマリの <br>administrator<br>ロール エンティティの<br>更新 |                    | T1                 | トランザクション C はプライマリに書き込まれていますが、<br> まだレプリケートされていません。  |
 | *T4*     |                                                       | トランザクション C が <br>セカンダリに<br> レプリケートされる | T1         | トランザクション C はセカンダリにレプリケートされています。<br>トランザクション B がレプリケートされていないため、 <br>最後の同期時刻はまだ更新されていません。|
 | *T5*     | セカンダリからの <br>エンティティの読み取り                           |                                  | T1                 | トランザクション B がまだレプリケート <br> されていないので、従業員エンティティは <br> 古い値になります。 トランザクション C が既にレプリケートされているため、<br> 管理者ロール エンティティは<br> 新しい値になります。 トランザクション B がレプリケートされていないので、<br> 最後の同期時刻は<br> まだ更新されていません。 管理者ロール エンティティの日時が<br>最後の同期時刻よりも新しいことから、 <br>このエンティティが不整合な状態である <br>ことがわかります。 |

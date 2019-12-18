@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 740b3fae81521fec2cba31e3b8fd161f767c4380
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858974"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977796"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル:画像の中にある顔を検出してフレームに収める Android アプリの作成
 
-このチュートリアルでは、Java SDK を介して Azure Face API を使用して画像内の顔を検出するシンプルな Android アプリケーションを作成します。 このアプリケーションでは、選択した画像が表示され、検出されたそれぞれの顔の周囲にフレームが描画されます。
+このチュートリアルでは、Java SDK から Azure Face API を使用して画像内の顔を検出する Android アプリケーションを作成します。 このアプリケーションでは、選択した画像が表示され、検出されたそれぞれの顔の周囲にフレームが描画されます。
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -103,7 +103,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 返される **Face** にはそれぞれ、その場所を示す四角形と一連の任意の顔属性が含まれます。 この例では、顔の四角形のみが要求されています。
 
-次の 2 つのメソッドを **MainActivity** クラスに挿入します。 顔検出が完了すると、アプリは **drawFaceRectanglesOnBitmap** メソッドを呼び出して **ImageView** を変更することに注意してください。 次に、このメソッドを定義します。
+次の 2 つのメソッドを **MainActivity** クラスに挿入します。 顔検出が完了すると、アプリは **drawFaceRectanglesOnBitmap** メソッドを呼び出して **ImageView** を変更します。 次に、このメソッドを定義します。
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_detection_methods)]
 

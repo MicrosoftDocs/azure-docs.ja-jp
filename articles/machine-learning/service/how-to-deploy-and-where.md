@@ -11,12 +11,12 @@ author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/13/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 63d2aa5c9e4ec751d9b95ba0d884e6dc17e207bb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: bb86d551d83668a3558cf63827a64a481cf87e02
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276790"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926926"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Azure Machine Learning を使用してモデルをデプロイする
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -208,7 +208,7 @@ AZUREML_MODEL_DIR は、サービスのデプロイ中に作成される環境�
 
 次の表では、デプロイされるモデルの数に応じて、AZUREML_MODEL_DIR の値について説明します。
 
-| Deployment | 環境変数の値 |
+| デプロイ | 環境変数の値 |
 | ----- | ----- |
 | 単一モデル | モデルを含むフォルダーへのパス。 |
 | 複数のモデル | すべてのモデルを含むフォルダーへのパス。 モデルは、このフォルダー (`$MODEL_NAME/$VERSION`) で名前とバージョンによって検索されます |
@@ -520,7 +520,7 @@ az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json
 
 推論構成を利用したカスタム Docker イメージの使用については、[カスタム Docker イメージを使用してモデルをデプロイする方法](how-to-deploy-custom-docker-image.md)に関するページを参照してください。
 
-### <a name="3-define-your-deployment-configuration"></a>手順 3.デプロイ構成を定義する
+### <a name="3-define-your-deployment-configuration"></a>3.デプロイ構成を定義する
 
 モデルをデプロイする前にデプロイ構成を定義する必要があります。 *デプロイ構成は、Web サービスがホストされるコンピューティング ターゲットに固有となります*。 たとえば、モデルをローカルでデプロイするときに、サービスが要求を受け入れるポートを指定する必要があります。 デプロイ構成は、エントリ スクリプトの一部ではありません。 これは、モデルとエントリ スクリプトをホストするコンピューティング先の特性を定義するために使用されます。
 
@@ -867,6 +867,9 @@ az ml model download --model-id mymodel:1 --target-dir model_folder
 コードなしのモデル デプロイは現在プレビュー段階で、次の機械学習フレームワークをサポートしています。
 
 ### <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 形式
+コードなしのモデル デプロイを使用するには、TensorFlow モデルが **SavedModel 形式**で登録されている必要があります。
+
+SavedModel の作成方法については、[このリンク](https://www.tensorflow.org/guide/saved_model)を参照してください。
 
 ```python
 from azureml.core import Model

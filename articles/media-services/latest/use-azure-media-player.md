@@ -1,6 +1,6 @@
 ---
 title: Azure Media Player での再生 - Azure | Microsoft Docs
-description: このトピックでは、Azure Media Player の概要を説明します。
+description: Azure Media Player は、さまざまなブラウザーやデバイス上で Microsoft Azure Media Services からメディア コンテンツを再生できる組み込みの Web ビデオ プレーヤーです。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: juliako
-ms.openlocfilehash: 6157f59d96770298d947a1cf6ca28aa343e1a0d4
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: a0b0a4e89242103811f20071b7235c825c9d8bd2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311821"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967526"
 ---
 # <a name="azure-media-player-overview"></a>Azure Media Player の概要
 
@@ -50,6 +50,10 @@ Microsoft Azure Media Services では、HLS、DASH、スムーズ ストリー�
 ## <a name="set-up-azure-media-player-in-your-html"></a>Azure Media Player を HTML で設定する
 
 Azure Media Player は簡単にセットアップできます。 Media Services アカウントからメディア コンテンツの基本再生を取得するのにいくらか時間がかかるだけです。 Azure Media Player を設定および構成する方法の詳細については、[Azure Media Player のドキュメント](https://aka.ms/ampdocs)を参照してください。 
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
 
 ## <a name="next-steps"></a>次の手順
 

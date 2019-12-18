@@ -199,7 +199,7 @@ HANA システム レプリケーションまたは HANA スケールアウト�
 - /usr/sap/SID は、/hana/shared/SID へのシンボリック リンクです。
 - ボリューム サイズの分布は、メモリのデータベース サイズに基づいています。 マルチ SID 環境でサポートされているメモリ内のデータベース サイズについては、[概要とアーキテクチャ](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)に関するセクションを参照してください。
 
-## <a name="3-single-node-with-dr-using-storage-replication"></a>手順 3.ストレージ レプリケーションを使用した DR の単一ノード
+## <a name="3-single-node-with-dr-using-storage-replication"></a>3.ストレージ レプリケーションを使用した DR の単一ノード
  
 このトポロジは、プライマリ SID の DR サイトに対するストレージベースのレプリケーション使用し、1 つまたは複数の SID を使用してスケールアップ構成で 1 つのノードをサポートします。 この図では、プライマリ サイトには 1 つの SID しか表示されていませんが、マルチ SID (MCOS) もサポートされています。
 

@@ -47,7 +47,7 @@ Azure AD への登録のため、組織ネットワーク内のコンピュー�
 * https://login.microsoftonline.com
 * https://device.login.microsoftonline.com 
 
-## <a name="3-implement-wpad-for-windows-10-devices"></a>手順 3.Windows 10 デバイスに WPAD を実装する
+## <a name="3-implement-wpad-for-windows-10-devices"></a>3.Windows 10 デバイスに WPAD を実装する
 送信プロキシ経由でインターネットにアクセスする組織の場合は、Windows 10 コンピューターを Azure AD に登録できるように、Web プロキシ自動発見 (WPAD) を実装します。
 
 ## <a name="4-configure-the-scp-in-any-forests-that-were-not-configured-by-azure-ad-connect"></a>4.Azure AD Connect によって構成されなかったフォレストに SCP を構成する 

@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/04/2019
+ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4974f4e39b0b16971d0d666134618d5a1f64e11
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 529c2a453bade8745a596b5cd2e374907a66f613
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68424323"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893724"
 ---
 # <a name="tutorial-integrate-productboard-with-azure-active-directory"></a>チュートリアル:productboard と Azure Active Directory の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "68424323"
 
 * productboard にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して productboard に自動的にサインインできるようにすることができます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -65,11 +65,11 @@ Azure AD への productboard の統合を構成するには、ギャラリーか
 productboard で Azure AD SSO を構成してテストするには、次の構成要素を完了します。
 
 1. **[Azure AD SSO の構成](#configure-azure-ad-sso)** - ユーザーがこの機能を使用できるようにします。
-2. **[productboard SSO の構成](#configure-productboard-sso)** - アプリケーション側でシングル サインオン設定を構成します。
-3. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[productboard テスト ユーザーの作成](#create-productboard-test-user)** - productboard で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-6. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
+    * **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - B.Simon で Azure AD のシングル サインオンをテストします。
+    * **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - B.Simon が Azure AD シングル サインオンを使用できるようにします。
+1. **[productboard の SSO の構成](#configure-productboard-sso)** - アプリケーション側でシングル サインオン設定を構成します。
+    * **[productboard のテスト ユーザーの作成](#create-productboard-test-user)** - EZOfficeInventory で B.Simon に対応するユーザーを作成し、Azure AD の B.Simon にリンクさせます。
+1. **[SSO のテスト](#test-sso)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
@@ -92,13 +92,9 @@ productboard で Azure AD SSO を構成してテストするには、次の構�
     > [!NOTE]
     > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[productboard クライアント サポート チーム](mailto:support@productboard.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
-1. **[SAML によるシングル サインオンのセットアップ]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーし、コンピューターに保存します。
+1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、コピー ボタンをクリックして **[アプリのフェデレーション メタデータ URL]** をコピーして、コンピューターに保存します。
 
     ![証明書のダウンロードのリンク](common/copy-metadataurl.png)
-
-### <a name="configure-productboard-sso"></a>productboard SSO の構成
-
-**productboard** 側でシングル サインオンを構成するには、 **[アプリのフェデレーション メタデータ URL]** を [productboard サポート チーム](mailto:support@productboard.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -130,9 +126,21 @@ productboard で Azure AD SSO を構成してテストするには、次の構�
 1. SAML アサーション内に任意のロール値が必要な場合、 **[ロールの選択]** ダイアログでユーザーに適したロールを一覧から選択し、画面の下部にある **[選択]** をクリックします。
 1. **[割り当ての追加]** ダイアログで、 **[割り当て]** をクリックします。
 
+## <a name="configure-productboard-sso"></a>productboard SSO の構成
+
+1. productboard 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[productboard のセットアップ]** をクリックすると、productboard アプリケーションに移動します。 そこから、管理者の資格情報を入力して productboard にサインインします。 ブラウザー拡張機能により、アプリケーションが自動的に構成されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. **productboard** 側でシングル サインオンを手動で設定したい場合は、 **[アプリのフェデレーション メタデータ URL]** を [productboard サポート チーム](mailto:support@productboard.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
 ### <a name="create-productboard-test-user"></a>productboard テスト ユーザーの作成
 
-このセクションでは、B. Simon というユーザーを productboard に作成します。 productboard では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 productboard にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
+このセクションでは、Britta Simon というユーザーを productboard に作成します。 productboard では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 productboard にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
 ### <a name="test-sso"></a>SSO のテスト
 
@@ -144,6 +152,8 @@ productboard で Azure AD SSO を構成してテストするには、次の構�
 
 - [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory でのアプリケーション アクセスとシングル サインオンとは](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Azure AD で productboard を試す](https://aad.portal.azure.com/)

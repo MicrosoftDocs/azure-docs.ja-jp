@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 851a405e5143ea5bb3a26de76f713914aa4bb569
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648192"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873235"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics が .NET Framework v4.7.2 にアップグレード中
 
@@ -39,7 +39,7 @@ U-SQL カスタム アセンブリの .NET コードに対して .NET 互換性�
 1. 次のいずれかの方法で、.NET DLL に対して下位互換性チェックを実行します。
    1. [.NET Portability Analyzer の Visual Studio 拡張機能](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)に関するページに従って、Visual Studio 拡張機能を使用する。
    1. [GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport) からスタンドアロン ツールをダウンロードして使用する。 スタンドアロン ツールの実行手順については、[GitHub dotnetapiport の破壊的変更](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md)に関するページを参照してください。
-   1. 4\.7.2 では、 互換性読み取り isRetargeting == True が破壊的変更となっています。
+   1. 4\.7.2 では、 互換性、`read isRetargeting == True` は、潜在的な問題を特定します。
 2. このツールにより、コードが何らかの考えられる下位非互換性 (非互換性の一般的な例を以下に示します) の影響を受ける可能性があることが示される場合は、次の方法で詳細を確認できます。
    1. コードを分析し、影響を受ける API にコードによって値が渡されるかどうかを識別する。
    1. ランタイム チェックを実行する。 ADLA では、ランタイムのデプロイはサイド バイ サイドで実行されません。 代表的なデータ セットに対して Visual Studio のローカル実行をローカルの .NET Framework 4.7.2 と共に使用して、アップグレード前にランタイム チェックを実行できます。

@@ -1,6 +1,6 @@
 ---
-title: Web API を呼び出すデーモン アプリ (運用環境への移行) - Microsoft ID プラットフォーム
-description: Web API を呼び出すデーモン アプリを構築する方法 (運用環境への移行) について説明します
+title: Web API を呼び出しているデーモンアプリを運用環境に移動する - Microsoft ID プラットフォーム | Azure
+description: Web API を呼び出すデーモン アプリを運用環境へ移行する方法 について学ぶ
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05418cde7b31392c1a55f64945764e978daba1bf
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 961928499008445207df3a34a51fc016723c294b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175396"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962595"
 ---
 # <a name="daemon-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデーモン アプリ - 運用環境への移行
 

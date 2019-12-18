@@ -83,7 +83,7 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
   * 依存関係を手動で管理している場合:
     * 最新の [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) をダウンロードして、古いものと置き換えます。 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
 
-## <a name="3-add-an-applicationinsightsxml-file"></a>手順 3.ApplicationInsights.xml ファイルを追加する
+## <a name="3-add-an-applicationinsightsxml-file"></a>3.ApplicationInsights.xml ファイルを追加する
 ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。

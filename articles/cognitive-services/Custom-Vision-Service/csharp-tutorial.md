@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
+ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: ca21bbd77b269e3034fd69cc4685311e91295f36
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: db98464ecefaaf177161a1e417496ee7c994cff0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "73519120"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978647"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>クイック スタート:Custom Vision .NET SDK を使って画像分類プロジェクトを作成する
 
-この記事では、Custom Vision SDK と C# を使用して画像分類モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の .NET アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザー ベースのガイダンス](getting-started-build-a-classifier.md)を参照してください。
+この記事では、Custom Vision SDK と C# を使用して画像分類モデルを構築する際の足掛かりとして役立つ情報とサンプル コードを紹介します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 この例は、独自の .NET アプリケーションを構築するためのテンプレートとしてご利用ください。 分類モデルの構築と使用のプロセスをコード "_なし_" で行う場合は、[ブラウザーベースのガイダンス](getting-started-build-a-classifier.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +41,7 @@ Custom Vision を使用する .NET アプリを作成するには、Custom Visio
 
 ## <a name="understand-the-code"></a>コードの理解
 
-_Program.cs_ ファイルを開いて、コードを詳しく調べます。 トレーニング キーと予測キーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `CUSTOM_VISION_TRAINING_KEY`、`CUSTOM_VISION_PREDICTION_KEY` という名前を付けます。 スクリプトによってこれらが検索されます。
+_Program.cs_ ファイルを開いて、コードを詳しく調べます。 トレーニング キーと予測キーの[環境変数を作成](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication)し、それぞれ `CUSTOM_VISION_TRAINING_KEY`、`CUSTOM_VISION_PREDICTION_KEY` という名前を付けます。 スクリプトによってこれらの変数が検索されます。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_keys)]
 
@@ -69,7 +69,7 @@ _Program.cs_ ファイルを開いて、コードを詳しく調べます。 ト
 
 ### <a name="train-the-classifier-and-publish"></a>分類器をトレーニングしてする公開する
 
-このコードにより、プロジェクトの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 公開されたイテレーションに付けられた名前は、予測要求を送信するために使用できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
+このコードにより、プロジェクトの最初のイテレーションが作成され、そのイテレーションが予測エンドポイントに公開されます。 イテレーションの名前を使用することで予測要求を送信できます。 イテレーションは、公開されるまで予測エンドポイントで利用できません。
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
 
@@ -81,7 +81,7 @@ _Program.cs_ ファイルを開いて、コードを詳しく調べます。 ト
 
 ### <a name="submit-an-image-to-the-default-prediction-endpoint"></a>既定の予測エンドポイントに画像を送信する
 
-このスクリプトでは、**LoadImagesFromDisk** メソッドでテスト画像が読み込まれ、モデルの予測出力がコンソールに表示されます。 publishedModelName 変数の値は、Custom Vision ポータルの **[パフォーマンス]** タブにある "として発行される" の値に対応している必要があります。 
+このスクリプトでは、**LoadImagesFromDisk** メソッドでテスト画像が読み込まれ、モデルの予測出力がコンソールに表示されます。 `publishedModelName` 変数の値は、Custom Vision ポータルの **[パフォーマンス]** タブにある "として公開される" の値に対応している必要があります。 
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_prediction)]
 
@@ -106,7 +106,7 @@ Making a prediction:
 
 ## <a name="next-steps"></a>次の手順
 
-以上、画像の分類処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。
+以上、画像分類処理の各ステップをコードでどのように実装するかを見てきました。 このサンプルで実行したトレーニングのイテレーションは 1 回だけですが、多くの場合、精度を高めるために、モデルのトレーニングとテストは複数回行う必要があります。
 
 > [!div class="nextstepaction"]
 > [モデルのテストと再トレーニング](test-your-model.md)

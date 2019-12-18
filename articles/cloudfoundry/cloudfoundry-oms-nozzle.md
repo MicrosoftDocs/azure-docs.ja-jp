@@ -53,7 +53,7 @@ Nozzle は、CF 環境でアプリケーションとして実行されます。 
 
 UAA コマンドライン クライアントをセットアップする前に、RubyGems がインストールされていることを確認します。
 
-### <a name="3-create-a-log-analytics-workspace-in-azure"></a>手順 3.Azure で Log Analytics ワークスペースを作成する
+### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3.Azure で Log Analytics ワークスペースを作成する
 
 Log Analytics ワークスペースは、手動で、またはテンプレートを使用して作成できます。 テンプレートにより、Azure Monitor ログ コンソール用に事前構成された KPI ビューとアラートのセットアップがデプロイされます。 
 

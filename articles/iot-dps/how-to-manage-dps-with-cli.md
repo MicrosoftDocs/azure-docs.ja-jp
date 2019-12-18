@@ -56,7 +56,7 @@ IoT 拡張機能によって、Azure CLI には、デバイス管理、完全な
 ![リソース グループの作成][2]
 
 
-### <a name="3-create-two-device-provisioning-services"></a>手順 3.2 つのデバイス プロビジョニング サービスを作成する
+### <a name="3-create-two-device-provisioning-services"></a>3.2 つのデバイス プロビジョニング サービスを作成する
 
     az iot dps create --resource-group IoTHubBlogDemo --name demodps
 

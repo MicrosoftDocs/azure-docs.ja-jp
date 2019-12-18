@@ -1,6 +1,6 @@
 ---
-title: クエリに対応した Azure ストレージ テーブルの設計 | Microsoft Docs
-description: Azure テーブル ストレージで、クエリに対応したテーブルを設計します。
+title: クエリに対応した Azure Table Storage の設計 | Microsoft Docs
+description: Azure Table Storage で、クエリに対応したテーブルを設計します。
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage
@@ -44,7 +44,7 @@ Table service ソリューションでは、読み取り、書き込み、また
 | **Age** |整数 |
 | **EmailAddress** |string |
 
-「[Azure テーブル ストレージの概要](table-storage-overview.md)」の記事では、クエリの設計に直接影響を与える Azure Table service の主な機能の一部について説明します。 ここから、Table service のクエリを設計する際には、次のような一般的なガイドラインが考えられます。 以下の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities (エンティティの照会)](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)」をご覧ください。  
+「[Azure Table Storage の概要](table-storage-overview.md)」の記事では、クエリの設計に直接影響を与える Azure Table service の主な機能の一部について説明します。 ここから、Table service のクエリを設計する際には、次のような一般的なガイドラインが考えられます。 以下の例で使用しているフィルター構文は、Table service REST API の構文です。詳細については、「[Query Entities (エンティティの照会)](https://docs.microsoft.com/rest/api/storageservices/Query-Entities)」をご覧ください。  
 
 * ***ポイント クエリ***は、最も効率的な検索です。大量の参照または短い待機時間が求められる参照に使用することをお勧めします。 このようなクエリでは、**PartitionKey** と **RowKey** 値の両方を指定することでインデックスを使用し、個別のエンティティを非常に効率よく検索することができます。 例: $filter (PartitionKey eq 'Sales') = および (RowKey eq '2')  
 * 2 番目に良い方法は、**PartitionKey** を使用する***範囲クエリ***と、**RowKey 値**の範囲にフィルターをかけ、1 つ以上のエンティティを返す です。 **PartitionKey** 値は特定のパーティションを識別し、**RowKey** 値はそのパーティション内のエンティティのサブセットを識別します。 例: $filter=PartitionKey eq 'Sales' および RowKey ge 'S' および RowKey lt 'T'  

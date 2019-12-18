@@ -1,24 +1,25 @@
 ---
-title: 'Azure Data Factory を使ってテーブルを増分コピーする '
+title: Azure portal を使用してテーブルを増分コピーする
 description: このチュートリアルでは、Azure SQL データベースから Azure BLOB ストレージにデータを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
-manager: craigg
+ms.author: yexu
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.author: yexu
-ms.openlocfilehash: a446574f0a6b2b18959f1a3c3e9a02a0a97e9f6b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5d82971cbd7781a298f3f3aeeba47e4be471e248
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683379"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927993"
 ---
-# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
+# <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure portal を使用して Azure SQL データベースから Azure Blob Storage にデータを増分読み込みする
+
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
 
 このチュートリアルでは、以下の手順を実行します。
@@ -173,7 +174,7 @@ END
    ![データ ファクトリのホーム ページ](./media/doc-common-process/data-factory-home-page.png)
 10. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Azure Data Factory ユーザー インターフェイス (UI) を起動します。
 
-## <a name="create-a-pipeline"></a>パイプラインを作成する。
+## <a name="create-a-pipeline"></a>パイプラインを作成する
 このチュートリアルでは、2 つのルックアップ アクティビティ、1 つのコピー アクティビティ、そして 1 つのストアド プロシージャ アクティビティを 1 つに連結したパイプラインを作成します。 
 
 1. Data Factory UI の**開始**ページで **[Create pipeline]\(パイプラインの作成\)** タイルをクリックします。 

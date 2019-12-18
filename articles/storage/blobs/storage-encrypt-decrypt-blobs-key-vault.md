@@ -1,24 +1,24 @@
 ---
-title: チュートリアル:Azure Key Vault を使用した Azure Storage 内の BLOB の暗号化と復号化 | Microsoft Docs
-description: Azure Key Vault で Microsoft Azure Storage のクライアント側暗号化を使用して BLOB を暗号化および復号化する方法を説明します。
+title: チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
+titleSuffix: Azure Storage
+description: Azure Key Vault でクライアント側暗号化を使用して BLOB を暗号化および復号化する方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 05/14/2019
+ms.topic: tutorial
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 34dbcaeedb544a8a8808aab3e8e3315f1790dd9a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c83e56a47f4b212a5612cb9e6965ce8e73228dcb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003439"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892891"
 ---
-# <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化
+# <a name="tutorial---encrypt-and-decrypt-blobs-using-azure-key-vault"></a>チュートリアル - Azure Key Vault を使用して BLOB を暗号化および復号化する
 
-## <a name="introduction"></a>はじめに
 このチュートリアルでは、Azure Key Vault でクライアント側ストレージ暗号化を利用する方法について説明します。 これらのテクノロジを使用して、コンソール アプリケーションで BLOB を暗号化および復号化する手順を説明します。
 
 **推定所要時間:** 20 分
@@ -121,7 +121,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 }
 ```
 
-## <a name="access-storage-and-key-vault-in-your-program"></a>プログラムでのストレージおよび Key Vault へのアクセス
+## <a name="access-azure-storage-and-key-vault-in-your-program"></a>プログラムでの Azure Storage および Key Vault へのアクセス
 
 Main() メソッド内に、次のコードを追加します。
 
@@ -229,6 +229,7 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
     "https://contosokeyvault.vault.azure.net/secrets/TestSecret2/",
     CancellationToken.None).GetAwaiter().GetResult();
 ```
+
 これで終了です。 機能を有効にご活用ください。
 
 ## <a name="next-steps"></a>次の手順

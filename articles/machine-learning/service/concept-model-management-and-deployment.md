@@ -11,14 +11,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 19552747db427bf780a140c15f11bed322d1f867
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a56096ffa760bcddd6bd423d1262e57dc1db3e3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420074"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973562"
 ---
-# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Azure Machine Learning を使用したモデルの管理、デプロイ、監視
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps:Azure Machine Learning を使用したモデル管理、デプロイおよび監視
 
 この記事では、Azure Machine Learning を使用して、モデルのライフサイクルを管理する方法について説明します。 Azure Machine Learning では、Machine Learning Operations (MLOps) の手法を使用します。 MLOps によって、機械学習ソリューションの品質と一貫性が向上します。 
 
@@ -116,7 +116,6 @@ Batch スコアリングは、ML パイプライン経由でサポートされ�
 
 Microsoft Power BI は、データ分析への機械学習モデルの使用をサポートします。 詳細については、[Azure Machine Learning の Power BI への統合 (プレビュー)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)に関する記事をご覧ください。
 
-
 ## <a name="capture-the-governance-data-required-for-capturing-the-end-to-end-ml-lifecycle"></a>エンドツーエンドの ML ライフサイクルをキャプチャするために必要な管理データを取得する
 
 Azure ML を使用すると、すべての ML 資産のエンドツーエンドの監査証跡を追跡できます。 具体的には次の処理が行われます。
@@ -129,6 +128,7 @@ Azure ML を使用すると、すべての ML 資産のエンドツーエンド�
 ## <a name="notify-automate-and-alert-on-events-in-the-ml-lifecycle"></a>ML ライフサイクルでのイベントに関する通知、自動化、アラートを行う
 Azure ML では、Azure EventGrid に重要なイベントが発行され、ML ライフサイクルでのイベントに関する通知と自動化に利用できます。 詳細については、[こちらのドキュメント](how-to-use-event-grid.md)を参照してください。
 
+
 ## <a name="monitor-for-operational--ml-issues"></a>運用上の問題と ML の問題を監視する
 
 監視により、モデルにどのようなデータが送信されているか、および返される予測を理解することができます。
@@ -136,7 +136,6 @@ Azure ML では、Azure EventGrid に重要なイベントが発行され、ML �
 この情報は、自分のモデルがどのように使用されているかを理解するのに役立ちます。 収集された入力データは、モデルの将来のバージョンのトレーニングにも役立つ可能性があります。
 
 詳細については、[モデル データ収集を有効にする方法](how-to-enable-data-collection.md)に関するページを参照してください。
-
 
 ## <a name="automate-the-ml-lifecycle"></a>ML ライフサイクルを自動化する 
 

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 12/10/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196435"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974786"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Azure への移行に向けてオンプレミスのマシンの準備を整える
 
@@ -99,7 +99,7 @@ Windows マシンを移行する場合は、移行の前に次の変更を行っ
 1. (ホストサーバーではなく) オンプレミスのマシンで、管理者特権でのコマンド プロンプトを開きます。
 2. 「**diskpart**」と入力します。
 3. 「**SAN**」と入力します。 ゲスト オペレーティング システムのドライブ文字が維持されていない場合には、**Offline All** または **Offline Shared** が返されます。
-4. **DISKPART** プロンプトで、「**SANPOLICY=ONLINEALL**」と入力します。 この設定により、ディスクがオンラインになり、読み取りと書き込みが可能になります。
+4. **DISKPART** プロンプトで、「**SAN Policy=OnlineAll**」と入力します。 この設定により、ディスクがオンラインになり、読み取りと書き込みが可能になります。
 5. テスト移行中に、ドライブ文字が保持されていることを確認できます。
 
 

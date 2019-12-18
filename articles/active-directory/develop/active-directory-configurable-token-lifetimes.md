@@ -1,30 +1,26 @@
 ---
-title: Azure Active Directory における構成可能なトークンの有効期間
+title: 構成可能な Azure AD トークンの有効期間
 titleSuffix: Microsoft identity platform
 description: Azure AD によって発行されたトークンの有効期間を設定する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021d0c19ecc4bf63861bf95d99b6ba6b8e910220
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c195a5da6b04a919947c0ae65d7d6109115627d2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046551"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918391"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (プレビュー)
 
@@ -41,7 +37,6 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 > SharePoint Online では、構成可能なトークンの有効期間ポリシーをサポートしていません。  PowerShell を使用してこのポリシーを作成することはできますが、SharePoint Online はこのポリシーを認識しません。 アイドル状態のセッションのタイムアウトの構成に関する詳細については、[SharePoint Online のブログ](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208)を参照してください。
 >* SharePoint Online のアクセス トークンの既定の有効期間は 1 時間です。 
 >* SharePoint Online の更新トークンの既定の最大非アクティブ時間は 90 日間です。
-
 
 ## <a name="token-types"></a>トークンの種類
 

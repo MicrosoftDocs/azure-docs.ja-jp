@@ -1,6 +1,6 @@
 ---
 title: Python を使用して X.509 デバイスを Azure Device Provisioning Service に登録する
-description: このクイック スタートでは、グループ登録を使用します。 このクイック スタートでは、Python を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
+description: このクイック スタートでは、グループ登録を使用します。 このクイックスタートでは、Python を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service (DPS) に登録します
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: ef24195ac1a3d342ac5dcbfe099a2bed429d6197
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 3970f24c704b36bcfd12684e6e72a34c853af8c2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555419"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974684"
 ---
-# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>クイック スタート: Python を使用して X.509 デバイスを Device Provisioning Service に登録する
+# <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>クイック スタート:Python を使用して X.509 デバイスを Device Provisioning Service に登録する
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-x509](../../includes/iot-dps-selector-quick-enroll-device-x509.md)]
 

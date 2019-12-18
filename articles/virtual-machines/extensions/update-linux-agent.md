@@ -444,7 +444,7 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>手順 3.waagent サービスを再起動します
+### <a name="3-restart-the-waagent-service"></a>3.waagent サービスを再起動します
 ほとんどの Linux ディストリビューションでは、次のコマンドを使用します。
 
 ```bash

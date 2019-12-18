@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871635"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968700"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>オフラインの iOS 用 FairPlay Streaming 
 
@@ -245,6 +245,10 @@ boot.xml ファイルのサンプル:
 </HLSMoviePackage>
 ```
 
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシーポリシーが適用されます。
+
 ## <a name="summary"></a>まとめ
 このドキュメントには、FPS オフライン モードを実装するために使用できる以下の手順と情報が含まれています。
 
@@ -252,3 +256,7 @@ boot.xml ファイルのサンプル:
 * FPS Server SDK のサンプルに基づく iOS プレーヤーで、オンライン ストリーミング モードまたはオフライン モードのいずれかで FPS コンテンツを再生できる iOS プレーヤーを設定します。
 * サンプル FPS ビデオは、オフライン モードとオンライン ストリーミングのテストに使用されます。
 * FAQ では、FPS オフライン モードに関する質問の回答を確認できます。
+
+## <a name="next-steps"></a>次の手順
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,6 +1,6 @@
 ---
 title: Visual Studio を使用して Table Storage の利用を開始する (ASP.NET Core)
-description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後で、Visual Studio の ASP.NET Core プロジェクトで Azure Table Storageの使用を開始する方法について説明します。
+description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後で、Visual Studio の ASP.NET Core プロジェクトで Azure Table Storage の使用を開始する方法について説明します。
 services: storage
 author: ghogen
 manager: jillfra
@@ -20,7 +20,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/13/2019
 ms.locfileid: "72298818"
 ---
-# <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Azure Table Storageと Visual Studio 接続済みサービスの概要
+# <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Azure Table Storage と Visual Studio 接続済みサービスの概要
 
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
@@ -34,7 +34,7 @@ Azure Table Storage サービスを使用すると、大量の構造化データ
 
 ## <a name="access-tables-in-code"></a>コードでテーブルにアクセスする
 
-ASP.NET Core プロジェクト内のテーブルにアクセスするには、Azure Table Storageにアクセスする C# ソース ファイルに、次の項目を含める必要があります。
+ASP.NET Core プロジェクト内のテーブルにアクセスするには、Azure Table Storage にアクセスする C# ソース ファイルに、次の項目を含める必要があります。
 
 1. 必要な `using` ステートメントを追加します。
 

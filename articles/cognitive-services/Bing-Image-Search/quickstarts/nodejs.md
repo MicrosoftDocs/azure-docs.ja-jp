@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: fe6289ce893f959ca958096db80f4b2295f6dd43
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 2aaed57c7e1d817cd892f45c441ab59d4ffba3d3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327083"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930774"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>クイック スタート:Bing Image Search REST API と Node.js を使用してイメージを検索する
 
@@ -30,7 +30,8 @@ ms.locfileid: "74327083"
 * 最新バージョンの [Node.js](https://nodejs.org/en/download/)。
 
 * [JavaScript Request ライブラリ](https://github.com/request/request)  
-  [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
 「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
 
@@ -43,7 +44,8 @@ ms.locfileid: "74327083"
     let https = require('https');
     ```
 
-2. API エンドポイント、画像 API 検索パス、サブスクリプション キー、および検索用語の変数を作成します。
+2. API エンドポイント、画像 API 検索パス、サブスクリプション キー、および検索用語の変数を作成します。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
+
     ```javascript
     let subscriptionKey = 'enter key here';
     let host = 'api.cognitive.microsoft.com';

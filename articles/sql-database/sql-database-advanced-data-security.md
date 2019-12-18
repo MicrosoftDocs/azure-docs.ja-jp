@@ -54,7 +54,7 @@ ADS を有効にするには、ご使用の SQL Database サーバーまたは�
 
 **[データの検出と分類]** カードをクリックして、分類が推奨される機密性の高い列を表示し、永続的な機密ラベルを使ってデータを分類します。 **[脆弱性評価]** カードをクリックして、脆弱性のスキャンとレポートを表示および管理し、セキュリティ水準を追跡します。 セキュリティ通知を受け取った場合は、 **[Advanced Threat Protection]** カードをクリックして、通知の詳細を表示し、Azure Security Center のセキュリティ通知ページを使って Azure サブスクリプション内のすべての通知の統合レポートを表示します。
 
-## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>手順 3.SQL Database サーバーまたはマネージド インスタンス上で ADS の設定を管理する
+## <a name="3-manage-ads-settings-on-your-sql-database-server-or-managed-instance"></a>3.SQL Database サーバーまたはマネージド インスタンス上で ADS の設定を管理する
 
 ADS の設定を表示および管理するには、ご使用の SQL Database サーバーまたはマネージド インスタンスの **[セキュリティ]** 見出しの下の **[Advanced Data Security]** に移動します。 このページでは、ADS を有効または無効にしたり、SQL Database サーバーまたはマネージド インスタンス全体に対する脆弱性評価や Advanced Threat Protection の設定を変更したりできます。
 

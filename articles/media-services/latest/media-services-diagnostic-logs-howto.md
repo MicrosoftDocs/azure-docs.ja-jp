@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor を使用した Media Services 診断ログの監視 | Microsoft Docs
-description: この記事では、Azure Monitor を使用して診断ログをルーティングおよび表示する方法を示します。
+description: この記事では、Azure Monitor を介して診断ログをルーティングおよび表示する方法を示します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 42724ae3619312c2cc172be0e143291cd7fa2a70
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: e00da689820778a8cc7c5ce95184d4d8c79c70f2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261115"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977711"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Media Services 診断ログの監視
 
@@ -173,6 +173,10 @@ az monitor diagnostic-settings create --name amsv3diagnostic \
   }
 }
 ```
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシーポリシーが適用されます。
 
 ## <a name="see-also"></a>関連項目
 

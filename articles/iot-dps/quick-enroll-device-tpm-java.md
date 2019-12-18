@@ -1,6 +1,6 @@
 ---
 title: Java を使用して TPM デバイスを Azure Device Provisioning Service に登録する
-description: クイック スタート - Java Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service に登録します。 このクイック スタートでは、個別登録を使用します。
+description: クイックスタート - Java Service SDK を使用して TPM デバイスを Azure IoT Hub Device Provisioning Service (DPS) に登録します。 このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 4e6e5eb876bbf93c8228c2440a90aad608a24af9
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: cadee1b72c15ded7c29d1eea341c1ea21b346a37
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422933"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976827"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>クイック スタート:Java Service SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
 
@@ -140,7 +140,7 @@ ms.locfileid: "74422933"
     ![ポータルで TPM の登録が正常に完了したことを確認する](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-Java Service のサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
+Java サービスのサンプルを調べる予定の場合は、このクイックスタートで作成したリソースをクリーンアップしないでください。 使用する予定がない場合は、次の手順を使用して、このクイックスタートで作成したすべてのリソースを削除してください。
 
 1. マシンに表示されている Java サンプルの出力ウィンドウを閉じます。
 1. TPM デバイスをシミュレートするために作成した TPM シミュレーター ウィンドウが表示されている場合は閉じます。

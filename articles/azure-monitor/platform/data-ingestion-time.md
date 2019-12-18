@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932581"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894149"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Azure Monitor でのログ データ インジェスト時間
 Azure Monitor とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 ログ データが収集されてから、そのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
@@ -40,10 +40,10 @@ Azure Monitor とは、毎月増加するテラバイト単位のデータを送
 ### <a name="agent-upload-frequency"></a>エージェントのアップロードの頻度
 Log Analytics エージェントを軽量にするため、エージェントではログがバッファーに格納されて、定期的に Azure Monitor にアップロードされます。 アップロードの頻度は、データの型に応じて 30 秒から 2 分間の範囲で異なります。 ほとんどのデータは、1 分未満でアップロードされます。 ネットワークの状態は、このデータが Azure Monitor のインジェスト ポイントに達するまでの待機時間に悪影響を及ぼす可能性があります。
 
-### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure のアクティビティ ログ、診断ログ、およびメトリック
+### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure アクティビティログ、リソースログ、メトリック
 Azure データが Log Analytics のインジェスト ポイントで使用可能になるまでには、処理のための追加の時間がかかります。
 
-- 診断ログのデータの場合、Azure サービスによって異なりますが 2 分から 15 分かかります。 ご利用の環境におけるこの待機時間を調べる方法については、[下のクエリ](#checking-ingestion-time)を参照してください。
+- リソースログからのデータは、Azure サービスによって異なりますが、2〜15分かかります。 ご利用の環境におけるこの待機時間を調べる方法については、[下のクエリ](#checking-ingestion-time)を参照してください。
 - Azure プラットフォームのメトリックが Log Analytics のインジェスト ポイントに送信されるまでには 3 分かかります。
 - アクティビティ ログ データが Log Analytics のインジェスト ポイントに送信されるまでには 約 10 分から 15 分かかります。
 

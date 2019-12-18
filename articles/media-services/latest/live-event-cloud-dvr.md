@@ -1,7 +1,7 @@
 ---
 title: タイムシフトとライブ出力を使用してオンデマンドのビデオ再生を作成する
 titleSuffix: Azure Media Services
-description: タイムシフトとライブ出力を使用してライブ ストリームを記録し、オンデマンド再生を作成する方法について説明します。
+description: この記事では、タイムシフトとライブ出力を使用してライブ ストリームを記録し、オンデマンド再生を作成する方法について説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: juliako
-ms.openlocfilehash: acba251a57f39c07d690d0c55665b8914feaf06c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 4c7618b60e5fd86a9b8b3f22fb3333c00cfdfa61
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186225"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899795"
 ---
 # <a name="use-time-shifting-and-live-outputs-to-create-on-demand-video-playback"></a>タイムシフトとライブ出力を使用してオンデマンドのビデオ再生を作成する
 

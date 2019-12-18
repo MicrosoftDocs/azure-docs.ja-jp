@@ -4,16 +4,16 @@ description: コマンド ライン ツール、Azure Functions Core Tools、お
 ms.date: 03/12/2019
 ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
-ms.openlocfilehash: 19abfee69db53c560dfa2696d85f8c1c3d770c09
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 57c1b4a0ef5e8f030360bca6d69f66e8752f3da1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230808"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964142"
 ---
 # <a name="quickstart-create-your-first-function-hosted-on-linux-using-command-line-tools"></a>クイック スタート:コマンド ライン ツールを使用して Linux でホストされる初めての関数を作成する
 
-Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.com/serverless)の Linux 環境でコードを実行できます。 Linux でのホストには、[Functions 2.x ランタイム](functions-versions.md)が必要です。 サーバーレス関数は[従量課金](functions-scale.md#consumption-plan)プランで実行されます。
+Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.com/serverless)の Linux 環境でコードを実行できます。 Linux でのホストには、[Functions 2.x 以降のランタイム](functions-versions.md)が必要です。 サーバーレス関数は[従量課金](functions-scale.md#consumption-plan)プランで実行されます。
 
 このクイック スタート記事では、Linux 上で動作する初めての関数アプリを Azure CLI を使用して作成する方法について説明します。 [Azure Functions Core Tools](functions-run-local.md) を使用して、関数のコードをローカルで作成し、その後 Azure にデプロイします。
 

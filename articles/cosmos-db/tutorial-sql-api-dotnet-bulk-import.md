@@ -1,20 +1,20 @@
 ---
-title: Azure Cosmos DB SQL API アカウントにデータを一括インポートするときのスループットを最適化する
-description: Azure Cosmos DB にデータをインポートするために必要なプロビジョニング スループット (RU/秒) を最適化する .NET コンソール アプリケーションを構築する方法について説明します。
+title: .Net SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
+description: データをインポートするために必要なプロビジョニング スループット (RU/秒) を最適化する .NET コンソール アプリケーションを作成して、Azure Cosmos DB にデータをインポートしたり取り込んだりする方法を説明します。
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d80d762338744c0ca783d1768bacb8443dbc5020
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606214"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896276"
 ---
-# <a name="optimize-throughput-when-bulk-importing-data-to-azure-cosmos-db-sql-api-account"></a>Azure Cosmos DB SQL API アカウントにデータを一括インポートするときのスループットを最適化する
+# <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>.NET SDK を使用して Azure Cosmos DB SQL API アカウントにデータを一括インポートする
 
 このチュートリアルでは、Azure Cosmos DB にデータをインポートするために必要なプロビジョニング スループット (RU/秒) を最適化する .NET コンソール アプリケーションを構築する方法について説明します。 この記事では、サンプル データ ソースからデータを読み取り、Azure Cosmos コンテナーにインポートします。
 このチュートリアルでは、.NET Framework または .NET Core をターゲットとすることができる、Azure Cosmos DB .NET SDK の[バージョン 3.0 以降](https://www.nuget.org/packages/Microsoft.Azure.Cosmos)を使用します。

@@ -1,15 +1,15 @@
 ---
 title: Visual Studio Code を使用して Azure Blockchain Service に接続する
 description: Visual Studio Code で Azure Blockchain Development Kit for Ethereum 拡張機能を使用して、Azure Blockchain Service コンソーシアム ネットワークに接続します
-ms.date: 11/19/2019
+ms.date: 12/05/2019
 ms.topic: quickstart
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4d4625df1cb07818dcadb88e2c98bf9ae1da1b1f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455986"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977077"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>クイック スタート:Visual Studio Code を使用して Azure Blockchain Service コンソーシアム ネットワークに接続する
 
@@ -59,12 +59,12 @@ Azure Blockchain Development Kit VS Code 拡張機能を使用して、コンソ
 Azure Blockchain Service コンソーシアム メンバーにアクセスできない場合は、前提条件の「[クイックスタート: Azure portal を使用したブロックチェーン メンバーの作成](create-member.md)に関するページと、「[クイック スタート: Azure CLI を使用して Azure Blockchain Service ブロックチェーン メンバーを作成する](create-member-cli.md)」を完了してください。
 
 1. VS Code のエクスプローラー ペインで、 **[Azure Blockchain]** 拡張機能を展開します。
-1. **[Connect to Consortium]\(コンソーシアムに接続\)** を選択します。
+1. **[Connect to network]\(ネットワークに接続\)** を選択します。
 
-   ![コンソーシアムに接続する](./media/connect-vscode/connect-consortium.png)
+   ![ネットワークに接続](./media/connect-vscode/connect-consortium.png)
 
     Azure 認証を求められた場合は、プロンプトに従って、ブラウザーを使用して認証します。
-1. コマンド パレットのドロップダウンで **[Connect to Azure Blockchain Service consortium]\(Azure Blockchain Service コンソーシアムに接続\)** を選択します。
+1. コマンド パレットのドロップダウンで **[Azure Blockchain Service]** を選択します。
 1. Azure Blockchain Service コンソーシアム メンバーに関連付けられているサブスクリプションとリソース グループを選択します。
 1. 一覧からコンソーシアムを選択します。
 

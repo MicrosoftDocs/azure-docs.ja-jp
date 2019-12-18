@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1051728377e3c40b2b9209653464948988cc4e84
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 97b05327b2de4daa43f5f1fa3e4a22ecd79a9085
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327032"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930716"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-ruby"></a>クイック スタート:Bing Image Search REST API と Ruby を使用してイメージを検索する
 
@@ -44,7 +44,7 @@ ms.locfileid: "74327032"
     require 'json'
     ```
 
-2. API エンドポイント、画像 API 検索パス、サブスクリプション キー、および検索用語の変数を作成します。
+2. API エンドポイント、画像 API 検索パス、サブスクリプション キー、および検索用語の変数を作成します。 `uri` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 
     ```ruby
     uri  = "https://api.cognitive.microsoft.com"

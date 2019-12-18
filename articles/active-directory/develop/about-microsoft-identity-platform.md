@@ -2,27 +2,23 @@
 title: Microsoft ID プラットフォームの進化 - Azure
 description: Azure Active Directory (Azure AD) の ID サービスおよび開発者プラットフォームの進化版である Microsoft ID プラットフォームについて説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/03/2019
+ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c5fdc1c937136eb512eccf1d4df02a4fcdc3911
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7e5faf9db9a6ba97f353b54a4fb8123fde072574
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533102"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996988"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Microsoft ID プラットフォームの進化
 
@@ -30,13 +26,13 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) 開
 
 これまで、ほとんどの開発者は Azure AD v1.0 プラットフォームを使用して (Azure AD によりプロビジョニングされる) 職場や学校のアカウントを認証してきました。これは、Azure AD Authentication Library (ADAL)、アプリケーションの登録と構成用の Azure portal、プログラムによるアプリケーション構成用の Azure AD Graph API を使用して、Azure AD v1.0 エンドポイントからトークンを要求することによって行われていました。
 
-Microsoft ID プラットフォーム (v2.0) を使用すれば、次のような種類のユーザーにも利用してもらうことができます。
+統合 Microsoft ID プラットフォーム (v2.0) を使用すると、コードを一回記述すれば、自分のアプリケーションで Microsoft のあらゆる ID を認証できます。 いくつかのプラットフォームでは、完全にサポートされているオープンソースの Microsoft Authentication Library (MSAL) を ID プラットフォームのエンドポイントに使用することが推奨されます。 MSAL は簡単に使えて、ユーザーに優れたシングル サインオン (SSO) 機能を提供します。開発者は Microsoft Secure Development Lifecycle (SDL) を使用して開発し、高い信頼性とパフォーマンスを実現できます。 API を呼び出すとき、増分同意を活用するようにアプリケーションを構成できます。これにより、実行時にアプリケーションの使用がこれを保証するまで、同意要求をより侵略的な範囲で遅延させることができます。  MSAL では Azure Active Directory B2C もサポートされるため、顧客は、好みのソーシャル、エンタープライズ、またはローカル アカウント ID を使用して、アプリケーションや API にシングル サインオン アクセスできます。
+
+Microsoft ID プラットフォームを使用すれば、次のような種類のユーザーにも利用してもらうことができます。
 
 - 職場または学校のアカウント (Azure AD によりプロビジョニングされるアカウント)
 - 個人アカウント (Outlook.com や Hotmail.com など)
-- Azure AD B2C サービスから自分のメールやソーシャル ID (LinkedIn、Facebook、Google など) を持ち込むカスタマー
-
-統合 Microsoft ID プラットフォームを使用すると、コードを一回記述すれば、自分のアプリケーションで Microsoft のあらゆる ID を認証できます。 一部のプラットフォーム向けに、Microsoft Authentication Library (MSAL) という、完全にサポートされているオープンソースのライブラリがあります。 MSAL は簡単に使えて、ユーザーに優れたシングル サインオン (SSO) 機能を提供します。開発者は Microsoft Secure Development Lifecycle (SDL) を使用して開発し、高い信頼性とパフォーマンスを実現できます。 API を呼び出すとき、増分同意を活用するようにアプリケーションを構成できます。これにより、実行時にアプリケーションの使用がこれを保証するまで、同意要求をより侵略的な範囲で遅延させることができます。
+- MSAL や Azure AD B2C から自分のメールやソーシャル ID (LinkedIn、Facebook、Google など) を持ち込むカスタマー
 
 Azure portal を使用してアプリケーションを登録し、構成したり、プログラミングによるアプリケーションの構成に Microsoft Graph API を使用したりできます。
 

@@ -36,7 +36,7 @@ zip ファイルを解凍します。 このファイルには、次のフォル
 * ジェネリック
 * OpenVPN (ゲートウェイで OpenVPN および Azure AD の認証設定を有効にした場合。 「[テナントの作成](openvpn-azure-ad-tenant.md)」を参照してください)。
 
-## <a name="3-retrieve-information"></a>手順 3.情報を取得する
+## <a name="3-retrieve-information"></a>3.情報を取得する
 
 **AzureVPN** フォルダーで、***azurevpnconfig.xml*** ファイルに移動し、メモ帳で開きます。 次のタグの間のテキストを書き留めておきます。
 

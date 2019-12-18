@@ -4,12 +4,12 @@ description: Azure portal を使用して、Azure Blockchain Service 用のブ�
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
-ms.openlocfilehash: 9c682f449fbab823134d626870c7dcfe8a8f2847
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455817"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977023"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Azure portal を使用してブロックチェーン データ マネージャーを構成する
 
@@ -78,13 +78,15 @@ ms.locfileid: "74455817"
 
 1. **abi** 配列を JSON ファイルとして保存します。 たとえば、*abi.json* です。 このファイルは、後の手順で使用します。
 
-Blockchain Data Manager には、スマート コントラクトのデプロイ済みバイトコードが必要です。 デプロイ済みバイトコードは、スマート コントラクトのバイトコードとは異なります。 デプロイ済みバイトコードは、コンパイルされたコントラクト メタデータ ファイルから取得できます。
+Blockchain Data Manager には、スマート コントラクトのデプロイ済みバイトコードが必要です。 デプロイ済みバイトコードは、スマート コントラクトのバイトコードとは異なります。 Azure ブロックチェーン開発キット拡張機能を使用して、バイトコードをクリップボードにコピーします。
 
-1. 自分の Solidity プロジェクトの **build/contracts** フォルダー内に含まれているコントラクト メタデータ ファイルを開きます。 ファイル名は、スマート コントラクト名に **.json** 拡張子を付けたものです。
-1. JSON ファイル内の **deployedBytecode** 要素を見つけます。
-1. 引用符を除く 16 進値をコピーします。
+1. Visual Studio Code のエクスプローラー ウィンドウで、自分の Solidity プロジェクトの **build/contracts** フォルダーを展開します。
+1. コントラクト メタデータの JSON ファイルを右クリックします。 ファイル名は、スマート コントラクト名に **.json** 拡張子を付けたものです。
+1. **[Copy Transaction Bytecode] (トランザクション バイトコードのコピー)** を選択します。
 
-    ![Visual Studio Code のウィンドウに表示されたメタデータ内のバイトコード](./media/data-manager-portal/bytecode-metadata.png)
+    ![[Copy Transaction Bytecode] (トランザクション バイトコードのコピー) が選択されている Visual Studio Code のウィンドウ](./media/data-manager-portal/bytecode-devkit.png)
+
+    バイトコードがクリップボードにコピーされます。
 
 1. **バイトコード**値を JSON ファイルとして保存します。 たとえば、*bytecode.json* です。 このファイルは、後の手順で使用します。
 

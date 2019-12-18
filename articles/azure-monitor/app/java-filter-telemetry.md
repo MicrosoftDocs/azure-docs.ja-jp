@@ -250,7 +250,7 @@ ApplicationInsights.xml で、以下を使用します。
 
 ```
 
-### <a name="3-invoke-your-filter-java-spring"></a>手順 3.お使いのフィルターを呼び出す (Java Spring)
+### <a name="3-invoke-your-filter-java-spring"></a>3.お使いのフィルターを呼び出す (Java Spring)
 
 Spring フレームワークに基づくアプリケーションの場合、カスタムのテレメトリ プロセッサを、ご自身のメイン アプリケーション クラスに Bean として登録する必要があります。 その後、アプリケーションの開始時に自動接続されます。
 

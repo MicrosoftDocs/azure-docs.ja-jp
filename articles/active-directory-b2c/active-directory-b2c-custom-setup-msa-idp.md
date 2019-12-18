@@ -1,6 +1,7 @@
 ---
-title: Azure Active Directory B2C でカスタム ポリシーを使用して Microsoft アカウント (MSA) を ID プロバイダーとして追加する
-description: OpenID Connect (OIDC) プロトコルを使って Microsoft を ID プロバイダーとして使用する例。
+title: カスタム ポリシーを使用して Microsoft アカウントでのサインインを設定する
+titleSuffix: Azure AD B2C
+description: カスタム ポリシーを使用して、OpenID Connect (OIDC) プロトコルを使用する ID プロバイダーとして Microsoft アカウント (MSA) を有効にする方法。
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1f068b624b5a8f580f61e9eb2ed0d197f05aa1b0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 393e6f0b87cbd6a548825276da3f59863e2833eb
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643657"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948370"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Microsoft アカウントでのサインインを設定する
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: afb804dd3fd0fecd676f04f18db577f87861a163
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6a470979ce4276d510f1a89bc9bc192d609c2083
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564676"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973511"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>クイック スタート:Java を使用して Bing Custom Search エンドポイントを呼び出す
 
@@ -50,7 +50,7 @@ ms.locfileid: "68564676"
     import com.google.gson.JsonParser;
     ```
 
-2. `CustomSrchJava` という名前のクラスを作成し、サブスクリプション キー、カスタム検索エンドポイント、および検索インスタンスのカスタム構成 ID のための変数を作成します。 
+2. `CustomSrchJava` という名前のクラスを作成し、サブスクリプション キー、カスタム検索エンドポイント、および検索インスタンスのカスタム構成 ID のための変数を作成します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";

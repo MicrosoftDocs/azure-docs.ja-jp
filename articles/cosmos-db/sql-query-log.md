@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB クエリ言語の LOG
-description: Azure Cosmos DB での SQL システム関数 LOG について学習します。
+description: 指定された数値式の自然対数を返す Azure Cosmos DB の LOG SQL システム関数について学ぶ
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 16f2321eb48afacbc9636b5c0588b1ea3a01a284
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349745"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873286"
 ---
 # <a name="log-azure-cosmos-db"></a>LOG (Azure Cosmos DB)
  指定された数値式の自然対数を返します。  
@@ -71,6 +71,6 @@ SELECT EXP(LOG(10)) AS expLog
 
 ## <a name="next-steps"></a>次の手順
 
-- [数学関数 (Azure Cosmos DB)](sql-query-mathematical-functions.md)
-- [システム関数 (Azure Cosmos DB)](sql-query-system-functions.md)
+- [Azure Cosmos DB の数学関数](sql-query-mathematical-functions.md)
+- [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)

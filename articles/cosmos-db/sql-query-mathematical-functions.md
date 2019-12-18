@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB クエリ言語の数学関数
-description: Azure Cosmos DB での数学的な SQL システム関数について学習します。
+description: 引数として指定された入力値に基づいて計算を実行し、数値を返す、Azure Cosmos DB の数学関数について学びます。
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: fe4a84db3f2cbcfc2d9841caf520404afec2a297
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a04867d356aaf2f55dbe900d2e35b42f74206851
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349679"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873269"
 ---
 # <a name="mathematical-functions-azure-cosmos-db"></a>数学関数 (Azure Cosmos DB)  
 
@@ -49,7 +49,7 @@ RAND を除く、すべての数学関数が決定論的関数です。 これ�
 
 ## <a name="next-steps"></a>次の手順
 
-- [システム関数 (Azure Cosmos DB)](sql-query-system-functions.md)
+- [Azure Cosmos DB のシステム関数](sql-query-system-functions.md)
 - [Azure Cosmos DB の概要](introduction.md)
 - [ユーザー定義関数](sql-query-udfs.md)
 - [集計](sql-query-aggregates.md)

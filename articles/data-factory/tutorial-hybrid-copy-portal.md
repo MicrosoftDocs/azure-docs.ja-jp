@@ -1,22 +1,22 @@
 ---
-title: Azure Data Factory を使用して SQL Server から Blob Storage にデータをコピーする
+title: Azure portal を使用して SQL Server から Blob Storage にデータをコピーする
 description: Azure Data Factory 内のセルフホステッド統合ランタイムを使って、オンプレミスのデータ ストアからクラウドにデータをコピーする方法について説明します。
 services: data-factory
-documentationcenter: ''
+ms.author: abnarain
 author: nabhishek
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
+ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.author: abnarain
-ms.openlocfilehash: 09768e3b9bd1c2e6c9d4a5dbe95bb270b07266c0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5b9bed971ff239c0c4b0d1cb923e845bd76957da
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683537"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922914"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。
@@ -135,7 +135,7 @@ Data Factory インスタンスを作成するには、Azure へのサインイ�
 1. **[Author & Monitor]\(作成と監視\)** タイルをクリックして、別のタブで Data Factory (UI) を起動します。 
 
 
-## <a name="create-a-pipeline"></a>パイプラインを作成する。
+## <a name="create-a-pipeline"></a>パイプラインを作成する
 
 1. **[Let's get started]\(始めましょう\)** ページで **[Create pipeline]\(パイプラインの作成\)** を選択します。 パイプラインが自動的に作成されます。 ツリー ビューのパイプラインとそのエディターが開かれるのがわかります。 
 

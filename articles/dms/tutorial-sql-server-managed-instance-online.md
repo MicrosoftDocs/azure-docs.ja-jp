@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/04/2019
-ms.openlocfilehash: d7a746c170d04ad17b86e8aca63384edffbe75ac
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806798"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975025"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>チュートリアル:DMS を使用して、SQL Server を Azure SQL Database マネージド インスタンスにオンラインで移行する
 

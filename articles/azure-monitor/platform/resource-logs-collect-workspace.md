@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200505"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894529"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure Monitor の Log Analytics ワークスペースで Azure リソース ログを収集する
 Azure の[リソース ログ](resource-logs-overview.md)からは、Azure リソースの内部操作で頻繁に見られるデータが豊富に提供されます。 この記事では、Log Analytics ワークスペースでリソース ログを収集する方法について説明します。このリソース ログの収集では、Azure Monitor Logs で収集された他の監視データと組み合わせて分析できるほか、アラートや視覚化などの Azure Monitor の他の機能を活用することもできます。 
@@ -51,7 +51,7 @@ Log Analytics ワークスペースで収集されたデータは、「[Azure Mo
 
 AzureDiagnostics テーブルは次のようになります。  
 
-| ResourceProvider    | Category     | A  | b  | C  | D  | E  | F  | G  | H  | I  |
+| ResourceProvider    | カテゴリ     | A  | b  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
 | Microsoft.Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
 | Microsoft.Service1 | ErrorLogs    |    |    |    | q1 | w1 | e1 |    |    |    |
@@ -68,7 +68,7 @@ AzureDiagnostics テーブルは次のようになります。
  
 - テーブル *Service1AuditLogs* は次のようになります。
 
-    | リソース プロバイダー | Category | A | b | C |
+    | リソース プロバイダー | カテゴリ | A | b | C |
     | -- | -- | -- | -- | -- |
     | Service1 | AuditLogs | x1 | y1 | z1 |
     | Service1 | AuditLogs | x5 | y5 | z5 |
@@ -76,7 +76,7 @@ AzureDiagnostics テーブルは次のようになります。
 
 - テーブル *Service1ErrorLogs* は次のようになります。  
 
-    | リソース プロバイダー | Category | D | E | F |
+    | リソース プロバイダー | カテゴリ | D | E | F |
     | -- | -- | -- | -- | -- | 
     | Service1 | ErrorLogs |  q1 | w1 | e1 |
     | Service1 | ErrorLogs |  q2 | w2 | e2 |
@@ -84,7 +84,7 @@ AzureDiagnostics テーブルは次のようになります。
 
 - テーブル *Service2AuditLogs* は次のようになります。  
 
-    | リソース プロバイダー | Category | G | H | I |
+    | リソース プロバイダー | カテゴリ | G | H | I |
     | -- | -- | -- | -- | -- |
     | Service2 | AuditLogs | j1 | k1 | l1|
     | Service2 | AuditLogs | j3 | k3 | l3|
@@ -110,7 +110,7 @@ AzureDiagnostics テーブルは次のようになります。
 ### <a name="column-limit-in-azurediagnostics"></a>AzureDiagnostics での列の制限
 Azure Monitor ログ内のいずれのテーブルに対しても、500 のプロパティ制限があります。 この上限に到達すると、最初の 500 プロパティから外れるデータを含む行は、取り込み時に破棄されます。 *AzureDiagnostics* テーブルは、このテーブルへの書き込みを行うすべての Azure サービスのプロパティを含んでいるため、特にこの制限の影響を受けやすくなっています。
 
-複数のサービスから診断ログを収集している場合、_AzureDiagnostics_ ではこの上限を超過して、データが失われる可能性があります。 すべての Azure サービスでリソース固有モードがサポートされるようになるまでは、複数のワークスペースに書き込むようにリソースを構成して、500 列の制限に達する可能性を低くする必要があります。
+複数のサービスからリソースログを収集している場合、_AzureDiagnostics_ は、この制限を超えることがあり、データが失われる可能性があります。 すべての Azure サービスでリソース固有モードがサポートされるようになるまでは、複数のワークスペースに書き込むようにリソースを構成して、500 列の制限に達する可能性を低くする必要があります。
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory サービスの場合は、非常に詳細なログセットであるため、多数の列の書き込みが行われ、_AzureDiagnostics_ が制限を超える可能性があることがわかっています。 リソース固有モードを有効にする前に構成した診断設定の場合、任意のアクティビティに対して、一意の名前が付けられたユーザー パラメーターごとに新しい列が作成されます。 アクティビティの入力と出力がその性質上詳細であるため、より多くの列が作成されます。

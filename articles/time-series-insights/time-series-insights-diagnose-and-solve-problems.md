@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007064"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900245"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
 
@@ -38,7 +38,7 @@ Azure Time Series Insights は JSON データのみをサポートしていま�
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>原因 B: イベント ソース キーに必要なアクセス許可がない
 
-* Azure IoT Hub の IoT Hub の場合は、**サービス接続**アクセス許可を備えたキーを指定する必要があります。 **iothubowner** ポリシーと**サービス** ポリシーは、どちらも**サービス接続**アクセス許可があるため、どちらでも使用できます。
+* Azure IoT Hub の IoT Hub の場合は、**サービス接続**アクセス許可を備えたキーを指定する必要があります。 **iothubowner** または **service** ポリシーのいずれかを選択します。両方とも**サービス接続**アクセス許可を持っているためです。
 
    [![IoT Hub サービス接続のアクセス許可](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
@@ -50,13 +50,17 @@ Azure Time Series Insights は JSON データのみをサポートしていま�
 
 IoT Hub またはイベント ハブを登録するときに、データの読み取りに使用するコンシューマー グループを設定する必要があります。 このコンシューマー グループは*共有できません*。 コンシューマー グループを共有すると、基盤となる IoT Hub またはイベント ハブによってリーダーのいずれかが自動的にランダムに切断されます。 Time Series Insights が読み取る一意のコンシューマー グループを指定します。
 
+### <a name="cause-d-the-environment-has-just-been-provisioned"></a>原因 D: 環境がプロビジョニングされた直後
+
+Time Series Insights エクスプローラーにデータが表示されるのは、環境とそのデータが最初に作成されてから数分後です。
+
 ## <a name="problem-some-data-is-shown-but-data-is-missing"></a>問題: 表示されるデータと表示されないデータがある
 
 データが一部しか表示されず、データにタイムラグが生じているように思われる場合は、いくつかの可能性を考慮する必要があります。
 
 ### <a name="cause-a-your-environment-is-being-throttled"></a>原因 A: 環境が調整されている
 
-調整は、データを持つイベント ソースを作成した後で、環境をプロビジョニングするときの一般的な問題です。 Azure IoT Hub と Azure Event Hubs は、データを最長 7 日間格納します。 Time Series Insights は常に、イベント ソース内の最も古いイベントから開始します (先入れ先出し (*FIFO*))。
+[調整](time-series-insights-environment-mitigate-latency.md)は、データを持つイベント ソースを作成した後で、環境をプロビジョニングするときの一般的な問題です。 Azure IoT Hub と Azure Event Hubs は、データを最長 7 日間格納します。 Time Series Insights は常に、イベント ソース内の最も古いイベントから開始します (先入れ先出し (*FIFO*))。
 
 たとえば、単一ユニットの Time Series Insights 環境である S1 に接続するときに、イベント ソースに 500 万イベントがある場合、Time Series Insights は 1 日あたり約 100 万イベントを読み取ります。 Time Series Insights に 5 日の待ち時間が発生しているように見えます。 ただし、起こっているのは、環境が調整されているということです。
 

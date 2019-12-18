@@ -60,7 +60,7 @@ MPN 登録に関する問題について、Microsoft [パートナー サポー�
 
 ---
 
-## <a name="3-create-a-partner-center-account"></a>手順 3.パートナー センター アカウントを作成する  
+## <a name="3-create-a-partner-center-account"></a>3.パートナー センター アカウントを作成する  
 | 15 分 |  
 
 Marketplace に[ソリューションを提出](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/azureisv)したら、オンボーディング チームからの連絡を待ち、パブリッシング プロセスのサポートを受けてください。 詳細については、[パートナー センター アカウントの作成](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)方法を参照してください。

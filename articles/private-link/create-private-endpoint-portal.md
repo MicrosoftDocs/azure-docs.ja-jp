@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cb3c1d798e48017604d72d8a438d6a1071199ea
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419770"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899864"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>クイック スタート:Azure portal を使用してプライベート エンドポイントを作成する
 
@@ -43,7 +43,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | ------- | ----- |
     | 名前 | 「*MyVirtualNetwork*」と入力します。 |
     | アドレス空間 | 「*10.1.0.0/16*」を入力します。 |
-    | Subscription | サブスクリプションを選択します。|
+    | サブスクリプション | サブスクリプションを選択します。|
     | Resource group | **[新規作成]** を選択し、「*myResourceGroup*」と入力して、 **[OK]** を選択します。 |
     | Location | **[WestCentralUS]** を選択します。|
     | サブネット - 名前 | 「*mySubnet*」と入力します。 |
@@ -61,7 +61,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Setting | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
-    | Subscription | サブスクリプションを選択します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。  |
     | **インスタンスの詳細** |  |
     | 仮想マシン名 | 「*myVm*」と入力します。 |
@@ -110,7 +110,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Setting | 値 |
     | ------- | ----- |
     | **データベースの詳細** | |
-    | Subscription | サブスクリプションを選択します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
     | データベース名  | 「*mydatabase*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
@@ -141,10 +141,10 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Setting | 値 |
     | ------- | ----- |
     | **プロジェクトの詳細** | |
-    | Subscription | サブスクリプションを選択します。 |
+    | サブスクリプション | サブスクリプションを選択します。 |
     | Resource group | **[myResourceGroup]** を選択します。 これは前のセクションで作成しました。|
     | **インスタンスの詳細** |  |
-    | 名前 | 「 * myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
+    | 名前 | 「*myPrivateEndpoint*」と入力します。 この名前を取得する場合は、一意の名前を作成します。 |
     |リージョン|**[WestCentralUS]** を選択します。|
     |||
 5. **[次へ:リソース]** を選択します。
@@ -153,7 +153,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
     | Setting | 値 |
     | ------- | ----- |
     |接続方法  | 自分のディレクトリ内の Azure リソースに接続するように選択します。|
-    | Subscription| サブスクリプションを選択します。 |
+    | サブスクリプション| サブスクリプションを選択します。 |
     | リソースの種類 | **[Microsoft.Sql/servers]** を選択します。 |
     | リソース |*[myServer]* を選択します。|
     |ターゲット サブリソース |*[sqlServer]* を選択します。|
@@ -177,7 +177,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>リモート デスクトップ (RDP) を使用して VM に接続
 
 
-**myVm* を作成した後、次のようにインターネットからそれに接続します。 
+**myVm** を作成した後、次のようにインターネットからそれに接続します。 
 
 1. ポータルの検索バーに、「*myVm*」と入力します。
 
@@ -185,7 +185,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 
 1. **[RDP ファイルのダウンロード]** を選択します。 リモート デスクトップ プロトコル ( *.rdp*) ファイルが作成され、お使いのコンピューターにダウンロードされます。
 
-1. ダウンロードした .rdp* ファイルを開きます。
+1. *downloaded.rdp* ファイルを開きます。
 
     1. メッセージが表示されたら、 **[Connect]** を選択します。
 

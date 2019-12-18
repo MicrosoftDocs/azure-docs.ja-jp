@@ -3,12 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/08/2018
-ms.openlocfilehash: e783605a830bfdd19d17a58c993f91b284fb2319
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/06/2019
+ms.openlocfilehash: b8a04dcda03de277ff9f2b291e798540846c1e49
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67181454"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74980913"
 ---
-Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を所有している必要があります。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)できます。 無料試用版をアクティブ化した後に提供されるアクセス キー、または Azure ダッシュボードから入手できる有料のサブスクリプション キーがあらかじめ必要となります。
+## <a name="create-an-azure-resource"></a>Azure リソースを作成する
+
+次のいずれかの Azure リソースを作成して、Bing Image Search API の使用を開始します。
+
+* [試用版のリソースを作成する](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Azure サブスクリプションは不要です。
+    * 7 日間有効です (無料)。 試用版のキーとエンドポイントは、サインアップ後に [Azure Web サイト](https://azure.microsoft.com/try/cognitive-services/my-apis/)で入手できます。
+
+* [Bing Search v7 リソースを作成する](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * ご自身でリソースを削除するまでは Azure portal からご利用いただけます。
+    * Free 価格レベルを使ってサービスを試用し、後から運用環境用の有料レベルにアップグレードします。
+
+* [マルチサービス リソースを作成する](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * ご自身でリソースを削除するまでは Azure portal からご利用いただけます。  
+    * 複数の Cognitive Services 全体で同じキーとエンドポイントをアプリケーションに使用します。

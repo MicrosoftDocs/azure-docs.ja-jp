@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d6758fc5434406e42acf65ff3b712227b5cec0f8
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991622"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977218"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>クイック スタート:Python 用の Bing Web Search SDK を使用する
 
@@ -23,16 +23,14 @@ Bing Web Search SDK を使用すると、Python アプリケーションに Bing
 
 今すぐコードを確認したい場合は、 GitHub で、[Python 用の Bing Web Search SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)を入手できます。
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-「[Cognitive Services の価格 - Bing Search API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)」もご覧ください。
-
 ## <a name="prerequisites"></a>前提条件
 Bing Web Search SDK は、Python 2.7、3.3、3.4、3.5、および 3.6 と互換性があります。 このクイック スタートには仮想環境を使用することをお勧めします。
 
 * Python 2.7、3.3、3.4、3.5、または 3.6
 * Python 2.7 向けの [virtualenv](https://docs.python.org/3/tutorial/venv.html)
 * Python 3.x 向けの [venv](https://pypi.python.org/pypi/virtualenv)
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-and-configure-your-virtual-environment"></a>仮想環境の作成と構成
 
@@ -82,7 +80,7 @@ python -m pip install azure-cognitiveservices-search-websearch
 
 1. 普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。
 
-1. このサンプル コードをプロジェクトにコピーします。  
+1. このサンプル コードをプロジェクトにコピーします。 `endpoint` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。  
 
     ```python
     # Import required modules.

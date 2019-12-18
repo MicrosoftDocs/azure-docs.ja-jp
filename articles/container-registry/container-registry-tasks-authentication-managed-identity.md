@@ -80,7 +80,7 @@ az acr task create \
 "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>手順 3.他の Azure リソースにアクセスするためのアクセス許可を ID に付与する
+### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3.他の Azure リソースにアクセスするためのアクセス許可を ID に付与する
 
 タスクの要件に応じて、他の Azure リソースにアクセスするためのアクセス許可を ID に付与します。 たとえば、次のようになります。
 

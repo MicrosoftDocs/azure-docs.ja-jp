@@ -114,7 +114,7 @@ Azure サポートの詳細については、「[Azure サポートに関する 
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Ambari のタイムゾーンは変更するにはどうすればよいですか。
 
-1. https://CLUSTERNAME.azurehdinsight.net の Ambari Web UI を開きます。この CLUSTERNAME は実際のクラスターの名前です。
+1. [https://CLUSTERNAME.azurehdinsight.net](https://CLUSTERNAME.azurehdinsight.net ) の Ambari Web UI を開きます。この CLUSTERNAME は実際のクラスターの名前です。
 2. 右上隅の [admin | Settings]\(管理者 | 設定\) を選択します。 
 
    ![Ambari の設定](media/hdinsight-faq/ambari-settings.png)

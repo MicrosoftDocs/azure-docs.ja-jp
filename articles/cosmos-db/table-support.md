@@ -1,23 +1,23 @@
 ---
 title: Azure Cosmos DB における Azure Table Storage サポート
-description: Azure Cosmos DB Table API と Azure Storage Tables を連携させる方法について説明します。
+description: 同じテーブル データ モデルと操作を共有して Azure Cosmos DB Table API と Azure Storage Tables を連携させる方法について説明します
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 08/05/2019
+ms.date: 12/02/2019
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 71bc5d73a7b5bc83dc1ac835c80ac1b14d5113e9
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 4f742ce34ec429f0fc822562c1ad4ad07f3e7965
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68814700"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870430"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Azure Cosmos DB Table API と Azure Table Storage を使用した開発
 
-Azure Cosmos DB Table API と Azure Table Storage は同じテーブル データ モデルを共有しており、SDK を介して同じ create、delete、update、およびクエリ操作が公開されています。 
+Azure Cosmos DB Table API と Azure Table Storage は同じテーブル データ モデルを共有しており、SDK を介して同じ create、delete、update、およびクエリ操作が公開されています。
 
 [!INCLUDE [storage-table-cosmos-comparison](../../includes/storage-table-cosmos-comparison.md)]
 

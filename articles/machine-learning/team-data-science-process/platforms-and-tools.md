@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626378"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978511"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>データ サイエンス プロジェクトのためのプラットフォームとツール
 
@@ -124,28 +124,30 @@ Linux (CentOS) マシンに Git をインストールするには、次の Bash 
 
 Linux (CentOS) コンピューターを使用して Git コマンドを実行している場合は、このコンピューターが Azure DevOps Services によって認識されるように、コンピューターの SSH 公開キーを Azure DevOps Services に追加する必要があります。 まず、SSH 公開キーを生成し、Azure DevOps Services のセキュリティ設定ページでそのキーを SSH 公開キーに追加する必要があります。 
 
-- SSH キーを生成するには、次の 2 つのコマンドを実行します。 
+1. SSH キーを生成するには、次の 2 つのコマンドを実行します。 
 
-        ssh-keygen
-        cat .ssh/id_rsa.pub
+   ```
+   ssh-keygen
+   cat .ssh/id_rsa.pub
+   ```
+   
+   ![SSH キーを生成するコマンド](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-![SSH キーを生成するコマンド](./media/platforms-and-tools/resources-1-generate_ssh.png)
-
-- *ssh-rsa* も含めた SSH キー全体をコピーします。 
-- Azure DevOps Services にログインします。 
-- ページの右上隅にある **<自分の名前\>** をクリックし、 **[セキュリティ]** をクリックします。 
+1. *ssh-rsa* も含めた SSH キー全体をコピーします。 
+1. Azure DevOps Services にログインします。 
+1. ページの右上隅にある **<自分の名前\>** をクリックし、 **[セキュリティ]** をクリックします。 
     
-    ![自分の名前をクリックしてから [セキュリティ] をクリックする](./media/platforms-and-tools/resources-2-user-setting.png)
+   ![自分の名前をクリックしてから [セキュリティ] をクリックする](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- **[SSH 公開キー]** をクリックし、 **[+追加]** をクリックします。 
+1. **[SSH 公開キー]** をクリックし、 **[+追加]** をクリックします。 
 
-    ![[SSH 公開キー] をクリックしてから [+追加] をクリックする](./media/platforms-and-tools/resources-3-add-ssh.png)
+   ![[SSH 公開キー] をクリックしてから [+追加] をクリックする](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-- 先ほどコピーした SSH キーをテキスト ボックスに貼り付け、保存します。
+1. 先ほどコピーした SSH キーをテキスト ボックスに貼り付け、保存します。
 
 
 ## <a name="next-steps"></a>次の手順
 
 また、 **特定のシナリオ** のプロセスに伴うすべての段階をリハーサル的に最初から最後まで実証することも可能です。 これらは、[サンプル チュートリアル](walkthroughs.md)のトピックで簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 
 
-Azure Machine Learning Studio を使用する Team Data Science Process のステップを実行する例については、[Azure ML の使用](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)ラーニング パスをご覧ください。
+Azure Machine Learning Studio (クラシック) を使用して Team Data Science Process の手順を実行する方法を示す例については、[Azure ML の使用](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)に関するラーニング パスを参照してください。

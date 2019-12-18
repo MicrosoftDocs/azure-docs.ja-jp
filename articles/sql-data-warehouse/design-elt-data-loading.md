@@ -68,7 +68,7 @@ Azure Storage へのデータの移動で使用できるツールやサービス
 - [Azure Data Factory (ADF)](../data-factory/introduction.md) - ゲートウェイをローカル サーバーにインストールできます。 その後、ローカル サーバーから Azure Storage にデータを移動するためのパイプラインを作成できます。 SQL Data Warehouse での Data Factory の使用については、[SQL Data Warehouse へのデータの読み込み](/azure/data-factory/load-azure-sql-data-warehouse)に関する記事をご覧ください。
 
 
-## <a name="3-prepare-the-data-for-loading"></a>手順 3.読み込むデータを準備する
+## <a name="3-prepare-the-data-for-loading"></a>3.読み込むデータを準備する
 
 SQL Data Warehouse に読み込む前に、ストレージ アカウント内でデータを準備し、整理する必要がある場合があります。 データの準備は、データがソース内にあるとき、データをテキスト ファイルにエクスポートするとき、またはデータが Azure Storage に配置された後に実施できます。  データの操作は、プロセスの早い段階の方が、最も簡単に行えます。  
 

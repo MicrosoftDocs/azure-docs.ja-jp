@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/15/2018
-ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/06/2019
+ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468419"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995917"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で Apache HBase クラスターのレプリケーションを設定する
 
@@ -275,6 +275,10 @@ sudo service bind9 status
 
 **Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、[Apache HBase のチュートリアル:HDInsight の Apache HBase の使用を開始する方法](apache-hbase-tutorial-get-started-linux.md)に関するページの指示に従います。
 
+> [!NOTE]
+> カスタム名前空間からテーブルをレプリケートする場合は、宛先クラスターでも適切なカスタム名前空間が定義されていることを確認する必要があります。
+>
+
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 
 次の手順は、Azure Portal からスクリプト アクションのスクリプトを呼び出す方法を示しています。 Azure PowerShell と Azure クラシック CLI を使用したスクリプト アクションの実行については、[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする方法](../hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
@@ -296,6 +300,8 @@ sudo service bind9 status
     
       > [!NOTE]
       > ソースと宛先の両方のクラスター DNS 名に FQDN ではなくホスト名を使用します。
+      >
+      > このチュートリアルでは、hn1 をアクティブなヘッド ノードと見なしています。 クラスターを確認してアクティブなヘッド ノードを識別してください。
 
 6. **作成** を選択します。 このスクリプトの実行には、少し時間がかかます (特に **-copydata** 引数を使用する場合)。
 
@@ -315,7 +321,7 @@ sudo service bind9 status
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理者ユーザー名を指定します。 既定値は **admin** です。 |
 |-t, --table-list | レプリケートされるテーブルを指定します。 例: --table-list="table1;table2;table3"。 テーブルを指定しない場合は、すべての既存の HBase テーブルがレプリケートされます。|
-|-m, --machine | スクリプト アクションを実行するヘッド ノードを指定します。 値は**hn0**または**hn1** のいずれかであり、アクティブなヘッド ノードがどちらであるかに基づいて選択される必要があります。 このオプションは、HDInsight ポータルまたは Azure PowerShell からスクリプト アクションとして $0 スクリプトを実行する場合に使用します。|
+|-m, --machine | スクリプト アクションを実行するヘッド ノードを指定します。 この値は、どちらがアクティブなヘッド ノードであるかに基づいて選択する必要があります。 このオプションは、HDInsight ポータルまたは Azure PowerShell からスクリプト アクションとして $0 スクリプトを実行する場合に使用します。|
 |-cp, -copydata | レプリケーションが有効になっているテーブルの既存のデータの移行を有効にします。 |
 |-rpm, -replicate-phoenix-meta | Phoenix システム テーブルのレプリケーションを有効にします。 <br><br>*このオプションは慎重に使用してください。* このスクリプトを使用する前に、レプリカ クラスターで Phoenix テーブルを再作成しておくことをお勧めします。 |
 |-h, --help | 使用方法に関する情報を表示します。 |
@@ -393,6 +399,10 @@ sudo service bind9 status
 - **指定したテーブル (table1、table2、および table3) のレプリケーションを無効にする**:
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+
+> [!NOTE]
+> 宛先クラスターを削除しようとしている場合は、ソース クラスターのピアの一覧から削除するようにしてください。 これを行うには、ソース クラスターの hbase シェルでコマンド remove_peer '1' を実行します。 これが失敗する場合は、ソース クラスターが正しく機能していない可能性があります。
+>
 
 ## <a name="next-steps"></a>次の手順
 

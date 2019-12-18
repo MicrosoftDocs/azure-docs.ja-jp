@@ -4,16 +4,19 @@ description: このチュートリアルでは、Git リポジトリにソース
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8af8daa4233fe6461b4e129f56a063e7cc212245
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a26f1207eccd615804babe230df689d27beae49f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454758"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840784"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>チュートリアル: ソース コードのコミット時にクラウドでコンテナー イメージ ビルドを自動化する
 
-[クイック タスク](container-registry-tutorial-quick-task.md)に加えて、ACR タスクは、ソース コードを Git リポジトリにコミットしたときのクラウド内での自動 Docker コンテナー イメージ ビルドをサポートしています。
+[クイック タスク](container-registry-tutorial-quick-task.md)に加えて、ACR タスクは、ソース コードを Git リポジトリにコミットしたときのクラウド内での自動 Docker コンテナー イメージ ビルドをサポートしています。 ACR タスクに関してサポートされる Git コンテキストには、パブリックまたはプライベートの GitHub リポジトリと Azure リポジトリが含まれます。
+
+> [!NOTE]
+> 現在、GitHub Enterprise リポジトリにおける commit や pull request トリガーは、ACR タスクではサポートされません。
 
 このチュートリアルでは、ソース コードを Git リポジトリにコミットしたときに、ACR タスクによって、Dockerfile で指定されている単一のコンテナー イメージをビルドしてプッシュします。 YAML ファイルを使用して、コードのコミットで複数のコンテナーをビルド、プッシュ、および (必要に応じて) テストする手順を定義する[マルチステップ タスク](container-registry-tasks-multi-step.md)を作成するには、「[チュートリアル:ソース コードをコミットしたらクラウドでマルチステップ コンテナー ワークフローを実行する](container-registry-tutorial-multistep-task.md)」を参照してください。 ACR タスクの概要については、「[ACR タスクを使用して OS とフレームワークの修正プログラムの適用を自動化する](container-registry-tasks-overview.md)」を参照してください
 

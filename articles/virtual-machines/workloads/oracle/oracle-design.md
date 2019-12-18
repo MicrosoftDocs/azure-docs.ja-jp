@@ -118,7 +118,7 @@ AWR レポートから取得できるメトリックを次に示します。
 
 AWR レポートから収集した情報に基づき、次のステップでは要件を満たすサイズの VM を選択します。 [メモリの最適化](../../linux/sizes-memory.md)に関する記事で、使用可能な仮想マシンの一覧を見つけることができます。
 
-#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>手順 3.ACU に基づき、同様の VM シリーズで VM のサイズを細かく調整する
+#### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3.ACU に基づき、同様の VM シリーズで VM のサイズを細かく調整する
 
 VM を選択した後に、仮想マシンの ACU に注意を向けてください。 お客様の要件に合うように、ACU の値に基づいて別の VM を選択することもできます。 詳細については、「[Azure コンピューティング ユニット](https://docs.microsoft.com/azure/virtual-machines/windows/acu)」をご覧ください。
 

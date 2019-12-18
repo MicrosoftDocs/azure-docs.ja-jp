@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: mlearned
-ms.openlocfilehash: d855e7a65b7e1ad24dcfc4fe6a6d5e02f9004bb0
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 5ff79dc597571f4e6ef3d7c2c20bce61c0d061ad
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089553"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926370"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>メンテナンスまたはトラブルシューティングのために SSH を使用して Azure Kubernetes Service (AKS) クラスター ノードに接続する
 
@@ -41,7 +41,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-上の例では、*myResourceGroup* 内の *myAKSCluster* のクラスター リソース グループの名前に *CLUSTER_RESOURCE_GROUP* を割り当てています。 次に、例では、*CLUSTER_RESOURCE_GROUP* を使用してスケール セット名を表示し、それを *SCALE_SET_NAME* に割り当てています。  
+上の例では、*myResourceGroup* 内の *myAKSCluster* のクラスター リソース グループの名前に *CLUSTER_RESOURCE_GROUP* を割り当てています。 次に、例では、*CLUSTER_RESOURCE_GROUP* を使用してスケール セット名を表示し、それを *SCALE_SET_NAME* に割り当てています。
 
 > [!IMPORTANT]
 > 現時点では、仮想マシン スケールセットに基づく AKS クラスターについては、Azure CLI を使用して SSH キーを更新する必要があります。
@@ -100,7 +100,7 @@ CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myA
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-上の例では、*myResourceGroup* 内の *myAKSCluster* のクラスター リソース グループの名前に *CLUSTER_RESOURCE_GROUP* を割り当てています。 その後、この例では、*CLUSTER_RESOURCE_GROUP* を使用して、仮想マシン名を一覧表示しています。 出力例には、仮想マシンの名前が表示されています。 
+上の例では、*myResourceGroup* 内の *myAKSCluster* のクラスター リソース グループの名前に *CLUSTER_RESOURCE_GROUP* を割り当てています。 その後、この例では、*CLUSTER_RESOURCE_GROUP* を使用して、仮想マシン名を一覧表示しています。 出力例には、仮想マシンの名前が表示されています。
 
 ```
 Name                      ResourceGroup                                  Location
@@ -144,7 +144,7 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 1. `debian` コンテナー イメージを実行し、ターミナル セッションをそれにアタッチします。 このコンテナーを使用して、AKS クラスター内の任意のノードとの SSH セッションを作成できます。
 
     ```console
-    kubectl run -it --rm aks-ssh --image=debian
+    kubectl run --generator=run-pod/v1 -it --rm aks-ssh --image=debian
     ```
 
     > [!TIP]
@@ -158,21 +158,12 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. コンテナーに接続されていない新しいターミナル ウィンドウを開き、[kubectl get pods][kubectl-get] コマンドを使用して AKS クラスター上のポッドの一覧を表示します。 次の例に示すように、前のステップで作成したポッドは *aks-ssh* という名前で開始します。
+1. コンテナーに接続されていない新しいターミナル ウィンドウを開き、プライベート SSH キーをヘルパー ポッドにコピーします。 この秘密キーは、AKS ノードへの SSH を作成するために使用されます。 
 
-    ```
-    $ kubectl get pods
-    
-    NAME                       READY     STATUS    RESTARTS   AGE
-    aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
-    ```
-
-1. 前の手順で、トラブルシューティングを行う AKS ノードに公開 SSH キーを追加しました。 ここでは、SSH 秘密キーをヘルパー ポッドにコピーします。 この秘密キーは、AKS ノードへの SSH を作成するために使用されます。
-
-    前のステップで取得した独自の *aks-ssh* ポッド名を指定します。 必要に応じて、 *~/.ssh/id_rsa* をお使いの SSH 秘密キーの場所に変更します。
+   必要に応じて、 *~/.ssh/id_rsa* をお使いの SSH 秘密キーの場所に変更します。
 
     ```console
-    kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+    kubectl cp ~/.ssh/id_rsa $(kubectl get pod -l run=aks-ssh -o jsonpath='{.items[0].metadata.name}'):/id_rsa
     ```
 
 1. コンテナーへのターミナル セッションに戻り、コピーした `id_rsa` SSH 秘密キーに対するアクセス許可を、ユーザーに対して読み取り専用になるように更新します。
@@ -185,22 +176,22 @@ AKS ノードへの SSH 接続を作成するには、AKS クラスターでヘ�
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4
-    
+
     ECDSA key fingerprint is SHA256:A6rnRkfpG21TaZ8XmQCCgdi9G/MYIMc+gFAuY9RUY70.
     Are you sure you want to continue connecting (yes/no)? yes
     Warning: Permanently added '10.240.0.4' (ECDSA) to the list of known hosts.
-    
+
     Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.15.0-1018-azure x86_64)
-    
+
      * Documentation:  https://help.ubuntu.com
      * Management:     https://landscape.canonical.com
      * Support:        https://ubuntu.com/advantage
-    
+
       Get cloud support with Ubuntu Advantage Cloud Guest:
         https://www.ubuntu.com/business/services/cloud
-    
+
     [...]
-    
+
     azureuser@aks-nodepool1-79590246-0:~$
     ```
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebfe5f75d5d8546e0f5e8ad6f8c5d0063e5bda2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc73d7ec81ea0105a5868ec698289bd27526a43b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377284"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893503"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と EZOfficeInventory の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "72377284"
 
 * EZOfficeInventory にアクセスできるユーザーを Azure AD で制御できます。
 * ユーザーが自分の Azure AD アカウントを使用して EZOfficeInventory に自動的にサインインできるように設定できます。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -94,7 +94,7 @@ EZOfficeInventory で Azure AD SSO を構成してテストするには、次の
 
 1. EZOfficeInventory アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。 次のスクリーンショットには、既定の属性一覧が示されています。
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
 1. その他に、EZOfficeInventory アプリケーションでは、いくつかの属性が SAML 応答で返されることが想定されています。それらの属性を次に示します。 これらの属性も値が事前に設定されますが、要件に従ってそれらの値を確認することができます。
 
@@ -144,13 +144,21 @@ EZOfficeInventory で Azure AD SSO を構成してテストするには、次の
 
 ## <a name="configure-ezofficeinventory-sso"></a>EZOfficeInventory の SSO の構成
 
-1. 新しい Web ブラウザー ウィンドウを開き、EZOfficeInventory 企業サイトに管理者としてサインインします。
+1. EZOfficeInventory 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
 
-2. ページの右上隅の  **[Profile]\(プロファイル\)**   をクリックし、 **[Settings]\(設定\)**  >  **[Add Ons]\(アドオン\)** に移動します。
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[EZOfficeInventory のセットアップ]** をクリックすると、EZOfficeInventory アプリケーションに誘導されます。 そこから、管理者の資格情報を入力して EZOfficeInventory にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 から 5 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. EZOfficeInventory を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として EZOfficeInventory 企業サイトにサインインして、次の手順を実行します。
+
+1. ページの右上隅の **[Profile]\(プロファイル\)** をクリックし、 **[Settings]\(設定\)**  >  **[Add Ons]\(アドオン\)** に移動します。
 
     ![EZOfficeInventory の構成](./media/ezofficeinventory-tutorial/configure01.png)
 
-3. 下へスクロールして **[SAML Integration]\(SAML 統合\)** セクションに移動し、次の手順に従います。
+1. 下へスクロールして **[SAML Integration]\(SAML 統合\)** セクションに移動し、次の手順に従います。
 
     ![EZOfficeInventory の構成](./media/ezofficeinventory-tutorial/configure02.png)
 
@@ -176,7 +184,7 @@ EZOfficeInventory で Azure AD SSO を構成してテストするには、次の
 
 このセクションでは、Britta Simon というユーザーを EZOfficeInventory に作成します。 EZOfficeInventory では、Just-In-Time ユーザー プロビジョニングがサポートされています。この設定は既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 EZOfficeInventory にユーザーがまだ存在していない場合は、認証後に新規に作成されます。
 
-## <a name="test-sso"></a>SSO のテスト 
+## <a name="test-sso"></a>SSO のテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
@@ -191,4 +199,3 @@ EZOfficeInventory で Azure AD SSO を構成してテストするには、次の
 - [Azure Active Directory の条件付きアクセスとは](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Azure AD で EZOfficeInventory を試す](https://aad.portal.azure.com/)
-

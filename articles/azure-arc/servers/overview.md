@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122843"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951430"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>サーバー向け Azure Arc とは
 
@@ -108,6 +108,40 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 ポータルを使用してリソース プロバイダーを登録するには、[Azure portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) の手順に従ってください。
+
+## <a name="machine-changes-after-installing-the-agent"></a>エージェントのインストール後のマシンの変更
+
+変更追跡ソリューションが環境にデプロイされている場合、**Azure Connected Machine Agent (AzCMAgent)** インストール パッケージによって行われる変更は、以下のリストを使用して追跡、特定、許可できます。
+
+エージェントのインストール後、サーバーには次の変更が加えられます。
+
+### <a name="windows"></a>Windows
+
+インストールされるサービス:
+
+* `Himds` - **Azure Connected Machine Agent** サービス。
+* `Dscservice` または `gcd` - **Guest Configuration** サービス。
+
+サーバーに追加されるファイル:
+
+* `%ProgramFiles%\AzureConnectedMachineAgent\*.*` - **Azure Connected Machine Agent** ファイルの場所。
+* `%ProgramData%\GuestConfig\*.*` - **Guest Configuration** のログ。
+
+レジストリ キーの場所:
+
+* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent` - **Azure Connected Machine Agent** のレジストリ キー。
+
+### <a name="linux"></a>Linux
+
+インストールされるサービス:
+
+* `Himdsd` - **Azure Connected Machine Agent** サービス。
+* `dscd` または `gcd` - **Guest Configuration** サービス。
+
+サーバーに追加されるファイル:
+
+* `/var/opt/azcmagent/**` - **Azure Connected Machine Agent** ファイルの場所。
+* `/var/lib/GuestConfig/**` - **Guest Configuration** のログ。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 

@@ -1,19 +1,19 @@
 ---
 title: .NET Standard SDK を使用した Azure Cosmos DB Table API の概要
-description: Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
+description: Azure Cosmos DB Table API アカウントに構造化データを格納して照会する方法について説明します
 author: wmengmsft
 ms.author: wmeng
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
-ms.date: 05/20/2019
-ms.openlocfilehash: 11179d6adc676ae99257442b186a15e69dcc4a03
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/03/2019
+ms.openlocfilehash: 0a1ba00d2d24664590f76438a90f651e0826d419
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764475"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870549"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>.NET SDK を使用した Azure Cosmos DB Table API と Azure Table Storage の概要
 

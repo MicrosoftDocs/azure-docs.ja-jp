@@ -63,7 +63,7 @@ ms.locfileid: "74076661"
      exit-address-family
     !
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>手順 3.BGP セッションでアドバタイズするプレフィックスの設定
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3.BGP セッションでアドバタイズするプレフィックスの設定
 特定のプレフィックスをマイクロソフトにアドバタイズするようにルーターを構成することができます。 その方法を紹介したのが以下のサンプルです。
 
     router bgp <Customer_ASN>
@@ -148,7 +148,7 @@ ms.locfileid: "74076661"
         }                                   
     }
 
-### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>手順 3.BGP セッションでアドバタイズするプレフィックスの設定
+### <a name="3-setting-up-prefixes-to-be-advertised-over-the-bgp-session"></a>3.BGP セッションでアドバタイズするプレフィックスの設定
 特定のプレフィックスをマイクロソフトにアドバタイズするようにルーターを構成することができます。 その方法を紹介したのが以下のサンプルです。
 
     policy-options {

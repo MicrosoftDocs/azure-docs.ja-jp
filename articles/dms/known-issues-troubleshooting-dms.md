@@ -48,7 +48,7 @@ Azure Database Migration Service を使用して MySQL から Azure Database for
 
 | 原因         | 解決策 |
 | ------------- | ------------- |
-| このエラーは、移行を行っているユーザーに ReplicationAdmin ロール、または REPLICATION CLIENT、REPLICATION REPLICA、SUPER (MySQL 5.6.6 より前のバージョン) の特権がない場合に発生することがあります。<br><br><br><br><br><br><br><br><br><br><br><br><br> | ユーザー アカウントの[前提条件の特権](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites)が Azure Database for MySQL インスタンスで正確に構成されていることを確認してください。 たとえば、必要な特権を持つ "migrateuser" という名前のユーザーを作成するには、次の手順に従います。<br>1.CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2."secret" で特定された "migrateuser'@'%'" に、db_name.* のすべての権限を付与します; //他のデータベースにもアクセス権を付与するには、この手順を繰り返します <br>手順 3. *.* でレプリケーション スレーブを付与します to 'migrateuser'@'%' identified by 'secret';<br>4. *.* でレプリケーション クライアントを付与します to 'migrateuser'@'%' identified by 'secret';<br>5.権限をフラッシュします |
+| このエラーは、移行を行っているユーザーに ReplicationAdmin ロール、または REPLICATION CLIENT、REPLICATION REPLICA、SUPER (MySQL 5.6.6 より前のバージョン) の特権がない場合に発生することがあります。<br><br><br><br><br><br><br><br><br><br><br><br><br> | ユーザー アカウントの[前提条件の特権](https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online#prerequisites)が Azure Database for MySQL インスタンスで正確に構成されていることを確認してください。 たとえば、必要な特権を持つ "migrateuser" という名前のユーザーを作成するには、次の手順に従います。<br>1.CREATE USER migrateuser@'%' IDENTIFIED BY 'secret'; <br>2."secret" で特定された "migrateuser'@'%'" に、db_name.* のすべての権限を付与します; //他のデータベースにもアクセス権を付与するには、この手順を繰り返します <br>3. *.* でレプリケーション スレーブを付与します to 'migrateuser'@'%' identified by 'secret';<br>4. *.* でレプリケーション クライアントを付与します to 'migrateuser'@'%' identified by 'secret';<br>5.権限をフラッシュします |
 
 ## <a name="error-when-attempting-to-stop-azure-database-migration-service"></a>Azure Database Migration Service を停止しようとしたときのエラー
 
@@ -58,7 +58,7 @@ Azure Database Migration Service インスタンスを停止すると、次の�
 
 | 原因         | 解決策 |
 | ------------- | ------------- |
-| このエラーは、停止しようとしているサービス インスタンスに、まだ実行中のアクティビティや移行プロジェクト内に存在するアクティビティが含まれている場合に表示されます。 <br><br><br><br><br><br> | 停止しようとしている Azure Database Migration Service のインスタンスには実行中のアクティビティがないようにしてください。 また、サービスを停止する前に、アクティビティまたはプロジェクトを削除することもできます。 次の手順では、実行中のすべてのタスクを削除することでプロジェクトを削除し、移行サービス インスタンスをクリーンアップする方法を示します。<br>1.Install-Module -Name AzureRM.DataMigration <br>2.Login-AzureRmAccount <br>手順 3.Select-AzureRmSubscription -SubscriptionName "\<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
+| このエラーは、停止しようとしているサービス インスタンスに、まだ実行中のアクティビティや移行プロジェクト内に存在するアクティビティが含まれている場合に表示されます。 <br><br><br><br><br><br> | 停止しようとしている Azure Database Migration Service のインスタンスには実行中のアクティビティがないようにしてください。 また、サービスを停止する前に、アクティビティまたはプロジェクトを削除することもできます。 次の手順では、実行中のすべてのタスクを削除することでプロジェクトを削除し、移行サービス インスタンスをクリーンアップする方法を示します。<br>1.Install-Module -Name AzureRM.DataMigration <br>2.Login-AzureRmAccount <br>3.Select-AzureRmSubscription -SubscriptionName "\<subName>" <br> 4.Remove-AzureRmDataMigrationProject -Name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Azure Database Migration Service を開始しようとしたときのエラー
 

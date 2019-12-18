@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93c88b167884c455ffb995f35356b121bce8a207
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fbaafdce6f2510b58966f4b6c18e45a3fcd4a664
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794992"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997090"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -42,7 +42,7 @@ Azure AD Connect 同期では、プロビジョニングがオンプレミスの
 
 **Q:エージェントはどのように更新されますか?**
 
-エージェントは、Microsoft によって自動的にアップグレードされます。 その結果、IT 部門がエージェントの新しいバージョンのテストや検証を行う際にかかる負担が軽減されます。 
+エージェントは、Microsoft によって自動的にアップグレードされます。 その結果、エージェントの新しいバージョンのテストや検証に伴う IT 部門の負担が軽減されます。 
 
 **Q:自動アップグレードを無効にすることはできますか?**
 

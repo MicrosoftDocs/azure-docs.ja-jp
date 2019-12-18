@@ -47,7 +47,7 @@ Azure 可用性ゾーンは、VM のセットを 2 つ以上のデータ セン�
 ### <a name="azure-standard-load-balancer-"></a>Azure Standard Load Balancer *
 Azure Load Balancer は、レイヤー 4 のロード バランサーです。 負荷分散セット内のサービスのインスタンス間でトラフィックを分散するために使用されます。 標準バージョンには、基本バージョンに加えて、[高度な機能](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)が用意されています。 例 1。 バックエンド プールの上限が、100 から 1,000 VM に上げられました。  2. エンドポイントで、1 つの可用性セットだけではなく複数の可用性セットをサポートできるようになりました。  手順 3. HA ポート、より豊富な監視データなど、追加の機能があります。 Azure 可用性ゾーンに移行する場合は、標準ロード バランサーが必要です。 新たにデプロイする場合は、Azure Standard Load Balancer で始めることをお勧めします。 
 
-## <a name="3-authentication"></a>手順 3.認証 
+## <a name="3-authentication"></a>3.認証 
 [Cloud Foundry User Account and Authentication](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) は、CF とそのさまざまなコンポーネントの中心的な ID 管理サービスです。 [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、Microsoft が提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 既定では、Cloud Foundry 認証には UAA が使用されます。 高度なオプションとして、UAA は外部ユーザー ストアとして Azure AD もサポートしています。 Azure AD ユーザーは、Cloud Foundry アカウントなしで、LDAP ID を使用して Cloud Foundry にアクセスすることができます。 PCF で UAA 用に Azure AD を構成するには、[こちらの手順](https://docs.pivotal.io/p-identity/1-6/azure/index.html)に従ってください。
 
 ## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4.Cloud Foundry ランタイム システムのデータ ストレージ

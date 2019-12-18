@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4f7f1c28423e67ff9ff09385a5e0c7675e4a6049
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: c1af1142faca76cc58b6b3ca9a7106bc0433ea18
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67338821"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976368"
 ---
 # <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>クイック スタート:Python を使用して Bing Web Search API を呼び出す  
 
@@ -41,7 +41,7 @@ subscription_key = "YOUR_ACCESS_KEY"
 assert subscription_key
 ```
 
-Bing Web Search API エンドポイントを宣言します。 承認エラーが発生した場合は、Azure ダッシュボードで Bing Search エンドポイントに照らしてこの値をダブルチェックしてください。
+Bing Web Search API エンドポイントを宣言します。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"

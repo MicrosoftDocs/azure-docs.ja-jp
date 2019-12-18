@@ -1,20 +1,20 @@
 ---
 title: Azure Image Builder を使用して、既存のイメージ バージョンから新しいイメージ バージョンを作成する (プレビュー)
-description: Azure Image Builder を使用して、既存のイメージ バージョンから新しいイメージ バージョンを作成します。
+description: Azure Image Builder を使用して、既存のイメージ バージョンから新しい VM イメージバージョンを作成します。
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: d60a7680bc283ba015d0649fb1d2671f8e5cf793
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 160de4521f4035ba3abd01137955cafc27071a05
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718638"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976096"
 ---
-# <a name="preview-create-a-new-image-version-from-an-existing-image-version-using-azure-image-builder"></a>更新:Azure Image Builder を使用して、既存のイメージ バージョンから新しいイメージ バージョンを作成する
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>プレビュー:Azure Image Builder を使用して、既存のイメージ バージョンから新しい VM イメージバージョンを作成
 
 この記事では、[共有イメージ ギャラリー](shared-image-galleries.md)で既存のイメージ バージョンを取得し、それを更新し、新しいイメージ バージョンとしてギャラリーに公開する方法について説明します。
 

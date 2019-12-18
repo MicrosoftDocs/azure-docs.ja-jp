@@ -128,7 +128,7 @@ SQL Server 仮想マシンを作成する際には、仮想マシン ギャラ�
 ![SQL VM の管理設定](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-management.png)
 
 
-## <a name="3-configure-sql-server-settings"></a>手順 3.SQL Server の設定を構成する
+## <a name="3-configure-sql-server-settings"></a>3.SQL Server の設定を構成する
 
 **[SQL Server の設定]** タブで、SQL Server の個々の設定と最適化を構成します。 SQL Server について構成できる設定は次のとおりです。
 

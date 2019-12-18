@@ -37,7 +37,7 @@ Data Box Gateway をデプロイするには、以下の順序どおりにチュ
 | --- | --- | --- | 
 | 1. |**[Data Box Gateway のために Azure portal を準備する](data-box-gateway-deploy-prep.md)** |Data Box Gateway リソースを作成して構成した後で、Data Box Gateway 仮想デバイスをプロビジョニングします。 |
 | 2. |**[Hyper-V で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-hyperv.md)** <br><br><br>**[VMware で Data Box Gateway をプロビジョニングする](data-box-gateway-deploy-provision-vmware.md)**|Hyper-V の場合、Windows Server 2016 または Windows Server 2012 R2 上で Hyper-V を実行するホスト システムに Data Box Gateway 仮想デバイスをプロビジョニングして接続します。 <br><br><br> VMware の場合、VMware ESXi 6.0、6.5、または 6.7 を実行するホスト システムに Data Box Gateway 仮想デバイスをプロビジョニングして接続します。<br></br> |
-| 手順 3. |**[Data Box Gateway を接続、設定、アクティブ化する](data-box-gateway-deploy-connect-setup-activate.md)** |ローカル Web UI に接続して、デバイス設定を完了し、デバイスをアクティブ化します。 これで、SMB 共有をプロビジョニングできます。  |
+| 3. |**[Data Box Gateway を接続、設定、アクティブ化する](data-box-gateway-deploy-connect-setup-activate.md)** |ローカル Web UI に接続して、デバイス設定を完了し、デバイスをアクティブ化します。 これで、SMB 共有をプロビジョニングできます。  |
 | 4. |**[Data Box Gateway でデータを転送する](data-box-gateway-deploy-add-shares.md)** |共有を追加し、SMB または NFS を介して共有に接続します。 |
 
 これで、Azure Portal をセットアップする準備が整いました。

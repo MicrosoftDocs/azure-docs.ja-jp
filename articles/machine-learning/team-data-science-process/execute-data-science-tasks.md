@@ -78,7 +78,7 @@ YAML ファイルを使用して以下を指定します。
 3. [モデル管理システムとしての SQL サーバー](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
-## 手順 3.<a name='Deployment-3'></a> デプロイ
+## 3.<a name='Deployment-3'></a> デプロイ
 
 運用環境へのデプロイによって、モデルがビジネスのアクティブな役割を担うことが可能になります。 デプロイされたモデルからの予測は、ビジネス上の決定に使用できます。
 

@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 12/05/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 345822847ddd60794cd912ccb52c14f6e240cd66
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 80c961c1aa4da199fa87b97bc8e0a37e60c2235f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075397"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74903108"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>カスタム IPsec/IKE ポリシーはすべての Azure VPN Gateway SKU でサポートされていますか。
 カスタム IPsec/IKE ポリシーは、Basic SKU を除くすべての Azure SKU でサポートされています。
@@ -110,7 +110,7 @@ IKEv1 接続は、Basic SKU を除く、VPN の種類が RouteBased のすべて
 はい。 IKEv1 と IKEv2 の接続間での転送はサポートされています。
 
 ### <a name="can-i-have-ikev1-site-to-site-connections-on-basic-skus-of-routebased-vpn-type"></a>VPN の種類が RouteBased の Basic SKU で IKEv1 のサイト間接続を利用できますか?
-No. VPN の種類がルートベースの Basic SKU を除く、すべての RouteBased VPN SKU では、サイト間の IKEv1 接続がサポートされています。
+No. Basic SKU は、これをサポートしていません。
 
 ### <a name="can-i-change-the-connection-protocol-type-after-the-connection-is-created-ikev1-to-ikev2-and-vice-versa"></a>接続の作成後に接続プロトコルの種類を変更できますか (IKEv1 から IKEv2 またはその逆)?
 No. 接続が作成されたら、IKEv1 または IKEv2 プロトコルを変更することはできません。 削除し、必要なプロトコルの種類を使用して新しい接続を作成し直す必要があります。

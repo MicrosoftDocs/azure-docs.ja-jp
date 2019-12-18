@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803735"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919343"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Azure Active Directory の認証管理の運用リファレンス ガイド
 
@@ -292,16 +292,16 @@ MFA などの強力な資格情報は、レガシ認証プロトコルを使用�
 
 ### <a name="consent-grants"></a>同意の付与
 
-不正な同意の付与攻撃では、攻撃者は、連絡先情報、メール、ドキュメントなどのデータへのアクセスを要求する Azure AD 登録済みのアプリケーションを作成します。 ユーザーは、フィッシング攻撃を介して、または悪意のある Web サイトに最初にアクセスしたときに注意を怠ることによって間接的に、悪意のあるアプリケーションに同意を与える可能性があります。
+不正な同意の付与攻撃では、攻撃者は、連絡先情報、メール、ドキュメントなどのデータへのアクセスを要求する Azure AD 登録済みのアプリケーションを作成します。 ユーザーは、悪意のある Web サイトにアクセスしたときに、フィッシング攻撃を介して悪意のあるアプリケーションに同意を与える可能性があります。
 
-Microsoft クラウド サービスについて精査できるアクセス許可は、次のとおりです。
+以下は、Microsoft クラウドサービスを精査するアクセス許可を持つアプリのリストです：
 
-- アプリまたは委任された \*.ReadWrite アクセス許可を持つアプリケーション
-- 委任されたアクセス許可を持つアプリケーションは、ユーザーの代わりにメールの読み取り、送信、または管理を行うことができます
-- 次のアクセス許可を使用して付与されているアプリケーション:
+- アプリまたは委任された \*.ReadWrite アクセス許可を持つアプリ
+- ユーザーの代わりにメールの読み取り、送信、または管理を行うことができる、委任されたアクセス許可を持つアプリ
+- 次のアクセス許可の使用を許可されているアプリケーション：
 
 | リソース | アクセス許可 |
-| -------------------------- | -------------------- |
+| :- | :- |
 | Office 365 Exchange Online | EAS.AccessAsUser.All |
 | | EWS.AccessAsUser.All |
 | | Mail.Read |
@@ -309,11 +309,19 @@ Microsoft クラウド サービスについて精査できるアクセス許可
 | | Mail.Read.Shared |
 | | Mail.ReadWrite |
 
-このシナリオを回避するには、[Office 365 での不正な同意の付与の検出と修復](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants)に関するページを参照して、不正な付与があるアプリケーションや必要以上に付与されているアプリケーションを特定して修正する必要があります。 アプリのアクセス許可の定期的なレビューをスケジュールし、不要になったときに削除してください。または、セルフサービスを完全に削除し、ガバナンス手順を確立してください。
+- アプリには、サインインしたユーザーの、完全なユーザー偽装が許可されています。 例:
+
+|リソース | アクセス許可 |
+| :- | :- |
+| Azure AD グラフ | Directory.AccessAsUser.All |
+| Microsoft Graph | Directory.AccessAsUser.All |
+| Azure REST API | user_impersonation |
+
+このシナリオを回避するには、[Office 365 での不正な同意の付与の検出と修復](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) に関するページを参照して、不正な許可があるアプリケーションや必要以上に許可がされているアプリケーションを特定して修正する必要があります。 次に、[セルフサービスを完全に削除し](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent)、[ガバナンスプロシージャを確立](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) します。 最後に、アプリのアクセス許可の定期的なレビューをスケジュールし、不要な場合には削除します。
 
 #### <a name="consent-grants-recommended-reading"></a>同意の付与に関する推奨資料
 
-- [Azure Active Directory (AD) Graph API のアクセス許可スコープ](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes)
+- [Microsoft Graph のアクセス許可](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>ユーザーとグループの設定
 

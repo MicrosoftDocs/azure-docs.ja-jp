@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 93932fac9a5e5d4c21adc99bd31e9366a9709cc2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859119"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977966"
 ---
-# <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル:画像内の顔データを表示する WPF アプリの作成
+# <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>チュートリアル:画像内の顔データを表示する Windows Presentation Framework (WPF) アプリを作成する
 
-このチュートリアルでは、.NET クライアント SDK を通じて Azure Face API を使用し、画像内の顔を検出した後にそのデータを UI に示す方法を学習します。 顔を検出し、それぞれの顔の周囲にフレームを描画して、ステータス バーに顔の説明を表示する、Windows Presentation Framework (WPF) アプリケーションを作成します。 
+このチュートリアルでは、.NET クライアント SDK を通じて Azure Face API を使用し、画像内の顔を検出した後にそのデータを UI に示す方法を学習します。 顔を検出し、それぞれの顔の周囲にフレームを描画して、ステータス バーに顔の説明を表示する WPF アプリケーションを作成します。 
 
 このチュートリアルでは、次の操作方法について説明します。
 

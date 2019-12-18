@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4d16c07bf42c99b905868cb956d82e8723da61d6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca0f64fe67865e18c47009779cf8bd307a21c961
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581537"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978732"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>チュートリアル:Azure Machine Learning で MNIST データと scikit-learn を使用して画像の分類モデルをトレーニングする
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[チュートリアル: 初めての ML 実験の作成を開始する](tutorial-1st-experiment-sdk-setup.md)」を完了することで、以下の操作を行います。
+* 「[チュートリアル: 初めての Azure ML 実験の作成を開始する](tutorial-1st-experiment-sdk-setup.md)」を完了することで、以下の操作を行います。
     * ワークスペースの作成
     * チュートリアル ノートブックをワークスペース内のフォルダーに複製します。
     * クラウドベースのノートブック VM を作成します。
@@ -430,7 +430,7 @@ print(model.name, model.id, model.version, sep='\t')
 Azure Machine Learning コンピューティング クラスターだけを削除することもできます。 ただし、自動スケーリングが有効になっており、クラスターの最小値は 0 です。 そのため、この特定のリソースが使用中でないときの追加のコンピューティング料金はかかりません。
 
 ```python
-# optionally, delete the Azure Machine Learning Compute cluster
+# Optionally, delete the Azure Machine Learning Compute cluster
 compute_target.delete()
 ```
 

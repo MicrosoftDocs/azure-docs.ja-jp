@@ -131,7 +131,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | IKE のバージョン           |IKEv1              |IKEv1 および IKEv2    |
 | Diffie-hellman グループ  |グループ 2 (1024 ビット) |グループ 2 (1024 ビット) |
 | 認証方法 |事前共有キー     |事前共有キー     |
-| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>手順 3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>手順 3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
+| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
 | SA の有効期間           |28,800 秒     |28,800 秒     |
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>IKE フェーズ 2 (クイック モード) のパラメーター
@@ -139,7 +139,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | **プロパティ**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
 | IKE のバージョン                   |IKEv1          |IKEv1 および IKEv2                              |
-| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>手順 3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
+| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
 | SA の有効期間 (時間)            |3,600 秒  |27,000 秒                               |
 | SA の有効期間 (バイト)           |102,400,000 KB | -                                           |
 | Perfect Forward Secrecy (PFS) |いいえ             |[RouteBased QM SA プラン](#RouteBasedOffers) |
