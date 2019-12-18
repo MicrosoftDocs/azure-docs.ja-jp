@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: 426a93473b969c166a847374d1b4c039055e92d5
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 6940b6ecc231befba908271920e31d4821338baa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716101"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928955"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>実験でデータセットをバージョン管理して追跡する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -126,6 +126,7 @@ dataset2.register(workspace = workspace,
 from azureml.core import Dataset
 from azureml.pipeline.steps import PythonScriptStep
 from azureml.pipeline.core import Pipeline, PipelineData
+from azureml.core. runconfig import CondaDependencies, RunConfiguration
 
 # get input dataset 
 input_ds = Dataset.get_by_name(workspace, 'weather_ds')
@@ -134,10 +135,19 @@ input_ds = Dataset.get_by_name(workspace, 'weather_ds')
 output_ds = PipelineData('prepared_weather_ds', datastore=datastore).as_dataset()
 output_ds = output_ds.register(name='prepared_weather_ds', create_new_version=True)
 
+conda = CondaDependencies.create(
+    pip_packages=['azureml-defaults', 'azureml-dataprep[fuse,pandas]'], 
+    pin_sdk_version=False)
+
+run_config = RunConfiguration()
+run_config.environment.docker.enabled = True
+run_config.environment.python.conda_dependencies = conda
+
 # configure pipeline step to use dataset as the input and output
 prep_step = PythonScriptStep(script_name="prepare.py",
                              inputs=[input_ds.as_named_input('weather_ds')],
                              outputs=[output_ds],
+                             runconfig=run_config,
                              compute_target=compute_target,
                              source_directory=project_folder)
 ```
@@ -146,7 +156,24 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>実験のデータセットを追跡する
 
-Machine Learning の実験ごとに、登録済みモデルの `Run` オブジェクトを介して、入力として使用されるデータセットを簡単にトレースできます。
+各機械学習の実験ごとに、実験 `Run` オブジェクトを介して、入力として使用されるデータセットを簡単に追跡できます。
+
+次のコードでは、[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) メソッドを使用して、実験の実行でどの入力データセットが使用されたかを追跡します。
+
+```Python
+# get input datasets
+inputs = run.get_details()['inputDatasets']
+input_dataset = inputs[0]['dataset']
+
+# list the files referenced by input_dataset
+input_dataset.to_path()
+```
+
+また、[Azure Machine Learning Studio](https://ml.azure.com/) を使用して、実験から `input_datasets` を見つけることもできます。 
+
+次の図は、Azure Machine Learning Studio で実験の入力データセットを探す場所を示しています。 この例では、 **[実験]** ペインに移動し、実験 `keras-mnist` の特定の実行について **[プロパティ]** タブを開きます。
+
+![入力データセット](media/how-to-version-datasets/input-datasets.png)
 
 次のコードを使用して、モデルをデータセットに登録します。
 
@@ -156,26 +183,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-登録後は、Python または [Azure Machine Learning Studio](https://ml.azure.com/) を使用して、データセットに登録されたモデルのリストを表示できます。
-
-次のコードでは、[`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) メソッドを使用して、実験の実行でどの入力データセットが使用されたかを追跡します。
-
-```Python
-# get input datasets
-inputs = run.get_details()['inputDatasets']
-train_dataset = inputs[0]['dataset']
-
-# list the files referenced by train_dataset
-train_dataset.to_path()
-```
-
-また、[Azure Machine Learning Studio](https://ml.azure.com/) を使用して、実験から `input_datasets` を見つけることもできます。 
-
-次の図は、Azure Machine Learning Studio で実験の入力データセットを探す場所を示しています。 この例では、 **[実験]** ペインに移動し、実験 `keras-mnist` の特定の実行について **[プロパティ]** タブを開きます。
-
-![入力データセット](media/how-to-version-datasets/input-datasets.png)
-
-データセットを使用したモデルを見つけることもできます。 次のビューは、 **[資産]** の下の **[データセット]** ペインからのものです。 データセットを選択してから、 **[モデル]** タブを選択し、そのデータセットを使用中のモデルのリストを表示します。 
+登録後は、Python または [Azure Machine Learning Studio](https://ml.azure.com/) を使用して、データセットに登録されたモデルのリストを表示できます。 次のビューは、 **[資産]** の下の **[データセット]** ペインからのものです。 データセットを選択して、 **[モデル]** タブを選択し、そのデータセットで登録されたモデルのリストを表示します。 
 
 ![入力データセットのモデル](media/how-to-version-datasets/dataset-models.png)
 

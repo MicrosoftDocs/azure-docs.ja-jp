@@ -8,14 +8,14 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
-ms.date: 07/23/2019
+ms.date: 12/08/2019
 ms.author: alehall
-ms.openlocfilehash: 2e6bfa9188034c602660eaff34bf86ea711dc7b3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6af0881049e52cbead5cca9719d4c9b06be29491
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121280"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951549"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>チュートリアル:Event Hubs を使用してデータを Azure Databricks にストリーム配信する
 
@@ -101,7 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     以下を除くすべての値は、既定値のままにします。
 
    * クラスターの名前を入力します。
-   * この記事では、**6.0* ランタイムを使用してクラスターを作成します。
+   * この記事では、**6.0** ランタイムを使用してクラスターを作成します。
    * **[Terminate after \_\_ minutes of inactivity]** \(アクティビティが \_\_ 分ない場合は終了する\) チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
    技術的条件と[予算](https://azure.microsoft.com/pricing/details/databricks/)に適したクラスター ワーカーとドライバー ノードのサイズを選択します。
@@ -138,14 +138,10 @@ Twitter アプリケーションについて取得した値を保存します。
 
    ![ライブラリの追加ダイアログ ボックス](./media/databricks-stream-from-eventhubs/databricks-add-library-install-new.png "[ライブラリの追加] での新規インストール")
 
-2. [新しいライブラリ] ページの **[ソース]** で、 **[Maven]** を選択します。 **[座標]** では、追加したいパッケージの **[パッケージの検索]** をクリックします。 ここでは、このチュートリアルで使用するライブラリの Maven 座標です。
+2. [新しいライブラリ] ページの **[ソース]** で、 **[Maven]** を選択します。 **[座標]** には、Spark Event Hubs コネクタと Twitter API についてそれぞれ次の座標を入力します。
 
-   * Spark Event Hubs コネクタ - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+   * Spark Event Hubs コネクタ - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12`
    * Twitter API - `org.twitter4j:twitter4j-core:4.0.7`
-
-     ![Maven 座標を入力する](./media/databricks-stream-from-eventhubs/databricks-add-library-search.png "Maven 座標を入力する")
-
-     ![Maven 座標を入力する](./media/databricks-stream-from-eventhubs/databricks-add-library-search-dialogue.png "Maven 座標を検索する")
 
 3. **[インストール]** を選択します。
 

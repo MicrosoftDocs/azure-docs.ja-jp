@@ -1,6 +1,6 @@
 ---
 title: Visual Studio を使用して Azure Storage の利用を開始する (Web ジョブ プロジェクト)
-description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の Azure Web ジョブ プロジェクトで Azure Table Storageの使用を開始する方法について説明します。
+description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の Azure Web ジョブ プロジェクトで Azure Table Storage の使用を開始する方法について説明します。
 services: storage
 author: ghogen
 manager: jillfra

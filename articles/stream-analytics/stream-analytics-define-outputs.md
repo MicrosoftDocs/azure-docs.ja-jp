@@ -177,7 +177,7 @@ DateTime | String | String |  DateTime | string
 
 ## <a name="table-storage"></a>テーブル ストレージ
 
-[Azure テーブル ストレージ](../storage/common/storage-introduction.md) は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。 Table Storage は Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに使用できます。 Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。
+[Azure Table Storage](../storage/common/storage-introduction.md) は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。 Table Storage は Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに使用できます。 Azure Table Storage を使用すると、永続化と効率的な取得のためにデータを保持できます。
 
 次の表に、テーブルの出力を作成するためのプロパティの名前とその説明を示します。
 

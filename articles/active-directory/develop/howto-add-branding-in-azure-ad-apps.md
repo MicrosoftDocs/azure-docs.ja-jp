@@ -1,30 +1,26 @@
 ---
-title: アプリケーションのブランド化ガイドライン
+title: Azure AD アプリのブランド化ガイドライン
 titleSuffix: Microsoft identity platform
 description: Azure Active Directory の開発者向けリソースの包括的なガイド
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef784dc5f071889a1f4a0072599b9880b7c07c55
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 1ad786429eb23b51cc2da5da5d8af11d19985c9a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803863"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967287"
 ---
 # <a name="branding-guidelines-for-applications"></a>アプリケーションのブランド化ガイドライン
 

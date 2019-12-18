@@ -1,5 +1,5 @@
 ---
-title: Azure ストレージ テーブル設計のリレーションシップのモデル化 | Microsoft Docs
+title: Azure Table Storage 設計のリレーションシップのモデル化 | Microsoft Docs
 description: テーブル ストレージ ソリューションを設計する場合のモデル化プロセスについて説明します。
 services: storage
 author: MarkMcGeeAtAquent

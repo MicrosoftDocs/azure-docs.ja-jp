@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 8/26/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ef38013d2c5d7f41db0eaf8d6e444471387d7ff6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3778ec9bb44c1e78da152d4bde525884098fd445
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327062"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930745"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>クイック スタート:Bing Image Search REST API と PHP を使用してイメージを検索する
 
@@ -41,7 +41,7 @@ ms.locfileid: "74327062"
 
 1. セキュリティで保護された HTTP のサポートが `php.ini` ファイルで有効になっていることを確認します。 Windows では、このファイルは `C:\windows` にあります。
 2. 適切な IDE またはエディターで新しい PHP プロジェクトを作成します。
-3. API エンドポイント、サブスクリプション キー、および検索用語を定義します。
+3. API エンドポイント、サブスクリプション キー、検索語句を定義します。 エンドポイントには、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -49,7 +49,8 @@ ms.locfileid: "74327062"
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-   ## <a name="construct-and-perform-an-http-request"></a>HTTP 要求の構築と実行
+
+## <a name="construct-and-perform-an-http-request"></a>HTTP 要求の構築と実行
 
 1. 最後の手順の変数を使用して、Image Search API に対する HTTP 要求を準備します。
 
@@ -59,6 +60,7 @@ ms.locfileid: "74327062"
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
+
 2. Web 要求を送信し、JSON 応答を取得します。
 
     ```php
@@ -70,16 +72,16 @@ ms.locfileid: "74327062"
 
 返された JSON 応答を処理して出力します。
 
-    ```php
-    $headers = array();
-        foreach ($http_response_header as $k => $v) {
-            $h = explode(":", $v, 2);
-            if (isset($h[1]))
-                if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
-                    $headers[trim($h[0])] = trim($h[1]);
-        }
-        return array($headers, $result);
-    ```
+```php
+$headers = array();
+    foreach ($http_response_header as $k => $v) {
+        $h = explode(":", $v, 2);
+        if (isset($h[1]))
+            if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
+                $headers[trim($h[0])] = trim($h[1]);
+    }
+    return array($headers, $result);
+```
 
 ## <a name="example-json-response"></a>JSON の応答例
 

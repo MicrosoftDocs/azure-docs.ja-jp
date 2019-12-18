@@ -41,7 +41,7 @@ Microsoft では、テストの結果、次の小型フォーム ファクター
 | --- | --- | --- |
 | 1. |Cisco |SFP-H10GB-CU1M |
 | 2. |Cisco |SFP-H10GB-CU2M |
-| 手順 3. |Cisco |SFP-H10GB-CU3M |
+| 3. |Cisco |SFP-H10GB-CU3M |
 | 4. |Tripp-Lite |N820-05M (OM3) |
 
 ### <a name="switches"></a>スイッチ
@@ -49,7 +49,7 @@ Microsoft では、テストの結果、次の小型フォーム ファクター
 | --- | --- | --- |
 | 1. |Cisco |N3K-C3172PQ-10GE |
 | 2. |Cisco |N3K-C3048-ZM-F |
-| 手順 3. |Cisco |N5K-C5596UP-FA |
+| 3. |Cisco |N5K-C5596UP-FA |
 
 ## <a name="list-of-devices-tested-in-the-field"></a>実地テスト済みのデバイスの一覧
 このセクションでは、StorSimple ユーザーによって現場で正常にデプロイされたデバイスを一覧で紹介します。 これらは Microsoft でテストされていませんが、StorSimple デバイスで動作することが見込まれています。
@@ -77,7 +77,7 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、1 m |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、2 m |Arista |
-| 手順 3. |10 GbE |CAB-SFP-SFP-3M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、3 m |Arista |
+| 3. |10 GbE |CAB-SFP-SFP-3M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、3 m |Arista |
 | 4. |10 GbE |CAB-SFP-SFP-5M |パッシブ銅線ケーブル SFP+ 10 Gb/秒、5 m |Arista |
 | 5. |10 GbE |Cisco SFP-H10GBCU1M |Cisco SFP+ ケーブル |Cisco |
 | 6. |10 GbE |Cisco SFP-H10GBCU3M |Cisco SFP+ ケーブル |Cisco |
@@ -118,7 +118,7 @@ Mellanox では、テストの結果、次の小型フォーム ファクター�
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |516733-B21 |HP ProCurve 6120XG 10 GbE イーサネット ブレード スイッチ |HP |
 | 2. |10 GbE |538113-B21 |HP 10 GbE パススルー モジュール (PTM) |HP |
-| 手順 3. |10 GbE |EN4093 |IBM PureFlex システム ファブリック EN4093 10 ギガビット スケーラブル スイッチ モジュール |IBM |
+| 3. |10 GbE |EN4093 |IBM PureFlex システム ファブリック EN4093 10 ギガビット スケーラブル スイッチ モジュール |IBM |
 | 4. |1 GbE |3020 |Cisco Catalyst 3020 1 GbE スイッチ ブレード |Cisco |
 | 5. |1 GbE |3020X |Cisco Catalyst 3020X 1 GbE スイッチ ブレード |Cisco |
 | 6. |1 GbE |438030-B21 |HP 1 GbE スイッチ モジュール - GbE2c レイヤー 2/3 イーサネット ブレード スイッチ |HP |

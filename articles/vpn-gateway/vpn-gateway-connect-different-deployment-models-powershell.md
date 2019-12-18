@@ -114,7 +114,7 @@ Gateway IP addressing configuration = gwipconfig
       </VirtualNetworkSite>
     </VirtualNetworkSites>
 
-### <a name="3-add-the-local-network-site"></a>手順 3.ローカル ネットワーク サイトを追加する
+### <a name="3-add-the-local-network-site"></a>3.ローカル ネットワーク サイトを追加する
 追加するローカル ネットワーク サイトは、接続先の RM VNet を表します。 まだ存在していない場合は、**LocalNetworkSites** 要素をファイルに追加します。 構成のこの時点では、Resource Manager の VNet のゲートウェイをまだ作成していないため、VPNGatewayAddress は任意の有効なパブリック IP アドレスにすることができます。 ゲートウェイを作成したら、このプレースホルダー IP アドレスを、RM ゲートウェイに割り当てられている正しいパブリック IP アドレスに置き換えます。
 
     <LocalNetworkSites>

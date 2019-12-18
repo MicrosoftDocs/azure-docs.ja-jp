@@ -1,5 +1,6 @@
 ---
-title: Microsoft ID プラットフォームを使用し、ブラウザーレス デバイスでユーザーをサインインさせる | Azure
+title: ブラウザーなしでユーザーをサインインさせる | Azure
+titleSuffix: Microsoft identity platform
 description: デバイス許可付与を使用して、埋め込み型およびブラウザーレスの認証フローを構築します。
 services: active-directory
 documentationcenter: ''
@@ -17,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c948c59a90e0db17b4704188221cfc3c3d82310
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e937955f0b122d3a878141655475f34b051622e7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207598"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919241"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-authorization-grant-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 デバイス許可付与フロー
 

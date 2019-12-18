@@ -4,12 +4,13 @@ description: エージェント、拡張機能、ディスクに関する Azure 
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: c4ee8cbeeec21c4af0cc3a7fd83844bc8c676add
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.service: backup
+ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172598"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996274"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -22,10 +23,11 @@ ms.locfileid: "74172598"
 **エラー コード**:UserErrorGuestAgentStatusUnavailable <br>
 **エラー メッセージ**:VM エージェントが Azure Backup と通信できない<br>
 
-Azure VM エージェントが停止しているか、古くなっているか、一貫性のない状態になっているか、インストールされていないために、Azure Backup サービスがスナップショットをトリガーできなくなっている可能性があります。  
+Azure VM エージェントが停止しているか、古くなっているか、一貫性のない状態になっているか、インストールされていないために、Azure Backup サービスがスナップショットをトリガーできなくなっている可能性があります。
 
-- VM エージェントが停止しているか、一貫性のない状態になっている場合には、**エージェントを再起動**して、バックアップ操作を再試行してください (オンデマンド バックアップをお試しください)。 エージェントを再起動する手順については、[Windows VM](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) に関するページを参照してください。
-- VM エージェントがインストールされていないか、古くなっている場合には、VM エージェントをインストールまたは更新してから、バックアップ操作を再試行してください。 エージェントをインストールまたは更新する手順については、[Windows VM](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) に関するページを参照してください。  
+- **[Azure Portal] > [VM] > [設定] > [プロパティブレード]** を開いて、 **[VM の状態]** が **実行中** であることを確認し、**エージェントの状態** が **[準備完了]** になっていることを確認します。 VM エージェントが停止しているか、不整合な状態になっている場合は、エージェントを再起動する<br>
+  - Windows VM の場合は、次の [手順](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) を実行して、ゲストエージェントを再起動します。<br>
+  - Linux VM の場合は、次の [手順](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) を実行して、ゲストエージェントを再起動します。
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - Could not communicate with the VM agent for snapshot status (スナップショットの状態について VM エージェントと通信できませんでした)
 
@@ -41,6 +43,18 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 **原因 3:[スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
 **原因 4:[バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**
+
+**原因 5:[VM エージェント構成オプションが設定されていない (Linux VM の場合)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
+
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed は、プロビジョニングに失敗した状態
+
+**エラー コード**:UserErrorVmProvisioningStateFailed<br>
+**エラー メッセージ**:VM がプロビジョニングに失敗した状態<br>
+
+このエラーは、拡張機能の１つが失敗して、VM がプロビジョニング失敗状態になる場合に発生します。<br>**[Azure Portal] > [VM] > [設定] > [拡張機能] > [拡張機能の状態]** を開き、すべての拡張機能の状態が **[プロビジョニング成功]** の状態になっていることを確認します。
+
+- VMSnapshot 拡張機能が失敗の状態の場合は、失敗した拡張機能を右クリックして削除します。 アドホック バックアップをトリガーします。これにより、拡張機能が再インストールされ、バックアップジョブが実行されます。  <br>
+- 他の拡張機能が失敗状態にあると、バックアップに干渉する可能性があります。 これらの拡張機能の問題が解決されていることを確認して、バックアップ操作をやり直してください。  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - The Restore Point collection max limit has reached (復元ポイント コレクションの上限に達しました)
 
@@ -183,6 +197,11 @@ waagent の詳細ログが必要な場合は、次の手順に従います。
 1. /etc/waagent.conf ファイルで、次の行を見つけます:**Enable verbose logging (y|n)**
 2. **Logs.Verbose** の値を *n* から *y* に変更します。
 3. 変更を保存した後、このセクションで前述した手順を実行して waagent を再起動します。
+
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>VM エージェント構成オプションが設定されていない (Linux VM の場合)
+
+構成ファイル (/etc/waagent.conf) を使用して waagent の動作を制御します。 構成ファイルのオプション **拡張機能。** と **のプロビジョニングを有効にします。エージェント** は **y** に設定して、Microsoft Azure Backup を機能させる必要があります。
+VM エージェント構成ファイルのオプションの完全な一覧については、<https://github.com/Azure/WALinuxAgent#configuration-file-options> を参照
 
 ### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>スナップショットの状態を取得できないか、スナップショットを作成できない
 

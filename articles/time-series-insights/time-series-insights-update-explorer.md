@@ -77,7 +77,7 @@ Azure Time Series Insights プレビューは、ご利用のタイム シリー�
 
 タイム シリーズ モデルの詳細については、「[Times Series Models](./time-series-insights-update-tsm.md)」(タイム シリーズ モデル) をご覧ください。
 
-## <a name="3-hierarchy-tree-and-search-panel"></a>手順 3.階層ツリーと検索パネル
+## <a name="3-hierarchy-tree-and-search-panel"></a>3.階層ツリーと検索パネル
 
 階層ツリーと検索パネルを利用すると、[タイム シリーズ モデル](./time-series-insights-update-tsm.md)階層を簡単に検索してその内部を移動し、グラフに表示する特定のタイム シリーズ インスタンスを見つけることができます。 選択したインスタンスは、現在のグラフだけでなく、データ ウェルにも追加されます。 
 

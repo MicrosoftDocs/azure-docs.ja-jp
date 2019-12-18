@@ -1,28 +1,24 @@
 ---
-title: JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する | Azure
+title: JavaScript シングルページ アプリでユーザーをサインインさせる | Azure
 titleSuffix: Microsoft identity platform
-description: JavaScript アプリケーションで、Microsoft ID プラットフォームを使用して、アクセス トークンを必要とする API を呼び出す方法を説明します。
+description: アクセス トークンが必要な API を Javascript アプリから Microsoft ID プラットフォームを使用して呼び出す方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca9a8b87713508a581a833f60fbe863fd93919a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 77763ac30b4ba98e4849a25690302469843b4d06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795607"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920635"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>クイック スタート:JavaScript SPA 内でユーザーをサインインさせ、アクセス トークンを取得する
 
@@ -80,11 +76,12 @@ ms.locfileid: "73795607"
 
 * (省略可能) IIS サーバーでプロジェクトを実行するために、[Visual Studio プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)します。 ローカル フォルダー (例: *C:\Azure-Samples*) に zip ファイルを解凍します。
 
-> [!div renderon="docs"]
-> #### <a name="step-3-configure-your-javascript-app"></a>手順 3:JavaScript アプリの構成
-> *JavaScriptSPA* フォルダーで、*index.html* を編集し、`msalConfig` の下にある `clientID` と `authority` の値を設定します。
+#### <a name="step-3-configure-your-javascript-app"></a>手順 3:JavaScript アプリの構成
 
 > [!div renderon="docs"]
+> *JavaScriptSPA* フォルダーで、*index.html* を編集し、`msalConfig` の下にある `clientID` と `authority` の値を設定します。
+
+> [!div class="sxs-lookup" renderon="portal"]
 > *JavaScriptSPA* フォルダーで、*index.html* を編集し、`msalConfig` を次のコードに置き換えます。
 
 ```javascript
@@ -101,6 +98,10 @@ var msalConfig = {
 };
 
 ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > このクイックスタートは、Enter_the_Supported_Account_Info_Here をサポートしています。
+
 
 > [!div renderon="docs"]
 >
@@ -115,12 +116,7 @@ var msalConfig = {
 > > **[アプリケーション (クライアント) ID]** 、 **[ディレクトリ (テナント) ID]** 、 **[サポートされているアカウントの種類]** の値を見つけるには、Azure portal でアプリの **[概要]** ページに移動します。
 >
 
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>手順 3:アプリが構成され、実行準備ができる
-> アプリのプロパティの値を使用してプロジェクトを構成しました。 
-
-> [!div renderon="docs"]
-> #### <a name="step-4-run-the-project"></a>手順 4:プロジェクトを実行する
+#### <a name="step-4-run-the-project"></a>手順 4:プロジェクトを実行する
 
 * [Node.js](https://nodejs.org/en/download/) を使用している場合:
 

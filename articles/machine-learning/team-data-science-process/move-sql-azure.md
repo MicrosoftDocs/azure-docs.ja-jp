@@ -29,7 +29,7 @@ Machine Learning 用にオンプレミスの SQL Server にデータを移動す
 | <b>ソース</b> | <b>移動先:Azure SQL Database</b> |
 | --- | --- |
 | <b>フラット ファイル (CSV または TSV 形式)</b> |[一括挿入 SQL クエリ](#bulk-insert-sql-query) |
-| <b>オンプレミスの SQL Server</b> |1.[フラット ファイルへのエクスポート](#export-flat-file)<br> 2.[SQL Database 移行ウィザード](#insert-tables-bcp)<br> 手順 3.[データベースのバックアップと復元](#db-migration)<br> 4.[Azure Data Factory](#adf) |
+| <b>オンプレミスの SQL Server</b> |1.[フラット ファイルへのエクスポート](#export-flat-file)<br> 2.[SQL Database 移行ウィザード](#insert-tables-bcp)<br> 3.[データベースのバックアップと復元](#db-migration)<br> 4.[Azure Data Factory](#adf) |
 
 ## <a name="prereqs"></a>前提条件
 ここに記載されている手順には次のものが必要です。

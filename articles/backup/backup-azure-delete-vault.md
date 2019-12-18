@@ -39,7 +39,7 @@ ms.locfileid: "74173169"
 Azure をバックアップ先とする Azure Backup エージェントを使用して保護されている、オンプレミスのファイルとフォルダーがある | 「[MARS 管理コンソールからバックアップ アイテムを削除する](#delete-backup-items-from-the-mars-management-console)」の手順を実行します
 Azure への MABS (Microsoft Azure Backup Server) または DPM (System Center Data Protection Manager) を使用して保護されたオンプレミスのマシンがある | 「[MABS 管理コンソールからバックアップ アイテムを削除する](#delete-backup-items-from-the-mabs-management-console)」の手順を実行します
 保護されたアイテムがクラウドにある (例: laaS 仮想マシンまたは Azure Files の共有など)  | 「[クラウド内の保護されたアイテムを削除する](#delete-protected-items-in-the-cloud)」の手順を実行します
-保護されたアイテムがオンプレミスとクラウドの両方にある | 次のすべてのセクションの手順を次の順番で実行します。 <br> 1.[クラウド内の保護されたアイテムを削除する](#delete-protected-items-in-the-cloud)<br> 2.[MARS 管理コンソールからバックアップ アイテムを削除する](#delete-backup-items-from-the-mars-management-console) <br> 手順 3.[MABS 管理コンソールからバックアップ アイテムを削除する](#delete-backup-items-from-the-mabs-management-console)
+保護されたアイテムがオンプレミスとクラウドの両方にある | 次のすべてのセクションの手順を次の順番で実行します。 <br> 1.[クラウド内の保護されたアイテムを削除する](#delete-protected-items-in-the-cloud)<br> 2.[MARS 管理コンソールからバックアップ アイテムを削除する](#delete-backup-items-from-the-mars-management-console) <br> 3.[MABS 管理コンソールからバックアップ アイテムを削除する](#delete-backup-items-from-the-mabs-management-console)
 保護されたアイテムはオンプレミスまたはクラウドのどちらにもないが、コンテナーの削除エラーが引き続き発生している | 「[Azure Resource Manager を使用して Recovery Services コンテナーを削除する](#delete-the-recovery-services-vault-by-using-azure-resource-manager)」の手順を実行します
 
 ## <a name="delete-protected-items-in-the-cloud"></a>クラウド内の保護されたアイテムを削除する

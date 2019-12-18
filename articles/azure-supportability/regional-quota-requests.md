@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 6c2d7dc64bca00ce664dc470e7c4405d69b49779
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 132cf6ccfec5af9951f5dc6d6a3c6d3c81363d81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531519"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850008"
 ---
 # <a name="standard-quota-regional-vcpu-limit-increase"></a>標準のクォータ: リージョンにおける vCPU の上限引き上げ 
 
-Resource Manager では、仮想マシンに対して 2 種類の vCPU クォータがサポートされています。 **従量課金制の VM** と **Reserved VM Instances** では、標準のクォータが使用されます。 **低優先度 VM** では、低優先度のクォータが使用されます。 
+Resource Manager では、仮想マシンに対して 2 種類の vCPU クォータがサポートされています。 **従量課金制の VM** と **Reserved VM Instances** では、標準のクォータが使用されます。 **スポット VM** は、スポットクォータを使用します。 
 
 従量課金制の標準 vCPU クォータと Reserved VM Instances は、各リージョンのサブスクリプションごとに 2 つのレベルで適用されます。
  
@@ -26,7 +26,7 @@ Resource Manager では、仮想マシンに対して 2 種類の vCPU クォー
 
 標準の vCPU クォータの詳細については、「[仮想マシンの vCPU クォータ](https://docs.microsoft.com/azure/virtual-machines/windows/quotas)」および [Azure サブスクリプションとサービスの制限](https://aka.ms/quotalimits)に関するページを参照してください。
 
-**低優先度の VM での vCPU の上限引き上げ**の詳細については、[こちら](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)をご覧ください。
+**Spot VM vCPU の制限の引き上げ** についての詳細を学習するには、[こちら](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota) を参照してください。
 
 ポータルの **[ヘルプとサポート]** ブレードまたは **[Usages + Quota]\(使用量とクォータ\)** ブレードから、**Standard VM のリージョンの vCPU の合計の制限**を引き上げることを要求できます。
 

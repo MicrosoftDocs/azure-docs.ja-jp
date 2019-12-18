@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 5557028304d0e2bd5940dd9b01dddf525806d0c6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 01619027ddc79530dc9541584efa9a3e518f5136
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033675"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842060"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
@@ -70,9 +70,9 @@ Windows VM を一般化するには、次の手順に従います。
 
 ## <a name="create-a-managed-image-in-the-portal"></a>ポータルで管理対象イメージを作成する 
 
-1. [Azure Portal](https://portal.azure.com)を開きます。
+1. [[Azure Portal]](https://portal.azure.com) に移動して、VM イメージを管理します。 **[仮想マシン]** を検索して選択します。
 
-2. 左側のメニューで **[仮想マシン]** を選択し､一覧から VM を選択します。
+2. 一覧で VM を選択します。
 
 3. VM の **[仮想マシン]** ページの上部のメニューで、 **[キャプチャ]** を選択します。
 
@@ -80,7 +80,7 @@ Windows VM を一般化するには、次の手順に従います。
 
 4. **[名前]** で、あらかじめ設定されている名前を受け入れるか、イメージに使用する名前を入力します。
 
-5. **[リソース グループ]** で、 **[新規作成]** を選択して名前を入力するか、または **[Use existing\(既存の値を使用する\)]** を選択してドロップダウン リストから使うリソース グループを選びます。
+5. **[リソース グループ]** で、 **[新規作成]** を選択して名前を入力するか、使用するリソースグループをドロップダウンリストから選択します。
 
 6. イメージが作成された後にソース VM を削除する場合、 **[イメージの作成後、この仮想マシンを自動的に削除します]** を選択します。
 
@@ -88,7 +88,7 @@ Windows VM を一般化するには、次の手順に従います。
 
 8. **[作成]** を選択してイメージを作成します。
 
-9. 作成したイメージは、リソース グループのリソースの一覧に **[イメージ]** リソースとして表示されます。
+作成したイメージは、リソース グループのリソースの一覧に **[イメージ]** リソースとして表示されます。
 
 
 

@@ -1,22 +1,23 @@
 ---
-title: ディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー) - Azure Storage
+title: 災害復旧とストレージアカウントのフェールオーバー（プレビュー）
+titleSuffix: Azure Storage
 description: Azure Storage では、geo 冗長ストレージ アカウントのアカウント フェールオーバー (プレビュー) がサポートされています。 アカウントのフェールオーバーでは、プライマリ エンドポイントが使用できなくなった場合に、ストレージ アカウントのフェールオーバー プロセスを開始できます。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775930"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895349"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Azure Storage でのディザスター リカバリーとストレージ アカウントのフェールオーバー (プレビュー)
+# <a name="disaster-recovery-and-account-failover-preview"></a>災害復旧とアカウントのフェールオーバー (プレビュー)
 
 Microsoft は、Azure サービスを常に使用できるようにする作業に取り組んでいます。 そうはいっても、計画されていないサービスの停止が発生する可能性はあります。 アプリケーションで回復性が必要な場合は、geo 冗長ストレージを使用して、データが 2 番目のリージョンにレプリケートされるようにすることをお勧めします。 さらに、お客様は、リージョン規模のサービス停止に対処するため、ディザスター リカバリー計画を用意する必要があります。 ディザスター リカバリー計画の重要な部分は、プライマリ エンドポイントが使用できなくなった場合に、セカンダリ エンドポイントにフェールオーバーするための準備です。 
 

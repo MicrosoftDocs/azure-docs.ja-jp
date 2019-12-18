@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 52dc0ff27ad2f04b9faeab24c6bdba68d9ec138e
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 62c9ac0020db92c1540d0ecb4fa996d9b8405a58
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307279"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974259"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>チュートリアル:Azure Machine Learning を使って R で初めてのモデルをトレーニングしてデプロイする
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -142,7 +142,7 @@ saveRDS(accidents, file="accidents.Rd")
 ```
 
 ### <a name="upload-data-to-the-datastore"></a>データストアにデータをアップロードする
-データをクラウドにアップロードして、リモート トレーニング環境からアクセスできるようにします。 Azure ML の各ワークスペースには既定のデータストアが備わっており、ワークスペースにアタッチされているストレージ アカウントにプロビジョニングされる Azure BLOB コンテナーへの接続情報が格納されます。 次のコードは、上記で作成した事故データをそのデータストアにアップロードします。
+データをクラウドにアップロードして、リモート トレーニング環境からアクセスできるようにします。 Azure Machine Learning の各ワークスペースには既定のデータストアが備わっており、ワークスペースにアタッチされているストレージ アカウントにプロビジョニングされる Azure BLOB コンテナーへの接続情報が格納されます。 次のコードは、上記で作成した事故データをそのデータストアにアップロードします。
 
 ```R
 ds <- get_default_datastore(ws)
@@ -164,10 +164,10 @@ upload_files_to_datastore(ds,
 * ジョブを送信する
 
 ### <a name="prepare-the-training-script"></a>トレーニング スクリプトを準備する
-このチュートリアルと同じディレクトリに、`accidents.R` というトレーニング スクリプトが用意されています。 Azure ML サービスをトレーニングに活用するために行われた**トレーニング スクリプト内**の次の詳細に注意してください。
+このチュートリアルと同じディレクトリに、`accidents.R` というトレーニング スクリプトが用意されています。 Azure Machine Learning サービスをトレーニングに活用するために行われた**トレーニング スクリプト内**の次の詳細に注意してください。
 
 * このトレーニング スクリプトは、引数 `-d` を受け取り、トレーニング データが含まれるディレクトリを検出します。 後でジョブを定義して送信する際に、次のように、引数にデータストアを指定します。 Azure ML は、トレーニング ジョブ用にストレージ フォルダーをリモート クラスターにマウントします。
-* トレーニング スクリプトは、`log_metric_to_run()` を使用して Azure ML の実行レコードにメトリックとして最終的な精度をログに記録します。 Azure ML SDK には、トレーニングの実行中にさまざまなメトリックをログに記録するためのログ記録 API のセットが用意されています。 これらのメトリックは記録され、実験の実行レコードに保存されます。 メトリックにはいつでもアクセスでき、[Azure Machine Learning studio](https://ml.azure.com) の実行の詳細ページで表示することもできます。 `log_*()` のログ記録方法の完全なセットについては、[リファレンス](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)を参照してください。
+* トレーニング スクリプトは、`log_metric_to_run()` を使用して Azure ML の実行レコードにメトリックとして最終的な精度をログに記録します。 Azure ML SDK には、トレーニングの実行中にさまざまなメトリックをログに記録するためのログ記録 API のセットが用意されています。 これらのメトリックは記録され、実験の実行レコードに保存されます。 メトリックにはいつでもアクセスでき、[スタジオ](https://ml.azure.com)の実行の詳細ページで表示することもできます。 `log_*()` のログ記録方法の完全なセットについては、[リファレンス](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation)を参照してください。
 * トレーニング スクリプトでは、**outputs** という名前のディレクトリにモデルが保存されます。 `./outputs` フォルダーは、Azure ML によって特別に処理されます。 トレーニング中、`./outputs` に書き込まれるファイルは、Azure ML によって実行レコードに自動的にアップロードされ、成果物として永続化されます。 トレーニング済みのモデルを `./outputs` に保存することにより、実行が終了し、リモート トレーニング環境にアクセスできなくなった後でも、モデル ファイルにアクセスして取得することができます。
 
 ### <a name="create-an-estimator"></a>推定を作成する

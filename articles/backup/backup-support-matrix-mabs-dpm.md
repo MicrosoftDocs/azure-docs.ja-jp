@@ -3,12 +3,12 @@ title: MABS と System Center DPM のサポート マトリックス
 description: この記事では、Microsoft Azure Backup Server (MABS) または System Center DPM を使用してオンプレミスおよび Azure VM のリソースをバックアップする場合の、Azure Backup のサポートについてまとめます。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2bec2818eaabaa2d2d74ab7181db0eabcba092ec
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f9ee31525f2ee5a19aebe0a9258dff3ecfdcbb92
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172040"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841169"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 
@@ -148,48 +148,11 @@ DPM 2016/MABS v2 (Windows Server 2016 上で実行されている) 以降は、M
 
 ## <a name="supported-backups-to-mabs"></a>サポートされる MABS へのバックアップ
 
-次の表に、オンプレミス マシンと Azure VM から MABS に何をバックアップできるかについてまとめます。
-
-**Backup** | **バージョン** | **MABS** | **詳細** |
---- | --- | --- | --- |
-**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 ビット) | MABS v3、v2 | オンプレミス。 | ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。<br/><br/> ボリュームは少なくとも 1 GB の NTFS でなければなりません。 |
-**Windows Server 2016 (Datacenter、Standard、Not Nano)**<br/><br/> 64/32 ビット | MABS v3、v2 | オンプレミス/Azure VM。| ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> 重複除去されたボリュームはサポートされています。 |
-**Windows Server 2012 R2 (Datacenter および Standard)**<br/><br/> 64/32 ビット | MABS v3、v2 | オンプレミス/Azure VM。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VMprotection**: ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。 |
-**Windows Server 2012 SP1 (Datacenter および Standard)**<br/><br/> 64/32 ビット | MABS v3、v2 <br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) がインストールされている必要があります。 | オンプレミス/Azure VM。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VM の保護**: ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。 |
-**Windows 2008 R2 SP1 (Standard および Enterprise)**<br/><br/> 64/32 ビット | MABS v3、v2 でサポートされています。<br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) がインストールされている必要があります。 | オンプレミス/Azure VM。 |   **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VM の保護**: ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。 |
-**Windows 2008 R2 (Standard および Enterprise)**<br/><br/> 64/32 ビット | MABS v3、v2 では、OS で SP1 が実行されている必要があります。 | オンプレミス/Azure VM。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VM の保護**: ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。 |
-**Windows Server 2008 SP2**<br/><br/> 64/32 ビット | MABS v3、v2 | MABS が VMware VM としてデプロイされる場合、MABS v2、v3 がサポートされます。<br/><br/> Azure VM で実行されている MABS ではサポートされません。 | ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル |
-**Windows Storage Server 2008** | MABS v3、v2 | オンプレミスの物理サーバー/Hyper-V VM としての MABS。 <br/><br/> Azure VM で実行されている MABS ではサポートされません。 | ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル
-**SQL Server 2017** | MABS v3 | オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。 |
-**SQL Server 2016/2016 SP1** | MABS v3、v2 | オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。 |
-**SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | MABS v3、v2 | オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。 |
-**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | MABS v3、v2 | オンプレミス。 | スタンドアロンの Exchange サーバー、DAG の下のデータベースをバックアップします。<br/><br/> メールボックス、および DAG の下のメールボックス データベースを復旧します。<br/><br/> ReFS はサポートされません。<br/><br/> 共有されていないディスク クラスターをバックアップします。<br/><br/> 継続的レプリケーション用に構成された Exchange Server をバックアップします。 |
-**SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | MABS v3、v2 | オンプレミス/Azure VM。 | ファーム、フロントエンド Web サーバーをバックアップします。<br/><br/> ファーム、データベース、Web アプリ、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバーを復旧します。<br/><br/> コンテンツ データベースに対して SQL Server AlwaysOn を使用してファームをバックアップすることはできません。 |
-**Windows Server 2016 上の Hyper-V**<br/><br/> **Windows Server 2008 R2 (SP1)** | MABS v3、v2 | オンプレミス。 | **Hyper-V ホスト上の MABS エージェント**: VM 全体とホスト データ ファイルをバックアップします。 ローカル ストレージを持つ VM、CSV ストレージを持つクラスター内の VM、SMB ファイル サーバー ストレージを持つ VM をバックアップします。<br/><br/> **ゲスト VM 上の MABS エージェント**: VM で実行されているワークロードをバックアップします。 CSV。<br/><br/> **復旧**: VM、および VHD/ボリューム/フォルダー/ファイルの項目レベルの復旧。<br/><br/> **Linux VM**:Hyper-V が Windows Server 2012 R2 以降で実行されている場合にバックアップします。 Linux VM の復旧は、マシン全体に対してです。 |
-**VMware VM: vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3、v2 | オンプレミス。 | CSV、NFS、および SAN ストレージ上の VMware VM をバックアップします。<br/><br/> VM 全体を復旧します。<br/><br/> Windows/Linux のバックアップ。<br/><br/> Windows VM のフォルダー/ファイルの項目レベルの復旧のみ。<br/><br/> VMware vApps はサポートされません。<br/><br/> Linux VM の復旧は、マシン全体に対してです。 |
+Azure Backup Server で保護できるさまざまなサーバーとワークロードについては、[Azure Backup Server Protection Matrix](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix#protection-support-matrix) を参照してください。
 
 ## <a name="supported-backups-to-dpm"></a>サポートされる DPM へのバックアップ
 
-次の表に、オンプレミス マシンと Azure VM から DPM に何をバックアップできるかについてまとめます。
-
-**Backup** | **DPM** | **詳細**
---- | --- | ---
-**Windows 10<br/>Windows 8.1<br/>Windows 8<br/>Windows 7**<br/><br/>(32/64 ビット) | オンプレミスのみ。<br/><br/> DPM 2012 R2 を使用した Windows 10 のバックアップでは、[更新プログラム 11](https://support.microsoft.com/help/3209592/update-rollup-12-for-system-center-2012-r2-data-protection-manager) をインストールすることをお勧めします。 | ボリューム/共有/フォルダー/ファイル。<br/><br/> 重複除去されたボリュームはサポートされています。<br/><br/> ボリュームは少なくとも 1 GB の NTFS でなければなりません。
-**Windows Server 2016 (Datacenter、Standard、Not Nano)**<br/><br/> 64/32 ビット | オンプレミス/Azure VM。<br/><br/> DPM 2016 のみ。| ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> 重複除去されたボリュームはサポートされています。
-**Windows Server 2012 R2 (Datacenter および Standard)**<br/><br/> 64/32 ビット | オンプレミス/Azure VM。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VM の保護**: ボリューム/共有/フォルダー/ファイル。<br/><br/> DPM 2012 R2 以降でサポートされる重複除去されたボリューム。
-**Windows Server 2012 SP1 (Datacenter および Standard)**<br/><br/> 64/32 ビット | オンプレミス/Azure VM。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VM の保護**: ボリューム/共有/フォルダー/ファイル。<br/><br/> DPM 2012 R2 以降でサポートされる重複除去されたボリューム。
-**Windows 2008 R2 SP1 (Standard および Enterprise)**<br/><br/> 64/32 ビット | オンプレミス/Azure VM。<br/><br/> [Windows Management Framework 4.0](https://www.microsoft.com/download/details.aspx?id=40855) がインストールされている必要があります。 |   **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル<br/><br/> **Azure VM の保護**: ボリューム/共有/フォルダー/ファイル。
-**Windows 2008 R2 (Standard および Enterprise)**<br/><br/> 64/32 ビット | オンプレミス。<br/><br/> DPM は VMware VM としてインストールできません。<br/><br/> Azure VM で実行されている DPM はサポートされません。 | **オンプレミスの保護**: ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル
-**Windows Server 2008 SP2**<br/><br/> 64/32 ビット | オンプレミスのみ。<br/><br/> VMware VM として実行されている DPM はサポートされません。 物理サーバーまたは Hyper-V VM としての実行はサポートされません。 | ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル
-**Windows Storage Server 2008** | 物理サーバーまたは Hyper-V VM として実行されている DPM オンプレミス。 | ボリューム/共有/フォルダー/ファイル/システム状態/ベア メタル
-**SQL Server 2017** | DPM SAC、更新プログラム ロールアップ 5 以降が実行されている DPM 2016。<br/><br/> オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。
-**SQL Server 2016 SP1** | DPM 2012 R2 ではサポートされません。DPM SAC、および更新プログラム ロールアップ 4 以降を実行している DPM 2016 ではサポートされます。<br/><br/> オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。
-**SQL Server 2016** | DPM 2012 R2 ではサポートされません。 DPM SAC、更新プログラム ロールアップ 2 以降の DPM 2016 でサポートされます。<br/><br/> オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。
-**SQL Server 2014**<br/><br/> **SQL Server 2012/SP1/SP2**<br/><br/> **SQL Server 2008 R2**<br/><br/> **SQL Server 2008** | 更新プログラム ロールアップ 4 以降を実行している DPM 2012 R2 を備えた SQL Server 2014。<br/><br/> オンプレミス/Azure VM。| SQL Server データベースをバックアップします。<br/><br/> SQL Server クラスターのバックアップがサポートされます。<br/><br/>CSV へのデータベースの格納はサポートされません。
-**Exchange 2016**<br/><br/> **Exchange 2013**<br/><br/> **Exchange 2010** | Exchange 2016 の場合、DPM 2012 R2 には、更新プログラム ロールアップ 9 以降が必要です。<br/><br/> オンプレミス | スタンドアロンの Exchange サーバー、DAG の下のデータベースをバックアップします。<br/><br/> メールボックス、および DAG の下のメールボックス データベースを復旧します。<br/><br/> ReFS はサポートされません。<br/><br/> 共有されていないディスク クラスターをバックアップします。<br/><br/> 継続的レプリケーション用に構成された Exchange Server をバックアップします。
-**SharePoint 2016**<br/><br/> **SharePoint 2013**<br/><br/> **SharePoint 2010** | DPM 2016 以降での SharePoint 2016。<br/><br/>オンプレミス/Azure VM。 | ファーム、フロントエンド Web サーバーをバックアップします。<br/><br/> ファーム、データベース、Web アプリ、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバーを復旧します。<br/><br/> コンテンツ データベースに対して SQL Server AlwaysOn を使用してファームをバックアップすることはできません。
-**Windows Server 2016 上の Hyper-V**<br/><br/> **Windows Server 2012 R2/2012** (Datacenter/Standard)<br/><br/> **Windows Server 2008 R2 (SP1)** | DPM 2016 以降でサポートされる 2016 上の Hyper-V。<br/><br/> オンプレミス。 | **Hyper-V ホスト上の MABS エージェント**: VM 全体とホスト データ ファイルをバックアップします。 ローカル ストレージを持つ VM、CSV ストレージを持つクラスター内の VM、SMB ファイル サーバー ストレージを持つ VM をバックアップします。<br/><br/> **ゲスト VM 上の MABS エージェント**: VM で実行されているワークロードをバックアップします。 CSV。<br/><br/> **復旧**: VM、および VHD/ボリューム/フォルダー/ファイルの項目レベルの復旧。<br/><br/> **Linux VM**:Hyper-V が Windows Server 2012 R2 以降で実行されている場合にバックアップします。 Linux VM の復旧は、マシン全体に対してです。
-**VMware VM: vCenter/vSphere ESXi 5.5/6.0/6.5** | MABS v3、v2 <br/><br/> DPM 2012 R2 には、System Center の更新プログラム ロールアップ 1 が必要です。 <br/><br/>オンプレミス。 | CSV、NFS、および SAN ストレージ上の VMware VM をバックアップします。<br/><br/> VM 全体を復旧します。<br/><br/> Windows/Linux のバックアップ。<br/><br/> Windows VM のフォルダー/ファイルの項目レベルの復旧のみ。<br/><br/> VMware vApps はサポートされません。<br/><br/> Linux VM の復旧は、マシン全体に対してです。
+Data Protection Manager で保護できる各種サーバーとワークロードの詳細については、[「DPM でバックアップできるものは何か」を参照してください。](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2019)
 
 - DPM/MABS によってバックアップされるクラスター化されたワークロードは DPM/MABS と同じドメインか、または子/信頼できるドメインに存在する必要があります。
 - NTLM/証明書認証を使用して、信頼されていないドメインまたはワークグループのデータをバックアップできます。

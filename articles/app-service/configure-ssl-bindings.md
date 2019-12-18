@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670691"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849753"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Azure App Service で SSL バインディングを使用してカスタム DNS 名をセキュリティで保護する
 
@@ -107,6 +107,8 @@ ms.locfileid: "74670691"
 さまざまなブラウザーで `https://<your.custom.domain>` にアクセスし、アプリの要求を処理できることを確認します。
 
 ![Azure アプリへのポータル ナビゲーション](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+
+プロトコルは、アプリケーション コードから "x-appservice-proto" ヘッダーを介して調査することができます。 ヘッダーの値は `http` または `https` になります。 
 
 > [!NOTE]
 > アプリで証明書検証エラーが返された場合は、自己署名証明書を使用している可能性があります。

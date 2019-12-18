@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6f6aa90553f3a69d2d287c7d59e166884a1a8f66
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 15db96824336c92611b9e1113c42c621f6508744
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113734"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978119"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Azure Storage Blob の論理的な削除
 
@@ -152,7 +152,17 @@ Copy a snapshot over the base blob:
 
 # <a name="portaltabazure-portal"></a>[ポータル](#tab/azure-portal)
 
-論理的な削除を有効にするには、 **[Blob service]** の **[論理的な削除]** オプションに移動します。 **[有効]** をクリックして、論理的に削除されたデータを保持する日数を入力します。
+Azure portal を使用して、ストレージアカウントの BLOB の論理的な削除を有効にします：
+
+1. [Azure portal](https://portal.azure.com/) で、ストレージ アカウントを選択します。 
+
+2. **Blob Service**の下にある **[データ保護]** オプションに移動します。
+
+3. **[Blob の論理的な削除] の下にある **[有効]** をクリックする**
+
+4. *[保持期間]* ( **[保持ポリシー]** の下にある) に日数を入力する
+
+5. **[保存]** ボタンを選択して、データ保護設定を確認する
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 

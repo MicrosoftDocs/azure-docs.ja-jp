@@ -189,7 +189,7 @@ $connection6.UsePolicyBasedTrafficSelectors
 
 この行が "**True**" を返す場合、ポリシー ベース トラフィック セレクターが接続で構成されています。それ以外の場合は "**False**" が返されます。
 
-### <a name="3-enabledisable-the-policy-based-traffic-selectors-on-a-connection"></a>手順 3.接続でのポリシー ベース トラフィック セレクターを有効/無効にする
+### <a name="3-enabledisable-the-policy-based-traffic-selectors-on-a-connection"></a>3.接続でのポリシー ベース トラフィック セレクターを有効/無効にする
 接続リソースを取得したら、このオプションを有効または無効にできます。
 
 #### <a name="to-enable-usepolicybasedtrafficselectors"></a>UsePolicyBasedTrafficSelectors を有効にするには

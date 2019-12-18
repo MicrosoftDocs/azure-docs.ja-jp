@@ -1,5 +1,5 @@
 ---
-title: Databricks Notebook アクティビティを使用して Databricks Notebook を実行する
+title: アクティビティを使用して Databricks Notebook を実行する
 description: Azure Data Factory で Databricks Notebook アクティビティを使用して、Databricks ジョブ クラスターに対して Databricks ノートブックを実行する方法について説明します。
 services: data-factory
 ms.service: data-factory
@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 03/12/2018
-ms.openlocfilehash: 7ad7c8e70d8669612baf00f19d3695dc7fab07f5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 39b8745b65eccd8e4d1b5986490e30be443ad656
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217876"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913517"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks ノートブックを実行する
 
@@ -118,7 +118,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
         ![リンクされたサービスの作成を完了する](media/transform-data-using-databricks-notebook/new-databricks-linkedservice.png)
 
-## <a name="create-a-pipeline"></a>パイプラインを作成する。
+## <a name="create-a-pipeline"></a>パイプラインを作成する
 
 1.  **+** (正符号) ボタンを選択し、メニューの **[パイプライン]** を選択します。
 
@@ -162,8 +162,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
            # Creating widgets for leveraging parameters, and printing the parameters
 
            dbutils.widgets.text("input", "","")
-           dbutils.widgets.get("input")
-           y = getArgument("input")
+           y = dbutils.widgets.get("input")
            print ("Param -\'input':")
            print (y)
            ```

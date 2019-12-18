@@ -10,19 +10,22 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/06/2019
-ms.openlocfilehash: 47c0ecb5674f821d3034fb5f165df08f176c2e93
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.date: 12/06/2019
+ms.openlocfilehash: a124c33f15318f1b9b22a750a1de15601823afa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646934"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890693"
 ---
 # <a name="quickstart-create-an-instance-of-azure-database-migration-service-in-hybrid-mode-using-the-azure-portal-preview"></a>クイック スタート:Azure portal を使用してハイブリッド モードで Azure Database Migration Service のインスタンスを作成する (プレビュー)
 
 Azure Database Migration Service のハイブリッド モードを使うと、オンプレミスでホストされている移行 worker と、クラウドで実行されている Azure Database Migration Service のインスタンスを併用して、データベースの以降を管理できます。 ハイブリッド モードは、オンプレミス ネットワークと Azure の間にサイト間接続がないシナリオで、またはサイト間接続の帯域幅が限られている場合に、特に便利です。
 
 このクイックスタートでは、Azure portal を使用してハイブリッド モードで Azure Database Migration Service のインスタンスを作成します。 その後、オンプレミス ネットワークにハイブリッド worker をダウンロードしてインストールし、設定します。 プレビューの間は、Azure Database Migration Service のハイブリッド モードを使用して、SQL Server のオンプレミスのインスタンスから Azure SQL Database に、データを移行できます。
+
+> [!IMPORTANT]
+> Azure Database Migration Service ハイブリッド インストーラーには .NET 4.7.2 以降が必要です。 最新バージョンの .NET については、「[.NET Framework のダウンロード](https://dotnet.microsoft.com/download/dotnet-framework)」ページで確認してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -111,6 +114,9 @@ Azure Database Migration Service の最初のインスタンスを作成する�
 
 3. Azure Database Migration Service ハイブリッド worker をホストするサーバーで、ZIP ファイルを抽出します。
 
+    > [!IMPORTANT]
+    > Azure Database Migration Service ハイブリッド インストーラーには .NET 4.7.2 以降が必要です。 最新バージョンの .NET については、「[.NET Framework のダウンロード](https://dotnet.microsoft.com/download/dotnet-framework)」ページで確認してください。
+
 4. インストール フォルダーで **dmsSettings.json** ファイルを見つけて開き、**ApplicationId** と **resourceId** を指定して、ファイルを保存します。
 
     ![Azure Database Migration Service ハイブリッド worker の設定](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
@@ -125,7 +131,7 @@ Azure Database Migration Service の最初のインスタンスを作成する�
 
     ![Azure Database Migration Service ハイブリッド worker の証明書](media/quickstart-create-data-migration-service-hybrid-portal/dms-certificate.png)
 
-6. Azure portal で アプリ ID に移動し、 **[管理]** で **[証明書とシークレット]** を選択した後、 **[証明書のアップロード]** を選択して、生成した公開証明書を選択します。
+6. Azure portal でアプリ ID に移動し、 **[管理]** で **[証明書とシークレット]** を選択した後、 **[証明書のアップロード]** を選択して、生成した公開証明書を選択します。
 
     ![Azure Database Migration Service ハイブリッド worker の証明書のアップロード](media/quickstart-create-data-migration-service-hybrid-portal/dms-app-upload-certificate.png)
 

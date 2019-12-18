@@ -470,7 +470,7 @@ Azure Blockchain Workbench からの *BlockMessage* の例:
 | 名前               | 説明 |
 |--------------------|-------------|
 | workflowPropertyId | Azure Blockchain Workbench 内のワークフロー プロパティの一意の識別子 |
-| 名前 | ワークフロー プロパティの名前 |
+| name | ワークフロー プロパティの名前 |
 | value | ワークフロー プロパティの値 |
 
 Azure Blockchain Workbench からの *ContractMessage* の例:
@@ -581,7 +581,7 @@ Azure Blockchain Workbench からの *ContractMessage* の例:
 
 | 名前 | 説明 |
 |------|-------------|
-| 名前 | パラメーター名 |
+| name | パラメーター名 |
 | value | パラメーター値 |
 
 #### <a name="event-message-transaction-information"></a>イベント メッセージ トランザクション情報
@@ -663,14 +663,14 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 | 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のアプリケーション ロールの一意の識別子 |
-| 名前 | アプリケーション ロールの名前 |
+| name | アプリケーション ロールの名前 |
 
 #### <a name="application-workflow-information"></a>アプリケーション ワークフロー情報
 
 | 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のアプリケーション ワークフローの一意の識別子 |
-| 名前 | アプリケーション ワークフロー名 |
+| name | アプリケーション ワークフロー名 |
 | displayName | アプリケーション ワークフロー表示名 |
 | functions | [アプリケーション ワークフローの関数](#workflow-function-information)のコレクション|
 | states | [アプリケーション ワークフローの状態](#workflow-state-information)のコレクション |
@@ -681,14 +681,14 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 | 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のアプリケーション ワークフロー関数の一意の識別子 |
-| 名前 | 関数名 |
+| name | 関数名 |
 | parameters | 関数のパラメーター |
 
 ##### <a name="workflow-state-information"></a>ワークフローの状態の情報
 
 | 名前 | 説明 |
 |------|-------------|
-| 名前 | 状態名 |
+| name | 状態名 |
 | displayName | 状態の表示名 |
 | style | 状態スタイル (成功または失敗) |
 
@@ -697,7 +697,7 @@ Blockchain Workbench からの *EventMessage ContractFunctionInvocation* の例:
 | 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のアプリケーション ワークフロー プロパティの一意の識別子 |
-| 名前 | プロパティ名 |
+| name | プロパティ名 |
 | type | プロパティの種類 |
 
 Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
@@ -848,7 +848,7 @@ Blockchain Workbench からの *EventMessage ApplicationIngestion* の例:
 | 名前 | 説明 |
 |------|-------------|
 | id | Azure Blockchain Workbench 内のアプリケーション ロールの一意の識別子 |
-| 名前 | アプリケーション ロールの名前 |
+| name | アプリケーション ロールの名前 |
 
 #### <a name="roleassignment-assigner"></a>RoleAssignment アサイナー
 

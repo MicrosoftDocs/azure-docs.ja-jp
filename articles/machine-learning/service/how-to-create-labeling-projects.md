@@ -1,20 +1,20 @@
 ---
-title: データのラベルを取得する
+title: データのラベル付けプロジェクトを作成する
 titleSuffix: Azure Machine Learning
-description: この記事では、ラベル付けプロジェクトを作成して実行し、機械学習用のデータにタグを付ける方法について説明します。
+description: ラベル付けプロジェクトを作成して実行し、機械学習用のデータにタグを付ける方法について説明します。
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: e66a9f8a775a46c906601ea08be52ca9dfbe0171
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: bdedc3ee0c76eafc4b4bc95116fb5be846f4bee5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689291"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978238"
 ---
-# <a name="get-labels-for-data"></a>データのラベルを取得する
+# <a name="create-a-data-labeling-project-and-export-labels"></a>データのラベル付けプロジェクトを作成してラベルをエクスポートする 
 
 多くの場合、機械学習プロジェクトで大量のデータにラベルを付けることは困難です。 画像の分類やオブジェクトの検出など、Computer Vision コンポーネントを使用するプロジェクトでは、通常、何千もの画像のラベルが必要になります。
  
@@ -24,6 +24,9 @@ Machine Learning では、進行状況を追跡し、未完了のラベル付け
 
 Machine Learning では、プロジェクトの開始と停止、メンバーやチームの追加と削除、進行状況の監視を行います。 ラベル付きのデータは、COCO 形式または Azure Machine Learning データセットとしてエクスポートできます。
 
+> [!Important]
+> 現在サポートされているのは、画像分類とオブジェクト識別のラベル付けプロジェクトのみです。 加えて、Azure BLOB データストア内の画像データにアクセスできることが必要です。 (既存のデータストアがない場合は、プロジェクトの作成時に画像をアップロードすることができます。) 
+
 この記事では、以下の方法について説明します。
 
 > [!div class="checklist"]
@@ -32,6 +35,7 @@ Machine Learning では、プロジェクトの開始と停止、メンバーや
 > * プロジェクトに参加するチームとメンバーを管理する
 > * プロジェクトを実行して監視する
 > * ラベルをエクスポートする
+
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8a2c456c725a3170bc940bf17dec6b0c4ad2c3e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3de34c1da20df17fb5fb65cef28669fb73ff33a5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584522"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978562"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML の実験の実行とメトリックを監視する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -232,6 +232,25 @@ ms.locfileid: "73584522"
 
 ## <a name="view-run-details"></a>実行の詳細を表示する
 
+### <a name="view-activequeued-runs-from-the-browser"></a>ブラウザーからアクティブな、またはキューに入れられた実行を表示する
+
+モデルをトレーニングするために使用されるコンピューティング先は共有リソースです。 そのため、特定の時点でキューに入れられた、またはアクティブな複数の実行が含まれている可能性があります。 ブラウザーから特定のコンピューティング先のための実行を表示するには、次の手順を使用します。
+
+1. [Azure Machine Learning Studio](https://ml.azure.com/) から、ワークスペースを選択し、ページの左側から __[コンピューティング]__ を選択します。
+
+1. __[Training Clusters] (トレーニング クラスター)__ を選択して、トレーニングに使用されるコンピューティング先の一覧を表示します。 次に、クラスターを選択します。
+
+    ![トレーニング クラスターを選択する](./media/how-to-track-experiments/select-training-compute.png)
+
+1. __[実行]__ を選択します。 このクラスターを使用する実行の一覧が表示されます。 特定の実行の詳細を表示するには、 __[実行]__ 列のリンクを使用します。 実験の詳細を表示するには、 __[実験]__ 列のリンクを使用します。
+
+    ![トレーニング クラスターの実行を選択する](./media/how-to-track-experiments/show-runs-for-compute.png)
+    
+    > [!TIP]
+    > ある実行に子実行が含まれる場合があるため、1 つのトレーニング ジョブに複数のエントリが存在する可能性があります。
+
+実行は、完了するとこのページには表示されなくなります。 完了した実行に関する情報を表示するには、スタジオの __[実験]__ セクションにアクセスし、実験と実行を選択します。 詳細については、「[実行のメトリックのクエリを行う](#queryrunmetrics)」のセクションを参照してください。
+
 ### <a name="monitor-run-with-jupyter-notebook-widget"></a>Jupyter Notebook ウィジェットで実行を監視する
 **ScriptRunConfig** メソッドを使用して実行を送信するときに、[Jupyter ウィジェット](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py)を使用して実行の進行状況を見ることができます。 実行の送信と同様に、このウィジェットも非同期です。また、ジョブが完了するまで 10 秒から 15 秒ごとにライブ更新を提供します。
 
@@ -244,11 +263,11 @@ ms.locfileid: "73584522"
 
    ![Jupyter Notebook ウィジェットのスクリーンショット](./media/how-to-track-experiments/run-details-widget.png)
 
-ワークスペース内の同じ表示へのリンクを取得することもできます。
+   ワークスペース内の同じ表示へのリンクを取得することもできます。
 
-```python
-print(run.get_portal_url())
-```
+   ```python
+   print(run.get_portal_url())
+   ```
 
 2. **[自動化された機械学習の実行の場合]** 前回の実行のグラフにアクセスするには。 `<<experiment_name>>` を適切な実験名に置き換えます。
 
@@ -271,6 +290,7 @@ print(run.get_portal_url())
 
 モデルのトレーニングと監視はバックグラウンドで行われるので、待機中に他のタスクを実行できます。 また、モデルのトレーニングが完了するまで待ってから、さらにコードを実行することもできます。 **ScriptRunConfig** を使用するときは、```run.wait_for_completion(show_output = True)``` を使用してモデルのトレーニングの完了を表示できます。 ```show_output``` フラグを指定すると、詳細な出力が提供されます。 
 
+<a id="queryrunmetrics"></a>
 
 ### <a name="query-run-metrics"></a>実行のメトリックのクエリを行う
 

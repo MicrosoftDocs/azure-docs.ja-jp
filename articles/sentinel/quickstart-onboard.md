@@ -8,13 +8,13 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 09/23/2019
-ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/05/2019
+ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133087"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900435"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>クイック スタート:Azure Sentinel をオンボードする
 
@@ -24,18 +24,8 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 
 データ ソースを接続した後、優れた設計のブックのギャラリーから選択し、データに基づいて分析情報を表示できます。 これらのブックは、ニーズに合わせて簡単にカスタマイズできます。
 
->[!NOTE] 
-> [Azure Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)は、関連付けられた Azure Monitor Log Analytics ワークスペースに取り込まれたデータ量に基づいています。 次のデータ コネクタの一部は取り込みに対して課金されませんが、Log Analytics ワークスペースに格納されている取り込まれたデータを使用して何らかの種類のアラートを生成した場合は、[Azure Monitor Log Analytics の価格](https://azure.microsoft.com/pricing/details/monitor/)に従って課金される関連付けられた料金が発生します。 
-  > - Azure アクティビティ (Azure 操作のアクティビティ ログ)
-  > - Azure Active Directory Identity Protection (AAD P2 ライセンスを使用するテナント用)
-  > - Azure Information Protection
-  > - Azure Advanced Threat Protection (アラート)
-  > - Azure Security Center (アラート)
-  > - Microsoft Cloud App Security (アラートのみ)
-  > - Microsoft Defender Advanced Threat Protection (監視エージェントのアラート)
-  > - Office 365 (Exchange および Sharepoint ログ)
->
-> Azure AD/Office365 の監査ログは無料ではなく、Premium レベルとして提供されるため、このデータの取り込みは GB 単位で課金されます。 
+>[!IMPORTANT] 
+> Azure Sentinel の使用に伴う料金については、「[Azure Sentinel の価格](https://azure.microsoft.com/pricing/details/azure-sentinel/)」を参照してください。
   
 
 ## <a name="global-prerequisites"></a>グローバルな前提条件
@@ -44,7 +34,7 @@ Azure Sentinel をオンボードするには、まず Azure Sentinel を有効�
 
 - Log Analytics ワークスペース。 [Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)を確認してください。 Log Analytics ワークスペースの詳細については、「[Azure Monitor ログのデプロイの設計](../azure-monitor/platform/design-logs-deployment.md)」を参照してください。
 
--  Azure Sentinel を有効にするには、Azure Sentinel ワークスペースが存在するサブスクリプションへの共同作成者のアクセス許可が必要です。 
+- Azure Sentinel を有効にするには、Azure Sentinel ワークスペースが存在するサブスクリプションへの共同作成者のアクセス許可が必要です。 
 - Azure Sentinel を使用するには、ワークスペースが属しているリソース グループに対する共同作成者または閲覧者のいずれかのアクセス許可が必要です。
 - 特定のデータ ソースに接続するには、追加のアクセス許可が必要になる場合があります。
 - Azure Sentinel は有料サービスです。 価格情報については、[Azure Sentinel の概要](https://go.microsoft.com/fwlink/?linkid=2104058)に関するページをご覧ください。

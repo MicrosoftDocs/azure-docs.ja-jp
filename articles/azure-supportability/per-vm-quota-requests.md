@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: ccd0c88c95ae9a752ef8ea2387bbde4f8559bc68
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 280561126186e4c70399b3a1ddd177ff4eb54400
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531680"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850042"
 ---
 # <a name="standard-quota-per-vm-series-vcpu-limit-increase"></a>標準のクォータ: VM シリーズあたりの vCPU の上限引き上げ
 
-Resource Manager では、仮想マシンに対して 2 種類の vCPU クォータがサポートされています。 **従量課金制の VM と Reserved VM Instances** では、標準のクォータが使用されます。 **低優先度 VM** では、低優先度のクォータが使用されます。 従量課金制の標準 vCPU クォータと Reserved VM Instances は、各リージョンのサブスクリプションごとに 2 つのレベルで適用されます。
+Resource Manager では、仮想マシンに対して 2 種類の vCPU クォータがサポートされています。 **従量課金制の VM と予約 VM インスタンス**では、標準のクォータが使用されます。 **スポット VM** は、スポットクォータを使用します。 従量課金制の標準 vCPU クォータと Reserved VM Instances は、各リージョンのサブスクリプションごとに 2 つのレベルで適用されます。
 
 最初のレベルは (すべての VM シリーズにわたる) **リージョンの vCPU の合計の制限**であり、2 つ目のレベルは **VM シリーズあたりの vCPU の制限** (Dv3 シリーズの vCPU など) です。 新しい VM をデプロイするときはいつでも、その VM シリーズに対する新規および既存の vCPU 使用量の合計が、その特定の VM シリーズに対して承認されている vCPU クォータを超えてはなりません。 さらに、すべての VM シリーズにわたってデプロイされる新規および既存の vCPU 数の合計が、サブスクリプションに対して承認されているリージョンの vCPU の合計のクォータを超えてはなりません。 いずれかのクォータを超えている場合、VM のデプロイは許可されません。
 Azure Portal から VM シリーズの vCPU クォータ制限の増加を要求できます。 VM シリーズのクォータを増やすと、リージョンの vCPU の合計の制限が同じ量だけ自動的に増えます。 
@@ -25,7 +25,7 @@ Azure Portal から VM シリーズの vCPU クォータ制限の増加を要求
 
 標準のクォータに対するリージョンの vCPU の上限引き上げの詳細については、[こちら](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests)をご覧ください。 
 
-**低優先度の VM での vCPU の上限引き上げ**の詳細については、[こちら](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)をご覧ください。
+**Spot VM vCPU の制限の引き上げ** についての詳細を学習するには、[こちら](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota) を参照してください。
 
 ポータルの **[ヘルプとサポート]** ブレードまたは **[Usages + Quota]\(使用量とクォータ\)** ブレードから、**VM シリーズあたりの標準の vCPU クォータの上限**を引き上げることを要求できます。
 
@@ -63,7 +63,7 @@ Azure Portal で使用可能な Azure の [ヘルプとサポート] ブレー�
 
    ![[クォータの詳細] の DM](./media/resource-manager-core-quotas-request/1-7.png)
 
-8. 選択した場所で、 **[タイプ]** の値に **[Standard]** を選択します。 **[タイプ]** フィールドで複数選択のサポートを使用して、単一のサポート ケースから標準と低優先度の両方のクォータ タイプを要求できます。 **低優先度のクォータの上限引き上げ**の詳細については、 **<> のページ**をご覧ください。
+8. 選択した場所で、 **[タイプ]** の値に **[Standard]** を選択します。 **[タイプ]** フィールドで複数選択サポートを使用して、単一のサポート ケースから Website Standard とスポットの両方のクォータ タイプを要求できます。 **スポット クォータの制限の引き上げ**の詳細については、この [ページ](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot) を参照
 
    ![SKU ファミリ](./media/resource-manager-core-quotas-request/1-8.png)
 
@@ -111,7 +111,7 @@ Azure Portal で使用可能な Azure の [Usages + Quota] (使用量とクォ�
 
    ![クォータの [問題] ブレード](./media/resource-manager-core-quotas-request/1-1-6.png)
 
-7. 選択した場所で、 **[タイプ]** の値に **[Standard]** を選択します。 **[タイプ]** フィールドで複数選択のサポートを使用して、単一のサポート ケースから標準と低優先度の両方のクォータ タイプを要求できます。 **低優先度の vCPU の上限引き上げ**の詳細については、この[ページ](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota)をご覧ください。
+7. 選択した場所で、 **[タイプ]** の値に **[Standard]** を選択します。 **[タイプ]** フィールドで複数選択のサポートを使用して、単一のサポート ケースから標準と低優先度の両方のクォータ タイプを要求できます。 **Spot vCPU の制限の引き上げ**の詳細については、この [ページ](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)を参照してください。
 
    ![選択した SKU シリーズ](./media/resource-manager-core-quotas-request/1-1-7.png)
    

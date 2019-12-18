@@ -1,18 +1,18 @@
 ---
 title: チュートリアル:SQL API 用の Azure Cosmos DB グローバル分散チュートリアル
-description: チュートリアル:SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。
+description: チュートリアル:.Net、Java、Python など各種 SDK から SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする方法について説明します。
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 7c7ea4ca8fc28ef47e60d5010c804223c3cfab3b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 541fcdd966ec1e0443fa6211d894bab3ed965f93
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173832"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870328"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>チュートリアル:SQL API を使用して Azure Cosmos DB グローバル分散をセットアップする
 

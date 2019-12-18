@@ -1,5 +1,6 @@
 ---
-title: Azure Active Directory B2C の使用状況レポート API のサンプルと定義 | Microsoft Docs
+title: 使用状況をレポートする API のサンプルと定義
+titleSuffix: Azure AD B2C
 description: Azure AD B2C テナントのユーザー、認証、多要素認証に関するレポートの取得についてのガイドとサンプル。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fe7dd90bdec816ee433310a803d85c57f4892f8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f81acf28b502965f896cd8b38767e7c2e925156c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508716"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949340"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Reporting API による Azure AD B2C の使用状況レポートへのアクセス
 
@@ -29,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) は、ユーザーのサインイン�
 
 
 ## <a name="prerequisites"></a>前提条件
-開始する前に、[Azure AD Reporting API にアクセスするための前提条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)の手順を完了する必要があります。 アプリケーションを作成し、それに対するシークレットを取得して、それに Azure AD B2C テナントのレポートにアクセスする権限を付与します。 ここでは "*Bash スクリプト*" と "*Python スクリプト*" の例も提供します。 
+開始する前に、[Azure AD Reporting API にアクセスするための前提条件](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)の手順を完了する必要があります。 アプリケーションを作成し、それに対するシークレットを取得して、それに Azure AD B2C テナントのレポートにアクセスする権限を付与します。 ここでは "*Bash スクリプト*" と "*Python スクリプト*" の例も提供します。
 
 ## <a name="powershell-script"></a>PowerShell スクリプト
 このスクリプトでは、`TimeStamp` パラメーターと `ApplicationId` フィルターを使用して、4 つの使用状況レポートの作成を実行します。
@@ -38,10 +39,10 @@ Azure Active Directory B2C (Azure AD B2C) は、ユーザーのサインイン�
 # This script will require the Web Application and permissions setup in Azure Active Directory
 
 # Constants
-$ClientID      = "your-client-application-id-here"  
+$ClientID      = "your-client-application-id-here"
 $ClientSecret  = "your-client-application-secret-here"
 $loginURL      = "https://login.microsoftonline.com"
-$tenantdomain  = "your-b2c-tenant-domain.onmicrosoft.com"  
+$tenantdomain  = "your-b2c-tenant-domain.onmicrosoft.com"
 # Get an Oauth 2 access token based on client id, secret and tenant domain
 $body          = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth         = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 313332689b0f2df9698f868297c72be7d8bde5bb
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 54c6f920b581a0bbd00910a3b3ddeebecdbb595f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829168"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74954910"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,13 +65,18 @@ REST API は JSON 形式で要求を受け取り、結果も JSON で返すた�
 
 ## <a name="create-and-configure-an-http-client"></a>Http クライアントを作成して構成する
 最初に必要なのは、適切なベース URL と認証セットを含む Http クライアントです。
-このコードを `recognizeSpeech` [!code-cpp に挿入します。[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=191-197)]
+このコードを `recognizeSpeech` に挿入します。
+
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=191-197)]
 
 ## <a name="generate-a-transcription-request"></a>文字起こし要求を生成する
-次に、文字起こし要求を生成します。 このコードを `recognizeSpeech` に追加します。[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=199-203)]
+次に、文字起こし要求を生成します。 このコードを `recognizeSpeech` に追加します。
+
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=199-203)]
 
 ## <a name="send-the-request-and-check-its-status"></a>要求を送信し、その状態を確認する
 ここで、Speech サービスに要求を投稿し、初期の応答コードを確認します。 この応答コードは、サービスが要求を受信したかどうかを示すだけに過ぎません。 サービスからは応答ヘッダーで URL が返され、文字起こしの状態はこの URL に格納されます。
+
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=204-216)]
 
 ## <a name="wait-for-the-transcription-to-complete"></a>文字起こしが完了するのを待つ
@@ -80,16 +85,20 @@ REST API は JSON 形式で要求を受け取り、結果も JSON で返すた�
 状態を確認するには、要求が投稿されたときに取得した URL でコンテンツを取得します。 コンテンツを取得したら、それをヘルパー クラスの 1 つに逆シリアル化することで、やりとりがさらに容易になります。
 
 ここではポーリング コードと、すべての場合の状態の表示を示します。ただし、次に取り上げる正常な完了は除きます。
+
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=222-245,285-299)]
 
 ## <a name="display-the-transcription-results"></a>文字起こしの結果を表示する
 サービスによる文字起こしが正常に完了すると、その結果は、状態の応答から取得できる別の URL に格納されます。
 
 この URL の内容をダウンロードし、JSON を逆シリアル化し、結果をループ処理し、表示テキストを出力します。
+
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=246-284)]
 
 ## <a name="check-your-code"></a>コードを確認する
-この時点で、コードは次のようになります。(このバージョンにはいくつかのコメントを追加してあります) [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
+この時点で、コードは次のようになります。(このバージョンにはいくつかのコメントを追加してあります)
+
+[!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
 
 ## <a name="build-and-run-your-app"></a>アプリをビルドして実行する
 

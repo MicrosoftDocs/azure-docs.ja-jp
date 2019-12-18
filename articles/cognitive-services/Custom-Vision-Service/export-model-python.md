@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 00d3b1dce9bacc01c8319c678ab27a3d4cc8da88
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d7e3eeeea6bb25b4cddaea1d04e86f23ab7e4f5f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718428"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969841"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>チュートリアル:Python での TensorFlow モデルの実行
 
@@ -68,7 +68,7 @@ with open(labels_filename, 'rt') as lf:
 
 ## <a name="prepare-an-image-for-prediction"></a>予測の画像を準備する
 
-予測に適した形になるように画像を準備するためのいくつかの手順があります。 これらの手順は、トレーニング中に実行される画像操作に似ています。
+予測に使用する画像を準備するにあたって行うべき手順がいくつかあります。 これらの手順は、トレーニング中に実行される画像操作に似ています。
 
 ### <a name="open-the-file-and-create-an-image-in-the-bgr-color-space"></a>ファイルを開き、BGR 色空間に画像を作成する
 

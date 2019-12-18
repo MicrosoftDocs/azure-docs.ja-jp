@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/26/2019
 ms.author: juliako
-ms.openlocfilehash: 6d13ca5b3657f1deac9e6b4218decf8fe57eb1d9
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a227c5d0edfb9b49e70452cfcfd08b29ba381857
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113740"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969108"
 ---
 # <a name="streaming-locators"></a>ストリーミング ロケーター
 
@@ -74,6 +74,9 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 ```
 
 また、CBCS (FairPlay) でも HLS ストリームを暗号化する場合は、'Predefined_MultiDrmStreaming' を使用します。
+
+> [!NOTE]
+> Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
 
 ## <a name="associate-filters-with-streaming-locators"></a>フィルターをストリーミング ロケーターに関連付ける
 

@@ -1,28 +1,24 @@
 ---
-title: Web API を公開するようにアプリケーションを構成する - Microsoft ID プラットフォーム
+title: Web API を公開するようにアプリを構成する - Microsoft ID プラットフォーム | Azure
 description: アプリケーションをクライアント アプリケーションが使用できるようにするために、新しいアクセス許可/スコープとロールを公開するようにアプリケーションを構成する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9c8e4a2e5dadf64312481f33993911177c90bc7
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: a45b3ee9bf9cea71255ac9a83f970d2b6c72b67f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68989268"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966114"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>クイック スタート:Web API を公開するようにアプリケーションを構成する
 

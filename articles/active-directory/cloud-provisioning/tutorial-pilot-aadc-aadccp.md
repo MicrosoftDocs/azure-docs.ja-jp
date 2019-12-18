@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 163d1f7f457dcbca7fbb9e331ec889bcc0894dfc
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 812f9bc71cde26b6f32a1259984bb0859ba49d54
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814466"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868764"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>既存の同期済み AD フォレストに対してクラウド プロビジョニングのパイロットを実施する 
 
@@ -28,7 +28,11 @@ ms.locfileid: "74814466"
 このチュートリアルを試す前に、次の点を考慮してください。
 1. クラウド プロビジョニングの基礎を理解しておくようにします。 
 2. Azure AD Connect 同期バージョン 1.4.32.0 以降が実行されていることと、同期ルールが説明どおりに構成されていることを確認します。 パイロットを実施する際に、Azure AD Connect 同期のスコープからテスト OU またはグループを削除します。 スコープからオブジェクトを移動すると、それらのオブジェクトが Azure AD から削除されます。 ユーザー オブジェクトの場合、Azure AD 内のオブジェクトは論理的に削除されるので、復元できます。 グループ オブジェクトの場合は、Azure AD 内のオブジェクトが物理的に削除されるので、復元することはできません。 パイロット実施中の削除を防ぐ新しいリンク タイプが Azure AD Connect 同期に導入されました。 
-3. クラウド プロビジョニングでオブジェクトの完全一致が実行されるよう、パイロット スコープ内のオブジェクトに ms-ds-consistencyGUID が事前設定されていることを確認します。 Azure AD Connect 同期では、グループ オブジェクトに対して既定で ms-ds-consistencyGUID が設定されないことに注意してください。
+3. クラウド プロビジョニングでオブジェクトの完全一致が実行されるよう、パイロット スコープ内のオブジェクトに ms-ds-consistencyGUID が事前設定されていることを確認します。 
+
+   > [!NOTE]
+   > Azure AD Connect 同期では、グループ オブジェクトの *ms-ds-consistencyGUID* が既定では設定されません。 [こちらのブログ記事](https://blogs.technet.microsoft.com/markrenoden/2017/10/13/choosing-a-sourceanchor-for-groups-in-multi-forest-sync-with-aad-connect/)に記載の手順に従って、グループ オブジェクトの *ms-ds-consistencyGUID* を設定してください。
+
 4. これは高度なシナリオです。 このチュートリアルに記載の手順に正確に従うようにします。
 
 ## <a name="prerequisites"></a>前提条件
@@ -36,10 +40,11 @@ ms.locfileid: "74814466"
 - Azure AD Connect 同期バージョン 1.4.32.0 以降がインストールされたテスト環境
 - 同期のスコープに含まれ、かつパイロットを使用できる OU またはグループ。 少数のオブジェクトから始めることをお勧めします。
 - プロビジョニング エージェントのホストとなる Windows Server 2012 R2 以降を実行するサーバー。  Azure AD Connect サーバーと同じサーバーは使用できません。
+- AAD Connect 同期のソース アンカーが *objectGuid* または *ms-ds-consistencyGUID* であること。
 
 ## <a name="update-azure-ad-connect"></a>Azure AD Connect を更新する
 
-[Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) バージョン 1.4.32.0 以上を使用している必要があります。 Azure AD Connect 同期を更新するには、「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](../hybrid/how-to-upgrade-previous-version.md)」の手順を完了してください。  この手順は、テスト環境に最新バージョンの Azure AD Connect がインストールされていない場合に備えて用意されています。
+[Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) バージョン 1.4.32.0 以上を使用している必要があります。 Azure AD Connect 同期を更新するには、「[Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする](../hybrid/how-to-upgrade-previous-version.md)」の手順を完了してください。  
 
 ## <a name="stop-the-scheduler"></a>スケジューラの停止
 Azure AD Connect 同期は、オンプレミス ディレクトリで発生した変更を、スケジューラを使用して同期します。 カスタム ルールを変更したり追加したりするには、その作業を行っている間に同期が実行されないようスケジューラを無効にする必要があります。  次の手順に従います。
@@ -47,6 +52,9 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 1.  Azure AD Connect 同期が実行されているサーバー上で、管理特権を使用して PowerShell を開きます。
 2.  `Stop-ADSyncSyncCycle` を実行します。  Enter キーを押します。
 3.  `Set-ADSyncScheduler -SyncCycleEnabled $false` を実行します。
+
+>[!NOTE] 
+>AAD Connect 同期用に独自のカスタム スケジューラを実行している場合は、スケジューラを無効にしてください。 
 
 ## <a name="create-custom-user-inbound-rule"></a>カスタム ユーザーの受信規則を作成する
 
@@ -81,7 +89,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
  6. **[変換]** ページで、cloudNoFlow 属性に Constant transformation: flow True を追加します。 **[追加]** をクリックします。
  ![カスタム規則](media/how-to-cloud-custom-user-rule/user4.png)</br>
 
-オブジェクトの種類すべて (ユーザー、グループ、連絡先) に対して同じ手順を実行する必要があります。
+オブジェクトの種類すべて (ユーザー、グループ、連絡先) に対して同じ手順を実行する必要があります。 構成済みの AD コネクタごと、または AD フォレストごとに手順を繰り返します。 
 
 ## <a name="create-custom-user-outbound-rule"></a>カスタム ユーザーの送信規則を作成する
 
@@ -92,7 +100,7 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
     **[名前]:** 規則にわかりやすい名前を付けます<br>
     **説明:** わかりやすい説明を追加します<br> 
-     **[Connected System]\(接続先システム\):** カスタム同期規則の作成対象となる AD コネクタを選択します<br>
+     **[Connected System]\(接続先システム\):** カスタム同期規則の作成対象となる AAD コネクタを選択します<br>
     **[Connected System Object Type]\(接続先システム オブジェクトの種類\):** User<br>
     **[Metaverse Object Type]\(メタバース オブジェクトの種類\):** Person<br>
     **[リンクの種類]:** JoinNoFlow<br>
@@ -109,50 +117,40 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 オブジェクトの種類すべて (ユーザー、グループ、連絡先) に対して同じ手順を実行する必要があります。
 
-## <a name="scope-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Azure AD Connect 同期のスコープでパイロット OU を除外するよう設定する
-ここで、上記で作成したパイロット OU を除外するように Azure AD Connect を構成します。  これらのユーザーの同期は、クラウド プロビジョニング エージェントによって処理されます。  Azure AD Connect のスコープを設定するには、次の手順を使用します。
-
- 1. Azure AD Connect が実行されているサーバー上で、Azure AD Connect アイコンをダブルクリックします。
- 2. **[構成]** をクリックします
- 3. **[同期オプションのカスタマイズ]** を選択し、[次へ] をクリックします。
- 4. Azure AD にサインインし、 **[次へ]** をクリックします。
- 5. **[ディレクトリの接続]** 画面で、 **[次へ]** をクリックします。
- 6. **[ドメインと OU のフィルタリング]** 画面で、 **[選択したドメインと OU の同期]** を選択します。
- 7. 実際のドメインを展開し、**CPUsers** OU の**選択を解除**します。  **[次へ]** をクリックします。
-![scope](media/tutorial-existing-forest/scope1.png)</br>
- 9. **[オプション機能]** 画面で、 **[次へ]** をクリックします。
- 10. **[構成の準備完了]** 画面で、 **[構成]** をクリックします。
- 11. 完了したら **[終了]** をクリックします。 
-
-## <a name="start-the-scheduler"></a>スケジューラの開始
-Azure AD Connect 同期は、オンプレミス ディレクトリで発生した変更を、スケジューラを使用して同期します。 規則の編集が完了したので、スケジューラを再起動してください。  次の手順に従います。
-
-1.  Azure AD Connect 同期が実行されているサーバー上で、管理特権を使用して PowerShell を開きます。
-2.  `Set-ADSyncScheduler -SyncCycleEnabled $true` を実行します。
-3.  `Start-ADSyncSyncCycle` を実行します。  Enter キーを押します。  
-
 ## <a name="install-the-azure-ad-connect-provisioning-agent"></a>Azure AD Connect プロビジョニング エージェントをインストールする
-1. ドメイン参加済みサーバーにサインインします。  [AD と Azure の基本的な環境](tutorial-basic-ad-azure.md)に関するチュートリアルを使用している場合、これは DC1 になります。
-2. クラウド専用の全体管理者資格情報を使用して Azure portal にサインインします。
-3. 左側の **[Azure Active Directory]** を選択して **[Azure AD Connect]** をクリックし、中央の **[プロビジョニングの管理 (プレビュー)]** を選択します。</br>
-![Azure Portal](media/how-to-install/install6.png)</br>
-4. [エージェントのダウンロード] をクリックします
-5. Azure AD Connect プロビジョニング エージェントを実行します
-6. スプラッシュ スクリーンでライセンス条項に**同意**し、 **[インストール]** をクリックします。</br>
+1. 使用するサーバーにエンタープライズ管理者のアクセス許可でサインインします。  [AD と Azure の基本的な環境](tutorial-basic-ad-azure.md)に関するチュートリアルを使用している場合、これは CP1 になります。
+2. Azure AD Connect クラウド プロビジョニング エージェントを[こちら](https://go.microsoft.com/fwlink/?linkid=2109037)からダウンロードします。
+3. Azure AD Connect クラウドプロビジョニング (AADConnectProvisioningAgent.Installer) を実行します。
+3. スプラッシュ スクリーンでライセンス条項に**同意**し、 **[インストール]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install1.png)</br>
 
-7. この操作が完了すると、構成ウィザードが起動します。  自分の Azure AD 全体管理者アカウントでサインインします。  IE セキュリティ強化を有効にしている場合はサインインがブロックされることに注意してください。  その場合はインストールを終了して、サーバー マネージャーで IE セキュリティ強化を無効にし、 **[AAD Connect Provisioning Agent Wizard]\(AAD Connect プロビジョニング エージェント ウィザード\)** をクリックしてインストールを再開します。
-8. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory ドメイン管理者アカウントを使用してサインインします。  注:ドメイン管理者アカウントに、パスワード変更要件は設定しないでください。 パスワードが期限切れになった場合や変更された場合は、新しい資格情報でエージェントを再構成する必要があります。 この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。</br>
+4. この操作が完了すると、構成ウィザードが起動します。  Azure AD 全体管理者アカウントでサインインします。
+5. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory 管理者アカウントを使用してサインインします。  この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install3.png)</br>
 
-9. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録され、再起動されます。</br>
+6. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。</br>
 ![[ようこそ] 画面](media/how-to-install/install4.png)</br>
 
-10. この操作が完了すると、"**Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました)** " という通知が表示されます。  **[終了]** をクリックします。</br>
+7. この操作が完了すると、"**Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)** " という通知が表示されます。  **[終了]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install5.png)</br>
-11. まだ最初のスプラッシュ スクリーンが表示される場合は、 **[閉じる]** をクリックします。
+8. まだ最初のスプラッシュ スクリーンが表示されている場合は、 **[閉じる]** をクリックします。1. 使用するサーバーにエンタープライズ管理者のアクセス許可でサインインします。
+2. Azure AD Connect クラウド プロビジョニング エージェントを[こちら](https://go.microsoft.com/fwlink/?linkid=2109037)からダウンロードします。
+3. Azure AD Connect クラウドプロビジョニング (AADConnectProvisioningAgent.Installer) を実行します。
+3. スプラッシュ スクリーンでライセンス条項に**同意**し、 **[インストール]** をクリックします。</br>
+![[ようこそ] 画面](media/how-to-install/install1.png)</br>
 
-## <a name="verify-agent-installation"></a>エージェントのインストールを確認する
+4. この操作が完了すると、構成ウィザードが起動します。  Azure AD 全体管理者アカウントでサインインします。
+5. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory 管理者アカウントを使用してサインインします。  この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。</br>
+![[ようこそ] 画面](media/how-to-install/install3.png)</br>
+
+6. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。</br>
+![[ようこそ] 画面](media/how-to-install/install4.png)</br>
+
+7. この操作が完了すると、"**Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)** " という通知が表示されます。  **[終了]** をクリックします。</br>
+![[ようこそ] 画面](media/how-to-install/install5.png)</br>
+8. まだ最初のスプラッシュ スクリーンが表示されている場合は、 **[閉じる]** をクリックします。
+
+## <a name="verify-agent-installation"></a>エエージェントのインストールを確認する
 エージェントの確認は、Azure portal のほか、エージェントが実行されているローカル サーバーで行います。
 
 ### <a name="azure-portal-agent-verification"></a>Azure portal でのエージェントの確認
@@ -208,10 +206,35 @@ Azure AD Connect 同期は、オンプレミス ディレクトリで発生し�
 
 さらに、ユーザーとグループが Azure AD に存在することを確認できます。
 
+## <a name="start-the-scheduler"></a>スケジューラの開始
+Azure AD Connect 同期は、オンプレミス ディレクトリで発生した変更を、スケジューラを使用して同期します。 規則の編集が完了したので、スケジューラを再起動してください。  次の手順に従います。
+
+1.  Azure AD Connect 同期が実行されているサーバー上で、管理特権を使用して PowerShell を開きます。
+2.  `Set-ADSyncScheduler -SyncCycleEnabled $true` を実行します。
+3.  `Start-ADSyncSyncCycle` を実行します。  Enter キーを押します。  
+
+>[!NOTE] 
+>AAD Connect 同期用に独自のカスタム スケジューラを実行している場合は、スケジューラを有効にしてください。 
+
 ## <a name="something-went-wrong"></a>問題が発生した場合
 パイロットが正しく機能しない場合は、次の手順に従って Azure AD Connect 同期の設定に戻ることができます。
 1.  Azure portal でプロビジョニング構成を無効にします。 
 2.  同期規則エディター ツールを使用してクラウド プロビジョニング用に作成されたカスタム同期規則をすべて無効にします。 無効にすると、すべてのコネクタで完全同期が実行されます。
+
+## <a name="configure-azure-ad-connect-sync-to-exclude-the-pilot-ou"></a>Azure AD Connect 同期でパイロット OU を除外するよう設定する
+パイロット OU のユーザーがクラウド プロビジョニングによって正しく管理されていることを確認したら、先ほど作成したパイロット OU を除外するように Azure AD Connect を再構成することができます。  以後これらのユーザーの同期は、クラウド プロビジョニング エージェントによって処理されます。  Azure AD Connect のスコープを設定するには、次の手順を使用します。
+
+ 1. Azure AD Connect が実行されているサーバー上で、Azure AD Connect アイコンをダブルクリックします。
+ 2. **[構成]** をクリックします
+ 3. **[同期オプションのカスタマイズ]** を選択し、[次へ] をクリックします。
+ 4. Azure AD にサインインし、 **[次へ]** をクリックします。
+ 5. **[ディレクトリの接続]** 画面で、 **[次へ]** をクリックします。
+ 6. **[ドメインと OU のフィルタリング]** 画面で、 **[選択したドメインと OU の同期]** を選択します。
+ 7. 実際のドメインを展開し、**CPUsers** OU の**選択を解除**します。  **[次へ]** をクリックします。
+![scope](media/tutorial-existing-forest/scope1.png)</br>
+ 9. **[オプション機能]** 画面で、 **[次へ]** をクリックします。
+ 10. **[構成の準備完了]** 画面で、 **[構成]** をクリックします。
+ 11. 完了したら **[終了]** をクリックします。 
 
 ## <a name="next-steps"></a>次の手順 
 

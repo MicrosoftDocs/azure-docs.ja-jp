@@ -3,12 +3,12 @@ title: ACR タスクの概要
 description: クラウド内でのコンテナー イメージの安全で自動化されたビルド、管理、修正プログラム適用を提供する、Azure Container Registry の機能スイートである ACR タスクの概要。
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: b4710591dfd78f0633d5071c78d80e300349f498
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456163"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840767"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>ACR タスクでコンテナー イメージのビルドとメンテナンスを自動化する
 
@@ -52,7 +52,7 @@ ACR タスクは、コンテナー ライフサイクル プリミティブと�
 
 ## <a name="trigger-task-on-source-code-update"></a>ソース コードの更新でタスクをトリガーする
 
-GitHub の Git リポジトリまたは Azure DevOps にコードがコミットされたとき、あるいは、プル要求が行われたか更新されたとき、コンテナー イメージのビルドまたは複数手順のタスクをトリガーします。 たとえば、Azure CLI コマンドの [az acr task create][az-acr-task-create] でビルド タスクを構成し、その際、Git リポジトリと任意で分岐と Dockerfile を指定します。 チームがリポジトリのコードを更新すると、ACR タスクで作成された Webhook が、リポジトリで定義されているコンテナー イメージのビルドをトリガーします。 
+GitHub または Azure DevOps の公開または非公開 Git リポジトリに対して、コードがコミットされたとき、またはプル要求が作成または更新されたときに、コンテナー イメージのビルドまたはマルチステップタスクをトリガーします。 たとえば、Azure CLI コマンドの [az acr task create][az-acr-task-create] でビルド タスクを構成し、その際、Git リポジトリと任意で分岐と Dockerfile を指定します。 チームがリポジトリのコードを更新すると、ACR タスクで作成された Webhook が、リポジトリで定義されているコンテナー イメージのビルドをトリガーします。 
 
 ACR タスクでは、Git リポジトリをタスクのコンテキストとして設定すると、次のトリガーがサポートされます。
 
@@ -61,7 +61,10 @@ ACR タスクでは、Git リポジトリをタスクのコンテキストとし
 | コミット | はい |
 | プル要求 | いいえ |
 
-トリガーを構成するには、個人用アクセス トークン (PAT) をタスクに与え、GitHub または Azure DevOps リポジトリで Webhook を設定します。
+ソース コード更新トリガーを構成するには、公開または非公開 GitHub または Azure DevOps リポジトリに Webhook を設定するアクセス トークン (PAT) をタスクに与える必要があります。
+
+> [!NOTE]
+> 現在、GitHub Enterprise リポジトリにおけるコミットやプル要求トリガーは、Azure Container Registry (ACR) タスクではサポートされていません。
 
 ソース コードのコミット時にビルドをトリガーする方法については、[Azure Container Registry タスクを使用してコンテナー イメージのビルドを自動化する](container-registry-tutorial-build-task.md)ことに関する ACR タスクの 2 つ目のチュートリアルを参照してください。
 
@@ -116,11 +119,14 @@ OS とフレームワークの修正プログラムの適用については、[A
 | コンテキストの場所 | 説明 | 例 |
 | ---------------- | ----------- | ------- |
 | ローカル ファイルシステム | ローカル ファイル システム上のディレクトリ内のファイル。 | `/home/user/projects/myapp` |
-| GitHub master ブランチ | GitHub リポジトリの master (またはその他の既定の) ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub ブランチ | GitHub リポジトリの特定のブランチ。| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub のサブフォルダー | GitHub リポジトリのサブフォルダー内のファイル 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Azure DevOps サブフォルダー | Azure リポジトリのサブフォルダー内のファイル 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| GitHub master ブランチ | 公開または非公開 GitHub リポジトリのマスター（または他のデフォルト）ブランチ内のファイル。  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub ブランチ | 公開または非公開 GitHub リポジトリの特定のブランチ。| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub のサブフォルダー | 公開または非公開 GitHub リポジトリのサブフォルダー内のファイル。 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Azure DevOps サブフォルダー | 公開または非公開 Azure リポジトリのサブフォルダー内のファイル。 例では、ブランチとサブフォルダーの指定の組み合わせが示されています。 | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | リモート tarball | リモート Web サーバー上の圧縮されたアーカイブ内のファイル。 | `http://remoteserver/myapp.tar.gz` |
+
+> [!NOTE]
+> 非公開 Git リポジトリをタスクのコンテキストとして使用する場合、非公開アクセストークン（PAT）を提供する必要があります。
 
 ## <a name="image-platforms"></a>イメージのプラットフォーム
 

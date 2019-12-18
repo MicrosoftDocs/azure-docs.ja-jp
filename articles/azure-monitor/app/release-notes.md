@@ -7,17 +7,24 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/17/2017
-ms.openlocfilehash: 7083ecf01666deecccada9ab0c93e88af53d252b
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 02c4d6ff9000e9f9e1f427144fed237d609a463d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173649"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841678"
 ---
 # <a name="sdk-release-notes---application-insights"></a>SDK リリース ノート - Application Insights
 リリース ノートと SDK の更新手順の詳細を以下に示します。
 
-* [.NET SDK (ASP.NET、ASP.Net Core、ログ記録アダプターを含みます)](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+
+* .NET SDK
+    - バージョン2.12 以降の場合：[.NET SDK (ASP.NET、ASP.NET Core、およびログ アダプターを含む)](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+    - 以前のリリース：
+      - [ASP.NET Web サーバー SDK](https://github.com/Microsoft/ApplicationInsights-server-dotnet/releases)
+      - [.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet/releases) 
+      - [.NET のログ記録アダプター](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/releases)
+      - [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
 * [Java](https://github.com/Microsoft/ApplicationInsights-Java)
 * [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/commits/master)
 * [その他のプラットフォーム](https://github.com/Microsoft/ApplicationInsights-Home)

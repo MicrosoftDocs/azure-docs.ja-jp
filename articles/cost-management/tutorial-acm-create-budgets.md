@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/12/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: edb46bc361c515439a93d9c3d0b9987bebe4b1b1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4b0e5be0e5f71fa61e3a6c6fa39e720c4c298898
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229875"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967944"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル:Azure の予算を作成して管理する
 
@@ -27,7 +27,7 @@ Cost Management での予算は、組織のアカウンタビリティを計画�
 
 このチュートリアルの例では、Azure Enterprise Agreement (EA) サブスクリプションの予算を作成および編集する手順を説明します。
 
-費用を監視するために Azure で予算を作成する方法を確認するには、[Azure Cost Management を使用して費用を監視する予算を作成する方法](https://www.youtube.com/watch?v=ExIVG_Gr45A)のビデオをご覧ください。
+[Azure portal を使用してサブスクリプションに予算を適用する](https://www.youtube.com/watch?v=UrkHiUx19Po) ビデオを見て、Azureで予算を作成して支出を監視する方法を確認してください。
 
 
 このチュートリアルでは、以下の内容を学習します。
@@ -62,7 +62,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 予算を作成すると、予算に対する現在の支出のシンプルなビューが表示されます。
 
-**[追加]** をクリックします。
+**[追加]** を選択します。
 
 ![既に作成されている予算の一覧を示す例](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -78,7 +78,7 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 ![月額コスト データを使用した予算の作成を示す例 ](./media/tutorial-acm-create-budgets/monthly-budget01.png)
 
-予算金額を構成したら、 **[次へ]** をクリックして予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、20 時間以内に電子メールの通知が届きます。 通知の詳細については、[コスト アラートの使用](cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。 以下の例では、予算の 90% に達すると、メール アラートが生成されます。 Budgets API を使用して予算を作成する場合、アラートを受信するためにユーザーにロールを割り当てることもできます。 ユーザーへのロールの割り当ては、Azure portal ではサポートされていません。 Azure Budgets API の詳細については、[Budgets API](/rest/api/consumption/budgets) を参照してください。
+予算金額を構成したら、 **[次へ]** を選択して予算アラートを構成します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、20 時間以内に電子メールの通知が届きます。 通知の詳細については、[コスト アラートの使用](cost-mgt-alerts-monitor-usage-spending.md)に関するページを参照してください。 以下の例では、予算の 90% に達すると、メール アラートが生成されます。 Budgets API を使用して予算を作成する場合、アラートを受信するためにユーザーにロールを割り当てることもできます。 ユーザーへのロールの割り当ては、Azure portal ではサポートされていません。 Azure Budgets API の詳細については、[Budgets API](/rest/api/consumption/budgets) を参照してください。
 
 ![アラート条件を示す例](./media/tutorial-acm-create-budgets/monthly-budget-alert.png)
 
@@ -94,12 +94,12 @@ Cost Management データに対するアクセス許可の割り当てについ�
 
 
 
-アクション グループを作成または更新するには、予算の作成または編集時に **[アクション グループの管理]** をクリックします。
+アクション グループを作成または更新するには、予算の作成または編集時に **[アクション グループの管理]** を選択します。
 
 ![[アクション グループの管理] を示す予算作成の例](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
 
 
-次に、 **[アクション グループの追加]** をクリックし、アクション グループを作成します。
+次に、 **[アクション グループの追加]** を選択し、アクション グループを作成します。
 
 
 ![[アクション グループの追加] ボックスの画像](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
@@ -115,6 +115,12 @@ Cost Management データに対するアクセス許可の割り当てについ�
 ![さまざまなアクション グループとアクションの種類で構成されたアラートの条件を示す例](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
 予算とアクション グループの統合は、共通アラート スキーマが無効になっているアクション グループに対してのみ機能します。 スキーマの無効化の詳細については、「[共通アラート スキーマを有効にする方法](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)」を参照してください。
+
+## <a name="edit-an-existing-budget"></a>既存の予算集する
+既存の予算を変更する場合は、メインの [予算] ウィンドウに移動して、編集したい選択します。 予算の詳細ウィンドウで、 **[予算の編集]** を選択し、必要な変更を行い、 **[保存]** を選択します。
+
+![予算の編集例](./media/tutorial-acm-create-budgets/edit-budget.png)
+
 
 ## <a name="next-steps"></a>次の手順
 

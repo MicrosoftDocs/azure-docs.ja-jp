@@ -214,7 +214,7 @@ ms.locfileid: "74159268"
    }
    ```
 
-## <a name="3-initialize-terraform"></a>手順 3.Terraform を初期化する 
+## <a name="3-initialize-terraform"></a>3.Terraform を初期化する 
 
 前のセクションで作成した Terraform 構成ファイルが格納されているディレクトリを初期化するには、[terraform init コマンド](https://www.terraform.io/docs/commands/init.html)を使います。 新しい Terraform 構成を作成した後は常に、`terraform init` コマンドを実行することをお勧めします。 
 

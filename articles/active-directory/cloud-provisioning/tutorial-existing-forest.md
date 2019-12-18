@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf151b98c813feba9de317879106718551b11f9d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: aa14b45235f2a62f05e84efafc41b899dc531d49
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814480"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868679"
 ---
 # <a name="integrate-an-existing-forest-and-a-new-forest-with-a-single-azure-ad-tenant"></a>既存のフォレストと新しいフォレストを単一の Azure AD テナントに統合する
 
@@ -45,7 +45,7 @@ ms.locfileid: "74814480"
      | --- | --- |
      | **80** | SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードする |
      | **443** | サービスを使用したすべての送信方向の通信を処理する |
-     | **8080** (省略可能) | ポート 443 が使用できない場合、エージェントは、ポート 8080 経由で 10 分おきにその状態をレポートします。 この状態は Azure AD ポータルに表示されます。 ポート 8080 は、ユーザー サインインには _使用されません_。 |
+     | **8080** (省略可能) | ポート 443 が使用できない場合、エージェントは、ポート 8080 経由で 10 分おきにその状態をレポートします。 この状態は Azure AD ポータルに表示されます。 |
      
      ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
    - ファイアウォールまたはプロキシで安全なサフィックスの指定が許可されている場合は、 **\*.msappproxy.net** および **\*.servicebus.windows.net** への接続を追加します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
@@ -66,15 +66,15 @@ ms.locfileid: "74814480"
 8. **[Connect Active Directory]\(Active Directory の接続\)** 画面で **[ディレクトリの追加]** をクリックし、Active Directory ドメイン管理者アカウントを使用してサインインします。  注:ドメイン管理者アカウントに、パスワード変更要件は設定しないでください。 パスワードが期限切れになった場合や変更された場合は、新しい資格情報でエージェントを再構成する必要があります。 この操作によってオンプレミス ディレクトリが追加されます。  **[次へ]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install3.png)</br>
 
-9. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録され、再起動されます。</br>
+9. **[構成が完了しました]** 画面で、 **[Confirm]\(確認\)** をクリックします。  この操作によって、エージェントが登録されて再起動されます。</br>
 ![[ようこそ] 画面](media/how-to-install/install4.png)</br>
 
-10. この操作が完了すると、"**Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました)** " という通知が表示されます。  **[終了]** をクリックします。</br>
+10. この操作が完了すると、次の通知が表示されます。 **"Your agent configuration was successfully verified. (エージェントの構成が正常に検証されました。)"**  **[終了]** をクリックします。</br>
 ![[ようこそ] 画面](media/how-to-install/install5.png)</br>
-11. まだ最初のスプラッシュ スクリーンが表示される場合は、 **[閉じる]** をクリックします。
+11. まだ最初のスプラッシュ スクリーンが表示されている場合は、 **[閉じる]** をクリックします。
 
 
-## <a name="verify-agent-installation"></a>エージェントのインストールを確認する
+## <a name="verify-agent-installation"></a>エエージェントのインストールを確認する
 エージェントの確認は、Azure portal のほか、エージェントが実行されているローカル サーバーで行います。
 
 ### <a name="azure-portal-agent-verification"></a>Azure portal でのエージェントの確認
@@ -94,7 +94,7 @@ ms.locfileid: "74814480"
 エージェントが実行されていることを確認するには、次の手順に従います。
 
 1.  管理者アカウントでサーバーにログオンします。
-2.  **[サービス]** を開きます。これには、[サービス] に直接移動するか、スタート ボタンをクリックし、[ファイル名を指定して実行] で「Services.msc」と入力してください。
+2.  **[サービス]** を開きます。これには、そこに直接移動するか、スタート ボタンをクリックし、[ファイル名を指定して実行] で「Services.msc」と入力します。
 3.  **[サービス]** に **[Microsoft Azure AD Connect Agent Updater]** と **[Microsoft Azure AD Connect Provisioning Agent]** が存在し、その状態が **[実行中]** になっていることを確認します。
 ![サービス](media/how-to-troubleshoot/troubleshoot1.png)
 

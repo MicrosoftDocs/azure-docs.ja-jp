@@ -27,7 +27,7 @@ Azure Cosmos DB に格納されているデータに対してレポート ダッ
 |---------|---------|
 |1.アドホック レポート (更新なし) を生成する    |  [Power BI Azure Cosmos DB コネクタとインポート モード](powerbi-visualize.md)       |
 |2.定期更新があるアドホック レポートを生成する   |  [Power BI Azure Cosmos DB コネクタとインポート モード (スケジュールされた定期更新)](powerbi-visualize.md)       |
-|手順 3.大規模なデータセット (< 10 GB) についてレポートを作成する     |  Power BI Azure Cosmos DB コネクタと増分更新       |
+|3.大規模なデータセット (< 10 GB) についてレポートを作成する     |  Power BI Azure Cosmos DB コネクタと増分更新       |
 |4.大規模なデータセットについてリアルタイムでレポートを作成する    |  Power BI Azure Analysis Services コネクタと直接クエリ + Azure Analysis Services (Azure Cosmos DB コネクタ)       |
 |5.集計を使用してライブ データについてレポートを作成する     |  [Power BI Spark コネクタと直接クエリ + Azure Databricks + Cosmos DB Spark コネクタ](https://github.com/Azure/azure-cosmosdb-spark/wiki/Connecting-Cosmos-DB-with-PowerBI-using-spark-and-databricks-premium)       |
 |6.大規模なデータセットの集計を使用してライブ データについてレポートを作成する   |  Power BI Azure Analysis Services コネクタと直接クエリ + Azure Analysis Services + Azure Databricks + Cosmos DB Spark コネクタ。       |

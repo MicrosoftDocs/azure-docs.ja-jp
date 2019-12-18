@@ -1,6 +1,6 @@
 ---
-title: シングルページ アプリケーション (Web API の呼び出し) - Microsoft ID プラットフォーム
-description: シングルページ アプリケーションをビルドする方法について説明します (Web API の呼び出し)
+title: Web API を呼び出すシングル ページ アプリを構築する - Microsoft IDプラットフォーム | Azure
+description: Web API を呼び出すシングル ページ アプリケーションをビルドする方法について学ぶ
 services: active-directory
 documentationcenter: dev-center-name
 author: rwike77
@@ -15,14 +15,14 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4170a6642d35802581b5d1ff28eb802a6eb3482b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 1171d8c3bc28c7b325cc8daf6cc072965363339c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766159"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965333"
 ---
-# <a name="single-page-application-call-a-web-api"></a>シングルページ アプリケーション:Web API を呼び出す
+# <a name="single-page-application-call-a-web-api"></a>シングルページ アプリケーション：Web API を呼び出す
 
 Web API を呼び出す前に、`acquireTokenSilent` メソッドを呼び出してアクセス トークンを取得または更新することをお勧めします。 トークンを取得した後に、保護された Web API を呼び出せます。
 

@@ -102,7 +102,7 @@ VM を Azure に確実に移行できるよう、Azure Migrate では VM にい�
 
 **アクション** | **詳細** | **手順**
 --- | --- | ---
-Azure VM 内の Windows ボリュームで、オンプレミスの VM と同じドライブ文字の割り当てが使用されるようにする。 | SAN ポリシーを Online All に構成します。 | 1.管理者アカウントで VM にサインインし、コマンド ウィンドウを開きます。<br/> 2.「**diskpart**」と入力して、Diskpart ユーティリティを実行します。<br/> 手順 3.「**SAN POLICY=OnlineAll**」と入力します<br/> 4.「Exit」と入力して Diskpart を終了し、コマンド プロンプトを閉じます。
+Azure VM 内の Windows ボリュームで、オンプレミスの VM と同じドライブ文字の割り当てが使用されるようにする。 | SAN ポリシーを Online All に構成します。 | 1.管理者アカウントで VM にサインインし、コマンド ウィンドウを開きます。<br/> 2.「**diskpart**」と入力して、Diskpart ユーティリティを実行します。<br/> 3.「**SAN POLICY=OnlineAll**」と入力します<br/> 4.「Exit」と入力して Diskpart を終了し、コマンド プロンプトを閉じます。
 Azure VM で Azure シリアル アクセス コンソールを有効にする | これはトラブルシューティングに役立ちます。 VM を再起動する必要はありません。 ディスク イメージを使用して Azure VM が起動します。これは、新しい VM の再起動に相当します。 | [これらの手順](https://docs.microsoft.com/azure/virtual-machines/windows/serial-console)に従って、有効化してください。
 Hyper-V ゲスト統合をインストールする | Windows Server 2003 を実行中のマシンを移行する場合は、Hyper-V ゲスト統合サービスを VM のオペレーティング システムにインストールしてください。 | [詳細情報](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#install-or-update-integration-services)。
 リモート デスクトップ | VM でリモート デスクトップを有効にして、どのネットワーク プロファイルでも Windows ファイアウォールがリモート デスクトップ アクセスをブロックしていないことを確認します。 | [詳細情報](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access)。

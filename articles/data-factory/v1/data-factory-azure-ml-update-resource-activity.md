@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory を使用して Machine Learning モデルを更新する
-description: Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します
+description: Azure Data Factory と Azure Machine Learning を使用して予測パイプラインを作成する方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683118"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978715"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 
@@ -41,8 +41,8 @@ ms.locfileid: "73683118"
 ## <a name="overview"></a>概要
 時間の経過と共に、Azure ML スコア付け実験の予測モデルには、新しい入力データセットを使用した再トレーニングが必要になります。 再トレーニングが完了したら、再トレーニング済みの ML モデルでスコア付け Web サービスを更新する必要があります。 Web サービスを使用して Azure ML モデルの再トレーニングと更新を有効にするための標準的な手順を次に示します。
 
-1. [Azure ML Studio](https://studio.azureml.net)で実験を作成します。
-2. モデルの準備が整ったら、Azure ML Studio を使用して、**トレーニング実験**とスコア付け/**予測実験**の両方の Web サービスを発行します。
+1. [Azure Machine Learning Studio (クラシック)](https://studio.azureml.net) で実験を作成します。
+2. モデルが準備できたら、Azure Machine Learning Studio (クラシック) を使用して、**トレーニング実験**とスコア付け/**予測実験**の両方の Web サービスを発行します。
 
 次の表で、この例で使用する Web サービスについて説明します。  詳細については、「 [プログラムによる Machine Learning のモデルの再トレーニング](../../machine-learning/machine-learning-retrain-models-programmatically.md) 」を参照してください。
 
@@ -88,7 +88,7 @@ Web サービスが、Azure Resource Manager エンドポイントを公開す�
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-[Azure Machine Learning Web サービスのポータル](https://services.azureml.net/)で Web サービスにクエリを実行するときに、URL 内のプレースホルダーの値を取得できます。 新しい種類の更新リソース エンドポイントには、AAD (Azure Active Directory) トークンが必要です。 AzureML のリンクされたサービスで **servicePrincipalId** と **servicePrincipalKey** を指定してください。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページをご覧ください。 AzureML のリンクされたサービス定義のサンプルを次に示します。 
+[Azure Machine Learning Web サービスのポータル](https://services.azureml.net/)で Web サービスにクエリを実行するときに、URL 内のプレースホルダーの値を取得できます。 新しい種類の更新リソース エンドポイントには、AAD (Azure Active Directory) トークンが必要です。 Azure Machine Learning のリンクされたサービスで **servicePrincipalId** と **servicePrincipalKey** を指定します。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページをご覧ください。 AzureML のリンクされたサービス定義のサンプルを次に示します。 
 
 ```json
 {
@@ -138,7 +138,7 @@ Azure Storage には次のデータが格納されています。
 ```
 
 ### <a name="training-input-dataset"></a>トレーニングの入力データセット:
-次のデータセットは、Azure ML トレーニング Web サービス用の入力トレーニング データを示しています。 Azure ML バッチ実行アクティビティはこのデータセットを入力として使用します。
+次のデータセットは、Azure Machine Learning トレーニング Web サービスの入力トレーニング データを表しています。 Azure Machine Learning バッチ実行アクティビティは、このデータセットを入力として取得します。
 
 ```JSON
 {
@@ -192,7 +192,7 @@ Azure Storage には次のデータが格納されています。
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Azure ML トレーニング エンドポイント用のリンクされたサービス
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Azure Machine Learning トレーニング エンドポイント用のリンクされたサービス
 次の JSON スニペットは、トレーニング Web サービスの既定のエンドポイントを示す Azure Machine Learning のリンクされたサービスを定義します。
 
 ```JSON
@@ -208,12 +208,12 @@ Azure Storage には次のデータが格納されています。
 }
 ```
 
-**Azure ML Studio** で、次の操作を行い、**mlEndpoint** と **apiKey** の値を取得します。
+**Azure Machine Learning Studio (クラシック)** で、次の操作を実行して **mlEndpoint** と **apiKey** の値を取得します。
 
 1. 左側のメニューで **[Web サービス]** をクリックします。
 2. Web サービスの一覧で、 **[トレーニング Web サービス]** をクリックします。
 3. **[API キー]** ボックスの隣にあるコピー ボタンをクリックします。 クリップボードにコピーされた API キーを Data Factory JSON エディターに貼り付けます。
-4. **Azure ML studio** で **[バッチ実行]** リンクをクリックします。
+4. **Azure Machine Learning Studio (クラシック)** で、 **[バッチ実行]** リンクをクリックします。
 5. **[要求]** セクションの**要求 URI** をコピーして、Data Factory JSON エディターに貼り付けます。   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Azure ML の更新可能なスコア付けエンドポイント用のリンクされたサービス:

@@ -1,22 +1,23 @@
 ---
-title: Azure Storage を使用してクラウド内のアプリケーションのデータに対するアクセスをセキュリティで保護する | Microsoft Docs
+title: アプリケーション データへのアクセスをセキュリティで保護する
+titleSuffix: Azure Storage
 description: SAS トークン、暗号化、および HTTPS を使用して、クラウド内にあるアプリケーションのデータをセキュリティで保護します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/30/2018
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 2cd7a83b597d656ddbb0210aacfe96f6c056248b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1075c03820efba44ceb8dea28aff6302d2667cf2
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68986694"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892432"
 ---
-# <a name="secure-access-to-an-applications-data-in-the-cloud"></a>クラウド内のアプリケーションのデータへのアクセスをセキュリティで保護する
+# <a name="secure-access-to-application-data"></a>アプリケーション データへのアクセスをセキュリティで保護する
 
 このチュートリアルは、シリーズの第 3 部です。 ストレージ アカウントへのアクセスをセキュリティで保護する方法について説明します。 
 
@@ -31,7 +32,7 @@ ms.locfileid: "68986694"
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、前の Storage のチュートリアル「[Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する][previous-tutorial]」を完了している必要があります。 
+このチュートリアルを完了するには、前の Storage のチュートリアル「[Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する][previous-tutorial]」を完了している必要があります。
 
 ## <a name="set-container-public-access"></a>コンテナーのパブリック アクセスを設定する
 

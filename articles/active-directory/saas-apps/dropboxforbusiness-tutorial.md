@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 615c10357e099b547008b128ca5f5a773ff1aa14
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: ae1e537665739c055121fd82cf14f733a90142e4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158313"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964244"
 ---
 # <a name="tutorial-integrate-dropbox-for-business-with-azure-active-directory"></a>チュートリアル:Dropbox for Business と Azure Active Directory の統合
 
@@ -44,7 +44,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。 Dropbox for Business では、**SP** によって開始される SSO がサポートされます
 
-* Dropbox for Business では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Dropbox for Business では、[自動化されたユーザー プロビジョニングとプロビジョニング解除](dropboxforbusiness-tutorial.md)がサポートされます
 
 ## <a name="adding-dropbox-for-business-from-the-gallery"></a>ギャラリーから Dropbox for Business を追加
 
