@@ -1,5 +1,6 @@
 ---
-title: LinkedIn アカウントでのサインアップおよびサインインを設定する - Azure Active Directory B2C
+title: LinkedIn アカウントでのサインアップおよびサインインを設定する
+titleSuffix: Azure AD B2C
 description: Azure Active Directory B2C を使用するアプリケーションで LinkedIn アカウントを持つ顧客にサインアップとサインインを提供します。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: be347fe33e03b4c2a7ecc1015a407c5a58062326
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: fc6537b56b26d6becfe0851a09d3bfe0f13050ab
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71065146"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947713"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して LinkedIn アカウントでのサインアップおよびサインインを設定する
 

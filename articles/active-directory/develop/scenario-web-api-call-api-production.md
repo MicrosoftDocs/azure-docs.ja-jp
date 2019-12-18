@@ -1,6 +1,6 @@
 ---
-title: Web API を呼び出す Web API (運用環境への移行) - Microsoft ID プラットフォーム
-description: ダウンストリーム Web API を呼び出す Web API を構築する方法について説明します (運用環境への移行)。
+title: Web API の呼び出す Web API を運用環境へ移行する - Microsoft ID プラットフォーム | Azure
+description: Web API を呼び出す Web API を運用環境に移行する方法を学びます。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7de892a0851e556c5046fe4b3691f39b42a9d237
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0d59a5b2a74c10e36103713725113cbe8c9cc412
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080085"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965171"
 ---
 # <a name="web-api-that-calls-web-apis---move-to-production"></a>Web API を呼び出す Web API - 運用環境への移行
 

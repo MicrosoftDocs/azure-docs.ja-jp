@@ -1,5 +1,6 @@
 ---
-title: チュートリアル - ASP.NET Web API へのアクセスを許可する - Azure Active Directory B2C
+title: チュートリアル:ASP.NET Web API へのアクセスを許可する
+titleSuffix: Azure AD B2C
 description: Active Directory B2C を使用して ASP.NET Web API を保護し、ASP.NET Web アプリケーションからそれを呼び出す方法に関するチュートリアルです。
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 0cd2eff7e3fafc1a6f3418a1f86629cfb1584e89
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: f9f773beb679b4f31e2b735fd0d74fc1b5dae2dd
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641747"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950164"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-using-azure-active-directory-b2c"></a>チュートリアル:Azure Active Directory B2C を使用して ASP.NET Web API へのアクセスを許可する
 
@@ -61,7 +62,7 @@ ms.locfileid: "73641747"
 1. 左側のメニューで、 **[Azure AD B2C]** を選択します。 または、 **[すべてのサービス]** を選択し、 **[Azure AD B2C]** を検索して選択します。
 1. **[アプリの登録 (プレビュー)]** 、 **[新規登録]** の順に選択します。
 1. アプリケーションの**名前**を入力します。 たとえば、*webapi1* とします。
-1. **[リダイレクト URI]** で、 **[Web]** を選択し、お客様のアプリケーションによって要求されたトークンが Azure AD B2C によって返されるエンドポイントを入力します。 このチュートリアルでは、サンプルはローカル環境で実行され、`https://localhost:44332` でリッスンします。
+1. **[リダイレクト URI]** で、 **[Web]** を選択し、お使いのアプリケーションが要求したすべてのトークンを Azure AD B2C が返すエンドポイントを入力します。 このチュートリアルでは、サンプルはローカル環境で実行され、`https://localhost:44332` でリッスンします。
 1. **[登録]** を選択します。
 1. 後の手順で使用するために、**アプリケーション (クライアント) ID** を記録しておきます。
 

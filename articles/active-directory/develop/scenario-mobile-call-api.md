@@ -1,5 +1,5 @@
 ---
-title: Web API を呼び出すモバイル アプリ - Web API の呼び出し
+title: モバイルアプリから Web API を呼び出す | Azure
 titleSuffix: Microsoft identity platform
 description: Web API を呼び出すモバイル アプリの構築方法について説明します (Web API の呼び出し)
 services: active-directory
@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e70b828219fc497fc07e2bc128eb480a532a176
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: db58f94501590eb3150700d282377ec1b2378cea
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802555"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962544"
 ---
 # <a name="mobile-app-that-calls-web-apis---call-a-web-api"></a>Web API を呼び出すモバイル アプリ - Web API の呼び出し
 

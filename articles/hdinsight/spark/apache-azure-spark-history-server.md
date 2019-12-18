@@ -237,7 +237,7 @@ History Server エラーが発生した場合は、次の手順に従ってイ�
 
     ![Apache Spark、ファイルの問題の例](./media/apache-azure-spark-history-server/apache-spark-file-issue.png)
 
-### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>手順 3.修正プログラム用の jar ファイルをアップグレードするシナリオ
+### <a name="3-upgrade-jar-file-for-hotfix-scenario"></a>3.修正プログラム用の jar ファイルをアップグレードするシナリオ
 
 修正プログラムを使用してアップグレードする場合は、spark enhancement.jar* をアップグレードする次のスクリプトを使用します。
 

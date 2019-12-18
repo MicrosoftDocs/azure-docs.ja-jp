@@ -1,33 +1,28 @@
 ---
-title: Azure AD アプリに省略可能な要求を提供する方法
+title: Azure AD アプリに省略可能な要求を提供する | Azure
 titleSuffix: Microsoft identity platform
-description: Azure Active Directory から発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) にカスタムまたは追加の要求を追加する方法について説明します。
-documentationcenter: na
+description: Azure Active Directory によって発行された SAML 2.0 および JSON Web Token (JWT) トークンに、カスタムまたは追加の要求を追加する方法。
 author: rwike77
-services: active-directory
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/03/2019
+ms.date: 12/08/2019
 ms.author: ryanwi
-ms.reviewer: paulgarn, hirsin
+ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b74e680979ccbcc94f8a49e993c6d64797ab80b1
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: bcaf347eb91f8777b56bb2ea4d26985b2d75f645
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803409"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967230"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>方法:Azure AD アプリに省略可能な要求を提供する
 
-アプリケーション開発者は、Azure AD アプリで省略可能な要求を使用して、アプリケーションに送信されるトークンに含める要求を指定できます。 
+アプリケーション開発者は、Azure AD アプリケーションで省略可能な要求を使用して、アプリケーションに送信されるトークンに含めたい要求を指定できます。 
 
 次の処理に省略可能な要求を使用できます。
 
@@ -74,11 +69,11 @@ ms.locfileid: "72803409"
 | `xms_tpl`                  | テナントの優先する言語| JWT | | テナントの優先する言語 (設定されている場合)。 LL ("en") という形式です。 |
 | `ztdid`                    | ゼロタッチ デプロイ ID | JWT | | [Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) に使用されるデバイス ID |
 | `email`                    | このユーザーのアドレス指定可能なメール アドレス (ユーザーが持っている場合)。  | JWT、SAML | MSA、Azure AD | ユーザーがテナントのゲストである場合、この値は既定で含まれます。  マネージド ユーザー (テナント内のユーザー) の場合は、この省略可能な要求により、または OpenID スコープで (v2.0 の場合のみ)、それを要求する必要があります。  マネージド ユーザーの場合、メール アドレスは [Office 管理ポータル](https://portal.office.com/adminportal/home#/users)で設定する必要があります。| 
-| `groups`| グループ要求の省略可能な形式 |JWT、SAML| |[アプリケーション マニフェスト](reference-app-manifest.md) の GroupMembershipClaims 設定と共に使用されます (こちらも設定する必要があります)。 詳細については、後述の[グループ要求](#Configuring-group-optional claims)に関する説明を参照してください。 グループ要求の詳細については、[グループ要求の構成方法](../hybrid/how-to-connect-fed-group-claims.md)に関する記事を参照してください
+| `groups`| グループ要求の省略可能な形式 |JWT、SAML| |[アプリケーション マニフェスト](reference-app-manifest.md) の GroupMembershipClaims 設定と共に使用されます (こちらも設定する必要があります)。 詳細については、後述の[グループ要求](#configuring-groups-optional-claims)に関する説明を参照してください。 グループ要求の詳細については、[グループ要求の構成方法](../hybrid/how-to-connect-fed-group-claims.md)に関する記事を参照してください
 | `acct`             | テナント内のユーザー アカウントの状態。 | JWT、SAML | | ユーザーがテナントのメンバーである場合、値は `0` です。 ユーザーがゲストの場合、値は `1` です。 |
 | `upn`                      | UserPrincipalName 要求。 | JWT、SAML  |           | この要求は自動的に含まれますが、省略可能な要求として、ゲスト ユーザーの場合に動作を変更するために追加のプロパティをアタッチする要求を指定することもできます。  |
 
-### <a name="v20-optional-claims"></a>v2.0 の省略可能な要求
+## <a name="v20-specific-optional-claims-set"></a>v2.0 固有の省略可能な要求セット
 
 これらの要求は常に v1.0 Azure AD トークンに含まれますが、要求されない限り v2.0 トークンには含まれません。 これらの要求は、JWT (ID トークンとアクセス トークン) にのみ適用されます。 
 
@@ -110,126 +105,166 @@ ms.locfileid: "72803409"
 
 #### <a name="additional-properties-example"></a>追加のプロパティの例
 
-```json
- "optionalClaims": 
-   {
-       "idToken": [ 
-             { 
-                "name": "upn", 
-            "essential": false,
-                "additionalProperties": [ "include_externally_authenticated_upn"]  
-              }
-        ]
-}
-```
+    ```json
+        "optionalClaims": 
+         {
+             "idToken": [ 
+            { 
+                      "name": "upn", 
+                      "essential": false,
+                  "additionalProperties": [ "include_externally_authenticated_upn"]  
+                    }
+                 ]
+        }
+    ```
 
 この OptionalClaims オブジェクトにより、ID トークンがクライアントに返され、追加のホーム テナントとリソース テナントの情報を持つ追加の upn が含められます。 その結果、ユーザーが (認証に異なる IDP を使用する) テナントのゲストである場合にのみ、トークンの `upn` 要求が変更されます。 
 
 ## <a name="configuring-optional-claims"></a>省略可能な要求の構成
 
-アプリケーション マニフェストを変更して、アプリケーションの省略可能な要求を構成することができます (以下の例を参照してください)。 詳細については、[Azure AD アプリケーション マニフェストの概要に関する記事](reference-app-manifest.md)を参照してください。
-
 > [!IMPORTANT]
 > アクセス トークンは、クライアントではなく、**常に**リソースのマニフェストを使用して生成されます。  そのため、`...scope=https://graph.microsoft.com/user.read...` 要求では、リソースは Graph になります。  したがって、アクセス トークンは、クライアントのマニフェストではなく、Graph マニフェストを使用して作成されます。  アプリケーションのマニフェストを変更しても、Graph のトークンが変更されることはありません。  `accessToken` の変更が有効であることを確認するには、他のアプリではなく、自分のアプリケーションのトークンを要求します。  
 
-**スキーマ例:**
+UI またはアプリケーション マニフェストを使用して、アプリケーションの省略可能な要求を構成できます。
 
-```json
-"optionalClaims":  
-   {
-      "idToken": [
-            {
-                  "name": "auth_time", 
-                  "essential": false
-             }
-      ],
-      "accessToken": [
-             {
-                    "name": "ipaddr", 
-                    "essential": false
-              }
-      ],
-      "saml2Token": [
-              {
-                    "name": "upn", 
-                    "essential": false
-               },
-               {
-                    "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
-                    "source": "user", 
-                    "essential": false
-               }
-       ]
-   }
-```
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
+1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
+1. **[管理]** セクションで、 **[アプリの登録]** を選択します。
+1. 省略可能な要求を構成するアプリケーションを一覧から選択します。
 
-### <a name="optionalclaims-type"></a>OptionalClaims 型
+**UI を使用した省略可能な要求の構成：**
 
-アプリケーションから要求する省略可能な要求を宣言します。 アプリケーションは、セキュリティ トークン サービスから受信できる 3 種類の各トークン (ID トークン、アクセス トークン、SAML 2 トークン) で返される省略可能な要求を構成できます。 アプリケーションは、トークンの種類ごとに返される異なる省略可能な要求セットを構成できます。 アプリケーション エンティティの OptionalClaims プロパティは、OptionalClaims オブジェクトです。
+[![UI を使用して省略可能な要求を構成する方法を示す](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
-**表 5:OptionalClaims 型のプロパティ**
+1. **[管理]** セクションで、 **[トークンの構成 (プレビュー)]** を選択します。
+2. **[省略可能な要求を追加]** を選択します。
+3. 構成するトークンの型を選択します。
+4. 追加する省略可能な要求を選択します。
+5. **[追加]** をクリックします。
 
-| 名前        | Type                       | 説明                                           |
+**アプリケーションマニフェストを使用した省略可能な要求の構成：**
+
+[![アプリ マニフェストを使用して省略可能な要求を構成する方法を示します](./media/active-directory-optional-claims/app-manifest.png)](./media/active-directory-optional-claims/app-manifest.png)
+
+1. **[管理]** セクションで、 **[マニフェスト]** を選択します。 Web ベースのマニフェスト エディターが開き、マニフェストを編集できます。 必要があれば、 **[ダウンロード]** を選択してローカルでマニフェストを編集します。その後、 **[アップロード]** を使用して、アプリケーションにマニフェストを再適用します。 アプリケーションマニフェストの詳細については、「[Azure AD アプリケーションマニフェストについて](reference-app-manifest.md)」を参照してください。
+
+    次のアプリケーションマニフェストのエントリにより、auth_time、ipaddr、および upn の省略可能な要求が ID、アクセス、および SAML トークンに追加されます。
+
+    ```json
+        "optionalClaims":  
+           {
+              "idToken": [
+                    {
+                          "name": "auth_time", 
+                          "essential": false
+                     }
+              ],
+              "accessToken": [
+                     {
+                            "name": "ipaddr", 
+                            "essential": false
+                      }
+              ],
+              "saml2Token": [
+                      {
+                            "name": "upn", 
+                            "essential": false
+                       },
+                       {
+                            "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
+                            "source": "user", 
+                            "essential": false
+                       }
+               ]
+           }
+       ```
+
+2. When finished, click **Save**. Now the specified optional claims will be included in the tokens for your application.    
+
+
+### OptionalClaims type
+
+Declares the optional claims requested by an application. An application can configure optional claims to be returned in each of three types of tokens (ID token, access token, SAML 2 token) it can receive from the security token service. The application can configure a different set of optional claims to be returned in each token type. The OptionalClaims property of the Application entity is an OptionalClaims object.
+
+**Table 5: OptionalClaims type properties**
+
+| Name        | Type                       | Description                                           |
 |-------------|----------------------------|-------------------------------------------------------|
-| `idToken`     | コレクション (OptionalClaim) | JWT ID トークンで返される省略可能な要求。 |
-| `accessToken` | コレクション (OptionalClaim) | JWT アクセス トークンで返される省略可能な要求。 |
-| `saml2Token`  | コレクション (OptionalClaim) | JWT SAML トークンで返される省略可能な要求。   |
+| `idToken`     | Collection (OptionalClaim) | The optional claims returned in the JWT ID token. |
+| `accessToken` | Collection (OptionalClaim) | The optional claims returned in the JWT access token. |
+| `saml2Token`  | Collection (OptionalClaim) | The optional claims returned in the SAML token.   |
 
-### <a name="optionalclaim-type"></a>OptionalClaim 型
+### OptionalClaim type
 
-アプリケーションまたはサービス プリンシパルに関連付けられている省略可能な要求が含まれます。 [OptionalClaims](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) 型の idToken、accessToken、および saml2Token プロパティは、OptionalClaim のコレクションです。
-特定の要求でサポートされている場合は、AdditionalProperties フィールドを使用して OptionalClaim の動作を変更することもできます。
+Contains an optional claim associated with an application or a service principal. The idToken, accessToken, and saml2Token properties of the [OptionalClaims](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type) type is a collection of OptionalClaim.
+If supported by a specific claim, you can also modify the behavior of the OptionalClaim using the AdditionalProperties field.
 
-**表 6:OptionalClaim 型のプロパティ**
+**Table 6: OptionalClaim type properties**
 
-| 名前                 | Type                    | 説明                                                                                                                                                                                                                                                                                                   |
+| Name                 | Type                    | Description                                                                                                                                                                                                                                                                                                   |
 |----------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`                 | Edm.String              | 省略可能な要求の名前。                                                                                                                                                                                                                                                                           |
-| `source`               | Edm.String              | 要求のソース (ディレクトリ オブジェクト)。 定義済みの要求と、拡張プロパティのユーザー定義の要求があります。 ソース値が null の場合、この要求は定義済みの省略可能な要求です。 ソース値が user の場合、name プロパティの値はユーザー オブジェクトの拡張プロパティです。 |
-| `essential`            | Edm.Boolean             | 値が true の場合、エンド ユーザーから要求された特定のタスクの承認エクスペリエンスを円滑にするために、クライアントに指定された要求が必要です。 既定値は false です。                                                                                                             |
-| `additionalProperties` | コレクション (Edm.String) | 要求の追加のプロパティ。 このコレクションにプロパティが存在する場合、name プロパティに指定された省略可能な要求の動作が変更されます。                                                                                                                                               |
-## <a name="configuring-directory-extension-optional-claims"></a>ディレクトリ拡張機能の省略可能な要求の構成
+| `name`                 | Edm.String              | The name of the optional claim.                                                                                                                                                                                                                                                                           |
+| `source`               | Edm.String              | The source (directory object) of the claim. There are predefined claims and user-defined claims from extension properties. If the source value is null, the claim is a predefined optional claim. If the source value is user, the value in the name property is the extension property from the user object. |
+| `essential`            | Edm.Boolean             | If the value is true, the claim specified by the client is necessary to ensure a smooth authorization experience for the specific task requested by the end user. The default value is false.                                                                                                             |
+| `additionalProperties` | Collection (Edm.String) | Additional properties of the claim. If a property exists in this collection, it modifies the behavior of the optional claim specified in the name property.                                                                                                                                               |
+## Configuring directory extension optional claims
 
-標準の省略可能な要求セットに加え、ディレクトリ スキーマ拡張を含むようにトークンを構成することもできます。 詳しくは、[ディレクトリ スキーマ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)に関する記事をご覧ください。 ユーザーが設定した追加の識別子や重要な構成オプションなど、アプリで使用できる追加のユーザー情報をアタッチする場合にこの機能が便利です。 
+In addition to the standard optional claims set, you can also configure tokens to include directory schema extensions. For more info, see [Directory schema extensions](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions). This feature is useful for attaching additional user information that your app can use – for example, an additional identifier or important configuration option that the user has set. See the bottom of this page for an example.
 
-> [!Note]
-> - ディレクトリ スキーマ拡張機能は Azure AD のみの機能なので、アプリケーション マニフェストでカスタム拡張機能を必須にして、MSA ユーザーがアプリにログインした場合、このような拡張機能は返されません。
-> - Azure AD の省略可能な要求は Azure AD 拡張機能でのみ機能し、Microsoft Graph ディレクトリ拡張機能では機能しません。 どちらの API にも `Directory.ReadWriteAll` アクセス許可 (管理者のみが同意できます) が必要です。
+> [!NOTE]
+> - Directory schema extensions are an Azure AD-only feature, so if your application manifest requests a custom extension and an MSA user logs into your app, these extensions will not be returned.
+> - Azure AD optional claims only work with Azure AD Graph extensions and do not work with Microsoft Graph directory extensions. Both APIs require the `Directory.ReadWriteAll` permission, which can only be consented by admins.
 
-### <a name="directory-extension-formatting"></a>ディレクトリ拡張の形式
+### Directory extension formatting
 
-拡張属性の場合は、アプリケーション マニフェストで拡張機能のフル ネーム (`extension_<appid>_<attributename>` の形式) を使用します。 `<appid>` は、要求を必須にしているアプリケーションの ID と一致する必要があります。 
+When configuring directory extension optional claims using the application manifest, use the full name of the extension (in the format: `extension_<appid>_<attributename>`). The `<appid>` must match the ID of the application requesting the claim. 
 
-JWT 内では、このような要求は `extn.<attributename>` という形式の名前で発行されます。
+Within the JWT, these claims will be emitted with the following name format:  `extn.<attributename>`.
 
-SAML トークン内では、このような要求は `http://schemas.microsoft.com/identity/claims/extn.<attributename>` という URI 形式で発行されます。
+Within the SAML tokens, these claims will be emitted with the following URI format: `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
 
-## <a name="configuring-group-optional-claims"></a>グループの省略可能な要求の構成
+## Configuring groups optional claims
 
    > [!NOTE]
-   > ユーザーとグループについて、オンプレミスからの同期されたグループ名を出力する機能は、パブリック プレビュー段階です。
+   > The ability to emit group names for users and groups synced from on-premises is Public Preview.
 
-このセクションでは、グループ要求で使用されるグループ属性を、既定のグループ objectID からオンプレミス Windows Active Directory から同期される属性へ変更するための、省略可能な要求の構成オプションについて説明します。
+This section covers the configuration options under optional claims for changing the group attributes used in group claims from the default group objectID to attributes synced from on-premises Windows Active Directory. You can configure groups optional claims for your application through the UI or application manifest.
 
 > [!IMPORTANT]
-> オンプレミス属性からのグループ要求のパブリック プレビューに関する重要な注意事項などの詳細については、[Azure AD を使用してアプリケーションに対するグループ要求を構成する](../hybrid/how-to-connect-fed-group-claims.md)方法のページを参照してください。
+> See [Configure group claims for applications with Azure AD](../hybrid/how-to-connect-fed-group-claims.md) for more details including important caveats for the public preview of group claims from on-premises attributes.
 
-1. ポータルから [Azure Active Directory]-> [アプリケーションの登録] の順に移動して、[アプリケーション] -> [マニフェスト] の順に選択します。
+**Configuring groups optional claims through the UI:**
+1. Sign in to the [Azure portal](https://portal.azure.com)
+1. After you've authenticated, choose your Azure AD tenant by selecting it from the top right corner of the page
+1. Select **Azure Active Directory** from the left hand menu
+1. Under the **Manage** section, select **App registrations**
+1. Select the application you want to configure optional claims for in the list
+1. Under the **Manage** section, select **Token configuration (preview)**
+2. Select **Add groups claim**
+3. Select the group types to return (**All Groups**, **SecurityGroup** or **DirectoryRole**). The **All Groups** option includes **SecurityGroup**, **DirectoryRole** and **DistributionList**
+4. Optional: click on the specific token type properties to modify the groups claim value to contain on premises group attributes or to change the claim type to a role
+5. Click **Save**
 
-2. groupMembershipClaim を変更して、グループ メンバーシップの要求を有効にします。
+**Configuring groups optional claims through the application manifest:**
+1. Sign in to the [Azure portal](https://portal.azure.com)
+1. After you've authenticated, choose your Azure AD tenant by selecting it from the top right corner of the page
+1. Select **Azure Active Directory** from the left hand menu
+1. Select the application you want to configure optional claims for in the list
+1. Under the **Manage** section, select **Manifest**
+3. Add the following entry using the manifest editor:
 
-   有効な値は次のとおりです。
+   The valid values are:
 
-   - "All"
+   - "All" (this option includes SecurityGroup, DirectoryRole and DistributionList)
    - "SecurityGroup"
-   - "DistributionList"
    - "DirectoryRole"
 
-   例:
+   For example:
 
-   ```json
-   "groupMembershipClaims": "SecurityGroup"
-   ```
+    ```json
+        "groupMembershipClaims": "SecurityGroup"
+    ```
 
    既定では、グループの ObjectID は、グループ要求の値に出力されます。  オンプレミス グループ属性を含むように要求の値を変更するか、または要求の種類をロールに変更するには、次のように OptionalClaims 構成を使用します。
 
@@ -246,14 +281,14 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
    関連する各トークンの種類に対して、マニフェストにある OptionalClaims セクションを使用するようにグループ要求を変更します。 OptionalClaims スキーマは次のようになっています。
 
-   ```json
-   {
-   "name": "groups",
-   "source": null,
-   "essential": false,
-   "additionalProperties": []
-   }
-   ```
+    ```json
+       {
+       "name": "groups",
+       "source": null,
+       "essential": false,
+       "additionalProperties": []
+       }
+    ```
 
    | 省略可能な要求のスキーマ | 値 |
    |----------|-------------|
@@ -269,84 +304,124 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
    > [!NOTE]
    > "emit_as_roles" が使用された場合、ユーザーが割り当て済みとして構成されているアプリケーション ロールは、ロール要求には表示されません
 
-**例:** OAuth アクセス トークンで netbiosDomain\sAMAccountName 形式でグループ名をグループとして出力する
+**例:**
 
-```json
-"optionalClaims": {
-    "accessToken": [{
-        "name": "groups",
-        "additionalProperties": ["dns_domain_and_sam_account_name"]
-    }]
-}
- ```
+1) OAuth アクセス トークンで netbiosDomain\sAMAccountName 形式でグループ名をグループとして出力する
 
-SAML および OIDC ID トークンでロール要求として netbiosDomain\sAMAccountName 形式で返されるグループ名を出力するには、次のように記述します。
+    
+    **UI の構成：**
 
-```json
-"optionalClaims": {
-    "saml2Token": [{
-        "name": "groups",
-        "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
-    }],
+    [![UI を使用して省略可能な要求を構成する方法を示す](./media/active-directory-optional-claims/groups-example-1.png)](./media/active-directory-optional-claims/groups-example-1.png)
 
-    "idToken": [{
-        "name": "groups",
-        "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
-    }]
- }
 
- ```
+    **アプリケーションマニフェストのエントリ：**
+    ```json
+        "optionalClaims": {
+            "accessToken": [{
+            "name": "groups",
+            "additionalProperties": ["dns_domain_and_sam_account_name"]
+            }]
+        }
+    ```
+
+ 
+    
+2) SAML および OIDC ID トークンのロール要求として、 netbiosDomain\sAMAccountName 形式で返されるグループ名を出力します
+
+    **UI の構成：**
+
+    [![UI を使用して省略可能な要求を構成する方法を示す](./media/active-directory-optional-claims/groups-example-2.png)](./media/active-directory-optional-claims/groups-example-2.png)
+
+    **アプリケーションマニフェストのエントリ：**
+    
+    ```json
+        "optionalClaims": {
+        "saml2Token": [{
+            "name": "groups",
+            "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
+        }],
+        "idToken": [{
+            "name": "groups",
+            "additionalProperties": ["netbios_name_and_sam_account_name", "emit_as_roles"]
+        }]
+    ``` 
+     
 
 ## <a name="optional-claims-example"></a>省略可能な要求の例
 
 このセクションでは、シナリオを使って、省略可能な要求機能をアプリケーションに使用する手順について説明します。
 アプリケーションの ID 構成に関するプロパティを更新し、省略可能な要求を有効にして構成するには、複数のオプションがあります。
--   アプリケーション マニフェストを変更できます。 以下の例では、この方法を使用して構成を行います。 マニフェストの概要については、まず [Azure AD アプリケーション マニフェストの概要に関するドキュメント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)を参照してください。
+-    **トークン構成 (プレビュー)** UI を使用できます (次の例を参照)
+-    **マニフェスト** を使用できます (次の例を参照)。 マニフェストの概要については、まず [Azure AD アプリケーション マニフェストの概要に関するドキュメント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-manifest)を参照してください。
 -   また、[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api) を使用してアプリケーションを更新するアプリケーションを作成することもできます。 省略可能な要求の構成については、Graph API リファレンス ガイドの[エンティティと複合型のリファレンス](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#optionalclaims-type)に関するページを参照してください。
 
-**例:** 以下の例では、アプリケーションのマニフェストを変更して、アプリケーション用のアクセス トークン、ID トークン、および SAML トークンに要求を追加します。
+**例:** 次の例では、**トークン構成 (プレビュー)** UI と **マニフェスト** を使用して、アプリケーション用のアクセス、ID、および SAML トークンに省略可能な要求を追加します。 アプリケーションが受け取ることができるトークンの型ごとに、さまざまな省略可能な要求が追加されます：
+-    ID トークンには、完全な形式 (`<upn>_<homedomain>#EXT#@<resourcedomain>`) のフェデレーション ユーザーの UPN が含まれるようになります。
+-    他のクライアントがこのアプリケーションに要求するアクセス トークンには、auth_time 要求が含まれるようになります
+-    SAML トークンに skypeId ディレクトリ スキーマ拡張機能が含まれるようになります (この例では、このアプリのアプリ ID は ab603c56068041afb2f6832e2a17e237 です)。 SAML トークンは Skype ID を `extension_skypeId` として公開します。
 
+**UI の構成：**
+
+1. [Azure ポータル](https://portal.azure.com)
+
+1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
+
+1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
+
+1. **[管理]** セクションで、 **[アプリの登録]** を選択します。
+
+1. 省略可能な要求を構成するアプリケーションを一覧から探し、クリックします。
+
+1. **[管理]** セクションで、 **[トークンの構成 (プレビュー)]** をクリックします。
+
+1. **[省略可能な要求の追加]** を選択し、[**ID** トークンの型] を選択して、要求の一覧から **[upn]** を選択し、 **[追加]** をクリックします。
+
+1. **[省略可能な要求の追加]** を選択し、**アクセス** トークンの型を選択します。次に、要求の一覧から **auth_time** を選択し、 **[追加]** をクリックします。
+
+1. [トークン構成の概要] 画面で、 **[upn]** の横にある鉛筆アイコンをクリックし、 **[外部で認証された]** の切り替えをクリックして、 **[保存]** をクリックします。
+
+1. **[省略可能な要求の追加]** を選択し、 **[SAML]** トークンの型を選択して、要求の一覧から **[extn. skypeID]** を選択し (skypeID という Azure AD ユーザーオブジェクトを作成した場合にのみ適用されます)、 **[の追加]** をクリックします。
+
+    [![UI を使用して省略可能な要求を構成する方法を示す](./media/active-directory-optional-claims/token-config-example.png)](./media/active-directory-optional-claims/token-config-example.png)
+
+**マニフェストの構成：**
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
-1. 左側から **[アプリの登録]** を選択します。
+1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から探し、クリックします。
-1. アプリケーションのページで **[マニフェスト]** をクリックして、インライン マニフェスト エディターを開きます。 
-1. このエディターを使用して、マニフェストを直接編集できます。 マニフェストは、[アプリケーション エンティティ](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)のスキーマに従っており、保存されるとマニフェストの書式が自動的に構成されます。 新しい要素が `OptionalClaims` プロパティに追加されます。
+1. **[Manage]** セクションで、 **[マニフェスト]** をクリックして、インライン マニフェスト エディターを開きます。
+1. このエディターを使用して、マニフェストを直接編集できます。 マニフェストは、 https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest) [アプリケーション エンティティ] のスキーマに従っています。保存されるとマニフェストの書式が自動的に構成されます。 新しい要素が `OptionalClaims` プロパティに追加されます。
 
     ```json
-      "optionalClaims": 
-      {
-            "idToken": [ 
-                  { 
+            "optionalClaims": {
+                "idToken": [ 
+                     { 
                         "name": "upn", 
                         "essential": false, 
                         "additionalProperties": [ "include_externally_authenticated_upn"]  
-                  }
-            ],
-            "accessToken": [ 
-                  {
+                     }
+                     ],
+                "accessToken": [ 
+                      {
                         "name": "auth_time", 
                         "essential": false
-                  }
-            ],
+                      }
+                     ],
             "saml2Token": [ 
                   { 
-                        "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
-                        "source": "user", 
-                        "essential": true
+                    "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
+                    "source": "user", 
+                    "essential": true
                   }
-            ]
-      }
+                 ]
+        ``` 
 
-    ```
 
-    この例では、アプリケーションが受け取ることができる各種類のトークンに異なる省略可能な要求が追加されました。 ID トークンには、完全な形式 (`<upn>_<homedomain>#EXT#@<resourcedomain>`) のフェデレーション ユーザーの UPN が含まれるようになります。 他のクライアントがこのアプリケーションに要求するアクセス トークンには、auth_time 要求が含まれるようになります。 SAML トークンに skypeId ディレクトリ スキーマ拡張機能が含まれるようになります (この例では、このアプリのアプリ ID は ab603c56068041afb2f6832e2a17e237 です)。 SAML トークンは Skype ID を `extension_skypeId` として公開します。
+1. When you're finished updating the manifest, click **Save** to save the manifest.
 
-1. マニフェストの更新が完了したら、 **[保存]** をクリックしてマニフェストを保存します。
+## Next steps
 
-## <a name="next-steps"></a>次の手順
+Learn more about the standard claims provided by Azure AD.
 
-Azure AD に用意されている標準の要求について詳しく学びます。
-
-- [ID トークン](id-tokens.md)
-- [アクセス トークン](access-tokens.md)
+- [ID tokens](id-tokens.md)
+- [Access tokens](access-tokens.md)

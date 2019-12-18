@@ -1,22 +1,24 @@
 ---
-title: Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
+title: Azure Blob Storage のデータをコピーし変換する
 description: BLOB ストレージとの間でデータをコピーする方法、および Data Factory を使用して BLOB ストレージのデータを変換する方法について説明します。
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/13/2019
-ms.author: jingwang
-ms.openlocfilehash: 45fb61ee624ae5ab159f097c233907be7ec35c98
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c6b6a403919c3545ec000a701ff31044343f73e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075638"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929947"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB ストレージのデータをコピーおよび変換する
+
 > [!div class="op_single_selector" title1="使用している Data Factory サービスのバージョンを選択してください:"]
 > * [Version 1](v1/data-factory-azure-blob-connector.md)
 > * [現在のバージョン](connector-azure-blob-storage.md)

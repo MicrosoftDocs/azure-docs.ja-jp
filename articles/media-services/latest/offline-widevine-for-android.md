@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 9e90951f810c5101a46c29570af8ad71b42be637
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.openlocfilehash: 1c1142f995376a8a640f33402294e20c925bbfbb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341028"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974157"
 ---
 # <a name="offline-widevine-streaming-for-android"></a>Android 用のオフラインの Widevine ストリーミング
 
@@ -208,6 +208,10 @@ Google の「[Widevine DRM Architecture Overview](https://storage.googleapis.com
 2.  エンド ユーザーが、すべてのコンテンツではなく、ビデオ品質レイヤーとオーディオ トラックを選んでダウンロードできるようにします。 オフライン モードでは、すべての品質レイヤーをダウンロードしても意味がありません。 これを実現する方法は 2 つあります。
     1.  クライアントによる制御: ダウンロードするビデオ品質レイヤーとオーディオ トラックを、プレーヤー アプリが自動的に選ぶか、またはユーザーが選びます。
     2.  サービスによる制御: Azure Media Services の動的マニフェスト機能を使って (グローバル) フィルターを作成し、HLS 再生リストまたは DASH MPD を、単一のビデオ品質レイヤーと選ばれたオーディオ トラックに制限することができます。 その後エンド ユーザーに提示されるダウンロード URL には、このフィルターが含まれます。
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
 
 ## <a name="summary"></a>まとめ
 

@@ -73,7 +73,7 @@ cqlsh.py YOUR-COSMOSDB-ACCOUNT-NAME.cassandra.cosmosdb.azure.com 10350 -u YOUR-C
 以下の記事では、HDinsight-Spark サービス、プロビジョニング、Azure Cosmos DB Cassandra API に接続するためのクラスター構成、および DDL 操作、DML 操作などに関するいくつかのサンプル ノートブックについて説明します。<BR>
 [Azure HDInsight-Spark から Azure Cosmos DB Cassandra API を使用する](cassandra-spark-hdinsight.md)
  
-### <a name="3--spark-environment-in-general"></a>手順 3.一般的な Spark 環境
+### <a name="3--spark-environment-in-general"></a>3.一般的な Spark 環境
 上記のセクションは Azure Spark ベースの PaaS サービスに固有の内容ですが、このセクションでは一般的な Spark 環境について説明します。  コネクタの依存関係、インポート、Spark セッション構成について、以下で詳しく説明します。 「次の手順」セクションでは、DDL 操作、DML 操作などのコード サンプルについて説明します。  
 
 #### <a name="connector-dependencies"></a>コネクタの依存関係:

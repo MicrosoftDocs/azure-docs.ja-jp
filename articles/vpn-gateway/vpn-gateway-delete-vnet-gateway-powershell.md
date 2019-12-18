@@ -79,7 +79,7 @@ get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$
 $Conns=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
 
-### <a name="3-delete-all-connections"></a>手順 3.すべての接続を削除します。
+### <a name="3-delete-all-connections"></a>3.すべての接続を削除します。
 
 各接続の削除の確認を求めるメッセージが表示される場合があります。
 
@@ -167,7 +167,7 @@ get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$
 get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
 ```
 
-### <a name="3-get-the-list-of-connections-in-both-directions"></a>手順 3.双方向の接続の一覧を取得します。
+### <a name="3-get-the-list-of-connections-in-both-directions"></a>3.双方向の接続の一覧を取得します。
 
 これは VNet 間の構成であるため、双方向の接続の一覧が必要です。
 
@@ -259,7 +259,7 @@ Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 
 この時点で、仮想ネットワーク ゲートウェイは削除されています。 次の手順を使用して、使用されなくなったリソースを削除できます。
 
-### <a name="3-delete-the-public-ip-address-resources"></a>手順 3.パブリック IP アドレス リソースを削除します。
+### <a name="3-delete-the-public-ip-address-resources"></a>3.パブリック IP アドレス リソースを削除します。
 
 仮想ネットワーク ゲートウェイの IP 構成を取得します。
 
@@ -304,7 +304,7 @@ Get-AzResourceGroup
 Find-AzResource -ResourceGroupNameContains RG1
 ```
 
-### <a name="3-verify-the-resources-in-the-list"></a>手順 3.一覧のリソースを確認します。
+### <a name="3-verify-the-resources-in-the-list"></a>3.一覧のリソースを確認します。
 
 一覧が返されたら、内容を調べて、リソース グループ内のすべてのリソースのほか、リソース グループ自体も削除してよいことを確認します。 リソース グループ内の一部のリソースを保持する場合は、この記事の前のセクションに記載した手順を使用して、ゲートウェイを削除します。
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 05/15/2019
+ms.date: 12/06/2019
 ms.author: aahi
-ms.openlocfilehash: e9ba5925ce562e53dbc415d66bbb529c32a725a7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 9f707dd6b93080e550b4f75e7c9c23139b8adf1d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327007"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930684"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>チュートリアル:Bing Image Search API と C# を使用して画像の詳細情報を抽出する
 
@@ -42,7 +42,7 @@ Bing Image Search API で使用できる[エンドポイント](https://docs.mic
 
 ## <a name="construct-an-image-details-search-request"></a>画像の詳細の検索要求を構築する
 
-以下は、要求の本文に画像データがある POST 要求を受け取る `/details` エンドポイントです。
+以下は、要求の本文に画像データがある POST 要求を受け取る `/details` エンドポイントです。 以下のグローバル エンドポイントを使用するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用できます。
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/images/details
 ```

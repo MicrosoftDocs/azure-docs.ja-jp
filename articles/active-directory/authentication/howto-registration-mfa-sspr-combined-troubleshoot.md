@@ -51,13 +51,13 @@ ms.locfileid: "74847390"
 
 | 症状 | トラブルシューティングの手順 |
 | --- | --- |
-| 予期していた方法が表示されません。 | 1.ユーザーに Azure AD 管理者ロールがあるかどうかを確認します。 ある場合は、SSPR 管理者ポリシーの違いを確認します。 <br> 2.ユーザーが中断される理由が、Multi-Factor Authentication 登録の適用か SSPR 登録の適用であるかを確認します。 どの方法が表示される必要があるかを判断するために、「統合された登録のモード」で[フローチャート](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes)を確認します。 <br> 手順 3.Multi-Factor Authentication または SSPR ポリシーがどのくらい最近に変更されたかを判定します。 最近、変更が加えられた場合、更新されたポリシーが反映されるまでしばらく時間がかかることがあります。|
+| 予期していた方法が表示されません。 | 1.ユーザーに Azure AD 管理者ロールがあるかどうかを確認します。 ある場合は、SSPR 管理者ポリシーの違いを確認します。 <br> 2.ユーザーが中断される理由が、Multi-Factor Authentication 登録の適用か SSPR 登録の適用であるかを確認します。 どの方法が表示される必要があるかを判断するために、「統合された登録のモード」で[フローチャート](../../active-directory/authentication/concept-registration-mfa-sspr-combined.md#combined-registration-modes)を確認します。 <br> 3.Multi-Factor Authentication または SSPR ポリシーがどのくらい最近に変更されたかを判定します。 最近、変更が加えられた場合、更新されたポリシーが反映されるまでしばらく時間がかかることがあります。|
 
 ## <a name="troubleshooting-manage-mode"></a>管理モードのトラブルシューティング
 
 | 症状 | トラブルシューティングの手順 |
 | --- | --- |
-| 特定の方法を追加する選択肢がありません。 | 1.その方法が Multi-Factor Authentication または SSPR に対して有効になっているかどうかを判定します。 <br> 2.その方法が有効になっている場合は、ポリシーを再度保存し、1 ～ 2 時間待ってから再テストします。 <br> 手順 3.方法が有効になっている場合は、ユーザーが設定を許可されている、その最大数の方法を既に設定していないことを確認します。|
+| 特定の方法を追加する選択肢がありません。 | 1.その方法が Multi-Factor Authentication または SSPR に対して有効になっているかどうかを判定します。 <br> 2.その方法が有効になっている場合は、ポリシーを再度保存し、1 ～ 2 時間待ってから再テストします。 <br> 3.方法が有効になっている場合は、ユーザーが設定を許可されている、その最大数の方法を既に設定していないことを確認します。|
 
 ## <a name="disable-combined-registration"></a>結合された登録を無効にする
 

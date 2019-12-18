@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB アカウントの操作
-description: この記事では、Azure Cosmos DB アカウントの作成および使用方法について説明します。
+description: この記事では、Azure Cosmos アカウントを作成し使用する方法について説明します。 Azure Cosmos アカウントの要素の階層も示している
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 57b2cffbf8085e6d393765190a6dfc2dead51625
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d29ed68b2945b2473b33aa88176e6f5d832a0fba
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757083"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872266"
 ---
 # <a name="work-with-azure-cosmos-account"></a>Azure Cosmos アカウントの使用
 

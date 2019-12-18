@@ -1,6 +1,6 @@
 ---
 title: Azure Cosmos DB でテーブル データのクエリを実行する方法
-description: Azure Cosmos DB でテーブル データのクエリを実行する方法を学習する
+description: Azure Cosmos DB Table API アカウントに格納されているデータを、OData フィルターと LINQ クエリを使用して照会する方法について説明します。
 author: wmengmsft
 ms.author: wmeng
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 161b424c5c89d34eaa55181c0d6ca0515b376168
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7dc2c00f273f327755dab52a4bda02840d911f96
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978760"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869920"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>チュートリアル:Table API を使って Azure Cosmos DB に対するクエリを実行する
 

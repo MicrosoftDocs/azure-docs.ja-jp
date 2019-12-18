@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6261de14f80f966718507d2d3506e55db9786df9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 46195a0a799f9edabcd8cd5a27e1b79752d03a45
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74785859"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964057"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
 
@@ -52,7 +52,10 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 ユーザーの状態は、管理者がユーザーをAzure MFA に登録し、ユーザーが登録プロセスを完了したかどうかを反映します。
 
-すべてのユーザーの状態は、 *[無効]* から始まります。 管理者がユーザーを Azure MFA に登録すると、ユーザーの状態は *[有効]* に変わります。 [有効] 状態のときにユーザーがサインインして登録プロセスを完了すると、ユーザーの状態は *[適用]* に変わります。  
+すべてのユーザーの状態は、 *[無効]* から始まります。 管理者がユーザーを Azure MFA に登録すると、ユーザーの状態は *[有効]* に変わります。 [有効] 状態のときにユーザーがサインインして登録プロセスを完了すると、ユーザーの状態は *[適用]* に変わります。
+
+> [!NOTE]
+> 電話や電子メールなどの登録の詳細が既にあるユーザー オブジェクトで MFA を再度有効にする場合には、管理者は Azure portal または PowerShell を使用して MFA を再登録する必要があります。 ユーザーが再登録していない場合、MFA の状態は *有効* から MFA 管理 UI で *強制* に移行されません。
 
 ### <a name="view-the-status-for-a-user"></a>ユーザーの状態を表示する
 
@@ -100,10 +103,15 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 > [!TIP]
 > 必ず **Connect-MsolService** を使用して接続してください
 
+   ```PowerShell
+   Connect-MsolService
+   ```
+
 この PowerShell スクリプトの例では、個々のユーザーに対して MFA を有効にします。
 
    ```PowerShell
    Import-Module MSOnline
+   Connect-MsolService
    $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
    $st.RelyingParty = "*"
    $st.State = "Enabled"
@@ -179,6 +187,8 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 > [!NOTE]
 > 最近、これに応じてこの動作と上記の PowerShell スクリプトを変更しました。 以前は、このスクリプトにより、MFA メソッドが保存され、MFA が無効化され、メソッドが復元されました。 無効化の既定の動作でメソッドが消去されないため、これは不要になりました。
+>
+> 電話や電子メールなどの登録の詳細が既にあるユーザー オブジェクトで MFA を再度有効にする場合には、管理者は Azure portal または PowerShell を使用して MFA を再登録する必要があります。 ユーザーが再登録していない場合、MFA の状態は *有効* から MFA 管理 UI で *強制* に移行されません。
 
 ## <a name="next-steps"></a>次の手順
 

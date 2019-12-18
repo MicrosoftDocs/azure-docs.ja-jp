@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/03/2019
+ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958630"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997073"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>スコープ外に出るユーザー アカウントの削除をスキップする
 
@@ -30,7 +30,7 @@ ms.locfileid: "71958630"
 * ***SkipOutOfScopeDeletions*** が 0 (false) に設定されている場合、スコープ外に出たアカウントはターゲットで無効になります
 * ***SkipOutOfScopeDeletions*** が 1 (true) に設定されている場合、スコープ外に出るアカウントはターゲットで無効になりません。このフラグは "*プロビジョニング アプリ*" レベルで設定され、Graph API を使用して構成できます。 
 
-この構成は *Workday to Active Directory User Provisioning* アプリで広く使用されているため、次の手順には Workday アプリケーションのスクリーンショットが含まれています。 ただし、これは他のプロビジョニング アプリでも使用できます。
+この構成は *Workday to Active Directory User Provisioning* アプリで広く使用されているため、次の手順には Workday アプリケーションのスクリーンショットが含まれています。 ただし、これは **他のすべてのアプリ**（ServiceNow、Salesforce、Dropboxなど）でも使用できます。
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>手順 1:プロビジョニング アプリのサービス プリンシパル ID (オブジェクト ID) を取得します
 

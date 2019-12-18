@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/9/2019
 ms.author: mlearned
-ms.openlocfilehash: c48bcab0a3d009b186832a6b728597f03788a7cd
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: f507619a1c8e80623a756b91f3fd6187283212f0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382989"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996733"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) のクラスターで複数のノード プールを作成および管理する
 
@@ -38,7 +38,7 @@ Azure CLI バージョン 2.0.76 以降がインストールされて構成さ�
 * ほとんどの操作と同様に、既存の Resource Manager テンプレートを使用してノード プールを追加したり、削除したりすることはできません。 代わりに、[別の Resource Manager テンプレートを使用](#manage-node-pools-using-a-resource-manager-template)して、AKS クラスター内のノード プールに変更を加えます。
 * ノード プールの名前は、小文字の英数字のみを含めることができ、小文字で始める必要があります。 Linux ノード プールの場合、長さは 1 から 12 文字である必要があります。Windows ノード プールの場合、長さは 1 から 6 文字である必要があります。
 * AKS クラスターは、最大で 8 つノード プールを持つことができます。
-* AKS クラスターは、この 8 つのノード プール全体で最大 400 のノードを持つことができます。
+* AKS クラスターには、これらの 8 つのノード プールにまたがる最大 800 個のノードを含めることができます。
 * すべてのノード プールは、同じサブネット内に存在する必要があります。
 
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成

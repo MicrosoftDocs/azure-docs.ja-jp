@@ -4,12 +4,12 @@ description: Azure Monitor を使用して、Azure Backup ワークロードを�
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554875"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894064"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Azure Monitor を使用した大規模な監視
 
@@ -51,7 +51,8 @@ Recovery Services コンテナーなどの Azure Resource Manager リソース�
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Log Analytics を使用して Azure Backup データを表示する
 
-テンプレートがデプロイされると、Azure Backup の監視およびレポートのためのソリューションがワークスペースの概要の領域に表示されます。 概要に移動するには、次のいずれかのパスに従います。
+> [!IMPORTANT]
+> LA レポートテンプレートでは、現在、AzureDiagnostics モードでのレガシ イベント AzureBackupReport からのデータがサポートされています。 このテンプレートを使用するには、[Azure Diagnostics Mode でコンテナ―の診断設定を構成](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event) する必要があります。 
 
 - **Azure Monitor**: **[分析情報]** セクションで **[その他]** を選択し、関連するワークスペースを選択します。
 - **Log Analytics ワークスペース**: 関連するワークスペースを選択し、 **[全般]** の **[ワークスペースの概要]** を選択します。

@@ -1,6 +1,7 @@
 ---
-title: 他の Web API を呼び出す Web API (アプリのトークンの取得) - Microsoft ID プラットフォーム
-description: 他の Web API を呼び出す Web APIを構築する方法について説明します (アプリのトークンの取得)
+title: Web API を呼び出す Web API のトークンを取得する | Azure
+titleSuffix: Microsoft identity platform
+description: アプリのトークンを取得する必要がある Web API を呼び出す Web API を構築する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +16,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986e2e0f8a481d61dc870af2548290658b44d2d3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 276ff1e5e9f709aa5b38d1efa4055dfe3baf3cc5
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65231100"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919785"
 ---
 # <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web API を呼び出す Web API - アプリのトークンの取得
 

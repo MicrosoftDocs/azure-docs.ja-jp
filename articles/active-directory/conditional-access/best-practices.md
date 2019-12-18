@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175769"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963938"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
@@ -45,17 +45,18 @@ ms.locfileid: "73175769"
 
 ### <a name="how-are-conditional-access-policies-applied"></a>条件付きアクセス ポリシーはどのように適用されますか。
 
-クラウド アプリにアクセスするときに、複数の条件付きアクセス ポリシーが適用される場合があります。 この場合、適用されるすべてのポリシーを満たす必要があります。 たとえば、あるポリシーで MFA が要求されていて、別のポリシーで準拠するデバイスが要求されている場合は、MFA を経由し、準拠しているデバイスを使用する必要があります。 
+クラウド アプリにアクセスするときに、複数の条件付きアクセス ポリシーが適用される場合があります。 この場合、適用されるすべてのポリシーを満たす必要があります。 たとえば、あるポリシーで多要素認証（MFA）が必要で、別のポリシーで準拠デバイスが必要な場合、MFAを完了し、準拠デバイスを使用する必要があります。 
 
 すべてのポリシーは 2 つのフェーズで適用されます。
 
-- **第 1** のフェーズでは、すべてのポリシーが評価され、満たされていないすべてのアクセス制御が収集されます。 
-
-- **第 2** のフェーズでは、満たしていない要件を満たすように求められます。 いずれかのポリシーによってアクセスがブロックされる場合、ユーザーはブロックされ、他のポリシー制御を満たすよう求めるメッセージは表示されません。 いずれのポリシーによってもブロックされない場合は、次の順序で他のポリシー制御を満たすように求められます。
-
-   ![順序](./media/best-practices/06.png)
-    
-   外部の MFA プロバイダー、次に使用条件が来ます。
+- フェーズ 1: 
+   - 詳細なコレクション:詳細を収集して、すでに満たされているポリシーを特定します。
+   - このフェーズでは、デバイスのコンプライアンスが条件付きアクセスポリシー部分である場合、ユーザーに証明書がプロンプト表示される場合があります。 このプロンプトは、デバイスのオペレーティングシステムが Windows 10 ではない場合に、ブラウザー アプリで発生する可能性があります。
+   - ポリシー評価のフェーズ 1 は、すべての有効になっているポリシーと [レポート専用モード](concept-conditional-access-report-only.md) のポリシーで発生します。
+- フェーズ 2:
+   - 強化：フェーズ 1 で収集された詳細を考慮して、満たされていない追加の要件を満たすようにユーザーに要求します。
+   - セッションに結果を適用します。 
+   - ポリシー評価のフェーズ 2 は、すべての有効になっているポリシーで発生します。
 
 ### <a name="how-are-assignments-evaluated"></a>割り当てはどのように評価されますか。
 

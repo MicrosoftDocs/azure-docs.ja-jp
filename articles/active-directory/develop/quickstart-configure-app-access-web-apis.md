@@ -1,27 +1,24 @@
 ---
-title: Web API にアクセスするようにアプリケーションを構成する - Microsoft ID プラットフォーム
+title: Web API にアクセスするようにアプリを構成する - Microsoft ID プラットフォーム | Azure
 description: リダイレクト URI、資格情報、または Web API にアクセスするためのアクセス許可を含めるように、Microsoft ID プラットフォームに登録されたアプリケーションを構成する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/07/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ec5fe8e93c9032a07c1defe5b28753e0f520a320
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106613"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963335"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>クイック スタート:Web API にアクセスするためのクライアント アプリケーションの構成
 

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028451"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900796"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -94,7 +94,7 @@ Azure AD Privileged Identity Management を有効にした後で:
 
 2. Privileged Identity Management を使用するテナントを選択するには、Azure Portal の右上隅でユーザー名を選択します。
 
-3. **[すべてのサービス]** を選択し、**Azure AD Privileged Identity Management** の一覧をフィルターします。
+3. Azure portal メニューの **[すべてのサービス]** を選択し、**Azure AD Privileged Identity Management** の一覧をフィルター処理します。
 
 4. **[すべてのサービス]** の一覧から Privileged Identity Management を開き、ダッシュ ボードにピン留めします。
 
@@ -261,7 +261,7 @@ Azure Active Directory の場合は、[Azure AD Privileged Identity Management](
 
 #### <a name="determine-exposure-to-password-based-sign-in-protocols-if-using-exchange-online"></a>パスワードベースのサインイン プロトコルへの露出を確認する (Exchange Online を使用している場合)
 
-以前は、プロトコルでは、ユーザー名/パスワードの組み合わせはデバイス、電子メール アカウント、携帯電話などに埋め込まれていると見なされていました。 しかし現在は、クラウドにサイバー攻撃のリスクがあるため、資格情報が侵害された場合に組織に致命的な影響を与える可能性のあるユーザーをすべて特定し、強力な認証要件と条件付きアクセスを実装することで、それらのユーザーがユーザー名/パスワードを介して自分の電子メールにサインインできないようにすることをお勧めします。 [条件付きアクセス ポリシーを使用してレガシ認証をブロック](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)できます。 Exchnage Online での[基本認証の無効化](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)の詳細をご確認ください。 
+以前は、プロトコルでは、ユーザー名/パスワードの組み合わせはデバイス、電子メール アカウント、携帯電話などに埋め込まれていると見なされていました。 しかし現在は、クラウドにサイバー攻撃のリスクがあるため、資格情報が侵害された場合に組織に致命的な影響を与える可能性のあるユーザーをすべて特定し、強力な認証要件と条件付きアクセスを実装することで、それらのユーザーがユーザー名/パスワードを介して自分の電子メールにサインインできないようにすることをお勧めします。 [条件付きアクセス ポリシーを使用してレガシ認証をブロック](https://docs.microsoft.com/azure/active-directory/conditional-access/block-legacy-authentication)できます。 Exchange Online で[基本認証の無効化](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online)の詳細をご確認ください。 
 
 #### <a name="complete-a-roles-review-assessment-for-office-365-roles-if-using-office-365"></a>Office 365 ロールのロール レビュー アセスメントを実行する (Office 365 を使用している場合)
 

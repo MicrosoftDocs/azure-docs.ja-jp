@@ -1,29 +1,25 @@
 ---
-title: Microsoft Authentication Library (MSAL) アプリケーションでのログ記録
+title: MSAL アプリでのログ記録 | Azure
 titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library (MSAL) アプリケーションのログ記録について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5960389389e4b75794a7334c0bff12ce3ac0f170
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 9a71093ee05e032a5df89bb0560b6daa82e2fbf2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452463"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74916147"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL アプリケーションでのログ記録
 
@@ -36,7 +32,7 @@ MSAL では、いくつかのレベルのログ記録の詳細が提供されま
 - エラー:問題の発生し、エラーが生成されたことを示します。 問題のデバッグと特定に使用します。
 - 警告:必ずしもエラーや障害があったわけではありませんが、診断や問題の特定の対象となっています。
 - 情報:MSAL は、情報目的でイベントをログ記録し、必ずしもデバッグ目的ではありません。
-- 詳細:[既定]。 MSAL では、ライブラリの動作の詳細がログに記録されます。
+- 詳細:既定値。 MSAL では、ライブラリの動作の詳細がログに記録されます。
 
 ## <a name="personal-and-organizational-data"></a>個人と組織のデータ
 

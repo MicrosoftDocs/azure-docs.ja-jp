@@ -8,15 +8,15 @@ ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
 ms.service: batch
 ms.topic: article
 ms.workload: na
-ms.date: 03/19/2018
+ms.date: 12/05/2019
 ms.author: markscu
 ms.custom: seodec18
-ms.openlocfilehash: 33d448bc95f4cb12f5a06232cbab168a43d522c1
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 39d332a6d069a4e9fac8545f4d08a986c8984c9b
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095193"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926290"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch で優先順位の低い VM を使用する
 
@@ -27,6 +27,14 @@ Azure Batch には Batch ワークロードのコストを減らす優先順位�
 優先順位の低い VM を使用するデメリットは、利用可能な容量によっては、これらの VM が割り当てられなかったりいつでも割り込まれたりする可能性がある点です。 このため、優先順位の低い VM は特定の種類のワークロードに最適です。 優先順位の低い VM は、ジョブの完了時間に柔軟性があり、作業が多数の VM に分散されているバッチおよび非同期処理ワークロードに使用します。
  
 優先度の低い VM は、専用の VM と比較して大幅な割引価格で提供されます。 料金について詳しくは、「[Batch の価格](https://azure.microsoft.com/pricing/details/batch/)」をご覧ください。
+
+> [!NOTE]
+> [単一インスタンス VM](https://docs.microsoft.com/azure/virtual-machines/linux/spot-vms) と [VM スケールセット](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)に[スポット VM](https://azure.microsoft.com/pricing/spot/) を使用できるようになりました。 スポット VM は優先順位の低い VM の進化版ですが、その価格の差はさまざまで、オプションの最大価格をスポット VM の割り当て時に設定することもできます。
+>
+> Azure Batch プールでは、2020 の第 1 四半期に、[Batch API とツール](https://docs.microsoft.com/azure/batch/batch-apis-tools)の新しいバージョンと共にスポット VM のサポートが開始されます。 優先順位の低い VM は、API とツールの現バージョンを使用して、少なくとも 12 か月間引き続きサポートされます。これにより、スポット VM への移行に十分な時間をかけられます。 
+>
+> スポット VM は、[クラウド サービス構成](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration)プールではサポートされません。 スポット VM を使用するには、クラウド サービス プールを[仮想マシン構成](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration)プールに移行する必要があります。
+
 
 ## <a name="use-cases-for-low-priority-vms"></a>優先順位の低い VM の使用事例
 
@@ -183,3 +191,4 @@ Azure Portal でメトリックを表示するには、次の手順を実行し�
 
 * Batch を使用するための準備を担当する方は、「 [開発者向け Batch 機能の概要](batch-api-basics.md)」で重要な情報をご確認ください。 この記事には、Batch アプリケーションを構築するときに使用できる多数の API 機能、プール、ノード、ジョブ、タスクなど、Batch サービスのリソースに関する詳しい情報が記載されています。
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
+* 優先順位の低い VM からスポット VM への移行の計画を開始しましょう。 優先順位の低い VM を**クラウド サービス構成**プールと共に使用する場合は、**仮想マシンの構成**プールに移動することを計画してください。

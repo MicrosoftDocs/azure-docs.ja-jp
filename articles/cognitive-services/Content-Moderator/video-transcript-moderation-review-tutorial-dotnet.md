@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: e1c3d3d95261b959a7540aab73faf12f92801d4c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 2fbd4270221cb23a4f99a0f8155bb1de76472f31
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564283"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976980"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>チュートリアル:ビデオとトランスクリプトのモデレーション
 
-このチュートリアルでは、マシン支援型のモデレーションと人間参加型レビューの作成を含む完全なビデオとトランスクリプトのモデレーション ソリューションを構築する方法を学習します。
+このチュートリアルでは、マシン支援型のモデレーションと人間によるレビューとを統合した完全なビデオとトランスクリプトのモデレーション ソリューションを構築する方法を学習します。
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -44,7 +44,7 @@ ms.locfileid: "68564283"
 
 `App.config` ファイルを編集して、Active Directory テナントの名前、サービス エンドポイント、およびサブスクリプション キー (`#####` で示されます) を追加します。 次の情報が必要です。
 
-|キー|説明|
+|Key|説明|
 |-|-|
 |`AzureMediaServiceRestApiEndpoint`|Azure Media Services (AMS) API のエンドポイント|
 |`ClientSecret`|Azure Media Services のサブスクリプション キー|
@@ -60,7 +60,7 @@ ms.locfileid: "68564283"
 
 ### <a name="methods-of-program-class"></a>Program クラスのメソッド
 
-|Method|説明|
+|方法|説明|
 |-|-|
 |`Main`|コマンド ラインを解析し、ユーザー入力を収集し、処理を開始します。|
 |`ProcessVideo`|圧縮、アップロード、モデレーションを行って、ビデオ レビューを作成します。|

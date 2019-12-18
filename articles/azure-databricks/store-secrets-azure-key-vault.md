@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: f1472d7043a092f35e10fdedbf4c52740e87c51c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706141"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849277"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>チュートリアル:Azure Key Vault を使用して Azure Databricks から Azure Blob Storage にアクセスする
 
@@ -77,7 +77,7 @@ ms.locfileid: "74706141"
    |プロパティ|Description|
    |--------|-----------|
    |Name|自分のキー コンテナーの一意の名前。|
-   |Subscription|サブスクリプションを選択します。|
+   |サブスクリプション|サブスクリプションを選択します。|
    |Resource group|リソース グループを選択するか、新しく作成します。|
    |Location|場所を選択します。|
 
@@ -114,7 +114,7 @@ ms.locfileid: "74706141"
    |プロパティ  |説明  |
    |---------|---------|
    |ワークスペース名     | Databricks ワークスペースの名前を指定します        |
-   |Subscription     | ドロップダウンから Azure サブスクリプションを選択します。        |
+   |サブスクリプション     | ドロップダウンから Azure サブスクリプションを選択します。        |
    |Resource group     | 自分のキー コンテナーが含まれているリソース グループと同じリソース グループを選択します。 |
    |Location     | 自分の Azure キー コンテナーと同じ場所を選択します。 使用可能なすべてのリージョンについては、[リージョン別の利用可能な Azure サービス](https://azure.microsoft.com/regions/services/)に関するページを参照してください。        |
    |価格レベル     |  **Standard** と **Premium** のいずれかを選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。       |
@@ -129,7 +129,8 @@ ms.locfileid: "74706141"
 
 4. 自分の Azure Databricks ワークスペースが別のウィンドウで開かれたら、URL の末尾に **#secrets/createScope** を追加します。 URL の形式は次のとおりです。 
 
-   **https://<\場所>.azuredatabricks.net/#secrets/createScope**。
+   **https://<\location>.azuredatabricks.net/?o=<\orgID>#secrets/createScope**。
+   
 
 5. スコープ名を入力し、前の手順で保存した Azure キー コンテナーの DNS 名とリソース ID を入力します。 このチュートリアルで後から使用できるように、スコープ名をテキスト エディターに保存します。 そのうえで **[Create]\(作成\)** を選択します。
 

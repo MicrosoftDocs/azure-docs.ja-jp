@@ -11,21 +11,21 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 207e8def168227cb419d25c8e98aa15c09c72b2c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671559"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851606"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Azure Machine Learning を使用して大規模なデータでバッチ推論を実行する
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この攻略ガイドでは、Azure Machine Learning を使用して、大量のデータで非同期的および並列的に推論を取得する方法について説明します。 ここで説明するバッチ推論機能は、パブリック プレビュー段階にあります。 この機能では、パフォーマンスおよびスループットに優れた方法で推論が生成され、データが処理されます。 また、すぐに使用できる非同期機能が用意されています。
+Azure Machine Learning を使用して、大量のデータで非同期的および並列的に推論を取得する方法について説明します。 ここで説明するバッチ推論機能は、パブリック プレビュー段階にあります。 この機能では、パフォーマンスおよびスループットに優れた方法で推論が生成され、データが処理されます。 また、すぐに使用できる非同期機能が用意されています。
 
 バッチ推論では、テラバイト規模の運用データで、マシンの大規模クラスターに簡単にオフライン推論をスケーリングできるため、生産性が向上し、コストが最適化されます。
 
-この攻略ガイドでは、以下のタスクについて学習します。
+この記事では、次のタスクについて説明します。
 
 > * リモート コンピューティング リソースを作成する。
 > * カスタム推論スクリプトを記述する。
@@ -189,7 +189,7 @@ model = Model.register(model_path="models/",
 スクリプトには 2 つの関数が "*必ず必要*" です。
 - `init()`:この関数は、後で推論するためのコストのかかる準備、または一般的な準備を行うときに使用します。 たとえば、これを使って、モデルをグローバル オブジェクトに読み込みます。
 -  `run(mini_batch)`:この関数は、`mini_batch` インスタンスごとに実行されます。
-    -  `mini_batch`:バッチ推論は run メソッドを呼び出して、そのメソッドに、リストまたは Pandas データフレームのいずれかを引数として渡します。 min_batch のエントリはそれぞれ、filepath (入力が FileDataset の場合) または Pandas データフレーム (入力が TabularDataset の場合) になります。
+    -  `mini_batch`:バッチ推論は run メソッドを呼び出して、そのメソッドに、リストまたは Pandas データフレームのいずれかを引数として渡します。 min_batch のエントリはそれぞれ、ファイル パス (入力が FileDataset の場合) または Pandas データフレーム (入力が TabularDataset の場合) になります。
     -  `response`: run() メソッドは、Pandas データフレームまたは配列を返します。 append_row output_action の場合、これらの返される要素は、共通の出力ファイルに追加されます。 summary_only の場合、要素のコンテンツは無視されます。 すべての出力アクションについて、返される出力要素はそれぞれ、入力ミニバッチ内で成功した 1 つの入力要素の推論を示します。 ユーザーは、入力を推論にマップするのに十分なデータが、推論の結果に含まれていることを確認する必要があります。 推論の出力は出力ファイルに書き込まれますが、必ずしも順序どおりであるとは限りません。ユーザーは、出力で何らかのキーを使って、それを入力にマップする必要があります。
 
 ```python
@@ -237,6 +237,15 @@ def run(mini_batch):
     return resultList
 ```
 
+### <a name="how-to-access-other-files-in-init-or-run-functions"></a>`init()` 関数または `run()` 関数で他のファイルにアクセスする方法
+
+推論スクリプトと同じディレクトリに他のファイルまたはフォルダーがある場合、現在の作業ディレクトリを特定することでそれらを参照することができます。
+
+```python
+script_dir = os.path.realpath(os.path.join(__file__, '..',))
+file_path = os.path.join(script_dir, "<file_name>")
+```
+
 ## <a name="build-and-run-the-batch-inference-pipeline"></a>バッチ推論パイプラインを構築して実行する
 
 パイプラインの構築に必要なものはすべて揃いました。
@@ -265,7 +274,7 @@ batch_env.spark.precache_packages = False
 - `entry_script`:複数のノードで並列で実行されるローカル ファイル パスとしてのユーザー スクリプト。 `source_directly` が存在する場合は、相対パスを使用します。 それ以外の場合は、マシンでアクセス可能な任意のパスを使用します。
 - `mini_batch_size`:1 つの `run()` 呼び出しに渡されたミニバッチのサイズ (省略可能。既定値は `1` です)。
     - `FileDataset` の場合、これはファイル数を示し、最小値は `1` です。 複数のファイルを 1 つのミニバッチに結合できます。
-    - `TabularDataset` の場合は、データのサイズです。 サンプル値は、`1024`、`1024KB`、`10MB`、および `1GB` です。 推奨値は `1MB` です。 `TabularDataset` のミニバッチは、ファイル境界を超えないことに注意してください。 たとえば、さまざまなサイズの .csv ファイルがある場合、ファイルの最小サイズは 100 KB で、最大サイズは 10 MB です。 `mini_batch_size = 1MB` を設定すると、1 MB より小さいファイルは 1 つのミニバッチとして処理されます。 1 MB を超えるファイルは、複数のミニバッチに分割されます。
+    - `TabularDataset` の場合は、データのサイズです。 サンプル値は、`1024`、`1024KB`、`10MB`、および `1GB` です。 推奨値は `1MB` です。 `TabularDataset` のミニバッチは、ファイル境界を超えません。 たとえば、さまざまなサイズの .csv ファイルがある場合、ファイルの最小サイズは 100 KB で、最大サイズは 10 MB です。 `mini_batch_size = 1MB` を設定すると、1 MB より小さいファイルは 1 つのミニバッチとして処理されます。 1 MB を超えるファイルは、複数のミニバッチに分割されます。
 - `error_threshold`:処理中に無視する必要のあるエラーの数。`TabularDataset` の場合はレコード エラー数、`FileDataset` の場合はファイル エラー数を示します。 入力全体に対するエラーの数がこの値を超えると、ジョブは停止します。 エラーのしきい値は入力全体を対象としています。`run()` メソッドに送信された個々のミニバッチを対象にしているものではありません。 範囲は `[-1, int.max]` です。 `-1` 部分は、処理中にすべてのエラーを無視することを示します。
 - `output_action`:次のいずれかの値が、出力がどのように編成されるかを示しています。
     - `summary_only`:ユーザー スクリプトによって出力が格納されます。 `ParallelRunStep` では、エラーしきい値の計算にのみ出力が使用されます。
@@ -348,6 +357,8 @@ pipeline_run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>次の手順
 
 エンド ツー エンドで動作するこのプロセスを確認するには、[バッチ推論のノートブック](https://aka.ms/batch-inference-notebooks)をお試しください。 
+
+ParallelRunStep のデバッグとトラブルシューティングのガイダンスについては、[攻略ガイド](how-to-debug-batch-predictions.md)を参照してください。
 
 パイプラインのデバッグとトラブルシューティングのガイダンスについては、[攻略ガイド](how-to-debug-pipelines.md)をご覧ください。
 

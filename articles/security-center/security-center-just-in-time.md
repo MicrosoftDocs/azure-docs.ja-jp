@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fb092a3c6b473680480c3bba0ad6f437176833de
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576401"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997192"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-In-Time を使用した仮想マシン アクセスの管理
 
@@ -176,10 +176,10 @@ VM の既存の Just-In-Time ポリシーを編集するには:
 
 VM への Just-In-Time アクセスのロールアウトを容易にするには、VM 内からの直接的な Just-In-Time アクセスのみを許可するように VM を設定できます。
 
-1. Azure portal で、 **[仮想マシン]** を選択します。
-2. Just-In-Time アクセスに制限する仮想マシンをクリックします。
-3. メニューで **[構成]** をクリックします。
-4. **[Just-In-Time アクセス]** で **[Just-In-Time ポリシーを有効にする]** をクリックします。 
+1. [Azure portal](https://ms.portal.azure.com) から、 **[仮想マシン]** を検索して選択します。 
+2. Just-In-Time アクセスに制限する仮想マシンを選択します。
+3. メニューで **[構成]** を選択します。
+4. **[Just-In-Time アクセス]** で、 **[Just-In-Time ポリシーを有効にする]** を選択します。 
 
 これにより、以下の設定を使用する VM の Just-In-Time アクセスが有効になります。
 

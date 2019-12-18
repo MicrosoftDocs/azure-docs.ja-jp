@@ -1,6 +1,6 @@
 ---
-title: データの変更に対応するように Azure ストレージ テーブルを設計する | Microsoft Docs
-description: Azure テーブル ストレージのデータ変更に対応するようにテーブルを設計します。
+title: データの変更に対応するように Azure Table Storage を設計する | Microsoft Docs
+description: Azure Table Storage のデータ変更に対応するようにテーブルを設計します。
 services: storage
 author: MarkMcGeeAtAquent
 ms.service: storage

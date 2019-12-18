@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 95ea1718682340967d5d39fe5f550f2638273796
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743707"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961541"
 ---
 # <a name="what-is-the-azure-face-api"></a>Azure Face API とは
 
@@ -45,7 +45,7 @@ Find Similar API では、ターゲットの顔と候補となる一連の顔を
 
 ![笑顔の女性](./Images/FaceFindSimilar.QueryFace.jpg)
 
-そして候補となる顔は次のとおりです。
+そして候補となる顔の画像は次のとおりです。
 
 ![笑っている人々の 5 つの画像。 画像 a と画像 b は同一人物を示しています。](./Images/FaceFindSimilar.Candidates.jpg)
 

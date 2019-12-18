@@ -271,7 +271,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 - VNet 名は **VirtualNetworkSite name =** と示されています
 - サイト名は **LocalNetworkSite name=** と示されています
 
-### <a name="3-create-the-connection"></a>手順 3.接続の作成
+### <a name="3-create-the-connection"></a>3.接続の作成
 
 共有キーを設定し、クラシック VNet から Resource Manager VNet への接続を作成します。 ポータルを使用して共有キーを設定することはできません。 次の手順を実行するときは、クラシック バージョンの PowerShell コマンドレットを使用してログインします。 それには、**Add-azureaccount** を使用します。 それ以外の場合は、"-AzureVNetGatewayKey" を設定できません。
 

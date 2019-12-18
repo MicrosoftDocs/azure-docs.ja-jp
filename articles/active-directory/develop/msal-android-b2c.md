@@ -1,29 +1,25 @@
 ---
-title: Azure AD B2C (Android 用 Microsoft Authentication Library)
+title: Azure AD B2C (MSAL Android) | Azure
 titleSuffix: Microsoft identity platform
 description: Android 用 Microsoft Authentication Library (MSAL.Android) で Azure AD B2C を使用する場合の固有の考慮事項について説明します
 services: active-directory
-documentationcenter: dev-center-name
 author: brianmel
-manager: omkrishn
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5061f1ab341e5872dfa82c9f5c5b133ae40bdf
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 98a31ea2daffba19242e73362af5a44e3a392342
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803239"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917116"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Android 用 MSAL と B2C を一緒に使用する
 

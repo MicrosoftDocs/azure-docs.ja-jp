@@ -66,7 +66,7 @@ ms.locfileid: "74813161"
      > [!IMPORTANT]
      > ピアリングの場所は、Microsoft とピアリングしている[物理的な場所](expressroute-locations.md)を示します。 この場所は "Location" プロパティに**リンクされていません**。それは、Azure Network Resource Provider が配置されている地理的な場所を参照します。 それらは関連付けられていませんが、回路のピアリングの場所と地理的に近い場所にある Network Resource Provider を選択することをお勧めします。
 
-### <a name="3-view-the-circuits-and-properties"></a>手順 3.回線とプロパティを表示する
+### <a name="3-view-the-circuits-and-properties"></a>3.回線とプロパティを表示する
 
 **すべての回線を表示する**
 

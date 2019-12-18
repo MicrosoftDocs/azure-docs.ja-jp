@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1cba2c4572b2f898f631aefbbf316fae1195ac
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596357"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900372"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>デバイス ID とデスクトップ仮想化
 
@@ -44,10 +44,11 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 | デバイス ID の種類 | ID インフラストラクチャ | Windows デバイス | VDI プラットフォームのバージョン | サポートされています |
 | --- | --- | --- | --- | --- |
 | ハイブリッド Azure AD 参加済み | フェデレーション* | 最新の Windows*** とダウンレベルの Windows**** | 永続的 | はい |
-|   |   |   | 非永続的 | はい |
-|   | マネージド** | 最新の Windows とダウンレベルの Windows | 永続的 | はい |
-|   |   | ダウンレベルの Windows | 非永続的 | はい |
 |   |   | 最新の Windows | 非永続的 | いいえ |
+|   |   | ダウンレベルの Windows | 非永続的 | はい |
+|   | マネージド** | 最新の Windows とダウンレベルの Windows | 永続的 | はい |
+|   |   | 最新の Windows | 非永続的 | いいえ |
+|   |   | ダウンレベルの Windows | 非永続的 | はい |
 | Azure AD 参加済み | フェデレーション | 最新の Windows | 永続的 | いいえ |
 |   |   |   | 非永続的 | いいえ |
 |   | マネージド | 最新の Windows | 永続的 | いいえ |
@@ -79,8 +80,7 @@ VDI 環境の Azure AD でデバイス ID を構成する前に、サポート�
 非永続的 VDI を展開する場合、IT 管理者は Azure AD での古いデバイスの管理に細心の注意を払う必要があります。 Microsoft は、IT 管理者が以下のガイダンスを実施することをお勧めします。 そうしないと、非永続的 VDI プラットフォームから登録された古い Hybrid Azure AD 参加済みデバイスがディレクトリに多数存在することになります。
 
 - デスクトップが VDI ベースであることを示す、コンピューターの表示名のプレフィックスを作成して使用します。
-- ログオフ スクリプトの一部として、次のコマンドを実装します。 これらのコマンドで、デバイスを削除するための Azure AD への最善の呼び出しがトリガーされます。
-   - 最新の Windows デバイスの場合 - dsregcmd.exe /leave
+- 次のコマンドを、ログオフ スクリプトの一部として実行します。 このコマンドは、Azure AD 呼び出しをベスト エフォートでトリガーし、デバイスを削除します。
    - ダウンレベルの Windows デバイスの場合 - autoworkplace.exe /leave
 - [古いデバイスの管理](manage-stale-devices.md)のプロセスを定義して実装します。
    - 非永続的 Hybrid Azure AD 参加済みデバイスを識別する方法を用意したら、これらのデバイスのクリーンアップをより積極的に実行して、ディレクトリが多くの古いデバイスで使用されないようにすることができます。

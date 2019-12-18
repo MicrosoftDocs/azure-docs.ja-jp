@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186464"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901169"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL データベースの管理およびスケーリング
 
@@ -155,7 +155,7 @@ Single Database のコンピューティング サイズを使用した場合と
 
 Azure Portal でエラスティック プールを作成できる方法には次の 2 つがあります。
 
-1. Azure portal の左側のメニューで **[Azure SQL]** を選択します。 [Azure SQL] が一覧にない場合は、 **[すべてのサービス]** を選択し、検索ボックスに「*Azure SQL*」と入力します。
+1. [Azure portal](https://portal.azure.com) に移動してエラスティック プールを作成します。 **Azure SQL** を検索して選択します。
 2. **[+ 追加]** を選択して、 **[Select SQL deployment option]\(SQL デプロイ オプションの選択\)** ページを開きます。 **[データベース]** タイルで **[詳細の表示]** を選択して、さまざまなエラスティック プールに関する追加情報を表示できます。
 3. **[データベース]** タイルで、 **[リソースの種類]** ドロップダウンから **[エラスティック プール]** を選択した後、 **[作成]** を選択します。
 

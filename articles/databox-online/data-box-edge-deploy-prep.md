@@ -38,7 +38,7 @@ Edge をデプロイするには、以下の順序どおりにチュートリア
 | --- | --- | --- | 
 | 1. |**[Edge のために Azure portal を準備する](data-box-edge-deploy-prep.md)** |Edge 物理デバイスをインストールする前に、Edge リソースを作成して構成します。 |
 | 2. |**[Edge をインストールする](data-box-edge-deploy-install.md)**|Edge 物理デバイスの開梱、ラックへの取り付け、ケーブル接続を行います。  |
-| 手順 3. |**[Edge を接続、設定、アクティブ化する](data-box-edge-deploy-connect-setup-activate.md)** |ローカル Web UI に接続して、デバイス設定を完了し、デバイスをアクティブ化します。 このデバイスは、SMB または NFS 共有を設定する準備ができています。  |
+| 3. |**[Edge を接続、設定、アクティブ化する](data-box-edge-deploy-connect-setup-activate.md)** |ローカル Web UI に接続して、デバイス設定を完了し、デバイスをアクティブ化します。 このデバイスは、SMB または NFS 共有を設定する準備ができています。  |
 | 4. |**[Edge を使用してデータを転送する](data-box-edge-deploy-add-shares.md)** |共有を追加し、SMB または NFS を介して共有に接続します。 |
 | 5. |**[Edge を使用してデータを変換する](data-box-edge-deploy-configure-compute.md)** |データを Azure に移動するときにそれを変換するように、デバイス上のコンピューティング モジュールを構成します。 |
 

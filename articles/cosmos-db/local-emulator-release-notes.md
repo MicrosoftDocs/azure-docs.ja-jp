@@ -1,17 +1,17 @@
 ---
 title: Azure Cosmos Emulator ダウンロードとリリース ノート
-description: Azure Cosmos Emulator リリース ノートをダウンロードしてお読みください。
+description: さまざまなバージョンの Azure Cosmos エミュレーターのリリース ノートとダウンロード情報を入手します。
 ms.service: cosmos-db
 ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 06/20/2019
-ms.openlocfilehash: cda3b0db1a4f1b098d8ea57887a047fcdef04243
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: eb73551c4226df8bc20428558720c0ebbfff96d9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286495"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873592"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator - リリース ノートとダウンロード情報
 

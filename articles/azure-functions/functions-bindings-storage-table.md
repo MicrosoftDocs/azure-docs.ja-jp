@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 77f95cf02b5216f1946283143b828f915b351abc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1308463694754231aa6d770bf716fd3def219981
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230993"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925324"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Table Storage のバインド
 
@@ -26,7 +26,7 @@ Table ストレージ バインディングは [Microsoft.Azure.WebJobs](https:/
 
 [!INCLUDE [functions-storage-sdk-version](../../includes/functions-storage-sdk-version.md)]
 
-## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
 Table ストレージ バインディングは [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Tables) GitHub リポジトリにあります。
 
@@ -105,7 +105,7 @@ public class TableStorage
 
 ### <a name="input---c-example---cloudtable"></a>入力 - C# 例 - CloudTable
 
-`IQueryable` は [Functions v2 ランタイム](functions-versions.md)ではサポートされていません。 代わりに、Azure Storage SDK で `CloudTable` メソッド パラメーターを使用してテーブルを読み取ります。 Azure Functions ログ テーブルにクエリを実行する 2.x 関数の例:
+`IQueryable` は [Functions v2 ランタイム](functions-versions.md)ではサポートされていません。 代わりに、Azure Storage SDK で `CloudTable` メソッド パラメーターを使用してテーブルを読み取ります。 Azure Functions ログ テーブルにクエリを実行する関数の例:
 
 ```csharp
 using Microsoft.Azure.WebJobs;
@@ -258,7 +258,7 @@ public class Person : TableEntity
 
 ### <a name="input---c-script-example---cloudtable"></a>入力 - C# スクリプトの例 - CloudTable
 
-`IQueryable` は [Functions v2 ランタイム](functions-versions.md)ではサポートされていません。 代わりに、Azure Storage SDK で `CloudTable` メソッド パラメーターを使用してテーブルを読み取ります。 Azure Functions ログ テーブルにクエリを実行する 2.x 関数の例:
+`IQueryable` は [バージョン 2.x 以降](functions-versions.md)の Functions ランタイムではサポートされていません。 代わりに、Azure Storage SDK で `CloudTable` メソッド パラメーターを使用してテーブルを読み取ります。 Azure Functions ログ テーブルにクエリを実行する関数の例:
 
 ```json
 {

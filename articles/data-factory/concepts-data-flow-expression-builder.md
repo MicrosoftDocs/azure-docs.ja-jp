@@ -1,59 +1,95 @@
 ---
-title: Azure Data Factory のマッピング データ フローの式ビルダー
-description: Azure Data Factory のマッピング データ フローの式ビルダー
+title: マッピング データ フローでの式ビルダー
+description: Azure Data Factory のマッピング データ フローで式ビルダーを使用して式を構築する
 author: kromerm
 ms.author: makromer
+ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: 0eb2c2692ed2444a85e7253c6fdd8734385ff881
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.date: 12/9/2019
+ms.openlocfilehash: 01aa2574ac6edd1ce5e1b209eac3e43bbed82fce
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672262"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969373"
 ---
-# <a name="mapping-data-flow-expression-builder"></a>マッピング データ フローの式ビルダー
+# <a name="building-expressions-in-mapping-data-flow"></a>マッピング データ フローでの式の構築
 
+マッピング データ フローでは、多くの変換プロパティが式として入力されます。 これらの式は、実行時に Spark データ型に評価される列の値、パラメーター、関数、演算子、およびリテラルで構成されます。
 
+## <a name="opening-the-expression-builder"></a>式ビルダーを開く
 
-Azure Data Factory のマッピング データ フローには、データ変換の式を入力できる式ボックスが表示されます。 このボックス内で、データ フローからの列、フィールド、変数、パラメーター、関数を使用します。 式を作成するには、式ビルダーを使用します。式ビルダーは、変換内の式テキスト ボックスをクリックすると起動します。 変換の列を選択したときに、[計算列] のオプションが表示されることもあります。 このオプションをクリックすると、起動した式ビルダーも表示されます。
+Data Factory UX の式編集インターフェイスは、**式ビルダー**と呼ばれます。 式のロジックを入力すると、データ ファクトリは、強調表示、構文チェック、およびオートコンプリートのために [IntelliSense](https://docs.microsoft.com/visualstudio/ide/using-intellisense?view=vs-2019) コード補完を使用します。
 
 ![式ビルダー](media/data-flow/xpb1.png "式ビルダー")
 
-式ビルダー ツールでは、テキスト エディター オプションが既定で設定されています。 オートコンプリート機能では、Azure Data Factory のデータ フロー全体からオブジェクト モデルが読み取られ、そのモデルが構文チェックされ、強調表示されます。
+式が必須である派生列やフィルターなどの変換では、青い式ボックスをクリックして式ビルダーを開きます。
 
-![式ビルダーのオートコンプリート](media/data-flow/expb1.png "式ビルダーのオートコンプリート")
+![式ビルダー](media/data-flow/expressionbox.png "式ビルダー")
 
-## <a name="build-schemas-in-output-schema-pane"></a>[Output Schema]\(出力スキーマ\) ウィンドウにスキーマを作成する
+一致条件またはグループ化の条件で列を参照している場合は、式が列から値を抽出できます。 式を作成するには、[計算列] オプションを選択します。
 
-![複合列の追加](media/data-flow/complexcolumn.png "列の追加")
+![式ビルダー](media/data-flow/computedcolumn.png "式ビルダー")
 
-左側の [Output Schema]\(出力スキーマ\) ウィンドウに、変更中の列とスキーマに追加している列が表示されます。 ここでは、単純なデータ構造と複雑なデータ構造を対話形式で作成できます。 [列の追加] を使用してフィールドを追加し、[Add subcolumn]\(サブ列の追加\) を使用して階層を構築します。
+式またはリテラル値が有効な入力である場合は、[動的なコンテンツの追加] を使用して、リテラルに評価される式を構築できます。
 
-![サブ列の追加](media/data-flow/addsubcolumn.png "サブ列の追加")
+![式ビルダー](media/data-flow/add-dynamic-content.png "式ビルダー")
 
-## <a name="data-preview-in-debug-mode"></a>デバッグ モードでのデータのプレビュー
+## <a name="expression-language-reference"></a>式言語のリファレンス
+
+マッピング データ フローには、式で使用できる組み込みの関数と演算子があります。 使用可能な関数の一覧は、[マッピング データ フローの式言語](data-flow-expression-functions.md)のリファレンス ページにあります。
+
+## <a name="column-names-with-special-characters"></a>特殊文字を含む列名
+
+特殊文字またはスペースを含む列名がある場合、それらを式で参照するには、その名前を中かっこで囲みます。
+
+```{[dbo].this_is my complex name$$$}```
+
+## <a name="previewing-expression-results"></a>式の結果のプレビュー
+
+[デバッグ モード](concepts-data-flow-debug-mode.md)がオンに切り替えられている場合は、ライブ Spark クラスターを使用して、式の評価結果の進行中のプレビューを確認できます。 ロジックを構築している場合は、リアルタイムに式をデバッグできます。 
 
 ![式ビルダー](media/data-flow/exp4b.png "式データのプレビュー")
 
-データ フロー式を処理しているときに、Azure Data Factory のデータ フロー デザイン サーフェイスからデバッグ モードをオンにします。これにより、作業しながら、作成中の式のデータの結果をプレビューできます。 式に対して、リアルタイムのライブ デバッグが可能です。
-
-![デバッグ モード](media/data-flow/debugbutton.png "[デバッグ] ボタン")
-
-[更新] ボタンをクリックして、式の結果をソースのライブ サンプルに対してリアルタイムで更新します。
+[更新] ボタンをクリックすると、式の結果がソースのライブ サンプルに対して更新されます。
 
 ![式ビルダー](media/data-flow/exp5.png "式データのプレビュー")
 
-## <a name="comments"></a>説明
+## <a name="string-interpolation"></a>文字列補間
+
+リテラル文字列テキストを式と共に囲むには、二重引用符を使用します。 式関数、列、およびパラメーターを含めることができます。 文字列補間は、パラメーターをクエリ文字列に含めるときに文字列連結の広範囲にわたる使用を回避するために役立ちます。 式の構文を使用するには、それを中かっこで囲みます。
+
+文字列補間のいくつかの例を次に示します。
+
+* ```"My favorite movie is {iif(instr(title,', The')>0,"The {split(title,', The')[1]}",title)}"```
+
+* ```"select * from {$tablename} where orderyear > {$year}"```
+
+* ```"Total cost with sales tax is {round(totalcost * 1.08,2)}"```
+
+## <a name="commenting-expressions"></a>式のコメント化
 
 単一行および複数行コメントの構文を使用して、式にコメントを追加します。
 
 ![説明](media/data-flow/comments.png "説明")
 
+有効なコメントの例を次に示します。
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+   
+* ```// This is a single line comment```
+
+式の先頭にコメントを配置すると、変換式を文書化するための変換テキスト ボックスにコメントが表示されます。
+
+![説明](media/data-flow/comments2.png "説明")
+
 ## <a name="regular-expressions"></a>正規表現
 
-Azure Data Factory の Data Flow の式言語では ([詳細なリファレンス ドキュメントはこちら](https://aka.ms/dataflowexpressions))、正規表現構文を含む関数を使用できます。 正規表現関数を使用する場合、式ビルダーでは、円記号 (\\) をエスケープ文字シーケンスとして解釈することが試みられます。 正規表現で円記号を使用するときは、正規表現全体をティック (\`) 内に入れるか、円記号を二重で使用します。
+多くの式言語関数は、正規表現構文を使用します。 正規表現関数を使用する場合、式ビルダーでは、円記号 (\\) をエスケープ文字シーケンスとして解釈することが試みられます。 正規表現で円記号を使用するときは、正規表現全体をティック (\`) 内に入れるか、円記号を二重で使用します。
 
 ティックの使用例
 
@@ -73,11 +109,6 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 
 ![式ビルダーの配列](media/data-flow/expb2.png "式データのプレビュー")
 
-## <a name="handling-names-with-special-characters"></a>特殊文字を使用した名前の処理
-
-特殊文字またはスペースが含まれている列名がある場合は、その名前を中かっこを使って囲みます。
-* ```{[dbo].this_is my complex name$$$}```
-
 ## <a name="keyboard-shortcuts"></a>キーボード ショートカット
 
 * ```Ctrl-K Ctrl-C```:行全体をコメントにします
@@ -87,36 +118,17 @@ regex_replace('100 and 200', '(\\d+)', 'digits')
 * ```Alt-Up Arrow```:現在の行を上に移動します
 * ```Cntrl-Space```:コンテキスト ヘルプを表示します
 
-## <a name="manual-comments"></a>手動コメント
-
-* ```/* This is my comment */```
-
-* ```/* This is a```
-*   ```multi-line comment */```
-   
-* ```// This is a single line comment```
-
-式の先頭にコメントを配置すると、変換式を文書化するための変換テキスト ボックスにコメントが表示されます。
-
-![説明](media/data-flow/comments2.png "説明")
-
 ## <a name="convert-to-dates-or-timestamps"></a>日付またはタイムスタンプに変換する
+
+タイムスタンプ出力に文字列リテラルを含めるには、```toString()``` で変換をラップする必要があります。
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-タイムスタンプ出力に文字列リテラルを含めるには、```toString()``` 内に変換をラップする必要があることに注意してください。
-
-エポックから日付またはタイムスタンプに秒を変換する方法を次に示します。
+ミリ秒をエポックから日付またはタイムスタンプに変換するには、`toTimestamp(<number of milliseconds>)` を使用します。 時刻が秒単位で指定されている場合は、1000 を掛けます。
 
 ```toTimestamp(1574127407*1000l)```
 
-上の式の最後にある末尾の "l" に注意してください。 これは、long への変換をインライン構文として示しています。
-
-## <a name="handling-column-names-with-special-characters"></a>特殊文字を含む列名の処理
-
-特殊文字またはスペースが含まれている列名がある場合は、その名前を中かっこを使って囲みます。
-
-```{[dbo].this_is my complex name$$$}```
+上の式の最後にある末尾の "l" は、インライン構文としての long 型への変換を示しています。
 
 ## <a name="next-steps"></a>次の手順
 

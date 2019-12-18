@@ -124,7 +124,7 @@ az network express-route list-service-providers
 
 これで、ExpressRoute 回線を作成する準備が整いました。
 
-### <a name="3-create-an-expressroute-circuit"></a>手順 3.ExpressRoute 回線の作成
+### <a name="3-create-an-expressroute-circuit"></a>3.ExpressRoute 回線の作成
 
 > [!IMPORTANT]
 > ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。

@@ -134,7 +134,7 @@ New-AzRouteFilter -Name "MyRouteFilter" -ResourceGroupName "MyResourceGroup" -Lo
 $rule = New-AzRouteFilterRuleConfig -Name "Allow-EXO-D365" -Access Allow -RouteFilterRuleType Community -CommunityList 12076:5010,12076:5040
 ```
 
-### <a name="3-add-the-rule-to-the-route-filter"></a>手順 3.ルート フィルターにルールを追加する
+### <a name="3-add-the-rule-to-the-route-filter"></a>3.ルート フィルターにルールを追加する
 
 次のコマンドを実行して、ルート フィルターにフィルター ルールを追加します。
  

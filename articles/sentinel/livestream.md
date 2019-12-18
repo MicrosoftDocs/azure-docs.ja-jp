@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 12/06/2019
 ms.author: cabailey
-ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 5b347848c9c6a58a70ab1093a6f9c70b62f3f769
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546861"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900453"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Azure Sentinel でハンティング ライブストリームを使用して脅威を検出する
 
@@ -70,7 +70,7 @@ ms.locfileid: "74546861"
 
 5. コマンド バーで、 **[再生]** を選択します。
     
-    コマンド バーの下にあるステータス バーに、ライブストリームが実行中であるか一時停止しているかが示されます。 次の例では、セッションが実行中です。
+    コマンド バーの下にあるステータス バーに、ライブストリーム セッションが実行中であるか一時停止しているかが示されます。 次の例では、セッションが実行中です。
     
     > [!div class="mx-imgBorder"]
     > ![Azure Sentinel ハンティングからライブストリーム セッションを作成する](./media/livestream/livestream-session.png)
@@ -110,7 +110,6 @@ ms.locfileid: "74546861"
 ## <a name="next-steps"></a>次の手順
 
 この記事では、Azure Sentinel でハンティング ライブストリームを使用する方法を説明しました。 Azure Sentinel の詳細については、次の記事をご覧ください。
-
 
 - [脅威を事前に検出する](hunting.md)
 - [ノートブックを使用して自動化された検出キャンペーンを実行する](notebooks.md)

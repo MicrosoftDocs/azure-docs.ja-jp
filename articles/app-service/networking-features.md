@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 6395d62947cda47c3779f15445db08b7515d055d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 208bf37bfcdf0f86fad11611279d1b4e642fb18a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672331"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971759"
 ---
 # <a name="app-service-networking-features"></a>App Service のネットワーク機能
 
@@ -46,7 +46,7 @@ Azure App Service は分散システムです。 受信した HTTP/HTTPS 要求�
 | アプリを VNet 内の 1 つのプライベート IP で公開する | ILB ASE </br> Application Gateway 上の受信用プライベート IP とサービス エンドポイントの併用 |
 | WAF によりアプリを保護する | Application Gateway + ILB ASE </br> Application Gateway とサービス エンドポイントの併用 </br> Azure Front Door とアクセス制限の併用 |
 | アプリへのトラフィックの負荷を複数のリージョンに分散させる | Azure Front Door とアクセス制限の併用 | 
-| 同一リージョン内でトラフィックの負荷を分散させる | Application Gateway とサービス エンドポイントの併用 | 
+| 同一リージョン内でトラフィックの負荷を分散させる | [Application Gateway とサービス エンドポイントの併用][appgwserviceendpoints] | 
 
 以下の送信のユース ケースでは、App Service のネットワーク機能を使用して、アプリの送信アクセスに関するニーズを解決する方法の案を示します。 
 
@@ -222,3 +222,4 @@ ASE があれば、専用のアプリを隔離したまま最適にホストで�
 [vnetintegrationp2s]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [vnetintegration]: https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet
 [networkinfo]: https://docs.microsoft.com/azure/app-service/environment/network-info
+[appgwserviceendpoints]: https://docs.microsoft.com/azure/app-service/networking/app-gateway-with-service-endpoints

@@ -10,12 +10,12 @@ keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: 7fb24d53876ab8c06fca4fbfe929c06a889335f3
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786352"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951447"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>クイック スタート:サーバー向け Azure Arc を使用してマシンを Azure に接続する - PowerShell
 
@@ -55,6 +55,12 @@ Id                    : 5be92c87-01c4-42f5-bade-c1c10af87758
 Type                  :
 ```
 
+> [!NOTE] 
+> SPN のアクセス許可が適切に設定されるまでには、しばらく時間がかかります。 次のロールの割り当てを実行した方が、はるかに早くアクセス許可を設定できます。
+> ``` PowerShell
+> New-AzRoleAssignment -RoleDefinitionName "Azure Connected Machine Onboarding" -ServicePrincipalName $sp.ApplicationId
+> ```
+
 次に、PowerShell を使用してパスワードを取得します。
 
 ```azurepowershell-interactive
@@ -66,8 +72,11 @@ $credential.GetNetworkCredential().password
 
 インストール エージェントのオンボーディング スクリプトの内容:
 
-* **ApplicationId** プロパティは、インストール エージェントで使用される `--service-principal-id` パラメーターに使用されます
-* **password** プロパティは、インストール エージェントの `--service-principal-secret` パラメーターに使用されます。
+* **ApplicationId** プロパティは、エージェントを接続するための `--service-principal-id` パラメーターに使用されます。
+* **password** プロパティは、エージェントを接続するための `--service-principal-secret` パラメーターに使用されます。
+
+> [!NOTE]
+> 必ずサービス プリンシパルの **ApplicationId** プロパティを使用してください。**Id** プロパティではありません。 **Id** では正しく機能しません。
 
 ## <a name="manually-install-the-agent-and-connect-to-azure"></a>手動でエージェントをインストールして Azure に接続する
 
@@ -84,7 +93,6 @@ $credential.GetNetworkCredential().password
 > [!NOTE]
 > パブリック プレビュー中は、Ubuntu 16.04 または 18.04 に適した 1 つのパッケージのみがリリースされました。
 
-<!-- What about this aks? -->
 最も簡単な方法は、パッケージ リポジトリを登録し、ディストリビューションのパッケージ マネージャーを使用してパッケージをインストールすることです。
 [https://aka.ms/azcmagent](https://aka.ms/azcmagent) にある bash スクリプトでは、次のアクションが実行されます。
 

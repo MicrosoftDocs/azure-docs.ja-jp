@@ -114,7 +114,7 @@ ms.locfileid: "73818471"
 
 
 &nbsp; <a name="anchor-image-wtip-min00417"/>
-#### <a name="3-agenda-00409"></a>手順 3.予定、0:04:09
+#### <a name="3-agenda-00409"></a>3.予定、0:04:09
 [![予定][image-wtip-min00417-agenda]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=249)
 
 

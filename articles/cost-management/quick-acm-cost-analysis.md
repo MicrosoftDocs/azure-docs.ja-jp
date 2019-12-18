@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 858672a7fcfcfd5f50c91eb769fdd0d42578195f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 36b8a3bba82a338f3aab526d505c4d1e96061ddf
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229988"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849124"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート:コスト分析を使用してコストを調査および分析する
 
@@ -101,7 +101,9 @@ Azure Cost Management データに対するアクセス権の割り当てにつ�
 
 共通のプロパティで**グループ化**してコストを明細化し、最も寄与した要因を識別します。 たとえば、リソース タグでグループ化するには、グループ化の基準とするタグ キーを選択します。 タグの値ごとのコスト明細が表示され、そのタグが適用されていないリソースについては別途セグメントが表示されます。
 
-ほとんどの [Azure リソースでは、タグ付けがサポートされています](../azure-resource-manager/tag-support.md)。 ただし、一部のタグは Cost Management および請求で使用できません。 また、リソース グループのタグはサポートされていません。 Cost Management でサポートされるのは、リソースにタグが直接適用された日付以降のリソース タグだけです。 Azure タグ ポリシーを使用してコスト データの可視性を向上させる方法については、[Azure Cost Management でタグ ポリシーを確認する方法](https://www.youtube.com/watch?v=nHQYcYGKuyw)に関するビデオをご覧ください。
+ほとんどの [Azure リソースでは、タグ付けがサポートされています](../azure-resource-manager/tag-support.md)。 ただし、一部のタグは Cost Management および請求で使用できません。 また、リソース グループのタグはサポートされていません。 タグのサポートは、タグがリソースに適用された "*後*" にレポートされた使用状況に適用されます。 タグは、過去のコスト データには適用されません。
+
+Azure タグ ポリシーを使用してコスト データの可視性を向上させる方法については、[Azure Cost Management でタグ ポリシーを確認する方法](https://www.youtube.com/watch?v=nHQYcYGKuyw)に関するビデオをご覧ください。
 
 今月の Azure サービス コストの表示を次に示します。
 

@@ -1,5 +1,5 @@
 ---
-title: iOS および macOS 用の MSAL を使用してカスタム要求を行う方法
+title: カスタム要求を要求する (MSAL iOS/macOS) | Azure
 titleSuffix: Microsoft identity platform
 description: カスタム要求の方法について説明します。
 services: active-directory
@@ -18,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c34da9e8faa8c2c2e24e7f00569e2b7c8af674f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 65b85a5c551b4e26c39959a1bd4f435a5fa4fe6e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802591"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920312"
 ---
 # <a name="how-to-request-custom-claims-using-msal-for-ios-and-macos"></a>方法:iOS および macOS 用の MSAL を使用してカスタム要求を行う
 

@@ -1,6 +1,6 @@
 ---
-title: Web API を呼び出すデスクトップ アプリ (運用環境への移行) - Microsoft ID プラットフォーム
-description: Web API を呼び出すデスクトップ アプリを構築する方法 (運用環境への移行) について説明します
+title: Web API を呼び出すデスクトップ アプリを運用環境に移行する - Microsoft ID プラットフォーム | Azure
+description: Web API を呼び出すデスクトップ アプリを運用環境に移行する方法について説明します
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -17,16 +17,16 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5331f01c5dc6acf01f567dbe4c332853bf7aa47e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81a5e57d0ef37a3a2e758e42f122c8e014c94958
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175553"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919985"
 ---
 # <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Web API を呼び出すデスクトップ アプリ - 運用環境への移行
 
-この記事では、アプリケーションをさらに改善し、運用環境に移行するための詳細を説明します。
+この記事では、Web API を呼び出すデスクトップ アプリを運用環境に移行する方法について詳しく説明します。
 
 ## <a name="handling-errors-in-desktop-applications"></a>デスクトップ アプリケーションでのエラー処理
 

@@ -85,7 +85,7 @@ ms.locfileid: "61428302"
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
 
-### <a name="3-create-a-partition-table"></a>手順 3.パーティション テーブルの作成
+### <a name="3-create-a-partition-table"></a>3.パーティション テーブルの作成
 データ スキーマに従って[パーティション テーブルを作成](https://msdn.microsoft.com/library/ms174979.aspx)し、テーブルのパーティション分割に使用されるパーティション構成と制約フィールドを指定します。たとえば、以下のようにします。
   
         CREATE TABLE <table_name> ( [include schema definition here] )

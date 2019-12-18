@@ -9,27 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: adb8941fd60a955a44a04717958c5203b721639a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498995"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893189"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>チュートリアル:関連するデータのグループ化と抽出
 このチュートリアルでは、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
 
-複合エンティティの目的は、関連するエンティティを親カテゴリのエンティティにグループ化することです。 複合エンティティが作成される前は、情報は個別のエンティティとして存在しています。 
+複合エンティティの目的は、関連するエンティティを親カテゴリのエンティティにグループ化することです。 複合エンティティが作成される前は、情報は個別のエンティティとして存在しています。
 
 複合エンティティは、データが次のようなものであるため、この種のデータに適しています。
 
-* 相互に関連している。 
+* 相互に関連している。
 * さまざまなエンティティ型を使用する。
 * クライアント アプリによって情報の単位としてグループ化され、処理される必要がある。
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **このチュートリアルで学習する内容は次のとおりです。**
 
@@ -37,7 +37,7 @@ ms.locfileid: "73498995"
 > [!div class="checklist"]
 > * サンプル アプリをインポートする
 > * 意図を作成する
-> * 複合エンティティを追加する 
+> * 複合エンティティを追加する
 > * トレーニング
 > * 発行
 > * エンドポイントから意図とエンティティを取得する
@@ -54,9 +54,9 @@ ms.locfileid: "73498995"
 
 ## <a name="composite-entity"></a>複合エンティティ
 
-このアプリでは、部署名は **Department** リスト エンティティで定義されていて、シノニムを含みます。 
+このアプリでは、部署名は **Department** リスト エンティティで定義されていて、シノニムを含みます。
 
-**TransferEmployeeToDepartment** 意図には、従業員の新しい部署への異動を要求する発話の例が含まれます。 
+**TransferEmployeeToDepartment** 意図には、従業員の新しい部署への異動を要求する発話の例が含まれます。
 
 この意図に含まれる発話の例を次に示します。
 
@@ -64,12 +64,12 @@ ms.locfileid: "73498995"
 |--|
 |move John W. Smith to the accounting department (John W. Smith を会計部門に異動させる)|
 |transfer Jill Jones from to R&D (Jill Jones を R&D に異動させる)|
- 
-異動要求には、部署名と従業員名が含まれる必要があります。 
+
+異動要求には、部署名と従業員名が含まれる必要があります。
 
 ## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>一般的な種類のデータを抽出するのに役立つ PersonName 事前構築済みエンティティを追加する
 
-LUIS には、一般的なデータ抽出のための事前構築済みエンティティが用意されています。 
+LUIS には、一般的なデータ抽出のための事前構築済みエンティティが用意されています。
 
 1. 上部のナビゲーションから **[ビルド]** を選択し、左側のナビゲーション メニューから **[エンティティ]** を選択します。
 
@@ -87,11 +87,11 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 1. 意図の一覧から **TransferEmployeeToDepartment** を選択します。
 
-1. 発話 `place John Jackson in engineering` で、personName エンティティ `John Jackson` を選択し、以下の発話に対するポップアップ メニュー リストで **[Wrap in composite entity]\(複合エンティティにラップする\)** を選択します。 
+1. 発話 `place John Jackson in engineering` で、personName エンティティ `John Jackson` を選択し、以下の発話に対するポップアップ メニュー リストで **[Wrap in composite entity]\(複合エンティティにラップする\)** を選択します。
 
     ![ラップ複合を選択するドロップダウン ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
-1. 次に、発話内の最後のエンティティ `engineering` を直ちに選択します。 選択された単語の下に、複合エンティティを示す緑色のバーが描画されます。 ポップアップ メニューで、複合名 `TransferEmployeeInfo` を入力して Enter キーを押します。 
+1. 次に、発話内の最後のエンティティ `engineering` を直ちに選択します。 選択された単語の下に、複合エンティティを示す緑色のバーが描画されます。 ポップアップ メニューで、複合名 `TransferEmployeeInfo` を入力して Enter キーを押します。
 
     ![複合名を入力するドロップダウン ダイアログのスクリーンショット](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
@@ -103,11 +103,11 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 1. 各発話の例で、複合に含まれている左端のエンティティを選択します。 次に、 **「Wrap in composite entity」(複合エンティティにラップする)** を選択します。
 
-1. 複合エンティティ内の最後の単語を選択してから、ポップアップ メニューから **[TransferEmployeeInfo]** を選択します。 
+1. 複合エンティティ内の最後の単語を選択してから、ポップアップ メニューから **[TransferEmployeeInfo]** を選択します。
 
-1. 意図のすべての発話に複合エンティティのラベルが付けられていることを確認します。 
+1. 意図のすべての発話に複合エンティティのラベルが付けられていることを確認します。
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>意図への変更をテストできるようにアプリをトレーニングする 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>意図への変更をテストできるようにアプリをトレーニングする
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -115,11 +115,11 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>エンドポイントから意図およびエンティティ予測を取得する 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>エンドポイントから意図およびエンティティ予測を取得する
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. アドレスの URL の末尾に移動し、「`Move Jill Jones to DevOps`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話のクエリです。 
+2. アドレスの URL の末尾に移動し、「`Move Jill Jones to DevOps`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話のクエリです。
 
     このテストは複合が正しく抽出されたことを確認するためであるため、テストには、既存のサンプル発話または新しい発話のどちらを含めることもできます。 適切なテストでは、複合エンティティ内のすべての子エンティティを含めます。
 
@@ -185,7 +185,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
     }
     ```
 
-   この発話は、複合エンティティの配列を返します。 各エンティティには、型と値が与えられます。 子エンティティごとの精度を高めるには、複合の配列項目の型と値の組み合わせを使用して、エンティティの配列内の対応する項目を見つけます。  
+   この発話は、複合エンティティの配列を返します。 各エンティティには、型と値が与えられます。 子エンティティごとの精度を高めるには、複合の配列項目の型と値の組み合わせを使用して、エンティティの配列内の対応する項目を見つけます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -202,7 +202,7 @@ LUIS には、一般的なデータ抽出のための事前構築済みエンテ
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、既存のエンティティをカプセル化するための複合エンティティを作成しました。 これによりクライアント アプリケーションは、会話を続けるために、さまざまなデータ型の関連データのグループを見つけることができます。 この Human Resources アプリのクライアント アプリケーションは、移動が開始および終了する必要がある日時を問い合わせることができました。 電話機などのその他の物品の移動について問い合わせることもできました。 
+このチュートリアルでは、既存のエンティティをカプセル化するための複合エンティティを作成しました。 これによりクライアント アプリケーションは、会話を続けるために、さまざまなデータ型の関連データのグループを見つけることができます。 この Human Resources アプリのクライアント アプリケーションは、移動が開始および終了する必要がある日時を問い合わせることができました。 電話機などのその他の物品の移動について問い合わせることもできました。
 
-> [!div class="nextstepaction"] 
-> [フレーズ リストと共にシンプル エンティティを追加する方法について](luis-quickstart-primary-and-secondary-data.md)  
+> [!div class="nextstepaction"]
+> [エンドポイントの発話を確認して不確かな予測を修正する](luis-tutorial-review-endpoint-utterances.md)

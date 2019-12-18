@@ -62,7 +62,7 @@ az resource create \
 | パラメーター | 説明 |
 |-----------|-------------|
 | resource-group | ブロックチェーン データ マネージャー インスタンスの作成先のリソース グループ名。 |
-| 名前 | ブロックチェーン データ マネージャー インスタンスの名前。 |
+| name | ブロックチェーン データ マネージャー インスタンスの名前。 |
 | resource-type | ブロックチェーン データ マネージャー インスタンスのリソースの種類は **Microsoft.blockchain/watchers** です。 |
 | is-full-object | プロパティにウォッチャー リソース用のオプションが含まれることを示します。 |
 | properties | ウォッチャー リソースのプロパティを含む JSON 形式の文字列。 文字列またはファイルとして渡すことができます。  |
@@ -124,7 +124,7 @@ az resource create \
 | パラメーター | 説明 |
 |-----------|-------------|
 | resource-group | 入力リソースの作成先となるリソース グループの名前。 |
-| 名前 | 入力の名前。 |
+| name | 入力の名前。 |
 | namespace | プロバイダー名前空間として **Microsoft.Blockchain** を使用します。 |
 | resource-type | ブロックチェーン データ マネージャーの入力リソースの種類は **inputs** です。 |
 | parent | 入力の関連付け先となるウォッチャーへのパス。 たとえば、**watchers/mywatcher** となります。 |
@@ -196,7 +196,7 @@ az resource create \
 | パラメーター | 説明 |
 |-----------|-------------|
 | resource-group | 出力リソースの作成先となるリソース グループの名前。 |
-| 名前 | 出力の名前。 |
+| name | 出力の名前。 |
 | namespace | プロバイダー名前空間として **Microsoft.Blockchain** を使用します。 |
 | resource-type | ブロックチェーン データ マネージャーの出力リソースの種類は **outputs** です。 |
 | parent | 出力の関連付け先となるウォッチャーへのパス。 たとえば、**watchers/mywatcher** となります。 |
@@ -273,7 +273,7 @@ az resource create \
 | パラメーター | 説明 |
 |-----------|-------------|
 | resource-group | アプリケーション リソースの作成先となるリソース グループの名前。 |
-| 名前 | アプリケーションの名前。 |
+| name | アプリケーションの名前。 |
 | namespace | プロバイダー名前空間として **Microsoft.Blockchain** を使用します。 |
 | resource-type | ブロックチェーン データ マネージャーのアプリケーション リソースの種類は **artifacts** です。 |
 | parent | アプリケーションの関連付け先となるウォッチャーへのパス。 たとえば、**watchers/mywatcher** となります。 |
@@ -399,7 +399,7 @@ az resource delete \
 | パラメーター | 説明 |
 |-----------|-------------|
 | resource-group | 削除するウォッチャーのリソースグループの名前。 |
-| 名前 | 削除するウォッチャーの名前。 |
+| name | 削除するウォッチャーの名前。 |
 | resource-type | ブロックチェーン データ マネージャーのウォッチャー リソースの種類は **Microsoft.blockchain/watchers** です。 |
 
 ### <a name="delete-instance-example"></a>インスタンス削除の例

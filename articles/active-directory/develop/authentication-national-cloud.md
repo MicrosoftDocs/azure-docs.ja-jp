@@ -1,29 +1,25 @@
 ---
-title: 各国のクラウドでの Azure Active Directory を使用した認証
+title: Azure AD の認証と各国のクラウド | Azure
 titleSuffix: Microsoft identity platform
 description: 各国のクラウドのアプリ登録と認証エンドポイントについて説明します。
 services: active-directory
-documentationcenter: ''
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
-ms.reviewer: negoe,CelesteDG
+ms.reviewer: negoe,celested
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70f1f80744043893dd7206bc6388b8e080c07d0f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 14b97677f5aa9624ba70696114ac34fcd9f46182
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803890"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918034"
 ---
 # <a name="national-clouds"></a>各国のクラウド
 

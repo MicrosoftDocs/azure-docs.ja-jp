@@ -1,6 +1,6 @@
 ---
-title: Web API を呼び出す Web アプリ (サインイン) - Microsoft ID プラットフォーム
-description: Web API を呼び出す Web アプリを構築する方法について説明します (サインイン)
+title: サインアウト時にキャッシュからアカウントを削除する - Microsoft ID プラットフォーム | Azure
+description: サインアウト時にトークン キャッシュからアカウントを削除する方法について説明します。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,14 +15,14 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596378"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961660"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>Web API を呼び出す Web アプリ - サインイン
+# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>グローバル サインアウト時にキャッシュからアカウントを削除する
 
 Web アプリにサインインを追加する方法については既に学習しました。 これについては、「[ユーザーをサインインさせる Web アプリ - サインインの追加](scenario-web-app-sign-user-sign-in.md)」でご説明しました。
 

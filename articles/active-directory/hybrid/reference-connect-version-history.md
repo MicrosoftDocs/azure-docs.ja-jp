@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 893b617a965b0823b8d630e036d5d5f923647f8f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73944224"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922289"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect:バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -38,9 +38,23 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 このプロセスを進めている間、リリースのバージョン番号では、"1.3.X.0" のようにマイナー リリース番号の位置に "X" が表示されます。これは、このドキュメントのリリース ノートは、"1.3." で始まるすべてのバージョンで有効であることを示しています。 リリース プロセスが終了すると、すぐにリリース バージョン番号が最近リリースされたバージョンに更新され、リリースの状態が "ダウンロードと自動アップグレード用にリリース済み" に更新されます。
 Azure AD Connect のすべてのリリースが自動アップグレードに対応しているわけではありません。 リリースの状態により、リリースが自動アップグレードに対応しているか、ダウンロードにのみ対応しているかが分かります。 Azure AD Connect サーバーに対して自動アップグレードが有効になっている場合、そのサーバーは、自動アップグレードのためにリリースされた Azure AD Connect の最新バージョンに自動的にアップグレードされます。 Azure AD Connect のすべての構成が自動アップグレードの対象となっているわけではないので注意してください。 詳細については、[自動アップグレード](how-to-connect-install-automatic-upgrade.md)に関するこのリンクを参照してください。
 
+## <a name="14380"></a>1.4.38.0
+### <a name="release-status"></a>リリースの状態
+2019/12/06:ダウンロード向けリリース。 自動アップグレードでは使用できません。
+### <a name="new-features-and-improvements"></a>新機能と機能強化
+- Kerberos ハッシュのパディングが正しく考慮されるように、Azure AD Domain Services のパスワード ハッシュ同期を更新しました。  これにより、AAD から Azure AD Domain Services へのパスワード同期中のパフォーマンスが向上します。
+- 認証エージェントとサービス バスの間の信頼できるセッションのサポートを追加しました。
+- このリリースでは、認証エージェントとクラウド サービス間の通信に TLS 1.2 が適用されます。
+- 認証エージェントとクラウド サービス間に websocket 接続用の DNS キャッシュを追加しました。
+- クラウドから特定のエージェントをターゲットにして、エージェントの接続をテストする機能を追加しました。
+
+### <a name="fixed-issues"></a>修正された問題
+- リリース 1.4.18.0 には、DSSO の PowerShell コマンドレットで、ps の実行中に指定される管理者資格情報ではなく、ログインの Windows 資格情報が使用されるバグがありました。 その結果、AADConnect ユーザー インターフェイスを使用して複数のフォレストで DSSO を有効にすることができませんでした。 
+- AADConnect ユーザー インターフェイスを使用して、すべてのフォレストで同時に DSSO を有効にする修正が行われました。
+
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>リリースの状態
-2019 年 11 月 8 日: ダウンロード対象としてリリース済み。 自動アップグレードでは使用できません
+2019 年 11 月 8 日: ダウンロード対象としてリリース済み。 自動アップグレードでは使用できません。
 
 >[!IMPORTANT]
 >このリリースの Azure AD Connect では、内部的なスキーマ変更があるため、MSOnline PowerShell を使用して ADFS 信頼関係の構成設定を管理する場合は、MSOnline PowerShell モジュールをバージョン 1.1.183.57 以上に更新する必要があります
@@ -70,7 +84,7 @@ Azure AD Connect のすべてのリリースが自動アップグレードに対
 
 
 ### <a name="release-status"></a>リリースの状態
-9/25/2019:インシデント調査が完了するまで手動ダウンロードから削除されました。
+9/25/2019:自動アップグレード向けにのみリリース済み。
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
 - 新しいトラブルシューティング ツールは、"ユーザーが同期していない"、"グループが同期していない"、"グループ メンバーが同期していない" という各シナリオのトラブルシューティングに役立ちます。

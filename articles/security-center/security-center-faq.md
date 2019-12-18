@@ -140,7 +140,7 @@ Security Center によって、Microsoft Monitoring Agent 拡張機能は、既�
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>これらの拡張機能を削除するとどのような影響がありますか?
 Microsoft Monitoring Extension を削除すると、Security Center は VM からセキュリティ データを収集できなくなります。また、一部のセキュリティの推奨とアラートを使用できなくなります。 Security Center は、VM に拡張機能が存在せず、拡張機能を再インストールすることが 24 時間以内に判断されます。
 
-### <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>自動的なエージェントのインストールとワークスペースの作成を停止するにはどうすればよいですか?
+### <a name="how-do-i-stop-the-automatic-agent-installation-and-workspace-creation"></a>自動的なエージェントのインストールとワークスペースの作成をオプトアウトするにはどうすればよいですか?
 セキュリティ ポリシーでサブスクリプションの自動プロビジョニングを無効にすることはできますが、これは推奨されません。 自動プロビジョニングを無効にすると、Security Center の推奨事項とアラートが制限されます。 自動プロビジョニングを無効にするには、次の手順に従います。
 
 1. Standard レベルのサブスクリプションを構成する場合、そのサブスクリプションのセキュリティ ポリシーを開き、 **[Free]** レベルを選択します。
@@ -153,7 +153,7 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
 ### <a name="should-i-opt-out-of-the-automatic-agent-installation-and-workspace-creation"></a>自動的なエージェントのインストールとワークスペースの作成をオプトアウトするにはどうすればよいですか?
 
 > [!NOTE]
-> 自動プロビジョニングを停止する場合は、[オプトアウトの影響](#what-are-the-implications-of-opting-out-of-automatic-provisioning)および[オプトアウトする場合に推奨される手順](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)に関するセクションを必ず確認してください。
+> 自動プロビジョニングをオプトアウトする場合は、[オプトアウトの影響](#what-are-the-implications-of-opting-out-of-automatic-provisioning)および[オプトアウトする場合に推奨される手順](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)に関するセクションを必ず確認してください。
 >
 >
 
@@ -168,7 +168,7 @@ Microsoft Monitoring Extension を削除すると、Security Center は VM か�
    2. 移行の完了を許可して、VM 上に Microsoft Monitoring Agent がインストールされ、作成されたワークスペースに VM が接続されるようにします。 その後、既にインストールされているエージェントを再構成し、既定のワークスペース設定を設定して、独自のカスタム ワークスペースを選択します。 詳細については、「[既存の Log Analytics ワークスペースを使用するにはどうすればよいですか?](#how-can-i-use-my-existing-log-analytics-workspace)」をご覧ください。
 
 ### <a name="what-are-the-implications-of-opting-out-of-automatic-provisioning"></a>自動プロビジョニングをオプトアウトすると、どのような影響がありますか?
-移行が完了すると、Security Center は VM からセキュリティ データを収集できなくなります。また、一部のセキュリティの推奨とアラートを使用できなくなります。 停止した場合、Microsoft Monitoring Agent を手動でインストールします。 [オプトアウトする場合に推奨される手順](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)に関するセクションをご覧ください。
+移行が完了すると、Security Center は VM からセキュリティ データを収集できなくなります。また、一部のセキュリティの推奨とアラートを使用できなくなります。 オプトアウトした場合、Microsoft Monitoring Agent を手動でインストールします。 [オプトアウトする場合に推奨される手順](#what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning)に関するセクションをご覧ください。
 
 ### <a name="what-are-the-recommended-steps-when-opting-out-of-automatic-provisioning"></a>自動プロビジョニングをオプトアウトする場合、どのような手順が推奨されますか?
 

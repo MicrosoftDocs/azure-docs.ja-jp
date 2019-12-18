@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/17/2019
+ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 06bffb1339edddf14d3eccaf989707369ac54393
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8e5ff917e7283457e7ff1d4c5fd0cbd91a1b0ace
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177111"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973749"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート:Computer Vision で REST API と Python を使ったドメイン モデルを利用する
 
-このクイック スタートでは、ドメイン モデルを利用し、Computer Vision の REST API を使って、リモートで保存された画像内のランドマークや (場合によっては) 著名人を識別します。 [ドメイン固有のコンテンツの認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200)メソッドを使用すると、ドメイン固有のモデルを適用して、画像内のコンテンツを認識できます。
+このクイックスタートでは、ドメイン モデルを利用し、Computer Vision の REST API を使って、リモートで保存された画像内のランドマークや (場合によっては) 著名人を識別します。 [ドメイン固有のコンテンツの認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200)メソッドを使用すると、ドメイン固有のモデルを適用して、画像内のコンテンツを認識できます。
 
 このクイック スタートは、[MyBinder](https://mybinder.org) 上で Jupyter Notebook を使い、ステップ バイ ステップで実行することができます。 Binder を起動するには、次のボタンを選択します。
 

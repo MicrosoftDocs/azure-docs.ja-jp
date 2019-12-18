@@ -4,17 +4,17 @@ description: この記事では、Azure Automation での GitHub とのソース
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/26/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886525"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996512"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
@@ -30,7 +30,7 @@ Azure Automation は、次の 3 種類のソース管理をサポートしてい
 
 * ソース管理リポジトリ (GitHub または Azure Repos)
 * [実行アカウント](manage-runas-account.md)
-* Automation アカウントに[最新の Azure モジュール](automation-update-azure-modules.md)があることを確認してください
+* Automation アカウントに[最新の Azure モジュール](automation-update-azure-modules.md) (**AzureRM.Profile** モジュールを含む) が存在することを確認してください。 
 
 > [!NOTE]
 > ソース管理の同期ジョブは、ユーザーの Automation アカウントの下で実行され、その他の Automation ジョブと同じレートで課金されます。
@@ -93,7 +93,7 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 GitHub で個人用アクセス トークンを作成する方法について詳しくは、「[コマンドラインの個人用アクセス トークンの作成](https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/)」をご覧ください。
 
-|Scope (スコープ)  |説明  |
+|スコープ  |説明  |
 |---------|---------|
 |**レポジトリ**     |         |
 |repo:status     | コミット状態へのアクセス         |
@@ -107,7 +107,7 @@ GitHub で個人用アクセス トークンを作成する方法について詳
 
 Azure Repos で個人用アクセス トークンを作成する方法について詳しくは、「[Authenticate access with personal access tokens (個人用アクセス トークンによるアクセスの認証)](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)」をご覧ください。
 
-|Scope (スコープ)  |
+|スコープ  |
 |---------|
 |コード (読み取り)     |
 |プロジェクトおよびチーム (読み取り)|

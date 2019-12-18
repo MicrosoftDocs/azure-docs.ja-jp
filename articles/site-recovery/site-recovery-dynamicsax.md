@@ -70,7 +70,7 @@ Dynamics AX アプリケーションが機能するには、ディザスター �
 ### <a name="2-set-up-sql-server-replication"></a>2.SQL Server レプリケーションをセットアップする
 SQL 層を保護するための推奨されるオプションの技術的なガイダンスについては、[SQL Server と Azure Site Recovery を使用したアプリケーションのレプリケート](site-recovery-sql.md)に関する記事を参照してください。
 
-### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>手順 3.Dynamics AX クライアントと Application Object Server VM の保護を有効にする
+### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>3.Dynamics AX クライアントと Application Object Server VM の保護を有効にする
 VM が[HYPER-V](site-recovery-hyper-v-site-to-azure.md) または [VMware](site-recovery-vmware-to-azure.md) のどちらにデプロイされるかに基づいて、関連する Site Recovery 構成を実行します。
 
 > [!TIP]

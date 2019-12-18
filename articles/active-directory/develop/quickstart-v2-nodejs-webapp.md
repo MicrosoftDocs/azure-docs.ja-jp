@@ -1,30 +1,25 @@
 ---
-title: Microsoft ID プラットフォーム OIDC Node.js アプリのクイックスタート | Azure
+title: Node.js Web アプリに OIDC サインインを追加する - Microsoft ID プラットフォーム | Azure
 description: OpenID Connect を使用して Node.js Web アプリケーションに認証を実装する方法について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25ac3344fe16d24ae116a5fde289421998f11f18
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: a2869333fe0e9103724b9b1075270a5c3301c472
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182030"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968019"
 ---
-# <a name="quickstart-add-sign-in-using-oidc-to-a-nodejs-web-app"></a>クイック スタート:OIDC を使用してサインインを Node.js Web アプリに追加する
+# <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>クイック スタート:OpenID Connect を使用したサインインを Node.js Web アプリに追加する
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
