@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: fad850da6a7fccb6b97b86532a8d246049942a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014655"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872411"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル:Azure Time Series Insights 環境を作成する
 
@@ -55,11 +55,11 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
 最初に、Time Series Insights 環境に入力されるテスト データを生成する、デバイス シミュレーション ソリューションを作成します。
 
-1. 別のウィンドウまたはタブで [azureiotsolutions.com](https://www.azureiotsolutions.com) に移動します。 同じ Azure サブスクリプション アカウントを使用してサインインし、 **[デバイス シミュレーション]** アクセラレータを選択します。 **[今すぐ試してみる]** をクリックします。
+1. 別のウィンドウまたはタブで [azureiotsolutions.com](https://www.azureiotsolutions.com) に移動します。 同じ Azure サブスクリプション アカウントを使用してサインインし、 **[デバイス シミュレーション]** アクセラレータを選択します。
 
-   [![デバイス シミュレーション アクセラレータを実行する](media/tutorial-create-populate-tsi-environment/sa-main.png)](media/tutorial-create-populate-tsi-environment/sa-main.png#lightbox)
+   [![デバイス シミュレーション アクセラレータを実行する](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-landing-page.png#lightbox)
 
-1. **[デバイス シミュレーション ソリューションの作成]** ページで、次の必須パラメーターを入力します。
+1.  **[今すぐ試してみる]** をクリックします。 その後、 **[デバイス シミュレーション ソリューションの作成]** ページで、次の必須パラメーターを入力します。
 
    パラメーター|説明
    ---|---
@@ -70,18 +70,18 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
    完了したら、 **[作成]** を選択してソリューションの Azure リソースをプロビジョニングします。 このプロセスが完了するまでに最大で 20 分かかる場合があります。
 
-   [![デバイス シミュレーション ソリューションをプロビジョニングする](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution.png#lightbox)
+   [![デバイス シミュレーション ソリューションをプロビジョニングする](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. プロビジョニング完了後、新しいソリューションの上にあるテキストが "**プロビジョニング中...** " から "**準備完了**" に変わります。
+1. プロビジョニングが完了すると、2 つの更新が表示され、デプロイ状態が **[プロビジョニング中]** から **[準備完了]** に移行したことがわかります。 
 
    >[!IMPORTANT]
-   > **[起動]** はまだ選択しないでください。 後で戻ってくるので、この Web ページは開いたままにしておきます。
+   > まだソリューション アクセラレータは入力しないでください。 後で戻ってくるので、この Web ページは開いたままにしておきます。
 
-   [![デバイス シミュレーション ソリューションのプロビジョニング完了](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard-ready.png#lightbox)
+   [![デバイス シミュレーション ソリューションのプロビジョニング完了](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
 1. ここで、Azure portal で新しく作成されたリソースを検査します。 **[リソース グループ]** ページで、最後の手順で指定した**ソリューション名**を使用して新しいリソース グループが作成されたことを確認します。 デバイス シミュレーション用に作成されたリソースをメモします。
 
-   [![デバイス シミュレーションのリソース](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/ap-device-sim-solution-resources.png#lightbox)
+   [![デバイス シミュレーションのリソース](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png)](media/tutorial-create-populate-tsi-environment/tsi-device-sim-solution-resources.png#lightbox)
 
 ## <a name="create-an-environment"></a>環境の作成
 
@@ -91,7 +91,7 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 1. 左上隅の **[+ リソースの作成]** を選択します。 
 1. **[モノのインターネット (IoT)]** カテゴリを選択し、 **[Time Series Insights]** を選択します。 
 
-   [![Time Series Insights 環境リソースを選択する](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi.png#lightbox)
+   [![Time Series Insights 環境リソースを選択する](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png)](media/tutorial-create-populate-tsi-environment/tsi-create-new-environment.png#lightbox)
 
 1. **[Time Series Insights 環境]** ページで、必須パラメーターを入力します。
 
@@ -106,17 +106,17 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
    終了したら、 **[次へ:イベント ソース]** を選択して次の手順に進みます。
 
-   [![Time Series Insights 環境リソースを作成する](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-params.png#lightbox)
+   [![Time Series Insights 環境リソースを作成する](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-tsi-params.png#lightbox)
 
 1. 次に、Time Series Insights 環境を、ソリューション アクセラレータによって作成された IoT ハブに接続します。 **[ハブを選択]** を `Select existing` に設定します。 次に、**IoT ハブ名**を設定するときにソリューション アクセラレータによって作成された IoT ハブを選択します。
 
-   [![作成した IoT ハブに Time Series Insights 環境を接続する](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-iot-hub.png#lightbox)
+   [![作成した IoT ハブに Time Series Insights 環境を接続する](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png)](media/tutorial-create-populate-tsi-environment/tsi-create-resource-iot-hub.png#lightbox)
 
    最後に、 **[確認および作成]** を選択します。
 
 1. **[通知]** パネルを確認して、デプロイの完了を監視します。 
 
-   [![Time Series Insights 環境のデプロイ成功](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/ap-create-resource-tsi-deployment-succeeded.png#lightbox)
+   [![Time Series Insights 環境のデプロイ成功](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png)](media/tutorial-create-populate-tsi-environment/create-resource-tsi-deployment-succeeded.png#lightbox)
 
 ## <a name="run-device-simulation"></a>デバイスのシミュレーションの実行
 
@@ -126,19 +126,19 @@ IoT ハブに加えて、シミュレートされたデバイス テレメトリ
 
 1. [ソリューション アクセラレータのダッシュ ボード](https://www.azureiotsolutions.com/Accelerators#dashboard)に戻ります。 必要に応じて、このチュートリアルで使用している同じ Azure アカウントを使用して再度サインインします。 [Device Solution]\(デバイス ソリューション\)、 **[ソリューション アクセラレータに移動]** の順に選択して、デプロイされたソリューションを起動します。
 
-     [![ソリューション アクセラレータのダッシュボード](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png)](media/tutorial-create-populate-tsi-environment/sa-create-device-sim-solution-dashboard.png#lightbox)
+   [![ソリューション アクセラレータのダッシュボード](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
-1. デバイス シミュレーション Web アプリは、最初に Web アプリケーションに "サインインとプロファイルの読み取り" アクセス許可を付与することをユーザーに促します。 このアクセス許可により、アプリケーションがアプリケーションの機能をサポートするのに必要なユーザー プロファイル情報を取得することを許可します。
+1. デバイス シミュレーション Web アプリは、最初に Web アプリケーションに "**サインインとプロファイルの読み取り**" アクセス許可を付与することをユーザーに促します。 このアクセス許可により、アプリケーションがアプリケーションの機能をサポートするのに必要なユーザー プロファイル情報を取得することを許可します。
 
-     [![デバイス シミュレーション Web アプリケーションの同意](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
+   [![デバイス シミュレーション Web アプリケーションの同意](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png)](media/tutorial-create-populate-tsi-environment/sawa-signin-consent.png#lightbox)
 
-1. **[Simulation setup]\(シミュレーションのセットアップ\)** ページの読み込み後、次の必須パラメーターを入力します。
+1. **[+ New simulation]\(+ 新しいシミュレーション\)** を選択します。 **[Simulation setup]\(シミュレーションのセットアップ\)** ページの読み込み後、次の必須パラメーターを入力します。
 
    パラメーター|説明
    ---|---
    **[Target IoT Hub]\(IoT Hub をターゲットにする\)** | **[Use pre-provisioned IoT Hub]\(事前プロビジョニングされている IoT Hub を使用する\)** を選択します。
    **[デバイス モデル]** | **[Chiller]** を選択します。
-   **[Number of devices]\(デバイスの数\)**  | **[数量]** に `1000` と入力します。
+   **[Number of devices]\(デバイスの数\)**  | **[数量]** に `10` と入力します。
    **[Telemetry frequency]\(テレメトリ頻度\)** | `10` 秒を入力します。
    **[Simulation duration]\(シミュレーション期間\)** | **[End in:]\(実行時間:\)** を選択し、`5` 分と入力します。
 

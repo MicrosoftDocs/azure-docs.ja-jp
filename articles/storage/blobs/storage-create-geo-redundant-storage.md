@@ -1,21 +1,22 @@
 ---
-title: チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する - Azure Storage
-description: 読み取りアクセス geo 冗長ストレージを使用してアプリケーション データを高可用にする
+title: チュートリアル - Blob Storage を使用して高可用性アプリケーションを作成する
+titleSuffix: Azure Storage
+description: 読み取りアクセス geo 冗長ストレージを使用してアプリケーション データに高い可用性を確保します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 6b0ac017704c599e96543ed36a13ff5d3ddef9fc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 55846c76f2c3ef1c5d884af39af85db3abe38aad
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838573"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892908"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>チュートリアル:Blob Storage を使用して高可用性アプリケーションを作成する
 
@@ -40,8 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-* 次のワークロードを使って、[Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
-  - **Azure 開発**
+* **Azure 開発**ワークロードと共に [Visual Studio 2019](https://www.visualstudio.com/downloads/) をインストールします。
 
   ![Azure 開発 ([Web & Cloud]\(Web とクラウド\) 以下)](media/storage-create-geo-redundant-storage/workloads.png)
 
@@ -191,7 +191,6 @@ Visual Studio で **F5** キーを押すか **[スタート]** を選択して�
 
 ダウンロードの前に、サービス オブジェクトの [retry_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) と [response_callback](https://docs.microsoft.com/python/api/azure.storage.common.storageclient.storageclient?view=azure-python) 関数が定義されています。 これらの関数に定義されているイベント ハンドラーが、ダウンロードが正常に完了したとき、またはダウンロードが失敗して再試行する場合に呼び出されます。
 
-
 # <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
 
 サンプルを実行するには、コマンド プロンプトを開いてサンプル フォルダーに移動し、「`node index.js`」と入力します。
@@ -223,7 +222,7 @@ Deleted container newcontainer1550799840726
 
 ## <a name="understand-the-sample-code"></a>サンプル コードを理解する
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+### <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ### <a name="retry-event-handler"></a>イベント ハンドラーを再試行する
 
@@ -274,7 +273,7 @@ private static void OperationContextRequestCompleted(object sender, RequestEvent
 }
 ```
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+### <a name="pythontabpython"></a>[Python](#tab/python)
 
 ### <a name="retry-event-handler"></a>イベント ハンドラーを再試行する
 
@@ -317,7 +316,7 @@ def response_callback(response):
             secondary_read_count = 0
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
+### <a name="nodejstabnodejs"></a>[Node.JS](#tab/nodejs)
 
 Node.js V10 SDK では、コールバック ハンドラーは不要です。 代わりにこのサンプルでは、再試行オプションとセカンダリ エンドポイントを含むパイプラインを作成しています。 これによりアプリケーションは、プライマリ パイプラインで必要なデータに到達できなかった場合でも、自動的にセカンダリ パイプラインに切り替えることができます。
 
@@ -349,4 +348,4 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 シリーズの第 2 部に進んで、エラーをシミュレートし、アプリケーションがセカンダリ RA-GRS エンドポイントを使用するように強制する方法について学んでください。
 
 > [!div class="nextstepaction"]
-> [プライマリ ストレージ エンドポイントへの接続時のエラーをシミュレートする](storage-simulate-failure-ragrs-account-app.md)
+> [プライマリ リージョンからの読み取りで発生するエラーをシミュレートする](storage-simulate-failure-ragrs-account-app.md)

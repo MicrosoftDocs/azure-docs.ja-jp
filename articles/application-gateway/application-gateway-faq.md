@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 68ce0dca3bc7c5d408bd6e8f267d238ac812a84d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130573"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996665"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -128,7 +128,7 @@ No. インスタンスはアップグレード ドメインと障害ドメイン
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Application Gateway は接続のドレインに対応していますか?
 
-はい。 中断を発生させることなくバックエンド プール内のメンバーを変更するように接続のドレインを設定できます。 この設定を使うと、既存の接続がある場合に、その接続を終了するか、接続が構成可能なタイムアウトに達するまで、以前の宛先に送信し続けることができます。 接続のドレインは、現在処理中の接続に限り、完了するまで待機します。 Application Gateway は、アプリケーションのセッション状態を認識しません。
+はい。 中断を発生させることなくバックエンド プール内のメンバーを変更するように接続のドレインを設定できます。 詳細については、[Application Gateway の「接続のドレイン」セクション](overview.md#connection-draining)を参照してください。
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>インスタンスを中断せずにサイズを中から大に変更できますか?
 

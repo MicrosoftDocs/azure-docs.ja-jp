@@ -122,7 +122,7 @@ sbd -d <SBD Device Name> create
 sbd -d <SBD Device Name> dump
 ```
 
-## <a name="3---configuring-the-cluster"></a>手順 3. クラスターを構成する
+## <a name="3---configuring-the-cluster"></a>3. クラスターを構成する
 このセクションでは、SUSE HA クラスターをセットアップする手順について説明します。
 ### <a name="31-package-installation"></a>3.1 パッケージのインストール
 3.1.1   ha_sles および SAPHanaSR-doc パターンがインストールされていることを確認します。 インストールされていない場合はインストールします。 **両方**のノードにインストールしてください。

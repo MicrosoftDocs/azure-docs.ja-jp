@@ -1,31 +1,27 @@
 ---
-title: Azure Active Directory に登録されたアプリをユーザーのセットに制限する
+title: Azure Active Directory に登録されたアプリ ユーザーを制限する | Azure
 titleSuffix: Microsoft identity platform
 description: Azure AD に登録されたアプリへのアクセスを選択したユーザーのセットに制限する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: kalyankrishna1
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: kkrishna
-ms.reviewer: ''
+ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c768730a00d424333e735bb4f6a385d294f38513
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f1cd52a62d5ab8185e18c849f6009e4632c96ede
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803954"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917626"
 ---
-# <a name="how-to-restrict-your-app-to-a-set-of-users"></a>方法:ご利用のアプリを特定のユーザー セットに制限する
+# <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users"></a>方法:Azure AD アプリを一連のユーザーに制限する
 
 Azure Active Directory (Azure AD) テナントに登録されたアプリケーションは、既定ではテナントの正常に認証されたすべてのユーザーが利用できます。
 

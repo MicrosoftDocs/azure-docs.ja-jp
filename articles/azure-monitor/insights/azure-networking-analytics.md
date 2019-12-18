@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 8a8a2f32de905ab7c12f4886d889b2a6fc20c449
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899147"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893316"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure Monitor の Azure ネットワーク監視ソリューション
 
@@ -45,7 +45,7 @@ Azure Monitor には、ネットワークを監視することを目的とした
 
 診断を有効にし、Application Gateway とネットワーク セキュリティ グループのいずれかまたは両方に対応するソリューションを有効にすることができます。
 
-ソリューションをインストールしたものの特定のリソース タイプの診断ログを有効にしなかった場合、そのリソースに対応するダッシュボードのブレードは空白になり、エラー メッセージが表示されます。
+特定のリソースの種類に対する診断リソース ログを有効にせずにソリューションをインストールした場合、そのリソースに対するダッシュボード ブレードは空白になり、エラー メッセージが表示されます。
 
 > [!NOTE]
 > 2017 年 1 月、Application Gateway とネットワーク セキュリティ グループから Log Analytics ワークスペースへのログ送信をサポートする方法が変更になりました。 **Azure Networking Analytics (非推奨)** ソリューションが表示される場合は、「[旧バージョンの Networking Analytics ソリューションからの移行](#migrating-from-the-old-networking-analytics-solution)」を参照して手順に従ってください。
@@ -100,7 +100,7 @@ Azure Application Gateway 分析ソリューションのインストールと構
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>PowerShell を使用した Azure ネットワーク診断を有効にする
 
-次の PowerShell スクリプトは、Application Gateway の診断ログを有効にする方法の例を示しています。
+次の PowerShell スクリプトは、アプリケーション ゲートウェイに対するリソース ログを有効にする方法の例を示しています。
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -141,7 +141,7 @@ Set-AzDiagnosticSetting -ResourceId $gateway.ResourceId  -WorkspaceId $workspace
 > [Traffic Analytics](../../network-watcher/traffic-analytics.md)によって機能が置き換えられたので、ネットワーク セキュリティ グループ分析ソリューションは、コミュニティ サポートに移動します。
 > - ソリューションは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/)で利用可能になっており、まもなく Azure Marketplace では利用できなくなります。
 > - ソリューションを自身のワークスペースに既に追加している既存のお客様については、変更せずに機能し続けます。
-> - Microsoft は、診断設定を使用して、ワークスペースへの NSG 診断ログの送信をサポートし続けます。
+> - Microsoft は引き続き、診断設定を使用したワークスペースへの NSG リソース ログの送信をサポートします。
 
 ネットワーク セキュリティ グループに関しては、次のログがサポートされます。
 
@@ -171,7 +171,7 @@ Azure Networking Analytics ソリューションのインストールと構成�
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>PowerShell を使用した Azure ネットワーク診断を有効にする
 
-次の PowerShell スクリプトは、ネットワーク セキュリティ グループの診断ログを有効にする方法の例を示しています。
+次の PowerShell スクリプトは、ネットワーク セキュリティ グループに対するリソース ログを有効にする方法の例を示しています。
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 

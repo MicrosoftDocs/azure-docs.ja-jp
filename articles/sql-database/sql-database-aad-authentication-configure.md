@@ -11,12 +11,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 11/06/2019
-ms.openlocfilehash: 5830e0b7ee49a7d954dbdb3f897ee7ac5901c6a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421768"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901358"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>SQL による Azure Active Directory 認証の構成と管理
 
@@ -138,7 +138,7 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 
    [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません サポートされている管理者の一覧については、「[Azure AD の機能と制限事項](sql-database-aad-authentication.md#azure-ad-features-and-limitations)」をご覧ください。 ロール ベースのアクセス制御 (RBAC) は Azure portal にのみ適用され、SQL Server には反映されません。
 
-    ![管理者の追加](./media/sql-database-aad-authentication/add-admin.png)
+    ![Azure Active Directory 管理者を追加する](./media/sql-database-aad-authentication/add-azure-active-directory-admin.png)
 
 8. [Active Directory 管理者] ページの上部にある **[保存]** を選択します。
 
@@ -238,11 +238,13 @@ CLI コマンドの詳細については、「[az sql mi](/cli/azure/sql/mi)」�
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-1. [Azure Portal](https://portal.azure.com/) の右上隅にあるユーザー アイコンをクリックすると、Active Directory 候補の一覧がドロップダウンで表示されます。 既定の Azure AD として適切な Active Directory を選択します。 この手順では、サブスクリプションに関連付けられている Active Directory を Azure SQL Server とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします (Azure SQL Server は、Azure SQL Database または Azure SQL Data Warehouse をホストしている可能性があります)。![choose-ad][8]
+1. [Azure Portal](https://portal.azure.com/) の右上隅にあるユーザー アイコンをクリックすると、Active Directory 候補の一覧がドロップダウンで表示されます。 既定の Azure AD として適切な Active Directory を選択します。 この手順では、サブスクリプションに関連付けられている Active Directory を Azure SQL Server とリンクすることで、Azure AD と SQL Server の両方に同じサブスクリプションが使用されるようにします (Azure SQL Server は、Azure SQL Database または Azure SQL Data Warehouse をホストしている可能性があります)。
 
-2. 左側のバナーで **[すべてのサービス]** を選択し、フィルターに「**SQL Server**」と入力します。 **[SQL Server]** を選択します。
+    ![choose-ad][8]
 
-    ![sqlservers.png](media/sql-database-aad-authentication/sqlservers.png)
+2. **[SQL サーバー]** を探して選択します。
+
+    ![[SQL サーバー] を探して選択する](media/sql-database-aad-authentication/search-for-and-select-sql-servers.png)
 
     >[!NOTE]
     > このページでは、 **[SQL Server]** を選択する前に、名前の横にある**星マーク**を選択してそのカテゴリを "*お気に入りに追加*" し、 **[SQL Server]** を左側のナビゲーション バーに追加することができます。
@@ -251,11 +253,11 @@ CLI コマンドの詳細については、「[az sql mi](/cli/azure/sql/mi)」�
 
 4. **[Active Directory 管理者]** ページで、 **[管理者の設定]** を選択します。
 
-    ![Active Directory を選択する](./media/sql-database-aad-authentication/select-active-directory.png)  
+    ![[SQL サーバー] の Active Directory 管理者の設定](./media/sql-database-aad-authentication/sql-servers-set-active-directory-admin.png)  
 
 5. **[管理者の追加]** ページで、ユーザーを検索し、管理者にするユーザーまたはグループを選択してから **[選択]** を選択します。 [Active Directory 管理者] ページには、Active Directory のメンバーとグループがすべて表示されます。 淡色表示されているユーザーまたはグループは、Azure AD 管理者としてサポートされていないため選択できません (「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](sql-database-aad-authentication.md)」の「**Azure AD の機能と制限事項**」セクションでサポートされている管理者の一覧を参照してください)。ロール ベースのアクセス制御 (RBAC) はポータルにのみ適用され、SQL Server には反映されません。
 
-    ![管理者の選択](./media/sql-database-aad-authentication/select-admin.png)  
+    ![Azure Active Directory 管理者を選択する](./media/sql-database-aad-authentication/select-azure-active-directory-admin.png)  
 
 6. **[Active Directory 管理者]** ページの上部にある **[保存]** を選択します。
 

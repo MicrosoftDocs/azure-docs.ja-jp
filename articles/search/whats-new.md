@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 247378461a99d42f21a67a2c0aebc7019727f3a0
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555154"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901323"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Azure Cognitive Search の新機能
 
@@ -29,7 +29,11 @@ API バージョン、Nuget パッケージ、名前空間、およびエンド�
 
 ## <a name="feature-announcements"></a>機能のお知らせ
 
-2019 年 11 月 4 日 - Ignite カンファレンス
+### <a name="december-2019"></a>2019 年 12 月
+
++ [アプリの作成 (プレビュー)](search-create-app-portal.md) はポータルの新しいウィザードです。これを使ってダウンロード可能な HTML ファイルを生成できます。 このファイルには、検索サービスのインデックスにバインドされた、操作可能な "localhost" スタイルの Web アプリをレンダリングする埋め込みスクリプトが付属しています。 ページはウィザードで構成できます。また、検索バー、結果領域、サイドバー ナビゲーション、および先行入力クエリのサポートを含めることができます。 HTML をオフラインに変更して、ワークフローや外観を拡張したりカスタマイズしたりすることができます。
+
+### <a name="november-2019---ignite-conference"></a>2019 年 11 月 - Ignite Conference
 
 + [増分インデックス (プレビュー)](cognitive-search-incremental-indexing-conceptual.md) は、エンリッチメント パイプラインに変更を加えるときに、再処理の手順を選択できるようにします。 増分インデックスは、以前に分析したイメージ コンテンツがある場合に特に便利です。 コストのかかる分析の出力が保存され、追加のインデックス作成またはエンリッチメントの基礎として使用されます。
 
@@ -44,7 +48,7 @@ API バージョン、Nuget パッケージ、名前空間、およびエンド�
 
 + インデクサーで [Azure Data Lake Storage Gen2 (プレビュー)](search-howto-index-azure-data-lake-storage.md)、[Cosmos DB Gremlin API (プレビュー)](search-howto-index-cosmosdb.md)、[Cosmos DB Cassandra API (プレビュー)](search-howto-index-cosmosdb.md) のサポートを開始しました。 [こちらのフォーム](https://aka.ms/azure-cognitive-search/indexer-preview)を使ってサインアップできます。 プレビュー プログラムへの参加が承認されると、確認メールが届きます。
 
-2019 年 7 月 24 日
+### <a name="july-2019"></a>2019 年 7 月
 
 + [Azure Government クラウド](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search)で一般提供されています。
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 95a27ff17ca74f930fc1a739c0eb94a90bd82ec4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f45b6ce402a5f61faeabd1534d7e3562af81294c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834491"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973868"
 ---
 # <a name="quickstart-search-the-web-using-the-bing-web-search-rest-api-and-nodejs"></a>クイック スタート:Bing Web Search REST API と Node.js を使用して Web を検索する
 
@@ -57,7 +57,7 @@ if (!SUBSCRIPTION_KEY) {
 
 ## <a name="create-a-function-to-make-the-request"></a>要求を行う関数の作成
 
-この関数は、セキュリティで保護された GET 要求を作成し、検索クエリをパス内のクエリ パラメーターとして保存します。 `encodeURIComponent` は無効な文字をエスケープするために使用され、サブスクリプション キーはヘッダー内で渡されます。 コールバックは、JSON 本文を集約する `data` イベント、問題があればログに記録する `error` イベント、およびメッセージが完了したと見なす必要があるタイミングを知るための `end` イベントにサブスクライブしている[応答](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse)を受け取ります。 完了すると、アプリは興味深いヘッダーとメッセージ本文を出力します。 希望に合わせて色の変更や深さの設定が可能で、深さを `1` にすると、応答を使いやすくまとめたものが得られます。
+この関数は、セキュリティで保護された GET 要求を作成し、検索クエリをパス内のクエリ パラメーターとして保存します。 `hostname` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。  `encodeURIComponent` は無効な文字をエスケープするために使用され、サブスクリプション キーはヘッダー内で渡されます。 コールバックは、JSON 本文を集約する `data` イベント、問題があればログに記録する `error` イベント、およびメッセージが完了したと見なす必要があるタイミングを知るための `end` イベントにサブスクライブしている[応答](https://nodejs.org/dist/latest-v10.x/docs/api/http.html#http_class_http_serverresponse)を受け取ります。 完了すると、アプリは興味深いヘッダーとメッセージ本文を出力します。 希望に合わせて色の変更や深さの設定が可能で、深さを `1` にすると、応答を使いやすくまとめたものが得られます。
 
 ```javascript
 function bingWebSearch(query) {

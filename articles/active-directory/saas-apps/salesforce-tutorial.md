@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63cc4b902c0bd0281228e23076be6e0a18461597
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4d137a96a967e017c67da7dfabf25502de32ba7a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241430"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970008"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Salesforce の統合
 
@@ -29,7 +29,7 @@ ms.locfileid: "72241430"
 
 * Salesforce にアクセスできるユーザーを Azure AD で制御する。
 * ユーザーが自分の Azure AD アカウントを使用して Salesforce に自動的にサインインできるようにする。
-* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理できます。
+* 1 つの中央サイト (Azure Portal) で自分のアカウントを管理します。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory でのアプリケーションへのシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)」を参照してください。
 
@@ -46,9 +46,9 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 
 * Salesforce では、**SP** によって開始される SSO がサポートされます
 
-* Salesforce では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
+* Salesforce では、[**自動化された**ユーザー プロビジョニングとプロビジョニング解除](salesforce-provisioning-tutorial.md) (推奨) がサポートされます
 
-* Salesforce では、[**自動化された**ユーザー プロビジョニング](salesforce-provisioning-tutorial.md)がサポートされます
+* Salesforce では、**Just-In-Time** ユーザー プロビジョニングがサポートされます
 
 * Salesforce Mobile アプリケーションを Azure AD と共に構成して SSO を有効にできるようになりました。 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 

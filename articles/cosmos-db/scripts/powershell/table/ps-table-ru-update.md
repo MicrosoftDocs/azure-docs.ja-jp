@@ -1,18 +1,18 @@
 ---
 title: Azure PowerShell スクリプト - Azure Cosmos DB Table API の RU/秒を更新する
-description: Azure PowerShell スクリプト - Azure Cosmos DB Table API の RU/秒を更新する
+description: Azure Cosmos DB Table API アカウントにおけるデータベースまたはコンテナーのスループットを、PowerShell スクリプトを使用して更新する方法について説明します
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: c9a210636dc277eec106248b13ea42ec58bf15b5
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 8188089f216fa33ba958cf670bb321816387f5c9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178677"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871876"
 ---
 # <a name="update-rus-for-a-table-for-azure-cosmos-db---table-api"></a>Azure Cosmos DB - Table API のテーブルの RU/秒を更新する
 

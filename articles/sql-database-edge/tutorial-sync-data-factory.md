@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 2bfa65117bf31ad9cb9917fd8a643a0358e02be0
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: e6fd9e6431137708ba93328a8ed1359b93b4ee1f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384221"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851691"
 ---
 # <a name="tutorial-sync-data-from-sql-database-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>チュートリアル:Azure Data Factory を使用して SQL Database Edge から Azure Blob Storage にデータを同期する
 
@@ -177,7 +177,7 @@ SQL Database Edge インスタンスで次のコマンドを実行します。
 
 27. SinkDataset の **[接続]** タブに移動し、次の手順を実行します。
 
-    1. **[ファイル パス]** に「*asdedatasync/incrementalcopy*」と入力します。この場合、*adftutorial* は BLOB コンテナー名であり、*incrementalcopy* はフォルダー名です。 このコンテナーが存在しない場合は、コンテナーを作成するか、既存のコンテナーの名前を使用してください。 出力フォルダー *incrementalcopy* が存在しない場合は、Azure Data Factory によって自動的に作成されます。 **[ファイル パス]** の **[参照]** ボタンを使用して、BLOB コンテナー内のフォルダーに移動することもできます。
+    1. **[ファイル パス]** に「*asdedatasync/incrementalcopy*」と入力します。この場合、*asdedatasync* は BLOB コンテナー名であり、*incrementalcopy* はフォルダー名です。 このコンテナーが存在しない場合は、コンテナーを作成するか、既存のコンテナーの名前を使用してください。 出力フォルダー *incrementalcopy* が存在しない場合は、Azure Data Factory によって自動的に作成されます。 **[ファイル パス]** の **[参照]** ボタンを使用して、BLOB コンテナー内のフォルダーに移動することもできます。
 
     2. **[ファイル パス]** の**ファイル**部分で **[動的なコンテンツの追加 [Alt+P]]** を選択し、表示されたウィンドウで「 **@CONCAT('Incremental-', pipeline().RunId, '.txt')** 」と入力します。 **[完了]** を選択します。 ファイル名は、この式によって動的に生成されます。 各パイプラインの実行には、一意の ID があります。 コピー アクティビティは、実行 ID を使用して、ファイル名を生成します。
 

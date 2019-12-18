@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f1f812bb7d31319476e6b940443e067fac895f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7b00fff9c979fe6bd2c52f67801a94cb50b1c660
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420453"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970348"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>チュートリアル:Azure Active Directory のアプリケーション プロキシを使用してリモート アクセスするためのオンプレミス アプリケーションを追加する
 
@@ -217,8 +217,9 @@ Azure portal または Windows サーバーを使用して、新しいコネク�
 
 アプリケーションへのサインオンをテストするには:
 
-1. ブラウザーで、発行手順中に構成した外部 URL に移動します。 スタート画面が表示されます。
-1. 前のセクションで作成したユーザーとしてサインインします。
+1. テストするアプリケーションから **[アプリケーション プロキシ]** を選択します。
+2. ページの上部にある **[アプリケーションをテストする]** を選択してアプリケーションのテストを実行し、構成の問題がないか確認します。
+3. 最初にアプリケーションを起動して、アプリケーションへのサインインをテストし、その後、診断レポートをダウンロードして、問題が検出されれば、その解決のガイダンスを確認します。
 
 トラブルシューティングについては、「[アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング](application-proxy-troubleshoot.md)」をご覧ください。
 

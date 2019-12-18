@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/21/2019
+ms.date: 12/06/2019
 ms.author: victorh
-ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267951"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869563"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Azure Firewall Manager プレビューとは
 
@@ -70,12 +70,13 @@ Azure Firewall Manager プレビューには、次の既知の問題がありま
 
 |問題  |説明  |対応策  |
 |---------|---------|---------|
-|手動で作成された中央の VNet がサポートされない|現時点で、Azure Firewall Manager は、仮想ハブで作成されたネットワークをサポートしています。 手動で作成したハブ VNet の使用はまだサポートされていません。|現時点では、仮想ハブで作成されたハブとスポークのネットワークで Azure Firewall Manager を使用してください。<br>現在調査中です。
+|手動で作成された中央の VNet がサポートされない|現時点で、Azure Firewall Manager は、仮想ハブで作成されたネットワークをサポートしています。 手動で作成したハブ VNet の使用はまだサポートされていません。|現時点では、仮想ハブで作成されたハブとスポークのネットワークで Azure Firewall Manager を使用してください。<br>修正の進行中です。
 |サードパーティのフィルター処理の制限事項|Azure Firewall B2V と V2V では、サードパーティ プロバイダーによる V2I トラフィックのフィルター処理はサポートされていません。|現在調査中です。|
 |トラフィックの分割が現在サポートされていない|Office 365 と Azure パブリック PaaS トラフィックの分割は現在サポートされていません。 そのため、V2I または B2I にサードパーティ プロバイダーを選択すると、パートナー サービスを介してすべての Azure Public PaaS および Office 365 トラフィックも送信されます。|現在、ハブでのトラフィックの分割を調査中です。
 |リージョンごとに 1 つのハブ|リージョンごとに複数のハブを使用することはできません|1 つのリージョンに複数の仮想 WAN を作成します。|
 |基本ポリシーがローカル ポリシーと同じリージョンにある必要がある|基本ポリシーと同じリージョンにすべてのローカル ポリシーを作成します。 セキュリティ保護付きハブ上の 1 つのリージョンで作成されたポリシーを、別のリージョンから適用することもできます。|現在調査中です。|
 |セキュリティ保護付き仮想ハブで、ハブ間の通信が機能しない|セキュリティ保護付き仮想ハブからセキュリティ保護付き仮想ハブへの通信はまだサポートされていません。|現在調査中です。|
+|同じ Virtual WAN を共有するすべてのセキュリティ保護付き仮想ハブは同じリソース グループに存在する必要がある|この動作は、今日の Virtual WAN ハブに合わせたものです。|複数の異なるリソース グループにセキュリティ保護付き仮想ハブを作成できるようにするには、複数の Virtual WAN を作成します。|
 
 ## <a name="next-steps"></a>次の手順
 

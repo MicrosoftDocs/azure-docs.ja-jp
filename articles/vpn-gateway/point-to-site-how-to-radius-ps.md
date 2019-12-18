@@ -156,7 +156,7 @@ Azure サブスクリプションを持っていることを確認します。 A
 
 記事「[ネットワーク ポリシー サーバー (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top)」では、AD ドメイン認証用に Windows RADIUS サーバー (NPS) を構成する方法についてのガイダンスが示されています。
 
-## 手順 3.<a name="creategw"></a>VPN ゲートウェイの作成
+## 3.<a name="creategw"></a>VPN ゲートウェイの作成
 
 VPN ゲートウェイを VNet 用に構成して作成します。
 

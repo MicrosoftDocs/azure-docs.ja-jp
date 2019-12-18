@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: d076e2b0057f0ba666fa47ffd0b3d7d1fcc14631
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c13e7b507291d7671ac861fc7a8683c87be947a1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725598"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896646"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Azure Availability Zones でのゾーン冗長仮想ネットワーク ゲートウェイについて
 
@@ -39,21 +39,9 @@ ms.locfileid: "68725598"
 
 ## <a name="gwskus"></a>ゲートウェイの SKU
 
-ゾーン冗長ゲートウェイとゾーン ゲートウェイは、新しいゲートウェイ SKU として使用できます。 Azure AZ リージョン内に新しい仮想ネットワーク ゲートウェイ SKU が追加されました。 これらの SKU は ExpressRoute および VPN Gateway の対応する既存の SKU と似ていますが、ゾーン冗長ゲートウェイとゾーン ゲートウェイに固有であるという点が異なります。
+ゾーン冗長ゲートウェイとゾーン ゲートウェイは、新しいゲートウェイ SKU として使用できます。 Azure AZ リージョン内に新しい仮想ネットワーク ゲートウェイ SKU が追加されました。 これらの SKU は ExpressRoute および VPN Gateway の対応する既存の SKU と似ていますが、ゾーン冗長ゲートウェイとゾーン ゲートウェイに固有であるという点が異なります。 これらの SKU は、SKU 名に含まれる "AZ" で特定できます。
 
-新しいゲートウェイ SKU は次のとおりです。
-
-### <a name="vpn-gateway"></a>VPN Gateway
-
-* VpnGw1AZ
-* VpnGw2AZ
-* VpnGw3AZ
-
-### <a name="expressroute"></a>ExpressRoute
-
-* ErGw1AZ
-* ErGw2AZ
-* ErGw3AZ
+ゲートウェイ SKU の詳細については、[VPN ゲートウェイ SKU](vpn-gateway-about-vpngateways.md#gwsku) と [ExpressRoute ゲートウェイ SKU](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku) に関する記事を参照してください。
 
 ## <a name="pipskus"></a>パブリック IP の SKU
 

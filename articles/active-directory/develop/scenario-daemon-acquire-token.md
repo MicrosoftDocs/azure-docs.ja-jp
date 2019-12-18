@@ -1,5 +1,5 @@
 ---
-title: Web API を呼び出すデーモン アプリ (アプリ用にトークンを取得する) - Microsoft ID プラットフォーム
+title: デーモン アプリで Web API を呼び出すトークンを取得する - Microsoft ID プラットフォーム | Azure
 description: Web API を呼び出すデーモン アプリ (トークンを取得する) をビルドする方法について学習します。
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a5a3ac1438d5e958317f1899fc6c447f5c149ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0588e20467701512da6542da0d87fca786dcc793
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175521"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920295"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Web API を呼び出すデーモン アプリ - トークンを取得する
 

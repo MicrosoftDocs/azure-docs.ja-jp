@@ -122,7 +122,7 @@ NAT コマンド:
     security {       zones {           security-zone Trust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth0.100;               }           }           security-zone Untrust {               host-inbound-traffic {                   system-services {                       ping;                   }                   protocols {                       bgp;                   }               }               interfaces {                   reth1.100;               }           }       }   }
 
 
-### <a name="3-create-security-policies-between-zones"></a>手順 3.ゾーン間のセキュリティ ポリシーの作成
+### <a name="3-create-security-policies-between-zones"></a>3.ゾーン間のセキュリティ ポリシーの作成
     security {
         policies {
             from-zone Trust to-zone Untrust {

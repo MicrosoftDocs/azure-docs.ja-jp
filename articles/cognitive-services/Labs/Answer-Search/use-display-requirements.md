@@ -37,7 +37,7 @@ ms.locfileid: "68706704"
 - "Search API" とは、Bing Custom Search API、Bing Entity Search API、Bing Image Search API、Bing News Search API、Bing Video Search API、Bing Visual Search API、および Bing Web Search API を総称したものを指します。 
 
 
-## <a name="3-search-apis"></a>手順 3.Search API
+## <a name="3-search-apis"></a>3.Search API
 
 このセクション 3 に示した要件は、Search API に適用されます。
 

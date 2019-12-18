@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd85f3a495b90b3a1dc9d3f021d3600496792759
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 84b7f56ebcbb87a31fbfb85ea6d88c3388870872
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824353"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975994"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Azure Machine Learning for Visual Studio Code の使用を開始する
 
@@ -94,8 +94,8 @@ Azure Machine Learning の概念を既にある程度理解していて、拡張
     import azureml
     from azureml.core import Run
 
-    # access the Azure ML run
-    # init run param to check if running within AML
+    # Access the Azure ML run
+    # Init run param to check if running within AML
     def get_AMLRun():
         try:
             run = Run.get_submitted_run()
@@ -128,7 +128,7 @@ Azure Machine Learning の概念を既にある程度理解していて、拡張
     ...
             acc_val = acc_op.eval(feed_dict = {X: X_test, y: y_test})
 
-            # log accuracies to AML logger if using AML
+            # Log accuracies to AML logger if using AML
             if run != None:
                 run.log('Validation Accuracy', np.float(acc_val))
                 run.log('Training Accuracy', np.float(acc_train))
@@ -137,14 +137,14 @@ Azure Machine Learning の概念を既にある程度理解していて、拡張
     ...
     ```
 ### <a name="run-the-script-in-azure"></a>Azure でスクリプトを実行する
-これで完了です。 ここで、この拡張機能を使用してクラウド内でスクリプトを実行するだけです。 次のチュートリアル ビデオでは、新しい Azure ML のワークスペースとコンピューティングの作成にかかる時間のほか、トレーニング スクリプトの実行にかかる時間を短縮する方法を説明しています。
+これで完了です。 ここで、この拡張機能を使用してクラウド内でスクリプトを実行するだけです。 次のチュートリアル ビデオでは、新しい Azure Machine Learning ワークスペースおよびコンピューティングを作成するためにかかる時間や、トレーニング スクリプトを実行するためにかかる時間を大胆に短縮していることに注意してください。
 
    [![Azure ML の実験を開始する](./media/vscode-tools-for-ai/start-golden-path.gif)](./media/vscode-tools-for-ai/start-golden-path.gif#lightbox)
 
 [Run Experiment]\(実験の実行\) ボタンをクリックした後、次のように画面の指示に対応します。
 
-1. Azure サブスクリプションを選びます
-1. "*新しい*" Azure ML ワークスペースの作成を選択します。
+1. Azure サブスクリプションを選択します。
+1. *新しい* Azure Machine Learning ワークスペースを作成することを選択します。
 1. あらかじめ構成されている一連のテンプレートから選択し、実行用の Python 環境を初期化します。 テンプレートは出発点を提供するほか、次に関する設定が含まれています。
     1. **PyTorch**、**TensorFlow**、または **Scikit-learn**
     1. **単一**または**分散型**のコンピューティング トレーニング

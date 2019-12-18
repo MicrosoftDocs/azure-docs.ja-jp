@@ -163,7 +163,7 @@ Azure AD を使用して事前認証を使用するようにアプリを構成�
 
 この要求には、アプリケーションからのアイテム (要求ヘッダー、暗号化された Cookie のデータ、要求を作成したユーザー、要求 ID など) が含まれています。 要求と共に暗号化された cookie のデータが送信されますが、認証 cookie 自体は暗号化されていません。
 
-#### <a name="3-the-connector-processes-the-request-from-the-queue"></a>手順 3.コネクタがキューの要求を処理する 
+#### <a name="3-the-connector-processes-the-request-from-the-queue"></a>3.コネクタがキューの要求を処理する 
 
 アプリケーション プロキシは、要求に基づいて次のいずれかのアクションを実行します。
 

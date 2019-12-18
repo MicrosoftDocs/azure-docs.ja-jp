@@ -2,19 +2,19 @@
 title: テンプレートでの成果物のセキュリティ保護
 description: Azure Resource Manager テンプレート内で使用される成果物をセキュリティで保護する方法について説明します。
 author: mumian
-ms.date: 10/08/2019
+ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b37f7e284b655a362c5a4231a7c1da3719762644
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 1a9d209e843d8e9a1735a3c6907b00d85be6580b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326433"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971735"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>チュートリアル: Azure Resource Manager テンプレートのデプロイ時に成果物をセキュリティで保護する
 
-Azure Resource Manager テンプレート内で使用される成果物を Azure Storage アカウントの Shared Access Signature (SAS) を使用してセキュリティで保護する方法について説明します。 デプロイの成果物は、メイン テンプレート ファイルに加え、デプロイを完了するために必要なすべてのファイルです。 たとえば「[チュートリアル: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)」では、Azure SQL Database がメイン テンプレートによって作成されます。テーブルを作成してデータを挿入するために BACPAC ファイルも呼び出されます。 この BACPAC ファイルが成果物です。 成果物は、パブリック アクセスを持つ Azure ストレージ アカウントに格納されます。 このチュートリアルでは、SAS を使用して、ご自分の Azure Storage アカウント内の BACPAC ファイルへの制限付きアクセスを許可します。 SAS の詳細については、「[Shared Access Signatures (SAS) の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+Azure Resource Manager テンプレート内で使用される成果物を Azure Storage アカウントの Shared Access Signature (SAS) を使用してセキュリティで保護する方法について説明します。 デプロイの成果物は、メイン テンプレート ファイルに加え、デプロイを完了するために必要なすべてのファイルです。 たとえば「[チュートリアル: Azure Resource Manager テンプレートを使用して SQL BACPAC ファイルをインポートする](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)」では、Azure SQL Database がメイン テンプレートによって作成されます。テーブルを作成してデータを挿入するために BACPAC ファイルも呼び出されます。 BACPAC ファイルは成果物として、Azure ストレージ アカウントに格納されます。 成果物へのアクセスには、ストレージ アカウント キーが使用されています。 このチュートリアルでは、SAS を使用して、ご自分の Azure Storage アカウント内の BACPAC ファイルへの制限付きアクセスを許可します。 SAS の詳細については、「[Shared Access Signatures (SAS) の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 リンクされたテンプレートをセキュリティで保護する方法については、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](./resource-manager-tutorial-create-linked-templates.md)」を参照してください。
 
@@ -40,6 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```azurecli-interactive
     openssl rand -base64 32
     ```
+
     Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="prepare-a-bacpac-file"></a>BACPAC ファイルを準備する
@@ -52,77 +53,63 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * BACPAC ファイルをコンテナーにアップロードします。
 * BACPAC ファイルの SAS トークンを取得します。
 
-PowerShell スクリプトを使用してこれらの手順を自動化するには、「[リンクされたテンプレートをアップロードする](./resource-manager-tutorial-create-linked-templates.md#upload-the-linked-template)」のスクリプトを参照してください。
+1. **[試してみる]** を選択し、Cloud Shell を開いて、シェル ウィンドウに次の PowerShell スクリプトを貼り付けます。
 
-### <a name="download-the-bacpac-file"></a>BACPAC ファイルをダウンロードする
+    ```azurepowershell-interactive
+    $projectName = Read-Host -Prompt "Enter a project name"   # This name is used to generate names for Azure resources, such as storage account name.
+    $location = Read-Host -Prompt "Enter a location (i.e. centralus)"
 
-[BACPAC ファイル](https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac)をダウンロードし、お使いのローカル コンピューターに同じ名前 (**SQLDatabaseExtension.bacpac**) で保存します。
+    $resourceGroupName = $projectName + "rg"
+    $storageAccountName = $projectName + "store"
+    $containerName = "bacpacfile" # The name of the Blob container to be created.
 
-### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+    $bacpacURL = "https://github.com/Azure/azure-docs-json-samples/raw/master/tutorial-sql-extension/SQLDatabaseExtension.bacpac"
+    $bacpacFileName = "SQLDatabaseExtension.bacpac" # A file name used for downloading and uploading the BACPAC file.
 
-1. 次の画像を選択して、Azure portal で Resource Manager テンプレートを開きます。
+    # Download the bacpac file
+    Invoke-WebRequest -Uri $bacpacURL -OutFile "$home/$bacpacFileName"
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-storage-account-create%2fazuredeploy.json" target="_blank"><img src="./media/resource-manager-tutorial-secure-artifacts/deploy-to-azure.png" alt="Deploy to Azure"></a>
-2. 次のプロパティを入力します。
+    # Create a resource group
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-    * **サブスクリプション**:Azure サブスクリプションを選択します。
-    * **リソース グループ**: **[新規作成]** を選択し、名前を付けます。 リソース グループは、管理目的で使用される Azure リソース用のコンテナーです。 このチュートリアルでは、ストレージ アカウントと Azure SQL Database で同じリソース グループを使用できます。 このリソース グループ名を書き留めておいてください。このチュートリアルの中で、後で Azure SQL Database を作成するときに必要です。
-    * **場所**: リージョンを選択します。 たとえば **[米国中部]** です。
-    * **ストレージ アカウントの種類**: 既定値 (**Standard_LRS**) を使用します。
-    * **場所**: 既定値 ( **[resourceGroup().location]** ) を使用します。 これは、ストレージ アカウント用のリソース グループの場所を使用することを意味します。
-    * **上記の使用条件に同意する**: (選択済み)
-3. **[購入]** を選択します。
-4. ポータルの右上隅にある通知アイコン (ベル アイコン) を選択して、デプロイ状態を確認します。
+    # Create a storage account
+    $storageAccount = New-AzStorageAccount `
+        -ResourceGroupName $resourceGroupName `
+        -Name $storageAccountName `
+        -Location $location `
+        -SkuName "Standard_LRS"
 
-    ![Resource Manager チュートリアルのポータルの通知ウィンドウ](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-portal-notifications-pane.png)
-5. ストレージ アカウントが正常にデプロイされたら、通知ウィンドウで **[リソース グループに移動]** を選択して、リソース グループを開きます。
+    $context = $storageAccount.Context
 
-### <a name="create-a-blob-container"></a>BLOB コンテナーを作成する
+    # Create a container
+    New-AzStorageContainer -Name $containerName -Context $context
 
-ファイルをアップロードする前に、BLOB コンテナーが必要です。
+    # Upload the bacpac file
+    Set-AzStorageBlobContent `
+        -Container $containerName `
+        -File "$home/$bacpacFileName" `
+        -Blob $bacpacFileName `
+        -Context $context
 
-1. ストレージ アカウントを選択して開きます。 リソース グループにストレージ アカウントが 1 つだけ表示されていることを確認できます。 ご自分のストレージ アカウント名は、次のスクリーン ショットに示されているものとは異なります。
+    # Generate a SAS token
+    $bacpacURI = New-AzStorageBlobSASToken `
+        -Context $context `
+        -Container $containerName `
+        -Blob $bacpacFileName `
+        -Permission r `
+        -ExpiryTime (Get-Date).AddHours(8.0) `
+        -FullUri
 
-    ![Resource Manager チュートリアルのストレージ アカウント](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-storage-account.png)
+    $str = $bacpacURI.split("?")
 
-2. **[BLOB]** タイルを選択します。
+    Write-Host "You need the blob url and the SAS token later in the tutorial:"
+    Write-Host $str[0]
+    Write-Host (-join ("?", $str[1]))
 
-    ![Resource Manager チュートリアルの BLOB](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-blobs.png)
-3. 上部の **[+ コンテナー]** を選択して、新しいコンテナーを作成します。
-4. 次の値を入力します。
+    Write-Host "Press [ENTER] to continue ..."
+    ```
 
-    * **名前**: 「**sqlbacpac**と入力します。
-    * **パブリック アクセス レベル**: 既定値 ( **[プライベート (匿名アクセスなし)]** ) を使用します。
-5. **[OK]** を選択します。
-6. **[sqlbacpac]** を選択して、新規作成されたコンテナーを開きます。
-
-### <a name="upload-the-bacpac-file-to-the-container"></a>BACPAC ファイルをコンテナーにアップロードする
-
-1. **[アップロード]** を選択します。
-2. 次の値を入力します。
-
-    * **ファイル**: 指示に従って、前にダウンロードした BACPAC ファイルを選択します。 既定の名前は **SQLDatabaseExtension.bacpac** です。
-    * **認証の種類**: **[SAS]** を選択します。  *[SAS]* は既定値です。
-3. **[アップロード]** を選択します。  ファイルのアップロードが成功すると、ファイル名がコンテナー内に一覧表示されます。
-
-### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />SAS トークンを生成する
-
-1. コンテナーの **SQLDatabaseExtension.bacpac** を右クリックした後、 **[SAS の生成]** を選択します。
-2. 次の値を入力します。
-
-    * **アクセス許可**: 既定値である **[読み取り]** を使用します。
-    * **開始日時と終了日時**: 既定値では、SAS トークンは 8 時間使用できます。 このチュートリアルを完了するためにもっと時間が必要な場合は、 **[有効期限]** を更新します。
-    * **使用できる IP アドレス**: このフィールドは空のままにします。
-    * **許可されるプロトコル**: 既定値である **[HTTPS]** を使用します。
-    * **署名キー**: 既定値である **[キー 1]** を使用します。
-3. **[BLOB SAS トークンおよび URL を生成]** を選択します。
-4. **BLOB SAS URL** のコピーを作成します。 このURL の中央に、ファイル名 **SQLDatabaseExtension.bacpac** があります。  URL は、このファイル名によって 3 つの部分に分割されます。
-
-   - **成果物の場所**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/ 場所の末尾が "/" であることを確認します。
-   - **BACPAC ファイル名**: SQLDatabaseExtension.bacpac。
-   - **[Artifact location SAS token]\(成果物の場所の SAS トークン\)** : トークンの前に "?" があることを確認します。
-
-     これら 3 つの値は、「[テンプレートのデプロイ](#deploy-the-template)」で必要です。
+1. BACPAC ファイルの URL と SAS トークンを書き留めます。 これらの値は、テンプレートをデプロイするときに必要です。
 
 ## <a name="open-an-existing-template"></a>既存のテンプレートを開く
 
@@ -132,15 +119,15 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 2. **[ファイル名]** に以下の URL を貼り付けます。
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json
+    https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy2.json
     ```
+
 3. **[開く]** を選択して、ファイルを開きます。
 
-    テンプレート内に定義されているリソースは 5 つあります。
+    テンプレート内に定義されているリソースは 4 つあります。
 
    * `Microsoft.Sql/servers` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers)をご覧ください。
-   * `Microsoft.SQL/servers/securityAlertPolicies` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies)をご覧ください。
-   * `Microsoft.SQL/servers/filewallRules` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules)をご覧ください。
+   * `Microsoft.SQL/servers/firewallRules` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules)をご覧ください。
    * `Microsoft.SQL/servers/databases`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)をご覧ください。
    * `Microsoft.SQL/server/databases/extensions`  [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions)をご覧ください。
 
@@ -149,39 +136,30 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 
 ## <a name="edit-the-template"></a>テンプレートの編集
 
-次の追加パラメーターを追加します。
+1. storageAccountKey のパラメーター定義を次のパラメーター定義に置き換えます。
 
-```json
-"_artifactsLocation": {
-    "type": "string",
-    "metadata": {
-        "description": "The base URI where artifacts required by this template are located."
-    }
-},
-"_artifactsLocationSasToken": {
-    "type": "securestring",
-    "metadata": {
-        "description": "The sasToken required to access _artifactsLocation."
+    ```json
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Specifies the SAS token required to access the artifact location."
+      }
     },
-    "defaultValue": ""
-},
-"bacpacFileName": {
-    "type": "string",
-    "defaultValue": "SQLDatabaseExtension.bacpac",
-    "metadata": {
-        "description": "The bacpac for configure the database and tables."
-    }
-}
-```
+    ```
 
-![Resource Manager チュートリアルの成果物をセキュリティで保護するためのパラメーター](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
+    ![Resource Manager チュートリアルの成果物をセキュリティで保護するためのパラメーター](./media/resource-manager-tutorial-secure-artifacts/resource-manager-tutorial-secure-artifacts-parameters.png)
 
-次の 2 つの要素の値を更新します。
+2. SQL 拡張リソースの 3 つの要素 (下記) の値を更新します。
 
-```json
-"storageKey": "[parameters('_artifactsLocationSasToken')]",
-"storageUri": "[uri(parameters('_artifactsLocation'), parameters('bacpacFileName'))]",
-```
+    ```json
+    "storageKeyType": "SharedAccessKey",
+    "storageKey": "[parameters('_artifactsLocationSasToken')]",
+    "storageUri": "[parameters('bacpacUrl')]",
+    ```
+
+完成したテンプレートは、次のようになります。
+
+[!code-json[](~/resourcemanager-templates/tutorial-sql-extension/azuredeploy3.json?range=1-106&highlight=38-43,95-97)]
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
@@ -190,27 +168,29 @@ PowerShell スクリプトを使用してこれらの手順を自動化するに
 デプロイ手順については、「[テンプレートのデプロイ](./resource-manager-tutorial-create-multiple-instances.md#deploy-the-template)」セクションを参照してください。 代わりに次の PowerShell デプロイ スクリプトを使用します。
 
 ```azurepowershell
-$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
-$adminUsername = Read-Host -Prompt "Enter the virtual machine admin username"
+$projectName = Read-Host -Prompt "Enter the project name that is used earlier"   # This name is used to generate names for Azure resources, such as storage account name.
+$location = Read-Host -Prompt "Enter a location (i.e. centralus)"
+$adminUsername = Read-Host -Prompt "Enter the sql database admin username"
 $adminPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
-$artifactsLocation = Read-Host -Prompt "Enter the artifacts location"
+$bacpacUrl = Read-Host -Prompt "Enter the BACPAC url"
 $artifactsLocationSasToken = Read-Host -Prompt "Enter the artifacts location SAS token" -AsSecureString
-$bacpacFileName = Read-Host -Prompt "Enter the BACPAC file name"
 
-New-AzResourceGroup -Name $resourceGroupName -Location $location
+$resourceGroupName = $projectName + "rg"
+
+#New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `
-    -_artifactsLocation $artifactsLocation `
     -_artifactsLocationSasToken $artifactsLocationSasToken `
-    -bacpacFileName $bacpacFileName `
+    -bacpacUrl $bacpacUrl `
     -TemplateFile "$HOME/azuredeploy.json"
+
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 生成されたパスワードを使用します。 「[前提条件](#prerequisites)」を参照してください。
-_artifactsLocation、_artifactsLocationSasToken、および bacpacFileName の値については、「[Generate a SAS token](#generate-a-sas-token)」(SAS トークンの生成) を参照してください。
+_artifactsLocation、_artifactsLocationSasToken、および bacpacFileName の値については、「[BACPAC ファイルを準備する](#prepare-a-bacpac-file)」を参照してください。
 
 ## <a name="verify-the-deployment"></a>デプロイを検証する
 

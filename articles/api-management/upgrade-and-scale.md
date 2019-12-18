@@ -71,7 +71,7 @@ Azure API Management (APIM) インスタンスは、ユニットを追加する�
 5. **[保存]** をクリックします。
 
 ## <a name="downtime-during-scaling-up-and-down"></a>スケールアップおよびスケールダウンの際のダウンタイム
-Developer レベルからのスケールダウンまたは Developer レベルへのスケールアップを行うとき、ダウンタイムが発生します。 それ以外の場合、ダウンタイムはありません。 
+Developer レベルへのスケールダウンまたは Developer レベルからのスケールアップを行うとき、ダウンタイムが発生します。 それ以外の場合、ダウンタイムはありません。 
 
 
 ## <a name="next-steps"></a>次の手順

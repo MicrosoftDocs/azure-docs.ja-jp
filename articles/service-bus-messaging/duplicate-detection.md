@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: bee8c1d2a1cd313c7fe59d8e53379dc57554e98c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4cd5fc50c35f4c4adb63c9d91af05dcf8b2dda40
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618571"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924635"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -67,6 +67,8 @@ Service Bus メッセージングの詳細については、次のトピック�
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+クライアント コードによって、以前と同じ *MessageId* を持つメッセージを再送信できない場合は、安全に再処理できるメッセージを設計することが重要です。 このためのさまざまな手法について詳しくは、[冪等性に関するブログ投稿](https://particular.net/blog/what-does-idempotent-mean)をご覧ください。
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

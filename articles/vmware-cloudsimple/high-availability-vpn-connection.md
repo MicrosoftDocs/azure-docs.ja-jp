@@ -55,7 +55,7 @@ group 2
 lifetime 28800
 ```
 
-### <a name="3-create-a-tunnel-group"></a>手順 3.トンネル グループを作成する
+### <a name="3-create-a-tunnel-group"></a>3.トンネル グループを作成する
 
 IPsec 属性以下にトンネル グループを作成します。 ピア IP アドレスとトンネル事前共有キーを構成します。これは、[サイト間 VPN ゲートウェイを構成する](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway)ときに設定します。
 
@@ -176,7 +176,7 @@ Palo Alto ファイアウォールにサインインし、 **[Network]\(ネッ�
 
 前の手順を繰り返して、セカンダリ トンネル インターフェイス経由でセカンダリ/バックアップ ルートとして使用する Private Cloud のサブネットに別のルートを作成します。 今回は、プライマリ ルートとは異なるトンネル ID とより高いメトリックを選択します。
 
-### <a name="3-define-the-cryptographic-profile"></a>手順 3.暗号化プロファイルを定義する
+### <a name="3-define-the-cryptographic-profile"></a>3.暗号化プロファイルを定義する
 
 IKEv1 フェーズ 1 で VPN トンネルを設定するために使用する ID、認証、および暗号化のプロトコルとアルゴリズムを指定する暗号化プロファイルを定義します。
 

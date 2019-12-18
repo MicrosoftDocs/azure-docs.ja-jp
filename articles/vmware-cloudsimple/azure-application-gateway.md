@@ -65,7 +65,7 @@ Azure 仮想ネットワークをプライベート クラウドに接続する�
 
 4. [コピーしたピアリング情報を使用して、仮想ネットワークを ExpressRoute 回線にリンクします](virtual-network-connection.md)。
 
-## <a name="3-deploy-an-azure-application-gateway"></a>手順 3.Azure アプリケーション ゲートウェイをデプロイする
+## <a name="3-deploy-an-azure-application-gateway"></a>3.Azure アプリケーション ゲートウェイをデプロイする
 
 これを行うための詳細な手順は、「[Azure portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する](../application-gateway/create-url-route-portal.md)」で確認できます。 必要な手順の概要は次のとおりです。
 

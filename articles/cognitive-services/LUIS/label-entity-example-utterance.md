@@ -25,7 +25,7 @@ ms.locfileid: "74383704"
 
 「`hi, please I want a cheese pizza in 20 minutes`」というフレーズについて考えます。 
 
-1. エンティティの左端のテキストを選択し、次に右端のテキストを選択して、ラベルを付けるエンティティ (この例では、完全な注文) を選択します。 次の画像では、_完全な注文_にラベルが付けられています。
+1. エンティティの左端のテキストを選択し、次に右端のテキストを選択して、ラベルを付けるエンティティ（この例では、Complete Order）を選択します。 次の画像では、_Complete Order_ にラベルが付けられています。
 
     > [!div class="mx-imgBorder"]
     > ![完全な機械学習エンティティにラベルを付ける](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
@@ -65,7 +65,7 @@ ms.locfileid: "74383704"
     > [!div class="mx-imgBorder"]
     > ![機械学習エンティティのエンティティ パレット](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
 
-3. 発話例の中で、カーソルによってエンティティに_ペイント_します。
+3. 発話例の中で、カーソルによってエンティティに _ペイント_ します。
 
     > [!div class="mx-imgBorder"]
     > ![機械学習エンティティのエンティティ パレット](media/label-utterances/example-1-label-machine-learned-entity-palette-label-action.png)

@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304706"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893350"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure Storage を使用して Azure のメトリック データとログ データをアーカイブする
 
@@ -70,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="route-resource-data-to-the-storage-account"></a>リソース データをストレージ アカウントにルーティングする
 
-次に、**リソースの診断設定**をセットアップすることにより、ストレージ アカウントにルーティングされるリソース レベルのデータ (リソース メトリックと診断ログ) を構成します。
+次に、**リソースの診断設定**をセットアップすることにより、ストレージ アカウントにルーティングされるリソースレベルのデータ (リソース メトリックとリソース ログ) を構成します。
 
 1. 左側のナビゲーション一覧の **[モニター]** ボタンをクリックし、 **[診断設定]** をクリックします。 サブスクリプションに含まれ Azure Monitor で監視データを生成するすべてのリソースの一覧が表示されます。 この一覧にリソースが表示されない場合は、[ロジック アプリを作成](../../logic-apps/quickstart-create-first-logic-app-workflow.md)してリソースを用意してから、診断設定の構成に進むことができます。
 
@@ -162,7 +162,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 5. リソース ID、日付、時刻のコンテナーをクリックして、PT1H.json ファイルに移動します。 PT1H.json ファイルをクリックして、 **[ダウンロード]** をクリックします。 各 PT1H.json BLOB には、BLOB の URL で指定された時間内に発生したイベントの JSON BLOB が含まれます (例: h = 12)。 現在の時間内にイベントが発生すると、PT1H.json ファイルにイベントが追加されます。 ログ イベントは 1 時間ごとに個々の BLOB に分類されるため、分の値 (m = 00) は常に 00 です。
 
-   ストレージ アカウントに保存されている JSON イベントを表示できるようになります。 リソース診断ログの BLOB の形式は次のとおりです。
+   ストレージ アカウントに保存されている JSON イベントを表示できるようになります。 リソース ログの BLOB の形式は次のとおりです。
 
    insights-logs-{ログ カテゴリ名}/resourceId=/{リソース ID}/y={4 桁の年数値}/m={2 桁の月数値}/d={2 桁の日数値}/h={2 桁の 24 時制の時間数値}/m=00/PT1H.json
 

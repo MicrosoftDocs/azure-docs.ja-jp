@@ -11,27 +11,27 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b76d8f25cfb8bd1dfda43c8383a538f8cf9769b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 94cdf683bc8524786e1f32607ef18f976990ba07
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818453"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979123"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Azure ストレージ サービスのデータにアクセスする
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-この記事では、Azure Machine Learning データストアを使用して Azure ストレージ サービスのデータに簡単にアクセスする方法について説明します。 データストアは、サブスクリプション ID やトークン承認など接続情報を格納する目的で使用されます。 データストアを使用すれば、ストレージにアクセスするために接続情報をスクリプトにハードコーディングする必要がなくなります。 データストアは、これらの [Azure Storage ソリューション](#matrix)から作成できます。 サポートされていないストレージ ソリューションの場合、機械学習実験中のデータ エグレス コストを節約するため、サポートされている Azure Storage ソリューションにデータを移行することをお勧めします。 [データの移動方法に関する詳細情報](#move)。 
+この記事では、Azure Machine Learning データストアを使用して Azure ストレージ サービスのデータに簡単にアクセスする方法について説明します。 データストアは、サブスクリプション ID やトークン承認など接続情報を格納する目的で使用されます。 データストアを使用すれば、ストレージにアクセスするために接続情報をスクリプトにハードコーディングする必要がなくなります。 データストアは、これらの [Azure Storage ソリューション](#matrix)から作成できます。 サポートされていないストレージ ソリューションの場合は、また機械学習実験中のデータ エグレス コストを節約するために、サポートされている Azure Storage ソリューションにデータを移動することをお勧めします。 [データの移動方法に関する詳細情報](#move)。 
 
 ここでは、次のタスクの例を示します。
-* [データストアを登録する](#access)
-* [ワークスペースからデータストアを取得する](#get)
-* [データストアを使用してデータをアップロードおよびダウンロードする](#up-and-down)
-* [トレーニング中にデータにアクセスする](#train)
-* [Azure にデータを移動する](#move)
+* データストアを登録する
+* ワークスペースからデータストアを取得する
+* データストアを使用してデータをアップロードおよびダウンロードする
+* トレーニング中にデータにアクセスする
+* Azure Storage サービスにデータを移動する
 
 ## <a name="prerequisites"></a>前提条件
-
+次のものが必要になります。
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) を今すぐお試しください。
 
 - [Azure BLOB コンテナー](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)または [Azure ファイル共有](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)が含まれる Azure ストレージ アカウント。
@@ -58,7 +58,13 @@ Azure ストレージ ソリューションをデータストアとして登録�
 
 すべての登録メソッドは [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) クラス上にあり、register_azure_* という形式があります。
 
-register() メソッドの設定に必要な情報については、[Azure Machine Learning studio](https://ml.azure.com) を参照してください。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー名、ファイル共有名などの情報が表示されます。 アカウント キーまたは SAS トークンなどの認証情報については、左側の **[設定]** ウィンドウの **[アカウント キー]** に移動します。 
+register() メソッドにデータを入力するために必要な情報は、[Azure Machine Learning Studio](https://ml.azure.com) と次の手順を使用して見つけることができます。
+
+1. 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 
+2. **[概要]** ページには、アカウント名、コンテナー名、ファイル共有名などの情報が表示されます。 
+3. アカウント キーまたは SAS トークンなどの認証情報については、左側の **[設定]** ウィンドウの **[アカウント キー]** に移動します。 
+
+>[重要] ストレージ アカウントが VNET 内にある場合は、Azure BLOB データストアの作成のみがサポートされます。 パラメーター `grant_workspace_access` を `True` に設定して、ワークスペースにストレージ アカウントへのアクセス権を付与します。
 
 次の例では、Azure BLOB コンテナーまたは Azure ファイル共有のデータストアとしての登録を示しています。
 
@@ -74,7 +80,6 @@ register() メソッドの設定に必要な情報については、[Azure Machi
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
-    ストレージ アカウントが VNET 内にある場合、Azure BLOB データストアの作成のみがサポートされます。 パラメーター `grant_workspace_access` を `True` に設定して、ワークスペースにストレージ アカウントへのアクセス権を付与します。
 
 + **Azure ファイル共有データストア**の場合、[`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) を使用します。 
 
@@ -102,9 +107,9 @@ Azure Machine Learning Studio のいくつかの手順で、新しいデータ�
 1. **[+ 新しいデータストア]** を選択します。
 1. 新しいデータスト アフォームに入力します。 フォームは、Azure ストレージの種類と選択した認証の種類に基づいて更新されます。
   
-フォームの記入に必要な情報については、[Azure Machine Learning Studio](https://ml.azure.com) を参照してください。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー名、ファイル共有名などの情報が表示されます。 アカウント キー、SAS トークンなどの認証項目については、左側の **[設定]** ペインの **[アカウント キー]** に移動します。
+このフォームにデータを入力するために必要な情報は、[Azure portal](https://portal.azure.com) を使用して見つけることができます。 左側のウィンドウで **[ストレージ アカウント]** を選択し、登録するストレージ アカウントを選択します。 **[概要]** ページには、アカウント名、コンテナー名、ファイル共有名などの情報が表示されます。 アカウント キー、SAS トークンなどの認証項目については、左側の **[設定]** ペインの **[アカウント キー]** に移動します。
 
-次の例は、Azure blob データストアを作成するフォームがどのように表示されるかを示しています。 
+次の例は、Azure BLOB データストアの作成のためのフォームがどのように表示されるかを示しています。 
     
  ![新しいデータストア](media/how-to-access-data/new-datastore-form.png)
 
@@ -128,7 +133,7 @@ for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
 
-ワークスペースを作成すると、Azure Blob コンテナーと Azure ファイル共有がワークスペースに登録されて、それぞれに `workspaceblobstore` と `workspacefilestore` という名前が付けられます。 これらには、ワークスペースにアタッチされているストレージ アカウントにプロビジョニングされる、Blob コンテナーとファイル共有の接続情報が格納されます。 `workspaceblobstore` は既定のデータストアとして設定されます。
+ワークスペースを作成すると、Azure BLOB コンテナーと Azure ファイル共有が、それぞれ `workspaceblobstore` と `workspacefilestore` という名前のワークスペースに自動的に登録されます。 これらには、ワークスペースにアタッチされているストレージ アカウントでプロビジョニングされた BLOB コンテナーとファイル共有の接続情報が格納されます。 `workspaceblobstore` は既定のデータストアとして設定されます。
 
 ワークスペースの既定のデータストアを取得するには、次のコマンドを使用します。
 
@@ -189,7 +194,7 @@ datastore.download(target_path='your target path',
 
 方法|方法|説明|
 ----|-----|--------
-マウントする| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| コンピューティング先にデータストアをマウントするために使用します。
+マウントする| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| コンピューティング先にデータストアをマウントするために使用します。 マウントされると、データストアのすべてのファイルがコンピューティング先からアクセスできるようになります。
 ダウンロード|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|データストアの内容を `path_on_compute` によって指定された場所にダウンロードするために使用します。 <br><br> このダウンロードは実行前に行われます。
 アップロード|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| `path_on_compute` によって指定された場所からデータストアにファイルをアップロードするために使用します。 <br><br> このアップロードは実行後に行われます。
 
@@ -199,7 +204,7 @@ datastore.download(target_path='your target path',
 #to mount the full contents in your storage to the compute target
 datastore.as_mount()
 
-#to download the contents of the `./bar` directory in your storage to the compute target
+#to download the contents of only the `./bar` directory in your storage to the compute target
 datastore.path('./bar').as_download()
 ```
 > [!NOTE]
@@ -207,13 +212,14 @@ datastore.path('./bar').as_download()
 
 ### <a name="examples"></a>例 
 
-次のコード例は、トレーニング中に自分のデータにアクセスするための [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) クラスに固有のものです。 
+トレーニング中にデータにアクセスするには [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) クラスを使用することをお勧めします。 
 
-`script_params` は、entry_script に対するパラメーターを含むディクショナリです。 これを使用してデータストアを渡し、コンピューティング先でデータを使用できるようにする方法を記述します。 [チュートリアル](tutorial-train-models-with-aml.md)ではさらに詳しく説明しています。
+`script_params` 変数は、entry_script へのパラメーターを含むディクショナリです。 これを使用してデータストアを渡し、コンピューティング先でデータを使用できるようにする方法を記述します。 [チュートリアル](tutorial-train-models-with-aml.md)ではさらに詳しく説明しています。
 
 ```Python
 from azureml.train.estimator import Estimator
 
+# notice '/' is in front, this indicates the absolute path
 script_params = {
     '--data_dir': datastore.path('/bar').as_mount()
 }
@@ -235,6 +241,24 @@ est = Estimator(source_directory='your code directory',
                 compute_target=compute_target,
                 entry_script='train.py',
                 inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
+```
+トレーニングに RunConfig オブジェクトを使用する場合は、[DataReference](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) オブジェクトを設定する必要があります。 
+
+次のコードは、予測パイプラインで DataReference オブジェクトを操作する方法を示しています。 完全な例については、この[ノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb)を参照してください。
+
+```Python
+from azureml.core import Datastore
+from azureml.data.data_reference import DataReference
+from azureml.pipeline.core import PipelineData
+
+def_blob_store = Datastore(ws, "workspaceblobstore")
+
+input_data = DataReference(
+       datastore=def_blob_store,
+       data_reference_name="input_data",
+       path_on_datastore="20newsgroups/20news.pkl")
+
+   output = PipelineData("output", datastore=def_blob_store)
 ```
 <a name="matrix"></a>
 

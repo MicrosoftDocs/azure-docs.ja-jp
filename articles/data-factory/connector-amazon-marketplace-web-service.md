@@ -1,5 +1,5 @@
 ---
-title: Amazon Marketplace Web Service からデータをコピーする
+title: AWS Marketplace からデータをコピーする
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Amazon Marketplace Web Service からサポートされているシンク データ ストアにデータをコピーする方法について説明します。
 services: data-factory
 ms.service: data-factory
@@ -9,13 +9,14 @@ ms.author: jingwang
 author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
+ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: 24e0de3efec4e2d442f746e19f4c30363f0b4bfa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: db4173cdaf18d827c6a3c047777f7d5e67d79b84
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218753"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931118"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Marketplace Web Service からデータをコピーする
 

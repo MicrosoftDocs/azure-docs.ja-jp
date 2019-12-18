@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 8bc7f879a2c2e8b1e0e2d82216241704a466ad60
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 211f8c8a203b81a4df6a8e9515b403f99cec572a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231134"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926329"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
 
@@ -29,9 +29,9 @@ Notification Hubs バインディングは [Microsoft.Azure.WebJobs.Extensions.N
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>パッケージ - Functions 2.x 以降
 
-このバインディングは、Functions 2.x では使用できません。
+このバインディングは、Functions 2.x 以降では使用できません。
 
 ## <a name="example---template"></a>例 - テンプレート
 

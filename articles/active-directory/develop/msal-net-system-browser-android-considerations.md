@@ -1,29 +1,25 @@
 ---
-title: Xamarin Android システム ブラウザーに関する考慮事項 (Microsoft Authentication Library for .NET)
+title: Xamarin Android のシステム ブラウザーに関する考慮事項 (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
-description: .NET 用 Microsoft 認証ライブラリ (MSAL.NET) を使用しているときに Xamarin Android でシステム ブラウザーを使用する場合の固有の考慮事項について説明します。
+description: .NET 用 Microsoft 認証ライブラリ (MSAL.NET) で Xamarin Android 上のシステム ブラウザーを使用する場合の固有の考慮事項について説明します。
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f83283cc02c60eb452d0e414c0b21843b48f343b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1d3ea2554fac8654b052e3e38633af23e7c778b3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150364"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915461"
 ---
 #  <a name="xamarin-android-system-browser-considerations-with-msalnet"></a>MSAL.NET での Xamarin Android のシステム ブラウザーに関する考慮事項
 

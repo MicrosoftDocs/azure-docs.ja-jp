@@ -1,28 +1,22 @@
 ---
-title: Azure PowerShell のサンプル スクリプト - ストレージ アカウント アクセス キーのローテーション | Microsoft Docs
+title: PowerShell を使用してストレージ アカウントのアクセス キーをローテーションする
+titleSuffix: Azure Storage
 description: Azure Storage アカウントを作成し、そのアカウント アクセス キーの 1 つを取得してローテーションします。
 services: storage
-documentationcenter: na
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: azurecli
 ms.topic: sample
-ms.date: 06/13/2017
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 0aae733f94ab4a217ca41ca3de6df2e5da47df50
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 54a7a6cb89c88726853a39ab5b2a61e1f0cde0b5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244353"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894938"
 ---
-# <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>ストレージ アカウントを作成してアカウント アクセス キーのローテーションを行う
+# <a name="rotate-storage-account-access-keys-with-powershell"></a>PowerShell を使用してストレージ アカウントのアクセス キーをローテーションする
 
 このスクリプトは、Azure Storage アカウントを作成し、新しいストレージ アカウントのプライマリ アクセス キーを表示した後、キーの更新 (ローテーション) を行います。
 
@@ -34,7 +28,7 @@ ms.locfileid: "56244353"
 
 [!code-powershell[main](../../../powershell_scripts/storage/rotate-storage-account-keys/rotate-storage-account-keys.ps1 "Rotate storage account keys")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
 次のコマンドを実行して、リソース グループ、ストレージ アカウント、すべての関連リソースを削除します。
 

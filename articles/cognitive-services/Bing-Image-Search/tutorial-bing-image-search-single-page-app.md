@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868257"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930696"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>チュートリアル:Bing Image Search API を使用して単一ページのアプリを作成する
 
@@ -40,7 +40,7 @@ Bing Image Search API を使用すると、Web 上で高品質で関連性の高
 
 ## <a name="manage-and-store-user-subscription-keys"></a>ユーザー サブスクリプション キーの管理と格納
 
-このアプリケーションは、Web ブラウザーの固定ストレージを使用して API サブスクリプション キーを格納します。 格納されているキーがない場合、この Web ページでは、後で使用できるようにキーの入力と格納をユーザーに求めます。 API によって後でキーが拒否された場合、そのキーはアプリでストレージから削除されます。
+このアプリケーションは、Web ブラウザーの固定ストレージを使用して API サブスクリプション キーを格納します。 格納されているキーがない場合、この Web ページでは、後で使用できるようにキーの入力と格納をユーザーに求めます。 API によって後でキーが拒否された場合、そのキーはアプリでストレージから削除されます。 このサンプルでは、グローバル エンドポイントを使用しています。 または、Azure portal に表示される、リソースの[カスタム サブドメイン](../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを使用することもできます。
 
 
 `localStorage` オブジェクト (ブラウザーでサポートされている場合) または Cookie のいずれかを使用する `storeValue` 関数と `retrieveValue` 関数を定義します。

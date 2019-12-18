@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: e112fdc9e6f518e2ea3c72161e8978118cf19335
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708726"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890316"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>チュートリアル:Azure Spring Cloud で Java Spring アプリケーションをデプロイ用に準備する
 
@@ -176,3 +176,5 @@ pom.xml の依存関係セクションに `spring-boot-starter-actuator` を含�
 
 > [!div class="nextstepaction"]
 > [構成サーバーの設定方法を学習する](spring-cloud-tutorial-config-server.md)。
+
+その他のサンプルを GitHub で入手できます ([Azure Spring Cloud のサンプル](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/service-binding-cosmosdb-sql))。

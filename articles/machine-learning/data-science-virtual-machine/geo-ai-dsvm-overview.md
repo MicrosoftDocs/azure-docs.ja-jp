@@ -1,5 +1,5 @@
 ---
-title: Geo Artificial Intelligence とは
+title: Geo Artificial Intelligence DSVM とは
 titleSuffix: Azure Data Science Virtual Machine
 description: Geo Artificial Intelligence Data Science Virtual Machine は、地理データを扱うための ArcGIS Pro のほか、ML や AI を扱うための Python、R、データ サイエンス ツールキットを備えています。
 keywords: ディープ ラーニング、AI、データ サイエンス ツール、データ サイエンス仮想マシン、地理空間分析
@@ -10,12 +10,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: overview
 ms.date: 03/05/2018
-ms.openlocfilehash: 3d17006b9d35f0abbcc0e9c60f38ab693c1d088d
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 7e2976596ca6b55ea57e00015e53b2721438e990
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195589"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899920"
 ---
 # <a name="what-is-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Geo Artificial Intelligence Data Science Virtual Machine とは
 

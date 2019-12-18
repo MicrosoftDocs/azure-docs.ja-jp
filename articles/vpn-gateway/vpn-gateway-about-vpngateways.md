@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 58a92536510d2f434154169cbefff60487a422fa
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 11187b403b9bc23a0aa20eb5ee7a5e4923bb7276
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075439"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896662"
 ---
 # <a name="what-is-vpn-gateway"></a>VPN ゲートウェイとは
 
@@ -76,7 +76,7 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 
 ### <a name="S2S"></a>サイト間
 
-サイト間 (S2S) VPN ゲートウェイ接続とは、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介した接続です。 S2S 接続は、クロスプレミスおよびハイブリッド構成に使用できます。 S2S 接続では、オンプレミスの VPN デバイスが必要です。そのデバイスは、パブリック IP アドレスを割り当てられていて、NAT の内側に配置されていない必要があります。 VPN デバイスの選択に関する詳細については、[VPN Gateway に関する FAQ の VPN デバイスに関する項目](vpn-gateway-vpn-faq.md#s2s)を参照してください。
+サイト間 (S2S) VPN ゲートウェイ接続とは、IPsec/IKE (IKEv1 または IKEv2) VPN トンネルを介した接続です。 S2S 接続は、クロスプレミスおよびハイブリッド構成に使用できます。 サイト間接続には、パブリック IP アドレスを割り当てたオンプレミスの VPN デバイスが必要です。 VPN デバイスの選択に関する詳細については、[VPN Gateway に関する FAQ の VPN デバイスに関する項目](vpn-gateway-vpn-faq.md#s2s)を参照してください。
 
 ![Azure VPN Gateway サイト間接続の例](./media/vpn-gateway-about-vpngateways/vpngateway-site-to-site-connection-diagram.png)
 

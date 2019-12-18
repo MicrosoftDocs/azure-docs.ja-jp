@@ -70,7 +70,7 @@ Web ブラウザーで、クラスターのコントロール パネルを開き
 
 このページのオプションの詳細については、クラスター構成ガイドの[**クラスター** > **FXT ノード**](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_fxt_nodes.html)に関する項目を参照してください。
 
-## <a name="3-click-the-allow-to-join-button"></a>手順 3.[Allow to Join] (参加を許可) ボタンをクリックする 
+## <a name="3-click-the-allow-to-join-button"></a>3.[Allow to Join] (参加を許可) ボタンをクリックする 
 
 追加するノードの **[Actions]\(操作\)** 列にある **[Allow To Join]\(参加を許可\)** * ボタンをクリックします。
 

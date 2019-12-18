@@ -1,8 +1,7 @@
 ---
-title: Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す (v1.0) | Microsoft Docs
+title: Android でのユーザーのサインインと Microsoft Graph API の呼び出し (v1.0) | Azure
 description: Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す方法について説明します。
 services: active-directory
-documentationcenter: android
 author: rwike77
 manager: CelesteDG
 ms.assetid: da1ee39f-89d3-4d36-96f1-4eabbc662343
@@ -17,12 +16,12 @@ ms.author: ryanwi
 ms.reviewer: brandwe, jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0da92944149f983960605bd219ce9707bb3e9276
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 87dd60f00278389c1fc03d6fd69652608ae0c998
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150276"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966063"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app-v10"></a>クイック スタート:Android アプリからユーザーにサインインし、Microsoft Graph API を呼び出す (v1.0)
 

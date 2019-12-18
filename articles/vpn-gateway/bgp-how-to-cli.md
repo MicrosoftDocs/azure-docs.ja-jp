@@ -100,7 +100,7 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
 az network vnet-gateway create -n VNet1GW -l eastus --public-ip-address GWPubIP -g TestBGPRG1 --vnet TestVNet1 --gateway-type Vpn --sku HighPerformance --vpn-type RouteBased --asn 65010 --no-wait
 ```
 
-#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>手順 3.Azure BGP ピア IP アドレスを取得する
+#### <a name="3-obtain-the-azure-bgp-peer-ip-address"></a>3.Azure BGP ピア IP アドレスを取得する
 
 ゲートウェイが作成されたら、Azure VPN ゲートウェイの BGP ピア IP アドレスを取得する必要があります。 オンプレミスの VPN デバイスの BGP ピアとして VPN ゲートウェイを構成するには、このアドレスが必要です。
 
@@ -189,7 +189,7 @@ az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 az network local-gateway show -n Site5 -g TestBGPRG5
 ```
 
-#### <a name="3-create-the-testvnet1-to-site5-connection"></a>手順 3.TestVNet1-to-Site5 接続を作成する
+#### <a name="3-create-the-testvnet1-to-site5-connection"></a>3.TestVNet1-to-Site5 接続を作成する
 
 この手順では、TestVNet1 から Site5 への接続を作成します。 既に説明したように、同じ Azure VPN ゲートウェイで BGP 接続と BGP 以外の接続の両方を混在させることはできません。 接続プロパティで BGP を有効にしない限り、両方のゲートウェイで BGP パラメーターが既に構成されていても、Azure はこの接続の BGP を有効にしません。 サブスクリプション ID を自分の ID に置換します。
 
@@ -245,7 +245,7 @@ az network vnet subnet create --vnet-name TestVNet2 -n BackEnd -g TestBGPRG2 --a
 az network vnet subnet create --vnet-name TestVNet2 -n GatewaySubnet -g TestBGPRG2 --address-prefix 10.22.255.0/27
 ```
 
-#### <a name="3-create-the-public-ip-address"></a>手順 3.パブリック IP アドレスの作成
+#### <a name="3-create-the-public-ip-address"></a>3.パブリック IP アドレスの作成
 
 パブリック IP アドレスを要求します。 仮想ネットワーク用に作成した VPN ゲートウェイにパブリック IP アドレスが割り当てられます。
 
@@ -283,7 +283,7 @@ az network vnet-gateway show -n VNet1GW -g TestBGPRG1
 az network vnet-gateway show -n VNet2GW -g TestBGPRG2
 ```
 
-#### <a name="3-create-the-connections"></a>手順 3.接続を作成する
+#### <a name="3-create-the-connections"></a>3.接続を作成する
 
 TestVNet1 から TestVNet2 への接続と、TestVNet2 から TestVNet1 への接続を作成します。 サブスクリプション ID を自分の ID に置換します。
 

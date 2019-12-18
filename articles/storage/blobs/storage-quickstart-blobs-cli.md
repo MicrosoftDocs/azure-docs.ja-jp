@@ -1,21 +1,22 @@
 ---
-title: Azure クイック スタート - Azure CLI を使用してオブジェクト ストレージに BLOB を作成する | Microsoft Docs
+title: クイックスタート - Azure CLI を使用して BLOB を作成する
+titleSuffix: Azure Storage
 description: このクイックスタートでは、Azure CLI を使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行う方法を説明します。
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/06/2019
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 1f3143eced90f97c090c0005375ef50fe48c5f5f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c913cb978796abeed5766ffa030aaeb6142320ec
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747923"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892925"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+# <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>クイック スタート:Azure CLI を使用して BLOB を作成、ダウンロード、一覧表示する
 
 Azure CLI は、Azure リソースを管理するための、Azure のコマンド ライン エクスペリエンスです。 ブラウザーで、Azure Cloud Shell を使用して操作することができます。 また、macOS、Linux、または Windows 上にインストールし、コマンド ラインから実行することもできます。 このクイック スタートでは、Azure CLI を使用して、Azure Blob Storage との間でデータをアップロードおよびダウンロードする方法を説明します。
 

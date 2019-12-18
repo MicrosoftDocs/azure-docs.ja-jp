@@ -750,7 +750,7 @@ $ ./ggsci
 GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>手順 3.myVM2 (レプリケート) でのレプリケーションのセットアップ
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3.myVM2 (レプリケート) でのレプリケーションのセットアップ
 
 前に取得した番号で、SCN 番号を変更します。
 

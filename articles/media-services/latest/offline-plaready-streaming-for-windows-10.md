@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/01/2019
 ms.author: willzhan
-ms.openlocfilehash: 25559c7a6f66a1092007054c72f601b428fa4e7b
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 0798cffdca8d5876373c35f3f5fd657551586d43
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845514"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974055"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Windows 10 用のオフライン PlayReady ストリーミング
 
@@ -113,7 +113,6 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 
 ![PlayReady で保護された fMP4 のオフライン モード再生](./media/offline-playready-for-windows/offline-playready1.jpg)
 
-
 ビデオは PlayReady の保護下にあるため、スクリーン ショットにビデオを含めることはできません。
 
 要約すると、Azure Media Services で以下のようにしてオフライン モードを実現しました。
@@ -122,6 +121,10 @@ private async void LoadUri_Click(object sender, RoutedEventArgs e)
 * プログレッシブ ダウンロードのために、コンテンツを Azure Media Services または Azure Storage にホストできます。
 * PlayReady ライセンス配信は、Azure Media Services または他の場所から行えます。
 * 準備されたスムーズ ストリーミング コンテンツは、引き続き DASH からオンライン ストリーミングに使用することも、PlayReady を使用して DRM としてスムーズ ストリーミングに使用することもできます。
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. によって提供されるサービスであり、Google Inc. のサービス使用条件とプライバシー ポリシーが適用されます。
 
 ## <a name="next-steps"></a>次の手順
 

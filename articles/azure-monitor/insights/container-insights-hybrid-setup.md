@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: d25b9b3bb155dced973d415b396ebfaa4403b011
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/04/2019
+ms.openlocfilehash: 0d6615d832059a8b58c0d5d52533b8c8c962640d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510832"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841576"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>ハイブリッド Kubernetes クラスターに Azure Monitor for containers を構成する
 
@@ -282,6 +282,25 @@ HELM チャートを有効にする手順は次のとおりです。
 
 >[!NOTE]
 >インジェストの待ち時間 (Azure Log Analytics ワークスペースでエージェントがコミットを完了するまで) は、5 から 10 分程度です。 必要な監視データのすべてが Azure Monitor で利用できるようになるまでの間は、クラスターの状態として **[データなし]** と **[不明]** のいずれかの値が表示されます。 
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+ハイブリッド Kubernetes クラスターの監視を有効にしようとしているときにエラーが発生した場合は、PowerShell スクリプト [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1) をコピーしてコンピューターのフォルダーに保存します。 このスクリプトは、発生した問題を検出して修正するために提供されています。 次の問題を修正を検出して修正を試みるように設計されています：
+
+* 指定された Azure Monitor Log Analytics ワークスペースが有効 
+* Log Analytics ワークスペースが Azure Monitor for Containers ソリューションで構成されています。 そうでなければ、ワークスペースを構成します。
+* OmsAgent replicaset ポッドを実行中
+* OmsAgent daemonset ポッドを実行中
+* OmsAgent ヘルス サービスを実行中 
+* Log Analytics ワークスペース ID とコンテナー化されたエージェントで構成されたキーは、Insight が構成されているワークスペースと一致します。
+* すべての Linux ワーカー ノードに `kubernetes.io/role=agent` のラベルがあることを確認して、rs ポッドをスケジュールします。 存在しなければ、追加してください。
+* クラスター内のすべてのノードで `cAdvisor port: 10255` が開かれていることを検証します。
+
+Azure PowerShell を使用して実行するには、そのスクリプトを含むフォルダーで、次のコマンドを使用します：
+
+```powershell
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+```
 
 ## <a name="next-steps"></a>次の手順
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73996968"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973418"
 ---
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -46,7 +46,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
    ![追加されたクライアント IP](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
-   > Azure PostgreSQL サーバーはポート 5432 を介して通信します。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 5432 が開放されない限り、Azure SQL Database サーバーに接続することはできません。
+   > Azure PostgreSQL サーバーはポート 5432 を介して通信します。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 その場合、会社の IT 部門によってポート 5432 が開放されない限り、Hyperscale (Citus) クラスターに接続することはできません。
    >
 
 9. **[確認と作成]** 、 **[作成]** の順にクリックして、サーバーをプロビジョニングします。 プロビジョニングには数分かかります。
@@ -57,10 +57,10 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
 Azure Database for PostgreSQL サーバーを作成したときに、**citus** という名前の既定のデータベースも作成されています。 データベース サーバーに接続するには、接続文字列と管理者パスワードが必要です。
 
-1. 接続文字列を取得します。 サーバー グループ ページで、 **[接続文字列]** メニュー項目をクリックします。 ( **[設定]** の下にあります)。**C++ (libpq)** のマークが付けられている文字列を見つけます。 次のような形式になります。
+1. 接続文字列を取得します。 サーバー グループ ページで、 **[接続文字列]** メニュー項目をクリックします。 ( **[設定]** の下にあります)。**psql** のマークが付けられている文字列を見つけます。 次のような形式になります。
 
    ```
-   host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require
+   psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
    文字列をコピーします。 "{your\_password}" を以前に選択した管理者パスワードに置き換える必要があります。 システムは、プレーンテキストのパスワードを保存しないため、接続文字列に表示できません。
@@ -69,7 +69,7 @@ Azure Database for PostgreSQL サーバーを作成したときに、**citus** �
 
 3. プロンプトで、[psql](https://www.postgresql.org/docs/current/app-psql.html) ユーティリティを使用して Azure Database for PostgreSQL サーバーに接続します。 パスワードが含まれていることを確認して、接続文字列を引用符で囲んで渡します。
    ```bash
-   psql "{connection_string}"
+   psql "host=..."
    ```
 
    たとえば、次のコマンドは、サーバー グループ **mydemoserver** のコーディネーター ノードに接続します。

@@ -1,6 +1,6 @@
 ---
 title: Visual Studio を使用して Azure Storage の利用を開始する (Web ジョブ プロジェクト)
-description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の Azure Web ジョブ プロジェクトで Azure テーブル ストレージの使用を開始する方法について説明します。
+description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の Azure Web ジョブ プロジェクトで Azure Table Storage の使用を開始する方法について説明します。
 services: storage
 author: ghogen
 manager: jillfra
@@ -25,9 +25,9 @@ ms.locfileid: "74707615"
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
 
 ## <a name="overview"></a>概要
-この記事では、Azure テーブル ストレージ サービスで Azure WebJobs SDK バージョン 1.x を使用する方法を示す C# コードのサンプルを提供します。 コード サンプルでは [Web ジョブ SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) Version 1.x を使用しています。
+この記事では、Azure Table Storage サービスで Azure WebJobs SDK バージョン 1.x を使用する方法を示す C# コードのサンプルを提供します。 コード サンプルでは [Web ジョブ SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) Version 1.x を使用しています。
 
-Azure テーブル ストレージ サービスを使用すると、大量の構造化データを格納できるようになります。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。  詳細については、「 [.NET を使用して Azure Table Storage を使用する](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) 」をご覧ください。
+Azure Table Storage サービスを使用すると、大量の構造化データを格納できるようになります。 このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。 Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。  詳細については、「 [.NET を使用して Azure Table Storage を使用する](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table) 」をご覧ください。
 
 一部のコード スニペットは、手動で呼び出される関数で使用される **Table** 属性を表示します。つまり、トリガー属性を使用して呼び出すのではありません。
 

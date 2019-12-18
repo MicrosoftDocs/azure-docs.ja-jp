@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 3b56747d9bc8c8ae5884d4fb654c20d49527fed5
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 126700e6290650221a9cb9711b22472301409fca
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186089"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974174"
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>チュートリアル:AES-128 でビデオを暗号化し、キー配信サービスを使用する
 
@@ -97,13 +97,13 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 
 上で説明したように、[Transform](https://docs.microsoft.com/rest/api/media/transforms) オブジェクトはレシピであり、[Job](https://docs.microsoft.com/rest/api/media/jobs) は **Transform** が特定の入力ビデオまたはオーディオ コンテンツに適用する Media Services への実際の要求です。 **Job** は、入力ビデオの場所や出力先などの情報を指定します。
 
-このチュートリアルでは、[HTTPs ソース URL](job-input-from-http-how-to.md) から直接取り込まれたファイルに基づいてジョブの入力を作成します。
+このチュートリアルでは、[HTTPs ソース URL](job-input-from-http-how-to.md) から直接取り込んだファイルに基づいてジョブの入力を作成します。
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#SubmitJob)]
 
 ## <a name="wait-for-the-job-to-complete"></a>ジョブが完了するのを待つ
 
-ジョブが完了するまでに、一定の時間がかかります。 完了したら通知を受け取る必要があります。 次のコード例では、[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)の状態をサービスに対してポーリングする方法を示します。 待機時間が発生する可能性があるため、ポーリングは運用アプリに推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。 詳細については、[カスタム Web エンドポイントにイベントをルーティングする方法](job-state-events-cli-how-to.md)に関するページを参照してください。
+ジョブが完了するまでに、一定の時間がかかります。 完了したら通知を受け取りたいでしょう。 次のコード例では、[ジョブ](https://docs.microsoft.com/rest/api/media/jobs)の状態をサービスに対してポーリングする方法を示します。 待機時間が発生する可能性があるため、ポーリングは運用アプリに推奨されるベスト プラクティスではありません。 アカウントで過剰に使った場合、ポーリングはスロットルされる可能性があります。 開発者は、代わりに Event Grid を使う必要があります。 詳細については、[カスタム Web エンドポイントにイベントをルーティングする方法](job-state-events-cli-how-to.md)に関するページを参照してください。
 
 **Job** には通常、**Scheduled**、**Queued**、**Processing**、**Finished** (最終状態) という状態があります。 ジョブでエラーが発生すると、**Error** 状態が返されます。 ジョブがキャンセル処理中の場合は **Canceling** を受け取り、完了すると **Canceled** を受け取ります。
 
@@ -166,6 +166,10 @@ az group delete --name amsResourceGroup
 ## <a name="ask-questions-give-feedback-get-updates"></a>質問する。フィードバックする。最新情報を入手する
 
 「[Azure Media Services community (Azure Media Services コミュニティ)](media-services-community.md)」を参照して、さまざまな質問の方法、フィードバックする方法、Media Services に関する最新情報の入手方法を確認してください。
+
+## <a name="additional-notes"></a>その他のメモ
+
+* Widevine は Google Inc. が提供するサービスで、Google Inc. のサービス利用規約とプライバシーポリシーが適用されます。
 
 ## <a name="next-steps"></a>次の手順
 

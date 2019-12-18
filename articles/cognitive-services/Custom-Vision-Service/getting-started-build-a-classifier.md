@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 07/12/2019
+ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 12be696c74a32909d79be405144582cd8fc05fb6
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "73519149"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978681"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>クイック スタート:Custom Vision で分類子を構築する方法
 
@@ -109,7 +109,7 @@ Web ブラウザーで、[Custom Vision の Web ページ](https://customvision.
 
 ## <a name="manage-training-iterations"></a>トレーニングのイテレーションを管理する
 
-分類子をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して新しい _イテレーション_ を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。左側のウィンドウにも **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
+分類子をトレーニングするたびに、独自に更新したパフォーマンス メトリックを使用して新しい _イテレーション_ を作成します。 **[パフォーマンス]** タブの左側ウィンドウで、すべてのイテレーションを参照できます。また、 **[削除]** ボタンが表示されます。古くなっている場合は、このボタンを使用してイテレーションを削除できます。 イテレーションを削除すると、それに一意に関連付けられていた画像がすべて削除されます。
 
 ## <a name="next-steps"></a>次の手順
 

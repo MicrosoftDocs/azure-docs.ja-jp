@@ -1,6 +1,6 @@
 ---
 title: Azure Media Analytics で顔を編集する | Microsoft Docs
-description: このトピックでは、Azure Media Analytics で顔を編集する方法を示します。
+description: Azure Media Redactor は、クラウドでスケーラブルな顔編集を提供する Azure Media Analytics メディア プロセッサです。 この記事では、Azure Media Analytics で顔を編集する方法を示します。
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: e350b6ed90324e7ed645d85c046fd74c0a089452
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 6a1b7a76ef1efda51f09ac733b3d434235ff40ef
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016031"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900299"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する 
 ## <a name="overview"></a>概要
@@ -161,9 +161,9 @@ foo_IDList.txt の例
 
 ![Box](./media/media-services-face-redaction/blur4.png)
 
-#### <a name="black"></a>黒
+#### <a name="black"></a>Black
 
-![黒](./media/media-services-face-redaction/blur5.png)
+![Black](./media/media-services-face-redaction/blur5.png)
 
 ## <a name="elements-of-the-output-json-file"></a>出力 JSON ファイルの要素
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB クエリ言語の ACOS
-description: Azure Cosmos DB の SQL システム関数 ACOS について説明します。
+description: Azure Cosmos DB の ACOS（arccosice）SQL システム関数が、コサインが指定された数値式である角度をラジアンで返す方法について学習する
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 2c9d29fba6b5dc55a98bf90cfafe0940d7bf9674
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: fd5baa3ffefb7039c40706253e633661a51150f2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348728"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873524"
 ---
 # <a name="acos-azure-cosmos-db"></a>ACOS (Azure Cosmos DB)
  コサインが指定された数値式となる角度をラジアン単位で返します。アークコサインとも呼ばれます。  

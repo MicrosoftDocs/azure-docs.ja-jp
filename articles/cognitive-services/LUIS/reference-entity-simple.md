@@ -10,20 +10,20 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671513"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894753"
 ---
-# <a name="simple-entity"></a>シンプル エンティティ 
+# <a name="simple-entity"></a>シンプル エンティティ
 
-シンプル エンティティとは、1 つの概念について説明し、機械学習コンテキストから学習した汎用的エンティティです。 シンプル エンティティは、一般に会社名、製品名、その他のカテゴリの名前などの名前なので、使用する名前のシグナルの強化にシンプル エンティティを使用する場合は、[フレーズ リスト](luis-concept-feature.md)を追加します。 
+シンプル エンティティとは、1 つの概念について説明し、機械学習コンテキストから学習した汎用的エンティティです。 シンプル エンティティは、一般に会社名、製品名、その他のカテゴリの名前などの名前なので、使用する名前のシグナルの強化にシンプル エンティティを使用する場合は、[フレーズ リスト](luis-concept-feature.md)を追加します。
 
 **エンティティは、次のような場合に最適です。**
 
-* データが一貫して書式設定されていないが、同じことを示している。 
+* データが一貫して書式設定されていないが、同じことを示している。
 
 ![シンプル エンティティ](./media/luis-concept-entities/simple-entity.png)
 
@@ -86,7 +86,7 @@ This is the JSON if `verbose=true` is set in the query string:
 }
 ```
 
-* * * 
+* * *
 
 |データ オブジェクト|エンティティ名|値|
 |--|--|--|
@@ -94,4 +94,5 @@ This is the JSON if `verbose=true` is set in the query string:
 
 ## <a name="next-steps"></a>次の手順
 
-この[チュートリアル](luis-quickstart-primary-and-secondary-data.md)では、**Simple エンティティ**を使用して発話から雇用ジョブ名の機械学習データを抽出します。 抽出精度を向上させるために、Simple エンティティに固有の用語の[フレーズ リスト](luis-concept-feature.md)を追加します。
+> [!div class="nextstepaction"]
+> [パターンの構文について学習する](reference-pattern-syntax.md)

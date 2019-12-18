@@ -58,7 +58,7 @@ Get-AzExpressRouteServiceProvider
 
 これで、ExpressRoute 回線を作成する準備が整いました。
 
-### <a name="3-create-an-expressroute-circuit"></a>手順 3.ExpressRoute 回線の作成
+### <a name="3-create-an-expressroute-circuit"></a>3.ExpressRoute 回線の作成
 リソース グループがまだない場合は、ExpressRoute 回線を作成する前に、作成しておく必要があります。 リソース グループを作成するには、次のコマンドを実行します。
 
 ```azurepowershell-interactive

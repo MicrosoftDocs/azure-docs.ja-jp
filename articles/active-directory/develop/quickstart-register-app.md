@@ -1,28 +1,24 @@
 ---
-title: Microsoft ID プラットフォームにアプリを登録する - Microsoft ID プラットフォーム
+title: Microsoft ID プラットフォームにアプリを登録する | Azure
 description: Microsoft ID プラットフォームにアプリケーションを追加および登録する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2019
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 329e4b262731ae1b23fb94da7b937c9c1549185f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58a68b89ce38664c0d0ec87b509fe5f872cfd78c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473643"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74921417"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>クイック スタート:Microsoft ID プラットフォームにアプリケーションを登録する
 

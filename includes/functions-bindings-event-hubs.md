@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 0f94c89a52de138b261796cbef25c0acb57622c4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 27333f272ca5000fd3b09b305712875c065f6bc7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73799944"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924434"
 ---
 ## <a name="trigger"></a>トリガー
 
@@ -105,7 +105,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。
 
-#### <a name="version-2x"></a>バージョン 2.x
+#### <a name="version-2x-and-higher"></a>バージョン 2.x 以降
 
 ```json
 {
@@ -186,7 +186,7 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 
 次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 
 
-#### <a name="version-2x"></a>バージョン 2.x
+#### <a name="version-2x-and-higher"></a>バージョン 2.x 以降
 
 ```json
 {
@@ -223,7 +223,7 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。
 
-#### <a name="version-2x"></a>バージョン 2.x
+#### <a name="version-2x-and-higher"></a>バージョン 2.x 以降
 
 ```json
 {
@@ -262,7 +262,7 @@ module.exports = function (context, myEventHubMessage) {
 
 イベントをまとめて受け取るには、次の例に示すように、*function.json* ファイルで `cardinality` を `many` に設定します。
 
-#### <a name="version-2x"></a>バージョン 2.x
+#### <a name="version-2x-and-higher"></a>バージョン 2.x 以降
 
 ```json
 {
@@ -389,7 +389,7 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
 |**name** | 該当なし | 関数コード内のイベント項目を表す変数の名前。 |
 |**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
-|**eventHubName** |**EventHubName** | Functions 2.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
+|**eventHubName** |**EventHubName** | Functions 2.x 以降。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
 |**consumerGroup** |**ConsumerGroup** | ハブのイベントのサブスクライブに使用される[コンシューマー グループ](../articles/event-hubs/event-hubs-features.md#event-consumers)を設定する、省略可能なプロパティ。 省略した場合は、`$Default` コンシューマー グループが使用されます。 |
 |**cardinality** | 該当なし | Javascript 用。 バッチ処理を有効にするには `many` に設定します。  省略するか、`one` に設定した場合、1 つのメッセージが関数に渡されます。 |
 |**connection** |**Connection** | イベント ハブの名前空間への接続文字列が含まれたアプリ設定の名前。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"[名前空間](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace)" の **[接続情報]** をクリックします。 この接続文字列には、トリガーをアクティブにするために少なくとも読み取りアクセス許可が必要です。|
@@ -423,7 +423,7 @@ Event Hubs トリガーには、いくつかの[メタデータ プロパティ]
 
 Event Hubs 出力バインドを使用して、イベント ストリームにイベントを書き込みます。 イベントを書き込むには、イベント ハブへの送信アクセス許可が必要です。
 
-必要なパッケージ参照が用意されていることを確認します:Functions 1.x または Functions 2.x
+出力バインディングを実装する前に、必要なパッケージ参照が用意されていることを確認してください。
 
 ## <a name="output---example"></a>出力 - 例
 
@@ -474,7 +474,7 @@ public static async Task Run(
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [C# スクリプト関数](../articles/azure-functions/functions-reference-csharp.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
 
-次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 用で、2 つ目の例は Functions 1.x 用です。 
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 以降用で、2 つ目の例は Functions 1.x 用です。 
 
 ```json
 {
@@ -526,7 +526,7 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [F# 関数](../articles/azure-functions/functions-reference-fsharp.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
 
-次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 用で、2 つ目の例は Functions 1.x 用です。 
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 以降用で、2 つ目の例は Functions 1.x 用です。 
 
 ```json
 {
@@ -560,7 +560,7 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: ILogger) 
 
 次の例は、*function.json* ファイルのイベント ハブ トリガー バインドと、そのバインドが使用される [JavaScript 関数](../articles/azure-functions/functions-reference-node.md)を示しています。 この関数では、メッセージをイベント ハブに書き込みます。
 
-次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 用で、2 つ目の例は Functions 1.x 用です。 
+次の例は、*function.json* ファイル内の Event Hubs バインディング データを示しています。 最初の例は Functions 2.x 以降用で、2 つ目の例は Functions 1.x 用です。 
 
 ```json
 {
@@ -680,7 +680,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 |**direction** | 該当なし | "out" に設定する必要があります。 このパラメーターは、Azure Portal でバインドを作成するときに自動で設定されます。 |
 |**name** | 該当なし | イベントを表す関数コードに使用される変数の名前。 |
 |**path** |**EventHubName** | Functions 1.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
-|**eventHubName** |**EventHubName** | Functions 2.x のみ。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
+|**eventHubName** |**EventHubName** | Functions 2.x 以降。 イベント ハブの名前。 イベント ハブの名前は接続文字列にも存在し、その値が実行時にこのプロパティをオーバーライドします。 |
 |**connection** |**Connection** | イベント ハブの名前空間への接続文字列が含まれたアプリ設定の名前。 この接続文字列をコピーするには、イベント ハブ自体ではなく、"*名前空間*" の **[接続情報]** をクリックします。 この接続文字列には、イベント ストリームにメッセージを送信するための送信アクセス許可が必要です。|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
@@ -701,7 +701,7 @@ JavaScript では、`context.bindings.<name>` を使用して出力イベント�
 
 ## <a name="hostjson-settings"></a>host.json 設定
 
-このセクションでは、バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインディングのバージョン 2.x の設定のみが含まれています。 バージョン 2.x でのグローバル構成設定の詳細については、[Azure Functions バージョン 2.x の host.json のリファレンス](../articles/azure-functions/functions-host-json.md)を参照してください。
+このセクションでは、バージョン 2.x 以降でこのバインディングに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインディングのバージョン 2.x 以降の設定のみが含まれています。 バージョン 2.x 以降でのグローバル構成設定の詳細については、[Azure Functions の host.json のリファレンス](../articles/azure-functions/functions-host-json.md)に関する記事を参照してください。
 
 > [!NOTE]
 > Functions 1.x の host.json のリファレンスについては、「[host.json reference for Azure Functions 1.x (Azure Functions 1.x の host.json のリファレンス)](../articles/azure-functions/functions-host-json-v1.md)」を参照してください。

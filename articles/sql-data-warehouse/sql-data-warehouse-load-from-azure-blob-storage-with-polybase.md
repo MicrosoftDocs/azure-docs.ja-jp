@@ -104,7 +104,7 @@ WITH
 );
 ``` 
 
-## <a name="3-create-the-external-tables"></a>手順 3.外部テーブルの作成
+## <a name="3-create-the-external-tables"></a>3.外部テーブルの作成
 データ ソースとファイル形式を指定したので、外部テーブルを作成する準備ができました。 
 
 ### <a name="31-create-a-schema-for-the-data"></a>3.1. データのスキーマを作成する

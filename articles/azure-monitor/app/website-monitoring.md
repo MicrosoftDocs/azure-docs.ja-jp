@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor Application Insights による Web サイトの監視のクイック スタート | Microsoft Docs
+title: Azure Monitor Application Insights を使用して Web サイトを監視する
 description: Azure Monitor Application Insights を使用したクライアント/ブラウザー側の Web サイト監視を迅速にセットアップする手順を説明します
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/15/2019
 ms.custom: mvc
-ms.openlocfilehash: eecc3d739cb5500abdbd04a9aaca1ddcf86e352b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 3b909f1cb65ae2b355451def53410c32ae482167
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899264"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872963"
 ---
 # <a name="start-monitoring-your-website"></a>Web サイトの監視を開始する
 

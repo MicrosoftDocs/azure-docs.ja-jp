@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ada64d6bbce4fe7401bbfc078ba0903a28f06971
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795852"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875526"
 ---
 ### <a name="regions"></a>利用可能なリージョン
 
@@ -59,3 +59,7 @@ Azure Bastion は現在、VM 内で en-us-qwerty のキーボード レイアウ
 
 No. Azure Bastion サブネットで UDR はサポートされません。
 Azure Bastion と Azure Firewall/ネットワーク仮想アプライアンス (NVA) の両方が同じ仮想ネットワークに存在するシナリオでは、Azure Bastion と VM との間の通信はプライベートであるため、Azure Bastion サブネットから Azure Firewall にトラフィックを強制する必要がありません。 詳細については、[Azure Firewall と Bastion の内側の VM にアクセスする方法](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/)に関するページを参照してください。
+
+### <a name="filetransfer"></a>Azure Bastion RDP セッションでファイル転送はサポートされますか?
+
+新機能を追加するために鋭意努力しています。 現時点では、ファイル転送はサポートされませんが、ロードマップには含まれています。 [Azure Bastion フィードバック ページ](https://feedback.azure.com/forums/217313-networking?category_id=367303)で、新機能に関するフィードバックをぜひお寄せください。

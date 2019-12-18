@@ -1,17 +1,18 @@
 ---
-title: Azure Data Factory のマッピング データ フローのパフォーマンスとチューニング ガイド
+title: Mapping data flow のパフォーマンスとチューニング ガイド
 description: Azure Data Factory でのマッピング データ フローのパフォーマンスに影響する主な要因について説明します。
 author: kromerm
 ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
+ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: fb2a11850370766ab174c67dd122f33879fb432a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671586"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928531"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Mapping Data Flow のパフォーマンスとチューニング ガイド
 

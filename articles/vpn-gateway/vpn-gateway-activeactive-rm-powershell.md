@@ -225,7 +225,7 @@ New-AzVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $R
 
 ![active-active-crossprem](./media/vpn-gateway-activeactive-rm-powershell/active-active.png)
 
-### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>パート 3 - アクティブ/アクティブの VPN ゲートウェイに 2 つのオンプレミス VPN デバイスを接続する
+### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>手順 3 - アクティブ/アクティブの VPN ゲートウェイに 2 つのオンプレミス VPN デバイスを接続する
 同じオンプレミス ネットワークに VPN デバイスが 2 つある場合は、Azure VPN ゲートウェイを 2 番目の VPN デバイスに接続することによって、デュアル冗長性を実現できます。
 
 #### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1.Site5 用の 2 番目のローカル ネットワーク ゲートウェイを作成する

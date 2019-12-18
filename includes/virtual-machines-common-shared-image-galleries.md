@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085256"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875569"
 ---
 共有イメージ ギャラリーは、マネージド イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは以下のことが提供されます。
 
@@ -113,6 +113,7 @@ ms.locfileid: "74085256"
 - 100 個の共有イメージ ギャラリー (サブスクリプション別、リージョン別)
 - 1,000 個のイメージ定義 (サブスクリプション別、リージョン別)
 - 10,000 個のイメージ バージョン (サブスクリプション別、リージョン別)
+- イメージに接続されるディスクは、サイズが 1 TB 以下であること
 
 現在の使用量を確認する方法など、詳細については、「[制限に照らしたリソース使用量の確認](https://docs.microsoft.com/azure/networking/check-usage-against-limits)」をご覧ください。
  

@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 18bbfd1b54947bb88ba8f06c65a17b90430b38a3
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: bae027fc5a3b6ce7b4246c403841fa529b8884cb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305214"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925939"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
@@ -22,7 +22,7 @@ ms.locfileid: "74305214"
 この記事では、Azure Functions で [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md) のバインドを操作する方法について説明します。 Azure Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
 
 > [!NOTE]
-> この記事は、Azure Functions 1.x を対象としています。 Functions 2.x でこれらのバインドを使用する方法については、[Azure Functions 2.x の Azure Cosmos DB のバインド](functions-bindings-cosmosdb-v2.md)に関するページを参照してください。
+> この記事は、Azure Functions 1.x を対象としています。 Functions 2.x およびそれ以降で、これらのバインディングを使用する方法については、[「Azure Functions 2.x バインド用の Microsoft Azure Cosmos DB」](functions-bindings-cosmosdb-v2.md)を参照してください。
 >
 >このバインドの元の名称は DocumentDB でした。 Functions バージョン 1.x では、トリガーのみが Cosmos DB に名称が変更され、入力バインド、出力バインド、および NuGet パッケージは DocumentDB のままでした。
 

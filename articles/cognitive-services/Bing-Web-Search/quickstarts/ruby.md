@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 9aa8fc4c6b27c2a2c7d11a95ddb2ecca347ec0e0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4a902e869ed9fd2ae9274f0ad8eee11e43b8edc6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57858833"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974327"
 ---
 # <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>クイック スタート:Ruby を使用して Bing Web Search API を呼び出す  
 
@@ -43,7 +43,7 @@ require 'json'
 
 ## <a name="define-variables"></a>変数の定義
 
-先に進む前に、いくつかの変数を設定する必要があります。 `$uri` と `path` が有効であることを確認し、`accessKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `term` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
+先に進む前に、いくつかの変数を設定する必要があります。 `uri` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。 `uri` と `path` が有効であることを確認し、`accessKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `term` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。
 
 ```ruby
 accessKey = "YOUR_SUBSCRIPTION_KEY"

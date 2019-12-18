@@ -39,7 +39,9 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、ネットワーク サービス プロバイダーから同じ速度の VPN 接続を購入する必要がありますか。
 
-いいえ。 サービス プロバイダーから任意の速度の VPN 接続を購入できます。 ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
+
+いいえ。サービス プロバイダーから任意の速度の VPN 接続を購入できます。 ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
+
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、必要に応じてより高速にバーストすることはできますか。
 
@@ -163,7 +165,9 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>自社の VLAN を、ExpressRoute を使用して Azure に拡張することはできますか。
 
-いいえ。 Azure へのレイヤー 2 接続の拡張はサポートされません。
+
+いいえ。Azure へのレイヤー 2 接続の拡張はサポートされません。
+
 
 ### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>1 つのサブスクリプションで複数の ExpressRoute 回線を使用できますか。
 
@@ -212,7 +216,9 @@ BGP パスの選択と一般的なルーター構成に関する追加情報に�
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>同じ回線に接続されている仮想ネットワークは、互いに分離されていますか。
 
-いいえ。 ルーティングの観点から見た場合、同じ ExpressRoute 回線に接続されているすべての仮想ネットワークは、同じルーティング ドメインに属しているため、互いに分離されていません。 ルートの分離が必要な場合は、ExpressRoute 回線を別に作成する必要があります。
+
+いいえ。ルーティングの観点から見た場合、同じ ExpressRoute 回線に接続されているすべての仮想ネットワークは、同じルーティング ドメインに属しているため、互いに分離されていません。 ルートの分離が必要な場合は、ExpressRoute 回線を別に作成する必要があります。
+
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>1 つの仮想ネットワークを複数の ExpressRoute 回線に接続できますか。
 
@@ -300,7 +306,9 @@ ExpressRoute Premium を無効にするには、REST API や PowerShell コマ�
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Premium の機能セットから必要な機能だけを選択できますか。
 
-いいえ。 機能を選択することはできません。 ExpressRoute Premium を有効にすると、すべての機能が有効になります。
+
+いいえ。機能を選択することはできません。 ExpressRoute Premium を有効にすると、すべての機能が有効になります。
+
 
 ### <a name="how-much-does-expressroute-premium-cost"></a>ExpressRoute Premium の料金はいくらですか。
 

@@ -48,7 +48,7 @@ StorSimple Virtual Array をデプロイするには、次の記事を順番に�
 | --- | --- | --- | --- |
 | 1. |**Azure Portal のセットアップ** |StorSimple Virtual Array をプロビジョニングする前に、StorSimple デバイス マネージャー サービスを作成して構成します。 |[ポータルを準備する](storsimple-virtual-array-deploy1-portal-prep.md) |
 | 2. |**Virtual Array のプロビジョニング** |Hyper-V の場合、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。 <br></br> <br></br> VMware の場合、VMware ESXi 5.0、5.5、6.0、または 6.5 を実行しているホスト システムで、StorSimple Virtual Array をプロビジョニングし、そのアレイに接続します。<br></br> |[Hyper-V で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [VMware で Virtual Array をプロビジョニングする](storsimple-virtual-array-deploy2-provision-vmware.md) |
-| 手順 3. |**Virtual Array のセットアップ** |ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。 これで、SMB 共有をプロビジョニングできます。 <br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。 これで、iSCSI ボリュームをプロビジョニングできます。 |[ファイル サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-iscsi-setup.md) |
+| 3. |**Virtual Array のセットアップ** |ファイル サーバーの場合: 初期セットアップを実行し、StorSimple ファイル サーバーを登録して、デバイスのセットアップを完了します。 これで、SMB 共有をプロビジョニングできます。 <br></br> <br></br> iSCSI サーバーの場合: 初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了します。 これで、iSCSI ボリュームをプロビジョニングできます。 |[ファイル サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[iSCSI サーバーとして Virtual Array をセットアップする](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 これで、Azure Portal をセットアップする準備が整いました。
 

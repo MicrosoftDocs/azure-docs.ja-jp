@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d9ca8d0df3eb0186add5c40765c87a4409a5660
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185598"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926424"
 ---
 # <a name="release-notes"></a>リリース ノート
 

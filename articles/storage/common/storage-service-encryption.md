@@ -4,17 +4,17 @@ description: Azure Storage では、クラウドに永続化される前にデ�
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 11/26/2019
+ms.date: 12/05/2019
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 63fa30b4cf4c5887e8fb44b357eb22e55fe230e7
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: a09d2c0c2a393acd4882842dc023b0f5f682e813
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666139"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895126"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>保存データに対する Azure Storage 暗号化
 
@@ -38,7 +38,7 @@ Azure Storage 暗号化の基になっている暗号化モジュールについ
 
 Microsoft のマネージド キーを利用してストレージ アカウントを暗号化することも、独自のキーで暗号化を管理することもできます。 独自のキーで暗号化を管理する場合は、次の 2 つのオプションがあります。
 
-- ストレージ アカウント内のすべてのデータを暗号化および暗号化解除するために使用する "*カスタマー マネージド キー*" を Azure Key Vault で指定できます。 カスタマー マネージド キーは、ストレージ アカウント内のすべてのサービスのすべてのデータを暗号化するために使用されます。
+- Azure Key Vault では、BLOB ストレージや Azure Files 内のデータを暗号化および暗号化解除するために使用する*カスタマー マネージド キー*を指定できます。
 - BLOB ストレージの操作では、"*カスタマー指定のキー*" を指定できます。 BLOB ストレージ に対して読み取りまたは書き込み要求を行うクライアントは、BLOB データの暗号化と暗号化解除の方法を細かく制御するために、要求に暗号化キーを含めることができます。
 
 次の表では、Azure Storage 暗号化のキー管理オプションを比較しています。
@@ -62,7 +62,7 @@ Microsoft のマネージド キーを利用してストレージ アカウン�
 
 ## <a name="customer-managed-keys-with-azure-key-vault"></a>Azure Key Vault でのカスタマー マネージド キー
 
-独自のキーを使用して、ストレージ アカウントのレベルで Azure Storage 暗号化を管理できます。 ストレージ アカウントのレベルでカスタマー マネージド キーを指定すると、そのキーは、BLOB、キュー、ファイル、テーブル データなど、ストレージ アカウント内のすべてのデータの暗号化および暗号化解除に使用されます。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
+独自のキーを使用して、ストレージ アカウントのレベルで Azure Storage 暗号化を管理できます。 ストレージ アカウントのレベルでカスタマー マネージド キーを指定すると、そのキーは、そのストレージ アカウント内のすべての BLOB およびファイル データを暗号化および暗号化解除するために使用されます。 カスタマー マネージド キーを使用すると、アクセス制御の作成、ローテーション、無効化、取り消しを、いっそう柔軟に行うことができます。 また、データを保護するために使われる暗号化キーを監査することもできます。
 
 カスタマー マネージド キーを格納するには、Azure Key Vault を使用する必要があります。 独自のキーを作成してキー コンテナーに格納することも、Azure Key Vault API を使ってキーを生成することもできます。 ストレージ アカウントとキー コンテナーは同じリージョンに存在していることが必要です。ただし、サブスクリプションは異なっていてもかまいません。 Azure Key Vault の詳細については、「[Azure Key Vault とは](../../key-vault/key-vault-overview.md)」をご覧ください。
 

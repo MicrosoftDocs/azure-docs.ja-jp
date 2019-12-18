@@ -1,21 +1,22 @@
 ---
-title: チュートリアル:Azure で読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする | Microsoft Docs
-description: 読み取りアクセス geo 冗長ストレージにアクセスする際のエラーをシミュレートする
+title: チュートリアル - プライマリ リージョンからデータを読み取る際のエラーをシミュレートする
+titleSuffix: Azure Storage
+description: 読み取りアクセス geo 冗長ストレージ (RA-GRS) がストレージ アカウントで有効になっているときにプライマリ リージョンからのデータの読み取りで発生するエラーをシミュレートします。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 1f5c404e410ded2714be761e35060f3c07379bd3
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508094"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892449"
 ---
-# <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>チュートリアル:読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする
+# <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>チュートリアル:プライマリ リージョンからデータを読み取る際のエラーをシミュレートする
 
 このチュートリアルは、シリーズの第 2 部です。 ここでは、失敗をシミュレートすることによって、[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) の利点について学習します。
 
@@ -68,7 +69,7 @@ nslookup STORAGEACCOUNTNAME.blob.core.windows.net
 route add <destination_ip> gw <gateway_ip>
 ```
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
 ```
 route add <destination_ip> <gateway_ip>
@@ -86,7 +87,7 @@ route add <destination_ip> <gateway_ip>
 route del <destination_ip> gw <gateway_ip>
 ```
 
-#### <a name="windows"></a> Windows
+#### <a name="windows"></a>Windows
 
 ```
 route delete <destination_ip>
@@ -102,7 +103,7 @@ Fiddler を使用して失敗をシミュレートするには、RA-GRS スト�
 
 ### <a name="launch-fiddler"></a>Fiddler を起動する
 
-Fiddler を開き、**[Rules]\(ルール\)**、**[Customize Rules]\(ルールのカスタマイズ\)** の順に選択します。
+Fiddler を開き、 **[Rules]\(ルール\)** 、 **[Customize Rules]\(ルールのカスタマイズ\)** の順に選択します。
 
 ![Fiddler のルールをカスタマイズする](media/storage-simulate-failure-ragrs-account-app/figure1.png)
 
@@ -110,7 +111,7 @@ Fiddler ScriptEditor が起動し、**SampleRules.js** ファイルが表示さ�
 
 次のサンプル コードの `STORAGEACCOUNTNAME` を自分のストレージ アカウントの名前に置き換えて `OnBeforeResponse` 関数内に貼り付けます。 サンプルによっては、`HelloWorld` を、ダウンロードするテスト ファイルの名前 (または `sampleFile` などのプレフィックス) に置き換えなければならない場合があります。 この新しいコードは、すぐに実行されないようにコメント アウトされています。
 
-完了したら、**[File]\(ファイル\)**、**[Save]\(保存\)** の順に選択して変更を保存します。 ScriptEditor ウィンドウは、次の手順で使用するため、開いたままにしておきます。
+完了したら、 **[File]\(ファイル\)** 、 **[Save]\(保存\)** の順に選択して変更を保存します。 ScriptEditor ウィンドウは、次の手順で使用するため、開いたままにしておきます。
 
 ```javascript
     /*

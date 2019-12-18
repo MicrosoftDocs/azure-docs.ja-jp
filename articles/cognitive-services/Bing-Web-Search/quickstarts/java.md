@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 07/22/2019
+ms.date: 12/09/2019
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: f8a827cf19bec0796fc0e9743d1a2599071468af
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 8bdc6acb17cde29b99bad20a45f41d6bfc174363
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899690"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976351"
 ---
 # <a name="quickstart-use-java-to-search-the-web-with-the-bing-web-search-rest-api-an-azure-cognitive-service"></a>クイック スタート:Java を使用して、Azure コグニティブ サービスである Bing Web Search REST API で Web を検索する
 
@@ -73,7 +73,7 @@ public class BingWebSearch {
 
 ## <a name="define-variables"></a>変数の定義
 
-このコードは、`subscriptionKey`、`host`、`path`、および `searchTerm` を設定します。 エンドポイントが正しいことを確認し、`subscriptionKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。 前述のように、忘れずにこのコードを `BingWebSearch` クラスに追加してください。
+このコードは、`subscriptionKey`、`host`、`path`、および `searchTerm` を設定します。 `host` には、以下のグローバル エンドポイントを指定するか、Azure portal に表示される、リソースの[カスタム サブドメイン](../../../cognitive-services/cognitive-services-custom-subdomains.md) エンドポイントを指定できます。 `subscriptionKey` の値を Azure アカウントの有効なサブスクリプション キーに置き換えます。 `searchTerm` の値を置き換えると、検索クエリを自由にカスタマイズすることができます。 前述のように、忘れずにこのコードを `BingWebSearch` クラスに追加してください。
 
 ```java
 // Enter a valid subscription key.

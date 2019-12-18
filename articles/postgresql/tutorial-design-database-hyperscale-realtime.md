@@ -1,5 +1,5 @@
 ---
-title: Azure Database for PostgreSQL - Hyperscale (Citus) を使用したリアルタイム ダッシュボードの設計
+title: チュートリアル:リアルタイム ダッシュボードを設計する - Hyperscale (Citus) - Azure Database for PostgreSQL
 description: このチュートリアルでは、Azure Database for PostgreSQL Hyperscale (Citus) で分散テーブルを作成、設定、クエリする方法を説明します。
 author: jonels-msft
 ms.author: jonels
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: 32487d65397a96d9e96ae3bf3476eed23ddb8adc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73482872"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978102"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>チュートリアル:Azure Database for PostgreSQL - Hyperscale (Citus) を使用したリアルタイム分析ダッシュボードの設計
 

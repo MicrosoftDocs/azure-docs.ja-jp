@@ -1,32 +1,27 @@
 ---
-title: Android での仲介型認証 |Azure
+title: Android のブローカー認証 | Azure
+titlesuffix: Microsoft identity platform
 description: Microsoft ID プラットフォームでの Android に対する仲介型認証と承認の概要
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
-ms.reviewer: shoatman
+ms.reviewer: shoatman, hahamil, brianmel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f5204ad71efa2587341600d2c5c1e5195d15445e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175661"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843718"
 ---
-# <a name="brokered-auth-in-android"></a>Android での仲介型認証
-
-## <a name="introduction"></a>はじめに
+# <a name="brokered-authentication-in-android"></a>Android のブローカー認証
 
 Microsoft の認証ブローカーの 1 つを使用して、デバイス全体のシングル サインオン (SSO) に参加し、組織の条件付きアクセス ポリシーを満たす必要があります。 ブローカーとの統合には、次の利点があります。
 
@@ -39,7 +34,7 @@ Microsoft の認証ブローカーの 1 つを使用して、デバイス全体�
   -  Android AccountManager およびアカウント設定を使用
   - "職場アカウント" - カスタム アカウントの種類
 
-Android では、Microsoft の認証ブローカーは、[Microsoft Authenticator アプリ](https://play.google.com/store/apps/details?id=com.azure.authenticator)および [Intune ポータル サイト](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)に含まれているコンポーネントです。
+Android では、Microsoft の認証ブローカーは、[Microsoft Authenticator アプリ](https://play.google.com/store/apps/details?id=com.azure.authenticator)および [Intune ポータル サイト](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal)に含まれるコンポーネント
 
 > [!TIP]
 > ブローカーをホストするアプリケーションは、一度に 1 つだけがブローカーとしてアクティブになります。 どのアプリケーションがブローカーとしてアクティブになるかは、デバイスへのインストール順によって決まります。 最初にインストールされるもの、またはデバイスに最後に存在するものがアクティブなブローカーになります。
@@ -52,9 +47,9 @@ Android では、Microsoft の認証ブローカーは、[Microsoft Authenticato
 
 ブローカーをホストするアプリは、アプリ ストア (通常は Google Play ストア) からデバイス所有者がいつでもインストールできます。 ただし、一部の API (リソース) は条件付きアクセス ポリシーによって保護されており、そのためデバイスを次のようにする必要があります。
 
-- 登録済み (ワークプレースに参加済み)、かつ/または
-- デバイス管理に登録されている、または
-- Intune App Protection に登録されている
+- 登録済み (ワークプレースに参加済み)、および/または
+- デバイス管理に登録済、または
+- Intune App Protection に登録済
 
 そのアプリで対話形式でのトークンの取得が試みられるとすぐに、MSAL によって、デバイスにブローカー アプリがまだインストールされていない場合はインストールするようにユーザーに対して指示されます。 その後、そのアプリで、必要なポリシーにデバイスを準拠させるための手順をユーザーに案内する必要があります。
 
