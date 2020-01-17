@@ -34,7 +34,7 @@ let endTime = now();
 let ContainerInv = ContainerInventory | where TimeGenerated >= startTime and TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID, Image, ImageTag | project-away TimeGenerated | project ContainerID1=ContainerID, Image1=Image ,ImageTag1=ImageTag;
 // タイム ウィンドウ内におけるすべての ContainerID の最新の Name を取得します
 let KubePodInv  = KubePodInventory | where ContainerID != "" | where TimeGenerated >= startTime | where TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID2 = ContainerID, Name1=ContainerName | project ContainerID2 , Name1;
-// 上の 2 つを結合し、 Name, Image, ImageTag を持つ '結合後のテーブル' を取得します。 KubePodInv のレコードが存在しない場合でもログを失うことがないため、左外部結合はより安全です
+// 上の 2 つを結合し、 Name, Image, ImageTag を持つ '結合後のテーブル' を取得します。 KubePod のレコードが存在しない場合でもログを失うことがないため、左外部結合はより安全です
 let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.ContainerID1 == $right.ContainerID2;
 // ContainerLog テーブルを上記の '結合後のテーブル' と結合し、 project-away による冗長なフィールド/カラムの除外と書き換えられたカラムをリネームします
 // (レイテンシやデータ タイプ間での時間のずれなどにより) ログラインのコンテナ メタデータが見つからない場合でもログを失うことがないため、左外部結合はより安全です
@@ -50,7 +50,7 @@ ContainerLog
 
 すべてのコンテナー ログ行について、これらのプロパティの収集を再び有効にします。
 
-クエリの変更を伴うため最初の方法が難しい場合、[データ収集の構成設定](./container-insights-agent-config.md)に関するページの説明に従い、エージェントの ConfigMap で設定 ``log_collection_settings.enrich_container_logs`` を有効にすることによって、これらのフィールドの収集を再び有効にすることができます。
+クエリの変更を伴うため最初の方法が難しい場合、[データ収集の構成設定](./container-insights-agent-config.md)に関するページの説明に従い、エージェントの ConfigMap で `log_collection_settings.enrich_container_logs`設定を有効にすることによって、これらのフィールドの収集を再び有効にすることができます。
 
 > [!NOTE]
 > 2 番目の方法は、50 を超えるノードを持つ大規模なクラスターでは推奨されません。このエンリッチメントを実行するために、クラスター内のすべてのノードから API サーバー呼び出しが生成されるからです。 この方法を使用すると、収集されるすべてのログ行のデータ サイズも増加します。
