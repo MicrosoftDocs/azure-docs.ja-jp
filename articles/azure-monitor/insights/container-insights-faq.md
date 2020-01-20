@@ -27,17 +27,17 @@ ContainerID プロパティに結合することによって ```ContainerInvento
 次の例は、結合を使用してこれらのフィールド値を取得する方法を説明するサンプルの詳細なクエリです。
 
 ```
-// 過去 1 時間分のログをクエリしているとします
+//lets say we are querying an hour worth of logs
 let startTime = ago(1h);
 let endTime = now();
-// タイム ウィンドウ内におけるすべての ContainerID の最新の Image と ImageTag を取得します
+//below gets the latest Image & ImageTag for every containerID, during the time window
 let ContainerInv = ContainerInventory | where TimeGenerated >= startTime and TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID, Image, ImageTag | project-away TimeGenerated | project ContainerID1=ContainerID, Image1=Image ,ImageTag1=ImageTag;
-// タイム ウィンドウ内におけるすべての ContainerID の最新の Name を取得します
+//below gets the latest Name for every containerID, during the time window
 let KubePodInv  = KubePodInventory | where ContainerID != "" | where TimeGenerated >= startTime | where TimeGenerated < endTime | summarize arg_max(TimeGenerated, *)  by ContainerID2 = ContainerID, Name1=ContainerName | project ContainerID2 , Name1;
-// 上の 2 つを結合し、 Name, Image, ImageTag を持つ '結合後のテーブル' を取得します。 KubePod のレコードが存在しない場合でもログを失うことがないため、左外部結合はより安全です
+//now join the above 2 to get a 'jointed table' that has name, image & imagetag. Outer left is safer in-case there are no kubepod records are if they are latent
 let ContainerData = ContainerInv | join kind=leftouter (KubePodInv) on $left.ContainerID1 == $right.ContainerID2;
-// ContainerLog テーブルを上記の '結合後のテーブル' と結合し、 project-away による冗長なフィールド/カラムの除外と書き換えられたカラムをリネームします
-// (レイテンシやデータ タイプ間での時間のずれなどにより) ログラインのコンテナ メタデータが見つからない場合でもログを失うことがないため、左外部結合はより安全です
+//now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
+//Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
 ContainerLog
 | where TimeGenerated >= startTime and TimeGenerated < endTime 
 | join kind= leftouter (
