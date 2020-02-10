@@ -50,7 +50,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 ### <a name="header-claims"></a>ヘッダーのクレーム
 
-|要求 | Format | [説明] |
+|要求 | Format | 説明 |
 |-----|--------|-------------|
 |`typ` | 文字列 - 常に "JWT" | トークンが JWT であることを示します。|
 |`alg` | String | トークンの署名に使用されたアルゴリズムを示します。 例:"RS256" |
@@ -61,7 +61,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 
 この一覧には、(明記されている場合を除き) 既定でほとんどの id_token に含まれる要求が示されます。  ただし、アプリは、[省略可能な要求](active-directory-optional-claims.md)を使用して、id_token で追加の要求を要求することができます。  これらは、`groups` 要求から、ユーザーの名前に関する情報にまで及ぶ場合があります。
 
-|要求 | Format | [説明] |
+|要求 | Format | 説明 |
 |-----|--------|-------------|
 |`aud` |  文字列、アプリケーション ID URI | トークンの受信者を示します。 `id_tokens`では、対象の受信者は Azure portal でアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、値が一致しない場合はトークンを拒否する必要があります。 |
 |`iss` |  文字列、STS URI | トークンを作成して返したセキュリティ トークン サービス (STS)、およびユーザーが認証された Azure AD テナントを示します。 トークンが v2.0 エンドポイントによって発行された場合、URI の末尾は `/v2.0` になります。  ユーザーが Microsoft アカウントを持つコンシューマー ユーザーであることを示す GUID は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 要求の GUID 部分を使用して、アプリにサインインできるテナントのセットを制限します (該当する場合)。 |
