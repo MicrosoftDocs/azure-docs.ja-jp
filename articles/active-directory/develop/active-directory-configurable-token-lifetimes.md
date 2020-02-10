@@ -389,7 +389,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |ポリシーのすべてのルールが含まれる文字列化された JSON の配列。 | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |ポリシー名の文字列。 |`-DisplayName "MyTokenPolicy"` |
@@ -406,7 +406,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 Get-AzureADPolicy
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> [省略可能] |目的のポリシーの **ObjectId (ID)** 。 |`-Id <ObjectId of Policy>` |
 
@@ -419,7 +419,7 @@ Get-AzureADPolicy
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |目的のポリシーの **ObjectId (ID)** 。 |`-Id <ObjectId of Policy>` |
 
@@ -432,7 +432,7 @@ Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |目的のポリシーの **ObjectId (ID)** 。 |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |ポリシー名の文字列。 |`-DisplayName "MyTokenPolicy"` |
@@ -450,7 +450,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |目的のポリシーの **ObjectId (ID)** 。 | `-Id <ObjectId of Policy>` |
 
@@ -466,7 +466,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |ポリシーの **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
@@ -480,7 +480,7 @@ Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectI
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
 
@@ -493,7 +493,7 @@ Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |ポリシーの **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
@@ -510,7 +510,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |ポリシーの **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
@@ -524,7 +524,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectI
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
 
@@ -537,7 +537,7 @@ Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (ID)** 。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |ポリシーの **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
