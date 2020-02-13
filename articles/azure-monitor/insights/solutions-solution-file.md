@@ -62,7 +62,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 
 次の表で、パラメーターの属性について説明します。
 
-| Attribute | [説明] |
+| Attribute | 説明 |
 |:--- |:--- |
 | 型 |パラメーターのデータ型。 ユーザーに表示される入力コントロールは、データ型によって異なります。<br><br>bool - ドロップダウン ボックス<br>string - テキスト ボックス<br>int - テキスト ボックス<br>securestring - パスワード フィールド<br> |
 | category |パラメーターの任意のカテゴリ。  同じカテゴリのパラメーターはグループ化されます。 |
@@ -77,7 +77,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 >
 >
 
-| パラメーター | 種類 | [説明] |
+| パラメーター | 種類 | 説明 |
 |:--- |:--- |:--- |
 | accountName |string |Azure automation アカウント名。 |
 | pricingTier |string |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
@@ -205,7 +205,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 ### <a name="properties"></a>Properties
 このソリューション リソースには、次の表のプロパティがあります。  これには、ソリューションに含まれ参照されるリソースが含まれます。ソリューションをインストールした後に、どのようにリソースを管理するかを定義しています。  ソリューション内の各リソースは、**referencedResources** または **containedResources** プロパティのいずれかに表示される必要があります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | workspaceResourceId |*\<リソース グループ ID>/プロバイダー/Microsoft.OperationalInsights/ワークスペース/\<ワークスペース名\>* という形式の Log Analytics ワークスペースの ID。 |
 | referencedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
@@ -216,7 +216,7 @@ Azure での管理ソリューションは、[Resource Manager テンプレー�
 ### <a name="plan"></a>プラン
 ソリューション リソースの**プラン** エンティティには、次の表のプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | name |ソリューションの名前。 |
 | version |作成者によって決定されるソリューションのバージョン。 |
