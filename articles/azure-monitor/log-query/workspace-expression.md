@@ -26,7 +26,7 @@ ms.locfileid: "75364953"
 
 - *識別子*:次の表のいずれかの形式を使用してワークスペースを識別します。
 
-| [Identifier] | [説明] | 例
+| [Identifier] | 説明 | 例
 |:---|:---|:---|
 | リソース名 | 人間が判読できるワークスペースの名前 (別名 "コンポーネント名") | workspace("contosoretail") |
 | 修飾名 | "subscriptionName/resourceGroup/componentName" の形式のワークスペースのフルネーム | workspace('Contoso/ContosoResource/ContosoWorkspace') |
