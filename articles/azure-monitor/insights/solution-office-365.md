@@ -245,7 +245,7 @@ Log Analytics ワークスペースに Office 365 ソリューションを追加
 
 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、列の一番下にある [See all] \(すべて表示) をクリックするか、列ヘッダーをクリックします。
 
-| 列 | [説明] |
+| 列 | 説明 |
 |:--|:--|
 | 操作 | すべての監視対象 Office 365 サブスクリプションから、アクティブ ユーザーに関する情報を提供します。 時間の経過と共に発生するアクティビティの数を見ることもできます。
 | Exchange | Add-Mailbox Permission、または Set-Mailbox などの Exchange Server アクティビティの内訳を示します。 |
@@ -263,7 +263,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 次のプロパティは、Office 365 のすべてのレコードに共通です。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | 種類 | *OfficeActivity* |
 | ClientIP | アクティビティが記録されたときに使用されたデバイスの IP アドレス。 IP アドレスは IPv4 または IPv6 アドレスの形式で表示されます。 |
@@ -281,7 +281,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 次のプロパティは、Azure Active Directory のすべてのレコードに共通です。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -293,7 +293,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、Active Directory のユーザーがログオンを試みたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | `OfficeWorkload` | AzureActiveDirectory |
 | `RecordType`     | AzureActiveDirectoryAccountLogon |
@@ -307,7 +307,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、変更または追加が Azure Active Directory オブジェクトに行われたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | AzureActiveDirectory |
 | RecordType     | AzureActiveDirectory |
@@ -325,7 +325,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、データ センター セキュリティの監査データから作成されます。  
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | EffectiveOrganization | 昇格/コマンドレットのターゲットだったテナントの名前。 |
 | ElevationApprovedTime | 昇格が承認されたときのタイムスタンプ。 |
@@ -341,7 +341,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、Exchange 構成が変更されたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeAdmin |
@@ -356,7 +356,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、変更または追加が Exchange メールボックスに行われたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -379,7 +379,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、メールボックス監査エントリが作成されるときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
@@ -394,7 +394,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、変更または追加が Exchange グループに行われたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | OfficeWorkload | ExchangeItemGroup |
@@ -413,7 +413,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのプロパティは、SharePoint のすべてのレコードに共通です。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -430,7 +430,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、SharePoint の構成変更が行われたときに作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePoint |
@@ -443,7 +443,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 これらのレコードは、SharePoint でのファイル操作に応答して作成されます。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | OfficeWorkload | SharePoint |
 | OfficeWorkload | SharePointFileOperation |
@@ -464,7 +464,7 @@ Azure Monitor の Log Analytics ワークスペースで Office 365 ソリュー
 
 次の表は、このソリューションによって収集された更新レコードを探すログ クエリの例です。
 
-| クエリ | [説明] |
+| クエリ | 説明 |
 | --- | --- |
 |Office 365 サブスクリプションでのすべての操作のカウント |OfficeActivity &#124; summarize count() by Operation |
 |SharePoint サイトの使用率|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|
