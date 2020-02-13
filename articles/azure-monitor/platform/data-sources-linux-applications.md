@@ -42,7 +42,7 @@ MySQL OMI 認証ファイルの形式を次に示します
 
 認証ファイル内のエントリを次の表で説明します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--|:--|
 | Port | MySQL インスタンスがリッスンしている現在のポートを表します。 ポート 0 は、以降のプロパティが既定のインスタンスに使用されることを指定します。 |
 | Bind-Address| 現在の MySQL バインド アドレス。 |
@@ -55,7 +55,7 @@ MySQL OMI 認証ファイルは、1 つの Linux ホスト上での複数の MyS
 
 次の表に、インスタンス設定の例を示します 
 
-| [説明] | ファイル |
+| 説明 | ファイル |
 |:--|:--|
 | 既定のインスタンスとポート 3308 のインスタンス。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | 既定のインスタンスとポート 3308 のインスタンス、および異なるユーザー名とパスワード。 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -71,7 +71,7 @@ MySQL OMI プロバイダーのインストールには、MySQL OMI 認証ファ
 
 次の表は、mycimprovauth を使用するための構文に関する詳細を示しています。
 
-| 操作 | 例 | [説明]
+| 操作 | 例 | 説明
 |:--|:--|:--|
 | autoupdate *false または true* | mycimprovauth autoupdate false | 再起動または更新で認証ファイルが自動的に更新されるかどうかを設定します。 |
 | default *bind-address username password* | mycimprovauth default 127.0.0.1 root pwd | MySQL OMI 認証ファイル内の既定のインスタンスを設定します。<br>パスワード フィールドは、プレーンテキストで入力してください。MySQL OMI 認証ファイル内のパスワードは Base 64 でエンコードされます。 |
