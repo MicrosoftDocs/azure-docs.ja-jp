@@ -75,7 +75,7 @@ AllowAllTraffic 要素
 ##  <a name="RoleEndpoint"></a> RoleEndpoint 要素
 `RoleEndpoint` 要素は、通信を許可するロール上のエンドポイントを記述します。 ロールに複数のエンドポイントがある場合は、複数の `RoleEndpoint` 要素を指定することができます。
 
-| Attribute      | 種類     | [説明] |
+| Attribute      | 種類     | 説明 |
 | -------------- | -------- | ----------- |
 | `endpointName` | `string` | 必須。 トラフィックの宛先として許可するエンドポイントの名前。|
 | `roleName`     | `string` | 必須。 通信の相手として許可する Web ロールの名前。|
@@ -86,14 +86,14 @@ AllowAllTraffic 要素
 ##  <a name="WhenSource"></a> WhenSource 要素
 `WhenSource` 要素は、`Destinations` ノードで定義されたエンドポイントと通信できるロールのコレクションを記述します。
 
-| Attribute | 種類     | [説明] |
+| Attribute | 種類     | 説明 |
 | --------- | -------- | ----------- |
 | `matches` | `string` | 必須。 通信を許可するときに適用する規則を指定します。 有用な値は現在 `AnyRule` のみです。|
   
 ##  <a name="FromRole"></a> FromRole 要素
 `FromRole` 要素は、`Destinations` ノードで定義されたエンドポイントと通信できるロールを指定します。 エンドポイントと通信できるロールが複数ある場合、複数の `FromRole` 要素を指定することができます。
 
-| Attribute  | 種類     | [説明] |
+| Attribute  | 種類     | 説明 |
 | ---------- | -------- | ----------- |
 | `roleName` | `string` | 必須。 通信の許可元のロールの名前。|
 
