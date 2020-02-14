@@ -41,7 +41,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>パラメーター
 
-| Name | 種類 | [説明] |
+| Name | 種類 | 説明 |
 | ---- | ---- |------------ |
 | `token` | string | Azure AD 認証トークン。 |
 | `subdomain` | string | Azure 内のイマーシブ リーダー リソースのカスタム サブドメイン。 |
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>パラメーター
 
-| Name | 種類 | [説明] |
+| Name | 種類 | 説明 |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | renderButtons 関数の特定の動作を構成するためのオプション。 省略可能。 |
 
@@ -130,7 +130,7 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="supported-mime-types"></a>サポートされている MIME タイプ
 
-| MIME タイプ | [説明] |
+| MIME タイプ | 説明 |
 | --------- | ----------- |
 | text/plain | プレーンテキスト。 |
 | text/html | HTML コンテンツ。 [詳細情報](#html-support)|
@@ -189,7 +189,7 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="error-codes"></a>エラー コード
 
-| コード | [説明] |
+| コード | 説明 |
 | ---- | ----------- |
 | BadArgument | 与えられた引数が無効です。詳細は `message` を参照してください。 |
 | タイムアウト | 指定されたタイムアウト時間内にイマーシブ リーダーを読み込めませんでした。 |
@@ -208,7 +208,7 @@ SDK は、イマーシブ リーダーの起動用ボタンに既定のスタイ
 
 ボタンのルック アンド フィールを構成するには、次の属性を使用します。
 
-| Attribute | [説明] |
+| Attribute | 説明 |
 | --------- | ----------- |
 | `data-button-style` | ボタンのスタイルを設定します。 `icon`、`text`、または `iconAndText` を指定できます。 既定値は `icon` です。 |
 | `data-locale` | ロケールを設定します。 たとえば、`en-US` または `fr-FR` です。 既定値は英語 `en` です。 |
