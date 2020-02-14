@@ -28,7 +28,7 @@ Custom Translator は、36 を超える言語をサポートし、NMT で利用�
 
 Custom Translator は、カスタム翻訳システムを構築し、その後そのシステムにアクセスするための各種機能を提供します。
 
-|機能  |[説明]  |
+|機能  |説明  |
 |---------|---------|
 |[ニューラル機械翻訳テクノロジを活用](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Custom Translator によって提供されるニューラル機械翻訳 (NMT) を活用して翻訳を改善します。       |
 |[ビジネス用語を理解するシステムを構築](what-are-parallel-documents.md)     |  お客様のビジネスや業界で使用されている用語が反映されている対訳ドキュメントを使用して、翻訳システムをカスタマイズおよび構築します。       |
