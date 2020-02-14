@@ -99,7 +99,7 @@ touch sample-app.go
 
 以下のクラスとインターフェイスにより、Computer Vision Go SDK の主要な機能の一部が処理されます。
 
-|Name|[説明]|
+|Name|説明|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | このクラスは、イメージの分析やテキストの読み取りなど、すべての Computer Vision 機能に必要です。 サブスクリプション情報を使用してインスタンス化し、そのインスタンスを使用して、画像に対するほとんどの操作を実行することができます。|
 |[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| この型には **Analyze Eimage** 関数呼び出しの結果が含まれます。 カテゴリ固有の各関数には同様の型があります。|
