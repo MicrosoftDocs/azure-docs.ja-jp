@@ -109,7 +109,7 @@ Azure リソース グループ プロジェクトが作成されたら、 **[�
 
    ![Azure サブスクリプション、リソース グループ、リソースの場所を選択する](./media/quickstart-create-logic-apps-with-visual-studio/select-azure-subscription-resource-group-location.png)
 
-   | 設定 | 値の例 | [説明] |
+   | 設定 | 値の例 | 説明 |
    | ------- | ------------- | ----------- |
    | ユーザー アカウント | Fabrikam <br> sophia-owen@fabrikam.com | Visual Studio にサインインしたときに使用したアカウント |
    | **サブスクリプション** | 従量課金制 <br> (sophia-owen@fabrikam.com) | Azure サブスクリプションの名前および関連付けられたアカウント |
