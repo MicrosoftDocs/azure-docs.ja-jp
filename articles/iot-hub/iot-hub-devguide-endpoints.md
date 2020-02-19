@@ -84,7 +84,7 @@ IoT Hub エンドポイントはすべて [TLS](https://tools.ietf.org/html/rfc5
 
 REST API の [Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) を使用して、エンドポイントの正常性状態を取得できます。 エンドポイントの正常性が停止または異常である場合は、エンドポイントがこれらの状態にあるときは待機時間が長くなることが予測されるため、ルーティング メッセージ待機時間に関連した [IoT Hub メトリック](iot-hub-metrics.md)を使用してエラーを識別およびデバッグすることをお勧めします。
 
-|正常性状態|[説明]|
+|正常性状態|説明|
 |---|---|
 |healthy|エンドポイントは想定どおりにメッセージを受け付けています。|
 |unhealthy|エンドポイントは想定どおりにメッセージを受け付けておらず、IoT Hub はこのエンドポイントへのデータ送信を再試行しています。 IoT Hub が最終的に一貫して正常状態を確立すると、異常なエンドポイントの状態が "正常" に更新されます。|
