@@ -46,7 +46,7 @@ ms.locfileid: "76543479"
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*trigger-name*> | String | トリガーの名前 | 
 | <*trigger-type*> | String | トリガーの種類 ("Http" や "ApiConnection" など) | 
@@ -57,7 +57,7 @@ ms.locfileid: "76543479"
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*array-with-conditions*> | Array | ワークフローを実行するかどうかを決定する 1 つまたは複数の[条件](#trigger-conditions)を含む配列。 トリガーでのみ使用できます。 | 
 | <*runtime-config-options*> | JSON オブジェクト | 実行時のトリガーのビヘイビアーは、`runtimeConfiguration`プロパティを設定することによって変更できます。 詳細については、「[ランタイム構成の設定](#runtime-config-options)」を参照してください。 | 
@@ -71,7 +71,7 @@ ms.locfileid: "76543479"
 
 ### <a name="built-in-triggers"></a>組み込みのトリガー
 
-| トリガーの種類 | [説明] | 
+| トリガーの種類 | 説明 | 
 |--------------|-------------| 
 | [**HTTP**](#http-trigger) | エンドポイントをチェックまたは*ポーリング*します。 このエンドポイントは特定のトリガー コントラクトに準拠する必要があり、そのためには、"202" 非同期パターンを使用するか、配列を返す必要があります。 | 
 | [**HTTPWebhook**](#http-webhook-trigger) | ロジック アプリ用の呼び出し可能なエンドポイントを作成しますが、登録または登録解除を行うために指定された URL を呼び出します。 |
@@ -81,7 +81,7 @@ ms.locfileid: "76543479"
 
 ### <a name="managed-api-triggers"></a>マネージド API トリガー
 
-| トリガーの種類 | [説明] | 
+| トリガーの種類 | 説明 | 
 |--------------|-------------| 
 | [**ApiConnection**](#apiconnection-trigger) | [Microsoft マネージド API](../connectors/apis-list.md) を使用して、エンドポイントのチェックまたは*ポーリング*を行います。 | 
 | [**ApiConnectionWebhook**](#apiconnectionwebhook-trigger) | 登録または登録解除を行う [Microsoft マネージド API](../connectors/apis-list.md) を呼び出して、ロジック アプリ用の呼び出し可能なエンドポイントを作成します。 | 
@@ -126,7 +126,7 @@ ms.locfileid: "76543479"
 
 *必須*
 
-| 値 | 種類 | [説明] |
+| 値 | 種類 | 説明 |
 |-------|------|-------------|
 | <*APIConnection_trigger_name*> | String | トリガーの名前 |
 | <*connection-name*> | String | ワークフローに使用するマネージド API への接続の名前 |
@@ -138,7 +138,7 @@ ms.locfileid: "76543479"
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
 | <*query-parameters*> | JSON オブジェクト | API 呼び出しに含める任意のクエリ パラメーター。 たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 | 
@@ -150,7 +150,7 @@ ms.locfileid: "76543479"
 
 *出力*
  
-| 要素 | 種類 | [説明] |
+| 要素 | 種類 | 説明 |
 |---------|------|-------------|
 | headers | JSON オブジェクト | 応答のヘッダー |
 | body | JSON オブジェクト | 応答の本文 |
@@ -220,7 +220,7 @@ ms.locfileid: "76543479"
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*connection-name*> | String | ワークフローに使用するマネージド API への接続の名前 | 
 | <*body-content*> | JSON オブジェクト | マネージド API にペイロードとして送信するメッセージの内容 | 
@@ -228,7 +228,7 @@ ms.locfileid: "76543479"
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
 | <*query-parameters*> | JSON オブジェクト | API 呼び出しに含める任意のクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 | 
@@ -301,7 +301,7 @@ ms.locfileid: "76543479"
 
 *必須*
 
-| プロパティ | 値 | 種類 | [説明] |
+| プロパティ | 値 | 種類 | 説明 |
 |----------|-------|------|-------------|
 | `method` | <*method-type*> | String | 外向き要求を送信するために使用するメソッド:"GET"、"PUT"、"POST"、"PATCH"、または "DELETE" |
 | `uri` | <*HTTP-or-HTTPS-endpoint-URL*> | String | 外向き要求を送信する HTTP または HTTPS エンドポイント URL。 文字列の最大サイズ: 2 KB <p>Azure のサービスまたはリソースの場合、この URI 構文には、アクセスするリソース ID とパスが含まれます。 |
@@ -311,7 +311,7 @@ ms.locfileid: "76543479"
 
 *省略可能*
 
-| プロパティ | 値 | 種類 | [説明] |
+| プロパティ | 値 | 種類 | 説明 |
 |----------|-------|------|-------------|
 | `headers` | <*header-content*> | JSON オブジェクト | 要求に含める必要があるすべてのヘッダー <p>言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <*query-parameters*> | JSON オブジェクト | 要求で使用する必要があるすべてのクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を要求に追加します。 |
@@ -325,7 +325,7 @@ ms.locfileid: "76543479"
 
 *出力*
 
-| 要素 | 種類 | [説明] |
+| 要素 | 種類 | 説明 |
 |---------|------|-------------| 
 | headers | JSON オブジェクト | 応答のヘッダー | 
 | body | JSON オブジェクト | 応答の本文 | 
@@ -336,7 +336,7 @@ ms.locfileid: "76543479"
 
 エンドポイントがロジック アプリと適切に連携するためには、特定のトリガー パターンまたはコントラクトに準拠し、以下のプロパティを認識する必要があります。  
   
-| Response | 必須 | [説明] | 
+| Response | 必須 | 説明 | 
 |----------|----------|-------------| 
 | status code | はい | 状態コード "200 OK" によって実行が開始されます。 その他のすべての状態コードでは実行は開始されません。 | 
 | Retry-after ヘッダー | いいえ | ロジック アプリがエンドポイントを再度ポーリングするまでの秒数 | 
@@ -397,7 +397,7 @@ ms.locfileid: "76543479"
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*method-type*> | String | サブスクリプション要求に使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
 | <*endpoint-subscribe-URL*> | String | サブスクリプション要求の送信先であるエンドポイント URL | 
@@ -405,7 +405,7 @@ ms.locfileid: "76543479"
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*method-type*> | String | 取り消し要求に使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
 | <*endpoint-unsubscribe-URL*> | String | 取り消し要求の送信先であるエンドポイント URL | 
@@ -419,7 +419,7 @@ ms.locfileid: "76543479"
 
 *出力* 
 
-| 要素 | 種類 | [説明] |
+| 要素 | 種類 | 説明 |
 |---------|------|-------------| 
 | headers | JSON オブジェクト | 応答のヘッダー | 
 | body | JSON オブジェクト | 応答の本文 | 
@@ -491,7 +491,7 @@ ms.locfileid: "76543479"
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*time-unit*> | String | トリガーの起動間隔を表す時間の単位: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
 | <*number-of-time-units*> | 整数 | トリガーの起動間隔を頻度に基づいて指定する値。頻度は、トリガーが再び起動するまで待機する時間の単位数です。 <p>間隔の最小値と最大値は次のとおりです。 <p>- Month: 1 から 16 か月 </br>- Day: 1 から 500 日 </br>- Hour: 1 から 12,000 時間 </br>- Minute: 1 から 72,000 分 </br>- Second: 1 から 9,999,999 秒<p>たとえば、間隔が 6 で頻度が "Month" の場合、6 か月ごとの繰り返しになります。 | 
@@ -499,7 +499,7 @@ ms.locfileid: "76543479"
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*start-date-time-with-format-YYYY-MM-DDThh:mm:ss*> | String | 次の形式の開始日時: <p>タイム ゾーンを指定する場合は YYYY-MM-DDThh:mm:ss <p>または <p>タイム ゾーンを指定しない場合は YYYY-MM-DDThh:mm:ssZ <p>たとえば、2017 年 9 月 18 日午後 2 時の場合は、「2017-09-18T14:00:00」と指定し、"太平洋標準時" などのタイム ゾーンを指定します。タイム ゾーンを指定しない場合は、「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻には、最大で 49 年先の時刻を指定できます。また、[UTC の日付と時刻の形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) (ただし、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除く) で[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従っている必要があります。 タイム ゾーンを指定しなかった場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 開始日時の詳細については、[定期的に実行されるタスクの作成とスケジュール](../connectors/connectors-native-recurrence.md)に関するページを参照してください。 | 
 | <*time-zone*> | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを指定してください。 | 
@@ -600,7 +600,7 @@ ms.locfileid: "76543479"
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*property-name*> | String | ペイロードを記述する JSON スキーマのプロパティの名前 | 
 | <*property-type*> | String | プロパティの型 | 
@@ -608,7 +608,7 @@ ms.locfileid: "76543479"
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*method-type*> | String | 受信要求でのロジック アプリの呼び出しに使用する必要があるメソッド: "GET"、"PUT"、"POST"、"PATCH"、"DELETE" |
 | <*relative-path-for-accepted-parameter*> | String | 使用しているエンドポイントの URL で受け入れ可能なパラメーターの相対パス | 
@@ -772,7 +772,7 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------|
 | <*action-name*> | String | アクションの名前 | 
 | <*action-type*> | String | アクションの種類 ("Http" や "ApiConnection" など)| 
@@ -783,7 +783,7 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------|
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「再試行ポリシー」を参照してください。 | 
 | <*runtime-config-options*> | JSON オブジェクト | 一部のアクションについては、`runtimeConfiguration` プロパティを設定してアクションのビヘイビアーを実行時に変更できます。 詳細については、「[ランタイム構成の設定](#runtime-config-options)」を参照してください。 | 
@@ -816,7 +816,7 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 
 ### <a name="built-in-actions"></a>組み込みアクション
 
-| アクションの種類 | [説明] | 
+| アクションの種類 | 説明 | 
 |-------------|-------------| 
 | [**作成**](#compose-action) | さまざまな種類を持つ可能性がある複数の入力から、単一の出力を作成します。 | 
 | [**JavaScript コードの実行**](#run-javascript-code) | 特定の条件に適合する JavaScript コード スニペットを実行します。 コードの要件と詳細については、「[Add and run code snippets with inline code](../logic-apps/logic-apps-add-run-inline-code.md)」(インライン コードを使用してコード スニペットを追加および実行する) を参照してください。 |
@@ -837,7 +837,7 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 
 ### <a name="managed-api-actions"></a>マネージド API アクション
 
-| アクションの種類 | [説明] | 
+| アクションの種類 | 説明 | 
 |-------------|-------------|  
 | [**ApiConnection**](#apiconnection-action) | [Microsoft マネージド API](../connectors/apis-list.md)を使用して HTTP エンドポイントを呼び出します。 | 
 | [**ApiConnectionWebhook**](#apiconnectionwebhook-action) | HTTP Webhook と同様に動作しますが、[Microsoft マネージド API](../connectors/apis-list.md) を使用します。 | 
@@ -849,7 +849,7 @@ Azure Logic Apps には、さまざまなアクションの種類があります
 
 これらのアクションでは、ワークフローの実行を制御し、他のアクションを含めることができます。 ワークフローを制御するアクションの外側から、そのワークフロー制御アクションの内部にあるアクションを直接参照できます。 たとえば、スコープの内部で `Http` アクションを使用している場合、ワークフロー内のどこからでも `@body('Http')` 式を参照できます。 ただし、ワークフロー制御アクションの内部に存在するアクションは、同じワークフロー制御構造体の中にある他のアクションの "後に実行" することしかできません。
 
-| アクションの種類 | [説明] | 
+| アクションの種類 | 説明 | 
 |-------------|-------------| 
 | [**ForEach**](#foreach-action) | 配列内のすべての項目に対して同じアクションをループ実行します。 | 
 | [**If**](#if-action) | 指定した条件が true であるか false であるかに基づいて、アクションを実行します。 | 
@@ -888,7 +888,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*action-name*> | String | コネクタによって指定されるアクションの名前 | 
 | <*api-name*> | String | 接続に使用される Microsoft マネージド API の名前 | 
@@ -898,7 +898,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*other-action-specific-input-properties*> | JSON オブジェクト | この特定のアクションに適用するその他の入力プロパティ | 
 | <*retry-behavior*> | JSON オブジェクト | 状態コード 408、429、5XX の断続的なエラーと接続の例外に対する再試行ビヘイビアーをカスタマイズします。 詳細については、「[Retry policies (再試行ポリシー)](../logic-apps/logic-apps-exception-handling.md#retry-policies)」をご覧ください。 | 
@@ -968,7 +968,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*action-name*> | String | コネクタによって指定されるアクションの名前 | 
 | <*method-type*> | String | エンドポイントの登録または登録解除に使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" | 
@@ -977,7 +977,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*api-unsubscribe-URL*> | String | API からの登録解除に使用する URI | 
 | <*header-content*> | JSON オブジェクト | 要求で送信するヘッダー <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
@@ -1007,7 +1007,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須* 
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*inputs-to-compose*> | Any | 単一の出力を作成するための入力 | 
 |||| 
@@ -1068,7 +1068,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | 種類 | [説明] |
+| 値 | 種類 | 説明 |
 |-------|------|-------------|
 | <*JavaScript-code-snippet*> | 場合により異なる | 実行する JavaScript コード。 コードの要件と詳細については、「[Add and run code snippets with inline code](../logic-apps/logic-apps-add-run-inline-code.md)」(インライン コードを使用してコード スニペットを追加および実行する) を参照してください。 <p>コード スニペットは、`code` 属性で、読み取り専用の `workflowContext` オブジェクトを入力として使用できます。 このオブジェクト内のサブプロパティにより、コードからワークフロー内のトリガーや以前のアクションの結果にアクセスできます。 `workflowContext` オブジェクトの詳細については、「[Reference trigger and action results in your code](../logic-apps/logic-apps-add-run-inline-code.md#workflowcontext)」(コード内でトリガーとアクションの結果を参照する) を参照してください。 |
 ||||
@@ -1079,7 +1079,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 `includeTrigger` 属性には、`true` または `false` を指定できます。
 
-| 値 | 種類 | [説明] |
+| 値 | 種類 | 説明 |
 |-------|------|-------------|
 | <*previous-actions*> | 文字列配列 | 指定したアクション名の配列。 ワークフロー定義に示されるアクション名を使用し、アクション名ではスペース (" ") ではなくアンダースコア (_) を使用します。 |
 ||||
@@ -1145,7 +1145,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------|  
 | <*Azure-function-ID*> | String | 呼び出す対象である Azure 関数を表すリソース ID。 この値の形式は次のとおりです。<p>"/subscriptions/<*Azure-subscription-ID*>/resourceGroups/<*Azure-resource-group*>/providers/Microsoft.Web/sites/<*Azure-function-app-name*>/functions/<*Azure-function-name*>" | 
 | <*method-type*> | String | 関数を呼び出すために使用する HTTP メソッド: "GET"、"PUT"、"POST"、"PATCH"、または "DELETE" <p>指定しない場合、既定のメソッドは "POST" です。 | 
@@ -1153,7 +1153,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------|  
 | <*header-content*> | JSON オブジェクト | 呼び出しで送信するヘッダー <p>言語と種類を要求に設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | <*body-content*> | JSON オブジェクト | 要求で送信するメッセージの内容 | 
@@ -1223,7 +1223,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| プロパティ | 値 | 種類 | [説明] |
+| プロパティ | 値 | 種類 | 説明 |
 |----------|-------|------|-------------|
 | `method` | <*method-type*> | String | 外向き要求を送信するために使用するメソッド:"GET"、"PUT"、"POST"、"PATCH"、または "DELETE" |
 | `uri` | <*HTTP-or-HTTPS-endpoint-URL*> | String | 外向き要求を送信する HTTP または HTTPS エンドポイント URL。 文字列の最大サイズ: 2 KB <p>Azure のサービスまたはリソースの場合、この URI 構文には、アクセスするリソース ID とパスが含まれます。 |
@@ -1231,7 +1231,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *省略可能*
 
-| プロパティ | 値 | 種類 | [説明] |
+| プロパティ | 値 | 種類 | 説明 |
 |----------|-------|------|-------------|
 | `headers` | <*header-content*> | JSON オブジェクト | 要求に含める必要があるすべてのヘッダー <p>言語と種類を設定する場合の例を次に示します。 <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` |
 | `queries` | <*query-parameters*> | JSON オブジェクト | 要求で使用する必要があるすべてのクエリ パラメーター <p>たとえば、`"queries": { "api-version": "2018-01-01" }` オブジェクトでは `?api-version=2018-01-01` を呼び出しに追加します。 |
@@ -1275,7 +1275,7 @@ HTTP 要求を [Microsoft マネージド API](../connectors/apis-list.md) に�
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*array*> | Array | ソース項目を渡す配列または式。 式を指定する場合は、その式を二重引用符で囲みます。 | 
 | <*delimiter*> | 1 文字の文字列 | 文字列内の各項目を区切る文字 | 
@@ -1319,7 +1319,7 @@ JSON コンテンツのプロパティからユーザー フレンドリなフ�
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*JSON-source*> | JSON オブジェクト | 解析する対象の JSON コンテンツ | 
 | <*JSON-schema*> | JSON オブジェクト | 基になる JSON コンテンツを記述する JSON スキーマ。ソースの JSON コンテンツを解析するために、アクションによって使用されます。 <p>**ヒント**:Logic Apps デザイナーで、スキーマを指定するかサンプル ペイロードを入力すると、アクションによるスキーマの作成が可能になります。 | 
@@ -1421,7 +1421,7 @@ JSON コンテンツのプロパティからユーザー フレンドリなフ�
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*array*> | Array | ソース項目を渡す配列または式。 式を指定する場合は、その式を二重引用符で囲みます。 |
 | <*condition-or-filter*> | String | ソース配列内の項目をフィルター処理するために使用される条件 <p>**注**:条件を満たす値がない場合は、アクションによって空の配列が作成されます。 |
@@ -1462,14 +1462,14 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*response-status-code*> | 整数 | 受信要求に送信される HTTP 状態コード。 既定のコードは "200 OK" ですが、2xx、4xx、または 5xx で始まる任意の有効な状態コードを使用できます。3xxx で始まるコードは使用できません。 | 
 |||| 
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*response-headers*> | JSON オブジェクト | 応答に含める 1 つまたは複数のヘッダー | 
 | <*response-body*> | 各種 | 応答本文。文字列、JSON オブジェクト、または先行アクションからのバイナリ コンテンツとすることができます。 | 
@@ -1537,7 +1537,7 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 *必須* 
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*array*> | Array | ソース項目を渡す配列または式。 式は必ず二重引用符で囲みます。 <p>**注**:ソース配列が空の場合、アクションによって空の配列が作成されます。 | 
 | <*key-name*> | String | <*expression*>  の結果に割り当てられたプロパティ名<p>出力配列内のすべてのオブジェクトに新しいプロパティを追加するには、そのプロパティの <*key-name*> と、プロパティ値を表す <*expression*> を指定します。 <p>あるプロパティを配列内のすべてのオブジェクトから削除するには、そのプロパティの <*key-name*> を省略します。 | 
@@ -1635,7 +1635,7 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 *必須* 
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | \<CSV *または* HTML>| String | 作成するテーブルの形式 | 
 | <*array*> | Array | テーブルのソース項目を渡す配列または式 <p>**注**:ソース配列が空の場合、アクションによって空のテーブルが作成されます。 | 
@@ -1645,7 +1645,7 @@ HTTP 要求に対する応答のペイロードを作成するアクションで
 
 列ヘッダーと値を指定またはカスタマイズするには、`columns` 配列を使用します。 ヘッダー名が同じ `header-value` のペアが複数ある場合、それらのペアの値は、そのヘッダー名の下の同じ列に表示されます。 そうでない場合、一意のヘッダーごとに一意の列が定義されます。
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*column-name*> | String | 列のヘッダー名 | 
 | <*column-value*> | Any | その列に含まれる値 | 
@@ -1724,7 +1724,7 @@ ID,Product_Name
 
 このアクションで作成される HTML テーブルは次のようになります。 
 
-<table><thead><tr><th>Stock_ID</th><th>[説明]</th></tr></thead><tbody><tr><td>0</td><td>Organic Apples</td></tr><tr><td>1</td><td>Organic Oranges</td></tr></tbody></table>
+<table><thead><tr><th>Stock_ID</th><th>説明</th></tr></thead><tbody><tr><td>0</td><td>Organic Apples</td></tr><tr><td>1</td><td>Organic Oranges</td></tr></tbody></table>
 
 <a name="terminate-action"></a>
 
@@ -1748,7 +1748,7 @@ ID,Product_Name
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*status*> | String | 実行に関して返す状態: "Failed"、"Cancelled"、または "Succeeded" |
 |||| 
@@ -1757,7 +1757,7 @@ ID,Product_Name
 
 "runStatus" オブジェクトのプロパティは、"runStatus" プロパティが "Failed" 状態に設定されている場合にのみ適用されます。
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*error-code-or-name*> | String | コード、またはエラーの名前 |
 | <*error-message*> | String | エラーとアプリ ユーザーが実行できる対処について説明したメッセージまたはテキスト | 
@@ -1818,7 +1818,7 @@ ID,Product_Name
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*number-of-units*> | 整数 | **Delay** アクションで待機する単位数 | 
 | <*interval*> | String | **Delay** アクションで待機する期間: "Second"、"Minute"、"Hour"、"Day"、"Week"、"Month" | 
@@ -1891,7 +1891,7 @@ ID,Product_Name
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*nested-logic-app-name*> | String | 呼び出す対象のロジック アプリの前 | 
 | <*trigger-name*> | String | 入れ子になったロジック アプリ内の、呼び出す対象のトリガーの名前 | 
@@ -1902,7 +1902,7 @@ ID,Product_Name
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------|  
 | <*header-content*> | JSON オブジェクト | 呼び出しで送信するヘッダー | 
 | <*body-content*> | JSON オブジェクト | 呼び出しで送信するメッセージの内容 | 
@@ -1968,7 +1968,7 @@ ID,Product_Name
 
 *必須* 
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*action-1...n*> | String | 配列の各項目に対して実行するアクションの名前 | 
 | <*action-definition-1...n*> | JSON オブジェクト | 実行するアクションの定義 | 
@@ -1977,7 +1977,7 @@ ID,Product_Name
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*count*> | 整数 | 既定では、"for each" ループの反復処理は、[既定の制限](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)に達するまでは (同時にまたは並行して) 実行されます。 この制限を変更するには、新しい &lt;*count*&gt; 値を設定します。「["for each" のコンカレンシーを変更する](#change-for-each-concurrency)」を参照してください。 | 
 | <*operation-option*> | String | "for each" ループを並行してではなく順次実行するには、<*operation-option*> を `Sequential` に設定するか、<*count*> を `1` に設定します。両方を設定することはできません。 詳細については、「["for each" ループを順次実行する](#sequential-for-each)」を参照してください。 | 
@@ -2041,7 +2041,7 @@ ID,Product_Name
 }
 ```
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*condition*> | JSON オブジェクト | 評価する条件 (式にすることもできます) | 
 | <*action-1*> | JSON オブジェクト | <*condition*> が true と評価された場合に実行するアクション | 
@@ -2131,7 +2131,7 @@ ID,Product_Name
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------|  
 | <*inner-action-1...n*> | JSON オブジェクト | スコープ内部で実行される 1 つ以上のアクション |
 | <*action-inputs*> | JSON オブジェクト | 各アクションの入力 |
@@ -2172,7 +2172,7 @@ ID,Product_Name
 
 *必須*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*expression-object-or-token*> | 場合により異なる | 評価する対象の式、JSON オブジェクト、またはトークン | 
 | <*action-name*> | String | 一致するケースがある場合に実行するアクションの名前 | 
@@ -2182,7 +2182,7 @@ ID,Product_Name
 
 *省略可能*
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*default-action-name*> | String | 一致するケースが存在しないときに実行する既定のアクションの名前 | 
 | <*default-action-definition*> | JSON オブジェクト | 一致するケースが存在しないときに実行するアクションの定義 | 
@@ -2298,7 +2298,7 @@ ID,Product_Name
 }
 ```
 
-| 値 | 種類 | [説明] | 
+| 値 | 種類 | 説明 | 
 |-------|------|-------------| 
 | <*action-name*> | String | ループ内で実行するアクションの名前 | 
 | <*action-type*> | String | 実行するアクションの種類 | 
@@ -2377,7 +2377,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 トリガーまたはアクションの定義にこれらの `runtimeConfiguration` プロパティを追加することによって、トリガーとアクションの既定の実行時ビヘイビアーを変更できます。
 
-| プロパティ | 種類 | [説明] | トリガーまたはアクション | 
+| プロパティ | 種類 | 説明 | トリガーまたはアクション | 
 |----------|------|-------------|-------------------| 
 | `runtimeConfiguration.concurrency.runs` | 整数 | (同時にまたは並行して) 実行できるワークフロー インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 この値を調整することで、バックエンド システムが受信する要求の数を制限できます。 <p>`runs` プロパティを `1` に設定すると、`operationOptions` プロパティを `SingleInstance` に設定したのと同じように機能します。 いずれか一方のプロパティを設定できます。両方を設定することはできません。 <p>既定の制限を変更するには、「[トリガーのコンカレンシーを変更する](#change-trigger-concurrency)」または「[インスタンスを順次トリガーする](#sequential-trigger)」を参照してください。 | すべてのトリガー | 
 | `runtimeConfiguration.concurrency.maximumWaitingRuns` | 整数 | ロジック アプリが最大数の同時実行インスタンスを既に実行している場合に実行を待機する必要があるワークフロー インスタンスの数に対する[*既定の制限*](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits)を変更します。 <p>既定の制限を変更するには、「[実行待機の制限を変更する](#change-waiting-runs)」を参照してください。 | すべてのトリガー | 
@@ -2393,7 +2393,7 @@ Webhook ベースのトリガーとアクションでは、エンドポイント
 
 トリガーまたはアクションの定義で `operationOptions` プロパティを使用して、トリガーとアクションの既定のビヘイビアーを変更できます。
 
-| 操作オプション | 種類 | [説明] | トリガーまたはアクション | 
+| 操作オプション | 種類 | 説明 | トリガーまたはアクション | 
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | String | HTTP ベースのアクションを非同期に実行するのではなく、同期的に実行します。 <p><p>このオプションを設定するには、「[アクションを同期的に実行する](#asynchronous-patterns)」を参照してください。 | アクション: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action)、 <br>[応答](#response-action) | 
 | `OptimizedForHighThroughput` | String | 5 分あたりのアクション実行回数に対する[既定の制限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)を[上限](../logic-apps/logic-apps-limits-and-config.md#throughput-limits)に変更します。 <p><p>このオプションを設定するには、「[高スループット モードで実行する](#run-high-throughput-mode)」を参照してください。 | すべてのアクション | 
