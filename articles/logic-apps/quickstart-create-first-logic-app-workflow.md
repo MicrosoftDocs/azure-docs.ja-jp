@@ -42,7 +42,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![新しいロジック アプリの詳細を入力する](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | プロパティ | 値 | [説明] |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **Name** | <*ロジック アプリ名*> | ロジック アプリの名前。文字、数字、ハイフン (`-`)、アンダースコア (`_`)、かっこ (`(`、`)`)、およびピリオド (`.`) のみを含めることができます。 この例では、"My-First-Logic-App" を使用します。 |
    | **サブスクリプション** | <*Azure サブスクリプション名*> | お使いの Azure サブスクリプション名 |
@@ -77,7 +77,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
    ![RSS フィード、頻度、および間隔を指定してトリガーを設定する](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | プロパティ | 値 | [説明] |
+   | プロパティ | 値 | 説明 |
    |----------|-------|-------------|
    | **RSS フィードの URL** | `http://feeds.reuters.com/reuters/topNews` | 監視する RSS フィードのリンク |
    | **間隔** | 1 | チェックの間隔 (単位数) |
@@ -147,7 +147,7 @@ Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com)
 
       ![メール本文の内容のプロパティを選択する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | プロパティ | [説明] |
+      | プロパティ | 説明 |
       |----------|-------------|
       | **フィード タイトル** | 項目のタイトル |
       | **フィードの公開日付** | 項目の公開日時 |
