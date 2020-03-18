@@ -1,5 +1,5 @@
 ---
-title: "Azure 政府機関認知サービス |Microsoft ドキュメント"
+title: "Azure Government における Cognitive Services |Microsoft ドキュメント"
 description: "Azure Government アプリケーションの機能の比較と開発におけるガイダンスを示します。"
 services: azure-government
 cloud: gov
@@ -780,6 +780,7 @@ namespace TextTranslationApp1
 Text Translation API の詳細については[パブリック ドキュメント](../cognitive-services/translator/translator-info-overview.md)と[パブリック API ドキュメント](http://docs.microsofttranslator.com/text-translate.html)を参照してください。
 
 ### <a name="next-steps"></a>次の手順
-* サブスクライブ、 [Azure 政府機関向けブログ](https://blogs.msdn.microsoft.com/azuregov/)
-* 使用して、スタック オーバーフローに関するヘルプを表示、"[azure gov](https://stackoverflow.com/questions/tagged/azure-gov)"タグ
-* フィードバックのお願いまたは経由での新機能を要求、 [Azure 政府フィードバック フォーラム](https://feedback.azure.com/forums/558487-azure-government)
+
+* [Azure Government blog](https://blogs.msdn.microsoft.com/azuregov/)を購読する
+* "[azure gov](https://stackoverflow.com/questions/tagged/azure-gov)" タグを使用して、スタックオーバーフローに関するヘルプを表示する
+* [Azure Government フィードバック フォーラム](https://feedback.azure.com/forums/558487-azure-government)からフィードバックを送信するか、新しい機能をリクエスト
