@@ -20,35 +20,35 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/13/2018
 ---
-# <a name="cognitive-services-on-azure-government--computer-vision-face-translator-text-apis"></a>Azure 政府 – コンピューター ビジョン面、トランスレーター テキスト Api で認識サービス
+# <a name="cognitive-services-on-azure-government--computer-vision-face-translator-text-apis"></a>Azure Government – Computer Vision、Face、Translator Text API で認識サービス
 
-Azure 政府の認知サービスの概要を表示する[ここをクリックして](documentation-government-services-aiandcognitiveservices.md)です。
+Azure Government の Cognitive Services の概要を表示します、[ここをクリックして](documentation-government-services-aiandcognitiveservices.md)ください。
 
 ## <a name="prerequisites"></a>前提条件
-* インストールし、構成[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0)
-* 接続[Azure 政府機関での PowerShell](documentation-government-get-started-connect-with-ps.md)
+* [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) をインストールし、設定してください。
+* [Azure Government での PowerShell](documentation-government-get-started-connect-with-ps.md) に接続してください。
 
-## <a name="part-1-provision-cognitive-services-accounts"></a>パート 1: 認知サービス アカウントのプロビジョニング
+## <a name="part-1-provision-cognitive-services-accounts"></a>パート 1: Cognitive Services アカウントのプロビジョニング
 
-認知サービス Api にアクセスするためには、まず各にアクセスする Api の認知サービス アカウントをプロビジョニングする必要があります。 **Azure ポータルで、政府機関認知サービスがまだサポートされていない**が、Api やサービスにアクセスする Azure PowerShell を使用することができます。 
+Cognitive Services API にアクセスするためには、まずアクセスするそれぞれの API の Cognitive Services アカウントをプロビジョニングする必要があります。 **Azure Government Portal で Cognitive Services はまだサポートされていません**が、API やサービスにアクセスする Azure PowerShell を使用することができます。 
 
 > [!NOTE]
-> アカウントを作成して、(下記参照)、キーの取得のプロセスを通過する必要があります**各**Api にアクセスするのです。
+> アカウントを作成し、アクセスしたい **各** APIのキーの取得のプロセス(下記参照)を通過する必要があります
 > 
 > 
 
-1. あることを確認してください、**認知サービス リソース プロバイダーは、自分のアカウントに登録されている**です。 こうこと**次の Powershell コマンドを実行します。**
+1. **Cognitive Services リソース プロバイダーが、自分のアカウントに登録されている**ことを確認してください。 **次の Powershell コマンドを実行することで**確認ができます。
 
    ```PowerShell
    Get-AzureRmResourceProvider
    ```
-   操作を行う場合**が表示されない`Microsoft.CognitiveServices`** 、によってリソース プロバイダーを登録する必要がある**、次のコマンドを実行している**:
+   **`Microsoft.CognitiveServices` が表示されない**場合、**次のコマンドを実行することで**リソース プロバイダーに登録する必要があります。
    ```PowerShell
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.CognitiveServices
    ```
-2. 次の Powershell コマンドでは、関連するアカウント情報で「rg 名」、"名前-の-your-api"、および"resourcegroup 場所"を置き換えます。 
+2. 次の Powershell コマンドの "rg-name" 、 "name-of-your-api" および "location-of-resourcegroup" を関連するアカウント情報に置き換えます。 
 
-   アクセスする次の 3 つの Api のいずれかと、API の「型」タグを置き換えます。
+   アクセスする次の 3 つの API のいずれかに "type of API" タグを置き換えます。
        * ComputerVision
        * Face
        * TextTranslation
@@ -72,7 +72,7 @@ Azure 政府の認知サービスの概要を表示する[ここをクリック�
 
 特定の API にアクセスするアカウント キーを取得する必要があります。 
 
-次の Powershell コマンドで、"youraccountname"タグを作成したアカウントを指定した名前に置き換えます。 'Rg 名' タグをリソース グループの名前に置き換えます。
+次の Powershell コマンドで、"youraccountname"タグを作成したアカウントを指定した名前に置き換えます。 'rg-name' タグをリソース グループの名前に置き換えます。
 
 ```PowerShell
 Get-AzureRmCognitiveServicesAccountKey -Name <youraccountname> -ResourceGroupName 'rg-name'
@@ -86,33 +86,33 @@ Get-AzureRmCognitiveServicesAccountKey -Name myFaceAPI -ResourceGroupName 'resou
 
 ![cog2](./media/documentation-government-cognitiveservices-img2.png)
 
-Api に対して呼び出しを行う準備が整いました。 
+API に対して呼び出しを行う準備が整いました。 
 
 ## <a name="part-2-api-quickstarts"></a>パート 2: API のクイック スタート 
-次のクイック スタートは Azure 政府機関認知サービスを通じて使用可能な Api を使用した作業を開始するのに役立ちます。
+次のクイック スタートは Azure Government の Cognitive Services を通じて使用可能な API を使用した作業を開始するのに役立ちます。
 
 ## <a name="computer-vision-api"></a>Computer Vision API
 ### <a name="prerequisites"></a>前提条件
 
-* コンピューター ビジョンの API を Microsoft Windows SDK の取得[ここ](https://github.com/Microsoft/Cognitive-vision-windows)です。
+* Microsoft Computer Vision API Windows SDK の取得は[こちら](https://github.com/Microsoft/Cognitive-vision-windows)です。
 
 * Visual Studio がインストールされていることを確認します。
     -   [Visual Studio 2017 バージョン 15.3](https://www.visualstudio.com/vs/preview/) (**Azure 開発**ワークロードを含む)。
     
     >[!NOTE] 
-    > インストールまたは Visual Studio 2017 15.3 のバージョンにアップグレードした後、Azure 関数の Visual Studio 2017 ツールを手動で更新する必要もあります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** >          **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
+    > インストールまたは Visual Studio 2017 15.3 のバージョンにアップグレードした後、Azure Functions の Visual Studio 2017 ツールを手動で更新する必要もあります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** >          **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
     >
     >
     
 ### <a name="variations"></a>バリエーション
-* Azure 政府機関 Face API にアクセスするための URI です。
+* Azure Government の Face API にアクセスするための URI は以下です。
    - `https://(resource-group-location).api.cognitive.microsoft.us/face/v1.0`
-   - この URI と商用 Azure で使用される URI の主な違いは、の終了**.us**と uri の先頭の場所
+   - この URI と商用 Azure で使用される URI の主な違いは、の終了 **.us** と uri の先頭の場所
 
 
-### イメージをコンピューター ビジョン API を使用して c# の分析します。 <a name="AnalyzeImage"> </a>
+### <a name="AnalyzeImage"></a>画像を Computer Vision API を使用して C# で分析します。
 
-[画像の分析方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa)イメージの内容に基づいたビジュアルの機能を抽出することができます。 イメージをアップロードまたはイメージ URL を指定を選択する返すには、必要な機能を含みます。
+[画像の分析方法](https://westcentralus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa)によって、画像の内容に基づいたビジュアルの機能を抽出することができます。 イメージをアップロードまたはイメージ URL を指定を選択する返すには、必要な機能を含みます。
 * イメージのコンテンツに関連するタグの詳細な一覧。
 * 完全な文章のイメージのコンテンツの説明です。
 * 座標、性別、およびイメージに含まれているすべての面の経過時間。
@@ -358,27 +358,29 @@ JSON では、正常な応答が返されます。 正常な応答の例を次�
    }
 }
 ```
-詳細についてを参照してください[パブリック ドキュメント](../cognitive-services/computer-vision/index.md)と[パブリック API ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa)コンピューター ビジョン api です。
+Computer Vision API の詳細については[パブリック ドキュメント](../cognitive-services/computer-vision/index.md)と[パブリック API ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739/operations/56f91f2e778daf14a499e1fa)を参照してください。
 
 ## <a name="face-api"></a>Face API
 ### <a name="prerequisites"></a>前提条件
-* Microsoft Face API の Windows SDK の取得[ここ](https://www.nuget.org/packages/Microsoft.ProjectOxford.Face/)
+* Microsoft Face API Windows SDK の取得は[こちら](https://www.nuget.org/packages/Microsoft.ProjectOxford.Face/)です。
 
 * Visual Studio がインストールされていることを確認します。
     -   [Visual Studio 2017 バージョン 15.3](https://www.visualstudio.com/vs/preview/) (**Azure 開発**ワークロードを含む)。
     
     >[!NOTE] 
-    > インストールまたは Visual Studio 2017 15.3 のバージョンにアップグレードした後、Azure 関数の Visual Studio 2017 ツールを手動で更新する必要もあります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** >          **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
+    > インストールまたは Visual Studio 2017 15.3 のバージョンにアップグレードした後、Azure Functions の Visual Studio 2017 ツールを手動で更新する必要もあります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** >          **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
     >
     >
     
 ### <a name="variations"></a>バリエーション 
-* Azure 政府機関 Face API にアクセスするための URI です。
+* Azure Government の Face API にアクセスするための URI は以下です。
    - `https://(resource-group-location).api.cognitive.microsoft.us/face/v1.0`
-   - この URI と商用 Azure で使用される URI の主な違いは、の終了**.us**と uri の先頭の場所
+   - この URI と商用 Azure で使用される URI の主な違いは、の終了 **.us**と uri の先頭の場所
 
-### Face API を使用して c# でのイメージに顔を検出します。 <a name="Detect"> </a>
-使用して、[に直面しています-メソッドを検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)画像の顔を検出し、フェイスを返す属性を含みます。
+### <a name="Detect"></a>Face API を使用して C# で画像から顔を検出します。
+
+[Face - Detect method](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)使用して、画像から顔を検出し、含まれる顔の属性を返します。
+
 * フェイス ID: 一意の ID Face API のいくつかのシナリオで使用します。 
 * : 面の四角形、左、上、幅、および高さ直面しているイメージ内の場所を示すです。
 * 目印: 27 ポイント フェイス目印フェイス コンポーネントの重要な位置を指すの配列。
@@ -386,7 +388,7 @@ JSON では、正常な応答が返されます。 正常な応答の例を次�
 
 ### <a name="face-detect-c-example-request"></a>顔の検出の要求の例 (C#)
 
-サンプルは、Face API のクライアント ライブラリを使用して c# で記述します。 
+サンプルは、Face API のクライアント ライブラリを使用して C# で記述します。 
 
 1. Visual Studio で新しいコンソール ソリューションを作成します。
 2. Program.cs を次のコードに置き換えます。
@@ -601,31 +603,31 @@ Response:
    }
 ]
 ```
-詳細についてを参照してください[パブリック ドキュメント](../cognitive-services/Face/index.md)、および[パブリック API ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)Face api です。
+Face API の詳細については[パブリック ドキュメント](../cognitive-services/Face/index.md)と[パブリック API ドキュメント](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)を参照してください。
 
-## <a name="text-translation-api"></a>テキスト変換 API 
+## <a name="text-translation-api"></a>Text Translation API
 ### <a name="prerequisites"></a>前提条件
 
 * Visual Studio がインストールされていることを確認します。
     -   [Visual Studio 2017 バージョン 15.3](https://www.visualstudio.com/vs/preview/) (**Azure 開発**ワークロードを含む)。
     
     >[!NOTE] 
-    > インストールまたは Visual Studio 2017 15.3 のバージョンにアップグレードした後、Azure 関数の Visual Studio 2017 ツールを手動で更新する必要もあります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** >          **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
+    > インストールまたは Visual Studio 2017 15.3 のバージョンにアップグレードした後、Azure Functions の Visual Studio 2017 ツールを手動で更新する必要もあります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** >          **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
     >
     >
     
 ### <a name="variations"></a>バリエーション
-* Azure 政府機関、テキスト変換 API にアクセスするための URI です。 
+* Azure Government の Text Translation API にアクセスするための URI は以下です。
    - `https://api.microsofttranslator.us/v2/http.svc`
-   - 商用の URI から唯一の違いは、エンドポイントの**.us**
-* テキスト変換 API にアクセス トークンを取得するための URI は、`Endpoint`によってこのクイック スタートの第 1 部で保存された属性`/IssueToken`終了時
+   - 商用の URI から唯一の違いは、エンドポイントの **.us**
+* Text Translation API にアクセス トークンを取得するための URI は、`Endpoint`によってこのクイック スタートの第 1 部で保存された属性`/IssueToken`終了時
 
 ### <a name="text-translation-method"></a>テキスト変換方法
-このサンプルを使用して、[テキストに変換 - Translate メソッド](http://docs.microsofttranslator.com/text-translate.html#!/default/get_Translate)別の言語から、テキスト文字列に変換するには、言語を指定します。 複数ある[言語コード](https://msdn.microsoft.com/library/hh456380.aspx)でテキスト変換 API を使用できます。 
+このサンプルを使用して、[Text Translation - Translate method](http://docs.microsofttranslator.com/text-translate.html#!/default/get_Translate)別の言語から、テキスト文字列に変換するには、言語を指定します。 複数ある[言語コード](https://msdn.microsoft.com/library/hh456380.aspx)でテキスト変換 API を使用できます。 
 
 ### <a name="text-translation-c-example-request"></a>テキスト変換 (C#) の要求の例
 
-サンプルは、c# で書き込まれます。 
+サンプルは、C# で書き込まれます。 
 
 1. Visual Studio で新しいコンソール ソリューションを作成します。
 2. Program.cs を以下の対応するコードに置き換えます。
@@ -775,7 +777,7 @@ namespace TextTranslationApp1
 
 ![成功](./media/documentation-government-cognitiveservices-img6.png)
 
-詳細についてを参照してください[パブリック ドキュメント](../cognitive-services/translator/translator-info-overview.md)と[パブリック API ドキュメント](http://docs.microsofttranslator.com/text-translate.html)トランスレーター テキスト api です。
+Text Translation API の詳細については[パブリック ドキュメント](../cognitive-services/translator/translator-info-overview.md)と[パブリック API ドキュメント](http://docs.microsofttranslator.com/text-translate.html)を参照してください。
 
 ### <a name="next-steps"></a>次の手順
 * サブスクライブ、 [Azure 政府機関向けブログ](https://blogs.msdn.microsoft.com/azuregov/)
