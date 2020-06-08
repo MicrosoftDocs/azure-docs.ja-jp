@@ -21,7 +21,7 @@ ms.locfileid: "82926852"
 
 * Visual Studio から利用できるアプリ管理機能。
 * Visual Studio のリモート ビューを使用して、リモート アプリをすばやく変更する方法。
-* Azure でプロジェクトが実行されているときに、アプリと Web ジョブの両方をリモートからデバッグ モードで実行する方法。
+* Azure でプロジェクトが実行されているときに、アプリと WebJobs の両方をリモートからデバッグ モードで実行する方法。
 * アプリケーションのトレース ログを作成する方法と、ログが作成されている最中にそれらを確認する方法。
 * Web サーバーのログ (詳細なエラー メッセージ、失敗した要求トレースを含む) を確認する方法。
 * Azure のストレージ アカウントに診断ログを送り、そこでログを確認する方法。
@@ -29,7 +29,7 @@ ms.locfileid: "82926852"
 Visual Studio Ultimate がある場合は、デバッグに [IntelliTrace](/visualstudio/debugger/intellitrace) を使用することもできます。 IntelliTrace については、このチュートリアルでは説明しません。
 
 ## <a name="prerequisites"></a><a name="prerequisites"></a>前提条件
-このチュートリアルでは、[Azure App Service での ASP.NET アプリの作成](app-service-web-get-started-dotnet-framework.md)に関するページで設定した開発環境、Web プロジェクト、および App Service アプリを使用します。 Web ジョブのセクションでは、[Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成したアプリケーションが必要です。
+このチュートリアルでは、[Azure App Service での ASP.NET アプリの作成](app-service-web-get-started-dotnet-framework.md)に関するページで設定した開発環境、Web プロジェクト、および App Service アプリを使用します。 WebJobs のセクションでは、[Azure WebJobs SDK の使用][GetStartedWJ]に関するページで作成したアプリケーションが必要です。
 
 このチュートリアルで示すコード サンプルは、C# MVC Web アプリケーションに対応していますが、トラブルシューティング手順は Visual Basic および Web フォームの各アプリケーションでも同じです。
 
@@ -165,14 +165,14 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
      ![[About] ページ (値の変更後)](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugchangeinwa.png)
 
-## <a name="remote-debugging-webjobs"></a><a name="remotedebugwj"></a> Web ジョブのリモート デバッグ
+## <a name="remote-debugging-webjobs"></a><a name="remotedebugwj"></a> WebJobs のリモート デバッグ
 このセクションでは、[Azure WebJobs SDK の概要](https://github.com/Azure/azure-webjobs-sdk/wiki)に関するページで作成したプロジェクトとアプリを使用してリモートでデバッグする方法を示します。
 
 このセクションで示す機能は、Visual Studio 2013 Update 4 以降でのみ使用できます。
 
-リモート デバッグは、継続的な Web ジョブでのみ動作します。 スケジュールされたオンデマンドの Web ジョブでは、デバッグはサポートされていません。
+リモート デバッグは、継続的な WebJobs でのみ動作します。 スケジュールされたオンデマンドの WebJobs では、デバッグはサポートされていません。
 
-1. [Azure Web ジョブ SDK の使用][GetStartedWJ]に関するページで作成した Web プロジェクトを開きます。
+1. [Azure WebJobs SDK の使用][GetStartedWJ]に関するページで作成した Web プロジェクトを開きます。
 
 2. ContosoAdsWebJob プロジェクトで、 *Functions.cs*を開きます。
 
@@ -180,15 +180,15 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
     ![ブレークポイントの設定](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
-4. **ソリューション エクスプローラー**で Web プロジェクト (Web ジョブ プロジェクトではない) を右クリックし、 **[発行]** をクリックします。
+4. **ソリューション エクスプローラー**で Web プロジェクト (WebJobs プロジェクトではない) を右クリックし、 **[発行]** をクリックします。
 
-5. **[プロファイル]** ボックスの一覧から、「 [Azure Web ジョブ SDK の使用](https://github.com/Azure/azure-webjobs-sdk/wiki)」で使用したものと同じプロファイルを選択します。
+5. **[プロファイル]** ボックスの一覧から、「 [Azure WebJobs SDK の使用](https://github.com/Azure/azure-webjobs-sdk/wiki)」で使用したものと同じプロファイルを選択します。
 
 6. **[設定]** タブをクリックして **[構成]** を **[デバッグ]** に変更し、 **[発行]** をクリックします。
 
-    Visual Studio によって Web プロジェクトと Web ジョブ プロジェクトがデプロイされ、ブラウザーでアプリの Azure URL が表示されます。
+    Visual Studio によって Web プロジェクトと WebJobs プロジェクトがデプロイされ、ブラウザーでアプリの Azure URL が表示されます。
 
-7. **サーバー エクスプローラー**で、 **[Azure]、[App Service]、使用するリソース グループ、使用するアプリ、[Web ジョブ]、[継続]** の順に展開し、 **[ContosoAdsWebJob]** を右クリックします。
+7. **サーバー エクスプローラー**で、 **[Azure]、[App Service]、使用するリソース グループ、使用するアプリ、[WebJobs]、[継続]** の順に展開し、 **[ContosoAdsWebJob]** を右クリックします。
 
 8. **[デバッガーの接続]** をクリックします。
 
@@ -198,7 +198,7 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 9. Contoso Ads ホーム ページを表示している Web ブラウザーで、新しい広告を作成します。
 
-    広告を作成すると、キュー メッセージが作成されます。キュー メッセージは Web ジョブによって取得され、処理されます。 Web ジョブ SDK がキュー メッセージを処理する関数を呼び出すと、コードがブレークポイントにヒットします。
+    広告を作成すると、キュー メッセージが作成されます。キュー メッセージは WebJobs によって取得され、処理されます。 WebJobs SDK がキュー メッセージを処理する関数を呼び出すと、コードがブレークポイントにヒットします。
 
 10. デバッガーがブレークポイントで停止すると、プログラムがクラウドを実行している間に、変数の値を確認、変更することができます。 次の図では、デバッガーは、`GenerateThumbnail` メソッドに渡された blobInfo オブジェクトの内容を示しています。
 
@@ -214,13 +214,13 @@ Web.config ファイルの編集は、App Service アプリにあるファイル
 
 14. **サーバー エクスプローラー**で、ContosoAdsWebJob ノードを右クリックし、 **[ダッシュボードの表示]** をクリックします。
 
-15. Azure の資格情報を使用してサインインし、Web ジョブ名をクリックして、Web ジョブのページに移動します。
+15. Azure の資格情報を使用してサインインし、WebJobs 名をクリックして、WebJobs のページに移動します。
 
      ![ContosoAdsWebJob をクリック](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 
      `GenerateThumbnail` 関数が最近実行されたことが、ダッシュボードに示されます。
 
-     (次回、 **[ダッシュボードの表示]** をクリックするときには、サインインする必要はありません。ブラウザーが Web ジョブのページに直接移動します。)
+     (次回、 **[ダッシュボードの表示]** をクリックするときには、サインインする必要はありません。ブラウザーが WebJobs のページに直接移動します。)
 
 16. 関数名をクリックすると、関数の実行について詳細が表示されます。
 
@@ -268,7 +268,7 @@ App Service アプリで実行される ASP.NET アプリケーションは、�
 * プロジェクトをローカル実行したときのログを確認します。
 * Azure で実行中のアプリケーションによって生成されたログを確認します。
 
-Web ジョブでアプリケーション ログを作成する方法については、「 [Web ジョブ SDK を使用して Azure キュー ストレージを操作する方法 - ログの記述方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ログの表示とログを Azure に格納する方法の制御に関する次の手順は、Web ジョブによって作成されたアプリケーション ログにも適用されます。
+WebJobs でアプリケーション ログを作成する方法については、「 [WebJobs SDK を使用して Azure キュー ストレージを操作する方法 - ログの記述方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 ログの表示とログを Azure に格納する方法の制御に関する次の手順は、WebJobs によって作成されたアプリケーション ログにも適用されます。
 
 ### <a name="add-tracing-statements-to-the-application"></a>アプリケーションへのトレース ステートメントの追加
 1. `System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加するために、*Controllers\HomeController.cs* を開き、`Index`、`About`、`Contact` のメソッドを次のコードで置き換えます。
@@ -632,7 +632,7 @@ App Service アプリと WebJobs のリモート デバッグの詳細につい�
 * [Introduction to Remote Debugging Azure App Service (Azure App Service のリモート デバッグの概要)](https://azure.microsoft.com/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/)。
 * [Introduction to Remote Debugging Azure App Service part 2 - Inside Remote debugging (Azure App Service のリモート デバッグの概要 2 - リモート デバッグの内部処理)](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
 * [Introduction to Remote Debugging on Azure App Service part 3 - Multi-Instance environment and GIT (Azure App Service のリモート デバッグの概要 3 - マルチインスタンス環境と GIT)](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
-* [WebJobs Debugging (Web ジョブのデバッグ) (ビデオ)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
+* [WebJobs Debugging (WebJobs のデバッグ) (ビデオ)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
 アプリで Azure Web API または Mobile Services バックエンドを使用し、デバッグを実行する必要がある場合は、[Visual Studio での .NET のデバッグ](/archive/blogs/azuremobile/debugging-net-backend-in-visual-studio)に関するページを参照してください。
 

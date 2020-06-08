@@ -82,8 +82,8 @@ Heartbeat
 
 |RemoteIPCountry  | distinct_computers  |
 ------------------|---------------------|
-|United States    | 19                  |
-|Canada           | 3                   |
+|米国    | 19                  |
+|カナダ           | 3                   |
 |アイルランド          | 0                   |
 |イギリス   | 0                   |
 |オランダ      | 2                   |

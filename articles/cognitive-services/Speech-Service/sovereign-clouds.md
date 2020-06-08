@@ -44,8 +44,8 @@ ms.locfileid: "78228081"
   - フランス語 (fr-*)
   - ドイツ語 (de-*)
   - ヒンディー語
-  - Korean
-  - Russian
+  - 韓国語
+  - ロシア語
   - スペイン語 (es-*)
 
 ## <a name="microsoft-azure-china"></a>Microsoft Azure China
@@ -73,7 +73,7 @@ ms.locfileid: "78228081"
   - フランス語 (fr-*)
   - ドイツ語 (de-*)
   - ヒンディー語
-  - Korean
-  - Russian
+  - 韓国語
+  - ロシア語
   - スペイン語 (es-*)
 

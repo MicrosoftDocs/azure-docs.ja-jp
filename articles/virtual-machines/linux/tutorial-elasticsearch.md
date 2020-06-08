@@ -204,7 +204,7 @@ output {
 sudo /usr/share/logstash/bin/logstash -f vm-syslog-logstash.conf
 ```
 
-端末の syslog エントリが、Elasticsearch に送信されたようにエコーされていることがわかります。 データをいくつか送信したら、`CTRL+C` を使用して Logstash を終了します。
+ターミナルの syslog エントリが、Elasticsearch に送信されたようにエコーされていることがわかります。 データをいくつか送信したら、`CTRL+C` を使用して Logstash を終了します。
 
 ## <a name="start-kibana-and-visualize-the-data-in-elasticsearch"></a>Kibana の起動と、Elasticsearch のデータの視覚化
 

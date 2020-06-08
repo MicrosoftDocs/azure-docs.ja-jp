@@ -32,7 +32,7 @@ ExpressRoute Global Reach は、サービス プロバイダーの WAN 実装を
 現在、ExpressRoute Global Reach は以下の場所でサポートされています。
 
 * オーストラリア
-* Canada
+* カナダ
 * フランス
 * ドイツ
 * 香港特別行政区
@@ -45,7 +45,7 @@ ExpressRoute Global Reach は、サービス プロバイダーの WAN 実装を
 * シンガポール
 * スイス
 * イギリス
-* United States
+* 米国
 
 ExpressRoute 回線は、上記の国または地域の [ExpressRoute ピアリング拠点](expressroute-locations.md)に作成する必要があります。 [異なる地政学的地域](expressroute-locations.md)間で ExpressRoute Global Reach を有効にするには、Premium SKU の回線を使用する必要があります。
 

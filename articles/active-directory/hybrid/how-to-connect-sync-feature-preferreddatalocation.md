@@ -44,7 +44,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 | --- | --- |
 | アジア太平洋 | APC |
 | オーストラリア | AUS |
-| Canada | CAN |
+| カナダ | CAN |
 | 欧州連合 | EUR |
 | フランス | FRA |
 | インド | IND |
@@ -54,7 +54,7 @@ Multi-Geo で使用できる Office 365 の geo を次に示します。
 | スイス | CHE |
 | アラブ首長国連邦 | ARE |
 | イギリス | GBR |
-| United States | NAM |
+| 米国 | NAM |
 
 * この表に掲載されていない geo (南アメリカなど) は、Multi-Geo には使用できません。
 

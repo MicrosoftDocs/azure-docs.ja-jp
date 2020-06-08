@@ -61,10 +61,10 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 | &nbsp; | オーストラリア中部 | HDInsight.AustraliaCentral |
 | 中国 | 中国東部 2 | HDInsight.ChinaEast2 |
 | &nbsp; | 中国北部 2 | HDInsight.ChinaNorth2 |
-| United States | 米国中北部 | HDInsight.NorthCentralUS |
+| 米国 | 米国中北部 | HDInsight.NorthCentralUS |
 | &nbsp; | 米国西部 2 | HDInsight.WestUS2 |
 | &nbsp; | 米国中西部 | HDInsight.WestCentralUS |
-| Canada | カナダ東部 | HDInsight.CanadaEast |
+| カナダ | カナダ東部 | HDInsight.CanadaEast |
 | ブラジル | ブラジル南部 | HDInsight.BrazilSouth |
 | 韓国 | 韓国中部 | HDInsight.KoreaCentral |
 | &nbsp; | 韓国南部 | HDInsight.KoreaSouth |
@@ -96,7 +96,7 @@ HDInsight クラスターでサービス タグを使い始める最も簡単な
 
 | Country | リージョン | サービス タグ |
 | ---- | ---- | ---- |
-| United States | 米国東部 2 | HDInsight.EastUS2 |
+| 米国 | 米国東部 2 | HDInsight.EastUS2 |
 | &nbsp; | 米国中部 | HDInsight.CentralUS |
 | &nbsp; | 米国中北部 | HDInsight. NorthCentralUS |
 | &nbsp; | 米国中南部 | HDInsight.SouthCentralUS |

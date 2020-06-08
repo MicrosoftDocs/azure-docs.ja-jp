@@ -159,9 +159,9 @@ Web worker ロールで使用可能な追加のメモリを利用できるよう
 
 ## <a name="why-does-my-request-time-out-after-230-seconds"></a>230 秒後に要求がタイムアウトになるのはなぜですか?
 
-Azure Load Balancer には、4 分という既定のアイドル タイムアウト設定があります。 これは一般に、Web 要求のための妥当な応答時間の制限です。 Web アプリにバックグラウンド処理が必要な場合は、Azure Web ジョブを使用することをお勧めします。 Azure Web アプリは Web ジョブを呼び出し、バックグラウンド処理の完了時に通知を受けることができます。 Web ジョブを使用するための複数の方法 (キューやトリガーなど) から選択できます。
+Azure Load Balancer には、4 分という既定のアイドル タイムアウト設定があります。 これは一般に、Web 要求のための妥当な応答時間の制限です。 Web アプリにバックグラウンド処理が必要な場合は、Azure WebJobs を使用することをお勧めします。 Azure Web アプリは WebJobs を呼び出し、バックグラウンド処理の完了時に通知を受けることができます。 WebJobs を使用するための複数の方法 (キューやトリガーなど) から選択できます。
 
-Web ジョブは、バックグラウンド処理用に設計されています。 Web ジョブでは、バックグラウンド処理を必要なだけ実行できます。 Web ジョブの詳細については、「[Web ジョブでのバックグラウンド タスクの実行](webjobs-create.md)」を参照してください。
+WebJobs は、バックグラウンド処理用に設計されています。 WebJobs では、バックグラウンド処理を必要なだけ実行できます。 WebJobs の詳細については、「[WebJobs でのバックグラウンド タスクの実行](webjobs-create.md)」を参照してください。
 
 ## <a name="aspnet-core-applications-that-are-hosted-in-app-service-sometimes-stop-responding-how-do-i-fix-this-issue"></a>App Service でホストされている ASP.NET Core アプリケーションが応答を停止する場合があります。 この問題を解決するにはどうすればよいですか?
 

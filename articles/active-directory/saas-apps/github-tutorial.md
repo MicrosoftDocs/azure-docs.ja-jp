@@ -163,7 +163,7 @@ GitHub で Azure AD SSO を構成してテストするには、次の構成要�
 
     d. **[Edit]\(編集\)** アイコンをクリックし、 **[Signature Method]\(署名方法\)** と **[Digest Method]\(ダイジェスト方法\)** を編集して、**RSA-SHA1** および **SHA1** から **RSA-SHA256** および **SHA256** に変更します (下図参照)。
     
-    e. Github の URL が Azure アプリ登録の URL と一致するように、**Assertion Consumer Service URL** (応答 URL) を既定の URL から更新します。
+    e. GitHub の URL が Azure アプリ登録の URL と一致するように、**Assertion Consumer Service URL** (応答 URL) を既定の URL から更新します。
 
     ![image](./media/github-tutorial/tutorial_github_sha.png)
 

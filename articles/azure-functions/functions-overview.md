@@ -15,9 +15,9 @@ ms.locfileid: "77621000"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要
 
-Azure Functions を使用すると、アプリケーションのインフラストラクチャについて気にすることなく、小さなコード ("関数") を実行することができます。 Azure Functions では、アプリケーションを大規模に実行し続けるために必要な最新のサーバーがすべて、クラウド インフラストラクチャによって提供されます。
+Azure Functions を使用すると、アプリケーションのインフラストラクチャについて気にすることなく、小さなコード ("Functions") を実行することができます。 Azure Functions では、アプリケーションを大規模に実行し続けるために必要な最新のサーバーがすべて、クラウド インフラストラクチャによって提供されます。
 
-関数は特殊なイベントによって "トリガー" されます。 [サポートされるトリガー](./functions-triggers-bindings.md)としては、データの変更に対する応答や、メッセージへの応答、スケジュールに基づく実行、HTTP 要求の結果などがあります。
+Functions は特殊なイベントによって "トリガー" されます。 [サポートされるトリガー](./functions-triggers-bindings.md)としては、データの変更に対する応答や、メッセージへの応答、スケジュールに基づく実行、HTTP 要求の結果などがあります。
 
 数あるサービスを対象としたコードを直接記述することもできますが、バインドを使用すれば、他のサービスとの統合を効率化することができます。 バインディングにより、[Azure やサードパーティのさまざまなサービスに対して宣言型の手法でアクセス](./functions-triggers-bindings.md)することができます。
 
@@ -27,13 +27,13 @@ Azure Functions のいくつかの重要な機能を次に示します。
 
 - **サーバーレス アプリケーション**: Functions を使用すると、Microsoft Azure 上で[サーバーレス](https://azure.microsoft.com/solutions/serverless/)のアプリケーションを開発できます。
 
-- **言語の選択**:　[C#、Java、JavaScript、Python、PowerShell](supported-languages.md) のいずれかの言語を自由に選んで関数を記述できます。
+- **言語の選択**:　[C#、Java、JavaScript、Python、PowerShell](supported-languages.md) のいずれかの言語を自由に選んで Functions を記述できます。
 
 - **従量課金制の価格モデル**: コードの実行に要した時間に対してのみ課金されます。 [価格に関するセクション](#pricing)にある従量課金ホスティング プラン オプションを確認してください。  
 
 - **独自の依存関係を使用**: Functions では NuGet と NPM がサポートされるので、お気に入りのライブラリを使用できます。
 
-- **セキュリティの統合**: Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーにより、HTTP によってトリガーされる関数を保護できます。
+- **セキュリティの統合**: Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーにより、HTTP によってトリガーされる Functions を保護できます。
 
 - **簡単な手順で統合**: Azure サービスや SaaS (サービスとしてのソフトウェア) プランと簡単に統合できます。
 
@@ -73,19 +73,19 @@ Azure Functions には、3 種類の価格プランがあります。 ニーズ�
 
 - **従量課金プラン**: Azure には、必要なコンピューティング リソースがすべて用意されています。 リソースの管理について考慮する必要がなく、コードを実行した時間に応じた料金のみを支払います。
 
-- **Premium プラン**: 常にオンライン状態で即時に応答する準備が整った、事前ウォーミングされたインスタンスをいくつか自分で指定します。 関数が実行されると、追加で必要となるコンピューティング リソースが Azure から提供されます。 常時実行される事前ウォーミングされたインスタンスに加え、Azure によってアプリがスケールインまたはスケールアウトされたときに追加で使用されるインスタンスが支払いの対象となります。
+- **Premium プラン**: 常にオンライン状態で即時に応答する準備が整った、事前ウォーミングされたインスタンスをいくつか自分で指定します。 Functions が実行されると、追加で必要となるコンピューティング リソースが Azure から提供されます。 常時実行される事前ウォーミングされたインスタンスに加え、Azure によってアプリがスケールインまたはスケールアウトされたときに追加で使用されるインスタンスが支払いの対象となります。
 
-- **App Service プラン**: 関数を Web アプリと同様に実行できます。 App Service を他のアプリケーションに使用している場合、追加コストを負担することなく、同じプランで関数を実行できます。
+- **App Service プラン**: Functions を Web アプリと同様に実行できます。 App Service を他のアプリケーションに使用している場合、追加コストを負担することなく、同じプランで Functions を実行できます。
 
 ホスティング プランの詳細については、[Azure Functions のホスティング プランの比較](functions-scale.md)に関するページをご覧ください。 価格の詳細については、 [Functions の価格のページ](https://azure.microsoft.com/pricing/details/functions/)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-- [初めての Azure 関数の作成](functions-create-first-function-vs-code.md)  
+- [初めての Azure Functions の作成](functions-create-first-function-vs-code.md)  
   [Visual Studio Code](functions-create-first-function-vs-code.md)、[コマンドライン](functions-create-first-azure-function-azure-cli.md)、または [Azure portal](functions-create-first-azure-function.md) で始めましょう。
 
 - [Azure Functions 開発者向けリファレンス](functions-reference.md)  
-  Azure Functions ランタイムに関する詳細な技術情報と、関数のコーディングやトリガーおよびバインドの定義に関するリファレンスを提供します。
+  Azure Functions ランタイムに関する詳細な技術情報と、Functions のコーディングやトリガーおよびバインドの定義に関するリファレンスを提供します。
 
 - [Azure Functions のスケーリング方法](functions-scale.md)  
   Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。

@@ -17,7 +17,7 @@ ms.locfileid: "80411066"
 
 Micro Focus Enterprise Server 4.0 と Enterprise Developer 4.0 を Azure 上で設定する際には、IBM z/OS ワークロードのデプロイをテストできます。 この記事では、CICS BankDemo (Enterprise Developer に付属しているサンプル アプリケーション) の設定方法について説明します。
 
-CICS とは、Customer Information Control System (顧客情報管理システム) の略です。これは、多くのオンライン メインフレーム アプリケーションで使用されているトランザクション プラットフォームです。 BankDemo アプリケーションは、Enterprise Server と Enterprise Developer の動作を学習したり、グリーンスクリーン端末を備えた実際のアプリケーションの管理方法やデプロイ方法を学習するのに最適です。
+CICS とは、Customer Information Control System (顧客情報管理システム) の略です。これは、多くのオンライン メインフレーム アプリケーションで使用されているトランザクション プラットフォームです。 BankDemo アプリケーションは、Enterprise Server と Enterprise Developer の動作を学習したり、グリーンスクリーンターミナルを備えた実際のアプリケーションの管理方法やデプロイ方法を学習するのに最適です。
 
 > [!NOTE]
 > 近日対応予定:Azure VM での [Micro Focus Enterprise Server 5.0](https://techcommunity.microsoft.com/t5/azurecat/micro-focus-enterprise-server-5-0-quick-start-template-on-azure/ba-p/1160110) のセットアップの手順。

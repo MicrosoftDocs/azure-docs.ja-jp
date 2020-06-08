@@ -309,8 +309,8 @@ Azure File Sync は、次のリージョンで利用できます。
 | パブリック | オーストラリア | オーストラリア東部 | `australiaeast` |
 | パブリック | オーストラリア | オーストラリア南東部 | `australiasoutheast` |
 | パブリック | ブラジル | ブラジル南部 | `brazilsouth` |
-| パブリック | Canada | カナダ中部 | `canadacentral` |
-| パブリック | Canada | カナダ東部 | `canadaeast` |
+| パブリック | カナダ | カナダ中部 | `canadacentral` |
+| パブリック | カナダ | カナダ東部 | `canadaeast` |
 | パブリック | ヨーロッパ | 北ヨーロッパ | `northeurope` |
 | パブリック | ヨーロッパ | 西ヨーロッパ | `westeurope` |
 | パブリック | フランス | フランス中部 | `francecentral` |

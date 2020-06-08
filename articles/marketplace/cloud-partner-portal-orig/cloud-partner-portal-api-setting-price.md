@@ -125,7 +125,7 @@ ms.locfileid: "81255891"
 | BE         | ベルギー              | EUR               |
 | BR         | ブラジル               | USD               |
 | BG         | ブルガリア             | BGN               |
-| CA         | Canada               | CAD               |
+| CA         | カナダ               | CAD               |
 | CL         | チリ                | CLP               |
 | CO         | コロンビア             | COP               |
 | CR         | コスタリカ           | CRC               |
@@ -201,7 +201,7 @@ ms.locfileid: "81255891"
 | UA         | ウクライナ              | UAH               |
 | AE         | アラブ首長国連邦 | EUR               |
 | GB         | イギリス       | GBP               |
-| US         | United States        | USD               |
+| US         | 米国        | USD               |
 | UY         | ウルグアイ              | UYU               |
 | VE         | ベネズエラ            | USD               |
 |  |  |  |

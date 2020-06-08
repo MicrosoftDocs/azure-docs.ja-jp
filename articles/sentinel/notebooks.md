@@ -56,7 +56,7 @@ Azure Sentinel ノートブックでは、pandas、matplotlib、bokeh など、�
 > [!div class="mx-imgBorder"]
 >![[Azure Notebooks にサインアップ] オプション](./media/notebooks/sentinel-azure-sign-up-azure-notebooks.png)
 
-Azure Sentinel から直接ノートブックを実行することも、すべての Azure Sentinel ノートブックを新しい Azure Notebooks プロジェクトに複製することもできます。
+Azure Sentinel から直接ノートブックを実行することも、すべての Azure Sentinel ノートブックを新しい Azure Notebooks プロジェクトにクローンすることもできます。
 
 ## <a name="run-a-notebook-from-azure-sentinel"></a>Azure Sentinel からノートブックを実行する
  
@@ -67,22 +67,22 @@ Azure Sentinel から直接ノートブックを実行することも、すべ�
     > [!div class="mx-imgBorder"]
     > ![ノートブックの起動](./media/notebooks/sentinel-azure-notebooks-launch.png)
 
-3. 使用するノートブックを選択してから、 **[Launch Notebook (Preview)]\(ノートブックの起動 (プレビュー)\)** を選択して、Azure Sentinel ワークスペースに接続する新しい Azure Notebooks プロジェクトにノートブックを複製し、構成します。 プロセスが完了すると、Azure Notebooks 内でノートブックが開き、実行できるようになります。
+3. 使用するノートブックを選択してから、 **[Launch Notebook (Preview)]\(ノートブックの起動 (プレビュー)\)** を選択して、Azure Sentinel ワークスペースに接続する新しい Azure Notebooks プロジェクトにノートブックをクローンし、構成します。 プロセスが完了すると、Azure Notebooks 内でノートブックが開き、実行できるようになります。
 
-## <a name="clone-azure-sentinel-notebooks-to-a-new-azure-notebooks-project"></a>Azure Sentinel のノートブックを新しい Azure Notebooks プロジェクトに複製する
+## <a name="clone-azure-sentinel-notebooks-to-a-new-azure-notebooks-project"></a>Azure Sentinel のノートブックを新しい Azure Notebooks プロジェクトにクローンする
 
 この手順では、Azure Sentinel のノートブックを含む Azure Notebooks プロジェクトを作成します。 その後、そのノートブックをそのまま実行したり、変更を加えて実行したりすることができます。
 
-1. Azure portal から **[Azure Sentinel]**  >  **[Threat management]\(脅威の管理\)**  >  **[Notebooks]\(ノートブック\)** に移動し、コマンド バーから **[Clone Notebooks]\(ノートブックの複製\)** を選択します。
+1. Azure portal から **[Azure Sentinel]**  >  **[Threat management]\(脅威の管理\)**  >  **[Notebooks]\(ノートブック\)** に移動し、コマンド バーから **[Clone Notebooks]\(ノートブックのクローン\)** を選択します。
   
     > [!div class="mx-imgBorder"]
-    >![[Clone Notebooks]\(ノートブックの複製\) オプション](./media/notebooks/sentinel-azure-clone-notebooks.png)
+    >![[Clone Notebooks]\(ノートブックのクローン\) オプション](./media/notebooks/sentinel-azure-clone-notebooks.png)
 
-2. 次のダイアログが表示されたら、 **[インポート]** をクリックして、GitHub リポジトリを自身の Azure Notebooks プロジェクトに複製します。 既存の Azure Notebooks アカウントを持っていない場合は、アカウントを作成してサインインするように求められます。
+2. 次のダイアログが表示されたら、 **[インポート]** をクリックして、GitHub リポジトリを自身の Azure Notebooks プロジェクトにクローンします。 既存の Azure Notebooks アカウントを持っていない場合は、アカウントを作成してサインインするように求められます。
 
    ![ノートブックをインポートする](./media/notebooks/sentinel-notebooks-clone.png)
 
-3. **[Upload GitHub Repository]\(GitHub リポジトリのアップロード\)** ダイアログ ボックスで、 **[Clone recursively]\(再帰的に複製\)** を選択しないでください。このオプションは、リンクされた GitHub リポジトリを参照するためです。 プロジェクト名には、既定の名前を使用するか、新しい名前を入力します。 その後 **[インポート]** をクリックすると、GitHub コンテンツの複製が開始されます。複製が完了するまでに数分かかる場合があります。
+3. **[Upload GitHub Repository]\(GitHub リポジトリのアップロード\)** ダイアログ ボックスで、 **[Clone recursively]\(再帰的にクローン\)** を選択しないでください。このオプションは、リンクされた GitHub リポジトリを参照するためです。 プロジェクト名には、既定の名前を使用するか、新しい名前を入力します。 その後 **[インポート]** をクリックすると、GitHub コンテンツのクローンが開始されます。クローンが完了するまでに数分かかる場合があります。
 
    ![ノートブックをインポートする](./media/notebooks/sentinel-create-project.png)
 
