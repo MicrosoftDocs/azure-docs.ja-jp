@@ -69,7 +69,7 @@ dotnet ef database update
 dotnet run
 ```
 
-ブラウザーで `http://localhost:5000` にアクセスします。 **[新規作成]** リンクを選択し、いくつかの _To Do_ アイテムを作成します。
+ブラウザーで `http://localhost:5000` にアクセスします。 **[Create New]** リンクを選択し、いくつかの _To Do_ アイテムを作成します。
 
 ![SQL Database に正常に接続](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
