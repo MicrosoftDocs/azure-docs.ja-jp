@@ -57,7 +57,7 @@ Azure portal で、検索ボックスに「*サブスクリプション*」と�
 
 ![Screenshot that shows billing periods, the download option, and total charges for each billing period](./media/review-individual-bill/download-invoice.png)
 
-[使用量と請求金額をダウンロードする] ウィンドウで、 **[csv のダウンロード]** と **[請求書のダウンロード]** をクリックします。
+[使用量と請求金額をダウンロードする] ウィンドウで、 **[ダウンロード]** と **[ダウンロード]** をクリックします。
 
 ![請求書と使用状況のダウンロード ページを示すスクリーンショット](./media/review-individual-bill/usageandinvoice.png)
 
