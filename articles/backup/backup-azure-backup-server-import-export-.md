@@ -53,7 +53,7 @@ Azure Backup のオフライン シード処理機能と Azure Import/Export サ
 
     | ソブリン クラウドのリージョン | Azure 発行設定ファイルのリンク |
     | --- | --- |
-    | United States | [リンク](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
+    | 米国 | [リンク](https://portal.azure.us#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
     | 中国 | [リンク](https://portal.azure.cn/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) |
 
 * Resource Manager デプロイ モデルを使用する Azure Storage アカウントが、発行設定ファイルをダウンロードしたサブスクリプションに作成されていること。
