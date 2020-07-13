@@ -26,7 +26,7 @@ ms.locfileid: "80632334"
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|
-|General Purpose|2|該当なし|10|600|
+|General Purpose|2|300|10|600|
 |General Purpose|4|625|10|1250|
 |General Purpose|8|1250|10|2500|
 |General Purpose|16|2500|10|5000|
