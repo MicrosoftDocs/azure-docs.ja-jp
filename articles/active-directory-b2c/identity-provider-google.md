@@ -27,13 +27,13 @@ Azure Active Directory B2C (Azure AD B2C) で [ID プロバイダー](authorizat
 1. Google アカウントの資格情報で [Google Developers Console](https://console.developers.google.com/) にサインインします。
 1. ページの左上隅にあるプロジェクトの一覧を選択し、 **[新しいプロジェクト]** を選択します。
 1. **[プロジェクト名]** を入力し、 **[作成]** を選択します。
-1. 画面左上にあるプロジェクト ドロップダウンを選択して新しいプロジェクトを使用していることを確認し、名前でご自分のプロジェクトを選択し、 **[開く]** を選択します。
+1. 画面左上にあるプロジェクトのドロップダウンで、作成したプロジェクトを選択し、 **[開く]** を選択します。
 1. 左側にあるメニューで **[OAuth 同意画面]** を選択し、 **[外部]** を選択し、 **[作成]** を選択します。
 アプリケーションの **[名前]** を入力します。 **[承認済みドメイン]** セクションに「*b2clogin.com*」と入力し、**[保存]** を選択します。
-1. 左側のメニューで **[Credentials (資格情報)]** を選択して、 **[Create credentials (資格情報を作成)]**  >  **[Oauth client ID (Oauth クライアント ID)]** を選択します。
-1. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。
+1. 左側のメニューで **[Credentials (認証情報)]** を選択して、 **[Create credentials (認証情報を作成)]**  >  **[Oauth client ID (Oauth クライアント ID)]** を選択します。
+1. **[アプリケーションの種類]** で **[ウェブ アプリケーション]** を選択します。
 1. アプリケーションの**名前**を指定します。**[承認済みの JavaScript 生成元]** に「`https://your-tenant-name.b2clogin.com`」と入力し、**[承認済みのリダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
-1. **Create** をクリックしてください。
+1. **Create (作成)** をクリックしてください。
 1. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 テナントで ID プロバイダーとして Google を構成するには、両方の値が必要です。 **[クライアント シークレット]** は、重要なセキュリティ資格情報です。
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>ID プロバイダーとして Google アカウントを構成する
