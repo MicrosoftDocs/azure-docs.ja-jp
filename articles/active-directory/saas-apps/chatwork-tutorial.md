@@ -87,7 +87,9 @@ Chatwork で Azure AD SSO を構成してテストするには、次の構成要
     **[サインオン URL]** ボックスに、`https://www.chatwork.com/s/<TENANT_NAME>` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Chatwork クライアント サポート チーム](mailto:info@support.chatwork.com)にお問い合わせください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。**[Chatwork SSO の構成]** を行った後、Chatworkに設定した専用ログインURLに変更してください。
+    
+1. Chatworkアプリケーションでは **[ユーザー属性とクレーム]** セクションの **[一意のユーザーID]** 属性の値がChatworkに登録されているメールアドレスと一致する必要があります。この属性は既定では **user.principalname** にマップされています。プリンシパル名が登録されているメールアドレスと異なる場合は **[一意のユーザーID]** を **user.mail** にマップしてください。
 
 1. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、 **[証明書 (Base64)]** を見つけて、 **[ダウンロード]** を選択し、証明書をダウンロードして、お使いのコンピューターに保存します。
 
@@ -129,11 +131,14 @@ Chatwork で Azure AD SSO を構成してテストするには、次の構成要
 
 ## <a name="configure-chatwork-sso"></a>Chatwork SSO の構成
 
-**Chatwork** 側でシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** と Azure portal からコピーした適切な URL を [Chatwork サポート チーム](mailto:info@support.chatwork.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Chatwork** 側でシングル サインオンを構成します。[Chatwork 管理者設定ご利用ガイド](https://download.chatwork.com/Chatwork_AdminGuide.pdf)を参照し、Chatworkの専用ログインURLおよびシングルサインオンの設定を行ってください。
+
+Chatworkのシングルサインオン設定画面の **[Identity ProviderのログインURL]** には **[Azure AD SSOの構成]** でコピーした **[Login URL]** を、 **[Identity ProviderのエンティティID]** には **[Azure AD Identifier]** をそれぞれ設定してください。また **[Identity Providerが書名に利用する公開鍵の証明書]** には、Azureからダウンロードした証明書をメモ帳等のテキストエディタで開き、内容をコピーして貼りつけてください。
+
 
 ### <a name="create-chatwork-test-user"></a>Chatwork テスト ユーザーの作成
 
-このセクションでは、Chatwork で B.Simon というユーザーを作成します。  [Chatwork サポート チーム](mailto:info@support.chatwork.com)と連携して、Chatwork プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+このセクションでは、Chatwork で B.Simon というユーザーを作成します。 [Chatwork 管理者設定ご利用ガイド](https://download.chatwork.com/Chatwork_AdminGuide.pdf)に従って、Chatwork プラットフォームにこのユーザーを追加してください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 
