@@ -94,5 +94,5 @@ Azure Cosmos DB サーバーレスは、予想される以下のシナリオに�
 次の記事を参考にして、サーバーレスを始めましょう:
 
 - [Azure Cosmos DB の要求ユニット](request-units.md)
-- [Choose between provisioned throughput and serverless](throughput-serverless.md)
+- [プロビジョニングされたスループットとサーバーレスの選択](throughput-serverless.md)
 - [Azure Cosmos DB の価格モデル](how-pricing-works.md)
