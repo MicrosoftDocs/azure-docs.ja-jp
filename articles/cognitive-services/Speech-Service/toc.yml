@@ -3,10 +3,8 @@
 - name: 概要
   expanded: true
   items:
-    - name: 音声サービスとは
+    - name: Speech Service の概要
       href: overview.md
-    - name: Speech Service を無料で試す
-      href: get-started.md
     - name: 言語と音声のサポート
       displayName: 'languages,locales,voice,gender,language code,locale,locale code,neural voice,standard voice'
       href: language-support.md
@@ -20,10 +18,8 @@
       href: index-speech-to-text.yml
     - name: 概要
       items:
-        - name: リアルタイムの音声テキスト変換とは
+        - name: 音声変換の概要
           href: speech-to-text.md
-        - name: 一括音声テキスト変換
-          href: batch-transcription.md
         - name: 音声認識の基礎
           href: speech-to-text-basics.md
     - name: クイックスタート
@@ -53,6 +49,8 @@
           href: how-to-select-audio-input-devices.md
         - name: 自動ソース言語検出を使用する
           href: how-to-automatic-language-detection.md
+        - name: バッチ文字起こし API を使用する
+          href: batch-transcription.md
     - name: チュートリアル
       items:
         - name: テナント モデルを使用して精度を向上させる
@@ -638,10 +636,12 @@
     - name: ソブリン クラウド
       displayName: 'fairfax,mooncake,compliant,secret,compliance,government,government cloud,dod,china'
       href: sovereign-clouds.md
-    - name: 料金と制限
+    - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
+    - name: クォータと制限
+      href: speech-services-quotas-and-limits.md
     - name: コンプライアンス
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: 暗号化

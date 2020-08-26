@@ -3,16 +3,16 @@ title: Azure Application Insights のリソース、ロール、アクセス制�
 description: 組織の insights の所有者、共同作成者、閲覧者。
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 38c7d7bcbcf193149fd8ab5e632674b6f8530a44
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 3d69ad7eeb7c8dd32c2e3cb286f9596bed7fe042
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325697"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926503"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 
-Azure [Application Insights][start] では、[Microsoft Azure のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)を利用し、データを読み取りできる人と更新できる人を制御できます。
+Azure [Application Insights][start] では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) を利用し、データへのアクセス権を読み取りできる人と更新できる人を制御できます。
 
 > [!IMPORTANT]
 > リソース自体ではなく、アプリケーション リソースが属する **リソース グループまたはサブスクリプション** でユーザーにアクセスを割り当てます。 **Application Insights コンポーネントの共同作業者** ロールを割り当てます。 これにより、Web テストとアラート、アプリケーション リソースのアクセス制御が統一されます。 [詳細については、こちらを参照してください](#access)。
@@ -101,7 +101,7 @@ Azure のロールベースのアクセス制御のすべての組み込みロ�
 
 ## <a name="related-content"></a>関連コンテンツ
 
-* [Azure の役割基準のアクセス制御](../../role-based-access-control/role-assignments-portal.md)
+* [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>ロール メンバーシップを特定する PowerShell クエリ
 
@@ -135,4 +135,3 @@ $resourceGroup = "RGNAME"
 [group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ./app-insights-overview.md
-

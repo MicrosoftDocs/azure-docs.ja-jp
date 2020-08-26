@@ -14,13 +14,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
-ms.custom: mvc
-ms.openlocfilehash: 5ac09aae724cf7481245ba9e898b52945b394cae
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.custom: devx-track-csharp, mvc
+ms.openlocfilehash: 217c564a6bdb340ec15262c1eaf54a75bbffc833
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856533"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585017"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>チュートリアル:ASP.NET Core アプリで動的な構成を使用する
 
@@ -57,6 +57,9 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
 1. **[キー]** に「*TestApp:Settings:Sentinel*」と入力します。 **[値]** には、「1」と入力します。 **[ラベル]** と **[コンテンツの種類]** は空にしておきます。
 
 1. **[適用]** を選択します。
+
+    > [!NOTE]
+    > センチネル キーを使用していない場合は、監視するすべてのキーを手動で登録する必要があります。
 
 ## <a name="reload-data-from-app-configuration"></a>App Configuration からデータを再度読み込む
 
@@ -159,6 +162,9 @@ App Configuration では、構成ストアへの呼び出しが多くなりす�
     }
     ```
     ---
+
+    > [!TIP]
+    > 構成値を読み取る際のオプション パターンの詳細については、「 [ASP.NET Core のオプション パターン](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1)」を参照してください。
 
 4. `Configure` メソッドに `UseAzureAppConfiguration` ミドルウェアを追加して更新し、ASP.NET Core Web アプリで要求の受信が続けられている間、更新用に登録された構成設定を更新できるようにします。
 

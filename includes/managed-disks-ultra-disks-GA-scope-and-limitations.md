@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: aa9327bd0ba6763aa4e89630611aabb3c5195655
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 546c21802d275fe99ed2acbf00e32d37db3603f2
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85448755"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225200"
 ---
 現時点では、Ultra Disk には次のような追加の制限があります。
 
@@ -27,22 +27,31 @@ Ultra ディスクが利用できるリージョンとそれに該当する可�
 |リージョン  |Ultra ディスクをサポートする可用性ゾーンの数  |
 |---------|---------|
 |US Gov バージニア州     |なし         |
+|US Gov アリゾナ     |なし         |
 |米国中南部     |なし         |
 |米国中部     |3 つのゾーン         |
 |米国西部     |なし         |
 |米国西部 2    |3 つのゾーン         |
 |米国東部     |3 つのゾーン         |
-|米国東部 2     |2 つのゾーン         |
+|米国東部 2     |3 つのゾーン         |
 |東南アジア     |3 つのゾーン         |
+|東アジア     |なし         |
 |北ヨーロッパ     |3 つのゾーン          |
 |西ヨーロッパ     |3 つのゾーン          |
 |英国南部     |3 つのゾーン          |
-|東日本     |2 つのゾーン         |
+|東日本     |3 つのゾーン         |
 |フランス中部    |2 つのゾーン        |
+|ブラジル南部    |なし        |
+|オーストラリア東部    |3 つのゾーン        |
+|カナダ中部*    |3 つのゾーン        |
 
+\* このリージョンの Availability Zones にアクセスするには、Azure サポートにお問い合わせください。
 
 - 次の VM シリーズでのみサポートされています。
     - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
+    - [Easv4](../articles/virtual-machines/eav4-easv4-series.md#easv4-series)
+    - [Edsv4](../articles/virtual-machines/edv4-edsv4-series.md#edsv4-series)
+    - [Esv4](../articles/virtual-machines/ev4-esv4-series.md#esv4-series)
     - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
     - [FSv2](../articles/virtual-machines/fsv2-series.md)
     - [LSv2](../articles/virtual-machines/lsv2-series.md)

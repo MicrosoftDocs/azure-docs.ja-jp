@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 85ce79644ead939eaeffa5cfffeb495da15e7fe5
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84297906"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270667"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C:よく寄せられる質問 (FAQ)
 
@@ -154,7 +154,7 @@ Azure AD B2C テナントを削除するには、次の手順に従います。
 1. **[Azure リソースのアクセス管理]** の下で **[はい]** を選択した後、 **[保存]** を選択します。
 1. Azure portal からサインアウトした後に、もう一度サインインして、ご自分のアクセス権を更新します。
 1. 左側のメニューで、 **[Azure Active Directory]** を選択します。
-1. **[概要]** ページで **[ディレクトリの削除]** を選択します。 画面の指示に従って、プロセスを完了します。
+1. **[概要]** ページで **[テナントの削除]** を選択します。 画面の指示に従って、プロセスを完了します。
 
 #### <a name="applications-legacy"></a>[アプリケーション (レガシ)](#tab/applications-legacy/)
 

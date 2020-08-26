@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datadog の統合 | Microsoft Docs
 description: Azure Active Directory と Datadog の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: b7845bdd-7bcd-4888-84fd-2551345054ee
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/12/2020
+ms.date: 08/13/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7329c042618623806f28aacf5282e1ab6c718c5f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d3bb0ad5305ccba412a403352405711be8f183a2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79472287"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555936"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-datadog"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Datadog の統合
 
@@ -44,7 +40,7 @@ SaaS アプリと Azure AD の統合の詳細については、「[Azure Active 
 このチュートリアルでは、テスト環境で Azure AD の SSO を構成してテストします。
 
 * Datadog では、**SP Initiated SSO と IDP Initiated SSO** がサポートされます
-* Datadog を構成したら、組織の機密データを流出と侵入からリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
+* Datadog を構成したら、ご自分の組織の機密データの流出と侵入をリアルタイムで保護するセッション制御を適用することができます。 セッション制御は、条件付きアクセスを拡張したものです。 [Microsoft Cloud App Security でセッション制御を適用する方法](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)をご覧ください。
 
 
 ## <a name="adding-datadog-from-the-gallery"></a>ギャラリーからの Datadog の追加
@@ -59,7 +55,7 @@ Azure AD への Datadog の統合を構成するには、ギャラリーから�
 1. 結果のパネルから **[Datadog]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-datadog"></a>Datadog の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-datadog"></a>Datadog の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Datadog に対する Azure AD SSO を構成してテストします。 SSO が機能するためには、Azure AD ユーザーと Datadog の関連ユーザーとの間にリンク関係を確立する必要があります。
 
@@ -89,7 +85,7 @@ Datadog で Azure AD SSO を構成してテストするには、次の構成要�
     **[サインオン URL]** ボックスに、`https://app.datadoghq.com/account/login/id/<CUSTOM_IDENTIFIER>` という形式で URL を入力します。
 
     > [!NOTE]
-    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Datadog クライアント サポート チーム](mailto:xuefwu@microsoft.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
+    > この値は実際のものではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Datadog クライアント サポート チーム](mailto:support@datadoghq.com)に問い合わせてください。 Azure portal の **[基本的な SAML 構成]** セクションに示されているパターンを参照することもできます。
 
 1. **[保存]** をクリックします。
 
@@ -134,11 +130,11 @@ Datadog で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-datadog-sso"></a>Datadog SSO の構成
 
-**Datadog** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Datadog サポート チーム](mailto:xuefwu@microsoft.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+**Datadog** 側でシングル サインオンを構成するには、ダウンロードした**フェデレーション メタデータ XML** と Azure portal からコピーした適切な URL を [Datadog サポート チーム](mailto:support@datadoghq.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-datadog-test-user"></a>Datadog テスト ユーザーの作成
 
-このセクションでは、Datadog で B.Simon というユーザーを作成します。 [Datadog サポート チーム](mailto:xuefwu@microsoft.com)と連携して、Datadog プラットフォームにユーザーを追加してください。
+このセクションでは、Datadog で B.Simon というユーザーを作成します。 [Datadog サポート チーム](mailto:support@datadoghq.com)と連携して、Datadog プラットフォームにユーザーを追加してください。
 
 ## <a name="test-sso"></a>SSO のテスト 
 

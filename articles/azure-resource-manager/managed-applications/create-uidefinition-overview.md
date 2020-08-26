@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 4ee489e8b596adf0767856e3358c9bdcb17fbb6a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0e2aee194d3c97655dd4ec5aaeea46fb607c4c5e
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87004369"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210972"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>Azure マネージド アプリケーションの作成エクスペリエンスのための CreateUiDefinition.json
 
@@ -77,44 +77,51 @@ JSON エディターを使用して createUiDefinition 定義を作成した後�
 basics ステップの既定の動作をオーバーライドする必要があるときは、config 要素を指定します。 利用可能なプロパティの例を次に示します。
 
 ```json
-"config": {  
-    "basics": {  
-        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
-        "subscription": {
-            "constraints": {
-                "validations": [
-                    {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid subscription."
-                    },
+"config": {
+    "basics": {
+        "description": "Customized description with **markdown**, see [more](https://www.microsoft.com).",
+        "subscription": {
+            "constraints": {
+                "validations": [
                     {
-                        "permission": "<Resource Provider>/<Action>",
-                        "message": "Must have correct permission to complete this step."
-                    }
-                ]
-            },
-            "resourceProviders": [ "<Resource Provider>" ]
-        },
-        "resourceGroup": {
-            "constraints": {
-                "validations": [
-                    {
-                        "isValid": "[expression for checking]",
-                        "message": "Please select a valid resource group."
-                    }
-                ]
-            },
-            "allowExisting": true
-        },
-        "location": {  
-            "label": "Custom label for location",  
-            "toolTip": "provide a useful tooltip",  
-            "resourceTypes": [ "Microsoft.Compute/virtualMachines" ],
-            "allowedValues": [ "eastus", "westus2" ],  
-            "visible": true  
-        }  
-    }  
-},  
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid subscription."
+                    },
+                    {
+                        "permission": "<Resource Provider>/<Action>",
+                        "message": "Must have correct permission to complete this step."
+                    }
+                ]
+            },
+            "resourceProviders": [
+                "<Resource Provider>"
+            ]
+        },
+        "resourceGroup": {
+            "constraints": {
+                "validations": [
+                    {
+                        "isValid": "[expression for checking]",
+                        "message": "Please select a valid resource group."
+                    }
+                ]
+            },
+            "allowExisting": true
+        },
+        "location": {
+            "label": "Custom label for location",
+            "toolTip": "provide a useful tooltip",
+            "resourceTypes": [
+                "Microsoft.Compute/virtualMachines"
+            ],
+            "allowedValues": [
+                "eastus",
+                "westus2"
+            ],
+            "visible": true
+        }
+    }
+},
 ```
 
 `description` には、リソースの説明として、マークダウンを使用した文字列を指定します。 複数行形式やリンクがサポートされます。

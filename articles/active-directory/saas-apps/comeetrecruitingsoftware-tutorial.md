@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Comeet Recruiting Software の統合 | Microsoft Docs'
 description: Azure Active Directory と Comeet Recruiting Software の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 75f51dc9-9525-4ec6-80bf-28374f0c8adf
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25a88e3abd7eacc323b5d45fd4fae1304010253b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a47721122456d32cef91de4bd5ef2b92738bf496
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73158553"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>チュートリアル: Azure Active Directory と Comeet Recruiting Software の統合
 

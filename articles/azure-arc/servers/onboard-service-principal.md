@@ -1,18 +1,18 @@
 ---
 title: ハイブリッド マシンを大規模に Azure に接続する
-description: この記事では、Azure Arc for servers (プレビュー) を利用する Azure に、サービス プリンシパルを使用してマシンを接続する方法について説明します。
+description: この記事では、Azure Arc 対応サーバー (プレビュー) を利用する Azure に、サービス プリンシパルを使用してマシンを接続する方法について学習します。
 ms.date: 07/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f599ae6bab8a2b1ce442df677ba5de206d11ab2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 07266ce7fb9579e1d4fb1b65394e0b7fdf7aa13d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121818"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88211409"
 ---
 # <a name="connect-hybrid-machines-to-azure-at-scale"></a>ハイブリッド マシンを大規模に Azure に接続する
 
-要件に応じていくつかの柔軟なオプションを使用して、環境内の複数の Windows マシンまたは Linux マシンに対して Azure Arc for servers (プレビュー) を有効にすることができます。 Microsoft が提供するテンプレート スクリプトを使用すると、Azure Arc への接続の確立を含め、インストールのすべての手順を自動化できます。ただし、ターゲット マシンおよび Azure で管理者特権でのアクセス許可を持つアカウントを使用して、このスクリプトを対話的に実行する必要があります。 マシンを Azure Arc for servers に接続するには、特権 ID を使用してコンピューターに[対話的にマシンを接続する](onboard-portal.md)のではなく、Azure Active Directory [サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)を使用できます。 サービス プリンシパルは、`azcmagent` コマンドを使用してマシンを Azure に接続するために必要な最小限のアクセス許可のみが付与される、特殊な制限付きの管理用 ID です。 これは、テナント管理者のような、より高い特権を持つアカウントを使用するよりも安全で、アクセス制御セキュリティのベスト プラクティスに従っています。 サービス プリンシパルは、オンボード中にのみ使用され、その他の目的には使用されません。  
+要件に応じていくつかの柔軟なオプションを使用して、環境内の複数の Windows または Linux マシンに対して Azure Arc 対応サーバー (プレビュー) を有効にすることができます。 Microsoft が提供するテンプレート スクリプトを使用すると、Azure Arc への接続の確立を含め、インストールのすべての手順を自動化できます。ただし、ターゲット マシンおよび Azure で管理者特権でのアクセス許可を持つアカウントを使用して、このスクリプトを対話的に実行する必要があります。 マシンを Azure Arc 対応サーバー (プレビュー) に接続するには、特権 ID を使用するのではなく、Azure Active Directory [サービス プリンシパル](../../active-directory/develop/app-objects-and-service-principals.md)を使用して、[対話的にマシンを接続](onboard-portal.md)できます。 サービス プリンシパルは、`azcmagent` コマンドを使用してマシンを Azure に接続するために必要な最小限のアクセス許可のみが付与される、特殊な制限付きの管理用 ID です。 これは、テナント管理者のような、より高い特権を持つアカウントを使用するよりも安全で、アクセス制御セキュリティのベスト プラクティスに従っています。 サービス プリンシパルは、オンボード中にのみ使用され、その他の目的には使用されません。  
 
 Connected Machine エージェントをインストールして構成するためのインストール方法を使用するには、使用する自動化された方法に、マシンでの管理者のアクセス許可が付与されている必要があります。 Linux ではルート アカウントを使用し、Windows ではローカルの Administrators グループのメンバーとして実行します。
 
@@ -20,7 +20,7 @@ Connected Machine エージェントをインストールして構成するた�
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このプロセスの終わりに、ハイブリッド マシンが Azure Arc for servers に正しく接続されます。
+このプロセスの終わりに、ハイブリッド マシンが Azure Arc 対応サーバー (プレビュー) に正しく接続されます。
 
 ## <a name="create-a-service-principal-for-onboarding-at-scale"></a>大規模なオンボーディング用にサービス プリンシパルを作成する
 
@@ -133,7 +133,7 @@ azcmagent connect \
 >[!NOTE]
 >**Azcmagent** を実行するには、Linux マシンに対する*ルート* アクセス許可が必要です。
 
-エージェントをインストールし、Azure Arc for servers (プレビュー) に接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されていることを確認します。 自分のマシンは [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
+エージェントをインストールし、Azure Arc 対応サーバー (プレビュー) に接続するように構成したら、Azure portal に移動して、サーバーが正常に接続されていることを確認します。 自分のマシンは [Azure portal](https://aka.ms/hybridmachineportal) に表示されます。
 
 ![成功したサーバー接続](./media/onboard-portal/arc-for-servers-successful-onboard.png)
 

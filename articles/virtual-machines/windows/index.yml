@@ -10,19 +10,19 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 09/09/2019
-  ms.openlocfilehash: c6d3c26e59610e98e0c1fe037a51cb75236ac199
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 9210922f4b43eb229ec0e3b0b554d06f7c2be2eb
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87009511"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816679"
 landingContent:
 - title: 最新の機能
   linkLists:
   - linkListType: whats-new
     links:
     - text: スポット VM
-      url: spot-vms.md
+      url: ../spot-vms.md
     - text: 専用ホスト
       url: dedicated-hosts.md
     - text: 近接通信配置グループ

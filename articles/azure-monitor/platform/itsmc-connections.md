@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: 2df7d8273b2b25cd0171b38e5cc0ada557ea9a2d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bf1721b45ff63c225c378e50bff9040948820c8b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325357"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035027"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](./itsmc-overview.md)に関する記事をご覧ください。
@@ -179,13 +179,14 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 ### <a name="prerequisites"></a>前提条件
 次の前提条件が満たされていることを確認してください。
 - ITSMC がインストールされている。 詳細情報: [IT Service Management Connector ソリューションの追加](./itsmc-overview.md#adding-the-it-service-management-connector-solution)。
-- ServiceNow でサポートされているバージョン: New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
+- ServiceNow でサポートされているバージョン: Orlando、New York、Madrid、London、Kingston、Jakarta、Istanbul、Helsinki、Geneva。
 > [!NOTE]
 > ITSMC では、ServiceNow からの公式の SaaS サービスのみがサポートされています。 ServiceNow のプライベート デプロイはサポートされていません。 
 
 **ServiceNow 管理者は、ServiceNow インスタンスで次のことを行う必要があります。**
 - ServiceNow 製品のクライアント ID とクライアント シークレットを生成します。 クライアント ID とシークレットを生成する方法については、必要に応じて以下の情報をご覧ください。
 
+    - [Orlando の OAuth の設定](https://docs.servicenow.com/bundle/orlando-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [New York の OAuth の設定](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Madrid の OAuth の設定](https://docs.servicenow.com/bundle/madrid-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [London の OAuth の設定](https://docs.servicenow.com/bundle/london-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

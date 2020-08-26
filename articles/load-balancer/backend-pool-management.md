@@ -5,15 +5,15 @@ description: Azure Load Balancer のバックエンド プールを構成およ�
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
-ms.topic: overview
+ms.topic: how-to
 ms.date: 07/07/2020
 ms.author: allensu
-ms.openlocfilehash: 1ab0fd2ff4a2105cdfc4a19b7307cd9817878156
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 81fad1c77b917c1e3eaf7ddd200c3fea83cb0e0a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421792"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589675"
 ---
 # <a name="backend-pool-management"></a>バックエンド プールの管理
 バックエンド プールは、ロード バランサーの重要なコンポーネントです。 バックエンド プールは、指定された負荷分散規則のトラフィックを処理するリソースのグループを定義します。

@@ -1,18 +1,18 @@
 ---
 title: Azure Bastion | Microsoft Docs
-description: Azure Bastion について説明します
+description: Azure Bastion について説明します。これを使用すると、RDP または SSH ポートを外部に公開することなく、仮想マシンへの安全でシームレスな RDP または SSH 接続を実現できます。
 services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
 ms.date: 01/31/2020
 ms.author: cherylmc
-ms.openlocfilehash: 299a69675eed1ba958c6d13cf447407450df2abb
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 8b27a7c2fd03ed0a80f1775465f1f1bbb44f0202
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80411132"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270344"
 ---
 # <a name="what-is-azure-bastion"></a>Azure Bastion とは
 

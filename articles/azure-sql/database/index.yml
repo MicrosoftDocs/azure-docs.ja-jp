@@ -12,12 +12,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: carlrab
   ms.date: 05/27/2020
-  ms.openlocfilehash: 79c834ba1b4e120595f032517835aa3d119088d9
-  ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+  ms.openlocfilehash: 65ab57b6036ec8a1dd6c47560a37c5e687601ad1
+  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/12/2020
-  ms.locfileid: "88135982"
+  ms.lasthandoff: 08/19/2020
+  ms.locfileid: "88587244"
 landingContent:
 - title: Azure SQL データベース
   linkLists:
@@ -27,6 +27,10 @@ landingContent:
       url: single-database-create-quickstart.md
     - text: ファイアウォールの構成
       url: firewall-create-server-level-portal-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure SQL Database の概要
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61
   - linkListType: concept
     links:
     - text: 新機能
@@ -93,12 +97,22 @@ landingContent:
       url: elastic-pool-scale.md
     - text: リソース管理
       url: elastic-pool-resource-management.md
-- title: リファレンス
+- title: Azure SQL について学習する
   linkLists:
   - linkListType: learn
     links:
+    - text: 初心者向け Azure SQL
+      url: https://aka.ms/azuresql4beginners
+    - text: Azure SQL の基礎
+      url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+    - text: Azure SQL のハンズオン ラボ
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL の短期集中講座
+      url: https://aka.ms/azuresqlbootcamp
     - text: 学習用 SQL リソース
       url: /sql/sql-server/educational-sql-resources
+- title: リファレンス
+  linkLists:
   - linkListType: deploy
     links:
     - text: Azure CLI のサンプル

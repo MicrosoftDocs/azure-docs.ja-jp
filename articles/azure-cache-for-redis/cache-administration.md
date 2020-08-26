@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 224436c155f1133621abede21878b49ebc9b3331
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86185214"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008034"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Azure Cache for Redis を管理する方法
 このトピックでは、Azure Cache for Redis インスタンスについて、[再起動](#reboot)、[更新スケジュール](#schedule-updates)などの管理タスクを実行する方法について説明します。
@@ -98,5 +98,7 @@ PowerShell での手順については、「[To reboot an Azure Cache for Redis]
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ## <a name="next-steps"></a>次のステップ
-* [Azure Cache for Redis Premium レベル](cache-premium-tier-intro.md)の機能を確認します。
+Azure Cache for Redis の機能について説明します。
+
+* [Azure Cache for Redis サービス レベル](cache-overview.md#service-tiers)
 

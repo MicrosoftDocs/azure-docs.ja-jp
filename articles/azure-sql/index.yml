@@ -14,12 +14,12 @@ metadata:
   ms.author: mathoma
   ms.reviewer: carlrab
   ms.date: 10/30/2019
-  ms.openlocfilehash: 131be4c87e0274050b6c7b374f75757c8d3f94f2
-  ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+  ms.openlocfilehash: 03f1f908983487bb3ee5be88ced36a0848a731cc
+  ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2020
-  ms.locfileid: "88167846"
+  ms.lasthandoff: 08/19/2020
+  ms.locfileid: "88590440"
 landingContent:
 - title: Azure SQL データベース
   linkLists:
@@ -37,6 +37,10 @@ landingContent:
       url: database/single-database-create-quickstart.md
     - text: ファイアウォールの構成
       url: database/firewall-create-server-level-portal-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure SQL Database の概要
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Database-Overview-7-of-61
   - linkListType: concept
     links:
     - text: SQL Server からの移行
@@ -67,6 +71,10 @@ landingContent:
       url: managed-instance/connect-vm-instance-configure.md
     - text: サンプル データベースを復元する
       url: managed-instance/restore-sample-database-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure SQL Managed Instance の概要
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/Azure-SQL-Managed-Instance-Overview-6-of-61
   - linkListType: concept
     links:
     - text: SQL Server からの移行
@@ -95,6 +103,10 @@ landingContent:
       url: virtual-machines/windows/sql-vm-create-portal-quickstart.md
     - text: Azure VM での SQL の作成 (Linux)
       url: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+  - linkListType: video
+    links:
+    - text: Azure VM 上の SQL Server の概要
+      url: https://channel9.msdn.com/Series/Azure-SQL-for-Beginners/SQL-Server-on-Azure-VM-Overview-4-of-61
   - linkListType: concept
     links:
     - text: SQL Server からの移行
@@ -145,14 +157,22 @@ landingContent:
       url: database/design-first-database-tutorial.md
     - text: 最初のデータベースの設計 (C#)
       url: database/design-first-database-csharp-tutorial.md
-- title: リファレンス
+- title: Azure SQL について学習する
   linkLists:
   - linkListType: learn
     links:
-    - text: 学習用 SQL リソース
-      url: /sql/sql-server/educational-sql-resources
+    - text: 初心者向け Azure SQL
+      url: https://aka.ms/azuresql4beginners
     - text: Azure SQL の基礎
       url: https://docs.microsoft.com/learn/paths/azure-sql-fundamentals/
+    - text: Azure SQL のハンズオン ラボ
+      url: https://aka.ms/asqlworkshop
+    - text: Azure SQL の短期集中講座
+      url: https://aka.ms/azuresqlbootcamp
+    - text: 学習用 SQL リソース
+      url: /sql/sql-server/educational-sql-resources
+- title: リファレンス
+  linkLists:
   - linkListType: deploy
     links:
     - text: Azure CLI のサンプル

@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: acdf830c9bf0eaedcca5bf0ffe1b2bd373750276
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.custom: references_regions
+ms.openlocfilehash: c2d3237e629c7ed5d2931e15939b154e0239f259
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88030674"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553109"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 
@@ -376,7 +377,7 @@ Microsoft の社内ウイルス対策ソリューションである Windows Defe
 > ベアメタル (BMR) 復元は予期しない結果が生じることがあるため、現在サポートされていません。
 
 > [!Note]  
-> Azure File Sync エージェントのバージョン 9 では、VSS スナップショット ([以前のバージョン] タブを含む) が、クラウドの階層化が有効なボリュームでサポートされるようになりました。 ただし、PowerShell を使用して以前のバージョンの互換性を有効にする必要があります。 方法については、[こちら](storage-files-deployment-guide.md)をご覧ください。
+> Azure File Sync エージェントのバージョン 9 では、VSS スナップショット ([以前のバージョン] タブを含む) が、クラウドの階層化が有効なボリュームでサポートされるようになりました。 ただし、PowerShell を使用して以前のバージョンの互換性を有効にする必要があります。 方法については、[こちら](storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service)をご覧ください。
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

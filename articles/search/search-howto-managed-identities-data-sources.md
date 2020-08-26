@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 48b94b8cd047f62ea13bf4e062254088ea11840e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6b07236fd639c9878c59523f78de5215b173ffc6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83663600"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553166"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity-preview"></a>マネージド ID を使用して、データ ソースへのインデクサー接続を設定する (プレビュー)
 
 > [!IMPORTANT] 
-> マネージド ID を使用したデータ ソースへの接続の設定のサポートは現在、限定的なパブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
-> プレビューへのアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/mi-preview-request)に入力して行うことができます。
+> マネージド ID を使用したデータ ソースへの接続の設定のサポートは、現在パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
 
 Azure Cognitive Search の[インデクサー](search-indexer-overview.md)は、データ ソースから Azure Cognitive Search にデータをプルするためのクローラーです。 インデクサーは、ユーザーが作成したデータ ソース オブジェクトからデータ ソース接続を取得します。 データ ソース オブジェクトには、通常、対象のデータ ソースの資格情報が含まれています。 たとえば、BLOB ストレージ コンテナーのデータに対してインデックスを作成する場合は、データ ソース オブジェクトに Azure Storage アカウント キーを含めることができます。
 

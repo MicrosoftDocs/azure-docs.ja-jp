@@ -1,18 +1,18 @@
 ---
 title: 'ネットワーク パートナー: Azure のネットワーク | Microsoft Docs'
-description: この記事では、MSP ネットワーク パートナーの一覧を示します
+description: Azure ネットワーク マネージド サービス プロバイダー パートナー プログラムについて説明すると共に、クラウドおよびハイブリッド ネットワーク サービスを提供するパートナーを示します。
 services: networking
 author: skishen525
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 69129ad0ecda6b5893a5f758b8cac9a30dd0b093
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 237ca65d5feadd019b734dd751d943c06c9a2213
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282111"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587006"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Azure ネットワーク MSP パートナーについて
 
@@ -55,7 +55,7 @@ Azure ネットワーク MSP パートナーによって提供されるマネー
 |[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure 正常性チェック: 5 日の評価](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)|[ExpressRoute: 5 日間の実装](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.erd01)|||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)||[Vandis Managed ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Fortinet を利用する Vandis Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview)。[Palo Alto Networks を利用する Vandis Managed VWAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview)|
 
-Microsoft のロードマップには、次の Azure ネットワーク MSP パートナーが提供する、マネージド ExpressRoute、Virtual WAN、セキュリティ サービス、Private Edge Zone サービスのための Azure Marketplace オファーがあります:[Amdocs](https://www.amdocs.com/)、[Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406)、[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)、[InterCloud](https://intercloud.com/partners/microsoft-azure/)、[KINX](https://www.kinx.net/service/cloud/?lang=en)、[OmniClouds](https://omniclouds.com/)、[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)。
+Microsoft のロードマップには、次の Azure ネットワーク MSP パートナーが提供する、マネージド ExpressRoute、Virtual WAN、セキュリティ サービス、Private Edge Zone サービスのための Azure Marketplace オファーがあります:[Amdocs](https://www.amdocs.com/)、[Deutsche Telekom](https://www.telekom.com/en/media/media-information/archive/deutsche-telekom-offers-managed-network-services-for-microsoft-azure-598406)、[IX Reach](https://www.ixreach.com/services/sdn-cloud-connect/)、[InterCloud](https://intercloud.com/partners/microsoft-azure/)、[KINX](https://www.kinx.net/service/cloud/?lang=en)、[OmniClouds](https://omniclouds.com/)、[Orange Business Services](https://www.orange-business.com/en/solutions/cloud-computing)、[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)
 
 ## <a name="expressroute-partners"></a><a name="expressroute"></a>ExpressRoute パートナー
 

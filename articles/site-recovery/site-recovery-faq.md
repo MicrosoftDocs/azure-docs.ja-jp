@@ -4,12 +4,12 @@ description: この記事では、Azure Site Recovery に関してよく寄せ�
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 89a5785811b4f4833a5a5ddcef827b258ce1775a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 8b5730fba1a0267ab72497bc65b51de75654f970
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083737"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263385"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Azure Site Recovery に関する一般的な質問
 
@@ -247,6 +247,75 @@ Hyper-V 仮想マシンをレプリケートする場合、および Azure に V
 
 >[!Note]
 >カスタム スクリプトをサポートするには、Site Recovery エージェントのバージョンは 9.24 以上である必要があります。
+
+## <a name="replication-policy"></a>Replication policy
+
+### <a name="what-is-a-replication-policy"></a>レプリケーション ポリシーとは何ですか?
+
+レプリケーション ポリシーによって、復旧ポイントの保持履歴設定が定義されます。 このポリシーでは、アプリ整合性スナップショットの頻度も定義されます。 既定では、次のような既定の設定の新しいレプリケーション ポリシーが Azure Site Recovery で作成されます。
+
+- 復旧ポイントの保持履歴は 24 時間。
+- アプリ整合性スナップショットの頻度は 4 時間。
+
+[レプリケーション設定についてはこちらをご覧ください](./azure-to-azure-tutorial-enable-replication.md#configure-replication-settings)。
+
+### <a name="what-is-a-crash-consistent-recovery-point"></a>クラッシュ整合性復旧ポイントとは何ですか?
+
+クラッシュ整合性復旧ポイントには、スナップショットの作成中にサーバーから電源コードが引き抜かれたときのディスク上のデータが含まれます。 クラッシュ整合性復旧ポイントには、スナップショットの作成時にメモリに入っていたものは一切含まれません。
+
+現在、ほとんどのアプリケーションは、クラッシュ整合性のスナップショットから十分に復旧できます。 クラッシュ整合性復旧ポイントは通常、データベースのないオペレーティング システムや、ファイル サーバー、DHCP サーバー、プリント サーバーなどのアプリケーションにとっては十分です。
+
+### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>クラッシュ整合性復旧ポイントはどのくらいの頻度で生成されますか?
+
+Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。
+
+### <a name="what-is-an-application-consistent-recovery-point"></a>アプリケーション整合性復旧ポイントとは何ですか?
+
+アプリケーション整合性復旧ポイントは、アプリケーション整合性スナップショットから作成されます。 アプリケーション整合性復旧ポイントでは、クラッシュ整合性スナップショットと同じデータがキャプチャされますが、さらに、メモリに入っていたデータと処理中のすべてのトランザクションもキャプチャされます。
+
+これらの追加コンテンツのため、アプリケーション整合性スナップショットは最も複雑となり、時間がかかります。 アプリケーション整合性の復旧ポイントは、SQL Server などのデータベース オペレーティング システムで推奨されます。
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>アプリケーション整合性復旧ポイントがアプリケーション パフォーマンスにもたらす影響について教えてください。
+
+アプリケーション整合性復旧ポイントの場合、メモリに入っているデータと処理中のデータがすべてキャプチャされます。 復旧ポイントでそのデータがキャプチャされるため、アプリケーションを停止する目的で、ボリューム シャドウ コピー サービスなどのフレームワークが Windows で必要になります。 キャプチャ プロセスが頻繁に行われる場合、ワークロードが既にビジー状態であれば、パフォーマンスに影響が出ることがあります。 データベース以外のワークロードの場合、アプリ整合性復旧ポイントの頻度を低く設定しないことをお勧めします。 データベース ワークロードの場合であっても、1 時間で十分です。
+
+### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>アプリケーション整合性復旧ポイントが生成される最小の頻度はどのくらいですか?
+
+Site Recovery では、アプリケーション整合性復旧ポイントを 1 時間という最小の頻度で作成できます。
+
+### <a name="how-are-recovery-points-generated-and-saved"></a>復旧ポイントはどのように生成されて保存されますか?
+
+Site Recovery で復旧ポイントを生成する方法を理解するため、レプリケーション ポリシーの例を見てみましょう。 このレプリケーション ポリシーの復旧ポイントには 24 時間の保持期間が設定されており、アプリ整合性スナップショットは 1 時間おきに作成されます。
+
+Site Recovery では、5 分ごとにクラッシュ整合性復旧ポイントが作成されます。 この頻度は変更できません。 最後の 1 時間については、12 のクラッシュ整合性ポイントと 1 つのアプリ整合性ポイントから選択できます。 時間が経過すると、最後の 1 時間を超えた復旧ポイントは Site Recovery によってすべて取り除かれ、1 時間につき 1 つの復旧ポイントのみが保存されます。
+
+次のスクリーンショットはこの例を示したものです。 スクリーンショットでは次のようになっています。
+
+- 最後の 1 時間以内では、5 分ごとに復旧ポイントがあります。
+- 最後の 1 時間を超えると、Site Recovery では復旧ポイントが 1 つだけ保持されます。
+
+   ![生成された復旧ポイントの一覧](./media/azure-to-azure-troubleshoot-errors/recoverypoints.png)
+
+### <a name="how-far-back-can-i-recover"></a>過去のどの時点まで遡って復旧できますか?
+
+使用できる最も古い復旧ポイントは 72 時間です。
+
+### <a name="i-have-a-replication-policy-of-24-hours-what-will-happen-if-a-problem-prevents-site-recovery-from-generating-recovery-points-for-more-than-24-hours-will-my-previous-recovery-points-be-lost"></a>レプリケーション ポリシーを 24 時間に設定しています。 問題が発生し、Site Recovery で 24 時間以上復旧ポイントを生成できなくなった場合、どうなりますか? 以前の復旧ポイントはなくなりますか?
+
+いいえ、以前のすべての復旧ポイントが Site Recovery によって保持されます。 復旧ポイントの保持期間に基づき、Site Recovery では、新しいポイントが生成された場合にのみ、最も古いポイントが置換されます。 問題のために、Site Recovery では新しい復旧ポイントを生成できません。 新しい復旧ポイントができるまで、保持期間に到達した後も古いポイントはすべて残ります。
+
+### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>VM でレプリケーションを有効にした後で、レプリケーション ポリシーを変更するにはどうしたらよいですか?
+
+**[Site Recovery コンテナー]**  >  **[Site Recovery インフラストラクチャ]**  >  **[レプリケーション ポリシー]** の順に移動します。 編集するポリシーを選択し、変更内容を保存します。 変更は既存のすべてのレプリケーションにも適用されます。
+
+### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>すべての復旧ポイントが VM の完全なコピーですか、それとも差分ですか?
+
+生成される最初の復旧ポイントには、完全なコピーがあります。 それ以降の復旧ポイントでは、差分変更が保持されます。
+
+### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>復旧ポイントの保持期間を長くすると、ストレージ コストは増えますか?
+
+はい、保持期間を 24 時間から 72 時間に増やすと、Site Recovery により追加の 48 時間分の復旧ポイントが保存されます。 追加の時間により、ストレージ料金が発生します。 たとえば、1 つの復旧ポイントで 10 GB の差分変更があったとき、GB あたりのコストが 1 か月 $0.16 であるとします。 追加料金は 1 か月あたり $1.60 × 48 になります。
+
 
 ## <a name="failover"></a>[フェールオーバー]
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-vms-after-failover"></a>Azure にフェールオーバーする場合、フェールオーバー後に Azure VM にどうしたらアクセスできますか?

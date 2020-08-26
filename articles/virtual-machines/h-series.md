@@ -5,14 +5,15 @@ author: ju-shim
 ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
-ms.date: 03/10/2020
-ms.author: jushiman
-ms.openlocfilehash: 34f89656fc56b27edafeff0e60874a00139266dd
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/06/2020
+ms.author: amverma
+ms.reviewer: jushiman
+ms.openlocfilehash: e9f876f3d20af01867283f550590b3af23dec662
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87268953"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926622"
 ---
 # <a name="h-series"></a>H シリーズ
 
@@ -41,51 +42,8 @@ Premium Storage Caching: サポートされていません
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-
-## <a name="supported-os-images-linux"></a>サポート対象の OS イメージ (Linux)
- 
-Azure Marketplace には、RDMA 接続をサポートする多くの Linux ディストリビューションがあります。
-  
-* **CentOS ベースの HPC** - SR-IOV に対応していない VM の場合、CentOS ベースのバージョン 6.5 の HPC またはそれ以降 (7.5 まで) のバージョンが適しています。 H シリーズの VM では、バージョン 7.1 から 7.5 をお勧めします。 RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。
-  SR-IOV 対応の VM では、CentOS HPC 7.6 は最適化され、RDMA ドライバーが事前に読み込まれ、さまざまな MPI パッケージがインストールされています。
-  その他の RHEL/CentOS VM イメージの場合、InfiniBandLinux 拡張機能を追加して InfiniBand を有効にします。 この Linux VM 拡張機能は、RDMA 接続用に Mellanox OFED ドライバーを (SR-IOV 対応の VM 上に) インストールします。 次の PowerShell コマンドレットは、InfiniBandDriverLinux 拡張機能の最新バージョン (バージョン 1.0) を既存の RDMA 対応の VM にインストールします。 RDMA 対応の VM は、名前が *myVM* で、次のように *West US* リージョンの *myResourceGroup* という名前のリソース グループにデプロイされます。
-
-  ```powershell
-  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
-  ```
-  また、次の JSON 要素を使用して、簡単にデプロイするために VM 拡張機能を Azure Resource Manager テンプレートに含めることができます。
-  ```json
-  "properties":{
-  "publisher": "Microsoft.HpcCompute",
-  "type": "InfiniBandDriverLinux",
-  "typeHandlerVersion": "1.0",
-  } 
-  ```
-  
-  次のコマンドでは、*myResourceGroup* という名前のリソース グループにデプロイされた *myVMSS* という名前の既存の仮想マシン スケール セットのすべての RDMA 対応 VM に、最新バージョンの 1.0 の InfiniBandDriverLinux 拡張機能をインストールします。
-  ```powershell
-  $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
-  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverLinux" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverLinux" -TypeHandlerVersion "1.0"
-  Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
-  Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
-  ```
-  
-  > [!NOTE]
-  > CentOS ベースの HPC イメージでは、 **yum** 構成ファイルでのカーネルの更新は無効にされています。 これは、Linux RDMA ドライバーが RPM パッケージとして配布されており、カーネルが更新された場合にドライバーの更新プログラムが機能しない可能性があるためです。
-  >
-  
-
-* **SUSE Linux Enterprise Server** - SLES 12 SP3 for HPC、SLES 12 SP3 for HPC (Premium)、SLES 12 SP1 for HPC、SLES 12 SP1 for HPC (Premium)、SLES 12 SP4 および SLES 15。 RDMA ドライバーがインストールされ、Intel MPI パッケージが VM に配布されます。 次のコマンドを実行して MPI をインストールします。
-
-  ```bash
-  sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
-  ```
-  
-* **Ubuntu** - Ubuntu Server 16.04 LTS、18.04 LTS。 VM で RDMA ドライバーを構成し、Intel に登録して Intel MPI をダウンロードします。
-
-  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../includes/virtual-machines-common-ubuntu-rdma.md)]  
-
-  InfiniBand の有効化と MPI の設定の詳細については、[Infiniband の有効化](./workloads/hpc/enable-infiniband.md)に関するページを参照してください。
+> [!NOTE]
+> [RDMA 対応 VM](sizes-hpc.md#rdma-capable-instances) において、H シリーズは SR-IOV が有効になっていません。 そのため、サポートされている [VM イメージ](./workloads/hpc/configure.md#vm-images)、[InfiniBand ドライバー](./workloads/hpc/enable-infiniband.md)の要件、サポートされている [MPI ライブラリ](./workloads/hpc/setup-mpi.md)は、SR-IOV が有効になっている VM とは異なります。
 
 ## <a name="other-sizes"></a>その他のサイズ
 
@@ -98,4 +56,7 @@ Azure Marketplace には、RDMA 接続をサポートする多くの Linux デ�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
+- [VM の構成](./workloads/hpc/configure.md)、[InfiniBand の有効化](./workloads/hpc/enable-infiniband.md)、[MPI の設定](./workloads/hpc/setup-mpi.md)、[HPC ワークロード](./workloads/hpc/overview.md)での Azure 用の HPC アプリケーションの最適化について学習します。
+- [Azure Compute Tech Community のブログ](https://techcommunity.microsoft.com/t5/azure-compute/bg-p/AzureCompute)で、最新の発表および HPC の例と結果について参照します。
+- HPC ワークロードの実行をアーキテクチャの面から見た概要については、「[Azure でのハイ パフォーマンス コンピューティング (HPC)](/azure/architecture/topics/high-performance-computing/)」をご覧ください。
+- [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。

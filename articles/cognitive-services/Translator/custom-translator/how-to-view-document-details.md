@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 22c982babbed1322e97127379be75e7b070ed81f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 87b999069ef9088a731a4e972c5d548cac0b917c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994244"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509572"
 ---
 # <a name="view-document-details"></a>ドキュメントの詳細の表示
 
@@ -22,7 +22,7 @@ ms.locfileid: "83994244"
 
 個々のドキュメントをクリックすると、ドキュメントの詳細ページが表示されます。 ドキュメント詳細ページには、ドキュメントから抽出された文の一覧が表示されます。
 
-- 既定では、"ソース" 言語がドロップダウン フィールドで選択されていますが、ターゲット言語の文を表示するように切り替えることができます。
+- 既定では、ドロップダウン フィールドで、ソース言語とターゲット言語の表示として [横に並べて表示] が選択されていますが、ソースまたはターゲットの言語で文を表示するように切り替えることができます。
 - 既定では、1 ページに 20 個の文が表示されます。 改ページ コントロールを使用してページを切り替えることができます。
 
 ![ドキュメントの詳細](media/how-to/how-to-view-document-details.png)
@@ -32,11 +32,11 @@ ms.locfileid: "83994244"
 ドキュメントを削除するには、ドキュメントを削除できるワークスペース所有者である必要があります。 さらに、ドキュメントがモデルによって使用されている場合、つまりトレーニング プロセスの一部またはデプロイ プロセスの一部である場合は、ドキュメントを削除できません。
 
 1. ドキュメント ページに移動します
-2.  任意のドキュメント レコードをマウスでポイントし、ごみ箱アイコンをクリックします。
+2. 任意のドキュメント レコードをマウスでポイントし、ごみ箱アイコンをクリックします。
 
     ![ドキュメントの削除](media/how-to/how-to-delete-document-1.png)
 
-3.  削除を確認します。
+3. 削除を確認します。
 
     ![削除の確認](media/how-to/how-to-delete-document-confirm.png)
 

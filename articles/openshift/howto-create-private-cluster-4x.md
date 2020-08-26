@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: aro、openshift、az aro、red hat、cli
 ms.custom: mvc
-ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c196d48d22a2bd714c4b6252ad927d18790f4674
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83727440"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056773"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 のプライベート クラスターを作成する
 
@@ -23,24 +23,9 @@ ms.locfileid: "83727440"
 > * 前提条件を設定し、必要な仮想ネットワークとサブネットを作成する
 > * プライベート API サーバー エンドポイントとプライベート イングレス コントローラーを使用してクラスターをデプロイする
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.75 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
-
-### <a name="install-the-az-aro-extension"></a>'az aro' 拡張機能のインストール
-`az aro` 拡張機能を使用すると、Azure CLI を使用してコマンド ラインから直接 Azure Red Hat OpenShift クラスターを作成、アクセス、削除できます。
-
-次のコマンドを実行して、`az aro` 拡張機能をインストールします。
-
-```azurecli-interactive
-az extension add -n aro --index https://az.aroapp.io/stable
-```
-
-拡張機能が既にインストールされている場合は、次のコマンドを実行して更新できます。
-
-```azurecli-interactive
-az extension update -n aro --index https://az.aroapp.io/stable
-```
 
 ### <a name="register-the-resource-provider"></a>リソース プロバイダーの登録
 
@@ -48,21 +33,6 @@ az extension update -n aro --index https://az.aroapp.io/stable
 
 ```azurecli-interactive
 az provider register -n Microsoft.RedHatOpenShift --wait
-```
-
-拡張機能が登録されていることを確認します。
-
-```azurecli-interactive
-az -v
-```
-
-  次のような出力が表示されます。
-
-```output
-...
-Extensions:
-aro                                1.0.0
-...
 ```
 
 ### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat プル シークレットを取得する (省略可能)

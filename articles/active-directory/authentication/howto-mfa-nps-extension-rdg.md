@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21b8748cf74a5061e9dfa154047f867df4cb5428
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: d6ede429de686dd005785b44cf5c6d9571aac5a2
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848748"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117024"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>ネットワーク ポリシー サーバー (NPS) 拡張機能と Azure AD を使用したリモート デスクトップ ゲートウェイ インフラストラクチャの統合
 
@@ -110,6 +110,11 @@ NPS 拡張機能をインストールするには、Azure AD の GUID が必要�
 アカウントの MFA を有効にすると、2 段階認証を使用して認証される 2 つ目の認証要素に使用する信頼済みデバイスの構成を正常に完了するまで、MFA ポリシーによって管理されたリソースにはサインインできません。
 
 「[Azure Multi-Factor Authentication とは何ですか](../user-help/multi-factor-authentication-end-user.md)」に記載されている手順に従って、ユーザー アカウントで MFA 用のデバイスを正しく構成します。
+
+> [!IMPORTANT]
+> リモート デスクトップ ゲートウェイのサインイン動作では、Azure Multi-Factor Authentication で確認コードを入力するオプションは提供されていません。 ユーザー アカウントは、電話による確認、またはプッシュ通知を使用した Microsoft Authenticator アプリ用に構成されている必要があります。
+>
+> これら 2 つの認証方法のいずれかがユーザーに対して構成されていない場合、Azure Multi-Factor Authentication チャレンジを完了して、リモート デスクトップ ゲートウェイにサインインすることはできません。
 
 ## <a name="install-and-configure-nps-extension"></a>NPS 拡張機能のインストールと構成
 

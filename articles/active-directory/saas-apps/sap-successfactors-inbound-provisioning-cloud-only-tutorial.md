@@ -3,23 +3,19 @@ title: チュートリアル:Azure Active Directory での SuccessFactors 受信
 description: SuccessFactors から Azure AD への受信プロビジョニングを構成する方法について説明します
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: fac4f61e-d942-4429-a298-9ba74db95077
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 97bda09870949846e333cc2845286512fd5d6386
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 9c94d2ab2e0c49fe38142e42cf934c440746da75
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809903"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546680"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>チュートリアル:SAP SuccessFactors から Azure AD へのユーザー プロビジョニングの構成
 このチュートリアルでは、SuccessFactors Employee Central から Azure Active Directory に社員データをプロビジョニングするために必要な手順と、SuccessFactors にメール アドレスを書き戻すオプションについて説明します。 

@@ -3,12 +3,12 @@ title: セキュリティ機能の概要
 description: バックアップ データを保護し、ビジネスのセキュリティ ニーズを満たすのに役立つ Azure Backup のセキュリティ機能について説明します。
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 944ef2e86ad8e56501692b29d0958bc4fc19bf0a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 8a63585635f578f55b274c3257807fc731eacc47
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319305"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589386"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>Azure Backup のセキュリティ機能の概要
 
@@ -48,9 +48,9 @@ Azure VM のバックアップを行うには、お使いの仮想マシンの�
 
 * Azure 内では、Azure ストレージとコンテナー間を転送中のデータは、[HTTPS によって保護](backup-support-matrix.md#network-traffic-to-azure)されます。 このデータは、Azure バックボーン ネットワークにとどまります。
 
-* バックアップ データは、[Microsoft マネージド キー](backup-encryption.md#encryption-of-backup-data-using-platform-managed-keys)を使用して自動的に暗号化されます。また、有効にするために明示的な操作をする必要はありません。 Azure Key Vault に格納されている[カスタマー マネージド キー](encryption-at-rest-with-cmk.md)を使用して、バックアップされたデータを暗号化することもできます。 これは、Recovery Services コンテナーにバックアップ中のすべてのワークロードに適用されます。
+* バックアップ データは、[プラットフォーム マネージド キー](backup-encryption.md)で自動的に暗号化され、これは明示的に操作を実行しなくても有効になっています。 Azure Key Vault に格納されている[カスタマー マネージド キー](encryption-at-rest-with-cmk.md)を使用して、バックアップされたデータを暗号化することもできます。 これは、Recovery Services コンテナーにバックアップ中のすべてのワークロードに適用されます。
 
-* Azure Backup では、[Azure Disk Encryption](backup-encryption.md#backup-of-vms-encrypted-using-ade) (ADE) で OS ディスクやデータ ディスクを暗号化している Azure VM と、[CMY で暗号化されたディスクを使用する VM](backup-encryption.md#backup-of-managed-disk-vms-encrypted-using-customer-managed-keys) のバックアップと復元をサポートしています。 詳細については、[暗号化される Azure VM と Azure Backup について、より詳しく学習してください](./backup-azure-vms-encryption.md)。
+* Azure Backup では、[Azure Disk Encryption](backup-azure-vms-encryption.md#encryption-support-using-ade) (ADE) で OS ディスクやデータ ディスクを暗号化している Azure VM と、[CMY で暗号化されたディスクを使用する VM](backup-azure-vms-encryption.md#encryption-using-customer-managed-keys) のバックアップと復元をサポートしています。 詳細については、[暗号化される Azure VM と Azure Backup について、より詳しく学習してください](./backup-azure-vms-encryption.md)。
 
 * データがオンプレミスのサーバーから MARS エージェントを使用してバックアップされるときに、データは Azure Backup にアップロードする前にパスフレーズを使用して暗号化され、Azure Backup からダウンロードされた後でのみ、暗号化が解除されます。 [ハイブリッド バックアップの保護に役立つセキュリティ機能](#security-features-to-help-protect-hybrid-backups)について、詳細を確認してください。
 

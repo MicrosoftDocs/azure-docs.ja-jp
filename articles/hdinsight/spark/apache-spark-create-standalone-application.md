@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
-ms.custom: hdinsightactive,mvc,seoapr2020
-ms.date: 04/17/2020
-ms.openlocfilehash: eaee58cf0a1a2e3497b0e09b7c26852f0699af59
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.custom: contperfq1
+ms.date: 08/21/2020
+ms.openlocfilehash: cfdb02b0a5942536a608fbc957ed69d1efd97e8e
+ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848440"
+ms.lasthandoff: 08/23/2020
+ms.locfileid: "88756896"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>チュートリアル:IntelliJ を使用した HDInsight での Apache Spark の Scala Maven アプリケーションの作成
 

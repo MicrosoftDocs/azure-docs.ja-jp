@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Web マップ コントロールの概要
-description: Microsoft Azure Maps の Web マップ コントロール クライアント側 JavaScript ライブラリを使用して、Web アプリケーションまたはモバイル アプリケーションにマップと埋め込み Azure Maps 機能をレンダリングする方法について説明します。
+description: Azure Maps でマップ コントロールのクライアント側 JavaScript ライブラリを使用して、Web とモバイル アプリケーションにマップを追加する方法を調べます。 マップをローカライズする方法を確認します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/20/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 40ae1492084430f7dbca331d1439b4ded099c866
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e4309b3fdda1296aade19de2874e7f3423b9fc0f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287067"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035962"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -38,18 +38,18 @@ Web ページでマップ コントロールを使用するには、次のいず
 
     * HTML ファイルの `<head>` 要素内の JavaScript とスタイルシートに参照を追加して、グローバルにホストされる CDN バージョンの Azure Maps Web SDK を使用します。
 
-        ```HTML
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        ```
+      ```html
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      ```
 
     * [azure-maps-control](https://www.npmjs.com/package/azure-maps-control) NPM パッケージを使用して、Azure Maps Web SDK のソース コードをローカルに読み込み、アプリを使用してホストします。 このパッケージには TypeScript 定義も含まれています。
 
-    > **npm install azure-maps-control**
+      > **npm install azure-maps-control**
 
     Azure Maps のスタイル シートへの参照を、ファイルの `<head>` 要素に追加します。
 
-    ```HTML
+    ```html
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
      ```
 

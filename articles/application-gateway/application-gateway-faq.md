@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: d76506141b2563b3ae8d5779e774ad564022494d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: a5825cf5461213e3440893597059c84dcdc9ad33
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810005"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236099"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -259,7 +259,7 @@ Application Gateway 上でマルチサイトを構成した場合には、[ホ�
 
 ### <a name="what-certificates-does-application-gateway-support"></a>Application Gateway はどのような証明書をサポートしていますか?
 
-Application Gateway は、自己署名証明書、証明機関 (CA) の証明書、Extended Validation (EV) 証明書、ワイルドカード証明書をサポートしています。
+Application Gateway は、自己署名証明書、証明機関 (CA) の証明書、Extended Validation (EV) 証明書、複数ドメイン (SAN) 証明書、ワイルドカード証明書をサポートしています。
 
 ### <a name="what-cipher-suites-does-application-gateway-support"></a>Application Gateway はどのような暗号スイートをサポートしていますか?
 

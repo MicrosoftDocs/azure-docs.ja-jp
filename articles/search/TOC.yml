@@ -155,7 +155,7 @@
           href: search-howto-large-index.md
         - name: 同時更新を処理する
           href: search-howto-concurrency.md
-    - name: Azure データの取り込み
+    - name: Azure のみのデータを取り込む
       items:
         - name: インデクサーを構成する
           href: search-indexer-overview.md
@@ -203,7 +203,7 @@
               href: search-howto-managed-identities-cosmos-db.md
             - name: SQL Database
               href: search-howto-managed-identities-sql.md
-    - name: AI を使用した取り込み
+    - name: スキルを使用する (AI)
       items:
         - name: Cognitive Services リソースをアタッチする
           href: cognitive-search-attach-cognitive-services.md
@@ -215,7 +215,7 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: インデックスのフィールドにマップする
               href: cognitive-search-output-field-mapping.md
-            - name: 画像から情報を抽出する
+            - name: イメージ ファイルの処理
               href: cognitive-search-concept-image-scenarios.md
             - name: キャッシュ (インクリメンタル) エンリッチメント
               href: search-howto-incremental-index.md

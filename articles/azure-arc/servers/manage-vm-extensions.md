@@ -1,24 +1,24 @@
 ---
-title: Azure Arc for servers を使用した VM 拡張機能の管理
-description: Azure Arc for servers (プレビュー) を使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
+title: Azure Arc 対応サーバー (プレビュー) を使用した VM 拡張機能の管理
+description: Azure Arc 対応サーバー (プレビュー) を使用すると、Azure 以外の VM でのデプロイ後構成と自動化タスクを提供する仮想マシン拡張機能のデプロイを管理できます。
 ms.date: 06/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0319420fe528d41a23ee8fae90c4ad8c326f35a0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 1b27172a14896041cb4217b12af41d6a04118721
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121308"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213116"
 ---
-# <a name="virtual-machine-extension-management-with-azure-arc-for-servers-preview"></a>Azure Arc for servers (プレビュー) を使用した仮想マシン拡張機能の管理
+# <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers-preview"></a>Azure Arc 対応サーバー (プレビュー) を使用した仮想マシン拡張機能の管理
 
 仮想マシン (VM) 拡張機能は、Azure VM でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストールやウイルス対策保護が必要な場合、あるいは、仮想マシン内でスクリプトを実行するために、VM 拡張機能を使用できます。
 
-Azure Arc for servers (プレビュー) を使用すると、Azure VM 拡張機能を Azure 以外の Windows VM と Linux VM にデプロイし、オンプレミス、エッジ、その他のクラウド環境のハイブリッド マシンのライフサイクルを通した管理を簡素化できます。
+Azure Arc 対応サーバー (プレビュー) を使用すると、Azure VM 拡張機能を Azure 以外の Windows VM と Linux VM にデプロイし、オンプレミス、エッジ、その他のクラウド環境のハイブリッド マシンのライフサイクルを通した管理を簡素化できます。
 
 ## <a name="key-benefits"></a>主な利点
 
-Azure Arc for servers (プレビュー) による VM 拡張機能のサポートには、次のような主な利点があります。
+Azure Arc 対応サーバー (プレビュー) による VM 拡張機能のサポートには、次のような主な利点があります。
 
 * [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) を使用して、構成を一元的に保存し、DSC VM 拡張機能によって有効にされているハイブリッド接続マシンの望ましい状態を維持します。
 
@@ -47,7 +47,7 @@ VM 拡張機能は、[サポートされているリージョン](overview.md#su
 |Log Analytics エージェント |Linux |Microsoft.EnterpriseCloud.Monitoring |[Linux 用 Log Analytics VM 拡張機能](../../virtual-machines/extensions/oms-linux.md) |
 |Microsoft Dependency Agent | Linux |Microsoft.Compute | [Linux 用 Dependency Agent 仮想マシン拡張機能](../../virtual-machines/extensions/agent-dependency-linux.md) |
 
-VM 拡張機能は、Azure portal から、または Arc for servers (プレビュー) によって管理されているハイブリッド サーバー上の Azure PowerShell から、Azure Resource Manager テンプレートで実行できます。
+VM 拡張機能は、Azure portal から、または Arc 対応サーバー (プレビュー) によって管理されているハイブリッド サーバー上の Azure PowerShell から、Azure Resource Manager テンプレートで実行できます。
 
 Azure Connected Machine エージェント パッケージと拡張機能エージェント コンポーネントの詳細については、[エージェントの概要](agent-overview.md#agent-component-details)に関する記事を参照してください。
 
@@ -98,7 +98,7 @@ VM 拡張機能は、Azure portal を使用して、Arc for server (プレビュ
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 
-VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 Arc for server (プレビュー) によってサポートされている VM 拡張機能の場合、Azure PowerShell を使用して Linux マシンまたは Windows マシンにサポートされている VM 拡張機能をデプロイできます。 以下の各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
+VM 拡張機能を Azure Resource Manager テンプレートに追加し、テンプレートのデプロイを使用して実行できます。 Arc 対応サーバー (プレビュー) によってサポートされている VM 拡張機能の場合、Azure PowerShell を使用して Linux または Windows マシンにサポートされている VM 拡張機能をデプロイできます。 以下の各サンプルには、テンプレート ファイルと、テンプレートに指定するサンプル値を含むパラメーター ファイルが含まれています。
 
 >[!NOTE]
 >複数の拡張機能をまとめてバッチ処理することができますが、順番にインストールされます。 最初の拡張機能のインストールが完了すると、次の拡張機能のインストールが試行されます。
@@ -223,7 +223,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 カスタム スクリプト拡張機能を使用するため、Windows および Linux で実行する次のサンプルが提供されています。 カスタム スクリプト拡張機能に慣れていない場合は、「[Windows でのカスタムのスクリプト拡張機能](../../virtual-machines/extensions/custom-script-windows.md)」または [Linux 用のカスタム スクリプト拡張機能](../../virtual-machines/extensions/custom-script-linux.md)に関する記事を参照してください。 ハイブリッド マシンでこの拡張機能を使用するときに理解しておく必要のある異なる特徴がいくつかあります。
 
-* Azure VM カスタム スクリプト拡張機能でサポートされているオペレーティング システムの一覧は、Azure Arc for servers には適用されません。 Arc for servers でサポートされている OS の一覧は、[こちら](agent-overview.md#supported-operating-systems)で確認できます。
+* Azure VM カスタム スクリプト拡張機能でサポートされているオペレーティング システムの一覧は、Azure Arc 対応サーバーには適用されません。 Arc 対応サーバーでサポートされている OS の一覧は、[こちら](agent-overview.md#supported-operating-systems)で確認できます。
 
 * Azure Virtual Machine Scale Sets またはクラシック VM に関する構成の詳細は適用できません。
 
@@ -379,7 +379,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 PowerShell DSC 拡張機能を使用するため、Windows および Linux で実行する次のサンプルが提供されています。 PowerShell DSC 拡張機能に慣れていない場合は、[DSC 拡張機能ハンドラーの概要](../../virtual-machines/extensions/dsc-overview.md)に関する記事を参照してください。 ハイブリッド マシンでこの拡張機能を使用するときに理解しておく必要のある異なる特徴がいくつかあります。
 
-* Azure VM PowerShell DSC 拡張機能でサポートされているオペレーティング システムの一覧は、Azure Arc for servers には適用されません。 Arc for servers でサポートされている OS の一覧は、[こちら](agent-overview.md#supported-operating-systems)で確認できます。
+* Azure VM PowerShell DSC 拡張機能でサポートされているオペレーティング システムの一覧は、Azure Arc 対応サーバーには適用されません。 Arc 対応サーバーでサポートされている OS の一覧は、[こちら](agent-overview.md#supported-operating-systems)で確認できます。
 
 * マシンでスクリプトを外部からダウンロードする必要があり、プロキシ サーバー経由でのみ通信できる場合は、[Connected Machine エージェントを構成](manage-agent.md#update-or-remove-proxy-settings)してプロキシ サーバーの環境変数を設定する必要があります。
 

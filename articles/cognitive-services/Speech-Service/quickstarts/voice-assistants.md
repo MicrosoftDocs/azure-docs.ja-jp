@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.author: travisw
-zone_pivot_groups: programming-languages-set-fifteen
-ms.openlocfilehash: c7bb7acf2f9dd282deb9008ac6eb4d96e37c3452
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+zone_pivot_groups: programming-languages-voice-assistants
+ms.openlocfilehash: 17f8286c9b09249970b56d05a135139771e21557
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391300"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225931"
 ---
 # <a name="quickstart-create-a-custom-voice-assistant"></a>クイック スタート:カスタム音声アシスタントを作成する
 

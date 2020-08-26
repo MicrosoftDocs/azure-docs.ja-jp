@@ -7,16 +7,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 08/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 9dc2cee785b28db7446eb8ed8b89e27f4516aba2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 84ab4ba247ef75eec2110edc31cf4e35a705adbf
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736902"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042855"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Azure Data Factory でのバイナリ形式
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 バイナリ形式は次のコネクタでサポートされています。[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure File Storage](connector-azure-file-storage.md)、[ファイル システム](connector-file-system.md)、[FTP](connector-ftp.md)、[Google Cloud Storage](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md)、および [SFTP](connector-sftp.md)。
@@ -86,7 +87,7 @@ Azure Blob Storage のバイナリ データセットの例を次に示します
 | ------------- | ------------------------------------------------------------ | -------- |
 | type          | formatSettings の type は、**BinaryReadSettings** に設定する必要があります。 | はい      |
 | compressionProperties | 特定の圧縮コーデックのデータを圧縮解除する方法のプロパティ グループ。 | いいえ       |
-| preserveZipFileNameAsFolder<br>( *`compressionProperties` の下にあります*) | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。 true (既定) に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。false に設定した場合、Data Factory は解凍されたファイルを直接 `<path specified in dataset>` に書き込みます。  | いいえ |
+| preserveZipFileNameAsFolder<br>( *`compressionProperties` の下にあります*) | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
 
 ```json
 "activities": [

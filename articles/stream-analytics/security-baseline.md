@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 9d085ba494ea6bb6e9e80490d85e50f100fc0908
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 03b1d43eeaffe4449d85d384e669ba0950442ab9
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485555"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003370"
 ---
 # <a name="azure-security-baseline-for-stream-analytics"></a>Stream Analytics 用の Azure セキュリティ ベースライン
 
@@ -248,7 +248,7 @@ Stream Analytics 用の Azure セキュリティ ベースラインには、デ�
 
 ### <a name="32-change-default-passwords-where-applicable"></a>3.2: 既定のパスワードを変更する (該当する場合)
 
-**ガイダンス**:Stream Analytics には既定のパスワードの概念がありません。このサービスを管理するための認証は、Azure Active Directory によって提供され、ロールベースのアクセス制御 (RBAC) によってセキュリティ保護されるためです。 インジェクション ストリーム サービスと出力サービスによっては、ジョブで構成された資格情報をローテーションする必要があります。
+**ガイダンス**: Stream Analytics には既定のパスワードの概念がありません。このサービスを管理するための認証は、Azure Active Directory によって提供され、ロールベースのアクセス制御 (RBAC) によってセキュリティ保護されるためです。 インジェクション ストリーム サービスと出力サービスによっては、ジョブで構成された資格情報をローテーションする必要があります。
 
 * [Stream Analytics ジョブの入力と出力のログイン資格情報の交換](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-login-credentials-inputs-outputs)
 
@@ -442,11 +442,11 @@ Microsoft によって管理される基になるプラットフォームの場�
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: ロールベースのアクセス制御 (RBAC) を使用して、ユーザーがサービスと対話する方法を制御します。
+**ガイダンス**: Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、ユーザーがサービスと対話する方法を制御します。
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
+* [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 
 **Azure Security Center の監視**: 現在は使用できません
 
@@ -580,7 +580,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 ### <a name="64-define-and-maintain-an-inventory-of-approved-azure-resources"></a>6.4:承認された Azure リソースのインベントリを定義および管理する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -612,7 +612,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 ### <a name="67-remove-unapproved-azure-resources-and-software-applications"></a>6.7:承認されていない Azure リソースとソフトウェア アプリケーションを削除する
 
-**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
+**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースと Azure 全体を対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -642,7 +642,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 ### <a name="610-maintain-an-inventory-of-approved-software-titles"></a>6.10:承認されたソフトウェア タイトルのインベントリを管理する
 
-**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 
@@ -702,7 +702,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 ### <a name="73-maintain-secure-azure-resource-configurations"></a>7.3:セキュリティで保護された Azure リソースの構成を維持する
 
-**ガイダンス**: Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
+**ガイダンス**:Azure リソース全体にセキュリティで保護された設定を適用するには、Azure Policy の [deny] と [deploy if not exist] を使用します。
 
 * [Azure Policy を構成して管理する方法](https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage)
 
@@ -752,7 +752,7 @@ Microsoft では、Azure Stream Analytics をサポートしている基にな�
 
 ### <a name="78-deploy-configuration-management-tools-for-operating-systems"></a>7.8:オペレーティング システム用の構成管理ツールをデプロイする
 
-**ガイダンス**:適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。この推奨事項は、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 適用なし
 

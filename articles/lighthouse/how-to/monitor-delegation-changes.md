@@ -1,14 +1,14 @@
 ---
 title: 管理テナントでの委任変更を監視する
 description: 顧客テナントから管理テナントへの委任アクティビティを監視する方法について説明します。
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: 63b8ec60ecf2f2e5655e3253db7aef01c003fc63
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 4d9d8b18634f94c355ea7fc0b5c125d631ec419c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88163341"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589743"
 ---
 # <a name="monitor-delegation-changes-in-your-managing-tenant"></a>管理テナントでの委任変更を監視する
 
@@ -66,9 +66,6 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
-
-> [!NOTE]
-> また、監視閲覧者 Azure 組み込みロールをルート スコープで、個々のユーザーまたはユーザー グループに割り当てることもできます。 これは、ユーザーが [Azure portal で直接委任情報を表示](#view-delegation-changes-in-the-azure-portal)できるようにする場合に役立ちます。 これを行う場合、これが広範囲にわたるアクセス レベルであり、可能な限り少数のユーザーに制限する必要があることに留意してください。
 
 ### <a name="remove-elevated-access-for-the-global-administrator-account"></a>全体管理者アカウントの昇格されたアクセス権を削除する
 
@@ -164,15 +161,6 @@ else {
     Write-Output "No new delegation events for tenant: $($currentContext.Tenant.TenantId)"
 }
 ```
-
-## <a name="view-delegation-changes-in-the-azure-portal"></a>Azure portal で委任変更を表示する
-
-ルート スコープで監視閲覧者 Azure 組み込みロールが割り当てられているユーザーは、Azure portal で直接、委任変更を表示できます。
-
-1. **[マイ カスタマー]** ページに移動し、左側のナビゲーション メニューから **[アクティビティ ログ]** を選択します。
-1. 画面の上部付近にあるフィルターで **[ディレクトリ アクティビティ]** が選択されていることを確認します。
-
-委任変更の一覧が表示されます。 **[列の編集]** を選択して、 **[状態]** 、 **[イベント カテゴリ]** 、 **[時刻]** 、 **[タイム スタンプ]** 、 **[サブスクリプション]** 、 **[イベント開始者]** 、 **[リソース グループ]** 、 **[リソース タイプ]** 、 **[リソース]** の値を表示または非表示にすることができます。
 
 > [!TIP]
 > このトピックではサービス プロバイダーと顧客の場合について説明していますが、[複数のテナントを管理するエンタープライズ](../concepts/enterprise.md)も同じプロセスを使用できます。

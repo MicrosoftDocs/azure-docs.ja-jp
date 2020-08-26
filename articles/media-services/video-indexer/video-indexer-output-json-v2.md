@@ -8,35 +8,50 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/09/2019
+ms.date: 08/10/2020
 ms.author: juliako
-ms.openlocfilehash: 5e3501ea8bc327f0dd906a42702194abce18c5fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ddd1a5b9217962b595408973874a59219af298cf
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84656582"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604781"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-api"></a>API によって生成される Video Indexer の出力の詳細
+# <a name="examine-the-video-indexer-output"></a>Video Indexer の出力を調べる
 
-**Get Video Index** API を呼び出して、応答の状態が OK になると、応答コンテンツとして詳細な JSON 出力が表示されます。 JSON コンテンツには、指定されたビデオの分析情報の詳細が含まれています。 分析情報には、トランスクリプト、OCR、顔、トピック、ブロックなどが含まれます。各種の分析情報には、その分析情報がビデオにいつ現れたかを示す時間範囲のインスタンスが含まれます。 
+ビデオにインデックスを付けると、Video Indexer によって、指定された動画の分析情報の詳細を含む JSON コンテンツが生成されます。 分析情報には、トランスクリプト、OCR、顔、トピック、ブロックなどが含まれます。各種の分析情報には、その分析情報がビデオにいつ現れたかを示す時間範囲のインスタンスが含まれます。 
+
+[Video Indexer](https://www.videoindexer.ai/) の Web サイト上にあるビデオの **[再生]** ボタンを押して、ビデオの要約された分析情報を視覚的に確認できます。 
+
+また、**Get Video Index** API を呼び出して API を使用し、応答の状態が OK になると、応答コンテンツとして詳細な JSON 出力が表示されます。
+
+![洞察](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
+
+この記事では、Video Indexer の出力 (JSON コンテンツ) を調べます。 使用できる機能と分析情報については、[Video Indexer の分析情報](video-indexer-overview.md#video-insights)に関する記事を参照してください。
+
+> [!NOTE]
+> Video Indexer のすべてのアクセス トークンの有効期限は 1 時間です。
+
+## <a name="get-the-insights"></a>分析情報を得る
+
+### <a name="insightsoutput-produced-in-the-websiteportal"></a>Web サイトまたはポータルで生成された分析情報または出力
+
+1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
+1. 調べる出力のビデオを検索します。
+1. **[再生]** を押します。
+1. **[分析情報]** タブ (分析情報の概要) または **[タイムライン]** タブ (関連する分析情報をフィルター処理できます) を選択します。
+1. 成果物とその内容をダウンロードします。
+
+詳しくは、「[View and edit video insights](video-indexer-view-edit.md)」(ビデオの分析情報の表示と編集) をご覧ください。
+
+## <a name="insightsoutput-produced-by-api"></a>API によって生成される分析情報または出力
 
 1. JSON ファイルを取得するには、[Get Video Index API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) を呼び出します
 1. 特定の成果物にも興味がある場合は、[Get Video Artifact Download URL API](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Artifact-Download-Url?) を呼び出します
 
     API 呼び出しで、要求される成果物の種類 (OCR、顔、キー フレームなど) を指定します。
 
-[Video Indexer](https://www.videoindexer.ai/) Web サイトのビデオの **[再生]** ボタンを押して、ビデオの要約された分析情報を視覚的に確認することもできます。 詳しくは、「[View and edit video insights](video-indexer-view-edit.md)」(ビデオの分析情報の表示と編集) をご覧ください。
-
-![洞察](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
-
-この記事では、**Get Video Index** API によって返される JSON コンテンツを確認します。 
-
-> [!NOTE]
-> Video Indexer のすべてのアクセス トークンの有効期限は 1 時間です。
-
-
-## <a name="root-elements"></a>ルート要素
+## <a name="root-elements-of-the-insights"></a>分析情報のルート要素
 
 |名前|説明|
 |---|---|
@@ -86,7 +101,7 @@ ms.locfileid: "84656582"
 |duration|分析情報が発生した時刻を示す 1 つの期間が含まれます。 期間は秒単位です。|
 |thumbnailVideoId|サムネイルの取得元のビデオの ID。
 |thumbnailId|ビデオのサムネイル ID。 実際のサムネイルを取得するには、[Get-Thumbnail](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Thumbnail) を呼び出し、thumbnailVideoId と thumbnailId に渡します。|
-|faces|0 以上の顔を含めることができます。 詳しくは、「[顔](#faces)」をご覧ください。|
+|faces/animatedCharacters|0 以上の顔を含めることができます。 詳細については、「[faces/animatedCharacters](#facesanimatedcharacters)」を参照してください。|
 |keywords|0 個以上のキーワードを含めることができます。 詳しくは、「[キーワード](#keywords)」をご覧ください。|
 |sentiments|0 個以上のセンチメントを含めることができます。 詳しくは、「[センチメント](#sentiments)」をご覧ください。|
 |audioEffects| 0 個以上の audioEffects を含めることができます。 詳しくは、「[audioEffects](#audioeffects)」をご覧ください。|
@@ -162,7 +177,7 @@ ms.locfileid: "84656582"
 |ocr|[OCR](#ocr) 分析情報。|
 |keywords|[keywords](#keywords) 分析情報。|
 |blocks|1 つ以上の[ブロック](#blocks)を含めることができます。|
-|faces|[faces](#faces) 分析情報。|
+|faces/animatedCharacters|[faces/animatedCharacters](#facesanimatedcharacters) 分析情報。|
 |labels|[labels](#labels) 分析情報。|
 |shots|[shots](#shots) 分析情報。|
 |brands|[brands](#brands) 分析情報。|
@@ -305,7 +320,11 @@ instances|このブロックの時間範囲の一覧|
 }
 ```
 
-#### <a name="faces"></a>faces
+#### <a name="facesanimatedcharacters"></a>faces/animatedCharacters
+
+アニメーション化されたキャラクターのモデルでビデオにインデックスが付けられた場合、`animatedCharacters` 要素が `faces` に置き換わります。 これは Custom Vision のカスタム モデルを使用して行われ、Video Indexer ではキーフレーム上で実行されます。
+
+アニメーション化されたキャラクターではなく顔がある場合、Video Indexer では、ビデオのすべてのフレームで Face API が使用され、顔と有名人が検出されます。
 
 |名前|説明|
 |---|---|

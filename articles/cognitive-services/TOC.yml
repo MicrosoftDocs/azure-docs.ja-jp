@@ -19,6 +19,8 @@
       href: cognitive-services-apis-create-account.md
     - name: Azure CLI を使用して新しいリソースを作成する
       href: cognitive-services-apis-create-account-cli.md
+    - name: クライアント ライブラリを使用して新しいリソースを作成する
+      href: cognitive-services-apis-create-account-client-library.md
     - name: ARM テンプレートを使用して新しいリソースを作成する
       displayName: Resource Manager
       href: resource-manager-template.md

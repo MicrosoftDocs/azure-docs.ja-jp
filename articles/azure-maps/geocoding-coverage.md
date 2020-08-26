@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Maps Search Service のジオコーディングの対象範囲
-description: この記事では、さまざまな国/リージョンの Microsoft Azure Maps のジオコーディングの対象範囲について説明します。
+description: Azure Maps の検索範囲に含まれるリージョンを確認します。 ジオコーディングのカテゴリには、アドレス ポイント、家番号、街路レベル、市区町村レベル、注目ポイントが含まれます。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/28/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6014cb4dda18a68b9149206adf034536161eb08e
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 1f79add26af40abfa320bc23a3287d8246237701
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87386913"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037441"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps でのジオコーディングの対象範囲
 

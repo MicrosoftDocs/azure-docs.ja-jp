@@ -210,14 +210,14 @@
           href: storage-dotnet-how-to-use-queues.md
         - name: Java
           href: storage-java-how-to-use-queue-storage.md
+        - name: Python
+          href: storage-python-how-to-use-queue-storage.md
         - name: Node.js
           href: storage-nodejs-how-to-use-queues.md
         - name: C++
           href: storage-c-plus-plus-how-to-use-queues.md
         - name: PHP
           href: storage-php-how-to-use-queues.md
-        - name: Python
-          href: storage-python-how-to-use-queue-storage.md
         - name: Ruby
           href: storage-ruby-how-to-use-queue-storage.md
     - name: キューの管理
@@ -253,12 +253,12 @@
           href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: ストレージ エクスプローラーのアクセシビリティ
           href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-    - name: Azure Storage フォーラム
+    - name: Microsoft Q&A の Azure Storage
       href: 'https://docs.microsoft.com/answers/topics/azure-queue-storage.html'
     - name: Stack Overflow の Azure Storage
       href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Azure Storage の価格
-      href: 'https://azure.microsoft.com/pricing/details/storage/'
+    - name: Queue Storage の価格
+      href: 'https://azure.microsoft.com/pricing/details/storage/queues/'
     - name: Azure 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: ビデオ

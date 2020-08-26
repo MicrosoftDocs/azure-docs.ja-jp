@@ -3,12 +3,12 @@ title: Application Insights のイベント カウンター | Microsoft Docs
 description: Application Insights でシステムとカスタムの .NET/.NET Core EventCounter を監視します。
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 42140f68a5f383a2a60fe8327f5023754366e6b7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 000486ecd4fddd5749e4c7cc9f9210a1f0f8666c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87324405"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272367"
 ---
 # <a name="eventcounters-introduction"></a>EventCounter の概要
 
@@ -45,10 +45,6 @@ Application Insights では、その `EventCounterCollectionModule` (新しく�
 |`System.Runtime` | `threadpool-queue-length` |
 |`System.Runtime` | `threadpool-completed-items-count` |
 |`System.Runtime` | `active-timer-count` |
-|`Microsoft.AspNetCore.Hosting` | `requests-per-second` |
-|`Microsoft.AspNetCore.Hosting` | `total-requests` |
-|`Microsoft.AspNetCore.Hosting` | `current-requests` |
-|`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
 > Microsoft.AspNetCore.Hosting カテゴリのカウンターは、ASP.NET Core アプリケーションにのみ追加されます。

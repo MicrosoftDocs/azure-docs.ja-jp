@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 6/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9274e147bcaec4b3e63a6720e369946d64e94628
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 6ae3e72dc6e79b252c79c78fd5fac27bff8d4740
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809886"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905229"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Azure Digital Twins のエンドポイントとルートを管理する (API と CLI)
 
@@ -104,11 +104,11 @@ Azure Digital Twins からエンドポイントに実際にデータを送信す
 イベント ルートは、データ プレーン API を使用して定義します。 
 
 ルート定義にはこれらの要素を含めることができます。
-* 使用するルート ID
+* 使用するルート名
 * 使用するエンドポイントの名前
 * エンドポイントに送信されるイベントを定義するフィルター 
 
-ルート ID がない場合、メッセージは Azure Digital Twins の外部にルーティングされません。 ルート ID があり、フィルターが `true` の場合は、すべてのメッセージがエンドポイントにルーティングされます。 ルート ID があり、別のフィルターを追加した場合は、そのフィルターに基づいてメッセージがフィルター処理されます。
+ルート名がない場合、メッセージは Azure Digital Twins の外部にルーティングされません。 ルート名があり、フィルターが `true` の場合は、すべてのメッセージがエンドポイントにルーティングされます。 ルート名があり、別のフィルターを追加した場合は、そのフィルターに基づいてメッセージがフィルター処理されます。
 
 1 つのルートで、複数の通知とイベントの種類を選択できるようにする必要があります。 
 

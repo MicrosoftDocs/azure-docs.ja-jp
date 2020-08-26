@@ -3,439 +3,119 @@ title: Azure App Configuration を使用した VM の自動デプロイのクイ
 description: このクイックスタートでは、Azure PowerShell モジュールと Azure Resource Manager テンプレートを使用して Azure App Configuration ストアをデプロイする方法を示します。 次に、ストア内の値を使用して VM をデプロイします。
 author: lisaguthrie
 ms.author: lcozzens
-ms.date: 04/14/2020
+ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-app-configuration
 ms.custom:
 - mvc
 - subject-armqs
-ms.openlocfilehash: 96d09de73e8b904a8e26eb4f365d34fab1401203
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9b609d4571d6240f428a0210aa5108ff19dc753b
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82137554"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235181"
 ---
-# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template"></a>クイック スタート:App Configuration と Resource Manager テンプレートを使用した VM の自動デプロイ
+# <a name="quickstart-automated-vm-deployment-with-app-configuration-and-resource-manager-template-arm-template"></a>クイック スタート:App Configuration と Resource Manager テンプレートを使用した VM の自動デプロイ (ARM テンプレート)
 
-Azure PowerShell モジュールは、PowerShell コマンドレットまたはスクリプトを使用して Azure リソースを作成および管理するために使用します。 このクイックスタートでは、Azure PowerShell と Azure Resource Manager テンプレートを使用して Azure App Configuration ストアをデプロイする方法を示します。 次に、ストア内のキー値を使用して VM をデプロイする方法を学習します。
-
-前提条件テンプレートを使用して App Configuration ストアを作成し、Azure portal または Azure CLI を使用してキー値をストアに追加します。 プライマリ テンプレートは、既存の構成ストアの既存のキーと値の構成を参照します。 取得された値は、この例の VM のように、テンプレートによって作成されたリソースのプロパティを設定するために使用されます。
+Azure Resource Manager テンプレートと Azure PowerShell を使用して、Azure App Configuration ストアをデプロイする方法やストアにキーと値を追加する方法のほか、ストア内のキーと値を使用して Azure リソース (この例では Azure 仮想マシン) をデプロイする方法について説明します。
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-## <a name="before-you-begin"></a>開始する前に
+環境が前提条件を満たしていて、ARM テンプレートの使用に慣れている場合は、 **[Azure へのデプロイ]** ボタンを選択します。 Azure portal でテンプレートが開きます。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
 
-* Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+## <a name="prerequisites"></a>前提条件
 
-* このクイック スタートには、Azure PowerShell モジュールが必要です。 ローカル マシンにインストールされているバージョンを調べるには、`Get-Module -ListAvailable Az` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-Az-ps)に関するページを参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+## <a name="review-the-templates"></a>テンプレートを確認する
 
-`Connect-AzAccount` コマンドを使用して Azure サブスクリプションにサインインし、ポップアップ ブラウザーに Azure 資格情報を入力します。
+このクイックスタートで使用されるテンプレートは [Azure クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/)からのものです。 [1 つ目のテンプレート](https://azure.microsoft.comresources/templates/101-app-configuration-store/)は、App Configuration ストアを作成するものです。
 
-```azurepowershell-interactive
-# Connect to your Azure account
-Connect-AzAccount
-```
+:::code language="json" source="~/quickstart-templates/101-app-configuration-store/azuredeploy.json" range="1-37" highlight="27-35":::
 
-サブスクリプションが複数ある場合は、次のコマンドレットを実行して、このクイックスタートに使用するサブスクリプションを選択します。 `<your subscription name>` は、必ず実際のサブスクリプションの名前に置き換えてください。
+テンプレートには、1 つの Azure リソースが定義されています。
 
-```azurepowershell-interactive
-# List all available subscriptions.
-Get-AzSubscription
+- [Microsoft.AppConfiguration/configurationStores](/azure/templates/microsoft.appconfiguration/2019-10-01/configurationstores): App Configuration ストアを作成します。
 
-# Select the Azure subscription you want to use to create the resource group and resources.
-Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
-```
+[2 つ目のテンプレート](https://azure.microsoft.com/resources/templates/101-app-configuration/)は、ストア内のキーと値を使用して仮想マシンを作成するものです。 この手順の前に、ポータルまたは Azure CLI を使用してキーと値を追加する必要があります。
 
-## <a name="create-a-resource-group"></a>リソース グループを作成する
+:::code language="json" source="~/quickstart-templates/101-app-configuration/azuredeploy.json" range="1-217" highlight="77, 181,189":::
 
-[New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+## <a name="deploy-the-templates"></a>テンプレートの配備
 
-```azurepowershell-interactive
-$resourceGroup = "StreamAnalyticsRG"
-$location = "WestUS2"
-New-AzResourceGroup `
-    -Name $resourceGroup `
-    -Location $location
-```
+### <a name="create-an-app-configuration-store"></a>App Configuration ストアを作成する
 
-## <a name="deploy-an-azure-app-configuration-store"></a>Azure App Configuration ストアをデプロイする
+1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートによって App Configuration ストアが作成されます。
 
-キー値を VM に適用する前に、既存の Azure App Configuration ストアが必要です。 このセクションでは、Azure Resource Manager テンプレートを使用して Azure App Configuration ストアをデプロイする方法について詳しく説明します。 既にアプリ構成ストアがある場合は、この記事の次のセクションに移動できます。 
+    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration-store%2Fazuredeploy.json)
 
-1. 次の json コードをコピーし、*prereq.azuredeploy.json* という名前の新しいファイルに貼り付けます。
+1. 次の値を選択または入力します。
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "configStoreName": {
-        "type": "string",
-        "metadata": {
-          "description": "Specifies the name of the app configuration store."
-        }
-      },
-      "location": {
-        "type": "string",
-        "defaultValue": "[resourceGroup().location]",
-        "metadata": {
-          "description": "Specifies the Azure location where the app configuration store should be created."
-        }
-      },
-      "skuName": {
-        "type": "string",
-        "defaultValue": "standard",
-        "metadata": {
-          "description": "Specifies the SKU of the app configuration store."
-        }
-      }
-    },
-    "resources": [
-      {
-        "type": "Microsoft.AppConfiguration/configurationStores",
-        "name": "[parameters('configStoreName')]",
-        "apiVersion": "2019-10-01",
-        "location": "[parameters('location')]",
-        "sku": {
-          "name": "[parameters('skuName')]"
-        }
-      }
-    ]
-   }
-   ```
+    - **[サブスクリプション]** : App Configuration ストアの作成に使用された Azure サブスクリプションを選択します。
+    - **[リソース グループ]** : 既存のリソース グループを使用する場合を除き、 **[新規作成]** を選択して新しいリソース グループを作成します。
+    - **[リージョン]** : リソース グループの場所を選択します。  たとえば、**East US** などとします。
+    - **[Config Store Name]\(構成ストアの名前\)** : 新しい App Configuration ストアの名前を入力します。
+    - **[場所]** : App Configuration ストアの場所を指定します。  既定値を使用します。
+    - **[SKU 名]** : App Configuration ストアの SKU 名を指定します。 既定値を使用します。
 
-1. 次の json コードをコピーし、*prereq.azuredeploy.parameters.json* という名前の新しいファイルに貼り付けます。 **GET-UNIQUE** は、実際の構成ストアの一意の名前に置き換えてください。
+1. **[Review + create]\(レビュー + 作成\)** を選択します。
+1. "**検証に成功しました**" と表示されていることを確認して、 **[作成]** を選択します。
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "configStoreName": {
-        "value": "GET-UNIQUE"
-      }
-    }
-   }
-   ```
+リソース グループの名前と App Configuration ストアの名前を書き留めてください。  仮想マシンをデプロイするときに、これらの値が必要となります。
+### <a name="add-vm-configuration-key-values"></a>VM 構成のキー値を追加する
 
-1. PowerShell ウィンドウで次のコマンドを実行して、Azure App Configuration ストアをデプロイします。 リソース グループ名、テンプレート ファイル パス、およびテンプレート パラメーター ファイル パスを必ず置き換えてください。
+App Configuration ストアの作成後、Azure portal または Azure CLI を使用して、キーと値をストアに追加します。
 
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>" `
-       -TemplateFile "<path to prereq.azuredeploy.json>" `
-       -TemplateParameterFile "<path to prereq.azuredeploy.parameters.json>"
-   ```
+1. [Azure portal](https://portal.azure.com) にサインインし、新しく作成された App Configuration ストアに移動します。
+1. 左側のメニューから **[構成エクスプローラー]** を選択します。
+1. **[作成]** を選択して、次のキーと値のペアを追加します。
 
-## <a name="add-vm-configuration-key-values"></a>VM 構成のキー値を追加する
+   |キー|値|Label|
+   |-|-|-|
+   |windowsOsVersion|2019-Datacenter|template|
+   |diskSizeGB|1023|template|
 
-App Configuration ストアは Azure Resource Manager テンプレートを使用して作成できますが、キー値を追加するには Azure portal または Azure CLI を使用する必要があります。 このクイックスタートでは、Azure portal を使用してキー値を追加します。
+   **[コンテンツ タイプ]** は空のままにしてください。
 
-1. デプロイが完了したら、[Azure portal](https://portal.azure.com) で新しく作成した App Configuration ストアに移動します。
+Azure CLI を使用するには、「[Azure App Configuration ストアに格納されているキー/値を操作する](./scripts/cli-work-with-keys.md)」を参照してください。
 
-1. **[設定]**  >  **[アクセス キー]** の順に選択します。 接続文字列の読み取り専用の主キーをメモします。 この接続文字列は、後で、作成した App Configuration ストアと通信するようにアプリケーションを構成する際に使用します。
-
-1. [構成**エクスプローラー]**  >  **[作成]** の順に選択して、次のキーと値のペアを追加します。
-
-   |Key|値|
-   |-|-|
-   |windowsOsVersion|2019-Datacenter|
-   |diskSizeGB|1023|
-  
-   **[ラベル]** に「*template*」と入力します。 **[コンテンツ タイプ]** は空のままにします。
-
-## <a name="deploy-vm-using-stored-key-values"></a>格納されているキー値を使用して VM をデプロイする
+### <a name="deploy-vm-using-stored-key-values"></a>格納されているキー値を使用して VM をデプロイする
 
 キー値がストアに追加されたので、Azure Resource Manager テンプレートを使用して VM をデプロイする準備ができました。 このテンプレートでは、作成した **windowsOsVersion** キーと **diskSizeGB** キーを参照します。
 
 > [!WARNING]
 > ARM テンプレートは、Private Link が有効になっている App Configuration ストア内のキーを参照できません。
 
-1. 次の json コードをコピーし、*azuredeploy.json* という名前の新しいファイルに貼り付けます。または、[Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.json)からファイルをダウンロードします。
+1. Azure にサインインし、テンプレートを開くには次のイメージを選択します。 このテンプレートにより、App Configuration ストアに格納されているキーと値を使用して仮想マシンが作成されます。
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "Admin user name."
-            }
-        },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Password for the Virtual Machine."
-            }
-        },
-        "appConfigStoreName": {
-            "type": "string",
-            "metadata": {
-                "description": "App configuration store name."
-            }
-        },
-        "appConfigStoreResourceGroup": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the resource group for the app config store."
-            }
-        },
-        "domainNameLabel": {
-            "type": "string",
-            "metadata": {
-                "description": "The DNS label for the public IP address. It must be lowercase. It should match the following regular expression, or it will raise an error: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$."
-            }
-        },
-        "location": {
-            "type": "string",
-            "defaultValue": "[resourceGroup().location]",
-            "metadata": {
-                "description": "Location for all resources."
-            }
-        },
-        "vmSize": {
-            "type": "string",
-            "defaultValue": "Standard_D2_v3",
-            "metadata": {
-                "description": "Size of the VM"
-            }
-        },
-        "vmSkuKey": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the key in the app config store for the VM windows sku"
-            }
-        },
-        "diskSizeKey": {
-            "type": "string",
-            "metadata": {
-                "description": "Name of the key in the app config store for the VM disk size"
-            }
-        },
-        "storageAccountName": {
-            "type": "string",
-            "metadata": {
-                "description": "The name of the storage account."
-            }
-        }
-    },
-    "variables": {
-        "nicName": "myVMNic",
-        "addressPrefix": "10.0.0.0/16",
-        "subnetName": "Subnet",
-        "subnetPrefix": "10.0.0.0/24",
-        "publicIPAddressName": "myPublicIP",
-        "vmName": "SimpleWinVM",
-        "virtualNetworkName": "MyVNET",
-        "subnetRef": "[resourceId('Microsoft.Network/virtualNetworks/subnets', variables('virtualNetworkName'), variables('subnetName'))]",
-        "appConfigRef": "[resourceId(parameters('appConfigStoreResourceGroup'), 'Microsoft.AppConfiguration/configurationStores', parameters('appConfigStoreName'))]",
-        "windowsOSVersionParameters": {
-            "key": "[parameters('vmSkuKey')]",
-            "label": "template"
-        },
-        "diskSizeGBParameters": {
-            "key": "[parameters('diskSizeKey')]",
-            "label": "template"
-        }
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2018-11-01",
-            "name": "[parameters('storageAccountName')]",
-            "location": "[parameters('location')]",
-            "sku": {
-                "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-        },
-        {
-            "type": "Microsoft.Network/publicIPAddresses",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('publicIPAddressName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "publicIPAllocationMethod": "Dynamic",
-                "dnsSettings": {
-                    "domainNameLabel": "[parameters('domainNameLabel')]"
-                }
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('virtualNetworkName')]",
-            "location": "[parameters('location')]",
-            "properties": {
-                "addressSpace": {
-                    "addressPrefixes": [
-                        "[variables('addressPrefix')]"
-                    ]
-                },
-                "subnets": [
-                    {
-                        "name": "[variables('subnetName')]",
-                        "properties": {
-                            "addressPrefix": "[variables('subnetPrefix')]"
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Network/networkInterfaces",
-            "apiVersion": "2018-11-01",
-            "name": "[variables('nicName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/publicIPAddresses/', variables('publicIPAddressName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks/', variables('virtualNetworkName'))]"
-            ],
-            "properties": {
-                "ipConfigurations": [
-                    {
-                        "name": "ipconfig1",
-                        "properties": {
-                            "privateIPAllocationMethod": "Dynamic",
-                            "publicIPAddress": {
-                                "id": "[resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))]"
-                            },
-                            "subnet": {
-                                "id": "[variables('subnetRef')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2018-10-01",
-            "name": "[variables('vmName')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))]",
-                "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-            ],
-            "properties": {
-                "hardwareProfile": {
-                    "vmSize": "[parameters('vmSize')]"
-                },
-                "osProfile": {
-                    "computerName": "[variables('vmName')]",
-                    "adminUsername": "[parameters('adminUsername')]",
-                    "adminPassword": "[parameters('adminPassword')]"
-                },
-                "storageProfile": {
-                    "imageReference": {
-                        "publisher": "MicrosoftWindowsServer",
-                        "offer": "WindowsServer",
-                        "sku": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('windowsOSVersionParameters')).value]",
-                        "version": "latest"
-                    },
-                    "osDisk": {
-                        "createOption": "FromImage"
-                    },
-                    "dataDisks": [
-                        {
-                            "diskSizeGB": "[listKeyValue(variables('appConfigRef'), '2019-10-01', variables('diskSizeGBParameters')).value]",
-                            "lun": 0,
-                            "createOption": "Empty"
-                        }
-                    ]
-                },
-                "networkProfile": {
-                    "networkInterfaces": [
-                        {
-                            "id": "[resourceId('Microsoft.Network/networkInterfaces',variables('nicName'))]"
-                        }
-                    ]
-                },
-                "diagnosticsProfile": {
-                    "bootDiagnostics": {
-                        "enabled": true,
-                        "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', parameters('storageAccountName'))).primaryEndpoints.blob]"
-                    }
-                }
-            }
-        }
-    ],
-    "outputs": {
-        "hostname": {
-            "type": "string",
-            "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
-        }
-    }
-   }
-   ```
+    [![Azure へのデプロイ](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-app-configuration%2Fazuredeploy.json)
 
-1. 次の json コードをコピーし、*azuredeploy.parameters.json* という名前の新しいファイルに貼り付けます。または、[Azure クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-app-configuration/azuredeploy.parameters.json)からファイルをダウンロードします。
+1. 次の値を選択または入力します。
 
-   ```json
-   {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-      "adminPassword": {
-        "value": "GEN-PASSWORD"
-      },
-      "appConfigStoreName":{
-        "value": "GEN-APPCONFIGSTORE-NAME"
-      },
-      "appConfigStoreResourceGroup": {
-         "value": "GEN-APPCONFIGSTORE-RESOURCEGROUP-NAME"
-      },
-      "vmSkuKey":{
-        "value": "GEN-APPCONFIGSTORE-WINDOWSOSVERSION"
-      },
-      "diskSizeKey" :{
-         "value": "GEN-APPCONFIGSTORE-DISKSIZEGB"
-      },
-      "adminUsername":{
-        "value": "GEN-UNIQUE"
-      },
-      "storageAccountName":{
-        "value": "GEN-UNIQUE"
-      },
-      "domainNameLabel":{
-        "value": "GEN-UNIQUE"
-      }
-    }
-   }
-   ```
+    - **[サブスクリプション]** : 仮想マシンの作成に使用される Azure サブスクリプションを選択します。
+    - **[リソース グループ]** : App Configuration ストアと同じリソース グループを指定するか、または **[新規作成]** を選択して新しいリソース グループを作成します。
+    - **[リージョン]** : リソース グループの場所を選択します。  たとえば、**East US** などとします。
+    - **[場所]** : 仮想マシンの場所を指定します。 既定値を使用してください。
+    - **[管理者ユーザー名]** : 仮想マシンの管理者ユーザー名を指定します。
+    - **[管理者パスワード]** : 仮想マシンの管理者パスワードを指定します。
+    - **[ドメイン名ラベル]** : 一意のドメイン名を指定します。
+    - **[ストレージ アカウント名]** : 仮想マシンに関連付けられるストレージ アカウントの一意の名前を指定します。
+    - **[App Config Store Resource Group]\(App Config ストアのリソース グループ\)** : App Configuration ストアを含むリソース グループを指定します。
+    - **[App Config Store Name]\(App Config ストア名\)** : Azure App Configuration ストアの名前を指定します。
+    - **[VM Sku Key]\(VM SKU キー\)** : **windowsOsVersion** を指定します。  これは、ストアに追加したキー値の名前です。
+    - **[Disk Size Key]\(ディスク サイズ キー\)** : **diskSizeGB** を指定します。 これは、ストアに追加したキー値の名前です。
 
-   テンプレートのパラメーター値を次の値に置き換えます。
+1. **[Review + create]\(レビュー + 作成\)** を選択します。
+1. "**検証に成功しました**" と表示されていることを確認して、 **[作成]** を選択します。
 
-   |パラメーター|値|
-   |-|-|
-   |adminPassword|VM の管理者パスワード。|
-   |appConfigStoreName|対象の Azure App Configuration ストアの名前。|
-   |appConfigStoreResourceGroup|対象の App Configuration ストアが含まれているリソース グループ。|
-   |vmSkuKey|*windowsOSVersion*|
-   |diskSizeKey|*diskSizeGB*|
-   |adminUsername|VM の管理者のユーザー名。|
-   |storageAccountName|VM に関連付けられているストレージ アカウントの一意の名前。|
-   |domainNameLabel|一意のドメイン名。|
+## <a name="review-deployed-resources"></a>デプロイされているリソースを確認する
 
-1. PowerShell ウィンドウで次のコマンドを実行して、VM をデプロイします。 リソース グループ名、テンプレート ファイル パス、およびテンプレート パラメーター ファイル パスを必ず置き換えてください。
-
-   ```azurepowershell
-   New-AzResourceGroupDeployment `
-       -ResourceGroupName "<your resource group>"
-       -TemplateFile "<path to azuredeploy.json>" `
-       -TemplateParameterFile "<path to azuredeploy.parameters.json>"
-   ```
-
-お疲れさまでした。 Azure App Configuration に格納されている構成を使用して VM をデプロイできました。
+1. [Azure portal](https://portal.azure.com) にサインインし、新しく作成された仮想マシンに移動します。
+1. 左側のメニューから **[概要]** を選択し、 **[SKU]** が **2019-Datacenter** であることを確認します。
+1. 左側のメニューから **[ディスク]** を選択し、データ ディスクのサイズが **2013** であることを確認します。
 
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
 

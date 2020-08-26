@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc2030f589185fd39c0f10b00c012db038a4e008
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 394a4c171153ecf50ff5d755c42e3c5f939b2ec7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85848704"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507180"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -308,17 +308,23 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 このセクションでは、VPN サーバーでのクライアント認証に MFA を使用するように VPN を構成する手順について説明します。
 
+> [!NOTE]
+> REQUIRE_USER_MATCH レジストリ キーでは、大文字と小文字が区別されます。 値はすべて大文字の形式で設定する必要があります。
+>
+
 NPS 拡張機能をインストールして構成したら、このサーバーによって処理される RADIUS ベースのすべてのクライアント認証に MFA を使用する必要があります。 すべての VPN ユーザーを Azure Multi-Factor Authentication に登録していない場合、次のいずれかを実行できます。
 
 * 別の RADIUS サーバーを設定して、MFA を使用するように構成されていないユーザーを認証します。
 
 * ユーザーが Azure Multi-Factor Authentication に登録されている場合、チャレンジされたユーザーが 2 つ目の認証要素を提供できるようにするレジストリ エントリを作成します。
 
-_HKLM\SOFTWARE\Microsoft\AzureMfa に REQUIRE_USER_MATCH_ という名前の新しい文字列値を作成し、値を *True* または *False* に設定します。
+_HKLM\SOFTWARE\Microsoft\AzureMfa に REQUIRE_USER_MATCH_ という名前の新しい文字列値を作成し、値を *TRUE* または *FALSE* に設定します。
 
 ![[ユーザー照合が必要] 設定](./media/howto-mfa-nps-extension-vpn/image34.png)
 
-値が *True* に設定されているか空の場合は、すべての認証要求が MFA チャレンジの対象となります。 値が *False* に設定されている場合は、Azure Multi-Factor Authentication に登録されているユーザーにのみ、MFA チャレンジが発行されます。 *False* の設定は、オンボード期間中にテスト環境または運用環境でのみ使用します。
+値が *TRUE* に設定されているか空の場合は、すべての認証要求が MFA チャレンジの対象となります。 値が *FALSE* に設定されている場合は、Azure Multi-Factor Authentication に登録されているユーザーにのみ、MFA チャレンジが発行されます。 *FALSE* の設定は、オンボード期間中にテスト環境または運用環境でのみ使用します。
+
+
 
 ### <a name="obtain-the-azure-active-directory-tenant-id"></a>Azure Active Directory テナント ID を取得する
 

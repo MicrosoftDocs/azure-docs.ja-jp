@@ -147,7 +147,7 @@
           href: platform/personal-data-mgmt.md
         - name: アプリケーション データの収集、保持、保存
           href: app/data-retention-privacy.md
-    - name: 警告
+    - name: アラート
       items:
         - name: 概要
           href: platform/alerts-overview.md
@@ -482,16 +482,12 @@
           href: platform/autoscale-resource-log-schema.md
     - name: 警告
       items:
-        - name: アプリケーション アラート ルール
-          items:
-            - name: 可用性
-              href: app/monitor-web-app-availability.md
-            - name: メトリック アラート
-              href: ./platform/alerts-log.md
         - name: メトリック アラート ルール
           items:
             - name: メトリック アラートの管理
               href: platform/alerts-metric.md
+            - name: 可用性
+              href: app/monitor-web-app-availability.md
             - name: 動的しきい値の使用
               href: platform/alerts-dynamic-thresholds.md
             - name: 多くの時系列に対する単一のアラート

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: 46560f067e020236031487677ad4f48a9560d4e1
-ms.sourcegitcommit: 642a297b1c279454df792ca21fdaa9513b5c2f8b
+ms.openlocfilehash: 4e65655f1809c6badc50e39a2a5e932516ef99d2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80679217"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509843"
 ---
 # <a name="use-the-session-management-rest-api"></a>セッション管理 REST API を使用する
 
@@ -71,9 +71,9 @@ $token = $response.AccessToken;
 
 **要求本文:**
 
-* maxLeaseTime (期間): VM が自動的に使用停止になる際のタイムアウト値。
+* maxLeaseTime (期間): セッションが自動的に使用停止されるときのタイムアウト値。
 * models (配列): 事前に読み込まれるアセット コンテナーの URL。
-* size (文字列): VM サイズ ( **"standard"** または **"premium"** )。 特定の [VM サイズの制限](../reference/limits.md#overall-number-of-polygons)を参照してください。
+* size (文字列): 構成するサーバー サイズ ([ **"standard"** ](../reference/vm-sizes.md) または [ **"premium"** ](../reference/vm-sizes.md))。 具体的な[サイズの制限](../reference/limits.md#overall-number-of-polygons)を参照してください。
 
 **応答:**
 
@@ -130,7 +130,7 @@ $sessionId = "d31bddca-dab7-498e-9bc9-7594bc12862f"
 
 **要求本文:**
 
-* maxLeaseTime (期間): VM が自動的に使用停止になる際のタイムアウト値。
+* maxLeaseTime (期間): セッションが自動的に使用停止されるときのタイムアウト値。
 
 **応答:**
 

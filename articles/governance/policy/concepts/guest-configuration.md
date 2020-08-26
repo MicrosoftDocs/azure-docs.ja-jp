@@ -3,17 +3,16 @@ title: 仮想マシンのコンテンツの監査を学習する
 description: Azure Policy がゲスト構成エージェントを使用して仮想マシン内の設定を監査するしくみについて説明します。
 ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 906c86856342febc92f070493fde31af42e4ca10
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 624f0a2464323e8002b9940471c93b3030f053d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987105"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544674"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Azure Policy のゲストの構成の理解
 
-Azure Policy では、Azure 内で実行するマシンと [Arc に接続されたマシン](../../../azure-arc/servers/overview.md)の両方に対して、マシン内の設定を監査できます。
-検証は、クライアントとゲスト構成拡張機能によって実行されます。 クライアントを介した拡張機能によって、次のような設定が検証されます。
+Azure Policy では、Azure 内で実行するマシンと [Arc に接続されたマシン](../../../azure-arc/servers/overview.md)の両方に対して、マシン内の設定を監査できます。 検証は、クライアントとゲスト構成拡張機能によって実行されます。 クライアントを介した拡張機能によって、次のような設定が検証されます。
 
 - オペレーティング システムの構成
 - アプリケーションの構成または存在
@@ -93,8 +92,7 @@ Azure [仮想パブリック IP アドレス](../../../virtual-network/what-is-i
 
 ### <a name="azure-arc-connected-machines"></a>Azure Arc の接続されたマシン
 
-Azure Arc によって接続されている Azure の外部にあるノードでは、ゲスト構成サービスへの接続が必要です。
-ネットワークとプロキシの要件に関する詳細は、[Azure Arc のドキュメント](../../../azure-arc/servers/overview.md)で提供されています。
+Azure Arc によって接続されている Azure の外部にあるノードでは、ゲスト構成サービスへの接続が必要です。 ネットワークとプロキシの要件に関する詳細は、[Azure Arc のドキュメント](../../../azure-arc/servers/overview.md)で提供されています。
 
 Azure のゲスト構成リソース プロバイダーと通信するには、マシンはポート **443** で Azure データセンターに対してアウトバウンド アクセスを行う必要があります。 Azure 内のネットワークで送信トラフィックが許可されていない場合は、[ネットワーク セキュリティ グループ](../../../virtual-network/manage-network-security-group.md#create-a-security-rule)の規則で例外を構成します。 [サービス タグ](../../../virtual-network/service-tags-overview.md) "GuestAndHybridManagement" を使用して、ゲスト構成サービスを参照できます。
 

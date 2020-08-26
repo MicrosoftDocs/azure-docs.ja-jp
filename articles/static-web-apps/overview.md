@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 47140bccc8c2a1b69f083502d031a9db6d21294e
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 884aa18b1a29b1c4f1bbf1159a5d48870529c72b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87835784"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565708"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Azure Static Web Apps のプレビューとは
 
@@ -32,10 +32,10 @@ Static Web Apps では、静的アセットは従来の Web サーバーから�
 
 - HTML、CSS、JavaScript、画像などの静的コンテンツの **Web ホスティング**。
 - Azure Functions によって提供される**統合 API** サポート。
-- リポジトリの変更によってビルドとデプロイがトリガーされる**ファーストパーティの GitHub 統合**。
+- リポジトリの変更によってビルドとデプロイがトリガーされる**ファーストクラスの GitHub 統合**。
 - コンテンツをユーザーの近くに配置する、**グローバルに分散**された静的コンテンツ。
 - 自動的に更新される**無料の SSL 証明書**。
-- ブランド化されたカスタマイズをアプリに提供する**カスタム ドメイン**\*。
+- ブランド化されたカスタマイズをアプリに提供する**カスタム ドメイン**。
 - API の呼び出し時にリバースプロキシを使用する**シームレスなセキュリティ モデル**。CORS 構成は必要ありません。
 - Azure Active Directory、Facebook、Google、GitHub、および Twitter との**認証プロバイダーの統合**。
 - **カスタマイズ可能な認可ロールの定義**と割り当て。
@@ -44,11 +44,9 @@ Static Web Apps では、静的アセットは従来の Web サーバーから�
 
 ## <a name="what-you-can-do-with-static-web-apps"></a>Static Web Apps でできること
 
-- [Azure Functions](apis.md) バックエンドと共に [Angular](getting-started.md#tabpanel_CeZOj-G++Q_angular)、[React](getting-started.md#tabpanel_CeZOj-G++Q_react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md#tabpanel_CeZOj-G++Q_vue) などのフレームワークとライブラリを使用した**最新の JavaScript アプリケーションの構築**。
+- [Azure Functions](apis.md) バックエンドと共に [Angular](getting-started.md?tabs=angular)、[React](getting-started.md?tabs=react)、[Svelte](https://docs.microsoft.com/learn/modules/publish-app-service-static-web-app-api/)、[Vue](getting-started.md?tabs=react) などのフレームワークとライブラリを使用した**最新の JavaScript アプリケーションの構築**。
 - [Gatsby](publish-gatsby.md)、[Hugo](publish-hugo.md)、[VuePress](publish-vuepress.md) などのフレームワークを使用した**静的サイトの発行**。
 - [Next.js](deploy-nextjs.md) や [Nuxt.js](deploy-nuxtjs.md) などのフレームワークを使用した **Web アプリケーションのデプロイ**。
-
-\* プレビュー期間中は、頂点ドメインの登録はサポートされません。
 
 ## <a name="next-steps"></a>次のステップ
 

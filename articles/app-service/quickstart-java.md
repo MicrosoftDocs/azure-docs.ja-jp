@@ -10,16 +10,19 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 8289b21da5009459d2eb7ddc8d26b549f0920317
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 274228ea5aa9ac9de9725176c8b6221ee9e9542e
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88084108"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182699"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>クイック スタート:Azure App Service で Java アプリを作成する
 
 [Azure App Service](overview.md) は、非常にスケーラブルな、自己適用型の Web ホスティング サービスを提供します。  このクイックスタートでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を [Azure Web App Plugin for Maven](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) と共に使用して Java Web アーカイブ (WAR) ファイルをデプロイする方法を示します。
+
+> [!NOTE]
+> この記事では、WAR ファイル内にパッケージ化された Java アプリのみを操作します。 このプラグインは、JAR Web アプリケーションもサポートしています。[Java SE JAR ファイルを App Service on Linux にデプロイする方法](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関するページにアクセスしてお試しください。
 
 > [!NOTE]
 > IntelliJ や Eclipse のような一般的な IDE を使っても同じことができます。 [Azure Toolkit for IntelliJ のクイック スタート](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)または [Azure Toolkit for Eclipse のクイック スタート](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)で類似するドキュメントを確認してください。
@@ -53,12 +56,12 @@ Azure App Service へのデプロイ プロセスでは、Azure CLI から Azure
 mvn com.microsoft.azure:azure-webapp-maven-plugin:1.9.1:config
 ```
 
-::: zone pivot="platform-windows"  
+::: zone pivot="platform-windows" 
 選択を求めるメッセージが表示されます 
 * **OS (既定値: `linux`)**
 * **Java バージョン (既定値: `1.8`)**
 * **Web コンテナー (既定値: `tomcat 8.5`)** 
-
+ 
 最初のステップでは、「 **`2`** 」と入力して **Windows** OS を選択するように注意してください。 その他の構成は、**Enter** キーを押して既定値のままにすることができます。 最後に、 **[Confirm (Y/N)]** というプロンプトで **`Y`** キーを押して、構成を完了します。
 
 サンプル プロセスは次のようになります。
@@ -137,6 +140,13 @@ Confirm (Y/N)? :
 ```
 ::: zone-end
 ::: zone pivot="platform-linux"  
+
+選択を求めるメッセージが表示されます 
+* **OS (既定値: `linux`)**
+* **Java バージョン (既定値: `Java 8`)**
+* **Web コンテナー (既定値: `Tomcat 8.5`)** 
+
+すべての構成は、**Enter** キーを押して既定値のままにすることができます。 最後に、 **[Confirm (Y/N)]** というプロンプトで **`Y`** キーを押して、構成を完了します。
 サンプル プロセスは次のようになります。
 
 ```cmd
@@ -174,16 +184,7 @@ Confirm (Y/N)? : Y
 ```
 ::: zone-end
 
-> [!NOTE]
-> この記事では、WAR ファイル内にパッケージ化された Java アプリのみを操作します。 このプラグインは、JAR Web アプリケーションもサポートしています。[Java SE JAR ファイルを App Service on Linux にデプロイする方法](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関するページにアクセスしてお試しください。
-
-`pom.xml` を開いて、更新された構成を確認します。
-
-```bash
-code pom.xml
-```
-
-必要に応じて、pom ファイルで App Service の構成を直接変更できます。その一般的なものを次に示します。
+必要に応じて、`pom.xml` で App Service の構成を直接変更できます。その一般的なものを次に示します。
 
  プロパティ | 必須 | 説明 | Version
 ---|---|---|---
@@ -195,11 +196,8 @@ code pom.xml
 `<runtime>` | true | ランタイム環境の構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を参照してください。 | 0.1.0 以降
 `<deployment>` | true | デプロイ構成の詳細については、[こちら](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)を参照してください。 | 0.1.0 以降
 
-::: zone pivot="platform-windows"
 `<appName>` と `<resourceGroup>` の値 (デモでは `helloworld-1590394316693` と `helloworld-1590394316693-rg`) に注意してください。これらは後で使用します。
-::: zone-end
-::: zone pivot="platform-linux"
-::: zone-end
+
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/javae2e?tutorial=quickstart-java&step=config)
 
@@ -216,21 +214,11 @@ az login
 mvn package azure-webapp:deploy
 ```
 
-::: zone pivot="platform-windows"
 デプロイが完了すると、アプリケーションは `http://<appName>.azurewebsites.net/` で準備が整います (デモでは `http://helloworld-1590394316693.azurewebsites.net`)。 ローカル Web ブラウザーで URL を開くと、次のように表示されます
 
-![Azure App Service で実行されているサンプル アプリ](./media/app-service-web-get-started-java/java-hello-world-in-browser-azure-app-service.png)
+![Azure App Service で実行されているサンプル アプリ](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
-**お疲れさまでした。** App Service on Windows に初めての Java アプリをデプロイしました。
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-::: zone-end
-::: zone pivot="platform-linux"
-デプロイが完了したら、Web ブラウザーで次の URL を使用して、デプロイされたアプリケーションを参照します (たとえば、`http://<webapp>.azurewebsites.net`)。 
-
-![Azure App Service で実行されているサンプル アプリ](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**お疲れさまでした。** App Service on Linux に初めての Java アプリをデプロイしました。
+**お疲れさまでした。** App Service に初めての Java アプリをデプロイできました。
 
 > [!div class="nextstepaction"]
 > [問題が発生しました](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
@@ -244,19 +232,6 @@ az group delete --name <your resource group name; for example: helloworld-155840
 ```
 
 このコマンドの実行には、少し時間がかかる場合があります。
-::: zone-end
-
-デプロイが完了すると、アプリケーションは `http://<appName>.azurewebsites.net/` で準備が整います (デモでは `http://helloworld-1590394316693.azurewebsites.net`)。 ローカル Web ブラウザーで URL を開くと、次のように表示されます
-
-![Azure App Service で実行されているサンプル アプリ](./media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
-
-**お疲れさまでした。** App Service に初めての Java アプリをデプロイできました。
-
-> [!div class="nextstepaction"]
-> [問題が発生しました](https://www.research.net/r/javae2e?quickstart-java&step=deploy)
-
-[!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]

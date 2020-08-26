@@ -1,6 +1,6 @@
 ---
 title: Azure Network Watcher のインスタンスの作成 | Microsoft Docs
-description: Azure リージョンで Network Watcher を有効にする方法について説明します。
+description: Azure portal またはその他のテクノロジを使用して Azure リージョンに Azure Network Watcher を作成する方法と、Network Watcher を削除する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 6b7453a0100233896e3d01769897ed224a0b2618
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6809e8a44120eddbae4965bff30f80b617bdd024
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737548"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272163"
 ---
 # <a name="create-an-azure-network-watcher-instance"></a>Azure Network Watcher のインスタンスの作成
 
@@ -101,6 +101,10 @@ $requestBody = @"
 armclient put "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}?api-version=${api-version}" $requestBody
 ```
 
+## <a name="create-a-network-watcher-using-azure-quickstart-template"></a>Azure クイックスタート テンプレートを使用して Network Watcher を作成する
+
+Network Watcher のインスタンスを作成するには、こちらの[クイックスタート テンプレート](https://azure.microsoft.com/resources/templates/101-networkwatcher-create/)を参照してください。
+
 ## <a name="delete-a-network-watcher-in-the-portal"></a>ポータル上で Network Watcher を削除する
 
 **[すべてのサービス]**  >  **[ネットワーク]**  >  **[Network Watcher]** の順に移動します。
@@ -127,7 +131,7 @@ Remove-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroup Networ
 
 * [トポロジ](network-watcher-topology-overview.md)
 * [パケット キャプチャ](network-watcher-packet-capture-overview.md)
-* [IP flow verify](network-watcher-ip-flow-verify-overview.md)
+* [IP フロー検証](network-watcher-ip-flow-verify-overview.md)
 * [次ホップ](network-watcher-next-hop-overview.md)
 * [セキュリティ グループ ビュー](network-watcher-security-group-view-overview.md)
 * [NSG フロー ログの記録](network-watcher-nsg-flow-logging-overview.md)

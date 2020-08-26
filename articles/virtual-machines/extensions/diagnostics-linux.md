@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: ddbd64049307dcfd9b27cde1418eef2378b4f6b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c03105326b6d189b3c6fde72ff959211b3009517
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085692"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837042"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -580,7 +580,7 @@ BytesPerSecond | 1 秒あたりの読み取りまたは書き込みバイト数
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-このコマンドは、Azure CLI の Azure Resource Management (ARM) モードを使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](/azure/xplat-cli-connect)をご覧ください。
+このコマンドは、Azure CLI の Azure Resource Management モードを使用していることを前提としています。 クラシック デプロイ モデル (ASM) VM 用に LAD を構成するには、"asm" モード (`azure config mode asm`) に切り替え、コマンド内のリソース グループ名を省略します。 詳細については、[クロスプラットフォーム CLI ドキュメント](/cli/azure/authenticate-azure-cli?view=azure-cli-latest)をご覧ください。
 
 ### <a name="powershell"></a>PowerShell
 

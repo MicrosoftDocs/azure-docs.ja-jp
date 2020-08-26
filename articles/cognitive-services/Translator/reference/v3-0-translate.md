@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 04/17/2020
+ms.date: 08/06/2020
 ms.author: swmachan
-ms.openlocfilehash: 512632faae453ebdf7cb7b279fe2d29b25d23d6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a853a28cf7633b5e81bfec2865cc8dc91f2d2f40
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090860"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903988"
 ---
 # <a name="translator-30-translate"></a>Translator 3.0:Translate
 
@@ -136,7 +136,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 次の制限事項が適用されます。
 
 * 配列に含めることができる要素は、最大でも 100 個です。
-* 要求に含めるテキスト全体では、スペースも含めて 5,000 文字を超えてはなりません。
+* 要求に含めるテキスト全体では、スペースも含めて 10,000 文字を超えてはなりません。
 
 ## <a name="response-body"></a>応答本文
 

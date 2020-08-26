@@ -6,6 +6,13 @@
       href: overview.md
     - name: サポートされているデータ ストア
       href: supported-data-stores.md
+- name: クイックスタート
+  items:
+    - name: データ共有の作成 - Azure portal
+      href: share-your-data-portal.md
+    - name: データ共有の作成 - ARM テンプレート
+      displayName: Resource Manager
+      href: share-your-data-arm.md
 - name: チュートリアル
   expanded: true
   items:
@@ -47,6 +54,9 @@
       href: security.md
     - name: 障害復旧
       href: disaster-recovery.md
+    - name: Azure Data Explorer のデータの共有
+      href: /azure/data-explorer/data-share
+      maintainContext: true
 - name: リファレンス
   items:
     - name: .NET

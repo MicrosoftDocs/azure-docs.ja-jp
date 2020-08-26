@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 用の Azure BLOB ファイルシステム ドライバー
-description: ABFS Hadoop ファイルシステム ドライバー
+description: Hadoop 専用の Azure Storage ドライバーである Azure Blob Filesystem (ABFS) ドライバーについて説明します。 このドライバーを使用して、Azure Data Lake Storage Gen2 のデータにアクセスします。
 author: normesta
 ms.topic: conceptual
 ms.author: normesta
@@ -8,12 +8,12 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75970272"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836362"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS): Hadoop 専用の Azure Storage ドライバー
 
@@ -48,7 +48,7 @@ Hadoop アプリケーションが Data Lake Storage Gen2 対応アカウント�
 
 - **共有キー:** このキーを使用すると、ユーザーはアカウント内のすべてのリソースにアクセスできます。 キーが暗号化され、Hadoop 構成に格納されます。
 
-- **Azure Active Directory OAuth ベアラー トークン:**  Azure AD ベアラー トークンは、エンド ユーザーの ID または構成されているサービス プリンシパルのいずれかを使用してドライバーによって取得および更新されます。 この認証モデルを使用すると、すべてのアクセスは、指定したトークンに関連付けられた ID を使用して呼び出しごとに承認され、割り当てられた POSIX アクセス制御リスト (ACL) に対して評価されます。
+- **Azure Active Directory OAuth ベアラー トークン: ** Azure AD ベアラー トークンは、エンド ユーザーの ID または構成されているサービス プリンシパルのいずれかを使用してドライバーによって取得および更新されます。 この認証モデルを使用すると、すべてのアクセスは、指定したトークンに関連付けられた ID を使用して呼び出しごとに承認され、割り当てられた POSIX アクセス制御リスト (ACL) に対して評価されます。
 
    > [!NOTE]
    > Azure Data Lake Storage Gen2 は、Azure AD v1.0 エンドポイントのみをサポートします。
@@ -63,7 +63,7 @@ ABFS ドライバーのすべての構成は <code>core-site.xml</code> 構成�
 
 ABFS ドライバーについては、[公式 Hadoop ドキュメント](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)に完全に記載されています
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Databricks クラスターの作成](./data-lake-storage-quickstart-create-databricks-account.md)
-- [Azure Data Lake Storage Gen2 URI の使用](./data-lake-storage-introduction-abfs-uri.md)
+- [Azure Data Lake Storage Gen2 の URI を使用する](./data-lake-storage-introduction-abfs-uri.md)

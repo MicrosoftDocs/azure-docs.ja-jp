@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と TripActions の統合 | Microsoft Docs
 description: Azure Active Directory と TripActions の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 233af4cf-7f73-4e6c-905e-5c631d87e34a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccd0ee4beb40a670c0e05cb3cc1c4379de372ff6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b4a6c9b5dafcb46d942fd02fc2653e051005b32d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "76266024"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551883"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tripactions"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と TripActions の統合
 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: 68da335875752d326ee718cade3d501623c70b49
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a9c64d1a5c4c7ada666b5fe3a8bcc70b39871850
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "72935952"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545626"
 ---
 # <a name="check-text-against-a-custom-term-list-in-c"></a>C# でカスタム用語リストと照らしてテキストを確認する
 
@@ -32,7 +32,7 @@ Azure Content Moderator の既定のグローバルな用語リストは、ほ�
 - リストの情報を編集する。
 - リストに加えた変更が今後のスキャンに含まれるように、インデックスを最新の情報に更新する。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。 
 
 ## <a name="sign-up-for-content-moderator-services"></a>Content Moderator サービスにサインアップする
 

@@ -16,12 +16,12 @@ ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f621ed1342928b7f05fc8b84bfc2fceadf494fb5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea5c3e0ffc000d3d239e87e9771d1b49d98fd206
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019733"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589046"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン:よく寄せられる質問
 
@@ -135,6 +135,8 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
    3. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
    4. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
    5. `Enable-AzureADSSO -Enable $false` を呼び出します。
+   
+   この時点では、シームレス SSO は無効ですが、シームレス SSO を有効に戻したい場合のために、ドメインでは構成されたままです。 ドメインに対するシームレス SSO の構成を完全に削除するには、上記の手順 5 を完了した後で、`Disable-AzureADSSOForest -DomainFqdn <fqdn>` のコマンドレットを呼び出します。
 
    >[!IMPORTANT]
    >PowerShell を使用してシームレス SSO を無効にしても、Azure AD Connect での状態は変更されません。 シームレス SSO は、 **[ユーザー サインインの変更]** ページに有効と表示されます。

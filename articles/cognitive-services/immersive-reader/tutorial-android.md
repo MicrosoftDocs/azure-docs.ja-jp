@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: dylankil
 ms.custom: devx-track-java
-ms.openlocfilehash: f8420a42b87481b5e51b383ace1ba8a510d2a6a7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 637b4d988a4845369a441dce55f0043d873879f6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87366740"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516437"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-android-java-code-sample"></a>チュートリアル:Android Java コード サンプルを使用してイマーシブ リーダーを起動する
 
@@ -27,7 +27,7 @@ ms.locfileid: "87366740"
 > * アクセス トークンを取得します。
 > * イマーシブ リーダーを起動してサンプル コンテンツを表示します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 

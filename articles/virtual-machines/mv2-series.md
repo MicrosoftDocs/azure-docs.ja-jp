@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: jushiman
-ms.openlocfilehash: f86400f1fb45217133bbd715788986994f5f77cc
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: f6dc732a512368b007a289c3aaabc3123a696d96
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836260"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505259"
 ---
 # <a name="mv2-series"></a>Mv2 シリーズ
 
@@ -28,7 +28,7 @@ Premium Storage キャッシュ:サポートされています
 
 メモリ保持更新: サポートされていません
 
-書き込みアクセラレータ:[サポートされています](./windows/how-to-enable-write-accelerator.md)
+書き込みアクセラレータ:[サポートされています](./how-to-enable-write-accelerator.md)
 
 |サイズ | vCPU | メモリ:GiB | 一時ストレージ (SSD) GiB | 最大データ ディスク数 | キャッシュが有効な場合および一時ストレージの最大スループットIOPS/MBps (キャッシュ サイズは GiB 単位) | キャッシュが無効な場合の最大ディスク スループット: IOPS/MBps | 最大 NIC 数 | 必要なネットワーク帯域幅 (Mbps) |
 |---|---|---|---|---|---|---|---|---|

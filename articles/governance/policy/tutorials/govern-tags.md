@@ -1,14 +1,14 @@
 ---
 title: チュートリアル:タグ ガバナンスを管理する
 description: このチュートリアルでは、新しいリソースと既存のリソースに対してタグ ガバナンス モデルを作成して適用するために、Azure Policy の Modify 効果を使用します。
-ms.date: 04/21/2020
+ms.date: 08/17/2020
 ms.topic: tutorial
-ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: f49eedb00c98d3c362140fdca9b195a086903f10
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142267"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545507"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>チュートリアル:Azure Policy を使用してタグ ガバナンスを管理する
 
@@ -45,7 +45,7 @@ Azure Policy の [Modify](../concepts/effects.md#modify) 効果は、現在の�
 
 ## <a name="configure-the-costcenter-tag"></a>CostCenter タグを構成する
 
-Azure Policy によって管理される Azure 環境に固有の観点では、_CostCenter_ タグ要件で次のことが求められます。
+Azure Policy によって管理される Azure 環境に固有の観点では、_CostCenter_ タグ要件で次の結果が求められます。
 
 - _CostCenter_ タグが欠落しているリソース グループを拒否する
 - 欠落している場合は、親リソース グループから _CostCenter_ タグを追加するようにリソースを変更する
@@ -107,7 +107,7 @@ Azure Policy によって管理される Azure 環境に固有の観点では、
 
 ## <a name="configure-the-env-tag"></a>Env タグを構成する
 
-Azure Policy によって管理される Azure 環境に固有の観点では、_Env_ タグ要件で次のことが求められます。
+Azure Policy によって管理される Azure 環境に固有の観点では、_Env_ タグ要件で次の結果が求められます。
 
 - リソース グループの名前付けスキームに基づいて、リソース グループの _Env_ タグを変更する
 - リソース グループ内のすべてのリソースの _Env_ タグを、親リソース グループと同じものに変更する

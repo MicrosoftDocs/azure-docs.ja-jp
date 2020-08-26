@@ -2,24 +2,29 @@
 title: 暗号化された Azure VM をバックアップおよび復元する
 description: Azure Backup サービスを使用して、暗号化された Azure VM をどのようにバックアップおよび復元するかについて説明します。
 ms.topic: conceptual
-ms.date: 07/29/2020
-ms.openlocfilehash: 25c5e66bde817e824a307df2a2b1b5f76c773c01
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.date: 08/18/2020
+ms.openlocfilehash: 74658f695387a776fe12cef97887075ae0bc161d
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405765"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611298"
 ---
-# <a name="back-up-and-restore-encrypted-azure-vm"></a>暗号化された Azure VM をバックアップおよび復元する
+# <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>暗号化された Azure 仮想マシンのバックアップと復元
 
-この記事では、[Azure Backup](backup-overview.md) サービスを使用して、暗号化されたディスクを含む Windows または Linux の Azure 仮想マシン (VM) をバックアップおよび復元する方法について説明します。
+この記事では、[Azure Backup](backup-overview.md) サービスを使用して、暗号化されたディスクを含む Windows または Linux の Azure 仮想マシン (VM) をバックアップおよび復元する方法について説明します。 詳細については、「[Azure VM バックアップの暗号化](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups)」を参照してください。
 
-開始する前に Azure Backup が Azure VM とやりとりするしくみの詳細について確認する場合は、次のリソースを参照してください。
+## <a name="encryption-using-platform-managed-keys"></a>プラットフォーム マネージド キーを使用した暗号化
 
-- Azure VM のバックアップ アーキテクチャを[確認する](backup-architecture.md#architecture-built-in-azure-vm-backup)。
-- Azure VM のバックアップと Azure Backup の拡張機能の[詳細を確認](backup-azure-vms-introduction.md)する
+既定では、VM 内のすべてのディスクは、[Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) を使用するプラットフォーム マネージド キー (PMK) を使用して、保存時に自動的に暗号化されます。 目的とする暗号化をサポートするために必要な特定の操作は行わずに、Azure Backup を使用して、これらの VM をバックアップできます。 プラットフォーム マネージド キーを使用した暗号化の詳細については、[こちらの記事](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)を参照してください。
 
-## <a name="encryption-support"></a>暗号化のサポート
+![暗号化されたディスク](./media/backup-encryption/encrypted-disks.png)
+
+## <a name="encryption-using-customer-managed-keys"></a>カスタマー マネージド キーを使用した暗号化
+
+カスタム マネージド キー (CMK) を使用してディスクを暗号化する場合は、ディスクの暗号化に使用されるキーは Azure Key Vault に格納され、ユーザーによって管理されます。 CMK を使用する Storage Service Encryption (SSE) は、Azure Disk Encryption (ADE) 暗号化とは異なります。 ADE では、オペレーティング システムの暗号化ツールを使用します。 SSE では、ストレージ サービス内のデータを暗号化することで、VM に任意の OS またはイメージを使用できます。 カスタマー マネージド キーを使用したマネージド ディスクの暗号化の詳細については、[こちらの記事](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)を参照してください。
+
+## <a name="encryption-support-using-ade"></a>ADE を使用した暗号化のサポート
 
 Azure Backup では、その OS またはデータ ディスクを Azure Disk Encryption (ADE) で暗号化している Azure VM のバックアップをサポートしています。 ADE では、Windows VM の暗号化に BitLocker を使用し、Linux VM には dm-crypt 機能を使用します。 ADE は、ディスク暗号化キーとシークレットを管理できるように、Azure Key Vault と統合されています。 Key Vault のキーの暗号化キー (KEK) は、さらにセキュリティ層を追加するために使用できます。これにより、Key Vault に記述する前に暗号化のシークレットが暗号化されます。
 
@@ -64,19 +69,19 @@ Azure Backup では、次の表にまとめたように、Azure AD アプリの�
 1. **[バックアップの目標]**  >  **[ワークロードはどこで実行されていますか?]** で **[Azure]** を選択します。
 1. **[バックアップの対象]** で、 **[仮想マシン]** を選択します。 次に、 **[バックアップ]** を選択します。
 
-      ![シナリオ ブレード](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
+      ![シナリオ ウィンドウ](./media/backup-azure-vms-encryption/select-backup-goal-one.png)
 
 1. **[バックアップ ポリシー]**  >  **[バックアップ ポリシーの選択]** で、コンテナーに関連付けるポリシーを選択します。 **[OK]** をクリックします。
     - バックアップ ポリシーでは、バックアップが取得されるタイミングと、それらが保存される期間を指定します。
     - 既定のポリシーの詳細がドロップダウン メニューの下に一覧表示されます。
 
-    ![Open Scenario blade](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
+    ![バックアップ ポリシーを選択する](./media/backup-azure-vms-encryption/select-backup-goal-two.png)
 
 1. 既定のポリシーを使用する必要がない場合は、 **[新規作成]** を選択して、[カスタム ポリシーを作成します](backup-azure-arm-vms-prepare.md#create-a-custom-policy)。
 
 1. **[仮想マシン]** で **[追加]** を選択します。
 
-    ![Open Scenario blade](./media/backup-azure-vms-encryption/add-virtual-machines.png)
+    ![[仮想マシンの追加]](./media/backup-azure-vms-encryption/add-virtual-machines.png)
 
 1. 選択したポリシーを使用してバックアップする暗号化された VM を選び、 **[OK]** を選択します。
 
@@ -119,11 +124,6 @@ Azure Backup では、キーとシークレット、および関連付けられ�
 1. **[アクセス ポリシー]**  >  **[アクセス ポリシーの追加]** の順に選択します。
 
     ![アクセス ポリシーの追加](./media/backup-azure-vms-encryption/add-access-policy.png)
-
-1. **[プリンシパルの選択]** を選択して、「**バックアップ管理**」と入力します。
-1. **[Backup Management Service]\(バックアップ管理サービス\)**  > 、 **[選択]** の順に選択します。
-
-    ![Backup サービスの選択](./media/backup-azure-vms-encryption/select-backup-service.png)
 
 1. **[アクセス ポリシーの追加]**  > 、 **[テンプレートからの構成 (省略可能)]** で、 **[Azure Backup]** を選択します。
     - **[キーのアクセス許可]** と **[シークレットのアクセス許可]** に、必要なアクセス許可が事前入力されます。

@@ -8,7 +8,7 @@
     - name: コマーシャル マーケットプレースの概要とメリット
       href: ./marketplace-publishers-guide.md
       items:
-        - name: 1 つのマーケットプレース、2 つのネットショップ
+        - name: 1 つのマーケットプレース、2 つのオンライン ストア
           href: ./comparing-appsource-azure-marketplace.md
         - name: 発行オプションと考慮事項
           href: ./determine-your-listing-type.md

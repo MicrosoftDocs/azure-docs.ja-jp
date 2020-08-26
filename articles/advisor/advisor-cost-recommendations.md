@@ -3,12 +3,12 @@ title: Azure Advisor を使用してサービス コストを削減する
 description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: e8f0e555f71c31bb3286cee59bb7161c3ce3986e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15f357248a6174de1e0890a4b45e9fa3930a06fe
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284372"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258535"
 ---
 # <a name="reduce-service-costs-by-using-azure-advisor"></a>Azure Advisor を使用してサービス コストを削減する
 
@@ -96,6 +96,8 @@ Advisor では、Azure Blob Storage のオブジェクト数、合計サイズ�
 
 短期の IaaS VM やワークロードがステートレスである VM にはエフェメラル OS ディスクを使用することが推奨されます。 Advisor は、エフェメラル OS ディスクのメリットを得られるリソースに関する推奨事項を提供します。
 
+## <a name="reduce-azure-data-explorer-table-cache-period-policy-for-cluster-cost-optimization-preview"></a>クラスターのコストを最適化するため、Azure Data Explorer のテーブルのキャッシュ期間 (ポリシー) を短くする (プレビュー)
+Advisor で、テーブル キャッシュ ポリシーを短くすることにより、CPU 使用率とメモリが低くキャッシュ サイズの構成が高い Azure Data Explorer クラスター ノードで解放できるリソースがあることが識別されました。
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>Azure Advisor のコストに関する推奨事項にアクセスする方法
 

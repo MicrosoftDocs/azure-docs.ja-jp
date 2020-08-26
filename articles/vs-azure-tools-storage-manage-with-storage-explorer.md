@@ -1,6 +1,6 @@
 ---
 title: Storage Explorer の概要 | Microsoft Docs
-description: Storage Explorer を使用して Azure Storage リソースを管理する
+description: Storage Explorer を使用して Azure Storage リソースの管理を始めます。 Azure Storage Explorer のダウンロードとインストール、ストレージ アカウントまたはサービスへの接続などについて説明します。
 services: storage
 author: cawaMS
 ms.service: storage
@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: f588ed6d35f3f8882d546b78ff833d62f33ac0a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9922601d67393d103b95da7286d8db71d913434a
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84975267"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235247"
 ---
 # <a name="get-started-with-storage-explorer"></a>Storage Explorer の概要
 

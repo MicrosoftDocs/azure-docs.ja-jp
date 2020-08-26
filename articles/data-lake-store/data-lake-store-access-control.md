@@ -1,6 +1,6 @@
 ---
 title: Data Lake Storage Gen1 のアクセス制御の概要 | Microsoft Docs
-description: Azure Data Lake Store Gen1 のアクセス制御のしくみを理解します
+description: HDFS から派生した、Azure Data Lake Storage Gen1 のアクセス制御モデルの基本について説明します。
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 276e691351d852d6dcb0075d47bf33af6767fc10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85847826"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190157"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Store Gen1 のアクセス制御
 

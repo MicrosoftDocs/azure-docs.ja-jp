@@ -4,12 +4,12 @@ description: この記事では、Azure Backup サービスを使用した Azure
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: bf09c4e56c3881987e14d27d5f2166c68e311ab3
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 03e2f004fa54ee235eabc49afd6abd7532a6ee44
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533497"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88262774"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>よく寄せられる質問 - Azure VM のバックアップ
 
@@ -101,6 +101,10 @@ VM または VM リソース グループの大文字と小文字を変更して
 
 Azure Backup では、Azure 仮想マシン バックアップ ソリューションを使用した選択的ディスク バックアップと復元がサポートされるようになりました。 詳細については、「[選択的ディスク バックアップと Azure VM の復元](selective-disk-backup-restore.md)」を参照してください。
 
+### <a name="are-managed-identities-preserved-if-a-tenant-change-occurs-during-backup"></a>バックアップ中にテナントの変更が発生した場合、マネージド ID は保持されますか。
+
+[テナントの変更](https://docs.microsoft.com/azure/devops/organizations/accounts/change-azure-ad-connection)が発生した場合、バックアップを再び機能させるには、[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) を無効にしてから再度有効にする必要があります。
+
 ## <a name="restore"></a>復元
 
 ### <a name="how-do-i-decide-whether-to-restore-disks-only-or-a-full-vm"></a>ディスクのみを復元するか、VM 全体を復元するかは、どのように判断すればよいでしょうか。
@@ -188,3 +192,11 @@ VM を新しいリソース グループに移動した後は、その VM を同
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>同じバックアップ ポリシーに関連付けることができる VM 数の上限はありますか。
 
 はい。ポータルから同じバックアップ ポリシーに関連付けることができる VM は最大 100 個です。 VM が 100 個を上回る場合、同じスケジュールまたは異なるスケジュールで複数のバックアップ ポリシーを作成することをお勧めします。
+
+### <a name="how-can-i-view-the-retention-settings-for-my-backups"></a>バックアップの保有期間の設定を表示するにはどうすればよいですか。
+
+現在、保有期間の設定は、VM に割り当てられているバックアップ ポリシーに基づいて、バックアップ項目 (VM) レベルで表示できます。 
+
+バックアップの保有期間の設定を表示する方法の 1 つとして、Azure portal で VM のバックアップ項目の[ダッシュボード](https://docs.microsoft.com/azure/backup/backup-azure-manage-vms#view-vms-on-the-dashboard)にアクセスする方法があります。 バックアップ ポリシーへのリンクをクリックすると、その VM に関連付けられているすべての日、週、月、および年単位の保有ポイントの保有期間を表示できます。
+
+また、[バックアップ エクスプローラー](https://docs.microsoft.com/azure/backup/monitor-azure-backup-with-backup-explorer)を使用して、すべての VM の保有期間の設定を 1 つのウィンドウに表示することもできます。 任意の Recovery Services コンテナーからバックアップ エクスプローラーに移動し、 **[バックアップ項目]** タブに移動して [詳細ビュー] を選択して、各 VM の詳細な保有期間の情報を確認します。  

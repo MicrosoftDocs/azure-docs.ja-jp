@@ -3,12 +3,12 @@ title: 概念 - ネットワークの相互接続性
 description: Azure VMware Solution (AVS) でのネットワークと相互接続性の主要な側面とユース ケースについて説明します。
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: c0416da9c745ccf92970ff39f623a782d5784983
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6f1f1f5a089781f1f7e882c9c8692f0c845ae485
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062841"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214100"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Solution (AVS) Preview のネットワークと相互接続性の概念
 

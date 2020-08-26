@@ -116,6 +116,14 @@
       href: faq.md
     - name: Windows 10 Enterprise マルチセッションに関する FAQ
       href: windows-10-multisession-faq.md
+    - name: MSIX アプリのアタッチ
+      items:
+        - name: MSIX アプリのアタッチとは
+          href: what-is-app-attach.md
+        - name: 用語集
+          href: app-attach-glossary.md
+        - name: よく寄せられる質問
+          href: app-attach-faq.md
     - name: データの場所
       href: data-locations.md
 - name: トラブルシューティング
@@ -150,6 +158,8 @@
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azure コマンド ライン インターフェイス (CLI)
       href: /cli/azure/ext/desktopvirtualization/?view=azure-cli-latest
+    - name: Azure シナリオ例
+      href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
 - name: リソース
   items:
     - name: PowerShell

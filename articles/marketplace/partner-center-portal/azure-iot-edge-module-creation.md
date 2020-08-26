@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
-ms.openlocfilehash: 38e51f8bc66e8c47807a9b265ade3f196745db26
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 2584d10a73f183958e3b7010255979cc47bc2cd9
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167183"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606341"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge モジュール オファーの作成
 
@@ -27,7 +27,7 @@ ms.locfileid: "88167183"
     ![左側のナビゲーション メニューの画像。](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 

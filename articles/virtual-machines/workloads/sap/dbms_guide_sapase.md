@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26179dd2491a8b8cbc2ef3eb0ad66fa61722d413
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 82dbb73da06097407d91f23d4d372aaa4cc76e99
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86525264"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510897"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための SAP ASE Azure Virtual Machines DBMS のデプロイ
 
@@ -59,7 +59,7 @@ Linux VM では、プロファイル SAP-ASE Linux Huge Pages を使用した `s
 
 ## <a name="recommendations-on-vm-and-disk-structure-for-sap-ase-deployments"></a>SAP ASE デプロイのための VM とディスク構造に関する推奨事項
 
-SAP NetWeaver Applications 用の SAP ASE は、[SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) に記載されているすべての VM の種類でサポートされています。中規模の SAP ASE データベース サーバーに使用される一般的な VM の種類には、Esv3 が含まれています。  数テラバイトの大規模なデータベースでは、M シリーズの VM の種類を利用できます。 M シリーズの書き込みアクセラレータを有効にすると、SAP ASE のトランザクション ログのディスク書き込みパフォーマンスが向上する場合があります。 SAP ASE がログ書き込みを実行する方法により、SAP ASE で書き込みアクセラレータを慎重にテストする必要があります。  [SAP サポート ノート #2816580](../../windows/how-to-enable-write-accelerator.md) を確認し、パフォーマンス テストを実行することを検討してください。  
+SAP NetWeaver Applications 用の SAP ASE は、[SAP サポート ノート #1928533](https://launchpad.support.sap.com/#/notes/1928533) に記載されているすべての VM の種類でサポートされています。中規模の SAP ASE データベース サーバーに使用される一般的な VM の種類には、Esv3 が含まれています。  数テラバイトの大規模なデータベースでは、M シリーズの VM の種類を利用できます。 M シリーズの書き込みアクセラレータを有効にすると、SAP ASE のトランザクション ログのディスク書き込みパフォーマンスが向上する場合があります。 SAP ASE がログ書き込みを実行する方法により、SAP ASE で書き込みアクセラレータを慎重にテストする必要があります。  [SAP サポート ノート #2816580](../../how-to-enable-write-accelerator.md) を確認し、パフォーマンス テストを実行することを検討してください。  
 書き込みアクセラレータは、トランザクション ログのディスク専用に設計されています。 ディスク レベルのキャッシュは "NONE" に設定する必要があります。 Azure 書き込みアクセラレータで他の DBMS と同様の機能強化が示されなくても、驚くことはありません。 SAP ASE がトランザクション ログに書き込む方法によっては、Azure 書き込みアクセラレータによる高速化がほとんどない場合があります。
 データ デバイス用とログ デバイス用に個別のディスクを使用することをお勧めします。  システム データベース sybsecurity と `saptools` には、専用のディスクは必要ありません。SAP データベースのデータとログ デバイスを含むディスクに配置できます。 
 

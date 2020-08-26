@@ -1,29 +1,31 @@
 ---
-title: Azure クイック スタート - Batch ジョブの実行 - .NET
-description: C# アプリケーションから Batch .NET クライアント ライブラリを使用して Azure Batch のサンプル ジョブとタスクを簡単に実行できます。
+title: 'クイックスタート: .NET API で最初の Azure Batch ジョブを実行する'
+description: このクイックスタートでは、Batch .NET クライアント ライブラリを使用して C# アプリケーションから Azure Batch のサンプル ジョブとタスクを実行します。
 ms.topic: quickstart
-ms.date: 11/29/2018
+ms.date: 08/17/2020
 ms.custom: mvc
-ms.openlocfilehash: 1163d63f8cbd6afedfb6e5323fa469059fa8021c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f17fc2103e4b8512e050d79f5a639b38d90a2a95
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82117218"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511033"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>クイック スタート:.NET API で最初の Azure Batch ジョブを実行する
 
-このクイック スタートでは、Azure Batch .NET API に基づいて構築された C# アプリケーションから Azure Batch ジョブを実行します。 このアプリでは、複数の入力データ ファイルを Azure Storage にアップロードしてから、Batch コンピューティング ノード (仮想マシン) の "*プール*" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "*タスク*" を実行するサンプル "*ジョブ*" を作成します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
+Azure Batch .NET API に基づいて構築された C# アプリケーションから Azure Batch ジョブを実行することによって、Azure Batch の使用を開始します。 このアプリでは、複数の入力データ ファイルを Azure Storage にアップロードしてから、Batch コンピューティング ノード (仮想マシン) の "プール" を作成します。 その後、基本的なコマンドを使用してプールの各入力ファイルを処理するための "タスク" を実行するサンプル "ジョブ" を作成します。
 
-![クイック スタート アプリのワークフロー](./media/quick-run-dotnet/sampleapp.png)
+このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+![Azure Batch アプリのワークフローの概要を示す図。](./media/quick-run-dotnet/sampleapp.png)
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017 以降](https://www.visualstudio.com/vs)、あるいは Linux、macOS、または Windows 用の [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-* Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。 
+- Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
+
+- [Visual Studio 2017 以降](https://www.visualstudio.com/vs)、あるいは Linux、macOS、または Windows 用の [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1)。 
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -60,11 +62,11 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 Batch ワークフローの動作を確認するには、Visual Studio またはコマンド ライン (`dotnet build` コマンドと `dotnet run` コマンド) でアプリケーションをビルドして実行します。 アプリケーションの実行後に、コードを確認して、アプリケーションの各部分での処理内容を学習します。 たとえば Visual Studio で次の操作を実行します。
 
-* ソリューション エクスプローラーでソリューションを右クリックし、 **[ソリューションのビルド]** をクリックします。 
+- ソリューション エクスプローラーでソリューションを右クリックし、 **[ソリューションのビルド]** をクリックします。 
 
-* メッセージに従って NuGet パッケージの復元を確認します。 不足しているパッケージをダウンロードする必要がある場合は、[NuGet Package Manager](https://docs.nuget.org/consume/installing-nuget) がインストールされていることを確認します。
+- メッセージに従って NuGet パッケージの復元を確認します。 不足しているパッケージをダウンロードする必要がある場合は、[NuGet Package Manager](https://docs.nuget.org/consume/installing-nuget) がインストールされていることを確認します。
 
-次に、それを実行します。 サンプル アプリケーションを実行すると、コンソールの出力は次のようになります。 実行中、プールのコンピューティング ノードを開始する際に、`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` で一時停止が発生します。 タスクは、最初のコンピューティング ノードが実行中になるとすぐに、実行するためにキューに登録されます。 プール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure Portal](https://portal.azure.com) で Batch アカウントに移動します。
+サンプル アプリケーションを実行すると、コンソールの出力は次のようになります。 実行中、プールのコンピューティング ノードを開始する際に、`Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` で一時停止が発生します。 タスクは、最初のコンピューティング ノードが実行中になるとすぐに、実行するためにキューに登録されます。 プール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure Portal](https://portal.azure.com) で Batch アカウントに移動します。
 
 ```
 Sample start: 11/16/2018 4:02:54 PM
@@ -93,17 +95,16 @@ stderr:
 
 既定の構成でアプリケーションを実行する場合、通常の実行時間は約 5 分間です。 最初のプールの設定に最も時間がかかります。 ジョブをもう一度実行するには、前回の実行からジョブを削除しますが、プールは削除しないでください。 構成済みのプールでは、ジョブは数秒で完了します。
 
-
 ## <a name="review-the-code"></a>コードの確認
 
 このクイック スタートの .NET アプリでは、次の処理を実行します。
 
-* 3 つの小さいテキスト ファイルを Azure ストレージ アカウントの BLOB コンテナーにアップロードします。 これらのファイルは、Batch で処理するための入力です。
-* Windows Server を実行しているコンピューティング ノードのプールを作成します。
-* ノードで実行するジョブと 3 つのタスクを作成します。 各タスクは、Windows のコマンド ラインを使用して入力ファイルの 1 つを処理します。 
-* タスクによって返されるファイルを表示します。
+- 3 つの小さいテキスト ファイルを Azure ストレージ アカウントの BLOB コンテナーにアップロードします。 これらのファイルは、Batch で処理するための入力です。
+- Windows Server を実行しているコンピューティング ノードのプールを作成します。
+- ノードで実行するジョブと 3 つのタスクを作成します。 各タスクは、Windows のコマンド ラインを使用して入力ファイルの 1 つを処理します。 
+- タスクによって返されるファイルを表示します。
 
-詳細については、`Program.cs` ファイルと以降のセクションを参照してください。 
+詳細については、`Program.cs` ファイルと以降のセクションを参照してください。
 
 ### <a name="preliminaries"></a>準備
 
@@ -245,7 +246,6 @@ foreach (CloudTask task in completedtasks)
 ## <a name="next-steps"></a>次のステップ
 
 このクイック スタートでは、Batch .NET API を使用して構築された小さいアプリを実行し、Batch プールと Batch ジョブを作成しました。 このジョブによってサンプル タスクが実行され、作成された出力がノードにダウンロードされました。 Batch サービスの主要な概念を理解できたので、より大規模でより現実的なワークロードを使用して Batch を試す準備が整いました。 Azure Batch の詳細を確認し、実際のアプリケーションで並列ワークロードを詳しく見てみるには、Batch .NET のチュートリアルに進んでください。
-
 
 > [!div class="nextstepaction"]
 > [.NET で並列ワークロードを処理する](tutorial-parallel-dotnet.md)

@@ -32,6 +32,8 @@
           href: tutorial-micro-fulfillment-center.md
     - name: ビデオ分析 - オブジェクトとモーションの検出
       items:
+        - name: 0 - オブジェクトとモーションの検出アプリケーションの展開
+          href: tutorial-video-analytics-deploy.md
         - name: 1 - ビデオ分析アプリケーションを作成する
           href: tutorial-video-analytics-create-app.md
         - name: 2 - IoT Edge デバイスの構成
@@ -64,8 +66,6 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
 - name: 操作方法ガイド
   items:
-    - name: オブジェクトとモーションの検出アプリケーションを展開する
-      href: howto-deploy-video-analytics-template.md
     - name: デバイスの接続
       items:
         - name: Rigado Cascade 500 を準備して接続する

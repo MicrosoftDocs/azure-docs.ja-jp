@@ -22,6 +22,8 @@
       href: concepts-twins-graph.md
     - name: クエリ言語
       href: concepts-query-language.md
+    - name: クエリ単位
+      href: concepts-query-units.md
     - name: 他のサービスとの統合
       href: concepts-integration.md
     - name: イベント ルート
@@ -86,6 +88,8 @@
           href: how-to-integrate-maps.md
         - name: Azure Time Series Insights と統合する
           href: how-to-integrate-time-series-insights.md
+        - name: Logic Apps との統合
+          href: how-to-integrate-logic-apps.md
     - name: トラブルシューティング
       items:
         - name: Azure Monitor のメトリックを表示する

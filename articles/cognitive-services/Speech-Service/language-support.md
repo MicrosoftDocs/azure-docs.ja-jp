@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: eb9e0f126a25bfb0f2db18074bd7200e1a7c2001
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 19f4e7b340f0b1ceb64d04a2704a4f6667e1e14a
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86087148"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053577"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>音声サービスの言語と音声のサポート
 
@@ -50,21 +50,47 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-SA` | アラビア語 (サウジアラビア)             | いいえ                                                |
 | `ar-SY` | アラビア語 (シリア)                    | 言語モデル                                    |
 | `ca-ES` | カタロニア語                           | 言語モデル                                    |
+| `cs-CZ` | チェコ語 (チェコ共和国)            | 言語モデル                                    | 
 | `da-DK` | デンマーク語 (デンマーク)                  | 言語モデル                                    |
 | `de-DE` | ドイツ語 (ドイツ)                  | 音響モデル<br>言語モデル<br>発音 |
 | `en-AU` | 英語 (オーストラリア)               | 音響モデル<br>言語モデル                  |
 | `en-CA` | 英語 (カナダ)                  | 音響モデル<br>言語モデル                  |
 | `en-GB` | 英語 (イギリス)          | 音響モデル<br>言語モデル<br>発音 |
+| `en-HK` | 英語 (香港)               | 言語モデル                                    | 
+| `en-IE` | 英語 (アイルランド)                 | 言語モデル                                    | 
 | `en-IN` | 英語 (インド)                   | 音響モデル<br>言語モデル                  |
 | `en-NZ` | 英語 (ニュージーランド)             | 音響モデル<br>言語モデル                  |
+| `en-PH` | 英語 (フィリピン)             | 言語モデル                                    | 
+| `en-SG` | 英語 (シンガポール)               | 言語モデル                                    | 
 | `en-US` | 英語 (米国)           | 音響モデル<br>言語モデル<br>発音 |
+| `en-ZA` | 英語 (南アフリカ)            | 言語モデル                                    | 
+| `es-AR` | スペイン語 (アルゼンチン)               | 言語モデル                                    | 
+| `es-BO` | スペイン語 (ボリビア)                 | 言語モデル                                    | 
+| `es-CL` | スペイン語 (チリ)                   | 言語モデル                                    | 
+| `es-CO` | スペイン語 (コロンビア)                | 言語モデル                                    | 
+| `es-CR` | スペイン語 (コスタリカ)              | 言語モデル                                    | 
+| `es-CU` | スペイン語 (キューバ)                    | 言語モデル                                    | 
+| `es-DO` | スペイン語 (ドミニカ共和国)      | 言語モデル                                    | 
+| `es-EC` | スペイン語 (エクアドル)                 | 言語モデル                                    | 
 | `es-ES` | スペイン語 (スペイン)                   | 音響モデル<br>言語モデル                  |
+| `es-GT` | スペイン語 (グアテマラ)               | 言語モデル                                    | 
+| `es-HN` | スペイン語 (ホンジュラス)                | 言語モデル                                    | 
 | `es-MX` | スペイン語 (メキシコ)                  | 音響モデル<br>言語モデル                  |
+| `es-NI` | スペイン語 (ニカラグア)               | 言語モデル                                    | 
+| `es-PA` | スペイン語 (パナマ)                  | 言語モデル                                    | 
+| `es-PE` | スペイン語 (ペルー)                    | 言語モデル                                    | 
+| `es-PR` | スペイン語 (プエルトリコ)             | 言語モデル                                    | 
+| `es-PY` | スペイン語 (パラグアイ)                | 言語モデル                                    | 
+| `es-SV` | スペイン語 (エルサルバドル)             | 言語モデル                                    | 
+| `es-US` | スペイン語 (米国)                     | 言語モデル                                    | 
+| `es-UY` | スペイン語 (ウルグアイ)                 | 言語モデル                                    | 
+| `es-VE` | スペイン語 (ベネズエラ)               | 言語モデル                                    | 
 | `fi-FI` | フィンランド語 (フィンランド)                 | 言語モデル                                    |
 | `fr-CA` | フランス語 (カナダ)                   | 音響モデル<br>言語モデル                  |
 | `fr-FR` | フランス語 (フランス)                   | 音響モデル<br>言語モデル<br>発音 |
 | `gu-IN` | グジャラート語 (インド)                 | 言語モデル                                    |
 | `hi-IN` | ヒンディー語 (インド)                     | 音響モデル<br>言語モデル                  |
+| `hu-HU` | ハンガリー語 (ハンガリー)               | 言語モデル                                    | 
 | `it-IT` | イタリア語 (イタリア)                   | 音響モデル<br>言語モデル<br>発音 |
 | `ja-JP` | 日本語 (日本)                  | 言語モデル                                    |
 | `ko-KR` | 韓国語 (韓国)                    | 言語モデル                                    |
@@ -102,7 +128,7 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 |Locale  | Language            | 性別 | 音声名 | スタイルのサポート |
 |--|--|--|--|--|
 | `ar-EG` | アラビア語 (エジプト)                  | Female | `ar-EG-SalmaNeural`      | 全般 |
-| `ar-SA` | アラビア語 (サウジアラビア)           | Female | `ar-SA-ZariyahNeura`     | 全般 |
+| `ar-SA` | アラビア語 (サウジアラビア)           | Female | `ar-SA-ZariyahNeural`    | 全般 |
 | `ca-ES` | カタルニア語 (スペイン)                 | Female | `ca-ES-AlbaNeural`       | 全般 |
 | `da-DK` | デンマーク語 (デンマーク)                | Female | `da-DK-ChristelNeural`   | 全般 |
 | `de-DE` | ドイツ語 (ドイツ)                | Female | `de-DE-KatjaNeural`      | 全般 |
@@ -335,20 +361,20 @@ Microsoft Speech SDK と REST API のどちらでもこれらの音声がサポ�
 | Locale | Language | テキスト依存の認証 | テキストに依存しない認証 | テキストに依存しない識別 |
 |----|----|----|----|----|
 | ja-JP | 英語 (米国) | はい | はい | はい |
-|zh-CN  |中国語 (標準、簡体字)|    該当なし|    はい|    はい|
-|de-DE  |ドイツ語 (ドイツ)   |該当なし    |はい    |はい|
-|en-GB  |英語 (英国)   |該当なし    |はい    |はい|
-|fr-FR  |フランス語 (フランス)    |該当なし    |はい    |はい|
-|en-AU  |英語 (オーストラリア)    |該当なし    |はい    |はい|
-|en-CA  |英語 (カナダ)   |該当なし|   はい|    はい|
-|fr-CA  |フランス語 (カナダ)    |該当なし    |はい|   はい|
-|it-IT  |イタリア語|   該当なし |はい|   はい|
-|es-ES| スペイン語 (スペイン) |該当なし    |はい|   はい|
-|es-MX  |スペイン語 (メキシコ)   |該当なし|   はい|    はい|
-|ja-JP| 日本語    |該当なし    |はい    |はい|
-|pt-BR| ポルトガル語 (ブラジル)|    該当なし|    はい|    はい|
+|zh-CN    |中国語 (標準、簡体字)|    該当なし|    はい|    はい|
+|de-DE    |ドイツ語 (ドイツ)    |該当なし    |はい    |はい|
+|en-GB    |英語 (英国)    |該当なし    |はい    |はい|
+|fr-FR    |フランス語 (フランス)    |該当なし    |はい    |はい|
+|en-AU    |英語 (オーストラリア)    |該当なし    |はい    |はい|
+|en-CA    |英語 (カナダ)    |該当なし|    はい|    はい|
+|fr-CA    |フランス語 (カナダ)    |該当なし    |はい|    はい|
+|it-IT    |イタリア語|    該当なし    |はい|    はい|
+|es-ES|    スペイン語 (スペイン)    |該当なし    |はい|    はい|
+|es-MX    |スペイン語 (メキシコ)    |該当なし|    はい|    はい|
+|ja-JP|    日本語    |該当なし    |はい    |はい|
+|pt-BR|    ポルトガル語 (ブラジル)|    該当なし|    はい|    はい|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [音声サービス試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+* [無料の Azure アカウントを作成](https://azure.microsoft.com/free/cognitive-services/)してください
 * [C# で音声を認識する方法を確認する](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-chsarp)

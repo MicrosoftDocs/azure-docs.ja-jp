@@ -1,26 +1,26 @@
 ### YamlMime:Landing
-title: Azure VMware Solution (AVS) のドキュメント
-summary: Azure VMware Solution (AVS) を使用して VMware プライベート クラウドを Azure にデプロイする方法について説明します
+title: Azure VMware Solution のドキュメント
+summary: Azure VMware Solution を使用して VMware プライベート クラウドを Azure にデプロイする方法について説明します
 metadata:
-  title: Azure VMware Solution (AVS) のドキュメント
-  description: Azure VMware Solution (AVS) を使用して VMware プライベート クラウドを Azure にデプロイする方法について説明します
+  title: Azure VMware Solution のドキュメント
+  description: Azure VMware Solution を使用して VMware プライベート クラウドを Azure にデプロイする方法について説明します
   ms.service: azure-vmware
   ms.topic: landing-page
   author: dikamath
   ms.author: dikamath
   ms.date: 05/04/2020
-  ms.openlocfilehash: 2ae8f6bc5257dc4d7383516201912c504c4d6038
-  ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+  ms.openlocfilehash: aad6bc60066d76c96dd38fa3ba1e94069bb9e25a
+  ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/04/2020
-  ms.locfileid: "82739452"
+  ms.lasthandoff: 08/22/2020
+  ms.locfileid: "88752120"
 landingContent:
-- title: Azure VMware Solution (AVS) について
+- title: Azure VMware Solution について
   linkLists:
   - linkListType: overview
     links:
-    - text: Azure VMware Solutions (AVS) とは
+    - text: Azure VMware Solution とは
       url: introduction.md
   - linkListType: get-started
     links:

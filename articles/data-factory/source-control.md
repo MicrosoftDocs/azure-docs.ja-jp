@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/30/2020
-ms.openlocfilehash: 2d6f667b6a49520dfe210fd797a828328899b634
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d171edb23b482ad1871990dcffd979d2125c4406
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83674595"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067411"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Azure Data Factory のソース管理
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -93,7 +93,7 @@ Azure Data Factory UX 作成キャンバスで、 **[Data Factory]** ドロッ�
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>別の Azure Active Directory テナントを使用する
 
-別の Azure Active Directory テナントで Azure Repos Git リポジトリを作成できます。 別の Azure AD テナントを指定するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。
+別の Azure Active Directory テナントで Azure Repos Git リポジトリを作成できます。 別の Azure AD テナントを指定するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。 詳細については、[サブスクリプション管理者の変更](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#to-assign-a-user-as-an-administrator)に関する記事を参照してください。
 
 ### <a name="use-your-personal-microsoft-account"></a>個人用の Microsoft アカウントを使用する
 
@@ -211,11 +211,11 @@ Azure Data Factory に指定できる公開ブランチは一度に 1 つとな�
 
 ### <a name="permissions"></a>アクセス許可
 
-通常は、ファクトリを更新するアクセス許可をすべてのチーム メンバーには付与しません。 次のアクセス許可の設定をお勧めします。
+通常、Data Factory を更新するアクセス許可をすべてのチーム メンバーには付与することはありません。 次のアクセス許可の設定をお勧めします。
 
-*   データ ファクトリに対する読み取りアクセス許可は、チーム メンバー全員に必要です。
-*   ファクトリへの発行は、一部のメンバーにのみ許可するようにします。 そのためには、ファクトリがあるリソース グループに **Data Factory 共同作成者**ロールが必要です。 アクセス許可の詳細については、「[Azure Data Factory のロールとアクセス許可](concepts-roles-permissions.md)」を参照してください。
-   
+*   Data Factory に対する読み取りアクセス許可は、チーム メンバー全員に必要です。
+*   Data Factory への発行は、一部の選ばれたメンバーにのみ許可するようにします。 そのためには、Data Factory がある**リソース グループ**で、**Data Factory 共同作成者**ロールを持つ必要があります。 アクセス許可の詳細については、「[Azure Data Factory のロールとアクセス許可](concepts-roles-permissions.md)」を参照してください。
+
 コラボレーション ブランチへの直接チェックインは許可しないことをお勧めします。 この制限は、すべてのチェックインが「[機能ブランチの作成](source-control.md#creating-feature-branches)」に記載されているプル要求のレビュー プロセスを通過するため、バグを防ぐのに役立ちます。
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Azure Key Vault からのパスワードの使用

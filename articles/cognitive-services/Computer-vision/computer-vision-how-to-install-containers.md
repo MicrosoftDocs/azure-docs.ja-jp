@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 75b71fe9a15b05679ab1b71b13bb0b1f51b7d1d1
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 70cbb21430253dc9683cd3803f2a09ef8bb858cb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816150"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545643"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Read コンテナーのインストールと実行 (プレビュー)
 
@@ -24,7 +24,7 @@ ms.locfileid: "83816150"
 
 Computer Vision では、単一の Docker コンテナー *Read* を使用できます。 *Read* コンテナーを使用すると、レシート、ポスター、名刺など、さまざまな表面や背景を持ついろいろなオブジェクトの画像から、"*印刷されたテキスト*" を検出して、抽出することができます。 さらに、*Read* コンテナーでは、画像内の "*手書きテキスト*" も検出され、PDF、TIFF、複数ページ ファイルがサポートされます。 詳細については、[Read](concept-recognizing-text.md#read-api) API のドキュメントを参照してください。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 

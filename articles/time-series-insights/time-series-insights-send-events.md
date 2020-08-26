@@ -9,16 +9,16 @@ manager: diviso
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 06/30/2020
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 589dd411e3d340eb8a0bf84b21a306cabd4bb362
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3a5ee1cc8efead7c29dadaf64adb8e2686a10621
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86495076"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168084"
 ---
-# <a name="send-events-to-a-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>イベント ハブを使用して Azure Time Series Insights Gen1 環境にイベントを送信する
+# <a name="send-events-to-an-azure-time-series-insights-gen1-environment-by-using-an-event-hub"></a>イベント ハブを使用して Azure Time Series Insights Gen1 環境にイベントを送信する
 
 この記事では、Azure Event Hubs でイベント ハブを作成して構成する方法について説明します。 また、サンプル アプリケーションを実行し、Event Hubs から Azure Time Series Insights にイベントをプッシュする方法も説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Azure Time Series Insights](./time-series-insights-update-create-environment.md) で環境を表示してください。
 
@@ -55,9 +55,9 @@ ms.locfileid: "86495076"
 
 ## <a name="add-an-azure-time-series-insights-instance"></a>Azure Time Series Insights のインスタンスを追加する
 
-Azure Time Series Insights Gen 2 では、Time Series Model (TSM) を使用し、受信テレメトリにコンテキスト データを追加できます。 TSM では、タグまたはシグナルが "*インスタンス*" と呼ばれており、"*インスタンス フィールド*" にコンテキスト データを格納できます。 データはクエリ時に**タイム シリーズ ID** を使用して結合されます。 この記事の後半で使用するサンプルの風力発電プロジェクトの**タイム シリーズ ID** は、`id` です。 インスタンス フィールドにデータを格納する方法の詳細については、[タイム シリーズ モデル](./concepts-model-overview.md)の概要を参照してください。
+Azure Time Series Insights Gen 2 では、Time Series Model (TSM) を使用して、受信テレメトリにコンテキスト データを追加できます。 TSM では、タグまたはシグナルは "*インスタンス*" と呼ばれており、"*インスタンス フィールド*" にコンテキスト データを格納できます。 データはクエリ時に**タイム シリーズ ID** を使用して結合されます。 この記事の後半で使用するサンプルの風力発電プロジェクトの**タイム シリーズ ID** は、`id` です。 インスタンス フィールドにデータを格納する方法の詳細については、[タイム シリーズ モデル](./concepts-model-overview.md)の概要を参照してください。
 
-### <a name="create-a-azure-time-series-insights-event-source"></a>Azure Time Series Insights のイベント ソースを作成する
+### <a name="create-an-azure-time-series-insights-event-source"></a>Azure Time Series Insights のイベント ソースを作成する
 
 1. イベント ソースを作成していない場合は、[イベント ソースを作成する](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)手順を実行します。
 
@@ -73,15 +73,15 @@ Azure Time Series Insights Gen 2 では、Time Series Model (TSM) を使用し�
 
     [![主キーの接続文字列の値をコピーする](media/send-events/configure-sample-code-connection-string.png)](media/send-events/configure-sample-code-connection-string.png#lightbox)
 
-1. https://tsiclientsample.azurewebsites.net/windFarmGen.html にアクセスします。 この URL では、シミュレートされた風力発電デバイスが作成され、実行されます。
+1. <https://tsiclientsample.azurewebsites.net/windFarmGen.html> にアクセスします。 この URL では、シミュレートされた風力発電デバイスが作成され、実行されます。
 1. Web ページの **[イベント ハブ接続文字列]** ボックスに、[風力発電の入力フィールド](#push-events-to-windmills-sample)でコピーした接続文字列を貼り付けます。
   
     [![[イベント ハブ接続文字列] ボックスに主キーの接続文字列を貼り付ける](media/send-events/configure-wind-mill-sim.png)](media/send-events/configure-wind-mill-sim.png#lightbox)
 
-1. **[Click to start]\(クリックして開始\)** を選択します。 
+1. **[Click to start]\(クリックして開始\)** を選択します。
 
     > [!TIP]
-    > また、風力発電シミュレーターでは、[Azure Time Series Insights GA クエリ API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query) でペイロードとして使用できる JSON も作成されます。
+    > また、風力発電シミュレーターでは、[Azure Time Series Insights GA クエリ API](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) でペイロードとして使用できる JSON も作成されます。
 
     > [!NOTE]
     > シミュレーターは、ブラウザーのタブが閉じられるまでデータを送信し続けます。
@@ -203,6 +203,6 @@ Azure Time Series Insights Gen 2 では、Time Series Model (TSM) を使用し�
 
 ## <a name="next-steps"></a>次のステップ
 
-- Azure Time Series Insights エクスプローラーで[自分の環境を表示](https://insights.timeseries.azure.com)します。
+* Azure Time Series Insights エクスプローラーで[自分の環境を表示](https://insights.timeseries.azure.com)します。
 
-- [IoT Hub デバイス メッセージ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)の詳細を参照してください。
+* [IoT Hub デバイス メッセージ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct)の詳細を参照してください。

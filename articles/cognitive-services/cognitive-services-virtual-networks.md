@@ -9,21 +9,22 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148091"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505029"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Azure Cognitive Services 仮想ネットワークを構成する
 
-Azure Cognitive Services は、多層型のセキュリティ モデルを採用しています。 このモデルでは、ネットワークの特定のサブセットに、Cognitive Services アカウントを固定することができます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、アカウントにアクセスできます。 要求フィルターにより、リソースへのアクセスを制限することができます。 [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限します。 このオファリングに関心がある場合は、[プレビュー アクセスを要求する](https://aka.ms/cog-svc-vnet-signup)必要があります。
+Azure Cognitive Services は、多層型のセキュリティ モデルを採用しています。 このモデルでは、ネットワークの特定のサブセットに、Cognitive Services アカウントを固定することができます。 ネットワーク ルールを構成すると、指定したネットワークのセットを経由してデータを要求しているアプリケーションのみが、アカウントにアクセスできます。 要求フィルターにより、リソースへのアクセスを制限することができます。 [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)内の指定した IP アドレス、IP 範囲、またはサブネットのリストから発信された要求に制限します。
 
 ネットワーク ルールが有効なときに Cognitive Services リソースにアクセスするアプリケーションでは、認可が必要です。 承認は、[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) 資格情報、または有効な API キーで行うことができます。
 
 > [!IMPORTANT]
 > Cognitive Services アカウントのファイアウォール規則をオンにすると、既定ではデータの受信要求がブロックされます。 要求を通すよう許可するには、次のいずれかの条件を満たしている必要があります。
+
 > * 要求は、ターゲットの Cognitive Services アカウントの許可されたサブネットの一覧にある Azure Virtual Network (VNet) 内で動作するサービスから発信されたものである必要があります。 VNet を発信元とする要求のエンドポイントは、Cognitive Services アカウントの[カスタム サブドメイン](cognitive-services-custom-subdomains.md)として設定する必要があります。
 > * または、許可された IP アドレスのリストからの要求である必要があります。
 >
@@ -39,7 +40,7 @@ Azure Cognitive Services に対して、REST や WebSocket などのすべての
 
 ## <a name="supported-regions-and-service-offerings"></a>サポートされているリージョンとサービス内容
 
-以下に記載されている Cognitive Services に対する仮想ネットワークのサポートは、*米国中部 EUAP*、*米国中南部*、*米国東部*、*米国西部 2*、*北ヨーロッパ*、*南アフリカ北部*、*西ヨーロッパ*、*インド中部*、*オーストラリア東部*、*米国西部*、および *US Gov バージニア*の 各 Azure リージョンに限定されています。 ここに記載されていないサービス内容では、仮想ネットワークはサポートされません。
+仮想ネットワーク (Vnet) は、[Cognitive Services が使用可能なリージョン](https://azure.microsoft.com/global-infrastructure/services/)でサポートされます。 Cognitive Services が一覧にない場合、現在、仮想ネットワークはサポートされていません。
 
 > [!div class="checklist"]
 > * [Anomaly Detector](./anomaly-detector/index.yml)
@@ -48,17 +49,17 @@ Azure Cognitive Services に対して、REST や WebSocket などのすべての
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Face](./face/index.yml)
 > * [Form Recognizer](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
 > * [Text Analytics](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-
-以下に記載されている Cognitive Services の仮想ネットワークのサポートは、*米国中部 EUAP*、*米国中南部*、*米国東部*、*米国西部 2*、*グローバル*、*米国政府バージニア州*の 各 Azure リージョンに限定されています。
-> [!div class="checklist"]
 > * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
+> * [Immersive Reader](./immersive-reader/index.yml)
 
 ## <a name="service-tags"></a>サービス タグ
-上記のサービス用の仮想ネットワーク サービス エンドポイントのサポートに加え、Cognitive Services では、送信ネットワーク ルール構成用のサービス タグもサポートされています。 CognitiveServicesManagement サービス タグには、次のサービスが含まれています。
+
+Cognitive Services は、ネットワーク ルールの構成用のサービス タグをサポートしています。 次に示すサービスは、**CognitiveServicesManagement** サービス タグに含まれています。
+
 > [!div class="checklist"]
 > * [Anomaly Detector](./anomaly-detector/index.yml)
 > * [Computer Vision](./computer-vision/index.yml)
@@ -66,12 +67,13 @@ Azure Cognitive Services に対して、REST や WebSocket などのすべての
 > * [Custom Vision](./custom-vision-service/index.yml)
 > * [Face](./face/index.yml)
 > * [Form Recognizer](./form-recognizer/index.yml)
-> * [LUIS](./luis/index.yml)
+> * [Language Understanding (LUIS)](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
 > * [Text Analytics](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 > * [Translator](./translator/index.yml)
 > * [Speech Service](./speech-service/index.yml)
+> * [Immersive Reader](./immersive-reader/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>既定のネットワーク アクセス ルールの変更
 
@@ -330,6 +332,7 @@ Cognitive Services リソースの 仮想ネットワーク規則は、Azure por
         -g "myresourcegroup" -n "myaccount" \
         --subnet $subnetid
     ```
+
 ***
 
 > [!IMPORTANT]
@@ -491,13 +494,13 @@ Cognitive Services リソースの IP ネットワーク ルールは、Azure po
 
 Cognitive Services リソースのプライベート エンドポイントを使用すると、次のことができます。
 
-- Cognitive Services サービスのパブリック エンドポイント上のすべての接続をブロックするようにファイアウォールを構成することにより、Cognitive Services リソースをセキュリティで保護します。
-- VNet からのデータの流出をブロックできるようにすることで、VNet のセキュリティを強化します。
-- [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoutes](../expressroute/expressroute-locations.md) とプライベートピアリングを使用して VNet に接続するオンプレミス ネットワークから Cognitive Services リソースに安全に接続します。
+* Cognitive Services サービスのパブリック エンドポイント上のすべての接続をブロックするようにファイアウォールを構成することにより、Cognitive Services リソースをセキュリティで保護します。
+* VNet からのデータの流出をブロックできるようにすることで、VNet のセキュリティを強化します。
+* [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoutes](../expressroute/expressroute-locations.md) とプライベートピアリングを使用して VNet に接続するオンプレミス ネットワークから Cognitive Services リソースに安全に接続します。
 
 ### <a name="conceptual-overview"></a>概念の概要
 
-プライベート エンドポイントは、[VNet](../virtual-network/virtual-networks-overview.md) 内の Azure サービス用の特別なネットワーク インターフェイスです。 Cognitive Services リソースのプライベート エンドポイントを作成すると、対象の VNet 上のクライアントと対象のリソース間のセキュリティで保護された接続が提供されます。 プライベート エンドポイントには、VNet の IP アドレス範囲から IP アドレスが割り当てられます。 プライベート エンドポイントと Cognitive Services サービス間の接続には、セキュリティで保護されたプライベート リンクが使用されます。
+プライベート エンドポイントは、[VNet](../virtual-network/virtual-networks-overview.md) 内の Azure リソース用の特別なネットワーク インターフェイスです。 Cognitive Services リソースのプライベート エンドポイントを作成すると、対象の VNet 上のクライアントと対象のリソース間のセキュリティで保護された接続が提供されます。 プライベート エンドポイントには、VNet の IP アドレス範囲から IP アドレスが割り当てられます。 プライベート エンドポイントと Cognitive Services サービス間の接続には、セキュリティで保護されたプライベート リンクが使用されます。
 
 VNet 内のアプリケーションは、プライベート エンドポイント経由でサービスにシームレスに接続できます。その際、使用される接続文字列と承認メカニズムは、それを経由しない場合と同じものになります。 例外は Speech Service で、これには別のエンドポイントが必要です。 「[プライベート エンドポイントと Speech Service](#private-endpoints-with-the-speech-service)」セクションを参照してください。 プライベート エンドポイントは、Cognitive Services リソースでサポートされているすべてのプロトコル (REST を含む) で使用できます。
 
@@ -511,9 +514,9 @@ Cognitive Services リソースの所有者は、[Azure portal](https://portal.a
 
 プライベート エンドポイントを作成するときは、接続先の Cognitive Services リソースを指定する必要があります。 プライベート エンドポイントを作成する方法の詳細については、次の記事を参照してください。
 
-- [Azure portal でプライベート リンク センターを使用してプライベート エンドポイントを作成する](../private-link/create-private-endpoint-portal.md)
-- [Azure CLI を使用してプライベート エンドポイントを作成する](../private-link/create-private-endpoint-cli.md)
-- [Azure PowerShell を使用してプライベート エンドポイントを作成する](../private-link/create-private-endpoint-powershell.md)
+* [Azure portal でプライベート リンク センターを使用してプライベート エンドポイントを作成する](../private-link/create-private-endpoint-portal.md)
+* [Azure CLI を使用してプライベート エンドポイントを作成する](../private-link/create-private-endpoint-cli.md)
+* [Azure PowerShell を使用してプライベート エンドポイントを作成する](../private-link/create-private-endpoint-powershell.md)
 
 ### <a name="connecting-to-private-endpoints"></a>プライベート エンドポイントへの接続
 
@@ -523,7 +526,7 @@ Cognitive Services リソースの所有者は、[Azure portal](https://portal.a
 
 ### <a name="private-endpoints-with-the-speech-service"></a>プライベート エンドポイントと Speech Service
 
-Speech Service でプライベート エンドポイントを使用する場合は、カスタム エンドポイントを使用して Speech Service API を呼び出す必要があります。 グローバル エンドポイントは使用できません。 {account}.{stt|tts|voice|dls}.speech.microsoft.com という形式のエンドポイントを使用する必要があります。
+Speech Service でプライベート エンドポイントを使用する場合は、カスタム エンドポイントを使用して Speech Service を呼び出す必要があります。 グローバル エンドポイントは使用できません。 エンドポイントは、`{account}.{stt|tts|voice|dls}.speech.microsoft.com` というパターンに従う必要があります。
 
 ### <a name="dns-changes-for-private-endpoints"></a>プライベート エンドポイントの DNS の変更
 
@@ -533,15 +536,15 @@ Speech Service でプライベート エンドポイントを使用する場合�
 
 この方法を使用すると、プライベート エンドポイントをホストしている VNet 上のクライアントと、VNet の外部のクライアントから同じ接続文字列を使用して Cognitive Services リソースにアクセスできます。
 
-ネットワーク上でカスタム DNS サーバーを使用している場合、クライアントで、Cognitive Services リソースのエンドポイントの完全修飾ドメイン名 (FQDN) をプライベート エンドポイントの IP アドレスに解決できる必要があります。 プライベート リンク サブドメインを VNet のプライベート DNS ゾーンに委任するように DNS サーバーを構成する必要があります。
+ネットワーク上でカスタム DNS サーバーを使用している場合、クライアントで、Cognitive Services リソースのエンドポイントの完全修飾ドメイン名 (FQDN) をプライベート エンドポイントの IP アドレスに解決できる必要があります。 プライベート リンク サブドメインを VNet のプライベート DNS ゾーンに委任するように、DNS サーバーを構成してください。
 
 > [!TIP]
 > カスタムまたはオンプレミスの DNS サーバーを使用している場合は、"privatelink" サブドメインの Cognitive Services リソース名をプライベート エンドポイントの IP アドレスに解決するように DNS サーバーを構成する必要があります。 これを行うには、VNet のプライベート DNS ゾーンに "privatelink" サブドメインを委任するか、DNS サーバーで DNS ゾーンを構成し、DNS A レコードを追加します。
 
 プライベート エンドポイントをサポートするように独自の DNS サーバーを構成する方法の詳細については、次の記事を参照してください。
 
-- [Azure 仮想ネットワーク内のリソースの名前解決](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
-- [プライベート エンドポイントの DNS 構成](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+* [Azure 仮想ネットワーク内のリソースの名前解決](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+* [プライベート エンドポイントの DNS 構成](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
 
 ### <a name="pricing"></a>価格
 

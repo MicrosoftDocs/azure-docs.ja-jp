@@ -5,18 +5,18 @@ ms.assetid: 39d5514f-0139-453a-b52e-4a1c06d8d914
 ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
-ms.openlocfilehash: ed84cb2b0cb8d98b12fe787e49c400ba47e4e38a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74671624"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080200"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
 この記事では、 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべての Windows アプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
 
 > [!NOTE] 
-> App Service の [Linux アプリ](containers/app-service-linux-intro.md)は、独自のコンテナーで実行されます。 ホスト オペレーティング システムへのアクセスは許可されていません。コンテナーにはルート アクセスが可能です。 同様に、[Windows コンテナーで実行されるアプリ](app-service-web-get-started-windows-container.md)ではコンテナーへの管理アクセスが可能ですが、ホスト オペレーティング システムにはアクセスできません。 
+> App Service の [Linux アプリ](overview.md#app-service-on-linux)は、独自のコンテナーで実行されます。 ホスト オペレーティング システムへのアクセスは許可されていません。コンテナーにはルート アクセスが可能です。 同様に、[Windows コンテナーで実行されるアプリ](quickstart-custom-container.md?pivots=container-windows)ではコンテナーへの管理アクセスが可能ですが、ホスト オペレーティング システムにはアクセスできません。 
 >
 
 <a id="tiers"></a>
@@ -60,7 +60,7 @@ App Service には、ローカル ドライブやネットワーク ドライブ
 
 <a id="NetworkDrives"></a>
 
-### <a name="network-drives-aka-unc-shares"></a>ネットワーク ドライブ ("UNC 共有" とも呼ばれます)
+### <a name="network-drives-unc-shares"></a>ネットワーク ドライブ (UNC 共有)
 アプリのデプロイとメンテナンスを容易にする App Service の特長の 1 つは、すべてのユーザー コンテンツが一連の UNC 共有に保存されることです。 このモデルは、複数の負荷分散サーバーを配したオンプレミス Web ホスティング環境で使用される共通のコンテンツ ストレージ パターンに対応します。 
 
 App Service 内には、各データ センターに作成された複数の UNC 共有があります。 データ センターごとに、すべての顧客のユーザーコンテンツの割合が各 UNC 共有に反映されます。 さらに、個々の顧客のサブスクリプションのすべてのファイル コンテンツは、必ず同じ UNC 共有に配置されます。 

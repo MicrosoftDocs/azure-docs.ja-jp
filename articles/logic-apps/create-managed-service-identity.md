@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: f9c5de4fb4e38d3f9ccb79c89be988fe0bbebc3c
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 95d892bf7a0c0e395289d4a5535cd9b6b789b055
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760296"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565929"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Azure Logic Apps でマネージド ID を使用して Azure リソースへのアクセスを認証する
 
@@ -28,12 +28,12 @@ Azure Logic Apps では、"[*システム割り当て*](../active-directory/mana
 
 * [マネージド ID がサポートされているトリガーとアクション](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
 * [送信呼び出しでサポートされている認証の種類](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [ロジック アプリのマネージド ID の制限](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
+* [ロジック アプリのマネージド ID に関する制限](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [マネージド ID を使用した Azure AD 認証がサポートされているサービス](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 マネージド ID とアクセスする必要があるターゲット Azure リソースの両方で、同じ Azure サブスクリプションを使用する必要があります。
+* Azure アカウントとサブスクリプション。 サブスクリプションをお持ちでない場合には、[無料の Azure アカウントにサインアップ](https://azure.microsoft.com/free/)してください。 マネージド ID とアクセスする必要があるターゲット Azure リソースの両方で、同じ Azure サブスクリプションを使用する必要があります。
 
 * マネージド ID に Azure リソースへのアクセス権を付与するには、その ID のターゲット リソースにロールを追加する必要があります。 ロールを追加するには、対応する Azure AD テナント内の ID にロールを割り当てることができる、[Azure AD 管理者のアクセス許可](../active-directory/users-groups-roles/directory-assign-admin-roles.md)が必要です。
 

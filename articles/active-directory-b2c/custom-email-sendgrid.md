@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 06/25/2020
+ms.date: 08/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d2716c49c72674b53e52b021972a90cf89bd843a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 952659746bbb99108c6177166ad60ad2272cbce6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85397961"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88584941"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>SendGrid を使用するカスタム メール確認
 
@@ -220,6 +220,9 @@ JSON オブジェクトの構造は、InputClaims の InputParameters と Transf
  <ContentDefinition Id="api.localaccountsignup">
     <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
   </ContentDefinition>
+  <ContentDefinition Id="api.localaccountpasswordreset">
+    <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+  </ContentDefinition>
 </ContentDefinitions>
 ```
 
@@ -344,7 +347,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>DisplayControl への参照を付ける
 
-最後の手順では、作成した DisplayControl への参照を追加します。 以前のバージョンの Azure AD B2C ポリシーを使用した場合、既存の `LocalAccountSignUpWithLogonEmail` セルフアサート技術プロファイルを次で置換します。 この技術プロファイルでは、DisplayControl を参照する `DisplayClaims` が使用されます。
+最後の手順では、作成した DisplayControl への参照を追加します。 既存の `LocalAccountSignUpWithLogonEmail` と `LocalAccountDiscoveryUsingEmailAddress` セルフアサート技術プロファイルを次のように置き換えます。 以前のバージョンの Azure AD B2C ポリシーを使用していた場合。 これらの技術プロファイルでは、DisplayControl を参照する `DisplayClaims` が使用されます。
 
 詳細については、[セルフアサート技術プロファイル](restful-technical-profile.md)に関するページと「[DisplayControl](display-controls.md)」を参照してください。
 
@@ -353,22 +356,13 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
     <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
-      <DisplayName>Email signup</DisplayName>
-      <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
       <Metadata>
-        <Item Key="IpAddressClaimReferenceId">IpAddress</Item>
-        <Item Key="ContentDefinitionReferenceId">api.localaccountsignup</Item>
-        <Item Key="language.button_continue">Create</Item>
-        
         <!--OTP validation error messages-->
         <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
         <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
         <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
         <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
       </Metadata>
-      <InputClaims>
-        <InputClaim ClaimTypeReferenceId="email" />
-      </InputClaims>
       <DisplayClaims>
         <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
         <DisplayClaim ClaimTypeReferenceId="displayName" Required="true" />
@@ -377,17 +371,18 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
         <DisplayClaim ClaimTypeReferenceId="newPassword" Required="true" />
         <DisplayClaim ClaimTypeReferenceId="reenterPassword" Required="true" />
       </DisplayClaims>
-      <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="email" Required="true" />
-        <OutputClaim ClaimTypeReferenceId="objectId" />
-        <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" />
-        <OutputClaim ClaimTypeReferenceId="newUser" />
-      </OutputClaims>
-      <ValidationTechnicalProfiles>
-        <ValidationTechnicalProfile ReferenceId="AAD-UserWriteUsingLogonEmail" />
-      </ValidationTechnicalProfiles>
-      <UseTechnicalProfileForSessionManagement ReferenceId="SM-AAD" />
+    </TechnicalProfile>
+    <TechnicalProfile Id="LocalAccountDiscoveryUsingEmailAddress">
+      <Metadata>
+        <!--OTP validation error messages-->
+        <Item Key="UserMessageIfSessionDoesNotExist">You have exceed the maximum time allowed.</Item>
+        <Item Key="UserMessageIfMaxRetryAttempted">You have exceed the number of retries allowed.</Item>
+        <Item Key="UserMessageIfInvalidCode">You have entered the wrong code.</Item>
+        <Item Key="UserMessageIfSessionConflict">Cannot verify the code, please try again later.</Item>
+      </Metadata>
+      <DisplayClaims>
+        <DisplayClaim DisplayControlReferenceId="emailVerificationControl" />
+      </DisplayClaims>
     </TechnicalProfile>
   </TechnicalProfiles>
 </ClaimsProvider>
@@ -439,7 +434,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
         <SupportedLanguage>en</SupportedLanguage>
         <SupportedLanguage>es</SupportedLanguage>
       </SupportedLanguages>
-      <LocalizedResources Id="api.localaccountsignup.en">
+      <LocalizedResources Id="api.custom-email.en">
         <LocalizedStrings>
           <!--Email template parameters-->
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Contoso account email verification code</LocalizedString>
@@ -448,7 +443,7 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_signature">Sincerely</LocalizedString>
         </LocalizedStrings>
       </LocalizedResources>
-      <LocalizedResources Id="api.localaccountsignup.es">
+      <LocalizedResources Id="api.custom-email.es">
         <LocalizedStrings>
           <!--Email template parameters-->
           <LocalizedString ElementType="GetLocalizedStringsTransformationClaimType" StringId="email_subject">Código de verificación del correo electrónico de la cuenta de Contoso</LocalizedString>
@@ -463,16 +458,25 @@ OTP 技術プロファイルの場合と同様に、次の技術プロファイ�
 1. [ContentDefinitions](contentdefinitions.md) 要素を更新し、LocalizedResources 要素への参照を追加します。
 
     ```XML
-    <ContentDefinition Id="api.localaccountsignup">
-      <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
-      <LocalizedResourcesReferences MergeBehavior="Prepend">
-        <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
-        <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
-      </LocalizedResourcesReferences>
-    </ContentDefinition>
+    <ContentDefinitions>
+      <ContentDefinition Id="api.localaccountsignup">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
+          <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+      <ContentDefinition Id="api.localaccountpasswordreset">
+        <DataUri>urn:com:microsoft:aad:b2c:elements:contract:selfasserted:2.0.0</DataUri>
+        <LocalizedResourcesReferences MergeBehavior="Prepend">
+          <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.custom-email.en" />
+          <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.custom-email.es" />
+        </LocalizedResourcesReferences>
+      </ContentDefinition>
+    </ContentDefinitions>
     ```
 
-1. 最後に、次の入力要求変換を LocalAccountSignUpWithLogonEmail 技術プロファイルに追加します。
+1. 最後に、次の入力要求変換を `LocalAccountSignUpWithLogonEmail` および `LocalAccountDiscoveryUsingEmailAddress` 技術プロファイルに追加します。
 
     ```XML
     <InputClaimsTransformations>

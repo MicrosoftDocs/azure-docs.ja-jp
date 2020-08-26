@@ -1,7 +1,7 @@
 ---
 title: Azure パブリック IP アドレス プレフィックスを作成、変更、または削除する
 titlesuffix: Azure Virtual Network
-description: パブリック IP アドレス プレフィックス、およびその他の関連情報が必要な場合の入手先について説明します。 また、これを作成、変更、削除する方法について説明します。
+description: パブリック IP アドレス プレフィックスとその作成、変更、削除の方法について説明します。 追加情報が見つかる場所を確認してください。
 services: virtual-network
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: 85e649944b155fc9e51fe01c282fc7f34f8a00d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c844b25394d865453e653bfc3ac6bff396d97a47
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283165"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035061"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>パブリック IP アドレス プレフィックスの作成、変更、削除
 

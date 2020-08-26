@@ -2,16 +2,15 @@
 title: Azure Kubernetes Service で Azure AD を使用する
 description: Azure Kubernetes Service (AKS) における Azure AD の使用方法
 services: container-service
-manager: gwallace
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 07/27/2020
 ms.author: thomasge
-ms.openlocfilehash: 06a97126df449b77bf3fcc48bd23231512c9dff2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: afc20052680e7f3e5b7d3a6b7320b7ca3b10dbd5
+ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87056661"
+ms.lasthandoff: 08/05/2020
+ms.locfileid: "87799859"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>AKS マネージド Azure Active Directory 統合
 
@@ -36,11 +35,6 @@ AKS マネージド Azure Active Directory 統合は、[AKS がサポートさ�
 * AKS マネージド AAD 統合では、RBAC に対応していないクラスターはサポートされません
 * AKS マネージド AAD 統合に関連付けられている Azure AD テナントの変更はサポートされません
 
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトイン単位で利用できます。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、ベストエフォート ベースでカスタマー サポートによって部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポート記事を参照してください。 
-> - [AKS のサポート ポリシー](support-policies.md) 
-> - [Azure サポートに関する FAQ](faq.md)
-
 ## <a name="prerequisites"></a>前提条件
 
 * Azure CLI バージョン 2.9.0 以降
@@ -57,22 +51,6 @@ kubectl version --client
 ```
 
 他のオペレーティング システムでは、[これらの手順](https://kubernetes.io/docs/tasks/tools/install-kubectl/)を使用します。
-
-```azurecli-interactive 
-az feature register --name AAD-V2 --namespace Microsoft.ContainerService    
-``` 
-
-状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。 
-
-```azurecli-interactive 
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AAD-V2')].{Name:name,State:properties.state}"    
-``` 
-
-状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。    
-
-```azurecli-interactive 
-az provider register --namespace Microsoft.ContainerService 
-``` 
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -146,7 +124,7 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-[ロールベースのアクセスの制御 (RBAC)](./azure-ad-rbac.md) を構成して、クラスターの追加のセキュリティ グループを構成します。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](./azure-ad-rbac.md) を構成して、クラスターの追加のセキュリティ グループを構成します。
 
 ## <a name="troubleshooting-access-issues-with-azure-ad"></a>Azure AD でのアクセスに関する問題のトラブルシューティング
 

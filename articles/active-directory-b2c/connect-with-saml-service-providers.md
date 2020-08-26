@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 3baa659d454a24a132eda914d50acddbd5df8a90
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2bf767bd87e0df791b0efff1294f15353234ba2c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020068"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520211"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML アプリケーションを Azure AD B2C に登録する
 
@@ -414,6 +414,10 @@ SAML テスト アプリでテストに使用できる完全なサンプル ポ�
 * アプリケーションまたはサービス プリンシパル オブジェクト内のログアウト URL に対する複数のログアウト URL または POST バインド。
 * アプリケーションまたはサービス プリンシパル オブジェクト内に RP 要求を検証するための署名キーを指定します。
 * アプリケーションまたはサービス プリンシパル オブジェクト内にトークン暗号化キーを指定します。
+* ID プロバイダーがサインオンを開始しました。この場合、ID プロバイダーは Azure AD B2C です。
+
+次の SAML 証明書利用者 (RP) シナリオは、現在サポートされていません。
+* ID プロバイダーがサインオンを開始しました。この場合、ID プロバイダーは ADFS などの外部 ID プロバイダーです。
 
 ## <a name="next-steps"></a>次のステップ
 

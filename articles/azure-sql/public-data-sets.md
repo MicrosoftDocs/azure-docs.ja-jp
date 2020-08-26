@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 6e38be4a97678ce749e32ca31c0703ed9d786d76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 30f6bf7629152050bc1249a1e22aff0aa30642de
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84033573"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209530"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>テストとプロトタイプ作成用の公開されているデータ セット
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -33,7 +33,7 @@ ms.locfileid: "84033573"
 | [航空会社のフライト遅延データとその他の輸送データ](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "米国運輸省 (DOT) の運輸統計局 (BTS) では、大手航空会社が運航している国内フライトの定刻実績を追跡しています。 定時便、遅延便、欠航便、迂回便の数に関する概要情報が ... この Web サイトに掲載されている集計表に表示されます。" | ファイルは CSV 形式で提供されます。 |
 | [交通事故による死亡者数 - Fatality Analysis Reporting System (FARS)](https://www.nhtsa.gov/FARS) | "FARS とは、NHTSA、議会、米国国民に、自動車による交通事故で負った致命傷に関する年次データを提供する全国的な調査です。" | "FARS 照会システムを使用して、死亡事故に関する独自のデータを作成し、オンラインで実行できます。 また、1975 年から現在までのすべての FARS データを FTP サイトからダウンロードすることもできます。" |
 | [有毒化学物質データ - EPA Toxicity ForeCaster (ToxCast&trade;) データ](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "何千種類もの化学物質に関する、EPA の最新の毒性データです。このデータは公開されており、高スループットで提供されます。 このデータは、EPA の ToxCast 調査を元に生成されました。" | データ セットは、スプレッドシート、R パッケージ、MySQL データベース ファイルなど、さまざまな形式で利用できます。 |
-| [有毒化学物質データ - NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21/challenge/) | "2014 年の Tox21 Data Challenge は、Tox21 (Toxicology in the 21st Century) の取り組みの中でテストを実施した、生物学的経路を破壊して中毒を引き起こす化学物質や化合物の毒性について、科学者の理解を深めることを目的としています。" | データ セットは、SMILES 形式および SDF 形式で利用できます。 データの内容は、"Tox21 で収集した約 10,000 種類の化合物 (Tox21 10K) に関する試金活動データと化学構造" です。 |
+| [有毒化学物質データ - NIH Tox21 Data Challenge 2014](https://tripod.nih.gov/tox21) | "2014 年の Tox21 Data Challenge は、Tox21 (Toxicology in the 21st Century) の取り組みの中でテストを実施した、生物学的経路を破壊して中毒を引き起こす化学物質や化合物の毒性について、科学者の理解を深めることを目的としています。" | データ セットは、SMILES 形式および SDF 形式で利用できます。 データの内容は、"Tox21 で収集した約 10,000 種類の化合物 (Tox21 10K) に関する試金活動データと化学構造" です。 |
 | [NCBI のバイオ テクノロジとゲノムのデータ](https://www.ncbi.nlm.nih.gov/guide/data-software/) | 遺伝子、ゲノム、たんぱく質を対象とする複数のデータ セットです。 | データ セットは、テキスト、XML、BLAST などの形式で提供されます。 BLAST アプリが使用できます。 |
 
 ## <a name="other-statistical-and-scientific-data"></a>その他の統計データと科学的データ

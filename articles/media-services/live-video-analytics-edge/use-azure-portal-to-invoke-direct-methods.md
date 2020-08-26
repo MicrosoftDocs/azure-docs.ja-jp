@@ -13,28 +13,28 @@ ms.topic: how-to
 ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 763dd82c8263a5e180468f9fbd7f86526295a80d
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87279289"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830752"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>Azure portal を使用してダイレクト メソッドを呼び出す方法
 
-IoT Hub には、クラウドからエッジ デバイス上の[ダイレクト メソッド](/azure/iot-hub/iot-hub-devguide-direct-methods#method-invocation-for-iot-edge-modules)を呼び出す機能が備わっています。 Live Video Analytics on IoT Edge (LVA) モジュールでは、ライブ ビデオを分析するためにさまざまなワークフローを定義、デプロイ、インスタンス化するために使用できる、いくつかの[ダイレクト メソッド](/azure/media-services/live-video-analytics-edge/direct-methods)が公開されています。
+IoT Hub には、クラウドからエッジ デバイス上の[ダイレクト メソッド](../../iot-hub/iot-hub-devguide-direct-methods.md#method-invocation-for-iot-edge-modules)を呼び出す機能が備わっています。 Live Video Analytics on IoT Edge (LVA) モジュールでは、ライブ ビデオを分析するためにさまざまなワークフローを定義、デプロイ、インスタンス化するために使用できる、いくつかの[ダイレクト メソッド](./direct-methods.md)が公開されています。
 
 この記事では、Azure portal を使用して Live Video Analytics for an IoT Edge モジュールでダイレクト メソッド呼び出しを呼び出す方法について学習します。
 
 ## <a name="prerequisites"></a>前提条件
 
-* 次に記載されているいずれかの方法を使用して、エッジ デバイスで Live Video Analytics on IoT Edge モジュールを実行している: [クイック スタート: Live Video Analytics on IoT Edge](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart)に関するページ、または[ポータル](/azure/media-services/live-video-analytics-edge/deploy-iot-edge-device)を使用。
+* 次に記載されているいずれかの方法を使用して、エッジ デバイスで Live Video Analytics on IoT Edge モジュールを実行している: [クイック スタート: Live Video Analytics on IoT Edge](./get-started-detect-motion-emit-events-quickstart.md)に関するページ、または[ポータル](./deploy-iot-edge-device.md)を使用。
 
-* [Live Video Analytics](/azure/media-services/live-video-analytics-edge/overview) および[メディア グラフの概念](/azure/media-services/live-video-analytics-edge/media-graph-concept)を理解します。
+* [Live Video Analytics](./overview.md) および[メディア グラフの概念](./media-graph-concept.md)を理解します。
 
 ## <a name="invoking-direct-methods-via-azure-portal"></a>Azure portal を使用したダイレクト メソッドの呼び出し
 
-LVA モジュールによって公開されている各[ダイレクト メソッド](/azure/media-services/live-video-analytics-edge/direct-methods)は、Azure portal を介して呼び出すことができます。 以下の手順は、1 つのダイレクト メソッドの詳細について示しています。 同様の手順を使用して、他のダイレクト メソッドを呼び出すことができます。 しかし、各ダイレクト メソッドには特定の JSON 本文が必要です。
+LVA モジュールによって公開されている各[ダイレクト メソッド](./direct-methods.md)は、Azure portal を介して呼び出すことができます。 以下の手順は、1 つのダイレクト メソッドの詳細について示しています。 同様の手順を使用して、他のダイレクト メソッドを呼び出すことができます。 しかし、各ダイレクト メソッドには特定の JSON 本文が必要です。
 
 `GraphTopologyList` メソッド呼び出しを使用して、Live Video Analytics on IoT Edge モジュールに現在配置されているすべてのグラフ トポロジの一覧を取得します。 このダイレクト メソッドを呼び出すには、次の手順を使用します。
 
@@ -72,9 +72,9 @@ LVA モジュールによって公開されている各[ダイレクト メソ�
 
 ## <a name="next-steps"></a>次のステップ
 
-ダイレクト メソッドの詳細については、「[ダイレクト メソッド](/azure/media-services/live-video-analytics-edge/direct-methods)」のページで見つけることができます。
+ダイレクト メソッドの詳細については、「[ダイレクト メソッド](./direct-methods.md)」ページで見つけることができます。
 
 > [!NOTE]
 > グラフ インスタンスによって特定のトポロジがインスタンス化されるため、グラフ インスタンスを作成する前に適切なトポロジを確実に設定してください。
 
-[クイック スタート: モーションの検出とイベントの生成](/azure/media-services/live-video-analytics-edge/get-started-detect-motion-emit-events-quickstart)に関するページは、実行するダイレクト メソッド呼び出しの正確なシーケンスを理解するのに適した参照先です。
+[クイック スタート: モーションの検出とイベントの生成](./get-started-detect-motion-emit-events-quickstart.md)に関するページは、実行するダイレクト メソッド呼び出しの正確なシーケンスを理解するのに適した参照先です。

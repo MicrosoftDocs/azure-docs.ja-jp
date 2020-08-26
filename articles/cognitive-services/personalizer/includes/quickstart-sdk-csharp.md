@@ -8,18 +8,18 @@ ms.subservice: personalizer
 ms.topic: include
 ms.custom: include file
 ms.date: 07/30/2020
-ms.openlocfilehash: 55bc13caec8a48ed058ea38bdc0ebe487839eef3
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: fdae79912e6fe3bf2f7d55b7405cb7883e484c47
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87461124"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602257"
 ---
 [リファレンスのドキュメント](https://docs.microsoft.com/dotnet/api/Microsoft.Azure.CognitiveServices.Personalizer?view=azure-dotnet-preview) | [ライブラリのソース コード](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Personalizer) | [パッケージ (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/) | [サンプル](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/Personalizer)
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * 最新バージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
 
 ## <a name="using-this-quickstart"></a>このクイックスタートの使用法
@@ -143,7 +143,7 @@ Personalizer の学習ループとは、[Rank](#request-the-best-action) 呼び�
 
 ## <a name="request-the-best-action"></a>最適なアクションを要求する
 
-Rank 要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢の `currentContent` を作成します。 このプロセスで、アクションから除外するコンテンツ (`excludeActions`) を作成することもできます。 応答を取得するためには、Rank 要求にアクションとそのフィーチャー、currentContext フィーチャー、excludeActions、一意のイベント ID が必要です。
+Rank 要求を実行するために、このプログラムは、ユーザーの好みをたずねてコンテンツの選択肢の `currentContext` を作成します。 このプロセスで、アクションから除外するコンテンツ (`excludeActions`) を作成することもできます。 応答を取得するためには、Rank 要求にアクションとそのフィーチャー、currentContext フィーチャー、excludeActions、一意のイベント ID が必要です。
 
 このクイックスタートにおけるコンテキストのフィーチャーは、時間帯と食べ物に対するユーザーの好みという単純なものです。 実稼働システムでは、[アクションとフィーチャー](../concepts-features.md)を決定し、[評価](../concept-feature-evaluation.md)することが、決して簡単ではない場合もあります。
 

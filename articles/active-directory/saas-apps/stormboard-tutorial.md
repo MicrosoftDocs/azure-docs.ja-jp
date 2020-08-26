@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Stormboard の統合 | Microsoft Docs
 description: Azure Active Directory と Stormboard の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 46780ebd-bbfe-4ddc-bf50-22052321026c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d26bf8e7a00944eae2d2252ad2dfcb22796ffb4a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 97f6817a02b7adf4d2d3e12dee6d1e3445e09a5b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159966"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552203"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-stormboard"></a>チュートリアル:Azure Active Directory と Stormboard の統合
 

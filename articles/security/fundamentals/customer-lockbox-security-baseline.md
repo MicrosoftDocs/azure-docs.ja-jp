@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1e8fd08a22d5d243f404a12ff96c1a8797b97f70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d1cf4af12b9ef912d37014215e422d5b9c73903f
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84485585"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007881"
 ---
 # <a name="azure-security-baseline-for-customer-lockbox-for-microsoft-azure"></a>Microsoft Azure 用カスタマー ロックボックスの Azure セキュリティ ベースライン
 
@@ -222,13 +222,13 @@ Microsoft Azure 用カスタマー ロックボックスの Azure セキュリ�
 
 ### <a name="31-maintain-an-inventory-of-administrative-accounts"></a>3.1: 管理アカウントのインベントリを維持する
 
-**ガイダンス**: カスタマー ロックボックス要求への管理アクセス権を持つユーザー アカウントのインベントリを保持します。 Azure portal でサブスクリプションの ID およびアクセス管理 (IAM) ペインを使用して、ロールベースのアクセス制御 (RBAC) を構成できます。 ロールは、Azure Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。
+**ガイダンス**: カスタマー ロックボックス要求への管理アクセス権を持つユーザー アカウントのインベントリを保持します。 サブスクリプションの Azure portal にある ID およびアクセス管理 (IAM) ウィンドウを使用して、Azure ロールベースのアクセス制御 (Azure RBAC) を構成できます。 ロールは、Azure Active Directory 内のユーザー、グループ、サービス プリンシパル、およびマネージド ID に適用されます。
 
 お客様の組織で、Azure サブスクリプションの所有者ロールを持つユーザーに、保留中のアクセス要求について通知するメールが Microsoft から送信されます。 カスタマー ロックボックス要求では、このユーザーが承認者に指定されます。
 
 * [カスタム ロールについて](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)
 
-* [ブック用に RBAC を構成する方法](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
+* [ブック用に Azure RBAC を構成する方法](https://docs.microsoft.com/azure/sentinel/quickstart-get-visibility)
 
 * [カスタマー ロックボックスでのアクセス要求のアクセス許可について](https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview)
 
@@ -527,7 +527,7 @@ Azure Active Directory サインイン アクティビティ、監査、およ�
 
 * [Azure サブスクリプションを表示する方法](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
-* [Azure ロールベースのアクセス制御について](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure ロールベースのアクセス制御 (Azure RBAC) を理解する](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 **Azure Security Center の監視**: 適用なし
 

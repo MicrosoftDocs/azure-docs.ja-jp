@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Riskware の統合 | Microsoft Docs'
 description: Azure Active Directory と Riskware の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 81866167-b163-4695-8978-fd29a25dac7a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 6eaa1be81d3ac0733c0829bc45e1b62f8aae5755
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b147037a58e4af59c0c3ccd56b6f6b241d775308
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "72027107"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553333"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>チュートリアル: Azure Active Directory と Riskware の統合
 

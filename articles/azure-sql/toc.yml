@@ -65,6 +65,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: 脆弱性評価のルール
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: ストレージに脆弱性スキャンを格納する
+                  href: database/sql-database-vulnerability-assessment-storage.md
             - name: ログイン、ユーザー アカウント、ロール、およびアクセス許可
               href: database/logins-create-manage.md
             - name: Azure AD Authentication
@@ -80,6 +82,8 @@
                   href: database/conditional-access-configure.md
                 - name: サービス プリンシパル (アプリケーション)
                   href: database/authentication-aad-service-principal.md
+                - name: ディレクトリ閲覧者ロール
+                  href: database/authentication-aad-directory-readers-role.md
             - name: Transparent Data Encryption (TDE)
               items:
                 - name: 概要
@@ -143,12 +147,14 @@
               href: database/long-term-backup-retention-configure.md
         - name: セキュリティ
           items:
-            - name: Azure AD ゲスト ユーザーを作成し、Azure AD 管理者として設定する
-              href: database/authentication-aad-guest-users.md
+            - name: Azure AD Authentication
+              items:
+                - name: Azure AD ゲスト ユーザーを作成し、Azure AD 管理者として設定する
+                  href: database/authentication-aad-guest-users.md
+                - name: ディレクトリ閲覧者ロールをグループに割り当てる
+                  href: database/authentication-aad-directory-readers-role-tutorial.md
             - name: BYOK を使用した TDE の構成
               href: database/transparent-data-encryption-byok-configure.md
-            - name: ストレージに脆弱性スキャンを格納する
-              href: database/sql-database-vulnerability-assessment-storage.md
             - name: Always Encrypted
               items:
                 - name: Azure キー コンテナーの使用
@@ -207,12 +213,14 @@
               href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
             - name: Java
               items:
+                - name: Java と JDBC の使用
+                  href: database/connect-query-java.md
                 - name: Spring Data JDBC の使用
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Data JPA の使用
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Spring Data R2DBC の使用
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
 - name: SQL Database (SQL DB)
   items:
     - name: ドキュメント
@@ -402,11 +410,11 @@
                 - name: Java
                   href: database/connect-query-java.md
                 - name: Java と Spring Data JDBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java と Spring Data JPA
-                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Java と Spring Data R2DBC
-                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json
+                  href: /azure/developer/java/spring-framework/configure-spring-data-r2dbc-with-azure-sql-server?toc=/azure/azure-sql/toc.json&bc=/azure/bread/toc.json
                 - name: Node.js
                   href: database/connect-query-nodejs.md
                 - name: PHP

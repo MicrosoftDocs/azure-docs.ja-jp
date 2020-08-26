@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 852a8c8eb7e6a87739c58967eefd6c18e996b225
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: b354fda4d23d13b8defed4381335ab147bbece5d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367403"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835903"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -195,7 +195,7 @@ Multi-factor Authentication を有効にする必要がある場合を判断す�
 
 ## <a name="use-role-based-access-control"></a>ロールベースのアクセス制御を使用する
 
-クラウド リソースに対するアクセスの管理は、クラウドを使用しているすべての組織にとって重要なことです。 [ロールベースのアクセス制御 (RBAC)](/azure/role-based-access-control/overview) は、Azure のリソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、そのユーザーがアクセスできる領域を管理するのに役立ちます。
+クラウド リソースに対するアクセスの管理は、クラウドを使用しているすべての組織にとって重要なことです。 [Azure ロールベースのアクセス制御 (Azure RBAC)](/azure/role-based-access-control/overview) は、Azure リソースにアクセスできるユーザー、そのユーザーがそれらのリソースに対して実行できること、およびそのユーザーがアクセスできる領域を管理するのに役立ちます。
 
 Azure での特定の機能に対して責任を負うグループまたは個人のロールを指定すると、セキュリティ リスクをもたらすヒューマン エラーやオートメーション エラーにつながる可能性のある混乱を避けるのに役立ちます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。
 

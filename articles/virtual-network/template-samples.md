@@ -36,4 +36,4 @@ ms.locfileid: "84707822"
 |[Azure Storage の仮想ネットワーク サービス エンドポイントの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-2subnets-service-endpoints-storage-integration)|それぞれネットワーク インターフェイスを 1 つ含んだ 2 つのサブネットから成る新しい仮想ネットワークを作成します。 いずれか 1 つのサブネットについて、Azure Storage へのサービス エンドポイントを有効にし、そのサブネットに新しいストレージ アカウントを結び付けます。|
 |[2 つの仮想ネットワークの接続](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vnet-to-vnet-peering)| 2 つの仮想ネットワークを作成し、両者の間に仮想ネットワーク ピアリングを作成します。|
 |[複数の IP アドレスを持つ仮想マシンの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-multiple-ipconfig)| 複数の IP アドレスを持つ Windows VM または Linux VM の作成|
-|[IPv4 と IPv6 のデュアル スタック仮想ネットワークの構成](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|2 つの VM と IPv4 および IPv6 のパブリック IP アドレスを使用した Azure Basic Load Balancer によるデュアル スタック (IPv4+IPv6) の仮想ネットワークをデプロイします。 |
+|[IPv4 と IPv6 のデュアル スタック仮想ネットワークの構成](https://github.com/Azure/azure-quickstart-templates/tree/master/ipv6-in-vnet)|2 つの VM と IPv4 および IPv6 のパブリック IP アドレスを使用した Azure Basic Load Balancer によるデュアル スタック (IPv4+IPv6) の仮想ネットワークを展開します。 |

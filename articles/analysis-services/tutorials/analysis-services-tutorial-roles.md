@@ -8,10 +8,10 @@ ms.date: 04/15/2020
 ms.author: owend
 ms.reviewer: owend
 ms.openlocfilehash: 6e757260c7cd8945ff75dd0e760f3afeffd992f9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84016391"
 ---
 # <a name="tutorial-configure-server-administrator-and-user-roles"></a>チュートリアル:サーバー管理者とユーザー ロールを構成する

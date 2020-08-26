@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 12/20/2019
 ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 7d9bc6365070c0aec96def2f55758204925fe7ba
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75641335"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205957"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure ポータルのキーボード ショートカット
 
@@ -55,5 +55,5 @@ ms.locfileid: "75641335"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ハイコントラストの有効化またはテーマの変更](azure-portal-change-theme-high-contrast.md)
-- [サポートされているブラウザーとデバイス](../azure-preview-portal-supported-browsers-devices.md)
+- [ハイコントラストの有効化またはテーマの変更](set-preferences.md#choose-a-theme-or-enable-high-contrast)
+- [サポートされているブラウザーとデバイス](azure-portal-supported-browsers-devices.md)

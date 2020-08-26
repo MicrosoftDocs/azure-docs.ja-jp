@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 10c9e2c3ecefedded393d6949be1480f2f02973b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9ed6244d8f5ecf18e89994c0c62af16290fb68c5
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131057"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88120577"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -35,7 +35,7 @@ Azure でアプリケーションをホストすると、アプリケーショ�
 
 Azure が提供しているどのサービスでも、ソリューション アーキテクチャのサポートに必要なサービスをなかなか見つけ出せないことがあります。 ここでは、開発者が一般的に使用する Azure サービスを取り上げます。 すべての Azure サービスの一覧については、[Azure のドキュメント](../../index.yml)を参照してください。
 
-まず、Azure でアプリケーションをホストする方法を決める必要があります。 インフラストラクチャ全体を仮想マシン (VM) として管理する必要はありますか。 Azure が提供するプラットフォーム管理施設を使用できますか。 それとも、コードの実行をホストする用途でのみサーバーレス フレームワークが必要でしょうか。
+まず、Azure でアプリケーションをホストする方法を決める必要があります。 インフラストラクチャ全体を仮想マシン (VM) として管理する必要はありますか? Azure が提供するプラットフォーム管理施設を使用できますか。 それとも、コードの実行をホストする用途でのみサーバーレス フレームワークが必要でしょうか。
 
 アプリケーションにクラウド記憶域が必要なら、Azure には複数のオプションがあります。 Azure のエンタープライズ認証を利用することができます。 また、クラウドベースの開発および監視用のツールもあり、ほとんどのホスティング サービスでは DevOps 統合が提供されています。
 
@@ -64,7 +64,7 @@ App Service は DevOps を念頭に置いて設計されています。 発行�
 
 > **いつ使用するか**: App Service を使用するのは、既存の Web アプリケーションを Azure に移行する場合、および Web アプリ用にフル マネージドのホスティング プラットフォームが必要な場合です。 また、モバイル クライアントをサポートする必要がある場合、またはアプリと共に REST API を公開する必要がある場合にも App Service を使用できます。
 >
-> **作業開始**: App Service を使用すると、初めての [Web アプリ](../../app-service/app-service-web-get-started-dotnet.md)、[モバイル アプリ](../../app-service-mobile/app-service-mobile-ios-get-started.md)、[API アプリ](../../app-service/app-service-web-tutorial-rest-api.md)でも簡単に作成、デプロイできます。
+> **作業開始**: App Service を使用すると、初めての [Web アプリ](../../app-service/quickstart-dotnetcore.md)、[モバイル アプリ](../../app-service-mobile/app-service-mobile-ios-get-started.md)、[API アプリ](../../app-service/app-service-web-tutorial-rest-api.md)でも簡単に作成、デプロイできます。
 >
 > **今すぐ試す**:App Service なら、Azure アカウントを新規登録することなく、一時的なアプリをプロビジョニングしてプラットフォームを試すことができます。 プラットフォームと [Azure App Service アプリの作成](https://tryappservice.azure.com/)を試してみましょう。
 
@@ -285,7 +285,7 @@ Azure AD では、個々の Azure アカウント ID (*ユーザー*とも呼ば
 
 ### <a name="manage-your-subscriptions"></a>サブスクリプションを管理する
 
-サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 使用できるサブスクリプション オファーの種類別一覧については、「[Microsoft Azure オファーの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。 Azure サブスクリプションには、サブスクリプションを完全に制御できるアカウント管理者がいます。 また、サブスクリプション内のすべてのサービスを制御できるサービス管理者もいます。 従来のサブスクリプション管理者の詳細については、「[Azure サブスクリプション管理者を追加または変更する](../../cost-management-billing/manage/add-change-subscription-administrator.md)」を参照してください。 個々のアカウントに、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を使用して Azure リソースを細かく管理する権限を与えることができます。
+サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 使用できるサブスクリプション オファーの種類別一覧については、「[Microsoft Azure オファーの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。 Azure サブスクリプションには、サブスクリプションを完全に制御できるアカウント管理者がいます。 また、サブスクリプション内のすべてのサービスを制御できるサービス管理者もいます。 従来のサブスクリプション管理者の詳細については、「[Azure サブスクリプション管理者を追加または変更する](../../cost-management-billing/manage/add-change-subscription-administrator.md)」を参照してください。 個々のアカウントに、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使用して Azure リソースを詳細に制御する権限を与えることができます。
 
 #### <a name="resource-groups"></a>リソース グループ
 

@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 118e83016a0c27383a1f138d27397a01f7cd3916
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 8a9ca656ec102a101df9aafb87652680a1001f31
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246624"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826281"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric のリリース
 
@@ -51,9 +51,9 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
 ### <a name="improve-application-life-cycle-experience"></a>アプリケーション ライフ サイクル エクスペリエンスの強化
 
 - **[プレビュー: 要求ドレイン](./service-fabric-application-upgrade-advanced.md#avoid-connection-drops-during-stateless-service-planned-downtime)** : サービスの計画メンテナンス中 (サービスのアップグレード、ノードの非アクティブ化など) は、サービスで正しく接続をドレインできるのが理想です。 この機能では、インスタンス終了の延期時間がサービスの構成に追加されます。 計画された操作が行われている間、SF はそのサービスのアドレスを検出から除外し、指定された時間待機した後で、サービスをシャットダウンします。
-- **[サブクラスターの自動検出と負荷分散](/azure/service-fabric/cluster-resource-manager-subclustering )** : サブクラスター化は、配置の制約が異なるサービスに共通の[負荷メトリック](./service-fabric-cluster-resource-manager-metrics.md)がある場合に発生します。 それぞれのノード セットの負荷が大幅に異なる場合、たとえそれが配置の制約上、最善のバランスであったとしても、Service Fabric Cluster Resource Manager は、クラスターに不均衡が生じていると見なします。 その結果、クラスターの再調整が試みられ、不要なサービスの移動を招く可能性があります ("不均衡" を本質的に改善することは不可能であるため)。 このリリース以降では、Cluster Resource Manager がこうした構成の自動検出を試み、移動によって不均衡を解消できるか、または本質的な改善が見込めないため、そのまま放置すべきかを認識します。  
+- **[サブクラスターの自動検出と負荷分散](./cluster-resource-manager-subclustering.md)** : サブクラスター化は、配置の制約が異なるサービスに共通の[負荷メトリック](./service-fabric-cluster-resource-manager-metrics.md)がある場合に発生します。 それぞれのノード セットの負荷が大幅に異なる場合、たとえそれが配置の制約上、最善のバランスであったとしても、Service Fabric Cluster Resource Manager は、クラスターに不均衡が生じていると見なします。 その結果、クラスターの再調整が試みられ、不要なサービスの移動を招く可能性があります ("不均衡" を本質的に改善することは不可能であるため)。 このリリース以降では、Cluster Resource Manager がこうした構成の自動検出を試み、移動によって不均衡を解消できるか、または本質的な改善が見込めないため、そのまま放置すべきかを認識します。  
 - [**セカンダリ レプリカ用の移動コストを新たに導入**](./service-fabric-cluster-resource-manager-movement-cost.md): 新しい移動コスト値 VeryHigh を導入しました。一部のシナリオで、セカンダリ レプリカに別個の移動コストを使用すべきかどうかを定義する際の柔軟性が増します。
-- コンテナー化されたアプリケーションに対する [**Liveness Probe**](/azure/service-fabric/probes-codepackage ) メカニズムに対応。 Liveness Probe は、コンテナー化されたアプリケーションの活動性を通知するのに役立ちます。また、アプリケーションが適切なタイミングで応答しない場合は、再起動されます。
+- コンテナー化されたアプリケーションに対する [**Liveness Probe**](./probes-codepackage.md) メカニズムに対応。 Liveness Probe は、コンテナー化されたアプリケーションの活動性を通知するのに役立ちます。また、アプリケーションが適切なタイミングで応答しない場合は、再起動されます。
 - [**完了まで実行するか、サービスに対して 1 回実行**](./run-to-completion.md)**
 
 ### <a name="image-store-improvements"></a>Image Store の改良
@@ -72,6 +72,8 @@ Microsoft では 7.1 をリリースしていますが、現在 COVID-19 の危�
 | リリース日 | Release | 詳細情報 |
 |---|---|---|
 | 2020 年 4 月 20 日 | [Azure Service Fabric 7.1](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-release/ba-p/1311373)  | [リリース ノート](https://github.com/microsoft/service-fabric/tree/master/release_notes/Service-Fabric-71-releasenotes.md)|
+| 2020 年 6 月 16 日 | [Microsoft Azure Service Fabric 7.1 の最初の更新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-first-refresh-release/ba-p/1466517) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU1-releasenotes.md)
+| 2020 年 7 月 20 日 | [Microsoft Azure Service Fabric 7.1 の 2 回目の更新](https://techcommunity.microsoft.com/t5/azure-service-fabric/azure-service-fabric-7-1-second-refresh-release/ba-p/1534246) | [リリース ノート](https://github.com/microsoft/service-fabric/blob/master/release_notes/Service-Fabric-71CU2-releasenotes.md)
 
 
 ### <a name="service-fabric-70"></a>Service Fabric 7.0

@@ -3,16 +3,16 @@ title: Azure Advisor でのアクセス許可
 description: Advisor のアクセス許可と、それを利用してサブスクリプションを構成する機能、推奨事項を延期または無視する機能をブロックする方法。
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 6b5dfdeb888b0577a40562536bd7a6dfc271cb19
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c7b42372ae6de5c2f519b69aec8a154a2f35a82
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057594"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927387"
 ---
 # <a name="permissions-in-azure-advisor"></a>Azure Advisor でのアクセス許可
 
-Azure Advisor は、Azure のリソースとサブスクリプションの使用状況と構成に基づいて推奨事項を提供します。 Advisor は[ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) が提供する[組み込みロール](../role-based-access-control/built-in-roles.md)を使用して、推奨事項および Advisor 機能へのアクセスを管理します。 
+Azure Advisor は、Azure のリソースとサブスクリプションの使用状況と構成に基づいて推奨事項を提供します。 Advisor は [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) が提供する[組み込みロール](../role-based-access-control/built-in-roles.md)を使用して、推奨事項および Advisor 機能へのアクセスを管理します。 
 
 ## <a name="roles-and-their-access"></a>ロールとそのアクセス権
 

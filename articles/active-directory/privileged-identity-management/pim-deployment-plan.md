@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/28/2020
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac3f9adbb3b83345fe14df39014c6119e97ba7f9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e8250661fdbd6c67faade31caaed61ee8a399fe
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84886098"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008094"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Azure AD Privileged Identity Management (PIM) をデプロイする
 
@@ -27,9 +27,9 @@ ms.locfileid: "84886098"
 
 > [!TIP]
 > この記事全体で、次のようなマークが項目に付けられています。
-> 
+>
 > :heavy_check_mark:**Microsoft のお勧め**
-> 
+>
 > これらは一般的な推奨事項であり、特定の企業のニーズに該当する場合にのみ実装する必要があります。
 
 ## <a name="learn-about-privileged-identity-management"></a>Privileged Identity Management について
@@ -82,7 +82,7 @@ Privileged Identity Management を使用するには、お客様のディレク�
 
 **Azure AD ロール** – これらのロールは、(グローバル管理者、Exchange 管理者、セキュリティ管理者など) Azure Active Directory 内にあるすべてです。 ロールおよびそれらの機能の詳細については、「[Azure Active Directory の管理者ロール アクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。 管理者を割り当てるロールを判断する際に役立つ[タスク別の最小特権ロール](../users-groups-roles/roles-delegate-by-task.md)に関するページも参照してください。
 
-**Azure リソース ロール** – これらのロールは、Azure リソース、リソース グループ、サブスクリプション、または管理グループにリンクされています。 Privileged Identity Management では、所有者、ユーザー アクセス管理者、共同作成者などの組み込みロールと、[カスタム ロール](../../role-based-access-control/custom-roles.md)の両方に対する Just-In-Time アクセスが提供されます。 Azure リソース ロールの詳細については、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) に関するページを参照してください。
+**Azure リソース ロール** – これらのロールは、Azure リソース、リソース グループ、サブスクリプション、または管理グループにリンクされています。 Privileged Identity Management では、所有者、ユーザー アクセス管理者、共同作成者などの組み込みロールと、[カスタム ロール](../../role-based-access-control/custom-roles.md)の両方に対する Just-In-Time アクセスが提供されます。 Azure リソース ロールの詳細については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) に関するページを参照してください。
 
 詳細については、「[Privileged Identity Management で管理できないロール](pim-roles.md)」を参照してください。
 
@@ -115,7 +115,7 @@ Privileged Identity Management を使用するには、お客様のディレク�
 | 名前とメール | **サブスクリプション / リソース所有者**<br/>Privileged Identity Management をデプロイする必要がある各サブスクリプションまたはリソースの IT 所有者の代表 | SO/R/I |
 | 名前とメール | **セキュリティ所有者**<br/>計画が組織のセキュリティ要件を満たしていることをサインオフできるセキュリティ チームの代表。 | SO/R |
 | 名前とメール | **IT サポート マネージャー / ヘルプデスク**<br/>ヘルプデスクの観点から、この変更のサポート可能性に関する情報を提供できる、IT サポート組織の代表。 | R/I |
-| パイロット ユーザーの名前とメール | **RBAC ロール ユーザー**<br/>特権 ID 管理が実装されるユーザーのグループ。 Privileged Identity Management が実装されてからそのロールをアクティブ化する方法を把握する必要があります。 | I |
+| パイロット ユーザーの名前とメール | **Azure ロール ユーザー**<br/>特権 ID 管理が実装されるユーザーのグループ。 Privileged Identity Management が実装されてからそのロールをアクティブ化する方法を把握する必要があります。 | I |
 
 ### <a name="enable-privileged-identity-management"></a>Privileged Identity Management を有効にする
 
@@ -142,9 +142,9 @@ Azure AD ロールの場合、組織では、ほとんどの管理者が 1 つ�
 
 1. [使用可能な Azure AD 管理者ロール](../users-groups-roles/directory-assign-admin-roles.md#available-roles)に関するページをお読みになり、理解して、ロールの細分性を把握してください。 お客様とそのチームは、特定のタスクの最小特権ロールについて説明されている、[Azure AD の ID タスクごとの管理者ロール](../users-groups-roles/roles-delegate-by-task.md)に関するページを参照する必要もあります。
 
-1. 組織内の特権ロールを持つユーザーのリスト。 [Privileged Identity Management ウィザード](pim-security-wizard.md#run-the-wizard)を使用して、以下のようなページを表示することができます。
+1. 組織内の特権ロールを持つユーザーのリスト。 Privileged Identity Management の[検出と分析情報 (プレビュー)](pim-security-wizard.md) を使用して、次のようなページを表示することができます。
 
-    ![特権ロールがあるユーザーを示す [特権ロールの検出] ウィンドウ](./media/pim-deployment-plan/discover-privileged-roles-users.png)
+    ![特権ロール経由の露出を減らすための検出と分析情報 (プレビュー) ページ](./media/pim-deployment-plan/new-preview-page.png)
 
 1. 組織内のすべてのグローバル管理者の場合、ロールが必要である理由を確認します。 前のドキュメントの内容に従って、ユーザーのジョブが 1 つ以上の詳細な管理者ロールによって実行できる場合は、グローバル管理者ロールから削除し、Azure Active Directory 内で適宜、割り当てを行う必要があります (参照:Microsoft には、現在、グローバル管理者ロールを持つ約 10 人の管理者のみが存在します。 詳細については、[Microsoft での Privileged Identity Management の使用方法](https://www.microsoft.com/itshowcase/Article/Content/887/Using-Azure-AD-Privileged-Identity-Management-for-elevated-access)に関するページを参照してください)。
 

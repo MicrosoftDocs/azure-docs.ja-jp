@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 44c43505bb779c3e00af19bed3a3fd3844c16bfe
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 262c12b1fb1d5c768b178d6e56c2964527f34495
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923834"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607212"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>クイック スタート:Azure portal を使用して、VM の負荷分散を行うパブリック ロード バランサーを作成する
 
@@ -36,14 +36,12 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 ---
 
-# <a name="option-1-default-create-a-public-load-balancer-standard-sku"></a>[オプション 1 (既定): パブリック ロード バランサーを作成する (Standard SKU)](#tab/option-1-create-load-balancer-standard)
+# <a name="standard-sku"></a>[**Standard SKU**](#tab/option-1-create-load-balancer-standard)
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
-
-パブリック ロード バランサーまたは内部ロード バランサーを作成できます。 
 
 パブリック ロード バランサーを作成するときは、ロード バランサーのフロントエンド (既定では **LoadBalancerFrontend** という名前) として構成される新しいパブリック IP アドレスを作成します。
 
@@ -317,14 +315,12 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 
 8. **[保存]** を選択します。
 
-# <a name="option-2-create-a-public-load-balancer-basic-sku"></a>[オプション 2: パブリック ロード バランサーを作成する (Basic SKU)](#tab/option-1-create-load-balancer-basic)
+# <a name="basic-sku"></a>[**Basic SKU**](#tab/option-1-create-load-balancer-basic)
 
 >[!NOTE]
 >運用環境のワークロードには、Standard SKU ロード バランサーをお勧めします。  SKU の詳細については、「 **[Azure Load Balancer の SKU](skus.md)** 」を参照してください。
 
 このセクションでは、仮想マシンの負荷分散を行うロード バランサーを作成します。 
-
-パブリック ロード バランサーまたは内部ロード バランサーを作成できます。 
 
 パブリック ロード バランサーを作成するときは、ロード バランサーのフロントエンド (既定では **LoadBalancerFrontend** という名前) として構成される新しいパブリック IP アドレスを作成します。
 

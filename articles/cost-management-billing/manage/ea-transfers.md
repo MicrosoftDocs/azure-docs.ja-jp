@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 08/14/2020
 ms.author: banders
-ms.openlocfilehash: a770fe2362e1e1c98c683f694f7f834ac6f4ea6c
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 2c9801cbca7ebd35ed331c88f745eaf5d4848c6f
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87836855"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243651"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure エンタープライズ転送
 

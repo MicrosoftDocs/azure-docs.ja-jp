@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と HR2day by Merces の統合 | Microsoft Docs
 description: Azure Active Directory と HR2day by Merces の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 853d08c9-27b1-48d4-b8e7-3705140eb67f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5b9de6c2b8d9f7b11b686e820aab54fdd8e8a02f
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 3c50e29e1373e9a9c01e9f5812c4146de070144a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866794"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル:Azure Active Directory と HR2day by Merces の統合
 

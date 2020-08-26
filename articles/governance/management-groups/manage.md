@@ -1,14 +1,14 @@
 ---
 title: 管理グループを使用する方法 - Azure のガバナンス
 description: 管理グループ階層を表示、保守、更新、および削除する方法について説明します。
-ms.date: 04/15/2020
+ms.date: 08/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5a0269935daedb3be478cc27d5ecaf87f3c97f7
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 43837dcaed9b9628573ee92244ede542107155f9
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535010"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055141"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>管理グループを使用してリソースを管理する
 
@@ -65,9 +65,7 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 
 管理グループを削除するには、次の要件を満たす必要があります。
 
-1. 管理グループの下に子管理グループやサブスクリプションがないこと。
-
-   - サブスクリプションまたは管理グループを別の管理グループに移動するには、[階層内での管理グループおよびサブスクリプションの移動](#moving-management-groups-and-subscriptions)に関する記事をご覧ください。
+1. 管理グループの下に子管理グループやサブスクリプションがないこと。 サブスクリプションまたは管理グループを別の管理グループに移動するには、[階層内での管理グループおよびサブスクリプションの移動](#moving-management-groups-and-subscriptions)に関する記事を参照してください。
 
 1. 管理グループに対する書き込みアクセス許可 ("所有者"、"共同作成者"、または "管理グループ共同作成者") が必要です。 どのアクセス許可があるかを確認するには、管理グループを選択し、 **[IAM]** を選択します。 Azure ロールの詳細については、  
    [RBAC によるアクセスおよびアクセス許可の管理](../../role-based-access-control/overview.md)に関する記事を参照してください。
@@ -200,7 +198,7 @@ az account management-group show --name 'Contoso' -e -r
 
 管理グループを作成する理由の 1 つは、サブスクリプションをバンドルするためです。 管理グループとサブスクリプションのみが別の管理グループの子になることができます。 管理グループに移動するサブスクリプションは、親管理グループからすべてのユーザー アクセスとポリシーを継承します。
 
-管理グループまたはサブスクリプションを移動して別の管理グループの子にする場合、3 つのルールが true として評価されなければなりません。
+管理グループまたはサブスクリプションを移動して別の管理グループの子にする場合、3 つのルールが true として評価される必要があります。
 
 移動操作を行う際は、次のことが必要です。 
 

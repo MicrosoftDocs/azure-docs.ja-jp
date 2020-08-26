@@ -4,12 +4,12 @@ description: この記事では、Azure 仮想マシンの復旧ポイントか�
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.custom: references_regions
-ms.openlocfilehash: e12669609b21d23b775af27f95528c4b42e95e81
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: ba97a5812359fc72e52d68e337762f7234aa3883
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533549"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611842"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -32,7 +32,7 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 
 3. [バックアップ] ダッシュボード メニューで、 **[ファイルの回復]** を選択します。
 
-    ![[ファイルの回復] ボタン](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
+    ![[ファイルの回復] を選択する](./media/backup-azure-restore-files-from-vm/vm-backup-menu-file-recovery-button.png)
 
     **[ファイルの回復]** メニューが開きます。
 
@@ -42,7 +42,7 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 
 5. 回復ポイントからファイルをコピーするために使用するソフトウェアをダウンロードするには、 **[実行可能ファイルのダウンロード]** (Windows Azure VM の場合) または **[スクリプトのダウンロード]** (Linux Azure VM の場合: Python スクリプトが生成される) を選択します。
 
-    ![生成されたパスワード](./media/backup-azure-restore-files-from-vm/download-executable.png)
+    ![実行可能ファイルのダウンロード](./media/backup-azure-restore-files-from-vm/download-executable.png)
 
     Azure は、実行可能ファイルまたはスクリプトをローカル コンピューターにダウンロードします。
 
@@ -56,7 +56,7 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 
 7. スクリプトを実行するための[適切なマシンがある](#selecting-the-right-machine-to-run-the-script)ことを確認します。 適切なマシンが、スクリプトをダウンロードしたマシンと同じである場合は、ダウンロード セクションに進むことができます。 ダウンロードの場所 (通常は *Downloads* フォルダー) で、実行可能ファイルまたはスクリプトを右クリックし、管理者の資格情報を使用して実行します。 メッセージが表示されたら、パスワードを入力するか、またはメモリからのパスワードを貼り付けて、**Enter** キーを押します。 有効なパスワードが入力されると、スクリプトが復旧ポイントに接続されます。
 
-    ![[ファイルの回復] メニュー](./media/backup-azure-restore-files-from-vm/executable-output.png)
+    ![実行可能ファイルの出力](./media/backup-azure-restore-files-from-vm/executable-output.png)
 
 8. Linux マシンの場合は Python スクリプトが生成されます。 このスクリプトをダウンロードして、適切な (対応している) Linux サーバーにコピーする必要があります。 それを実行するためには、```chmod +x <python file name>``` でアクセス許可を変更しなければならない場合があります。 そのうえで、```./<python file name>``` を使用し、Python ファイルを実行します。
 
@@ -85,6 +85,9 @@ Linux では、復旧ポイントのボリュームはスクリプトが実行�
 ディスクがマウント解除されると、メッセージが表示されます。 接続を更新してディスクを解除できるようになるまで数分かかることがあります。
 
 Linux では、復旧ポイントへの接続が切断された後、OS によって対応するマウント パスが自動的に削除されるわけではありません。 マウント パスは "孤立" ボリュームとして存在し、表示されていますが、ファイルへのアクセスや書き込みを行うと、エラーがスローされます。 マウント パスは手動で削除できます。 実行時に、スクリプトは以前の復旧ポイントから存在するこのようなボリュームを特定し、同意を得たうえでクリーンアップします。
+
+> [!NOTE]
+> 必要なファイルを復元した後は、接続が閉じられていることを確認します。 これは、スクリプトが実行されているマシンがバックアップ用に構成されている場合に特に重要です。 接続がまだ開いている場合、後続のバックアップが失敗し、"UserErrorUnableToOpenMount" というエラーが表示されることがあります。 これは、マウントされたドライブまたはボリュームが利用可能であると見なされているために発生し、アクセスしたときに、基となるストレージ (iSCSI ターゲット サーバーなど) が利用できないために失敗する可能性があります。 接続をクリーンアップすると、これらのドライブとボリュームが削除されるため、バックアップ中に使用できなくなります。
 
 ## <a name="selecting-the-right-machine-to-run-the-script"></a>スクリプトを実行するための適切マシンの選択
 
@@ -231,7 +234,7 @@ mount <LV path from the lvdisplay cmd results> </mountpath>
 ```
 
 > [!WARNING]
-> 'mount -a' は使用しないでください。 このコマンドは、'/etc/fstab' に記述されているすべてのデバイスをマウントします。 これは、重複するデバイスがマウントされる可能性があることを意味します。 スクリプトによって作成された、データを保存しないデバイスにデータがリダイレクトされる可能性があるため、データが失われることがあります。
+> 'mount -a' は使用しないでください。 このコマンドは、'/etc/fstab' に記述されているすべてのデバイスをマウントします。 これは、重複するデバイスがマウントされる可能性があることを意味します。 スクリプトによって作成された、データが保存されないデバイスにデータがリダイレクトされる可能性があるため、データが失われることがあります。
 
 #### <a name="for-raid-arrays"></a>RAID アレイの場合
 

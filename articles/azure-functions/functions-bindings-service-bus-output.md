@@ -6,13 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.custom: devx-track-python
-ms.openlocfilehash: c377d9882b59731857641e1f593dd6b7b24ca7f9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, devx-track-python
+ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87844084"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212154"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Functions における Azure Service Bus の出力バインド
 

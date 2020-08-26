@@ -193,9 +193,9 @@
 - name: 仮想ディスクの管理の問題
   items:
     - name: 概要
-      href: ../windows/managed-disks-overview.md
+      href: ../managed-disks-overview.md
     - name: よく寄せられる質問
-      href: ../windows/faq-for-disks.md
+      href: ../faq-for-disks.md
     - name: ストレージ リソースの削除時のエラー
       href: storage-resource-deletion-errors.md
     - name: クラシック ストレージ リソースの削除時のエラー

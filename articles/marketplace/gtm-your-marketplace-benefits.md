@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/06/2020
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: c2481ca9894a1af3b363db8d5043b7fcd4eefc3d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e9fe02903d2dc76c931e58682a0d632d5e492963
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498023"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607385"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>商用マーケットプレースのベネフィット
 
@@ -32,7 +32,7 @@ Marketplace 報酬は、認識アクティビティから始めて最初の顧�
 
 トランザクション パートナーの場合は、コマーシャル マーケットプレース プラットフォームを通じて請求売上が拡大すると、レベルごとにさらに多くのベネフィットを得られます。
 
-ネットショップで発行する最小要件は MPNID であるため、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのコマーシャル マーケットプレースを通じてビジネスを強化できます。
+オンライン ストアには最低で MPNID があれば発行することができます。したがって、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのコマーシャル マーケットプレースを通じてビジネスを強化できます。
 
 パートナーは、使用可能なリソースの理解およびベスト プラクティスの実装についてサポートを受けることができます。また、[パートナー自身で確認する](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)こともできます。
 

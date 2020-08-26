@@ -3,12 +3,12 @@ title: Azure Migrate での検出、評価、および依存関係分析に関�
 description: Azure Migrate での検出、評価、および依存関係分析に関してよく寄せられる質問への回答を取得します。
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 8db9103494c0006127c45c0ae5f9672d3bd2bbb1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 9b8ba0ec83b9f2faedebb2bfb4ba84109f6f8b77
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829885"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263505"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>検出、評価、および依存関係分析 - よく寄せられる質問
 
@@ -36,23 +36,34 @@ ms.locfileid: "87829885"
 - **Azure VMware Solution (AVS)** の評価を使用するのは、[Azure VMware Solution (AVS)](../azure-vmware/introduction.md) への移行のために、この評価の種類を使用してオンプレミスの [VMware VM](how-to-set-up-appliance-vmware.md) を評価する場合です。 [詳細情報](concepts-azure-vmware-solution-assessment-calculation.md)
 
 - VMware マシンで共通グループを使用できるのは、両方の種類の評価を実行する場合のみです。 Azure Migrate で AVS の評価を初めて実行する場合は、VMware マシンの新しいグループを作成することをお勧めします。
+ 
+
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>評価レポートで一部または全部の VM のパフォーマンス データが見つからないのはなぜですか?
+
+"パフォーマンス ベース" の評価では、Azure Migrate アプライアンスでオンプレミス VM のパフォーマンス データを収集できない場合、評価レポートのエクスポートに "PercentageOfCoresUtilizedMissing" または "PercentageOfMemoryUtilizedMissing" と表示されます。 次の点を確認してください。
+
+- 評価を作成している期間中に VM の電源がオンになっていたかどうか
+- メモリ カウンターのみが取得されず、Hyper-V VM を評価しようとしている場合は、これらの VM で動的メモリが有効になっているかどうかを確認してください。 現在、既知の問題のため、そのような VM のメモリ使用率は、Azure Migrate アプライアンスで収集できません。
+- すべてのパフォーマンス カウンターがない場合は、ポート 443 (HTTPS) での発信接続が許可されていることを確認します。
+
+注 - いずれかのパフォーマンス カウンターを取得できない場合、Azure Migrate: Server Assessment はオンプレミスの割り当てられたコアまたはメモリにフォールバックし、それに応じて VM サイズが推奨されます。
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>評価の信頼度レーティングが低いのはなぜですか?
+
+信頼度評価は、評価を計算するために必要な[使用可能データ ポイント](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings)の割合に基づいて、"パフォーマンス ベース" の評価に対して計算されます。 評価の信頼度レーティングが低い理由は以下のとおりです。
+
+- 評価を作成するための期間用の環境をプロファイルしませんでした。 たとえば、パフォーマンス期間を 1 週間に設定した評価を作成する場合は、すべてのデータポイントが収集されるまで、検出を始めてから少なくとも 1 週間待つ必要があります。 その期間待つことができない場合は、パフォーマンス期間を短くし、評価を "再計算" してください。
+ 
+- サーバー評価では、評価期間内に一部または全部の VM のパフォーマンス データを収集できません。 評価期間中に VM の電源がオンになっていたかどうか、ポート 443 での発信接続が許可されていることを、確認してください。 Hyper-V VM では、動的メモリが有効になっている場合、メモリ カウンターが欠落し、信頼性評価が低くなります。 評価を "再計算" し、信頼性評価に最新の変更を反映してください。 
+
+- Server Assessment で検出が開始された後で、いくつかの VM が作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの VM が環境内に作成されたとします。 この場合、新しい VM のパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。
+
+信頼度レーティングに関する[詳細についてはこちら](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based)をご覧ください。
 
 ## <a name="i-cant-see-some-groups-when-i-am-creating-an-azure-vmware-solution-avs-assessment"></a>Azure VMware Solution (AVS) の評価を作成しているときに一部のグループが表示されません
 
 - AVS の評価は、VMware マシンのみが含まれるグループに対して実行できます。 AVS の評価を実行する場合は、VMware 以外のマシンをグループから削除してください。
 - Azure Migrate で AVS の評価を初めて実行する場合は、VMware マシンの新しいグループを作成することをお勧めします。
-
-## <a name="how-do-i-select-ftt-raid-level-in-avs-assessment"></a>AVS の評価で FTT-RAID レベルを選択するにはどうすればよいですか?
-
-AVS で使用されるストレージ エンジンは vSAN です。 vSAN ストレージ ポリシーには、仮想マシンのストレージ要件が定義されています。 これらのポリシーによって、ストレージを VM に割り当てる方法が決まるため、VM に必要なサービス レベルを確保できます。 使用できる FTT-Raid の組み合わせを次に示します。 
-
-**許容エラー (FTT)** | **RAID 構成** | **最小ホスト要件** | **サイズ設定の考慮事項**
---- | --- | --- | --- 
-1 | RAID-1 (ミラーリング) | 3 | 100 GB の VM に 200 GB が使用されます。
-1 | RAID-5 (イレイジャー コーディング) | 4 | 100 GB の VM に 133.33 GB が使用されます
-2 | RAID-1 (ミラーリング) | 5 | 100 GB の VM に 300 GB が使用されます。
-2 | RAID-6 (イレイジャー コーディング) | 6 | 100 GB の VM に 150 GB が使用されます。
-3 | RAID-1 (ミラーリング) | 7 | 100 GB の VM に 400 GB が使用されます。
 
 ## <a name="i-cant-see-some-vm-types-in-azure-government"></a>Azure Government に一部の VM の種類が表示されない
 

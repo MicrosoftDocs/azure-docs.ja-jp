@@ -6,14 +6,14 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 06/25/2020
 ms.author: mahain
-ms.openlocfilehash: 84798dbcd158b62ce6714bf73494a9e85bf932a8
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 3469b612081f9cb96beec98a065e0827d1c04b4c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387950"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261839"
 ---
-# <a name="avs-assessments-in-azure-migrate-server-assessment"></a>Azure Migrate での AVS 評価:Server Assessment
+# <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>サーバー評価の概要 (Azure VMware Solution への移行)
 
 [Azure Migrate](migrate-services-overview.md) では、オンプレミスのアプリとワークロードの検出、評価、および移行を追跡するための中央ハブが提供されます。 また、Azure までプライベート クラウドとパブリック クラウドのインスタンスを追跡します。 このハブには、評価および移行のための Azure Migrate ツールのほか、サードパーティの独立系ソフトウェア ベンダー (ISV) のオファリングが用意されています。
 

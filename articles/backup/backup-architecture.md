@@ -3,12 +3,12 @@ title: アーキテクチャの概要
 description: Azure Backup サービスによって使用される、アーキテクチャ、コンポーネント、およびプロセスの概要を示します。
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: eab820c2a045c8602bfdbf77b5e2dba4cb2318af
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: fc57f275d7693c9cf93adf04dc5dcc7524ba0567
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86514307"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835733"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup のアーキテクチャとコンポーネント
 
@@ -42,7 +42,7 @@ Recovery Services コンテナーには、次の機能があります。
 - コンテナーを使用すると、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。
 - 各 Azure サブスクリプションに、最大 500 個のコンテナーを作成できます。
 - Azure VM とオンプレミスのマシンを含む、コンテナーでバックアップされたアイテムを監視することができます。
-- Azure の[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/role-assignments-portal.md) を使用して、コンテナーのアクセスを管理できます。
+- [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/role-assignments-portal.md) を使用して、コンテナーのアクセスを管理できます。
 - 冗長性のためにコンテナー内のデータをレプリケートする方法を指定します。
   - **ローカル冗長ストレージ (LRS)** : データセンターの障害から保護するために、LRS を使用できます。 LRS では、ストレージ スケール ユニットにデータをレプリケートします。 [詳細については、こちらを参照してください](../storage/common/storage-redundancy.md)。
   - **geo 冗長ストレージ (GRS)** :リージョン全体の障害から保護するために、GRS を使用できます。 GRS ではデータがセカンダリ リージョンにレプリケートされます。 [詳細については、こちらを参照してください](../storage/common/storage-redundancy.md)。
@@ -120,16 +120,15 @@ DPM/MABS ディスクにバックアップしてから、Azure にバックア�
 - コンテナーが作成されると、"DefaultPolicy" も作成され、リソースのバックアップに使用できます。
 - バックアップ ポリシーの保持期間に変更が加えられると、新しいものを除き、すべての古い復旧ポイントにさかのぼって適用されます。
 
-### <a name="additional-reference"></a>その他の参照情報 
+### <a name="additional-reference"></a>その他の参照情報
 
--   Azure VM マシン:ポリシーを[作成](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings)および[変更](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm)する方法 
--   Azure VM マシンの SQL Server データベース:ポリシーを[作成](./backup-sql-server-database-azure-vms.md#create-a-backup-policy)および[変更](./manage-monitor-sql-database-backup.md#modify-policy)する方法 
--   Azure ファイル共有:ポリシーを[作成](./backup-afs.md#discover-file-shares-and-configure-backup)および[変更](./manage-afs-backup.md#modify-policy)する方法 
--   SAP HANA:ポリシーを[作成](./backup-azure-sap-hana-database.md#create-a-backup-policy)および[変更](./sap-hana-db-manage.md#change-policy)する方法 
--   MARS:ポリシーを[作成](./backup-windows-with-mars-agent.md#create-a-backup-policy)および[変更](./backup-azure-manage-mars.md#modify-a-backup-policy)する方法 
--   [バックアップのスケジュールに、ワークロードの種類に基づく制限はありますか。](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
+- Azure VM マシン:ポリシーを[作成](./backup-azure-vms-first-look-arm.md#back-up-from-azure-vm-settings)および[変更](./backup-azure-manage-vms.md#manage-backup-policy-for-a-vm)する方法。
+- Azure VM マシンの SQL Server データベース:ポリシーを[作成](./backup-sql-server-database-azure-vms.md#create-a-backup-policy)および[変更](./manage-monitor-sql-database-backup.md#modify-policy)する方法。
+- Azure ファイル共有:ポリシーを[作成](./backup-afs.md)および[変更](./manage-afs-backup.md#modify-policy)する方法。
+- SAP HANA:ポリシーを[作成](./backup-azure-sap-hana-database.md#create-a-backup-policy)および[変更](./sap-hana-db-manage.md#change-policy)する方法。
+- MARS:ポリシーを[作成](./backup-windows-with-mars-agent.md#create-a-backup-policy)および[変更](./backup-azure-manage-mars.md#modify-a-backup-policy)する方法。
+- [バックアップのスケジュールに、ワークロードの種類に基づく制限はありますか。](./backup-azure-backup-faq.md#are-there-limits-on-backup-scheduling)
 - [アイテム保持ポリシーを変更した場合、既存の回復ポイントはどうなりますか。](./backup-azure-backup-faq.md#what-happens-when-i-change-my-backup-policy)
-
 
 ## <a name="architecture-built-in-azure-vm-backup"></a>アーキテクチャ:組み込みの Azure VM バックアップ
 

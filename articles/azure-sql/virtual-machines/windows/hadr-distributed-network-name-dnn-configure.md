@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 7c40f4d9f86f27af34c1bc649483810f6756c41d
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 8eb9caf466148e43266c4be9cf1308da15fb67f2
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169818"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245538"
 ---
 # <a name="configure-a-distributed-network-name-for-an-fci"></a>FCI 用の分散ネットワーク名を構成する 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -156,6 +156,29 @@ Start-ClusterResource -Name dnn-demo
 接続をテストするには、同じ仮想ネットワーク内の別の仮想マシンにサインインします。 **SQL Server Management Studio** を開き、DNN の DNS 名を使用して SQL Server FCI に接続します。
 
 必要に応じて、[SQL Server Management Studio をダウンロード](/sql/ssms/download-sql-server-management-studio-ssms)できます。
+
+## <a name="avoid-ip-conflict"></a>IP の競合を回避する
+
+これは、FCI リソースによって使用される仮想 IP (VIP) アドレスが Azure 内の別のリソースに重複して割り当てられないようにするための手順であり省略可能です。 
+
+現在、お客様は DNN を使用して SQL Server FCI に接続していますが、仮想ネットワーク名 (VNN) と仮想 IP は、FCI インフラストラクチャに必要なコンポーネントであるため削除することはできません。 ただし、Azure 内で仮想 IP アドレスを予約するロードバランサーがなくなったため、仮想ネットワーク上の別のリソースが、FCI で使用される仮想 IP アドレスと同じ IP アドレスに割り当てられるというリスクがあります。 これにより、重複 IP 競合の問題が発生する可能性があります。 
+
+IP アドレスを予約するために、APIPA アドレスまたは専用のネットワーク アダプターを構成します。 
+
+### <a name="apipa-address"></a>APIPA アドレス
+
+重複 IP アドレスの使用を回避するには、APIPA アドレス (リンクローカル アドレスとも呼ばれます) を構成します。 これを行うには、次のコマンドを実行します。
+
+```powershell
+Get-ClusterResource "virtual IP address" | Set-ClusterParameter 
+    –Multiple @{"Address”=”169.254.1.1”;”SubnetMask”=”255.255.0.0”;"OverrideAddressMatch"=1;”EnableDhcp”=0}
+```
+
+このコマンドにおいて、"virtual IP address" はクラスター化された VIP アドレス リソースの名前であり、"169.254.1.1" は VIP アドレス用に選択される APIPA アドレスです。 お客様のビジネスに最も適したアドレスを選択します。 `OverrideAddressMatch=1` を設定します。これにより、IP アドレスを、APIPA アドレス空間を含む任意のネットワーク上に指定できるようにします。 
+
+### <a name="dedicated-network-adapter"></a>専用のネットワーク アダプター
+
+または、仮想 IP アドレス リソースによって使用される IP アドレスを予約するように Azure 内のネットワーク アダプターを構成します。 ただし、この場合は、サブネット アドレス空間内のアドレスが使用されるため、そのネットワーク アダプターが決して他の目的で使用されないようにするための追加のオーバーヘッドが発生します。
 
 ## <a name="limitations"></a>制限事項
 

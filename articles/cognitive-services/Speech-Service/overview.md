@@ -10,23 +10,23 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 06/25/2020
 ms.author: trbye
-ms.openlocfilehash: 43efc770f3a3b29a1b0fc214d2927c8c153dff96
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.openlocfilehash: 82099172a933496f015ae8fc575c1919a879e1f9
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85391640"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167744"
 ---
 # <a name="what-is-the-speech-service"></a>音声サービスとは
 
-音声サービスは、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 [Speech SDK](speech-sdk-reference.md)、[Speech Devices SDK](https://aka.ms/sdsdk-quickstart)、または [REST API](rest-apis.md) を使用して、アプリケーション、ツール、デバイスを簡単に音声対応にできます。
+音声サービスは、音声テキスト変換、テキスト読み上げ、音声翻訳が 1 つの Azure サブスクリプションにまとめられたものです。 [Speech CLI](spx-overview.md)、[Speech SDK](speech-sdk-reference.md)、[Speech Devices SDK](https://aka.ms/sdsdk-quickstart)、[Speech Studio](https://speech.microsoft.com/)、または [REST API](rest-apis.md) を使用して、アプリケーション、ツール、デバイスを簡単に音声対応にできます。
 
 > [!IMPORTANT]
 > Speech Service は、Bing Speech API と Translator Speech に代わるものです。 移行の手順については、" _「ハウツー ガイド」の「移行」_ " をご覧ください。
 
 Speech Service は次の機能で構成されています。 各機能の一般的なユース ケースの詳細を学習したり、API リファレンスを参照したりするには、次の表のリンクを使用してください。
 
-| サービス | 特徴量 | 説明 | SDK | REST |
+| サービス | 機能 | 説明 | SDK | REST |
 |---------|---------|-------------|-----|------|
 | [音声テキスト変換](speech-to-text.md) | リアルタイムの音声テキスト変換 | 音声テキスト変換では、オーディオ ストリームまたはローカル ファイルからテキストへの文字起こしまたは翻訳がリアルタイムで行われ、結果のテキストをアプリケーション、ツール、またはデバイスで使用したり表示したりできます。 音声テキスト変換を [Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/) で使用し、文字起こしされた音声からユーザーの意図を抽出して、音声コマンドで対応します。 | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) | [はい](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | | [一括音声テキスト変換](batch-transcription.md) | 一括音声テキスト変換では、Azure Blob Storage に格納された大量の音声データを対象に、音声からテキストへの文字起こしを非同期で行うことができます。 音声からテキストへの変換に加え、一括音声テキスト変換は、ダイアライゼーションや感情分析にも対応します。 | いいえ | [はい](https://westus.cris.ai/swagger/ui/index) |

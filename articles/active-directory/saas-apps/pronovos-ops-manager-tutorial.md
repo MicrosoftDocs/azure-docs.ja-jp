@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と ProNovos Ops Manager の統合 | Microsoft Docs
 description: Azure Active Directory と ProNovos Ops Manager の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 6eb0780c-ff52-464f-8998-e24ea6bbf600
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/18/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95c898dd36387d4474f5129943c6bd76f754ffe2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ba1bcc15caee6f65f5a5d10a63c28f74faee753f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70213537"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553392"
 ---
 # <a name="tutorial-integrate-pronovos-ops-manager-with-azure-active-directory"></a>チュートリアル:ProNovos Ops Manager と Azure Active Directory の統合
 

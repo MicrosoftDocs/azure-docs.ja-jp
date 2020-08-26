@@ -4,12 +4,12 @@ description: Azure Container Instances のイメージとシークレットを�
 ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: d339683c8864b85f7ccb1ac3c982f03aa7abf103
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84907025"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87922236"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Azure Container Instances のセキュリティに関する考慮事項
 
@@ -40,7 +40,7 @@ ms.locfileid: "84907025"
 
 ### <a name="protect-credentials"></a>資格情報を保護する
 
-コンテナーは、複数のクラスターと Azure リージョンに広がることがあります。 そのため、パスワードやトークンなど、ログインまたは API アクセスに必要な資格情報をセキュリティで保護する必要があります。 転送中または保存中のそれらのコンテナーには、特権を持つユーザーのみがアクセスできるようにします。 すべての資格情報シークレットの一覧を作成した後、コンテナー プラットフォーム対応に設計されている新しいシークレット管理ツールを使うよう開発者に要求します。  ソリューションに、暗号化されたデータベース、転送中のシークレット データ用の TLS 暗号化、および最低限の特権を設定する[ロールベースのアクセス制御](../role-based-access-control/overview.md)が含まれていることを確認します。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) は、コンテナー化されたアプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護します。
+コンテナーは、複数のクラスターと Azure リージョンに広がることがあります。 そのため、パスワードやトークンなど、ログインまたは API アクセスに必要な資格情報をセキュリティで保護する必要があります。 転送中または保存中のそれらのコンテナーには、特権を持つユーザーのみがアクセスできるようにします。 すべての資格情報シークレットの一覧を作成した後、コンテナー プラットフォーム対応に設計されている新しいシークレット管理ツールを使うよう開発者に要求します。  ソリューションに、暗号化されたデータベース、転送中のシークレット データ用の TLS 暗号化、および最小特権の [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) が含まれていることを確認します。 [Azure Key Vault](../key-vault/general/secure-your-key-vault.md) は、コンテナー化されたアプリケーションの暗号化キーとシークレット (証明書、接続文字列、パスワードなど) を保護するクラウド サービスです。 このデータは慎重な扱いを要する情報であり、ビジネス上重要であるため、承認されたアプリケーションとユーザーのみがキー コンテナーにアクセスできるように、キー コンテナーへのアクセスをセキュリティで保護します。
 
 ## <a name="considerations-for-the-container-ecosystem"></a>コンテナー エコシステムに関する考慮事項
 

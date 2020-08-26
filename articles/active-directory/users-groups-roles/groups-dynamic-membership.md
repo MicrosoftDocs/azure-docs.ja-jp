@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: overview
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3370a2631a81ce36fd994da73c871fb1e409c667
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8dda8c742a0aafe7ec3f46a0a9dbf0abd4a516b4
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84728369"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213801"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
-Azure Active Directory (Azure AD) では、複雑な属性ベースのルールを作成して、グループの動的メンバーシップを有効にすることができます。 動的グループ メンバーシップを利用することで、ユーザーの追加と削除に必要な管理費が削減されます。 この記事では、ユーザーまたはデバイスに対する動的メンバーシップ ルールを作成するためのプロパティと構文について説明します。 セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
+Azure Active Directory (Azure AD) では、複雑な属性ベースのルールを作成して、グループの動的メンバーシップを有効にすることができます。 動的グループ メンバーシップを利用することで、ユーザーの追加と削除に必要な管理費が削減されます。 この記事では、ユーザーまたはデバイスに対する動的メンバーシップ ルールを作成するためのプロパティと構文について説明します。 セキュリティ グループまたは Microsoft 365 グループには、動的メンバーシップのルールを設定できます。
 
 ユーザーまたはデバイスのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、この変更によってグループの追加または削除がトリガーされるかどうかを確認します。 ユーザーまたはデバイスがグループのルールを満たしている場合、それらはそのグループのメンバーとして追加されます。 ルールを満たさなくなると、削除されます。 動的グループのメンバーを手動で追加または削除することはできません。
 
@@ -269,7 +269,7 @@ assignedPlans は、ユーザーに割り当てられたすべてのサービス
 user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
 ```
 
-このようなルールを使用し、Office 365 (あるいはその他の Microsoft Online Service) 機能が有効になっているすべてのユーザーをグループ化できます。 次に、一連のポリシーをグループに適用できます。
+このようなルールを使用し、Microsoft 365 (あるいはその他の Microsoft Online Service) 機能が有効になっているすべてのユーザーをグループ化できます。 次に、一連のポリシーをグループに適用できます。
 
 #### <a name="example-2"></a>例 2
 

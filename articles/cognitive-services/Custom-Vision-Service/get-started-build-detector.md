@@ -10,18 +10,18 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 01a5714cb78959a982ad73deb401edbafeebe8f9
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 57fb91e9ead98f6c52fd3f659f4aa12692816297
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834458"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549549"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>クイック スタート:Custom Vision を使用してオブジェクト検出器を構築する方法
 
 このクイックスタートでは、Custom Vision Web サイトをとおしてオブジェクト検出器を構築する方法について説明します。 検出器モデルを構築すると、オブジェクト検出のために Custom Vision Service を使用できます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 

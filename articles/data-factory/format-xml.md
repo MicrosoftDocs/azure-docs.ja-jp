@@ -7,16 +7,17 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/16/2020
+ms.date: 08/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 49c44b17247f14b8826df7652dc9eb025953b748
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 6c0b03db281a054410b3c4f44e278dbccf32029f
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095488"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042685"
 ---
 # <a name="xml-format-in-azure-data-factory"></a>Azure Data Factory での XML 形式
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 **XML ファイルを解析する場合**は、この記事に従ってください。 
@@ -86,7 +87,7 @@ Azure Blob Storage 上の XML データセットの例を次に示します。
 | validationMode | XML スキーマを検証するかどうかを指定します。<br>使用できる値は、**none** (既定値、検証なし)、**xsd** (XSD を使用して検証)、**dtd** (DTD を使用して検証) です。 | いいえ |
 | namespacePrefixes | 名前空間 URI とプレフィックスのマッピング。XML ファイルの解析時にフィールドに名前を付けるために使用されます。<br/>XML ファイルに名前空間があり、名前空間が有効になっている場合、既定では、フィールド名は XML ドキュメント内のものと同じになります。<br>このマップの名前空間 URI に対して定義された項目がある場合、フィールド名は `prefix:fieldName` です。 | いいえ |
 | compressionProperties | 特定の圧縮コーデックのデータを圧縮解除する方法のプロパティ グループ。 | いいえ       |
-| preserveZipFileNameAsFolder<br>( *`compressionProperties` の下にあります*) | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。 true (既定) に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。false に設定した場合、Data Factory は解凍されたファイルを直接 `<path specified in dataset>` に書き込みます。  | いいえ |
+| preserveZipFileNameAsFolder<br>( *`compressionProperties` の下にあります*) | **ZipDeflate** で入力データセットが圧縮構成されている場合に適用されます。 コピー時にソースの ZIP ファイル名をフォルダー構造として保持するかどうかを指定します。<br>- **true (既定)** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>/<folder named as source zip file>/` に書き込みます。<br>- **false** に設定した場合、Data Factory は解凍されたファイルを `<path specified in dataset>` に直接書き込みます。 競合または予期しない動作を避けるために、異なるソース ZIP ファイルに重複したファイル名がないことを確認します。  | いいえ |
 
 ## <a name="mapping-data-flow-properties"></a>Mapping Data Flow のプロパティ
 
@@ -96,7 +97,7 @@ Azure Blob Storage 上の XML データセットの例を次に示します。
 
 次の表に、XML ソースでサポートされるプロパティの一覧を示します。 これらのプロパティは、 **[ソース オプション]** タブで編集できます。詳細については、「[XML コネクタの動作](#xml-connector-behavior)」を参照してください。 インライン データセットを使用する場合、「[データセットのプロパティ](#dataset-properties)」セクションで説明したプロパティと同じ追加のファイル設定が表示されます。 
 
-| 名前 | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
+| Name | 説明 | 必須 | 使用できる値 | データ フロー スクリプトのプロパティ |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | ワイルド カードのパス | ワイルドカードのパスに一致するすべてのファイルが処理されます。 データセットで設定されているフォルダーとファイル パスはオーバーライドされます。 | いいえ | String[] | wildcardPaths |
 | パーティションのルート パス | パーティション分割されたファイル データについては、パーティション フォルダーを列として読み取るためにパーティションのルート パスを入力できます | いいえ | String | partitionRootPath |

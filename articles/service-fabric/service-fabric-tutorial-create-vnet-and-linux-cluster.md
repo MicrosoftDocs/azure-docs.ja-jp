@@ -4,12 +4,12 @@ description: Azure CLI を使用して Linux Service Fabric クラスターを�
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 14e029622f17e8aae392cc55ba4418b3971a5ad2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260219"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586922"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
@@ -41,7 +41,12 @@ Ubuntu 18.04 LTS の場合:
 * [AzureDeploy.json][template2]
 * [AzureDeploy.Parameters.json][parameters2]
 
-2 つのテンプレートの違いは、**vmImageSku** 属性が "18.04-LTS" に設定され、各ノードの **typeHandlerVersion** が 1.1 に設定されていることです。
+Ubuntu 18.04 LTS の 2 つのテンプレートの違い 
+* **vmImageSku** 属性が "18.04-LTS" に設定されています
+* 各ノードの **typeHandlerVersion** が 1.1 に設定されています
+* 次の Microsoft.ServiceFabric/clusters リソース
+   - **apiVersion** が "2019-03-01" 以上に設定されています
+   - **vmImage** プロパティが "Ubuntu18_04" に設定されています
 
 このテンプレートでは、7 つの仮想マシンと 3 つのノード タイプから成るセキュリティ保護されたクラスターが、仮想ネットワーク内にデプロイされます。  [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) には他のサンプル テンプレートがあります。 [AzureDeploy.json][template] では、次のものを含むいくつかのリソースがデプロイされます。
 

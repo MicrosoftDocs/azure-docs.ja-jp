@@ -1,24 +1,24 @@
 ---
-title: 「Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する」を参照してください。
+title: Azure CLI で BLOB またはキュー データへのアクセスの承認方法を選択する
 titleSuffix: Azure Storage
 description: Azure CLI を使用して、BLOB またはキューのデータに対するデータ操作を承認する方法を指定します。 データ操作を承認するには、アカウント アクセス キーまたは アクセス共有シグネチャ (SAS) トークンを使用して、Azure AD 資格情報を使用します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/26/2020
+ms.date: 08/18/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a656ccc56d198943c8631077466115eb6411a64a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: a089ffb7631ded7bd36a4eee5fb862ced3fd2ad0
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534891"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589064"
 ---
-# <a name="authorize-access-to-blob-or-queue-data-with-azure-cli"></a>「Azure CLI を使用して BLOB またはキュー データへのアクセスを承認する」を参照してください。
+# <a name="choose-how-to-authorize-access-to-blob-or-queue-data-with-azure-cli"></a>Azure CLI で BLOB またはキュー データへのアクセスの承認方法を選択する
 
 Azure Storage には、BLOB またはキューのデータに対する操作を承認する方法を指定できるようにするための Azure CLI の拡張機能が用意されています。 データ操作は、次の方法で承認できます。
 

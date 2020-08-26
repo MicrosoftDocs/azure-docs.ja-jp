@@ -3,12 +3,12 @@ title: クイック スタート:質問のバッチを使用したナレッジ �
 description: QnA Maker バッチ テスト ツールを使用して、期待される回答、信頼度スコア、および複数ターンのプロンプトについて、実際の QnA Maker リソース内のナレッジ ベースをテストします。
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.openlocfilehash: 01c767a6fbea5061f644052234f7462857dd342b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: bcee98678212a3bc233c36a831f6bcde7e6ae550
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337735"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531071"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>クイック スタート:質問のバッチと期待される回答を使用したナレッジ ベースのテスト
 
@@ -16,7 +16,7 @@ QnA Maker バッチ テスト ツールを使用して、期待される回答�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* Azure サブスクリプション - [無料アカウントを作成する](https://azure.microsoft.com/free/cognitive-services/)
 * [QnA Maker サービスを作成する](create-publish-knowledge-base.md)か、既存のサービス (言語には英語が使用されています) を使用する。
 * [複数ターン サンプル `.docx` ファイル](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/qna-maker/data-source-formats/multi-turn.docx)をダウンロードする
 * [バッチ テスト ツール](https://aka.ms/qnamakerbatchtestingtool)をダウンロードし、`.zip` ファイルから実行可能ファイルを抽出する。
@@ -61,7 +61,7 @@ QnA Maker ポータルに[サインイン](https://www.qnamaker.ai/)します。
 
 ## <a name="create-batch-test-file-with-question-ids"></a>質問 ID を含むバッチ テスト ファイルを作成する
 
-バッチ テスト ツールを使用するために、テキスト エディターを使用して `batch-test-data-1.tsv` という名前のファイルを作成します。 このファイルには、タブで区切られた次の列が必要です。
+バッチ テスト ツールを使用するために、テキスト エディターを使用して `batch-test-data-1.tsv` という名前のファイルを作成します。 このファイルは UTF-8 形式である必要があり、タブで区切られた次の列が含まれている必要があります。
 
 |TSV 入力ファイルのフィールド|Notes|例|
 |--|--|--|

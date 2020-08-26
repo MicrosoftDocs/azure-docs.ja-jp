@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d979d2d0167a4398d31271bb896c812bbe86be73
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84660762"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827862"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Azure ファイル共有への移行
 
@@ -81,7 +81,7 @@ Azure ファイル共有の [Azure AD 認証](storage-files-identity-auth-active
 | source | ターゲット: </br>ハイブリッド デプロイ | ターゲット: </br>クラウドのみのデプロイ |
 |:---|:--|:--|
 | | ツールの組み合わせ:| ツールの組み合わせ: |
-| Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync と Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>Azure File Sync と記憶域移行サービス</li></ul> | <ul><li>Azure File Sync</li><li>Azure File Sync と Data Box</li><li>Azure File Sync と記憶域移行サービス</li><li>RoboCopy</li></ul> |
+| Windows Server 2012 R2 以降 | <ul><li>[Azure File Sync](storage-sync-files-deployment-guide.md)</li><li>[Azure File Sync と Azure Data Box](storage-sync-offline-data-transfer.md)</li><li>[Azure File Sync とクラウドに事前シード処理されたファイル](storage-sync-offline-data-transfer.md#azure-file-sync-and-pre-seeded-files-in-the-cloud)</li><li>Azure File Sync と記憶域移行サービス</li></ul> | <ul><li>Azure File Sync</li><li>Azure File Sync と Data Box</li><li>Azure File Sync と記憶域移行サービス</li><li>RoboCopy</li></ul> |
 | Windows Server 2012 以前 | <ul><li>Azure File Sync と Data Box</li><li>Azure File Sync と記憶域移行サービス</li></ul> | <ul><li>Azure File Sync と記憶域移行サービス</li><li>RoboCopy</li></ul> |
 | ネットワーク接続ストレージ (NAS) | <ul><li>[Azure File Sync と RoboCopy](storage-files-migration-nas-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |
 | Linux または Samba | <ul><li>[Azure File Sync と RoboCopy](storage-files-migration-linux-hybrid.md)</li></ul> | <ul><li>RoboCopy</li></ul> |

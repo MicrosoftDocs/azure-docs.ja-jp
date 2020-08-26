@@ -3,16 +3,16 @@ title: 管理グループにリソースをデプロイする
 description: Azure Resource Manager テンプレートを使用して、管理グループのスコープでリソースをデプロイする方法について説明します。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a17387aef4d35c042d1fe0b02f1c6fd447e4a918
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 992882859ed1c67cf66c31f69f21e151081cf087
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321804"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002894"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>管理グループ レベルでリソースを作成する
 
-成熟している組織では、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイして、管理グループ レベルでリソースを作成することができます。 たとえば、場合によっては、管理グループの[ポリシー](../../governance/policy/overview.md)や[ロールベースのアクセス制御](../../role-based-access-control/overview.md)を定義して、割り当てる必要があります。 管理グループ レベルのテンプレートがあれば、宣言という方法を用いて管理グループ レベルでポリシーを適用し、ロールを割り当てることができます。
+成熟している組織では、Azure Resource Manager テンプレート (ARM テンプレート) をデプロイして、管理グループ レベルでリソースを作成することができます。 たとえば、場合によっては、管理グループの[ポリシー](../../governance/policy/overview.md)や [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を定義して、割り当てる必要があります。 管理グループ レベルのテンプレートがあれば、宣言という方法を用いて管理グループ レベルでポリシーを適用し、ロールを割り当てることができます。
 
 ## <a name="supported-resources"></a>サポートされているリソース
 
@@ -357,6 +357,6 @@ REST API の場合は、[管理グループ スコープでの作成によるデ
 
 ## <a name="next-steps"></a>次のステップ
 
-* ロールの割り当てについては、「[RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-template.md)」をご覧ください。
+* ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する](../../role-based-access-control/role-assignments-template.md)」を参照してください。
 * Azure Security Center のワークスペースの設定をデプロイする例については、[deployASCwithWorkspaceSettings.json](https://github.com/krnese/AzureDeploy/blob/master/ARM/deployments/deployASCwithWorkspaceSettings.json) のページを参照してください。
 * [サブスクリプション レベル](deploy-to-subscription.md)と[テナント レベル](deploy-to-tenant.md)でテンプレートをデプロイすることもできます。

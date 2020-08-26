@@ -1,18 +1,19 @@
 ---
 title: Azure Files のデプロイの計画 | Microsoft Docs
-description: Azure Files のデプロイを計画するときの考慮事項について説明します。
+description: Azure Files デプロイの計画について理解します。 Azure File Sync を使用し、Azure ファイル共有を直接マウントするか、オンプレミスでキャッシュできます。
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4e39ec197b0bbce5d963650abd5dc7811647fa01
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.custom: references_regions
+ms.openlocfilehash: aab06b4870efd88893b4a14c1127de7ffcd2ba68
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87370361"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88520527"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) は、サーバーレスの Azure ファイル共有を直接マウントすることと、Azure File Sync を使用してオンプレミスで Azure ファイル共有をキャッシュすることの 2 つの主な方法でデプロイできます。選択するデプロイ オプションによって、デプロイを計画する際に考慮する必要がある内容が変わります。 
@@ -103,7 +104,7 @@ Advanced Threat Protection (ATP) for Azure Storage には、ストレージ ア�
 ## <a name="storage-tiers"></a>ストレージ層
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
 
-一般に、Azure Files の機能とその他のサービスとの相互運用性は Premium ファイル共有と Standard ファイル共有で同じですが、重要な違いがいくつかあります。
+一般に、Azure Files の機能とその他のサービスとの相互運用性は Premium ファイル共有と Standard ファイル共有 (トランザクションの最適化、ホットとクールのファイル共有を含む) で同じですが、重要な違いがいくつかあります。
 - **課金モデル**
     - Premium ファイル共有は、プロビジョニングされた課金モデルを使用して課金されます。これは、実際に要求するストレージの量ではなく、プロビジョニングするストレージの量に対して料金を支払うことを意味します。 
     - Standard ファイル共有は従量課金制モデルを使用して課金されます。これには、実際に消費しているストレージの量に対するストレージの基本コストと、共有の使用方法に基づく追加のトランザクション コストが含まれます。 Standard ファイル共有では、Azure ファイル共有の使用 (読み取り、書き込み、マウント) 量が増えると、課金が増加します。

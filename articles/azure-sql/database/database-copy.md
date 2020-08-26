@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 07/29/2020
-ms.openlocfilehash: 4189ea5fd0b2b52b5bf1e0614e4b43b9411df31d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 02ff222337e1b1c22df79724c232d4ca2b8b9f67
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87530379"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225735"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>トランザクション上一貫性のある Azure SQL Database のデータベースのコピーを作成する
 
@@ -118,7 +118,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 > [Azure portal](https://portal.azure.com)、PowerShell、および Azure CLI は、別のサブスクリプションへのデータベースのコピーをサポートしていません。
 
 > [!TIP]
-> T-SQL を使用するデータベースのコピーでは、異なる Azure テナント内のサブスクリプションからのデータベースのコピーがサポートされています。
+> T-SQL を使用するデータベースのコピーでは、異なる Azure テナント内のサブスクリプションからのデータベースのコピーがサポートされています。 これは、SQL 認証ログインを使用して対象サーバーにログインする場合にのみサポートされます。
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>コピー操作の進行状況を監視する
 

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/27/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901815ba40459bd50562e557a0a766474c731ce0
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 84bf041f64a2f85f3aa3eada1dc1955c93dc034a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475908"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208188"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>クラウド グループに割り当てられているロールのトラブルシューティング
 
@@ -51,7 +51,7 @@ ms.locfileid: "87475908"
 
 **A:** はい、できます。 グローバル管理者とユーザー管理者には、任意のグループをアクセス パッケージに配置する権限があります。 グローバル管理者には何も変更はありませんが、ユーザー管理者ロールのアクセス許可には若干の変更が加えられています。 ロールを割り当て可能なグループをアクセス パッケージに配置するには、ユーザー管理者であると同時に、ロールを割り当て可能なそのグループの所有者でもある必要があります。 エンタープライズ ライセンス管理でアクセス パッケージを作成できるユーザーの完全な表を次に示します。
 
-Azure AD ディレクトリ ロール | エンタイトルメント管理ロール | セキュリティ グループの追加\* | Office 365 グループの追加\* | アプリの追加 | SharePoint Online サイトの追加
+Azure AD ディレクトリ ロール | エンタイトルメント管理ロール | セキュリティ グループの追加\* | Microsoft 365 グループの追加\* | アプリの追加 | SharePoint Online サイトの追加
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
 全体管理者 | 該当なし | ✔️ | ✔️ | ✔️  | ✔️
 ユーザー管理者  | 該当なし  | ✔️  | ✔️  | ✔️

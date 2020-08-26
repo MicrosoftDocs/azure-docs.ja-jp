@@ -1,6 +1,6 @@
 ---
 title: Azure Maps API の使用状況メトリックを表示する | Microsoft Azure Maps
-description: この記事では、Azure portal で Microsoft Azure Maps API の呼び出しに関するメトリックを表示する方法について説明します。
+description: 要求の合計数、合計エラー数、可用性などの、Azure Maps API の使用状況メトリックを表示する方法について説明します。 データをフィルター処理して結果を分割する方法を参照してください。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 08/06/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 57fb699a7225a53af1f093520855e8e2ef132f42
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 766bb2eaf6878a8d7261472ba11ea7acd46de92e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130734"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036489"
 ---
 # <a name="view-azure-maps-api-usage-metrics"></a>Azure Maps API の使用状況メトリックを表示する
 
@@ -31,18 +31,18 @@ Maps アカウントの **[概要]** ページでいくつかの共通メトリ�
 
 1. [ポータル](https://portal.azure.com)で Azure サブスクリプションにサインインします。
 
-2. 左側にある **[すべてのリソース]** メニュー アイコンをクリックして、 *[Azure Maps アカウント]* に移動します。
+2. 左側にある **[すべてのリソース]** メニュー アイコンをクリックして、*[Azure Maps アカウント]* に移動します。
 
 3. ご利用の Maps アカウントが開いたら、左側の **[メトリック]** メニューをクリックします。
 
 4. **[メトリック]** ウィンドウで、次のいずれかのオプションを選びます。
 
-   1. **[可用性]** : 期間にわたって API 可用性の*平均*を示します。
-   2. **[使用状況]** : 使用状況におけるご自分のアカウントの*割合*を示します。
+   1. **[可用性]**: 期間にわたって API 可用性の*平均*を示します。
+   2. **[使用状況]**: 使用状況におけるご自分のアカウントの*割合*を示します。
 
       ![Azure Maps 使用状況メトリック ペイン](media/how-to-view-api-usage/portal-metrics.png)
 
-5. 次に、 **[過去 24 時間] (自動)** をクリックして、 *[時間の範囲]* を選択できます。 既定では、時間の範囲は 24 時間に設定されています。 クリックすると、選択可能な時間の範囲がすべて表示されます。 また、 *[時間の粒度]* を選択したり、同じドロップダウン内の *[ローカル]* または *[GMT]* として時間を示すように選んだりすることができます。 **[Apply]** をクリックします。
+5. 次に、**[過去 24 時間] (自動)** をクリックして、*[時間の範囲]* を選択できます。 既定では、時間の範囲は 24 時間に設定されています。 クリックすると、選択可能な時間の範囲がすべて表示されます。 また、*[時間の粒度]* を選択したり、同じドロップダウン内の *[ローカル]* または *[GMT]* として時間を示すように選んだりすることができます。 **[Apply]** をクリックします。
 
     ![Azure Maps メトリックの時間の範囲](media/how-to-view-api-usage/time-range.png)
 
@@ -56,7 +56,7 @@ Maps アカウントの **[概要]** ページでいくつかの共通メトリ�
 
 8. 上部の **[メトリックの追加]** ボタンをクリックするだけで、同じグラフ上で複数のメトリックを確認することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 使用状況を追跡する必要がある Azure Maps の API の詳細については、以下を参照してください。
 > [!div class="nextstepaction"] 

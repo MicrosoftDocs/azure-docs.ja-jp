@@ -1,29 +1,29 @@
 ---
 title: Windows のグループ ポリシー ベースラインからゲスト構成ポリシー定義を作成する方法
 description: Windows Server 2019 セキュリティ ベースラインからグループ ポリシーをポリシー定義に変換する方法について説明します。
-ms.date: 06/05/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: bbb634ed55acf8aa994045fbef6569fae031c841
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86080671"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547770"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Windows のグループ ポリシー ベースラインからゲスト構成ポリシー定義を作成する方法
 
-カスタム ポリシー定義を作成する前に、[Azure Policy ゲスト構成](../concepts/guest-configuration.md)に関するページで、概念上の概要情報を読むことをお勧めします。 Linux のカスタムのゲスト構成ポリシー定義を作成する方法の詳細については、「[Linux 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create-linux.md)」を参照してください。 Windows のカスタムのゲスト構成ポリシー定義を作成する方法の詳細については、「[Windows 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create.md)」を参照してください。 
+カスタム ポリシー定義を作成する前に、[Azure Policy ゲスト構成](../concepts/guest-configuration.md)に関するページで、概念上の概要情報を読むことをお勧めします。 Linux のカスタムのゲスト構成ポリシー定義を作成する方法の詳細については、「[Linux 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create-linux.md)」を参照してください。 Windows のカスタムのゲスト構成ポリシー定義を作成する方法の詳細については、「[Windows 用のゲスト構成ポリシーを作成する方法](./guest-configuration-create.md)」を参照してください。
 
-Windows の監査時に、ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使用して構成ファイルが作成されます。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が**準拠していない**場合、ポリシー効果 *auditIfNotExists* がトリガーされます。 [Azure Policy ゲスト構成](../concepts/guest-configuration.md)では、マシン内の設定の監査のみが行われます。
+Windows の監査時に、ゲスト構成では [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) リソース モジュールを使用して構成ファイルが作成されます。 DSC 構成では、マシンが満たす必要のある条件を定義します。 構成の評価が**準拠していない**場合、ポリシー効果 *auditIfNotExists* がトリガーされます。
+[Azure Policy ゲスト構成](../concepts/guest-configuration.md)では、マシン内の設定の監査のみが行われます。
 
 > [!IMPORTANT]
 > ゲスト構成を使用したカスタム ポリシー定義はプレビュー機能です。
 >
-> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。
-> すべての Windows マシンに拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
->   - [Windows VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
+> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 すべての Windows マシンに拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
+> - [Windows VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0ecd903d-91e7-4726-83d3-a229d7f2e293)
 
-DSC コミュニティでは、エクスポートされたグループ ポリシー テンプレートを DSC 形式に変換できる [BaselineManagement モジュール](https://github.com/microsoft/BaselineManagement)を公開しています。 BaselineManagement モジュールと GuestConfiguration コマンドレットを組み合わせて使用すると、グループ ポリシー コンテンツから Windows 用の Azure Policy ゲスト構成パッケージを作成できます。 BaselineManagement モジュールの使用方法の詳細については、「[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/scripting/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。 
+DSC コミュニティでは、エクスポートされたグループ ポリシー テンプレートを DSC 形式に変換できる [BaselineManagement モジュール](https://github.com/microsoft/BaselineManagement)を公開しています。 BaselineManagement モジュールと GuestConfiguration コマンドレットを組み合わせて使用すると、グループ ポリシー コンテンツから Windows 用の Azure Policy ゲスト構成パッケージを作成できます。 BaselineManagement モジュールの使用方法の詳細については、「[クイックスタート: グループ ポリシーを DSC に変換する](/powershell/scripting/dsc/quickstarts/gpo-quickstart)」という記事を参照してください。
 
 このガイドでは、グループ ポリシー オブジェクト (GPO) から Azure Policy ゲスト構成パッケージを作成するプロセスについて説明します。 このチュートリアルでは、Windows Server 2019 セキュリティ ベースラインの変換の概要を説明していますが、同じプロセスを他の GPO に適用することもできます。  
 
@@ -62,7 +62,7 @@ PowerShell で **DSC**、**GuestConfiguration**、**Baseline Management**、お�
 
 ## <a name="convert-from-group-policy-to-azure-policy-guest-configuration"></a>グループ ポリシーから Azure Policy ゲスト構成に変換する
 
-次に、ゲスト構成モジュールとベースライン管理モジュールを使用して、ダウンロードした Server 2019 ベースラインをゲスト構成パッケージに変換します。 
+次に、ゲスト構成モジュールとベースライン管理モジュールを使用して、ダウンロードした Server 2019 ベースラインをゲスト構成パッケージに変換します。
 
 1. ベースライン管理モジュールを使用して、グループ ポリシーを Desired State Configuration に変換します。
 
@@ -203,5 +203,5 @@ _DeployIfNotExists_ 効果でポリシー定義を割り当てるには、追加
 ## <a name="next-steps"></a>次のステップ
 
 - [ゲスト構成](../concepts/guest-configuration.md)による VM の監査について学習します。
-- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](get-compliance-data.md)方法を学習します。
+- [プログラムによってポリシーを作成する](./programmatically-create.md)方法を理解します。
+- [コンプライアンス データを取得する](./get-compliance-data.md)方法を学習します。

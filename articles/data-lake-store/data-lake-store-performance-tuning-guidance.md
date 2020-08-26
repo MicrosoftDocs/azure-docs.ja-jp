@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 - パフォーマンス チューニング
-description: Azure Data Lake Storage Gen1 のパフォーマンス チューニングについて説明します。
+description: 最高のパフォーマンスを得るには、読み取りと書き込みをできるだけ並列実行し、Azure Data Lake Storage Gen1 で利用できるスループットをすべて利用することが重要です。そのしくみについて説明します。
 author: stewu
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.author: stewu
-ms.openlocfilehash: 6b6dba101c7793198fe9d1e2bef1bcd99ddac618
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d18440b27d9429a2638a58be40e1ec583b9a85ad
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281737"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190243"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Azure Data Lake Storage Gen1 のパフォーマンス チューニング
 

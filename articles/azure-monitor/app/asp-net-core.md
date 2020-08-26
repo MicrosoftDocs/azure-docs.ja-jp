@@ -3,12 +3,12 @@ title: ASP.NET Core アプリケーション用の Azure Application Insights | 
 description: ASP.NET Core Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 1a9bc3e46e108c50b36e0318e0f9a51a94e83573
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 81d7ab38080aac941bce1f5d1dd17145f8075036
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87475517"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518086"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights for ASP.NET Core アプリケーション
 
@@ -36,6 +36,8 @@ ms.locfileid: "87475517"
 - 有効な Application Insights インストルメンテーション キー。 Application Insights にテレメトリを送信するには、このキーが必要です。 インストルメンテーション キーを取得するために新しい Application Insights リソースを作成する必要がある場合は、「[Application Insights リソースの作成](./create-new-resource.md)」をご覧ください。
 
 ## <a name="enable-application-insights-server-side-telemetry-visual-studio"></a>Application Insights のサーバー側テレメトリを有効にする (Visual Studio)
+
+Visual Studio for Mac の場合は、[手動のガイダンス](#enable-application-insights-server-side-telemetry-no-visual-studio)を使用します。 この手順は、Visual Studio の Windows バージョンでのみサポートされています。
 
 1. Visual Studio でプロジェクトを開きます。
 
@@ -115,6 +117,10 @@ ms.locfileid: "87475517"
 
     > [!NOTE]
     > コードで指定されたインストルメンテーション キーは、他のオプションより優先される環境変数 `APPINSIGHTS_INSTRUMENTATIONKEY` より優先されます。
+
+### <a name="user-secrets-and-other-configuration-providers"></a>ユーザー シークレットとその他の構成プロバイダー
+
+インストルメンテーション キーを ASP.NET Core ユーザー シークレットに格納するか、別の構成プロバイダーから取得する場合は、`Microsoft.Extensions.Configuration.IConfiguration` パラメーターでオーバーロードを使用できます。 たとえば、「 `services.AddApplicationInsightsTelemetry(Configuration);` 」のように入力します。
 
 ## <a name="run-your-application"></a>アプリケーションを実行する
 

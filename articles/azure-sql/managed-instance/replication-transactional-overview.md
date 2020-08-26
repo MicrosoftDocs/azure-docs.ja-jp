@@ -12,17 +12,19 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 04/20/2020
-ms.openlocfilehash: ee481067a3904c208061607b7109fcba0f3faaa7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ec1dfa3edea5364151c543889d974944a1a1cd5a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504069"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920128"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance"></a>Azure SQL Managed Instance でのトランザクション レプリケーション
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-トランザクション レプリケーションは、Azure SQL Managed Instance または SQL Server インスタンスのテーブルからリモート データベースに配置されているテーブルにデータをレプリケートする、Azure SQL Managed Instance と SQL Server の機能です。 この機能を使用すると、さまざまなデータベース内の複数のテーブルを同期させることができます。
+トランザクション レプリケーションは、Azure SQL Managed Instance または SQL Server インスタンスのテーブルからリモート データベースに配置されているテーブルにデータをレプリケートする、Azure SQL Managed Instance と SQL Server の機能です。 この機能を使用すると、さまざまなデータベース内の複数のテーブルを同期させることができます。 
+
+トランザクション レプリケーションは、現在、SQL Managed Instance でのパブリック プレビュー段階にあります。 
 
 ## <a name="overview"></a>概要
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.date: 08/07/2020
-ms.openlocfilehash: 4d2a884bd6fd4cb62aa7cae5f3e53b865082fde8
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 75c604df2f44e9c732fa9c2ce2093237e4e484a4
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166605"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606052"
 ---
 # <a name="create-a-managed-service-offer"></a>管理サービス オファーの作成
 
@@ -29,7 +29,7 @@ ms.locfileid: "88166605"
     ![左側のナビゲーション メニューの画像。](./media/new-offer-managed-service.png)
 
 >[!NOTE]
->オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+>オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ## <a name="new-offer"></a>新しいプラン
 

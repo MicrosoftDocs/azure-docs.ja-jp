@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Mimecast Admin Console の統合 | Microsoft Docs
 description: Azure Active Directory と Mimecast Admin Console の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 81c50614-f49b-4bbc-97d5-3cf77154305f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 276a1acb5735e3490f331000799d57c329e7fca0
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f3029acd791e7c45eb5943d298189430ac308e99
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848558"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88528473"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mimecast-admin-console"></a>チュートリアル:Mimecast Admin Console と Azure Active Directory のシングル サインオン (SSO) 統合
 

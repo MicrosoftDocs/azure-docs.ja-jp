@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Insperity ExpensAble の統合 | Microsoft Docs'
 description: Azure Active Directory と Insperity ExpensAble の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c579c453-580e-417d-8a5e-9b6b352795c0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 43b24bec557d1cc879be9568bea451f1a8b0b310
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b27b378a09c3de9596b4db45afa6ebb4d7c4d163
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67625310"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550362"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>チュートリアル: Azure Active Directory と Insperity ExpensAble の統合
 

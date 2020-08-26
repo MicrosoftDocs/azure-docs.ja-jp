@@ -1,5 +1,5 @@
 ---
-title: Python を使用して接続する - Azure Database for PostgreSQL - Single Server
+title: クイック スタート:Python を使用して接続する - Azure Database for PostgreSQL - Single Server
 description: このクイックスタートでは、Azure Database for PostgreSQL - Single Server に接続してデータを照会するために使用できる、Python コード サンプルを紹介します。
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter, devx-track-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 8cc081035c971f1864af5512a19c0ee2da3004ab
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: a9303909eb98fc0ff2d7582fa7f5807a879e7958
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852176"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182684"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>クイック スタート:Python を使用して Azure Database for PostgreSQL - Single Server に接続し、データにクエリを実行する
 

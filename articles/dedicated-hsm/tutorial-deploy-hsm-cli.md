@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 02b15f88e05abc918100f5e6b1ad1cdd60954a9d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: e4403252396aab91fa960ed7258d433e27db950a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486988"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258243"
 ---
 # <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-cli"></a>チュートリアル:CLI を使用して既存の仮想ネットワークに HSM をデプロイする
 
@@ -38,7 +38,7 @@ Azure Dedicated HSM では、完全な管理制御と完全な管理責任が備
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Dedicated HSM は現在、Azure portal では使用できません。 サービスに対するすべての操作は、コマンドラインまたは PowerShell を使用して行います。 このチュートリアルでは、Azure Cloud Shell でコマンドライン インターフェイス (CLI) を使用します。 Azure CLI を使用するのが初めての場合は、こちらの [Azure CLI 2.0 の開始](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)に関するページの開始手順に従います。
+Azure Dedicated HSM は現在、Azure portal では使用できません。 サービスに対するすべての操作は、コマンドラインまたは PowerShell を使用して行います。 このチュートリアルでは、Azure Cloud Shell でコマンドライン インターフェイス (CLI) を使用します。 Azure CLI を使用するのが初めての場合は、こちらの [Azure CLI 2.0 の開始](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)に関するページの開始手順に従います。
 
 想定:
 

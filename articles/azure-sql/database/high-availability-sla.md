@@ -12,12 +12,12 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 08/12/2020
-ms.openlocfilehash: 33521a5aed38cacbc7ce87b4a2a917ade866e378
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.openlocfilehash: 62dfa3214b86139a8f836b3d9bd72585653b7fa2
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88142436"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88189945"
 ---
 # <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の高可用性
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -117,4 +117,5 @@ Azure SQL Database と Azure SQL Managed Instance の特徴は、Azure プラッ
 - [Azure 可用性ゾーン](../../availability-zones/az-overview.md)の詳細
 - [Service Fabric](../../service-fabric/service-fabric-overview.md) の詳細
 - [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) の詳細
+- [SQL Managed Instance で手動フェールオーバーを開始する方法](../managed-instance/user-initiated-failover.md)の詳細
 - 高可用性およびディザスター リカバリーのためのその他のオプションについては、[ビジネス継続性](business-continuity-high-availability-disaster-recover-hadr-overview.md)に関するページを参照してください。

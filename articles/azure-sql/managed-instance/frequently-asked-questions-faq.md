@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 6713a1fbbbbca0aa212461cc966b42aaf2daa47e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5f42079d271a933cb9a722c7e33e6f646f7c4d1b
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86498459"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210498"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Azure SQL Managed Instance に関してよく寄せられる質問 (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -214,7 +214,7 @@ SQL Managed Instance のストレージ サイズは選択したサービス レ
 
 **General Purpose サービス レベルでストレージのパフォーマンスを最適化するにはどうすればよいですか?**
 
-ストレージのパフォーマンスを最適化するには、「[General Purpose でのストレージのベスト プラクティス](https://techcommunity.microsoft.com/t5/datacat/storage-performance-best-practices-and-considerations-for-azure/ba-p/305525)」を参照してください。
+ストレージのパフォーマンスを最適化するには、「[General Purpose でのストレージのベスト プラクティス](https://techcommunity.microsoft.com)」を参照してください。
 
 ## <a name="backup-and-restore"></a>バックアップと復元
 

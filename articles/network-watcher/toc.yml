@@ -61,6 +61,12 @@
           href: connection-monitor-preview-create-using-portal.md
         - name: ARMClient の使用
           href: connection-monitor-preview-create-using-arm-client.md
+    - name: 接続モニターへの移行 (プレビュー)
+      items:
+        - name: Network Performance Monitor から
+          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+        - name: 接続モニターから
+          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: VM ネットワークに関する問題を診断する
       items:
         - name: VM 拡張機能をインストールする

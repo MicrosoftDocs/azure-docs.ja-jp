@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 07/21/2020
 ms.author: jushiman
-ms.openlocfilehash: 58b1501c9676db414f6bad6c8bd21c6cf79f7d4b
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 234156186d045e21cc01cc4b407408f98268c790
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87385417"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065473"
 ---
 # <a name="sizes-for-virtual-machines-in-azure"></a>Azure の仮想マシンのサイズ
 
@@ -25,15 +25,13 @@ ms.locfileid: "87385417"
 | [コンピューティングの最適化](sizes-compute.md) | F、Fs、Fsv2 | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。 |
 | [メモリの最適化](sizes-memory.md) | Esv3、Ev3、Easv4、Eav4、Ev4、Esv4、Edv4、Edsv4、Mv2、M、DSv2、Dv2 | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。                 |
 | [ストレージの最適化](sizes-storage.md) | Lsv2 | ビッグ データ、SQL、NoSQL データベース、データ ウェアハウス、および大規模なトランザクション データベースに最適な、高いディスク スループットと IO。  |
-| [GPU](sizes-gpu.md) | NC、NCv2、NCv3、ND、NDv2 (プレビュー)、NV、NVv3、NVv4 | 負荷の高いグラフィックスのレンダリングやビデオ編集、ディープ ラーニングを使用したモデル トレーニングと推論 (ND) に特化した仮想マシン。 1 つまたは複数の GPU で利用できます。 |
+| [GPU](sizes-gpu.md) | NC、NCv2、NCv3、NCasT4_v3 (プレビュー)、ND、NDv2 (プレビュー)、NV、NVv3、NVv4 | 負荷の高いグラフィックスのレンダリングやビデオ編集、ディープ ラーニングを使用したモデル トレーニングと推論 (ND) に特化した仮想マシン。 1 つまたは複数の GPU で利用できます。 |
 | [ハイ パフォーマンス コンピューティング](sizes-hpc.md) | HB、HBv2、HC、H | 高スループットのネットワーク インターフェイス (RDMA) のオプションを備えた、最も高速かつ強力な CPU 仮想マシン。 |
 
 - さまざまなサイズの価格については、[Linux](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux) または [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows) の価格に関するページをご覧ください。
 - 各 Azure リージョンで利用可能な VM サイズについては、「 [リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。
 - Azure VM の一般的な制限事項については、「 [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-resource-manager/management/azure-subscription-service-limits.md)」を参照してください。
-
-> [!NOTE]
-  > Azure で Azure VM に名前を付ける方法について詳しくは、[Azure 仮想マシンのサイズの名前付け規則](https://docs.microsoft.com/azure/virtual-machines/vm-naming-conventions)に関する記事をご覧ください。
+- Azure で VM の名前がどのように付けられるかの詳細については、「[Azure 仮想マシンのサイズの名前付け規則](./vm-naming-conventions.md)」を参照してください。
 
 ## <a name="rest-api"></a>REST API
 

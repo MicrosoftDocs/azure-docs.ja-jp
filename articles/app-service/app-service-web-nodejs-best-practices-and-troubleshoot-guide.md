@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: e2c60e851d61a5f33e1b050412b0e91b81e20a16
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3fd9a013eb3318abc48745e163d9ee0118b52b1d
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169987"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88077477"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure App Service Windows での node アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 
-この記事では、Azure App Service で実行されている[node アプリケーション](app-service-web-get-started-nodejs.md) ([iisnode](https://github.com/azure/iisnode) を使用) のベスト プラクティスとトラブルシューティングの手順について説明します。
+この記事では、Azure App Service で実行されている [Windows Node.js アプリケーション](quickstart-nodejs.md?pivots=platform-windows) ([iisnode](https://github.com/azure/iisnode) を使用) のベスト プラクティスとトラブルシューティングの手順について説明します。
 
 > [!WARNING]
 > 運用サイトでトラブルシューティング手順を使用する場合は、注意が必要です。 ステージング スロットなどの運用環境以外のセットアップでアプリのトラブルシューティングを行い、問題が修正されたら、ステージング スロットを運用スロットと交換することをお勧めします。
@@ -273,7 +273,7 @@ NODE.exe には、`NODE_PENDING_PIPE_INSTANCES` という設定があります�
 
 Azure App Service での node.js アプリケーションの詳細については、以下のリンクを参照してください。
 
-* [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](app-service-web-get-started-nodejs.md)
+* [Get started with Node.js web apps in Azure App Service (Azure App Service で Node.js Web アプリの使用を開始する)](quickstart-nodejs.md)
 * [Azure App Service で Node.js Web アプリをデバッグする方法](https://blogs.msdn.microsoft.com/azureossds/2018/08/03/debugging-node-js-apps-on-azure-app-services/)
 * [Azure アプリケーションでの Node.js モジュールの使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure App Service Web Apps:Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)

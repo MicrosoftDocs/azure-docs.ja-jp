@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 8dd0abb5c127d51a0feaf0c71188b7fc48e2fd69
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: f8ddbc66b8e7775fa35d2407bf3aa8614fe8e835
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87798224"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606152"
 ---
 # <a name="create-a-consulting-service-offer"></a>コンサルティング サービス オファーの作成
 
@@ -38,7 +38,7 @@ ms.locfileid: "87798224"
     ![左側のナビゲーション メニューの画像。](./media/new-offer-consulting-service.png)
 
 >[!NOTE]
->オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+>オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ## <a name="new-offer"></a>新しいプラン
 
@@ -202,19 +202,22 @@ Azure Marketplace でのオファー情報の表示例を次に示します (表
 
 オファーで使用するロゴと画像を提供します。 画像はすべて .png 形式である必要があります。 ぼやけた画像は拒否されます。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-**大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して、**小** (48 x 48 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
+オファーのロゴの PNG ファイルを次の各ピクセル サイズで提供します。
 
-リストのさまざまな場所で使用するために、両方のロゴ サイズが必須です。
+- **小 (48 x 48)**
+- **大 (216 x 216)**
 
-- **小** (48 x 48)
-- **大** (216 x 216 から 350 x 350)
+すべてのロゴが必要であり、マーケットプレースの登録情報のさまざまな場所で使用されます。
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+-   小のロゴ (48 x 48 ピクセル) は、Azure Marketplace の検索結果、Microsoft AppSource のメイン ページ、および検索結果ページに表示されます。 
+-   大のロゴ (216 x 216 ピクセルから 350 x 350 ピクセルの間) は、Azure Marketplace と Microsoft AppSource のオファーの一覧ページに表示されます。
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)
 

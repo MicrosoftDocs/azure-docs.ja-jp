@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 824146e7e0b1130b8e5f6c087dbf5ccbac2c8224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: c1222f671c95d4475de93b9c9e085a94f864b2ae
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799363"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003092"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Kubernetes 認可に Azure RBAC を使用する (プレビュー)
 
@@ -25,11 +25,7 @@ ms.locfileid: "87799363"
 
 Azure から Kubernetes のリソースに対する RBAC を管理する機能では、クラスター リソースの RBAC を管理するために、Azure または Kubernetes のネイティブ メカニズムのどちらを使用するかを選択できます。 有効にすると、Azure AD プリンシパルは Azure RBAC だけで検証されますが、Kubernetes の通常のユーザーとサービス アカウントは Kubernetes RBAC だけで検証されます。 AKS での認証、認可、RBAC の詳細については、[こちら](concepts-identity.md#azure-rbac-for-kubernetes-authorization-preview)を参照してください。
 
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトイン単位で利用できます。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、ベストエフォート ベースでカスタマー サポートによって部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポート記事を参照してください。
->
-> - [AKS のサポート ポリシー](support-policies.md)
-> - [Azure サポートに関する FAQ](faq.md)
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="prerequisites"></a>前提条件 
 - プレビューの <https://aka.ms/aad-rbac-sign-up-form> にサインアップします。
@@ -48,7 +44,7 @@ Kubernetes 承認に Azure RBAC を使用する AKS クラスターを作成す�
 az feature register --namespace "Microsoft.ContainerService" --name "EnableAzureRBACPreview"
 ```
 
-状態が *[登録済み]* と表示されるまでに数分かかります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
+フラグが正常に登録されるには、上記のプレビュー フォームを送信した後に、承認を得る必要があります。 登録状態を確認するには、[az feature list][az-feature-list] コマンドを使用します。
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"

@@ -1,26 +1,29 @@
 ---
-title: .NET で Azure Cognitive Search を使用する
+title: .NET で Microsoft.Azure.Search (v10) を使用する
 titleSuffix: Azure Cognitive Search
-description: C# と .NET SDK使用して、.NET アプリケーションで Azure Cognitive Search を使用する方法について説明します。 コード ベースのタスクには、サービスへの接続、コンテンツのインデックス作成、およびインデックスの照会が含まれます。
+description: C# および .Net SDK のバージョン 10 を使用して .NET アプリケーションの検索オブジェクトを作成および管理する方法について説明します。 コード スニペットには、サービスへの接続、インデックスの作成、およびクエリの例を示します。
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
 ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 929241d7bc5db5476bab84d00fde90d4db55aedc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.date: 08/05/2020
+ms.openlocfilehash: 820ce3078b642f2cc672cd6906895f818c06f5b7
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86146905"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905425"
 ---
-# <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>.NET アプリケーションから Azure Cognitive Search を使用する方法
+# <a name="how-to-use-microsoftazuresearch-v10-in-a-net-application"></a>.NET アプリケーションで Microsoft.Azure.Search (v10) を使用する方法
 
-この記事では、[Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用する手順について説明します。 .NET SDK を使用すると、Azure Cognitive Search を使用してアプリケーションにリッチな検索エクスペリエンスを実装できます。
+この記事では、C# および [Azure Cognitive Search (v10) .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) を使用して検索オブジェクトを作成および管理する方法について説明します。 バージョン 10 は、最新バージョンの Microsoft.Azure.Search パッケージです。 今後、新機能は Azure SDK チームによって [Azure.Search.Documents](https://docs.microsoft.com/dotnet/api/overview/azure/search.documents-readme) でロールアウトされます。
 
-## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Azure Cognitive Search SDK の内容
+既存の、または開発途中のプロジェクトがある場合は、引き続きバージョン 10 を使用してください。 新しいプロジェクトの場合、または新しい機能を使用する場合は、既存の検索ソリューションを新しいライブラリに移行する必要があります。
+
+## <a name="whats-in-version-10"></a>バージョン 10 の機能
+
 この SDK は､HTTP や JSON に関する詳しい知識がなくても､インデックスやデータ ソース､インデクサー､シノニム マップの管理､ドキュメントのアップロードと管理､クエリの実行を行うことを可能にするいくつかのクライアント ライブラリから構成されています｡ これらのクライアント ライブラリはすべて､NuGet パッケージとして配布されます｡
 
 メインの NuGet パッケージは `Microsoft.Azure.Search` です｡このパッケージは､依存関係がある他のすべてのパッケージを含むメタパッケージです｡ 初めて取り組む場合、あるいはアプリケーションに Azure Cognitive Search の全機能が必要と分かっている場合は、このパッケージを使用します｡

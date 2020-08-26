@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d839fc71992802e9ee2b6a66d0bc407c5caaecf
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 1f85d4203c0fe3978f776b418ab6d7850061416c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799058"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605374"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory のデプロイ計画
 ここでは、Azure Active Directory (Azure AD) の機能のデプロイについてのエンド ツー エンドのガイダンスを紹介しています。 Azure AD のデプロイ計画では、Azure AD の代表的な機能について、そのビジネス上の価値や計画の考慮事項、正しくデプロイするうえで必要な運用手順をひととおり説明しています。
@@ -97,3 +97,4 @@ ms.locfileid: "87799058"
 | -| -|
 | [Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)| Azure AD Privileged Identity Management (PIM) は、Azure AD、Azure リソース、およびその他の Microsoft Online Services 全体の特権管理者ロールを管理するのに役立ちます。 PIM では Just-In-Time アクセス、承認要求ワークフロー、完全に統合されたアクセス レビューなどのソリューションが提供されるので、リアルタイムに特権ロールの悪意のあるアクティビティを特定し、明らかにして防ぐことができます。 |
 | [レポートと監視](../reports-monitoring/plan-monitoring-and-reporting.md)| Azure AD のレポートおよび監視ソリューションは、法令、セキュリティ、運用の各要件と、既存の環境およびプロセスによって異なります。 この記事では、さまざまな設計オプションを紹介し、正しいデプロイ戦略のガイドを示します。 |
+| [アクセス レビュー](../governance/deploy-access-reviews.md) | アクセス レビューは、誰にアクセス許可が付与され、何にアクセスしているのかを把握し、管理することができる、ガバナンス戦略の重要な部分です。 この記事では、アクセス レビューを計画および展開して、必要なセキュリティとコラボレーション体制を実現する方法について説明します。 |

@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop 環境のホスト プールの作成 - Azure
 description: Windows Virtual Desktop 環境のセットアップ中にテナントとホスト プールの問題をトラブルシューティングおよび解決する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 01/08/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65a36e21d346e08ebe09f8c4b34f6af529d2a0f0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4d504c46288ebe2a8112586ce6be6449178df16a
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292565"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121376"
 ---
 # <a name="host-pool-creation"></a>ホスト プールの作成
 
@@ -37,13 +35,13 @@ Windows 10 Enterprise マルチセッションのイメージを使用するに�
 > [!div class="mx-imgBorder"]
 > !["無料アカウントの作成" メッセージが表示された Azure portal を示す画像](media/create-new-account.png)
 
-**原因**:Azure にサインインしたアカウントにアクティブなサブスクリプションがないか、アカウントにサブスクリプションを表示するアクセス許可がありません。 
+**原因**:Azure にサインインしたアカウントにアクティブなサブスクリプションがないか、アカウントにサブスクリプションを表示するアクセス許可がありません。
 
 **解決策**:少なくとも共同作成者レベルのアクセス権を持つアカウントを使用して、セッション ホスト仮想マシン (VM) をデプロイするサブスクリプションにサインインします。
 
 ### <a name="error-exceeding-quota-limit"></a>エラー:"クォータ制限を超過しています"
 
-操作がクォータ制限を超えた場合は、次のいずれかの方法を実行できます。 
+操作がクォータ制限を超えた場合は、次のいずれかの方法を実行できます。
 
 - 同じパラメーターで、ただし VM数と VM コア数を減らして、新しいホスト プールを作成します。
 
@@ -119,9 +117,9 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 未処理エラーの例:
 
 ```Error
- { …{ "provisioningOperation": 
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ { …{ "provisioningOperation":
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
  "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
@@ -138,10 +136,10 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
 
 ```Error
 { … "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
  One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
@@ -162,7 +160,7 @@ Azure Resource Manager テンプレートと PowerShell DSC のデプロイ失�
    "message": "At least one resource deployment operation failed. Please list
  deployment operations for details. 4 Please see https://aka.ms/arm-debug for usage details.",
  "details": [
-         { "code": "Conflict",  
+         { "code": "Conflict",
          "message": "{\r\n \"status\": \"Failed\",\r\n \"error\": {\r\n \"code\":
          \"ResourceDeploymentFailure\",\r\n \"message\": \"The resource
          operation completed with terminal provisioning state 'Failed'.\",\r\n
@@ -254,6 +252,12 @@ the VM.\\\"
 **原因:** このエラーの原因は、Azure Resource Manager テンプレートに関連付けられている zip ファイルのダウンロードが、静的ルート、ファイアウォール規則、または NSG によってブロックされていることです。
 
 **解決策:** ブロックしている静的ルート、ファイアウォール規則、または NSG を削除します。 必要に応じて、Azure Resource Manager テンプレートの json ファイルをテキスト エディターで開き、zip ファイルへのリンクを実行し、許可されている場所にリソースをダウンロードします。
+
+### <a name="error-cant-delete-a-session-host-from-the-host-pool-after-deleting-the-vm"></a>エラー:VM を削除した後、ホスト プールからセッション ホストを削除することができません
+
+**原因:** VM を削除する前に、セッション ホストを削除する必要があります。
+
+**解決策:** セッション ホストをドレイン モードにして、セッション ホストからすべてのユーザーをサインアウトしてから、ホストを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

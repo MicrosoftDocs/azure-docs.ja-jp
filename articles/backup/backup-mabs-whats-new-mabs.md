@@ -3,12 +3,12 @@ title: Microsoft Azure Backup Server の新機能
 description: Microsoft Azure Backup Server には、VM、ファイルとフォルダー、ワークロードなどを保護するための高度なバックアップ機能があります。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: d9d04d9f763549ce15e57f768432cd933cf1414c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a3ff38d9371ee9b95666ce638d0a6dc4b8822e20
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032444"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190839"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server-mabs"></a>Microsoft Azure Backup Server (MABS) の新機能
 
@@ -25,7 +25,7 @@ MABS V2 は、[Modern Backup Storage](backup-mabs-add-storage.md) (MBS) が導�
 
 MBS によるスケールとパフォーマンスを達成するために、MABS V3 UR1 で DPM HDD ストレージと共に階層化ボリュームとして使用するフラッシュ ストレージ (SSD) の割合を小さく (ストレージ全体の 4%) することをお勧めします。 階層型記憶域を使用した MABS V3 UR1 では、バックアップ速度が 50% から 70% 向上しています。 階層化ストレージを構成するステップについては、DPM の記事「[階層型記憶域で MBS をセットアップする](/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)」を参照してください。
 
-### <a name="support-for-refs-volumes-and-refs-volumes-with-deduplication-enabled"></a>ReFS ボリュームおよび重複除去が有効な ReFS ボリュームのサポート
+### <a name="support-for-refs-volumes"></a>ReFS ボリュームのサポート
 
 MABS V3 UR1 では、ReFS ボリュームとそこにデプロイされたワークロードをバックアップすることができます。 ReFS ボリュームにデプロイされた次のワークロードをバックアップできます。
 
@@ -36,6 +36,8 @@ MABS V3 UR1 では、ReFS ボリュームとそこにデプロイされたワー
 
 >[!NOTE]
 > ReFS ボリュームに格納されている Hyper-V VM のバックアップは、MABS V3 でサポートされます。
+
+>[重要] 重複除去された ReFS ボリュームのバックアップに問題がいくつか見つかっています。 これらの修正に取り組んでおり、修正プログラムが利用可能になり次第、このセクションを更新します。 それまでは、重複除去された ReFS ボリュームのバックアップ サポートを MABSv3 UR1 から削除します。
 
 ### <a name="azure-vmware-solution-protection-support"></a>Azure VMware Solution の保護に対応
 

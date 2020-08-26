@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/15/2020
-ms.openlocfilehash: c59e8c9e4c756a44d7507fca328aa691ecb184da
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 48eb8674a7d3f0fbeb8cc012debfc8a08752d5ff
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447324"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080866"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Azure Monitor によって監視される内容
 この記事では、Azure Monitor によって監視されるさまざまなアプリケーションとサービスについて説明します。 
@@ -220,7 +220,7 @@ Azure Monitor は、次の表に示す方法を使用して、Azure 外部のリ
 | リソース | Method |
 |:---|:---|
 | アプリケーション | Application Insights を使用して、Azure 外部の Web アプリケーションを監視します。 「[Application Insights とは何か?](./app/app-insights-overview.md)」を参照してください。 |
-| 仮想マシン | Log Analytics エージェントを使用して、他のクラウド環境やオンプレミスにある仮想マシンのゲスト オペレーティング システムからデータを収集します。 「[Log Analytics エージェントを使用してログ データを収集する](platform/log-analytics-agent.md)」を参照してください。 |
+| 仮想マシン | エージェントを使用して、他のクラウド環境やオンプレミスにある仮想マシンのゲスト オペレーティング システムからデータを収集します。 「[Azure Monitor エージェントの概要](platform/agents-overview.md)」を参照してください。 |
 | REST API クライアント | 別の API を使用して、任意の REST API クライアントから Azure Monitor ログとメトリックにデータを書き込むことができます。 ログについては、「[HTTP データ コレクター API を使用して Azure Monitor にログ データを送信する](platform/data-collector-api.md)」を参照し、メトリックについては、「[REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する](platform/metrics-store-custom-rest-api.md)」を参照してください。 |
 
 

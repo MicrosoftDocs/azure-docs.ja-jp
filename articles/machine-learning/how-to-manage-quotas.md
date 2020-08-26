@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 05/08/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4
-ms.openlocfilehash: a75a5942ad0aac39f2fe6afb9c62a254c4645d0a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a9ae3d2789758d03405fb5be82181c799d1ea692
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372945"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141127"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Azure Machine Learning を使用してリソースのクォータを管理し増やす
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -46,13 +46,9 @@ ms.locfileid: "87372945"
 > 制限は変更されることがあります。 最新の制限は、すべての Azure のサービス レベルのクォータ [ドキュメント](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits/)で見つかります。
 
 ### <a name="virtual-machines"></a>仮想マシン
-Azure サブスクリプションごとに、サービス全体で、またはスタンドアロンで使用できる仮想マシンの数には制限があります。 この制限はリージョン レベルで、コアの合計数とファミリ ベースの両方に適用されます。
-
-仮想マシンのコアには、リージョンの合計の制限とリージョンのサイズ シリーズ (Dv2、F など) ごとの制限があり、どちらも個別に適用されます。 たとえば、米国東部で VM のコア上限が 30、A シリーズのコア上限が 30、D シリーズのコア上限が 30 のサブスクリプションがあるとします。 このサブスクリプションでは、30 の A1 VM、30 の D1 VM、または合計コア数が 30 を超えないこの 2 つの組み合わせ (例: 10 の A1 VM と 20 の D1 VM) のデプロイが許可されます。
+Azure サブスクリプションごとに、サービス全体またはスタンドアロンの仮想マシンの数には制限があります。 仮想マシンのコアには、リージョンの合計の制限とリージョンのサイズ シリーズ (Dv2、F など) ごとの制限があり、どちらも個別に適用されます。 たとえば、米国東部で VM のコア上限が 30、A シリーズのコア上限が 30、D シリーズのコア上限が 30 のサブスクリプションがあるとします。 このサブスクリプションでは、30 の A1 VM、30 の D1 VM、または合計コア数が 30 を超えないこの 2 つの組み合わせ (例: 10 の A1 VM と 20 の D1 VM) のデプロイが許可されます。
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
-
-クォータ制限の詳細および最新のリストについては、[Azure 全体のクォータの記事](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)を確認してください。
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning コンピューティング
 [Azure Machine Learning コンピューティング](concept-compute-target.md#azure-machine-learning-compute-managed)では、サブスクリプションのリージョンごとに許可されるコアの数と一意のコンピューティング リソースの数の両方に対して、既定のクォータ制限があります。 AmlCompute は、hosted-on-behalf-of モデルでリソースをデプロイするマネージド サービスであるため、このクォータは上記の VM コア クォータとは別で、コアの制限は 2 つのリソースの種類間で共有されません。
@@ -84,16 +80,10 @@ Azure サブスクリプションごとに、サービス全体で、または�
 - パイプラインで許可されるステップの最大数は 30,000 です
 - 1 か月のサブスクリプションごとに発行されるパイプラインのブログでトリガされるスケジュールで、スケジュールに基づく実行と BLOB プルの合計の最大数は 100,000 です
 
-> [!NOTE]
-> この制限を引き上げるには、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
-
 ### <a name="container-instances"></a>コンテナー インスタンス
 
 特定の期間内 (時間で範囲指定) またはサブスクリプション全体で起動できるコンテナー インスタンスの数にも制限があります。
-
-[!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
-
-クォータ制限の詳細および最新のリストについては、[こちら](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)の Azure 全体のクォータの記事を確認してください。
+制限については、「[Container Instances の制限](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#container-instances-limits)」を参照してください。
 
 ### <a name="storage"></a>ストレージ
 リージョンあたりおよび特定のサブスクリプションでもストレージ アカウントの数に制限があります。 既定の制限は 250 で、Standard Storage アカウントと Premium Storage アカウントの両方が含まれます。 指定したリージョンで 250 個を超えるストレージ アカウントが必要な場合は、[Azure サポート](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/)からリクエストを送信してください。 Azure Storage チームがビジネス ケースを確認します。承認された場合、指定したリージョンに対して最大 250 個のストレージ アカウントが与えられます。
@@ -117,24 +107,26 @@ Azure サブスクリプションごとに、サービス全体で、または�
 
 ## <a name="view-your-usage-and-quotas"></a>使用量とクォータの表示
 
-Azure Machine Learning コンピューティングは、サブスクリプション内の他の Azure リソース クォータとは別に管理されます。 このクォータを表示するには、Machine Learning Services にドリルダウンする必要があります。  
+サブスクリプションの Azure Machine Learning コンピューティング クォータは、他の Azure リソース クォータとは別に管理されます。 このクォータを表示するには、Machine Learning Services にドリルダウンする必要があります。  
 
 1. 左側のウィンドウで、 **[Machine Learning service]** を選択して、表示された一覧からいずれかのワークスペースを選択します。
 
-1. 次のブレードの **[Support + troubleshooting]\(サポート + トラブルシューティング\) セクション**で、 **[Usage + quotas]\(使用量 + クォータ\)** を選択して、現在のクォータ制限と使用状況を表示します。
+2. 次のブレードの **[Support + troubleshooting]\(サポート + トラブルシューティング\) セクション**で、 **[Usage + quotas]\(使用量 + クォータ\)** を選択して、現在のクォータ制限と使用状況を表示します。
 
-1. クォータ制限を表示するサブスクリプションを選択します。 必ずフィルター処理を行い、対象とするリージョンに絞ります。
+3. クォータ制限を表示するサブスクリプションを選択します。 必ずフィルター処理を行い、対象とするリージョンに絞ります。
 
-1. サブスクリプション レベル ビューとワークスペース レベル ビューを切り替えられるようになりました。
+4. サブスクリプション レベル ビューとワークスペース レベル ビューを切り替えられるようになりました。
     + **サブスクリプション ビュー:** これを使用して、VM ファミリ別にコア クォータの使用状況を表示し、ワークスペース別にそれを展開し、さらに実際のクラスター名別にそれを展開することができます。 このビューは、特定の VM ファミリのコア使用状況の詳細をすばやく確認して、ワークスペース別、さらにそれらの各ワークスペースの基になるクラスター別に分散を確認するのに最適です。 このビューの一般的な規則は (使用量/クォータ) であり、使用量はスケールアップされた現在のコア数であり、クォータはリソースを拡大できる最大論理コア数です。 各**ワークスペース**で、クォータは、特定の VM ファミリに対して拡大できる最大コア数を示すワークスペース レベルのクォータ (前述のとおり) になります。 同様に**クラスター**の場合、クォータは、max_nodes プロパティによって定義された、クラスターが拡大できる最大ノード数に対応する実際のコアです。
-
+    
     + **ワークスペース ビュー:** これを使用して、ワークスペース別にコア クォータの使用状況を表示し、VM ファミリ別にそれを展開し、さらに実際のクラスター名別にそれを展開することができます。 このビューは、特定のワークスペースのコア使用状況の詳細をすばやく確認して、VM ファミリ別、さらにそれらのファミリの基になるクラスター別に分散を確認するのに最適です。
 
 Azure portal を使用すると、仮想マシン、ストレージ、ネットワークなどのさまざまな他の Azure リソースのクォータを簡単に表示できます。
 
 1. 左側のウィンドウで、 **[すべてのサービス]** を選択し、一般カテゴリの下で **[サブスクリプション]** を選択します。
 
-1. サブスクリプションの一覧から、検索するクォータのサブスクリプションを選択します。
+2. サブスクリプションの一覧から、検索するクォータのサブスクリプションを選択します。
+
+3. 現在のクォータ制限と使用状況を表示するには、 **[使用量 + クォータ]** を選択します。 フィルターを使用して、プロバイダーと場所を選択します。 
 
 ## <a name="request-quota-increases"></a>クォータの増加を要求
 
@@ -149,8 +141,4 @@ Azure portal を使用すると、仮想マシン、ストレージ、ネット�
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次の記事を参照してください。
-
 + [Azure Machine Learning のコストを計画して管理する](concept-plan-manage-cost.md)
-
-+ [クォータを増やす方法](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors)。

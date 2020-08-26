@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
-ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
+ms.openlocfilehash: d692daf2f7f8b77358e73246fd8d8760f95982ac
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/17/2020
-ms.locfileid: "84888299"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510795"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>テキストおよび音声翻訳の言語と地域のサポート
 
-翻訳を使用すると、60 を超えるテキスト翻訳言語間で翻訳を行うことができます。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator の V3 を使用して既定で提供されます。
+翻訳を使用すると、70 を超えるテキスト翻訳言語間で翻訳を行うことができます。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator の V3 を使用して既定で提供されます。
 
 また、翻訳をカスタム翻訳ツールと組み合わせて使用することで、お客様のビジネスや業界で使用されている用語を理解するニューラル翻訳システムを構築したり、Microsoft Speech Service を使用して音声翻訳をアプリに追加することもできます。
 
@@ -47,6 +47,7 @@ ms.locfileid: "84888299"
 |中国語 (繁体字)|   `zh-Hant`       |
 |クロアチア語|  `hr`    |
 |チェコ語| `cs`    |
+|ダリー語|  `prs`   |
 |デンマーク語|    `da`        |
 |オランダ語| `nl`|
 |英語|   `en`    |
@@ -83,6 +84,8 @@ ms.locfileid: "84888299"
 |マオリ語| `mi`  |
 |マラーティー語| `mr`  |
 |ノルウェー語| `nb`    |
+|オディア語|  `or`    |
+|パシュトウ語|    `ps`    |
 |ペルシャ語|   `fa`    |
 |ポーランド語|    `pl`    |
 |ポルトガル語 (ブラジル)|   `pt-br` |

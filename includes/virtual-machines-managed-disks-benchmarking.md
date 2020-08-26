@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e5148ff9e92a2e550a3117356a4e77cbac8fc6f4
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: da5811abec889bcc47d08878a0950df7f0983663
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "67673408"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87010829"
 ---
 *キャッシュのウォームアップ*  
 ReadOnly ホスト キャッシュを使用するディスクでは、ディスクの制限を超えた高 IOPS を実現できます。 ホスト キャッシュからこの最大の読み取りパフォーマンスを得るには、まず、このディスクのキャッシュをウォームアップする必要があります。 これにより、ベンチマーク ツールが CacheReads ボリュームで促進する読み取り IO が、直接ディスクにヒットするのではなく、実際にキャッシュにヒットするようになります。 キャッシュ ヒットにより、キャッシュが有効化された 1 つのディスクから追加の IOPS が得られます。
@@ -153,7 +153,7 @@ sudo fio --runtime 30 fiowrite.ini
 ```
 
 テストの実行中、VM と Premium ディスクが提供している書き込み IOPS の数を確認できます。 次のサンプルに示すように、DS14 VM は書き込み IOPS の上限である 50,000 IOPS を実現しています。  
-    ![VM と Premium ディスクが提供している書き込み IOPS の数](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
+    ![VM と Premium ディスクが提供している書き込み IOPS の数。](../articles/virtual-machines/linux/media/premium-storage-performance/image11.png)
 
 #### <a name="maximum-read-iops"></a>最大読み取り IOPS
 
@@ -194,11 +194,11 @@ sudo fio --runtime 30 fioread.ini
 ```
 
 テストの実行中、VM と Premium ディスクが提供している読み取り IOPS の数を確認できます。 次のサンプルに示すように、DS14 VM は 64,000 を超える読み取り IOPS を実現しています。 これは、ディスクとキャッシュのパフォーマンスの合計です。  
-    ![](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
+    ![VM と Premium ディスクが提供している書き込み IOPS の数のスクリーンショット。](../articles/virtual-machines/linux/media/premium-storage-performance/image12.png)
 
 #### <a name="maximum-read-and-write-iops"></a>最大読み取り/書き込み IOPS
 
-読み取りと書き込みの最大合計 IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fioreadwrite.ini" にします。
+ 読み取りと書き込みの最大合計 IOPS を得るために、次の仕様でジョブ ファイルを作成します。 ファイル名を "fioreadwrite.ini" にします。
 
 ```ini
 [global]
@@ -256,4 +256,4 @@ sudo fio --runtime 30 fioreadwrite.ini
 
 #### <a name="maximum-combined-throughput"></a>最大スループットの合計
 
-読み取りと書き込みの最大合計スループットを得るには、大きなブロック サイズ、大きなキューの深さ、読み取り/書き込みを実行する複数のスレッドを使用します。 ブロック サイズとして 64 KB、キューの深さとして 128 を使用します。
+ 読み取りと書き込みの最大合計スループットを得るには、大きなブロック サイズ、大きなキューの深さ、読み取り/書き込みを実行する複数のスレッドを使用します。 ブロック サイズとして 64 KB、キューの深さとして 128 を使用します。

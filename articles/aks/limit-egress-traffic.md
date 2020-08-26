@@ -5,13 +5,14 @@ services: container-service
 ms.topic: article
 ms.author: jpalma
 ms.date: 06/29/2020
+ms.custom: fasttrack-edit
 author: palma21
-ms.openlocfilehash: 9d06852e9d3d61b3e3d368a1d1c6f4107aff1442
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 51b457b99afc478631ce9b39a4a7d51ffd57401c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86251316"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003168"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でクラスター ノードに対するエグレス トラフィックを制御する
 
@@ -226,6 +227,8 @@ Azure Firewall では、この構成を簡略化するための Azure Kubernetes
 
 > [!NOTE]
 > FQDN タグには上記の FQDN がすべて含まれており、自動的に最新の状態に維持されます。
+>
+> 運用環境のシナリオで SNAT ポートの消費の問題が発生しないようにするには、Azure Firewall に少なくとも 20 のフロントエンド IP を用意することをお勧めします。
 
 デプロイのアーキテクチャの例を次に示します。
 
@@ -364,7 +367,7 @@ Azure では、Azure のサブネット、仮想ネットワーク、および�
 ```azure-cli
 # Create UDR and add a route for Azure Firewall
 
-az network route-table create -g $RG --name $FWROUTE_TABLE_NAME
+az network route-table create -g $RG -$LOC --name $FWROUTE_TABLE_NAME
 az network route-table route create -g $RG --name $FWROUTE_NAME --route-table-name $FWROUTE_TABLE_NAME --address-prefix 0.0.0.0/0 --next-hop-type VirtualAppliance --next-hop-ip-address $FWPRIVATE_IP --subscription $SUBID
 az network route-table route create -g $RG --name $FWROUTE_NAME_INTERNET --route-table-name $FWROUTE_TABLE_NAME --address-prefix $FWPUBLIC_IP/32 --next-hop-type Internet
 ```
@@ -482,14 +485,14 @@ az aks create -g $RG -n $AKSNAME -l $LOC \
 CURRENT_IP=$(dig @resolver1.opendns.com ANY myip.opendns.com +short)
 
 # Add to AKS approved list
-az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/32
+az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/32
 
 ```
 
  新しく作成された Kubernetes クラスターに接続するように、[az aks get-credentials][az-aks-get-credentials] コマンドを使用して `kubectl` を構成します。 
 
  ```azure-cli
- az aks get-credentials -g $RG -n $AKS_NAME
+ az aks get-credentials -g $RG -n $AKSNAME
  ```
 
 ### <a name="deploy-a-public-service"></a>パブリック サービスをデプロイする

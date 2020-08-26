@@ -3,12 +3,12 @@ title: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 description: Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 158ead7531b0b3da2e495e36e40e761961bea498
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: ed263ad80250531431840516f2764055c75abd50
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761010"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212309"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure DevTest Labs 用の Azure のセキュリティ ベースライン
 
@@ -629,8 +629,8 @@ Microsoft は、Azure DevTest Labs をサポートしている基になるリソ
 ### <a name="75-securely-store-configuration-of-azure-resources"></a>7.5:Azure リソースの構成を安全に格納する
 **ガイダンス:** カスタム Azure ポリシー、Azure Resource Manager テンプレート、Desired State Configuration スクリプトなどのコードを安全に格納して管理するには、Azure DevOps を使用します。 Azure DevOps で管理するリソースにアクセスするには、Azure Active Directory (Azure AD) (Azure DevOps に統合されている場合) で定義された特定のユーザー、組み込みセキュリティ グループ、またはグループに対するアクセス許可を付与または拒否できます。
 
-- [Azure Repos Git チュートリアル](/devops/repos/git/gitworkflow?view=azure-devops)
-- [アクセス許可とグループについて](/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure Repos Git チュートリアル](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
+- [アクセス許可とグループについて](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
 - [Azure DevTest Labs と Azure DevOps ワークフローの統合](devtest-lab-dev-ops.md)
 
 **Azure Security Center の監視:** 適用なし

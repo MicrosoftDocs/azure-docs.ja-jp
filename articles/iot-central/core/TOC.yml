@@ -10,10 +10,12 @@
       href: overview-iot-central-developer.md
     - name: 最新の更新
       items:
+        - name: 2020 年 7 月の新機能と更新された機能
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-july-2020/'
         - name: 2020 年 6 月の新機能と更新された機能
-          href: 'https://azure.microsoft.com/en-us/updates/azure-iot-central-feature-updates-june-2020/'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-feature-updates-june-2020/'
         - name: 2020 年 6 月の UI とドキュメントの更新
-          href: 'https://azure.microsoft.com/en-us/updates/azure-iot-central-ui-documenation-updates-june-2020/'
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-ui-documenation-updates-june-2020/'
         - name: 2020 年 5 月のジョブとメトリックの更新
           href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
         - name: 2020 年 5 月のダッシュボード更新
@@ -121,6 +123,8 @@
           href: howto-create-custom-analytics.md
         - name: Power BI でのデータの視覚化
           href: howto-connect-powerbi.md
+        - name: ファイルのアップロードの構成と使用
+          href: howto-configure-file-uploads.md
     - name: 管理
       items:
         - name: アプリケーションの管理
@@ -159,6 +163,10 @@
               href: howto-manage-preferences.md
             - name: ライブ チャットの切り替え
               href: howto-show-hide-chat.md
+    - name: トラブルシューティング
+      items: null
+      '-name': Device connections
+      href: troubleshoot-connection.md
 - name: リファレンス
   items:
     - name: Azure CLI

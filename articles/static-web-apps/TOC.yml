@@ -8,7 +8,14 @@
   expanded: true
   items:
     - name: 最初の静的な Web アプリを構築する
-      href: getting-started.md
+      expanded: true
+      items:
+        - name: Visual Studio Code
+          href: getting-started.md
+        - name: Azure portal
+          href: get-started-portal.md
+        - name: Azure CLI
+          href: get-started-cli.md
 - name: 概念
   items:
     - name: Azure Functions での API サポート

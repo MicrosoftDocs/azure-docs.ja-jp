@@ -3,15 +3,15 @@ title: 概要 - Azure Logic Apps のデプロイを自動化する
 description: Azure Logic Apps のデプロイを自動化するための Azure Resource Manager テンプレートについて説明します
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: logicappspm
 ms.topic: article
-ms.date: 07/25/2019
-ms.openlocfilehash: 6a89eb16c8042efc86bb5cc8bd5fba7c821dc341
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/17/2020
+ms.openlocfilehash: 391692d708adbd542b2cf358f0ac597dc1db3fa0
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520971"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565555"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>概要:Azure Resource Manager テンプレートを使用して Azure Logic Apps のデプロイを自動化する
 
@@ -237,7 +237,7 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 ## <a name="template-resources"></a>Template resources
 
-テンプレートには `resources` オブジェクトがあります。これは、[ロジック アプリのリソース定義](#logic-app-resource-definition)、[接続リソースの定義](#connection-resource-definitions)、ロジック アプリのデプロイに必要なその他のリソースなど、Azure で作成およびデプロイする各リソースの定義を含んだ配列です。
+テンプレートには `resources` オブジェクトがあります。これは、[ロジック アプリのリソース定義](#logic-app-resource-definition)、[接続リソースの定義](#connection-resource-definitions)、ロジック アプリのデプロイに必要なその他すべてのリソースなど、Azure で作成してデプロイする各リソースの定義が格納された配列です。
 
 ```json
 {
@@ -264,6 +264,22 @@ Resource Manager テンプレートの詳細については、次のトピック
 
 > [!NOTE]
 > テンプレートには複数のロジック アプリのリソース定義を含めることができるため、すべてのロジック アプリ リソースで同じ Azure リソース グループが指定されていることを確認してください。 Visual Studio を使ってテンプレートを Azure リソース グループにデプロイすると、どのロジック アプリを開くかを尋ねるメッセージが表示されます。 また、Azure リソース グループ プロジェクトには複数のテンプレートを含めることができるので、メッセージが表示されたら、正しいパラメーター ファイルを選択していることを確認してください。
+
+<a name="view-resource-definitions"></a>
+
+### <a name="view-resource-definitions"></a>リソース定義を表示する
+
+Azure リソース グループ内のすべてのリソースのリソース定義を確認するには、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)するか (これは、デプロイの準備がほとんど整っている有効なパラメーター化されたロジック アプリ テンプレートを作成するための最も簡単な方法です)、Azure portal で以下の手順に従います。
+
+1. Azure アカウントの資格情報で [Azure Portal](https://portal.azure.com) にサインインします。
+
+1. ロジック アプリ、接続、およびその他のリソースを含む Azure リソース グループを見つけます。
+
+1. リソース グループのツールバーで、 **[概要]** を選択してから、リソース グループ内のすべてのリソースを選択します。
+
+1. リソース グループのツールバーで、 **[設定]** の下にある **[テンプレートのエクスポート]** を選択します。
+
+   ポータルに、選択したリソースの定義が表示されます。 詳細については、「[Azure portal のテンプレートへの単一および複数リソースのエクスポート](../azure-resource-manager/templates/export-template-portal.md)」を参照してください。
 
 テンプレート リソースとその属性に関する一般的な情報については、次のトピックをご覧ください。
 
@@ -1013,7 +1029,7 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 
 ## <a name="references-to-parameters"></a>パラメーターの参照
 
-テンプレート パラメーターを参照するには、デプロイ時に評価されるテンプレート式と[テンプレート関数](../azure-resource-manager/templates/template-functions.md)を使用できます。 テンプレート式では、角かっこ ( **[]** ) を使用します。
+テンプレート パラメーターを参照するには、デプロイ時に評価されるテンプレート式と[テンプレート関数](../azure-resource-manager/templates/template-functions.md)を使用できます。 テンプレート式では、角かっこ (**[]**) を使用します。
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 
@@ -1248,4 +1264,4 @@ Azure Blob Storage 接続のアカウント名とアクセス キーを指定す
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [ロジック アプリ テンプレートを作成する](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)
+> [Logic Apps テンプレートの作成](../logic-apps/logic-apps-create-azure-resource-manager-templates.md)

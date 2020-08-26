@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: a5d34ac7eea50b67bd679d8cb8ddecf7ca277abd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a3acdbb93dd20f0b89e4f99d64f5f7a30ce40623
+ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76773377"
+ms.lasthandoff: 07/23/2020
+ms.locfileid: "87102797"
 ---
 ## <a name="register-secrets-or-certificates"></a>シークレットまたは証明書の登録
 
@@ -31,12 +31,10 @@ ms.locfileid: "76773377"
 
 ![[証明書とシークレット] ページ](../articles/active-directory/develop/media/quickstart-update-azure-ad-app-preview/credentials-certificates-secrets.png)
 
-- アプリケーション シークレット (クライアント シークレットとも呼ばれる) は、機密クライアント アプリケーションの登録時に Azure AD によって生成されます。 この生成は、 **[新しいクライアント シークレット]** を選択すると実行されます。 **[保存]** を選択する前に、アプリで使用するために、この時点でシークレットの文字列をクリップボードにコピーする必要があります。 この文字列は、その後は表示されなくなります。
-- アプリケーションの登録時に、 **[証明書のアップロード]** ボタンを使用して証明書をアップロードします。 Azure AD では、アプリケーションで直接登録されている証明書のみがサポートされ、証明書チェーンには従いません。
+- Azure portal のアプリの登録で **[新しいクライアント シークレット]** を選択して、"*クライアント シークレット*" を作成します。 クライアント シークレットを作成する場合は、 **[証明書とシークレット]** ウィンドウから離れて移動する前に、シークレットの文字列を記録する "_必要があります_"。 シークレットの文字列が再び表示されることはありません。
+- アプリケーションの登録時に、**[証明書のアップロード]** ボタンを使用して証明書をアップロードします。 Azure AD では、アプリケーションで直接登録されている証明書のみがサポートされ、証明書チェーンには従いません。
 
 詳細については、「[クイック スタート:Web API にアクセスするようにクライアント アプリケーションを構成する」で、資格情報のアプリケーションへの追加](../articles/active-directory/develop/quickstart-configure-app-access-web-apis.md#add-credentials-to-your-web-application)に関するセクションを参照してください。
-
-
 
 ### <a name="register-client-secrets-by-using-powershell"></a>PowerShell を使用したクライアント シークレットの登録
 

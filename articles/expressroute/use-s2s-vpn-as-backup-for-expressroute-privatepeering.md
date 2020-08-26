@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.author: rambala
-ms.openlocfilehash: df4108604c656cd6383bd57b462c0f12f31bdd7b
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 68596b881ef1b62187bdb7194b364c9477b4e04d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206864"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244773"
 ---
 # <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>ExpressRoute プライベート ピアリングのバックアップとしてのサイト間 VPN の使用
 

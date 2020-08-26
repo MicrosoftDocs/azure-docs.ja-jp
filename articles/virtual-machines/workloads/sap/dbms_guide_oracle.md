@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15838e1e9acf328a0deaa981d1227c22c08dbbdf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: bd8177f6fd8e40e9c4ea37bc7ead910806efbad2
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87832265"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504944"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS のデプロイ
 
@@ -404,7 +404,7 @@ Azure ディスクに対する IOPS スループットにはクォータが存�
 
 
 #### <a name="write-accelerator"></a>書き込みアクセラレータ
-Azure M シリーズ VM では、Azure Premium Storage と比較して、オンラインの再実行ログへの書き込み待機時間を数分の 1 に短縮できます。 オンラインの再実行ログ ファイルに使用される、Azure Premium Storage に基づくディスク (VHD) では、Azure 書き込みアクセラレータを有効にします。 詳しくは、「[書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)」をご覧ください。
+Azure M シリーズ VM では、Azure Premium Storage と比較して、オンラインの再実行ログへの書き込み待機時間を数分の 1 に短縮できます。 オンラインの再実行ログ ファイルに使用される、Azure Premium Storage に基づくディスク (VHD) では、Azure 書き込みアクセラレータを有効にします。 詳しくは、「[書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)」をご覧ください。
 
 
 ### <a name="backuprestore"></a>バックアップ/復元
@@ -498,7 +498,7 @@ Oracle のオンラインの再実行ログをホストするためのディス�
 
 
 #### <a name="write-accelerator"></a>書き込みアクセラレータ
-Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、オンラインの再実行ログへの書き込み待機時間を数分の 1 に短縮できます。 オンラインの再実行ログ ファイルに使用される、Azure Premium Storage に基づくディスク (VHD) では、Azure 書き込みアクセラレータを有効にします。 詳しくは、「[書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)」をご覧ください。
+Azure M シリーズ VM で Azure 書き込みアクセラレータを使用すれば、Azure Premium Storage のパフォーマンスに比較して、オンラインの再実行ログへの書き込み待機時間を数分の 1 に短縮できます。 オンラインの再実行ログ ファイルに使用される、Azure Premium Storage に基づくディスク (VHD) では、Azure 書き込みアクセラレータを有効にします。 詳しくは、「[書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)」をご覧ください。
 
 
 ### <a name="backuprestore"></a>バックアップ/復元

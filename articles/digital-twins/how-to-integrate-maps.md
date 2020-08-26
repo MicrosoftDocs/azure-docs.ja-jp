@@ -1,19 +1,19 @@
 ---
-title: Azure Digital Twins を使用して Azure Maps の屋内マップを更新する
+title: Azure Maps と統合する
 titleSuffix: Azure Digital Twins
-description: Azure Maps に示されている情報を更新するために、ツイン グラフと Azure Digital Twins の通知を使用できる Azure 関数を作成する方法を確認します。
+description: Azure Maps フロア ガイドを更新するために、ツイン グラフと Azure Digital Twins の通知を使用できる Azure 関数を作成する方法を確認します。
 author: alexkarcher-msft
 ms.author: alkarche
 ms.date: 6/3/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6aad6201136bb925d5e094de115cc7274cc7872a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: a2dff1ea9c830fa48545dc25654cc3c5318c3415
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131414"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235912"
 ---
 # <a name="use-azure-digital-twins-to-update-an-azure-maps-indoor-map"></a>Azure Digital Twins を使用して Azure Maps の屋内マップを更新する
 

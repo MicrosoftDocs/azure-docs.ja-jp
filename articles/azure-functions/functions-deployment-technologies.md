@@ -4,16 +4,30 @@ description: Azure Functions にコードをデプロイするさまざまな方
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 754a3ea2a316878cc8c2bd918b99476a7194b545
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: bf8944952abf83837d05019bd783bec2fd43cefe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87562941"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905127"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Azure Functions のデプロイ テクノロジ
 
-各種のテクノロジを使用して、Azure Functions プロジェクト コードを Azure にデプロイすることができます。 この記事では、これらのテクノロジの包括的な一覧を提供し、どのテクノロジをどの種類の関数に対して使用できるかを説明し、各手法を使用するとどのようなことが起こるかについて説明し、各種シナリオで使用する最適な手法についてレコメンデーションを提示します。 Azure Functions へのデプロイをサポートする各種ツールは、それらのコンテキストに基づいて適切なテクノロジとなるように調整されています。 一般に、Azure Functions で推奨されるデプロイ テクノロジは zip デプロイです。
+各種のテクノロジを使用して、Azure Functions プロジェクト コードを Azure にデプロイすることができます。 この記事では、使用可能なデプロイ方法の概要と、さまざまなシナリオで推奨される最適な方法について説明します。 また、基になるデプロイ テクノロジについての完全な一覧とその主要な詳細情報も提供します。 
+
+## <a name="deployment-methods"></a>デプロイ方法
+
+コードを Azure に発行するために使用するデプロイ テクノロジは、通常、アプリの公開方法によって決まります。 適切なデプロイ方法は、具体的なニーズと開発サイクルにおけるポイントによって決まります。 たとえば、開発およびテスト中であれば、Visual Studio Code などの開発ツールから直接配置します。 アプリが運用環境にある場合は、ソース管理から継続的に発行するか、または追加の検証とテストを含む自動化された発行パイプラインを使用する可能性が高くなります。  
+
+次の表では、関数プロジェクトで使用できるデプロイ方法について説明します。
+
+| デプロイ&nbsp;の種類 | メソッド | 最適なシナリオ |
+| -- | -- | -- |
+| ツールベース | &bull;&nbsp;[Visual&nbsp;Studio&nbsp;Code&nbsp;による発行](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio による発行](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Core Tools による発行](functions-run-local.md#publish) | 開発中のデプロイ、およびその他のアドホック デプロイ。 デプロイはツールによってローカルで管理されます。 | 
+| App Service マネージド| &bull;&nbsp;[Deployment&nbsp;Center&nbsp;(CI/CD)](functions-continuous-deployment.md)<br/>&bull;&nbsp;[コンテナーの&nbsp;デプロイ](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure) |  ソース管理またはコンテナー レジストリからの継続的配置 (CI/CD)。 デプロイは、App Service プラットフォーム (Kudu) によって管理されます。|
+| 外部パイプライン|&bull;&nbsp;[DevOps パイプライン](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub Actions](functions-how-to-github-actions.md) | 追加の検証、テスト、およびその他のアクションを含む運用および DevOps パイプラインは、自動デプロイの一部として実行されます。 デプロイはパイプラインによって管理されます。 |
+
+特定の関数のデプロイでは、そのコンテキストに基づいて最適なテクノロジが使用されますが、ほとんどのデプロイ方法は [zip デプロイ](#zip-deploy)に基づいています。
 
 ## <a name="deployment-technology-availability"></a>デプロイ テクノロジの利用可否
 

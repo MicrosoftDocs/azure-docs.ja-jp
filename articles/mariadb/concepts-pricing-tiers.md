@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/9/2020
-ms.openlocfilehash: 7ded54e0116e6c6e58c0ca8019942dfaaaa88480
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.date: 8/13/2020
+ms.openlocfilehash: cb785a6d988772ba160806621e44900d630b7e61
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85954196"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225718"
 ---
 # <a name="azure-database-for-mariadb-pricing-tiers"></a>Azure Database for MariaDB の価格レベル
 
@@ -93,13 +93,11 @@ Basic レベルでは、IOPS 保証は提供されません。 汎用および�
 
 ## <a name="backup"></a>バックアップ
 
-サービスによって、サーバーのバックアップが自動的に取得されます。 7 日間から 35 日間までの保持期間を選択できます。 汎用サーバーとメモリ最適化サーバーでは、バックアップに geo 冗長ストレージを使用することを選択できます。 バックアップの詳細については[概念に関するアーティクル](concepts-backup.md) をご覧ください。
+Azure Database for MariaDB は、プロビジョニングされているサーバー ストレージの 100% までを追加コストなしでバックアップ ストレージとして利用できます。 この量を超えて使用するバックアップ ストレージは、月ごとに GB 単位で請求されます。 たとえば、サーバーを 250 GB のストレージでプロビジョニングする場合は、サーバーのバックアップに 250 GB の追加のストレージを追加料金なしで利用できます。 250 GB を超えるバックアップのストレージについては、[価格モデル](https://azure.microsoft.com/pricing/details/mariadb/)に従って請求されます。 バックアップ ストレージの使用状況に影響を与える要素を理解し、バックアップ ストレージのコストを監視および制御するには、[バックアップに関するドキュメント](concepts-backup.md)を参照してください。
 
 ## <a name="scale-resources"></a>リソースのスケール
 
 サーバーの作成後に、仮想コア数、価格レベル (Basic への変更、および Basic からの変更を除く)、ストレージ量、およびバックアップのリテンション期間を個別に変更できます。 バックアップ ストレージの種類は、サーバーの作成後に変更することはできません。 仮想コアの数は増やしたり減らしたりできます。 バックアップのリテンション期間は、7 日から 35 日の間でスケールアップまたはスケールダウンできます。 ストレージ サイズは増やすことのみ可能です。 ポータルまたは Azure CLI を使用して、リソースのスケーリングを実行できます。 
-
-<!--For an example of scaling by using Azure CLI, see [Monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->
 
 仮想コア数または価格レベルを変更すると、新しいコンピューティング割り当てを使用して元のサーバーのコピーが作成されます。 新しいサーバーが実行されると、接続が新しいサーバーに切り替わります。 システムが新しいサーバーに切り替わるほんの短時間、新しい接続を確立できず、コミットされていないすべてのトランザクションがロールバックされます。 この時間の長さは変動しますが、ほとんどの場合 1 分未満です。
 
@@ -112,6 +110,3 @@ Basic レベルでは、IOPS 保証は提供されません。 汎用および�
 ## <a name="next-steps"></a>次のステップ
 - [サービスの制限事項](concepts-limits.md)を確認します。
 - [Azure portal で MariaDB サーバーを作成](quickstart-create-mariadb-server-database-using-azure-portal.md)する方法を確認します。
-
-<!--
-- Learn how to [monitor and scale an Azure Database for MariaDB server by using Azure CLI](scripts/sample-scale-server.md).-->

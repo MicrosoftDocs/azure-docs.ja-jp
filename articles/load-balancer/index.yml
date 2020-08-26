@@ -11,12 +11,12 @@ metadata:
   author: asudbring
   ms.author: allensu
   ms.date: 05/07/2020
-  ms.openlocfilehash: 8049897cf7a08eeac79e4a217f4ecc3ec636eab9
-  ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+  ms.openlocfilehash: 0c1a007881734feb5e78b91cd835dae7022228df
+  ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/08/2020
-  ms.locfileid: "86143894"
+  ms.lasthandoff: 08/21/2020
+  ms.locfileid: "88718800"
 landingContent:
 - title: Load Balancer について
   linkLists:
@@ -36,8 +36,10 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: VM の負荷を分散する Load Balancer を作成する
+    - text: VM の負荷を分散するパブリック ロード バランサーを作成する
       url: quickstart-load-balancer-standard-public-portal.md
+    - text: VM の負荷を分散する内部ロード バランサーを作成する
+      url: quickstart-load-balancer-standard-internal-portal.md
   - linkListType: tutorial
     links:
     - text: VM へのインターネット トラフィックの負荷分散を行う

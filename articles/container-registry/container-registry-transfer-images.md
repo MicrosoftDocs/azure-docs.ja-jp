@@ -4,12 +4,12 @@ description: Azure ストレージ アカウントを使用して転送パイプ
 ms.topic: article
 ms.date: 05/08/2020
 ms.custom: ''
-ms.openlocfilehash: 7f63936ad8f2a97bae6ff63e783e38c15db35e13
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0bbdfc8d1586b7d71daf6d4cbfdc4288357aa45b
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259457"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009156"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>成果物を別のレジストリに転送する
 
@@ -234,6 +234,8 @@ PipelineRun Resource Manager の[テンプレート ファイル](https://github
 |targetName     |  *myblob* など、ソース ストレージ アカウントにエクスポートされた成果物 BLOB 用に選択した名前
 |artifacts | タグまたはマニフェスト ダイジェストとして転送するソース成果物の配列<br/>例: `[samples/hello-world:v1", "samples/nginx:v1" , "myrepository@sha256:0a2e01852872..."]` |
 
+同じプロパティを使用して PipelineRun リソースを再デプロイする場合は、[forceUpdateTag](#redeploy-pipelinerun-resource) プロパティも使用する必要があります。
+
 [az deployment group create][az-deployment-group-create] を実行して、PipelineRun リソースを作成します。 次の例では、デプロイ *exportPipelineRun* に名前を付けます。
 
 ```azurecli
@@ -291,6 +293,8 @@ PipelineRun Resource Manager の[テンプレート ファイル](https://github
 |pipelineResourceId     |  インポート パイプラインのリソース ID<br/>例: `/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>/providers/Microsoft.ContainerRegistry/registries/<sourceRegistryName>/importPipelines/myImportPipeline`       |
 |sourceName     |  ストレージ アカウント内のエクスポート済み成果物の既存の BLOB の名前 (*myblob など*)
 
+同じプロパティを使用して PipelineRun リソースを再デプロイする場合は、[forceUpdateTag](#redeploy-pipelinerun-resource) プロパティも使用する必要があります。
+
 [az deployment group create][az-deployment-group-create] を実行して、リソースを実行します。
 
 ```azurecli
@@ -304,6 +308,23 @@ az deployment group create \
 
 ```azurecli
 az acr repository list --name <target-registry-name>
+```
+
+## <a name="redeploy-pipelinerun-resource"></a>PipelineRun リソースを再デプロイする
+
+*同じプロパティ*を使用して PipelineRun リソースを再デプロイする場合は、**forceUpdateTag** プロパティを使用する必要があります。 このプロパティは、構成が変更されていない場合でも、PipelineRun リソースを再作成する必要があることを示します。 PipelineRun リソースを再デプロイするたびに、forceUpdateTag が異なることを確認してください。 次の例では、エクスポートの PipelineRun を再作成しています。 forceUpdateTag を設定するために、現在の日時を使用します。これにより、このプロパティは常に一意になります。
+
+```console
+CURRENT_DATETIME=`date +"%Y-%m-%d:%T"`
+```
+
+```azurecli
+az deployment group create \
+  --resource-group $SOURCE_RG \
+  --template-file azuredeploy.json \
+  --name exportPipelineRun \
+  --parameters azuredeploy.parameters.json \
+  --parameters forceUpdateTag=$CURRENT_DATETIME
 ```
 
 ## <a name="delete-pipeline-resources"></a>パイプライン リソースを削除する

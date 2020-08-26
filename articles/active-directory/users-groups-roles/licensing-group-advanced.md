@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 11/08/2019
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbdebd8d59034bd16a3199c1304606ccf12ab2c2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f2f055a6b8f4a8876c024bdd131a6001e21004e5
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84727672"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209468"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
@@ -205,7 +205,7 @@ PowerShell または Graph API でグループを削除しようとした場合�
 
 - グループベースのライセンスでは、他のグループを含むグループ (入れ子になったグループ) を現在サポートしていません。 入れ子になったグループにライセンスを適用した場合は、グループの第 1 レベルのユーザー メンバーだけにライセンスが適用されます。
 
-- この機能は、セキュリティ グループ、および securityEnabled = TRUE の Office 365 グループでのみ使用できます。
+- この機能は、セキュリティ グループ、および securityEnabled=TRUE の Microsoft 365 グループでのみ使用できます。
 
 - 現在、[Microsoft 365 管理センター](https://admin.microsoft.com)では、グループベースのライセンスはサポートされていません。 ユーザーがライセンスをグループから継承する場合、このライセンスは Office 管理ポータルに通常のユーザー ライセンスとして表示されます。 そのライセンスを変更しようとした場合、または削除しようとした場合、ポータルはエラー メッセージを返します。 継承されたグループのライセンスをユーザーで直接変更することはできません。
 

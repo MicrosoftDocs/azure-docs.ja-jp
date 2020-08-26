@@ -9,12 +9,12 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.date: 06/02/2020
-ms.openlocfilehash: 308d19fde78edacebb168b8d4e459169338acc41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bba49014fd6b082ea015da259402a8e87bf4afff
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84345943"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87851990"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Azure Data Factory の管理ハブ
 
@@ -57,6 +57,12 @@ Azure Data Factory UX の *[管理]* タブによってアクセスされる管�
 トリガーは、パイプラインの実行をいつ開始するかを決定します。 現在、トリガーは、ウォール クロック スケジュールに基づくことも、定期的な間隔で実行することも、イベントに依存することもできます。 詳細については、「[トリガー実行](concepts-pipeline-execution-triggers.md#trigger-execution)」を参照してください。 管理ハブでは、トリガーの現在の状態を作成、編集、削除、または表示できます。
 
 ![カスタム パラメーターの管理](media/author-management-hub/management-hub-triggers.png)
+
+### <a name="global-parameters"></a>グローバル パラメーター
+
+グローバル パラメーターは、任意の式のパイプラインで使用できるデータ ファクトリ全体での定数です。 詳細については、[グローバル パラメーター](author-global-parameters.md)に関するページを参照してください。
+
+![グローバル パラメーターを作成する](media/author-global-parameters/create-global-parameter-3.png)
 
 ## <a name="next-steps"></a>次のステップ
 

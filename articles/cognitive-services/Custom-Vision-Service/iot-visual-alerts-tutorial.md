@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 5016191bb4f647c0bbfa71144bb4b4b554b080f4
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 5582056f1bae2dbeb69a7d05044f055ff1394bd5
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87834339"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244671"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>チュートリアル:IoT デバイスで Custom Vision を使用して視覚的な状態を報告する
 
@@ -31,7 +31,7 @@ ms.locfileid: "87834339"
 > * アプリを使用して、Custom Vision プロジェクトをトレーニングします。
 > * アプリを使用して、新しいイメージをリアルタイムでスコア付けし、結果を Azure に送信します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services) を作成してください。 
 
 ## <a name="prerequisites"></a>前提条件
 

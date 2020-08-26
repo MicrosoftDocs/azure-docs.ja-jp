@@ -5,12 +5,12 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 07/17/2020
 ms.author: peshultz
-ms.openlocfilehash: 77c0489838685d65d7579f37d6a6cb922af509f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2af82233013f064b185aefde3f2e1710bd86ed43
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87062527"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053747"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-batch-account-with-azure-key-vault-and-managed-identity"></a>Azure Key Vault とマネージド ID を使用して Azure Batch アカウントのカスタマー マネージド キーを構成する
 
@@ -82,7 +82,7 @@ Azure portal で Key Vault を作成した後、 **[設定]** の **[アクセ�
 
 ### <a name="generate-a-key-in-azure-key-vault"></a>Azure Key Vault でキーを生成する
 
-Azure portal の **[キー]** セクションで Key Vault インスタンスに移動し、 **[生成/インポート]** を選択します。 **[キーの種類]** で [`RSA`] を選択し、 **[キー サイズ]** を `2048` にします。
+Azure portal の **[キー]** セクションで Key Vault インスタンスに移動し、 **[生成/インポート]** を選択します。 **[キーの種類]** で `RSA` を選択し、 **[RSA キー サイズ]** を最低でも `2048` にします。 キーの種類 `EC` は現在、Batch アカウントでカスタマー マネージド キーとしてサポートされていません。
 
 ![キーの作成](./media/batch-customer-managed-key/create-key.png)
 
@@ -142,6 +142,7 @@ az batch account set \
 ```
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
   * **カスタマー マネージド キーは既存の Batch アカウントでサポートされますか?** いいえ。 カスタマー マネージド キーは、新しい Batch アカウントに対してのみサポートされています。
+  * **2048 ビットを超える RSA キーのサイズを選択できますか?** はい。`3072` および `4096` ビットの RSA キーのサイズもサポートされています。
   * **カスタマー マネージド キーが失効した後、どのような操作を使用できますか?** Batch にカスタマー マネージド キーへのアクセス権がなくなった場合、許可される操作はアカウントの削除だけです。
   * **Key Vault のキーを誤って削除した場合、Batch アカウントへのアクセスを復元するにはどうすればよいですか?** 消去保護と論理削除が有効になっているため、既存のキーを復元することができます。 詳細については、[Azure Key Vault の復旧](../key-vault/general/soft-delete-cli.md#recovering-a-key-vault)に関するページを参照してください。
   * **カスタマー マネージド キーを無効にすることはできますか?** いつでも Batch アカウントの暗号化の種類を "Microsoft マネージド キー" に戻すことができます。 その後は、キーを自由に削除または変更できます。

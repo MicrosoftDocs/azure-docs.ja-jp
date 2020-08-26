@@ -5,14 +5,14 @@ keywords: App Service, Azure App Service, ドメイン マッピング, ドメ�
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 04/27/2020
+ms.date: 08/13/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 96a947a20a17c4dc08851824a392143ce162f186
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: c301876a57b3be4a112c7df2706bf17389a5af44
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543565"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190061"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>チュートリアル:既存のカスタム DNS 名を Azure App Service にマップする
 
@@ -125,11 +125,11 @@ App Service プランが **F1** レベルではない場合は、 **[スケー�
 
 #### <a name="create-the-cname-record"></a>CNAME レコードを作成する
 
-サブドメインをアプリの既定のドメイン名 (`<app_name>.azurewebsites.net`、`<app_name>` はアプリの名前) にマップします。 `www` サブドメインの CNAME マッピングを作成するには、次の 2 つのレコードを作成します。
+サブドメインをアプリの既定のドメイン名 (`<app-name>.azurewebsites.net`、`<app-name>` はアプリの名前) にマップします。 `www` サブドメインの CNAME マッピングを作成するには、次の 2 つのレコードを作成します。
 
 | レコード タイプ | Host | 値 | 説明 |
 | - | - | - |
-| CNAME | `www` | `<app_name>.azurewebsites.net` | ドメイン マッピング自体。 |
+| CNAME | `www` | `<app-name>.azurewebsites.net` | ドメイン マッピング自体。 |
 | TXT | `asuid.www` | [前に取得した検証 ID](#get-domain-verification-id) | App Service は、`asuid.<subdomain>` TXT レコードにアクセスして、カスタム ドメインの所有権を確認します。 |
 
 CNAME レコードと TXT レコードを追加した後の DNS レコード ページは次の例のようになります。
@@ -210,7 +210,7 @@ A レコードをアプリ (通常はルート ドメイン) にマップする�
 > | レコード タイプ | Host | 値 |
 > | - | - | - |
 > | A | `www` | 「[アプリの IP アドレスをコピーする](#info)」で取得した IP アドレス |
-> | TXT | `asuid.www` | `<app_name>.azurewebsites.net` |
+> | TXT | `asuid.www` | `<app-name>.azurewebsites.net` |
 >
 
 レコードが追加されると、DNS レコード ページは次の例のようになります。
@@ -262,9 +262,14 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 
 #### <a name="create-the-cname-record"></a>CNAME レコードを作成する
 
-ワイルドカード名をアプリの既定のドメイン名 (`<app_name>.azurewebsites.net`) にマップするための CNAME レコードを追加します。
+ワイルドカード名 `*` をアプリの既定のドメイン名 (`<app-name>.azurewebsites.net`、`<app-name>` はアプリの名前) にマップします。 ワイルドカード名をマップするには、次の 2 つのレコードを作成します。
 
-`*.contoso.com` ドメインの例では、CNAME レコードは名前 `*` を `<app_name>.azurewebsites.net` にマップします。
+| レコード タイプ | Host | 値 | 説明 |
+| - | - | - |
+| CNAME | `*` | `<app-name>.azurewebsites.net` | ドメイン マッピング自体。 |
+| TXT | `asuid` | [前に取得した検証 ID](#get-domain-verification-id) | App Service は、`asuid` TXT レコードにアクセスして、カスタム ドメインの所有権を確認します。 |
+
+`*.contoso.com` ドメインの例では、CNAME レコードは名前 `*` を `<app-name>.azurewebsites.net` にマップします。
 
 CNAME が追加されると、DNS レコード ページは次の例のようになります。
 
@@ -272,7 +277,7 @@ CNAME が追加されると、DNS レコード ページは次の例のように
 
 #### <a name="enable-the-cname-record-mapping-in-the-app"></a>アプリの CNAME レコード マッピングを有効にする
 
-これで、ワイルドカード名と一致するすべてのサブドメインをアプリに追加できるようになりました (たとえば、`sub1.contoso.com` および `sub2.contoso.com` は `*.contoso.com` に一致します)。
+これで、ワイルドカード名と一致するすべてのサブドメインをアプリに追加できるようになりました (たとえば、`sub1.contoso.com` および `sub2.contoso.com` は、どちらも `*.contoso.com` に一致します)。
 
 Azure Portal のアプリ ページの左側のナビゲーションで、 **[カスタム ドメイン]** を選択します。
 
@@ -342,7 +347,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、 **[�
 
 ```bash 
 az webapp config hostname add \
-    --webapp-name <app_name> \
+    --webapp-name <app-name> \
     --resource-group <resource_group_name> \
     --hostname <fully_qualified_domain_name>
 ``` 
@@ -357,9 +362,9 @@ az webapp config hostname add \
 
 ```powershell  
 Set-AzWebApp `
-    -Name <app_name> `
+    -Name <app-name> `
     -ResourceGroupName <resource_group_name> ` 
-    -HostNames @("<fully_qualified_domain_name>","<app_name>.azurewebsites.net")
+    -HostNames @("<fully_qualified_domain_name>","<app-name>.azurewebsites.net")
 ```
 
 詳細については、「[カスタム ドメインを Web アプリに割り当てる](scripts/powershell-configure-custom-domain.md)」を参照してください。

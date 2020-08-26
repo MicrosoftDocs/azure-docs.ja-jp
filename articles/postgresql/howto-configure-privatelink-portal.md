@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: f05b70c8197283d9fa576d6ea464aa08554dd773
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 92d4fb638e41c668c557ef9e618d30677481585d
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206770"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87829851"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>ポータルを使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
 
@@ -20,7 +20,7 @@ ms.locfileid: "86206770"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!NOTE]
-> この機能は、Azure Database for PostgreSQL 単一サーバーが汎用およびメモリ最適化の価格レベルをサポートしているすべての Azure リージョンで利用できます。
+> プライベート リンク機能は、汎用またはメモリ最適化のいずれかの価格レベルの Azure Database for PostgreSQL サーバーでのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであることを確実にします。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 [Azure portal](https://portal.azure.com) にサインインします。

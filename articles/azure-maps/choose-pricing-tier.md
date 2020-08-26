@@ -1,19 +1,19 @@
 ---
 title: Microsoft Azure Maps の適切な価格レベルの選択
-description: この記事では、Microsoft Azure Maps が提供する価格レベルについて説明します。
+description: Azure Maps の価格レベルについて説明します。 どの機能がどのレベルで提供されているかを確かめ、価格レベルの選択に関する重要な考慮事項を確認します。
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 07/27/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 359c2270f3de269adae13ce976cedeb4248935d2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 3603a4f5d103987b25bd5f976b89f943f98565a8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285766"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163987"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Azure Maps での適切な価格レベルの選択
 
@@ -47,6 +47,7 @@ S0 価格レベルと S1 価格レベルでは、処理されるデータ スル
 | Azure Maps Data (Preview)                |                     | ✓        |
 | Mobility (プレビュー)                       |                     | ✓        |
 | Weather (プレビュー)                        |✓                    |✓        |
+|  Creator (プレビュー)                         |                   |✓        |
 
 さらに次の点も考慮してください。
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/08/2020
+ms.date: 08/07/2020
 ms.author: b-juche
-ms.openlocfilehash: a0d672f782cb9f476fa81d28ee369072caf8509b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 0c790d1d8bec972135796533542a5efad6094d7c
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86147198"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88006674"
 ---
 # <a name="resource-limits-for-azure-netapp-files"></a>Azure NetApp Files のリソース制限
 
@@ -33,6 +33,7 @@ Azure NetApp Files のリソース制限を理解すると、ボリュームの�
 |----------------|---------------------|--------------------------------------|
 |  Azure リージョンあたりの NetApp アカウントの数   |  10    |  はい   |
 |  NetApp アカウントあたりの容量プールの数   |    25     |   はい   |
+|  NetApp アカウントあたりのボリューム量   |    500     |   はい   |
 |  容量プールあたりのボリュームの数     |    500   |    はい     |
 |  ボリュームあたりのスナップショット数       |    255     |    いいえ        |
 |  Azure Virtual Network あたりの Azure NetApp Files (Microsoft.NetApp/volumes) に委任されたサブネットの数    |   1   |    いいえ    |

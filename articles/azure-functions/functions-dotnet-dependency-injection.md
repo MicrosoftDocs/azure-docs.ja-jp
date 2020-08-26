@@ -3,15 +3,16 @@ title: .NET Azure Functions で依存関係の挿入を使用する
 description: .NET 関数にサービスを登録して使用するために、依存関係の挿入を使用する方法について学習します
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.custom: devx-track-csharp
+ms.date: 08/15/2020
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 05b845f3284ea95dd2be595c4d59767e45149306
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4919dc8f08a745a029eb6c3755f8cfc9c39f827f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500466"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603865"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>.NET Azure Functions で依存関係の挿入を使用する
 
@@ -225,10 +226,10 @@ public class MyOptions
 
 ```csharp
 builder.Services.AddOptions<MyOptions>()
-                .Configure<IConfiguration>((settings, configuration) =>
-                                           {
-                                                configuration.GetSection("MyOptions").Bind(settings);
-                                           });
+    .Configure<IConfiguration>((settings, configuration) =>
+    {
+        configuration.GetSection("MyOptions").Bind(settings);
+    });
 ```
 
 `Bind` を呼び出すと、プロパティ名が一致する値が構成からカスタム インスタンスにコピーされます。 これで IoC コンテナーで options インスタンスを関数に挿入できるようになりました。
@@ -252,8 +253,57 @@ public class HttpTrigger
 
 オプションの使用に関する詳細については、「[ASP.NET Core のオプション パターン](/aspnet/core/fundamentals/configuration/options)」を参照してください。
 
-> [!WARNING]
-> 従量課金プランで *local.settings.json* や *appsettings.{environment}.json* のようなファイルから値を読み取らないようにします。 トリガー接続に関連するこれらのファイルから読み取られた値は、アプリのスケールとして利用することはできません。これは、スケール コントローラーがアプリの新しいインスタンスを作成する際に、ホスティング インフラストラクチャが構成情報にアクセスできないためです。
+### <a name="customizing-configuration-sources"></a>構成ソースのカスタマイズ
+
+> [!NOTE]
+> 構成ソースのカスタマイズは、Azure Functions ホスト バージョン 2.0.14192.0 および 3.0.14191.0 以降で使用できます。
+
+追加の構成ソースを指定するには、関数アプリの `StartUp` クラスの `ConfigureAppConfiguration` メソッドをオーバーライドします。
+
+次のサンプルでは、基本とオプションの環境固有のアプリ設定ファイルから、構成値を追加しています。
+
+```csharp
+using System.IO;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+
+[assembly: FunctionsStartup(typeof(MyNamespace.Startup))]
+
+namespace MyNamespace
+{
+    public class Startup : FunctionsStartup
+    {
+        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+        {
+            FunctionsHostBuilderContext context = builder.GetContext();
+
+            builder.ConfigurationBuilder
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, "appsettings.json"), optional: true, reloadOnChange: false)
+                .AddJsonFile(Path.Combine(context.ApplicationRootPath, $"appsettings.{context.EnvironmentName}.json"), optional: true, reloadOnChange: false);
+        }
+    }
+}
+```
+
+`IFunctionsConfigurationBuilder` の `ConfigurationBuilder` プロパティに構成プロバイダーを追加します。 構成プロバイダーの使用の詳細については、「[ASP.NET Core での構成](/aspnet/core/fundamentals/configuration/?view=aspnetcore-3.1#configuration-providers)」を参照してください。
+
+`FunctionsHostBuilderContext` は `IFunctionsConfigurationBuilder.GetContext()` から取得されます。 このコンテキストを使用して現在の環境名を取得し、関数アプリ フォルダー内の構成ファイルの場所を解決します。
+
+既定では、*appsettings.json* などの構成ファイルは、関数アプリの出力フォルダーに自動的にコピーされません。 ファイルがコピーされるようにするため、次のサンプルと一致するように *.csproj* ファイルを更新します。
+
+```xml
+<None Update="appsettings.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>      
+</None>
+<None Update="appsettings.Development.json">
+    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+</None>
+```
+
+> [!IMPORTANT]
+> 従量課金プランまたは Premium プランで実行されている関数アプリの場合、トリガーで使用される構成値を変更すると、スケーリング エラーが発生する可能性があります。 `FunctionsStartup` クラスによってこれらのプロパティに変更が加えられると、関数アプリのスタートアップ エラーが発生します。
 
 ## <a name="next-steps"></a>次のステップ
 

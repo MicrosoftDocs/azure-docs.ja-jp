@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: 94595bac2febdef1d3739703f0fa49c9ef15f218
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: a5eb24b5420431a43afa2ffd006ac821f0e907c9
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166622"
+ms.locfileid: "88185759"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>自動機械学習での特徴量化
 
@@ -28,6 +28,8 @@ ms.locfileid: "88166622"
 - [自動機械学習実験](concept-automated-ml.md)用にそれらの特徴をカスタマイズする方法。
 
 "*特徴エンジニアリング*" は、データに関するドメインの知識を使用して、機械学習 (ML) アルゴリズムの学習を支援する特徴を作成するプロセスです。 Azure Machine Learning では、特徴エンジニアリングを容易にするために、データのスケーリングと正規化の手法が適用されます。 自動機械学習 (*AutoML*) の実験では、これらの手法と特徴エンジニアリングが、まとめて "*特徴量化*" と呼ばれています。
+
+## <a name="prerequisites"></a>前提条件
 
 この記事は、AutoML の実験を構成する方法についての知識が既にある読者を対象としています。 構成については、次の記事を参照してください。
 
@@ -64,9 +66,9 @@ Python SDK を使用して構成した実験では、特徴量化の設定を有
 | ------------- | ------------- |
 |**高カーディナリティまたは差異なしの特徴の削除*** |これらの特徴をトレーニング セットと検証セットから削除します。 これには、まったく値が存在しない特徴、すべての行の値が同じである特徴、高いカーディナリティ (ハッシュ、ID、GUID など) の特徴に適用します。|
 |**欠損値の補完*** |数値特徴の場合、その列の平均値で補完します。<br/><br/>カテゴリ特徴の場合、出現回数が最も多い値で補完します。|
-|**その他の特徴の生成*** |DateTime の特徴:年、月、日、曜日、年の通算日、四半期、年の通算週、時間、分、秒。<br><br> *予測タスクの場合*、次の追加の DateTime 機能が作成されます:ISO の年、半期、カレンダーの月の文字列、週、曜日の文字列、四半期の日、年の日、午前/午後 (時間が正午より前の場合は 0、それ以外の場合は 1)、午前/午後の文字列、時間 (12 時間ベース)<br/><br/>テキストの特徴:ユニグラム、バイグラム、トライグラムに基づく期間の頻度。 詳細については、[BERT を使用してこれを実行する方法](#bert-integration)に関する記事を参照してください。|
+|**その他の特徴の生成*** |DateTime の特徴:年、月、日、曜日、年の通算日、四半期、年の通算週、時間、分、秒。<br><br> *予測タスクの場合*、次の追加の DateTime 機能が作成されます:ISO の年、半期、カレンダーの月の文字列、週、曜日の文字列、四半期の日、年の日、午前/午後 (時間が正午 (午後 12 時) より前の場合は 0、それ以外の場合は 1)、午前/午後の文字列、時間 (12 時間ベース)<br/><br/>テキストの特徴:ユニグラム、バイグラム、トライグラムに基づく期間の頻度。 詳細については、[BERT を使用してこれを実行する方法](#bert-integration)に関する記事を参照してください。|
 |**変換とエンコード***|一意の値がほとんどない数値特徴を、カテゴリ特徴に変換します。<br/><br/>カーディナリティの低いカテゴリ特徴の場合、ワンホット エンコードが使用されます。 カーディナリティが高いカテゴリ特徴の場合、ワンホット ハッシュ エンコードが使用されます。|
-|**ワードの埋め込み**|事前トレーニングされたモデルを使用してテキスト トークンのベクトルをセンテンス ベクトルに変換するテキスト特性化機能です。 ドキュメント内の各ワードの埋め込みベクトルは、ドキュメント特徴ベクトルを生成するために他のものと集約されます。|
+|**ワードの埋め込み**|事前トレーニングされたモデルを使用してテキスト トークンのベクトルをセンテンス ベクトルに変換するテキスト特徴抽出器です。 ドキュメント内の各ワードの埋め込みベクトルは、ドキュメント特徴ベクトルを生成するために他のものと集約されます。|
 |**ターゲット エンコード**|カテゴリ特徴の場合、このステップは、回帰の問題について各カテゴリを平均ターゲット値にマップされます。分類の問題については、各クラスのクラス確率にマップされます。 マッピングの過剰適合および疎データ カテゴリによって発生するノイズを削減するために、頻度ベースの重み付けと k フォールド クロス検証が適用されます。|
 |**テキスト ターゲット エンコード**|テキスト入力の場合、bag-of-words を使用するスタック線形モデルは、各クラスの確率を生成するために使用されます。|
 |**証拠の重み (WoE)**|ターゲット列に対するカテゴリ列の相関関係のメジャーとして、WoE を計算します。 WoE は、クラス内およびクラス外の確率に対する比率の対数として計算されます。 このステップでは、クラスごとに 1 つの数値特徴列が生成され、明示的に欠損値と外れ値の処理を補完する必要がなくなります。|
@@ -140,34 +142,196 @@ featurization_config.add_transformer_params('Imputer', ['bore'], {"strategy": "m
 featurization_config.add_transformer_params('HashOneHotEncoder', [], {"number_of_bits": 3})
 ```
 
-## <a name="bert-integration"></a>BERT 統合 
-[BERT](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) は、自動 ML の特徴量化層で使用されます。 この層では、列にフリー テキストやその他の種類のデータ (タイムスタンプや単純な数値など) が含まれているかどうかを検出し、それに応じて特徴量化を行います。 BERT の場合、ユーザーが指定したラベルを使用してモデルをファインチューニング/トレーニングした後、タイムスタンプベースの特徴 (曜日など) や多くの一般的なデータセットに含まれている数値などの他の特徴と一緒に、特徴としてドキュメントの埋め込み (BERT の場合、これらは特殊な [CLS] トークンに関連付けられた最終的な非表示状態です) を出力します。 
+## <a name="featurization-transparency"></a>特徴量化の透過性
 
-BERT を有効にするには、トレーニングに GPU コンピューティングを使用する必要があります。 CPU コンピューティングを使用した場合、AutoML は、BERT ではなく、BiLSTM DNN 特徴抽出器を有効にします。 BERT を呼び出すには、automl_settings に "enable_dnn:True" を設定し、GPU コンピューティング (例: vm_size = "STANDARD_NC6"、またはそれ以上の GPU) を使用する必要があります。 例については、[こちらのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)をご覧ください。
+すべての AutoML モデルには、特徴量化が自動的に適用されます。  特徴量化には、自動化された特徴エンジニアリング (`"featurization": 'auto'` の場合) およびスケーリングと正規化が含まれます。それにより、選択したアルゴリズムとそのハイパーパラメーター値が影響を受けます。 AutoML によって、モデルに適用された内容を確実に把握するためのさまざまな方法がサポートされています。
 
-BERT の場合、AutoML は次の手順を実行します (これらの項目が発生するためには、automl_settings に "enable_dnn:True" を設定する必要があることに注意してください)。
+次の予測例を考えてみましょう。
 
-1. すべてのテキスト列のトークン化を含む前処理 (最終的なモデルの特徴量化の概要には "StringCast" トランスフォーマーが表示されます)。 `get_featurization_summary()` メソッドを使用してモデルの特徴量化の概要を生成する方法の例については、[こちらのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)を参照してください。
++ 次の 4 つの入力特徴があります。A (数値)、B (数値)、C (数値)、D (DateTime)。
++ 数値の特徴 C は、すべて一意の値を持つ ID 列であるためドロップされます。
++ 数値の特徴 A と B には欠損値があるため、平均値で補完されます。
++ DateTime の特徴 D は、11 の異なるエンジニアリングされた特徴に特徴付けされます。
+
+この情報を取得するには、自動 ML 実験の実行からの `fitted_model` 出力を使用します。
 
 ```python
-text_transformations_used = []
-for column_group in fitted_model.named_steps['datatransformer'].get_featurization_summary():
-    text_transformations_used.extend(column_group['Transformations'])
-text_transformations_used
+automl_config = AutoMLConfig(…)
+automl_run = experiment.submit(automl_config …)
+best_run, fitted_model = automl_run.get_output()
+```
+### <a name="automated-feature-engineering"></a>自動化された特徴エンジニア リング 
+`get_engineered_feature_names()` からはエンジニアリングされた特徴の名前の一覧が返されます。
+
+  >[!Note]
+  >task='forecasting' に 'timeseriestransformer' を使用するか、'regression' または 'classification' タスクに 'datatransformer' を使用します。
+
+  ```python
+  fitted_model.named_steps['timeseriestransformer']. get_engineered_feature_names ()
+  ```
+
+このリストには、すべてのエンジニアリングされた特徴の名前が含まれます。 
+
+  ```
+  ['A', 'B', 'A_WASNULL', 'B_WASNULL', 'year', 'half', 'quarter', 'month', 'day', 'hour', 'am_pm', 'hour12', 'wday', 'qday', 'week']
+  ```
+
+`get_featurization_summary()` からは、すべての入力特徴について、特徴量化の概要が返されます。
+
+  ```python
+  fitted_model.named_steps['timeseriestransformer'].get_featurization_summary()
+  ```
+
+出力
+
+  ```
+  [{'RawFeatureName': 'A',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 2,
+    'Tranformations': ['MeanImputer', 'ImputationMarker']},
+   {'RawFeatureName': 'B',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 2,
+    'Tranformations': ['MeanImputer', 'ImputationMarker']},
+   {'RawFeatureName': 'C',
+    'TypeDetected': 'Numeric',
+    'Dropped': 'Yes',
+    'EngineeredFeatureCount': 0,
+    'Tranformations': []},
+   {'RawFeatureName': 'D',
+    'TypeDetected': 'DateTime',
+    'Dropped': 'No',
+    'EngineeredFeatureCount': 11,
+    'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
+  ```
+
+   |出力|定義|
+   |----|--------|
+   |RawFeatureName|指定されたデータセットの入力特徴/列の名前。|
+   |TypeDetected|検出された入力特徴のデータ型。|
+   |Dropped|入力特徴がドロップされたか、または使用されたかを示す。|
+   |EngineeringFeatureCount|自動化された特徴エンジニアリングの変換によって生成された特徴の数。|
+   |変換|エンジニアリングされた特徴を生成するために入力特徴に適用される変換の一覧。|
+
+### <a name="scaling-and-normalization"></a>スケーリングと正規化
+
+パイプラインのスケーリングと正規化および選択したアルゴリズムとハイパーパラメーター値を理解するには、`fitted_model.steps` を使用します。 
+
+次のサンプル出力は、選択した実行の `fitted_model.steps` を実行したものです。
+
+```
+[('RobustScaler', 
+  RobustScaler(copy=True, 
+  quantile_range=[10, 90], 
+  with_centering=True, 
+  with_scaling=True)), 
+
+  ('LogisticRegression', 
+  LogisticRegression(C=0.18420699693267145, class_weight='balanced', 
+  dual=False, 
+  fit_intercept=True, 
+  intercept_scaling=1, 
+  max_iter=100, 
+  multi_class='multinomial', 
+  n_jobs=1, penalty='l2', 
+  random_state=None, 
+  solver='newton-cg', 
+  tol=0.0001, 
+  verbose=0, 
+  warm_start=False))
 ```
 
-2. すべてのテキスト列を 1 つのテキスト列に連結します。そのため、最終的なモデルには "StringConcatTransformer" が表示されます。 
+詳細情報を取得するには、次のヘルパー関数を使用します。 
 
-> [!NOTE]
-> BERT の実装では、トレーニング サンプルのテキストの長さの合計は 128 トークンに制限されています。 つまり、すべてのテキスト列を連結した長さは、最大で 128 トークンになることが理想です。 理想的には、複数の列がある場合は、この条件が満たされるように各列を切り詰める必要があります。 たとえば、データに 2 つのテキスト列がある場合は、データを AutoML に供給する前に、両方のテキスト列を切り詰めてそれぞれ 64 トークンになるようにする必要があります (最終的に連結されたテキスト列で、両方の列を等しく表す必要があると仮定した場合)。 長さが 128 トークンを超える連結列の場合、BERT のトークナイザー層により、この入力は 128 トークンに切り詰められます。
+```python
+from pprint import pprint
 
-3. 特徴量のスイープ手順で、AutoML は、BERT を、データ サンプルのベースライン (bag-of-words 特徴量) と比較し、BERT によって精度が向上するかどうかを判断します。 AutoML は、BERT のパフォーマンスがベースラインよりも優れていると判断すると、最適な特徴量化戦略としてテキストの特徴量化に BERT を使用して、データ全体の特徴量化を進めます。 その場合、最終的なモデルには "PretrainedTextDNNTransformer" と表示されます。
+def print_model(model, prefix=""):
+    for step in model.steps:
+        print(prefix + step[0])
+        if hasattr(step[1], 'estimators') and hasattr(step[1], 'weights'):
+            pprint({'estimators': list(
+                e[0] for e in step[1].estimators), 'weights': step[1].weights})
+            print()
+            for estimator in step[1].estimators:
+                print_model(estimator[1], estimator[0] + ' - ')
+        else:
+            pprint(step[1].get_params())
+            print()
 
-BERT は通常、他のほとんどの特徴抽出器よりも長く実行されます。 処理速度を上げるには、クラスターにより多くのコンピューティング リソースを提供します。 AutoML は、可能な場合、BERT トレーニングを複数のノードに分散します (最大 8 ノード)。 これを行うには、[max_concurrent_iterations](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) を 1 より大きい値に設定します。 パフォーマンスを向上させるには、RDMA 機能 ("STANDARD_NC24r"、"STANDARD_NC24rs_V3" など) を持つ SKU を使用することをお勧めします
+print_model(model)
+```
+
+このヘルパー関数によって、特定のアルゴリズムとして `LogisticRegression with RobustScalar` を使用している特定の実行に対して、次の出力が返されます。
+
+```
+RobustScaler
+{'copy': True,
+'quantile_range': [10, 90],
+'with_centering': True,
+'with_scaling': True}
+
+LogisticRegression
+{'C': 0.18420699693267145,
+'class_weight': 'balanced',
+'dual': False,
+'fit_intercept': True,
+'intercept_scaling': 1,
+'max_iter': 100,
+'multi_class': 'multinomial',
+'n_jobs': 1,
+'penalty': 'l2',
+'random_state': None,
+'solver': 'newton-cg',
+'tol': 0.0001,
+'verbose': 0,
+'warm_start': False}
+```
+
+### <a name="predict-class-probability"></a>クラスの確率を予測する
+
+自動 ML を使用して生成されたモデルにはすべて、オープンソースの元のクラスの機能をミラー化するラッパー オブジェクトがあります。 自動 ML によって返されるほとんどの分類モデル ラッパー オブジェクトは、`predict_proba()` 関数を実装しています。これは特徴 (X 値) の配列に似た、または疎行列のデータ サンプルを受け入れ、各サンプルの n 次元配列と、それぞれのクラスの確率を返します。
+
+上記と同じ呼び出しを使用して最適な実行済みの適合モデルを取得したことを前提として、適合モデルから直接 `predict_proba()` を呼び出して、モデルの種類に応じて適切な形式で `X_test` サンプルを指定することができます。
+
+```python
+best_run, fitted_model = automl_run.get_output()
+class_prob = fitted_model.predict_proba(X_test)
+```
+
+基になるモデルが `predict_proba()` 関数をサポートしていない場合、または形式が正しくない場合は、モデル クラス固有の例外がスローされます。 さまざまな種類のモデルに対してこの関数を実装する方法の例については、[RandomForestClassifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html#sklearn.ensemble.RandomForestClassifier.predict_proba) と [XGBoost](https://xgboost.readthedocs.io/en/latest/python/python_api.html) のリファレンス ドキュメントを参照してください。
+
+## <a name="bert-integration"></a>BERT 統合
+
+[BERT](https://techcommunity.microsoft.com/t5/azure-ai/how-bert-is-integrated-into-azure-automated-machine-learning/ba-p/1194657) は、AutoML の特徴量化層で使用されます。 この層では、列にフリー テキストやその他の種類のデータ (タイムスタンプや単純な数値など) が含まれている場合は、それに応じて特徴量化が適用されます。
+
+BERT の場合、モデルはユーザー指定のラベルを使用して微調整およびトレーニングされます。 ここから、ドキュメント埋め込みが、タイムスタンプベースの特徴 (曜日) などの他の特徴と同様に、特徴として出力されます。 
+
+
+### <a name="bert-steps"></a>BERT のステップ
+
+BERT を呼び出すには、automl_settings に `enable_dnn: True` を設定し、GPU コンピューティング (例: `vm_size = "STANDARD_NC6"`、またはそれ以上の GPU) を使用する必要があります。 CPU コンピューティングを使用した場合、AutoML によって、BERT ではなく BiLSTM DNN 特徴抽出器が有効になります。
+
+BERT の場合は、AutoML で次の手順が行われます。 
+
+1. **すべてのテキスト列の前処理とトークン化**。 たとえば、"StringCast" トランスフォーマーは、最終的なモデルの特徴量化の概要内にあります。 モデルの特徴量化の概要を生成する方法の例については、[こちらのノートブック](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)を参照してください。
+
+2. **すべてのテキスト列を 1 つのテキスト列に連結**します。そのため、最終的なモデル内では `StringConcatTransformer` になります。 
+
+    BERT の実装では、トレーニング サンプルのテキストの長さの合計は 128 トークンに制限されています。 つまり、すべてのテキスト列を連結した長さは、最大で 128 トークンになることが理想です。 複数の列がある場合は、この条件が満たされるように各列を切り詰める必要があります。 それ以外の場合、長さが 128 トークンを超える連結列については、BERT のトークナイザー層により、この入力は 128 トークンに切り詰められます。
+
+3. **特徴量スイープの一部として、AutoML で BERT がデータ サンプルのベースライン (bag-of-words 特徴量) と比較されます。** この比較では、BERT によって精度が向上するかどうかが判断されます。 BERT のパフォーマンスがベースラインよりも高い場合、AutoML でデータ全体に対して BERT がテキスト特徴量化に使用されます。 その場合は、最終的なモデルに `PretrainedTextDNNTransformer` が表示されます。
+
+BERT は通常、他の特徴抽出器よりも長く実行されます。 パフォーマンスを向上させるには、RDMA 機能に "STANDARD_NC24r" または "STANDARD_NC24rs_V3" を使用することをお勧めします。 
+
+AutoML によって、可能な場合、BERT トレーニングが複数のノードに分散されます (最大 8 ノードまで)。 これは、`AutoMLConfig` オブジェクトで `max_concurrent_iterations` パラメーターを 1 より大きく設定することによって、行うことができます。 
+### <a name="supported-languages"></a>サポートされている言語
 
 AutoML では現在約 100 の言語がサポートされており、データセットの言語に応じて、適切な BERT モデルが選択されます。 ドイツ語のデータの場合は、ドイツ語の BERT モデルが使用されます。 英語の場合は、英語の BERT モデルが使用されます。 その他のすべての言語では、多言語 BERT モデルが使用されます。
 
-次のコードでは、データセットの言語が "deu" ([ISO 分類](https://iso639-3.sil.org/code/deu)でドイツ語を示す 3 文字の言語コード) に指定されているため、ドイツ語の BERT モデルがトリガーされます。
+次のコードでは、データセットの言語が `deu` ([ISO 分類](https://iso639-3.sil.org/code/deu)でドイツ語を示す 3 文字の言語コード) に指定されているため、ドイツ語の BERT モデルがトリガーされます。
 
 ```python
 from azureml.automl.core.featurization import FeaturizationConfig

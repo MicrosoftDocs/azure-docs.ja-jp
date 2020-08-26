@@ -11,19 +11,19 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: f3c7420e1f33a7c25e7d3bfdffff14019d0b606a
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 48d8b0519ca1b312909f8b48a7fd8a25d0f8b919
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542672"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225820"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>DTU 購入モデルを使用したエラスティック プールのリソース制限
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 この記事では、DTU 購入モデルを使用した、エラスティック プール内にある Azure SQL Database のデータベースに対するリソース制限について、詳しく説明します。
 
-* Azure SQL Database に対する DTU 購入モデルのリソース制限については、[Azure SQL Database に対する DTU のリソース制限](resource-limits-vcore-elastic-pools.md)に関するページを参照してください。
+* Azure SQL Database に対する DTU 購入モデルのリソース制限については、[Azure SQL Database に対する DTU のリソース制限](resource-limits-dtu-single-databases.md)に関するページを参照してください。
 * 仮想コア リソースの制限については、[Azure SQL Database に対する仮想コア リソースの制限](resource-limits-vcore-single-databases.md)および[エラスティック プールに対する仮想コア リソースの制限](resource-limits-vcore-elastic-pools.md)に関するページを参照してください。
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>エラスティック プール: ストレージ サイズとコンピューティング サイズ

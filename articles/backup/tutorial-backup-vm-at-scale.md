@@ -4,12 +4,12 @@ description: このチュートリアルでは、Recovery Services コンテナ�
 ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7a8849bba51939a0c40cba81925e1b4b4a6e3826
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ed91105488b812131d3a908c509998c955cec299
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372554"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263420"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -156,7 +156,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
 1. **[myRecoveryServicesVault]** ダッシュボードで、 **[バックアップ項目]** の下の **[3]** を選択して、[バックアップ項目] メニューを開きます。
 
-    ![[バックアップ項目]](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
+    ![[バックアップ項目] メニューを開く](./media/tutorial-backup-vm-at-scale/tutorial-vm-back-up-now.png)
 
 1. **[バックアップ項目]** メニューで、 **[Azure 仮想マシン]** を選択して、コンテナーに関連付けられている仮想マシンの一覧を開きます。
 
@@ -185,7 +185,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
 1. コンテナーに項目がなくなったら、 **[削除]** を選択します。
 
-    ![[バックアップの停止] を選択してコンテナーを削除する](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
+    ![[削除] の選択](./media/tutorial-backup-vm-at-scale/deleting-the-vault.png)
 
     コンテナーが削除されると、Recovery Services コンテナーの一覧に戻ります。
 

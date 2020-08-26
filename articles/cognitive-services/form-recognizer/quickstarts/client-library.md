@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 04/28/2020
+ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-javascript
 zone_pivot_groups: programming-languages-set-ten
-ms.openlocfilehash: ee798ba765346d701851d6873f75c0e572ba7d04
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 9b6759fedab8d72b883698b9d04c0e2b7df2fdcc
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87405460"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505404"
 ---
 # <a name="quickstart-use-the-form-recognizer-client-library"></a>クイック スタート:Form Recognizer クライアント ライブラリを使用する
 

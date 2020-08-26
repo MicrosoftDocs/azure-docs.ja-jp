@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit, devx-track-python
-ms.openlocfilehash: a471d793cc45cc8542aa933ef8ab0a79c42e7e1f
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
+ms.openlocfilehash: 6bd4d5d82af213063b2000693e46d22744604480
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87848419"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214120"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Functions の Azure Event Grid 出力バインディング
 

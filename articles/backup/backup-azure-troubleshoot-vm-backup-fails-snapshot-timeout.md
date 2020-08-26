@@ -4,12 +4,12 @@ description: エージェント、拡張機能、ディスクに関する Azure 
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 274435a958820c3fd08fef4a61643a1d656e31e3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: d690ed23f49d3aa3f77b88c8d57c963ae2a98682
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167931"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611859"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング:エージェント/拡張機能に関する問題
 
@@ -31,7 +31,7 @@ ms.locfileid: "88167931"
 - **Azure VM ゲスト エージェント サービスが開始されており、最新の状態であることを確認します**:
   - Windows VM の場合:
     - **services.msc** に移動し、**Windows Azure VM ゲスト エージェント サービス**が動作していることを確認します。 また、[最新バージョン](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)がインストールされていることを確認してください。 詳細については、[Windows VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)に関するページを参照してください。
-    - 既定では Azure VM エージェントは、ポータル、PowerShell、コマンド ライン インターフェイス、または Azure Resource Manager テンプレートから Azure Marketplace イメージによってデプロイされた、すべての Windows VM にインストールされます。 Azure にデプロイするカスタム VM イメージを作成する場合は、[エージェントの手動インストール](../virtual-machines/extensions/agent-windows.md#manual-installation)が必要となる場合があります。
+    - Azure VM エージェントは、既定でポータル、PowerShell、コマンド ライン インターフェイス、または Azure Resource Manager テンプレートから Azure Marketplace イメージによってデプロイされた、すべての Windows VM にインストールされます。 Azure にデプロイするカスタム VM イメージを作成する場合は、[エージェントの手動インストール](../virtual-machines/extensions/agent-windows.md#manual-installation)が必要となる場合があります。
     - サポート マトリックスを確認して、VM が[サポートされている Windows オペレーティング システム](backup-support-matrix-iaas.md#operating-system-support-windows)で動作するかどうかを確認します。
   - Linux VM の場合は、
     - コマンド `ps-e` を実行して、Azure VM ゲスト エージェント サービスが実行されていることを確認します。 また、[最新バージョン](../virtual-machines/extensions/update-linux-agent.md)がインストールされていることを確認してください。 詳細については、[Linux VM ゲスト エージェントの問題](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)に関するページを参照してください。
@@ -65,7 +65,7 @@ Azure Backup では、VM スナップショット拡張機能を使用して Azu
 
 - **VSS ライター サービスが実行されていることを確認します**:VSS ライターの問題のトラブルシューティング[の手順に従います。
 - **バックアップのベスト プラクティス ガイドラインに従います**:[Azure VM のバックアップを有効にするベスト プラクティス](backup-azure-vms-introduction.md#best-practices)を確認します。
-- **暗号化されたディスクのガイドラインを確認します**:暗号化されたディスクを使用している VM のバックアップを有効にする場合は、必要なアクセス許可をすべて付与していることを確認してください。 詳細については、「[暗号化された Azure VM をバックアップおよび復元する](backup-azure-vms-encryption.md#encryption-support)」を参照してください。
+- **暗号化されたディスクのガイドラインを確認します**:暗号化されたディスクを使用している VM のバックアップを有効にする場合は、必要なアクセス許可をすべて付与していることを確認してください。 詳細については、「[暗号化された Azure VM をバックアップおよび復元する](backup-azure-vms-encryption.md)」を参照してください。
 
 ## <a name="usererrorguestagentstatusunavailable---vm-agent-unable-to-communicate-with-azure-backup"></a><a name="UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup"></a>UserErrorGuestAgentStatusUnavailable - VM agent unable to communicate with Azure Backup (VM エージェントが Azure Backup と通信できません)
 
@@ -175,13 +175,13 @@ VM をバックアップするときにディスク サイズが 32 TB よりも
 
 進行中の既存のバックアップ ジョブがあるため、最新のバックアップ ジョブが失敗しました。 新しいバックアップ ジョブは、現在のジョブが完了するまで開始できません。 他のバックアップ操作をトリガーまたはスケジュールする前に、進行中のバックアップ操作が完了していることを確認します。 バックアップ ジョブの状態を確認するには、次の手順を実行します。
 
-1. Azure portal にサインインし、 **[すべてのサービス]** をクリックします。 「Recovery Services」と入力し、 **[Recovery Services コンテナー]** をクリックします。 Recovery Services コンテナーの一覧が表示されます。
+1. Azure portal にサインインして、 **[すべてのサービス]** を選択します。 「Recovery Services」と入力し、 **[Recovery Services コンテナー]** を選択します。 Recovery Services コンテナーの一覧が表示されます。
 2. Recovery Services コンテナーの一覧から、バックアップの構成先のコンテナーを選択します。
-3. コンテナーのダッシュボード メニューの **[バックアップ ジョブ]** をクリックすると、すべてのバックアップ ジョブが表示されます。
+3. コンテナーのダッシュボード メニューの **[バックアップ ジョブ]** を選択すると、すべてのバックアップ ジョブが表示されます。
    - バックアップ ジョブが進行中の場合は、そのジョブが完了するまで待機する、そのバックアップ ジョブを取り消します。
-     - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) を使用します。
+     - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** を選択するか、[PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) を使用します。
    - 別のコンテナー内でバックアップを再構成した場合は、古いコンテナー内で実行されているバックアップ ジョブがないことを確認します。 存在する場合は、バックアップ ジョブを取り消します。
-     - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** をクリックするか、[PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) を使用します
+     - バックアップ ジョブを取り消すには、そのバックアップ ジョブを右クリックして **[キャンセル]** を選択するか、[PowerShell](/powershell/module/az.recoveryservices/stop-azrecoveryservicesbackupjob) を使用します。
 4. バックアップ操作を再試行してください。
 
 スケジュールしたバックアップ操作に長い時間がかかり、次のバックアップの構成と競合している場合は、[ベスト プラクティス](backup-azure-vms-introduction.md#best-practices)、[バックアップ パフォーマンス](backup-azure-vms-introduction.md#backup-performance)、および[復元に関する考慮事項](backup-azure-vms-introduction.md#backup-and-restore-considerations)について確認してください。
@@ -191,20 +191,20 @@ VM をバックアップするときにディスク サイズが 32 TB よりも
 **エラー コード**:UserErrorCrpReportedUserError <br>
 **エラー メッセージ**:エラーが発生したため、バックアップに失敗しました。 詳細については、ジョブ エラー メッセージの詳細をご覧ください。
 
-このエラーは、IaaS VM から報告されます。 問題の根本原因を特定するには、Recovery Services コンテナーの設定にアクセスします。 **[監視]** セクション下で、 **[バックアップ ジョブ]** を選択して、状態をフィルター処理して表示します。 **[失敗]** をクリックして、基になるエラー メッセージの詳細を確認します。 エラーの詳細ページの推奨事項に従って、さらにアクションを実行します。
+このエラーは、IaaS VM から報告されます。 問題の根本原因を特定するには、Recovery Services コンテナーの設定にアクセスします。 **[監視]** セクション下で、 **[バックアップ ジョブ]** を選択して、状態をフィルター処理して表示します。 **[失敗]** を選択して、基になるエラー メッセージの詳細を確認します。 エラーの詳細ページの推奨事項に従って、さらにアクションを実行します。
 
 ## <a name="usererrorbcmdatasourcenotpresent---backup-failed-this-virtual-machine-is-not-actively-protected-by-azure-backup"></a>UserErrorBcmDatasourceNotPresent - バックアップ失敗: この仮想マシンは、Azure Backup によって (アクティブに) 保護されていません
 
 **エラー コード**:UserErrorBcmDatasourceNotPresent <br>
 **エラー メッセージ**:バックアップ失敗: この仮想マシンは、Azure Backup によって (アクティブに) 保護されていません。
 
-指定された仮想マシンが Azure Backup によってアクティブに保護されている (一時停止状態でない) ことを確認してください。 この問題を解決するには、仮想マシンがアクティブであることを確実にしてから、操作を再試行します。
+指定された仮想マシンが Azure Backup によってアクティブに保護されている (一時停止状態でない) ことを確認します。 この問題を解決するには、仮想マシンがアクティブであることを確実にしてから、操作を再試行します。
 
 ## <a name="causes-and-solutions"></a>原因とソリューション
 
 ### <a name="the-agent-is-installed-in-the-vm-but-its-unresponsive-for-windows-vms"></a><a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>エージェントが VM にインストールされているが応答しない (Windows VM の場合)
 
-#### <a name="solution"></a>解決策
+#### <a name="solution-for-this-error"></a>このエラーの解決策
 
 VM エージェントが破損しているまたはサービスが停止している可能性があります。 VM エージェントを再インストールすることで最新バージョンを入手できます。 その際に、サービスとの通信も再開されます。
 
@@ -258,7 +258,7 @@ VM エージェント構成ファイルのオプションの完全な一覧に�
 
 [AppLocker](/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (または別のアプリケーション制御ソリューション) を実行しており、規則が発行元またはパス ベースの場合、**IaaSBcdrExtension.exe** 実行可能ファイルの実行がブロックされる可能性があります。
 
-#### <a name="solution"></a>解決策
+#### <a name="solution-to-this-issue"></a>この問題の解決策
 
 AppLocker (またはその他のアプリケーション制御ソフトウェア) から、`/var/lib` パスまたは **IaaSBcdrExtension.exe** 実行可能ファイルを除外します。
 
@@ -266,7 +266,7 @@ AppLocker (またはその他のアプリケーション制御ソフトウェア
 
 VM のバックアップは、基礎となるストレージ アカウントへのスナップショット コマンドの発行に依存します。 ストレージ アカウントにアクセスできないか、スナップショット タスクの実行が遅れているために、バックアップが失敗することがあります。
 
-#### <a name="solution"></a>解決策
+#### <a name="solution-for-this-issue"></a>この問題の解決策
 
 次の場合にスナップショットのタスクが失敗することがあります。
 
@@ -280,7 +280,7 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 1. [Azure portal](https://portal.azure.com/) にサインインします。
 2. **[すべてのリソース] オプション**に移動して、AzureBackupRG_`<Geo>`_`<number>` という形式の復元ポイント コレクションのリソース グループを選択します。
 3. **[設定]** セクションで **[ロック]** を選択して、ロックを表示します。
-4. ロックを解除するには、省略記号を選択し、 **[削除]** をクリックします。
+4. ロックを解除するには、省略記号を選択し、 **[削除]** を選択します。
 
     ![ロックを解除する](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
@@ -307,16 +307,16 @@ VM のリソース グループまたは VM 自体を削除した場合、マネ
 リソース グループのロックが原因で消去されない復元ポイント コレクションを手動で消去するには、次の手順を試行します。
 
 1. [Azure portal](https://portal.azure.com/) にサインインします。
-2. **[ハブ]** メニューの **[すべてのリソース]** をクリックし、VM が配置されている、AzureBackupRG_`<Geo>`_`<number>` という形式のリソース グループを選択します。
+2. **[ハブ]** メニューの **[すべてのリソース]** を選択し、VM が配置されている、AzureBackupRG_`<Geo>`_`<number>` という形式のリソース グループを選択します。
 
-    ![ロックを解除する](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![リソース グループの選択](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
-3. リソース グループをクリックすると、 **[概要]** ペインが表示されます。
+3. リソース グループを選択すると、 **[概要]** ウィンドウが表示されます。
 4. **[非表示の型の表示]** オプションを選択して、非表示のすべてのリソースを表示します。 AzureBackupRG_`<VMName>`_`<number>` という形式の復元ポイント コレクションを選択します。
 
-    ![ロックを解除する](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![復元ポイント コレクションの選択](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
-5. **[削除]** をクリックして、復元ポイント コレクションを消去します。
+5. **[削除]** を選択して、復元ポイント コレクションを消去します。
 6. バックアップ操作を再試行します。
 
 > [!NOTE]

@@ -1,24 +1,28 @@
 ---
 title: BLOB のバージョン管理を有効にして管理する (プレビュー)
 titleSuffix: Azure Storage
-description: Azure portal または Azure Resource Manager テンプレートを使用して、BLOB のバージョン管理を有効にする方法について説明します。
+description: Azure portal または Azure Resource Manager テンプレートを使用して、BLOB のバージョン管理を有効にする (プレビュー) 方法について説明します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/15/2020
+ms.date: 08/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7ff0bb6d593a199bd249441cf484d1f0580774ac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 85e8ccd03bd20ed9bb572d482dbc7a06b8af725c
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086049"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067275"
 ---
-# <a name="enable-and-manage-blob-versioning"></a>BLOB のバージョン管理を有効にして管理する
+# <a name="enable-and-manage-blob-versioning-preview"></a>BLOB のバージョン管理を有効にして管理する (プレビュー)
 
-ストレージ アカウントの BLOB のバージョン管理は、Azure portal または Azure Resource Manager テンプレートを使用して、いつでも有効または無効にすることができます。
+BLOB ストレージのバージョン管理 (プレビュー) を有効にし、以前のバージョンのオブジェクトを自動的に維持することができます。  BLOB のバージョン管理が有効になっている場合は、以前のバージョンの BLOB を復元し、データが誤って変更または削除された場合に復旧することができます。
+
+この記事では、Azure portal または Azure Resource Manager テンプレートを使用してストレージ アカウントの BLOB のバージョン管理を有効または無効にする方法について説明します。
+
+BLOB のバージョン管理を有効にする前に、プレビューに登録する必要があります。 プレビューへの登録方法を含め、BLOB のバージョン管理の詳細については、「[BLOB のバージョン管理 (プレビュー)](versioning-overview.md)」を参照してください。
 
 ## <a name="enable-blob-versioning"></a>BLOB のバージョン管理を有効にする
 

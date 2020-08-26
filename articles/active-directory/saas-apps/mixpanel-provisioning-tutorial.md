@@ -2,25 +2,21 @@
 title: チュートリアル:Mixpanel を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Mixpanel に対してユーザー アカウントを自動的にプロビジョニング、またはプロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: 565cdc45-4377-4b70-870b-64edf3dcc92c
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: b47d377e710d1c56f560b650e34fa67cce6e5b21
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: c17d0d927fab86774f25a3ada1fbb3e675957af8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926333"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552511"
 ---
 # <a name="tutorial-configure-mixpanel-for-automatic-user-provisioning"></a>チュートリアル:Mixpanel を構成し、自動ユーザー プロビジョニングに対応させる
 

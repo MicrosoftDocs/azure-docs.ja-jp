@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 06/25/2020
-ms.openlocfilehash: 7194e4553386c25691bb3ede8096da7fb63c5dc0
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.date: 08/14/2020
+ms.openlocfilehash: 72d0745e5a885ddbc57a9a849a7537a40e0b1215
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88055220"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590066"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Azure SQL Managed Instance とは
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -73,8 +73,8 @@ SQL Managed Instance の[仮想コアベースの購入モデル](../database/se
 
 仮想コア モデルでは、ハードウェアの世代を選択できます。
 
-- **Gen4** 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4-GHz プロセッサ、付属 SSD、物理コア、コアあたり 7 GB の RAM、8 から 24 個の仮想コアのコンピューティング サイズに基づいています。
-- **Gen5** 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3-GHz および Intel SP-8160 (Skylake) プロセッサ、高速 NVMe SSD、ハイパースレッド論理コア、4 から 80 コアのコンピューティング サイズに基づいています。
+- **Gen4** 論理 CPU は、Intel® E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、付属 SSD、物理コア、コアあたり 7 GB の RAM、8 から 24 個の仮想コアのコンピューティング サイズに基づいています。
+- **Gen5** 論理 CPU は、Intel® E5-2673 v4 (Broadwell) 2.3 GHz、Intel® SP-8160 (Skylake) および Intel® 8272CL (Cascade Lake) 2.5 GHz プロセッサ、高速 NVMe SSD、ハイパースレッド論理コア、4 から 80 コアのコンピューティング サイズに基づいています。
 
 ハードウェアの世代の違いについて詳しくは、[SQL Managed Instance のリソース制限](resource-limits.md#hardware-generation-characteristics)に関する記事をご覧ください。
 

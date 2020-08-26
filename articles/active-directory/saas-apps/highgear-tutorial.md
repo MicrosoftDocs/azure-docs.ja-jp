@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と HighGear の統合 | Microsoft Docs
 description: Azure Active Directory と HighGear の間でシングル サインオンを構成する方法について学習します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 55dcd2fb-96b7-46ec-9e69-eee71c535773
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed06586435315935566ca0b1519b182d4fc47d39
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: af2630b977c1ce34712a582175674277799f105b
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73159042"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>チュートリアル:Azure Active Directory と HighGear の統合
 

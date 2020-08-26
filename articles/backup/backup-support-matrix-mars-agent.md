@@ -3,12 +3,12 @@ title: MARS エージェントを使用したサポート マトリックス
 description: この記事では、Microsoft Azure Recovery Services (MARS) エージェントを実行しているコンピューターをバックアップする場合の Azure Backup のサポートを要約しています。
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5ff9510dfa31bb947d50b1a91fb7f73c2d767471
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 2b719bd36c27336b3fe24cdb904715bf8194ed70
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86538651"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872414"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Microsoft Azure Recovery Services (MARS) エージェントを使用したバックアップのサポート マトリックス
 
@@ -45,7 +45,7 @@ MARS エージェントを使用してデータをバックアップする場合
 --- | ---
 サイズ |  キャッシュ フォルダー内の空き領域は、バックアップ データのサイズ全体の少なくとも 5 ～ 10% である必要があります。
 場所 | キャッシュ フォルダーは、バックアップされるコンピューターにローカルに格納されており、かつオンラインである必要があります。 キャッシュ フォルダーがネットワーク共有、リムーバブル メディア、またはオフライン ボリュームに存在していてはいけません。
-Folder | 重複除去されたボリューム上でキャッシュ フォルダーを暗号化しないでください。同様に、圧縮されたフォルダー、スパース フォルダー、または再解析ポイントを含むフォルダー内で暗号化しないでください。
+Folder | キャッシュ フォルダーは、重複除去されたボリューム上や、圧縮されたフォルダー、スパース フォルダー、または再解析ポイントを含むフォルダー内で暗号化されていてはいけません。
 場所の変更 | キャッシュの場所は、バックアップ エンジンを停止し (`net stop bengine`)、キャッシュ フォルダーを新しいドライブにコピーすることによって変更できます。 (新しいドライブに十分な領域があることを確認してください。)その後、**HKLM\SOFTWARE\Microsoft\Windows Azure Backup** にある 2 つのレジストリ エントリ (**Config/ScratchLocation** と **Config/CloudBackupProvider/ScratchLocation**) を新しい場所に更新し、エンジンを再起動します。
 
 ## <a name="networking-and-access-support"></a>ネットワークとアクセスのサポート
@@ -54,7 +54,7 @@ Folder | 重複除去されたボリューム上でキャッシュ フォルダ�
 
 MARS エージェントには、次の URL へのアクセス権が必要です。
 
-- <http://www.msftncsi.com/ncsi.txt>
+- `http://www.msftncsi.com/ncsi.txt`
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
@@ -79,7 +79,7 @@ MARS エージェントには、次の URL へのアクセス権が必要です�
 - `.microsoftonline.com`
 - `.windows.net`
 
-Microsoft ピアリングを使用して、次のサービスまたはリージョン、および関連するコミュニティ値を選択してください。
+Microsoft ピアリングの使用時には、サービス、リージョン、関連するコミュニティについて以下の値を選択します。
 
 - Azure Active Directory (12076:5060)
 - Microsoft Azure リージョン (Recovery Services コンテナーの場所による)
@@ -89,6 +89,16 @@ Microsoft ピアリングを使用して、次のサービスまたはリージ�
 
 >[!NOTE]
 >パブリック ピアリングは、新しい回線では非推奨です。
+
+### <a name="private-endpoint-support"></a>プライベート エンドポイントのサポート
+
+プライベート エンドポイントを使用して、サーバーから Recovery Services コンテナーにデータを安全にバックアップできるようになりました。 Azure Active Directory は現在、プライベート エンドポイントをサポートしていないため、Azure Active Directory に必要な IP および FQDN には、別個に送信アクセスを許可する必要があります。
+
+MARS エージェントを使用してオンプレミスのリソースをバックアップする場合は、バックアップ対象のリソースが含まれるオンプレミスのネットワークが、コンテナー用のプライベート エンドポイントが含まれる Azure VNet と確実にピアリングされているようにします。 その後で、MARS エージェントのインストールを続行し、バックアップを構成することができます。 ただし、バックアップ用のすべての通信が、ピアリングされたネットワークのみを介して行われるようにする必要があります。
+
+MARS エージェントの登録後にそのコンテナー用のプライベート エンドポイントを削除した場合は、コンテナーを Recovery Services コンテナーに再登録する必要があります。 それらに対する保護を停止する必要はありません。
+
+[Azure Backup のプライベート エンドポイント](private-endpoints.md)の詳細を確認してください。
 
 ### <a name="throttling-support"></a>調整のサポート
 
@@ -124,11 +134,11 @@ Windows Server 2019 (Standard、Datacenter、Essentials) | はい | はい | - .
 
 ### <a name="operating-systems-at-end-of-support"></a>サポート終了のオペレーティング システム
 
-次のオペレーティング システムはサポートが終了しました。保護された状態を継続するために、オペレーティング システムをアップグレードすることを強くお勧めします。
+以下のオペレーティング システムはサポートが終了しました。引き続き保護された状態を維持するため、オペレーティング システムをアップグレードすることを強くお勧めします。
 
 既存のコミットメントによってオペレーティング システムをアップグレードできない場合は、Windows Server を Azure VM に移行し、Azure VM バックアップを利用して、保護された状態を継続することを検討してください。 Windows Server の移行の詳細については、[こちらの移行に関するページ](https://azure.microsoft.com/migration/windows-server/)を参照してください。
 
-オペレーティング システムをアップグレードしたり、Azure に移行したりすることができないオンプレミスまたはホストされた環境の場合は、保護およびサポートされた状態を継続するために、マシンに対する拡張セキュリティ更新プログラムをアクティブにしてください。 拡張セキュリティ更新プログラムの対象となるのは、特定のエディションのみであること注意してください。 詳細については、[FAQ ページ](https://www.microsoft.com/windows-server/extended-security-updates)を参照してください。
+オペレーティング システムのアップグレードや Azure への移行ができないオンプレミス環境やホストされた環境の場合は、引き続き保護とサポートの対象となる状態に留まるため、マシンに対する拡張セキュリティ更新プログラムをアクティブにしてください。 拡張セキュリティ更新プログラムの対象となるのは、特定のエディションのみであること注意してください。 詳細については、[FAQ ページ](https://www.microsoft.com/windows-server/extended-security-updates)を参照してください。
 
 | **オペレーティング システム**                                       | **ファイル/フォルダー** | **システム状態** | **ソフトウェア/モジュールの要件**                           |
 | ------------------------------------------------------------ | ----------------- | ------------------ | ------------------------------------------------------------ |
@@ -152,7 +162,7 @@ Windows 7| 1,700 GB
 
 ### <a name="other-limitations"></a>その他の制限事項
 
-- MARS は、1 つのコンテナーに対して同じ名前を持つ複数のマシンの保護をサポートしていません。
+- MARS では、1 つのコンテナーに対して、同じ名前を持つ複数のマシンの保護をサポートしていません。
 
 ## <a name="supported-file-types-for-backup"></a>バックアップ用にサポートされるファイルの種類
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65b4ede6f4851418bf17d42db5b3215dafa9234
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c60c0324b04bca0a8115f4ac884704012e8e1d8c
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83995175"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986850"
 ---
 # <a name="conditional-access-require-compliant-devices"></a>条件付きアクセス:Require compliant devices (準拠しているデバイスが必須)
 
@@ -44,7 +44,7 @@ Microsoft Intune をデプロイした組織では、デバイスから返され
 1. **[Cloud apps or actions]\(クラウド アプリまたはアクション\)**  >  **[Include]\(含める\)** で、 **[すべてのクラウド アプリ]** を選択します。
    1. 特定のアプリケーションをポリシーから除外する必要がある場合は、 **[除外されたクラウド アプリの選択]** で **[除外]** タブから選択して **[選択]** を選びます。
    1. **[Done]** を選択します。
-1. **[条件]**  >  **[クライアント アプリ (プレビュー)]** で、 **[構成する]** を **[はい]** に設定し、 **[完了]** を選択します。
+1. **[条件]**  >  **[クライアント アプリ (プレビュー)]**  >  **[このポリシーを適用するクライアント アプリを選択します]** で、すべてを既定値が選択された状態のままにして、 **[完了]** を選択します。
 1. **[アクセス制御]**  >  **[許可]** で、 **[デバイスは準拠としてマーク済みである必要があります]** を選択します。
    1. **[選択]** を選択します。
 1. 設定を確認し、 **[Enable policy]\(ポリシーの有効化\)** を **[オン]** に設定します。

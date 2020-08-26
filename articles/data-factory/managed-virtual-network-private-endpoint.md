@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/15/2020
-ms.openlocfilehash: a4594ca1a992f158522eccb4ffa6e846a1f4f605
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 14a3a76ef4fefb7a33b272b846e1f1cb66644c3e
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406284"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225684"
 ---
 # <a name="azure-data-factory-managed-virtual-network-preview"></a>Azure Data Factory マネージド仮想ネットワーク (プレビュー)
 
@@ -49,7 +49,7 @@ Azure Data Factory マネージド仮想ネットワーク (VNET) 内に Azure I
 
 ![新しいマネージド プライベート エンドポイント](./media/tutorial-copy-data-portal-private/new-managed-private-endpoint.png)
 
-Azure Data Factory では、プライベート リンクがサポートされます。 プライベート リンクを使用すると、Azure (PaaS) サービス (Azure Storage、Azure Cosmos DB、Azure SQL Data Warehouse など) にアクセスできます。
+Azure Data Factory では、プライベート リンクがサポートされます。 プライベート リンクを使用すると、Azure (PaaS) サービス (Azure Storage、Azure Cosmos DB、Azure Synapse Analytics (以前の Azure SQL Data Warehouse) など) にアクセスできます。
 
 プライベート リンクを使用すると、データ ストアとマネージド仮想ネットワーク間のトラフィックは、全面的に Microsoft のバックボーンネットワークを介して転送されます。 プライベート リンクによって、データ流出のリスクから身を守ることができます。 リソースへのプライベート リンクは、プライベート エンドポイントを作成することによって確立します。
 
@@ -79,18 +79,14 @@ Azure Data Factory にマネージド プライベート エンドポイント�
 - Azure Files
 - Azure Data Lake Gen2
 - Azure SQL Database (Azure SQL Managed Instance を含まない)
-- Azure SQL Data Warehouse
+- Azure Synapse Analytics (旧称 Azure SQL Data Warehouse)
 - Azure CosmosDB SQL
 - Azure Key Vault
-- Azure Private Link
+- Azure Private Link サービス
 
 ### <a name="outbound-communications-through-public-endpoint-from-adf-managed-virtual-network"></a>ADF マネージド仮想ネットワークからのパブリック エンドポイントを介した送信方向の通信
 - 送信方向の通信用には、ポート 443 のみが開かれています。
 - Azure Storage および Azure Data Lake Gen2 では、ADF マネージド仮想ネットワークからパブリック エンドポイント経由で接続することはサポートされていません。
-
-### <a name="other-known-issues"></a>その他の既知の問題
-CosmosDB 接続のデバッグ実行は機能しません。これには、データフロー デバッグとパイプライン デバッグの両方が含まれます。
-
 
 ## <a name="next-steps"></a>次のステップ
 

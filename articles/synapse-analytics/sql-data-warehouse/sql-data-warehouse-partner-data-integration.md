@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c8ab5bc5072612edd3eaabbd13468567a92f42e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 354e51d529c504bd04ed40f64b3db14a06384c98
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85296391"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210579"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Azure Synapse Analytics データ統合パートナー
 
@@ -43,7 +43,7 @@ Azure Synapse の Synapse SQL プール機能を使用してデータ ウェア�
 | ![StreamSets](./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png) |**StreamSets**<br>StreamSets は、DataOps 用のデータ統合プラットフォームを提供します。 これは、データを Azure Synapse データ ウェアハウスに統合する、設計、デプロイ、運用の完全なライフサイクルを操作できるようにします。 ストリーミング、バッチ、または変更されたデータ キャプチャ データ配信方法を使用して、ウェアハウスとの間でデータの取り込みや統合を迅速に行うことができます。 また、エンドツーエンドのデータ フローの可視性および回復性を提供するスマート データ パイプラインを使用して、継続的な操作を確保することもできます。|[製品ページ](https://streamsets.com/partners/microsoft)|
 | ![Talend](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Talend Cloud**<br>Talend Cloud は、クラウドまたはオンプレミスにわたって、データの接続、アクセス、および変換を行うためのエンタープライズ データ統合プラットフォームです。 幅広い接続、組み込みのデータ品質、最新のビッグ データとクラウド テクノロジに対するネイティブ サポートを提供する iPaaS (integration Platform-as-a-Service) です。 |[製品ページ](https://www.talend.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
 | ![TimeXtender](./media/sql-data-warehouse-partner-data-integration/timextender-logo.png) |**TimeXtender**<br>TimeXtender の検出ハブは、データ分析情報を得るまでの時間を最大 10 倍短縮する、統合されたデータ管理プラットフォームを提供することで、企業が最新のデータ資産を構築するのに役立ちます。 1 つのプラットフォーム内でデータ アクセス、データ モデリング、コンプライアンスの自動化と機能を提供することで、日々の抽出、変換、読み込み (ETL)、または抽出、読み込み、変換 (ELT) を超える作業を行うことができます。 検出ハブでは、クラウド スケール分析用の統合されたデータ ファブリックが提供されています。これにより、さまざまなデータ サイロ、カタログ、モデル、移動、およびドキュメント データを、分析と AI のために接続して統合することができます。 | [製品ページ](https://www.timextender.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=timextender&page=1) |
-| ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta では、個人と組織が、分析のためのさまざまなデータを探索して融合させることができます。 Trifacta Wrangler は、大規模なデータと多数のエンド ユーザーをサポートする必要があるデータ ラングリング ワークロードを処理するように設計されています。|[製品ページ](https://www.trifacta.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01?source=datamarket&tab=Overview) |
+| ![Trifacta](./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png) |**Trifacta Wrangler**<br> Trifacta では、個人と組織が、分析のためのさまざまなデータを探索して融合させることができます。 Trifacta Wrangler は、大規模なデータと多数のエンド ユーザーをサポートする必要があるデータ ラングリング ワークロードを処理するように設計されています。|[製品ページ](https://www.trifacta.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/trifactainc1587522950142.trifactaazure?tab=Overview) |
 | ![WhereScape](./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png) |**Wherescape RED**<br> WhereScape RED は、ETL ワークフローを合理化するための自動ツールをチームに提供する IDE です。 IDE は、一般的なデータ ターゲットに対するベスト プラクティス、つまり最適化されたネイティブ コードを提供します。 WhereScape RED を使用して、データ インフラストラクチャの開発、デプロイ、および運用にかかる時間を短縮します。|[製品ページ](https://www.wherescape.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview) |
 
 

@@ -6,19 +6,20 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: c957e2ee1d1e596ca8e3525e0f4a9802c4039107
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 15ddf9392fffb8a9ed196b75b1c5e80d4484b0ad
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206825"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837246"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>CLI を使用して Azure Database for PostgreSQL 単一サーバー用の Private Link を作成および管理する
 
 プライベート エンドポイントは、Azure におけるプライベート リンクの基本的な構成要素です。 これによって、仮想マシン (VM) などの Azure リソースが Private Link リソースと非公開で通信できるようになります。 この記事では、Azure CLI を使用して Azure Virtual Network 内に VM を作成し、Azure プライベート エンドポイントを含む Azure Database for PostgreSQL 単一サーバーを作成する方法について説明します。
 
 > [!NOTE]
-> この機能は、Azure Database for PostgreSQL 単一サーバーで "汎用" および "メモリ最適化" の価格レベルがサポートされているすべての Azure リージョンで利用できます。
+> プライベート リンク機能は、General Purpose または Memory Optimized のいずれかの価格レベルの Azure Database for PostgreSQL サーバーにのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであるかを確認します。
 
 ## <a name="prerequisites"></a>前提条件
 

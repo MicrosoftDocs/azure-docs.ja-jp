@@ -1,6 +1,6 @@
 ---
 title: Azure Active Directory でのグループ名ポリシーの実施 | Microsoft Docs
-description: Azure Active Directory で Office 365 グループの名前付けポリシーを設定する方法
+description: Azure Active Directory で Microsoft 365 グループの名前付けポリシーを設定する方法
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,28 +9,28 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 08/13/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 380962b71d6829b8a217a5d3038e2ae4dd7264fd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9ff525eab42d69ded33381fefc83076f9aa94f05
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497088"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213743"
 ---
-# <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Azure Active Directory での Office 365 グループに対する名前付けポリシーの強制
+# <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Azure Active Directory での Microsoft 365 グループに対する名前付けポリシーの適用
 
-ユーザーが作成または編集した Office 365 グループに一貫した名前付け規則を強制するには、Azure Active Directory (Azure AD) で組織のグループ名前付けポリシーを設定します。 たとえば、名前付けポリシーを使用して、グループ、メンバーシップ、地理的地域の機能やグループ作成者の職務を伝えることができます。 また、名前付けポリシーを使用して、アドレス帳でグループを分類することもできます。 このポリシーを使用して、グループ名やグループ エイリアスで特定の単語の使用を禁止できます。
+ユーザーが作成または編集した Microsoft 365 グループに一貫した名前付け規則を適用するには、Azure Active Directory (Azure AD) で組織のグループ名前付けポリシーを設定します。 たとえば、名前付けポリシーを使用して、グループ、メンバーシップ、地理的地域の機能やグループ作成者の職務を伝えることができます。 また、名前付けポリシーを使用して、アドレス帳でグループを分類することもできます。 このポリシーを使用して、グループ名やグループ エイリアスで特定の単語の使用を禁止できます。
 
 > [!IMPORTANT]
-> Office 365 グループに対して Azure AD 名前付けポリシーを使用するには、1 つ以上の Office 365 グループのメンバーである一意のユーザーごとに Azure Active Directory Premium P1 ライセンスまたは Azure AD Basic EDU ライセンスを持っている必要がありますが、必ずしも割り当てる必要はありません。
+> Microsoft 365 グループに対して Azure AD 名前付けポリシーを使用するには、1 つまたは複数の Microsoft 365 グループのメンバーである一意のユーザーごとに Azure Active Directory Premium P1 ライセンスまたは Azure AD Basic EDU ライセンスを持っている必要がありますが、必ずしも割り当てる必要はありません。
 
 名前付けポリシーは、ワークロード (Outlook、Microsoft Teams、SharePoint、Exchange、Planner など) でのグループの作成または編集に適用されます。 ポリシーは、グループ名とグループ エイリアスの両方に適用されます。 Azure AD で名前付けポリシーを設定し、既存の Exchange グループ名前付けポリシーもある場合は、組織では Azure AD の名前付けポリシーが強制されます。
 
-グループの名前付けポリシーが構成されると、エンド ユーザーが作成した新しい Office 365 グループにこのポリシーが適用されます。 名前付けポリシーは、全体管理者やユーザー管理者などの特定のディレクトリ ロールには適用されません (グループの名前付けポリシーから除外されるロールの完全な一覧については、以下を参照してください)。 既存の Office 365 グループの場合、ポリシーは構成時にすぐには適用されません。 グループ所有者がこれらのグループのグループ名を編集すると、名前付けポリシーが適用されます。
+グループの名前付けポリシーが構成されると、エンド ユーザーが作成した新しい Microsoft 365 グループにこのポリシーが適用されます。 名前付けポリシーは、全体管理者やユーザー管理者などの特定のディレクトリ ロールには適用されません (グループの名前付けポリシーから除外されるロールの完全な一覧については、以下を参照してください)。 既存の Microsoft 365 グループの場合、ポリシーは構成時にすぐには適用されません。 グループ所有者がこれらのグループのグループ名を編集すると、名前付けポリシーが適用されます。
 
 ## <a name="naming-policy-features"></a>名前付けポリシーの機能
 
@@ -253,7 +253,7 @@ Outlook Customer Manager (OCM) | Outlook Customer Manager は名前付けポリ�
 Classroom アプリ | Classroom アプリで作成されたグループは名前付けポリシーに準拠していますが、名前付けポリシーが自動的に適用されるわけではありません。教室グループ名を入力したときに、名前付けポリシーのプレビューはユーザーに表示されません。 ユーザーは、プレフィックスとサフィックスを付けたポリシー強制後の教室グループ名を入力する必要があります。 そうしないと、教室グループの作成または編集操作はエラーで失敗します。
 Power BI | Power BI ワークスペースは、名前付けポリシーに準拠しています。    
 Yammer | Azure Active Directory アカウントで Yammer にサインインしたユーザーが グループを作成する、またはグループ名を編集する場合、グループ名は名前付けポリシーに準拠します。 これは、 Office 365 接続 グループ及び他のすべての Yammer グループどちらにも適用されます。<br>名前付けポリシーが実施される前に Office 365 接続グループを作成した場合、グループ名は名前付けポリシーに自動的には従いません。 ユーザーは、グループ名を編集するときに、プレフィックスとサフィックスを追加するよう求められます。
-StaffHub  | StaffHub チームは名前付けポリシーに従いませんが、基になる Office 365 グループは従います。 StaffHub チーム名にはプレフィックスとサフィックスは適用されず、カスタム禁止単語もチェックされません。 ただし、StaffHub ではプレフィックスとサフィックスが適用され、基になる Office 365 グループから禁止単語が削除されます。
+StaffHub  | StaffHub チームは名前付けポリシーに従いませんが、基になる Microsoft 365 グループは従います。 StaffHub チーム名にはプレフィックスとサフィックスは適用されず、カスタム禁止単語もチェックされません。 しかし、StaffHub ではプレフィックスとサフィックスが適用され、基になる Microsoft 365 グループから禁止された単語が削除されます。
 Exchange PowerShell | Exchange PowerShell コマンドレットは名前付けポリシーに準拠しています。 ユーザーがグループ名やグループ エイリアス (mailNickname) で名前付けポリシーに従っていない場合、推奨されるプレフィックスとサフィックスやカスタム禁止単語を示す適切なエラー メッセージが表示されます。
 Azure Active Directory PowerShell コマンドレット | Azure Active Directory PowerShell コマンドレットは名前付けポリシーに準拠しています。 ユーザーがグループ名やグループ エイリアスで名前付け規則に従っていない場合、推奨されるプレフィックスとサフィックスやカスタム禁止単語を示す適切なエラー メッセージが表示されます。
 Exchange 管理センター | Exchange 管理センターは名前付けポリシーに準拠しています。 ユーザーがグループ名やグループ エイリアスで名前付け規則に従っていない場合、推奨されるプレフィックスとサフィックスやカスタム禁止単語を示す適切なエラー メッセージが表示されます。
@@ -264,7 +264,7 @@ Microsoft 365 管理センター | Microsoft 365 管理センターは名前付�
 次の記事では、Azure AD グループに関する追加情報が提供されています。
 
 - [既存のグループの表示](../fundamentals/active-directory-groups-view-azure-portal.md)
-- [Office 365 グループの有効期限ポリシー](groups-lifecycle.md)
+- [Microsoft 365 グループの有効期限ポリシー](groups-lifecycle.md)
 - [グループの設定の管理](../fundamentals/active-directory-groups-settings-azure-portal.md)
 - [グループのメンバーの管理](../fundamentals/active-directory-groups-members-azure-portal.md)
 - [グループのメンバーシップの管理](../fundamentals/active-directory-groups-membership-azure-portal.md)

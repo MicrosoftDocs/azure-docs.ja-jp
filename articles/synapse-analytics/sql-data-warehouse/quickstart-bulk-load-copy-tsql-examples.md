@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 05dd1f1d429b59c4d621b63c6b78a1fc00e8d4dd
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 6f54a8993b602110e35c410338b6f0a51109738f
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87528465"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88603882"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Synapse SQL を使用してデータを安全に読み込む
 
@@ -23,10 +23,11 @@ ms.locfileid: "87528465"
 
 次の表は、サポートされている認証方法をファイルの種類別およびストレージ アカウント別にまとめたものです。 これはソース ストレージの場所とエラー ファイルの場所に適用されます。
 
-|                          |                CSV                |              Parquet              |                ORC                |
-| :----------------------: | :-------------------------------: | :-------------------------------: | :-------------------------------: |
-|  **Azure Blob Storage**  | SAS/MSI/サービス プリンシパル/キー/AAD |              SAS/キー              |              SAS/キー              |
-| **Azure Data Lake Gen2** | SAS/MSI/サービス プリンシパル/キー/AAD | SAS/MSI/サービス プリンシパル/キー/AAD | SAS/MSI/サービス プリンシパル/キー/AAD |
+|                          |                CSV                |              Parquet               |                ORC                 |
+| :----------------------: | :-------------------------------: | :-------------------------------:  | :-------------------------------:  |
+|  **Azure Blob Storage**  | SAS/MSI/サービス プリンシパル/キー/AAD |              SAS/キー               |              SAS/キー               |
+| **Azure Data Lake Gen2** | SAS/MSI/サービス プリンシパル/キー/AAD | SAS (BLOB エンドポイント)/MSI (dfs エンドポイント)/サービス プリンシパル/キー/AAD | SAS (BLOB エンドポイント)/MSI (dfs エンドポイント)/サービス プリンシパル/キー/AAD |
+
 
 ## <a name="a-storage-account-key-with-lf-as-the-row-terminator-unix-style-new-line"></a>A. 行を終止させるものとして LF が与えられたストレージ アカウント キー (Unix スタイルの改行)
 

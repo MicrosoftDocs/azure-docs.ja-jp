@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.openlocfilehash: c944ae3a5d647cc457edd20a5d3dd0489e19e286
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/26/2020
-ms.locfileid: "75891250"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192277"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service の FAQ
 
@@ -68,3 +68,39 @@ Azure SignalR Service SDK の場合、`HubConnectionContext context` は論理�
 Azure SignalR Service は、ASP.NET Core SignalR が既定でサポートする 3 つの転送をすべて提供します。 これは構成できません。 SignalR Service がすべてのクライアント接続の接続と転送を処理します。
 
 [こちら](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2)に記載されているように、クライアント側の転送は構成できます。
+
+## <a name="what-is-the-meaning-of-metrics-like-message-count-or-connection-count-showed-in-azure-portal-which-kind-of-aggregation-type-should-i-choose"></a>メッセージ数や接続数など、Azure portal に表示されるメトリックの意味を教えてください。 集計の種類としてどれを選べばよいでしょうか?
+
+これらのメトリックの計算方法の詳細は、[こちら](signalr-concept-messages-and-connections.md)でご覧いただけます。
+
+Azure SignalR Service リソースの概要ブレードでは、適切な集計の種類が選択されています。 また、[Metrics]\(メトリック\) ブレードにアクセスする場合、参考として[こちら](../azure-monitor/platform/metrics-supported.md#microsoftsignalrservicesignalr)で集計の種類をご覧いただけます。
+
+## <a name="what-is-the-meaning-of-service-mode-defaultserverlessclassic-how-can-i-choose"></a>サービス モード `Default`/`Serverless`/`Classic` の意味を教えてください。 どのように選べばよいでしょうか?
+
+モード:
+* `Default` モードには、ハブ サーバーが**必要**です。 ハブに利用できるサーバー接続がない場合、クライアントはこのハブへの接続を試みますが失敗します。
+* `Serverless` モードでは、サーバー接続が一切許可**されません**。つまり、すべてのサーバー接続が拒否されます。すべてのクライアントがサーバーレス モードである必要があります。
+* `Classic` モードは、混在した状態です。 ハブにサーバー接続がある場合、新しいクライアントはハブ サーバーにルーティングされます。それ以外の場合、クライアントはサーバーレス モードになります。
+
+  これが原因で問題が発生することがあります。たとえば、すべてのサーバー接続が少しの間失われ、一部のクライアントがハブ サーバーにルーティングされずに、サーバーレス モードになります。
+
+選択:
+1. ハブ サーバーがない場合は、`Serverless` を選択します。
+1. すべてのハブにハブ サーバーがある場合は、`Default` を選択します。
+1. ハブ サーバーがあるハブとないハブがある場合は、`Classic` を選択します。ただしこれが原因で問題が生じることがあります。代わりに、`Serverless` と `Default` の 2 つのインスタンスを作成することをお勧めします。
+
+## <a name="any-feature-differences-when-using-azure-signalr-for-aspnet-signalr"></a>ASP.NET SignalR の代わりに Azure SignalR を使用した場合、機能上の違いはありますか?
+Azure SignalR を使用すると、ASP.NET SignalR のいくつかの API と機能はサポートされなくなります。
+- Azure SignalR の使用時に、クライアントとハブとの間で任意の状態 (一般に `HubState` と呼ばれる) を渡す機能はサポートされません。
+- Azure SignalR を使用している場合、`PersistentConnection` クラスはまだサポートされません。
+- Azure SignalR を使用している場合、**Forever Frame の転送**はサポートされません。
+- クライアントがオフラインのとき、Azure SignalR では、クライアントに送信されたメッセージが再生されません。
+- Azure SignalR を使用している場合、1 つのクライアント接続のトラフィックは、接続期間中、常に 1 つのアプリ サーバー インスタンスにルーティングされます ("スティッキー" セッションとも呼ばれます)。 <bpt id="p1">**</bpt>sticky<ept id="p1">**</ept>) to one app server instance for the duration of the connection
+
+ASP.NET SignalR のサポートは互換性に重点が置かれているため、ASP.NET Core SignalR の一部の新機能はサポートされません。 たとえば、**MessagePack** や **Streaming** は ASP.NET Core SignalR アプリケーションでのみ提供されます。
+
+SignalR Service は、各種のサービス モード (`Classic`/`Default`/`Serverles`) で構成できます。 この ASP.NET サポートでは、`Serverless` モードがサポート対象外となります。 また、データプレーンの REST API もサポートされません。
+
+## <a name="where-do-my-data-reside"></a>自分のデータはどこに存在しますか?
+
+Azure SignalR Service は、データ プロセッサ サービスとして機能します。 ユーザーのコンテンツは一切保存されず、データ所在地は仕様によって保証されています。 診断用の Azure Storage など、Azure SignalR Service と他の Azure サービスを併用する場合、データ所在地を Azure リージョンで維持する方法に関するガイダンスについては、[こちら](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/)をご覧ください。

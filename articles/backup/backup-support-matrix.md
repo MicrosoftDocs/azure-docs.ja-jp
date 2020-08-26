@@ -4,12 +4,12 @@ description: Azure Backup サービスのサポート設定と制限事項の概
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: f2f3d26f74c6227ad257c188d4088fd41fca7075
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 5871e61229277d8036727c11b42d9d7a061bad99
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922318"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612522"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup のサポート マトリックス
 
@@ -79,8 +79,8 @@ Linux マシンをバックアップをしたい場合に何がサポートさ�
 --- | ---
 **Linux を実行しているオンプレミスのマシンの直接バックアップ** | サポートされていません。 MARS エージェントは Windows マシンにのみインストールできます。
 **エージェント拡張機能を使用した Linux を実行している Azure VM のバックアップ** | [カスタム スクリプト](backup-azure-linux-app-consistent.md)を使用したアプリ整合性バックアップ。<br/><br/> ファイルレベルの回復。<br/><br/> 復旧ポイントまたはディスクから VM を作成することによる復元。
-**DPM を使用した、Linux を実行しているオンプレミス マシンでのバックアップ** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM の復元。
-**MABS を使用した、Linux を実行しているオンプレミス マシンでのバックアップ** | Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMWare Linux ゲスト VM の VM の復元。
+**DPM を使用した、Linux を実行しているオンプレミス マシンでのバックアップ** | Hyper-V および VMware 上の Linux ゲスト VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMware Linux ゲスト VM の VM の復元。
+**MABS を使用した、Linux を実行しているオンプレミス マシンでのバックアップ** | Hyper-V および VMware 上の Linux ゲスト VM のファイル整合性バックアップ。<br/><br/> Hyper-V および VMware Linux ゲスト VM の VM の復元。
 **MABS または DPM を使用した Linux Azure VM のバックアップ** | サポートされていません。
 
 ## <a name="daylight-saving-time-support"></a>夏時間のサポート

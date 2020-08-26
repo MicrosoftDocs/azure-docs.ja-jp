@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6ffbd23dccd7bac03e849241866416ac07af4a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b5734cb76e4ed018778c6858597ec8efe3019bf9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87035419"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065983"
 ---
 # <a name="protect-user-accounts-from-attacks-with-azure-active-directory-smart-lockout"></a>Azure Active Directory スマート ロックアウトを使用してユーザー アカウントを攻撃から保護する
 
@@ -24,7 +24,7 @@ ms.locfileid: "87035419"
 
 ## <a name="how-smart-lockout-works"></a>スマート ロックアウトのしくみ
 
-既定のスマート ロックアウトでは、10 回試行に失敗した後、アカウントによるサインインの試行が 1 分間ロックされます。 後続のサインインの試行が失敗するたびに、アカウントは再度ロックされます。最初は 1 分間、後続の試行ではより長い時間ロックされます。
+既定のスマート ロックアウトでは、10 回試行に失敗した後、アカウントによるサインインの試行が 1 分間ロックされます。 後続のサインインの試行が失敗するたびに、アカウントは再度ロックされます。最初は 1 分間、後続の試行ではより長い時間ロックされます。 攻撃者がこの動作を回避できる方法を最小限にするために、Microsoft では、サインインの試行が重ねて失敗したときにロックアウト期間がどの程度延長されるかを開示していません。
 
 スマート ロックアウトでは、直近 3 つの無効なパスワード ハッシュを追跡して、同じパスワードに対するロックアウト カウンターの増分を回避します。 同じ無効なパスワードが複数回入力された場合、この動作によってアカウントがロック アウトされることはありません。
 

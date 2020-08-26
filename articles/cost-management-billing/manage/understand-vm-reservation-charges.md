@@ -4,14 +4,14 @@ description: Azure Reserved VM Instance の割引が、実行中の仮想マシ�
 author: yashesvi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 08/13/2020
 ms.author: banders
-ms.openlocfilehash: a9d9a5661e8a094b7d92a9dd83db3cdcd76b8b65
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ddf232dbe6c6ff61f685e2910286188fb92e1f17
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018384"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192217"
 ---
 # <a name="how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Azure の予約割引が仮想マシンに適用されるしくみ
 
@@ -56,11 +56,15 @@ Windows VM インスタンスの実行中は、インフラストラクチャ �
 
 ## <a name="discount-can-apply-to-different-sizes"></a>さまざまなサイズに割引を適用できる
 
-予約 VM インスタンスを購入するときに、 **[最適化の対象**: **インスタンス サイズの柔軟性]** を選択した場合、割引範囲は選択する仮想マシンのサイズによって決まります。 予約は同じサイズの系列グループの仮想マシン (VM) のサイズに適用できます。 詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
+予約 VM インスタンスを購入するときに、 **[最適化の対象: インスタンス サイズの柔軟性]** を選択した場合、割引範囲は、選択した VM のサイズに適用されます。 また、同じシリーズのインスタンス サイズの柔軟性グループに存在する他の VM サイズにも適用できます。 詳細については、「[Reserved VM Instances での仮想マシン サイズの柔軟性](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md)」を参照してください。
 
-## <a name="discount-applies-to-matching-servicetype-only"></a>割引は一致する ServiceType のみに適用される
+## <a name="premium-storage-vms-dont-get-non-premium-discounts"></a>Premium Storage VM には Premium 以外の割引は適用されない
 
-予約割引は、`AdditionalInfo` の `ServiceType` の値が購入した予約と一致する VM の使用に対してのみ、適用されます。 予約割引の適用では、VM に対して使用される測定は無視され、`ServiceType` のみが評価されます。 VM を購入した対象のサービスの種類を知っておいてください。 Premium Storage 以外の VM の予約を Premium Storage の予約に、またはその逆に、交換することができます。
+次に例を示します。 5 つの Standard_D1 VM に対する予約を購入した場合、予約割引が適用されるのは、Standard_D1 の VM のほか、同じインスタンス ファミリに属する VM だけです。 Standard_DS1 VM や DS1 インスタンス サイズの柔軟性グループに属している他のサイズの VM には割引が適用されません。
+
+予約割引の適用では、VM に対して使用される測定は無視され、ServiceType のみが評価されます。 ご利用の VM のインスタンス柔軟性グループ (またはシリーズ) 情報は、`AdditionalInfo` の `ServiceType` の値を見て判断してください。 それらの値は、使用状況の CSV ファイルにあります。
+
+予約のインスタンス柔軟性グループ (またはシリーズ) を購入後に直接変更することはできません。 ただし、インスタンス柔軟性グループ (シリーズ) 間で VM の予約を "*交換*" することはできます。
 
 ## <a name="services-that-get-vm-reservation-discounts"></a>VM の予約割引が適用されるサービス
 

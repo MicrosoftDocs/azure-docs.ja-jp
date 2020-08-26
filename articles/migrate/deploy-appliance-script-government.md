@@ -3,12 +3,12 @@ title: Azure Government で Azure Migrate アプライアンスを設定する
 description: Azure Government で Azure Migrate アプライアンスを設定する方法について説明します
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: f0ebc882646b5ff3f62ddddf91cffc85cb5e0da6
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 993c25d7b2c580df47b61c836b885ed6379e8640
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86109979"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612267"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Azure Government でアプライアンスを設定する 
 

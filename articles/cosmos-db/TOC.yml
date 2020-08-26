@@ -125,20 +125,26 @@
           href: partition-data.md
         - name: 合成パーティション キー
           href: synthetic-partition-keys.md
-    - name: プロビジョニング スループット
+    - name: 容量
       items:
         - name: 要求ユニット
           displayName: 'RUs, RU'
           href: request-units.md
-        - name: プロビジョニングされたスループットの概要
-          displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
-          href: set-throughput.md
-        - name: 自動スケーリングのスループットをプロビジョニングする
-          href: provision-throughput-autoscale.md
-        - name: 自動スケーリングと標準 (手動) のスループットのいずれかを選択
-          href: how-to-choose-offer.md
-        - name: 自動スケーリングに関する FAQ
-          href: autoscale-faq.md
+        - name: プロビジョニング スループット
+          items:
+            - name: プロビジョニングされたスループットの概要
+              displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
+              href: set-throughput.md
+            - name: 自動スケーリングのスループットをプロビジョニングする
+              href: provision-throughput-autoscale.md
+            - name: 自動スケーリングと標準 (手動) のスループットのいずれかを選択
+              href: how-to-choose-offer.md
+            - name: 自動スケーリングに関する FAQ
+              href: autoscale-faq.md
+        - name: サーバーレス
+          href: serverless.md
+        - name: プロビジョニングされたスループットとサーバーレスのいずれかを選択
+          href: throughput-serverless.md
     - name: SQL クエリ (SQL query)
       items:
         - name: 作業の開始
@@ -238,6 +244,9 @@
                     - name: DateTimeToTicks
                       displayName: 'DateTimeToTicks, date time to ticks, date and time functions, datetime, ticks'
                       href: sql-query-datetimetoticks.md
+                    - name: DateTimeToTimestamp
+                      displayName: 'DateTimeToTimestamp, date time to timestamp, date and time functions, datetime, timestamp'
+                      href: sql-query-datetimetotimestamp.md
                     - name: GetCurrentDateTime
                       displayName: 'GetCurrentDateTime, get current date time, date and time functions, datetime'
                       href: sql-query-getcurrentdatetime.md
@@ -247,6 +256,12 @@
                     - name: GetCurrentTimestamp
                       displayName: 'GetCurrentTimestamp, get current timestamp, timestamp, date and time functions, datetime'
                       href: sql-query-getcurrenttimestamp.md
+                    - name: TicksToDateTime
+                      displayName: 'TicksToDateTime, ticks to date time, date and time functions, datetime, ticks'
+                      href: sql-query-tickstodatetime.md
+                    - name: TimestampToDateTime
+                      displayName: 'TimestampToDateTime, timestamp to date time, date and time functions, datetime, timestamp'
+                      href: sql-query-timestamptodatetime.md
                 - name: 数学関数
                   items:
                     - name: 数学関数
@@ -495,6 +510,8 @@
           href: unique-keys.md
         - name: トランザクションとオプティミスティック同時実行制御
           href: database-transactions-optimistic-concurrency.md
+        - name: '[Attachments]'
+          href: attachments.md
     - name: Change Feed
       items:
         - name: 変更フィードの概要
@@ -953,26 +970,28 @@
           href: how-to-manage-conflicts.md
         - name: セッション トークン形式の変換
           href: how-to-convert-session-token.md
-    - name: プロビジョニング スループット
+    - name: 容量
       items:
-        - name: コンテナーでの標準 (手動) スループットをプロビジョニングする
-          displayName: 'request units, RUs, RU, collection level'
-          href: how-to-provision-container-throughput.md
-        - name: データベースでの標準 (手動) スループットをプロビジョニングする
-          displayName: 'request units, RUs, RU, shared throughput, database level'
-          href: how-to-provision-database-throughput.md
-        - name: データベースまたはコンテナーでの自動スケーリングのスループットをプロビジョニングする
-          displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
-          href: how-to-provision-autoscale-throughput.md
-        - name: Cosmos 容量計画ツールを使用して RU/秒を見積もる
-          displayName: 'request units, RUs, RU, capacity'
-          href: estimate-ru-with-capacity-planner.md
         - name: 要求ユニット使用量を確認する
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
-        - name: Azure Functions タイマーを使用してスケーリングする
-          displayName: 'request units, RUs, RU, timer'
-          href: scale-on-schedule.md
+        - name: プロビジョニング スループット
+          items:
+            - name: コンテナーでの標準 (手動) スループットをプロビジョニングする
+              displayName: 'request units, RUs, RU, collection level'
+              href: how-to-provision-container-throughput.md
+            - name: データベースでの標準 (手動) スループットをプロビジョニングする
+              displayName: 'request units, RUs, RU, shared throughput, database level'
+              href: how-to-provision-database-throughput.md
+            - name: データベースまたはコンテナーでの自動スケーリングのスループットをプロビジョニングする
+              displayName: 'request units, RUs, RU, shared throughput, database level, collection level, autoscale'
+              href: how-to-provision-autoscale-throughput.md
+            - name: Cosmos 容量計画ツールを使用して RU/秒を見積もる
+              displayName: 'request units, RUs, RU, capacity'
+              href: estimate-ru-with-capacity-planner.md
+            - name: Azure Functions タイマーを使用してスケーリングする
+              displayName: 'request units, RUs, RU, timer'
+              href: scale-on-schedule.md
     - name: コンテナーと項目を操作する
       items:
         - name: Cosmos DB のデータを操作する
@@ -1265,9 +1284,11 @@
           href: sql-api-sdk-async-java.md
         - name: 同期の Java SDK v2
           href: sql-api-sdk-java.md
-        - name: SQL API の Spring Data コネクタ
-          href: sql-api-sdk-java-spring.md
-        - name: SQL API の Spark コネクタ
+        - name: Spring Data コネクタ v2
+          href: sql-api-sdk-java-spring-v2.md
+        - name: Spring Data コネクタ v3
+          href: sql-api-sdk-java-spring-v3.md
+        - name: Spark コネクタ
           href: sql-api-sdk-java-spark.md
         - name: Java バルク エグゼキューター ライブラリ v2
           href: sql-api-sdk-bulk-executor-java.md

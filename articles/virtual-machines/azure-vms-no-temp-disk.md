@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: brbell
 ms.reviewer: mimckitt
 ms.date: 06/15/2020
-ms.openlocfilehash: c36e37ba876b4b768d852d6ecedb8e3b4d8f09d0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 15b9495b95ec4efb4f8e9f315595ea6bfca6cd5a
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87288545"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191151"
 ---
 # <a name="azure-vm-sizes-with-no-local-temporary-disk"></a>ローカル一時ディスクを持たない Azure VM のサイズ 
 この記事では、ローカル一時ディスクを持たない Azure VM のサイズについてよく寄せられる質問 (FAQ) に対する回答を示します。 これらの VM サイズの詳細については、[Dv4 および Dsv4 シリーズの仕様 (汎用ワークロード)](dv4-dsv4-series.md) または [Ev4 および Esv4 シリーズの仕様 (メモリ最適化ワークロード)](ev4-esv4-series.md) に関する記事を参照してください。
@@ -56,7 +56,7 @@ ms.locfileid: "87288545"
 [フィードバック フォーム]( https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR_Y3toRKxchLjARedqtguBRUMzdCQkw0OVVRTldFUUtXSTlLQVBPUkVHSy4u)に記入してください。 
 
 ## <a name="next-steps"></a>次のステップ 
-このドキュメントでは、ローカル一時ディスクを持つ Azure VM に関して最もよく寄せられるご質問について説明しました。 これらの VM サイズの詳細については、次の記事を参照してください。
+このドキュメントでは、ローカル一時ディスクのない Azure VM に関して最もよく寄せられるご質問について説明しました。 これらの VM サイズの詳細については、次の記事を参照してください。
 
 - [Dv4 および Dsv4 シリーズの仕様 (汎用ワークロード)](dv4-dsv4-series.md)
 - [Ev4 および Esv4 シリーズの仕様 (メモリ最適化ワークロード)](ev4-esv4-series.md)

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-javascript
-ms.openlocfilehash: 4061d7a3d21b8c2db2bf161c422994cb2742b0b4
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 9d73492110703e64df5f948ad8a2a1ed8d2c63b9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489879"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904540"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning のリソースとワークフローの認証を設定する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,6 +36,9 @@ Azure Machine Learning ワークスペース、および Web サービスとし�
 * [開発環境を構成](how-to-configure-environment.md)して Azure Machine Learning SDK をインストールするか、SDK が既にインストールされている [Azure Machine Learning Notebook VM](concept-azure-machine-learning-architecture.md#compute-instance) を使用します。
 
 ## <a name="interactive-authentication"></a>対話型認証
+
+> [!IMPORTANT]
+> 対話型認証では、ブラウザーが使用され、Cookie (サードパーティの Cookie を含む) が必要です。 Cookie を無効にしている場合は、"サインインできませんでした" などのエラーを受け取る場合があります。 このエラーは、[Azure Multi-Factor Authentication](/azure/active-directory/authentication/concept-mfa-howitworks) を有効にしている場合にも発生する場合があります。
 
 ドキュメントとサンプルのほとんどの例では、対話型認証が使用されています。 たとえば、SDK を使用する場合は、UI ベースの認証フローを使用して自動的に入力を求める関数呼び出しが 2 つあります。
 

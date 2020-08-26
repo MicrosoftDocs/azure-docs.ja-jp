@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 9ae6524dc1d53580d0dc7de1179ccf9db8cebc61
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7496ffcc365a3e9178bcc3293b518ea790e56c78
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086134"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607061"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>クイック スタート:Maven プラグインを使用して Azure Spring Cloud アプリを起動する
 
@@ -79,7 +79,7 @@ Azure Spring Cloud の Maven プラグインを使用すると、自分の Azure
 1. 次のコマンドを実行して、Git リポジトリを複製します。
 
     ```console
-    git clone https://github.com/Azure-Samples/PiggyMetrics
+    git clone https://github.com/Azure-Samples/piggymetrics
     ```
   
 1. 次のコマンドを実行して、ディレクトリを変更し、プロジェクトをビルドします。

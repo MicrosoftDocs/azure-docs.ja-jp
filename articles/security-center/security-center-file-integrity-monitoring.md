@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: f3006bdd0cb90c22123c8db103a12ef3c0bee75a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 68d3646b4ebc3fc5dd5943186afdb75307dfd5ed
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519339"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042668"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
@@ -26,12 +26,16 @@ ms.locfileid: "86519339"
 
 ## <a name="availability"></a>可用性
 
-- リリース状態: **一般提供**
-- 必要なロール: **ワークスペースの所有者**は、FIM を有効/無効にすることができます (詳細については、[Log Analytics での Azure のロール](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)に関する記事を参照してください)。 **閲覧者**は結果を表示できます。
-- クラウド:
-    - ✔ 商用クラウド
-    - ✔ US Gov クラウド
-    - ✘ China Gov / その他の Gov
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般公開|
+|価格:|Standard レベル|
+|必要なロールとアクセス許可:|**ワークスペースの所有者**は、FIM を有効/無効にすることができます (詳細については、[Log Analytics での Azure のロール](https://docs.microsoft.com/services-hub/health/azure-roles#azure-roles)に関する記事を参照してください)。<br>**閲覧者**は結果を表示できます。|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
+|||
+
+
+
 
 
 ## <a name="what-is-fim-in-security-center"></a>Security Center の FIM とは

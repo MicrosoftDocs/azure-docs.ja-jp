@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/09/2020
-ms.openlocfilehash: d96b2b1f8465132549c59ac5555adf99e7758a3b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.date: 08/03/2020
+ms.openlocfilehash: a6eaa5519607d5d5e9a49851e1c55f9b60b554ea
+ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415235"
+ms.lasthandoff: 08/03/2020
+ms.locfileid: "87529723"
 ---
 # <a name="copy-data-from-an-sap-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して SAP テーブルからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "81415235"
 この記事では、Azure Data Factory のコピー アクティビティを使用して、SAP テーブルからデータをコピーする方法について説明します。 詳細については、[コピー アクティビティの概要](copy-activity-overview.md)に関するページを参照してください。
 
 >[!TIP]
->SAP データ統合シナリオにおける ADF の全体的なサポートについては、[「Azure Data Factory を使用した SAP データの統合」ホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)の詳細手順、比較、およびガイダンスを参照してください。
+>SAP データ統合シナリオにおける ADF の全体的なサポートについては、各 SAP コネクタの詳細な情報、比較、およびガイダンスが含まれる、[Azure Data Factory を使用した SAP データの統合に関するホワイトペーパー](https://github.com/Azure/Azure-DataFactory/blob/master/whitepaper/SAP%20Data%20Integration%20using%20Azure%20Data%20Factory.pdf)を参照してください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -47,6 +47,7 @@ SAP テーブルから、サポートされている任意のシンク データ
 - SAP 透過テーブル、プールされたテーブル、クラスター化されたテーブル、およびビューの両方からのデータのコピー。
 - 基本認証、または Secure Network Communications (SNC) が構成されている場合は、SNC を使用したデータのコピー。
 - SAP アプリケーション サーバーまたは SAP メッセージ サーバーへの接続。
+- 既定の RFC またはカスタム RFC によるデータの取得。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -217,14 +218,15 @@ SAP テーブルからデータをコピーするために、次のプロパテ�
 | :------------------------------- | :----------------------------------------------------------- | :------- |
 | `type`                             | `type` プロパティは `SapTableSource` に設定する必要があります。         | はい      |
 | `rowCount`                         | 取得する行の数。                              | いいえ       |
-| `rfcTableFields`                   | SAP テーブルからコピーするフィールド (列)。 たとえば、「 `column0, column1` 」のように入力します。 | いいえ       |
-| `rfcTableOptions`                  | SAP テーブルの行をフィルターにかけるためのオプション。 たとえば、「 `COLUMN0 EQ 'SOMEVALUE'` 」のように入力します。 この記事で後に提供する SAP クエリ演算子の表も参照してください。 | いいえ       |
-| `customRfcReadTableFunctionModule` | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。<br>カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得して Data Factory に返す方法を定義できます。 カスタム関数モジュールでは、`/SAPDS/RFC_READ_TABLE2` と同様のインターフェイスが実装されている必要があります (インポート、エクスポート、テーブル)。これは、Data Factory で使用される既定のインターフェイスです。 | いいえ       |
+| `rfcTableFields`                 | SAP テーブルからコピーするフィールド (列)。 たとえば、「 `column0, column1` 」のように入力します。 | いいえ       |
+| `rfcTableOptions`                | SAP テーブルの行をフィルターにかけるためのオプション。 たとえば、「 `COLUMN0 EQ 'SOMEVALUE'` 」のように入力します。 この記事で後に提供する SAP クエリ演算子の表も参照してください。 | いいえ       |
+| `customRfcReadTableFunctionModule` | SAP テーブルからデータを読み取るために使用できるカスタム RFC 関数モジュール。<br>カスタム RFC 関数モジュールを使用して、SAP システムからデータを取得して Data Factory に返す方法を定義できます。 カスタム関数モジュールでは、`/SAPDS/RFC_READ_TABLE2` と同様のインターフェイスが実装されている必要があります (インポート、エクスポート、テーブル)。これは、Data Factory で使用される既定のインターフェイスです。<br>Data Factory | いいえ       |
 | `partitionOption`                  | SAP テーブルから読み取るパーティション メカニズム。 サポートされているオプションは次のとおりです。 <ul><li>`None`</li><li>`PartitionOnInt` (通常の整数値、または `0000012345` のように左側をゼロでパディングした整数値)</li><li>`PartitionOnCalendarYear` ("YYYY" の形式の 4 桁の数字)</li><li>`PartitionOnCalendarMonth` ("YYYYMM" の形式の 6 桁の数字)</li><li>`PartitionOnCalendarDate` ("YYYYMMDD" の形式の 8 桁の数字)</li></ul> | いいえ       |
 | `partitionColumnName`              | データを分割するために使用される列の名前。                | いいえ       |
 | `partitionUpperBound`              | `partitionColumnName` で指定され、パーティション分割を続行するために使用される列の最大値。 | いいえ       |
 | `partitionLowerBound`              | `partitionColumnName` で指定され、パーティション分割を続行するために使用される列の最小値。 (注: パーティション オプションが `PartitionOnInt` の場合、`partitionLowerBound` を "0" にすることはできません) | いいえ       |
 | `maxPartitionsNumber`              | データを分割するパーティションの最大数。     | いいえ       |
+| `sapDataColumnDelimiter` | 出力データを分けるために SAP RFC に渡される、区切り記号として使用される 1 文字。 | いいえ |
 
 >[!TIP]
 >SAP テーブルに大量のデータ (数十億行など) がある場合は、`partitionOption` と `partitionSetting` を使ってデータをより小さいパーティションに分割します。 この場合、データはパーティションごとに読み取られ、各データ パーティションは、単一の RCF 呼び出しによって SAP サーバーから取得されます。<br/>

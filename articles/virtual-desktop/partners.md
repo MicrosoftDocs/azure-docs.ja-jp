@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5431a0844a418ddcdbd595546253c1d03fda35c0
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 94da428862e1af66ee58e739b3ad3b5b95be3310
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006572"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612369"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows Virtual Desktop のパートナー統合
 
@@ -36,7 +36,7 @@ VMware Horizon Cloud on Microsoft Azure はネイティブ クラウド サー�
 VMware は Windows Virtual Desktop 認定プロバイダーであり、Windows Virtual Desktop を使用しながら VMware Horizon に付属する追加機能 (統合された使いやすい電源管理、クラウドベースの監視、Blast Extreme プロトコルなど) も利用したいお客様を支援しています。 これらの機能はすぐに変化するネットワーク条件に適応し、一貫して優れたユーザー エクスペリエンスが提供されます。 VMware Horizon Cloud には VMware App Volumes と Dynamic Environment Manager も付属しています。これらによって、MSIX アプリのアタッチと FSLogix を使用して機能する高度なアプリケーションとユーザー環境管理機能が追加されます。
 
 - [パートナーの Web サイトにアクセスする。](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html)
-- [VMWare Horizon Cloud の技術ドキュメントを参照してください](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
+- [VMware Horizon Cloud の技術ドキュメントを参照してください](https://techzone.vmware.com/mastering-horizon-cloud-microsoft-azure)。
 
 ## <a name="10zig"></a>10ZiG
 

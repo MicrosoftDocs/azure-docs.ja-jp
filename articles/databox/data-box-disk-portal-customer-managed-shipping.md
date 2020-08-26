@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 81fc8de7e5a70ebb95e06a8e362cda41f8bfe1aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 95c0a884b335920df9803a9b468ab522646b26a1
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84945020"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258755"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Azure portal で Azure Data Box Disk の自己管理型の発送を使用する
 
@@ -28,6 +28,7 @@ ms.locfileid: "84945020"
 * 日本
 * シンガポール
 * 韓国
+* 南アフリカ
 * インド (プレビュー)
 
 ## <a name="use-self-managed-shipping"></a>自己管理の出荷の使用

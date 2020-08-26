@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Atlassian Cloud の統合 | Microsoft Docs
 description: Azure Active Directory と Atlassian Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 729b8eb6-efc4-47fb-9f34-8998ca2c9545
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb3522898a40dc79e8465af813633015568f1c8
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: ca75aea393e4850eb302cb03914296d7c1eaa951
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88033870"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88517653"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>チュートリアル:Atlassian Cloud と Azure Active Directory の統合
 
@@ -77,6 +73,16 @@ Atlassian Cloud に対する Azure AD SSO を構成してテストするには�
 ### <a name="configure-azure-ad-sso"></a>Azure AD SSO の構成
 
 これらの手順に従って、Azure portal で Azure AD SSO を有効にします。
+
+1. Atlassian Cloud 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして**マイ アプリによるセキュリティで保護されたサインイン拡張機能**をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[Setup Atlassian Cloud]\(Atlassian Cloud のセットアップ\)** をクリックすると、Atlassian Cloud アプリケーションに移動します。 そこから、管理者資格情報を提供して Atlassian Cloud にサインインします。 ブラウザー拡張機能により、アプリケーションが自動的に構成されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. Atlassian Cloud を手動でセットアップする場合は、管理者として Atlassian Cloud 企業サイトにサインインし、次の手順を実行します。
 
 1. まず、Atlassian 製品インスタンスに移動して、インスタンス URL をコピー、保存します。
    > [!NOTE]

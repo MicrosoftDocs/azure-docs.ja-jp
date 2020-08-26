@@ -172,6 +172,8 @@
           href: stream-analytics-real-time-fraud-detection.md
         - name: IoT Edge でのジョブの実行
           href: stream-analytics-edge.md
+        - name: Azure Stack でのジョブの実行
+          href: on-azure-stack.md
         - name: 料金所のセンサー データの分析
           href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
         - name: 高頻度取引

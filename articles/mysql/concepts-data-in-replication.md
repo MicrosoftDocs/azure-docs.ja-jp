@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 20be34191355e6ade40e0f3b218818bfa5345a28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 8/7/2020
+ms.openlocfilehash: a9d6c1b2438f20a06062842b96b147e094760238
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79533234"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031219"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>データを Azure Database for MySQL にレプリケートする
 
@@ -29,6 +29,11 @@ ms.locfileid: "79533234"
 
 ### <a name="data-not-replicated"></a>レプリケートされないデータ
 マスター サーバー上の [*mysql システム データベース*](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)はレプリケートされません。 マスター サーバーでのアカウントとアクセス許可の変更はレプリケートされません。 マスター サーバーでアカウントを作成し、そのアカウントでレプリカ サーバーにアクセスする必要がある場合は、レプリカ サーバー側で同じアカウントを手動で作成します。 システム データベースに含まれているテーブルの詳細については、[MySQL のマニュアル](https://dev.mysql.com/doc/refman/5.7/en/system-schema.html)を参照してください。
+
+### <a name="filtering"></a>フィルター処理
+(オンプレミス、仮想マシン、あるいは他のクラウド プロバイダーによってホストされているデータベース サービスでホストされている) マスター サーバーからのテーブル複製をスキップするため、`replicate_wild_ignore_table` パラメーターがサポートされています。 任意で、[Azure portal](howto-server-parameters.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) を使用し、Azure でホストされているレプリカ サーバー上でこのパラメーターを更新します。
+
+このパラメーターの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/8.0/en/replication-options-replica.html#option_mysqld_replicate-wild-ignore-table)を確認してください。
 
 ### <a name="requirements"></a>必要条件
 - マスター サーバーのバージョンは、MySQL バージョン 5.6 以上である必要があります。 

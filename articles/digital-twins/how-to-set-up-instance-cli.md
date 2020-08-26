@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 287ee62acf3a078c4b47803060f61c9dd4134ab7
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 3c7e4887610f30113b81421396500416d04c5e5e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408175"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078514"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure Digital Twins インスタンスと認証を設定する (CLI)
 
@@ -24,8 +24,8 @@ ms.locfileid: "87408175"
 * Azure portal を使用してこれらの手順を手動で実行するには、この記事のポータル バージョンである[*方法: インスタンスと認証の設定 (ポータル)* ](how-to-set-up-instance-portal.md) に関するページを参照してください。
 * デプロイ スクリプトのサンプルを使用して自動化された設定を実行するには、この記事のスクリプト化バージョンである[*方法: インスタンスと認証の設定 (スクリプト化)* ](how-to-set-up-instance-scripted.md) に関するページを参照してください。
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
-[!INCLUDE [digital-twins-setup-role-cli.md](../../includes/digital-twins-setup-role-cli.md)]
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-cloud-shell-session"></a>Cloud Shell セッションの設定
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
@@ -46,7 +46,7 @@ ms.locfileid: "87408175"
 az dt create --dt-name <name-for-your-Azure-Digital-Twins-instance> -g <your-resource-group> -l <region>
 ```
 
-### <a name="verify-success"></a>成功を確認する
+### <a name="verify-success-and-collect-important-values"></a>正常に実行されたことを確認して重要な値を収集する
 
 インスタンスが正常に作成された場合、Cloud Shell の結果は次のようになり、作成したリソースに関する情報が出力されます。
 
@@ -63,20 +63,24 @@ Azure Digital Twins インスタンスの *hostName*、*name*、*resourceGroup* 
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-ロールを割り当てるには、次のコマンドを使用します (Azure サブスクリプションの所有者が実行する必要があります)。
+ロールを割り当てるには、次のコマンドを使用します (Azure サブスクリプションで、[十分なアクセス許可](#prerequisites-permission-requirements)を持つユーザーによって実行される必要があります)。 このコマンドを実行するには、ロールを割り当てる必要があるユーザーの Azure AD アカウントで、"*ユーザー プリンシパル名*" を渡す必要があります。 ほとんどの場合、これは Azure AD アカウントのユーザーの電子メールと一致します。
 
 ```azurecli
-az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-email-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
+az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Owner (Preview)"
 ```
 
 このコマンドの結果として、作成されたロールの割り当てに関する情報が出力されます。
 
-> [!TIP]
-> 代わりに *400:BadRequest* エラーが発生した場合は、次のコマンドを実行して、ユーザーの *ObjectID* を取得します。
-> ```azurecli
-> az ad user show --id <Azure-AD-email-of-user-to-assign> --query objectId
-> ```
-> 次に、電子メールの代わりにユーザーの*オブジェクト ID* を使用して、ロールの割り当てコマンドを繰り返します。
+> [!NOTE]
+> このコマンドによって、CLI が**グラフ データベースでユーザーまたはサービス プリンシパルを見つけることができない**というエラーが返される場合は、次のことを行います。
+>
+> 代わりに、ユーザーの "*オブジェクト ID*" を使用して、ロールを割り当てます。 これは、個人の [Microsoft アカウント (MSA)](https://account.microsoft.com/account) を使用するユーザーの場合に当てはまります。 
+>
+> [Azure Active Directory ユーザーの Azure portal ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers)を使用して、ユーザー アカウントを選択し、その詳細を開きます。 そのユーザーの "*ObjectID*" をコピーします。
+>
+> :::image type="content" source="media/includes/user-id.png" alt-text="[オブジェクト ID] フィールドで GUID が強調表示されている、Azure portal のユーザー ページの表示" lightbox="media/includes/user-id.png":::
+>
+> 次に、前述の `assignee` パラメーターにユーザーの "*オブジェクト ID*" を使用して、ロールの割り当てリスト コマンドを繰り返します。
 
 ### <a name="verify-success"></a>成功を確認する
 
@@ -117,7 +121,7 @@ az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --ass
 次に、以下のコマンドを実行して、アプリの登録を作成します (必要に応じて、プレースホルダーを置き換える)。
 
 ```azurecli
-az ad app create --display-name <name-for-your-app> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
+az ad app create --display-name <name-for-your-app-registration> --native-app --required-resource-accesses manifest.json --reply-url http://localhost
 ```
 
 作成した登録に関する情報を示す、このコマンドからの出力の抜粋を次に示します。

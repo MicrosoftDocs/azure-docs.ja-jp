@@ -5,12 +5,12 @@ ms.date: 07/08/2019
 ms.topic: conceptual
 description: Visual Studio Code と Azure Dev Spaces による、Kubernetes アプリケーションのデバッグと迅速な反復処理の支援について説明します。
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 73a2ae1f603626acf7ec4d42838b301c88ee21da
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: decf61bd55ed15182f030bb02a2fe9c959749556
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307352"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88209882"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Visual Studio Code と Azure Dev Spaces が連動するしくみ
 
@@ -43,19 +43,15 @@ AKS クラスターを作成し、Visual Studio Code の外でクラスターの
 
 プロジェクトを起動したら、Visual Studio Code から直接、開発スペースで実行している Java、Node.js、.NET Core サービスをデバッグできます。 `.vscode` ディレクトリの起動構成からは、開発スペースでデバッグが有効になっているサービスの実行に関して、付加的なデバッグ情報が与えられます。 Visual Studio Code は、開発スペースで実行中のコンテナーのデバッグ プロセスにも付随し、ブレーク ポイントの設定、変数の調査、その他のデバッグ操作を可能にします。
 
-## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Visual Studio Code を Azure Dev Spaces と共に使用する
+## <a name="next-steps"></a>次のステップ
 
-Visual Studio Code と Azure Dev Spaces 拡張機能の Azure Dev Spaces との連動は次のクイックスタートで確認できます。
+Azure Dev Spaces のしくみの詳細について確認します。
 
-* [Visual Studio Code と Java を使用した迅速な反復処理とデバッグ][quickstart-java]
-* [Visual Studio Code と .NET を使用した迅速な反復処理とデバッグ][quickstart-netcore]
-* [Visual Studio Code と Node.js を使用した迅速な反復処理とデバッグ][quickstart-node]
+> [!div class="nextstepaction"]
+> [Azure Dev Spaces のしくみ](how-dev-spaces-works.md)
 
 [azds-extension]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azds-yaml]: how-dev-spaces-works-prep.md#prepare-your-code
 [csharp-extension]: https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp
 [java-extension]: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debugger-azds
 [maven]: https://maven.apache.org
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md

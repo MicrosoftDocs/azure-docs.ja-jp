@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 06/12/2020
-ms.openlocfilehash: df723824b2d80694913e32904ed81972381c5bcb
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 08/12/2020
+ms.openlocfilehash: 43dca9cd9f9000faae701e618e9a5fdf21d31ee3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86536217"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192751"
 ---
 # <a name="score-wide-and-deep-recommender"></a>ワイドかつディープなレコメンダーのスコア付け
 
@@ -147,9 +147,6 @@ ms.locfileid: "86536217"
 
 - 1 列目には、ユーザーの識別子が含まれます。
 - それ以降の列は、 **[Maximum number of items to recommend to a user]\(ユーザーに推奨される項目の最大数\)** で設定した値に応じて生成されます。 各列には、推奨される項目が含まれます (識別子順)。 レコメンデーションはユーザーと項目のアフィニティを基準に並べ替えられ、最もアフィニティの高い列が **[Item 1]\(項目 1\)** の列に配置されます。
-
-> [!WARNING]
-> このスコア付きデータセットは、[Evaluate Recommender](evaluate-recommender.md) モジュールを使用して評価することはできません。
 
 ##  <a name="technical-notes"></a>テクニカル ノート
 

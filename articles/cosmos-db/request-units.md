@@ -1,27 +1,25 @@
 ---
-title: Azure Cosmos DB での要求ユニットとスループット
+title: Azure Cosmos DB におけるスループットとパフォーマンスの通貨としての要求ユニット
 description: Azure Cosmos DB で要求ユニットの要件を指定したり、推定したりする方法について説明します
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/24/2020
-ms.openlocfilehash: f1f203d17de9fb0fc9fe8bb0f6de80fe2b93ba8b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/19/2020
+ms.openlocfilehash: 6831cb3f39c25eb69d16300156f456980cf57fa0
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327805"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604826"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 
-Azure Cosmos DB では、プロビジョニングするスループットおよび消費するストレージに対して時間単位で支払います。 Azure Cosmos データベースで常に十分なシステム リソースを確実に使用できるようにするには、スループットをプロビジョニングする必要があります。 [Azure Cosmos DB の SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/) かそれ以上を満たすのに十分なリソースが必要です。
-
 Azure Cosmos DB では、多くの API (SQL、MongoDB、Cassandra、Gremlin、Table など) がサポートされています。 各 API には、固有のデータベース操作のセットがあります。 これらの操作の範囲は、単純なポイント読み取り/書き込みから、複雑なクエリにまで及びます。 各データベース操作は、それらの操作の複雑さに基づいて、システム リソースを消費します。
 
-すべてのデータベース操作のコストは Azure Cosmos DB によって正規化され、"*要求ユニット*" (RU) によって表されます。 1 秒間の RU は、スループットのための通貨と考えることができます。 1 秒あたりの RU は、速度に基づく通貨です。 それにより、Azure Cosmos DB によってサポートされるデータベース操作を実行するために必要な CPU、IOPS、メモリなどのシステム リソースが抽象化されます。 データを 1 GB 格納するには、少なくとも 10 RU/秒が必要です。
+すべてのデータベース操作のコストは Azure Cosmos DB によって正規化され、"*要求ユニット*" (RU) によって表されます。 RU は、Azure Cosmos DB によってサポートされるデータベース操作を実行するために必要な CPU、IOPS、メモリなどのシステム リソースを抽象化する、パフォーマンスの通貨と考えることができます。
 
-1 KB のアイテムに対してポイント読み取りを行うコストは、1 要求ユニット (つまり 1 RU) です。 その他のすべてのデータベース操作にも、同様に RU を使用してコストが割り当てられます。 Azure Cosmos コンテナーの操作にどの API 使用するかに関係なく、コストは RU によって測定されます。 データベース操作が書き込み、ポイント読み取り、またはクエリのいずれの場合でも、コストは常に RU で測定されます。
+1 KB の項目をポイント読み取りする (つまり、ID とパーティション キーの値で 1 つの項目をフェッチする) コストは、1 要求ユニット (または 1 RU) です。 その他のすべてのデータベース操作にも、同様に RU を使用してコストが割り当てられます。 Azure Cosmos コンテナーの操作にどの API 使用するかに関係なく、コストは RU によって測定されます。 データベース操作が書き込み、ポイント読み取り、またはクエリのいずれの場合でも、コストは常に RU で測定されます。
 
 次の図では、RU の高度な概念を示します。
 
@@ -29,16 +27,16 @@ Azure Cosmos DB では、多くの API (SQL、MongoDB、Cassandra、Gremlin、Ta
 
 容量を管理および計画するために、Azure Cosmos DB では、特定のデータセットに対する特定のデータベース操作の RU の数が決定的であることが確認されます。 すべてのデータベース操作によって消費される RU の数を追跡するには、応答ヘッダーを調べます。 [RU 使用量に影響を与える要因](request-units.md#request-unit-considerations)とアプリケーションのスループット要件を理解したら、費用対効果の高い方法でアプリケーションを実行できます。
 
-アプリケーションの RU の数は秒単位でプロビジョニングします (増分は 100 RU/秒)。 アプリケーション用にプロビジョニングされたスループットをスケーリングするために、いつでも RU の値を増やしたり減らしたりできます。 増減の変更は 100 RU 単位で行うことができます。 変更は、プログラムまたは Azure portal を使用して行うことができます。 課金は時間単位です。
+使用している Azure Cosmos アカウントの種類によって、使用した RU に対する課金方法が決まります。
 
-次の 2 つの個別の細分性でスループットをプロビジョニングできます。
-
-* **コンテナー**:コンテナー: 詳しくは、[「Azure Cosmos コンテナー上でのスループットをプロビジョニングする」](how-to-provision-container-throughput.md)をご覧ください。
-* **データベース**: 詳しくは、「[Azure Cosmos データベース上でのスループットをプロビジョニングする](how-to-provision-database-throughput.md)」をご覧ください。
+- [プロビジョニング済みスループット](set-throughput.md) モードでは、アプリケーションの RU の数を秒単位でプロビジョニングします (増分は 100 RU/秒)。 アプリケーション用にプロビジョニング済みスループットをスケーリングするために、いつでも RU の値を増やしたり減らしたりできます (100 RU 単位での増減)。 変更は、プログラムまたは Azure portal を使用して行うことができます。 ユーザーは、1 秒あたりにプロビジョニング済み RU の量に対して時間単位で課金されます。 次の 2 つの個別の細分性でスループットをプロビジョニングできます。
+  - **コンテナー**:コンテナー: 詳しくは、[「Azure Cosmos コンテナー上でのスループットをプロビジョニングする」](how-to-provision-container-throughput.md)をご覧ください。
+  - **データベース**: 詳しくは、「[Azure Cosmos データベース上でのスループットをプロビジョニングする](how-to-provision-database-throughput.md)」をご覧ください。
+- [サーバーレス](serverless.md) モードでは、Azure Cosmos アカウントでリソースを作成するときに、スループットをプロビジョニングする必要はありません。 請求期間が終了すると、データベース操作で使用した要求ユニットの量に対して課金されます。
 
 ## <a name="request-unit-considerations"></a>要求ユニットの考慮事項
 
-プロビジョニングする 1 秒あたりの RU 数を推定するときは、次の要因を検討します。
+ワークロードに使用される RU 数を推定するときは、次の要因を考慮してください。
 
 * **アイテムのサイズ**:アイテムのサイズが増加すると、そのアイテムの読み取りまたは書き込みのために消費される RU の数も増加します。
 
@@ -69,6 +67,7 @@ Azure Cosmos DB では、多くの API (SQL、MongoDB、Cassandra、Gremlin、Ta
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Cosmos のコンテナーとデータベースのスループットをプロビジョニングする](set-throughput.md)方法の詳細を確認する。
+* [Azure Cosmos DB のサーバーレス](serverless.md)の詳細を確認する。
 * [論理パーティション](partition-data.md)の詳細を確認する。
 * [プロビジョニング済みスループットをグローバルにスケーリングする](scaling-throughput.md)方法の詳細を確認する。
 * [Azure Cosmos コンテナーのスループットをプロビジョニングする](how-to-provision-container-throughput.md)方法を確認する。

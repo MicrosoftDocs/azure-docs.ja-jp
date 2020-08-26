@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Microsoft Azure Recovery S
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: 096f47ba4a3d8d490c9cfaf43f4dafec4faf10f9
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 581141ea5ffaecf774d292f66a05da5e40c8dc54
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317350"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263301"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Azure Backup サービスを使用して Microsoft Azure Recovery Services (MARS) エージェントのバックアップを管理する
 
@@ -29,60 +29,60 @@ ms.locfileid: "87317350"
 
 ### <a name="add-new-items-to-existing-policy"></a>既存のポリシーに新しい項目を追加する
 
-1. **[アクション]** で、 **[バックアップのスケジュール]** をクリックします。
+1. **[アクション]** で、 **[バックアップのスケジュール]** を選択します。
 
     ![Schedule a Windows Server backup](./media/backup-configure-vault/schedule-first-backup.png)
 
-2. **[ポリシー項目の選択]** タブで、 **[Modify backup schedule for your files and folders] (ファイルとフォルダーのバックアップ スケジュールを変更する)** を選択し、 **[次へ]** をクリックします。
+2. **[ポリシー項目の選択]** タブで、 **[ファイルとフォルダーのバックアップ スケジュールを変更する]** を選択し、 **[次へ]** を選択します。
 
     ![ポリシー項目の選択](./media/backup-azure-manage-mars/select-policy-items.png)
 
-3. **[Modify or stop schedule backup] (バックアップ スケジュールの変更または停止)** タブで、 **[バックアップ項目または時刻を変更する]** を選択し、 **[次へ]** をクリックします。
+3. **[バックアップ スケジュールの変更または停止]** タブで、 **[バックアップ項目または時刻を変更する]** を選択し、 **[次へ]** を選択します。
 
     ![バックアップの変更またはスケジュール](./media/backup-azure-manage-mars/modify-schedule-backup.png)
 
-4. **[バックアップする項目の選択]** タブで **[項目の追加]** をクリックし、バックアップする項目を追加します。
+4. **[バックアップする項目の選択]** タブで **[項目の追加]** を選択し、バックアップする項目を追加します。
 
     ![バックアップの変更またはスケジュールでの [項目の追加]](./media/backup-azure-manage-mars/modify-schedule-backup-add-items.png)
 
-5. **[項目の選択]** ウィンドウで、追加するファイルまたはフォルダーを選択し、 **[OK]** をクリックします。
+5. **[項目の選択]** ウィンドウで、追加するファイルまたはフォルダーを選択し、 **[OK]** を選択します。
 
     ![項目の選択](./media/backup-azure-manage-mars/select-item.png)
 
-6. 次の手順を完了し、 **[完了]** をクリックして操作を完了します。
+6. 次の手順を完了し、 **[完了]** を選択して操作を完了します。
 
 ### <a name="add-exclusion-rules-to-existing-policy"></a>既存のポリシーに除外ルールを追加する
 
 除外ルールを追加して、バックアップ対象にしないファイルやフォルダーをスキップできます。 これは、新しいポリシーの定義時または既存ポリシーの変更時に実行できます。
 
-1. [アクション] ペインで、 **[バックアップのスケジュール]** をクリックします。 **[バックアップする項目の選択]** に移動し、 **[除外の設定]** をクリックします。
+1. 操作ウィンドウから **[バックアップのスケジュール]** を選択します。 **[バックアップする項目の選択]** に移動し、 **[除外の設定]** を選択します。
 
-    ![項目の選択](./media/backup-azure-manage-mars/select-exclusion-settings.png)
+    ![[除外の設定]](./media/backup-azure-manage-mars/select-exclusion-settings.png)
 
-2. **[除外の設定]** で **[除外の追加]** をクリックします。
+2. **[除外の設定]** で **[除外の追加]** を選択します。
 
-    ![項目の選択](./media/backup-azure-manage-mars/add-exclusion.png)
+    ![除外の追加](./media/backup-azure-manage-mars/add-exclusion.png)
 
-3. **[除外する項目の選択]** から、ファイルやフォルダーを参照し、除外する項目を選択して **[OK]** をクリックします。
+3. **[除外する項目の選択]** から、ファイルやフォルダーを参照し、除外する項目を選択して **[OK]** を選択します。
 
-    ![項目の選択](./media/backup-azure-manage-mars/select-items-exclude.png)
+    ![除外する項目の選択](./media/backup-azure-manage-mars/select-items-exclude.png)
 
 4. 既定では、選択したフォルダー内のすべての**サブフォルダー**が除外されます。 これは、 **[はい]** または **[いいえ]** を選択することで変更できます。 下に示すように、除外するファイルの種類を編集および指定することができます。
 
-    ![項目の選択](./media/backup-azure-manage-mars/subfolders-type.png)
+    ![サブフォルダーの種類の選択](./media/backup-azure-manage-mars/subfolders-type.png)
 
-5. 次の手順を完了し、 **[完了]** をクリックして操作を完了します。
+5. 次の手順を完了し、 **[完了]** を選択して操作を完了します。
 
 ### <a name="remove-items-from-existing-policy"></a>既存のポリシーから項目を削除する
 
-1. [アクション] ペインで、 **[バックアップのスケジュール]** をクリックします。 **[バックアップする項目の選択]** に移動します。 一覧で、バックアップ スケジュールから削除するファイルやフォルダーを選択し、 **[項目の削除]** をクリックします。
+1. 操作ウィンドウから **[バックアップのスケジュール]** を選択します。 **[バックアップする項目の選択]** に移動します。 一覧で、バックアップ スケジュールから削除するファイルやフォルダーを選択し、 **[項目の削除]** を選択します。
 
-    ![項目の選択](./media/backup-azure-manage-mars/select-items-remove.png)
+    ![削除する項目の選択](./media/backup-azure-manage-mars/select-items-remove.png)
 
     > [!NOTE]
     > ポリシーからボリュームを完全に削除するときには、注意して操作を進めてください。  もう一度追加する必要がある場合、それは新しいボリュームとして扱われます。 次のスケジュールされたバックアップでは、増分バックアップではなく初回バックアップ (完全バックアップ) が実行されます。 後で項目を一時的に削除して追加する必要がある場合は、完全バックアップではなく増分バックアップとなるように、 **[項目の削除]** ではなく **[除外の設定]** を使用することをお勧めします。
 
-2. 次の手順を完了し、 **[完了]** をクリックして操作を完了します。
+2. 次の手順を完了し、 **[完了]** を選択して操作を完了します。
 
 ## <a name="stop-protecting-files-and-folder-backup"></a>ファイルおよびフォルダーのバックアップの保護を停止する
 
@@ -102,17 +102,17 @@ ms.locfileid: "87317350"
 
 1. MARS 管理コンソールを開き、 **[アクション]** ウィンドウに移動して、 **[バックアップのスケジュール]** を選択します。
 
-    ![スケジュールされたバックアップを変更または停止する。](./media/backup-azure-manage-mars/mars-actions.png)
-1. **[ポリシー項目の選択]** ページで、 **[ファイルとフォルダーのバックアップ スケジュールを変更します]** を選択し、 **[次へ]** をクリックします。
+    ![[バックアップのスケジュール] の選択](./media/backup-azure-manage-mars/mars-actions.png)
+1. **[ポリシー項目の選択]** ページで、 **[ファイルとフォルダーのバックアップ スケジュールを変更します]** を選択し、 **[次へ]** を選択します。
 
-    ![スケジュールされたバックアップを変更または停止する。](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
+    ![ポリシー項目の選択](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
 1. **[スケジュールされたバックアップの変更または停止]** ページで、 **[Stop using this backup schedule, but keep the stored backups until a schedule is activated again] (このバックアップ スケジュールの使用を中止するが、スケジュールが再度アクティブ化されるまで保存されているバックアップを保持する)** を選択します。 次に、 **[次へ]** を選択します。
 
-    ![スケジュールされたバックアップを変更または停止する。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. **[スケジュールされたバックアップの一時停止]** で情報を確認し、 **[完了]** をクリックします。
+    ![スケジュールされたバックアップを停止する。](./media/backup-azure-manage-mars/stop-schedule-backup.png)
+1. **[スケジュールされたバックアップの一時停止]** で情報を確認し、 **[完了]** を選択します。
 
-    ![スケジュールされたバックアップを変更または停止する。](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. **[バックアップの進行状況の変更]** で、スケジュールのバックアップの一時停止が成功の状態であることを確認し、 **[閉じる]** をクリックして終了します。
+    ![スケジュールされたバックアップを一時停止します。](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. **[バックアップの進行状況の変更]** で、スケジュールのバックアップの一時停止が成功の状態であることを確認し、 **[閉じる]** を選択して終了します。
 
 ### <a name="stop-protection-and-delete-backup-data"></a>保護を停止してバックアップ データを削除する
 
@@ -123,7 +123,7 @@ ms.locfileid: "87317350"
 
 3. **[スケジュールされたバックアップの停止]** ページで、 **[完了]** を選択します。
 
-    ![スケジュールされたバックアップを停止する。](./media/backup-azure-delete-vault/stop-schedule-backup.png)
+    ![スケジュールされたバックアップの停止と完了の選択](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. セキュリティ PIN (暗証番号) の入力を求められます。これは手動で生成する必要があります。 これを行うには、最初に Azure portal にサインインします。
 5. **[Recovery Services コンテナー]**  >  **[設定]**  >  **[プロパティ]** の順に移動します。
 6. **[セキュリティ PIN]** の下にある **[生成]** を選択します。 この PIN をコピーします。 この PIN は 5 分間だけ有効です。
@@ -133,7 +133,7 @@ ms.locfileid: "87317350"
 
 8. **[バックアップの進行状況の変更]** ページに、次のメッセージが表示されます。"*削除されたバックアップ データは 14 日間保持されます。14 日が経過すると、バックアップ データが完全に削除されます。* " と表示されます。  
 
-    ![バックアップ インフラストラクチャを削除する。](./media/backup-azure-delete-vault/deleted-backup-data.png)
+    ![バックアップの進行状況の変更](./media/backup-azure-delete-vault/deleted-backup-data.png)
 
 オンプレミスのバックアップ アイテムを削除したら、ポータルから次の手順を実行します。
 
@@ -142,15 +142,15 @@ ms.locfileid: "87317350"
 データを保持しつつ保護を停止し、保護を再開することにした場合は、バックアップ ポリシーの変更を利用してバックアップ スケジュールを再有効化することができます。
 
 1. **[アクション]** で、 **[バックアップのスケジュール]** を選択します。
-1. **[バックアップ スケジュールを再有効化します。バックアップ項目または時刻を変更することもできます]** を選択し、 **[次へ]** をクリックします。<br>
+1. **[バックアップ スケジュールを再有効化します。バックアップ項目または時刻を変更することもできます]** を選択し、 **[次へ]** を選択します。<br>
 
-    ![バックアップ インフラストラクチャを削除する。](./media/backup-azure-manage-mars/re-enable-policy-next.png)
-1. **[バックアップする項目の選択]** で、 **[次へ]** をクリックします。
+    ![バックアップ スケジュールの再有効化](./media/backup-azure-manage-mars/re-enable-policy-next.png)
+1. **[バックアップする項目の選択]** で、 **[次へ]** を選択します。
 
-    ![バックアップ インフラストラクチャを削除する。](./media/backup-azure-manage-mars/re-enable-next.png)
-1. **[バックアップ スケジュールの選択]** でバックアップ スケジュールを指定し、 **[次へ]** をクリックします。
-1. **[保有期間ポリシーの選択]** ページで、保有期間を指定し、 **[次へ]** をクリックします。
-1. 最後に **[確認]** 画面で、ポリシーの詳細を確認し、 **[完了]** をクリックします。
+    ![バックアップする項目の選択](./media/backup-azure-manage-mars/re-enable-next.png)
+1. **[バックアップ スケジュールの選択]** でバックアップ スケジュールを指定し、 **[次へ]** を選択します。
+1. **[保有期間ポリシーの選択]** ページで、保有期間を指定し、 **[次へ]** を選択します。
+1. 最後に **[確認]** 画面で、ポリシーの詳細を確認し、 **[完了]** を選択します。
 
 ## <a name="re-generate-passphrase"></a>パスフレーズを再生成する
 
@@ -158,15 +158,15 @@ ms.locfileid: "87317350"
 
 1. MARS エージェント コンソールで、 **[操作] ペイン** >  **[プロパティの変更]** に移動します。 次に、 **[暗号化] タブ**に移動します。<br>
 1. **[パスフレーズの変更]** チェックボックスをオンにします。<br>
-1. 新しいパスフレーズを入力するか、 **[パスフレーズの生成]** をクリックします。
-1. **[参照]** をクリックして、新しいパスフレーズを保存します。
+1. 新しいパスフレーズを入力するか、 **[パスフレーズの生成]** を選択します。
+1. **[参照]** を選択して新しいパスフレーズを保存します。
 
     ![パスフレーズを生成します。](./media/backup-azure-manage-mars/passphrase.png)
 
-1. **[OK]** をクリックして変更を適用します。  Azure portal 上で Recovery Services コンテナーの [[Security Feature]\(セキュリティ機能\)](./backup-azure-security-feature.md#enable-security-features) が有効な場合、[セキュリティ PIN] の入力を求められます。 PIN を受信するには、こちらの[記事](./backup-azure-security-feature.md#authentication-to-perform-critical-operations)に記載されている手順に従います。<br>
-1. ポータルからセキュリティ PIN を貼り付け、 **[OK]** をクリックして変更を適用します。<br>
+1. **[OK]** を選択して変更を適用します。  Azure portal 上で Recovery Services コンテナーの [[Security Feature]\(セキュリティ機能\)](./backup-azure-security-feature.md#enable-security-features) が有効な場合、[セキュリティ PIN] の入力を求められます。 PIN を受信するには、こちらの[記事](./backup-azure-security-feature.md#authentication-to-perform-critical-operations)に記載されている手順に従います。<br>
+1. ポータルからセキュリティ PIN を貼り付けて、 **[OK]** を選択して変更を適用します。<br>
 
-    ![パスフレーズを生成します。](./media/backup-azure-manage-mars/passphrase2.png)
+    ![セキュリティ PIN の貼り付け](./media/backup-azure-manage-mars/passphrase2.png)
 1. パスフレーズは、(ソース マシンではない) 別の場所、できれば Azure Key Vault に安全に保存するようにします。 複数のマシンが MARS エージェントでバックアップされている場合は、すべてのパスフレーズを追跡します。
 
 ## <a name="managing-backup-data-for-unavailable-machines"></a>使用できないマシンのバックアップ データを管理する

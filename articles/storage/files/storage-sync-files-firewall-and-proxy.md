@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync のオンプレミスのファイアウォール設定とプロキシ設定 | Microsoft Docs
-description: Azure File Sync のオンプレミスのネットワーク構成
+description: オンプレミスのプロキシ設定とファイアウォール設定の Azure File Sync について理解します。 ポート、ネットワーク、Azure への特別な接続の構成の詳細を確認します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7410e30c892eb083f9ed71b1d9ce379ae9a036b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e4f011d9286a0685f1b091b930155db969407423
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515291"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903716"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure File Sync のプロキシとファイアウォールの設定
 Azure File Sync は、オンプレミスのサーバーを Azure Files に接続することで、マルチサイトの同期とクラウドの階層化の機能を実現します。 そのため、オンプレミスのサーバーがインターネットに接続されている必要があります。 サーバーから Azure Cloud Services に到達するための最適なパスは、IT 管理者が決める必要があります。

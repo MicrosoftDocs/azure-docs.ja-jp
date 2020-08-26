@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 34cfafadabd9a6328cbe85a5444211828df9db6d
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: 1b02b089fea7e883bdc6c58c7a2845af12b50a37
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133721"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87824530"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>SQL Server のためにディザスター リカバリーを設定する
 
@@ -47,6 +47,8 @@ Azure IaaS VM 上またはオンプレミスの SQL Server。| Azure Site Recove
 > * Azure、Hyper-V、VMware、または物理インフラストラクチャにあるすべてのデプロイに対して Site Recovery を使用することを選択できます。 Site Recovery を使用して [SQL Server クラスターを保護する方法](#how-to-help-protect-a-sql-server-cluster)については、この記事の最後にあるガイダンスに従ってください。
 > * コンピューター上で観察されたデータ変化率が [Site Recovery の制限](vmware-physical-azure-support-matrix.md#churn-limits)内にあることを確認してください。 この変化率は、1 秒あたりの書き込みバイト数で測定されます。 Windows を実行しているコンピューターの場合、この変化率は、タスク マネージャーで **[パフォーマンス]** タブを選択することによって表示できます。 各ディスクの書き込み速度を観察します。
 > * Site Recovery は、記憶域スペース ダイレクトでのフェールオーバー クラスター インスタンスのレプリケーションをサポートしています。 詳細については、[記憶域スペース ダイレクト レプリケーションを有効にする方法](azure-to-azure-how-to-enable-replication-s2d-vms.md)に関するページを参照してください。
+> 
+> SQL ワークロードを Azure に移行する場合は、[SQL Server のパフォーマンス ガイドラインを Azure Virtual Machines](../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md) に適用することをお勧めします。
 
 ## <a name="disaster-recovery-of-an-application"></a>アプリケーションのディザスター リカバリー
 

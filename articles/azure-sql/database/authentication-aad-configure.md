@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 07/27/2020
-ms.openlocfilehash: f98e540a6764869f1d37edfbb0f00bf8d1cc2198
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/17/2020
+ms.openlocfilehash: 3eb1a4cbfcf62617796af6a26cb4688b734eb617
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499179"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551842"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Azure SQL での Azure AD 認証を構成して管理する
 
@@ -71,7 +71,9 @@ geo レプリケーションで Azure Active Directory を使用する場合は�
 ## <a name="provision-azure-ad-admin-sql-managed-instance"></a>Azure AD 管理者 (SQL Managed Instance) をプロビジョニングする
 
 > [!IMPORTANT]
-> 次の手順は、Azure SQL Managed Instance をプロビジョニングする場合にのみに実行します。 この操作は、Azure AD 内のグローバル/会社の管理者か、特権ロール管理者だけが実行できます。 次の手順では、ディレクトリ内の異なる権限を持ったユーザーにアクセス許可を付与するプロセスについて説明します。
+> 次の手順は、Azure SQL Managed Instance をプロビジョニングする場合にのみに実行します。 この操作は、Azure AD 内のグローバル/会社の管理者か、特権ロール管理者だけが実行できます。
+>
+> **パブリック プレビュー**では、Azure AD 内のグループに**ディレクトリ閲覧者**ロールを割り当てることができます。 その後、グループの所有者が、このグループのメンバーとしてマネージ インスタンス ID を追加すると、その SQL Managed Instance に Azure AD 管理者をプロビジョニングできるようになります。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
 
 セキュリティ グループ メンバーシップを通じたユーザーの認証や、新しいユーザーの作成などといったタスクを正常に実行するには、SQL Managed Instance に Azure AD の読み取りアクセス許可が必要です。 そのためには、SQL Managed Instance に Azure AD の読み取りアクセス許可を付与する必要があります。 この操作は、Azure portal または PowerShell から実行できます。
 

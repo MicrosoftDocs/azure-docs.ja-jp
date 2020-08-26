@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Maps のズーム レベルとタイル グリッド
-description: この記事では、 Microsoft Azure Maps のズームレベルとタイルグリッドについて説明します。
+description: Azure Maps でズーム レベルを設定する方法を学習します。 geographic 型の座標をピクセル座標、タイル座標、quadkey に変換する方法を確認します。 コード サンプルを表示します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/14/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9493ad21847cca230606ff1641c9ac02c3355f53
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ced524080df87468116a538d9b7c8e91fb178a41
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093053"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035877"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>ズーム レベルとタイル グリッド
 

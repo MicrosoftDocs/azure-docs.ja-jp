@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 50398632f47d889ecb79b32faef94c9c5923789c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 9c77ed2bf0d764fbbbe24770cc70b3fbeec7f678
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540590"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833455"
 ---
 # <a name="understanding-just-in-time-jit-vm-access"></a>Just-In-Time (JIT) VM アクセスについて
 
@@ -44,7 +44,7 @@ Just-In-Time VM アクセスを有効にすると、受信トラフィックを�
 
 選択したポートに対して他の規則がすでに存在している場合は、既存の規則が新しい "すべての受信トラフィックを拒否" 規則よりも優先されます。 選択したポートに既存の規則がない場合は、NSG と Azure Firewall で新しい規則が優先されます。
 
-ユーザーが VM へのアクセス権を要求すると、そのユーザーに VM への[ロール ベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) のアクセス許可があることが、Security Center によってチェックされます。 要求が承認されると、Security Center では、関連する IP アドレス (または範囲) から選択したポートへの受信トラフィックを指定された時間だけ許可するように、NSG および Azure Firewall が構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 既に確立されている接続は中断されません。
+ユーザーが VM へのアクセス権を要求すると、Security Center によってそのユーザーが VM に対する [Azure ロール ベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) アクセス許可を持っているかどうかがチェックされます。 要求が承認されると、Security Center では、関連する IP アドレス (または範囲) から選択したポートへの受信トラフィックを指定された時間だけ許可するように、NSG および Azure Firewall が構成されます。 指定された時間が経過すると、Security Center により NSG が以前の状態に復元されます。 既に確立されている接続は中断されません。
 
 > [!NOTE]
 > JIT では、[Azure Firewall Manager](https://docs.microsoft.com/azure/firewall-manager/overview) によって制御される Azure Firewall によって保護されている VM はサポートされません。
@@ -67,13 +67,17 @@ JIT の利点を得られるマシンが Security Center で検出されると�
 
 ### <a name="what-permissions-are-needed-to-configure-and-use-jit"></a>JIT を構成して使用するために必要なアクセス許可は何ですか?
 
-JIT で動作するカスタム ロールを作成する場合は、次の詳細情報が必要になります。
+JIT で動作するカスタム ロールを作成する場合は、次の表にある詳細情報が必要となります。
+
+> [!TIP]
+> VM への JIT アクセスを要求する必要があり、他の JIT 操作を実行しないユーザーに対して最小特権のロールを作成するには、Security Center GitHub コミュニティ ページにある [Set-JitLeastPrivilegedRole スクリプト](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role)を使用します。
 
 | ユーザーを有効にする目的: | 設定するアクセス許可|
 | --- | --- |
 | VM の JIT ポリシーを構成または編集する | *これらのアクションをロールに割り当てます。*  <ul><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> VM のサブスクリプションまたはリソース グループの範囲: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |VM への JIT アクセスを要求する | *これらのアクションをユーザーに割り当てます。*  <ul><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>VM に関連付けられているサブスクリプションまたはリソース グループの範囲:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  VM のサブスクリプションまたはリソース グループの範囲:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  VM のサブスクリプションまたはリソース グループの範囲:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 |JIT ポリシーの読み取り| *これらのアクションをユーザーに割り当てます。*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|
+|||
 
 
 

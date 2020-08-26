@@ -5,78 +5,16 @@
   items:
     - name: Azure の予約とは
       href: save-compute-costs-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
-- name: 操作方法ガイド
-  items:
-    - name: 購入内容の決定
-      items:
-        - name: 購入する予約の選択
-          href: determine-reservation-purchase.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: 予約の購入
-      items:
-        - name: Azure の予約の購入
-          href: prepare-buy-reservation.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: App Service
-          href: prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Cache for Redis の予約
-          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Database for MariaDB
-          href: ../../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Database for MySQL
-          href: ../../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Database for PostgreSQL
-          href: ../../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Synapse Analytics
-          href: prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Azure Storage
-          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Cosmos DB
-          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Databricks
-          href: prepay-databricks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Data Explorer
-          href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Dedicated Host
-          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: Disk Storage
-          href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: SAP HANA L インスタンス
-          href: prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: ソフトウェア プラン
-          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: SQL Database
-          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: 仮想マシン
-          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: 購入後の表示、管理、最適化
-      items:
-        - name: 予約と使用率の表示
-          href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: CSP としての予約の表示
-          href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: 予約の管理
-          href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: 最適化設定の変更
-          href: manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances
-        - name: 予約の交換と返金
-          href: exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: コストの報告
-      items:
-        - name: 予約トランザクションの表示
-          href: view-purchase-refunds.md?toc=/azure/cost-management-billing/reservations/toc.json
-        - name: 予約コストのチャージバック
-          href: charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
-    - name: 予約の更新
-      items:
-        - name: 予約の更新
-          href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: 概念
   items:
+    - name: VM インスタンス サイズの柔軟性
+      href: ../../virtual-machines/reserved-vm-instance-size-flexibility.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: Reservation recommendations
       href: reserved-instance-purchase-recommendations.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: Azure 予約割引の適用方法
+      href: reservation-discount-application.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: 割り引きの適用方法
       items:
-        - name: Azure 予約割引の適用方法
-          href: reservation-discount-application.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: App Service
           href: reservation-discount-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Azure Cache for Redis
@@ -115,6 +53,70 @@
       href: understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
     - name: 企業顧客の利用状況データ
       href: understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/reservations/toc.json
+- name: 操作方法ガイド
+  items:
+    - name: 購入内容の決定
+      items:
+        - name: 購入する予約の選択
+          href: determine-reservation-purchase.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: 予約の購入
+      items:
+        - name: Azure の予約の購入
+          href: prepare-buy-reservation.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: App Service
+          href: prepay-app-service-isolated-stamp.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Cache for Redis の予約
+          href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Database for MariaDB
+          href: ../../mariadb/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Database for MySQL
+          href: ../../mysql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Database for PostgreSQL
+          href: ../../postgresql/concept-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Synapse Analytics
+          href: prepay-sql-data-warehouse-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Azure Storage
+          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Cosmos DB
+          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Databricks
+          href: prepay-databricks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Data Explorer
+          href: /azure/data-explorer/pricing-reserved-capacity?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Dedicated Host
+          href: ../../virtual-machines/prepay-dedicated-hosts-reserved-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: Disk Storage
+          href: ../../virtual-machines/disks-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: SAP HANA L インスタンス
+          href: prepay-hana-large-instances-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: ソフトウェア プラン
+          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: SQL Database
+          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 仮想マシン
+          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: 購入後の表示、管理、最適化
+      items:
+        - name: 予約と使用率の表示
+          href: view-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: CSP としての予約の表示
+          href: how-to-view-csp-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 予約の管理
+          href: manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 最適化設定の変更
+          href: manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances
+        - name: 予約の交換と返金
+          href: exchange-and-refund-azure-reservations.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: コストの報告
+      items:
+        - name: 予約トランザクションの表示
+          href: view-purchase-refunds.md?toc=/azure/cost-management-billing/reservations/toc.json
+        - name: 予約コストのチャージバック
+          href: charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json
+    - name: 予約の更新
+      items:
+        - name: 予約の更新
+          href: reservation-renew.md?toc=/azure/cost-management-billing/reservations/toc.json
 - name: リファレンス
   items:
     - name: 予約 REST API

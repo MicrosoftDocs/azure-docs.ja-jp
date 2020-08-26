@@ -6,17 +6,17 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: overview
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: d08d7a81fddfe70593c31ac3ebd2191679ea1220
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 60e8a0dc93e19dfec0982080d0353466b08373de
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206360"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586836"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer の SKU
 

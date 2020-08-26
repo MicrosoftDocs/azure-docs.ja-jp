@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: e040f42db195760cf40f6dbdf651826b544b65a4
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: f6f3b10219775adb02d47a91da2573ea99f30ac0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507575"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212258"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>Active Directory を使用するための vCenter ID ソースの設定
 
@@ -42,6 +42,9 @@ Active Directory ドメインとドメイン コントローラーは、次の�
 * [プライベート クラウド上で新しい Active Directory を設定する](#set-up-new-active-directory-on-a-private-cloud)
 * [Azure 上で Active Directory を設定する](#set-up-active-directory-on-azure)
 
+> [!IMPORTANT]
+> **Active Directory (Windows 統合認証) はサポートされていません。** ID ソースとしてサポートされるのは、LDAP オプションを使った Active Directory のみです。
+
 ## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>オンプレミスの Active Directory をシングル サインオンの ID ソースとして追加する
 
 オンプレミスの Active Directory をシングル サインオンの ID ソースとして設定するには、次のものが必要です。
@@ -53,7 +56,7 @@ Active Directory ドメインを設定するときは、次の表の情報を使
 
 | **オプション** | **説明** |
 |------------|-----------------|
-| **Name** | ID ソースの名前。 |
+| **名前** | ID ソースの名前。 |
 | **Base DN for users** (ユーザーのベース DN) | ユーザーのベース識別名。 |
 | **ドメイン名** | ドメインの FQDN (例: example.com)。 このテキスト ボックスには IP アドレスを指定しないでください。 |
 | **Domain alias** (ドメイン エイリアス) | ドメインの NetBIOS 名。 SSPI 認証を使用している場合は、Active Directory ドメインの NetBIOS 名を ID ソースのエイリアスとして追加します。 |
@@ -118,7 +121,7 @@ Azure で実行される Active Directory は、オンプレミスで実行さ�
 
     ![シングル サインオン](media/OnPremAD02.png)
 
-5. **[Identity Sources]\(ID ソース\)** タブを開き、 **+** をクリックして新しい ID ソースを追加します。
+5. **[Identity Sources]\(ID ソース\)** タブを開き、**+** をクリックして新しい ID ソースを追加します。
 
     ![ID ソース](media/OnPremAD03.png)
 

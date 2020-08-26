@@ -7,16 +7,16 @@ author: dcurwin
 ms.author: dacurwin
 ms.service: backup
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 688ee8552a169e9e73b339678ace1e8006c71223
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c30fbf0ffb68c4bf2c594a3ca1009fada99c9346
+ms.sourcegitcommit: f1b18ade73082f12fa8f62f913255a7d3a7e42d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87093880"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88761833"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-backup"></a>Azure Backup 用の Azure Policy 規制コンプライアンス コントロール
 
-[Azure Policy の規制コンプライアンス](../governance/policy/concepts/regulatory-compliance.md)により、さまざまなコンプライアンス基準に関連する**コンプライアンス ドメイン**および**セキュリティ コントロール**に対して、"_組み込み_" と呼ばれる、Microsoft が作成および管理するイニシアチブ定義が提供されます。 このページでは、Azure Backup 用の**コンプライアンス ドメイン**と**セキュリティ コントロール**の一覧を示します。 **セキュリティ コントロール**の組み込みを個別に割り当てることで、Azure リソースを特定の標準に準拠させることができます。
+[Azure Policy の規制コンプライアンス](../governance/policy/concepts/regulatory-compliance.md)により、さまざまなコンプライアンス基準に関連する**コンプライアンス ドメイン**および**セキュリティ コントロール**に対して、"_組み込み_" と呼ばれる、Microsoft が作成および管理するイニシアチブ定義が提供されます。 このページでは、Azure Backup 用の**コンプライアンス ドメイン**と**セキュリティ コントロール**の一覧を示します。 **セキュリティ コントロール**の組み込みを個別に割り当てることで、Azure リソースを特定の基準に準拠させることができます。
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 
@@ -24,5 +24,5 @@ ms.locfileid: "87093880"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Azure Policy の規制コンプライアンス](../governance/policy/concepts/regulatory-compliance.md)について詳しく学習します。
+- [Azure Policy の規制コンプライアンス](../governance/policy/concepts/regulatory-compliance.md)の詳細を確認します。
 - [Azure Policy GitHub リポジトリ](https://github.com/Azure/azure-policy)のビルトインを参照します。

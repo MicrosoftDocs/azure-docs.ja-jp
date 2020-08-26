@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
-ms.openlocfilehash: 30fdc3c2b75d8ae567acfc612514ab080b929c5f
-ms.sourcegitcommit: cec9676ec235ff798d2a5cad6ee45f98a421837b
+ms.openlocfilehash: 90b4ffb273fc314a7c92971490fb09b6f0c131ee
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85850248"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258339"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -71,15 +71,12 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
      ゲートウェイ モードでは標準の HTTPS ポートと単一のエンドポイントが使用されるため、ファイアウォールの厳しい制限がある企業ネットワーク内でアプリケーションを実行する場合は、ゲートウェイ モードが最適な選択肢です。 ただし、パフォーマンスのトレードオフとして、ゲートウェイ モードでは、Azure Cosmos DB に対してデータの読み取りまたは書き込みを行うたびに、追加のネットワーク ホップが必要になります。 つまり、ネットワーク ホップ数が少ないため、直接モードの方がパフォーマンスが向上します。 ソケット接続の数に制限がある環境でアプリケーションを実行する場合、ゲートウェイ接続モードも推奨されます。
 
      Azure Functions (特に[従量課金プラン](../azure-functions/functions-scale.md#consumption-plan)) で SDK を使用する場合は、現在の[接続数の制限](../azure-functions/manage-connections.md)に注意してください。 Azure Functions アプリケーション内で他の HTTP ベースのクライアントも使用している場合は、ゲートウェイ モードの方がよい可能性があります。
-
-
-ゲートウェイ モードの Azure Cosmos DB では、ポート 443 が使用され、MongoDB 用の Azure Cosmos DB の API を使用している場合はポート 10250、10255、および 10256 が使用されます。 ポート 10250 は、geo レプリケーションを使用しない既定の MongoDB インスタンスにマップされます。 ポート 10255 と 10256 は、geo レプリケーションを使用する MongoDB インスタンスにマップされます。
      
-直接モードで TCP を使用する場合は、Azure Cosmos DB で動的 TCP ポートが使用されるため、ゲートウェイ ポートに加えてポート範囲 10000 から 20000 を開いておく必要があります ([プライベート エンドポイント](./how-to-configure-private-endpoints.md)で直接モードを使用する場合、0 から 65535 のすべての範囲の TCP ポートが開いている必要があります)。 標準 Azure VM 構成では、ポートは既定で開かれています。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。 次の表は、さまざまな API で使用可能な接続モードと、各 API に使用されるサービス ポートを示しています。
+直接モードで TCP を使用する場合は、Azure Cosmos DB が動的 TCP ポートを使用するため、ゲートウェイ ポートに加えて 10000 ～ 20000 のポート範囲が開いていることを確認する必要があります。 [プライベート エンドポイント](./how-to-configure-private-endpoints.md)で直接モードを使用している場合は、TCP ポートの範囲全体 0 ～ 65535 が開いている必要があります。 標準 Azure VM 構成では、ポートは既定で開かれています。 これらのポートが開いていない場合に TCP を使用しようとすると、[503 サービスを利用できません] エラーが表示されます。 次の表は、さまざまな API で使用できる接続モードと、各 API で使用されるサービス ポートを示しています。
 
 |接続モード  |サポートされるプロトコル  |サポートされる SDK  |API/サービス ポート  |
 |---------|---------|---------|---------|
-|Gateway  |   HTTPS    |  すべての SDK    |   SQL (443)、MongoDB (10250、10255、10256)、Table (443)、Cassandra (10350)、Graph (443)    |
+|Gateway  |   HTTPS    |  すべての SDK    |   SQL (443)、MongoDB (10250、10255、10256)、Table (443)、Cassandra (10350)、Graph (443) <br> ポート 10250 は、geo レプリケーションを使用しない MongoDB インスタンスの既定の Azure Cosmos DB API にマップされます。 これに対して、ポート 10255 と 10256 は、geo レプリケーションを使用するインスタンスにマップされます。   |
 |直接    |     TCP    |  .NET SDK    | パブリックまたはサービス エンドポイントを使用する場合: 10000 から 20000 の範囲のポート<br>プライベート エンドポイントを使用する場合: 0 から 65535 の範囲のポート |
 
 Azure Cosmos DB では、HTTPS を介したシンプルなオープン RESTful プログラミング モデルが提供されます。 さらに、RESTful な通信モデルである効率的な TCP プロトコルも用意されており、.NET クライアント SDK を通じて使用できます。 TCP プロトコルでは、最初の認証とトラフィックの暗号化で TLS が使用されます。 最適なパフォーマンスを実現するために、可能であれば TCP プロトコルを使用します。
@@ -107,7 +104,7 @@ TCP は直接モードでのみサポートされるため、ゲートウェイ 
 
 アクセス頻度が低く、ゲートウェイ モード アクセスと比べて接続数が多い場合は、次のことが可能です。
 
-* [CosmosClientOptions.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) プロパティを `PrivatePortPool` に構成します (フレームワーク バージョン >= 4.6.1 および .net core バージョン >= 2.0 で有効)。このプロパティにより、SDK はさまざまな Azure Cosmos DB の宛先エンドポイントのために一時的なポートの小さなプールを使用できます。
+* [CosmosClientOptions.PortReuseMode](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.portreusemode) プロパティを `PrivatePortPool` に構成します (フレームワーク バージョン >= 4.6.1 および .NET Core バージョン >= 2.0 で有効)。このプロパティにより、SDK は異なる Azure Cosmos DB の宛先エンドポイントに対して一時的なポートの小さなプールを使用できます。
 * [CosmosClientOptions.IdleConnectionTimeout](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.idletcpconnectiontimeout) プロパティを構成します。これは 10 分以上である必要があります。 推奨値は 20 分から 24 時間です。
 
 <a id="same-region"></a>

@@ -16,12 +16,12 @@ ms.date: 06/25/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a05636f8e673e08bfd390aa10069da0abd561d
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: b0754c8e2be62c0a5568e97e7e5cf4376fb3c593
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87542061"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210906"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 この記事では、Azure Active Directory (Azure AD) Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -72,7 +72,7 @@ Azure AD Connect サーバーを強化して、お客様の IT 環境に含ま�
 - Azure AD Connect は、ドメイン コントローラーやその他の階層 0 のリソースと同じように扱います。 詳細については、「[Active Directory 管理階層モデル](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)」を参照してください。
 - Azure AD Connect サーバーへの管理アクセスを、ドメイン管理者またはその他の厳重に管理されたセキュリティ グループのみに制限します。
 - [特権アクセスがあるすべてのユーザーに対して専用アカウント](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)を作成します。 管理者は、高い特権を持つアカウントを使用して Web を閲覧したり、メールをチェックしたり、日常業務を実行すべきではありません。
-- 「[特権アクセスの保護](https://docs.microsoft.com/windows-server/security/credentials-protection-and-management/how-to-configure-protected-accounts)」に記載されているガイダンスに従ってください。 
+- 「[特権アクセスの保護](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access)」に記載されているガイダンスに従ってください。 
 - すべてのマシンに一意のローカル管理者パスワードが構成されていることを確認します。 詳細については、[ローカル管理者パスワード ソリューション (LAPS)](https://support.microsoft.com/help/3062591/microsoft-security-advisory-local-administrator-password-solution-laps) に関する記事を参照してください。これを使用することで、ワークステーションおよびサーバーごとに一意のランダム パスワードを構成し、ACL によって保護された Active Directory に保存することができます。 資格のある許可されているユーザーのみが、これらのローカル管理者アカウントのパスワードの読み取りまたはリセットの要求を行うことができます。 [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=46899#:~:text=The%20%22Local%20Administrator%20Password%20Solution,it%20or%20request%20its%20reset.)から、ワークステーションとサーバーで使用する LAPS を取得できます。 LAPS と 特権アクセス ワークステーション (PAW) を使用して環境を運用するための追加のガイダンスについては、「[クリーン ソースの原則に基づく運用基準](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material#operational-standards-based-on-clean-source-principle)」を参照してください。 
 - 組織の情報システムへの特権アクセスを持つすべての担当者に対して、専用の[特権アクセス ワークステーション](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations)を実装します。 
 - Active Directory 環境の攻撃面を減らすには、これらの[追加のガイドライン](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/reducing-the-active-directory-attack-surface)に従います。

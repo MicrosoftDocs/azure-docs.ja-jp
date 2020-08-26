@@ -2,17 +2,17 @@
 title: クライアント アプリをコーディングする
 titleSuffix: Azure Digital Twins
 description: .NET (C#) SDK を使用してクライアント アプリの最小限のコードを記述するチュートリアル。
-author: cschormann
-ms.author: cschorm
+author: baanders
+ms.author: baanders
 ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 6000bffb80c83ffce58605bcc7e5bfaf404329da
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 52a22dd215769208b60f180b576ae5763d67eade
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87986681"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88723471"
 ---
 # <a name="coding-with-the-azure-digital-twins-apis"></a>Azure Digital Twins API を使用したコーディング
 
@@ -48,7 +48,7 @@ dotnet new console
 
 ```cmd/sh
 dotnet add package Azure.DigitalTwins.Core --version 1.0.0-preview.3
-dotnet add package Azure.identity
+dotnet add package Azure.identity --version 1.1.1
 ```
 
 最初の依存関係は、[.NET 用 Azure IoT Digital Twins クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)です。 2 つ目の依存関係では、Azure に対する認証を支援するツールが提供されます。

@@ -8,12 +8,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d66ef8f142a72bfdea2dcf3eeb996b18173de04d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 18ca9244f818fa745725f13d79a23c1a232e01ed
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86502964"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545388"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Windows 用の Key Vault 仮想マシン拡張機能
 
@@ -73,9 +73,9 @@ Key Vault VM 拡張機能では、以下のバージョンの Windows がサポ�
 > 
 > これは、`/secrets` のパスでは秘密キーを含む完全な証明書が返されるのに対し、`/certificates` のパスでは返されないためです。 証明書について詳しくは、次の記事をご覧ください: 「[Key Vault 証明書](../../key-vault/general/about-keys-secrets-certificates.md)」
 
-> [!NOTE]
-> 'authenticationSettings' プロパティは、VM に複数の ID が割り当てられるシナリオでは省略可能です。
-> Key Vault への認証に使用する ID を指定できます。
+> [!IMPORTANT]
+> "authenticationSettings" プロパティは、**ユーザー割り当て ID** を使用する VM の場合にのみ**必須**です。
+> Key Vault への認証に使用する ID を指定します。
 
 
 ### <a name="property-values"></a>プロパティ値

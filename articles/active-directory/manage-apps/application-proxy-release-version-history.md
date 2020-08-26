@@ -1,27 +1,22 @@
 ---
-title: Azure AD アプリケーション プロキシは:バージョンのリリース履歴 | Microsoft Docs
+title: Azure AD アプリケーション プロキシは:バージョンのリリース履歴
 description: この記事では、Azure AD アプリケーション プロキシのすべてのリリースを一覧表示し、新機能と修正された問題について説明します
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-editor: ''
 ms.assetid: ''
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 042509240eb2b88446d3ac1956d9056d5c39dfc8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019388"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210862"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD アプリケーション プロキシは:バージョンのリリース履歴
 この記事では、これまでにリリースされた Azure Active Directory (Azure AD) アプリケーション プロキシのバージョンと機能を示します。 Azure AD チームは、アプリケーション プロキシを新機能で定期的に更新しています。 アプリケーション プロキシ コネクタは、新しいバージョンがリリースされると自動的に更新されます。 
@@ -68,7 +63,7 @@ Azure AD アプリケーション プロキシ コネクタのダウンロード
 2020 年 4 月 7 日:ダウンロード対象としてリリース済み
 
 ### <a name="new-features-and-improvements"></a>新機能と機能強化
--   コネクタはすべての接続に TLS 1.2 のみを使用します。 詳細については、[コネクタの前提条件](application-proxy-add-on-premises-application.md#before-you-begin)に関する記事を参照してください。
+-   コネクタはすべての接続に TLS 1.2 のみを使用します。 詳細については、[コネクタの前提条件](application-proxy-add-on-premises-application.md#prerequisites)に関する記事を参照してください。
 - コネクタと Azure サービスの間のシグナリングが改善されました。 これには、コネクタと Azure サービス間の WCF 通信に対する信頼性の高いセッションのサポートと、WebSocket 通信に対する DNS キャッシュの強化が含まれます。
 - コネクタとバックエンド アプリケーションの間のプロキシの構成がサポートされます。 詳しくは、「[既存のオンプレミス プロキシ サーバーと連携する](application-proxy-configure-connectors-with-proxy-servers.md)」をご覧ください。
 

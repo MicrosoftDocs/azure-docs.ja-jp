@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 6e853edf5b7ba756aaedceaf59b1f7d1d7e48b39
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.openlocfilehash: f9b73e0919d660947edd0417f7379b3f6e6140c0
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2020
-ms.locfileid: "85985428"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245854"
 ---
 # <a name="solutions-on-azure-virtual-machines"></a>Azure 仮想マシンのソリューション
 
@@ -32,41 +32,18 @@ Azure Confidential Computing 仮想マシンは、データとコードをクラ
 一般提供されている Confidential Computing VM サイズ、リージョン、可用性ゾーンをすべてまとめた一覧は [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest) で次のコマンドを実行することで取得できます。
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
-    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" 
-    --all 
+az vm list-skus `
+    --size dc `
+    --query "[?family=='standardDCSv2Family'].{name:name,locations:locationInfo[0].location,AZ_a:locationInfo[0].zones[0],AZ_b:locationInfo[0].zones[1],AZ_c:locationInfo[0].zones[2]}" `
+    --all `
     --output table
-```
-
-2020 年 5 月の時点で、これらの SKU は次のリージョンと可用性ゾーンで利用できます。
-
-```output
-Name              Locations      AZ_a
-----------------  -------------  ------
-Standard_DC8_v2   eastus         2
-Standard_DC1s_v2  eastus         2
-Standard_DC2s_v2  eastus         2
-Standard_DC4s_v2  eastus         2
-Standard_DC8_v2   CanadaCentral
-Standard_DC1s_v2  CanadaCentral
-Standard_DC2s_v2  CanadaCentral
-Standard_DC4s_v2  CanadaCentral
-Standard_DC8_v2   uksouth        3
-Standard_DC1s_v2  uksouth        3
-Standard_DC2s_v2  uksouth        3
-Standard_DC4s_v2  uksouth        3
-Standard_DC8_v2   CentralUSEUAP
-Standard_DC1s_v2  CentralUSEUAP
-Standard_DC2s_v2  CentralUSEUAP
-Standard_DC4s_v2  CentralUSEUAP
 ```
 
 上記のサイズの詳細を表示するには、次のコマンドを実行します。
 
 ```azurecli-interactive
-az vm list-skus 
-    --size dc 
+az vm list-skus `
+    --size dc `
     --query "[?family=='standardDCSv2Family']"
 ```
 ### <a name="dedicated-host-requirements"></a>専用ホストの要件
@@ -101,17 +78,17 @@ Azure で仮想マシンを使用する場合、いかなるダウンタイム�
 
 Azure Confidential Computing では現時点で、可用性ゾーンによるゾーン冗長がサポートされていません。 Confidential Computing で可用性と冗長性を最大にするには、[可用性セット](../virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)を使用します。 ハードウェアに制約があるため、Confidential Computing インスタンスの可用性セットに指定できる更新ドメインは最大で 10 です。 
 
-## <a name="deploying-via-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートによるデプロイ 
+## <a name="deployment-with-azure-resource-manager-arm-template"></a>Azure Resource Manager (ARM) テンプレートを使用したデプロイ
 
 Azure Resource Manager は、Azure のデプロイおよび管理サービスです。 Azure サブスクリプション内のリソースを作成、更新、および削除できる管理レイヤーを提供します。 アクセス制御、ロック、タグなどの管理機能を使用して、デプロイ後にリソースを保護および整理できます。
 
-Azure Resource Manager テンプレートについては、[テンプレートのデプロイの概要](../azure-resource-manager/templates/overview.md)に関するページを参照してください。
+ARM テンプレートの詳細については、[Template deployment の概要](../azure-resource-manager/templates/overview.md)に関するページを参照してください。
 
-Azure Resource Manager テンプレートで DCsv2-Series VM をデプロイするには、[仮想マシン リソース](../virtual-machines/windows/template-description.md)を活用します。 **vmSize** と **imageReference** に確実に正しいプロパティを指定します。
+ARM テンプレートで DCsv2-Series VM をデプロイするには、[仮想マシン リソース](../virtual-machines/windows/template-description.md)を活用します。 **vmSize** と **imageReference** に確実に正しいプロパティを指定します。
 
-### <a name="vm-size"></a>[VM サイズ]
+### <a name="vm-size"></a>VM サイズ
 
-仮想マシン リソースの Azure Resource Manager テンプレートで、次のいずれかのサイズを指定します。 この文字列は **[プロパティ]** に **vmSize** として入力されます。
+仮想マシン リソースの ARM テンプレートで次のサイズのいずれかを指定します。 この文字列は **[プロパティ]** に **vmSize** として入力されます。
 
 ```json
   [
@@ -153,7 +130,7 @@ Azure Resource Manager テンプレートで DCsv2-Series VM をデプロイす�
       }
 ```
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次のステップ 
 
 この記事では、Confidential Computing 仮想マシンの作成時に必要な資格と構成について学習しました。 これで Microsoft Azure Marketplace に進み、DCsv2-Series VM をデプロイできます。
 

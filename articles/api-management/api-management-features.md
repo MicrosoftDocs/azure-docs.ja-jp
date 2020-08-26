@@ -1,6 +1,6 @@
 ---
 title: Azure API Management レベルの機能に基づく比較 | Microsoft Docs
-description: この記事では、提供される機能に基づいて API Management レベルを比較します。
+description: 提供される機能に基づいて API Management レベルを比較します。 各価格レベルで使用できる主な機能をまとめた表を参照してください。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
-ms.openlocfilehash: ef16339d9a584eb12c611a25d636a9287265953a
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 262d12e1b0ff74570b44b7794f8b55619a9afa97
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87284338"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905144"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Azure API Management レベルの機能に基づく比較
 
@@ -26,7 +26,7 @@ ms.locfileid: "87284338"
 > [!IMPORTANT]
 > Developer レベルは、非運用環境のユースケースと評価のためのものであることに注意してください。 SLA は提供されません。
 
-| 機能                                                                                      | 従量課金 | Developer | Basic | Standard | Premium |
+| 機能                                                                                      | 従量課金 | 開発者 | Basic | Standard | Premium |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Azure AD 統合<sup>1</sup>                                                             | いいえ          | はい       | いいえ    | はい      | はい     |
 | Virtual Network (VNet) のサポート                                                               | いいえ          | はい       | いいえ    | いいえ       | はい     |

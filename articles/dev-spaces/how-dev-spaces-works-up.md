@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces による Azure Kubernetes Service でのコード実行のプロセスについて説明します
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: c343c32f0817cc922784bb25283290dc9ed88d29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9dbc1f0f21c2883e5caadbdae268a515eb94d145
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87072966"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208679"
 ---
 # <a name="how-running-your-code-with-azure-dev-spaces-works"></a>Azure Dev Spaces でのコード実行のしくみ
 
@@ -201,14 +201,6 @@ Azure Dev Spaces におけるネットワークおよび要求のルーティン
 
 Azure Dev Spaces を使用した迅速な反復と開発の詳細については、「[Local Process with Kubernetes のしくみ][how-it-works-local-process-kubernetes]」と「[Azure Dev Spaces でのコードのリモート デバッグのしくみ][how-it-works-remote-debugging]」を参照してください。
 
-Azure Dev Spaces を使用してプロジェクトの実行を開始するには、以下のクイックスタートを参照してください。
-
-* [Visual Studio Code と Java を使用した迅速な反復処理とデバッグ][quickstart-java]
-* [Visual Studio Code と .NET を使用した迅速な反復処理とデバッグ][quickstart-netcore]
-* [Visual Studio Code と Node.js を使用した迅速な反復処理とデバッグ][quickstart-node]
-* [Visual Studio と .NET Core を使用した迅速な反復処理とデバッグ][quickstart-vs]
-* [CLI を使用して Kubernetes 上でアプリケーションを開発する][quickstart-cli]
-
 
 [azds-yaml-section]: #how-running-your-code-is-configured
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
@@ -216,10 +208,5 @@ Azure Dev Spaces を使用してプロジェクトの実行を開始するには
 [how-it-works-prep]: how-dev-spaces-works-prep.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [how-it-works-routing]: how-dev-spaces-works-routing.md
-[quickstart-cli]: quickstart-cli.md
-[quickstart-java]: quickstart-java.md
-[quickstart-netcore]: quickstart-netcore.md
-[quickstart-node]: quickstart-nodejs.md
-[quickstart-vs]: quickstart-netcore-visualstudio.md
 [sync-section]: #file-synchronization
 [troubleshooting]: troubleshooting.md

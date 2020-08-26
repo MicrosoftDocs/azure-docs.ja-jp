@@ -1,17 +1,17 @@
 ---
 title: Azure Data Lake Storage Gen1 のディザスター リカバリーのガイダンス | Microsoft Docs
-description: Azure Data Lake Storage Gen1 の高可用性とディザスター リカバリーのガイダンス
+description: Azure Data Lake Storage Gen1 のローカル冗長ストレージを超える範囲で、ローカル全体の障害や偶発的な削除からデータを保護する方法について説明します。
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: ebcdeed608a5b9dc6202071869c4df1dcfd327a8
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.openlocfilehash: b124f828c4a6a019c45243528ed2d957e3f781f3
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87512756"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191418"
 ---
 # <a name="high-availability-and-disaster-recovery-guidance-for-data-lake-storage-gen1"></a>Data Lake Storage Gen1 の高可用性とディザスター リカバリーのガイダンス
 

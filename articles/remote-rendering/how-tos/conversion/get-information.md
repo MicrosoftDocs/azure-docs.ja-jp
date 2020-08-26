@@ -5,12 +5,12 @@ author: malcolmtyrrell
 ms.author: matyrr
 ms.date: 03/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 722d3e218272202074820db442ab1592042c7011
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f5c38ac88503416b37b720a091c9e46d819a3146
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84805009"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509299"
 ---
 # <a name="get-information-about-a-converted-model"></a>変換されたモデルに関する情報を取得する
 
@@ -100,7 +100,7 @@ ms.locfileid: "84805009"
 このセクションでは、ソース シーンに関する情報が提供されます。 多くの場合、このセクションの値と、ソース モデルを作成したツールの同等の値には相違点があります。 エクスポートと変換の手順中にモデルは変更されるため、このような違いは想定されます。
 
 * `numMeshes`:各パーツが 1 つの素材を参照できるメッシュ パーツの数。
-* `numFaces`:モデル全体の "_三角形_" の合計数。 変換中はメッシュが三角形になることに注意してください。 この数値は、[標準レンダリング VM サイズ](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons)の多角形の制限に寄与します。
+* `numFaces`:モデル全体の "_三角形_" の合計数。 変換中はメッシュが三角形になることに注意してください。 この数値は、[標準レンダリング サーバー サイズ](../../reference/vm-sizes.md#how-the-renderer-evaluates-the-number-of-polygons)の多角形の制限に寄与します。
 * `numVertices`:モデル全体の頂点の合計数。
 * `numMaterial`:モデル全体の素材の合計数。
 * `numFacesSmallestMesh`:モデルの最小メッシュの三角形の数。

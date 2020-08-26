@@ -3,12 +3,12 @@ title: Azure VM 上の SQL Server データベースを復元する
 description: この記事では、Azure VM 上で実行されており、Azure Backup でバックアップしてある SQL Server データベースを復元する方法について説明します。
 ms.topic: conceptual
 ms.date: 05/22/2019
-ms.openlocfilehash: 2c3b81c4d0bc4c7548fec8ec131fea66684a7aa8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 97cf8a7d7fcae0e31dde14e045b222c5899dbb02
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054580"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921148"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Azure VM 上の SQL Server データベースを復元する
 
@@ -30,6 +30,7 @@ Azure Backup は、Azure VM 上で実行されている SQL Server データベ�
 - このデータベースを同じ Azure リージョン内の SQL Server のインスタンスに復元することができます。
 - 宛先サーバーがソースと同じコンテナーに登録されている必要があります。
 - TDE で暗号化されたデータベースを別の SQL Server に復元するには、まず[証明書を宛先サーバーに復元する](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server)必要があります。
+- [CDC](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-data-capture-sql-server?view=sql-server-ver15) 対応のデータベースは、[[ファイルとして復元]](#restore-as-files) オプションを使用して復元する必要があります。
 - "マスター" データベースを復元する前に、スタートアップ オプション **-m AzureWorkloadBackup** を使用して、シングル ユーザー モードで SQL Server インスタンスを起動します。
   - **-m** の値はクライアントの名前です。
   - 指定されたクライアント名のみで接続を開くことができます。

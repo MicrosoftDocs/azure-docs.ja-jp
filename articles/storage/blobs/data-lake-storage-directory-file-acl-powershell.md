@@ -6,21 +6,21 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 04/21/2020
+ms.date: 08/10/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: d22b83e1f3464f6d87d2bc3821682b25e05d947b
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: ef205a9a94ef7b40ed271387df617a5d96a78307
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86142545"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054308"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>PowerShell を使用して Azure Data Lake Storage Gen2 のディレクトリ、ファイル、ACL を管理する
 
 この記事では、PowerShell を使用して、階層型名前空間 (HNS) が有効なストレージ アカウントでディレクトリ、ファイル、アクセス許可を作成および管理する方法について説明します。 
 
-[Gen1 から Gen2 へのマッピング](#gen1-gen2-map) | [フィードバックの送信](https://github.com/Azure/azure-powershell/issues)
+[リファレンス](https://docs.microsoft.com/powershell/module/Az.Storage/?view=azps-4.5.0) | [Gen1 から Gen2 へのマッピング](#gen1-gen2-map) | [フィードバックの送信](https://github.com/Azure/azure-powershell/issues)
 
 ## <a name="prerequisites"></a>前提条件
 

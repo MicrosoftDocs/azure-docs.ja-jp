@@ -182,6 +182,8 @@
           href: geo-disaster-recovery.md
     - name: Security
       items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
         - name: イベンド ハンドラーへのイベント配信の認証
           href: security-authentication.md
         - name: 発行クライアントの認証

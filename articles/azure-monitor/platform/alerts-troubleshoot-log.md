@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.subservice: alerts
 ms.date: 10/29/2018
-ms.openlocfilehash: a66cb190309fb9e966392f57a251eff746bfa315
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: d61e052b10b7255cac37531f889324075d596f3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321107"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828457"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>Azure Monitor のログ アラートのトラブルシューティング  
 
@@ -190,7 +190,7 @@ Azure アクティビティ ログの次のサンプル イベントは、連続
 
 ## <a name="alert-rule-quota-was-reached"></a>アラート ルール クォータへの到達
 
-サブスクリプションおよびリソースあたりのログ検索アラート ルールの数には、[こちら](https://docs.microsoft.com/azure/azure-monitor/service-limits)に記載されているクォータ制限が適用されます。
+サブスクリプションおよびリソースあたりのログ検索アラート ルールの数には、[こちら](../service-limits.md)に記載されているクォータ制限が適用されます。
 
 ### <a name="recommended-steps"></a>推奨される手順
     
@@ -201,7 +201,7 @@ Azure アクティビティ ログの次のサンプル イベントは、連続
 
     - クォータ制限を引き上げる必要があるサブスクリプション ID
     - クォータの引き上げの理由
-    - クォータを引き上げるリソースの種類:**ログ分析**、**Application Insights** など
+    - クォータを引き上げるリソースの種類:**Log Analytics**、**Application Insights** など
     - 要求されるクォータ制限
 
 
@@ -226,4 +226,3 @@ Azure アクティビティ ログの次のサンプル イベントは、連続
 - [Azure でのログ アラート](./alerts-unified-log.md)について学習します。
 - [Application Insights](../log-query/log-query-overview.md) についてさらに学習します。
 - [ログ クエリ](../log-query/log-query-overview.md)についてさらに学習します
-

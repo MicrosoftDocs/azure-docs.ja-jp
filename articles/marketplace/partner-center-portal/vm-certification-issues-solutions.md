@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 06/16/2020
-ms.openlocfilehash: 594a47f397ca78476ed987ac0e06a3cacc79ec3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5878ea6a554439c261399706eec708b06ed59b11
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319900"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225380"
 ---
 # <a name="issues-and-solutions-during-virtual-machine-certification"></a>仮想マシンの認定中の問題と解決策 
 
@@ -314,6 +314,57 @@ Azure Marketplace から取得したすべてのイメージを再利用する�
 リモート デスクトップ プロトコル (RDP) オプションが Windows イメージに対して有効になっていない場合は、このエラーを受け取ります。 
 
 送信する前に、Windows イメージに対して RDP アクセスを有効にします。
+
+## <a name="bash-history-failed"></a>Bash 履歴が失敗した
+
+このエラーは、送信したイメージ内の Bash 履歴のサイズが 1 キロバイト (KB) を超えた場合に表示されます。 潜在的な機密情報が Bash 履歴ファイルにキャプチャされることのないように、このサイズは 1 KB に制限されています。
+
+"Bash 履歴" を削除する手順を次に示します。
+
+手順 1. VM をデプロイし、Azure portal の [実行コマンド] オプションをクリックします。
+![Azure portal の [実行コマンド]](./media/vm-certification-issues-solutions-3.png)
+
+手順 2. 最初のオプション [RunShellScript] を選択し、次のコマンドを実行します。
+
+コマンド: "cat /dev/null > ~/.bash_history && history -c" ![Azure portal の Bash 履歴コマンド](./media/vm-certification-issues-solutions-4.png)
+
+手順 3. コマンドの実行が成功したら、VM を再起動します。
+
+手順 4. VM を汎用化し、イメージ VHD を取得して VM を停止します。
+
+手順 5.     汎用化されたイメージを再送信します。
+
+## <a name="requesting-exceptions-custom-templates-on-vm-images-for-selective-tests"></a>選択的なテストでの VM イメージに関する例外 (カスタム テンプレート) の要求
+
+発行元は、VM 認定中に実行されるいくつかのテストでの例外を要求するために問い合わせることができます。 例外は、発行元が要求をサポートする証拠を提出する、きわめてまれなケースで提供されます。
+認定チームは、常に、例外を拒否または承認する権利を留保します。
+
+以下のセクションでは、例外が要求される主なシナリオと、例外を要求する方法について説明します。
+
+例外のシナリオ
+
+一般に、発行元がこれらの例外を要求するシナリオ/ケースには、次の 3 つがあります。 
+
+* **1 つ以上のテスト ケースの例外:** 発行元は、[マーケットプレース発行元サポート](https://aka.ms/marketplacepublishersupport)に連絡してテスト ケースの例外を要求できます。 
+
+* **ロックダウンされた VM/ルート アクセスはなし:** 一部の発行元には、VM にインストールされたファイアウォールなどのソフトウェアが含まれているために、その VM をロックする必要があるシナリオがあります。 
+       この場合、発行元はここで[認定されたテスト ツール](https://aka.ms/AzureCertificationTestTool)をダウンロードし、[マーケットプレース発行元サポート](https://aka.ms/marketplacepublishersupport)でレポートを提供できます。
+
+
+* **カスタム テンプレート:** 一部の発行元は、VM のデプロイのためにカスタム ARM テンプレートを必要とする VM イメージを発行します。 この場合は、認定チームが検証のために同じものを使用できるように、発行元は[マーケットプレース発行元サポート](https://aka.ms/marketplacepublishersupport)でカスタム テンプレートを提供するよう要求されます。 
+
+### <a name="information-to-provide-for-exception-scenarios"></a>例外のシナリオのために提供する情報
+
+発行元は、上記のシナリオの例外を要求するために、[マーケットプレース発行元サポート](https://aka.ms/marketplacepublishersupport)でサポートに次の追加情報を提供する必要があります。
+
+   1.   発行元 ID – パートナー センター ポータル上の発行元 ID
+   2.   オファー ID/オファー名 – 例外を要求するオファー ID/オファー名 
+   3.   SKU/プラン ID – 例外を要求する VM オファーのプラン ID/SKU
+   4.    バージョン – 例外を要求する VM オファーのバージョン
+   5.   例外の種類 – テスト、ロックダウンされた VM、カスタム テンプレート
+   6.   要求の理由 – この例外の理由と、除外されるテストに関する情報 
+   7.   添付ファイル - 重要な証拠のドキュメントをすべて添付します。 ロックダウンされた VM の場合は、テスト レポートを添付します。カスタム テンプレートの場合は、添付ファイルとしてカスタム ARM テンプレートを提供します。 ロックダウンされた VM の場合のレポートや、カスタム テンプレートの場合のカスタム ARM テンプレートの添付に失敗すると、要求は拒否されます。
+
 
 ## <a name="next-steps"></a>次のステップ
 

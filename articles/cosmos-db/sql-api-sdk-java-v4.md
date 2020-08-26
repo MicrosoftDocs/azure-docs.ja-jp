@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/20/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 51582fd9aba8721b28f6fb18daec4d0009d0ac15
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: af0964dceca8b862d0008d878045203983a96bda
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87500659"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586217"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Core (SQL) API 用 Azure Cosmos DB Java SDK v4: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -26,6 +26,9 @@ ms.locfileid: "87500659"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
+> * [Spark コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](/rest/api/cosmos-db-resource-provider/)
@@ -46,15 +49,17 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 > [Azure Cosmos DB のワークショップとラボ](https://aka.ms/cosmosworkshop)は、Azure Cosmos DB Java SDK v4 の使用方法を学習するための別の優れたリソースです。
 >
 
-| |  |
+## <a name="helpful-content"></a>役に立つコンテンツ
+
+| コンテンツ | Link |
 |---|---|
-| **SDK のダウンロード** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
+|**SDK のダウンロード**| [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
 |**API ドキュメント** | [Java API リファレンス ドキュメント](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
-|**SDK への協力** | [GitHub の Azure SDK for Java 中央リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
-|**開始するには** | [クイック スタート: Azure Cosmos DB SQL API データを管理する Java アプリを作成する](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [クイックスタート コードが含まれている GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
-|**基本的なコード サンプル** | [Azure Cosmos DB:SQL API 用の Java のサンプル](sql-api-java-sdk-samples.md) · [サンプル コードが含まれている GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
-|**変更フィードを使用するコンソール アプリ**| [変更フィード - Java SDK v4 のサンプル](create-sql-api-java-changefeed.md) · [サンプル コードが含まれている GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
-|**Web アプリのサンプル**| [Java SDK v4 を使用した Web アプリの構築](sql-api-java-application.md) · [サンプル コードが含まれている GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
+|**SDK への協力** | [GitHub の Azure SDK for Java 中央リポジトリ](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos) | 
+|**開始するには** | [クイック スタート:Azure Cosmos DB SQL API データを管理する Java アプリを作成する](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) <br> [クイック スタート コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
+|**基本的なコード サンプル** | [Azure Cosmos DB: SQL API の Java のサンプル](sql-api-java-sdk-samples.md) <br> [サンプル コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
+|**変更フィードを使用するコンソール アプリ**| [変更フィード - Java SDK v4 サンプル](create-sql-api-java-changefeed.md) <br> [サンプル コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example)| 
+|**Web アプリのサンプル**| [Java SDK v4 を使用した Web アプリの構築](sql-api-java-application.md) <br> [サンプル コードを含む GitHub リポジトリ](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-todo-app)|
 | **パフォーマンスに関するヒント**| [Java SDK v4 のパフォーマンスに関するヒント](performance-tips-java-sdk-v4-sql.md)| 
 | **トラブルシューティング** | [Java SDK v4 のトラブルシューティング](troubleshoot-java-sdk-v4-sql.md) |
 | **以前の SDK から v4 への移行** | [Java V4 SDK への移行](migrate-java-v4-sdk.md) |
@@ -73,7 +78,7 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 * `partitionKey` を含む `upsertItem` 用の新しいオーバーロード API を追加しました。 
 * オープン テレメトリのトレース サポートを追加しました。 
 #### <a name="key-bug-fixes"></a>主要なバグ修正
-* ゲートウェイ モードで要求をキャンセルすると SSLException がスローされる問題を修正しました。
+* ゲートウェイ モードで要求をキャンセルした場合、SSLException がスローされる問題を修正しました。
 * ストアド プロシージャ実行でのリソース スロットルの再試行ポリシーを修正しました。
 * ログ レベル デバッグ モードで SDK がハングする問題を修正しました。 
 * 直接モードで待機時間が定期的に急上昇する問題を修正しました。 
@@ -174,5 +179,5 @@ Core (SQL) 用 Azure Cosmos DB Java SDK v4 では、非同期 API と同期 API 
 ## <a name="faq"></a>よく寄せられる質問
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。

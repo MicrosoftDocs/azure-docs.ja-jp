@@ -44,12 +44,18 @@
       href: vm-do-ten-things.md
     - name: Linux Data Science Virtual Machine を使用する
       href: linux-dsvm-walkthrough.md
-    - name: 自動スケール Data Science Virtual Machine プールを作成する
-      href: dsvm-pools.md
-    - name: Active Directory と連係する。
-      href: dsvm-common-identity.md
-    - name: リソースのアクセス資格情報のセキュリティ保護
-      href: dsvm-secure-access-keys.md
+    - name: Azure Machine Learning との統合
+      items:
+        - name: 実験を追跡する
+          href: how-to-track-experiments.md
+    - name: エンタープライズ向けのガイダンス
+      items:
+        - name: 自動スケール Data Science Virtual Machine プールを作成する
+          href: dsvm-pools.md
+        - name: Active Directory と連係する。
+          href: dsvm-common-identity.md
+        - name: リソースのアクセス資格情報のセキュリティ保護
+          href: dsvm-secure-access-keys.md
 - name: リソース
   items:
     - name: Microsoft Q&A 質問ページ

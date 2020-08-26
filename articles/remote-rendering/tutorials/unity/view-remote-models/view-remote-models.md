@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
-ms.openlocfilehash: bd9e9b6754c8626a8d858b9832a8e3547b72352d
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e9c29edb28700d0f2d3411925c0985adc0f53e92
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86231908"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225803"
 ---
 # <a name="tutorial-viewing-a-remotely-rendered-model"></a>チュートリアル:リモートでレンダリングされたモデルの表示
 
@@ -220,11 +220,28 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
     // For most people '<region>' is either 'westus2' or 'westeurope'
-    public string AccountDomain = "westus2.mixedreality.azure.com";
+    [SerializeField]
+    private string accountDomain = "westus2.mixedreality.azure.com";
+    public string AccountDomain
+    {
+        get => accountDomain.Trim();
+        set => accountDomain = value;
+    }
 
     [Header("Development Account Credentials")]
-    public string AccountId = "<enter your account id here>";
-    public string AccountKey = "<enter your account key here>";
+    [SerializeField]
+    private string accountId = "<enter your account id here>";
+    public string AccountId {
+        get => accountId.Trim();
+        set => accountId = value;
+    }
+
+    [SerializeField]
+    private string accountKey = "<enter your account key here>";
+    public string AccountKey {
+        get => accountKey.Trim();
+        set => accountKey = value;
+    }
 
     // These settings are important. All three should be set as low as possible, while maintaining a good user experience
     // See the documentation around session management and the technical differences in session VM size
@@ -237,7 +254,12 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     [Header("Other Configuration")]
 
     [Tooltip("If you have a known active SessionID, you can fill it in here before connecting")]
-    public string sessionIDOverride;
+    [SerializeField]
+    private string sessionIDOverride;
+    public string SessionIDOverride {
+        get => sessionIDOverride.Trim();
+        set => sessionIDOverride = value;
+    }
 
     // When Automatic Mode is true, the coordinator will attempt to automatically proceed through the process of connecting and loading a model
     public bool automaticMode = true;
@@ -313,8 +335,8 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     {
         get
         {
-            if (!string.IsNullOrEmpty(sessionIDOverride))
-                return sessionIDOverride;
+            if (!string.IsNullOrEmpty(SessionIDOverride))
+                return SessionIDOverride;
 
             if (PlayerPrefs.HasKey("LastUsedSessionID"))
                 return PlayerPrefs.GetString("LastUsedSessionID");
@@ -582,7 +604,7 @@ public async void InitializeSessionService()
 
 ![ARR スタック 2](./media/remote-render-stack-2.png)
 
-リモート セッションは、モデルがレンダリングされる場所です。 **JoinRemoteSession()** メソッドは、**LastUsedSessionID** プロパティで追跡されている既存のセッションへの参加を試行します。これは、割り当て済みのアクティブなセッション ID が **sessionIDOverride** にある場合もです。 **sessionIDOverride** はデバッグのみを目的としたものであり、セッションが存在することがわかっていて、そこに明示的に接続する必要がある場合だけ使用してください。
+リモート セッションは、モデルがレンダリングされる場所です。 **JoinRemoteSession()** メソッドは、**LastUsedSessionID** プロパティで追跡されている既存のセッションへの参加を試行します。これは、割り当て済みのアクティブなセッション ID が **SessionIDOverride** にある場合もです。 **SessionIDOverride** はデバッグのみを目的としたものであり、セッションが存在することがわかっていて、そこに明示的に接続する必要がある場合だけ使用してください。
 
 使用可能なセッションがない場合は、新しいセッションが作成されます。 ただし、新しいセッションの作成は時間のかかる操作です。 したがって、必要な場合にのみセッションを作成し、できる限り再利用するようにする必要があります (セッション管理の詳細については、[商用対応のセッション プール、スケジュール、およびベスト プラクティス](../commercial-ready/commercial-ready.md#fast-startup-time-strategies)に関するページをご覧ください)。
 
@@ -620,8 +642,8 @@ public async void JoinRemoteSession()
     {
         //The session should be ready or starting, if it's not, something went wrong
         await ARRSessionService.StopSession();
-        if(LastUsedSessionID == sessionIDOverride)
-            sessionIDOverride = "";
+        if(LastUsedSessionID == SessionIDOverride)
+            SessionIDOverride = "";
         CurrentCoordinatorState = RemoteRenderingState.NoSession;
     }
 }

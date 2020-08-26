@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: ff2745a636d25c429a1a40644757c00b28e2668c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.openlocfilehash: 9196bea663d037f269316dc108f99d3f2c282ec7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87799176"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606357"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Azure Marketplace で Azure Container オファーを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "87799176"
    ![左側のナビゲーション メニューの画像。](./media/new-offer-azure-container.png)
 
 > [!TIP]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ### <a name="offer-id-and-alias"></a>オファーの ID と別名
 
@@ -190,20 +190,23 @@ Microsoft では、商業マーケットプレースの取り引きに役立つ�
 
 オファーで使用するロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 ぼやけた画像は拒否されます。
 
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
 >[!Note]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている https://upload.xboxlive.com サービスがローカル ネットワークでブロックされていないことを確認してください。
 
 #### <a name="store-logos"></a>ストア ロゴ
 
-**大**サイズのロゴ (216 x 216 から 350 x 350 ピクセル) には PNG ファイルを指定します。 パートナー センターは、これを使用して**小** (48 x 48 ピクセル) サイズおよび**中** (90 x 90 ピクセル) サイズのロゴを作成します。 必要に応じて、別の画像に置き換えることもできます。
-
-リストのさまざまな場所で使用するために、3 つのロゴ サイズはすべて必須です。
+ オファーのロゴの PNG ファイルを次の 4 つのピクセル サイズで提供します。
 
 - **小** (48 x 48)
 - **中** (90 x 90)
-- **大** (216 x 216 から 350 x 350)
+- **大** (216 x 216)
+- **ワイド** (255 x 115)
 
-[!INCLUDE [Logo suggestions](./includes/graphics-suggestions.md)]
+4 つすべてのロゴが必要であり、マーケットプレースのリスト登録のさまざまな場所で使用されます。
+
+[!INCLUDE [logos-azure-marketplace-only](../includes/logos-azure-marketplace-only.md)]
 
 #### <a name="screenshots-optional"></a>スクリーンショット (省略可能)
 
@@ -249,9 +252,11 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 
 続行する前に、 **[下書きの保存]** を選択します。
 
-### <a name="plan-overview"></a>プランの概要
+## <a name="plan-overview"></a>プランの概要
 
 このタブでは、同じオファー内でさまざまなプラン オプションを指定できます。 プラン (以前は SKU と呼ばれていました) は、利用できるクラウド (グローバル クラウド、Government クラウドなど) とプランで参照される画像に関して異なる場合があります。 商業マーケットプレースにオファーを登録するには、プランを少なくとも 1 つ設定する必要があります。
+
+オファーごとに最大 100 のプランを作成できます。そのうち最大 45 をプライベートにすることができます。 プライベート プランの詳細については、「[Microsoft 商業マーケットプレースでのプライベート オファー](../private-offers.md)」を参照してください。
 
 プランの作成後、 **[プランの概要]** タブが表示されます。
 
@@ -266,7 +271,7 @@ Azure サブスクリプション ID は少なくとも 1 つ追加します。�
 - **ドラフトを削除する** - プランの状態がドラフトの場合。
 - **販売プランを停止する** - プランの状態が一般公開の場合。
 
-#### <a name="create-new-plan"></a>新しいプランを作成する
+### <a name="create-new-plan"></a>新しいプランを作成する
 
 **[新しいプランの作成]** を選択します。 **[新しいプラン]** ダイアログ ボックスが表示されます。
 
@@ -298,7 +303,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 これらのプログラムの認定資格を示すため、それらを説明するリンクを最大 100 個指定できます。 プログラムのリスト登録に直接リンクするか、独自の Web サイトにリンクできます。 これらのリンクは、Azure Government の顧客にのみ表示されます。
 
-## <a name="plan-listing"></a>プランのリスト登録
+### <a name="plan-listing"></a>プランのリスト登録
 
 このタブには、現在のオファー内の異なるプラン別に特定の情報が表示されます。
 
@@ -310,7 +315,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 (オファーではなく) ソフトウェア プランの簡単な概要です。 この概要は Azure Marketplace の検索結果に表示されます。最大 100 文字を入力できます。
 
-### <a name="plan-description"></a>プランの説明
+### <a name="plan-description"></a>プラン説明
 
 このソフトウェア プラン独特の要素やオファーに含まれる他のプランとの違いを説明します。 オファーについては説明しないでください。プランの説明だけです。 この説明は Azure Marketplace と Azure portal の **[オファーのリスト登録]** ページに表示されます。 プラン概要に入力したものと同じ内容にすることができます。最大 2,000 文字を入力できます。
 
@@ -328,7 +333,7 @@ Azure Government サービスでは、特定の政府の規制および要件の
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-11-plan-details-portal.png" alt-text="Azure portal のプラン詳細の画像。":::
 
-## <a name="plan-availability"></a>プランの可用性
+### <a name="plan-availability"></a>プランの可用性
 
 公開したオファーを非表示にし、マーケットプレースで顧客がそれを検索、閲覧、購入できないようにする場合、 **[可用性]** タブで **[プランの非表示]** チェックボックスを選択します。
 

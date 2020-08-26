@@ -5,12 +5,13 @@ author: mumian
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: d8cf93d8945d6597f3c7276e83df0b837490c57d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 2b6abcaf7f774b576a4850cd523bca27adfec488
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87326853"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87827114"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-azure-cli"></a>Azure CLI を使用した Azure Resource Manager リソース グループの管理
 
@@ -144,7 +145,7 @@ az group export --name $resourceGroupName
 
 ## <a name="manage-access-to-resource-groups"></a>リソース グループへのアクセスを管理する
 
-[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) は、Azure に存在するリソースに対するアクセス権を管理するための手法です。 詳しくは、[RBAC と Azure CLI を使用したアクセスの管理](../../role-based-access-control/role-assignments-cli.md)に関する記事をご覧ください。
+[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) は、Azure のリソースへのアクセスを管理する方法です。 詳しくは、[RBAC と Azure CLI を使用したアクセスの管理](../../role-based-access-control/role-assignments-cli.md)に関する記事をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

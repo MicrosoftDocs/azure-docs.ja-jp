@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ac5b1f72e4c70e15ccb12ea41e5f080ca0b8a505
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 54d02b3189825d08716b73b7250efd4e3f334aa0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86203026"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234741"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>検疫状態のアプリケーションのプロビジョニング
 
@@ -34,7 +34,7 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 
 - Azure portal で **[Azure Active Directory]**  >  **[監査ログ]** の順に移動し、 **[アクティビティ: 検疫]** フィルターをオンにして、検疫履歴を確認します。 プロビジョニングが現在検疫中であるかどうかは前述した進行状況バーのビューに表示され、アプリケーションの検疫履歴は監査ログで確認できます。 
 
-- Microsoft Graph 要求の [Get synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) を使用して、プロビジョニング ジョブの状態をプログラムで取得します。
+- Microsoft Graph 要求の [Get synchronizationJob](/graph/api/synchronization-synchronizationjob-get?tabs=http&view=graph-rest-beta) を使用して、プロビジョニング ジョブの状態をプログラムで取得します。
 
 ```microsoft-graph
         GET https://graph.microsoft.com/beta/servicePrincipals/{id}/synchronization/jobs/{jobId}/
@@ -52,7 +52,7 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 |---|---|
 |**SCIM へのコンプライアンスの問題:** 予期される HTTP/200 OK 応答ではなく、HTTP/404 Not Found 応答が返されました。 この場合、Azure AD プロビジョニング サービスによってターゲット アプリケーションへの要求が行われ、予期しない応答を受け取りました。|管理者資格情報のセクションを調べて、アプリケーションでテナントの URL を指定する必要があるかどうか、および URL が正しいことを確認します。 問題が見つからない場合は、アプリケーションの開発者に連絡し、サービスが SCIM に準拠していることを確認してください。 https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**無効な資格情報:** ターゲット アプリケーションへのアクセスの承認を試みたとき、指定された資格情報が無効であることを示す応答をターゲット アプリケーションから受け取りました。|プロビジョニング構成 UI の管理者資格情報のセクションに移動し、有効な資格情報で再度アクセスを承認してください。 アプリケーションがギャラリーにある場合は、アプリケーション構成のチュートリアルで必要な追加の手順を確認してください。|
-|**重複したロール:** Salesforce や Zendesk などの特定のアプリケーションからインポートされるロールは、一意である必要があります。 |Azure portal でアプリケーションの[マニフェスト](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)に移動し、重複するロールを削除します。|
+|**重複したロール:** Salesforce や Zendesk などの特定のアプリケーションからインポートされるロールは、一意である必要があります。 |Azure portal でアプリケーションの[マニフェスト](../develop/reference-app-manifest.md)に移動し、重複するロールを削除します。|
 
  プロビジョニング ジョブの状態を取得するための Microsoft Graph 要求では、次の検疫理由が示されます。
 
@@ -74,11 +74,10 @@ Azure AD プロビジョニング サービスは、構成の正常性を監視�
 
 - Azure portal を使用して、プロビジョニング ジョブを再起動します。 **[設定]** のアプリケーションの **[プロビジョニング]** ページで、 **[Clear state and restart synchronization]\(状態を消去して同期を再開する\)** を選択し、 **[プロビジョニングの状態]** を **[オン]** に設定します。 この操作により、プロビジョニング サービスが完全に再起動されます (しばらく時間がかかることがあります)。 すべての初回サイクルが再度実行されます。これにより、エスクローがクリアされ、アプリが検疫から削除され、透かしがクリアされます。
 
-- Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http)。 再起動する対象は完全に制御できます。 エスクローをクリアするか (検疫状態と判定されるためのエスクロー カウンターを再起動するため)、検疫をオフにするか (検疫からアプリケーションを削除するため)、または透かしをクリアするかを選択できます。 次の要求を使用します。
+- Microsoft Graph を使用して、[プロビジョニング ジョブを再起動します](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta)。 再起動する対象は完全に制御できます。 エスクローをクリアするか (検疫状態と判定されるためのエスクロー カウンターを再起動するため)、検疫をオフにするか (検疫からアプリケーションを削除するため)、または透かしをクリアするかを選択できます。 次の要求を使用します。
  
 ```microsoft-graph
         POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
 ```
 
-"{Id}" をアプリケーション ID の値に置き換え、"{jobId}" を[同期ジョブの ID](https://docs.microsoft.com/graph/api/resources/synchronization-configure-with-directory-extension-attributes?view=graph-rest-beta&tabs=http#list-synchronization-jobs-in-the-context-of-the-service-principal) に置き換えます。 
-
+"{Id}" をアプリケーション ID の値に置き換え、"{jobId}" を[同期ジョブの ID](/graph/api/resources/synchronization-configure-with-directory-extension-attributes?tabs=http&view=graph-rest-beta#list-synchronization-jobs-in-the-context-of-the-service-principal) に置き換えます。

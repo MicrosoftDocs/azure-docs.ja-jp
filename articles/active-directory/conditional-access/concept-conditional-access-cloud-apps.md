@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be80ff95cc03f8cf2a08e9ce92146fe5028dcb9c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: defb959a56446da337c4c7c16ee118ceecd3e674
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87275274"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87846311"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>条件付きアクセス:クラウド アプリまたはアクション
 
@@ -117,7 +117,7 @@ Microsoft Azure Management アプリケーションには、基になる複数�
 - [ギャラリーから追加されたアプリケーション](../manage-apps/add-application-portal.md)
 - [ギャラリーにないカスタム アプリケーション](../manage-apps/add-non-gallery-app.md)
 - [アプリ配信コントローラーとネットワーク経由で公開されるレガシ アプリケーション](../manage-apps/secure-hybrid-access.md)
-- [パスワードに基づくシングル サインオンを使用するアプリケーション](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
+- [パスワードに基づくシングル サインオン](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)を使用するアプリケーション
 
 > [!NOTE]
 > 条件付きアクセス ポリシーでは、サービスにアクセスするための要件が設定されるため、クライアント (パブリック/ネイティブ) アプリケーションにそれを適用することはできません。 つまり、ポリシーはクライアント (パブリック/ネイティブ) アプリケーションに直接設定されるのではなく、クライアントがサービスを呼び出すときに適用されます。 たとえば、SharePoint サービスで設定したポリシーは、SharePoint を呼び出すクライアントに適用されます。 Exchange で設定されたポリシーは、Outlook クライアントを使用して電子メールにアクセスしようとしたときに適用されます。 このため、クラウド アプリの選択で、クライアント (パブリック/ネイティブ) アプリケーションを選択できず、テナントに登録されているクライアント (パブリック/ネイティブ) アプリケーションのアプリケーション設定で、[条件付きアクセス] オプションを選択できません。 

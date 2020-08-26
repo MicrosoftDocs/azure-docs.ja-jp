@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
-ms.openlocfilehash: cc270ebb12b27c6461b00a4f7042bc3c829d02ef
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 5e061e4d6f9e67cc7d92548f54add94097ede7d1
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87812253"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905205"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins のトラブルシューティング: メトリック
 
@@ -32,9 +32,14 @@ ms.locfileid: "87812253"
 
     このページには、Azure Digital Twins インスタンスのメトリックが表示されます。 また、リストから表示したいメトリックを選択して、メトリックのカスタム ビューを作成することもできます。
     
-3. メトリック データを Event Hubs エンドポイントまたは Azure Storage のアカウントに送信するように選択するには、メニューから **[診断設定]** 、 **[診断設定の追加]** の順にクリックします。
+3. メトリック データを Event Hubs エンドポイントまたは Azure Storage のアカウントに送信するように選択するには、メニューから **[診断設定]** 、 **[診断設定の追加]** の順に選択します。
 
-    :::image type="content" source="media/troubleshoot-metrics/diagnostic-settings.png" alt-text="[診断設定] ページと追加するボタンが示されているスクリーンショット":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="[診断設定] ページと追加するボタンが示されているスクリーンショット":::
+
+    このプロセスの詳細については、[*トラブルシューティング: 診断の設定*](troubleshoot-diagnostics.md)に関するページを参照してください。
+
+4. メニューから **[アラート]** を選択し、 **[+ 新しいアラート ルール]** を選択することで、メトリック データのアラートを設定できます。
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="[アラート] ページと追加するボタンを示すスクリーンショット":::
 
     このプロセスの詳細については、[*トラブルシューティング: 診断の設定*](troubleshoot-diagnostics.md)に関するページを参照してください。
 

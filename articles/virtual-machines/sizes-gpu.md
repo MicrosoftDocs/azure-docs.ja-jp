@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: 15b6de6a03bc5dd67650076beac603845b99ff59
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 711bcc06a65483921492aaad819b961fc09740d4
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286191"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067037"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最適化済み仮想マシンのサイズ
 
 GPU 最適化済み VM サイズは、単一の GPU、複数の GPU、またはフラクショナル GPU で使用できる特化された仮想マシンです。 これらのサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを意図して設計されています。 この記事では、GPU、vCPU、データ ディスク、NIC の数と種類についての情報を提供します。 このグループ内の各サイズのストレージのスループットおよびネットワーク帯域幅も含まれています。
 
-- [NC シリーズ](nc-series.md)、[NCv2 シリーズ](ncv2-series.md)、[NCv3 シリーズ](ncv3-series.md)の各サイズは、コンピューティング集中型やネットワーク集中型のアプリケーションおよびアルゴリズム向けに最適化されています。 例としては、CUDA および OpenCL ベースのアプリケーションやシミュレーション、AI、ディープ ラーニングなどが挙げられます。 NCv3 シリーズは、NVIDIA の Tesla V100 GPU を搭載したハイ パフォーマンス コンピューティング ワークロードにフォーカスしています。 NC シリーズは Intel Xeon E5-2690 v3 2.60GHz v3 (Haswell) プロセッサを使用し、NCv2 シリーズおよび NCv3 シリーズ VM は Intel Xeon E5-2690 v4 (Broadwell) プロセッサを使用しています。
+- [NC シリーズ](nc-series.md)、[NCv2 シリーズ](ncv2-series.md)、[NCv3 シリーズ](ncv3-series.md)、[NCT4_v3 シリーズ](nct4-v3-series.md)の各サイズは、コンピューティング集中型やネットワーク集中型のアプリケーションおよびアルゴリズム向けに最適化されています。 例としては、CUDA および OpenCL ベースのアプリケーションやシミュレーション、AI、ディープ ラーニングなどが挙げられます。 NCT4v3 シリーズは、NVIDIA の Tesla T4 GPU と AMD EPYC2 Rome プロセッサを搭載した推論のワークロードにフォーカスしています。 NCv3 シリーズは、NVIDIA の Tesla V100 GPU を搭載したハイ パフォーマンス コンピューティング ワークロードにフォーカスしています。 NC シリーズは Intel Xeon E5-2690 v3 2.60GHz v3 (Haswell) プロセッサを使用し、NCv2 シリーズおよび NCv3 シリーズ VM は Intel Xeon E5-2690 v4 (Broadwell) プロセッサを使用しています。
 
 - [ND シリーズ](nd-series.md)および [NDv2 シリーズ](ndv2-series.md)のサイズは、ディープ ラーニング用のトレーニングと推論のシナリオにフォーカスしています。 これらは、NVIDIA Tesla P40 GPU および Intel Xeon E5-2690 v4 (Broadwell) プロセッサを使用しています。 NDv2 シリーズは、Intel Xeon Platinum 8168 (Skylake) プロセッサを使用しています。
 

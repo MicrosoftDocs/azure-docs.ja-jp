@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 707b432a4cb3918aa2dfbe460fc3cdcd53761bf1
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08099ede82f8ebd9c1cd6e585a16800ee1626f65
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497082"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508789"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>センサー パートナーからセンサー データを取得する
 
@@ -62,19 +62,19 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
 5. ホーム ディレクトリに移動します。
 
-    ```azurepowershell-interactive 
-    cd  
+    ```azurepowershell-interactive
+    cd
     ```
 
 6. 次のコマンドを実行します。 これにより、Azure AD 要求に使用する認証済みアカウントが接続されます
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     Connect-AzureAD
     ```
-    
+
 7. 次のコマンドを実行します。 これにより、スクリプトがホーム ディレクトリにダウンロードされます。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     wget –q https://aka.ms/farmbeatspartnerscriptv3 -O ./generatePartnerCredentials.ps1
 
@@ -82,9 +82,9 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
 8. 次のスクリプトを実行します。 このスクリプトは、 **[Azure Active Directory]**  >  **[概要]** ページから取得できるテナント ID を要求します。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
-    ./generatePartnerCredentials.ps1   
+    ./generatePartnerCredentials.ps1
 
     ```
 
@@ -138,7 +138,7 @@ Azure FarmBeats を使用すると、IoT デバイスとセンサーからデー
 
     ![[センサー] ページ](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
-## <a name="assign-devices"></a>デバイスの割り当て  
+## <a name="assign-devices"></a>デバイスの割り当て
 
 センサー データが流れるようになったら、センサーを配置したファームにそれを割り当てることができます。
 

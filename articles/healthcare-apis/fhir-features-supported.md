@@ -2,18 +2,18 @@
 title: Azure でサポートされる FHIR 機能 - Azure API for FHIR
 description: この記事では、Azure API for FHIR で実装されている FHIR 仕様の機能について説明します。
 services: healthcare-apis
-author: hansenms
+author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
-ms.author: mihansen
-ms.openlocfilehash: 7f92395f19d84f904493af458d1334f8013fd263
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.author: matjazl
+ms.openlocfilehash: 0a24339d728c43817b6a7ae6eac8782ad0e27b09
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85808031"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142521"
 ---
 # <a name="features"></a>特徴
 
@@ -103,7 +103,7 @@ Azure API for FHIR は、Microsoft FHIR Server for Azure の完全管理型デ�
 | `_count`                | はい       | はい       | はい       |         |
 | `_summary`              | 部分的   | 部分的   | 部分的   | `_summary=count` がサポートされています |
 | `_include`              | いいえ        | はい       | いいえ        |         |
-| `_revinclude`           | いいえ        | いいえ        | いいえ        |         |
+| `_revinclude`           | いいえ        | はい       | いいえ        | 含まれる項目は 100 に制限されています。 |
 | `_contained`            | いいえ        | いいえ        | いいえ        |         |
 | `_elements`             | いいえ        | いいえ        | いいえ        |         |
 

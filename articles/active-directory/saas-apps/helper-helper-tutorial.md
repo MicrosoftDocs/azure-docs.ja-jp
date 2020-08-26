@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Helper Helper の統合 | Microsoft Docs
 description: Azure Active Directory と Helper Helper の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 5f42e4d7-4d92-4096-a0d5-02fa438a5dfd
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/31/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d70cdade93b028c90c9f62374cd6b997556dd52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 89467dcca75c72c3a868478cc3e46b9cb474ed19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67101281"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88540090"
 ---
 # <a name="tutorial-integrate-helper-helper-with-azure-active-directory"></a>チュートリアル:Helper Helper と Azure Active Directory の統合
 

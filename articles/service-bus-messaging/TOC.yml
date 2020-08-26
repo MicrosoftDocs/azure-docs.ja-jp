@@ -117,6 +117,8 @@
           href: network-security.md
 - name: 操作方法ガイド
   items:
+    - name: リージョン間で移動する
+      href: move-across-regions.md
     - name: Azure Service Manager (クラシック) API シリーズから Resource Manager API シリーズへの移行
       href: deprecate-service-bus-management.md
     - name: 名前空間の作成

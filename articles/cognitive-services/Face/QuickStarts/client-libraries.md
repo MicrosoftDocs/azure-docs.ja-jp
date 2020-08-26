@@ -9,15 +9,15 @@ zone_pivot_groups: programming-languages-set-eighteen
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 04/24/2020
+ms.date: 08/17/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: dca93d21fc6dc76289ed82139b6da9ff91ac395c
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: ce229672648fed999034c33efe04a142c5352499
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875083"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505883"
 ---
 # <a name="quickstart-use-the-face-client-library"></a>クイック スタート:Face クライアント ライブラリを使用する
 

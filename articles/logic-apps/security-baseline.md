@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: d27abfda789a9bb1bd5479b059355703388333f8
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 7dc0913ab206c6b9152d7d6155642c28b430d6f2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86520648"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836328"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps 用の Azure セキュリティ ベースライン
 
@@ -643,7 +643,7 @@ Microsoft では、Azure Logic Apps 用の基になるインフラストラク�
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: ロジック アプリの管理、編集、表示など、特定のタスクの実行を特定のユーザーまたはグループのみに許可することができます。 それらのアクセス許可を制御するには、カスタマイズされたロールまたは組み込みロールを Azure サブスクリプションのメンバーに割り当てることができるように、Azure のロールベースのアクセス制御 (RBAC) を使用します。
+**ガイダンス**: ロジック アプリの管理、編集、表示など、特定のタスクの実行を特定のユーザーまたはグループのみに許可することができます。 それらのアクセス許可を制御するには、カスタマイズされたロールまたは組み込みロールを Azure サブスクリプションのメンバーに割り当てることができるように、Azure のロールベースのアクセス制御 (Azure RBAC) を使用します。
 - ロジック アプリの共同作成者: ロジック アプリを管理できますが、アクセス権を変更することはできません。
 - ロジック アプリのオペレーター: ロジック アプリの読み取り、有効化、無効化ができますが、編集または更新はできません。
 
@@ -841,7 +841,7 @@ Azure Resource Graph を使用して、サブスクリプション内のリソ�
 
 * [Azure Policy を構成して管理する方法](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy を使用して特定のリソースの種類を拒否する方法](/azure/governance/policy/samples/not-allowed-resource-types)
+* [Azure Policy を使用して特定のリソースの種類を拒否する方法](../governance/policy/samples/index.md)
 
 **Azure Security Center の監視**: 該当なし
 
@@ -1021,7 +1021,7 @@ Azure Policy を使用して、Azure Logic Apps インスタンスの標準の�
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10:オペレーティング システムの自動構成監視を実装する
 
-**ガイダンス**:適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
+**ガイダンス**: 適用できません。このガイドラインは、コンピューティング リソースを対象にしています。
 
 **Azure Security Center の監視**: 該当なし
 

@@ -1,22 +1,22 @@
 ---
 title: 地域ごとの支払いの詳細 - Microsoft コマーシャル マーケットプレース
-description: 支払いの送金に要する概算時間、および支払いを受けることができる Microsoft ネットショップが、お住まいの国または地域および支払い受取口座の種類によってどのように異なるかについて説明します。
+description: 支払いの送金の推定所要時間、および支払いを受けることができる Microsoft ネットショップが、お住まいの国/地域および支払い受取口座の種類によってどのように異なるかについて説明します。
 author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 44246fa122b7c602e47c44e48c43c2a42d01de77
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f5614da7eac0717894d2bcb3c9cfdd959cb57f72
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327329"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607275"
 ---
 # <a name="payment-thresholds-methods-and-time-frames"></a>支払いのしきい値、方法、期間
 
-支払いの送金に要する概算時間、および支払いを受けることができるネットショップは、お住まいの国または地域および支払い受取口座の種類によって異なります。 この記事では、それぞれの国と地域でサポートされている支払い方法の概要について説明します。
+支払いの送金の推定所要時間、および支払いを受けることができるオンライン ストアは、お住まいの国/地域および支払い受取口座の種類によって異なります。 この記事では、それぞれの国と地域でサポートされている支払い方法の概要について説明します。
 
 国や地域によっては、ACH/SEPA または電信送金を使用して支払われます。 一部の国および地域では、支払い方法として PayPal もサポートされています。
 

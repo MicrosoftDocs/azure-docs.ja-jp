@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: sgilley
 ms.author: nilsp
 author: NilsPohlmann
-ms.date: 12/05/2019
+ms.date: 8/14/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0a8bb3ff3d1fc36d4213c6d1a8ea402833bd915e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 8b6ed41333a0ea113d939ab79bd9e9291a0dae9c
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852941"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244041"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Azure Machine Learning SDK で機械学習パイプラインを作成して管理する
 
@@ -30,7 +30,7 @@ ML タスクの CI/CD オートメーションには [Azure パイプライン](
 
 作成した ML パイプラインは、Azure Machine Learning [ワークスペース](how-to-manage-workspace.md)のメンバーであれば見ることができます。 
 
-ML パイプラインでは、そのパイプラインに関連付けられている中間および最終データの計算と格納に、リモート コンピューティング先が使用されます。 それらでは、サポートされている [Azure Storage](https://docs.microsoft.com/azure/storage/) の場所に対してデータを読み取ったり書き込んだりすることができます。
+ML パイプラインによって、そのパイプラインに関連付けられる計算および一時データについて、リモート コンピューティング先が使用されます。 それらでは、サポートされている [Azure Storage](https://docs.microsoft.com/azure/storage/) の場所に対してデータを読み取ったり書き込んだりすることができます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に無料アカウントを作成してください。 [無料版または有料版の Azure Machine Learning](https://aka.ms/AMLFree) をお試しください。
 
@@ -119,7 +119,7 @@ output_data1 = PipelineData(
 
 ## <a name="set-up-a-compute-target"></a>コンピューティング ターゲットを設定する
 
-Azure Machine Learning での "__コンピューティング__" (または "__コンピューティング先__") という用語は、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。   コンピューティング先の完全な一覧、およびコンピューティング先を作成してワークスペースにアタッチする方法については、[モデルのトレーニング用のコンピューティング先](how-to-set-up-training-targets.md)に関する記事をご覧ください。  コンピューティング先を作成またはアタッチするプロセスは、モデルをトレーニングするときも、パイプラインのステップを実行するときも同じです。 コンピューティング先を作成してアタッチした後、[パイプラインのステップ](#steps)では `ComputeTarget` オブジェクトを使用します。
+Azure Machine Learning での "__コンピューティング__" (または "__コンピューティング先__") という用語は、機械学習パイプラインで計算ステップを実行するマシンまたはクラスターのことです。 コンピューティング先の完全な一覧、およびコンピューティング先を作成してワークスペースにアタッチする方法については、[モデルのトレーニング用のコンピューティング先](how-to-set-up-training-targets.md)に関する記事をご覧ください。 コンピューティング先を作成またはアタッチするプロセスは、モデルをトレーニングするときも、パイプラインのステップを実行するときも同じです。 コンピューティング先を作成してアタッチした後、[パイプラインのステップ](#steps)では `ComputeTarget` オブジェクトを使用します。
 
 > [!IMPORTANT]
 > コンピューティング先での管理操作の実行は、リモート ジョブの内部からはサポートされていません。 機械学習パイプラインはリモート ジョブとして送信されるため、パイプラインの内部からはコンピューティング先での管理操作を使用しないでください。
@@ -269,27 +269,93 @@ except ComputeTargetException:
 > [!TIP]
 > Azure Machine Learning パイプラインは、Data Lake Analytics アカウントの既定のデータ ストアに格納されたデータのみ使用できます。 使用する必要があるデータが既定以外のストアにある場合は、[`DataTransferStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) を使用して、トレーニングの前にデータをコピーできます。
 
+## <a name="configure-the-training-runs-environment"></a>トレーニングの実行環境を構成する
+
+次のステップでは、リモート トレーニングの実行に、トレーニング ステップで必要なすべての依存関係があることを確認します。 依存関係とランタイム コンテキストは、`RunConfiguration` オブジェクトを作成して構成することによって設定されます。 
+
+```python
+from azureml.core.runconfig import RunConfiguration
+from azureml.core.conda_dependencies import CondaDependencies
+from azureml.core import Environment 
+
+aml_run_config = RunConfiguration()
+# `compute_target` as defined in "Azure Machine Learning compute" section above
+aml_run_config.target = compute_target
+
+USE_CURATED_ENV = True
+if USE_CURATED_ENV :
+    curated_environment = Environment.get(workspace=ws, name="AzureML-Tutorial")
+    aml_run_config.environment = curated_environment
+else:
+    aml_run_config.environment.python.user_managed_dependencies = False
+    
+    # Add some packages relied on by data prep step
+    aml_run_config.environment.python.conda_dependencies = CondaDependencies.create(
+        conda_packages=['pandas','scikit-learn'], 
+        pip_packages=['azureml-sdk', 'azureml-dataprep[fuse,pandas]'], 
+        pin_sdk_version=False)
+```
+
+上記のコードは、依存関係を処理するための 2 つのオプションを示しています。 表示されているとおり、`USE_CURATED_ENV = True` の場合、その構成はキュレートされた環境に基づいています。 キュレートされた環境は、共通の相互依存ライブラリを使用して "あらかじめベイク" されており、オンラインになるまでにかかる時間が大幅に短縮されます。 キュレートされた環境には、[Microsoft Container Registry](https://hub.docker.com/publishers/microsoftowner) にあらかじめビルドされた Docker イメージが用意されています。 `USE_CURATED_ENV` を `False` に変更した場合にたどるパスは、依存関係を明示的に設定するためのパターンを示します。 このシナリオでは、新しいカスタム Docker イメージが作成され、リソース グループ内の Azure Container Registry に登録されます (「[Azure のプライベート Docker コンテナー レジストリの概要](https://docs.microsoft.com/azure/container-registry/container-registry-intro)」を参照してください)。 このイメージのビルドと登録には数分かかることがあります。
+
 ## <a name="construct-your-pipeline-steps"></a><a id="steps"></a>パイプラインのステップを構築する
 
-コンピューティング先を作成してワークスペースにアタッチした後は、パイプラインのステップを定義できます。 Azure Machine Learning SDK では、多くの組み込みステップを使用できます。 最も基本的なステップは、指定したコンピューティング先で Python スクリプトを実行する [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) です。
+コンピューティング リソースと環境を作成したら、パイプラインのステップを定義する準備は完了です。 Azure Machine Learning SDK を介して使用できる組み込みの手順は多数あります。[`azureml.pipeline.steps` パッケージのリファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)を参照してください。 最も柔軟性の高いクラスは、Python スクリプトを実行する [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) です。
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
 
+dataprep_source_dir = "./dataprep_src"
+entry_point = "prepare.py"
+
+# `my_dataset` as defined above
 ds_input = my_dataset.as_named_input('input1')
 
-trainStep = PythonScriptStep(
-    script_name="train.py",
+# `output_data1`, `compute_target`, `aml_run_config` as defined above
+data_prep_step = PythonScriptStep(
+    script_name=entry_point,
+    source_directory=dataprep_source_dir,
     arguments=["--input", ds_input.as_download(), "--output", output_data1],
     inputs=[ds_input],
     outputs=[output_data1],
     compute_target=compute_target,
-    source_directory=project_folder,
+    runconfig=aml_run_config,
     allow_reuse=True
 )
 ```
 
-共同環境でパイプラインを使用する際は、前の結果 (`allow_reuse`) の再利用が鍵となります。不要な再実行を除去することで機敏性が提供されるからです。 ステップの script_name、inputs、およびパラメーターが同じままのときは、再利用が既定の動作になります。 ステップの出力が再使用されると、ジョブはコンピューティングに送信されず、代わりに、前の実行の結果が、次のステップの実行ですぐに使用可能になります。 `allow_reuse` が false に設定されている場合は、パイプライン実行中、このステップの新規実行が常に生成されます。 
+上記のコードには、一般的な初期パイプライン ステップが表示されます。 データ準備コードはサブディレクトリにあります (この例では、ディレクトリ `"./dataprep.src"` にある `"prepare.py"`)。 パイプライン作成プロセスの一環として、このディレクトリが圧縮され、`compute_target` にアップロードされ、`script_name`の値として指定されたスクリプトがステップによって実行されます。
+
+`arguments`、`inputs`、および `outputs` の値によって、ステップの入力と出力が指定されます。 上の例で、ベースライン データは `my_dataset` データセットです。 対応するデータはコードにより `as_download()` と指定されているので、コンピューティング リソースにダウンロードされます。 スクリプト `prepare.py` により、目下のタスクに適したデータ変換タスクが行われ、データが `PipelineData` 型の `output_data1` に出力されます。 詳細については、「[ML パイプラインのステップ間でのデータの移動 (Python)](how-to-move-data-in-out-of-pipelines.md)」を参照してください。 
+
+このステップは、構成 `aml_run_config` を使用して `compute_target` によって定義されたコンピューターで実行されます。 
+
+共同環境でパイプラインを使用する際は、前の結果 (`allow_reuse`) の再利用が鍵となります。不要な再実行を除去することで機敏性が提供されるからです。 ステップの script_name、inputs、およびパラメーターが同じままのときは、再利用が既定の動作になります。 再利用が許可された場合、前回の実行の結果はすぐに次のステップに送信されます。 `allow_reuse` が `False` に設定されている場合は、パイプライン実行中、このステップの新規実行が常に生成されます。
+
+1 つのステップでパイプラインを作成することも可能ですが、ほとんどの場合は、プロセス全体をいくつかのステップに分割することを選択します。 たとえば、データの準備、トレーニング、モデルの比較、およびデプロイ用のステップを用意します。 たとえば、上記で `data_prep_step` を指定したら、次のステップはトレーニングとなることが想定できます。
+
+```python
+train_source_dir = "./train_src"
+train_entry_point = "train.py"
+
+training_results = PipelineData(
+    "training_results",
+    datastore=def_blob_store,
+    output_name="training_results")
+
+train_step = PythonScriptStep(
+    script_name=train_entry_point,
+    source_directory=train_source_dir,
+    arguments=["--prepped_data", output_data1, "--training_results", training_results],
+    inputs=[output_data1],
+    outputs=[training_results],
+    compute_target=compute_target,
+    runconfig=aml_run_config,
+    allow_reuse=True
+)
+```
+
+上記のコードは、データの準備のステップの場合とよく似ています。 トレーニングのコードは、データの準備のコードとは別のディレクトリにあります。 データの準備のステップの `PipelineData` 出力である `output_data1` は、トレーニング ステップへの "_入力_" として使用されます。 新しい `PipelineData` オブジェクトである `training_results` が作成され、これによって、その後の比較またはデプロイのステップの結果が保持されます。 
 
 ステップを定義した後は、それらのステップの一部またはすべてを使用してパイプラインをビルドします。
 
@@ -297,13 +363,13 @@ trainStep = PythonScriptStep(
 > ステップを定義するとき、またはパイプラインを構築するときに、ファイルまたはデータが Azure Machine Learning にアップロードされることはありません。
 
 ```python
-# list of steps to run
-compareModels = [trainStep, extractStep, compareStep]
+# list of steps to run (`compare_step` definition not shown)
+compare_models = [data_prep_step, train_step, compare_step]
 
 from azureml.pipeline.core import Pipeline
 
 # Build the pipeline
-pipeline1 = Pipeline(workspace=ws, steps=[compareModels])
+pipeline1 = Pipeline(workspace=ws, steps=[compare_models])
 ```
 
 次の例では、作成済みの Azure Databricks コンピューティング先を使用します。 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 80a38c069f937783b60ede46bc4319253798ff44
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: c5afd7d912142dd8556e71ba9e0a522b2fa0da1c
+ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87431646"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88684594"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>サーバーでレンダリングされた Next.js の Web サイトを Azure Static Web Apps プレビューにデプロイする
 
@@ -57,7 +57,7 @@ Next.js CLI を使用してアプリを作成するのではなく、既存の N
     npm run dev
     ```
 
-<http://localhost:3000> に移動してアプリを開きます。いつも使用しているブラウザーで、次の Web サイトが開かれます。
+`http://localhost:3000` に移動してアプリを開きます。いつも使用しているブラウザーで、次の Web サイトが開かれます。
 
 :::image type="content" source="media/deploy-nextjs/start-nextjs-app.png" alt-text="Next.js アプリを開始する":::
 

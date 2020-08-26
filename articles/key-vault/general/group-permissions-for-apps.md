@@ -1,21 +1,21 @@
 ---
 title: アプリケーションに Azure のキー コンテナーへのアクセス許可を付与する - Azure Key Vault | Microsoft Docs
-description: さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する方法を説明します。
+description: サービス プリンシパルを手動で登録し、アクセス制御ポリシーを使用して Azure Key Vault へのアクセスを提供する方法について説明します。Azure Key Vault へのアクセスは、場合によっては必要になります。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8369c507ee7a9e11969c17bbaac7c6e31892e196
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: d0607b1adb76fd32ce9f4dc9ebede92c7aa96862
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87406250"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88588757"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>アクセス制御ポリシーを使用して Key Vault の認証を提供する
 

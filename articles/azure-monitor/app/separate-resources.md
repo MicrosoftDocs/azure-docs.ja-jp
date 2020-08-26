@@ -3,12 +3,12 @@ title: Application Insights のデプロイを設計する方法 - 1 つまた�
 description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 4f539862432fcdc67632e91caadf71d6584fbc3e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87420568"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258724"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>デプロイする必要がある Application Insights リソースの数
 
@@ -41,7 +41,7 @@ Web アプリに対する Application Insights の監視を設定するときは
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> 動的なインストルメンテーション キー
 
-運用の次の段階のコードを開発するときに変更しやすくするために、ikey を構成ファイルではなくコード内に設定します。
+運用の段階が変わるときのコードの ikey の変更を容易にするには、値をハードコードしたり静的な値は使用したりせずに、コードでそのキーが動的に参照されるようにしてください。
 
 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 

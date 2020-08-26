@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Citrix ShareFile の統合 | Microsoft Docs'
 description: Azure Active Directory と Citrix ShareFile の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: e14fc310-bac4-4f09-99ef-87e5c77288b6
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c535b6610b569c4d3649f3d97428b2c97d0db91
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 0535363165ccda83759a21bff1773280e60fe73c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86168186"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542600"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>チュートリアル: Azure Active Directory と Citrix ShareFile の統合
 

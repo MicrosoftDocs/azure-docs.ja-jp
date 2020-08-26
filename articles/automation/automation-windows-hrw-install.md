@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 634f200280a85ff865741cd03905101ff1e5c19f
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 90b16f10cfa94ce427a9f6249c72842f8ef6278a
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448041"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270582"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -138,9 +138,15 @@ PowerShell コマンドライン シェルで、ダウンロードしたスク�
 スクリプトの実行後、Azure での認証が求められます。 サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用してサインインする必要があります。
 
 ```powershell-interactive
-.\New-OnPremiseHybridWorker.ps1 -AutomationAccountName <nameOfAutomationAccount> -AAResourceGroupName <nameOfResourceGroup>`
--OMSResourceGroupName <nameOfOResourceGroup> -HybridGroupName <nameOfHRWGroup> `
--SubscriptionID <subscriptionId> -WorkspaceName <nameOfLogAnalyticsWorkspace>
+$NewOnPremiseHybridWorkerParameters = @{
+  AutomationAccountName = <nameOfAutomationAccount>
+  AAResourceGroupName   = <nameOfResourceGroup>
+  OMSResourceGroupName  = <nameOfResourceGroup>
+  HybridGroupName       = <nameOfHRWGroup>
+  SubscriptionID        = <subscriptionId>
+  WorkspaceName         = <nameOfLogAnalyticsWorkspace>
+}
+.\New-OnPremiseHybridWorker.ps1 @NewOnPremiseHybridWorkerParameters
 ```
 
 ### <a name="step-4---install-nuget"></a>手順 4 - NuGet をインストールする

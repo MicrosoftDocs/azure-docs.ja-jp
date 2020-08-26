@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 07/28/2020
-ms.openlocfilehash: 33f87bf6f030adb48f2c4f8eb45027c1b298d812
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: c36a8e6f2e104d91bd7738849918c46802cd0dca
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419718"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225935"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Azure SQL Database におけるエラスティック プールを利用した複数のデータベースの管理およびスケーリング
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -113,11 +113,11 @@ DB1 と類似する使用パターンを持つデータベースが他にもあ�
 
 DTU ベースの購入モデルの場合:
 
-MAX (<*DB の合計数* X *DB あたりの平均 DTU 使用率*>、<*同時のピーク DB の数* X *DB あたりのピーク DTU 使用率* )
+MAX(<*DB の合計数* X *DB あたりの平均 DTU 使用率*>, <*同時にピークとなる DB の数* X *DB あたりのピーク DTU 使用率*>)
 
 仮想コアベースの購入モデルの場合:
 
-MAX (<*DB の合計数* X *DB あたりの平均 vCore 使用率*>、<*同時のピーク DB の数* X *DB あたりのピーク vCore 使用率* )
+MAX(<*DB の合計数* X *DB あたりの平均 vCore 使用率*>, <*同時にピークとなる DB の数* X *DB あたりのピーク vCore 使用率*>)
 
 2. プール内のすべてのデータベースに必要なバイト数を追加することで、プールに必要なストレージ領域を見積もります。 次に、このストレージの容量を提供する eDTU プール サイズを決定します。
 3. DTU ベースの購入モデルの場合、手順 1 と手順 2 の eDTU の見積もりのうち、大きい方を使用します。 仮想コアベースの購入モデルの場合、手順 1 の vCore の見積もりを使用します。

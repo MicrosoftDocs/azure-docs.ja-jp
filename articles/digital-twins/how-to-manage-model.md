@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 64c7db4223fcb703272749b0bf8d5b1583fbb818
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.openlocfilehash: 919db9338917a9c2bedd7806eb251a2e5ef6187b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87987326"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509996"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Azure Digital Twins のモデルを管理する
 
@@ -174,7 +174,7 @@ Pageable<ModelData> pmd4 = client.GetModels(new string[] { modelId }, true);
 
 これらは別の機能であり、互いに影響を与えることはありませんが、一緒に使用してモデルを段階的に削除することもできます。 
 
-### <a name="decommissioning"></a>使用停止
+#### <a name="decommissioning"></a>使用停止
 
 モデルの使用を停止するコードを次に示します。
 

@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 1ae93dad9a18c18e330b4ff65924dd1db7a1faf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b1da644d8aca0b197e21ec03c7d0ac0b454f92a9
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515246"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926299"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 に格納されているデータのセキュリティ保護
 Azure Data Lake Storage Gen1 のデータをセキュリティで保護するには 3 つの手順が必要です。  ユーザーとセキュリティ グループに対してデータへのアクセスを完全に有効にするには、ロールベースのアクセス制御 (RBAC) とアクセス制御リスト (ACL) の両方を設定する必要があります。
 
-1. まず、Azure Active Directory (AAD) でセキュリティ グループを作成します。 これらのセキュリティ グループを使用して、Azure Portal でロールベースのアクセス制御 (RBAC) を実装します。 詳細については、[Microsoft Azure でのロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
+1. まず、Azure Active Directory (AAD) でセキュリティ グループを作成します。 Azure portal で、これらのセキュリティ グループを使用して、Azure ロールベースのアクセス制御 (Azure RBAC) を実装します。 詳細については、[Azure RBAC](../role-based-access-control/role-assignments-portal.md) に関するページを参照してください。
 2. AAD セキュリティ グループを Data Lake Storage Gen1 アカウントに割り当てます。 これにより、ポータルから Data Lake Storage Gen1 アカウントへのアクセス、およびポータルまたは API による管理操作が制御されます。
 3. AAD セキュリティ グループをアクセス制御リスト (ACL) として Data Lake Storage Gen1 ファイル システムに割り当てます。
 4. さらに、Data Lake Storage Gen1 内のデータにアクセスできるクライアントの IP アドレスの範囲を設定することもできます。
@@ -155,4 +155,3 @@ Data Lake Storage Gen1 ファイル システムからセキュリティ グル�
 * [PowerShell で Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-powershell.md)
 * [.NET SDK で Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-net-sdk.md)
 * [Data Lake Storage Gen1 の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)
-

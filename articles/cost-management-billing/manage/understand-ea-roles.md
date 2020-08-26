@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 08/14/2020
 ms.author: banders
-ms.openlocfilehash: 8a4705a68b0b96a8f95cc2356cda454fdef65054
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: b712a212a12cadb10473b9e4751239a48bf5cdc7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87531491"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245980"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Azure エンタープライズ ロールの管理
 

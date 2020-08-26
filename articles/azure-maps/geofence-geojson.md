@@ -1,6 +1,6 @@
 ---
 title: ジオフェンスの GeoJSON データ形式 | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps の GET Geofence および POST Geofence API で使用できるジオフェンス データの準備方法について説明します。
+description: Azure Maps のジオフェンス データについて説明します。 ジオフェンスを基準とした座標の位置を取得するときに、GET Geofence API と POST Geofence API を使用する方法を確認してください。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 924c23f0fb0156ff585872dded72932a1574a12d
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 27a2fee04afc559a8564aea5e112de07e9c0dcf6
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131307"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037407"
 ---
 # <a name="geofencing-geojson-data"></a>GeoJSON データのジオフェンシング
 
@@ -30,12 +30,12 @@ Azure Maps の [GET Geofence](/rest/api/maps/spatial/getgeofence) および [POS
 * `expiredTime` は、ジオフェンシング データの期限切れ日時です。 要求に含まれる `userTime` の値がこの値より後の場合、対応するジオフェンス データは期限切れデータと見なされ、クエリは実行されません。 その場合、このジオフェンス データの geometryId が、ジオフェンス応答内の `expiredGeofenceGeometryId` 配列に格納されます。
 * `validityPeriod` は、ジオフェンスの有効期間のリストです。 要求に含まれる `userTime` の値が有効期間の範囲外の場合、対応するジオフェンス データは無効と見なされ、クエリは実行されません。 このジオフェンス データの geometryId は、ジオフェンス応答内の `invalidPeriodGeofenceGeometryId` 配列に格納されます。 validityPeriod 要素のプロパティを次の表に示します。
 
-| 名前 | Type | 必須  | 説明 |
+| Name | Type | 必須  | Description |
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datetime  | true | 有効期間の開始日時。 |
 | endTime   | Datetime  | true |  有効期間の終了日時。 |
-| recurrenceType | string | false |   期間の繰り返しの種類。 値は、`Daily`、`Weekly`、`Monthly`、`Yearly` のいずれかです。 既定値は `Daily` です。|
-| businessDayOnly | Boolean | false |  データが営業日のみ有効かどうかを示します。 既定値は `false` です。|
+| recurrenceType | string | false |   期間の繰り返しの種類。 値は、`Daily`、`Weekly`、`Monthly`、`Yearly` のいずれかです。 既定値は `Daily`にする必要があります。|
+| businessDayOnly | Boolean | false |  データが営業日のみ有効かどうかを示します。 既定値は `false`にする必要があります。|
 
 
 * すべての座標値は、`WGS84` で定義されているように、[経度, 緯度] として表されます。

@@ -4,14 +4,14 @@ description: Azure portal または CLI を使用して、メトリック アラ
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 08/11/2020
 ms.subservice: alerts
-ms.openlocfilehash: c040958d9518485bc5d583fc01aedd50d5c6e57a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321124"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065864"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してメトリック アラートを作成、表示、管理する
 
@@ -88,6 +88,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 6. **[完了]** をクリックして編集内容を保存します。
 
+
 ## <a name="with-azure-cli"></a>Azure CLI の場合
 
 前のセクションでは、Azure portal を使用してメトリック アラート ルールを作成、表示、および管理する方法について説明しました。 このセクションでは、クロスプラットフォームの [Azure CLI](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使用して同じ操作を行う方法について説明します。 Azure CLI の使用を開始する最も簡単な方法は、[Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest) を使用することです。 この記事では、Cloud Shell を使用します。
@@ -133,6 +134,23 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
     ```azurecli
     az monitor metrics alert delete -g {ResourceGroup} -n {AlertRuleName}
     ```
+
+## <a name="with-powershell"></a>PowerShell の場合
+
+メトリック アラート ルールでは、専用の PowerShell コマンドレットを使用できます。
+
+- [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2):新しいメトリック アラート ルールを作成するか、既存のものを更新します。
+- [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2):1 つまたは複数のメトリック アラート ルールを取得します。
+- [Remove-AzMetricAlertRuleV2](/powershell/module/az.monitor/remove-azmetricalertrulev2):メトリック アラート ルールを削除します。
+
+## <a name="with-rest-api"></a>REST API を使用する
+
+- [作成または更新](/rest/api/monitor/metricalerts/createorupdate):新しいメトリック アラート ルールを作成するか、既存のものを更新します。
+- [取得](/rest/api/monitor/metricalerts/get):特定のメトリック アラート ルールを取得します。
+- [リソース グループ別の一覧表示](/rest/api/monitor/metricalerts/listbyresourcegroup):特定のリソース グループ内のメトリック アラート ルールの一覧を取得します。
+- [サブスクリプション別の一覧表示](/rest/api/monitor/metricalerts/listbysubscription):特定のサブスクリプション内のメトリック アラート ルールの一覧を取得します。
+- [更新](/rest/api/monitor/metricalerts/update):メトリック アラート ルールを更新します。
+- [[削除]](/rest/api/monitor/metricalerts/delete):メトリック アラート ルールを削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

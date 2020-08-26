@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Mind Tools Toolkit の統合 | Microsoft Docs
 description: Azure Active Directory と Mind Tools Toolkit の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 65b2979d-9e2f-4530-bc08-546975269ebc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0c1cab94a6b83ca429fd640759bed8af0ae881
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 10773a2a379291fa861dbb2adfdda2ba3f63117f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124858"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550641"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>チュートリアル:Azure Active Directory と Mind Tools Toolkit の統合
 

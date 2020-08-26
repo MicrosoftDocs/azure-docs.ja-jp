@@ -16,12 +16,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a0ee226fcddb3bfc216e1e160b5571fde59a41
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: da5cefbacbd3851d2609a687c1948d9bcba5ffae
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807589"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612471"
 ---
 # <a name="post-configuration-tasks-for-hybrid-azure-ad-join"></a>ハイブリッド Azure AD 参加の構成後のタスク
 
@@ -87,9 +87,6 @@ Azure AD への登録のため、組織ネットワーク内のコンピュー�
 ## <a name="10-configure-group-policy-to-allow-device-registration"></a>10.デバイスの登録を許可するグループ ポリシーを構成する
 
 個別のデバイスにハイブリッド Azure AD への参加を許可する方法の詳細については、「[ハイブリッド Azure AD 参加の検証を制御する](../devices/hybrid-azuread-join-control.md)」を参照してください。
-
-> [!NOTE]
-> 2012R2 のポリシーの設定は、 **[コンピューターの構成] > [ポリシー] > [管理用テンプレート] > [Windows コンポーネント] > [社内参加] > [Automatically workplace join client computers]\(自動的にクライアント コンピューターをワークプレースに参加させる\)** にあります。
 
 ## <a name="next-steps"></a>次のステップ
 [デバイス ライトバックの構成](how-to-connect-device-writeback.md)

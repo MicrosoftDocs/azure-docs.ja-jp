@@ -1,17 +1,17 @@
 ---
 title: Avere vFXT をマウントする - Azure
-description: Avere vFXT for Azure でクライアントをマウントする方法
+description: Avere vFXT for Azure で vFXT クラスターにクライアントを接続する方法と、クラスター ノード間でクライアント トラフィックを負荷分散する方法について説明します。
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: how-to
 ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: e8850162847f2dd416b0951a797e2eb0cd7d55d2
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: 44a4e1293bc4c5a54e1e345d5cf95ba307a7b120
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229569"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272573"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Avere vFXT クラスターをマウントする
 

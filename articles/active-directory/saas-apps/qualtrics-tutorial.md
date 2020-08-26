@@ -2,24 +2,21 @@
 title: チュートリアル:Azure Active Directory と SAP Qualtrics の統合 | Microsoft Docs
 description: Azure Active Directory と SAP Qualtrics の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4df889ab-2685-4d15-a163-1ba26567eeda
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
-ms.openlocfilehash: 2e27d020bd25f234d084fba770e234bdccb40a99
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.openlocfilehash: 170997099f1194bbc75d6d61a7c29fc1d18b462a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81682388"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552219"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と SAP Qualtrics の統合
 

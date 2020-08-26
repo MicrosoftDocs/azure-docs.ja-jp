@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/06/2019
-ms.openlocfilehash: 45bfba5b0ab25aa9930719f136428ccc0df5014d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 211dce8a2810d9eb07bf0f388753afd50add4945
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85263563"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87919958"
 ---
 # <a name="use-azure-cosmos-db-resource-tokens-with-the-gremlin-sdk"></a>Gremlin SDK で Azure Cosmos DB リソース トークンを使用する
 
@@ -102,5 +102,5 @@ builder.authProperties(authenticationProperties);
 アプリケーションでリソース トークン使用中に発生する一般的なエラーは、"Insufficient permissions provided in the authorization header for the corresponding request. Please retry with another authorization header." (対応する要求の認証ヘッダーに与えられているアクセス許可が不十分です。別の認証ヘッダーを使用して再試行してください。) です。 Gremlin トラバーサルでエッジまたは頂点の書き込みが試みられたが、リソース トークンからは*読み取り*アクセス許可しか付与されていない場合、このエラーが返されます。 次のステップのいずれかが含まれているかどうかを確認するために、ご利用のトラバーサルを調べてください: *.addV()* 、 *.addE()* 、 *.drop()* 、 *.property()* 。
 
 ## <a name="next-steps"></a>次のステップ
-* Azure Cosmos DB の[ロールベースのアクセス制御](role-based-access-control.md)
+* Azure Cosmos DB の [Azure ロールベースのアクセス制御 (Azure RBAC)](role-based-access-control.md)
 * Azure Cosmos DB の[データへのアクセスをセキュリティで保護する方法](secure-access-to-data.md)

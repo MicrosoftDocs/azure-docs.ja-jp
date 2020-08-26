@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2020
 ms.author: memildin
-ms.openlocfilehash: f80403946b3097e81678383c4829ef6606f26cd6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.openlocfilehash: 9594e1ed14b017591ea2c4ddda59ba61feb81b0c
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87430360"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272282"
 ---
 # <a name="enhanced-secure-score-in-azure-security-center"></a>Azure Security Center の強化されたセキュリティ スコア
 
@@ -140,7 +140,7 @@ Secure Scores API を使用して構築されたツールの例については�
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">アクセスおよびアクセス許可の管理 (最大スコア 4)</p></strong>セキュリティ プログラムの中核となるのは、ユーザーがそのジョブを実行するために必要なアクセスを付与しても、それ以上の権利を付与しないことです。つまり、<a href="https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models">最小限の特権モデル</a>に従う必要があります。<br>リソースへのアクセスを制御するには、<a href="https://docs.microsoft.com/azure/role-based-access-control/overview">ロールベースのアクセス制御 (RBAC)</a> を使用してロールの割り当てを作成します。 ロールの割り当ては、次の 3 つの要素で構成されます。<br>- <strong>セキュリティ プリンシパル</strong>: ユーザーがアクセスを要求するオブジェクト<br>- <strong>ロールの定義</strong>: ユーザーのアクセス許可<br>- <strong>スコープ</strong>: アクセス許可が適用される一連のリソース</td>
-    <td class="tg-lboi"; width=55%>- 非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 書き込みアクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 複数の所有者がサブスクリプションに割り当てられている必要があります<br>- Kubernetes サービスではロールベースのアクセス制御 (RBAC) を使用する必要があります (プレビュー)<br>- Service Fabric クラスターでは、クライアント認証に Azure Active Directory のみを使用する必要があります</td>
+    <td class="tg-lboi"; width=55%>- 非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある非推奨のアカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 所有者アクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 書き込みアクセス許可がある外部アカウントは、お使いのサブスクリプションから削除する必要があります (プレビュー)<br>- 複数の所有者がサブスクリプションに割り当てられている必要があります<br>- Kubernetes サービスではロールベースのアクセス制御 (RBAC) を使用する必要があります (プレビュー)<br>- Service Fabric クラスターでは、クライアント認証に Azure Active Directory のみを使用する必要があります<br>-サブスクリプションを保護するには、管理証明書ではなくサービス プリンシパルを使用する必要があります</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">セキュリティ構成の修復 (最大スコア 4)</p></strong>正しく構成されていない IT 資産は、攻撃の対象となる危険性が高くなります。 資産を展開するときに基本的な強化アクションを忘れてしまいがちですが、期限を満たす必要があります。 インフラストラクチャでのセキュリティ構成の誤りは、オペレーティング システムやネットワーク アプライアンスからクラウド リソースまでどのレベルでも起こり得ることです。<br>Azure Security Center では、リソースの構成が業界標準、規制、ベンチマークの要件と継続的に比較されます。 組織にとって重要な関連する "コンプライアンス パッケージ" (標準とベースライン) を構成した場合、何らかのギャップがあると、セキュリティの推奨事項が表示されます。これには、CCEID と、セキュリティへの潜在的な影響に関する説明が含まれます。<br>一般的に使用されるパッケージは、<a href="https://docs.microsoft.com/azure/security/benchmarks/introduction">Azure セキュリティ ベンチマーク</a>と <a href="https://www.cisecurity.org/benchmark/azure/">CIS Microsoft Azure Foundations Benchmark バージョン 1.1.0</a> です</td>

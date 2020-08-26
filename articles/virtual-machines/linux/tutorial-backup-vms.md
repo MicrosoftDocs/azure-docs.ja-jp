@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9dcc1b6f6f3792682f81c0d37ef2046bd1840657
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 1865d307e7b79e7e40b0e98f2dcfa2535b0313fd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86526998"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551709"
 ---
 # <a name="tutorial-back-up-and-restore-files-for-linux-virtual-machines-in-azure"></a>チュートリアル:Azure 内の Linux 仮想マシンのファイルをバックアップおよび復元する
 
@@ -45,7 +45,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 1. [Azure portal](https://portal.azure.com/) にサインインする
 2. 左側のメニューから **[仮想マシン]** を選択します。 
 3. バックアップする VM を一覧から選択します。
-4. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
+4. その VM のブレードの **[操作]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
 5. **[Recovery Services コンテナー]** の **[新規作成]** をクリックして、新しいコンテナーの名前を入力します。 仮想マシンと同じリソース グループで、仮想マシンと同じ場所に新しいコンテナーが作成されます。
 6. **[バックアップ ポリシー]** をクリックします。 この例では、既定値のまま **[OK]** をクリックします。
 7. **[バックアップの有効化]** ブレードの **[バックアップの有効化]** をクリックします。 これで、既定のスケジュールで毎日のバックアップが作成されます。

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2020
 ms.topic: sample
-ms.openlocfilehash: 831f09ecf7550a847c483fbe1678f1e4c3cecb61
-ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
+ms.openlocfilehash: 07055025eff9ab81c7321624daed9b4a6e993a60
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2020
-ms.locfileid: "85052298"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506513"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell スクリプトの例
 
@@ -26,21 +26,21 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 サンプル スクリプトを実行するには、[Azure PowerShell](https://docs.microsoft.com/powershell/azure/) の機能設定が必要です。
 
 1. Azure PowerShell をインストールします。
-    1. 管理者権限で PowerShell を開きます
+    1. 管理者権限で PowerShell ウィンドウを開きます。
     1. `Install-Module -Name Az -AllowClobber` を実行します。
 
 1. スクリプトの実行に関するエラーが発生した場合は、[実行ポリシー](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-6)が適切に設定されていることを確認してください。
-    1. 管理者権限で PowerShell を開きます
+    1. 管理者権限で PowerShell ウィンドウを開きます。
     1. `Set-ExecutionPolicy -ExecutionPolicy Unrestricted` を実行します。
 
 1. [Azure Storage アカウントを準備します](../how-tos/conversion/blob-storage.md#prepare-azure-storage-accounts)
 
 1. Azure Remote Rendering アカウントを含むサブスクリプションにログインします。
-    1. PowerShell を開きます
+    1. PowerShell ウィンドウを開きます。
     1. `Connect-AzAccount` を実行し、画面の指示に従います。
 
-> [!NOTE]
-> 組織に複数のサブスクリプションがある場合は、SubscriptionId および Tenant 引数の指定が必要になることがあります。 詳細については、[Connect-AzAccount のドキュメント](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)を参照してください。
+    > [!NOTE]
+    > 組織に複数のサブスクリプションがある場合は、SubscriptionId および Tenant 引数の指定が必要になることがあります。 詳細については、[Connect-AzAccount のドキュメント](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)を参照してください。
 
 1. [Azure Remote Rendering GithHub リポジトリ](https://github.com/Azure/azure-remote-rendering)から *Scripts* フォルダーをダウンロードします。
 
@@ -88,7 +88,7 @@ Azure Remote Rendering には、次の 2 つの REST API が用意されてい�
 
 **RenderingSession.ps1** を実行する場合は、この構造を入力する必要があります。
 
-- **vmSize:** 仮想マシンのサイズを選択します。 *Standard* または *Premium* を選択します。 不要になったレンダリング セッションをシャットダウンします。
+- **vmSize:** 仮想マシンのサイズを選択します。 [*Standard*](../reference/vm-sizes.md) または [*Premium*](../reference/vm-sizes.md) を選択します。 不要になったレンダリング セッションをシャットダウンします。
 - **maxLeaseTime:** VM をリースする期間です。 リースの有効期限が切れると、シャットダウンされます。 リース時間は後で延長できます (下記参照)。
 
 ### <a name="assetconversionsettings"></a>assetConversionSettings
@@ -189,10 +189,10 @@ Shared Access Signature を生成する必要がないため、変換サービ�
 .\Conversion.ps1
 ```
 
-1. `assetConversionSettings.modelLocation` に格納されているすべてのファイルを、指定した `inputFolderPath` の下の入力 BLOB コンテナーにアップロードします
+1. `assetConversionSettings.modelLocation` に格納されているすべてのファイルを、指定した `inputFolderPath` の下の入力 BLOB コンテナーにアップロードします。
 1. [モデルの変換 REST API](../how-tos/conversion/conversion-rest-api.md) を呼び出して、[モデルの変換](../how-tos/conversion/model-conversion.md)を開始します
-1. 変換が成功または失敗するまで変換ステータスをポーリングします
-1. 変換されたファイルの場所の詳細 (ストレージ アカウント、出力コンテナー、コンテナー内のファイルパス) を出力します
+1. 変換が成功または失敗するまで変換ステータスをポーリングします。
+1. 変換されたファイルの場所の詳細 (ストレージ アカウント、出力コンテナー、コンテナー内のファイルパス) を出力します。
 
 ### <a name="access-to-storage-via-shared-access-signatures"></a>Shared Access Signature 経由のストレージへのアクセス
 
@@ -202,13 +202,13 @@ Shared Access Signature を生成する必要がないため、変換サービ�
 
 リセットすると、以下のようになります。
 
-1. `assetConversionSettings.localAssetDirectoryPath` から入力 BLOB コンテナーにローカル ファイルをアップロードします
-1. 入力コンテナーの SAS URI を生成します
-1. 出力コンテナーの SAS URI を生成します
-1. [モデルの変換 REST API](../how-tos/conversion/conversion-rest-api.md) を呼び出して、[モデルの変換](../how-tos/conversion/model-conversion.md)を開始します
-1. 変換が成功または失敗するまで変換ステータスをポーリングします
-1. 変換されたファイルの場所の詳細 (ストレージ アカウント、出力コンテナー、コンテナー内のファイルパス) を出力します
-1. 出力 BLOB コンテナー内の変換されたモデルに SAS URI を出力します
+1. `assetConversionSettings.localAssetDirectoryPath` から入力 BLOB コンテナーにローカル ファイルをアップロードします。
+1. 入力コンテナーの SAS URI を生成します。
+1. 出力コンテナーの SAS URI を生成します。
+1. [モデルの変換 REST API](../how-tos/conversion/conversion-rest-api.md) を呼び出して、[モデルの変換](../how-tos/conversion/model-conversion.md)を開始します。
+1. 変換が成功または失敗するまで変換ステータスをポーリングします。
+1. 変換されたファイルの場所の詳細 (ストレージ アカウント、出力コンテナー、コンテナー内のファイルパス) を出力します。
+1. 出力 BLOB コンテナー内の変換されたモデルの SAS URI を出力します。
 
 ### <a name="additional-command-line-options"></a>追加のコマンド ライン オプション
 
@@ -249,7 +249,7 @@ Shared Access Signature を生成する必要がないため、変換サービ�
 
 プロセスの個々のステップを実行する場合は、以下を使用できます。
 
-指定された LocalAssetDirectoryPath からのデータのアップロードのみ行います
+指定された LocalAssetDirectoryPath からのデータのアップロードのみ行います。
 
 ```PowerShell
 .\Conversion.ps1 -Upload

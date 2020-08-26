@@ -4,14 +4,14 @@ description: Azure Key Vault で Azure Cosmos DB アカウントのカスタマ�
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 05/19/2020
+ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 443e037f89508b0fc3b01ba90f884c139f4c64be
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 9fa899e0f0de3b263baad7e44ed24d32d735b001
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86027769"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836512"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Azure Key Vault で Azure Cosmos アカウントのカスタマー マネージド キーを構成する
 
@@ -64,6 +64,8 @@ Azure Cosmos DB でカスタマー マネージド キーを使用するには�
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Azure Cosmos DB プリンシパルを選択する":::
 
 1. **[追加]** を選択して新しいアクセス ポリシーを追加します。
+
+1. すべての変更を保存するには、Key Vault インスタンスで **[保存]** を選択します。
 
 ## <a name="generate-a-key-in-azure-key-vault"></a>Azure Key Vault でキーを生成する
 
@@ -228,7 +230,15 @@ Azure Cosmos アカウントで使用されるカスタマー マネージド �
 
   :::image type="content" source="./media/how-to-setup-cmk/portal-akv-rot.png" alt-text="新しいキー バージョンを作成する":::
 
-- アカウントの `keyVaultKeyUri` プロパティを更新して、現在使用されているキーをまったく別のキーに切り替えます。 PowerShell でこれを実行する方法を次に示します。
+- アカウントのキー URI を更新して、現在使用されているキーをまったく別のキーに切り替えます。 Azure portal から、Azure Cosmos アカウントに移動し、左側のメニューから **[データ暗号化]** を選択します。
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="[データ暗号化] のメニュー エントリ":::
+
+    次に、 **[キー URI]** を使用する新しいキーに置き換え、 **[保存]** を選択します。
+
+    :::image type="content" source="./media/how-to-setup-cmk/portal-key-swap.png" alt-text="[キー URI] の更新":::
+
+    PowerShell で同じ結果を実現するには、次のようにします。
 
     ```powershell
     $resourceGroupName = "myResourceGroup"
@@ -287,7 +297,11 @@ Azure Cosmos DB でカスタマー マネージド キー (CMK) を使用して�
 
 ### <a name="how-can-i-tell-if-customer-managed-keys-are-enabled-on-my-azure-cosmos-account"></a>Azure Cosmos アカウントでカスタマー マネージド キーが有効かどうかを確認するにはどうすればよいですか?
 
-プログラムで Azure Cosmos アカウントの詳細をフェッチして、`keyVaultKeyUri` プロパティの存在を確認できます。 [PowerShell で](#using-powershell)、また [Azure CLI を使用して](#using-azure-cli)これを行う方法については、上記を参照してください。
+Azure portal から、Azure Cosmos アカウントに移動し、左側のメニューで **[データ暗号化]** のエントリを探します。このエントリが存在する場合は、カスタマー マネージド キーがアカウントで有効になっています。
+
+:::image type="content" source="./media/how-to-setup-cmk/portal-data-encryption.png" alt-text="[データ暗号化] のメニュー エントリ":::
+
+プログラムで Azure Cosmos アカウントの詳細をフェッチして、`keyVaultKeyUri` プロパティの存在を確認することもできます。 [PowerShell で](#using-powershell)、また [Azure CLI を使用して](#using-azure-cli)これを行う方法については、上記を参照してください。
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>カスタマー マネージド キーはバックアップにどのように影響しますか?
 

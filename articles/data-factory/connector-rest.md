@@ -9,24 +9,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 2657f1998e3ca908bc52166154ac3353e1e5a66b
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: c0a64c0a9653bd274e9298401163ad7abc1af99f
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415037"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852295"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Azure Data Factory を使用して REST エンドポイントからデータをコピーする
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、REST エンドポイントからデータコピーする方法について説明します。 この記事は、コピー アクティビティの概要が説明されている「[Azure Data Factory のコピー アクティビティ](copy-activity-overview.md)」を基に作成されています。
 
-この REST コネクタ、[REST コネクタ](connector-http.md)および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
+この REST コネクタ、[REST コネクタ](connector-http.md)、および [Web テーブル コネクタ](connector-web-table.md)の違いは次のとおりです。
 
 - **REST コネクタ**では、特に RESTful API からのデータのコピーがサポートされています。 
-- **HTTP コネクタ**では一般的に、HTTP エンドポイントからデータを取得します (たとえば、ファイルをダウンロードします)。 この REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
+- **HTTP コネクタ**は、ファイルをダウンロードするなど、任意の HTTP エンドポイントからデータを取得するための一般的なものです。 この REST コネクタが使用可能になる前に、HTTP コネクタを使用して RESTful API からデータをコピーする場合があります。これはサポートされますが、REST コネクタと比べると機能は低くなります。
 - **Web テーブル コネクタ**では、HTML Web ページからテーブルの内容を抽出します。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
@@ -107,7 +107,8 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 | servicePrincipalId | Azure Active Directory アプリケーションのクライアント ID を指定します。 | はい |
 | servicePrincipalKey | Azure Active Directory アプリケーションのキーを指定します。 このフィールドを **SecureString** としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい |
 | tenant | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure portal の右上隅にマウスを置くことで取得します。 | はい |
-| aadResourceId | 認可を要求する AAD リソースを指定します。例: `https://management.core.windows.net`| はい |
+| aadResourceId | 承認を要求しようとしている AAD リソースを指定します。例: `https://management.core.windows.net`。| はい |
+| azureCloudType | サービス プリンシパル認証の場合は、AAD アプリケーションの登録先である Azure クラウド環境の種類を指定します。 <br/> 指定できる値は、**AzurePublic**、**AzureChina**、**AzureUsGovernment**、および **AzureGermany** です。 既定では、データ ファクトリのクラウド環境が使用されます。 | いいえ |
 
 **例**
 
@@ -141,7 +142,7 @@ REST のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| aadResourceId | 認可を要求する AAD リソースを指定します。例: `https://management.core.windows.net`| はい |
+| aadResourceId | 承認を要求しようとしている AAD リソースを指定します。例: `https://management.core.windows.net`。| はい |
 
 **例**
 
@@ -305,7 +306,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 * 次の要求のヘッダー = 現在の応答本文のプロパティ値
 * 次の要求のヘッダー = 現在の応答ヘッダーのヘッダー値
 
-**改ページ位置の自動修正規則**はデータセット内のディクショナリとして定義されます。これには大文字と小文字を区別する 1 つまたは複数のキーと値のペアが含まれます。 構成は 2 番目のページから始まる要求を生成するのに使用されます。 コネクタで HTTP 状態コード 204 (コンテンツなし) が取得されるか、"paginationRules" 内のいずれかの JSONPath 式で null が返されると、繰り返し処理が停止されます。
+**改ページ位置の自動修正規則**はデータセット内のディクショナリとして定義されます。これには、大文字と小文字が区別される、1 つまたは複数のキーと値のペアが含まれます。 構成は 2 番目のページから始まる要求を生成するのに使用されます。 コネクタで HTTP 状態コード 204 (コンテンツなし) が取得されるか、"paginationRules" 内のいずれかの JSONPath 式で null が返されると、繰り返し処理が停止されます。
 
 改ページ位置の自動修正規則で**サポートされるキー**:
 
@@ -319,7 +320,7 @@ REST からのデータ コピーについては、次のプロパティがサ�
 
 | 値 | 説明 |
 |:--- |:--- |
-| Headers.*response_header* または Headers['response_header'] | "response_header" は、現在の HTTP 応答内で 1 つのヘッダー名を参照するユーザー定義で、次の要求を発行するために使用される値です。 |
+| Headers.*response_header* または Headers['response_header'] | "response_header" は、現在の HTTP 応答内で 1 つのヘッダー名を参照するユーザー定義で、その値は、次の要求を発行するために使用されます。 |
 | (応答本文のルートを表す) "$" から始まる JSONPath 式 | 応答本文には、1 つの JSON オブジェクトのみを含める必要があります。 JSONPath 式では、1 つのプリミティブ値が返される必要があります。この値は、次の要求を発行するために使用されます。 |
 
 **例:**
@@ -409,7 +410,7 @@ Facebook Graph API によって、次の構造で応答が返されます。こ�
 
     | プロパティ | 説明 |
     |:--- |:--- |:--- |
-    | URL |OAuth ベアラー トークンの取得元の URL を指定します。 たとえば、この例では https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token です |。 
+    | URL |OAuth ベアラー トークンの取得元の URL を指定します。 たとえば、このサンプルでは https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token です |. 
     | Method | HTTP メソッド。 使用できる値は **Post** と **Get** です。 | 
     | ヘッダー | [ヘッダー] はユーザー定義であり、HTTP 要求内で 1 つのヘッダー名を参照します。 | 
     | Body | HTTP 要求の本文。 | 

@@ -1,18 +1,18 @@
 ---
 title: Azure Virtual WAN の既定の IPsec ポリシー | Microsoft Docs
-description: この記事では、Virtual WAN の IPsec ポリシーに関する情報を提供します。
+description: 既定のイニシエーターとレスポンダーのポリシー、カスタム ポリシーの組み合わせなど、Azure Virtual WAN の IPsec 接続ポリシーについて学習します。
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 877a17327f13e407f86cb3a1a21f051572f74343
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 784f43cfa259ad7bdf161aea8e9b1ce559855db7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "73499720"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213899"
 ---
 # <a name="virtual-wan-default-policies-for-ipsec-connectivity"></a>IPsec 接続のための Virtual WAN の既定のポリシー
 

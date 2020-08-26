@@ -5,17 +5,18 @@ metadata:
   title: Azure Cost Management および Billing
   description: Azure Cost Management および Billing は、Azure の課金の把握、アカウントとサブスクリプションの管理、Azure での支出の監視と制御、リソース使用の最適化に役立ちます。 コストを分析する方法、予算を作成および管理する方法、推奨事項を確認して対処する方法についてご確認ください。
   ms.service: cost-management-billing
+  ms.subservice: common
   ms.topic: landing-page
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.date: 06/01/2020
-  ms.openlocfilehash: c999417f091d82adf09df5d6962de146ef58b285
-  ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+  ms.date: 08/20/2020
+  ms.openlocfilehash: 1d3fafd26b5ad7f92d9280701a386a09f1ad3d22
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/16/2020
-  ms.locfileid: "88257372"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88683132"
 landingContent:
 - title: コストの分析
   linkLists:

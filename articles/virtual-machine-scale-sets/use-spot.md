@@ -8,13 +8,13 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
-ms.custom: jagaveer
-ms.openlocfilehash: 70d7eb000ed2d50bc22bb005621ee7515e5a2a61
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.custom: jagaveer, devx-track-azurecli
+ms.openlocfilehash: de8cfa66d6d52fe16cc40c5df0f41a39fff134fd
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86527457"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832639"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>仮想マシン スケール セット用の Azure スポット VM 
 
@@ -40,6 +40,11 @@ ms.locfileid: "86527457"
 
 ユーザーは、[Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) を通じて VM 内通知を受け取ることができます。 これにより、VM が排除されつつある場合には通知が送られ、排除される前にジョブを完了し、タスクのシャットダウンを実行するために 30 秒が与えられます。 
 
+## <a name="placement-groups"></a>配置グループ
+配置グループは、Azure 可用性セットに似た構造で、独自の障害ドメインとアップグレード ドメインが備わっています。 既定では、スケール セットは、最大サイズが 100 個の VM である 1 つの配置グループで構成されます。 `singlePlacementGroup` というスケール セット プロパティが *false* に設定されている場合、そのスケール セットは、複数の配置グループで構成することができ、0 ～ 1,000 個の VM が含まれます。 
+
+> [!IMPORTANT]
+> HPC で Infiniband を使用している場合を除き、リージョンまたはゾーン全体でのスケーリングを向上させるため、スケール セットのプロパティ `singlePlacementGroup` を *false* に設定して複数の配置グループを有効にすることを強くお勧めします。 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>スケール セットへのスポット VM のデプロイ
 
@@ -64,6 +69,7 @@ az vmss create \
     --name myScaleSet \
     --image UbuntuLTS \
     --upgrade-policy-mode automatic \
+    --single-placement-group false \
     --admin-username azureuser \
     --generate-ssh-keys \
     --priority Spot \
@@ -89,14 +95,26 @@ $vmssConfig = New-AzVmssConfig `
 
 スポット VM を使うスケール セットを作成するプロセスは、[Linux](quick-create-template-linux.md) または [Windows](quick-create-template-windows.md) での使用の開始に関する記事で詳しく説明されているものと同じです。 
 
-スポット テンプレートのデプロイの場合は、`"apiVersion": "2019-03-01"` 以降を使用してください。 テンプレートで `"virtualMachineProfile":` セクションに `priority`、`evictionPolicy`、`billingProfile` の各プロパティを追加します。 
+スポット テンプレートのデプロイの場合は、`"apiVersion": "2019-03-01"` 以降を使用してください。 
+
+テンプレートで `"virtualMachineProfile":` セクションに `priority`、`evictionPolicy`、`billingProfile` の各プロパティ、および `"Microsoft.Compute/virtualMachineScaleSets"` セクションに `"singlePlacementGroup": false,` を追加します。
 
 ```json
-                "priority": "Spot",
+
+{
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  },
+  "properties": {
+    "singlePlacementGroup": false,
+    }
+
+        "virtualMachineProfile": {
+              "priority": "Spot",
                 "evictionPolicy": "Deallocate",
                 "billingProfile": {
                     "maxPrice": -1
                 }
+            },
 ```
 
 無効にしたインスタンスを削除するには、`evictionPolicy` パラメーターを `Delete` に変更します。

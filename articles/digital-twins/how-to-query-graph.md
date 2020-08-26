@@ -7,20 +7,24 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05bcbf8df695ba308a6eaff5e7401f0a6d638747
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 1fdc6b79bf86272afac038d8f91e4663514830fe
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337604"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905596"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Azure Digital Twins ツイン グラフに対してクエリを実行する
 
-この記事では、[Azure Digital Twins クエリ ストア言語](concepts-query-language.md)を使用して[ツイン グラフ](concepts-twins-graph.md)に対してクエリを実行する方法の例を示し、詳細に説明します。 グラフに対してクエリを実行するには、Azure Digital Twins の [**Query API**](how-to-use-apis-sdks.md) を使用します。
+この記事では、[Azure Digital Twins クエリ言語](concepts-query-language.md)を使用して[ツイン グラフ](concepts-twins-graph.md)に対してクエリを実行する方法の例を示し、詳細に説明します。 グラフに対してクエリを実行するには、Azure Digital Twins の [**Query API**](how-to-use-apis-sdks.md) を使用します。
+
+[!INCLUDE [digital-twins-query-operations.md](../../includes/digital-twins-query-operations.md)]
+
+この記事の残りの部分では、これらの操作を使用する方法の例を示します。
 
 ## <a name="query-syntax"></a>クエリ構文
 
-ここでは、いくつかのサンプル クエリを使ってクエリ言語の構造を示し、考えられるクエリ操作を実行します。
+このセクションのサンプル クエリでは、クエリ言語の構造を示し、考えられるクエリ操作を実行します。
 
 プロパティ (ID とメタデータを含む) を指定して[デジタル ツイン](concepts-twins-graph.md)を取得します。
 ```sql
@@ -31,24 +35,63 @@ AND T.$dtId in ['123', '456']
 AND T.Temperature = 70
 ```
 
-[モデル](concepts-models.md)を指定してデジタル ツインを取得します
-```sql
-SELECT  * 
-FROM DigitalTwins T  
-WHERE IS_OF_MODEL(T , 'dtmi:com:contoso:Space;3')
-AND T.roomSize > 50
-```
-
 > [!TIP]
 > デジタル ツインの ID のクエリ実行には、メタデータ フィールド `$dtId` を使用します。
 
+「[デジタル ツインにタグを追加する](how-to-use-tags.md)」で説明されているように、"*タグ*" プロパティを使用してツインを取得することもできます。
+```sql
+select * from digitaltwins where is_defined(tags.red) 
+```
+
+### <a name="select-top-items"></a>上位の項目を選択する
+
+`Select TOP` 句を使用して、1 つのクエリで複数の "上位" 項目を選択できます。
+
+```sql
+SELECT TOP (5)
+FROM DIGITALTWINS
+WHERE property = 42
+```
+
+### <a name="query-by-model"></a>モデルでクエリを実行する
+
+`IS_OF_MODEL` 演算子を使用すると、ツインの[モデル](concepts-models.md)に基づいてフィルター処理できます。 継承がサポートされており、いくつかのオーバーロード オプションがあります。
+
+`IS_OF_MODEL` の最も簡単な使用法では、`IS_OF_MODEL(twinTypeName)` のように `twinTypeName` パラメーターのみを受け取ります。
+このパラメーターで値を渡すクエリの例を次に示します。
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1')
+```
+
+(`JOIN` が使用されている場合のように) 複数のツイン コレクションがある場合に検索対象を指定するには、`IS_OF_MODEL(twinCollection, twinTypeName)` のように `twinCollection` パラメーターを追加します。
+このパラメーターに値を追加するクエリの例を次に示します。
+
+```sql
+SELECT * FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1')
+```
+
+完全一致を行うには、`IS_OF_MODEL(twinTypeName, exact)` のように `exact` パラメーターを追加します。
+このパラメーターに値を追加するクエリの例を次に示します。
+
+```sql
+SELECT * FROM DIGITALTWINS WHERE IS_OF_MODEL('dtmi:sample:thing;1', exact)
+```
+
+また、`IS_OF_MODEL(twinCollection, twinTypeName, exact)` のように 3 つの引数すべてを渡すこともできます。
+3 つのパラメーターすべての値を指定するクエリの例を次に示します。
+
+```sql
+SELECT ROOM FROM DIGITALTWINS DT WHERE IS_OF_MODEL(DT, 'dtmi:sample:thing;1', exact)
+```
+
 ### <a name="query-based-on-relationships"></a>リレーションシップに基づくクエリ
 
-デジタル ツインのリレーションシップに基づいてクエリを実行する場合、Azure Digital Twins クエリ ストア言語には特殊な構文があります。
+デジタル ツインのリレーションシップに基づいてクエリを実行する場合、Azure Digital Twins クエリ 言語には特殊な構文があります。
 
 リレーションシップは `FROM` 句のクエリ スコープにプルされます。 "従来の" SQL 型言語との重要な違いは、この `FROM` 句の各式がテーブルではないことです。そうではなく、`FROM` 句はエンティティ間のリレーションシップのトラバーサルを表し、`JOIN` の Azure Digital Twins バージョンを使用して記述されます。 
 
-Azure Digital Twins の[モデル](concepts-models.md)機能では、ツインと無関係のリレーションシップは存在しないことを思い出してください。 つまり、Azure Digital Twins クエリ ストア言語の `JOIN` は、一般的な SQL の `JOIN` とは少し異なります。リレーションシップのクエリを無関係に実行することはできず、ツインに関連付ける必要があるためです。
+Azure Digital Twins の[モデル](concepts-models.md)機能では、ツインと無関係のリレーションシップは存在しないことを思い出してください。 つまり、Azure Digital Twins ストア言語の `JOIN` は、一般的な SQL の `JOIN` とは少し異なります。リレーションシップのクエリを無関係に実行することはできず、ツインに関連付ける必要があります。
 この違いを組み込むために、キーワード `RELATED` を `JOIN` 句に使用して、ツインのリレーションシップのセットを参照します。 
 
 次のセクションでは、このような例をいくつか示します。
@@ -74,7 +117,7 @@ WHERE T.$dtId = 'ABC'
 
 #### <a name="query-the-properties-of-a-relationship"></a>リレーションシップのプロパティのクエリを実行する
 
-デジタル ツインに DTDL を介して記述されるプロパティが存在するのと同様に、リレーションシップにプロパティを含めることもできます。 Azure Digital Twins クエリ ストア言語を使用すると、`JOIN` 句内のリレーションシップにエイリアスを割り当てることで、リレーションシップのフィルター処理とプロジェクションを行うことができます。 
+デジタル ツインに DTDL を介して記述されるプロパティが存在するのと同様に、リレーションシップにプロパティを含めることもできます。 Azure Digital Twins ストア言語を使用すると、`JOIN` 句内のリレーションシップにエイリアスを割り当てることで、リレーションシップのフィルター処理とプロジェクションを行うことができます。 
 
 例として、*reportedCondition* プロパティがある *servicedBy* リレーションシップを考えてみます。 次のクエリでは、プロパティを参照するために、このリレーションシップには 'R' という別名が与えられています。
 
@@ -87,6 +130,22 @@ AND R.reportedCondition = 'clean'
 ```
 
 上記の例では、*reportedCondition* が *servicedBy* リレーションシップ自体のプロパティであることに注意してください (*servicedBy* リレーションシップを持つ何らかのデジタル ツインではありません)。
+
+### <a name="query-with-multiple-joins"></a>複数の JOIN を使用したクエリ
+
+現在、プレビューの段階では、1 つのクエリで最大 5 つの `JOIN` がサポートされています。 これにより、一度に複数のレベルのリレーションシップを走査することができます。
+
+次に、複数結合のクエリの例を示します。このクエリでは、ルーム 1 と 2 のライトパネルに含まれるすべての電球が取得されます。
+
+```sql
+SELECT LightBulb 
+FROM DIGITALTWINS Room 
+JOIN LightPanel RELATED Room.contains 
+JOIN LightBulb RELATED LightPanel.contains 
+WHERE IS_OF_MODEL(LightPanel, ‘dtmi:contoso:com:lightpanel;1’) 
+AND IS_OF_MODEL(LightBulb, ‘dtmi:contoso:com:lightbulb ;1’) 
+AND Room.$dtId IN [‘room1’, ‘room2’] 
+```
 
 ## <a name="run-queries-with-an-api-call"></a>API 呼び出しを使用してクエリを実行する
 
@@ -129,7 +188,7 @@ catch (RequestFailedException e)
 プレビュー段階の `JOIN` の使用にはその他にも制限があります。
 * `FROM` ステートメント内ではサブクエリはサポートされていません。
 * `OUTER JOIN` セマンティクスはサポートされていません。つまり、リレーションシップのランクがゼロの場合、"行" 全体が出力結果セットから削除されます。
-* パブリック プレビュー段階では、グラフのトラバーサルの深さが制限されます。クエリごとに使用できる `JOIN` は 1 つだけです。
+* プレビュー段階では、グラフ トラバーサルの深さがクエリごとに 5 `JOIN` レベルに制限されます。
 * `JOIN` 操作のソースは制限されています。クエリでは、クエリが開始されるツインを宣言する必要があります。
 
 ## <a name="query-best-practices"></a>クエリのベスト プラクティス

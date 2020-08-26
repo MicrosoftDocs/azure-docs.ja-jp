@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 6738f598275e91ce8a811c3ef6bcc6d5dc84e0bd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbc06b657525880f22bd5fb38e902f906d438c9c
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87089500"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88565912"
 ---
 # <a name="quickstart-building-your-first-static-web-app"></a>クイック スタート:静的 Web アプリを初めてビルドする
 
@@ -98,7 +98,7 @@ GitHub にサインインしたら、リポジトリの情報を入力します�
 :::image type="content" source="media/getting-started/next-build-button.png" alt-text="[次へ: ビルド] ボタン":::
 
 > [!NOTE]
->  リポジトリが表示されない場合は、GitHub で Azure Static Web Apps を承認しなければならない場合があります。 GitHub リポジトリを参照し、 **[設定]、[アプリケーション]、[認可された OAuth アプリ]** の順に移動して、 **[Azure Static Web Apps]** 、 **[許可]** の順に選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
+>  リポジトリが表示されない場合は、GitHub で Azure Static Web Apps を承認しなければならない場合があります。 [GitHub のホームページ](https://github.com)を参照し、アカウントの画像をクリックしてドロップダウン メニューを開きます。 **[Settings]\(設定\)** 、 **[Applications]\(アプリケーション\) > [Authorized OAuth Apps]\(承認済み OAuth アプリ\) > [Azure Static Web Apps]** の順にクリックし、最後に **[Grant]\(付与\)** を選択します。 組織リポジトリの場合は、アクセス許可を付与する組織の所有者である必要があります。
 
 ### <a name="build"></a>ビルド
 

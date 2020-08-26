@@ -3,12 +3,12 @@ title: Azure Backup Server を使用して VMware VM をバックアップする
 description: この記事では、Azure Backup Server を使用し、VMware vCenter/ESXi サーバー上で実行している VMware VM をバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 05/24/2020
-ms.openlocfilehash: c9868012698fcdf5a2352c289de85261b6899dc3
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 892d308df15ef745f34419ec315e2c5000b0852c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86497915"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263539"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Azure Backup Server を使用して VMware VM をバックアップする
 
@@ -51,7 +51,7 @@ ms.locfileid: "86497915"
 
     ![vSphere Web Client](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
 
-2. VSphere Web Client のログイン ページで、 **[Download trusted root CA certificates]\(信頼されたルート CA 証明書のダウンロード\)** をクリックします。
+2. vSphere Web Client のログイン ページで、 **[信頼されたルート CA 証明書のダウンロード]** を選択します。
 
     ![Download trusted root CA certificates (信頼されたルート CA 証明書のダウンロード)](./media/backup-azure-backup-server-vmware/vmware-download-ca-cert-prompt.png)
 
@@ -75,19 +75,19 @@ ms.locfileid: "86497915"
 
 8. ルート証明書を右クリックし、ポップアップ メニューから **[証明書のインストール]** を選択します。
 
-9. **証明書のインポート ウィザード**で、証明書のインポート先として **[ローカル コンピューター]** を選択し、 **[次へ]** をクリックします。 コンピューターへの変更を許可するかどうかの確認を求められたら、確認します。
+9. **証明書のインポート ウィザード**で、証明書のインポート先として **[ローカル コンピューター]** を選択し、 **[次へ]** を選択します。 コンピューターへの変更を許可するかどうかの確認を求められたら、確認します。
 
     ![ウィザードのようこそ画面](./media/backup-azure-backup-server-vmware/certificate-import-wizard1.png)
 
-10. **[証明書ストア]** ページで、 **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** をクリックして、証明書ストアを選択します。
+10. **[証明書ストア]** ページで、 **[証明書をすべて次のストアに配置する]** を選択し、 **[参照]** を選択して、証明書ストアを選択します。
 
     ![証明書ストレージ](./media/backup-azure-backup-server-vmware/cert-import-wizard-local-store.png)
 
-11. **[証明書ストアの選択]** で、証明書のインポート先フォルダーとして **[信頼されたルート証明機関]** を選択し、 **[OK]** をクリックします。
+11. **[証明書ストアの選択]** で、証明書のインポート先フォルダーとして **[信頼されたルート証明機関]** を選択し、 **[OK]** を選択します。
 
     ![証明書の格納先フォルダー](./media/backup-azure-backup-server-vmware/certificate-store-selected.png)
 
-12. **[証明書のインポート ウィザードの完了]** で、フォルダーを確認して、 **[完了]** をクリックします。
+12. **[証明書のインポート ウィザードの完了]** で、フォルダーを確認して、 **[完了]** を選択します。
 
     ![証明書が適切なフォルダーにあることを確認する](./media/backup-azure-backup-server-vmware/cert-wizard-final-screen.png)
 
@@ -114,18 +114,18 @@ ms.locfileid: "86497915"
 Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許可を持つユーザー アカウントが必要です。 特定の権限を持つ VMware ロールを作成し、ユーザー アカウントをそのロールと関連付けます。
 
 1. vCenter Server (または、vCenter Server を使用していない場合は ESXi ホスト) にサインインします。
-2. **[Navigator]\(ナビゲーター\)** パネルで、 **[Administration]\(管理\)** をクリックします。
+2. **[ナビゲーター]** パネルで、 **[管理]** を選択します。
 
     ![管理](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
-3. **[Administration]\(管理\)**  >  **[Roles]\(ロール\)** で、ロールの追加アイコン (+ 記号) をクリックします。
+3. **[管理]**  >  **[ロール]** で、ロールの追加アイコン (+ 記号) を選択します。
 
     ![ロールの追加](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
 4. **[Create Role]\(ロールの作成\)**  >  **[Role name]\(ロール名\)** で、「*BackupAdminRole*」と入力します。 ロール名は任意の名前でかまいませんが、ロールの目的を識別できる名前である必要があります。
 
-5. 次の表にまとめたように特権を選択して、 **[OK]** をクリックします。  **[Roles]\(ロール\)** パネルの一覧に新しいロールが表示されます。
-   - 親ラベルの横にあるアイコンをクリックして親を展開し、子権限を表示します。
+5. 次の表にまとめたように特権を選択して、 **[OK]** を選択します。  **[Roles]\(ロール\)** パネルの一覧に新しいロールが表示されます。
+   - 親ラベルの横にあるアイコンを選択して親を展開し、子権限を表示します。
    - VirtualMachine の権限を選択するには、親子階層を複数のレベルにわたって移動する必要があります。
    - 親権限のすべての子権限を選択する必要はありません。
 
@@ -205,13 +205,13 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
 
 ## <a name="create-a-vmware-account"></a>VMware アカウントを作成する
 
-1. vCenter Server の **[Navigator]\(ナビゲーター\)** パネルで、 **[Users and Groups]\(ユーザーとグループ\)** をクリックします。 vCenter Server を使用しない場合は、適切な ESXi ホスト上にアカウントを作成します。
+1. vCenter Server の **[ナビゲーター]** パネルで、 **[ユーザーとグループ]** を選択します。 vCenter Server を使用しない場合は、適切な ESXi ホスト上にアカウントを作成します。
 
     ![[ユーザーとグループ] のオプション](./media/backup-azure-backup-server-vmware/vmware-userandgroup-panel.png)
 
     **[vCenter Users and Groups]\(vCenter のユーザーとグループ\)** パネルが表示されます。
 
-2. **[vCenter Users and Groups]\(vCenter のユーザーとグループ\)** パネルで **[ユーザー]** タブを選択し、ユーザーの追加アイコン (+ 記号) をクリックします。
+2. **[vCenter のユーザーとグループ]** パネルで **[ユーザー]** タブを選択し、ユーザーの追加アイコン (+ 記号) を選択します。
 
     ![[vCenter Users and Groups]\(vCenter のユーザーとグループ\) パネル](./media/backup-azure-backup-server-vmware/usersandgroups.png)
 
@@ -219,15 +219,15 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
 
     ![[新しいユーザー] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/vmware-new-user-account.png)
 
-4. ユーザー アカウントをロールに関連付けるには、 **[ナビゲーター]** パネルで **[グローバル アクセス許可]** をクリックします。 **[グローバル アクセス許可]** パネルで **[管理]** タブを選択し、追加アイコン (+ 記号) をクリックします。
+4. ユーザー アカウントをロールに関連付けるには、 **[ナビゲーター]** パネルで **[グローバル アクセス許可]** を選択します。 **[グローバル アクセス許可]** パネルで **[管理]** タブを選択し、追加アイコン (+ 記号) を選択します。
 
     ![[グローバル アクセス許可] パネル](./media/backup-azure-backup-server-vmware/vmware-add-new-perms.png)
 
-5. **[Global Permissions Root - Add Permission]\(グローバル アクセス許可のルート - アクセス許可の追加\)** ダイアログ ボックスで、 **[Add]\(追加\)** をクリックして、ユーザーまたはグループを選択します。
+5. **[グローバル アクセス許可のルート - アクセス許可の追加]** で、 **[追加]** を選択して、ユーザーまたはグループを選択します。
 
     ![ユーザーまたはグループの選択](./media/backup-azure-backup-server-vmware/vmware-add-new-global-perm.png)
 
-6. **[Select Users/Groups]\(ユーザー/グループの選択\)** で、 **[BackupAdmin]**  >  **[Add]\(追加\)** を選択します。 **[ユーザー]** では、ユーザー アカウントに *domain\username* の形式が使用されます。 別のドメインを使用する場合は、 **[ドメイン]** の一覧からドメインを選択します。 **[OK]** をクリックして、選択したユーザーを **[アクセス許可の追加]** ダイアログ ボックスに追加します。
+6. **[Select Users/Groups]\(ユーザー/グループの選択\)** で、 **[BackupAdmin]**  >  **[Add]\(追加\)** を選択します。 **[ユーザー]** では、ユーザー アカウントに *domain\username* の形式が使用されます。 別のドメインを使用する場合は、 **[ドメイン]** の一覧からドメインを選択します。 **[OK]** を選択して、選択したユーザーを **[アクセス許可の追加]** ダイアログ ボックスに追加します。
 
     ![BackupAdmin ユーザーを追加する](./media/backup-azure-backup-server-vmware/vmware-assign-account-to-role.png)
 
@@ -243,31 +243,31 @@ Azure Backup Server では、v-Center Server/ESXi ホストへのアクセス許
 
     ![Azure Backup Server アイコン](./media/backup-azure-backup-server-vmware/mabs-icon.png)
 
-2. Azure Backup Server コンソールで、 **[管理]**  >   **[運用サーバー]**  >  **[VMware の管理]** をクリックします。
+2. Azure Backup Server コンソールで、 **[管理]**  >   **[運用サーバー]**  >  **[VMware の管理]** を選択します。
 
     ![Azure Backup Server コンソール](./media/backup-azure-backup-server-vmware/add-vmware-credentials.png)
 
-3. **[資格情報の管理]** ダイアログ ボックスで、 **[追加]** をクリックします。
+3. **[資格情報の管理]** ダイアログ ボックスで、 **[追加]** を選択します。
 
-    ![Azure Backup Server の [資格情報の管理] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
+    ![[資格情報の管理] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/mabs-manage-credentials-dialog.png)
 
 4. **[資格情報の追加]** で、新しい資格情報の名前と説明を入力し、VMware サーバーで定義したユーザー名とパスワードを指定します。 この手順では資格情報を識別するために *Contoso Vcenter credential* という名前を使用します。 VMware サーバーと Azure Backup Server が同じドメイン内にない場合は、ユーザー名でドメインを指定します。
 
     ![Azure Backup Server の [資格情報の追加] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/mabs-add-credential-dialog2.png)
 
-5. **[追加]** をクリックして、新しい資格情報を追加します。
+5. **[追加]** を選択して、新しい資格情報を追加します。
 
-    ![Azure Backup Server の [資格情報の管理] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
+    ![新しい資格情報の追加](./media/backup-azure-backup-server-vmware/new-list-of-mabs-creds.png)
 
 ## <a name="add-the-vcenter-server"></a>vCenter Server を追加する
 
 Azure Backup Server に vCenter Server を追加します。
 
-1. Azure Backup Server コンソールで、 **[管理]**  >  **[運用サーバー]**  >  **[追加]** をクリックします。
+1. Azure Backup Server コンソールで、 **[管理]**  >  **[運用サーバー]**  >  **[追加]** を選択します。
 
     ![運用サーバーの追加ウィザードを開く](./media/backup-azure-backup-server-vmware/add-vcenter-to-mabs.png)
 
-2. **[運用サーバーの追加ウィザード]**  >  **[運用サーバーの種類を選択]** ページで、 **[VMware サーバー]** を選択し、 **[次へ]** をクリックします。
+2. **[運用サーバーの追加ウィザード]**  >  **[運用サーバーの種類を選択]** ページで、 **[VMware サーバー]** を選択し、 **[次へ]** を選択します。
 
     ![運用サーバーの追加ウィザード](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
@@ -281,11 +281,11 @@ Azure Backup Server に vCenter Server を追加します。
 
     ![資格情報を指定する](./media/backup-azure-backup-server-vmware/identify-creds.png)
 
-6. **[追加]** をクリックして、VMware サーバーをサーバーのリストに追加します。 続けて、 **[次へ]** をクリックします。
+6. **[追加]** を選択して、VMware サーバーをサーバーのリストに追加します。 **[次へ]** を選択します。
 
     ![VMWare サーバーと資格情報を追加する](./media/backup-azure-backup-server-vmware/add-vmware-server-credentials.png)
 
-7. **[概要]** ページで、 **[追加]** をクリックして VMware サーバーを Azure Backup Server に追加します。 新しいサーバーはすぐに追加され、VMware サーバー上にエージェントは必要ありません。
+7. **[概要]** ページで、 **[追加]** を選択して VMware サーバーを Azure Backup Server に追加します。 新しいサーバーはすぐに追加され、VMware サーバー上にエージェントは必要ありません。
 
     ![Azure Backup Server への VMware サーバーの追加](./media/backup-azure-backup-server-vmware/tasks-screen.png)
 
@@ -299,24 +299,24 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 
 バックアップ対象の VMware VM を追加します。 保護グループでは、複数の VM が収集されて、グループ内のすべての VM に、同じデータ保持とバックアップの設定が適用されます。
 
-1. Azure Backup Server コンソールで、 **[保護]** > **[新規]** をクリックします。
+1. Azure Backup Server コンソールで、 **[保護]** > **[新規]** を選択します。
 
     ![新しい保護グループの作成ウィザードを開く](./media/backup-azure-backup-server-vmware/open-protection-wizard.png)
 
-1. **新しい保護グループの作成**ウィザードのようこそページで、 **[次へ]** をクリックします。
+1. **新しい保護グループの作成**ウィザードのようこそページで、 **[次へ]** を選択します。
 
     ![[新しい保護グループの作成ウィザード] ダイアログ ボックス](./media/backup-azure-backup-server-vmware/protection-wizard.png)
 
-1. **[保護グループの種類の選択]** ページで、 **[サーバー]** を選択し、 **[次へ]** をクリックします。 **[グループ メンバーの選択]** ページが表示されます。
+1. **[保護グループの種類の選択]** ページで、 **[サーバー]** を選択し、 **[次へ]** を選択します。 **[グループ メンバーの選択]** ページが表示されます。
 
-1. **[グループ メンバーの選択]** で、バックアップする VM (または VM フォルダー) を選択します。 続けて、 **[次へ]** をクリックします。
+1. **[グループ メンバーの選択]** で、バックアップする VM (または VM フォルダー) を選択します。 **[次へ]** を選択します。
 
     - フォルダーを選択すると、そのフォルダー内の VM またはフォルダーもバックアップ対象に選択されます。 バックアップしたくないフォルダーや VM はオフにすることができます。
 1. VM またはフォルダーが既にバックアップされている場合、それを選択することはできません。 これにより、1 つの VM に足して重複する復旧ポイントが作成されないことが保証されます。
 
     ![グループ メンバーの選択](./media/backup-azure-backup-server-vmware/server-add-selected-members.png)
 
-1. **[データの保護方法の選択]** ページで、保護グループの名前と保護の設定を入力します。 Azure にバックアップするには、短期的な保護を **[ディスク]** に設定して、オンライン保護を有効にします。 続けて、 **[次へ]** をクリックします。
+1. **[データの保護方法の選択]** ページで、保護グループの名前と保護の設定を入力します。 Azure にバックアップするには、短期的な保護を **[ディスク]** に設定して、オンライン保護を有効にします。 **[次へ]** を選択します。
 
     ![データ保護方法の選択](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
@@ -325,13 +325,13 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
    - **[同期の間隔]** で、ディスクの復旧ポイントを作成する頻度を指定します。
        - バックアップ間隔を設定しない場合は、 **[回復ポイントの直前]** をオンにして、各復旧ポイントがスケジュールされている直前にバックアップを実行できます。
        - 短期的なバックアップは完全バックアップであり、増分ではありません。
-       - 短期的なバックアップを実行する日付/時刻を変更するには、 **[変更]** をクリックします。
+       - 短期的なバックアップを実行する日付/時刻を変更するには、 **[変更]** を選択します。
 
          ![短期的な目標の指定](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
 1. **[ディスク割り当ての確認]** では、VM に対して VM のバックアップ用に提供されているディスク領域を確認します 。
 
-   - 推奨されるディスク割り当ては、指定した保有期間の範囲、ワークロードの種類、および保護データのサイズに基づきます。 必要な変更を行い、 **[次へ]** をクリックします。
+   - 推奨されるディスク割り当ては、指定した保有期間の範囲、ワークロードの種類、および保護データのサイズに基づきます。 必要な変更を行い、 **[次へ]** を選択します。
    - **データ サイズ:** 保護グループ内のデータのサイズです。
    - **ディスク領域:** 保護グループの推奨ディスク領域の量です。 この設定を変更する場合は、どのデータ ソースも拡大するので、予想よりも少し大きめに合計領域を割り当てる必要があります。
    - **データの併置:** 併置を有効にすると、保護対象の複数のデータ ソースを 1 つのレプリカと復旧ポイントのボリュームにマップできます。 すべてのワークロードで併置がサポートされているわけではありません。
@@ -340,36 +340,36 @@ vCenter Server によって管理されていない ESXi ホストが複数あ�
 
     ![ディスクの割り当てを確認する](./media/backup-azure-backup-server-vmware/review-disk-allocation.png)
 
-1. **[レプリカの作成方法の選択]** ページで、初期バックアップの作成方法を指定し、 **[次へ]** をクリックします。
+1. **[レプリカの作成方法の選択]** ページで、初期バックアップの作成方法を指定し、 **[次へ]** を選択します。
    - 既定値は、 **[自動 (ネットワーク経由)]** と **[今すぐ]** です。
    - 既定値を使用する場合は、ピーク時以外を指定することをお勧めします。 **[時間指定]** を選択し、日時を指定します。
    - データが大量にある場合や、ネットワークの状態が最適でない場合は、リムーバブル メディアを使用してオフラインでデータをレプリケートすることを検討してください。
 
     ![レプリカ作成方法の選択](./media/backup-azure-backup-server-vmware/replica-creation.png)
 
-1. **[整合性チェック オプション]** で、整合性チェックを自動化する方法とタイミングを選択します。 続けて、 **[次へ]** をクリックします。
+1. **[整合性チェック オプション]** で、整合性チェックを自動化する方法とタイミングを選択します。 **[次へ]** を選択します。
       - 整合性チェックは、レプリカ データが不整合になったときに実行することや、設定したスケジュールで実行することができます。
       - 自動整合性チェックを構成しない場合は、チェックを手動で実行できます。 これを行うには、保護グループを右クリックして、 **[Perform Consistency Check]\(整合性チェックの実行\)** を選択します。
 
-1. **[オンライン保護するデータの指定]** ページで、バックアップする VM または VM フォルダーを選択します。 メンバーを個別に選択するか、 **[すべて選択]** をクリックしてすべてのメンバーを選択することができます。 続けて、 **[次へ]** をクリックします。
+1. **[オンライン保護するデータの指定]** ページで、バックアップする VM または VM フォルダーを選択します。 メンバーを個別に選択するか、 **[すべて選択]** を選択してすべてのメンバーを選択することができます。 **[次へ]** を選択します。
 
     ![オンライン保護データの指定](./media/backup-azure-backup-server-vmware/select-data-to-protect.png)
 
 1. **[オンライン バックアップ スケジュールの指定]** ページで、ローカル ストレージから Azure にデータをバックアップする頻度を指定します。
 
-    - スケジュールに従って、データのクラウド復旧ポイントが生成されます。 続けて、 **[次へ]** をクリックします。
+    - スケジュールに従って、データのクラウド復旧ポイントが生成されます。 **[次へ]** を選択します。
     - 復旧ポイントは生成されると、Azure の Recovery Services コンテナーに転送されます。
 
     ![オンライン バックアップ スケジュールの指定](./media/backup-azure-backup-server-vmware/online-backup-schedule.png)
 
-1. **[オンライン保持ポリシーの指定]** ページで、Azure への毎日/毎週/毎月/毎年のバックアップから作成される復旧ポイントを保持する期間を指定します。 その後、 **[次へ]** をクリックします。
+1. **[オンライン保持ポリシーの指定]** ページで、Azure への毎日/毎週/毎月/毎年のバックアップから作成される復旧ポイントを保持する期間を指定します。 **[次へ]** を選択します。
 
     - Azure にデータを保持できる期間に制限はありません。
     - 唯一の制限は、保護されたインスタンスあたりの復旧ポイントの数が 9999 までであることです。 この例では、保護するインスタンスは VMware サーバーです。
 
     ![オンライン保持ポリシーの指定](./media/backup-azure-backup-server-vmware/retention-policy.png)
 
-1. **[概要]** ページで設定を確認して、 **[グループの作成]** をクリックします。
+1. **[概要]** ページで設定を確認して、 **[グループの作成]** を選択します。
 
     ![保護グループのメンバーと設定の概要](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 

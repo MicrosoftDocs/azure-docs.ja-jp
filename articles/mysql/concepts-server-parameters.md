@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: ce8e8b083b108d24c11d828ae1cbd4e47e090fc0
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: e7ca86d0146f05d5171d5eae18aac81d75122bcc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85963208"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258542"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Azure Database for MySQL でのサーバー パラメーター
 
@@ -130,7 +130,7 @@ Azure Database for MySQL は 1 つのデータ ファイル内で、最大 **1 T
 |---|---|---|---|---|
 |Basic|1|50|10|50|
 |Basic|2|100|10|100|
-|General Purpose|2|該当なし|10|600|
+|General Purpose|2|300|10|600|
 |General Purpose|4|625|10|1250|
 |General Purpose|8|1250|10|2500|
 |General Purpose|16|2500|10|5000|
@@ -197,6 +197,24 @@ MySQL への新しいクライアント接続を作成するには時間がか�
 |メモリ最適化|8|0|0|134217728|
 |メモリ最適化|16|0|0|134217728|
 |メモリ最適化|32|0|0|134217728|
+
+### <a name="lower_case_table_names"></a>lower_case_table_names
+
+Lower_case_table_name は既定で 1 に設定されます。MySQL 5.6 および MySQL 5.7 ではこのパラメーターを更新できます
+
+このパラメーターの詳細については、[MySQL のドキュメント](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_lower_case_table_names)を確認してください。
+
+> [!NOTE]
+> MySQL 8.0 では、lower_case_table_name は既定で 1 に設定され、変更することはできません。
+
+### <a name="innodb_strict_mode"></a>innodb_strict_mode
+
+"Row size too large (> 8126) (行のサイズが大きすぎます (> 8126))" などのエラーが表示された場合は、**innodb_strict_mode** パラメーターをオフにすることができます。 サーバー パラメーター **innodb_strict_mode** をサーバー レベルでグローバルに変更することはできません。行データのサイズが 8 kb を超える場合、エラーが表示されずにデータが切り捨てられ、データが失われる可能性があるためです。 ページ サイズの制限に合うようにスキーマを変更することをお勧めします。 
+
+このパラメーターは、`init_connect` を使用してセッション レベルで設定できます。 セッション レベルで **innodb_strict_mode** を設定するには、「[設定パラメーターが一覧に含まれていない](https://docs.microsoft.com/azure/mysql/howto-server-parameters#setting-parameters-not-listed)」を参照してください。
+
+> [!NOTE]
+> 読み取りレプリカ サーバーがある場合は、マスター サーバーのセッション レベルで **innodb_strict_mode** をオフに設定すると、レプリケーションが中断されます。 読み取りレプリカがある場合は、このパラメーターをオフに設定されたままにすることをお勧めします。
 
 ### <a name="sort_buffer_size"></a>sort_buffer_size
 

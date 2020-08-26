@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 9ef87027bcda6c645d1239598c849f57fb0c8992
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/12/2020
+ms.openlocfilehash: 6524128cb5bccfefe37d605b406210a91e78cac8
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87491971"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88163970"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2 のイベント ソース
 
@@ -33,34 +33,34 @@ ms.locfileid: "87491971"
 
 > [!IMPORTANT]
 >
-> * Azure Time Series Insights Gen2 環境にイベント ソースをアタッチすると、初期の待機時間が長くなることがあります。
-> イベント ソースの待機時間は、現在 IoT Hub またはイベント ハブにあるイベントの数によって変わります。
-> * 最初にイベント ソース データが取り込まれた後は、待機時間が短くなります。 長い待機時間が継続する場合は、Azure portal からサポート チケットを送信してください。
+> - Azure Time Series Insights Gen2 環境にイベント ソースをアタッチすると、初期の待機時間が長くなることがあります。
+> - イベント ソースの待機時間は、現在 IoT Hub またはイベント ハブにあるイベントの数によって変わります。
+> - 最初にイベント ソース データが取り込まれた後は、待機時間が短くなります。 長い待機時間が継続する場合は、Azure portal からサポート チケットを送信してください。
 
 ## <a name="streaming-ingestion-best-practices"></a>ストリーミング インジェストのベスト プラクティス
 
-* 常に Azure Time Series Insights Gen2 環境に固有のコンシューマー グループを常に作成して、イベント ソースからデータを消費します。 コンシューマー グループを再利用すると、ランダムに切断が発生し、データが失われる可能性があります。
+- 常に Azure Time Series Insights Gen2 環境に固有のコンシューマー グループを常に作成して、イベント ソースからデータを消費します。 コンシューマー グループを再利用すると、ランダムに切断が発生し、データが失われる可能性があります。
 
-* 同じ Azure リージョンで、Azure Time Series Insights Gen2 環境と、IoT ハブ、イベントハブ、またはその両方を構成します。 別のリージョンにイベント ソースを構成することもできますが、このシナリオはサポートされておらず、高可用性を保証できません。
+- 同じ Azure リージョンで、Azure Time Series Insights Gen2 環境と、IoT ハブ、イベントハブ、またはその両方を構成します。 別のリージョンにイベント ソースを構成することもできますが、このシナリオはサポートされておらず、高可用性を保証できません。
 
-* 環境の[スループット速度制限](./concepts-streaming-ingress-throughput-limits.md)またはパーティションごとの制限を超えないようにします。
+- 環境の[スループット速度制限](./concepts-streaming-ingress-throughput-limits.md)またはパーティションごとの制限を超えないようにします。
 
-* 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](https://review.docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency?branch=pr-en-us-117938#monitor-latency-and-throttling-with-alerts)を構成します。
+- 環境でデータ処理の問題が発生した場合に通知されるように、遅延の[警告](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts)を構成します。
 
-* ストリーミング インジェストは、準リアルタイム データおよび最近のデータにのみ使用します。履歴データのストリーミングはサポートされていません。
+- ストリーミング インジェストは、準リアルタイム データおよび最近のデータにのみ使用します。履歴データのストリーミングはサポートされていません。
 
-* プロパティをエスケープする方法と JSON [データをフラット化して格納する](./concepts-json-flattening-escaping-rules.md)方法を理解します。
+- プロパティをエスケープする方法と JSON [データをフラット化して格納する](./concepts-json-flattening-escaping-rules.md)方法を理解します。
 
-* イベント ソース接続文字列を指定する場合は、最小限の特権の原則に従います。 Event Hubs の場合は、*send* 要求のみの共有アクセス ポリシーを構成し、IoT Hub の場合は、*service connect* アクセス許可のみを使用します。
+- イベント ソース接続文字列を指定する場合は、最小限の特権の原則に従います。 Event Hubs の場合は、*send* 要求のみの共有アクセス ポリシーを構成し、IoT Hub の場合は、*service connect* アクセス許可のみを使用します。
 
 ### <a name="historical-data-ingestion"></a>履歴データのインジェスト
 
 Azure Time Series Insights Gen2 では、ストリーミング パイプラインを使用した履歴データのインポートは現在サポートされていません。 過去のデータをご使用の環境にインポートする必要がある場合は、次のガイドラインに従ってください。
 
-* ライブ データと履歴データを並行してストリーミングしないでください。 順不同のデータを取り込むと、クエリのパフォーマンスが低下します。
-* 最適なパフォーマンスを得るために、履歴データは時系列で取り込みます。
-* インジェストのスループット率制限以下を維持します。
-* データがウォーム ストアの保持期間よりも古い場合、ウォーム ストアを無効にします。
+- ライブ データと履歴データを並行してストリーミングしないでください。 順不同のデータを取り込むと、クエリのパフォーマンスが低下します。
+- 最適なパフォーマンスを得るために、履歴データは時系列で取り込みます。
+- インジェストのスループット率制限以下を維持します。
+- データがウォーム ストアの保持期間よりも古い場合、ウォーム ストアを無効にします。
 
 ## <a name="event-source-timestamp"></a>イベント ソースのタイムスタンプ
 
@@ -82,10 +82,6 @@ Azure Time Series Insights Gen2 では、ストリーミング パイプライ�
 
 ## <a name="next-steps"></a>次のステップ
 
-* [JSON のフラット化とエスケープのルール](./concepts-json-flattening-escaping-rules.md)を読み、イベントの格納方法を理解する。 
+- [JSON のフラット化とエスケープのルール](./concepts-json-flattening-escaping-rules.md)を読み、イベントの格納方法を理解する。
 
-* 使用環境の[スループットに関する制限事項](./concepts-streaming-ingress-throughput-limits.md)を理解する。
-
-
-
-
+- 使用環境の[スループットに関する制限事項](./concepts-streaming-ingress-throughput-limits.md)を理解する。

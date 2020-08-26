@@ -6,19 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: 09db7684c84bbde038c67f9ccfb3f27f6b61bee6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 24897826c6a70d0810b239b9b8f639787c3dac2a
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86539551"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87843387"
 ---
 # <a name="prepare-your-logic-apps-and-runbooks-for-migration-of-classic-alert-rules"></a>クラシック アラート ルールの移行のためにロジック アプリと Runbook を準備する
 
-[以前発表された](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートは 2019 年 9 月に廃止される予定です (当初は 2019 年 7 月に廃止予定でした)。 Azure portal には、クラシック アラート ルールを使用しているお客様と移行を自分でトリガーしたいと思っているお客様を対象に、移行ツールが用意されています。
-
 > [!NOTE]
-> 移行ツールの展開が遅れたことで、クラシック アラート移行の提供終了日が、最初に発表された 2019 年 6 月 30 日から 2019 年 8 月 31日に延長されました。
+> [前に発表された](monitoring-classic-retirement.md)ように、Azure Monitor のクラシック アラートは廃止されましたが、新しいアラートがまだサポートされていないリソースについては、引き続き制限付きで使用できます。 これらのアラートの提供終了日はさらに延長されています。 間もなく新しい日付が発表されます。
+>
 
 お使いのクラシック アラート ルールを新しいアラート ルールに自主的に移行する場合は、2 つのシステムの間に違いがいくつか存在することに注意してください。 この記事では、その相違点と、変更に備える方法について説明します。
 

@@ -74,10 +74,10 @@
       href: ./sql/tutorial-connect-power-bi-desktop.md
     - name: データ サイエンティスト
       items:
-        - name: NYC タクシーの予測のヒント
+        - name: Azure AutoML を使用して回帰実験を実行する
+          href: ./spark/apache-spark-azure-machine-learning-tutorial.md
+        - name: Apache Spark MLlib を使用して分類モデルを作成する
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
-        - name: 追加のライブラリを使用して Apache Spark を補強する
-          href: ./spark/apache-spark-azure-portal-add-libraries.md
     - name: データ アナリスト
       items:
         - name: オンデマンドで SQL を使用して分析し、Synapse Studio を使用して視覚化する
@@ -202,16 +202,22 @@
               href: ./spark/apache-spark-overview.md
             - name: Apache Spark の概念
               href: ./spark/apache-spark-concepts.md
-            - name: ランタイム言語とライブラリのサポート
-              href: ./spark/apache-spark-version-support.md
             - name: Delta Lake とは
               href: ./spark/apache-spark-what-is-delta-lake.md
+            - name: Delta Lake 機能の概要
+              href: ./spark/apache-spark-delta-lake-overview.md
             - name: Apache Spark のパフォーマンス
               href: ./spark/apache-spark-performance.md
             - name: Apache Spark の自動スケール動作
               href: ./spark/apache-spark-autoscale.md
         - name: 開発
           items:
+            - name: ライブラリ
+              items:
+                - name: ライブラリの追加と管理
+                  href: ./spark/apache-spark-azure-portal-add-libraries.md
+                - name: ランタイム言語とライブラリのサポート
+                  href: ./spark/apache-spark-version-support.md
             - name: Azure Synapse Studio ノートブック
               href: ./spark/apache-spark-development-using-notebooks.md
             - name: .NET for Apache Spark
@@ -230,7 +236,7 @@
               href: sql/on-demand-workspace-overview.md
             - name: SQL プール
               href: ./sql-data-warehouse/sql-data-warehouse-overview-what-is.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: アーキテクチャ
+            - name: Architecture
               href: ./sql-data-warehouse/massively-parallel-processing-mpp-architecture.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: 機能の概要
               href: sql/overview-features.md
@@ -450,6 +456,8 @@
               href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
             - name: Azure Synapse Analytics の Apache Spark を使用して Azure Cosmos DB 分析ストアに対してクエリを実行する
               href: ./synapse-link/how-to-query-analytical-store-spark.md
+            - name: Apache Spark を使用して Synapse Link のデータを SQL プールにコピーする
+              href: ./synapse-link/how-to-copy-to-sql-pool.md
         - name: Synapse SQL
           items:
             - name: ストレージ内のデータのクエリ

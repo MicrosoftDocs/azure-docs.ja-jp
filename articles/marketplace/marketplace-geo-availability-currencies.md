@@ -6,15 +6,17 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 author: keferna
 ms.author: keferna
-ms.date: 01/29/2020
-ms.openlocfilehash: 7041221b015465e9db2d67d8dd7760d644c34f0c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 07/29/2020
+ms.openlocfilehash: b1baeaa31eddc13a68f2cc1d374b850f1c1a26bd
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387440"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88136339"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>コマーシャル マーケットプレースで利用可能な地域と通貨のサポート
+
+## <a name="supported-geographic-locations"></a>サポートされている地理的な場所
 
 コマーシャル マーケットプレース オファリングは、顧客の請求先住所で定義されている 141 の地域で購入でき、トランザクションは 17 の通貨で行うことができます。 次の表は、サポートされている地理的な場所、その [ISO 3166 の 2 桁のアルファ コード](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)、割り当てられている通貨の一覧です。
 
@@ -167,3 +169,30 @@ ms.locfileid: "87387440"
 \* ブラジルでご利用のお客様の場合、クラウド ソリューション プロバイダー (CSP) 経由のマーケットプレースでは USD が使用されます。
 
 \** Free および BYOL VM イメージのみ。
+
+## <a name="how-we-convert-currency"></a>通貨の換算方法
+
+すべての種類の有料オファーについて、ISV は価格を米国ドルで入力するか、現地通貨で価格をアップロードするかを選択できます。 米国ドルで入力された価格は、ページが保存されるときに自動的に、現地通貨に変換されます。 パートナー センターで使用される料金は、毎日更新されます。 ISV は価格をエクスポートして、換算後の相当額を確認できます。
+
+発行前に価格を調整するには、価格スプレッドシートをエクスポートして変更し、変更を含むスプレッドシートをアップロードするだけです。
+
+> [!NOTE]
+> プランの市場の価格は、発行した後では変更できません。 発行前に価格が正しいことを確かめるために、価格スプレッドシートをエクスポートして各市場の価格を確認してください。
+
+## <a name="retrieving-currency-information-by-api"></a>API による通貨情報の取得
+
+個々の料金 (それらが設定された方法によっては、保存された日の換算レートに影響を受けた可能性もあります) は、API を使用して取得できますが、通貨情報は取得できません。
+
+特定種類のオファーの価格を入力する方法の詳細については、以下の記事を参照してください。
+
+- [Azure アプリケーション オファーを作成する](partner-center-portal/create-new-azure-apps-offer.md)
+- [Azure コンテナー オファーを作成する](partner-center-portal/create-azure-container-offer.md)
+- [Azure 仮想マシン オファーを作成する](partner-center-portal/azure-vm-create-offer.md)
+- [コンサルティング サービス オファーの作成](partner-center-portal/create-consulting-service-offer.md)
+- [Dynamics 365 for Customer Engagement & PowerApps オファーの作成](partner-center-portal/create-new-customer-engagement-offer.md)
+- [Dynamics 365 for Operations オファーの作成](partner-center-portal/create-new-operations-offer.md)
+- [Dynamics 365 Business Central オファーの作成](partner-center-portal/create-new-business-central-offer.md)
+- [IoT Edge モジュール プランの作成](partner-center-portal/azure-iot-edge-module-creation.md)
+- [管理サービス オファーの作成](partner-center-portal/create-new-managed-service-offer.md)
+- [Power BI アプリを作成する](partner-center-portal/create-power-bi-app-offer.md)
+- [SaaS オファーを作成する](partner-center-portal/create-new-saas-offer.md)

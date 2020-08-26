@@ -4,12 +4,12 @@ description: Azure Backup Server のインストールと登録、およびア�
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: a4882867f9bbe5123df275b8d1c69fe4e163f294
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 54b7295eaed5f04a118cf5097ebc7b25b18f67d2
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054842"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522846"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
@@ -23,10 +23,43 @@ Microsoft Azure Backup Server (MABS) のトラブルシューティングを開�
 - [MARS エージェントと Azure の間にネットワーク接続が存在することを確認する](./backup-azure-mars-troubleshoot.md#the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup)
 - Microsoft Azure Recovery Services が (サービス コンソールで) 実行されていることを確認します。 必要に応じて、再起動して操作をやり直します
 - [スクラッチ フォルダーの場所に 5 から 10% の空きボリューム領域があることを確認する](./backup-azure-file-folder-backup-faq.md#whats-the-minimum-size-requirement-for-the-cache-folder)
-- 登録が失敗する場合は、Azure Backup Server をインストールしようとしているサーバーが別のコンテナーにまだ登録されていないことを確認します。
+- 登録が失敗する場合は、Azure Backup Server をインストールしようとしているサーバーが別のコンテナーにまだ登録されていないことを確認します
 - プッシュ インストールが失敗する場合は、DPM エージェントが既に存在するかどうかを確認してください。 その場合は、エージェントをアンインストールしてからインストールをやり直してください。
 - [別のプロセスまたはウイルス対策ソフトウェアによって Azure Backup が妨げられていないことを確認する](./backup-azure-troubleshoot-slow-backup-performance-issue.md#cause-another-process-or-antivirus-software-interfering-with-azure-backup)<br>
 - SQL Agent サービスが実行中で、MABS サーバーで自動に設定されていることを確認する<br>
+
+## <a name="configure-antivirus-for-mabs-server"></a>MABS サーバーのウイルス対策を構成する
+
+MABS は、ほとんどの一般的なウイルス対策ソフトウェア製品との互換性を備えています。 競合を回避するため、次の手順をお勧めします。
+
+1. **リアルタイム監視の無効化** - 次を対象としたウイルス対策ソフトウェアによるリアルタイム監視を無効にします。
+    - `C:\Program Files<MABS Installation path>\XSD` フォルダー
+    - `C:\Program Files<MABS Installation path>\Temp` フォルダー
+    - Modern Backup Storage ボリュームのドライブ文字
+    - レプリカと転送ログ: これを行うには、`Program Files\Microsoft Azure Backup Server\DPM\DPM\bin` フォルダーにある **dpmra.exe** のリアルタイム監視を無効にします。 リアルタイム監視を実行すると、ウイルス対策ソフトウェアが、保護されたサーバーに MABS が同期するたびにレプリカをスキャンし、MABS がレプリカに変更を適用するたびに影響されたファイルをすべてスキャンするため、パフォーマンスが低下します。
+    - 管理者コンソール: パフォーマンスへの影響を回避するには、**csc.exe** プロセスのリアルタイム監視を無効にします。 **csc.exe** プロセスは C\# コンパイラです。リアルタイム監視を実行すると、**csc.exe** プロセスで XML メッセージが生成されるときに出力されるファイルをウイルス対策ソフトウェアがスキャンするため、パフォーマンスが低下します。 **CSC.exe** は、次の場所にあります。
+        - `\Windows\Microsoft.net\Framework\v2.0.50727\csc.exe`
+        - `\Windows\Microsoft.NET\Framework\v4.0.30319\csc.exe`
+    - MABS サーバーにインストールされている MARS エージェントの場合は、次のファイルと場所を除外することをお勧めします。
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\bin\cbengine.exe` (プロセス)
+        - `C:\Program Files\Microsoft Azure Backup Server\DPM\MARS\Microsoft Azure Recovery Services Agent\folder`
+        - スクラッチの位置 (標準の場所を使用していない場合)
+2. **保護されたサーバーのリアルタイム監視の無効化**: 保護されたサーバーの `C:\Program Files\Microsoft Data Protection Manager\DPM\bin` フォルダーにある **dpmra.exe** のリアルタイム監視を無効にします。
+3. **保護されたサーバーおよび MABS サーバーにある感染したファイルの削除を目的としたウイルス対策ソフトウェアの構成**: レプリカおよび回復ポイントのデータ破損を回避するため、感染ファイルを自動的にクリーニングまたは検疫するのではなく、削除するようにウイルス対策ソフトウェアを構成します。 自動的にクリーニングまたは検疫すると、ウイルス対策ソフトウェアによってファイルが変更され、MABS が検出できない変更が行われる可能性があります。
+
+整合性のある同期を手動で実行する必要があります。 レプリカが不整合とマークされていても、ウイルス対策ソフトウェアがレプリカからファイルを削除するたびにジョブを確認します。
+
+### <a name="mabs-installation-folders"></a>MABS インストール フォルダー
+
+DPM の既定のインストール フォルダーは次のとおりです。
+
+- `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM`
+
+次のコマンドを実行して、インストール フォルダーのパスを検索することもできます。
+
+```cmd
+Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
+```
 
 ## <a name="invalid-vault-credentials-provided"></a>無効なコンテナーの資格情報が指定されました
 

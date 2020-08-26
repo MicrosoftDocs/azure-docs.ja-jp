@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 description: この記事では、Azure Backup Server によって保護されるすべてのワークロード、データ型、およびインストールを一覧表示したサポート マトリックスを示します。
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: cdbe874baf45d9858acbf891af3c0aae4bd0c2d2
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fa8e2a33718c17df7b918b2aaa545ca80c473c29
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036727"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190854"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) V3 UR1 の保護マトリックス
 
@@ -40,7 +40,7 @@ MABS v3 UR1 には次のマトリックスを使用します。
 | **[ワークロード]**               | **Version**                                                  | **Azure Backup Server のインストール**                       | **サポートされる Azure Backup Server** | **保護と回復**                                  |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------- | ------------------------------------------------------------ |
 | クライアント コンピューター(64 ビット) | Windows 10                                                  | 物理サーバー  <br><br>    Hyper-V 仮想マシン   <br><br>   VMware 仮想マシン | V3 UR1                            | ボリューム、共有、フォルダー、ファイル、重複除去されたボリューム   <br><br>   保護されるボリュームは NTFS である必要があります。 FAT および FAT32 はサポートされていません。  <br><br>    ボリュームは少なくとも 1 GB である必要があります。 Azure Backup Server ではボリューム シャドウ コピー サービス (VSS) を使用してデータ スナップショットを取得します。また、そのスナップショットは、ボリュームが少なくとも 1 GB である場合にのみ機能します。 |
-| サーバー (64 ビット)          | Windows Server 2019、2016、2012 R2、2012                    | Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)  <br><br>    物理サーバー  <br><br>    Hyper-V 仮想マシン <br><br>     VMware 仮想マシン  <br><br>    Azure Stack | V3 UR1                            | ボリューム、共有、フォルダー、ファイル、重複除去されたボリューム (NTFS と ReFS)  <br><br>   システム状態とベア メタル (ワークロードが Azure 仮想マシンとして実行されている場合はサポートされません) |
+| サーバー (64 ビット)          | Windows Server 2019、2016、2012 R2、2012                    | Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)  <br><br>    物理サーバー  <br><br>    Hyper-V 仮想マシン <br><br>     VMware 仮想マシン  <br><br>    Azure Stack | V3 UR1                            | ボリューム、共有、フォルダー、ファイル <br><br>    重複除去されたボリューム (NTFS のみ)  <br><br>   システム状態とベア メタル (ワークロードが Azure 仮想マシンとして実行されている場合はサポートされません) |
 | サーバー (64 ビット)          | Windows Server 2008 R2 SP1、Windows Server 2008 SP2 ([Windows Management Frame 4.0](https://www.microsoft.com/download/details.aspx?id=40855) をインストールする必要があります) | 物理サーバー  <br><br>    Hyper-V 仮想マシン  <br><br>      VMware 仮想マシン  <br><br>   Azure Stack | V3 UR1                            | ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル        |
 | SQL Server                | SQL Server 2019、2017、2016 と[サポートされている SP](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202016)、2014 とサポートされている [SP](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202014) | 物理サーバー  <br><br>     Hyper-V 仮想マシン   <br><br>     VMware 仮想マシン  <br><br>   Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)  <br><br>     Azure Stack | V3 UR1                            | すべてのデプロイ シナリオ: データベース       <br><br>  MABS v3 UR1 では、ReFS ボリュームを介した SQL データベースのバックアップがサポートされます                  |
 | Exchange                   | Exchange 2019、2016                                         | 物理サーバー   <br><br>   Hyper-V 仮想マシン  <br><br>      VMware 仮想マシン  <br><br>   Azure Stack  <br><br>    Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合) | V3 UR1                            | 保護 (すべてのデプロイ シナリオ):スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) に属するデータベース  <br><br>    回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース    <br><br>  MABS v3 UR1 では、ReFS を介した Exchange のバックアップがサポートされます |

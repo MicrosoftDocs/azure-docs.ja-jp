@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 27c1ad4907b0b16ce6830a6fe787b78f6129eadd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322841"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566150"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Syslog を使用して Linux ベースのソースからデータを収集する
 
@@ -86,6 +86,8 @@ Linux 用 Log Analytics エージェント (旧称 OMS エージェント) を�
 1. 「[Azure Monitor ログ クエリでの関数の使用](../azure-monitor/log-query/functions.md)」で説明されているクエリ パラメーターを使用して、Syslog メッセージを解析できます。 その後、新しい Log Analytics 関数としてクエリを保存し、新しいデータ型として使用できます。
 
 > [!NOTE]
+> **同じマシンを使用してプレーンな Syslog *と* CEF メッセージの両方を転送する**
+>
 >
 > 既存の [CEF ログ フォワーダー マシン](connect-cef-agent.md)を使用して、プレーンな Syslog ソースからもログを収集して転送できます。 ただし、両方の形式のイベントを Azure Sentinel に送信しないようにするには、次の手順を実行する必要があります。この結果、イベントが重複することになります。
 >

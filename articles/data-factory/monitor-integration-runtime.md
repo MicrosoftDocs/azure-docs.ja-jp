@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 07/25/2020
+ms.date: 08/11/2020
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 14f9ab0b1c3b8b437e46a7b6a2d8b87f03442a02
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b8d3472eeedab72644456b4278d3b9f3625c5850
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290540"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88078206"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイムを監視する
 
@@ -161,7 +161,7 @@ Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -Resou
 
 ## <a name="azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイム
 
-Azure-SSIS IR は、SSIS パッケージ実行専用の Azure 仮想マシン (ノード) の、フル マネージドのクラスターです。 さまざまな方法を使用して、Azure-SSIS IR 上での SSIS パッケージの実行を呼び出すことができます。たとえば、Azure 対応 SQL Server Data Tools (SSDT)、AzureDTExec コマンド ライン ユーティリティ、SQL Server Management Studio (SSMS) または SQL Server エージェントでの T-SQL、ADF パイプラインでの SSIS パッケージの実行アクティビティなどがあります。 Azure-SSIS IR では、その他の ADF アクティビティは実行されません。 プロビジョニングが完了すると、Azure PowerShell、Azure portal、および Azure Monitor を介して、全体またはノード固有のプロパティと状態を監視できます。
+Azure-SSIS IR は、SSIS パッケージ実行専用の Azure 仮想マシン (VM またはノード) の、フル マネージドのクラスターです。 さまざまな方法を使用して、Azure-SSIS IR 上での SSIS パッケージの実行を呼び出すことができます。たとえば、Azure 対応 SQL Server Data Tools (SSDT)、AzureDTExec コマンド ライン ユーティリティ、SQL Server Management Studio (SSMS) または SQL Server エージェントでの T-SQL、ADF パイプラインでの SSIS パッケージの実行アクティビティなどがあります。 Azure-SSIS IR では、その他の ADF アクティビティは実行されません。 プロビジョニングが完了すると、Azure PowerShell、Azure portal、および Azure Monitor を介して、全体またはノード固有のプロパティと状態を監視できます。
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-powershell"></a>Azure PowerShell を使用して Azure-SSIS Integration Runtime を監視する
 
@@ -228,31 +228,55 @@ Azure portal で Azure-SSIS IR を監視するには、ADF UI の **[監視]** �
 
 ![すべての統合ランタイムを監視する](media/monitor-integration-runtime/monitor-integration-runtimes.png)
 
-次に、Azure-SSIS IR の名前を選択して監視ページを開きます。そこでは、全体またはノード固有のプロパティと状態を確認できます。
+次に、Azure-SSIS IR の名前を選択して監視ページを開きます。そこでは、全体またはノード固有のプロパティと状態を確認できます。 このページには、Azure-SSIS IR の全般、デプロイ、および詳細の設定の構成方法に応じて、さまざまな情報や機能のタイルが表示されます。  **[種類]** と **[リージョン]** の各情報タイルには、Azure-SSIS IR の種類とリージョンがそれぞれ表示されます。 **[ノード サイズ]** 情報タイルには、Azure-SSIS IR の SKU (SSIS edition_VM tier_VM シリーズ)、CPU コア数、ノードあたりの RAM のサイズが表示されます。 **[RUNNING / REQUESTED NODE(S)]\(実行中または要求されたノード\)** 情報タイルでは、現在実行中のノード数が、Azure-SSIS IR に対して以前に要求されたノードの合計数と比較されます。 機能タイルの詳細については、以下を参照してください。
 
 ![Azure-SSIS IR の監視](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime.png)
 
-Azure-SSIS IR 監視ページの **[状態]** タイルには、 **[実行中]** や **[停止済み]** など、全体的な状態が表示されます。 **[実行中]** という状態を選択すると、Azure-SSIS IR を停止するライブの **[停止]** ボタンがあるウィンドウがポップアップ表示されます。 **[停止済み]** という状態を選択すると、Azure-SSIS IR を開始するライブの **[開始]** ボタンがあるウィンドウがポップアップ表示されます。 また、ポップアップ ウィンドウには **[SSIS パッケージの実行]** ボタンがあります。これは、Azure-SSIS IR 上で実行される SSIS パッケージの実行アクティビティで ADF パイプラインを自動生成するためのものです ([ADF パイプラインで SSIS パッケージの実行アクティビティとして SSIS パッケージを実行する](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)ことに関するページを参照してください)。また、 **[リソース ID]** テキスト ボックスがあり、ここから Azure-SSIS IR リソース ID (`/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR`) をコピーできます。これを使用して、独立系ソフトウェア ベンダー (ISV) から追加のプレミアムまたはライセンス付き SSIS コンポーネントを購入し、Azure-SSIS IR にバインドすることができます (「[Azure SSIS 統合ランタイムの有料 (ライセンスあり) カスタム コンポーネントをインストールする](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)」を参照してください)。
+#### <a name="status-tile"></a>[状態] タイル
+
+Azure-SSIS IR 監視ページの **[状態]** タイルには、 **[実行中]** や **[停止済み]** など、全体的な状態が表示されます。 **[実行中]** という状態を選択すると、Azure-SSIS IR を停止するライブの **[停止]** ボタンがあるウィンドウがポップアップ表示されます。 **[停止済み]** という状態を選択すると、Azure-SSIS IR を開始するライブの **[開始]** ボタンがあるウィンドウがポップアップ表示されます。 ポップアップ ウィンドウには、Azure-SSIS IR 上で実行される [SSIS パッケージの実行] アクティビティを含む ADF パイプラインを自動生成する **[SSIS パッケージの実行]** ボタン ([ADF パイプラインでの [SSIS パッケージの実行] アクティビティとしての SSIS パッケージの実行](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)に関するページを参照してください) と **[リソース ID]** テキスト ボックスがあります。ここで Azure-SSIS IR リソース ID (`/subscriptions/YourAzureSubscripton/resourcegroups/YourResourceGroup/providers/Microsoft.DataFactory/factories/YourADF/integrationruntimes/YourAzureSSISIR`) をコピーできます。 ADF と Azure-SSIS IR の名前を含む Azure-SSIS IR リソース ID のサフィックスによってクラスター ID が形成されます。これを使用して、独立系ソフトウェア ベンダー (ISV) から Premium またはライセンス SSIS コンポーネントを追加で購入し、それらを Azure-SSIS IR にバインドすることができます ([ Azure-SSIS IR への Premium またはライセンス コンポーネントのインストール](https://docs.microsoft.com/azure/data-factory/how-to-develop-azure-ssis-ir-licensed-components)に関するページを参照してください)。
 
 ![Azure-SSIS IR の監視 - 状態タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-status.png)
+
+#### <a name="ssisdb-server-endpoint-tile"></a>[SSISDB SERVER ENDPOINT]\(SSISDB サーバー エンドポイント\) タイル
 
 Azure SQL Database サーバーまたはマネージド インスタンスによってホストされている SSISDB にパッケージが格納されたプロジェクト配置モデルを使用している場合は、Azure-SSIS IR 監視ページに **[SSISDB SERVER ENDPOINT]\(SSISDB サーバー エンドポイント\)** タイルが表示されます ([Azure-SSIS IR デプロイ設定の構成](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)に関するページを参照してください)。 このタイルでは、Azure SQL Database サーバーまたはマネージド インスタンスを示すリンクを選択してウィンドウをポップアップ表示し、そのウィンドウでテキスト ボックスからサーバー エンドポイントをコピーし、SSMS から接続してパッケージのデプロイ、構成、実行、管理を行うときに使用できます。 そのポップアップ ウィンドウで、 **[See your Azure SQL Database or managed instance settings]\(Azure SQL Database またはマネージド インスタンスの設定を表示\)** リンクを選択して、Azure portal で SSISDB の再構成やサイズ変更を行うこともできます。
 
 ![Azure-SSIS IR の監視 - SSISDB タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-ssisdb.png)
 
+#### <a name="proxy--staging-tile"></a>[PROXY / STAGING]\(プロキシ/ステージング\) タイル
+
+セルフホステッド IR (SHIR) をダウンロードしてインストールし、Azure-SSIS IR のプロキシとして構成してオンプレミスのデータにアクセスすると、Azure-SSIS IR の監視ページに **[PROXY / STAGING]\(プロキシ/ステージング\)** タイルが表示されます ([Azure-SSIS IR のプロキシとしての SHIR の構成](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis)に関するページを参照してください)。 このタイルでは、SHIR を指定するリンクを選択して、監視ページを開くことができます。 また、ステージング用の Azure Blob Storage を指定する別のリンクを選択して、リンクされたサービスを再構成することもできます。
+
+#### <a name="validate-vnet--subnet-tile"></a>[VALIDATE VNET / SUBNET]\(VNET/サブネットの検証\) タイル
+
 Azure-SSIS IR を VNet に参加させると、Azure-SSIS IR 監視ページに **[VALIDATE VNET / SUBNET]\(VNET/サブネットの検証\)** タイルが表示されます (「[Azure-SSIS Integration Runtime を仮想ネットワークに参加させる](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network)」を参照してください)。 このタイルでは、VNet とサブネットを示すリンクを選択してウィンドウをポップアップ表示し、そのウィンドウで VNet のリソース ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/virtualNetworks/YourARMVNet`) とサブネット名をテキスト ボックスからコピーすることができます。さらに、Azure-SSIS IR で必要とされる受信/送信ネットワークのトラフィックと管理が妨げられないことを確認するために、VNet とサブネットの構成を検証することができます。
 
 ![Azure-SSIS IR の監視 - 検証タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-validate.png)
+
+#### <a name="diagnose-connectivity-tile"></a>[接続の診断] タイル
 
 Azure-SSIS IR 監視ページの **[接続の診断]** タイルで **[テスト接続]** リンクを選択してウィンドウをポップアップ表示し、そのウィンドウで、完全修飾ドメイン名 (FQDN) または IP アドレスと指定されたポートを使用して、Azure-SSIS IR と関連するパッケージ、構成、またはデータ ストアとの間の接続を確認できます ([Azure-SSIS IR からの接続のテスト](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-diagnose-connectivity-faq)に関するページを参照してください)。
 
 ![Azure-SSIS IR の監視 - 診断タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-diagnose.png)
 
+#### <a name="static-public-ip-addresses-tile"></a>[STATIC PUBLIC IP ADDRESSES]\(静的パブリック IP アドレス\) タイル
+
+Azure-SSIS IR にご自分の静的パブリック IP アドレスを使用すると、Azure-SSIS IR の監視ページに **[STATIC PUBLIC IP ADDRESSES]\(静的パブリック IP アドレス\)** タイルが表示されます ([ Azure-SSIS IR に自分の静的パブリック IP アドレスを使用する](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#publicIP)方法に関するページを参照してください)。 このタイルでは、Azure-SSIS IR の 1 つ目または 2 つ目の静的パブリック IP アドレスを指定するリンクを選択し、ウィンドウをポップアップ表示することができます。ここで、テキスト ボックスからリソース ID (`/subscriptions/YourAzureSubscripton/resourceGroups/YourResourceGroup/providers/Microsoft.Network/publicIPAddresses/YourPublicIPAddress`) をコピーすることができます。 また、ポップアップ ウィンドウで **[See your first/second static public IP address settings]\(1 つ目または 2 つ目の静的パブリック IP アドレス設定を表示する\)** リンクを選択し、Azure portal で 1 つ目または 2 つ目の静的パブリック IP アドレスを管理することもできます。
+
+![Azure-SSIS IR の監視 - 診断タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-static.png)
+
+#### <a name="package-stores-tile"></a>[PACKAGE STORES]\(パッケージ ストア\) タイル
+
 Azure SQL Managed Instance によってホストされ、Azure-SSIS IR パッケージ ストアを介して管理されるファイル システム、Azure Files、または SQL Server データベース (MSDB) にパッケージが格納されたパッケージ配置モデルを使用している場合は、Azure-SSIS IR 監視ページに **パッケージ ストア** タイルが表示されます ([Azure-SSIS IR デプロイ設定の構成](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure#deployment-settings-page)に関するページを参照してください)。 このタイルでは、Azure-SSIS IR に接続されているパッケージ ストアの数を示すリンクを選択してウィンドウをポップアップ表示し、そのウィンドウで、Azure SQL Managed Instance によってホストされているファイル システム、Azure Files、または MSDB 上の Azure-SSIS IR パッケージ ストアに関連するリンクされたサービスを再構成できます。
 
 ![Azure-SSIS IR の監視 - パッケージ タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-package.png)
 
+#### <a name="errors-tile"></a>[エラー] タイル
+
 Azure-SSIS IR の開始、停止、メンテナンス、アップグレードに問題がある場合は、Azure-SSIS IR 監視ページに **[エラー]** タイルが追加で表示されます。 このタイルでは、Azure-SSIS IR によって生成されるエラーの数を示すリンクを選択してウィンドウをポップアップ表示し、それらのエラーの詳細を確認してコピーし、トラブルシューティング ガイドで推奨されているソリューションを見つけることができます ([Azure-SSIS IR のトラブルシューティング](https://docs.microsoft.com/azure/data-factory/ssis-integration-runtime-management-troubleshoot)に関するページを参照してください)。
+
+![Azure-SSIS IR の監視 - 診断タイル](media/monitor-integration-runtime/monitor-azure-ssis-integration-runtime-error.png)
 
 ### <a name="monitor-the-azure-ssis-integration-runtime-with-azure-monitor"></a>Azure Monitor を使用して Azure-SSIS Integration Runtime を監視する
 
@@ -263,10 +287,10 @@ Azure Monitor で Azure-SSIS IR を監視する方法については、「[Azure
 Azure-SSIS 統合ランタイムについて詳しくは、以下の記事をご覧ください。
 
 - [Azure-SSIS 統合ランタイム](concepts-integration-runtime.md#azure-ssis-integration-runtime): この記事では、Azure-SSIS IR など、統合ランタイムの一般的な概念について説明されています。 
-- [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md): この記事は、Azure-SSIS IR を作成し、SQL Database を使用して SSIS カタログをホストするための詳細な手順を示しています。 
-- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)。 この記事では、チュートリアルを基に、SQL Managed Instance の使い方と、IR を仮想ネットワークに参加させる方法が説明されています。 
-- [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md): この記事では、Azure-SSIS IR を停止、開始、削除する方法が説明されています。 また、IR にノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。 
-- [仮想ネットワークへの Azure-SSIS IR の参加](join-azure-ssis-integration-runtime-virtual-network.md): この記事では、Azure 仮想ネットワークへの Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が仮想ネットワークに参加できるように Azure Portal を使用して仮想ネットワークを構成する手順も説明されています。 
+- [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md): この記事は、Azure-SSIS IR を作成し、Azure SQL Database を使用して SSIS カタログ (SSISDB) をホストするための詳細な手順を示しています。 
+- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md)。 この記事では、このチュートリアルを発展させて、Azure SQL Managed Instance を使用して SSISDB をホストする手順について説明されています。 
+- [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md): この記事では、Azure-SSIS IR を開始、停止、または削除する方法について説明されています。 また、ノードを追加してスケールアウトする方法についても説明されています。 
+- [仮想ネットワークへの Azure-SSIS IR の参加](join-azure-ssis-integration-runtime-virtual-network.md): この記事では、仮想ネットワークに Azure-SSIS IR を参加させる手順について説明されています。
 
 ## <a name="next-steps"></a>次のステップ
 パイプラインを監視するさまざまな方法について、次の記事をご覧ください。 

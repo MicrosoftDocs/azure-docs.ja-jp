@@ -168,6 +168,8 @@
       href: troubleshoot-appliance-discovery.md
     - name: 評価と依存関係の視覚化のトラブルシューティング
       href: troubleshoot-assessment.md
+    - name: エージェントレスの VMware 移行におけるレプリケーションの問題のトラブルシューティング
+      href: troubleshoot-changed-block-tracking-replication.md
 - name: リソース
   items:
     - name: クラウド導入フレームワークにおける移行

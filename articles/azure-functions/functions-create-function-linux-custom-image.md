@@ -3,14 +3,14 @@ title: カスタム イメージを使用して Linux 上で Azure Functions を
 description: カスタム Linux イメージで実行する Azure Functions を作成する方法について説明します。
 ms.date: 03/30/2020
 ms.topic: tutorial
-ms.custom: mvc, devx-track-python
+ms.custom: devx-track-csharp, mvc, devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 43ca0a01cd56d63113824eccd6d9c37b225d4134
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: efe1706f2ea97c3eadab8deade7e13123af17752
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87852584"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88225667"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>カスタム コンテナーを使用して Linux で関数を作成する
 
@@ -496,7 +496,7 @@ Azure Functions を使用すると、独自の統合コードを記述するこ�
 1. ルート フォルダーで `docker build` コマンドを再度実行します。今回は、タグ内のバージョンを `v1.0.1` に更新します。 以前と同様に、`<docker_id>` を Docker Hub アカウント ID に置き換えてください。
 
     ```
-    docker build --tag <docker_id>/azurefunctionsimage:v1.0.1
+    docker build --tag <docker_id>/azurefunctionsimage:v1.0.1 .
     ```
     
 1. `docker push` を使用して、更新済みのイメージをリポジトリにプッシュして戻します。

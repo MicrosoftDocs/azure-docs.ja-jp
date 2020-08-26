@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 965118345a003aface0373bda7496243bcab8429
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: f444ff4e884e50ed75b02328bfbe4d4117bc4cc9
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290173"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064793"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>カスタマーマネージド キーを使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化
 
@@ -26,7 +26,7 @@ Key Vault は、クラウドベースの外部キー管理システムです。 
 
 ## <a name="benefits"></a>メリット
 
-Azure Database for PostgreSQL 単一サーバーのデータ暗号化には、次の利点があります。
+Azure Database for PostgreSQL 単一サーバーのカスタマーマネージド キーによるデータ暗号化には、次の利点があります。
 
 * キーを削除してデータベースにアクセスできないようにすることで、ユーザーがデータアクセスを完全に制御できる 
 *    キーライフサイクルの完全な制御 (企業ポリシーに合わせたキーの交換を含む)
@@ -48,8 +48,8 @@ KEK で暗号化された DEK は、個別に格納されます。 KEK へのア
 PostgreSQL サーバーで DEK の暗号化のために Key Vault に格納されているカスタマーマネージド キーを使用する場合、Key Vault 管理者がサーバーに次のアクセス権を付与します。
 
 * **get**:Key Vault 内のキーの公開部分とプロパティを取得します。
-* **wrapKey**:DEK を暗号化できるようにします。
-* **unwrapKey**:DEK の暗号化を解除できるようにします。
+* **wrapKey**:DEK を暗号化できるようにします。 暗号化された DEK は Azure Database for PostgreSQL に格納されます。
+* **unwrapKey**:DEK の暗号化を解除できるようにします。 Azure Database for PostgreSQL でデータを暗号化または復号化するには、暗号化解除された DEK が必要となります
 
 Key Vault 管理者は、後で監査できるように、[Key Vault の監査イベントのログ記録を有効](../azure-monitor/insights/key-vault-insights-overview.md)にすることもできます。
 
@@ -59,18 +59,18 @@ Key Vault に格納されているカスタマーマネージド キーを使用
 
 Key Vault を構成するための要件を以下に示します。
 
-* Key Vault と Azure Database for PostgreSQL 単一サーバーは、同じ Azure Active Directory (Azure AD) テナントに属している必要があります。 テナント間の Key Vault とサーバーの対話はサポートされていません。 後でリソースを移動する場合は、データ暗号化を再構成する必要があります。
+* Key Vault と Azure Database for PostgreSQL 単一サーバーは、同じ Azure Active Directory (Azure AD) テナントに属している必要があります。 テナント間の Key Vault とサーバーの対話はサポートされていません。 後で Key Vault リソースを移動する場合は、データ暗号化を再構成する必要があります。
 * キー (または Key Vault) を誤って削除した場合のデータ損失から保護するには、Key Vault で論理的な削除機能を有効にします。 論理的に削除されたリソースは 90 日間保持されます (その間にユーザーが復旧または消去した場合を除く)。 復旧と消去のアクションには、Key Vault のアクセス ポリシーに関連付けられた独自のアクセス許可があります。 論理的な削除機能は既定ではオフになっていますが、PowerShell または Azure CLI を介して有効にすることができます (Azure portal を介して有効にできないことに注意してください)。
-* Azure Database for PostgreSQL 単一サーバーに対し、その一意のマネージド ID を使用して、get、wrapKey、unwrapKey のアクセス許可による Key Vault へのアクセスの権限を付与します。 Azure portal では、PostgreSQL 単一サーバーでのデータ暗号化を有効にすると、一意の ID が自動的に作成されます。 Azure portal を使用する場合の詳細な手順については、「[Azure portal を使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化](howto-data-encryption-portal.md)」を参照してください。
+* Azure Database for PostgreSQL 単一サーバーに対し、その一意のマネージド ID を使用して、get、wrapKey、unwrapKey のアクセス許可による Key Vault へのアクセスの権限を付与します。 Azure portal では、PostgreSQL 単一サーバーでのデータ暗号化を有効にすると、一意のサービス ID が自動的に作成されます。 Azure portal を使用する場合の詳細な手順については、「[Azure portal を使用した Azure Database for PostgreSQL 単一サーバーのデータ暗号化](howto-data-encryption-portal.md)」を参照してください。
 
 カスタマーマネージド キーを構成するための要件を以下に示します。
 
 * DEK の暗号化に使用されるカスタマーマネージド キーは、非対称の RSA 2048 のみです。
 * キーがアクティブ化された日時 (設定する場合) は、過去の日付と時刻にする必要があります。 有効期限 (設定する場合) は、将来の日付と時刻にする必要があります。
 * キーは、"*有効*" 状態になっている必要があります。
-* Key Vault に既存のキーをインポートする場合は、サポートされているファイル形式 (`.pfx`、`.byok`、`.backup`) で指定するようにしてください。
+* Key Vault に[既存のキーをインポート](https://docs.microsoft.com/rest/api/keyvault/ImportKey/ImportKey)する場合は、サポートされているファイル形式 (`.pfx`、`.byok`、`.backup`) で指定するようにしてください。
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 カスタマーマネージド キーを使用してデータ暗号化を利用する場合、Key Vault の構成に関する推奨事項は次のとおりです。
 

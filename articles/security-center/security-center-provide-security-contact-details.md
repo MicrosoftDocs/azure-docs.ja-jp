@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/11/2020
 ms.author: memildin
-ms.openlocfilehash: c09dca8b5927e417714ef89393950cfb58c89020
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: dda61b81ee2c357ddac29701832fe4780ea06859
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042277"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516301"
 ---
 # <a name="set-up-email-notifications-for-security-alerts"></a>セキュリティ アラートのメール通知を設定する 
 
@@ -32,6 +32,9 @@ ms.locfileid: "88042277"
 - **重要度が中程度**のアラートに関しては、1 日あたり最大 **2 通**のメール
 - **重要度が低い**アラートに関しては、1 日あたり最大 **1 通**のメール
 
+
+:::image type="content" source="./media/security-center-provide-security-contacts/email-notification-settings.png" alt-text="セキュリティ アラートに関する電子メールを受信する連絡先の詳細を構成しています。" :::
+
 ## <a name="availability"></a>可用性
 
 |側面|詳細|
@@ -41,8 +44,6 @@ ms.locfileid: "88042277"
 |必要なロールとアクセス許可:|**Security Admin**<br>**サブスクリプションの所有者** |
 |クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov (一部)<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
 |||
-
-
 
 
 ## <a name="set-up-email-notifications-for-alerts"></a>アラートの電子メール通知を設定する<a name="email"></a>
@@ -64,3 +65,4 @@ ms.locfileid: "88042277"
 
 * [セキュリティ アラート - リファレンス ガイド](alerts-reference.md) - Azure Security Center の Threat Protection モジュールで表示される可能性のあるセキュリティ アラートについて説明しています
 * [Azure Security Center でのセキュリティ アラートの管理と対応](security-center-managing-and-responding-alerts.md): セキュリティ アラートの管理と対応の方法について説明しています
+* [ワークフローの自動化](workflow-automation.md) -- カスタム通知ロジックを使用してアラートに対する応答を自動化します

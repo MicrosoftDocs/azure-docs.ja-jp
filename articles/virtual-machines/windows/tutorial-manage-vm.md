@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/06/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c896e617346c9bab598044cedfc475b471466cd0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b89b3e2cf799e1aa182f7005d92e2c91ce4b76ce
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86998852"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263080"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>チュートリアル:Azure PowerShell を使用して Windows VM を作成および管理する
 
@@ -261,6 +261,8 @@ Status
 ------
 PowerState/running
 ```
+
+サブスクリプション内のすべての VM の電源状態を取得するには、**statusOnly** パラメーターを *true* に設定して [Virtual Machines - List All API](https://docs.microsoft.com/rest/api/compute/virtualmachines/listall) を使用します。
 
 ## <a name="management-tasks"></a>管理タスク
 

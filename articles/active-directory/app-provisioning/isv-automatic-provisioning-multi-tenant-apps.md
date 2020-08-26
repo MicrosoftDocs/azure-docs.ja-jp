@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/23/2019
 ms.author: kenwith
 ms.reviewer: zhchia
-ms.openlocfilehash: 479bbe2dbef2d28a2744b667184c45e85faf9adc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 7ffdef43aa0fdcaab9e8ceae519cef9dfe5cdf6e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87283097"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235640"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>マルチテナント アプリケーションで自動ユーザー プロビジョニングを有効にする
 
@@ -54,7 +54,7 @@ Azure AD には、アプリケーションで自動ユーザー プロビジョ�
 
 * [Azure AD プロビジョニング サービス](../app-provisioning/user-provisioning.md)では、Azure AD からアプリケーションへ (外向きのプロビジョニング) とアプリケーションから Azure AD へ (内向きのプロビジョニング) のユーザーのプロビジョニングとプロビジョニング解除が管理されます。 このサービスは、あなたのアプリケーションによって提供される System for Cross-Domain Identity Management (SCIM) ユーザー管理 API エンドポイントに接続します。
 
-* [Microsoft Graph](https://docs.microsoft.com/graph/) を使用しているときに、そのアプリケーションは、Microsoft Graph API のクエリを実行して、Azure AD からそのアプリケーションに対するユーザーとグループの内向きのプロビジョニングと外向きのプロビジョニングを管理します。
+* [Microsoft Graph](/graph/) を使用しているときに、そのアプリケーションは、Microsoft Graph API のクエリを実行して、Azure AD からそのアプリケーションに対するユーザーとグループの内向きのプロビジョニングと外向きのプロビジョニングを管理します。
 
 * アプリケーションでフェデレーションに SAML が使用されている場合は、Security Assertion Markup Language Just in Time (SAML JIT) のユーザー プロビジョニングを有効にすることができます。 これは、SAML トークンで送信された要求情報を使用してユーザーのプロビジョニングを行います。
 
@@ -73,7 +73,7 @@ Azure AD には、アプリケーションで自動ユーザー プロビジョ�
 | エンタープライズ以外のアカウント (B2C) をサポートする| X| √| √ |
 
 <sup>*</sup> – AD から Azure AD にユーザーを同期するには、Azure AD Connect のセットアップが必要です。  
-<sup>+</sup >– プロビジョニングに SCIM を使用しても、他の目的のためにアプリケーションを MIcrosoft Graph と統合することが妨げられることはありません。
+<sup>+</sup >– プロビジョニングに SCIM を使用しても、他の目的のためにアプリケーションを Microsoft Graph と統合することが妨げられることはありません。
 
 ## <a name="azure-ad-provisioning-service-scim"></a>Azure AD プロビジョニング サービス (SCIM)
 
@@ -89,7 +89,7 @@ Azure AD プロビジョニング サービスでの SCIM の使用方法につ�
 
 ## <a name="microsoft-graph-for-provisioning"></a>プロビジョニングのための Microsoft Graph
 
-プロビジョニングに Microsoft Graph を使用すると、Graph で使用可能なすべてのリッチ ユーザー データにアクセスできます。 ユーザーとグループの詳細情報に加え、ユーザーのロール、マネージャーと直属の部下、所有するデバイスと登録されたデバイス、および [Microsoft Graph](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) で利用可能なその他の数百のデータなどの追加情報も取得できます。 
+プロビジョニングに Microsoft Graph を使用すると、Graph で使用可能なすべてのリッチ ユーザー データにアクセスできます。 ユーザーとグループの詳細情報に加え、ユーザーのロール、マネージャーと直属の部下、所有するデバイスと登録されたデバイス、および [Microsoft Graph](/graph/api/overview?view=graph-rest-1.0) で利用可能なその他の数百のデータなどの追加情報も取得できます。 
 
 1500 万を超える組織、および Fortune 500 企業の 90% が、Office 365、Microsoft Azure、Enterprise Mobility Suite、Microsoft 365 などの Microsoft クラウド サービスをサブスクライブしながら Azure AD を使用しています。 Microsoft Graph を使用して、従業員のオンボーディング (と退職)、プロファイルの保守などの管理ワークフローとアプリを統合できます。 
 
@@ -97,9 +97,9 @@ Azure AD プロビジョニング サービスでの SCIM の使用方法につ�
 
 * [Microsoft Graph ホーム ページ](https://developer.microsoft.com/graph)
 
-* [Microsoft Graph の概要](https://docs.microsoft.com/graph/overview)
+* [Microsoft Graph の概要](/graph/overview)
 
-* [Microsoft Graph 認証の概要](https://docs.microsoft.com/graph/auth/)
+* [Microsoft Graph 認証の概要](/graph/auth/)
 
 * [Microsoft Graph の概要](https://developer.microsoft.com/graph/get-started)
 

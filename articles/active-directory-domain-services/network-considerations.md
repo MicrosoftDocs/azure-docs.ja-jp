@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a3694b08bee732e3e2d3e7c0c339e5e0d94fe418
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 0b857cb853add1920e6933a9f1ebfd7a0f61b57f
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86040029"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054274"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services の仮想ネットワーク設計の考慮事項と構成オプション
 
@@ -114,6 +114,8 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 | 3389        | TCP      | CorpNetSaw                         | Any         | Allow  | はい      | ドメインの管理。 |
 | 5986        | TCP      | AzureActiveDirectoryDomainServices | Any         | Allow  | はい      | ドメインの管理。 |
 
+これらのルールを配置する必要がある Azure Standard Load Balancer が作成されます。 このネットワーク セキュリティ グループは Azure AD DS を保護し、マネージド ドメインが正しく機能するために必要です。 このネットワーク セキュリティ グループを削除しないでください。 これがないと、ロード バランサーは正常に機能しません。
+
 > [!WARNING]
 > これらのネットワーク リソースと構成を手動で編集しないでください。 正しく構成されていないネットワーク セキュリティ グループまたはユーザー定義のルート テーブルを、マネージド ドメインが展開されているサブネットに関連付けると、Microsoft のドメインのサービスと管理の機能が中断する可能性があります。 Azure AD テナントとマネージド ドメインの間の同期も中断されます。
 >
@@ -140,6 +142,10 @@ Azure AD DS の仮想ネットワークを設計する際には、次の考慮�
 
 > [!NOTE]
 > このネットワーク セキュリティ グループの規則を編集しようとすると、ポータルから *CorpNetSaw* サービス タグを手動で選択することはできません。 *CorpNetSaw* サービス タグを使用する規則を手動で構成するには、Azure PowerShell または Azure CLI を使用する必要があります。
+>
+> たとえば、次のスクリプトを使用して、RDP を許可する規則を作成できます。 
+>
+> `Get-AzureRmNetworkSecurityGroup -Name "nsg-name" -ResourceGroupName "resource-group-name" | Add-AzureRmNetworkSecurityRuleConfig -Name "new-rule-name" -Access "Allow" -Protocol "TCP" -Direction "Inbound" -Priority "priority-number" -SourceAddressPrefix "CorpNetSaw" -SourcePortRange "" -DestinationPortRange "3389" -DestinationAddressPrefix "" | Set-AzureRmNetworkSecurityGroup`
 
 ### <a name="port-5986---management-using-powershell-remoting"></a>ポート 5986 - PowerShell リモート処理を使用した管理
 

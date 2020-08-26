@@ -3,12 +3,12 @@ title: Azure Functions での従量課金プランのコストの見積もり
 description: Azure の従量課金プランで関数アプリを実行するときに発生する可能性があるコストをより正確に見積もる方法について説明します。
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 880d1c20c75ce297b556ac203e309e446227e97a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 33c892bd7904d2921039a4b2afb9c775d6a4926a
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87083040"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207772"
 ---
 # <a name="estimating-consumption-plan-costs"></a>従量課金プランのコストの見積もり
 
@@ -36,6 +36,8 @@ Durable Functions も従量課金プランで実行できます。 Durable Funct
 
 > [!NOTE]
 > CPU 使用率は実行コストでは直接考慮されませんが、関数の実行時間に影響する場合は、コストに影響を与える可能性があります。
+
+HTTP によってトリガーされる関数の場合、関数コードの実行が開始される前にエラーが発生した場合、実行に対して課金されることはありません。 これは、API キーの検証または App Service の認証/承認機能が原因のプラットフォームからの 401 応答は、実行コストに対してカウントされないことを意味します。 同様に、5xx 状態コードの応答が要求を処理する関数よりも前のプラットフォームで発生した場合は、カウントされません。 関数コードによってエラーが発生しなかった場合でも、関数コードの実行が開始された後にプラットフォームによって生成される 5xx 応答は、引き続き実行としてカウントされます。
 
 ## <a name="other-related-costs"></a>その他の関連コスト
 

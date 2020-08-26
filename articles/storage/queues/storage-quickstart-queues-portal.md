@@ -3,17 +3,17 @@ title: クイック スタート:ポータルで Azure Storage キューを作�
 description: Azure portal を使用してキューを作成します。 その後、Azure portal を使用して、メッセージを追加し、メッセージのプロパティを表示し、メッセージをデキューします。
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 03/06/2019
+ms.date: 08/13/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.reviewer: dineshm
-ms.openlocfilehash: af3f812c8018f059f26c29cd373714e4ab3c8a49
-ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
+ms.openlocfilehash: 11c6cdff852a0695d4b2071f1d0a60c05dba2410
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/16/2020
-ms.locfileid: "84808968"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213481"
 ---
 # <a name="quickstart-create-a-queue-and-add-a-message-with-the-azure-portal"></a>クイック スタート:Azure portal でキューを作成してメッセージを追加する
 
@@ -40,8 +40,8 @@ Azure portal でキューを作成するには、次の手順のようにしま�
 次に、新しいキューにメッセージを追加します。 メッセージの許容される最大サイズは 64 KB です。
 
 1. ストレージ アカウントのキューの一覧から新しいキューを選択します。
-1. **[+ メッセージの追加]** ボタンを選択して、キューにメッセージを追加します。 **[メッセージ テキスト]** フィールドにメッセージを入力します。 
-1. メッセージの有効期限を指定します。 メッセージをキューに保持できる最長時間は 7 日間です。
+1. **[+ メッセージの追加]** ボタンを選択して、キューにメッセージを追加します。 **[メッセージ テキスト]** フィールドにメッセージを入力します。
+1. メッセージの有効期限を指定します。 **[有効期限]** フィールドに入力できる有効な値は 1 秒から 7 日です。 明示的に削除されるまでメッセージをキューに保持する場合は、 **[メッセージの有効期限なし]** を選択します。
 1. メッセージを Base64 としてエンコードするかどうかを示します。 バイナリ データはエンコードすることをお勧めします。
 1. **[OK]** ボタンを選択して、メッセージを追加します。
 
@@ -61,7 +61,7 @@ Azure portal では、キューの先頭からメッセージをデキューす�
 
 ![ポータルからのメッセージのデキュー方法を示すスクリーンショット](media/storage-quickstart-queues-portal/dequeue-message.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Azure portal でキューを作成し、メッセージを追加し、メッセージのプロパティを表示して、メッセージをデキューする方法について説明しました。
 

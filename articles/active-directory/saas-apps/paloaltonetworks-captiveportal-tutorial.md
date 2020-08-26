@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Palo Alto Networks Captive Portal の統合 | Microsoft Docs
 description: Azure Active Directory と Palo Alto Networks Captive Portal の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f926741bde3bdcc69cb4ea30f54daca79606047e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 1dad0ecc80302ae6b48d420664723a3a03fc9ea5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160168"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554022"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>チュートリアル:Azure Active Directory と Palo Alto Networks Captive Portal の統合
 
@@ -159,7 +154,7 @@ Palo Alto Networks Captive Portal を使った Azure AD のシングル サイ�
 
     1. **[名前]** に、「**BrittaSimon**」と入力します。
   
-    2. **[ユーザー名]** に、「**BrittaSimon\@\<your_company_domain\>** 」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
+    2. **[ユーザー名]** に「**BrittaSimon\@\<your_company_domain\>** 」と入力します。 たとえば、「**BrittaSimon\@contoso.com**」です。
 
     3. **[パスワード]** に、パスワードを入力します。 入力するパスワードはどこかに記録しておくことをお勧めします。 **[パスワードを表示]** チェック ボックスをオンにして、パスワードを表示することもできます。
 

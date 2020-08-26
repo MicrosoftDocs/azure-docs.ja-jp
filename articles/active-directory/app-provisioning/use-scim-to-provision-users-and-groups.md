@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 03/07/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a8138f125c55e3b2d76cb680ea48366c5a3e05fd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 70938bf1dcd06ce9936767c66ffead0f8627c5a7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87051512"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235470"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM エンドポイントの構築と Azure AD を使用したユーザー プロビジョニングの構成
 
@@ -745,13 +745,13 @@ TLS 1.2 暗号スイートの最低条件:
 - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
 
 ### <a name="ip-ranges"></a>IP 範囲
-Azure AD プロビジョニング サービスは現在、Azure IP 範囲下で稼働できます。 サービスを稼働する一連の IP 範囲を統合する作業が進行中です。 IP 範囲一覧の統合後、このドキュメントは更新されます。 
+Azure AD プロビジョニング サービスは、現在、[こちら](https://www.microsoft.com/download/details.aspx?id=56519&WT.mc_id=rss_alldownloads_all)に記載されている AzureActiveDirectory と AzureActiveDirectoryDomainServices の IP 範囲で動作します。 AzureActiveDirectory の IP 範囲のみへの統合を行う作業が進行中です。 
 
 ## <a name="step-3-build-a-scim-endpoint"></a>手順 3:SCIM エンドポイントを構築する
 
 これでスキーマを設計し、Azure AD SCIM の実装を理解したので、SCIM エンドポイントの開発を開始できます。 最初から開始して完全に独自の実装を構築するのではなく、SCIM コミュニティによって発行された多数のオープンソース SCIM ライブラリを使用できます。
 
-Azure AD プロビジョニング チームによって発行されたオープンソースの .NET Core [参照コード](https://aka.ms/SCIMReferenceCode)は、開発を開始するためのリソースの 1 つです。 SCIM エンドポイントを構築したら、それをテストします。参照コードの一部として提供されている [Postman テスト](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)のコレクションを使用したり、[上記](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#user-operations)の要求または応答のサンプルを通じて実行したりすることができます。  
+Azure AD プロビジョニング チームによって発行されたオープンソースの .NET Core [参照コード](https://aka.ms/SCIMReferenceCode)は、開発を開始するためのリソースの 1 つです。 SCIM エンドポイントを構築したら、それをテストします。参照コードの一部として提供されている [Postman テスト](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint)のコレクションを使用したり、[上記](#user-operations)の要求または応答のサンプルを通じて実行したりすることができます。  
 
    > [!Note]
    > 参照コードは、SCIM エンドポイントの構築を開始するのに役立ち、"現状のまま" 提供されることを目的としています。 コードのビルドと保守に役立つため、コミュニティからの貢献は歓迎されます。
@@ -799,7 +799,7 @@ SCIM サービスには、HTTP アドレスと、ルート証明機関が次の�
 * Microsoft.SCIM.WebHostSample: https://localhost:5001
 * IIS Express: https://localhost:44359/
 
-ASP.NET Core の HTTPS の詳細については、次のリンクを参照してください: 「[ASP.NET Core に HTTPS を適用する](https://docs.microsoft.com/aspnet/core/security/enforcing-ssl)」
+ASP.NET Core の HTTPS の詳細については、次のリンクを参照してください: 「[ASP.NET Core に HTTPS を適用する](/aspnet/core/security/enforcing-ssl)」
 
 ### <a name="handling-endpoint-authentication"></a>エンドポイント認証の処理
 
@@ -1168,12 +1168,12 @@ Azure AD は、割り当てられたユーザーとグループを、[SCIM 2.0 �
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>手順 5:Azure AD アプリケーション ギャラリーにアプリケーションを発行する
 
-複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用可能にできます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](../develop/howto-app-gallery-listing.md)で確認してください。 Microsoft はお客様と協力して、お客様のアプリケーションをギャラリーに統合し、エンドポイントをテストし、顧客が使用できるオンボード [ドキュメント](../saas-apps/tutorial-list.md)をリリースします。 
+複数のテナントによって使用されるアプリケーションを作成する場合は、Azure AD アプリケーション ギャラリーで使用可能にできます。 これにより、組織でアプリケーションを見つけて、プロビジョニングを構成することが簡単になります。 簡単に、Azure AD ギャラリーにアプリを発行し、他のユーザーがプロビジョニングできるようにすることができます。 手順は、 [こちら](../azuread-dev/howto-app-gallery-listing.md)で確認してください。 Microsoft はお客様と協力して、お客様のアプリケーションをギャラリーに統合し、エンドポイントをテストし、顧客が使用できるオンボード [ドキュメント](../saas-apps/tutorial-list.md)をリリースします。 
 
 ### <a name="gallery-onboarding-checklist"></a>ギャラリーのオンボードのチェックリスト
 アプリケーションの迅速なオンボードと顧客のスムーズなデプロイ エクスペリエンスを確実なものとするために、以下のチェックリストに従ってください。 ギャラリーにオンボードする際に、ご自身から情報が収集されます。 
 > [!div class="checklist"]
-> * [SCIM 2.0 ](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-2-understand-the-azure-ad-scim-implementation) のユーザーおよびグループ エンドポイントをサポートする (必要なのは 1 つだけですが両方を推奨)
+> * [SCIM 2.0 ](#step-2-understand-the-azure-ad-scim-implementation) のユーザーおよびグループ エンドポイントをサポートする (必要なのは 1 つだけですが両方を推奨)
 > * テナントごとに少なくとも 1 秒あたり 25 個の要求をサポートする (必須)
 > * 顧客のギャラリー オンボード後のガイドを行うエンジニアリングとサポートの連絡先を確立する (必須)
 > * アプリケーションの 3 つの無期限のテスト資格情報 (必須)

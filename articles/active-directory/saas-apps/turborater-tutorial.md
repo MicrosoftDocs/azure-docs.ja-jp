@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と TurboRater の統合 | Microsoft Docs'
 description: Azure Active Directory と TurboRater の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: abb116b8-8024-4cc6-bc81-f32ef490ea17
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
-ms.openlocfilehash: 3777cf09ec669fe3df6bca13f6960f53c689767c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67088273"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>チュートリアル: Azure Active Directory と TurboRater の統合
 
@@ -151,7 +147,7 @@ TurboRater 側でシングル サインオンを構成するには、ダウン�
 
     1. **[名前]** ボックスに、「**BSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに、「**BSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BSimon\@contoso.com**」のように入力します。
+    1. **[ユーザー名]** ボックスに「**BSimon\@\<yourcompanydomain>.\<extension>** 」と入力します。 たとえば、「**BSimon\@contoso.com**」のように入力します。
 
     1. **[パスワードを表示]** チェック ボックスをオンにし、 **[パスワード]** ボックスに表示された値を書き留めます。
 

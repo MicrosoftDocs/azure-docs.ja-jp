@@ -2,25 +2,21 @@
 title: Azure AD アプリケーション プロキシに関してよく寄せられる質問 | Microsoft Docs
 description: Azure AD アプリケーション プロキシを使用して内部のオンプレミス アプリケーションをリモート ユーザーに公開する方法についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 78a0cb6217d8c1d25f08801066a970d6bc94e1b0
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88042107"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589165"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory (Azure AD) アプリケーション プロキシに関してよく寄せられる質問
 
@@ -90,6 +86,15 @@ Azure AD アプリケーション プロキシを使用するには、Azure AD P
 
 
 ## <a name="application-configuration"></a>アプリケーションの構成
+
+### <a name="i-am-receiving-an-error-about-an-invalid-certificate-or-possible-wrong-password"></a>証明書が無効か、パスワードが間違っている可能性があるというエラーが返されます
+
+SSL 証明書のアップロード後に、ポータルに「証明書が無効であるか、パスワードが間違っている可能性がある」というメッセージが表示されます。
+
+このエラーの問題解決に使用できるヒントを、次にいくつか示します。
+- 証明書に問題がないことを確認します。 それをお使いのローカル コンピューターにインストールします。 問題が発生しなかった場合、その証明書には問題はありません。
+- パスワードに特殊文字が含まれないことを確認します。 テストする場合、パスワードには 0 から 9、A から Z、a から z の文字のみが含まれている必要があります。
+- 証明書が Microsoft ソフトウェア キー格納プロバイダーで作成されている場合は、RSA アルゴリズムが使用されている必要があります。
 
 ### <a name="what-is-the-length-of-the-default-and-long-back-end-timeout-can-the-timeout-be-extended"></a>既定値と「長い」バックエンド タイムアウトの長さはどれくらいですか。 タイムアウトは延長できますか。
 

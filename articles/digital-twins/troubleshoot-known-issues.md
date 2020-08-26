@@ -6,12 +6,12 @@ ms.author: baanders
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.date: 07/14/2020
-ms.openlocfilehash: bdde2076039a6f7687e06edef6dfd6f6f5148ce4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9130a3248e881c9d4e2c9bfe9017f43198d50f51
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87044140"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590168"
 ---
 # <a name="known-issues-in-azure-digital-twins"></a>Azure Digital Twins の既知の問題
 
@@ -30,6 +30,48 @@ Cloud Shell のコマンドが断続的に失敗して、エラー "400 Client E
 ### <a name="possible-causes"></a>考えられる原因
 
 これは Cloud Shell の既知の問題の結果です。"[*Cloud Shell からのトークンの取得が断続的に失敗し、400 Client Error:Bad Request を受け取る*](https://github.com/Azure/azure-cli/issues/11749)"
+
+## <a name="missing-role-assignment-after-scripted-setup"></a>スクリプトを使用したセットアップ後にロールの割り当てが存在しない
+
+ユーザーによっては、[*方法: インスタンスと認証の設定 (スクリプト化) に関する記事のロールの割り当て部分で問題が発生することがあります。インスタンスと認証の設定 (スクリプト化)* ](how-to-set-up-instance-scripted.md) に関するページを参照してください。 このスクリプトでは失敗として示されませんが、*Azure Digital Twins 所有者 (プレビュー)* ロールがユーザーに正常に割り当てられておらず、これは、今後その他のリソースを作成する機能に影響します。
+
+スクリプトの実行後にロールの割り当てが正常に設定されたかどうかを確認するには、セットアップの記事にある「[*ユーザー ロールの割り当てを確認する*](how-to-set-up-instance-scripted.md#verify-user-role-assignment)」の手順に従ってください。 ユーザーに対してこのロールが表示されていない場合、この問題による影響があります。
+
+### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
+
+これを解決するには、CLI または Azure portal を使用して、手動でロールの割り当てを設定します。 
+
+以下の手順に従います。
+* [CLI](how-to-set-up-instance-cli.md#set-up-user-access-permissions)
+* [portal](how-to-set-up-instance-portal.md#set-up-user-access-permissions)
+
+### <a name="possible-causes"></a>考えられる原因
+
+個人の [Microsoft アカウント (MSA)](https://account.microsoft.com/account) でログインしているユーザーの場合、このようなコマンドにおいてユーザーの識別に使用されるユーザーのプリンシパル ID が、ユーザーのログイン メールとは異なる場合があります。そのため、スクリプトによってこれを検出し、使用してロールを適切に割り当てることが困難になります。
+
+## <a name="issue-with-interactive-browser-authentication"></a>対話型ブラウザーの認証に関する問題
+
+**[Azure.Identity](https://docs.microsoft.com/dotnet/api/azure.identity?view=azure-dotnet) ライブラリ**の最新バージョン (バージョン **1.2.0**) を使用して Azure Digital Twins アプリケーションで認証コードを記述すると、[InteractiveBrowserCredential](https://docs.microsoft.com/dotnet/api/azure.identity.interactivebrowsercredential?view=azure-dotnet) メソッドで問題が発生することがあります。
+
+影響を受けるメソッドは、次の記事で使用されています。 
+* [*チュートリアル:クライアント アプリをコーディングする*](tutorial-code.md)
+* [*方法: アプリ認証コードを作成する*](how-to-authenticate-client.md)
+* [*方法: Azure Digital Twins の API および SDK を使用する*](how-to-use-apis-sdks.md)
+
+この問題には、ブラウザー ウィンドウで認証を試みた際に表示される "Azure.Identity.AuthenticationFailedException" というエラー応答が含まれます。 ブラウザー ウィンドウが完全に起動できなくなるか、一見ユーザーが正常に認証されたかのように見せてクライアント アプリケーションがエラーで失敗します。
+
+### <a name="troubleshooting-steps"></a>トラブルシューティングの手順
+
+解決するには、アプリケーションで Azure.Identity バージョン **1.1.1** を明示的に使用します。 このバージョンのライブラリを使用することで、ブラウザーが想定どおりに読み込まれ、認証されるはずです。
+
+>[!NOTE]
+> バージョンを指定せずにライブラリを追加しても、最新の **1.2.0** が規定で使用されるため、これだけでは十分ではありません。 バージョン **1.1.1** を明示的に指定する必要があります。
+
+### <a name="possible-causes"></a>考えられる原因
+
+これは、Azure Digital Twins と Azure.Identity ライブラリの最新バージョンであるバージョン **1.2.0** との間の非互換性です。 
+
+この問題は、アプリケーションでバージョン **1.2.0** を使用している場合や、バージョンを指定せずにライブラリをプロジェクトに追加した場合 (これによっても最新バージョンが規定で使用されます) に発生します。
 
 ## <a name="next-steps"></a>次のステップ
 

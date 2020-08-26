@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: bfe609dc480dcdb71f162ca1bfd383a27257fedc
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/17/2020
+ms.openlocfilehash: d8268ebf89bed6b67919e77576118343b58edb6c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321702"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516624"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure SQL での Azure Active Directory のサービス プリンシパル
 
@@ -80,6 +80,8 @@ Azure AD アプリケーションの代わりに SQL Database と Azure Synapse 
 
 > [!IMPORTANT]
 > 手順 1 および 2 は、上記の順序で実行する必要があります。 最初にサーバー ID を作成するか、割り当てて、次に[**ディレクトリ閲覧者**](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)アクセス許可を付与します。 これらの手順のいずれかまたは両方を省略すると、Azure AD アプリケーションの代わりに Azure SQL で Azure AD オブジェクトを作成するときに実行エラーが発生します。 Azure AD アプリケーションの代わりに Azure AD ユーザーを作成するための詳細な手順については、「[チュートリアル:Azure AD アプリケーションを使用して Azure AD ユーザーを作成する](authentication-aad-service-principal-tutorial.md)」を参照してください。
+>
+> **パブリック プレビュー**では、Azure AD 内のグループに**ディレクトリ閲覧者**ロールを割り当てることができます。 グループの所有者は、このグループのメンバーとしてマネージド ID を追加できます。これにより、**グローバル管理者**、または**特権ロール管理者** のニーズがバイパスされ、**ディレクトリ閲覧者**ロールが許可されます。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
 
 ## <a name="troubleshooting-and-limitations-for-public-preview"></a>パブリック プレビューのトラブルシューティングと制限
 

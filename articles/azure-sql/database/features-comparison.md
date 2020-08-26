@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 07/22/2020
-ms.openlocfilehash: e7f80c7db4af7c676881d92e8fe86d62a45e3310
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 30107c99f16b1b2f7c91ce8a662f44a041410d01
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87049581"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88119370"
 ---
 # <a name="features-comparison-azure-sql-database-and-azure-sql-managed-instance"></a>機能の比較:Azure SQL Database と Azure SQL Managed Instance
 
@@ -97,7 +97,7 @@ Azure がデータベースを管理し、高可用性を保証します。 高�
 | [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | いいえ | はい、ただし、インスタンス内でのみとなります。 リモート Service Broker ルートを使用している場合は、移行時に複数の分散 SQL Server インスタンスから 1 つの SQL Managed Instance にデータベースを統合し、ローカル ルートのみを使用してみてください。 [Service Broker の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#service-broker)に関する記述を参照してください |
 | [サーバーの構成設定](https://docs.microsoft.com/sql/database-engine/configure-windows/server-configuration-options-sql-server) | いいえ | はい - [T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)に関する記事を参照してください |
 | [SET ステートメント](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください | はい - [T-SQL の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md)に関する記事を参照してください|
-| [SQL Server エージェント](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | いいえ - [エラスティック ジョブ](elastic-jobs-overview.md)に関する記事を参照してください | はい - [SQL Server エージェントの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent)に関する記事を参照してください |
+| [SQL Server エージェント](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | いいえ - [エラスティック ジョブ (プレビュー)](elastic-jobs-overview.md) に関する記事を参照してください | はい - [SQL Server エージェントの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#sql-server-agent)に関する記事を参照してください |
 | [SQL Server 監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | いいえ - [SQL Database の監査](auditing-overview.md)に関する記事を参照してください | はい - [監査の相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#auditing)に関するページを参照してください |
 | [システム ストアド関数](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | ほとんどの場合 - 個々の関数に関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers)に関するページを参照してください |
 | [システム ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) | 一部 - 個々のストアド プロシージャに関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](../managed-instance/transact-sql-tsql-differences-sql-server.md#stored-procedures-functions-and-triggers)に関するページを参照してください |

@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: ca49aafcfa4911c97cff4a9187184ba420cd76da
-  ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+  ms.openlocfilehash: df855334f91899ab23625f7161792d0bec416782
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/13/2020
-  ms.locfileid: "88168254"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816602"
 landingContent:
 - title: デプロイ エラーのトラブルシューティング
   linkLists:
@@ -104,13 +104,13 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 仮想ディスクの FAQ
-      url: ../windows/faq-for-disks.md
+      url: ../faq-for-disks.md
     - text: VM のサイズを変更するときの割り当てエラーのトラブルシューティング
       url: ./allocation-failure.md
     - text: VM の一時ドライブについて
-      url: ../windows/managed-disks-overview.md#temporary-disk
+      url: ../managed-disks-overview.md#temporary-disk
     - text: Azure Managed Disks の概要
-      url: ../windows/managed-disks-overview.md
+      url: ../managed-disks-overview.md
 - title: ディスクの暗号化の問題
   linkLists:
   - linkListType: how-to-guide

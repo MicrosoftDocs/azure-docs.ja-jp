@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: f4d90693f2cd3bdd440b7cb914e7fc037103d362
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 440007767835de4641fb828b41d572f35997acd2
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120995"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064470"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Azure Database for MySQL の接続アーキテクチャ
 この記事では、Azure Database for MySQL 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for MySQL インスタンスに転送されるかについて説明します。
@@ -65,8 +65,8 @@ Azure Database for MySQL への接続は、受信接続をクラスター内の�
 | 英国南部 | 51.140.184.11   |
 | 英国西部 | 51.141.8.11  |
 | 米国中西部 | 13.78.145.25     |
-| 西ヨーロッパ | 40.68.37.158、191.237.232.75、13.69.105.208  |
-| 米国西部 | 104.42.238.205、23.99.34.75  |
+| 西ヨーロッパ | 40.68.37.158、191.237.232.75、13.69.105.208、104.40.169.187 |
+| 米国西部 | 104.42.238.205、23.99.34.75、13.86.216.212、13.86.217.212 |
 | 米国西部 2 | 13.66.226.202  |
 ||||
 

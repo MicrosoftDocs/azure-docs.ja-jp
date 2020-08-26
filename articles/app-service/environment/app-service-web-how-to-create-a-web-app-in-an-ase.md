@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ba94f15f21696c87b336dc1f17b6f9f9def75c6c
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.openlocfilehash: 9359fe07818b3c5fbc08082cdf1f96195a7836ab
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86220696"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080611"
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
 
@@ -24,7 +24,7 @@ ms.locfileid: "86220696"
 このチュートリアルでは、[App Service Environment v1](app-service-app-service-environment-intro.md) (ASE) で Web アプリと App Service プランを作成する方法について説明します。 
 
 > [!NOTE]
-> Web アプリを作成する方法を知りたいが、App Service 環境で行う必要はない場合は、「 [.NET web アプリを作成する](../app-service-web-get-started-dotnet.md) 」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
+> Web アプリを作成する方法を知りたいが、App Service 環境で行う必要はない場合は、「 [.NET web アプリを作成する](../quickstart-dotnetcore.md) 」か、その他の言語やフレームワーク向けの関連するチュートリアルを参照してください。
 > 
 > 
 
@@ -40,7 +40,7 @@ ms.locfileid: "86220696"
     サブスクリプションを複数保有している場合、App Service 環境でアプリを作成するには、App Service 環境を作成するときに使用したものと同じサブスクリプションを使用する必要があります。 
 3. リソース グループを選択または作成します。
    
-    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に*ロール ベースのアクセス制御* (RBAC) 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。 
+    *リソース グループ*を使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用に *Azure のロールベースのアクセス制御 (Azure RBAC)* 規則を作成する際に便利です。 詳細については、「[Azure Resource Manager の概要][ResourceGroups]」を参照してください。 
 4. App Service プランを選択または作成します。
    
     *App Service プラン*は、管理された Web アプリのセットです。  通常、価格を選択すると、課金される価格は個々のアプリではなく App Service プランに適用されます。 ASE では、ASP に記載されているものではなく、ASE に割り当てられているコンピューティング インスタンスに対して課金されます。  Web アプリのインスタンスの数を増やすには、App Service プランのインスタンスを増やします。これにより、そのプラン内のすべての Web アプリが影響を受けます。  サイトのスロット、VNET 統合などのいくつかの機能には、プラン内での数量制限があります。  詳細については、「[Azure App Service プランの概要](../overview-hosting-plans.md)」を参照してください。

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 06/02/2020
+ms.date: 08/05/2020
 ms.author: juliako
-ms.openlocfilehash: d7667f7c5194762b227c3cddd5bea5ed9d50a96e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1b11dc0ee17fd0686776a7262c4bc99bd98bcc3e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87042620"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837311"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer リリース ノート
 
@@ -29,6 +29,28 @@ ms.locfileid: "87042620"
 * 既知の問題
 * バグの修正
 * 非推奨の機能
+
+## <a name="july-2020"></a>2020 年 7 月
+
+### <a name="ga-for-multi-language-identification"></a>GA になった複数言語の識別
+
+複数言語の識別はプレビューから GA に移行され、運用環境で使用する準備ができています。
+
+"プレビューから GA" への移行に関連する価格への影響はありません。
+
+### <a name="video-indexer-website-improvements"></a>Video Indexer Web サイトの改善
+
+#### <a name="adjustments-in-the-video-gallery"></a>ビデオ ギャラリーでの調整
+
+詳細な分析情報の検索用に、追加のフィルター機能を備えた新しい検索バーが追加されました。 検索結果も拡張されています。
+
+複数のファイルを含むビデオ アーカイブの並べ替えと管理を行う機能を備えた新しいリスト ビュー。
+
+#### <a name="new-panel-for-easy-selection-and-configuration"></a>選択と構成が容易な新しいパネル
+
+選択とユーザーの構成が容易なサイド パネルが追加され、シンプルで迅速なアカウントの作成と共有や、構成の設定が可能になっています。
+
+サイド パネルは、ユーザー設定やヘルプにも使用されます。
 
 ## <a name="june-2020"></a>2020 年 6 月
 

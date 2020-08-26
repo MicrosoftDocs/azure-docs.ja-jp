@@ -11,12 +11,12 @@ ms.date: 07/20/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d19f59635920951b506e41884f4ab79be78e247d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 375c97179351e1dbf90ce4488114cb232d6dd450
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87080728"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121325"
 ---
 # <a name="using-identity-to-create-surrogate-keys-in-synapse-sql-pool"></a>Synapse SQL プールで IDENTITY を使用して代理キーを作成する
 
@@ -24,7 +24,9 @@ ms.locfileid: "87080728"
 
 ## <a name="what-is-a-surrogate-key"></a>代理キーとは
 
-テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、データ ウェアハウス モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。 IDENTITY プロパティには、「[CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)」で詳しく説明されているいくつかの制限があります。 IDENTITY の制限事項の 1 つは、それが一意であることが保証されないことです。 IDENTITY INSERT をオフにして設定して ID 値が再シードされないようにすると、一意の値は増えますが、すべての状況で一意性が保証されるとは限りません。 IDENTITY の制限事項が原因で ID 値を使用できない場合は、アプリケーションを使用して、現在の値を保持する別のテーブルを作成し、テーブルへのアクセスと数値の割り当てを管理します。 
+テーブルの代理キーは、各行の一意の識別子を持つ列です。 代理キーはテーブル データからは生成されません。 データ モデラーは、データ ウェアハウス モデルを設計するときに、テーブルに代理キーを作成するのを好みます。 IDENTITY プロパティを使うと、この目的を簡単かつ効果的に達成でき、読み込みのパフォーマンスが影響を受けることもありません。
+> [!NOTE]
+> Synapse SQL の IDENTITY 値は、ユーザーが明示的に "SET IDENTITY_INSERT ON" と重複する値を挿入するか IDENTITY を再シードする場合は、一意であるとは限りません。 詳細については、「[CREATE TABLE (Transact-SQL) IDENTITY (プロパティ)](/sql/t-sql/statements/create-table-transact-sql-identity-property?view=azure-sqldw-latest)」を参照してください。 
 
 ## <a name="creating-a-table-with-an-identity-column"></a>IDENTITY 列があるテーブルを作成する
 

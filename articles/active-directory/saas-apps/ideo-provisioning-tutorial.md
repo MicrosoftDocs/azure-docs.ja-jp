@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニング用に IDEO を構成する | Microsoft Docs
 description: IDEO に対してユーザー アカウントが自動的にプロビジョニングおよびプロビジョニング解除されるように、Azure Active Directory を構成する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: de4f06a3-83e9-46ce-80ee-03d706b91c81
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: a778675bade3b381907a823e74f07ab4e7f96581
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: f1b42619a80610a1732fb763dd4994241bf584fd
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926877"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547445"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に IDEO を構成する
 

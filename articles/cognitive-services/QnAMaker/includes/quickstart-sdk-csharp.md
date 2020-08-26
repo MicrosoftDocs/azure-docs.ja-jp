@@ -3,12 +3,12 @@ title: クイック スタート:.NET 用 QnA Maker クライアント ライブ
 description: このクイックスタートでは、.NET 用 QnA Maker クライアント ライブラリの使用を開始する方法について説明します。 以下の手順に従って、パッケージをインストールし、基本タスクのコード例を試してみましょう。  QnA Maker を使用すると、FAQ ドキュメント、URL、製品マニュアルなどの半構造化コンテンツからの質問と回答サービスをいっそう強力にできます。
 ms.topic: quickstart
 ms.date: 06/18/2020
-ms.openlocfilehash: 0dfabfa1357543e4011412c0a9f63061e8856019
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: eecbf162f3bd043bf4aabe9796ee095667e0cc39
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87507329"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246301"
 ---
 .NET 用 QnA Maker クライアント ライブラリは、次の目的で使用することができます。
 
@@ -27,7 +27,7 @@ ms.locfileid: "87507329"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) または現在のバージョンの [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)。
 * Azure サブスクリプションを入手したら、Azure portal で [QnA Maker リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)を作成し、オーサリング キーとリソース名を取得します。 デプロイされたら、 **[リソースに移動]** を選択します。
     * アプリケーションを QnA Maker API に接続するには、作成したリソースのキーとリソース名が必要です。 このクイックスタートで後に示すコードに、自分のキーとリソース名を貼り付けます。

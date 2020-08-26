@@ -5,12 +5,12 @@ description: Azure Kubernetes Service (AKS) でクラスターのセキュリテ
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c4f56cf4e04b9df31c8c4204d396ead8073ec526
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244210"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88003055"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのクラスターのセキュリティとアップグレードに関するベスト プラクティス
 
@@ -19,7 +19,7 @@ Azure Kubernetes Service (AKS) でクラスターを管理する際には、ワ�
 この記事では、AKS クラスターをセキュリティで保護する方法について説明します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Active Directory とロールベースのアクセス制御を使用して API サーバー アクセスをセキュリティで保護する
+> * Azure Active Directory とロールベースのアクセス制御 (RBAC) を使用して API サーバー アクセスをセキュリティで保護する
 > * ノード リソースへのコンテナー アクセスをセキュリティで保護する
 > * AKS クラスターを最新の Kubernetes バージョンにアップグレードする
 > * ノードを最新の状態に保ち、セキュリティ パッチを自動的に適用する
@@ -53,7 +53,7 @@ Azure AD 統合と RBAC の詳細については、[AKS の認証と承認のベ
 コンテナー アクションをより細かく制御するには、*AppArmor* や *seccomp* など、組み込みの Linux セキュリティ機能を使用することもできます。 このような機能はノード レベルで定義されてから、ポッド マニフェストを介して実装されます。 組み込みの Linux セキュリティ機能は、Linux ノードとポッドに対してのみ使用できます。
 
 > [!NOTE]
-> AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント使用に対しては完全に安全ではありません。 *AppArmor*、*seccomp*、*Pod Security Policy* などの他のセキュリティ機能やノードに対するきめの細かいロールベースのアクセス制御 (RBAC) によって、悪用しにくくします。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。
+> AKS などでは、Kubernetes 環境は、悪意のあるマルチテナント使用に対しては完全に安全ではありません。 ノードに対して、*AppArmor*、*seccomp*、*Pod Security Policy* などの追加のセキュリティ機能や、よりきめ細かいロールベースのアクセス制御 (RBAC) を使用すると、セキュリティ上の弱点を悪用されにくくなります。 ただし、悪意のあるマルチテナント ワークロードの実行に対して真のセキュリティを実現するために信頼できる唯一のセキュリティ レベルはハイパーバイザーです。 Kubernetes 用のセキュリティ ドメインは、個々のノードではなく、クラスター全体になります。 この種の悪意のあるマルチテナント ワークロードでは、物理的に分離されたクラスターを使用する必要があります。
 
 ### <a name="app-armor"></a>App Armor
 

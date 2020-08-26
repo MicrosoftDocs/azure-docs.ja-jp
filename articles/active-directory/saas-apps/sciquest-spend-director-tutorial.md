@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と SciQuest Spend Director の統合 | Microsoft Docs'
 description: Azure Active Directory と SciQuest Spend Director の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9fab641b-292e-4bef-91d1-8ccc4f3a0c1f
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 199f531485a6a6c9ea234b35a7dbb88b66b3067c
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 00d82554c2a4c46cd523c291549413aa7526f0a5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67091635"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547837"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>チュートリアル: Azure Active Directory と SciQuest Spend Director の統合
 

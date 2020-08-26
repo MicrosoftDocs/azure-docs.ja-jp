@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: iainfou
-ms.openlocfilehash: eb627b8069bcd9efd1d56adab5eda45dc34a1a10
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 50a8e4f6d966a63a8e727dbacefbc7bb21f5f98b
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921998"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506330"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Azure Active Directory Domain Services のリソース フォレスト、およびオンプレミス ドメインへの送信フォレストの信頼を、Azure PowerShell を使用して作成する
 
@@ -88,7 +88,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 1. まず、[New-AzResourceGroup][New-AzResourceGroup] コマンドレットを使用してリソース グループを作成します。 次の例では、リソース グループは *myResourceGroup* という名前が付けられ、*westus* リージョンに作成されます。 独自の名前と希望するリージョンを使用します。
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzResourceGroup `
       -Name "myResourceGroup" `
       -Location "WestUS"
@@ -123,7 +123,7 @@ New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
 
 1. 次に、`New-AzureAaaddsForest` スクリプトを使用して、マネージド ドメイン リソース フォレストを作成します。 次の例では、*addscontoso.com* という名前のフォレストを作成し、ワークロード サブネットを作成します。 独自のパラメーター名と IP アドレス範囲、または既存の仮想ネットワークを指定します。
 
-    ```azure-powershell
+    ```azurepowershell
     New-AzureAaddsForest `
         -azureSubscriptionId <subscriptionId> `
         -aaddsResourceGroupName "myResourceGroup" `
@@ -204,7 +204,7 @@ Install-Script -Name Add-AaddsResourceForestTrust
 
 次の例では、*myAzureADDSTrust* という名前の信頼関係を *onprem.contoso.com* に対して作成します。 独自のパラメーター名とパスワードを使用してください。
 
-```azure-powershell
+```azurepowershell
 Add-AaddsResourceForestTrust `
     -ManagedDomainFqdn "aaddscontoso.com" `
     -TrustFqdn "onprem.contoso.com" `

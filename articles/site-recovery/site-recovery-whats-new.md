@@ -2,13 +2,13 @@
 title: Azure Site Recovery の最新情報
 description: Azure Site Recovery サービスの新機能と最新の更新プログラムの概要について説明します。
 ms.topic: conceptual
-ms.date: 06/01/2020
-ms.openlocfilehash: 3017be90e84441ad84c6a5a9d54498028388dffe
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.date: 08/20/2020
+ms.openlocfilehash: d7e3a8e29800943b28c64848fc66f27f888d439f
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206392"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611740"
 ---
 # <a name="whats-new-in-site-recovery"></a>Site Recovery の最新情報
 
@@ -22,18 +22,39 @@ Site Recovery コンポーネントでは、N-4 バージョン (N は最新リ�
 
 **アップデート** |  **統合セットアップ** | **構成サーバー ova** | **モビリティ サービス エージェント** | **Site Recovery プロバイダー** | **Recovery Services エージェント**
 --- | --- | --- | --- | --- | ---
-[ロールアップ 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | 2.0.9183.0
+[ロールアップ 49](https://support.microsoft.com/help/4578241/) | 9.36.5696.1 | 5.1.6315.0 | 9.36.5696.1 | 5.1.6315.0 | 2.0.9188.0
+[ロールアップ 48](https://support.microsoft.com/help/4573888/) | 9.35.5659.1 | 5.1.6200.0 | 9.35.5659.1 | 5.1.6200.0 | 2.0.9186.0
+[ロールアップ 47](https://support.microsoft.com/help/4570609/) | 9.34.5634.1 | 5.1.6100.0 | 9.34.5634.1 | 5.1.6100.0 | HyperV マシン - 2.0.9183.0 <br> VMware マシン - 2.0.9177.0
 [ロールアップ 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [ロールアップ 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
-[ロールアップ 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
-[ロールアップ 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 
 更新プログラムのインストールとサポートの詳細については、[こちら](service-updates-how-to.md)を参照してください。
 
-> [!NOTE]
-> 更新プログラムの ロールアップ 44 は、Site Recovery プロバイダーおよびエージェントの更新プログラムが含まれていなかったため、表には表示されていません。
+
+## <a name="updates-august-2020"></a>更新プログラム (2020 年 8 月)
+
+### <a name="update-rollup-49"></a>ロールアップ 49
+
+[更新プログラム ロールアップ 49](https://support.microsoft.com/help/4578241/update-rollup-49-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
 
 ## <a name="updates-july-2020"></a>更新 (2020 年 7 月)
+
+### <a name="update-rollup-48"></a>更新プログラム ロールアップ 48
+
+[更新プログラム ロールアップ 48](https://support.microsoft.com/help/4573888/update-rollup-48-for-azure-site-recovery) では、以下の更新が提供されます。
+
+**アップデート** | **詳細**
+--- | ---
+**プロバイダーおよびエージェント** | Site Recovery のエージェントとプロバイダーに対する更新プログラム (詳細はロールアップを参照)
+**問題の修正/改善点** | さまざまな修正プログラムと機能強化 (詳細はロールアップを参照)
+
+> [!NOTE]
+> 更新プログラム ロールアップ 48 には、ADE を使用して暗号化された Linux マシンのレプリケーションを有効にするときの既知の問題があります。 [詳細については、こちらを参照してください](./azure-to-azure-troubleshoot-errors.md#enable-protection-failed-as-the-installer-is-unable-to-find-the-root-disk-error-code-151137)。
 
 ### <a name="update-rollup-47"></a>更新プログラム ロールアップ 47
 

@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 08/14/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ef42dbb4cad1d40a35af28845baa402763acfc9b
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6648cfb717ade4b842e8ff470a46bf744b630363
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88119625"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612318"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft ID プラットフォームと OAuth 2.0 認証コード フロー
 
@@ -60,6 +60,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &response_mode=query
 &scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read
 &state=12345
+&code_challenge=YTFjNjI1OWYzMzA3MTI4ZDY2Njg5M2RkNmVjNDE5YmEyZGRhOGYyM2IzNjdmZWFhMTQ1ODg3NDcxY2Nl
+&code_challenge_method=S256
 ```
 
 > [!TIP]
@@ -79,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `login_hint`  | 省略可能    | ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。 アプリはしばしば前回のサインインから `preferred_username` 要求を抽出して再認証時にこのパラメーターを使用します。   |
 | `domain_hint`  | 省略可能    | これが含まれていると、ユーザーがサインイン ページで実行する電子メール ベースの検出プロセスがスキップされ、多少効率化されたユーザー エクスペリエンスが提供されます (たとえば、フェデレーション ID プロバイダーへの送信など)。 多くの場合、アプリでは、前回のサインインから `tid` を抽出することで再認証時にこのパラメーターを使用します。 `tid` 要求の値が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合、`domain_hint=consumers` を使用する必要があります。 それ以外の場合は、 `domain_hint=organizations`を指定します。  |
 | `code_challenge`  | 推奨/必須 | PKCE (Proof Key for Code Exchange) を使用して承認コード付与をセキュリティ保護するために使用されます。 `code_challenge_method` が含まれている場合は必須です。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 これは、すべての種類のアプリケーション (ネイティブ アプリ、SPA、Web アプリなどの機密クライアント) で推奨されるようになりました。 |
-| `code_challenge_method` | 推奨/必須 | `code_challenge` パラメーターの `code_verifier` をエンコードするために使用されるメソッド。 次の値のいずれかです。<br/><br/>- `plain` <br/>- `S256`<br/><br/>除外されていると、`code_challenge` が含まれている場合、`code_challenge` はプレーンテキストであると見なされます。 Microsoft ID プラットフォームは `plain` と `S256` の両方をサポートします。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 これは、[承認コード フローを使用するシングル ページ アプリ](reference-third-party-cookies-spas.md)には必須です。|
+| `code_challenge_method` | 推奨/必須 | `code_challenge` パラメーターの `code_verifier` をエンコードするために使用されるメソッド。 これは `S256` である*べき*ですが、何らかの理由によってクライアントで SHA256 がサポートされない場合、仕様では `plain` の使用が許可されています。 <br/><br/>除外されていると、`code_challenge` が含まれている場合、`code_challenge` はプレーンテキストであると見なされます。 Microsoft ID プラットフォームは `plain` と `S256` の両方をサポートします。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 これは、[承認コード フローを使用するシングル ページ アプリ](reference-third-party-cookies-spas.md)には必須です。|
 
 
 現時点では、ユーザーに資格情報の入力と認証が求められます。 Microsoft ID プラットフォーム エンドポイントではまた、ユーザーが `scope` クエリ パラメーターに示されたアクセス許可に同意していることも確認されます。 いずれのアクセス許可にもユーザーが同意しなかった場合、必要なアクセス許可に同意するようユーザーに求めます。 アクセス許可、同意、マルチテナント アプリの詳細については、 [こちら](v2-permissions-and-consent.md)を参照してください。
@@ -150,6 +152,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &code=OAAABAAAAiL9Kn2Z27UubvWFPbm0gLWQJVzCTE9UkP3pSx1aXxUjq3n8b2JRLk4OxVXr...
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &grant_type=authorization_code
+&code_verifier=ThisIsntRandomButItNeedsToBe43CharactersLong 
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps. This secret needs to be URL-Encoded.
 ```
 
@@ -230,6 +233,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `interaction_required` | これは、OIDC 仕様では `/authorize` エンドポイントでのみ呼び出されるため、非標準です。要求にはユーザーの操作が必要です。 たとえば、追加の認証手順が必要です。 | 同じスコープで `/authorize` 要求を再試行します。 |
 | `temporarily_unavailable` | サーバーが一時的にビジー状態であるため、要求を処理できません。 | 短い遅延後に要求を再試行します。 クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明する場合があります。 |
 |`consent_required` | 要求にはユーザーの同意が必要です。 このエラーは、通常、OIDC 仕様に従って `/authorize` エンドポイントでのみ返されるため、非標準です。 要求するアクセス許可がクライアント アプリにないことを示すコード引き換えフローで `scope` パラメーターが使用された場合に返されます。  | クライアントでは、同意をトリガーするために、正しいスコープの `/authorize` エンドポイントにユーザーを返信する必要があります。 |
+|`invalid_scope` | アプリによって要求されたスコープが無効です。  | 認証要求のスコープ パラメーターの値を有効な値に更新します。 |
 
 > [!NOTE]
 > シングル ページ アプリで `invalid_request` エラーが発生することがあります。これは、クロスオリジン トークンの使用が、"シングル ページ アプリケーション" クライアント タイプにしか許可されないことを示します。  これは、トークンを要求するために使用されるリダイレクト URI が `spa` リダイレクト URI としてマークされていないことを示します。  このフローを有効にする方法については、[アプリケーションの登録手順](#redirect-uri-setup-required-for-single-page-apps)に関する記事を参照してください。

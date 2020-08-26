@@ -1,6 +1,6 @@
 ---
 title: Storage Explorer を使用して Azure Blob Storage リソースを管理する | Microsoft Docs
-description: Storage Explorer を使用して Azure BLOB コンテナーと BLOB を管理する
+description: Storage Explorer を使用して Azure Blob Storage リソースを管理します。 BLOB コンテナーの作成、BLOB コンテナーの内容の表示、BLOB コンテナーの削除やコピーなどを行います。
 services: storage
 documentationcenter: na
 author: cawaMS
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2019
 ms.author: cawa
-ms.openlocfilehash: 56c20c995a95058b5039b7268c7b7b1426e900fa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07652f2ac88475664f30e8189204b5649f966d16
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85298125"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033616"
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer"></a>Storage Explorer を使用して Azure Blob Storage リソースを管理する
 
@@ -72,7 +72,7 @@ BLOB コンテナーには、BLOB とフォルダーが含まれます (フォ�
 
 ## <a name="delete-a-blob-container"></a>BLOB コンテナーを削除する
 
-BLOB コンテナーは、必要に応じて、簡単に作成および削除できます (個々の BLOB を削除する方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
+BLOB コンテナーは、必要に応じて、簡単に作成および削除できます  (個々の BLOB を削除する方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
 
 次の手順では、Storage Explorer 内の BLOB コンテナーを削除する方法を説明します。
 
@@ -89,7 +89,7 @@ BLOB コンテナーは、必要に応じて、簡単に作成および削除で
 
 ## <a name="copy-a-blob-container"></a>BLOB コンテナーをコピーする
 
-Storage Explorer を使用すると、BLOB コンテナーをクリップボードにコピーし、その BLOB コンテナーを別のストレージ アカウントに貼り付けることができます (個々の BLOB をコピーする方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
+Storage Explorer を使用すると、BLOB コンテナーをクリップボードにコピーし、その BLOB コンテナーを別のストレージ アカウントに貼り付けることができます  (個々の BLOB をコピーする方法については、「[BLOB コンテナー内の BLOB を管理する](#managing-blobs-in-a-blob-container)」セクションをご覧ください)。
 
 次の手順では、あるストレージ アカウントから別のストレージ アカウントに BLOB コンテナーをコピーする方法を説明します。
 
@@ -142,7 +142,7 @@ Storage Explorer を使用すると、BLOB コンテナーをクリップボー�
 6. アクセス ポリシーの管理タスクに応じて、以下の手順に従います。
 
    * **新しいアクセス ポリシーを追加する** - **[追加]** を選択します。 生成後、 **[アクセス ポリシー]** ダイアログには、新しく追加されたアクセス ポリシー (既定の設定) が表示されます。
-   * **アクセス ポリシーを編集する** - 必要な編集を行い、 **[保存]** を選択します。
+   * **アクセス ポリシーを編集する** - 必要な編集を行い、**[保存]** を選択します。
    * **アクセス ポリシーを削除する** - 削除するアクセス ポリシーの横にある **[削除]** を選択します。
 
 ## <a name="set-the-public-access-level-for-a-blob-container"></a>BLOB コンテナーのパブリック アクセス レベルを設定する
@@ -183,7 +183,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      1. メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Files (ファイルのアップロード)]** を選択します。
 
         ![Upload files menu][15]
-     2. **[Upload Files (ファイルのアップロード)]** ダイアログで、 **[ファイル]** ボックスの右側にある省略記号 ( **[...]** ) ボタンをクリックし、アップロードするファイルを選択します。
+     2. **[Upload Files (ファイルのアップロード)]** ダイアログで、**[ファイル]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードするファイルを選択します。
 
         ![Upload files options][16]
      3. **[BLOB の種類]** に種類を指定します。 詳細については、「[コンテナーを作成する](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container)」を参照してください。
@@ -194,7 +194,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      1. メイン ウィンドウのツール バーで **[アップロード]** を選択し、ドロップダウン メニューで **[Upload Folder (フォルダーのアップロード)]** を選択します。
 
         ![Upload folder menu][17]
-     2. **[Upload Folder (フォルダーのアップロード)]** ダイアログで、 **[フォルダー]** ボックスの右側にある省略記号 ( **[...]** ) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
+     2. **[Upload Folder (フォルダーのアップロード)]** ダイアログで、**[フォルダー]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
 
         ![Upload folder options][18]
      3. **[BLOB の種類]** に種類を指定します。 詳細については、「[コンテナーを作成する](storage/blobs/storage-quickstart-blobs-dotnet.md#create-a-container)」を参照してください。
@@ -223,7 +223,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      2. メイン ウィンドウのツール バーで、 **[削除]** を選択します。
      3. 確認のダイアログで **[はい]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [最新の Storage Explorer のリリース ノートとビデオ](https://www.storageexplorer.com)を確認します。
 * [Azure BLOB、テーブル、キュー、ファイルを使ってアプリケーションを作成する](https://azure.microsoft.com/documentation/services/storage/)方法について学習します。

@@ -5,15 +5,15 @@ author: bandersmsft
 ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
-ms.topic: conceptual
-ms.date: 02/13/2020
+ms.topic: tutorial
+ms.date: 08/12/2020
 ms.author: banders
-ms.openlocfilehash: bf3f454296acafcff6fe775b07abeb7a253749b5
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.openlocfilehash: 9e141b0cdeeb03882a0baa032f52bc6e451967c8
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85253530"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185232"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>チュートリアル:Microsoft Partner Agreement の請求書を確認する
 

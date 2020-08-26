@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Wandera の統合 | Microsoft Docs
 description: Azure Active Directory と Wandera の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a4615e56-1deb-423e-ad19-2e74c0d6d17a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/30/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f5004571c849d90b7d811906684e66c10ee487
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 4af2fa415c22abe5cd8ac98d510feb44abab0e97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "68825291"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523986"
 ---
 # <a name="tutorial-integrate-wandera-with-azure-active-directory"></a>チュートリアル:Wandera と Azure Active Directory の統合
 

@@ -5,20 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 03/17/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
+ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80873b2e2655e7cedbafb526d0fe757eaa282312
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 39c9522362ca6710fae5dee5d831e63cc36a3950
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87019613"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509112"
 ---
-# <a name="what-is-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection とは
+# <a name="what-is-identity-protection"></a>Identity Protection とは
 
 Identity Protection は、組織が次の 3 つの主要なタスクを実行できるツールです。
 
@@ -68,6 +69,12 @@ Identity Protection は、次の分類のリスクを識別します。
 - リスク検出
 
 詳細については以下に関する記事を参照してください。[リスクを調査する方法](howto-identity-protection-investigate-risk.md)。
+
+### <a name="risk-levels"></a>リスク レベル
+
+Identity Protection では、リスクを低、中、高の 3 つのレベルに分類します。 
+
+Microsoft ではリスクの計算方法に関する具体的な詳細を公開していませんが、各レベルごとに、ユーザーまたはサインインが侵害されたという信頼度は高くなります。 たとえば、見慣れないサインイン プロパティのインスタンスが 1 つあるといったことは、資格情報の漏洩ほど脅威的ではない可能性があります。
 
 ## <a name="exporting-risk-data"></a>リスク データのエクスポート
 

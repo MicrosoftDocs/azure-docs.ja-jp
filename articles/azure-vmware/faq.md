@@ -4,12 +4,12 @@ description: Azure VMware Solution (AVS) についてよく寄せられる質問
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: dikamath
-ms.openlocfilehash: 1649b5649bd18b7ab53f3cc0196d7dff0f6f5b2c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: bd27d4669788b10fc12c47e4514020f6b01300bc
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84112694"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87872329"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution-avs-preview"></a>Azure VMware Solution (AVS) プレビューについてよく寄せられる質問
 
@@ -25,7 +25,7 @@ Azure VMware Solution (AVS) についてよく寄せられる質問にお答え�
 
 **現在、AVS はどこで利用できますか?**
 
-プレビュー期間中は、米国東部と西ヨーロッパのアムステルダムで利用できます。
+このサービスは新しいリージョンに継続的に追加されているので、詳細については、[最新のサービスの可用性情報](https://azure.microsoft.com/global-infrastructure/services/?products=azure-vmware)に関するページを参照してください。 
 
 **Azure VMware Solution (AVS) インスタンスで実行されるワークロードで Azure サービスを使用できますか? また、このワークロードを Azure サービスと統合できますか?**
 
@@ -45,7 +45,7 @@ AVS ソリューションのお客様はすべての Azure サービスを利用
 
 **オンプレミス環境から AVS プライベート クラウドに vSphere VM を移行できますか?**
 
-はい。 標準クロス vCenter [vMotion の要件](https://kb.vmware.com/s/article/210695 )が満たされる場合、VM 移行と vMotion を使用して VM をプライベート クラウドに移動できます。
+はい。 標準クロス vCenter [vMotion の要件](https://kb.vmware.com/s/article/210695)が満たされる場合、VM 移行と vMotion を使用して VM をプライベート クラウドに移動できます。
 
 **オンプレミス環境では、特定のバージョンの vSphere が必要ですか?**
 
@@ -85,15 +85,15 @@ AVS ソリューションのお客様はすべての Azure サービスを利用
 
 **各ホストのストレージ容量はどのくらいですか?**
 
-各 ESXi ホストには、2 つの VSAN ディスクグループがあり、15.2 TB の容量階層と 3.2 TB の NVMe キャッシュ階層 (各ディスクグループで 1.6 TB) があります。
+各 ESXi ホストには、2 つの vSAN ディスクグループがあり、15.2 TB の容量階層と 3.2 TB の NVMe キャッシュ階層 (各ディスクグループで 1.6 TB) があります。
 
 **各 ESXi ホストで使用できるネットワーク帯域幅はどれくらいですか?**
 
-ESXi ホストは、最大 25 Gbps の接続帯域幅をサポートします。
+各 ESXi ホストは、4 つの 25 Gbps NIC で構成された AVS です。ESXi のシステム トラフィック用に 2 つの NIC がプロビジョニングされ、ワークロードのトラフィック用に 2 つの NIC がプロビジョニングされます。 
 
-**VSAN データストアに保存されるデータは保存時に暗号化されますか?**
+**vSAN データストアに保存されるデータは保存時に暗号化されますか?**
 
-はい。すべての VSAN データが、Azure Key Vault に保存されているキーを使用して既定で暗号化されます。
+はい。すべての vSAN データが、Azure Key Vault に保存されているキーを使用して既定で暗号化されます。
 
 ## <a name="hosts-clusters-and-private-clouds"></a>ホスト、クラスター、およびプライベート クラウド
 
@@ -137,7 +137,7 @@ ESXi ホストは、最大 25 Gbps の接続帯域幅をサポートします。
 
 **プライベート クラウドでの VMware ソフトウェアのアップグレードと更新のスケジュールはどのようになりますか?**
 
-プライベート クラウド ソフトウェア バンドルのアップグレードは、VMware のソフトウェア バンドルの最新リリースの単一バージョン内でソフトウェアを保持するために行われます。 プライベート クラウド ソフトウェアのバージョンは、個々のソフトウェア コンポーネント (ESXi、NSX-T、vCenter、VSAN) の最新バージョンとは異なる場合があります。
+プライベート クラウド ソフトウェア バンドルのアップグレードは、VMware のソフトウェア バンドルの最新リリースの単一バージョン内でソフトウェアを保持するために行われます。 プライベート クラウド ソフトウェアのバージョンは、個々のソフトウェア コンポーネント (ESXi、NSX-T、vCenter、vSAN) の最新バージョンとは異なる場合があります。
 
 **プライベート クラウド ソフトウェア スタックはどのくらいの頻度で更新されますか?**
 
@@ -216,7 +216,7 @@ Azure サブスクリプションの Azure アカウントが必要です。
 > ```azurecli-interactive
 > az provider register -n Microsoft.AVS --subscription <your subscription ID>
 > ```
-> リソース プロバイダーを登録するその他の方法については、「[Azure リソース プロバイダーと種類](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)」を参照してください。
+> リソース プロバイダーを登録するその他の方法については、「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」を参照してください。
 
 1. Azure portal の **[ヘルプとサポート]** で**新しいサポート リクエスト**を作成し、次の情報をチケットに提供します。
    - **問題の種類:** 技術

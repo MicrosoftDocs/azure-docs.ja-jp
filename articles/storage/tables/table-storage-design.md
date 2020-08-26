@@ -1,19 +1,19 @@
 ---
 title: Azure Table Storage でスケーラビリティとパフォーマンスに優れたテーブルを設計する | Microsoft Docs
-description: Azure Table Storage でスケーラビリティとパフォーマンスに優れたテーブルを設計する
+description: Azure Table Storage でスケーラビリティとパフォーマンスに優れたテーブルを設計する方法を学習します。 テーブルのパーティション、エンティティ グループ トランザクション、容量とコストに関する考慮事項を確認します。
 services: storage
-author: SnehaGunda
 ms.service: storage
+author: tamram
+ms.author: tamram
 ms.topic: article
 ms.date: 03/09/2020
-ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9fd274fb72c80475ca53d0f1bdedc1e09c10ea60
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83656911"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236507"
 ---
 # <a name="design-scalable-and-performant-tables"></a>高性能で拡張性の高いテーブルの設計
 

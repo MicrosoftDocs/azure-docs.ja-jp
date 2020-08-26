@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9618e02f54fbb2a3b92771761c5fcf700d126b5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 47973a8444de64dc5c2bb75b5f0d65d1e6d35f6e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698769"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509087"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -191,6 +191,11 @@ Azure AD のテナントは、分離するように設計されています。 �
 ![複数のフォレストと複数のディレクトリのトポロジにおける GALSync](./media/plan-connect-topologies/MultiForestMultiDirectoryGALSync.png)
 
 FIM 2010 または MIM 2016 オンプレミスを使用して、2 つの Exchange 組織間でユーザーを同期できます (GALSync 経由)。 1 つの組織内のユーザーは、他の組織では外部ユーザーおよび連絡先として表示されます。 これらの異なるオンプレミス Active Directory インスタンスは、独自の Azure AD テナントと同期できます。
+
+### <a name="using-unauthorized-clients-to-access-the-azure-ad-connect-backend"></a>承認されていないクライアントを使用した Azure AD Connect バックエンドへのアクセス
+![承認されていないクライアントを使用した Azure AD Connect バックエンドへのアクセス](./media/plan-connect-topologies/other-client-unsupported.png)
+
+Azure Active Directory Connect サーバーは Azure Active Directory Connect バックエンドを介して Azure Active Directory と通信します。 このバックエンドとの通信に使用できるソフトウェアは Azure Active Directory Connect のみです。 他のソフトウェアや方法を使用した Azure Active Directory Connect バックエンドとの通信はサポートされていません。 
 
 ## <a name="next-steps"></a>次のステップ
 これらのシナリオのために Azure AD Connect をインストールする方法については、「 [Azure AD Connect のカスタム インストール](how-to-connect-install-custom.md)」を参照してください。

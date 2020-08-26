@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc7c256ca6866e5b981f8740c9953534d830316
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e72e3cb3ccc6273a9b698475c5e5aa0bb87b8b7
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85359162"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828797"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health の操作
 このトピックでは、Azure Active Directory (Azure AD) Connect Health を使用して実行できるさまざまな操作について説明します。
@@ -104,7 +104,7 @@ Azure Active Directory Domain Services の Azure AD Connect Health の場合は�
 
 [//]: # (RBAC セクションの開始)
 ## <a name="manage-access-with-role-based-access-control"></a>ロールベースのアクセス制御を使用してアクセスを管理する
-Azure AD Connect Health の [ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/role-assignments-portal.md) では、グローバル管理者以外のユーザーおよびグループにアクセスを提供します。 RBAC では、目的のユーザーおよびグループにロールを割り当て、ディレクトリ内のグローバル管理者を制限するメカニズムが用意されています。
+Azure AD Connect Health の [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) は、グローバル管理者以外のユーザーおよびグループにアクセスを提供します。 RBAC では、目的のユーザーおよびグループにロールを割り当て、ディレクトリ内のグローバル管理者を制限するメカニズムが用意されています。
 
 ### <a name="roles"></a>ロール
 Azure AD Connect Health では、次の組み込みのロールがサポートされています。

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 578560eccb13ff4b9169e11b0674859acc1fc901
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: efa4ca24dadb2fb5d347d79de20eebfacc9a58e0
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285868"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142181"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での事業継続とディザスター リカバリーに関するベスト プラクティス
 
@@ -93,7 +93,7 @@ geo レプリケーションは、*Premium* SKU コンテナー レジストリ�
 
 状態は、外部化することも、状態を操作するコードと同じ場所に配置することもできます。 通常、状態の外部化は、ネットワーク上のさまざまなコンピューターで実行されている、または同一コンピューター上でアウト オブ プロセスを実行しているデータベースやその他のデータ ストアを使用して行います。
 
-コンテナーとマイクロサービスは、それらの内部で実行されているプロセスが状態を保持していないときに、回復性が最も高くなります。 アプリケーションにはほぼ常に何らかの状態が含まれるので、Azure Database for MySQL、Azure Database for PostgreSQL、または Azure SQL Database などの PaaS ソリューションを使用してください。
+コンテナーとマイクロサービスは、それらの内部で実行されているプロセスが状態を保持していないときに、回復性が最も高くなります。 アプリケーションにはほぼ常に何らかの状態が含まれるので、Azure Cosmos DB、Azure Database for PostgreSQL、Azure Database for MySQL、Azure SQL Database などの PaaS ソリューションを使用してください。
 
 ポータブル アプリケーションをビルドするには、次のガイドラインを参照してください。
 

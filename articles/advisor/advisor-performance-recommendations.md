@@ -3,12 +3,12 @@ title: Advisor を使用して Azure アプリのパフォーマンスを向上�
 description: Azure Advisor のパフォーマンスに関する推奨事項を使用すると、ビジネスに不可欠なアプリケーションのスピードと応答性を向上させることができます。
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 7ecd6a45dc255f4748ed5074a3adb3d948f4122e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bdca8cd39427fb0d25f8b3308eaf2be24e0eb81a
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87057574"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257465"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Azure Advisor を使用して Azure アプリケーションのパフォーマンスを向上させる
 
@@ -20,7 +20,7 @@ Azure Traffic Manager プロファイルで[有効期限 (TTL) 設定](../traffi
 
 Azure Advisor によって、長い TTL が構成されている Traffic Manager プロファイルが特定されます。 プロファイルが [Fast Failover](https://azure.microsoft.com/roadmap/fast-failover-and-tcp-probing-in-azure-traffic-manager/) 用に構成されているかどうかに応じて、TTL を 20 秒または 60 秒のいずれかに構成することをお勧めします。
 
-## <a name="improve-database-performance-by-using-sql-database-advisor"></a>SQL Database Advisor を使用してデータベースのパフォーマンスを向上させる
+## <a name="improve-database-performance-by-using-sql-database-advisor-temporarily-disabled"></a>SQL Database Advisor を使用してデータベースのパフォーマンスを向上させる (一時的に無効)
 
 Azure Advisor では、すべての Azure リソースに関して一貫性のある推奨事項が一元的にまとめて示されます。 SQL Database Advisor と統合して、データベースのパフォーマンスを向上させるための推奨事項を生成します。 SQL Database Advisor は、データベースの使用履歴を分析することで、パフォーマンスを評価します。 その後、データベースの一般的なワークロードを実行する上で最適な推奨事項が提示されます。
 
@@ -151,6 +151,22 @@ Advisor によって、既定のインデックス作成ポリシーが使用さ
 ## <a name="set-your-azure-cosmos-db-query-page-size-maxitemcount-to--1"></a>Azure Cosmos DB クエリ ページ サイズ (MaxItemCount) を -1 に設定する 
 
 Azure Advisor によって、100 のクエリ ページ サイズを使用している Azure Cosmos DB コンテナーが特定されます。 高速なスキャンのために、-1 のページ サイズの使用が推奨されます。 [MaxItemCount の詳細を確認してください。](https://aka.ms/cosmosdb/sql-api-query-metrics-max-item-count)
+
+## <a name="consider-using-accelerated-writes-feature-in-your-hbase-cluster-to-improve-cluster-performance"></a>お使いの HBase クラスターで、クラスターのパフォーマンスの向上に高速書き込み機能を使用することを検討する
+Azure Advisor は過去 7 日間のシステム ログを分析し、お使いのクラスターで次のシナリオが発生したかどうかを識別します。
+1. WAL の同期時に長い待機時間が発生 
+2. 大量の書き込み要求 (1 時間に 1000 を超える avg_write_requests/second/node)
+
+これらの条件は、クラスターで書き込み時に長い待機時間が発生していることを示しています。 これは、お使いのクラスターで大量のワークロードが実行されたことが原因である可能性があります。お使いのクラスターのパフォーマンスを向上させるには、Azure HDInsight HBase の高速書き込み機能の利用を検討することをお勧めします。 HDInsight の Apache HBase クラスター用高速書き込み機能では、クラウド ストレージを使用する代わりに、Premium SSD マネージド ディスクをすべての RegionServer (ワーカー ノード) にアタッチします。 その結果、書き込み待機時間が短縮され、アプリケーションの回復性が向上します。 この機能の詳細については、[こちら](https://docs.microsoft.com/azure/hdinsight/hbase/apache-hbase-accelerated-writes#how-to-enable-accelerated-writes-for-hbase-in-hdinsight)を参照してください。
+
+## <a name="review-azure-data-explorer-table-cache-period-policy-for-better-performance-preview"></a>パフォーマンスの向上に、Azure Data Explorer のテーブルのキャッシュ期間 (ポリシー) を確認する (プレビュー)
+この推奨事項では、構成されているキャッシュ期間 (ポリシー) より過去のクエリが多い Azure Data Explorer のテーブルが表示されます (キャッシュ範囲外のデータにアクセスするクエリの割合で、上位 10 個のテーブルが示されます)。 クラスターのパフォーマンスを向上させるために推奨されるアクション:このテーブルのクエリを、(定義されたポリシー内で) 必要最小限の時間範囲に制限します。 または、時間範囲全体のデータが必要な場合は、キャッシュ期間を推奨される値に増やします。
+
+## <a name="improve-performance-by-optimizing-mysql-temporary-table-sizing"></a>MySQL の一時テーブルのサイズを最適化してパフォーマンスを向上させる
+Advisor で、一時テーブルのパラメーター設定が低いため、お使いの MySQL サーバーで不要な I/O オーバーヘッドが発生している可能性があることが解析されました。 これにより、ディスク ベースの不要なトランザクションが発生し、パフォーマンスが低下する可能性があります。 "tmp_table_size" パラメーターと "max_heap_table_size" パラメーターの値を大きくして、ディスク ベースのトランザクションの数を減らすことをお勧めします。 [詳細情報](https://aka.ms/azure_mysql_tmp_table)
+
+## <a name="distribute-data-in-server-group-to-distribute-workload-among-nodes"></a>ノード間にワークロードを分散させるためにサーバー グループ内でデータを分散させる
+コーディネーター上には残っているが、データは分散されないサーバー グループが Advisor により識別されました。 これに基づき、Hyperscale (Citus) のメリットをすべて得るために、お使いのサーバー グループ内のワーカー ノードにデータを分散させることが Advisor によって推奨されています。 これによって、サーバー グループ内の各ノードのリソースが活用され、クエリのパフォーマンスが向上します。 [詳細情報](https://go.microsoft.com/fwlink/?linkid=2135201) 
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Advisor のパフォーマンスに関する推奨事項にアクセスする方法
 

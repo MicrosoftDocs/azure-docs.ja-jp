@@ -8,19 +8,19 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: 27fbc669a81364bcb71160200504d61502169eae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a6902d1420090b81c933f07f7e929aa86c052404
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85609352"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009241"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 
-**光学式文字認識 (OCR)** スキルでは、画像ファイルに印字された手書きテキストが認識されます。 このスキルでは、[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) Cognitive Services によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
+**光学式文字認識 (OCR)** スキルでは、画像ファイルに印字された手書きテキストが認識されます。 このスキルでは、Cognitive Services の [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) API [v3.0](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005) によって提供される機械学習モデルが使用されます。 **OCR** スキルは、次の機能にマップします。
 
-+ 英語以外の言語には ["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API が使用されます。 
-+ 英語には、新しい ["Read"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API が使用されます。
++ 英語、スペイン語、ドイツ語、フランス語、イタリア語、ポルトガル語、およびオランダ語については、新しい["Read"](../cognitive-services/computer-vision/concept-recognizing-text.md#read-api) API が使用されます。
++ その他のすべての言語については、["OCR"](../cognitive-services/computer-vision/concept-recognizing-text.md#ocr-api) API が使用されます。
 
 **OCR** スキルはイメージファイルからテキストを抽出します｡ サポートされているファイル形式は以下の通りです｡
 

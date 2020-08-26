@@ -8,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Azure DevOps と Azure Dev Spaces を使用して、継続的インテグレーション/継続的配置を設定する方法について学習します。
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, コンテナー
-ms.openlocfilehash: 3a5f232111bd01f707080cc1638970f8dc51e6fa
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229331"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88080268"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Azure Dev Spaces と共に CI/CD を使用する
 
@@ -24,7 +24,7 @@ ms.locfileid: "86229331"
 この記事では、Azure DevOps を使って説明していますが、Jenkins、TeamCity などの CI/CD システムにも同じ概念が適用されます。
 
 ## <a name="prerequisites"></a>前提条件
-* [Azure Dev Spaces が有効になっている Azure Kubernetes Service (AKS) クラスター](../get-started-netcore.md)
+* Azure Dev Spaces が有効になっている Azure Kubernetes Service (AKS) クラスター
 * [インストール済みの Azure Dev Spaces CLI](upgrade-tools.md)
 * [1 つのプロジェクトを含む Azure DevOps 組織](/azure/devops/user-guide/sign-up-invite-teammates?view=vsts)
 * [Azure Container Registry (ACR)](../../container-registry/container-registry-get-started-azure-cli.md)
@@ -185,5 +185,7 @@ Dev Spaces のインストルメンテーションは、アプリケーション
 
 ## <a name="next-steps"></a>次のステップ
 
+Azure Dev Spaces のしくみについて詳しく確認します。
+
 > [!div class="nextstepaction"]
-> [Azure Dev Spaces を使用したチーム開発について学ぶ](../team-development-netcore.md)
+> [Azure Dev Spaces のしくみ](../how-dev-spaces-works.md)

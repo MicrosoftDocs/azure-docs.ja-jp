@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: iainfou
-ms.openlocfilehash: 69bb61012082404dfd6488b5e0606e5966c2fcef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6f166cdcb5f3764d7b264fdb4ebc082ece4c798b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504653"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245096"
 ---
 # <a name="tutorial-create-and-use-replica-sets-for-resiliency-or-geolocation-in-azure-active-directory-domain-services-preview"></a>チュートリアル:Azure Active Directory Domain Services で回復性または位置情報のためにレプリカ セットを作成して使用する (プレビュー)
 
@@ -42,11 +42,11 @@ Azure サブスクリプションをお持ちでない場合は、始める前�
     * Azure サブスクリプションをお持ちでない場合は、[アカウントを作成](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)してください。
 * ご利用のサブスクリプションに関連付けられた Azure Active Directory テナント (オンプレミス ディレクトリまたはクラウド専用ディレクトリと同期されていること)。
     * 必要に応じて、[Azure Active Directory テナントを作成][create-azure-ad-tenant]するか、[ご利用のアカウントに Azure サブスクリプションを関連付け][associate-azure-ad-tenant]ます。
-* レプリカ セットを使用して作成され、Azure AD テナントで構成されている、Azure Active Directory Domain Services マネージド ドメイン。
+* Azure Resource Manager デプロイ モデルを使用して作成され、ご利用の Azure AD テナント内で構成された Azure Active Directory Domain Services マネージド ドメイン。
     * 必要に応じて、[Azure Active Directory Domain Services のマネージド ドメインを作成して構成][tutorial-create-instance]します。
 
     > [!IMPORTANT]
-    > 必ず、レプリカ セットを使用するマネージド ドメインを作成してください。 このプレビューより前に作成された既存のマネージド ドメインでは、レプリカ セットはサポートされていません。 また、マネージド ドメインに対して *Enterprise* SKU を少なくとも使用する必要があります。 必要に応じて、[マネージド ドメインの SKU を変更][howto-change-sku]します。
+    > クラシック デプロイ モデルを使用して作成されたマネージド ドメインでは、レプリカ セットを使用できません。 また、マネージド ドメインに対して *Enterprise* SKU を少なくとも使用する必要があります。 必要に応じて、[マネージド ドメインの SKU を変更][howto-change-sku]します。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure portal にサインインする
 
@@ -70,7 +70,7 @@ Azure AD DS でレプリカ セットを使用する前に、Azure 仮想ネッ�
 
 ## <a name="create-a-replica-set"></a>レプリカ セットを作成する
 
-*aaddscontoso.com* などのマネージド ドメインを作成すると、初期レプリカ セットが作成されます。 追加のレプリカ セットでは、同じ名前空間と構成が共有されます。 構成、ユーザー ID と資格情報、グループ、グループ ポリシー オブジェクト、コンピューター オブジェクト、その他の変更など、Azure AD DS に対する変更は、AD DS レプリケーションを使用して、マネージド ドメイン内のすべてのレプリカ セットに適用されます。
+*aaddscontoso.com* などのマネージド ドメインを作成すると、初期レプリカ セットが作成されます。 追加のレプリカ セットは同じ名前空間と構成を共有します。 構成、ユーザー ID と資格情報、グループ、グループ ポリシー オブジェクト、コンピューター オブジェクト、その他の変更など、Azure AD DS に対する変更は、AD DS レプリケーションを使用して、マネージド ドメイン内のすべてのレプリカ セットに適用されます。
 
 このチュートリアルでは、初期 Azure AD DS レプリカ セットとは異なる Azure リージョンに、追加のレプリカ セットを作成します。
 

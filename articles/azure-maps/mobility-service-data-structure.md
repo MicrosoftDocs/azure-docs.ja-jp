@@ -1,6 +1,6 @@
 ---
 title: Azure Maps の Mobility Service のデータ構造 | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Mobility Service を介して返される一般的なフィールドとデータ構造について説明します。
+description: Azure Maps Mobility Service で、データがどのように都市圏にまとめられているかについて説明します。 どのフィールドに、公共交通機関の停留所や路線に関する情報が格納されているかを確認します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 06/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5c2033557d14a25c786f3f6b08dc5bd54956f7e1
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 02d89226bd2df4bfe5d11897199c50c702e7bc1c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131278"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033225"
 ---
 # <a name="data-structures-in-azure-maps-mobility-service"></a>Azure Maps Mobility Service のデータ構造
 

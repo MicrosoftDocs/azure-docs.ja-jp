@@ -572,12 +572,14 @@
               href: ../common/storage-explorer-support-policy-lifecycle.md
             - name: ストレージ エクスプローラーのアクセシビリティ
               href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Azure Storage フォーラム
+        - name: Microsoft Q&A の Azure Storage
           href: 'https://docs.microsoft.com/answers/topics/azure-blob-storage.html'
         - name: Stack Overflow の Azure Storage
           href: 'https://stackoverflow.com/questions/tagged/windows-azure-storage'
-        - name: Blob Storage の価格
+        - name: ブロック BLOB の価格
           href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
+        - name: ページ BLOB の価格
+          href: 'https://azure.microsoft.com/pricing/details/storage/page-blobs/'
         - name: Azure 料金計算ツール
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: ビデオ
@@ -662,7 +664,7 @@
           href: data-lake-storage-best-practices.md
         - name: クエリの高速化
           href: data-lake-storage-query-acceleration.md
-        - name: アーキテクチャ
+        - name: Architecture
           items:
             - name: Hadoop 用 Azure BLOB ファイル システム ドライバー
               href: data-lake-storage-abfs-driver.md

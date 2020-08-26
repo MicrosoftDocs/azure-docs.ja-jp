@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: e2226f70ed3318bb370f0afee003fd9f91153a45
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9f9ebff77f54d86c3c4ed45fb5190de1900934e9
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167872"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207224"
 ---
 # <a name="optical-character-recognition-ocr"></a>光学式文字認識 (OCR)
 
@@ -28,7 +28,18 @@ Computer Vision の [Read API](https://westcentralus.dev.cognitive.microsoft.com
 
 ![OCR で画像やドキュメントからテキストを抽出して構造化された出力に変換するしくみ](./Images/how-ocr-works.svg)
 
-Read API は、**読み取り**と**読み取り結果の取得**という 2 つの操作を通じて OCR 機能を提供します。
+## <a name="input-requirements"></a>入力の要件
+Read API の**読み取り**操作では、イメージやドキュメントを入力値として受け取ります。 これには次の要件があります。
+
+* サポートされているファイル形式: JPEG、PNG、BMP、PDF、TIFF
+* PDF と TIFF については、最大 2,000 ページまで処理されます。 Free レベルのサブスクライバーの場合は、最初の 2 ページだけが処理されます。
+* ファイル サイズは 50 MB 未満でなければならず、寸法は 50 x 50 ピクセル以上 10,000 x 10,000 ピクセル以下です。
+* PDF の寸法は、17 x 17 インチ以下である必要があります (リーガル サイズまたは A3 サイズ以下の用紙に対応します)。
+
+> [!NOTE]
+> **言語の入力** 
+>
+> [読み取り操作](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)には、言語に対する省略可能な要求パラメーターがあります。 これは、ドキュメント内のテキストの BCP-47 言語コードです。 読み取りでは、言語の自動識別と多言語ドキュメントがサポートされるため、言語コードの指定は、その特定の言語としてドキュメントを処理するように強制する場合にのみ行ってください。
 
 ## <a name="the-read-operation"></a>読み取り操作
 
@@ -36,7 +47,7 @@ Read API は、**読み取り**と**読み取り結果の取得**という 2 つ
 
 |応答ヘッダー| 結果の URL |
 |:-----|:----|
-|Operation-Location | https://cognitiveservice/vision/v3.0-preview/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f |
+|Operation-Location | `https://cognitiveservice/vision/v3.0/read/analyzeResults/49a36324-fc4b-4387-aa06-090cfbf0064f` |
 
 ## <a name="the-get-read-results-operation"></a>読み取り結果の取得操作
 
@@ -112,19 +123,6 @@ Read API は、**読み取り**と**読み取り結果の取得**という 2 つ
 
 C# と REST API を使用した OCR の実装については、[印刷されたテキストと手書きテキストの抽出](./QuickStarts/CSharp-hand-text.md)に関するクイックスタートに従ってください。
 
-## <a name="input-requirements"></a>入力の要件
-
-入力画像とドキュメントには、次の要件があります。
-* サポートされているファイル形式: JPEG、PNG、BMP、PDF、TIFF
-* PDF と TIFF については、最大 2,000 ページまで処理されます。 Free レベルのサブスクライバーの場合は、最初の 2 ページだけが処理されます。
-* ファイル サイズは 50 MB 未満でなければならず、寸法は 50 x 50 ピクセル以上 10,000 x 10,000 ピクセル以下です。
-* PDF の寸法は、17 x 17 インチ以下である必要があります (リーガル サイズまたは A3 サイズ以下の用紙に対応します)。
-
-> [!NOTE]
-> **言語の入力** 
->
-> [読み取り操作](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-ga/operations/5d986960601faab4bf452005)には、言語に対する省略可能な要求パラメーターがあります。 これは、ドキュメント内のテキストの BCP-47 言語コードです。 読み取りでは、言語の自動識別と多言語ドキュメントがサポートされるため、言語コードの指定は、その特定の言語としてドキュメントを処理するように強制する場合にのみ行ってください。
-
 ## <a name="language-support"></a>言語のサポート
 
 ### <a name="printed-text"></a>印刷されたテキスト
@@ -184,6 +182,9 @@ Read API は、一般に混合言語ドキュメントと呼ばれる、複数�
 ## <a name="data-privacy-and-security"></a>データのプライバシーとセキュリティ
 
 Cognitive Services 全般に言えることですが、読み取り/OCR サービスを使用する開発者は、顧客データに関する Microsoft のポリシーに注意する必要があります。 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/trust-center/product-overview)の Cognitive Services のページを参照してください。
+
+> [!NOTE]
+> Computer Vison 2.0 RecognizeText 操作は非推奨になる予定であり、この記事で取り上げている新しい Read API がその代わりになります。 既存顧客の皆様には、[読み取り操作をご利用いただくように](upgrade-api-versions.md)お願いします。
 
 ## <a name="next-steps"></a>次のステップ
 

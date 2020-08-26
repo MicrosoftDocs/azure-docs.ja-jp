@@ -2,13 +2,14 @@
 title: Azure Batch アカウントでプライベート エンドポイントを使用する
 description: プライベート エンドポイントを使用して、Azure Batch アカウントにプライベートに接続する方法について説明します。
 ms.topic: how-to
-ms.date: 06/12/2020
-ms.openlocfilehash: 04f52c8c58668b2978b38c65a94533a38c593888
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/07/2020
+ms.custom: references_regions
+ms.openlocfilehash: fac9523dc2ecabaec5d1c108e0ddd7536f01f077
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84754292"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004239"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Azure Batch アカウントでプライベート エンドポイントを使用する
 
@@ -16,16 +17,11 @@ ms.locfileid: "84754292"
 
 [Azure Private Link](../private-link/private-link-overview.md) を使用することにより、[プライベート エンドポイント](../private-link/private-endpoint-overview.md)経由で Azure Batch アカウントに接続できます。 プライベート エンドポイントは、仮想ネットワークのサブネットにある一組のプライベート IP アドレスです。 これで、プライベート IP アドレスを使用して Azure Batch アカウントへのアクセスを制限できるようになります。
 
-Private Link を使用すると、ユーザーは、仮想ネットワーク内から、またはピアリングされた任意の仮想ネットワークから、Azure Batch アカウントにアクセスできます。 Private Link にマップされたリソースは、プライベート ピアリングを使用して、VPN または [Azure ExpressRoute](../expressroute/expressroute-introduction.md) 経由でオンプレミスからアクセスすることもできます。
+Private Link を使用すると、ユーザーは、仮想ネットワーク内から、またはピアリングされた任意の仮想ネットワークから、Azure Batch アカウントにアクセスできます。 Private Link にマップされたリソースは、プライベート ピアリングを使用して、VPN または [Azure ExpressRoute](../expressroute/expressroute-introduction.md) 経由でオンプレミスからアクセスすることもできます。 [自動または手動の承認方法](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)により、Private Link を使用して構成された Azure Batch アカウントに接続できます。
 
-[自動または手動の承認方法](../private-link/private-endpoint-overview.md#access-to-a-private-link-resource-using-approval-workflow)により、Private Link を使用して構成された Azure Batch アカウントに接続できます。
+Azure Batch でのプライベート接続のサポートは現在、次の Azure リージョンでご利用いただけます。米国中西部、米国西部 2、米国東部、米国中南部、US Gov バージニア、US Gov アリゾナ、東アジア、フランス、英国南部。
 
 この記事では、プライベート Batch アカウントを作成し、プライベート エンドポイントを使用してそれにアクセスする手順について説明します。
-
-> [!IMPORTANT]
-> 現在、Azure Batch でのプライベート接続のサポートは、米国中西部、米国西部 2、米国東部、米国中南部、US Gov バージニア、US Gov アリゾナの各リージョンでパブリック プレビュー段階にあります。
-> このプレビュー バージョンはサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。
-> 詳しくは、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 ## <a name="azure-portal"></a>Azure portal
 

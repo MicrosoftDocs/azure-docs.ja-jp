@@ -10,12 +10,12 @@ ms.author: iainfou
 author: iainfoulds
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5aa84faea43846a2f930373529769e62f76e5bbf
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: b9072c5611f5bd5a4b8cca082cb2bfd7a1e3f1b2
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87419548"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88718902"
 ---
 # <a name="tutorial-secure-user-sign-in-events-with-azure-multi-factor-authentication"></a>チュートリアル:Azure Multi-Factor Authentication を使用してユーザーのサインイン イベントのセキュリティを確保する
 
@@ -133,4 +133,4 @@ Azure Multi-Factor Authentication を有効にして使用する手段として�
 > * ユーザーとして MFA プロセスをテストする
 
 > [!div class="nextstepaction"]
-> [セルフサービス パスワード リセット (SSPR) のパスワード ライトバックを有効にする](tutorial-enable-writeback.md)
+> [セルフサービス パスワード リセット (SSPR) のパスワード ライトバックを有効にする](./tutorial-enable-sspr-writeback.md)

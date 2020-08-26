@@ -1,6 +1,6 @@
 ---
 title: マップに線レイヤーを追加する | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps Web SDK を使用して、マップに線レイヤーを追加する方法を示します。
+description: マップに線を追加する方法について説明します。 Azure Maps Web SDK を使用し、マップに行レイヤーを追加したり、シンボルやカラー グラデーションで行をカスタマイズしたりする例について説明します。
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-javascript
-ms.openlocfilehash: 366de0d17a1cdd62b95d39b1ad04b9bc76bec52c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: c834ae6061fce6f2fc2f4cd7c4d80e036775b156
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286937"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010210"
 ---
 # <a name="add-a-line-layer-to-the-map"></a>マップに線レイヤーを追加する
 

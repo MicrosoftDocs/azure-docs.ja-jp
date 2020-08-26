@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/28/2020
-ms.openlocfilehash: 28fa3fdfdb8915d528d0765bd1fded8128621208
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: bdb7ba30d9fa2d0bd1eff9368d6e30e516b53895
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166520"
+ms.locfileid: "88192733"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Machine Learning ワークスペース用に Azure Private Link を構成する (プレビュー)
 
@@ -39,7 +39,7 @@ Azure Private Link では、プライベート エンドポイントを使用し
 > [!IMPORTANT]
 > 現時点では、新しい Azure Machine Learning ワークスペースを作成する場合にのみ、プライベート エンドポイントの有効化がサポートされています。
 
-[https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) を使用すると、プライベート エンドポイントを使用してワークスペースを作成できます。
+[https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-advanced) のテンプレートを使用し、プライベート エンドポイントでワークスペースを作成できます。
 
 プライベート エンドポイントを含め、このテンプレートの使用に関する詳細については、「[Azure Resource Manager テンプレートを使用して Azure Machine Learning のワークスペースを作成します。](how-to-create-workspace-template.md)」を参照してください。
 

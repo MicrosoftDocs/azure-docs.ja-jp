@@ -3,14 +3,15 @@ title: Azure Functions SignalR Service 入力バインド
 description: Azure Functions で SignalR サービスエンドポイント URL とアクセストークンを返却する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 53d336aff3177a76c5e02266ffb8484bd9945119
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 326115a2a6cf29fcf211cdbd918edd0994fe45ed
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77530196"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212126"
 ---
 # <a name="signalr-service-input-binding-for-azure-functions"></a>Azure Functions における SignalR Service の入力バインド
 

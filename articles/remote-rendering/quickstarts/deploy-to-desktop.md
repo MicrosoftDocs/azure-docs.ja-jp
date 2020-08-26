@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: dc566d2702fb24ef551e4900bed7b828d2597383
-ms.sourcegitcommit: 73ac360f37053a3321e8be23236b32d4f8fb30cf
+ms.openlocfilehash: 6e1a6cb583c0d310cc7ce73995224c42bb84784d
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/30/2020
-ms.locfileid: "85557064"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566167"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>クイック スタート:Unity のサンプルをデスクトップにデプロイする
 
@@ -59,10 +59,7 @@ ms.locfileid: "85557064"
   ![ソリューションの構成](./media/unity-deploy-config-pc.png)
 1. ソリューションをビルドします (F7)。
 
-> [!WARNING]
-> 必ず **[x86]** を選択してください。 現在、**UWP/x64** はサポートされていません。「[プラットフォームの制限事項](../reference/limits.md#platform-limitations)」を参照してください。
-
-## <a name="launch-the-sample-project"></a>サンプル プロジェクトを起動する
+## <a name="launch-the-sample-project"></a>サンプルプロジェクトを起動する
 
 Visual Studio のデバッガーを開始します (F5)。 アプリが PC に自動的にデプロイされます。
 

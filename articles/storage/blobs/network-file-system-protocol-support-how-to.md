@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 2517a0ac8edf30ac041708a57b166af6eb36440a
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cb3cb41b46c2def4f99af7f1811e4ff96dff7070
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760798"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88167030"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>ネットワーク ファイル システム (NFS) 3.0 プロトコル (プレビュー) を使用して Blob Storage をマウントする
 
 Windows または Linux ベースの Azure 仮想マシン (VM) か、オンプレミスで実行されている Windows または Linux システムから、NFS 3.0 プロトコルを使用して、BLOB Storage にコンテナーをマウントすることができます。 この記事では、ステップ バイ ステップ ガイダンスを提供しています。 BLOB ストレージでの NFS 3.0 プロトコルのサポートの詳細については、「[Azure Blob Storage でのネットワーク ファイル システム (NFS) 3.0 プロトコルのサポート (プレビュー)](network-file-system-protocol-support.md)」を参照してください。
 
 > [!NOTE]
-> Azure BLOB Storage での NFS 3.0 プロトコルのサポートはパブリック プレビュー段階であり、次のリージョンで利用できます。米国東部、米国中部、およびカナダ中部。
+> Azure BLOB Storage での NFS 3.0 プロトコルのサポートはパブリック プレビュー段階であり、次のリージョンで利用できます。米国東部、米国中部、米国中西部、オーストラリア南東部、北ヨーロッパ、英国西部、韓国中部、韓国南部、カナダ中部。
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>手順 1:NFS 3.0 プロトコル機能をサブスクリプションに登録する
 
@@ -92,7 +92,7 @@ NFS 3.0 を使用してコンテナーをマウントするには、その機能
 
 |設定 | 値|
 |----|---|
-|場所|次のいずれかのリージョン:米国東部、米国中部、およびカナダ中部 |
+|場所|次のいずれかのリージョン:米国東部、米国中部、米国中西部、オーストラリア南東部、北ヨーロッパ、英国西部、韓国中部、韓国南部、カナダ中部 |
 |パフォーマンス|Premium|
 |アカウントの種類|BlockBlobStorage|
 |レプリケーション|ローカル冗長ストレージ (LRS)|

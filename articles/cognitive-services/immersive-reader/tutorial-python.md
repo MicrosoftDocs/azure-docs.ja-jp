@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
 ms.custom: devx-track-python
-ms.openlocfilehash: 967e290af390ff4310de3e7d0fd844e340ac289d
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: 5a6c68dbb7dd4171fad3b3a13e904a152618a55d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876565"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516387"
 ---
 # <a name="tutorial-start-the-immersive-reader-using-the-python-sample-project"></a>チュートリアル:Python サンプル プロジェクトを使用してイマーシブ リーダーを起動する
 
@@ -27,7 +27,7 @@ ms.locfileid: "87876565"
 > * アクセス トークンを取得します。
 > * イマーシブ リーダーを起動してサンプル コンテンツを表示します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 

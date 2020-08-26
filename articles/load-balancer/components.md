@@ -6,17 +6,17 @@ documentationcenter: na
 author: asudbring
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: overview
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: bf9e403fb8691f378558ef5f0403d132214ed187
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: ccc6611f14903e47a76de938994552378bb3bc24
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421775"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589709"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer のコンポーネント
 

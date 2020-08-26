@@ -2,18 +2,18 @@
 title: Azure Data Box の注文方法のチュートリアル | Microsoft Docs
 description: このチュートリアルでは、オンプレミスのデータを Azure にインポートするハイブリッド ソリューション Azure Data Box とその注文方法について説明します。
 services: databox
-author: priestlg
+author: twooley
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.author: v-grpr
-ms.openlocfilehash: 9f742af1a3c9ede4857e329697eb959a5a51dc95
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.author: twooley
+ms.openlocfilehash: 2000ecc84a92bef5ad6b80fecde4aee0157e4bc5
+ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926367"
+ms.lasthandoff: 08/24/2020
+ms.locfileid: "88783571"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル:Azure Data Box を注文する
 

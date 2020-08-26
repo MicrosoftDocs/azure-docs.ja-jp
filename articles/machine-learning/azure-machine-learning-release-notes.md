@@ -9,18 +9,65 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: b1f45cad5def0e7d9a576a05299b065705ff3e30
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: d93e01cdec79f739367dc219d81028c1abc2d66e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87553445"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508211"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning のリリース ノート
 
 この記事では、Azure Machine Learning の各リリースについて説明します。  SDK リファレンス コンテンツの詳細については、Azure Machine Learning の[**メインの SDK for Python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) のリファレンス ページを参照してください。
 
 バグおよび対処法については、[既知の問題のリスト](resource-known-issues.md)を参照してください。
+
+## <a name="2020-08-17"></a>2020-08-17
+
+### <a name="azure-machine-learning-sdk-for-python-v1120"></a>Azure Machine Learning SDK for Python v1.12.0
+
++ **バグの修正と機能強化**
+  + **azure-cli-ml**
+    + ビルドしたパッケージ イメージの名前を変更できるよう、image_name と image_label パラメーターを Model.package() に追加しました。
+  + **azureml-automl-core**
+    + AutoML で、読み取り中にコンテンツが変更されたときに、dataprep から新しいエラー コードが生成されるようになりました。
+  + **azureml-automl-runtime**
+    + データに欠損値が含まれているが、特徴量化がオフになっている場合に表示されるユーザー アラートを追加しました。
+    + データに NAN が含まれ、特徴量化がオフになっている場合に発生する子実行のエラーを修正しました。
+    + AutoML で、読み取り中にコンテンツが変更されたときに、dataprep から新しいエラー コードが生成されるようになりました。
+    + 予測メトリックの正規化をグレイン単位で行うよう更新しました。
+    + ルックバック機能が無効になっている場合の予測分位点の計算を改善しました。
+    + AutoML の後に説明を計算する際のブール疎行列の処理を修正しました。
+  + **azureml-core**
+    + 新しいメソッド `run.get_detailed_status()` で、現在の実行状態の詳細な説明が表示されるようになりました。 現在は、`Queued` 状態の説明のみが表示されています。
+    + ビルドしたパッケージ イメージの名前を変更できるよう、image_name と image_label パラメーターを Model.package() に追加しました。
+    + [`CondaDependencies`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) の PIP セクション全体を一度に設定するための新しいメソッド `set_pip_requirements()`。
+    + 資格情報のない ADLS Gen2 データストアを登録できるようにしました。
+    + 不適切なデータセットの種類をダウンロードまたはマウントしようとした時のエラー メッセージを改善しました。
+    + timeseries データセット フィルター サンプル ノートブックに、フィルターを最適化する partition_timestamp の例を追加して更新しました。
+    + プライベート エンドポイント接続を削除するときに、ArmResourceId ではなく、パラメーターとして subscriptionId、resourceGroup、workspaceName、peConnectionName を受け入れるよう SDK と CLI を変更しました。
+    + 簡単に見分けられるよう、実験的な Decorator にクラス名が表示されるようになりました。
+    + モデル内のアセットの説明が、実行に基づいて自動的に生成されなくなりました。
+  + **azureml-datadrift**
+    + DataDriftDetector の create_from_model API を非推奨としてマークしました。
+  + **azureml-dataprep**
+    + 不適切なデータセットの種類をダウンロードまたはマウントしようとした時のエラー メッセージを改善しました。
+  + **azureml-pipeline-core**
+    + 登録されたデータセットを含むパイプライン グラフを逆シリアル化した時に発生するバグを修正しました。
+  + **azureml-pipeline-steps**
+    + RScriptStep で azureml.core.environment からの RSection がサポートされるようになりました。
+    + `AutoMLStep` パブリック API から passthru_automl_config パラメーターを削除し、これを内部専用のパラメーターに変換しました。
+  + **azureml-train-automl-client**
+    + 非同期のローカルにあるマネージド環境の実行を、AutoML から削除しました。 すべてのローカル実行は、実行が開始された環境で実行されます。
+    + ユーザー指定のスクリプトを使用せずに AutoML 実行を送信した時に発生するスナップショットに関する問題を修正しました。
+    + データに NAN が含まれ、特徴量化がオフになっている場合に発生する子実行のエラーを修正しました。
+  + **azureml-train-automl-runtime**
+    + AutoML で、読み取り中にコンテンツが変更されたときに、dataprep から新しいエラー コードが生成されるようになりました。
+    + ユーザー指定のスクリプトを使用せずに AutoML 実行を送信した時に発生するスナップショットに関する問題を修正しました。
+    + データに NAN が含まれ、特徴量化がオフになっている場合に発生する子実行のエラーを修正しました。
+  + **azureml-train-core**
+    + `pip_requirements_file` パラメーターを通じて [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) に渡される PIP の要件ファイル内の PIP オプション (例: --extra-index-url) を指定するためのサポートを追加しました。
+
 
 ## <a name="2020-08-03"></a>2020-08-03
 

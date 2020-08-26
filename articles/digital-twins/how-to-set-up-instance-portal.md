@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 73b7171b89b26926992e95f77e376e7bb7731eff
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 1f7486f1080c0fbb25b1be6ab70bb647a546ceca
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87408186"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234992"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Azure Digital Twins インスタンスと認証を設定する (ポータル)
 
@@ -24,27 +24,13 @@ ms.locfileid: "87408186"
 * CLI を使用してこれらの手順を手動で実行するには、こちら記事の CLI バージョンを確認してください: [*方法: インスタンスと認証を設定する (CLI)* ](how-to-set-up-instance-cli.md)。
 * デプロイ スクリプトのサンプルを使用して自動での設定を実行するには、こちらの記事のスクリプト化されたバージョンを確認してください: [*方法: インスタンスと認証を設定する (スクリプト化)* ](how-to-set-up-instance-scripted.md)。
 
-[!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
- 
-その後、資格情報を使用して、[Azure portal](https://ms.portal.azure.com/) にログインします。
+[!INCLUDE [digital-twins-setup-steps-prereq.md](../../includes/digital-twins-setup-steps-prereq.md)]
 
-## <a name="prerequisites-permission-requirements"></a>前提条件:権限の要件
+## <a name="create-the-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスを作成する
 
-この記事のすべての手順を完了するには、Azure サブスクリプションでご自身が所有者に分類されている必要があります。 
+このセクションでは、[Azure portal](https://ms.portal.azure.com/) を使用して、**Azure Digital Twins の新しいインスタンスを作成**します。 ポータルに移動し、自分の資格情報でログインします。
 
-Azure portal 上の[サブスクリプション ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)でアクセス許可レベルを確認できます (このリンクを使用するか、ポータルの検索バーを使って "*サブスクリプション*" を検索できます)。 使用しているサブスクリプションの名前を検索して、それに対応するロールを *[自分の役割]* 列に表示します。 ご自身が所有者の場合、この値は "*所有者*" になっています。
-
-:::image type="content" source="media/how-to-set-up-instance/portal/subscriptions-role.png" alt-text="ユーザーが所有者として表示されている Azure portal 上のサブスクリプション ページのビュー" lightbox="media/how-to-set-up-instance/portal/subscriptions-role.png":::
-
-値が "*共同作成者*" をはじめ "*所有者*" 以外であることがわかった場合は、次のいずれかの方法で処理を続行できます。
-* サブスクリプションの所有者に連絡して、その所有者に、この記事の手順を自分の代わりに完了するように依頼します
-* 自分で処理を続行するためのアクセス許可が付与されるように、サブスクリプションの所有者またはサブスクリプションのユーザー アクセス管理者ロールを持つ人に連絡して、自分をサブスクリプションの所有者に昇格させるように依頼します。 これが適切かどうかは、ユーザーの組織やその中での職責によって異なります。
-
-## <a name="create-the-azure-digital-twins-instance"></a>Azure Digital Twins インスタンスの作成
-
-このセクションでは、Azure portal を使用して、**Azure Digital Twins の新しいインスタンスを作成**します。
-
-[Azure portal](https://ms.portal.azure.com/) にログインした後、Azure サービスのホーム ページ メニューで _[リソースの作成]_ を選択して開始します。
+Azure portal に入ったら、Azure サービスのホーム ページ メニューで _[リソースの作成]_ を選択して開始します。
 
 :::image type="content" source= "media/how-to-set-up-instance/portal/create-resource.png" alt-text="Azure portal のホーム ページから [リソースの作成] を選択する":::
 
@@ -62,7 +48,7 @@ Azure portal 上の[サブスクリプション ページ](https://portal.azure.
 
 終わったら、 _[確認と作成]_ を選択します。 これにより、[概要] ページへ遷移します。ここでは、入力したインスタンスの詳細を確認して、 _[作成]_ を押します。 
 
-### <a name="verify-success"></a>成功を確認する
+### <a name="verify-success-and-collect-important-values"></a>成功を確認して重要な値を収集する
 
 *[作成]* を押した後は、ポータル アイコン バーの Azure 通知にインスタンスのデプロイの状態が表示されます。 この通知はデプロイが成功した時点で示され、作成したインスタンスを表示するための _[リソースに移動]_ ボタンを選択できるようになります。
 
@@ -77,7 +63,7 @@ Azure portal 上の[サブスクリプション ページ](https://portal.azure.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="インスタンスの [概要] ページの重要な値の強調表示":::
 
-これで、Azure Digital Twins インスタンスの準備が完了しました。 次に、それを管理するための適切な Azure ユーザー アクセス許可を付与します。
+これで、Azure Digital Twins インスタンスの準備が完了しました。 次に、適切な Azure ユーザーにそれを管理するためのアクセス許可を付与します。
 
 ## <a name="set-up-user-access-permissions"></a>ユーザーのアクセス許可を設定する
 
@@ -87,7 +73,7 @@ Azure portal 上の[サブスクリプション ページ](https://portal.azure.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="[アクセス制御 (IAM)] ページからロールの割り当てを追加することを選ぶ":::
 
-以下の *[ロールの割り当てを追加する]* ページに、値を入力します (Azure サブスクリプションの所有者が完了する必要があります)。
+次の *[ロールの割り当てを追加する]* ページで、値を入力します (Azure サブスクリプションにおいて[十分なアクセス許可](#prerequisites-permission-requirements)を持つユーザーが完了する必要があります)。
 * **ロール**: ドロップダウン メニューから *[Azure Digital Twins 所有者 (プレビュー)]* を選択します
 * **アクセスの割り当て先**:ドロップダウン メニューから *[Azure AD user, group or service principal]\(Azure AD ユーザー、グループ、またはサービス プリンシパル\)* を選択します
 * **Select**:割り当てるユーザーの名前または電子メール アドレスを検索します。 結果を選択すると、 *[選択したメンバー]* セクションにそのユーザーが表示されます。
@@ -108,7 +94,7 @@ Azure portal 上の[サブスクリプション ページ](https://portal.azure.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/verify-role-assignment.png" alt-text="Azure portal での Azure Digital Twins インスタンスのロールの割り当てのビュー":::
 
-これで、Azure Digital Twins インスタンスの準備が完了し、これを管理するためのアクセス許可が割り当てられました。 次に、これにアクセスするためのクライアント アプリのアクセス許可を設定します。
+これで、Azure Digital Twins インスタンスの準備が完了し、これを管理するためのアクセス許可が割り当てられました。 次に、それにアクセスするためのクライアント アプリのアクセス許可を設定します。
 
 ## <a name="set-up-access-permissions-for-client-applications"></a>クライアント アプリケーションのアクセス許可を設定する
 
@@ -141,6 +127,9 @@ Azure portal 上の[サブスクリプション ページ](https://portal.azure.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-1.png" alt-text="Azure Digital Twins が表示された [API アクセス許可の要求] ページの検索結果のビュー":::
 
+>[!NOTE]
+> Azure Digital Twins の以前の (2020 年 7 月より前の) パブリック プレビューで作成されたサービス インスタンスがサブスクリプション内にまだある場合は、代わりに *Azure Smart Spaces Service* を検索する必要があります。 これは同じ API セットの古い名前であり、操作手順に変更はありません。
+
 次に、これらの API に対して付与するアクセス許可を選択します。 **[Read (1)]\(読み取り (1)\)** アクセス許可を展開して、 *[Read.Write]\(読み取り.書き込み\)* と示されたチェック ボックスをオンにし、このアプリ登録に読み取りおよび書き込みのアクセス許可を付与します。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/request-api-permissions-2.png" alt-text="Azure Digital Twins API の [Read.Write]\(読み取り.書き込み\) アクセス許可を選択した [API アクセス許可の要求] ページのビュー":::
@@ -161,7 +150,7 @@ Azure portal 上の[サブスクリプション ページ](https://portal.azure.
 
 ### <a name="collect-important-values"></a>重要な値を収集する
 
-次に、メニュー バーから *[概要]* を選択して、アプリの登録の詳細を表示します。
+次に、メニュー バーから *[概要]* を選択して、アプリ登録の詳細を表示します。
 
 :::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="アプリ登録の重要な値のポータル ビュー":::
 
@@ -173,5 +162,5 @@ Azure portal 上の[サブスクリプション ページ](https://portal.azure.
 
 ## <a name="next-steps"></a>次のステップ
 
-クライアント アプリの認証コードを作成して、クライアント アプリケーションをインスタンスに接続する方法を確認します。
+クライアント アプリの認証コードを作成してクライアント アプリケーションをインスタンスに接続する方法について説明します。
 * [*方法: アプリ認証コードを作成する*](how-to-authenticate-client.md)

@@ -3,12 +3,12 @@ title: REST API を使用して Azure ファイル共有をバックアップす
 description: Recovery Services コンテナー内のバックアップされた Azure ファイル共有を、REST API を使用してバックアップする方法について説明します
 ms.topic: conceptual
 ms.date: 02/16/2020
-ms.openlocfilehash: 7059dbae9d448b710880f1f9d72b843a6d77d98b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f48ebbd20d6775fe61c3e3dbb07e8f71af41635a
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055015"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036744"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>REST API で Azure Backup を使用して Azure ファイル共有をバックアップする
 
@@ -106,9 +106,9 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105304Z:d9bdb266-8349-4dbd-968
 Date   : Mon, 27 Jan 2020 10:53:04 GMT
 ```
 
-### <a name="get-list-of-storage-accounts-that-can-be-protected-with-recovery-services-vault"></a>Recovery Services コンテナーで保護できるストレージ アカウントの一覧を取得する
+### <a name="get-list-of-storage-accounts-with-file-shares-that-can-be-backed-up-with-recovery-services-vault"></a>Recovery Services コンテナーでバックアップできるファイル共有を持つストレージ アカウントの一覧を取得する
 
-"キャッシュ" が完了していることを確認するには、そのサブスクリプションで保護可能なすべてのストレージ アカウントの一覧を表示します。 その後、応答で目的のストレージ アカウントを見つけます。 これを行うには、[GET ProtectableContainers](/rest/api/backup/protectablecontainers/list) 操作を使用します。
+"キャッシュ" が完了していることを確認するには、Recovery Services コンテナーにバックアップできるファイル共有が存在するサブスクリプション内のすべてのストレージ アカウントの一覧を表示します。 その後、応答で目的のストレージ アカウントを見つけます。 これを行うには、[GET ProtectableContainers](/rest/api/backup/protectablecontainers/list) 操作を使用します。
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupFabrics/Azure/protectableContainers?api-version=2016-12-01&$filter=backupManagementType eq 'AzureStorage'

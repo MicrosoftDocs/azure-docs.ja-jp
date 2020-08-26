@@ -140,9 +140,6 @@
         - name: Gallery データ
           displayName: export
           href: ai-gallery-control-personal-data-dsr.md
-        - name: ノートブックのダウンロード
-          displayName: export
-          href: download-notebooks-data.md
 - name: リファレンス
   items:
     - name: アルゴリズムとモジュールのリファレンス
@@ -165,5 +162,5 @@
       href: 'https://azure.microsoft.com/regions/services/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
-    - name: 'カスタム ニューラル ネットワーク (Net#)'
+    - name: カスタム ニューラル ネットワーク (Net#)
       href: azure-ml-netsharp-reference-guide.md

@@ -1,14 +1,14 @@
 ---
 title: Linux 用のゲスト構成ポリシーを作成する方法
 description: Linux VM に対する Azure Policy のゲスト構成ポリシーを作成する方法について説明します。
-ms.date: 03/20/2020
+ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 5ce6dce034c9479924901e5a20b38c343dd8bac6
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 8bf01d8f69439f7b4d60fba76de0b7abf636c274
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86026714"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547722"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Linux 用のゲスト構成ポリシーを作成する方法
 
@@ -25,9 +25,8 @@ Azure または非 Azure マシンの状態を検証するための独自の構�
 > [!IMPORTANT]
 > ゲスト構成でのカスタム ポリシーは、プレビュー機能です。
 >
-> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。
-> すべての Linux マシンに拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
->   - [Linux VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
+> Azure の仮想マシンで監査を実行するには、ゲスト構成拡張機能が必要です。 すべての Linux マシンに拡張機能を大規模にデプロイするには、次のポリシー定義を割り当てます。
+> - [Linux VM でゲスト構成ポリシーを有効にするための前提条件をデプロイする。](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffb27e9e0-526e-4ae1-89f2-a2a0bf0f8a50)
 
 ## <a name="install-the-powershell-module"></a>PowerShell モジュールをインストールする
 
@@ -51,11 +50,14 @@ Azure または非 Azure マシンの状態を検証するための独自の構�
 - macOS
 - Windows
 
+> [!NOTE]
+> コマンドレット "Test-GuestConfigurationPackage" には、OMI に対する依存関係があるため、OpenSSL バージョン 1.0 が必要です。 これにより、OpenSSL 1.1 以降を使用するすべての環境でエラーが発生します。
+
 ゲスト構成のリソース モジュールには、次のソフトウェアが必要です。
 
 - PowerShell 6.2 以降。 インストールされていない場合は、こちらの[手順](/powershell/scripting/install/installing-powershell)に従ってください。
 - Azure PowerShell 1.5.0 以降。 インストールされていない場合は、こちらの[手順](/powershell/azure/install-az-ps)に従ってください。
-  - AZ モジュール 'Az.Accounts' および 'Az.Resources' のみが必要です。
+  - Az モジュール "Az.Accounts" および "Az.Resources" のみが必要です。
 
 ### <a name="install-the-module"></a>モジュールのインストール
 
@@ -77,7 +79,8 @@ PowerShell で **GuestConfiguration** モジュールをインストールする
 
 ## <a name="guest-configuration-artifacts-and-policy-for-linux"></a>Linux 用のゲスト構成アーティファクトとポリシー
 
-Linux 環境でも、ゲスト構成では、言語の抽象化として Desired State Configuration が使用されます。 実装はネイティブ コード (C++) に基づいているため、PowerShell の読み込みは必要ありません。 ただし、環境の詳細を記述する構成 MOF が必要です。 DSC は InSpec のラッパーとして機能し、実行方法、パラメーターの提供方法、およびサービスに出力が返される方法を標準化します。 カスタム InSpec コンテンツを使用する場合は、DSC に関する知識はほとんど必要ありません。
+Linux 環境でも、ゲスト構成では、言語の抽象化として Desired State Configuration が使用されます。 実装はネイティブ コード (C++) に基づいているため、PowerShell の読み込みは必要ありません。 ただし、環境の詳細を記述する構成 MOF が必要です。
+DSC は InSpec のラッパーとして機能し、実行方法、パラメーターの提供方法、およびサービスに出力が返される方法を標準化します。 カスタム InSpec コンテンツを使用する場合は、DSC に関する知識はほとんど必要ありません。
 
 #### <a name="configuration-requirements"></a>構成要件
 
@@ -137,8 +140,6 @@ AuditFilePathExists -out ./Config
 このファイルを `config.ps1` という名前でプロジェクト フォルダーに保存します。 ターミナルで `./config.ps1` を実行して、これを PowerShell で実行します。 新しい mof ファイルが作成されます。
 
 `Node AuditFilePathExists` コマンドは技術的には必須ではありませんが、既定の `localhost.mof` ではなく `AuditFilePathExists.mof` という名前のファイルを生成します。 .mof ファイル名が構成に従うことにより、大規模な運用時に多くのファイルを簡単に整理できます。
-
-
 
 これで、プロジェクトの構造は次のようになります。
 
@@ -260,6 +261,8 @@ $uri = publish `
 - **バージョン**:ポリシーのバージョン。
 - **パス**:ポリシー定義が作成されるターゲット パス。
 - **Platform**: ゲスト構成ポリシーとコンテンツ パッケージのターゲット プラットフォーム (Windows/Linux)。
+- **Tag** は、ポリシー定義に 1 つ以上のタグ フィルターを追加します
+- **カテゴリ**は、ポリシー定義のカテゴリ メタデータ フィールドを設定します
 
 次の例では、カスタム ポリシー パッケージから指定されたパスにポリシー定義を作成します。
 
@@ -282,16 +285,7 @@ New-GuestConfigurationPolicy `
 
 コマンドレットの出力では、イニシアティブの表示名とポリシー ファイルのパスが含まれるオブジェクトが返されます。
 
-> [!Note]
-> 最新のゲスト構成モジュールには、次の新しいパラメーターが含まれています。
-> - **Tag** は、ポリシー定義に 1 つ以上のタグ フィルターを追加します
->   - 「[タグを使用したゲスト構成ポリシーのフィルター処理](#filtering-guest-configuration-policies-using-tags)」のセクションを参照してください。
-> - **カテゴリ**は、ポリシー定義のカテゴリ メタデータ フィールドを設定します
->   - このパラメーターが含まれていない場合、カテゴリは既定で [ゲスト構成] になります。
-> これらの機能は現在プレビュー段階であり、ゲスト構成モジュール バージョン 1.20.1 が必要です。これは `Install-Module GuestConfiguration -AllowPrerelease`を使用してインストールできます。
-
-最後に、`Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。
-コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。
+最後に、`Publish-GuestConfigurationPolicy` コマンドレットを使用してポリシー定義を発行します。 コマンドレットのパラメーターは、`New-GuestConfigurationPolicy` によって作成される JSON ファイルの場所を指し示す **Path** だけです。
 
 Publish コマンドを実行するには、Azure でポリシーを作成するためのアクセス権が必要です。 特定の承認要件については、[Azure Policy の概要](../overview.md)に関するページに記載されています。 最適な組み込みロールは、**リソース ポリシーの共同作成者**です。
 
@@ -405,9 +399,6 @@ Configuration AuditFilePathExists
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>タグを使用したゲスト構成ポリシーのフィルター処理
 
-> [!Note]
-> この機能は現在プレビュー段階であり、ゲスト構成モジュール バージョン 1.20.1 が必要です。これは `Install-Module GuestConfiguration -AllowPrerelease`を使用してインストールできます。
-
 ゲスト構成モジュールのコマンドレットによって作成されたポリシーには、必要に応じてタグのフィルターを含めることができます。 `New-GuestConfigurationPolicy` の **-Tag** パラメーターは、個々のタグ エントリを含むハッシュテーブルの配列をサポートしています。 タグは、ポリシー定義の `If` セクションに追加され、ポリシーの割り当てで変更することはできません。
 
 タグをフィルター処理するポリシー定義のスニペットの例を次に示します。
@@ -464,5 +455,5 @@ Azure Policy ゲスト構成割り当てのトラブルシューティングに�
 ## <a name="next-steps"></a>次のステップ
 
 - [ゲスト構成](../concepts/guest-configuration.md)による VM の監査について学習します。
-- [プログラムによってポリシーを作成する](programmatically-create.md)方法を理解します。
-- [コンプライアンス データを取得する](get-compliance-data.md)方法を学習します。
+- [プログラムによってポリシーを作成する](./programmatically-create.md)方法を理解します。
+- [コンプライアンス データを取得する](./get-compliance-data.md)方法を学習します。

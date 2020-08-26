@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: f2af8dcb2460e4e95d29bd81e6994d145ac61a48
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 4949a83ac2aac664c19be46a367fce2bbff4cb02
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86247779"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87904821"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 
@@ -155,7 +155,7 @@ Silver または Gold の持続性は、頻繁なスケールイン (VM イン�
 
 #### <a name="virtual-machine-sizing"></a>仮想マシンのサイズ設定
 
-**運用環境のワークロードの場合、推奨される VM サイズ (SKU) は、50 GB 以上のローカル SSD を使用する、Standard D2_V2 (または同等のもの) です。** 推奨されるのは少なくとも 50 GB のローカル SSD ですが、一部のワークロード (Windows コンテナーを実行するものなど) には、より大容量のディスクが必要です。 運用環境のワークロード用にその他の [VM サイズ](../virtual-machines/sizes-general.md)を選択する場合は、以下の制約に留意してください。
+**運用環境のワークロードの場合、推奨される VM サイズ (SKU) は、50 GB 以上のローカル SSD、2 コア、および 4 GiB のメモリを持つ [Standard D2_V2](../virtual-machines/dv2-dsv2-series.md) (または同等のもの) です。** 推奨されるのは少なくとも 50 GB のローカル SSD ですが、一部のワークロード (Windows コンテナーを実行するものなど) には、より大容量のディスクが必要です。 運用環境のワークロード用にその他の [VM サイズ](../virtual-machines/sizes-general.md)を選択する場合は、以下の制約に留意してください。
 
 - Standard A0 のような、部分的コアの VM サイズはサポートされていません。
 - *A シリーズ* VM サイズは、パフォーマンス上の理由でサポートされていません。

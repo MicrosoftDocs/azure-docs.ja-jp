@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f0f7571cf9f8d355330c4acf425e38ce215e840
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68419c33286457a770a9988f1f00cc0b5e1f91bc
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050867"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235300"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Azure Active Directory パスワード保護を使用して不適切なパスワードを排除する
 
 多くのセキュリティ ガイダンスでは、複数の場所で同じパスワードを使用しないこと、パスワードを複雑にすること、*Password123* のように単純なパスワードを使用しないことが推奨されています。 [パスワードの選択方法に関するガイダンス](https://www.microsoft.com/research/publication/password-guidance)をユーザーに提供できますが、それでも脆弱なパスワードやセキュリティで保護されていないパスワードが使用されることがよくあります。 Azure AD パスワード保護では、既知の脆弱なパスワードやそのバリエーションを検出してブロックします。また、組織に固有のその他の脆弱な用語をブロックすることもできます。
 
-Azure AD パスワード保護では、既定のグローバル禁止パスワード リストがすべてのクラウド ユーザーに自動的に適用されます。 独自のビジネス ニーズやセキュリティ ニーズに対応するため、カスタムの禁止パスワード リストにエントリを定義できます。 ユーザーがパスワードを変更またはリセットすると、これらの禁止パスワード リストがチェックされ、強力なパスワードの使用が強制されます。
+Azure AD パスワード保護では、既定のグローバル禁止パスワード リストが Azure AD テナント内のすべてのユーザーに自動的に適用されます。 独自のビジネス ニーズやセキュリティ ニーズに対応するため、カスタムの禁止パスワード リストにエントリを定義できます。 ユーザーがパスワードを変更またはリセットすると、これらの禁止パスワード リストがチェックされ、強力なパスワードの使用が強制されます。
 
 Azure AD パスワード保護によって適用される強力なパスワードだけに依存せずに、[Azure Multi-Factor Authentication](concept-mfa-howitworks.md) のような追加機能を使用する必要があります。 サインイン イベントに対して複数のセキュリティ層を使用する方法の詳細については、「[Your Pa$$word doesn't matter (パスワードは関係ない)](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984)」を参照してください。
 
@@ -37,7 +37,7 @@ Azure AD Identity Protection チームは、常に Azure AD セキュリティ �
 
 Azure AD テナントのユーザーのパスワードが変更またはリセットされた場合は、現在のバージョンのグローバル禁止パスワード リストを使用してパスワードの強度が検証されます。 この検証チェックの結果、すべての Azure AD ユーザーのパスワードが強力になります。
 
-グローバル禁止パスワード リストは、Azure AD テナントのすべてのクラウド ユーザーに自動的に適用されます。 何かを有効化したり構成したりする必要はありませんが、無効にすることもできません。
+グローバル禁止パスワード リストは、Azure AD テナントのすべてのユーザーに自動的に適用されます。 何かを有効化したり構成したりする必要はありませんが、無効にすることもできません。 このグローバル禁止パスワード リストがユーザーに適用されるのは、彼らが Azure AD を使用して独自のパスワードを変更またはリセットしたときです。
 
 > [!NOTE]
 > サイバー犯罪者も、攻撃の際に同じような戦略を使用して、よく使われる脆弱なパスワードやそのバリエーションを識別します。 セキュリティを強化するため、Microsoft ではグローバル禁止パスワード リストの内容を公開していません。
@@ -99,7 +99,7 @@ Azure AD パスワード保護は、パスワード スプレー攻撃で使用�
 
 ## <a name="on-premises-hybrid-scenarios"></a>オンプレミスのハイブリッド シナリオ
 
-多くの組織では、オンプレミスの Active Directory Domain Services (AD DS) 環境を含むハイブリッド ID モデルが使用されています。 Azure AD パスワード保護のセキュリティ上の利点を AD DS 環境に拡張するため、オンプレミスのサーバーにコンポーネントをインストールできます。 これらのエージェントでは、オンプレミスの AD DS 環境のパスワード変更イベントをクラウドのみのユーザーと同じパスワード ポリシーに準拠させる必要があります。
+多くの組織では、オンプレミスの Active Directory Domain Services (AD DS) 環境を含むハイブリッド ID モデルが使用されています。 Azure AD パスワード保護のセキュリティ上の利点を AD DS 環境に拡張するため、オンプレミスのサーバーにコンポーネントをインストールできます。 これらのエージェントでは、オンプレミスの AD DS 環境のパスワード変更イベントを Azure AD の場合と同じパスワード ポリシーに準拠させる必要があります。
 
 詳細については、[AD DS に Azure AD パスワード保護を適用する](concept-password-ban-bad-on-premises.md)方法に関する記事をご覧ください。
 

@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Maps Mobility Service を使用して公共輸送機関のデータを要求する
-description: この記事では、Microsoft Azure Maps Mobility Service を使用して公共輸送機関のデータを要求する方法について説明します。
+description: Azure Maps Mobility Service を使用して、都市圏 ID、輸送機関の停留所、ルート、ルートの移動プランなどの公共輸送機関のデータを要求する方法について説明します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/22/2020
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 38fc6f213cbd58fc829a6605bdbed7d25e99bb8d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0aad822f0433a161e20c520296ce9fb9eb296f7e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319016"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037747"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Azure Maps Mobility Service を使用して公共輸送機関のデータを要求する
 

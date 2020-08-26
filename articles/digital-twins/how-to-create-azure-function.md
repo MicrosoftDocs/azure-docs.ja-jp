@@ -7,12 +7,12 @@ ms.author: cschorm
 ms.date: 3/17/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3e284bc76da9ca40341d72f772aa7ee947a11638
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: d9f9957209c6df91185059085f57636a16a3961c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124308"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589403"
 ---
 # <a name="connect-azure-functions-apps-for-processing-data"></a>データを処理するために Azure Functions アプリを接続する
 
@@ -84,7 +84,7 @@ namespace FunctionSample
 
 関数アプリと Azure Digital Twins のやり取りには、[.NET (C#) 用の Azure IoT Digital Twin クライアント ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core)を使用します。 この SDK を使用するには、次のパッケージをプロジェクトに含める必要があります。
 * `Azure.DigitalTwins.Core` (バージョン `1.0.0-preview.2`)
-* `Azure.Identity`
+* `Azure.Identity` (バージョン `1.1.1`)
 
 Azure Functions を適切に設定するように Azure SDK パイプラインを構成するには、以下も必要です。
 * `Azure.Net.Http`

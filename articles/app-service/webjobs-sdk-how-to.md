@@ -3,15 +3,16 @@ title: WebJobs SDK の使用方法
 description: WebJobs SDK 用のコードを書く方法を学びます。 Azure サービスやサード パーティのデータにアクセスするイベント ドリブンのバックグラウンド処理のジョブを作成します。
 author: ggailey777
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 97b17f7e80590b9b907b8dc25253e6d706117357
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 25aaf49d32da29fe5fb082e6e4481cd9266f88e1
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85807980"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208641"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>イベント ドリブンのバックグラウンド処理に Azure WebJobs SDK を使用する方法
 
@@ -23,7 +24,7 @@ WebJobs SDK のバージョン 3.*x* とバージョン 2.*x* には、重要な
 
 * バージョン 3.*x* では、.NET Core のサポートが追加されています。
 * バージョン 3.*x* では、WebJobs SDK で必要となるストレージ バインディング拡張機能を明示的にインストールする必要があります。 バージョン 2.*x* では、ストレージのバインドは SDK に含まれていました。
-* .NET Core (3.*x*) プロジェクト用の Visual Studio のツールは、.NET Framework (2.*x*) プロジェクト用のツールと異なります。 詳しくは、「[Visual Studio を使用して WebJobs を開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」をご覧ください。
+* .NET Core (3.*x*) プロジェクト用の Visual Studio のツールは、.NET Framework (2.*x*) プロジェクト用のツールと異なります。 詳しくは、「[Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service](webjobs-dotnet-deploy-vs.md)」をご覧ください。
 
 可能な場合は、バージョン 3.*x* とバージョン 2.*x* 両方の例が提供されています。
 
@@ -129,7 +130,7 @@ static void Main()
 
 ASP.NET アプリケーションの既定値は `Int32.MaxValue` であり、これは Basic またはそれ以降の App Service プランで実行されている WebJobs で適切に動作します。 WebJobs は通常、Always On の設定を必要としており、これは Basic またはそれ以降の App Service プランでのみサポートされています。
 
-WebJobs が Free または Shared App Service プランで実行されている場合、アプリケーションは、現在 [300 の接続制限](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)を持つ App Service サンドボックスにより制限されています。 `ServicePointManager` の設定がバインドなしの接続制限の場合、サンドボックスの接続がしきい値に達し、サイトがシャット ダウンする可能性が高くなります。 その場合は、`DefaultConnectionLimit`の設定を 50 または 100 のようにより低いものにすることで、これを防ぎつつ十分なスループットを可能にします。
+Web ジョブが Free または Shared App Service プランで実行されている場合、アプリケーションは、現在 [300 の接続制限](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#per-sandbox-per-appper-site-numerical-limits)を持つ App Service サンドボックスにより制限されています。 `ServicePointManager` の設定がバインドなしの接続制限の場合、サンドボックスの接続がしきい値に達し、サイトがシャット ダウンする可能性が高くなります。 その場合は、`DefaultConnectionLimit`の設定を 50 または 100 のようにより低いものにすることで、これを防ぎつつ十分なスループットを可能にします。
 
 あらゆる HTTP 要求が行われる前に、この設定を構成する必要があります。 このため、WebJobs ホストでは設定を自動的に調整しないでください。 ホストが開始する前に HTTP 要求が発生する可能性があり、予期しない動作を招くことがあります。 最善の方法は、次に示すように、`JobHost` を初期化する前に `Main` メソッドですぐに値を設定することです。
 
@@ -804,7 +805,7 @@ Async 関数のコードを書く方法については、[Azure Functions](../az
 
 ## <a name="multiple-instances"></a>複数インスタンス
 
-Web アプリが複数のインスタンス上で稼働している場合、継続的な WebJobs は各インスタンスで実行され、トリガーをリッスンして関数の呼び出しを行います。 各種のトリガー バインドは、インスタンス間で協調して作業を効率的に共有するよう設計されているので、より多くのインスタンスにスケール アウトすると、より多くの負荷を処理することができます。
+Web アプリが複数のインスタンス上で稼働している場合、継続的な Web ジョブは各インスタンスで実行され、トリガーをリッスンして関数の呼び出しを行います。 各種のトリガー バインドは、インスタンス間で協調して作業を効率的に共有するよう設計されているので、より多くのインスタンスにスケール アウトすると、より多くの負荷を処理することができます。
 
 一部のトリガーで二重の処理が発生する可能性がありますが、キューと BLOB ストレージ トリガーでは、関数がキュー メッセージや BLOB を 2 回以上処理することが自動的に防止されます。 詳細については、Azure Functions ドキュメントの[同一入力のための設計](../azure-functions/functions-idempotent.md)に関する記事を参照してください。
 

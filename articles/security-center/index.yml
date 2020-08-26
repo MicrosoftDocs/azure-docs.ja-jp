@@ -10,13 +10,13 @@ metadata:
   ms.collection: collection
   author: memildin
   ms.author: memildin
-  ms.date: 11/04/2019
-  ms.openlocfilehash: fa0ef29a1ae9e7fa7fbb1798927b01383f891c29
-  ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+  ms.date: 08/17/2020
+  ms.openlocfilehash: a8f457b392aee3e91f0a1685543bec8ad07350de
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/17/2020
-  ms.locfileid: "88262094"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88688540"
 landingContent:
 - title: Security Center について
   linkLists:

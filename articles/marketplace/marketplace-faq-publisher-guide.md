@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 07/22/2020
-ms.openlocfilehash: 20c82793726221515ad4d1019f4d8f4754b3ae08
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 82a6b2674fe73bd448bb7ccbd230e837bd1cbb2a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036574"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607332"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースに関するよくあるご質問
 
@@ -120,11 +120,11 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 発行プロセスの間に、パートナーにはオファーのプレビューへのアクセスが提供されます。 アクセスできるのは **[プレビュー]** タブで指定されているユーザーに限定され、他のユーザーにこのオファーを表示することはできません。 プレビューを購入して、プロセスをテストできます。ただし、オファーの設定に応じて全額料金が請求されます。
 
-購入を非常に低価格で行うためには、テストのコストとして受け入れることのできる価格で設定した、自分だけが表示できるプライベート プランを自分自身に発行することをお勧めします。 価格 $0.00 はサポートされていますが、有料サブスクリプションのような完全なエクスペリエンスは反映されないため、$1.00 に価格を設定することをお勧めします。
+低価格で購入するには、プライベート プランを発行することをお勧めします。このプランは、自分にのみ表示することができ、テストのコストとして受け入れ可能な価格で購入できます。 価格 $0.00 はサポートされていますが、有料サブスクリプションのような完全なエクスペリエンスは反映されないため、$1.00 に価格を設定することをお勧めします。
 
 ### <a name="what-are-leads-from-the-commercial-marketplace-and-what-should-i-do-with-them"></a>コマーシャル マーケットプレースからのリードはどのようなもので、そのリードに対して何を行う必要がありますか?
 
-顧客が Microsoft AppSource や Azure Marketplace のネットショップでオファーを使用すると、情報が収集されます。 十分な関心があることを顧客が示すと、リードが作成され、パートナーが選択したシステムに営業案件が送信されます。 コマーシャル マーケットプレースで成功している発行元は、多くの場合、リードを追跡し、関係を築いて、関心を取引に結び付けています。
+顧客が Microsoft AppSource や Azure Marketplace のオンライン ストアでオファーを使用すると、情報が収集されます。 十分な関心があることを顧客が示すと、リードが作成され、パートナーが選択したシステムに営業案件が送信されます。 コマーシャル マーケットプレースで成功している発行元は、多くの場合、リードを追跡し、関係を築いて、関心を取引に結び付けています。
 
 詳細については、「[コマーシャル マーケットプレース オファーからの顧客リード](partner-center-portal/commercial-marketplace-get-customer-leads.md)」を参照してください。
 
@@ -140,7 +140,7 @@ Microsoft は多くの国/地域で税金の支払いを管理し、Microsoft �
 
 ### <a name="can-my-offer-appear-in-both-microsoft-appsource-and-azure-marketplace"></a>Microsoft AppSource と Azure Marketplace の両方にオファーを表示できますか?
 
-Microsoft AppSource はビジネス ソリューションと業界ソリューションが提供される場所であり、Azure Marketplace は IT および開発者向けソリューション用に設計されています。 オファーは、オファーの作成時に選択したカテゴリと業種に基づいて各ネットショップで利用できます。 まれに、オファーが両方のネットショップのユーザーに関連している場合は、両方に表示されることがあります。
+Microsoft AppSource はビジネス ソリューションと業界ソリューションが提供される場所であり、Azure Marketplace は IT および開発者向けソリューション用に設計されています。 オファーは、オファーの作成時に選択したカテゴリと業種に基づいて、各オンライン ストアで利用できます。 まれに、オファーが両方のオンライン ストアのユーザーに関係することがありますが、その場合は両方に表示されます。
 
 ### <a name="what-is-the-cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラムとはどのようなものですか?
 

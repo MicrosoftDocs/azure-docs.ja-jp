@@ -4,12 +4,12 @@ description: SDK、REST API、CLI は、ご使用のプログラミング言語�
 ms.topic: reference
 ms.date: 05/19/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7a7769d04d3cf41cee9f28b49d38e80deeaddcf9
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 01cbaf5a7e8eb733680381da21a7b1f9aa5c2cea
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404992"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235997"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>Language Understanding (LUIS) 用の SDK、REST、CLI 開発者向けリソース
 
@@ -86,11 +86,11 @@ V3 予測エンドポイントの詳細については[こちら](luis-migration
 
 |Language |リファレンス ドキュメント|Package|クイックスタート|
 |--|--|--|--|
-|C#|[作成](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[予測](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet の作成](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet の予測](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[作成](sdk-authoring.md?pivots=programming-language-csharp)<br>[クエリ予測](sdk-query-prediction-endpoint.md?pivots=programming-language-csharp)|
+|C#|[作成](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[予測](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet の作成](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet の予測](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[作成](quickstart-sdk.md?pivots=programming-language-csharp)<br>[クエリ予測](quickstart-sdk.md?pivots=programming-language-csharp)|
 |Go|[作成と予測](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[作成と予測](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven の作成](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven の予測](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[作成](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[予測](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM の作成](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM の予測](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[作成](sdk-query-prediction-endpoint.md?pivots=programming-language-javascript)<br>[予測](sdk-query-prediction-endpoint.md?pivots=programming-language-javascript)|
-|Python|[作成と予測](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[作成](sdk-authoring.md?pivots=programming-language-python)<br>[予測](sdk-query-prediction-endpoint.md?pivots=programming-language-python)|
+|JavaScript|[作成](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[予測](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM の作成](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM の予測](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[作成](quickstart-sdk.md?pivots=programming-language-javascript)<br>[予測](quickstart-sdk.md?pivots=programming-language-javascript)|
+|Python|[作成と予測](quickstart-sdk.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[作成](quickstart-sdk.md?pivots=programming-language-python)<br>[予測](quickstart-sdk.md?pivots=programming-language-python)|
 
 
 ### <a name="containers"></a>Containers

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
-ms.openlocfilehash: a7d83c327eb1c37478c0c2e5725136d43a91a009
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87061209"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510268"
 ---
 # <a name="ingest-historical-telemetry-data"></a>過去のテレメトリ データの取り込み
 
@@ -58,13 +58,13 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
 5. ホーム ディレクトリに移動します。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     cd
     ```
-    
+
 6. 次のコマンドを実行します。 これにより、Azure AD 要求に使用する認証済みアカウントが接続されます
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
     Connect-AzureAD
     ```
 
@@ -78,7 +78,7 @@ Azure FarmBeats インスタンスへのパートナー統合を有効にする�
 
 8. 次のスクリプトを実行します。 このスクリプトは、 **[Azure Active Directory]**  >  **[概要]** ページから取得できるテナント ID を要求します。
 
-    ```azurepowershell-interactive 
+    ```azurepowershell-interactive
 
     ./generatePartnerCredentials.ps1
 

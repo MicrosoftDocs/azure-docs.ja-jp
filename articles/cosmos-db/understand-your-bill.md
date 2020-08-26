@@ -5,29 +5,36 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 08/19/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 596296069686e843d0be1899cce8929417b70bcc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: bf041163c6b2759b3d38e48ee98a0d528ec601db
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85964585"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606907"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Azure Cosmos DB の課金内容を理解する
 
-完全に管理されたクラウド ネイティブ データベース サービスとして、Azure Cosmos DB では、プロビジョニングされたスループットと使用ストレージに対してのみ課金することで、課金を簡略化します。 オンプレミスまたは IaaS でホストされている別のサービスに比べ、追加のライセンス料、ハードウェア、ユーティリティのコスト、設備のコストは発生しません。 Azure Cosmos DB の複数リージョンの機能を考えると、データベース サービスでは、既存のオンプレミスまたは IaaS ソリューションに比べ、コストが大幅に削減されます。
+完全に管理されたクラウドネイティブ データベース サービスとして、Azure Cosmos DB では、データベース操作と使用ストレージに対してのみ請求することで、課金を簡略化しています。 オンプレミスまたは IaaS でホストされている別のサービスに比べ、追加のライセンス料、ハードウェア、ユーティリティのコスト、設備のコストは発生しません。 Azure Cosmos DB の複数リージョンの機能を考えると、データベース サービスでは、既存のオンプレミスまたは IaaS ソリューションに比べ、コストが大幅に削減されます。
 
-Azure Cosmos DB では、プロビジョニングされたスループットと使用ストレージに基づき、時間単位で課金されます。 プロビジョニングされたスループットの場合、課金の単位は 1 時間あたり 100 RU/秒です。最新の価格情報については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。 使用ストレージの場合、1 か月あたり 1 GB ごとに課金されます。最新の価格情報については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)をご覧ください。
+- **データベース操作**: データベース操作に対する請求方法は、使用している Azure Cosmos アカウントの種類によって異なります。
 
-この記事では、毎月の請求書に示される詳細を理解するのに役立つ例をいくつか使用します。 Azure Cosmos コンテナーにプロビジョニングされているスループットの量が異なる場合や、コンテナーが複数のリージョンにまたがっているか、1 か月に実行される対象が異なる場合は、例に示される数字が異なる可能性があります。 この記事のすべての例では、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)に表示されている価格情報に基づいて課金が計算されます。
+  - **プロビジョニング済みのスループット**:対象となる 1 時間での最大のプロビジョニング スループットに対し、100 RU/秒ずつ、時間単位で課金されます。
+  - **サーバーレス**: データベース操作によって使用された要求ユニットの合計に対し、時間単位で課金されます。
+
+- **ストレージ**: 対象となる 1 時間にデータおよびインデックスで使用されたストレージの合計量 (GB 単位) に対し、固定料金が課金されます。
+
+最新の価格情報については、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)を参照してください。
+
+この記事では、毎月の請求書に示される詳細を理解するのに役立つ例をいくつか使用します。 Azure Cosmos コンテナーにプロビジョニングされているスループットの量が異なる場合や、コンテナーが複数のリージョンにまたがっているか、1 か月に実行される対象が異なる場合は、例に示される数字が異なる可能性があります。 この記事のすべての例では、[価格に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)に表示されている価格情報に基づいて課金内容が計算されています。
 
 > [!NOTE]
 > 課金は、60 分という期間ではなく、実測時間に対して行われます。 このドキュメントに示されているすべての例は、米国の非政府リージョンにデプロイされている Azure Cosmos アカウントの価格に基づいています。 価格と計算は、お客様が使用しているリージョンによって異なります。最新の価格情報については、「[Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)」ページをご覧ください。
 
 ## <a name="billing-examples"></a>課金の例
 
-### <a name="billing-example---throughput-on-a-container-full-month"></a>課金の例 - コンテナーのスループット (まる 1 か月)
+### <a name="billing-example---provisioned-throughput-on-a-container-full-month"></a>課金の例 - コンテナーでプロビジョニングされたスループット (1 か月)
 
 * コンテナーで 1,000 RU/秒のスループットを構成し、24 時間 * 1 か月 30 日 = 合計 720 時間、存在すると仮定します。  
 
@@ -39,13 +46,21 @@ Azure Cosmos DB では、プロビジョニングされたスループットと�
 
 * 合計月額料は (100 RU の) 7,200 単位と示され、コストは $57.60 となります。
 
-### <a name="billing-example---throughput-on-a-container-partial-month"></a>課金の例 - コンテナーのスループット (1 か月のうち特定の期間)
+### <a name="billing-example---provisioned-throughput-on-a-container-partial-month"></a>課金の例 - コンテナーでプロビジョニングされたスループット (1 か月のうち特定の期間)
 
 * プロビジョニングされたスループットが 2,500 RU/秒のコンテナーを作成したとします。コンテナーは 1 か月間で 24 時間存在します (たとえば、作成して 24 時間後に削除します)。  
 
 * したがって、請求書には 600 単位 (2,500 RU/秒 / 100 RU/秒/単位 * 24 時間) と示されます。 コストは $4.80 (600 ユニット * $0.008/ユニット) となります。
 
 * 1 か月の合計請求額は $4.80 になります。
+
+### <a name="billing-example---serverless-container"></a>課金の例 - サーバーレス コンテナー
+
+* サーバーレス コンテナーを作成したとしましょう。 
+
+* 1 か月間で、合計 500,000 の要求ユニットを消費するデータベース要求を発行します。 コストは $0.125 (500,000 * $ 0.25/百万) になります。
+
+* 1 か月の合計課金額は $0.125 になります。
 
 ### <a name="billing-rate-if-storage-size-changes"></a>ストレージ サイズが変更された場合の課金レート
 
@@ -55,7 +70,7 @@ Azure Cosmos DB では、プロビジョニングされたスループットと�
 
 コンテナーまたはデータベースが存在した時間単位で定額が請求されます。使用量は考慮されず、コンテナーまたはデータベースがアクティブだった時間が 1 時間未満だったとしても同様です。 たとえば、コンテナーまたはデータベースを作成し、それを 5 分後に削除した場合、請求書には 1 時間分の料金が含まれます。
 
-### <a name="billing-rate-when-throughput-on-a-container-or-database-scales-updown"></a>コンテナーまたはデータベースのスループットがスケールアップ/ダウンした場合の課金レート
+### <a name="billing-rate-when-provisioned-throughput-on-a-container-or-database-scales-updown"></a>コンテナーまたはデータベースでプロビジョニングされたスループットがスケールアップまたはスケールダウンした場合の課金レート
 
 プロビジョニングされたスループットを午前 9 時 30 分に 400 RU/秒から 1,000 RU/秒に増やし、午前 10 時 45 分にプロビジョニングされたスループットを 400 RU/秒に戻した場合、1,000 RU/秒を 2 時間使用したとして請求されます。 
 
@@ -75,7 +90,7 @@ Azure Cosmos DB では、プロビジョニングされたスループットと�
 
 :::image type="content" source="./media/understand-your-bill/bill-example1.png" alt-text="専用スループットの課金の例":::
 
-### <a name="billing-example-containers-with-shared-throughput-mode"></a>課金の例: 共有スループット モードのコンテナー
+### <a name="billing-example-containers-with-shared-provisioned-throughput-mode"></a>課金の例: 共有 (プロビジョニングされた) スループット モードのコンテナー
 
 * スループットがそれぞれ 50-K RU/秒と 70-K RU/秒でプロビジョニングされた 2 つの Azure Cosmos データベース (データベース レベルでスループットを共有するコンテナー セットがある) で、米国東部 2 の Azure Cosmos アカウントを作成した場合、プロビジョニングされたスループットの合計は 120 K RU/秒となります。  
 

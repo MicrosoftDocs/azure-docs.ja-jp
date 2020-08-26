@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
-ms.openlocfilehash: cdefca11131a16630e600385bf350465fccc228f
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 37c5a0fb1addf9f84c8a237b4d185d140553535e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86206660"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825975"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>ポータルを使用して Azure Database for MySQL 用のプライベート リンクを作成および管理する
 
@@ -20,7 +20,7 @@ ms.locfileid: "86206660"
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 > [!NOTE]
-> この機能は、Azure Database for MySQL で汎用およびメモリ最適化の価格レベルがサポートされているすべての Azure リージョンで使用できます。
+> プライベート リンク機能は、General Purpose またはメモリ最適化の価格レベルの Azure Database for MySQL サーバーにのみ使用可能です。 データベース サーバーがこれらの価格レベルのいずれであることを確実にします。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 [Azure portal](https://portal.azure.com) にサインインします。

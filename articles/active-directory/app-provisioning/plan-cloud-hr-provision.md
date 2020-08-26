@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 8dd108e8c2877c7fe459819bf01b0e5b206cd9c0
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: b96b679e967fd898f072b4b1ae195e3dd1061c04
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445570"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235696"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Azure Active Directory ユーザー プロビジョニングのためのクラウド人事アプリケーションの計画
 
@@ -167,7 +167,7 @@ Azure AD のユーザー プロビジョニング サービスを使用すると
 - Azure AD Connect プロビジョニング エージェント
 - Active Directory ドメイン
 
-Azure AD Connect プロビジョニング エージェントのデプロイ トポロジは、統合を計画しているクラウド人事アプリのテナントおよび Active Directory 子ドメインの数によって異なってきます。 複数の Active Directory ドメインがある場合、Active Directory ドメインが連続しているか[分離](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/disjoint-namespace)しているかによっても異なります。
+Azure AD Connect プロビジョニング エージェントのデプロイ トポロジは、統合を計画しているクラウド人事アプリのテナントおよび Active Directory 子ドメインの数によって異なってきます。 複数の Active Directory ドメインがある場合、Active Directory ドメインが連続しているか[分離](/windows-server/identity/ad-ds/plan/disjoint-namespace)しているかによっても異なります。
 
 決定に基づいて、次のいずれかのデプロイ シナリオを選択します。
 
@@ -313,7 +313,7 @@ Switch([Municipality], "OU=Default,OU=Users,DC=contoso,DC=com", "Dallas", "OU=Da
 
 ## <a name="plan-for-password-delivery-of-new-user-accounts"></a>新しいユーザー アカウントのパスワード交付の計画
 
-入社プロセスの開始時に、新しいユーザー アカウントの一時パスワードを設定して交付する必要があります。 クラウド人事アプリから Azure AD へのユーザー プロビジョニングでは、Azure AD の[セルフサービス パスワード リセット ](../authentication/quickstart-sspr.md) (SSPR) 機能を初日からユーザーに提供できます。
+入社プロセスの開始時に、新しいユーザー アカウントの一時パスワードを設定して交付する必要があります。 クラウド人事アプリから Azure AD へのユーザー プロビジョニングでは、Azure AD の[セルフサービス パスワード リセット ](../authentication/tutorial-enable-sspr.md) (SSPR) 機能を初日からユーザーに提供できます。
 
 SSPR は、パスワードのリセットやアカウントのロック解除を IT 管理者がユーザーに許可するための簡単な手段です。 **Mobile Number** (携帯電話番号) 属性をクラウド人事アプリから Active Directory にプロビジョニングし、Azure AD と同期することができます。 **Mobile Number** (携帯電話番号) 属性が Azure AD に追加された後、ユーザーのアカウントに対して SSPR を有効にすることができます。 その後、新しいユーザーは初日に認証に登録および検証された携帯電話番号を使用できます。
 

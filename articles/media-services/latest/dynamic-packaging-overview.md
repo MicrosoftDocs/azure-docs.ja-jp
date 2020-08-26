@@ -2,7 +2,7 @@
 title: Azure Media Services v3 のダイナミック パッケージ
 titleSuffix: Azure Media Services
 description: この記事では、Azure Media Services でのダイナミック パッケージの概要について説明します。
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/31/2020
-ms.author: juliako
-ms.openlocfilehash: 032a3c719610d658ec32492033a04a610117643d
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 8a5d52f2705a04c290f1122335430c12db8d294c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489777"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604578"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Media Services v3 のダイナミック パッケージ
 
@@ -80,8 +80,10 @@ Media Services 動的暗号化を使用してコンテンツを保護する場�
 
 次の手順は、Azure Media Services の標準エンコーダーとダイナミック パッケージを併用した一般的な Media Services でのストリーミング ワークフローを示しています。
 
-1. QuickTime/MOV や MXF ファイルなどの入力ファイルをアップロードします。 このファイルは、中間ファイルやソース ファイルとも呼ばれます。 サポートされている形式の一覧については、[Standard Encoder でサポートされている形式](media-encoder-standard-formats.md)に関するページを参照してください。
+1. MP4、QuickTime/MOV、またはその他のサポートされているファイル形式の[入力ファイルをアップロード](job-input-from-http-how-to.md)します。 このファイルは、中間ファイルやソース ファイルとも呼ばれます。 サポートされている形式の一覧については、[Standard Encoder でサポートされている形式](media-encoder-standard-formats.md)に関するページを参照してください。
 1. 中間ファイルを H.264/AAC MP4 アダプティブ ビットレート セットに[エンコード](#encode-to-adaptive-bitrate-mp4s)します。
+
+    エンコードされたファイルが既にあり、ファイルをコピーしてストリーミングするだけであれば、[CopyVideo](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyvideo) および [CopyAudio](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#copyaudio) API を使用します。 結果として、ストリーミング マニフェスト (.ism ファイル) を含む新しい MP4 ファイルが作成されます。
 1. アダプティブ ビットレート MP4 セットが含まれる出力資産を発行します。 [ストリーミング ロケーター](streaming-locators-concept.md)を作成して発行します。
 1. さまざまな形式 (HLS、MPEG-DASH および Smooth Streaming) をターゲットとする URL を構築します。 これらのさまざまな形式の正しいマニフェストおよび要求の処理は、*ストリーミング エンドポイント*が行います。
     

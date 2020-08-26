@@ -1,15 +1,15 @@
 ---
 title: Visual Studio を使用する Azure Functions の開発
 description: Azure Functions Tools for Visual Studio 2019 を使用して、Azure Functions を開発およびテストする方法を説明します。
-ms.custom: vs-azure
+ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 06/10/2020
-ms.openlocfilehash: 0df65c4cdbf40b49bc265f4accafde67f41dafb7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0ee5d270db2149be0cfbf6bf06f87a5d0133c6ef
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84731029"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612811"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
@@ -42,7 +42,7 @@ Visual Studio には、関数の開発時の利点として次のようなこと
 
 ### <a name="check-your-tools-version-in-visual-studio-2017"></a><a name="check-your-tools-version"></a>Visual Studio 2017 でツールのバージョンを確認する
 
-1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み]**  >  **[ツール]** メニューを展開し、 **[Azure Functions と WebJobs ツール]** を選択します。
+1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み]**  >  **[ツール]** メニューを展開し、 **[Azure Functions と Web ジョブ ツール]** を選択します。
 
     ![Functions ツールのバージョンを確認する](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -52,7 +52,7 @@ Visual Studio には、関数の開発時の利点として次のようなこと
 
 ### <a name="update-your-tools-in-visual-studio-2017"></a>Visual Studio 2017 のツールを更新する
 
-1. **[拡張機能と更新プログラム]** ダイアログで、 **[更新プログラム]**  >  **[Visual Studio Marketplace]** を展開し、 **[Azure Functions と WebJobs ツール]** 、 **[更新]** の順に選択します。
+1. **[拡張機能と更新プログラム]** ダイアログで、 **[更新プログラム]**  >  **[Visual Studio Marketplace]** を展開し、 **[Azure Functions と Web ジョブ ツール]** 、 **[更新]** の順に選択します。
 
     ![Functions ツールのバージョンを更新する](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
 

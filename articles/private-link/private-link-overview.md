@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 19e7a7972af55173f19d5784b2a6ac78ae14a0f0
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 46d1f811593571228d21c687be0a98d413cc9854
+ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87124971"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88168152"
 ---
 # <a name="what-is-azure-private-link"></a>Azure Private Link とは 
 Azure Private Link を使用すると、お使いの仮想ネットワーク内の[プライベート エンドポイント](private-endpoint-overview.md)経由で Azure PaaS サービス (Azure Storage、SQL Database など) と Azure でホストされている顧客所有の、またはパートナー サービスにアクセスできます。
@@ -62,7 +62,7 @@ Azure Private Link には次のような利点があります。
 |Azure Relay | すべてのパブリック リージョン      |  | プレビュー <br/> [詳細情報](https://docs.microsoft.com/azure/service-bus-relay/private-link-service)  |
 |Azure Event Grid| すべてのパブリック リージョン<br/> すべての Government リージョン       |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure Web Apps | すべてのパブリック リージョン      | PremiumV2 Windows および Linux とエラスティック Premium 機能でサポートされています  | プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
-|Azure Machine Learning | 米国東部、米国西部 2、米国中南部      |  | プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
+|Azure Machine Learning | 米国東部、米国西部 2      |  | プレビュー   <br/> [詳細情報](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
 | Azure Automation  | すべてのパブリック リージョン |  | プレビュー | |
 | Azure IoT Hub | すべてのパブリック リージョン    |  | GA   <br/> [詳細情報](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | 米国東部、米国西部 2、米国中南部      |  | プレビュー   <br/> [詳細情報](https://aka.ms/asrs/privatelink)   |

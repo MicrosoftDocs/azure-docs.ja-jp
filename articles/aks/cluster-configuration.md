@@ -3,15 +3,15 @@ title: Azure Kubernetes Service (AKS) でのクラスター構成
 description: Azure Kubernetes Service (AKS) でクラスターを構成する方法について説明します
 services: container-service
 ms.topic: conceptual
-ms.date: 07/02/2020
+ms.date: 08/06/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1329aa056e8d1db951e01555634cf1ea709608b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: c3123d22d2a13be9b9e5360e82990ba3a6320b1a
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252013"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88008799"
 ---
 # <a name="configure-an-aks-cluster"></a>AKS クラスターの構成
 
@@ -233,6 +233,67 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 
 通常の Gen1 ノード プールを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。
 
+
+## <a name="ephemeral-os-preview"></a>エフェメラル OS (プレビュー)
+
+既定では、Azure 仮想マシンのオペレーティング システム ディスクは、VM を別のホストに再配置する必要がある場合にデータの損失を防ぐために、Azure Storage に自動的にレプリケートされます。 ただし、コンテナーはローカルの状態を永続化するように設計されていないため、この動作の価値は限定的であり、ノードのプロビジョニング速度の低下や読み取り/書き込みの待機時間の短縮など、いくつかの欠点があります。
+
+これに対して、エフェメラル OS ディスクは、一時ディスクと同様に、ホスト マシンにのみ格納されます。 これにより、読み取り/書き込みの待機時間が短縮され、ノードのスケーリングやクラスターのアップグレードが高速になります。
+
+一時ディスクと同様に、エフェメラル OS ディスクは仮想マシンの価格に含まれているため、追加のストレージ コストは発生しません。
+
+`EnableEphemeralOSDiskPreview` 機能を登録します。
+
+```azurecli
+az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
+```
+
+状態が "**登録済み**" と表示されるまでに数分かかることがあります。 [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list) コマンドを使用して登録状態を確認できます。
+
+```azurecli
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
+```
+
+状態が登録済みと表示されたら、[az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register) コマンドを使用して、`Microsoft.ContainerService` リソース プロバイダーの登録を更新します。
+
+```azurecli
+az provider register --namespace Microsoft.ContainerService
+```
+
+aks-preview CLI 拡張機能をインストールするには、次の Azure CLI コマンドを使用します。
+
+```azurecli
+az extension add --name aks-preview
+```
+
+aks-preview CLI 拡張機能を更新するには、次の Azure CLI コマンドを使用します。
+
+```azurecli
+az extension update --name aks-preview
+```
+
+### <a name="use-ephemeral-os-on-new-clusters-preview"></a>新しいクラスターでエフェメラル OS を使用する (プレビュー)
+
+クラスターの作成時に、エフェメラル OS ディスクを使用するようにクラスターを構成します。 `--aks-custom-headers` フラグを使用して、新しいクラスターの OS ディスクの種類としてエフェメラル OS を設定します。
+
+```azure-cli
+az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+ネットワークに接続された OS ディスクを使用して通常のクラスターを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。 次に示すように、エフェメラル OS のノード プールを追加することもできます。
+
+### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>既存のクラスターでエフェメラル OS を使用する (プレビュー)
+エフェメラル OS ディスクを使用するように新しいノード プールを構成します。 `--aks-custom-headers` フラグを使用して、OS ディスクの種類として、そのノード プールの OS ディスクの種類を設定します。
+
+```azure-cli
+az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --aks-custom-headers EnableEphemeralOSDisk=true
+```
+
+> [!IMPORTANT]
+> エフェメラル OS を使用する場合、VM およびインスタンス イメージは、最大で VM キャッシュのサイズまでデプロイできます。 AKS の場合、既定のノードの OS ディスク構成では 100 GiB が使用されます。つまり、100 GiB より大きいキャッシュを持つサイズの VM が必要になります。 既定の Standard_DS2_v2 のキャッシュ サイズは 86 GiB であり、十分な大きさではありません。 Standard_DS3_v2 のキャッシュ サイズは 172 GiB であり、十分な大きさです。 `--node-osdisk-size` を使用して、OS ディスクの既定のサイズを小さくすることもできます。 AKS イメージの最小サイズは 30 GiB です。 
+
+ネットワークに接続された OS ディスクを使用してノード プールを作成する場合は、カスタムの `--aks-custom-headers` タグを省略できます。
+
 ## <a name="custom-resource-group-name"></a>カスタム リソース グループ名
 
 Azure Kubernetes Service クラスターを Azure にデプロイすると、ワーカー ノードに 2 つ目のリソース グループが作成されます。 既定では、AKS によってノード リソース グループに `MC_resourcegroupname_clustername_location` という名前が設定されますが、独自の名前を指定することもできます。
@@ -259,6 +320,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --node-resour
 - 「[Azure Kubernetes Service (AKS) クラスターのアップグレード](upgrade-cluster.md)」を参照し、クラスターを最新バージョンの Kubernetes にアップグレードする方法について学習する。
 - [`containerd` と Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/) の詳細を確認する。
 - [AKS についてよく寄せられる質問](faq.md)に関する記事の一覧を参照し、AKS についての一般的な質問への回答を確認する。
+- [エフェメラル OS ディスク](../virtual-machines/ephemeral-os-disks.md)の詳細を確認する。
 
 
 <!-- LINKS - internal -->

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2019
 author: shganesh-dev
 ms.author: shganesh
-ms.openlocfilehash: 2bd38bc7a499aa9178d49f54e27a88a38206e521
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 5b688d64641f6dd8779d699bcd1d646e40b19b87
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87317571"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245674"
 ---
 # <a name="downloads-dashboard-in-commercial-marketplace-analytics"></a>コマーシャル マーケットプレース分析のダウンロード ダッシュボード
 
@@ -25,9 +25,7 @@ ms.locfileid: "87317571"
 
 ## <a name="downloads-dashboard"></a>[ダウンロード] ダッシュボード
 
-**[分析]** メニューの **[ダウンロード]** ダッシュボードには、1000 行を超える顧客または注文データが含まれるダウンロードの要求が表示されます。
-
-1000 行を超えるデータのダウンロードを要求するたびに、 **[ダウンロード]** ダッシュボードへのリンクを含むポップアップ通知と電子メールが届きます。 これらのデータのダウンロードは 30 日間可能であり、その後削除されます。
+**[分析]** メニューの **[ダウンロード]** ダッシュボードには、1000 行を超える顧客または注文データが含まれるダウンロードの要求が表示されます。 これらのデータのダウンロードは 30 日間可能であり、その後削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 

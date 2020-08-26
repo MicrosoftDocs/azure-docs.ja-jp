@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: a7e0cb41f32a60e4f00cb60cc3c86e40ab926785
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 968f3c9fbfea1e2f04fb029605173087f6f311c0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735132"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516505"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>チュートリアル:写真のコンテンツを含むイマーシブ リーダーを起動する iOS アプリを作成する (Swift)
 
@@ -24,7 +24,7 @@ ms.locfileid: "82735132"
 
 このチュートリアルでは、iOS アプリを一から作成し、イマーシブ リーダー SDK を使用して Read API とイマーシブ リーダーを統合します。 このチュートリアルの完全に動作するサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)で入手できます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 

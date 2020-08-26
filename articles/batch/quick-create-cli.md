@@ -1,35 +1,39 @@
 ---
-title: Azure クイック スタート - Batch ジョブの実行 - CLI
-description: Azure CLI で Batch ジョブを実行する方法を簡単に説明します。 コマンド ラインやスクリプトで Azure リソースを作成および管理します。
+title: クイックスタート - Azure CLI で最初の Batch ジョブを実行する
+description: Azure CLI で Batch アカウントを作成し、Batch ジョブを実行する方法を簡単に説明します。
 ms.topic: quickstart
-ms.date: 07/03/2018
+ms.date: 08/13/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4c56695180f8f07384f31b750cec03f9d14fb9da
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 8824d4485167955dd1b928bc57381b2e6b672c5d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504162"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213098"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>クイック スタート:Azure CLI で最初の Batch ジョブを実行する
 
-Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して Batch アカウント、コンピューティング ノード (仮想マシン) の "*プール*"、そのプールで "*タスク*" を実行する "*ジョブ*" を作成する方法を示します。 各サンプル タスクでは、プール ノードの 1 つに対して基本的なコマンドが実行されます。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
+Azure CLI を使用して Batch アカウント、コンピューティング ノード (仮想マシン) のプール、そのプールでタスクを実行するジョブを作成することによって、Azure Batch の使用を開始します。 各サンプル タスクでは、プール ノードの 1 つに対して基本的なコマンドが実行されます。
 
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートを完了すると、Batch サービスの主要な概念を理解し、より大規模でより現実的なワークロードで Batch を試せるようになります。
+
+## <a name="prerequisites"></a>前提条件
+
+- アクティブなサブスクリプションが含まれる Azure アカウント。 [無料でアカウントを作成できます](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+- CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0.20 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.20 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
-
 ## <a name="create-a-resource-group"></a>リソース グループを作成する
 
-[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-次の例では、*myResourceGroup* という名前のリソース グループを *eastus2* に作成します。
+次の例では、*QuickstartBatch-rg* という名前のリソース グループを *eastus2* に作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create \
-    --name myResourceGroup \
+    --name QuickstartBatch-rg \
     --location eastus2
 ```
 
@@ -39,7 +43,7 @@ Azure ストレージ アカウントを Batch アカウントとリンクでき
 
 ```azurecli-interactive
 az storage account create \
-    --resource-group myResourceGroup \
+    --resource-group QuickstartBatch-rg \
     --name mystorageaccount \
     --location eastus2 \
     --sku Standard_LRS
@@ -49,22 +53,22 @@ az storage account create \
 
 [az batch account create](/cli/azure/batch/account#az-batch-account-create) コマンドを使用して Batch アカウントを作成します。 コンピューティング リソース (コンピューティング ノードのプール) や Batch ジョブを作成するには、アカウントが必要です。
 
-次の例では、*mybatchaccount* という名前の Batch アカウントを *myResourceGroup* に作成し、作成したアカウントをリンクします。  
+次の例では、*mybatchaccount* という名前の Batch アカウントを *QuickstartBatch-rg* に作成し、作成したアカウントをリンクします。  
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account create \
     --name mybatchaccount \
     --storage-account mystorageaccount \
-    --resource-group myResourceGroup \
+    --resource-group QuickstartBatch-rg \
     --location eastus2
 ```
 
 コンピューティング プールとジョブを作成および管理するには、Batch による認証が必要です。 [az batch account login](/cli/azure/batch/account#az-batch-account-login) コマンドを使用してアカウントにログインします。 ログインしたら、`az batch` コマンドでこのアカウントのコンテキストを使用します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch account login \
     --name mybatchaccount \
-    --resource-group myResourceGroup \
+    --resource-group QuickstartBatch-rg \
     --shared-key-auth
 ```
 
@@ -77,7 +81,7 @@ az batch pool create \
     --id mypool --vm-size Standard_A1_v2 \
     --target-dedicated-nodes 2 \
     --image canonical:ubuntuserver:16.04-LTS \
-    --node-agent-sku-id "batch.node.ubuntu 16.04" 
+    --node-agent-sku-id "batch.node.ubuntu 16.04"
 ```
 
 Batch によってすぐにプールが作成されますが、コンピューティング ノードを割り当てて開始するには数分かかります。 この間、プールの状態は `resizing` になります。 プールの状態を確認するには、[az batch pool show](/cli/azure/batch/pool#az-batch-pool-show) コマンドを実行します。 このコマンドによってプールのすべてのプロパティが表示されるため、特定のプロパティを照会できます。 次のコマンドは、プールの割り当ての状態を取得します。
@@ -87,13 +91,13 @@ az batch pool show --pool-id mypool \
     --query "allocationState"
 ```
 
-プールの状態が変化している間にジョブとタスクを作成するには、次の手順を続行します。 割り当ての状態が `steady` となり、すべてのノードが実行されていると、プールはタスクを実行できるようになります。 
+プールの状態が変化している間にジョブとタスクを作成するには、次の手順を続行します。 割り当ての状態が `steady` となり、すべてのノードが実行されていると、プールはタスクを実行できるようになります。
 
 ## <a name="create-a-job"></a>ジョブの作成
 
-プールを作成できたら、そこで実行するジョブを作成します。  Batch ジョブは、1 つ以上のタスクの論理グループです。 ジョブには、優先度やタスクの実行対象プールなど、タスクに共通する設定が含まれています。 [az batch job create](/cli/azure/batch/job#az-batch-job-create) コマンドを使用して、Batch ジョブを作成します。 次の例では、プール *mypool* 上にジョブ *myjob* を作成します。 最初、ジョブにはタスクがありません。
+プールを作成できたら、そこで実行するジョブを作成します。 Batch ジョブは、1 つ以上のタスクの論理グループです。 ジョブには、優先度やタスクの実行対象プールなど、タスクに共通する設定が含まれています。 [az batch job create](/cli/azure/batch/job#az-batch-job-create) コマンドを使用して、Batch ジョブを作成します。 次の例では、プール *mypool* 上にジョブ *myjob* を作成します。 最初、ジョブにはタスクがありません。
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch job create \
     --id myjob \
     --pool-id mypool
@@ -105,7 +109,7 @@ az batch job create \
 
 次の Bash スクリプトでは、4 つの並列タスク (*mytask1* - *mytask4*) を作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 for i in {1..4}
 do
    az batch task create \
@@ -123,7 +127,7 @@ done
 
 [az batch task show](/cli/azure/batch/task#az-batch-task-show) コマンドを使用して、Batch タスクの状態を表示します。 次の例では、プールのノードのいずれかで実行されている *mytask1* の詳細を表示します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch task show \
     --job-id myjob \
     --task-id mytask1
@@ -133,9 +137,9 @@ az batch task show \
 
 ## <a name="view-task-output"></a>タスク出力の表示
 
-コンピューティング ノード上にタスクによって作成されたファイルを一覧表示するには、[az batch task file list](/cli/azure/batch/task) コマンドを使用します。 次のコマンドでは、*mytask1* によって作成されたファイルの一覧が表示されます。 
+コンピューティング ノード上にタスクによって作成されたファイルを一覧表示するには、[az batch task file list](/cli/azure/batch/task) コマンドを使用します。 次のコマンドでは、*mytask1* によって作成されたファイルの一覧が表示されます。
 
-```azurecli-interactive 
+```azurecli-interactive
 az batch task file list \
     --job-id myjob \
     --task-id mytask1 \
@@ -154,7 +158,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-出力ファイルの 1 つをローカル ディレクトリにダウンロードするには、[az batch task file download](/cli/azure/batch/task) コマンドを使用します。 この例では、タスクの出力は `stdout.txt` にあります。 
+出力ファイルの 1 つをローカル ディレクトリにダウンロードするには、[az batch task file download](/cli/azure/batch/task) コマンドを使用します。 この例では、タスクの出力は `stdout.txt` にあります。
 
 ```azurecli-interactive
 az batch task file download \
@@ -183,10 +187,12 @@ AZ_BATCH_TASK_ID=mytask1
 AZ_BATCH_ACCOUNT_NAME=mybatchaccount
 AZ_BATCH_TASK_USER_IDENTITY=PoolNonAdmin
 ```
+
 ## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
 Batch のチュートリアルとサンプルを続行する場合は、このクイック スタートで作成した Batch アカウントとリンクされているストレージ アカウントを使用します。 Batch アカウント自体の料金は発生しません。
 
-ジョブがスケジュールされていない場合でも、ノードの実行中はプールに対して料金が発生します。 プールが不要になったら、[az batch pool delete](/cli/azure/batch/pool#az-batch-pool-delete) コマンドを使用して削除します。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 
+ジョブがスケジュールされていない場合でも、ノードの実行中はプールに対して料金が発生します。 プールが不要になったら、[az batch pool delete](/cli/azure/batch/pool#az-batch-pool-delete) コマンドを使用して削除します。 プールを削除すると、ノード上のタスク出力はすべて削除されます。
 
 ```azurecli-interactive
 az batch pool delete --pool-id mypool
@@ -194,14 +200,13 @@ az batch pool delete --pool-id mypool
 
 必要がなくなったら、[az group delete](/cli/azure/group#az-group-delete) コマンドを使用して、リソース グループ、Batch アカウント、プール、およびすべての関連リソースを削除できます。 次のように、リソースを削除します。
 
-```azurecli-interactive 
-az group delete --name myResourceGroup
+```azurecli-interactive
+az group delete --name QuickstartBatch-rg
 ```
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Batch アカウント、Batch プール、Batch ジョブを作成しました。 このジョブによってサンプル タスクが実行されたため、いずれかのノード上に作成された出力が表示されました。 Batch サービスの主要な概念を理解できたので、より大規模でより現実的なワークロードを使用して Batch を試す準備が整いました。 Azure Batch の詳細については、Azure Batch のチュートリアルを続行してください。 
-
+このクイック スタートでは、Batch アカウント、Batch プール、Batch ジョブを作成しました。 このジョブによってサンプル タスクが実行されたため、いずれかのノード上に作成された出力が表示されました。 Batch サービスの主要な概念を理解できたので、より大規模でより現実的なワークロードを使用して Batch を試す準備が整いました。 Azure Batch の詳細については、Azure Batch のチュートリアルを続行してください。
 
 > [!div class="nextstepaction"]
 > [Azure Batch のチュートリアル](./tutorial-parallel-dotnet.md)

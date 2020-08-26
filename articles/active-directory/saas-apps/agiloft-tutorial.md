@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Agiloft の統合 | Microsoft Docs'
 description: Azure Active Directory と Agiloft の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: aca13814-cdbd-46b8-93dc-1578099c5ee4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 719f93db15b72d20120568e87bfd67f0464a9752
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5ca2e37c3524dc75328b0b6615e15c58652d20d1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85799119"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542957"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>チュートリアル: Azure Active Directory と Agiloft の統合
 

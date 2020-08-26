@@ -1,20 +1,20 @@
 ---
 title: Azure Key Vault - CLI で論理的な削除を使用する方法
-description: CLI コード スニペットを使用した論理的な削除のユース ケース
+description: Azure CLI を使用して、キー コンテナーとキー コンテナー オブジェクトの回復を可能にする Azure Key Vault の論理的な削除機能を使用する方法について説明します。
 services: key-vault
 author: ShaneBala-keyvault
 manager: ravijan
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: sudbalas
-ms.openlocfilehash: 8f32fcc319c3bffd9089d894c5376268227a0151
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: a86402fec698a299c7f233dcd8c7fde8270dd74d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135931"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585663"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 

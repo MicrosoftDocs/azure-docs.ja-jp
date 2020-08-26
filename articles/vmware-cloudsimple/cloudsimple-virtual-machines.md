@@ -1,7 +1,7 @@
 ---
 title: 仮想マシンの概要
 titleSuffix: Azure VMware Solution by CloudSimple
-description: CloudSimple 仮想マシンとその利点について学習します。
+description: CloudSimple 仮想マシンとその利点について学習します。 Azure portal から VMware 仮想マシンを管理できます。
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 436a5ab6fb286ce206f981487b6a29d774ecd1a1
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6f9be035978667287b8b88ec1bb64b3882b0f929
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77024910"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141978"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>CloudSimple 仮想マシンの概要
 
@@ -35,7 +35,7 @@ Azure portal から利用できる CloudSimple 仮想マシンは、ユーザー
   * VM をリセットする
 * VM を削除する
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure で VMware VM を使用する](quickstart-create-vmware-virtual-machine.md)方法を学習する
 * [Azure サブスクリプションをマップする](azure-subscription-mapping.md)方法を学習する

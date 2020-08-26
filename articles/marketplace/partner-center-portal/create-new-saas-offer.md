@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/07/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 6140d369c2dbc0968d2f28ff6b8cf447dd721d10
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 7500eddc2416a1cb705ef207930c5fe4c6f1068a
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88166724"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604749"
 ---
 # <a name="create-a-saas-offer-in-the-commercial-marketplace"></a>コマーシャル マーケットプレースで SaaS オファーを作成する
 
@@ -30,7 +30,7 @@ ms.locfileid: "88166724"
    ![左側のナビゲーション メニューの画像。](./media/new-offer-saas.png)
 
 > [!NOTE]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーを公開した後にパートナー センターで編集した内容がオンライン ストアに表示されるのは、オファーを再公開した後のみです。 変更後は必ず再公開してください。
 
 ## <a name="new-offer"></a>新しいプラン
 
@@ -185,7 +185,7 @@ Microsoft AppSource でのオファー情報の表示例を次に示します。
 - 少なくとも 1 つ、最大で 2 つのカテゴリ。プライマリ カテゴリとセカンダリ カテゴリを含みます (省略可能)。
 - プライマリ カテゴリ、セカンダリ カテゴリ、またはその両方についてそれぞれ最大 2 つのサブカテゴリ。 オファーに適用できるサブカテゴリがない場合は、 **[該当なし]** を選択します。
 
-各ネットショップに適用されるカテゴリとサブカテゴリの完全な一覧については、「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」を参照してください。
+各オンライン ストアに適用されるカテゴリとサブカテゴリの完全な一覧については、「[オファーの掲載のベスト プラクティス](../gtm-offer-listing-best-practices.md)」を参照してください。
 
 ### <a name="industries"></a>業界
 
@@ -289,7 +289,7 @@ Standard Contract Amendments (標準契約の修正) を使用すると、発行
   - **大** (216 x 216 ピクセル、必須)
   - **ワイド** (255 x 115 ピクセル) (任意指定)
 
-   これら 3 つのロゴ サイズは、ネットショップのさまざまな場所で使用されます。
+   これら 3 つのサイズのロゴは、オンライン ストアのさまざまな場所で使用されます。
 
    -   小のロゴ (48 x 48 ピクセル) は、Azure Marketplace の検索結果、Microsoft AppSource のメイン ページ、および検索結果ページに表示されます。 
    -   中のロゴ (90 x 90 ピクセル) は、Microsoft Azure で新しいリソースを作成したときに表示されます。

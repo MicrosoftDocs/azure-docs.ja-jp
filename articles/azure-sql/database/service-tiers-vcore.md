@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 07/21/2020
-ms.openlocfilehash: 24c7e0a3c9a7d3c28823db0418e17cb94bc101ec
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: 7131ddac840d2854969147da2eeb82a890ce3410
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87325068"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586819"
 ---
 # <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>仮想コア モデルの概要 - Azure SQL Database および Azure SQL Managed Instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -102,12 +102,12 @@ To enable M-series hardware for a subscription and region, a support request mus
 
 |ハードウェアの世代  |Compute  |メモリ  |
 |:---------|:---------|:---------|
-|Gen4     |- Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ<br>- 最大 24 個の仮想コアをプロビジョニング (1 仮想コア = 1 物理コア)  |- 仮想コアあたり 7 GB<br>- 最大 168 GB のプロビジョニング|
-|第 5 世代     |**プロビジョニング済みコンピューティング**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz および Intel SP-8160 (Skylake)* プロセッサ<br>- 最大 80 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)<br><br>**サーバーレス コンピューティング**<br>- Intel E5-2673 v4 (Broadwell) 2.3 GHz および Intel SP-8160 (Skylake)* プロセッサ<br>- 最大 16 個の仮想コアを自動スケール (1 仮想コア = 1 ハイパースレッド)|**プロビジョニング済みコンピューティング**<br>- 仮想コアあたり 5.1 GB<br>- 最大 408 GB をプロビジョニング<br><br>**サーバーレス コンピューティング**<br>- 仮想コアあたり最大 24 GB を自動スケール<br>- 最大 48 GB を自動スケール|
-|Fsv2 シリーズ     |- Intel Xeon Platinum 8168 (SkyLake) プロセッサ<br>- すべての主要なターボ クロック速度 (3.4 GHz) と、最大 1 コアのターボ クロック速度 (3.7 GHz) を実現します。<br>- 最大 72 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 1.9 GB<br>- 最大 136 GB をプロビジョニング|
-|M シリーズ     |- Intel Xeon E7-8890 v3 2.5 GHz および Intel Xeon Platinum 8280M 2.7 GHz (Cascade Lake) プロセッサ<br>- 最大 128 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 29 GB<br>- 最大 3.7 TB をプロビジョニング|
+|Gen4     |- Intel® E5-2673 v3 (Haswell) 2.4 GHz プロセッサ<br>- 最大 24 個の仮想コアをプロビジョニング (1 仮想コア = 1 物理コア)  |- 仮想コアあたり 7 GB<br>- 最大 168 GB のプロビジョニング|
+|第 5 世代     |**プロビジョニング済みコンピューティング**<br>- Intel® E5-2673 v4 (Broadwell) 2.3-GHz プロセッサ、Intel® SP-8160 (Skylake)\* プロセッサ、および Intel® 8272CL (Cascade Lake) 2.5 GHz\* プロセッサ<br>- 最大 80 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)<br><br>**サーバーレス コンピューティング**<br>- Intel® E5-2673 v4 (Broadwell) 2.3-GHz プロセッサおよび Intel® SP-8160 (Skylake)* プロセッサ<br>- 最大 40 個の仮想コアを自動スケール (1 仮想コア = 1 ハイパースレッド)|**プロビジョニング済みコンピューティング**<br>- 仮想コアあたり 5.1 GB<br>- 最大 408 GB をプロビジョニング<br><br>**サーバーレス コンピューティング**<br>- 仮想コアあたり最大 24 GB を自動スケール<br>- 最大 120 GB を自動スケール|
+|Fsv2 シリーズ     |- Intel® 8168 (Skylake) プロセッサ<br>- すべての主要なターボ クロック速度 (3.4 GHz) と、最大 1 コアのターボ クロック速度 (3.7 GHz) を実現します。<br>- 最大 72 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 1.9 GB<br>- 最大 136 GB をプロビジョニング|
+|M シリーズ     |- Intel® E7-8890 v3 2.5 GHz プロセッサおよび Intel® 8280M 2.7 GHz (Cascade Lake) プロセッサ<br>- 最大 128 個の仮想コアをプロビジョニング (1 仮想コア = 1 ハイパースレッド)|- 仮想コアあたり 29 GB<br>- 最大 3.7 TB をプロビジョニング|
 
-\* [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動的管理ビューでは、Intel SP-8160 (Skylake) プロセッサを使用する Gen5 データベースのハードウェアの世代が Gen6 として表示されます。 すべての Gen5 データベースのリソース制限は、プロセッサの種類 (Broadwell または Skylake) に関係なく同じです。
+\* [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) 動的管理ビューでは、Intel® SP-8160 (Skylake) プロセッサを使用するデータベースのハードウェア世代は Gen6 と表示され、Intel® 8272CL (Cascade Lake) を使用するデータベースのハードウェア世代は Gen7 と表示されます。 すべての Gen5 データベースのリソース制限は、プロセッサの種類 (Broadwell、Skylake、Cascade Lake) に関係なく同じです。
 
 リソース制限の詳細については、[単一データベースに対するリソース制限 (仮想コア)](resource-limits-vcore-single-databases.md) に関するページ、または[エラスティック プールに対するリソース制限 (仮想コア)](resource-limits-vcore-elastic-pools.md) に関するページを参照してください。
 

@@ -3,16 +3,16 @@ title: サブスクリプションにリソースをデプロイする
 description: Azure Resource Manager テンプレートでリソース グループを作成する方法について説明します。 Azure サブスクリプション スコープでリソースをデプロイする方法も示します。
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: a4e21f29762a30baec8d5cf6e3914da2b5faadeb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: aca1aaf9d7d0c8a97bf2dad437953ccadc02a924
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87321770"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88002784"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>サブスクリプション レベルでリソース グループとリソースを作成する
 
-リソースの管理を簡略化するには、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure サブスクリプションのレベルでリソースをデプロイします。 たとえば、[ポリシー](../../governance/policy/overview.md)および[ロールベースのアクセス制御](../../role-based-access-control/overview.md)をサブスクリプションにデプロイすると、これらのリソースがサブスクリプション全体に適用されます。 サブスクリプション内にリソース グループを作成し、サブスクリプションのリソース グループにリソースをデプロイすることもできます。
+リソースの管理を簡略化するには、Azure Resource Manager テンプレート (ARM テンプレート) を使用して、Azure サブスクリプションのレベルでリソースをデプロイします。 たとえば、[ポリシー](../../governance/policy/overview.md)および [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) をサブスクリプションにデプロイすると、これらのリソースがサブスクリプション全体に適用されます。 サブスクリプション内にリソース グループを作成し、サブスクリプションのリソース グループにリソースをデプロイすることもできます。
 
 > [!NOTE]
 > サブスクリプション レベルのデプロイでは、800 の異なるリソース グループにデプロイできます。
@@ -473,7 +473,7 @@ New-AzSubscriptionDeployment `
 
 ## <a name="access-control"></a>アクセス制御
 
-ロールの割り当てについては、「[RBAC と Azure Resource Manager テンプレートを使用して Azure リソースへのアクセスを管理する](../../role-based-access-control/role-assignments-template.md)」をご覧ください。
+ロールの割り当ての詳細については、「[Azure Resource Manager テンプレートを使用して Azure でのロールの割り当てを追加する](../../role-based-access-control/role-assignments-template.md)」を参照してください。
 
 次の例では、リソース グループを作成し、そのグループにロックを適用して、プリンシパルにロールを割り当てます。
 

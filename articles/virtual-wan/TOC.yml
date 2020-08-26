@@ -2,7 +2,7 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Virtual WAN について
+    - name: Virtual WAN とは
       href: virtual-wan-about.md
     - name: アーキテクチャ
       items:
@@ -36,10 +36,6 @@
           href: virtual-wan-locations-partners.md
         - name: パートナー向けの自動化ガイドライン
           href: virtual-wan-configure-automation-providers.md
-    - name: 価格の概念
-      href: pricing-concepts.md
-    - name: 仮想ハブの NVA について
-      href: about-nva-hub.md
     - name: ルーティング
       items:
         - name: 仮想ハブのルーティングについて
@@ -56,13 +52,13 @@
               href: scenario-shared-services-vnet.md
             - name: NVA 経由のルーティング
               href: scenario-route-through-nva.md
-            - name: NVA 経由のルーティング - カスタム (プレビュー)
+            - name: NVA 経由のルーティング - カスタム
               href: scenario-route-through-nvas-custom.md
             - name: Azure Firewall - カスタム
               href: scenario-route-between-vnets-firewall.md
     - name: 監視
       items:
-        - name: Virtual WAN の Azure Monitor の Insights について (プレビュー)
+        - name: Virtual WAN に関する Azure Monitor の分析情報について
           href: azure-monitor-insights.md
     - name: サイト間
       items:
@@ -70,11 +66,15 @@
           href: virtual-wan-ipsec.md
         - name: 複数の ISP リンク - Azure パスの選択
           href: path-selection-multiple-links.md
+    - name: 価格の概念
+      href: pricing-concepts.md
+    - name: 仮想ハブの NVA について
+      href: about-nva-hub.md
 - name: 操作方法ガイド
   items:
     - name: Virtual WAN SKU をアップグレードする
       href: upgrade-virtual-wan.md
-    - name: 仮想ハブで NVA を作成する (プレビュー)
+    - name: 仮想ハブに NVA を作成する
       href: How-to-nva-hub.md
     - name: ExpressRoute
       items:
@@ -136,6 +136,10 @@
       items:
         - name: ログとメトリック
           href: logs-metrics.md
+    - name: Private Link
+      items:
+        - name: Private Link の接続の構成
+          href: howto-private-link.md
 - name: リファレンス
   items:
     - name: Azure PowerShell
@@ -150,14 +154,18 @@
   items:
     - name: よく寄せられる質問
       href: virtual-wan-faq.md
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: ブログ
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: サブスクリプションとサービスの制限
-      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: 更新のお知らせ
+      href: 'https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
+    - name: サブスクリプションとサービスの制限
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-wan%2ftoc.json
+    - name: ネットワークのロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: ネットワークのブログ
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: ネットワーク更新のお知らせ
+      href: 'https://azure.microsoft.com/updates/?category=networking'
     - name: 料金計算ツール
       href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: SLA

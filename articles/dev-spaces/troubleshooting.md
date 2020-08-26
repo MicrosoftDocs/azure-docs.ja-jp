@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Azure Dev Spaces を有効にして使用するときに発生する一般的な問題をトラブルシューティングおよび解決する方法について説明します
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー, Helm, サービス メッシュ, サービス メッシュのルーティング, kubectl, k8s '
-ms.openlocfilehash: 7b97bab7182e382801a57bcf7dd6f325e665438b
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: e26f066294cb0a6a48c5a3299213206fe4226ad0
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232493"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210822"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Azure Dev Spaces のトラブルシューティング
 
@@ -55,8 +55,6 @@ Azure Dev Spaces CLI がインストールされていない場合は、まず�
 ```azurecli
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
-
-コントローラーの再作成は、CLI や Visual Studio から行うことができます。 例については、[チーム開発](quickstart-team-development.md)または [.NET Core を使用した開発](quickstart-netcore-visualstudio.md)のクイックスタートを参照してください。
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>コントローラー名の文字数が原因でコントローラーの作成に失敗する
 
@@ -267,7 +265,7 @@ Service cannot be started.
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>開発マシンに接続するときに、ネットワーク トラフィックが AKS クラスターに転送されない
 
-[Azure Dev Spaces を使用して AKS クラスターを開発マシンに接続する](how-to/local-process-kubernetes-vs-code.md)と、開発マシンと AKS クラスターの間でネットワーク トラフィックが転送されないという問題が発生する可能性があります。
+[Azure Dev Spaces を使用して AKS クラスターを開発マシンに接続する](https://code.visualstudio.com/docs/containers/local-process-kubernetes)と、開発マシンと AKS クラスターの間でネットワーク トラフィックが転送されないという問題が発生する可能性があります。
 
 開発マシンを AKS クラスターに接続すると、Azure Dev Spaces は開発マシンの `hosts` ファイルを変更することによって、お使いの AKS クラスターと開発マシンの間でネットワーク トラフィックを転送します。 Azure Dev Spaces は、ホスト名として置き換える Kubernetes サービスのアドレスを使用して、`hosts` にエントリを作成します。 このエントリは、開発マシンと AKS クラスターの間でネットワーク トラフィックを転送するために、ポート フォワーディングと共に使用されます。 開発マシン上のサービスが、置き換える Kubernetes サービスのポートと競合する場合、Azure Dev Spaces は Kubernetes サービスのネットワーク トラフィックを転送できません。 たとえば、*Windows BranchCache* サービスは通常 *0.0.0.0:80* にバインドされます。これにより、すべてのローカル IP でポート 80 の競合が発生します。
 
@@ -284,7 +282,7 @@ Service cannot be started.
 
 [マネージド ID](../aks/use-managed-identity.md) および [ポッド マネージ ID](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) がインストールされている AKS クラスターで、Azure Dev Spaces を使用してサービスを実行すると、"*グラフのインストール*" ステップ後にプロセスが応答しなくなることがあります。 *azds* 名前空間で *azds-injector-webhook* を調べると、このエラーが表示されることがあります。
 
-Azure Dev Spaces がクラスターで実行するサービスは、クラスターのマネージド ID を利用して、クラスター外の Azure Dev Spaces バックエンド サービスと通信します。 ポッド マネージド ID がインストールされている場合、ネットワーク ルールはクラスターのノードで構成され、マネージド ID 資格情報の呼び出しはすべて、[クラスターにインストールされた Node Managed Identity (NMI) デーモンセット](https://github.com/Azure/aad-pod-identity#node-managed-identity)にリダイレクトされます。 この NMI デーモンセットは呼び出し元のポッドを識別し、要求されたマネージド ID にアクセスできるようポッドに適切なラベルが付けられていることを確認します。 Azure Dev Spaces は、クラスターにポッド マネージド ID がインストールされているかどうか検出できず、Azure Dev Spaces サービスがクラスターのマネージド ID にアクセスするために必要な構成を実行できません。 Azure Dev Spaces サービスはクラスターのマネージド ID にアクセスするように構成されていないため、NMI デーモンセットではマネージド ID の AAD トークンを取得できず、Azure Dev Spaces バックエンド サービスと通信できません。
+Azure Dev Spaces がクラスターで実行するサービスは、クラスターのマネージド ID を利用して、クラスター外の Azure Dev Spaces バックエンド サービスと通信します。 ポッド マネージド ID がインストールされている場合、ネットワーク ルールはクラスターのノードで構成され、マネージド ID 資格情報の呼び出しはすべて、[クラスターにインストールされた Node Managed Identity (NMI) デーモンセット](https://github.com/Azure/aad-pod-identity#node-managed-identity)にリダイレクトされます。 この NMI デーモンセットは呼び出し元のポッドを識別し、要求されたマネージド ID にアクセスできるようポッドに適切なラベルが付けられていることを確認します。 Azure Dev Spaces は、クラスターにポッド マネージド ID がインストールされているかどうか検出できず、Azure Dev Spaces サービスがクラスターのマネージド ID にアクセスするために必要な構成を実行できません。 Azure Dev Spaces サービスはクラスターのマネージド ID にアクセスするように構成されていないため、NMI デーモンセットではマネージド ID の Azure AD トークンを取得できず、Azure Dev Spaces バックエンド サービスと通信できません。
 
 この問題を修正するには、*azds-injector-webhook* で [AzurePodIdentityException](https://github.com/Azure/aad-pod-identity/blob/master/docs/readmes/README.app-exception.md) を適用し、Azure Dev Spaces でインストルメント化されたポッドを更新してマネージド ID にアクセスできるようにします。
 
@@ -416,7 +414,7 @@ Visual Studio Code デバッガーを実行しているときに、このエラ�
 
 Visual Studio Code デバッガーを実行しているときに、このエラーが表示されることがあります。 Azure Dev Spaces 用の VS Code 拡張機能が開発マシンにインストールされていない可能性があります。
 
-この問題を解決するには、[Azure Dev Spaces 用の VS Code 拡張機能](get-started-netcore.md)をインストールします。
+この問題を解決するには、Azure Dev Spaces 用の VS Code 拡張機能をインストールします。
 
 ### <a name="error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>エラー "Invalid 'cwd' value '/src'. The system cannot find the file specified." ('cwd' の値 '/src' が無効です。指定されたファイルがシステムに見つかりません。) または "launch: program '/src/[path to project binary]' does not exist" (launch: program '/src/[プロジェクト バイナリのパス]' が存在しません)
 
@@ -498,9 +496,9 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 
 ### <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>Dev Spaces コントローラーと API を呼び出すための RBAC 権限が正しくない
 
-Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS クラスター上の管理者用の *kubeconfig* を読み取るためのアクセス権を持っている必要があります。 たとえば、この権限は、[組み込みの Azure Kubernetes Service クラスター管理者ロール](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)で利用できます。 また、Azure Dev Spaces コントローラーにアクセスするユーザーには、コントローラーの "*共同作成者*" または "*所有者*" の RBAC ロールが設定されている必要もあります。 AKS クラスターに対するユーザーの権限の更新に関する詳細は、[こちら](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)で確認できます。
+Azure Dev Spaces コントローラーにアクセスするユーザーは、AKS クラスター上の管理者用の *kubeconfig* を読み取るためのアクセス権を持っている必要があります。 たとえば、この権限は、[組み込みの Azure Kubernetes Service クラスター管理者ロール](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)で利用できます。 また、Azure Dev Spaces コントローラーにアクセスするユーザーには、コントローラーの "*共同作成者*" または "*所有者*" の Azure ロールも設定されている必要があります。 AKS クラスターに対するユーザーの権限の更新に関する詳細は、[こちら](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user-or-group)で確認できます。
 
-コントローラーに対するユーザーの RBAC ロールを更新するには、次のようにします。
+コントローラーに対するユーザーの Azure ロールを更新するには、次のことを行います。
 
 1. Azure Portal ( https://portal.azure.com ) にサインインします。
 1. コントローラーを含むリソース グループに移動します。これは通常、お使いの AKS クラスターと同じです。

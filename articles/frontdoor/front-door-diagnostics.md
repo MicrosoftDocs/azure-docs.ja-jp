@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: f57c0353989cfcf924042d202bd80a57b476507b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 249b2406f048709fd7e4f76f8272b3158708e5bb
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85322314"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056433"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door"></a>Azure Front Door でのメトリックとログの監視
 
@@ -91,7 +91,7 @@ Front Door の診断ログを構成するには、以下の手順を実行しま
 | RulesEngineMatchNames | 要求が一致した規則の名前。 |
 | SecurityProtocol | 要求によって使用された TLS/SSL プロトコルのバージョン。暗号化がない場合は、null 値。 |
 | SentToOriginShield | 最初の環境でキャッシュ ミスがあり、要求がリージョンのキャッシュに送信されたかどうかを表すブール値フィールド。 ルーティング規則がリダイレクトの場合、またはルーティング規則でキャッシュが有効になっていない場合は、このフィールドを無視します。 |
-| TimeTaken | アクションにかかった時間の長さ (ミリ秒単位)。 |
+| TimeTaken | Front Door への要求の最初のバイトから、出される応答の最後のバイトまでの時間の長さ (秒単位)。 |
 | TrackingReference | Front Door によって提供された要求を識別する一意の参照文字列。X-Azure-Ref ヘッダーとしてクライアントにも送信されます。 アクセス ログで特定の要求の詳細を検索するために必要です。 |
 | UserAgent | クライアントで使用されたブラウザーの種類。 |
 

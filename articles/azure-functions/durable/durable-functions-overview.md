@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 03/12/2020
 ms.author: cgillum
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 8fd670104a04229ed688b365de89e2ffc22b5429
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adf58b667d17393fc905fbf31261530fce88d9f8
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87499383"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272350"
 ---
 # <a name="what-are-durable-functions"></a>Durable Functions とは
 
@@ -25,6 +25,7 @@ Durable Functions では、現在次の言語をサポートしています。
 * **JavaScript**: Azure Functions ランタイムのバージョン 2.x でのみサポートされています。 Durable Functions 拡張機能のバージョン 1.7.0 以降が必要です。 
 * **Python**: Durable Functions 拡張機能のバージョン 1.8.5 以降が必要です。 
 * **F#** : プリコンパイル済みクラス ライブラリと F# スクリプト。 F# スクリプトは、Azure Functions ランタイムのバージョン 1.x でのみサポートされています。
+* **PowerShell**: Durable Functions のサポートは、現在パブリック プレビューの段階です。 Azure Functions ランタイムのバージョン 3.x と PowerShell 7 でのみサポートされています。 Durable Functions 拡張機能のバージョン 2.2.2 以降が必要です。 現在サポートされているパターンは次のとおりです。[関数チェーン](#chaining)、[ファンアウトおよびファンイン](#fan-in-out)、[非同期 HTTP API](#async-http)。
 
 Durable Functions では、すべての [Azure Functions 言語](../supported-languages.md)をサポートすることを目標としています。 追加言語をサポートするための最新の作業状況については、[Durable Functions の問題の一覧](https://github.com/Azure/azure-functions-durable-extension/issues)を参照してください。
 
@@ -119,6 +120,19 @@ main = df.Orchestrator.create(orchestrator_function)
 > [!NOTE]
 > Python の `context` オブジェクトは、オーケストレーション コンテキストを表します。 メインの Azure Functions コンテキストには、オーケストレーション コンテキストの `function_context` プロパティを使用してアクセスします。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+$X = Invoke-ActivityFunction -FunctionName 'F1'
+$Y = Invoke-ActivityFunction -FunctionName 'F2' -Input $X
+$Z = Invoke-ActivityFunction -FunctionName 'F3' -Input $Y
+Invoke-ActivityFunction -FunctionName 'F4' -Input $Z
+```
+
+`Invoke-ActivityFunction` コマンドを使用して他の関数を名前で呼び出し、パラメーターを渡して、関数の出力を返すことができます。 コードで `NoWait` スイッチを用いずに `Invoke-ActivityFunction` を呼び出すたびに、Durable Functions フレームワークによって、現在の関数インスタンスの進行状況に対するチェックポイントが設定されます。 プロセスまたは仮想マシンが実行途中でリサイクルされる場合、関数インスタンスは直前の `Invoke-ActivityFunction` 呼び出しから再開されます。 詳細については、次のセクション (パターン #2: ファンアウト/ファンイン) を参照してください。
+
 ---
 
 ### <a name="pattern-2-fan-outfan-in"></a><a name="fan-in-out"></a>パターン #2: ファンアウト/ファンイン
@@ -211,6 +225,30 @@ main = df.Orchestrator.create(orchestrator_function)
 ファンアウト作業は、`F2` 関数の複数のインスタンスに分散されます。 動的タスク リストを使用して、この作業が追跡されます。 `context.task_all` API が呼び出され、すべての呼び出された関数が終了するまで待機します。 その後、`F2` 関数の出力が動的タスク リストから集計され、`F3` 関数に渡されます。
 
 `context.task_all` の `yield` 呼び出しの際に設定される自動チェックポイントによって、実行途中でクラッシュや再起動が発生した場合でも、既に完了したすべてのタスクをやり直す必要がなくなります。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+```PowerShell
+param($Context)
+
+# Get a list of work items to process in parallel.
+$WorkBatch = Invoke-ActivityFunction -FunctionName 'F1'
+
+$ParallelTasks =
+    foreach ($WorkItem in $WorkBatch) {
+        Invoke-ActivityFunction -FunctionName 'F2' -Input $WorkItem -NoWait
+    }
+
+$Outputs = Wait-ActivityFunction -Task $ParallelTasks
+
+# Aggregate all outputs and send the result to F3.
+$Total = ($Outputs | Measure-Object -Sum).Sum
+Invoke-ActivityFunction -FunctionName 'F3' -Input $Total
+```
+
+ファンアウト作業は、`F2` 関数の複数のインスタンスに分散されます。 `F2` 関数の呼び出しで `NoWait` スイッチが使用されていることに注意してください。このスイッチを使用すると、オーケストレーターはアクティビティを完了しなくても `F2` を呼び出すことができます。 動的タスク リストを使用して、この作業が追跡されます。 `Wait-ActivityFunction` コマンドが呼び出され、呼び出されたすべての関数が終了するまで待機します。 その後、`F2` 関数の出力が動的タスク リストから集計され、`F3` 関数に渡されます。
+
+`Wait-ActivityFunction` 呼び出しの際に設定される自動チェックポイントによって、実行途中でのクラッシュや再起動が発生した場合でも、既に完了したタスクをやり直す必要がなくなります。
 
 ---
 
@@ -357,6 +395,10 @@ def orchestrator_function(context: df.DurableOrchestrationContext):
 main = df.Orchestrator.create(orchestrator_function)
 ```
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+現在、モニターは PowerShell ではサポートされていません。
+
 ---
 
 要求が受信されると、そのジョブ ID 用の新しいオーケストレーション インスタンスが作成されます。 インスタンスは、条件が満たされてループが終了するまで、状態をポーリングします。 ポーリング間隔は、永続タイマーによって制御されます。 その後、さらに作業を実行するか、オーケストレーションを終了できます。 `nextCheck` が `expiryTime` を超えると、モニターが終了します。
@@ -455,6 +497,10 @@ main = df.Orchestrator.create(orchestrator_function)
 
 永続タイマーを作成するために、`context.create_timer` が呼び出されます。 通知は `context.wait_for_external_event` が受け取ります。 その後、エスカレーションする (タイムアウトが先に発生した場合) か承認を処理する (タイムアウト前に承認を得た場合) かを決定するために、`context.task_any` が呼び出されます。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+現在、ユーザー操作は PowerShell ではサポートされていません。
+
 ---
 
 外部クライアントでは、[組み込みの HTTP API](durable-functions-http-api.md#raise-event) を使用して、待機中のオーケストレーター関数にイベント通知を配信できます。
@@ -501,6 +547,10 @@ async def main(client: str):
     is_approved = True
     await durable_client.raise_event(instance_id, "ApprovalEvent", is_approved)
 ```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+現在、ユーザー操作は PowerShell ではサポートされていません。
 
 ---
 
@@ -583,6 +633,10 @@ module.exports = df.entity(function(context) {
 
 持続エンティティは現在、Python でサポートされていません。
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+現在、持続エンティティは PowerShell ではサポートされていません。
+
 ---
 
 クライアントは、[エンティティ クライアント バインディング](durable-functions-bindings.md#entity-client)を使用して、エンティティ関数の*操作*をエンキューすることができます ("シグナル通知" とも呼ばれる)。
@@ -622,6 +676,10 @@ module.exports = async function (context) {
 # <a name="python"></a>[Python](#tab/python)
 
 持続エンティティは現在、Python でサポートされていません。
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+現在、持続エンティティは PowerShell ではサポートされていません。
 
 ---
 

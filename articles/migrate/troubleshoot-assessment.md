@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: f9598ad508e3760bf1bad04f8694838465e4961f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.openlocfilehash: 24e7a1660da4dd021ef7ceb2594b4db2340cf104
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87460985"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263029"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>評価と依存関係の視覚化のトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "87460985"
 サポートされていないブートの種類 | Azure では、ブートの種類が EFI の VM はサポートされません。 移行を実行する前に、ブートの種類を BIOS に変換することをお勧めします。 <br/><br/>Azure Migrate Server Migration を使用して、そのような VM の移行を処理することができます。 それにより、移行中に VM のブートの種類が BIOS に変換されます。
 条件付きでサポートされる Windows オペレーティング システム | オペレーティング システムはサポート期間が終了しており、[Azure でのサポート](https://aka.ms/WSosstatement)のためにはカスタム サポート契約 (CSA) が必要です。 Azure に移行する前にアップグレードを検討してください。
 サポートされていない Windows オペレーティング システム | Azure では、[特定の Windows OS バージョン](https://aka.ms/WSosstatement)のみがサポートされています。 Azure に移行する前に、コンピューターのアップグレードを検討してください。
-条件付きで動作が保証されている Linux OS | Azure では、[特定の Linux OS バージョン](../virtual-machines/linux/endorsed-distros.md)のみがサポートされます。 Azure に移行する前に、コンピューターのアップグレードを検討してください。
+条件付きで動作が保証されている Linux OS | Azure では、[特定の Linux OS バージョン](../virtual-machines/linux/endorsed-distros.md)のみがサポートされます。 Azure に移行する前に、コンピューターのアップグレードを検討してください。 詳細については、[こちらも](https://docs.microsoft.com/azure/migrate/troubleshoot-assessment#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment)参照してください。
 動作が保証されていない Linux OS | マシンは Azure で起動する可能性がありますが、オペレーティング システムは Azure ではサポートされていません。 Azure に移行する前に、[サポートされている Linux バージョン](../virtual-machines/linux/endorsed-distros.md)へのアップグレードを検討してください。
 オペレーティング システムが不明です | VM のオペレーティング システムが、vCenter Server で "その他" として指定されました。 この動作により、Azure Migrate による VM の Azure 対応性の検証はブロックされます。 コンピューターを移行する前に、オペレーティング システムが Azure によって[サポートされている](https://aka.ms/azureoslist)ことを確認してください。
 サポートされていないビット バージョン | 32 ビット オペレーティング システムの VM は Azure で起動する可能性がありますが、Azure に移行する前に、64 ビットにアップグレードすることをお勧めします。
@@ -74,7 +74,6 @@ VMware VM および Hyper-V VM の場合、Server Assessment では、Server Ass
 
 Azure Migrate Server Assessment では、評価の種類に基づいて、現在のオンプレミスの割り当てより多くのコアとメモリを備えた Azure VM SKU が推奨される場合があります。
 
-
 - VM SKU の推奨は、評価のプロパティによって異なります。
 - これは、Server Assessment で実行する評価の種類によって影響を受けます: "*パフォーマンスベース*" または "*オンプレミス*"。
 - パフォーマンスベースの評価では、Server Assessment によりオンプレミスの VM の利用状況データ (CPU、メモリ、ディスク、ネットワークの利用状況) が考慮されて、オンプレミスの VM に対して適切なターゲット VM SKU が決定されます。 また、有効な使用率を決定するときに快適性係数が追加されます。
@@ -88,7 +87,7 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、現在
 - 評価がパフォーマンスベースの場合は、CPU およびメモリの有効な使用率 (4 コアの 50% * 1.3 = 2.6 コア、8 GB メモリの 50% * 1.3 = 5.3 GB メモリ) に基づき、4 コア (最も近いサポートされるコア数) と 8 GB メモリ (最も近いサポートされるメモリ サイズ) の最も安価な VM SKU が推奨されます。
 - 評価のサイズ決定に関する[詳細を参照](concepts-assessment-calculation.md#types-of-assessments)してください。
 
-## <a name="azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure VM 評価でオンプレミスより大きい Azure ディスク SKU
+## <a name="why-is-the-recommended-azure-disk-skus-bigger-than-on-premises-in-an-azure-vm-assessment"></a>Azure VM の評価で、オンプレミスのものより大きい Azure ディスク SKU が推奨されるのはなぜですか?
 
 Azure Migrate Server Assessment では、評価の種類に基づいて、より大きいディスクが推奨される場合があります。
 - Server Assessment でのディスクのサイズ設定は、サイズ設定基準とストレージの種類という 2 つの評価プロパティに依存します。
@@ -97,14 +96,26 @@ Azure Migrate Server Assessment では、評価の種類に基づいて、より
 
 たとえば、オンプレミスのディスクと 32 GB のメモリを使っていても、ディスクの読み取りと書き込みの集計 IOPS が 800 IOPS である場合、Server Assessment では Premium ディスク (高い IOPS 要件であるため) が推奨された後、必要な IOPS とサイズに対応できるディスク SKU が推奨されます。 この例では、適合する最も近いものは P15 (256 GB、1100 IOPS) になります。 オンプレミスのディスクで必要なサイズは 32 GB でしたが、オンプレミスのディスクの高い IOPS 要件により、Server Assessment ではさらに大きいディスクが推奨されます。
 
-## <a name="utilized-corememory-percentage-missing"></a>使用済みコア/メモリの割合がありません
+## <a name="why-is-performance-data-missing-for-someall-vms-in-my-assessment-report"></a>評価レポートで一部または全部の VM のパフォーマンス データが見つからないのはなぜですか?
 
-Azure Migrate アプライアンスで関連するオンプレミス VM のパフォーマンス データを収集できない場合、Server Assessment では "PercentageOfCoresUtilizedMissing" または "PercentageOfMemoryUtilizedMissing" が報告されます。
+"パフォーマンス ベース" の評価では、Azure Migrate アプライアンスでオンプレミス VM のパフォーマンス データを収集できない場合、評価レポートのエクスポートに "PercentageOfCoresUtilizedMissing" または "PercentageOfMemoryUtilizedMissing" と表示されます。 次の点を確認してください。
 
-- これは、評価期間中に VM がオフにされた場合に発生する可能性があります。 アプライアンスでは、オフになっていた VM のパフォーマンス データを収集することはできません。
-- メモリ カウンターのみが取得されず、Hyper-V VM を評価しようとしている場合は、これらの VM で動的メモリが有効になっているかどうかを確認してください。 Hyper-V VM のみの既知の問題のため、動的メモリが有効になっていない VM のメモリ使用率データは、Azure Migrate アプライアンスで収集できません。
-- いずれかのパフォーマンス カウンターが不足している場合、Azure Migrate Server Assessment は割り当てられたコアとメモリにフォールバックし、対応する VM サイズが推奨されます。
+- 評価を作成している期間中に VM の電源がオンになっていたかどうか
+- メモリ カウンターのみが取得されず、Hyper-V VM を評価しようとしている場合は、これらの VM で動的メモリが有効になっているかどうかを確認してください。 現在、既知の問題のため、そのような VM のメモリ使用率は、Azure Migrate アプライアンスで収集できません。
 - すべてのパフォーマンス カウンターが不足している場合は、評価のためのポート アクセス要件が満たされていることを確認します。 [VMware](./migrate-support-matrix-vmware.md#port-access-requirements)、[Hyper-V](./migrate-support-matrix-hyper-v.md#port-access)、および[物理](./migrate-support-matrix-physical.md#port-access)サーバーの評価のためのポート アクセス要件の詳細を参照してください。
+注 - いずれかのパフォーマンス カウンターを取得できない場合、Azure Migrate: Server Assessment はオンプレミスの割り当てられたコアまたはメモリにフォールバックし、それに応じて VM サイズが推奨されます。
+
+## <a name="why-is-the-confidence-rating-of-my-assessment-low"></a>評価の信頼度レーティングが低いのはなぜですか?
+
+信頼度評価は、評価を計算するために必要な[使用可能データ ポイント](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#ratings)の割合に基づいて、"パフォーマンス ベース" の評価に対して計算されます。 評価の信頼度レーティングが低い理由は以下のとおりです。
+
+- 評価を作成するための期間用の環境をプロファイルしませんでした。 たとえば、パフォーマンス期間を 1 週間に設定した評価を作成する場合は、すべてのデータポイントが収集されるまで、検出を始めてから少なくとも 1 週間待つ必要があります。 その期間待つことができない場合は、パフォーマンス期間を短くし、評価を "再計算" してください。
+ 
+- サーバー評価では、評価期間内に一部または全部の VM のパフォーマンス データを収集できません。 評価期間中に VM の電源がオンになっていたかどうか、ポート 443 での発信接続が許可されていることを、確認してください。 Hyper-V VM では、動的メモリが有効になっている場合、メモリ カウンターが欠落し、信頼性評価が低くなります。 評価を "再計算" し、信頼性評価に最新の変更を反映してください。 
+
+- Server Assessment で検出が開始された後で、いくつかの VM が作成されました。 たとえば、過去 1 か月間のパフォーマンス履歴の評価を作成しているのに、ほんの 1 週間前にいくつかの VM が環境内に作成されたとします。 この場合、新しい VM のパフォーマンス データは期間全体を通しては利用できず、信頼度レーティングが低くなります。
+
+信頼度レーティングに関する[詳細についてはこちら](https://docs.microsoft.com/azure/migrate/concepts-assessment-calculation#confidence-ratings-performance-based)をご覧ください。
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>オペレーティング システムのライセンスは Azure VM 評価に含まれていますか?
 
@@ -133,10 +144,6 @@ Hyper-V の仮想化が有効になっている物理サーバーの場合、準
 ## <a name="number-of-discovered-nics-higher-than-actual-for-physical-servers"></a>検出される NIC の数が、物理サーバーの実際の数より多くなります
 
 これは、物理サーバーで Hyper-V 仮想化が有効になっている場合に発生する可能性があります。 これらのサーバーの場合、Azure Migrate では現在、物理と仮想両方のアダプターが検出されます。 そのため、 検出される NIC の数は実際より多くなります。
-
-
-## <a name="low-confidence-rating-on-physical-server-assessments"></a>物理サーバーの評価での信頼度の低い評価
-信頼度は、評価の計算に必要なデータ ポイントの可用性に基づいて割り当てられます。 Hyper-V の仮想化が有効になっている物理サーバーの場合、既知の製品ギャップがあり、そのために、低い信頼度の評価が物理サーバーの評価に誤って割り当てられる可能性があります。 これらのサーバーの場合、Azure Migrate では現在、物理と仮想両方のアダプターが検出されます。 ネットワーク スループットは、検出された仮想ネットワーク アダプターではキャプチャされますが、物理ネットワーク アダプターではされません。 物理ネットワーク アダプターにデータ ポイントが存在しないため、信頼度の評価が影響を受け、評価が低くなる場合があります。 これは、今後対処される製品のギャップです。
 
 ## <a name="dependency-visualization-in-azure-government"></a>Azure Government での依存関係の視覚化
 

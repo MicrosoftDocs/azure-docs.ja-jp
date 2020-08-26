@@ -5,18 +5,18 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: cc44b587bfa3b65b551df46bef025b461c8f6849
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: aee6e6d8ca505bfdcfd4a51e4693779f44b2b0c0
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87374768"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226491"
 ---
 このクイックスタートでは、Speech Devices SDK for Linux を使用して音声対応製品を構築するか、またはそれを[会話の文字起こし](../conversation-transcription-service.md)デバイスとして使用する方法について説明します。 現在、[Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) のみがサポートされています。
 
 アプリケーションは、Speech SDK パッケージと、64 ビット Linux (Ubuntu 16.04、Ubuntu 18.04、Debian 9、RHEL 7 または 8、CentOS 7 または 8) 上の Eclipse Java IDE (v4) によって構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
-このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](../get-started.md) アカウントが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
+このガイドでは、Speech サービス リソースがある [Azure Cognitive Services](../get-started.md) アカウントが必要になります。 
 
 [サンプル アプリケーション](https://aka.ms/sdsdk-download-JRE)のソース コードは Speech Devices SDK に付属しています。 [GitHub で入手する](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)こともできます。
 
@@ -60,7 +60,7 @@ Eclipse を開始する前に、これらの依存関係がインストールさ
   > - RHEL または CentOS 7 の場合、「[Speech SDK 用に RHEL/CentOS 7 を構成する](~/articles/cognitive-services/speech-service/how-to-configure-rhel-centos-7.md)」の手順に従います。
 > - RHEL または CentOS 8 の場合、「[Linux 用 OpenSSL の構成](~/articles/cognitive-services/speech-service/how-to-configure-openssl-linux.md)」の手順に従います。
 
-会話の文字起こしは、現時点では、“centralus” および “eastasia” リージョンで "en-US" と "zh-CN" 言語のみに対応しています。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
+会話の文字起こしは、現時点では、"centralus" および "eastasia" リージョンで "en-US" と "zh-CN" 言語のみに対応しています。 会話の文字起こしを使用するには、それらのいずれかのリージョンの Speech キーが必要です。
 
 意図の使用を計画している場合は、[Language Understanding サービス (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/azureibizasubscription) サブスクリプションが必要になります。 LUIS と意図認識の詳細については、 「[LUIS、C# を使って音声から意図を認識する](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp)」 を参照してください。 [サンプル LUIS モデル](https://aka.ms/sdsdk-luis)は、このアプリで使用できます。
 

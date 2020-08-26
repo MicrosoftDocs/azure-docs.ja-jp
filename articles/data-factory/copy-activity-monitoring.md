@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 06/08/2020
+ms.date: 08/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 4e7828810a069756d1a0cde55ab47915ad11acc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fd2bd404d59b57eae111ba969fb7dcf20a98de35
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85249705"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036370"
 ---
 # <a name="monitor-copy-activity"></a>コピー アクティビティを監視する
 
@@ -56,6 +56,8 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | dataWritten | シンクに書き込まれてコミットされたデータの実際の量。 このサイズは、各データ ストアでのデータの格納方法に関係するため、`dataRead` のサイズと異なる場合があります。 | Int64 値 (バイト単位) |
 | filesRead | ファイル ベースのソースから読み取られたファイルの数。 | Int64 値 (単位なし) |
 | filesWritten | ファイル ベースのシンクに書き込まれてコミットされたファイルの数。 | Int64 値 (単位なし) |
+| filesSkipped | ファイル ベースのソースからスキップされたファイルの数。 | Int64 値 (単位なし) |
+| dataConsistencyVerification | ソースとコピー先のストア間でコピーされたファイルの整合性が検証されているかどうかを確認する、データ整合性検証の詳細。 詳しくは、[こちらの記事](copy-activity-data-consistency.md#monitoring)をご覧ください。 | Array |
 | sourcePeakConnections | コピー アクティビティの実行中にソース データ ストアに対して確立されたコンカレント接続の最大数。 | Int64 値 (単位なし) |
 | sinkPeakConnections | コピー アクティビティの実行中にシンク データ ストアに対して確立されたコンカレント接続の最大数。 | Int64 値 (単位なし) |
 | rowsRead | ソースから読み取られた行の数。 このメトリックは、ファイルを解析せずにそのままコピーする場合には適用されません (たとえば、ソースとシンクのデータセットがバイナリ形式の場合や、同じ設定を持つ他の形式の種類の場合)。 | Int64 値 (単位なし) |
@@ -71,9 +73,11 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
 | effectiveIntegrationRuntime | アクティビティの実行を強化するために使用される統合ランタイム (IR) またはランタイム (`<IR name> (<region if it's Azure IR>)` 形式)。 | Text (文字列) |
 | usedDataIntegrationUnits | コピーの間に有効なデータ統合単位。 | Int32 値 |
 | usedParallelCopies | コピー中の効率的な parallelCopies。 | Int32 値 |
-| redirectRowPath | `redirectIncompatibleRowSettings` プロパティで構成する BLOB ストレージ内のスキップされた互換性のない行のログへのパス。 「[フォールト トレランス](copy-activity-overview.md#fault-tolerance)」を参照してください。 | Text (文字列) |
+| logPath | BLOB ストレージ内のスキップされたデータのセッション ログへのパス。 「[フォールト トレランス](copy-activity-overview.md#fault-tolerance)」を参照してください。 | Text (文字列) |
 | executionDetails | コピー アクティビティによって実行されるステージと、対応する手順、期間、構成などに関する詳細情報。 変更される可能性があるため、このセクションを解析することはお勧めしません。 コピーのパフォーマンスの理解とトラブルシューティングに役立てる方法について詳しくは、「[視覚的な監視](#monitor-visually)」セクションを参照してください。 | Array |
 | perfRecommendation | コピー パフォーマンスのチューニングのヒント。 詳細については、「[パフォーマンスのチューニングのヒント](copy-activity-performance-troubleshooting.md#performance-tuning-tips)」を参照してください。 | Array |
+| billingReference | 指定された実行の使用量に応じた課金。 詳しくは、「[アクティビティ実行レベルでの使用量を監視する](plan-manage-costs.md#monitor-consumption-at-activity-run-level)」をご覧ください。 | Object |
+| durationInQueue | コピー アクティビティの実行が開始されるまでキューに入れる期間 (秒単位)。 | Object |
 
 **例:**
 
@@ -83,6 +87,7 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
     "dataWritten": 1180089300500,
     "filesRead": 110,
     "filesWritten": 110,
+    "filesSkipped": 0,
     "sourcePeakConnections": 640,
     "sinkPeakConnections": 1024,
     "copyDuration": 388,
@@ -92,6 +97,11 @@ Azure Data Factory でパイプラインを作成して公開した後、それ�
     "usedDataIntegrationUnits": 128,
     "billingReference": "{\"activityType\":\"DataMovement\",\"billableDuration\":[{\"Managed\":11.733333333333336}]}",
     "usedParallelCopies": 64,
+    "dataConsistencyVerification": 
+    { 
+        "VerificationResult": "Verified", 
+        "InconsistentData": "None" 
+    },
     "executionDetails": [
         {
             "source": {

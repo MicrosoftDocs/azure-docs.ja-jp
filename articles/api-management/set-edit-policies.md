@@ -1,6 +1,6 @@
 ---
 title: Azure API Management ポリシーの設定または編集方法 | Microsoft Docs
-description: このトピックでは、Azure API Management ポリシーを設定または編集する方法を示します。
+description: Azure API Management ポリシーを設定または編集する方法について説明します。 これらのポリシーは、一連の受信および送信ステートメントが記述された XML ドキュメントです。
 services: api-management
 documentationcenter: ''
 author: mikebudzynski
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: apimpm
-ms.openlocfilehash: 9249cb1ac64bf61b405bc3537523cc85bca3f00c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 3a8d3309cdc5ddb0ae75ed6fcf0376118275b835
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86252795"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87848011"
 ---
 # <a name="how-to-set-or-edit-azure-api-management-policies"></a>Azure API Management ポリシーの設定または編集方法
 
@@ -29,7 +29,7 @@ ms.locfileid: "86252795"
 
 ポリシーを設定または編集するには、次の手順に従います。
 
-1. Azure Portal [https://portal.azure.com](https://portal.azure.com) にサインインします。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 2. APIM インスタンスを参照します。
 3. **[API]** タブをクリックします。
 
@@ -37,8 +37,8 @@ ms.locfileid: "86252795"
 
 4. 前にインポートした API の 1 つを選びます。
 5. **[デザイン]** タブを選択します。
-6. ポリシーを適用する操作を選びます。 すべての操作にポリシーを適用する場合は、 **[すべての操作]** を選択します。
-7. **[受信処理]** または **[送信処理]** セクションで、**</>** (コード エディター) アイコンを選択します。
+6. ポリシーを適用する操作を選びます。 すべての操作にポリシーを適用する場合は、**[すべての操作]** を選択します。
+7. **[受信処理]** または **[送信処理]** セクションで、 **</>** (コード エディター) アイコンを選択します。
 8. 目的のポリシー コードを適切なブロックのいずれかに貼り付けます。
 
     ```xml
@@ -130,7 +130,7 @@ API スコープは、選択した API の **[すべての操作]** に対して
 5. ポリシーを追加または編集します。
 6. **[保存]** をクリックします。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次の関連トピックをご覧ください。
 

@@ -3,12 +3,12 @@ title: ナレッジ ベースの移行 - QnA Maker
 description: ナレッジ ベースを移行するには、一方のナレッジ ベースからエクスポートしてから他方のナレッジ ベースにインポートする必要があります。
 ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: e2d6c1795b816d3b7ac046ea4055402b9107e20b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4148431ebb4de288ac517c7c006a925e36c5f460
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343090"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542923"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>エクスポート/インポートを使用したナレッジ ベースの移行
 
@@ -22,7 +22,7 @@ ms.locfileid: "84343090"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 始める前に、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
+* 始める前に、[無料アカウント](https://azure.microsoft.com/free/cognitive-services/)を作成します。
 * 新しい [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)をセットアップします
 
 ## <a name="migrate-a-knowledge-base-from-qna-maker"></a>QnA Maker からのナレッジ ベースの移行

@@ -5,15 +5,15 @@ services: virtual-machines
 ms.subservice: sizes
 author: ayshakeen
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81bfde964fa993b69bc464214dab0810a8f2bfe5
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84678547"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87832588"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>負荷の急増に対応できる B シリーズ仮想マシンのサイズ
 
@@ -92,7 +92,10 @@ B16 の特徴:
 
 ## <a name="q--a"></a>Q & A
 
-### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>Q:VM のベースライン パフォーマンスが 135% というのは、どういうことでしょうか?
+### <a name="q-what-happens-if-the-credits-run-out"></a>Q:クレジットが不足した場合はどうなりますか?
+**A**: クレジットを使い切ると、VM がベースライン パフォーマンスに戻ります。
+
+### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>Q: VM のベースライン パフォーマンスが 135% というのは、どういうことでしょうか?
 
 **A**: 135% というのは、その VM サイズを構成する 8 つの vCPU により共有される数字です。 たとえば、アプリケーションで 8 個あるコアのうち 4 個を使用してバッチ処理を実行しており、その 4 つの vCPU の使用率がそれぞれ 30% であれば、VM の CPU パフォーマンスの合計は 120% になります。  つまり、ベースライン パフォーマンスとの差分となる 15% が、VM によりクレジット時間として蓄積されていくことになります。  逆に、(VM の CPU パフォーマンスの最大値は 800% であるわけですから) クレジットの残高があれば、同じ VM で 8 つの vCPU すべてについて 100% のパフォーマンスを使用することもできます。
 
@@ -103,11 +106,11 @@ B16 の特徴:
 
 Azure でメトリック データにアクセスする方法の詳細については、「[Microsoft Azure のメトリックの概要](../azure-monitor/platform/data-platform.md)」を参照してください。
 
-### <a name="q-how-are-credits-accumulated"></a>Q:クレジットはどのように蓄積されていくのでしょうか?
+### <a name="q-how-are-credits-accumulated-and-consumed"></a>Q:クレジットはどのように蓄積され、消費されますか?
 
 **A**: VM によるクレジットの蓄積と消費のスピードは、VM がベース パフォーマンス レベルで実行されている場合にクレジットの蓄積量と消費量がいずれもゼロになるように設定されています。  VM の実行中にベース パフォーマンス レベルを下回っていればクレジットが増加し、ベース パフォーマンス レベルよりも多く CPU を使用していればクレジットが減少します。
 
-**例**:小規模な勤怠データベース アプリケーション用に B1ms サイズの VM をデプロイしました。 このサイズでは、アプリケーションでベースラインとして vCPU の最大 20% を使用できます。この場合、1 分あたりに利用または蓄積できるクレジットは 0.2 となります。
+**例**: 小規模な勤怠データベース アプリケーション用に B1ms サイズの VM をデプロイしました。 このサイズでは、アプリケーションでベースラインとして vCPU の最大 20% を使用できます。この場合、1 分あたりに利用または蓄積できるクレジットは 0.2 となります。
 
 このアプリケーションは、従業員の勤務日の始めと終わり、具体的には AM 7:00 ～ 9:00 と PM 4:00 ～ 6:00 の間にそれぞれ負荷が大きくなります。 それ以外の 20 時間はこのアプリケーションをほとんど使用しないため、vCPU の使用量はわずか 10% にまで下がります。 このピーク外の時間には、利用できるクレジットが 1 分あたり 0.2 でありながら 0.1 しか消費しません。このため、1 時間に 0.1 x 60 = 6 クレジットが蓄積されます。  つまり、ピーク外の 20 時間に合計 120 クレジットが蓄積されることになります。  
 
@@ -123,11 +126,11 @@ Azure でメトリック データにアクセスする方法の詳細につい�
 
 たとえば、上記のインスタンスの場合、ベースラインは 20%です。CPU 使用率が 10% であれば、1 分あたりに蓄積されるクレジットは、(20%-10%)/100 = 0.1 になります。
 
-### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Q:B シリーズでは、Premium Storage データ ディスクをサポートしていますか?
+### <a name="q-does-the-b-series-support-premium-storage-data-disks"></a>Q: B シリーズでは、Premium Storage データ ディスクをサポートしていますか?
 
 **A**: はい。B シリーズのどのサイズでも、Premium Storage データ ディスクをサポートしています。
 
-### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>Q:再デプロイまたは停止/起動後、クレジットの残りが 0 に設定されるのはなぜですか?
+### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>Q: 再デプロイまたは停止/起動後、クレジットの残りが 0 に設定されるのはなぜですか?
 
 **A**: VM が "再デプロイ" されて VM が別のノードに移動すると、累計されたクレジットは失われます。 VM を起動/停止したが、同じノードにとどまっていれば、VM は 累積されたクレジットを保持します。 ノードで VM を新たに起動するたびに初期クレジットが取得されます (Standard_B8ms では 240 分)。
 
@@ -135,7 +138,7 @@ Azure でメトリック データにアクセスする方法の詳細につい�
 
 **A**: B1ls は Linux イメージのみをサポートしているため、他の OS イメージをデプロイすると最善のカスタマー エクスペリエンスが得られない可能性があります。
 
-## <a name="other-sizes"></a>その他のサイズ
+## <a name="other-sizes-and-information"></a>その他のサイズと情報
 
 - [汎用](sizes-general.md)
 - [コンピューティングの最適化](sizes-compute.md)
@@ -143,6 +146,10 @@ Azure でメトリック データにアクセスする方法の詳細につい�
 - [ストレージの最適化](sizes-storage.md)
 - [GPU の最適化](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
+
+料金計算ツール: [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+
+ディスクの種類の詳細情報: [ディスクの種類](./linux/disks-types.md#ultra-disk)
 
 ## <a name="next-steps"></a>次のステップ
 

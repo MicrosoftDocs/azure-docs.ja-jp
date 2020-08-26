@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 05/21/2020
 ms.author: juliako
-ms.openlocfilehash: 33c762e2f2a9bed90991f7b85e0fb83fbb43765c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a039e1d4442490d3747a302754d521f1f3402bcf
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090163"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035806"
 ---
 # <a name="get-credentials-to-access-media-services-api"></a>Media Services API にアクセスするための資格情報を取得する  
 
@@ -45,7 +45,7 @@ Azure AD 認証を使用して Azure Media Services API にアクセスする場
 **[API アクセス]** ページでは、API への接続に使用する認証方法を選択できます。 このページには、API に接続するために必要な値も表示されます。
 
 1. [Azure ポータル](https://portal.azure.com/) で Media Services アカウントを選択します。
-2. Media Services API に接続する方法を選択します。
+2. 左側のナビゲーション バーで **[API access (new)]\(API アクセス (新規)\)** ブレードを選択します。
 3. **[Media Services API に接続する]** で、接続する Media Services API のバージョンを選択します (V3 がサービスの最新バージョンです)。
 
 ### <a name="service-principal-authentication--recommended"></a>サービス プリンシパル認証 (推奨)

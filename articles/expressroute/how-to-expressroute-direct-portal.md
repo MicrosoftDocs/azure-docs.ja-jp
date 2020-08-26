@@ -5,19 +5,26 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 06/12/2020
+ms.date: 08/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: f22f81d69d746764af43d9167874aabedbd56f51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 475b2aa99296995c3adb51eca2d6bdb53616670e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84765325"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903597"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Azure portal を使用して ExpressRoute Direct を作成する
 
 この記事では、Azure portal を使用して ExpressRoute Direct を作成する方法を示します。
 ExpressRoute Direct を使用すると、世界中に戦略的に分散されたピアリングの場所で、Microsoft のグローバル ネットワークに直接接続できます。 詳細については、[ExpressRoute Direct](expressroute-erdirect-about.md) に関するページを参照してください。
+
+## <a name="before-you-begin"></a><a name="before"></a>開始する前に
+
+**Microsoft.Network** リソース プロバイダーがサブスクリプションに登録されていることを確認します。 リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーと連携するように構成されます。
+
+1. 「[Azure リソース プロバイダーと種類](../azure-resource-manager/management/resource-providers-and-types.md)」の説明に従って、サブスクリプションの設定にアクセスします。
+1. サブスクリプションで、**リソース プロバイダー**に関して、**Microsoft.Network** プロバイダーに**登録**状態が表示されていることを確認します。 登録されているプロバイダーの一覧に、Microsoft.Network リソース プロバイダーが存在しない場合は、それを追加します。
 
 ## <a name="1-create-expressroute-direct"></a><a name="create-erdir"></a>1.ExpressRoute Direct を作成する
 

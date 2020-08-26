@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/15/2020
+ms.date: 08/03/2020
 ms.topic: include
 ms.service: virtual-machines-linux
-manager: gwallace
-ms.openlocfilehash: 0a4dcf749a76623df7f46d77bf3e4877f2c41900
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+manager: daberry
+ms.openlocfilehash: 6024dd595166afe24a75720d8c7593afd451b610
+ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83821498"
+ms.lasthandoff: 08/04/2020
+ms.locfileid: "87554903"
 ---
 組織で標準化された仮想マシン (VM) イメージを使用すると、クラウドに移行し、デプロイの一貫性を保つことができます。 通常、イメージには、事前に定義されたセキュリティと構成設定と、必要なソフトウェアが含まれています。 独自のイメージング パイプラインを設定するには、時間、インフラストラクチャ、設定が必要ですが、Azure VM Image Builder を使用すると、イメージを説明する単純な構成を用意し、それをサービスに送信するだけで、イメージが構築され、配布されます。
  
@@ -56,6 +56,7 @@ AIB は Azure Marketplace のベース OS イメージをサポートします�
 - Windows 2019
 
 RHEL ISO は現在サポートされていません。
+
 ## <a name="how-it-works"></a>しくみ
 
 
@@ -97,6 +98,9 @@ Azure Image Builder を使用してイメージの作成、構築、保存を行
 Image Builder では、VM に必要な D1v2 VM サイズ、ストレージ、ネットワークを使用して VM を作成します。 これらのリソースは、構築プロセスの間は存続し、Image Builder のイメージ作成が終了すると削除されます。 
  
 Azure Image Builder によって、選択したリージョンにイメージが配布されます。これにより、ネットワークのエグレス料金が発生する可能性があります。
+
+## <a name="hyper-v-generation"></a>Hyper-V の世代
+Image Builder では現在、Hyper-V の第 1 世代のイメージと VM がサポートされています。
  
 ## <a name="next-steps"></a>次のステップ 
  

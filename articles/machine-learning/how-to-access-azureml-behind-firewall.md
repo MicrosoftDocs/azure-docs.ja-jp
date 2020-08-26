@@ -10,19 +10,19 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 07/17/2020
-ms.custom: how-to, tracking-python
-ms.openlocfilehash: 63e2ba93ecdc1131be6bd291fe436b42a2a2d19c
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.custom: how-to, devx-track-python
+ms.openlocfilehash: 990a2d5279c796f354055328e6968ea705ea10b2
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407032"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87873638"
 ---
-# <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Azure Firewall の内側で Azure Machine Learning のワークスペースを使用する
+# <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>ファイアウォールの内側で Azure Machine Learning のワークスペースを使用する
 
-この記事では、Azure Machine Learning ワークスペースで使用するために Azure Firewall を構成する方法について説明します。
+この記事では、Azure Firewall を構成して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御する方法について説明します。   Azure Machine Learning のセキュリティ保護の詳細については、「[Azure Machine Learning のエンタープライズ セキュリティ](concept-enterprise-security.md)」を参照してください
 
-Azure Firewall を使用して、Azure Machine Learning ワークスペースとパブリック インターネットへのアクセスを制御できます。 正しく構成しないと、ワークスペースを使用したときにファイアウォールが原因で問題が発生する可能性があります。 この記事で説明されているように、いずれも Azure Machine Learning ワークスペースで使用されるさまざまなホスト名があります。
+このドキュメントの情報は [Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md) を使用した場合に基づいていますが、他のファイアウォール製品でも使用できます。 ファイアウォール経由の通信を許可する方法について不明な点がある場合は、使用しているファイアウォールのドキュメントを参照してください。
 
 ## <a name="network-rules"></a>ネットワーク ルール
 
@@ -31,9 +31,11 @@ Azure Firewall を使用して、Azure Machine Learning ワークスペースと
 > [!TIP]
 > ネットワーク ルールを追加するときは、__プロトコル__を任意に設定し、ポートを `*` に設定します。
 >
-> Azure Firewall の構成について詳しくは、[Azure Firewall のデプロイと構成](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)に関する記事をご覧ください。
+> Azure Firewall の構成について詳しくは、[Azure Firewall のデプロイと構成](../firewall/tutorial-firewall-deploy-portal.md#configure-an-application-rule)に関する記事をご覧ください。
 
 ## <a name="microsoft-hosts"></a>Microsoft のホスト
+
+正しく構成しないと、ワークスペースを使用したときにファイアウォールが原因で問題が発生する可能性があります。 いずれも Azure Machine Learning ワークスペースで使用されるさまざまなホスト名があります。
 
 このセクションのホストは Microsoft によって所有されており、ホストではワークスペースが適切に機能するために必要なサービスが提供されます。
 
@@ -53,6 +55,8 @@ Azure Firewall を使用して、Azure Machine Learning ワークスペースと
 | **vault.azure.net** | Azure Key Vault |
 | **azurecr.io** | Azure Container Registry |
 | **mcr.microsoft.com** | 基本 Docker イメージ用の Microsoft Container Registry |
+| **your-acr-server-name.azurecr.io** | Azure Container Registry が仮想ネットワークの背後にある場合にのみ必要です。 この構成では、Microsoft 環境からサブスクリプションの ACR インスタンスへのプライベート リンクが作成されます。 Azure Machine Learning ワークスペースの ACR サーバー名を使用します。 |
+| **\*.notebooks.azure.net** | Azure Machine Learning studio のノートブックで必要です。 |
 
 ## <a name="python-hosts"></a>Python のホスト
 
@@ -75,7 +79,7 @@ Azure Firewall を使用して、Azure Machine Learning ワークスペースと
 | ---- | ---- |
 | **cloud.r-project.org** | CRAN パッケージをインストールするときに使用されます。 |
 
-次のステップ
+## <a name="next-steps"></a>次のステップ
 
-* [Azure Firewall をデプロイして構成する](../firewall/tutorial-firewall-deploy-portal.md)
+* [チュートリアル:Azure portal を使用して Azure Firewall をデプロイして構成する](../firewall/tutorial-firewall-deploy-portal.md)
 * [Azure Virtual Network 内で Azure ML の実験と推論のジョブを安全に実行する](how-to-enable-virtual-network.md)

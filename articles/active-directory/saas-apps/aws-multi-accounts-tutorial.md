@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Amazon Web Services (AWS) を統合して複数のアカウントを接続する | Microsoft Docs
 description: Azure AD と アマゾン ウェブ サービス (AWS) の間でシングル サインオンを構成する方法について説明します (従来のチュートリアル)。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
-ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51be98654950ba290fa83f77eccdae4d6f549891
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 20674f5a793267c3a9e2fa078f95cbf96624df13
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603822"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws-legacy-tutorial"></a>チュートリアル:Azure Active Directory と アマゾン ウェブ サービス (AWS) の統合 (従来のチュートリアル)
 
@@ -86,7 +82,7 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
     ![結果の一覧の Amazon Web Services (AWS)](./media/aws-multi-accounts-tutorial/tutorial-amazonwebservices-properties.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso"></a>Azure AD SSO の構成とテスト
 
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Amazon Web Services (AWS) で Azure AD のシングル サインオンを構成し、テストします。
 
@@ -277,7 +273,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![Microsoft Graph Explorer のダイアログ ボックス](./media/aws-multi-accounts-tutorial/graph-explorer-new1.png)
 
-    f. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl キーを押しながら F キーを押して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 Azure AD プロパティ ページからコピーした **オブジェクト ID** を使用して、次のクエリを使用し、対応するサービス プリンシパルを取得することができます。
+    f. 取得したサービス プリンシパルの一覧から、変更する必要があるものを取得します。 Ctrl キーを押しながら F キーを押して、一覧に示されたすべての ServicePrincipals からアプリケーションを検索することもできます。 Azure AD プロパティ ページからコピーした**サービス プリンシパル オブジェクト ID** を使用して、次のクエリを使用し、対応するサービス プリンシパルを取得することができます。
 
     `https://graph.microsoft.com/beta/servicePrincipals/<objectID>`
 

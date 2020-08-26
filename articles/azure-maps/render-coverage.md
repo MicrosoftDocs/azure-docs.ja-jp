@@ -1,6 +1,6 @@
 ---
 title: レンダリング範囲 | Microsoft Azure Maps
-description: この記事では、Microsoft Azure Maps のレンダリング範囲となるリージョンと、レンダリングの詳細レベルについて説明します。
+description: Azure Maps によってさまざまなリージョンが詳細データで表示されるか、簡易データで表示されるかについて説明します。 それらのリージョンでラスタータイルとベクタータイルのマップに使用されるレベルについて説明します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 03/22/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 47dd619b4853e7167ae1b141c5741511075325c2
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 69b122196cbeb7508cddf3a890768f83fdcd4727
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87127912"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030930"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps のレンダリング範囲
 
@@ -32,7 +32,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 ## <a name="africa"></a>アフリカ 
 
 
-| 国/リージョン | ラスター タイルの統合 | ベクター タイルの統合 |
+| 国/地域 | ラスター タイルの統合 | ベクター タイルの統合 |
 | ------ | :------------------: | :------------------: |
 | アルジェリア                          | ✓ | ✓ |
 | アンゴラ                           | ✓ | ✓ |
@@ -154,17 +154,17 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 
 ## <a name="asia"></a>アジア 
 
-| 国/リージョン | ラスター タイルの統合 | ベクター タイルの統合 |
+| 国/地域 | ラスター タイルの統合 | ベクター タイルの統合 |
 | ------ | :------------------: | :------------------: |
 | アフガニスタン               |   | Ø |
 | バーレーン                   | ✓ | ✓ |
 | バングラデシュ                |   | Ø |
 | ブータン                    |   | Ø |
-| イギリス領インド洋地域 |   | Ø |
+| 英領インド洋地域 |   | Ø |
 | ブルネイ                    | ✓ | ✓ |
 | カンボジア                  |   | Ø |
 | 中国                     |   | Ø |
-| ココス諸島   |   | Ø |
+| ココス(キーリング)諸島   |   | Ø |
 | 韓国 |   | Ø |
 | 香港特別行政区             | ✓ | ✓ |
 | インド                     | Ø | ✓ | 
@@ -208,7 +208,7 @@ Azure Maps は、ラスター タイルとベクター タイルの両方を使�
 
 ## <a name="oceania"></a>オセアニア
 
-| 国/リージョン | ラスター タイルの統合 | ベクター タイルの統合 |
+| 国/地域 | ラスター タイルの統合 | ベクター タイルの統合 |
 | ------ | :------------------: | :------------------: |
 | アメリカ領サモア            |   | ✓ |
 | オーストラリア                 | ✓ | ✓ |

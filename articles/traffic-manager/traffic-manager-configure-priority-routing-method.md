@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: rohink
 ms.openlocfilehash: 2c541f8318bd7e75de7526e6b7a9e3a32462782d
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 08/22/2020
 ms.locfileid: "84706751"
 ---
 # <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>チュートリアル:Traffic Manager での優先順位によるトラフィック ルーティング方法の構成

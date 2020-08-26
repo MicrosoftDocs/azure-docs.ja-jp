@@ -83,6 +83,8 @@
           href: devtest-lab-internal-support-message.md
         - name: ポリシーとスケジュールの設定
           href: devtest-lab-set-lab-policy.md
+        - name: "ラボ ID の構成\_"
+          href: configure-lab-identity.md
         - name: リモート デスクトップ ゲートウェイを使用するためにラボを構成する
           href: configure-lab-remote-desktop-gateway.md
         - name: ラボでのお知らせの投稿
@@ -95,8 +97,6 @@
           href: devtest-lab-auto-startup-vm.md
         - name: ラボのスケーリング
           href: devtest-lab-scale-lab.md
-        - name: ラボ VM のマネージド ID の有効化
-          href: enable-managed-identities-lab-vms.md
         - name: 仮想マシンのベースの管理
           items:
             - name: Azure Marketplace イメージの構成
@@ -167,6 +167,8 @@
           href: start-machines-use-automation-runbooks.md
         - name: 別のラボから仮想マシンをインポートする
           href: import-virtual-machines-from-another-lab.md
+        - name: ラボ VM のマネージド ID の有効化
+          href: enable-managed-identities-lab-vms.md
     - name: ラボでの環境の使用
       items:
         - name: 環境の作成

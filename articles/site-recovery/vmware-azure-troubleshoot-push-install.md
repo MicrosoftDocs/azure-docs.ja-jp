@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 04b4feb1219f6a51a1f0a7ac0d19fc3fd70029c6
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.openlocfilehash: db66137ac4b233a7e5d3040cf38dc69a089b0c9a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86133530"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185215"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Mobility Service のプッシュ インストールに関するトラブルシューティング
 
@@ -257,6 +257,10 @@ Site Recovery Mobility Service には多数のコンポーネントがありま�
 ## <a name="insufficient-space-errorid-95524"></a>空き領域不足 (ErrorID: 95524)
 
 ソース マシン上にモビリティ エージェントをコピーする場合は、少なくとも 100 MB の空き領域が必要です。 ソース マシンに必要な空き領域があることを確認してから、操作をやり直してください。
+
+## <a name="low-system-resources"></a>システム リソースが少ない
+
+この問題は、システムで使用できるメモリが少なく、モビリティ サービスのインストールでメモリを割り当てることができないときに発生します。 インストールが進行し、正常に完了できるよう、確実に十分なメモリが解放されているようにします。
 
 ## <a name="vss-installation-failures"></a>VSS インストール エラー
 

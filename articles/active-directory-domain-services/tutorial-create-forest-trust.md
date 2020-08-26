@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
-ms.openlocfilehash: a17764984e33e4312b9d81a5743d851dc14b5c05
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 24928ec4117b321cfec7177fdad40f2a3ab7a1f4
+ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87492158"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88722723"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>チュートリアル:Azure Active Directory Domain Services で、オンプレミスのドメインへの送信フォレストの信頼を作成する
 
@@ -128,7 +128,7 @@ Azure AD DS でフォレストの信頼を構成する前に、Azure とオン�
 
 Windows Server 仮想マシンをマネージド ドメインに参加させる必要があります。 この仮想マシンを使用して、オンプレミスのユーザーが仮想マシン上で認証されることをテストします。 必要に応じて、[Windows VM を作成し、マネージド ドメインに参加させます][join-windows-vm]。
 
-1. [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) と Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。
+1. [Azure Bastion](../bastion/bastion-overview.md) と Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。
 1. コマンド プロンプトを開き、`whoami` コマンドを使用して、現在認証されているユーザーの識別名を表示します。
 
     ```console
@@ -150,7 +150,7 @@ Azure AD DS リソース フォレストに参加している Windows Server VM 
 
 #### <a name="enable-file-and-printer-sharing"></a>ファイルとプリンターの共有を有効にする
 
-1. [Azure Bastion](https://docs.microsoft.com/azure/bastion/bastion-overview) と Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。
+1. [Azure Bastion](../bastion/bastion-overview.md) と Azure AD DS 管理者の資格情報を使用して、Azure AD DS リソース フォレストに参加している Windows Server VM に接続します。
 
 1. **[Windows の設定]** を開き、 **[ネットワークと共有センター]** を検索して選択します。
 1. **[共有の詳細設定の変更]** のオプションを選択します。

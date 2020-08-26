@@ -1,14 +1,14 @@
 ---
 title: Azure DevTest Labs でラボにアーティファクト リポジトリを追加する | Microsoft Docs
-description: Azure DevTest Labs でラボにアーティファクト リポジトリを追加する方法について説明します。
+description: Azure DevTest Labs で、パブリックの成果物リポジトリにはないツールを、自分のラボに自分専用の成果物リポジトリを指定して格納する方法について説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: d823f437cddef0a33c7d7ea3b4c4fbdaad90fb8e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 7553f6b1afa416a5428577a8313bdadb669e32c2
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87013459"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270990"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>DevTest Labs でラボにアーティファクト リポジトリを追加する
 DevTest Labs では、VM の作成時または VM が作成された後に VM に追加されるアーティファクトを指定できます。 このアーティファクトには、VM にインストールするツールやアプリケーションがあります。 アーティファクトは、GitHub または Azure DevOps リポジトリから読み込まれた JSON ファイルで定義されます。

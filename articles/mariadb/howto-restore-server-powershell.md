@@ -7,12 +7,13 @@ ms.service: mariadb
 ms.devlang: azurepowershell
 ms.topic: how-to
 ms.date: 05/26/2020
-ms.openlocfilehash: 1fc4c0497095c2ab4e1210ab71bc5597713499b7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: a3870ae192955df11107f0ebb5c618b90a0cc799
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120468"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87833251"
 ---
 # <a name="how-to-back-up-and-restore-an-azure-database-for-mariadb-server-using-powershell"></a>PowerShell を使用して Azure Database for MariaDB サーバーをバックアップおよび復元する方法
 
@@ -132,4 +133,4 @@ geo リストアを使用して新しいサーバーを作成すると、**Sku**
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [PowerShell を使用して Azure Database for MariaDB サーバー パラメーターをカスタマイズする](howto-configure-server-parameters-using-powershell.md)
+> [PowerShell を使用して Azure Database for MariaDB 接続文字列を生成する方法](howto-connection-string-powershell.md)

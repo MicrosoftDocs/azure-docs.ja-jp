@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
-ms.openlocfilehash: e1076c7bb480a52c9436e336a49169953d0d8285
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: acb74d806f1ad361d3772438eec7fb788a843b02
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135772"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243719"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>システム割り当てマネージド ID を使用して Azure Cosmos DB データにアクセスする
 
@@ -75,9 +75,10 @@ ms.locfileid: "88135772"
 
 ### <a name="assign-the-role-using-azure-cli"></a>Azure CLI を使用してロールを割り当てる
 
-Azure CLI を使用してロールを割り当てるには、次のコマンドを使用します。
+Azure CLI を使用してロールを割り当てるには、Azure Cloud Shell を開き、次のコマンドを実行します。
 
 ```azurecli-interactive
+
 scope=$(az cosmosdb show --name '<Your_Azure_Cosmos_account_name>' --resource-group '<CosmosDB_Resource_Group>' --query id)
 
 principalId=$(az webapp identity show -n '<Your_Azure_Function_name>' -g '<Azure_Function_Resource_Group>' --query principalId)

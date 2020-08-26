@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合 | Microsoft Docs
 description: Azure Active Directory と Amazon Web Services (AWS) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7561c20b-2325-4d97-887f-693aa383c7be
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/14/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79e23f516fe31b4a21232f75286540e6c0d9019d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 7377c6ea92ea53ca14525938e7522448afac541c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87922994"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548356"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) とアマゾン ウェブ サービス (AWS) の統合
 
@@ -385,8 +381,6 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 * AWS から Azure AD へのインポート対象となるロールは、次の要件を満たす必要があります。
 
   * ロールには、AWS で SAML プロバイダーが 1 つだけ定義されている必要があります。
-
-  * ロールの ARN とインポートされるロールの SAML プロバイダーの ARN とを組み合わせた長さが 119 文字以下であることが必要です。
 
 ## <a name="additional-resources"></a>その他のリソース
 

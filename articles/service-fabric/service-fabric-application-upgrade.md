@@ -2,16 +2,31 @@
 title: Service Fabric アプリケーションのアップグレード
 description: この記事では、アップグレード モードの選択や正常性チェックの実行など、Service Fabric アプリケーションのアップグレードの概要を紹介します。
 ms.topic: conceptual
-ms.date: 2/23/2018
-ms.openlocfilehash: 9e7a93dd3ef8a1adf6617dcd57887a0ce694c509
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 8/5/2020
+ms.openlocfilehash: cb0c1c0049957244b94b59707b70e47dc53f6c9f
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248001"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067513"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric アプリケーションのアップグレード
 Service Fabric アプリケーションは、サービスのコレクションです。 アップグレードの際、Service Fabric は新しい [アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md) を以前のバージョンと比較し、アプリケーション内でアップグレードの必要があるサービスを決定します。 Service Fabric は、サービス マニフェスト内のバージョン番号を、以前のバージョンのバージョン番号と比較します。 サービスが変更されていない場合は、そのサービスはアップグレードされません。
+
+> [!NOTE]
+> [ApplicationParameter](https://docs.microsoft.com/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters) は、アプリケーションをアップグレードすると保持されなくなります。 現在のアプリケーション パラメーターを保持するには、まずパラメーターを取得して、次のようにアップグレード API 呼び出しに渡します。
+```powershell
+$myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
+$appParamCollection = $myApplication.ApplicationParameters
+
+$applicationParameterMap = @{}
+foreach ($pair in $appParamCollection)
+{
+    $applicationParameterMap.Add($pair.Name, $pair.Value);
+}
+
+Start-ServiceFabricApplicationUpgrade -ApplicationName fabric:/myApplication -ApplicationTypeVersion 2.0.0 -ApplicationParameter $applicationParameterMap -Monitored -FailureAction Rollback
+```
 
 ## <a name="rolling-upgrades-overview"></a>ローリング アップグレードの概要
 アプリケーションのローリング アップグレードでは、アップグレードは段階的に実行されます。 各段階で、アップグレードは、更新ドメインと呼ばれる、クラスター内のノードのサブセットに適用されます。 その結果、アプリケーションはアップグレード全体を通して引き続き使用できます。 アップグレード中に、クラスターに古いバージョンと新しいバージョンが混在することがあります。

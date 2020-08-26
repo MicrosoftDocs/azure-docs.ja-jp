@@ -1,6 +1,6 @@
 ---
 title: Azure CDN SDK for Node.js の概要 | Microsoft Docs
-description: Azure CDN を管理するための Node.js アプリケーションを記述する方法について説明します。
+description: Azure CDN のプロファイルとエンドポイントの作成と管理を自動化する方法を示すシンプルな Node.js コンソール アプリケーションを作成する方法について説明します。
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 96dc7e8d9fb647779fc2188fe36fe9fbced2e53c
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: da695975b92ea6f81de103da5edf730811a193f8
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387491"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190697"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Azure CDN 開発の概要
 > [!div class="op_single_selector"]

@@ -41,6 +41,10 @@
           href: tutorial-alias-rr.md
 - name: 概念
   items:
+    - name: セキュリティ
+      items:
+        - name: セキュリティ ベースライン
+          href: security-baseline.md
     - name: パブリック DNS
       items:
         - name: ゾーンとレコード

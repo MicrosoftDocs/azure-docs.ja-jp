@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: how-to
 ms.date: 2/20/2020
 ms.author: allensu
-ms.openlocfilehash: fbf996a66bf76520002a22169903c7961080e38b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b06ae396ae15c8572cf8160ce576651f47001add
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87131533"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87920502"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS ゾーンとレコードを保護する方法
 
@@ -20,7 +20,7 @@ ms.locfileid: "87131533"
 
 DNS ゾーンと DNS レコードは、重要なリソースです。 DNS ゾーンまたは DNS レコードを削除すると、サービス全体が停止する可能性があります。 DNS ゾーンとレコードは、承認されていない変更や意図しない変更が加えられないように保護することが重要です。
 
-この記事では、Azure DNS でプライベート DNS ゾーンとレコードをこのような変更から保護する方法について説明します。  Azure Resource Manager によって提供される 2 つの強力なセキュリティ機能 ([ロールベースのアクセス制御](../role-based-access-control/overview.md)および[リソース ロック](../azure-resource-manager/management/lock-resources.md)) を適用します。
+この記事では、Azure DNS でプライベート DNS ゾーンとレコードをこのような変更から保護する方法について説明します。  Azure Resource Manager によって提供される 2 つの強力なセキュリティ機能である、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) と[リソース ロック](../azure-resource-manager/management/lock-resources.md)を適用します。
 
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 

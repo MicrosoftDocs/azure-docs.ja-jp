@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 458cda927a6a123fcd9962efc6ab705e13f43286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878784"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244297"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Docker Compose を使用して複数のコンテナーをデプロイする
 
@@ -29,7 +29,7 @@ ms.locfileid: "80878784"
 
 この手順には、ローカルでインストールして実行する必要があるいくつかのツールが必要です。
 
-* Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
+* Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/cognitive-services)を作成してください。
 * [Docker エンジン](https://www.docker.com/products/docker-engine)。 Docker CLI がコンソール ウィンドウで動作することを確認します。
 * 適切な価格レベルの Azure リソース。 このコンテナーでは次の価格レベルのみが有効です。
   * F0 または Standard 価格レベルのみの **Computer Vision** リソース。

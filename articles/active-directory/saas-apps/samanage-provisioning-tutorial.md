@@ -2,25 +2,21 @@
 title: チュートリアル:Samanage を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Samanage に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 62d0392f-37d4-436e-9aff-22f4e5b83623
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 76b40ad0fd7403479ee7cec81e19bbb22213512d
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 21a3c81d9a24cc63d3fc77c95c94df1e9113d292
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925177"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88543450"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>チュートリアル:Samanage を構成し、自動ユーザー プロビジョニングに対応させる
 このチュートリアルでは、自動ユーザー プロビジョニングを構成するために Samanage と Azure Active Directory (Azure AD) の両方で行う必要がある手順について説明します。 構成すると、Azure AD では、Azure AD プロビジョニング サービスを使用して、[Samanage](https://www.samanage.com/pricing/) に対するユーザーとグループのプロビジョニングおよびプロビジョニング解除が自動的に行われます。 このサービスが実行する内容、しくみ、よく寄せられる質問の重要な詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。

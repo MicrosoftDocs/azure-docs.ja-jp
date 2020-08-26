@@ -1,14 +1,14 @@
 ---
 title: Windows のシステム状態を Azure にバックアップする
-description: Windows Server コンピューターまたは Windows コンピューターのシステム状態を Azure にバックアップする方法を紹介します。
+description: Windows Server コンピューターのシステム状態を Azure にバックアップする方法について説明します。
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.openlocfilehash: ea38b76d9a8b7b8ccc1898ed9450177da2cb2458
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: a56e500cc0330a6406b4465ab5baeafa39b544aa
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87003836"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263046"
 ---
 # <a name="back-up-windows-system-state-to-azure"></a>Windows のシステム状態を Azure にバックアップする
 
@@ -24,16 +24,16 @@ Azure サブスクリプションがない場合は、すべての Azure サー�
 
 Recovery Services コンテナーを作成する際は、必要に応じてストレージの冗長性が構成されるようにしてください。
 
-1. **[Recovery Services コンテナー]** ブレードで、新しいコンテナーをクリックします。
+1. **[Recovery Services コンテナー]** ウィンドウで、新しいコンテナーを選択します。
 
     ![Recovery Services コンテナーの一覧から新しいコンテナーを選択する](./media/backup-try-azure-backup-in-10-mins/rs-vault-list.png)
 
-    コンテナーを選択すると、 **[Recovery Services コンテナー]** ブレードが縮小され、"*上部にコンテナー名が表示された*" 設定ブレードとコンテナーの詳細ブレードが開きます。
+    コンテナーを選択すると、 **[Recovery Services コンテナー]** ウィンドウが縮小され、設定ウィンドウ ("*上部にコンテナー名が表示されています*") とコンテナーの詳細ウィンドウが開きます。
 
     ![新しいコンテナーのストレージ構成を表示する](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration-2.png)
-2. 新しいコンテナーの設定ブレードで、垂直スライドを使って下へスクロールして [管理] セクションに移動し、 **[バックアップ インフラストラクチャ]** をクリックします。
-    [バックアップ インフラストラクチャ] ブレードが開きます。
-3. [バックアップ インフラストラクチャ] ブレードで、 **[バックアップ構成]** をクリックして **[バックアップ構成]** ブレードを開きます。
+2. 新しいコンテナーの設定ウィンドウで、垂直スライドを使って下へスクロールして [管理] セクションに移動し、 **[バックアップ インフラストラクチャ]** を選択します。
+    [バックアップ インフラストラクチャ] ペインが開きます。
+3. [バックアップ インフラストラクチャ] ウィンドウで、 **[バックアップ構成]** を選択して **[バックアップ構成]** ウィンドウを開きます。
 
     ![新しいコンテナーのストレージ構成を設定する](./media/backup-try-azure-backup-in-10-mins/set-storage-configuration.png)
 4. コンテナーの適切なストレージ レプリケーション オプションを選択します。
@@ -46,47 +46,47 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 ## <a name="configure-the-vault"></a>コンテナーの構成
 
-1. Recovery Services コンテナー (先ほど作成したコンテナー) のブレードの [作業の開始] セクションで **[バックアップ]** をクリックし、 **[バックアップ作業の開始]** ブレードで、 **[バックアップの目標]** を選択します。
+1. Recovery Services コンテナー (先ほど作成したコンテナー) のウィンドウの [作業の開始] セクションで **[バックアップ]** を選択し、 **[バックアップ作業の開始]** ウィンドウで、 **[バックアップの目標]** を選択します。
 
-    ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
+    ![バックアップ設定を開く](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
 
-    **[バックアップの目標]** ブレードが開きます。
+    **[バックアップの目標]** ウィンドウが開きます。
 
-    ![Open backup goal blade](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
+    ![バックアップの目標ウィンドウを開く](./media/backup-try-azure-backup-in-10-mins/backup-goal-blade.png)
 
 2. **[ワークロードはどこで実行されていますか?]** ボックスの一覧の **[オンプレミス]** を選択します。
 
     Windows Server または Windows コンピューターが Azure にない物理マシンであるため、 **[オンプレミス]** を選択します。
 
-3. **[何をバックアップしますか?]** メニューの **[システム状態]** を選択し、 **[OK]** をクリックします。
+3. **[何をバックアップしますか?]** メニューの **[システム状態]** を選択し、 **[OK]** を選択します。
 
     ![ファイルとフォルダーの構成](./media/backup-azure-system-state/backup-goal-system-state.png)
 
-    [OK] をクリックすると、 **[バックアップの目標]** の横にチェックマークが表示され、 **[インフラストラクチャの準備]** ブレードが開きます。
+    [OK] をクリックすると、 **[バックアップの目標]** の横にチェックマークが表示され、 **[インフラストラクチャの準備]** ウィンドウが開きます。
 
     ![バックアップの目標の構成完了、次はインフラストラクチャの準備](./media/backup-try-azure-backup-in-10-mins/backup-goal-configed.png)
 
-4. **[インフラストラクチャの準備]** ブレードで、 **[Windows Server または Windows クライアント用エージェントのダウンロード]** をクリックします。
+4. **[インフラストラクチャの準備]** ウィンドウで、 **[Windows Server または Windows クライアント用エージェントのダウンロード]** を選択します。
 
-    ![[Download Agent for Windows Server or Windows Client]](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
+    ![インフラストラクチャの準備](./media/backup-try-azure-backup-in-10-mins/choose-agent-for-server-client.png)
 
     Windows Server Essentials を使用している場合は、Windows Server Essentials 用エージェントのダウンロードを選択します。 MARSAgentInstaller.exe を実行するか、保存するかをたずねるポップアップ メニューが表示されます。
 
     ![MARSAgentInstaller ダイアログ](./media/backup-try-azure-backup-in-10-mins/mars-installer-run-save.png)
 
-5. ダウンロードのポップアップ メニューで、 **[保存]** をクリックします。
+5. ダウンロードのポップアップ メニューで、 **[保存]** を選択します。
 
     既定では、 **MARSagentinstaller.exe** ファイルがダウンロード フォルダーに保存されます。 インストーラーのダウンロードが完了すると、インストーラーを実行するかフォルダーを開くかをたずねるポップアップが表示されます。
 
-    ![[Download Agent for Windows Server or Windows Client]](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
+    ![MARS インストーラーのダウンロードが完了](./media/backup-try-azure-backup-in-10-mins/mars-installer-complete.png)
 
     まだ、エージェントをインストールする必要はありません。 エージェントはコンテナー資格情報をダウンロードした後にインストールできます。
 
-6. **[インフラストラクチャの準備]** ブレードで、 **[ダウンロード]** をクリックします。
+6. **[インフラストラクチャの準備]** ウィンドウで、 **[ダウンロード]** を選択します。
 
     ![コンテナー資格情報のダウンロード](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    コンテナー資格情報は、ダウンロード フォルダーにダウンロードされます。 コンテナー資格情報のダウンロードが完了すると、資格情報を開くか保存するかをたずねるポップアップが表示されます。 **[保存]** をクリックします。 誤って **[開く]** をクリックすると、コンテナー資格情報を開こうとして失敗します。 コンテナー資格情報を開くことはできません。 次の手順に進みます。 コンテナー資格情報はダウンロード フォルダーにあります。
+    コンテナー資格情報は、**ダウンロード** フォルダーにダウンロードされます。 コンテナー資格情報のダウンロードが完了すると、資格情報を開くか保存するかをたずねるポップアップが表示されます。 **[保存]** を選択します。 誤って **[開く]** を選択すると、コンテナー資格情報を開こうとして失敗します。 コンテナー資格情報を開くことはできません。 次の手順に進みます。 コンテナー資格情報は**ダウンロード** フォルダーにあります。
 
     ![コンテナー資格情報のダウンロード完了](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
@@ -142,39 +142,39 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     ![Launch the Azure Recovery Services agent](./media/backup-try-azure-backup-in-10-mins/snap-in-search.png)
 
-2. Recovery Services エージェントで、 **[バックアップのスケジュール]** をクリックします。
+2. Recovery Services エージェントで、 **[バックアップのスケジュール]** を選択します。
 
     ![Schedule a Windows Server backup](./media/backup-try-azure-backup-in-10-mins/schedule-first-backup.png)
 
-3. バックアップのスケジュール ウィザードの [作業の開始] ページで、 **[次へ]** をクリックします。
+3. バックアップのスケジュール ウィザードの **[作業の開始]** ページで、 **[次へ]** を選択します。
 
-4. [バックアップする項目の選択] 画面で、 **[項目の追加]** をクリックします。
+4. **[バックアップする項目の選択]** ページで、 **[項目の追加]** を選択します。
 
-5. **[システム状態]** を選択し、 **[OK]** をクリックします。
+5. **[システム状態]** を選択し、 **[OK]** を選択します。
 
-6. **[次へ]** をクリックします。
+6. **[次へ]** を選択します。
 
 7. 後続のページで、必要なバックアップの頻度およびシステム状態のバックアップの保持ポリシーを選択します。
 
-8. [確認] ページで情報を確認し、 **[完了]** をクリックします。
+8. [確認] ページで情報を確認し、 **[完了]** を選択します。
 
-9. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]** をクリックします。
+9. ウィザードでバックアップ スケジュールの作成が完了したら、 **[閉じる]** を選択します。
 
 ### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>初めて Windows Server のシステム状態をバックアップするには
 
 1. Windows Server に、再起動を伴う保留中の更新が存在しないことを確認します。
 
-2. Recovery Services エージェントで **[今すぐバックアップ]** をクリックして、ネットワーク経由での最初のシード処理を完了します。
+2. Recovery Services エージェントで **[今すぐバックアップ]** を選択して、ネットワーク経由での最初のシード処理を完了します。
 
     ![Windows Server を今すぐバックアップする](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. 表示される **[Select Backup Item]\(バックアップ項目の選択)** 画面で **[システム状態]** を選択し、 **[次へ]** をクリックします。
+3. 表示される **[Select Backup Item]\(バックアップ項目の選択)** 画面で **[システム状態]** を選択し、 **[次へ]** を選択します。
 
-4. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]** をクリックします。
+4. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。 次に、 **[バックアップ]** を選択します。
 
-5. **[閉じる]** をクリックしてウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
+5. **[閉じる]** を選択してウィザードを閉じます。 バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
     > [!NOTE]
-    > MARS エージェントは、各システム状態のバックアップの前に、事前チェックの一部として SFC /verifyonly をトリガーします。 これは、システム状態の一部としてバックアップされるファイルが、Windows のバージョンに対応する正しいバージョンを持つことを確認するためのものです。 システム ファイル チェッカー (SFC) の詳細については [こちらの記事](/windows-server/administration/windows-commands/sfc)を参照してください。
+    > MARS エージェントは、各システム状態のバックアップの前に、事前チェックの一部として `SFC /verifyonly` をトリガーします。 これは、システム状態の一部としてバックアップされるファイルが、Windows のバージョンに対応する正しいバージョンを持つことを確認するためのものです。 システム ファイル チェッカー (SFC) の詳細については [こちらの記事](/windows-server/administration/windows-commands/sfc)を参照してください。
     >
 
 初回バックアップが完了すると、 **[ジョブは完了しました]** 状態が Backup コンソールに表示されます。
@@ -183,7 +183,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
 ## <a name="questions"></a>疑問がある場合
 
-ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](https://feedback.azure.com/forums/258995-azure-backup)。
+ご質問がある場合は、[フィードバックをお送り](https://feedback.azure.com/forums/258995-azure-backup)ください。
 
 ## <a name="next-steps"></a>次のステップ
 

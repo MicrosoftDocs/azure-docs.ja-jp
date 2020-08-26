@@ -7,13 +7,13 @@ author: dereklegenzoff
 ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 05/05/2020
-ms.openlocfilehash: ef1f0c607eb1d0152a5dd5f5acc812bb9364e47a
-ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
+ms.date: 08/21/2020
+ms.openlocfilehash: 5cafb7927bb3ec697446b37df8936da65748a9ba
+ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85079218"
+ms.lasthandoff: 08/22/2020
+ms.locfileid: "88749461"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>チュートリアル:プッシュ API を使用してインデックス作成を最適化する
 

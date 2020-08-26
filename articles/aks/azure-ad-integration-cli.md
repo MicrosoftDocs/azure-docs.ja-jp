@@ -6,12 +6,12 @@ author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: dfcbf214c374f449a04139ce7bf4fbb6853ed524
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: ab25ec5406c75316aaa1ee8efd0192dc0207ad79
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88006861"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612420"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Azure CLI を使用して Azure Active Directory と Azure Kubernetes Service を統合する (レガシ)
 
@@ -27,6 +27,7 @@ Azure Kubernetes Service (AKS) は、ユーザー認証に Azure Active Director
 ## <a name="the-following-limitations-apply"></a>次の制限事項が適用されます。
 
 - Azure AD は、RBAC が有効なクラスターでのみ有効にすることができます。
+- Azure AD のレガシ統合は、クラスター作成時にのみ有効にすることができます。
 
 ## <a name="before-you-begin"></a>開始する前に
 

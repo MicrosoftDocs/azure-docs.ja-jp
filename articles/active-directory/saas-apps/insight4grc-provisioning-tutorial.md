@@ -2,25 +2,21 @@
 title: チュートリアル:Insight4GRC を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Insight4GRC に対してユーザー アカウントを自動的にプロビジョニング、またはプロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: Zhchia
 writer: Zhchia
-manager: beatrizd
-ms.assetid: d0eab8a0-571b-4609-96b1-bdbc761a25de
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2020
 ms.author: Zhchia
-ms.openlocfilehash: b5d5676009e0545ce6245d81e843b53e6f41979a
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 86927a525fbfcb6a252d8e3d214733a0f1e83ed1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87925194"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550377"
 ---
 # <a name="tutorial-configure-insight4grc-for-automatic-user-provisioning"></a>チュートリアル:Insight4GRC を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -6,13 +6,13 @@ ms.author: sudbalas
 ms.date: 06/08/2020
 ms.service: key-vault
 ms.subservice: general
-ms.topic: tutorial
-ms.openlocfilehash: aaaeec3a20088cad447ab0e8034d12ef3268fae3
-ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
+ms.topic: how-to
+ms.openlocfilehash: 7645600a476a1c2294ddd4a24fe01e2ffe51d5ac
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/15/2020
-ms.locfileid: "84793231"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589984"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Azure Key Vault に対する認証
 

@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Dropbox Business の統合 | Microsoft Docs
 description: Azure Active Directory と Dropbox Business の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 63502412-758b-4b46-a580-0e8e130791a1
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67d684b85948a0d153d334a26f6860b4c13ed26c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87017807"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88555741"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>チュートリアル:Dropbox Business と Azure Active Directory の統合
 

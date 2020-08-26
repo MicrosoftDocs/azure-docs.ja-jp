@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: fff032d37fa0746695736e0dbdde73c6bcaade4b
-ms.sourcegitcommit: 74ba70139781ed854d3ad898a9c65ef70c0ba99b
+ms.openlocfilehash: a786baf70dfd9063c635fd27d43d198b3bd89bfb
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2020
-ms.locfileid: "85445680"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272129"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>チュートリアル:Remote Rendering を HoloLens Holographic アプリに統合する
 
@@ -99,11 +99,12 @@ if (context.As(&contextMultithread) == S_OK)
 #include <AzureRemoteRendering.h>
 ```
 
-また、この追加の `include` ディレクティブを HolographicAppMain.cpp ファイルに追加します。
+また、これらの追加の `include` ディレクティブを HolographicAppMain.cpp ファイルに追加します。
 
 ```cpp
 #include <AzureRemoteRendering.inl>
 #include <RemoteRenderingExtensions.h>
+#include <windows.perception.spatial.h>
 ```
 
 コードをわかりやすくするために、HolographicAppMain.h ファイルの冒頭 (`include` ディレクティブの後ろ) で次の名前空間ショートカットを定義します。
@@ -297,7 +298,7 @@ namespace HolographicApp
         bool m_modelLoadTriggered = false;
         float m_modelLoadingProgress = 0.f;
         bool m_modelLoadFinished = false;
-
+        bool m_needsCoordinateSystemUpdate = true;
     }
 ```
 
@@ -420,9 +421,13 @@ void HolographicAppMain::OnConnectionStatusChanged(RR::ConnectionStatus status, 
 
 ### <a name="per-frame-update"></a>フレームごとの更新
 
-シミュレーション ティックごとに 1 回クライアントをティックする必要があります。 クラス `HolographicApp1Main` には、フレームごとの更新に適したフックが用意されています。 さらに、セッションの状態をポーリングし、それが `Ready` 状態に遷移したかどうかを確認する必要があります。 正常に接続した場合は、最後に `StartModelLoading` を介してモデルの読み込みを開始します。
+シミュレーション ティックごとにクライアントを更新し、追加の状態の更新を実行する必要があります。 関数 `HolographicAppMain::Update` には、フレームごとの更新に適したフックが用意されています。
 
-関数 `HolographicApp1Main::Update` の本体に次のコードを追加します。
+#### <a name="state-machine-update"></a>ステート マシンの更新
+
+セッションの状態をポーリングし、それが `Ready` 状態に遷移したかどうかを確認する必要があります。 正常に接続した場合は、最後に `StartModelLoading` を介してモデルの読み込みを開始します。
+
+関数 `HolographicAppMain::Update` の本体に次のコードを追加します。
 
 ```cpp
 // Updates the application state once per frame.
@@ -485,9 +490,57 @@ HolographicFrame HolographicAppMain::Update()
         }
     }
 
+    if (m_needsCoordinateSystemUpdate && m_stationaryReferenceFrame && m_graphicsBinding)
+    {
+        // Set the coordinate system once. This must be called again whenever the coordinate system changes.
+        winrt::com_ptr<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem> ptr{ m_stationaryReferenceFrame.CoordinateSystem().as<ABI::Windows::Perception::Spatial::ISpatialCoordinateSystem>() };
+        m_graphicsBinding->UpdateUserCoordinateSystem(ptr.get());
+        m_needsCoordinateSystemUpdate = false;
+    }
+
     // Rest of the body:
     ...
 }
+```
+
+#### <a name="coordinate-system-update"></a>座標系の更新
+
+使用する座標系については、レンダリング サービスに同意する必要があります。 使用する座標系にアクセスするには、関数 `HolographicAppMain::OnHolographicDisplayIsAvailableChanged` の末尾で作成される `m_stationaryReferenceFrame` が必要です。
+
+通常、この座標系は変更されないため、これは 1 回限りの初期化となります。 アプリケーションによって座標系が変更された場合は、再度呼び出す必要があります。
+
+双方が参照座標系および接続済みセッションを取得するとすぐに、上記のコードにより `Update` 関数内で座標系が一度設定されます。
+
+#### <a name="camera-update"></a>カメラの更新
+
+サーバー カメラとローカル カメラの同期が維持されるように、カメラのクリップ面を更新する必要があります。 これは `Update` 関数の最末尾で行うことができます。
+
+```cpp
+    ...
+    if (m_isConnected)
+    {
+        // Any near/far plane values of your choosing.
+        constexpr float fNear = 0.1f;
+        constexpr float fFar = 10.0f;
+        for (HolographicCameraPose const& cameraPose : prediction.CameraPoses())
+        {
+            // Set near and far to the holographic camera as normal
+            cameraPose.HolographicCamera().SetNearPlaneDistance(fNear);
+            cameraPose.HolographicCamera().SetFarPlaneDistance(fFar);
+        }
+
+        // The API to inform the server always requires near < far. Depth buffer data will be converted locally to match what is set on the HolographicCamera.
+        auto settings = *m_api->CameraSettings();
+        settings->NearPlane(std::min(fNear, fFar));
+        settings->FarPlane(std::max(fNear, fFar));
+        settings->EnableDepth(true);
+    }
+
+    // The holographic frame will be used to get up-to-date view and projection matrices and
+    // to present the swap chain.
+    return holographicFrame;
+}
+
 ```
 
 ### <a name="rendering"></a>表示

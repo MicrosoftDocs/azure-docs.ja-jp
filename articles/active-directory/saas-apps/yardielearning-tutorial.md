@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Yardi eLearning の統合 | Microsoft Docs'
 description: Azure Active Directory と Yardi eLearning の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7ea58b54-ec5b-4576-8586-814b11d0f4fb
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2555c0040c1f2b587adb57e808ed122a4d4ce808
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: eb71bd8316c553582d87828cb0be7ee6cfa65d04
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67086711"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546274"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardi-elearning"></a>チュートリアル: Azure Active Directory と Yardi eLearning の統合
 

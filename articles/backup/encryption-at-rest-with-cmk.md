@@ -3,12 +3,12 @@ title: カスタマー マネージド キーを使用したバックアップ �
 description: Azure Backup でカスタマー マネージド キー (CMK) を使用してご自分のバックアップ データを暗号化できるようにする方法を説明します。
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 1586a40d115a591c474c3bc8c1fed5448eb90bcd
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: dfed3f983867568befc77d7dbc81cdde70eef9ed
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388001"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589607"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>カスタマー マネージド キーを使用したバックアップ データの暗号化
 
@@ -39,7 +39,7 @@ Azure Backup を使用すると、既定で有効になっているプラット�
 
 - この機能は、現在、Azure portal からのみ構成できます。
 
-[!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
+自分の Recovery Services コンテナーを作成して構成していない場合は、[こちら](backup-create-rs-vault.md)を参照してください。
 
 ## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>カスタマー マネージド キーを使用して暗号化するためのコンテナーの構成
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 04/15/2020
-ms.openlocfilehash: dac67c6dae801d11866f7c4978a050a0cb2fa1dd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9f408174b9a8dff925a9c834ea75bf725ec6f913
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87065638"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837346"
 ---
 # <a name="publishing-guide-for-virtual-machine-offers"></a>仮想マシンのオファー発行ガイド
 
@@ -29,7 +29,7 @@ ms.locfileid: "87065638"
 
 IaaS (サービスとしてのインフラストラクチャ) アプリまたは SaaS (サービスとしてのソフトウェア) アプリを介して、1 つ以上の仮想マシンをデプロイできます。 *体験版* の発行オプションの利点は、案内役となるガイド ツアーをパートナーがホストしており、仮想マシンまたはソリューション全体のセットアップが自動化されていることです。 体験版を使用すると、顧客は追加コストなしで VM を評価できます。 試用版を体験する顧客は、既存の Azure 顧客である必要はありません。 
 
-始めるには、[amp-testdrive](mailto:amp-testdrive@microsoft.com) までメールでお問い合わせください。 
+体験版に関する詳細については、「[体験版とは](what-is-test-drive.md)」を参照してください。
 
 |必要条件  |詳細 |
 |---------|---------|

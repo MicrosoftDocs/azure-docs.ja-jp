@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) で高パフォーマンス コン�
 services: container-service
 ms.topic: article
 ms.date: 03/27/2020
-ms.openlocfilehash: 30cbac0984236717581c994700483b85829c4571
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: ed655a6809f2932bbe8e85fb1cd9fd7996cf7647
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244295"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213186"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でコンピューティングを集中的に使用するワークロードに GPU を使用する
 
@@ -52,7 +52,7 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-## <a name="install-nvidia-drivers"></a>NVIDIA ドライバーをインストールする
+## <a name="install-nvidia-device-plugin"></a>NVIDIA デバイス プラグインをインストールする
 
 ノード内の GPU を使用するには、NVIDIA デバイス プラグイン用の DaemonSet をデプロイしておく必要があります。 この DaemonSet により、各ノードでポッドが実行され、GPU に必要なドライバーが提供されます。
 

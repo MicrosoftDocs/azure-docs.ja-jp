@@ -11,18 +11,18 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3a35662a3f21aec1306b7b6994e7a08f9cbd467e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9f3cd5c3280308f6da15a52361857fa02567d595
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85389532"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88505463"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SSO とトークンのカスタマイズを管理する
 
 この記事では、Azure Active Directory B2C (Azure AD B2C) で[カスタム ポリシー](custom-policy-overview.md)を使用してトークン、セッション、シングル サインオン (SSO) の構成を管理する方法について説明します。
 
-## <a name="jtw-token-lifetimes-and-claims-configuration"></a>JTW トークンの有効期間と要求の構成
+## <a name="jwt-token-lifetimes-and-claims-configuration"></a>JWT トークンの有効期間と要求の構成
 
 トークンの有効期間の設定を変更するには、対象となるポリシーの証明書利用者ファイルに [ClaimsProviders](claimsproviders.md) 要素を追加します。  **ClaimsProviders** 要素は、[TrustFrameworkPolicy](trustframeworkpolicy.md) 要素の子です。
 

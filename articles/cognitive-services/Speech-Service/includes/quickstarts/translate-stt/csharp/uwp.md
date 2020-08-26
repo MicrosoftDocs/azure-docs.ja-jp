@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.date: 04/04/2020
 ms.author: jhakulin
 ms.topic: include
-ms.openlocfilehash: 08da79afa14d883c6fe21ead7b3bca5f1aac5538
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: cdc1bfcc7c2ea0cc51fe830c5218cf10cae7d990
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87771132"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226210"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -42,7 +42,7 @@ ms.locfileid: "87771132"
 
 1. このファイルの `SpeechTranslationFromMicrophone_ButtonClicked` ハンドラーから `YourSubscriptionKey` という文字列を見つけて、ご利用のサブスクリプション キーに置き換えます。
 
-1. `SpeechTranslationFromMicrophone_ButtonClicked` ハンドラーから `YourServiceRegion` という文字列を見つけて、ご利用のサブスクリプションに関連付けられている[リージョン](~/articles/cognitive-services/Speech-Service/regions.md)に置き換えます。 たとえば、無料試用版サブスクリプションの場合は `westus` を使用します。
+1. `SpeechTranslationFromMicrophone_ButtonClicked` ハンドラーから `YourServiceRegion` という文字列を見つけて、ご利用のサブスクリプションに関連付けられている[リージョン](~/articles/cognitive-services/Speech-Service/regions.md)に置き換えます。
 
 1. メニュー バーから **[ファイル]**  >  **[すべて保存]** を選択して変更内容を保存します。
 

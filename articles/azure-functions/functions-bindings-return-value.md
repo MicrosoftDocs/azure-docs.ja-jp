@@ -1,18 +1,19 @@
 ---
-title: Azure Functions からの戻り値の使用
+title: Azure 関数からの戻り値の使用
 description: Azure Functions の戻り値を管理する方法について学習します
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 1dd9fabbe235e45290e607f861b67466d33319ce
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "74480578"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212180"
 ---
-# <a name="using-the-azure-function-return-value"></a>Azure Functions の戻り値の使用
+# <a name="using-the-azure-function-return-value"></a>Azure 関数の戻り値の使用
 
 この記事では、戻り値が関数内でどのように機能するかについて説明します。
 

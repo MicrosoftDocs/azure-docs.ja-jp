@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 17f98f452764abdc8458cdc38661d464ecb0a60d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: af935aeaaeee11ab50b327b7f7b5b77246cb974b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84808544"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566048"
 ---
 # <a name="limitations"></a>制限事項
 
@@ -35,18 +35,17 @@ ms.locfileid: "84808544"
 
 読み込まれたすべてのモデルに対して許容される多角形の数は、[セッション管理 REST API](../how-tos/session-rest-api.md#create-a-session) に渡される VM のサイズによって異なります。
 
-| VM サイズ | 多角形の最大数 |
+| サーバーのサイズ | 多角形の最大数 |
 |:--------|:------------------|
 |standard| 2,000 万 |
 |Premium| 制限なし |
 
-この制限の詳細については、[VM のサイズ](../reference/vm-sizes.md)に関する章を参照してください。
+この制限の詳細については、[サーバーのサイズ](../reference/vm-sizes.md)に関する章を参照してください。
 
 ## <a name="platform-limitations"></a>プラットフォームの制限事項
 
 **Windows 10 デスクトップ**
 
-* サポートされている UWP プラットフォームは、UWP (x86) のみです。 UWP (x64) はサポートされていません。
 * Win32/x64 は、サポートされている唯一の Win32 プラットフォームです。 Win32/x86 はサポートされていません。
 
 **Hololens 2**

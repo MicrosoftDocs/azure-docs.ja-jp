@@ -1,7 +1,7 @@
 ---
 title: Azure Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 description: ストレージ アカウント キーは、Azure Key Vault と Azure Storage アカウントへのキー ベースのアクセス間をシームレスに統合します。
-ms.topic: conceptual
+ms.topic: tutorial
 services: key-vault
 ms.service: key-vault
 ms.subservice: secrets
@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 727a5052b0531cc0a37cc631e11bc498498be5b3
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: 20418dbc7432000116dcbe73a64987d83f38419d
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87534976"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585068"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Key Vault と Azure CLI を使用してストレージ アカウント キーを管理する
 

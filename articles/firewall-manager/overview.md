@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 08/10/2020
+ms.date: 08/18/2020
 ms.author: victorh
-ms.openlocfilehash: 0fcf1c8a3800a52e8fa8659fe4bf97e83103c79d
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: b4ef35f2892925919ca9c8eda37a9b0e0d11835e
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056994"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590406"
 ---
 # <a name="what-is-azure-firewall-manager"></a>Azure Firewall Manager とは
 
@@ -85,6 +85,8 @@ Azure Firewall Manager には、次の既知の問題があります。
 |仮想ハブとは異なるリージョンにあるスポーク|仮想ハブとは異なるリージョンにあるスポークはサポートされていません。|調査中<br><br>リージョンごとにハブを作成し、ハブと同じリージョンの VNet をピアリングします。|
 |プライベート トラフィック フィルターが有効になっている場合のブランチ間のトラフィック|プライベート トラフィック フィルターが有効になっている場合、ブランチ間のトラフィックはサポートされていません。 |調査中。<br><br>ブランチ間の接続が重要である場合は、プライベート トラフィックをセキュリティで保護しないでください。|
 |同じ Virtual WAN を共有するすべてのセキュリティ保護付き仮想ハブは同じリソース グループに存在する必要がある|この動作は、今日の Virtual WAN ハブに合わせたものです。|複数の異なるリソース グループにセキュリティ保護付き仮想ハブを作成できるようにするには、複数の Virtual WAN を作成します。|
+|一括 IP アドレス追加が失敗する|複数のパブリック IP アドレスを追加すると、セキュリティで保護されたハブ ファイアウォールがエラー状態になります。|より少ない増分のパブリック IP アドレスを追加します。 たとえば、一度に 10 個を追加します。|
+|カスタム DNS (プレビュー) が構成されているセキュリティで保護されたハブでは、アプリケーション ルールが失敗します。|ファイアウォール管理 NIC が構成されているシナリオでは、DNS プロキシまたはカスタム DNS (プレビュー) は機能しません。 これには、セキュリティで保護されたハブのデプロイと、強制トンネリングが有効になっているケースが含まれます。|修正方法は調査中です。|
 
 ## <a name="next-steps"></a>次のステップ
 

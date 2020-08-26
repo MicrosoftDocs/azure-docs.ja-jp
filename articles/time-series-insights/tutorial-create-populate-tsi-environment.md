@@ -7,14 +7,14 @@ ms.author: dpalled
 manager: diviso
 ms.service: time-series-insights
 ms.topic: tutorial
-ms.date: 06/30/2020
+ms.date: 08/14/2020
 ms.custom: seodec18
-ms.openlocfilehash: 9f74be239bee1d6da3dfdb516c4fc410669e338d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 36687f6394ef03a3fceb70c73601680dd262d90c
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87020653"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245402"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>チュートリアル:Azure Time Series Insights Gen1 環境を作成する
 
@@ -37,13 +37,13 @@ ms.locfileid: "87020653"
 
 ## <a name="review-video"></a>ビデオの視聴
 
-### <a name="learn-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-and-get-started-with-azure-time-series-insights-br"></a>Azure IoT ソリューション アクセラレータを使用してデータを生成し、Azure Time Series Insights の使用を開始する方法について説明します。 </br>
+Azure IoT ソリューション アクセラレータを使用してデータを生成し、Azure Time Series Insights の使用を開始する方法について説明します。
 
 > [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
 
 ## <a name="overview"></a>概要
 
-Azure Time Series Insights 環境とは、デバイス データが収集、格納される場所のことです。 格納された後は、[Azure Time Series Insights Explorer](time-series-quickstart.md) と [Azure Time Series Insights クエリ API](/rest/api/time-series-insights/ga-query-api) を使用して、データのクエリおよび分析を行うことができます。
+Azure Time Series Insights 環境とは、デバイス データが収集、格納される場所のことです。 格納された後は、[Azure Time Series Insights Explorer](time-series-quickstart.md) と [Azure Time Series Insights クエリ API](/rest/api/time-series-insights/gen1-query-api) を使用して、データのクエリおよび分析を行うことができます。
 
 Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデータを転送するために、チュートリアルのすべての (シミュレートされた、または物理的な) デバイスによって使用される、イベント ソースです。
 
@@ -98,7 +98,7 @@ Azure IoT Hub は、お使いの Azure クラウドに安全に接続してデ�
 
    パラメーター|説明
    ---|---
-   **環境名** | Azure Time Series Insights 環境の一意の名前を選択します。 その名前は Azure Time Series Insights Explorer と[クエリ API シリーズ](https://docs.microsoft.com/rest/api/time-series-insights/ga-query)で使用されます。
+   **環境名** | Azure Time Series Insights 環境の一意の名前を選択します。 その名前は Azure Time Series Insights Explorer と[クエリ API シリーズ](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query)で使用されます。
    **サブスクリプション** | サブスクリプションとは、Azure リソース用のコンテナーです。 Azure Time Series Insights 環境を作成するサブスクリプションを選択します。
    **リソース グループ** | リソース グループとは、Azure リソース用のコンテナーです。 Azure Time Series Insights 環境リソース用に既存のリソース グループを選択するか、新しいリソース グループを作成します。
    **場所** | Azure Time Series Insights 環境のデータ センター リージョンを選択します。 待ち時間の増加を防ぐために、Azure Time Series Insights 環境を他の IoT リソースと同じリージョンに作成します。

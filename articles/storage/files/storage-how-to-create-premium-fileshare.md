@@ -1,6 +1,6 @@
 ---
 title: Premium Azure ファイル共有を作成する
-description: この記事では、Premium Azure ファイル共有を作成する方法について説明します。
+description: この記事では、Azure portal、PowerShell、Azure CLI を使用して Premium Azure ファイル共有を作成する方法について説明します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5bdfbbc505f6abe4fee021df014e32d3ccae074
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: adeb1635489441b30c15fee69922e3abef0a53f9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87497632"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903818"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Premium Azure ファイル共有を作成する方法
 Premium ファイル共有は、ソリッド ステート ディスク (SSD) ストレージ メディアで提供され、データベースのホスティングやハイパフォーマンス コンピューティング (HPC) など、IO 集中型のワークロードに役立ちます。 Premium ファイル共有は、FileStorage アカウントと呼ばれる、特殊用途のストレージ アカウントの種類でホストされます。 Premium ファイル共有は、ハイ パフォーマンスおよびエンタープライズ規模のアプリケーション向けに設計され、一貫性のある待機時間の短縮、高 IOPS、高スループット共有を提供します。

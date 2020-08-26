@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Versal の統合 | Microsoft Docs
 description: Azure Active Directory と Versal の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 5b2e53c0-61a3-4954-ae46-8c28c6368bfd
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5e5a3f8070829916b228e9bc68e37156ddf5f6a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ae966e56b0ea679f20445648926ce2beccb9f080
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75561784"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88532059"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-versal"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Versal の統合
 

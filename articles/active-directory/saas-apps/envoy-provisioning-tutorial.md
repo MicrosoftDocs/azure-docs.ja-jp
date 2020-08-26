@@ -2,25 +2,21 @@
 title: チュートリアル:Envoy を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Envoy に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: na
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: a36e17ccee92e29a037d9e8023baa21e4355cbdf
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: d04e872d42c6134dc82f2ffd02d79fe8e2af5caa
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926384"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88551604"
 ---
 # <a name="tutorial-configure-envoy-for-automatic-user-provisioning"></a>チュートリアル:Envoy を構成し、自動ユーザー プロビジョニングに対応させる
 

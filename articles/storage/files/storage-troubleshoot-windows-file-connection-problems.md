@@ -1,18 +1,18 @@
 ---
 title: Windows での Azure Files に関する問題のトラブルシューティング | Microsoft Docs
-description: Windows での Azure Files に関する問題のトラブルシューティング
+description: Windows での Azure Files に関する問題のトラブルシューティング。 Windows クライアントから接続する場合の Azure Files に関連する一般的な問題と、考えられる解決方法を参照してください。
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: e855ed169a0c4eca7dda696c03deedb9e519e9bf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: f9e4fdb0fe8872c505bbbbb10da11d8fb74a22b3
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259982"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87927217"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -305,27 +305,27 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
  
 たとえば、これを 0x100000 に設定して、パフォーマンスが向上するかどうかを確認することができます。
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Azure Files に対して Azure Active Directory Domain Service (AAD DS) 認証を有効にするときに AadDsTenantNotFound エラーが発生し、"Unable to locate active tenants with tenant Id aad-tenant-id" (テナント ID aad-tenant-id のアクティブなテナントを見つけることができません) というメッセージが表示される
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-azure-ad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Azure Files に対して Azure Active Directory Domain Service (Azure AD DS) 認証を有効にするときに AadDsTenantNotFound エラーが発生し、"Unable to locate active tenants with tenant Id aad-tenant-id" (テナント ID aad-tenant-id のアクティブなテナントを見つけることができません) というメッセージが表示される
 
 ### <a name="cause"></a>原因
 
-関連するサブスクリプションの AAD テナント上で [AAD ドメイン サービス (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) が作成されていない場合、ストレージ アカウント上で [Azure Files に対して Azure Active Directory Domain Service (Azure AD DS) 認証を有効](storage-files-identity-auth-active-directory-domain-service-enable.md)にしようとすると、AadDsTenantNotFound エラーが発生します。  
+関連するサブスクリプションの Azure AD テナント上で [Azure AD Domain Services (Azure AD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) が作成されていない場合、ストレージ アカウント上で [Azure Files に対して Azure Active Directory Domain Service (Azure AD DS) 認証を有効](storage-files-identity-auth-active-directory-domain-service-enable.md)にしようとすると、AadDsTenantNotFound エラーが発生します。  
 
 ### <a name="solution"></a>解決策
 
-ストレージ アカウントがデプロイされているサブスクリプションの ADD テナント上で AAD DS を有効にします。 マネージド ドメインを作成するには、AAD テナントの管理者特権が必要です。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)に関する記事に書かれている手順を実行します。
+ストレージ アカウントがデプロイされているサブスクリプションの Azure AD テナント上で Azure AD DS を有効にします。 マネージド ドメインを作成するには、Azure AD テナントの管理者特権が必要です。 Azure AD テナントの管理者でない場合は、管理者に連絡し、[Azure portal を使用した Azure Active Directory Domain Services の有効化](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)に関する記事に書かれている手順を実行します。
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
 
-## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>エラー "システム エラー 1359 が発生しました。 内部エラー" が、Azure Active Directory Domain Service (AAD DS) 認証が有効なときにファイル共有への SMB アクセスで発生した
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-azure-ad-ds-authentication-enabled"></a>エラー "システム エラー 1359 が発生しました。 内部エラー" が、Azure Active Directory Domain Service (Azure AD DS) 認証が有効なときにファイル共有への SMB アクセスで発生した
 
 ### <a name="cause"></a>原因
 
-エラー "システム エラー 1359 が発生しました。 内部エラー" は、数字で始まるドメイン DNS 名を使用して AAD DS に対して AAD DS 認証を有効にしてファイル共有に接続しようとしたときに発生します。 たとえば、AAD DS のドメイン DNS 名が "1domain" の場合、AAD の資格情報を使用してファイル共有をマウントしようとすると、このエラーが発生します。 
+エラー "システム エラー 1359 が発生しました。 内部エラー" は、数字で始まるドメイン DNS 名を使用する Azure AD DS に対して Azure AD DS 認証を有効にしてファイル共有に接続しようとしたときに発生します。 たとえば、Azure AD DS のドメイン DNS 名が "1domain" の場合、Azure AD の資格情報を使用してファイル共有をマウントしようとすると、このエラーが発生します。 
 
 ### <a name="solution"></a>解決策
 
-現時点では、次の規則に該当する新しいドメイン DNS 名を使用して、AAD DS を再デプロイすることを検討してください。
+現時点では、次の規則に適合する新しいドメイン DNS 名を使用して、Azure AD DS を再デプロイすることを検討してください。
 - 名前の先頭を数字にすることはできない。
 - 名前の長さを 3 から 63 文字にする必要がある。
 
@@ -350,7 +350,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 4. CheckGetKerberosTicket: ストレージ アカウントに接続するための Kerberos チケットの取得を試みます。 
 5. CheckADObjectPasswordIsCorrect: ストレージ アカウントを表す AD ID に対して構成されているパスワードが、ストレージ アカウントの kerb1 キー、または kerb2 キーのパスワードと確実に一致しているようにします。
 6. CheckSidHasAadUser: ログオンしている AD ユーザーが Azure AD と同期されていることを確認します。 特定の AD ユーザーが Azure AD に同期されているかどうかを調べる場合は、入力パラメーターに -UserName と -Domain を指定します。
-7. CheckAadUserHasSid: Azure AD ユーザーが AD の SID を持っているかどうかを確認します。この確認を行う際、ユーザーは、パラメーター -ObjectId を使用して Azure AD ユーザーのオブジェクト Id を入力する必要があります。 
+7. CheckAadUserHasSid: Azure AD ユーザーが AD の SID を持っているかどうかを確認します。この確認を行う際、ユーザーは、パラメーター -ObjectId を使用して Azure AD ユーザーのオブジェクト ID を入力する必要があります。 
 8. CheckStorageAccountDomainJoined: ストレージ アカウントのプロパティを確認して、AD 認証が有効になっており、アカウントの AD プロパティが設定されていることを確認します。
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Windows エクスプローラーでディレクトリまたはファイル レベルのアクセス許可 (Windows ACL) を構成できない

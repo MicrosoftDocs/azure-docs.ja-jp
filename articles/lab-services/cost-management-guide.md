@@ -3,20 +3,20 @@ title: Azure Lab Services のコスト管理ガイド
 description: Lab Services のコストを表示するさまざまな方法について説明します。
 author: rbest
 ms.author: rbest
-ms.date: 06/26/2020
+ms.date: 08/16/2020
 ms.topic: article
-ms.openlocfilehash: fbbaf4a3646260fc09467e214b82fd0213415635
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0aaa454df05cd8981b314abe238163caced7864c
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85445306"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604587"
 ---
 # <a name="cost-management-for-azure-lab-services"></a>Azure Lab Services のコスト管理
 
 コスト管理は、コストの見積もりとコストの分析という 2 つの異なる領域に分類できます。  コストの見積もりは、ラボを設定するときに、ラボの初期構造を予想される予算内に収めるために行われます。  コストの分析は、コストを分析して、翌月の必要なアクションを決定するために、通常、月末に行われます。
 
-## <a name="estimating-the-lab-costs"></a>ラボのコストの見積もり
+## <a name="estimate-the-lab-costs"></a>ラボのコストを見積もる
 
 各ラボ ダッシュボードには、**コストと課金**のセクションがあり、その月のラボのコストの概算見積りが提示されます。  コストの見積もりでは、最大ユーザー数での時間の使用量が、時間ごとの推定コストで要約されています。  最も正確な見積もりを取得するには、[スケジュール](how-to-create-schedules.md)を含めてラボを設定すると、ダッシュボードに推定コストが反映されます。  
 
@@ -25,7 +25,7 @@ ms.locfileid: "85445306"
 > [!div class="mx-imgBorder"]
 > ![ダッシュボードのコスト見積もり](./media/cost-management-guide/dashboard-cost-estimation.png)
 
-## <a name="analyzing-previous-months-usage"></a>以前の月の使用状況の分析
+## <a name="analyze-previous-months-usage"></a>以前の月の使用状況を分析する
 
 コストの分析は、以前の月の使用状況を確認して、ラボの調整の決定に役立てるために行われます。  過去のコストの内訳については、[サブスクリプションのコスト分析](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis)に関するページを参照してください。  Azure portal では、上部の検索フィールドに「サブスクリプション」と入力してから、[サブスクリプション] オプションを選択します。  
 
@@ -39,14 +39,14 @@ ms.locfileid: "85445306"
 
  左側のペインで **[Cost Management]** の下にある [コスト分析] を選択します。
 
- > [!div class="mx-imgBorder"]
+> [!div class="mx-imgBorder"]
 > ![サブスクリプションのコスト分析](./media/cost-management-guide/subscription-cost-analysis.png)
 
 このダッシュボードでは、スケジュールに基づいてさまざまな種類のファイルにエクスポートする機能など、詳細なコスト分析を行うことができます。  Cost Management にはさまざまな機能があります。詳細については、[Cost Management の課金の概要](https://docs.microsoft.com/azure/cost-management-billing/cost-management-billing-overview)に関するページを参照してください。
 
 リソースの種類によるフィルター処理: `microsoft.labservices/labaccounts` には、Lab Services に関連付けられているコストのみが表示されます。
 
-## <a name="understanding-the-usage"></a>使用状況について
+## <a name="understand-the-usage"></a>使用状況を理解する
 
 コスト分析のサンプルを次に示します。
 
@@ -68,9 +68,69 @@ Shared Image Gallery 情報を取得するには、リソースの種類を `Mic
 
 クラスの種類によっては、コストを管理して、マシンを使用している学生がいない状態で VM が実行されることを減らす方法があります。
 
-### <a name="auto-shutdown-on-disconnect"></a>切断時に自動シャットダウン
+### <a name="maximize-cost-control-with-auto-shutdown-settings"></a>自動シャットダウン設定を使用してコスト管理を最大化する
 
-ラボの作成時、ラボの所有者は、ラボの VM が、[VM への RDP 接続が切断されたときにシャットダウン](how-to-enable-shutdown-disconnect.md)されるように設定できます。  この設定により、学生が接続を切断したときに VM を停止するのを忘れるというシナリオが低減されます。
+自動シャットダウンのコスト管理機能を使用すると、ラボ内での仮想マシンの使用時間の無駄を事前に防止できます。 次の 3 つの自動シャットダウンおよび切断機能を組み合わせると、ユーザーが誤って仮想マシンを実行状態のまま放置するケースのほとんどを捕捉できます。
+
+> [!div class="mx-imgBorder"]
+> ![サブスクリプションのコスト分析](./media/cost-management-guide/auto-shutdown-disconnect.png)
+
+これらの設定は、ラボ アカウント レベルとラボ レベルの両方で構成できます。 これらの設定がラボ アカウント レベルで有効になっている場合は、そのラボ アカウント内のすべてのラボに適用されます。 すべての新しいラボ アカウントでは、これらの設定が既定で有効になります。 
+
+#### <a name="details-about-auto-shutdown-settings"></a>自動シャットダウン設定の詳細
+
+* OS がアイドル状態と見なした仮想マシンからユーザーを自動的に切断する (Windows のみ)。
+
+    > [!NOTE]
+    > この設定は、Windows 仮想マシンでのみ使用できます。
+
+    この設定が有効になっている場合、Windows OS がそのセッションをアイドル状態と見なすと、ユーザーはラボ内のすべてのコンピューター (テンプレート仮想マシンを含む) から切断されます。 [Windows OS のアイドル状態の定義](https://docs.microsoft.com/windows/win32/taskschd/task-idle-conditions#detecting-the-idle-state)では、次の 2 つの条件が使用されます。 
+
+    * ユーザーが不在 – キーボードまたはマウスの入力がない。
+    * リソース消費がない – すべてのプロセッサとすべてのディスクが時間の一定の割合 (%) の間アイドル状態であった。
+
+    ユーザーが切断される前に、仮想マシン内に次のようなメッセージが表示されます。 
+
+    > [!div class="mx-imgBorder"]
+    > ![サブスクリプションのコスト分析](./media/cost-management-guide/idle-timer-expired.png)
+    
+    ユーザーが切断されても、仮想マシンは引き続き実行中です。 ユーザーがサインインして仮想マシンに再接続した場合、以前開いていたウィンドウやファイル、または切断の前に保存されていない作業は引き続きそこに存在します。 この状態では、仮想マシンは実行中であるため、引き続きアクティブとしてカウントされ、コストが発生します。 
+    
+    切断されているアイドル状態の Windows 仮想マシンを自動的にシャットダウンするには、 **[仮想マシンがアイドル状態のときにユーザーを切断する]** と **[ユーザーが切断したときに仮想マシンをシャットダウンする]** の設定の組み合わせを使用します。
+
+    たとえば、これらの設定を次のように構成したとします。
+    
+    * [仮想マシンがアイドル状態のときにユーザーを切断する] – アイドル状態が検出されてから 15 分後。
+    * [ユーザーが切断したときに仮想マシンをシャットダウンする] – ユーザーが切断されてから 5 分後。
+    
+    Windows 仮想マシンは、ユーザーがその使用を停止してから 20 分後に自動的にシャットダウンされます。 
+    
+    > [!div class="mx-imgBorder"]
+    > ![サブスクリプションのコスト分析](./media/cost-management-guide/vm-idle-diagram.png)
+* ユーザーが切断したときに仮想マシンを自動的にシャットダウンする (Windows および Linux)。
+    
+    この設定では、Windows 仮想マシンと Linux 仮想マシンの両方がサポートされます。 この設定が有効になっている場合は、次の場合に自動シャットダウンが発生します。
+    
+    * Windows の場合は、リモート デスクトップ (RDP) 接続が切断されている。
+    * Linux の場合は、SSH 接続が切断されている。
+    
+    > [!NOTE]
+    > [特定のディストリビューションとバージョンの Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/diagnostics-linux#supported-linux-distributions) のみがサポートされています。
+    
+    自動シャットダウンの前に、仮想マシンがユーザーの再接続を待つ時間の長さを指定できます。 
+* 起動したがユーザーが接続しない仮想マシンを自動的にシャットダウンする。
+     
+    ラボ内では、ユーザーが仮想マシンを起動したが、それに接続しないことがあります。 次に例を示します。
+    
+    * ラボ内のスケジュールではクラス セッションのすべての仮想マシンが起動されるが、一部の学生が現れず、自分のコンピューターに接続しない。  
+    * ユーザーが仮想マシンを起動したが、接続するのを忘れる。 
+    
+    [ユーザーが接続していないときに仮想マシンをシャットダウンする] の設定によってこれらのケースがキャッチされ、仮想マシンが自動的にシャットダウンされます。  
+    
+切断時の VM の自動シャットダウンを構成して有効にする方法については、次の記事を参照してください。
+
+* [ラボ アカウント用に VM の自動シャットダウンを構成する](how-to-configure-lab-accounts.md)
+* [ラボの VM の自動シャットダウンを構成する](how-to-enable-shutdown-disconnect.md)
 
 ### <a name="quota-vs-scheduled-time"></a>クォータとスケジュールされた時間
 

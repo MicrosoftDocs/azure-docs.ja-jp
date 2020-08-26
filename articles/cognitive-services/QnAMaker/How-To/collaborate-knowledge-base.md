@@ -1,22 +1,22 @@
 ---
 title: ナレッジ ベースの共同利用 - QnA Maker
-description: QnA Maker では、複数のユーザーがナレッジ ベースを共同利用できます。 この機能は、Azure のロール ベースのアクセス制御で提供されています。
+description: QnA Maker では、複数のユーザーがナレッジ ベースを共同利用できます。 この機能は、Azure ロール ベースのアクセス制御 (Azure RBAC) で提供されています。
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 4c550a36dd045873df4bc4a382e1c884466f95ad
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0d59ca83e6067c083e4bfebdb7afaaf6669dda8a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054065"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926849"
 ---
 # <a name="collaboration-with-authors-and-editors"></a>作成者や編集者との共同作業
 
 コラボレーションは、QnA Maker リソース レベルで提供され、コラボレーターのロールに基づいて、コラボレーターのアクセスの制限を可能にします。 QnA Maker コラボレーター認証の[概念](../Concepts/role-based-access-control.md)に関する詳細を参照してください。
 
-## <a name="add-role-based-access-rbac-to-your-qna-maker-resource"></a>QnA Maker リソースへのロールベースのアクセス (RBAC) の追加
+## <a name="add-azure-role-based-access-control-azure-rbac-to-your-qna-maker-resource"></a>QnA Maker リソースへ Azure ロールベースのアクセス制御 (Azure RBAC) を追加する
 
-QnA Maker を使用すると、複数の担当者が同じ QnA Maker リソース内のすべてのナレッジベースで共同作業を行うことができます。 この機能は、Azure の[ロール ベースのアクセス制御](../../../active-directory/role-based-access-control-configure.md)で提供されています。
+QnA Maker を使用すると、複数の担当者が同じ QnA Maker リソース内のすべてのナレッジベースで共同作業を行うことができます。 この機能は、[Azure ロール ベースのアクセス制御 (Azure RBAC)](../../../active-directory/role-based-access-control-configure.md) で提供されています。
 
 ## <a name="access-at-the-qna-maker-resource-level"></a>QnA Maker リソース レベルでのアクセス
 

@@ -1,18 +1,18 @@
 ---
-title: Azure Arc for servers (プレビュー) エージェントの管理
-description: この記事では、コンピューターに配置された Azure Arc for servers Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
+title: Azure Arc 対応サーバー (プレビュー) エージェントの管理
+description: この記事では、コンピューターに配置された Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントのライフサイクル中に通常実行する、さまざまな管理タスクについて説明します。
 ms.date: 07/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: b7fcaca2188ef0e1e3c8c65226f8b383576082ba
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 6066226cea224b1e13262763b626c8c646a397d7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121291"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213130"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Connected Machine エージェントの管理と保守
 
-Azure Monitor で Windows または Linux 用 Azure Arc for servers (プレビュー) Connected Machine エージェントを最初に配置した後、エージェントを再構成したり、アップグレードしたり、ライフサイクルの提供終了段階に達したエージェントをコンピューターから削除したりする必要があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
+Windows または Linux 用 Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントを最初にデプロイした後、エージェントを再構成したり、アップグレードしたり、ライフサイクルの提供終了段階に達した場合にコンピューターから削除したりする必要がある場合があります。 これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
 
 ## <a name="upgrading-agent"></a>エージェントのアップグレード
 
@@ -120,7 +120,7 @@ Microsoft の [パッケージ リポジトリ](https://packages.microsoft.com/)
 
 ## <a name="about-the-azcmagent-tool"></a>Azcmagent ツールについて
 
-Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中に Azure Arc for servers (プレビュー) Connected Machine エージェントを構成したり、インストール後にエージェントの初期構成を変更したりできます。 Azcmagent.exe では、エージェントをカスタマイズし、その状態を表示するための次のコマンドライン パラメーターが提供されます。
+Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中に Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントを構成したり、インストール後にエージェントの初期構成を変更したりすることができます。 Azcmagent.exe では、エージェントをカスタマイズし、その状態を表示するための次のコマンドライン パラメーターが提供されます。
 
 * **Connect** - マシンを Azure Arc に接続します。
 
@@ -136,7 +136,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 * **-v または --verbose** - 詳細なログ記録を有効にします。
 
-対話形式でのログオン中に **Connect**、**Disconnect**、および **Reconnect** を手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォーム [アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化することができます。 サービス プリンシパルを使用してマシンを Azure Arc for servers (プレビュー) に登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
+対話形式でのログオン中に **Connect**、**Disconnect**、および **Reconnect** を手動で実行できます。または、複数のエージェントのオンボードに使用したのと同じサービス プリンシパルを使用するか、Microsoft ID プラットフォーム [アクセス トークン](../../active-directory/develop/access-tokens.md)を使用して自動化することができます。 サービス プリンシパルを使用してマシンを Azure Arc 対応サーバー (プレビュー) に登録していない場合は、次の[記事](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale)を参照して、サービス プリンシパルを作成してください。
 
 >[!NOTE]
 >**Azcmagent** を実行するには、Linux マシンに対する*ルート* アクセス許可が必要です。
@@ -145,7 +145,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 このパラメーターでは、マシンを表す Azure Resource Manager 内のリソースが、Azure で作成されることを指定します。 リソースは指定されたサブスクリプションとリソース グループにあり、マシンに関するデータは、`--location` 設定で指定された Azure リージョンに格納されます。 既定のリソース名は、指定されていない場合はこのマシンのホスト名になります。
 
-このマシンのシステム割り当て ID に対応する証明書がダウンロードされ、ローカルに保存されます。 この手順が完了すると、Azure Connected Machine Metadata Service とゲスト構成エージェントでは、Azure Arc for servers (プレビュー) との同期が開始されます。
+このマシンのシステム割り当て ID に対応する証明書がダウンロードされ、ローカルに保存されます。 この手順が完了すると、Azure Connected Machine Metadata Service とゲスト構成エージェントから、Azure Arc 対応サーバー (プレビュー) との同期が開始されます。
 
 サービス プリンシパルを使用して接続するには、次のコマンドを実行します。
 
@@ -161,7 +161,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 ### <a name="disconnect"></a>[接続解除]
 
-このパラメーターでは、マシンを表す Azure Resource Manager 内のリソースが、Azure で削除されることを指定します。 エージェントはマシンから削除されません。これは、別の手順として実行する必要があります。 マシンが切断された後、Azure Arc for servers (プレビュー) に再登録する場合は、`azcmagent connect` を使用して、Azure でその新しいリソースが作成されるようにします。
+このパラメーターでは、マシンを表す Azure Resource Manager 内のリソースが、Azure で削除されることを指定します。 エージェントはマシンから削除されません。これは、別の手順として実行する必要があります。 マシンが切断された後、Azure Arc 対応サーバー (プレビュー) に再登録する場合は、`azcmagent connect` を使用して、Azure でその新しいリソースが作成されるようにします。
 
 サービス プリンシパルを使用して切断するには、次のコマンドを実行します。
 
@@ -180,7 +180,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 > [!WARNING]
 > `reconnect` コマンドは非推奨となっています。使用しないでください。 このコマンドは、将来リリースされるエージェントでは削除される予定であり、既存のエージェントは再接続要求を実行できなくなります。 代わりに、マシンを[切断](#disconnect)してから再度[接続](#connect)してください。
 
-このパラメーターでは、既に登録されているマシンまたは接続されているマシンを Azure Arc for servers (プレビュー) に再接続します。 証明書の有効期限が切れるまで、45 日以上マシンがオフになっている場合に、この操作が必要になることがあります。 このパラメーターでは、提供されている認証オプションを使用して、このマシンを表す Azure Resource Manager リソースに対応する新しい資格情報を取得します。
+このパラメーターを使用すると、既に登録されている、または接続されているマシンを Azure Arc 対応サーバー (プレビュー) に再接続されます。 証明書の有効期限が切れるまで、45 日以上マシンがオフになっている場合に、この操作が必要になることがあります。 このパラメーターでは、提供されている認証オプションを使用して、このマシンを表す Azure Resource Manager リソースに対応する新しい資格情報を取得します。
 
 このコマンドには、[Azure に接続されたマシンのオンボード](agent-overview.md#required-permissions) ロールよりも高い特権が必要です。
 
@@ -198,7 +198,7 @@ Azcmagent ツール (Azcmagent.exe) を使用すると、インストール中�
 
 ## <a name="remove-the-agent"></a>エージェントを削除する
 
-Windows または Linux の Connected Machine エージェントをマシンからアンインストールするには、次のいずれかの方法を実行します。 エージェントを削除しても、Arc for servers (プレビュー) へのマシンの登録は解除されません。登録解除は、Azure でのマシンの管理が不要になったときに別途実行するプロセスになります。
+Windows または Linux の Connected Machine エージェントをマシンからアンインストールするには、次のいずれかの方法を実行します。 エージェントを削除しても、Arc 対応サーバー (プレビュー) へのマシンの登録は解除されません。これは、Azure でのマシンの管理が不要になったときに、別途実行するプロセスになります。
 
 ### <a name="windows-agent"></a>Windows エージェント
 
@@ -267,9 +267,9 @@ Linux エージェントをアンインストールするために使用する�
 
 ## <a name="unregister-machine"></a>マシンの登録を解除する
 
-今後 Azure のサービスを利用してマシンの管理を行う予定がない場合は、次の手順を実行して Arc for servers (プレビュー) に対するマシンの登録を解除してください。 これらの手順を行うのは、Connected Machine エージェントをマシンから削除する前でも後でもかまいません。
+Azure のサポート サービスを利用してマシンの管理を行う予定がない場合は、次の手順を行って Arc 対応サーバー (プレビュー) に対するマシンの登録を解除してください。 これらの手順を行うのは、Connected Machine エージェントをマシンから削除する前でも後でもかまいません。
 
-1. [Azure portal](https://aka.ms/hybridmachineportal) に移動して、Azure Arc for servers (プレビュー) を開きます。
+1. [Azure portal](https://aka.ms/hybridmachineportal) に移動して、Azure Arc 対応サーバー (プレビュー) を開きます。
 
 2. 一覧でマシンを選択し、省略記号 ( **...** ) を選択してから、 **[削除]** を選択します。
 

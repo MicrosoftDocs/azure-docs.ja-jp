@@ -7,16 +7,16 @@ manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: b95cecdc5470e50830371b7a6556f9526dae7591
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d37fae18cd2f3e3bfad647cc176253dc6bb101ab
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095568"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585776"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault を別のサブスクリプションに移動する
 

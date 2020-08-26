@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 06/26/2020
+ms.date: 08/15/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de905c61642c36a07c7f87e0be910b0f035bffc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 5c92994fee6de4c56257343af2ef418393b505ad
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555269"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507435"
 ---
 # <a name="what-is-risk"></a>リスクとは
 
@@ -65,6 +65,12 @@ Identity Protection を使用すると、組織は、強力なリソースにア
 | 検出された追加のリスク | リアルタイムまたはオフライン | この検出は、上記の Premium 検出のいずれかが検出されたことを示します。 Premium 検出は Azure AD Premium P2 のお客様にのみ表示されるため、P2 ライセンスをお持ちでないお客様には [検出された追加のリスク] というタイトルが付けられます。 |
 
 ## <a name="common-questions"></a>一般的な質問
+
+### <a name="risk-levels"></a>リスク レベル
+
+Identity Protection では、リスクを低、中、高の 3 つのレベルに分類します。 
+
+Microsoft ではリスクの計算方法に関する具体的な詳細を公開していませんが、各レベルごとに、ユーザーまたはサインインが侵害されたという信頼度は高くなります。 たとえば、見慣れないサインイン プロパティのインスタンスが 1 つあるといったことは、資格情報の漏洩ほど脅威的ではない可能性があります。
 
 ### <a name="leaked-credentials"></a>漏洩した資格情報
 

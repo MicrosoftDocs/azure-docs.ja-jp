@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2020
+ms.date: 08/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 29055da1ea8093d413691a41d38d6280f43f728a
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.openlocfilehash: eeb22672829dca9ba342079183dcc5ed7c35393c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88134498"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590372"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Azure NetApp Files についての FAQ
 
@@ -54,7 +54,9 @@ ms.locfileid: "88134498"
 
 ### <a name="can-the-network-traffic-between-the-azure-vm-and-the-storage-be-encrypted"></a>Azure VM とストレージ間のネットワーク トラフィックは暗号化できますか?
 
-データ トラフィック (NFSv3、NFSv4.1、または SMBv3 クライアントから Azure NetApp Files のボリュームへのトラフィック) は暗号化されません。 ただし、(NFS または SMB クライアントを実行している) Azure VM から Azure NetApp Files へのトラフィックは、Azure VM 間のトラフィックと同様に安全です。 このトラフィックは、Azure データセンター ネットワークに対してローカルです。 
+NFSv4.1 クライアントと Azure NetApp Files ボリューム間のデータ トラフィックは、AES-256 暗号化を使用した Kerberos を使用して暗号化できます。 詳細については、「[Azure NetApp Files の NFSv4.1 の Kerberos 暗号化を構成する](configure-kerberos-encryption.md)」を参照してください。   
+
+NFSv3 または SMBv3 クライアントから Azure NetApp Files ボリュームへのデータ トラフィックは暗号化されません。 ただし、(NFS または SMB クライアントを実行している) Azure VM から Azure NetApp Files へのトラフィックは、Azure VM 間のトラフィックと同様に安全です。 このトラフィックは、Azure データセンター ネットワークに対してローカルです。 
 
 ### <a name="can-the-storage-be-encrypted-at-rest"></a>ストレージは保存時に暗号化できますか?
 
@@ -125,7 +127,7 @@ Azure NetApp Files では、NFSv3 および NFSv4.1 がサポートされてい�
 
 ### <a name="how-do-i-enable-root-squashing"></a>ルート スカッシュを有効にするにはどうすればよいですか?
 
-ルート スカッシュは現在サポートされていません。
+ボリュームのエクスポート ポリシーを使用して、ルート アカウントがボリュームにアクセスできるかどうかを指定できます。 詳細については、「[NFS ボリュームのエクスポート ポリシーを構成する](azure-netapp-files-configure-export-policy.md)」を参照してください。
 
 ## <a name="smb-faqs"></a>SMB に関する FAQ
 

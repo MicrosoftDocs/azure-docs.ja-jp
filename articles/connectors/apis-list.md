@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 06/11/2020
-ms.openlocfilehash: 3a628a70d8ce62827f79c1f7e16d2826be8d80f5
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 1dd38f0360a4471124497d8357481283cd98383c
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827250"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566303"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure Logic Apps のコネクタ
 
@@ -407,6 +407,10 @@ Azure Active Directory (Azure AD) OAuth を使用するコネクタの場合、�
 ## <a name="block-creating-connections"></a>接続の作成をブロックする
 
 Azure Logic Apps でコネクタを使用して特定のリソースに接続することが組織で許可されていない場合は、[Azure Policy](../governance/policy/overview.md) を使用して、ロジック アプリのワークフロー内の特定のコネクタについて、[接続を作成する機能をブロックする](../logic-apps/block-connections-connectors.md)ことができます。 詳細については、[Azure Logic Apps での特定のコネクタによって作成される接続のブロック](../logic-apps/block-connections-connectors.md)に関するページを参照してください。
+
+## <a name="get-ready-for-deployment"></a>展開の準備
+
+ロジック アプリ内から接続を作成しますが、接続は独自のリソース定義を持つ個別の Azure リソースです。 これらの接続リソース定義を確認するには、[Azure portal を使用してロジック アプリのリソース グループを調査](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#view-resource-definitions)するか、[Azure から Visual Studio にロジック アプリをダウンロード](../logic-apps/manage-logic-apps-with-visual-studio.md)することができます。これは、デプロイの準備がほとんど整っているパラメーター化された有効なロジック アプリ テンプレートを作成するための最も簡単な方法です。
 
 ## <a name="next-steps"></a>次のステップ
 

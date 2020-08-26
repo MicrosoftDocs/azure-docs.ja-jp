@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Zendesk の統合 | Microsoft Docs
 description: Azure Active Directory と Zendesk の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: 9d7c91e5-78f5-4016-862f-0f3242b00680
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/26/2020
+ms.date: 08/13/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f70e7067a78b439d3dcaf0b83460296cad7b4485
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: c7d452803d15bab77df8e85a861de914a5ed08d5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80585799"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546067"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-zendesk"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Zendesk の統合
 
@@ -143,13 +139,21 @@ Zendesk で Azure AD SSO を構成してテストするには、次の構成要�
 
 ## <a name="configure-zendesk-sso"></a>Zendesk の SSO の構成
 
+1. **Zendesk** 内での構成を自動化するには、 **[拡張機能のインストール]** をクリックして **My Apps Secure Sign-in ブラウザー拡張機能**をインストールする必要があります。
+
+    ![image](./media/target-process-tutorial/install_extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[Zendesk のセットアップ]** をクリックすると、Zendesk アプリケーションに移動します。 そこから、管理者資格情報を提供して Zendesk にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
 1. Zendesk を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Zendesk 企業サイトにサインインして、次の手順を実行します。
 
-2. **[Admin]** をクリックします。
+1. **[Admin]** をクリックします。
 
-3. 左側のナビゲーション ウィンドウで、 **[設定]** 、 **[セキュリティ]** の順にクリックします。
+1. 左側のナビゲーション ウィンドウで、 **[設定]** 、 **[セキュリティ]** の順にクリックします。
 
-4. **[Security]\(セキュリティ\)** ページで、次の手順に従います。
+1. **[Security]\(セキュリティ\)** ページで、次の手順に従います。
 
     ![Security](./media/zendesk-tutorial/ic773089.png "Security")
 

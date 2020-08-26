@@ -1,6 +1,6 @@
 ---
 title: Azure API Management でユーザー アカウントを管理する方法 | Microsoft Docs
-description: Azure API Management でユーザーを作成または招待する方法について説明します。
+description: Azure API Management でユーザーを作成または招待する方法について説明します。 開発者アカウントの作成後に使用するその他のリソースを表示します。
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: d8f7d7f7707add22d700421b229f6dbe725db465
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86250460"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566133"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Azure API Management でユーザー アカウントを管理する方法
 
@@ -27,11 +27,11 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 ## <a name="prerequisites"></a>前提条件
 
-次の記事のタスクを済ませておいてください: [Azure API Management インスタンスを作成する](get-started-create-service-instance.md)。
+「[Create an Azure API Management instance (Azure API Management インスタンスを作成する)](get-started-create-service-instance.md)」の記事にあるタスクを完了します。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="create-a-new-developer"></a><a name="create-developer"> </a>新しい開発者を作成する
+## <a name="create-a-new-developer"></a><a name="create-developer"> </a>新しい開発者の作成
 
 新しいユーザーを追加するには、このセクションの手順に従います。
 
@@ -44,7 +44,7 @@ API Management では、開発者は、API Management を使用して公開さ�
 
 既定では、新しく作成された開発者アカウントは**アクティブ**になり、**開発者**グループに関連付けられます。 **[アクティブ]** 状態の開発者アカウントを使用すると、サブスクリプションがあるすべての API にアクセスできます。 新しく作成した開発者を追加のグループに関連付ける方法については、「 [グループと開発者の関連付け][How to associate groups with developers]」を参照してください。
 
-## <a name="invite-a-developer"></a><a name="invite-developer"> </a>開発者を招待する
+## <a name="invite-a-developer"></a><a name="invite-developer"> </a>開発者の招待
 開発者を招待するには、このセクションの手順に従います。
 
 1. 画面の左にある **[ユーザー]** タブを選択します。

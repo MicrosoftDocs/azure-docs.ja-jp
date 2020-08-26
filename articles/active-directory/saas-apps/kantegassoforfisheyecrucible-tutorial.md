@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Kantega SSO for FishEye/Crucible の統合 | Microsoft Docs'
 description: Azure Active Directory と Kantega SSO for FishEye/Crucible の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9fe951fd-1530-4d33-a1a4-390385b99ce9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f262f94c451d5dcffd933bdebb1374b8733b9fd8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ce5572c4c5aca6f48496250c942d50b90551f36f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67595184"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546941"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>チュートリアル: Azure Active Directory と Kantega SSO for FishEye/Crucible の統合
 

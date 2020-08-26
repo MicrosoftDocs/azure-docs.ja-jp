@@ -1,6 +1,6 @@
 ---
 title: 拡張された GeoJSON ジオメトリ | Microsoft Azure Maps
-description: この記事では、特定のジオメトリを表すために、Microsoft Azure Maps で GeoJSON 仕様がどのように拡張されるかについて説明します。
+description: Azure Maps で、追加の幾何学図形を含めるために GeoJSON 仕様がどのように拡張されているかを説明します。 マップで使用する円と四角形を設定する例を確認します。
 author: sataneja
 ms.author: sataneja
 ms.date: 05/17/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 98db10f0fc7a417f39d4bb00e77af6bdea034a03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e6cfbef3751a7b4256f689af0e5b3524ae6fa878
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84687499"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037458"
 ---
 # <a name="extended-geojson-geometries"></a>拡張された GeoJSON ジオメトリ
 

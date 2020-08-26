@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 06/01/2020
+ms.date: 08/19/2020
 ms.author: victorh
-ms.openlocfilehash: a467aa60b131e47e9251366369b3fae8dd95c004
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: da2b206bf24cb33180305e32e270b989eb64dfa3
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267700"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612599"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Azure Firewall の強制トンネリング
 
@@ -24,13 +24,13 @@ ms.locfileid: "84267700"
 
 強制トンネリングをサポートするため、サービス管理のトラフィックは顧客のトラフィックから分離されます。 *AzureFirewallManagementSubnet* (最小サブネット サイズ /26) という名前の追加の専用サブネットと、それ自体に関連付けられているパブリック IP アドレスが必要です。 このサブネットで許可される唯一のルートはインターネットへの既定のルートであり、BGP ルート伝達は無効になっている必要があります。
 
-オンプレミスへのトラフィックを強制するために BGP 経由でアドバタイズされる既定のルートがある場合は、ファイアウォールをデプロイする前に *AzureFirewallSubnet* と *AzureFirewallManagementSubnet* を作成し、インターネットへの既定のルートを持つ UDR を作成して、**仮想ネットワーク ゲートウェイのルート伝達**を無効にする必要があります。
+オンプレミスへのトラフィックを強制するために BGP 経由でアドバタイズされる既定のルートがある場合は、ファイアウォールをデプロイする前に *AzureFirewallSubnet* と *AzureFirewallManagementSubnet* を作成し、インターネットへの既定のルートを持つ UDR を用意して、 **[ゲートウェイ ルートの伝達]** を無効にする必要があります。
 
-この構成では、インターネットに渡される前にトラフィックを処理するため、オンプレミスのファイアウォールまたは NVA へのルートを *AzureFirewallSubnet* に含めることができます。 また、このサブネットで**仮想ネットワーク ゲートウェイのルート伝達**が有効になっている場合は、BGP を使用してこれらのルートを *AzureFirewallSubnet* に公開することもできます。
+この構成では、インターネットに渡される前にトラフィックを処理するため、オンプレミスのファイアウォールまたは NVA へのルートを *AzureFirewallSubnet* に含めることができます。 このサブネットで **[ゲートウェイ ルートの伝達]** が有効になっている場合は、BGP を使用してこれらのルートを *AzureFirewallSubnet* に公開することもできます。
 
-たとえば、お使いのオンプレミスのデバイスに到達するための次ホップとして VPN ゲートウェイを使用して、*AzureFirewallSubnet* に既定のルートを作成できます。 または、**仮想ネットワーク ゲートウェイのルート伝達**を有効にして、オンプレミス ネットワークへの適切なルートを取得することもできます。
+たとえば、お使いのオンプレミスのデバイスに到達するための次ホップとして VPN ゲートウェイを使用して、*AzureFirewallSubnet* に既定のルートを作成できます。 または、 **[ゲートウェイ ルートの伝達]** を有効にして、オンプレミス ネットワークへの適切なルートを取得することもできます。
 
-![仮想ネットワーク ゲートウェイのルート伝達](media/forced-tunneling/route-propagation.png)
+:::image type="content" source="media/forced-tunneling/route-propagation.png" alt-text="仮想ネットワーク ゲートウェイのルート伝達":::
 
 強制トンネリングを有効にすると、SNAT によってインターネットへのトラフィックに AzureFirewallSubnet のいずれかのファイアウォール プライベート IP アドレスが適用され、オンプレミスのファイアウォールからソースが隠されます。
 

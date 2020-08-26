@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: 766fb9fbe50f8a138eae020082680204872a653a
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 0869de4ccfe89cc3919ec2d2d80aa3e18749039a
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87315447"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921094"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>サービス プロバイダー向けの Azure Monitor ログ
 
@@ -40,7 +40,7 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 
 分散アーキテクチャの利点は次のとおりです。
 
-* 顧客は [Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)を通じて特定のレベルのアクセス許可を確認することも、独自の[ロールベースのアクセス](../../role-based-access-control/overview.md)を使用してログへのアクセスを管理することもできます。
+* 顧客は [Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)を通じて特定のレベルのアクセス許可を承認することも、独自の [Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) を使用してログへのアクセスを管理することもできます。
 * エージェントベースの VM データだけでなく、あらゆる種類のリソースからログを収集できます。 たとえば、Azure 監査ログ です。
 * 保有期間やデータ キャッピングなど、顧客ごとに異なるワークスペース設定が可能です。
 * 規制やコンプライアンスについて顧客間で分離します。
@@ -90,4 +90,3 @@ Log Analytics ワークスペースに関するサービス プロバイダー�
 * [Power BI](./powerbi.md) を使用して概要レポートを作成する
 
 * [Azure の委任されたリソース管理](../../lighthouse/concepts/azure-delegated-resource-management.md)に顧客をオンボードする
-

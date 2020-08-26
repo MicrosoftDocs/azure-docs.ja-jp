@@ -4,12 +4,12 @@ description: このチュートリアルでは、Microsoft Azure Recovery Servic
 ms.topic: tutorial
 ms.date: 02/14/2018
 ms.custom: mvc
-ms.openlocfilehash: c9258b7f95337330e4f1de36e389f6b8f2276976
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 746c901747cf1c0b87612a31fbabcb657d5c4a0c
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "78672941"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263114"
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure から Windows Server にファイルを回復する
 
@@ -29,39 +29,39 @@ Microsoft Azure Backup という名前の便利なユーザー インターフ�
 
 1. **Microsoft Azure Backup** スナップインを開きます。 エージェントは、コンピューターで **Microsoft Azure Backup**を検索すると見つかります。
 
-    ![Backup pending](./media/tutorial-backup-restore-files-windows-server/mars.png)
+    ![Microsoft Azure Backup スナップイン](./media/tutorial-backup-restore-files-windows-server/mars.png)
 
-2. ウィザードで、エージェント コンソールの **[操作] ウィンドウ**で **[データの回復]** をクリックして、**データの回復**ウィザードを起動します。
+2. ウィザードで、エージェント コンソールの **[操作]** ペインで **[データの回復]** を選択して、**データの回復**ウィザードを起動します。
 
-    ![Backup pending](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
+    ![[データの回復] を選択する](./media/tutorial-backup-restore-files-windows-server/mars-recover-data.png)
 
-3. **[作業の開始]** ページで、 **[このサーバー (サーバー名)]** をクリックし、 **[次へ]** をクリックします。
+3. **[作業の開始]** ページで、 **[このサーバー (サーバー名)]** を選択し、 **[次へ]** を選択します。
 
-4. **[回復モードの選択]** ページで **[個々のファイルおよびフォルダー]** を選択し、 **[次へ]** をクリックして復旧ポイントの選択のプロセスを開始します。
+4. **[回復モードの選択]** ページで **[個々のファイルおよびフォルダー]** を選択し、 **[次へ]** を選択して復旧ポイントの選択のプロセスを開始します。
 
-5. **[ボリュームと日付の選択]** ページで、復元するファイルやフォルダーが格納されているボリュームを選択し、 **[マウント]** をクリックします。 日付を選択し、復旧ポイントに対応するドロップダウン メニューから時刻を選択します。 **ボールド**になっている日付では、その日の復旧ポイントを少なくとも 1 つ利用できます。
+5. **[ボリュームと日付の選択]** ページで、復元するファイルやフォルダーが格納されているボリュームを選択し、 **[マウント]** を選択します。 日付を選択し、復旧ポイントに対応するドロップダウン メニューから時刻を選択します。 **ボールド**になっている日付では、その日の復旧ポイントを少なくとも 1 つ利用できます。
 
-    ![Backup pending](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
+    ![ボリュームと日付を選択する](./media/tutorial-backup-restore-files-windows-server/mars-select-date.png)
 
-    **[マウント]** をクリックすると、Azure Backup は、復旧ポイントをディスクとして使用できるようにします。 ディスクからファイルを参照し、復旧します。
+    **[マウント]** を選択すると、Azure Backup によって、復旧ポイントがディスクとして使用できるようになります。 ディスクからファイルを参照し、復旧します。
 
 ## <a name="restore-items-from-a-recovery-point"></a>復旧ポイントから項目を復元する
 
-1. 回復ボリュームがマウントされたら、 **[参照]** をクリックして Windows エクスプローラーを開き、復旧するファイルとフォルダーを検索します。
+1. 回復ボリュームがマウントされたら、 **[参照]** を選択してエクスプローラーを開き、復旧するファイルとフォルダーを検索します。
 
-    ![Backup pending](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
+    ![[参照] を選択する](./media/tutorial-backup-restore-files-windows-server/mars-browse-recover.png)
 
     回復ボリュームから直接ファイルを開き、ファイルを確認できます。
 
-2. Windows エクスプローラーで、復元するファイルやフォルダーをコピーし、サーバー上の目的の場所に貼り付けます。
+2. エクスプローラーで、復元するファイルやフォルダーをコピーし、サーバー上の任意の場所に貼り付けます。
 
-    ![Backup pending](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
+    ![ファイルとフォルダーをコピーする](./media/tutorial-backup-restore-files-windows-server/mars-final.png)
 
-3. ファイルやフォルダーの復元が完了したら、**データの回復**ウィザードの **[ファイルの参照と回復]** ページで、 **[マウント解除]** をクリックします。
+3. ファイルやフォルダーの復元が完了したら、**データの回復**ウィザードの **[ファイルの参照と回復]** ページで、 **[マウント解除]** を選択します。
 
-    ![Backup pending](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
+    ![[マウント解除] を選択する](./media/tutorial-backup-restore-files-windows-server/unmount-and-confirm.png)
 
-4. ボリュームのマウントを解除するかどうかを確認するメッセージが表示されたら **[はい]** をクリックします。
+4. **[はい]** を選択して、ボリュームのマウントを解除することを確認します。
 
     スナップショットのマウントが解除されると、エージェント コンソールの **[ジョブ]** ウィンドウに **"ジョブが完了しました"** と表示されます。
 

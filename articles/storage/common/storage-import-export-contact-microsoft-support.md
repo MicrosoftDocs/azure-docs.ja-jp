@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 20ac33a26bfe24eb60e2febc1344859f4e54cdd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ee30e9bba35ad39606fbe201c49e4eed3e656c97
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514417"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548275"
 ---
 # <a name="open-a-support-ticket-for-an-importexport-job"></a>Import/Export ジョブのサポート チケットを開く
 
@@ -26,7 +26,7 @@ Import/Export サービスで問題が発生した場合は、テクニカル �
 
 サポート要求を作成するには、次の手順を実行します。
 
-1. Import/Export ジョブに移動します。 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート要求]** をクリックします。
+1. Import/Export ジョブに移動します。 **[サポート + トラブルシューティング]** セクションに移動し、 **[新しいサポート リクエスト]** を選択します。
      
     ![基本](./media/storage-import-export-contact-microsoft-support/import-export-support1.png)
    
@@ -40,7 +40,7 @@ Import/Export サービスで問題が発生した場合は、テクニカル �
         - **[BLOB]** を選択した場合は、 **[リソース]** 、 **[コンテナー名]** (省略可能)、および **[サポート プラン]** を選択します。
             ![[BLOB] を選択する](./media/storage-import-export-contact-microsoft-support/import-export-support2.png)
         - **[ファイル]** を選択した場合は、 **[リソース]** 、 **[ファイル共有名]** (省略可能)、および **[サポート プラン]** を選択します。![[ファイル] を選択する](./media/storage-import-export-contact-microsoft-support/import-export-support4.png)
-    4. **[次へ]** をクリックします。
+    4. **[次へ]** を選択します。
 
 3. **[新しいサポート要求]** で、 **[手順 2 問題]** を選択します。 **[問題]** で次の手順を実行します。
     
@@ -49,22 +49,22 @@ Import/Export サービスで問題が発生した場合は、テクニカル �
     3. **[カテゴリ]** で **[インポート - エクスポート]** を選択します。
     4. 問題の **[タイトル]** と **[詳細]** を入力します。
     5. 問題の開始日時を指定します。
-    6. アップロードするファイルが他にある場合は、 **[ファイルのアップロード]** でフォルダー アイコンをクリックしてファイルを参照します。
+    6. アップロードするファイルが他にある場合は、 **[ファイルのアップロード]** でフォルダー アイコンを選択してファイルを参照します。
     7. **[診断情報の共有]** チェック ボックスをオンにします。
-    8. **[次へ]** をクリックします。
+    8. **[次へ]** を選択します。
 
        ![問題](./media/storage-import-export-contact-microsoft-support/import-export-support5.png)
 
-4. **[新しいサポート要求]** で、 **[手順 3 連絡先情報]** をクリックします。 **[連絡先情報]** で、次の手順を実行します。
+4. **[新しいサポート リクエスト]** で、 **[手順 3 連絡先情報]** をクリックします。 **[連絡先情報]** で、次の手順を実行します。
 
    1. **[連絡先オプション]** で、希望する連絡方法 (電話または電子メール) および言語を指定します。 応答時間が、サブスクリプション プランに基づいて自動的に選択されます。
    2. [連絡先情報] で、名前、メール、オプションの連絡先、国や地域を指定します。 **[今後のサポート要求用に連絡先の変更を保存]** チェック ボックスをオンにします。
-   3. **Create** をクリックしてください。
+   3. **［作成］** を選択します
    
        ![連絡先情報](./media/storage-import-export-contact-microsoft-support/import-export-support7.png)   
 
       Microsoft サポートでは、この情報を使用してお客様に連絡し、詳細、診断、および解決策に関する情報を提供します。
-      要求を送信した後、その要求を処理するサポート エンジニアから速やかに連絡があります。
+      要求を送信した後、その要求の処理を進めるために、サポート エンジニアから連絡があります。
 
 ## <a name="manage-a-support-request"></a>サポート要求を管理する
 
@@ -80,11 +80,11 @@ Import/Export サービスで問題が発生した場合は、テクニカル �
 
     ![サポート要求を管理する](./media/storage-import-export-contact-microsoft-support/manage-support-ticket1.png) 
 
-3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、 **[+ 新しいメッセージ]** をクリックします。
+3. サポート要求を選択してクリックします。 この要求のステータスと詳細を表示することができます。 この要求をフォローアップする場合は、 **[+ 新しいメッセージ]** を選択します。
 
     ![サポート要求を管理する](./media/storage-import-export-contact-microsoft-support/manage-support-ticket3.png) 
 
 
 ## <a name="next-steps"></a>次のステップ
 
-[Import/Export サービスに関連する問題を解決する](storage-import-export-tool-troubleshooting-v1.md)方法について説明します。
+[Azure Import/Export を使用して Azure Storage との間でデータを転送する](storage-import-export-service.md)方法について確認します。

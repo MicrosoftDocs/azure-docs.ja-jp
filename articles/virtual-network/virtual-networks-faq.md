@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 0f277661ab61e7292fbb81d96c26c7d48c6d03ef
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c242b08c598b04c84ab330e846704eace23c4858
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087052"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205467"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -109,7 +109,7 @@ VNet では、TCP、UDP、および ICMP TCP/IP プロトコルを使用する�
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>作成した後、サブネットのサイズを変更できますか。
 はい。 VM またはサービスがサブネット内にデプロイされていない場合は、サブネットを追加、削除、拡張、または縮小できます。
 
-### <a name="can-i-modify-subnets-after-i-created-them"></a>サブネットを作成後に変更できますか。
+### <a name="can-i-modify-vnet-after-i-created-them"></a>Vnet を作成した後に変更することはできますか。
 はい。 VNet で使用された CIDR ブロックを追加、削除、変更することができます。
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>VNet でサービスを実行している場合、インターネットに接続できますか。
@@ -356,7 +356,7 @@ VNet サービス エンドポイントは、Azure サービス リソースを�
 はい、できます。 仮想ネットワークと Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 唯一の要件は、仮想ネットワークと Azure サービス リソースの両方が、同じ Active Directory (AD) テナントの下に存在する必要があることです。
 
 ### <a name="can-i-turn-on-vnet-service-endpoints-and-set-up-vnet-acls-if-the-virtual-network-and-the-azure-service-resources-belong-to-different-ad-tenants"></a>仮想ネットワークと Azure サービス リソースが異なる AD テナントに属している場合、VNet サービス エンドポイントを有効にして、VNet ACL を設定できますか。
-いいえ、VNet サービス エンドポイントと VNet ACL は、AD テナントをまたがってはサポートされません。
+はい。Azure Storage と Azure Key Vault にサービス エンドポイントを使用する場合は可能です。 残りのサービスでは、VNet サービス エンドポイントと VNet ACL は、AD テナントをまたがってはサポートされません。
 
 ### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gateway-vpn-or-expressroute-gateway-access-azure-paas-service-over-vnet-service-endpoints"></a>Azure Virtual Network ゲートウェイ (VPN) または ExpressRoute ゲートウェイを介して接続されているオンプレミス デバイスの IP アドレスでは、VNet サービス エンドポイント経由で Azure PaaS サービスにアクセスできますか。
 既定では、仮想ネットワークからのアクセスに限定された Azure サービス リソースは、オンプレミスのネットワークからはアクセスできません。 オンプレミスからのトラフィックを許可する場合は、オンプレミスまたは ExpressRoute からのパブリック IP アドレス (通常は NAT) を許可する必要もあります。 これらの IP アドレスは、Azure サービス リソースの IP ファイアウォール構成を通じて追加できます。

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/12/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d73782d9de7da2c5daacbff5397d9a365ff9ae03
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f93df91f87f8119a503f2f7c452b61e3af5924f8
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038411"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208792"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Azure Cognitive Search のインデクサー
 
@@ -38,7 +38,7 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 
 ## <a name="permissions"></a>アクセス許可
 
-インデクサーに関連するすべての操作 (状態や定義の GET 要求を含む) には、[管理者 API キー](search-security-api-keys.md)が必要です。 
+インデクサーに関連するすべての操作 (状態や定義の GET 要求を含む) には、[管理者 API キー](search-security-api-keys.md)が必要です。
 
 <a name="supported-data-sources"></a>
 
@@ -54,7 +54,44 @@ Azure Cognitive Search の *インデクサー* は、検索可能なデータ�
 * [Azure Virtual Machines における SQL Server](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
 * [SQL Managed Instance](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md)
 
+## <a name="indexer-stages"></a>インデクサーのステージ
+
+最初の実行時に、インデックスが空の場合、テーブルまたはコンテナーで提供されるすべてのデータがインデクサーによって読み取られます。 その後の実行では、通常、変更されたデータのみがインデクサーによって検出され取得されます。 BLOB データの場合、変更の検出は自動で行われます。 Azure SQL や Cosmos DB などの他のデータ ソースで、変更の検出を有効にする必要があります。
+
+インデクサーは、それによって取り込まれたドキュメントのそれぞれについて、ドキュメントの検索からインデックス作成のための最終的な検索エンジンの "ハンドオフ" にいたるまでの複数のステップを実装または調整します。 必要に応じて、インデクサーは、スキルセットが定義されていると想定して、スキルセットの実行と出力を促進するのにも役立ちます。
+
+![インデクサーのステージ](./media/search-indexer-overview/indexer-stages.png "インデクサーのステージ")
+
+### <a name="stage-1-document-cracking"></a>ステージ 1:ドキュメントの解読
+
+ドキュメント解析は、ファイルを開いてコンテンツを抽出するプロセスです。 データ ソースの種類に応じて、インデックス付けが可能なコンテンツを抽出するために、インデクサーによってさまざまな操作の実行が試行されます。  
+
+例 :  
+
+* ドキュメントが [Azure SQL データ ソース](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)内のレコードの場合、インデクサーによってレコードの各フィールドが抽出されます。
+* ドキュメントが [Azure Blob Storage データ ソース](search-howto-indexing-azure-blob-storage.md)内の PDF ファイルの場合、そのファイルのテキスト、イメージ、およびメタデータがインデクサーによって抽出されます。
+* ドキュメントが [Cosmos DB データ ソース](search-howto-index-cosmosdb.md)内のレコードの場合、インデクサーによって Cosmos DB ドキュメントからフィールドとサブフィールドが抽出されます。
+
+### <a name="stage-2-field-mappings"></a>ステージ 2:フィールド マッピング 
+
+インデクサーによって、ソース フィールドからテキストが抽出され、インデックスまたはナレッジ ストアの送信先フィールドにそれが送信されます。 フィールド名と型が一致すると、パスは明確になります。 ただし、出力には異なる名前または型が必要な場合があります。その場合は、フィールドをマップする方法をインデクサーに指示する必要があります。 このステップは、ドキュメント解析の後、変換前に、インデクサーがソース ドキュメントから読み取るときに発生します。 [フィールド マッピング](search-indexer-field-mappings.md)を定義するときに、ソース フィールドの値は変更されずにそのまま送信先フィールドに送信されます。 フィールド マッピングは省略可能です。
+
+### <a name="stage-3-skillset-execution"></a>ステージ 3:スキルセットの実行
+
+スキルセットの実行は、組み込みまたはカスタムの AI 処理を呼び出す省略可能なステップです。 これは画像分析の形式で光学式文字認識 (OCR) に必要になる場合や、言語翻訳が必要な場合があります。 変換が何であれ、スキルセットの実行は、エンリッチメントが発生する場所です。 インデクサーがパイプラインの場合、[スキルセット](cognitive-search-defining-skillset.md)を "パイプライン内のパイプライン" として考えることができます。 スキルセットには、スキルと呼ばれる独自のステップのシーケンスがあります。
+
+### <a name="stage-4-output-field-mappings"></a>ステージ 4: 出力フィールド マッピング
+
+スキルセットの出力は、実際にはエンリッチされたドキュメントと呼ばれる情報のツリーです。 出力フィールド マッピングを使用すると、このツリーの部分を選択してインデックス内のフィールドにマップすることができます。 [出力フィールド マッピングを定義する](cognitive-search-output-field-mapping.md)方法について学習します。
+
+ソースからターゲット フィールドに逐語的な値を関連付けるフィールド マッピングと同様に、出力フィールド マッピングによって、エンリッチされたドキュメント内の変換された値をインデックス内のターゲット フィールドに関連付ける方法がインデクサーに伝えられます。 省略可能と見なされるフィールド マッピングとは異なり、インデックスに存在する必要がある変換されたコンテンツに対しては、出力フィールド マッピングを常に定義する必要があります。
+
+次の図は、インデクサーのステージ (ドキュメント解析、フィールド マッピング、スキルセットの実行、出力フィールド マッピング) のサンプル インデクサーの[デバッグ セッション](cognitive-search-debug-session.md)表現を示しています。
+
+:::image type="content" source="media/search-indexer-overview/sample-debug-session.png" alt-text="デバッグ セッションのサンプル" lightbox="media/search-indexer-overview/sample-debug-session.png":::
+
 ## <a name="basic-configuration-steps"></a>基本的な構成手順
+
 インデクサーで実行できる機能は、データ ソースごとに異なります。 そのためインデクサーやデータ ソースの構成には、インデクサーの種類ごとに異なる点があります。 しかし基本的な成り立ちと要件は、すべてのインデクサーに共通です。 以降、すべてのインデクサーに共通の手順について取り上げます。
 
 ### <a name="step-1-create-a-data-source"></a>手順 1:データ ソースを作成する

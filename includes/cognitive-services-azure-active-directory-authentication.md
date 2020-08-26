@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/11/2020
-ms.openlocfilehash: 6bbdd3eb62229c3f8f180d2618dd25062ff0c1e9
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.openlocfilehash: 235b7946fbcfc2322878428cce72e77ecceb9cfc
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86062668"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88010978"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Azure Active Directory を使用して認証する
 
@@ -17,7 +17,7 @@ ms.locfileid: "86062668"
 > 1. 現時点では、Computer Vision API、Face API、Text Analytics API、Immersive Reader、Form Recognizer、Anomaly Detector、Bing Custom Search を除くすべての Bing **のみ**において、Azure Active Directory (AAD) を使用した認証がサポートされています。
 > 2. AAD 認証は常に、Azure リソースのカスタム サブドメイン名と共に使用される必要があります。 [リージョン エンドポイント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#is-there-a-list-of-regional-endpoints)では、AAD 認証はサポートされません。
 
-前のセクションでは、Azure Cognitive Services に対して単一サービスまたはマルチサービスのサブスクリプション キーを使用して認証する方法を説明しました。 これらのキーを使用すると、開発を迅速かつ簡単に開始できますが、ロールベースのアクセス制御を必要とするより複雑なシナリオでは不十分です。 Azure Active Directory (AAD) を使用して認証を行うために何が必要なのかを確認しましょう。
+前のセクションでは、Azure Cognitive Services に対して単一サービスまたはマルチサービスのサブスクリプション キーを使用して認証する方法を説明しました。 これらのキーを使用すると、開発を迅速かつ簡単に開始できますが、Azure ロールベースのアクセス制御 (Azure RBAC) を必要とするより複雑なシナリオでは不十分です。 Azure Active Directory (AAD) を使用して認証を行うために何が必要なのかを確認しましょう。
 
 以降のセクションでは、Azure Cloud Shell 環境または Azure CLI を使用してサブドメインを作成し、ロールを割り当てて、Azure Cognitive Services を呼び出すベアラー トークンを取得します。 問題が発生した場合は、各セクションに、Azure Cloud Shell/Azure CLI の各コマンドで使用可能なすべてのオプションへのリンクが提供されています。
 
@@ -45,7 +45,7 @@ ms.locfileid: "86062668"
 これで、カスタム サブドメインがリソースに関連付けられたので、ロールをサービス プリンシパルに割り当てる必要があります。
 
 > [!NOTE]
-> AAD ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。
+> Azure ロールの割り当ての反映には最大で 5 分かかる場合があることに留意してください。
 
 1. まず、[AAD アプリケーション](https://docs.microsoft.com/powershell/module/Az.Resources/New-AzADApplication?view=azps-1.8.0)を登録してみましょう。
 

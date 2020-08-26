@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 218850feea8b0e22b8e11695a3aa3c69173f1ab7
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75896137"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88504927"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Azure HDInsight での認証の問題
 
@@ -208,7 +208,7 @@ kinit が `Preauthentication` エラーで失敗します。
 
 * Azure Data Lake Storage Gen1 の場合は、ブラウザー キャッシュを消去し、もう一度 Ambari にログインします。
 
-* Azure Data Lake Storage Gen2 の場合は、ユーザーがログインしようとしているユーザーの `/usr/lib/hdinsight-common/scripts/RegisterKerbWithOauth.sh <upn>` を実行します。
+* Azure Data Lake Storage Gen2 の場合は、ユーザーがログインしようとしているユーザーの `/usr/lib/hdinsight-common/scripts/RegisterKerbTicketAndOAuth.sh <upn>` を実行します。
 
 ---
 

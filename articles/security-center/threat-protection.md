@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: memildin
-ms.openlocfilehash: f5218b2346b6ddebcee87a0e24f4924deafdb0f2
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 69f439e102edc53207e44d63cb29396f64f59e0e
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86037190"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272503"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Azure Security Center での脅威の防止
 
@@ -54,11 +54,15 @@ Azure Security Center は Azure サービスと統合し、Windows ベースの�
 
     Microsoft Defender ATP で脅威が検出されると、アラートがトリガーされます。 アラートは、[Security Center] ダッシュボードに表示されます。 ダッシュボードからは、Microsoft Defender ATP コンソールにピボットし、詳細な調査を実行して攻撃の範囲を明らかにすることができます。 Microsoft Defender ATP の詳細については、「[Microsoft Defender ATP サービスに対するサーバーのオンボード](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints)」をご覧ください。
 
-* **ファイルレス攻撃の検出** <a name="windows-fileless"></a> - エンドポイントを対象とするファイルレス攻撃は一般的です。 ファイルレス攻撃は、検出を回避するために悪意のあるペイロードをメモリに挿入します。 侵害されたプロセスのメモリ内に存続する攻撃者のペイロードにより、さまざまな悪意のあるアクティビティが実行されます。
+* **ファイルレス攻撃の検出** <a name="windows-fileless"></a> - ファイルレス攻撃は、ディスクベースのスキャン手法による検出を避けるために、悪意のあるペイロードをメモリに挿入します。 侵害されたプロセスのメモリ内に存続する攻撃者のペイロードにより、さまざまな悪意のあるアクティビティが実行されます。
 
-    自動メモリ フォレンジック手法は、ファイルレス攻撃の検出を使用して、ファイルレス攻撃のツールキット、手法、および動作を識別します。 このソリューションでは、実行時にマシンが定期的にスキャンされて、セキュリティ クリティカルなプロセスのメモリから分析情報が直接抽出されます。
+    自動メモリ フォレンジック手法は、ファイルレス攻撃の検出を使用して、ファイルレス攻撃のツールキット、手法、および動作を識別します。 このソリューションでは、実行時にマシンが定期的にスキャンされて、プロセスのメモリから分析情報が直接抽出されます。 Linux の特定の分析情報には、次のものの識別が含まれます。 
 
-    これは、悪用、コード インジェクション、および悪意のあるペイロードの実行の証拠を見つけます。 ファイルレス攻撃の検出により、アラートのトリアージ、相関関係、およびダウン ストリームの応答時間を高速化するための詳細なセキュリティ アラートが生成されます。 このアプローチにより、イベント ベースの EDR ソリューションが補完され、検出範囲が拡大します。
+    - よく知られているツールキットと暗号化マイニング ソフトウェア 
+    - シェルコード。通常、ソフトウェアの脆弱性の悪用でペイロードとして使用される小さなコードです。
+    - プロセスのメモリ内に挿入された悪意のある実行可能ファイル
+
+    ファイルレス攻撃の検出では、ネットワーク アクティビティなどの追加のプロセス メタデータの記述を含む詳細なセキュリティ アラートが生成されます。 これにより、アラートのトリアージ、関連付け、およびダウンストリームの応答時間が短縮されます。 このアプローチにより、イベント ベースの EDR ソリューションが補完され、検出範囲が拡大します。
 
     ファイルレス攻撃の検出アラートの詳細については、[アラートのリファレンス表](alerts-reference.md#alerts-windows)に関するページを参照してください。
 
@@ -110,12 +114,13 @@ App Service プランの詳細については、「[App Service プラン](https
 
 ### <a name="availability"></a>可用性
 
-- リリース状態: **一般提供**
-- 必要なロール: **セキュリティ管理者**はアラートを無視できます。 **セキュリティ閲覧者**は、結果を表示できます。
-- クラウド:<br>
-    ✔ 商用クラウド<br>
-    ✘ US Gov<br>
-    ✘ China Gov、その他の Gov
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般公開|
+|価格:|Standard レベル|
+|必要なロールとアクセス許可:|**セキュリティ管理者**はアラートを無視できます。<br>**セキュリティ閲覧者**は、結果を表示できます。|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![No](./media/icons/no-icon.png) ナショナル/ソブリン (US Gov、China Gov、その他の Gov)|
+|||
 
 [!INCLUDE [AKS in ASC threat protection](../../includes/security-center-azure-kubernetes-threat-protection.md)]
 
@@ -146,14 +151,13 @@ Advanced Threat Protection for Azure SQL Database and SQL は、高度な SQL �
 
 ### <a name="availability"></a>可用性
 
-- リリース状態:
-    - [Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (一般提供)
-    - [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (プレビュー)
-    - [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (プレビュー)
-- クラウド:<br>
-    ✔ 商用クラウド<br>
-    ✔ US Gov<br>
-    ✘ China Gov、その他の Gov
+|側面|詳細|
+|----|:----|
+|リリース状態:|[Blob Storage](https://azure.microsoft.com/services/storage/blobs/) (一般提供)<br>[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) (プレビュー)<br>[Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (プレビュー)|
+|価格:|Standard レベル|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
+|||
+
 
 ### <a name="whats-protected"></a>保護対象
 
@@ -226,7 +230,6 @@ Security Center のネットワーク レイヤー分析は、サンプルの [I
 
 Azure ネットワーク レイヤー アラートの一覧については、[アラートのリファレンス表](alerts-reference.md#alerts-azurenetlayer)に関するページを参照してください。
 
-Security Center でネットワーク関連のシグナルを使用して脅威の防止を適用する方法の詳細については、「[Security Center でのヒューリスティック DNS 検出](https://azure.microsoft.com/blog/heuristic-dns-detections-in-azure-security-center/)」を参照してください。
 
 
 

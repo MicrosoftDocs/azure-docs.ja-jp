@@ -9,14 +9,16 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 543644495a99bacd40edc3f2d9151e4c15808c50
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 47a8d58d6ca0a8a04823fe09fb52490f13cfead7
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038428"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88208747"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Azure Cognitive Search インデクサーを使用したフィールドのマッピングと変換
+
+![インデクサーのステージ](./media/search-indexer-field-mappings/indexer-stages-field-mappings.png "インデクサーのステージ")
 
 Azure Cognitive Search インデクサーを使用すると、入力データがターゲット インデックスのスキーマと完全に一致しないことがあります。 そのような場合は、インデックス作成処理中に**フィールド マッピング**を使用してデータを変形できます。
 

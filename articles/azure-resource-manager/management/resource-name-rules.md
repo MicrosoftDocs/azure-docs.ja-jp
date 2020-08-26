@@ -3,12 +3,12 @@ title: リソースの名前付けに関する制限事項
 description: Azure リソースの名前付けに関する規則と制限事項を示します。
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: ca13203b6d31c1eeb939c668a58e67f0d462a905
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 56c50354a6ecbd6ba1d9a806f986cea1c4f3215f
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85554351"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235980"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Azure リソースの名前付け規則と制限事項
 
@@ -392,6 +392,7 @@ ms.locfileid: "85554351"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
+> | actionGroups | resource group | 1-260 | 次は使用できません:<br>`/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 > | components | resource group | 1-260 | 次は使用できません:<br>`%&\?/` <br><br>末尾をスペースまたはピリオドにすることはできません。  |
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
@@ -695,6 +696,7 @@ ms.locfileid: "85554351"
 > [!div class="mx-tableFixed"]
 > | Entity | Scope | 長さ | 有効な文字 |
 > | --- | --- | --- | --- |
+> | certificates | resource group | 1-260 | 次は使用できません:<br>`/` <br><br>末尾をスペースまたはピリオドにすることはできません。  | 
 > | serverfarms | resource group | 1-40 | 英数字とハイフン。 |
 > | sites | グローバル | 2 から 60 | 英数字とハイフンを含みます。<br><br>先頭または末尾をハイフンにすることはできません。 |
 > | sites/slots | site | 2 ～ 59 | 英数字とハイフン。 |

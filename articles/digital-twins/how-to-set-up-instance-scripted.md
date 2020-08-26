@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 82ddba67a6bd9fcc56b74c3f830663228feb945b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 86597521f762237b5c4bc9a7a5268d7dae1303b4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88009700"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587979"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Azure Digital Twins インスタンスと認証を設定する (スクリプト化)
 
@@ -110,6 +110,8 @@ ms.locfileid: "88009700"
 
 > [!NOTE]
 > スクリプトが現在、この必要なロールを Cloud Shell からスクリプトを実行している同じユーザーに割り当てていることを思い出してください。 このロールを、このインスタンスを管理するだれか他のユーザーに割り当てる必要がある場合は、Azure portal ([手順](how-to-set-up-instance-portal.md#set-up-user-access-permissions)) または CLI ([手順](how-to-set-up-instance-cli.md#set-up-user-access-permissions)) を使用してこれを実行できます。
+>
+> また、スクリプトを使用した設定で問題がある場合は、ポータルまたは CLI を使用して自分独自のロール割り当てをやり直すこともできます。
 
 ### <a name="verify-app-registration"></a>アプリ登録を確認する
 

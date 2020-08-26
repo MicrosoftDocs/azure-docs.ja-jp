@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Chromeriver の統合 | Microsoft Docs'
 description: Azure Active Directory と Chromeriver の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 445c5600-e340-4724-a9cb-3cfaf5770b70
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d07a54024ab3972734533767e6bf7c040efa94e
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e4be05a896fbd14b21d0825376b4e2cfad6a530c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157483"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529462"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chromeriver"></a>チュートリアル: Azure Active Directory と Chromeriver の統合
 

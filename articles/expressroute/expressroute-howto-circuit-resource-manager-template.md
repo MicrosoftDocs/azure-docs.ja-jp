@@ -1,18 +1,18 @@
 ---
 title: Azure ExpressRoute テンプレート:ExpressRoute 回線の作成
-description: ExpressRoute 回線を作成、プロビジョニング、削除、およびプロビジョニング解除します。
+description: Azure PowerShell を使用して、Azure Resource Manager テンプレートをデプロイすることで、Azure ExpressRoute 回線を作成する方法について説明します。
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: charwen
-ms.openlocfilehash: 336337c0860ba19095665310d2c797cf10ba183f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 78318726a658b6e0dc966288f386c65ee4c6f0e4
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84736307"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190440"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ExpressRoute 回線を作成する
 

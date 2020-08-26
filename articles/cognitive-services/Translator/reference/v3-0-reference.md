@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 4/17/2020
+ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: 2ddc3921c77f8861761ea37b8783e220c1242b97
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592272"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121019"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -57,7 +57,7 @@ Azure Cognitive Services の Translator または [Cognitive Services マルチ�
 |ヘッダー|説明|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|*秘密鍵を渡そうとしている場合は、Cognitive Services サブスクリプションで使用します*。<br/>値は、Translator に対するユーザーのサブスクリプションの Azure 秘密鍵です。|
-|Authorization|*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
+|承認|*認証トークンを渡そうとしている場合は、Cognitive Services サブスクリプションで使用します。*<br/>値はベアラー トークンで、`Bearer <token>` となります。|
 |Ocp-Apim-Subscription-Region|"*Cognitive Services マルチサービスとリージョン トランスレータ― リソースと共に使用します。* "<br/>値は、マルチサービスまたはリージョン トランスレーター リソースのリージョンです。 グローバル トランスレーター リソースを使用する場合、この値は省略可能です。|
 
 ###  <a name="secret-key"></a>秘密鍵
@@ -147,11 +147,11 @@ Authorization: Bearer <Base64-access_token>
 
 ## <a name="virtual-network-support"></a>仮想ネットワークのサポート
 
-限られたリージョン (`WestUS2`、`EastUS`、`SouthCentralUS`、`WestUS`、`CentralUSEUAP`、`global`) で Virtual Network の機能を使用してトランスレータ― サービスを利用できるようになりました。 Virtual Network を有効にするには、「[Azure Cognitive Services 仮想ネットワークを構成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)」を参照してください。 
+翻訳サービスは、Azure パブリック クラウドのすべてのリージョンの Virtual Network (VNET) 機能で使用できるようになりました。 Virtual Network を有効にするには、「[Azure Cognitive Services 仮想ネットワークを構成する](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)」を参照してください。 
 
 この機能を有効にした後、カスタム エンドポイントを使用して Translator を呼び出す必要があります。 グローバル トランスレーター エンドポイント ("api.cognitive.microsofttranslator.com") は使用できず、アクセス トークンで認証することはできません。
 
-[トランスレータ― リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)を作成した後、カスタム エンドポイントを見つけることができます。
+[トランスレーター リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextTranslation)を作成し、選択したネットワークとプライベート エンドポイントからのアクセスを許可すると、カスタム エンドポイントを見つけることができます。
 
 |ヘッダー|説明|
 |:-----|:----|

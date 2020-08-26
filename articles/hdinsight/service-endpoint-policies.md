@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/15/2020
-ms.openlocfilehash: 5bc8955f9eb9db837b3243b8a2937d80a4d38e2e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2752e5ab2bf7c2926ec9e2c0e4929eab91ed377
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87095484"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530972"
 ---
 # <a name="configure-virtual-network-service-endpoint-policies-for-azure-hdinsight"></a>Azure HDInsight の仮想ネットワーク サービス エンドポイント ポリシーを構成する
 
@@ -91,7 +91,7 @@ Azure HDInsight では、独自の仮想ネットワークでクラスターを�
 
     PowerShell を使用してサービス エンドポイント ポリシーを設定する場合は、次のコード スニペットを使用します。
     
-    ```json
+    ```powershell
     #Script to assign SEP 
     $subscriptionId = "<subscription id>"
     $rgName = "<resource group name>"

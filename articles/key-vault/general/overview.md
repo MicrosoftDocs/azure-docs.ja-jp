@@ -1,6 +1,6 @@
 ---
 title: Azure Key Vault の概要 - Azure Key Vault | Microsoft Docs
-description: Azure Key Vault は、セキュリティで保護されたシークレット ストアとして機能するクラウド サービスです。
+description: Azure Key Vault は、ハードウェア セキュリティ モジュールを背景にシークレット、キー、証明書を管理する安全なシークレット ストアです。
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ef31a11414fad1b9a3d06d00055c36c995adcce
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 98f681494ca73bd2698cd3068441cf02cd6730ac
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216316"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190551"
 ---
 # <a name="about-azure-key-vault"></a>Azure Key Vault について
 

@@ -9,12 +9,12 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
-ms.openlocfilehash: 76eee4b0b029714a75b57e5d44e097a36de3181f
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: a623436cdeaac89d140b3834808fb975bd733f4e
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371415"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87835954"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Azure portal での Azure Cognitive Search のサービス管理
 
@@ -56,9 +56,9 @@ Basic で最大数である 1 つのパーティションを使用して開始�
 * サービスに対する読み取り専用アクセスがクエリの権限で、通常は、URL とクエリ API キーを与えることによってクライアント アプリケーションに付与されます。
 * 読み取り/書き込みアクセスでは、API キー、インデックス、インデクサー、データ ソース、スケジュールを含むサーバー オブジェクトを追加、削除、または変更する機能が提供されます。URL と管理 API キーを与えることによって、読み取り/書き込みアクセスが付与されます。
 
-サービスのプロビジョニング装置に対する権限は、ロールの割り当てを通して付与されます。 [ロール ベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) は、Azure リソースをプロビジョニングするために [Azure Resource Manager](../azure-resource-manager/management/overview.md) 上に構築された承認システムです。 
+サービスのプロビジョニング装置に対する権限は、ロールの割り当てを通して付与されます。 [Azure ロール ベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) は、Azure リソースをプロビジョニングするために [Azure Resource Manager](../azure-resource-manager/management/overview.md) 上に構築された承認システムです。 
 
-Azure Cognitive Search のコンテキストでは、[ポータル](search-manage.md)、[PowerShell](search-manage-powershell.md)、[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) のうちどれを使用しているかとは無関係に、[RBAC ロールの割り当て](search-security-rbac.md)によって、タスクを実行できるユーザーが決定されます。
+Azure Cognitive Search のコンテキストでは、[ポータル](search-manage.md)、[PowerShell](search-manage-powershell.md)、[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api) のうちどれを使用しているかとは無関係に、[Azure ロールの割り当て](search-security-rbac.md)によって、タスクを実行できるユーザーが決定されます。
 
 * サービスの作成または削除
 * サービスのスケーリング

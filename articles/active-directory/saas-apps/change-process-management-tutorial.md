@@ -2,25 +2,21 @@
 title: チュートリアル:Azure AD SSO と Change Process Management の統合
 description: Azure Active Directory と Change Process Management の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: d1215e3d-44f6-477d-9d94-bec0c9ebdbb0
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f803fda1d1709e60db078f7b729d7588aa725fd
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 501f19b2022d221ad6facd66c483790b13491ba0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456829"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88529680"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-change-process-management"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Change Process Management の統合
 

@@ -3,12 +3,12 @@ title: IoT Edge デバイスに Live Video Analytics をデプロイする - Azu
 description: この記事では、IoT Edge デバイスに Live Video Analytics をデプロイするときに役立つ手順を示します。 たとえば、ローカル Linux コンピューターにアクセスできる場合や、以前に Azure Media Services アカウントを作成してある場合などに、これを行います。
 ms.topic: how-to
 ms.date: 04/27/2020
-ms.openlocfilehash: ea7a1026f42cd3d8745559bc195a89b7fbcb69a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f031f679d8fe8e1c14b6a4086f5e1c37f15c7855
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87074460"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067910"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>IoT Edge デバイスに Live Video Analytics をデプロイする
 
@@ -86,8 +86,8 @@ Live Video Analytics on IoT Edge では、「[モジュール ツインの構成
 
 ### <a name="deploy-using-the-azure-portal"></a>Azure Portal を使用したデプロイ
 
-Azure portal では、配置マニフェストの作成から、IoT Edge デバイスへのデプロイのプッシュまでをガイドします。
-デバイスを選択する
+Azure portal では、配置マニフェストの作成から、IoT Edge デバイスへのデプロイのプッシュまでをガイドします。  
+#### <a name="select-your-device-and-set-modules"></a>デバイスを選択してモジュールを設定する
 
 1. [Azure Portal](https://ms.portal.azure.com/) にサインインし、IoT Hub に移動します。
 1. メニューから **[IoT Edge]** を選択します。
@@ -112,23 +112,12 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     > [!TIP]
     > この手順の説明に従って、 **[モジュール設定]** タブ、 **[コンテナ作成オプション]** タブ、および **[モジュールツイン設定]** タブで値を指定するまで、 **[追加]** を選択しないでください。
     
-    > [!IMPORTANT]
+    > [!WARNING]
     > Azure IoT Edge モジュールの呼び出しでは、大文字と小文字が区別されます。 モジュール名として使用する文字列を正確に記録しておきます。
 
 1. **[環境変数]** タブを開きます。
    
-   次の JSON をコピーしてボックスに貼り付け、アプリケーション データとビデオ出力を保存するために使用するユーザー ID とグループ ID を指定します。
-    ```   
-   {
-        "LOCAL_USER_ID": 
-        {
-            "value": "1010"
-        },
-        "LOCAL_GROUP_ID": {
-            "value": "1010"
-        }
-    }
-     ``` 
+   ![環境変数](./media/deploy-iot-edge-device/environment-variables.png)に表示される入力ボックスに、次の値を追加します。 
 
 1. **[コンテナーの作成オプション]** タブを開きます。
 
@@ -201,8 +190,8 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     "armEndpoint": "https://management.azure.com/",
     "allowUnsecuredEndpoints": true
     ```
-   [!Note]
-   ツイン プロパティ **allowUnsecuredEndpoints** を true に設定してあるのは、チュートリアルとクイックスタートのためです。   
+   > [!Note]
+   > ツイン プロパティ **allowUnsecuredEndpoints** を true に設定してあるのは、チュートリアルとクイックスタートのためです。   
    運用環境で実行する場合は、このプロパティを **false** に設定する必要があります。 これにより、セキュリティ保護されていないすべてのエンドポイントがアプリケーションでブロックされ、グラフのトポロジを実行するには、有効な接続資格情報が必要になります。  
    
     [追加] を選択して、モジュール ツインのプロパティを追加します。
@@ -258,5 +247,7 @@ Azure portal では、配置マニフェストの作成から、IoT Edge デバ�
     ![200 状態メッセージ](./media/deploy-iot-edge-device/connection-timeout.png) 
 
 ## <a name="next-steps"></a>次のステップ
+次を試します。「[クイックスタート: はじめに - Live Video Analytics on IoT Edge](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
 
-[クイック スタート: はじめに - Live Video Analytics on IoT Edge](get-started-detect-motion-emit-events-quickstart.md)
+> [!TIP]
+> コマンドで次を実行し、既定の `lva-sample-device` の代わりに `device-id` を使用します。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogardle
-ms.openlocfilehash: 78eedb9bd4f12644a1bc992d0786a43b8af767a9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 0dd787916159637ce92a29a5d4baa1ffe7a09ba4
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86507932"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510013"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -187,7 +187,7 @@ I/O 要件を明確に把握した後に、これらの要件に最適なドラ�
 - I/O 削減のためにデータ圧縮を使用します (データとインデックスの両方)。
 - REDO ログ、SYSTEM 表領域、TEMP 表領域、UNDO 表領域は、それぞれ別のデータ ディスクに分離します。
 - アプリケーション ファイルを既定の OS ディスク (/dev/sda) に保存しないでください。 これらのディスクは VM の高速起動用に最適化されていないため、アプリケーションに適切なパフォーマンスが提供されない可能性があります。
-- Premium ストレージで M シリーズの VM を使用する場合は、再実行ログ ディスクで[書き込みアクセラレータ](../../linux/how-to-enable-write-accelerator.md)を有効にします。
+- Premium ストレージで M シリーズの VM を使用する場合は、再実行ログ ディスクで[書き込みアクセラレータ](../../how-to-enable-write-accelerator.md)を有効にします。
 
 ### <a name="disk-cache-settings"></a>ディスク キャッシュの設定
 

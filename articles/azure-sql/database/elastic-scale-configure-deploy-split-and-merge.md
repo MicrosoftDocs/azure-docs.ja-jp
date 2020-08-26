@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/04/2018
-ms.openlocfilehash: 200a6b1bc2f960555fae1d910dfebde66628d13a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1cd03814e1590abebb74db490a2692d492a9207d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84031973"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88064946"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -173,6 +173,9 @@ Split-Merge サービスの Web エンドポイントを決定します。 こ�
 ### <a name="test-with-powershell-scripts"></a>PowerShell スクリプトでのテスト
 
 付属の PowerShell スクリプト サンプルを実行して、デプロイメントと環境をテストできます。
+
+> [!IMPORTANT]
+> このサンプル スクリプトは PowerShell 5.1 で実行してください。 現時点では、PowerShell 6 以降では実行できません。
 
 付属のスクリプト ファイルは、次のとおりです。
 

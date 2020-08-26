@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 34b7f4bc55fc8e33b7d66f53e6f2fc241801f965
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ad6bbc1d3c20659441b8b062898526471f4d713a
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87827420"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510234"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ワークロードのための Azure Virtual Machines DBMS デプロイの考慮事項
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -221,7 +221,7 @@ Premium Storage については、次のキャッシュ オプションが存在
 
 Premium Storage の場合は、SAP データベースの**データ ファイルに読み取りキャッシュ**を使用し、**ログ ファイルのディスクにキャッシュなし**を選択することをお勧めします。
 
-M シリーズのデプロイでは、DBMS のデプロイに Azure 書き込みアクセラレータを使用することをお勧めします。 Azure 書き込みアクセラレータの詳細、制限、およびデプロイについては、「[書き込みアクセラレータを有効にする](../../windows/how-to-enable-write-accelerator.md)」を参照してください。
+M シリーズのデプロイでは、DBMS のデプロイに Azure 書き込みアクセラレータを使用することをお勧めします。 Azure 書き込みアクセラレータの詳細、制限、およびデプロイについては、「[書き込みアクセラレータを有効にする](../../how-to-enable-write-accelerator.md)」を参照してください。
 
 
 ### <a name="azure-nonpersistent-disks"></a>Azure の非永続的ディスク

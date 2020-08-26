@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6e4ed8514cd99d42790296a58296a73696989b69
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 09dd444d0d7409ca86955d2854aec82f07db0c4d
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87539137"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185402"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Azure Machine Learning を使用して自動機械学習モデルを作成、確認、デプロイする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -134,7 +134,7 @@ Python コードベースのエクスペリエンスでは、Azure Machine Learn
 
     追加の構成|説明
     ------|------
-    主要メトリック| モデルをスコアリングするために使用される主なメトリックです。 [モデルのメトリックの詳細については、こちらを参照してください](how-to-configure-auto-train.md#explore-model-metrics)。
+    主要メトリック| モデルをスコアリングするために使用される主なメトリックです。 [モデルのメトリックの詳細については、こちらを参照してください](how-to-configure-auto-train.md#primary-metric)。
     最適なモデルの説明 | 推奨される最適なモデルの説明を表示するために、選択して有効にするか、無効にします。
     Blocked algorithm (ブロックするアルゴリズム)| トレーニング ジョブから除外するアルゴリズムを選択します。
     終了条件| これらの基準のどれかが満たされると、トレーニング ジョブが終了します。 <br> *トレーニング ジョブ時間 (時間単位)* :トレーニング ジョブを実行できる時間の長さ。 <br> *Metric score threshold* (メトリック スコアのしきい値): すべてのパイプラインの最小メトリック スコアです。 これにより、達成目標のターゲット メトリックを定義した場合には、必要以上にトレーニング ジョブに時間を費やすことはなくなります。

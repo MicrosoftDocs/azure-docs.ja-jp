@@ -1,5 +1,5 @@
 ---
-title: Azure Cognitive Search .NET SDK バージョン 10 へのアップグレード
+title: .NET SDK バージョン10 にアップグレードする
 titleSuffix: Azure Cognitive Search
 description: 以前のバージョンから Azure Cognitive Search .NET SDK バージョン 10 にコードを移行します。 新機能と必要なコード変更について説明します。
 manager: nitinme
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6ce4e308420fc3ea1928b44013a78d0ae57d2c35
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 61fee97323d110875cb05fb48157527a39c80f56
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85562382"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905783"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Azure Cognitive Search .NET SDK バージョン 10 へのアップグレード
 

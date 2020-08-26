@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 4325f75ac8181e088d64e53d3f65e085a09c0224
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8353b7290f0e0073faf93b4ea23bcc0ba50bb89e
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85119411"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236473"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>Azure Cosmos DB の変更フィード プロセッサ
 
@@ -95,11 +95,23 @@ ms.locfileid: "85119411"
 
 Cosmos コンテナーとの間のデータ移動では常に RU を消費するため、消費される RU に対して課金されます。 リース コンテナーによって消費される RU に対して課金されます。
 
+## <a name="where-to-host-the-change-feed-processor"></a>変更フィード プロセッサをホストする場所
+
+変更フィード プロセッサは、長時間実行されるプロセスまたはタスクをサポートする任意のプラットフォームでホストできます。
+
+* 継続的に実行される [Azure WebJob](https://docs.microsoft.com/learn/modules/run-web-app-background-task-with-webjobs/)。
+* [Azure Virtual Machine](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-virtual-machines) 内のプロセス
+* [Azure Kubernetes Service](https://docs.microsoft.com/azure/architecture/best-practices/background-jobs.md#azure-kubernetes-service) でのバックグラウンド ジョブ
+* [ASP.NET ホステッド サービス](https://docs.microsoft.com/aspnet/core/fundamentals/host/hosted-services)。
+
+変更フィード プロセッサは有効期間が短い環境で実行できますが、その状態がリース コンテナーによって維持されるため、これらの環境の開始および停止サイクルでは、通知の受信に遅延が加えられます (環境が開始されるたびにプロセッサを開始するオーバーヘッドが生じるため)。
+
 ## <a name="additional-resources"></a>その他のリソース
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
-* [GitHub の使用例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
-* [GitHub のその他のサンプル](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [GitHub でサンプルアプリケーションを完成させる](https://github.com/Azure-Samples/cosmos-dotnet-change-feed-processor)
+* [GitHub でのその他の使用例](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)
+* [変更フィード プロセッサの Cosmos DB ワークショップ ラボ](https://azurecosmosdb.github.io/labs/dotnet/labs/08-change_feed_with_azure_functions.html#consume-cosmos-db-change-feed-via-the-change-feed-processor)
 
 ## <a name="next-steps"></a>次のステップ
 

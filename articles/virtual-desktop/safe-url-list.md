@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop の安全な URL の一覧 - Azure
 description: Windows Virtual Desktop のデプロイを意図したとおりに機能させるためにブロックを解除する必要がある URL の一覧。
-services: virtual-desktop
-author: heidilohr
-ms.service: virtual-desktop
+author: Heidilohr
 ms.topic: conceptual
-ms.date: 07/15/2020
+ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9f7a3b51afa11562123a280da8634e100a22e6b6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d75d6ecf73dece6dad43367a7f869a1b8ec3d86b
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075604"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88135863"
 ---
 # <a name="safe-url-list"></a>安全な URL リスト
 
@@ -29,11 +27,12 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の 
 |mrsglobalsteus2prod.blob.core.windows.net|443|エージェントと SXS スタックの更新|AzureCloud|
 |*.core.windows.net|443|エージェント トラフィック|AzureCloud|
 |*.servicebus.windows.net|443|エージェント トラフィック|AzureCloud|
-|prod.warmpath.msftcloudes.com|443|エージェント トラフィック|AzureCloud|
+|gcs.prod.monitoring.core.windows.net|443|エージェント トラフィック|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Marketplace|AzureCloud|
 |kms.core.windows.net|1688|Windows のライセンス認証|インターネット|
 |wvdportalstorageblob.blob.core.windows.net|443|Azure portal のサポート|AzureCloud|
 | 169.254.169.254 | 80 | [Azure Instance Metadata Service エンドポイント](../virtual-machines/windows/instance-metadata-service.md) | 該当なし |
+| 168.63.129.16 | 80 | [セッション ホストの正常性の監視](../virtual-network/security-overview.md#azure-platform-considerations) | 該当なし |
 
 >[!IMPORTANT]
 >Windows Virtual Desktop で FQDN タグがサポートされるようになりました。 詳細については、「[Azure Firewall を使用して Windows Virtual Desktop のデプロイを保護する](../firewall/protect-windows-virtual-desktop.md)」を参照してください。
@@ -78,4 +77,6 @@ Windows Virtual Desktop 用に作成する Azure 仮想マシンには、次の 
 |query.prod.cms.rt.microsoft.com|443|クライアント更新|Windows デスクトップ|
 
 >[!IMPORTANT]
->信頼できるクライアント エクスペリエンスを実現するには、これらの URL を開くことが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。 これらの URL は、クライアントのサイトとリソースにのみ対応しており、他のサービス (Azure Active Directory など) の URL は含まれません。
+>信頼できるクライアント エクスペリエンスを実現するには、これらの URL を開くことが不可欠です。 これらの URL へのアクセスをブロックすることはサポート対象外であり、サービスの機能にも支障が生じます。
+>
+>これらの URL はクライアントのサイトとリソースにのみ対応します。 この一覧には、他のサービス (Azure Active Directory など) の URL は含まれません。 Azure Active Directory URL は「[Office 365 URL および IP アドレス範囲](/office365/enterprise/urls-and-ip-address-ranges#microsoft-365-common-and-office-online)」の ID 56 にあります。

@@ -1,6 +1,6 @@
 ---
 title: チュートリアル - StorSimple 物理デバイスを同じデバイスにフェールオーバーする
-description: StorSimple デバイスを同じデバイスにフェールオーバーする方法について説明します。
+description: 災害時に、StorSimple 8000 シリーズ物理デバイスをそのデバイス自体にフェールオーバーするために必要な手順について説明します。
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 60bf5b593efc5a26387680c092fc972bf9274e56
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 17c116194aa52a82246bcee9114824e8a918ebbd
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85511754"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184331"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>StorSimple 物理デバイスを同じデバイスにフェールオーバーする
 

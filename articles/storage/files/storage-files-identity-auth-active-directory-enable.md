@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: rogarana
-ms.openlocfilehash: 1ea1bfdf2c3b2dcfd49f87a5a75597a464b07913
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3faa86fe67e3f0a208bf42dc3e49de8335b25c95
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999583"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272333"
 ---
 # <a name="overview---on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>概要 - SMB を使用した Azure ファイル共有へのオンプレミスの Active Directory Domain Services 認証
 
-[Azure Files](storage-files-introduction.md)  では、オンプレミスの Active Directory Domain Services (AD DS) と Azure Active Directory Domain Services (Azure AD DS) という 2 種類のドメイン サービスを介した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。[「しくみ」セクション](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)を参照して、認証用の適切なドメイン サービスを選択することを強くお勧めします。 選択するドメイン サービスによって設定は異なります。 この一連の記事では、Azure ファイル共有での認証用にオンプレミスの AD DS を有効にして構成する方法に重点を置いて説明します。
+[Azure Files](storage-files-introduction.md) では、オンプレミス Active Directory Domain Services (AD DS) と Azure Active Directory Domain Services (Azure AD DS) という 2 種類の Domain Services を使用した、サーバー メッセージ ブロック (SMB) 経由の ID ベースの認証がサポートされます。 認証のための適切なドメイン サービスを選択するために、[「しくみ」のセクション](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview#how-it-works)を確認することを強くお勧めします。 設定は、選択するドメイン サービスによって異なります。 これらの一連の記事では、Azure ファイル共有での認証のためのオンプレミスの AD DS の有効化と構成に重点を置いています。
 
 Azure ファイル共有を初めて使用する場合は、次の一連の記事を読む前に、[計画ガイド](storage-files-planning.md)に目を通すことをお勧めします。
 
@@ -27,7 +27,7 @@ Azure ファイル共有を初めて使用する場合は、次の一連の記�
 - AD と RC4-HMAC 暗号化を使用した Kerberos 認証がサポートされます。 AES Kerberos 暗号化はまだサポートされていません。
 - シングル サインオン エクスペリエンスがサポートされます。
 - Windows 7 または Windows Server 2008 R2 より新しい OS バージョンで実行されるクライアント上でのみ、サポートされます。
-- ストレージ アカウントが登録されている AD フォレストに対してのみ、サポートされます。 既定では、単一のフォレストからのみ、AD DS 資格情報を使用して Azure ファイル共有にアクセスできます。 別のフォレストから Azure ファイル共有にアクセスする必要がある場合は、適切なフォレストの信頼が構成されていることを確認してください。詳細については、[よくあるご質問](storage-files-faq.md#ad-ds--azure-ad-ds-authentication)に関するページを参照してください。
+- ストレージ アカウントの登録先の AD フォレストに対してサポートされのみます。 既定では、単一のフォレストからのみ、AD DS 資格情報を使用して Azure ファイル共有にアクセスできます。 別のフォレストから Azure ファイル共有にアクセスする必要がある場合は、適切なフォレストの信頼が構成されていることを確認してください。詳細については、[よくあるご質問](storage-files-faq.md#ad-ds--azure-ad-ds-authentication)に関するページを参照してください。
 - AD DS で作成されたコンピューター アカウントに対する認証はサポートされていません。 
 
 SMB 経由の Azure ファイル共有に対して AD DS を有効にすると、AD DS に参加しているマシンでは、既存の AD DS 資格情報を使用して Azure ファイル共有をマウントできます。 この機能は、オンプレミス マシンでホストされているか、Azure でホストされている AD DS 環境で有効にすることができます。
@@ -46,6 +46,8 @@ Azure ファイル共有に対する AD DS 認証を有効にする前に、次�
     新規または既存のオンプレミスの AD DS 環境で機能を有効にすることができます。 アクセスに使用される ID は、Azure AD と同期されている必要があります。 アクセスする Azure AD テナントとファイル共有は、同じサブスクリプションに関連付けられている必要があります。
 
 - オンプレミス マシンまたは Azure VM をオンプレミスの AD DS にドメイン参加させます。 ドメインに参加させる方法については、「[コンピューターをドメインに参加させる](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain)」を参照してください。
+
+    マシンが AD DS にドメイン参加していない場合でも、マシンで AD ドメイン コントローラーが認識されていれば、認証に AD 資格情報を利用することはできます。
 
 - Azure ストレージ アカウントを選択または作成します。  最適なパフォーマンスが得られるように、共有にアクセスする予定のクライアントと同じリージョンに、ストレージ アカウントをデプロイすることをお勧めします。 次に、ストレージ アカウント キーを使用して、[Azure ファイル共有をマウントします](storage-how-to-use-files-windows.md)。 ストレージ アカウント キーを使ってマウントすると、接続が検証されます。
 
@@ -81,7 +83,7 @@ Azure ファイル共有の AD DS 認証を有効にすると、オンプレミ�
 
 ![Files AD ワークフロー図](media/storage-files-active-directory-domain-services-enable/diagram-files-ad.png)
 
-Azure ファイル共有へのアクセスに使用される ID は、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) モデルを使用して共有レベルのファイル アクセス許可を適用するために、Azure AD に同期する必要があります。 既存のファイル サーバーから引き継がれたファイルまたはディレクトリの [Windows スタイルの DACL](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) は保持され、適用されます。 これにより、エンタープライズ AD DS 環境とのシームレスな統合が提供されます。 オンプレミス ファイル サーバーを Azure ファイル共有に置き換えると、既存のユーザーは、使用されている資格情報を変更することなく、シングル サインオン エクスペリエンスで現在のクライアントから Azure ファイル共有にアクセスできるようになります。  
+Azure ファイル共有へのアクセスに使用される ID は、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) モデルを使用して共有レベルのファイル アクセス許可を適用するために、Azure AD に同期する必要があります。 既存のファイル サーバーから引き継がれたファイルまたはディレクトリの [Windows スタイルの DACL](https://docs.microsoft.com/previous-versions/technet-magazine/cc161041(v=msdn.10)?redirectedfrom=MSDN) は保持され、適用されます。 これにより、エンタープライズ AD DS 環境とのシームレスな統合が提供されます。 オンプレミス ファイル サーバーを Azure ファイル共有に置き換えると、既存のユーザーは、使用されている資格情報を変更することなく、シングル サインオン エクスペリエンスで現在のクライアントから Azure ファイル共有にアクセスできるようになります。  
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -3,12 +3,12 @@ title: MABS と System Center DPM のサポート マトリックス
 description: この記事では、Microsoft Azure Backup Server (MABS) または System Center DPM を使用してオンプレミスおよび Azure VM のリソースをバックアップする場合の、Azure Backup のサポートについてまとめます。
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: a97c37accd1275fa99437862a8d939df31360e87
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: 4ed4452cf8f1f44e90cfc991c2b1d13d30dddcd2
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810430"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612777"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Microsoft Azure Backup Server または System Center DPM を使用したバックアップのサポート マトリックス
 

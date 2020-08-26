@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: d0c6488f9a75bbf9ba6775138edeed9c4a397abf
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 7a0fd4178df92cc9102456c1fa2ae4e8927337e4
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552222"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547326"
 ---
 # <a name="enable-logging-in-azure-ml-training-runs"></a>Azure ML のトレーニングの実行でログ記録を有効にする
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,12 +42,6 @@ Azure Machine Learning Python SDK を使用すると、既定の Python ログ �
 ## <a name="interactive-logging-session"></a>対話型のログ セッション
 
 対話型のログ セッションは、通常、ノートブック環境で使用されます。 メソッド [Experiment.start_logging()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment(class)?view=azure-ml-py#start-logging--args----kwargs-) を使用すると、対話型のログ セッションが開始されます。 セッション中にログに記録されるすべてのメトリックは、実験の実行レコードに追加されます。 メソッド [run.complete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#complete--set-status-true-) を使用すると、セッションが終了し、実行が完了としてマークされます。
-
-次のコード スニペットでは、対話型のログ セッションを使用して、トレーニング パラメーターとパフォーマンス メトリックを [run.log()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#log-name--value--description----) メソッドでログに記録します。 また、トレーニングされたモデルが指定した出力場所にアップロードされます。
-
-[!notebook-python[] (~/MachineLearningNotebooks/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb?name=create_experiment)]
-
-対話型のログを使用する完全なサンプル ノートブックについては、[ノートブックでモデルをトレーニングする](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook/train-within-notebook.ipynb)方法に関するページを参照してください。
 
 ## <a name="scriptrunconfig-logs"></a>ScriptRunConfig のログ
 

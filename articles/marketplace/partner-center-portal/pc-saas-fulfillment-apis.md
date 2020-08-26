@@ -7,14 +7,14 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: d9413deb99ce938429d05f7c6348c5914e7dd2b1
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e6381afb19018822f6f37171a5ca4b3d929b42e
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87304141"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037526"
 ---
-# <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API
+# <a name="saas-fulfillment-apis-in-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースの SaaS Fulfillment API
 
 SaaS Fulfillment API を使用すると、発行元 (独立系ソフトウェア ベンダー (ISV) とも呼ばれます) は、SaaS アプリケーションを Microsoft AppSource、Azure Marketplace、Azure portal と統合することができます。 これらの API により、ISV アプリケーションは、すべての商取引が有効になっているチャネル (直接、パートナー主導 (再販業者)、フィールド主導) に参加できるようになります。  これらの API との統合は、パートナー センターで取引可能な SaaS オファーを作成して公開するための要件です。
 
@@ -31,7 +31,7 @@ ISV と Microsoft の両方で同じサブスクリプションの状態を維�
 SaaS Fulfillment API との統合を正しく行うことは、次を保証するために非常に重要です。
 
 * 発行元の SaaS オファーを購入したエンド カスタマーが、Microsoft から正しく請求されること。
-* エンド カスタマーが、Marketplace で購入した SaaS サブスクリプションの購入、構成、使用、および管理に適切なユーザー エクスペリエンスが得られていること。
+* エンド カスタマーが、マーケットプレースで購入した SaaS サブスクリプションを購入、構成、使用、および管理する際に適切なユーザー エクスペリエンスが得られていること。
 
 これらの API を使用すると、発行元のオファーをすべてのコマース対応チャネルに参加させることができます。
 

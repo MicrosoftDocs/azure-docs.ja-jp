@@ -4,12 +4,12 @@ description: Azure Portal を使用して復旧ポイントから Azure 仮想�
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: a43e7d1d97196afdad0a1e451b0c1618f0ea3a16
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: af9b505e762e201713b8e554b7886e5e2062dfef
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87809186"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263012"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure portal で Azure VM データを復元する方法
 
@@ -45,7 +45,7 @@ Azure Backup は、VM を復元するためのさまざまな方法を提供し�
 
 ## <a name="before-you-start"></a>開始する前に
 
-VM を復元する (新しい VM を作成する) には、VM の復元操作のための正しい RBAC (ロールベースのアクセス制御) [アクセス許可](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)があることを確認してください。
+VM を復元する (新しい VM を作成する) には、VM の復元操作のための正しい Azure ロールベースのアクセス制御 (Azure RBAC) [アクセス許可](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)があることを確認してください。
 
 アクセス許可がない場合は、[ディスクを復元し](#restore-disks)、ディスクが復元された後、復元操作の一部として生成された[テンプレートを使用して](#use-templates-to-customize-a-restored-vm)新しい VM を作成できます。
 
@@ -53,7 +53,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 1. 復元する VM に関連付けられているコンテナーで、 **[バックアップ アイテム]**  >  **[Azure 仮想マシン]** を選択します。
 1. VM を選択します。 既定では、VM ダッシュボードには過去 30 日間の復旧ポイントが表示されます。 30 日前よりも古い復旧ポイントを表示することや、日付、時間範囲、スナップショット整合性の種類をフィルターにして復旧ポイントを探すことができます。
-1. VM を復元するには、 **[VM の復元]** をクリックします。
+1. VM を復元するには、 **[VM の復元]** を選択します。
 
     ![復元ポイント](./media/backup-azure-arm-restore-vms/restore-point.png)
 
@@ -85,7 +85,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 
 ## <a name="restore-disks"></a>ディスクを復元する
 
-[復元オプション](#restore-options)の 1 つであり、復元ポイントからディスクを作成できます。 その後、ディスクを使用して次のいずれかを実行できます:
+[復元オプション](#restore-options)の 1 つであり、復元ポイントからディスクを作成できます。 その後、ディスクを使用して次のいずれかのアクションを実行できます。
 
 - 復元操作の間に生成されるテンプレートを使用して設定をカスタマイズし、VM のデプロイを開始します。 既定のテンプレート設定を編集し、VM デプロイのテンプレートを送信します。
 - 既存の VM に、[復元されたディスクをアタッチ](../virtual-machines/windows/attach-managed-disk-portal.md)します。
@@ -95,7 +95,7 @@ VM を復元する (新しい VM を作成する) には、VM の復元操作の
 1. **[リソース グループ]** で、復元されたディスクの既存のリソース グループを選択するか、グローバルに一意の名前を持つ新しいリソース グループを作成します。
 1. **[ステージングの場所]** で、VHD のコピー先となるストレージ アカウントを指定します。 [詳細については、こちらを参照してください](#storage-accounts)。
 
-    ![Recovery configuration completed](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
+    ![[リソース グループ] と [ステージングの場所] を選択します](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 1. **[復元]** を選択して復元操作をトリガーします。
 
@@ -173,7 +173,7 @@ CRR が有効になっている場合は、セカンダリ リージョンのバ
 >
 >- 復元がトリガーされた後、データ転送フェーズでは、復元ジョブを取り消すことができません。
 >- リージョンをまたがる復元機能では、CMK (カスタマー マネージド キー) が有効になっている Azure VM が、セカンダリ リージョンにおける CMK が有効になっていない VM として復元されます。これらの VM は、CMK が有効になっている Recovery Services コンテナーにはバックアップされません。
->- セカンダリ リージョンに復元するために必要な RBAC (ロールベースのアクセス制御) ロールは、プライマリ リージョンにおける RBAC ロールと同じです。
+>- セカンダリ リージョンに復元するために必要な Azure ロールは、プライマリ リージョンにおけるものと同じです。
 
 ### <a name="monitoring-secondary-region-restore-jobs"></a>セカンダリ リージョンの復元ジョブの監視
 

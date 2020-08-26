@@ -1,14 +1,14 @@
 ---
 title: ベスト プラクティス
 description: Azure Batch ソリューションを開発するためのベスト プラクティスと役立つヒントについて説明します。
-ms.date: 07/30/2020
+ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 535deebd0ba683d9387408ad081d165a504c91d1
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.openlocfilehash: 8f557403426fe4e37287acb681c91069e90fb926
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87474905"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88191808"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch のベスト プラクティス
 
@@ -56,6 +56,10 @@ ms.locfileid: "87474905"
 Batch プールでは、Azure のダウンタイム イベントが発生する可能性があります。 Batch のシナリオまたはワークフローの計画および開発時には、この点に留意してください。
 
 ノードで障害が発生した場合、Batch は自動的にそれらの計算ノードを回復しようとします。 これにより、回復されたノードで実行中のタスクの再スケジュールがトリガーされることがあります。 中断されたタスクの詳細については、[再試行のための設計](#design-for-retries-and-re-execution)に関するセクションを参照してください。
+
+### <a name="custom-image-pools"></a>カスタム イメージ プール
+
+仮想マシンの構成を使用して Azure Batch プールを作成するときは、プールの各コンピューティング ノードにオペレーティング システムを提供する VM イメージを指定します。 サポートされている Azure Marketplace イメージを使用してプールを作成したり、[Shared Image Gallery のイメージを使用してカスタム イメージを作成したり](batch-sig-images.md)できます。 [マネージド イメージ](batch-custom-images.md)を使用してカスタム イメージ プールを作成することもできますが、可能であれば、Shared Image Gallery を使用してカスタム イメージを作成することをお勧めします。 Shared Image Gallery を使用すると、プールを迅速にプロビジョニングしたり、VM の数を増やしたり、VM のプロビジョニング時に信頼性を向上させたりできます。
 
 ### <a name="third-party-images"></a>サード パーティのイメージ
 

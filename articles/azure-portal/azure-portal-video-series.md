@@ -5,16 +5,16 @@ services: azure-portal
 keywords: ''
 author: mgblythe
 ms.author: mblythe
-ms.date: 05/11/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 49a9cfca1c1f3a76c85dfac98cafea00df1d5ff0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 3c34fd198164d7e3ae0851749cf51809df31ca19
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86504888"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522948"
 ---
 # <a name="azure-portal-how-to-video-series"></a>Azure portal の使い方に関するビデオ シリーズ
 
@@ -22,17 +22,18 @@ Azure portal のハウツー ビデオ シリーズでは、Azure portal で Azu
 
 ## <a name="featured-video"></a>注目のビデオ
 
-この注目のビデオでは、Azure Private Link を使用してストレージ アカウントに接続する方法を説明します。
+この注目のビデオでは、Azure Static Web Apps をデプロイする方法について説明します。
 
-> [!VIDEO https://www.youtube.com/embed/vM7yDwHSc_o]
+> [!VIDEO https://www.youtube.com/embed/H2MPsgujpNk]
 
-[Azure Private Link を使用してストレージ アカウントに接続する方法](https://www.youtube.com/watch?v=vM7yDwHSc_o)
+[Azure Static Web Apps をデプロイする方法](https://www.youtube.com/watch?v=H2MPsgujpNk)
 
 見逃したかもしれない以下の最近のビデオを確認してください。
 
-| [新しい Azure Functions エクスペリエンス](https://www.youtube.com/watch?v=0bdT_9uOqkg)  | [GitHub Actions を使用した Web アプリのデプロイ](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [サービス情報カードの使用](https://www.youtube.com/watch?v=u00TU531qsQ)  |
+| [Azure Functions を監視する方法](https://www.youtube.com/watch?v=eVDZz8h0s00)  | [BLOB のバージョン管理を使用する方法](https://www.youtube.com/watch?v=b2oyxbSbLPA)  | [Azure Private Link を使用してストレージ アカウントに接続する](https://www.youtube.com/watch?v=m7e9h1gedWQ)  |
 | ------| ------ | ------ |
-| [![新しいAzure Functions エクスペリエンスに関する YouTube ビデオの画像](https://i.ytimg.com/vi/0bdT_9uOqkg/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=0bdT_9uOqkg) | [![GitHub Actions を使用した Web アプリのデプロイに関する YouTube ビデオの画像](https://i.ytimg.com/vi/b2oyxbSbLPA/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=b2oyxbSbLPA) | [![サービス情報カードの使用に関する YouTube ビデオの画像](https://i.ytimg.com/vi/u00TU531qsQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](http://www.youtube.com/watch?v=u00TU531qsQ) |
+| [![Azure Functions を監視する方法に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/eVDZz8h0s00/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAf2gcTSuNBP-DczGeEB7rQLKc4UQ)](http://www.youtube.com/watch?v=eVDZz8h0s00) | [![BLOB のバージョン管理の方法に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/m7e9h1gedWQ/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLBUZwS_xaZIkYNakpHFvFIiD8i-Tw)](http://www.youtube.com/watch?v=m7e9h1gedWQ) | [![Azure Private Link を使用したストレージ アカウントへの接続に関する YouTube ビデオのイメージ](https://i.ytimg.com/vi/vM7yDwHSc_o/hqdefault.jpg?sqp=-oaymwEYCKgBEF5IVfKriqkDCwgBFQAAiEIYAXAB&rs=AOn4CLAiBhmM0tZo_eV_u_JClkx3SXaWFw)](https://www.youtube.com/watch?v=vM7yDwHSc_o) |
+
 
 ## <a name="video-playlist"></a>ビデオのプレイリスト
 

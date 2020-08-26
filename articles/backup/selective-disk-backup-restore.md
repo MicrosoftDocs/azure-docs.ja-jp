@@ -3,16 +3,20 @@ title: Azure 仮想マシンの選択的なディスク バックアップと復
 description: この記事では、Azure 仮想マシン バックアップ ソリューションを使用した選択的なディスク バックアップと復元について説明します。
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: e61014a4fde7bfce316671ff0b081ff7bc2205a5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.custom: references_regions
+ms.openlocfilehash: 6a5e574795dfded98260da20711dab7d16cabd5b
+ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87535250"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88566235"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Azure 仮想マシンの選択的なディスク バックアップと復元
 
 Azure Backup では、仮想マシン バックアップ ソリューションを使用して、VM 内のすべてのディスク (オペレーティング システムとデータ) をまとめてバックアップすることがサポートされています。 現在、選択的なディスク バックアップと復元の機能を使用して、VM 内のデータ ディスクのサブセットをバックアップできるようになっています。 これにより、バックアップと復元のニーズに応じた効率的で費用対効果の高いソリューションが提供されます。 各復旧ポイントには、バックアップ操作に含まれるディスクだけが含まれます。 これにより、復元操作中に特定の復旧ポイントからディスクのサブセットを復元できるようになります。 これは、スナップショットからの復元とコンテナーからの復元の両方に適用されます。
+
+>[!NOTE]
+>Azure 仮想マシンの選択的なディスク バックアップと復元は、すべてのリージョンでパブリック プレビュー中です。
 
 ## <a name="scenarios"></a>シナリオ
 

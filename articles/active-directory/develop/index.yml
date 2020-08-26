@@ -9,12 +9,12 @@ metadata:
   ms.service: active-directory
   ms.subservice: develop
   ms.workload: identity
-  ms.openlocfilehash: d978cc0f2b59cdb1cd41b0cf5e23851ad5165558
-  ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+  ms.openlocfilehash: 115c2b7058941512bf75f2b45b17d4a0a806c1af
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/11/2020
-  ms.locfileid: "88116735"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88690291"
 landingContent:
 - title: Microsoft ID プラットフォームについて
   linkLists:
@@ -83,7 +83,7 @@ landingContent:
     - text: ASP.NET
       url: quickstart-v2-dotnet-native-aspnet.md
     - text: ASP.NET Core
-      url: /samples/azure-samples/active-directory-dotnet-native-aspnetcore-v2/calling-an-aspnet-core-web-api-from-a-wpf-application-using-azure-ad-v2/
+      url: /samples/azure-samples/active-directory-dotnet-webapp-webapi-openidconnect-aspnetcore/calling-a-web-api-in-an-aspnet-core-web-application-using-azure-ad/
 - title: Microsoft Graph
   linkLists:
   - linkListType: get-started

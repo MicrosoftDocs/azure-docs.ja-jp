@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 692ddbf1e17e316bdcee6c34062ffa51ef278bc7
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87923783"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257442"
 ---
 ::: zone target="docs"
 
@@ -224,7 +224,7 @@ ms.locfileid: "87923783"
 
 ### <a name="self-managed"></a>[自己管理型](#tab/in-selfmanaged)
 
-日本、シンガポール、韓国、西ヨーロッパ、またはインドで Data Box Disk を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。
+米国政府、日本、シンガポール、韓国、西ヨーロッパ、南アフリカ、またはインドで Data Box Disk を使用しており、なおかつ注文の作成時に自己管理型の配送オプションを選択した場合は、次の手順に従います。
 
 1. Azure portal 上で対象の注文の **[概要]** ブレードにアクセスします。 **[集配のスケジュール]** を選択したときに表示される手順に目を通します。 注文の配送時に使用される認証コードが表示されていると思います。
 

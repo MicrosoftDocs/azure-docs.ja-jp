@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: d082417fc5b4df7540973d5f6e146030aaad5380
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: c3f557c757a46252b9fa0416cc62a827b233f1b2
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86107191"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88065354"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Azure Database for MariaDB の接続アーキテクチャ
 この記事では、Azure Database for MariaDB 接続アーキテクチャと、Azure 内外の両方のクライアントからトラフィックがどのように Azure Database for MariaDB インスタンスに転送されるかについて説明します。
@@ -67,8 +67,8 @@ Azure Database for MariaDB への接続は、受信接続を Microsoft のクラ
 | 英国南部 | 51.140.184.11   |
 | 英国西部 | 51.141.8.11  |
 | 米国中西部 | 13.78.145.25     |
-| 西ヨーロッパ | 40.68.37.158、191.237.232.75、13.69.105.208  |
-| 米国西部 | 104.42.238.205、23.99.34.75  |
+| 西ヨーロッパ | 40.68.37.158、191.237.232.75、13.69.105.208、104.40.169.187  |
+| 米国西部 | 104.42.238.205、23.99.34.75、13.86.216.212、13.86.217.212 |
 | 米国西部 2 | 13.66.226.202  |
 ||||
 

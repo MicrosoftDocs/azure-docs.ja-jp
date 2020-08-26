@@ -8,12 +8,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 25a164fc8709d7c9f6249336ece34bd8a5378f23
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 702486a0728a7394d8d8febffc11b11bc113a030
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87496017"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606752"
 ---
 # <a name="marketplace-rewards"></a>Marketplace 報酬
 
@@ -27,7 +27,7 @@ Marketplace 報酬によって、認識アクティビティから始めて最�
 
 トランザクション パートナーの場合は、マーケットプレース プラットフォームを通じて請求売上が拡大すると、レベルごとにさらに多くのベネフィットを得られます。
 
-ネットショップで発行する最小要件は MPNID であるため、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのマーケットプレースを通じてビジネスを強化できます。
+オンライン ストアには最低で MPNID があれば発行することができます。したがって、MPN コンピテンシーの状態やパートナーの種類に関係なく、すべてのパートナーがこれらのベネフィットを利用できます。 各パートナーは、プラットフォームとしてのマーケットプレースを通じてビジネスを強化できます。
 
 パートナーは、使用可能なリソースの理解およびベスト プラクティスの実装についてサポートを受けることができます。また、[パートナー自身で確認する](https://partner.microsoft.com/asset/collection/azure-marketplace-and-appsource-publisher-toolkit#/)こともできます。
 

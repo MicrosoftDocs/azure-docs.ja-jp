@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2020
 ms.author: damaerte
-ms.openlocfilehash: 5abc10d149cdb2c054f4122cd805ec22b2e37e2f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1cb5716e2f02a99e4d39a4041a2e54e87cf43568
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87094689"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88114661"
 ---
 # <a name="deploy-cloud-shell-into-an-azure-virtual-network"></a>Azure 仮想ネットワークに Cloud Shell をデプロイする
 > [!NOTE]
@@ -103,7 +103,7 @@ Azure portal で、または Azure CLI や Azure PowerShell などを使用し�
 > [!NOTE]
 > 各管理者が Cloud Shell を使用するには、この手順が完了している必要があります。
 
-上記の手順を完了したら、Azure portal または https://shell.azure.com の Cloud Shell に移動します。
+上記の手順を完了したら、Azure portal または https://shell.azure.com の Cloud Shell に移動します。 これらのエクスペリエンスのいずれかを、分離 Cloud Shell エクスペリエンスに接続するたびに使用する必要があります。
 
 > [!NOTE]
 > 過去に Cloud Shell が使用されている場合は、既存の clouddrive をマウント解除する必要があります。 これを行うには、アクティブな Cloud Shell セッションから `clouddrive unmount` を実行し、ページを更新します。

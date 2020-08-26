@@ -4,12 +4,12 @@ description: Azure Backup サービスを使用して Azure VM をバックア�
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 9d7e3b4f565fac42d0a91d155846e672c7437f2d
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.openlocfilehash: cfa8a6c7cb2da35929151dfce09c0bc31ee69bb2
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/05/2020
-ms.locfileid: "87810464"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611536"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM バックアップのサポート マトリックス
 
@@ -141,7 +141,7 @@ VM サイズ |少なくとも 2 つの CPU コアと 1 GB の RAM を備えた�
 [可用性セット](../virtual-machines/availability.md#availability-sets)で VM をバックアップする | サポートされています。<br/><br/> VM をすばやく作成するオプションを使用して、可用性セットで VM を復元することはできません。 代わりに、VM を復元する場合は、ディスクを復元し、それを使用して VM をデプロイするか、ディスクを復元し、それを使用して既存のディスクを交換します。
 [Hybrid Use Benefit (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) を使用してデプロイ済みの VM をバックアップする | サポートされています。
 [スケール セット](../virtual-machine-scale-sets/overview.md)でデプロイ済みの VM をバックアップする |サポートされています。 障害ドメインの場合は、[オーケストレーション モード](../virtual-machine-scale-sets/orchestration-modes.md)を 2 に設定する必要があります。 可用性セットはサポートされていません。
-[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) からデプロイ済みの VM をバックアップする<br/><br/> (Microsoft、サード パーティによって公開) |サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。 VM としてバックアップされた Azure Marketplace VM は、購入情報が必要であるため、復元されません。 ディスクとしてのみ復元されます。
+[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) からデプロイされた VM をバックアップする<br/><br/> (Microsoft、サード パーティによって公開) |サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。 VM としてバックアップされた Azure Marketplace VM は、購入情報が必要であるため、復元されません。 ディスクとしてのみ復元されます。
 カスタム イメージ (サード パーティ) からデプロイ済みの VM をバックアップする |サポートされています。<br/><br/> VM はサポートされているオペレーティング システムを実行している必要があります。<br/><br/> VM でファイルを復元する場合、(古いまたは新しい OS ではなく) 互換性のある OS に対してのみ復元できます。
 Azure に移行済みの VM をバックアップする| サポートされています。<br/><br/> VM をバックアップするには、移行済みマシンに VM エージェントをインストールする必要があります。
 マルチ VM 整合性をバックアップする | Azure Backup では、複数の VM 間でのデータとアプリケーションの整合性は提供されません。
@@ -155,7 +155,7 @@ Gen2 VM | サポートされています <br> Azure Backup では、[Gen2 VM](ht
 
 **コンポーネント** | **サポート**
 --- | ---
-Azure VM のデータ ディスク数 | 最大 32 ディスクの Azure VM のバックアップのサポートは、国内クラウド (Azure Government、Azure China 21Vianet、および Azure Germany) を除くすべてのリージョンでパブリック プレビュー段階にあります。<br><br> アンマネージド ディスクまたはクラシック VM を使用した Azure VM のバックアップは、最大 16 台のディスクしかサポートされません。
+Azure VM のデータ ディスク数 | 最大 32 台のディスクを使用した Azure VM のバックアップのサポートは、すべてのリージョンでパブリック プレビュー段階にあります。<br><br> アンマネージド ディスクまたはクラシック VM を使用した Azure VM のバックアップは、最大 16 台のディスクしかサポートされません。
 データ ディスク サイズ | 個々のディスク サイズは最大 32 TB で、VM 内のすべてのディスクに対して最大 256 TB となります。
 ストレージの種類 | Standard HDD、Standard SSD、Premium SSD。
 マネージド ディスク | サポートされています。

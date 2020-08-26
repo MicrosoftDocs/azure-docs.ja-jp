@@ -3,12 +3,12 @@ title: Azure Recovery Services コンテナーとサーバーの管理
 description: この記事では、Recovery Services コンテナーの [概要] ダッシュボードを使用して Recovery Services コンテナーを監視および管理する方法を説明します。
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 1b3cc317b8a26b16bbeda9793f87d089f2fbc59f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 68c6354fa15ee2a6873b57e5c1622afb108b9a10
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054896"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88263330"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services コンテナーの監視と管理
 
@@ -26,15 +26,15 @@ ms.locfileid: "87054896"
 
 1. Azure サブスクリプションを使用して、[Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. ポータルで、 **[すべてのサービス]** をクリックします。
+2. ポータルで **[すべてのサービス]** を選択します。
 
    ![Open list of Recovery Services vaults step 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png)
 
-3. **[すべてのサービス]** ダイアログ ボックスで、「**Recovery Services**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** オプションが表示されたら、それをクリックしてサブスクリプションの Recovery Services コンテナーの一覧を表示します。
+3. **[すべてのサービス]** ダイアログ ボックスで、「**Recovery Services**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** オプションが表示されたら、それを選択してサブスクリプションの Recovery Services コンテナーの一覧を表示します。
 
     ![Create Recovery Services Vault step 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. コンテナーの一覧でコンテナーをクリックして、その **[概要]** ダッシュボードを開きます。
+4. コンテナーの一覧でコンテナーを選択して、その **[概要]** ダッシュボードを開きます。
 
     ![Recovery Services コンテナーのダッシュボード](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -42,7 +42,7 @@ ms.locfileid: "87054896"
 
 ## <a name="monitor-backup-jobs-and-alerts"></a>バックアップ ジョブとアラートの監視
 
-Recovery Services コンテナーの **[概要]** ダッシュボードでは、監視と使用状況の情報に関するタイルが提供されます。 [監視] セクションのタイルには、重大アラートと警告アラート、および進行中のジョブと失敗したジョブが表示されます。 特定のアラートまたはジョブをクリックすると、そのジョブまたはアラートでフィルター処理された [バックアップ アラート] または [バックアップ ジョブ] メニューが開きます。
+Recovery Services コンテナーの **[概要]** ダッシュボードでは、監視と使用状況の情報に関するタイルが提供されます。 [監視] セクションのタイルには、重大アラートと警告アラート、および進行中のジョブと失敗したジョブが表示されます。 特定のアラートまたはジョブを選択すると、そのジョブまたはアラートでフィルター処理された [バックアップ アラート] または [バックアップ ジョブ] メニューが開きます。
 
 ![バックアップ ダッシュボードのタスク](./media/backup-azure-manage-windows-server/monitor-dashboard-tiles-warning.png)
 
@@ -57,7 +57,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 * コンテナーに対して構成されているバックアップ項目の数。
 * コンテナーによって使用されている Azure Storage (LRS と GRS で別)。
 
-タイルをクリックすると ([ストレージの構成] を除く)、関連するメニューが開きます。 上の図では、[バックアップ アラート] タイルに 3 つの重大なアラートが表示されています。 [バックアップ アラート] タイルで重大なアラートの行をクリックすると、重大なアラートでフィルター処理されたバックアップ アラートが開きます。
+タイルを選択すると ([バックアップ ストレージ] を除く)、関連するメニューが開きます。 上の図では、[バックアップ アラート] タイルに 3 つの重大なアラートが表示されています。 [バックアップ アラート] タイルで重大なアラートの行を選択すると、重大なアラートでフィルター処理されたバックアップ アラートが開きます。
 
 ![重大なアラートでフィルター処理されたバックアップ アラート メニュー](./media/backup-azure-manage-windows-server/critical-backup-alerts.png)
 
@@ -81,13 +81,13 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 ## <a name="manage-backup-alerts"></a>バックアップ アラートの管理
 
-[バックアップ アラート] メニューにアクセスするには、[Recovery Services コンテナー] メニューで **[バックアップ アラート]** をクリックします。
+[バックアップ アラート] メニューにアクセスするには、[Recovery Services コンテナー] メニューで **[バックアップ アラート]** を選択します。
 
 ![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
 バックアップ アラート レポートには、コンテナーのアラートが一覧表示されます。
 
-![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts.png)
+![バックアップ アラート レポート](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
 ### <a name="alerts"></a>警告
 
@@ -103,7 +103,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 バックアップ アラート レポートでは、各アラートに関して 8 項目の詳細が追跡されています。 レポートの詳細を編集するには、 **[列の選択]** ボタンを使用します。
 
-![[バックアップ アラート]](./media/backup-azure-manage-windows-server/backup-alerts.png)
+![バックアップ アラートの [列の選択] ボタン](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
 既定では、**最新発生時刻**を除くすべての詳細がレポートに表示されます。
 
@@ -118,9 +118,9 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 ### <a name="change-the-details-in-alerts-report"></a>アラート レポートで詳細を変更する
 
-1. レポートの情報を変更するには、 **[バックアップ アラート]** メニューの **[列の選択]** をクリックします。
+1. レポートの情報を変更するには、 **[バックアップ アラート]** メニューの **[列の選択]** を選択します。
 
-   ![[バックアップ アラート]](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
+   ![[列の選択] の選択](./media/backup-azure-manage-windows-server/alerts-menu-choose-columns.png)
 
    **[列の選択]** メニューが開きます。
 
@@ -128,9 +128,9 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
     ![[列の選択] メニュー](./media/backup-azure-manage-windows-server/choose-columns-menu.png)
 
-3. **[完了]** をクリックして変更を保存し、[列の選択] メニューを閉じます。
+3. **[完了]** を選択して変更を保存し、[列の選択] メニューを閉じます。
 
-   変更したけれども変更を保存したくない場合は、 **[リセット]** をクリックして、選択した列を最後に保存した構成に戻します。
+   変更したけれども変更を保存したくない場合は、 **[リセット]** を選択して、選択した列を最後に保存した構成に戻します。
 
 ### <a name="change-the-filter-in-alerts-report"></a>アラート レポートでフィルターを変更する
 
@@ -140,15 +140,15 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 > バックアップ アラートのフィルターを編集しても、コンテナーの [概要] ダッシュボードに表示されている重大アラートまたは警告アラートは変化しません。
 >  
 
-1. バックアップ アラート フィルターを変更するには、[バックアップ アラート] メニューで **[フィルター]** をクリックします。
+1. バックアップ アラート フィルターを変更するには、[バックアップ アラート] メニューで **[フィルター]** を選択します。
 
    ![[フィルター] メニューを選択する](./media/backup-azure-manage-windows-server/alerts-menu-choose-filter.png)
 
    [フィルター] メニューが表示されます。
 
-   ![[フィルター] メニューを選択する](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
+   ![アラートのフィルター メニュー](./media/backup-azure-manage-windows-server/filter-alert-menu.png)
 
-2. 重大度、状態、開始時刻、または終了時刻を編集し、 **[完了]** をクリックして変更を保存します。
+2. 重大度、状態、開始時刻、または終了時刻を編集し、 **[完了]** を選択して変更を保存します。
 
 ## <a name="configuring-notifications-for-alerts"></a>アラートの通知を構成する
 
@@ -156,7 +156,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
    ![アラートのフィルター処理](./media/backup-azure-manage-windows-server/configure-notification.png)
 
-既定では、メール通知は**オン**になります。 メール通知を停止するには、 **[オフ]** をクリックします。
+既定では、メール通知は**オン**になります。 メール通知を停止するには、 **[オフ]** を選択します。
 
 グループ化したくない場合、またはアラートを生成する項目が多くない場合は、 **[通知]** コントロールで **[アラートごと]** を選択します。 アラートごとに 1 つの通知が生成され (既定の設定)、解決策の電子メールが即時に送信されます。
 
@@ -166,7 +166,7 @@ Recovery Services コンテナーの **[概要]** ダッシュボードでは、
 
 ## <a name="manage-backup-items"></a>バックアップ項目の管理
 
-Recovery Services コンテナーには、多くの種類のバックアップ データが保持されます。 バックアップできる内容の[詳細についてはこちら](backup-overview.md#what-can-i-back-up)を参照してください。 さまざまなサーバー、コンピューター、データベース、ワークロードを管理するには、 **[バックアップ項目]** タイルをクリックして、コンテナーの内容を表示します。
+Recovery Services コンテナーには、多くの種類のバックアップ データが保持されます。 バックアップできる内容の[詳細についてはこちら](backup-overview.md#what-can-i-back-up)を参照してください。 さまざまなサーバー、コンピューター、データベース、ワークロードを管理するには、 **[バックアップ項目]** タイルを選択して、コンテナーの内容を表示します。
 
 ![Backup items tile](./media/backup-azure-manage-windows-server/backup-items.png)
 
@@ -174,47 +174,47 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
 ![バックアップ項目の一覧](./media/backup-azure-manage-windows-server/list-backup-items.png)
 
-特定の種類の保護されたインスタンスを調べるには、[バックアップの管理の種類] 列で項目をクリックします。 たとえば、上の図では、2 つの Azure 仮想マシンがこのコンテナーで保護されています。 **[Azure 仮想マシン]** をクリックすると、このコンテナーで保護されている仮想マシンの一覧が開きます。
+特定の種類の保護されたインスタンスを調べるには、[バックアップの管理の種類] 列で項目を選択します。 たとえば、上の図では、2 つの Azure 仮想マシンがこのコンテナーで保護されています。 **[Azure 仮想マシン]** を選択すると、このコンテナーで保護されている仮想マシンの一覧が開きます。
 
-![バックアップの種類の一覧](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
+![保護されている仮想マシンの一覧](./media/backup-azure-manage-windows-server/list-of-protected-virtual-machines.png)
 
 仮想マシンの一覧には、関連付けられているリソース グループ、前回の[バックアップの事前チェック](#backup-pre-check-status)、前回のバックアップの状態、最新の復元ポイントの日時など、有用なデータが表示されます。 最後の列の省略記号をクリックすると、一般的なタスクをトリガーするメニューが開きます。 列で提供される役立つデータは、バックアップの種類ごとに異なります。
 
-![バックアップの種類の一覧](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
+![省略記号のメニューを開いて一般的なタスクを表示する](./media/backup-azure-manage-windows-server/ellipsis-menu.png)
 
 ## <a name="manage-backup-jobs"></a>バックアップ ジョブの管理
 
 コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルには、進行中のジョブまたは過去 24 時間以内に失敗したジョブの数が表示されます。 タイルからは [バックアップ ジョブ] メニューを表示できます。
 
-![設定のバックアップ項目](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
+![[バックアップ ジョブ] タイル](./media/backup-azure-manage-windows-server/backup-jobs-tile.png)
 
-ジョブに関する他の詳細を見るには、 **[進行中]** または **[失敗]** をクリックして、その状態でフィルター処理された [バックアップ ジョブ] メニューを開きます。
+ジョブに関する他の詳細を表示するには、 **[進行中]** または **[失敗]** を選択して、その状態でフィルター処理された [バックアップ ジョブ] メニューを開きます。
 
 ### <a name="backup-jobs-menu"></a>[バックアップ ジョブ] メニュー
 
 **[バックアップ ジョブ]** メニューには、項目の種類、操作、状態、開始時刻、および継続時間に関する情報が表示されます。  
 
-[バックアップ ジョブ] メニューを開くには、コンテナーのメイン メニューで **[バックアップ ジョブ]** をクリックします。
+[バックアップ ジョブ] メニューを開くには、コンテナーのメイン メニューで **[バックアップ ジョブ]** を選択します。
 
-![設定のバックアップ項目](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
+![[バックアップ ジョブ] の選択](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
 バックアップ ジョブの一覧が開きます。
 
-![設定のバックアップ項目](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
+![バックアップ ジョブの一覧](./media/backup-azure-manage-windows-server/backup-jobs-list.png)
 
 [バックアップ ジョブ] メニューには、すべてのバックアップの種類について、過去 24 時間のすべての操作の状態が表示されます。 フィルターを変更するには **[フィルター]** を使用します。 フィルターについては次のセクションで説明します。
 
 フィルターを変更するには:
 
-1. コンテナーの [バックアップ ジョブ] メニューで、 **[フィルター]** をクリックします。
+1. コンテナーの [バックアップ ジョブ] メニューで、 **[フィルター]** を選択します。
 
-   ![設定のバックアップ項目](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
+   ![[バックアップ ジョブ] の [フィルター] の選択](./media/backup-azure-manage-windows-server/vault-backup-job-menu-filter.png)
 
     [フィルター] メニューが開きます。
 
-   ![設定のバックアップ項目](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
+   ![バックアップ ジョブの [フィルター] メニューが表示される](./media/backup-azure-manage-windows-server/filter-menu-backup-jobs.png)
 
-2. フィルターの設定を選択して、 **[完了]** をクリックします。 フィルター処理された一覧が新しい設定に基づいて更新されます。
+2. フィルターの設定を選択して、 **[完了]** を選択します。 フィルター処理された一覧が新しい設定に基づいて更新されます。
 
 #### <a name="item-type"></a>項目の種類
 
@@ -261,7 +261,7 @@ Recovery Services コンテナーには、多くの種類のバックアップ �
 
 すべてのジョブ メニュー情報を含むスプレッドシートを作成するには、 **[ジョブのエクスポート]** を使用します。 スプレッドシートには、すべてのジョブの概要を含む 1 つのシートと、ジョブごとに個別のシートがあります。
 
-ジョブの情報をスプレッドシートにエクスポートするには、 **[ジョブのエクスポート]** をクリックします。 サービスにより、コンテナーの名前と日付を使用してスプレッドシートが作成されます。ただし、名前は変更できます。
+ジョブの情報をスプレッドシートにエクスポートするには、 **[ジョブのエクスポート]** を選択します。 サービスにより、コンテナーの名前と日付を使用してスプレッドシートが作成されます。ただし、名前は変更できます。
 
 ## <a name="monitor-backup-usage"></a>バックアップの利用状況の監視
 

@@ -4,14 +4,14 @@ description: Azure Monitor のメトリック警告に関する一般的な問�
 author: harelbr
 ms.author: harelbr
 ms.topic: reference
-ms.date: 07/21/2020
+ms.date: 08/13/2020
 ms.subservice: alerts
-ms.openlocfilehash: b4a2329640387ab1c3cda93d18c6cb22c7d511cd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 1c1fe613721ea2bc2d4b9665d6da73b094487efc
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87327482"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190668"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Azure Monitor のメトリック警告に関する問題のトラブルシューティング 
 
@@ -108,9 +108,9 @@ Azure リソースを削除しても、関連付けられているメトリッ�
 
 ## <a name="define-an-alert-rule-on-a-custom-metric-that-isnt-emitted-yet"></a>まだ生成されていないカスタム メトリックに対してアラート ルールを定義する
 
-メトリック アラート ルールを作成する場合、メトリック名は [Metric Definitions API](/rest/api/monitor/metricdefinitions/list) に対して検証され、それが存在することが確認されます。 場合によっては、カスタム メトリックに対して、それが生成される前にアラート ルールを作成したいこともあるでしょう。 たとえば、カスタム メトリックを生成する Application Insights リソースを (ARM テンプレートを使用して)、そのメトリックを監視するアラート ルールとともに作成する場合です。
+メトリック アラート ルールを作成する場合、メトリック名は [Metric Definitions API](/rest/api/monitor/metricdefinitions/list) に対して検証され、それが存在することが確認されます。 場合によっては、カスタム メトリックに対して、それが生成される前にアラート ルールを作成したいこともあるでしょう。 たとえば、カスタム メトリックを生成する Application Insights リソースを (Resource Manager テンプレートを使用して)、そのメトリックを監視するアラート ルールと共に作成する場合です。
 
-カスタム メトリック定義の検証を試行する際のデプロイの失敗を避けるには、アラート ルールの条件セクションで *skipMetricValidation* パラメーターを使用し、メトリックの検証をスキップすることができます。 ARM テンプレートでこのパラメーターを使用する方法については、次の例をご覧ください (メトリック アラート ルールの作成についてのすべての ARM テンプレートのサンプルについては、[こちら]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric-create-templates)を参照してください)。
+カスタム メトリック定義の検証を試行する際のデプロイの失敗を避けるには、アラート ルールの条件セクションで *skipMetricValidation* パラメーターを使用し、メトリックの検証をスキップすることができます。 Resource Manager テンプレートでこのパラメーターを使用する方法については、次の例を参照してください。 詳細については、[メトリック アラート ルールを作成するための Resource Manager テンプレートのサンプル](./alerts-metric-create-templates.md)に関する記事を参照してください。
 
 ```json
 "criteria": {
@@ -129,6 +129,15 @@ Azure リソースを削除しても、関連付けられているメトリッ�
               ]
         }
 ```
+
+## <a name="export-the-azure-resource-manager-template-of-a-metric-alert-rule-via-the-azure-portal"></a>Azure portal を使用してメトリック アラート ルールの Azure Resource Manager テンプレートをエクスポートする
+
+メトリック アラート ルールの Resource Manager テンプレートのエクスポートは、その JSON 構文やプロパティを理解するために役立ち、将来のデプロイを自動化するために使用できます。
+1. ポータルの **[リソース グループ]** セクションに移動し、ルールが含まれているリソース グループを選択します。
+2. [概要] セクションで、 **[非表示の型の表示]** チェックボックスをオンにします。
+3. **[種類]** フィルターで、 *[microsoft.insights/metricalerts]* を選択します。
+4. 関連するアラート ルールを選択して、その詳細を表示します。
+5. **[設定]** で、 **[テンプレートのエクスポート]** を選択します。
 
 ## <a name="metric-alert-rules-quota-too-small"></a>メトリック警告ルールのクォータが小さすぎる
 
@@ -198,7 +207,7 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 
    - プラットフォーム メトリックの場合: **メトリックの表示名**ではなく、[Azure Monitor でサポートされているメトリックのページ](./metrics-supported.md)の**メトリック**名を使用していることを確認します
 
-   - カスタム メトリックの場合: メトリックが既に出力されていること (まだ存在していないカスタム メトリックに対してアラート ルールを作成することはできないため)、およびカスタム メトリックの名前空間を指定していることを確認します ([こちら](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)の ARM テンプレートの例を参照)
+   - カスタム メトリックの場合: メトリックが既に出力されていること (まだ存在していないカスタム メトリックに対してアラート ルールを作成することはできません)、およびカスタム メトリックの名前空間を指定していることを確認します ([ここ](./alerts-metric-create-templates.md#template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric)にある Resource Manager テンプレートの例を参照)。
 
 - [ログに関するメトリック アラート](./alerts-metric-logs.md)を作成する場合は、適切な依存関係が含まれていることを確認します。 [サンプル テンプレート](./alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs)を参照してください。
 
@@ -247,4 +256,3 @@ Resource Manager テンプレート、REST API、PowerShell、または Azure �
 ## <a name="next-steps"></a>次のステップ
 
 - 警告と通知に関する一般的なトラブルシューティング情報については、「[Azure Monitor のアラートの問題のトラブルシューティング](alerts-troubleshoot.md)」を参照してください。
-

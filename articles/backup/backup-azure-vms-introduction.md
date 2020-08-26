@@ -3,12 +3,12 @@ title: Azure VM バックアップについて
 description: この記事では、Azure Backup サービスを使用して Azure 仮想マシンをバックアップする方法と、ベスト プラクティスに従う方法について説明します。
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 3c73b489404d1e8198fbd984b5188a7a2ccb973f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 04ea9fa49d95ced3245f88fee58a23ba67aaa0d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091047"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587499"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Azure VM バックアップの概要
 
@@ -51,8 +51,8 @@ Azure Backup を使用して Azure VM をバックアップするとき、保存
 
 **暗号化** | **詳細** | **サポート**
 --- | --- | ---
+**SSE** | SSE では、Azure Storage により、データを格納する前に自動的に暗号化することで、保存中の暗号化が提供されます。 Azure Storage では、取得前にデータの暗号化解除も行われます。 Azure Backup では、次の 2 種類の Storage Service Encryption を使用した VM のバックアップがサポートされています。<li> **プラットフォーム マネージド キーを使用した SSE**:この暗号化は、お使いの VM の全ディスクの既定です。 詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#platform-managed-keys)を参照してください。<li> **カスタマー マネージド キーを使用した SSE**. CMK では、ユーザーがディスクの暗号化に使用するキーを管理します。 詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)を参照してください。 | Azure Backup では、Azure VM の保存中の暗号化のために SSE が使用されます。
 **Azure Disk Encryption** | Azure Disk Encryption では Azure VM の OS とデータ ディスクの両方が暗号化されます。<br/><br/> Azure Disk Encryption は、シークレットとしてキー コンテナーで保護されている BitLocker 暗号化キー (BEK) と統合されます。 Azure Disk Encryption は、Azure Key Vault キー暗号化キー (KEK) とも統合されます。 | Azure Backup では、BEK のみで、または BEK と KEK を併用して、暗号化されたマネージドおよびアンマネージド Azure VM のバックアップがサポートされます。<br/><br/> BEK と KEK の両方がバックアップされて暗号化されます。<br/><br/> KEK と BEK がバックアップされるため、必要に応じて、必要なアクセス許可を持つユーザーは、キーとシークレットをキー コンテナーに復元できます。 ユーザーは、暗号化された VM を復旧することもできます。<br/><br/> 暗号化されたキーとシークレットは、承認されていないユーザーによって、または Azure によって読み取ることはできません。
-**SSE** | SSE では、Azure Storage により、データを格納する前に自動的に暗号化することで、保存中の暗号化が提供されます。 Azure Storage では、取得前にデータの暗号化解除も行われます。 | Azure Backup では、Azure VM の保存中の暗号化のために SSE が使用されます。
 
 マネージドおよびアンマネージド Azure VM の場合、Backup では、BEK のみで暗号化された VM と、BEK と KEK を併用して暗号化された VM の両方がサポートされます。
 
@@ -140,4 +140,4 @@ OS ディスク | 32 TB | 17 GB
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure VM バックアップの準備](backup-azure-arm-vms-prepare.md)に進みます。
+- [Azure VM のバックアップを準備する](backup-azure-arm-vms-prepare.md)。

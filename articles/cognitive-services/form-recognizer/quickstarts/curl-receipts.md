@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 9c733c3c21d76ea6b9b13ac19c349c26b1ea1b4a
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 4fa31a5be41e89c8fdc821ae77ff151b184316df
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87902158"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88518018"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>クイック スタート:cURL で Form Recognizer REST API を使用してレシートのデータを抽出する
 
 このクイックスタートでは、cURL で Azure Form Recognizer REST API を使用して、米国のレシートから重要な情報を抽出および特定します。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -73,24 +73,24 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
 `"recognitionResults"` ノードには、認識されたすべてのテキストが格納されます。 テキストは、まずページごとに整理され、そのうえで行ごと、さらに個々の単語ごとに整理されます。 `"understandingResults"` ノードには、モデルによって検出されたレシート固有の値が格納されます。 税、合計、店舗の住所など、大切なキーと値のペアが存在する場所です。
 
 ```json
-{ 
+{
   "status":"succeeded",
   "createdDateTime":"2019-12-17T04:11:24Z",
   "lastUpdatedDateTime":"2019-12-17T04:11:32Z",
-  "analyzeResult":{ 
+  "analyzeResult":{
     "version":"2.0.0",
-    "readResults":[ 
-      { 
+    "readResults":[
+      {
         "page":1,
         "angle":0.6893,
         "width":1688,
         "height":3000,
         "unit":"pixel",
         "language":"en",
-        "lines":[ 
-          { 
+        "lines":[
+          {
             "text":"Contoso",
-            "boundingBox":[ 
+            "boundingBox":[
               635,
               510,
               1086,
@@ -100,10 +100,10 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
               643,
               604
             ],
-            "words":[ 
-              { 
+            "words":[
+              {
                 "text":"Contoso",
-                "boundingBox":[ 
+                "boundingBox":[
                   639,
                   510,
                   1087,
@@ -121,24 +121,24 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
         ]
       }
     ],
-    "documentResults":[ 
-      { 
+    "documentResults":[
+      {
         "docType":"prebuilt:receipt",
-        "pageRange":[ 
+        "pageRange":[
           1,
           1
         ],
-        "fields":{ 
-          "ReceiptType":{ 
+        "fields":{
+          "ReceiptType":{
             "type":"string",
             "valueString":"Itemized",
             "confidence":0.692
           },
-          "MerchantName":{ 
+          "MerchantName":{
             "type":"string",
             "valueString":"Contoso Contoso",
             "text":"Contoso Contoso",
-            "boundingBox":[ 
+            "boundingBox":[
               378.2,
               292.4,
               1117.7,
@@ -150,16 +150,16 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
             ],
             "page":1,
             "confidence":0.613,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/0/words/0",
               "#/readResults/0/lines/1/words/0"
             ]
           },
-          "MerchantAddress":{ 
+          "MerchantAddress":{
             "type":"string",
             "valueString":"123 Main Street Redmond, WA 98052",
             "text":"123 Main Street Redmond, WA 98052",
-            "boundingBox":[ 
+            "boundingBox":[
               302,
               675.8,
               848.1,
@@ -171,7 +171,7 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
             ],
             "page":1,
             "confidence":0.99,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/2/words/0",
               "#/readResults/0/lines/2/words/1",
               "#/readResults/0/lines/2/words/2",
@@ -180,11 +180,11 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
               "#/readResults/0/lines/3/words/2"
             ]
           },
-          "MerchantPhoneNumber":{ 
+          "MerchantPhoneNumber":{
             "type":"phoneNumber",
             "valuePhoneNumber":"+19876543210",
             "text":"987-654-3210",
-            "boundingBox":[ 
+            "boundingBox":[
               278,
               1004,
               656.3,
@@ -196,15 +196,15 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
             ],
             "page":1,
             "confidence":0.99,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/4/words/0"
             ]
           },
-          "TransactionDate":{ 
+          "TransactionDate":{
             "type":"date",
             "valueDate":"2019-06-10",
             "text":"6/10/2019",
-            "boundingBox":[ 
+            "boundingBox":[
               265.1,
               1228.4,
               525,
@@ -216,15 +216,15 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
             ],
             "page":1,
             "confidence":0.99,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/5/words/0"
             ]
           },
-          "TransactionTime":{ 
+          "TransactionTime":{
             "type":"time",
             "valueTime":"13:59:00",
             "text":"13:59",
-            "boundingBox":[ 
+            "boundingBox":[
               541,
               1248,
               677.3,
@@ -236,20 +236,20 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
             ],
             "page":1,
             "confidence":0.977,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/5/words/1"
             ]
           },
-          "Items":{ 
+          "Items":{
             "type":"array",
-            "valueArray":[ 
-              { 
+            "valueArray":[
+              {
                 "type":"object",
-                "valueObject":{ 
-                  "Quantity":{ 
+                "valueObject":{
+                  "Quantity":{
                     "type":"number",
                     "text":"1",
-                    "boundingBox":[ 
+                    "boundingBox":[
                       245.1,
                       1581.5,
                       300.9,
@@ -261,15 +261,15 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
                     ],
                     "page":1,
                     "confidence":0.92,
-                    "elements":[ 
+                    "elements":[
                       "#/readResults/0/lines/7/words/0"
                     ]
                   },
-                  "Name":{ 
+                  "Name":{
                     "type":"string",
                     "valueString":"Cappuccino",
                     "text":"Cappuccino",
-                    "boundingBox":[ 
+                    "boundingBox":[
                       322,
                       1586,
                       654.2,
@@ -281,15 +281,15 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
                     ],
                     "page":1,
                     "confidence":0.923,
-                    "elements":[ 
+                    "elements":[
                       "#/readResults/0/lines/7/words/1"
                     ]
                   },
-                  "TotalPrice":{ 
+                  "TotalPrice":{
                     "type":"number",
                     "valueNumber":2.2,
                     "text":"$2.20",
-                    "boundingBox":[ 
+                    "boundingBox":[
                       1107.7,
                       1584,
                       1263,
@@ -301,7 +301,7 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
                     ],
                     "page":1,
                     "confidence":0.918,
-                    "elements":[ 
+                    "elements":[
                       "#/readResults/0/lines/8/words/0"
                     ]
                   }
@@ -310,11 +310,11 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
               ...
             ]
           },
-          "Subtotal":{ 
+          "Subtotal":{
             "type":"number",
             "valueNumber":11.7,
             "text":"11.70",
-            "boundingBox":[ 
+            "boundingBox":[
               1146,
               2221,
               1297.3,
@@ -326,15 +326,15 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
             ],
             "page":1,
             "confidence":0.955,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/13/words/1"
             ]
           },
-          "Tax":{ 
+          "Tax":{
             "type":"number",
             "valueNumber":1.17,
             "text":"1.17",
-            "boundingBox":[ 
+            "boundingBox":[
               1190,
               2359,
               1304,
@@ -346,15 +346,15 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
             ],
             "page":1,
             "confidence":0.979,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/15/words/1"
             ]
           },
-          "Tip":{ 
+          "Tip":{
             "type":"number",
             "valueNumber":1.63,
             "text":"1.63",
-            "boundingBox":[ 
+            "boundingBox":[
               1094,
               2479,
               1267.7,
@@ -366,15 +366,15 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
             ],
             "page":1,
             "confidence":0.941,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/17/words/1"
             ]
           },
-          "Total":{ 
+          "Total":{
             "type":"number",
             "valueNumber":14.5,
             "text":"$14.50",
-            "boundingBox":[ 
+            "boundingBox":[
               1034.2,
               2617,
               1387.5,
@@ -386,7 +386,7 @@ JSON 出力で `200 (Success)` 応答を受信します。 最初のフィール
             ],
             "page":1,
             "confidence":0.985,
-            "elements":[ 
+            "elements":[
               "#/readResults/0/lines/19/words/0"
             ]
           }

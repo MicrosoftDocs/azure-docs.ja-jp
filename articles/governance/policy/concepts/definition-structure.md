@@ -1,14 +1,14 @@
 ---
 title: ポリシー定義の構造の詳細
 description: ポリシー定義を使用し、組織の Azure リソースの規則を確立する方法について説明します。
-ms.date: 06/12/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 87cdca414a04d287f02fec5b3510c4f561cab8c0
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: ba6b8160eefb0a59bc8273989c27a3a8501a79b7
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87116988"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547802"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -188,7 +188,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 `metadata` プロパティの中で、**strongType** を使用して、Azure portal 内でオプションの複数選択リストを提供できます。 **strongType** には、サポートされる "_リソースの種類_" または許可される値を指定できます。 ある "_リソースの種類_" が **strongType** に対して有効かどうかを確認するには、[Get-AzResourceProvider](/powershell/module/az.resources/get-azresourceprovider) を使用します。 _リソースの種類_ **strongType** の形式は `<Resource Provider>/<Resource Type>` です。 たとえば、「 `Microsoft.Network/virtualNetworks/subnets` 」のように入力します。
 
-**Get-AzResourceProvider** によって返されない一部の "_リソースの種類_" もサポートされています。 これらには次のようなものがあります。
+**Get-AzResourceProvider** によって返されない一部の "_リソースの種類_" もサポートされています。 その種類には、次のようなものがあります。
 
 - `Microsoft.RecoveryServices/vaults/backupPolicies`
 
@@ -275,7 +275,8 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 - `"less": "dateValue"` | `"less": "stringValue"` | `"less": intValue`
 - `"lessOrEquals": "dateValue"` | `"lessOrEquals": "stringValue"` | `"lessOrEquals": intValue`
 - `"greater": "dateValue"` | `"greater": "stringValue"` | `"greater": intValue`
-- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` | `"greaterOrEquals": intValue`
+- `"greaterOrEquals": "dateValue"` | `"greaterOrEquals": "stringValue"` |
+  `"greaterOrEquals": intValue`
 - `"exists": "bool"`
 
 **less**、**lessOrEquals**、**greater**、**greaterOrEquals** では、プロパティの種類が条件の種類と一致しない場合、エラーがスローされます。 文字列比較は、`InvariantCultureIgnoreCase` を使用して行われます。
@@ -346,8 +347,7 @@ Azure Policy の組み込みとパターンについては、「[Azure Policy �
 
 ### <a name="value"></a>値
 
-条件は、**value** を使用して形成することもできます。 **value** では、[パラメーター](#parameters)、[サポートされるテンプレート関数](#policy-functions)、またはリテラルに対する条件をチェックします。
-**value** は、サポートされる任意の[条件](#conditions)と組み合わせられます。
+条件は、**value** を使用して形成することもできます。 **value** では、[パラメーター](#parameters)、[サポートされるテンプレート関数](#policy-functions)、またはリテラルに対する条件をチェックします。 **value** は、サポートされる任意の[条件](#conditions)と組み合わせられます。
 
 > [!WARNING]
 > _テンプレート関数_ の結果がエラーの場合、ポリシーの評価は失敗します。 評価の失敗は、暗黙的な **deny** です。 詳細については、「[テンプレート エラーの回避](#avoiding-template-failures)」を参照してください。 新しいポリシーの定義をテストしたり検証したりしている間、失敗となった評価の影響が新しいリソースや更新されたリソースに波及するのを避けるには、[enforcementMode](./assignment-structure.md#enforcement-mode) として **DoNotEnforce** を使用してください。

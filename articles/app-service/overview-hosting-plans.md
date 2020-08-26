@@ -4,18 +4,18 @@ description: App Service プランが Azure App Service でどのように機能
 keywords: App Service, Azure App Service, スケール, スケーラブル, スケーラビリティ, App Service プラン, App Service コスト
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 08/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 93f823a623145f8dd8bf5118de973dfbc095bfb4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 3b339b359ddbaf105b95bdf5d94ee0f66f339a82
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87068190"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611451"
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service プランの概要
 
-App Service では、アプリは "_App Service プラン_" で実行されます。 App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 これらのコンピューティング リソースは従来の Web ホスティングの ["_サーバー ファーム_"](https://wikipedia.org/wiki/Server_farm) に似ています。 1 つまたは複数のアプリを同じコンピューティング リソース (または、同じ App Service プラン) で実行するように構成することができます。
+App Service (Web Apps、API Apps、または Mobile Apps) では、アプリは常に _App Service プラン_で実行されます。 また、[Azure Functions](../azure-functions/functions-scale.md#app-service-plan) には、_App Service プラン_で実行するオプションもあります。 App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 これらのコンピューティング リソースは従来の Web ホスティングの ["_サーバー ファーム_"](https://wikipedia.org/wiki/Server_farm) に似ています。 1 つまたは複数のアプリを同じコンピューティング リソース (または、同じ App Service プラン) で実行するように構成することができます。
 
 特定のリージョン (西ヨーロッパなど) の App Service プランを作成する場合、一連のコンピューティング リソースはそのリージョンのそのプランに対して作成されます。 この App Service プランに入れたアプリは、App Service プランで定義されたとおりにこれらのコンピューティング リソースで実行されます。 各 App Service プランは以下を定義します。
 
@@ -65,11 +65,11 @@ App Service でアプリを作成すると、App Service プランに入れら�
 
 このセクションでは、App Service アプリの課金方法について説明します。 リージョン固有の価格情報について詳しくは、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」をご覧ください。
 
-**Free** レベルを除き、App Service プランは使用するコンピューティング リソースを時間単位で課金します。
+**Free** レベルを除き、App Service プランでは、使用するコンピューティング リソースに対して課金されます。
 
-- **Shared** レベルでは、それぞれのアプリが CPU の分単位のクォータを受け取るので、"_各アプリ_" は CPU クォータの時間単位で課金されます。
-- 専用コンピューティング レベル (**Basic**、**Standard**、**Premium**、**PremiumV2**) では、App Service プランはアプリがスケールされる VM インスタンスの数を定義するので、App Service プランの "_各 VM インスタンス_" には時間単位の料金があります。 これらの VM インスタンスには、実行されているアプリの数にかかわらず同じ料金が課金されます。 予期しない課金を避けるには、[App Service プランのクリーンアップ](app-service-plan-manage.md#delete)に関するページをご覧ください。
-- **Isolated** レベルでは、App Service Environment は、アプリを実行する分離された worker の数を定義し、"_各 worker_" は時間単位で課金されます。 さらに、App Service Environment 自体の実行に時間単位の基本料金があります。
+- **Shared** レベルでは、各アプリが CPU の分単位のクォータを受け取るので、_各アプリ_の CPU クォータに対して課金されます。
+- 専用コンピューティング レベル (**Basic**、**Standard**、**Premium**、**PremiumV2**) では、App Service プランによって、アプリがスケーリングされる VM インスタンスの数が定義されるので、App Service プラン内の_各 VM インスタンス_に対して課金されます。 これらの VM インスタンスには、実行されているアプリの数にかかわらず同じ料金が課金されます。 予期しない課金を避けるには、[App Service プランのクリーンアップ](app-service-plan-manage.md#delete)に関するページをご覧ください。
+- **Isolated** レベルでは、App Service Environment によって、アプリを実行する分離された worker の数が定義されるので、_各 worker_に対して課金されます。 さらに、App Service Environment 自体の実行に対して、定額のスタンプ料金があります。
 
 使用可能な App Service 機能 (カスタム ドメインの構成、TLS/SSL 証明書、デプロイ スロット、バックアップなど) の使用には課金されません。 ただし、次のような例外があります。
 

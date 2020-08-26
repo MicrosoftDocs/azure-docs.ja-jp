@@ -4,15 +4,15 @@ description: チュートリアル - Azure Batch を使用して Azure Data Fact
 author: mammask
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 07/29/2020
+ms.date: 08/12/2020
 ms.author: komammas
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 9b58aa06b67f01cf9ce0b30cef0326185124306c
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: f4c71cffe00faa6dd8cc440c59f94b8c2d60f712
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87853315"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185113"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>チュートリアル:Azure Batch を使用して Azure Data Factory から Python スクリプトを実行する
 
@@ -67,8 +67,7 @@ Azure Portal [https://portal.azure.com](https://portal.azure.com) にサイン�
 1. ご自分の Azure 資格情報を使用して、Storage Explorer にサインインします。
 1. ご自分の Batch アカウントにリンクされているストレージ アカウントを使用し、「[BLOB コンテナーを作成する](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container)」の手順に従って、2 つの BLOB コンテナー (1 つは入力ファイル用、1 つは出力ファイル用) を作成します。
     * この例では、入力コンテナーを `input`、出力コンテナーを `output` と呼ぶことにします。
-1. 「[BLOB コンテナー内の BLOB を管理する](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)」の手順に従い、Storage Explorer を使用して `main.py` と [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) を入力コンテナー `input` にアップロードします
-
+1. 「[BLOB コンテナー内の BLOB を管理する](../vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container)」の手順に従い、Storage Explorer を使用して [`iris.csv`](https://www.kaggle.com/uciml/iris/version/2#Iris.csv) を入力コンテナー `input` にアップロードします
 
 ## <a name="develop-a-script-in-python"></a>Python スクリプトを開発する
 

@@ -1,6 +1,6 @@
 ---
 title: クラウド サービスの割り当てエラーのトラブルシューティング | Microsoft Docs
-description: Azure で Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング
+description: Azure Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング。 割り当てのしくみと、なぜ割り当てが失敗することがあるかについて説明します。
 services: azure-service-management, cloud-services
 documentationcenter: ''
 author: simonxjx
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: ab6cc71478e80bc3ff9d81a3a91ce90fbb09adb3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.openlocfilehash: cba3f47015072f16112ef981d2f59d0c73cb69c2
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85921594"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142487"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Azure で Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング
 ## <a name="summary"></a>まとめ

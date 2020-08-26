@@ -2,22 +2,21 @@
 title: PowerShell サンプル - 証明書を使用しないアプリケーション プロキシ アプリ
 description: カスタム ドメインを使用しているが、有効な TLS/SSL 証明書がアップロードされていないすべての Azure Active Directory (Azure AD) アプリケーション プロキシ アプリケーションを一覧表示する PowerShell の例。
 services: active-directory
-author: msmimart
+author: kenwith
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: sample
 ms.date: 12/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97dc46a34e1bb5bb85dcb771a9720a19d356e6f5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 66a0c14ad9c9143a0b671379d4a22b14944d4eb6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79481213"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511220"
 ---
 # <a name="get-all-azure-ad-proxy-application-apps-published-with-no-certificate-uploaded"></a>証明書をアップロードせずに公開されたすべての Azure AD プロキシ アプリケーション アプリを取得する
 

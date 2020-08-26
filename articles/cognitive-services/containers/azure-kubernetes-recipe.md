@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 24e04e166c13f787f756c97716e2bf0143eecbdb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b53476bcb05d6e91b157c24795c963c04e6f4bb4
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87128575"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244493"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Azure Kubernetes Service に Text Analytics 言語検出コンテナーをデプロイする
 
@@ -25,7 +25,7 @@ ms.locfileid: "87128575"
 
 この手順には、ローカルでインストールして実行する必要があるいくつかのツールが必要です。 Azure Cloud Shell は使用しないでください。
 
-* Azure サブスクリプションを使用してください。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+* Azure サブスクリプションを使用してください。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services) を作成してください。
 * この手順で使用する[サンプル](https://github.com/Azure-Samples/cognitive-services-containers-samples)のクローンを作成できるよう、オペレーティング システム用の [Git](https://git-scm.com/downloads) を使用してください。
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)。
 * [Docker エンジン](https://www.docker.com/products/docker-engine)。Docker CLI がコンソール ウィンドウで動作することを確認します。

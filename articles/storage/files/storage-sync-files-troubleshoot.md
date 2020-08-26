@@ -1,18 +1,18 @@
 ---
 title: Azure File Sync のトラブルシューティング | Microsoft Docs
-description: Azure File Sync の一般的な問題をトラブルシューティングします。
+description: Windows Server の Azure ファイル共有の高速キャッシュへの変換に使用可能な Azure File Sync での、デプロイに関する一般的な問題のトラブルシューティング。
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 17c8f846201553d3cfa9a2d68b8b4a7ab655c378
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: d266583a2bd73c92a58fad1882a1c572ed4f3769
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86232380"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056263"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -47,7 +47,7 @@ Windows Server 2012 R2 でサーバー エンドポイントを作成した後�
 driveletter:\ にアクセスできません。  
 パラメーターが正しくありません。
 
-解決するには、Windows Server 2012 R2 の最新更新プログラムをインストールし、サーバーを再起動します。
+この問題を解決するには、[KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014) をインストールしてサーバーを再起動します。 新しい更新プログラムが既にインストールされているためにこの更新プログラムがインストールされない場合は、Windows Update にアクセスして、Windows Server 2012 R2 の最新の更新プログラムをインストールし、サーバーを再起動します。
 
 <a id="server-registration-missing-subscriptions"></a>**サーバー登録で一部の Azure サブスクリプションが一覧に表示されない**  
 ServerRegistration.exe を使用してサーバーを登録している場合、[Azure サブスクリプション] ドロップダウンをクリックしたとき、サブスクリプションが表示されません。
@@ -338,7 +338,7 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | 競合ファイルの最大数に達したため、ファイルを同期できません。 Azure File Sync は、1 つのファイルにつき 100 個の競合ファイルをサポートします。 ファイル競合の詳細については、Azure File Sync の[よく寄せられる質問 (FAQ)](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution) を参照してください。 | この問題を解決するには、競合ファイルの数を減らします。 競合ファイルの数が 100 個未満になると、ファイルは同期されます。 |
 
 #### <a name="handling-unsupported-characters"></a>サポートされていない文字の処理
-**FileSyncErrorsReport.ps1** PowerShell スクリプトで、サポートされていない文字が原因のエラー (エラー コード 0x8007007b または 0x80c80255) が示されている場合は、該当するファイル名から問題のある文字を削除するか、ファイル名を変更する必要があります。 これらの文字の大部分には標準のビジュアル エンコードがないため、PowerShell はこれらの文字を疑問符または空の四角形として出力します。 [評価ツール](storage-sync-files-planning.md#evaluation-cmdlet)を使用して、サポートされていない文字を識別できます。
+**FileSyncErrorsReport.ps1** PowerShell スクリプトで、サポートされていない文字が原因で項目単位の同期エラー (エラー コード 0x8007007b または 0x80c80255) が示されている場合は、該当するファイル名から問題のある文字を削除するか、ファイル名を変更する必要があります。 これらの文字の大部分には標準のビジュアル エンコードがないため、PowerShell はこれらの文字を疑問符または空の四角形として出力します。 [評価ツール](storage-sync-files-planning.md#evaluation-cmdlet)を使用して、サポートされていない文字を識別できます。 データセットに無効な文字が含まれている複数のファイルがある場合は、[ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) スクリプトを使用して、サポートされていない文字を含むファイルの名前を変更します。
 
 下の表に、Azure File Sync でまだサポートされていない Unicode 文字をすべて示します。
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 8c508e65ef2c6d62716454af151feb0a1c80bba0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 036b3af03dec2bdaa7feacc94abca930ebd9b317
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781110"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235385"
 ---
 # <a name="workday-attribute-reference"></a>Workday 属性のリファレンス
 
@@ -211,7 +211,7 @@ ms.locfileid: "84781110"
 ## <a name="custom-xpath-values"></a>カスタム XPATH 値
 次の表に、Workday から Active Directory または Azure AD にワーカーをプロビジョニングするときに、一般的に使用されるその他のカスタム XPATH API 式の一覧を示します。 ここに記載されている XPATH API 式を、使用している Workday のバージョンでテストして、[チュートリアル:「構成の確認](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)」を参照してください。
 
-この統合を実装する顧客の利益のために XPATH テーブルに属性を追加するには、以下にコメントを残すか、[直接記事に投稿](https://docs.microsoft.com/contribute)してください。 
+この統合を実装する顧客の利益のために XPATH テーブルに属性を追加するには、以下にコメントを残すか、[直接記事に投稿](/contribute)してください。 
 
 > [!div class="mx-tdBreakAll"]
 > | \# | Workday 属性名  | Workday API バージョン | Workday XPATH API 式   |
@@ -224,7 +224,7 @@ ms.locfileid: "84781110"
 
 
 ## <a name="supported-xpath-functions"></a>サポートされている XPATH 関数
-XPATH API 式の作成時に使用できる [Microsoft .NET XPATH ライブラリ](https://docs.microsoft.com/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100))でサポートされている XPATH 関数の一覧を次に示します。 
+XPATH API 式の作成時に使用できる [Microsoft .NET XPATH ライブラリ](/previous-versions/dotnet/netframework-4.0/ms256138(v=vs.100))でサポートされている XPATH 関数の一覧を次に示します。 
 
 * name
 * last
@@ -248,4 +248,3 @@ XPATH API 式の作成時に使用できる [Microsoft .NET XPATH ライブラ�
 * Sum
 * round
 * floor
-

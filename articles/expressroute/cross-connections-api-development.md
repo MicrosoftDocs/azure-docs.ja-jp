@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: mialdrid
-ms.openlocfilehash: b4a83013d2cbeb2871a3963ec0c95144c02f4d66
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 459a70c787dfdcd54fb3010655390787022c8f2e
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77187026"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921624"
 ---
 # <a name="expressroute-crossconnnections-api-development-and-integration"></a>ExpressRoute CrossConnnections API の開発と統合
 
@@ -30,7 +30,7 @@ expressRouteCrossConnections リソースへの移行のメリット:
 
 * ExpressRoute パートナー向けの今後の機能強化はすべて、ExpressRouteCrossConnection リソースで利用可能になる予定です。
 
-* パートナーは、[Role-Based Access Control](https://docs.microsoft.com/azure/role-based-access-control/overview) を expressRouteCrossConnection リソースに適用できます。 これらの制御では、expressRouteCrossConnection リソースと add/update/delete ピアリングの構成を変更できるユーザー アカウントへのアクセス許可を定義できます。
+* パートナーは、[Azure ロールベースのアクセス制御 (Azure RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) を expressRouteCrossConnection リソースに適用できます。 これらの制御では、expressRouteCrossConnection リソースと add/update/delete ピアリングの構成を変更できるユーザー アカウントへのアクセス許可を定義できます。
 
 * expressRouteCrossConnection リソースでは、ExpressRoute 接続のトラブルシューティングに役立つ可能性のある API が公開されています。 これには、ARP テーブル、BGP ルート テーブルの概要、および BGP ルート テーブルの詳細が含まれます。 この機能は、従来のデプロイ API ではサポートされていません。
 

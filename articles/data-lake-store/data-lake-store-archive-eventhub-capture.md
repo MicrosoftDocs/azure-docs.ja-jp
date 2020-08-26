@@ -1,17 +1,17 @@
 ---
 title: Event Hubs のデータを Azure Data Lake Storage Gen1 にキャプチャする
-description: Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs で受信したデータをキャプチャします。
+description: Azure Data Lake Storage Gen1 を使用して、Azure Event Hubs で受信したデータをキャプチャする方法を説明します。 まず、前提条件を検証します。
 author: twooley
 ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9d663c2e95ee94811d70a0602b35842a789dd9b3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c5254558c62499ed6864e809dbc93c26ebba94a9
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85515757"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88190277"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>Azure Data Lake Storage Gen1 を使用して Event Hubs からデータをキャプチャする
 

@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と BC in the Cloud の統合 | Microsoft Docs'
 description: Azure Active Directory と BC in the Cloud の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 7dc40d2c-6349-40cb-b304-b098bd03a66c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: faad03885d3b427d73d06c683db8041a9324f9be
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 384fd7aab73781ffa868e826421eab6b7062a88f
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73157719"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88549346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>チュートリアル: Azure Active Directory と BC in the Cloud の統合
 

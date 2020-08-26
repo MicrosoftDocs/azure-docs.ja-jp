@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と Insider Track の統合 | Microsoft Docs
 description: Azure Active Directory と Insider Track の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 53b6a928-e8a4-4cf1-9952-50cd3f013b7c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 414b2862d91f54ed5df96e4e814c7a634dfc7cbe
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3af1bab0ec5b6fa92a494126b4a529d03c660d06
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67100134"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550462"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insider-track"></a>チュートリアル:Azure Active Directory と Insider Track の統合
 

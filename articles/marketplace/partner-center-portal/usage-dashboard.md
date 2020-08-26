@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/22/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: c6964a28956230dabad007d60d84dcdd1cffab23
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 9b8432a54aa90b7d500898b2f6959d075ac89460
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87319917"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245334"
 ---
 # <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Microsoft コマーシャル マーケットプレース分析の [使用量] ダッシュボード
 
@@ -111,6 +111,8 @@ ms.locfileid: "87319917"
 - **プランごとの超過分の傾向**:選択された測定ディメンションの使用量の傾向をプラン別に表します。 表示されるプランは、選択されたオファーで使用量が最も多い上位 5 つのプランを表します。
 - **上位 50 の顧客ごとの超過分の傾向**:使用時間が最も多い上位 50 個のオファーが "***ランキング***" に表示され、顧客測定の最高使用量によって順位付けされます。 ランキングで顧客を選択すると、選択した測定ディメンションの使用量の傾向が表示されます。
 - **上位の顧客ごとの超過分の傾向**:全体的な使用量の % に寄与する上位の顧客パーセンタイルを示します。 上位の顧客のパーセンタイルは、X 軸に沿って表示され、顧客の使用量によって決まります。 Y 軸には使用量が表示されます。 折れ線グラフ上の点にポインターを合わせると、詳細を表示できます。
+
+カスタム メーターを使用するオファーが複数ある場合、従量制課金の使用状況レポートには、カスタム メーター ディメンションに従って、すべてのオファーの使用状況に関する情報が表示されます。
 
 > [!NOTE]
 > このページの使用状況の詳細とすべてのグラフは、ページ フィルターに対して選択されている測定ディメンションについて表示されます。

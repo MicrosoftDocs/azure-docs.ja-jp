@@ -3,17 +3,17 @@ title: Table Storage のパフォーマンスとスケーラビリティのチ�
 description: 高パフォーマンスのアプリケーションを開発する際に Table Storage で使用する実証済みプラクティスのチェックリスト。
 services: storage
 author: tamram
+ms.author: tamram
 ms.service: storage
 ms.topic: overview
 ms.date: 10/10/2019
-ms.author: tamram
 ms.subservice: tables
-ms.openlocfilehash: 89581c8ae2fbdbb55a2abfbd527c8fdcf4b65761
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7c805e9cf15e22b9200ef86c6c22ac3f50e77719
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75749553"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236388"
 ---
 # <a name="performance-and-scalability-checklist-for-table-storage"></a>Table Storage のパフォーマンスとスケーラビリティのチェックリスト
 
@@ -192,11 +192,11 @@ Azure Storage のエラー コードの詳細については、「[状態コー�
 
 このセクションでは、Table service のパフォーマンスを大幅に向上させるための簡単な構成を示します。
 
-### <a name="use-json"></a>JSON の使用
+### <a name="use-json"></a>JSON を使用する
 
 ストレージ サービス Version 2013-08-15 より、Table service では、テーブル データの転送用に、XML ベースの AtomPub 形式に代えて JSON を使用できるようになりました。 JSON を使用することにより、ペイロード サイズが 75% 程度に抑えられ、アプリケーションのパフォーマンスを大幅に引き上げることができます。
 
-詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)」と、「[Payload Format for Table Service Operations (Table サービス操作のペイロード形式)](https://msdn.microsoft.com/library/azure/dn535600.aspx)」を参照してください。
+詳しくは、投稿「[Microsoft Azure Tables: Introducing JSON (Microsoft Azure テーブル: JSON の紹介)](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/05/windows-azure-tables-introducing-json.aspx)」と、「[テーブル サービス操作のペイロード形式](https://msdn.microsoft.com/library/azure/dn535600.aspx)」をご覧ください。
 
 ### <a name="disable-nagle"></a>Nagle の無効化
 
@@ -287,7 +287,7 @@ Azure Storage では、バッチ トランザクションがエンティティ �
 
 バッチ挿入を実行した後で一定範囲のエンティティをまとめて取得する場合は、テーブルではなく BLOB の使用を検討してください。 典型的な例はログ ファイルです。 数分間のログを一括で処理して挿入を実行した後、数分間のログを一度に取得することができます。 この場合は、テーブルではなく BLOB を使用した方が、書き込まれるオブジェクトと読み取られるオブジェクトの数を大幅に削減でき、また、必要な要求数も減る可能性があるため、パフォーマンスの面で優れています。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Table Storage のスケーラビリティおよびパフォーマンスのターゲット](scalability-targets.md)
 - [標準ストレージ アカウントのスケーラビリティとパフォーマンスのターゲット](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)

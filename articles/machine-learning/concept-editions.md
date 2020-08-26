@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: j-martens
 ms.author: jmartens
 ms.date: 06/11/2020
-ms.openlocfilehash: 173ff8b638c40773ca2c4bdac5021f2ea4b84549
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fbe3f0109ca3af2cf9ff44061c7882e6bd72c8a6
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85555535"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88508604"
 ---
-# <a name="enterprise-and-basic-editions-of-azure-machine-learning"></a>Azure Machine Learning の Enterprise および Basic エディション 
+# <a name="enterprise-preview-and-basic-editions-of-azure-machine-learning"></a>Azure Machine Learning の Enterprise (プレビュー) および Basic エディション 
 
 Azure Machine Learning には、機械学習のニーズに合わせて調整された 2 つのエディションがあります。 これらのエディションによって、開発者やデータ科学者が自分のワークスペースから利用可能な機械学習ツールはどれかが決定します。
 
@@ -23,7 +23,7 @@ Azure Machine Learning には、機械学習のニーズに合わせて調整さ
 
 ワークスペースを作成するときは必ずエディションを割り当てます。 この期間中、コンピューティングやその他の Azure リソースで発生するコストは、お客様の負担になります。 [Azure Machine Learning のコストを管理する](concept-plan-manage-cost.md)方法を説明します。
 
-Basic のワークスペースを Enterprise Edition にアップグレードする方法については、[こちら](how-to-manage-workspace.md#upgrade)を参照してください。 
+Basic のワークスペースを Enterprise (プレビュー) エディションにアップグレードする方法については、[こちら](how-to-manage-workspace.md#upgrade)を参照してください。 
 
 ## <a name="whats-in-each-edition"></a>各エディションの内容
 
@@ -112,7 +112,7 @@ Basic のワークスペースを Enterprise Edition にアップグレードす
 
 | 機能     | Edition                 |
 |------------------------------------------------------------------------------------|:-----------:|
-| [ロールベースのアクセス制御](how-to-assign-roles.md) (RBAC) のサポート                                           | All                     |
+| [Azure ロールベースのアクセス制御 (Azure RBAC)](how-to-assign-roles.md) のサポート                                           | All                     |
 | コンピューティングの [Virtual Network (VNet)](how-to-enable-virtual-network.md) のサポート                                         | All                     |
 | エンドポイント認証のスコア付け                                                    | All                     |
 | [ワークスペースでの Private Link](how-to-configure-private-link.md)                                                            | All                     |

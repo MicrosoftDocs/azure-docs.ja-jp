@@ -3,12 +3,15 @@ title: ポータルを使用してコンテンツをアップロード、エン�
 description: このクイックスタートでは、ポータルで Azure Media Services を使用してコンテンツをアップロード、エンコード、およびストリーム配信する方法を示します。
 ms.topic: quickstart
 ms.date: 06/08/2020
-ms.openlocfilehash: bab13b7b878f8992ac5523b9902054a42a3dc769
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+author: IngridAtMicrosoft
+ms.author: inhenkel
+manager: femila
+ms.openlocfilehash: 7aebc6e52ec7fac97c6f1e8fb9b30cc63b74e860
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87053357"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605659"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>クイック スタート:ポータルでコンテンツをアップロード、エンコード、およびストリーム配信する
 
@@ -28,7 +31,6 @@ ms.locfileid: "87053357"
 
   * [クラウドのアップロードとストレージ](storage-account-concept.md)
   * [アセットの概念](assets-concept.md)
-  * [資産の管理](manage-asset-concept.md)
 * 高品質のデジタル メディア ファイルを資産 (入力資産) にアップロードしたら、それを処理 (エンコードまたは分析) できます。 処理されたコンテンツは別の資産 (出力資産) に渡されます。 
     * アップロードしたファイルを、さまざまなブラウザーおよびデバイスで再生できる形式に[エンコード](encoding-concept.md)します。
     * アップロードしたファイルを[分析](analyzing-video-audio-files-concept.md)します。 

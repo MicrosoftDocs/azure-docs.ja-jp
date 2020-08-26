@@ -1,23 +1,18 @@
 ---
 title: Connected Machine Windows エージェントの概要
-description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、Azure Arc for servers エージェントについて概説します。
-services: azure-arc
-ms.service: azure-arc
-ms.subservice: azure-arc-servers
-author: mgoedtel
-ms.author: magoedte
-ms.date: 07/09/2020
+description: この記事では、ハイブリッド環境でホストされている仮想マシンの監視をサポートする、使用可能な Azure Arc 対応サーバー (プレビュー) エージェントの詳細な概要を提供します。
+ms.date: 08/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: ed95b902c2c0768f50a0c6dadbfc617292932c2b
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d922652537034bef258c5bcde78fb178b092ed16
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242952"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212987"
 ---
-# <a name="overview-of-azure-arc-for-servers-agent"></a>Azure Arc for servers エージェントの概要
+# <a name="overview-of-azure-arc-enabled-servers-preview-agent"></a>Azure Arc 対応サーバー (プレビュー) エージェントの概要
 
-Azure Arc for servers Connected Machine エージェントを使用すると、Azure の外部 (企業ネットワークや他のクラウド プロバイダー) でホストされている Windows や Linux のマシンを管理することができます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
+Azure Arc 対応サーバー (プレビュー) Connected Machine エージェントを使用すると、企業ネットワークまたは他のクラウド プロバイダー上の Azure の外部でホストされている Windows および Linux コンピューターを管理できます。 この記事では、エージェント、システムとネットワークの要件、およびさまざまなデプロイ方法の概要の詳細を示します。
 
 ## <a name="agent-component-details"></a>エージェント コンポーネントの詳細
 
@@ -43,12 +38,112 @@ Windows および Linux 用の Azure Connected Machine エージェント パッ
 
 * Linux エージェント パッケージは、Microsoft の[パッケージ リポジトリ](https://packages.microsoft.com/)から、ディストリビューションに適切なパッケージ形式 (.RPM または .DEB) を使用して配布されます。
 
->[!NOTE]
->本プレビュー中は、Ubuntu 16.04 または 18.04 に適したパッケージが 1 つだけリリースされました。
-
 Windows および Linux 用の Azure Connected Machine エージェントは、要件に応じて、手動または自動で最新リリースにアップグレードできます。 詳細については、[このページ](manage-agent.md)を参照してください。
 
-## <a name="windows-agent-installation-details"></a>Windows エージェントのインストールの詳細
+## <a name="prerequisites"></a>前提条件
+
+### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
+
+Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。 
+
+- Windows Server 2012 R2 以上 (Windows Server Core を含む)
+- Ubuntu 16.04 および 18.04 (x64)
+- CentOS Linux 7 (x64)
+- SUSE Linux Enterprise Server (SLES) 15 (x64)
+- Red Hat Enterprise Linux (RHEL) 7 (x64)
+- Amazon Linux 2 (x64)
+
+>[!NOTE]
+>このプレビュー リリースの Windows 用 Connected Machine エージェントでサポートされるのは、英語を使用するように構成された Windows Server だけです。
+>
+
+### <a name="required-permissions"></a>必要なアクセス許可
+
+* マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
+
+* マシンの読み取り、変更、再オンボード、および削除を行うには、**Azure Connected Machine のリソース管理者**ロールのメンバーである必要があります。 
+
+### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
+
+Azure Arc 対応サーバー (プレビュー) でコンピューターを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続されるコンピューターの数を計画してください。
+
+### <a name="transport-layer-security-12-protocol"></a>トランスポート層セキュリティ 1.2 プロトコル
+
+Azure に転送中のデータのセキュリティを確保するには、トランスポート層セキュリティ (TLS) 1.2 を使用するようにマシンを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。
+
+|プラットフォーム/言語 | サポート | 詳細情報 |
+| --- | --- | --- |
+|Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。 | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
+| Windows Server 2012 R2 以降 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。|
+
+### <a name="networking-configuration"></a>ネットワーク構成
+
+Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続する場合、以下の要件を確認してネットワーク構成の要件を把握してください。
+
+アウトバウンド接続がファイアウォールやプロキシ サーバーによって制限されている場合は、以下に示す URL がブロックされていないことを確認してください。 エージェントに必要な IP 範囲またはドメイン名のみにサービスとの通信を許可する場合は、次のサービス タグおよび URL へのアクセスも許可する必要があります。
+
+サービス タグ:
+
+* AzureActiveDirectory
+* AzureTrafficManager
+
+URL:
+
+| エージェントのリソース | 説明 |
+|---------|---------|
+|`management.azure.com`|Azure Resource Manager|
+|`login.windows.net`|Azure Active Directory|
+|`dc.services.visualstudio.com`|Application Insights|
+|`agentserviceapi.azure-automation.net`|ゲスト構成|
+|`*-agentservice-prod-1.azure-automation.net`|ゲスト構成|
+|`*.guestconfiguration.azure.com` |ゲスト構成|
+|`*.his.arc.azure.com`|ハイブリッド ID サービス|
+
+各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 Microsoft では、各 Azure サービスとそれが使用する IP 範囲を含む更新プログラムを毎週発行しています。 詳細については、「[サービス タグ](../../virtual-network/security-overview.md#service-tags)」を参照してください。
+
+前の表に記載した URL は、サービス タグの IP アドレス範囲情報とは別に必要となります。現在、ほとんどのサービスにはサービス タグの登録がないためです。 結果として IP アドレスが変更される可能性があります。 ファイアウォール構成に IP アドレス範囲が必要な場合は、**AzureCloud** サービス タグを使用して、すべての Azure サービスへのアクセスを許可してください。 これらの URL のセキュリティ監視または検査を無効にせず、他のインターネット トラフィックと同様に許可してください。
+
+### <a name="register-azure-resource-providers"></a>Azure リソースプロバイダーを登録する
+
+Azure Arc 対応サーバー (プレビュー) は、このサービスを使用するために、サブスクリプション内の次の Azure リソース プロバイダーに依存しています。
+
+* **Microsoft.HybridCompute**
+* **Microsoft.GuestConfiguration**
+
+これらが登録されていない場合は、次のコマンドを使って登録できます。
+
+Azure PowerShell:
+
+```azurepowershell-interactive
+Login-AzAccount
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+```
+
+Azure CLI:
+
+```azurecli-interactive
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
+```
+
+「[Azure portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」の手順に従って、Azure portal でリソースプロバイダーを登録することもできます。
+
+## <a name="installation-and-configuration"></a>インストールと構成
+
+要件に応じたさまざまな方法を使用して、ハイブリッド環境内のマシンを直接 Azure に接続することができます。 次の表は、どの方法が組織にとって最も効果的であるかを判断するために各方法について説明しています。
+
+| Method | 説明 |
+|--------|-------------|
+| 対話型 | [Azure portal からマシンを接続する方法](onboard-portal.md)に関するページの手順に従って、1 台のマシンまたは少数のマシンにエージェントを手動でインストールします。<br> Azure portal からスクリプトを生成し、マシン上で実行することによって、エージェントのインストールおよび構成手順を自動化することができます。|
+| 大規模 | [サービス プリンシパルを使用したマシンの接続](onboard-service-principal.md)に関するページに従って、複数のマシン用にエージェントをインストールして構成します。<br> この方法では、非対話形式でマシンを接続するためのサービス プリンシパルが作成されます。|
+| 大規模 | [Windows PowerShell DSC の使用](onboard-dsc.md)方法に関するページの説明に従って複数のマシンにエージェントをインストールして構成します。<br> この方法では、サービス プリンシパルを使用し、PowerShell DSC から非対話形式でマシンを接続します。 |
+
+## <a name="connected-machine-agent-technical-overview"></a>Connected Machine エージェントの技術概要
+
+### <a name="windows-agent-installation-details"></a>Windows エージェントのインストールの詳細
 
 Windows 用 Connected Machine エージェントは、次の 3 つの方法のいずれかを使用してインストールできます。
 
@@ -75,7 +170,7 @@ Windows 用 Connected Machine エージェントをインストールした後�
     |[サービス名] |Display name |[処理名] |説明 |
     |-------------|-------------|-------------|------------|
     |himds |Azure Hybrid Instance Metadata Service |himds.exe |このサービスは、Azure への接続と接続されたマシンの Azure ID を管理するために Azure Instance Metadata Service (IMDS) を実装します。|
-    |DscService |ゲスト構成サービス |dsc_service.exe |これは、ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
+    |DscService |ゲスト構成サービス |dsc_service.exe |ゲスト内ポリシーを実装するために Azure 内部で使用される Desired State Configuration (DSC v2) コードベースです。|
 
 * 次の環境変数は、エージェントのインストール中に作成されます。
 
@@ -103,7 +198,7 @@ Windows 用 Connected Machine エージェントをインストールした後�
     * %ProgramData%\AzureConnectedMachineAgent とサブディレクトリ
     * %ProgramData%\GuestConfig
 
-## <a name="linux-agent-installation-details"></a>Linux エージェントのインストールの詳細
+### <a name="linux-agent-installation-details"></a>Linux エージェントのインストールの詳細
 
 Linux 用の Connected Machine エージェントは、Microsoft [パッケージ リポジトリ](https://packages.microsoft.com/)でホストされたディストリビューション (.RPM または .DEB) に適したパッケージ形式で提供されます。 エージェントは、シェル スクリプト バンドルの [Install_linux_azcmagent.sh](https://aka.ms/azcmagent) を使用してインストールおよび構成されます。
 
@@ -151,107 +246,6 @@ Linux 用 Connected Machine エージェントをインストールした後、�
     * /var/opt/azcmagent
     * /opt/logs
 
-## <a name="prerequisites"></a>前提条件
-
-### <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
-
-Azure Connected Machine エージェントでは、次のバージョンの Windows および Linux オペレーティング システムが正式にサポートされています。 
-
-- Windows Server 2012 R2 以上 (Windows Server Core を含む)
-- Ubuntu 16.04 および 18.04 (x64)
-- CentOS Linux 7 (x64)
-- SUSE Linux Enterprise Server (SLES) 15 (x64)
-- Red Hat Enterprise Linux (RHEL) 7 (x64)
-- Amazon Linux 2 (x64)
-
->[!NOTE]
->このプレビュー リリースの Windows 用 Connected Machine エージェントでサポートされるのは、英語を使用するように構成された Windows Server だけです。
->
-
-### <a name="required-permissions"></a>必要なアクセス許可
-
-* マシンをオンボードするには、**Azure Connected Machine のオンボード** ロールのメンバーである必要があります。
-
-* マシンの読み取り、変更、再オンボード、および削除を行うには、**Azure Connected Machine のリソース管理者** ロールのメンバーである必要があります。 
-
-### <a name="azure-subscription-and-service-limits"></a>Azure サブスクリプションとサービスの制限
-
-Azure Arc for servers (プレビュー) を使用してマシンを構成する前に、Azure Resource Manager の[サブスクリプションの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits)と[リソース グループの制限](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)を確認して、接続するマシンの数を計画する必要があります。
-
-## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
-
-Azure に転送中のデータのセキュリティを確保するには、トランスポート層セキュリティ (TLS) 1.2 を使用するようにマシンを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。
-
-|プラットフォーム/言語 | サポート | 詳細情報 |
-| --- | --- | --- |
-|Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。 | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
-| Windows Server 2012 R2 以降 | サポートされています。既定で有効になっています。 | [既定の設定](/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。|
-
-### <a name="networking-configuration"></a>ネットワーク構成
-
-Linux と Windows 用の Connected Machine エージェントは、TCP ポート 443 を介して安全に Azure Arc へのアウトバウンド通信を行います。 インターネット経由で通信するためにマシンがファイアウォールやプロキシ サーバーを介して接続する場合、以下の要件を確認してネットワーク構成の要件を把握してください。
-
-アウトバウンド接続がファイアウォールやプロキシ サーバーによって制限されている場合は、以下に示す URL がブロックされていないことを確認してください。 エージェントに必要な IP 範囲またはドメイン名のみにサービスとの通信を許可する場合は、次のサービス タグおよび URL へのアクセスも許可する必要があります。
-
-サービス タグ:
-
-* AzureActiveDirectory
-* AzureTrafficManager
-
-URL:
-
-| エージェントのリソース | 説明 |
-|---------|---------|
-|`management.azure.com`|Azure Resource Manager|
-|`login.windows.net`|Azure Active Directory|
-|`dc.services.visualstudio.com`|Application Insights|
-|`agentserviceapi.azure-automation.net`|ゲスト構成|
-|`*-agentservice-prod-1.azure-automation.net`|ゲスト構成|
-|`*.guestconfiguration.azure.com` |ゲスト構成|
-|`*.his.arc.azure.com`|ハイブリッド ID サービス|
-
-各サービス タグ/リージョンの IP アドレスの一覧については、「[Azure IP 範囲とサービス タグ – パブリック クラウド](https://www.microsoft.com/download/details.aspx?id=56519)」という JSON ファイルを参照してください。 Microsoft では、各 Azure サービスとそれが使用する IP 範囲を含む更新プログラムを毎週発行しています。 詳細については、「[サービス タグ](../../virtual-network/security-overview.md#service-tags)」を参照してください。
-
-前の表に記載した URL は、サービス タグの IP アドレス範囲情報とは別に必要となります。現在、ほとんどのサービスにはサービス タグの登録がないためです。 結果として IP アドレスが変更される可能性があります。 ファイアウォール構成に IP アドレス範囲が必要な場合は、**AzureCloud** サービス タグを使用して、すべての Azure サービスへのアクセスを許可してください。 これらの URL のセキュリティ監視または検査を無効にせず、他のインターネット トラフィックと同様に許可してください。
-
-### <a name="register-azure-resource-providers"></a>Azure リソースプロバイダーを登録する
-
-Azure Arc for servers (プレビュー) は、このサービスを使用するために、サブスクリプション内の次の Azure リソースプロバイダーに依存します。
-
-* **Microsoft.HybridCompute**
-* **Microsoft.GuestConfiguration**
-
-これらが登録されていない場合は、次のコマンドを使って登録できます。
-
-Azure PowerShell:
-
-```azurepowershell-interactive
-Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
-```
-
-Azure CLI:
-
-```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
-```
-
-「[Azure portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)」の手順に従って、Azure portal でリソースプロバイダーを登録することもできます。
-
-## <a name="installation-and-configuration"></a>インストールと構成
-
-要件に応じたさまざまな方法を使用して、ハイブリッド環境内のマシンを直接 Azure に接続することができます。 次の表は、どの方法が組織にとって最も効果的であるかを判断するために各方法について説明しています。
-
-| Method | 説明 |
-|--------|-------------|
-| 対話型 | [Azure portal からマシンを接続する方法](onboard-portal.md)に関するページの手順に従って、1 台のマシンまたは少数のマシンにエージェントを手動でインストールします。<br> Azure portal からスクリプトを生成し、マシン上で実行することによって、エージェントのインストールおよび構成手順を自動化することができます。|
-| 大規模 | [サービス プリンシパルを使用したマシンの接続](onboard-service-principal.md)に関するページに従って、複数のマシン用にエージェントをインストールして構成します。<br> この方法では、非対話形式でマシンを接続するためのサービス プリンシパルが作成されます。|
-| 大規模 | [Windows PowerShell DSC の使用](onboard-dsc.md)方法に関するページの説明に従って複数のマシンにエージェントをインストールして構成します。<br> この方法では、サービス プリンシパルを使用し、PowerShell DSC から非対話形式でマシンを接続します。 |
-
 ## <a name="next-steps"></a>次のステップ
 
-Azure Arc for servers (プレビュー) の評価を始めるには、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」に従ってください。
+Azure Arc 対応サーバー (プレビュー) の評価を開始するには、「[Azure portal からハイブリッド マシンを Azure に接続する](onboard-portal.md)」の記事に従ってください。

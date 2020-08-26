@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 06/17/2020
+ms.date: 08/13/2020
 ms.author: diberry
-ms.openlocfilehash: cc14f1cd60f048ba01060b9ebdbca434af6b9751
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 4c9dc04770e5fadd72c5460a4b44c05ffda47cb7
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145627"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245453"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Azure リソース オーサリング キーに移行する
 
@@ -34,6 +34,7 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 
 ## <a name="note-before-you-migrate"></a>移行前の注意事項
 
+* ご利用のオーサリング エクスペリエンスは、**2020 年 11 月 2 日**までに移行する必要があります。 
 * 移行は一方向のプロセスです。 移行後に元に戻すことはできません。
 * アプリケーションの所有者である場合、アプリケーションは一緒に自動的に移行されます。
 * 所有者は移行するアプリのサブセットを選択できません。また、プロセスを元に戻すことはできません。
@@ -51,7 +52,7 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 
 ## <a name="migration-prerequisites"></a>移行の前提条件
 
-* 有効な Azure サブスクリプションに関連付けられている必要があります。 サブスクリプションに追加してもらうようテナント管理者に依頼するか、[無料でサインアップ](https://azure.microsoft.com/free/)してください。
+* 有効な Azure サブスクリプションに関連付けられている必要があります。 サブスクリプションに追加してもらうようテナント管理者に依頼するか、[無料でサインアップ](https://azure.microsoft.com/free/cognitive-services)してください。
 * LUIS ポータルまたは Azure portal から LUIS Azure オーサリング リソースを作成する必要があります。 LUIS ポータルからオーサリング リソースを作成することは、次のセクションで説明する移行フローの一部です。
 * アプリケーションのコラボレーターの場合、アプリケーションは自動的には移行されません。 それらのアプリケーションは、エクスポートするか[エクスポート API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) を使用してバックアップすることをお勧めします。 移行後に、アプリを LUIS に再度インポートすることができます。 インポート プロセスにより、新しいアプリ ID を使用して新しいアプリが作成され、自身がその所有者になります。
 * アプリケーションの所有者である場合、アプリは自動的に移行されるため、これらをエクスポートする必要はありません。 各アプリのコラボレーターのリストを保存することをお勧めします。 このリストが含まれているメール テンプレートは、必要に応じて、移行プロセスの一部として提供されます。
@@ -59,7 +60,7 @@ Language Understanding (LUIS) のオーサリング認証が、メール アカ�
 
 |ポータル|目的|
 |--|--|
-|[Azure](https://azure.microsoft.com/free/)| 予測リソースとオーサリング リソースを作成します。<br> リソースに共同作成者を割り当てます。|
+|[Azure](https://azure.microsoft.com/free/cognitive-services)| 予測リソースとオーサリング リソースを作成します。<br> リソースに共同作成者を割り当てます。|
 |[LUIS](https://www.luis.ai)| 新しいオーサリング リソースに移行します。<br> 移行フローで新しいオーサリング リソースを作成します。<br> **[管理]**  >  **[Azure リソース]** ページで、アプリに予測リソースとオーサリング リソースを割り当てるか、アプリからそれらの割り当てを解除します。 <br> 1 つのオーサリング リソースから別のオーサリング リソースにアプリケーションを移動します。  |
 
 > [!Note]

@@ -40,6 +40,8 @@
       href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
     - name: マネージド ID を使用して Key Vault を Azure Spring Cloud アプリに接続する
       href: spring-cloud-tutorial-managed-identities-key-vault.md
+    - name: 仮想ネットワークに Azure Spring Cloud をデプロイする
+      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
 - name: サンプル
   items:
     - name: Azure Policy の組み込み

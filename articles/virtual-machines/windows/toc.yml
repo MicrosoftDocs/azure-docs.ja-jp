@@ -222,7 +222,7 @@
             - name: Mv2 シリーズ
               href: ../mv2-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 制約付き vCPU
-              href: constrained-vcpu.md
+              href: ../constrained-vcpu.md
         - name: ストレージ最適化
           items:
             - name: 概要
@@ -279,10 +279,10 @@
             - name: Azure の予約とは
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
             - name: VM インスタンス サイズの柔軟性
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
         - name: スポット VM
           displayName: 'pre-empt, preempt'
-          href: spot-vms.md
+          href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 一時ディスクを使用しない Azure VM
           href: ../azure-vms-no-temp-disk.md
         - name: Azure VM のサイズの名前付け規則
@@ -305,7 +305,7 @@
             - name: Azure の予約とは
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: VM インスタンス サイズの柔軟性
-              href: reserved-vm-instance-size-flexibility.md
+              href: ../reserved-vm-instance-size-flexibility.md
     - name: 専用ホスト
       href: dedicated-hosts.md
     - name: メンテナンスと更新
@@ -313,21 +313,21 @@
     - name: Disk Storage
       items:
         - name: マネージド ディスクの概要
-          href: managed-disks-overview.md
+          href: ../managed-disks-overview.md
         - name: IaaS VM 用のディスクの種類の選択
-          href: disks-types.md
+          href: ../disks-types.md
         - name: 暗号化
           href: disk-encryption.md
         - name: Disk Storage の予約
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: 高パフォーマンス用の設計
-          href: premium-storage-performance.md
+          href: ../premium-storage-performance.md
         - name: ディスク バースト
           href: disk-bursting.md
         - name: ディスクのスケーラビリティ ターゲット
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
-          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+          href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 共有ディスク
           href: disks-shared.md
         - name: エフェメラル OS ディスク
@@ -341,7 +341,7 @@
     - name: セキュリティ
       items:
         - name: セキュリティとポリシー
-          href: security-policy.md
+          href: ../security-policy.md
         - name: Azure Disk Encryption
           href: disk-encryption-overview.md
         - name: Azure Policy によるセキュリティ制御
@@ -855,7 +855,7 @@
           displayName: Azure Resource Manager
           href: ../using-managed-disks-template-deployments.md
         - name: 共有ディスクを有効にする
-          href: disks-shared-enable.md
+          href: ../disks-shared-enable.md
         - name: ディスクに VHD をアップロードする - PowerShell
           href: disks-upload-vhd-to-managed-disk-powershell.md
         - name: ディスクを安全にインポート/エクスポートする - ポータル
@@ -863,11 +863,11 @@
         - name: ディスクのサイズの変更
           href: expand-os-disk.md
         - name: Storage Explorer を使用してディスクを管理する
-          href: disks-use-storage-explorer-managed-disks.md
+          href: ../disks-use-storage-explorer-managed-disks.md
         - name: ディスクのスナップショットの作成
           href: snapshot-copy-managed-disk.md
         - name: Disk Storage の予約
-          href: disks-reserved-capacity.md
+          href: ../disks-reserved-capacity.md
         - name: 増分スナップショットの作成 - PowerShell
           href: disks-incremental-snapshots.md
         - name: 増分スナップショットの作成 - ポータル
@@ -879,15 +879,15 @@
             - name: ホスト時の暗号化を有効にする - PowerShell
               href: disks-enable-host-based-encryption-powershell.md
             - name: ホスト時の暗号化を有効にする - ポータル
-              href: disks-enable-host-based-encryption-portal.md
+              href: ../disks-enable-host-based-encryption-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: カスタマー マネージド キーを有効にする - PowerShell
               href: disks-enable-customer-managed-keys-powershell.md
             - name: カスタマー マネージド キーを有効にする - ポータル
-              href: disks-enable-customer-managed-keys-portal.md
+              href: ../disks-enable-customer-managed-keys-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: 保存時の二重暗号化を有効にする
               href: disks-enable-double-encryption-at-rest-powershell.md
             - name: 保存時の二重暗号化を有効にする - ポータル
-              href: disks-enable-double-encryption-at-rest-portal.md
+              href: ../disks-enable-double-encryption-at-rest-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 移行と変換
           items:
             - name: Standard と Premium 間でディスクを変換する
@@ -903,7 +903,7 @@
             - name: 書き込みアクセラレータを有効にする
               href: ../how-to-enable-write-accelerator.md
             - name: ウルトラ ディスクの使用
-              href: disks-enable-ultra-ssd.md
+              href: ../disks-enable-ultra-ssd.md
             - name: ディスクのベンチマークの実行
               href: disks-benchmarks.md
         - name: アタッチされていないディスクの検出 - PowerShell
@@ -911,7 +911,7 @@
         - name: アタッチされていないディスクの検出 - ポータル
           href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: ディスクに関する FAQ
-          href: faq-for-disks.md
+          href: ../faq-for-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: ネットワークの管理
       href: ps-common-network-ref.md
       items:

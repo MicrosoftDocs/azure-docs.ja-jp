@@ -2,26 +2,26 @@
 title: Azure Functions ランタイム バージョンをターゲットにする方法
 description: Azure Functions では、複数のバージョンのランタイムがサポートされます。 Azure でホストされる関数アプリのランタイム バージョンを指定する方法について説明します。
 ms.topic: conceptual
-ms.date: 11/26/2018
-ms.openlocfilehash: 5a71338b1b9735d7e7494dc2667bd7addf5d4a53
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 07/22/2020
+ms.openlocfilehash: 74ee0d382dcd468aed118a7de330eef95b329402
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77151957"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830871"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 
-関数アプリは、Azure Functions ランタイムの特定のバージョンで実行されます。 メジャー バージョンには、次の 3 つがあります:[1.x、2.x、および 3.x](functions-versions.md)。 既定では、関数アプリはバージョン 2.x のランタイムで作成されます。 この記事では、選択したバージョンで実行されるように Azure の関数アプリを構成する方法について説明します。 特定のバージョン用にローカル開発環境を構成する方法については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
+関数アプリは、Azure Functions ランタイムの特定のバージョンで実行されます。 メジャー バージョンには、次の 3 つがあります:[1.x、2.x、および 3.x](functions-versions.md)。 既定では、関数アプリはバージョン 3.x のランタイムで作成されます。 この記事では、選択したバージョンで実行されるように Azure の関数アプリを構成する方法について説明します。 特定のバージョン用にローカル開発環境を構成する方法については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
 
 ## <a name="automatic-and-manual-version-updates"></a>自動および手動でのバージョンの更新
 
-Azure Functions を使用すると、関数アプリ内で `FUNCTIONS_EXTENSION_VERSION` アプリケーション設定を使用することで、ランタイムの特定のバージョンをターゲットにすることができます。 関数アプリは、新しいバージョンへの移行を明示的に選択しない限り、指定されたメジャー バージョンに保持されます。
+Azure Functions を使用すると、関数アプリ内で `FUNCTIONS_EXTENSION_VERSION` アプリケーション設定を使用することで、ランタイムの特定のバージョンをターゲットにすることができます。 関数アプリは、新しいバージョンへの移行を明示的に選択しない限り、指定されたメジャー バージョンに保持されます。 メジャー バージョンのみを指定した場合、関数アプリは、ランタイムの新しいマイナー バージョンが利用可能になった時点で、自動的に新しいマイナー バージョンに更新されます。 新しいマイナー バージョンには、重大な変更は導入できません。 
 
-メジャー バージョンのみを指定した場合、関数アプリは、ランタイムの新しいマイナー バージョンが利用可能になった時点で、自動的に新しいマイナー バージョンに更新されます。 新しいマイナー バージョンには、重大な変更は導入できません。 マイナー バージョン (たとえば "2.0.12345") を指定した場合、関数アプリは、明示的にバージョンを変更するまで、その特定のバージョンに固定されます。
+マイナー バージョン (たとえば "2.0.12345") を指定した場合、関数アプリは、明示的にバージョンを変更するまで、その特定のバージョンに固定されます。 古いマイナー バージョンは、運用環境から定期的に削除されます。 これが行われると、関数アプリは `FUNCTIONS_EXTENSION_VERSION` で設定されたバージョンではなく、最新バージョンで実行されます。 このため、メジャー バージョンをターゲットにするには、特定のマイナー バージョンを必要とする関数アプリの問題を迅速に解決する必要があります。 マイナー バージョンの削除は、[App Service のお知らせ](https://github.com/Azure/app-service-announcements/issues)ページで発表されます。
 
 > [!NOTE]
-> Azure Functions の特定のバージョンに固定された後で、Visual Studio を使用して Azure に発行しようとすると、最新のパ―ジョンへのアップロードまたは発行の取り消しを求めるダイアログ ウィンドウが表示されます。 これを回避するには、`.csproj` ファイルに `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` プロパティを追加します。
+> Azure Functions の特定のメジャー バージョンに固定された後で、Visual Studio を使用して Azure に発行しようとすると、最新のパ―ジョンへのアップロードまたは発行の取り消しを求めるダイアログ ウィンドウが表示されます。 これを回避するには、`.csproj` ファイルに `<DisableFunctionExtensionVersionUpdate>true</DisableFunctionExtensionVersionUpdate>` プロパティを追加します。
 
 新しいバージョンが公開されると、ポータルで確認のメッセージが表示され、そのバージョンに移行することができます。 新しいバージョンに移行した後は、`FUNCTIONS_EXTENSION_VERSION` アプリケーション設定を使用して、いつでも以前のバージョンに戻すことができます。
 

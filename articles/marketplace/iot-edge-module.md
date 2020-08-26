@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/15/2020
-ms.openlocfilehash: 0b707b2aed68359f8c04f6cd6bee6c95b495178b
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 168d343ea4582d8c19a577cedadf6f1bc3c39971
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86119482"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607374"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
@@ -38,9 +38,9 @@ IoT Edge モジュール プランの種類は、IoT Edge デバイスで実行�
 
 ## <a name="publishing-your-iot-edge-module"></a>IoT Edge モジュールの発行
 
-**右側のネット ショップの選択**
+**正しいオンライン ストアの選択**
 
-IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource は適用されません。  ネット ショップ間の相違点と対象ユーザーの詳細については、[ソリューションの発行オプションの決定](determine-your-listing-type.md)を参照してください。
+IoT Edge モジュールが Azure Marketplace でのみ発行され、AppSource は適用されません。  オンライン ストア間の相違点と対象ユーザーの詳細については、「[公開オプションを選定する](determine-your-listing-type.md)」を参照してください。
  
 **課金オプション**
 
@@ -73,17 +73,9 @@ IoT Edge モジュールを Azure Marketplace で発行するには、次の前�
 
 Azure Marketplace で認定および発行されるためには、IoT Edge モジュールの主要な技術面の要件の詳細は、「[IoT Edge モジュールの技術アセットの準備](./partner-center-portal/create-iot-edge-module-asset.md)」を参照してください。
 
-## <a name="documentation-and-resources"></a>ドキュメントおよびリソース
-
-[IoT Edge モジュール オファーの作成](./partner-center-portal/azure-iot-edge-module-creation.md) -- パートナー センターで新しい IoT Edge モジュール オファーを発行するための手順を説明します。
-
 ## <a name="next-steps"></a>次のステップ
 
-まだ行っていない場合は、
-
-- マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
-
-パートナー センターに登録し、新しいオファーの作成か既存のオファーの使用を開始するには、
-
+- コマーシャル マーケットプレースについて[学習](https://azuremarketplace.microsoft.com/sell)します。
+- パートナー センターの [IoT Edge モジュール オファーの作成]。
 - [パートナー センターにサインイン](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership)し、オファーを作成するか完成させます。
 - IoT Edge オファーを発行する方法の詳細については、[IoT Edge モジュール オファーを作成する](./partner-center-portal/azure-iot-edge-module-creation.md)方法に関するページを参照してください。

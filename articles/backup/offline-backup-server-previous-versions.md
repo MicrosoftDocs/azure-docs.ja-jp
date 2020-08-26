@@ -1,14 +1,14 @@
 ---
 title: Data Protection Manager (DPM) および Microsoft Azure Backup Server (MABS) のオフライン バックアップ - 以前のバージョン
-description: Azure Backup では、Azure Import/Export サービスを使用してネットワークからデータを送信できます。 この記事では、DPM と Azure Backup Server でのオフライン バックアップ ワークフローについて説明します。
+description: Azure Backup では、Azure Import/Export サービスを使用してネットワークからデータを送信できます。 この記事では、以前のバージョンの DPM と Azure Backup Server でのオフライン バックアップ ワークフローについて説明します。
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 128051210984a55620be60a5965a7067e74de7c7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: e986baaf6ac2943bd210761ff2194eacdee5984a
+ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86186947"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88261924"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM および Azure Backup Server のオフライン バックアップのワークフロー (以前のバージョン)
 

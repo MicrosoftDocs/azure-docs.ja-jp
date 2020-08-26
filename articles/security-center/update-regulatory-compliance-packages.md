@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 6ba0be3a6fba35e413270dd6770f5d3f47586b5e
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 28b6a70297efb8d8237f085e1f5b08dbb6a09072
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873337"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88522608"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>規制コンプライアンス ダッシュボードでの標準セットのカスタイマイズ
 
@@ -73,6 +73,8 @@ NIST SP 800-53 R4、SWIFT CSP CSCF-v2020、UK Official および UK NHS、Canada
     - **Canada PBMM**
     
     ![Azure Security Center の規制コンプライアンス ダッシュボードへの規制パッケージの追加](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+
+1. **[追加]** を選択し、スコープ、パラメーター、修復など、特定のイニシアチブに関して必要な詳細をすべて入力します。
 
 1. Security Center のサイドバーで、再度 **[規制コンプライアンス]** を選択して、規制コンプライアンス ダッシュボードに戻ります。
     * 業界標準および規制基準の一覧に新しい標準が表示されます。 

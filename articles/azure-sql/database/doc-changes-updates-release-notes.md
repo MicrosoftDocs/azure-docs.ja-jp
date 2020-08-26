@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: e1e6c9254c3906b79c3a20de4672dff1b9ac6c63
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88121461"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236575"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Azure SQL Database と SQL Managed Instance の新機能
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -97,6 +97,7 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 
 |問題  |検出した日  |Status  |解決した日  |
 |---------|---------|---------|---------|
+|[サービス プリンシパルから Azure AD および AKV にアクセスできません](#service-principal-cannot-access-azure-ad-and-akv)|2020 年 8 月|回避策あり||
 |[CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある](#restoring-manual-backup-without-checksum-might-fail)|2020 年 5 月|解決済み|2020 年 6 月|
 |[既存のジョブを変更、無効化、または有効化するとエージェントが応答しなくなる](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020 年 5 月|解決済み|2020 年 6 月|
 |[リソース グループに対するアクセス許可が SQL Managed Instance に適用されない](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|2020 年 2 月|回避策あり||
@@ -124,6 +125,11 @@ Azure SQL Database と Azure SQL Managed Instance のドキュメントは別々
 |セキュリティで保護された接続を使用する外部 (Azure 以外) メール サーバーのデータベース メール機能||解決済み|2019 年 10 月|
 |包含データベースは、SQL Managed Instance 内でサポートされている||解決済み|2019 年 8 月|
 
+### <a name="service-principal-cannot-access-azure-ad-and-akv"></a>サービス プリンシパルから Azure AD および AKV にアクセスできません
+
+場合によっては、Azure AD および Azure Key Vault (AKV) サービスへのアクセスに使用されるサービス プリンシパルに問題が存在することがあります。 そのため、この問題は SQL Managed Instance での Azure AD 認証および Transparent Database Encryption (TDE) の使用に影響します。 これは、断続的な接続の問題として発生する可能性があります。または、CREATE LOGIN/USER FROM EXTERNAL PROVIDER または EXECUTE AS LOGIN/USER などのステートメントを実行できない場合に発生する可能性があります。 新しい Azure SQL Managed Instance 上でカスタマー マネージド キーを使用して TDE を設定しても、状況によっては機能しないことがあります。
+
+**回避策**:更新コマンドを実行する前に、ご利用の SQL Managed Instance 上でこの問題が発生しないようにするには、または更新コマンドの後でこの問題が既に発生している場合は、Azure portal に移動し、SQL Managed Instance の[[Active Directory 管理者] ブレード](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#azure-portal) にアクセスします。 "Azure Active Directory にアクセスするには、Managed Instance にサービス プリンシパルが必要です。 サービス プリンシパルを作成するには、ここをクリックします" というエラー メッセージが表示されるかどうかを確認します。 このエラーメッセージが表示された場合は、それをクリックし、このエラーが解決されるまで、示されるステップ バイ ステップの手順に従います。
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>CHECKSUM を使用せずに手動バックアップを復元すると失敗することがある
 

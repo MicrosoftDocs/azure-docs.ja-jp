@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6db83d17a9e6f3df6d691d6de616ead5407e3f5f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 89da86d753f746774737c248ee318c7a377dd7a0
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87133046"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88007099"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets 用の Azure セキュリティ ベースライン
 
@@ -576,11 +576,11 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 **責任**: Customer
 
-### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4.6:ロールベースのアクセス制御を使用してリソースへのアクセスを制御する
+### <a name="46-use-azure-rbac-to-control-access-to-resources"></a>4.6:Azure RBAC を使用してリソースへのアクセスを制御する
 
-**ガイダンス**: ロールベースのアクセス制御 (RBAC) を使用すると、チーム内の職務を分離し、仮想マシン (VM) 上のユーザーに自分の職務を実行するために必要な量のアクセスのみを許可することができます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 Azure CLI または Azure PowerShell を使用して、Azure portal で VM のアクセス制御を構成できます。
+**ガイダンス**:Azure ロールベースのアクセス制御 (Azure RBAC) を使用すると、チーム内の職務を分離し、仮想マシン (VM) 上のユーザーに自分の職務を実行するために必要な量のアクセスのみを許可することができます。 すべてのユーザーに VM への無制限のアクセス許可を付与するのではなく、特定の操作のみを許可することができます。 Azure CLI または Azure PowerShell を使用して、Azure portal で VM のアクセス制御を構成できます。
 
-* [Azure リソースのロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)
+* [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
 * [Azure 組み込みロール](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#virtual-machine-contributor)
 
@@ -916,11 +916,11 @@ Microsoft では、トランスポート層セキュリティ (TLS) プロトコ
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6:カスタム オペレーティング システム イメージを安全に格納する
 
-**ガイダンス**: カスタム イメージ (仮想ハード ディスクなど) を使用している場合は、Azure のロールベースのアクセス制御を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。
+**ガイダンス**: カスタム イメージ (仮想ハード ディスクなど) を使用している場合は、Azure ロールベースのアクセス制御 (Azure RBAC) を使用して、承認されたユーザーのみがイメージにアクセスできるようにします。
 
-* [Azure での RBAC の概要](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
+* [Azure RBAC について](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 
-* [Azure で RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
+* [Azure RBAC を構成する方法](https://docs.microsoft.com/azure/role-based-access-control/quickstart-assign-role-user-portal)
 
 **Azure Security Center の監視**: 適用なし
 

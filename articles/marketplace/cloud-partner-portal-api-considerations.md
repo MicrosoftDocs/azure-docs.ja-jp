@@ -7,12 +7,12 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: c8d5c9365e2cedce7a6ed877bcf93ecd17ff220b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0920bec160874f27c8b1b6f2132951b57719b31c
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87287871"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88035282"
 ---
 # <a name="api-considerations"></a>API の考慮事項
 

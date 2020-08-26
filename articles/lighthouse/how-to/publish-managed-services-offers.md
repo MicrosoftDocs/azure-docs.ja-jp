@@ -1,18 +1,18 @@
 ---
 title: Azure Marketplace にマネージド サービス オファーを発行する
 description: Azure Lighthouse に顧客をオンボードするマネージド サービス オファーを発行する方法について説明します。
-ms.date: 07/28/2020
+ms.date: 08/18/2020
 ms.topic: how-to
-ms.openlocfilehash: e86cec16cc377470f255c8b677d7462dee6b3573
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87407066"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589726"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Azure Marketplace にマネージド サービス オファーを発行する
 
-この記事では、Partner Center の[コマーシャル マーケットプレース](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) プログラムを使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行する方法について説明します。 プランを購入した顧客は、その後サブスクリプションまたはリソース グループを委任します。これにより、お客様は [Azure Lighthouse](../overview.md) を通じて顧客を管理できるようになります。
+この記事では、Partner Center の[コマーシャル マーケットプレース](../../marketplace/partner-center-portal/commercial-marketplace-overview.md) プログラムを使用して、パブリックまたはプライベートのマネージド サービス オファーを [Azure Marketplace](https://azuremarketplace.microsoft.com) に発行する方法について説明します。 オファーを購入した顧客は、その後サブスクリプションまたはリソース グループを委任します。これにより、お客様は [Azure Lighthouse](../overview.md) を通じて顧客を管理できるようになります。
 
 ## <a name="publishing-requirements"></a>発行要件
 
@@ -22,8 +22,19 @@ ms.locfileid: "87407066"
 
 顧客エンゲージメント全体に対するお客様の影響を追跡するために、ご使用の Microsoft Partner Network (MPN) ID はお客様が発行したオファーに[自動的に関連付けられます](../../cost-management-billing/manage/link-partner-id.md)。
 
-> [!NOTE]
-> オファーを Azure Marketplace に発行しない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure Lighthouse への顧客のオンボード](onboard-customer.md)」をご覧ください。
+オファーを Azure Marketplace に発行しない場合や、すべての要件を満たしていない場合は、Azure Resource Manager テンプレートを使用して、顧客を手動でオンボードできます。 詳細については、「[Azure Lighthouse への顧客のオンボード](onboard-customer.md)」をご覧ください。
+
+次の表は、顧客をオンボードするために、マネージド サービス オファーを発行するか、Azure Resource Manager テンプレートを使用するかを判断するのに役立ちます。
+
+|**考慮事項**  |**マネージド サービス オファー**  |**ARM テンプレート**  |
+|---------|---------|---------|
+|[パートナー センター アカウント](../../marketplace/partner-center-portal/create-account.md)が必要   |はい         |いいえ        |
+|[Silver または Gold Cloud Platform コンピテンシー レベル](/partner-center/learn-about-competencies)または [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) が必要      |はい         |いいえ         |
+|新規顧客は Azure Marketplace を通して利用可能     |はい     |いいえ       |
+|特定の顧客に対してオファーを制限できる     |はい (プライベート オファーを使用する場合のみ。これは、クラウド ソリューション プロバイダー (CSP) プログラムのリセラーを通して確立されたサブスクリプションでは使用できません)         |はい         |
+|顧客が Azure portal で同意する必要がある     |はい     |いいえ   |
+|オートメーションを使用して複数のサブスクリプション、リソースグループ、または顧客をオンボードできる |いいえ     |はい    |
+|新しい組み込みロールと Azure Lighthouse 機能への即座のアクセス     |常にではない (しばらく延期の後に一般公開)         |はい         |
 
 ## <a name="create-your-offer"></a>プランを作成する
 

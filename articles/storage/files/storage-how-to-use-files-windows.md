@@ -1,18 +1,18 @@
 ---
 title: Windows で Azure ファイル共有を使用する | Microsoft Docs
-description: Windows と Windows Server で Azure ファイル共有を使用する方法について説明します。
+description: Windows と Windows Server での Azure ファイル共有の使用方法について説明します。 オンプレミスまたは Azure VM で実行されている Windows インストールで、SMB 3.0 を使用して Azure ファイル共有を利用します。
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bb9e7582317851d1968e104cd351a2b5e02b1e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fcc79a0763d7441a8a3c04723578ccc27cf5fe4e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85509780"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905756"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。

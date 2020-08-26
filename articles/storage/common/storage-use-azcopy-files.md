@@ -1,18 +1,18 @@
 ---
 title: AzCopy v10 を使用して Azure Files をコピー先またはコピー元としてデータを転送する | Microsoft Docs
-description: AzCopy とファイル ストレージでデータを転送します。
+description: AzCopy とファイル ストレージでデータを転送します。 AzCopy は、ストレージ アカウントとの間で BLOB またはファイルをコピーするためのコマンドライン ツールです。 Azure Files で AzCopy を使用します。
 author: normesta
 ms.service: storage
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 7123a90505e5068422d76f22042deac46e721218
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: e75ea5a8f5fdeaf7c3562e50d9493341d41ce393
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87292725"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037152"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>AzCopy とファイル ストレージでデータを転送する 
 

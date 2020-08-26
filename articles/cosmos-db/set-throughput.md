@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 050da712df6dad872fc03bd6ca79bbdf2a3e1753
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/19/2020
+ms.openlocfilehash: 00ed8f6ff9839c227f3d8a929a071834c5559226
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85563192"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605735"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Azure Cosmos DB におけるスループットのプロビジョニングの概要
 
@@ -96,7 +96,7 @@ Azure Cosmos DB アカウントに 25 個以上のコンテナーを持つ共有
 
 Azure Cosmos コンテナーまたはデータベースを作成した後に、プロビジョニング済みのスループットを更新できます。 データベースまたはコンテナーで構成できる最大のプロビジョニング済みスループットに制限はありません。 
 
-データベースまたはコンテナーの[プロビジョニングされた最小スループット](concepts-limits.md#storage-and-throughput)を評価するには、以下の項目の最大値を確認します。
+データベースまたはコンテナーの[プロビジョニングされた最小スループット](concepts-limits.md#storage-and-database-operations)を評価するには、以下の項目の最大値を確認します。
 
 * 400 RU/秒 
 * 現在のストレージ (GB 単位) × 10 RU/秒

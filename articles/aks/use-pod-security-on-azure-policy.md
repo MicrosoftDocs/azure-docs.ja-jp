@@ -5,22 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 07/06/2020
 author: jluk
-ms.openlocfilehash: 8be0b05c260037bbe8afc92726d81668e1391d4a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 18947f409ebcef570998671f9f421f8228e9692d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87050465"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87987360"
 ---
 # <a name="secure-pods-with-azure-policy-preview"></a>Azure Policy を使用したポッドのセキュリティ保護 (プレビュー)
 
 AKS クラスターのセキュリティを強化するために、ポッドに付与される機能と、会社のポリシーに対して違反となる内容を制御できます。 このアクセスは、AKS の [Azure Policy アドオン][kubernetes-policy-reference]によって提供される組み込みのポリシーを使用して定義されます。 ルート特権など、ポッドの仕様のセキュリティ面をさらに制御することにより、より厳密なセキュリティを確保し、クラスターにデプロイされている内容を確認することができます。 ポッドがポリシーで指定された条件を満たしていない場合、Azure Policy ではポッドの開始を禁止したり、違反を示すフラグを設定したりすることができます。 この記事では、Azure Policy を使用して AKS でのポッドのデプロイを制限する方法について説明します。
 
-> [!IMPORTANT]
-> AKS のプレビュー機能は、セルフサービスのオプトインです。 プレビューは、"現状有姿のまま" および "利用可能な限度" で提供され、サービス レベル契約および限定保証から除外されるものとします。 AKS プレビューは、カスタマー サポートによってベスト エフォートで部分的にカバーされます。 そのため、これらの機能は、運用環境での使用を意図していません。 詳細については、次のサポートに関する記事を参照してください。
->
-> * [AKS のサポート ポリシー][aks-support-policies]
-> * [Azure サポートに関する FAQ][aks-faq]
+[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -47,7 +43,7 @@ Azure Policy を使用して AKS ポッドをセキュリティ保護するに�
 
 AKS クラスターでは、リソースが作成され更新されるときに、API サーバーへの要求をインターセプトするためにアドミッション コントローラーが使用されます。 次にアドミッション コントローラーは、一連のルールに対してリソース要求を*検証*して、それを作成する必要があるかどうかを判断します。
 
-以前は、Kubernetes プロジェクトによって[ポッドのセキュリティ ポリシー (プレビュー)](use-pod-security-policies.md) 機能が有効にされ、デプロイ可能なポッドが制限されていました。 この機能は、Kubernetes プロジェクトからアクティブに開発されたことにより、使用されなくなりました。
+以前は、Kubernetes プロジェクトによって[ポッドのセキュリティ ポリシー (プレビュー)](use-pod-security-policies.md) 機能が有効にされ、デプロイ可能なポッドが制限されていました。
 
 Azure Policy アドオンを使用することにより、AKS クラスターで組み込みの Azure Policy を使用できるようになります。このポリシーでは、以前のポッドのセキュリティ ポリシーと同様に、ポッドとその他の Kubernetes リソースをセキュリティ保護することができます。 AKS 用の Azure Policy アドオンでは、[Gatekeeper](https://github.com/open-policy-agent/gatekeeper) のマネージド インスタンスがインストールされます。これは、検証を行うアドミッション コントローラーです。 Kubernetes 用 の Azure Policy は、[Rego ポリシー言語](../governance/policy/concepts/policy-for-kubernetes.md#policy-language)に依存するオープンソースの Open Policy Agent に基づいて構築されています。
 

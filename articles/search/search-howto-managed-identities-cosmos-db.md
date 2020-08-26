@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 107cd113645a2cbd4b452f9350fa67d734ee6df8
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: f65aa4b307108682fa6e190a229e9d82b6efdec0
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86143643"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553204"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity-preview"></a>マネージド ID を使用して Cosmos DB データベースへのインデクサー接続を設定する (プレビュー)
 
 > [!IMPORTANT] 
-> マネージド ID を使用する、データ ソースへの接続の設定のサポートは現在限定的なパブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
-> プレビュー機能に対するアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/mi-preview-request)に必要事項を入力して行うことができます。
+> マネージド ID を使用したデータ ソースへの接続の設定のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
 
 このページでは、データ ソースのオブジェクト接続文字列で資格情報を指定する代わりに、マネージド ID を使用して Azure Cosmos DB データベースへのインデクサー接続を設定する方法を説明します。
 
@@ -32,11 +31,11 @@ ms.locfileid: "86143643"
 
 ### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - システム割り当てマネージド ID をオンにする
 
-システム割り当てマネージド ID が有効になると、お客様の検索サービスのための ID が Azure によって作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 その後、インデックス作成中にデータへのアクセスを許可する、ロールベースのアクセス制御 (RBAC) の割り当てにおいて、この ID を使用することができます。
+システム割り当てマネージド ID が有効になると、Azure で検索サービスのための ID が作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 その後、インデックス作成中にデータへのアクセスを許可する、ロールベースのアクセス制御 (RBAC) の割り当てで、この ID を使用することができます。
 
 ![システム割り当てマネージド ID をオンにする](./media/search-managed-identities/turn-on-system-assigned-identity.png "システム割り当てマネージド ID をオンにする")
 
-**[保存]** を選択すると、検索サービスに割り当てられたオブジェクト ID が表示されるようになります。
+**[保存]** を選択した後に、検索サービスに割り当てられたオブジェクト ID が表示されます。
 
 ![オブジェクト ID](./media/search-managed-identities/system-assigned-identity-object-id.png "Object ID")
  
@@ -46,23 +45,21 @@ ms.locfileid: "86143643"
 
 1. Azure portal で、インデックスを作成するデータが含まれている Cosmos DB アカウントに移動します。
 2. **[アクセス制御 (IAM)]** を選択します
-3. **[追加]** 、 **[ロールの割り当ての追加]** を選択します
+3. **[追加]** 、 **[ロールの割り当ての追加]** の順に選択します
 
     ![ロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-cosmos-db.png "ロールの割り当ての追加")
 
 4. **[Cosmos DB アカウントの閲覧者ロール]** を選択します
 5. **[アクセスの割り当て先]** を **[Azure AD のユーザー、グループ、サービス プリンシパル]** のままにしておきます
-6. 検索サービスを検索して選択し、 **[保存]** を選択します
+6. 検索サービスを検索し、それを選んでから、 **[保存]** を選択します
 
     ![閲覧者とデータ アクセスのロールの割り当てを追加する](./media/search-managed-identities/add-role-assignment-cosmos-db-account-reader-role.png "閲覧者とデータ アクセスのロールの割り当てを追加する")
 
 ### <a name="3---create-the-data-source"></a>3 - データ ソースを作成する
 
-**データ ソース**は、インデックスを作成するデータ、資格情報、およびデータの変更を識別するためのポリシー (コレクション内の変更または削除されたドキュメントなど) を指定します。 データ ソースは、複数のインデクサーから使用できるように、独立したリソースとして定義します。
+[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) では、マネージド ID 接続文字列がサポートされています。 次に、[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用して Cosmos DB のデータにインデックスを付けるためのデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
 
-マネージド ID を使用してデータ ソースに対して認証する場合、**credentials** にはアカウント キーは含まれません。
-
-[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用して Cosmos DB データ ソース オブジェクトを作成する方法の例:
+マネージド ID を使用して認証する場合、**資格情報**にはアカウント キーは含まれません。
 
 ```
 POST https://[service name].search.windows.net/datasources?api-version=2020-06-30
@@ -93,8 +90,6 @@ api-key: [Search service admin key]
 | **container** | 次の要素が含まれます。 <br/>**name**:必須。 インデックスを作成するデータベース コレクションの ID を指定します。<br/>**query**: 省略可能。 任意の JSON ドキュメントを、Azure Cognitive Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。<br/>MongoDB API、Gremlin API、Cassandra API では現在、クエリがサポートされていません。 |
 | **dataChangeDetectionPolicy** | 推奨 |
 |**dataDeletionDetectionPolicy** | 省略可能 |
-
-Azure portal と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) も、マネージド ID 接続文字列をサポートしています。 Azure portal では、このページ上部のリンクを使用してプレビューにサインアップする際に提供される、機能フラグが必要です。 
 
 ### <a name="4---create-the-index"></a>4 - インデックスを作成する
 

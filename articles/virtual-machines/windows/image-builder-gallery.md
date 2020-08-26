@@ -7,12 +7,12 @@ ms.date: 05/05/2020
 ms.topic: how-to
 ms.service: virtual-machines-windows
 ms.subservice: imaging
-ms.openlocfilehash: 65e8818e19ac5ad20bb87fd8eb27a4c36c2839cf
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 07b9e3e7529aa867a4baf51ffe5c4bbf23599d32
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656661"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836192"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>プレビュー:Windows イメージを作成して共有イメージ ギャラリーに配布する 
 
@@ -24,7 +24,7 @@ ms.locfileid: "83656661"
 
 Azure Image Builder では、sysprep が自動的に実行され、イメージが汎用化されます。これは汎用 sysprep コマンドであり、必要に応じて[オーバーライド](https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md#vms-created-from-aib-images-do-not-create-successfully)できます。 
 
-カスタマイズを層にする回数にご注意ください。 Sysprep コマンドは、1 つの Windows イメージで最大 8 回実行できます。 Sysprep を 8 回実行した後、Windows イメージを再作成する必要があります。 詳細は、[Sysprep の実行回数制限](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)に関するページを参照してください。 
+カスタマイズを層にする回数にご注意ください。 Sysprep コマンドは、1 つの Windows イメージで最大 8 回実行できます。 Sysprep を 8 回実行した後、Windows イメージを再作成する必要があります。 詳細は、[Sysprep の実行回数制限](/windows-hardware/manufacture/desktop/sysprep--generalize--a-windows-installation#limits-on-how-many-times-you-can-run-sysprep)に関するページを参照してください。 
 
 > [!IMPORTANT]
 > 現在、Azure Image Builder はパブリック プレビュー段階にあります。
@@ -98,7 +98,7 @@ New-AzResourceGroup `
 
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>ユーザー割り当て ID を作成し、リソース グループにアクセス許可を設定する
-Image Builder は、指定された[ユーザー ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell) を使用して、Azure Shared Image Gallery (SIG) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
+Image Builder は、指定された[ユーザー ID](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md) を使用して、Azure Shared Image Gallery (SIG) にイメージを挿入します。 この例では、イメージの SIG への配布を実行するための粒度の細かいアクションを持つ Azure ロール定義を作成します。 このロール定義はその後、ユーザー ID に割り当てられます。
 
 ```powershell
 # setup role def names, these need to be unique
@@ -119,7 +119,7 @@ $identityNamePrincipalId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageR
 
 ### <a name="assign-permissions-for-identity-to-distribute-images"></a>イメージを配布するためにアクセス許可を ID に割り当てる
 
-このコマンドは、Azure ロール定義テンプレートをダウンロードし、前に指定したパラメーターを使用してテンプレートを更新します。
+このコマンドは、Azure のロールの定義テンプレートをダウンロードし、前に指定したパラメーターを使用してテンプレートを更新します。
 
 ```powershell
 $aibRoleImageCreationUrl="https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/solutions/12_Creating_AIB_Security_Roles/aibRoleImageCreation.json"
@@ -219,7 +219,7 @@ Invoke-WebRequest `
 New-AzResourceGroupDeployment `
    -ResourceGroupName $imageResourceGroup `
    -TemplateFile $templateFilePath `
-   -api-version "2019-05-01-preview" `
+   -apiversion "2019-05-01-preview" `
    -imageTemplateName $imageTemplateName `
    -svclocation $location
 ```

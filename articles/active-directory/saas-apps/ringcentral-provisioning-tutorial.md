@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory での自動ユーザー プロビジョニング用に RingCentral を構成する | Microsoft Docs
 description: Azure AD から RingCentral に対してユーザー アカウントを自動的にプロビジョニング、またはプロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 976ac071-fa7e-4f31-aed1-d174942860d4
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 8859556c61ab890334ea075b7614cdf46fe1a1f6
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: fb990b5aa615e37d9893a891143cb04933b603bb
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87921795"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88542617"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>チュートリアル:自動ユーザー プロビジョニング用に RingCentral を構成する
 

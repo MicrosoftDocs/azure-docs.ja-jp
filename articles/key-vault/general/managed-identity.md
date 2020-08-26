@@ -7,15 +7,15 @@ manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2d4af5086e3cf4099013969cd359f8e11873c6d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 0aa9a9728c3a59b6f47ef1427cbcd368d4f1e77c
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87090622"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586158"
 ---
 # <a name="provide-key-vault-authentication-with-a-managed-identity"></a>マネージド ID で Key Vault の認証を提供する
 

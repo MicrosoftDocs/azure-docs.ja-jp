@@ -1,6 +1,6 @@
 ---
 title: StorSimple Virtual Array のフェールオーバーとディザスター リカバリー
-description: StorSimple Virtual Array をフェールオーバーする方法の詳細を確認します。
+description: Microsoft Azure StorSimple Virtual Array のディザスター リカバリー、たとえば、他の仮想アレイへの詳細なフェールオーバー手順について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05f31993b7491dbfb0bff46c8fd2362b6bab0d4e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 24eb03069689d6dc89d8e237e0e65c71af6c6173
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077789"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184722"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Azure Portal を介した StorSimple Virtual Array のディザスター リカバリーとデバイスのフェールオーバー
 

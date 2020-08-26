@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
-ms.openlocfilehash: f0a5c3df2359add9f896e05af6c8c77d9e006a2a
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.openlocfilehash: c690002141c6c275d90d5bae41318f9a5907fb85
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87171987"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236435"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する方法
 

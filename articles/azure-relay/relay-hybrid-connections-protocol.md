@@ -3,12 +3,12 @@ title: Azure Relay ハイブリッド接続プロトコル ガイド | Microsoft
 description: この記事では、リスナーのクライアントとセンダーのロールを接続するためのハイブリッド接続リレーでのクライアント側の対話について説明します。
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 798be7f0003509aee6ae616ba33fcc41e5c86275
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fec021d961a17102f8d979c61ee46af6b938f073
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85316645"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88272011"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay ハイブリッド接続プロトコル
 
@@ -467,7 +467,7 @@ https://{namespace-address}/{path}?sbc-hc-token=...
 
 _namespace-address_ は、ハイブリッド接続のホストとなる Azure Relay 名前空間の完全修飾ドメイン名です。通常、`{myname}.servicebus.windows.net` の形式で指定します。
 
-要求には、追加の HTTP ヘッダー (アプリケーション定義のヘッダーなど) を含めることができます。 RFC7230 (「[要求メッセージ](#Request message)」を参照) で直接定義されているものを除き、提供されたすべてのヘッダーはリスナーにフローし、**要求**メッセージの `requestHeader` オブジェクトで見つけることができます。
+要求には、追加の HTTP ヘッダー (アプリケーション定義のヘッダーなど) を含めることができます。 RFC7230 (「[要求メッセージ](#request-message)」を参照) で直接定義されているものを除き、提供されたすべてのヘッダーはリスナーにフローし、**要求**メッセージの `requestHeader` オブジェクトで見つけることができます。
 
 クエリ文字列パラメーターのオプションは次のとおりです。
 

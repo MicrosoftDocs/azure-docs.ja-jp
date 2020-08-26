@@ -2,24 +2,22 @@
 title: デプロイ履歴の削除
 description: Azure Resource Manager でデプロイ履歴からデプロイを自動削除するしくみについて説明します。 履歴が上限の 800 を超えそうになるとデプロイが削除されます。
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: 8ec3291dc5e35689d4e2c614949e0328057fbfd3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/07/2020
+ms.openlocfilehash: 736a25a3c73f8f4c70c5fb6c686fa2b8bb86666d
+ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86248985"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87986510"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>デプロイ履歴からの自動削除
 
 テンプレートをデプロイするたびに、デプロイに関する情報がデプロイ履歴に書き込まれます。 各リソース グループには、そのデプロイ履歴が 800 までという上限があります。
 
-Azure Resource Manager では、上限に近づくとすぐに履歴からデプロイの自動削除が開始されます。 自動削除という動作は過去になかったものです。 以前は、エラーを避ける目的で、デプロイ履歴から手動でデプロイを削除する必要がありました。 **この機能はまだ Azure に追加されていません。ユーザーがオプトアウトを希望する場合に備えて、今後の変更についてお知らせしていきます。**
+Azure Resource Manager では、上限に近づいたときに履歴からデプロイが自動的に削除されます。 自動削除という動作は過去になかったものです。 以前は、エラーを避ける目的で、デプロイ履歴から手動でデプロイを削除する必要がありました。 **この変更は 2020 年 8 月 6 日に実装されました。**
 
 > [!NOTE]
 > 履歴からデプロイを削除しても、デプロイされたリソースには影響が出ません。
->
-> リソース グループに [CanNotDelete ロック](../management/lock-resources.md) が設定されている場合、そのリソース グループのデプロイを削除することはできません。 デプロイ履歴の自動削除を利用するには、このロックを削除する必要があります。
 
 ## <a name="when-deployments-are-deleted"></a>デプロイが削除されるタイミング
 
@@ -35,6 +33,24 @@ Azure Resource Manager では、上限に近づくとすぐに履歴からデプ
 デプロイに加え、[what-if 操作](template-deploy-what-if.md)の実行時またはデプロイの検証時にも削除を始動させることができます。
 
 履歴に含まれるものと同じ名前をデプロイに付けると、履歴のその場所をリセットすることになります。 そのデプロイは履歴の中で最も新しい場所に移動します。 エラー後、[そのデプロイまでロールバック](rollback-on-error.md)した場合もデプロイの場所がリセットされます。
+
+## <a name="remove-locks-that-block-deletions"></a>削除をブロックするロックを削除する
+
+リソース グループに [CanNotDelete ロック](../management/lock-resources.md) が設定されている場合、そのリソース グループのデプロイを削除することはできません。 デプロイ履歴の自動削除を利用するには、このロックを削除する必要があります。
+
+PowerShell を使用してロックを削除するには、次のコマンドを実行します。
+
+```azurepowershell-interactive
+$lockId = (Get-AzResourceLock -ResourceGroupName lockedRG).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+Azure CLI を使用してロックを削除するには、次のコマンドを実行します。
+
+```azurecli-interactive
+lockid=$(az lock show --resource-group lockedRG --name deleteLock --output tsv --query id)
+az lock delete --ids $lockid
+```
 
 ## <a name="opt-out-of-automatic-deletions"></a>自動削除のオプトアウト
 

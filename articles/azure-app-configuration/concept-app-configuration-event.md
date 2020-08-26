@@ -1,18 +1,18 @@
 ---
 title: Azure App Configuration のキー値イベントへの反応
-description: App Configuration イベントをサブスクライブするには、Azure Event Grid を使用します。
+description: Azure Event Grid を使用すると、アプリケーションは複雑なコードの必要なく、App Configuration のイベントにサブスクライブして、キー値の変更に反応できます。
 services: azure-app-configuration,event-grid
 author: jimmyca
 ms.author: jimmyca
 ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: a4f61d147ba1abf73ada6360b8d0d965d8e063a5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77523800"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590032"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Azure App Configuration イベントへの反応
 

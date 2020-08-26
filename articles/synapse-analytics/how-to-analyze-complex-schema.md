@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: ad6761466cc958235557609e929e641a0311ee43
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: fdf3dc56575a45ad0c9e716054184ba2691133ba
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999185"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87831704"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Azure Synapse Analytics で複合データ型を分析する
 
@@ -165,7 +165,7 @@ SQL サーバーレスを使って、このようなオブジェクトに対し�
 | BULK              | FORMAT |
 | -------------------- | --- |
 | 'https://ACCOUNTNAME.dfs.core.windows.net/FILESYSTEM/PATH/FINENAME.parquet ' |'Parquet' (ADLSg2)|
-| N'endpoint=https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/;account= ACCOUNTNAME;database=DATABASENAME;collection=COLLECTIONNAME;region=REGIONTOQUERY, SECRET='YOURSECRET' |'CosmosDB' (Synapse Link)|
+| N'endpoint=https://ACCOUNTNAME.documents-staging.windows-ppe.net:443/;account=ACCOUNTNAME;database=DATABASENAME;collection=COLLECTIONNAME;region=REGIONTOQUERY', SECRET='YOURSECRET' |'CosmosDB' (Synapse Link)|
 
 
 > [!NOTE]
@@ -179,8 +179,8 @@ SQL サーバーレスを使って、このようなオブジェクトに対し�
 select *
 FROM
 openrowset(
-BULK 'YOUR BULK ABOVE',
-            FORMAT='YOUR TYPE ABOVE'
+    BULK 'YOUR BULK ABOVE',
+    FORMAT='YOUR TYPE ABOVE'
 )
 with (id varchar(50),
         contextdataeventTime varchar(50) '$.context.data.eventTime',

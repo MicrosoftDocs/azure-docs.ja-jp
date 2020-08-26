@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: f4310350e83284d6a2839f8c3d86526d3cda74ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40809fae312401cb62fabb10140b9bb7f60e3715
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84743577"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88234773"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>ルーティングの一般的な問題のトラブルシューティング
 
@@ -102,7 +102,7 @@ ms.locfileid: "84743577"
          - たとえば、バックエンドが HTTP 要求のみを許可している場合、次の構成が有効になります。
             - _[accepted protocols]_ \(許可されているプロトコル\) は、HTTP および HTTPS です。 _[転送プロトコル]_ は HTTP です。 HTTPS は許可されているプロトコルであるため、一致要求は機能しません。要求が HTTPS で受信された場合、Front Door は HTTPS を使用してそれを転送します。
 
-            - _[accepted protocols]_ \(許可されているプロトコル\) は、HTTP です。 _[転送プロトコル]_ は、一致要求または HTTPS です。
+            - _[accepted protocols]_ \(許可されているプロトコル\) は、HTTP です。 _[転送プロトコル]_ は、一致要求または HTTP です。
 
     - 既定で _[Url の書き換え]_ は無効になっており、バックエンドでホストされている使用可能にしたいリソースの範囲を限定する場合にのみこのフィールドは使用する必要があります。 これを無効にすると、Front Door は受信したのと同じ要求パスを転送します。 このフィールドの構成が不正で、Front Door が使用不能なバックエンドからリソースを要求しているため、HTTP 404 の状態コードが返されることもあります。
 

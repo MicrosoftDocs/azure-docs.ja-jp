@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 43623e6841c3776e6e83453ad9cb47549fc16021
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: b48fc6ad448b829bb399c151d3f1507c804ad471
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170294"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88605097"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>マッピング データ フローでのデータ変換式
 
@@ -101,21 +101,13 @@ ___
 <code><b>byNames(<i>&lt;column names&gt;</i> : array, [<i>&lt;stream name&gt;</i> : string]) => any</b></code><br/><br/>
 ストリーム内の名前を指定して列の配列を選択します。 省略可能なストリーム名を 2 番目の引数として渡すことができます。 複数の一致がある場合は、最初の一致が返されます。 列に一致するものがない場合は、出力全体が NULL 値になります。 戻り値には、型変換関数 (toDate、toString、...) が必要です。設計時にわかっている列名は、その名前だけで処理する必要があります。 計算入力はサポートされていませんが、パラメーター置換を使用することができます。
 * ``toString(byNames(['parent', 'child']))``
-* ````
 * ``byNames(['parent']) ? string``
-* ````
 * ``toLong(byNames(['income']))``
-* ````
 * ``byNames(['income']) ? long``
-* ````
 * ``toBoolean(byNames(['foster']))``
-* ````
 * ``toLong(byNames($debtCols))``
-* ````
 * ``toString(byNames(['a Column']))``
-* ````
 * ``toString(byNames(['a Column'], 'DeriveStream'))``
-* ````
 * ``byNames(['orderItem']) ? (itemName as string, itemQty as integer)``
 ___
 ### <code>byPosition</code>

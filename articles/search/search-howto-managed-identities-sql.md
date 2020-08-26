@@ -9,18 +9,17 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: d0933f5305007bc4a8238adb2b6b949ab0c11edf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 321c13e88cb09c7078a169c3e1666cf781ec7787
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85559937"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88553140"
 ---
 # <a name="set-up-an-indexer-connection-to-azure-sql-database-using-a-managed-identity-preview"></a>マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する (プレビュー)
 
 > [!IMPORTANT] 
-> マネージド ID を使用したデータ ソースへの接続の設定のサポートは現在、限定的なパブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
-> プレビューへのアクセスの要求は、[こちらのフォーム](https://aka.ms/azure-cognitive-search/mi-preview-request)に入力して行うことができます。
+> マネージド ID を使用したデータ ソースへの接続の設定のサポートは現在、パブリック プレビューの段階です。 プレビュー段階の機能はサービス レベル アグリーメントなしで提供しています。運用環境のワークロードに使用することはお勧めできません。
 
 このページでは、データ ソース オブジェクトの接続文字列に資格情報を指定する代わりに、マネージド ID を使用して Azure SQL Database へのインデクサー接続を設定する方法について説明します。
 
@@ -31,11 +30,11 @@ ms.locfileid: "85559937"
 
 ## <a name="set-up-a-connection-using-a-managed-identity"></a>マネージド ID を使用して接続を設定する
 
-### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - システム割り当てマネージド ID を有効にする
+### <a name="1---turn-on-system-assigned-managed-identity"></a>1 - システム割り当てマネージド ID をオンにする
 
-システム割り当てマネージド ID が有効になると、Azure によって検索サービス用の ID が作成され、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 この ID はその後、インデックス作成中にデータへのアクセスを許可するロールベースのアクセス制御 (RBAC) の割り当てで、使用することができます。
+システム割り当てマネージド ID が有効になると、Azure で検索サービスのための ID が作成されます。これは、同じテナントとサブスクリプション内の他の Azure サービスに対する認証に使用することができます。 その後、インデックス作成中にデータへのアクセスを許可する、ロールベースのアクセス制御 (RBAC) の割り当てで、この ID を使用することができます。
 
-![システム割り当てマネージド ID を有効にする](./media/search-managed-identities/turn-on-system-assigned-identity.png "システム割り当てマネージド ID を有効にする")
+![システム割り当てマネージド ID をオンにする](./media/search-managed-identities/turn-on-system-assigned-identity.png "システム割り当てマネージド ID を有効にする")
 
 **[保存]** を選択した後に、検索サービスに割り当てられたオブジェクト ID が表示されます。
 
@@ -98,7 +97,9 @@ ms.locfileid: "85559937"
 
 ### <a name="5---create-the-data-source"></a>5 - データ ソースを作成する
 
-SQL データベースからインデックスを作成する場合は、データ ソースに次の必須プロパティが必要です。
+[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source)、Azure portal、および [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) では、マネージド ID 接続文字列がサポートされています。 次に、[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) とマネージド ID 接続文字列を使用し、Azure SQL Database のデータにインデックスを付けてデータ ソースを作成する方法例を示します。 マネージド ID 接続文字列の形式は、REST API、.NET SDK、および Azure portal において同じです。
+
+[REST API](https://docs.microsoft.com/rest/api/searchservice/create-data-source) を使用してデータ ソースを作成する場合、データ ソースには次の必須プロパティが必要です。
 
 * **name** は、Search サービス内のデータ ソースの一意の名前です。
 * **型**は、`azuresql` です
@@ -122,8 +123,6 @@ api-key: [admin key]
     "container" : { "name" : "my-table" }
 } 
 ```
-
-Azure portal と [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource?view=azure-dotnet) でも、マネージド ID 接続文字列がサポートされます。 Azure portal では、このページの上部にあるリンクを使用してプレビューにサインアップする際に提供される、機能フラグが必要です。 
 
 ### <a name="6---create-the-index"></a>6 - インデックスを作成する
 

@@ -7,14 +7,14 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/14/2020
-ms.openlocfilehash: 1e4539dcec1f3f57f7fcc0ca0b8d8c266dc1bc99
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 62f30d8a0fe1b2f2397fc16161929279a148aaa2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121505"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037509"
 ---
-# <a name="support-for-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースのサポート
+# <a name="support-for-the-microsoft-commercial-marketplace"></a>Microsoft コマーシャル マーケットプレースのサポート
 
 Microsoft コマーシャル マーケットプレースの発行元としての作業の開始について質問がありますか。 コマーシャル マーケットプレースのサポート オプションの一覧を次に示します。 以下のリソースに加えて、[C+AI コミュニティ フォーラムの Marketplace チャネル](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)で、多くの質問の答えを得ることもできます。  
 

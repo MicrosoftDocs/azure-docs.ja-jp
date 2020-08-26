@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 04/02/2020
 ms.author: erhopf
-ms.openlocfilehash: c9bcd301b19252cedd9ac9a1867ccf132a537587
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 709efa3fb4f85ab5d0c3d345fd9a5ceada274459
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81274902"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226134"
 ---
 ## <a name="prerequisites"></a>前提条件
 
@@ -47,7 +47,7 @@ ms.locfileid: "81274902"
 1. ソース ファイルの `OnRecognitionButtonClicked` ハンドラーから `YourSubscriptionKey` という文字列を見つけて、ご利用のサブスクリプション キーに置き換えます。
 
 
-1. `OnRecognitionButtonClicked` ハンドラーから `YourServiceregion` という文字列を見つけて、自分のサブスクリプションに関連付けられている[リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子**に置き換えます。 たとえば、無料試用版サブスクリプションの場合は `westus` を使用します。
+1. `OnRecognitionButtonClicked` ハンドラーから `YourServiceregion` という文字列を見つけて、自分のサブスクリプションに関連付けられている[リージョン](https://aka.ms/speech/sdkregion)の**リージョン識別子**に置き換えます。 
 
 1. 次に、異なるプラットフォーム プロジェクト (UWP、Android、iOS など) からマイクへのアクセス許可を照会するための [Xamarin サービス](https://docs.microsoft.com/xamarin/android/app-fundamentals/services/creating-a-service/)を作成する必要があります。 これを行うには、helloworld プロジェクトの下に *Services* という名前の新しいフォルダーを追加し、その下に新しい C# ソース ファイルを作成します。 *Services* フォルダーを右クリックし、 **[追加]**  >  **[新しい項目]**  >  **[コード ファイル]** の順に選択します。 ファイルの名前を `IMicrophoneService.cs` に変更し、次のスニペットのすべてのコードをそのファイルに配置します。
 

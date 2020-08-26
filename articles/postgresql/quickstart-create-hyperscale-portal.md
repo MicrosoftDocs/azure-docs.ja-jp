@@ -1,5 +1,5 @@
 ---
-title: 分散テーブルを作成する – Hyperscale (Citus) - Azure Database for PostgreSQL
+title: 'クイックスタート: サーバー グループを作成する - Hyperscale (Citus) - Azure Database for PostgreSQL'
 description: Azure Database for PostgreSQL - Hyperscale (Citus) で分散型テーブルを作成し、クエリを実行するためのクイックスタート。
 author: jonels-msft
 ms.author: jonels
@@ -7,15 +7,15 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 05/14/2019
-ms.openlocfilehash: 6e03b8f89ec22b74ad7dd14d9225c11fde78ec7f
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.date: 08/17/2020
+ms.openlocfilehash: 977082b7f9055b90ee5c93913154934741d93772
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/12/2020
-ms.locfileid: "88135625"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547700"
 ---
-# <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>クイック スタート:Azure portal で Azure Database for PostgreSQL - Hyperscale (Citus) を作成する
+# <a name="quickstart-create-a-hyperscale-citus-server-group-in-the-azure-portal"></a>クイックスタート: Azure portal で Hyperscale (Citus) サーバー グループを作成する
 
 Azure Database for PostgreSQL は、高可用性の PostgreSQL データベースをクラウドで実行、管理、スケールできるマネージド サービスです。 このクイック スタートでは、Azure portal を使用して Azure Database for PostgreSQL - Hyperscale (Citus) サーバー グループを作成する方法について説明します。 ノード間でテーブルをシャード化したり、サンプル データを取り込んだり、複数のノードでクエリを実行したり、分散データをいろいろ試してみます。
 

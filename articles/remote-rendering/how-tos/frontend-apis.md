@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/12/2010
 ms.topic: how-to
-ms.openlocfilehash: c43ed412116d0cb30f7d06ba65467fd529f367ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: dcff550b5411ac00dc54d2103278812f32f56543
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85552687"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509979"
 ---
 # <a name="use-the-azure-frontend-apis-for-authentication"></a>認証に Azure フロントエンド API を使用する
 
@@ -64,7 +64,7 @@ struct AzureFrontendAccountInfo
 
 開かれた、または作成された各 ```AzureSession``` は、それを作成したフロントエンドに対する参照を保持します。 完全にシャットダウンするには、フロントエンドが割り当て解除される前にすべてのセッションを割り当て解除する必要があります。
 
-セッションの割り当てを解除しても、Azure 上の VM は停止されません。`AzureSession.StopAsync` を明示的に呼び出す必要があります。
+セッションの割り当てを解除しても、Azure 上のサーバーは停止されないため、明示的に `AzureSession.StopAsync` を呼び出す必要があります。
 
 セッションが作成され、その状態が準備完了としてマークされると、`AzureSession.ConnectToRuntime` を使用してリモートのレンダリング ランタイムに接続できます。
 

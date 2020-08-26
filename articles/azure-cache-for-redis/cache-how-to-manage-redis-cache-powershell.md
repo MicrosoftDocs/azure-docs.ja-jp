@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 74308ae79b899a55db4682474e3dcd9dab26db98
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.openlocfilehash: c51e67dcc3536a3083179451743b1c97cf618dae
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85856935"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88004870"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure PowerShell を使用した Azure Cache for Redis の管理
 > [!div class="op_single_selector"]
@@ -655,7 +655,7 @@ Azure Cache for Redis を削除するには、[Remove-AzRedisCache](https://docs
 Azure Cache for Redis インスタンスにデータをインポートするには、`Import-AzRedisCache` コマンドレットを使用します。
 
 > [!IMPORTANT]
-> インポート/エクスポートは、 [Premium レベル](cache-premium-tier-intro.md) のキャッシュでのみ使用できます。 インポート/エクスポートの詳細については、「[Import and Export data in Azure Cache for Redis](cache-how-to-import-export-data.md)」 (Azure Cache for Redis でデータをインポートおよびエクスポートする) をご覧ください。
+> Import/Export は、[Premium レベル](cache-overview.md#service-tiers)のキャッシュでのみ使用できます。 インポート/エクスポートの詳細については、「[Import and Export data in Azure Cache for Redis](cache-how-to-import-export-data.md)」 (Azure Cache for Redis でデータをインポートおよびエクスポートする) をご覧ください。
 > 
 > 
 
@@ -719,7 +719,7 @@ Azure Cache for Redis インスタンスにデータをインポートするに�
 Azure Cache for Redis インスタンスからデータをエクスポートするには、`Export-AzRedisCache` コマンドレットを使用します。
 
 > [!IMPORTANT]
-> インポート/エクスポートは、 [Premium レベル](cache-premium-tier-intro.md) のキャッシュでのみ使用できます。 インポート/エクスポートの詳細については、「[Import and Export data in Azure Cache for Redis](cache-how-to-import-export-data.md)」 (Azure Cache for Redis でデータをインポートおよびエクスポートする) をご覧ください。
+> Import/Export は、[Premium レベル](cache-overview.md#service-tiers)のキャッシュでのみ使用できます。 インポート/エクスポートの詳細については、「[Import and Export data in Azure Cache for Redis](cache-how-to-import-export-data.md)」 (Azure Cache for Redis でデータをインポートおよびエクスポートする) をご覧ください。
 > 
 > 
 
@@ -784,7 +784,7 @@ Azure Cache for Redis インスタンスからデータをエクスポートす�
 Azure Cache for Redis インスタンスを再起動するには、`Reset-AzRedisCache` コマンドレットを使用します。
 
 > [!IMPORTANT]
-> 再起動は、 [Premium レベル](cache-premium-tier-intro.md) のキャッシュでのみ使用できます。 キャッシュの再起動の詳細については、 [キャッシュ管理 - 再起動](cache-administration.md#reboot)に関するセクションをご覧ください。
+> 再起動は、[Premium レベル](cache-overview.md#service-tiers)のキャッシュでのみ使用できます。 キャッシュの再起動の詳細については、 [キャッシュ管理 - 再起動](cache-administration.md#reboot)に関するセクションをご覧ください。
 > 
 > 
 

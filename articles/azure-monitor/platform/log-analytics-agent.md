@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/04/2020
-ms.openlocfilehash: 36b94f53d3a9113c3980c94c3b8eff0713f11814
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/06/2020
+ms.openlocfilehash: d507db415a2438c97444ca008f0c9b182306242b
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87446528"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121529"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics エージェントの概要
 Azure Log Analytics エージェントは、あらゆるクラウド、オンプレミスマシンの仮想マシン、[System Center Operations Manager](/system-center/scom/)で監視される仮想マシンを包括的に管理するために開発されました。 Windows および Linux エージェントは、異なるソースから収集したデータを Azure Monitor の Log Analytics ワークスペースに送信し、モニター ソリューションで定義された固有のログやメトリックを送信します。 Log Analytics エージェントはインサイトや [Azure Monitor for VMs](../insights/vminsights-enable-overview.md)、[Azure Security Center](../../security-center/index.yml)、[Azure Automation](../../automation/automation-intro.md) といった Azure Monitor のその他のサービスもサポートします。
@@ -122,11 +122,19 @@ Windows エージェントでは、次のバージョンの Windows オペレー
  - Ubuntu、Debian: `apt-get install -y python2`
  - SUSE: `zypper install -y python2`
 
-次のコマンドを使用し、python2 実行可能ファイルを "python" という別名を付ける必要があります。
+次の手順を使用して、python2 実行可能ファイルに *python* という別名を付ける必要があります。
 
-```
-alternatives --set python `which python2`
-```
+1. 次のコマンドを実行して、現在 python という別名が存在する場合は、それを表示します。 存在する場合は、次の手順に関して優先順位を書き留めておきます。
+ 
+    ```
+    sudo update-alternatives ––display python
+    ```
+
+2. 次のコマンドを実行します。 *\<priority\>* を、既存のリンクの優先順位より大きい数値に置き換えます。または、現在リンクが存在しない場合は、1 に置き換えます。
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 <priority>
+    ```
 
 ### <a name="supported-distros"></a>サポートされているディストリビューション
 
@@ -166,7 +174,7 @@ Azure Monitor ログに転送中のデータのセキュリティを確保する
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>Windows の SHA-2 コード署名サポートの要件
-Windows エージェントでは、2020 年 8 月 17 日に SHA-2 署名の排他的な使用が開始されます。 この変更は、Azure サービス (Azure Monitor、Azure Automation、Azure Update Management、Azure Change Tracking、Azure Security Center、Azure Sentinel、Windows Defender ATP) の一部として、レガシ OS で Log Analytics エージェントを使用しているお客様に影響します。 レガシ OS バージョン (Windows 7、Windows Server 2008 R2、および Windows Server 2008) でエージェントを実行している場合を除き、この変更によってお客様が対処する必要はありません。 レガシ OS バージョンで実行しているお客様は、2020 年 8 月 17 日より前に次の操作をマシンで行う必要があります。そうしないと、エージェントからの Log Analytics ワークスペースへのデータの送信が停止します。
+Windows エージェントでは、2020 年 11 月 2 日に SHA-2 署名の排他的な使用が開始されます。 この変更は、Azure サービス (Azure Monitor、Azure Automation、Azure Update Management、Azure Change Tracking、Azure Security Center、Azure Sentinel、Windows Defender ATP) の一部として、レガシ OS で Log Analytics エージェントを使用しているお客様に影響します。 レガシ OS バージョン (Windows 7、Windows Server 2008 R2、および Windows Server 2008) でエージェントを実行している場合を除き、この変更によってお客様が対処する必要はありません。 レガシ OS バージョンで実行しているお客様は、2020 年 11 月 2 日より前に、ご利用のマシンで次の操作を行う必要があります。これを行わない場合は、エージェントが Log Analytics ワークスペースへのデータの送信を停止します。
 
 1. お使いの OS の最新の Service Pack をインストールします。 必要な Service Pack バージョンは次のとおりです。
     - Windows 7 SP1
@@ -194,7 +202,7 @@ Linux および Windows 用エージェントは、Azure Monitor サービスに
 |*.blob.core.windows.net |ポート 443 |送信|はい |
 |*.azure-automation.net |ポート 443 |送信|はい |
 
-Azure Government に必要なファイアウォールの情報については、[Azure Government の管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor-logs)に関するトピックを参照してください。 
+Azure Government に必要なファイアウォールの情報については、[Azure Government の管理](../../azure-government/compare-azure-government-global-azure.md#azure-monitor)に関するトピックを参照してください。 
 
 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook または管理ソリューションを使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
 

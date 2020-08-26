@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 38a2dd42c010e5b213fd89aa046c7c5b1e1d0a7f
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 47448a97c89b1feddfc43da300cb53fd65eaff05
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87758944"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88056654"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>チュートリアル:Speech SDK を使用して音声でボットを有効にする
 
@@ -38,6 +38,7 @@ Microsoft Bot Framework を使用してボットを作成し、それを Azure �
 1. 認識されたテキストが Bot Framework アクティビティとしてエコー ボットに渡されます。
 1. 応答テキストがテキスト読み上げ (TTS) サービスによってオーディオに変換され、再生のためにクライアント アプリケーションにストリーミングで返されます。
 
+<!-- svg src in User Story 1754106 -->
 ![diagram-tag](media/tutorial-voice-enable-your-bot-speech-sdk/diagram.png "Speech チャネルのフロー")
 
 > [!NOTE]
@@ -59,7 +60,7 @@ Microsoft Bot Framework を使用してボットを作成し、それを Azure �
 - マイクとスピーカー (またはヘッドホン) が動作している Windows 10 PC
 - **ASP.NET および Web 開発**ワークロードがインストールされている [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 以降
 - [.NET Framework ランタイム 4.6.1](https://dotnet.microsoft.com/download) 以降
-- Azure アカウント。 [無料試用版にサインアップ](https://azure.microsoft.com/free/ai/)します。
+- Azure アカウント。 [無料試用版にサインアップします](https://azure.microsoft.com/free/cognitive-services/)
 - [GitHub](https://github.com/) アカウント
 - [Git for Windows](https://git-scm.com/download/win)
 
@@ -82,7 +83,6 @@ Microsoft Bot Framework を使用してボットを作成し、それを Azure �
 
 * [サポートされている Azure リージョン](regions.md#voice-assistants)を使用してください。
 * Direct Line Speech チャネルでは、標準音声とニューラル音声を持つテキスト読み上げサービスが使用されます。 ニューラル音声は、[特定の Azure リージョンに限定](regions.md#standard-and-neural-voices)されています。
-* 無料試用版のキーは、特定のリージョンに限定される場合があります。
 
 リージョンについて詳しくは、「[Azure の場所](https://azure.microsoft.com/global-infrastructure/locations/)」をご覧ください。
 

@@ -1,7 +1,7 @@
 ---
 title: Azure API Management 開発者ポータルの概要
 titleSuffix: Azure API Management
-description: API Management の開発者ポータルについて説明します。
+description: API Management の開発者ポータルについて説明します。 コンシューマーは、開発者ポータルで API を見つけることができます。
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/28/2020
 ms.author: apimpm
-ms.openlocfilehash: f5f4df58a4b147ccb73c7d69f5307a8328803442
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 6a8c4c3fa2bd73fa689458d6877d09900ea86938
+ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373149"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87852159"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management 開発者ポータルの概要
 

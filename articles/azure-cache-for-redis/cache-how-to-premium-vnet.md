@@ -4,14 +4,15 @@ description: Premium レベル Azure Cache for Redis インスタンスの Virtu
 author: yegu-ms
 ms.author: yegu
 ms.service: cache
+ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: f07e18498138d29497fa6ba85c5930a5a5f7ec4e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 82003ef84571c8e07982826124b33763c0e53194
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86184771"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88205557"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Premium Azure Cache for Redis の Virtual Network のサポートを構成する方法
 Azure Cache for Redis には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能を含め、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Cache for Redis インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Cache for Redis インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -20,8 +21,6 @@ Azure Cache for Redis には、クラスタリング、永続性、仮想ネッ�
 > Azure Cache for Redis では、クラシック VNet と Resource Manager VNet の両方がサポートされています。
 > 
 > 
-
-Premium キャッシュのその他の機能については、「[Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
 ## <a name="why-vnet"></a>VNet を選ぶ理由
 [Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/) のデプロイにより、Azure Cache for Redis のセキュリティと分離が強化されると共に、サブネット、アクセス制御ポリシー、アクセスをさらに制限する他の機能も提供されます。
@@ -237,9 +236,9 @@ ExpressRoute を使用したオンプレミス アプリケーションから Az
 ExpressRoute の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Premium キャッシュ機能をさらに使用する方法を学習します。
+Azure Cache for Redis の機能について
 
-* [Azure Cache for Redis Premium レベルの概要](cache-premium-tier-intro.md)
+* [Azure Cache for Redis Premium サービス レベル](cache-overview.md#service-tiers)
 
 <!-- IMAGES -->
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Import/Export ツール v1 の設定 | Microsoft Docs
-description: Azure Import/Export サービスのドライブの準備と修復用のツールを設定する方法について説明します。 このリファレンスでは、Import/Export ツール v1 について説明します。
+description: Azure Import/Export サービスのドライブの準備と修復用のツールを設定する方法について説明します。 この記事では、Import/Export ツールのバージョン 1 について説明します。
 author: twooley
 services: storage
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: ca74e3aea8a847344c75ca7167c46675e1339459
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f2aeb010d0c6f62284f1347bd90b952be50c665e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077823"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88530802"
 ---
 # <a name="setting-up-the-azure-importexport-tool-v1"></a>Azure Import/Export ツール v1 の設定
 Microsoft Azure Import/Export ツールは、ドライブの準備と修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。  
@@ -72,7 +72,7 @@ Microsoft Azure Import/Export ツールは、ドライブの準備と修復用�
 
 - Hddid.dll  
 
-  たとえば、これらのファイルを作業ディレクトリ (`c:\WAImportExport`) にコピーします。 次に、管理者モードでコマンド ライン ウィンドウを開き、上記のディレクトリを現在のディレクトリとして設定します。  
+  たとえば、これらのファイルを作業ディレクトリ (`c:\WAImportExport`) にコピーします。 次に、管理者モードでコマンドライン ウィンドウを開き、上記のディレクトリを現在のディレクトリとして設定します。  
 
   コマンドのヘルプを出力するには、パラメーターを指定せずにツールを実行します。  
 
@@ -253,5 +253,4 @@ Examples:
 * [エクスポート ジョブのドライブ使用率のプレビュー](../storage-import-export-tool-previewing-drive-usage-export-v1.md)   
 * [コピー ログ ファイルによるジョブの状態の確認](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [インポート ジョブの修復](../storage-import-export-tool-repairing-an-import-job-v1.md)   
-* [エクスポート ジョブの修復](../storage-import-export-tool-repairing-an-export-job-v1.md)   
-* [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
+* [エクスポート ジョブの修復](../storage-import-export-tool-repairing-an-export-job-v1.md)

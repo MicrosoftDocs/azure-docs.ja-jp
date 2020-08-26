@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/10/2020
-ms.openlocfilehash: 1ff366e24adb82a0d7d4660d4afaffa0bbca0b3c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 737e2fc682e630775b763dd2f22f904d895a120f
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87328074"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87921268"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>取引可能な SaaS オファー用のランディング ページをコマーシャル マーケットプレースに作成する
 
@@ -56,7 +56,7 @@ ID を使用するには、最初の手順として、ランディング ペー�
 
 Microsoft Graph API に対してクエリを実行する場合は、[Web API にアクセスするように新しいアプリケーションを構成](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)します。 このアプリケーションの API アクセス許可を選択する場合、オンボード プロセスをスムーズかつ自動的に実行するのに必要な購入者に関する基本情報は、**User.Read** の既定値で十分に収集できます。 **[needs admin consent]\(管理者の同意が必要\)** というラベルが付けられている API アクセス許可を要求しないでください。要求すると、管理者以外のユーザーは誰もランディング ページにアクセスできなくなります。
 
-オンボード プロセスやプロビジョニング プロセスの一部として管理者特権のアクセス許可が必要な場合は、Azure AD の[増分同意](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis)機能を使用することを検討します。この機能を使用すると、マーケットプレースからリダイレクトされたすべての購入者は最初、ランディング ページを操作できます。
+オンボード プロセスやプロビジョニング プロセスの一部として管理者特権のアクセス許可が必要な場合は、Azure AD の[増分同意](https://aka.ms/incremental-consent)機能を使用することを検討します。この機能を使用すると、マーケットプレースからリダイレクトされたすべての購入者は最初、ランディング ページを操作できます。
 
 ## <a name="use-a-code-sample-as-a-starting-point"></a>開始点としてコード サンプルを使用する
 
@@ -90,16 +90,7 @@ SaaS Fulfillment API を使用してアプリケーションを認証するに�
 
 ### <a name="call-the-resolve-endpoint"></a>解決エンドポイントを呼び出す
 
-SaaS Fulfillment API では、[解決](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)エンドポイントを実装します。これを呼び出すことで、マーケットプレース トークンの有効性を確認することや、次の表に示す値を含む、サブスクリプションに関する情報を返すことができます。
-
-| 値 | 説明 |
-| ------------ | ------------- |
-| Id | このサブスクリプションの一意識別子 (GUID)。 この値は、SaaS Fulfillment API への将来の呼び出しで必要になります。 |
-| subscriptionName | オファーがパートナー センターに追加されたときに設定されたサブスクリプションの名前。 |
-| offerId | 特定のオファーの識別子 (オファーが追加されたときに設定されたもの)。 |
-| planId | そのオファーの特定のプランの識別子 (オファーが追加されたときに設定されたもの)。 |
-| Quantity | 購入時に購入者によって入力された数量。 |
-|||
+SaaS Fulfillment API では、[解決](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription)エンドポイントを実装します。これを呼び出すことで、マーケットプレース トークンの有効性を確認することや、サブスクリプションに関する情報を返すことができます。
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>ID トークンにエンコードされている要求から情報を読み取る
 
@@ -107,13 +98,13 @@ SaaS Fulfillment API では、[解決](./partner-center-portal/pc-saas-fulfillme
 
 | 値 | 説明 |
 | ------------ | ------------- |
-| aud | このトークンの対象オーディエンス。 この場合は、管理者のアプリケーション ID と一致していることと、検証済みであることが必要です。 |
-| preferred_username | アクセスしているユーザーのプライマリ ユーザー名。 これには、メール アドレス、電話番号、またはその他の識別子を使用できます。 |
-| email | ユーザーのメール アドレス。 このフィールドは空でも構いません。 |
+| aud | このトークンの対象ユーザー。 この場合は、アプリケーション ID に一致し、検証されている必要があります。 |
+| preferred_username | アクセスしているユーザーのプライマリ ユーザー名。 これはメール アドレス、電話番号、またはその他の識別子である場合があります。 |
+| email | ユーザーのメール アドレス。 このフィールドは空である可能性があることに注意してください。 |
 | name | トークンのサブジェクトを識別する、人間が判読できる値。 この場合は、購入者の名前です。 |
-| oid | アプリケーション間でユーザーを一意に識別する、Microsoft ID システムの識別子。 Microsoft Graph は、特定のユーザー アカウントの ID プロパティとしてこの値を返します。 |
+| oid | アプリケーションにまたがるユーザーを一意に識別する、Microsoft ID システム内の識別子。 Microsoft Graph は、この値を特定のユーザー アカウントの ID プロパティとして返します。 |
 | tid | 購入者が属している Azure AD テナントを表す識別子。 MSA ID の場合、これは常に ``9188040d-6c67-4c5b-b112-36a304b66dad`` です。 詳細については、次のセクション「Microsoft Graph API を使用する」の注を参照してください。 |
-| sub | この特定のアプリケーションでユーザーを一意に識別する識別子。 |
+| sub | この特定のアプリケーション内のユーザーを一意に識別する識別子。 |
 |||
 
 ## <a name="use-the-microsoft-graph-api"></a>Microsoft Graph API を使用する
@@ -126,7 +117,7 @@ ID トークンには購入者を識別するための基本的な情報が含�
 | givenName | ユーザーの名。 |
 | jobTitle | ユーザーの役職。 |
 | mail | ユーザーの SMTP アドレス。 |
-| MobilePhone | ユーザーのメインの携帯電話番号。 |
+| MobilePhone | ユーザーの携帯電話番号 (代表)。 |
 | preferredLanguage | ユーザーの優先する言語の ISO 639-1 コード。 |
 | surname | ユーザーの姓。 |
 |||
@@ -136,7 +127,7 @@ ID トークンには購入者を識別するための基本的な情報が含�
 Azure AD に登録されているほとんどのアプリは、委任されたアクセス許可を付与して、ユーザーの会社の Azure AD テナントからそのユーザーの情報を読み取ります。 その情報を取得するための Microsoft Graph へのすべての要求には、認証のためのアクセス トークンが必要です。 アクセス トークンを生成する具体的な手順は、管理者が使用しているテクノロジ スタックによって異なりますが、サンプル コードに例が含まれています。 詳細については、「[ユーザーの代わりにアクセスを取得](https://docs.microsoft.com/graph/auth-v2-user)」を参照してください。
 
 > [!NOTE]
-> MSA テナントのアカウント (テナント ID ``9188040d-6c67-4c5b-b112-36a304b66dad`` を持つ) では、ID トークンで既に収集されている情報以上の情報が返されることはありません。 したがって、これらのアカウントの場合は Graph API へのこの呼び出しをスキップできます。
+> MSA テナント (テナント ID は ``9188040d-6c67-4c5b-b112-36a304b66dad``) のアカウントでは、ID トークンで既に収集されている内容より詳細な情報は返されません。 そのため、これらのアカウントでは Graph API へのこの呼び出しをスキップできます。
 
 ## <a name="next-steps"></a>次のステップ
 

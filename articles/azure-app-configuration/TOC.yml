@@ -62,8 +62,14 @@
           href: use-key-vault-references-dotnet-core.md
         - name: Spring Boot
           href: use-key-vault-references-spring-boot.md
-    - name: CI/CD パイプラインとの統合
-      href: integrate-ci-cd-pipeline.md
+    - name: CI/CD パイプラインの統合
+      items:
+        - name: Azure Pipelines を使用したプッシュ
+          href: push-kv-devops-pipeline.md
+        - name: GitHub Actions を使用したプッシュ
+          href: concept-github-action.md
+        - name: エクスポートした構成を使用したプロジェクトのビルド
+          href: integrate-ci-cd-pipeline.md
     - name: Helm を使用して Kubernetes デプロイと統合する
       href: integrate-kubernetes-deployment-helm.md
 - name: サンプル
@@ -81,8 +87,6 @@
       href: concept-point-time-snapshot.md
     - name: 機能の管理
       href: concept-feature-management.md
-    - name: GitHub Actions を使用した同期
-      href: concept-github-action.md
     - name: イベント処理
       href: concept-app-configuration-event.md
     - name: セキュリティ

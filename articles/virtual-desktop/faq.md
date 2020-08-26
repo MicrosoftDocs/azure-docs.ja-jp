@@ -1,19 +1,17 @@
 ---
 title: Windows Virtual Desktop に関する FAQ - Azure
 description: Windows Virtual Desktop のよく寄せられる質問とベスト プラクティス。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 07/22/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6867d24d84f6dfb51b2ca7b86ec882102b96552b
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87504417"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121121"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop の FAQ
 
@@ -25,7 +23,7 @@ ms.locfileid: "87504417"
 
 アプリ グループをユーザーまたはユーザー グループに公開するには、アプリ グループのユーザー アクセス管理者ロールが割り当てられている必要があります。
 
-ユーザーへのメッセージの送信、ユーザーのサインアウトなど、管理者がユーザー セッションの管理のみを行えるよう制限するには、カスタム ロールを作成します。 次に例を示します。 
+ユーザーへのメッセージの送信、ユーザーのサインアウトなど、管理者がユーザー セッションの管理のみを行えるよう制限するには、カスタム ロールを作成します。 次に例を示します。
 
 ```powershell
 "actions": [
@@ -49,8 +47,6 @@ ms.locfileid: "87504417"
 ユーザーがアプリ グループに割り当てられると、サービスにより単純な Azure ロールの割り当てが行われます。 そのため、ユーザーの Azure Active Directory (AD) とアプリ グループの Azure AD は同じ場所にある必要があります。 ホスト プール、アプリ グループ、ワークスペースなどのすべてのサービス オブジェクトも、ユーザーと同じ Azure AD に含まれている必要があります。
 
 同じ仮想ネットワーク (VNET) 内のユーザーの Azure AD と Active Directory が同期されている限り、異なる Azure AD に仮想マシン (VM) を作成できます。
-
-Azure Lighthouse では、Windows Virtual Desktop 環境の管理は完全にはサポートされていません。 Lighthouse では現在、Azure AD テナント間でのユーザー管理がサポートされていないため、Lighthouse のお客様はユーザーを管理するために使用する Azure AD にサインインする必要があります。
 
 ## <a name="what-are-location-restrictions"></a>場所の制限とは何ですか。
 
@@ -116,7 +112,7 @@ Windows Virtual Desktop は、現在 Teams 向けに最適化されています�
 
 FSLogix の制限事項またはクォータは、ユーザー プロファイルの VHD(X) ファイルの格納に使用される記憶域ファブリックによって異なります。
 
-次の表に、FSLogix プロファイルで各ユーザーをサポートするために必要なリソースの数を示します。 要件は、各プロファイルのユーザー、アプリケーション、およびアクティビティによって大きく異なる場合があります。 
+次の表に、FSLogix プロファイルで各ユーザーをサポートするために必要なリソースの数を示します。 要件は、各プロファイルのユーザー、アプリケーション、およびアクティビティによって大きく異なる場合があります。
 
 | リソース | 要件 |
 |---|---|
@@ -134,3 +130,11 @@ FSLogix の制限事項またはクォータは、ユーザー プロファイ�
 - リージョンごと、およびサブスクリプションごとに作成できるコアの数には制限があります。 たとえば、Enterprise Agreement サブスクリプションがある場合は、350 コアを作成できます。 テンプレートを実行するたびに作成できる VM の数を決定するには、350 を VM あたりの既定のコア数または独自のコア制限のどちらかで割る必要があります。 詳細については、「[Virtual Machines の制限 - Azure リソース マネージャー](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager)」を参照してください。
 
 - VM のプレフィックス名と VM の数は 15 文字未満です。 詳細については、「[Azure リソースの名前付け規則と制限事項](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute)」を参照してください。
+
+## <a name="can-i-manage-windows-virtual-desktop-environments-with-azure-lighthouse"></a>Azure Lighthouse を使用して Windows Virtual Desktop 環境を管理できますか?
+
+Azure Lighthouse では、Windows Virtual Desktop 環境の管理は完全にはサポートされていません。 Lighthouse では現在、Azure AD テナント間でのユーザー管理がサポートされていないため、Lighthouse のお客様はユーザーを管理するために使用する Azure AD にサインインする必要があります。
+
+また、Windows Virtual Desktop サービスで CSP サンドボックス サブスクリプションを使用することもできません。 詳細については、「[統合サンドボックス アカウント](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account)」を参照してください。
+
+最後に、CSP の所有者アカウントからリソース プロバイダーを有効にした場合、CSP の顧客アカウントでリソース プロバイダーを変更することはできません。

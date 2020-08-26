@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Way We Do の統合 | Microsoft Docs
 description: Azure Active Directory と Way We Do の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 84fc4f36-ecd1-42c6-8a70-cb0f3dc15655
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa23f61e5a213c492a7fb51bfc5b108e5c77946
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 310a42d25ce7fb7970777e8f36abbbee562ab01d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67310400"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88523878"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>チュートリアル:Way We Do と Azure Active Directory の統合
 

@@ -8,13 +8,13 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 07/27/2020
-ms.openlocfilehash: 10d1fe9e47b7a3bf2d921f86703d5ae6d067813c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.date: 08/17/2020
+ms.openlocfilehash: 61cb5384fd4d935ef4038c18b391b5da5fbc96b1
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293515"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88516692"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>チュートリアル:Azure AD アプリケーションを使用して Azure AD ユーザーを作成する
 
@@ -94,6 +94,8 @@ Azure AD によって割り当てられた ID が Azure SQL で適切に機能�
 
 > [!NOTE] 
 > このスクリプトは、Azure AD の `Global Administrator` または `Privileged Roles Administrator` が実行する必要があります。
+>
+> **パブリック プレビュー**では、Azure AD 内のグループに `Directory Readers` ロールを割り当てることができます。 グループの所有者は、このグループのメンバーとしてマネージド ID を追加できます。これにより、`Global Administrator` または `Privileged Roles Administrator` が `Directory Readers` ロールを付与する必要がなくなります。 この機能の詳細については、「[Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)」を参照してください。
 
 - `<TenantId>` は、先ほど確認した `TenantId` に置き換えます。
 - `<server name>` は、実際の SQL 論理サーバーの名前に置き換えます。 実際のサーバー名が `myserver.database.windows.net` の場合、`<server name>` を `myserver` に置き換えます。
@@ -304,3 +306,4 @@ Azure AD にサービス プリンシパルを作成したら、SQL Database に
 - [SQL DB に対する Azure AD サービス プリンシパルの認証 - コード サンプル](https://techcommunity.microsoft.com/t5/azure-sql-database/azure-ad-service-principal-authentication-to-sql-db-code-sample/ba-p/481467)
 - [Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../../active-directory/develop/app-objects-and-service-principals.md)
 - [Azure PowerShell で Azure サービス プリンシパルを作成する](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)
+- [Azure SQL の Azure Active Directory のディレクトリ閲覧者ロール](authentication-aad-directory-readers-role.md)

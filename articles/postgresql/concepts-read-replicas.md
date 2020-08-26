@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/10/2020
-ms.openlocfilehash: f2f752d6435b311c1737d531f5572aed5af223f2
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.date: 08/10/2020
+ms.openlocfilehash: 608740ea52cf82485bae073d9679107ac52baa28
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86276653"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88611128"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (単一サーバー) の読み取りレプリカ
 
@@ -163,16 +163,19 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 ### <a name="replica-configuration"></a>レプリカ構成
 レプリカは、マスターと同じコンピューティングとストレージの設定を使用して作成されます。 レプリカの作成後、ストレージやバックアップの保持期間など、いくつかの設定を変更できます。
 
-次の条件の下では、レプリカ上で仮想コアと価格レベルも変更できます。
-* PostgreSQL では、読み取りレプリカの `max_connections` パラメーターの値をマスターの値以上にする必要があります。そうしないと、レプリカが起動しません。 Azure Database for PostgreSQL で、`max_connections` パラメーター値は、SKU (仮想コアと価格レベル) に基づきます。 詳しくは、「[Azure Database for PostgreSQL の制限事項](concepts-limits.md)」をご覧ください。 
-* Basic 価格レベルとの間のスケーリングはサポートされていません。
-
-> [!IMPORTANT]
-> マスターの設定が新しい値に更新される前に、レプリカ構成をそれと同等以上の値に更新します。 このアクションにより、レプリカがマスターのどのような変更にも追従できるようになります。
-
-前述のサーバーの値を更新しようとしていて制限に従っていない場合、エラーが表示されます。
-
 ファイアウォール規則、仮想ネットワーク規則、パラメーター設定は、レプリカの作成後、マスター サーバーからレプリカに継承されることはありません。
+
+### <a name="scaling"></a>Scaling
+仮想コアのスケーリングまたは汎用とメモリ最適化の間のスケーリング。
+* PostgreSQL では、セカンダリ サーバー上の `max_connections` の設定が、[プライマリ サーバー上の設定以上](https://www.postgresql.org/docs/current/hot-standby.html)であることが要求されます。それ以外の場合、セカンダリ サーバーは起動しません。
+* Azure Database for PostgreSQL では、接続にメモリが使用されるため、各サーバーで許可される最大接続数はコンピューティング sku に固定されます。 [max_connections とコンピューティング sku のマッピング](concepts-limits.md)の詳細について確認してください。
+* **スケールアップ**: まず、レプリカのコンピューティングをスケールアップしてから、プライマリをスケールアップします。 この順序により、エラーが発生して `max_connections` 要件に違反するのを防ぎます。
+* **スケールダウン**: まず、プライマリのコンピューティングをスケールダウンしてから、レプリカをスケールダウンします。 プライマリよりも低いレプリカをスケーリングしようとすると、エラーが発生します。これは `max_connections` 要件に違反するためです。
+
+ストレージのスケーリング:
+* すべてのレプリカで、ストレージ全体のレプリカからのレプリケーションの問題を防ぐために、ストレージの自動拡張が有効になっています。 この設定を無効にすることはできません。
+* 他のサーバーの場合と同様に、ストレージを手動でスケールアップすることもできます。
+
 
 ### <a name="basic-tier"></a>Basic レベル
 Basic レベルのサーバーは、同じリージョンのレプリケーションのみをサポートしています。

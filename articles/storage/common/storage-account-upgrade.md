@@ -1,19 +1,20 @@
 ---
 title: 汎用 v2 ストレージ アカウントにアップグレードする
 titleSuffix: Azure Storage
-description: 汎用 v2 ストレージ アカウントにアップグレードします。
+description: Azure portal、PowerShell、または Azure CLI を使用して、汎用 v2 ストレージ アカウントにアップグレードします。 BLOB データのアクセス層を指定します。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: 725c319e4abb6cc65e1e6a900218393ace2d4d16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 029753ecb0afd0cdd02a2f4594a0708cbda06efc
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84629559"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828219"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントにアップグレードする
 

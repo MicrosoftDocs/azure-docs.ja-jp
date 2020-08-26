@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 07/29/2020
+ms.date: 08/16/2020
 ms.custom: generated
-ms.openlocfilehash: edf0d0085a8f1f9446e9c699c15b1eebb0a2d004
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 44b4134404d5af3a8dde7028ffa1b43258df7558
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87448897"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88271993"
 ---
 # <a name="azure-built-in-roles"></a>Azure 組み込みロール
 
@@ -30,9 +30,9 @@ ms.locfileid: "87448897"
 > | 組み込みのロール | 説明 | id |
 > | --- | --- | --- |
 > | **全般** |  |  |
-> | [Contributor](#contributor) | リソースへのアクセス権の付与以外のすべてを管理できます。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
-> | [所有者](#owner) | リソースへのアクセスを含め、すべてを管理できます。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
-> | [Reader](#reader) | すべてを表示できますが、変更することはできません。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
+> | [Contributor](#contributor) | すべてのリソースを管理するためのフル アクセスを付与しますが、Azure RBAC でのロールの割り当ては許可されません。 | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [所有者](#owner) | Azure RBAC でロールを割り当てる権限を含め、すべてのリソースを管理するためのフル アクセスを付与します。 | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
+> | [Reader](#reader) | すべてのリソースを表示しますが、変更を加えることはできません。 | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [User Access Administrator](#user-access-administrator) | Azure リソースに対するユーザー アクセスを管理します。 | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Compute** |  |  |
 > | [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
@@ -207,7 +207,7 @@ ms.locfileid: "87448897"
 
 ### <a name="contributor"></a>Contributor
 
-リソースへのアクセス権の付与以外のすべてを管理できます。 [詳細情報](rbac-and-directory-admin-roles.md)
+すべてのリソースを管理するためのフル アクセスを付与しますが、Azure RBAC でのロールの割り当ては許可されません。 [詳細情報](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -229,7 +229,7 @@ ms.locfileid: "87448897"
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything except access to resources.",
+  "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
   "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
   "permissions": [
@@ -256,7 +256,7 @@ ms.locfileid: "87448897"
 
 ### <a name="owner"></a>所有者
 
-リソースへのアクセスを含め、すべてを管理できます。 [詳細情報](rbac-and-directory-admin-roles.md)
+Azure RBAC でロールを割り当てる権限を含め、すべてのリソースを管理するためのフル アクセスを付与します。 [詳細情報](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -274,7 +274,7 @@ ms.locfileid: "87448897"
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you manage everything, including access to resources.",
+  "description": "Grants full access to manage all resources, including the ability to assign roles in Azure RBAC.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "name": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
   "permissions": [
@@ -295,7 +295,7 @@ ms.locfileid: "87448897"
 
 ### <a name="reader"></a>Reader
 
-すべてを表示できますが、変更することはできません。 [詳細情報](rbac-and-directory-admin-roles.md)
+すべてのリソースを表示しますが、変更を加えることはできません。 [詳細情報](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | アクション | 説明 |
@@ -313,7 +313,7 @@ ms.locfileid: "87448897"
   "assignableScopes": [
     "/"
   ],
-  "description": "Lets you view everything, but not make any changes.",
+  "description": "View all resources, but does not allow you to make any changes.",
   "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
   "permissions": [
@@ -3026,6 +3026,7 @@ ACR 検査データ作成者
 > | --- | --- |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/action | 管理対象クラスターの clusterAdmin 資格情報を一覧表示します。 |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/action | 資格情報の一覧の取得を使用し、ロール名を指定してマネージド クラスターのアクセス プロファイルを取得します。 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | マネージド クラスターを取得します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -3045,7 +3046,8 @@ ACR 検査データ作成者
     {
       "actions": [
         "Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action",
-        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action"
+        "Microsoft.ContainerService/managedClusters/accessProfiles/listCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -3066,6 +3068,7 @@ ACR 検査データ作成者
 > | アクション | 説明 |
 > | --- | --- |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | 管理対象クラスターの clusterUser 資格情報を一覧表示します。 |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | マネージド クラスターを取得します。 |
 > | **NotActions** |  |
 > | "*なし*" |  |
 > | **DataActions** |  |
@@ -3084,7 +3087,8 @@ ACR 検査データ作成者
   "permissions": [
     {
       "actions": [
-        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action"
+        "Microsoft.ContainerService/managedClusters/listClusterUserCredential/action",
+        "Microsoft.ContainerService/managedClusters/read"
       ],
       "notActions": [],
       "dataActions": [],
@@ -6811,6 +6815,8 @@ Application Insights スナップショット デバッガーで収集された�
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/activityLogAlerts/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/AlertRules/* | クラシック メトリック アラートの作成と管理 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/* | Insights コンポーネントの作成と管理 |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRules/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/dataCollectionRuleAssociations/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/eventtypes/* | サブスクリプションのアクティビティ ログのイベント (管理イベント) を一覧表示します。 このアクセス許可は、アクティビティ ログへのプログラムによるアクセスとポータル アクセスの両方に適用されます。 |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/LogDefinitions/* | このアクセス許可は、ポータルを使用してアクティビティ ログにアクセスする必要があるユーザーに必要です。 アクティビティ ログのログのカテゴリを一覧表示します。 |
@@ -6860,6 +6866,8 @@ Application Insights スナップショット デバッガーで収集された�
         "Microsoft.Insights/activityLogAlerts/*",
         "Microsoft.Insights/AlertRules/*",
         "Microsoft.Insights/components/*",
+        "Microsoft.Insights/dataCollectionRules/*",
+        "Microsoft.Insights/dataCollectionRuleAssociations/*",
         "Microsoft.Insights/DiagnosticSettings/*",
         "Microsoft.Insights/eventtypes/*",
         "Microsoft.Insights/LogDefinitions/*",

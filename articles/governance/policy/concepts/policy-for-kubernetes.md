@@ -1,14 +1,14 @@
 ---
 title: プレビュー - Kubernetes 用の Azure Policy について学習する
 description: Azure Policy で Rego および Open Policy Agent を使用して、Azure 内またはオンプレミスで Kubernetes を実行しているクラスターを管理する方法について説明します。 これはプレビュー機能です。
-ms.date: 06/12/2020
+ms.date: 08/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 461dd467ecda2764c6753ed6eeee0405f8420bbc
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e9da5caf13994e1c198345958feec43867c0b5f5
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373761"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509877"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Kubernetes 用の Azure Policy について理解する (プレビュー)
 
@@ -73,19 +73,19 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Kubernetes Service provider
      az provider register --namespace Microsoft.ContainerService
-   
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace Microsoft.PolicyInsights
-   
+
      # Feature register: enables installing the add-on
      az feature register --namespace Microsoft.ContainerService --name AKS-AzurePolicyAutoApprove
-     
+
      # Use the following to confirm the feature has registered
      az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-AzurePolicyAutoApprove')].   {Name:name,State:properties.state}"
-     
+
      # Once the above shows 'Registered' run the following to propagate the update
      az provider register -n Microsoft.ContainerService
      ```
@@ -130,10 +130,16 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
   1. メイン ページで、 **[アドオンを有効にする]** ボタンを選択します。
 
-     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="AKS 用の Azure Policy アドオンを有効にする" border="false":::
+     :::image type="content" source="../media/policy-for-kubernetes/enable-policy-add-on.png" alt-text="AKS 用の Azure Policy アドオンを有効にする":::
 
+     <a name="migrate-from-v1"></a>
      > [!NOTE]
-     > **[アドオンを有効にする]** ボタンが淡色表示されている場合、サブスクリプションはまだプレビューに追加されていません。 **[アドオンを無効にする]** ボタンが有効になっていて、v2 への移行に関する警告メッセージが表示された場合は、Gatekeeper v2 がまだインストールされているため、削除する必要があります。
+     > **[アドオンを有効にする]** ボタンが淡色表示されている場合、サブスクリプションはまだプレビューに追加されていません。 **[アドオンを無効にする]** ボタンが有効になっていて、移行警告 v2 メッセージが表示された場合は、v1 アドオンがインストールされており、v2 ポリシー定義を割り当てる前に削除する必要があります。 _非推奨_の v1 アドオンは、2020 年 8 月 24 日以降、v2 アドオンに自動的に置き換えられます。 その後、新しい v2 バージョンのポリシー定義を割り当てる必要があります。 アップグレードするには、次の手順を実行します。
+     >
+     > 1. AKS クラスターの **[ポリシー (プレビュー)]** ページにアクセスして、"現在のクラスターでは Azure Policy アドオン v1 が使用されています..." というメッセージが表示されることを確認することによって、AKS クラスターに v1 アドオンがインストールされていることを検証します。
+     > 1. [アドオンを削除します](#remove-the-add-on-from-aks)。
+     > 1. **[アドオンを有効にする]** ボタンを選択して、アドオンの v2 バージョンをインストールします。
+     > 1. [v1 組み込みポリシー定義の v2 バージョンを割り当てます](#assign-a-built-in-policy-definition)
 
 - Azure CLI
 
@@ -179,16 +185,16 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -199,7 +205,7 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
 1. Kubernetes クラスターが Azure Arc に対して有効になります。詳細については、[Azure Arc への Kubernetes クラスターのオンボード](../../../azure-arc/kubernetes/connect-cluster.md)に関する記事を参照してください。
 
-1. Azure Arc 対応 Kubernetes クラスターの完全修飾 Azure リソース ID を用意します。 
+1. Azure Arc 対応 Kubernetes クラスターの完全修飾 Azure リソース ID を用意します。
 
 1. アドオンのポートを開きます。 Azure Policy アドオンでは、これらのドメインとポートを使用して、ポリシー定義と割り当てがフェッチされ、クラスターのコンプライアンスが Azure Policy に報告されます。
 
@@ -220,7 +226,7 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
    - Azure PowerShell
 
-     ```azure powershell-interactive
+     ```azurepowershell-interactive
      $sp = New-AzADServicePrincipal -Role "Policy Insights Data Writer (Preview)" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<rg>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
 
      @{ appId=$sp.ApplicationId;password=[System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret));tenant=(Get-AzContext).Tenant.Id } | ConvertTo-Json
@@ -283,16 +289,16 @@ Azure Policy アドオンをインストールするか、このサービスの�
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
-     
+
      # Provider register: Register the Azure Policy provider
      az provider register --namespace 'Microsoft.PolicyInsights'
      ```
 
    - Azure PowerShell
-   
+
      ```azurepowershell-interactive
      # Log in first with Connect-AzAccount if you're not using Cloud Shell
-   
+
      # Provider register: Register the Azure Policy provider
      Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
      ```
@@ -304,7 +310,7 @@ Azure Policy アドオンをインストールするか、このサービスの�
      ```bash
      # Get the kube-apiserver pod name
      kubectl get pods -n kube-system
-   
+
      # Find the aadClientID value
      kubectl exec <kube-apiserver pod name> -n kube-system cat /etc/kubernetes/azure.json
      ```
@@ -387,21 +393,20 @@ Azure Policy からはアドオンに対して、ポリシー定義の _details.
 
 1. **[スコープ]** を、ポリシーの割り当てを適用する Kubernetes クラスターの管理グループ、サブスクリプション、またはリソース グループに設定します。
 
-   > [!NOTE]    
+   > [!NOTE]
    > Kubernetes 用の Azure Policy 定義を割り当てるとき、 **[スコープ]** にクラスター リソースを含める必要があります。 AKS エンジン クラスターの場合、 **[スコープ]** はクラスターのリソース グループである必要があります。
 
-1. ポリシーの割り当てに、簡単に識別するために使用できる **[名前]** と **[説明]** を設定します。    
+1. ポリシーの割り当てに、簡単に識別するために使用できる **[名前]** と **[説明]** を設定します。
 
-1. [[ポリシーの適用]](./assignment-structure.md#enforcement-mode) を以下のいずれかの値に    
-   設定します。   
+1. [[ポリシーの適用]](./assignment-structure.md#enforcement-mode) を以下のいずれかの値に設定します。
 
-   - **[有効]** - クラスターでポリシーを適用します。 違反がある Kubernetes の受付要求は拒否されます。    
+   - **[有効]** - クラスターでポリシーを適用します。 違反がある Kubernetes の受付要求は拒否されます。
 
    - **[無効]** - クラスターでポリシーを適用しません。 違反がある Kubernetes の受付要求は拒否されません。 コンプライアンス評価の結果は引き続き利用できます。 新しいポリシー定義を実行中のクラスターにロールアウトする場合、 _[無効]_ オプションを使用すると、違反のある受付要求が拒否されないため、ポリシー定義のテストに役立ちます。
 
-1. **[次へ]** を選択します。 
+1. **[次へ]** を選択します。
 
-1. **パラメーターの値**を設定する 
+1. **パラメーターの値**を設定する
 
    - ポリシーの評価から Kubernetes 名前空間を除外するには、パラメーター **[名前空間の除外]** で名前空間の一覧を指定します。 _kube-system_、_gatekeeper-system_、、_azure-arc_ は除外することをお勧めします。
 

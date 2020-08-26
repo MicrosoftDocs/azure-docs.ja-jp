@@ -4,12 +4,12 @@ description: このチュートリアルでは、Azure の Service Fabric クラ
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: 05fd29f874d59601942216f907010b94bb7c4058
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d9699103f5e13301cce408d2e54f0e15780e0a35
+ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86257106"
+ms.lasthandoff: 08/21/2020
+ms.locfileid: "88716896"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル:Azure で Service Fabric クラスターのスケーリングを行う
 
@@ -833,7 +833,7 @@ Foreach($node in $nodes)
 ```
 
 ## <a name="increase-node-resources"></a>ノード リソースを増加する 
-Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) したり、元のノード タイプを (VM SKU または OS イメージを更新した) 新しいノード タイプに置き換えることによってそのノード タイプの VM のオペレーティング システムをアップグレードしたりすることができます。 詳細については、[Azure Service Fabric ノード タイプのスケールアップ](service-fabric-scale-up-node-type.md)に関するページを参照してください。
+Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) したり、元のノード タイプを (VM SKU または OS イメージを更新した) 新しいノード タイプに置き換えることによってそのノード タイプの VM のオペレーティング システムをアップグレードしたりすることができます。 詳細については、[Azure Service Fabric ノード タイプのスケールアップ](service-fabric-scale-up-primary-node-type.md)に関するページを参照してください。
 
 > [!IMPORTANT]
 > VM SKU や OS イメージをインプレースで変更することは避けてください。これは危険な操作でありサポートされません。

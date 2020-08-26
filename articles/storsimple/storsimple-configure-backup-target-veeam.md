@@ -1,6 +1,6 @@
 ---
 title: Veeam を使用したバックアップ ターゲットとしての StorSimple 8000 シリーズ | Microsoft Docs
-description: Veeam を使用して StorSimple バックアップ ターゲットを構成する方法を説明します。
+description: Veeam を利用した StorSimple バックアップ ターゲット構成と両方のソリューションを統合するためのベスト プラクティスについて説明します。
 services: storsimple
 documentationcenter: ''
 author: harshakirank
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: matd
-ms.openlocfilehash: 05ee60986703096c004c4d15764028b73d04c0bf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 71a5434d985aad4033e4392dd31e6b7d112692de
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87077895"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183982"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>Veeam を使用したバックアップ ターゲットとしての StoreSimple
 

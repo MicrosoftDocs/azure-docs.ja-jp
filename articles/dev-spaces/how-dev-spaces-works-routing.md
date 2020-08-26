@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: Azure Dev Spaces を動作させるプロセスと、ルーティングがどのように機能するかについて説明します
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-ms.openlocfilehash: 19a55f37725464da73e93877d9c5238f3ebaced1
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: abdd8a573b7e120c5494b8878c2eb19813fc9507
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88077667"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88213401"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Azure Dev Spaces でルーティングがどのように機能するか
 
@@ -66,11 +66,9 @@ HTTP ではないその他の TCP トラフィックはすべて、未変更の�
 
 Azure Dev Spaces で迅速な反復処理と開発を提供するためにルーティングがどのように使用されているかについての例を確認するには、「[Local Process with Kubernetes のしくみ][how-it-works-local-process-kubernetes]」、「[Azure Dev Spaces でのコードのリモート デバッグのしくみ][how-it-works-remote-debugging]」、[GitHub Actions と Azure Kubernetes Service][pr-flow] に関する記事を参照してください。
 
-チーム開発のために Azure Dev Spaces でルーティングの使用を開始するには、[Azure Dev Spacesでのチーム開発][quickstart-team]に関するクイックスタートを参照してください。
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
 [how-it-works-local-process-kubernetes]: /visualstudio/containers/overview-local-process-kubernetes
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
-[quickstart-team]: quickstart-team-development.md
 [troubleshooting]: troubleshooting.md

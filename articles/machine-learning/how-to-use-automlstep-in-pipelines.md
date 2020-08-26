@@ -11,12 +11,12 @@ manager: cgronlun
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 3973e94c9d3add25dba0af7a6b0c0deb18b77440
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: c2fc0b0bc1b59bcb3fa4a84235135d9b8ff1fc27
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87850442"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510251"
 ---
 # <a name="use-automated-ml-in-an-azure-machine-learning-pipeline-in-python"></a>Python の Azure Machine Learning パイプラインで自動 ML を使用する
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -328,8 +328,9 @@ automl_config = AutoMLConfig(task = 'classification',
 
 train_step = AutoMLStep(name='AutoML_Classification',
     automl_config=automl_config,
-    passthru_automl_config=False,
     outputs=[metrics_data,model_data],
+    enable_default_model_output=False,
+    enable_default_metrics_output=False,
     allow_reuse=True)
 ```
 このスニペットは、`AutoMLConfig` で一般的に使用される表現形式を示しています。 より流動的な (ハイパーパラメーターのような) 引数は個別の辞書で指定されますが、変更される可能性の低い値は `AutoMLConfig` コンストラクターで直接指定されます。 この場合、`automl_settings` では短い実行を指定します。実行は、2 回のみの反復後または 15 分後のどちらか早い方の時点で停止します。
@@ -346,7 +347,7 @@ train_step = AutoMLStep(name='AutoML_Classification',
 `AutoMLStep` 自体では `AutoMLConfig` を受け取り、メトリックおよびモデル データを保持するために出力として `PipelineData` オブジェクトが作成されます。 
 
 >[!Important]
-> `AutoMLStep` で入力に `PipelineOutputTabularDataset` オブジェクトが使用される場合は、`passthru_automl_config` を `False` に設定する必要があります。
+> `AutoMLStepRun` を使用している場合にのみ、`enable_default_model_output` と `enable_default_metrics_output` を `True` に設定する必要があります。
 
 この例では、自動 ML プロセスで、`training_data` に対してクロス検証が実行されます。 `n_cross_validations` 引数を使用して、クロス検証の数を制御できます。 データ準備ステップの一部としてトレーニング データを既に分割している場合は、`validation_data` をその独自の `Dataset` に設定できます。
 

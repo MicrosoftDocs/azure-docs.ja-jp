@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 091555bac780f3abc7089d6214d0f9a8cfbf98cd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 08e236d798f700a3c48dd41ba61941bc0037d613
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518438"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055379"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>条件付きアクセスポリシーでの場所の条件の使用 
 
@@ -190,7 +190,7 @@ Azure AD にプロキシされる IPv6 トラフィックの大部分は、Micro
 
 クラウドでホストされているプロキシまたは VPN ソリューションを使用する場合、ポリシーの評価中に Azure AD が使用する IP アドレスは、プロキシの IP アドレスです。 ユーザーのパブリック IP アドレスを含む X-Forwarded-For (XFF) ヘッダーは、信頼できるソースから送信されたという検証が行われないために IP アドレスの偽装方法となることが多く、使用されません。
 
-クラウド プロキシが配置されている場合は、ドメインに参加するデバイスを要求するために使用されるポリシーを使用できます。または AD FS の企業ネットワーク要求を使用できます。
+クラウド プロキシが配置されている場合は、Hybrid Azure AD Join を使用したデバイスを要求するために使用されるポリシーを使用できます。または AD FS の企業ネットワーク要求を使用できます。
 
 ### <a name="api-support-and-powershell"></a>API のサポートと PowerShell
 

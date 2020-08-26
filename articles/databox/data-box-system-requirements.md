@@ -1,6 +1,6 @@
 ---
 title: Microsoft Azure Data Box のシステム要件 | Microsoft Docs
-description: Azure Data Box のソフトウェア要件とネットワーキング要件について説明します。
+description: Azure Data Box と Data Box に接続するクライアントの重要なシステム要件について学習します。
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: alkohli
-ms.openlocfilehash: 496069ebf64340bc55f03df8dc15304b4888bec0
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.openlocfilehash: 71f499e1cdd7ccf22d90b21ce04299798978a828
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86200295"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926605"
 ---
 # <a name="azure-data-box-system-requirements"></a>Data Box のシステム要件
 

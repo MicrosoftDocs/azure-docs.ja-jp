@@ -1,18 +1,18 @@
 ---
 title: Dynamics 365 Business Central オファーを作成する - Microsoft コマーシャル マーケットプレース
-description: パートナー センターのコマーシャル マーケットプレース ポータルで、新しい Dynamics 365 Business Central オファーを作成するための手順と考慮事項について説明します。 Azure Marketplace で、またはクラウド ソリューション プロバイダー (CSP) プログラムを使用して、オファーを一覧表示したり、販売したりすることができます。
+description: パートナー センターの Microsoft コマーシャル マーケットプレースで、新しい Dynamics 365 Business Central オファーを作成するための手順と考慮事項について説明します。 Azure Marketplace で、またはクラウド ソリューション プロバイダー (CSP) プログラムを使用して、オファーを一覧表示したり、販売したりすることができます。
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 06/17/2020
-ms.openlocfilehash: 456764ae2b08b9852e56b2ab3f7cd9238b540b58
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.date: 08/07/2020
+ms.openlocfilehash: 0d00f779031ec294523c861a4e9868f7cbbe790d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86121947"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606146"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Dynamics 365 Business Central オファーの作成
 
@@ -29,7 +29,7 @@ ms.locfileid: "86121947"
     ![左側のナビゲーション メニューの画像。](./media/new-offer-dynamics-365-business-central.png)
 
 > [!NOTE]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ## <a name="new-offer"></a>新しいプラン
 
@@ -182,10 +182,16 @@ Microsoft AppSource でのオファー情報の表示例を次に示します (�
 
 ### <a name="marketplace-images"></a>マーケットプレースの画像
 
-オファーのロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 オファーのロゴを 2 つのサイズでアップロードします。
+オファーのロゴと画像を提供します。 画像はすべて PNG 形式である必要があります。 
+
+[!INCLUDE [logotips](../includes/graphics-suggestions.md)]
+
+オファーのロゴを 2 つのサイズでアップロードします。
 
 * **小** (48 x 48 ピクセル)
 * **大** (216 x 216 ピクセル)
+
+[!INCLUDE [logos-appsource-only](../includes/logos-appsource-only.md)]
 
 >[!NOTE]
 >ファイルのアップロードで問題が発生した場合は、パートナー センターで使用されている `https://upload.xboxlive.com` サービスがローカル ネットワークでブロックされていないことを確認してください。

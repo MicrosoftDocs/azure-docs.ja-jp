@@ -4,12 +4,12 @@ description: Azure Kubernetes Service (AKS) クラスターでのアプリケー
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: af09d594dd745b64901965499df4245fa2e6a85f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87130836"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257512"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのアプリケーションの需要を満たすようにクラスターを自動的にスケーリング
 
@@ -20,12 +20,6 @@ Azure Kubernetes Service (AKS) のアプリケーションの需要に対応す�
 ## <a name="before-you-begin"></a>開始する前に
 
 この記事では、Azure CLI バージョン 2.0.76 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
-
-## <a name="limitations"></a>制限事項
-
-クラスター オートスケーラーを使用する AKS クラスターを作成および管理する場合には、次の制限が適用されます。
-
-* HTTP アプリケーションのルーティング アドオンは使用できません。
 
 ## <a name="about-the-cluster-autoscaler"></a>クラスター オートスケーラーについて
 
@@ -44,7 +38,7 @@ Azure Kubernetes Service (AKS) のアプリケーションの需要に対応す�
 
 クラスター オートスケーラーでスケールダウンを行えない場合がある状況について詳しくは、「[What types of pods can prevent the cluster autoscaler from removing a node?][autoscaler-scaledown]」 (クラスター オートスケーラーがノードから削除されるのを防止できるのは、どの種類のポッドですか?) を参照してください。
 
-クラスター オートスケーラーは、スケール イベント間の時間間隔やリソースしきい値などに対して開始パラメーターを使用します。 クラスター オートスケーラーが使用するパラメーターについて詳しくは、「[What are the cluster autoscaler parameters?][autoscaler-parameters]」 (クラスター オートスケーラー パラメーターとは何ですか?) を参照してください
+クラスター オートスケーラーは、スケール イベント間の時間間隔やリソースしきい値などに対して開始パラメーターを使用します。 クラスター オートスケーラーが使用するパラメーターの詳細については、「[オートスケーラー プロファイルの使用](#using-the-autoscaler-profile)」を参照してください。
 
 クラスター オートスケーラーとポッドの水平オートスケーラーは連携して機能し、多くの場合、両方のオートスケーラーが一緒に 1 つのクラスターにデプロイされます。 この 2 つを組み合わせて使用する場合、ポッドの水平オートスケーラーの主な役割は、アプリケーションの需要を満たすために必要な数のポッドを実行することになります。 クラスター オートスケーラーの主な役割は、スケジュールされたポッドをサポートするために必要な数のノードを実行することになります。
 

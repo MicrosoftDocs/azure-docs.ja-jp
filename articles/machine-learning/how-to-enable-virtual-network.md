@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 07/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python
-ms.openlocfilehash: 16065b45a6afea25615b985d3c89445dee48bd1d
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 9f92e703dd45e893a3dfdd8a4c1d6aa3e9b8e96e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88167727"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88506500"
 ---
 # <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>プライベート仮想ネットワークでのトレーニング中や推論中のネットワークの分離
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,6 +32,13 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 + [Azure Virtual Network サービス](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview)と [IP ネットワーク](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)の両方に関する全般かつ実用的な知識。
 
 + コンピューティング リソースで使用する既存の仮想ネットワークとサブネット。
+
++ リソースを仮想ネットワークまたはサブネットにデプロイするには、ご利用のユーザー アカウントが、Azure のロールベースのアクセス制御 (RBAC) で次のアクションへのアクセス許可を持っている必要があります。
+
+    - 仮想ネットワーク リソース上の "Microsoft.Network/virtualNetworks/join/action"。
+    - サブネット リソース上の "Microsoft.Network/virtualNetworks/subnet/join/action"。
+
+    ネットワークでの RBAC の詳細については、[ネットワークの組み込みロール](/azure/role-based-access-control/built-in-roles#networking)に関するページを参照してください
 
 ## <a name="private-endpoints"></a>プライベート エンドポイント
 
@@ -85,7 +92,7 @@ __仮想ネットワーク__は、パブリック インターネットから Az
 
 ワークスペースとストレージ アカウントは、相互にアクセスできるように、同一の仮想ネットワークに追加します。
 
-1. ワークスペースを仮想ネットワークに接続するため、[Azure Private Link を有効化](how-to-configure-private-link.md)します。 この機能は現在プレビュー段階であり、米国東部、米国西部 2、米国中南部の各リージョンでご利用いただけます。
+1. ワークスペースを仮想ネットワークに接続するため、[Azure Private Link を有効化](how-to-configure-private-link.md)します。 この機能は現在プレビュー段階であり、米国東部および米国西部 2 のリージョンでご利用いただけます。
 
 1. ストレージ アカウントを仮想ネットワークに接続するため、[ファイアウォールと仮想ネットワークの設定を構成](#use-a-storage-account-for-your-workspace)します。
 

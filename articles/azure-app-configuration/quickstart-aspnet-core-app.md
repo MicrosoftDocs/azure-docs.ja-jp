@@ -1,19 +1,20 @@
 ---
 title: ASP.NET Core による Azure App Configuration のクイック スタート | Microsoft Docs
-description: ASP.NET Core アプリで Azure App Configuration を使用するためのクイックスタートです
+description: Azure App Configuration を使用して ASP.NET Core アプリを作成し、ASP.NET Core アプリケーションのアプリケーション設定のストレージと管理を一元化します。
 services: azure-app-configuration
 author: lisaguthrie
 ms.service: azure-app-configuration
 ms.devlang: csharp
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 069bce6f2f8e46679cbc82dd92c9fd73bfecde85
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 41675eb1911eede750b5a9cdc19cfe49e4699bac
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87373523"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88590304"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>クイック スタート:Azure App Configuration を使用して ASP.NET Core アプリを作成する
 

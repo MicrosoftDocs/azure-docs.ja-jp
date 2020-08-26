@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Real Links の統合 | Microsoft Docs
 description: Azure Active Directory と Real Links の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 68966b06-b2b0-4ac7-accc-21825a59da61
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/26/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8968ec9edd5b1f732bf9d4721bdc4e9bcaf5fa17
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 34f3087fab33bb588e9da434aadd66618c5c67a5
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093119"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548847"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-real-links"></a>チュートリアル:Azure Active Directory と Real Links の統合
 

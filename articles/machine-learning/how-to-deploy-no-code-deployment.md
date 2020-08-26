@@ -9,21 +9,23 @@ ms.author: gopalv
 author: gvashishtha
 ms.date: 07/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: d6c70f27eebc9d502ce7275603e99975c2efc267
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 9d6e234e1f4c8ac5199b92a09eb12bf7aa41b01b
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87544484"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185487"
 ---
 # <a name="preview-no-code-model-deployment"></a>(プレビュー) コードなしのモデル デプロイ
 
 コードなしのモデル デプロイは現在プレビュー段階で、次の機械学習フレームワークをサポートしています。
 
-## <a name="tensorflow-savedmodel-format"></a>Tensorflow SavedModel 形式
+## <a name="tensorflow-savedmodel-format"></a>TensorFlow SavedModel 形式
 コードなしのモデル デプロイを使用するには、TensorFlow モデルが **SavedModel 形式**で登録されている必要があります。
 
 SavedModel の作成方法については、[このリンク](https://www.tensorflow.org/guide/saved_model)を参照してください。
+
+[TensorFlow Serving DockerHub](https://registry.hub.docker.com/r/tensorflow/serving/tags) で "Tags" の下に一覧表示されている TensorFlow バージョンはすべてサポートされています。
 
 ```python
 from azureml.core import Model

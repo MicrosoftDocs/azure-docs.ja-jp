@@ -1,15 +1,15 @@
 ---
 title: Azure Kubernetes Service (AKS) 上の Hyperledger Fabric コンソーシアム
 description: Azure Kubernetes Service に Hyperledger Fabric コンソーシアム ネットワークをデプロイして構成する方法
-ms.date: 07/27/2020
+ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 4bc55090234a4ab33125ba43b8416de1eadb702f
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.openlocfilehash: d6999b32224e6c41cdf9869554c884fc4779c217
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87533429"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88184212"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上の Hyperledger Fabric コンソーシアム
 
@@ -350,10 +350,22 @@ CHANNEL_NAME=<channelName>
 ピア クライアント アプリケーションから次のコマンドを実行して、チャネルでチェーンコードをインスタンス化します。  
 
 ```bash
-./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -v $CC_VERSION -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>
 ```
 
 `<instantiateFunc>` と `<instantiateFuncArgs>` でそれぞれインスタンス化関数の名前とスペース区切りの引数のリストを渡します。 たとえば、chaincode_example02.go チェーンコードでは、チェーンコードをインスタンス化するために、`<instantiateFunc>` を `init`に、`<instantiateFuncArgs>` を "a" "2000" "b" "1000" に設定しています。
+
+`--collections-config` フラグを使用し、コレクション構成 JSON ファイルを渡すこともできます。 あるいは、プライベート トランザクションに使用されるチェーンコードをインストール化するとき、`-t` フラグを使用して一時的な引数を設定します。
+
+次に例を示します。
+
+```bash
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>
+./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath> -t <transientArgs>
+```
+
+\<collectionConfigJSONFilePath\> は、プライベート データ チェーンコードのインスタンス化に定義されているコレクションを含む JSON ファイルのパスです。 azhlfTool ディレクトリから相対的に見ると、サンプル コレクション構成 JSON ファイルのパスは `./samples/chaincode/src/private_marbles/collections_config.json` になります。
+有効な JSON として \<transientArgs\> を文字列形式で渡します。 特殊文字があればエスケープ処理します。 例: `'{\\\"asset\":{\\\"name\\\":\\\"asset1\\\",\\\"price\\\":99}}'`
 
 > [!NOTE]
 > チャネル内の任意の 1 つのピア組織から、コマンドを 1 回実行します。 トランザクションが orderer に正常に送信されると、orderer により、このトランザクションがチャネル内のすべてのピア組織に配布されます。 そのため、チャネル内のすべてのピア組織のすべてのピア ノードで、チェーンコードがインスタンス化されます。  
@@ -377,9 +389,13 @@ CHANNEL_NAME=<channelName>
 チェーンコードのクエリを行うには、次のコマンドを実行します。  
 
 ```bash
-./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
+./azhlf chaincode query -o $ORGNAME -p <endorsingPeers> -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs> 
 ```
- `<queryFunction>`  と  `<queryFuncArgs>`  でそれぞれクエリ関数名とスペース区切りの引数リストを渡します。 ここでも chaincode_example02.go チェーンコードを参照すると、ワールド状態の値 “a” のクエリを実行するために、 `<queryFunction>`  を  `query` に、 `<queryArgs>` を “a” に設定しています。  
+保証ピアは、チェーンコードがインストールされ、トランザクションの実行のために呼び出されるピアです。 現在のピア組織からのピア ノード名を含む \<endorsingPeers\> を設定する必要があります。 指定されたチェーンコードとチャネルの組み合わせに対して保証ピアをスペースで区切って一覧表示します。 たとえば、「 `-p "peer1" "peer3"` 」のように入力します。
+
+azhlfTool を使用してチェーンコードをインストールする場合、保証ピア引数に値としてピア ノード名を渡します。 チェーンコードは、その組織のあらゆるピア ノードにインストールされます。 
+
+ `<queryFunction>`  と  `<queryFuncArgs>`  でそれぞれクエリ関数名とスペース区切りの引数リストを渡します。 ここでも chaincode_example02.go チェーンコードを参照すると、ワールド状態の値 "a" のクエリを実行するために、 `<queryFunction>`  を  `query` に、 `<queryArgs>` を "a" に設定しています。  
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 

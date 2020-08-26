@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: c1ac3c1e312704f8a0afa751d0efc6d0cef897f9
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 76a31b10c15f2dff3d6d9304dcff6d0fb489ea7f
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371772"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88210388"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Azure SQL Database のサーバー用の仮想ネットワーク サービス エンドポイントと規則の使用
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -59,7 +59,7 @@ ms.locfileid: "87371772"
 
 ネットワーク管理およびデータベース管理のロールには、仮想ネットワーク規則の管理に必要とされる機能以外もあります。 それらの機能のうち 1 つのサブネットだけが必要になります。
 
-必要な機能のサブネットのみを保持する単一のカスタム ロールを作成するために、Azure には[ロールベースのアクセス制御 (RBAC)][rbac-what-is-813s] を使用するオプションがあります。 ネットワーク管理またはデータベース管理に関連付ける代わりに、カスタム ロールを使用できます。カスタム ロールにユーザーを追加する場合と、他の 2 つの主要な管理者ロールにユーザーを追加する場合では、前者の方がセキュリティ脅威にさらされる領域が少なくなります。
+必要な機能のサブセットのみを保持する単一のカスタム ロールを作成するために、Azure には [Azure ロールベースのアクセス制御 (Azure RBAC)][rbac-what-is-813s] を使用するオプションがあります。 ネットワーク管理またはデータベース管理に関連付ける代わりに、カスタム ロールを使用できます。カスタム ロールにユーザーを追加する場合と、他の 2 つの主要な管理者ロールにユーザーを追加する場合では、前者の方がセキュリティ脅威にさらされる領域が少なくなります。
 
 > [!NOTE]
 > Azure SQL Database 内のデータベースと VNet サブネットが異なるサブスクリプションに存在する場合があります。 このような場合は、次の構成を確認する必要があります。
@@ -106,15 +106,15 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 Azure Storage は、Azure ストレージ アカウントへの接続を制限できる同じ機能を実装しています。 Azure SQL Database で使用されている Azure ストレージ アカウントでこの機能を使用することにした場合は、問題が発生する可能性があります。 次に、この影響を受ける Azure SQL Database と Azure SQL Data Warehouse の機能の一覧と説明を示します。
 
-### <a name="azure-synapse-polybase"></a>Azure Synapse PolyBase
+### <a name="azure-synapse-polybase-and-copy-statement"></a>Azure Synapse PolyBase と COPY ステートメント
 
-PolyBase は、Azure Storage アカウントから Azure Synapse Analytics にデータを読み込むときによく使用されます。 データの読み込み元の Azure ストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。 VNet に結び付けられた Azure Storage に接続する Azure Synapse Analytics で PolyBase のインポートとエクスポート両方のシナリオを有効にするには、次に示す手順に従います。
+PolyBase と COPY ステートメントは、高スループットのデータ インジェストのために、Azure Storage アカウントから Azure Synapse Analytics にデータを読み込むために一般的に使用されます。 データを読み込んでいる Azure Storage アカウントでアクセスが一連の VNet サブネットだけに制限されている場合は、ストレージ アカウントへの PolyBase と COPY ステートメントを使用した接続は切断されます。 VNet に対してセキュリティ保護された Azure Storage に接続している Azure Synapse Analytics で COPY と PolyBase を使用したインポートおよびエクスポート シナリオを有効にするには、下に示されている手順に従います。
 
 #### <a name="prerequisites"></a>前提条件
 
 - この[ガイド](https://docs.microsoft.com/powershell/azure/install-az-ps)を使用して、Azure PowerShell をインストールします。
 - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、最初に汎用 v2 にアップグレードする必要があります。
-- Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、 **[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 詳しくは、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)をご覧ください。
+- Azure ストレージ アカウントの **[Firewalls and Virtual networks]\(ファイアウォールと仮想ネットワーク\)** 設定メニューで、 **[Allow trusted Microsoft services to access this storage account]\(信頼された Microsoft サービスによるこのストレージ アカウントに対するアクセスを許可します\)** をオンにする必要があります。 この構成を有効にすると、PolyBase と COPY ステートメントは、ネットワーク トラフィックが Azure バックボーン上に残る強力な認証を使用してこのストレージ アカウントに接続できるようになります。 詳しくは、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)をご覧ください。
 
 > [!IMPORTANT]
 > PowerShell Azure Resource Manager モジュールは Azure SQL Database で引き続きサポートされますが、今後の開発はすべて Az.Sql モジュールを対象に行われます。 AzureRM モジュールのバグ修正は、少なくとも 2020 年 12 月までは引き続き受け取ることができます。  Az モジュールと AzureRm モジュールのコマンドの引数は実質的に同じです。 その互換性の詳細については、「[新しい Azure PowerShell Az モジュールの概要](/powershell/azure/new-azureps-module-az)」を参照してください。
@@ -136,7 +136,7 @@ PolyBase は、Azure Storage アカウントから Azure Synapse Analytics に�
    > - 汎用 v1 または BLOB ストレージ アカウントを使用している場合は、この[ガイド](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)を使用して、**最初に v2 にアップグレードする**必要があります。
    > - Azure Data Lake Storage Gen2 に関する既知の問題については、この[ガイド](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues)をご覧ください。
 
-1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 手順 1 で Azure Active Directory (AAD) に登録した Azure Synapse Analytics をホストするサーバーに、**ストレージ BLOB データ共同作成者** RBAC ロールを割り当てます。
+1. お使いのストレージ アカウントで、 **[アクセス制御 (IAM)]** に移動し、 **[ロール割り当ての追加]** を選択します。 手順 1 で Azure Active Directory (AAD) に登録した Azure Synapse Analytics をホストするサーバーに、**ストレージ BLOB データ共同作成者** Azure ロールを割り当てます。
 
    > [!NOTE]
    > ストレージ アカウントの所有者特権を持つメンバーのみが、この手順を実行できます。 さまざまな Azure の組み込みロールについては、こちらの[ガイド](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)をご覧ください。

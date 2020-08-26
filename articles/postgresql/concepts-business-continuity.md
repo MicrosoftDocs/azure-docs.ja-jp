@@ -1,17 +1,17 @@
 ---
 title: ビジネス継続性 - Azure Database for PostgreSQL - Single Server
-description: この記事では、Azure Database for PostgreSQL を使用する場合のビジネス継続性 (ポイント インタイム リストア、データ センターの停止、geo リストア) について説明します。
+description: この記事では、Azure Database for PostgreSQL を使用する場合のビジネス継続性 (ポイント インタイム リストア、データ センターの停止、geo リストア、レプリカ) について説明します。
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: 35b2236ae6ffd3df3e458cdbd4bc01e89a1da2b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.date: 08/07/2020
+ms.openlocfilehash: b14eba63d848b5f583e16b39f3ade6bd7e7ba83f
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245308"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88031202"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL - Single Server でのビジネス継続性の概要
 
@@ -28,14 +28,16 @@ Azure Database for PostgreSQL で提供されるビジネス継続性機能に�
 | バックアップからのポイントインタイム リストア | リテンション期間内の任意の復元ポイント | リテンション期間内の任意の復元ポイント | リテンション期間内の任意の復元ポイント |
 | Geo レプリケーション バックアップからの geo リストア | サポートされていません | ERT < 12 時間<br/>RPO < 1 時間 | ERT < 12 時間<br/>RPO < 1 時間 |
 
-> [!IMPORTANT]
-> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 [Azure リソース ロック](../azure-resource-manager/management/lock-resources.md)を使用すると、サーバーが誤って削除されるのを防ぐことができます。
+[読み取りレプリカ](concepts-read-replicas.md)の使用も検討してください。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>ユーザーまたはアプリケーション エラーの後でサーバーを復旧する
 
 サービスのバックアップを使って、さまざまな破壊的イベントからサーバーを復旧できます。 一部のデータ、重要なテーブル、そしてデータベース全体さえも、うっかり削除してしまう場合があります。 アプリケーションの欠陥などにより、正しいデータが不良データによって誤って上書きされることもあります。
 
 **ポイントインタイム リストア**を実行して、正常であることがわかっている時点のサーバーのコピーを作成できます。 この時点は、サーバーに対して構成されているバックアップ リテンション期間内でなければなりません。 新しいサーバーにデータを復元した後は、元のサーバーを新しく復元したサーバーに置き換えたり、復元したサーバーから元のサーバーに必要なデータをコピーしたりできます。
+
+> [!IMPORTANT]
+> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 [Azure リソース ロック](../azure-resource-manager/management/lock-resources.md)を使用すると、サーバーが誤って削除されるのを防ぐことができます。
 
 ## <a name="recover-from-an-azure-data-center-outage"></a>Azure データ センターの停止から復旧する
 

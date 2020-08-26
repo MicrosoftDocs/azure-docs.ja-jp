@@ -1,7 +1,7 @@
 ---
 title: Microsoft Azure Maps による認証
 titleSuffix: Azure Maps
-description: この記事では、Azure Active Directory および共有キー認証について説明します。
+description: Azure Maps で要求を認証する 2 つの方法、共有キー認証と Azure Active Directory (Azure AD) 認証について説明します。
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 07/27/2020
@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3f9b4595be5af2477fdbef4e5f0a15224e8a93
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4a923fd34391137f2064cb338ea180ae3782f5e2
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87285834"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036846"
 ---
 # <a name="authentication-with-azure-maps"></a>Azure Maps による認証
 
@@ -80,7 +80,7 @@ Authorization: Bearer eyJ0e….HNIVN
 
 ## <a name="authorization-with-role-based-access-control"></a>ロールベースのアクセス制御による認証
 
-Azure Maps では、Azure AD ユーザー、グループ、アプリケーション、Azure リソース、Azure マネージド ID など、Azure [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview)のすべてのプリンシパルの種類へのアクセスがサポートされます。 プリンシパルの種類には、ロールの定義とも呼ばれるアクセス許可のセットが付与されます。 ロールの定義は、REST API アクションに対するアクセス許可を提供します。 1 つ以上の Azure Maps アカウントにアクセスを適用することをスコープと呼びます。 プリンシパル、ロールの定義、スコープを適用すると、ロールの割り当てが作成されます。 
+Azure Maps では、Azure AD ユーザー、グループ、アプリケーション、Azure リソース、Azure マネージド ID など、Azure [ロールベースのアクセス制御](https://docs.microsoft.com/azure/role-based-access-control/overview) (Azure RBAC) のすべてのプリンシパルの種類へのアクセスがサポートされます。 プリンシパルの種類には、ロールの定義とも呼ばれるアクセス許可のセットが付与されます。 ロールの定義は、REST API アクションに対するアクセス許可を提供します。 1 つ以上の Azure Maps アカウントにアクセスを適用することをスコープと呼びます。 プリンシパル、ロールの定義、スコープを適用すると、ロールの割り当てが作成されます。 
 
 以降のセクションでは、Azure Maps と Azure AD ロールベースのアクセス制御との統合の概念と構成要素について説明します。 Azure Maps アカウントを設定するプロセスの一環として、Azure AD ディレクトリが、Azure Maps アカウントがある Azure サブスクリプションに関連付けられます。 
 

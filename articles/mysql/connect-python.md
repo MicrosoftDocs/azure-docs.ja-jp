@@ -1,5 +1,5 @@
 ---
-title: Python を使用して接続する - Azure Database for MySQL
+title: クイック スタート:Python を使用して接続する - Azure Database for MySQL
 description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、Python コード サンプルをいくつか紹介します。
 author: ajlam
 ms.author: andrela
@@ -11,14 +11,14 @@ ms.custom:
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 8d417fdc604fa132e3ada5380b9e0a1f7326af04
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 32603514db76ceba4f1d9f8873c99b2e8a97eddf
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87843234"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88185912"
 ---
-# <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>クイック スタート:Python を使用して Azure Database for MySQL のデータに接続してクエリを実行する
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>クイック スタート:Python を使用して Azure Database for MySQL に接続してデータを照会する
 
 このクイックスタートでは、Python を使用して Azure Database for MySQL に接続します。 Mac、Ubuntu Linux、Windows の各プラットフォームから SQL ステートメントを使用して、データベース内のデータを照会、挿入、更新、削除できます。 
 

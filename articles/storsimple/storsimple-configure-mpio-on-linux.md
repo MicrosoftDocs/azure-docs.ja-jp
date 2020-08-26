@@ -1,18 +1,18 @@
 ---
 title: StorSimple Linux ホスト上の MPIO の構成
-description: CentOS 6.6 を実行している Linux ホストに接続されている StorSimple で MPIO を構成します。
+description: StorSimple Linux (Centos 6.6) ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。
 author: alkohli
 ms.assetid: ca289eed-12b7-4e2e-9117-adf7e2034f2f
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 05a67ab33c12e9f2bdbc0cd0098c39252db37e8e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.openlocfilehash: 3ce84d3c03c2a24406629b8687c4fb8973809166
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86187083"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183635"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>CentOS を実行している StorSimple ホスト上の MPIO の構成
 この記事では、Centos 6.6 ホスト サーバー上でマルチパス IO (MPIO) を構成するために必要な手順を説明します。 ホスト サーバーは、iSCSI イニシエーターを使用して高可用性を実現するために、Microsoft Azure StorSimple デバイスに接続します。 マルチパス デバイスの自動検出と StorSimple ボリューム専用の具体的な設定について詳しく説明します。

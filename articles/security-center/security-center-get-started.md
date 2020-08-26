@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: memildin
-ms.openlocfilehash: f16df87ca72b66003d8870dcd9d778616ea840d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 550c9ff57b9c558f2f175165c7f06ead45991be9
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87038547"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88226016"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイック スタート:Azure サブスクリプションでの Security Center Standard の利用開始
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は無料でお試しいただけます。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
@@ -34,7 +34,8 @@ Azure Security Center は、ハイブリッド クラウド ワークロード�
 ## <a name="enable-your-azure-subscription"></a>Azure サブスクリプションの有効化
 
 1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
-2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
+
+1. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
    ![Security Center の概要][2]
 
@@ -49,21 +50,25 @@ Security Center を初めて起動してから数分以内に、以下の項目�
 
 Security Center をフルに活用するには、次の手順に従って Standard レベルにアップグレードし、Log Analytics エージェントをインストールする必要があります。
 
-## <a name="upgrade-to-the-standard-pricing-tier"></a>Standard 価格レベルにアップグレードする
+
+## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
+
 Security Center のクイックスタートおよびチュートリアルの目的上、Standard レベルにアップグレードする必要があります。 Security Center Standard には無料試用版があります。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。 
 
-1. Security Center メイン メニューの **[使用の開始]** を選択します。
+1. Security Center のサイドバーで、 **[作業の開始]** を選択します。
  
-   ![はじめに][4]
+   ![作業の開始](./media/security-center-get-started/get-started-upgrade-tab.png)
 
-2. Security Center の **[アップグレード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 
-   - 展開可能な **[Apply your trial] \(試用版を適用)** をクリックすると、すべてのサブスクリプションとワークスペースの一覧を各試用版の資格の状態と共に表示できます。
-   -    試用版の対象にならないサブスクリプションとワークスペースをアップグレードできます。
-   -    対象となるワークスペースとサブスクリプションを選択すると、ご自身の試用版を開始できます。
-3. **[無料体験する]** をクリックして、選択したサブスクリプションでご自身の試用版を開始します。
+    **[アップグレード]** タブに、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。
+
+1. **[Select workspaces to enable standard tier on]\(Standard レベルを有効にするワークスペースの選択\)** リストから、アップグレードするワークスペースを選択します。
 
 
-  ![セキュリティのアラート][9]
+    > [!TIP]
+    > 無料試用版の対象となるワークスペースを選択した場合、次の手順で試用版が開始されます。 ワークスペースが試用版の対象ではない場合、そのワークスペースはアップグレードされて、課金が開始されます。
+
+1. **[アップグレード]** を選択すると、選択したワークスペースが Standard レベルにアップグレードされます。
+
 
 ## <a name="automate-data-collection"></a>自動データ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure VM と非 Azure コンピューターからデータを収集します。 データは、Log Analytics エージェントを使用して収集されます。このエージェントは、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 既定では、Security Center によって新しいワークスペースが作成されます。
@@ -73,9 +78,9 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 Log Analytics エージェントの自動プロビジョニングを有効にするには、次の手順に従います。
 
 1. Security Center メイン メニューの **[Pricing & settings]\(価格と設定\)** を選択します。
-2. サブスクリプションの行で、設定を変更したいサブスクリプションをクリックします。
-3. **[データ収集]** タブで、 **[自動プロビジョニング]** を **[オン]** に設定します。
-4. **[保存]** を選択します。
+1. サブスクリプションの行で、設定を変更したいサブスクリプションをクリックします。
+1. **[データ収集]** タブで、 **[自動プロビジョニング]** を **[オン]** に設定します。
+1. **[保存]** を選択します。
 ---
   ![自動プロビジョニングを有効にする][6]
 

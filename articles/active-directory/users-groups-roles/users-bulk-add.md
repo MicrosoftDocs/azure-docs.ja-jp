@@ -5,7 +5,7 @@ services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/27/2020
+ms.date: 08/11/2020
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f603623e2b47a8ac1a8530880e10c919f63b66c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: d4cb24a89d19abb753e2be704dbad7fd5b2ddcad
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87423611"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236558"
 ---
 # <a name="bulk-create-users-in-azure-active-directory"></a>Azure Active Directory でのユーザーの一括作成
 
@@ -34,19 +34,22 @@ Azure Active Directory (Azure AD) では、ユーザーの一括作成および�
 
 ![アップロード用のスプレッドシートと、各行および列の目的と値を説明する吹き出し](./media/users-bulk-add/create-template-example.png)
 
+> [!WARNING]
+> CSV テンプレートにエントリを 1 つだけ追加する場合は、行 3 を保持し、新しいエントリを行 4 に追加する必要があります。 
+
 ### <a name="csv-template-structure"></a>CSV テンプレートの構造
 
 ダウンロードした CSV テンプレート内の行は次のとおりです。
 
-- **バージョン番号**: アップロード CSV の先頭行にバージョン番号を含める必要があります。
-- **列見出し**:列見出しの形式は、&lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Name [displayName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
-- **例の行**:このテンプレートには、各列に使用できる値のサンプル行が含まれています。 サンプル行を削除し、独自のエントリに置き換える必要があります。
+- **バージョン番号**: アップロード CSV には、バージョン番号を含む最初の行を含める必要があります。
+- **列見出し**:列見出しの形式は &lt;*項目名*&gt; [PropertyName] &lt;*Required または空白*&gt; です。 たとえば、「 `Name [displayName] Required` 」のように入力します。 テンプレートの古いバージョンの中には、微妙に異なるものもあります。
+- **例の行**:このテンプレートには、各列に使用できる値の例の行が含まれています。 例の行を削除し、独自のエントリに置き換える必要があります。
 
 ### <a name="additional-guidance"></a>その他のガイダンス
 
 - アップロード テンプレートの最初の 2 行を削除または変更することはできません。アップロードを処理することができなくなります。
-- 必須の列が最初に示されています。
-- テンプレートに新しい列を追加することはお勧めしません。 列を追加しても無視され、処理されません。
+- 必須の列は最初に表示されます。
+- テンプレートに新しい列を追加することはお勧めしません。 追加した列は無視され、処理されません。
 - できる限り、常に最新バージョンの CSV テンプレートをダウンロードすることをお勧めします。
 - フィールドの前後に意図しない空白がないか確認してください。 **ユーザー プリンシパル名**の場合、そのような空白があると、インポートに失敗します。
 

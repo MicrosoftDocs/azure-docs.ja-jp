@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: cecea24fe002ee64d54052635a6d7dec982aeee2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445657"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235705"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>自動ユーザー プロビジョニングのデプロイを計画する
 
@@ -157,7 +157,7 @@ Azure AD ポータルを使用して、プロビジョニングをサポート�
 
 そうなっていない場合は、次の手順に従ってください。
 
-1. 事前統合されたユーザー プロビジョニング コネクタの[要求を作成](../develop/howto-app-gallery-listing.md)します。 Microsoft チームがお客様およびアプリケーション開発者と協力し、SCIM がサポートされている場合、お客様のアプリケーションを Microsoft のプラットフォームにオンボードします。
+1. 事前統合されたユーザー プロビジョニング コネクタの[要求を作成](../azuread-dev/howto-app-gallery-listing.md)します。 Microsoft チームがお客様およびアプリケーション開発者と協力し、SCIM がサポートされている場合、お客様のアプリケーションを Microsoft のプラットフォームにオンボードします。
 
 1. アプリに対する [BYOA SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 汎用ユーザー プロビジョニング サポートを使用します。 これは、事前に統合されたプロビジョニング コネクタのないアプリにユーザーをプロビジョニングするための Azure AD の要件です。
 

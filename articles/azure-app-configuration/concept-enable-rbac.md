@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: d417fa4d6b444f4932338059e2ad499c12d6273e
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: 8889e7270127aa3991adb3c0575a4bce96090db2
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87371840"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87830073"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Azure Active Directory を使用して Azure App Configuration へのアクセスを承認する
 Azure App Configuration では、ハッシュ ベースのメッセージ認証コード (HMAC) の使用に加えて、App Configuration インスタンスに対する要求を承認するための Azure Active Directory (Azure AD) の使用がサポートされています。  Azure AD を使用することにより、ロールベースのアクセス制御 (RBAC) を使用してセキュリティ プリンシパルにアクセス許可を付与することができます。  セキュリティ プリンシパルは、ユーザー、[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) または[アプリケーション サービス プリンシパル](../active-directory/develop/app-objects-and-service-principals.md)のいずれかになります。  ロールおよびロールの割り当ての詳細については、[各種ロールについて](../role-based-access-control/overview.md)のページを参照してください。
@@ -23,12 +23,12 @@ App Configuration リソースにアクセスするためにセキュリティ �
 
 認証の手順により、実行時にアプリケーション要求に OAuth 2.0 アクセス トークンが含まれる必要があります。  アプリケーションが Azure エンティティ (Azure Functions アプリ、Azure Web アプリ、Azure VM など) 内で実行されている場合、マネージド ID を使用してリソースにアクセスできます。  マネージド ID によって Azure App Configuration に対して行われる要求を認証する方法については、[Azure Active Directory と Azure リソースのマネージド ID を使用して Azure App Configuration リソースへのアクセスを承認する](howto-integrate-azure-managed-service-identity.md)方法に関するページをご覧ください。
 
-承認の手順では、セキュリティ プリンシパルに 1 つ以上の RBAC ロールを割り当てる必要があります。 Azure App Configuration は、App Configuration リソースに対するアクセス許可セットを含む RBAC ロールを提供します。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 RBAC ロールの詳細については、「[Azure App Configuration の Azure 組み込みロール](#azure-built-in-roles-for-azure-app-configuration)」を参照してください。 
+承認の手順では、セキュリティ プリンシパルに 1 つまたは複数の Azure ロールを割り当てる必要があります。 Azure App Configuration は、App Configuration リソースに対するアクセス許可セットを含む Azure ロールを提供します。 セキュリティ プリンシパルに割り当てられたロールによって、そのプリンシパルが持つアクセス許可が決定されます。 Azure ロールの詳細については、「[Azure App Configuration の Azure 組み込みロール](#azure-built-in-roles-for-azure-app-configuration)」を参照してください。 
 
-## <a name="assign-rbac-roles-for-access-rights"></a>アクセス権に RBAC ロールを割り当てる
-Azure Active Directory (Azure AD) では、[ロールベースのアクセス制御 (RBAC)](../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。
+## <a name="assign-azure-roles-for-access-rights"></a>アクセス権の Azure ロールを割り当てる
+Azure Active Directory (Azure AD) では、[Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/overview.md) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。
 
-RBAC ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスの範囲は、App Configuration リソースに制限されます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、またはアプリケーション サービス プリンシパル、または[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
+Azure ロールが Azure AD セキュリティ プリンシパルに割り当てられると、Azure によりそのセキュリティ プリンシパルのリソースへのアクセス権が付与されます。 アクセスの範囲は、App Configuration リソースに制限されます。 Azure AD セキュリティ プリンシパルは、Azure リソースのユーザー、またはアプリケーション サービス プリンシパル、または[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) の場合があります。
 
 ## <a name="azure-built-in-roles-for-azure-app-configuration"></a>Azure App Configuration 用の Azure 組み込みロール
 Azure には、Azure AD と OAuth を使用した、App Configuration データへのアクセスを承認するために、次の Azure 組み込みロールが用意されています。

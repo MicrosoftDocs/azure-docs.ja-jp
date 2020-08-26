@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 32650d44b452b90ffd2935eb31f7c7b958c0f7ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 08/18/2020
+ms.openlocfilehash: 8ec950ddabd3844618c878471d2e1391979e2056
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84737763"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521374"
 ---
 # <a name="copy-data-from-and-to-the-sftp-server-by-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーとの間でデータをコピーする
 
@@ -284,7 +284,7 @@ SFTP では、形式ベースのコピー ソースの `storeSettings` 設定で
 
 ### <a name="sftp-as-a-sink"></a>シンクとしての SFTP
 
-[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
+[!INCLUDE [data-factory-v2-file-sink-formats](../../includes/data-factory-v2-file-sink-formats.md)]
 
 SFTP では、形式ベースのコピー シンクの `storeSettings` 設定で、以下のプロパティがサポートされています。
 

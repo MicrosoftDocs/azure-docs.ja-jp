@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と IdeaScale の統合 | Microsoft Docs'
 description: Azure Active Directory と IdeaScale の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e16dda6b-fdf9-43cc-9bbb-a523f085a8af
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cee9bb5d3be6bb8fe5defaa91bce766c8a0f5c05
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: ef388426584dc013d102b929627ce2ba45431d5c
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85798948"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>チュートリアル: Azure Active Directory と IdeaScale の統合
 

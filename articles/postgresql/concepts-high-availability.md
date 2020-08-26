@@ -1,17 +1,17 @@
 ---
 title: 高可用性 - Azure Database for PostgreSQL - Single Server
 description: この記事では、Azure Database for PostgreSQL - Single Server での高可用性について情報を提供します
-author: sr-pg20
-ms.author: srranga
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/15/2020
-ms.openlocfilehash: 564aa030c442331fbcd965c87da3bfbc03d00d79
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 16ce5b42e35ff3d650ba18aa95ab80b83fdbfdad
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85105878"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547683"
 ---
 # <a name="high-availability-in-azure-database-for-postgresql--single-server"></a>Azure Database for PostgreSQL - Single Server での高可用性
 Azure Database for PostgreSQL – Single Server サービスでは、[99.99 %](https://azure.microsoft.com/support/legal/sla/postgresql) のアップタイムという財務的な裏付けのあるサービス レベル アグリーメント (SLA) で、高レベルの可用性が保証されます。 Azure Database for PostgreSQL は、ユーザーが開始したコンピューティングのスケーリング操作などの計画的なイベント中や、基になるハードウェア、ソフトウェア、ネットワークの障害などの計画外のイベントが発生したときに高可用性を提供します。 Azure Database for PostgreSQL は、ほとんどの重大な状況から迅速に復旧でき、このサービスを使用するとアプリケーションのダウンタイムが事実上なくなります。
@@ -31,6 +31,9 @@ Azure Database for PostgreSQL は、計画的なダウンタイム操作中に�
 
 ![Azure PostgreSQL でのエラスティック スケーリングのビュー](./media/concepts-high-availability/azure-postgresql-elastic-scaling.png)
 
+1. PostgreSQL データベース サーバーを数秒でスケールアップおよびスケールダウンします
+2. クライアントをルーティングするためのプロキシとして機能するゲートウェイが、適切なデータベース サーバーに接続します
+3. ストレージのスケールアップは、ダウンタイムなしで実行できます。 リモート ストレージを使用すると、フェールオーバー後に高速デタッチと再アタッチが可能になります。
 次に、計画的なメンテナンス シナリオをいくつか示します。
 
 | **シナリオ** | **説明**|
@@ -48,12 +51,17 @@ Azure Database for PostgreSQL は、計画的なダウンタイム操作中に�
 
 ![Azure PostgreSQL での高可用性のビュー](./media/concepts-high-availability/azure-postgresql-built-in-high-availability.png)
 
+1. 高速スケーリング機能を備えた Azure PostgreSQL サーバー。
+2. プロキシとして機能し、クライアント接続を適切なデータベース サーバーにルーティングするゲートウェイ
+3. 信頼性、可用性、冗長性のための 3 つのコピーが含まれる Azure Storage。
+4. また、リモート ストレージを使用すると、サーバーのフェールオーバー後に高速デタッチと再アタッチが可能になります。
+   
 ### <a name="unplanned-downtime-failure-scenarios-and-service-recovery"></a>計画外のダウンタイム: 障害シナリオとサービス復旧
 いくつかの障害シナリオと、Azure Database for PostgreSQL で自動的に復旧する方法を次に示します。
 
 | **シナリオ** | **自動復旧** |
 | ---------- | ---------- |
-| <B>データベース サーバーの障害 | 基になるハードウェアの障害が原因でデータベース サーバーが停止した場合、アクティブな接続は切断され、処理中のすべてのトランザクションは中止されます。 新しいデータベース サーバーが自動的にデプロイされ、リモート データ ストレージが新しいデータベース サーバーに接続されます。 データベースの復旧が完了すると、クライアントはゲートウェイ経由で新しいデータベース サーバーに接続できるようになります。 <br /> <br /> PostgreSQL データベースを使用するアプリケーションは、切断された接続や失敗したトランザクションを検出し、再試行するように構築されている必要があります。  アプリケーションが再試行すると、ゲートウェイは、新しく作成されたデータベース サーバーへの接続を透過的にリダイレクトします。 |
+| <B>データベース サーバーの障害 | 基になるハードウェアの障害が原因でデータベース サーバーが停止した場合、アクティブな接続は切断され、処理中のすべてのトランザクションは中止されます。 新しいデータベース サーバーが自動的にデプロイされ、リモート データ ストレージが新しいデータベース サーバーに接続されます。 データベースの復旧が完了すると、クライアントはゲートウェイ経由で新しいデータベース サーバーに接続できるようになります。 <br /> <br /> 復旧時間 (RTO) は、大規模なトランザクションや、データベース サーバーの起動プロセス中に実行される復旧の量など、障害発生時のアクティビティを含め、さまざまな要因によって異なります。 <br /> <br /> PostgreSQL データベースを使用するアプリケーションは、切断された接続や失敗したトランザクションを検出し、再試行するように構築されている必要があります。  アプリケーションが再試行すると、ゲートウェイは、新しく作成されたデータベース サーバーへの接続を透過的にリダイレクトします。 |
 | <B>ストレージの障害 | アプリケーションは、ディスク障害や物理ブロックの破損など、ストレージ関連の問題の影響を一切認識しません。 データが 3 つのコピーに格納されるので、データのコピーは存続しているストレージから提供されます。 ブロックの破損は自動的に修正されます。 データのコピーが失われると、データの新しいコピーが自動的に作成されます。 |
 
 次に、復旧にユーザーの操作が必要な障害シナリオをいくつか示します。

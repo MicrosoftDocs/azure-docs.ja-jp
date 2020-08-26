@@ -4,12 +4,12 @@ description: ページ ビューとセッション数、Web クライアント�
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 7c5abb109018bd8bc5b501fe728a3a0f422a3db7
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 3acb7379644b5bfcb22ed86b6bde7031095fef24
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905827"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224855"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 
@@ -217,8 +217,8 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 
 | 拡張機能 |
 |---------------|
-| [React](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)|
-| [React Native](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-native/README.md)|
+| [React](javascript-react-plugin.md)|
+| [React Native](javascript-react-native-plugin.md)|
 
 ## <a name="correlation"></a>相関関係
 

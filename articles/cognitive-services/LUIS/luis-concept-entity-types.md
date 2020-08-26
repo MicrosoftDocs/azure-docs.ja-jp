@@ -2,13 +2,13 @@
 title: エンティティの種類 - LUIS
 description: 予測ランタイム時に、エンティティによってユーザーの発話からデータが抽出されます。 "_オプション_" の副次的な目的は、エンティティを特徴量として使用することで、意図またはその他のエンティティの予測を強化することです。
 ms.topic: conceptual
-ms.date: 06/10/2020
-ms.openlocfilehash: ced4a3e23b8e532b54d0b3cf974dab233b81b375
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.date: 08/06/2020
+ms.openlocfilehash: 8751bdd52bb1c3738103dc074184a3cf72bfeb09
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87337621"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88207757"
 ---
 # <a name="extract-data-with-entities"></a>エンティティを使用してデータを抽出する
 
@@ -140,9 +140,16 @@ Pattern.any は、[パターン](luis-concept-patterns.md)内でのみ使用で�
 
 [制限](luis-limits.md#model-limits)を超える必要がある場合は、サポートにお問い合わせください。 それを行うには、システムに関する詳細情報を収集し、[LUIS](luis-reference-regions.md#luis-website) Web サイトにアクセスして **[サポート]** を選択します。 Azure サブスクリプションにサポート サービスが含まれている場合は、[Azure のテクニカル サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
-## <a name="entity-prediction-status"></a>エンティティ予測の状態
+## <a name="entity-prediction-status-and-errors"></a>エンティティ予測の状態とエラー
 
-発話の例で選択したエンティティと異なるエンティティ予測がエンティティに含まれている場合は、LUIS ポータルが表示されます。 この異なるスコアは、現在のトレーニング済みのモデルに基づいています。 この情報を使用して、以下の 1 つまたは複数の方法で、トレーニング エラーを解決します。
+発話の例で選択したエンティティと異なるエンティティ予測がエンティティに含まれている場合は、LUIS ポータルが表示されます。 この異なるスコアは、現在のトレーニング済みのモデルに基づいています。 
+
+:::image type="content" source="./media/luis-concept-entities/portal-entity-prediction-error.png" alt-text="発話の例で選択したエンティティと異なるエンティティ予測がエンティティに含まれている場合は、LUIS ポータルが表示されます。":::
+
+発話の例では間違っているテキストが強調表示されています。また、例の発話行の右にエラー インジケーターが付いています。赤い三角で確認できます。 
+
+この情報を使用して、以下の 1 つまたは複数の方法で、エンティティ エラーを解決します。
+* 強調表示されているテキストではラベルが間違っています。 修正するには、確認し、修正し、再トレーニングします。 
 * エンティティの概念の識別に役立つように、エンティティの[特徴量](luis-concept-feature.md)を作成します。
 * [発話の例](luis-concept-utterance.md)を追加し、エンティティにラベルを付けます。
 * エンティティの概念を識別するのに役立つ、予測エンドポイントで受信したすべての発話に対する[アクティブ ラーニングの提案](luis-concept-review-endpoint-utterances.md)を確認します。

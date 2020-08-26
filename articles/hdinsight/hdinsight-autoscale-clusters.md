@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 29c04fc8f6af016200e06ad239095a3665de5869
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 730df91d922c4bd6187748654f8184cfb7dc6ea0
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086434"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612709"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight クラスターを自動的にスケール調整する
 
@@ -133,7 +133,7 @@ Azure portal を使用した HDInsight クラスターの作成に関する詳�
 
 #### <a name="load-based-autoscaling"></a>負荷ベースの自動スケーリング
 
-以下の JSON スニペットに示すように、プロパティ `minInstanceCount` と `maxInstanceCount` で `computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートで負荷ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。
+以下の JSON スニペットに示すように、プロパティ `minInstanceCount` と `maxInstanceCount` で `computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートで負荷ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 完全な Resource manager テンプレートについては、[Deploy Spark Cluster with Loadbased Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-loadbased) というクイックスタート テンプレートを参照してください。
 
 ```json
 {
@@ -161,7 +161,7 @@ Azure portal を使用した HDInsight クラスターの作成に関する詳�
 
 #### <a name="schedule-based-autoscaling"></a>スケジュール ベースの自動スケーリング
 
-`computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートでスケジュール ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 `autoscale` ノードには、`timezone` および変更を実行するタイミングが記述されている `schedule` を含む `recurrence` が含まれます。
+`computeProfile` > `workernode` セクションに `autoscale` ノードを追加することで、Azure Resource Manager テンプレートでスケジュール ベースの自動スケーリングを使用する HDInsight クラスターを作成できます。 `autoscale` ノードには、`timezone` および変更を実行するタイミングが記述されている `schedule` を含む `recurrence` が含まれます。 完全なリソース マネージャー テンプレートについては、[Deploy Spark Cluster with schedule-based Autoscale Enabled](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-autoscale-schedulebased) を参照してください。
 
 ```json
 {
@@ -258,6 +258,26 @@ Azure portal に表示されるクラスターの状態は、自動スケーリ�
 ### <a name="minimum-cluster-size"></a>クラスターの最小サイズ
 
 クラスターを 3 つ未満のノードにスケールダウンしないでください。 クラスターを 3 つ未満のノードにスケーリングすると、ファイル レプリケーションが不十分なためにセーフ モードでスタックする場合があります。  詳細については、「[セーフ モードでスタックする](./hdinsight-scaling-best-practices.md#getting-stuck-in-safe-mode)」を参照してください。
+
+### <a name="llap-daemons-count"></a>LLAP デーモンの数
+
+自動スケーリングが有効な LLAP クラスターでは、自動スケーリングの上下イベントによって、アクティブなワーカー ノードの数に合わせて LLAP デーモンの数もスケールアップまたはスケールダウンされます。 しかし、こうしたデーモンの数の変化は、Ambari の **num_llap_nodes** 構成には保持されません。 Hive サービスが手動で再起動された場合は、次に、Ambari の構成に従って LLAP デーモンの数がリセットされます。
+
+次のシナリオについて考えてみましょう。
+1. LLAP の自動スケーリングが有効なクラスターは 3 つのワーカー ノードで作成され、負荷に基づく自動スケーリングは、最小ワーカー ノード数が 3、最大ワーカー ノード数が 10 の構成で有効になります。
+2. クラスターは 3 つのワーカー ノードで作成されているため、LLAP の構成と Ambari に従って、LLAP デーモン数の構成は 3 となっています。
+3. その後、クラスターに対する負荷によって自動スケールアップがトリガーされると、クラスターはここで、10 ノードまでスケーリングされます。
+4. 定期的に実行される自動スケーリングのチェックで、LLAP デーモンの数が 3 であることが認識されますが、アクティブなワーカー ノードの数は 10 なので、自動スケーリング プロセスにより、LLAP デーモンの数が 10 まで増やされます。しかし、この変更は Ambari の構成 num_llap_nodes には保持されません。
+5. ここで自動スケーリングが無効にされます。
+6. クラスターには、この時点で、10 のワーカー ノードと 10 の LLAP デーモンが含まれています。
+7. LLAP サービスが手動で再起動されます。
+8. 再起動時には LLAP 構成の num_llap_nodes 構成がチェックされ、値が 3 であることが認識されるので、3 つのデーモン インスタンスが起動されますが、ワーカー ノードの数は 10 です。 ここで、2 つの間に不一致が起きています。
+
+これが発生した場合は、**Advanced hive-interactive-env の下の num_llap_node の構成 (Hive LLAP デーモンを実行するためのノードの数)** を手動で変更し、現在アクティブなワーカー ノードの数と一致させる必要があります。
+
+**注**
+
+Ambari では、Hive 構成の**同時実行クエリの最大合計数**は、自動スケーリング イベントによって変更されません。 つまり Hive Server 2 Interactive Service は、**LLAP デーモンの数が負荷やスケジュールに基づいてスケールアップまたはスケールダウンされた場合でも、任意の時点で指定された数の同時実行クエリのみを処理できます**。 一般的に推奨されるのは、手動での介入を避けられるように、ピーク時の使用状況シナリオに合わせてこの構成を設定することです。 ただし、次のことを認識しておく必要があります。**同時実行クエリの最大合計数の構成に高い値を設定すると、ワーカー ノードの最小数で、指定された数の Tez Ams (同時実行クエリの最大合計数の構成と同じ) に対応できない場合、Hive Server 2 Interactive Service の再起動が失敗する可能性があります**
 
 ## <a name="next-steps"></a>次のステップ
 

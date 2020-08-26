@@ -7,12 +7,12 @@ ms.topic: article
 author: vikrambmsft
 ms.author: vikramb
 ms.date: 07/01/2020
-ms.openlocfilehash: 5f8487126cd187ea66f9423a480c9a73151154c3
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.openlocfilehash: 2808f0d3b99257d52b2d400424f256f980005863
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88168016"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607201"
 ---
 # <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Microsoft 商業マーケットプレースでのプライベート オファー
 
@@ -54,7 +54,7 @@ ms.locfileid: "88168016"
 
 ## <a name="deploying-private-offers"></a>プライベート オファーのデプロイ
 
-プライベート オファーは [Azure portal](https://azure.microsoft.com/features/azure-portal/) を介してのみ検出可能であり、[Microsoft AppSource](https://appsource.microsoft.com/) および [Azure Marketplace](https://azuremarketplace.microsoft.com) には表示されません。 さまざまな商業マーケットプレースのネットショップへの公開については、「[公開オプションを選定する](./determine-your-listing-type.md)」を参照してください。
+プライベート オファーは [Azure portal](https://azure.microsoft.com/features/azure-portal/) を介してのみ検出可能であり、[Microsoft AppSource](https://appsource.microsoft.com/) および [Azure Marketplace](https://azuremarketplace.microsoft.com) には表示されません。 さまざまな商業マーケットプレースのオンライン ストアへの公開に関する詳細については、「[公開オプションを選定する](./determine-your-listing-type.md)」を参照してください。
 
 Azure portal にサインインした顧客は、[Marketplace] ナビゲーション要素を選択して、各自のプライベート オファーにアクセスできます。 プライベート オファーは検索結果にも表示され、他のオファーと同じように、コマンドラインと Azure Resource Manager テンプレートを使用してデプロイできます。
 

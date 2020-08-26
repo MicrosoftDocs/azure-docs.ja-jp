@@ -1,18 +1,18 @@
 ---
 title: Azure VPN Gateway:診断リソース ログ イベントでアラートを構成する
-description: VPN Gateway 診断リソース ログ イベントにアラートを構成する手順
+description: Azure Monitor Log Analytics を使用して、Azure VPN Gateway からのリソース ログ イベントに基づいてアラートを設定する方法について説明します。
 services: vpn-gateway
 author: kumudD
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 21fcebf6667eb1bc7741dfb4ba268af42567d58e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: f8c688adda3924d0cea3c9b57d2d24ed3b3b1e68
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075600"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88033175"
 ---
 # <a name="set-up-alerts-on-resource-log-events-from-vpn-gateway"></a>VPN Gateway からのリソース ログ イベントにアラートを設定する
 

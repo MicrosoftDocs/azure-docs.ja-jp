@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/20/2020
+ms.date: 08/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c8c4e65c7ee97b33acbd68bfd8267a334508e25c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 40672ac958e84d816d4b582472ae04502a910c6a
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85203743"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88521265"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -192,7 +192,15 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 | --------- | -------- | ----------- |
 | 名前 | はい | 技術プロファイルの一部として使用される Azure AD B2C によってサポートされている有効なプロトコルの名前。 指定できる値: `OpenIdConnect` または `SAML2`。 `OpenIdConnect` 値は、OpenID 基盤の仕様に従って、OpenID Connect 1.0 プロトコルの標準を表します。 `SAML2` 値は、OASIS 仕様に従って、SAML 2.0 プロトコルの標準を表します。 |
 
-## <a name="outputclaims"></a>OutputClaims
+### <a name="metadata"></a>Metadata
+
+プロトコルが `SAML` である場合、メタデータ要素には次の要素が含まれます。
+
+| 属性 | 必須 | Description |
+| --------- | -------- | ----------- |
+| XmlSignatureAlgorithm | いいえ | SAML 応答に署名するために Azure AD B2C で使用されるメソッド。 指定できる値: `Sha256`、`Sha384`、`Sha512`、または `Sha1`。 両方の側で同じ値の署名アルゴリズムを構成するようにします。 証明書でサポートされているアルゴリズムのみを使用してください。 SAML アサーションを構成するには、[SAML 発行者の技術プロファイルのメタデータ](saml-issuer-technical-profile.md#metadata)に関する記事を参照してください。 |
+
+### <a name="outputclaims"></a>OutputClaims
 
 **OutputClaims** 要素には、次の要素が含まれています。
 
@@ -202,7 +210,7 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 **OutputClaim** 要素には、次の属性が含まれています。
 
-| 属性 | Required | Description |
+| 属性 | 必須 | Description |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | はい | ポリシー ファイル内の **ClaimsSchema** セクションに既に定義されている **ClaimType** への参照。 |
 | DefaultValue | いいえ | 既定値が空の場合に使用できる既定値。 |
@@ -212,13 +220,14 @@ Azure AD B2C のカスタム ポリシーを使用すると、クエリ文字列
 
 **SubjectNameingInfo** 要素によって、トークン サブジェクトの値を制御します。
 - **JWT トークン** - `sub` 要求。 これは、トークンが情報をアサートするプリンシパルです (アプリケーションのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。 そのため、この値を使用すると、トークンを使用してリソースにアクセスする場合などに安全に承認チェックができます。 既定では、サブジェクト要求には、ディレクトリ内のユーザーのオブジェクト ID が設定されます。 詳細は、[トークン、セッション、およびシングル サインオンの構成](session-behavior.md)をご覧ください。
-- **SAML トークン**- `<Subject><NameID>` subject 要素を識別する要素。
+- **SAML トークン**- `<Subject><NameID>` subject 要素を識別する要素。 NameId 形式は変更することができます。
 
 **SubjectNamingInfo** 要素には、次の属性が含まれています。
 
-| 属性 | Required | Description |
+| 属性 | 必須 | Description |
 | --------- | -------- | ----------- |
 | ClaimType | はい | 出力要求の **PartnerClaimType** への参照。 証明書利用者ポリシー **OutputClaims**コレクションに出力要求を定義する必要があります。 |
+| Format | いいえ | SAML アサーションで返される **NameId の形式**を設定する SAML 証明書利用者のために使用されます。 |
 
 次の例では、OpenID Connect の証明書利用者を定義する方法を示します。 サブジェクト名情報は、`objectId` として構成されます。
 
@@ -248,4 +257,25 @@ JWT トークンにはユーザー objectId による `sub` 要求が含まれ�
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
   ...
 }
+```
+
+次の例では、SAML の証明書利用者を定義する方法を示します。 サブジェクト名情報は、`objectId` として構成され、NameId `format` が指定されています。
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
+  </TechnicalProfile>
+</RelyingParty>
 ```

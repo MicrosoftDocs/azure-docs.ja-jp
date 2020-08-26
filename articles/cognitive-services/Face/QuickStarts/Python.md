@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 4fa0603868f1cc8bb2c879dbac7811ebbe6bf0dd
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: d870372f418cb8873f6664d6a501e0abe0ebe374
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87875117"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548482"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>クイック スタート:Face REST API と Python を使用して画像から顔を検出する
 
@@ -24,7 +24,7 @@ ms.locfileid: "87875117"
 
 ![男性と女性。それぞれの顔を囲む四角形が描かれ、画像内に年齢と性別が表示されている](../images/labelled-faces-python.png)
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。 
 
 
 ## <a name="prerequisites"></a>前提条件

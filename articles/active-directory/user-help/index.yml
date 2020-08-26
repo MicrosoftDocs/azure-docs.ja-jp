@@ -11,12 +11,12 @@ metadata:
   author: curtand
   ms.author: curtand
   ms.date: 08/26/2019
-  ms.openlocfilehash: 3c110b34cee9f281654150f150aa12445284fc6c
-  ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+  ms.openlocfilehash: c3c0025663332d46e08b75c91281f96d3cedf6f8
+  ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 05/01/2020
-  ms.locfileid: "82652862"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88799011"
 landingContent:
 - title: Microsoft Authenticator アプリの設定と使用
   linkLists:
@@ -75,7 +75,7 @@ landingContent:
   - linkListType: overview
     links:
     - text: 追加認証ページとは
-      url: user-help-two-step-verification-overview.md
+      url: ./multi-factor-authentication-end-user-first-time.md
   - linkListType: how-to-guide
     links:
     - text: 認証方法の設定

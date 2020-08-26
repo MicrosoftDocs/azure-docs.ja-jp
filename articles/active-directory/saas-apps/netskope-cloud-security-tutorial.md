@@ -2,26 +2,21 @@
 title: チュートリアル:Netskope Administrator Console と Azure Active Directory のシングル サインオン (SSO) 統合 | Microsoft Docs
 description: Azure Active Directory と Netskope Administrator Console の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: e286adec-8d19-4d41-9afa-a2e39d7a5983
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/31/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c38900d4ded3d2ee08245674bda90d96226c1eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: daef8a91c2f31379ebf50d1e8ec66d0b33ebb2cc
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80396574"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88534832"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netskope-administrator-console"></a>チュートリアル:Netskope Administrator Console と Azure Active Directory のシングル サインオン (SSO) 統合
 

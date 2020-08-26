@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/02/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cd8771afdc9c4462faaff758ffdd073382f69f53
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 24118e6ae5c31399ce5d33361dd60e3a08424681
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85550969"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88055770"
 ---
 # <a name="blob-snapshots"></a>BLOB のスナップショット
 
@@ -33,7 +33,7 @@ ms.locfileid: "85550969"
 > すべてのスナップショットがベース BLOB の URI を共有します。 ベース BLOB とスナップショットの唯一の違いは、追加される **DateTime** 値です。
 >
 
-BLOB に対するスナップショットの数に制限はありません。 スナップショットは、明示的に削除されるまで保持されます。つまり、スナップショットはベース BLOB よりも長く存続できません。 ベース BLOB に関連付けられたスナップショットを列挙して、現在のスナップショットを追跡できます。
+BLOB に対するスナップショットの数に制限はありません。 スナップショットは、個別に、またはベース BLOB の Delete Blob 操作の一部として明示的に削除されるまで保持されます。 ベース BLOB に関連付けられたスナップショットを列挙して、現在のスナップショットを追跡できます。
 
 BLOB のスナップショットを作成すると、BLOB のシステム プロパティが同じ値でスナップショットにコピーされます。 また、スナップショットの作成時に別のメタデータを指定しない限り、ベース BLOB のメタデータもスナップショットにコピーされます。 作成したスナップショットの読み取り、コピー、削除はできますが、変更はできません。
 

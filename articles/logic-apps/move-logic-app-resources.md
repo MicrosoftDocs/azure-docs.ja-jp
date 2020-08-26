@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: d420f244b0d1e5ccf9a7aaa78c10f613cdbad38f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aca2c51ff14b99ba41b159cf32e59dc861de7a53
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85564270"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87826213"
 ---
 # <a name="move-logic-app-resources-to-other-azure-resource-groups-regions-or-subscriptions"></a>ロジック アプリのリソースを別の Azure リソース グループ、リージョン、またはサブスクリプションに移動する
 
@@ -31,7 +31,7 @@ ms.locfileid: "85564270"
 
 * 移動するロジック アプリまたは統合アカウントの作成に使用したものと同じ Azure サブスクリプション
 
-* 必要なリソースを移動して設定するためのリソース所有者のアクセス許可。 [ロールベースのアクセス制御 (RBAC)](../role-based-access-control/built-in-roles.md#owner) の詳細を確認してください。
+* 必要なリソースを移動して設定するためのリソース所有者のアクセス許可。 [Azure ロールベースのアクセス制御 (Azure RBAC)](../role-based-access-control/built-in-roles.md#owner) について詳しく確認します。
 
 <a name="move-subscription"></a>
 
@@ -94,7 +94,7 @@ Azure のオンプレミス データ ゲートウェイ リソースなど、�
 
 たとえば、ロジック アプリを統合アカウントにリンクするには、両方のリソースが同じリージョンに存在している必要があります。 ディザスター リカバリーなどのシナリオでは通常、同じ構成とアーティファクトを持つ統合アカウントが必要です。 その他のシナリオでは、異なる構成とアーティファクトを持つ統合アカウントが必要になる場合があります。
 
-Azure Logic Apps のカスタム コネクタは、そのコネクタの作成者と、同じ Azure サブスクリプションと Azure Active Directory テナントを持つユーザーにのみ表示されます。 これらのコネクタは、ロジック アプリがデプロイされている同じリージョンで利用できます。 詳細については、[組織内でのカスタム コネクタの共有](https://docs.microsoft.com/connectors/custom-connectors/share)に関するページをご覧ください。
+Azure Logic Apps のカスタム コネクタは、そのコネクタの作成者と、同じ Azure サブスクリプションと Azure Active Directory テナントを持つユーザーにのみ表示されます。 これらのコネクタは、ロジック アプリがデプロイされている同じリージョンで利用できます。 詳細については、[組織内でのカスタム コネクタの共有](/connectors/custom-connectors/share)に関するページをご覧ください。
 
 Visual Studio から取得するテンプレートには、ロジック アプリとその接続のリソース定義だけが含まれています。 このため、ロジック アプリで他のリソース (統合アカウントやパートナー、契約、スキーマなどの B2B アーティファクト) を使用している場合は、Azure portal を使用してその統合アカウントのテンプレートをエクスポートする必要があります。 このテンプレートには、統合アカウントとアーティファクトの両方のリソース定義が含まれています。 ただし、テンプレートは完全にはパラメーター化されていません。 そのため、デプロイに使用する値は手動でパラメーター化する必要があります。
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b2a8d552a2b9a1d6d3bb02bf02be95af031a5e4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 10e306d26ebfd5ffafe65d7aa52753e993b085bf
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291964"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509163"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Windows VM での Azure Disk Encryption シナリオ
 
@@ -264,7 +264,7 @@ Azure Disk Encryption は、次のシナリオ、機能、およびテクノロ�
 - 暗号化された VM のイメージまたはスナップショットを作成し、それを使用して追加の VM をデプロイする。
 - Gen2 VM (「[Azure での第 2 世代 VM のサポート](generation-2.md#generation-1-vs-generation-2-capabilities)」を参照)
 - 書き込みアクセラレータ ディスクを備えた M シリーズの VM。
-- [カスタマー マネージド キー (SSE + CMK) によるサーバー側の暗号化](disk-encryption.md)を使用して暗号化されたデータ ディスクがある VM に ADE を適用する、または ADE で暗号化された VM のデータ ディスクに SSE + CMK を適用する。
+- [カスタマー マネージド キーによるサーバー側での暗号化](disk-encryption.md) (SSE + CMK) で暗号化されている、または *1 度でも*されたことがあるディスクを持つ VM に ADE を適用する。 ADE で暗号化された VM 上のデータ ディスクに SSE + CMK を適用することも、サポートされていないシナリオです。
 - ADE を使用して暗号化された VM を[ユーザーが管理するキーを使用して実行するサーバー側の暗号化](disk-encryption.md)に移行する。
 
 

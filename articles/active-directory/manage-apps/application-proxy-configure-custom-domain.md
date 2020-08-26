@@ -1,27 +1,22 @@
 ---
-title: Azure AD アプリケーション プロキシでのカスタム ドメイン | Microsoft Docs
+title: Azure AD アプリケーション プロキシのカスタム ドメイン
 description: Azure AD アプリケーション プロキシでカスタム ドメインを構成して管理します。
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: it-pro
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646a32509921709711b208c263ac6b077555eac5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6688875385d34fcbece964d43827c6d62ae7ced4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84764912"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587771"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでカスタム ドメインを構成する
 
@@ -91,11 +86,11 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
    
    ![カスタム ドメインを選択する](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
-6. ドメインに既に証明書が存在する場合は、 **[証明書]** フィールドにその証明書の情報が表示されます。 それ以外の場合は、 **[証明書]** フィールドを選択します。 
+6. ドメインに既に証明書が存在する場合は、 **[証明書]** フィールドにその証明書の情報が表示されます。 それ以外の場合は、 **[証明書]** フィールドを選択します。
    
    ![クリックし、証明書をアップロードします。](./media/application-proxy-configure-custom-domain/certificate.png)
    
-7. **[SSL 証明書]** ページで、PFX 証明書ファイルを参照して選択します。 証明書のパスワードを入力し、 **[証明書のアップロード]** を選択します。 証明書の詳細については、「[カスタム ドメインの証明書](#certificates-for-custom-domains)」のセクションを参照してください。
+7. **[SSL 証明書]** ページで、PFX 証明書ファイルを参照して選択します。 証明書のパスワードを入力し、 **[証明書のアップロード]** を選択します。 証明書の詳細については、「[カスタム ドメインの証明書](#certificates-for-custom-domains)」のセクションを参照してください。 証明書が有効でない場合、またはパスワードに問題がある場合は、エラー メッセージが表示されます。 [アプリケーション プロキシに関してよく寄せられる質問](application-proxy-faq.md#application-configuration)のページに、試すことができるトラブルシューティング手順がいくつかあります。
    
    ![証明書のアップロード](./media/application-proxy-configure-custom-domain/ssl-certificate.png)
    
@@ -126,7 +121,7 @@ Azure Active Directory アプリケーション プロキシ経由でアプリ�
 
 必要なすべての中間証明書が必ず含まれるようにするには、PFX 証明書を使用する必要があります。 証明書には秘密キーが含まれている必要があります。
 
-証明書の署名方法に制限はありません。 楕円曲線暗号 (ECC)、サブジェクトの別名 (SAN)、およびその他の一般的な証明書の種類がサポートされています。 
+Subject Alternative Name (SAN) などの最も一般的な署名方法がサポートされています。 
 
 ワイルドカード証明書は、そのワイルドカードが外部 URL に一致する限り使用できます。 [ワイルドカード アプリケーション](application-proxy-wildcard.md)にはワイルドカード証明書を使用する必要があります。 証明書を使用してサブドメインにもアクセスする場合は、同じ証明書内にサブジェクトの別名としてサブドメイン ワイルドカードを追加する必要があります。 たとえば、サブジェクトの別名として *\*.apps.adventure-works.com* を追加しない限り、 *\*.adventure-works.com* の証明書は *\*.apps.adventure-works.com* に対して機能しません。 
 

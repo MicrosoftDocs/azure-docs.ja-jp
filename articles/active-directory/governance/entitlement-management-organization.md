@@ -16,12 +16,12 @@ ms.date: 06/18/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 272dd95b97c65ecc52dd73909f1ed87d5e5ae3ca
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 3c4869859e11cb6c0cc868ec9deacb3e5cb972c6
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86170498"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586573"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Azure AD のエンタイトルメント管理で接続されている組織を追加する
 
@@ -103,7 +103,7 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
 
 接続されている組織を別のドメインに変更する場合、組織の名前を変更する場合、またはスポンサーを変更する場合は、このセクションの手順のようにして、接続されている組織を更新できます。
 
-**事前に必要なロール**:"*全体管理者*"、"*ユーザー管理者*"、または "*ゲスト招待元*"
+**事前に必要なロール**:"*グローバル管理者*" または "*ユーザー管理者*"
 
 1. Azure portal で **[Azure Active Directory]** を選択し、 **[Identity Governance]** を選択します。
 
@@ -120,7 +120,7 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
 
 外部の Azure AD ディレクトリまたはドメインとの関係がなくなった場合は、接続されている組織を削除できます。
 
-**事前に必要なロール**:"*全体管理者*"、"*ユーザー管理者*"、または "*ゲスト招待元*"
+**事前に必要なロール**:"*グローバル管理者*" または "*ユーザー管理者*"
 
 1. Azure portal で **[Azure Active Directory]** を選択し、 **[Identity Governance]** を選択します。
 
@@ -131,6 +131,10 @@ Azure AD ディレクトリまたはドメインのユーザーの認証方法�
     現時点では、接続されているユーザーがいない場合にのみ、接続されている組織を削除できます。
 
     ![接続されている組織の [削除] ボタン](./media/entitlement-management-organization/organization-delete.png)
+
+## <a name="managing-a-connected-organization-programmatically"></a>プログラムによる接続された組織の管理
+
+Microsoft Graph を使用して、接続されている組織を作成、一覧表示、更新、および削除することもできます。 委任された `EntitlementManagement.ReadWrite.All` アクセス許可を持つアプリケーションを持つ適切なロールのユーザーは、API を呼び出して、[connectedOrganization](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta) オブジェクトを管理し、それに対してスポンサーを設定できます。
 
 ## <a name="next-steps"></a>次のステップ
 

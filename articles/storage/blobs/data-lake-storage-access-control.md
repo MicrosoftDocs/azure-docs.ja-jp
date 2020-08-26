@@ -1,6 +1,6 @@
 ---
 title: Azure Data Lake Storage Gen2 のアクセス制御の概要 | Microsoft Docs
-description: Azure Data Lake Storage Gen2 のアクセス制御のしくみを理解する
+description: Azure Data Lake Storage Gen2 のアクセス制御のしくみを理解する。 Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のような ACL がサポートされています。
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 5d478723af7d13cc3480f6c2a80bf9b76ba4b84f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 9edf348c856de5c75c95d8a8f1957dcf73fc8ec1
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87091353"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88030488"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 のアクセス制御
 
-Azure Data Lake Storage Gen2 では、Azure のロールベースのアクセス制御 (RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートするアクセス制御モデルが実装されています。 この記事では、Data Lake Storage Gen2 のアクセス制御モデルの基本について説明します。
+Azure Data Lake Storage Gen2 では、Azure ロールベースのアクセス制御 (Azure RBAC) と POSIX のようなアクセス制御リスト (ACL) の両方をサポートするアクセス制御モデルが実装されています。 この記事では、Data Lake Storage Gen2 のアクセス制御モデルの基本について説明します。
 
 <a id="azure-role-based-access-control-rbac"></a>
 
@@ -34,9 +34,9 @@ RBAC では、ロールの割り当てを使用して、"*セキュリティ プ
 
 ### <a name="the-impact-of-role-assignments-on-file-and-directory-level-access-control-lists"></a>ファイルおよびディレクトリ レベルのアクセス制御リストでのロール割り当ての影響
 
-RBAC のロール割り当ての使用は、アクセス許可を制御する強力なメカニズムですが、ACL と比較すると、非常にきめの粗いメカニズムです。 RBAC の最小粒度は、コンテナー レベルで、これは ACL よりも高い優先順位で評価されます。 したがって、セキュリティ プリンシパルにコンテナーのスコープでロールを割り当てた場合、ACL の割り当てに関係なく、そのセキュリティ プリンシパルには、そのコンテナー内の "すべて" のディレクトリとファイルに対してそのロールに関連付けられている承認レベルが適用されます。
+Azure ロールの割り当ての使用は、アクセス許可の制御として効果的ですが、ACL と比較すると、非常にきめの粗いメカニズムです。 RBAC の最小粒度は、コンテナー レベルで、これは ACL よりも高い優先順位で評価されます。 したがって、セキュリティ プリンシパルにコンテナーのスコープでロールを割り当てた場合、ACL の割り当てに関係なく、そのセキュリティ プリンシパルには、そのコンテナー内の "すべて" のディレクトリとファイルに対してそのロールに関連付けられている承認レベルが適用されます。
 
-[組み込みロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)またはカスタム ロールを通じて、セキュリティ プリンシパルに RBAC データのアクセス許可が付与されると、要求の承認時に、これらのアクセス許可がまず評価されます。 要求された操作がセキュリティ プリンシパルの RBAC の割り当てによって承認されている場合は、承認はすぐに解決され、追加の ACL チェックは実行されません。 また、セキュリティ プリンシパルに RBAC 割り当てがない場合、または要求の操作が割り当てられたアクセス許可と一致しない場合、ACL チェックが実行され、要求された操作を実行する権限がセキュリティ プリンシパルに付与されているかどうかが判断されます。
+[組み込みロール](https://docs.microsoft.com/azure/storage/common/storage-auth-aad?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#built-in-rbac-roles-for-blobs-and-queues)またはカスタム ロールを通じて、セキュリティ プリンシパルに RBAC データのアクセス許可が付与されると、要求の承認時に、これらのアクセス許可がまず評価されます。 要求された操作がセキュリティ プリンシパルの Azure ロールの割り当てによって承認されると、承認はすぐに決定され、追加の ACL チェックは実行されません。 また、セキュリティ プリンシパルに Azure ロールの割り当てがない場合や、要求の操作が、割り当てられているアクセス許可と一致しない場合は、要求された操作の実行をセキュリティ プリンシパルが許可されているかどうかを判断するために、ACL チェックが実行されます。
 
 > [!NOTE]
 > セキュリティ プリンシパルにストレージ BLOB データ所有者の組み込みロールが割り当てられている場合、そのセキュリティ プリンシパルは "*スーパー ユーザー*" と見なされ、すべての変更操作 (ディレクトリやファイルの所有権の設定や、自分が所有者ではないディレクトリやファイルへの ACL の設定など) へのフル アクセス権が付与されます。 スーパー ユーザーのアクセス権は、リソースの所有者を変更するために承認された唯一の方法です。
@@ -210,13 +210,12 @@ for entry in entries:
 member_count = 0
 perms = 0
 entries = get_acl_entries( path, NAMED_GROUP | OWNING_GROUP )
+mask = get_mask( path )
 for entry in entries:
 if (user_is_member_of_group(user, entry.identity)) :
-    member_count += 1
-    perms | =  entry.permissions
-if (member_count>0) :
-return ((desired_perms & perms & mask ) == desired_perms)
-
+    if ((desired_perms & entry.permissions & mask) == desired_perms)
+        return True 
+        
 # Handle other
 perms = get_perms_for_other(path)
 mask = get_mask( path )
@@ -333,7 +332,7 @@ OID が表示されます。
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 は ACL の継承をサポートしていますか。
 
-Azure RBAC の割り当ては継承されます。 割り当ては、サブスクリプション、リソース グループ、ストレージ アカウント リソースからコンテナー リソースに渡されます。
+Azure ロールの割り当ては継承されます。 割り当ては、サブスクリプション、リソース グループ、ストレージ アカウント リソースからコンテナー リソースに渡されます。
 
 ACL は継承されません。 ただし、親ディレクトリの下に作成される子サブディレクトリやファイルについては、既定の ACL を使用して ACL を設定できます。 
 

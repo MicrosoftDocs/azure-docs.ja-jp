@@ -1,19 +1,17 @@
 ---
 title: リモート デスクトップ クライアントの Windows Virtual Desktop のトラブルシューティング - Azure
 description: Windows Virtual Desktop テナント環境でクライアント接続を設定するときの問題を解決する方法です。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 03/31/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f91e68ec2bd4b0b5400ee3e8e380d91ea6f31f36
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: d1862e2e0dd9b1e566c6ee5d01a09213a0be4f8e
+ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87291316"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88134481"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>リモート デスクトップ クライアントのトラブルシューティング
 
@@ -43,13 +41,13 @@ nslookup rdweb.wvd.microsoft.com
 
 別のクライアント (Windows 7 または Windows 10 用のリモート デスクトップ クライアントなど) で接続してみて、Web クライアントを開くことができるかどうかを確認します。
 
-### <a name="opening-another-site-fails"></a>別のサイトを開くことができない
+### <a name="cant-open-other-websites-while-connected-to-the-web-client"></a>Web クライアントに接続中に他の Web サイトを開けない
 
-これは、通常、ネットワーク接続の問題またはネットワークの停止が原因で発生します。 ネットワーク サポートに問い合わせることをお勧めします。
+Web クライアントに接続中に他の Web サイトを開けない場合は、ネットワーク接続に問題があるか、ネットワークが停止している可能性があります。 ネットワーク サポートに問い合わせることをお勧めします。
 
-### <a name="nslookup-cannot-resolve-the-name"></a>nslookup で名前を解決できない
+### <a name="nslookup-cant-resolve-the-name"></a>Nslookup で名前を解決できない
 
-これは、通常、ネットワーク接続の問題またはネットワークの停止が原因で発生します。 ネットワーク サポートに問い合わせることをお勧めします。
+Nslookup で名前を解決できない場合は、ネットワーク接続に問題があるか、ネットワークが停止している可能性があります。 ネットワーク サポートに問い合わせることをお勧めします。
 
 ### <a name="your-client-cant-connect-but-other-clients-on-your-network-can-connect"></a>自分のクライアントは接続できないが、ネットワーク上の他のクライアントは接続できる
 
@@ -60,11 +58,13 @@ Web クライアントを使用しているときにブラウザーの動作が�
 3. ブラウザーのキャッシュをクリアします。 [お使いのブラウザーのブラウザー キャッシュをクリアする方法](https://binged.it/2RKyfdU)をご覧ください。
 4. プライベート モードでブラウザーを開きます。
 
-## <a name="web-client-does-not-show-my-resources"></a>Web クライアントにリソースが表示されない
+## <a name="client-doesnt-show-my-resources"></a>クライアントにリソースが表示されない
 
 最初に、使用している Azure Active Directory アカウントを確認します。 Windows Virtual Desktop に使用するアカウントとは別の Azure Active Directory アカウントで既にサインインしている場合は、サインアウトするか、プライベート ブラウザー ウィンドウを使用する必要があります。
 
-Windows Virtual Desktop (クラシック) を使用している場合は、[この記事](./virtual-desktop-fall-2019/connect-web-2019.md)の Web クライアント リンクを使用してリソースに接続します。
+Windows Virtual Desktop (クラシック) を使用している場合は、[この記事](./virtual-desktop-fall-2019/connect-web-2019.md)の Web クライアント リンクを使用して、リソースに接続します。
+
+それでもうまくいかない場合は、アプリ グループがワークスペースに関連付けられていることを確認してください。
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>Web クライアントが応答を停止するか切断する
 
@@ -80,8 +80,8 @@ Web クライアントで資格情報の入力の要求が出続ける場合は�
 
 1. Web クライアントの URL が正しいことを確認します。
 2. 使用している資格情報が、URL に関連付けられた Windows Virtual Desktop 環境に対するものであることを確認します。
-3. ブラウザーの Cookie をクリアします。 詳細については、「[Internet Explorer で cookie ファイルを削除する方法](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)」をご覧ください。
-4. ブラウザーのキャッシュをクリアします。 詳細については、[お使いのブラウザーのブラウザー キャッシュをクリアする方法](https://binged.it/2RKyfdU)をご覧ください。
+3. ブラウザーの Cookie をクリアします。 詳細については、「[Internet Explorer で cookie ファイルを削除する方法](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer)」を参照してください。
+4. ブラウザーのキャッシュをクリアします。 詳細については、[お使いのブラウザーのブラウザー キャッシュをクリアする方法](https://binged.it/2RKyfdU)を参照してください。
 5. プライベート モードでブラウザーを開きます。
 
 ## <a name="next-steps"></a>次のステップ

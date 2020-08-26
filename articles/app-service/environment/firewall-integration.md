@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/13/2020
 ms.author: ccompy
 ms.custom: seodec18, references_regions
-ms.openlocfilehash: 9407e388a44ec78fa1e089542fc5ea3ef9387d60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 1e5c909dfebf9c2073ac1809e0a1b7dcbcc7a297
+ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073760"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87874199"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
@@ -61,7 +61,7 @@ Azure Firewall を使用して既存の ASE からのエグレスをロックダ
    
    ![アプリケーション ルールの追加][1]
    
-1. Azure Firewall UI の [ルール]、[ネットワーク ルール コレクション] から、[ネットワーク ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [IP アドレス] の [ルール] セクションで、名前を指定し、プロトコルを **[任意]** 選択して、[ソース アドレス] と [宛先アドレス] に「*」を設定し、ポートを「123」に設定します。 このルールにより、システムでは NTP を使用してクロック同期を実行できます。 システムのあらゆる問題をトリアージできるように、ポート 12000 に対しても同様に別のルールを作成します。 
+1. Azure Firewall UI の [ルール]、[ネットワーク ルール コレクション] から、[ネットワーク ルール コレクションの追加] を選択します。 名前、優先度を指定し、[許可] を設定します。 [IP アドレス] の [ルール] セクションで、名前を指定し、プロトコルとして **[任意]** を選択します。[ソース アドレス] と [宛先アドレス] に「*」を設定し、ポートを 123 に設定します。 このルールにより、システムでは NTP を使用してクロック同期を実行できます。 システムのあらゆる問題をトリアージできるように、ポート 12000 に対しても同様に別のルールを作成します。 
 
    ![NTP ネットワーク ルールの追加][3]
    

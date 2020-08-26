@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory シングル サインオン (SSO) と Freshservice の統合 | Microsoft Docs
 description: Azure Active Directory と Freshservice の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 3dd22b1f-445d-45c6-8eda-30207eb9a1a8
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06b52ec552434f74c56333d1afe00cde2a285418
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 9e53881d5b28b61cd220b14e02c411db53d19d36
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87905433"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550998"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>チュートリアル:Azure Active Directory シングル サインオン (SSO) と Freshservice の統合
 
@@ -60,7 +56,7 @@ Azure AD への Freshservice の統合を構成するには、ギャラリーか
 1. **[ギャラリーから追加する]** セクションで、検索ボックスに「**Freshservice**」と入力します。
 1. 結果ウィンドウで **[Freshservice]** を選択し、アプリを追加します。 お使いのテナントにアプリが追加されるのを数秒待機します。
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-freshservice"></a>Freshservice の Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-sso-for-freshservice"></a>Freshservice の Azure AD SSO の構成とテスト
 
 **B.Simon** というテスト ユーザーを使用して、Freshservice で Azure AD の SSO を構成し、テストします。 SSO が機能するために、Azure AD ユーザーと Freshservice の関連ユーザーの間で、リンク関係を確立する必要があります。
 
@@ -132,7 +128,15 @@ Freshservice で Azure AD SSO を構成してテストするには、次の構�
 
 ## <a name="configure-freshservice-sso"></a>Freshservice の SSO の構成
 
-1. 新しい Web ブラウザー ウィンドウを開き、Freshservice 企業サイトに管理者としてサインインします。
+1. Freshservice 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして**マイ アプリによるセキュリティで保護されたサインイン拡張機能**をインストールする必要があります。
+
+    ![マイ アプリの拡張機能](common/install-myappssecure-extension.png)
+
+1. ブラウザーに拡張機能を追加した後、 **[Freshservice のセットアップ]** をクリックすると、Freshservice アプリケーションに移動します。 そこから、管理者資格情報を提供して Freshservice にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 3 ～ 6 が自動化されます。
+
+    ![セットアップの構成](common/setup-sso.png)
+
+1. Freshservice を手動で設定する場合は、Freshservice の企業サイトに管理者としてログインします。
 
 1. 左側のメニューで、 **[Admin]\(管理者\)** をクリックし、 **[General Settings]\(全般設定\)** で **[Helpdesk Security]\(ヘルプデスクのセキュリティ\)** を選択します。
 

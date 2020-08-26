@@ -1,21 +1,21 @@
 ---
-title: Azure Notebooks プレビューで Jupyter ノートブックを作成して共有する
-description: Azure Notebooks プレビューで Jupyter ノートブックをすばやく作成して実行した後、そのノートブックを他のユーザーと共有します。
+title: Azure Notebooks プレビューで Jupyter Notebook を作成して共有する
+description: Azure Notebooks プレビューで Jupyter Notebook をすばやく作成して実行した後、そのノートブックを他のユーザーと共有します。
 ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
-ms.openlocfilehash: 19773a6857d58f5b6af2a02ac28a3414c51fc917
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 77575b5b9e006ac9881d03dc95509d55c53c26d7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87849402"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589335"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>クイック スタート:Azure Notebooks プレビューでノートブックを作成して共有する
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-このクイックスタートでは、Azure Notebooks で Jupyter ノートブックを作成、実行した後、そのノートブックを他のユーザーと共有します。 Jupyter では、Markdown テキスト、実行可能コード、永続データ、グラフィックス、視覚エフェクトを 1 つの共有可能なキャンバス (ノートブック) に簡単に組み合わせることができます。 Azure Notebooks は、インストールせずにクラウド上で Jupyter ノートブックを作成、実行するための無料でホストされているサービスです。
+このクイックスタートでは、Azure Notebooks で Jupyter Notebook を作成、実行した後、そのノートブックを他のユーザーと共有します。 Jupyter では、Markdown テキスト、実行可能コード、永続データ、グラフィックス、視覚エフェクトを 1 つの共有可能なキャンバス (ノートブック) に簡単に組み合わせることができます。 Azure Notebooks は、インストールせずにクラウド上で Jupyter Notebook を作成、実行するための無料でホストされているサービスです。
 
 ## <a name="prerequisites"></a>前提条件
 [なし] :
@@ -106,4 +106,4 @@ ms.locfileid: "87849402"
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [チュートリアル:線形回帰を行う Jupyter ノートブックを作成して実行する](tutorial-create-run-jupyter-notebook.md)
+> [チュートリアル:線形回帰を行う Jupyter Notebook を作成して実行する](tutorial-create-run-jupyter-notebook.md)

@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 479222cc9b67775d359182740dc78865da8cee38
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.openlocfilehash: c8f9bc283d88121ad4b6144b8ac9463510349212
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87115919"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88117228"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>方法:リソースにアクセスできる Azure AD アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -178,7 +178,7 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
    ![後からこれを取得することはできないので、このシークレット値をコピーする](./media/howto-create-service-principal-portal/copy-secret.png)
 
 ## <a name="configure-access-policies-on-resources"></a>リソースに対するアクセス ポリシーを構成する
-アプリケーションからアクセスする必要があるリソースに対する追加のアクセス許可の構成が必要になる場合があることに注意してください。 たとえば、キー、シークレット、または証明書へのアクセス権をアプリケーションに付与するには、[キー コンテナーのアクセス ポリシーも更新する](/azure/key-vault/key-vault-secure-your-key-vault#data-plane-and-access-policies)必要があります。  
+アプリケーションからアクセスする必要があるリソースに対する追加のアクセス許可の構成が必要になる場合があることに注意してください。 たとえば、キー、シークレット、または証明書へのアクセス権をアプリケーションに付与するには、[キー コンテナーのアクセス ポリシーも更新する](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies)必要があります。  
 
 1. **Azure portal** で、キー コンテナーに移動し、[[アクセス ポリシー]](https://portal.azure.com) を選択します。  
 1. **[アクセス ポリシーの追加]** を選択し、アプリケーションに付与するキー、シークレット、証明書のアクセス許可を選択します。  以前に作成したサービス プリンシパルを選択します。
@@ -187,5 +187,5 @@ Windows コントロール パネルからアクセスできる [[Manage User Ce
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure PowerShell を使用してサービス プリンシパルを作成する](howto-authenticate-service-principal-powershell.md)方法について学習します。
-* セキュリティ ポリシーを指定する方法については、「[Azure のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)」を参照してください。  
+* セキュリティ ポリシーを指定する方法については、[Azure ロールベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) に関するページを参照してください。  
 * ユーザーに対して許可または拒否される場合がある使用可能なアクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../../role-based-access-control/resource-provider-operations.md)」を参照してください。

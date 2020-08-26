@@ -6,14 +6,14 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 05/22/2020
 ms.author: banders
-ms.openlocfilehash: 99b6d86a65ec05a1299abfffae779113e573310c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 387e10e1e9e22e425e5849f4341052ab0f8ae1fb
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834970"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509826"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Azure 用にクレジット カードを追加、更新、または削除する
 

@@ -4,12 +4,12 @@ description: このクイックスタートでは、Node.js 用 QnA Maker クラ
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 76d0587c68ac46253dbd937c661b06bdb8c495c8
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: 4085ec5aaff75f33fc7a87708693084831ff5d8d
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87404084"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88246416"
 ---
 Node.js 用 QnA Maker クライアント ライブラリは、次の目的で使用することができます。
 
@@ -28,7 +28,7 @@ Node.js 用 QnA Maker クライアント ライブラリは、次の目的で使
 
 ## <a name="prerequisites"></a>前提条件
 
-* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/)
+* Azure サブスクリプション - [無料アカウントを作成します](https://azure.microsoft.com/free/cognitive-services)
 * 最新バージョンの [Node.js](https://nodejs.org)。
 * Azure サブスクリプションを入手したら、Azure portal で [QnA Maker リソース](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker)を作成し、オーサリング キーとリソースを取得します。 デプロイされたら、 **[リソースに移動]** を選択します。
     * アプリケーションを QnA Maker API に接続するには、作成したリソースのキーとリソース名が必要です。 このクイックスタートで後に示すコードに、自分のキーとリソース名を貼り付けます。

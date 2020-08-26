@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e9c4470ea16f1840274a6fa8613822b20d6772b3
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.openlocfilehash: 7b867f5bcbbdc5deab2d67f356df69ee870c21f3
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/14/2020
-ms.locfileid: "81310875"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142249"
 ---
 # <a name="quickstart-create-an-azureiotsecurity-module-twin"></a>クイック スタート:azureiotsecurity モジュール ツインを作成する
 
@@ -76,7 +76,7 @@ Azure Security Center for IoT モジュール ツインのプロパティに対�
 
 ## <a name="next-steps"></a>次のステップ
 
-次の記事に進んで、カスタム アラートの構成方法を学習してください。
+次の記事に進んで、セキュリティに関する推奨事項を調査する方法について学びましょう。
 
 > [!div class="nextstepaction"]
-> [カスタム アラートを構成する](quickstart-create-custom-alerts.md)
+> [セキュリティに関する推奨事項の調査](quickstart-investigate-security-recommendations.md)

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 08/14/2020
 ms.author: banders
-ms.openlocfilehash: 1fb49f3a58235ac196d7fb619b10517cb54908c0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ef6405ffa72028cfde0445ad40bfd628eaa24573
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87039533"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245803"
 ---
 # <a name="azure-ea-portal-administration-for-partners"></a>パートナー向けの Azure EA ポータル管理
 

@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 3f0de52782694e6cbc8fdb6b55d545191dbbb350
-ms.sourcegitcommit: ae3d707f1fe68ba5d7d206be1ca82958f12751e8
+ms.openlocfilehash: 7459d674cde123bc45544322347bc4c1fe89e820
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/10/2020
-ms.locfileid: "81010309"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88009615"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure Cache for Redis の構成方法
 このトピックでは、Azure Cache for Redis インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Cache for Redis インスタンスの既定の Redis サーバー構成についても説明します。
@@ -185,12 +185,12 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 | Azure Cache for Redis のメトリック | 詳細情報 |
 | --- | --- |
-| ネットワーク帯域幅の使用量 |[キャッシュ パフォーマンス - 使用できる帯域幅](cache-faq.md#cache-performance) |
+| ネットワーク帯域幅の使用量 |[キャッシュ パフォーマンス - 使用できる帯域幅](cache-planning-faq.md#azure-cache-for-redis-performance) |
 | 接続されているクライアント数 |[既定の Redis サーバー構成 - maxclients](#maxclients) |
 | サーバーの負荷 |[使用状況グラフ -  Redis サーバーの負荷](cache-how-to-monitor.md#usage-charts) |
-| メモリ使用量 |[キャッシュのパフォーマンス - サイズ](cache-faq.md#cache-performance) |
+| メモリ使用量 |[キャッシュのパフォーマンス - サイズ](cache-planning-faq.md#azure-cache-for-redis-performance) |
 
-キャッシュをアップグレードするには、 **[今すぐアップグレード]** をクリックして、価格レベルを変更し、キャッシュの[スケーリング](#scale)を行います。 価格レベルの選択の詳細については、「[Azure Cache for Redis のサービス内容と適切なサイズの選択](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)」をご覧ください。
+キャッシュをアップグレードするには、 **[今すぐアップグレード]** をクリックして、価格レベルを変更し、キャッシュの[スケーリング](#scale)を行います。 価格レベルの選択の詳細については、「[適切なサービス レベルを選択する](cache-overview.md#choosing-the-right-tier)」を参照してください
 
 
 ### <a name="scale"></a>スケール
@@ -414,7 +414,7 @@ Azure Cache for Redis の監視と診断の詳細については、「[Azure Cac
   * P4 (53 GB ～ 530 GB) - 最大 64 のデータベース
   * Redis クラスターが有効なすべての Premium キャッシュ - Redis クラスターは、データベース 0 の使用のみをサポートするため、Redis クラスターが有効な Premium キャッシュの `databases` の制限は、実質的に 1 で、 [Select](https://redis.io/commands/select) コマンドは使用できません。 詳細については、「 [クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](cache-how-to-premium-clustering.md#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
 
-データベースの詳細については、「[What are Redis databases? (Redis データベースとは)](cache-faq.md#what-are-redis-databases)」を参照してください
+データベースの詳細については、「[What are Redis databases? (Redis データベースとは)](cache-development-faq.md#what-are-redis-databases)」を参照してください
 
 > [!NOTE]
 > `databases` の設定は、キャッシュの作成中にのみ構成できます。また、PowerShell、CLI、その他の管理クライアントを使用する必要があります。 PowerShell を使用して、キャッシュの作成中に `databases` を構成する例については、[New-AzRedisCache](cache-how-to-manage-redis-cache-powershell.md#databases) に関するページをご覧ください。
@@ -505,4 +505,4 @@ shard1>get myKey
 リソース グループ間、およびサブスクリプション間でのリソースの移動については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](../azure-resource-manager/management/move-resource-group-and-subscription.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-* Redis コマンドの使用の詳細については、「[How can I run Redis commands? (Redis コマンドの実行方法)](cache-faq.md#how-can-i-run-redis-commands)」をご覧ください。
+* Redis コマンドの使用の詳細については、「[How can I run Redis commands? (Redis コマンドの実行方法)](cache-development-faq.md#how-can-i-run-redis-commands)」をご覧ください。

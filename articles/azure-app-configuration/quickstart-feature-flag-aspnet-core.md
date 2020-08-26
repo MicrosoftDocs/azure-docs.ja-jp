@@ -3,15 +3,16 @@ title: ASP.NET Core に機能フラグを追加するためのクイックスタ
 description: ASP.NET Core アプリに機能フラグを追加し、Azure App Configuration を使用して管理します。
 author: lisaguthrie
 ms.service: azure-app-configuration
+ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 01/14/2020
 ms.author: lcozzens
-ms.openlocfilehash: a25a40346d588f56028bf08294b070823b729e25
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 12b66dc173a8d3f93f97fb369ce03533299a65d7
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87760143"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235266"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>クイック スタート:ASP.NET Core アプリに機能フラグを追加する
 
@@ -114,7 +115,7 @@ ms.locfileid: "87760143"
 
 1. シークレット マネージャーに、**ConnectionStrings:AppConfig** という名前のシークレットを追加します。
 
-    このシークレットには、App Configuration ストアにアクセスするための接続文字列が格納されます。 次のコマンドの `<your_connection_string>` の値を、自分の App Configuration ストアの接続文字列に置き換えます。 接続文字列は、Azure portal の **[アクセス キー]** で確認できます。
+    このシークレットには、App Configuration ストアにアクセスするための接続文字列が格納されます。 次のコマンドの `<your_connection_string>` の値を、自分の App Configuration ストアの接続文字列に置き換えます。 プライマリ読み取り専用キーの接続文字列は、Azure portal の **[アクセス キー]** で確認できます。
 
     このコマンドは、 *.csproj* ファイルと同じディレクトリで実行する必要があります。
 
@@ -186,7 +187,7 @@ ms.locfileid: "87760143"
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllersWithViews();
-        services.AddSingleton(Configuration).AddFeatureManagement();
+        services.AddFeatureManagement();
     }
 
     ---

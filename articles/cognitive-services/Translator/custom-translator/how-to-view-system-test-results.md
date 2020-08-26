@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 3361241bf0a330abc18701f93460208b8804a7dc
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 04e21e4bcd56506ba27730ebc1f9b0db8dc39615
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994262"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88509687"
 ---
 # <a name="view-system-test-results"></a>システムのテスト結果の表示
 
@@ -68,7 +68,7 @@ ms.locfileid: "83994262"
 
 1.  プロジェクトを選択し、[モデル] タブに移動します。
 
-2. トレーニングが正常に完了したモデルで、まだデプロイされていない場合は、[デプロイ] ボタンが表示されます。
+2. 正常にトレーニングが完了したモデルで、まだデプロイされていない場合は、[デプロイ] ボタンが表示されます。
 
     ![モデルのデプロイ](media/how-to/how-to-deploy-model.png)
 
@@ -102,6 +102,6 @@ ms.locfileid: "83994262"
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Translator V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
+- [Microsoft Translator Text API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) を介してデプロイされた翻訳モデルを使い始めます。
 - [設定を管理](how-to-manage-settings.md)してワークスペースを共有し、サブスクリプション キーを管理する方法について説明します。
 - [Microsoft Translator Hub](https://hub.microsofttranslator.com) から[ワークスペースとプロジェクトを移行する方法](how-to-migrate.md)について説明します。

@@ -1,18 +1,18 @@
 ---
 title: Azure API Management のセキュリティ コントロール
-description: API Management を評価するためのセキュリティ コントロールのチェックリスト
+description: API Management を評価するためのセキュリティ コントロールのチェックリストを確認します。 これには、ネットワーク、ID、データ保護のコントロールが含まれます。
 services: api-management
 author: vladvino
 ms.service: api-management
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
-ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a147179f7b55e43379b3c3fa3a7a0767cc97b198
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "75751127"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902577"
 ---
 # <a name="security-controls-for-api-management"></a>API Management のセキュリティ コントロール
 
@@ -66,7 +66,7 @@ ms.locfileid: "75751127"
 
 このセクションでは、Azure API Management に影響しない一般的な脆弱性について説明します。
 
-| 脆弱性               | 説明                                                                                                                                                                                                                                                                                                               |
+| 脆弱性               | Description                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | Ticketbleed は、一部の F5 製品で検出された TLS SessionTicket 拡張機能の実装に含まれる脆弱性です。 初期化されていないメモリから最大 31 バイトのデータがリーク ("流出") する可能性があります。 これは、クライアントから渡される TLS スタックをセッション ID でパディングして、データを 32 ビットの長さにすることが原因で発生します。 |
 

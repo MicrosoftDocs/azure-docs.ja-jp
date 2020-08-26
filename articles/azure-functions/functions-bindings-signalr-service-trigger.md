@@ -3,14 +3,15 @@ title: Azure Functions SignalR Service トリガー バインド
 description: Azure Functions から Azure SignalR Service メッセージを送信する方法について説明します。
 author: chenyl
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 05/11/2020
 ms.author: chenyl
-ms.openlocfilehash: ec2952a3093661f0f6ef32908307a8a82c6367ed
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: e2651afbcdc3bae71bb531aa0e821f83264c295d
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540232"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212588"
 ---
 # <a name="signalr-service-trigger-binding-for-azure-functions"></a>Azure Functions における SignalR Service のトリガー バインド
 

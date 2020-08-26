@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: e2ce35158e8f9a3a2ad9da2b3d67a3f35d5a8c80
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 5058f37fcf96c7c556b55f0afb8753390f51f4d1
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503567"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607350"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>コマーシャル マーケットプレースの販売機能
 
@@ -136,7 +136,7 @@ Marketplace サービス手数料減額の対象となっているパートナ�
 |Microsoft は、ライセンス コストの 80% をパブリッシャーに支払います <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 90% を支払います   |   1 か月あたり $80.00 <br> \* 1 か月あたり $90.00    |
 |Microsoft は、ライセンス コストの 20% を受け取ります <br> \* Microsoft は、すべての対象となる SaaS アプリのライセンス コストの 10% を受け取ります。  |  1 か月あたり $20.00 <br> \* $10.00     |
 
-コマーシャル マーケットプレースで公開する特定のオファーに関しては、Microsoft によって Marketplace サービス料金が 20% から 10% に減額されます (Microsoft 発行元契約の説明に従う)。 お客様のオファーが対象となるには、オファーが Microsoft によって Azure IP 共同販売インセンティブの対象に指定されている必要があります。 ある月に Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブ対象 SaaS、VM、管理対象アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーに適用されます。
+コマーシャル マーケットプレースで公開する特定のオファーに関しては、Microsoft によって Marketplace サービス料金が 20% から 10% に減額されます (Microsoft 発行元契約の説明に従う)。 お客様のオファーが対象となるには、オファーが Microsoft によって Azure IP 共同販売インセンティブの対象に指定されている必要があります。 ある月に Marketplace サービス料金の減額を受け取るには、各カレンダー月の月末から少なくとも 5 営業日前に資格を満たす必要があります。 Marketplace サービス料金の減額は、Azure IP 共同販売インセンティブ対象 SaaS、VM、マネージド アプリのほか、コマーシャル マーケットプレースを通じて公開された正規の取引可能 IaaS オファーに適用されます。
 
 ### <a name="customer-invoicing-payment-billing-and-collections"></a>顧客の請求、支払い、課金、回収
 
@@ -191,4 +191,4 @@ Marketplace サービス手数料減額の対象となっているパートナ�
 ## <a name="next-steps"></a>次のステップ
 
 - 選択したオファーの種類について、公開オプションにおける適格性の要件を確認し、オファーの選択および構成を確定する。
-- ネットショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認する。
+- オンライン ショップごとの公開パターン (ソリューションをオファーの種類や構成にマップする方法など) を確認します。

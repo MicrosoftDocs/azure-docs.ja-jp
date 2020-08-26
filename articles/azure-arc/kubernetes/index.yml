@@ -1,0 +1,38 @@
+### YamlMime:Landing
+title: Azure Arc Kubernetes (プレビュー)
+summary: Azure Arc を使用して Kubernetes クラスターを管理する方法について説明します
+metadata:
+  title: Azure Arc Kubernetes
+  description: Azure でオンプレミスのマシンを管理する方法について説明します
+  author: 
+  ms.service: azure-arc
+  ms.topic: landing-page
+  ms.date: 06/26/2020
+  ms.author: 
+  ms.openlocfilehash: 7c643d10971d93a3c6194bc7390d2271c1ed561b
+  ms.sourcegitcommit: e2b36c60a53904ecf3b99b3f1d36be00fbde24fb
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 08/24/2020
+  ms.locfileid: "88763767"
+landingContent:
+- title: Azure Arc を使用して Kubernetes クラスターを Azure に接続する
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Azure Arc 対応 Kubernetes とは
+      url: overview.md
+  - linkListType: quickstart
+    links:
+    - text: クラスターの接続
+      url: connect-cluster.md
+  - linkListType: how-to-guide
+    links:
+    - text: GitOps を使用して構成をデプロイする
+      url: use-gitops-connected-cluster.md
+    - text: GitOps を使用して Helm グラフをデプロイする
+      url: use-gitops-with-helm.md
+    - text: Azure Policy を使用して GitOps を適用する
+      url: use-azure-policy.md
+    - text: Azure IoT Edge ワークロードをデプロイする
+      url: deploy-azure-iot-edge-workloads.md

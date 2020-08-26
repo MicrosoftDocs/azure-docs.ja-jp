@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f242b4a7e984ceeb183547cb3a949927f3c91da
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: ebe40cd68074d4857b9869f29173ec3e6f78379d
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80653112"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054002"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>最新の Azure Multi-Factor Authentication Server にアップグレードする
 
@@ -41,7 +41,7 @@ v6.x 以前から v7.x 以降にアップグレードする場合、すべての
 4. 各 MFA Server で新しいインストーラーを実行します。 下位サーバーはマスターによってレプリケートされる古いデータ ファイルを読み取ることができるため、最初に下位サーバーをアップグレードします。
 
    > [!NOTE]
-   > サーバーをアップグレードする際には、他の MFA サーバーとの負荷分散やトラフィック共有からそのサーバーを削除する必要があります。
+   > サーバーをアップグレードする場合には、他の MFA サーバーとの負荷分散やトラフィック共有から削除する必要があります。
    >
    > インストーラーを実行する前に、現在の MFA Server をアンインストールする必要はありません。 インストーラーはインプレース アップグレードを実行します。 インストール パスは以前のインストールのレジストリから取得されるため、同じ場所にインストールされます (C:\Program Files\Multi-Factor Authentication Server など)。
   

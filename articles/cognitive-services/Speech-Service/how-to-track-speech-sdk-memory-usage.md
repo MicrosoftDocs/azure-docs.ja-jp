@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rhurey
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: da5103317a2215aca68cec14ba8a0951258c9b89
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: a6be6ca00b2bc5d7b35fb71437809754f129df96
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "75453342"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88054637"
 ---
 # <a name="how-to-track-speech-sdk-memory-usage"></a>Speech SDK でメモリ使用量を追跡する方法
 
@@ -69,7 +69,7 @@ config.setProperty("SPEECH-ObjectCountWarnThreshold", "10000");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name(“SPEECH-ObjectCountWarnThreshold", "10000")?
+speech_config.set_property_by_name("SPEECH-ObjectCountWarnThreshold", "10000")?
 ```
 
 ::: zone-end
@@ -131,7 +131,7 @@ config.setProperty("SPEECH-ObjectCountErrorThreshold", "10000");
 ::: zone pivot="programming-language-python"
 
 ```Python
-speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000")?
+speech_config.set_property_by_name("SPEECH-ObjectCountErrorThreshold", "10000")?
 ```
 
 ::: zone-end
@@ -149,5 +149,4 @@ speech_config.set_property_by_name(“SPEECH-ObjectCountErrorThreshold", "10000"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [音声サービス試用版サブスクリプションを取得する](get-started.md)
-* [マイクを使用して音声を認識する方法を確認する](quickstarts/speech-to-text-from-microphone.md)
+* [Speech SDK についてさらに詳しく学習する](speech-sdk.md)

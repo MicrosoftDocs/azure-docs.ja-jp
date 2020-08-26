@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8553a809173d955a21e6730de35c70de5b69e81b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: e3316b4a2255652972a0b9deef813f894f993589
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87136027"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87836073"
 ---
 # <a name="azure-monitor-insights-for-virtual-wan-preview"></a>Virtual WAN に関する Azure Monitor の分析情報 (プレビュー)
 
@@ -21,7 +21,7 @@ Virtual WAN に関する [Azure Monitor の分析情報](../azure-monitor/insigh
 Virtual WAN、ハブ、ゲートウェイ、接続レベルのメトリックが示される Virtual WAN の事前パッケージ済みメトリック ブックによって、Virtual WAN のリソース レベルのメトリックが収集されて表示されます。 この記事では、Virtual WAN に関する Azure Monitor の分析情報を使用して、Virtual WAN のトポロジとメトリックのすべてを 1 か所で表示する手順について説明します。
 
 > [!NOTE]
-> 分析情報のメニューは、このプレビューのためのロールアウト中です。
+> Virtual WAN ポータルの [分析情報] メニュー オプションは、ロールアウトの処理が行われています。Virtual WAN の [分析情報] メニューがロールアウトされている間、Virtual WAN のトポロジとメトリック ブックには、Azure Monitor for Networks を使用して直接アクセスできます。 詳細については、[Azure Monitor の分析情報](../azure-monitor/insights/network-insights-overview.md)に関する記事を参照してください。 
 >
 
 ## <a name="before-you-begin"></a>開始する前に

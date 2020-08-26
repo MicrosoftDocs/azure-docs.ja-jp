@@ -8,12 +8,12 @@ ms.author: jonfan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: 97399635399c12022006ac95e60c5828bf2a9dc5
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 6c07ab4b18c017bd29723d2640129b8e67374e3c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76905438"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87837382"
 ---
 # <a name="migrate-your-apps-and-solutions-from-biztalk-services-to-azure-logic-apps"></a>アプリとソリューションを BizTalk Services から Azure Logic Apps に移行する
 
@@ -53,13 +53,13 @@ BizTalk Services には、数種類のアーティファクトがあります。
 
 BizTalk Services のコネクタにより、HTTP ベースの要求/応答の対話を可能にする双方向ブリッジを含め、各ブリッジはデータを送受信できます。 Logic Apps でも同じ用語が使用されており、さまざまなテクノロジやサービスに接続することで同じ目的を果たす数百個のコネクタがあります。 たとえば、クラウド SaaS および PaaS サービス (OneDrive、Office365、Dynamics CRM など) 用のコネクタに加え、オンプレミス データ ゲートウェイ (BizTalk Services の BizTalk Adapter サービスに代わるもの) を介したオンプレミス システム用のコネクタも用意されています。 BizTalk Services のソースは、FTP、SFTP、および Service Bus Queue または Topic サブスクリプションに制限されています。
 
-![](media/logic-apps-move-from-mabs/sources.png)
+![BizTalk Services のフローを示す図。](media/logic-apps-move-from-mabs/sources.png)
 
 既定では、各ブリッジには、ブリッジの [Runtime Address]\(ランタイム アドレス\) および [Relative Address]\(相対アドレス\) プロパティで構成される HTTP エンドポイントがあります。 Logic Apps で同じ結果を得るには、[要求および応答](../connectors/connectors-native-reqres.md)アクションを使用します。
 
 ## <a name="xml-processing-and-bridges"></a>XML の処理とブリッジ
 
-BizTalk Services では、ブリッジは処理パイプラインに似ています。 ブリッジはコネクタから受信したデータを取得し、そのデータで何らかの処理を実行して、結果を別のシステムに送信できます。 Logic Apps では、BizTalk Services と同じパイプライン ベースの対話パターンをサポートし、他の統合パターンも提供することによって、同じ処理を実行します。 BizTalk Services の [XML 要求-応答ブリッジ](https://msdn.microsoft.com/library/azure/hh689781.aspx)は、VETER パイプラインと呼ばれます。これは、次のタスクを実行する各段階で構成されます。
+BizTalk Services では、ブリッジは処理パイプラインに似ています。 ブリッジはコネクタから受信したデータを取得し、そのデータで何らかの処理を実行して、結果を別のシステムに送信できます。 Logic Apps では、BizTalk Services と同じパイプライン ベースの対話パターンをサポートし、他の統合パターンも提供することによって、同じ処理を実行します。 BizTalk Services の [XML 要求-応答ブリッジ](/previous-versions/azure/hh689781(v=azure.100))は、VETER パイプラインと呼ばれます。これは、次のタスクを実行する各段階で構成されます。
 
 * (V) 検証
 * (E) 強化
@@ -69,7 +69,7 @@ BizTalk Services では、ブリッジは処理パイプラインに似ていま
 
 次の図に示すように、処理は要求と応答に分かれており、たとえば、パスごとに異なるマップを使用して、要求と応答のパスを個別に制御できます。
 
-![](media/logic-apps-move-from-mabs/xml-request-reply.png)
+![要求と応答の間で処理がどのように分割されるかを示すスクリーンショット。](media/logic-apps-move-from-mabs/xml-request-reply.png)
 
 また、XML 一方向ブリッジでは、処理の開始時と終了時にデコード段階とエンコード段階が追加されます。 パススルー ブリッジには、1 つの強化段階が含まれます。
 
@@ -91,7 +91,7 @@ BizTalk Services では、変換段階で XML ベースのあるメッセージ�
 
 BizTalk Services は、どのエンドポイントまたはコネクタで受信メッセージやデータを送信するかというルーティングを決定します。 ルーティング フィルター オプションを使用することで、事前に構成されたエンドポイントの中から選択できます。
 
-![](media/logic-apps-move-from-mabs/route-filter.png)
+![ルーティング フィルター オプションを示すスクリーンショット。](media/logic-apps-move-from-mabs/route-filter.png)
 
 BizTalk Services では、オプションが 2 つしかない場合は、BizTalk Services でのルーティング フィルターの変換に最適な方法として、"*条件*" を使用します。 3 つ以上存在する場合は、**スイッチ**を使用します。
 
@@ -103,7 +103,7 @@ BizTalk Services の処理では、強化段階で、受信したデータに関
 
 ### <a name="run-custom-code"></a>カスタム コードの実行
 
-BizTalk Services では、独自のアセンブリでアップロードされた[カスタム コードを実行](https://msdn.microsoft.com/library/azure/dn232389.aspx)できます。 この機能は、[IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) インターフェイスによって実装されます。 ブリッジの各段階には、このインターフェイスを実装する作成済みの .NET 型を提供する、2 つのプロパティ ([On Enter Inspector]\(開始時の Inspector\) と [On Exit Inspector]\(終了時の Inspector\)) が含まれています。 カスタム コードを使用すると、データに対してより複雑な処理を実行したり、一般的なビジネス ロジックを実行するアセンブリ内の既存のコードを再利用したりできます。 
+BizTalk Services では、独自のアセンブリでアップロードされた[カスタム コードを実行](/previous-versions/azure/dn232389(v=azure.100))できます。 この機能は、[IMessageInspector]() インターフェイスによって実装されます。 ブリッジの各段階には、このインターフェイスを実装する作成済みの .NET 型を提供する、2 つのプロパティ ([On Enter Inspector]\(開始時の Inspector\) と [On Exit Inspector]\(終了時の Inspector\)) が含まれています。 カスタム コードを使用すると、データに対してより複雑な処理を実行したり、一般的なビジネス ロジックを実行するアセンブリ内の既存のコードを再利用したりできます。 
 
 Logic Apps には、カスタム コードを実行するための 2 つの主な方法が用意されています。Azure Functions と API Apps です。 Azure Functions は作成して、ロジック アプリから呼び出すことができます。 「[Add and run custom code for logic apps through Azure Functions (Azure Functions を使用してロジック アプリのカスタム コードを追加して実行する)](../logic-apps/logic-apps-azure-functions.md)」を参照してください。 Azure App Service の一部である API Apps は、独自のトリガーやアクションを作成するために使用します。 Logic Apps で使用するカスタム API の作成の詳細については、[こちら](../logic-apps/logic-apps-create-api-app.md)をご覧ください。 
 

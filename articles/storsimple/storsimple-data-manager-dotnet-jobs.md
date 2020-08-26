@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure StorSimple データ マネージャー ジョブに .NET SDK を使用する
-description: .NET SDK を使用して StorSimple データ マネージャー ジョブを起動する方法について説明します。
+description: StorSimple Data Manager サービス内で .NET SDK を使用し、StorSimple デバイス データを変換する方法について説明します。
 author: alkohli
 ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 316eddc98de78974bb2583f91ced635b148686c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514895"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88183651"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>.NET SDK を使用してデータ変換を開始する
 

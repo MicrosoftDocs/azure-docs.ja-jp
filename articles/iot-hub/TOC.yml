@@ -53,6 +53,9 @@
           href: quickstart-device-streams-proxy-nodejs.md
         - name: C
           href: quickstart-device-streams-proxy-c.md
+    - name: ARM テンプレートを使用したメッセージの自動ルーティング
+      displayName: Resource Manager
+      href: horizontal-arm-route-messages.md
 - name: チュートリアル
   items:
     - name: メッセージのルーティング

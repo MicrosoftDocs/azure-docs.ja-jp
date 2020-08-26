@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 06/26/2020
+ms.date: 08/18/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: dececd066597682e240e737727d3bcaf8f8f3619
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: eec99ae353d4e5ca1bede1afef135def96207c50
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87375662"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88604705"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>ユーザーは、Azure Virtual WAN を使用するために、SD-WAN/VPN デバイスを利用したハブとスポークを用意する必要がありますか。
 
@@ -119,7 +119,7 @@ Virtual WAN は、VPN と ExpressRoute のどちらについても、最大 20 G
 
 ### <a name="what-if-a-device-i-am-using-is-not-in-the-virtual-wan-partner-list-can-i-still-use-it-to-connect-to-azure-virtual-wan-vpn"></a>使用しているデバイスが Virtual WAN パートナー リストにない場合はどうなりますか。 Azure Virtual WAN VPN に引き続き接続することはできますか。
 
-はい。デバイスで IPsec IKEv1 または IKEv2 がサポートされている限り接続できます。 Virtual WAN パートナーによって、デバイスから Azure VPN エンドポイントへの接続が自動化されます。 これは '支店情報のアップロード'、'IPsec と構成'、'接続' などの手順が自動化されることを意味します。ご利用のデバイスが Virtual WAN パートナーのエコシステムからのものでない場合、手動で Azure の構成を取得し、デバイスを更新して IPsec 接続を設定するといった面倒な作業が必要になります。
+はい。デバイスで IPsec IKEv1 または IKEv2 がサポートされている限り接続できます。 Virtual WAN パートナーによって、デバイスから Azure VPN エンドポイントへの接続が自動化されます。 これは、"ブランチ情報のアップロード"、"IPsec と構成"、"接続" などの手順が自動化されることを意味します。 ご利用のデバイスが Virtual WAN パートナーのエコシステムからのものでない場合、手動で Azure の構成を取得し、デバイスを更新して IPsec 接続を設定するなどの面倒な作業が必要になります。
 
 ### <a name="how-do-new-partners-that-are-not-listed-in-your-launch-partner-list-get-onboarded"></a>ローンチ パートナーの一覧に記載されていない新しいパートナーが一覧に記載されるには、どうすればよいですか。
 
@@ -187,7 +187,7 @@ Virtual WAN パートナーによって、Azure VPN エンドポイントへの 
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Azure Virtual WAN を使用する場合、ネットワーク スループットまたは接続に制限はありますか。
 
-ネットワーク スループットは、仮想 WAN ハブのサービスごとにあります。 仮想 WAN は必要な数だけ使用できますが、各仮想 WAN ではリージョンごとに 1 つのハブが許可されます。 各ハブでは、VPN の総スループットは最大 20 Gbps、ExpressRoute の総スループットは最大 20 Gbps、ユーザー VPN (ポイント対サイト) VPN の総スループットは最大 20 Gbps となります。 仮想ハブのルーターでは、VNet 間のトラフィック フローに対して最大 50 Gbps がサポートされ、Virtual WAN ハブのすべての VNet で合計 2,000 の VM ワークロードが想定されます。
+ネットワーク スループットは、仮想 WAN ハブのサービスごとにあります。 仮想 WAN は必要な数だけ使用できますが、各仮想 WAN ではリージョンごとに 1 つのハブが許可されます。 各ハブでは、VPN の総スループットは最大 20 Gbps、ExpressRoute の総スループットは最大 20 Gbps、ユーザー VPN (ポイント対サイト) VPN の総スループットは最大 20 Gbps となります。 仮想ハブのルーターでは、VNet 対 VNet のトラフィック フローに対して最大 50 Gbps がサポートされ、単一の仮想ハブに接続されているすべての VNet で合計 2,000 の VM ワークロードが想定されます。
 
 VPN サイトでは、ハブに接続するときに、複数の接続を使用します。 Virtual WAN では、仮想ハブあたり最大 1,000 の接続または 2,000 の IPsec トンネルがサポートされます。 リモート ユーザーは、仮想ハブに接続するときに、P2S VPN ゲートウェイに接続します。これにより、仮想ハブの P2S VPN ゲートウェイに対して選択されたスケール ユニット (帯域幅) に応じて、最大 10,000 のユーザーがサポートされます。
 
@@ -215,7 +215,7 @@ VPN サイトでは、ハブに接続するときに、複数の接続を使用�
 
 はい。 IPsec をサポートするインターネット接続および物理デバイスが必要です。統合 [Virtual WAN パートナー](../articles/virtual-wan/virtual-wan-locations-partners.md)が提供するものをお勧めします。 必要に応じて、好みのデバイスから、構成と Azure への接続を手動で管理できます。
 
-### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>接続 (VPN、ExpressRoute、Virtual Network) の既定のルート (0.0.0.0/0) を有効にするにはどうすればよいですか。
+### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>接続 (VPN、ExpressRoute、または Virtual Network) の既定のルート (0.0.0.0/0) を有効にするにはどうすればよいですか。
 
 仮想ハブは、仮想ネットワーク、サイト間 VPN、または ExpressRoute 接続に対し、学習した既定のルートを伝達することができます (対応するフラグが、その接続で "有効" になっている場合)。 このフラグは、ユーザーが仮想ネットワーク接続、VPN 接続、または ExpressRoute 接続を編集するときに表示されます。 サイトまたは ExpressRoute 回線がハブに接続されると、このフラグは既定で無効になります。 VNet を仮想ハブに接続するための仮想ネットワーク接続が追加されたときは、既定で有効になります。 既定のルートの起点は Virtual WAN ハブではありません。Virtual WAN ハブにファイアウォールをデプロイした結果としてそのハブが既定のルートを既に学習している場合、または接続されている別のサイトで強制トンネリングが有効な場合に、既定のルートが伝達されます。
 
@@ -239,23 +239,27 @@ ER 間の転送は常に Global Reach 経由で行われます。 仮想ハブ �
 
 ### <a name="does-virtual-wan-prefer-expressroute-over-vpn-for-traffic-egressing-azure"></a>Virtual WAN では、Azure から送信されるトラフィックに対して、VPN より ExpressRoute が優先されますか。
 
-はい 
+はい。
 
-### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-prefered-over-expressroute"></a>Virtual WAN ハブに ExpressRoute 回線と VPN サイトが接続されている場合、VPN 接続ルートが ExpressRoute より優先される原因は何ですか。
+### <a name="when-a-virtual-wan-hub-has-an-expressroute-circuit-and-a-vpn-site-connected-to-it-what-would-cause-a-vpn-connection-route-to-be-preferred-over-expressroute"></a>Virtual WAN ハブに ExpressRoute 回線と VPN サイトが接続されている場合、VPN 接続ルートが ExpressRoute より優先される原因は何ですか。
 
-ExpressRoute 回線が仮想ハブに接続されている場合、Microsoft エッジ ルーターは、オンプレミスと Azure の間の通信での最初のノードになります。 これらのエッジ ルーターは、Virtual WAN ExpressRoute ゲートウェイと通信します。次に、Virtual WAN のあらゆるゲートウェイの間のルートをすべて制御する仮想ハブ ルーターからルートを学習します。 Microsoft エッジ ルーターは、オンプレミスから学習したルートより高い優先順位を持つ仮想ハブ ExpressRoute ルートを処理します。 VPN サイトの AS パスが長い場合を除き、VPN 接続が仮想ハブのプライマリ メディアとなって、そこからルートが学習される場合は (ExpressRoute と VPN の間のフェールオーバー シナリオなど)、何らかの理由により、仮想ハブは引き続き ExpressRoute ゲートウェイと VPN 学習ルートを共有します。これにより、Microsoft エッジ ルーターでは、オンプレミス ルートより VPN ルートが優先されます。 
+ExpressRoute 回線が仮想ハブに接続されている場合、Microsoft エッジ ルーターは、オンプレミスと Azure の間の通信での最初のノードになります。 これらのエッジ ルーターは、Virtual WAN ExpressRoute ゲートウェイと通信します。次に、Virtual WAN のあらゆるゲートウェイの間のルートをすべて制御する仮想ハブ ルーターからルートを学習します。 Microsoft エッジ ルーターは、オンプレミスから学習したルートより高い優先順位である仮想ハブ ExpressRoute ルートを処理します。 VPN サイトの AS パスが長い場合を除き、VPN 接続が仮想ハブのプライマリ メディアとなって、そこからルートが学習される場合は (ExpressRoute と VPN の間のフェールオーバー シナリオなど)、なんらかの理由により、仮想ハブは引き続き ExpressRoute ゲートウェイと VPN 学習ルートを共有します。これにより、Microsoft エッジ ルーターでは、オンプレミス ルートより VPN ルートが優先されます。
 
 ### <a name="when-two-hubs-hub-1-and-2-are-connected-and-there-is-an-expressroute-circuit-connected-as-a-bow-tie-to-both-the-hubs-what-is-the-path-for-a-vnet-connected-to-hub-1-to-reach-a-vnet-connected-in-hub-2"></a>2 つのハブ (ハブ 1 と 2) が接続されていて、両方のハブに対して (蝶ネクタイのような形で) 接続されている ExpressRoute 回線がある場合、ハブ 2 に接続されている VNet に到達するために、ハブ 1 に接続されている VNet のパスはどのようなものですか。
 
-現在の動作では、VNet 間接続の場合、ハブ間よりも ExpressRoute 回線パスが優先されます。 しかし、これは仮想 WAN セットアップではお勧めできません。 Virtual WAN チームは、ExpressRoute パスよりハブ間を優先できるようにするための修正に取り組んでいます。 複数の ExpressRoute 回線 (異なるプロバイダー) を 1 つのハブに接続し、リージョン間のトラフィック フローに対して Virtual WAN によって提供されるハブ間接続を使用することをお勧めします。
+現在の動作では、VNet 対 VNet 接続の場合、ハブ間よりも ExpressRoute 回線パスが優先されます。 しかし、これは仮想 WAN セットアップではお勧めできません。 Virtual WAN チームは、ExpressRoute パスよりハブ間を優先できるようにするための修正に取り組んでいます。 複数の ExpressRoute 回線 (異なるプロバイダー) を 1 つのハブに接続し、リージョン間のトラフィック フローに対して Virtual WAN によって提供されるハブ間接続を使用することをお勧めします。
 
 ### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Virtual WAN に IPv6 のサポートはありますか。
 
 IPv6 は、Virtual WAN ハブとそのゲートウェイではサポートされていません。 IPv6 をサポートする VNet があり、その VNet を Virtual WAN に接続する必要がある場合、このシナリオは現在サポートされていません。
 
-### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionality-"></a>さまざまな Virtual WAN 機能を自動化するスクリプトで使用される、推奨される API バージョンは何ですか。
+### <a name="what-is-the-recommended-api-version-to-be-used-by-scripts-automating-various-virtual-wan-functionalities"></a>さまざまな Virtual WAN 機能を自動化するスクリプトで使用される、推奨される API バージョンは何ですか。
 
 最小バージョンとして 05-01-2020 (2020 年 5 月 1 日) が必要です。 
+
+### <a name="are-there-any-virtual-wan-limits"></a>Virtual WAN には制限がありますか。
+
+サブスクリプションとサービスの制限に関するページの「[Virtual WAN の制限](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#virtual-wan-limits)」のセクションを参照してください。
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Basic タイプの Virtual WAN と Standard タイプの Virtual WAN の違いは何ですか。
 

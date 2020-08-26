@@ -3,20 +3,20 @@ title: ローカル ファイルから Azure Media Services ジョブの入力�
 description: この記事では、ローカル ファイルから Azure Media Services ジョブの入力を作成する手順を説明します。
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/26/2020
-ms.author: juliako
-ms.openlocfilehash: a635a75a64db59fc56c6890f79af967a58735853
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/18/2020
+ms.author: inhenkel
+ms.openlocfilehash: 4d7e6d9daa5d30c5cbf5b198a147564d0c05c074
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87001130"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607222"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>ローカル ファイルからジョブの入力を作成する
 
@@ -25,7 +25,6 @@ Media Services v3 では、ビデオを処理するジョブを送信すると�
 ## <a name="prerequisites"></a>前提条件 
 
 * [Media Services アカウントを作成する](./create-account-howto.md)
-* 「[アセットの管理](manage-asset-concept.md)」を確認する。
 
 ## <a name="net-sample"></a>.Net のサンプル
 

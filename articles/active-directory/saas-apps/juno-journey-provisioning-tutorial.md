@@ -2,25 +2,21 @@
 title: チュートリアル:Juno Journey を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure AD から Juno Journey に対してユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除する方法を学習します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 79813b19-c96e-4459-a4e5-636a6b6f5041
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 0538902897d088c8ce271487b3f30698af0bb1eb
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 96dd5c617eb643ce8db5058bca238f5c3a83e756
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926554"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88546887"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>チュートリアル:Juno Journey を構成し、自動ユーザー プロビジョニングに対応させる
 

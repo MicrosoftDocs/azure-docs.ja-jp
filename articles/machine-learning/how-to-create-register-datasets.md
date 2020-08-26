@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: b2252a70aea6df755bb8b37c36b77b08db819ba9
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 51e31977a5f31777252920f9cd18bf069bad6d1e
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88037543"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88507197"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning データセットを作成する
 
@@ -25,7 +25,7 @@ ms.locfileid: "88037543"
 
 この記事では、Azure Machine Learning データセットを作成し、ローカルまたはリモートの実験のデータにアクセスする方法について説明します。 Azure Machine Learning のデータ アクセス ワークフロー全体におけるデータ セットの位置付けの詳細については、[データへの安全なアクセス](concept-data.md#data-workflow)に関するページを参照してください。
 
-データセットを作成することにより、データ ソースの場所への参照とそのメタデータのコピーを作成します。 データは既存の場所に残るため、追加のストレージ コストは発生せず、データ ソースの整合性が損なわれることはありません。 また、データセットは遅延評価されるので、ワークフローのパフォーマンス向上に役立ちます。 データセットは、データストア、パブリック URL、[Azure Open Dataset](../open-datasets/how-to-create-dataset-from-open-dataset.md) から作成できます。
+データセットを作成することにより、データ ソースの場所への参照とそのメタデータのコピーを作成します。 データは既存の場所に残るため、追加のストレージ コストは発生せず、データ ソースの整合性が損なわれることはありません。 また、データセットは遅延評価されるので、ワークフローのパフォーマンス向上に役立ちます。 データセットは、データストア、パブリック URL、[Azure Open Dataset](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md) から作成できます。
 
 Azure Machine Learning データセットを使用すると、次のことを実行できます。
 
@@ -232,7 +232,7 @@ Studio でデータセットを作成するには、次の手順を実行しま�
 
 [Azure オープン データセット](https://azure.microsoft.com/services/open-datasets/)は選別されたパブリック データセットであり、機械学習ソリューションにシナリオ固有の機能を追加してモデルの精度を上げるために使用できます。 データセットには、機械学習モデルのトレーニングと予測ソリューションのエンリッチメントに役立つ天気、国勢調査、祝日、公共の安全、場所に関するパブリック ドメイン データが含まれます。 Open Datasets は Microsoft Azure 上のクラウドにあり、SDK と Studio の両方に含まれています。
 
-[Azure Open Datasets から Azure Machine Learning データセット](../open-datasets/how-to-create-dataset-from-open-dataset.md)を作成する方法を確認してください。 
+[Azure Open Datasets から Azure Machine Learning データセット](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md)を作成する方法を確認してください。 
 
 ## <a name="train-with-datasets"></a>データセットを使用したトレーニング
 

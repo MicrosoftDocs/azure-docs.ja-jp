@@ -3,16 +3,16 @@ title: Azure Enterprise REST API
 description: この記事では、Azure エンタープライズ登録で使用する REST API について説明します。
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2020
+ms.date: 08/14/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 06848ee18b610c6199d7add720c7ffb386aa4633
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 38662109b03caf63f72f2c1ad3132611ee91d1c3
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87075134"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88244093"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise REST API
 

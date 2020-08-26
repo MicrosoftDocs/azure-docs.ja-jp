@@ -5,12 +5,12 @@ ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 19a7bc70bd782f9b684cb48672147f5009e4a08f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ab8bee756cc714074a6f97156bf528ddeabff8a0
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87073866"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88236745"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -423,7 +423,6 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
       ...
     </conditions>
     ```
-- 一部の [IP 制限ルール](app-service-ip-restrictions.md)により、スワップ操作でのアプリへの HTTP 要求の送信が妨げられる可能性があります。 `10.` および `100.` で始まる IPv4 アドレスの範囲は、デプロイに対して内側です。 これらにアプリへの接続を許可する必要があります。
 
 - スロットをスワップした後、アプリが予期せず再起動する可能性があります。 これは、スワップ後にホスト名のバインド構成の同期が切れ、単体では再起動を行うことができないためです。 ただし、基盤となる特定のストレージ イベント (記憶域ボリュームのフェールオーバーなど) によってこれらの不一致が検出され、すべてのワーカー プロセスが強制的に再起動される可能性があります。 このような再起動を最小限に抑えるには、*すべてのスロット*で[`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1`アプリ設定](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig)を設定します。 ただし、このアプリケーション設定は Windows Communication Foundation (WCF) アプリでは動作*しません*。
 

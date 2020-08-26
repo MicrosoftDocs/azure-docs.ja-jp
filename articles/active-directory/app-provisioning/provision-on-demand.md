@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 3c3706cc3a15a8832cec3d799ea551810c849379
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 52819fc37cf0d10cb36009feb82dec234184752c
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87313610"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235538"
 ---
 # <a name="on-demand-provisioning"></a>オンデマンド プロビジョニング
 数秒でユーザーをアプリケーションにプロビジョニングするには、オンデマンド プロビジョニングを使用します。 この機能を使用すると、特に以下のことが可能です。
@@ -47,9 +47,9 @@ ms.locfileid: "87313610"
 
 #### <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 
-* ターゲット アプリケーションに対して、シークレット トークンやテナント URL などの有効な資格情報を指定したことを確認します。 必要な資格情報はアプリケーションによって異なります。 構成に関する詳細なチュートリアルについては、[チュートリアルの一覧](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)を参照してください。 
+* ターゲット アプリケーションに対して、シークレット トークンやテナント URL などの有効な資格情報を指定したことを確認します。 必要な資格情報はアプリケーションによって異なります。 構成に関する詳細なチュートリアルについては、[チュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。 
 * **[属性マッピング]** ペインで定義されている、一致する属性に基づくフィルター処理が、ターゲット アプリケーションでサポートされていることを確認します。 サポートされているフィルターを知るために、アプリケーション開発者によって提供される API ドキュメントを調べる必要が生じることがあります。
-* クロスドメイン ID 管理システム (SCIM) アプリケーションの場合は、Postman などのツールを使用できます。 このようなツールを利用すると、承認要求に対して、Azure Active Directory (Azure AD) プロビジョニング サービスが予期している方法で確実にアプリケーションを応答させることができます。 [要求の例](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#request-3)を参照してください。
+* クロスドメイン ID 管理システム (SCIM) アプリケーションの場合は、Postman などのツールを使用できます。 このようなツールを利用すると、承認要求に対して、Azure Active Directory (Azure AD) プロビジョニング サービスが予期している方法で確実にアプリケーションを応答させることができます。 [要求の例](./use-scim-to-provision-users-and-groups.md#request-3)を参照してください。
 
 ### <a name="step-2-import-user"></a>手順 2:ユーザーをインポートする
 
@@ -76,7 +76,7 @@ ms.locfileid: "87313610"
 
 ### <a name="step-3-determine-if-user-is-in-scope"></a>手順 3:ユーザーがスコープ内にあるかどうかを確認する
 
-次に、プロビジョニング サービスにより、ユーザーがプロビジョニングの[スコープ](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#scoping)内にあるかどうかが確認されます。 サービスによって考慮されるのは以下のような側面です。
+次に、プロビジョニング サービスにより、ユーザーがプロビジョニングの[スコープ](./how-provisioning-works.md#scoping)内にあるかどうかが確認されます。 サービスによって考慮されるのは以下のような側面です。
 
 * ユーザーがアプリケーションに割り当てられているかどうか。
 * スコープは、**割り当てられた同期**に設定されているか、**すべて同期**に設定されているか。
@@ -94,8 +94,8 @@ ms.locfileid: "87313610"
 
 #### <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 
-* 有効なスコープ ロールを定義済みであることを確認します。 たとえば、整数以外の値と共に [Greater_Than 演算子](https://docs.microsoft.com/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts#create-a-scoping-filter)を使わないようにします。
-* ユーザーが必要なロールを持っていない場合は、[既定のアクセス ロールに割り当てられるユーザーをプロビジョニングする場合のヒント](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-no-users-provisioned#provisioning-users-assigned-to-the-default-access-role)を確認してください。
+* 有効なスコープ ロールを定義済みであることを確認します。 たとえば、整数以外の値と共に [Greater_Than 演算子](./define-conditional-rules-for-provisioning-user-accounts.md#create-a-scoping-filter)を使わないようにします。
+* ユーザーが必要なロールを持っていない場合は、[既定のアクセス ロールに割り当てられるユーザーをプロビジョニングする場合のヒント](./application-provisioning-config-problem-no-users-provisioned.md#provisioning-users-assigned-to-the-default-access-role)を確認してください。
 
 ### <a name="step-4-match-user-between-source-and-target"></a>手順 4:ソースとターゲット間でユーザーを照合する
 
@@ -129,7 +129,7 @@ ms.locfileid: "87313610"
 
 #### <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
 
-* 変更のエクスポートの失敗は、大きく異なる可能性があります。 一般的な失敗については、[プロビジョニング ログに関するドキュメント](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs#error-codes)を調べてください。
+* 変更のエクスポートの失敗は、大きく異なる可能性があります。 一般的な失敗については、[プロビジョニング ログに関するドキュメント](../reports-monitoring/concept-provisioning-logs.md#error-codes)を調べてください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -150,4 +150,4 @@ ms.locfileid: "87313610"
 
 ## <a name="next-steps"></a>次のステップ
 
-* [プロビジョニングのトラブルシューティング](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem)
+* [プロビジョニングのトラブルシューティング](./application-provisioning-config-problem.md)

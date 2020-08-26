@@ -1,6 +1,6 @@
 ---
 title: クラウド サービスのライフサイクル イベントの処理 | Microsoft Docs
-description: .NET でクラウド サービスのロールのライフサイクル メソッドを使用する方法について説明します。
+description: ライフサイクル イベントに対応するメソッドを提供する RoleEntryPoint など、クラウド サービス ロールのライフサイクル メソッドを .NET で使用する方法について説明します。
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: a6030cbb756525137497834ac911835033858401
-ms.sourcegitcommit: 62c5557ff3b2247dafc8bb482256fef58ab41c17
+ms.openlocfilehash: e23eea439235659cf68da1063ae50a718a847a8d
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2020
-ms.locfileid: "80652089"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142317"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>.NET で Web または Worker ロールのライフサイクルをカスタマイズする
 worker ロールを作成する際に、[RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) クラスを拡張します。このクラスは、ライフサイクル イベントに応答できるようオーバーライドするメソッドを提供します。 Web ロールの場合、このクラスは任意であり、必要に応じてライフサイクル イベントへの応答に使用する必要があります。

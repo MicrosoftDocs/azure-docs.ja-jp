@@ -10,18 +10,18 @@ ms.topic: include
 ms.date: 05/20/2020
 ms.author: pasta
 ms.custom: devx-track-javascript
-ms.openlocfilehash: 68009797e48ab15c1c8df983b3413d7b7dac54b0
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.openlocfilehash: fdcffeda1c57cdb043c51c8a3640006be8ae7418
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87425119"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88602416"
 ---
 [イマーシブ リーダー](https://www.onenote.com/learningtools)は、読解力向上のために実証済みの手法を実装する、包括的に設計されたツールです。
 
 このクイックスタートでは、Web アプリを一から構築し、イマーシブ リーダー クライアント ライブラリを使用してイマーシブ リーダーを統合します。 このクイック スタートの完全なサンプルは[こちら](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/quickstart-csharp)で入手できます。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 

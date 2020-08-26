@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と Nomadic の統合 | Microsoft Docs'
 description: Azure Active Directory と Nomadic の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 13d02b1c-d98a-40b1-824f-afa45a2deb6a
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 07e6e0d1a7d358deebba7b4857b6afebcfb3be1c
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.openlocfilehash: 5e710e8df594f6792a150fa1ffbd7779e96bb744
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85800139"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88554352"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>チュートリアル: Azure Active Directory と Nomadic の統合
 

@@ -3,12 +3,12 @@ title: Java アプリケーションを任意の環境で監視する - Azure Mo
 description: アプリをインストルメント化することなく、任意の環境で実行されている Java アプリケーションのアプリケーション パフォーマンスを監視します。 分散トレースとアプリケーション マップです。
 ms.topic: conceptual
 ms.date: 03/29/2020
-ms.openlocfilehash: 3ca6e7050b1c7649298d2417f9f7f66ef8898816
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e1442d1b1fb1bf8fbef82354b8aa1d2354640aa9
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87014339"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87902084"
 ---
 # <a name="java-codeless-application-monitoring-azure-monitor-application-insights---public-preview"></a>Azure Monitor Application Insights を監視する Java のコード不要のアプリケーション - パブリックプレビュー
 
@@ -126,7 +126,21 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=InstrumentationKey=00000000-0000-0000-0000
 
 Micrometer、OpenTelemetry API、および一般的なログ記録フレームワークがサポートされています。 Application Insights Java 3.0 では、テレメトリが自動的にキャプチャされ、自動収集されたすべてのテレメトリと連動して、関連付けが行われます。
 
-このため、現時点では、Application Insights 3.0 を使用した SDK をリリースする予定はありません。
+### <a name="supported-custom-telemetry"></a>サポートされているカスタム テレメトリ
+
+次の表は、現在サポートされているカスタム テレメトリの種類を示しています。これを有効にすると、Java 3.0 エージェントを補完することができます。 要約すると、カスタム メトリックはマイクロメーターを通じてサポートされ、カスタムの例外とトレースはログ記録フレームワークを使用して有効にできます。また、カスタム テレメトリの種類は、[Application Insights Java 2.x SDK](#sending-custom-telemetry-using-application-insights-java-sdk-2x) を通じてサポートされます。 
+
+|                     | Micrometer | Log4j、logback、JUL | 2.x SDK |
+|---------------------|------------|---------------------|---------|
+| **[カスタム イベント]**   |            |                     |  Yes    |
+| **カスタム メトリック**  |  はい       |                     |  はい    |
+| **依存関係**    |            |                     |  Yes    |
+| **例外**      |            |  はい                |  はい    |
+| **ページ ビュー**      |            |                     |  Yes    |
+| **要求**        |            |                     |  Yes    |
+| **トレース**          |            |  はい                |  はい    |
+
+現時点では、Application Insights 3.0 を使用した SDK をリリースする予定はありません。
 
 Application Insights Java 3.0 では、Application Insights Java SDK 2.x に送信されるテレメトリを既にリッスンしています。 この機能は、既存の 2.x ユーザーのアップグレード ストーリーの重要な部分であり、OpenTelemetry API が GA になるまでの、カスタム テレメトリ サポートの重要なギャップを埋めるものです。
 

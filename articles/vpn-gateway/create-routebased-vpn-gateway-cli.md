@@ -1,18 +1,18 @@
 ---
 title: 'ルートベースの Azure VPN Gateway を作成する: CLI'
-description: CLI を使用して VPN Gateway を作成する方法を簡単に説明します
+description: Azure CLI を使用して、オンプレミス ネットワークへの VPN 接続のため、または仮想ネットワークに接続するために、ルート ベースの Azure VPN ゲートウェイをすばやく作成します。
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0cb03f827c8174932f235ec8ea327225da76ef4f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81f451ace7ec3f032dc7752829d12a0a3598811b
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987702"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88036115"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>CLI を使用してルートベースの VPN ゲートウェイを作成する
 

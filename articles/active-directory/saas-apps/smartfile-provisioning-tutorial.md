@@ -2,25 +2,21 @@
 title: チュートリアル:SmartFile を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs
 description: Azure Active Directory を構成して、ユーザー アカウントを SmartFile に自動的にプロビジョニング/プロビジョニング解除する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: zchia
 writer: zchia
-manager: beatrizd
-ms.assetid: 5eeff992-a84f-4f88-a360-9accbd077538
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: b113cc27195b2ce954d677ab0f1ec83e394946be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 675d9c76841ba1a4b94b666c7ff4ac4287fc5264
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77060237"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88525192"
 ---
 # <a name="tutorial-configure-smartfile-for-automatic-user-provisioning"></a>チュートリアル:SmartFile を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 9804992aee318fdc34815bdbe4187144704cd667
-ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
+ms.openlocfilehash: 70977c30edce124aa0d39bcc57d4ccd015d65961
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2020
-ms.locfileid: "85099764"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88214059"
 ---
 # <a name="what-is-batch-transcription"></a>バッチ文字起こしとは
 
@@ -63,7 +63,7 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
 
 Batch 文字起こし API では、次の形式がサポートされています。
 
-| Format | コーデック | Bitrate | サンプル レート                     |
+| Format | コーデック | サンプルごとのビット数 | サンプル レート             |
 |--------|-------|---------|---------------------------------|
 | WAV    | PCM 0   | 16 ビット  | 8 kHz または 16 kHz、モノラルまたはステレオ |
 | MP3    | PCM 0   | 16 ビット  | 8 kHz または 16 kHz、モノラルまたはステレオ |
@@ -346,4 +346,4 @@ Batch 文字起こしでは、オーディオの読み取りや、文字起こ�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
+- [Speech to Text v3 API リファレンス](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription)

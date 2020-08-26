@@ -3,14 +3,15 @@ title: Azure Functions における Notification Hubs のバインド
 description: Azure Functions で Azure Notification Hub のバインドを使用する方法について説明します。
 author: craigshoemaker
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 97e43d2348ccbe9bf0aebfd7647f6cc34906948c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
+ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86540368"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88212231"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
 

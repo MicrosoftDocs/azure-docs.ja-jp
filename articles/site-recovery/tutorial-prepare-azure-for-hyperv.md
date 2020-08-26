@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4e28a46b8d231b3f228a95ea06b7b9cada50de54
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: f4f040288574a9ddfc5f7c56878c7f1e795b09a3
+ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498992"
+ms.lasthandoff: 08/20/2020
+ms.locfileid: "88653853"
 ---
 # <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Hyper-V のディザスター リカバリーのために Azure リソースを準備する
 
@@ -99,7 +99,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 内容は次のとおりです。
 - [Azure ネットワーク](../virtual-network/virtual-networks-overview.md)
-- [マネージド ディスク](../virtual-machines/windows/managed-disks-overview.md)
+- [マネージド ディスク](../virtual-machines/managed-disks-overview.md)
 
 
 

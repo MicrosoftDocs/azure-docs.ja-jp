@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/15/2020
-ms.openlocfilehash: ff7472b764b0e65d69d9b694603e145440e89c0d
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: bd575eb5f646b749b431516670c64c764f4d4c9c
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318115"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828508"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor についてよくあるご質問
 
@@ -121,7 +121,7 @@ VM ログを表示するには、VM ログを格納するワークスペース�
 
 
 ### <a name="what-is-an-action-rule"></a>アクション ルールとはどのようなものですか?
-アクション ルールを使用すると、特定の条件に一致する一連のアラートの動作を変更できます。 これにより、メンテナンス期間中にアラート アクションを無効にする、といった要件を実行できます。 また、アラート ルールにアラートを直接適用するのではなく、一連のアラートにアクション グループを適用することもできます。 [アクション ルール](platform/alerts-action-rules.md)に関するページをご覧ください。
+アクション ルールを使用すると、特定の条件に一致する一連のアラートの動作を変更できます。 これにより、メンテナンス期間中にアラート アクションを無効にするなどの要件を実行できます。 また、アラート ルールにアラートを直接適用するのではなく、一連のアラートにアクション グループを適用することもできます。 [アクション ルール](platform/alerts-action-rules.md)に関するページをご覧ください。
 
 ## <a name="agents"></a>エージェント
 
@@ -137,7 +137,7 @@ Azure 診断拡張機能は Azure Virtual Machines 用であり、データは A
 Azure Monitor へのトラフィックでは、Microsoft ピアリングの ExpressRoute 回線が使用されます。 さまざまな種類の ExpressRoute トラフィックについては、[ExpressRoute のドキュメント](../expressroute/expressroute-faqs.md#supported-services)をご覧ください。 
 
 ### <a name="how-can-i-confirm-that-the-log-analytics-agent-is-able-to-communicate-with-azure-monitor"></a>Log Analytics エージェントが Azure Monitor と通信できることを確認するにはどうすればよいですか?
-エージェント コンピューターのコントロール パネルで、 **[システムとセキュリティ]** 、 **[Microsoft Monitoring Agent]** の順に選択します。 **[Azure Log Analytics (OMS)]** タブで、緑色のチェック マーク アイコンは、エージェントが Azure Monitor と通信できることを示します。 黄色の警告アイコンは、エージェントに問題があることを示します。 一般的な原因の 1 つは、**Microsoft Monitoring Agent** サービスが停止したことです。 サービス コントロール マネージャーを使用してサービスを再開します。
+エージェント コンピューターのコントロール パネルで、 **[セキュリティ設定]** 、**[Microsoft Monitoring Agent] の順に選択します。 **[Azure Log Analytics (OMS)]** タブで、緑色のチェック マーク アイコンは、エージェントが Azure Monitor と通信できることを示します。 黄色の警告アイコンは、エージェントに問題があることを示します。 一般的な原因の 1 つは、**Microsoft Monitoring Agent** サービスが停止したことです。 サービス コントロール マネージャーを使用してサービスを再開します。
 
 ### <a name="how-do-i-stop-the-log-analytics-agent-from-communicating-with-azure-monitor"></a>Log Analytics エージェントと Azure Monitor の通信を停止するにはどうすればよいですか?
 Log Analytics に直接接続されているエージェントの場合は、[コントロール パネル] を開き、 **[システムとセキュリティ]** 、 **[Microsoft Monitoring Agent]** の順に選択します。 **[Azure Log Analytics (OMS)]** タブで、一覧に表示されているすべてのワークスペースを削除します。 System Center Operations Manager では、Log Analytics マネージド コンピューターの一覧からコンピューターを削除します。 Operations Manager はエージェントの構成を更新して、Log Analytics に報告しなくなるようにします。 
@@ -207,7 +207,7 @@ WireData
 * [ASP.NET サーバーのセットアップ](app/monitor-performance-live-website-now.md)
 * [Java サーバーのセットアップ](app/java-agent.md)
 
-*Application Insights をいくつデプロイすればよいでしょうか?*
+"*デプロイする必要がある Application Insights リソースの数。* "
 
 * [Application Insights のデプロイを設計する方法:1 つまたは多数の Application Insights リソース](app/separate-resources.md)
 
@@ -509,6 +509,15 @@ Application Insights のほとんどのデータは、待ち時間が 5 分未�
 [start]: app/app-insights-overview.md
 [windows]: app/app-insights-windows-get-started.md
 
+### <a name="http-502-and-503-responses-are-not-always-captured-by-application-insights"></a>HTTP 502 および 503 の応答は Application Insights によって常にキャプチャされるわけではありません
+
+"502 無効なゲートウェイです" エラーと "503 サービスを利用できません" エラーは、Application Insights によって常にキャプチャされるわけではありません。 クライアント側の JavaScript が監視に使用されている場合にのみ、これは予期される動作となります。監視 JavaScript スニペットが表示されている HTML ヘッダーを含むページの前でエラー応答が返されるためです。 
+
+サーバー側の監視が有効になっているサーバーから 502 または 503 の応答が送信された場合は、Application Insights SDK によってエラーが収集されます。 
+
+ただし、アプリケーションの Web サーバーでサーバー側の監視が有効になっていても、Application Insights によって 502 エラーまたは 503 エラーがキャプチャされない場合もあります。 多くの最新の Web サーバーでは、クライアントが直接通信することはできませんが、代わりにリバース プロキシなどのソリューションを使用して、クライアントとフロントエンド Web サーバーの間で情報をやり取りすることはできます。 
+
+このシナリオでは、リバース プロキシ レイヤーでの問題により、502 または 503 の応答がクライアントに返されますが、Application Insights によってすぐにキャプチャされることはありません。 このレイヤーでの問題を検出するには、リバース プロキシから Log Analytics にログを転送し、502/503 の応答を確認するためのカスタム ルールを作成する必要があります。 502 エラーと 503 エラーの一般的な原因の詳細については、Azure App Service の ["502 無効なゲートウェイです" と "503 サービスを利用できません" のトラブルシューティングに関する記事](../app-service/troubleshoot-http-502-http-503.md)を参照してください。     
 
 ## <a name="azure-monitor-for-containers"></a>コンテナーに対する Azure Monitor
 
@@ -661,7 +670,7 @@ Azure、Azure US Government、および Azure China 21Vianet クラウドでコ�
 ### <a name="can-i-onboard-to-a-new-workspace"></a>新しいワークスペースにオンボードすることはできますか? 
 現在、VM が既存の Log Analytics ワークスペースに接続されていない場合は、データを保存するために新しいワークスペースを作成する必要があります。 Azure portal を使用して Azure Monitor for VMs で単一の Azure VM を構成すると、新しい既定のワークスペースが自動的に作成されます。
 
-スクリプト ベースのメソッドを使用する場合、これらの手順は、[Azure PowerShell または Resource Manager テンプレートを使用した Azure Monitor for VMs の有効化](insights/vminsights-enable-at-scale-powershell.md)に関する記事で説明されています。 
+スクリプト ベースのメソッドを使用する場合、これらの手順は、[Azure PowerShell または Resource Manager テンプレートを使用した Azure Monitor for VMs の有効化](./insights/vminsights-enable-powershell.md)に関する記事で説明されています。 
 
 ### <a name="what-do-i-do-if-my-vm-is-already-reporting-to-an-existing-workspace"></a>VM が既に既存のワークスペースに報告している場合はどうすればよいですか?
 仮想マシンから既にデータを収集している場合、既存の Log Analytics ワークスペースにデータを報告するように仮想マシンを構成済みである可能性があります。  そのワークスペースがサポートされているリージョンのいずれかにあれば、その既存のワークスペースに対して Azure Monitor for VMs を有効にすることができます。  既に使用しているワークスペースがサポートされているリージョンにない場合、現時点では Azure Monitor for VMs にオンボードすることはできません。  Microsoft では、その他のリージョンのサポートに積極的に取り組んでいます。
@@ -682,7 +691,7 @@ Azure portal から Azure VM をオンボードすると、次の手順が実行
 ### <a name="i-dont-see-some-or-any-data-in-the-performance-charts-for-my-vm"></a>パフォーマンス グラフに VM のデータが表示されません
 パフォーマンス グラフは、*InsightsMetrics* テーブルに格納されているデータを使用するように更新されました。  これらのグラフのデータを表示するには、新しい VM Insights ソリューションを使用するようにアップグレードする必要があります。  追加情報については、[一般提供についての FAQ](insights/vminsights-ga-release-faq.md) に関する記事を参照してください。
 
-ディスク テーブルまたは一部のパフォーマンス グラフにパフォーマンス データが表示されない場合、ワークスペースでパフォーマンス カウンターが構成されていない可能性があります。 これを解決するには、こちらの [PowerShell スクリプト](insights/vminsights-enable-at-scale-powershell.md#enable-with-powershell)を実行してください。
+ディスク テーブルまたは一部のパフォーマンス グラフにパフォーマンス データが表示されない場合、ワークスペースでパフォーマンス カウンターが構成されていない可能性があります。 これを解決するには、こちらの [PowerShell スクリプト](./insights/vminsights-enable-powershell.md)を実行してください。
 
 
 ### <a name="how-is-azure-monitor-for-vms-map-feature-different-from-service-map"></a>Azure Monitor for VMs のマップ機能は Service Map とどのように異なるのですか?

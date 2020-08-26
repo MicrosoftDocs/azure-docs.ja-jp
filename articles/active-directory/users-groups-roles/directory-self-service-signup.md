@@ -10,40 +10,44 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: overview
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 08/13/2020
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a61bd162baf6f079b625dc07d4faa397493ba618
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: d52384f04fd8a2a2bc3c42af713378ad15d01c42
+ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87015869"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88192711"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Azure Active Directory のセルフサービス サインアップについて
 
 この記事では、セルフサービス サインアップを使用して Azure Active Directory (Azure AD) に組織を設定する方法について説明します。 アンマネージド Azure AD 組織からドメイン名を引き継ぐ場合は、[ ディレクトリを管理者として引き継ぐ方法](domains-admin-takeover.md)に関する記事をご覧ください。
 
 ## <a name="why-use-self-service-sign-up"></a>セルフサービス サインアップを使用する理由
+
 * 顧客が求めるサービスを迅速に提供できる。
 * サービス提供の電子メール ベース プランを構築できる。
 * ユーザーが覚えやすい職場の電子メールの別名を使用して ID をすばやく作成することを可能にする、電子メール ベースのサインアップ フローを作成できる。
 * セルフサービスで作成された Azure AD ディレクトリを、他のサービスで使用できる管理ディレクトリに変えることができる。
 
 ## <a name="terms-and-definitions"></a>用語と定義
+
 * **セルフサービス サインアップ**:ユーザーがこの方法でクラウド サービスにサインアップすると、電子メール ドメインに基づいた ID が Azure AD に自動的に作成されます。
 * **管理されていない Azure AD ディレクトリ**:これは、前述の ID が作成されるディレクトリです。 管理されていないディレクトリは、グローバル管理者がいないディレクトリです。
 * **電子メール検証済みユーザー**:これは Azure AD のユーザー アカウントの一種です。 セルフサービス プランへのサインアップ後に自動作成された ID を持つユーザーは、電子メール検証済みユーザーです。 電子メール検証済みユーザーは、creationmethod=EmailVerified でタグ付けされたディレクトリの通常メンバーです。
 
 ## <a name="how-do-i-control-self-service-settings"></a>セルフサービス設定の管理方法
+
 管理者は、セルフサービスの 2 種類の管理を実行できます。 次の点を管理できます。
 
 * ユーザーが電子メール経由でディレクトリに参加できるかどうか
 * ユーザー自身がアプリケーションやサービスのライセンスを取得できるかどうか
 
 ### <a name="how-can-i-control-these-capabilities"></a>これらの機能の管理方法
+
 管理者は、Azure AD コマンドレット Set-MsolCompanySettings の次のパラメーターを使用してこれらの機能を構成できます。
 
 * **AllowEmailVerifiedUsers** によって、ユーザーがディレクトリを作成または参加できるかを管理できます。 このパラメーターを $false に設定すると、電子メール検証済みのユーザーはディレクトリに参加できません。
@@ -57,9 +61,9 @@ AllowEmailVerifiedUsers と AllowAdHocSubscriptions は、マネージド ディ
 
 上記の条件が当てはまる場合、メンバー ユーザーがホーム ディレクトリに作成され、B2B ゲスト ユーザーが招待側のディレクトリに作成されます。
 
-Flow および PowerApps の試用版サインアップは、**AllowAdHocSubscriptions** の設定によって制御されません。 詳細については、次の記事を参照してください。
+Flow および Power Apps の試用版サインアップの詳細については、次の記事を参照してください。
 
-* [既存のユーザーが Power BI の開始を使用できないようにする方法](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
+* [既存のユーザーが Power BI の使用を開始できないようにするにはどうすればよいですか。](https://support.office.com/article/Power-BI-in-your-Organization-d7941332-8aec-4e5e-87e8-92073ce73dc5#bkmk_preventjoining)
 * [組織における Flow の Q&A](https://docs.microsoft.com/flow/organization-q-and-a)
 
 ### <a name="how-do-the-controls-work-together"></a>これらの管理機能の連携について
@@ -75,7 +79,7 @@ Flow および PowerApps の試用版サインアップは、**AllowAdHocSubscri
 
 これらのパラメーターの使用方法についての詳細は、「 [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure AD にカスタム ドメイン名を追加する](../fundamentals/add-custom-domain.md)
 * [Azure PowerShell のインストールと構成の方法](/powershell/azure/)

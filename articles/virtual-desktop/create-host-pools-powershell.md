@@ -1,19 +1,17 @@
 ---
 title: PowerShell を使用して Windows Virtual Desktop のホスト プールを作成する - Azure
 description: PowerShell コマンドレットを使用して Windows Virtual Desktop にホスト プールを作成する方法。
-services: virtual-desktop
 author: Heidilohr
-ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/30/2020
+ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2a4ba5494cb65738f5443915c013571b98854a91
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 1275eab36e21ea6befdda13e14759a30ef5398a3
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87543420"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121155"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>PowerShell を使用した Windows Virtual Desktop のホスト プールの作成
 
@@ -118,6 +116,32 @@ Windows Virtual Desktop エージェントを登録するには、各仮想マ�
 
 >[!IMPORTANT]
 >Azure で Windows Virtual Desktop 環境のセキュリティを保護できるようにするには、ご利用の VM 上の受信ポート 3389 を開かないことをお勧めします。 Windows Virtual Desktop では、ユーザーがホスト プールの VM にアクセスするために、受信ポート 3389 を開く必要はありません。 トラブルシューティングの目的でポート 3389 を開く必要がある場合は、[Just-In-Time VM アクセス](../security-center/security-center-just-in-time.md)を使用することをお勧めします。 また、パブリック IP に VM を割り当てないことをお勧めします。
+
+## <a name="update-the-agent"></a>エージェントを更新する
+
+次のいずれかの状況に該当する場合は、エージェントを更新する必要があります。
+
+- 以前に登録されたセッションを新しいホスト プールに移行する必要がある
+- 更新後にセッション ホストがホスト プールに表示されない
+
+エージェントを更新するには、次の操作を実行します。
+
+1. 管理者として VM にサインインします。
+2. **[サービス]** に移動して、**Rdagent** プロセス、**Remote Desktop Agent Loader** プロセスの順に停止します。
+3. 次に、エージェント MSI とブートローダー MSI を見つけます。 これらは、**C:\DeployAgent** フォルダー、またはインストール時に保存した場所のいずれかに配置されています。
+4. 次のファイルを見つけて、アンインストールします。
+     
+     - Microsoft.RDInfra.RDAgent.Installer-x64-verx.x.x
+     - Microsoft.RDInfra.RDAgentBootLoader.Installer-x64
+
+   これらのファイルをアンインストールするには、各ファイル名を右クリックし、 **[アンインストール]** を選択します。
+5. 必要に応じて、次のレジストリ設定を削除することもできます。
+     
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDInfraAgent
+     - Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\RDAgentBootLoader
+
+6. これらの項目をアンインストールすると、古いホスト プールとの関連付けがすべて削除されます。 このホストをサービスに再登録する場合は、「[Windows Virtual Desktop ホスト プールに仮想マシンを登録する](create-host-pools-powershell.md#register-the-virtual-machines-to-the-windows-virtual-desktop-host-pool)」の手順に従います。
+
 
 ## <a name="next-steps"></a>次のステップ
 

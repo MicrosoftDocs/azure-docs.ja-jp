@@ -2,26 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と EmpCenter の統合 | Microsoft Docs'
 description: Azure Active Directory と EmpCenter の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: a00ecf6e-917a-4284-b998-41506931585e
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6c8955eb62ca413460a45b8cddf46c43bcd80af
-ms.sourcegitcommit: 32592ba24c93aa9249f9bd1193ff157235f66d7e
+ms.openlocfilehash: bfad0d37ccc2176de374b21009cebadb812b46a9
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85607182"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88547217"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>チュートリアル: Azure Active Directory と EmpCenter の統合
 

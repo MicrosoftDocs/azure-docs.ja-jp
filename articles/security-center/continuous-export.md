@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 7b0fbb7c4f680f9d732a63fff7b0b317c6cf1511
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: eb7f642e36bd72f963481cb392d7e3a6c2555816
+ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86519699"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88612386"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>セキュリティ アラートと推奨事項のエクスポート
 
@@ -31,12 +31,14 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 
 ## <a name="availability"></a>可用性
 
-- リリース状態: **一般提供**
-- 必要なロールとアクセス許可:
-    - エクスポート構成を含むサブスクリプション上での**閲覧者**
-    - リソース グループ上での**セキュリティ管理者ロール** (または**所有者**)
-    - ターゲット リソースに対する書き込みアクセス許可も必要になります
-- クラウド:   ✔ 商用クラウド   ✔ US Gov   ✘ China Gov、その他の Gov
+|側面|詳細|
+|----|:----|
+|リリース状態:|一般公開|
+|価格:|Free レベル|
+|必要なロールとアクセス許可:|リソース グループ上での**セキュリティ管理者ロール** (または**所有者**)<br>ターゲット リソースに対する書き込みアクセス許可も必要になります|
+|クラウド:|![Yes](./media/icons/yes-icon.png) 商用クラウド<br>![Yes](./media/icons/yes-icon.png) US Gov<br>![No](./media/icons/no-icon.png) China Gov、その他の Gov|
+|||
+
 
 
 ## <a name="setting-up-a-continuous-export"></a>連続エクスポートを設定する
@@ -55,7 +57,29 @@ Azure Security Center では、詳細なセキュリティ アラートと推奨
 
 1. [エクスポート ターゲット] 領域で、データを保存する場所を選択します。 データは別のサブスクリプションのターゲットにも保存できます (たとえば、中央のイベント ハブ インスタンスや中央の Log Analytics ワークスペースなど)。
 
-1. **[保存]** をクリックします。
+1. **[保存]** を選択します。
+
+
+## <a name="setting-up-continuous-export-via-the-rest-api"></a>REST API による連続エクスポートの設定
+
+連続エクスポート機能は、Azure Security Center の[自動化 API](https://docs.microsoft.com/rest/api/securitycenter/automations) を使用して構成と管理を行うことができます。 この API を使用して、以下の選択可能な出力先にエクスポートするための自動化を作成または更新します。
+
+- Azure Event Hub
+- Log Analytics ワークスペース
+- Azure Logic Apps 
+
+API には、Azure portal からは使用できない追加の機能が用意されています。以下に例を示します。
+
+* **より大きなボリューム** - API を使用すると、1 つのサブスクリプションに複数のエクスポート構成を作成できます。 Security Center のポータル UI の **[連続エクスポート]** ページでは、サブスクリプションごとに 1 つのエクスポート構成のみがサポートされます。
+
+* **追加の機能** - API には、UI には表示されない追加のパラメーターが用意されています。 たとえば、自動化リソースにタグを追加したり、Security Center のポータル UI の **[連続エクスポート]** ページで提供されているよりも幅広い一連のアラートと推奨設定のプロパティに基づいて、エクスポートを定義したりすることができます。
+
+* **より焦点を絞ったスコープ** - API では、エクスポート構成のスコープに対してよりきめ細かなレベルが提供されます。 API を使用してエクスポートを定義するときには、リソース グループ レベルで定義できます。 Security Center のポータル UI の **[連続エクスポート]** ページを使用している場合は、サブスクリプション レベルで定義する必要があります。
+
+    > [!TIP]
+    > API を使用して複数のエクスポート構成を設定した場合や、API のみのパラメーターを使用した場合、それらの追加機能は Security Center UI に表示されません。 代わりに、他の構成が存在することを通知するバナーが表示されます。
+
+自動化 API の詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/securitycenter/automations)を参照してください。
 
 
 
@@ -107,7 +131,7 @@ Azure Monitor は、診断ログ、メトリック アラート、および Log 
 
 Azure Monitor の Security Center からアラートと推奨事項を表示するには、Log Analytics クエリ (ログ アラート) に基づいてアラート ルールを構成します。
 
-1. Azure Monitor の **[アラート]** ページから、 **[新しいアラート ルール]** をクリックします。
+1. Azure Monitor の **[アラート]** ページから、 **[新しいアラート ルール]** を選択します。
 
     ![Azure Monitor の [アラート] ページ](./media/continuous-export/azure-monitor-alerts.png)
 
@@ -124,12 +148,25 @@ Azure Monitor の Security Center からアラートと推奨事項を表示す�
 
 ## <a name="manual-one-time-export-of-security-alerts"></a>セキュリティ アラートの 1 回限りの手動エクスポート
 
-アラートまたは推奨事項の CSV レポートをダウンロードするには、 **[セキュリティ アラート]** または **[推奨事項]** ページを開き、 **[レポートを CSV にダウンロード]** ボタンをクリックします。
+アラートまたは推奨事項の CSV レポートをダウンロードするには、 **[セキュリティ アラート]** または **[推奨事項]** ページを開き、 **[レポートを CSV にダウンロード]** ボタンを選択します。
 
 [![アラート データを CSV ファイルとしてダウンロードする](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
 > [!NOTE]
 > これらのレポートには、現在選択されているサブスクリプションのリソースに関するアラートと推奨事項が含まれています。
+
+
+
+## <a name="faq---continuous-export"></a>FAQ - 連続エクスポート
+
+### <a name="what-are-the-costs-involved-in-exporting-data"></a>データのエクスポートには、どのようなコストがかかりますか。
+
+連続エクスポートを有効にするためのコストはありません。 Log Analytics ワークスペースでの構成によっては、そこでのデータの取り込みと保持についてコストが発生する可能性があります。 
+
+[Log Analytics ワークスペースの価格](https://azure.microsoft.com/pricing/details/monitor/)の詳細を確認してください。
+
+[Azure Event Hub の価格](https://azure.microsoft.com/pricing/details/event-hubs/)の詳細を確認してください。
+
 
 ## <a name="next-steps"></a>次のステップ
 

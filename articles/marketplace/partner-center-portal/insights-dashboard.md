@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 07/22/2019
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 877d5436628fdeb973f6d7f30cc71e91eeb92364
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cc950c4915a57dd949941fbb9802c51a47c9a00d
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323283"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607145"
 ---
 # <a name="marketplace-insights-dashboard-in-partner-center"></a>パートナー センターの [Marketplace の分析情報] ダッシュボード
 
-この記事では、パートナー センターの [Marketplace の分析情報] ダッシュボードについて説明します。 このダッシュボードには、マーケットプレース Web 分析の概要が表示されます。これにより公開元は、次のコマーシャル マーケットプレースのネットショップに掲載されている、個々の製品詳細ページの顧客エンゲージメントを測定できます: Microsoft AppSource と Azure Marketplace。
+この記事では、パートナー センターの [Marketplace の分析情報] ダッシュボードについて説明します。 このダッシュボードには、マーケットプレース Web 分析の概要が表示されます。これにより公開元は、次のコマーシャル マーケットプレースのオンライン ストアに掲載されている、個々の製品詳細ページの顧客エンゲージメントを測定できます: Microsoft AppSource と Azure Marketplace。
 
 ## <a name="marketplace-insights-dashboard"></a>[Marketplace の分析情報] ダッシュボード
 
@@ -42,11 +42,11 @@ Azure Marketplace または AppSource のオファーにユーザーがアクセ
 
 さまざまな方法でコマーシャル マーケットプレースのメトリックを表示できます。
 
-- ネットショップのタブ
+- オンライン ストアのタブ
 - ページ フィルター
 - 日付フィルター
 
-**ネットショップのタブ**: AppSource と Azure Marketplace のタブで別々にオファーのメトリックを表示できます。 右側のオファーのドロップダウン リストからオファーを選択すると、選択したオファーのメトリックが視覚的に表示されます。 既定では、すべてのオファーが選択されています。
+**オンライン ストアのタブ**: AppSource と Azure Marketplace のタブで別々にオファーのメトリックを表示できます。 右側のオファーのドロップダウン リストからオファーを選択すると、選択したオファーのメトリックが視覚的に表示されます。 既定では、すべてのオファーが選択されています。
 
 ![パートナー センターの [分析情報] ダッシュボードにあるオファーのドロップダウンリスト](./media/insights-offer-dropdown.png)
 
@@ -96,7 +96,7 @@ Marketplace の分析情報の概要セクションには、選択した日付�
 
 ## <a name="page-visits-versus-unique-visitors-trend"></a>ページ アクセスとユニーク ビジターの傾向
 
-以下の縦棒グラフは、月ごとのページ アクセスの数を表しています。これは、Y 軸 (グラフの左側の軸) に表示されます。 傾向線は、次のネットショップで公開されているオファーについて、ユニーク ビジターの月ごとの傾向を表しており、第 2 の Y 軸 (グラフの右側の軸) に表示されます: Azure Marketplace と AppSource。
+以下の縦棒グラフは、月ごとのページ アクセスの数を表しています。これは、Y 軸 (グラフの左側の軸) に表示されます。 傾向線は、次のオンライン ストアで公開されているオファーについて、ユニーク ビジターの月ごとの傾向を表しており、第 2 の Y 軸 (グラフの右側の軸) に表示されます: Azure Marketplace と AppSource。
 
 ![パートナー センター分析情報のページ アクセスとユニーク ビジターの傾向](./media/insights-page-vists-unique-visitors.png)
 

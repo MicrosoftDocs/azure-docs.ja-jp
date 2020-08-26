@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ab019250e03feb9a776d628c06e792b884252260
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 6b852186834fba858e8a049a8230b38f3d69164d
+ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87501816"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88067428"
 ---
 # <a name="what-is-the-speech-cli"></a>Speech CLI とは
 
 Speech CLI は、コードを記述せずに Speech サービスを使用するためのコマンド ライン ツールです。 Speech CLI では最小限の設定が必要であり、ユース ケースを満たすことができるかどうかを確認するための、Speech サービスの主要な機能をすぐに簡単に試すことができます。 ファイルのディレクトリからのバッチ音声認識、ファイルからの文字列のコレクションのテキスト読み上げなどのシンプルなテスト ワークフローを数分以内に実行できます。 Speech CLI は、シンプルなワークフロー以外にも、実稼働で使用する準備ができており、自動化された `.bat` またはシェル スクリプトを使用して、より大きなプロセスを実行するようにスケールアップすることができます。
 
-Speech SDK の主な機能の大部分は Speech CLI で利用できますが、一部の高度な機能とカスタマイズは Speech CLI で簡略化されています。 Speech CLI または Speech SDK のどちらを使用するかを決定するには、次のガイダンスを考慮してください。
+Speech SDK の主な機能の大部分は、Speech CLI で利用できます。また、Speech CLI では、一部の高度な機能とカスタマイズが簡略化されています。 Speech CLI または Speech SDK のどちらを使用するかを決定するには、次のガイダンスを考慮してください。
 
 Speech CLI を使用する場合
 * 最小限の設定かつコードなしで Speech サービス機能を試す必要がある
@@ -38,13 +38,13 @@ Speech SDK を使用する場合
 
 * 音声合成 - テキスト ファイルからの入力、またはコマンド ラインから直接入力のいずれかを使用して、テキスト読み上げの変換を行います。 [SSML 構成](speech-synthesis-markup.md)および[標準またはニューラルの音声](speech-synthesis-markup.md#standard-neural-and-custom-voices)のいずれかを使用して、音声出力の特性をカスタマイズします。
 
-* 音声翻訳 - ソース言語の音声をターゲット言語のテキストに翻訳します。
+* 音声翻訳 - ソース言語の音声をターゲット言語のテキストまたは音声に翻訳します。
 
-* Azure コンピューティング リソースで実行する - `spx webjob` を使用して Azure リモート コンピューティング リソースで実行する SPX コマンドを送信します。
+* Azure コンピューティング リソースで実行する - `spx webjob` を使用して、Azure リモート コンピューティング リソースで実行する Speech CLI コマンドを送信します。
 
 ## <a name="get-started"></a>はじめに
 
-Speech CLI の使用を開始するには、[基本の記事](spx-basics.md)を参照してください。 この記事では、SPX でいくつかの基本的なコマンドを実行する方法について示します。また、音声テキスト変換やテキスト読み上げを行うバッチ操作を実行するための少し高度なコマンドも示します。 基本の記事を読み終えたら、いくつかのカスタム コマンドの記述を開始したり、シンプルな Speech 操作を自動化したりするために、SPX 構文について十分に理解しておく必要があります。
+Speech CLI の使用を開始するには、[基本の記事](spx-basics.md)を参照してください。 この記事では、いくつかの基本的なコマンドを実行する方法について示します。また、音声テキスト変換やテキスト読み上げのバッチ操作を実行するための少し高度なコマンドも示します。 基本の記事を読み終えたら、いくつかのカスタム コマンドの記述を開始するか、シンプルな Speech サービス操作を自動化する構文について十分に理解しておく必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

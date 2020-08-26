@@ -4,12 +4,12 @@ description: Azure Monitor のパートナーと、そのパートナーとの�
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 994dfe0d7e252fd2aea489c363e76f0956715048
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: 2e3fae1b942083d78798fccebd7a7f2c58f7659a
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87318336"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88142411"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor パートナーとの統合
 
@@ -184,6 +184,16 @@ OpsGenie は、Azure によって生成されたアラートのディスパッ�
 
 [ドキュメントを確認する。][pagerduty-doc]
 
+## <a name="promitor"></a>Promitor
+
+![Promitor ロゴ](./media/partners/promitor.png)
+
+Promitor は、Atlassian Statuspage、Prometheus、StatsD などのシステムでメトリクスを利用できるようにする Azure Monitor の取得ツールです。
+
+すべてのメトリクスを Azure Monitor にプッシュし、必要に応じて使用します。
+
+[詳細情報。][promitor-doc]
+
 ## <a name="qradar"></a>QRadar
 
 ![QRadar のロゴ](./media/partners/qradar.png)
@@ -293,6 +303,7 @@ Turbonomic は、パフォーマンス、コスト、コンプライアンスを
 [newrelic-doc]: https://newrelic.com/azure "NewRelic ドキュメント。"
 [opsgenie-doc]: https://www.opsgenie.com/docs/integrations/azure-integration "OpsGenie ドキュメント。"
 [pagerduty-doc]: https://www.pagerduty.com/docs/guides/azure-integration-guide/ "PagerDuty ドキュメント。"
+[promitor-doc]: https://promitor.io/ "Promitor のドキュメント。"
 [qradar-doc]: https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0 "QRadar のドキュメント。"
 [sciencelogic-doc]: https://www.sciencelogic.com/product/technologies/microsoft/azure "ScienceLogic ドキュメント。"
 [serverless360-doc]: https://docs.serverless360.com/docs/ "Serverless360 のドキュメント。"

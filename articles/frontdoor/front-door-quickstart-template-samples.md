@@ -1,6 +1,6 @@
 ---
 title: Azure Resource Manager テンプレートのサンプル - Azure Front Door
-description: Azure Front Door のための Azure Resource Manager テンプレートのサンプル
+description: Azure Front Door に使用される Resource Manager テンプレートのサンプルについて説明します。基本的な Front Door を作成するためのテンプレートや Front Door のレート制限を構成するためのテンプレートなどを取り上げます。
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2020
 ms.author: sharadag
-ms.openlocfilehash: 47db565288d1bfe1f98c58536e726eb7ec55d0a9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 14f9cb33ce298b97ead0f6d7fbec0ad77e79a1ee
+ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87084638"
+ms.lasthandoff: 08/13/2020
+ms.locfileid: "88182189"
 ---
 # <a name="azure-resource-manager-deployment-model-templates-for-front-door"></a>Front Door のための Azure Resource Manager デプロイ モデル テンプレート
 

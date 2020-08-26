@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と ThirdLight の統合 | Microsoft Docs
 description: このチュートリアルでは、Azure Active Directory と ThirdLight の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 168aae9a-54ee-4c2b-ab12-650a2c62b901
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 448d46cd21a63488c4f567d5555fe6406fc0fa73
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3193df0848c0d67935faa0020465e79bd50e2151
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67089086"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88544980"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>チュートリアル:Azure Active Directory と ThirdLight の統合
 
@@ -166,7 +162,7 @@ ThirdLight に対する Azure AD シングル サインオンを構成するに�
 
     1. **[名前]** ボックスに「**BrittaSimon**」と入力します。
   
-    1. **[ユーザー名]** ボックスに、「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します。 (例: BrittaSimon@contoso.com)。
+    1. **[ユーザー名]** ボックスに「**BrittaSimon@\<yourcompanydomain>.\<extension>** 」と入力します (例: BrittaSimon@contoso.com)。
 
     1. **[パスワードを表示]** を選択し、 **[パスワード]** ボックス内の値を書き留めます。
 

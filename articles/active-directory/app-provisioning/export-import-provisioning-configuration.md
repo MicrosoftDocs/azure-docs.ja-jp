@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: kenwith
-ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e34656d6ce515cabe955c101f7b52ac0f2ade8db
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84781724"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235819"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>方法: プロビジョニング構成をエクスポートし、既知の良好な状態にロールバックする
 
@@ -39,8 +39,8 @@ ms.locfileid: "84781724"
 
 構成をエクスポートして保存すると、以前のバージョンの構成にロールバックできます。 属性マッピングまたはスコープ フィルターを変更するときにいつでも使用できるように、プロビジョニング構成をエクスポートして保存することをお勧めします。 必要な作業は、スキーマ エディターで、前の手順でダウンロードした JSON ファイルを開き、JSON ファイルの内容全体をコピーし、JSON ペイロードの内容全体を置き換え、保存するだけです。 アクティブなプロビジョニング サイクルがある場合、そのサイクルは完了し、次のサイクルで更新されたスキーマが使用されます。 また、次のサイクルは、新しい構成に基づいてすべてのユーザーとグループを再評価する初期サイクルになります。 前の構成にロールバックする場合、次の点を考慮してください。
 
-- ユーザーをスコープに含める必要があるかどうかを判断するために、ユーザーはもう一度評価されます。 スコープ フィルターが変更されている場合、ユーザーはそれ以上スコープに含まれなくなり、それらのフィルターは無効になります。 ほとんどの場合、これは望ましい動作ですが、これを回避することが望ましい場合には[スコープ外の削除のスキップ](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions)機能を使用できます。 
-- プロビジョニング構成を変更すると、サービスが再起動され、[初回サイクル](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental)がトリガーされます。
+- ユーザーをスコープに含める必要があるかどうかを判断するために、ユーザーはもう一度評価されます。 スコープ フィルターが変更されている場合、ユーザーはそれ以上スコープに含まれなくなり、それらのフィルターは無効になります。 ほとんどの場合、これは望ましい動作ですが、これを回避することが望ましい場合には[スコープ外の削除のスキップ](./skip-out-of-scope-deletions.md)機能を使用できます。 
+- プロビジョニング構成を変更すると、サービスが再起動され、[初回サイクル](./how-provisioning-works.md#provisioning-cycles-initial-and-incremental)がトリガーされます。
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>Microsoft Graph API を使用して、プロビジョニング構成をエクスポートし、インポートする
 

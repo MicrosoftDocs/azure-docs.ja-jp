@@ -2,26 +2,21 @@
 title: チュートリアル:Azure Active Directory と Vtiger CRM (SAML) の統合 | Microsoft Docs
 description: Azure Active Directory と Vtiger CRM (SAML) の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: f14e34a6-f51f-4cd1-a6ad-f04df551303d
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccd1304ae43a2f424dab94cf67e7cc41357579fa
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 7eb2b4e2f51750cfc6ec3bddcbcf313a8e52d759
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86167030"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88531282"
 ---
 # <a name="tutorial-integrate-vtiger-crm-saml-with-azure-active-directory"></a>チュートリアル:Vtiger CRM (SAML) と Azure Active Directory の統合
 

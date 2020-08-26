@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: a9a5fe2eed0c0e6cf990183d321a71a7fabfbbee
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118634"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88548516"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>チュートリアル:Azure Content Moderator で Facebook の投稿とコマンドをモデレートする
 
@@ -28,7 +28,7 @@ ms.locfileid: "84118634"
 > * Content Moderator と Facebook からの HTTP イベントをリッスンする Azure Functions を作成します。
 > * Facebook アプリケーションを使用して Facebook のページを Content Moderator にリンクします。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 この図では、このシナリオの各コンポーネントが示されています。
 

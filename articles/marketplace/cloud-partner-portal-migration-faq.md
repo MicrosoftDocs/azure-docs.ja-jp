@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: fe909ba25191aa21e8a5bfa51c72690fd9c402eb
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: 55b789363397945e01d02d76cb0e573660d18b67
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88056552"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607503"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Cloud パートナー ポータルからパートナー センターへの切り替えに関してよく寄せられる質問
 
@@ -20,7 +20,7 @@ Cloud パートナー ポータルはパートナー センターに切り替え
 
 ## <a name="what-does-the-transition-to-partner-center-mean-for-me"></a>パートナー センターへの切り替えはパートナーにとってどのような意味がありますか?
 
-パートナー センターでは、次のように通常どおりビジネスを続けることができます。
+パートナー センターでは、次のようにビジネスを続けることができます。
 
 | 領域<img src="" width=200px> | [変更点] |
 | --- | --- |
@@ -30,7 +30,7 @@ Cloud パートナー ポータルはパートナー センターに切り替え
 | 新しい購入とデプロイ | 変更はありません。 顧客は、中断なしでオファーの購入とデプロイを続けることができます。 |
 | 支払い | すべての購入とデプロイは、引き続き通常どおり支払われ続けます。 詳細については、「[コマーシャル マーケットプレースでの支払いの受け取り](partner-center-portal/get-paid.md)」を参照してください。 |
 | 既存の [Cloud パートナー ポータル API](cloud-partner-portal-api-overview.md) との API の統合 | 既存の Cloud パートナー ポータル API は引き続きサポートされており、既存の統合は引き続き機能します。 詳細については、「[Cloud パートナー ポータル REST API はまだサポートされていますか?](#are-the-cloud-partner-portal-rest-apis-still-supported)」を参照してください。 |
-| Analytics | パートナー センターで分析を表示することにより、引き続き売上を監視し、パフォーマンスを評価し、コマーシャル マーケットプレースのオファーを最適化することができます。 CPP とパートナー センターで分析レポートを表示する方法には違いがあります。 たとえば、CPP の **[販売者分析情報]** には、使用量ベースのプランと使用量ベースではないプランのデータを表示する **[注文と使用状況]** タブがありますが、パートナー センターには、 **[注文]** ページに SaaS プラン用の別のタブがあります。 詳細については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](partner-center-portal/analytics.md)」を参照してください。 |
+| Analytics | パートナー センターで分析を表示することにより、引き続き売上を監視し、パフォーマンスを評価し、コマーシャル マーケットプレースのオファーを最適化することができます。 CPP とパートナー センターで分析レポートを表示する方法には違いがあります。 たとえば、CPP の **[販売者分析情報]** には、使用量ベースのプランと使用量ベースではないプランのデータを表示する **[注文と使用状況]** タブがありますが、パートナー センターには、 **[注文]** ページに SaaS オファー用の別のタブがあります。 詳細については、「[パートナー センターでのコマーシャル マーケットプレース向け分析レポートにアクセスする](partner-center-portal/analytics.md)」を参照してください。 |
 |||
 
 ## <a name="do-i-need-to-create-a-new-account-to-manage-my-offers-in-partner-center"></a>パートナー センターでオファーを管理するには、新しいアカウントを作成する必要がありますか?

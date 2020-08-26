@@ -1,14 +1,14 @@
 ---
 title: Azure DevTest Labs でのクレーム可能 VM の作成と管理 | Microsoft Docs
-description: Azure DevTest Labs でラボに要求可能な仮想マシンを追加する方法を説明します
+description: Azure portal を使用して、Azure DevTest Labs に要求可能な仮想マシンを追加する方法、および仮想マシンをリクエストまたは解放する手順を説明します。
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 7a4e465f0ba6c592f173a0c48aadd51f3e12ea07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 1fe949d7104fe6437087e77c403cc0d921ebd025
+ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85481308"
+ms.lasthandoff: 08/17/2020
+ms.locfileid: "88270981"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Azure DevTest Labs でのクレーム可能 VM の作成と管理
 要求可能な VM をラボに追加する方法は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)、[数式](devtest-lab-manage-formulas.md)、[Marketplace イメージ](devtest-lab-configure-marketplace-images.md)のいずれか) から[標準の VM を追加](devtest-lab-add-vm.md)する方法と似ています。 このチュートリアルでは、Azure Portal を使用して DevTest Labs でクレーム可能 VM をラボに追加する方法を説明し、ユーザーが VM を要求および解放する際に従うプロセスを示します。

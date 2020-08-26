@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 01287f344d77dedade30892d76f5fdbd54481df1
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.openlocfilehash: 76be966d8202bb56a6762a261be5adeaf2d58d6b
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86042885"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87926401"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Azure SQL Database の Query Performance Insight
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Query Performance Insight では、 [クエリ ストア](https://msdn.microsoft
 
 ## <a name="permissions"></a>アクセス許可
 
-Query Performance Insight を使用するには、次の[ロール ベースのアクセス制御](../../role-based-access-control/overview.md)権限が必要です。
+Query Performance Insight を使用するには、次の [Azure ロール ベースのアクセス制御 (Azure RBAC)](../../role-based-access-control/overview.md) 権限が必要です。
 
 * 上位のリソース消費量クエリとグラフを表示するには、**閲覧者**、**所有者**、**共同作成者**、**SQL DB 共同作業者**、または **SQL Server 共同作業者**の権限が必要です。
 * クエリ テキストを表示するには、**所有者**、**共同作成者**、**SQL DB 共同作業者**、または **SQL Server 共同作業者**の権限が必要です。

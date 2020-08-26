@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 06/17/2020
-ms.openlocfilehash: 553fd4e49d274fcf4c25356764182d54b91149e4
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: bdce311efbe7e41e09a3be76562c6be752a4b5c1
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88036642"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88606100"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Dynamics 365 for Operations オファーの作成
 
@@ -32,7 +32,7 @@ ms.locfileid: "88036642"
     ![左側のナビゲーション メニューの画像。](./media/new-offer-dynamics-365-operations.png)
 
 > [!NOTE]
-> オファーを公開した後にパートナー センターで編集した内容は、オファーの再公開後にのみネットショップに表示されます。 変更後は必ず再公開してください。
+> オファーが公開された後、それに対してパートナー センターで行われた編集内容は、そのオファーの再公開後にのみオンライン ストアに表示されます。 変更後は必ず再公開してください。
 
 ## <a name="new-offer"></a>新しいプラン
 

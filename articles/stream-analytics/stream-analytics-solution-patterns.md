@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: cb9c851ca33aa6eeb6d0fe0576f98ecb0693be02
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c3d487c1595a077ac8609813a41d15e28ede0e0b
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "86999302"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87903325"
 ---
 # <a name="azure-stream-analytics-solution-patterns"></a>Azure Stream Analytics のソリューション パターン
 
@@ -86,17 +86,12 @@ Azure Stream Analytics のビルトインの[異常検出モデル](stream-analy
 
 ![ASA Machine Learning アプリ](media/stream-analytics-solution-patterns/machine-learning-app.png)
 
-## <a name="near-real-time-data-warehousing"></a>ほぼリアルタイムのデータ ウェアハウジング
+## <a name="real-time-data-warehousing"></a>リアルタイム データ ウェアハウジング
 
-もう 1 つの一般的なパターンとして、リアルタイム データ ウェアハウジングがあります。これはストリーミング データ ウェアハウスとも呼ばれます。 アプリケーションからのイベントを Event Hubs や IoT Hub で受け取る以外にも、[IoT Edge 上で動作する Azure Stream Analytics](stream-analytics-edge.md) を使用して、データ クレンジング、データの削減、データ ストア、データ転送のニーズに応えることができます。 IoT Edge 上で動作する Stream Analytics であれば、システムにおける帯域幅の制限や接続の問題に適切に対処できます。 SQL Data Warehouse への出力には、SQL 出力アダプターを使用できますが、最大スループットは 10 MB/秒に制限されます。
+もう 1 つの一般的なパターンとして、リアルタイム データ ウェアハウジングがあります。これはストリーミング データ ウェアハウスとも呼ばれます。 アプリケーションからのイベントを Event Hubs や IoT Hub で受け取る以外にも、[IoT Edge 上で動作する Azure Stream Analytics](stream-analytics-edge.md) を使用して、データ クレンジング、データの削減、データ ストア、データ転送のニーズに応えることができます。 IoT Edge 上で動作する Stream Analytics であれば、システムにおける帯域幅の制限や接続の問題に適切に対処できます。 Stream Analytics は、Azure Synapse Analytics への書き込み中に、最大 200 MB/秒のスループット率をサポートできます。
 
 ![ASA データ ウェアハウジング](media/stream-analytics-solution-patterns/data-warehousing.png)
 
-トレードオフとしてある程度の待ち時間は生じますが、イベントを Azure Blob Storage にアーカイブしたうえで、[PolyBase を使用してそれらを SQL Data Warehouse にインポート](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md)するなどすれば、スループットを改善することができます。 Stream Analytics から Blob Storage への出力と Blob Storage から SQL Data Warehouse への入力は、[データをタイムスタンプごとにアーカイブ](stream-analytics-custom-path-patterns-blob-storage-output.md)し、定期的にインポートすることによって、手動で関連付ける必要があります。
-
-この使用パターンでは、Azure Stream Analytics がほぼリアルタイムの ETL エンジンとして使用されます。 新たに到着するイベントは、ダウンストリームの Analytics Service から利用できるように、絶えず変換されて格納されます。
-
-![ASA の高スループット データ ウェアハウジング](media/stream-analytics-solution-patterns/data-warehousing-high-throughput.png)
 
 ## <a name="archiving-real-time-data-for-analytics"></a>リアルタイム データを分析用にアーカイブする
 

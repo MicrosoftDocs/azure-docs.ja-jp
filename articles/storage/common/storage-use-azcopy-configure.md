@@ -1,6 +1,6 @@
 ---
 title: Azure Storage での AzCopy の構成、最適化、およびトラブルシューティング | Microsoft Docs
-description: AzCopy の構成、最適化、トラブルシューティングを行います。
+description: Azure Storage での AzCopy の構成、最適化、およびトラブルシューティング プラン ファイルおよびログ ファイルの場所を変更するか、プラン ファイルおよびログ ファイルを削除します。 既定のログ レベルを変更します。
 author: normesta
 ms.service: storage
 ms.topic: how-to
@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 7e79f186688f3b6531ac24df4e3ae4201cf1903c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 9742f97832c1fc931a1679132e262f92c9f11225
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87282434"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037186"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>AzCopy の構成、最適化、トラブルシューティング
 
@@ -30,7 +30,7 @@ AzCopy は、ストレージ アカウント間の BLOB またはファイル �
 
 AzCopy v10 のプロキシ設定を構成するには、`https_proxy` 環境変数を設定します。 Windows で AzCopy を実行すると、AzCopy によって自動的にプロキシ設定が検出されるため、Windows でこの設定を使用する必要はありません。 Windows でこの設定を使用することを選択した場合は、自動検出がオーバーライドされます。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | コマンド プロンプトでは、`set https_proxy=<proxy IP>:<proxy port>` を使用します<br> PowerShell では、`$env:https_proxy="<proxy IP>:<proxy port>"` を使用します|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
@@ -91,7 +91,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 
 コンピューターの CPU が 5 個未満の場合、この変数の値は `32` に設定されます。 それ以外の場合、既定値は CPU の数に 16 を掛けた数です。 この変数の最大の既定値は `3000` ですが、この値は手動で高い値または低い値に設定できます。 
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
@@ -106,7 +106,7 @@ azcopy jobs resume <job-id> --cap-mbps 10
 `AZCOPY_BUFFER_GB` 環境変数を設定して、ファイルをダウンロードおよびアップロードするときに AzCopy で使用するシステム メモリの最大量を指定します。
 この値はギガバイト (GB) 単位で指定します。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
@@ -189,7 +189,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 これらのコマンドのいずれかを使用します。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | PowerShell:`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> コマンド プロンプトでは次を使用します: `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
@@ -201,7 +201,7 @@ azcopy jobs resume <job-id> --destination-sas="<sas-token>"
 
 これらのコマンドのいずれかを使用します。
 
-| オペレーティング システム | コマンド  |
+| オペレーティング システム | command  |
 |--------|-----------|
 | **Windows** | PowerShell:`$env:AZCOPY_LOG_LOCATION="<value>"` <br> コマンド プロンプトでは次を使用します: `set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |

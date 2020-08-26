@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: 8d08a0ab8f817d70343686f907ac444af392ea06
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 61303a52212c4cec88dee2ccd8a1c08fb971a9b8
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86108992"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88545660"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Text Analytics コンテナーをインストールして実行する
 
@@ -27,7 +27,7 @@ ms.locfileid: "86108992"
 
 コンテナーを使用すると、独自の環境で Text Analytic API を実行でき、セキュリティとデータ ガバナンスの固有の要件に対応できます。 Text Analytics コンテナーは、未加工のテキストに対して高度な自然言語処理を提供し、主要な機能として、感情分析、キー フレーズ抽出、言語検出の 3 つを備えています。 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/cognitive-services/) を作成してください。
 
 > [!IMPORTANT]
 > 無料アカウントは 1 か月あたり 5,000 トランザクションまでに制限されており、**Free** と **Standard** <a href="https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics" target="_blank">価格レベル <span class="docon docon-navigate-external x-hidden-focus"></span></a> のみがコンテナーに対して有効です。 トランザクションの要求レートの詳細については、「[データ制限](https://docs.microsoft.com/azure/cognitive-services/text-analytics/overview#data-limits)」を参照してください。

@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 05/26/2020
+ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 03f6f045e0809f79117518a22abfd74520b6d0a6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 3043ec0600f802a409387f0114aae5f56151da16
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83992778"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88510985"
 ---
 # <a name="create-a-project"></a>プロジェクトの作成
 
@@ -52,7 +52,7 @@ Custom Translator のランディング ページには、ワークスペース�
 
 プロジェクトを選択すると、プロジェクト ページに次のように表示されます。
 
-- CategoryID:CategoryID は、WorkspaceID、プロジェクト ラベル、およびカテゴリ コードを連結して作成されます。 カスタムの翻訳を取得するには、Text Translator と共に CategoryID を使用します。
+- CategoryID:CategoryID は、WorkspaceID、プロジェクト ラベル、およびカテゴリ コードを連結して作成されます。 カスタムの翻訳を取得するには、Text Translator API と共に CategoryID を使用します。 コピーするには、コピー アイコンをクリックします。
 
 - [Train]\(トレーニング\) ボタン:このボタンを使用して、[モデルのトレーニング](how-to-train-model.md)を開始します。
 

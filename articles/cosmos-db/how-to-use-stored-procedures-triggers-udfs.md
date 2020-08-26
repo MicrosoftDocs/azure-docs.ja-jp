@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: tisande
 ms.custom: devx-track-python, devx-track-javascript
-ms.openlocfilehash: bceaf4fc4a17ddc6b2129d3b2e73eb3f0f00057e
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: fccd3209d88ecd0f7e2baa06a55555a1370c4ec4
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88034160"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586309"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Azure Cosmos DB でストアド プロシージャ、トリガー、およびユーザー定義関数を登録および使用する方法
 
@@ -206,7 +206,7 @@ sproc_definition = {
     'id': 'spCreateToDoItems',
     'serverScript': file_contents,
 }
-client = CosmosClient(url, key)
+client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
 sproc = container.create_stored_procedure(container_link, sproc_definition)
@@ -370,7 +370,7 @@ trigger_definition = {
     'triggerType': documents.TriggerType.Pre,
     'triggerOperation': documents.TriggerOperation.Create
 }
-client = CosmosClient(url, key)
+client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
 trigger = container.create_trigger(container_link, trigger_definition)
@@ -520,7 +520,7 @@ trigger_definition = {
     'triggerType': documents.TriggerType.Post,
     'triggerOperation': documents.TriggerOperation.Create
 }
-client = CosmosClient(url, key)
+client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
 trigger = container.create_trigger(container_link, trigger_definition)
@@ -665,7 +665,7 @@ udf_definition = {
     'id': 'Tax',
     'serverScript': file_contents,
 }
-client = CosmosClient(url, key)
+client = cosmos_client.CosmosClient(url, key)
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
 udf = container.create_user_defined_function(container_link, udf_definition)

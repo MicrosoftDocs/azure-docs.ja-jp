@@ -2,25 +2,21 @@
 title: チュートリアル:Azure Active Directory と EY GlobalOne の統合 | Microsoft Docs
 description: Azure Active Directory と EY GlobalOne の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: a4bf1d6e-8af8-49d7-85d2-60f72d3c4633
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a86bb8d2a9785aca3317924ce2a1edc41dfc8a70
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 7079ffd5cb2fe643d93dea0f5c9384a7931dc8a6
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008680"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88550662"
 ---
 # <a name="tutorial-integrate-ey-globalone-with-azure-active-directory"></a>チュートリアル:EY GlobalOne と Azure Active Directory との統合
 

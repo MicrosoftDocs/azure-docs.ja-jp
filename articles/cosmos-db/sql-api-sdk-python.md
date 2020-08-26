@@ -1,20 +1,20 @@
 ---
 title: Azure Cosmos DB SQL Python API、SDK、およびリソース
 description: リリース日、提供終了日、Azure Cosmos DB Python SDK の各バージョン間の変更など、SQL Python API と SDK に関するあらゆる詳細を提供します。
-author: anfeldma-ms
+author: Rodrigossz
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 08/05/2020
+ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: 44d9521e9d02195cb1d4ff61fd519f31ce9c0018
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.openlocfilehash: e9f9daea2c0d570efb81603784ee730b11668426
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87876259"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585986"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用の Azure Cosmos DB Python SDK:リリース ノートとリソース
 
@@ -27,7 +27,8 @@ ms.locfileid: "87876259"
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sync Java SDK v2](sql-api-sdk-java.md)
-> * [Spring Data](sql-api-sdk-java-spring.md)
+> * [Spring Data v2](sql-api-sdk-java-spring-v2.md)
+> * [Spring Data v3](sql-api-sdk-java-spring-v3.md)
 > * [Spark コネクタ](sql-api-sdk-java-spark.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](/rest/api/cosmos-db/)
@@ -45,6 +46,20 @@ ms.locfileid: "87876259"
 |**現在サポートされているプラットフォーム**|[Python 2.7](https://www.python.org/downloads/) と [Python 3.5.3+](https://www.python.org/downloads/)|
 
 ## <a name="release-history"></a>リリース履歴
+
+### <a name="410-2020-08-10"></a>4.1.0 (2020-08-10)
+
+- "遅延" インデックス作成モードの非推奨の警告を追加しました。 バックエンドでは、このモードでコンテナーを作成できなくなり、代わりに一貫性に設定されます。
+
+**新機能**
+- 新しいコンテナーを作成するときに、分析ストレージの TTL を設定する機能が追加されました。
+
+**バグの修正**
+- Get_client API の入力としての dicts のサポートが修正されました。
+- クエリ反復子での Python 2/3 の互換性の問題が修正されました。
+- 型のヒント エラーが修正されました (問題 #12570)。
+- オプション ヘッダーが upsert_item 関数に追加されなかったバグが修正されました。 問題 #11791 - @aalapatirvbd さん、ご協力ありがとうございました。
+- 文字列以外の ID が項目で使用されている場合に発生するエラーが修正されました。 AttributeError ではなく TypeError (問題 #11793) が発生するようになりました。
 
 ### <a name="400"></a>4.0.0
 

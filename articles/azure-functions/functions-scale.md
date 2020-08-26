@@ -3,14 +3,14 @@ title: Azure Functions のスケールとホスティング
 description: Azure Functions の従量課金プランと Premium プランの選択方法について説明します。
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26924498f32b8aac2e3e7fb5cfd7c1965ee5884f
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: 80bb59527f416afd78b992fb12a4ef72956f91b7
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86025830"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587227"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions のスケールとホスティング
 
@@ -144,11 +144,19 @@ Azure Functions のスケールの単位は関数アプリです。 関数アプ
 
 スケーリングはさまざまな要因によって異なる可能性があり、選択したトリガーと言語に基づいて異なる方法でスケールします。 スケーリング動作には、注意が必要な複雑な作業がいくつかあります。
 
-* 1 つの関数アプリがスケールアウトされるのは、最大 200 インスタンスまでのみとなります。 1 つのインスタンスで一度に複数のメッセージや要求を処理できるので、同時実行の数に上限は設定されていません。
+* 1 つの関数アプリがスケールアウトされるのは、最大 200 インスタンスまでのみとなります。 1 つのインスタンスで一度に複数のメッセージや要求を処理できるので、同時実行の数に上限は設定されていません。  必要な場合は[最大値を下げて](#limit-scale-out)スケーリングを制限できます。
 * HTTP トリガーの場合、新しいインスタンスは最大で 1 秒間に 1 回割り当てられます。
 * HTTP 以外のトリガーの場合、新しいインスタンスは最大で 30 秒ごとに 1 回割り当てられます。 [Premium プラン](#premium-plan)で実行しているときは、スケーリングが速くなります。
 * Service Bus トリガーの場合、最も効率的なスケーリングを行うためには、リソースに対して "_管理_" 権限を使用します。 "_リッスン_" 権限では、スケーリングの決定を通知するためにキューの長さを使用できないため、スケーリングが正確ではありません。 Service Bus アクセス ポリシーで権限を設定する方法の詳細については、「[共有アクセス承認ポリシー](../service-bus-messaging/service-bus-sas.md#shared-access-authorization-policies)」を参照してください。
 * イベント ハブのトリガーについては、リファレンス記事の[スケーリングのガイダンス](functions-bindings-event-hubs-trigger.md#scaling)を参照してください。 
+
+### <a name="limit-scale-out"></a>スケールアウトを制限する
+
+アプリをスケールアウトするインスタンス数を制限したい場合があります。  これは、データベースなどのダウンストリーム コンポーネントのスループットに制限があるケースで最も一般的です。  既定では、従量課金プランの関数は最大 200 インスタンスにスケールアウトでき、Premium プランの関数は最大 100 インスタンスにスケールアウトできます。  特定のアプリで最大値を下げるには、`functionAppScaleLimit` 値の指定を変更します。  `functionAppScaleLimit` は、0、(制限しない場合は) null、1 からアプリの最大値間の有効値に設定できます。
+
+```azurecli
+az resource update --resource-type Microsoft.Web/sites -g <resource_group> -n <function_app_name>/config/web --set properties.functionAppScaleLimit=<scale_limit>
+```
 
 ### <a name="best-practices-and-patterns-for-scalable-apps"></a>スケーラブルなアプリのベスト プラクティスとパターン
 

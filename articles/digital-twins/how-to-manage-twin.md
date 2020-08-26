@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/10/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0f4d9811dc288222c0a2190805a8b052cb1ae47b
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.openlocfilehash: 9f140594ef18df7f9a6a3b919998962c966cde76
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87563927"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587601"
 ---
 # <a name="manage-digital-twins"></a>デジタル ツインを管理する
 
@@ -37,18 +37,22 @@ await client.CreateDigitalTwinAsync("myNewTwinID", initData);
 
 必要に応じて、デジタル ツインのすべてのプロパティの初期値を指定できます。 
 
-モデルと初期プロパティ値は、`initData` パラメーターによって提供されます。これは、関連データを含む JSON 文字列です。
+モデルと初期プロパティ値は、`initData` パラメーターによって提供されます。これは、関連データを含む JSON 文字列です。 このオブジェクトを構造化する方法の詳細については、次のセクションに進んでください。
 
 > [!TIP]
 > ツインを作成または更新した後、変更が[クエリ](how-to-query-graph.md)に反映されるまでに最大 10 秒の待機時間が発生する可能性があります。 `GetDigitalTwin` API ([この記事で後ほど](#get-data-for-a-digital-twin)説明します) ではこの遅延が発生しないため、迅速な応答が必要な場合は、クエリの代わりに API 呼び出しを使用して、新しく作成されたツインを確認してください。 
 
-### <a name="initialize-properties"></a>プロパティを初期化する
+### <a name="initialize-model-and-properties"></a>モデルとプロパティを初期化する
 
-ツイン作成 API は、ツイン プロパティの有効な JSON 記述にシリアル化できるオブジェクトを受け入れます。 "[*デジタル ツインとツイン グラフの概念*](concepts-twins-graph.md)" に関する記事をご覧ください。
+ツイン作成 API は、ツイン プロパティの有効な JSON 記述にシリアル化されるオブジェクトを受け入れます。 "[*デジタル ツインとツイン グラフの概念*](concepts-twins-graph.md)" に関する記事をご覧ください。 
+
+したがって、まず、ツインとそのプロパティ データを表すデータ オブジェクトを作成します。 次に、`JsonSerializer` を使用して、このシリアル化されたバージョンを `initdata` パラメーターの API 呼び出しに渡すことができます。
 
 パラメーター オブジェクトは手動で作成することも、用意されているヘルパー クラスを使用して作成することもできます。 それぞれの例を以下に示します。
 
 #### <a name="create-twins-using-manually-created-data"></a>手動で作成したデータを使用してツインを作成する
+
+カスタム ヘルパー クラスを使用しない場合は、`Dictionary<string, object>` でツインのプロパティを表すことができます。ここで、`string` はプロパティの名前であり、`object` はプロパティとその値を表すオブジェクトです。
 
 ```csharp
 // Define the model type for the twin to be created
@@ -68,6 +72,8 @@ client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<Dictionary<stri
 
 #### <a name="create-twins-with-the-helper-class"></a>ヘルパー クラスを使用してツインを作成する
 
+`BasicDigitalTwin` のヘルパー クラスを使用すると、"ツイン" オブジェクトにプロパティ フィールドをより直接的に格納できます。 `Dictionary<string, object>` を使用してプロパティのリストを作成することもできます。それは、`CustomProperties` としてツイン オブジェクトに直接追加できます。
+
 ```csharp
 BasicDigitalTwin twin = new BasicDigitalTwin();
 twin.Metadata = new DigitalTwinMetadata();
@@ -80,6 +86,13 @@ twin.CustomProperties = props;
 
 client.CreateDigitalTwin("myNewRoomID", JsonSerializer.Serialize<BasicDigitalTwin>(twin));
 ```
+
+>[!NOTE]
+> `BasicDigitalTwin` オブジェクトには、`Id` フィールドが付属しています。 このフィールドは空のままとすることができますが、ID 値を追加する場合は、それが、`CreateDigitalTwin` 呼び出しに渡される ID パラメーターと一致する必要があります。 上記の例の場合、以下のようになります。
+>
+>```csharp
+>twin.Id = "myNewRoomID";
+>```
 
 ## <a name="get-data-for-a-digital-twin"></a>デジタル ツインのデータを取得する
 
@@ -181,6 +194,8 @@ foreach (string prop in twin.CustomProperties.Keys)
 await client.UpdateDigitalTwin(id, patch);
 ```
 
+パッチの呼び出しでは、1 つのツインのプロパティを必要な数だけ (それらをすべてであっても) 更新することができます。 複数のツイン間でプロパティを更新する必要がある場合は、ツインごとに個別の更新呼び出しが必要になります。
+
 > [!TIP]
 > ツインを作成または更新した後、変更が[クエリ](how-to-query-graph.md)に反映されるまでに最大 10 秒の待機時間が発生する可能性があります。 `GetDigitalTwin` API ([この記事の前の方で](#get-data-for-a-digital-twin)説明しました) ではこの遅延が発生しないため、迅速な応答が必要な場合は、クエリの代わりに API 呼び出しを使用して、新しく更新されたツインを確認してください。 
 
@@ -204,6 +219,7 @@ JSON Patch コードの例を次に示します。 このドキュメントで�
 パッチは手動で作成することも、[SDK](how-to-use-apis-sdks.md) のシリアル化ヘルパー クラスを使用して作成することもできます。 それぞれの例を以下に示します。
 
 #### <a name="create-patches-manually"></a>パッチを手動で作成する
+
 ```csharp
 List<object> twinData = new List<object>();
 twinData.Add(new Dictionary<string, object>() {
@@ -278,6 +294,19 @@ await client.UpdateDigitalTwinAsync(twinId, uou.Serialize());
   }
 ]
 ```
+
+### <a name="handle-conflicting-update-calls"></a>競合する更新呼び出しを処理する
+
+Azure Digital Twins では、すべての受信要求が確実に 1 つずつ処理されます。 つまり、複数の関数が同時にツイン上の同じプロパティを更新しようとする場合でも、競合を処理するための明示的なロック コードを記述する**必要はありません**。
+
+この動作はツインごとに行われます。 
+
+例として、これら 3 つの呼び出しが同時に到着するシナリオを考えてみましょう。 
+*   *Twin1* でのプロパティ A の書き込み
+*   *Twin1* でのプロパティ B の書き込み
+*   *Twin2* でのプロパティ A の書き込み
+
+*Twin1* を変更する 2 つの呼び出しが 1 つずつ実行され、変更のたびに変更メッセージが生成されます。 *Twin2* を変更する呼び出しは、到着したらすぐに、競合なしで同時に実行できます。
 
 ## <a name="delete-a-digital-twin"></a>デジタル ツインを削除する
 

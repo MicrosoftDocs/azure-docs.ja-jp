@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: tutorial
-ms.date: 07/24/2020
+ms.date: 08/14/2020
 ms.author: victorh
-ms.openlocfilehash: baadd52a931a28e1502fe0da2286d541db9face4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0d0522dd2f206e02ad8b63b13a9537c049232db2
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290124"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88245742"
 ---
 # <a name="tutorial-configure-an-application-gateway-with-tls-termination-using-the-azure-portal"></a>チュートリアル:Azure portal を使用して TLS ターミネーションでアプリケーション ゲートウェイを構成する
 
@@ -30,7 +30,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+## <a name="prerequisites"></a>前提条件
 
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 
@@ -259,6 +259,10 @@ Export-PfxCertificate `
     セキュリティで保護された IIS Web サイトは、次の例のように表示されます。
 
     ![アプリケーション ゲートウェイでのベース URL のテスト](./media/create-ssl-portal/application-gateway-iistest.png)
+
+## <a name="clean-up-resources"></a>リソースをクリーンアップする
+
+リソース グループおよび関連するすべてのリソースは、不要になったら削除します。 リソース グループを選択し、 **[リソース グループの削除]** を選択してください。
 
 ## <a name="next-steps"></a>次のステップ
 

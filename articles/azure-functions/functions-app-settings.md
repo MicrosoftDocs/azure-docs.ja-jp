@@ -3,12 +3,12 @@ title: Azure Functions のアプリケーション設定のリファレンス
 description: Azure Functions のアプリケーション設定または環境変数の参照ドキュメントです。
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 2be13fbdbf8ce75a051448bfb46d2a41ad425be8
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: b17db828aeb19c3347c0db4babf0eee2b9d5f280
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86242765"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88589302"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions のアプリケーション設定のリファレンス
 
@@ -234,8 +234,8 @@ Azure portal での編集が有効になっているかどうかを決定しま�
 
 関数アプリがスケールアウトできる最大のインスタンス数です。 既定は無制限です。
 
-> [!NOTE]
-> この設定は、プレビュー機能です。5 以下の値を設定した場合にのみ、信頼して使用できます。
+> [!IMPORTANT]
+> この設定は、プレビューの段階です。  スケールアウトの制限に推奨される、[関数で最大にスケールアウトするためのアプリ プロパティ](./functions-scale.md#limit-scale-out)が追加されています。
 
 |Key|値の例|
 |---|------------|

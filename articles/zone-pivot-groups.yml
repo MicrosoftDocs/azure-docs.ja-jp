@@ -488,22 +488,16 @@ groups:
     title: Java
   - id: programming-language-python
     title: Python
-- id: app-service-platform-windows-linux
-  title: App Service プラットフォーム
-  prompt: ホスティング プラットフォームを選択する
+- id: programming-languages-spark-all-minus-sql
+  title: プログラミング言語
+  prompt: 言語の選択
   pivots:
-  - id: platform-linux
-    title: Linux
-  - id: platform-windows
-    title: Windows
-- id: app-service-containers-windows-linux
-  title: カスタム コンテナーを使用した App Service
-  prompt: カスタム コンテナー プラットフォームを選択する
-  pivots:
-  - id: container-linux
-    title: Linux コンテナー
-  - id: container-windows
-    title: Windows コンテナー
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-scala
+    title: Scala
+  - id: programming-language-python
+    title: Python
 - id: aml-control-methods
   title: Azure Machine Learning コントロール プレーン
   prompt: Azure Machine Learning コントロール プレーンのインターフェイスを選択する
@@ -540,10 +534,34 @@ groups:
     title: Java
   - id: programming-language-more
     title: その他の言語
+- id: ams-lva-edge-programming-languages
+  title: Live Video Analytics on IoT Edge のプログラミング言語
+  prompt: プログラミング言語を選択する
+  pivots:
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
+- id: app-service-platform-windows-linux
+  title: App Service プラットフォーム
+  prompt: ホスティング プラットフォームを選択する
+  pivots:
+  - id: platform-linux
+    title: Linux
+  - id: platform-windows
+    title: Windows
+- id: app-service-containers-windows-linux
+  title: カスタム コンテナーを使用した App Service
+  prompt: カスタム コンテナー プラットフォームを選択する
+  pivots:
+  - id: container-linux
+    title: Linux コンテナー
+  - id: container-windows
+    title: Windows コンテナー
 metadata:
-  ms.openlocfilehash: a51aa5fcc88269e718375ed08f0238867da7079b
-  ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+  ms.openlocfilehash: e9997400e1ed6708889f5f9f70078f5d3ec4c282
+  ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/14/2020
-  ms.locfileid: "88225633"
+  ms.lasthandoff: 08/20/2020
+  ms.locfileid: "88691209"

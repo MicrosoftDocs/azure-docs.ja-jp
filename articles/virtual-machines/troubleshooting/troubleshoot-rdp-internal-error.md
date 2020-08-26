@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: 4831a084153c28576cca7c40dfefeb8c5ff3c4e6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 299bbfa31584b260f85dfa7bafddea268084f876
+ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87036388"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88235164"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>リモート デスクトップを介して Azure VM に接続しようとするときに、内部エラーが発生する
 
@@ -55,13 +55,13 @@ ms.locfileid: "87036388"
 
 #### <a name="step-1-check-the-rdp-port"></a>手順 1: RDP ポートを確認する
 
-1. PowerShell インスタンスで、[NETSTAT](/windows-server/administration/windows-commands/netstat) を使用してポート 8080 が他のアプリケーションによって使用されているかどうかを確認します。
+1. PowerShell インスタンスで、[NETSTAT](/windows-server/administration/windows-commands/netstat) を使用してポート 3389 が他のアプリケーションによって使用されているかどうかを確認します。
 
     ```powershell
     Netstat -anob |more
     ```
 
-2. Termservice.exe がポート 8080 を使用している場合は、手順 2 に進みます。 別のサービスまたは Termservice.exe 以外のアプリケーションがポート 8080 を使用している場合は、次の手順に従います。
+2. Termservice.exe がポート 3389 を使用している場合は、手順 2 に進みます。 別のサービスまたは Termservice.exe 以外のアプリケーションがポート 3389 を使用している場合は、次の手順に従います。
 
     1. 3389 サービスを使用しているアプリケーションのサービスを停止します。
 

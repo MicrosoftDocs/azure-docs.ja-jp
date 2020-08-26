@@ -3,23 +3,19 @@ title: チュートリアル:Azure Active Directory で Workday 書き戻しを�
 description: Azure AD から Workday への属性の書き戻しを構成する方法について学びます
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: ad255bd4-9e50-43a1-a92b-359215867b6b
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: 1d76fb96676ad49ce28ff4ef0d6c4fbc84636638
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 324d3a21e1694d243f03beca28ac8376bedffa4d
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84026473"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88526832"
 ---
 # <a name="tutorial-configure-attribute-writeback-from-azure-ad-to-workday"></a>チュートリアル:Azure AD から Workday への属性の書き戻しを構成する
 このチュートリアルの目的は Azure AD から Workday に属性を書き戻すために必要な手順を説明することです。 Workday Writeback プロビジョニング アプリは、次の Workday 属性に対する値の割り当てをサポートします。

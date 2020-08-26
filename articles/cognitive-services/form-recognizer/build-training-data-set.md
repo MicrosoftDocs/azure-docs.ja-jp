@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 06/19/2019
 ms.author: pafarley
-ms.openlocfilehash: c6780d952b9ce6ea58fc6c8a2509a4526add7149
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.openlocfilehash: da9445b12ce6f35d249fc3af1a4a0ef560ba35de
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86028252"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87905093"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>カスタム モデルのトレーニング データ セットを作成する
 
@@ -42,7 +42,7 @@ Form Recognizer のカスタム モデルを使用する場合は、モデルを
 
 ## <a name="upload-your-training-data"></a>トレーニング データをアップロードする
 
-トレーニングに使用するフォーム ドキュメントのセットをまとめたら、それを Azure Blob Storage コンテナーにアップロードする必要があります。 コンテナーを含む Azure Storage アカウントを作成する方法がわからない場合は、[Azure portal の Azure Storage に関するクイックスタート](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)に従ってください。
+トレーニングに使用するフォーム ドキュメントのセットをまとめたら、それを Azure Blob Storage コンテナーにアップロードする必要があります。 コンテナーを含む Azure Storage アカウントを作成する方法がわからない場合は、[Azure portal の Azure Storage に関するクイックスタート](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)に従ってください。 Standard パフォーマンス レベルを使用します。
 
 手動でラベル付けされたデータを使用する場合は、トレーニング ドキュメントに対応する *.labels.json* ファイルと *.ocr.json* ファイルもアップロードする必要があります。 [サンプル ラベル付けツール](./quickstarts/label-tool.md) (または独自の UI) を使用して、これらのファイルを生成できます。
 

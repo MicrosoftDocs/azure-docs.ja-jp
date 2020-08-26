@@ -2,25 +2,21 @@
 title: 'チュートリアル: Azure Active Directory と QPrism の統合 | Microsoft Docs'
 description: Azure Active Directory と QPrism の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 72ab75ba-132b-4f83-a34b-d28b81b6d7bc
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: af3862d81270363c475ab9d925757569a6927858
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 7b4fe5505797a5dce1d1bc35730db887826f63de
+ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "67093387"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88552307"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>チュートリアル: Azure Active Directory と QPrism の統合
 

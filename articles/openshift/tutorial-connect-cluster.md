@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d7efe781f1ba2beb1fa7dd4fdaaad280fc789de2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 226cf29b1a94b4508a9d68f02b7400a18eba4bc2
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204744"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587856"
 ---
 # <a name="tutorial-connect-to-an-azure-red-hat-openshift-4-cluster"></a>チュートリアル:Azure Red Hat OpenShift 4 クラスターに接続する
 
@@ -25,7 +25,7 @@ ms.locfileid: "82204744"
 
 前のチュートリアルでは、Azure Red Hat OpenShift クラスターを作成しました。 これらの手順を完了しておらず、順番に進めたい場合は、[チュートリアル 1 - Azure Red Hat Openshift 4 クラスターの作成](tutorial-create-cluster.md)に関するページから開始してください。
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.75 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.6.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。
 
 ## <a name="connect-to-the-cluster"></a>クラスターに接続する
 
@@ -86,7 +86,7 @@ API サーバーのアドレスを取得します。
 apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.url -o tsv)
 ```
 
-次のコマンドを使用して、OpenShift クラスターの API サーバーにログインします。 **\<kubeadmin password>** を、先ほど取得したパスワードに置き換えます。
+次のコマンドを使用して、OpenShift クラスターの API サーバーにログインします。 **\<kubeadmin password>** を今取得したパスワードに置き換えます。
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>

@@ -7,16 +7,16 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 07/14/2020
-ms.openlocfilehash: 8ac69d7d611aa75584955ed6ed83ab79c70ed73a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 51f4c9a5748896eff9e9f3ae9719b2e7e7cdd4e7
+ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87082809"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88607492"
 ---
 # <a name="cloud-solution-provider-program"></a>クラウド ソリューション プロバイダー プログラム
 
-この記事では、クラウド ソリューション プロバイダー (CSP) プログラムから提供できるよう、オファーを構成する方法について説明します。 オファーを[コマーシャル マーケットプレースの Web ネットショップ](comparing-appsource-azure-marketplace.md)で公開するだけでなく、CSP プログラムを通じて販売することにより、このプログラムを利用している数百万の Microsoft の正規のお客様にオファーを提供できます。
+この記事では、クラウド ソリューション プロバイダー (CSP) プログラムから提供できるよう、オファーを構成する方法について説明します。 オファーを[コマーシャル マーケットプレースのオンライン ストア](comparing-appsource-azure-marketplace.md)で公開するだけでなく、CSP プログラムを通じて販売することにより、このプログラムを利用している数百万の Microsoft の正規のお客様にオファーを提供できます。
 
 新規または既存のオファーを CSP プログラムで提供できるよう、オプトイン方式で構成できます。これにより、CSP パートナーは、貴社の製品を販売したり、顧客向けのバンドル ソリューションを作成したりできるようになります。
 
@@ -166,7 +166,7 @@ CSP プログラムのパートナーが製品を顧客に販売していない�
 
 ## <a name="sharing-sales-and-support-materials-with-partners-in-the-csp-program"></a>販売とサポートの資料を CSP プログラムのパートナーと共有する
 
-クラウド ソリューション プロバイダー プログラムのパートナーがあなたのオファーを最も効果的に表現し、あなたの組織と連携できるようにするには、リセラーが使用できる販売およびサポートの資料を送信する必要があります。 これらのリソースは、マーケットプレースのネットショップの顧客には公開されません。
+クラウド ソリューション プロバイダー プログラムのパートナーがあなたのオファーを最も効果的に表現し、あなたの組織と連携できるようにするには、リセラーが使用できる販売およびサポートの資料を送信する必要があります。 これらのリソースは、マーケットプレースのオンライン ストアの顧客には公開されません。
 
 ### <a name="partner-center-csp-channel"></a>パートナー センターの CSP チャネル
 

@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用した Azure Cloud Services での診断の有効化 | Microsoft Docs
-description: PowerShell を使用して Cloud Services の診断を有効にする方法について説明します。
+description: PowerShell を使用して、Azure Diagnostics 拡張機能によって Azure Cloud Services から診断データを収集できるようにする方法について説明します。
 services: cloud-services
 documentationcenter: .net
 author: tgore03
@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: tagore
-ms.openlocfilehash: 02f63af9c34424ed83ba01424c832334639f46c4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: e3c4beac5bd88ba0bbefa91fc83976416b24d2fc
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87092679"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141076"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>PowerShell を使用した Azure Cloud Services での診断の有効化
 Azure Diagnostics 拡張機能を使用して、クラウド サービスからアプリケーション ログやパフォーマンス カウンターなどの診断データを収集できます。 この記事では、PowerShell を使用して Cloud Service の Azure Diagnostics 拡張機能を有効にする方法について説明します。  この記事で求められる前提条件については、 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/) に関するページを参照してください。

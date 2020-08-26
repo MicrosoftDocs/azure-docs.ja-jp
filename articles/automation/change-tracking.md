@@ -3,14 +3,14 @@ title: Azure Automation の変更履歴とインベントリの概要
 description: この記事では、環境内のソフトウェアや Microsoft サービスの変更を特定するのに役立つ、Change Tracking とインベントリの機能について説明します。
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/08/2020
+ms.date: 08/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca96f817407aaef808fa10fbedec7af7b5912dc8
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.openlocfilehash: 2fe92942e263cf53b9827ccbcb13a2d7bafc367c
+ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87447929"
+ms.lasthandoff: 08/18/2020
+ms.locfileid: "88511050"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>変更履歴とインベントリの概要
 
@@ -26,10 +26,10 @@ ms.locfileid: "87447929"
 > [!NOTE]
 > Azure Resource Manager のプロパティの変更を追跡するには、Azure Resource Graph の[変更履歴](../governance/resource-graph/how-to/get-resource-changes.md)を参照してください。
 
-変更履歴とインベントリでは、Azure Monitor からデータが取得されます。 Log Analytics ワークスペースに接続されている仮想マシンでは、Log Analytics エージェントを使用して、監視対象サーバーにインストールされているソフトウェア、Microsoft サービス、Windows レジストリとファイル、および Linux デーモンの変更に関するデータが収集されます。 データが使用可能になると、処理のためにエージェントによって Azure Monitor に送信されます。 Azure Monitor では、受信したデータにロジックが適用され、それが記録されて使用可能になります。 
+変更履歴とインベントリでは、Azure Monitor からデータが取得されます。 Log Analytics ワークスペースに接続されている仮想マシンでは、Log Analytics エージェントを使用して、監視対象サーバーにインストールされているソフトウェア、Microsoft サービス、Windows のレジストリとファイル、および Linux デーモンの変更に関するデータが収集されます。 データが使用可能になると、処理のためにエージェントによって Azure Monitor に送信されます。 Azure Monitor では、受信したデータにロジックが適用され、それが記録されて使用可能になります。
 
 > [!NOTE]
-> 変更履歴とインベントリ機能を使用するには、すべての VM を Automation アカウントと同じサブスクリプションとリージョン内に配置する必要があります。
+> Change Tracking とインベントリでは、Log Analytics ワークスペースを Automation アカウントにリンクする必要があります。 サポートされているリージョンの確定的な一覧については、[Azure でのワークスペースのマッピング](./how-to/region-mappings.md)に関する記事をご覧ください。 リージョン マッピングは、Automation アカウントとは別のリージョンの VM を管理する機能には影響しません。
 
 現在、変更履歴とインベントリでは、次の項目がサポートされていません。
 
@@ -53,7 +53,7 @@ ms.locfileid: "87447929"
 
 ## <a name="supported-operating-systems"></a>サポートされるオペレーティング システム
 
-変更履歴とインベントリは、Log Analytics エージェントの要件を満たすすべてのオペレーティング システムでサポートされます。 オペレーティング システムの正式なバージョンは、Windows Server 2008 SP1 以降と Windows 7 SP1 以降です。 この機能は、多くの Linux オペレーティング システムでもサポートされています。 Log Analytics をサポートするオペレーティング システムについては、「[Log Analytics エージェントの概要](../azure-monitor/platform/log-analytics-agent.md)」を参照してください。
+変更履歴とインベントリは、Log Analytics エージェントの要件を満たすすべてのオペレーティング システムでサポートされます。 オペレーティング システムの正式なバージョンは、Windows Server 2008 SP1 以降と Windows 7 SP1 以降です。 この機能は、多くの Linux オペレーティング システムでもサポートされています。 サポートされているオペレーティング システムの一覧については、「[Log Analytics エージェントの概要](../azure-monitor/platform/log-analytics-agent.md)」を参照してください。
 
 TLS 1.2 のクライアント要件を理解するには、「[Azure Automation に対する TLS 1.2 の強制](automation-managing-data.md#tls-12-enforcement-for-azure-automation)」を参照してください。
 

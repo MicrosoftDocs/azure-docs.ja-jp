@@ -6,14 +6,14 @@ ms.author: sudbalas
 ms.date: 03/08/2020
 ms.service: key-vault
 ms.subservice: general
-ms.topic: quickstart
+ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 70a0620369792c1aaf2c11867fd468f42d6bb9ef
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: d67d6301137a90d287148131fb4b1be7731e15bb
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494691"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88585833"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Key Vault を Azure Private Link と統合する
 

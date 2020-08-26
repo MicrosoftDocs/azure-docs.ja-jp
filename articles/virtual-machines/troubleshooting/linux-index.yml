@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: b78ce7baf60431e0f9ee1b1218d2d57019b35359
-  ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+  ms.openlocfilehash: 7367bc378cf2a271d69d78cd08c4d1252b11fd62
+  ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 07/23/2020
-  ms.locfileid: "87068972"
+  ms.lasthandoff: 08/25/2020
+  ms.locfileid: "88816390"
 landingContent:
 - title: デプロイ エラーのトラブルシューティング
   linkLists:
@@ -88,13 +88,13 @@ landingContent:
   - linkListType: how-to-guide
     links:
     - text: 仮想ディスクの FAQ
-      url: ../linux/faq-for-disks.md
+      url: ../faq-for-disks.md
     - text: VM のサイズを変更するときの割り当てエラーのトラブルシューティング
       url: ./allocation-failure.md
     - text: VM の一時ドライブについて
-      url: ../linux/managed-disks-overview.md#temporary-disk
+      url: ../managed-disks-overview.md#temporary-disk
     - text: Azure Managed Disks の概要
-      url: ../linux/managed-disks-overview.md
+      url: ../managed-disks-overview.md
     - text: Azure VM ディスクと Premium マネージド ディスクおよびアンマネージド ディスクについての FAQ
       url: ../linux/convert-unmanaged-to-managed-disks.md
 - title: ディスクの暗号化の問題

@@ -2,13 +2,13 @@
 title: Application Insights のリリース注釈 | Microsoft Docs
 description: Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: 8e9e0cb49343524e8a45831566cf802b1c8c5d9b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.date: 08/14/2020
+ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87320665"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88258422"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 
@@ -68,6 +68,10 @@ Azure Pipelines のリリース テンプレートごとに個別の API キー�
    ![Azure DevOps の [変数] タブで、[追加] を選択し、変数名を ApiKey にして、[値] に API キーを貼り付ける。](./media/annotations/7-paste-api-key.png)
    
 1. メイン リリース テンプレート ウィンドウで **[保存]** 選択して、テンプレートを保存します。
+
+
+   > [!NOTE]
+   > API キーに対する制限については、[REST API の割合の制限に関するドキュメント](https://dev.applicationinsights.io/documentation/Authorization/Rate-limits)を参照してください。
 
 ## <a name="view-annotations"></a>注釈を表示する
 

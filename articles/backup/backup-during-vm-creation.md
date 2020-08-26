@@ -3,12 +3,12 @@ title: Azure VM の作成時にバックアップを有効にする
 description: Azure Backup を使用した Azure VM の作成時にバックアップを有効にする方法について説明します。
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 7fb6fd25f5031669633641ea02f34180f6f795d4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: c744f6aa2bef6d3d6800aa6b6dc077915fc5205b
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87032852"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88586700"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Azure VM の作成時にバックアップを有効にする
 
@@ -28,7 +28,7 @@ Azure Virtual Machines (VM) をバックアップするには、Azure Backup サ
 
 1. Azure portal で、 **[リソースの作成]** をクリックします。
 
-2. Azure Marketplace で **[Compute]\(コンピューティング\)** をクリックし、VM イメージを選択します。
+2. Azure Marketplace で **[コンピューティング]** をクリックし、VM イメージを選択します。
 
 3. [Windows](../virtual-machines/windows/quick-create-portal.md) または [Linux](../virtual-machines/linux/quick-create-portal.md) の指示に従って、VM を設定します。
 
@@ -47,6 +47,9 @@ Azure Virtual Machines (VM) をバックアップするには、Azure Backup サ
     - インスタント リストア機能について詳しくは、[こちら](backup-instant-restore-capability.md)を参照してください。
 
       ![既定のバックアップ ポリシー](./media/backup-during-vm-creation/daily-policy.png)
+
+>[!NOTE]
+>[SSE と PMK は、Azure VM の既定の暗号化方法です](backup-encryption.md)。 Azure Backup では、これらの Azure VM のバックアップと復元がサポートされます。
 
 ## <a name="azure-backup-resource-group-for-virtual-machines"></a>Virtual Machines の Azure Backup リソース グループ
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
-ms.date: 02/25/2020
-ms.openlocfilehash: faa338e32577e713472601fde52e038a685b7826
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 08/14/2020
+ms.openlocfilehash: 902fa34be149f0b876729409c530186e34c706e5
+ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87086831"
+ms.lasthandoff: 08/19/2020
+ms.locfileid: "88587312"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Azure SQL Managed Instance のリソース制限の概要
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -33,7 +33,7 @@ SQL Managed Instance には、基になるインフラストラクチャとア�
 
 |   | **Gen4** | **Gen5** |
 | --- | --- | --- |
-| **ハードウェア** | Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア) | Intel E5-2673 v4 (Broadwell) 2.3-GHz および Intel SP-8160 (Skylake) プロセッサ、高速 NVMe SSD、仮想コア = 1 LP (ハイパー スレッド) |
+| **ハードウェア** | Intel® E5-2673 v3 (Haswell) 2.4 GHz プロセッサ、接続されている SSD 仮想コア = 1 PP (物理コア) | Intel® E5-2673 v4 (Broadwell) 2.3 GHz プロセッサ、Intel® SP-8160 (Skylake) プロセッサ、および Intel® 8272CL (Cascade Lake) 2.5 GHz プロセッサ、高速 NVMe SSD、仮想コア = 1 LP (ハイパースレッド) |
 | **仮想コアの数** | 8、16、24 の仮想コア | 4、8、16、24、32、40、64、80 の仮想コア |
 | **最大メモリ (メモリ/コア比)** | 仮想コアあたり 7 GB<br/>メモリ量を増やすには、仮想コアを追加します。 | 仮想コアあたり 5.1 GB<br/>メモリ量を増やすには、仮想コアを追加します。 |
 | **最大インメモリ OLTP メモリ** | インスタンスの制限:仮想コアあたり 1 から 1.5 GB| インスタンスの制限:仮想コアあたり 0.8 から 1.65 GB |

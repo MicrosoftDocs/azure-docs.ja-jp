@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f6bd09a24202b599c1f008e7b046ea5f93ff0323
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 4c4e34c6f13f7013847e99a362716fc9c570cdaf
+ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87489794"
+ms.lasthandoff: 08/14/2020
+ms.locfileid: "88224919"
 ---
 # <a name="enable-and-use-azure-multi-factor-authentication-with-legacy-applications-using-app-passwords"></a>アプリ パスワードを使用して、レガシ アプリケーションで Azure Multi-Factor Authentication を有効にして使用する
 
@@ -41,6 +41,8 @@ Azure Multi-Factor Authentication で、ユーザー アカウントが有効に
 * パスワードをキャッシュし、オンプレミス シナリオで使用しているアプリケーションでは、職場または学校アカウント以外で、アプリ パスワードが不明であるため、失敗する可能性があります。 このシナリオの例として、オンプレミスだが、アーカイブ メールはクラウド内にある Exchange メールがあります。 このシナリオでは、同じパスワードは機能しません。
 * ユーザーのアカウントで Azure Multi-Factor Authentication を有効にしたら、Outlook や Microsoft Skype for Business などのほとんどの非ブラウザー クライアントでアプリ パスワードを使用できます。 ただし、Windows PowerShell などの非ブラウザー アプリケーションからアプリ パスワードを使用して、管理操作を実行することはできません。 ユーザーが管理者アカウントを持っている場合でも、操作を実行することはできません。
     * PowerShell スクリプトを実行するには、サービス アカウントを強固なパスワードで作成します。そのアカウントで 2 段階認証を有効にしないでください。
+* ユーザー アカウントが侵害された疑いがあり、アカウント パスワードを取り消すか、またはリセットした場合は、アプリ パスワードも更新する必要があります。 ユーザー アカウントのパスワードが取り消されるか、またはリセットされても、アプリ パスワードは自動的には取り消されません。 ユーザーは既存のアプリ パスワードを削除し、新しいアプリ パスワードを作成する必要があります。
+   * 詳細については、「[[追加のセキュリティ確認] ページを使用してアプリ パスワードを作成および削除する](../user-help/multi-factor-authentication-end-user-app-passwords.md#create-and-delete-app-passwords-from-the-additional-security-verification-page)」を参照してください。
 
 >[!WARNING]
 > クライアントがオンプレミスの自動検出エンドポイントとクラウドの自動検出エンドポイントの両方と通信するハイブリッド環境では、アプリ パスワードは機能しません。 オンプレミスでの認証にはドメイン パスワードが必要です。 クラウドでの認証にはアプリ パスワードが必要です。

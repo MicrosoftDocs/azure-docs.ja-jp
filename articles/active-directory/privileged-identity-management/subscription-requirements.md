@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 01/10/2020
+ms.date: 08/06/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42d931206e99516e0320d0cbedd0812389ee41aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 74c9cd1c55f1b0dde173a7ffbeac92e5518db81e
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84742166"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005806"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>Privileged Identity Management を使用するためのライセンスの要件
 
@@ -32,19 +32,19 @@ Azure Active Directory (Azure AD) Privileged Identity Management (PIM) を使用
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-## <a name="how-many-licenses-must-you-have"></a>ライセンスはいくつ必要ですか?
+## <a name="licenses-you-must-have"></a>必要なライセンス
 
 少なくとも、次のタスクを実行する従業員と同じ数の Azure AD Premium P2 ライセンスがディレクトリにあることを確認します。
 
-- PIM を使用して管理された Azure AD ロールに対象として割り当てられたユーザー
+- PIM を使用して管理された Azure AD または Azure ロールに対象として割り当てられたユーザー
+- 資格のあるメンバーまたは特権アクセス グループの所有者として割り当てられたユーザー
 - PIM でアクティブ化要求を承認または却下できるユーザー
-- Just-In-Time 割り当てまたは直接割り当て (時間ベース) を使用して Azure リソース ロールに割り当てられたユーザー  
 - アクセス レビューに割り当てられたユーザー
 - アクセス レビューを実行するユーザー
 
 Azure AD Premium P2 ライセンスは、次のタスクでは必要**ありません**。
 
-- PIM のセットアップ、ポリシーの構成、アラートの受信、アクセス レビューの設定を行うグローバル管理者ロールまたは特権ロール管理者ロールを持つユーザーには、ライセンスは必要ありません。
+- PIM の設定、ポリシーの構成、アラートの受信、アクセス レビューの設定を行うユーザーに、ライセンスは必要ありません。
 
 ライセンスの詳細については、[Azure Active Directory ポータルを使用したライセンスの割り当てと削除](../fundamentals/license-users-groups.md)に関するページを参照してください。
 
@@ -58,7 +58,7 @@ Azure AD Premium P2 ライセンスは、次のタスクでは必要**ありま�
 | Graphic Design Institute には 25 人の管理者がいて、そのうちの 14 人は PIM で管理されています。 ロールのアクティブ化には承認が必要であり、組織にはアクティブ化を承認できるユーザーが 3 人います。 | 資格のあるロール用の 14 ライセンス + 3 承認者 | 17 |
 | Contoso には 50 人の管理者がいて、そのうちの 42 人は PIM で管理されています。 ロールのアクティブ化には承認が必要であり、組織にはアクティブ化を承認できるユーザーが 5 人います。 また、Contoso では、管理者ロールに割り当てられているユーザーのレビューが毎月行われており、レビュー担当者はユーザーのマネージャーで、そのうちの 6 人は PIM によって管理される管理者ロールにはなっていません。 | 資格のあるロール用の 42 ライセンス + 5 承認者 + 6 レビュー担当者 | 53 |
 
-## <a name="what-happens-when-a-license-expires"></a>ライセンスの有効期限が切れた場合に発生すること
+## <a name="when-a-license-expires"></a>ライセンスの有効期限が切れた場合
 
 Azure AD Premium P2、EMS E5、または試用版ライセンスの有効期限が切れた場合、Privileged Identity Management の機能はお使いのディレクトリで利用できなくなります。
 

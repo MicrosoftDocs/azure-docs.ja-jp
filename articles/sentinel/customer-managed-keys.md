@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 44a2c0c1b4bc9b4e6fc1247497640b261d1d0fa1
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.openlocfilehash: 58936066abcbe4c3f9fcfad78bf914c74079aa95
+ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87387916"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88141790"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Azure Sentinel のカスタマー マネージド キーの設定
 

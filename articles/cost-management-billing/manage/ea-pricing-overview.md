@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 07/13/2020
+ms.date: 08/14/2020
 ms.author: banders
-ms.openlocfilehash: a5f6c559cae94278db7d7fd78023ba737c80080d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 34b683da561d1cae843aa8c6198fdc241b60bae1
+ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86537767"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88243977"
 ---
 # <a name="azure-ea-pricing"></a>Azure EA の価格
 

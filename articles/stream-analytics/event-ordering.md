@@ -6,13 +6,13 @@ ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/12/2019
-ms.openlocfilehash: e9617018b06d4f62b49946ae5593bd51805355e0
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 08/06/2020
+ms.openlocfilehash: b4e34befbf28de2b985ff49ce17a87a25842015e
+ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86044568"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87901693"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Azure Stream Analytics 用のイベント順序ポリシーの構成
 
@@ -75,6 +75,11 @@ Stream Analytics ジョブは、*イベント時間*または*到着時間*の�
 このメッセージは、入力内の少なくとも 1 つのパーティションが空で、遅延到着しきい値で出力を遅延させることを通知するものです。 この問題を解決するには、以下のいずれかを実行することをお勧めします。  
 1. イベント ハブ/IoT ハブのすべてのパーティションが入力を受け取るようにする。 
 2. クエリで Partition by PartitionId 句を使用する。 
+
+## <a name="why-do-i-see-a-delay-of-5-seconds-even-when-my-late-arrival-policy-is-set-to-0"></a>遅延到着ポリシーが 0 に設定されていても 5 秒の遅延があるのはなぜですか?
+これは、入力をまったく受け取ったことがない入力パーティションが存在する場合に発生します。 この動作を検証するため、パーティションごとの入力メトリックを確認できます。 
+
+パーティションに、構成されている遅延到着のしきい値を超えるデータがない場合は、イベントの順序に関する考慮事項のセクションで説明しているように、Stream Analytics により、アプリケーションのタイムスタンプが進められます。 このために、推定到着時間が必要です。 パーティションにどのようなデータも存在したことがない場合、Stream Analytics では、到着時刻は*ローカル時刻- 5 秒*であると推定します。 このパーティションには、どのようなデータも存在したことがないため、5 秒の透かしの遅延が表示される可能性があります。  
 
 ## <a name="next-steps"></a>次のステップ
 * [時間の処理に関する考慮事項](stream-analytics-time-handling.md)

@@ -1,7 +1,7 @@
 ---
 title: Microsoft Threat Modeling Tool のリリース ノート
 titleSuffix: Azure
-description: Threat Modeling Tool のリリース ノートです
+description: Microsoft Threat Modeling Tool のすべての更新プログラムのリリース ノートをお読みください。 ダウンロード リンクとシステム要件を参照してください。
 services: security
 documentationcenter: na
 author: jegeib
@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
-ms.openlocfilehash: eea853ec5829eda3f7496439979adae7bb20c639
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e6f8ba54218f9b5b730ce3454c087d6072930edf
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80125081"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87825873"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool のリリース
 
@@ -38,6 +38,8 @@ Microsoft Threat Modeling Tool は現在、Windows 用に無料で[クリック�
 
 ## <a name="release-notes"></a>リリース ノート
 
+- [Microsoft Threat Modeling Tool GA リリース バージョン 7.3.00729.1](threat-modeling-tool-releases-73007291.md) - 7/29/2020
+- [Microsoft Threat Modeling Tool GA リリース バージョン 7.3.00714.2](threat-modeling-tool-releases-73007142.md) - 7/14/2020
 - [Microsoft Threat Modeling Tool GA リリース バージョン 7.3.00316.1](threat-modeling-tool-releases-73003161.md) - 3/22/2020
 - [Microsoft Threat Modeling Tool GA リリース バージョン 7.3.00206.1](threat-modeling-tool-releases-73002061.md) - 2/11/2020
 - [Microsoft Threat Modeling Tool GA リリース バージョン 7.1.61015.1](threat-modeling-tool-releases-71610151.md) - 10/16/2019

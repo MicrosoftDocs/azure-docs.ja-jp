@@ -7,12 +7,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 06/19/2020
-ms.openlocfilehash: abad72145b095b4da77ec499f936c6912fd970a6
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.openlocfilehash: bd3b77f80a414dd3db1d5106929fa0e215e34c1f
+ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2020
-ms.locfileid: "86229450"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88121869"
 ---
 # <a name="what-is-a-test-drive"></a>体験版とは
 
@@ -44,7 +44,17 @@ ms.locfileid: "86229450"
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager の体験版
 
-このデプロイ テンプレートには、ソリューションを構成しているすべての Azure リソースが含まれています。 このシナリオに適合するのは、Azure リソースしか使用されていない製品です。 これは、仮想マシンまたは Azure アプリのオファーの唯一の体験版オプションです。
+このデプロイ テンプレートには、ソリューションを構成しているすべての Azure リソースが含まれています。 このシナリオに適合するのは、Azure リソースしか使用されていない製品です。 Azure Resource Manager の体験版は、次の種類のオファーで利用できます。 
+
+- Azure アプリケーション
+- Dynamics 365 for Business Central
+- Dynamics 365 for Customer Engagement および PowerApps
+- Dynamics 365 for Operations
+- SaaS
+- 仮想マシン
+
+>[!NOTE]
+>これは、仮想マシンと Azure アプリケーションのオファーで唯一の体験版オプションです。
 
 ### <a name="hosted-test-drive"></a>ホストされた体験版
 

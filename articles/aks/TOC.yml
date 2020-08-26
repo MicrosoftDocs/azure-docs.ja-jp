@@ -141,7 +141,7 @@
           href: uptime-sla.md
         - name: 近接配置グループの使用 (プレビュー)
           href: reduce-latency-ppg.md
-        - name: ノード イメージのアップグレード (プレビュー)
+        - name: ノード イメージのアップグレード
           href: node-image-upgrade.md
         - name: ノードの OS の更新プログラムの処理
           href: node-updates-kured.md
@@ -366,6 +366,8 @@
           href: ssh.md
         - name: Linux のパフォーマンス ツール
           href: troubleshoot-linux.md
+        - name: Resource Health のイベントを確認する (プレビュー)
+          href: aks-resource-health.md
 - name: リファレンス
   items:
     - name: Azure CLI

@@ -1,6 +1,6 @@
 ---
 title: Azure Storage Analytics のメトリック (クラシック)
-description: Azure Storage で Storage Analytics メトリックを使用する方法について説明します。
+description: Azure Storage で Storage Analytics メトリックを使用する方法について説明します。 トランザクション メトリックと容量メトリック、メトリックの格納方法、メトリックの有効化などについて説明します。
 author: normesta
 ms.service: storage
 ms.topic: conceptual
@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 5613453667e3bb278f4da22ebed4502def70235b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 7d7db5a756e5d75cb4f9719f54d95f9cee1e8d2f
+ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675904"
+ms.lasthandoff: 08/06/2020
+ms.locfileid: "87828049"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics のメトリック (クラシック)
 
@@ -146,18 +146,16 @@ Azure portal のストレージ アカウントの [メニュー] ウィンド�
 
 長期間ストレージのメトリックをダウンロードし、それらをローカルで分析する場合、ツールを使用するか、コードを記述し、テーブルを読み込む必要があります。 分析のために分単位メトリックをダウンロードする必要があります。 ストレージ アカウントにすべてのテーブルを一覧表示した場合、このテーブルは表示されない場合がありますが、名前で直接アクセスできます。 多くのストレージ閲覧ツールは、これらのテーブルを認識し、テーブルを直接表示できます。 利用できるツールの一覧については、[Azure Storage クライアント ツール](/azure/storage/storage-explorers)に関するページをご覧ください。
 
-||||  
+|メトリック|テーブル名|メモ| 
 |-|-|-|  
-|**Metrics**|**テーブル名**|**メモ**|  
 |時間単位のメトリック|$MetricsHourPrimaryTransactionsBlob<br /><br /> $MetricsHourPrimaryTransactionsTable<br /><br /> $MetricsHourPrimaryTransactionsQueue<br /><br /> $MetricsHourPrimaryTransactionsFile|2013 年 8 月 15 日より前のバージョンでは、これらのテーブルは以下のように呼ばれていました。<br /><br /> $MetricsTransactionsBlob<br /><br /> $MetricsTransactionsTable<br /><br /> $MetricsTransactionsQueue<br /><br /> ファイル サービスのメトリックは、バージョン 2015 年 4 月 5 日以降で利用できます。|  
 |分単位のメトリック|$MetricsMinutePrimaryTransactionsBlob<br /><br /> $MetricsMinutePrimaryTransactionsTable<br /><br /> $MetricsMinutePrimaryTransactionsQueue<br /><br /> $MetricsMinutePrimaryTransactionsFile|PowerShell を使用するか、プログラミングによってのみ有効にできます。<br /><br /> ファイル サービスのメトリックは、バージョン 2015 年 4 月 5 日以降で利用できます。|  
 |容量|$MetricsCapacityBlob|BLOB サービスのみ。|  
 
 これらのテーブルのスキーマの完全な詳細については、[Storage Analytics メトリックのテーブル スキーマ](/rest/api/storageservices/storage-analytics-metrics-table-schema)に関するページをご覧ください。 次のサンプル行は、一部の利用できる列のみを示していますが、ストレージ メトリックがこれらのメトリックを保存するしくみについて、重要な特徴をいくつか説明しています。  
 
-||||||||||||  
+|パーティション キー|行キー|Timestamp|TotalRequests|TotalBillableRequests|TotalIngress|TotalEgress|可用性|AverageE2ELatency|AverageServerLatency|PercentSuccess| 
 |-|-|-|-|-|-|-|-|-|-|-|  
-|**PartitionKey**|**RowKey**|**Timestamp**|**TotalRequests**|**TotalBillableRequests**|**TotalIngress**|**TotalEgress**|**可用性**|**AverageE2ELatency**|**AverageServerLatency**|**PercentSuccess**|  
 |20140522T1100|user;All|2014-05-22T11:01:16.7650250Z|7|7|4003|46801|100|104.4286|6.857143|100|  
 |20140522T1100|user;QueryEntities|2014-05-22T11:01:16.7640250Z|5|5|2694|45951|100|143.8|7.8|100|  
 |20140522T1100|user;QueryEntity|2014-05-22T11:01:16.7650250Z|1|1|538|633|100|3|3|100|  

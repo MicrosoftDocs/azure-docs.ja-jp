@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 9f5fcbda93e4a31b4d328bffe4689a47a4eb89ff
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 4882fadcc2f05e4047366d8d097a3918091035bb
+ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87281567"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "88005314"
 ---
 # <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でリソースを管理するアプリケーション開発者のベスト プラクティス
 
@@ -74,7 +74,7 @@ spec:
 
 ## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>AKS クラスターに対するアプリケーションの開発とデバッグを行う
 
-**ベスト プラクティス ガイダンス** - 開発チームでは、Dev Spaces を使用して AKS クラスターに対するデプロイおよびデバッグを行う必要があります。 この開発モデルを使用することで、アプリが運用環境にデプロイされる前に、ロールベースのアクセス制御、ネットワーク、またはストレージのニーズが確実に実装されるようになります。
+**ベスト プラクティス ガイダンス** - 開発チームでは、Dev Spaces を使用して AKS クラスターに対するデプロイおよびデバッグを行う必要があります。 この開発モデルを使用することで、アプリが運用環境にデプロイされる前に、ロールベースのアクセス制御 (RBAC)、ネットワーク、またはストレージのニーズが確実に実装されるようになります。
 
 Azure Dev Spaces を使用して、AKS クラスターに対して直接アプリケーションを開発、デバッグ、テストします。 チーム内の開発者は連携して、アプリケーション ライフサイクル全体を通してビルドとテストを行います。 Visual Studio または Visual Studio Code などの既存のツールを引き続き使用することができます。 Dev Spaces 用に拡張機能がインストールされ、AKS クラスターでのアプリケーションの実行およびデバッグのオプションが提供されます。
 

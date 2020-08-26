@@ -1,6 +1,6 @@
 ---
 title: オンプレミス ネットワークを Azure Virtual Network に接続するサイト間 VPN:ポータル
-description: パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、ポータルを使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。
+description: ポータルを使用し、オンプレミスのネットワークから Azure 仮想ネットワークへのパブリック インターネット経由の IPsec サイト間 VPN Gateway 接続を作成します。
 services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 03/03/2020
 ms.author: cherylmc
-ms.openlocfilehash: 601e31cde22942abd6d2bc7c5bdcbc5d97f5a591
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ebfd03935f5189a544f11e5b8bbdd4b46e2aa989
+ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84987653"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88037067"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure Portal でサイト間接続を作成する
 
@@ -48,7 +48,7 @@ ms.locfileid: "84987653"
 * **サブスクリプション:** 使用するサブスクリプション
 * **[リソース グループ]:** TestRG1
 * **[リージョン]:** 米国東部
-* **サブネット:** FrontEnd:10.1.0.0/24、BackEnd:10.1.1.0/24 (この演習では省略可能)
+* **サブネット:** FrontEnd: 10.1.0.0/24、BackEnd: 10.1.1.0/24 (この演習では省略可能)
 * **ゲートウェイ サブネットのアドレス範囲:** 10.1.255.0/27
 * **仮想ネットワーク ゲートウェイ名:** VNet1GW
 * **パブリック IP アドレス名:** VNet1GWpip
@@ -132,12 +132,12 @@ ms.locfileid: "84987653"
 
 他の接続とアドレス空間が重複しなければ、新たに接続を追加することができます。
 
-1. 新たに接続を追加するには、VPN ゲートウェイに移動し、 **[接続]** をクリックして [接続] ページを開きます。
+1. 新たに接続を追加するには、VPN ゲートウェイに移動し、**[接続]** をクリックして [接続] ページを開きます。
 2. **[+追加]** をクリックして接続を追加します。 "VNet 間" (別の VNet ゲートウェイに接続する場合) または "サイト対サイト" を考慮して接続の種類を調整します。
 3. "サイト対サイト" を使用して接続している場合で、かつまだ接続先となるサイトのローカル ネットワーク ゲートウェイを作成していない場合は、新たに作成することができます。
-4. 使用する共有キーを指定し、 **[OK]** をクリックして接続を作成します。
+4. 使用する共有キーを指定し、**[OK]** をクリックして接続を作成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 * 強制トンネリングについては、[強制トンネリング](vpn-gateway-forced-tunneling-rm.md)に関する記事を参照してください。

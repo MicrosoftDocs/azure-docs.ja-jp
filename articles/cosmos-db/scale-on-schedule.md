@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: mjbrown
-ms.openlocfilehash: 670a38b48ee89930078078dc4a8ac1a2876648e2
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: ec5c98d90facf9458769f235880f17d14708e425
+ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87503737"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87923657"
 ---
 # <a name="scale-azure-cosmos-db-throughput-by-using-azure-functions-timer-trigger"></a>Azure Functions のタイマー トリガーを使用して Azure Cosmos DB のスループットをスケーリングする
 
@@ -23,7 +23,7 @@ Azure Cosmos アカウントのパフォーマンスは、要求ユニット/秒
 
 スケジュールに従って Azure Cosmos DB をスケーリングするプロセスを簡素化するために、[Azure Cosmos スループット スケジューラ](https://github.com/Azure-Samples/azure-cosmos-throughput-scheduler)と呼ばれるサンプル プロジェクトを作成しました。 このプロジェクトは、"ScaleUpTrigger" と "ScaleDownTrigger" の 2 つのタイマー トリガーを持つ Azure Functions アプリです。 これらトリガーは、各トリガーの `resources.json` ファイルで定義された各リソースに関するスループットを設定する PowerShell スクリプトを実行します。 ScaleUpTrigger は午前 8 時 (UTC) に実行されるように構成され、ScaleDownTrigger は午後 6 時 (UTC) に実行されるように構成されています。これらの時刻は、各トリガーの `function.json` ファイル内で容易に更新できます。
 
-このプロジェクトをローカルで複製し、スケールアップおよびスケールダウンする Azure Cosmos DB リソースと実行されるスケジュールを指定するように変更できます。 後で、それを Azure サブスクリプションにデプロイし、"Azure Cosmos DB オペレーター" ロールの[ロールベースのアクセス制御](role-based-access-control.md) (RBAC) アクセス許可を持つマネージド サービス ID を使用してセキュリティで保護することにより、Azure Cosmos アカウントでスループットを設定できます。
+このプロジェクトをローカルで複製し、スケールアップおよびスケールダウンする Azure Cosmos DB リソースと実行されるスケジュールを指定するように変更できます。 後で、それを Azure サブスクリプションにデプロイし、"Azure Cosmos DB オペレーター" ロールの [Azure ロールベースのアクセス制御 (Azure RBAC)](role-based-access-control.md) アクセス許可を持つマネージド サービス ID を使用してセキュリティで保護することにより、Azure Cosmos アカウントでスループットを設定できます。
 
 ## <a name="next-steps"></a>次の手順
 

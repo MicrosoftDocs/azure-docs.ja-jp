@@ -7,16 +7,18 @@ ms.author: baanders
 ms.date: 3/16/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 9c7c1000ed5229886d4a964161042eca6517c230
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: ca500401a6bff8a00dd9c51eecb29aa93fdbc82b
+ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87367438"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88042651"
 ---
 # <a name="integrate-azure-digital-twins-with-other-services"></a>Azure Digital Twins を他のサービスと統合する
 
-Azure Digital Twins は、通常、他のサービスと共に使用されます。 Azure Digital Twins は、[**イベント ルート** ](concepts-route-events.md)使用して、テレメトリと通知を配信するために使用される [IoT Hub](../iot-hub/about-iot-hub.md) などのアップストリーム サービスからデータを受信します。 Azure Digital Twins は、ストレージ、ワークフロー統合、分析、およびその他の用途のためにデータをダウンストリーム サービスにルーティングすることもできます。 
+Azure Digital Twins は、通常、他のサービスと共に使用されます。 Azure Digital Twins は、[**イベント ルート** ](concepts-route-events.md)使用して、テレメトリと通知を配信するために使用される [IoT Hub](../iot-hub/about-iot-hub.md) などのアップストリーム サービスからデータを受信します。 
+
+Azure Digital Twins では、ストレージ、ワークフローの統合、分析などのために、Azure Maps ([*方法:Azure Digital Twins を使用して Azure Maps の屋内マップを更新する*](how-to-integrate-maps.md))、Time Series Insights ([*方法:Time Series Insights との統合*](how-to-integrate-time-series-insights.md)に関する記事) などのダウンストリーム サービスにデータをルーティングすることもできます。 
 
 ## <a name="data-ingress"></a>データのイングレス
 
@@ -33,7 +35,7 @@ Azure Digital Twins は、接続されている**エンドポイント**にデ�
 * [Event Grid](../event-grid/overview.md)
 * [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)
 
-エンドポイントは、管理 API または Azure portal を使用して Azure Digital Twins にアタッチされています。 エンドポイントを Azure Digital Twins に接続する方法の詳細については、[*エンドポイントとルートを管理する方法*](how-to-manage-routes.md)に関するページを参照してください。
+エンドポイントは、管理 API または Azure portal を使用して Azure Digital Twins にアタッチされています。 エンドポイントを Azure Digital Twins に接続する方法の詳細については、[*エンドポイントとルートを管理する方法*](how-to-manage-routes-apis-cli.md)に関するページを参照してください。
 
 他にも、[Azure Storage](../storage/common/storage-introduction.md) や [Time Series Insights](../time-series-insights/time-series-insights-update-overview.md) など、データの最終的な転送先となるサービスが多数あります。 このようなサービスにデータを送信するには、宛先サービスをエンドポイントにアタッチします。
 

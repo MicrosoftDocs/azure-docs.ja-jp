@@ -3,12 +3,12 @@ title: Microsoft Azure Recovery Services コンテナーを削除する
 description: この記事では、依存関係を削除してから Azure Backup Recovery Services コンテナーを削除する方法について説明します。
 ms.topic: conceptual
 ms.date: 06/04/2020
-ms.openlocfilehash: 5446c54ac070555987dfc05afa67825f307ee61b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 41d0cbc8e1c59f33efc24f38b535aa9cf91b2cc9
+ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87055190"
+ms.lasthandoff: 08/16/2020
+ms.locfileid: "88257955"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Azure Backup Recovery Services コンテナーを削除する
 
@@ -43,8 +43,9 @@ ms.locfileid: "87055190"
 - **手順 3**:次の 3 つの場所すべてを調べて、保護された項目があるかどうかを確認する必要があります。
 
   - **クラウドで保護されている項目**:コンテナーのダッシュボード メニューの **[バックアップ項目]** に移動します。 ここに一覧表示されるすべての項目を、 **[バックアップの停止]** または **[バックアップ データの削除]** を使用して、それらのバックアップ データと一緒に削除する必要があります。  [これらの手順に従って](#delete-protected-items-in-the-cloud)それらの項目を削除します。
+  - **SQL Server インスタンス**:コンテナーのダッシュボード メニューの **[バックアップ インフラストラクチャ]**  >  **[保護されたサーバー]** に移動します。 [保護されたサーバー] で、登録解除するサーバーを選択します。 コンテナーを削除するには、すべてのサーバーの登録を解除する必要があります。 保護されたサーバーを右クリックし、 **[登録解除]** を選択します。
   - **MARS で保護されているサーバー**:コンテナーのダッシュボード メニューの **[バックアップ インフラストラクチャ]**  >  **[保護されたサーバー]** に移動します。 MARS で保護されているサーバーがある場合は、ここに一覧表示されるすべての項目を、それらのバックアップ データと一緒に削除する必要があります。 [こちらの手順](#delete-protected-items-on-premises)に従って、MARS で保護されているサーバーを削除します。
-  - **MABS または DPM 管理サーバー**:コンテナーのダッシュボード メニューの **[バックアップ インフラストラクチャ]**  >  **[バックアップ管理サーバー]** に移動します。 DPM または Azure Backup Server (MABS) を使用している場合は、ここに一覧表示されるすべての項目を、それらのバックアップ データと一緒に削除または登録解除する必要があります。 [これらの手順に従って](#delete-protected-items-on-premises)管理サーバーを削除します。
+   - **MABS または DPM 管理サーバー**:コンテナーのダッシュボード メニューの **[バックアップ インフラストラクチャ]**  >  **[バックアップ管理サーバー]** に移動します。 DPM または Azure Backup Server (MABS) を使用している場合は、ここに一覧表示されるすべての項目を、それらのバックアップ データと一緒に削除または登録解除する必要があります。 [これらの手順に従って](#delete-protected-items-on-premises)管理サーバーを削除します。
 
 - **手順 4**:登録されているすべてのストレージ アカウントが確実に削除されるようにする必要があります。 コンテナーのダッシュボード メニューの **[バックアップ インフラストラクチャ]**  >  **[ストレージ アカウント]** に移動します。 ここに一覧表示されるストレージ アカウントがある場合は、それらすべての登録を解除する必要があります。 アカウントの登録を解除する方法については、「[ストレージアカウントの登録を解除する](manage-afs-backup.md#unregister-a-storage-account)」を参照してください。
 

@@ -9,12 +9,12 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 07/27/2020
-ms.openlocfilehash: b3abda9787654734b24cc27987921ef40d8070fc
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 2c8aa39b6819e135181e2d153825e89686359538
+ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87293763"
+ms.lasthandoff: 08/10/2020
+ms.locfileid: "88053764"
 ---
 # <a name="create-azure-ad-guest-users-and-set-as-an-azure-ad-admin"></a>Azure AD ゲスト ユーザーを作成し、Azure AD 管理者として設定する
 
@@ -133,9 +133,9 @@ SQL 論理サーバーの Azure AD 管理者として Azure AD ゲスト ユー�
 
 ## <a name="limitations"></a>制限事項
 
-Azure portal には、Azure AD ゲストユーザーを SQL Database、SQL Managed Instance、Azure Synapse の Azure AD 管理者として選択できない制限があります。 *\@outlook.com*、 *\@hotmail.com*、 *\@live.com*、 *\@gmail.com* など、Azure AD 外部のゲスト アカウントの場合、AD 管理者セレクターにはこれらのアカウントは表示されますが、グレー表示され、選択することはできません。 上記の [PowerShell または CLI コマンド](#setting-a-guest-user-as-an-azure-ad-admin)を使用して Azure AD 管理者を設定します。または、ゲスト ユーザーを含む Azure AD グループを SQL 論理サーバーの Azure AD 管理者として設定することもできます。
+Azure portal には、Azure AD ゲストユーザーを SQL Managed Instance の Azure AD 管理者として選択できない制限があります。 *\@outlook.com*、 *\@hotmail.com*、 *\@live.com*、 *\@gmail.com* など、Azure AD 外部のゲスト アカウントの場合、AD 管理者セレクターにはこれらのアカウントは表示されますが、グレー表示され、選択することはできません。 上記の [PowerShell または CLI コマンド](#setting-a-guest-user-as-an-azure-ad-admin)を使用して Azure AD 管理者を設定します。または、ゲスト ユーザーを含む Azure AD グループを SQL Managed Instance の Azure AD 管理者として設定することもできます。
 
-この機能の一般提供が開始される前に、この機能は SQL Database および Azure Synapse に対して有効になります。
+この機能の一般提供が開始される前に、この機能は SQL Managed Instance に対して有効になります。
 
 ## <a name="next-steps"></a>次のステップ
 

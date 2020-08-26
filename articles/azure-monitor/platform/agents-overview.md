@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/14/2020
-ms.openlocfilehash: c6aea3be5782c967c5816a1e40dc5443306671b3
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.date: 08/05/2020
+ms.openlocfilehash: e6a4c7fe739bd517646f8401e5c812a557441e9f
+ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87445292"
+ms.lasthandoff: 08/11/2020
+ms.locfileid: "88076899"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Azure Monitor エージェントの概要
 
@@ -29,22 +29,37 @@ ms.locfileid: "87445292"
 
 ### <a name="windows-agents"></a>Windows エージェント
 
-| | 診断<br>拡張機能 (WAD) | Log Analytics<br>エージェント | 依存関係<br>エージェント |
-|:---|:---|:---|:---|
-| **サポートされている環境** | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | 
-| **エージェントの要件**  | なし | なし | Log Analytics エージェントが必要 |
-| **収集されるデータ** | イベント ログ<br>ETW イベント<br>パフォーマンス<br>ファイル ベース ログ<br>IIS ログ<br>.NET アプリ ログ<br>クラッシュ ダンプ<br>エージェント診断ログ | イベント ログ<br>パフォーマンス<IIS logs><br>ファイル ベース ログ<br>分析情報とソリューション<br>その他のサービス | プロセスの詳細と依存関係<br>ネットワーク接続のメトリック |
-| **送信されるデータ** | Azure Storage<br>Azure Monitor メトリック<br>イベント ハブ | Azure Monitor ログ | Azure Monitor ログ |
+| | Azure Monitor エージェント (プレビュー) | 診断<br>拡張機能 (WAD) | Log Analytics<br>エージェント | 依存関係<br>エージェント |
+|:---|:---|:---|:---|:---|
+| **サポートされている環境** | Azure<br>その他のクラウド<br>オンプレミス | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | 
+| **エージェントの要件**  | なし | なし | なし | Log Analytics エージェントが必要 |
+| **収集されるデータ** | イベント ログ<br>パフォーマンス | イベント ログ<br>ETW イベント<br>パフォーマンス<br>ファイル ベース ログ<br>IIS ログ<br>.NET アプリ ログ<br>クラッシュ ダンプ<br>エージェント診断ログ | イベント ログ<br>パフォーマンス<IIS logs><br>ファイル ベース ログ<br>分析情報とソリューション<br>その他のサービス | プロセスの詳細と依存関係<br>ネットワーク接続のメトリック |
+| **送信されるデータ** | Azure Monitor ログ<br>Azure Monitor メトリック<br>Azure Storage<br>イベント ハブ | Azure Storage<br>Azure Monitor メトリック<br>イベント ハブ | Azure Monitor ログ | Azure Monitor ログ |
 
 
 ### <a name="linux-agents"></a>Linux エージェント
 
-| | 診断<br>拡張機能 (LAD) | Telegraf<br>エージェント | Log Analytics<br>エージェント | 依存関係<br>エージェント |
-|:---|:---|:---|:---|:---|
-| **サポートされている環境** | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス |
-| **エージェントの要件**  | なし | なし | なし | Log Analytics エージェントが必要 |
-| **収集されるデータ** | syslog<br>パフォーマンス | パフォーマンス | syslog<br>パフォーマンス| プロセスの詳細と依存関係<br>ネットワーク接続のメトリック |
-| **送信されるデータ** | Azure Storage<br>イベント ハブ | Azure Monitor メトリック | Azure Monitor ログ | Azure Monitor ログ |
+| | Azure Monitor エージェント (プレビュー) | 診断<br>拡張機能 (LAD) | Telegraf<br>エージェント | Log Analytics<br>エージェント | 依存関係<br>エージェント |
+|:---|:---|:---|:---|:---|:---|
+| **サポートされている環境** | Azure | Azure | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス | Azure<br>その他のクラウド<br>オンプレミス |
+| **エージェントの要件**  | なし | なし | なし | なし | Log Analytics エージェントが必要 |
+| **収集されるデータ** | syslog<br>パフォーマンス | syslog<br>パフォーマンス | パフォーマンス | syslog<br>パフォーマンス| プロセスの詳細と依存関係<br>ネットワーク接続のメトリック |
+| **送信されるデータ** | Azure Monitor ログ<br>Azure Storage<br>Azure Monitor メトリック<br>イベント ハブ | Azure Storage<br>イベント ハブ | Azure Monitor メトリック | Azure Monitor ログ | Azure Monitor ログ |
+
+## <a name="azure-monitor-agent-preview"></a>Azure Monitor エージェント (プレビュー)
+[Azure Monitor エージェント](azure-monitor-agent-overview.md)は、現在プレビューの段階にあり、Windows と Linux の両方の仮想マシンで、Log Analytics エージェント、Diagnostics 拡張機能、および Telegraf エージェントを置き換えます。 Azure Monitor ログと Azure Monitor のメトリックの両方にデータを送信し、[データ収集ルール (DCR)](data-collection-rule-overview.md) を使用します。このルールは、各エージェントのデータ コレクションと変換先をよりスケーラブルに構成する方法を提供します。
+
+次のことを行う必要がある場合は、Azure Monitor エージェントを使用します。
+
+- Azure、その他のクラウド、またはオンプレミスの任意の仮想マシンからゲスト ログとメトリックを収集する。 (Azure のみプレビュー段階にあります。)
+- Azure Monitor での分析のために、Azure Monitor ログと Azure Monitor メトリックにデータを送信する。 
+- アーカイブのためにデータを Azure Storage に送信する。
+- [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md) を使用して、データをサードパーティ製のツールに送信する。
+- [Azure Security Center](../../security-center/security-center-intro.md) または [Azure Sentinel](../../sentinel/overview.md) を使用して、ご利用の仮想マシンのセキュリティを管理する。 (プレビューでは使用できません。)
+
+Azure Monitor エージェントの制限事項は次のとおりです。
+
+- 現在、パブリック プレビュー段階にあります。 パブリック プレビュー段階での制限事項の一覧については、[現在の制限事項](azure-monitor-agent-overview.md#current-limitations)に関する記事を参照してください。
 
 ## <a name="log-analytics-agent"></a>Log Analytics エージェント
 
