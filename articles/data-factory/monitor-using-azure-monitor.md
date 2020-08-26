@@ -403,7 +403,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 ### <a name="monitor-schema"></a>スキーマの監視
 
-#### <a name="activity-run-log-attributes"></a>アクティビティ実行ログの属性
+#### <a name="activity-run-log-attributes"></a>アクティビティ実行ログの属性\(ADFActivityRun\)
 
 ```json
 {
@@ -458,7 +458,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |**start**| String | timespan でのアクティビティの実行の開始時刻 (UTC 形式)。 | `2017-06-26T20:55:29.5007959Z`|
 |**end**| String | timespan でのアクティビティの実行の終了時刻 (UTC 形式)。 アクティビティが開始したがまだ終了していないことが診断ログに示されている場合、プロパティ値は `1601-01-01T00:00:00Z` です。 | `2017-06-26T20:55:29.5007959Z` |
 
-#### <a name="pipeline-run-log-attributes"></a>パイプライン実行ログの属性
+#### <a name="pipeline-run-log-attributes"></a>パイプライン実行ログの属性\(ADFPipelineRun\)
 
 ```json
 {
@@ -503,7 +503,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |**end**| String | timespan でのアクティビティの実行の終了時刻 (UTC 形式)。 アクティビティが開始したがまだ終了していないことが診断ログに示されている場合、プロパティ値は `1601-01-01T00:00:00Z` です。  | `2017-06-26T20:55:29.5007959Z` |
 |**status**| String | パイプライン実行の最終的な状態。 プロパティ値は `Succeeded` または `Failed` のいずれかです。 | `Succeeded`|
 
-#### <a name="trigger-run-log-attributes"></a>トリガー実行ログの属性
+#### <a name="trigger-run-log-attributes"></a>トリガー実行ログの属性\(ADFTriggerRun\)
 
 ```json
 {
@@ -547,7 +547,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |**start**| String | timespan でのトリガーの起動の開始時刻 (UTC 形式)。 | `2017-06-26T20:55:29.5007959Z`|
 |**status**| String | トリガーが正常に起動されたかどうかを示す最終的な状態。 プロパティ値は `Succeeded` または `Failed` のいずれかです。 | `Succeeded`|
 
-#### <a name="ssis-integration-runtime-log-attributes"></a>SSIS 統合ランタイム ログの属性
+#### <a name="ssis-integration-runtime-log-attributes"></a>SSIS 統合ランタイム ログの属性\(ADFSSISIntegrationRuntimeLogs\)
 
 SSIS IR の開始/停止/メンテナンス操作のログの属性を次に示します。
 
@@ -581,7 +581,7 @@ SSIS IR の開始/停止/メンテナンス操作のログの属性を次に示�
 | **message**                | String | SSIS IR 操作の出力メッセージ                  | `The stopping of your SSIS integration runtime has succeeded.` |
 | **resourceId**             | String | ADF リソースの一意の ID                            | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
-#### <a name="ssis-event-message-context-log-attributes"></a>SSIS イベント メッセージ コンテキスト ログの属性
+#### <a name="ssis-event-message-context-log-attributes"></a>SSIS イベント メッセージ コンテキスト ログの属性\(ADFSSISPackageEventMessageContext\)
 
 SSIS IR での SSIS パッケージ実行により生成されるイベント メッセージに関連する条件のログの属性を次に示します。 これらは、多くの SSIS パッケージのプロパティの実行時の値を示す [SSIS カタログ (SSISDB) イベント メッセージ コンテキスト テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Basic/Verbose` ログ レベルを選択するときに生成されるもので、デバッグやコンプライアンス チェックに役立ちます。
 
@@ -627,7 +627,7 @@ SSIS IR での SSIS パッケージ実行により生成されるイベント �
 | **propertyValue**          | String | イベント メッセージ コンテキストのソースのパッケージ プロパティの値  | `False` |
 | **resourceId**             | String | ADF リソースの一意の ID                                   | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
-#### <a name="ssis-event-messages-log-attributes"></a>SSIS イベント メッセージ ログの属性
+#### <a name="ssis-event-messages-log-attributes"></a>SSIS イベント メッセージ ログの属性\(ADFSSISPackageEventMessages\)
 
 SSIS IR での SSIS パッケージ実行により生成されるイベント メッセージのログの属性を次に示します。 これらは、イベント メッセージの詳細なテキスト/メタデータを示す [SSISDB イベント メッセージ テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`None` 以外のすべてのログ レベルで生成されます。
 
@@ -681,7 +681,7 @@ SSIS IR での SSIS パッケージ実行により生成されるイベント �
 | **executionPath**          | String | 親パッケージから、実行されたコンポーネントまでの完全なパス            | `\Transformation\Data Flow Task` (このパスではコンポーネントの繰り返しもキャプチャされます) |
 | **threadId**               | String | イベント メッセージがログに記録されたときに実行されたスレッドの一意の ID | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 
-#### <a name="ssis-executable-statistics-log-attributes"></a>SSIS 実行可能ファイル統計ログの属性
+#### <a name="ssis-executable-statistics-log-attributes"></a>SSIS 実行可能ファイル統計ログの属性\(ADFSSISPackageExecutableStatistics\)
 
 SSIS IR での SSIS パッケージ実行により生成される実行可能ファイル統計ログの属性を次に示します。この場合の実行可能ファイルは、パッケージ制御フローのコンテナーまたはタスクです。 これらは、実行中の各実行可能ファイルとその繰り返しを 1 行で表示する [SSISDB 実行可能ファイル統計テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`None` 以外のすべてのログ レベルで生成され、タスク レベルのボトルネックや障害を特定するのに役立ちます。
 
@@ -725,7 +725,7 @@ SSIS IR での SSIS パッケージ実行により生成される実行可能フ
 | **executionValue**         | String | 実行可能ファイルを実行したときに返されるユーザー定義値            | `1` |
 | **resourceId**             | String | ADF リソースの一意の ID                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
-#### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS 実行コンポーネントのフェーズに関するログの属性
+#### <a name="ssis-execution-component-phases-log-attributes"></a>SSIS 実行コンポーネントのフェーズに関するログの属性\(ADFSSISPackageExecutionComponentPhases\)
 
 SSIS IR での SSIS パッケージ実行により生成されるデータ フロー コンポーネントの実行時の統計情報に関するログの属性を次に示します。 これらは、すべての実行フェーズでデータ フロー コンポーネントによって費やされた時間を示す [SSISDB 実行コンポーネントのフェーズ テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Performance/Verbose` ログ レベルを選択するときに生成されるもので、データ フロー実行の統計情報をキャプチャするのに役立ちます。
 
@@ -771,7 +771,7 @@ SSIS IR での SSIS パッケージ実行により生成されるデータ フ�
 | **executionPath**          | String | データ フロー タスクの実行パス                            | `\Transformation\Data Flow Task` |
 | **resourceId**             | String | ADF リソースの一意の ID                                  | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
-#### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS 実行データの統計情報に関するログの属性
+#### <a name="ssis-execution-data-statistics-log-attributes"></a>SSIS 実行データの統計情報に関するログの属性\(ADFSSISPackageExecutionDataStatistics\)
 
 データ フロー パイプラインの各区間を経由して上流から下流のコンポーネントに移動する、SSIS IR での SSIS パッケージ実行により生成されるデータ移動に関するログの属性を次に示します。 これらは、データ フロー タスクで移動されたデータの行数を示す [SSISDB 実行データの統計情報テーブルまたはビュー](https://docs.microsoft.com/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15)と類似の情報を伝えます。 これらは、`Verbose` ログ レベルを選択するときに生成されるもので、データ フロー スループットを計算するのに役立ちます。
 
